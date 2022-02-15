@@ -1,6 +1,7 @@
 #ifndef NITRO_TYPES_H_
 #define NITRO_TYPES_H_
 
+#ifndef SDK_ASM
 typedef unsigned char u8;
 typedef unsigned short int u16;
 typedef unsigned long u32;
@@ -36,9 +37,12 @@ typedef vu32 REGType32v;
 typedef vu64 REGType64v;
 
 typedef int BOOL;
+#endif
+
 #define TRUE 1
 #define FALSE 0
 
+#ifndef SDK_ASM
 #ifndef NULL
 #ifdef  __cplusplus
 #define NULL 0
@@ -48,5 +52,5 @@ typedef int BOOL;
 #endif
 
 #define SDK_FORCE_EXPORT __declspec(force_export)
-
+#endif //SDK_ASM
 #endif //NITRO_TYPES_H_

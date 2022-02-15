@@ -1,0 +1,146 @@
+{
+  "header": "fielddata/script/scr_seq/event_T25GYM0101.h",
+  "bgs": [
+    {
+      "scr": "_EV_scr_seq_T25GYM0101_003 + 1",
+      "type": 0,
+      "x": 2,
+      "y": 24,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": "_EV_scr_seq_T25GYM0101_003 + 1",
+      "type": 0,
+      "x": 8,
+      "y": 24,
+      "z": 0,
+      "dir": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_T25GYM0101_gsleader3",
+      "ovid": "SPRITE_GSLEADER3",
+      "mvt": 15,
+      "type": 0,
+      "flag": "FLAG_UNK_2EC",
+      "scr": "_EV_scr_seq_T25GYM0101_000 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 13,
+      "y": 4,
+      "z": 0
+    },
+    {
+      "id": "obj_T25GYM0101_gsgirl1",
+      "ovid": "SPRITE_GSGIRL1",
+      "mvt": 16,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_LASS_CATHY)",
+      "dirn": 2,
+      "eye": 4,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 14,
+      "y": 15,
+      "z": 0
+    },
+    {
+      "id": "obj_T25GYM0101_gsgirl1_2",
+      "ovid": "SPRITE_GSGIRL1",
+      "mvt": 17,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_LASS_CARRIE)",
+      "dirn": 3,
+      "eye": 1,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 9,
+      "y": 18,
+      "z": 0
+    },
+    {
+      "id": "obj_T25GYM0101_gswoman2",
+      "ovid": "SPRITE_GSWOMAN2",
+      "mvt": 17,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_BEAUTY_VICTORIA)",
+      "dirn": 3,
+      "eye": 2,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 6,
+      "y": 11,
+      "z": 196608
+    },
+    {
+      "id": "obj_T25GYM0101_gswoman2_2",
+      "ovid": "SPRITE_GSWOMAN2",
+      "mvt": 16,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_BEAUTY_SAMANTHA)",
+      "dirn": 2,
+      "eye": 2,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 24,
+      "y": 18,
+      "z": 0
+    },
+    {
+      "id": "obj_T25GYM0101_sunglasses",
+      "ovid": "SPRITE_SUNGLASSES",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T25GYM0101_002 + 1",
+      "dirn": 1,
+      "eye": 2,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 7,
+      "y": 23,
+      "z": 196608
+    }
+  ],
+  "warps": [
+    {
+      "x": 6,
+      "y": 25,
+      "header": "MAP_T25",
+      "anchor": 2,
+      "height": 0
+    }
+  ],
+  "coords": [
+    {
+      "scr": "_EV_scr_seq_T25GYM0101_001 + 1",
+      "x": 13,
+      "y": 11,
+      "w": 1,
+      "h": 1,
+      "z": 0,
+      "val": 1,
+      "var": "VAR_UNK_410A"
+    }
+  ]
+}

@@ -135,7 +135,7 @@ ov113_021E59F8: ; 0x021E59F8
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -175,7 +175,7 @@ _021E5A52:
 	add r0, r7, #0
 	add r1, r4, #0
 	mov r2, #1
-	bl sub_0202A108
+	bl Pokedex_GetSeenFormeByIdx_Unown
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r0, #0
@@ -229,7 +229,7 @@ ov113_021E5A7C: ; 0x021E5A7C
 	strb r0, [r5, #0x1d]
 	ldr r0, [r5, #0xc]
 	mov r1, #1
-	bl sub_0202A14C
+	bl Pokedex_GetSeenFormeNum_Unown
 	strb r0, [r5, #0x1f]
 	add r0, r5, #0
 	add r0, #0x3c
@@ -273,7 +273,7 @@ _021E5B1A:
 	ldr r0, [r5, #0xc]
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_0202A108
+	bl Pokedex_GetSeenFormeByIdx_Unown
 	add r1, r5, r4
 	add r1, #0x20
 	strb r0, [r1]
@@ -703,13 +703,13 @@ _021E5DF6:
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	add r0, #0x78
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	add r0, #0x88
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	add r0, #0x98
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl ov113_021E6B1C
 	add sp, #0x10
@@ -756,7 +756,7 @@ ov113_021E5E64: ; 0x021E5E64
 	bl AddTextPrinterParameterized2
 	add r4, #0x68
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -839,7 +839,7 @@ _021E5F44: .word 0x000005DC
 	thumb_func_start ov113_021E5F48
 ov113_021E5F48: ; 0x021E5F48
 	push {r3, lr}
-	ldr r1, _021E5F8C ; =gMain
+	ldr r1, _021E5F8C ; =gSystem
 	ldr r2, [r1, #0x48]
 	ldr r1, _021E5F90 ; =0x00000CF3
 	tst r1, r2
@@ -847,7 +847,7 @@ ov113_021E5F48: ; 0x021E5F48
 	mov r1, #0
 	str r1, [r0, #0x14]
 _021E5F58:
-	ldr r1, _021E5F8C ; =gMain
+	ldr r1, _021E5F8C ; =gSystem
 	ldr r3, [r1, #0x48]
 	mov r1, #2
 	add r2, r3, #0
@@ -873,7 +873,7 @@ _021E5F86:
 	add r0, r1, #0
 	pop {r3, pc}
 	nop
-_021E5F8C: .word gMain
+_021E5F8C: .word gSystem
 _021E5F90: .word 0x00000CF3
 	thumb_func_end ov113_021E5F48
 
@@ -1236,7 +1236,7 @@ ov113_021E6238: ; 0x021E6238
 	lsr r1, r1, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x40]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	lsl r1, r4, #0x18
 	ldr r0, [r5, #0x40]
 	lsr r1, r1, #0x18
@@ -1293,7 +1293,7 @@ ov113_021E62B0: ; 0x021E62B0
 _021E62C0:
 	bl sub_0202061C
 	ldr r0, [r4, #0x40]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E62D8 ; =0x027E0000
 	ldr r1, _021E62DC ; =0x00003FF8
 	mov r0, #1
@@ -1545,7 +1545,7 @@ ov113_021E64DC: ; 0x021E64DC
 	add r1, r2, #0
 	mov r2, #1
 	add r3, r4, #4
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	str r0, [r4]
 	ldr r0, [r4, #4]
 	ldrh r0, [r0]
@@ -1577,7 +1577,7 @@ ov113_021E650C: ; 0x021E650C
 	str r1, [sp, #4]
 	mov r1, #5
 	add r4, r0, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1589,7 +1589,7 @@ ov113_021E650C: ; 0x021E650C
 	ldr r2, [r5, #0x40]
 	add r0, r4, #0
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1601,7 +1601,7 @@ ov113_021E650C: ; 0x021E650C
 	ldr r2, [r5, #0x40]
 	add r0, r4, #0
 	mov r3, #3
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5]
@@ -1609,7 +1609,7 @@ ov113_021E650C: ; 0x021E650C
 	str r0, [sp, #4]
 	add r0, r4, #0
 	add r2, r1, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1621,7 +1621,7 @@ ov113_021E650C: ; 0x021E650C
 	ldr r2, [r5, #0x40]
 	add r0, r4, #0
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1633,7 +1633,7 @@ ov113_021E650C: ; 0x021E650C
 	ldr r2, [r5, #0x40]
 	add r0, r4, #0
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0x13
 	lsl r0, r0, #4
 	ldr r3, [r5]
@@ -2105,7 +2105,7 @@ ov113_021E6988: ; 0x021E6988
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r4, pc}
 	thumb_func_end ov113_021E6988
 
@@ -2115,7 +2115,7 @@ ov113_021E69A8: ; 0x021E69A8
 	add r4, r0, #0
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x10
 	mov r1, #0
 	bl GX_EngineAToggleLayers

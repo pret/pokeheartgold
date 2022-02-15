@@ -1,3 +1,5 @@
+#include "fielddata/script/scr_seq/event_T27GYM0101.h"
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -9,9 +11,9 @@ ov04_02253E20: ; 0x02253E20
 	sub sp, #0x24
 	add r5, r0, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	mov r1, #4
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	add r3, sp, #0x18
 	ldr r6, _02253ECC ; =_02257328
 	add r4, r0, #0
@@ -102,13 +104,13 @@ ov04_02253ED4: ; 0x02253ED4
 	add r0, r5, #0
 	str r5, [r4, #4]
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	mov r1, #4
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
 	add r1, sp, #0
-	bl sub_0205C6AC
+	bl PlayerAvatar_GetPositionVec
 	mov r0, #2
 	ldr r1, [sp, #4]
 	lsl r0, r0, #0x10
@@ -117,7 +119,7 @@ ov04_02253ED4: ; 0x02253ED4
 	bne _02253F20
 	ldr r1, _02253F30 ; =ov04_02253F38
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	mov r0, #1
 	add sp, #0xc
 	str r0, [r6]
@@ -125,7 +127,7 @@ ov04_02253ED4: ; 0x02253ED4
 _02253F20:
 	ldr r1, _02253F34 ; =ov04_02253F94
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	mov r0, #0
 	str r0, [r6]
 	add sp, #0xc
@@ -139,10 +141,10 @@ _02253F34: .word ov04_02253F94
 ov04_02253F38: ; 0x02253F38
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r1, [r4]
 	cmp r1, #0
@@ -156,7 +158,7 @@ _02253F5A:
 	ldr r0, [r5, #0x10]
 	ldr r1, _02253F8C ; =ov01_02205A60
 	mov r2, #0
-	bl sub_02050530
+	bl QueueTask
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -186,10 +188,10 @@ _02253F90: .word ov04_02253FF0
 ov04_02253F94: ; 0x02253F94
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r1, [r4]
 	cmp r1, #0
@@ -203,7 +205,7 @@ _02253FB6:
 	ldr r0, [r5, #0x10]
 	ldr r1, _02253FE8 ; =ov01_02205A60
 	mov r2, #0
-	bl sub_02050530
+	bl QueueTask
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -249,7 +251,7 @@ _0225400C:
 	ldr r0, [r4, #0x40]
 	mov r1, #0
 	bl sub_0205C858
-	mov r0, #0x61
+	mov r0, #SEQ_SE_DP_ELEBETA>>4
 	lsl r0, r0, #4
 	bl PlaySE
 	ldr r0, [r5]
@@ -280,14 +282,14 @@ _02254026:
 	mov r0, #0x61
 	lsl r0, r0, #4
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
 _02254060:
 	ldr r0, [r4, #0x40]
 	add r1, sp, #0
-	bl sub_0205C6AC
+	bl PlayerAvatar_GetPositionVec
 	mov r0, #1
 	ldr r1, [sp, #4]
 	lsl r0, r0, #0x10
@@ -314,7 +316,7 @@ _0225408C:
 	ldr r0, [r4, #0x40]
 	mov r1, #1
 	bl sub_0205C874
-	ldr r0, _022540BC ; =0x00000619
+	ldr r0, _022540BC ; =SEQ_SE_DP_KI_GASYAN
 	bl PlaySE
 	add r0, r6, #0
 	bl sub_0200E390
@@ -324,7 +326,7 @@ _0225408C:
 	add sp, #0x18
 	pop {r4, r5, r6, pc}
 	nop
-_022540BC: .word 0x00000619
+_022540BC: .word SEQ_SE_DP_KI_GASYAN
 	thumb_func_end ov04_02253FF0
 
 	thumb_func_start ov04_022540C0
@@ -347,7 +349,7 @@ _022540DC:
 	ldr r0, [r4, #0x40]
 	mov r1, #0
 	bl sub_0205C858
-	mov r0, #0x61
+	mov r0, #SEQ_SE_DP_ELEBETA>>4
 	lsl r0, r0, #4
 	bl PlaySE
 	ldr r0, [r5]
@@ -378,14 +380,14 @@ _022540F6:
 	mov r0, #0x61
 	lsl r0, r0, #4
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
 _02254130:
 	ldr r0, [r4, #0x40]
 	add r1, sp, #0
-	bl sub_0205C6AC
+	bl PlayerAvatar_GetPositionVec
 	mov r0, #1
 	ldr r1, [sp, #4]
 	lsl r0, r0, #0x10
@@ -412,7 +414,7 @@ _0225415C:
 	ldr r0, [r4, #0x40]
 	mov r1, #1
 	bl sub_0205C874
-	ldr r0, _0225418C ; =0x00000619
+	ldr r0, _0225418C ; =SEQ_SE_DP_KI_GASYAN
 	bl PlaySE
 	add r0, r6, #0
 	bl sub_0200E390
@@ -422,7 +424,7 @@ _0225415C:
 	add sp, #0x18
 	pop {r4, r5, r6, pc}
 	nop
-_0225418C: .word 0x00000619
+_0225418C: .word SEQ_SE_DP_KI_GASYAN
 	thumb_func_end ov04_022540C0
 
 	thumb_func_start ov04_02254190
@@ -431,9 +433,9 @@ ov04_02254190: ; 0x02254190
 	sub sp, #0x10
 	add r4, r0, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	mov r1, #5
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	add r7, r0, #0
 	mov r0, #4
 	mov r1, #0x54
@@ -711,18 +713,18 @@ _022543F6:
 _02254400: .word ov04_022575D4
 	thumb_func_end ov04_02254190
 
-	thumb_func_start ov04_02254404
-ov04_02254404: ; 0x02254404
+	thumb_func_start Fsys_FlipAzaleaGymSwitch
+Fsys_FlipAzaleaGymSwitch: ; 0x02254404
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
 	add r6, r1, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	mov r1, #5
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	add r4, r0, #0
-	ldr r0, _02254560 ; =0x00000619
+	ldr r0, _02254560 ; =SEQ_SE_DP_KI_GASYAN
 	bl PlaySE
 	cmp r6, #0
 	bne _022544B6
@@ -866,16 +868,16 @@ _02254550:
 	ldr r0, [r5, #0x10]
 	ldr r1, _02254564 ; =ov04_02254CA4
 	mov r2, #0
-	bl sub_02050530
+	bl QueueTask
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
-_02254560: .word 0x00000619
+_02254560: .word SEQ_SE_DP_KI_GASYAN
 _02254564: .word ov04_02254CA4
-	thumb_func_end ov04_02254404
+	thumb_func_end Fsys_FlipAzaleaGymSwitch
 
-	thumb_func_start ov04_02254568
-ov04_02254568: ; 0x02254568
+	thumb_func_start Fsys_BeginAzaleaGymSpinarakRide
+Fsys_BeginAzaleaGymSpinarakRide: ; 0x02254568
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	ldr r0, [r6, #4]
@@ -896,9 +898,9 @@ ov04_02254568: ; 0x02254568
 	add r0, r6, #0
 	str r1, [r4, #0x1c]
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	mov r1, #5
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	add r2, r0, #0
 	ldr r0, [r2, #4]
 	mov r1, #0
@@ -978,21 +980,21 @@ _02254608:
 	lsl r0, r0, #0x10
 	str r0, [r4, #0x34]
 	ldr r0, [r6, #0x10]
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02254634: .word ov04_022575A4
 _02254638: .word ov04_0225463C
-	thumb_func_end ov04_02254568
+	thumb_func_end Fsys_BeginAzaleaGymSpinarakRide
 
 	thumb_func_start ov04_0225463C
 ov04_0225463C: ; 0x0225463C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r1, [r4]
 	cmp r1, #0
@@ -1006,7 +1008,7 @@ _0225465E:
 	ldr r0, [r5, #0x10]
 	ldr r1, _02254690 ; =ov01_02205A60
 	mov r2, #0
-	bl sub_02050530
+	bl QueueTask
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -1154,70 +1156,70 @@ _02254744: ; jump table
 	.short _02254C44 - _02254744 - 2 ; case 9
 _02254758:
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	ldr r0, [r5, #0x40]
 	beq _0225479C
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	str r0, [sp, #0x28]
 	ldrb r0, [r4, #0x19]
 	cmp r0, #0
 	beq _0225478A
 	add r0, r7, #0
 	mov r1, #0xd
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldr r0, [sp, #0x28]
 	mov r1, #0xd
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	b _022547B4
 _0225478A:
 	add r0, r7, #0
 	mov r1, #0xc
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldr r0, [sp, #0x28]
 	mov r1, #0xc
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	b _022547B4
 _0225479C:
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	ldrb r1, [r4, #0x19]
 	cmp r1, #0
 	beq _022547AE
 	mov r1, #0xd
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	b _022547B4
 _022547AE:
 	mov r1, #0xc
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 _022547B4:
 	ldr r0, [r6]
 	add r0, r0, #1
 	str r0, [r6]
 _022547BA:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _022547FE
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r5, r0, #0
 	add r0, r7, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _02254828
 	add r0, r5, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _02254828
 	add r0, r7, #0
 	mov r1, #0x49
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	mov r0, #0
 	str r0, [r4, #0x50]
 	ldr r0, [r6]
@@ -1227,12 +1229,12 @@ _022547BA:
 	pop {r3, r4, r5, r6, r7, pc}
 _022547FE:
 	add r0, r7, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _02254828
 	add r0, r7, #0
 	mov r1, #0x49
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	mov r0, #0
 	str r0, [r4, #0x50]
 	ldr r0, [r6]
@@ -1281,7 +1283,7 @@ _0225482A:
 	mov r1, #1
 	mov r2, #0
 	bl ov01_021E8E70
-	ldr r0, _02254B9C ; =0x0000087B
+	ldr r0, _02254B9C ; =SEQ_SE_GS_ITOMARU_ROBO
 	bl PlaySE
 	ldr r0, [r6]
 	add sp, #0x98
@@ -1389,7 +1391,7 @@ _0225494A:
 	mov r0, #0
 	str r0, [r4, #0x1c]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6BC
+	bl PlayerAvatar_GetPositionVecConst
 	ldr r1, [r5, #0x2c]
 	bl ov01_021F62E8
 _0225495E:
@@ -1450,9 +1452,9 @@ _02254992:
 	blt _022549FE
 	add r0, r5, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	mov r1, #5
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	ldr r1, [sp, #0x1c]
 	add r1, r1, r7
 	ldrh r2, [r1, #2]
@@ -1462,9 +1464,9 @@ _02254992:
 	ldr r1, [r5, #0x58]
 	mov r2, #1
 	bl ov01_021E8ED0
-	ldr r0, _02254B9C ; =0x0000087B
+	ldr r0, _02254B9C ; =SEQ_SE_GS_ITOMARU_ROBO
 	mov r1, #1
-	bl sub_02006154
+	bl StopSE
 	ldr r0, [r6]
 	add r0, r0, #1
 	str r0, [r6]
@@ -1543,11 +1545,11 @@ _02254A22:
 	add r0, r1, r0
 	str r0, [sp, #0x70]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r1, sp, #0x68
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	bne _02254AA6
 	b _02254C9E
@@ -1573,46 +1575,46 @@ _02254AA6:
 	add r0, r1, r0
 	str r0, [sp, #0x58]
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r1, sp, #0x50
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	add sp, #0x98
 	pop {r3, r4, r5, r6, r7, pc}
 _02254AE0:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	ldr r1, [r4, #0x28]
 	add r7, r0, #0
 	ldrh r1, [r1]
-	bl sub_0205F918
+	bl MapObject_SetCurrentX
 	add r0, r7, #0
 	mov r1, #0
-	bl sub_0205F928
+	bl MapObject_SetCurrentHeight
 	ldr r1, [r4, #0x28]
 	mov r2, #0x1b
 	ldrh r1, [r1, #2]
 	ldrsb r2, [r4, r2]
 	add r0, r7, #0
 	add r1, r1, r2
-	bl sub_0205F938
+	bl MapObject_SetCurrentY
 	add r0, r7, #0
 	bl sub_02060F78
 	add r0, r7, #0
 	mov r1, #0x4a
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02254B52
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	ldr r1, [r4, #0x28]
 	add r7, r0, #0
 	ldrh r1, [r1]
-	bl sub_0205F918
+	bl MapObject_SetCurrentX
 	add r0, r7, #0
 	mov r1, #0
-	bl sub_0205F928
+	bl MapObject_SetCurrentHeight
 	ldr r1, [r4, #0x28]
 	add r0, r7, #0
 	ldrh r3, [r1, #2]
@@ -1621,7 +1623,7 @@ _02254AE0:
 	mov r1, #1
 	sub r1, r1, r2
 	add r1, r3, r1
-	bl sub_0205F938
+	bl MapObject_SetCurrentY
 	add r0, r7, #0
 	bl sub_02060F78
 _02254B52:
@@ -1629,7 +1631,7 @@ _02254B52:
 	str r0, [r4, #0x44]
 	str r0, [r4, #0x48]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	cmp r0, #1
 	bne _02254B68
 	mov r0, #1
@@ -1664,7 +1666,7 @@ _02254B76:
 	str r0, [r4, #0x44]
 	b _02254BC0
 	.balign 4, 0
-_02254B9C: .word 0x0000087B
+_02254B9C: .word SEQ_SE_GS_ITOMARU_ROBO
 _02254BA0: .word ov04_022575A4
 _02254BA4: .word ov04_02257350
 _02254BA8: .word ov04_02257344
@@ -1696,32 +1698,32 @@ _02254BD4:
 	cmp r1, #8
 	blt _02254C9E
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02254C22
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r5, r0, #0
 	ldrb r0, [r4, #0x19]
 	cmp r0, #0
 	beq _02254C10
 	add r0, r7, #0
 	mov r1, #0xd
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	add r0, r5, #0
 	mov r1, #0xd
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	b _02254C3A
 _02254C10:
 	add r0, r7, #0
 	mov r1, #0xc
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	add r0, r5, #0
 	mov r1, #0xc
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	b _02254C3A
 _02254C22:
 	ldrb r0, [r4, #0x19]
@@ -1729,12 +1731,12 @@ _02254C22:
 	beq _02254C32
 	add r0, r7, #0
 	mov r1, #0xd
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	b _02254C3A
 _02254C32:
 	add r0, r7, #0
 	mov r1, #0xc
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 _02254C3A:
 	ldr r0, [r6]
 	add sp, #0x98
@@ -1743,25 +1745,25 @@ _02254C3A:
 	pop {r3, r4, r5, r6, r7, pc}
 _02254C44:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02254C88
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _02254C9E
 	add r0, r4, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _02254C9E
 	add r0, r4, #0
-	bl sub_020621F0
+	bl MapObject_ClearHeldMovement
 	ldr r0, [sp, #0x18]
 	bl sub_0200E390
 	ldr r0, [r6]
@@ -1771,7 +1773,7 @@ _02254C44:
 	pop {r3, r4, r5, r6, r7, pc}
 _02254C88:
 	add r0, r7, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _02254C9E
 	ldr r0, [sp, #0x18]
@@ -1788,8 +1790,8 @@ _02254C9E:
 	thumb_func_start ov04_02254CA4
 ov04_02254CA4: ; 0x02254CA4
 	push {r3, lr}
-	ldr r0, _02254CB8 ; =0x00000619
-	bl sub_02006184
+	ldr r0, _02254CB8 ; =SEQ_SE_DP_KI_GASYAN
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _02254CB4
 	mov r0, #1
@@ -1798,7 +1800,7 @@ _02254CB4:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-_02254CB8: .word 0x00000619
+_02254CB8: .word SEQ_SE_DP_KI_GASYAN
 	thumb_func_end ov04_02254CA4
 
 	thumb_func_start ov04_02254CBC
@@ -1807,9 +1809,9 @@ ov04_02254CBC: ; 0x02254CBC
 	sub sp, #0x34
 	add r5, r0, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	mov r1, #1
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	add r7, r0, #0
 	mov r0, #4
 	mov r1, #0x1c
@@ -1860,9 +1862,9 @@ _02254D1E:
 _02254D38:
 	ldr r0, [r5, #0x3c]
 	add r1, r6, #2
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r1, sp, #8
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r0, [r5, #0x54]
 	mov r1, #0x80
 	str r0, [sp]
@@ -1917,7 +1919,7 @@ ov04_02254D98: ; 0x02254D98
 	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl ov04_02254F20
+	bl ov04_MortyGymTrainerObjectToCandleIdx
 	cmp r0, #4
 	bne _02254DB8
 	bl GF_AssertFail
@@ -1956,7 +1958,7 @@ ov04_02254DE0: ; 0x02254DE0
 	bl FieldSysGetAttrAddr
 	add r6, r0, #0
 	ldr r0, [r6]
-	bl ov04_02254F20
+	bl ov04_MortyGymTrainerObjectToCandleIdx
 	str r0, [r4, #0x10]
 	ldr r0, [r6]
 	mov r1, #0x10
@@ -1972,7 +1974,7 @@ ov04_02254DE0: ; 0x02254DE0
 	str r5, [r2, #0xc]
 	ldr r0, [r5, #0x10]
 	ldr r1, _02254E1C ; =ov04_02254E50
-	bl sub_02050530
+	bl QueueTask
 	pop {r4, r5, r6, pc}
 	nop
 _02254E1C: .word ov04_02254E50
@@ -1987,7 +1989,7 @@ ov04_02254E20: ; 0x02254E20
 	add r1, sp, #0
 	ldr r4, [r0, #0x24]
 	ldr r0, [r4, #0x18]
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r1, [r4, #0x10]
 	add r5, #0x9c
 	lsl r1, r1, #2
@@ -2006,7 +2008,7 @@ ov04_02254E20: ; 0x02254E20
 	thumb_func_start ov04_02254E50
 ov04_02254E50: ; 0x02254E50
 	push {r4, r5, r6, lr}
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
 	ldr r0, [r1, #4]
@@ -2025,7 +2027,7 @@ _02254E6E:
 	str r0, [r4, #8]
 	cmp r1, #0x1e
 	blt _02254F18
-	ldr r0, _02254F1C ; =0x00000904
+	ldr r0, _02254F1C ; =SEQ_SE_GS_ROUSOKU_KIERU
 	bl PlaySE
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -2048,9 +2050,9 @@ _02254E86:
 	bl ov01_021F3B2C
 	ldr r0, [r4, #0xc]
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	mov r1, #1
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	ldr r1, [r5, #0x10]
 	mov r2, #1
 	strb r2, [r0, r1]
@@ -2099,14 +2101,14 @@ _02254F18:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_02254F1C: .word 0x00000904
+_02254F1C: .word SEQ_SE_GS_ROUSOKU_KIERU
 	thumb_func_end ov04_02254E50
 
-	thumb_func_start ov04_02254F20
-ov04_02254F20: ; 0x02254F20
+	thumb_func_start ov04_MortyGymTrainerObjectToCandleIdx
+ov04_MortyGymTrainerObjectToCandleIdx: ; 0x02254F20
 	push {r3, lr}
-	bl sub_0205F24C
-	ldr r2, _02254F40 ; =ov04_02257604
+	bl MapObject_GetID
+	ldr r2, _02254F40 ; =sMortyGymTrainerObjectIds
 	mov r3, #0
 _02254F2A:
 	lsl r1, r3, #2
@@ -2122,18 +2124,18 @@ _02254F3C:
 	add r0, r3, #0
 	pop {r3, pc}
 	.balign 4, 0
-_02254F40: .word ov04_02257604
-	thumb_func_end ov04_02254F20
+_02254F40: .word sMortyGymTrainerObjectIds
+	thumb_func_end ov04_MortyGymTrainerObjectToCandleIdx
 
 	thumb_func_start ov04_02254F44
 ov04_02254F44: ; 0x02254F44
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x3c]
-	bl sub_0205F168
+	bl MapObjectMan_GetCount
 	add r5, r0, #0
 	ldr r0, [r4, #0x3c]
-	bl sub_0205F1BC
+	bl MapObjectMan_GetArray
 	mov r4, #0
 	str r0, [sp]
 	cmp r5, #0
@@ -2142,7 +2144,7 @@ ov04_02254F44: ; 0x02254F44
 	add r7, sp, #0
 _02254F62:
 	ldr r0, [sp]
-	bl sub_0205F624
+	bl MapObject_IsInUse
 	cmp r0, #1
 	bne _02254F7C
 	ldr r0, [sp]
@@ -2174,9 +2176,9 @@ ov04_02254F8C: ; 0x02254F8C
 	str r0, [r2]
 	ldr r0, [sp, #4]
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	mov r1, #6
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	str r0, [sp, #0x10]
 	ldr r1, _02255074 ; =0x00000754
 	mov r0, #4
@@ -2295,8 +2297,8 @@ ov04_02255090: ; 0x02255090
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
-	bl sub_0202AEBC
+	bl Sav2_GetGymmickPtr
+	bl SavGymmick_GetType
 	cmp r0, #6
 	beq _022550A8
 	mov r0, #0
@@ -2310,10 +2312,10 @@ _022550A8:
 	pop {r4, r5, r6, pc}
 _022550B4:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r2, r0, #0
 	lsl r1, r6, #0x10
 	lsl r2, r2, #0x10
@@ -3222,12 +3224,12 @@ _0225571E:
 _0225574A:
 	mov r0, #8
 	str r0, [r4]
-	ldr r0, _022557F8 ; =0x00000902
+	ldr r0, _022557F8 ; =SEQ_SE_GS_GONDORA_IDOU
 	bl PlaySE
 	ldr r0, [r5]
 	ldr r1, _022557FC ; =ov04_02255AC4
 	add r2, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	mov r1, #1
 	b _022557F2
 _02255762:
@@ -3255,12 +3257,12 @@ _02255762:
 	add r1, #0x58
 	str r0, [r4, #0x54]
 	bl ov04_022558D0
-	ldr r0, _022557F8 ; =0x00000902
+	ldr r0, _022557F8 ; =SEQ_SE_GS_GONDORA_IDOU
 	bl PlaySE
 	ldr r0, [r5]
 	ldr r1, _02255800 ; =ov04_022559C8
 	add r2, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	mov r1, #1
 	b _022557F2
 _022557AA:
@@ -3289,19 +3291,19 @@ _022557AA:
 	add r1, #0x58
 	str r0, [r4, #0x54]
 	bl ov04_022558D0
-	ldr r0, _022557F8 ; =0x00000902
+	ldr r0, _022557F8 ; =SEQ_SE_GS_GONDORA_IDOU
 	bl PlaySE
 	ldr r0, [r5]
 	ldr r1, _02255800 ; =ov04_022559C8
 	add r2, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	mov r1, #1
 _022557F2:
 	add r0, r1, #0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_022557F8: .word 0x00000902
+_022557F8: .word SEQ_SE_GS_GONDORA_IDOU
 _022557FC: .word ov04_02255AC4
 _02255800: .word ov04_022559C8
 	thumb_func_end ov04_02255708
@@ -3579,10 +3581,10 @@ ov04_022559C8: ; 0x022559C8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r6, #4]
 	ldr r5, [r0, #0x24]
@@ -3649,9 +3651,9 @@ _02255A16:
 	add r5, r0, r1
 	add r0, r6, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	mov r1, #6
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	ldr r1, [sp, #4]
 	lsl r1, r1, #0x10
 	lsr r2, r1, #0x10
@@ -3678,9 +3680,9 @@ _02255A16:
 	str r0, [r4]
 	b _02255AB6
 _02255AA2:
-	ldr r0, _02255AC0 ; =0x00000902
+	ldr r0, _02255AC0 ; =SEQ_SE_GS_GONDORA_IDOU
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #0x14
@@ -3692,17 +3694,17 @@ _02255AB6:
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02255ABC: .word ov04_02255D88
-_02255AC0: .word 0x00000902
+_02255AC0: .word SEQ_SE_GS_GONDORA_IDOU
 	thumb_func_end ov04_022559C8
 
 	thumb_func_start ov04_02255AC4
 ov04_02255AC4: ; 0x02255AC4
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r5, #4]
 	ldr r6, [r0, #0x24]
@@ -3768,7 +3770,7 @@ _02255B24:
 	str r0, [r4, #0x64]
 	mov r0, #0xa
 	str r0, [r4]
-	ldr r0, _02255CB4 ; =0x00000914
+	ldr r0, _02255CB4 ; =SEQ_SE_GS_GONDORA_KABEHIT
 	bl PlaySE
 	b _02255CB0
 _02255B5E:
@@ -3823,9 +3825,9 @@ _02255BA6:
 	strb r1, [r0]
 	add r0, r5, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	mov r1, #6
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	add r3, r0, #0
 	mov ip, r0
 	add r0, r4, #0
@@ -3849,12 +3851,12 @@ _02255BA6:
 	ldrb r0, [r0, #0xc]
 	strb r0, [r7, #6]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	add r2, r0, #0
 	lsl r1, r5, #0x10
 	lsl r2, r2, #0x10
@@ -3925,9 +3927,9 @@ _02255C64:
 	str r0, [r4]
 	b _02255CB0
 _02255C9E:
-	ldr r0, _02255CB8 ; =0x00000902
+	ldr r0, _02255CB8 ; =SEQ_SE_GS_GONDORA_IDOU
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #1
@@ -3936,8 +3938,8 @@ _02255CB0:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02255CB4: .word 0x00000914
-_02255CB8: .word 0x00000902
+_02255CB4: .word SEQ_SE_GS_GONDORA_KABEHIT
+_02255CB8: .word SEQ_SE_GS_GONDORA_IDOU
 	thumb_func_end ov04_02255AC4
 
 	thumb_func_start ov04_02255CBC
@@ -4126,10 +4128,10 @@ _02255DEA:
 	add r1, sp, #0x34
 	bl ov01_021F3B1C
 	ldr r0, [r6, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r1, sp, #0x28
 	add r6, r0, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, sp, #0x28
 	add r1, r4, #0
 	add r1, #0x58
@@ -4137,7 +4139,7 @@ _02255DEA:
 	bl VEC_Add
 	add r0, r6, #0
 	add r1, sp, #0x28
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	add r0, r4, #0
 	add r0, #0x4f
 	ldrb r0, [r0]
@@ -4184,21 +4186,21 @@ _02255E5E:
 	blo _02255ED6
 	add r0, r6, #0
 	add r1, sp, #0x1c
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r2, [sp, #0x1c]
 	add r0, r6, #0
 	asr r1, r2, #0xf
 	lsr r1, r1, #0x10
 	add r1, r2, r1
 	asr r1, r1, #0x10
-	bl sub_0205F918
+	bl MapObject_SetCurrentX
 	ldr r2, [sp, #0x24]
 	add r0, r6, #0
 	asr r1, r2, #0xf
 	lsr r1, r1, #0x10
 	add r1, r2, r1
 	asr r1, r1, #0x10
-	bl sub_0205F938
+	bl MapObject_SetCurrentY
 	add r0, r6, #0
 	bl sub_02060F78
 	add r0, r7, #0
@@ -4213,7 +4215,7 @@ _02255ED6:
 	str r0, [r4]
 	pop {r3, r4, r5, r6, r7, pc}
 _02255EDE:
-	ldr r0, _02255FBC ; =0x00000914
+	ldr r0, _02255FBC ; =SEQ_SE_GS_GONDORA_KABEHIT
 	bl PlaySE
 	mov r0, #5
 	add sp, #0x40
@@ -4270,10 +4272,10 @@ _02255F1C:
 	add r1, sp, #0x10
 	bl ov01_021F3B1C
 	ldr r0, [r6, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r1, sp, #4
 	add r5, r0, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, sp, #4
 	add r1, r4, #0
 	add r1, #0x58
@@ -4281,7 +4283,7 @@ _02255F1C:
 	bl VEC_Add
 	add r0, r5, #0
 	add r1, sp, #4
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	add r0, r4, #0
 	add r0, #0x4f
 	ldrb r0, [r0]
@@ -4318,7 +4320,7 @@ _02255FB8:
 	add sp, #0x40
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02255FBC: .word 0x00000914
+_02255FBC: .word SEQ_SE_GS_GONDORA_KABEHIT
 	thumb_func_end ov04_02255D88
 
 	thumb_func_start ov04_02255FC0
@@ -4326,9 +4328,9 @@ ov04_02255FC0: ; 0x02255FC0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	mov r1, #2
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	add r4, r0, #0
 	mov r0, #4
 	add r1, r0, #0
@@ -4400,9 +4402,9 @@ ov04_02256058: ; 0x02256058
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	add r4, r0, #0
-	bl sub_0202AEBC
+	bl SavGymmick_GetType
 	cmp r0, #2
 	beq _02256072
 	mov r0, #0
@@ -4410,7 +4412,7 @@ ov04_02256058: ; 0x02256058
 _02256072:
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	ldr r1, [r5, #4]
 	ldr r1, [r1, #0x24]
 	cmp r1, #0
@@ -4437,9 +4439,9 @@ ov04_0225609C: ; 0x0225609C
 	add r5, r0, #0
 	ldr r0, [r5]
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	mov r1, #2
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	add r4, r0, #0
 	mov r0, #0xb
 	mov r1, #0xc
@@ -4452,7 +4454,7 @@ ov04_0225609C: ; 0x0225609C
 	ldr r0, [r5]
 	ldr r1, _022560D0 ; =ov04_022560D4
 	ldr r0, [r0, #0x10]
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _022560D0: .word ov04_022560D4
@@ -4463,13 +4465,13 @@ ov04_022560D4: ; 0x022560D4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x58
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r6, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	ldr r0, [r4]
 	cmp r0, #6
 	bls _022560F6
@@ -4731,9 +4733,9 @@ ov04_02256304: ; 0x02256304
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	mov r1, #3
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	str r0, [sp]
 	mov r0, #4
 	add r1, r0, #0
@@ -4827,9 +4829,9 @@ ov04_022563C4: ; 0x022563C4
 	push {r4, lr}
 	add r4, r1, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	mov r1, #3
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	ldrb r2, [r0, #2]
 	cmp r2, #0
 	beq _022563E6
@@ -4871,9 +4873,9 @@ ov04_0225640C: ; 0x0225640C
 	add r7, r1, #0
 	str r2, [sp]
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	mov r1, #3
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	add r6, r0, #0
 	mov r0, #0xb
 	mov r1, #0x18
@@ -4895,7 +4897,7 @@ _02256438:
 	ldr r0, [r5, #0x10]
 	ldr r1, _0225649C ; =ov04_022564A0
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	mov r0, #0
 	strb r0, [r6, #2]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -4905,7 +4907,7 @@ _02256456:
 	ldr r0, [r5, #0x10]
 	ldr r1, _0225649C ; =ov04_022564A0
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	mov r0, #1
 	strb r0, [r6, #2]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -4925,7 +4927,7 @@ _02256480:
 	ldr r0, [r5, #0x10]
 	ldr r1, _0225649C ; =ov04_022564A0
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	mov r0, #1
 	strb r0, [r6, #3]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -4941,13 +4943,13 @@ ov04_022564A0: ; 0x022564A0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	str r0, [sp, #0xc]
 	ldr r0, [r0]
 	cmp r0, #6
@@ -4974,27 +4976,27 @@ _022564DE:
 	ldr r0, [r6, #0x3c]
 	bne _02256502
 	mov r1, #3
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	str r0, [r4, #4]
 	ldr r0, [r6, #0x3c]
 	mov r1, #4
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	str r0, [r4, #8]
 	ldr r0, [r6, #0x3c]
 	mov r1, #5
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	b _0225651C
 _02256502:
 	mov r1, #0
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	str r0, [r4, #4]
 	ldr r0, [r6, #0x3c]
 	mov r1, #1
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	str r0, [r4, #8]
 	ldr r0, [r6, #0x3c]
 	mov r1, #2
-	bl sub_0205EE60
+	bl GetMapObjectByID
 _0225651C:
 	str r0, [r4, #0xc]
 	mov r0, #0
@@ -5006,13 +5008,13 @@ _0225651C:
 _0225652A:
 	ldr r0, [r4, #4]
 	mov r1, #0x16
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldr r0, [r4, #8]
 	mov r1, #0x16
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldr r0, [r4, #0xc]
 	mov r1, #0x17
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldr r0, [sp, #0xc]
 	mov r1, #3
 	str r1, [r0]
@@ -5020,13 +5022,13 @@ _0225652A:
 _0225654A:
 	ldr r0, [r4, #4]
 	mov r1, #0x17
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldr r0, [r4, #8]
 	mov r1, #0x17
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldr r0, [r4, #0xc]
 	mov r1, #0x16
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldr r0, [sp, #0xc]
 	mov r1, #3
 	str r1, [r0]
@@ -5037,7 +5039,7 @@ _0225656C:
 	lsl r0, r5, #2
 	add r0, r4, r0
 	ldr r0, [r0, #4]
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _02256584
 	add r0, r5, #1
@@ -5096,7 +5098,7 @@ _022565CE:
 	cmp r5, r7
 	blo _022565CE
 _022565E4:
-	ldr r0, _0225664C ; =0x00000623
+	ldr r0, _0225664C ; =SEQ_SE_DP_UG_020
 	bl PlaySE
 	ldr r0, [sp, #0xc]
 	mov r1, #6
@@ -5129,7 +5131,7 @@ _0225660E:
 	cmp r5, r7
 	blo _0225660E
 _02256628:
-	ldr r0, _0225664C ; =0x00000623
+	ldr r0, _0225664C ; =SEQ_SE_DP_UG_020
 	bl PlaySE
 	ldr r0, [sp, #0xc]
 	mov r1, #6
@@ -5147,7 +5149,7 @@ _02256642:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02256648: .word 0x00000000
-_0225664C: .word 0x00000623
+_0225664C: .word SEQ_SE_DP_UG_020
 	thumb_func_end ov04_022564A0
 
 	thumb_func_start ov04_02256650
@@ -5155,9 +5157,9 @@ ov04_02256650: ; 0x02256650
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	mov r1, #7
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	ldr r1, _02256698 ; =0x00001DD8
 	mov r0, #4
 	bl AllocFromHeap
@@ -5238,7 +5240,7 @@ ov04_022566EC: ; 0x022566EC
 	bl ov04_022568F0
 	add r4, r0, #0
 	bpl _0225670A
-	mov r0, #6
+	mov r0, #SEQ_SE_DP_WALL_HIT>>8
 	lsl r0, r0, #8
 	bl PlaySE
 	pop {r4, r5, r6, pc}
@@ -5254,13 +5256,13 @@ _0225670A:
 	add r1, r6, #0
 	lsr r2, r2, #0x18
 	bl ov04_02256950
-	ldr r0, _02256730 ; =0x00000903
+	ldr r0, _02256730 ; =SEQ_SE_GS_TOUMEINAKABEHIT
 	bl PlaySE
 _0225672A:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0225672C: .word 0x00001DB4
-_02256730: .word 0x00000903
+_02256730: .word SEQ_SE_GS_TOUMEINAKABEHIT
 	thumb_func_end ov04_022566EC
 
 	thumb_func_start ov04_02256734
@@ -5610,9 +5612,9 @@ _02256978:
 	str r0, [r1, #8]
 	ldr r0, [sp]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r1, sp, #4
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r0, _02256A44 ; =ov04_0225766C
 	ldr r2, _02256A48 ; =ov04_02257677
 	ldr r0, [r0, r4]
@@ -5831,9 +5833,9 @@ ov04_02256B64: ; 0x02256B64
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	mov r1, #8
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	ldr r1, _02256B9C ; =0x00000708
 	mov r0, #4
 	bl AllocFromHeap
@@ -6148,9 +6150,9 @@ _02256DA2:
 	str r0, [r1, #4]
 	str r0, [r1, #8]
 	ldr r0, [r7, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r1, sp, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r1, [sp]
 	ldr r2, [sp, #4]
 	ldr r3, [sp, #8]
@@ -6226,9 +6228,9 @@ ov04_02256E60: ; 0x02256E60
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	mov r1, #9
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	mov r1, #0x8e
 	mov r0, #4
 	lsl r1, r1, #2
@@ -6324,9 +6326,9 @@ _02256F14:
 _02256F24:
 	add r0, r5, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	mov r1, #9
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	str r6, [r0]
 	mov r0, #0x23
 	mov r1, #1
@@ -6335,7 +6337,7 @@ _02256F24:
 	ldr r0, [r5, #0x10]
 	ldr r1, _02256F4C ; =ov04_02257308
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r4, r5, r6, pc}
 	nop
 _02256F4C: .word ov04_02257308
@@ -6611,9 +6613,9 @@ ov04_02257148: ; 0x02257148
 	strb r0, [r1, #2]
 	ldr r0, [r7]
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	mov r1, #9
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	ldr r0, [r0]
 	cmp r0, #3
 	bhi _0225719A
@@ -6848,9 +6850,9 @@ _02257304:
 ov04_02257308: ; 0x02257308
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	mov r1, #0x23
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
@@ -7051,9 +7053,11 @@ ov04_022575D4: ; 0x022575D4
 	.byte 0x09, 0x00, 0x10, 0x00, 0x0F, 0x00, 0x10, 0x00, 0x03, 0x00, 0x09, 0x00, 0x09, 0x00, 0x09, 0x00
 	.byte 0x0F, 0x00, 0x09, 0x00
 
-ov04_02257604: ; 0x02257604
-	.byte 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
-	.byte 0x05, 0x00, 0x00, 0x00
+sMortyGymTrainerObjectIds: ; 0x02257604
+	.word obj_T27GYM0101_itako
+	.word obj_T27GYM0101_itako_2
+	.word obj_T27GYM0101_itako_3
+	.word obj_T27GYM0101_itako_4
 
 ov04_02257614: ; 0x02257614
 	.byte 0x40, 0x14, 0x1E, 0x2E

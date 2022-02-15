@@ -45,56 +45,6 @@ _020FFE2E:
 
 	.text
 
-	thumb_func_start sub_02074120
-sub_02074120: ; 0x02074120
-	mov r0, #1
-	lsl r0, r0, #0xc
-	bx lr
-	.balign 4, 0
-	thumb_func_end sub_02074120
-
-	thumb_func_start sub_02074128
-sub_02074128: ; 0x02074128
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #8
-	str r0, [sp]
-	mov r0, #0
-	str r0, [sp, #4]
-	add r7, r0, #0
-_02074134:
-	ldr r0, [sp, #4]
-	mov r4, #0
-	lsl r1, r0, #0xc
-	ldr r0, [sp]
-	add r6, r0, r1
-_0207413E:
-	mov r0, #0xff
-	add r5, r6, r4
-	lsl r0, r0, #4
-	ldrb r0, [r5, r0]
-	cmp r0, #0
-	beq _0207414E
-	bl GF_AssertFail
-_0207414E:
-	mov r0, #0xff
-	lsl r0, r0, #4
-	strb r7, [r5, r0]
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, #0x10
-	blo _0207413E
-	ldr r0, [sp, #4]
-	add r0, r0, #1
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	str r0, [sp, #4]
-	cmp r0, #0x12
-	blo _02074134
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_02074128
-
 	thumb_func_start sub_02074170
 sub_02074170: ; 0x02074170
 	push {r3, r4, r5, r6, r7, lr}

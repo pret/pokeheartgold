@@ -1,0 +1,127 @@
+{
+  "header": "fielddata/script/scr_seq/event_R02R0101.h",
+  "bgs": [
+    {
+      "scr": "_EV_scr_seq_R02R0101_000 + 1",
+      "type": 1,
+      "x": 1047,
+      "y": 139,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_R02R0101_gsboy3",
+      "ovid": "SPRITE_GSBOY3",
+      "mvt": 8,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_BUG_CATCHER_ED)",
+      "dirn": 1,
+      "eye": 3,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1029,
+      "y": 131,
+      "z": 0
+    },
+    {
+      "id": "obj_R02R0101_tree",
+      "ovid": "SPRITE_TREE",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_MAPTEMP_010",
+      "scr": "std_field_cut",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1034,
+      "y": 137,
+      "z": 0
+    },
+    {
+      "id": "obj_R02R0101_monstarball",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_R02R0101_CARBOS",
+      "scr": "std_itemball_r02r0101_carbos",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1053,
+      "y": 129,
+      "z": 0
+    },
+    {
+      "id": "obj_R02R0101_bonguri",
+      "ovid": "SPRITE_BONGURI",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_apricorn_tree",
+      "dirn": 0,
+      "eye": 1,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1052,
+      "y": 157,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 1028,
+      "y": 138,
+      "header": "MAP_R02R0501",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 1029,
+      "y": 138,
+      "header": "MAP_R02R0501",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 1050,
+      "y": 183,
+      "header": "MAP_R02R0301",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1051,
+      "y": 183,
+      "header": "MAP_R02R0301",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1048,
+      "y": 137,
+      "header": "MAP_D01R0101",
+      "anchor": 7,
+      "height": 0
+    },
+    {
+      "x": 1047,
+      "y": 155,
+      "header": "MAP_R02R0201",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

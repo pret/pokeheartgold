@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0148_D52R0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GROUDON: Grrgggrrrrah!\r</language>
+	</row>
+	<row id="msg_0148_D52R0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GROUDON disappeared...</language>
+	</row>
+	<row id="msg_0148_D52R0101_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Well, hello!\nThat was something you don’t see\fevery day!\rThat Pokémon is GROUDON,\na legendary Pokémon in the Hoenn myth\fabout the shaping of that region.\rI see...\rThe Embedded Tower was built\nby the people from Hoenn.\r</language>
+	</row>
+	<row id="msg_0148_D52R0101_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Tower that binds together\nthe sea, the land, and the sky...\rGROUDON was not the only Pokémon\ndescribed in the Hoenn myth...\rThis place may still be hiding\nits secrets...\r</language>
+	</row>
+	<row id="msg_0148_D52R0101_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The knowledgeable Pokémon Professor\nmay be able to tell you more when you\fshow him GROUDON.\rPhew!\rThere are so many connections between\nPokémon and myths.\rSee you around.\r</language>
+	</row>
+</body>

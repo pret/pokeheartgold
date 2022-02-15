@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0323_R02R0301_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">So you are {STRVAR_1 3, 0, 0}?\nProfessor Oak is waiting for you in his\flab in Pallet Town.\rAlso, I received this from him.\nHe wants you to have this.\r</language>
+	</row>
+	<row id="msg_0323_R02R0301_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">So you are {STRVAR_1 3, 0, 0}?\nProfessor Oak is waiting for you in his\flab in Pallet Town.\rAlso, I received this from him.\nHe wants you to have this.\r</language>
+	</row>
+	<row id="msg_0323_R02R0301_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sacred Ash is an amazing item that can\nrevive all fainted Pokémon!</language>
+	</row>
+	<row id="msg_0323_R02R0301_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">To the north is Pewter City.\nTo the south is Viridian City.\rI know, I know. I sound like a sign.</language>
+	</row>
+</body>

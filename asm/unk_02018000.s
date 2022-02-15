@@ -12,7 +12,7 @@ sub_02018030: ; 0x02018030
 	add r1, r2, #0
 	str r4, [sp]
 	add r2, r4, #0
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	str r0, [r5]
 	add r0, r5, #0
 	bl sub_02018324
@@ -90,7 +90,7 @@ sub_020180BC: ; 0x020180BC
 	ldr r3, [sp, #0x18]
 	add r2, r6, #0
 	str r6, [sp]
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r2, r0, #0
 	ldr r3, [sp, #0x1c]
 	add r0, r5, #0
@@ -285,7 +285,7 @@ sub_020181EC: ; 0x020181EC
 	add r0, r4, #0
 	add r0, #0x70
 	ldrh r0, [r0]
-	ldr r3, _02018284 ; =_021094DC
+	ldr r3, _02018284 ; =FX_SinCosTable_
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -302,7 +302,7 @@ sub_020181EC: ; 0x020181EC
 	add r0, r4, #0
 	add r0, #0x74
 	ldrh r0, [r0]
-	ldr r3, _02018284 ; =_021094DC
+	ldr r3, _02018284 ; =FX_SinCosTable_
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -319,7 +319,7 @@ sub_020181EC: ; 0x020181EC
 	add r0, r4, #0
 	add r0, #0x72
 	ldrh r0, [r0]
-	ldr r3, _02018284 ; =_021094DC
+	ldr r3, _02018284 ; =FX_SinCosTable_
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -344,7 +344,7 @@ _02018280:
 	add sp, #0x48
 	pop {r4, pc}
 	.balign 4, 0
-_02018284: .word _021094DC
+_02018284: .word FX_SinCosTable_
 	thumb_func_end sub_020181EC
 
 	thumb_func_start sub_02018288

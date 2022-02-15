@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0017_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A Recruitment Message arrived\nfrom a Pokémon Ranger.\n\nYou may receive a {COLOR 1}MANAPHY Egg{COLOR 0}\nfrom the Pokémon Ranger!\n\nOn the next screen, select\n{COLOR 1}CONNECT TO POKéMON RANGER{COLOR 0}.\nTouch the screen to advance.</language>
+	</row>
+	<row id="msg_0017_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A Mystery Gift signal has\nbeen located!\n\nYou may receive a Mystery Gift!\n\nAt the next screen, select\n{COLOR 1}Mystery Gift{COLOR 0}.\nTouch the screen to advance.</language>
+	</row>
+	<row id="msg_0017_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A Recruitment Message arrived\nfrom a Pokémon Ranger.\n\nHowever, to communicate with the\nPokémon Ranger, you must get\nfurther into your adventure and\nobtain a Pokédex first.\nTouch the screen to advance.</language>
+	</row>
+	<row id="msg_0017_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A Mystery Gift signal has\nbeen located.\n\nHowever, to receive a Mystery\nGift, you must get further into\nyour adventure and obtain a\nPokédex first.\nTouch the screen to advance.</language>
+	</row>
+	<row id="msg_0017_00004" index="4">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXX</language>
+	</row>
+	<row id="msg_0017_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English"> {COLOR 1}WARNING!{COLOR 0} There’s already a saved\n game file. If you start an adventure now, \n you won’t be able to save it.</language>
+	</row>
+	<row id="msg_0017_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Begin adventure</language>
+	</row>
+	<row id="msg_0017_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Return to the menu</language>
+	</row>
+</body>

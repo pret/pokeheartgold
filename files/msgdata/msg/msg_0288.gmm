@@ -1,0 +1,419 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0288_idol" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">IDOL</language>
+	</row>
+	<row id="msg_0288_tomorrow" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TOMORROW</language>
+	</row>
+	<row id="msg_0288_playing" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PLAYING</language>
+	</row>
+	<row id="msg_0288_anime" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ANIME</language>
+	</row>
+	<row id="msg_0288_job" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">JOB</language>
+	</row>
+	<row id="msg_0288_song" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SONG</language>
+	</row>
+	<row id="msg_0288_home" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HOME</language>
+	</row>
+	<row id="msg_0288_movie" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MOVIE</language>
+	</row>
+	<row id="msg_0288_sweets" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SWEETS</language>
+	</row>
+	<row id="msg_0288_money" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MONEY</language>
+	</row>
+	<row id="msg_0288_pocket_money" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POCKET MONEY</language>
+	</row>
+	<row id="msg_0288_chit_chat" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHIT-CHAT</language>
+	</row>
+	<row id="msg_0288_talk" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TALK</language>
+	</row>
+	<row id="msg_0288_bath" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BATH</language>
+	</row>
+	<row id="msg_0288_play_house" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PLAY HOUSE</language>
+	</row>
+	<row id="msg_0288_toys" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TOYS</language>
+	</row>
+	<row id="msg_0288_music" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MUSIC</language>
+	</row>
+	<row id="msg_0288_cards" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CARDS</language>
+	</row>
+	<row id="msg_0288_shopping" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SHOPPING</language>
+	</row>
+	<row id="msg_0288_conversation" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CONVERSATION</language>
+	</row>
+	<row id="msg_0288_school" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SCHOOL</language>
+	</row>
+	<row id="msg_0288_camera" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CAMERA</language>
+	</row>
+	<row id="msg_0288_viewing" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">VIEWING</language>
+	</row>
+	<row id="msg_0288_spectate" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SPECTATE</language>
+	</row>
+	<row id="msg_0288_anniversary" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ANNIVERSARY</language>
+	</row>
+	<row id="msg_0288_yesterday" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">YESTERDAY</language>
+	</row>
+	<row id="msg_0288_today" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TODAY</language>
+	</row>
+	<row id="msg_0288_habit" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HABIT</language>
+	</row>
+	<row id="msg_0288_group" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GROUP</language>
+	</row>
+	<row id="msg_0288_gourmet" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GOURMET</language>
+	</row>
+	<row id="msg_0288_game" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GAME</language>
+	</row>
+	<row id="msg_0288_word" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WORD</language>
+	</row>
+	<row id="msg_0288_collection" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COLLECTION</language>
+	</row>
+	<row id="msg_0288_store" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STORE</language>
+	</row>
+	<row id="msg_0288_complete" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COMPLETE</language>
+	</row>
+	<row id="msg_0288_service" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SERVICE</language>
+	</row>
+	<row id="msg_0288_magazine" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MAGAZINE</language>
+	</row>
+	<row id="msg_0288_walk" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WALK</language>
+	</row>
+	<row id="msg_0288_work" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WORK</language>
+	</row>
+	<row id="msg_0288_system" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SYSTEM</language>
+	</row>
+	<row id="msg_0288_bicycle" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BICYCLE</language>
+	</row>
+	<row id="msg_0288_training" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TRAINING</language>
+	</row>
+	<row id="msg_0288_class" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CLASS</language>
+	</row>
+	<row id="msg_0288_lessons" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LESSONS</language>
+	</row>
+	<row id="msg_0288_hobby" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HOBBY</language>
+	</row>
+	<row id="msg_0288_information" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">INFORMATION</language>
+	</row>
+	<row id="msg_0288_sports" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SPORTS</language>
+	</row>
+	<row id="msg_0288_daily_life" index="47">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DAILY LIFE</language>
+	</row>
+	<row id="msg_0288_teacher" index="48">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TEACHER</language>
+	</row>
+	<row id="msg_0288_software" index="49">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SOFTWARE</language>
+	</row>
+	<row id="msg_0288_songs" index="50">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SONGS</language>
+	</row>
+	<row id="msg_0288_diet" index="51">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DIET</language>
+	</row>
+	<row id="msg_0288_tournament" index="52">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TOURNAMENT</language>
+	</row>
+	<row id="msg_0288_treasure" index="53">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TREASURE</language>
+	</row>
+	<row id="msg_0288_travel" index="54">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TRAVEL</language>
+	</row>
+	<row id="msg_0288_birthday" index="55">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BIRTHDAY</language>
+	</row>
+	<row id="msg_0288_dance" index="56">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DANCE</language>
+	</row>
+	<row id="msg_0288_channel" index="57">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHANNEL</language>
+	</row>
+	<row id="msg_0288_fishing" index="58">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FISHING</language>
+	</row>
+	<row id="msg_0288_date" index="59">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DATE</language>
+	</row>
+	<row id="msg_0288_letter" index="60">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LETTER</language>
+	</row>
+	<row id="msg_0288_event" index="61">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">EVENT</language>
+	</row>
+	<row id="msg_0288_design" index="62">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DESIGN</language>
+	</row>
+	<row id="msg_0288_digital" index="63">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DIGITAL</language>
+	</row>
+	<row id="msg_0288_test" index="64">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TEST</language>
+	</row>
+	<row id="msg_0288_dept_store" index="65">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DEPT. STORE</language>
+	</row>
+	<row id="msg_0288_television" index="66">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TELEVISION</language>
+	</row>
+	<row id="msg_0288_train" index="67">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TRAIN</language>
+	</row>
+	<row id="msg_0288_phone" index="68">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PHONE</language>
+	</row>
+	<row id="msg_0288_item" index="69">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ITEM</language>
+	</row>
+	<row id="msg_0288_name" index="70">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NAME</language>
+	</row>
+	<row id="msg_0288_news" index="71">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NEWS</language>
+	</row>
+	<row id="msg_0288_popularity" index="72">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POPULARITY</language>
+	</row>
+	<row id="msg_0288_stuffed_toy" index="73">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STUFFED TOY</language>
+	</row>
+	<row id="msg_0288_party" index="74">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PARTY</language>
+	</row>
+	<row id="msg_0288_computer" index="75">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COMPUTER</language>
+	</row>
+	<row id="msg_0288_flowers" index="76">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FLOWERS</language>
+	</row>
+	<row id="msg_0288_hero" index="77">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HERO</language>
+	</row>
+	<row id="msg_0288_nap" index="78">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NAP</language>
+	</row>
+	<row id="msg_0288_heroine" index="79">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HEROINE</language>
+	</row>
+	<row id="msg_0288_fashion" index="80">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FASHION</language>
+	</row>
+	<row id="msg_0288_study" index="81">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STUDY</language>
+	</row>
+	<row id="msg_0288_adventure" index="82">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ADVENTURE</language>
+	</row>
+	<row id="msg_0288_board" index="83">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BOARD</language>
+	</row>
+	<row id="msg_0288_ball" index="84">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BALL</language>
+	</row>
+	<row id="msg_0288_book" index="85">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BOOK</language>
+	</row>
+	<row id="msg_0288_machine" index="86">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MACHINE</language>
+	</row>
+	<row id="msg_0288_festival" index="87">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FESTIVAL</language>
+	</row>
+	<row id="msg_0288_comics" index="88">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COMICS</language>
+	</row>
+	<row id="msg_0288_mail" index="89">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MAIL</language>
+	</row>
+	<row id="msg_0288_message" index="90">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MESSAGE</language>
+	</row>
+	<row id="msg_0288_story" index="91">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STORY</language>
+	</row>
+	<row id="msg_0288_promise" index="92">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PROMISE</language>
+	</row>
+	<row id="msg_0288_holiday" index="93">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HOLIDAY</language>
+	</row>
+	<row id="msg_0288_dream" index="94">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DREAM</language>
+	</row>
+	<row id="msg_0288_kindergarten" index="95">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KINDERGARTEN</language>
+	</row>
+	<row id="msg_0288_plans" index="96">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PLANS</language>
+	</row>
+	<row id="msg_0288_life" index="97">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LIFE</language>
+	</row>
+	<row id="msg_0288_radio" index="98">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RADIO</language>
+	</row>
+	<row id="msg_0288_craze" index="99">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CRAZE</language>
+	</row>
+	<row id="msg_0288_vacation" index="100">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">VACATION</language>
+	</row>
+	<row id="msg_0288_looks" index="101">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LOOKS</language>
+	</row>
+	<row id="msg_0288_rental" index="102">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RENTAL</language>
+	</row>
+	<row id="msg_0288_world" index="103">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WORLD</language>
+	</row>
+</body>

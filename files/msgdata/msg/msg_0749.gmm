@@ -1,0 +1,1875 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0749_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">\n\n\n\n</language>
+	</row>
+	<row id="msg_0749_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is physically\npounded with a long\ntail or a foreleg,\netc.\n</language>
+	</row>
+	<row id="msg_0749_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is attacked\nwith a sharp chop.\nIt has a high\ncritical-hit ratio.\n</language>
+	</row>
+	<row id="msg_0749_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is slapped\nrepeatedly, back\nand forth, two to\nfive times in a row.\n</language>
+	</row>
+	<row id="msg_0749_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is hit with\na flurry of punches\nthat strike two to\nfive times in a row.\n</language>
+	</row>
+	<row id="msg_0749_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is slugged\nby a punch thrown\nwith muscle-packed\npower.\n</language>
+	</row>
+	<row id="msg_0749_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Numerous coins are\nhurled at the foe to\ninflict damage.\nMoney is earned\nafter battle.</language>
+	</row>
+	<row id="msg_0749_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is punched\nwith a fiery fist.\nIt may leave the\ntarget with a burn.\n</language>
+	</row>
+	<row id="msg_0749_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is punched\nwith an icy fist.\nIt may leave the\ntarget frozen.\n</language>
+	</row>
+	<row id="msg_0749_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is punched\nwith an electrified\nfist. It may leave\nthe target with\nparalysis.</language>
+	</row>
+	<row id="msg_0749_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hard, pointed, and\nsharp claws rake the\nfoe to inflict damage.\n\n</language>
+	</row>
+	<row id="msg_0749_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Huge, impressive\npincers grip and\nsqueeze the foe.\n\n</language>
+	</row>
+	<row id="msg_0749_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A vicious, tearing\nattack with pincers.\nThe foe will faint\ninstantly if this\nattack hits.</language>
+	</row>
+	<row id="msg_0749_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A two-turn attack.\nBlades of wind hit the\nfoe on the second\nturn. It has a high\ncritical-hit ratio.</language>
+	</row>
+	<row id="msg_0749_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A frenetic dance to\nuplift the fighting\nspirit. It sharply\nraises the user’s\nAttack stat.</language>
+	</row>
+	<row id="msg_0749_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is cut with a\nscythe or a claw.\nIt can also be used\nto cut down thin\ntrees.</language>
+	</row>
+	<row id="msg_0749_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A gust of wind is\nwhipped up by wings\nand launched at the\nfoe to inflict damage.\n</language>
+	</row>
+	<row id="msg_0749_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is struck\nwith large, imposing\nwings spread wide\nto inflict damage.\n</language>
+	</row>
+	<row id="msg_0749_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is blown away,\nto be replaced by\nanother Pokémon\nin its party. In the\nwild, the battle ends.</language>
+	</row>
+	<row id="msg_0749_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user soars, then\nstrikes on the second\nturn. It can also be\nused for flying to\nany familiar town.</language>
+	</row>
+	<row id="msg_0749_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A long body or\ntentacles are used\nto bind and squeeze\nthe foe for two to\nfive turns.</language>
+	</row>
+	<row id="msg_0749_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is slammed\nwith a long tail,\nvines, etc., to inflict\ndamage.\n</language>
+	</row>
+	<row id="msg_0749_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is struck\nwith slender, whiplike\nvines to inflict\ndamage.\n</language>
+	</row>
+	<row id="msg_0749_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is stomped\nwith a big foot.\nIt may also make the\ntarget flinch.\n</language>
+	</row>
+	<row id="msg_0749_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is quickly\nkicked twice in\nsuccession using both\nfeet.\n</language>
+	</row>
+	<row id="msg_0749_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is attacked\nby a kick launched\nwith muscle-packed\npower.\n</language>
+	</row>
+	<row id="msg_0749_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user jumps up\nhigh, then strikes\nwith a kick. If the\nkick misses, the\nuser hurts itself.</language>
+	</row>
+	<row id="msg_0749_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user lashes \nout with a quick,\nspinning kick. It\nmay also make the\ntarget flinch.</language>
+	</row>
+	<row id="msg_0749_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sand is hurled in the\nfoe’s face, reducing\nits accuracy.\n\n</language>
+	</row>
+	<row id="msg_0749_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks with\nits head. It may make\nthe foe flinch. To find\nPokémon, hit trees.</language>
+	</row>
+	<row id="msg_0749_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is jabbed\nwith a sharply\npointed horn to\ninflict damage.\n</language>
+	</row>
+	<row id="msg_0749_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is jabbed\nrepeatedly with a\nhorn or beak two to\nfive times in a row.\n</language>
+	</row>
+	<row id="msg_0749_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is stabbed\nwith a horn rotating\nlike a drill.\nThe foe instantly\nfaints if it hits.</language>
+	</row>
+	<row id="msg_0749_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A physical attack\nin which the user\ncharges and slams\ninto the foe with\nits whole body.</language>
+	</row>
+	<row id="msg_0749_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user drops onto\nthe foe with its full\nbody weight.\nIt may leave the foe\nparalyzed.</language>
+	</row>
+	<row id="msg_0749_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A long body or vines\nare used to wrap and\nsqueeze the foe for\ntwo to five turns.\n</language>
+	</row>
+	<row id="msg_0749_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A reckless, full-body\ncharge attack for\nslamming into the foe.\nIt also damages the\nuser a little.</language>
+	</row>
+	<row id="msg_0749_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user rampages\nand attacks for two\nto three turns.\nIt then becomes\nconfused, however.</language>
+	</row>
+	<row id="msg_0749_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A reckless, life-\nrisking tackle.\nIt also damages the\nuser by a fairly large\namount, however.</language>
+	</row>
+	<row id="msg_0749_00039" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user wags its tail\ncutely, making the\nfoe less wary.\nThe target’s Defense\nstat is lowered.</language>
+	</row>
+	<row id="msg_0749_00040" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is stabbed\nwith a poisonous\nbarb of some sort.\nIt may also poison\nthe target.</language>
+	</row>
+	<row id="msg_0749_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is stabbed\ntwice by a pair of\nstingers.\nIt may also poison\nthe target.</language>
+	</row>
+	<row id="msg_0749_00042" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sharp pins are shot\nat the foe in rapid\nsuccession.\nThey hit two to five\ntimes in a row.</language>
+	</row>
+	<row id="msg_0749_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is given an\nintimidating leer with\nsharp eyes.\nThe target’s Defense\nstat is reduced.</language>
+	</row>
+	<row id="msg_0749_00044" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is bitten with\nviciously sharp fangs.\nIt may make the\ntarget flinch.\n</language>
+	</row>
+	<row id="msg_0749_00045" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user growls in an\nendearing way, making\nthe foe less wary.\nThe target’s Attack\nstat is lowered.</language>
+	</row>
+	<row id="msg_0749_00046" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is scared off,\nto be replaced by\nanother Pokémon in\nits party. In the\nwild, the battle ends.</language>
+	</row>
+	<row id="msg_0749_00047" index="47">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A soothing lullaby is\nsung in a calming\nvoice that puts the\nfoe into a deep\nslumber.</language>
+	</row>
+	<row id="msg_0749_00048" index="48">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user generates\nodd sound waves from\nits body.\nIt may confuse the\ntarget.</language>
+	</row>
+	<row id="msg_0749_00049" index="49">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is hit with a\ndestructive shock\nwave that always\ninflicts 20 HP damage.\n</language>
+	</row>
+	<row id="msg_0749_00050" index="50">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">For several turns,\nthis move prevents\nthe foe from using\nthe move it last\nused.</language>
+	</row>
+	<row id="msg_0749_00051" index="51">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is attacked\nwith a spray of harsh\nacid. It may also\nlower the target’s\nSp. Def stat.</language>
+	</row>
+	<row id="msg_0749_00052" index="52">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is attacked\nwith small flames.\nThe target may also\nbe left with a burn.\n</language>
+	</row>
+	<row id="msg_0749_00053" index="53">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is scorched\nwith an intense blast\nof fire. The target\nmay also be left with\na burn.</language>
+	</row>
+	<row id="msg_0749_00054" index="54">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user cloaks its\nbody with a white mist\nthat prevents any of\nits stats from being\ncut for five turns.</language>
+	</row>
+	<row id="msg_0749_00055" index="55">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is blasted\nwith a forceful shot\nof water.\n\n</language>
+	</row>
+	<row id="msg_0749_00056" index="56">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is blasted by\na huge volume of\nwater launched under\ngreat pressure.\n</language>
+	</row>
+	<row id="msg_0749_00057" index="57">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It swamps the entire\nbattlefield with a\ngiant wave.\nIt can also be used\nfor crossing water.</language>
+	</row>
+	<row id="msg_0749_00058" index="58">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is struck\nwith an icy-cold\nbeam of energy.\nIt may also freeze\nthe target solid.</language>
+	</row>
+	<row id="msg_0749_00059" index="59">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A howling blizzard is\nsummoned to strike\nthe foe.\nIt may also freeze\nthe target solid.</language>
+	</row>
+	<row id="msg_0749_00060" index="60">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is attacked\nwith a peculiar ray.\nIt may also leave the\ntarget confused.\n</language>
+	</row>
+	<row id="msg_0749_00061" index="61">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A spray of bubbles is\nforcefully ejected\nat the foe.\nIt may also lower the\ntarget’s Speed stat.</language>
+	</row>
+	<row id="msg_0749_00062" index="62">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is hit with a\nrainbow-colored beam.\nIt may also lower the\ntarget’s Attack\nstat.</language>
+	</row>
+	<row id="msg_0749_00063" index="63">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is attacked\nwith a powerful beam.\nThe user must rest\non the next turn to\nregain its energy.</language>
+	</row>
+	<row id="msg_0749_00064" index="64">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is jabbed\nwith a sharply\npointed beak or\nhorn.\n</language>
+	</row>
+	<row id="msg_0749_00065" index="65">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A corkscrewing\nattack with the\nsharp beak acting\nas a drill.\n</language>
+	</row>
+	<row id="msg_0749_00066" index="66">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user grabs the\nfoe and recklessly\ndives for the ground.\nIt also hurts the\nuser slightly.</language>
+	</row>
+	<row id="msg_0749_00067" index="67">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A powerful low kick\nthat makes the foe\nfall over. It inflicts\ngreater damage on\nheavier foes.</language>
+	</row>
+	<row id="msg_0749_00068" index="68">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A retaliation move\nthat counters any\nphysical attack,\ninflicting double the\ndamage taken.</language>
+	</row>
+	<row id="msg_0749_00069" index="69">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is thrown\nusing the power of\ngravity. It inflicts\ndamage equal to\nthe user’s level.</language>
+	</row>
+	<row id="msg_0749_00070" index="70">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is slugged\nwith a punch thrown\nat maximum power.\nIt can also be used\nto move boulders.</language>
+	</row>
+	<row id="msg_0749_00071" index="71">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A nutrient-draining\nattack. The user’s\nHP is restored by\nhalf the damage taken\nby the target.</language>
+	</row>
+	<row id="msg_0749_00072" index="72">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A nutrient-draining\nattack. The user’s\nHP is restored by\nhalf the damage taken\nby the target.</language>
+	</row>
+	<row id="msg_0749_00073" index="73">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A seed is planted on\nthe foe. It steals\nsome HP from the foe\nto heal the user on\nevery turn.</language>
+	</row>
+	<row id="msg_0749_00074" index="74">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user’s body is\nforced to grow all at\nonce. It raises the\nSp. Atk stat.\n</language>
+	</row>
+	<row id="msg_0749_00075" index="75">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sharp-edged leaves\nare launched to slash\nat the foe. It has a\nhigh critical-hit\nratio.</language>
+	</row>
+	<row id="msg_0749_00076" index="76">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A two-turn attack.\nThe user gathers\nlight, then blasts a\nbundled beam on the\nsecond turn.</language>
+	</row>
+	<row id="msg_0749_00077" index="77">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A cloud of poisonous\ndust is scattered on\nthe foe.\nIt may poison the\ntarget.</language>
+	</row>
+	<row id="msg_0749_00078" index="78">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user scatters a\ncloud of paralyzing\npowder.\nIt may paralyze the\ntarget.</language>
+	</row>
+	<row id="msg_0749_00079" index="79">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user scatters a\nbig cloud of sleep-\ninducing dust around\nthe foe.\n</language>
+	</row>
+	<row id="msg_0749_00080" index="80">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks by\nscattering petals for\ntwo to three turns.\nThe user then\nbecomes confused.</language>
+	</row>
+	<row id="msg_0749_00081" index="81">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is bound with\nsilk blown from the\nuser’s mouth.\nIt reduces the\ntarget’s Speed stat.</language>
+	</row>
+	<row id="msg_0749_00082" index="82">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is stricken\nby a shock wave.\nThis attack always\ninflicts 40 HP\ndamage.</language>
+	</row>
+	<row id="msg_0749_00083" index="83">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe becomes\ntrapped within a\nfierce vortex of fire\nthat rages for two\nto five turns.</language>
+	</row>
+	<row id="msg_0749_00084" index="84">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A jolt of electricity\nis hurled at the foe\nto inflict damage.\nIt may also leave the\nfoe paralyzed.</language>
+	</row>
+	<row id="msg_0749_00085" index="85">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A strong electric\nblast is loosed at\nthe foe.\nIt may also leave the\nfoe paralyzed.</language>
+	</row>
+	<row id="msg_0749_00086" index="86">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A weak electric\ncharge is launched at\nthe foe.\nIt causes paralysis if\nit hits.</language>
+	</row>
+	<row id="msg_0749_00087" index="87">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A wicked thunderbolt\nis dropped on the foe\nto inflict damage.\nIt may also leave the\ntarget paralyzed.</language>
+	</row>
+	<row id="msg_0749_00088" index="88">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user picks up\nand throws a small\nrock at the foe to\nattack.\n</language>
+	</row>
+	<row id="msg_0749_00089" index="89">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user sets off an\nearthquake that hits\nall the Pokémon in\nthe battle.\n</language>
+	</row>
+	<row id="msg_0749_00090" index="90">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user opens up a\nfissure in the ground\nand drops the foe in.\nThe target instantly\nfaints if it hits.</language>
+	</row>
+	<row id="msg_0749_00091" index="91">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user burrows,\nthen attacks on the\nsecond turn.\nIt can also be used\nto exit dungeons.</language>
+	</row>
+	<row id="msg_0749_00092" index="92">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A move that leaves\nthe target badly\npoisoned.\nIts poison damage\nworsens every turn.</language>
+	</row>
+	<row id="msg_0749_00093" index="93">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is hit by a\nweak telekinetic\nforce. It may also\nleave the foe\nconfused.</language>
+	</row>
+	<row id="msg_0749_00094" index="94">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is hit by a\nstrong telekinetic\nforce. It may also\nreduce the foe’s\nSp. Def stat.</language>
+	</row>
+	<row id="msg_0749_00095" index="95">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user employs\nhypnotic suggestion\nto make the target\nfall into a deep\nsleep.</language>
+	</row>
+	<row id="msg_0749_00096" index="96">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user meditates\nto awaken the power\ndeep within its body\nand raise its Attack\nstat.</language>
+	</row>
+	<row id="msg_0749_00097" index="97">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user relaxes and\nlightens its body to\nmove faster.\nIt sharply boosts\nthe Speed stat.</language>
+	</row>
+	<row id="msg_0749_00098" index="98">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user lunges at\nthe foe at a speed\nthat makes it almost\ninvisible. It is sure\nto strike first.</language>
+	</row>
+	<row id="msg_0749_00099" index="99">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">While this move is in\nuse, it gains attack\npower each time the\nuser is hit in battle.\n</language>
+	</row>
+	<row id="msg_0749_00100" index="100">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Use it to flee from\nany wild Pokémon.\nIt can also warp to\nthe last Pokémon\nCenter visited.</language>
+	</row>
+	<row id="msg_0749_00101" index="101">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user makes the\nfoe see a mirage.\nIt inflicts damage\nmatching the user’s\nlevel.</language>
+	</row>
+	<row id="msg_0749_00102" index="102">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user copies the\nmove last used by\nthe foe. The move can\nbe used for the rest\nof the battle.</language>
+	</row>
+	<row id="msg_0749_00103" index="103">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An earsplitting\nscreech is emitted to\nsharply reduce the\nfoe’s Defense stat.\n</language>
+	</row>
+	<row id="msg_0749_00104" index="104">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">By moving rapidly, the\nuser makes illusory\ncopies of itself to\nraise its evasiveness.\n</language>
+	</row>
+	<row id="msg_0749_00105" index="105">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A self-healing move.\nThe user restores its\nown HP by up to half\nof its max HP.\n</language>
+	</row>
+	<row id="msg_0749_00106" index="106">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user stiffens all\nthe muscles in its\nbody to raise its\nDefense stat.\n</language>
+	</row>
+	<row id="msg_0749_00107" index="107">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user compresses\nits body to make\nitself look smaller.\nThe user’s evasion\nstat is boosted.</language>
+	</row>
+	<row id="msg_0749_00108" index="108">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user releases an\nobscuring cloud of\nsmoke or ink.\nIt reduces the foe’s\naccuracy.</language>
+	</row>
+	<row id="msg_0749_00109" index="109">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is exposed\nto a sinister ray\nthat triggers\nconfusion.\n</language>
+	</row>
+	<row id="msg_0749_00110" index="110">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user withdraws\nits body into its hard\nshell, raising its\nDefense stat.\n</language>
+	</row>
+	<row id="msg_0749_00111" index="111">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user curls up to\nconceal weak spots\nand raise its Defense\nstat.\n</language>
+	</row>
+	<row id="msg_0749_00112" index="112">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user throws up a\nsturdy wall that\nsharply raises its\nDefense stat.\n</language>
+	</row>
+	<row id="msg_0749_00113" index="113">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A wondrous wall of\nlight is put up to\nsuppress damage from\nspecial attacks for\nfive turns.</language>
+	</row>
+	<row id="msg_0749_00114" index="114">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user creates a\nhaze that eliminates\nevery stat change\namong all the Pokémon\nengaged in battle.</language>
+	</row>
+	<row id="msg_0749_00115" index="115">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A wondrous wall of\nlight is put up to\nsuppress damage from\nphysical attacks for\nfive turns.</language>
+	</row>
+	<row id="msg_0749_00116" index="116">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user takes a\ndeep breath and\nfocuses to raise the\ncritical-hit ratio of\nits attacks.</language>
+	</row>
+	<row id="msg_0749_00117" index="117">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user endures\nattacks for two\nturns, then strikes\nback to cause double\nthe damage taken.</language>
+	</row>
+	<row id="msg_0749_00118" index="118">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user waggles a\nfinger and stimulates\nthe brain into\nrandomly using nearly\nany move.</language>
+	</row>
+	<row id="msg_0749_00119" index="119">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user counters\nthe foe by mimicking\nthe move last used\nby the foe.</language>
+	</row>
+	<row id="msg_0749_00120" index="120">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user blows up to\ninflict damage on all\nPokémon in battle.\nThe user faints upon\nusing this move.</language>
+	</row>
+	<row id="msg_0749_00121" index="121">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A large egg is hurled\nwith maximum force at\nthe foe to inflict\ndamage.\n</language>
+	</row>
+	<row id="msg_0749_00122" index="122">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is licked with\na long tongue, causing\ndamage.\nIt may also paralyze\nthe target.</language>
+	</row>
+	<row id="msg_0749_00123" index="123">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is attacked\nwith a discharge of\nfilthy gases.\nIt may also poison\nthe target.</language>
+	</row>
+	<row id="msg_0749_00124" index="124">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Unsanitary sludge is\nhurled at the foe.\nIt may also poison\nthe target.\n</language>
+	</row>
+	<row id="msg_0749_00125" index="125">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user clubs the\nfoe with a bone.\nIt may also make the\ntarget flinch.\n</language>
+	</row>
+	<row id="msg_0749_00126" index="126">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is attacked\nwith an intense blast\nof all-consuming fire.\nIt may also leave the\ntarget with a burn.</language>
+	</row>
+	<row id="msg_0749_00127" index="127">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user charges at\nthe foe rapidly, and\nmay make it flinch.\nIt can also be used\nto climb a waterfall.</language>
+	</row>
+	<row id="msg_0749_00128" index="128">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is clamped\nand squeezed by\nthe user’s very thick\nand sturdy shell for\ntwo to five turns.</language>
+	</row>
+	<row id="msg_0749_00129" index="129">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Star-shaped rays are\nshot at the foe.\nThis attack never\nmisses.\n</language>
+	</row>
+	<row id="msg_0749_00130" index="130">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user tucks in its\nhead to raise its\nDefense in the first\nturn, then rams the\nfoe on the next turn.</language>
+	</row>
+	<row id="msg_0749_00131" index="131">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sharp spikes are\nfired at the foe to\nstrike two to five\ntimes in rapid\nsuccession.</language>
+	</row>
+	<row id="msg_0749_00132" index="132">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is attacked\nwith long, creeping\ntentacles or vines.\nIt may also lower the\ntarget’s Speed.</language>
+	</row>
+	<row id="msg_0749_00133" index="133">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user temporarily\nempties its mind to\nforget its concerns.\nIt sharply raises the\nuser’s Sp. Def stat.</language>
+	</row>
+	<row id="msg_0749_00134" index="134">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user distracts\nthe foe by bending a\nspoon.\nIt may lower the\ntarget’s accuracy.</language>
+	</row>
+	<row id="msg_0749_00135" index="135">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user restores its\nown HP by up to half\nof its maximum HP.\nIt may also be used\nto heal an ally’s HP.</language>
+	</row>
+	<row id="msg_0749_00136" index="136">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is attacked\nwith a knee kick from\na jump. If it misses,\nthe user is hurt\ninstead.</language>
+	</row>
+	<row id="msg_0749_00137" index="137">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user intimidates\nthe foe with the\npattern on its belly\nto cause paralysis.\n</language>
+	</row>
+	<row id="msg_0749_00138" index="138">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An attack that works\nonly on a sleeping\nfoe. It absorbs half\nthe damage caused to\nheal the user’s HP.</language>
+	</row>
+	<row id="msg_0749_00139" index="139">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A cloud of poison gas\nis sprayed in the\nfoe’s face.\nIt may poison the\ntarget.</language>
+	</row>
+	<row id="msg_0749_00140" index="140">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Round objects are\nhurled at the foe to\nstrike two to five\ntimes in a row.\n</language>
+	</row>
+	<row id="msg_0749_00141" index="141">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A blood-draining\nattack. The user’s\nHP is restored by\nhalf the damage taken\nby the target.</language>
+	</row>
+	<row id="msg_0749_00142" index="142">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">With a scary face, the\nuser tries to force a\nkiss on the foe. If it\nsucceeds, the target\nfalls asleep.</language>
+	</row>
+	<row id="msg_0749_00143" index="143">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A second-turn attack\nmove with a high\ncritical-hit ratio.\nIt may also make the\ntarget flinch.</language>
+	</row>
+	<row id="msg_0749_00144" index="144">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user transforms\ninto a copy of the\nfoe right down to\nhaving the same move\nset.</language>
+	</row>
+	<row id="msg_0749_00145" index="145">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A spray of countless\nbubbles is jetted at\nthe foe.\nIt may also lower the\ntarget’s Speed stat.</language>
+	</row>
+	<row id="msg_0749_00146" index="146">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is hit with\nrhythmically launched\npunches that may also\nleave it confused.\n</language>
+	</row>
+	<row id="msg_0749_00147" index="147">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user scatters\nbursts of spores\nthat induce sleep.\n\n</language>
+	</row>
+	<row id="msg_0749_00148" index="148">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user flashes a\nlight that cuts the\nfoe’s accuracy.\nIt can also be used\nto illuminate caves.</language>
+	</row>
+	<row id="msg_0749_00149" index="149">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is attacked\nwith an odd, hot\nenergy wave.\nThe attack varies in\nintensity.</language>
+	</row>
+	<row id="msg_0749_00150" index="150">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user just flops\nand splashes around\nto no effect at all...\n\n</language>
+	</row>
+	<row id="msg_0749_00151" index="151">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user alters its\ncellular structure to\nliquefy itself,\nsharply raising its\nDefense stat.</language>
+	</row>
+	<row id="msg_0749_00152" index="152">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is hammered\nwith a large pincer.\nThis move has a high\ncritical-hit ratio.\n</language>
+	</row>
+	<row id="msg_0749_00153" index="153">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user explodes to\ninflict damage on all\nPokémon in battle.\nThe user faints upon\nusing this move.</language>
+	</row>
+	<row id="msg_0749_00154" index="154">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is raked with\nsharp claws or\nscythes for two to\nfive times in quick\nsuccession.</language>
+	</row>
+	<row id="msg_0749_00155" index="155">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user throws the\nbone it holds. The\nbone loops to hit the\nfoe twice, coming and\ngoing.</language>
+	</row>
+	<row id="msg_0749_00156" index="156">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user goes to\nsleep for two turns.\nIt fully restores the\nuser’s HP and heals\nany status problem.</language>
+	</row>
+	<row id="msg_0749_00157" index="157">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Large boulders are\nhurled at the foe to\ninflict damage.\nIt may also make the\ntarget flinch.</language>
+	</row>
+	<row id="msg_0749_00158" index="158">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user bites hard\non the foe with its\nsharp front fangs.\nIt may also make the\ntarget flinch.</language>
+	</row>
+	<row id="msg_0749_00159" index="159">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user reduces its\npolygon count to\nmake itself more\njagged, raising the\nAttack stat.</language>
+	</row>
+	<row id="msg_0749_00160" index="160">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user changes its\ntype to become the\nsame type as one of\nits moves.\n</language>
+	</row>
+	<row id="msg_0749_00161" index="161">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user strikes with\na simultaneous three-\nbeam attack. May also\nparalyze, burn, or\nfreeze the target.</language>
+	</row>
+	<row id="msg_0749_00162" index="162">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user chomps hard\non the foe with its\nsharp front fangs.\nIt cuts the target’s\nHP to half.</language>
+	</row>
+	<row id="msg_0749_00163" index="163">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is attacked\nwith a slash of\nclaws, etc.\nIt has a high\ncritical-hit ratio.</language>
+	</row>
+	<row id="msg_0749_00164" index="164">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user makes a\ncopy of itself using\nsome of its HP.\nThe copy serves as\nthe user’s decoy.</language>
+	</row>
+	<row id="msg_0749_00165" index="165">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An attack that is\nused in desperation\nonly if the user has\nno PP. It also hurts\nthe user slightly.</language>
+	</row>
+	<row id="msg_0749_00166" index="166">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It enables the user\nto permanently learn\nthe move last used by\nthe foe. Once used,\nSketch disappears.</language>
+	</row>
+	<row id="msg_0749_00167" index="167">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A consecutive three-\nkick attack that\nbecomes more\npowerful with each \nsuccessive hit.</language>
+	</row>
+	<row id="msg_0749_00168" index="168">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks and\nsteals the foe’s held\nitem simultaneously.\nIt can’t steal if the\nuser holds an item.</language>
+	</row>
+	<row id="msg_0749_00169" index="169">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user ensnares\nthe foe with a thin,\ngooey silk so it can’t\nflee from battle.\n</language>
+	</row>
+	<row id="msg_0749_00170" index="170">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user senses the\nfoe’s movements\nwith its mind to\nensure its next\nattack does not miss.</language>
+	</row>
+	<row id="msg_0749_00171" index="171">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A sleeping foe is\nshown a nightmare\nthat inflicts some\ndamage every turn.\n</language>
+	</row>
+	<row id="msg_0749_00172" index="172">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user cloaks\nitself in fire and\ncharges at the foe.\nIt may also leave the\ntarget with a burn.</language>
+	</row>
+	<row id="msg_0749_00173" index="173">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An attack that can\nbe used only if the\nuser is asleep. The\nharsh noise may also\nmake the foe flinch.</language>
+	</row>
+	<row id="msg_0749_00174" index="174">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A move that works\ndifferently for the\nGhost type than for\nall the other types.\n</language>
+	</row>
+	<row id="msg_0749_00175" index="175">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user flails about\naimlessly to attack.\nIt becomes more\npowerful the less HP\nthe user has.</language>
+	</row>
+	<row id="msg_0749_00176" index="176">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user changes its\ntype to make itself\nresistant to the type\nof the attack it\nlast took.</language>
+	</row>
+	<row id="msg_0749_00177" index="177">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A vortex of air is\nshot at the foe to\ninflict damage.\nIt has a high\ncritical-hit ratio.</language>
+	</row>
+	<row id="msg_0749_00178" index="178">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user releases\ncottonlike spores\nthat cling to the\nfoe, sharply reducing\nits Speed stat.</language>
+	</row>
+	<row id="msg_0749_00179" index="179">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An all-out attack\nthat becomes more\npowerful the less\nHP the user has.\n</language>
+	</row>
+	<row id="msg_0749_00180" index="180">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user looses its\ngrudge on the move\nlast used by the foe\nby cutting 4 PP from\nit.</language>
+	</row>
+	<row id="msg_0749_00181" index="181">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks with\na chilling gust of\npowdery snow.\nIt may also freeze\nthe target.</language>
+	</row>
+	<row id="msg_0749_00182" index="182">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It enables the user\nto evade all attacks.\nIts chance of failing\nrises if it is used in\nsuccession.</language>
+	</row>
+	<row id="msg_0749_00183" index="183">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user throws a\npunch at blinding\nspeed.\nIt is certain to\nstrike first.</language>
+	</row>
+	<row id="msg_0749_00184" index="184">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user frightens\nthe foe with a scary\nface to sharply\nreduce its Speed\nstat.</language>
+	</row>
+	<row id="msg_0749_00185" index="185">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user draws up to\nthe foe disarmingly,\nthen throws a sucker\npunch.\nIt hits without fail.</language>
+	</row>
+	<row id="msg_0749_00186" index="186">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user kisses the\nfoe with a sweet,\nangelic cuteness that\ncauses confusion.\n</language>
+	</row>
+	<row id="msg_0749_00187" index="187">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user maximizes\nits Attack stat in\nexchange for HP\nequal to half its max\nHP.</language>
+	</row>
+	<row id="msg_0749_00188" index="188">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks by\nhurling filthy sludge\nat the foe.\nIt may also poison\nthe target.</language>
+	</row>
+	<row id="msg_0749_00189" index="189">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user hurls mud in\nthe foe’s face to\ninflict damage and\nlower its accuracy.\n</language>
+	</row>
+	<row id="msg_0749_00190" index="190">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks by\nspraying ink in the\nfoe’s face or eyes.\nIt may also lower the\ntarget’s accuracy.</language>
+	</row>
+	<row id="msg_0749_00191" index="191">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user lays a trap\nof spikes at the\nfoe’s feet. The trap\nhurts foes that\nswitch into battle.</language>
+	</row>
+	<row id="msg_0749_00192" index="192">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user fires an\nelectric blast like a\ncannon to inflict\ndamage and cause\nparalysis.</language>
+	</row>
+	<row id="msg_0749_00193" index="193">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Enables the user to\nhit a Ghost type with\nany type of move. It\nalso enables the user\nto hit an evasive foe.</language>
+	</row>
+	<row id="msg_0749_00194" index="194">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">When this move is\nused, if the user\nfaints, the foe that\nlanded the knockout\nhit also faints.</language>
+	</row>
+	<row id="msg_0749_00195" index="195">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Any Pokémon that\nhears this song\nfaints in three turns,\nunless it switches\nout of battle.</language>
+	</row>
+	<row id="msg_0749_00196" index="196">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks with\na gust of chilled air.\nIt also lowers the\ntarget’s Speed stat.\n</language>
+	</row>
+	<row id="msg_0749_00197" index="197">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It enables the user\nto evade all attacks.\nIts chance of failing\nrises if it is used in\nsuccession.</language>
+	</row>
+	<row id="msg_0749_00198" index="198">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user strikes at\nthe foe with a hard\nbone two to five\ntimes in a row.\n</language>
+	</row>
+	<row id="msg_0749_00199" index="199">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user takes sure\naim at the foe.\nIt ensures the next\nattack does not fail\nto hit the target.</language>
+	</row>
+	<row id="msg_0749_00200" index="200">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user rampages\nand attacks for two\nto three turns.\nHowever, it then\nbecomes confused.</language>
+	</row>
+	<row id="msg_0749_00201" index="201">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A five-turn sand-\nstorm is summoned\nto hurt all combatant\ntypes except Rock, \nGround, and Steel.</language>
+	</row>
+	<row id="msg_0749_00202" index="202">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A nutrient-draining\nattack. The user’s\nHP is restored by\nhalf the damage taken\nby the target.</language>
+	</row>
+	<row id="msg_0749_00203" index="203">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user endures any\nattack with at least\n1 HP. Its chance of\nfailing rises if it is\nused in succession.</language>
+	</row>
+	<row id="msg_0749_00204" index="204">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user charmingly\nstares at the foe,\nmaking it less wary.\nThe target’s Attack\nis sharply lowered.</language>
+	</row>
+	<row id="msg_0749_00205" index="205">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user continually\nrolls into the foe\nover five turns. It\nbecomes stronger\neach time it hits.</language>
+	</row>
+	<row id="msg_0749_00206" index="206">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A restrained attack\nthat prevents the\nfoe from fainting.\nThe target is left\nwith at least 1 HP.</language>
+	</row>
+	<row id="msg_0749_00207" index="207">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user enrages the\nfoe into confusion.\nHowever, it also\nsharply raises the\nfoe’s Attack stat.</language>
+	</row>
+	<row id="msg_0749_00208" index="208">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user restores its\nown HP by up to half\nof its maximum HP.\nIt may also be used\nto heal an ally’s HP.</language>
+	</row>
+	<row id="msg_0749_00209" index="209">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user throws an\nelectrically charged\ntackle at the foe.\nIt may also leave the\ntarget paralyzed.</language>
+	</row>
+	<row id="msg_0749_00210" index="210">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is slashed\nwith scythes or\nclaws. Its power\nincreases if it hits\nin succession.</language>
+	</row>
+	<row id="msg_0749_00211" index="211">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is hit with\nwings of steel.\nIt may also raise the\nuser’s Defense stat.\n</language>
+	</row>
+	<row id="msg_0749_00212" index="212">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user affixes the\nfoe with a dark,\narresting look.\nThe target becomes\nunable to flee.</language>
+	</row>
+	<row id="msg_0749_00213" index="213">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">If it is the opposite\ngender of the user,\nthe foe becomes\ninfatuated and less\nlikely to attack.</language>
+	</row>
+	<row id="msg_0749_00214" index="214">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">While it is asleep, the\nuser randomly uses\none of the moves it\nknows.\n</language>
+	</row>
+	<row id="msg_0749_00215" index="215">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user makes a\nsoothing bell chime\nto heal the status\nproblems of all the\nparty Pokémon.</language>
+	</row>
+	<row id="msg_0749_00216" index="216">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A full-power attack\nthat grows more\npowerful the more\nthe user likes its\nTrainer.</language>
+	</row>
+	<row id="msg_0749_00217" index="217">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks by\ngiving the foe a\nbooby-trapped gift.\nIt restores HP\nsometimes, however.</language>
+	</row>
+	<row id="msg_0749_00218" index="218">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A full-power attack\nthat grows more\npowerful the less\nthe user likes its\nTrainer.</language>
+	</row>
+	<row id="msg_0749_00219" index="219">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user creates a\nprotective field that\nprevents status\nproblems for five\nturns.</language>
+	</row>
+	<row id="msg_0749_00220" index="220">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user adds its HP\nto the foe’s HP, then\nequally shares the\ncombined HP with the\nfoe.</language>
+	</row>
+	<row id="msg_0749_00221" index="221">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is razed with\na mystical fire of\ngreat intensity.\nIt may also leave the\ntarget with a burn.</language>
+	</row>
+	<row id="msg_0749_00222" index="222">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user looses a\nground-shaking quake\naffecting everyone in\nbattle. Its power\nvaries.</language>
+	</row>
+	<row id="msg_0749_00223" index="223">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is punched\nwith the user’s full,\nconcentrated power.\nIt confuses the foe\nif it hits.</language>
+	</row>
+	<row id="msg_0749_00224" index="224">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Using its tough\nand impressive\nhorn, the user\nrams into the foe \nwith no letup.\n</language>
+	</row>
+	<row id="msg_0749_00225" index="225">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user exhales\na mighty gust that\ninflicts damage.\nIt may also paralyze\nthe target.</language>
+	</row>
+	<row id="msg_0749_00226" index="226">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user switches\nplaces with a party\nPokémon in waiting,\npassing along any\nstat changes.</language>
+	</row>
+	<row id="msg_0749_00227" index="227">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user compels the\nfoe to keep using\nonly the move it last\nused for three to\nseven turns.</language>
+	</row>
+	<row id="msg_0749_00228" index="228">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An attack move that\ninflicts double damage\nif used on a foe that\nis switching out of\nbattle.</language>
+	</row>
+	<row id="msg_0749_00229" index="229">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A spin attack that\ncan also eliminate\nsuch moves as Bind,\nWrap, Leech Seed,\nand Spikes.</language>
+	</row>
+	<row id="msg_0749_00230" index="230">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A sweet scent that\nlowers the foe’s\nevasiveness. It also\nlures wild Pokémon\nif used in grass, etc.</language>
+	</row>
+	<row id="msg_0749_00231" index="231">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is slammed\nwith a steel-hard\ntail. It may also\nlower the target’s\nDefense stat.</language>
+	</row>
+	<row id="msg_0749_00232" index="232">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is raked\nwith steel claws.\nIt may also raise the\nuser’s Attack stat.\n</language>
+	</row>
+	<row id="msg_0749_00233" index="233">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user allows the\nfoe to attack first.\nIn return, this throw\nmove is guaranteed\nnot to miss.</language>
+	</row>
+	<row id="msg_0749_00234" index="234">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user restores its\nown HP.\nThe amount of HP\nregained varies with\nthe weather.</language>
+	</row>
+	<row id="msg_0749_00235" index="235">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user restores its\nown HP.\nThe amount of HP\nregained varies with\nthe weather.</language>
+	</row>
+	<row id="msg_0749_00236" index="236">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user restores its\nown HP.\nThe amount of HP\nregained varies with\nthe weather.</language>
+	</row>
+	<row id="msg_0749_00237" index="237">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A unique attack that\nvaries in type and\nintensity depending\non the Pokémon using\nit.</language>
+	</row>
+	<row id="msg_0749_00238" index="238">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user delivers a\ndouble chop with its\nforearms crossed.\nIt has a high\ncritical-hit ratio.</language>
+	</row>
+	<row id="msg_0749_00239" index="239">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user whips up a\nvicious tornado to\ntear at the foe.\nIt may also make the\nfoe flinch.</language>
+	</row>
+	<row id="msg_0749_00240" index="240">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user summons a\nheavy rain that falls\nfor five turns,\npowering up Water-\ntype moves.</language>
+	</row>
+	<row id="msg_0749_00241" index="241">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user intensifies\nthe sun for five\nturns, powering up\nFire-type moves.\n</language>
+	</row>
+	<row id="msg_0749_00242" index="242">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user crunches up\nthe foe with sharp\nfangs. It may also\nlower the target’s\nDefense stat.</language>
+	</row>
+	<row id="msg_0749_00243" index="243">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A retaliation move\nthat counters any\nspecial attack,\ninflicting double the\ndamage taken.</language>
+	</row>
+	<row id="msg_0749_00244" index="244">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user hypnotizes\nitself into copying\nany stat change\nmade by the foe.\n</language>
+	</row>
+	<row id="msg_0749_00245" index="245">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user charges the\nfoe at blinding speed.\nThis attack always\ngoes before any\nother move.</language>
+	</row>
+	<row id="msg_0749_00246" index="246">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks with\na prehistoric power.\nIt may also raise all\nthe user’s stats at\nonce.</language>
+	</row>
+	<row id="msg_0749_00247" index="247">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user hurls a\nshadowy blob at the\nfoe. It may also\nlower the foe’s\nSp. Def stat.</language>
+	</row>
+	<row id="msg_0749_00248" index="248">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Two turns after this\nmove is used, the foe\nis attacked with a\nhunk of psychic\nenergy.</language>
+	</row>
+	<row id="msg_0749_00249" index="249">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user hits with a\npunch that may lower\nthe target’s Defense.\nIt can also smash\ncracked boulders.</language>
+	</row>
+	<row id="msg_0749_00250" index="250">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Traps the foe inside a\nwhirlpool that lasts\nfor two to five turns.\nThe user can pass\nthrough whirlpools.</language>
+	</row>
+	<row id="msg_0749_00251" index="251">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user gets all the\nparty Pokémon to\nattack the foe. The\nmore party Pokémon,\nthe more damage.</language>
+	</row>
+	<row id="msg_0749_00252" index="252">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An attack that hits\nfirst and makes the\ntarget flinch. It only\nworks the first turn\nthe user is in battle.</language>
+	</row>
+	<row id="msg_0749_00253" index="253">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks in\nan uproar for two to\nfive turns. Over that\ntime, no one can fall\nasleep.</language>
+	</row>
+	<row id="msg_0749_00254" index="254">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user charges\nup power, and raises\nboth its Defense and\nSp. Def. The move can\nbe used three times.</language>
+	</row>
+	<row id="msg_0749_00255" index="255">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The power stored\nusing the move\nStockpile is released\nat once in an attack.\n</language>
+	</row>
+	<row id="msg_0749_00256" index="256">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The power stored\nusing the move\nStockpile is absorbed\nby the user to heal\nits HP.</language>
+	</row>
+	<row id="msg_0749_00257" index="257">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user exhales a\nheated breath on the\nfoe to attack. It may\nalso leave the target\nwith a burn.</language>
+	</row>
+	<row id="msg_0749_00258" index="258">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user summons a\nhailstorm lasting five\nturns. It damages all\nPokémon except the\nIce type.</language>
+	</row>
+	<row id="msg_0749_00259" index="259">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user torments\nand enrages the foe,\nmaking it incapable of\nusing the same move\ntwice in a row.</language>
+	</row>
+	<row id="msg_0749_00260" index="260">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Flattery is used to\nconfuse the foe.\nHowever, it also\nraises the target’s\nSp. Atk stat.</language>
+	</row>
+	<row id="msg_0749_00261" index="261">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user shoots a\nsinister, bluish white\nflame at the foe to\ninflict a burn.\n</language>
+	</row>
+	<row id="msg_0749_00262" index="262">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user faints upon\nusing this move.\nIn return, it sharply\nlowers the target’s\nAttack and Sp. Atk.</language>
+	</row>
+	<row id="msg_0749_00263" index="263">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An attack move that\ndoubles its power if\nthe user is poisoned,\nparalyzed, or has a\nburn.</language>
+	</row>
+	<row id="msg_0749_00264" index="264">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user focuses its\nmind before launching\na punch. It will fail\nif the user is hit\nbefore it is used.</language>
+	</row>
+	<row id="msg_0749_00265" index="265">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This attack inflicts\ndouble damage on a\nparalyzed foe. It\nalso cures the foe’s\nparalysis, however.</language>
+	</row>
+	<row id="msg_0749_00266" index="266">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user draws\nattention to itself,\nmaking all foes take\naim only at the user.\n</language>
+	</row>
+	<row id="msg_0749_00267" index="267">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An attack that makes\nuse of nature’s\npower. Its effects\nvary depending on the\nuser’s environment.</language>
+	</row>
+	<row id="msg_0749_00268" index="268">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user boosts the\npower of the Electric\nmove it uses next.\nIt also raises the\nuser’s Sp. Def stat.</language>
+	</row>
+	<row id="msg_0749_00269" index="269">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is taunted\ninto a rage that\nallows it to use only\nattack moves for two\nto four turns.</language>
+	</row>
+	<row id="msg_0749_00270" index="270">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A move that boosts\nthe power of the\nally’s attack in a\nDouble Battle.\n</language>
+	</row>
+	<row id="msg_0749_00271" index="271">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user catches the\nfoe off guard and\nswaps the foe’s held\nitem with its own.\n</language>
+	</row>
+	<row id="msg_0749_00272" index="272">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user mimics the\nfoe completely,\ncopying the foe’s\nnatural ability.\n</language>
+	</row>
+	<row id="msg_0749_00273" index="273">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A self-healing move.\nThe user restores its\nown HP by up to half\nof its maximum HP\nin the next turn.</language>
+	</row>
+	<row id="msg_0749_00274" index="274">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user hurriedly\nand randomly uses a\nmove among those\nknown by other\nPokémon in the party.</language>
+	</row>
+	<row id="msg_0749_00275" index="275">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user lays roots\nthat restore HP on\nevery turn.\nBecause it is rooted,\nit can’t switch out.</language>
+	</row>
+	<row id="msg_0749_00276" index="276">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks the\nfoe with great power.\nHowever, it also\nlowers the user’s\nAttack and Defense.</language>
+	</row>
+	<row id="msg_0749_00277" index="277">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A barrier reflects\nback to the foe\nmoves like Leech\nSeed and moves\nthat damage status.</language>
+	</row>
+	<row id="msg_0749_00278" index="278">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user recycles a\nheld item that\nhas been used in\nbattle so it can be\nused again.</language>
+	</row>
+	<row id="msg_0749_00279" index="279">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An attack move that\ninflicts double the\ndamage if the user\nhas been hurt by the\nfoe in the same turn.</language>
+	</row>
+	<row id="msg_0749_00280" index="280">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks with\ntough fists, etc. It\ncan also break any\nbarrier such as Light\nScreen and Reflect.</language>
+	</row>
+	<row id="msg_0749_00281" index="281">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user lets loose a\nhuge yawn that lulls\nthe foe into falling\nasleep on the next\nturn.</language>
+	</row>
+	<row id="msg_0749_00282" index="282">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user slaps down\nthe foe’s held item,\npreventing the item\nfrom being used\nduring the battle.</language>
+	</row>
+	<row id="msg_0749_00283" index="283">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An attack move that\ncuts down the foe’s\nHP to equal the\nuser’s HP.\n</language>
+	</row>
+	<row id="msg_0749_00284" index="284">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks in\nan explosive fury.\nThe lower the user’s\nHP, the less powerful\nthis attack becomes.</language>
+	</row>
+	<row id="msg_0749_00285" index="285">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user employs its\npsychic power to\nexchange abilities\nwith the foe.\n</language>
+	</row>
+	<row id="msg_0749_00286" index="286">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">If the foe knows any\nmove also known by\nthe user, the foe\nis prevented\nfrom using it.</language>
+	</row>
+	<row id="msg_0749_00287" index="287">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user rests\nto cure itself of a\npoisoning, burn, or\nparalysis.\n</language>
+	</row>
+	<row id="msg_0749_00288" index="288">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">If the user faints,\nthe user’s grudge\nfully depletes the PP\nof the foe’s move\nthat knocked it out.</language>
+	</row>
+	<row id="msg_0749_00289" index="289">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user steals the\neffects of any\nhealing or stat-\nchanging move the foe\nattempts to use.</language>
+	</row>
+	<row id="msg_0749_00290" index="290">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks with\na secret power. Its\nadded effects vary\ndepending on the\nuser’s environment.</language>
+	</row>
+	<row id="msg_0749_00291" index="291">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A two-turn attack.\nThe user dives\nunderwater on the\nfirst turn, then hits\non the next turn.</language>
+	</row>
+	<row id="msg_0749_00292" index="292">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user looses a\nflurry of open-palmed\narm thrusts that hit\ntwo to five times in a\nrow.</language>
+	</row>
+	<row id="msg_0749_00293" index="293">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user’s type is\nchanged depending on\nits environment, such\nas at water’s edge, in\ngrass, or in a cave.</language>
+	</row>
+	<row id="msg_0749_00294" index="294">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user stares at\nflashing lights to\nfocus its mind,\nsharply raising its\nSp. Atk stat.</language>
+	</row>
+	<row id="msg_0749_00295" index="295">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user looses a\ndamaging burst of\nlight. It may also\nreduce the target’s\nSp. Def stat.</language>
+	</row>
+	<row id="msg_0749_00296" index="296">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A mistlike flurry of\ndown envelops and\ndamages the foe. It\nmay also lower the\ntarget’s Sp. Atk.</language>
+	</row>
+	<row id="msg_0749_00297" index="297">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user covers the\nfoe with a mass of\ndown that sharply\nlowers the Attack\nstat.</language>
+	</row>
+	<row id="msg_0749_00298" index="298">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user performs a\nwobbly dance that\nconfuses all the\nPokémon in battle.\n</language>
+	</row>
+	<row id="msg_0749_00299" index="299">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user launches a\nkick with a high\ncritical-hit ratio.\nIt may also leave the\ntarget with a burn.</language>
+	</row>
+	<row id="msg_0749_00300" index="300">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user covers\nitself with mud. It\nweakens Electric-\ntype moves while the\nuser is in the battle.</language>
+	</row>
+	<row id="msg_0749_00301" index="301">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user continually\nrolls into the foe\nover five turns. It\nbecomes stronger\neach time it hits.</language>
+	</row>
+	<row id="msg_0749_00302" index="302">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks by\nwildly swinging its\nthorny arms.\nIt may also make the\ntarget flinch.</language>
+	</row>
+	<row id="msg_0749_00303" index="303">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user slacks off,\nrestoring its own HP\nby up to half of its\nmaximum HP.\n</language>
+	</row>
+	<row id="msg_0749_00304" index="304">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user lets loose\na horribly echoing\nshout with the\npower to inflict\ndamage.</language>
+	</row>
+	<row id="msg_0749_00305" index="305">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user bites the\nfoe with toxic fangs.\nIt may also leave the\nfoe badly poisoned.\n</language>
+	</row>
+	<row id="msg_0749_00306" index="306">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user slashes the\nfoe with hard and\nsharp claws.\nIt may also lower the\ntarget’s Defense.</language>
+	</row>
+	<row id="msg_0749_00307" index="307">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is razed by\na fiery explosion.\nThe user must rest\non the next turn,\nhowever.</language>
+	</row>
+	<row id="msg_0749_00308" index="308">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is hit with\na watery blast.\nThe user must rest\non the next turn,\nhowever.</language>
+	</row>
+	<row id="msg_0749_00309" index="309">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is hit with a\nhard punch fired\nlike a meteor.\nIt may also raise\nthe user’s Attack.</language>
+	</row>
+	<row id="msg_0749_00310" index="310">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks the\nfoe while shouting in\na startling fashion.\nIt may also make the\ntarget flinch.</language>
+	</row>
+	<row id="msg_0749_00311" index="311">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An attack move that\nvaries in power and\ntype depending on\nthe weather.\n</language>
+	</row>
+	<row id="msg_0749_00312" index="312">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user releases a\nsoothing scent that\nheals all status\nproblems affecting\nthe user’s party.</language>
+	</row>
+	<row id="msg_0749_00313" index="313">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user feigns\ncrying to make the\nfoe feel flustered,\nsharply lowering its\nSp. Def stat.</language>
+	</row>
+	<row id="msg_0749_00314" index="314">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user launches\nrazorlike wind to\nslash the foe.\nIt has a high\ncritical-hit ratio.</language>
+	</row>
+	<row id="msg_0749_00315" index="315">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks the\nfoe at full power.\nThe attack’s recoil\nsharply reduces the\nuser’s Sp. Atk stat.</language>
+	</row>
+	<row id="msg_0749_00316" index="316">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Enables the user to\nhit a Ghost type with\nany type of move. It\nalso enables the user\nto hit an evasive foe.</language>
+	</row>
+	<row id="msg_0749_00317" index="317">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Boulders are hurled\nat the foe. It also\nlowers the foe’s\nSpeed by preventing\nits movement.</language>
+	</row>
+	<row id="msg_0749_00318" index="318">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is attacked\nwith powdery scales\nblown by wind.\nIt may also raise all\nthe user’s stats.</language>
+	</row>
+	<row id="msg_0749_00319" index="319">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A horrible sound like\nscraping metal is\nemitted to sharply\nreduce the foe’s\nSp. Def stat.</language>
+	</row>
+	<row id="msg_0749_00320" index="320">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user plays a\npleasant melody that\nlulls the foe into a\ndeep sleep.\n</language>
+	</row>
+	<row id="msg_0749_00321" index="321">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user tickles the\nfoe into laughing,\nreducing its Attack\nand Defense stats.\n</language>
+	</row>
+	<row id="msg_0749_00322" index="322">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user absorbs a\nmystical power from\nspace to raise its\nDefense and Sp. Def\nstats.</language>
+	</row>
+	<row id="msg_0749_00323" index="323">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user spouts\nwater to damage the\nfoe. The lower the\nuser’s HP, the less\npowerful it becomes.</language>
+	</row>
+	<row id="msg_0749_00324" index="324">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks with\na sinister beam of\nlight. It may also\nconfuse the target.\n</language>
+	</row>
+	<row id="msg_0749_00325" index="325">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user throws a\npunch at the foe from\nthe shadows.\nThe punch lands\nwithout fail.</language>
+	</row>
+	<row id="msg_0749_00326" index="326">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks with\nan odd, unseeable\npower.\nIt may also make the\nfoe flinch.</language>
+	</row>
+	<row id="msg_0749_00327" index="327">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks the\nfoe with an uppercut\nthrown skyward\nwith force.\n</language>
+	</row>
+	<row id="msg_0749_00328" index="328">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user traps the\nfoe inside a harshly\nraging sandstorm for\ntwo to five turns.\n</language>
+	</row>
+	<row id="msg_0749_00329" index="329">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is attacked\nwith a blast of\nabsolute-zero cold.\nThe foe instantly\nfaints if it hits.</language>
+	</row>
+	<row id="msg_0749_00330" index="330">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks by\nshooting out muddy\nwater.\nIt may also lower the\nfoe’s accuracy.</language>
+	</row>
+	<row id="msg_0749_00331" index="331">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user forcefully\nshoots seeds at the\nfoe. Two to five\nseeds are shot in\nrapid succession.</language>
+	</row>
+	<row id="msg_0749_00332" index="332">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user confounds\nthe foe with speed,\nthen slashes.\nThe attack lands\nwithout fail.</language>
+	</row>
+	<row id="msg_0749_00333" index="333">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user launches\nsharp icicles at the\nfoe. It strikes two\nto five times in a\nrow.</language>
+	</row>
+	<row id="msg_0749_00334" index="334">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user hardens\nits body’s surface\nlike iron, sharply\nraising its Defense\nstat.</language>
+	</row>
+	<row id="msg_0749_00335" index="335">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user blocks the\nfoe’s way with arms\nspread wide to\nprevent escape.\n</language>
+	</row>
+	<row id="msg_0749_00336" index="336">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user howls loudly\nto raise its spirit,\nboosting its Attack\nstat.\n</language>
+	</row>
+	<row id="msg_0749_00337" index="337">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user slashes the\nfoe with huge, sharp\nclaws.\n\n</language>
+	</row>
+	<row id="msg_0749_00338" index="338">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is slammed\nwith an enormous\ntree.\nThe user can’t move\non the next turn.</language>
+	</row>
+	<row id="msg_0749_00339" index="339">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user tenses its\nmuscles to bulk up\nits body, boosting\nboth its Attack and\nDefense stats.</language>
+	</row>
+	<row id="msg_0749_00340" index="340">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user bounces up\nhigh, then drops on\nthe foe on the second\nturn. It may also\nparalyze the foe.</language>
+	</row>
+	<row id="msg_0749_00341" index="341">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks by\nhurling a blob of mud\nat the foe.\nIt also reduces the\ntarget’s Speed.</language>
+	</row>
+	<row id="msg_0749_00342" index="342">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An attack with a\nhigh critical-hit\nratio. This tail \nattack may also \npoison the foe.</language>
+	</row>
+	<row id="msg_0749_00343" index="343">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user endearingly\napproaches the foe,\nthen steals the item\nthe foe is holding.\n</language>
+	</row>
+	<row id="msg_0749_00344" index="344">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user electrifies\nitself, then charges\nat the foe. It causes\nconsiderable damage\nto the user as well.</language>
+	</row>
+	<row id="msg_0749_00345" index="345">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user scatters\ncurious leaves that\nchase the foe.\nThis attack will not\nmiss.</language>
+	</row>
+	<row id="msg_0749_00346" index="346">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user soaks itself\nwith water. The move\nweakens Fire-type\nmoves while the user\nis in the battle.</language>
+	</row>
+	<row id="msg_0749_00347" index="347">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user quietly\nfocuses its mind and\ncalms its spirit to\nraise its Sp. Atk and\nSp. Def stats.</language>
+	</row>
+	<row id="msg_0749_00348" index="348">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is slashed\nwith a sharp leaf.\nIt has a high\ncritical-hit ratio.\n</language>
+	</row>
+	<row id="msg_0749_00349" index="349">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user vigorously\nperforms a mystic,\npowerful dance that\nboosts its Attack and\nSpeed stats.</language>
+	</row>
+	<row id="msg_0749_00350" index="350">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user hurls hard\nrocks at the foe.\nTwo to five rocks are\nlaunched in quick\nsuccession.</language>
+	</row>
+	<row id="msg_0749_00351" index="351">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user strikes the\nfoe with a quick jolt\nof electricity.\nThis attack cannot be\nevaded.</language>
+	</row>
+	<row id="msg_0749_00352" index="352">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks the\nfoe with a pulsing\nblast of water.\nIt may also confuse\nthe foe.</language>
+	</row>
+	<row id="msg_0749_00353" index="353">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Two turns after this\nmove is used, the\nuser blasts the foe\nwith a concentrated\nbundle of light.</language>
+	</row>
+	<row id="msg_0749_00354" index="354">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks the\nfoe at full power.\nThe attack’s recoil\nsharply reduces the\nuser’s Sp. Atk stat.</language>
+	</row>
+	<row id="msg_0749_00355" index="355">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user lands and\nrests its body.\nIt restores the\nuser’s HP by up to\nhalf of its max HP.</language>
+	</row>
+	<row id="msg_0749_00356" index="356">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Gravity is intensified\nfor five turns, making\nmoves involving flying\nunusable and\nnegating Levitation.</language>
+	</row>
+	<row id="msg_0749_00357" index="357">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Enables the user to\nhit a Dark type with\nany type of move. It\nalso enables the user\nto hit an evasive foe.</language>
+	</row>
+	<row id="msg_0749_00358" index="358">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This attack inflicts\nhigh damage on a\nsleeping foe. It\nalso wakes the foe\nup, however.</language>
+	</row>
+	<row id="msg_0749_00359" index="359">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user swings and\nhits with its strong\nand heavy fist.\nIt lowers the user’s\nSpeed, however.</language>
+	</row>
+	<row id="msg_0749_00360" index="360">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user tackles the\nfoe with a high-speed\nspin. The slower the\nuser, the greater\nthe damage.</language>
+	</row>
+	<row id="msg_0749_00361" index="361">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user faints. In\nreturn, the Pokémon\ntaking its place will\nhave its HP restored\nand status cured.</language>
+	</row>
+	<row id="msg_0749_00362" index="362">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">If the foe’s HP is\ndown to about half,\nthis attack will hit\nwith double the\npower.</language>
+	</row>
+	<row id="msg_0749_00363" index="363">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user draws power\nto attack by using\nits held Berry.\nThe Berry determines\nits type and power.</language>
+	</row>
+	<row id="msg_0749_00364" index="364">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An attack that hits a\nfoe using Protect or\nDetect. It also lifts\nthe effects of those\nmoves.</language>
+	</row>
+	<row id="msg_0749_00365" index="365">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user pecks the\nfoe. If the foe is\nholding a Berry, the\nuser plucks it and\ngains its effect.</language>
+	</row>
+	<row id="msg_0749_00366" index="366">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user whips up a\nturbulent whirlwind\nthat ups the Speed\nof all party Pokémon\nfor three turns.</language>
+	</row>
+	<row id="msg_0749_00367" index="367">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user applies\npressure to stress\npoints, sharply\nboosting one of its\nstats.</language>
+	</row>
+	<row id="msg_0749_00368" index="368">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user retaliates\nagainst the foe that\nlast inflicted damage\non it with much\ngreater power.</language>
+	</row>
+	<row id="msg_0749_00369" index="369">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">After making its\nattack, the user\nrushes back to switch\nplaces with a party\nPokémon in waiting.</language>
+	</row>
+	<row id="msg_0749_00370" index="370">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user fights the\nfoe up close without\nguarding itself. It\nalso cuts the user’s\nDefense and Sp. Def.</language>
+	</row>
+	<row id="msg_0749_00371" index="371">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">If the user can use\nthis attack after the\nfoe attacks, its\npower is doubled.\n</language>
+	</row>
+	<row id="msg_0749_00372" index="372">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">If the foe has\nalready taken some\ndamage in the same\nturn, this attack’s\npower is doubled.</language>
+	</row>
+	<row id="msg_0749_00373" index="373">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It prevents the foe\nfrom using its held\nitem. Its Trainer is\nalso prevented from\nusing items on it.</language>
+	</row>
+	<row id="msg_0749_00374" index="374">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user flings its\nheld item at the foe\nto attack. Its power\nand effects depend\non the item.</language>
+	</row>
+	<row id="msg_0749_00375" index="375">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Using its psychic\npower of suggestion,\nthe user transfers\nits status problems\nto the target.</language>
+	</row>
+	<row id="msg_0749_00376" index="376">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The fewer PP this\nmove has, the more\npower it has for\nattack.\n</language>
+	</row>
+	<row id="msg_0749_00377" index="377">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user prevents\nthe foe from using\nany HP-recovery\nmoves for five turns.\n</language>
+	</row>
+	<row id="msg_0749_00378" index="378">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user powerfully\nwrings the foe.\nThe more HP the foe\nhas, the greater this\nattack’s power.</language>
+	</row>
+	<row id="msg_0749_00379" index="379">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user employs its\npsychic power to\nswitch its Attack\nwith its Defense\nstat.</language>
+	</row>
+	<row id="msg_0749_00380" index="380">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user hurls up its\nstomach acids on\nthe foe. The fluid\neliminates the effect\nof the foe’s ability.</language>
+	</row>
+	<row id="msg_0749_00381" index="381">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user chants an\nincantation toward\nthe sky, preventing\nthe foe from landing\ncritical hits.</language>
+	</row>
+	<row id="msg_0749_00382" index="382">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user tries to cut\nahead of the foe to\nsteal and use the\nfoe’s intended move\nwith greater power.</language>
+	</row>
+	<row id="msg_0749_00383" index="383">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user mimics the\nmove used immediately\nbefore it. The move\nfails if no other move\nhas been used yet.</language>
+	</row>
+	<row id="msg_0749_00384" index="384">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user employs its\npsychic power to\nswitch changes to\nits Attack and\nSp. Atk with the foe.</language>
+	</row>
+	<row id="msg_0749_00385" index="385">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user employs its\npsychic power to\nswitch changes to\nits Defense and\nSp. Def with the foe.</language>
+	</row>
+	<row id="msg_0749_00386" index="386">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This attack’s power\nincreases the more\nthe foe has powered\nup with stat changes.\n</language>
+	</row>
+	<row id="msg_0749_00387" index="387">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This move can be used\nonly after the user\nhas used all the\nother moves it knows\nin the battle.</language>
+	</row>
+	<row id="msg_0749_00388" index="388">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A seed that causes\nworry is planted on\nthe foe. It prevents\nsleep by making its\nability Insomnia.</language>
+	</row>
+	<row id="msg_0749_00389" index="389">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This move enables the\nuser to attack first.\nIt fails if the foe is\nnot readying an\nattack, however.</language>
+	</row>
+	<row id="msg_0749_00390" index="390">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user lays a trap\nof poison spikes at\nthe foe’s feet. They\npoison foes that\nswitch into battle.</language>
+	</row>
+	<row id="msg_0749_00391" index="391">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user employs its\npsychic power to\nswitch stat changes\nwith the foe.\n</language>
+	</row>
+	<row id="msg_0749_00392" index="392">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user envelops\nitself in a veil made\nof water. It regains\nsome HP on every\nturn.</language>
+	</row>
+	<row id="msg_0749_00393" index="393">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user levitates\nusing electrically\ngenerated magnetism\nfor five turns.\n</language>
+	</row>
+	<row id="msg_0749_00394" index="394">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user cloaks\nitself in fire and\ncharges at the foe.\nThe user sustains\nserious damage, too.</language>
+	</row>
+	<row id="msg_0749_00395" index="395">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is attacked\nwith a shock wave.\nIt may also leave the\ntarget paralyzed.\n</language>
+	</row>
+	<row id="msg_0749_00396" index="396">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user looses a\nblast of aura power\nfrom deep within its\nbody. This move is\ncertain to hit.</language>
+	</row>
+	<row id="msg_0749_00397" index="397">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user polishes its\nbody to reduce drag.\nIt can sharply raise\nthe Speed stat.\n</language>
+	</row>
+	<row id="msg_0749_00398" index="398">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is stabbed\nwith a tentacle or\narm steeped in\npoison. It may also\npoison the foe.</language>
+	</row>
+	<row id="msg_0749_00399" index="399">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user releases a\nhorrible aura imbued\nwith dark thoughts.\nIt may also make the\ntarget flinch.</language>
+	</row>
+	<row id="msg_0749_00400" index="400">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user slashes the\nfoe the instant an\nopportunity arises.\nIt has a high\ncritical-hit ratio.</language>
+	</row>
+	<row id="msg_0749_00401" index="401">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks by\nswinging its tail as if\nit were a vicious wave\nin a raging storm.\n</language>
+	</row>
+	<row id="msg_0749_00402" index="402">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user slams a\nbarrage of hard-\nshelled seeds\ndown on the foe\nfrom above.</language>
+	</row>
+	<row id="msg_0749_00403" index="403">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks with\na blade of air that\nslices even the sky.\nIt may also make the\ntarget flinch.</language>
+	</row>
+	<row id="msg_0749_00404" index="404">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user slashes at\nthe foe by crossing\nits scythes or claws\nas if they were a pair\nof scissors.</language>
+	</row>
+	<row id="msg_0749_00405" index="405">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user vibrates its\nwings to generate a\ndamaging sound wave.\nIt may also lower the\nfoe’s Sp. Def stat.</language>
+	</row>
+	<row id="msg_0749_00406" index="406">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is attacked\nwith a shock wave\ngenerated by the\nuser’s gaping mouth.\n</language>
+	</row>
+	<row id="msg_0749_00407" index="407">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user tackles the\nfoe while exhibiting\noverwhelming menace.\nIt may also make the\ntarget flinch.</language>
+	</row>
+	<row id="msg_0749_00408" index="408">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks with\na ray of light that\nsparkles as if it were\nmade of gemstones.\n</language>
+	</row>
+	<row id="msg_0749_00409" index="409">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An energy-draining\npunch. The user’s\nHP is restored by\nhalf the damage taken\nby the target.</language>
+	</row>
+	<row id="msg_0749_00410" index="410">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user whirls its\nfists to send a wave\nof pure vacuum at\nthe foe. This move\nalways goes first.</language>
+	</row>
+	<row id="msg_0749_00411" index="411">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user heightens\nits mental focus and\nunleashes its power.\nIt may also lower the\ntarget’s Sp. Def.</language>
+	</row>
+	<row id="msg_0749_00412" index="412">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user draws power\nfrom nature and\nfires it at the foe.\nIt may also lower the\ntarget’s Sp. Def.</language>
+	</row>
+	<row id="msg_0749_00413" index="413">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user tucks in\nits wings and charges\nfrom a low altitude.\nThe user also takes\nserious damage.</language>
+	</row>
+	<row id="msg_0749_00414" index="414">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user makes the\nground under the foe\nerupt with power.\nIt may also lower the\ntarget’s Sp. Def.</language>
+	</row>
+	<row id="msg_0749_00415" index="415">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user trades held\nitems with the foe\nfaster than the eye\ncan follow.\n</language>
+	</row>
+	<row id="msg_0749_00416" index="416">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user charges at\nthe foe using every\nbit of its power.\nThe user must rest\non the next turn.</language>
+	</row>
+	<row id="msg_0749_00417" index="417">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user stimulates\nits brain by thinking\nbad thoughts.\nIt sharply raises the\nuser’s Sp. Atk.</language>
+	</row>
+	<row id="msg_0749_00418" index="418">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user strikes\nwith a tough punch as\nfast as a bullet.\nThis move always goes\nfirst.</language>
+	</row>
+	<row id="msg_0749_00419" index="419">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An attack move that\ninflicts double the\ndamage if the user\nhas been hurt by the\nfoe in the same turn.</language>
+	</row>
+	<row id="msg_0749_00420" index="420">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user flash\nfreezes chunks of\nice and hurls them.\nThis move always goes\nfirst.</language>
+	</row>
+	<row id="msg_0749_00421" index="421">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user slashes with\na sharp claw made\nfrom shadows.\nIt has a high\ncritical-hit ratio.</language>
+	</row>
+	<row id="msg_0749_00422" index="422">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user bites with\nelectrified fangs.\nIt may also make the\nfoe flinch or become\nparalyzed.</language>
+	</row>
+	<row id="msg_0749_00423" index="423">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user bites with\ncold-infused fangs.\nIt may also make the\nfoe flinch or freeze.\n</language>
+	</row>
+	<row id="msg_0749_00424" index="424">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user bites with\nflame-cloaked fangs.\nIt may also make the\nfoe flinch or sustain\na burn.</language>
+	</row>
+	<row id="msg_0749_00425" index="425">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user extends its\nshadow and attacks\nthe foe from behind.\nThis move always goes\nfirst.</language>
+	</row>
+	<row id="msg_0749_00426" index="426">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user launches a\nhard-packed mud ball\nto attack.\nIt may also lower the\ntarget’s accuracy.</language>
+	</row>
+	<row id="msg_0749_00427" index="427">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user tears at\nthe foe with blades\nformed by psychic\npower. It has a high\ncritical-hit ratio.</language>
+	</row>
+	<row id="msg_0749_00428" index="428">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user focuses its\nwillpower to its head\nand rams the foe.\nIt may also make the\ntarget flinch.</language>
+	</row>
+	<row id="msg_0749_00429" index="429">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user looses a\nflash of energy from\nits polished body.\nIt may also lower the\ntarget’s accuracy.</language>
+	</row>
+	<row id="msg_0749_00430" index="430">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user gathers all\nits light energy and\nreleases it at once.\nIt may also lower the\nfoe’s Sp. Def stat.</language>
+	</row>
+	<row id="msg_0749_00431" index="431">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A charging attack\nthat may also leave\nthe foe confused.\nIt can also be used\nto scale rocky walls.</language>
+	</row>
+	<row id="msg_0749_00432" index="432">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It reduces the foe’s\nevasion stat. It also\nremoves spikes,\nlight screens, etc.</language>
+	</row>
+	<row id="msg_0749_00433" index="433">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user creates a\nbizarre area in which\nslower Pokémon get\nto move first for five\nturns.</language>
+	</row>
+	<row id="msg_0749_00434" index="434">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Comets are summoned\ndown from the sky.\nThe attack’s recoil\nsharply reduces the\nuser’s Sp. Atk stat.</language>
+	</row>
+	<row id="msg_0749_00435" index="435">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A flare of electricity\nis loosed to strike\nall Pokémon in battle.\nIt may also cause\nparalysis.</language>
+	</row>
+	<row id="msg_0749_00436" index="436">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An inferno of scarlet\nflames washes over\nall Pokémon in battle.\nIt may also inflict\nburns.</language>
+	</row>
+	<row id="msg_0749_00437" index="437">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A storm of sharp\nleaves is whipped up.\nThe attack’s recoil\nsharply reduces the\nuser’s Sp. Atk stat.</language>
+	</row>
+	<row id="msg_0749_00438" index="438">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user violently\nwhirls its vines or\ntentacles to harshly\nlash the foe.\n</language>
+	</row>
+	<row id="msg_0749_00439" index="439">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user launches a\nhuge boulder at the\nfoe to attack.\nIt must rest on the\nnext turn, however.</language>
+	</row>
+	<row id="msg_0749_00440" index="440">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A slashing attack\nthat may also leave\nthe target poisoned.\nIt has a high\ncritical-hit ratio.</language>
+	</row>
+	<row id="msg_0749_00441" index="441">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user shoots\nfilthy garbage at the\nfoe to attack.\nIt may also poison\nthe target.</language>
+	</row>
+	<row id="msg_0749_00442" index="442">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe slams the\ntarget with its\nsteel-hard head.\nIt may also make the\ntarget flinch.</language>
+	</row>
+	<row id="msg_0749_00443" index="443">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user launches a\nsteel bomb that\nsticks to the target.\nThis attack will not\nmiss.</language>
+	</row>
+	<row id="msg_0749_00444" index="444">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user stabs the\nfoe with a sharpened\nstone. It has a high\ncritical-hit ratio.\n</language>
+	</row>
+	<row id="msg_0749_00445" index="445">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">If it is the opposite\ngender of the user,\nthe foe is charmed\ninto sharply lowering\nits Sp. Atk stat.</language>
+	</row>
+	<row id="msg_0749_00446" index="446">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user lays a trap\nof levitating stones\naround the foe. The\ntrap hurts foes that\nswitch into battle.</language>
+	</row>
+	<row id="msg_0749_00447" index="447">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user snares the\nfoe with grass and\ntrips it. The heavier\nthe foe, the greater\nthe damage.</language>
+	</row>
+	<row id="msg_0749_00448" index="448">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user attacks\nusing a sound wave\nbased on words it has\nlearned. It may also\nconfuse the foe.</language>
+	</row>
+	<row id="msg_0749_00449" index="449">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user releases\ncountless shots of\nlight. Its type varies\nwith the kind of Plate\nthe user is holding.</language>
+	</row>
+	<row id="msg_0749_00450" index="450">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user bites the\nfoe. If the foe is\nholding a Berry, the\nuser eats it and\ngains its effect.</language>
+	</row>
+	<row id="msg_0749_00451" index="451">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user fires a\nconcentrated bundle\nof electricity. It may\nalso raise the user’s\nSp. Atk stat.</language>
+	</row>
+	<row id="msg_0749_00452" index="452">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user slams its\nrugged body into the\nfoe to attack. The\nuser also sustains\nserious damage.</language>
+	</row>
+	<row id="msg_0749_00453" index="453">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user lunges at\nthe foe at a speed\nthat makes it almost\ninvisible. It is sure\nto strike first.</language>
+	</row>
+	<row id="msg_0749_00454" index="454">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user calls out\nits underlings to\npummel the foe.\nIt has a high\ncritical-hit ratio.</language>
+	</row>
+	<row id="msg_0749_00455" index="455">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user calls out\nits underlings to\nshield its body,\nraising its Defense\nand Sp. Def stats.</language>
+	</row>
+	<row id="msg_0749_00456" index="456">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user calls out\nits underlings to heal\nit. The user regains\nup to half of its\nmax HP.</language>
+	</row>
+	<row id="msg_0749_00457" index="457">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user delivers a\nlife-endangering\nattack at full power.\nThe user also takes\nterrible damage.</language>
+	</row>
+	<row id="msg_0749_00458" index="458">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user slams the\nfoe with a long tail,\nvines, etc. The\ntarget is hit\ntwice in a row.</language>
+	</row>
+	<row id="msg_0749_00459" index="459">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user blasts the\nfoe with power that\ndistorts even time.\nThe user must rest\non the next turn.</language>
+	</row>
+	<row id="msg_0749_00460" index="460">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user tears the\nfoe along with the\nspace around it.\nThis move has a high\ncritical-hit ratio.</language>
+	</row>
+	<row id="msg_0749_00461" index="461">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user faints. In\nreturn, the Pokémon\ntaking its place will\nhave its status and\nHP fully restored.</language>
+	</row>
+	<row id="msg_0749_00462" index="462">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is crushed\nwith great force.\nThe attack is more\npowerful the more HP\nthe foe has left.</language>
+	</row>
+	<row id="msg_0749_00463" index="463">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe becomes\ntrapped within a\nmaelstrom of fire\nthat rages for two\nto five turns.</language>
+	</row>
+	<row id="msg_0749_00464" index="464">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is dragged\ninto a world of total\ndarkness that puts it\nto sleep.\n</language>
+	</row>
+	<row id="msg_0749_00465" index="465">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user generates\na shock wave from\nwithin its body.\nIt may also lower the\ntarget’s Sp. Def.</language>
+	</row>
+	<row id="msg_0749_00466" index="466">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user creates a\ngust of repulsive\nwind. It may also\nraise all the user’s\nstats at once.</language>
+	</row>
+	<row id="msg_0749_00467" index="467">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user disappears,\nthen strikes the foe\non the second turn.\nIt hits even if the\nfoe protects itself.</language>
+	</row>
+</body>

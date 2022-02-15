@@ -1,0 +1,346 @@
+{
+  "header": "fielddata/script/scr_seq/event_T11.h",
+  "bgs": [
+    {
+      "scr": "_EV_scr_seq_T11_013 + 1",
+      "type": 1,
+      "x": 1321,
+      "y": 242,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T11_012 + 1",
+      "type": 1,
+      "x": 1306,
+      "y": 234,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T11_008 + 1",
+      "type": 1,
+      "x": 1292,
+      "y": 210,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T11_009 + 1",
+      "type": 1,
+      "x": 1303,
+      "y": 210,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T11_010 + 1",
+      "type": 1,
+      "x": 1323,
+      "y": 208,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T11_011 + 1",
+      "type": 1,
+      "x": 1330,
+      "y": 208,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_T11_gsboy1",
+      "ovid": "SPRITE_GSBOY1",
+      "mvt": 3,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T11_001 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 2,
+      "yrange": 0,
+      "x": 1325,
+      "y": 211,
+      "z": 0
+    },
+    {
+      "id": "obj_T11_gsgirl2",
+      "ovid": "SPRITE_GSGIRL2",
+      "mvt": 3,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T11_000 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 1,
+      "yrange": 1,
+      "x": 1299,
+      "y": 212,
+      "z": 0
+    },
+    {
+      "id": "obj_T11_gswoman2",
+      "ovid": "SPRITE_GSWOMAN2",
+      "mvt": 3,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T11_002 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 1,
+      "yrange": 0,
+      "x": 1293,
+      "y": 220,
+      "z": 0
+    },
+    {
+      "id": "obj_T11_gsbigman",
+      "ovid": "SPRITE_GSBIGMAN",
+      "mvt": 2,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T11_004 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1324,
+      "y": 220,
+      "z": 0
+    },
+    {
+      "id": "obj_T11_gsman1",
+      "ovid": "SPRITE_GSMAN1",
+      "mvt": 3,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T11_006 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 1,
+      "yrange": 1,
+      "x": 1332,
+      "y": 236,
+      "z": 0
+    },
+    {
+      "id": "obj_T11_gsboy2",
+      "ovid": "SPRITE_GSBOY2",
+      "mvt": 2,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T11_003 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1301,
+      "y": 224,
+      "z": 0
+    },
+    {
+      "id": "obj_T11_gswoman1",
+      "ovid": "SPRITE_GSWOMAN1",
+      "mvt": 2,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T11_005 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1311,
+      "y": 234,
+      "z": 0
+    },
+    {
+      "id": "obj_T11_gsmiddleman1",
+      "ovid": "SPRITE_GSMIDDLEMAN1",
+      "mvt": 3,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T11_007 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 2,
+      "yrange": 0,
+      "x": 1313,
+      "y": 243,
+      "z": 0
+    },
+    {
+      "id": "obj_T11_gsmiddleman1_2",
+      "ovid": "SPRITE_GSMIDDLEMAN1",
+      "mvt": 14,
+      "type": 0,
+      "flag": "FLAG_HIDE_CAMERON",
+      "scr": "_EV_scr_seq_T11_014 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1287,
+      "y": 215,
+      "z": 0
+    },
+    {
+      "id": "obj_T11_gsmiddleman1_3",
+      "ovid": "SPRITE_GSMIDDLEMAN1",
+      "mvt": 14,
+      "type": 0,
+      "flag": "FLAG_UNK_27F",
+      "scr": "_EV_scr_seq_T11_015 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1307,
+      "y": 236,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 1300,
+      "y": 253,
+      "header": "MAP_R06R0201",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 1301,
+      "y": 253,
+      "header": "MAP_R06R0201",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 1337,
+      "y": 240,
+      "header": "MAP_R08R0201",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1337,
+      "y": 241,
+      "header": "MAP_R08R0201",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1300,
+      "y": 197,
+      "header": "MAP_R05R0301",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1301,
+      "y": 197,
+      "header": "MAP_R05R0301",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1290,
+      "y": 208,
+      "header": "MAP_T11R0601",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1297,
+      "y": 218,
+      "header": "MAP_T11R0801",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1308,
+      "y": 229,
+      "header": "MAP_T11R0701",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1309,
+      "y": 229,
+      "header": "MAP_T11R0701",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1321,
+      "y": 204,
+      "header": "MAP_T11R0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1328,
+      "y": 204,
+      "header": "MAP_T11GYM0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1318,
+      "y": 218,
+      "header": "MAP_T11FS0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1294,
+      "y": 242,
+      "header": "MAP_T11PC0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1323,
+      "y": 242,
+      "header": "MAP_T11R0501",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1280,
+      "y": 240,
+      "header": "MAP_R07R0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1280,
+      "y": 241,
+      "header": "MAP_R07R0101",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

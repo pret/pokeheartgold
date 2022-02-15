@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0349_R12R0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’m the Fishing Guru’s younger brother.\rYou seem to like fishing.\nAm I right, or am I right?\fPeople say I have keen eyes! {YESNO 0}</language>
+	</row>
+	<row id="msg_0349_R12R0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Yes, yes. Just as I thought!\rHere, fishing fan!\nTake this--it’s a Super Rod.\r</language>
+	</row>
+	<row id="msg_0349_R12R0101_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Try your hand at fishing wherever there\nis water.\rRemember--you can catch different\nPokémon depending on which Rod you use.</language>
+	</row>
+	<row id="msg_0349_R12R0101_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Huh?\nMy own eyes deceived me?</language>
+	</row>
+</body>

@@ -1,6 +1,0 @@
-Kurt: Way to go, {STRVAR_1 3, 0, 0}!\rTeam Rocket has taken off.\rMy back’s better, too.\nLet’s get out of here.\r
-Proton: What do we have here?\rI am often labeled as the scariest and\ncruelest guy in Team Rocket...\rI strongly urge you not to interfere\nwith our business!\r
-Proton: Humph...\nTeam Rocket was indeed broken up\fthree years ago. But we continued\four activities underground.\rA small obstacle like you won’t\nbe much of a problem for our mission.\rI advise you to be very afraid of what\nis to come!\r
-A SLOWPOKE with its tail cut off...\rHuh? It has Mail. Read it? {YESNO 0}
-{STRVAR_1 3, 0, 0} read the Mail.\rBe good and look after the house\nwith Grandpa and SLOWPOKE.\f           Love, Dad
-A SLOWPOKE with its tail cut off...

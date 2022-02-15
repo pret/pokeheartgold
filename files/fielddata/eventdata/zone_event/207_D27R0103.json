@@ -1,0 +1,31 @@
+{
+  "header": "fielddata/script/scr_seq/event_D27R0103.h",
+  "objects": [
+    {
+      "id": "obj_D27R0103_monstarball",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D27R0103_RARE_CANDY",
+      "scr": "std_itemball_d27r0103_rare_candy",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 2,
+      "y": 2,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 8,
+      "y": 12,
+      "header": "MAP_D27R0104",
+      "anchor": 5,
+      "height": 0
+    }
+  ]
+}

@@ -14,6 +14,12 @@
 #define CHAR_JP_7                             169
 #define CHAR_JP_8                             170
 #define CHAR_JP_9                             171
+#define CHAR_JP_A                             172
+#define CHAR_JP_B                             173
+#define CHAR_JP_C                             174
+#define CHAR_JP_D                             175
+#define CHAR_JP_E                             176
+#define CHAR_JP_F                             177
 
 #define CHAR_JP_QUESTION_MARK                 226
 
@@ -95,6 +101,7 @@
 
 #define CHAR_LF           0xE000
 #define TRNAMECODE        0xF100
+#define EXT_CTRL_CODE_BEGIN 0xFFFE
 #define EOS               0xFFFF   // _EOM
 #define TRNAME_MASK       0x1FF
 #define EOS_TRNAME        0x1FF

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0262_P01R0306_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I see.\rSo you are playing hide-and-seek\nwih my granddaughter.\rI guess there is no need to worry\nas long as she’s on the ship!</language>
+	</row>
+	<row id="msg_0262_P01R0306_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh, hello...\rMy granddaughter is still missing.\nIf she’s on the ship, that’s OK.\rShe’s an energetic child, so she may be\nbothering someone. That worries me...</language>
+	</row>
+	<row id="msg_0262_P01R0306_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Grandpa, here I am!\rI was playing hide-and-seek\nwith this guy!\r</language>
+	</row>
+	<row id="msg_0262_P01R0306_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Grandpa, here I am!\rI was playing hide-and-seek\nwith this girl!\r</language>
+	</row>
+	<row id="msg_0262_P01R0306_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0}, was it?\nI heard you entertained my\fgranddaughter.\rI want to thank you for that.\nTake this.\r</language>
+	</row>
+	<row id="msg_0262_P01R0306_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0}, was it?\nI heard you entertained my\fgranddaughter.\rI want to thank you for that.\nTake this.\r</language>
+	</row>
+	<row id="msg_0262_P01R0306_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fast Ship S.S. Aqua\nhas arrived in Vermilion City.</language>
+	</row>
+	<row id="msg_0262_P01R0306_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">We’re traveling around the world.</language>
+	</row>
+	<row id="msg_0262_P01R0306_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I had lots of fun!</language>
+	</row>
+</body>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0539_T11R0703_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROTOM’s electricity affected the\nelevator, and now it’s working!\r</language>
+	</row>
+	<row id="msg_0539_T11R0703_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">...\nThe elevator doesn’t seem to\fbe working.\fBetter move on...\r</language>
+	</row>
+</body>

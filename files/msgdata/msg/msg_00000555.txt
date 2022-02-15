@@ -1,2 +1,0 @@
-Pokémon gain experience in battle\nand change their form.
-I heard that each Pokémon has its own\nnature, and it has something to do with\fPokémon stats!\n

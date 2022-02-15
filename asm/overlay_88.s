@@ -85,7 +85,7 @@ ov88_02258800: ; 0x02258800
 	ldr r0, _022588C0 ; =ov88_02258A64
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, pc}
@@ -148,7 +148,7 @@ _0225891E:
 	str r0, [r5]
 	b _022589EA
 _0225892E:
-	ldr r0, _022589F8 ; =gMain
+	ldr r0, _022589F8 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -245,7 +245,7 @@ _022589EA:
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_022589F8: .word gMain
+_022589F8: .word gSystem
 	thumb_func_end ov88_022588C4
 
 	thumb_func_start ov88_022589FC
@@ -279,7 +279,7 @@ ov88_022589FC: ; 0x022589FC
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	add r4, #8
 	add r0, r4, #0
 	bl ov88_02258AF4
@@ -393,7 +393,7 @@ _02258B1C: .word sub_0202457C
 ov88_02258B20: ; 0x02258B20
 	push {r3, lr}
 	ldr r0, [r0]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200B224
 	bl sub_0202061C
 	pop {r3, pc}
@@ -411,7 +411,7 @@ ov88_02258B34: ; 0x02258B34
 	add r0, r7, #0
 	bl BgConfig_Alloc
 	str r0, [r5]
-	ldr r0, _02258C54 ; =gMain + 0x60
+	ldr r0, _02258C54 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -454,7 +454,7 @@ _02258B5C:
 	ldr r0, [r5, r0]
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r1, #5
 	mov r0, #0
 	lsl r1, r1, #6
@@ -471,7 +471,7 @@ _02258B5C:
 	ldr r0, [r5, r0]
 	ldr r2, [r5]
 	add r3, r1, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -483,7 +483,7 @@ _02258B5C:
 	ldr r2, [r5]
 	mov r1, #3
 	mov r3, #1
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -495,7 +495,7 @@ _02258B5C:
 	ldr r2, [r5]
 	mov r1, #4
 	mov r3, #2
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #5
@@ -504,7 +504,7 @@ _02258B5C:
 	ldr r0, [r5, r0]
 	mov r2, #4
 	add r3, r1, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -516,7 +516,7 @@ _02258B5C:
 	ldr r2, [r5]
 	mov r1, #2
 	mov r3, #4
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -528,12 +528,12 @@ _02258B5C:
 	ldr r2, [r5]
 	mov r1, #6
 	mov r3, #4
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02258C50: .word ov88_02259934
-_02258C54: .word gMain + 0x60
+_02258C54: .word gSystem + 0x60
 _02258C58: .word ov88_022599C0
 _02258C5C: .word ov88_02259944
 	thumb_func_end ov88_02258B34
@@ -556,14 +556,14 @@ _02258C68:
 	blt _02258C68
 	ldr r0, [r6]
 	bl FreeToHeap
-	ldr r0, _02258C94 ; =gMain + 0x60
+	ldr r0, _02258C94 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
 	pop {r4, r5, r6, pc}
 	nop
 _02258C90: .word ov88_02259944
-_02258C94: .word gMain + 0x60
+_02258C94: .word gSystem + 0x60
 	thumb_func_end ov88_02258C60
 
 	thumb_func_start ov88_02258C98
@@ -628,7 +628,7 @@ _02258D04:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -670,7 +670,7 @@ ov88_02258D64: ; 0x02258D64
 	mov r1, #5
 	mov r2, #0
 	add r3, r4, #4
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	str r0, [r4]
 	add sp, #4
 	pop {r3, r4, pc}
@@ -724,7 +724,7 @@ ov88_02258D90: ; 0x02258D90
 	add r3, r3, #4
 	lsl r3, r3, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #3
 	bl ScheduleBgTilemapBufferTransfer
@@ -789,7 +789,7 @@ _02258E16:
 	mov r1, #3
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [sp, #0x48]
 	cmp r0, #0
 	beq _02258E7C
@@ -804,7 +804,7 @@ _02258E16:
 	mov r1, #3
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	b _02258E9A
 _02258E7C:
 	ldr r0, [sp, #0x40]
@@ -820,7 +820,7 @@ _02258E7C:
 	ldr r0, [r5]
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 _02258E9A:
 	ldr r0, [r5]
 	mov r1, #3
@@ -1485,7 +1485,7 @@ _02259304:
 	mov r1, #0
 	bl FillWindowPixelBuffer
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x20]
 	add r4, r4, #1
 	add r0, #0x20
@@ -1510,7 +1510,7 @@ _02259304:
 	ldr r3, [sp, #0x1c]
 	mov r1, #0
 	add r2, #0x98
-	bl sub_02007C48
+	bl GfGfxLoader_GetPlttDataFromOpenNarc
 	ldr r1, [sp, #0x14]
 	mov r2, #4
 	add r1, #0x94
@@ -1902,9 +1902,9 @@ _02259630:
 	ldr r0, [sp, #0x1c]
 	ldr r1, [r5, #0x18]
 	lsr r2, r2, #0x10
-	bl sub_0201DA04
+	bl BlitBitmapRect
 	ldr r0, [sp, #0x1c]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2043,7 +2043,7 @@ _0225978A:
 	add r0, r4, #0
 	bl String_dtor
 	ldr r0, [sp, #0x14]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x28]
 	add r5, #0x10
 	add r0, r0, #4

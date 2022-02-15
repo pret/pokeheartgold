@@ -6,19 +6,19 @@
 _021D6040:
 	.space 0x10
 
-_021D6050: ; 0x021D6050
+sAdpcmState: ; 0x021D6050
 	.space 0x1C
 
-_021D606C: ; 0x021D606C
+sAudioSession: ; 0x021D606C
 	.space 0xC
 
-_021D6078: ; 0x021D6078
+sStream: ; 0x021D6078
 	.space 0x1BC
 
 _021D6234: ; 0x021D6234
 	.space 0x44C
 
-_021D6680: ; 0x021D6680
+sSendInfo: ; 0x021D6680
 	.space 0x8D8
 
 _021D6F58: ; 0x021D6F58
@@ -51,42 +51,42 @@ _021D6FE4: ; 0x021D6FE4
 _021D6FEC: ; 0x021D6FEC
 	.space 0xC
 
-_021D6FF8: ; 0x021D6FF8
+E2scales: ; 0x021D6FF8
 	.space 0x10
 
 _021D7008: ; 0x021D7008
 	.space 0x14
 
-_021D701C: ; 0x021D701C
+sH: ; 0x021D701C
 	.space 0x18
 
-_021D7034: ; 0x021D7034
+sTap: ; 0x021D7034
 	.space 0x18
 
-_021D704C: ; 0x021D704C
+sSpkBuffer: ; 0x021D704C
 	.space 0x440
 
-_021D748C: ; 0x021D748C
+sDelayLine: ; 0x021D748C
 	.space 0x1000
 
 _021D848C: ; 0x021D848C
 	.space 0xC
 
-_021D8498: ; 0x021D8498
+__vct: ; 0x021D8498
 	.space 0x18
 
 	.text
 
-	arm_func_start sub_020B03F0
-sub_020B03F0: ; 0x020B03F0
+	arm_func_start vct_decode_adpcm_32
+vct_decode_adpcm_32: ; 0x020B03F0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r6, #0
 	cmp r2, #0
 	ldmlsia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r4, #0x8000
 	ldr lr, _020B0538 ; =0x00007FFF
-	ldr ip, _020B053C ; =_02108FF4
-	ldr r5, _020B0540 ; =_02109004
+	ldr ip, _020B053C ; =cAdpcmIndexTable4
+	ldr r5, _020B0540 ; =cAdpcmStepSizeTable
 	rsb r4, r4, #0
 _020B0414:
 	ldrb r7, [r3, #2]
@@ -170,19 +170,19 @@ _020B050C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020B0538: .word 0x00007FFF
-_020B053C: .word _02108FF4
-_020B0540: .word _02109004
-	arm_func_end sub_020B03F0
+_020B053C: .word cAdpcmIndexTable4
+_020B0540: .word cAdpcmStepSizeTable
+	arm_func_end vct_decode_adpcm_32
 
-	arm_func_start sub_020B0544
-sub_020B0544: ; 0x020B0544
+	arm_func_start vct_encode_adpcm_32
+vct_encode_adpcm_32: ; 0x020B0544
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	movs r8, r2, lsr #1
 	mov r4, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov ip, #0x8000
 	rsb ip, ip, #0
-	ldr lr, _020B06C8 ; =_02109004
+	ldr lr, _020B06C8 ; =cAdpcmStepSizeTable
 	mov r2, ip, lsr #0x11
 _020B0564:
 	ldrb r6, [r3, #2]
@@ -212,7 +212,7 @@ _020B0564:
 	tst r5, #8
 	rsbne sl, sl, #0
 	add sb, r7, sl
-	ldr r7, _020B06CC ; =_02108FF4
+	ldr r7, _020B06CC ; =cAdpcmIndexTable4
 	cmp sb, ip
 	movlt sb, ip
 	cmp sb, ip, lsr #17
@@ -253,7 +253,7 @@ _020B05FC:
 	tst r6, #8
 	rsbne fp, fp, #0
 	add sl, sb, fp
-	ldr sb, _020B06CC ; =_02108FF4
+	ldr sb, _020B06CC ; =cAdpcmIndexTable4
 	cmp sl, ip
 	movlt sl, ip
 	cmp sl, ip, lsr #17
@@ -277,12 +277,12 @@ _020B06A4:
 	blo _020B0564
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020B06C8: .word _02109004
-_020B06CC: .word _02108FF4
-	arm_func_end sub_020B0544
+_020B06C8: .word cAdpcmStepSizeTable
+_020B06CC: .word cAdpcmIndexTable4
+	arm_func_end vct_encode_adpcm_32
 
-	arm_func_start sub_020B06D0
-sub_020B06D0: ; 0x020B06D0
+	arm_func_start vct_decode_adpcm_24
+vct_decode_adpcm_24: ; 0x020B06D0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x10
 	ldr r5, _020B0B54 ; =0xAAAAAAAB
@@ -295,7 +295,7 @@ sub_020B06D0: ; 0x020B06D0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r4, #0x8000
 	ldr lr, _020B0B58 ; =0x00007FFF
-	ldr r5, _020B0B5C ; =_02109004
+	ldr r5, _020B0B5C ; =cAdpcmStepSizeTable
 	rsb r4, r4, #0
 _020B0708:
 	ldrb r7, [r3, #2]
@@ -325,7 +325,7 @@ _020B0760:
 	cmp r8, lr
 	movgt r8, lr
 _020B076C:
-	ldr r6, _020B0B60 ; =_02108FEC
+	ldr r6, _020B0B60 ; =cAdpcmIndexTable3
 	ldrsb r6, [r6, sb]
 	adds r7, r7, r6
 	movmi r7, #0
@@ -362,7 +362,7 @@ _020B07E8:
 	cmp r8, lr
 	movgt r8, lr
 _020B07F4:
-	ldr r6, _020B0B60 ; =_02108FEC
+	ldr r6, _020B0B60 ; =cAdpcmIndexTable3
 	and sb, sb, #7
 	ldrsb r6, [r6, sb]
 	adds r7, r7, r6
@@ -399,7 +399,7 @@ _020B0870:
 	cmp r7, lr
 	movgt r7, lr
 _020B087C:
-	ldr sb, _020B0B60 ; =_02108FEC
+	ldr sb, _020B0B60 ; =cAdpcmIndexTable3
 	ldrsb r8, [sb, r8]
 	adds r6, r6, r8
 	movmi r6, #0
@@ -434,7 +434,7 @@ _020B08EC:
 	movgt r7, lr
 _020B08F8:
 	and sb, r8, #7
-	ldr r8, _020B0B60 ; =_02108FEC
+	ldr r8, _020B0B60 ; =cAdpcmIndexTable3
 	ldrsb r8, [r8, sb]
 	adds r6, r6, r8
 	movmi r6, #0
@@ -469,7 +469,7 @@ _020B096C:
 	movgt r7, lr
 _020B0978:
 	and sb, r8, #7
-	ldr r8, _020B0B60 ; =_02108FEC
+	ldr r8, _020B0B60 ; =cAdpcmIndexTable3
 	ldrsb r8, [r8, sb]
 	adds r6, r6, r8
 	movmi r6, #0
@@ -505,7 +505,7 @@ _020B09F4:
 	cmp r6, lr
 	movgt r6, lr
 _020B0A00:
-	ldr r8, _020B0B60 ; =_02108FEC
+	ldr r8, _020B0B60 ; =cAdpcmIndexTable3
 	ldrsb r7, [r8, r7]
 	adds r2, r2, r7
 	movmi r2, #0
@@ -539,7 +539,7 @@ _020B0A70:
 	cmp r6, lr
 	movgt r6, lr
 _020B0A7C:
-	ldr r7, _020B0B60 ; =_02108FEC
+	ldr r7, _020B0B60 ; =cAdpcmIndexTable3
 	and r8, sb, #7
 	ldrsb r7, [r7, r8]
 	adds r2, r2, r7
@@ -573,7 +573,7 @@ _020B0AEC:
 	cmp r6, lr
 	movgt r6, lr
 _020B0AF8:
-	ldr r7, _020B0B60 ; =_02108FEC
+	ldr r7, _020B0B60 ; =cAdpcmIndexTable3
 	and r8, ip, #7
 	ldrsb r7, [r7, r8]
 	adds r2, r2, r7
@@ -600,12 +600,12 @@ _020B0B18:
 	.align 2, 0
 _020B0B54: .word 0xAAAAAAAB
 _020B0B58: .word 0x00007FFF
-_020B0B5C: .word _02109004
-_020B0B60: .word _02108FEC
-	arm_func_end sub_020B06D0
+_020B0B5C: .word cAdpcmStepSizeTable
+_020B0B60: .word cAdpcmIndexTable3
+	arm_func_end vct_decode_adpcm_24
 
-	arm_func_start sub_020B0B64
-sub_020B0B64: ; 0x020B0B64
+	arm_func_start vct_encode_adpcm_24
+vct_encode_adpcm_24: ; 0x020B0B64
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
 	movs r2, r2, lsr #3
@@ -616,8 +616,8 @@ sub_020B0B64: ; 0x020B0B64
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r6, #0x8000
 	rsb r6, r6, #0
-	ldr r7, _020B1068 ; =_02109004
-	ldr r4, _020B106C ; =_02108FEC
+	ldr r7, _020B1068 ; =cAdpcmStepSizeTable
+	ldr r4, _020B106C ; =cAdpcmIndexTable3
 	mov r5, r6, lsr #0x11
 _020B0B98:
 	ldrsh r2, [r3]
@@ -937,20 +937,20 @@ _020B102C:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020B1068: .word _02109004
-_020B106C: .word _02108FEC
-	arm_func_end sub_020B0B64
+_020B1068: .word cAdpcmStepSizeTable
+_020B106C: .word cAdpcmIndexTable3
+	arm_func_end vct_encode_adpcm_24
 
-	arm_func_start sub_020B1070
-sub_020B1070: ; 0x020B1070
+	arm_func_start vct_decode_adpcm_16
+vct_decode_adpcm_16: ; 0x020B1070
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r7, #0
 	cmp r2, #0
 	ldmlsia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r4, #0x8000
 	ldr lr, _020B127C ; =0x00007FFF
-	ldr ip, _020B1280 ; =_02108FE8
-	ldr r6, _020B1284 ; =_02109004
+	ldr ip, _020B1280 ; =cAdpcmIndexTable2
+	ldr r6, _020B1284 ; =cAdpcmStepSizeTable
 	rsb r4, r4, #0
 	mov r5, r7
 _020B1098:
@@ -1089,12 +1089,12 @@ _020B1250:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020B127C: .word 0x00007FFF
-_020B1280: .word _02108FE8
-_020B1284: .word _02109004
-	arm_func_end sub_020B1070
+_020B1280: .word cAdpcmIndexTable2
+_020B1284: .word cAdpcmStepSizeTable
+	arm_func_end vct_decode_adpcm_16
 
-	arm_func_start sub_020B1288
-sub_020B1288: ; 0x020B1288
+	arm_func_start vct_encode_adpcm_16
+vct_encode_adpcm_16: ; 0x020B1288
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	movs r2, r2, lsr #2
 	mov fp, #0
@@ -1102,8 +1102,8 @@ sub_020B1288: ; 0x020B1288
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r4, #0x8000
 	rsb r4, r4, #0
-	ldr r5, _020B14B0 ; =_02109004
-	ldr ip, _020B14B4 ; =_02108FE8
+	ldr r5, _020B14B0 ; =cAdpcmStepSizeTable
+	ldr ip, _020B14B4 ; =cAdpcmIndexTable2
 	mov lr, r4, lsr #0x11
 _020B12B0:
 	ldrb r7, [r3, #2]
@@ -1239,12 +1239,12 @@ _020B1488:
 	blo _020B12B0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020B14B0: .word _02109004
-_020B14B4: .word _02108FE8
-	arm_func_end sub_020B1288
+_020B14B0: .word cAdpcmStepSizeTable
+_020B14B4: .word cAdpcmIndexTable2
+	arm_func_end vct_encode_adpcm_16
 
-	arm_func_start sub_020B14B8
-sub_020B14B8: ; 0x020B14B8
+	arm_func_start vct_decode_adpcm
+vct_decode_adpcm: ; 0x020B14B8
 	stmdb sp!, {r3, lr}
 	ldrsh ip, [r0]
 	cmp r3, #2
@@ -1261,24 +1261,24 @@ _020B14E8:
 	add r3, sp, #0
 	add r0, r0, #4
 	sub r2, r2, #4
-	bl sub_020B1070
+	bl vct_decode_adpcm_16
 	ldmia sp!, {r3, pc}
 _020B14FC:
 	add r3, sp, #0
 	add r0, r0, #4
 	sub r2, r2, #4
-	bl sub_020B06D0
+	bl vct_decode_adpcm_24
 	ldmia sp!, {r3, pc}
 _020B1510:
 	add r3, sp, #0
 	add r0, r0, #4
 	sub r2, r2, #4
-	bl sub_020B03F0
+	bl vct_decode_adpcm_32
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020B14B8
+	arm_func_end vct_decode_adpcm
 
-	arm_func_start sub_020B1524
-sub_020B1524: ; 0x020B1524
+	arm_func_start vct_encode_adpcm
+vct_encode_adpcm: ; 0x020B1524
 	stmdb sp!, {r4, lr}
 	ldrsh r4, [r3]
 	ldr ip, [sp, #8]
@@ -1296,33 +1296,33 @@ sub_020B1524: ; 0x020B1524
 	ldmia sp!, {r4, pc}
 _020B1560:
 	add r0, r0, #4
-	bl sub_020B1288
+	bl vct_encode_adpcm_16
 	ldmia sp!, {r4, pc}
 _020B156C:
 	add r0, r0, #4
-	bl sub_020B0B64
+	bl vct_encode_adpcm_24
 	ldmia sp!, {r4, pc}
 _020B1578:
 	add r0, r0, #4
-	bl sub_020B0544
+	bl vct_encode_adpcm_32
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020B1524
+	arm_func_end vct_encode_adpcm
 
-	arm_func_start sub_020B1584
-sub_020B1584: ; 0x020B1584
+	arm_func_start vct_init_audio
+vct_init_audio: ; 0x020B1584
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	bl OS_GetTickLo
 	ldr r2, _020B1668 ; =_021D6040
-	ldr r1, _020B166C ; =_021108D8
+	ldr r1, _020B166C ; =sEnableVAD
 	mov r3, #1
 	str r3, [r1]
 	strh r0, [r2]
 	mov r1, #0
 	str r1, [r2, #0x20]
-	ldr r0, _020B1670 ; =_021D8498
+	ldr r0, _020B1670 ; =__vct
 	str r1, [r2, #4]
 	ldr r0, [r0, #0x10]
-	ldr r3, _020B1674 ; =_021090B8
+	ldr r3, _020B1674 ; =sCodecInfo
 	cmp r0, #1
 	streq r1, [r2, #0x1c]
 	movne r0, #4
@@ -1345,51 +1345,51 @@ sub_020B1584: ; 0x020B1584
 	str r2, [r1, #0xf08]
 	str r2, [r1, #0xf10]
 	str r2, [r1, #0xf14]
-	bl sub_020B43A8
+	bl vct_init_vad
 	mov sb, #0
 	mov r8, sb
-	ldr r7, _020B1678 ; =_021D606C
-	ldr r6, _020B167C ; =_021D6078
+	ldr r7, _020B1678 ; =sAudioSession
+	ldr r6, _020B167C ; =sStream
 	mvn r5, #0
 	mov r4, #0x94
 	b _020B1650
 _020B1630:
 	mov r0, sb
 	str r8, [r7, sb, lsl #2]
-	bl sub_020B27E0
+	bl vct_init_audio_queue
 	mla r0, sb, r4, r6
 	mov r1, sb
 	mov r2, r5
-	bl sub_020B2AC0
+	bl vct_init_stream
 	add sb, sb, #1
 _020B1650:
 	cmp sb, #3
 	blo _020B1630
-	bl sub_020B23F0
-	bl sub_020B44BC
+	bl vct_init_decoder
+	bl InitFIRFilter
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _020B1668: .word _021D6040
-_020B166C: .word _021108D8
-_020B1670: .word _021D8498
-_020B1674: .word _021090B8
-_020B1678: .word _021D606C
-_020B167C: .word _021D6078
-	arm_func_end sub_020B1584
+_020B166C: .word sEnableVAD
+_020B1670: .word __vct
+_020B1674: .word sCodecInfo
+_020B1678: .word sAudioSession
+_020B167C: .word sStream
+	arm_func_end vct_init_audio
 
-	arm_func_start sub_020B1680
-sub_020B1680: ; 0x020B1680
+	arm_func_start vct_finish_audio
+vct_finish_audio: ; 0x020B1680
 	ldr r0, _020B1690 ; =_021D6040
 	mov r1, #0
 	str r1, [r0, #0x20]
 	bx lr
 	.align 2, 0
 _020B1690: .word _021D6040
-	arm_func_end sub_020B1680
+	arm_func_end vct_finish_audio
 
-	arm_func_start sub_020B1694
-sub_020B1694: ; 0x020B1694
+	arm_func_start VCT_StartStreaming
+VCT_StartStreaming: ; 0x020B1694
 	stmdb sp!, {r3, r4, r5, lr}
 	movs r5, r0
 	moveq r0, #0
@@ -1405,7 +1405,7 @@ sub_020B1694: ; 0x020B1694
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r4, #0
-	ldr r1, _020B17C4 ; =_021D606C
+	ldr r1, _020B17C4 ; =sAudioSession
 	b _020B16EC
 _020B16D8:
 	ldr r0, [r1, r4, lsl #2]
@@ -1417,7 +1417,7 @@ _020B16EC:
 	cmp r4, #3
 	blo _020B16D8
 	mov r4, #0
-	ldr r1, _020B17C4 ; =_021D606C
+	ldr r1, _020B17C4 ; =sAudioSession
 	b _020B1714
 _020B1700:
 	ldr r0, [r1, r4, lsl #2]
@@ -1430,7 +1430,7 @@ _020B1714:
 	blo _020B1700
 _020B171C:
 	ldr r1, _020B17C0 ; =_021D6040
-	ldr r2, _020B17C8 ; =_021D6078
+	ldr r2, _020B17C8 ; =sStream
 	ldr r3, [r1, #0x20]
 	mov r0, #0x94
 	add r3, r3, #1
@@ -1442,9 +1442,9 @@ _020B171C:
 	str r2, [r1, #4]
 	ldrb r2, [r5, #5]
 	mov r1, r4
-	bl sub_020B2AC0
+	bl vct_init_stream
 	mov r0, r4
-	bl sub_020B27E0
+	bl vct_init_audio_queue
 	ldr r0, [r5, #0xc]
 	cmp r0, #2
 	movne r0, #1
@@ -1453,7 +1453,7 @@ _020B171C:
 	ldr r0, [r0, #0x20]
 	cmp r0, #1
 	bne _020B17B8
-	bl sub_020B415C
+	bl VCT_ResetVAD
 	bl OS_GetTickLo
 	ldr r1, _020B17C0 ; =_021D6040
 	mov r2, #0
@@ -1473,21 +1473,21 @@ _020B17B8:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020B17C0: .word _021D6040
-_020B17C4: .word _021D606C
-_020B17C8: .word _021D6078
-	arm_func_end sub_020B1694
+_020B17C4: .word sAudioSession
+_020B17C8: .word sStream
+	arm_func_end VCT_StartStreaming
 
-	arm_func_start sub_020B17CC
-sub_020B17CC: ; 0x020B17CC
+	arm_func_start VCT_StopStreaming
+VCT_StopStreaming: ; 0x020B17CC
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr ip, _020B1874 ; =_021D606C
+	ldr ip, _020B1874 ; =sAudioSession
 	mov r5, r0
 	mov r4, #0
 _020B17DC:
 	ldr r0, [ip, r4, lsl #2]
 	cmp r0, r5
 	bne _020B183C
-	ldr r1, _020B1878 ; =_021D6078
+	ldr r1, _020B1878 ; =sStream
 	mov r0, #0x94
 	mla r0, r4, r0, r1
 	ldr r1, _020B187C ; =_021D6040
@@ -1496,11 +1496,11 @@ _020B17DC:
 	str r3, [ip, r4, lsl #2]
 	sub r2, r2, #1
 	str r2, [r1, #0x20]
-	bl sub_020B2B4C
+	bl vct_reset_stream
 	mov r0, r4
-	bl sub_020B281C
+	bl vct_flush_audio_queue
 	mov r0, r4
-	bl sub_020B2430
+	bl vct_flush_decoder
 	ldr r0, _020B187C ; =_021D6040
 	ldr r1, [r5, #8]
 	ldr r2, [r0, #4]
@@ -1519,19 +1519,19 @@ _020B1848:
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r1, #1
 	str r1, [r0, #0x14]
-	bl sub_020B415C
+	bl VCT_ResetVAD
 	ldr r0, _020B187C ; =_021D6040
 	mov r1, #0
 	str r1, [r0, #4]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020B1874: .word _021D606C
-_020B1878: .word _021D6078
+_020B1874: .word sAudioSession
+_020B1878: .word sStream
 _020B187C: .word _021D6040
-	arm_func_end sub_020B17CC
+	arm_func_end VCT_StopStreaming
 
-	arm_func_start sub_020B1880
-sub_020B1880: ; 0x020B1880
+	arm_func_start VCT_SendAudio
+VCT_SendAudio: ; 0x020B1880
 	stmdb sp!, {r4, lr}
 	ldr r3, _020B1980 ; =_021D6040
 	mov r2, r1
@@ -1545,7 +1545,7 @@ sub_020B1880: ; 0x020B1880
 	moveq r0, ip
 	ldmeqia sp!, {r4, pc}
 	mov r4, ip
-	ldr r3, _020B1984 ; =_021D606C
+	ldr r3, _020B1984 ; =sAudioSession
 	b _020B18DC
 _020B18BC:
 	ldr r1, [r3, r4, lsl #2]
@@ -1565,7 +1565,7 @@ _020B18E4:
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
 	ldr r1, _020B1980 ; =_021D6040
-	ldr ip, _020B1988 ; =_021D6680
+	ldr ip, _020B1988 ; =sSendInfo
 	ldr r1, [r1, #0xf04]
 	ldr r3, _020B198C ; =0x5F564354
 	tst r1, #1
@@ -1604,16 +1604,16 @@ _020B1938:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020B1980: .word _021D6040
-_020B1984: .word _021D606C
-_020B1988: .word _021D6680
+_020B1984: .word sAudioSession
+_020B1988: .word sSendInfo
 _020B198C: .word 0x5F564354
-	arm_func_end sub_020B1880
+	arm_func_end VCT_SendAudio
 
-	arm_func_start sub_020B1990
-sub_020B1990: ; 0x020B1990
+	arm_func_start VCTi_ReceiveAudioData
+VCTi_ReceiveAudioData: ; 0x020B1990
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
-	ldr r4, _020B1BD4 ; =_021D6078
+	ldr r4, _020B1BD4 ; =sStream
 	mov sl, r2
 	mov r2, #0x94
 	mla r6, sl, r2, r4
@@ -1622,7 +1622,7 @@ sub_020B1990: ; 0x020B1990
 	str r1, [sp, #4]
 	mov fp, r3
 	mov r7, #1
-	bl sub_020B2AB0
+	bl vct_count_audio_queue
 	movs r4, r0
 	beq _020B1BB0
 _020B19C8:
@@ -1630,7 +1630,7 @@ _020B19C8:
 	mov r8, r0
 	mov r0, sl
 	mov sb, r1
-	bl sub_020B2A0C
+	bl vct_top_audio_queue
 	movs r5, r0
 	beq _020B1B98
 	ldr r1, [r5, #0x46c]
@@ -1655,7 +1655,7 @@ _020B19C8:
 	ldr r0, [r0, #0x474]
 	bl MIi_CpuCopyFast
 	ldr r0, [r6, #0x3c]
-	bl sub_020B4128
+	bl vct_free_packet_buffer
 	mov r0, #0
 	str r0, [r6, #0x3c]
 	cmp fp, #0
@@ -1684,10 +1684,10 @@ _020B1A7C:
 	mov r0, r6
 	mov r1, r5
 	str r2, [r6, #0x58]
-	bl sub_020B2B78
+	bl vct_save_previous_buffer
 	mov r4, r0
 	mov r0, sl
-	bl sub_020B2A0C
+	bl vct_top_audio_queue
 	mov r7, #0
 	b _020B1BA8
 _020B1ABC:
@@ -1713,10 +1713,10 @@ _020B1AF0:
 	beq _020B1B30
 	mov r0, r6
 	mov r1, r5
-	bl sub_020B2B78
+	bl vct_save_previous_buffer
 	mov r4, r0
 	mov r0, sl
-	bl sub_020B2A0C
+	bl vct_top_audio_queue
 	ldr r0, [r6, #0x70]
 	sub r0, r0, #1
 	str r0, [r6, #0x70]
@@ -1737,7 +1737,7 @@ _020B1B30:
 	bl MIi_CpuCopyFast
 	mov r0, r6
 	mov r1, r5
-	bl sub_020B2B78
+	bl vct_save_previous_buffer
 	cmp fp, #0
 	beq _020B1B8C
 	ldrb r0, [r5, #0x10]
@@ -1761,7 +1761,7 @@ _020B1BB0:
 	ldr r0, [r6, #0x3c]
 	cmp r0, #0
 	beq _020B1BC8
-	bl sub_020B4128
+	bl vct_free_packet_buffer
 	mov r0, #0
 	str r0, [r6, #0x3c]
 _020B1BC8:
@@ -1769,12 +1769,12 @@ _020B1BC8:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020B1BD4: .word _021D6078
+_020B1BD4: .word sStream
 _020B1BD8: .word 0x00008B4C
-	arm_func_end sub_020B1990
+	arm_func_end VCTi_ReceiveAudioData
 
-	arm_func_start sub_020B1BDC
-sub_020B1BDC: ; 0x020B1BDC
+	arm_func_start VCT_ReceiveAudio
+VCT_ReceiveAudio: ; 0x020B1BDC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	movs r5, r2
 	mov r7, r0
@@ -1795,7 +1795,7 @@ _020B1C18:
 	mov r1, r6
 	mov r2, r8
 	mov r3, r5
-	bl sub_020B1990
+	bl VCTi_ReceiveAudioData
 	cmp r0, #1
 	moveq r4, #1
 	beq _020B1C44
@@ -1816,14 +1816,14 @@ _020B1C64:
 	mov r1, r6
 	mov r2, sb
 	mov r3, r5
-	bl sub_020B1990
+	bl VCTi_ReceiveAudioData
 	cmp r0, #1
 	bne _020B1C94
 	mov r0, r7
 	mov r1, r8
 	mov r2, r7
 	mov r3, r6
-	bl sub_020B478C
+	bl vct_mix_audio
 _020B1C94:
 	add sb, sb, #1
 	cmp sb, #3
@@ -1848,21 +1848,21 @@ _020B1CCC:
 	beq _020B1CE8
 	mov r0, r7
 	mov r1, r6
-	bl sub_020B4538
+	bl vct_set_speaker_samples
 _020B1CE8:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _020B1CF0: .word _021D6040
 _020B1CF4: .word _021D6234
-	arm_func_end sub_020B1BDC
+	arm_func_end VCT_ReceiveAudio
 
-	arm_func_start sub_020B1CF8
-sub_020B1CF8: ; 0x020B1CF8
+	arm_func_start VCT_SetCodec
+VCT_SetCodec: ; 0x020B1CF8
 	cmp r0, #5
 	movge r0, #0
 	bxge lr
-	ldr r1, _020B1D5C ; =_021D8498
+	ldr r1, _020B1D5C ; =__vct
 	ldr r1, [r1, #0x10]
 	cmp r1, #1
 	beq _020B1D20
@@ -1870,8 +1870,8 @@ sub_020B1CF8: ; 0x020B1CF8
 	movls r0, #0
 	bxls lr
 _020B1D20:
-	ldr r2, _020B1D60 ; =_021090B8 + 1
-	ldr r1, _020B1D64 ; =_021090B8
+	ldr r2, _020B1D60 ; =sCodecInfo + 1
+	ldr r1, _020B1D64 ; =sCodecInfo
 	ldrb ip, [r2, r0, lsl #1]
 	ldrb r3, [r1, r0, lsl #1]
 	mov r1, #0x44
@@ -1886,40 +1886,40 @@ _020B1D20:
 	mov r0, #1
 	bx lr
 	.align 2, 0
-_020B1D5C: .word _021D8498
-_020B1D60: .word _021090B8 + 1
-_020B1D64: .word _021090B8
+_020B1D5C: .word __vct
+_020B1D60: .word sCodecInfo + 1
+_020B1D64: .word sCodecInfo
 _020B1D68: .word _021D6040
-	arm_func_end sub_020B1CF8
+	arm_func_end VCT_SetCodec
 
-	arm_func_start sub_020B1D6C
-sub_020B1D6C: ; 0x020B1D6C
+	arm_func_start VCT_EnableVAD
+VCT_EnableVAD: ; 0x020B1D6C
 	stmdb sp!, {r4, lr}
-	ldr r1, _020B1D94 ; =_021108D8
+	ldr r1, _020B1D94 ; =sEnableVAD
 	mov r4, r0
 	str r4, [r1]
-	bl sub_020B415C
+	bl VCT_ResetVAD
 	cmp r4, #0
 	ldreq r0, _020B1D98 ; =_021D6040
 	moveq r1, #1
 	streq r1, [r0, #8]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020B1D94: .word _021108D8
+_020B1D94: .word sEnableVAD
 _020B1D98: .word _021D6040
-	arm_func_end sub_020B1D6C
+	arm_func_end VCT_EnableVAD
 
-	arm_func_start sub_020B1D9C
-sub_020B1D9C: ; 0x020B1D9C
+	arm_func_start VCT_EnableEchoCancel
+VCT_EnableEchoCancel: ; 0x020B1D9C
 	ldr r1, _020B1DA8 ; =_021D6040
 	str r0, [r1, #0x18]
 	bx lr
 	.align 2, 0
 _020B1DA8: .word _021D6040
-	arm_func_end sub_020B1D9C
+	arm_func_end VCT_EnableEchoCancel
 
-	arm_func_start sub_020B1DAC
-sub_020B1DAC: ; 0x020B1DAC
+	arm_func_start vct_prepare_send_buffer
+vct_prepare_send_buffer: ; 0x020B1DAC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #4
 	ldr r0, _020B200C ; =_021D6040
@@ -1940,7 +1940,7 @@ sub_020B1DAC: ; 0x020B1DAC
 	tst r0, #1
 	movne r1, #0
 	moveq r1, #0x460
-	ldr r0, _020B2010 ; =_021D6680
+	ldr r0, _020B2010 ; =sSendInfo
 	cmp r8, #2
 	add r5, r0, r1
 	ldr r1, _020B200C ; =_021D6040
@@ -1948,7 +1948,7 @@ sub_020B1DAC: ; 0x020B1DAC
 	addge r4, r4, #4
 	ldr r1, [r1, #0x24]
 	mov r0, r4
-	bl sub_020B43D0
+	bl HPFFilter
 	ldr r1, _020B2014 ; =0x040002B0
 	mov r2, #0
 	mov r6, r0
@@ -1967,9 +1967,9 @@ _020B1E34:
 	ldr r1, [r0, #0x24]
 	mov r0, r4
 	mov r2, r7
-	bl sub_020B476C
+	bl vct_process_fir
 _020B1E68:
-	ldr r0, _020B201C ; =_021108D8
+	ldr r0, _020B201C ; =sEnableVAD
 	strb r8, [r5, #5]
 	ldr r0, [r0]
 	cmp r0, #0
@@ -1977,7 +1977,7 @@ _020B1E68:
 	mov r0, r6
 	mov r1, r7
 	mov r2, #0
-	bl sub_020B41C8
+	bl VCTi_GetVADStatus
 	ldr r1, _020B200C ; =_021D6040
 	cmp r0, #0
 	str r0, [r1, #0x28]
@@ -2000,7 +2000,7 @@ _020B1ECC:
 	orr r0, r0, #0x80
 	strb r0, [r5, #5]
 _020B1ED8:
-	ldr r0, _020B201C ; =_021108D8
+	ldr r0, _020B201C ; =sEnableVAD
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _020B1F0C
@@ -2037,11 +2037,11 @@ _020B1F54:
 	ldr r0, _020B200C ; =_021D6040
 	str r8, [sp]
 	ldr r2, [r0, #0x24]
-	ldr r3, _020B2020 ; =_021D6050
+	ldr r3, _020B2020 ; =sAdpcmState
 	mov r1, r4
 	sub r0, r4, #4
 	mov r2, r2, lsr #1
-	bl sub_020B1524
+	bl vct_encode_adpcm
 	b _020B1FBC
 _020B1F78:
 	cmp r8, #1
@@ -2051,7 +2051,7 @@ _020B1F78:
 	ldr r2, [r1, #0x24]
 	mov r1, r4
 	mov r2, r2, lsr #1
-	bl sub_020B2684
+	bl vct_encode_g711_ulaw
 	b _020B1FBC
 _020B1F9C:
 	cmp r8, #0
@@ -2061,10 +2061,10 @@ _020B1F9C:
 	ldr r2, [r1, #0x24]
 	mov r1, r4
 	mov r2, r2, lsr #1
-	bl sub_020B2784
+	bl vct_encode_8bit_raw
 _020B1FBC:
 	ldr r1, _020B200C ; =_021D6040
-	ldr r0, _020B2024 ; =_021D8498
+	ldr r0, _020B2024 ; =__vct
 	ldr r3, [r1, #4]
 	mov r2, #1
 	str r3, [r1, #0xf0c]
@@ -2085,16 +2085,16 @@ _020B1FBC:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _020B200C: .word _021D6040
-_020B2010: .word _021D6680
+_020B2010: .word sSendInfo
 _020B2014: .word 0x040002B0
 _020B2018: .word 0x040002B4
-_020B201C: .word _021108D8
-_020B2020: .word _021D6050
-_020B2024: .word _021D8498
-	arm_func_end sub_020B1DAC
+_020B201C: .word sEnableVAD
+_020B2020: .word sAdpcmState
+_020B2024: .word __vct
+	arm_func_end vct_prepare_send_buffer
 
-	arm_func_start sub_020B2028
-sub_020B2028: ; 0x020B2028
+	arm_func_start vct_handle_audio
+vct_handle_audio: ; 0x020B2028
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	ldr r4, _020B2204 ; =_021D6040
 	mov sl, r0
@@ -2107,13 +2107,13 @@ sub_020B2028: ; 0x020B2028
 	cmp r0, #0
 	moveq r0, r5
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	ldr r1, _020B2208 ; =_021D6078
+	ldr r1, _020B2208 ; =sStream
 	mov r2, r5
 _020B2060:
 	ldr r0, [r1, #0x38]
 	cmp sl, r0
 	bne _020B207C
-	ldr r1, _020B2208 ; =_021D6078
+	ldr r1, _020B2208 ; =sStream
 	mov r0, #0x94
 	mla r5, r2, r0, r1
 	b _020B208C
@@ -2146,8 +2146,8 @@ _020B20C0:
 	str r6, [r5, #0x24]
 	movge r0, #0
 	ldmgeia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	ldr r1, _020B220C ; =_021090B8 + 1
-	ldr r0, _020B2210 ; =_021090B8
+	ldr r1, _020B220C ; =sCodecInfo + 1
+	ldr r0, _020B2210 ; =sCodecInfo
 	ldrb r2, [r1, r6, lsl #1]
 	ldrb r1, [r0, r6, lsl #1]
 	mov r0, #0x44
@@ -2165,19 +2165,19 @@ _020B20C0:
 	tst r0, r1
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	bl sub_020B40F4
+	bl vct_alloc_packet_buffer
 	movs r4, r0
 	bne _020B2174
 	ldr r0, [r5, #0x34]
-	bl sub_020B281C
+	bl vct_flush_audio_queue
 	ldr r0, [r5, #0x34]
-	bl sub_020B2430
-	bl sub_020B40F4
+	bl vct_flush_decoder
+	bl vct_alloc_packet_buffer
 	movs r4, r0
 	bne _020B2168
-	bl sub_020B288C
-	bl sub_020B248C
-	bl sub_020B40F4
+	bl vct_flush_all_audio_queue
+	bl vct_flush_all_decoder
+	bl vct_alloc_packet_buffer
 	mov r4, r0
 _020B2168:
 	cmp r4, #0
@@ -2210,28 +2210,28 @@ _020B2174:
 	str r2, [r4, #0x460]
 	ldrh r2, [sb, #6]
 	str r2, [r4, #0x18]
-	bl sub_020B2C9C
+	bl vct_calc_jitter_and_skew
 	cmp r0, #0
 	mov r0, r4
 	bne _020B21F8
-	bl sub_020B4128
+	bl vct_free_packet_buffer
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _020B21F8:
-	bl sub_020B24F8
+	bl vct_insert_decoder
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020B2204: .word _021D6040
-_020B2208: .word _021D6078
-_020B220C: .word _021090B8 + 1
-_020B2210: .word _021090B8
-	arm_func_end sub_020B2028
+_020B2208: .word sStream
+_020B220C: .word sCodecInfo + 1
+_020B2210: .word sCodecInfo
+	arm_func_end vct_handle_audio
 
-	arm_func_start sub_020B2214
-sub_020B2214: ; 0x020B2214
+	arm_func_start vct_decode_audio_buffer
+vct_decode_audio_buffer: ; 0x020B2214
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	bl sub_020B2580
+	bl vct_top_decoder
 	movs r4, r0
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
@@ -2239,14 +2239,14 @@ sub_020B2214: ; 0x020B2214
 	ldrb r6, [r4, #0x11]
 	mov r7, r0
 	mov r0, r6
-	bl sub_020B2590
+	bl vct_count_decoder_queue
 	mov r5, r0
 	cmp r5, #0
 	mov r4, #0
 	ble _020B22D4
 _020B224C:
 	mov r0, r6
-	bl sub_020B25A0
+	bl vct_get_packet_from_decoder
 	mov r8, r0
 	ldr r3, [r8, #0xc]
 	cmp r3, #2
@@ -2254,7 +2254,7 @@ _020B224C:
 	ldr r0, [r8, #0x474]
 	ldr r2, [r8, #0x14]
 	add r1, r8, #0x1c
-	bl sub_020B14B8
+	bl vct_decode_adpcm
 	b _020B229C
 _020B2278:
 	cmp r3, #1
@@ -2262,23 +2262,23 @@ _020B2278:
 	ldr r2, [r8, #0x14]
 	bne _020B2294
 	add r1, r8, #0x1c
-	bl sub_020B2730
+	bl vct_decode_g711_ulaw
 	b _020B229C
 _020B2294:
 	add r1, r8, #0x1c
-	bl sub_020B27B0
+	bl vct_decode_8bit_raw
 _020B229C:
 	add r1, r8, #0x1c
 	mov r0, r8
 	str r1, [r8, #0x474]
-	bl sub_020B25F0
+	bl vct_remove_packet_from_decoder
 	ldrb r1, [r8, #0x11]
 	mov r0, r8
-	bl sub_020B290C
+	bl vct_insert_audio_queue
 	cmp r0, #0
 	bge _020B22C8
 	mov r0, r8
-	bl sub_020B4128
+	bl vct_free_packet_buffer
 _020B22C8:
 	add r4, r4, #1
 	cmp r4, r5
@@ -2288,10 +2288,10 @@ _020B22D4:
 	bl OS_RestoreInterrupts
 	mov r0, r5
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_020B2214
+	arm_func_end vct_decode_audio_buffer
 
-	arm_func_start sub_020B22E4
-sub_020B22E4: ; 0x020B22E4
+	arm_func_start vct_flush_send_buffer
+vct_flush_send_buffer: ; 0x020B22E4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r1, _020B23E4 ; =_021D6040
 	ldr r0, [r1, #0x20]
@@ -2301,7 +2301,7 @@ sub_020B22E4: ; 0x020B22E4
 	ldr r0, [r1, #0xf08]
 	cmp r0, #0
 	bne _020B232C
-	bl sub_020B1DAC
+	bl vct_prepare_send_buffer
 	ldr r1, _020B23E4 ; =_021D6040
 	cmp r0, #0
 	str r0, [r1, #0xf08]
@@ -2311,13 +2311,13 @@ sub_020B22E4: ; 0x020B22E4
 	moveq r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020B232C:
-	ldr r0, _020B23E8 ; =_021D8498
+	ldr r0, _020B23E8 ; =__vct
 	mov r5, #1
 	ldr r0, [r0, #0x10]
 	cmp r0, #2
 	bne _020B2360
 	ldr r3, [r1, #0xf10]
-	ldr r0, _020B23EC ; =_021090C2
+	ldr r0, _020B23EC ; =sTransceiverBalance
 	add r2, r3, #1
 	str r2, [r1, #0xf10]
 	ldr r1, [r1, #0xf14]
@@ -2342,7 +2342,7 @@ _020B2370:
 	ldr r1, [r6, #0xf08]
 	ldr r2, [r6, #0xc]
 	and r0, r0, #0xff
-	bl ov00_021F97C0
+	bl DWC_SendUnreliable
 	ldr r0, [r6, #0xf0c]
 	cmp r0, #0
 	bne _020B23D0
@@ -2364,12 +2364,12 @@ _020B23DC:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020B23E4: .word _021D6040
-_020B23E8: .word _021D8498
-_020B23EC: .word _021090C2
-	arm_func_end sub_020B22E4
+_020B23E8: .word __vct
+_020B23EC: .word sTransceiverBalance
+	arm_func_end vct_flush_send_buffer
 
-	arm_func_start sub_020B23F0
-sub_020B23F0: ; 0x020B23F0
+	arm_func_start vct_init_decoder
+vct_init_decoder: ; 0x020B23F0
 	stmdb sp!, {r3, lr}
 	bl OS_DisableInterrupts
 	mov r3, #0
@@ -2388,25 +2388,25 @@ _020B2410:
 	.align 2, 0
 _020B2428: .word _021D6F58
 _020B242C: .word _021D6F60
-	arm_func_end sub_020B23F0
+	arm_func_end vct_init_decoder
 
-	arm_func_start sub_020B2430
-sub_020B2430: ; 0x020B2430
+	arm_func_start vct_flush_decoder
+vct_flush_decoder: ; 0x020B2430
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	bl OS_DisableInterrupts
 	mov r4, r0
 	mov r0, r6
-	bl sub_020B25A0
+	bl vct_get_packet_from_decoder
 	movs r5, r0
 	beq _020B2470
 _020B2450:
 	mov r0, r5
-	bl sub_020B25F0
+	bl vct_remove_packet_from_decoder
 	mov r0, r5
-	bl sub_020B4128
+	bl vct_free_packet_buffer
 	mov r0, r6
-	bl sub_020B25A0
+	bl vct_get_packet_from_decoder
 	movs r5, r0
 	bne _020B2450
 _020B2470:
@@ -2418,10 +2418,10 @@ _020B2470:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020B2488: .word _021D6F60
-	arm_func_end sub_020B2430
+	arm_func_end vct_flush_decoder
 
-	arm_func_start sub_020B248C
-sub_020B248C: ; 0x020B248C
+	arm_func_start vct_flush_all_decoder
+vct_flush_all_decoder: ; 0x020B248C
 	stmdb sp!, {r3, r4, r5, lr}
 	bl OS_DisableInterrupts
 	ldr r1, _020B24F0 ; =_021D6F58
@@ -2432,7 +2432,7 @@ sub_020B248C: ; 0x020B248C
 _020B24A8:
 	mov r0, r5
 	ldr r5, [r5, #8]
-	bl sub_020B4128
+	bl vct_free_packet_buffer
 	cmp r5, #0
 	bne _020B24A8
 _020B24BC:
@@ -2453,10 +2453,10 @@ _020B24D4:
 	.align 2, 0
 _020B24F0: .word _021D6F58
 _020B24F4: .word _021D6F60
-	arm_func_end sub_020B248C
+	arm_func_end vct_flush_all_decoder
 
-	arm_func_start sub_020B24F8
-sub_020B24F8: ; 0x020B24F8
+	arm_func_start vct_insert_decoder
+vct_insert_decoder: ; 0x020B24F8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl OS_DisableInterrupts
@@ -2494,28 +2494,28 @@ _020B2550:
 	.align 2, 0
 _020B2578: .word _021D6F58
 _020B257C: .word _021D6F60
-	arm_func_end sub_020B24F8
+	arm_func_end vct_insert_decoder
 
-	arm_func_start sub_020B2580
-sub_020B2580: ; 0x020B2580
+	arm_func_start vct_top_decoder
+vct_top_decoder: ; 0x020B2580
 	ldr r0, _020B258C ; =_021D6F58
 	ldr r0, [r0]
 	bx lr
 	.align 2, 0
 _020B258C: .word _021D6F58
-	arm_func_end sub_020B2580
+	arm_func_end vct_top_decoder
 
-	arm_func_start sub_020B2590
-sub_020B2590: ; 0x020B2590
+	arm_func_start vct_count_decoder_queue
+vct_count_decoder_queue: ; 0x020B2590
 	ldr r1, _020B259C ; =_021D6F60
 	ldr r0, [r1, r0, lsl #2]
 	bx lr
 	.align 2, 0
 _020B259C: .word _021D6F60
-	arm_func_end sub_020B2590
+	arm_func_end vct_count_decoder_queue
 
-	arm_func_start sub_020B25A0
-sub_020B25A0: ; 0x020B25A0
+	arm_func_start vct_get_packet_from_decoder
+vct_get_packet_from_decoder: ; 0x020B25A0
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r1, _020B25EC ; =_021D6F58
 	mov r5, r0
@@ -2540,10 +2540,10 @@ _020B25E0:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020B25EC: .word _021D6F58
-	arm_func_end sub_020B25A0
+	arm_func_end vct_get_packet_from_decoder
 
-	arm_func_start sub_020B25F0
-sub_020B25F0: ; 0x020B25F0
+	arm_func_start vct_remove_packet_from_decoder
+vct_remove_packet_from_decoder: ; 0x020B25F0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl OS_DisableInterrupts
@@ -2584,16 +2584,16 @@ _020B2654:
 	.align 2, 0
 _020B267C: .word _021D6F58
 _020B2680: .word _021D6F60
-	arm_func_end sub_020B25F0
+	arm_func_end vct_remove_packet_from_decoder
 
-	arm_func_start sub_020B2684
-sub_020B2684: ; 0x020B2684
+	arm_func_start vct_encode_g711_ulaw
+vct_encode_g711_ulaw: ; 0x020B2684
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r7, #0
 	cmp r2, #0
 	ldmlsia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	ldr ip, _020B2728 ; =0x00001FDF
-	ldr r3, _020B272C ; =_021108DC
+	ldr r3, _020B272C ; =ulaw_segment
 	mov lr, #0xff
 	mov r4, #0x7f
 _020B26A4:
@@ -2635,11 +2635,11 @@ _020B2714:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020B2728: .word 0x00001FDF
-_020B272C: .word _021108DC
-	arm_func_end sub_020B2684
+_020B272C: .word ulaw_segment
+	arm_func_end vct_encode_g711_ulaw
 
-	arm_func_start sub_020B2730
-sub_020B2730: ; 0x020B2730
+	arm_func_start vct_decode_g711_ulaw
+vct_decode_g711_ulaw: ; 0x020B2730
 	stmdb sp!, {r4, lr}
 	mov r4, #0
 	cmp r2, #0
@@ -2662,10 +2662,10 @@ _020B2740:
 	cmp r4, r2
 	blo _020B2740
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020B2730
+	arm_func_end vct_decode_g711_ulaw
 
-	arm_func_start sub_020B2784
-sub_020B2784: ; 0x020B2784
+	arm_func_start vct_encode_8bit_raw
+vct_encode_8bit_raw: ; 0x020B2784
 	cmp r2, #0
 	mov ip, #0
 	bxls lr
@@ -2678,10 +2678,10 @@ _020B2790:
 	cmp ip, r2
 	blo _020B2790
 	bx lr
-	arm_func_end sub_020B2784
+	arm_func_end vct_encode_8bit_raw
 
-	arm_func_start sub_020B27B0
-sub_020B27B0: ; 0x020B27B0
+	arm_func_start vct_decode_8bit_raw
+vct_decode_8bit_raw: ; 0x020B27B0
 	stmdb sp!, {r3, lr}
 	cmp r2, #0
 	mov lr, #0
@@ -2695,10 +2695,10 @@ _020B27C0:
 	cmp lr, r2
 	blo _020B27C0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020B27B0
+	arm_func_end vct_decode_8bit_raw
 
-	arm_func_start sub_020B27E0
-sub_020B27E0: ; 0x020B27E0
+	arm_func_start vct_init_audio_queue
+vct_init_audio_queue: ; 0x020B27E0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl OS_DisableInterrupts
@@ -2715,10 +2715,10 @@ sub_020B27E0: ; 0x020B27E0
 _020B2810: .word _021D6F84
 _020B2814: .word _021D6F78
 _020B2818: .word _021D6F6C
-	arm_func_end sub_020B27E0
+	arm_func_end vct_init_audio_queue
 
-	arm_func_start sub_020B281C
-sub_020B281C: ; 0x020B281C
+	arm_func_start vct_flush_audio_queue
+vct_flush_audio_queue: ; 0x020B281C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r0
 	bl OS_DisableInterrupts
@@ -2733,7 +2733,7 @@ _020B2840:
 	str r1, [r7, r5, lsl #2]
 	cmp r1, #0
 	strne r6, [r1, #4]
-	bl sub_020B4128
+	bl vct_free_packet_buffer
 	ldr r0, [r7, r5, lsl #2]
 	cmp r0, #0
 	bne _020B2840
@@ -2750,10 +2750,10 @@ _020B2860:
 _020B2880: .word _021D6F6C
 _020B2884: .word _021D6F84
 _020B2888: .word _021D6F78
-	arm_func_end sub_020B281C
+	arm_func_end vct_flush_audio_queue
 
-	arm_func_start sub_020B288C
-sub_020B288C: ; 0x020B288C
+	arm_func_start vct_flush_all_audio_queue
+vct_flush_all_audio_queue: ; 0x020B288C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	bl OS_DisableInterrupts
 	mov r6, #0
@@ -2773,7 +2773,7 @@ _020B28C0:
 	str r1, [r4, r6, lsl #2]
 	cmp r1, #0
 	strne sl, [r1, #4]
-	bl sub_020B4128
+	bl vct_free_packet_buffer
 	ldr r0, [r4, r6, lsl #2]
 	cmp r0, #0
 	bne _020B28C0
@@ -2791,10 +2791,10 @@ _020B28EC:
 _020B2900: .word _021D6F6C
 _020B2904: .word _021D6F84
 _020B2908: .word _021D6F78
-	arm_func_end sub_020B288C
+	arm_func_end vct_flush_all_audio_queue
 
-	arm_func_start sub_020B290C
-sub_020B290C: ; 0x020B290C
+	arm_func_start vct_insert_audio_queue
+vct_insert_audio_queue: ; 0x020B290C
 	stmdb sp!, {r3, r4, r5, lr}
 	movs r5, r0
 	mov r4, r1
@@ -2865,10 +2865,10 @@ _020B29E0:
 _020B2A00: .word _021D6F6C
 _020B2A04: .word _021D6F84
 _020B2A08: .word _021D6F78
-	arm_func_end sub_020B290C
+	arm_func_end vct_insert_audio_queue
 
-	arm_func_start sub_020B2A0C
-sub_020B2A0C: ; 0x020B2A0C
+	arm_func_start vct_top_audio_queue
+vct_top_audio_queue: ; 0x020B2A0C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl OS_DisableInterrupts
@@ -2886,10 +2886,10 @@ _020B2A38:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020B2A44: .word _021D6F6C
-	arm_func_end sub_020B2A0C
+	arm_func_end vct_top_audio_queue
 
-	arm_func_start sub_020B2A48
-sub_020B2A48: ; 0x020B2A48
+	arm_func_start vct_pop_audio_queue
+vct_pop_audio_queue: ; 0x020B2A48
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl OS_DisableInterrupts
@@ -2918,19 +2918,19 @@ _020B2A94:
 _020B2AA4: .word _021D6F6C
 _020B2AA8: .word _021D6F78
 _020B2AAC: .word _021D6F84
-	arm_func_end sub_020B2A48
+	arm_func_end vct_pop_audio_queue
 
-	arm_func_start sub_020B2AB0
-sub_020B2AB0: ; 0x020B2AB0
+	arm_func_start vct_count_audio_queue
+vct_count_audio_queue: ; 0x020B2AB0
 	ldr r1, _020B2ABC ; =_021D6F78
 	ldr r0, [r1, r0, lsl #2]
 	bx lr
 	.align 2, 0
 _020B2ABC: .word _021D6F78
-	arm_func_end sub_020B2AB0
+	arm_func_end vct_count_audio_queue
 
-	arm_func_start sub_020B2AC0
-sub_020B2AC0: ; 0x020B2AC0
+	arm_func_start vct_init_stream
+vct_init_stream: ; 0x020B2AC0
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r4, r2
@@ -2967,42 +2967,42 @@ sub_020B2AC0: ; 0x020B2AC0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020B2B48: .word 0x000134DF
-	arm_func_end sub_020B2AC0
+	arm_func_end vct_init_stream
 
-	arm_func_start sub_020B2B4C
-sub_020B2B4C: ; 0x020B2B4C
+	arm_func_start vct_reset_stream
+vct_reset_stream: ; 0x020B2B4C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, [r4, #0x3c]
 	cmp r0, #0
 	beq _020B2B6C
-	bl sub_020B4128
+	bl vct_free_packet_buffer
 	mov r0, #0
 	str r0, [r4, #0x3c]
 _020B2B6C:
 	mvn r0, #0
 	str r0, [r4, #0x38]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020B2B4C
+	arm_func_end vct_reset_stream
 
-	arm_func_start sub_020B2B78
-sub_020B2B78: ; 0x020B2B78
+	arm_func_start vct_save_previous_buffer
+vct_save_previous_buffer: ; 0x020B2B78
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r0, [r5, #0x3c]
 	mov r4, r1
 	cmp r0, #0
 	beq _020B2B94
-	bl sub_020B4128
+	bl vct_free_packet_buffer
 _020B2B94:
 	str r4, [r5, #0x3c]
 	ldr r0, [r5, #0x34]
-	bl sub_020B2A48
+	bl vct_pop_audio_queue
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020B2B78
+	arm_func_end vct_save_previous_buffer
 
-	arm_func_start sub_020B2BA4
-sub_020B2BA4: ; 0x020B2BA4
+	arm_func_start vct_init_sequence
+vct_init_sequence: ; 0x020B2BA4
 	ldr r2, _020B2BC0 ; =0x00010001
 	strh r1, [r0, #0x68]
 	str r2, [r0, #0x64]
@@ -3012,10 +3012,10 @@ sub_020B2BA4: ; 0x020B2BA4
 	bx lr
 	.align 2, 0
 _020B2BC0: .word 0x00010001
-	arm_func_end sub_020B2BA4
+	arm_func_end vct_init_sequence
 
-	arm_func_start sub_020B2BC4
-sub_020B2BC4: ; 0x020B2BC4
+	arm_func_start vct_update_sequence
+vct_update_sequence: ; 0x020B2BC4
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	ldrh ip, [r6, #0x68]
@@ -3041,7 +3041,7 @@ _020B2C08:
 	cmp r4, r1
 	bne _020B2C3C
 	mov r1, r4
-	bl sub_020B2BA4
+	bl vct_init_sequence
 	sub r0, r4, #1
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -3075,10 +3075,10 @@ _020B2C80:
 	.align 2, 0
 _020B2C94: .word 0x00000BB8
 _020B2C98: .word 0x0000FF9C
-	arm_func_end sub_020B2BC4
+	arm_func_end vct_update_sequence
 
-	arm_func_start sub_020B2C9C
-sub_020B2C9C: ; 0x020B2C9C
+	arm_func_start vct_calc_jitter_and_skew
+vct_calc_jitter_and_skew: ; 0x020B2C9C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	ldr r2, [r7, #0x5c]
@@ -3089,13 +3089,13 @@ sub_020B2C9C: ; 0x020B2C9C
 	ldr r1, [r6, #0x18]
 	mov r1, r1, lsl #0x10
 	mov r1, r1, lsr #0x10
-	bl sub_020B2BA4
+	bl vct_init_sequence
 	b _020B2D64
 _020B2CCC:
 	ldr r2, [r6, #0x18]
 	mov r2, r2, lsl #0x10
 	mov r2, r2, lsr #0x10
-	bl sub_020B2BC4
+	bl vct_update_sequence
 	cmp r0, #0
 	bne _020B2CF8
 	ldr r1, [r7, #0x14]
@@ -3331,25 +3331,25 @@ _020B303C: .word 0xFFFF2F5C
 _020B3040: .word 0xFFFFBA74
 _020B3044: .word 0x00068520
 _020B3048: .word 0x00008701
-	arm_func_end sub_020B2C9C
+	arm_func_end vct_calc_jitter_and_skew
 
-	arm_func_start sub_020B304C
-sub_020B304C: ; 0x020B304C
+	arm_func_start VCT_CreateSession
+VCT_CreateSession: ; 0x020B304C
 	stmdb sp!, {r3, lr}
-	ldr r1, _020B3070 ; =_021D8498
+	ldr r1, _020B3070 ; =__vct
 	ldr r1, [r1, #0x10]
 	cmp r1, #0
 	cmpne r1, #2
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl sub_020B35EC
+	bl vct_create_session_impl
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020B3070: .word _021D8498
-	arm_func_end sub_020B304C
+_020B3070: .word __vct
+	arm_func_end VCT_CreateSession
 
-	arm_func_start sub_020B3074
-sub_020B3074: ; 0x020B3074
+	arm_func_start VCT_DeleteSession
+VCT_DeleteSession: ; 0x020B3074
 	stmdb sp!, {r3, lr}
 	ldr r2, _020B3124 ; =_021D6F90
 	mov ip, #0
@@ -3357,7 +3357,7 @@ sub_020B3074: ; 0x020B3074
 	ldr lr, [r2, #0x14]
 	moveq r0, ip
 	ldmeqia sp!, {r3, pc}
-	ldr r1, _020B3128 ; =_021D8498
+	ldr r1, _020B3128 ; =__vct
 	ldr r1, [r1, #0x10]
 	cmp r1, #2
 	bne _020B30B4
@@ -3401,12 +3401,12 @@ _020B311C:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020B3124: .word _021D6F90
-_020B3128: .word _021D8498
+_020B3128: .word __vct
 _020B312C: .word _021D6FCC
-	arm_func_end sub_020B3074
+	arm_func_end VCT_DeleteSession
 
-	arm_func_start sub_020B3130
-sub_020B3130: ; 0x020B3130
+	arm_func_start vct_build_request_data
+vct_build_request_data: ; 0x020B3130
 	stmdb sp!, {r4, r5, r6, lr}
 	movs r5, r0
 	mov r4, r1
@@ -3416,7 +3416,7 @@ sub_020B3130: ; 0x020B3130
 	cmp r3, #0x10
 	mvnlo r0, #0
 	ldmloia sp!, {r4, r5, r6, pc}
-	ldr r1, _020B31DC ; =_021D8498
+	ldr r1, _020B31DC ; =__vct
 	ldr r1, [r1, #0xc]
 	cmp r1, #1
 	mvneq r0, #2
@@ -3433,20 +3433,20 @@ _020B3180:
 	mov r1, r6
 	and r2, r4, #0xff
 	strb r3, [r6, #4]
-	bl sub_020B393C
+	bl vct_build_ssp_header
 	mov r0, r5
 	mov r1, r6
-	bl sub_020B3AA8
+	bl vct_check_send_state
 	cmp r0, #0
 	mvneq r0, #2
 	ldmeqia sp!, {r4, r5, r6, pc}
-	ldr r0, _020B31DC ; =_021D8498
+	ldr r0, _020B31DC ; =__vct
 	ldr r0, [r0, #0x10]
 	cmp r0, #1
 	cmpeq r4, #0
 	bne _020B31D4
 	mov r0, r5
-	bl sub_020B3A5C
+	bl vct_check_multisession
 	cmp r0, #0
 	mvneq r0, #2
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -3454,25 +3454,25 @@ _020B31D4:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_020B31DC: .word _021D8498
-	arm_func_end sub_020B3130
+_020B31DC: .word __vct
+	arm_func_end vct_build_request_data
 
-	arm_func_start sub_020B31E0
-sub_020B31E0: ; 0x020B31E0
+	arm_func_start VCT_Request
+VCT_Request: ; 0x020B31E0
 	stmdb sp!, {r3, lr}
-	ldr r2, _020B3200 ; =_021D8498
+	ldr r2, _020B3200 ; =__vct
 	ldr r2, [r2, #0x10]
 	cmp r2, #2
 	mvneq r0, #2
 	ldmeqia sp!, {r3, pc}
-	bl sub_020B3658
+	bl vct_request_impl
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020B3200: .word _021D8498
-	arm_func_end sub_020B31E0
+_020B3200: .word __vct
+	arm_func_end VCT_Request
 
-	arm_func_start sub_020B3204
-sub_020B3204: ; 0x020B3204
+	arm_func_start vct_build_response_data
+vct_build_response_data: ; 0x020B3204
 	stmdb sp!, {r4, r5, r6, lr}
 	movs r5, r0
 	mov r6, r1
@@ -3494,17 +3494,17 @@ _020B3240:
 	mov r1, r4
 	and r2, r6, #0xff
 	strb r3, [r4, #4]
-	bl sub_020B393C
+	bl vct_build_ssp_header
 	cmp r6, #0
 	bne _020B329C
-	ldr r0, _020B32B8 ; =_021D8498
+	ldr r0, _020B32B8 ; =__vct
 	ldr r0, [r0, #0x10]
 	cmp r0, #1
 	ldreq r0, [r5, #0xc]
 	cmpeq r0, #4
 	bne _020B3288
 	mov r0, r5
-	bl sub_020B3A5C
+	bl vct_check_multisession
 	cmp r0, #0
 	mvneq r0, #2
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -3517,33 +3517,33 @@ _020B3288:
 _020B329C:
 	mov r0, r5
 	mov r1, r4
-	bl sub_020B3AA8
+	bl vct_check_send_state
 	cmp r0, #0
 	mvneq r0, #2
 	movne r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_020B32B8: .word _021D8498
-	arm_func_end sub_020B3204
+_020B32B8: .word __vct
+	arm_func_end vct_build_response_data
 
-	arm_func_start sub_020B32BC
-sub_020B32BC: ; 0x020B32BC
+	arm_func_start VCT_Response
+VCT_Response: ; 0x020B32BC
 	stmdb sp!, {r3, lr}
-	ldr r2, _020B32DC ; =_021D8498
+	ldr r2, _020B32DC ; =__vct
 	ldr r2, [r2, #0x10]
 	cmp r2, #2
 	mvneq r0, #2
 	ldmeqia sp!, {r3, pc}
-	bl sub_020B369C
+	bl vct_response_impl
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020B32DC: .word _021D8498
-	arm_func_end sub_020B32BC
+_020B32DC: .word __vct
+	arm_func_end VCT_Response
 
-	arm_func_start sub_020B32E0
-sub_020B32E0: ; 0x020B32E0
+	arm_func_start VCT_AddConferenceClient
+VCT_AddConferenceClient: ; 0x020B32E0
 	stmdb sp!, {r4, lr}
-	ldr r2, _020B3390 ; =_021D8498
+	ldr r2, _020B3390 ; =__vct
 	mov r4, r0
 	ldr r1, [r2, #0x10]
 	cmp r1, #3
@@ -3558,12 +3558,12 @@ sub_020B32E0: ; 0x020B32E0
 	cmp r4, r1
 	mvneq r0, #0
 	ldmeqia sp!, {r4, pc}
-	bl sub_020B3B30
+	bl vct_find_session
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, pc}
 	mov r0, r4
-	bl sub_020B304C
+	bl VCT_CreateSession
 	movs r2, r0
 	mvneq r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -3573,7 +3573,7 @@ sub_020B32E0: ; 0x020B32E0
 	mov r3, #2
 	mov r1, r0, lsl r4
 	str r3, [r2, #0xc]
-	ldr r0, _020B3390 ; =_021D8498
+	ldr r0, _020B3390 ; =__vct
 	str r1, [r2, #8]
 	ldr r3, [r0, #8]
 	ldr ip, [r0, #4]
@@ -3587,12 +3587,12 @@ sub_020B32E0: ; 0x020B32E0
 	str r2, [r1]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020B3390: .word _021D8498
+_020B3390: .word __vct
 _020B3394: .word _021D6F90
-	arm_func_end sub_020B32E0
+	arm_func_end VCT_AddConferenceClient
 
-	arm_func_start sub_020B3398
-sub_020B3398: ; 0x020B3398
+	arm_func_start vct_init_ssp
+vct_init_ssp: ; 0x020B3398
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, [r4]
@@ -3648,7 +3648,7 @@ _020B3444:
 	str r4, [r0, #-4]
 	str r4, [r1, #0x14]
 	str r4, [r1, #4]
-	ldr r0, _020B349C ; =_021D8498
+	ldr r0, _020B349C ; =__vct
 	str r4, [r1]
 	ldr r3, _020B34A0 ; =OS_GetTick
 	str r4, [r0, #0x14]
@@ -3663,14 +3663,14 @@ _020B3444:
 _020B3490: .word _021D6F90
 _020B3494: .word _021D6FCC
 _020B3498: .word _021D6FB4
-_020B349C: .word _021D8498
+_020B349C: .word __vct
 _020B34A0: .word OS_GetTick
 _020B34A4: .word 0x5D588B65
 _020B34A8: .word 0x00269EC3
-	arm_func_end sub_020B3398
+	arm_func_end vct_init_ssp
 
-	arm_func_start sub_020B34AC
-sub_020B34AC: ; 0x020B34AC
+	arm_func_start vct_finish_ssp
+vct_finish_ssp: ; 0x020B34AC
 	ldr r0, _020B34C0 ; =_021D6F90
 	mov r1, #0
 	str r1, [r0, #0x14]
@@ -3678,13 +3678,13 @@ sub_020B34AC: ; 0x020B34AC
 	bx lr
 	.align 2, 0
 _020B34C0: .word _021D6F90
-	arm_func_end sub_020B34AC
+	arm_func_end vct_finish_ssp
 
-	arm_func_start sub_020B34C4
-sub_020B34C4: ; 0x020B34C4
+	arm_func_start vct_check_timeout
+vct_check_timeout: ; 0x020B34C4
 	stmdb sp!, {r3, r4, r5, lr}
 	bl OS_GetTick
-	ldr r2, _020B3560 ; =_021D8498
+	ldr r2, _020B3560 ; =__vct
 	ldr r3, [r2, #0x10]
 	cmp r3, #2
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -3698,7 +3698,7 @@ sub_020B34C4: ; 0x020B34C4
 	cmp r5, #0
 	cmpeq r4, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
-	ldr r2, _020B3568 ; =_021108FC
+	ldr r2, _020B3568 ; =sTransceiverLimit
 	subs r4, r0, r4
 	ldr lr, [r2]
 	ldr r0, [r2, #4]
@@ -3711,8 +3711,8 @@ sub_020B34C4: ; 0x020B34C4
 	str ip, [r3, #0x3c]
 	mov r0, ip
 	str ip, [r3, #0x48]
-	bl sub_020B37C8
-	ldr r1, _020B3560 ; =_021D8498
+	bl vct_send_notify
+	ldr r1, _020B3560 ; =__vct
 	ldr r0, _020B3564 ; =_021D6F90
 	ldr r3, [r1, #8]
 	ldrb r0, [r0, #0x40]
@@ -3722,14 +3722,14 @@ sub_020B34C4: ; 0x020B34C4
 	blx ip
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020B3560: .word _021D8498
+_020B3560: .word __vct
 _020B3564: .word _021D6F90
-_020B3568: .word _021108FC
+_020B3568: .word sTransceiverLimit
 _020B356C: .word _021D6FCC
-	arm_func_end sub_020B34C4
+	arm_func_end vct_check_timeout
 
-	arm_func_start sub_020B3570
-sub_020B3570: ; 0x020B3570
+	arm_func_start vct_handle_ssp
+vct_handle_ssp: ; 0x020B3570
 	stmdb sp!, {r3, lr}
 	cmp r2, #0x10
 	movne r0, #0
@@ -3737,7 +3737,7 @@ sub_020B3570: ; 0x020B3570
 	ldrb r2, [r1, #8]
 	cmp r2, r0
 	bne _020B35A0
-	ldr r0, _020B35E8 ; =_021D8498
+	ldr r0, _020B35E8 ; =__vct
 	ldrb ip, [r1, #9]
 	ldrb r2, [r0]
 	cmp ip, r2
@@ -3751,7 +3751,7 @@ _020B35A8:
 	beq _020B35C4
 	mov r0, r1
 	mov r1, r3
-	bl sub_020B3E7C
+	bl vct_response_reject
 	ldmia sp!, {r3, pc}
 _020B35C4:
 	ldr r0, [r0, #0xc]
@@ -3759,23 +3759,23 @@ _020B35C4:
 	mov r0, r1
 	mov r1, r3
 	bne _020B35E0
-	bl sub_020B3BB0
+	bl vct_handle_ssp_client
 	ldmia sp!, {r3, pc}
 _020B35E0:
-	bl sub_020B3CEC
+	bl vct_handle_ssp_server
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020B35E8: .word _021D8498
-	arm_func_end sub_020B3570
+_020B35E8: .word __vct
+	arm_func_end vct_handle_ssp
 
-	arm_func_start sub_020B35EC
-sub_020B35EC: ; 0x020B35EC
+	arm_func_start vct_create_session_impl
+vct_create_session_impl: ; 0x020B35EC
 	stmdb sp!, {r4, lr}
 	mov r1, r0
 	cmp r1, #0x20
 	movhs r0, #0
 	ldmhsia sp!, {r4, pc}
-	ldr r0, _020B3650 ; =_021D8498
+	ldr r0, _020B3650 ; =__vct
 	ldrb r0, [r0]
 	cmp r1, r0
 	moveq r0, #0
@@ -3788,7 +3788,7 @@ sub_020B35EC: ; 0x020B35EC
 	ldr r3, [r4, #0x14]
 	mov r0, r4
 	str r3, [r2, #0x10]
-	bl sub_020B3808
+	bl vct_init_session
 	ldr r1, _020B3654 ; =_021D6F90
 	mov r0, r4
 	ldr r2, [r1, #0x14]
@@ -3796,54 +3796,54 @@ sub_020B35EC: ; 0x020B35EC
 	str r4, [r1, #0x14]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020B3650: .word _021D8498
+_020B3650: .word __vct
 _020B3654: .word _021D6F90
-	arm_func_end sub_020B35EC
+	arm_func_end vct_create_session_impl
 
-	arm_func_start sub_020B3658
-sub_020B3658: ; 0x020B3658
+	arm_func_start vct_request_impl
+vct_request_impl: ; 0x020B3658
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	add r2, sp, #0
 	mov r3, #0x10
 	mov r4, r0
-	bl sub_020B3130
+	bl vct_build_request_data
 	cmp r0, #0
 	addne sp, sp, #0x10
 	ldmneia sp!, {r4, pc}
 	add r1, sp, #0
 	mov r0, r4
-	bl sub_020B3850
+	bl vct_send_ssp
 	cmp r0, #0
 	movne r0, #0
 	mvneq r0, #3
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020B3658
+	arm_func_end vct_request_impl
 
-	arm_func_start sub_020B369C
-sub_020B369C: ; 0x020B369C
+	arm_func_start vct_response_impl
+vct_response_impl: ; 0x020B369C
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	add r2, sp, #0
 	mov r3, #0x10
 	mov r4, r0
-	bl sub_020B3204
+	bl vct_build_response_data
 	cmp r0, #0
 	addne sp, sp, #0x10
 	ldmneia sp!, {r4, pc}
 	add r1, sp, #0
 	mov r0, r4
-	bl sub_020B3850
+	bl vct_send_ssp
 	cmp r0, #0
 	movne r0, #0
 	mvneq r0, #3
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020B369C
+	arm_func_end vct_response_impl
 
-	arm_func_start sub_020B36E0
-sub_020B36E0: ; 0x020B36E0
+	arm_func_start vct_add_notify_aid_list
+vct_add_notify_aid_list: ; 0x020B36E0
 	ldrb r2, [r1, #0xa]
 	cmp r2, #1
 	bxne lr
@@ -3855,17 +3855,17 @@ sub_020B36E0: ; 0x020B36E0
 	bx lr
 	.align 2, 0
 _020B3704: .word _021D6F90
-	arm_func_end sub_020B36E0
+	arm_func_end vct_add_notify_aid_list
 
-	arm_func_start sub_020B3708
-sub_020B3708: ; 0x020B3708
+	arm_func_start vct_send_notify_impl
+vct_send_notify_impl: ; 0x020B3708
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	str r0, [sp]
 	mov sl, r1
 	mov r8, #0
-	bl sub_020B36E0
+	bl vct_add_notify_aid_list
 	mov r6, #1
-	ldr r4, _020B37C0 ; =_021D8498
+	ldr r4, _020B37C0 ; =__vct
 	ldr r5, _020B37C4 ; =_021D6F90
 	mov sb, r8
 	mov r7, r6
@@ -3883,7 +3883,7 @@ _020B3734:
 	mov r1, sl
 	mov r2, fp
 	strb sb, [sl, #9]
-	bl ov00_021F9610
+	bl DWC_SendReliable
 	cmp r0, #0
 	addne r8, r8, #1
 _020B3770:
@@ -3910,12 +3910,12 @@ _020B37B0:
 	movne r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020B37C0: .word _021D8498
+_020B37C0: .word __vct
 _020B37C4: .word _021D6F90
-	arm_func_end sub_020B3708
+	arm_func_end vct_send_notify_impl
 
-	arm_func_start sub_020B37C8
-sub_020B37C8: ; 0x020B37C8
+	arm_func_start vct_send_notify
+vct_send_notify: ; 0x020B37C8
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
@@ -3924,19 +3924,19 @@ sub_020B37C8: ; 0x020B37C8
 	add r1, sp, #0
 	mov r2, #4
 	strb r3, [sp, #4]
-	bl sub_020B393C
+	bl vct_build_ssp_header
 	ldr r0, _020B3804 ; =_021D6FCC
 	add r1, sp, #0
 	strb r4, [sp, #0xa]
-	bl sub_020B3708
+	bl vct_send_notify_impl
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020B3804: .word _021D6FCC
-	arm_func_end sub_020B37C8
+	arm_func_end vct_send_notify
 
-	arm_func_start sub_020B3808
-sub_020B3808: ; 0x020B3808
+	arm_func_start vct_init_session
+vct_init_session: ; 0x020B3808
 	mov ip, r0
 	mov r3, #6
 	mov r2, #0
@@ -3948,7 +3948,7 @@ _020B3814:
 	add ip, ip, #4
 	subs r3, r3, #1
 	bne _020B3814
-	ldr r2, _020B384C ; =_021D8498
+	ldr r2, _020B384C ; =__vct
 	mov r3, #0
 	ldr r2, [r2, #0x10]
 	str r2, [r0]
@@ -3956,33 +3956,33 @@ _020B3814:
 	strb r1, [r0, #4]
 	bx lr
 	.align 2, 0
-_020B384C: .word _021D8498
-	arm_func_end sub_020B3808
+_020B384C: .word __vct
+	arm_func_end vct_init_session
 
-	arm_func_start sub_020B3850
-sub_020B3850: ; 0x020B3850
+	arm_func_start vct_send_ssp
+vct_send_ssp: ; 0x020B3850
 	stmdb sp!, {r3, lr}
 	ldrb r2, [r1, #4]
 	cmp r2, #0xff
 	ldreqb r2, [r1, #6]
 	cmpeq r2, #4
 	bne _020B3870
-	bl sub_020B3708
+	bl vct_send_notify_impl
 	b _020B3888
 _020B3870:
 	ldrb r0, [r0, #4]
 	mov r2, #0x10
-	bl ov00_021F9610
+	bl DWC_SendReliable
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _020B3888:
 	mov r0, #1
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020B3850
+	arm_func_end vct_send_ssp
 
-	arm_func_start sub_020B3890
-sub_020B3890: ; 0x020B3890
+	arm_func_start vct_dispatch_session
+vct_dispatch_session: ; 0x020B3890
 	ldrb r2, [r0, #0xb]
 	strb r2, [r1, #5]
 	ldrb r2, [r0, #4]
@@ -3998,7 +3998,7 @@ sub_020B3890: ; 0x020B3890
 	str r2, [r1, #8]
 _020B38C4:
 	ldrb r1, [r0, #6]
-	ldr r0, _020B3934 ; =_021090D8
+	ldr r0, _020B3934 ; =sRequestEvent
 	ldrb r0, [r0, r1]
 	bx lr
 _020B38D4:
@@ -4023,24 +4023,24 @@ _020B3910:
 	movne r0, #0xc
 	bx lr
 _020B3920:
-	ldr r0, _020B3938 ; =_021090E0
+	ldr r0, _020B3938 ; =sResponseEvent
 	ldrb r0, [r0, r2]
 	bx lr
 _020B392C:
 	mov r0, #0xc
 	bx lr
 	.align 2, 0
-_020B3934: .word _021090D8
-_020B3938: .word _021090E0
-	arm_func_end sub_020B3890
+_020B3934: .word sRequestEvent
+_020B3938: .word sResponseEvent
+	arm_func_end vct_dispatch_session
 
-	arm_func_start sub_020B393C
-sub_020B393C: ; 0x020B393C
+	arm_func_start vct_build_ssp_header
+vct_build_ssp_header: ; 0x020B393C
 	ldr ip, _020B397C ; =0x5F564354
 	mov r3, #0x10
 	str ip, [r1]
 	strb r3, [r1, #5]
-	ldr r3, _020B3980 ; =_021D8498
+	ldr r3, _020B3980 ; =__vct
 	strb r2, [r1, #6]
 	ldrb r2, [r3]
 	strb r2, [r1, #8]
@@ -4054,11 +4054,11 @@ sub_020B393C: ; 0x020B393C
 	bx lr
 	.align 2, 0
 _020B397C: .word 0x5F564354
-_020B3980: .word _021D8498
-	arm_func_end sub_020B393C
+_020B3980: .word __vct
+	arm_func_end vct_build_ssp_header
 
-	arm_func_start sub_020B3984
-sub_020B3984: ; 0x020B3984
+	arm_func_start vct_check_recv_state
+vct_check_recv_state: ; 0x020B3984
 	stmdb sp!, {r3, r4, r5, lr}
 	ldrb r2, [r1, #4]
 	ldrb r3, [r1, #6]
@@ -4075,13 +4075,13 @@ _020B39B0:
 	cmp r3, #0
 	mvnlt r0, #0
 	ldmltia sp!, {r3, r4, r5, pc}
-	ldr r0, _020B3A50 ; =_021D8498
+	ldr r0, _020B3A50 ; =__vct
 	ldr r2, [r4, #0xc]
 	ldr r0, [r0, #0x10]
 	cmp r0, #1
-	ldreq r1, _020B3A54 ; =_021091AE
+	ldreq r1, _020B3A54 ; =sRecvState
 	mov r0, #0xb
-	ldrne r1, _020B3A58 ; =_021090E8
+	ldrne r1, _020B3A58 ; =sTransRecvState
 	mla r0, r2, r0, r1
 	ldrsb r5, [r3, r0]
 	mvn r1, #2
@@ -4098,7 +4098,7 @@ _020B39B0:
 _020B3A0C:
 	mov r0, r4
 	mov r1, #1
-	bl sub_020B369C
+	bl vct_response_impl
 	mov r1, #0
 	str r1, [r4, #0xc]
 	mov r0, r5
@@ -4107,7 +4107,7 @@ _020B3A0C:
 _020B3A2C:
 	mov r0, r4
 	mov r1, #3
-	bl sub_020B369C
+	bl vct_response_impl
 	mov r1, #0
 	str r1, [r4, #0xc]
 	mov r0, r5
@@ -4116,13 +4116,13 @@ _020B3A2C:
 _020B3A4C:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020B3A50: .word _021D8498
-_020B3A54: .word _021091AE
-_020B3A58: .word _021090E8
-	arm_func_end sub_020B3984
+_020B3A50: .word __vct
+_020B3A54: .word sRecvState
+_020B3A58: .word sTransRecvState
+	arm_func_end vct_check_recv_state
 
-	arm_func_start sub_020B3A5C
-sub_020B3A5C: ; 0x020B3A5C
+	arm_func_start vct_check_multisession
+vct_check_multisession: ; 0x020B3A5C
 	ldr r1, _020B3AA4 ; =_021D6F90
 	ldr r2, [r1, #0x14]
 	cmp r2, #0
@@ -4146,10 +4146,10 @@ _020B3A9C:
 	bx lr
 	.align 2, 0
 _020B3AA4: .word _021D6F90
-	arm_func_end sub_020B3A5C
+	arm_func_end vct_check_multisession
 
-	arm_func_start sub_020B3AA8
-sub_020B3AA8: ; 0x020B3AA8
+	arm_func_start vct_check_send_state
+vct_check_send_state: ; 0x020B3AA8
 	ldrb r2, [r1, #4]
 	ldrb ip, [r1, #6]
 	cmp r2, #0
@@ -4164,13 +4164,13 @@ _020B3ACC:
 	cmp ip, #0
 	mvnlt r0, #0
 	bxlt lr
-	ldr r1, _020B3B24 ; =_021D8498
+	ldr r1, _020B3B24 ; =__vct
 	ldr r3, [r0, #0xc]
 	ldr r1, [r1, #0x10]
 	cmp r1, #1
-	ldreq r2, _020B3B28 ; =_0210912A
+	ldreq r2, _020B3B28 ; =sSendState
 	mov r1, #0xb
-	ldrne r2, _020B3B2C ; =_0210916C
+	ldrne r2, _020B3B2C ; =sTransSendState
 	mla r1, r3, r1, r2
 	ldrsb r2, [ip, r1]
 	mvn r1, #0
@@ -4184,14 +4184,14 @@ _020B3ACC:
 	movne r0, #1
 	bx lr
 	.align 2, 0
-_020B3B24: .word _021D8498
-_020B3B28: .word _0210912A
-_020B3B2C: .word _0210916C
-	arm_func_end sub_020B3AA8
+_020B3B24: .word __vct
+_020B3B28: .word sSendState
+_020B3B2C: .word sTransSendState
+	arm_func_end vct_check_send_state
 
-	arm_func_start sub_020B3B30
-sub_020B3B30: ; 0x020B3B30
-	ldr r1, _020B3BA4 ; =_021D8498
+	arm_func_start vct_find_session
+vct_find_session: ; 0x020B3B30
+	ldr r1, _020B3BA4 ; =__vct
 	ldr r2, _020B3BA8 ; =_021D6F90
 	ldr r1, [r1, #0x10]
 	ldr r3, [r2, #0x14]
@@ -4226,13 +4226,13 @@ _020B3B9C:
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_020B3BA4: .word _021D8498
+_020B3BA4: .word __vct
 _020B3BA8: .word _021D6F90
 _020B3BAC: .word _021D6FCC
-	arm_func_end sub_020B3B30
+	arm_func_end vct_find_session
 
-	arm_func_start sub_020B3BB0
-sub_020B3BB0: ; 0x020B3BB0
+	arm_func_start vct_handle_ssp_client
+vct_handle_ssp_client: ; 0x020B3BB0
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r0
 	ldrb r2, [r6, #4]
@@ -4242,7 +4242,7 @@ sub_020B3BB0: ; 0x020B3BB0
 	ldrb r2, [r6, #6]
 	cmp r2, #4
 	bne _020B3BDC
-	bl sub_020B3EF4
+	bl vct_handle_notify
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020B3BDC:
 	cmp r2, #3
@@ -4250,11 +4250,11 @@ _020B3BDC:
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 _020B3BE8:
 	ldrb r0, [r6, #8]
-	bl sub_020B3B30
+	bl vct_find_session
 	movs r4, r0
 	beq _020B3C68
 	mov r1, r6
-	bl sub_020B3984
+	bl vct_check_recv_state
 	mov r7, r0
 	mvn r0, #1
 	cmp r7, r0
@@ -4275,7 +4275,7 @@ _020B3C24:
 _020B3C40:
 	mov r0, r6
 	mov r1, r4
-	bl sub_020B3890
+	bl vct_dispatch_session
 	stmia r5, {r0, r4}
 	str r7, [r4, #0xc]
 	ldr r0, [r5]
@@ -4285,32 +4285,32 @@ _020B3C40:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020B3C68:
 	ldrb r0, [r6, #8]
-	bl sub_020B35EC
+	bl vct_create_session_impl
 	movs r7, r0
 	bne _020B3C98
 	ldrb r1, [r6, #8]
 	ldr r0, _020B3CE8 ; =_021D6FB4
-	bl sub_020B3808
+	bl vct_init_session
 	ldr r0, _020B3CE8 ; =_021D6FB4
 	mov r1, #3
-	bl sub_020B369C
+	bl vct_response_impl
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020B3C98:
 	mov r1, r6
-	bl sub_020B3984
+	bl vct_check_recv_state
 	mov r4, r0
 	add r0, r4, #2
 	cmp r0, #1
 	bhi _020B3CC0
 	mov r0, r7
-	bl sub_020B3074
+	bl VCT_DeleteSession
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020B3CC0:
 	mov r0, r6
 	mov r1, r7
-	bl sub_020B3890
+	bl vct_dispatch_session
 	stmia r5, {r0, r7}
 	str r4, [r7, #0xc]
 	ldr r0, [r5]
@@ -4320,10 +4320,10 @@ _020B3CC0:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020B3CE8: .word _021D6FB4
-	arm_func_end sub_020B3BB0
+	arm_func_end vct_handle_ssp_client
 
-	arm_func_start sub_020B3CEC
-sub_020B3CEC: ; 0x020B3CEC
+	arm_func_start vct_handle_ssp_server
+vct_handle_ssp_server: ; 0x020B3CEC
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r2, _020B3E74 ; =_021D6F90
 	mov r5, r0
@@ -4337,7 +4337,7 @@ sub_020B3CEC: ; 0x020B3CEC
 	bne _020B3D8C
 	ldr r0, _020B3E78 ; =_021D6FCC
 	mov r1, r5
-	bl sub_020B3984
+	bl vct_check_recv_state
 	mov r6, r0
 	mvn r1, #2
 	cmp r6, r1
@@ -4362,14 +4362,14 @@ _020B3D68:
 _020B3D70:
 	ldr r1, _020B3E78 ; =_021D6FCC
 	mov r0, r5
-	bl sub_020B3890
+	bl vct_dispatch_session
 	ldr r1, _020B3E78 ; =_021D6FCC
 	stmia r4, {r0, r1}
 	str r6, [r1, #0xc]
 	b _020B3E2C
 _020B3D8C:
 	mov r0, #1
-	bl sub_020B37C8
+	bl vct_send_notify
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 _020B3D9C:
@@ -4390,7 +4390,7 @@ _020B3D9C:
 	ldr r0, _020B3E78 ; =_021D6FCC
 	mov r1, r5
 	str r3, [r2, #0x48]
-	bl sub_020B3984
+	bl vct_check_recv_state
 	mov r6, r0
 	mvn r1, #2
 	cmp r6, r1
@@ -4406,7 +4406,7 @@ _020B3D9C:
 _020B3E14:
 	ldr r1, _020B3E78 ; =_021D6FCC
 	mov r0, r5
-	bl sub_020B3890
+	bl vct_dispatch_session
 	ldr r1, _020B3E78 ; =_021D6FCC
 	stmia r4, {r0, r1}
 	str r6, [r1, #0xc]
@@ -4415,7 +4415,7 @@ _020B3E2C:
 	cmp r0, #0xa
 	bne _020B3E54
 	mov r0, #1
-	bl sub_020B37C8
+	bl vct_send_notify
 	bl OS_GetTick
 	ldr r2, _020B3E74 ; =_021D6F90
 	str r0, [r2, #8]
@@ -4423,7 +4423,7 @@ _020B3E2C:
 	b _020B3E6C
 _020B3E54:
 	mov r0, #0
-	bl sub_020B37C8
+	bl vct_send_notify
 	ldr r0, _020B3E74 ; =_021D6F90
 	mov r1, #0
 	str r1, [r0, #8]
@@ -4434,10 +4434,10 @@ _020B3E6C:
 	.align 2, 0
 _020B3E74: .word _021D6F90
 _020B3E78: .word _021D6FCC
-	arm_func_end sub_020B3CEC
+	arm_func_end vct_handle_ssp_server
 
-	arm_func_start sub_020B3E7C
-sub_020B3E7C: ; 0x020B3E7C
+	arm_func_start vct_response_reject
+vct_response_reject: ; 0x020B3E7C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldrb r0, [r5, #4]
@@ -4448,7 +4448,7 @@ sub_020B3E7C: ; 0x020B3E7C
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldrb r0, [r5, #8]
-	bl sub_020B3B30
+	bl vct_find_session
 	cmp r0, #0
 	beq _020B3ED0
 	mov r1, #2
@@ -4456,26 +4456,26 @@ sub_020B3E7C: ; 0x020B3E7C
 	str r0, [r4, #4]
 	mov r2, #0
 	str r2, [r0]
-	bl sub_020B369C
+	bl vct_response_impl
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 _020B3ED0:
 	ldrb r1, [r5, #8]
 	ldr r0, _020B3EF0 ; =_021D6FB4
-	bl sub_020B3808
+	bl vct_init_session
 	ldr r0, _020B3EF0 ; =_021D6FB4
 	mov r1, #2
-	bl sub_020B369C
+	bl vct_response_impl
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020B3EF0: .word _021D6FB4
-	arm_func_end sub_020B3E7C
+	arm_func_end vct_response_reject
 
-	arm_func_start sub_020B3EF4
-sub_020B3EF4: ; 0x020B3EF4
+	arm_func_start vct_handle_notify
+vct_handle_notify: ; 0x020B3EF4
 	stmdb sp!, {r3, lr}
-	ldr r3, _020B4008 ; =_021D8498
+	ldr r3, _020B4008 ; =__vct
 	ldr r2, [r3, #0x10]
 	cmp r2, #2
 	movne r0, #0
@@ -4550,13 +4550,13 @@ _020B4000:
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020B4008: .word _021D8498
+_020B4008: .word __vct
 _020B400C: .word _021D6F90
 _020B4010: .word _021D6FCC
-	arm_func_end sub_020B3EF4
+	arm_func_end vct_handle_notify
 
-	arm_func_start sub_020B4014
-sub_020B4014: ; 0x020B4014
+	arm_func_start vct_init_packet_buffer
+vct_init_packet_buffer: ; 0x020B4014
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r3, _020B40D0 ; =0xE525982B
 	mov r2, r1
@@ -4612,10 +4612,10 @@ _020B40A8:
 _020B40D0: .word 0xE525982B
 _020B40D4: .word _021D6FE4
 _020B40D8: .word 0x00000478
-	arm_func_end sub_020B4014
+	arm_func_end vct_init_packet_buffer
 
-	arm_func_start sub_020B40DC
-sub_020B40DC: ; 0x020B40DC
+	arm_func_start vct_cleanup_packet_buffer
+vct_cleanup_packet_buffer: ; 0x020B40DC
 	ldr r0, _020B40F0 ; =_021D6FE4
 	mov r1, #0
 	str r1, [r0]
@@ -4623,10 +4623,10 @@ sub_020B40DC: ; 0x020B40DC
 	bx lr
 	.align 2, 0
 _020B40F0: .word _021D6FE4
-	arm_func_end sub_020B40DC
+	arm_func_end vct_cleanup_packet_buffer
 
-	arm_func_start sub_020B40F4
-sub_020B40F4: ; 0x020B40F4
+	arm_func_start vct_alloc_packet_buffer
+vct_alloc_packet_buffer: ; 0x020B40F4
 	stmdb sp!, {r4, lr}
 	mov r4, #0
 	bl OS_DisableInterrupts
@@ -4641,10 +4641,10 @@ sub_020B40F4: ; 0x020B40F4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020B4124: .word _021D6FE4
-	arm_func_end sub_020B40F4
+	arm_func_end vct_alloc_packet_buffer
 
-	arm_func_start sub_020B4128
-sub_020B4128: ; 0x020B4128
+	arm_func_start vct_free_packet_buffer
+vct_free_packet_buffer: ; 0x020B4128
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl OS_DisableInterrupts
@@ -4659,11 +4659,11 @@ sub_020B4128: ; 0x020B4128
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020B4158: .word _021D6FE4
-	arm_func_end sub_020B4128
+	arm_func_end vct_free_packet_buffer
 
-	arm_func_start sub_020B415C
-sub_020B415C: ; 0x020B415C
-	ldr r0, _020B419C ; =_021D6FF8
+	arm_func_start VCT_ResetVAD
+VCT_ResetVAD: ; 0x020B415C
+	ldr r0, _020B419C ; =E2scales
 	mov r2, #0
 	mov r1, #0x1000000
 _020B4168:
@@ -4674,45 +4674,45 @@ _020B4168:
 	ldr r1, _020B41A0 ; =_021D6FEC
 	mov r2, #0
 	str r2, [r1, #4]
-	ldr r0, _020B41A4 ; =_02110904
+	ldr r0, _020B41A4 ; =sVADInfo
 	str r2, [r1]
 	str r2, [r0]
 	str r2, [r0, #4]
 	str r2, [r1, #8]
 	bx lr
 	.align 2, 0
-_020B419C: .word _021D6FF8
+_020B419C: .word E2scales
 _020B41A0: .word _021D6FEC
-_020B41A4: .word _02110904
-	arm_func_end sub_020B415C
+_020B41A4: .word sVADInfo
+	arm_func_end VCT_ResetVAD
 
-	arm_func_start sub_020B41A8
-sub_020B41A8: ; 0x020B41A8
+	arm_func_start VCT_GetVADInfo
+VCT_GetVADInfo: ; 0x020B41A8
 	stmdb sp!, {r3, lr}
 	movs r1, r0
 	ldmeqia sp!, {r3, pc}
-	ldr r0, _020B41C4 ; =_02110904
+	ldr r0, _020B41C4 ; =sVADInfo
 	mov r2, #0x10
 	bl MI_CpuCopy8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020B41C4: .word _02110904
-	arm_func_end sub_020B41A8
+_020B41C4: .word sVADInfo
+	arm_func_end VCT_GetVADInfo
 
-	arm_func_start sub_020B41C8
-sub_020B41C8: ; 0x020B41C8
+	arm_func_start VCTi_GetVADStatus
+VCTi_GetVADStatus: ; 0x020B41C8
 	stmdb sp!, {r4, lr}
-	ldr r3, _020B4394 ; =_02110904
+	ldr r3, _020B4394 ; =sVADInfo
 	mov ip, r1, lsr #8
 	str ip, [r3, #4]
 	cmp r2, #0
 	strneb ip, [r2]
-	ldr r2, _020B4394 ; =_02110904
+	ldr r2, _020B4394 ; =sVADInfo
 	ldr r2, [r2]
 	cmp r2, #0
 	bne _020B42DC
 	mov ip, #0
-	ldr r3, _020B4398 ; =_021D6FF8
+	ldr r3, _020B4398 ; =E2scales
 	mov lr, ip
 _020B41FC:
 	ldr r2, [r3, lr, lsl #2]
@@ -4736,7 +4736,7 @@ _020B4224:
 	cmp r1, r2, lsl #1
 	blo _020B42B8
 	mov r3, #0
-	ldr r2, _020B4398 ; =_021D6FF8
+	ldr r2, _020B4398 ; =E2scales
 	mov ip, r3
 _020B4254:
 	ldr r1, [r2, ip, lsl #2]
@@ -4760,7 +4760,7 @@ _020B427C:
 	add r1, r1, r1, lsl #1
 	mov r1, r1, lsr #1
 	str r1, [r2]
-	ldr r1, _020B4394 ; =_02110904
+	ldr r1, _020B4394 ; =sVADInfo
 	str r3, [r2, #4]
 	mov lr, #1
 	str lr, [r1]
@@ -4769,7 +4769,7 @@ _020B42B8:
 	mov lr, #0
 _020B42BC:
 	ldr r1, _020B43A4 ; =_021D6FEC
-	ldr r3, _020B4398 ; =_021D6FF8
+	ldr r3, _020B4398 ; =E2scales
 	ldr ip, [r1, #4]
 	add r2, ip, #1
 	and r2, r2, #3
@@ -4780,7 +4780,7 @@ _020B42DC:
 	ldr r1, _020B43A4 ; =_021D6FEC
 	mov lr, #0
 	ldr ip, [r1, #4]
-	ldr r3, _020B4398 ; =_021D6FF8
+	ldr r3, _020B4398 ; =E2scales
 	add r2, ip, #1
 	and r2, r2, #3
 	mov r4, lr
@@ -4808,7 +4808,7 @@ _020B4328:
 	cmp r2, r0
 	bhi _020B4380
 	ldr r2, [r1, #8]
-	ldr r0, _020B4394 ; =_02110904
+	ldr r0, _020B4394 ; =sVADInfo
 	add r3, r2, #1
 	str r3, [r1, #8]
 	ldr r2, [r0, #8]
@@ -4829,30 +4829,30 @@ _020B438C:
 	mov r0, lr
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020B4394: .word _02110904
-_020B4398: .word _021D6FF8
+_020B4394: .word sVADInfo
+_020B4398: .word E2scales
 _020B439C: .word 0x040002B0
 _020B43A0: .word 0x040002B4
 _020B43A4: .word _021D6FEC
-	arm_func_end sub_020B41C8
+	arm_func_end VCTi_GetVADStatus
 
-	arm_func_start sub_020B43A8
-sub_020B43A8: ; 0x020B43A8
+	arm_func_start vct_init_vad
+vct_init_vad: ; 0x020B43A8
 	mov r2, #0xf
-	ldr r1, _020B43C8 ; =_02110904
+	ldr r1, _020B43C8 ; =sVADInfo
 	mov r0, #0x44
 	smulbb r0, r2, r0
 	str r2, [r1, #8]
-	ldr ip, _020B43CC ; =sub_020B415C
+	ldr ip, _020B43CC ; =VCT_ResetVAD
 	str r0, [r1, #0xc]
 	bx ip
 	.align 2, 0
-_020B43C8: .word _02110904
-_020B43CC: .word sub_020B415C
-	arm_func_end sub_020B43A8
+_020B43C8: .word sVADInfo
+_020B43CC: .word VCT_ResetVAD
+	arm_func_end vct_init_vad
 
-	arm_func_start sub_020B43D0
-sub_020B43D0: ; 0x020B43D0
+	arm_func_start HPFFilter
+HPFFilter: ; 0x020B43D0
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldrsh r2, [r0]
 	ldr r3, _020B44A8 ; =_021D7008
@@ -4916,18 +4916,18 @@ _020B44AC: .word 0x00000E9F
 _020B44B0: .word 0x00000D3E
 _020B44B4: .word 0x04000280
 _020B44B8: .word 0x040002A0
-	arm_func_end sub_020B43D0
+	arm_func_end HPFFilter
 
-	arm_func_start sub_020B44BC
-sub_020B44BC: ; 0x020B44BC
+	arm_func_start InitFIRFilter
+InitFIRFilter: ; 0x020B44BC
 	stmdb sp!, {r3, lr}
 	ldr r0, _020B4520 ; =_021D7008
 	mov r2, #0
 	ldr r1, _020B4524 ; =0x0000019D
 	str r2, [r0, #0xc]
 	str r1, [r0, #8]
-	ldr ip, _020B4528 ; =_02110914
-	ldr r0, _020B452C ; =_021D748C
+	ldr ip, _020B4528 ; =sImpulseResponse
+	ldr r0, _020B452C ; =sDelayLine
 	mov lr, r2
 _020B44E0:
 	mov r1, r2, lsl #1
@@ -4935,8 +4935,8 @@ _020B44E0:
 	strh lr, [r0, r1]
 	cmp r2, #0x800
 	blt _020B44E0
-	ldr r2, _020B4530 ; =_021D7034
-	ldr r0, _020B4534 ; =_021D701C
+	ldr r2, _020B4530 ; =sTap
+	ldr r0, _020B4534 ; =sH
 	mov r3, #0
 _020B4500:
 	mov r1, lr, lsl #1
@@ -4950,25 +4950,25 @@ _020B4500:
 	.align 2, 0
 _020B4520: .word _021D7008
 _020B4524: .word 0x0000019D
-_020B4528: .word _02110914
-_020B452C: .word _021D748C
-_020B4530: .word _021D7034
-_020B4534: .word _021D701C
-	arm_func_end sub_020B44BC
+_020B4528: .word sImpulseResponse
+_020B452C: .word sDelayLine
+_020B4530: .word sTap
+_020B4534: .word sH
+	arm_func_end InitFIRFilter
 
-	arm_func_start sub_020B4538
-sub_020B4538: ; 0x020B4538
+	arm_func_start vct_set_speaker_samples
+vct_set_speaker_samples: ; 0x020B4538
 	ldr ip, _020B4548 ; =MIi_CpuCopyFast
 	mov r2, r1
-	ldr r1, _020B454C ; =_021D704C
+	ldr r1, _020B454C ; =sSpkBuffer
 	bx ip
 	.align 2, 0
 _020B4548: .word MIi_CpuCopyFast
-_020B454C: .word _021D704C
-	arm_func_end sub_020B4538
+_020B454C: .word sSpkBuffer
+	arm_func_end vct_set_speaker_samples
 
-	arm_func_start sub_020B4550
-sub_020B4550: ; 0x020B4550
+	arm_func_start DoFIRFilter
+DoFIRFilter: ; 0x020B4550
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x10
 	mov r4, #0
@@ -4983,13 +4983,13 @@ _020B4578:
 	mov r4, r8, lsl #1
 	ldr r7, [ip, #0xc]
 	ldrsh r6, [r1, r4]
-	ldr r4, _020B475C ; =_021D748C
+	ldr r4, _020B475C ; =sDelayLine
 	mov r5, r7, lsl #1
 	strh r6, [r4, r5]
 	ldr r4, [ip, #8]
 	str r4, [sp]
 	mov r5, r4, lsl #1
-	ldr r4, _020B475C ; =_021D748C
+	ldr r4, _020B475C ; =sDelayLine
 	ldrsh r6, [r4, r5]
 	str r6, [ip, #0x2c]
 	ldr sb, [ip, #0x3c]
@@ -5108,27 +5108,27 @@ _020B4730:
 	.align 2, 0
 _020B4754: .word 0x3FFF8000
 _020B4758: .word _021D7008
-_020B475C: .word _021D748C
+_020B475C: .word sDelayLine
 _020B4760: .word 0x04000280
 _020B4764: .word 0x040002A0
 _020B4768: .word 0x040002B4
-	arm_func_end sub_020B4550
+	arm_func_end DoFIRFilter
 
-	arm_func_start sub_020B476C
-sub_020B476C: ; 0x020B476C
+	arm_func_start vct_process_fir
+vct_process_fir: ; 0x020B476C
 	stmdb sp!, {r3, lr}
 	mov ip, r1
 	mov r3, r2
-	ldr r1, _020B4788 ; =_021D704C
+	ldr r1, _020B4788 ; =sSpkBuffer
 	mov r2, ip
-	bl sub_020B4550
+	bl DoFIRFilter
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020B4788: .word _021D704C
-	arm_func_end sub_020B476C
+_020B4788: .word sSpkBuffer
+	arm_func_end vct_process_fir
 
-	arm_func_start sub_020B478C
-sub_020B478C: ; 0x020B478C
+	arm_func_start vct_mix_audio
+vct_mix_audio: ; 0x020B478C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r4, #0
 	movs lr, r3, lsr #1
@@ -5192,10 +5192,10 @@ _020B485C:
 	cmp r4, lr
 	blo _020B47A8
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020B478C
+	arm_func_end vct_mix_audio
 
-	arm_func_start sub_020B4874
-sub_020B4874: ; 0x020B4874
+	arm_func_start VCT_Init
+VCT_Init: ; 0x020B4874
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, _020B49A0 ; =_version_Abiosso_libVCT
@@ -5229,7 +5229,7 @@ sub_020B4874: ; 0x020B4874
 	adds r0, r1, r0, ror #27
 	movne r0, #0
 	ldmneia sp!, {r4, pc}
-	ldr r0, _020B49A8 ; =_021D8498
+	ldr r0, _020B49A8 ; =__vct
 	mov r1, #0
 	mov r2, #0x18
 	bl MI_CpuFill8
@@ -5248,43 +5248,43 @@ sub_020B4874: ; 0x020B4874
 	strb r2, [r1, #0xc]
 	ldr r0, [r4, #0x10]
 	ldr r1, [r4, #0x14]
-	bl sub_020B4014
+	bl vct_init_packet_buffer
 	cmp r0, #0
 	bne _020B495C
-	bl sub_020B40DC
+	bl vct_cleanup_packet_buffer
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 _020B495C:
 	mov r0, r4
-	bl sub_020B3398
+	bl vct_init_ssp
 	cmp r0, #0
 	bne _020B4978
-	bl sub_020B40DC
+	bl vct_cleanup_packet_buffer
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 _020B4978:
-	bl sub_020B1584
+	bl vct_init_audio
 	cmp r0, #0
 	ldrne r1, _020B49A4 ; =_021D848C
 	movne r0, #1
 	strne r0, [r1, #8]
 	ldmneia sp!, {r4, pc}
-	bl sub_020B34AC
-	bl sub_020B40DC
+	bl vct_finish_ssp
+	bl vct_cleanup_packet_buffer
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020B49A0: .word _version_Abiosso_libVCT
 _020B49A4: .word _021D848C
-_020B49A8: .word _021D8498
-	arm_func_end sub_020B4874
+_020B49A8: .word __vct
+	arm_func_end VCT_Init
 
-	arm_func_start sub_020B49AC
-sub_020B49AC: ; 0x020B49AC
+	arm_func_start VCT_Cleanup
+VCT_Cleanup: ; 0x020B49AC
 	stmdb sp!, {r3, lr}
-	bl sub_020B1680
-	bl sub_020B34AC
-	bl sub_020B40DC
+	bl vct_finish_audio
+	bl vct_finish_ssp
+	bl vct_cleanup_packet_buffer
 	ldr r0, _020B49D0 ; =_021D848C
 	mov r1, #0
 	str r1, [r0, #0x1c]
@@ -5292,10 +5292,10 @@ sub_020B49AC: ; 0x020B49AC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020B49D0: .word _021D848C
-	arm_func_end sub_020B49AC
+	arm_func_end VCT_Cleanup
 
-	arm_func_start sub_020B49D4
-sub_020B49D4: ; 0x020B49D4
+	arm_func_start VCT_Main
+VCT_Main: ; 0x020B49D4
 	stmdb sp!, {r3, lr}
 	ldr r0, _020B4A14 ; =_021D848C
 	ldr r1, [r0, #8]
@@ -5306,24 +5306,24 @@ sub_020B49D4: ; 0x020B49D4
 	str r1, [r0]
 	tst r1, #0xf
 	bne _020B4A00
-	bl sub_020B34C4
+	bl vct_check_timeout
 _020B4A00:
-	bl sub_020B22E4
+	bl vct_flush_send_buffer
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl sub_020B2214
+	bl vct_decode_audio_buffer
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020B4A14: .word _021D848C
-	arm_func_end sub_020B49D4
+	arm_func_end VCT_Main
 
-	arm_func_start sub_020B4A18
-sub_020B4A18: ; 0x020B4A18
+	arm_func_start VCT_HandleData
+VCT_HandleData: ; 0x020B4A18
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	add r3, sp, #0
 	mov r4, r0
-	bl sub_020B4A8C
+	bl VCTi_HandleData
 	cmp r0, #0
 	beq _020B4A7C
 	cmp r0, #1
@@ -5352,10 +5352,10 @@ _020B4A7C:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020B4A88: .word _021D848C
-	arm_func_end sub_020B4A18
+	arm_func_end VCT_HandleData
 
-	arm_func_start sub_020B4A8C
-sub_020B4A8C: ; 0x020B4A8C
+	arm_func_start VCTi_HandleData
+VCTi_HandleData: ; 0x020B4A8C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	movs r6, r1
 	mov r7, r0
@@ -5392,7 +5392,7 @@ sub_020B4A8C: ; 0x020B4A8C
 	str r1, [sp]
 	mov r1, r6
 	mov r2, r5
-	bl sub_020B2028
+	bl vct_handle_audio
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _020B4B28:
@@ -5403,7 +5403,7 @@ _020B4B28:
 	mov r1, r6
 	mov r2, r5
 	mov r3, r4
-	bl sub_020B3570
+	bl vct_handle_ssp
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
@@ -5414,20 +5414,20 @@ _020B4B58:
 	.align 2, 0
 _020B4B60: .word 0x5F564354
 _020B4B64: .word _021D848C
-	arm_func_end sub_020B4A8C
+	arm_func_end VCTi_HandleData
 
 	.rodata
 
-_02108FE8:
+cAdpcmIndexTable2:
 	.byte 0xFF, 0x01, 0xFF, 0x01
 
-_02108FEC:
+cAdpcmIndexTable3:
 	.byte 0xFF, 0xFF, 0x01, 0x02
 	.byte 0xFF, 0xFF, 0x01, 0x02
-_02108FF4:
+cAdpcmIndexTable4:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x02, 0x04, 0x06, 0x08, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0x02, 0x04, 0x06, 0x08
-_02109004:
+cAdpcmStepSizeTable:
 	.byte 0x07, 0x00, 0x08, 0x00, 0x09, 0x00, 0x0A, 0x00, 0x0B, 0x00, 0x0C, 0x00
 	.byte 0x0D, 0x00, 0x0E, 0x00, 0x10, 0x00, 0x11, 0x00, 0x13, 0x00, 0x15, 0x00, 0x17, 0x00, 0x19, 0x00
 	.byte 0x1C, 0x00, 0x1F, 0x00, 0x22, 0x00, 0x25, 0x00, 0x29, 0x00, 0x2D, 0x00, 0x32, 0x00, 0x37, 0x00
@@ -5441,42 +5441,42 @@ _02109004:
 	.byte 0x5B, 0x31, 0x4B, 0x36, 0xB9, 0x3B, 0xB2, 0x41, 0x44, 0x48, 0x7E, 0x4F, 0x71, 0x57, 0x2F, 0x60
 	.byte 0xCE, 0x69, 0x62, 0x74, 0xFF, 0x7F, 0x00, 0x00
 
-_021090B8:
+sCodecInfo:
 	.byte 0x08, 0x00, 0x08, 0x00, 0x02, 0x04, 0x03, 0x04
 	.byte 0x04, 0x04
 
-_021090C2:
+sTransceiverBalance:
 	.byte 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x01, 0x01, 0x01, 0x01, 0x01, 0x02, 0x01, 0x02
 	.byte 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x03, 0x00
 
-_021090D8:
+sRequestEvent:
 	.byte 0x01, 0x08, 0x04, 0x0A, 0x00, 0x00, 0x00, 0x00
 
-_021090E0:
+sResponseEvent:
 	.byte 0x07, 0x0C, 0x02, 0x03, 0x09, 0x02, 0x00, 0x00
 
-_021090E8:
+sTransRecvState:
 	.byte 0xFE, 0xFE, 0xFE, 0x03, 0xFF, 0xFF, 0x00, 0xFF
 	.byte 0xFF, 0xFF, 0xFF, 0xFE, 0xFE, 0xFE, 0xFD, 0xFF, 0x02, 0x00, 0x00, 0x00, 0xFF, 0x00, 0xFE, 0xFE
 	.byte 0xFE, 0xFD, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFE, 0x00, 0xFE, 0xFD, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFE, 0xFE, 0xFE, 0xFD, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFE
 	.byte 0xFE, 0xFE, 0xFD, 0xFF, 0x00, 0x00, 0xFF, 0xFF, 0x00, 0xFF
 
-_0210912A:
+sSendState:
 	.byte 0x01, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE
 	.byte 0x00, 0x00, 0x00, 0xFE, 0xFE, 0xFE, 0xFE, 0x05, 0xFE, 0xFE, 0xFE, 0x00, 0xFE, 0xFE, 0xFE, 0xFE
 	.byte 0xFE, 0x05, 0xFE, 0xFE, 0xFE, 0xFE, 0x00, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE
 	.byte 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0x02, 0x00, 0x00, 0x00, 0xFE
 	.byte 0x00, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0x00, 0x00, 0xFE, 0xFE, 0x00, 0xFE
 
-_0210916C:
+sTransSendState:
 	.byte 0xFE, 0xFE, 0xFE, 0x01
 	.byte 0xFF, 0xFE, 0x00, 0x00, 0x00, 0xFE, 0xFE, 0xFE, 0x05, 0x05, 0xFE, 0xFF, 0xFE, 0x00, 0xFE, 0xFE
 	.byte 0xFE, 0xFE, 0xFE, 0x05, 0xFE, 0xFE, 0xFF, 0xFE, 0x00, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE
 	.byte 0xFE, 0xFF, 0xFE, 0x00, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFF, 0x03, 0x00, 0x00
 	.byte 0x00, 0xFE, 0x00, 0xFE, 0xFE, 0xFE, 0xFE, 0xFF, 0x00, 0x00, 0xFE, 0xFE, 0x00, 0xFE
 
-_021091AE:
+sRecvState:
 	.byte 0x04, 0xFE
 	.byte 0xFE, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFE, 0xFE, 0xFE, 0xFE, 0xFF, 0x02, 0x00
 	.byte 0x00, 0x00, 0xFF, 0x00, 0xFE, 0x05, 0x05, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFE
@@ -5486,18 +5486,18 @@ _021091AE:
 
 	.data
 
-_021108D8:
+sEnableVAD:
 	.byte 0x01, 0x00, 0x00, 0x00
-_021108DC:
+ulaw_segment:
 	.byte 0x3F, 0x00, 0x00, 0x00
 	.byte 0x7F, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0xFF, 0x01, 0x00, 0x00, 0xFF, 0x03, 0x00, 0x00
 	.byte 0xFF, 0x07, 0x00, 0x00, 0xFF, 0x0F, 0x00, 0x00, 0xFF, 0x1F, 0x00, 0x00
-_021108FC:
+sTransceiverLimit:
 	.byte 0xF7, 0xB5, 0xEF, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-_02110904:
+sVADInfo:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00
 	.byte 0xFC, 0x03, 0x00, 0x00
-_02110914:
+sImpulseResponse:
 	.byte 0xFB, 0xE9, 0x3D, 0x40, 0xBC, 0xC7, 0xD1, 0x2C, 0x2A, 0xD0, 0x7C, 0x03
 	.byte 0xF0, 0x08, 0x93, 0xF5

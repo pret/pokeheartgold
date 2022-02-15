@@ -11,19 +11,19 @@
 void CreateNPCTrainerParty(BATTLE_SETUP *battleSetup, int trainer_idx, HeapID heap_id);
 
 void EnemyTrainerSet_Init(BATTLE_SETUP *battleSetup, SAVEDATA *saveData, HeapID heap_id) {
-    TRAINER_RAM trainer;
+    TRAINER trainer;
     MSGDATA *msgData;
     const u16 *rivalName;
     int i;
     STRING *string;
 
-    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000729_bin, heap_id);
+    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0729_bin, heap_id);
     rivalName = Sav2_Misc_RivalName_const_get(Sav2_Misc_const_get(saveData));
     for (i = 0; i < 4; i++) {
         if (battleSetup->trainer_idxs[i] != 0) {
-            TrainerData_ReadTrData(battleSetup->trainer_idxs[i], &trainer.data);
+            TrainerData_ReadTrData(battleSetup->trainer_idxs[i], &trainer);
             battleSetup->trainers[i] = trainer;
-            if (trainer.data.trainerClass == TRAINERCLASS_RIVAL) {
+            if (trainer.trainerClass == TRAINERCLASS_RIVAL) {
                 CopyU16StringArray(battleSetup->trainers[i].name, rivalName);
             } else {
                 string = NewString_ReadMsgData(msgData, battleSetup->trainer_idxs[i]);
@@ -33,38 +33,38 @@ void EnemyTrainerSet_Init(BATTLE_SETUP *battleSetup, SAVEDATA *saveData, HeapID 
             CreateNPCTrainerParty(battleSetup, i, heap_id);
         }
     }
-    battleSetup->flags |= trainer.data.doubleBattle;
+    battleSetup->flags |= trainer.doubleBattle;
     DestroyMsgData(msgData);
 }
 
 int TrainerData_GetAttr(u32 tr_idx, TrainerAttr attr_no) {
-    TRAINER_RAM trainer;
+    TRAINER trainer;
     int result;
-    TrainerData_ReadTrData(tr_idx, &trainer.data);
+    TrainerData_ReadTrData(tr_idx, &trainer);
     switch (attr_no) {
     case TRATTR_TYPE:
-        result = trainer.data.trainerType;
+        result = trainer.trainerType;
         break;
     case TRATTR_CLASS:
-        result = trainer.data.trainerClass;
+        result = trainer.trainerClass;
         break;
     case TRATTR_UNK2:
-        result = trainer.data.unk_2;
+        result = trainer.unk_2;
         break;
     case TRATTR_NPOKE:
-        result = trainer.data.npoke;
+        result = trainer.npoke;
         break;
     case TRATTR_ITEM1:
     case TRATTR_ITEM2:
     case TRATTR_ITEM3:
     case TRATTR_ITEM4:
-        result = trainer.data.items[attr_no - TRATTR_ITEM1];
+        result = trainer.items[attr_no - TRATTR_ITEM1];
         break;
-    case TRATTR_UNKC:
-        result = trainer.data.unk_C;
+    case TRATTR_AIFLAGS:
+        result = trainer.ai_flags;
         break;
     case TRATTR_DOUBLEBTL:
-        result = trainer.data.doubleBattle;
+        result = trainer.doubleBattle;
         break;
     }
     return result;
@@ -104,7 +104,7 @@ void GetTrainerMessageByIdPair(u32 trainer_idx, u32 msg_id, STRING * str, HeapID
     while (rdbuf[0] != trTblSize) {
         NARC_ReadFromMember(trTblNarc, 0, rdbuf[0], 4, &rdbuf[1]);
         if (rdbuf[1] == trainer_idx && rdbuf[2] == msg_id) {
-            ReadMsgData_NewNarc_ExistingString(NARC_msgdata_msg, NARC_msg_msg_00000728_bin, (u32)(rdbuf[0] / 4), heap_id, str);
+            ReadMsgData_NewNarc_ExistingString(NARC_msgdata_msg, NARC_msg_msg_0728_bin, (u32)(rdbuf[0] / 4), heap_id, str);
             break;
         }
         rdbuf[0] += 4;
@@ -194,7 +194,7 @@ static const u8 sTrainerGenders[] = {
     TRAINER_FEMALE, // TRAINERCLASS_LEADER_BUGSY
     TRAINER_MALE,   // TRAINERCLASS_POKE_MANIAC
     TRAINER_MALE,   // TRAINERCLASS_BIRD_KEEPER_GS
-    TRAINER_FEMALE, // TRAINERCLASS_LEADER
+    TRAINER_FEMALE, // TRAINERCLASS_LEADER_WHITNEY
     TRAINER_MALE,   // TRAINERCLASS_RANCHER
     TRAINER_MALE,   // TRAINERCLASS_LEADER_MORTY
     TRAINER_MALE,   // TRAINERCLASS_LEADER_PRYCE
@@ -286,7 +286,7 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
     // gender as its trainer. Otherwise, it will assume the more abundant gender
     // according to its species gender ratio. In double battles, the behavior is
     // identical to that of a solitary male opponent.
-    if (TrainerClass_GetGenderOrTrainerCount(enemies->trainers[party_id].data.trainerClass) == TRAINER_FEMALE) {
+    if (TrainerClass_GetGenderOrTrainerCount(enemies->trainers[party_id].trainerClass) == TRAINER_FEMALE) {
         pid_gender = 0x78;
     } else {
         pid_gender = 0x88;
@@ -296,19 +296,19 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
     // array, with bit 0 being custom moveset and bit 1 being held item.
     // Nintendo didn't do it that way, instead using a switch statement and a lot
     // of code duplication. This has been the case since the 2nd generation games.
-    switch (enemies->trainers[party_id].data.trainerType) {
+    switch (enemies->trainers[party_id].trainerType) {
     case TRTYPE_MON: {
         TRPOKE_NOITEM_DFLTMOVES *monSpecies;
         u16 species;
         u8 forme;
         monSpecies = &data->species;
-        for (i = 0; i < enemies->trainers[party_id].data.npoke; i++) {
+        for (i = 0; i < enemies->trainers[party_id].npoke; i++) {
             // Starting in Platinum, the Pokemon's forme was encoded
             // in the upper 6 bits of the species.
             species = monSpecies[i].species & 0x3FF;
             forme = (monSpecies[i].species & 0xFC00) >> 10;
             // Starting in HGSS, additional checks are performed to
-            // seed each Pokemon's personality.
+            // rand each Pokemon's personality.
             TrMon_OverridePidGender(species, forme, monSpecies[i].genderAbilityOverride, &pid_gender);
             // Generate personality by seeding with a value based on the difficulty,
             // level, species, and opponent ID. Roll the RNG N times, where N is
@@ -319,7 +319,7 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
             // This procedure results in only a 24-bit peersonality value.
             personality = monSpecies[i].difficulty + monSpecies[i].level + species + enemies->trainer_idxs[party_id];
             SetLCRNGSeed(personality);
-            for (j = 0; j < enemies->trainers[party_id].data.trainerClass; j++) {
+            for (j = 0; j < enemies->trainers[party_id].trainerClass; j++) {
                 personality = LCRandom();
             }
             personality = (personality << 8) + pid_gender;
@@ -349,13 +349,13 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
         u16 species;
         u8 forme;
         monSpeciesMoves = &data->species_moves;
-        for (i = 0; i < enemies->trainers[party_id].data.npoke; i++) {
+        for (i = 0; i < enemies->trainers[party_id].npoke; i++) {
             species = monSpeciesMoves[i].species & 0x3FF;
             forme = (monSpeciesMoves[i].species & 0xFC00) >> 10;
             TrMon_OverridePidGender(species, forme, monSpeciesMoves[i].genderAbilityOverride, &pid_gender);
             personality = monSpeciesMoves[i].difficulty + monSpeciesMoves[i].level + species + enemies->trainer_idxs[party_id];
             SetLCRNGSeed(personality);
-            for (j = 0; j < enemies->trainers[party_id].data.trainerClass; j++) {
+            for (j = 0; j < enemies->trainers[party_id].trainerClass; j++) {
                 personality = LCRandom();
             }
             personality = (personality << 8) + pid_gender;
@@ -376,13 +376,13 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
         u16 species;
         u8 forme;
         monSpeciesItem = &data->species_item;
-        for (i = 0; i < enemies->trainers[party_id].data.npoke; i++) {
+        for (i = 0; i < enemies->trainers[party_id].npoke; i++) {
             species = monSpeciesItem[i].species & 0x3FF;
             forme = (monSpeciesItem[i].species & 0xFC00) >> 10;
             TrMon_OverridePidGender(species, forme, monSpeciesItem[i].genderAbilityOverride, &pid_gender);
             personality = monSpeciesItem[i].difficulty + monSpeciesItem[i].level + species + enemies->trainer_idxs[party_id];
             SetLCRNGSeed(personality);
-            for (j = 0; j < enemies->trainers[party_id].data.trainerClass; j++) {
+            for (j = 0; j < enemies->trainers[party_id].trainerClass; j++) {
                 personality = LCRandom();
             }
             personality = (personality << 8) + pid_gender;
@@ -401,13 +401,13 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
         u16 species;
         u8 forme;
         monSpeciesItemMoves = &data->species_item_moves;
-        for (i = 0; i < enemies->trainers[party_id].data.npoke; i++) {
+        for (i = 0; i < enemies->trainers[party_id].npoke; i++) {
             species = monSpeciesItemMoves[i].species & 0x3FF;
             forme = (monSpeciesItemMoves[i].species & 0xFC00) >> 10;
             TrMon_OverridePidGender(species, forme, monSpeciesItemMoves[i].genderAbilityOverride, &pid_gender);
             personality = monSpeciesItemMoves[i].difficulty + monSpeciesItemMoves[i].level + species + enemies->trainer_idxs[party_id];
             SetLCRNGSeed(personality);
-            for (j = 0; j < enemies->trainers[party_id].data.trainerClass; j++) {
+            for (j = 0; j < enemies->trainers[party_id].trainerClass; j++) {
                 personality = LCRandom();
             }
             personality = (personality << 8) + pid_gender;

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0665_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bill</language>
+	</row>
+	<row id="msg_0665_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, is this {STRVAR_1 3, 0, 0}?\rThat reminds me... Telephones, they\nchange your voice into electricity to\fcarry it over a long distance,\fdon’t they?\rSo, if you consider that technology,\nyou could change Pokémon into\felectricity and send them over large\fdistances as well, no?\rSo, based on that theory, I was able to\ncome up with and create the Pokémon\fStorage system!\rWell, it’s not quite as simple as a\ntelephone, but you get the idea, right?</language>
+	</row>
+	<row id="msg_0665_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, is this {STRVAR_1 3, 0, 0}?\rThat reminds me... Telephones, they\nchange your voice into electricity to\fcarry it over a long distance,\fdon’t they?\rSo, if you consider that technology,\nyou could change Pokémon into\felectricity and send them over large\fdistances as well, no?\rSo, based on that theory, I was able to\ncome up with and create the Pokémon\fStorage system!\rWell, it’s not quite as simple as a\ntelephone, but you get the idea, right?</language>
+	</row>
+	<row id="msg_0665_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Who’s calling?\r{STRVAR_1 3, 0, 0}, is it? Hang on a sec...\r...\n...\r</language>
+	</row>
+	<row id="msg_0665_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Who’s calling?\r{STRVAR_1 3, 0, 0}, is it? Hang on a sec...\r...\n...\r</language>
+	</row>
+	<row id="msg_0665_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Well, you’re starting on the PC Box\nnamed {STRVAR_1 11, 10, 0} right now.\rThat’s an easy-to-remember name. \nEasy to remember is the best way to go.\rOK, including the space left in\n{STRVAR_1 11, 10, 0}, you can still hold\f{STRVAR_1 52, 11, 0} more Pokémon in the PC.\r</language>
+	</row>
+	<row id="msg_0665_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Right now you’re using the PC Box\nnamed {STRVAR_1 11, 10, 0}, right?\rThat is a great name--I really like it.\rOK, including the space left in\n{STRVAR_1 11, 10, 0}, you can still hold\f{STRVAR_1 52, 11, 0} more Pokémon in the PC.\r</language>
+	</row>
+	<row id="msg_0665_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">So your PC Box is called\n{STRVAR_1 11, 10, 0}, right?\rThat’s not an ordinary name. I have a\nfeeling you know a good name when\fyou see it...\rOK, including the space left in\n{STRVAR_1 11, 10, 0}, you can still hold\f{STRVAR_1 52, 11, 0} more Pokémon in the PC.\r</language>
+	</row>
+	<row id="msg_0665_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Call again sometime...</language>
+	</row>
+	<row id="msg_0665_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Your PC Boxes are full!\rYou’ll have to release some Pokémon\nif you want to catch more.\r</language>
+	</row>
+	<row id="msg_0665_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey, this is Bill here.\rYou know your PC Boxes are full, right?\rYou’ve done a great job of catching\nPokémon, haven’t you!\rSeriously, it’s wonderful, I tip my hat!\rThat said, you do understand that with\nyour PC Boxes full like that, you can’t\fcatch any more Pokémon?\fJust so you know.</language>
+	</row>
+	<row id="msg_0665_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey, this is Bill here.\rYou know your PC Boxes are full, right?\rYou’ve done a great job of catching\nPokémon, haven’t you!\rSeriously, it’s wonderful, I tip my hat!\rThat said, you do understand that with\nyour PC Boxes full like that, you can’t\fcatch any more Pokémon?\fJust so you know.</language>
+	</row>
+</body>

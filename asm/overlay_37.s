@@ -21,7 +21,7 @@ _021E5916:
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -437,7 +437,7 @@ ov37_021E5CC8: ; 0x021E5CC8
 	bl sub_0202061C
 	bl sub_0200B224
 	add r0, r4, #0
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E5CE8 ; =0x027E0000
 	ldr r1, _021E5CEC ; =0x00003FF8
 	mov r0, #1
@@ -780,7 +780,7 @@ ov37_021E5F98: ; 0x021E5F98
 	add r0, r5, #0
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0x40
 	str r0, [sp]
 	mov r0, #0x27
@@ -789,7 +789,7 @@ ov37_021E5F98: ; 0x021E5F98
 	mov r1, #1
 	mov r2, #4
 	mov r3, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r1, #0x1a
 	mov r0, #0
 	lsl r1, r1, #4
@@ -813,7 +813,7 @@ ov37_021E5F98: ; 0x021E5F98
 	add r0, r5, #0
 	add r2, r4, #0
 	add r3, r1, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -827,7 +827,7 @@ ov37_021E5F98: ; 0x021E5F98
 	mov r1, #4
 	add r2, r4, #0
 	mov r3, #2
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2
@@ -841,7 +841,7 @@ ov37_021E5F98: ; 0x021E5F98
 	mov r1, #3
 	add r2, r4, #0
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -855,7 +855,7 @@ ov37_021E5F98: ; 0x021E5F98
 	add r0, r5, #0
 	add r2, r4, #0
 	add r3, r1, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r6, #8]
 	ldr r0, [r0, #4]
 	bl Options_GetFrame
@@ -1305,7 +1305,7 @@ _021E63B0:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x64
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1729,7 +1729,7 @@ _021E6752:
 	bl sub_0203769C
 	lsl r1, r0, #2
 	ldr r0, [sp]
-	ldr r2, _021E680C ; =gMain + 0x40
+	ldr r2, _021E680C ; =gSystem + 0x40
 	add r1, r0, r1
 	mov r0, #0x76
 	lsl r0, r0, #2
@@ -1787,7 +1787,7 @@ _021E67FC: .word 0x0000438B
 _021E6800: .word 0x00004377
 _021E6804: .word 0x000005E5
 _021E6808: .word ov37_021E7970
-_021E680C: .word gMain + 0x40
+_021E680C: .word gSystem + 0x40
 _021E6810: .word 0x00004378
 _021E6814: .word 0x00004380
 	thumb_func_end ov37_021E65EC
@@ -3369,7 +3369,7 @@ ov37_021E741C: ; 0x021E741C
 	strh r1, [r0]
 _021E7432:
 	ldrh r0, [r0]
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0xa
 	mul r1, r0
 	asr r0, r1, #0xb

@@ -1,0 +1,62 @@
+{
+  "header": "fielddata/script/scr_seq/event_D27R0102.h",
+  "objects": [
+    {
+      "id": "obj_EVERYWHERE_gsgentleman",
+      "ovid": "SPRITE_GSGENTLEMAN",
+      "mvt": 0,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_GENTLEMAN_ALFRED)",
+      "dirn": 3,
+      "eye": 5,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1,
+      "y": 8,
+      "z": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_seaman_2",
+      "ovid": "SPRITE_SEAMAN_2",
+      "mvt": 0,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_SAILOR_HUEY)",
+      "dirn": 2,
+      "eye": 4,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 15,
+      "y": 13,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 5,
+      "y": 3,
+      "header": "MAP_D27R0101",
+      "anchor": 2,
+      "height": 0
+    },
+    {
+      "x": 13,
+      "y": 6,
+      "header": "MAP_D27R0104",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 13,
+      "y": 5,
+      "header": "MAP_D27R0104",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

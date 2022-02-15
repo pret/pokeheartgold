@@ -175,7 +175,7 @@ ov56_021E5D44: ; 0x021E5D44
 	mov r0, #0
 	pop {r4, pc}
 _021E5D5A:
-	ldr r0, _021E5DA0 ; =gMain
+	ldr r0, _021E5DA0 ; =gSystem
 	ldr r0, [r0, #0x44]
 	cmp r0, #0
 	beq _021E5D9A
@@ -190,7 +190,7 @@ _021E5D6C:
 	mov r0, #1
 	pop {r4, pc}
 _021E5D74:
-	ldr r0, _021E5DA0 ; =gMain
+	ldr r0, _021E5DA0 ; =gSystem
 	ldr r0, [r0, #0x44]
 	cmp r0, #0
 	beq _021E5D80
@@ -214,14 +214,14 @@ _021E5D9A:
 	mov r0, #0
 	pop {r4, pc}
 	nop
-_021E5DA0: .word gMain
+_021E5DA0: .word gSystem
 	thumb_func_end ov56_021E5D44
 
 	thumb_func_start ov56_021E5DA4
 ov56_021E5DA4: ; 0x021E5DA4
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _021E5DD4 ; =gMain
+	ldr r0, _021E5DD4 ; =gSystem
 	ldr r0, [r0, #0x48]
 	cmp r0, #0
 	beq _021E5DB6
@@ -244,14 +244,14 @@ _021E5DC8:
 	mov r0, #1
 	pop {r4, pc}
 	nop
-_021E5DD4: .word gMain
+_021E5DD4: .word gSystem
 _021E5DD8: .word 0x000005E3
 	thumb_func_end ov56_021E5DA4
 
 	thumb_func_start ov56_021E5DDC
 ov56_021E5DDC: ; 0x021E5DDC
 	push {r3, r4, r5, lr}
-	ldr r1, _021E5EEC ; =gMain
+	ldr r1, _021E5EEC ; =gSystem
 	add r4, r0, #0
 	ldr r2, [r1, #0x48]
 	mov r1, #1
@@ -392,7 +392,7 @@ _021E5EE6:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_021E5EEC: .word gMain
+_021E5EEC: .word gSystem
 _021E5EF0: .word 0x000005DD
 _021E5EF4: .word 0x000005E3
 _021E5EF8: .word 0x000005DC
@@ -419,12 +419,12 @@ _021E5F18:
 	strh r1, [r0]
 	add r0, sp, #4
 	str r0, [sp]
-	ldr r3, _021E5FA8 ; =gMain + 0x40
+	ldr r3, _021E5FA8 ; =gSystem + 0x40
 	ldr r0, [r5, #0x18]
 	ldrh r2, [r3, #0x20]
 	ldrh r3, [r3, #0x22]
 	mov r1, #2
-	bl sub_0201F2CC
+	bl DoesPixelAtScreenXYMatchPtrVal
 	cmp r0, #1
 	bne _021E5F3A
 	add sp, #8
@@ -483,7 +483,7 @@ _021E5F86:
 	pop {r3, r4, r5, pc}
 	nop
 _021E5FA4: .word ov56_021E6E20
-_021E5FA8: .word gMain + 0x40
+_021E5FA8: .word gSystem + 0x40
 _021E5FAC: .word 0x000005DD
 _021E5FB0: .word 0x000005E3
 	thumb_func_end ov56_021E5EFC
@@ -558,7 +558,7 @@ _021E5FF2:
 	bl String_dtor
 	b _021E6088
 _021E603E:
-	ldr r1, _021E6098 ; =gMain
+	ldr r1, _021E6098 ; =gSystem
 	ldr r2, [r1, #0x48]
 	mov r1, #3
 	tst r1, r2
@@ -603,7 +603,7 @@ _021E6088:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E6094: .word 0x0001020F
-_021E6098: .word gMain
+_021E6098: .word gSystem
 	thumb_func_end ov56_021E5FDC
 
 	thumb_func_start ov56_021E609C
@@ -838,7 +838,7 @@ _021E624E:
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -877,7 +877,7 @@ _021E62A2:
 	mov r1, #1
 	bl GX_EngineAToggleLayers
 	mov r0, #0
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	mov r1, #4
 	ldr r0, _021E63B4 ; =0x04000050
 	mov r2, #8
@@ -1021,7 +1021,7 @@ _021E63CE:
 _021E63DC:
 	bl NNS_GfdDoVramTransfer
 	ldr r0, [r4, #0x18]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E63F4 ; =0x027E0000
 	ldr r1, _021E63F8 ; =0x00003FF8
 	mov r0, #1
@@ -1592,7 +1592,7 @@ _021E6768:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x18]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r5, #0x18]
 	mov r1, #3
 	bl ScheduleBgTilemapBufferTransfer
@@ -1624,7 +1624,7 @@ _021E6768:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x18]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r5, #0x18]
 	mov r1, #2
 	bl ScheduleBgTilemapBufferTransfer

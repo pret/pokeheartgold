@@ -1,0 +1,107 @@
+{
+  "header": "fielddata/script/scr_seq/event_D17R0104.h",
+  "objects": [
+    {
+      "id": "obj_EVERYWHERE_monstarball",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D17R0104_ESCAPE_ROPE",
+      "scr": "std_itemball_d17r0104_escape_rope",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 6,
+      "y": 21,
+      "z": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_monstarball_2",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D17R0104_ULTRA_BALL",
+      "scr": "std_itemball_d17r0104_ultra_ball",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 22,
+      "y": 18,
+      "z": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_monstarball_3",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D17R0104_PP_UP",
+      "scr": "std_itemball_d17r0104_pp_up",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 25,
+      "y": 24,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 24,
+      "y": 8,
+      "header": "MAP_D17R0103",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 6,
+      "y": 8,
+      "header": "MAP_D17R0105",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 6,
+      "y": 7,
+      "header": "MAP_D17R0105",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 6,
+      "y": 25,
+      "header": "MAP_D17R0105",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 6,
+      "y": 24,
+      "header": "MAP_D17R0105",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 24,
+      "y": 25,
+      "header": "MAP_D17R0105",
+      "anchor": 2,
+      "height": 0
+    },
+    {
+      "x": 24,
+      "y": 24,
+      "header": "MAP_D17R0105",
+      "anchor": 2,
+      "height": 0
+    }
+  ]
+}

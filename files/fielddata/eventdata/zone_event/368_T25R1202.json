@@ -1,0 +1,256 @@
+{
+  "header": "fielddata/script/scr_seq/event_T25R1202.h",
+  "bgs": [
+    {
+      "scr": "_EV_scr_seq_T25R1202_009 + 1",
+      "type": 0,
+      "x": 15,
+      "y": 3,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": "_EV_scr_seq_T25R1202_010 + 1",
+      "type": 0,
+      "x": 15,
+      "y": 13,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": "_EV_scr_seq_T25R1202_011 + 1",
+      "type": 0,
+      "x": 6,
+      "y": 7,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T25R1202_011 + 1",
+      "type": 0,
+      "x": 6,
+      "y": 8,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T25R1202_012 + 1",
+      "type": 0,
+      "x": 9,
+      "y": 14,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T25R1202_012 + 1",
+      "type": 0,
+      "x": 9,
+      "y": 13,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T25R1202_012 + 1",
+      "type": 0,
+      "x": 6,
+      "y": 13,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T25R1202_012 + 1",
+      "type": 0,
+      "x": 6,
+      "y": 14,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T25R1202_011 + 1",
+      "type": 0,
+      "x": 9,
+      "y": 8,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T25R1202_011 + 1",
+      "type": 0,
+      "x": 9,
+      "y": 7,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_T25R1202_gsgirl2",
+      "ovid": "SPRITE_GSGIRL2",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T25R1202_002 + 1",
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 10,
+      "y": 6,
+      "z": 0
+    },
+    {
+      "id": "obj_T25R1202_gsbabygirl1",
+      "ovid": "SPRITE_GSBABYGIRL1",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T25R1202_008 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 11,
+      "y": 17,
+      "z": 0
+    },
+    {
+      "id": "obj_T25R1202_middlewoman1_2",
+      "ovid": "SPRITE_MIDDLEWOMAN1_2",
+      "mvt": 2,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T25R1202_005 + 1",
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 13,
+      "y": 10,
+      "z": 0
+    },
+    {
+      "id": "obj_T25R1202_gswoman1",
+      "ovid": "SPRITE_GSWOMAN1",
+      "mvt": 2,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T25R1202_006 + 1",
+      "dirn": 3,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 4,
+      "y": 15,
+      "z": 0
+    },
+    {
+      "id": "obj_T25R1202_gsgirl1",
+      "ovid": "SPRITE_GSGIRL1",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T25R1202_007 + 1",
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 13,
+      "y": 15,
+      "z": 0
+    },
+    {
+      "id": "obj_T25R1202_gsoldwoman1",
+      "ovid": "SPRITE_GSOLDWOMAN1",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T25R1202_004 + 1",
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 10,
+      "y": 14,
+      "z": 0
+    },
+    {
+      "id": "obj_T25R1202_mount_2",
+      "ovid": "SPRITE_MOUNT_2",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T25R1202_001 + 1",
+      "dirn": 3,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 5,
+      "y": 8,
+      "z": 0
+    },
+    {
+      "id": "obj_T25R1202_gswoman2",
+      "ovid": "SPRITE_GSWOMAN2",
+      "mvt": 3,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T25R1202_003 + 1",
+      "dirn": 3,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 2,
+      "yrange": 0,
+      "x": 20,
+      "y": 11,
+      "z": 0
+    },
+    {
+      "id": "obj_T25R1202_mystery_2",
+      "ovid": "SPRITE_MYSTERY_2",
+      "mvt": 2,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T25R1202_000 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 2,
+      "yrange": 0,
+      "x": 7,
+      "y": 4,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 16,
+      "y": 5,
+      "header": "MAP_T25R1201",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 16,
+      "y": 15,
+      "header": "MAP_T25R1203",
+      "anchor": 1,
+      "height": 0
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0065_D23R0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Welcome to Goldenrod’s Radio Tower!</language>
+	</row>
+	<row id="msg_0065_D23R0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Welcome to Goldenrod’s Radio Tower!\r...Or, maybe not.\nI am sorry to tell you this, but no one\fcan visit the tower now.</language>
+	</row>
+	<row id="msg_0065_D23R0101_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Um, yes. I have been telling visitors\nto go home as you instructed...</language>
+	</row>
+	<row id="msg_0065_D23R0101_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">We have a special Quiz campaign!\rAnswer five questions correctly in a\nrow to win a Radio Card!\rWhen you load it into the Pokégear, you\nwill be able to listen to the radio...\fanytime, anywhere!\rWould you like to try our Quiz? {YESNO 0}</language>
+	</row>
+	<row id="msg_0065_D23R0101_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The first question!\rCan you check the Town Map with\nyour Pokégear? {YESNO 0}</language>
+	</row>
+	<row id="msg_0065_D23R0101_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You are correct.\nThe second question!\rNIDORINA can only be female.\nTrue? {YESNO 0}</language>
+	</row>
+	<row id="msg_0065_D23R0101_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You are correct.\nThe third question!\rKurt, the Poké Ball creator, uses\napricots as ingredients? {YESNO 0}</language>
+	</row>
+	<row id="msg_0065_D23R0101_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You are correct again.\nThe fourth question!\rIt’s impossible to use a TM on\nMAGIKARP. True? {YESNO 0}</language>
+	</row>
+	<row id="msg_0065_D23R0101_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wow!\nI have only one more question to go.\rIn Professor Oak’s popular show,\nPokémon Talk, is he on with Marie? {YESNO 0}</language>
+	</row>
+	<row id="msg_0065_D23R0101_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bingo! You got it!\nCongratulations!\fHere’s your prize, a Radio Card!\r</language>
+	</row>
+	<row id="msg_0065_D23R0101_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} can now listen to the\nradio with the Pokégear!</language>
+	</row>
+	<row id="msg_0065_D23R0101_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Please tune in to our radio shows!</language>
+	</row>
+	<row id="msg_0065_D23R0101_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh, dear.\nSorry, but you got it wrong.\fPlease try again!</language>
+	</row>
+	<row id="msg_0065_D23R0101_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh. I see.\nPlease see me if you change your mind.</language>
+	</row>
+	<row id="msg_0065_D23R0101_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Whitney: Hi!\nMy name is Whitney!\rI heard about the Quiz to win a Radio\nCard, so I came here to get one...\rBut this Quiz is so hard!\r</language>
+	</row>
+	<row id="msg_0065_D23R0101_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Whitney: Wow, you did it!\nI thought the answer to the third\fquestion was surely apricots!\rOops!\nIt’s time to go back to the Gym!\r</language>
+	</row>
+	<row id="msg_0065_D23R0101_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ben is a fabulous DJ!\nHis sweet voice just makes me melt!</language>
+	</row>
+	<row id="msg_0065_D23R0101_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I love Mary from Pokémon Talk.\rI only know what she sounds like,\nthough!</language>
+	</row>
+	<row id="msg_0065_D23R0101_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Who are you?\nWe have some business going on.\rI was told not to let anyone pass but\nTeam Rocket!\rDo you understand?\rYou are only allowed to come through\nwhen you are wearing the cool black\funiform for Team Rocket!</language>
+	</row>
+	<row id="msg_0065_D23R0101_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ha! You must be new!\nYou look pretty good in the Team Rocket\funiform!\rGo on ahead!\r</language>
+	</row>
+	<row id="msg_0065_D23R0101_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What are you doing?\nGo upstairs and take your position!</language>
+	</row>
+	<row id="msg_0065_D23R0101_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 1, 0}: Hey, Team Rocket!\rStop going around in groups and\ntroubling people. You cowards!\r</language>
+	</row>
+	<row id="msg_0065_D23R0101_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 1, 0}: ...Huh?\nAre you {STRVAR_1 3, 0, 0}?\fWhat are you doing here?\rNo way... You think you’re strong now\nthat you look like them?\rThat’s foolish!\nYou shouldn’t wear those things!\r</language>
+	</row>
+	<row id="msg_0065_D23R0101_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What? You!\nYou’re not a newcomer?\fThen battle with me!\r</language>
+	</row>
+	<row id="msg_0065_D23R0101_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You are too powerful.\rYou could spoil our plan.\nI have to inform the others...\r</language>
+	</row>
+	<row id="msg_0065_D23R0101_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 1, 0}: I see.\nYou were trying to be sneaky...\rHuh!\nA typical idea of the meek!\rNo matter.\nI’ll let you handle this.\rI have to defeat the Dragon Tamer...\nWhat’s his name...? Lance!\rAfter that...it will be your turn.\nBe ready for it!\r</language>
+	</row>
+	<row id="msg_0065_D23R0101_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">1F Reception\n2F Sales\f3F Personnel\f4F Production\f5F Director’s Office\f6F Observation Deck</language>
+	</row>
+	<row id="msg_0065_D23R0101_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lucky Channel!\nWin with Pokémon ID numbers!\rTrade your Pokémon to collect different\nID numbers!</language>
+	</row>
+	<row id="msg_0065_D23R0101_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This is the Pokémon Lottery Corner.\nI’m Felicity, your attendant today.\rIf the drawn number matches the ID No.\nof any of your Pokémon, you could win\ffabulous gifts.\rWould you like to check today’s\nlucky number? {YESNO 0}</language>
+	</row>
+	<row id="msg_0065_D23R0101_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You’ve already drawn a Loto Ticket\ntoday. Please come back tomorrow.</language>
+	</row>
+	<row id="msg_0065_D23R0101_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh. I see.\nPlease do visit us again.</language>
+	</row>
+	<row id="msg_0065_D23R0101_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">First, I’ll look up today’s Pokémon\nLottery Corner lucky number.\r...\r</language>
+	</row>
+	<row id="msg_0065_D23R0101_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Your Loto Ticket number is {STRVAR_1 54, 0, 0}.\rNow, let’s see if it matches the\nID No. of any of your Pokémon.\r</language>
+	</row>
+	<row id="msg_0065_D23R0101_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Congratulations!\rThe ID No. of your team’s\n{STRVAR_1 1, 0, 0} matches your Loto\fTicket number!\r</language>
+	</row>
+	<row id="msg_0065_D23R0101_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Congratulations!\rThe ID No. of your PC-boxed\n{STRVAR_1 1, 0, 0} matches your Loto\fTicket number!\r</language>
+	</row>
+	<row id="msg_0065_D23R0101_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’m sorry.\nYou didn’t get a match...</language>
+	</row>
+	<row id="msg_0065_D23R0101_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The last digit matched, so you\nwin the fourth prize!\r</language>
+	</row>
+	<row id="msg_0065_D23R0101_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You gained a new Backdrop for use\nin Fitting Rooms.</language>
+	</row>
+	<row id="msg_0065_D23R0101_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The last two digits matched, so you\nwin the third prize!\r</language>
+	</row>
+	<row id="msg_0065_D23R0101_00039" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The last three digits matched, so you\nwin the second prize!\r</language>
+	</row>
+	<row id="msg_0065_D23R0101_00040" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The last four digits matched, so you\nwin the first prize!\r</language>
+	</row>
+	<row id="msg_0065_D23R0101_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh, my goodness, all five digits\nmatched!\rYou’ve won the jackpot prize!\nThis is just so incredible!\r...Oh, I’m sorry! Your prize!\nI got carried away there.\rHere you go!\r</language>
+	</row>
+	<row id="msg_0065_D23R0101_00042" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">...Oh?\nYou seem to have no room for this.\rPlease make room in your Bag and\nthen let me know.</language>
+	</row>
+	<row id="msg_0065_D23R0101_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0}?\nYes, I’ve been expecting you.\rThis is the prize we’ve been holding\nfor you. Here you go!\r</language>
+	</row>
+	<row id="msg_0065_D23R0101_00044" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Please do visit again!\nGood-bye from Felicity, your attendant!</language>
+	</row>
+	<row id="msg_0065_D23R0101_00045" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This is the Pokémon Lottery Corner.\rWould you like to check today’s\nlucky number again? {YESNO 0}</language>
+	</row>
+</body>

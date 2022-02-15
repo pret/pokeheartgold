@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0500_T07R0107_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello.\rTo which floor may I take you? {YESNO 0}</language>
+	</row>
+	<row id="msg_0500_T07R0107_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I look forward to serving you again.</language>
+	</row>
+	<row id="msg_0500_T07R0107_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Certainly.\nElevator going up!\r</language>
+	</row>
+	<row id="msg_0500_T07R0107_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Certainly.\nElevator going down!\r</language>
+	</row>
+	<row id="msg_0500_T07R0107_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Uh... We are already on that floor?</language>
+	</row>
+	<row id="msg_0500_T07R0107_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">First floor has the Service Counter\nand the main entrance.</language>
+	</row>
+	<row id="msg_0500_T07R0107_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Second floor has the Trainer’s Market\nwhere you can buy everything you need.</language>
+	</row>
+	<row id="msg_0500_T07R0107_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Third floor has the TM Shop\nto power up your Pokémon.</language>
+	</row>
+	<row id="msg_0500_T07R0107_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fourth floor has the Wiseman Gifts,\nwhich has the perfect gifts.</language>
+	</row>
+	<row id="msg_0500_T07R0107_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fifth floor has the Battle Collection\nto raise stats.</language>
+	</row>
+	<row id="msg_0500_T07R0107_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sixth floor has the Rooftop Atrium\nfor a nice break.</language>
+	</row>
+</body>

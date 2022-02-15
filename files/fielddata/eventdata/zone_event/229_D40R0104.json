@@ -1,0 +1,127 @@
+{
+  "header": "fielddata/script/scr_seq/event_D40R0104.h",
+  "bgs": [
+    {
+      "scr": "std_hiddenitem_d40r0104_full_restore",
+      "type": 2,
+      "x": 29,
+      "y": 11,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_D40R0104_bozu",
+      "ovid": "SPRITE_BOZU",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_D40R0104_000 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 36,
+      "y": 30,
+      "z": 0
+    },
+    {
+      "id": "obj_D40R0104_monstarball",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D40R0104_MAX_REVIVE",
+      "scr": "std_itemball_d40r0104_max_revive",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 25,
+      "y": 17,
+      "z": 0
+    },
+    {
+      "id": "obj_D40R0104_monstarball_2",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D40R0104_FULL_RESTORE",
+      "scr": "std_itemball_d40r0104_full_restore",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 29,
+      "y": 25,
+      "z": 0
+    },
+    {
+      "id": "obj_D40R0104_monstarball_3",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D40R0104_MAX_ELIXIR",
+      "scr": "std_itemball_d40r0104_max_elixir",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 25,
+      "y": 30,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 27,
+      "y": 28,
+      "header": "MAP_D40R0102",
+      "anchor": 4,
+      "height": 0
+    },
+    {
+      "x": 27,
+      "y": 27,
+      "header": "MAP_D40R0102",
+      "anchor": 4,
+      "height": 0
+    },
+    {
+      "x": 32,
+      "y": 14,
+      "header": "MAP_D40R0102",
+      "anchor": 11,
+      "height": 0
+    },
+    {
+      "x": 32,
+      "y": 13,
+      "header": "MAP_D40R0102",
+      "anchor": 11,
+      "height": 0
+    },
+    {
+      "x": 31,
+      "y": 31,
+      "header": "MAP_D40R0106",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 31,
+      "y": 43,
+      "header": "MAP_D40R0107",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

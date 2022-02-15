@@ -1,0 +1,1980 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0806_00000" index="0">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語"></language>
+	</row>
+	<row id="msg_0806_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Au matin de sa vie, la graine sur\nson dos lui fournit les éléments\ndont il a besoin pour grandir.</language>
+	</row>
+	<row id="msg_0806_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lorsque le bourgeon sur son dos\néclot, il répand un doux parfum\npour célébrer sa floraison.</language>
+	</row>
+	<row id="msg_0806_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Le parfum de sa fleur se fait plus\npénétrant les lendemains de pluie.\nCela appâte les autres Pokémon.</language>
+	</row>
+	<row id="msg_0806_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">La flamme de sa queue symbolise sa\nvitalité. Elle est intense quand il\nest en bonne santé.</language>
+	</row>
+	<row id="msg_0806_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">La nuit, la queue ardente du\nREPTINCEL brille comme une étoile\ndans son repaire montagneux.</language>
+	</row>
+	<row id="msg_0806_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On raconte que la flamme du\nDRACAUFEU s’intensifie après\nun combat difficile.</language>
+	</row>
+	<row id="msg_0806_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il se réfugie dans sa carapace\net réplique en éclaboussant\nl’ennemi à la première occasion.</language>
+	</row>
+	<row id="msg_0806_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On prétend qu’il vit 10 000 ans.\nSa queue duveteuse est un\nsymbole de longévité populaire.</language>
+	</row>
+	<row id="msg_0806_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Les trombes d’eau projetées par\nles canons de sa carapace peuvent\npercer le métal le plus résistant.</language>
+	</row>
+	<row id="msg_0806_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses antennes rouges libèrent une\npuanteur qui repousse l’ennemi. Il\ngrandit par mues régulières.</language>
+	</row>
+	<row id="msg_0806_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son corps frêle est protégé par sa\ncarapace d’acier. Il encaisse les\ncoups durs en attendant d’évoluer.</language>
+	</row>
+	<row id="msg_0806_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il raffole du nectar des fleurs. Il\nest capable de repérer la plus\npetite quantité de pollen.</language>
+	</row>
+	<row id="msg_0806_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il mange chaque jour son poids en\nfeuilles. Il utilise l’aiguillon sur sa\ntête pour repousser l’ennemi.</language>
+	</row>
+	<row id="msg_0806_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il se cache sous les feuilles et les\nbranches pour fuir les prédateurs\nen attendant d’évoluer.</language>
+	</row>
+	<row id="msg_0806_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il virevolte rapidement autour de\nl’ennemi et frappe de son dard\nempoisonné avant de décamper.</language>
+	</row>
+	<row id="msg_0806_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ce Pokémon docile préfère éviter\nle combat. Toutefois, il se montre\ntrès féroce quand on l’agresse.</language>
+	</row>
+	<row id="msg_0806_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il survole son vaste territoire en\nquête d’une proie avant de fondre\nsur elle toutes griffes en avant.</language>
+	</row>
+	<row id="msg_0806_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">En battant des ailes de toutes ses\nforces, ROUCARNAGE génère une\nrafale à en déraciner les arbres.</language>
+	</row>
+	<row id="msg_0806_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">D’une prudence extrême, sa nature\nrobuste lui permet de s’adapter\nà tous les terrains.</language>
+	</row>
+	<row id="msg_0806_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il grignote sans cesse pour apaiser\nla poussée de ses crocs. Il peut\ntranspercer un mur de parpaings.</language>
+	</row>
+	<row id="msg_0806_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il fait battre vigoureusement ses\npetites ailes pour voler et cherche\nà manger dans l’herbe avec son bec.</language>
+	</row>
+	<row id="msg_0806_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il a assez d’énergie pour voler \ntoute la journée avec ses grandes \nailes. Il frappe de son bec acéré.</language>
+	</row>
+	<row id="msg_0806_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il se faufile dans l’herbe sans un\nbruit et frappe dans le dos quand\nsa proie s’y attend le moins. </language>
+	</row>
+	<row id="msg_0806_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il utilise la marque sur son ventre\npour intimider l’ennemi. Il étouffe\nl’ennemi pétrifié par la peur.</language>
+	</row>
+	<row id="msg_0806_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il vit en forêt avec ses pairs.\nIl accumule l’électricité dans\nles poches de ses joues.</language>
+	</row>
+	<row id="msg_0806_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il devient agressif lorsque son\ncorps contient trop d’électricité.\nIl la décharge par sa queue.</language>
+	</row>
+	<row id="msg_0806_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il vit sur des terres arides\népargnées par la pluie. Il se roule\nen boule pour se protéger.</language>
+	</row>
+	<row id="msg_0806_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il se met en boule pour percuter\nl’ennemi. Ses épines aiguisées\nfont beaucoup de dégâts.</language>
+	</row>
+	<row id="msg_0806_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bien qu’il rechigne à se battre,\nune goutte du poison sécrété par\nses piquants peut s’avérer fatale.</language>
+	</row>
+	<row id="msg_0806_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ce Pokémon dresse ses piquants\nen cas de danger. Ils poussent\nmoins vite que ceux de NIDORINO.</language>
+	</row>
+	<row id="msg_0806_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son corps est recouvert d’écailles\nsolides. Il donnera sa vie pour\nsecourir les petits de son terrier. </language>
+	</row>
+	<row id="msg_0806_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il jauge le terrain en laissant\nses oreilles dépasser de l’herbe.\nIl se défend avec sa corne toxique.</language>
+	</row>
+	<row id="msg_0806_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">D’un tempérament violent, il\nempale l’ennemi sur sa corne qui\ndistille un poison puissant.</language>
+	</row>
+	<row id="msg_0806_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un coup de sa puissante queue\npeut briser un poteau téléphonique\ncomme une allumette.</language>
+	</row>
+	<row id="msg_0806_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Tout le monde craque pour cet\nadorable Pokémon. Il vit en groupe\ndans le calme des montagnes.</language>
+	</row>
+	<row id="msg_0806_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il joue au bord des lacs déserts\nles soirs de pleine lune. Rares\nsont ceux qui l’ont aperçu.</language>
+	</row>
+	<row id="msg_0806_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il envoie des boules de feu. Avec\nl’âge, ses six queues en forment de\nnouvelles. </language>
+	</row>
+	<row id="msg_0806_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On raconte que ses neuf queues\ndétiennent un pouvoir mystique.\nIl peut vivre pendant mille ans.</language>
+	</row>
+	<row id="msg_0806_00039" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lorsqu’il roule ses grands yeux\nronds, il entonne une berceuse\nqui endort son auditoire.</language>
+	</row>
+	<row id="msg_0806_00040" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sa fourrure est d’une douceur\nincomparable au toucher. Il \npeut gonfler en aspirant de l’air.</language>
+	</row>
+	<row id="msg_0806_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bien que dépourvu d’yeux, il\nrepère les obstacles grâce aux\nultrasons émis par sa gueule.</language>
+	</row>
+	<row id="msg_0806_00042" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il aime le sang des humains et des\nPokémon. Il erre la nuit en quête\nd’un cou où planter ses crocs.</language>
+	</row>
+	<row id="msg_0806_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">En journée, il plante ses pieds-\nracines dans le sol. La nuit, il se \npromène en semant des graines.</language>
+	</row>
+	<row id="msg_0806_00044" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">L’odeur du nectar de sa bouche \nest si répugnante qu’elle agresse\nles narines à deux kilomètres.</language>
+	</row>
+	<row id="msg_0806_00045" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses pétales sont les plus grands\ndu monde. Il marche en répandant\nun pollen extrêmement allergène.</language>
+	</row>
+	<row id="msg_0806_00046" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Des champignons appelés\n“tochukaso” poussent sur son dos.\nIls évoluent avec le PARAS hôte.</language>
+	</row>
+	<row id="msg_0806_00047" index="47">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un champignon parasite plus gros\nque PARASECT contrôle son corps.\nIl répand des spores empoisonnées.</language>
+	</row>
+	<row id="msg_0806_00048" index="48">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses grands yeux sont en fait\ndes amas d’yeux minuscules. La\nnuit, il est attiré par la lumière.</language>
+	</row>
+	<row id="msg_0806_00049" index="49">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il répand ses écailles poudreuses\nen battant des ailes. Elles sont\ntoxiques au toucher.</language>
+	</row>
+	<row id="msg_0806_00050" index="50">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un Pokémon qui vit sous terre.\nHabitué aux souterrains, il fuit la\nlumière du jour.</language>
+	</row>
+	<row id="msg_0806_00051" index="51">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses trois têtes creusent le sol à\ntour de rôle. Il peut atteindre des\nprofondeurs de 100 kilomètres.</language>
+	</row>
+	<row id="msg_0806_00052" index="52">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son regard s’anime à la vue\nd’un objet brillant. C’est un\nPokémon nocturne.</language>
+	</row>
+	<row id="msg_0806_00053" index="53">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un Pokémon très snob. La taille du\njoyau qui orne son front alimente\nbien des débats parmi ses fans.</language>
+	</row>
+	<row id="msg_0806_00054" index="54">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Quand son mal de crâne empire,\nil développe d’étranges pouvoirs\ndont il ne se souvient jamais.</language>
+	</row>
+	<row id="msg_0806_00055" index="55">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un habitant des lacs. Il nage\nplus vite qu’un champion\nhumain de natation.</language>
+	</row>
+	<row id="msg_0806_00056" index="56">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ils vivent en colonies sylvestres.\nQuand un FEROSINGE s’énerve,\ntoute la colonie suit son exemple.</language>
+	</row>
+	<row id="msg_0806_00057" index="57">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il grogne quand on le toise,\nrugit quand on s’enfuit et devient\nfou de rage quand on le frappe.</language>
+	</row>
+	<row id="msg_0806_00058" index="58">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un Pokémon très loyal. Il\nrestera immobile jusqu’à ce que\nson Dresseur lui donne un ordre.</language>
+	</row>
+	<row id="msg_0806_00059" index="59">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son port altier et son attitude \nfière ont depuis longtemps conquis\nle cœur des hommes.</language>
+	</row>
+	<row id="msg_0806_00060" index="60">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sa peau est si mince qu’on\nvoit ses organes internes. Il tient\nà peine sur ses nouveaux pieds.</language>
+	</row>
+	<row id="msg_0806_00061" index="61">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">La spirale qui orne son ventre\nondule doucement. Celui qui la fixe\nest saisi d’une étrange torpeur. </language>
+	</row>
+	<row id="msg_0806_00062" index="62">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il possède de sacrés biscoteaux.\nIl peut parcourir sans relâche\nl’Océan Pacifique.</language>
+	</row>
+	<row id="msg_0806_00063" index="63">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il dort 18 heures par jour. Même\néveillé, il ne prend pas la peine\nde se lever pour se téléporter.</language>
+	</row>
+	<row id="msg_0806_00064" index="64">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Une ombre inquiétante obscurcit\nl’écran télé quand il s’approche.\nLe malheur frappe celui qui la voit.</language>
+	</row>
+	<row id="msg_0806_00065" index="65">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Grâce à sa mémoire exceptionnelle,\nil n’a rien oublié depuis sa \nnaissance. Il a un Q.I. de 5 000.</language>
+	</row>
+	<row id="msg_0806_00066" index="66">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il muscle son corps en soulevant\nrégulièrement un GRAVALANCH. Il\nest rompu à tous les arts martiaux.</language>
+	</row>
+	<row id="msg_0806_00067" index="67">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">La force herculéenne du MACHOPEUR\nest très dangereuse. Il utilise une\nceinture pour contenir son énergie.</language>
+	</row>
+	<row id="msg_0806_00068" index="68">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses quatre bras frappent à une\nvitesse aveuglante. Il peut porter\n1 000 coups en deux secondes.</language>
+	</row>
+	<row id="msg_0806_00069" index="69">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il préfère les climats chauds et\nhumides. Ses lianes peuvent\ncapturer une proie en un clin d’œil.</language>
+	</row>
+	<row id="msg_0806_00070" index="70">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un Pokémon végétal. Il capture les\nproies étourdies en les endormant\nà l’aide d’une poudre toxique.</language>
+	</row>
+	<row id="msg_0806_00071" index="71">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sa bouche sécrète un fluide à\nl’odeur de miel, qui s’avère être\nun acide extrêmement corrosif.</language>
+	</row>
+	<row id="msg_0806_00072" index="72">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son corps est principalement\ncomposé d’eau. Ses yeux cristallins\nprojettent d’étranges rayons.</language>
+	</row>
+	<row id="msg_0806_00073" index="73">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses 80 tentacules ligotent ses\nproies et les retiennent jusqu’à\nce que son poison fasse effet.</language>
+	</row>
+	<row id="msg_0806_00074" index="74">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Nombre d’entre eux vivent sur des\nchemins montagneux où ils restent\nenfouis à épier les alpinistes.</language>
+	</row>
+	<row id="msg_0806_00075" index="75">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GRAVALANCH creuse son terrier\nà flanc de montagne en perçant\ndes galeries horizontales.</language>
+	</row>
+	<row id="msg_0806_00076" index="76">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il mue une fois par an. Son corps\nrocailleux est si dur qu’il résiste\nmême à la dynamite.</language>
+	</row>
+	<row id="msg_0806_00077" index="77">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">La crinière et la queue ardentes\nlui donnant sa superbe poussent \nune heure après sa naissance.</language>
+	</row>
+	<row id="msg_0806_00078" index="78">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son galop dépasse les 240 km/h. Il\nfile comme une flèche, laissant\nflotter sa crinière ardente.</language>
+	</row>
+	<row id="msg_0806_00079" index="79">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bien que lent, c’est un pêcheur\nadroit qui utilise sa queue. Elle\nest insensible aux morsures.</language>
+	</row>
+	<row id="msg_0806_00080" index="80">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ce grand benêt connaît des éclairs\nde lucidité lorsque le KOKIYAS de sa\nqueue se met à le mordre.</language>
+	</row>
+	<row id="msg_0806_00081" index="81">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses extrémités génèrent les vagues\nélectromagnétiques qui le font\nvoler. Il se nourrit d’électricité.</language>
+	</row>
+	<row id="msg_0806_00082" index="82">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il est formé de trois MAGNETI liés\npar magnétisme. En groupe, ils\ndéclenchent un orage magnétique.</language>
+	</row>
+	<row id="msg_0806_00083" index="83">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il ne peut pas vivre sans son\nlégume, c’est pourquoi il le\nprotégera au péril de sa vie.</language>
+	</row>
+	<row id="msg_0806_00084" index="84">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses deux cerveaux semblent\ncommuniquer leurs émotions\ngrâce à un lien télépathique.</language>
+	</row>
+	<row id="msg_0806_00085" index="85">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Quand DODUO connaît cette étrange\névolution, l’une de ses têtes se \ndédouble. Il atteint les 60 km/h.</language>
+	</row>
+	<row id="msg_0806_00086" index="86">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un habitant des icebergs. \nEn mer, il utilise la corne sur \nsa tête pour briser la banquise.</language>
+	</row>
+	<row id="msg_0806_00087" index="87">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son corps est couvert d’un grand\nmanteau blanc qui, dans la neige, le\ndissimule aux yeux des prédateurs.</language>
+	</row>
+	<row id="msg_0806_00088" index="88">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il est né d’un torrent de boue\nexposé aux rayons X de la lune.\nIl vit dans les ordures.</language>
+	</row>
+	<row id="msg_0806_00089" index="89">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son corps exsude un fluide toxique\nqui tue instantanément les plantes\net les arbres au contact.</language>
+	</row>
+	<row id="msg_0806_00090" index="90">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il nage à reculons en ouvrant et en\nrefermant ses deux coquilles. Il\nlaisse traîner sa large langue.</language>
+	</row>
+	<row id="msg_0806_00091" index="91">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il se défend en fermant sa coquille\net projette des piquants qui\nrepoussent ses agresseurs.</language>
+	</row>
+	<row id="msg_0806_00092" index="92">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Le corps de ce Pokémon est\ncomposé de gaz à 95%. Une\nbourrasque suffit à le disperser.</language>
+	</row>
+	<row id="msg_0806_00093" index="93">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il peut traverser n’importe quel\nobstacle. Il rôde dans les murs\npour surveiller ses ennemis.</language>
+	</row>
+	<row id="msg_0806_00094" index="94">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On dit que lorsqu’ECTOPLASMA se \ncache dans l’ombre, la température\nalentour chute de 5 °C.</language>
+	</row>
+	<row id="msg_0806_00095" index="95">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il provoque des secousses\nsismiques en creusant.\nIl peut atteindre les 80 km/h.</language>
+	</row>
+	<row id="msg_0806_00096" index="96">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son grand nez lui permet de lire\nles rêves d’autrui. Il adore les\nsonges amusants.</language>
+	</row>
+	<row id="msg_0806_00097" index="97">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">La vue de son pendule oscillant\nendort en trois secondes, même\nquand on vient de se réveiller. </language>
+	</row>
+	<row id="msg_0806_00098" index="98">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il creuse son terrier sur des \nplages sablonneuses. Ses \npinces repoussent si on les brise.</language>
+	</row>
+	<row id="msg_0806_00099" index="99">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sa grande pince possède une\npuissance de 10 000 chevaux. Son\npoids la rend difficile à manier.</language>
+	</row>
+	<row id="msg_0806_00100" index="100">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il ressemble à une Poké Ball. Ce Pokémon\ndangereux peut exploser ou lancer des\ndécharges électriques si on le touche.</language>
+	</row>
+	<row id="msg_0806_00101" index="101">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il se laisse porter par les vents\nlorsque son corps est gonflé\nd’électricité à en éclater.</language>
+	</row>
+	<row id="msg_0806_00102" index="102">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ces six œufs communiquent par\ntélépathie. Ils peuvent se réunir\nrapidement si on les sépare.</language>
+	</row>
+	<row id="msg_0806_00103" index="103">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On l’appelle “jungle sur pattes”.\nSi une tête devient trop grosse,\nelle tombe et produit un NOEUNOEUF.</language>
+	</row>
+	<row id="msg_0806_00104" index="104">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il pleure en pensant à sa mère\ndisparue, et ses larmes résonnent\ndans son crâne creux.</language>
+	</row>
+	<row id="msg_0806_00105" index="105">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ce Pokémon sauvage possède des os\ndepuis sa naissance. Il s’en sert\npour combattre avec dextérité.</language>
+	</row>
+	<row id="msg_0806_00106" index="106">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses pattes élastiques s’allongent,\nce qui ne manque jamais de\nsurprendre au premier combat.</language>
+	</row>
+	<row id="msg_0806_00107" index="107">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Même le béton cède sous ses \npoings dévastateurs. Au combat, il\ns’essouffle au bout de 3 minutes.</language>
+	</row>
+	<row id="msg_0806_00108" index="108">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il n’utilise pas ses mains mais sa\nlangue qui fait deux fois sa taille.\nSa salive est une colle puissante.</language>
+	</row>
+	<row id="msg_0806_00109" index="109">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il flotte en retenant des gaz plus\nlégers que l’air. Ceux-ci sont\nexplosifs, en plus d’être fétides.</language>
+	</row>
+	<row id="msg_0806_00110" index="110">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il grandit en absorbant les gaz des\ndétritus. Des triplés existent, bien\nqu’ils soient fort rares.</language>
+	</row>
+	<row id="msg_0806_00111" index="111">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sa peau est très épaisse et sa \ncharge peut détruire un immeuble.\nDommage qu’il soit stupide.</language>
+	</row>
+	<row id="msg_0806_00112" index="112">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son cerveau s’est développé depuis\nqu’il tient debout. Sa corne peut\ntraverser la pierre la plus dure. </language>
+	</row>
+	<row id="msg_0806_00113" index="113">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il est censé apporter la joie. Ce\nPokémon charitable offre ses\nœufs aux blessés.</language>
+	</row>
+	<row id="msg_0806_00114" index="114">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il s’abrite derrière des lianes\nbleues. Nul n’a jamais vu le\nvisage qu’elles dissimulent.</language>
+	</row>
+	<row id="msg_0806_00115" index="115">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il élève ses petits dans sa poche\nventrale. Il attend d’être en lieu\nsûr pour les laisser jouer dehors.</language>
+	</row>
+	<row id="msg_0806_00116" index="116">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il niche à l’ombre du corail. Quand\nil se sent menacé, il disparaît\ndans un nuage d’encre opaque.</language>
+	</row>
+	<row id="msg_0806_00117" index="117">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son épine dorsale le protège.\nSes os et ses nageoires sont très\nprisés en médecine traditionnelle.</language>
+	</row>
+	<row id="msg_0806_00118" index="118">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il nage élégamment en agitant sa\nnageoire caudale comme si c’était\nune robe. Il a l’allure d’une reine.</language>
+	</row>
+	<row id="msg_0806_00119" index="119">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il niche dans des rochers du \nruisseau qu’il évide avec sa corne.\nIl donnerait sa vie pour ses œufs.</language>
+	</row>
+	<row id="msg_0806_00120" index="120">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Même amoché, son corps se régénère\ntant que le noyau rouge est intact.\nLe noyau s’illumine à minuit.</language>
+	</row>
+	<row id="msg_0806_00121" index="121">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un noyau rouge trône en son\ncentre. Il envoie des signaux radio\nmystérieux vers le ciel nocturne.</language>
+	</row>
+	<row id="msg_0806_00122" index="122">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un expert de la pantomime dont\nles gestes façonnent de solides\nmurs invisibles.</language>
+	</row>
+	<row id="msg_0806_00123" index="123">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses coups de faux sont \npratiquement imparables. Il se \ndéplace comme un ninja.</language>
+	</row>
+	<row id="msg_0806_00124" index="124">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son cri ressemble à des paroles\nhumaines. Mais nul n’est jamais\nparvenu à les comprendre. </language>
+	</row>
+	<row id="msg_0806_00125" index="125">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ce Pokémon dévore l’électricité des\ncentrales. Il est responsable de la\nmoitié des coupures de courant.</language>
+	</row>
+	<row id="msg_0806_00126" index="126">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il est né au milieu d’un volcan.\nSon corps est couvert de flammes\nqui flambent comme un soleil.</language>
+	</row>
+	<row id="msg_0806_00127" index="127">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il serre ses proies dans ses pinces\npour les trancher en deux. S’il n’y\narrive pas, il les jette au loin.</language>
+	</row>
+	<row id="msg_0806_00128" index="128">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Après avoir choisi sa cible, il fonce\ndessus tête baissée. Il est réputé\npour sa nature violente.</language>
+	</row>
+	<row id="msg_0806_00129" index="129">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ce Pokémon est réputé pour être\nle plus faible au monde. Nul ne\nsait comment son espèce perdure.</language>
+	</row>
+	<row id="msg_0806_00130" index="130">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lorsqu’il apparaît, sa rage ne\ncesse qu’après qu’il a rasé les\nplaines et montagnes alentour.</language>
+	</row>
+	<row id="msg_0806_00131" index="131">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il aime naviguer en portant des\nhumains et des Pokémon sur son\ndos. Il comprend le langage humain.</language>
+	</row>
+	<row id="msg_0806_00132" index="132">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il a la capacité de modifier sa\nstructure cellulaire pour prendre\nl’apparence de ce qu’il voit.</language>
+	</row>
+	<row id="msg_0806_00133" index="133">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un Pokémon rare qui s’adapte\naux environnements hostiles \nen variant ses formes évolutives.</language>
+	</row>
+	<row id="msg_0806_00134" index="134">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il a évolué pour s’adapter au milieu\naquatique. Il peut se fondre et \ndisparaître dans l’élément liquide.</language>
+	</row>
+	<row id="msg_0806_00135" index="135">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il génère une tension de 10 000 volts.\nIl peut hérisser sa fourrure comme\ns’il s’agissait de piquants.</language>
+	</row>
+	<row id="msg_0806_00136" index="136">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son corps contient une glande\nenflammée. Sa température monte\nà 900 °C avant le combat.</language>
+	</row>
+	<row id="msg_0806_00137" index="137">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Le premier Pokémon artificiel au\nmonde. Il a le pouvoir d’arpenter\nl’espace électronique.</language>
+	</row>
+	<row id="msg_0806_00138" index="138">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un Pokémon ramené à la vie par\nla science à partir d’un fossile. Il\npeuplait autrefois les mers.</language>
+	</row>
+	<row id="msg_0806_00139" index="139">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On pense que ce Pokémon a\ndisparu parce que sa coquille en\nspirale était devenue trop grosse.</language>
+	</row>
+	<row id="msg_0806_00140" index="140">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On pense qu’il peuplait les plages\nil y a 300 millions d’années. Il est\nprotégé par une coquille robuste.</language>
+	</row>
+	<row id="msg_0806_00141" index="141">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On pense que ce Pokémon est\nvenu sur la terre ferme pour\nsuivre l’évolution de ses proies.</language>
+	</row>
+	<row id="msg_0806_00142" index="142">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un Pokémon qui arpentait le ciel\nau temps des dinosaures. Ses \ncrocs sont pareils à des scies.</language>
+	</row>
+	<row id="msg_0806_00143" index="143">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son estomac peut digérer n’importe\nquel type de nourriture, même \nquand elle est moisie ou pourrie.</language>
+	</row>
+	<row id="msg_0806_00144" index="144">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un Pokémon Oiseau légendaire.\nIl peut provoquer des blizzards\nen gelant l’humidité de l’air.</language>
+	</row>
+	<row id="msg_0806_00145" index="145">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un Pokémon Oiseau légendaire dont\non dit qu’il vit dans les nuages \nd’orage. Il contrôle la foudre.</language>
+	</row>
+	<row id="msg_0806_00146" index="146">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">L’un des Pokémon Oiseaux\nlégendaires. On dit que sa venue\nannonce l’arrivée du printemps.</language>
+	</row>
+	<row id="msg_0806_00147" index="147">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On l’appelle “Pokémon mirage”\nen raison de sa rareté. On a\ndécouvert sa mue.</language>
+	</row>
+	<row id="msg_0806_00148" index="148">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">La météo change brusquement quand\nil est entouré d’une aura. On dit\nqu’il peuple les mers et les lacs.</language>
+	</row>
+	<row id="msg_0806_00149" index="149">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On raconte qu’il vit quelque part\nen mer. Il guide les équipages\nnaufragés jusqu’à la terre ferme.</language>
+	</row>
+	<row id="msg_0806_00150" index="150">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un Pokémon conçu en recombinant\nles gènes de MEW. On raconte qu’il\ns’agit du Pokémon le plus féroce.</language>
+	</row>
+	<row id="msg_0806_00151" index="151">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Nombre de scientifiques voient en\nlui l’ancêtre des Pokémon car il\nmaîtrise toutes leurs capacités.</language>
+	</row>
+	<row id="msg_0806_00152" index="152">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il jauge la température et\nl’humidité grâce à la feuille sur sa\ntête. Il raffole des bains de soleil.</language>
+	</row>
+	<row id="msg_0806_00153" index="153">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Le collier de bourgeons à son cou\nrépand un arôme épicé qui vous\ndonne du tonus.</language>
+	</row>
+	<row id="msg_0806_00154" index="154">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son souffle a l’incroyable capacité\nde ranimer les plantes et les \nfleurs flétries.</language>
+	</row>
+	<row id="msg_0806_00155" index="155">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ce Pokémon est un grand timide.\nLes flammes sur son dos \ns’intensifient lorsqu’il prend peur.</language>
+	</row>
+	<row id="msg_0806_00156" index="156">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">La chaleur de ses flammes intimide\nl’ennemi. Elles s’intensifient\nlorsqu’il se prépare à combattre.</language>
+	</row>
+	<row id="msg_0806_00157" index="157">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il attaque en projetant des\nflammes. Il se dissimule derrière\nles vagues de chaleur qu’il produit.</language>
+	</row>
+	<row id="msg_0806_00158" index="158">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il broie tout ce qu’il trouve avec\nses mâchoires puissantes. Même\nson Dresseur doit s’en méfier.</language>
+	</row>
+	<row id="msg_0806_00159" index="159">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Quand il mord, il ne lâche pas prise\navant que ses crocs se brisent.\nIls repoussent par la suite.</language>
+	</row>
+	<row id="msg_0806_00160" index="160">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ce Pokémon à l’air pataud est\ncapable d’attaquer à la vitesse\nde l’éclair pour mordre sa proie.</language>
+	</row>
+	<row id="msg_0806_00161" index="161">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ce Pokémon très nerveux\nprend appui sur sa queue pour\nobserver ses alentours.</language>
+	</row>
+	<row id="msg_0806_00162" index="162">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">La femelle s’enroule autour des\npetits pour les bercer. Il accule\nl’ennemi grâce à sa vitesse.</language>
+	</row>
+	<row id="msg_0806_00163" index="163">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il se tient toujours sur un pied. Il\nne prend jamais appui sur les\ndeux, même en cas d’attaque.</language>
+	</row>
+	<row id="msg_0806_00164" index="164">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses yeux sont particuliers. La\nplus petite source de lumière leur\npermet de distinguer les objets.</language>
+	</row>
+	<row id="msg_0806_00165" index="165">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il est si timide qu’il ne se déplace\nqu’au milieu d’un essaim. Il exprime\nses émotions par l’odeur.</language>
+	</row>
+	<row id="msg_0806_00166" index="166">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il tire sa force de la lumière des\nétoiles. Plus il y en a et plus ses\nmotifs dorsaux sont grands.</language>
+	</row>
+	<row id="msg_0806_00167" index="167">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il tisse une toile fine mais solide\npour poser des pièges et se poste\ndans l’attente d’une proie.</language>
+	</row>
+	<row id="msg_0806_00168" index="168">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il attache un fil à sa proie avant\nde la libérer. Il s’en servira pour\nla retrouver, elle et ses amis.</language>
+	</row>
+	<row id="msg_0806_00169" index="169">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il vole rapidement et sans faire\nde bruit grâce à ses quatre ailes.\nC’est un Pokémon nocturne.</language>
+	</row>
+	<row id="msg_0806_00170" index="170">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il envoie des décharges électriques\npositives et négatives du bout de ses\nantennes pour paralyser sa proie.</language>
+	</row>
+	<row id="msg_0806_00171" index="171">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">La lumière de LANTURN surgit des\nprofondeurs. On le surnomme\n“étoile des profondeurs”.</language>
+	</row>
+	<row id="msg_0806_00172" index="172">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Les poches sur ses joues sont\nencore trop petites pour\naccumuler beaucoup d’électricité.</language>
+	</row>
+	<row id="msg_0806_00173" index="173">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sa silhouette rappelle une étoile.\nOn dit qu’il descend sur terre\nen chevauchant une étoile filante.</language>
+	</row>
+	<row id="msg_0806_00174" index="174">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son corps est doux et élastique.\nQuand il commence à rebondir,\non ne peut plus l’arrêter.</language>
+	</row>
+	<row id="msg_0806_00175" index="175">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On prétend que sa coquille est\nremplie de bonheur, qu’il partage\navec les êtres au cœur pur.</language>
+	</row>
+	<row id="msg_0806_00176" index="176">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On dit qu’il apparaît aux êtres\nbons pour répandre un duvet\nbrillant appelé “poudre de joie”.</language>
+	</row>
+	<row id="msg_0806_00177" index="177">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il mange des cactus en prenant\nsoin d’éviter les bourgeons et les\népines. Il ne tient pas en place.</language>
+	</row>
+	<row id="msg_0806_00178" index="178">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cet étrange Pokémon peut voir\nl’avenir et le passé. Il guette \nsans cesse la course du soleil.</language>
+	</row>
+	<row id="msg_0806_00179" index="179">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sa laine fournie enfle lorsqu’il accumule\nde l’électricité statique. Son contact\npeut causer un choc électrique.</language>
+	</row>
+	<row id="msg_0806_00180" index="180">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sa queue s’allume lorsque sa\nlaine se charge d’électricité.\nIl projette des poils électrifiés.</language>
+	</row>
+	<row id="msg_0806_00181" index="181">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Le bout de sa queue brille avec\nintensité. Jadis, on s’en servait\npour envoyer des signaux.</language>
+	</row>
+	<row id="msg_0806_00182" index="182">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A la fin de la saison des pluies,\nil sort danser en plein air,\nattiré par la chaleur du soleil.</language>
+	</row>
+	<row id="msg_0806_00183" index="183">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il plonge sous l’eau en utilisant sa\nqueue comme un flotteur. Il aime\nles plantes du fond des rivières.</language>
+	</row>
+	<row id="msg_0806_00184" index="184">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il peuple les lacs et les mers. Sous\nl’eau, ses motifs et ses couleurs\nbrouillent la vue de l’ennemi.</language>
+	</row>
+	<row id="msg_0806_00185" index="185">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On pourrait le prendre pour un\narbre, mais il est plus proche d’une\npierre. L’eau est son point faible.</language>
+	</row>
+	<row id="msg_0806_00186" index="186">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il rassemble ses pairs pour les\ncommander. Il utilise son cri \npour diriger PTITARD.</language>
+	</row>
+	<row id="msg_0806_00187" index="187">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il dérive avec le vent. Sa présence\nen nombre dans les champs et les\nmontagnes annonce le printemps.</language>
+	</row>
+	<row id="msg_0806_00188" index="188">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il fleurit lorsque les températures\nremontent. Il flotte dans le ciel \npour absorber les rayons du soleil.</language>
+	</row>
+	<row id="msg_0806_00189" index="189">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Poussé par les vents saisonniers,\nil fait le tour du globe en semant\ndes spores de coton.</language>
+	</row>
+	<row id="msg_0806_00190" index="190">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il utilise sa queue pour cueillir les\nfruits inaccessibles. Elle est plus\nagile que ses mains.</language>
+	</row>
+	<row id="msg_0806_00191" index="191">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il tombe du ciel sans crier gare en\nmatinée. On en croise énormément \nl’année suivant un été froid.</language>
+	</row>
+	<row id="msg_0806_00192" index="192">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Les rayons du soleil lui donnent de\nl’énergie. Il est connu pour migrer\nvers les régions ensoleillées.</language>
+	</row>
+	<row id="msg_0806_00193" index="193">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il voit à 360 degrés sans avoir à\ntourner la tête. Il ne loupe jamais\nune proie, même dans son dos.</language>
+	</row>
+	<row id="msg_0806_00194" index="194">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il vit en eau froide. Il dort à demi\nenfoui dans la boue au fond\nde l’eau.</language>
+	</row>
+	<row id="msg_0806_00195" index="195">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">C’est un grand paresseux qui \nattend au fond de la rivière qu’une\nproie lui tombe dans le bec.</language>
+	</row>
+	<row id="msg_0806_00196" index="196">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son pelage a l’aspect et la texture\ndu velours. L’orbe sur son front luit\nquand il utilise ses pouvoirs psy.</language>
+	</row>
+	<row id="msg_0806_00197" index="197">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">La lumière de la lune a modifié\nle code génétique d’EVOLI. Il hante\nles ténèbres en quête d’une proie.</language>
+	</row>
+	<row id="msg_0806_00198" index="198">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On dit que rencontrer\nun CORNEBRE la nuit\nest de mauvais augure.</language>
+	</row>
+	<row id="msg_0806_00199" index="199">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">La morsure de KOKIYAS a fait\nde lui un génie dont l’intelligence\nrivalise avec celle d’un prix Nobel.</language>
+	</row>
+	<row id="msg_0806_00200" index="200">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il adore se faufiler derrière les\ngens la nuit pour les effrayer\navec son cri strident.</language>
+	</row>
+	<row id="msg_0806_00201" index="201">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il rappelle une écriture ancienne.\nReste à savoir qui du langage ou de\nZARBI est apparu en premier.</language>
+	</row>
+	<row id="msg_0806_00202" index="202">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il cherche désespérément à cacher\nsa queue noire. Certains pensent\nqu’elle renferme un secret. </language>
+	</row>
+	<row id="msg_0806_00203" index="203">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sa queue contient un minuscule\ncerveau. Elle mord l’ennemi qui\nessaie de le frapper dans le dos.</language>
+	</row>
+	<row id="msg_0806_00204" index="204">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il ressemble à une pomme de pin.\nSa carapace le protège des Pokémon\nOiseau qui le picorent par erreur.</language>
+	</row>
+	<row id="msg_0806_00205" index="205">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il est prisonnier d’une coquille \nd’acier. Ses yeux vigilants sont la\nseule partie visible de son corps.</language>
+	</row>
+	<row id="msg_0806_00206" index="206">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son nid est un véritable labyrinthe\nqu’il creuse à l’aide de sa queue.\nIl peut à peine voler.</language>
+	</row>
+	<row id="msg_0806_00207" index="207">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il chevauche les vents en tendant\nses membres pour frapper depuis\nle ciel. Il vise toujours le visage.</language>
+	</row>
+	<row id="msg_0806_00208" index="208">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Grâce à la température élevée et la\nhaute pression souterraines, son\ncorps est plus dur que le métal.</language>
+	</row>
+	<row id="msg_0806_00209" index="209">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son visage horrible fait fuir les\npetits Pokémon. Par contre, les\nfemmes le trouvent mignon.</language>
+	</row>
+	<row id="msg_0806_00210" index="210">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">En dépit des apparences, c’est un\ngrand timide. Quand il s’énerve, il\nmord de ses énormes crocs.</language>
+	</row>
+	<row id="msg_0806_00211" index="211">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il envoie ses piquants empoisonnés\nà la ronde. Sa forme sphérique en\nfait un piètre nageur.</language>
+	</row>
+	<row id="msg_0806_00212" index="212">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son corps est dur comme l’acier.\nIl intimide ses ennemis en levant\nses pinces pareilles à des yeux. </language>
+	</row>
+	<row id="msg_0806_00213" index="213">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il stocke des Baies sous sa\ncarapace. Elles fermentent et\nproduisent des jus délicieux.</language>
+	</row>
+	<row id="msg_0806_00214" index="214">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il arpente la forêt en quête de\nsève, son mets favori. Il est assez\nfort pour projeter l’ennemi.</language>
+	</row>
+	<row id="msg_0806_00215" index="215">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il se nourrit d’œufs volés dans \ndes nids. Ses griffes crochues\npercent les défenses de l’ennemi.</language>
+	</row>
+	<row id="msg_0806_00216" index="216">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il baigne ses griffes dans le miel \npour les lécher. Chaque paire\nde pattes a un goût unique.</language>
+	</row>
+	<row id="msg_0806_00217" index="217">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il marque de ses griffes les\narbres de son territoire qui\nportent des Baies ou des fruits.</language>
+	</row>
+	<row id="msg_0806_00218" index="218">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son corps est fait de magma.\nS’il cesse de bouger, il refroidit\net durcit.</language>
+	</row>
+	<row id="msg_0806_00219" index="219">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sa température corporelle avoisine\nles 10 000 °C. Des flammes \nfusent des fissures de sa coquille.</language>
+	</row>
+	<row id="msg_0806_00220" index="220">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il adore les champignons qui\npoussent sous l’herbe morte. Il\ntrouve aussi des sources chaudes.</language>
+	</row>
+	<row id="msg_0806_00221" index="221">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il ne voit rien à cause de sa\nfourrure touffue et se repère\nà l’aide de son nez délicat.</language>
+	</row>
+	<row id="msg_0806_00222" index="222">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On en trouve beaucoup dans les\nmers claires du sud. On dirait qu’il\nne peut pas vivre en eau polluée.</language>
+	</row>
+	<row id="msg_0806_00223" index="223">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il crache un puissant jet d’eau\npour abattre les proies volantes.</language>
+	</row>
+	<row id="msg_0806_00224" index="224">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il hante les fissures dans la roche\net les trous au fond de la mer. Ses\nventouses ne lâchent jamais prise.</language>
+	</row>
+	<row id="msg_0806_00225" index="225">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il dépose sa nourriture dans sa\nqueue enroulée. Il l’offre souvent\naux gens égarés en montagne.</language>
+	</row>
+	<row id="msg_0806_00226" index="226">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lorsque la mer est calme, il arrive\nde croiser un banc de DEMANTA\nnageant comme s’ils volaient.</language>
+	</row>
+	<row id="msg_0806_00227" index="227">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son corps est prisonnier d’une\narmure dure comme l’acier, mais il\nvole à plus de 300 km/h.</language>
+	</row>
+	<row id="msg_0806_00228" index="228">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il exprime ses émotions en modulant\nson cri. Ce Pokémon rusé chasse\nen meute pour abattre ses proies.</language>
+	</row>
+	<row id="msg_0806_00229" index="229">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Jadis, les gens prenaient son\nétrange hurlement pour\nl’appel de la Faucheuse.</language>
+	</row>
+	<row id="msg_0806_00230" index="230">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Chacun de ses déplacements\nprovoque des tourbillons. Il vit\ndans des grottes sous-marines.</language>
+	</row>
+	<row id="msg_0806_00231" index="231">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il est fort malgré son aspect\nramassé. Il n’a aucun mal à porter\nun humain adulte sur son dos.</language>
+	</row>
+	<row id="msg_0806_00232" index="232">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il attaque en se roulant en boule\npour percuter l’ennemi. Il peut\nabattre une maison d’un seul coup.</language>
+	</row>
+	<row id="msg_0806_00233" index="233">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On lui a installé un logiciel de\nterraformation pour lui permettre\nde travailler dans l’espace.</language>
+	</row>
+	<row id="msg_0806_00234" index="234">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Quiconque observe ses antennes\nressent une sensation étrange,\ncomme si leur centre l’attirait.</language>
+	</row>
+	<row id="msg_0806_00235" index="235">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il marque son territoire en maniant\nsa queue comme un pinceau. On\ndénombre plus de 5 000 marques.</language>
+	</row>
+	<row id="msg_0806_00236" index="236">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il est réputé pour sa combativité.\nIl se blesse toujours en défiant\ndes ennemis plus grands.</language>
+	</row>
+	<row id="msg_0806_00237" index="237">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il combat en tournoyant comme une\ntoupie. La force centrifuge décuple\nsa puissance destructrice.</language>
+	</row>
+	<row id="msg_0806_00238" index="238">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il goûte à tout du bout des lèvres.\nElles gardent en mémoire ses\ngoûts et ses dégoûts.</language>
+	</row>
+	<row id="msg_0806_00239" index="239">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il génère de l’électricité en\nbattant des bras, mais il n’a aucun\nmoyen de stocker cette énergie.</language>
+	</row>
+	<row id="msg_0806_00240" index="240">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sa température corporelle avoisine\nles 600 °C. Son souffle est\njaune quand il est en bonne santé.</language>
+	</row>
+	<row id="msg_0806_00241" index="241">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On raconte que les enfants élevés\nau lait d’ECREMEUH deviennent des\nadultes braves et robustes.</language>
+	</row>
+	<row id="msg_0806_00242" index="242">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ce Pokémon au cœur d’or\nsoigne les Pokémon malades.\nIl ressent la tristesse d’autrui.</language>
+	</row>
+	<row id="msg_0806_00243" index="243">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On prétend qu’il est tombé avec la\nfoudre. Il peut lancer des éclairs\ngrâce aux nuages sur son dos.</language>
+	</row>
+	<row id="msg_0806_00244" index="244">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On raconte qu’à chaque fois qu’il\nrugit, un volcan entre en éruption\nquelque part dans le monde.</language>
+	</row>
+	<row id="msg_0806_00245" index="245">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il parcourt le vaste monde pour\npurifier les eaux polluées. Il\naccompagne le vent du nord.</language>
+	</row>
+	<row id="msg_0806_00246" index="246">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un Pokémon qui se nourrit de terre.\nAprès avoir dévoré une montagne,\nil s’endort pour grandir.</language>
+	</row>
+	<row id="msg_0806_00247" index="247">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son corps est dur comme la pierre\nsouterraine. Il file comme une\nfusée en expulsant des gaz.</language>
+	</row>
+	<row id="msg_0806_00248" index="248">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lorsqu’il est en colère, il abat des\nmontagnes et enterre des fleuves.\nOn doit alors modifier les cartes.</language>
+	</row>
+	<row id="msg_0806_00249" index="249">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il dort dans une faille des grands\nfonds. Ses battements d’ailes\ngénèrent une tempête de 40 jours.</language>
+	</row>
+	<row id="msg_0806_00250" index="250">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses plumes possèdent sept \ncouleurs. On prétend que sa vue\napporte la joie éternelle.</language>
+	</row>
+	<row id="msg_0806_00251" index="251">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il a le pouvoir de voyager dans le\ntemps. Cependant, on dit qu’il\nn’apparaît qu’en temps de paix.</language>
+	</row>
+	<row id="msg_0806_00252" index="252">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses plantes de pieds sont\ncouvertes d’épines lui permettant\nde marcher au mur et au plafond.</language>
+	</row>
+	<row id="msg_0806_00253" index="253">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il vit dans les jungles denses. \nIl saute de branche en branche\npour approcher de sa proie.</language>
+	</row>
+	<row id="msg_0806_00254" index="254">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Les feuilles sur ses bras peuvent\ntrancher des troncs épais. C’est\nle meilleur combattant des jungles.</language>
+	</row>
+	<row id="msg_0806_00255" index="255">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses câlins réchauffent car il\nrenferme une fournaise. Il envoie\ndes boules de feu à 1 000 °C.</language>
+	</row>
+	<row id="msg_0806_00256" index="256">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ce maître du coup de pied peut\ndonner 10 coups par seconde. Ses\ncris aigus intimident l’ennemi.</language>
+	</row>
+	<row id="msg_0806_00257" index="257">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Des flammes fusent de ses\npoignets et ses coups brûlent\nl’ennemi.</language>
+	</row>
+	<row id="msg_0806_00258" index="258">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il analyse le courant grâce à la\nnageoire sur sa tête. Il est assez\nfort pour soulever des rochers.</language>
+	</row>
+	<row id="msg_0806_00259" index="259">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses jambes robustes lui donnent\nun bon appui, même dans la boue.\nIl dort enfoui dans la saleté.</language>
+	</row>
+	<row id="msg_0806_00260" index="260">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il peut traîner un grand bateau en\nnageant. Il assomme l’ennemi d’un\ngrand coup de ses bras épais.</language>
+	</row>
+	<row id="msg_0806_00261" index="261">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un Pokémon très obstiné qui\npoursuit sa proie jusqu’à ce\nqu’elle soit épuisée.</language>
+	</row>
+	<row id="msg_0806_00262" index="262">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il traque ses proies en groupe.\nIl ne désobéira jamais aux\nordres d’un bon Dresseur.</language>
+	</row>
+	<row id="msg_0806_00263" index="263">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il marche en zigzaguant et n’a\npas son pareil pour trouver des\nobjets dans l’herbe ou sous terre.</language>
+	</row>
+	<row id="msg_0806_00264" index="264">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il fonce sur sa proie à plus de 100\nkm/h. Mais il ne peut pas dévier sa\ncourse et loupe souvent sa cible.</language>
+	</row>
+	<row id="msg_0806_00265" index="265">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il adore manger des feuilles. Si un\nETOURMI l’attaque, il riposte avec\nles piquants de son postérieur.</language>
+	</row>
+	<row id="msg_0806_00266" index="266">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il s’accroche en enroulant sa soie\nautour des branches. Il reste\nimmobile en attendant d’évoluer.</language>
+	</row>
+	<row id="msg_0806_00267" index="267">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il est très agressif. Il pique sa \nproie avec son long museau \nétroit et absorbe sa vitalité.</language>
+	</row>
+	<row id="msg_0806_00268" index="268">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il est au chaud dans son cocon.\nSes cellules produisent l’énergie\nnécessaire à son évolution.</language>
+	</row>
+	<row id="msg_0806_00269" index="269">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ce Pokémon nocturne est attiré\npar les lueurs de la ville et aime\nles feuilles des arbres urbains.</language>
+	</row>
+	<row id="msg_0806_00270" index="270">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il ressemble à une plante aquatique\net fait la navette pour les\nPokémon qui ne savent pas nager.</language>
+	</row>
+	<row id="msg_0806_00271" index="271">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">C’est un mauvais plaisantin. Quand\nil repère un pêcheur, il tire sur sa\nligne pour le déranger. </language>
+	</row>
+	<row id="msg_0806_00272" index="272">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses muscles se tonifient au son\nd’une musique entraînante. Il ne\npeut pas s’empêcher de danser.</language>
+	</row>
+	<row id="msg_0806_00273" index="273">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il ressemble à un gland pendu\nà une branche. Il adore effrayer\nles autres Pokémon.</language>
+	</row>
+	<row id="msg_0806_00274" index="274">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Le son de sa flûte d’herbe\ndéstabilise l’auditeur. Il vit au \nplus profond des forêts.</language>
+	</row>
+	<row id="msg_0806_00275" index="275">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">D’un coup de sa feuille éventail, il\ngénère des bourrasques de 30 m/s\ncapables de souffler une maison. </language>
+	</row>
+	<row id="msg_0806_00276" index="276">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ce Pokémon téméraire n’a pas peur\nd’affronter des ennemis puissants.\nIl vole en quête de climats chauds.</language>
+	</row>
+	<row id="msg_0806_00277" index="277">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il vole en cercle en quête d’une\nproie. Dès qu’il l’a repérée, il fond\nsur elle en un éclair.</language>
+	</row>
+	<row id="msg_0806_00278" index="278">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il niche sur les falaises escarpées\nface à la mer. Il vole en altitude\ngrâce aux courants ascendants.</language>
+	</row>
+	<row id="msg_0806_00279" index="279">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il trempe son grand bec dans la\nmer pour charrier de l’eau et\nde nombreuses proies.</language>
+	</row>
+	<row id="msg_0806_00280" index="280">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il perçoit les émotions humaines\ngrâce aux cornes sur sa tête. On\ndit qu’il apprécie la joie de vivre.</language>
+	</row>
+	<row id="msg_0806_00281" index="281">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il est très à l’écoute des émotions\nde son Dresseur. Il danse quand\nil est d’humeur joyeuse.</language>
+	</row>
+	<row id="msg_0806_00282" index="282">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il donnera sa vie pour protéger\nun Dresseur dévoué. Il a la\ncapacité de prédire l’avenir.</language>
+	</row>
+	<row id="msg_0806_00283" index="283">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il semble patiner sur l’eau. Le\nparfum diffusé par le sommet de\nsa tête sert à attirer ses proies.</language>
+	</row>
+	<row id="msg_0806_00284" index="284">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Des motifs en forme d’yeux ornent\nses antennes. Ses 4 ailes l’aident\nà voler dans toutes les directions.</language>
+	</row>
+	<row id="msg_0806_00285" index="285">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Le sommet de sa tête libère des\nspores empoisonnées. Il est\ndangereux de les inhaler.</language>
+	</row>
+	<row id="msg_0806_00286" index="286">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses petits bras s’étendent quand il\ndonne un coup de poing. Son talent\négale celui d’un boxeur pro.</language>
+	</row>
+	<row id="msg_0806_00287" index="287">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il passe le plus clair de son temps\naffalé. Rien qu’à le voir, on a\nenvie de bâiller.</language>
+	</row>
+	<row id="msg_0806_00288" index="288">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son cœur bat dix fois plus vite que\nla normale, c’est pourquoi il ne\ntient pas en place.</language>
+	</row>
+	<row id="msg_0806_00289" index="289">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Le Pokémon le plus fainéant du\nmonde. Il s’allonge pour économiser\nses forces et contre-attaquer.</language>
+	</row>
+	<row id="msg_0806_00290" index="290">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il grandit sous terre et se repère\ngrâce à ses antennes car ses\nyeux sont quasiment aveugles.</language>
+	</row>
+	<row id="msg_0806_00291" index="291">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il bouge si vite que l’œil a parfois du\nmal à le suivre. Ils se regroupent\nprès de la sève des arbres.</language>
+	</row>
+	<row id="msg_0806_00292" index="292">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Une carapace d’insecte laissée à\nl’abandon. On dit qu’il vole l’âme\nde celui qui regarde à l’intérieur. </language>
+	</row>
+	<row id="msg_0806_00293" index="293">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">En temps normal, son cri est pareil\nà un murmure. Effrayé, il atteint le\nvolume d’un avion à réaction.</language>
+	</row>
+	<row id="msg_0806_00294" index="294">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">L’onde de choc provoquée par son\ncri peut renverser un camion. Il\ntrépigne pour augmenter sa force.</language>
+	</row>
+	<row id="msg_0806_00295" index="295">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son hurlement s’entend à 10 km\nà la ronde. Ses orifices\némettent toutes sortes de bruits.</language>
+	</row>
+	<row id="msg_0806_00296" index="296">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il fortifie son corps en fonçant\nsur des arbres épais. Son nid est\nentouré d’arbres abattus.</language>
+	</row>
+	<row id="msg_0806_00297" index="297">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il aime mesurer sa force à celle des\nplus grands Pokémon. Ses coups de\npaume peuvent projeter un camion.</language>
+	</row>
+	<row id="msg_0806_00298" index="298">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un Pokémon qui vit près de l’eau.\nAu sol, il se déplace rapidement en\nrebondissant sur sa grosse queue.</language>
+	</row>
+	<row id="msg_0806_00299" index="299">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son nez est un aimant, c’est\npourquoi ce Pokémon fait toujours\nface au nord.</language>
+	</row>
+	<row id="msg_0806_00300" index="300">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il poursuit tout ce qui bouge. On\nle voit parfois courir en cercle,\nchassant sa propre queue.</language>
+	</row>
+	<row id="msg_0806_00301" index="301">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Les femmes Dresseurs raffolent\nde sa sublime fourrure. Il ne\npossède pas de nid.</language>
+	</row>
+	<row id="msg_0806_00302" index="302">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A force de manger des gemmes, \nles yeux de ce Pokémon des grottes\nobscures sont devenus des joyaux.</language>
+	</row>
+	<row id="msg_0806_00303" index="303">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses cornes forment une grande\nmâchoire attachée à sa tête. Elle\npeut broyer des barres de fer. </language>
+	</row>
+	<row id="msg_0806_00304" index="304">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il vit habituellement au cœur des\nmontagnes. Affamé, il dévore\nparfois des rails et des voitures.</language>
+	</row>
+	<row id="msg_0806_00305" index="305">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il se nourrit du minerai de fer qu’il\nfore. Il défend son territoire en\nchargeant avec son corps d’acier.</language>
+	</row>
+	<row id="msg_0806_00306" index="306">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il creuse des galeries à travers la\npierre avec ses cornes d’acier\npour trouver le fer qu’il apprécie. </language>
+	</row>
+	<row id="msg_0806_00307" index="307">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il ne mange qu’une Baie par jour.\nLa faim lui a forgé une volonté\nde fer.</language>
+	</row>
+	<row id="msg_0806_00308" index="308">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il a développé son sixième sens\ngrâce au yoga. Ses mouvements\nsont gracieux.</language>
+	</row>
+	<row id="msg_0806_00309" index="309">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il améliore ses réflexes en\nstimulant ses muscles grâce à \nl’électricité dans sa fourrure.</language>
+	</row>
+	<row id="msg_0806_00310" index="310">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il libère l’électricité par sa\ncrinière. Il crée un nuage d’orage\npour appeler la foudre.</language>
+	</row>
+	<row id="msg_0806_00311" index="311">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il absorbe l’énergie des poteaux\nélectriques et encourage ses amis\navec des pompons d’étincelles. </language>
+	</row>
+	<row id="msg_0806_00312" index="312">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il encourage ses amis. Son corps\nproduit plus d’étincelles quand il\nest en mauvaise posture.</language>
+	</row>
+	<row id="msg_0806_00313" index="313">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il communique avec ses pairs en\nallumant son postérieur la nuit. Il\nadore le doux parfum de LUMIVOLE.</language>
+	</row>
+	<row id="msg_0806_00314" index="314">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il utilise son doux parfum pour\naider MUCIOLE à décrire des\narabesques dans le ciel nocturne.</language>
+	</row>
+	<row id="msg_0806_00315" index="315">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Les ROSELIA élevés avec une\neau claire et potable font de\nravissantes fleurs bariolées.</language>
+	</row>
+	<row id="msg_0806_00316" index="316">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il est principalement composé d’un\nestomac dont les sucs digestifs\ndissolvent tout ce qu’il avale.</language>
+	</row>
+	<row id="msg_0806_00317" index="317">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il avale tout en une bouchée. Ses\nfollicules sécrètent des fluides\ntoxiques qui endorment l’ennemi.</language>
+	</row>
+	<row id="msg_0806_00318" index="318">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il attaque en banc quand on menace\nson territoire. Ses dents aiguisées\npeuvent percer la coque d’un navire.</language>
+	</row>
+	<row id="msg_0806_00319" index="319">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses crocs lacèrent des feuilles\nd’acier. Il nage à 120 km/h. On\nl’appelle “le tyran des mers”.</language>
+	</row>
+	<row id="msg_0806_00320" index="320">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Par beau temps, il se pose sur les\nplages pour jouer et rebondir. Il\nexpulse de l’eau par son évent.</language>
+	</row>
+	<row id="msg_0806_00321" index="321">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Le plus grand des Pokémon. Il peut\nplonger à une profondeur de \n3 000 m en retenant son souffle.</language>
+	</row>
+	<row id="msg_0806_00322" index="322">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son dos bossu renferme une lave\nbouillonnante. Elle refroidit par \ntemps de pluie, ce qui le ralentit.</language>
+	</row>
+	<row id="msg_0806_00323" index="323">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il porte des volcans sur son dos.\nQuand le magma remonte, il\nfrissonne et entre en éruption.</language>
+	</row>
+	<row id="msg_0806_00324" index="324">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il tire son énergie du charbon qu’il\nbrûle dans sa carapace et crache\nde la suie noire en cas de danger.</language>
+	</row>
+	<row id="msg_0806_00325" index="325">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il utilise sa queue comme un \nressort et bondit partout. Chaque\nnouveau choc fait battre son cœur.</language>
+	</row>
+	<row id="msg_0806_00326" index="326">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Les perles noires amplifient ses \npouvoirs psy. Sa danse étrange lui\npermet de contrôler ses ennemis.</language>
+	</row>
+	<row id="msg_0806_00327" index="327">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Les motifs sur leur fourrure sont\npropres à chaque SPINDA. Son pas\nchancelant le rend difficile à viser.</language>
+	</row>
+	<row id="msg_0806_00328" index="328">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il creuse un trou conique dans le\nsable du désert et se terre en\nattendant qu’une proie trébuche.</language>
+	</row>
+	<row id="msg_0806_00329" index="329">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses violents battements d’ailes\ngénèrent des vagues d’ultrasons\nqui donnent mal au crâne.</language>
+	</row>
+	<row id="msg_0806_00330" index="330">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son puissant battement d’ailes\nprovoque des tempêtes de sable.\nOn l’appelle “esprit du désert”.</language>
+	</row>
+	<row id="msg_0806_00331" index="331">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">En stockant l’eau dans son corps,\ncet habitant du désert peut \nsurvivre 30 jours sans boire.</language>
+	</row>
+	<row id="msg_0806_00332" index="332">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il sort la nuit pour chasser. Il\ntraque les proies épuisées après\nune journée dans le désert.</language>
+	</row>
+	<row id="msg_0806_00333" index="333">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses ailes sont comme des balles\nde coton. Perché sur la tête de \nquelqu’un, on dirait un chapeau.</language>
+	</row>
+	<row id="msg_0806_00334" index="334">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">En vol, il ressemble à un nuage\ncotonneux. Il fredonne d’une voix\nde soprano.</language>
+	</row>
+	<row id="msg_0806_00335" index="335">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">C’est le rival de SEVIPER depuis\ndes générations. Ses griffes\naiguisées sont son meilleur atout.</language>
+	</row>
+	<row id="msg_0806_00336" index="336">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Le rival historique de MANGRIFF.\nIl affûte la lame de sa queue \nsur les rochers avant le combat.</language>
+	</row>
+	<row id="msg_0806_00337" index="337">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On suppose qu’il est lié au cycle\nlunaire, car il ne sort que les\nsoirs de pleine lune.</language>
+	</row>
+	<row id="msg_0806_00338" index="338">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Le bruit court que cette nouvelle\nespèce vient du soleil. Il produit\nde la lumière en tournoyant.</language>
+	</row>
+	<row id="msg_0806_00339" index="339">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il enduit son corps d’une \nsubstance visqueuse pour glisser\net se libérer quand on l’agrippe.</language>
+	</row>
+	<row id="msg_0806_00340" index="340">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il est attaché à son territoire.\nIl repousse l’ennemi en provoquant\ndes secousses qui portent à 5 km.</language>
+	</row>
+	<row id="msg_0806_00341" index="341">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sa nature robuste lui permet de\nvivre sur n’importe quel terrain. \nSes pinces ne lâchent jamais prise.</language>
+	</row>
+	<row id="msg_0806_00342" index="342">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">C’est un voyou qui utilise ses\npinces pour chasser les autres\nPokémon hors de sa mare.</language>
+	</row>
+	<row id="msg_0806_00343" index="343">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il se déplace en tournoyant sur\nson pied. Ce Pokémon rare fut\ndécouvert dans de vieilles ruines.</language>
+	</row>
+	<row id="msg_0806_00344" index="344">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Une ancienne figurine d’argile qui \ns’est animée suite à son exposition\nà un rayon de lumière étrange.</language>
+	</row>
+	<row id="msg_0806_00345" index="345">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il vivait au fond de la mer il y a\n100 millions d’années. La science\na permis de le ressusciter.</language>
+	</row>
+	<row id="msg_0806_00346" index="346">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Vit dans les hauts-fonds des mers\nchaudes. Il déterre sa proie du\nsable quand la marée se retire.</language>
+	</row>
+	<row id="msg_0806_00347" index="347">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un ancêtre Pokémon réanimé \nà partir d’un fossile. Il vivait en\nmer et chassait avec ses pinces.</language>
+	</row>
+	<row id="msg_0806_00348" index="348">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il a gagné la côte après son \névolution. Une armure robuste\nrecouvre son corps.</language>
+	</row>
+	<row id="msg_0806_00349" index="349">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il est connu pour son teint maladif.\nBien que nombreux, ces Pokémon\nse regroupent aux mêmes endroits.</language>
+	</row>
+	<row id="msg_0806_00350" index="350">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On raconte qu’il surgit du fond des\nlacs pour calmer les esprits quand\nles gens se querellent.</language>
+	</row>
+	<row id="msg_0806_00351" index="351">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son aspect change avec la météo.\nOn a récemment découvert que ses\nmolécules étaient pareilles à l’eau.</language>
+	</row>
+	<row id="msg_0806_00352" index="352">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il change de couleur à volonté,\nmais le motif en zigzag qui\norne son ventre reste le même.</language>
+	</row>
+	<row id="msg_0806_00353" index="353">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il aime le goût de la vengeance.\nIls vivent en rangs sous les \ngouttières des gens vindicatifs.</language>
+	</row>
+	<row id="msg_0806_00354" index="354">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Une poupée mue par la tristesse qui\nla ronge depuis qu’on l’a délaissée.\nElle recherche son propriétaire.</language>
+	</row>
+	<row id="msg_0806_00355" index="355">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il poursuit assidûment sa proie, où\nqu’elle aille. Il n’abandonne sa\ntraque qu’au lever du soleil.</language>
+	</row>
+	<row id="msg_0806_00356" index="356">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son corps est creux. On raconte\nque celui qui regarde à l’intérieur\nfinira aspiré par le néant.</language>
+	</row>
+	<row id="msg_0806_00357" index="357">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A force de manger son fruit\npréféré, il a fini par pousser\nautour de son cou.</language>
+	</row>
+	<row id="msg_0806_00358" index="358">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son langage comporte sept cris.\nIl les utilise pour faire vibrer\nl’air et projeter son ennemi.</language>
+	</row>
+	<row id="msg_0806_00359" index="359">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il pressent les catastrophes et\nn’apparaît aux gens que pour les\nprévenir d’un danger imminent.</language>
+	</row>
+	<row id="msg_0806_00360" index="360">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il se muscle en bousculant ses\nsemblables lors de mêlées. Il\nraffole des fruits sucrés.</language>
+	</row>
+	<row id="msg_0806_00361" index="361">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Selon un vieux dicton des régions\nenneigées: “STALGAMIN dans la \nmaison, richesse à l’horizon”.</language>
+	</row>
+	<row id="msg_0806_00362" index="362">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il gèle l’humidité de l’air pour \nformer une armure de glace\nprotectrice autour de son corps.</language>
+	</row>
+	<row id="msg_0806_00363" index="363">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il gagne la côte en roulant sur les\nblocs de glace car sa morphologie\nn’est pas adaptée à la nage.</language>
+	</row>
+	<row id="msg_0806_00364" index="364">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il fait souvent tourner des objets\nsur son museau pour connaître\nleur odeur et leur texture.</language>
+	</row>
+	<row id="msg_0806_00365" index="365">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il brise la glace avec ses grosses\ndéfenses. Sa graisse le protège du \nfroid, mais aussi des attaques.</language>
+	</row>
+	<row id="msg_0806_00366" index="366">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il ne produit qu’une perle durant\nson existence. On raconte qu’elle\namplifie ses pouvoirs psychiques.</language>
+	</row>
+	<row id="msg_0806_00367" index="367">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il vit loin sous la mer. Il appâte\nles proies crédules avec sa\nqueue qui rappelle un petit poisson.</language>
+	</row>
+	<row id="msg_0806_00368" index="368">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Au printemps, son corps rose se\nfait plus vif sans que l’on sache\npourquoi. Il vit au fond de la mer. </language>
+	</row>
+	<row id="msg_0806_00369" index="369">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un Pokémon rare aperçu lors d’une\nexploration sous-marine. Il n’a pas\névolué depuis 100 millions d’années.</language>
+	</row>
+	<row id="msg_0806_00370" index="370">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un habitant des mers chaudes. On\ndit que le couple qui tombe sur ce\nPokémon connaîtra l’amour éternel.</language>
+	</row>
+	<row id="msg_0806_00371" index="371">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il rêve de pouvoir voler un jour. \nPour l’heure, il s’entraîne en\nsautant du haut des falaises.</language>
+	</row>
+	<row id="msg_0806_00372" index="372">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses cellules ont commencé à\nchanger dans sa robuste coquille.\nIl la perd en évoluant.</language>
+	</row>
+	<row id="msg_0806_00373" index="373">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A force de rêver de pouvoir voler,\nsa structure cellulaire a évolué\net il s’est vu pousser des ailes.</language>
+	</row>
+	<row id="msg_0806_00374" index="374">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il dialogue avec les siens par \nimpulsions magnétiques. En bande,\nils se déplacent à l’unisson.</language>
+	</row>
+	<row id="msg_0806_00375" index="375">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il est formé de deux TERHAL\nsoudés. Son corps de fer résiste à\nun choc avec un avion à réaction.</language>
+	</row>
+	<row id="msg_0806_00376" index="376">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il est né de la fusion de plusieurs\nMETANG. Ses quatre cerveaux en\nfont l’égal d’un superordinateur.</language>
+	</row>
+	<row id="msg_0806_00377" index="377">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Tout son corps est fait de roche.\nS’il s’ébrèche au combat, il utilise\ndes pierres pour le réparer.</language>
+	</row>
+	<row id="msg_0806_00378" index="378">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son corps est fait de glace datant\nde l’ère glaciaire. Il contrôle un\nair gelé à -200 °C.</language>
+	</row>
+	<row id="msg_0806_00379" index="379">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son corps invulnérable fut forgé\npar la pression souterraine durant\ndes dizaines de milliers d’années.</language>
+	</row>
+	<row id="msg_0806_00380" index="380">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son corps est recouvert d’un \nduvet qui reflète la lumière\net le rend invisible.</language>
+	</row>
+	<row id="msg_0806_00381" index="381">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un Pokémon très intelligent. Il\npeut voler plus vite qu’un avion à\nréaction en repliant ses ailes.</language>
+	</row>
+	<row id="msg_0806_00382" index="382">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On dit qu’il a fait monter les eaux\nen causant des pluies diluviennes.\nIl somnolait dans une fosse marine.</language>
+	</row>
+	<row id="msg_0806_00383" index="383">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il dormait dans le magma souterrain\ndepuis sa lutte féroce contre\nKYOGRE, il y a longtemps de cela.</language>
+	</row>
+	<row id="msg_0806_00384" index="384">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il vit dans la couche d’ozone, au\ndessus des nuages. Il est invisible\ndepuis le sol.</language>
+	</row>
+	<row id="msg_0806_00385" index="385">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On raconte qu’une fois tous les\nmille ans, il a la capacité d’exaucer\ntous les vœux durant une semaine.</language>
+	</row>
+	<row id="msg_0806_00386" index="386">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il vient d’un virus extraterrestre\narrivé avec une météorite et ayant\nsubi une mutation génétique.</language>
+	</row>
+	<row id="msg_0806_00387" index="387">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">La coquille sur son dos est faite\nde terre. Elle durcit lorsqu’il \ns’abreuve. Il vit le long des lacs.</language>
+	</row>
+	<row id="msg_0806_00388" index="388">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il vit en forêt près de l’eau.\nEn journée, il la quitte pour dorer\nsa carapace feuillue au soleil.</language>
+	</row>
+	<row id="msg_0806_00389" index="389">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il arrive que de petits Pokémon\nse rassemblent sur son dos \nimmobile pour y faire leur nid.</language>
+	</row>
+	<row id="msg_0806_00390" index="390">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il escalade prestement les falaises\nescarpées et vit sur les sommets.\nSa flamme s’éteint quand il dort.</language>
+	</row>
+	<row id="msg_0806_00391" index="391">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pour intimider ses agresseurs, il\ngonfle les flammes de sa queue\npour paraître plus grand.</language>
+	</row>
+	<row id="msg_0806_00392" index="392">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il pratique un art martial spécial\nqui utilise tous ses membres.\nSa flamme ne s’éteint jamais.</language>
+	</row>
+	<row id="msg_0806_00393" index="393">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il est fier et déteste accepter\nla nourriture qu’on lui offre. Son\npelage épais le protège du froid.</language>
+	</row>
+	<row id="msg_0806_00394" index="394">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il vit seul, à l’écart de ses pairs.\nChaque individu est convaincu\nd’être meilleur que les autres.</language>
+	</row>
+	<row id="msg_0806_00395" index="395">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Les trois cornes de son bec sont le\nsymbole de sa force. Celles du chef\nsont plus grosses que les autres.</language>
+	</row>
+	<row id="msg_0806_00396" index="396">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ils volent en nombre. Bien que\nminuscule, il bat des ailes avec\nune vigueur impressionnante.</language>
+	</row>
+	<row id="msg_0806_00397" index="397">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il survole les forêts et les champs\nen quête de Pokémon Insecte.\nIls forment de grandes volées.</language>
+	</row>
+	<row id="msg_0806_00398" index="398">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un Pokémon sauvage qui a le\ncourage de défier des ennemis\nbeaucoup plus grands que lui.</language>
+	</row>
+	<row id="msg_0806_00399" index="399">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rien ne peut perturber ses nerfs\nd’acier. Il est plus agile et\nénergique qu’il n’y paraît.</language>
+	</row>
+	<row id="msg_0806_00400" index="400">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il construit des barrages de boue\net d’écorce le long des fleuves. \nC’est un ouvrier de renom.</language>
+	</row>
+	<row id="msg_0806_00401" index="401">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Quand il bascule sa tête d’avant \nen arrière, ses antennes se\nheurtent dans un son de xylophone.</language>
+	</row>
+	<row id="msg_0806_00402" index="402">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il croise ses bras affûtés devant\nson torse pour crier. Il compose\ntout un tas de mélodies.</language>
+	</row>
+	<row id="msg_0806_00403" index="403">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sa fourrure étincelle en cas de\ndanger. Il profite du fait que \nl’ennemi est aveuglé pour s’enfuir.</language>
+	</row>
+	<row id="msg_0806_00404" index="404">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">L’électricité libérée par ses\ngriffes peut assommer l’ennemi.\nIl vit en petits groupes.</language>
+	</row>
+	<row id="msg_0806_00405" index="405">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses yeux voient à travers tout. Il\nrepère les proies cachées derrière\nun objet pour les capturer.</language>
+	</row>
+	<row id="msg_0806_00406" index="406">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">En hiver, son bourgeon se referme\npour résister au froid. Il s’ouvre\nau printemps et libère du pollen.</language>
+	</row>
+	<row id="msg_0806_00407" index="407">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il attire ses proies avec son doux\nparfum et les achève grâce aux\nfouets d’épines de ses bras.</language>
+	</row>
+	<row id="msg_0806_00408" index="408">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il vivait dans la jungle il y a \nenviron 100 millions d’années. Son\ncrâne est dur comme du fer.</language>
+	</row>
+	<row id="msg_0806_00409" index="409">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son violent coup de tête est\nassez puissant pour pulvériser\nles matériaux les plus résistants.</language>
+	</row>
+	<row id="msg_0806_00410" index="410">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un Pokémon qui vivait dans la jungle\nil y a 100 millions d’années. Son\nvisage est très dur.</language>
+	</row>
+	<row id="msg_0806_00411" index="411">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il résiste à toute attaque\nfrontale. C’est un Pokémon docile\nqui se nourrit d’herbe et de Baies.</language>
+	</row>
+	<row id="msg_0806_00412" index="412">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pour se protéger des vents glacés\nde l’hiver, il s’est tissé une cape\nde feuilles et de brindilles.</language>
+	</row>
+	<row id="msg_0806_00413" index="413">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Quand CHENITI a évolué, sa\ncape a fusionné avec son corps.\nCHENISELLE ne s’en sépare jamais.</language>
+	</row>
+	<row id="msg_0806_00414" index="414">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il aime le nectar des fleurs et\nn’hésite pas à voler celui\nque récupère APITRINI.</language>
+	</row>
+	<row id="msg_0806_00415" index="415">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un Pokémon qui en regroupe trois\nautres. Il est toujours occupé à\napporter du nectar à APIREINE.</language>
+	</row>
+	<row id="msg_0806_00416" index="416">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son abdomen est un rayon où\nvivent ses larves, élevées avec\nle nectar récolté par APITRINI.</language>
+	</row>
+	<row id="msg_0806_00417" index="417">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il roule des boules de poils pleines\nd’électricité statique et les range\ndans des souches avec des Baies.</language>
+	</row>
+	<row id="msg_0806_00418" index="418">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sa bouée est pareille à un\ncollier gonflable. Quand il flotte,\nil garde la tête à l’air libre.</language>
+	</row>
+	<row id="msg_0806_00419" index="419">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il flotte grâce à sa bouée très\ndéveloppée. Il vole au secours\ndes gens sur le point de se noyer.</language>
+	</row>
+	<row id="msg_0806_00420" index="420">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">La petite boule renferme les\ndélicieux nutriments sucrés\ndont il a besoin pour évoluer.</language>
+	</row>
+	<row id="msg_0806_00421" index="421">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il fleurit lorsque le soleil est au\nbeau fixe. Il cherche à prendre sa\nrevanche sur une vie de bourgeon.</language>
+	</row>
+	<row id="msg_0806_00422" index="422">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sa couleur et sa forme varient\nselon les régions. On en recense\ndeux types à Sinnoh.</language>
+	</row>
+	<row id="msg_0806_00423" index="423">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son corps pliable est dépourvu\nd’os. Lorsqu’on tranche un de ses\nmembres, il repousse immédiatement.</language>
+	</row>
+	<row id="msg_0806_00424" index="424">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il se nourrit de noix qu’il épluche\navec ses deux queues habiles. Il\nutilise rarement ses bras.</language>
+	</row>
+	<row id="msg_0806_00425" index="425">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un Pokémon né de l’esprit des gens\net des Pokémon. Il aime les saisons\nchaudes et humides.</language>
+	</row>
+	<row id="msg_0806_00426" index="426">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il somnole la journée et s’envole\nen grands groupes le soir venu. Nul\nne sait où ils vont.</language>
+	</row>
+	<row id="msg_0806_00427" index="427">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il frappe l’ennemi en déroulant\nviolemment ses oreilles. Cela\npeut faire pleurer un adulte.</language>
+	</row>
+	<row id="msg_0806_00428" index="428">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un Pokémon extrêmement prudent.\nIl couvre son corps de ses oreilles\npelucheuses en cas de danger.</language>
+	</row>
+	<row id="msg_0806_00429" index="429">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son cri rappelle une incantation.\nCeux qui l’entendent souffrent\nde migraines et d’hallucinations.</language>
+	</row>
+	<row id="msg_0806_00430" index="430">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ce Pokémon nocturne évolue en\ngrandes volées escortées par des\nCORNEBRE.</language>
+	</row>
+	<row id="msg_0806_00431" index="431">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il griffe quand il est en colère et\nronronne quand il est heureux. \nCertains aiment ce côté lunatique.</language>
+	</row>
+	<row id="msg_0806_00432" index="432">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cette brute arrogante n’hésite pas\nà voler le nid d’autres Pokémon\npour s’y installer.</language>
+	</row>
+	<row id="msg_0806_00433" index="433">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il émet des cris en agitant\nl’orbe à l’arrière de sa gorge. Il\navance par bonds désordonnés.</language>
+	</row>
+	<row id="msg_0806_00434" index="434">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il se protège en expulsant un \nfluide nocif par son derrière. \nLa puanteur dure 24 heures.</language>
+	</row>
+	<row id="msg_0806_00435" index="435">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il attaque en projetant un\nliquide fétide du bout de sa queue.\nIl peut tirer à 50 mètres.</language>
+	</row>
+	<row id="msg_0806_00436" index="436">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il ressemble à des objets trouvés\ndans des sépultures anciennes.\nNul ne sait s’ils sont liés.</language>
+	</row>
+	<row id="msg_0806_00437" index="437">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">La découverte d’un de ces Pokémon\nsur un site de fouilles après 2 000 \nans de sommeil a fait sensation.</language>
+	</row>
+	<row id="msg_0806_00438" index="438">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On dirait qu’il pleure constamment.\nEn fait, il régule ses fluides\ncorporels en éliminant le surplus.</language>
+	</row>
+	<row id="msg_0806_00439" index="439">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il imite ses ennemis. Une fois\nimités, ils ne peuvent plus\nquitter ce Pokémon des yeux.</language>
+	</row>
+	<row id="msg_0806_00440" index="440">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ce Pokémon aime ce qui est rond et\nblanc et transporte un caillou en\nforme d’œuf pour imiter LEVEINARD.</language>
+	</row>
+	<row id="msg_0806_00441" index="441">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On peut lui enseigner quelques\nmots. S’ils sont en groupe, ils\nretiendront les mêmes phrases.</language>
+	</row>
+	<row id="msg_0806_00442" index="442">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un Pokémon composé de 108\nesprits. Il provient d’une fissure\ndans une clé de voûte étrange.</language>
+	</row>
+	<row id="msg_0806_00443" index="443">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il niche dans les petits trous\nhorizontaux des murs des grottes.\nIl bondit pour saisir sa proie.</language>
+	</row>
+	<row id="msg_0806_00444" index="444">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Selon une croyance ancienne, on\npeut utiliser ses écailles pour\nguérir les maladies incurables. </language>
+	</row>
+	<row id="msg_0806_00445" index="445">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Quand il se recroqueville et étend\nses ailes, on dirait un chasseur.\nSa vitesse est supersonique.</language>
+	</row>
+	<row id="msg_0806_00446" index="446">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il avale son poids en nourriture\nchaque jour. Il avale tout sans \nprendre le temps de mâcher.</language>
+	</row>
+	<row id="msg_0806_00447" index="447">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son aura s’intensifie pour\nprévenir son entourage quand\nil a peur ou qu’il est triste.</language>
+	</row>
+	<row id="msg_0806_00448" index="448">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il ressent les auras de tout. Il \ncomprend le langage humain.</language>
+	</row>
+	<row id="msg_0806_00449" index="449">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il vit dans des endroits arides.\nIl exsude des grains de sable\nau lieu de transpirer.</language>
+	</row>
+	<row id="msg_0806_00450" index="450">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il emmagasine du sable qu’il\nexpulse en tornades par les\npores de sa peau pour attaquer.</language>
+	</row>
+	<row id="msg_0806_00451" index="451">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il saisit sa proie avec les pinces de\nsa queue, lui injecte un poison et\nla retient jusqu’à ce qu’il agisse.</language>
+	</row>
+	<row id="msg_0806_00452" index="452">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il peut réduire une voiture en pièces\navec ses bras. Le bout de ses pinces\ncontient du poison.</language>
+	</row>
+	<row id="msg_0806_00453" index="453">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses joues contiennent des glandes\ntoxiques. Il attaque par surprise\net utilise son toucher empoisonné.</language>
+	</row>
+	<row id="msg_0806_00454" index="454">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Les griffes de ses poings sécrètent\nune toxine si atroce qu’une simple\négratignure peut s’avérer fatale.</language>
+	</row>
+	<row id="msg_0806_00455" index="455">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il attire sa proie avec sa salive\nodorante avant de la croquer. Il\nlui faut une journée pour l’avaler.</language>
+	</row>
+	<row id="msg_0806_00456" index="456">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Après une longue exposition au\nsoleil, les motifs de ses nageoires\ncaudales luisent à la nuit tombée.</language>
+	</row>
+	<row id="msg_0806_00457" index="457">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il vit au plus profond de l’océan.\nIl attire sa proie en illuminant les\nmotifs de ses 4 nageoires.</language>
+	</row>
+	<row id="msg_0806_00458" index="458">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un Pokémon amical qui analyse\nles mouvements subtils de l’eau de\nmer grâce à ses deux antennes.</language>
+	</row>
+	<row id="msg_0806_00459" index="459">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il vit sur les monts enneigés.\nIgnorant des coutumes humaines,\nil lui arrive d’être très curieux.</language>
+	</row>
+	<row id="msg_0806_00460" index="460">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">C’est l’abominable homme des\nneiges. Il ensevelit les montagnes\nsous ses blizzards.</language>
+	</row>
+	<row id="msg_0806_00461" index="461">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ils vivent par groupes de 4 ou 5\nen région froide et chassent de\nfaçon très organisée.</language>
+	</row>
+	<row id="msg_0806_00462" index="462">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il a évolué suite à son exposition\nà un champ magnétique spécial. Ses\n3 unités génèrent du magnétisme.</language>
+	</row>
+	<row id="msg_0806_00463" index="463">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il enroule tout dans sa langue\nextensible. Ceux qui l’approchent\nfinissent couverts de bave.</language>
+	</row>
+	<row id="msg_0806_00464" index="464">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il bande ses muscles pour projeter des\npierres depuis le creux de ses paumes.\nIl lance parfois des RACAILLOU.</language>
+	</row>
+	<row id="msg_0806_00465" index="465">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il ligote sa proie en étirant ses\nbras en lianes. Il ne craint pas de\nperdre un bras face à un ennemi.</language>
+	</row>
+	<row id="msg_0806_00466" index="466">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il place le bout de ses deux \nqueues sur son ennemi et libère\nune décharge de 20 000 volts.</language>
+	</row>
+	<row id="msg_0806_00467" index="467">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il projette des boules de feu de\n2 000 °C à bout de bras. Il\nvit dans les cratères volcaniques.</language>
+	</row>
+	<row id="msg_0806_00468" index="468">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il n’apparaît jamais en temps\nde conflit. Récemment, il s’est\nfait plus rare.</language>
+	</row>
+	<row id="msg_0806_00469" index="469">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Les ondes de choc qu’il génère\nen battant des ailes infligent de\ngraves blessures internes.</language>
+	</row>
+	<row id="msg_0806_00470" index="470">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il utilise la photosynthèse comme\nune plante. C’est pourquoi il est \ntoujours entouré d’air pur.</language>
+	</row>
+	<row id="msg_0806_00471" index="471">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il peut geler sa fourrure pour se\nprotéger en rendant ses poils\naussi durs que des piquants.</language>
+	</row>
+	<row id="msg_0806_00472" index="472">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il guette sa proie, pendu à une\nbranche la tête en bas, et s’en\nsaisit à la première occasion. </language>
+	</row>
+	<row id="msg_0806_00473" index="473">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses défenses spectaculaires sont\nglacées. Sa population a diminué à cause\ndu réchauffement suivant l’ère glaciaire.</language>
+	</row>
+	<row id="msg_0806_00474" index="474">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un logiciel supplémentaire fut \ninstallé pour l’améliorer. Mais\ndepuis, il se comporte bizarrement.</language>
+	</row>
+	<row id="msg_0806_00475" index="475">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il frappe avec les grandes lames de\nses coudes. Son talent d’escrimeur\nn’a d’égal que sa courtoisie.</language>
+	</row>
+	<row id="msg_0806_00476" index="476">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son corps libère une puissante\nforce magnétique. Il dirige trois\npetites unités appelées Mini-nez.</language>
+	</row>
+	<row id="msg_0806_00477" index="477">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">L’antenne sur sa tête capte les\nondes radio du monde des esprits\nlui ordonnant d’y porter des gens.</language>
+	</row>
+	<row id="msg_0806_00478" index="478">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MOMARTIK gèle ses ennemis grâce à\nson souffle à -50 °C. Ça ne se\nvoit pas, mais son corps est creux.</language>
+	</row>
+	<row id="msg_0806_00479" index="479">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Son corps est fait de plasma. Il\ncause de gros dégâts en infiltrant\ndes appareils électroniques.</language>
+	</row>
+	<row id="msg_0806_00480" index="480">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On l’appelle “l’être du savoir”.\nOn raconte que son regard a le\npouvoir d’effacer la mémoire.</language>
+	</row>
+	<row id="msg_0806_00481" index="481">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On l’appelle “l’être de l’émotion”.\nIl enseigne aux hommes la beauté de\nla tristesse, la douleur et la joie.</language>
+	</row>
+	<row id="msg_0806_00482" index="482">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On l’appelle “l’être de la volonté”.\nIl dort au fond d’un lac pour\nmaintenir l’équilibre du monde.</language>
+	</row>
+	<row id="msg_0806_00483" index="483">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il peut contrôler le temps. Les\nmythes de Sinnoh en parlent\ncomme d’une divinité ancienne.</language>
+	</row>
+	<row id="msg_0806_00484" index="484">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il peut modeler l’espace. Les\nmythes de Sinnoh en parlent\ncomme d’une divinité ancienne.</language>
+	</row>
+	<row id="msg_0806_00485" index="485">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il hante les grottes volcaniques.\nIl rampe aux murs et au plafond grâce\nà ses pieds en forme de croix.</language>
+	</row>
+	<row id="msg_0806_00486" index="486">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Une légende tenace veut que ce\nPokémon ait traîné les continents\nen les attachant à des cordes.</language>
+	</row>
+	<row id="msg_0806_00487" index="487">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un Pokémon censé vivre dans un\nmonde à l’opposé du nôtre. Il\napparaît dans un cimetière ancien.</language>
+	</row>
+	<row id="msg_0806_00488" index="488">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ses ailes libèrent un rideau de\nparticules brillantes. Ce Pokémon\nsymboliserait le croissant de lune.</language>
+	</row>
+	<row id="msg_0806_00489" index="489">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Un Pokémon des mers chaudes. Il\ngonfle la bouée sur sa tête et\ndérive en quête de vivres.</language>
+	</row>
+	<row id="msg_0806_00490" index="490">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Né dans les profondeurs froides de\nl’océan, il parcourt un long chemin\npour gagner son lieu de naissance.</language>
+	</row>
+	<row id="msg_0806_00491" index="491">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il a la capacité de bercer les gens\npour les faire rêver. Il se montre\ndurant les nuits de nouvelle lune.</language>
+	</row>
+	<row id="msg_0806_00492" index="492">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Il vit dans les champs de fleurs et\nse cache en s’enroulant pour\nimiter une plante fleurie.</language>
+	</row>
+	<row id="msg_0806_00493" index="493">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">La mythologie le décrit comme\nle Pokémon qui a façonné\nl’univers avec ses 1 000 bras.</language>
+	</row>
+</body>

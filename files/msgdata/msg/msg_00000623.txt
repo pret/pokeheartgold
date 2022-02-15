@@ -1,4 +1,0 @@
-Pryce is a veteran who has trained\nPokémon for some 50 years.\rAs you’ll find, his attacks will make\nyou shiver in this freezing Gym.\rAre you ready to be frozen solid?\rI mean--keep up a hot fighting spirit\nagainst ice!
-Pryce is something, but you’re\nsomething else!\rThat was a hot battle that\nspanned the generations!
-Mahogany Town Pokémon Gym
-Mahogany Town Pokémon Gym\rLeader: Pryce\nCertified Trainer!\f{STRVAR_1 3, 0, 0}

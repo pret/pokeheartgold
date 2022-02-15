@@ -8,8 +8,9 @@ _020FC224:
 
 	.text
 
-	thumb_func_start ScrCmd_490
-ScrCmd_490: ; 0x0204EE20
+	thumb_func_start ScrCmd_NopVar490
+ScrCmd_NopVar490: ; 0x0204EE20
+	; Essentially a nop
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -20,10 +21,11 @@ ScrCmd_490: ; 0x0204EE20
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_490
+	thumb_func_end ScrCmd_NopVar490
 
 	thumb_func_start ScrCmd_491
 ScrCmd_491: ; 0x0204EE38
+	; Essentially a nop
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -513,7 +515,7 @@ sub_0204F1E4: ; 0x0204F1E4
 	ldr r1, _0204F224 ; =sub_0204F228
 	add r0, r7, #0
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0204F224: .word sub_0204F228
@@ -522,7 +524,7 @@ _0204F224: .word sub_0204F228
 	thumb_func_start sub_0204F228
 sub_0204F228: ; 0x0204F228
 	push {r4, lr}
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrb r1, [r4]
 	cmp r1, #0
@@ -577,7 +579,7 @@ sub_0204F284: ; 0x0204F284
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r2, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r7, r0, #0
 	mov r0, #0xb
 	mov r1, #0xc
@@ -591,7 +593,7 @@ sub_0204F284: ; 0x0204F284
 	ldr r0, [r7, #0x10]
 	ldr r1, _0204F2B4 ; =sub_0204F2B8
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0204F2B4: .word sub_0204F2B8
@@ -601,10 +603,10 @@ _0204F2B4: .word sub_0204F2B8
 sub_0204F2B8: ; 0x0204F2B8
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r1, [r4]
 	cmp r1, #4
@@ -765,7 +767,7 @@ sub_0204F3F8: ; 0x0204F3F8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, r1, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	beq _0204F40A
 	mov r0, #1
@@ -871,7 +873,7 @@ sub_0204F4D8: ; 0x0204F4D8
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	beq _0204F4EA
 	mov r0, #3

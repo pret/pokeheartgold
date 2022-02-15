@@ -1,17 +1,20 @@
+#include "constants/sndseq.h"
+#include "constants/items.h"
+#include "msgdata/msg/msg_0010.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
 	.text
 
-	thumb_func_start ov15_021F9380
-ov15_021F9380: ; 0x021F9380
+	thumb_func_start ov15_BagApp_init
+ov15_BagApp_init: ; 0x021F9380
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r0, #0
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r0, #1
@@ -48,7 +51,7 @@ ov15_021F9380: ; 0x021F9380
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	add r0, r4, #0
-	bl ov15_021F98F4
+	bl BagApp_GetSaveStructPtrs
 	mov r0, #6
 	bl BgConfig_Alloc
 	str r0, [r4]
@@ -261,7 +264,7 @@ _021F95B6:
 	strh r0, [r2]
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, pc}
@@ -273,10 +276,10 @@ _021F95F8: .word 0x00000615
 _021F95FC: .word 0x00000644
 _021F9600: .word ov15_021F995C
 _021F9604: .word 0x04000304
-	thumb_func_end ov15_021F9380
+	thumb_func_end ov15_BagApp_init
 
-	thumb_func_start ov15_021F9608
-ov15_021F9608: ; 0x021F9608
+	thumb_func_start ov15_BagApp_exec
+ov15_BagApp_exec: ; 0x021F9608
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -558,10 +561,10 @@ _021F9810:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov15_021F9608
+	thumb_func_end ov15_BagApp_exec
 
-	thumb_func_start ov15_021F982C
-ov15_021F982C: ; 0x021F982C
+	thumb_func_start ov15_BagApp_exit
+ov15_BagApp_exit: ; 0x021F982C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -634,10 +637,10 @@ ov15_021F982C: ; 0x021F982C
 	nop
 _021F98EC: .word 0x0000068C
 _021F98F0: .word 0x000005E4
-	thumb_func_end ov15_021F982C
+	thumb_func_end ov15_BagApp_exit
 
-	thumb_func_start ov15_021F98F4
-ov15_021F98F4: ; 0x021F98F4
+	thumb_func_start BagApp_GetSaveStructPtrs
+BagApp_GetSaveStructPtrs: ; 0x021F98F4
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x8d
@@ -663,45 +666,45 @@ ov15_021F98F4: ; 0x021F98F4
 	lsl r1, r1, #6
 	str r0, [r4, r1]
 	pop {r4, pc}
-	thumb_func_end ov15_021F98F4
+	thumb_func_end BagApp_GetSaveStructPtrs
 
-	thumb_func_start ov15_021F992C
-ov15_021F992C: ; 0x021F992C
+	thumb_func_start BagApp_GetSaveRoamers
+BagApp_GetSaveRoamers: ; 0x021F992C
 	mov r1, #0x8d
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	ldr r3, _021F9938 ; =sub_0202D9C4
+	ldr r3, _021F9938 ; =Save_Roamers_get
 	ldr r0, [r0]
 	bx r3
 	.balign 4, 0
-_021F9938: .word sub_0202D9C4
-	thumb_func_end ov15_021F992C
+_021F9938: .word Save_Roamers_get
+	thumb_func_end BagApp_GetSaveRoamers
 
-	thumb_func_start ov15_021F993C
-ov15_021F993C: ; 0x021F993C
+	thumb_func_start BagApp_GetRepelStepCountAddr
+BagApp_GetRepelStepCountAddr: ; 0x021F993C
 	push {r4, lr}
 	add r4, r1, #0
-	bl ov15_021F992C
-	bl sub_0202DB04
+	bl BagApp_GetSaveRoamers
+	bl RoamerSave_GetRepelAddr
 	strb r4, [r0]
 	pop {r4, pc}
-	thumb_func_end ov15_021F993C
+	thumb_func_end BagApp_GetRepelStepCountAddr
 
-	thumb_func_start ov15_021F994C
-ov15_021F994C: ; 0x021F994C
+	thumb_func_start BagApp_SetFlute
+BagApp_SetFlute: ; 0x021F994C
 	push {r4, lr}
 	add r4, r1, #0
-	bl ov15_021F992C
+	bl BagApp_GetSaveRoamers
 	add r1, r4, #0
-	bl sub_0202DB18
+	bl RoamerSave_SetFlute
 	pop {r4, pc}
-	thumb_func_end ov15_021F994C
+	thumb_func_end BagApp_SetFlute
 
 	thumb_func_start ov15_021F995C
 ov15_021F995C: ; 0x021F995C
 	push {r3, lr}
 	ldr r0, [r0]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0202061C
 	bl sub_0200D034
 	ldr r3, _021F997C ; =0x027E0000
@@ -841,7 +844,7 @@ ov15_021F9A8C: ; 0x021F9A8C
 	bl GX_EngineAToggleLayers
 	mov r0, #0x1b
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	mov r1, #7
 	bl FreeBgTilemapBuffer
@@ -1820,7 +1823,7 @@ _021FA1B8: .word 0x00000644
 ov15_021FA1BC: ; 0x021FA1BC
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
-	ldr r1, _021FA4A4 ; =gMain
+	ldr r1, _021FA4A4 ; =gSystem
 	mov r2, #0x40
 	ldr r3, [r1, #0x4c]
 	add r5, r0, #0
@@ -2134,7 +2137,7 @@ _021FA426:
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 _021FA440:
-	ldr r0, _021FA4A4 ; =gMain
+	ldr r0, _021FA4A4 ; =gSystem
 	mov r3, #1
 	ldr r1, [r0, #0x48]
 	add r0, r1, #0
@@ -2182,7 +2185,7 @@ _021FA47E:
 	ldr r0, _021FA4A8 ; =0x00000644
 	b _021FA4C0
 	nop
-_021FA4A4: .word gMain
+_021FA4A4: .word gSystem
 _021FA4A8: .word 0x00000644
 _021FA4AC: .word ov15_02200640
 _021FA4B0: .word ov15_02200641
@@ -2403,7 +2406,7 @@ _021FA64C: .word 0x00000617
 	thumb_func_start ov15_021FA650
 ov15_021FA650: ; 0x021FA650
 	push {r4, lr}
-	ldr r1, _021FA680 ; =gMain
+	ldr r1, _021FA680 ; =gSystem
 	ldr r2, [r1, #0x48]
 	mov r1, #2
 	lsl r1, r1, #0xc
@@ -2428,7 +2431,7 @@ _021FA67C:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-_021FA680: .word gMain
+_021FA680: .word gSystem
 _021FA684: .word _02201480
 _021FA688: .word _02201300
 	thumb_func_end ov15_021FA650
@@ -2757,7 +2760,7 @@ _021FA8F6:
 	strh r2, [r1]
 	ldr r1, [sp, #0x1c]
 	bl ov15_021FD774
-	mov r0, #0x25
+	mov r0, #SEQ_SE_GS_GEARCANCEL>>6
 	lsl r0, r0, #6
 	bl PlaySE
 	mov r0, #0x24
@@ -2892,7 +2895,7 @@ _021FAA14: .word 0x00000808
 	thumb_func_start ov15_021FAA18
 ov15_021FAA18: ; 0x021FAA18
 	push {r3, r4, r5, lr}
-	ldr r1, _021FAB28 ; =gMain
+	ldr r1, _021FAB28 ; =gSystem
 	add r5, r0, #0
 	ldr r0, _021FAB2C ; =0x00000619
 	ldr r2, [r1, #0x48]
@@ -3034,7 +3037,7 @@ _021FAB24:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021FAB28: .word gMain
+_021FAB28: .word gSystem
 _021FAB2C: .word 0x00000619
 _021FAB30: .word 0x00000614
 	thumb_func_end ov15_021FAA18
@@ -3287,7 +3290,7 @@ _021FAD24: .word 0x00000644
 
 	thumb_func_start ov15_021FAD28
 ov15_021FAD28: ; 0x021FAD28
-	ldr r1, _021FAD6C ; =gMain
+	ldr r1, _021FAD6C ; =gSystem
 	mov r2, #0x40
 	ldr r1, [r1, #0x48]
 	tst r2, r1
@@ -3326,7 +3329,7 @@ _021FAD5C:
 _021FAD6A:
 	bx lr
 	.balign 4, 0
-_021FAD6C: .word gMain
+_021FAD6C: .word gSystem
 _021FAD70: .word ov15_02200584
 _021FAD74: .word ov15_02200585
 _021FAD78: .word ov15_02200586
@@ -3526,7 +3529,7 @@ _021FAEF8:
 	bl ov15_021FFF34
 	b _021FAF24
 _021FAF04:
-	ldr r0, _021FAFF4 ; =gMain
+	ldr r0, _021FAFF4 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -3562,7 +3565,7 @@ _021FAF3E:
 	beq _021FAFE0
 	b _021FAFAC
 _021FAF46:
-	mov r0, #0x25
+	mov r0, #SEQ_SE_GS_GEARCANCEL>>6
 	lsl r0, r0, #6
 	bl PlaySE
 	ldr r0, _021FAFF8 ; =0x00000672
@@ -3641,7 +3644,7 @@ _021FAFE4: .word 0x0000066C
 _021FAFE8: .word 0x0000FFFA
 _021FAFEC: .word 0x000005DC
 _021FAFF0: .word 0x000005F3
-_021FAFF4: .word gMain
+_021FAFF4: .word gSystem
 _021FAFF8: .word 0x00000672
 	thumb_func_end ov15_021FAE48
 
@@ -3956,7 +3959,7 @@ _021FB25A:
 	ldrh r1, [r1]
 	cmp r1, r0
 	bne _021FB27A
-	bl sub_02005C18
+	bl SoundSys_GetGBSoundsState
 	cmp r0, #1
 	bne _021FB27A
 	mov r1, #0xf
@@ -4155,7 +4158,7 @@ ov15_021FB3F0: ; 0x021FB3F0
 	ldr r0, _021FB4F8 ; =0x0000066C
 	mov r2, #0x40
 	ldr r1, [r5, r0]
-	ldr r0, _021FB4FC ; =gMain
+	ldr r0, _021FB4FC ; =gSystem
 	add r4, r1, #0
 	ldr r0, [r0, #0x48]
 	tst r2, r0
@@ -4221,7 +4224,7 @@ _021FB452:
 	bl ov15_021FFECC
 	cmp r6, #4
 	bne _021FB48C
-	mov r0, #0x25
+	mov r0, #SEQ_SE_GS_GEARCANCEL>>6
 	lsl r0, r0, #6
 	bl PlaySE
 	mov r0, #1
@@ -4240,7 +4243,7 @@ _021FB48C:
 	add r0, r6, #0
 	pop {r4, r5, r6, pc}
 _021FB4A4:
-	ldr r0, _021FB4FC ; =gMain
+	ldr r0, _021FB4FC ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -4271,7 +4274,7 @@ _021FB4DE:
 	mov r0, #2
 	tst r0, r1
 	beq _021FB4F2
-	mov r0, #0x25
+	mov r0, #SEQ_SE_GS_GEARCANCEL>>6
 	lsl r0, r0, #6
 	bl PlaySE
 	mov r0, #1
@@ -4283,7 +4286,7 @@ _021FB4F2:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021FB4F8: .word 0x0000066C
-_021FB4FC: .word gMain
+_021FB4FC: .word gSystem
 _021FB500: .word ov15_02200528
 _021FB504: .word ov15_02200529
 _021FB508: .word ov15_0220052A
@@ -4486,7 +4489,7 @@ ov15_021FB680: ; 0x021FB680
 	lsl r1, r1, #0x10
 	mov r0, #2
 	lsr r1, r1, #0x10
-	bl sub_02064980
+	bl GetItemFieldUseFunc
 	add r1, r0, #0
 	beq _021FB6EE
 	mov r0, #0x8d
@@ -4535,12 +4538,12 @@ ov15_021FB700: ; 0x021FB700
 	bl sub_02020094
 	cmp r0, #0
 	bne _021FB772
-	ldr r0, _021FB77C ; =gMain
+	ldr r0, _021FB77C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
 	bne _021FB722
-	ldr r0, _021FB780 ; =gMain + 0x40
+	ldr r0, _021FB780 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _021FB772
@@ -4561,9 +4564,9 @@ _021FB736:
 	bl ClearFrameAndWindow2
 	add r0, r4, #0
 	add r0, #0x34
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r4, #4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	mov r1, #1
 	bl ov15_021FD788
@@ -4586,8 +4589,8 @@ _021FB772:
 	pop {r4, pc}
 	nop
 _021FB778: .word 0x00000616
-_021FB77C: .word gMain
-_021FB780: .word gMain + 0x40
+_021FB77C: .word gSystem
+_021FB780: .word gSystem + 0x40
 	thumb_func_end ov15_021FB700
 
 	thumb_func_start ov15_021FB784
@@ -4639,7 +4642,7 @@ _021FB7D6:
 	add r0, r4, #0
 	add r1, #0x66
 	ldrh r1, [r1]
-	bl ov15_021FB9D8
+	bl BagApp_TryUseItemInPlace
 	cmp r0, #1
 	bne _021FB7F4
 	ldr r1, _021FB818 ; =ov15_021FBBB0
@@ -4746,12 +4749,12 @@ _021FB8AC:
 	bl sub_02020094
 	cmp r0, #0
 	bne _021FB936
-	ldr r0, _021FB9CC ; =gMain
+	ldr r0, _021FB9CC ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
 	bne _021FB8CA
-	ldr r0, _021FB9D0 ; =gMain + 0x40
+	ldr r0, _021FB9D0 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _021FB9BA
@@ -4831,9 +4834,9 @@ _021FB956:
 	bl ClearFrameAndWindow2
 	add r0, r4, #0
 	add r0, #0x34
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r4, #4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #0x8d
 	lsl r0, r0, #2
 	ldr r5, [r4, r0]
@@ -4867,13 +4870,13 @@ _021FB9BA:
 _021FB9C0: .word 0x0000067B
 _021FB9C4: .word 0x000005E4
 _021FB9C8: .word 0x00000616
-_021FB9CC: .word gMain
-_021FB9D0: .word gMain + 0x40
+_021FB9CC: .word gSystem
+_021FB9D0: .word gSystem + 0x40
 _021FB9D4: .word 0x00000804
 	thumb_func_end ov15_021FB830
 
-	thumb_func_start ov15_021FB9D8
-ov15_021FB9D8: ; 0x021FB9D8
+	thumb_func_start BagApp_TryUseItemInPlace
+BagApp_TryUseItemInPlace: ; 0x021FB9D8
 	push {r3, r4, r5, lr}
 	mov r2, #0xbd
 	add r4, r0, #0
@@ -4890,59 +4893,59 @@ ov15_021FB9D8: ; 0x021FB9D8
 	mov r1, #1
 	add r2, r5, #0
 	bl BufferItemName
-	cmp r5, #0x44
+	cmp r5, #ITEM_BLACK_FLUTE
 	bne _021FBA20
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	mov r1, #0x41
+	mov r1, #msg_0010_00065
 	bl NewString_ReadMsgData
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov15_021F994C
+	bl BagApp_SetFlute
 	mov r0, #0x1a
 	mov r1, #0
 	lsl r0, r0, #6
 	strh r1, [r4, r0]
 	b _021FBA7A
 _021FBA20:
-	cmp r5, #0x45
+	cmp r5, #ITEM_WHITE_FLUTE
 	bne _021FBA44
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	mov r1, #0x40
+	mov r1, #msg_0010_00064
 	bl NewString_ReadMsgData
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #2
-	bl ov15_021F994C
+	bl BagApp_SetFlute
 	mov r0, #0x1a
 	mov r1, #0
 	lsl r0, r0, #6
 	strh r1, [r4, r0]
 	b _021FBA7A
 _021FBA44:
-	cmp r5, #0x4d
+	cmp r5, #ITEM_MAX_REPEL
 	beq _021FBA50
-	cmp r5, #0x4c
+	cmp r5, #ITEM_SUPER_REPEL
 	beq _021FBA50
-	cmp r5, #0x4f
+	cmp r5, #ITEM_REPEL
 	bne _021FBA5C
 _021FBA50:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl ov15_021FBA9C
+	bl BagApp_TryUseRepel
 	add r5, r0, #0
 	b _021FBA7A
 _021FBA5C:
-	ldr r0, _021FBA94 ; =0x000001F6
+	ldr r0, _021FBA94 ; =ITEM_GB_SOUNDS
 	cmp r5, r0
 	bne _021FBA76
 	add r0, r4, #0
 	add r1, r5, #0
-	bl ov15_021FBAF8
+	bl BagApp_ToggleGBSounds
 	add r5, r0, #0
 	mov r0, #0x1a
 	mov r1, #0
@@ -4965,17 +4968,17 @@ _021FBA7A:
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021FBA94: .word 0x000001F6
+_021FBA94: .word ITEM_GB_SOUNDS
 _021FBA98: .word 0x000005E4
-	thumb_func_end ov15_021FB9D8
+	thumb_func_end BagApp_TryUseItemInPlace
 
-	thumb_func_start ov15_021FBA9C
-ov15_021FBA9C: ; 0x021FBA9C
+	thumb_func_start BagApp_TryUseRepel
+BagApp_TryUseRepel: ; 0x021FBA9C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r5, r1, #0
-	bl ov15_021F992C
-	bl sub_0202DB08
+	bl BagApp_GetSaveRoamers
+	bl RoamerSave_RepelNotInUse
 	cmp r0, #0
 	bne _021FBAC4
 	mov r0, #0x1a
@@ -4985,7 +4988,7 @@ ov15_021FBA9C: ; 0x021FBA9C
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	mov r1, #0x3f
+	mov r1, #msg_0010_00063
 	bl NewString_ReadMsgData
 	pop {r3, r4, r5, pc}
 _021FBAC4:
@@ -4997,45 +5000,45 @@ _021FBAC4:
 	lsl r1, r1, #0x18
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl ov15_021F993C
-	mov r0, #0x1a
+	bl BagApp_GetRepelStepCountAddr
+	mov r0, #0x680>>6
 	mov r1, #1
 	lsl r0, r0, #6
 	strh r1, [r4, r0]
-	sub r0, #0x81
+	sub r0, #0x680-SEQ_SE_DP_CARD2
 	bl PlaySE
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	mov r1, #0x3e
+	mov r1, #msg_0010_00062
 	bl NewString_ReadMsgData
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov15_021FBA9C
+	thumb_func_end BagApp_TryUseRepel
 
-	thumb_func_start ov15_021FBAF8
-ov15_021FBAF8: ; 0x021FBAF8
+	thumb_func_start BagApp_ToggleGBSounds
+BagApp_ToggleGBSounds: ; 0x021FBAF8
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02005C18
+	bl SoundSys_GetGBSoundsState
 	cmp r0, #1
 	bne _021FBB16
-	bl sub_02005C24
+	bl SoundSys_ToggleGBSounds
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	mov r1, #0x69
+	mov r1, #msg_0010_00105
 	bl NewString_ReadMsgData
 	pop {r4, pc}
 _021FBB16:
-	bl sub_02005C24
+	bl SoundSys_ToggleGBSounds
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	mov r1, #0x68
+	mov r1, #msg_0010_00104
 	bl NewString_ReadMsgData
 	pop {r4, pc}
-	thumb_func_end ov15_021FBAF8
+	thumb_func_end BagApp_ToggleGBSounds
 
 	thumb_func_start ov15_021FBB28
 ov15_021FBB28: ; 0x021FBB28
@@ -5131,12 +5134,12 @@ _021FBBD4:
 	bl sub_02020094
 	cmp r0, #0
 	bne _021FBC56
-	ldr r0, _021FBC64 ; =gMain
+	ldr r0, _021FBC64 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
 	bne _021FBBF2
-	ldr r0, _021FBC68 ; =gMain + 0x40
+	ldr r0, _021FBC68 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _021FBC56
@@ -5149,7 +5152,7 @@ _021FBBF2:
 	bl ClearFrameAndWindow2
 	add r0, r5, #0
 	add r0, #0x34
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r5, #0
 	bl ov15_021FBB28
 	add r0, r5, #0
@@ -5172,7 +5175,7 @@ _021FBBF2:
 	add r0, r5, #0
 	bl ov15_021FA170
 	add r0, r5, #4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	mov r1, #1
 	bl ov15_021FD788
@@ -5187,8 +5190,8 @@ _021FBC56:
 	nop
 _021FBC5C: .word 0x0000067B
 _021FBC60: .word 0x00000616
-_021FBC64: .word gMain
-_021FBC68: .word gMain + 0x40
+_021FBC64: .word gSystem
+_021FBC68: .word gSystem + 0x40
 	thumb_func_end ov15_021FBBB0
 
 	thumb_func_start ov15_021FBC6C
@@ -5531,7 +5534,7 @@ _021FBEF6:
 	bl sub_020881C0
 	add r6, r0, #0
 	bne _021FBF1E
-	ldr r0, _021FBF8C ; =gMain
+	ldr r0, _021FBF8C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -5580,7 +5583,7 @@ _021FBF4C:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 _021FBF66:
-	mov r0, #0x25
+	mov r0, #SEQ_SE_GS_GEARCANCEL>>6
 	lsl r0, r0, #6
 	bl PlaySE
 	mov r0, #7
@@ -5598,7 +5601,7 @@ _021FBF82:
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
 _021FBF88: .word 0x00000682
-_021FBF8C: .word gMain
+_021FBF8C: .word gSystem
 _021FBF90: .word 0x00000637
 _021FBF94: .word 0x000005DC
 	thumb_func_end ov15_021FBD50
@@ -5761,9 +5764,9 @@ _021FC0CE:
 	bl ClearFrameAndWindow2
 	add r0, r5, #0
 	add r0, #0x34
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r5, #4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #0x8d
 	lsl r0, r0, #2
 	ldr r4, [r5, r0]
@@ -5815,7 +5818,7 @@ ov15_021FC140: ; 0x021FC140
 _021FC154:
 	add r4, #0x34
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #0xb
 	pop {r4, pc}
 	.balign 4, 0
@@ -5831,12 +5834,12 @@ ov15_021FC164: ; 0x021FC164
 	bl sub_02020094
 	cmp r0, #0
 	bne _021FC214
-	ldr r0, _021FC21C ; =gMain
+	ldr r0, _021FC21C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
 	bne _021FC186
-	ldr r0, _021FC220 ; =gMain + 0x40
+	ldr r0, _021FC220 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _021FC214
@@ -5847,9 +5850,9 @@ _021FC186:
 	bl ClearFrameAndWindow2
 	add r0, r5, #0
 	add r0, #0x34
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r5, #4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #0x8d
 	lsl r0, r0, #2
 	ldr r2, [r5, r0]
@@ -5905,8 +5908,8 @@ _021FC214:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021FC218: .word 0x00000616
-_021FC21C: .word gMain
-_021FC220: .word gMain + 0x40
+_021FC21C: .word gSystem
+_021FC220: .word gSystem + 0x40
 	thumb_func_end ov15_021FC164
 
 	thumb_func_start ov15_021FC224
@@ -5999,12 +6002,12 @@ ov15_021FC2E0: ; 0x021FC2E0
 	bl sub_02020094
 	cmp r0, #0
 	bne _021FC36A
-	ldr r0, _021FC374 ; =gMain
+	ldr r0, _021FC374 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
 	bne _021FC302
-	ldr r0, _021FC378 ; =gMain + 0x40
+	ldr r0, _021FC378 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _021FC36A
@@ -6015,7 +6018,7 @@ _021FC302:
 	bl ClearFrameAndWindow2
 	add r0, r5, #0
 	add r0, #0x34
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r5, #0
 	bl ov15_02200294
 	add r0, r5, #0
@@ -6055,8 +6058,8 @@ _021FC36A:
 	pop {r3, r4, r5, pc}
 	nop
 _021FC370: .word 0x00000616
-_021FC374: .word gMain
-_021FC378: .word gMain + 0x40
+_021FC374: .word gSystem
+_021FC378: .word gSystem + 0x40
 	thumb_func_end ov15_021FC2E0
 
 	thumb_func_start ov15_021FC37C
@@ -6141,7 +6144,7 @@ ov15_021FC3EC: ; 0x021FC3EC
 ov15_021FC41C: ; 0x021FC41C
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
-	ldr r1, _021FC70C ; =gMain
+	ldr r1, _021FC70C ; =gSystem
 	mov r2, #0x40
 	ldr r3, [r1, #0x4c]
 	add r5, r0, #0
@@ -6403,7 +6406,7 @@ _021FC608:
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 _021FC630:
-	ldr r0, _021FC70C ; =gMain
+	ldr r0, _021FC70C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -6511,7 +6514,7 @@ _021FC6E4:
 	ldr r1, _021FC728 ; =0x000005E4
 	b _021FC72C
 	.balign 4, 0
-_021FC70C: .word gMain
+_021FC70C: .word gSystem
 _021FC710: .word 0x00000644
 _021FC714: .word ov15_02200640
 _021FC718: .word ov15_02200641
@@ -6573,12 +6576,12 @@ ov15_021FC784: ; 0x021FC784
 	bl sub_02020094
 	cmp r0, #0
 	bne _021FC7DC
-	ldr r0, _021FC7E4 ; =gMain
+	ldr r0, _021FC7E4 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
 	bne _021FC7A6
-	ldr r0, _021FC7E8 ; =gMain + 0x40
+	ldr r0, _021FC7E8 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _021FC7DC
@@ -6589,7 +6592,7 @@ _021FC7A6:
 	bl ClearFrameAndWindow2
 	add r0, r4, #0
 	add r0, #0x34
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	mov r0, #0x8d
 	lsl r0, r0, #2
 	ldr r3, [r4, r0]
@@ -6612,15 +6615,15 @@ _021FC7DC:
 	pop {r4, pc}
 	.balign 4, 0
 _021FC7E0: .word 0x00000616
-_021FC7E4: .word gMain
-_021FC7E8: .word gMain + 0x40
+_021FC7E4: .word gSystem
+_021FC7E8: .word gSystem + 0x40
 	thumb_func_end ov15_021FC784
 
 	thumb_func_start ov15_021FC7EC
 ov15_021FC7EC: ; 0x021FC7EC
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
-	ldr r1, _021FCAB0 ; =gMain
+	ldr r1, _021FCAB0 ; =gSystem
 	mov r2, #0x40
 	ldr r3, [r1, #0x4c]
 	add r5, r0, #0
@@ -6951,7 +6954,7 @@ _021FCA64:
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 _021FCA8A:
-	ldr r0, _021FCAB0 ; =gMain
+	ldr r0, _021FCAB0 ; =gSystem
 	mov r3, #1
 	ldr r1, [r0, #0x48]
 	add r0, r1, #0
@@ -6970,7 +6973,7 @@ _021FCA8A:
 	ldr r0, _021FCAB4 ; =0x00000644
 	b _021FCACC
 	.balign 4, 0
-_021FCAB0: .word gMain
+_021FCAB0: .word gSystem
 _021FCAB4: .word 0x00000644
 _021FCAB8: .word ov15_02200640
 _021FCABC: .word ov15_02200641
@@ -7013,7 +7016,7 @@ _021FCAF2:
 	strh r2, [r0]
 	add r0, r5, #0
 	bl ov15_021FD774
-	mov r0, #0x25
+	mov r0, #SEQ_SE_GS_GEARCANCEL>>6
 	lsl r0, r0, #6
 	bl PlaySE
 	ldr r0, _021FCB60 ; =0x00000644
@@ -7496,7 +7499,7 @@ _021FCF06:
 	bl sub_020881C0
 	add r5, r0, #0
 	bne _021FCF2E
-	ldr r0, _021FCFBC ; =gMain
+	ldr r0, _021FCFBC ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -7558,7 +7561,7 @@ _021FCF7C:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 _021FCF96:
-	mov r0, #0x25
+	mov r0, #SEQ_SE_GS_GEARCANCEL>>6
 	lsl r0, r0, #6
 	bl PlaySE
 	mov r0, #0x14
@@ -7576,7 +7579,7 @@ _021FCFB2:
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
 _021FCFB8: .word 0x00000682
-_021FCFBC: .word gMain
+_021FCFBC: .word gSystem
 _021FCFC0: .word 0x00000637
 _021FCFC4: .word 0x000005DC
 	thumb_func_end ov15_021FCDE4
@@ -7667,9 +7670,9 @@ ov15_021FD058: ; 0x021FD058
 	bl ClearFrameAndWindow2
 	add r0, r5, #0
 	add r0, #0x34
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r5, #4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	bl ov15_02200428
 	add r0, r5, #0
@@ -7827,9 +7830,9 @@ _021FD1BA:
 	bl ClearFrameAndWindow2
 	add r0, r4, #0
 	add r0, #0x34
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r4, #4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #0x8d
 	lsl r0, r0, #2
 	ldr r5, [r4, r0]
@@ -7949,7 +7952,7 @@ _021FD2B4:
 	bl ov15_021F9F08
 	add r4, #0x34
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #0x18
 	add sp, #4
 	pop {r3, r4, pc}
@@ -7967,12 +7970,12 @@ ov15_021FD2FC: ; 0x021FD2FC
 	bl sub_02020094
 	cmp r0, #0
 	bne _021FD396
-	ldr r0, _021FD3A0 ; =gMain
+	ldr r0, _021FD3A0 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
 	bne _021FD31E
-	ldr r0, _021FD3A4 ; =gMain + 0x40
+	ldr r0, _021FD3A4 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _021FD396
@@ -7991,9 +7994,9 @@ _021FD31E:
 	bl ClearFrameAndWindow2
 	add r0, r5, #0
 	add r0, #0x34
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r5, #4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #0x8d
 	lsl r0, r0, #2
 	ldr r4, [r5, r0]
@@ -8030,8 +8033,8 @@ _021FD396:
 	pop {r3, r4, r5, pc}
 	nop
 _021FD39C: .word 0x00000616
-_021FD3A0: .word gMain
-_021FD3A4: .word gMain + 0x40
+_021FD3A0: .word gSystem
+_021FD3A4: .word gSystem + 0x40
 _021FD3A8: .word 0x00000684
 	thumb_func_end ov15_021FD2FC
 
@@ -8158,7 +8161,7 @@ _021FD462:
 	ldr r2, [sp, #0x14]
 	add r2, r2, r3
 	ldrb r3, [r5, #3]
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	b _021FD4AE
 _021FD48E:
 	cmp r0, #2
@@ -8252,7 +8255,7 @@ _021FD4E6:
 	add r0, r6, #0
 	lsr r1, r1, #0x18
 	add r2, r2, r4
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 _021FD546:
@@ -8270,7 +8273,7 @@ _021FD546:
 	add r0, r6, #0
 	lsr r1, r1, #0x18
 	add r2, r2, r4
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 _021FD566:
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
@@ -8534,7 +8537,7 @@ ov15_021FD788: ; 0x021FD788
 	bl ov15_021FF29C
 	add r0, r4, #0
 	add r0, #0x74
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #0xa7
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -8801,7 +8804,7 @@ ov15_021FD93C: ; 0x021FD93C
 	bl G3X_SetEdgeColorTable
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
@@ -9817,7 +9820,7 @@ ov15_021FE1D0: ; 0x021FE1D0
 	add r7, r6, #0
 _021FE1E4:
 	add r0, r4, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r4, #0
 	bl RemoveWindow
 	add r0, r5, #0
@@ -10076,7 +10079,7 @@ _021FE3F6:
 	add r0, #0x11
 	lsl r7, r0, #4
 	add r0, r6, r7
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r6, r7
 	bl RemoveWindow
 	mov r0, #0x71
@@ -10091,7 +10094,7 @@ _021FE3F6:
 	ldr r0, [sp]
 	add r1, #0x60
 	add r0, r0, r1
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	mov r1, #0x89
 	ldr r0, [sp]
 	lsl r1, r1, #2
@@ -10120,7 +10123,7 @@ _021FE3F6:
 	str r2, [r0, r1]
 	sub r1, #0x10
 	add r0, r0, r1
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	mov r1, #0x7d
 	ldr r0, [sp]
 	lsl r1, r1, #2
@@ -10139,7 +10142,7 @@ _021FE482:
 	add r0, #0xd
 	lsl r7, r0, #4
 	add r0, r6, r7
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r6, r7
 	bl RemoveWindow
 	mov r0, #0x61
@@ -10154,7 +10157,7 @@ _021FE482:
 	ldr r0, [sp]
 	sub r1, #0x10
 	add r0, r0, r1
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	mov r1, #0x5d
 	ldr r0, [sp]
 	lsl r1, r1, #2
@@ -10605,7 +10608,7 @@ _021FE80C:
 	mov r3, #0xe8
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -10615,11 +10618,11 @@ _021FE864: .word 0x000005E4
 
 	thumb_func_start ov15_021FE868
 ov15_021FE868: ; 0x021FE868
-	ldr r3, _021FE870 ; =sub_0201D8E4
+	ldr r3, _021FE870 ; =ClearWindowTilemapAndScheduleTransfer
 	add r0, #0x14
 	bx r3
 	nop
-_021FE870: .word sub_0201D8E4
+_021FE870: .word ClearWindowTilemapAndScheduleTransfer
 	thumb_func_end ov15_021FE868
 
 	thumb_func_start ov15_021FE874
@@ -11040,7 +11043,7 @@ ov15_021FEB84: ; 0x021FEB84
 	ldrh r1, [r1]
 	bl ov15_021FE620
 	add r0, r5, #4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r1, #0x8d
 	lsl r1, r1, #2
 	ldr r1, [r5, r1]
@@ -11134,7 +11137,7 @@ _021FEC3E:
 	bl String_dtor
 	add r5, #0x24
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -11156,7 +11159,7 @@ ov15_021FECA0: ; 0x021FECA0
 	lsr r1, r1, #0x10
 	bl ov15_021FE5C4
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov15_021FECA0
@@ -11169,7 +11172,7 @@ ov15_021FECC4: ; 0x021FECC4
 	mov r1, #0
 	bl FillWindowPixelBuffer
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	pop {r4, pc}
 	thumb_func_end ov15_021FECC4
 
@@ -11202,7 +11205,7 @@ ov15_021FECD8: ; 0x021FECD8
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -11218,7 +11221,7 @@ ov15_021FED24: ; 0x021FED24
 	bl ClearFrameAndWindow2
 	add r4, #0x24
 	add r0, r4, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov15_021FED24
@@ -11295,7 +11298,7 @@ ov15_021FED60: ; 0x021FED60
 	bl AddTextPrinterParameterized2
 	add r5, #0x24
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r6, #0
@@ -11386,7 +11389,7 @@ _021FEE2C:
 	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x1c]
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x10]
 	add r6, r6, #1
 	cmp r6, r0
@@ -11510,7 +11513,7 @@ _021FEF6C:
 	mov r3, #0xc
 	bl DrawFrameAndWindow2
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
@@ -11555,24 +11558,24 @@ _021FEFD6: ; jump table
 	.short _021FEFEC - _021FEFD6 - 2 ; case 3
 	.short _021FEFF4 - _021FEFD6 - 2 ; case 4
 _021FEFE0:
-	bl sub_02006198
+	bl GF_IsAnySEPlaying
 	pop {r3, pc}
 _021FEFE6:
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	pop {r3, pc}
 _021FEFEC:
-	ldr r0, _021FF000 ; =0x0000060C
+	ldr r0, _021FF000 ; =SEQ_SE_DP_PC_LOGIN
 	bl PlaySE
 	b _021FEFFC
 _021FEFF4:
-	ldr r0, _021FF000 ; =0x0000060C
-	bl sub_02006184
+	ldr r0, _021FF000 ; =SEQ_SE_DP_PC_LOGIN
+	bl IsSEPlaying
 	pop {r3, pc}
 _021FEFFC:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-_021FF000: .word 0x0000060C
+_021FF000: .word SEQ_SE_DP_PC_LOGIN
 	thumb_func_end ov15_021FEFC4
 
 	thumb_func_start ov15_021FF004
@@ -11685,7 +11688,7 @@ ov15_021FF068: ; 0x021FF068
 	add r3, r1, #0
 	bl AddTextPrinterParameterized2
 	add r0, r5, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #0x10
@@ -11790,7 +11793,7 @@ _021FF160:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x10]
 	bl String_dtor
 	add r0, r4, #0
@@ -11877,7 +11880,7 @@ ov15_021FF1E0: ; 0x021FF1E0
 	sub r3, r5, r3
 	bl AddTextPrinterParameterized
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	nop
@@ -11940,7 +11943,7 @@ _021FF2EE:
 _021FF308:
 	add r5, #0x74
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #0x10
@@ -12048,7 +12051,7 @@ _021FF3C2:
 	bl FillWindowPixelBuffer
 	lsl r0, r4, #4
 	add r0, r7, r0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	ldr r0, [sp, #0x2c]
 	add r6, r6, #1
 	add r0, r0, #1
@@ -12174,7 +12177,7 @@ _021FF4C2:
 	ldr r0, [sp, #0x18]
 	lsl r0, r0, #4
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x18]
 	add r4, r4, #1
 	add r0, r0, #1
@@ -12212,7 +12215,7 @@ ov15_021FF4EC: ; 0x021FF4EC
 	add r5, #0xb4
 _021FF510:
 	add r0, r5, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #6
@@ -12221,7 +12224,7 @@ _021FF510:
 	bl ov15_021FE1D0
 	add r0, r6, #0
 	add r0, #0x64
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r6, #0
 	bl ov15_021FE204
 	lsl r2, r7, #2
@@ -12241,7 +12244,7 @@ _021FF510:
 	mov r0, #0x5d
 	lsl r0, r0, #2
 	add r0, r6, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -12251,11 +12254,11 @@ _021FF510:
 ov15_021FF560: ; 0x021FF560
 	mov r1, #0x5d
 	lsl r1, r1, #2
-	ldr r3, _021FF56C ; =sub_0201D8E4
+	ldr r3, _021FF56C ; =ClearWindowTilemapAndScheduleTransfer
 	add r0, r0, r1
 	bx r3
 	nop
-_021FF56C: .word sub_0201D8E4
+_021FF56C: .word ClearWindowTilemapAndScheduleTransfer
 	thumb_func_end ov15_021FF560
 
 	thumb_func_start ov15_021FF570
@@ -12488,7 +12491,7 @@ _021FF6E0:
 	bl AddTextPrinterParameterized2
 	add r4, #0x64
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	bl String_dtor
 	add sp, #0x10
@@ -12532,7 +12535,7 @@ ov15_021FF758: ; 0x021FF758
 	bl AddTextPrinterParameterized2
 _021FF79E:
 	add r0, r6, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -12546,7 +12549,7 @@ ov15_021FF7AC: ; 0x021FF7AC
 	mov r4, #0
 _021FF7B2:
 	add r0, r5, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #4
@@ -12577,7 +12580,7 @@ ov15_021FF7C4: ; 0x021FF7C4
 	mov r0, #0x7d
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r4, pc}
 	nop
@@ -12606,7 +12609,7 @@ ov15_021FF7FC: ; 0x021FF7FC
 	mov r0, #0x7d
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r4, pc}
 	nop
@@ -12617,20 +12620,20 @@ _021FF830: .word 0x000F0E00
 ov15_021FF834: ; 0x021FF834
 	mov r1, #0x7d
 	lsl r1, r1, #2
-	ldr r3, _021FF840 ; =sub_0201D8E4
+	ldr r3, _021FF840 ; =ClearWindowTilemapAndScheduleTransfer
 	add r0, r0, r1
 	bx r3
 	nop
-_021FF840: .word sub_0201D8E4
+_021FF840: .word ClearWindowTilemapAndScheduleTransfer
 	thumb_func_end ov15_021FF834
 
 	thumb_func_start ov15_021FF844
 ov15_021FF844: ; 0x021FF844
-	ldr r3, _021FF84C ; =sub_0201D8E4
+	ldr r3, _021FF84C ; =ClearWindowTilemapAndScheduleTransfer
 	add r0, #0x74
 	bx r3
 	nop
-_021FF84C: .word sub_0201D8E4
+_021FF84C: .word ClearWindowTilemapAndScheduleTransfer
 	thumb_func_end ov15_021FF844
 
 	thumb_func_start ov15_021FF850
@@ -12642,7 +12645,7 @@ ov15_021FF850: ; 0x021FF850
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x20
 	mov r1, #6
 	bl sub_0202055C
@@ -14396,7 +14399,7 @@ ov15_022008B0: ; 0x022008B0
 
 	.public ov15_022008B8
 ov15_022008B8:
-	.word ov15_021F9380, ov15_021F9608, ov15_021F982C, 0xFFFFFFFF
+	.word ov15_BagApp_init, ov15_BagApp_exec, ov15_BagApp_exit, 0xFFFFFFFF
 
 ov15_022008C8: ; 0x022008C8
 	.byte 0xA5, 0x28, 0x18, 0x65, 0x40, 0x0C, 0x1E, 0x32
@@ -14651,13 +14654,30 @@ ov15_02201314: ; 0x02201314
 	.word ov15_02200568
 
 ov15_02201328: ; 0x02201328
-	.byte 0x00, 0x04, 0x10, 0x06, 0x10, 0x04, 0x10, 0x06
-	.byte 0x00, 0x09, 0x10, 0x06, 0x10, 0x09, 0x10, 0x06, 0x00, 0x0E, 0x10, 0x06, 0x10, 0x0E, 0x10, 0x06
+	;        x     y     w     h
+	.byte 0x00, 0x04, 0x10, 0x06
+	.byte 0x10, 0x04, 0x10, 0x06
+	.byte 0x00, 0x09, 0x10, 0x06
+	.byte 0x10, 0x09, 0x10, 0x06
+	.byte 0x00, 0x0E, 0x10, 0x06
+	.byte 0x10, 0x0E, 0x10, 0x06
 
 ov15_02201340: ; 0x02201340
-	.byte 0x00, 0x0B, 0x10, 0x09, 0x10, 0x06, 0x10, 0x10, 0x00, 0x0B, 0x20, 0x09, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x10, 0x10, 0x04, 0x10, 0x0B, 0x10, 0x09, 0x00, 0x10, 0x20, 0x04, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x10, 0x10, 0x10, 0x04
+	;        x     y     w     h
+	.byte 0x00, 0x0B, 0x10, 0x09
+	.byte 0x10, 0x06, 0x10, 0x10
+
+	.byte 0x00, 0x0B, 0x20, 0x09
+	.byte 0x00, 0x00, 0x00, 0x00
+
+	.byte 0x00, 0x10, 0x10, 0x04
+	.byte 0x10, 0x0B, 0x10, 0x09
+
+	.byte 0x00, 0x10, 0x20, 0x04
+	.byte 0x00, 0x00, 0x00, 0x00
+
+	.byte 0x00, 0x00, 0x00, 0x00
+	.byte 0x10, 0x10, 0x10, 0x04
 
 ov15_02201368: ; 0x02201368
 	.word ov15_021FB680
@@ -14678,19 +14698,23 @@ ov15_02201368: ; 0x02201368
 	.word ov15_021FB680
 
 ov15_022013A8: ; 0x022013A8
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x02, 0x00, 0x00, 0x00, 0x04, 0x20, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x10, 0x04, 0x10, 0x10, 0x00, 0x01, 0x00, 0x13, 0x00, 0x09, 0x10, 0x01, 0x00
-	.byte 0x02, 0x00, 0x00, 0x00, 0x0A, 0x10, 0x0A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x02, 0x00, 0x00, 0x10, 0x04, 0x10, 0x10, 0x00, 0x01, 0x00, 0x13, 0x00, 0x09, 0x10, 0x01, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x10, 0x13, 0x10, 0x09, 0x10, 0x01, 0x00
-	.byte 0x02, 0x00, 0x00, 0x00, 0x0A, 0x20, 0x0A, 0x00, 0x01, 0x00, 0x13, 0x00, 0x0E, 0x10, 0x01, 0x00
-	.byte 0x02, 0x00, 0x00, 0x00, 0x0F, 0x10, 0x05, 0x00, 0x01, 0x10, 0x13, 0x10, 0x09, 0x10, 0x01, 0x00
-	.byte 0x02, 0x00, 0x00, 0x10, 0x0A, 0x10, 0x0A, 0x00, 0x01, 0x00, 0x13, 0x00, 0x0E, 0x10, 0x01, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x10, 0x13, 0x10, 0x0E, 0x10, 0x01, 0x00
-	.byte 0x02, 0x00, 0x00, 0x00, 0x0F, 0x20, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x10, 0x13, 0x10, 0x0E, 0x10, 0x01, 0x00
-	.byte 0x02, 0x00, 0x00, 0x10, 0x0F, 0x10, 0x05, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x04, 0x20, 0x10, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x04, 0x10, 0x10, 0x00
+
+	.byte 0x01, 0x00, 0x13, 0x00, 0x09, 0x10, 0x01, 0x00, 0x02, 0x00, 0x00, 0x00, 0x0A, 0x10, 0x0A, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x10, 0x04, 0x10, 0x10, 0x00
+
+	.byte 0x01, 0x00, 0x13, 0x00, 0x09, 0x10, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x01, 0x10, 0x13, 0x10, 0x09, 0x10, 0x01, 0x00, 0x02, 0x00, 0x00, 0x00, 0x0A, 0x20, 0x0A, 0x00
+
+	.byte 0x01, 0x00, 0x13, 0x00, 0x0E, 0x10, 0x01, 0x00, 0x02, 0x00, 0x00, 0x00, 0x0F, 0x10, 0x05, 0x00
+	.byte 0x01, 0x10, 0x13, 0x10, 0x09, 0x10, 0x01, 0x00, 0x02, 0x00, 0x00, 0x10, 0x0A, 0x10, 0x0A, 0x00
+
+	.byte 0x01, 0x00, 0x13, 0x00, 0x0E, 0x10, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x01, 0x10, 0x13, 0x10, 0x0E, 0x10, 0x01, 0x00, 0x02, 0x00, 0x00, 0x00, 0x0F, 0x20, 0x05, 0x00
+
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x01, 0x10, 0x13, 0x10, 0x0E, 0x10, 0x01, 0x00, 0x02, 0x00, 0x00, 0x10, 0x0F, 0x10, 0x05, 0x00
 
 ov15_02201468: ; 0x02201468
 	.byte 0x11, 0x12, 0x13, 0x14, 0x10, 0x00, 0x00, 0x00

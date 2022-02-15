@@ -912,7 +912,7 @@ sub_0200EA68: ; 0x0200EA68
 	bl AllocFromHeap
 	add r5, r0, #0
 	ldr r0, [sp, #0x2c]
-	bl sub_0201CB4C
+	bl BgGetCharPtr
 	add r4, r0, #0
 	str r6, [sp]
 	mov r0, #0x26
@@ -1684,7 +1684,7 @@ sub_0200F0AC: ; 0x0200F0AC
 	str r0, [sp, #0x28]
 	ldr r0, [sp, #0x20]
 	bl GetWindowBgId
-	bl sub_0201CB4C
+	bl BgGetCharPtr
 	add r5, r0, #0
 	ldr r0, [sp, #0x28]
 	ldr r1, _0200F1C4 ; =0x0000048C
@@ -2432,7 +2432,7 @@ _0200F694:
 	bl sub_0202457C
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	nop

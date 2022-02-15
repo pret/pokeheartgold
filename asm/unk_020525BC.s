@@ -1,3 +1,4 @@
+#include "constants/std_script.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -55,8 +56,8 @@ _02052604: .word _020FC534
 _02052608: .word 0x00007FFF
 	thumb_func_end sub_020525BC
 
-	thumb_func_start sub_0205260C
-sub_0205260C: ; 0x0205260C
+	thumb_func_start _draw_scurry_message_screen
+_draw_scurry_message_screen: ; 0x0205260C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -116,16 +117,16 @@ _02052622:
 	bne _020526A8
 	mov r2, #0
 	add r0, r4, #0
-	mov r1, #4
+	mov r1, #4 ; scurried back home
 	add r3, r2, #0
-	bl sub_020527D0
+	bl _print_message
 	b _020526B4
 _020526A8:
 	mov r2, #0
 	add r0, r4, #0
-	mov r1, #3
+	mov r1, #3 ; scurried to a Pokemon Center
 	add r3, r2, #0
-	bl sub_020527D0
+	bl _print_message
 _020526B4:
 	add r0, r4, #0
 	add r0, #0xc
@@ -133,19 +134,19 @@ _020526B4:
 	ldr r1, _020526D0 ; =sub_020526D4
 	add r0, r6, #0
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _020526C8: .word 0x00007FFF
 _020526CC: .word _020FC51C
 _020526D0: .word sub_020526D4
-	thumb_func_end sub_0205260C
+	thumb_func_end _draw_scurry_message_screen
 
 	thumb_func_start sub_020526D4
 sub_020526D4: ; 0x020526D4
 	push {r3, r4, lr}
 	sub sp, #0xc
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #4
@@ -189,7 +190,7 @@ _0205271E:
 	str r0, [r4]
 	b _020527B8
 _0205272E:
-	ldr r0, _020527C8 ; =gMain
+	ldr r0, _020527C8 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -197,7 +198,7 @@ _0205272E:
 	mov r0, #2
 	tst r0, r1
 	bne _02052746
-	ldr r0, _020527CC ; =gMain + 0x40
+	ldr r0, _020527CC ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _020527B8
@@ -258,12 +259,12 @@ _020527B8:
 	nop
 _020527C0: .word 0x00007FFF
 _020527C4: .word 0x04000050
-_020527C8: .word gMain
-_020527CC: .word gMain + 0x40
+_020527C8: .word gSystem
+_020527CC: .word gSystem + 0x40
 	thumb_func_end sub_020526D4
 
-	thumb_func_start sub_020527D0
-sub_020527D0: ; 0x020527D0
+	thumb_func_start _print_message
+_print_message: ; 0x020527D0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r5, r0, #0
@@ -323,17 +324,17 @@ sub_020527D0: ; 0x020527D0
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02052854: .word 0x00010200
-	thumb_func_end sub_020527D0
+	thumb_func_end _print_message
 
 	thumb_func_start sub_02052858
 sub_02052858: ; 0x02052858
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #6
@@ -354,22 +355,22 @@ _0205287E: ; jump table
 	.short _02052968 - _0205287E - 2 ; case 6
 _0205288C:
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	add r7, r0, #0
-	bl sub_0203B994
+	bl FlyPoints_GetDeathSpawn
 	add r1, sp, #4
 	str r0, [sp]
-	bl sub_0203BAAC
+	bl GetDeathWarpData
 	add r0, r7, #0
-	bl sub_0203B964
+	bl FlyPoints_GetSpecialSpawnWarpPtr
 	add r1, r0, #0
 	ldr r0, [sp]
-	bl sub_0203BAE8
+	bl GetSpecialSpawnWarpData
 	add r0, r6, #0
 	add r1, sp, #4
 	bl sub_020537A8
 	add r0, r5, #0
-	bl sub_02067BD0
+	bl Fsys_ClearFollowingTrainer
 	ldr r0, [r5, #0xc]
 	bl SavArray_PlayerParty_get
 	bl HealParty
@@ -399,15 +400,15 @@ _020528F2:
 	mvn r0, r0
 	mov r1, #0x37
 	mov r2, #1
-	bl SetBrightness
+	bl SetBlendBrightness
 	mov r0, #0xf
 	mvn r0, r0
 	mov r1, #0x3f
 	mov r2, #2
-	bl SetBrightness
+	bl SetBlendBrightness
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_0205260C
+	bl _draw_scurry_message_screen
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -423,26 +424,26 @@ _02052928:
 	mov r0, #0
 	mov r1, #0x3f
 	mov r2, #3
-	bl SetBrightness
-	bl sub_0203BA70
+	bl SetBlendBrightness
+	bl GetMomSpawnId
 	add r7, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
-	bl sub_0203B994
+	bl Save_FlyPoints_get
+	bl FlyPoints_GetDeathSpawn
 	cmp r7, r0
 	bne _02052954
 	mov r2, #0
-	ldr r1, _02052974 ; =0x000007DC
+	ldr r1, _02052974 ; =std_whited_out_to_mom
 	add r0, r6, #0
 	add r3, r2, #0
-	bl sub_0203FED4
+	bl QueueScript
 	b _02052960
 _02052954:
 	mov r2, #0
-	ldr r1, _02052978 ; =0x000007DD
+	ldr r1, _02052978 ; =std_whited_out_to_pokecenter
 	add r0, r6, #0
 	add r3, r2, #0
-	bl sub_0203FED4
+	bl QueueScript
 _02052960:
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -457,17 +458,17 @@ _0205296E:
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02052974: .word 0x000007DC
-_02052978: .word 0x000007DD
+_02052974: .word std_whited_out_to_mom
+_02052978: .word std_whited_out_to_pokecenter
 	thumb_func_end sub_02052858
 
 	thumb_func_start sub_0205297C
 sub_0205297C: ; 0x0205297C
-	ldr r3, _02052984 ; =sub_02050530
+	ldr r3, _02052984 ; =QueueTask
 	ldr r1, _02052988 ; =sub_02052858
 	mov r2, #0
 	bx r3
 	.balign 4, 0
-_02052984: .word sub_02050530
+_02052984: .word QueueTask
 _02052988: .word sub_02052858
 	thumb_func_end sub_0205297C

@@ -1,0 +1,647 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0274_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Welcome!\rFrom here, you can select a Pokémon\nfrom your PC Box and send it to the\fPokéwalker to take along on a Stroll.\r</language>
+	</row>
+	<row id="msg_0274_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Please select the Pokémon\nyou’d like to take along.</language>
+	</row>
+	<row id="msg_0274_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Receive Pokémon\nand gifts.</language>
+	</row>
+	<row id="msg_0274_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Caution!\rAll data saved on the Pokéwalker will\nbe erased.\rBefore erasing it, please be sure to\nconfirm the information.\rThe Pokémon on your Pokéwalker will\nreturn, but all other data on the\fPokéwalker will be erased.\rErase the data on the Pokéwalker?</language>
+	</row>
+	<row id="msg_0274_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">All records on the\nPokéwalker will be erased.</language>
+	</row>
+	<row id="msg_0274_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Point at the DS Card\nand select “CONNECT.”</language>
+	</row>
+	<row id="msg_0274_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Connecting to Pokéwalker. Please wait.</language>
+	</row>
+	<row id="msg_0274_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">In a place where it’s OK for\nthe Pokéwalker to emit\fnoise, point it at the\fDS Card, press the button,\fand wait five seconds.</language>
+	</row>
+	<row id="msg_0274_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Your Pokémon can now take\na Stroll in the Pokéwalker.</language>
+	</row>
+	<row id="msg_0274_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Carry over the Pokéwalker Step Count?</language>
+	</row>
+	<row id="msg_0274_00010" index="10">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0274_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Please select a Pokémon from your\nPC Box.\r</language>
+	</row>
+	<row id="msg_0274_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Select the Route you would\nlike to take a Stroll on.\r</language>
+	</row>
+	<row id="msg_0274_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Saving...\nDo not turn off the power.</language>
+	</row>
+	<row id="msg_0274_00014" index="14">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0274_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">To use the Pokéwalker, you must have\nat least five open spaces in a PC Box.\rPlease come back once you have opened\nat least five spaces.\r</language>
+	</row>
+	<row id="msg_0274_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Nintendo DS will connect to\nthe Pokéwalker.{PAUSE 90}</language>
+	</row>
+	<row id="msg_0274_00017" index="17">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0274_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Caution!\rYou can send the Pokémon you are out\non a Stroll with back, but will lose the\fability to transfer any other Pokémon\fon the Pokéwalker.\rSend the Pokémon back anyway?</language>
+	</row>
+	<row id="msg_0274_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Pokémon out on a Stroll\nwill be sent back.</language>
+	</row>
+	<row id="msg_0274_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Any received Pokémon were released\nback into the wild.{PAUSE 120}</language>
+	</row>
+	<row id="msg_0274_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Take a Stroll on the\n{STRVAR_34 19, 0, 0} Route?</language>
+	</row>
+	<row id="msg_0274_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Welcome!\rFrom here, you can select a Pokémon\nfrom your PC Box and send it to the\fPokéwalker to take along on a Stroll.\rPlease come back once you have placed\nat least one Pokémon in a PC Box.\r</language>
+	</row>
+	<row id="msg_0274_00023" index="23">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXX</language>
+	</row>
+	<row id="msg_0274_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 1, 1, 0} went to the Pokéwalker!{PAUSE 120}</language>
+	</row>
+	<row id="msg_0274_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Pokéwalker has been registered to\nthis DS Card. When sending back your\fPokémon, please return it to\fthis DS Card.\rPlease enjoy your Stroll with your\nPokémon!\r</language>
+	</row>
+	<row id="msg_0274_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Come back, {STRVAR_1 1, 1, 0}!</language>
+	</row>
+	<row id="msg_0274_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 1, 1, 0} has arrived!{PAUSE 120}</language>
+	</row>
+	<row id="msg_0274_00028" index="28">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0274_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Received gift(s)!{PAUSE 120}</language>
+	</row>
+	<row id="msg_0274_00030" index="30">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0274_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pokéwalker records have\nbeen initialized.{PAUSE 120}</language>
+	</row>
+	<row id="msg_0274_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Pokémon returned!{PAUSE 120}</language>
+	</row>
+	<row id="msg_0274_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Canceled the connection to\nthe Pokéwalker.{PAUSE 120}</language>
+	</row>
+	<row id="msg_0274_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This Pokéwalker has already\nbeen registered.{PAUSE 120}</language>
+	</row>
+	<row id="msg_0274_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Connection failure.{PAUSE 120}</language>
+	</row>
+	<row id="msg_0274_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This Pokéwalker has not yet\nbeen registered.{PAUSE 120}</language>
+	</row>
+	<row id="msg_0274_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There is already a Pokémon on\nthis Pokéwalker.{PAUSE 120}</language>
+	</row>
+	<row id="msg_0274_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This Pokéwalker is not the\nregistered Pokéwalker.{PAUSE 120}</language>
+	</row>
+	<row id="msg_0274_00039" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This Pokéwalker is not the\nregistered Pokéwalker.{PAUSE 120}</language>
+	</row>
+	<row id="msg_0274_00040" index="40">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0274_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Connection to the Pokéwalker has\nbeen suspended.{PAUSE 120}</language>
+	</row>
+	<row id="msg_0274_00042" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Connection was disrupted. Please try\nyour connection again.{PAUSE 120}</language>
+	</row>
+	<row id="msg_0274_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There are not any Pokémon on\nthis Pokéwalker.{PAUSE 120}</language>
+	</row>
+	<row id="msg_0274_00044" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 1, 1, 0} arrived from its Stroll\non {STRVAR_34 19, 2, 0}!\r</language>
+	</row>
+	<row id="msg_0274_00045" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Collected {STRVAR_1 54, 3, 0} W on the Stroll!\r</language>
+	</row>
+	<row id="msg_0274_00046" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Head out for another Stroll sometime!\r</language>
+	</row>
+	<row id="msg_0274_00047" index="47">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Stroll for a bit with the Pokémon you’ve\nsent to the Pokéwalker!\r</language>
+	</row>
+	<row id="msg_0274_00048" index="48">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">...\nWhat?\rThe collected Watts have unlocked\nsomething on the Pokéwalker!\rA new Route has been found on the\nPokéwalker!\r</language>
+	</row>
+	<row id="msg_0274_00049" index="49">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">All Pokémon you caught on the Stroll\nhave been sent to the PC Box!\r</language>
+	</row>
+	<row id="msg_0274_00050" index="50">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Any items found on the Stroll have been\nplaced in your Bag!\r</language>
+	</row>
+	<row id="msg_0274_00051" index="51">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 1, 1, 0} took {STRVAR_1 56, 3, 0} steps!</language>
+	</row>
+	<row id="msg_0274_00052" index="52">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 1, 1, 0}’s level went up one from\nthe Stroll!\r</language>
+	</row>
+	<row id="msg_0274_00053" index="53">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Congratulations!\rThe Pokéwalker has reached\n9,999,999 steps!\r</language>
+	</row>
+	<row id="msg_0274_00054" index="54">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Received a Starf Berry as a reward!\rPlaced the reward in the Bag!\r</language>
+	</row>
+	<row id="msg_0274_00055" index="55">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_34 19, 4, 0} is now available!\r</language>
+	</row>
+	<row id="msg_0274_00056" index="56">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">On {STRVAR_34 19, 2, 0}:</language>
+	</row>
+	<row id="msg_0274_00057" index="57">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">walked {STRVAR_1 56, 5, 0} steps.</language>
+	</row>
+	<row id="msg_0274_00058" index="58">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">collected {STRVAR_1 54, 3, 0} W.</language>
+	</row>
+	<row id="msg_0274_00059" index="59">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Steps taken to date:</language>
+	</row>
+	<row id="msg_0274_00060" index="60">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 56, 6, 0}</language>
+	</row>
+	<row id="msg_0274_00061" index="61">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Watts collected to date:</language>
+	</row>
+	<row id="msg_0274_00062" index="62">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 56, 7, 0} W</language>
+	</row>
+	<row id="msg_0274_00063" index="63">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Results of this Stroll:</language>
+	</row>
+	<row id="msg_0274_00064" index="64">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Gifts received:</language>
+	</row>
+	<row id="msg_0274_00065" index="65">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pokéwalker records:</language>
+	</row>
+	<row id="msg_0274_00066" index="66">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Your Pokémon:</language>
+	</row>
+	<row id="msg_0274_00067" index="67">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 0, 8, 0}</language>
+	</row>
+	<row id="msg_0274_00068" index="68">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 0, 9, 0}</language>
+	</row>
+	<row id="msg_0274_00069" index="69">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 0, 10, 0}</language>
+	</row>
+	<row id="msg_0274_00070" index="70">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 0, 11, 0}</language>
+	</row>
+	<row id="msg_0274_00071" index="71">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Items obtained:</language>
+	</row>
+	<row id="msg_0274_00072" index="72">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 8, 9, 0}</language>
+	</row>
+	<row id="msg_0274_00073" index="73">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Go for a Stroll.</language>
+	</row>
+	<row id="msg_0274_00074" index="74">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Receive a gift.</language>
+	</row>
+	<row id="msg_0274_00075" index="75">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Return from a Stroll.</language>
+	</row>
+	<row id="msg_0274_00076" index="76">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Erase Pokéwalker records.</language>
+	</row>
+	<row id="msg_0274_00077" index="77">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Save, then go for a Stroll.</language>
+	</row>
+	<row id="msg_0274_00078" index="78">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Send Pokémon back home.</language>
+	</row>
+	<row id="msg_0274_00079" index="79">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Exit</language>
+	</row>
+	<row id="msg_0274_00080" index="80">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXX</language>
+	</row>
+	<row id="msg_0274_00081" index="81">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 50, 10, 0}/{STRVAR_1 50, 11, 0}</language>
+	</row>
+	<row id="msg_0274_00082" index="82">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Total Watts:</language>
+	</row>
+	<row id="msg_0274_00083" index="83">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 56, 7, 0} W</language>
+	</row>
+	<row id="msg_0274_00084" index="84">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 56, 6, 0}</language>
+	</row>
+	<row id="msg_0274_00085" index="85">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Total steps:</language>
+	</row>
+	<row id="msg_0274_00086" index="86">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Watts required to find the next\nRoute: {STRVAR_1 56, 12, 0} W</language>
+	</row>
+	<row id="msg_0274_00087" index="87">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It seems that another Route will\nappear soon.</language>
+	</row>
+	<row id="msg_0274_00088" index="88">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You can select where you’d like to take a\nStroll from the many Routes.</language>
+	</row>
+	<row id="msg_0274_00089" index="89">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 1, 13, 0} is\non a Stroll.</language>
+	</row>
+	<row id="msg_0274_00090" index="90">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0274_00091" index="91">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Refreshing Field</language>
+	</row>
+	<row id="msg_0274_00092" index="92">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Noisy Forest</language>
+	</row>
+	<row id="msg_0274_00093" index="93">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rugged Road</language>
+	</row>
+	<row id="msg_0274_00094" index="94">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Beautiful Beach</language>
+	</row>
+	<row id="msg_0274_00095" index="95">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Suburban Area</language>
+	</row>
+	<row id="msg_0274_00096" index="96">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dim Cave</language>
+	</row>
+	<row id="msg_0274_00097" index="97">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Blue Lake</language>
+	</row>
+	<row id="msg_0274_00098" index="98">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Town Outskirts</language>
+	</row>
+	<row id="msg_0274_00099" index="99">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hoenn Field</language>
+	</row>
+	<row id="msg_0274_00100" index="100">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Warm Beach</language>
+	</row>
+	<row id="msg_0274_00101" index="101">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Volcano Path</language>
+	</row>
+	<row id="msg_0274_00102" index="102">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Treehouse</language>
+	</row>
+	<row id="msg_0274_00103" index="103">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Scary Cave</language>
+	</row>
+	<row id="msg_0274_00104" index="104">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sinnoh Field</language>
+	</row>
+	<row id="msg_0274_00105" index="105">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Icy Mountain Rd.</language>
+	</row>
+	<row id="msg_0274_00106" index="106">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Big Forest</language>
+	</row>
+	<row id="msg_0274_00107" index="107">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">White Lake</language>
+	</row>
+	<row id="msg_0274_00108" index="108">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Stormy Beach</language>
+	</row>
+	<row id="msg_0274_00109" index="109">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Resort</language>
+	</row>
+	<row id="msg_0274_00110" index="110">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Quiet Cave</language>
+	</row>
+	<row id="msg_0274_00111" index="111">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Beyond the Sea</language>
+	</row>
+	<row id="msg_0274_00112" index="112">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Night Sky’s Edge</language>
+	</row>
+	<row id="msg_0274_00113" index="113">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Yellow Forest</language>
+	</row>
+	<row id="msg_0274_00114" index="114">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rally</language>
+	</row>
+	<row id="msg_0274_00115" index="115">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sightseeing</language>
+	</row>
+	<row id="msg_0274_00116" index="116">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Winner’s Path</language>
+	</row>
+	<row id="msg_0274_00117" index="117">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Amity Meadow</language>
+	</row>
+	<row id="msg_0274_00118" index="118">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">--------</language>
+	</row>
+	<row id="msg_0274_00119" index="119">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A wonderfully refreshing field\nfor a Stroll. You can meet many\nkinds of Pokémon here.</language>
+	</row>
+	<row id="msg_0274_00120" index="120">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A large natural forest that has\nbeen allowed to grow. Many\nPokémon live deep in the forest.</language>
+	</row>
+	<row id="msg_0274_00121" index="121">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A hilly, rugged mountain road.\nThe view from atop the mountain\nis very beautiful.</language>
+	</row>
+	<row id="msg_0274_00122" index="122">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This beautiful sea is a popular\nplace for a Stroll. You can meet\nmany Water-type Pokémon.</language>
+	</row>
+	<row id="msg_0274_00123" index="123">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A residential area somewhere.\nEven when you take a Stroll\nhere, you can meet Pokémon.</language>
+	</row>
+	<row id="msg_0274_00124" index="124">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A dark cave sometimes used as a\ntest of courage. Look closely,\nand you’ll find many Pokémon.</language>
+	</row>
+	<row id="msg_0274_00125" index="125">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A deep, blue lake. It’s said that\nsome rare Pokémon live at the\nbottom of this lake.</language>
+	</row>
+	<row id="msg_0274_00126" index="126">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The outskirts of a town. Where\npeople have moved away,\nPokémon have moved in.</language>
+	</row>
+	<row id="msg_0274_00127" index="127">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A Route that goes deep into the\nHoenn region. You can meet many\nPokémon not in Johto or Kanto.</language>
+	</row>
+	<row id="msg_0274_00128" index="128">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A very warm beach in the Hoenn\nregion. You can meet many\nPokémon not in Johto or Kanto.</language>
+	</row>
+	<row id="msg_0274_00129" index="129">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A path through a currently\nactive volcano. Very fiery and\nrare Pokémon live here.</language>
+	</row>
+	<row id="msg_0274_00130" index="130">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A path that works with the\ntrees of the forest. Pokémon\nhere are always changing.</language>
+	</row>
+	<row id="msg_0274_00131" index="131">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A pitch-black cave that seems\nhaunted. It’s said that many\nPokémon live deep inside.</language>
+	</row>
+	<row id="msg_0274_00132" index="132">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A Route through the Sinnoh\nregion, far from Johto and\nKanto. Rare Pokémon live here.</language>
+	</row>
+	<row id="msg_0274_00133" index="133">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A snow-covered road where a\nmisstep could result in a fall--\nit tests your trust in Pokémon.</language>
+	</row>
+	<row id="msg_0274_00134" index="134">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A forest surrounded by many old\ntrees since the olden days.\nMany Pokémon live here.</language>
+	</row>
+	<row id="msg_0274_00135" index="135">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A lake concealed in white mist.\nIt lends a very mysterious feel\nto the area.</language>
+	</row>
+	<row id="msg_0274_00136" index="136">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Strong waves wash onto this\nbeach. Because people don’t\nvisit, rare Pokémon live here.</language>
+	</row>
+	<row id="msg_0274_00137" index="137">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A high-class resort everyone\nwants to visit, famous for the\ncute Pokémon living here.</language>
+	</row>
+	<row id="msg_0274_00138" index="138">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A quiet, deep, and empty cave.\nIf you look carefully, you’ll find\nsome rare Pokémon.</language>
+	</row>
+	<row id="msg_0274_00139" index="139">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A small island far away on the\nhorizon. If you look to the sea,\nyou can see Pokémon swimming.</language>
+	</row>
+	<row id="msg_0274_00140" index="140">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A dark mountain path that gives\nyou the feeling you’ve traveled\nthrough time back to the past.</language>
+	</row>
+	<row id="msg_0274_00141" index="141">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Many PIKACHU live in harmony in\nthis forest. Walk through here\nfrequently, and try to find one!</language>
+	</row>
+	<row id="msg_0274_00142" index="142">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A fun Route to play with your\nPokéwalker. Take a Stroll and\nvisit the many places!</language>
+	</row>
+	<row id="msg_0274_00143" index="143">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You can find many Pokémon on\nthis Route. Take a long walk and\nsee if you can find them all!</language>
+	</row>
+	<row id="msg_0274_00144" index="144">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">If you’re aiming to be Champion,\nyou’ll want to walk this Route!\nYou’ll meet strong Pokémon!</language>
+	</row>
+	<row id="msg_0274_00145" index="145">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You can meet cute Pokémon that\nevolve through friendship and\nfind items to evolve Pokémon!</language>
+	</row>
+	<row id="msg_0274_00146" index="146">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0274_00147" index="147">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0274_00148" index="148">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Yes</language>
+	</row>
+	<row id="msg_0274_00149" index="149">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}No</language>
+	</row>
+	<row id="msg_0274_00150" index="150">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Save steps</language>
+	</row>
+	<row id="msg_0274_00151" index="151">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Erase steps</language>
+	</row>
+	<row id="msg_0274_00152" index="152">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0274_00153" index="153">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXX</language>
+	</row>
+	<row id="msg_0274_00154" index="154">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXX</language>
+	</row>
+	<row id="msg_0274_00155" index="155">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXX</language>
+	</row>
+	<row id="msg_0274_00156" index="156">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXX</language>
+	</row>
+</body>

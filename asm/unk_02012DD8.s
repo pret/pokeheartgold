@@ -297,7 +297,7 @@ sub_02013004: ; 0x02013004
 	add r0, r2, #1
 	str r1, [sp]
 	lsl r1, r0, #1
-	ldr r0, _020131A4 ; =_021094DC
+	ldr r0, _020131A4 ; =FX_SinCosTable_
 	ldr r3, [sp, #0x2c]
 	ldrsh r1, [r0, r1]
 	ldr r0, _020131A8 ; =0x0000FFFF
@@ -308,7 +308,7 @@ sub_02013004: ; 0x02013004
 	ldr r7, [sp, #0x34]
 	add r0, r0, r1
 	str r0, [sp, #0xc]
-	ldr r0, _020131A4 ; =_021094DC
+	ldr r0, _020131A4 ; =FX_SinCosTable_
 	lsl r1, r2, #1
 	ldrsh r1, [r0, r1]
 	ldr r0, _020131A8 ; =0x0000FFFF
@@ -320,7 +320,7 @@ sub_02013004: ; 0x02013004
 	mov ip, r0
 	add r0, r0, #1
 	lsl r2, r0, #1
-	ldr r0, _020131A4 ; =_021094DC
+	ldr r0, _020131A4 ; =FX_SinCosTable_
 	ldrsh r2, [r0, r2]
 	ldr r0, _020131A8 ; =0x0000FFFF
 	mul r0, r2
@@ -330,7 +330,7 @@ sub_02013004: ; 0x02013004
 	str r0, [sp, #8]
 	mov r0, ip
 	lsl r2, r0, #1
-	ldr r0, _020131A4 ; =_021094DC
+	ldr r0, _020131A4 ; =FX_SinCosTable_
 	ldrsh r2, [r0, r2]
 	ldr r0, _020131A8 ; =0x0000FFFF
 	mul r0, r2
@@ -519,7 +519,7 @@ _020131A0:
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_020131A4: .word _021094DC
+_020131A4: .word FX_SinCosTable_
 _020131A8: .word 0x0000FFFF
 	thumb_func_end sub_02013004
 

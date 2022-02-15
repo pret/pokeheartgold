@@ -13,7 +13,7 @@ u32 SavArray_Party_sizeof(void) {
     return sizeof(PARTY);
 }
 
-u32 sub_020744B4(void) {
+u32 PartyCore_sizeof(void) {
     return sizeof(PARTY_CORE);
 }
 
@@ -76,22 +76,22 @@ POKEMON *GetPartyMonByIndex(PARTY *party, int slot) {
     return &party->core.mons[slot];
 }
 
-void sub_02074670(const PARTY *party, PARTY_EXTRA_SUB *dest, int slot) {
+void Party_GetUnkSubSlot(const PARTY *party, PARTY_EXTRA_SUB *dest, int slot) {
     PARTY_ASSERT_SLOT(party, slot);
     *dest = party->extra.unk_00[slot];
 }
 
-void sub_020746BC(PARTY *party, const PARTY_EXTRA_SUB *src, int slot) {
+void Party_SetUnkSubSlot(PARTY *party, const PARTY_EXTRA_SUB *src, int slot) {
     PARTY_ASSERT_SLOT(party, slot);
     party->extra.unk_00[slot] = *src;
 }
 
-void sub_02074708(PARTY *party, int slot) {
+void Party_ResetUnkSubSlot(PARTY *party, int slot) {
     PARTY_ASSERT_SLOT(party, slot);
     MI_CpuFill8(&party->extra.unk_00[slot], 0, sizeof(PARTY_EXTRA_SUB));
 }
 
-void sub_02074740(PARTY *party, int slot, POKEMON *src) {
+void Party_SafeCopyMonToSlot_ResetUnkSub(PARTY *party, int slot, POKEMON *src) {
     PARTY_ASSERT_SLOT(party, slot);
     {
         BOOL valid = GetMonData(&party->core.mons[slot], MON_DATA_SPECIES_EXISTS, NULL) - GetMonData(src, MON_DATA_SPECIES_EXISTS, NULL);
@@ -101,7 +101,7 @@ void sub_02074740(PARTY *party, int slot, POKEMON *src) {
     }
 }
 
-BOOL sub_020747BC(PARTY *party, int slotA, int slotB) {
+BOOL Party_SwapSlots(PARTY *party, int slotA, int slotB) {
     PARTY_EXTRA_SUB tmp_PARTY_EXTRA_SUB;
     POKEMON *tmp_POKEMON;
 
@@ -119,7 +119,7 @@ BOOL sub_020747BC(PARTY *party, int slotA, int slotB) {
     return FALSE;
 }
 
-void sub_020748B8(const PARTY *src, PARTY *dest) {
+void Party_copy(const PARTY *src, PARTY *dest) {
     *dest = *src;
 }
 

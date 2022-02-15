@@ -183,7 +183,7 @@ _02237A0A:
 	ldr r0, [sp]
 	ldr r2, [sp, #4]
 	add r1, sp, #0xc
-	bl sub_02074670
+	bl Party_GetUnkSubSlot
 	add r0, sp, #0xc
 	ldrh r0, [r0, #0xa]
 	lsl r0, r0, #0x10
@@ -307,12 +307,12 @@ _02237B10:
 	ldr r0, [sp]
 	ldr r2, [sp, #4]
 	add r1, sp, #0xc
-	bl sub_020746BC
+	bl Party_SetUnkSubSlot
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
 	bl GetPartyMonByIndex
 	mov r1, #7
-	bl sub_02097F0C
+	bl ApplyMonMoodModifier
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -557,7 +557,7 @@ ov58_02237CCC: ; 0x02237CCC
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1

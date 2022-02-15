@@ -203,19 +203,19 @@ _0225A12A:
 	str r0, [r2]
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r7, #0
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
@@ -601,7 +601,7 @@ ov27_0225A48C: ; 0x0225A48C
 	cmp r1, #0
 	bne _0225A4B6
 	ldr r0, [r5, #0x10]
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	add r6, r0, #0
 	bl sub_0205CB38
 	add r4, r0, #0
@@ -622,7 +622,7 @@ ov27_0225A4B8: ; 0x0225A4B8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	bl sub_0205CB38
 	add r1, r0, #0
 	add r0, r4, #0
@@ -701,7 +701,7 @@ ov27_0225A530: ; 0x0225A530
 	bl sub_02025358
 	cmp r0, #0
 	beq _0225A570
-	ldr r0, _0225A590 ; =gMain
+	ldr r0, _0225A590 ; =gSystem
 	mov r1, #1
 	str r1, [r0, #0x5c]
 	mov r0, #0xf
@@ -715,7 +715,7 @@ _0225A570:
 	bne _0225A580
 	cmp r6, #6
 	bne _0225A580
-	ldr r0, _0225A590 ; =gMain
+	ldr r0, _0225A590 ; =gSystem
 	mov r1, #1
 	str r1, [r0, #0x5c]
 	pop {r4, r5, r6, pc}
@@ -728,7 +728,7 @@ _0225A580:
 _0225A58C:
 	pop {r4, r5, r6, pc}
 	nop
-_0225A590: .word gMain
+_0225A590: .word gSystem
 	thumb_func_end ov27_0225A530
 
 	thumb_func_start ov27_0225A594
@@ -748,13 +748,13 @@ _0225A5A8:
 	cmp r0, #0
 	bne _0225A5E6
 	add r0, r4, #0
-	bl sub_0205CA1C
-	bl sub_0205C6DC
+	bl FieldSys_GetPlayerAvatar
+	bl PlayerAvatar_GetMapObject
 	add r7, r0, #0
 	bl sub_0205F330
 	add r6, r0, #0
 	add r0, r7, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	sub r0, #0xbc
 	cmp r0, #1
 	bhi _0225A5DC
@@ -781,12 +781,12 @@ _0225A5E6:
 	add r1, sp, #0
 	bl sub_0203DBF8
 	ldr r0, [sp]
-	bl sub_0205F27C
+	bl MapObject_GetScript
 	bl ov01_021F6BD0
 	cmp r0, #0
 	bne _0225A616
 	ldr r0, [sp]
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	bl ov01_021F6BB0
 	cmp r0, #0
 	beq _0225A618
@@ -1152,7 +1152,7 @@ ov27_0225A89C: ; 0x0225A89C
 	cmp r0, #0
 	bne _0225A8E0
 	add r0, r4, #0
-	bl sub_020407AC
+	bl MapSceneScriptCheck
 	cmp r0, #0
 	bne _0225A8E0
 	bl sub_02058AA0
@@ -1895,7 +1895,7 @@ ov27_0225AEA8: ; 0x0225AEA8
 	add r0, r0, r1
 	ldrb r1, [r5, r0]
 	mov r0, #1
-	mov r6, #0xe
+	mov r6, #0xe ; NARC_a_0_1_4
 	add r4, r2, #0
 	mov r2, #0x12
 	ldr r7, [sp, #0x40]
@@ -1919,7 +1919,7 @@ _0225AEDE:
 	cmp r2, r0
 	bne _0225AF22
 	mov r0, ip
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	str r0, [sp, #0x14]
 	cmp r0, #0
 	bne _0225AEFA
@@ -1933,7 +1933,7 @@ _0225AEFA:
 	mov r0, #0
 	str r0, [sp, #0x1c]
 	mov r0, #3
-	mov r6, #0x14
+	mov r6, #0x14 ; NARC_a_0_2_0
 	str r0, [sp, #0x18]
 	bl sub_02074490
 	str r0, [sp, #0x20]
@@ -1950,7 +1950,7 @@ _0225AF22:
 	mov r0, #0
 	str r0, [sp, #0x1c]
 	add r0, r7, #0
-	mov r6, #0x12
+	mov r6, #0x12 ; NARC_itemtool_itemdata_item_icon
 	bl Bag_GetRegisteredItemSlot1
 	mov r1, #2
 	bl GetItemIndexMapping
@@ -1967,7 +1967,7 @@ _0225AF4A:
 	mov r0, #0
 	str r0, [sp, #0x1c]
 	add r0, r7, #0
-	mov r6, #0x12
+	mov r6, #0x12 ; NARC_itemtool_itemdata_item_icon
 	bl Bag_GetRegisteredItemSlot2
 	mov r1, #2
 	bl GetItemIndexMapping
@@ -1998,7 +1998,7 @@ _0225AF82:
 	lsl r0, r5, #0x10
 	lsr r0, r0, #0x10
 	mov r1, #2
-	mov r6, #0x12
+	mov r6, #0x12 ; NARC_itemtool_itemdata_item_icon
 	bl GetItemIndexMapping
 	str r0, [sp, #0x20]
 	lsl r0, r5, #0x10
@@ -2346,7 +2346,7 @@ _0225B27E:
 	cmp r0, #2
 	bne _0225B2D2
 	ldr r0, [r5, #0x10]
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	add r4, r0, #0
 	bne _0225B298
 	bl GF_AssertFail
@@ -2528,7 +2528,7 @@ _0225B400: .word 0x0000FFFF
 	thumb_func_start ov27_0225B404
 ov27_0225B404: ; 0x0225B404
 	push {r3, r4, r5, lr}
-	ldr r1, _0225B4A8 ; =gMain
+	ldr r1, _0225B4A8 ; =gSystem
 	add r5, r0, #0
 	ldr r1, [r1, #0x48]
 	mov r4, #0
@@ -2612,7 +2612,7 @@ _0225B490:
 _0225B4A6:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_0225B4A8: .word gMain
+_0225B4A8: .word gSystem
 	thumb_func_end ov27_0225B404
 
 	thumb_func_start ov27_0225B4AC
@@ -2651,7 +2651,7 @@ ov27_0225B4D8: ; 0x0225B4D8
 	bl sub_0205C6D4
 	cmp r0, #0
 	bne _0225B4F2
-	ldr r0, _0225B624 ; =gMain
+	ldr r0, _0225B624 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #0xf0
 	tst r0, r1
@@ -2809,7 +2809,7 @@ _0225B620:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_0225B624: .word gMain
+_0225B624: .word gSystem
 _0225B628: .word 0x0000051C
 _0225B62C: .word ov27_0225CF68
 	thumb_func_end ov27_0225B4D8
@@ -3710,7 +3710,7 @@ ov27_0225BD50: ; 0x0225BD50
 	pop {r3, r4, r5, pc}
 _0225BD6A:
 	add r0, r5, #0
-	bl sub_02066860
+	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #0
 	beq _0225BD78
 	mov r0, #1
@@ -3724,7 +3724,7 @@ _0225BD78:
 	pop {r3, r4, r5, pc}
 _0225BD86:
 	add r0, r5, #0
-	bl sub_020668A0
+	bl ScriptState_CheckPalParkSysFlag
 	cmp r0, #0
 	beq _0225BD94
 	mov r0, #3
@@ -3769,7 +3769,7 @@ ov27_0225BDC8: ; 0x0225BDC8
 	push {r3, lr}
 	ldr r0, [r0, #0x10]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B9B4
 	bl sub_0205C7C8
 	pop {r3, pc}
@@ -3810,7 +3810,7 @@ ov27_0225BDFC: ; 0x0225BDFC
 	bne _0225BEAA
 	ldr r0, [r5, #4]
 	mov r1, #8
-	bl ov02_02251E74
+	bl GetPhoneBookEntryName
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r4, #0
@@ -4091,7 +4091,7 @@ ov27_0225C044: ; 0x0225C044
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B9B8
 	add r3, r0, #0
 	ldrh r3, [r3]
@@ -4126,13 +4126,13 @@ ov27_0225C088: ; 0x0225C088
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x10]
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	add r4, r0, #0
 	bne _0225C09A
 	bl GF_AssertFail
 _0225C09A:
 	add r0, r4, #0
-	bl sub_0206DB30
+	bl BugContest_GetSportBallsAddr
 	add r3, r0, #0
 	mov r1, #0xe
 	ldrh r3, [r3]
@@ -4502,16 +4502,16 @@ ov27_0225C250: ; 0x0225C250
 	str r0, [r2]
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #1
 	bl sub_02002B8C
 	add r0, r6, #0
@@ -4684,7 +4684,7 @@ ov27_0225C4AC: ; 0x0225C4AC
 	str r2, [sp, #4]
 	mov r2, #4
 	add r4, r0, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4695,7 +4695,7 @@ ov27_0225C4AC: ; 0x0225C4AC
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #6
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4706,14 +4706,14 @@ ov27_0225C4AC: ; 0x0225C4AC
 	add r0, r4, #0
 	mov r1, #9
 	mov r3, #6
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #8
 	str r0, [sp]
 	add r0, r4, #0
 	mov r1, #9
 	mov r2, #0
 	add r3, sp, #0x10
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	ldr r3, [sp, #0x10]
 	add r6, r0, #0
 	add r2, r3, #0
@@ -4753,7 +4753,7 @@ ov27_0225C540: ; 0x0225C540
 	mov r1, #1
 	mov r3, #4
 	add r4, r0, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4764,7 +4764,7 @@ ov27_0225C540: ; 0x0225C540
 	add r0, r4, #0
 	mov r1, #0xa
 	mov r3, #4
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add r0, r4, #0
 	bl NARC_dtor
 	mov r0, #8
@@ -4867,7 +4867,7 @@ ov27_0225C618: ; 0x0225C618
 	ldr r2, [r2, #0x18]
 	mov r3, #4
 	add r4, r0, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4879,7 +4879,7 @@ ov27_0225C618: ; 0x0225C618
 	ldr r2, [r2, #0x18]
 	add r1, r6, #0
 	mov r3, #4
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add r0, r4, #0
 	bl NARC_dtor
 	mov r0, #0
@@ -4932,7 +4932,7 @@ _0225C6B0:
 	mov r3, #0
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r5, r5, #1
 	add r4, #0x10
 	add r7, #8
@@ -5206,7 +5206,7 @@ ov27_0225C8D0: ; 0x0225C8D0
 	str r3, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #0x10
@@ -5352,19 +5352,19 @@ _0225C9F2:
 
 	thumb_func_start ov27_0225C9F8
 ov27_0225C9F8: ; 0x0225C9F8
-	ldr r0, _0225CA0C ; =gMain + 0x40
+	ldr r0, _0225CA0C ; =gSystem + 0x40
 	ldrh r0, [r0, #0x26]
 	cmp r0, #0
 	beq _0225CA06
-	ldr r0, _0225CA10 ; =gMain
+	ldr r0, _0225CA10 ; =gSystem
 	mov r1, #1
 	str r1, [r0, #0x5c]
 _0225CA06:
 	mov r0, #0
 	bx lr
 	nop
-_0225CA0C: .word gMain + 0x40
-_0225CA10: .word gMain
+_0225CA0C: .word gSystem + 0x40
+_0225CA10: .word gSystem
 	thumb_func_end ov27_0225C9F8
 
 	thumb_func_start ov27_0225CA14
@@ -5487,7 +5487,7 @@ ov27_0225CA98: ; 0x0225CA98
 	blx r2
 	b _0225CC80
 _0225CAF6:
-	ldr r0, _0225CC8C ; =gMain
+	ldr r0, _0225CC8C ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -5679,7 +5679,7 @@ _0225CC80:
 	.balign 4, 0
 _0225CC84: .word ov27_0225D49C
 _0225CC88: .word 0x000005DC
-_0225CC8C: .word gMain
+_0225CC8C: .word gSystem
 	thumb_func_end ov27_0225CA98
 
 	thumb_func_start ov27_0225CC90
@@ -5871,7 +5871,7 @@ _0225CDD2:
 	str r0, [r4]
 	b _0225CE9C
 _0225CDFE:
-	ldr r0, _0225CEA8 ; =gMain
+	ldr r0, _0225CEA8 ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -5952,7 +5952,7 @@ _0225CE9C:
 	.balign 4, 0
 _0225CEA0: .word ov27_0225D120
 _0225CEA4: .word 0x000005DC
-_0225CEA8: .word gMain
+_0225CEA8: .word gSystem
 	thumb_func_end ov27_0225CD94
 
 	thumb_func_start ov27_0225CEAC
@@ -5979,8 +5979,11 @@ ov27_0225CECC: ; 0x0225CECC
 	.byte 0x90, 0xBC, 0xA8, 0xFF, 0xFF, 0x00, 0x00, 0x00
 
 ov27_0225CED8: ; 0x0225CED8
-	.byte 0x11, 0x00, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00
-	.byte 0x13, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00, 0x17, 0x00, 0x00, 0x00
+	.word 0x00000011
+	.word 0x00000012
+	.word 0x00000013
+	.word 0x00000016
+	.word 0x00000017
 
 ov27_0225CEEC: ; 0x0225CEEC
 	.byte 0x07, 0x00, 0x00, 0x00
@@ -5998,10 +6001,17 @@ ov27_0225CF10: ; 0x0225CF10
 	.byte 0x04, 0x00, 0x05, 0x00, 0x06, 0x00, 0x04, 0x00, 0x06, 0x00, 0x00, 0x00
 
 ov27_0225CF3C: ; 0x0225CF3C
-	.byte 0x64, 0x00, 0x00, 0x00
-	.byte 0x64, 0x00, 0x00, 0x00, 0x64, 0x00, 0x00, 0x00, 0x64, 0x00, 0x00, 0x00, 0x64, 0x00, 0x00, 0x00
-	.byte 0x64, 0x00, 0x00, 0x00, 0x64, 0x00, 0x00, 0x00, 0x66, 0x00, 0x00, 0x00, 0x66, 0x00, 0x00, 0x00
-	.byte 0x65, 0x00, 0x00, 0x00, 0x64, 0x00, 0x00, 0x00
+	.word 0x00000064
+	.word 0x00000064
+	.word 0x00000064
+	.word 0x00000064
+	.word 0x00000064
+	.word 0x00000064
+	.word 0x00000064
+	.word 0x00000066
+	.word 0x00000066
+	.word 0x00000065
+	.word 0x00000064
 
 ov27_0225CF68: ; 0x0225CF68
 	.byte 0x00, 0x10, 0x08, 0xA0, 0x16, 0x36, 0x10, 0x4C
@@ -6010,16 +6020,28 @@ ov27_0225CF68: ; 0x0225CF68
 	.byte 0xFF, 0x00, 0x00, 0x00
 
 ov27_0225CF94: ; 0x0225CF94
-	.byte 0x12, 0x00, 0x00, 0x80, 0x15, 0x00, 0x01, 0x80, 0x18, 0x00, 0x02, 0x80
-	.byte 0x1E, 0x00, 0x0E, 0x80, 0x21, 0x00, 0x03, 0x80, 0x24, 0x00, 0x04, 0x80, 0x27, 0x00, 0x05, 0x80
-	.byte 0x2A, 0x00, 0x08, 0x80, 0x12, 0x00, 0x20, 0x00, 0x12, 0x00, 0x20, 0x00, 0xFF, 0xFF, 0x20, 0x00
-	.byte 0x2D, 0x00, 0x22, 0x80, 0x30, 0x00, 0x23, 0x80
+	.short 0x0012, 0x0000 | 0x8000
+	.short 0x0015, 0x0001 | 0x8000
+	.short 0x0018, 0x0002 | 0x8000
+	.short 0x001E, 0x000E | 0x8000
+	.short 0x0021, 0x0003 | 0x8000
+	.short 0x0024, 0x0004 | 0x8000
+	.short 0x0027, 0x0005 | 0x8000
+	.short 0x002A, 0x0008 | 0x8000
+	.short 0x0012, 0x0020 | 0x0000
+	.short 0x0012, 0x0020 | 0x0000
+	.short 0xFFFF, 0x0020 | 0x0000
+	.short 0x002D, 0x0022 | 0x8000
+	.short 0x0030, 0x0023 | 0x8000
 
 ov27_0225CFC8: ; 0x0225CFC8
 	.byte 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x0D
-	.byte 0x07, 0x00, 0x01, 0x02, 0x03, 0x04, 0x06, 0x08, 0x07, 0x00, 0x01, 0x03, 0x04, 0x06, 0x0A, 0x0D
-	.byte 0x07, 0x00, 0x01, 0x03, 0x04, 0x06, 0x09, 0x0D, 0x0B, 0x00, 0x01, 0x02, 0x0C, 0x04, 0x06, 0x0D
-	.byte 0x01, 0x02, 0x04, 0x06, 0x0D, 0x0D, 0x0D, 0x0D, 0x01, 0x04, 0x06, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D
+	.byte 0x07, 0x00, 0x01, 0x02, 0x03, 0x04, 0x06, 0x08
+	.byte 0x07, 0x00, 0x01, 0x03, 0x04, 0x06, 0x0A, 0x0D
+	.byte 0x07, 0x00, 0x01, 0x03, 0x04, 0x06, 0x09, 0x0D
+	.byte 0x0B, 0x00, 0x01, 0x02, 0x0C, 0x04, 0x06, 0x0D
+	.byte 0x01, 0x02, 0x04, 0x06, 0x0D, 0x0D, 0x0D, 0x0D
+	.byte 0x01, 0x04, 0x06, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D
 
 ov27_0225D000: ; 0x0225D000
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

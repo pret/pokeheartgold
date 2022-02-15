@@ -117,7 +117,7 @@ _0205193C:
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	add r0, r6, #0
-	bl sub_020293E8
+	bl Pokedex_new
 	mov r1, #0x11
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -157,7 +157,7 @@ _0205193C:
 	add r0, sp, #0x10
 	add r1, sp, #4
 	bl GF_RTC_CopyDateTime
-	ldr r0, _02051A5C ; =gMain
+	ldr r0, _02051A5C ; =gSystem
 	ldr r6, [sp, #0x14]
 	ldr r5, [r0, #0x2c]
 	ldr r1, [sp, #8]
@@ -213,7 +213,7 @@ _02051A48:
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02051A5C: .word gMain
+_02051A5C: .word gSystem
 	thumb_func_end sub_020518D8
 
 	thumb_func_start sub_02051A60
@@ -330,7 +330,7 @@ sub_02051AAC: ; 0x02051AAC
 	ldr r1, [r4, r1]
 	bl Options_copy
 	add r0, r5, #0
-	bl sub_020555E0
+	bl Field_GetTimeOfDay
 	mov r1, #0x57
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -523,7 +523,7 @@ _02051CD4:
 	add r1, r5, r1
 	ldr r1, [r1, #4]
 	add r0, r6, #0
-	bl sub_020748B8
+	bl Party_copy
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end sub_02051CC4
@@ -587,7 +587,7 @@ sub_02051D18: ; 0x02051D18
 	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [sp, #8]
 	add r0, r4, #0
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	str r0, [sp, #4]
 	cmp r6, #0
 	beq _02051DB6
@@ -606,7 +606,7 @@ _02051D76:
 	add r1, r6, #0
 	bl sub_02052504
 	add r0, r6, #0
-	bl sub_020555E0
+	bl Field_GetTimeOfDay
 	mov r1, #0x57
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -617,7 +617,7 @@ _02051D76:
 	str r0, [r5, r1]
 _02051D94:
 	add r0, r6, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02051DDA
 	add r0, r6, #0
@@ -625,7 +625,7 @@ _02051D94:
 	cmp r0, #0
 	beq _02051DDA
 	add r0, r4, #0
-	bl sub_0205BD64
+	bl Save_GetLeadMonIdxForBugContest
 	mov r1, #0x73
 	lsl r1, r1, #2
 	strb r0, [r5, r1]
@@ -682,7 +682,7 @@ _02051E14:
 	lsl r1, r1, #4
 	ldr r0, [sp, #0x10]
 	ldr r1, [r5, r1]
-	bl sub_020293FC
+	bl Pokedex_copy
 	mov r1, #0x13
 	lsl r1, r1, #4
 	ldr r0, [sp, #8]
@@ -719,10 +719,10 @@ _02051E14:
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl sub_0202ED88
+	bl SaveData_GetPhoneRematches
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_0202F14C
+	bl MomSavingsBalanceAction
 	ldr r1, _02051EFC ; =0x000F423F
 	cmp r0, r1
 	bhs _02051EA8
@@ -905,7 +905,7 @@ _02052004:
 	lsl r1, r1, #4
 	ldr r0, [sp, #0xc]
 	ldr r1, [r5, r1]
-	bl sub_020293FC
+	bl Pokedex_copy
 	mov r1, #0x13
 	lsl r1, r1, #4
 	ldr r0, [sp, #4]
@@ -922,7 +922,7 @@ _02052004:
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [sp]
-	bl sub_020555E0
+	bl Field_GetTimeOfDay
 	mov r1, #0x57
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -1133,7 +1133,7 @@ _020521F6:
 	lsl r1, r1, #4
 	ldr r0, [sp, #0x18]
 	ldr r1, [r5, r1]
-	bl sub_020293FC
+	bl Pokedex_copy
 	mov r1, #0x13
 	lsl r1, r1, #4
 	ldr r0, [sp, #0x10]
@@ -1150,7 +1150,7 @@ _020521F6:
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [sp]
-	bl sub_020555E0
+	bl Field_GetTimeOfDay
 	mov r1, #0x57
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -1263,7 +1263,7 @@ sub_0205230C: ; 0x0205230C
 	bl SavArray_Flags_get
 	add r4, r0, #0
 	ldr r0, [r6, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetPhoneRematches
 	str r0, [sp, #4]
 	add r0, r4, #0
 	bl sub_02066794
@@ -1282,7 +1282,7 @@ sub_0205230C: ; 0x0205230C
 	mov r1, #0
 	ldr r0, [sp, #4]
 	add r2, r1, #0
-	bl sub_0202F14C
+	bl MomSavingsBalanceAction
 	add r5, r0, #0
 	cmp r4, #0
 	ble _02052378
@@ -1298,7 +1298,7 @@ _02052362:
 	ldr r0, [sp, #4]
 	mov r1, #2
 	add r2, r4, #0
-	bl sub_0202F14C
+	bl MomSavingsBalanceAction
 	add r1, r0, #0
 	b _0205237A
 _02052378:
@@ -1352,7 +1352,7 @@ sub_0205239C: ; 0x0205239C
 	bl PlayerProfile_copy
 	ldr r0, [r5, #4]
 	add r1, r7, #0
-	bl sub_020748B8
+	bl Party_copy
 	mov r0, #0x42
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -1362,16 +1362,16 @@ sub_0205239C: ; 0x0205239C
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	ldr r1, [sp, #4]
-	bl sub_020293FC
+	bl Pokedex_copy
 	ldr r0, [r4, #0xc]
 	mov r6, #0
 	bl SavArray_Flags_get
 	add r7, r0, #0
-	bl sub_02066860
+	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #0
 	beq _0205241E
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B9B8
 	add r6, r0, #0
 	b _02052434
@@ -1381,8 +1381,8 @@ _0205241E:
 	cmp r0, #0
 	beq _02052434
 	add r0, r4, #0
-	bl sub_0206DB28
-	bl sub_0206DB30
+	bl FieldSys_BugContest_get
+	bl BugContest_GetSportBallsAddr
 	add r6, r0, #0
 _02052434:
 	cmp r6, #0
@@ -1413,7 +1413,7 @@ sub_02052444: ; 0x02052444
 	mov r0, #0x11
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_020293FC
+	bl Pokedex_copy
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02052444
 
@@ -1499,7 +1499,7 @@ sub_02052504: ; 0x02052504
 	add r4, r1, #0
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B9B4
 	add r6, r0, #0
 	ldr r0, [r4, #0x20]
@@ -1538,8 +1538,8 @@ sub_02052544: ; 0x02052544
 	bx lr
 	thumb_func_end sub_02052544
 
-	thumb_func_start sub_02052554
-sub_02052554: ; 0x02052554
+	thumb_func_start IsBattleResultWin
+IsBattleResultWin: ; 0x02052554
 	cmp r0, #2
 	beq _0205255C
 	cmp r0, #3
@@ -1550,7 +1550,7 @@ _0205255C:
 _02052560:
 	mov r0, #1
 	bx lr
-	thumb_func_end sub_02052554
+	thumb_func_end IsBattleResultWin
 
 	thumb_func_start sub_02052564
 sub_02052564: ; 0x02052564

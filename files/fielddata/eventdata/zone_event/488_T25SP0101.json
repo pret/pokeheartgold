@@ -1,0 +1,107 @@
+{
+  "header": "fielddata/script/scr_seq/event_T25SP0101.h",
+  "bgs": [
+    {
+      "scr": "_EV_scr_seq_T25SP0101_000 + 1",
+      "type": 0,
+      "x": 7,
+      "y": 7,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": "_EV_scr_seq_T25SP0101_001 + 1",
+      "type": 0,
+      "x": 6,
+      "y": 6,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T25SP0101_001 + 1",
+      "type": 0,
+      "x": 6,
+      "y": 7,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T25SP0101_001 + 1",
+      "type": 0,
+      "x": 8,
+      "y": 7,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T25SP0101_001 + 1",
+      "type": 0,
+      "x": 8,
+      "y": 6,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_T25SP0101_suit",
+      "ovid": "SPRITE_SUIT",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T25SP0101_002 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 7,
+      "y": 5,
+      "z": 0
+    },
+    {
+      "id": "obj_T25SP0101_gsgentleman",
+      "ovid": "SPRITE_GSGENTLEMAN",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T25SP0101_003 + 1",
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 13,
+      "y": 5,
+      "z": 0
+    },
+    {
+      "id": "obj_T25SP0101_gsgentleman_2",
+      "ovid": "SPRITE_GSGENTLEMAN",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T25SP0101_004 + 1",
+      "dirn": 3,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 11,
+      "y": 5,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 7,
+      "y": 12,
+      "header": "MAP_T25",
+      "anchor": 6,
+      "height": 0
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "header": "fielddata/script/scr_seq/event_T01R0102.h",
+  "bgs": [
+    {
+      "scr": "_EV_scr_seq_T01R0102_000 + 1",
+      "type": 0,
+      "x": 5,
+      "y": 3,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T01R0102_001 + 1",
+      "type": 0,
+      "x": 6,
+      "y": 3,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "warps": [
+    {
+      "x": 9,
+      "y": 3,
+      "header": "MAP_T01R0101",
+      "anchor": 1,
+      "height": 0
+    }
+  ]
+}

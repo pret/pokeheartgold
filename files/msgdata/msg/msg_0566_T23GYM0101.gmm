@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0566_T23GYM0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Yo, challenger!\nBugsy made this Gym. It’s a huge nest\fof Bug-type Pokémon.\rBugsy’s young, but he’s a master of\nBug-type Pokémon!\rIt’s going to be tough without\nmy advice.\rLet’s see... Bug-type Pokémon don’t\nlike fire.\rFlying-type moves are\nsuper effective, too.</language>
+	</row>
+	<row id="msg_0566_T23GYM0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Well done! That was a great clash\nof talented young Trainers.\rWith people like you, the future of\nPokémon is bright!</language>
+	</row>
+	<row id="msg_0566_T23GYM0101_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Azalea Town Pokémon Gym</language>
+	</row>
+	<row id="msg_0566_T23GYM0101_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Azalea Town Pokémon Gym\rLeader: Bugsy\nCertified Trainer!\f{STRVAR_1 3, 0, 0}</language>
+	</row>
+</body>

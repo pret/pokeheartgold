@@ -209,7 +209,7 @@ _02034470:
 	ldr r1, [r1]
 	add r1, #0x4c
 	add r1, r1, r5
-	bl sub_020A037C
+	bl DWC_CreateExchangeToken
 	ldr r0, _0203451C ; =_021D4130
 	mov r1, #0
 	ldr r0, [r0]

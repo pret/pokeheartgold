@@ -57,7 +57,7 @@ sub_0202E4C8: ; 0x0202E4C8
 	mov r1, #8
 	bl StringFillEOS
 	mov r0, #0x18
-	bl sub_0202893C
+	bl SaveSubstruct_UpdateCRC
 	pop {r3, pc}
 	thumb_func_end sub_0202E4C8
 
@@ -107,7 +107,7 @@ _0202E510:
 	cmp r7, #0x1a
 	blt _0202E50C
 	mov r0, #0x18
-	bl sub_0202893C
+	bl SaveSubstruct_UpdateCRC
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end sub_0202E4FC
@@ -117,7 +117,7 @@ sub_0202E530: ; 0x0202E530
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x18
-	bl sub_02028900
+	bl SaveSubstruct_AssertCRC
 	add r0, r4, #0
 	mov r1, #0x18
 	bl SavArray_get
@@ -160,7 +160,7 @@ _0202E57C:
 	add r0, r3, #0
 	bl sub_0202E4C8
 	mov r0, #0x18
-	bl sub_0202893C
+	bl SaveSubstruct_UpdateCRC
 _0202E58A:
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_0202E544
@@ -271,7 +271,7 @@ _0202E650:
 	cmp r6, #0xd
 	blt _0202E5BA
 	mov r0, #0x18
-	bl sub_0202893C
+	bl SaveSubstruct_UpdateCRC
 	ldr r0, [sp]
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
@@ -332,7 +332,7 @@ _0202E6B8:
 	add r0, r7, #0
 	bl String_dtor
 	mov r0, #0x18
-	bl sub_0202893C
+	bl SaveSubstruct_UpdateCRC
 	ldr r0, [sp, #4]
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -759,7 +759,7 @@ _0202E9D4:
 	cmp r5, #0xd
 	blo _0202E9D4
 	mov r0, #0x18
-	bl sub_0202893C
+	bl SaveSubstruct_UpdateCRC
 _0202E9F6:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
@@ -914,7 +914,7 @@ _0202EB0E:
 	add r0, r6, #0
 	bl FreeToHeap
 	mov r0, #0x18
-	bl sub_0202893C
+	bl SaveSubstruct_UpdateCRC
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end sub_0202EAFC

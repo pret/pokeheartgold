@@ -1,3 +1,5 @@
+#include "constants/std_script.h"
+#include "constants/vars.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -7,13 +9,13 @@
 sub_02050660: ; 0x02050660
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -32,7 +34,7 @@ _02050686:
 	b _020506A8
 _0205069A:
 	add r0, r5, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _020506A8
 	mov r0, #1
@@ -44,12 +46,12 @@ _020506A8:
 
 	thumb_func_start sub_020506AC
 sub_020506AC: ; 0x020506AC
-	ldr r3, _020506B4 ; =sub_02050530
+	ldr r3, _020506B4 ; =QueueTask
 	add r2, r1, #0
 	ldr r1, _020506B8 ; =sub_02050660
 	bx r3
 	.balign 4, 0
-_020506B4: .word sub_02050530
+_020506B4: .word QueueTask
 _020506B8: .word sub_02050660
 	thumb_func_end sub_020506AC
 
@@ -101,16 +103,16 @@ _02050704:
 	ldr r2, [r4, #0x10]
 	add r0, r1, #0
 	ldr r2, [r2, #0x14]
-	ldr r1, _02050720 ; =0x00004013
+	ldr r1, _02050720 ; =VAR_BATTLE_RESULT
 	lsl r2, r2, #0x10
 	lsr r2, r2, #0x10
 	bl VarSet
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x14]
-	bl sub_02052554
+	bl IsBattleResultWin
 	pop {r4, pc}
 	nop
-_02050720: .word 0x00004013
+_02050720: .word VAR_BATTLE_RESULT
 	thumb_func_end sub_020506F4
 
 	thumb_func_start sub_02050724
@@ -131,13 +133,13 @@ _02050734:
 sub_02050738: ; 0x02050738
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r7, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r6, r0, #0
 	add r0, r7, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #5
@@ -157,7 +159,7 @@ _02050764: ; jump table
 	.short _0205084C - _02050764 - 2 ; case 5
 _02050770:
 	ldr r0, [r5, #0x3c]
-	bl sub_0205F574
+	bl MapObjectMan_PauseAllMovement
 	ldr r1, [r6, #4]
 	ldr r2, [r6, #8]
 	add r0, r7, #0
@@ -231,7 +233,7 @@ _02050800:
 _0205080A:
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066644
+	bl ScriptState_CheckHaveFollower
 	cmp r0, #0
 	beq _02050822
 	ldr r0, [r5, #0xc]
@@ -249,7 +251,7 @@ _02050822:
 	b _02050856
 _02050838:
 	ldr r0, [r5, #0x3c]
-	bl sub_0205F5A4
+	bl MapObjectMan_UnpauseAllMovement
 	add r0, r7, #0
 	bl sub_0205532C
 	ldr r0, [r4]
@@ -279,7 +281,7 @@ sub_0205085C: ; 0x0205085C
 	add r2, r0, #0
 	ldr r1, _02050878 ; =sub_02050738
 	add r0, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r4, pc}
 	.balign 4, 0
 _02050878: .word sub_02050738
@@ -325,13 +327,13 @@ _020508B4:
 sub_020508B8: ; 0x020508B8
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #4
@@ -407,13 +409,13 @@ _0205095C:
 sub_02050960: ; 0x02050960
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r7, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r5, r0, #0
 	add r0, r7, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -474,13 +476,13 @@ _020509EA:
 sub_020509F0: ; 0x020509F0
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #5
@@ -577,7 +579,7 @@ sub_02050AAC: ; 0x02050AAC
 	add r2, r0, #0
 	ldr r1, _02050AC8 ; =sub_020509F0
 	add r0, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r4, pc}
 	.balign 4, 0
 _02050AC8: .word sub_020509F0
@@ -634,7 +636,7 @@ sub_02050B08: ; 0x02050B08
 	bl sub_020517FC
 	add r7, r0, #0
 	ldr r0, [sp]
-	bl sub_02066860
+	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #0
 	beq _02050B48
 	add r0, r4, #0
@@ -645,7 +647,7 @@ sub_02050B08: ; 0x02050B08
 	add r2, r0, #0
 	ldr r1, _02050B84 ; =sub_02050D1C
 	add r0, r5, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r3, r4, r5, r6, r7, pc}
 _02050B48:
 	ldr r0, [sp]
@@ -660,7 +662,7 @@ _02050B48:
 	add r2, r0, #0
 	ldr r1, _02050B88 ; =sub_02050EB8
 	add r0, r5, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r3, r4, r5, r6, r7, pc}
 _02050B6A:
 	add r0, r4, #0
@@ -671,7 +673,7 @@ _02050B6A:
 	add r2, r0, #0
 	ldr r1, _02050B8C ; =sub_02050C18
 	add r0, r5, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02050B84: .word sub_02050D1C
@@ -694,7 +696,7 @@ sub_02050B90: ; 0x02050B90
 	bl sub_020517FC
 	add r7, r0, #0
 	ldr r0, [sp]
-	bl sub_02066860
+	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #0
 	beq _02050BD0
 	add r0, r4, #0
@@ -705,7 +707,7 @@ sub_02050B90: ; 0x02050B90
 	add r2, r0, #0
 	ldr r1, _02050C0C ; =sub_02050D1C
 	add r0, r5, #0
-	bl sub_02050510
+	bl NowRunTask
 	pop {r3, r4, r5, r6, r7, pc}
 _02050BD0:
 	ldr r0, [sp]
@@ -720,7 +722,7 @@ _02050BD0:
 	add r2, r0, #0
 	ldr r1, _02050C10 ; =sub_02050EB8
 	add r0, r5, #0
-	bl sub_02050510
+	bl NowRunTask
 	pop {r3, r4, r5, r6, r7, pc}
 _02050BF2:
 	add r0, r4, #0
@@ -731,7 +733,7 @@ _02050BF2:
 	add r2, r0, #0
 	ldr r1, _02050C14 ; =sub_02050C18
 	add r0, r5, #0
-	bl sub_02050510
+	bl NowRunTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02050C0C: .word sub_02050D1C
@@ -743,10 +745,10 @@ _02050C14: .word sub_02050C18
 sub_02050C18: ; 0x02050C18
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #5
@@ -766,7 +768,7 @@ _02050C3C: ; jump table
 	.short _02050D02 - _02050C3C - 2 ; case 5
 _02050C48:
 	ldr r0, [r5, #0x3c]
-	bl sub_0205F574
+	bl MapObjectMan_PauseAllMovement
 	ldr r0, [r5, #0xc]
 	bl Sav2_GameStats_get
 	mov r1, #8
@@ -804,7 +806,7 @@ _02050C8A:
 	bl sub_020930C4
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x14]
-	bl sub_02052554
+	bl IsBattleResultWin
 	cmp r0, #0
 	bne _02050CBE
 	add r0, r4, #0
@@ -812,13 +814,13 @@ _02050C8A:
 	ldr r1, _02050D18 ; =sub_02052858
 	add r0, r6, #0
 	mov r2, #0
-	bl sub_02050510
+	bl NowRunTask
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 _02050CBE:
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066644
+	bl ScriptState_CheckHaveFollower
 	cmp r0, #0
 	beq _02050CD6
 	ldr r0, [r5, #0xc]
@@ -846,7 +848,7 @@ _02050CEC:
 	b _02050D12
 _02050D02:
 	ldr r0, [r5, #0x3c]
-	bl sub_0205F5A4
+	bl MapObjectMan_UnpauseAllMovement
 	add r0, r4, #0
 	bl sub_02050AF4
 	mov r0, #1
@@ -862,16 +864,16 @@ _02050D18: .word sub_02052858
 sub_02050D1C: ; 0x02050D1C
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r7, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r6, r0, #0
 	add r0, r7, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B9B8
 	str r0, [sp]
 	ldr r0, [r4]
@@ -897,7 +899,7 @@ _02050D56: ; jump table
 	.short _02050E9E - _02050D56 - 2 ; case 8
 _02050D68:
 	ldr r0, [r5, #0x3c]
-	bl sub_0205F574
+	bl MapObjectMan_PauseAllMovement
 	ldr r0, [r5, #0xc]
 	bl Sav2_GameStats_get
 	mov r1, #8
@@ -956,8 +958,8 @@ _02050DD6:
 	cmp r0, #4
 	beq _02050E02
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
-	bl sub_0203B968
+	bl Save_FlyPoints_get
+	bl FlyPoints_GetDynamicWarp
 	add r1, r0, #0
 	add r0, r7, #0
 	bl sub_020537A8
@@ -974,10 +976,10 @@ _02050E0A:
 	b _02050EA8
 _02050E12:
 	mov r2, #0
-	ldr r1, _02050EAC ; =0x00002265
+	ldr r1, _02050EAC ; =std_safari_enter
 	add r0, r7, #0
 	add r3, r2, #0
-	bl sub_0203FED4
+	bl QueueScript
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -991,7 +993,7 @@ _02050E26:
 	b _02050EA8
 _02050E34:
 	ldr r0, [r5, #0x3c]
-	bl sub_0205F5A4
+	bl MapObjectMan_UnpauseAllMovement
 	add r0, r7, #0
 	bl sub_0205532C
 	ldr r0, [r4]
@@ -1008,10 +1010,10 @@ _02050E48:
 	cmp r0, #4
 	bne _02050E96
 	mov r2, #0
-	ldr r1, _02050EB0 ; =0x00002263
+	ldr r1, _02050EB0 ; =std_safari_balls_out
 	add r0, r7, #0
 	add r3, r2, #0
-	bl sub_0203FED4
+	bl QueueScript
 	b _02050E96
 _02050E66:
 	ldr r0, [r5, #0xc]
@@ -1029,10 +1031,10 @@ _02050E66:
 	cmp r0, #6
 	bne _02050E96
 	mov r2, #0
-	ldr r1, _02050EB4 ; =0x00002264
+	ldr r1, _02050EB4 ; =std_safari_storage_out
 	add r0, r7, #0
 	add r3, r2, #0
-	bl sub_0203FED4
+	bl QueueScript
 _02050E96:
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -1047,9 +1049,9 @@ _02050EA8:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02050EAC: .word 0x00002265
-_02050EB0: .word 0x00002263
-_02050EB4: .word 0x00002264
+_02050EAC: .word std_safari_enter
+_02050EB0: .word std_safari_balls_out
+_02050EB4: .word std_safari_storage_out
 	thumb_func_end sub_02050D1C
 
 	thumb_func_start sub_02050EB8
@@ -1057,19 +1059,19 @@ sub_02050EB8: ; 0x02050EB8
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r7, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r7, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	str r0, [sp]
 	add r0, r7, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [sp]
-	bl sub_0206DB30
+	bl BugContest_GetSportBallsAddr
 	str r0, [sp, #4]
 	ldr r0, [r4]
 	cmp r0, #7
@@ -1093,7 +1095,7 @@ _02050EF8: ; jump table
 	.short _02050FE6 - _02050EF8 - 2 ; case 7
 _02050F08:
 	ldr r0, [r6, #0x3c]
-	bl sub_0205F574
+	bl MapObjectMan_PauseAllMovement
 	ldr r0, [r6, #0xc]
 	bl Sav2_GameStats_get
 	mov r1, #8
@@ -1127,7 +1129,7 @@ _02050F4A:
 	bl sub_02050724
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x14]
-	bl sub_02052554
+	bl IsBattleResultWin
 	cmp r0, #0
 	bne _02050F74
 	add r0, r5, #0
@@ -1135,7 +1137,7 @@ _02050F4A:
 	ldr r1, _02051018 ; =sub_0205298C
 	add r0, r7, #0
 	mov r2, #0
-	bl sub_02050510
+	bl NowRunTask
 	add sp, #8
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1187,7 +1189,7 @@ _02050FC4:
 	b _02051012
 _02050FD2:
 	ldr r0, [r6, #0x3c]
-	bl sub_0205F5A4
+	bl MapObjectMan_UnpauseAllMovement
 	add r0, r7, #0
 	bl sub_0205532C
 	ldr r0, [r4]
@@ -1205,10 +1207,10 @@ _02050FE6:
 	ldr r0, [r0, #0x14]
 	cmp r0, #4
 	bne _0205100C
-	ldr r1, _0205101C ; =0x000028A1
+	ldr r1, _0205101C ; =std_bug_contest_balls_up
 	add r0, r7, #0
 	mov r2, #0
-	bl sub_0203FF0C
+	bl StartScriptFromMenu
 	add sp, #8
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1222,7 +1224,7 @@ _02051012:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02051018: .word sub_0205298C
-_0205101C: .word 0x000028A1
+_0205101C: .word std_bug_contest_balls_up
 	thumb_func_end sub_02050EB8
 
 	thumb_func_start sub_02051020
@@ -1233,7 +1235,7 @@ sub_02051020: ; 0x02051020
 	add r7, r1, #0
 	str r2, [sp, #8]
 	add r6, r3, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	mov r0, #0xb
 	mov r1, #0
@@ -1285,7 +1287,7 @@ sub_02051090: ; 0x02051090
 	add r7, r1, #0
 	str r2, [sp, #8]
 	add r6, r3, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	mov r0, #0xb
 	mov r1, #0
@@ -1341,13 +1343,13 @@ _020510E6:
 sub_02051114: ; 0x02051114
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r7, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r5, r0, #0
 	add r0, r7, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #6
@@ -1368,7 +1370,7 @@ _02051140: ; jump table
 	.short _020511D2 - _02051140 - 2 ; case 6
 _0205114E:
 	ldr r0, [r6, #0x3c]
-	bl sub_0205F574
+	bl MapObjectMan_PauseAllMovement
 	ldr r0, [r6, #0xc]
 	bl Sav2_GameStats_get
 	mov r1, #8
@@ -1419,7 +1421,7 @@ _020511B0:
 	b _020511F4
 _020511BE:
 	ldr r0, [r6, #0x3c]
-	bl sub_0205F5A4
+	bl MapObjectMan_UnpauseAllMovement
 	add r0, r7, #0
 	bl sub_0205532C
 	ldr r0, [r4]
@@ -1436,7 +1438,7 @@ _020511D2:
 	add r0, r7, #0
 	mov r1, #3
 	mov r2, #0
-	bl sub_0203FF0C
+	bl StartScriptFromMenu
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _020511F0:
@@ -1465,7 +1467,7 @@ sub_020511F8: ; 0x020511F8
 	add r2, r0, #0
 	ldr r1, _02051224 ; =sub_02051114
 	add r0, r5, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02051224: .word sub_02051114
@@ -1478,7 +1480,7 @@ sub_02051228: ; 0x02051228
 	str r0, [sp, #4]
 	add r6, r1, #0
 	add r7, r2, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	mov r0, #0xb
 	mov r1, #0
@@ -1520,13 +1522,13 @@ sub_02051228: ; 0x02051228
 sub_0205128C: ; 0x0205128C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #6
@@ -1547,7 +1549,7 @@ _020512B8: ; jump table
 	.short _02051324 - _020512B8 - 2 ; case 6
 _020512C6:
 	ldr r0, [r7, #0x3c]
-	bl sub_0205F574
+	bl MapObjectMan_PauseAllMovement
 	ldr r1, [r6, #4]
 	ldr r2, [r6, #8]
 	add r0, r5, #0
@@ -1584,7 +1586,7 @@ _02051302:
 	b _0205132E
 _02051310:
 	ldr r0, [r7, #0x3c]
-	bl sub_0205F5A4
+	bl MapObjectMan_UnpauseAllMovement
 	add r0, r5, #0
 	bl sub_0205532C
 	ldr r0, [r4]
@@ -1606,7 +1608,7 @@ _0205132E:
 sub_02051334: ; 0x02051334
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r1, r0, #0
 	mov r0, #0xb
 	bl sub_02051AAC
@@ -1623,21 +1625,21 @@ sub_02051334: ; 0x02051334
 	add r2, r0, #0
 	ldr r1, _0205136C ; =sub_0205128C
 	add r0, r5, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r4, r5, r6, pc}
 	nop
 _0205136C: .word sub_0205128C
 	thumb_func_end sub_02051334
 
-	thumb_func_start sub_02051370
-sub_02051370: ; 0x02051370
+	thumb_func_start SetupAndStartTrainerBattle
+SetupAndStartTrainerBattle: ; 0x02051370
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	str r0, [sp, #4]
 	add r7, r1, #0
 	add r6, r2, #0
 	str r3, [sp, #8]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	str r0, [sp, #0xc]
 	cmp r6, #0
 	beq _02051398
@@ -1719,7 +1721,7 @@ _020513FE:
 	.balign 4, 0
 _02051420: .word 0x000001CE
 _02051424: .word 0x000001CD
-	thumb_func_end sub_02051370
+	thumb_func_end SetupAndStartTrainerBattle
 
 	thumb_func_start sub_02051428
 sub_02051428: ; 0x02051428
@@ -1727,7 +1729,7 @@ sub_02051428: ; 0x02051428
 	add r5, r2, #0
 	add r7, r0, #0
 	add r4, r1, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	mov r0, #0xb
 	add r1, r5, #0
@@ -1749,7 +1751,7 @@ sub_02051428: ; 0x02051428
 	add r2, r0, #0
 	ldr r1, _02051470 ; =sub_020508B8
 	add r0, r7, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02051470: .word sub_020508B8
@@ -1793,7 +1795,7 @@ sub_020514A4: ; 0x020514A4
 	add r7, r1, #0
 	str r2, [sp, #4]
 	add r4, r3, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	cmp r4, #0
 	bne _020514C8
@@ -1850,7 +1852,7 @@ _020514F6:
 	ldr r0, [sp]
 	ldr r1, _0205153C ; =sub_02050960
 	str r7, [r2, #0xc]
-	bl sub_02050530
+	bl QueueTask
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1862,13 +1864,13 @@ _0205153C: .word sub_02050960
 sub_02051540: ; 0x02051540
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -1880,7 +1882,7 @@ _02051566:
 	ldr r1, _02051594 ; =sub_020508B8
 	add r0, r5, #0
 	add r2, r7, #0
-	bl sub_02050530
+	bl QueueTask
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -1939,7 +1941,7 @@ sub_02051598: ; 0x02051598
 	add r2, r0, #0
 	ldr r1, _020515F8 ; =sub_02051540
 	add r0, r5, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _020515F4: .word 0x000001B2
@@ -1984,7 +1986,7 @@ sub_020515FC: ; 0x020515FC
 	add r2, r0, #0
 	ldr r1, _0205165C ; =sub_02051540
 	add r0, r5, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02051658: .word 0x000001B2
@@ -2093,65 +2095,3 @@ _02051734:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end sub_02051660
-
-	thumb_func_start sub_02051738
-sub_02051738: ; 0x02051738
-	push {r4, lr}
-	add r2, r0, #0
-	ldr r4, [r2]
-	mov r0, #1
-	tst r0, r4
-	beq _02051788
-	add r2, #0x5d
-	ldrb r0, [r2]
-	bl sub_02051868
-	mov r1, #0x80
-	tst r1, r4
-	beq _02051764
-	cmp r0, #0x27
-	beq _020517A0
-	mov r0, #2
-	tst r0, r4
-	beq _02051760
-	mov r0, #0x25
-	pop {r4, pc}
-_02051760:
-	mov r0, #0x23
-	pop {r4, pc}
-_02051764:
-	cmp r0, #0x1d
-	blo _0205176C
-	cmp r0, #0x22
-	bls _020517A0
-_0205176C:
-	cmp r0, #0x2b
-	beq _020517A0
-	cmp r0, #0x2c
-	beq _020517A0
-	mov r1, #2
-	tst r1, r4
-	beq _0205177E
-	mov r0, #0x25
-	pop {r4, pc}
-_0205177E:
-	mov r1, #4
-	tst r1, r4
-	beq _020517A0
-	mov r0, #0x24
-	pop {r4, pc}
-_02051788:
-	mov r1, #0x56
-	lsl r1, r1, #2
-	ldr r0, [r2, #8]
-	ldr r1, [r2, r1]
-	bl sub_02051894
-	cmp r0, #0x2a
-	blo _020517A0
-	mov r1, #2
-	tst r1, r4
-	beq _020517A0
-	mov r0, #0x26
-_020517A0:
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end sub_02051738

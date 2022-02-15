@@ -1,7 +1,0 @@
-Bugsy: I’m Bugsy!\nI never lose when it comes to Bug-type\fPokémon.\rMy research is going to make me\nthe authority on Bug-type Pokémon!\rLet me demonstrate what I’ve learned\nfrom my studies.\r
-Bugsy: Whoa, amazing!\nYou’re an expert on Pokémon!\rMy research isn’t complete yet.\nOK, you win. Take this Badge.\r
-{STRVAR_1 3, 0, 0} received\nthe Hive Badge from Bugsy!
-Bugsy: Do you know the benefits of the\nHive Badge?\rIf you have it, Pokémon up to Lv. 30\nwill obey you, even traded ones.\rPokémon that know Cut will be able\nto use it outside of battle, too.\rHere, I also want you to have this.\r
-                           
-Bugsy: TM89 contains U-turn.\rIt lets your Pokémon attack, then\nswitch with the next Pokémon\fin your party.\rIsn’t that great?
-Bugsy: Bug-type Pokémon are deep.\nThere are many mysteries to explore.\rStudy your top choices thoroughly.

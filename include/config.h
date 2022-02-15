@@ -13,7 +13,12 @@
 #define VERSION_PLATINUM       12
 #define VERSION_GAMECUBE       15
 
-#define LANGUAGE_ENGLISH 2
+#define LANGUAGE_JAPANESE    1
+#define LANGUAGE_ENGLISH     2
+#define LANGUAGE_FRENCH      3
+#define LANGUAGE_ITALIAN     4
+#define LANGUAGE_GERMAN      5
+#define LANGUAGE_SPANISH     7
 
 #undef GAME_VERSION
 #if defined(HEARTGOLD)
@@ -30,5 +35,7 @@
 #else
 #error "Missing or unrecognized game language define"
 #endif
+
+#include "constants/bugfix.h"
 
 #endif //POKEHEARTGOLD_CONFIG_H

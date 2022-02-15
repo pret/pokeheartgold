@@ -339,7 +339,7 @@ _021E5B68:
 	bl ov87_021E7048
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #3
 	strh r0, [r6, #0x12]
 	mov r0, #0x56
@@ -475,7 +475,7 @@ _021E5C80:
 	bl ClearFrameAndWindow2
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	strb r0, [r5, #8]
 	b _021E5CDE
@@ -677,19 +677,19 @@ _021E5E20:
 	ldr r0, [r4, #0x58]
 	mov r1, #6
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r3, #0x12
 	mov r1, #0
 	ldrsh r3, [r4, r3]
 	ldr r0, [r4, #0x58]
 	add r2, r1, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r3, #0x12
 	ldrsh r3, [r4, r3]
 	ldr r0, [r4, #0x58]
 	mov r1, #1
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
@@ -698,7 +698,7 @@ _021E5E20:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0xff
 	mvn r0, r0
 	strh r0, [r4, #0x10]
@@ -858,19 +858,19 @@ _021E5FCE:
 	ldr r0, [r4, #0x58]
 	mov r1, #6
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r3, #0x12
 	mov r1, #0
 	ldrsh r3, [r4, r3]
 	ldr r0, [r4, #0x58]
 	add r2, r1, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r3, #0x12
 	ldrsh r3, [r4, r3]
 	ldr r0, [r4, #0x58]
 	mov r1, #1
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #0x12
 	ldrsh r0, [r4, r0]
 	sub r0, #0x10
@@ -1039,7 +1039,7 @@ _021E613E:
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	strb r0, [r4, #8]
 	b _021E64F4
@@ -1058,7 +1058,7 @@ _021E6154:
 	bl FillWindowPixelBuffer
 	add r0, r4, #0
 	add r0, #0xfc
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #3
 	strb r0, [r4, #8]
 	b _021E64F4
@@ -1106,7 +1106,7 @@ _021E61B6:
 	add r1, r5, #0
 	bl ov87_021E74F4
 	ldr r0, _021E63FC ; =0x0000055F
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _021E61EA
 	ldr r0, _021E63FC ; =0x0000055F
@@ -1118,7 +1118,7 @@ _021E61EA:
 	bne _021E6262
 	ldr r0, _021E63FC ; =0x0000055F
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #0xd
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
@@ -1178,7 +1178,7 @@ _021E6262:
 	blo _021E6298
 	ldr r0, _021E63FC ; =0x0000055F
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #0x3c
 	strb r0, [r4, #0xf]
 	mov r0, #0xd
@@ -1195,7 +1195,7 @@ _021E6262:
 _021E6290:
 	ldr r0, _021E63FC ; =0x0000055F
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 _021E6298:
 	mov r0, #0x3a
 	lsl r0, r0, #4
@@ -1488,7 +1488,7 @@ _021E650C:
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0xcf
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -1509,19 +1509,19 @@ _021E653C:
 	ldr r0, [r5, #0x58]
 	mov r1, #6
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r3, #0x12
 	mov r1, #0
 	ldrsh r3, [r5, r3]
 	ldr r0, [r5, #0x58]
 	add r2, r1, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r3, #0x12
 	ldrsh r3, [r5, r3]
 	ldr r0, [r5, #0x58]
 	mov r1, #1
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #0x12
 	ldrsh r0, [r5, r0]
 	sub r0, #0x10
@@ -1957,7 +1957,7 @@ ov87_021E68A4: ; 0x021E68A4
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -2301,7 +2301,7 @@ ov87_021E6B38: ; 0x021E6B38
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r4, pc}
 	thumb_func_end ov87_021E6B38
 
@@ -2325,7 +2325,7 @@ ov87_021E6BB8: ; 0x021E6BB8
 	bl GX_EngineAToggleLayers
 	mov r0, #0x1f
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	mov r1, #7
 	bl FreeBgTilemapBuffer
@@ -2364,7 +2364,7 @@ ov87_021E6C04: ; 0x021E6C04
 	bl sub_0200398C
 _021E6C1C:
 	ldr r0, [r4, #0x58]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0202061C
 	bl sub_0200B224
 	ldr r3, _021E6C38 ; =0x027E0000
@@ -2540,7 +2540,7 @@ ov87_021E6C60: ; 0x021E6C60
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0xb8
 	pop {r3, r4, r5, pc}
 	nop
@@ -2571,7 +2571,7 @@ ov87_021E6DBC: ; 0x021E6DBC
 	ldr r2, [r5, #0x58]
 	mov r1, #0x23
 	add r3, r4, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2584,7 +2584,7 @@ ov87_021E6DBC: ; 0x021E6DBC
 	ldr r2, [r5, #0x58]
 	mov r1, #0x25
 	add r3, r4, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov87_021E6DBC
@@ -2607,7 +2607,7 @@ ov87_021E6E00: ; 0x021E6E00
 	ldr r2, [r5, #0x58]
 	mov r1, #0x26
 	add r3, r4, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2620,7 +2620,7 @@ ov87_021E6E00: ; 0x021E6E00
 	ldr r2, [r5, #0x58]
 	mov r1, #0x28
 	add r3, r4, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov87_021E6E00
@@ -2697,7 +2697,7 @@ ov87_021E6EB0: ; 0x021E6EB0
 	ldr r2, [r5, #0x58]
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2710,7 +2710,7 @@ ov87_021E6EB0: ; 0x021E6EB0
 	ldr r2, [r5, #0x58]
 	mov r1, #6
 	add r3, r4, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov87_021E6EB0
@@ -2733,7 +2733,7 @@ ov87_021E6EF4: ; 0x021E6EF4
 	ldr r2, [r5, #0x58]
 	mov r1, #7
 	add r3, r4, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2746,7 +2746,7 @@ ov87_021E6EF4: ; 0x021E6EF4
 	ldr r2, [r5, #0x58]
 	mov r1, #9
 	add r3, r4, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov87_021E6EF4
@@ -2881,7 +2881,7 @@ ov87_021E7008: ; 0x021E7008
 	add r4, #0x5c
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
@@ -2916,7 +2916,7 @@ ov87_021E7048: ; 0x021E7048
 	mov r0, #0x53
 	lsl r0, r0, #2
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
@@ -2950,7 +2950,7 @@ ov87_021E708C: ; 0x021E708C
 	add r4, #0xfc
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
@@ -3033,7 +3033,7 @@ ov87_021E7134: ; 0x021E7134
 	mov r0, #0x47
 	lsl r0, r0, #2
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
@@ -3065,7 +3065,7 @@ ov87_021E717C: ; 0x021E717C
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
@@ -3095,7 +3095,7 @@ ov87_021E71B4: ; 0x021E71B4
 	mov r0, #0x4f
 	lsl r0, r0, #2
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
@@ -3135,7 +3135,7 @@ ov87_021E71EC: ; 0x021E71EC
 	bl ov87_021E6F98
 	add r6, r0, #0
 	add r0, r5, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
@@ -3462,7 +3462,7 @@ ov87_021E7460: ; 0x021E7460
 	ldr r0, [r5, #0x58]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	lsl r1, r4, #0x18
 	ldr r0, [r5, #0x58]
 	lsr r1, r1, #0x18
@@ -4204,7 +4204,7 @@ ov87_021E79A0: ; 0x021E79A0
 	bl FillWindowPixelBuffer
 	add r4, #0xfc
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	pop {r4, pc}
 	thumb_func_end ov87_021E79A0
 
@@ -4462,7 +4462,7 @@ _021E7B96:
 	blt _021E7B96
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers

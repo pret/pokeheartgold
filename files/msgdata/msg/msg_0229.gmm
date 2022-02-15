@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0229_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The save file is corrupted.\nThe previous save file will be loaded.</language>
+	</row>
+	<row id="msg_0229_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The save file will be erased\ndue to corruption or damage.</language>
+	</row>
+	<row id="msg_0229_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The most recent Battle Video is\ncorrupted.\rThe previously saved Battle Video will\nbe loaded instead.\n</language>
+	</row>
+	<row id="msg_0229_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A Battle Video appears to have been\nerased.</language>
+	</row>
+	<row id="msg_0229_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The most recent Battle Hall record\nis corrupted.\rThe previously saved record will be\nloaded instead.\n</language>
+	</row>
+	<row id="msg_0229_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Battle Hall record has been erased.\n\n</language>
+	</row>
+</body>

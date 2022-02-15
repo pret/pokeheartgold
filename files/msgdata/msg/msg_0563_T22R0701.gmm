@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0563_T22R0701_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lately, I don’t see people coming\nfrom Goldenrod City.</language>
+	</row>
+	<row id="msg_0563_T22R0701_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Things are busy lately, because\nwe have many people coming\ffrom Goldenrod and Ecruteak!</language>
+	</row>
+	<row id="msg_0563_T22R0701_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Plants are also living things!\nThey would want to move\faround from time to time!</language>
+	</row>
+</body>

@@ -1,9 +1,0 @@
-I see.\rSo you are playing hide-and-seek\nwih my granddaughter.\rI guess there is no need to worry\nas long as she’s on the ship!
-Oh, hello...\rMy granddaughter is still missing.\nIf she’s on the ship, that’s OK.\rShe’s an energetic child, so she may be\nbothering someone. That worries me...
-Grandpa, here I am!\rI was playing hide-and-seek\nwith this guy!\r
-Grandpa, here I am!\rI was playing hide-and-seek\nwith this girl!\r
-{STRVAR_1 3, 0, 0}, was it?\nI heard you entertained my\fgranddaughter.\rI want to thank you for that.\nTake this.\r
-{STRVAR_1 3, 0, 0}, was it?\nI heard you entertained my\fgranddaughter.\rI want to thank you for that.\nTake this.\r
-Fast Ship S.S. Aqua\nhas arrived in Vermilion City.
-We’re traveling around the world.
-I had lots of fun!

@@ -460,7 +460,7 @@ _021E5CB4:
 	bl sub_0200D034
 	bl NNS_GfdDoVramTransfer
 	ldr r0, [r4, #0x14]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E5CDC ; =0x027E0000
 	ldr r1, _021E5CE0 ; =0x00003FF8
 	mov r0, #1
@@ -492,7 +492,7 @@ _021E5CF8:
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -550,7 +550,7 @@ _021E5D62:
 	mov r0, #0
 	mov r1, #1
 	str r0, [r4, #8]
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #1
 	pop {r4, pc}
 _021E5D9C:
@@ -622,7 +622,7 @@ _021E5E24:
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -838,7 +838,7 @@ ov54_021E5F40: ; 0x021E5F40
 	mov r1, #0
 	ldr r3, [r3, r4]
 	mov r2, #3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -991,13 +991,13 @@ ov54_021E6004: ; 0x021E6004
 	bl FillWindowPixelBuffer
 	add r0, r4, #0
 	add r0, #0x54
-	bl sub_0201D634
+	bl ClearWindowTilemap
 	add r0, r4, #0
 	add r0, #0x44
-	bl sub_0201D634
+	bl ClearWindowTilemap
 	add r0, r4, #0
 	add r0, #0x34
-	bl sub_0201D634
+	bl ClearWindowTilemap
 	add r4, #0x54
 	add r0, r4, #0
 	mov r1, #1
@@ -1033,7 +1033,7 @@ _021E6180:
 	add r1, r7, #0
 	bl FillWindowPixelBuffer
 	add r0, r5, r4
-	bl sub_0201D634
+	bl ClearWindowTilemap
 	add r0, r5, r4
 	bl RemoveWindow
 	add r0, r6, #1
@@ -1615,7 +1615,7 @@ ov54_021E6624: ; 0x021E6624
 	lsr r1, r1, #0x1d
 	cmp r1, #6
 	beq _021E6686
-	ldr r3, _021E6810 ; =gMain
+	ldr r3, _021E6810 ; =gSystem
 	ldr r5, [r3, #0x48]
 	mov r3, #0x10
 	tst r3, r5
@@ -1652,7 +1652,7 @@ _021E667E:
 	bl ov54_021E6BB8
 	b _021E66DC
 _021E6686:
-	ldr r2, _021E6810 ; =gMain
+	ldr r2, _021E6810 ; =gSystem
 	ldr r3, [r2, #0x48]
 	mov r2, #0x20
 	tst r2, r3
@@ -1693,7 +1693,7 @@ _021E66B4:
 	ldr r0, _021E6814 ; =0x000005DC
 	bl PlaySE
 _021E66DC:
-	ldr r0, _021E6810 ; =gMain
+	ldr r0, _021E6810 ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -1839,7 +1839,7 @@ _021E6802:
 _021E680E:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021E6810: .word gMain
+_021E6810: .word gSystem
 _021E6814: .word 0x000005DC
 _021E6818: .word 0x0000061A
 	thumb_func_end ov54_021E6624
@@ -1847,7 +1847,7 @@ _021E6818: .word 0x0000061A
 	thumb_func_start ov54_021E681C
 ov54_021E681C: ; 0x021E681C
 	push {r3, r4, r5, lr}
-	ldr r1, _021E69B8 ; =gMain + 0x40
+	ldr r1, _021E69B8 ; =gSystem + 0x40
 	add r4, r0, #0
 	ldrh r1, [r1, #0x24]
 	cmp r1, #0
@@ -2025,7 +2025,7 @@ _021E6960:
 	bl PlaySE
 	pop {r3, r4, r5, pc}
 _021E6998:
-	ldr r1, _021E69D0 ; =gMain
+	ldr r1, _021E69D0 ; =gSystem
 	ldr r1, [r1, #0x48]
 	cmp r1, #0
 	beq _021E69B4
@@ -2041,13 +2041,13 @@ _021E6998:
 _021E69B4:
 	pop {r3, r4, r5, pc}
 	nop
-_021E69B8: .word gMain + 0x40
+_021E69B8: .word gSystem + 0x40
 _021E69BC: .word ov54_021E6D68
 _021E69C0: .word ov54_021E6DA8
 _021E69C4: .word 0x0000061A
 _021E69C8: .word ov54_021E6DAC
 _021E69CC: .word 0x000005DC
-_021E69D0: .word gMain
+_021E69D0: .word gSystem
 	thumb_func_end ov54_021E681C
 
 	thumb_func_start ov54_021E69D4
@@ -2059,7 +2059,7 @@ ov54_021E69D4: ; 0x021E69D4
 	bne _021E6A28
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #0x54
 	mul r0, r4
 	add r0, r5, r0
@@ -2100,7 +2100,7 @@ _021E6A28:
 	mov r1, #0
 	ldr r3, [r3, r4]
 	mov r2, #3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #0xbd
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -2113,7 +2113,7 @@ _021E6A28:
 	bl sub_020248F0
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E6A60: .word ov54_021E6C80
@@ -2129,7 +2129,7 @@ ov54_021E6A64: ; 0x021E6A64
 	bne _021E6A78
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 _021E6A78:
 	pop {r3, pc}
 	.balign 4, 0
@@ -2145,7 +2145,7 @@ ov54_021E6A7C: ; 0x021E6A7C
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4]
 	bl sub_0200CF18
 	mov r1, #0x2d

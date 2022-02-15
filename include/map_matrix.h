@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_MAP_MATRIX_H
 
 #include "save.h"
+#include "heap.h"
 
 #define MAP_MATRIX_MAX_SIZE 799
 #define MAP_MATRIX_MAX_NAME_LENGTH 16

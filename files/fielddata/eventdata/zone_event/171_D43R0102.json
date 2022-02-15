@@ -1,0 +1,181 @@
+{
+  "header": "fielddata/script/scr_seq/event_D43R0102.h",
+  "bgs": [
+    {
+      "scr": "std_hiddenitem_d43r0102_max_revive",
+      "type": 2,
+      "x": 15,
+      "y": 27,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_d43r0102_pp_up",
+      "type": 2,
+      "x": 28,
+      "y": 38,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_d43r0102_ultra_ball",
+      "type": 2,
+      "x": 57,
+      "y": 42,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_D43R0102_monstarball",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D43R0102_TM26",
+      "scr": "std_itemball_d43r0102_tm26",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 13,
+      "y": 24,
+      "z": 0
+    },
+    {
+      "id": "obj_D43R0102_monstarball_2",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D43R0102_HP_UP",
+      "scr": "std_itemball_d43r0102_hp_up",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 31,
+      "y": 36,
+      "z": 0
+    },
+    {
+      "id": "obj_D43R0102_monstarball_3",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D43R0102_FULL_RESTORE",
+      "scr": "std_itemball_d43r0102_full_restore",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 44,
+      "y": 24,
+      "z": 0
+    },
+    {
+      "id": "obj_D43R0102_rock",
+      "ovid": "SPRITE_ROCK",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_field_strength",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 9,
+      "y": 25,
+      "z": 0
+    },
+    {
+      "id": "obj_D43R0102_rock_2",
+      "ovid": "SPRITE_ROCK",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_field_strength",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 50,
+      "y": 28,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 7,
+      "y": 31,
+      "header": "MAP_D43R0101",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 27,
+      "y": 45,
+      "header": "MAP_D43R0103",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 27,
+      "y": 44,
+      "header": "MAP_D43R0103",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 51,
+      "y": 39,
+      "header": "MAP_D43R0103",
+      "anchor": 2,
+      "height": 0
+    },
+    {
+      "x": 51,
+      "y": 38,
+      "header": "MAP_D43R0103",
+      "anchor": 2,
+      "height": 0
+    },
+    {
+      "x": 56,
+      "y": 22,
+      "header": "MAP_D43R0103",
+      "anchor": 3,
+      "height": 0
+    },
+    {
+      "x": 56,
+      "y": 21,
+      "header": "MAP_D43R0103",
+      "anchor": 3,
+      "height": 0
+    },
+    {
+      "x": 7,
+      "y": 18,
+      "header": "MAP_D43R0103",
+      "anchor": 4,
+      "height": 0
+    },
+    {
+      "x": 7,
+      "y": 17,
+      "header": "MAP_D43R0103",
+      "anchor": 4,
+      "height": 0
+    }
+  ]
+}

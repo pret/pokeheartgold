@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0001_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CANCEL</language>
+	</row>
+	<row id="msg_0001_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}UNOWN Report</language>
+	</row>
+	<row id="msg_0001_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0}</language>
+	</row>
+	<row id="msg_0001_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER} Number of UNOWN</language>
+	</row>
+	<row id="msg_0001_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Current Kinds: {STRVAR_1 51, 0, 0}</language>
+	</row>
+	<row id="msg_0001_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}{STRVAR_1 50, 0, 0}/{STRVAR_1 50, 1, 0}</language>
+	</row>
+	<row id="msg_0001_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Found a strange puzzle in the\nruins. Solved it, and suddenly a\nhole opened up in the ground\nand I dropped into the room\nbelow! Should have known that\nancient ruins would have\nsurprising tricks like that.</language>
+	</row>
+	<row id="msg_0001_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There was a stone statue where I\nfell. The place might have been a\nreception hall. Then, suddenly,\nthe UNOWN appeared. That puzzle\nwas like a key somehow. It woke\nthe UNOWN up from their sleep.\nThese ruins have become difficult.</language>
+	</row>
+	<row id="msg_0001_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">If you turn on the radio in the\nruins, you can receive mysterious\nradio waves! It’s proof that the\nUNOWN communicate with each\nother using radio waves!</language>
+	</row>
+	<row id="msg_0001_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There are as many UNOWN as there\nare letters in the alphabet.\nRight now, we’re confirming the\nexistence of 26 kinds of UNOWN.\nDo you think you can find\nall 26 of them?</language>
+	</row>
+	<row id="msg_0001_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It seems that individually they\ndon’t make much sense, but when\nthe various UNOWN are arranged\nin order, they begin to make\nsense. In nature, they seem to be\nscattered around randomly, but\nthe truth is they’re arranged in\na very specific order.</language>
+	</row>
+	<row id="msg_0001_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">In this report, the scattered\nUNOWN were sorted and put into\norder by the research-center\nstaff. That makes the UNOWN much\neasier to understand.</language>
+	</row>
+	<row id="msg_0001_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Scratched on the floor of the\nruins are UNOWN letters. Finding\nthe room feels like a huge\ndiscovery! The Researchers were\nvery excited and said they were\ngoing to go check it out.</language>
+	</row>
+	<row id="msg_0001_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There aren’t just 26 different\nkinds of UNOWN. Two more have\nbeen discovered! But that begs\nthe question of where those\nother two kinds are hiding...</language>
+	</row>
+	<row id="msg_0001_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{CURSOR_Y 24}The characters found scratched\non the floor in the small room are\ntranscribed here in this report.</language>
+	</row>
+	<row id="msg_0001_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{CURSOR_Y 72}OUR FRIENDS LOOK\nUP AND HEARTILY\nCONGRATULATE US</language>
+	</row>
+	<row id="msg_0001_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{CURSOR_Y 120}We don’t know what this could\npossibly mean yet.</language>
+	</row>
+	<row id="msg_0001_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Researchers were saying\nthat they’ll need to examine the\nruins again, but...?</language>
+	</row>
+	<row id="msg_0001_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">In the past, it seems that UNOWN\nlived with relatives of humans in\nthese ruins. In the lower levels\nof these ruins is a Pokémon\nstatue. We’ve come to understand\nthat it was those relatives who\nmade that statue.</language>
+	</row>
+	<row id="msg_0001_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The UNOWN are very timid\ncreatures, so they don’t go\noutside the ruins. Even if a bunch\nof people gathered near the\nruins, it is said that the ones who\nwished for UNOWN and humans to\nagain coexist have all left.</language>
+	</row>
+	<row id="msg_0001_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ANGER</language>
+	</row>
+	<row id="msg_0001_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BEAR</language>
+	</row>
+	<row id="msg_0001_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHASE</language>
+	</row>
+	<row id="msg_0001_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DIRECT</language>
+	</row>
+	<row id="msg_0001_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ENGAGE</language>
+	</row>
+	<row id="msg_0001_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FIND</language>
+	</row>
+	<row id="msg_0001_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GIVE</language>
+	</row>
+	<row id="msg_0001_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HELP</language>
+	</row>
+	<row id="msg_0001_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">INCREASE</language>
+	</row>
+	<row id="msg_0001_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">JOIN</language>
+	</row>
+	<row id="msg_0001_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KEEP</language>
+	</row>
+	<row id="msg_0001_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LAUGH</language>
+	</row>
+	<row id="msg_0001_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MAKE</language>
+	</row>
+	<row id="msg_0001_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NUZZLE</language>
+	</row>
+	<row id="msg_0001_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OBSERVE</language>
+	</row>
+	<row id="msg_0001_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PERFORM</language>
+	</row>
+	<row id="msg_0001_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">QUICKEN</language>
+	</row>
+	<row id="msg_0001_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">REASSURE</language>
+	</row>
+	<row id="msg_0001_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SEARCH</language>
+	</row>
+	<row id="msg_0001_00039" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TELL</language>
+	</row>
+	<row id="msg_0001_00040" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">UNDO</language>
+	</row>
+	<row id="msg_0001_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">VANISH</language>
+	</row>
+	<row id="msg_0001_00042" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WANT</language>
+	</row>
+	<row id="msg_0001_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">XXXXX</language>
+	</row>
+	<row id="msg_0001_00044" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">YIELD</language>
+	</row>
+	<row id="msg_0001_00045" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ZOOM</language>
+	</row>
+	<row id="msg_0001_00046" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">!!!!!</language>
+	</row>
+	<row id="msg_0001_00047" index="47">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">?????</language>
+	</row>
+</body>

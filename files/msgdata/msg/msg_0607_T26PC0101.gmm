@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0607_T26PC0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pokémon get more friendly if you\nspend time with them.</language>
+	</row>
+	<row id="msg_0607_T26PC0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">They can shine like a bright light--\nlike a beacon at night to guide us...\rThey can take us across the water on\ntheir backs when we are without\fa boat...\rPokémon are helping us everywhere.\fI can’t imagine a life without them!</language>
+	</row>
+	<row id="msg_0607_T26PC0101_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There’s a person in Cianwood City\nacross the sea.\rI heard him bragging about his\nrare Pokémon.</language>
+	</row>
+	<row id="msg_0607_T26PC0101_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">...There!\nAll done!\fIt’s sure to surprise anyone!\r</language>
+	</row>
+	<row id="msg_0607_T26PC0101_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh, are you a Trainer?\rYou came at just the right time!\nI just finished putting my Ball Capsule\fon my Poké Ball.\rDo you want to battle and be\namazed by my decoration? {YESNO 0}</language>
+	</row>
+	<row id="msg_0607_T26PC0101_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">All right!\nHere I come!\r</language>
+	</row>
+	<row id="msg_0607_T26PC0101_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You can turn your Poké Balls into your\nown special creations by adding Seals.\rHow cool is it to have a Poké Ball that\nonly you have in the entire world?\fGive it a whirl!\rOh, remember to put the Ball Capsule\non a Poké Ball once it’s ready!</language>
+	</row>
+	<row id="msg_0607_T26PC0101_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh, really?\rTalk to me if you want to see my\nBall Capsule sometime!</language>
+	</row>
+	<row id="msg_0607_T26PC0101_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Now you want to see my Ball Capsule?\rBattle me so I can show it to you! {YESNO 0}</language>
+	</row>
+</body>

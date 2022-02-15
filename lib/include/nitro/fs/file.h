@@ -222,4 +222,6 @@ static inline BOOL FS_IsDir(volatile const FSFile * p_file)
     return (p_file->stat & FS_FILE_STATUS_IS_DIR) ? TRUE : FALSE;
 }
 
+u32 FS_TryLoadTable(void *p_mem, u32 maxsize);
+
 #endif //NITRO_FS_FILE_H_

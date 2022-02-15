@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0677_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Jamie</language>
+	</row>
+	<row id="msg_0677_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You’re very good at battling.\nWe should battle again sometime.\rBy challenging a tough Trainer like you,\nI think I can get better, too.\rSo how about it?\nWould you give me your\fphone number? {YESNO 0}</language>
+	</row>
+	<row id="msg_0677_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Let’s battle again sometime!</language>
+	</row>
+	<row id="msg_0677_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">That’s too bad...\nLet me know if you change your mind.</language>
+	</row>
+	<row id="msg_0677_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">By challenging a tough Trainer like you,\nI think I can get better, too.\rSo how about it? Would you give me\nyour phone number? {YESNO 0}</language>
+	</row>
+	<row id="msg_0677_00005" index="5">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語"></language>
+	</row>
+	<row id="msg_0677_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Huh? You... Aren’t you nearby?\rWhy not come here and just talk to me\nface-to-face?</language>
+	</row>
+	<row id="msg_0677_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Do you remember my\nsweet {STRVAR_1 0, 10, 0}?\r{STRVAR_1 0, 10, 0} runs very fast.\rIt’s exhilarating to ride on its\nback when it really gets going.\rBye-bye!</language>
+	</row>
+	<row id="msg_0677_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh, have you ever seen a {STRVAR_1 0, 11, 0}\nbefore?\rI just battled one...\nIt was much faster than I expected.\rI was a little shocked.\nI still won, of course.\rBye-bye!</language>
+	</row>
+	<row id="msg_0677_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh, I just saw a wild {STRVAR_1 0, 11, 0}.\nI was trying to catch it when I\fnoticed that I was all out of\fPoké Balls.\rIf you don’t check your items, you\nmay run out at the worst time.\fI hope you learn from my mistake.\rBye-bye!</language>
+	</row>
+	<row id="msg_0677_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Do you want to battle? I’m going to win\nthis time!\rI’ll be waiting for you around\n{STRVAR_1 4, 3, 0}. Look for me, OK?</language>
+	</row>
+	<row id="msg_0677_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Um... {STRVAR_1 3, 0, 0}? What’s wrong?\nDid you forget our deal?\r{STRVAR_1 4, 3, 0}.\nThat’s where I’m waiting.</language>
+	</row>
+	<row id="msg_0677_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Um... {STRVAR_1 3, 0, 0}? What’s wrong?\nDid you forget our deal?\r{STRVAR_1 4, 3, 0}.\nThat’s where I’m waiting.</language>
+	</row>
+	<row id="msg_0677_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Let’s battle again\nsometime!</language>
+	</row>
+</body>

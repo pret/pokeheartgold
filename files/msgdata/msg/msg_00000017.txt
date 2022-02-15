@@ -1,8 +1,0 @@
-A Recruitment Message arrived\nfrom a Pokémon Ranger.\n\nYou may receive a {COLOR 1}MANAPHY Egg{COLOR 0}\nfrom the Pokémon Ranger!\n\nOn the next screen, select\n{COLOR 1}CONNECT TO POKéMON RANGER{COLOR 0}.\nTouch the screen to advance.
-A Mystery Gift signal has\nbeen located!\n\nYou may receive a Mystery Gift!\n\nAt the next screen, select\n{COLOR 1}Mystery Gift{COLOR 0}.\nTouch the screen to advance.
-A Recruitment Message arrived\nfrom a Pokémon Ranger.\n\nHowever, to communicate with the\nPokémon Ranger, you must get\nfurther into your adventure and\nobtain a Pokédex first.\nTouch the screen to advance.
-A Mystery Gift signal has\nbeen located.\n\nHowever, to receive a Mystery\nGift, you must get further into\nyour adventure and obtain a\nPokédex first.\nTouch the screen to advance.
-        
- {COLOR 1}WARNING!{COLOR 0} There’s already a saved\n game file. If you start an adventure now, \n you won’t be able to save it.
-Begin adventure
-Return to the menu

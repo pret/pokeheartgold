@@ -1,0 +1,947 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0154_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Player’s side 1</language>
+	</row>
+	<row id="msg_0154_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Player’s side 2</language>
+	</row>
+	<row id="msg_0154_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Opponent 1</language>
+	</row>
+	<row id="msg_0154_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Opponent 2</language>
+	</row>
+	<row id="msg_0154_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Class</language>
+	</row>
+	<row id="msg_0154_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Level</language>
+	</row>
+	<row id="msg_0154_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Exp. Points</language>
+	</row>
+	<row id="msg_0154_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ID No.</language>
+	</row>
+	<row id="msg_0154_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Random value</language>
+	</row>
+	<row id="msg_0154_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Gender</language>
+	</row>
+	<row id="msg_0154_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Nature</language>
+	</row>
+	<row id="msg_0154_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Normal</language>
+	</row>
+	<row id="msg_0154_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rare</language>
+	</row>
+	<row id="msg_0154_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Status</language>
+	</row>
+	<row id="msg_0154_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Friendliness</language>
+	</row>
+	<row id="msg_0154_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pokérus</language>
+	</row>
+	<row id="msg_0154_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Move 1</language>
+	</row>
+	<row id="msg_0154_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Move 2</language>
+	</row>
+	<row id="msg_0154_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Move 3</language>
+	</row>
+	<row id="msg_0154_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Move 4</language>
+	</row>
+	<row id="msg_0154_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Item</language>
+	</row>
+	<row id="msg_0154_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Attribute</language>
+	</row>
+	<row id="msg_0154_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Set</language>
+	</row>
+	<row id="msg_0154_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Default HP</language>
+	</row>
+	<row id="msg_0154_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HPrnd</language>
+	</row>
+	<row id="msg_0154_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HPexp</language>
+	</row>
+	<row id="msg_0154_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POWrnd</language>
+	</row>
+	<row id="msg_0154_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POWexp</language>
+	</row>
+	<row id="msg_0154_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DEFrnd</language>
+	</row>
+	<row id="msg_0154_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DEFexp</language>
+	</row>
+	<row id="msg_0154_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AGIrnd</language>
+	</row>
+	<row id="msg_0154_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AGIexp</language>
+	</row>
+	<row id="msg_0154_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SPWrnd</language>
+	</row>
+	<row id="msg_0154_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SPWexp</language>
+	</row>
+	<row id="msg_0154_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SDFrnd</language>
+	</row>
+	<row id="msg_0154_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SDFexp</language>
+	</row>
+	<row id="msg_0154_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POW</language>
+	</row>
+	<row id="msg_0154_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DEF</language>
+	</row>
+	<row id="msg_0154_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AGI</language>
+	</row>
+	<row id="msg_0154_00039" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SPW</language>
+	</row>
+	<row id="msg_0154_00040" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SDF</language>
+	</row>
+	<row id="msg_0154_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HP</language>
+	</row>
+	<row id="msg_0154_00042" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MPP</language>
+	</row>
+	<row id="msg_0154_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MPT</language>
+	</row>
+	<row id="msg_0154_00044" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Coolness</language>
+	</row>
+	<row id="msg_0154_00045" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Beauty</language>
+	</row>
+	<row id="msg_0154_00046" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cuteness</language>
+	</row>
+	<row id="msg_0154_00047" index="47">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Smartness</language>
+	</row>
+	<row id="msg_0154_00048" index="48">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Toughness</language>
+	</row>
+	<row id="msg_0154_00049" index="49">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Luster</language>
+	</row>
+	<row id="msg_0154_00050" index="50">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Capture place</language>
+	</row>
+	<row id="msg_0154_00051" index="51">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Capture level</language>
+	</row>
+	<row id="msg_0154_00052" index="52">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Capture cassette</language>
+	</row>
+	<row id="msg_0154_00053" index="53">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Capture Ball</language>
+	</row>
+	<row id="msg_0154_00054" index="54">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Form No.</language>
+	</row>
+	<row id="msg_0154_00055" index="55">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Egg Flag OFF</language>
+	</row>
+	<row id="msg_0154_00056" index="56">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Egg Flag ON</language>
+	</row>
+	<row id="msg_0154_00057" index="57">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">→</language>
+	</row>
+	<row id="msg_0154_00058" index="58">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Land form</language>
+	</row>
+	<row id="msg_0154_00059" index="59">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Player’s gender</language>
+	</row>
+	<row id="msg_0154_00060" index="60">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battle type</language>
+	</row>
+	<row id="msg_0154_00061" index="61">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ＴｒＩD1</language>
+	</row>
+	<row id="msg_0154_00062" index="62">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ＴｒＩD2</language>
+	</row>
+	<row id="msg_0154_00063" index="63">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">1 vs 1 Wild</language>
+	</row>
+	<row id="msg_0154_00064" index="64">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">1 vs 1 Trainer</language>
+	</row>
+	<row id="msg_0154_00065" index="65">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">2 vs 2 Trainer</language>
+	</row>
+	<row id="msg_0154_00066" index="66">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">1 vs 1 Link Host</language>
+	</row>
+	<row id="msg_0154_00067" index="67">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">1 vs 1 Link Client</language>
+	</row>
+	<row id="msg_0154_00068" index="68">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">2 vs 2 Link Host</language>
+	</row>
+	<row id="msg_0154_00069" index="69">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">2 vs 2 Link Client</language>
+	</row>
+	<row id="msg_0154_00070" index="70">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Link Multi Host</language>
+	</row>
+	<row id="msg_0154_00071" index="71">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Link Multi Client</language>
+	</row>
+	<row id="msg_0154_00072" index="72">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">1 vs 1 Wifi Host</language>
+	</row>
+	<row id="msg_0154_00073" index="73">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">1 vs 1 Wifi Client</language>
+	</row>
+	<row id="msg_0154_00074" index="74">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Safari Zone</language>
+	</row>
+	<row id="msg_0154_00075" index="75">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Poké Park</language>
+	</row>
+	<row id="msg_0154_00076" index="76">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bug-Catching</language>
+	</row>
+	<row id="msg_0154_00077" index="77">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Capture Demo</language>
+	</row>
+	<row id="msg_0154_00078" index="78">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wild 2 vs 2</language>
+	</row>
+	<row id="msg_0154_00079" index="79">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pair-up Battle</language>
+	</row>
+	<row id="msg_0154_00080" index="80">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AI Multi</language>
+	</row>
+	<row id="msg_0154_00081" index="81">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Tower Multi Host</language>
+	</row>
+	<row id="msg_0154_00082" index="82">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Tower Multi Client</language>
+	</row>
+	<row id="msg_0154_00083" index="83">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mickey</language>
+	</row>
+	<row id="msg_0154_00084" index="84">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Angelica</language>
+	</row>
+	<row id="msg_0154_00085" index="85">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cedric</language>
+	</row>
+	<row id="msg_0154_00086" index="86">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cheryl</language>
+	</row>
+	<row id="msg_0154_00087" index="87">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Riley</language>
+	</row>
+	<row id="msg_0154_00088" index="88">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Marley</language>
+	</row>
+	<row id="msg_0154_00089" index="89">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Buck</language>
+	</row>
+	<row id="msg_0154_00090" index="90">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mira</language>
+	</row>
+	<row id="msg_0154_00091" index="91">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">㊚</language>
+	</row>
+	<row id="msg_0154_00092" index="92">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">㊛</language>
+	</row>
+	<row id="msg_0154_00093" index="93">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">None</language>
+	</row>
+	<row id="msg_0154_00094" index="94">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Normal</language>
+	</row>
+	<row id="msg_0154_00095" index="95">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sleep</language>
+	</row>
+	<row id="msg_0154_00096" index="96">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Poison</language>
+	</row>
+	<row id="msg_0154_00097" index="97">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Burned</language>
+	</row>
+	<row id="msg_0154_00098" index="98">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Paralysis</language>
+	</row>
+	<row id="msg_0154_00099" index="99">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Frozen</language>
+	</row>
+	<row id="msg_0154_00100" index="100">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Badly poisoned</language>
+	</row>
+	<row id="msg_0154_00101" index="101">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Gravel</language>
+	</row>
+	<row id="msg_0154_00102" index="102">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Beach</language>
+	</row>
+	<row id="msg_0154_00103" index="103">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lawn</language>
+	</row>
+	<row id="msg_0154_00104" index="104">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Puddle</language>
+	</row>
+	<row id="msg_0154_00105" index="105">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rock surface</language>
+	</row>
+	<row id="msg_0154_00106" index="106">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dungeon</language>
+	</row>
+	<row id="msg_0154_00107" index="107">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Snowfield</language>
+	</row>
+	<row id="msg_0154_00108" index="108">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Water surface</language>
+	</row>
+	<row id="msg_0154_00109" index="109">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ice surface</language>
+	</row>
+	<row id="msg_0154_00110" index="110">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Floor</language>
+	</row>
+	<row id="msg_0154_00111" index="111">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Swamp</language>
+	</row>
+	<row id="msg_0154_00112" index="112">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dummy</language>
+	</row>
+	<row id="msg_0154_00113" index="113">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Elite Four A</language>
+	</row>
+	<row id="msg_0154_00114" index="114">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Elite Four B</language>
+	</row>
+	<row id="msg_0154_00115" index="115">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Elite Four C</language>
+	</row>
+	<row id="msg_0154_00116" index="116">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Elite Four D</language>
+	</row>
+	<row id="msg_0154_00117" index="117">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Champion</language>
+	</row>
+	<row id="msg_0154_00118" index="118">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Distortion World</language>
+	</row>
+	<row id="msg_0154_00119" index="119">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battle Tower</language>
+	</row>
+	<row id="msg_0154_00120" index="120">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battle Factory</language>
+	</row>
+	<row id="msg_0154_00121" index="121">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battle Arcade</language>
+	</row>
+	<row id="msg_0154_00122" index="122">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battle Castle</language>
+	</row>
+	<row id="msg_0154_00123" index="123">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battle Hall</language>
+	</row>
+	<row id="msg_0154_00124" index="124">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Load</language>
+	</row>
+	<row id="msg_0154_00125" index="125">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Save</language>
+	</row>
+	<row id="msg_0154_00126" index="126">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Grassland</language>
+	</row>
+	<row id="msg_0154_00127" index="127">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ocean</language>
+	</row>
+	<row id="msg_0154_00128" index="128">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Town</language>
+	</row>
+	<row id="msg_0154_00129" index="129">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Forest</language>
+	</row>
+	<row id="msg_0154_00130" index="130">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mountain</language>
+	</row>
+	<row id="msg_0154_00131" index="131">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Snow mountain</language>
+	</row>
+	<row id="msg_0154_00132" index="132">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Room A</language>
+	</row>
+	<row id="msg_0154_00133" index="133">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Room B</language>
+	</row>
+	<row id="msg_0154_00134" index="134">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Room C</language>
+	</row>
+	<row id="msg_0154_00135" index="135">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dungeon A</language>
+	</row>
+	<row id="msg_0154_00136" index="136">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dungeon B</language>
+	</row>
+	<row id="msg_0154_00137" index="137">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dungeon C</language>
+	</row>
+	<row id="msg_0154_00138" index="138">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Elite Four A</language>
+	</row>
+	<row id="msg_0154_00139" index="139">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Elite Four B</language>
+	</row>
+	<row id="msg_0154_00140" index="140">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Elite Four C</language>
+	</row>
+	<row id="msg_0154_00141" index="141">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Elite Four D</language>
+	</row>
+	<row id="msg_0154_00142" index="142">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Champion</language>
+	</row>
+	<row id="msg_0154_00143" index="143">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Distortion World</language>
+	</row>
+	<row id="msg_0154_00144" index="144">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battle Tower</language>
+	</row>
+	<row id="msg_0154_00145" index="145">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battle Factory</language>
+	</row>
+	<row id="msg_0154_00146" index="146">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battle Arcade</language>
+	</row>
+	<row id="msg_0154_00147" index="147">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battle Castle</language>
+	</row>
+	<row id="msg_0154_00148" index="148">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battle Hall</language>
+	</row>
+	<row id="msg_0154_00149" index="149">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Morning</language>
+	</row>
+	<row id="msg_0154_00150" index="150">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Afternoon</language>
+	</row>
+	<row id="msg_0154_00151" index="151">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Evening</language>
+	</row>
+	<row id="msg_0154_00152" index="152">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Night</language>
+	</row>
+	<row id="msg_0154_00153" index="153">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Midnight</language>
+	</row>
+	<row id="msg_0154_00154" index="154">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Switch</language>
+	</row>
+	<row id="msg_0154_00155" index="155">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Tourney</language>
+	</row>
+	<row id="msg_0154_00156" index="156">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Effect ON</language>
+	</row>
+	<row id="msg_0154_00157" index="157">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Effect OFF</language>
+	</row>
+	<row id="msg_0154_00158" index="158">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Slow</language>
+	</row>
+	<row id="msg_0154_00159" index="159">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Normal</language>
+	</row>
+	<row id="msg_0154_00160" index="160">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fast</language>
+	</row>
+	<row id="msg_0154_00161" index="161">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OFF</language>
+	</row>
+	<row id="msg_0154_00162" index="162">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ON</language>
+	</row>
+	<row id="msg_0154_00163" index="163">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Basic AI</language>
+	</row>
+	<row id="msg_0154_00164" index="164">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">High power</language>
+	</row>
+	<row id="msg_0154_00165" index="165">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Expert AI</language>
+	</row>
+	<row id="msg_0154_00166" index="166">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Support move AI</language>
+	</row>
+	<row id="msg_0154_00167" index="167">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Gamble AI</language>
+	</row>
+	<row id="msg_0154_00168" index="168">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Damage AI</language>
+	</row>
+	<row id="msg_0154_00169" index="169">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Relay AI</language>
+	</row>
+	<row id="msg_0154_00170" index="170">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Double Battle</language>
+	</row>
+	<row id="msg_0154_00171" index="171">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HP judge AI</language>
+	</row>
+	<row id="msg_0154_00172" index="172">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Weather move AI</language>
+	</row>
+	<row id="msg_0154_00173" index="173">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Annoyance AI</language>
+	</row>
+	<row id="msg_0154_00174" index="174">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">No weather effect</language>
+	</row>
+	<row id="msg_0154_00175" index="175">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rain</language>
+	</row>
+	<row id="msg_0154_00176" index="176">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Heavy rain 1</language>
+	</row>
+	<row id="msg_0154_00177" index="177">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Heavy rain 2</language>
+	</row>
+	<row id="msg_0154_00178" index="178">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Snow</language>
+	</row>
+	<row id="msg_0154_00179" index="179">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Blizzard</language>
+	</row>
+	<row id="msg_0154_00180" index="180">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Whiteout</language>
+	</row>
+	<row id="msg_0154_00181" index="181">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sandstorm</language>
+	</row>
+	<row id="msg_0154_00182" index="182">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dense fog 1</language>
+	</row>
+	<row id="msg_0154_00183" index="183">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dense fog 2</language>
+	</row>
+	<row id="msg_0154_00184" index="184">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sunny Day</language>
+	</row>
+	<row id="msg_0154_00185" index="185">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Trick Room</language>
+	</row>
+	<row id="msg_0154_00186" index="186">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PP not reduced</language>
+	</row>
+	<row id="msg_0154_00187" index="187">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HP not reduced</language>
+	</row>
+	<row id="msg_0154_00188" index="188">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Auto Battle</language>
+	</row>
+	<row id="msg_0154_00189" index="189">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Control Commands</language>
+	</row>
+	<row id="msg_0154_00190" index="190">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Flat Type Alignments</language>
+	</row>
+	<row id="msg_0154_00191" index="191">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BＴＩD1</language>
+	</row>
+	<row id="msg_0154_00192" index="192">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BＴＩD2</language>
+	</row>
+	<row id="msg_0154_00193" index="193">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Client 0</language>
+	</row>
+	<row id="msg_0154_00194" index="194">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Client 1</language>
+	</row>
+	<row id="msg_0154_00195" index="195">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Client 2</language>
+	</row>
+	<row id="msg_0154_00196" index="196">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Client 3</language>
+	</row>
+	<row id="msg_0154_00197" index="197">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">0ｘ000</language>
+	</row>
+	<row id="msg_0154_00198" index="198">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">0ｘ100</language>
+	</row>
+	<row id="msg_0154_00199" index="199">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">0ｘ200</language>
+	</row>
+	<row id="msg_0154_00200" index="200">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">0ｘ300</language>
+	</row>
+	<row id="msg_0154_00201" index="201">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋00</language>
+	</row>
+	<row id="msg_0154_00202" index="202">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋08</language>
+	</row>
+	<row id="msg_0154_00203" index="203">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋10</language>
+	</row>
+	<row id="msg_0154_00204" index="204">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋18</language>
+	</row>
+	<row id="msg_0154_00205" index="205">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋20</language>
+	</row>
+	<row id="msg_0154_00206" index="206">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋28</language>
+	</row>
+	<row id="msg_0154_00207" index="207">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋30</language>
+	</row>
+	<row id="msg_0154_00208" index="208">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋38</language>
+	</row>
+	<row id="msg_0154_00209" index="209">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋40</language>
+	</row>
+	<row id="msg_0154_00210" index="210">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋48</language>
+	</row>
+	<row id="msg_0154_00211" index="211">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋50</language>
+	</row>
+	<row id="msg_0154_00212" index="212">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋58</language>
+	</row>
+	<row id="msg_0154_00213" index="213">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋60</language>
+	</row>
+	<row id="msg_0154_00214" index="214">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋68</language>
+	</row>
+	<row id="msg_0154_00215" index="215">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋70</language>
+	</row>
+	<row id="msg_0154_00216" index="216">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋78</language>
+	</row>
+	<row id="msg_0154_00217" index="217">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋80</language>
+	</row>
+	<row id="msg_0154_00218" index="218">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋88</language>
+	</row>
+	<row id="msg_0154_00219" index="219">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋90</language>
+	</row>
+	<row id="msg_0154_00220" index="220">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋98</language>
+	</row>
+	<row id="msg_0154_00221" index="221">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋A0</language>
+	</row>
+	<row id="msg_0154_00222" index="222">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋A8</language>
+	</row>
+	<row id="msg_0154_00223" index="223">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋B0</language>
+	</row>
+	<row id="msg_0154_00224" index="224">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋B8</language>
+	</row>
+	<row id="msg_0154_00225" index="225">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋C0</language>
+	</row>
+	<row id="msg_0154_00226" index="226">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋C8</language>
+	</row>
+	<row id="msg_0154_00227" index="227">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋D0</language>
+	</row>
+	<row id="msg_0154_00228" index="228">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋D8</language>
+	</row>
+	<row id="msg_0154_00229" index="229">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋E0</language>
+	</row>
+	<row id="msg_0154_00230" index="230">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋E8</language>
+	</row>
+	<row id="msg_0154_00231" index="231">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋F0</language>
+	</row>
+	<row id="msg_0154_00232" index="232">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">＋F8</language>
+	</row>
+	<row id="msg_0154_00233" index="233">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Save the recorded data</language>
+	</row>
+	<row id="msg_0154_00234" index="234">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Obey</language>
+	</row>
+	<row id="msg_0154_00235" index="235">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Disobey</language>
+	</row>
+</body>

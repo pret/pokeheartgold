@@ -12,10 +12,10 @@ _020FC790:
 sub_02056680: ; 0x02056680
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrh r0, [r4, #2]
 	cmp r0, #0
@@ -29,10 +29,10 @@ _020566A2:
 	bl ov01_021E90C0
 	str r0, [r4, #0x18]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r1, r0, #0
 	ldr r2, [r4, #0x18]
 	add r0, r6, #0
@@ -44,7 +44,7 @@ _020566A2:
 _020566C8:
 	ldr r0, [r5, #0x40]
 	ldr r6, [r4, #0x18]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r2, r0, #0
 	lsl r2, r2, #0x18
 	add r0, r5, #0
@@ -71,10 +71,10 @@ _020566F4:
 sub_020566F8: ; 0x020566F8
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrh r0, [r4, #2]
 	cmp r0, #3
@@ -94,22 +94,22 @@ _02056724:
 	mov r0, #1
 	bl ov01_021E636C
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	cmp r0, #2
 	bne _02056746
 	add r0, r6, #0
 	mov r1, #0xa
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	b _02056758
 _02056746:
 	cmp r0, #3
 	bne _02056754
 	add r0, r6, #0
 	mov r1, #0xb
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	b _02056758
 _02056754:
 	bl GF_AssertFail
@@ -120,19 +120,19 @@ _02056758:
 	b _020567AE
 _02056760:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #1
 	bne _020567AE
 	add r0, r6, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02056792
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	add r0, r5, #0
@@ -164,13 +164,13 @@ _020567AE:
 sub_020567B4: ; 0x020567B4
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	ldrh r0, [r4, #2]
 	cmp r0, #0
 	beq _020567D8
@@ -182,10 +182,10 @@ _020567D8:
 	str r0, [r4, #0x18]
 	add r7, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	str r0, [sp]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r1, r0, #0
 	ldr r0, [sp]
 	add r2, r7, #0
@@ -193,7 +193,7 @@ _020567D8:
 	ldr r1, _02056818 ; =ov01_021E9C40
 	add r0, r6, #0
 	add r2, r7, #0
-	bl sub_02050530
+	bl QueueTask
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]
@@ -215,10 +215,10 @@ sub_0205681C: ; 0x0205681C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrh r0, [r4, #2]
 	cmp r0, #5
@@ -251,14 +251,14 @@ _0205684E:
 	b _02056932
 _0205686A:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	ldr r6, [r4, #0x18]
 	add r7, r0, #0
 	ldr r1, [r6]
 	add r1, r1, #1
 	str r1, [r6]
 	add r1, sp, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	mov r0, #2
 	ldr r1, [sp, #4]
 	lsl r0, r0, #0xc
@@ -266,7 +266,7 @@ _0205686A:
 	str r0, [sp, #4]
 	add r0, r7, #0
 	add r1, sp, #0
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	ldr r0, [r6]
 	cmp r0, #0x10
 	blt _02056932
@@ -289,40 +289,40 @@ _020568A8:
 	b _02056932
 _020568BE:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _02056932
 	add r0, r5, #0
 	mov r1, #0xc
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]
 	b _02056932
 _020568DE:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
-	bl sub_02062108
+	bl PlayerAvatar_GetMapObject
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _02056932
 	bl sub_0200FB5C
 	cmp r0, #0
 	beq _02056932
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _0205691E
 	add r0, r5, #0
 	mov r1, #0
 	bl ov01_02205790
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	mov r1, #0x30
 	bl sub_0205FC94
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	mov r1, #1
 	bl sub_02069DC8
 _0205691E:
@@ -347,10 +347,10 @@ sub_02056938: ; 0x02056938
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrh r0, [r4, #2]
 	cmp r0, #5
@@ -383,14 +383,14 @@ _0205696A:
 	b _02056A4E
 _02056986:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	ldr r6, [r4, #0x18]
 	add r7, r0, #0
 	ldr r1, [r6]
 	add r1, r1, #1
 	str r1, [r6]
 	add r1, sp, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	mov r0, #2
 	ldr r1, [sp, #4]
 	lsl r0, r0, #0xc
@@ -398,7 +398,7 @@ _02056986:
 	str r0, [sp, #4]
 	add r0, r7, #0
 	add r1, sp, #0
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	ldr r0, [r6]
 	cmp r0, #0x10
 	blt _02056A4E
@@ -421,40 +421,40 @@ _020569C4:
 	b _02056A4E
 _020569DA:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _02056A4E
 	add r0, r5, #0
 	mov r1, #0xd
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]
 	b _02056A4E
 _020569FA:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
-	bl sub_02062108
+	bl PlayerAvatar_GetMapObject
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _02056A4E
 	bl sub_0200FB5C
 	cmp r0, #0
 	beq _02056A4E
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02056A3A
 	add r0, r5, #0
 	mov r1, #1
 	bl ov01_02205790
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	mov r1, #0x30
 	bl sub_0205FC94
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	mov r1, #1
 	bl sub_02069DC8
 _02056A3A:
@@ -497,11 +497,11 @@ sub_02056A54: ; 0x02056A54
 	add r2, sp, #0x1c
 	bl VEC_Subtract
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
 	add r1, sp, #0x28
-	bl sub_0205C6AC
+	bl PlayerAvatar_GetPositionVec
 	cmp r5, #3
 	bne _02056AA2
 	mov r0, #1
@@ -530,11 +530,11 @@ _02056AAC:
 	add r2, r5, #0
 	bl sub_0205C810
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6BC
+	bl PlayerAvatar_GetPositionVecConst
 	ldr r1, [r4, #0x24]
 	bl sub_020235E0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6BC
+	bl PlayerAvatar_GetPositionVecConst
 	ldr r1, [r4, #0x24]
 	bl sub_02023214
 	ldr r1, [r4, #0x24]
@@ -567,16 +567,16 @@ sub_02056AEC: ; 0x02056AEC
 	add r2, sp, #0x1c
 	bl VEC_Subtract
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
 	add r1, sp, #0x28
-	bl sub_0205C6AC
+	bl PlayerAvatar_GetPositionVec
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
@@ -617,24 +617,24 @@ _02056B70:
 	add r2, r4, #0
 	bl sub_0205C810
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6BC
+	bl PlayerAvatar_GetPositionVecConst
 	ldr r1, [r5, #0x24]
 	bl sub_020235E0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6BC
+	bl PlayerAvatar_GetPositionVecConst
 	ldr r1, [r5, #0x24]
 	bl sub_02023214
 	ldr r1, [r5, #0x24]
 	add r0, sp, #0x1c
 	bl sub_02023514
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02056BC2
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r1, r4, #0
-	bl sub_0205F288
+	bl MapObject_ForceSetFacingDirection
 _02056BC2:
 	add sp, #0x34
 	pop {r3, r4, r5, r6, pc}
@@ -664,11 +664,11 @@ sub_02056BC8: ; 0x02056BC8
 	add r2, sp, #0x18
 	bl VEC_Subtract
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
 	add r1, sp, #0x24
-	bl sub_0205C6AC
+	bl PlayerAvatar_GetPositionVec
 	ldr r0, [r4, #0x40]
 	mov r1, #0
 	bl sub_0205C858
@@ -682,18 +682,18 @@ sub_02056BC8: ; 0x02056BC8
 	mov r2, #0
 	bl sub_0205C810
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6BC
+	bl PlayerAvatar_GetPositionVecConst
 	ldr r1, [r4, #0x24]
 	bl sub_020235E0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6BC
+	bl PlayerAvatar_GetPositionVecConst
 	ldr r1, [r4, #0x24]
 	bl sub_02023214
 	ldr r1, [r4, #0x24]
 	add r0, sp, #0x18
 	bl sub_02023514
 	add r0, r5, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	mov r1, #2
 	ldr r0, [r4, #0x40]
 	lsl r1, r1, #8
@@ -730,11 +730,11 @@ sub_02056C64: ; 0x02056C64
 	add r2, sp, #0x18
 	bl VEC_Subtract
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
 	add r1, sp, #0x24
-	bl sub_0205C6AC
+	bl PlayerAvatar_GetPositionVec
 	ldr r0, [r4, #0x40]
 	mov r1, #0
 	bl sub_0205C858
@@ -748,18 +748,18 @@ sub_02056C64: ; 0x02056C64
 	mov r2, #0
 	bl sub_0205C810
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6BC
+	bl PlayerAvatar_GetPositionVecConst
 	ldr r1, [r4, #0x24]
 	bl sub_020235E0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6BC
+	bl PlayerAvatar_GetPositionVecConst
 	ldr r1, [r4, #0x24]
 	bl sub_02023214
 	ldr r1, [r4, #0x24]
 	add r0, sp, #0x18
 	bl sub_02023514
 	add r0, r5, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	mov r1, #2
 	ldr r0, [r4, #0x40]
 	lsl r1, r1, #8
@@ -793,7 +793,7 @@ _02056D16:
 	ldr r1, _02056D2C ; =sub_02056D30
 	add r0, r5, #0
 	strh r4, [r2, #2]
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, pc}
 	nop
 _02056D2C: .word sub_02056D30
@@ -803,10 +803,10 @@ _02056D2C: .word sub_02056D30
 sub_02056D30: ; 0x02056D30
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrh r1, [r4]
 	cmp r1, #0

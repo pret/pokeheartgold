@@ -1,0 +1,128 @@
+{
+  "header": "fielddata/script/scr_seq/event_D24R0213.h",
+  "bgs": [
+    {
+      "scr": "_EV_scr_seq_D24R0213_001 + 1",
+      "type": 0,
+      "x": 4,
+      "y": 4,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_D24R0213_001 + 1",
+      "type": 0,
+      "x": 8,
+      "y": 4,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_D24R0213_001 + 1",
+      "type": 0,
+      "x": 4,
+      "y": 3,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_D24R0213_001 + 1",
+      "type": 0,
+      "x": 8,
+      "y": 3,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_D24R0213_monstarball",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D24R0213_HEAL_POWDER",
+      "scr": "std_itemball_d24r0213_heal_powder",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 4,
+      "y": 8,
+      "z": 0
+    },
+    {
+      "id": "obj_D24R0213_monstarball_2",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D24R0213_ENERGY_ROOT",
+      "scr": "std_itemball_d24r0213_energy_root",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 8,
+      "y": 8,
+      "z": 0
+    },
+    {
+      "id": "obj_D24R0213_monstarball_3",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D24R0213_SITRUS_BERRY",
+      "scr": "std_itemball_d24r0213_sitrus_berry",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 4,
+      "y": 12,
+      "z": 0
+    },
+    {
+      "id": "obj_D24R0213_monstarball_4",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D24R0213_MOON_STONE",
+      "scr": "std_itemball_d24r0213_moon_stone",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 8,
+      "y": 12,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 6,
+      "y": 17,
+      "header": "MAP_D24R0204",
+      "anchor": 1,
+      "height": 0
+    }
+  ],
+  "coords": [
+    {
+      "scr": "_EV_scr_seq_D24R0213_000 + 1",
+      "x": 6,
+      "y": 3,
+      "w": 1,
+      "h": 1,
+      "z": 0,
+      "val": 0,
+      "var": "VAR_UNK_40D0"
+    }
+  ]
+}

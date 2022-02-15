@@ -1,0 +1,285 @@
+{
+  "header": "fielddata/script/scr_seq/event_T26.h",
+  "bgs": [
+    {
+      "scr": "_EV_scr_seq_T26_004 + 1",
+      "type": 1,
+      "x": 265,
+      "y": 238,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T26_005 + 1",
+      "type": 1,
+      "x": 279,
+      "y": 247,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T26_006 + 1",
+      "type": 1,
+      "x": 280,
+      "y": 266,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T26_007 + 1",
+      "type": 1,
+      "x": 302,
+      "y": 264,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_t26_rare_candy",
+      "type": 2,
+      "x": 309,
+      "y": 256,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_r39_t26_full_heal",
+      "type": 2,
+      "x": 285,
+      "y": 231,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_T26_seaman_2",
+      "ovid": "SPRITE_SEAMAN_2",
+      "mvt": 5,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T26_008 + 1",
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 1,
+      "yrange": 0,
+      "x": 304,
+      "y": 266,
+      "z": 0
+    },
+    {
+      "id": "obj_T26_gsboy1",
+      "ovid": "SPRITE_GSBOY1",
+      "mvt": 3,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T26_009 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 1,
+      "yrange": 1,
+      "x": 280,
+      "y": 242,
+      "z": 0
+    },
+    {
+      "id": "obj_T26_seaman_2_2",
+      "ovid": "SPRITE_SEAMAN_2",
+      "mvt": 3,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T26_010 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 1,
+      "yrange": 1,
+      "x": 276,
+      "y": 261,
+      "z": 0
+    },
+    {
+      "id": "obj_T26_gsrivel",
+      "ovid": "SPRITE_GSRIVEL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_OLIVINE_RIVAL",
+      "scr": "_EV_scr_seq_T26_000 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 2,
+      "yrange": 1,
+      "x": 269,
+      "y": 238,
+      "z": 0
+    },
+    {
+      "id": "obj_T26_monstarball",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_T26_TM57",
+      "scr": "std_itemball_t26_tm57",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 309,
+      "y": 250,
+      "z": 0
+    },
+    {
+      "id": "obj_T26_seaman_2_3",
+      "ovid": "SPRITE_SEAMAN_2",
+      "mvt": 15,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": 0,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 273,
+      "y": 284,
+      "z": 0
+    },
+    {
+      "id": "obj_T26_gswoman2",
+      "ovid": "SPRITE_GSWOMAN2",
+      "mvt": 14,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": 0,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 273,
+      "y": 285,
+      "z": 0
+    },
+    {
+      "id": "obj_T26_gsmiddleman1",
+      "ovid": "SPRITE_GSMIDDLEMAN1",
+      "mvt": 14,
+      "type": 0,
+      "flag": "FLAG_HIDE_CAMERON",
+      "scr": "_EV_scr_seq_T26_011 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 278,
+      "y": 257,
+      "z": 0
+    },
+    {
+      "id": "obj_T26_gsmiddleman1_2",
+      "ovid": "SPRITE_GSMIDDLEMAN1",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_UNK_05E",
+      "scr": 65535,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 252,
+      "y": 271,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 269,
+      "y": 238,
+      "header": "MAP_T26GYM0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 272,
+      "y": 257,
+      "header": "MAP_T26PC0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 285,
+      "y": 257,
+      "header": "MAP_T26FS0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 301,
+      "y": 263,
+      "header": "MAP_D27R0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 273,
+      "y": 247,
+      "header": "MAP_T26R0601",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 265,
+      "y": 257,
+      "header": "MAP_T26R0701",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 287,
+      "y": 241,
+      "header": "MAP_T26R0301",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 292,
+      "y": 241,
+      "header": "MAP_T26R0501",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 279,
+      "y": 276,
+      "header": "MAP_P01R0101",
+      "anchor": 0,
+      "height": 0
+    }
+  ],
+  "coords": [
+    {
+      "scr": "_EV_scr_seq_T26_001 + 1",
+      "x": 272,
+      "y": 239,
+      "w": 1,
+      "h": 5,
+      "z": 0,
+      "val": 0,
+      "var": "VAR_UNK_4078"
+    }
+  ]
+}

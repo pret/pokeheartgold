@@ -1,0 +1,22 @@
+{
+  "header": "fielddata/script/scr_seq/event_DIRECT4.h",
+  "objects": [
+    {
+      "id": "obj_DIRECT4_pcwoman3",
+      "ovid": "SPRITE_PCWOMAN3",
+      "mvt": 16,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_colosseum_pcwoman3",
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 12,
+      "y": 4,
+      "z": 0
+    }
+  ]
+}

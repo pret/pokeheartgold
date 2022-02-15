@@ -229,7 +229,7 @@ ov32_0225D6E0: ; 0x0225D6E0
 	add r0, r4, #0
 	mov r1, #2
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -240,7 +240,7 @@ ov32_0225D6E0: ; 0x0225D6E0
 	ldr r2, [r5]
 	add r0, r4, #0
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -251,7 +251,7 @@ ov32_0225D6E0: ; 0x0225D6E0
 	ldr r2, [r5]
 	add r0, r4, #0
 	mov r3, #6
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #8
@@ -259,7 +259,7 @@ ov32_0225D6E0: ; 0x0225D6E0
 	add r0, r4, #0
 	mov r1, #3
 	mov r2, #4
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov32_0225D6E0
@@ -363,10 +363,10 @@ _0225D796:
 	bl String_dtor
 	add r0, r5, #0
 	add r0, #0x24
-	bl sub_0201D8A0
+	bl CopyWindowPixelsToVram_TextMode
 	add r0, r5, #0
 	add r0, #0x24
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	bl ov32_0225D84C
 	add r0, r5, #0
@@ -523,10 +523,10 @@ ov32_0225D84C: ; 0x0225D84C
 	bl String_dtor
 	add r0, r5, #0
 	add r0, #0x34
-	bl sub_0201D8A0
+	bl CopyWindowPixelsToVram_TextMode
 	add r5, #0x34
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -622,10 +622,10 @@ _0225D9D4:
 	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x20]
 	add r0, r5, r0
-	bl sub_0201D8A0
+	bl CopyWindowPixelsToVram_TextMode
 	ldr r0, [sp, #0x20]
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
@@ -1258,7 +1258,7 @@ _0225DEEA:
 _0225DF0A:
 	ldr r0, [r5, #0x18]
 	bl sub_02019F74
-	ldr r1, _0225DF78 ; =gMain
+	ldr r1, _0225DF78 ; =gSystem
 	ldr r2, [r1, #0x4c]
 	mov r1, #0x10
 	tst r1, r2
@@ -1308,7 +1308,7 @@ _0225DF68:
 _0225DF6C: .word _0225E15C
 _0225DF70: .word 0x000005DD
 _0225DF74: .word 0x000002AA
-_0225DF78: .word gMain
+_0225DF78: .word gSystem
 _0225DF7C: .word 0x000005DC
 	thumb_func_end ov32_0225DE34
 
@@ -1412,7 +1412,7 @@ _0225E00C:
 	lsl r1, r1, #0x18
 	ldr r0, [r4]
 	lsr r1, r1, #0x19
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldrb r1, [r4, #0x1c]
 	ldr r0, [r4]
 	lsl r1, r1, #0x18

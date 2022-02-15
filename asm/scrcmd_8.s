@@ -132,7 +132,7 @@ _02049B28:
 	ldr r0, [r6]
 	add r1, r7, #0
 	add r2, r5, #0
-	bl BufferEasyChatWord
+	bl BufferGroupName
 	b _02049CA2
 _02049B5E:
 	add r0, r4, #0
@@ -155,7 +155,7 @@ _02049B5E:
 	ldr r0, [r6]
 	add r1, r7, #0
 	add r2, r5, #0
-	bl BufferEasyChatWord
+	bl BufferGroupName
 	b _02049CA2
 _02049B94:
 	mov r1, #0
@@ -177,7 +177,7 @@ _02049B94:
 	ldr r0, [r4, #0x74]
 	mov r1, #5
 	mov r3, #7
-	bl sub_0203F6E0
+	bl CreateNamingScreen
 	add sp, #0xc
 	mov r0, #1
 	pop {r4, r5, r6, r7, pc}

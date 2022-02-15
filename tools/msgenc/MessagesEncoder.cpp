@@ -1,4 +1,5 @@
 #include "MessagesEncoder.h"
+#include "Gmm.h"
 
 void MessagesEncoder::CmdmapRegisterCommand(string &command, uint16_t value)
 {
@@ -24,6 +25,12 @@ void MessagesEncoder::ReadMessagesFromText(string& fname) {
             break;
         pos++;
     } while (pos != string::npos);
+    header.count = vec_decoded.size();
+    debug_printf("%d lines\n", header.count);
+}
+
+void MessagesEncoder::ReadMessagesFromGMM(string& filename) {
+    GMM(filename, std::ios::in).FromFile(*this);
     header.count = vec_decoded.size();
     debug_printf("%d lines\n", header.count);
 }
@@ -143,7 +150,14 @@ void MessagesEncoder::WriteMessagesToBin(string& filename) {
 
 void MessagesEncoder::ReadInput()
 {
-    ReadMessagesFromText(textfilename);
+    switch (text_format) {
+    case PlainText:
+        ReadMessagesFromText(textfilename);
+        break;
+    case GamefreakGMM:
+        ReadMessagesFromGMM(textfilename);
+        break;
+    }
 }
 
 void MessagesEncoder::Convert() {

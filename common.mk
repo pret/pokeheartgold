@@ -38,6 +38,7 @@ O2NARC       := $(TOOLSDIR)/o2narc/o2narc$(EXE)
 MSGENC       := $(TOOLSDIR)/msgenc/msgenc$(EXE)
 ASPATCH      := $(TOOLSDIR)/mwasmarm_patcher/mwasmarm_patcher$(EXE)
 CSV2BIN      := $(TOOLSDIR)/csv2bin/csv2bin$(EXE)
+MKFXCONST    := $(TOOLSDIR)/gen_fx_consts/gen_fx_consts$(EXE)
 
 NTRMERGE     := $(TOOLSDIR)/ntr_merge_elf/ntr_merge_elf.sh
 
@@ -49,7 +50,8 @@ NATIVE_TOOLS := \
 	$(O2NARC) \
 	$(MSGENC) \
 	$(ASPATCH) \
-	$(CSV2BIN)
+	$(CSV2BIN) \
+	$(MKFXCONST)
 
 TOOLDIRS := $(foreach tool,$(NATIVE_TOOLS),$(dir $(tool)))
 
@@ -89,11 +91,14 @@ ALL_BUILDDIRS             := $(sort $(ALL_BUILDDIRS) $(foreach obj,$(ALL_OBJS),$
 NEF               := $(BUILD_DIR)/$(NEFNAME).nef
 ELF               := $(NEF:%.nef=%.elf)
 LCF               := $(NEF:%.nef=%.lcf)
+RESPONSE          := $(NEF:%.nef=%.response)
 SBIN              := $(NEF:%.nef=%.sbin)
 XMAP              := $(NEF).xMAP
 
-MWCFLAGS           = $(DEFINES) $(OPTFLAGS) -enum int -lang c99 -Cpp_exceptions off -gccext,on -proc $(PROC) -msgstyle gcc -gccinc -i ./include -i $(WORK_DIR)/files -I$(WORK_DIR)/lib/include -ipa file -interworking
-MWASFLAGS          = $(DEFINES) -proc $(PROC_S) -i ./include -DSDK_ASM
+EXCCFLAGS         := -Cpp_exceptions off
+
+MWCFLAGS           = $(DEFINES) $(OPTFLAGS) -enum int -lang c99 $(EXCCFLAGS) -gccext,on -proc $(PROC) -msgstyle gcc -gccinc -i ./include -i $(WORK_DIR)/files -I$(WORK_DIR)/lib/include -ipa file -interworking -inline on,noauto
+MWASFLAGS          = $(DEFINES) -proc $(PROC_S) -gccinc -i . -i ./include -i $(WORK_DIR)/files -I$(WORK_DIR)/lib/include -DSDK_ASM
 MWLDFLAGS         := -w off -proc $(PROC) -nopic -nopid -interworking -map closure,unused -symtab sort -m _start -msgstyle gcc
 ARFLAGS           := rcS
 
@@ -178,15 +183,23 @@ else
 	$(SED) -i '/\} > check\.WORKRAM/a SDK_SUBPRIV_ARENA_LO = SDK_SUBPRIV_ARENA_LO + SDK_AUTOLOAD.EXT_WRAM.SIZE + SDK_AUTOLOAD.EXT_WRAM.BSS_SIZE;' $@
 endif
 
-$(NEF): $(LCF) $(ALL_OBJS)
-	echo $(ALL_OBJS:$(BUILD_DIR)/%=%) >$(BUILD_DIR)/obj.list
-	cd $(BUILD_DIR) && LM_LICENSE_FILE=$(BACK_REL)/$(LM_LICENSE_FILE) $(WINE) $(MWLD) $(MWLDFLAGS) $(LIBS) -o $(BACK_REL)/$(NEF) $(LCF:$(BUILD_DIR)/%=%) @obj.list
+RESPONSE_TEMPLATE    := $(PROJECT_ROOT)/mwldarm.response.template
+RESPONSE_TEMPLATE_NT := $(PROJECT_ROOT_NT)/mwldarm.response.template
+
+$(RESPONSE): $(LSF) $(RESPONSE_TEMPLATE)
+	$(WINE) $(MAKELCF) $(MAKELCF_FLAGS) $< $(RESPONSE_TEMPLATE_NT) $@
+
+# Locate crt0.o
+CRT0_OBJ := lib/asm/crt0.o
+
+$(NEF): $(LCF) $(RESPONSE) $(ALL_OBJS)
+	cd $(BUILD_DIR) && LM_LICENSE_FILE=$(BACK_REL)/$(LM_LICENSE_FILE) $(WINE) $(MWLD) $(MWLDFLAGS) $(LIBS) -o $(BACK_REL)/$(NEF) $(LCF:$(BUILD_DIR)/%=%) @$(RESPONSE:$(BUILD_DIR)/%=%) $(CRT0_OBJ)
 
 .INTERMEDIATE: $(BUILD_DIR)/obj.list
 
 $(SBIN): build/%.sbin: build/%.nef
 ifeq ($(COMPARE),1)
-	$(SHA1SUM) -c $*.sha1
+	$(SHA1SUM) --quiet -c $*.sha1
 endif
 
 $(ELF): %.elf: %.nef

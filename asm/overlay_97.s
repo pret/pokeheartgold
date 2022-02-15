@@ -616,7 +616,7 @@ ov97_0221EA88: ; 0x0221EA88
 	add r6, r0, #0
 	add r1, sp, #8
 	add r2, r5, #0
-	bl sub_02074670
+	bl Party_GetUnkSubSlot
 	add r0, r6, #0
 	add r1, r5, #0
 	bl GetPartyMonByIndex
@@ -890,7 +890,7 @@ _0221EC3C:
 	add r0, r7, #0
 	add r1, #2
 	add r2, r4, #0
-	bl sub_02074670
+	bl Party_GetUnkSubSlot
 	add r2, sp, #0x14
 	add r0, sp, #0x1c
 	add r1, sp, #0x24
@@ -902,7 +902,7 @@ _0221EC3C:
 	add r7, sp, #0x5c
 _0221ECE2:
 	ldr r0, [r5, #0x2c]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	lsl r1, r4, #2
 	ldrh r2, [r6, #4]
 	ldr r1, [r7, r1]
@@ -983,7 +983,7 @@ _0221ED1C:
 	add r7, sp, #0x5c
 _0221ED94:
 	ldr r0, [r5, #0x2c]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	lsl r1, r4, #2
 	ldrh r2, [r6, #4]
 	ldr r1, [r7, r1]
@@ -1250,10 +1250,10 @@ ov97_0221EEA4: ; 0x0221EEA4
 	bl ov97_0221F294
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov97_0221EEA4
@@ -1272,19 +1272,19 @@ ov97_0221EFD0: ; 0x0221EFD0
 	bl ov97_0221F428
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r3, r4, r5, pc}
 _0221EFFA:
 	bl ov97_0221F74C
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov97_0221EFD0
 
@@ -1603,7 +1603,7 @@ ov97_0221F294: ; 0x0221F294
 	mov r1, #0
 	lsl r2, r2, #0x18
 	lsr r2, r2, #0x18
-	bl sub_0200C944
+	bl BufferPokeathlonCourseName
 	ldr r0, [r4, #0x70]
 	ldr r1, [r4, #0x6c]
 	ldr r3, [r4]
@@ -2250,7 +2250,7 @@ ov97_0221F7DC: ; 0x0221F7DC
 	bl sub_02009FC8
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r7, #0x13
 	mov r6, #0
 	add r4, r5, #0

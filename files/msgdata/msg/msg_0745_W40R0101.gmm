@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0745_W40R0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What? I’m the first to arrive!\rThere will soon be a Battle Frontier\npast here.\rI’m in line to be the first one there.\nI haven’t slept for days.\rGet in line if you want to be the second\none in!\r</language>
+	</row>
+	<row id="msg_0745_W40R0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Zzz...\n...\rHe is standing...but asleep!\r</language>
+	</row>
+	<row id="msg_0745_W40R0101_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Zzz... Zzz...\n...\rHe doesn’t seem like he’ll wake up\nanytime soon!</language>
+	</row>
+	<row id="msg_0745_W40R0101_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This is the entrance to the\nBattle Frontier.\fYou shouldn’t make a line here.</language>
+	</row>
+	<row id="msg_0745_W40R0101_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Battle Frontier is open!\rPlease go ahead.</language>
+	</row>
+</body>

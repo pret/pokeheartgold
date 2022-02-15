@@ -1,0 +1,37 @@
+{
+  "header": "fielddata/script/scr_seq/event_T07R0202.h",
+  "bgs": [
+    {
+      "scr": "_EV_scr_seq_T07R0202_000 + 1",
+      "type": 0,
+      "x": 5,
+      "y": 2,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T07R0202_002 + 1",
+      "type": 0,
+      "x": 3,
+      "y": 2,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "warps": [
+    {
+      "x": 13,
+      "y": 9,
+      "header": "MAP_T07R0201",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 7,
+      "y": 2,
+      "header": "MAP_T07R0207",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

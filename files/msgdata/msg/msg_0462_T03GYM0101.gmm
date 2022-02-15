@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0462_T03GYM0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Brock: Wow, it’s not often that we\nget a challenger from Johto.\rI’m Brock, the Pewter Gym Leader.\fI’m an expert on Rock-type Pokémon.\rMy Pokémon are impervious to most\nphysical attacks.\rYou’ll have a hard time inflicting\nany damage.\rCome on!\r</language>
+	</row>
+	<row id="msg_0462_T03GYM0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Brock: Your Pokémon’s powerful\nattacks overcame my\frock-hard resistance...\rYou’re stronger than\nI expected...\fGo ahead--take this Badge.\r</language>
+	</row>
+	<row id="msg_0462_T03GYM0101_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} received\nthe Boulder Badge from Brock!</language>
+	</row>
+	<row id="msg_0462_T03GYM0101_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Brock: I really enjoyed the battle\nwith you, {STRVAR_1 3, 0, 0}!\fI’ll give you the move Rock Slide, too.\rIt can sometimes cause your foe\nto flinch.\r</language>
+	</row>
+	<row id="msg_0462_T03GYM0101_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Brock: I really enjoyed the battle\nwith you, {STRVAR_1 3, 0, 0}!\fI’ll give you the move Rock Slide, too.\rIt can sometimes cause your foe\nto flinch.\r</language>
+	</row>
+	<row id="msg_0462_T03GYM0101_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Brock: The world is huge. There are\nstill many strong Trainers like you.\rJust wait and see.\rI’m going to become a lot\nstronger, too.</language>
+	</row>
+	<row id="msg_0462_T03GYM0101_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Yo! Legend in the making! You look...\freally rocking.\rAre you battling the Gym Leaders\nof Kanto?\rThey’re strong and dedicated people,\njust like Johto’s Gym Leaders.</language>
+	</row>
+	<row id="msg_0462_T03GYM0101_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Yo! Legend in the making! That Gym\ndidn’t give you much trouble.\rThe way you took charge was\nreally inspiring.\fI mean that seriously.</language>
+	</row>
+	<row id="msg_0462_T03GYM0101_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pewter City Pokémon Gym</language>
+	</row>
+	<row id="msg_0462_T03GYM0101_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pewter City Pokémon Gym\rLeader: Brock\nCertified Trainer!\f{STRVAR_1 3, 0, 0}</language>
+	</row>
+</body>

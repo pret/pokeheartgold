@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0698_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Reena</language>
+	</row>
+	<row id="msg_0698_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Not too shabby... You’re doing\nsomething right if you can beat me,\feven by an unlikely fluke...\rI like you!\nGive me your number!\rYou can be my practice partner! {YESNO 0}</language>
+	</row>
+	<row id="msg_0698_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Don’t get too high and mighty\nabout beating me! It was a fluke!</language>
+	</row>
+	<row id="msg_0698_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I don’t believe it! You’re going to\nregret this!</language>
+	</row>
+	<row id="msg_0698_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Give me your phone number!\rYou are going to be my practice\npartner!{YESNO 0}</language>
+	</row>
+	<row id="msg_0698_00005" index="5">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語"></language>
+	</row>
+	<row id="msg_0698_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What are you saying? \nYou really like Route 27?\rI do too, of course!\rI mean, I’m always on Route 27!</language>
+	</row>
+	<row id="msg_0698_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Listen, pal of mine...\nDo you remember my {STRVAR_1 0, 10, 0}?\rYes, exactly. That lovely {STRVAR_1 0, 10, 0}.\nWouldn’t you agree it’s a perfect match\ffor me?\rFine, you may go.</language>
+	</row>
+	<row id="msg_0698_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Have I ever faced a wild {STRVAR_1 0, 11, 0}?\nYou need to ask?\rI’ve beaten {STRVAR_1 0, 11, 0} on numerous\noccasions!\rFine, you may go.</language>
+	</row>
+	<row id="msg_0698_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Have I ever failed to catch a wild\nPokémon?\rYou need to ask?\rI would never fail to catch a wild\n{STRVAR_1 0, 11, 0}... Oh! Never mind!</language>
+	</row>
+	<row id="msg_0698_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">We are going to battle!\rThe place shall be {STRVAR_1 4, 3, 0}!\nDon’t keep me waiting! Got it?</language>
+	</row>
+	<row id="msg_0698_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What are you doing?\rI told you that the place was\f{STRVAR_1 4, 3, 0}! Don’t try to run!</language>
+	</row>
+	<row id="msg_0698_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Don’t be too proud just because you\nhappened to beat me...\fIt was a fluke!</language>
+	</row>
+</body>

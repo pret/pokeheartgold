@@ -10,7 +10,11 @@
 
 void *OSiHeapInfo[OS_ARENA_MAX] = {};
 
-static inline Cell *DLAddFront(Cell *list, Cell *cell) {
+static
+#ifdef SDK_ARM7
+inline
+#endif //SDK_ARM7
+Cell *DLAddFront(Cell *list, Cell *cell) {
     cell->next = list;
     cell->prev = NULL;
     if (list != NULL) {
@@ -171,6 +175,10 @@ void *OS_InitAlloc(OSArenaId id, void *arenaStart, void *arenaEnd, s32 maxHeaps)
     heapInfo->arenaEnd = (void *)TRUNC(arenaEnd, ALIGNMENT);
     OS_RestoreInterrupts(enabled);
     return heapInfo->arenaStart;
+}
+
+void OS_ClearAlloc(OSArenaId id) {
+    OSiHeapInfo[id] = NULL; // Act like it never existed
 }
 
 OSHeapHandle OS_CreateHeap(OSArenaId id, void *start, void *end) {

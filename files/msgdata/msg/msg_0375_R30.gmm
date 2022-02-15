@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0375_R30_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Go, RATTATA!\rTackle!\r</language>
+	</row>
+	<row id="msg_0375_R30_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What? This is a big battle!\fLeave me alone!\r</language>
+	</row>
+	<row id="msg_0375_R30_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A Pokémon can use its moves as long\nas the moves still have PP.\rWhen a move has no PP remaining, that\nPokémon cannot use that move.\rThen you should take your Pokémon to\nthe Pokémon Center.</language>
+	</row>
+	<row id="msg_0375_R30_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A Pokémon can use its moves as long\nas the moves still have PP.\rWhen a move has no PP remaining, that\nPokémon cannot use that move.\rThen you should take your Pokémon to\nthe Pokémon Center.</language>
+	</row>
+	<row id="msg_0375_R30_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’m not a Trainer.\rBut if you look one in the eyes,\nprepare to battle.</language>
+	</row>
+	<row id="msg_0375_R30_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey, kiddo!\rHow in the world can you be so\noblivious to my eye-catching house?\fHold it right there!\r</language>
+	</row>
+	<row id="msg_0375_R30_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">When you follow that path up north,\nyou will see Mr. Pokémon’s house.\rBut before you go, let me finish what\nI have to say.\rDo you...have any Apricorns?\fApricorn trees bear fruit once a day.\fI have one of those trees, too!\rApricorns are really something.\nYou can make Poké Balls and\fother things.\rThey are quite useful.\rI have a feeling this is meant to be,\nbecause I have something for you!\r</language>
+	</row>
+	<row id="msg_0375_R30_00007" index="7">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0375_R30_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">With that Apricorn Box, you can carry\nso many Apricorns.\rYou’ll be a decent Apricorn collector!\r</language>
+	</row>
+	<row id="msg_0375_R30_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rt. 30\nSouth to Cherrygrove City</language>
+	</row>
+	<row id="msg_0375_R30_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mr. Pokémon’s House\nStraight Ahead!</language>
+	</row>
+	<row id="msg_0375_R30_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mr. Pokémon’s House</language>
+	</row>
+	<row id="msg_0375_R30_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Trainer Tips\rNo stealing other people’s Pokémon!\rPoké Balls are to be thrown only at\nwild Pokémon!</language>
+	</row>
+	<row id="msg_0375_R30_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh! You’re wearing the Running Shoes.\rThey make you feel like you are flying,\ndon’t they?\rBut beware of wild Pokémon and\nTrainers!\rWhen you run, the noise will\nattract them.</language>
+	</row>
+</body>

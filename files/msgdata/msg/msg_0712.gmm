@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0712_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ralph</language>
+	</row>
+	<row id="msg_0712_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Don’t young people fish anymore?\rI can teach you how to fish well, if\nyou’d like to exchange phone\fnumbers with me? {YESNO 0}</language>
+	</row>
+	<row id="msg_0712_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">That’s great!\nI’m happy to have made a\fyounger friend!</language>
+	</row>
+	<row id="msg_0712_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh...\rMy own kids won’t even give me their\nphone numbers...\rI guess that’s just how young people\nare these days.</language>
+	</row>
+	<row id="msg_0712_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hm? Oh, so you would like to be my\nfriend after all?! {YESNO 0}</language>
+	</row>
+	<row id="msg_0712_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">If you’re nearby, let’s just talk\nface-to-face!</language>
+	</row>
+	<row id="msg_0712_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’ve been spending more time with my\n{STRVAR_1 0, 10, 0} than I have with my kids.\fThat’s a bit sad, actually.\rYou call your mom sometimes, too!</language>
+	</row>
+	<row id="msg_0712_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I just beat a wild {STRVAR_1 0, 11, 0}.\nI told my kid, but he scoffed that he\fcould do the same thing easily.\rBoy, has he gotten cocky...\rYou call your mom sometimes, too!</language>
+	</row>
+	<row id="msg_0712_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Yesterday a wild {STRVAR_1 0, 11, 0} slipped\naway from me in front of my kid.\fI was feeling down about it until he\fshared his Poké Balls with me.\rHahah, that sure made my day!\rYou call your mom sometimes, too!</language>
+	</row>
+	<row id="msg_0712_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What do you say to a battle with me?\nGood, you’re going to do it!\rFor a kid, you’re quite agreeable.\n{STRVAR_1 4, 3, 0} is the spot!</language>
+	</row>
+	<row id="msg_0712_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">So where are you? I’m waiting for you\nto show up on {STRVAR_1 4, 3, 0}.\rYou shouldn’t make your elders wait!</language>
+	</row>
+	<row id="msg_0712_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey, how are you doing?\rI’m doing absolutely wonderful,\nof course!\rBut when I say “...absolutely\nwonderful,” am I talking about fishing?\fAm I talking about Pokémon?\fWhich is it?\rHa ha ha!\nIt’s both, of course!</language>
+	</row>
+</body>

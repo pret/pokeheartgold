@@ -21,7 +21,7 @@ _021E5916:
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -85,9 +85,9 @@ _021E5916:
 	ldr r0, [r4]
 	bl ov73_021E5D20
 	mov r0, #0
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	mov r0, #1
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #1
@@ -443,7 +443,7 @@ ov73_021E5CD8: ; 0x021E5CD8
 	bl sub_0202061C
 	bl sub_0200B224
 	ldr r0, [r4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E5CF8 ; =0x027E0000
 	ldr r1, _021E5CFC ; =0x00003FF8
 	mov r0, #1
@@ -659,7 +659,7 @@ _021E5E1C:
 	mov r1, #7
 	add r2, #0x1c
 	mov r3, #0x32
-	bl sub_02007C48
+	bl GfGfxLoader_GetPlttDataFromOpenNarc
 	ldr r1, [sp]
 	ldr r2, _021E5ED0 ; =0x00004A18
 	str r0, [r1, #0x18]
@@ -740,7 +740,7 @@ ov73_021E5F38: ; 0x021E5F38
 	add r0, r4, #0
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r3, #0
 	mov r1, #4
 	str r3, [sp]
@@ -748,7 +748,7 @@ ov73_021E5F38: ; 0x021E5F38
 	str r0, [sp, #4]
 	add r0, r4, #0
 	add r2, r1, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -760,7 +760,7 @@ ov73_021E5F38: ; 0x021E5F38
 	add r0, r4, #0
 	add r2, r6, #0
 	add r3, r1, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -772,7 +772,7 @@ ov73_021E5F38: ; 0x021E5F38
 	mov r1, #6
 	add r2, r6, #0
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -783,7 +783,7 @@ ov73_021E5F38: ; 0x021E5F38
 	add r0, r4, #0
 	add r2, r6, #0
 	add r3, r1, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -794,7 +794,7 @@ ov73_021E5F38: ; 0x021E5F38
 	add r0, r4, #0
 	mov r1, #2
 	add r2, r6, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r3, #0xc3
 	mov r0, #0x32
 	lsl r3, r3, #2
@@ -803,7 +803,7 @@ ov73_021E5F38: ; 0x021E5F38
 	mov r1, #3
 	mov r2, #1
 	add r3, r5, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r1, #0x31
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -1133,7 +1133,7 @@ _021E6232:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x5c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -1411,7 +1411,7 @@ ov73_021E64B0: ; 0x021E64B0
 	mov r0, #0
 	pop {r4, pc}
 _021E64CA:
-	ldr r0, _021E6504 ; =gMain
+	ldr r0, _021E6504 ; =gSystem
 	ldr r0, [r0, #0x44]
 	cmp r0, #0
 	beq _021E64FE
@@ -1422,7 +1422,7 @@ _021E64CA:
 	mov r0, #1
 	pop {r4, pc}
 _021E64DE:
-	ldr r0, _021E6504 ; =gMain
+	ldr r0, _021E6504 ; =gSystem
 	ldr r0, [r0, #0x44]
 	cmp r0, #0
 	beq _021E64EA
@@ -1442,7 +1442,7 @@ _021E64FE:
 	mov r0, #0
 	pop {r4, pc}
 	nop
-_021E6504: .word gMain
+_021E6504: .word gSystem
 	thumb_func_end ov73_021E64B0
 
 	thumb_func_start ov73_021E6508
@@ -1463,19 +1463,19 @@ ov73_021E6508: ; 0x021E6508
 	beq _021E6544
 	add r0, sp, #8
 	str r0, [sp]
-	ldr r3, _021E66D0 ; =gMain + 0x40
+	ldr r3, _021E66D0 ; =gSystem + 0x40
 	ldr r0, [r5]
 	ldrh r2, [r3, #0x20]
 	ldrh r3, [r3, #0x22]
 	mov r1, #1
-	bl sub_0201F2CC
+	bl DoesPixelAtScreenXYMatchPtrVal
 	cmp r0, #0
 	beq _021E6544
 	add r0, r6, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 _021E6544:
-	ldr r0, _021E66D4 ; =gMain
+	ldr r0, _021E66D4 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -1654,8 +1654,8 @@ _021E66C2:
 	nop
 _021E66C8: .word ov73_021EA534
 _021E66CC: .word 0x0000FFD5
-_021E66D0: .word gMain + 0x40
-_021E66D4: .word gMain
+_021E66D0: .word gSystem + 0x40
+_021E66D4: .word gSystem
 _021E66D8: .word 0x00004A1C
 _021E66DC: .word 0x000005DC
 _021E66E0: .word 0x000005F2
@@ -1909,7 +1909,7 @@ ov73_021E68AC: ; 0x021E68AC
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _021E6904
-	ldr r0, _021E69C0 ; =gMain
+	ldr r0, _021E69C0 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #0xc3
 	tst r0, r1
@@ -1927,7 +1927,7 @@ _021E68E0:
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _021E6904
-	ldr r0, _021E69C0 ; =gMain
+	ldr r0, _021E69C0 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #0xc3
 	tst r0, r1
@@ -2025,7 +2025,7 @@ _021E69B0:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021E69BC: .word 0x00004A10
-_021E69C0: .word gMain
+_021E69C0: .word gSystem
 _021E69C4: .word 0x000005F2
 _021E69C8: .word 0x00004A24
 _021E69CC: .word 0x00004A28
@@ -2161,7 +2161,7 @@ ov73_021E6AAC: ; 0x021E6AAC
 	cmp r0, #0
 	beq _021E6AE4
 _021E6AC8:
-	ldr r0, _021E6B60 ; =gMain
+	ldr r0, _021E6B60 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #0xc3
 	tst r0, r1
@@ -2228,7 +2228,7 @@ _021E6B4E:
 	pop {r3, r4, r5, r6, pc}
 	nop
 _021E6B5C: .word 0x00004A1C
-_021E6B60: .word gMain
+_021E6B60: .word gSystem
 _021E6B64: .word 0x000005F2
 _021E6B68: .word 0x00004A2A
 	thumb_func_end ov73_021E6AAC
@@ -2335,7 +2335,7 @@ ov73_021E6C20: ; 0x021E6C20
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	ldr r0, _021E6C4C ; =gMain + 0x60
+	ldr r0, _021E6C4C ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #0xc]
 	ldr r0, [r5, #8]
@@ -2353,7 +2353,7 @@ ov73_021E6C20: ; 0x021E6C20
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021E6C4C: .word gMain + 0x60
+_021E6C4C: .word gSystem + 0x60
 	thumb_func_end ov73_021E6C20
 
 	thumb_func_start ov73_021E6C50
@@ -2377,7 +2377,7 @@ _021E6C62:
 	beq _021E6CAE
 	ldr r0, _021E6CB4 ; =0x00000657
 	mov r1, #8
-	bl sub_02006154
+	bl StopSE
 	add r0, r5, #0
 	mov r1, #0xd
 	mov r2, #0
@@ -2395,7 +2395,7 @@ _021E6C62:
 	str r1, [r5, #0xc]
 	lsl r0, r0, #2
 	str r1, [r5, r0]
-	ldr r0, _021E6CB8 ; =gMain + 0x60
+	ldr r0, _021E6CB8 ; =gSystem + 0x60
 	strb r1, [r0, #0xc]
 	ldr r0, _021E6CBC ; =0x00004A14
 	strb r1, [r5, r0]
@@ -2404,7 +2404,7 @@ _021E6CAE:
 	pop {r3, r4, r5, pc}
 	nop
 _021E6CB4: .word 0x00000657
-_021E6CB8: .word gMain + 0x60
+_021E6CB8: .word gSystem + 0x60
 _021E6CBC: .word 0x00004A14
 	thumb_func_end ov73_021E6C50
 
@@ -2508,7 +2508,7 @@ ov73_021E6D54: ; 0x021E6D54
 	cmp r0, #0
 	beq _021E6D88
 _021E6D6E:
-	ldr r0, _021E6DF0 ; =gMain
+	ldr r0, _021E6DF0 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #0xc3
 	tst r0, r1
@@ -2567,7 +2567,7 @@ _021E6DE0:
 	pop {r3, r4, r5, pc}
 	nop
 _021E6DEC: .word 0x00004A1C
-_021E6DF0: .word gMain
+_021E6DF0: .word gSystem
 _021E6DF4: .word 0x000005F2
 	thumb_func_end ov73_021E6D54
 
@@ -3106,7 +3106,7 @@ ov73_021E71E4: ; 0x021E71E4
 	ldr r0, [r0]
 	mov r1, #1
 	mov r3, #0x14
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	add sp, #0x1c
 	pop {r3, r4, pc}
 	nop
@@ -3216,7 +3216,7 @@ ov73_021E72F4: ; 0x021E72F4
 	strh r1, [r0]
 _021E730A:
 	ldrh r0, [r0]
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0xa
 	add r2, r0, #0
 	mul r2, r1
@@ -3802,7 +3802,7 @@ ov73_021E7740: ; 0x021E7740
 	mov r1, #0xb
 	add r2, r5, r2
 	mov r3, #0x32
-	bl sub_02007C48
+	bl GfGfxLoader_GetPlttDataFromOpenNarc
 	mov r3, #3
 	lsl r3, r3, #8
 	str r0, [r5, r3]
@@ -3824,7 +3824,7 @@ ov73_021E7740: ; 0x021E7740
 	mov r1, #0xc
 	mov r2, #1
 	add r3, r5, r3
-	bl sub_02007C10
+	bl GfGfxLoader_GetCharDataFromOpenNarc
 	mov r1, #0x2f
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -4738,7 +4738,7 @@ _021E7E0C:
 	blt _021E7D9E
 _021E7E18:
 	mov r0, #0x17
-	bl sub_0202893C
+	bl SaveSubstruct_UpdateCRC
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4785,7 +4785,7 @@ _021E7E62:
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -5075,7 +5075,7 @@ ov73_021E8100: ; 0x021E8100
 	add r4, r0, #0
 	bl sub_0202061C
 	ldr r0, [r4, #4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200B224
 	ldr r3, _021E8120 ; =0x027E0000
 	ldr r1, _021E8124 ; =0x00003FF8
@@ -5381,7 +5381,7 @@ _021E832A:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	bl sub_0203A880
 	add sp, #0x5c
 	pop {r4, r5, r6, r7, pc}
@@ -5592,10 +5592,10 @@ ov73_021E84D0: ; 0x021E84D0
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
 	bl sub_02039418
@@ -5786,7 +5786,7 @@ ov73_021E8628: ; 0x021E8628
 	bl InitBgFromTemplate
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	mov r1, #4
 	bl BgClearTilemapBufferAndCommit
@@ -5807,7 +5807,7 @@ ov73_021E8628: ; 0x021E8628
 	bl InitBgFromTemplate
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0
 	mov r1, #0x20
 	add r2, r0, #0
@@ -5861,7 +5861,7 @@ ov73_021E8730: ; 0x021E8730
 	mov r1, #3
 	add r3, r2, #0
 	str r0, [sp, #0x2c]
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0x96
@@ -5869,7 +5869,7 @@ ov73_021E8730: ; 0x021E8730
 	ldr r0, [sp, #0x2c]
 	mov r1, #3
 	mov r2, #4
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r1, #0x1a
 	mov r0, #0
 	lsl r1, r1, #4
@@ -5912,7 +5912,7 @@ ov73_021E8730: ; 0x021E8730
 	mov r1, #2
 	add r2, r4, #0
 	mov r3, #1
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r1, #0
 	mov r0, #6
 	str r1, [sp]
@@ -5925,7 +5925,7 @@ ov73_021E8730: ; 0x021E8730
 	mov r1, #6
 	add r2, r4, #0
 	mov r3, #1
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -5936,7 +5936,7 @@ ov73_021E8730: ; 0x021E8730
 	mov r1, #0xb
 	add r2, r4, #0
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r1, #0
 	mov r0, #6
 	str r1, [sp]
@@ -5949,7 +5949,7 @@ ov73_021E8730: ; 0x021E8730
 	mov r1, #0xc
 	add r2, r4, #0
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	add r1, r0, #0
 	bl BG_SetMaskColor
@@ -5967,7 +5967,7 @@ ov73_021E8730: ; 0x021E8730
 	mov r1, #5
 	add r2, sp, #0x38
 	mov r3, #0x96
-	bl sub_02007C48
+	bl GfGfxLoader_GetPlttDataFromOpenNarc
 	add r4, r0, #0
 	ldr r0, [sp, #0x38]
 	mov r2, #0xfa
@@ -6769,7 +6769,7 @@ _021E8E96:
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0x14]
-	bl sub_020A0310
+	bl DWC_CreateFriendKey
 	add r3, r0, #0
 	add r2, r1, #0
 	add r0, r4, #0
@@ -7279,7 +7279,7 @@ _021E9268: .word 0x00000BE8
 ov73_021E926C: ; 0x021E926C
 	push {r3, r4, lr}
 	sub sp, #0x1c
-	ldr r2, _021E9368 ; =gMain
+	ldr r2, _021E9368 ; =gSystem
 	mov r1, #0x40
 	ldr r3, [r2, #0x4c]
 	add r4, r0, #0
@@ -7401,7 +7401,7 @@ _021E9360:
 	add sp, #0x1c
 	pop {r3, r4, pc}
 	nop
-_021E9368: .word gMain
+_021E9368: .word gSystem
 _021E936C: .word 0x00000DF8
 _021E9370: .word 0x00000BE8
 _021E9374: .word 0x000005DC
@@ -7939,7 +7939,7 @@ _021E97A4: .word 0x00000BEC
 	thumb_func_start ov73_021E97A8
 ov73_021E97A8: ; 0x021E97A8
 	push {r4, lr}
-	ldr r2, _021E986C ; =gMain
+	ldr r2, _021E986C ; =gSystem
 	mov r1, #0x40
 	ldr r3, [r2, #0x4c]
 	add r4, r0, #0
@@ -8033,7 +8033,7 @@ _021E9866:
 	mov r0, #3
 	pop {r4, pc}
 	nop
-_021E986C: .word gMain
+_021E986C: .word gSystem
 _021E9870: .word 0x00000DE8
 _021E9874: .word 0x00000BEC
 _021E9878: .word 0x000005DC
@@ -8104,7 +8104,7 @@ _021E98F8: .word 0x00000BE8
 	thumb_func_start ov73_021E98FC
 ov73_021E98FC: ; 0x021E98FC
 	push {r4, lr}
-	ldr r2, _021E99C4 ; =gMain
+	ldr r2, _021E99C4 ; =gSystem
 	mov r1, #0x40
 	ldr r3, [r2, #0x4c]
 	add r4, r0, #0
@@ -8202,7 +8202,7 @@ _021E99C0:
 	mov r0, #3
 	pop {r4, pc}
 	.balign 4, 0
-_021E99C4: .word gMain
+_021E99C4: .word gSystem
 _021E99C8: .word 0x00000DF8
 _021E99CC: .word 0x00000BE8
 _021E99D0: .word 0x000005DC
@@ -9021,7 +9021,7 @@ _021E9FC4: .word 0x00000F14
 ov73_021E9FC8: ; 0x021E9FC8
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _021E9FF0 ; =gMain
+	ldr r0, _021E9FF0 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -9040,7 +9040,7 @@ _021E9FEA:
 	mov r0, #3
 	pop {r4, pc}
 	nop
-_021E9FF0: .word gMain
+_021E9FF0: .word gSystem
 _021E9FF4: .word 0x00000E18
 	thumb_func_end ov73_021E9FC8
 

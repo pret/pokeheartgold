@@ -1,0 +1,183 @@
+{
+  "header": "fielddata/script/scr_seq/event_R38.h",
+  "bgs": [
+    {
+      "scr": "_EV_scr_seq_R38_001 + 1",
+      "type": 1,
+      "x": 346,
+      "y": 165,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_R38_002 + 1",
+      "type": 1,
+      "x": 301,
+      "y": 179,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_r38_hp_up",
+      "type": 2,
+      "x": 291,
+      "y": 175,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_R38_gsboy1",
+      "ovid": "SPRITE_GSBOY1",
+      "mvt": 17,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_SCHOOL_KID_M_CHAD)",
+      "dirn": 3,
+      "eye": 4,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 299,
+      "y": 161,
+      "z": 0
+    },
+    {
+      "id": "obj_R38_gsman2",
+      "ovid": "SPRITE_GSMAN2",
+      "mvt": 17,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_BIRD_KEEPER_GS_TOBY)",
+      "dirn": 3,
+      "eye": 3,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 320,
+      "y": 173,
+      "z": 0
+    },
+    {
+      "id": "obj_R38_gsgirl1",
+      "ovid": "SPRITE_GSGIRL1",
+      "mvt": 13,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_LASS_DANA)",
+      "dirn": 1,
+      "eye": 2,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 321,
+      "y": 162,
+      "z": 0
+    },
+    {
+      "id": "obj_R38_gswoman2",
+      "ovid": "SPRITE_GSWOMAN2",
+      "mvt": 15,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_BEAUTY_VALERIE)",
+      "dirn": 1,
+      "eye": 5,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 310,
+      "y": 168,
+      "z": 0
+    },
+    {
+      "id": "obj_R38_seaman_2",
+      "ovid": "SPRITE_SEAMAN_2",
+      "mvt": 5,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_SAILOR_HARRY)",
+      "dirn": 3,
+      "eye": 2,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 336,
+      "y": 166,
+      "z": 0
+    },
+    {
+      "id": "obj_R38_bonguri",
+      "ovid": "SPRITE_BONGURI",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_apricorn_tree",
+      "dirn": 0,
+      "eye": 16,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 315,
+      "y": 172,
+      "z": 0
+    },
+    {
+      "id": "obj_R38_monstarball",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_R38_MAX_POTION",
+      "scr": "std_itemball_r38_max_potion",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 329,
+      "y": 177,
+      "z": 0
+    },
+    {
+      "id": "obj_R38_monstarball_2",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_R38_LAX_INCENSE",
+      "scr": "std_itemball_r38_lax_incense",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 297,
+      "y": 186,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 351,
+      "y": 166,
+      "header": "MAP_R38R0101",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 351,
+      "y": 167,
+      "header": "MAP_R38R0101",
+      "anchor": 1,
+      "height": 0
+    }
+  ]
+}

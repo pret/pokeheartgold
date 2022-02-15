@@ -11,7 +11,7 @@ ov89_02258800: ; 0x02258800
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r1, #1
@@ -257,11 +257,11 @@ _02258A4A:
 	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
-	ldr r0, _02258AF4 ; =gMain + 0x60
+	bl GX_EngineBToggleLayers
+	ldr r0, _02258AF4 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -271,7 +271,7 @@ _02258A4A:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
@@ -302,7 +302,7 @@ _02258AE4: .word ov89_0225CA58
 _02258AE8: .word ov89_0225C9EC
 _02258AEC: .word 0x00200010
 _02258AF0: .word ov89_0225CA00
-_02258AF4: .word gMain + 0x60
+_02258AF4: .word gSystem + 0x60
 _02258AF8: .word ov89_02258FF4
 _02258AFC: .word 0x0000EA60
 _02258B00: .word ov89_0225901C
@@ -377,7 +377,7 @@ _02258B7A:
 	str r0, [r5]
 	b _02258E4A
 _02258B88:
-	ldr r0, _02258E60 ; =gMain + 0x40
+	ldr r0, _02258E60 ; =gSystem + 0x40
 	ldrh r1, [r0, #0x24]
 	cmp r1, #0
 	beq _02258BF4
@@ -392,7 +392,7 @@ _02258B88:
 	mov r2, #0x92
 	lsl r2, r2, #4
 	ldrb r1, [r4, r2]
-	ldr r7, _02258E60 ; =gMain + 0x40
+	ldr r7, _02258E60 ; =gSystem + 0x40
 	mov r3, #0xc
 	add r6, r1, #0
 	mul r6, r3
@@ -718,7 +718,7 @@ _02258E4A:
 	b _02258E74
 	nop
 _02258E5C: .word 0x000009BC
-_02258E60: .word gMain + 0x40
+_02258E60: .word gSystem + 0x40
 _02258E64: .word 0x00000555
 _02258E68: .word 0x000008D8
 _02258E6C: .word 0x000005E5
@@ -864,7 +864,7 @@ ov89_02258F00: ; 0x02258F00
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl sub_020205AC
 	bl sub_02021238
 	mov r0, #0
@@ -916,7 +916,7 @@ ov89_0225901C: ; 0x0225901C
 	ldr r0, [r4, #0xc]
 	bl sub_0200398C
 	ldr r0, [r4, #8]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _02259054 ; =0x027E0000
 	ldr r1, _02259058 ; =0x00003FF8
 	mov r0, #1
@@ -1002,12 +1002,12 @@ _022590D0:
 	add r0, r4, #0
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #0
 	mov r1, #2
 	add r2, sp, #0xa8
@@ -1020,12 +1020,12 @@ _022590D0:
 	add r0, r4, #0
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #0
 	mov r1, #3
 	add r2, sp, #0xc4
@@ -1038,12 +1038,12 @@ _022590D0:
 	add r0, r4, #0
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r1, #3
 	add r0, r4, #0
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r1, _02259228 ; =0x04000008
 	mov r0, #3
 	ldrh r2, [r1]
@@ -1076,12 +1076,12 @@ _0225917C:
 	add r0, r4, #0
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #0
 	mov r1, #6
 	add r2, sp, #0x54
@@ -1094,12 +1094,12 @@ _0225917C:
 	add r0, r4, #0
 	mov r1, #6
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #0
 	mov r1, #6
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #0
 	mov r1, #7
 	add r2, sp, #0x70
@@ -1112,12 +1112,12 @@ _0225917C:
 	add r0, r4, #0
 	mov r1, #7
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #0
 	mov r1, #7
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #5
 	mov r1, #0x20
 	mov r2, #0
@@ -1184,7 +1184,7 @@ ov89_02259264: ; 0x02259264
 	add r0, r5, #0
 	mov r1, #0x12
 	mov r3, #2
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1195,7 +1195,7 @@ ov89_02259264: ; 0x02259264
 	add r0, r5, #0
 	mov r1, #0x11
 	mov r3, #2
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1206,7 +1206,7 @@ ov89_02259264: ; 0x02259264
 	add r0, r5, #0
 	mov r1, #0x14
 	mov r3, #3
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0
@@ -1241,7 +1241,7 @@ _022592FE:
 	add r0, r5, #0
 	mov r1, #0x16
 	mov r3, #6
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1252,7 +1252,7 @@ _022592FE:
 	add r0, r5, #0
 	mov r1, #0x15
 	mov r3, #6
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1263,7 +1263,7 @@ _022592FE:
 	add r0, r5, #0
 	mov r1, #0x18
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r4, #8]
 	mov r1, #6
 	bl GetBgTilemapBuffer
@@ -2134,7 +2134,7 @@ _02259A56:
 	add r1, r4, #3
 	mov r3, #0x7d
 	str r2, [sp]
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r1, sp, #0xc
 	str r0, [sp, #8]
 	bl NNS_G2dGetUnpackedCharacterData
@@ -2157,7 +2157,7 @@ _02259A90:
 	mov r1, #0x10
 	mov r2, #0
 	mov r3, #0x7d
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r1, sp, #0xc
 	str r0, [sp, #8]
 	bl NNS_G2dGetUnpackedCharacterData
@@ -2385,10 +2385,10 @@ ov89_02259C0C: ; 0x02259C0C
 	bl NNS_G3dGlbMaterialColorSpecEmi
 	add r0, sp, #0x28
 	bl NNS_G3dGlbSetBaseTrans
-	ldr r1, _02259CC8 ; =_021DA558
+	ldr r1, _02259CC8 ; =NNS_G3dGlb + 0xBC
 	add r0, sp, #4
 	bl MI_Copy36B
-	ldr r1, _02259CCC ; =_021DA51C
+	ldr r1, _02259CCC ; =NNS_G3dGlb + 0x80
 	mov r0, #0xa4
 	ldr r2, [r1, #0x7c]
 	bic r2, r0
@@ -2417,8 +2417,8 @@ ov89_02259C0C: ; 0x02259C0C
 _02259CBC: .word 0xFFFFF000
 _02259CC0: .word 0x0000739C
 _02259CC4: .word 0x00007FFF
-_02259CC8: .word _021DA558
-_02259CCC: .word _021DA51C
+_02259CC8: .word NNS_G3dGlb + 0xBC
+_02259CCC: .word NNS_G3dGlb + 0x80
 	thumb_func_end ov89_02259C0C
 
 	thumb_func_start ov89_02259CD0
@@ -3191,7 +3191,7 @@ _0225A278:
 	add r1, sp, #0x38
 	lsr r2, r2, #0x18
 	mov r3, #2
-	bl sub_0201D494
+	bl AddTextWindowTopLeftCorner
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff
@@ -3878,7 +3878,7 @@ _0225A78C:
 	add r1, r1, #2
 	ldrsh r1, [r6, r1]
 	mov r0, #0
-	bl sub_0200FCFC
+	bl SetMasterBrightness
 	mov r0, #0x1d
 	mov r1, #0
 	lsl r0, r0, #6
@@ -3993,7 +3993,7 @@ ov89_0225A878: ; 0x0225A878
 	mov r1, #0x1d
 	mov r3, #0x7d
 	str r2, [sp]
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	str r0, [r5]
 	cmp r0, #0
 	bne _0225A89C
@@ -4235,7 +4235,7 @@ ov89_0225AA24: ; 0x0225AA24
 	add r0, r5, #0
 	mov r3, #0x7d
 	add r1, r1, #3
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r1, sp, #0x20
 	str r0, [sp, #0x18]
 	bl NNS_G2dGetUnpackedCharacterData
@@ -4247,7 +4247,7 @@ _0225AA68:
 	mov r1, #0x10
 	mov r2, #0
 	mov r3, #0x7d
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r1, sp, #0x20
 	str r0, [sp, #0x18]
 	bl NNS_G2dGetUnpackedCharacterData
@@ -5772,7 +5772,7 @@ _0225B58C:
 	str r0, [r4, #4]
 _0225B5A4:
 	ldr r0, [r4, #4]
-	bl sub_0201FD14
+	bl GF_SinDegFX32
 	add r2, r0, #0
 	mov r1, #1
 	add r0, r5, #0
@@ -6163,7 +6163,7 @@ _0225B892:
 	str r0, [r4, #4]
 _0225B8AA:
 	ldr r0, [r4, #4]
-	bl sub_0201FD14
+	bl GF_SinDegFX32
 	add r2, r0, #0
 	asr r6, r2, #0x1f
 	mov r7, #2
@@ -6413,7 +6413,7 @@ _0225BA80:
 	add r0, r4, #0
 	add r0, #0xf0
 	ldr r0, [r0]
-	bl sub_0201FD14
+	bl GF_SinDegFX32
 	asr r2, r0, #0x1f
 	lsl r3, r2, #0x10
 	lsr r1, r0, #0x10
@@ -6693,7 +6693,7 @@ _0225BCA0:
 	add r0, r4, #0
 	add r0, #0xf0
 	ldr r0, [r0]
-	bl sub_0201FD14
+	bl GF_SinDegFX32
 	asr r2, r0, #0x1f
 	lsl r3, r2, #0x10
 	lsr r1, r0, #0x10
@@ -7640,7 +7640,7 @@ _0225C364:
 	str r0, [r4, #8]
 _0225C396:
 	ldr r0, [r4, #8]
-	bl sub_0201FD14
+	bl GF_SinDegFX32
 	ldrh r2, [r4]
 	add r1, sp, #0
 	lsl r6, r0, #0xc
@@ -7843,7 +7843,7 @@ _0225C4EE:
 	str r0, [r4, #0x18]
 _0225C520:
 	ldr r0, [r4, #0x18]
-	bl sub_0201FD14
+	bl GF_SinDegFX32
 	asr r1, r0, #0x1f
 	lsr r2, r0, #0x10
 	lsl r1, r1, #0x10
@@ -7952,7 +7952,7 @@ _0225C5C6:
 	str r0, [r4, #0x18]
 _0225C5F8:
 	ldr r0, [r4, #0x18]
-	bl sub_0201FD14
+	bl GF_SinDegFX32
 	asr r1, r0, #0x1f
 	lsr r2, r0, #0x11
 	lsl r1, r1, #0xf

@@ -3,8 +3,8 @@
 
 	.text
 
-	thumb_func_start ScrCmd_813
-ScrCmd_813: ; 0x0204C83C
+	thumb_func_start ScrCmd_MomGiftCheck
+ScrCmd_MomGiftCheck: ; 0x0204C83C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -17,7 +17,7 @@ ScrCmd_813: ; 0x0204C83C
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetPhoneRematches
 	mov r1, #0
 	add r2, sp, #0
 	bl sub_0202F224
@@ -31,7 +31,7 @@ _0204C86E:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_813
+	thumb_func_end ScrCmd_MomGiftCheck
 
 	thumb_func_start ScrCmd_508
 ScrCmd_508: ; 0x0204C874
@@ -52,7 +52,7 @@ ScrCmd_508: ; 0x0204C874
 	cmp r0, #2
 	bne _0204C8AA
 	add r0, r4, #0
-	bl sub_02066880
+	bl ScriptState_SetPalParkSysFlag
 	add r5, #0x80
 	ldr r0, [r5]
 	bl sub_020557E0
@@ -68,7 +68,7 @@ _0204C8B8:
 	cmp r0, #1
 	bne _0204C8CC
 	add r0, r4, #0
-	bl sub_02066890
+	bl ScriptState_ClearPalParkSysFlag
 	add r5, #0x80
 	ldr r0, [r5]
 	bl sub_02055828
@@ -158,7 +158,7 @@ _0204C960:
 	add r0, r4, #0
 	mov r2, #2
 	mov r3, #0
-	bl sub_0208F260
+	bl MonSetTrainerMemo
 	add r0, r4, #0
 	bl Mon_GetBoxMon
 	add r1, r0, #0
@@ -173,7 +173,7 @@ _0204C990:
 	ldr r0, [r0]
 	add r1, r4, #0
 	ldr r0, [r0, #0xc]
-	bl sub_0202ECC0
+	bl UpdatePokedexWithReceivedSpecies
 	add r5, r5, #1
 	cmp r5, #6
 	blt _0204C960

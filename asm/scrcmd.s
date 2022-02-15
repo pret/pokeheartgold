@@ -1,16 +1,925 @@
+#include "constants/sprites.h"
+#include "constants/species.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
 	.public _020FAC94
-	.public _020FAC9C
+	.public sConditionTable
 	.public _020FACB0
 	.public _020FACC4
 	.public _020FACDC
 
+	.rodata
+
+	.public sNumScriptCmds
+sNumScriptCmds:
+	.word (gScriptCmdTable_end-gScriptCmdTable)/4
+	.public _020FAC94
+_020FAC94:
+	.byte 0x03, 0x19, 0x0D, 0x06, 0x04, 0x0D
+	.short 0x021F
+	.public sConditionTable
+sConditionTable:
+	;     <  =  >
+	.byte 1, 0, 0 ; lt
+	.byte 0, 1, 0 ; eq
+	.byte 0, 0, 1 ; gt
+	.byte 1, 1, 0 ; le
+	.byte 0, 1, 1 ; ge
+	.byte 1, 0, 1 ; ne
+	.public _020FACB0
+	.balign 4, 0
+_020FACB0:
+	.word SDK_OVERLAY_OVY_20_ID
+	.word SDK_OVERLAY_OVY_24_ID
+	.word SDK_OVERLAY_OVY_21_ID
+	.word SDK_OVERLAY_OVY_22_ID
+	.word SDK_OVERLAY_OVY_25_ID
+	.public _020FACC4
+_020FACC4:
+	.word 0x07FFFFFF
+	.word 0x07FFFFFF
+	.word 0x07FFFFFF
+	.word 0x07FFFFFF
+	.word 0x07FFFFFF
+	.word 0x07FFFFFF
+	.public _020FACDC
+_020FACDC:
+	.byte 0x00, 0x30, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x04, 0x00
+	.byte 0x00, 0xD0, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x04, 0x00
+	.byte 0x00, 0x80, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x04, 0x00
+	.public gScriptCmdTable
+gScriptCmdTable:
+	.word ScrCmd_Nop                                    ; 000
+	.word ScrCmd_Dummy                                  ; 001
+	.word ScrCmd_End                                    ; 002
+	.word ScrCmd_Wait                                   ; 003
+	.word ScrCmd_LoadByte                               ; 004
+	.word ScrCmd_LoadWord                               ; 005
+	.word ScrCmd_LoadByteFromAddr                       ; 006
+	.word ScrCmd_WriteByteToAddr                        ; 007
+	.word ScrCmd_SetPtrByte                             ; 008
+	.word ScrCmd_CopyLocal                              ; 009
+	.word ScrCmd_CopyByte                               ; 010
+	.word ScrCmd_CompareLocalToLocal                    ; 011
+	.word ScrCmd_CompareLocalToValue                    ; 012
+	.word ScrCmd_CompareLocalToAddr                     ; 013
+	.word ScrCmd_CompareAddrToLocal                     ; 014
+	.word ScrCmd_CompareAddrToValue                     ; 015
+	.word ScrCmd_CompareAddrToAddr                      ; 016
+	.word ScrCmd_CompareVarToValue                      ; 017
+	.word ScrCmd_CompareVarToVar                        ; 018
+	.word ScrCmd_RunScript                              ; 019
+	.word ScrCmd_RunScriptWait                          ; 020
+	.word ScrCmd_RestartCurrentScript                   ; 021
+	.word ScrCmd_GoTo                                   ; 022
+	.word ScrCmd_ObjectGoTo                             ; 023
+	.word ScrCmd_BgGoTo                                 ; 024
+	.word ScrCmd_DirectionGoTo                          ; 025
+	.word ScrCmd_Call                                   ; 026
+	.word ScrCmd_Return                                 ; 027
+	.word ScrCmd_GoToIf                                 ; 028
+	.word ScrCmd_CallIf                                 ; 029
+	.word ScrCmd_SetFlag                                ; 030
+	.word ScrCmd_ClearFlag                              ; 031
+	.word ScrCmd_CheckFlag                              ; 032
+	.word ScrCmd_SetFlagVar                             ; 033
+	.word ScrCmd_ClearFlagVar                           ; 034
+	.word ScrCmd_CheckFlagVar                           ; 035
+	.word ScrCmd_SetTrainerFlag                         ; 036
+	.word ScrCmd_ClearTrainerFlag                       ; 037
+	.word ScrCmd_CheckTrainerFlag                       ; 038
+	.word ScrCmd_AddVar                                 ; 039
+	.word ScrCmd_SubVar                                 ; 040
+	.word ScrCmd_SetVar                                 ; 041
+	.word ScrCmd_CopyVar                                ; 042
+	.word ScrCmd_SetOrCopyVar                           ; 043
+	.word ScrCmd_NonNPCMsg                              ; 044
+	.word ScrCmd_NPCMsg                                 ; 045
+	.word ScrCmd_NonNpcMsgVar                                    ; 046
+	.word ScrCmd_NpcMsgVar                                    ; 047
+	.word ScrCmd_048                                    ; 048
+	.word ScrCmd_049                                    ; 049
+	.word ScrCmd_WaitButton                             ; 050
+	.word ScrCmd_051                                    ; 051
+	.word ScrCmd_OpenMsg                                    ; 052
+	.word ScrCmd_CloseMsg                               ; 053
+	.word ScrCmd_054                                    ; 054
+	.word ScrCmd_DirectionSignpost                                    ; 055
+	.word ScrCmd_055                                    ; 056
+	.word ScrCmd_057                                    ; 057
+	.word ScrCmd_058                                    ; 058
+	.word ScrCmd_TrainerTips                                    ; 059
+	.word ScrCmd_060                                    ; 060
+	.word ScrCmd_061                                    ; 061
+	.word ScrCmd_062                                    ; 062
+	.word ScrCmd_063                                    ; 063
+	.word ScrCmd_064                                    ; 064
+	.word ScrCmd_065                                    ; 065
+	.word ScrCmd_066                                    ; 066
+	.word ScrCmd_067                                    ; 067
+	.word ScrCmd_068                                    ; 068
+	.word ScrCmd_069                                    ; 069
+	.word ScrCmd_070                                    ; 070
+	.word ScrCmd_071                                    ; 071
+	.word ScrCmd_072                                    ; 072
+	.word ScrCmd_PlaySE                                 ; 073
+	.word ScrCmd_StopSE                                    ; 074
+	.word ScrCmd_WaitSE                                 ; 075
+	.word ScrCmd_PlayCry                                    ; 076
+	.word ScrCmd_WaitCry                                    ; 077
+	.word ScrCmd_PlayFanfare                            ; 078
+	.word ScrCmd_WaitFanfare                            ; 079
+	.word ScrCmd_PlayBGM                                ; 080
+	.word ScrCmd_081                                    ; 081
+	.word ScrCmd_ResetBGM                               ; 082
+	.word ScrCmd_083                                    ; 083
+	.word ScrCmd_FadeOutBGM                             ; 084
+	.word ScrCmd_085                                    ; 085
+	.word ScrCmd_086                                    ; 086
+	.word ScrCmd_TempBGM                                ; 087
+	.word ScrCmd_088                                    ; 088
+	.word ScrCmd_ChatotHasCry                                    ; 089
+	.word ScrCmd_ChatotStartRecording                                    ; 090
+	.word ScrCmd_ChatotStopRecording                                    ; 091
+	.word ScrCmd_ChatotSaveRecording                                    ; 092
+	.word ScrCmd_093                                    ; 093
+	.word ScrCmd_ApplyMovement                          ; 094
+	.word ScrCmd_WaitMovement                           ; 095
+	.word ScrCmd_LockAll                                ; 096
+	.word ScrCmd_ReleaseAll                             ; 097
+	.word ScrCmd_098                                    ; 098
+	.word ScrCmd_099                                    ; 099
+	.word ScrCmd_ShowPerson                             ; 100
+	.word ScrCmd_HidePerson                             ; 101
+	.word ScrCmd_102                                    ; 102
+	.word ScrCmd_103                                    ; 103
+	.word ScrCmd_FacePlayer                             ; 104
+	.word ScrCmd_GetPlayerCoords                        ; 105
+	.word ScrCmd_GetPersonCoords                        ; 106
+	.word ScrCmd_107                                    ; 107
+	.word ScrCmd_108                                    ; 108
+	.word ScrCmd_109                                    ; 109
+	.word ScrCmd_AddMoney                               ; 110
+	.word ScrCmd_SubMoneyImmediate                      ; 111
+	.word ScrCmd_HasEnoughMoneyImmediate                ; 112
+	.word ScrCmd_113                                    ; 113
+	.word ScrCmd_114                                    ; 114
+	.word ScrCmd_115                                    ; 115
+	.word ScrCmd_116                                    ; 116
+	.word ScrCmd_117                                    ; 117
+	.word ScrCmd_118                                    ; 118
+	.word ScrCmd_GetCoinAmount                                    ; 119
+	.word ScrCmd_GiveCoins                                    ; 120
+	.word ScrCmd_TakeCoins                                    ; 121
+	.word ScrCmd_GiveAthletePoints                                    ; 122
+	.word ScrCmd_TakeAthletePoints                                    ; 123
+	.word ScrCmd_CheckAthletePoints                                    ; 124
+	.word ScrCmd_GiveItem                               ; 125
+	.word ScrCmd_TakeItem                               ; 126
+	.word ScrCmd_HasSpaceForItem                        ; 127
+	.word ScrCmd_HasItem                                ; 128
+	.word ScrCmd_ItemIsTMOrHM                           ; 129
+	.word ScrCmd_GetItemPocket                          ; 130
+	.word ScrCmd_SetStarterChoice                       ; 131
+	.word ScrCmd_GenderMsgbox                           ; 132
+	.word ScrCmd_GetSealQuantity                                    ; 133
+	.word ScrCmd_GiveOrTakeSeal                                    ; 134
+	.word ScrCmd_GiveRandomSeal                                    ; 135
+	.word ScrCmd_136                                    ; 136
+	.word ScrCmd_GiveMon                                ; 137
+	.word ScrCmd_GiveEgg                                ; 138
+	.word ScrCmd_SetMonMove                             ; 139
+	.word ScrCmd_MonHasMove                             ; 140
+	.word ScrCmd_GetPartySlotWithMove                          ; 141
+	.word ScrCmd_GetPhoneBookRematch                    ; 142
+	.word ScrCmd_NameRival                              ; 143
+	.word ScrCmd_GetFriendSprite                        ; 144
+	.word ScrCmd_RegisterPokegearCard                   ; 145
+	.word ScrCmd_RegisterGearNumber                     ; 146
+	.word ScrCmd_CheckRegisteredPhoneNumber                                    ; 147
+	.word ScrCmd_148                                    ; 148
+	.word ScrCmd_149                                    ; 149
+	.word ScrCmd_150                                    ; 150
+	.word ScrCmd_151                                    ; 151
+	.word ScrCmd_152                                    ; 152
+	.word ScrCmd_153                                    ; 153
+	.word ScrCmd_154                                    ; 154
+	.word ScrCmd_155                                    ; 155
+	.word ScrCmd_156                                    ; 156
+	.word ScrCmd_TownMap                                    ; 157
+	.word ScrCmd_158                                    ; 158
+	.word ScrCmd_159                                    ; 159
+	.word ScrCmd_160                                    ; 160
+	.word ScrCmd_161                                    ; 161
+	.word ScrCmd_162                                    ; 162
+	.word ScrCmd_HOF_Credits                                    ; 163
+	.word ScrCmd_164                                    ; 164
+	.word ScrCmd_165                                    ; 165
+	.word ScrCmd_166                                    ; 166
+	.word ScrCmd_ChooseStarter                                    ; 167
+	.word ScrCmd_GetTrainerPathToPlayer                                    ; 168
+	.word ScrCmd_TrainerStepTowardsPlayer                                    ; 169
+	.word ScrCmd_GetTrainerEyeType                                    ; 170
+	.word ScrCmd_GetEyeTrainerNum                                    ; 171
+	.word ScrCmd_172                                    ; 172
+	.word ScrCmd_NicknameInput                          ; 173
+	.word ScrCmd_FadeScreen                             ; 174
+	.word ScrCmd_WaitFade                               ; 175
+	.word ScrCmd_Warp                                    ; 176
+	.word ScrCmd_RockClimb                                    ; 177
+	.word ScrCmd_Surf                                    ; 178
+	.word ScrCmd_Waterfall                                    ; 179
+	.word ScrCmd_180                                    ; 180
+	.word ScrCmd_181                                    ; 181
+	.word ScrCmd_182                                    ; 182
+	.word ScrCmd_183                                    ; 183
+	.word ScrCmd_184                                    ; 184
+	.word ScrCmd_185                                    ; 185
+	.word ScrCmd_186                                    ; 186
+	.word ScrCmd_GetPlayerState                         ; 187
+	.word ScrCmd_SetAvatarBits                                    ; 188
+	.word ScrCmd_UpdateAvatarState                                    ; 189
+	.word ScrCmd_BufferPlayersName                      ; 190
+	.word ScrCmd_BufferRivalsName                                    ; 191
+	.word ScrCmd_BufferFriendsName                                    ; 192
+	.word ScrCmd_BufferMonSpeciesName                   ; 193
+	.word ScrCmd_BufferItemName                         ; 194
+	.word ScrCmd_BufferPocketName                       ; 195
+	.word ScrCmd_BufferTMHMMoveName                     ; 196
+	.word ScrCmd_BufferMoveName                                    ; 197
+	.word ScrCmd_BufferInt                                    ; 198
+	.word ScrCmd_BufferPartyMonNick                     ; 199
+	.word ScrCmd_BufferTrainerClassName                                    ; 200
+	.word ScrCmd_BufferPlayerUnionAvatarClassName                                    ; 201
+	.word ScrCmd_BufferSpeciesName                ; 202
+	.word ScrCmd_BufferStarterSpeciesName                                    ; 203
+	.word ScrCmd_BufferDPPtRivalStarterSpeciesName                                    ; 204
+	.word ScrCmd_BufferDPPtFriendStarterSpeciesName                                    ; 205
+	.word ScrCmd_GetStarterChoice                       ; 206
+	.word ScrCmd_BufferDecorationName                                    ; 207
+	.word ScrCmd_208                                    ; 208
+	.word ScrCmd_209                                    ; 209
+	.word ScrCmd_BufferMapSecName                                    ; 210
+	.word ScrCmd_211                                    ; 211
+	.word ScrCmd_GetTrainerNum                                    ; 212
+	.word ScrCmd_TrainerBattle                          ; 213
+	.word ScrCmd_TrainerMessage                                    ; 214
+	.word ScrCmd_GetTrainerMsgParams                                    ; 215
+	.word ScrCmd_GetRematchMsgParams                                    ; 216
+	.word ScrCmd_TrainerIsDoubleBattle                                    ; 217
+	.word ScrCmd_EncounterMusic                                    ; 218
+	.word ScrCmd_WhiteOut                               ; 219
+	.word ScrCmd_CheckBattleWon                         ; 220
+	.word ScrCmd_221                                    ; 221
+	.word ScrCmd_PartyCheckForDouble                                    ; 222
+	.word ScrCmd_223                                    ; 223
+	.word ScrCmd_224                                    ; 224
+	.word ScrCmd_225                                    ; 225
+	.word ScrCmd_226                                    ; 226
+	.word ScrCmd_227                                    ; 227
+	.word ScrCmd_228                                    ; 228
+	.word ScrCmd_229                                    ; 229
+	.word ScrCmd_230                                    ; 230
+	.word ScrCmd_231                                    ; 231
+	.word ScrCmd_232                                    ; 232
+	.word ScrCmd_233                                    ; 233
+	.word ScrCmd_234                                    ; 234
+	.word ScrCmd_235                                    ; 235
+	.word ScrCmd_236                                    ; 236
+	.word ScrCmd_237                                    ; 237
+	.word ScrCmd_238                                    ; 238
+	.word ScrCmd_239                                    ; 239
+	.word ScrCmd_SetDynamicWarp                                    ; 240
+	.word ScrCmd_GetDynamicWarpFloorNo                                    ; 241
+	.word ScrCmd_ElevatorCurFloorBox                                    ; 242
+	.word ScrCmd_CountJohtoDexSeen                                    ; 243
+	.word ScrCmd_CountJohtoDexOwned                                    ; 244
+	.word ScrCmd_CountNationalDexSeen                                    ; 245
+	.word ScrCmd_CountNationalDexOwned                                    ; 246
+	.word ScrCmd_247                                    ; 247
+	.word ScrCmd_GetDexEvalResult                                    ; 248
+	.word ScrCmd_249                                    ; 249
+	.word ScrCmd_250                                    ; 250
+	.word ScrCmd_CatchingTutorial                                    ; 251
+	.word ScrCmd_252                                    ; 252
+	.word ScrCmd_253                                    ; 253
+	.word ScrCmd_254                                    ; 254
+	.word ScrCmd_255                                    ; 255
+	.word ScrCmd_256                                    ; 256
+	.word ScrCmd_257                                    ; 257
+	.word ScrCmd_258                                    ; 258
+	.word ScrCmd_259                                    ; 259
+	.word ScrCmd_260                                    ; 260
+	.word ScrCmd_261                                    ; 261
+	.word ScrCmd_262                                    ; 262
+	.word ScrCmd_263                                    ; 263
+	.word ScrCmd_264                                    ; 264
+	.word ScrCmd_265                                    ; 265
+	.word ScrCmd_266                                    ; 266
+	.word ScrCmd_267                                    ; 267
+	.word ScrCmd_268                                    ; 268
+	.word ScrCmd_269                                    ; 269
+	.word ScrCmd_270                                    ; 270
+	.word ScrCmd_271                                    ; 271
+	.word ScrCmd_272                                    ; 272
+	.word ScrCmd_273                                    ; 273
+	.word ScrCmd_274                                    ; 274
+	.word ScrCmd_MartBuy                                    ; 275
+	.word ScrCmd_SpecialMartBuy                                    ; 276
+	.word ScrCmd_DecorationMart                                    ; 277
+	.word ScrCmd_SealMart                                    ; 278
+	.word ScrCmd_OverworldWhiteOut                                    ; 279
+	.word ScrCmd_SetSpawn                                    ; 280
+	.word ScrCmd_GetPlayerGender                        ; 281
+	.word ScrCmd_HealParty                              ; 282
+	.word ScrCmd_283                                    ; 283
+	.word ScrCmd_284                                    ; 284
+	.word ScrCmd_285                                    ; 285
+	.word ScrCmd_286                                    ; 286
+	.word ScrCmd_287                                    ; 287
+	.word ScrCmd_288                                    ; 288
+	.word ScrCmd_289                                    ; 289
+	.word ScrCmd_290                                    ; 290
+	.word ScrCmd_GivePokedex                                    ; 291
+	.word ScrCmd_292                                    ; 292
+	.word ScrCmd_GiveRunningShoes                       ; 293
+	.word ScrCmd_CheckBadge                             ; 294
+	.word ScrCmd_GiveBadge                              ; 295
+	.word ScrCmd_CountBadges                            ; 296
+	.word ScrCmd_297                                    ; 297
+	.word ScrCmd_298                                    ; 298
+	.word ScrCmd_CheckEscortMode                                    ; 299
+	.word ScrCmd_SetEscortMode                                    ; 300
+	.word ScrCmd_ClearEscortMode                                    ; 301
+	.word ScrCmd_302                                    ; 302
+	.word ScrCmd_303                                    ; 303
+	.word ScrCmd_304                                    ; 304
+	.word ScrCmd_305                                    ; 305
+	.word ScrCmd_306                                    ; 306
+	.word ScrCmd_307                                    ; 307
+	.word ScrCmd_308                                    ; 308
+	.word ScrCmd_309                                    ; 309
+	.word ScrCmd_310                                    ; 310
+	.word ScrCmd_311                                    ; 311
+	.word ScrCmd_BufferDayCareMonNicks                                    ; 312
+	.word ScrCmd_GetDayCareState                                    ; 313
+	.word ScrCmd_EcruteakGymInit                                    ; 314
+	.word ScrCmd_315                                    ; 315
+	.word ScrCmd_316                                    ; 316
+	.word ScrCmd_317                                    ; 317
+	.word ScrCmd_CianwoodGymInit                                    ; 318
+	.word ScrCmd_CianwoodGymTurnWinch                                    ; 319
+	.word ScrCmd_VermilionGymInit                                    ; 320
+	.word ScrCmd_VermilionGymLockAction                                    ; 321
+	.word ScrCmd_VermilionGymCanCheck                                    ; 322
+	.word ScrCmd_ResampleVermilionGymCans                                    ; 323
+	.word ScrCmd_VioletGymInit                                    ; 324
+	.word ScrCmd_325                                    ; 325
+	.word ScrCmd_AzaleaGymInit                                    ; 326
+	.word ScrCmd_AzaleaGymSpinarak                                    ; 327
+	.word ScrCmd_AzaleaGymSwitch                                    ; 328
+	.word ScrCmd_BlackthornGymInit                                    ; 329
+	.word ScrCmd_FuchsiaGymInit                                    ; 330
+	.word ScrCmd_ViridianGymInit                                    ; 331
+	.word ScrCmd_GetPartyCount                          ; 332
+	.word ScrCmd_333                                    ; 333
+	.word ScrCmd_334                                    ; 334
+	.word ScrCmd_335                                    ; 335
+	.word ScrCmd_BufferBerryName                                    ; 336
+	.word ScrCmd_BufferNatureName                                    ; 337
+	.word ScrCmd_338                                    ; 338
+	.word ScrCmd_MovePerson                           ; 339
+	.word ScrCmd_SetObjectMovementType                                    ; 340
+	.word ScrCmd_341                                    ; 341
+	.word ScrCmd_342                                    ; 342
+	.word ScrCmd_343                                    ; 343
+	.word ScrCmd_344                                    ; 344
+	.word ScrCmd_345                                    ; 345
+	.word ScrCmd_346                                    ; 346
+	.word ScrCmd_347                                    ; 347
+	.word ScrCmd_348                                    ; 348
+	.word ScrCmd_PartySelectUI                                    ; 349
+	.word ScrCmd_350                                    ; 350
+	.word ScrCmd_PartySelect                                    ; 351
+	.word ScrCmd_ChooseMoveUI                                    ; 352
+	.word ScrCmd_GetMoveSelection                                    ; 353
+	.word ScrCmd_GetPartyMonSpecies                     ; 354
+	.word ScrCmd_PartymonIsMine                         ; 355
+	.word ScrCmd_PartyCountNotEgg                       ; 356
+	.word ScrCmd_CountAliveMons                                    ; 357
+	.word ScrCmd_PokeathlonPartyCount                                    ; 358
+	.word ScrCmd_359                                    ; 359
+	.word ScrCmd_SubMoneyVar                            ; 360
+	.word ScrCmd_RetrieveDayCareMon                                    ; 361
+	.word ScrCmd_GiveLoanMon                                    ; 362
+	.word ScrCmd_CheckReturnLoanMon                                    ; 363
+	.word ScrCmd_TakeMon                                    ; 364
+	.word ScrCmd_ResetDayCareEgg                                    ; 365
+	.word ScrCmd_GiveDayCareEgg                                    ; 366
+	.word ScrCmd_BufferDayCareWithdrawCost                                    ; 367
+	.word ScrCmd_HasEnoughMoneyVar                      ; 368
+	.word ScrCmd_EggHatchAnim                                    ; 369
+	.word ScrCmd_370                                    ; 370
+	.word ScrCmd_BufferDayCareMonGrowth                                    ; 371
+	.word ScrCmd_GetTailDayCareMonSpeciesAndNick                                    ; 372
+	.word ScrCmd_PutMonInDayCare                                    ; 373
+	.word ScrCmd_374                                    ; 374
+	.word ScrCmd_375                                    ; 375
+	.word ScrCmd_376                                    ; 376
+	.word ScrCmd_377                                    ; 377
+	.word ScrCmd_378                                    ; 378
+	.word ScrCmd_379                                    ; 379
+	.word ScrCmd_Random                                    ; 380
+	.word ScrCmd_381                                    ; 381
+	.word ScrCmd_382                                    ; 382
+	.word ScrCmd_383                                    ; 383
+	.word ScrCmd_384                                    ; 384
+	.word ScrCmd_BufferDayCareMonStats                                    ; 385
+	.word ScrCmd_GetPlayerFacing                                    ; 386
+	.word ScrCmd_GetDayCareCompatibility                                    ; 387
+	.word ScrCmd_CheckDayCareEgg                                    ; 388
+	.word ScrCmd_PlayerHasSpecies                                    ; 389
+	.word ScrCmd_SizeRecordCompare                                    ; 390
+	.word ScrCmd_SizeRecordUpdate                                    ; 391
+	.word ScrCmd_BufferMonSize                                    ; 392
+	.word ScrCmd_BufferRecordSize                                    ; 393
+	.word ScrCmd_394                                    ; 394
+	.word ScrCmd_395                                    ; 395
+	.word ScrCmd_CountMonMoves                                    ; 396
+	.word ScrCmd_397                                    ; 397
+	.word ScrCmd_398                                    ; 398
+	.word ScrCmd_BufferPartyMonMoveName                                    ; 399
+	.word ScrCmd_StrengthFlagAction                                    ; 400
+	.word ScrCmd_401                                    ; 401
+	.word ScrCmd_402                                    ; 402
+	.word ScrCmd_403                                    ; 403
+	.word ScrCmd_404                                    ; 404
+	.word ScrCmd_405                                    ; 405
+	.word ScrCmd_406                                    ; 406
+	.word ScrCmd_407                                    ; 407
+	.word ScrCmd_408                                    ; 408
+	.word ScrCmd_409                                    ; 409
+	.word ScrCmd_410                                    ; 410
+	.word ScrCmd_411                                    ; 411
+	.word ScrCmd_412                                    ; 412
+	.word ScrCmd_413                                    ; 413
+	.word ScrCmd_414                                    ; 414
+	.word ScrCmd_415                                    ; 415
+	.word ScrCmd_416                                    ; 416
+	.word ScrCmd_417                                    ; 417
+	.word ScrCmd_418                                    ; 418
+	.word ScrCmd_419                                    ; 419
+	.word ScrCmd_420                                    ; 420
+	.word ScrCmd_421                                    ; 421
+	.word ScrCmd_422                                    ; 422
+	.word ScrCmd_CheckJohtoDexComplete                                    ; 423
+	.word ScrCmd_CheckNationalDexComplete                                    ; 424
+	.word ScrCmd_425                                    ; 425
+	.word ScrCmd_KenyaCheck                                    ; 426
+	.word ScrCmd_427                                    ; 427
+	.word ScrCmd_428                                    ; 428
+	.word ScrCmd_CountFossils                           ; 429
+	.word ScrCmd_SetPhoneCall                           ; 430
+	.word ScrCmd_RunPhoneCall                           ; 431
+	.word ScrCmd_GetFossilPokemon                       ; 432
+	.word ScrCmd_GetFossilMinimumAmount                 ; 433
+	.word ScrCmd_434                                    ; 434
+	.word ScrCmd_SurvivePoisoning                                    ; 435
+	.word ScrCmd_436                                    ; 436
+	.word ScrCmd_DebugWatch                             ; 437
+	.word ScrCmd_GetStdMsgNaix                          ; 438
+	.word ScrCmd_NonNpcMsgExtern                        ; 439
+	.word ScrCmd_MsgboxExtern                           ; 440
+	.word ScrCmd_441                                    ; 441
+	.word ScrCmd_442                                    ; 442
+	.word ScrCmd_443                                    ; 443
+	.word ScrCmd_444                                    ; 444
+	.word ScrCmd_445                                    ; 445
+	.word ScrCmd_446                                    ; 446
+	.word ScrCmd_SafariZoneAction                                    ; 447
+	.word ScrCmd_448                                    ; 448
+	.word ScrCmd_449                                    ; 449
+	.word ScrCmd_450                                    ; 450
+	.word ScrCmd_451                                    ; 451
+	.word ScrCmd_452                                    ; 452
+	.word ScrCmd_453                                    ; 453
+	.word ScrCmd_454                                    ; 454
+	.word ScrCmd_455                                    ; 455
+	.word ScrCmd_456                                    ; 456
+	.word ScrCmd_457                                    ; 457
+	.word ScrCmd_458                                    ; 458
+	.word ScrCmd_459                                    ; 459
+	.word ScrCmd_LoadPhoneDat                                    ; 460
+	.word ScrCmd_GetPhoneContactMsgIds                                    ; 461
+	.word ScrCmd_462                                    ; 462
+	.word ScrCmd_463                                    ; 463
+	.word ScrCmd_CreateRoamer                                    ; 464
+	.word ScrCmd_465                                    ; 465
+	.word ScrCmd_466                                    ; 466
+	.word ScrCmd_MoveRelearnerInit                                    ; 467
+	.word ScrCmd_MoveTutorInit                                    ; 468
+	.word ScrCmd_MoveRelearnerGetResult                                    ; 469
+	.word ScrCmd_LoadNPCTrade                                    ; 470
+	.word ScrCmd_471                                    ; 471
+	.word ScrCmd_NPCTradeGetReqSpecies                                    ; 472
+	.word ScrCmd_NPCTradeExec                                    ; 473
+	.word ScrCmd_NPCTradeEnd                                    ; 474
+	.word ScrCmd_475                                    ; 475
+	.word ScrCmd_476                                    ; 476
+	.word ScrCmd_NatDexFlagAction                                    ; 477
+	.word ScrCmd_478                                    ; 478
+	.word ScrCmd_479                                    ; 479
+	.word ScrCmd_MonHasRibbon                           ; 480
+	.word ScrCmd_GiveRibbon                             ; 481
+	.word ScrCmd_BufferRibbonName                                    ; 482
+	.word ScrCmd_GetEVTotal                                    ; 483
+	.word ScrCmd_GetWeekday                             ; 484
+	.word ScrCmd_485                                    ; 485
+	.word ScrCmd_Dummy                                  ; 486
+	.word ScrCmd_PokeCenAnim                            ; 487
+	.word ScrCmd_ElevatorAnim                                    ; 488
+	.word ScrCmd_MysteryGift                                    ; 489
+	.word ScrCmd_NopVar490                                    ; 490
+	.word ScrCmd_491                                    ; 491
+	.word ScrCmd_492                                    ; 492
+	.word ScrCmd_PromptEasyChat                         ; 493
+	.word ScrCmd_494                                    ; 494
+	.word ScrCmd_GetGameVersion                                    ; 495
+	.word ScrCmd_496                                    ; 496
+	.word ScrCmd_GetMonTypes                                    ; 497
+	.word ScrCmd_PrimoPasswordCheck1                    ; 498
+	.word ScrCmd_PrimoPasswordCheck2                    ; 499
+	.word ScrCmd_500                                    ; 500
+	.word ScrCmd_501                                    ; 501
+	.word ScrCmd_502                                    ; 502
+	.word ScrCmd_LotoIdGet                                    ; 503
+	.word ScrCmd_LotoIdSearch                                    ; 504
+	.word ScrCmd_LotoIdSet                                    ; 505
+	.word ScrCmd_BufferBoxMonNick                                    ; 506
+	.word ScrCmd_CountPCEmptySpace                      ; 507
+	.word ScrCmd_508                                    ; 508
+	.word ScrCmd_509                                    ; 509
+	.word ScrCmd_510                                    ; 510
+	.word ScrCmd_511                                    ; 511
+	.word ScrCmd_512                                    ; 512
+	.word ScrCmd_513                                    ; 513
+	.word ScrCmd_HallOfFameAnim                                    ; 514
+	.word ScrCmd_AddSpecialGameStat                     ; 515
+	.word ScrCmd_BufferFashionName                                    ; 516
+	.word ScrCmd_517                                    ; 517
+	.word ScrCmd_518                                    ; 518
+	.word ScrCmd_519                                    ; 519
+	.word ScrCmd_520                                    ; 520
+	.word ScrCmd_521                                    ; 521
+	.word ScrCmd_522                                    ; 522
+	.word ScrCmd_523                                    ; 523
+	.word ScrCmd_524                                    ; 524
+	.word ScrCmd_525                                    ; 525
+	.word ScrCmd_526                                    ; 526
+	.word ScrCmd_527                                    ; 527
+	.word ScrCmd_528                                    ; 528
+	.word ScrCmd_PartySelectMon                         ; 529
+	.word ScrCmd_530                                    ; 530
+	.word ScrCmd_BufferBackgroundName                                    ; 531
+	.word ScrCmd_CheckCoinsImmediate                                    ; 532
+	.word ScrCmd_CheckGiveCoins                         ; 533
+	.word ScrCmd_534                                    ; 534
+	.word ScrCmd_535                                    ; 535
+	.word ScrCmd_536                                    ; 536
+	.word ScrCmd_537                                    ; 537
+	.word ScrCmd_538                                    ; 538
+	.word ScrCmd_539                                    ; 539
+	.word ScrCmd_540                                    ; 540
+	.word ScrCmd_BufferIntEx                                    ; 541
+	.word ScrCmd_542                                    ; 542
+	.word ScrCmd_543                                    ; 543
+	.word ScrCmd_544                                    ; 544
+	.word ScrCmd_545                                    ; 545
+	.word ScrCmd_546                                    ; 546
+	.word ScrCmd_547                                    ; 547
+	.word ScrCmd_548                                    ; 548
+	.word ScrCmd_549                                    ; 549
+	.word ScrCmd_550                                    ; 550
+	.word ScrCmd_551                                    ; 551
+	.word ScrCmd_552                                    ; 552
+	.word ScrCmd_553                                    ; 553
+	.word ScrCmd_554                                    ; 554
+	.word ScrCmd_555                                    ; 555
+	.word ScrCmd_556                                    ; 556
+	.word ScrCmd_CheckBattlePoints                                    ; 557
+	.word ScrCmd_558                                    ; 558
+	.word ScrCmd_559                                    ; 559
+	.word ScrCmd_560                                    ; 560
+	.word ScrCmd_561                                    ; 561
+	.word ScrCmd_MultiBattle                                    ; 562
+	.word ScrCmd_563                                    ; 563
+	.word ScrCmd_564                                    ; 564
+	.word ScrCmd_565                                    ; 565
+	.word ScrCmd_566                                    ; 566
+	.word ScrCmd_567                                    ; 567
+	.word ScrCmd_568                                    ; 568
+	.word ScrCmd_569                                    ; 569
+	.word ScrCmd_CheckCoinsVar                                    ; 570
+	.word ScrCmd_571                                    ; 571
+	.word ScrCmd_572                                    ; 572
+	.word ScrCmd_573                                    ; 573
+	.word ScrCmd_574                                    ; 574
+	.word ScrCmd_575                                    ; 575
+	.word ScrCmd_576                                    ; 576
+	.word ScrCmd_577                                    ; 577
+	.word ScrCmd_578                                    ; 578
+	.word ScrCmd_579                                    ; 579
+	.word ScrCmd_BufferSealName                                    ; 580
+	.word ScrCmd_LockLastTalked                                    ; 581
+	.word ScrCmd_582                                    ; 582
+	.word ScrCmd_583                                    ; 583
+	.word ScrCmd_PartyLegalCheck                                    ; 584
+	.word ScrCmd_585                                    ; 585
+	.word ScrCmd_586                                    ; 586
+	.word ScrCmd_587                                    ; 587
+	.word ScrCmd_588                                    ; 588
+	.word ScrCmd_WildBattle                                    ; 589
+	.word ScrCmd_GetTrcardStars                                    ; 590
+	.word ScrCmd_591                                    ; 591
+	.word ScrCmd_592                                    ; 592
+	.word ScrCmd_593                                    ; 593
+	.word ScrCmd_594                                    ; 594
+	.word ScrCmd_595                                    ; 595
+	.word ScrCmd_596                                    ; 596
+	.word ScrCmd_597                                    ; 597
+	.word ScrCmd_598                                    ; 598
+	.word ScrCmd_599                                    ; 599
+	.word ScrCmd_600                                    ; 600
+	.word ScrCmd_FollowPokeFacePlayer                                    ; 601
+	.word ScrCmd_602                                    ; 602
+	.word ScrCmd_603                                    ; 603
+	.word ScrCmd_604                                    ; 604
+	.word ScrCmd_605                                    ; 605
+	.word ScrCmd_606                                    ; 606
+	.word ScrCmd_607                                    ; 607
+	.word ScrCmd_608                                    ; 608
+	.word ScrCmd_609                                    ; 609
+	.word ScrCmd_610                                    ; 610
+	.word ScrCmd_Pokeathlon                                    ; 611
+	.word ScrCmd_612                                    ; 612
+	.word ScrCmd_GetPhoneContactRandomGiftBerry         ; 613
+	.word ScrCmd_GetPhoneContactGiftItem                ; 614
+	.word ScrCmd_CameronPhoto                           ; 615
+	.word ScrCmd_616                                    ; 616
+	.word ScrCmd_617                                    ; 617
+	.word ScrCmd_PhotoAlbumIsFull                       ; 618
+	.word ScrCmd_619                                    ; 619
+	.word ScrCmd_620                                    ; 620
+	.word ScrCmd_621                                    ; 621
+	.word ScrCmd_622                                    ; 622
+	.word ScrCmd_AnimApricornTree                                    ; 623
+	.word ScrCmd_ApricornTreeGetApricorn                                    ; 624
+	.word ScrCmd_GiveApricornFromTree                                    ; 625
+	.word ScrCmd_BufferApricornName                                    ; 626
+	.word ScrCmd_627                                    ; 627
+	.word ScrCmd_628                                    ; 628
+	.word ScrCmd_629                                    ; 629
+	.word ScrCmd_630                                    ; 630
+	.word ScrCmd_631                                    ; 631
+	.word ScrCmd_CountPartyMonsOfSpecies                                    ; 632
+	.word ScrCmd_633                                    ; 633
+	.word ScrCmd_634                                    ; 634
+	.word ScrCmd_635                                    ; 635
+	.word ScrCmd_636                                    ; 636
+	.word ScrCmd_637                                    ; 637
+	.word ScrCmd_638                                    ; 638
+	.word ScrCmd_639                                    ; 639
+	.word ScrCmd_640                                    ; 640
+	.word ScrCmd_641                                    ; 641
+	.word ScrCmd_642                                    ; 642
+	.word ScrCmd_643                                    ; 643
+	.word ScrCmd_644                                    ; 644
+	.word ScrCmd_645                                    ; 645
+	.word ScrCmd_646                                    ; 646
+	.word ScrCmd_647                                    ; 647
+	.word ScrCmd_648                                    ; 648
+	.word ScrCmd_ScratchOffCard                                    ; 649
+	.word ScrCmd_ScratchOffCardEnd                                    ; 650
+	.word ScrCmd_GetScratchOffPrize                                    ; 651
+	.word ScrCmd_652                                    ; 652
+	.word ScrCmd_MoveTutorChooseMove                                    ; 653
+	.word ScrCmd_TutorMoveTeachInSlot                                    ; 654
+	.word ScrCmd_TutorMoveGetPrice                                    ; 655
+	.word ScrCmd_656                                    ; 656
+	.word ScrCmd_StatJudge                                    ; 657
+	.word ScrCmd_BufferStatName                                    ; 658
+	.word ScrCmd_SetMonForme                                    ; 659
+	.word ScrCmd_BufferTrainerName                                    ; 660
+	.word ScrCmd_661                                    ; 661
+	.word ScrCmd_662                                    ; 662
+	.word ScrCmd_663                                    ; 663
+	.word ScrCmd_664                                    ; 664
+	.word ScrCmd_665                                    ; 665
+	.word ScrCmd_666                                    ; 666
+	.word ScrCmd_667                                    ; 667
+	.word ScrCmd_BufferTypeName                         ; 668
+	.word ScrCmd_GetItemQuantity                        ; 669
+	.word ScrCmd_670                                    ; 670
+	.word ScrCmd_671                                    ; 671
+	.word ScrCmd_672                                    ; 672
+	.word ScrCmd_GetOwnedRotomFormes                                    ; 673
+	.word ScrCmd_CountTranformedRotomsInParty                                    ; 674
+	.word ScrCmd_UpdateRotomForme                                    ; 675
+	.word ScrCmd_GetPartyMonForme                                    ; 676
+	.word ScrCmd_677                                    ; 677
+	.word ScrCmd_678                                    ; 678
+	.word ScrCmd_679                                    ; 679
+	.word ScrCmd_AddSpecialGameStat2                                    ; 680
+	.word ScrCmd_681                                    ; 681
+	.word ScrCmd_682                                    ; 682
+	.word ScrCmd_683                                    ; 683
+	.word ScrCmd_684                                    ; 684
+	.word ScrCmd_GetPlayerXYZ                                    ; 685
+	.word ScrCmd_686                                    ; 686
+	.word ScrCmd_687                                    ; 687
+	.word ScrCmd_688                                    ; 688
+	.word ScrCmd_CommSanitizeParty                                    ; 689
+	.word ScrCmd_DayCareSanitizeMon                                    ; 690
+	.word ScrCmd_691                                    ; 691
+	.word ScrCmd_BufferBattleHallStreak                                    ; 692
+	.word ScrCmd_BattleHallCountUsedSpecies                                    ; 693
+	.word ScrCmd_BattleHallGetTotalStreak                                    ; 694
+	.word ScrCmd_695                                    ; 695
+	.word ScrCmd_696                                    ; 696
+	.word ScrCmd_697                                    ; 697
+	.word ScrCmd_FollowerPokeIsEventTrigger                                    ; 698
+	.word ScrCmd_699                                    ; 699
+	.word ScrCmd_700                                    ; 700
+	.word ScrCmd_701                                    ; 701
+	.word ScrCmd_702                                    ; 702
+	.word ScrCmd_703                                    ; 703
+	.word ScrCmd_704                                    ; 704
+	.word ScrCmd_705                                    ; 705
+	.word ScrCmd_706                                    ; 706
+	.word ScrCmd_707                                    ; 707
+	.word ScrCmd_708                                    ; 708
+	.word ScrCmd_709                                    ; 709
+	.word ScrCmd_710                                    ; 710
+	.word ScrCmd_FollowPokeInteract                                    ; 711
+	.word ScrCmd_712                                    ; 712
+	.word ScrCmd_AlphPuzzle                                    ; 713
+	.word ScrCmd_714                                    ; 714
+	.word ScrCmd_UpdateDayCareMonObjects                                    ; 715
+	.word ScrCmd_716                                    ; 716
+	.word ScrCmd_717                                    ; 717
+	.word ScrCmd_718                                    ; 718
+	.word ScrCmd_719                                    ; 719
+	.word ScrCmd_720                                    ; 720
+	.word ScrCmd_721                                    ; 721
+	.word ScrCmd_722                                    ; 722
+	.word ScrCmd_723                                    ; 723
+	.word ScrCmd_724                                    ; 724
+	.word ScrCmd_725                                    ; 725
+	.word ScrCmd_726                                    ; 726
+	.word ScrCmd_727                                    ; 727
+	.word ScrCmd_728                                    ; 728
+	.word ScrCmd_729                                    ; 729
+	.word ScrCmd_730                                    ; 730
+	.word ScrCmd_731                                    ; 731
+	.word ScrCmd_732                                    ; 732
+	.word ScrCmd_733                                    ; 733
+	.word ScrCmd_734                                    ; 734
+	.word ScrCmd_735                                    ; 735
+	.word ScrCmd_736                                    ; 736
+	.word ScrCmd_737                                    ; 737
+	.word ScrCmd_738                                    ; 738
+	.word ScrCmd_739                                    ; 739
+	.word ScrCmd_740                                    ; 740
+	.word ScrCmd_741                                    ; 741
+	.word ScrCmd_742                                    ; 742
+	.word ScrCmd_743                                    ; 743
+	.word ScrCmd_744                                    ; 744
+	.word ScrCmd_BufferPokeathlonCourseName                                    ; 745
+	.word ScrCmd_TouchscreenMenuHide                    ; 746
+	.word ScrCmd_TouchscreenMenuShow                    ; 747
+	.word ScrCmd_GetMenuChoice                          ; 748
+	.word ScrCmd_MenuInitStdGmm                         ; 749
+	.word ScrCmd_MenuInit                               ; 750
+	.word ScrCmd_MenuItemAdd                            ; 751
+	.word ScrCmd_MenuExec                               ; 752
+	.word ScrCmd_753                                    ; 753
+	.word ScrCmd_754                                    ; 754
+	.word ScrCmd_755                                    ; 755
+	.word ScrCmd_756                                    ; 756
+	.word ScrCmd_757                                    ; 757
+	.word ScrCmd_758                                    ; 758
+	.word ScrCmd_759                                    ; 759
+	.word ScrCmd_760                                    ; 760
+	.word ScrCmd_761                                    ; 761
+	.word ScrCmd_762                                    ; 762
+	.word ScrCmd_763                                    ; 763
+	.word ScrCmd_764                                    ; 764
+	.word ScrCmd_765                                    ; 765
+	.word ScrCmd_766                                    ; 766
+	.word ScrCmd_767                                    ; 767
+	.word ScrCmd_768                                    ; 768
+	.word ScrCmd_769                                    ; 769
+	.word ScrCmd_770                                    ; 770
+	.word ScrCmd_771                                    ; 771
+	.word ScrCmd_772                                    ; 772
+	.word ScrCmd_Cinematic                                    ; 773
+	.word ScrCmd_774                                    ; 774
+	.word ScrCmd_775                                    ; 775
+	.word ScrCmd_GiveTogepiEgg                          ; 776
+	.word ScrCmd_777                                    ; 777
+	.word ScrCmd_GiveSpikyEarPichu                                    ; 778
+	.word ScrCmd_RadioMusicIsPlaying                                    ; 779
+	.word ScrCmd_CasinoGame                                    ; 780
+	.word ScrCmd_781                                    ; 781
+	.word ScrCmd_MartSell                                    ; 782
+	.word ScrCmd_SetFollowPokeInhibitState                                    ; 783
+	.word ScrCmd_ScriptOverlayCmd                                    ; 784
+	.word ScrCmd_BugContestAction                                    ; 785
+	.word ScrCmd_BufferBugContestWinner                                    ; 786
+	.word ScrCmd_JudgeBugContest                                    ; 787
+	.word ScrCmd_BufferBugContestMonNick                                    ; 788
+	.word ScrCmd_BugContestGetTimeLeft                                    ; 789
+	.word ScrCmd_IsBugContestantRegistered                                    ; 790
+	.word ScrCmd_791                                    ; 791
+	.word ScrCmd_792                                    ; 792
+	.word ScrCmd_BankTransaction                        ; 793
+	.word ScrCmd_CheckBankBalance                       ; 794
+	.word ScrCmd_795                                    ; 795
+	.word ScrCmd_796                                    ; 796
+	.word ScrCmd_797                                    ; 797
+	.word ScrCmd_BufferRulesetName                                    ; 798
+	.word ScrCmd_799                                    ; 799
+	.word ScrCmd_800                                    ; 800
+	.word ScrCmd_801                                    ; 801
+	.word ScrCmd_802                                    ; 802
+	.word ScrCmd_803                                    ; 803
+	.word ScrCmd_804                                    ; 804
+	.word ScrCmd_805                                    ; 805
+	.word ScrCmd_806                                    ; 806
+	.word ScrCmd_807                                    ; 807
+	.word ScrCmd_808                                    ; 808
+	.word ScrCmd_809                                    ; 809
+	.word ScrCmd_810                                    ; 810
+	.word ScrCmd_811                                    ; 811
+	.word ScrCmd_812                                    ; 812
+	.word ScrCmd_MomGiftCheck                                    ; 813
+	.word ScrCmd_814                                    ; 814
+	.word ScrCmd_815                                    ; 815
+	.word ScrCmd_UnownCircle                                    ; 816
+	.word ScrCmd_817                                    ; 817
+	.word ScrCmd_MystriStageGymmickInit                                    ; 818
+	.word ScrCmd_819                                    ; 819
+	.word ScrCmd_820                                    ; 820
+	.word ScrCmd_GetBuenasPassword                                    ; 821
+	.word ScrCmd_822                                    ; 822
+	.word ScrCmd_823                                    ; 823
+	.word ScrCmd_824                                    ; 824
+	.word ScrCmd_825                                    ; 825
+	.word ScrCmd_826                                    ; 826
+	.word ScrCmd_GetPartymonForme                       ; 827
+	.word ScrCmd_828                                    ; 828
+	.word ScrCmd_829                                    ; 829
+	.word ScrCmd_830                                    ; 830
+	.word ScrCmd_831                                    ; 831
+	.word ScrCmd_832                                    ; 832
+	.word ScrCmd_833                                    ; 833
+	.word ScrCmd_834                                    ; 834
+	.word ScrCmd_835                                    ; 835
+	.word ScrCmd_836                                    ; 836
+	.word ScrCmd_837                                    ; 837
+	.word ScrCmd_BankOrWalletIsFull                     ; 838
+	.word ScrCmd_839                                    ; 839
+	.word ScrCmd_840                                    ; 840
+	.word ScrCmd_841                                    ; 841
+	.word ScrCmd_842                                    ; 842
+	.word ScrCmd_BufferItemNameIndef                    ; 843
+	.word ScrCmd_BufferItemNamePlural                                    ; 844
+	.word ScrCmd_BufferPartyMonSpeciesNameIndef                                    ; 845
+	.word ScrCmd_BufferSpeciesNameIndef                                    ; 846
+	.word ScrCmd_BufferDPPtFriendStarterSpeciesNameIndef                                    ; 847
+	.word ScrCmd_BufferFashionNameIndef                                    ; 848
+	.word ScrCmd_BufferTrainerClassNameIndef                                    ; 849
+	.word ScrCmd_BufferSealNamePlural                                    ; 850
+	.word ScrCmd_Capitalize                                    ; 851
+	.word ScrCmd_BufferDeptStoreFloorNo                                    ; 852
+gScriptCmdTable_end:
+
 	.bss
 
 _021D415C:
-	.space 0x10
+	.space 0x1
+
+	.balign 4, 0
+
+_021D4160:
+	.space 0x4
+
+_021D4164:
+	.space 0x4
+
+_021D4168:
+	.space 0x4
 
 	.text
 
@@ -566,7 +1475,7 @@ ScrCmd_ObjectGoTo: ; 0x02040C44
 	bl ScriptReadWord
 	add r7, r0, #0
 	ldr r0, [r6]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	cmp r4, r0
 	bne _02040C78
 	ldr r1, [r5, #8]
@@ -667,7 +1576,7 @@ ScrCmd_GoToIf: ; 0x02040D04
 	add r1, r0, #0
 	lsl r0, r4, #1
 	add r3, r4, r0
-	ldr r0, _02040D34 ; =_020FAC9C
+	ldr r0, _02040D34 ; =sConditionTable
 	ldrb r2, [r5, #2]
 	add r0, r0, r3
 	ldrb r0, [r2, r0]
@@ -681,7 +1590,7 @@ _02040D30:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02040D34: .word _020FAC9C
+_02040D34: .word sConditionTable
 	thumb_func_end ScrCmd_GoToIf
 
 	thumb_func_start ScrCmd_CallIf
@@ -696,7 +1605,7 @@ ScrCmd_CallIf: ; 0x02040D38
 	add r1, r0, #0
 	lsl r0, r4, #1
 	add r3, r4, r0
-	ldr r0, _02040D68 ; =_020FAC9C
+	ldr r0, _02040D68 ; =sConditionTable
 	ldrb r2, [r5, #2]
 	add r0, r0, r3
 	ldrb r0, [r2, r0]
@@ -710,7 +1619,7 @@ _02040D64:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02040D68: .word _020FAC9C
+_02040D68: .word sConditionTable
 	thumb_func_end ScrCmd_CallIf
 
 	thumb_func_start ScrCmd_SetFlag
@@ -1059,7 +1968,7 @@ _02040FFC: .word sub_02041000
 
 	thumb_func_start sub_02041000
 sub_02041000: ; 0x02041000
-	ldr r0, _02041014 ; =gMain
+	ldr r0, _02041014 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -1070,7 +1979,7 @@ _0204100E:
 	mov r0, #0
 	bx lr
 	nop
-_02041014: .word gMain
+_02041014: .word gSystem
 	thumb_func_end sub_02041000
 
 	thumb_func_start ScrCmd_348
@@ -1095,7 +2004,7 @@ _0204103C: .word sub_02041040
 
 	thumb_func_start sub_02041040
 sub_02041040: ; 0x02041040
-	ldr r1, _02041060 ; =gMain
+	ldr r1, _02041060 ; =gSystem
 	ldr r2, [r1, #0x48]
 	mov r1, #3
 	tst r1, r2
@@ -1113,11 +2022,11 @@ _0204105A:
 	mov r0, #0
 	bx lr
 	nop
-_02041060: .word gMain
+_02041060: .word gSystem
 	thumb_func_end sub_02041040
 
-	thumb_func_start ScrCmd_050
-ScrCmd_050: ; 0x02041064
+	thumb_func_start ScrCmd_WaitButton
+ScrCmd_WaitButton: ; 0x02041064
 	push {r3, lr}
 	ldr r1, _02041070 ; =sub_02041074
 	bl SetupNativeScript
@@ -1125,12 +2034,12 @@ ScrCmd_050: ; 0x02041064
 	pop {r3, pc}
 	.balign 4, 0
 _02041070: .word sub_02041074
-	thumb_func_end ScrCmd_050
+	thumb_func_end ScrCmd_WaitButton
 
 	thumb_func_start sub_02041074
 sub_02041074: ; 0x02041074
 	push {r3, lr}
-	ldr r1, _020410DC ; =gMain
+	ldr r1, _020410DC ; =gSystem
 	ldr r2, [r1, #0x48]
 	mov r1, #3
 	add r3, r2, #0
@@ -1146,7 +2055,7 @@ _02041086:
 	ldr r0, [r0]
 	mov r1, #0
 	ldr r0, [r0, #0x40]
-	bl sub_0205C660
+	bl PlayerAvatar_SetFacingDirection
 	b _020410D8
 _0204109A:
 	mov r3, #0x80
@@ -1156,7 +2065,7 @@ _0204109A:
 	ldr r0, [r0]
 	mov r1, #1
 	ldr r0, [r0, #0x40]
-	bl sub_0205C660
+	bl PlayerAvatar_SetFacingDirection
 	b _020410D8
 _020410AE:
 	mov r3, #0x20
@@ -1166,7 +2075,7 @@ _020410AE:
 	ldr r0, [r0]
 	mov r1, #2
 	ldr r0, [r0, #0x40]
-	bl sub_0205C660
+	bl PlayerAvatar_SetFacingDirection
 	b _020410D8
 _020410C2:
 	mov r3, #0x10
@@ -1175,7 +2084,7 @@ _020410C2:
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C660
+	bl PlayerAvatar_SetFacingDirection
 	b _020410D8
 _020410D4:
 	mov r0, #0
@@ -1184,7 +2093,7 @@ _020410D8:
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-_020410DC: .word gMain
+_020410DC: .word gSystem
 	thumb_func_end sub_02041074
 
 	thumb_func_start ScrCmd_051
@@ -1200,7 +2109,7 @@ _020410EC: .word sub_020410F0
 
 	thumb_func_start sub_020410F0
 sub_020410F0: ; 0x020410F0
-	ldr r0, _0204110C ; =gMain
+	ldr r0, _0204110C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -1217,11 +2126,11 @@ _02041108:
 	mov r0, #0
 	bx lr
 	.balign 4, 0
-_0204110C: .word gMain
+_0204110C: .word gSystem
 	thumb_func_end sub_020410F0
 
-	thumb_func_start ScrCmd_052
-ScrCmd_052: ; 0x02041110
+	thumb_func_start ScrCmd_OpenMsg
+ScrCmd_OpenMsg: ; 0x02041110
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -1260,10 +2169,10 @@ ScrCmd_052: ; 0x02041110
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_052
+	thumb_func_end ScrCmd_OpenMsg
 
-	thumb_func_start ScrCmd_053
-ScrCmd_053: ; 0x02041168
+	thumb_func_start ScrCmd_CloseMsg
+ScrCmd_CloseMsg: ; 0x02041168
 	push {r4, r5, r6, lr}
 	add r0, #0x80
 	ldr r5, [r0]
@@ -1290,7 +2199,7 @@ ScrCmd_053: ; 0x02041168
 	mov r0, #0
 	strb r0, [r6]
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_053
+	thumb_func_end ScrCmd_CloseMsg
 
 	thumb_func_start ScrCmd_054
 ScrCmd_054: ; 0x020411A4
@@ -1442,12 +2351,12 @@ _020412C6:
 	bne _020412E0
 	mov r1, #3
 	mov r2, #1
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	b _020412E8
 _020412E0:
 	mov r1, #3
 	mov r2, #2
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _020412E8:
 	ldr r0, [sp, #4]
 	ldrh r3, [r0]
@@ -1460,12 +2369,12 @@ _020412E8:
 	bne _02041304
 	mov r1, #3
 	mov r2, #4
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	b _0204130C
 _02041304:
 	mov r1, #3
 	mov r2, #5
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _0204130C:
 	ldrh r0, [r6]
 	cmp r0, #0
@@ -1485,8 +2394,8 @@ _02041320:
 	.balign 4, 0
 	thumb_func_end sub_02041270
 
-	thumb_func_start ScrCmd_055
-ScrCmd_055: ; 0x02041328
+	thumb_func_start ScrCmd_DirectionSignpost
+ScrCmd_DirectionSignpost: ; 0x02041328
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	add r5, r0, #0
@@ -1560,10 +2469,10 @@ ScrCmd_055: ; 0x02041328
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _020413D0: .word 0x00020A0F
-	thumb_func_end ScrCmd_055
+	thumb_func_end ScrCmd_DirectionSignpost
 
-	thumb_func_start ScrCmd_056
-ScrCmd_056: ; 0x020413D4
+	thumb_func_start ScrCmd_055
+ScrCmd_055: ; 0x020413D4
 	push {r3, r4, r5, lr}
 	add r1, r0, #0
 	add r1, #0x80
@@ -1591,7 +2500,7 @@ ScrCmd_056: ; 0x020413D4
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_056
+	thumb_func_end ScrCmd_055
 
 	thumb_func_start ScrCmd_057
 ScrCmd_057: ; 0x02041410
@@ -1648,8 +2557,8 @@ _02041468:
 	pop {r3, pc}
 	thumb_func_end sub_02041454
 
-	thumb_func_start ScrCmd_059
-ScrCmd_059: ; 0x0204146C
+	thumb_func_start ScrCmd_TrainerTips
+ScrCmd_TrainerTips: ; 0x0204146C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	add r5, r0, #0
@@ -1723,7 +2632,7 @@ ScrCmd_059: ; 0x0204146C
 	nop
 _02041518: .word 0x00020A0F
 _0204151C: .word sub_02041520
-	thumb_func_end ScrCmd_059
+	thumb_func_end ScrCmd_TrainerTips
 
 	thumb_func_start sub_02041520
 sub_02041520: ; 0x02041520
@@ -1753,7 +2662,7 @@ sub_02041520: ; 0x02041520
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _0204155A:
-	ldr r0, _020415C0 ; =gMain
+	ldr r0, _020415C0 ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -1788,7 +2697,7 @@ _02041584:
 	ldr r0, [r0]
 	add r1, r4, #0
 	ldr r0, [r0, #0x40]
-	bl sub_0205C660
+	bl PlayerAvatar_SetFacingDirection
 	mov r0, #0
 	strh r0, [r6]
 	add r5, #0x80
@@ -1807,7 +2716,7 @@ _020415B8:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _020415BC: .word 0x0000FFFF
-_020415C0: .word gMain
+_020415C0: .word gSystem
 	thumb_func_end sub_02041520
 
 	thumb_func_start ScrCmd_060
@@ -1837,7 +2746,7 @@ sub_020415E0: ; 0x020415E0
 	lsr r1, r1, #0x10
 	bl GetVarPointer
 	add r6, r0, #0
-	ldr r0, _0204166C ; =gMain
+	ldr r0, _0204166C ; =gSystem
 	ldr r1, _02041670 ; =0x0000FFFF
 	ldr r2, [r0, #0x48]
 	mov r0, #3
@@ -1885,7 +2794,7 @@ _02041640:
 	add r5, #0x80
 	ldr r0, [r5]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C660
+	bl PlayerAvatar_SetFacingDirection
 	mov r0, #0
 	strh r0, [r6]
 	add r0, r4, #0
@@ -1901,7 +2810,7 @@ _02041666:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	nop
-_0204166C: .word gMain
+_0204166C: .word gSystem
 _02041670: .word 0x0000FFFF
 	thumb_func_end sub_020415E0
 
@@ -2356,7 +3265,7 @@ ScrCmd_070: ; 0x02041988
 	lsr r1, r1, #0x18
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl ov01_021EDF9C
+	bl MoveTutorMenu_SetListItem
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ScrCmd_070
@@ -2504,8 +3413,8 @@ ScrCmd_842: ; 0x02041AE4
 	pop {r4, pc}
 	thumb_func_end ScrCmd_842
 
-	thumb_func_start ScrCmd_094
-ScrCmd_094: ; 0x02041B04
+	thumb_func_start ScrCmd_ApplyMovement
+ScrCmd_ApplyMovement: ; 0x02041B04
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -2539,12 +3448,12 @@ _02041B46:
 	ldr r1, [r5, #8]
 	add r0, r7, #0
 	add r1, r1, r6
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	mov r1, #4
+	mov r1, #4 ; UNK80_10_C_NUM_ACTIVE_MOVEMENT
 	bl FieldSysGetAttrAddr
 	ldrb r1, [r0]
 	add r5, #0x80
@@ -2553,10 +3462,10 @@ _02041B46:
 	strb r1, [r0]
 	ldr r0, [r5]
 	add r1, r4, #0
-	bl sub_02041CC4
+	bl _ScheduleObjectEventMovement
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_094
+	thumb_func_end ScrCmd_ApplyMovement
 
 	thumb_func_start ScrCmd_563
 ScrCmd_563: ; 0x02041B74
@@ -2602,11 +3511,11 @@ _02041BCA:
 	bl AllocFromHeap
 	add r4, r0, #0
 	ldr r0, [sp, #4]
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	lsl r0, r0, #0x10
 	lsr r6, r0, #0x10
 	ldr r0, [sp, #4]
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	lsl r0, r0, #0x10
 	ldr r2, [sp]
 	lsr r0, r0, #0x10
@@ -2659,12 +3568,12 @@ _02041C36:
 	strh r1, [r0, #2]
 	ldr r0, [sp, #4]
 	add r1, r4, #0
-	bl sub_02062214
+	bl EventObjectMovementMan_Create
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	mov r1, #4
+	mov r1, #4 ; UNK80_10_C_NUM_ACTIVE_MOVEMENT
 	bl FieldSysGetAttrAddr
 	ldrb r1, [r0]
 	add r5, #0x80
@@ -2673,7 +3582,7 @@ _02041C36:
 	strb r1, [r0]
 	ldr r0, [r5]
 	add r1, r6, #0
-	bl sub_02041CC4
+	bl _ScheduleObjectEventMovement
 	mov r0, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2697,28 +3606,28 @@ _02041C80:
 	pop {r3, pc}
 _02041C8E:
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end sub_02041C70
 
-	thumb_func_start ScrCmd_095
-ScrCmd_095: ; 0x02041C98
+	thumb_func_start ScrCmd_WaitMovement
+ScrCmd_WaitMovement: ; 0x02041C98
 	push {r3, lr}
-	ldr r1, _02041CA4 ; =sub_02041CA8
+	ldr r1, _02041CA4 ; =_IsAllMovementFinish
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-_02041CA4: .word sub_02041CA8
-	thumb_func_end ScrCmd_095
+_02041CA4: .word _IsAllMovementFinish
+	thumb_func_end ScrCmd_WaitMovement
 
-	thumb_func_start sub_02041CA8
-sub_02041CA8: ; 0x02041CA8
+	thumb_func_start _IsAllMovementFinish
+_IsAllMovementFinish: ; 0x02041CA8
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	mov r1, #4
+	mov r1, #4 ; UNK80_10_C_NUM_ACTIVE_MOVEMENT
 	bl FieldSysGetAttrAddr
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -2729,10 +3638,10 @@ _02041CBE:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02041CA8
+	thumb_func_end _IsAllMovementFinish
 
-	thumb_func_start sub_02041CC4
-sub_02041CC4: ; 0x02041CC4
+	thumb_func_start _ScheduleObjectEventMovement
+_ScheduleObjectEventMovement: ; 0x02041CC4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -2747,7 +3656,7 @@ sub_02041CC4: ; 0x02041CC4
 _02041CDE:
 	str r5, [r4, #0xc]
 	str r6, [r4, #4]
-	ldr r0, _02041CF4 ; =sub_02041CF8
+	ldr r0, _02041CF4 ; =_RunObjectEventMovement
 	add r1, r4, #0
 	mov r2, #0
 	str r7, [r4, #8]
@@ -2755,19 +3664,19 @@ _02041CDE:
 	str r0, [r4]
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02041CF4: .word sub_02041CF8
-	thumb_func_end sub_02041CC4
+_02041CF4: .word _RunObjectEventMovement
+	thumb_func_end _ScheduleObjectEventMovement
 
-	thumb_func_start sub_02041CF8
-sub_02041CF8: ; 0x02041CF8
+	thumb_func_start _RunObjectEventMovement
+_RunObjectEventMovement: ; 0x02041CF8
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	ldr r0, [r5, #0xc]
-	mov r1, #4
+	mov r1, #4 ; UNK80_10_C_NUM_ACTIVE_MOVEMENT
 	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	ldr r0, [r5, #4]
-	bl sub_02062260
+	bl EventObjectMovementMan_IsFinish
 	cmp r0, #1
 	bne _02041D3C
 	ldr r0, [r5, #4]
@@ -2792,10 +3701,10 @@ _02041D38:
 _02041D3C:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02041CF8
+	thumb_func_end _RunObjectEventMovement
 
-	thumb_func_start ScrCmd_096
-ScrCmd_096: ; 0x02041D40
+	thumb_func_start ScrCmd_LockAll
+ScrCmd_LockAll: ; 0x02041D40
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	add r0, #0x80
@@ -2807,37 +3716,37 @@ ScrCmd_096: ; 0x02041D40
 	cmp r0, #0
 	bne _02041D8A
 	ldr r0, [r5, #0x3c]
-	bl sub_0205F574
+	bl MapObjectMan_PauseAllMovement
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02041D90
 	add r0, r4, #0
-	bl sub_0205F648
+	bl MapObject_IsSingleMovementActive
 	cmp r0, #0
 	beq _02041D90
 	add r0, r4, #0
-	bl sub_0205F708
-	ldr r1, _02041D94 ; =sub_02041E60
+	bl MapObject_UnpauseMovement
+	ldr r1, _02041D94 ; =_WaitFollowPokePaused
 	add r0, r6, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _02041D8A:
 	add r0, r6, #0
-	bl ScrCmd_581
+	bl ScrCmd_LockLastTalked
 _02041D90:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_02041D94: .word sub_02041E60
-	thumb_func_end ScrCmd_096
+_02041D94: .word _WaitFollowPokePaused
+	thumb_func_end ScrCmd_LockAll
 
-	thumb_func_start sub_02041D98
-sub_02041D98: ; 0x02041D98
+	thumb_func_start _WaitMovementPauseBeforeMsg
+_WaitMovementPauseBeforeMsg: ; 0x02041D98
 	push {r4, r5, r6, lr}
 	add r0, #0x80
 	ldr r4, [r0]
@@ -2846,18 +3755,18 @@ sub_02041D98: ; 0x02041D98
 	bl FieldSysGetAttrAddr
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	ldr r1, _02041E5C ; =_021D415C
 	add r6, r0, #0
 	ldrb r2, [r1]
 	mov r1, #1
 	tst r1, r2
 	beq _02041DD2
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #1
 	bne _02041DD2
 	add r0, r6, #0
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	ldr r1, _02041E5C ; =_021D415C
 	mov r0, #0xfe
 	ldrb r2, [r1]
@@ -2870,11 +3779,11 @@ _02041DD2:
 	tst r0, r1
 	beq _02041DF6
 	ldr r0, [r5]
-	bl sub_0205F648
+	bl MapObject_IsSingleMovementActive
 	cmp r0, #0
 	bne _02041DF6
 	ldr r0, [r5]
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	ldr r1, _02041E5C ; =_021D415C
 	mov r0, #0xfb
 	ldrb r2, [r1]
@@ -2890,11 +3799,11 @@ _02041DF6:
 	mov r1, #0x30
 	bl sub_0205EEB4
 	add r4, r0, #0
-	bl sub_0205F648
+	bl MapObject_IsSingleMovementActive
 	cmp r0, #0
 	bne _02041E22
 	add r0, r4, #0
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	ldr r1, _02041E5C ; =_021D415C
 	mov r0, #0xfd
 	ldrb r2, [r1]
@@ -2909,11 +3818,11 @@ _02041E22:
 	ldr r0, [r5]
 	bl sub_020660C0
 	add r4, r0, #0
-	bl sub_0205F648
+	bl MapObject_IsSingleMovementActive
 	cmp r0, #0
 	bne _02041E4C
 	add r0, r4, #0
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	ldr r1, _02041E5C ; =_021D415C
 	mov r0, #0xf7
 	ldrb r2, [r1]
@@ -2931,30 +3840,30 @@ _02041E58:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02041E5C: .word _021D415C
-	thumb_func_end sub_02041D98
+	thumb_func_end _WaitMovementPauseBeforeMsg
 
-	thumb_func_start sub_02041E60
-sub_02041E60: ; 0x02041E60
+	thumb_func_start _WaitFollowPokePaused
+_WaitFollowPokePaused: ; 0x02041E60
 	push {r4, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r4, r0, #0
-	bl sub_0205F648
+	bl MapObject_IsSingleMovementActive
 	cmp r0, #0
 	bne _02041E7E
 	add r0, r4, #0
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	mov r0, #1
 	pop {r4, pc}
 _02041E7E:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02041E60
+	thumb_func_end _WaitFollowPokePaused
 
-	thumb_func_start ScrCmd_581
-ScrCmd_581: ; 0x02041E84
+	thumb_func_start ScrCmd_LockLastTalked
+ScrCmd_LockLastTalked: ; 0x02041E84
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	str r0, [sp]
@@ -2965,7 +3874,7 @@ ScrCmd_581: ; 0x02041E84
 	bl FieldSysGetAttrAddr
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x3c]
 	mov r1, #0x30
@@ -2978,9 +3887,9 @@ ScrCmd_581: ; 0x02041E84
 	ldr r1, _02041F48 ; =_021D415C
 	mov r2, #0
 	strb r2, [r1]
-	bl sub_0205F574
+	bl MapObjectMan_PauseAllMovement
 	ldr r0, [sp, #4]
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	bne _02041ED8
 	ldr r1, _02041F48 ; =_021D415C
@@ -2989,10 +3898,10 @@ ScrCmd_581: ; 0x02041E84
 	orr r0, r2
 	strb r0, [r1]
 	ldr r0, [sp, #4]
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 _02041ED8:
 	ldr r0, [r5]
-	bl sub_0205F648
+	bl MapObject_IsSingleMovementActive
 	cmp r0, #0
 	beq _02041EF2
 	ldr r1, _02041F48 ; =_021D415C
@@ -3001,16 +3910,16 @@ _02041ED8:
 	orr r0, r2
 	strb r0, [r1]
 	ldr r0, [r5]
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 _02041EF2:
 	cmp r7, #0
 	beq _02041F1A
 	add r0, r4, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02041F1A
 	add r0, r7, #0
-	bl sub_0205F648
+	bl MapObject_IsSingleMovementActive
 	cmp r0, #0
 	bne _02041F1A
 	ldr r1, _02041F48 ; =_021D415C
@@ -3019,12 +3928,12 @@ _02041EF2:
 	orr r0, r2
 	strb r0, [r1]
 	add r0, r7, #0
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 _02041F1A:
 	cmp r6, #0
 	beq _02041F38
 	add r0, r6, #0
-	bl sub_0205F648
+	bl MapObject_IsSingleMovementActive
 	cmp r0, #0
 	beq _02041F38
 	ldr r1, _02041F48 ; =_021D415C
@@ -3033,29 +3942,29 @@ _02041F1A:
 	orr r0, r2
 	strb r0, [r1]
 	add r0, r6, #0
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 _02041F38:
 	ldr r0, [sp]
-	ldr r1, _02041F4C ; =sub_02041D98
+	ldr r1, _02041F4C ; =_WaitMovementPauseBeforeMsg
 	bl SetupNativeScript
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02041F48: .word _021D415C
-_02041F4C: .word sub_02041D98
-	thumb_func_end ScrCmd_581
+_02041F4C: .word _WaitMovementPauseBeforeMsg
+	thumb_func_end ScrCmd_LockLastTalked
 
-	thumb_func_start ScrCmd_097
-ScrCmd_097: ; 0x02041F50
+	thumb_func_start ScrCmd_ReleaseAll
+ScrCmd_ReleaseAll: ; 0x02041F50
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x3c]
-	bl sub_0205F5A4
+	bl MapObjectMan_UnpauseAllMovement
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end ScrCmd_097
+	thumb_func_end ScrCmd_ReleaseAll
 
 	thumb_func_start ScrCmd_098
 ScrCmd_098: ; 0x02041F60
@@ -3067,10 +3976,10 @@ ScrCmd_098: ; 0x02041F60
 	add r4, r0, #0
 	ldr r0, [r5, #0x3c]
 	add r1, r4, #0
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	cmp r0, #0
 	beq _02041F80
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	b _02041F88
 _02041F80:
 	cmp r4, #0xfd
@@ -3091,10 +4000,10 @@ ScrCmd_099: ; 0x02041F8C
 	add r4, r0, #0
 	ldr r0, [r5, #0x3c]
 	add r1, r4, #0
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	cmp r0, #0
 	beq _02041FAC
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 	b _02041FB4
 _02041FAC:
 	cmp r4, #0xfd
@@ -3105,8 +4014,8 @@ _02041FB4:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ScrCmd_099
 
-	thumb_func_start ScrCmd_100
-ScrCmd_100: ; 0x02041FB8
+	thumb_func_start ScrCmd_ShowPerson
+ScrCmd_ShowPerson: ; 0x02041FB8
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -3120,10 +4029,10 @@ ScrCmd_100: ; 0x02041FB8
 	bl VarGet
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203B74C
+	bl Field_GetNumObjectEvents
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0203B754
+	bl Field_GetObjectEvents
 	str r0, [sp]
 	ldr r3, [r5, #0x20]
 	ldr r0, [r5, #0x3c]
@@ -3138,10 +4047,10 @@ _02041FFA:
 	mov r0, #0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
-	thumb_func_end ScrCmd_100
+	thumb_func_end ScrCmd_ShowPerson
 
-	thumb_func_start ScrCmd_101
-ScrCmd_101: ; 0x02042000
+	thumb_func_start ScrCmd_HidePerson
+ScrCmd_HidePerson: ; 0x02042000
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -3154,18 +4063,18 @@ ScrCmd_101: ; 0x02042000
 	bl VarGet
 	add r1, r0, #0
 	ldr r0, [r5, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	cmp r0, #0
 	bne _0204202A
 	bl GF_AssertFail
 	b _0204202E
 _0204202A:
-	bl sub_0205E400
+	bl DeleteMapObject
 _0204202E:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_101
+	thumb_func_end ScrCmd_HidePerson
 
 	thumb_func_start ScrCmd_102
 ScrCmd_102: ; 0x02042034
@@ -3207,7 +4116,7 @@ ScrCmd_102: ; 0x02042034
 	str r1, [sp, #8]
 	ldr r0, [r0, #0x3c]
 	add r1, r6, #0
-	bl sub_0205E294
+	bl CreateSpecialFieldObject
 	str r0, [r4]
 	bl sub_02061070
 	ldr r0, [r4]
@@ -3217,7 +4126,7 @@ ScrCmd_102: ; 0x02042034
 	mov r1, #0
 	bl sub_0205F6AC
 	ldr r0, [r4]
-	bl sub_0205F964
+	bl MapObject_GetPositionVecPtr
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r1, [r1]
@@ -3244,14 +4153,14 @@ ScrCmd_103: ; 0x020420CC
 	mov r1, #0xb
 	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
-	bl sub_0205E3CC
+	bl MapObject_Remove
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0xff
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
-	bl sub_0205F964
+	bl GetMapObjectByID
+	bl MapObject_GetPositionVecPtr
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r1, [r1]
@@ -3306,7 +4215,7 @@ ScrCmd_678: ; 0x02042110
 	str r1, [sp, #8]
 	ldr r0, [r0, #0x3c]
 	add r1, r6, #0
-	bl sub_0205E294
+	bl CreateSpecialFieldObject
 	str r0, [r4]
 	bl sub_02061070
 	ldr r0, [r4]
@@ -3328,20 +4237,20 @@ ScrCmd_679: ; 0x02042184
 	mov r1, #0xb
 	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
-	bl sub_0205E3CC
+	bl MapObject_Remove
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ScrCmd_679
 
-	thumb_func_start ScrCmd_104
-ScrCmd_104: ; 0x0204219C
+	thumb_func_start ScrCmd_FacePlayer
+ScrCmd_FacePlayer: ; 0x0204219C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r0, #0x80
 	ldr r5, [r0]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	bl sub_020611F4
 	add r6, r0, #0
 	add r0, r5, #0
@@ -3355,13 +4264,13 @@ ScrCmd_104: ; 0x0204219C
 	mov r0, #0
 	pop {r4, r5, r6, r7, pc}
 _020421C6:
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	add r7, r0, #0
 	ldr r0, [r4]
 	add r1, r6, #0
 	bl ov01_021F9408
 	ldr r0, [r4]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	cmp r0, #0xfd
 	bne _020422AC
 	ldr r0, [r4]
@@ -3452,16 +4361,16 @@ _02042242:
 	mov r1, #1
 	ldr r0, [r4]
 	lsl r1, r1, #0x14
-	bl sub_0205F214
+	bl MapObject_ClearBits
 _020422AC:
 	mov r0, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_104
+	thumb_func_end ScrCmd_FacePlayer
 
-	thumb_func_start ScrCmd_105
-ScrCmd_105: ; 0x020422B4
+	thumb_func_start ScrCmd_GetPlayerCoords
+ScrCmd_GetPlayerCoords: ; 0x020422B4
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -3482,18 +4391,18 @@ ScrCmd_105: ; 0x020422B4
 	bl GetVarPointer
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	strh r0, [r6]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_105
+	thumb_func_end ScrCmd_GetPlayerCoords
 
-	thumb_func_start ScrCmd_106
-ScrCmd_106: ; 0x020422F8
+	thumb_func_start ScrCmd_GetPersonCoords
+ScrCmd_GetPersonCoords: ; 0x020422F8
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -3508,7 +4417,7 @@ ScrCmd_106: ; 0x020422F8
 	add r7, r0, #0
 	ldr r0, [r5, #0x3c]
 	add r1, r7, #0
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -3528,10 +4437,10 @@ ScrCmd_106: ; 0x020422F8
 	cmp r5, #0
 	beq _0204235A
 	add r0, r5, #0
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	strh r0, [r6]
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	strh r0, [r4]
 	b _02042368
 _0204235A:
@@ -3544,10 +4453,10 @@ _0204235A:
 _02042368:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_106
+	thumb_func_end ScrCmd_GetPersonCoords
 
-	thumb_func_start ScrCmd_386
-ScrCmd_386: ; 0x0204236C
+	thumb_func_start ScrCmd_GetPlayerFacing
+ScrCmd_GetPlayerFacing: ; 0x0204236C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -3560,12 +4469,12 @@ ScrCmd_386: ; 0x0204236C
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_386
+	thumb_func_end ScrCmd_GetPlayerFacing
 
 	thumb_func_start ScrCmd_107
 ScrCmd_107: ; 0x02042394
@@ -3653,7 +4562,7 @@ _0204244C:
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r1, sp, #0
 	bl sub_0205F9A0
 	add r5, #0x80
@@ -3682,7 +4591,7 @@ ScrCmd_108: ; 0x02042478
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	ldr r2, [r4, #8]
 	add r1, r2, #1
 	str r1, [r4, #8]
@@ -3708,7 +4617,7 @@ ScrCmd_109: ; 0x020424AC
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -3747,10 +4656,10 @@ ScrCmd_574: ; 0x020424E8
 	add r1, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	cmp r0, #0
 	beq _0204252A
-	bl sub_0205F264
+	bl MapObject_GetMovement
 	strh r0, [r4]
 _0204252A:
 	mov r0, #0
@@ -3789,8 +4698,8 @@ ScrCmd_136: ; 0x02042530
 	pop {r4, r5, r6, pc}
 	thumb_func_end ScrCmd_136
 
-	thumb_func_start ScrCmd_349
-ScrCmd_349: ; 0x02042574
+	thumb_func_start ScrCmd_PartySelectUI
+ScrCmd_PartySelectUI: ; 0x02042574
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -3804,14 +4713,14 @@ ScrCmd_349: ; 0x02042574
 	mov r0, #0x20
 	bl sub_0203E580
 	str r0, [r4]
-	ldr r1, _020425A0 ; =sub_020429F8
+	ldr r1, _020425A0 ; =ScrNative_WaitApplication
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_020425A0: .word sub_020429F8
-	thumb_func_end ScrCmd_349
+_020425A0: .word ScrNative_WaitApplication
+	thumb_func_end ScrCmd_PartySelectUI
 
 	thumb_func_start ScrCmd_566
 ScrCmd_566: ; 0x020425A4
@@ -3828,13 +4737,13 @@ ScrCmd_566: ; 0x020425A4
 	mov r0, #0x20
 	bl sub_0203E5A4
 	str r0, [r4]
-	ldr r1, _020425D0 ; =sub_020429F8
+	ldr r1, _020425D0 ; =ScrNative_WaitApplication
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_020425D0: .word sub_020429F8
+_020425D0: .word ScrNative_WaitApplication
 	thumb_func_end ScrCmd_566
 
 	thumb_func_start ScrCmd_350
@@ -3857,8 +4766,8 @@ ScrCmd_350: ; 0x020425D4
 	.balign 4, 0
 	thumb_func_end ScrCmd_350
 
-	thumb_func_start ScrCmd_351
-ScrCmd_351: ; 0x020425F8
+	thumb_func_start ScrCmd_PartySelect
+ScrCmd_PartySelect: ; 0x020425F8
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -3893,7 +4802,7 @@ _02042636:
 	str r0, [r4]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_351
+	thumb_func_end ScrCmd_PartySelect
 
 	thumb_func_start ScrCmd_635
 ScrCmd_635: ; 0x02042644
@@ -4116,8 +5025,8 @@ _02042800:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ScrCmd_645
 
-	thumb_func_start ScrCmd_353
-ScrCmd_353: ; 0x0204280C
+	thumb_func_start ScrCmd_GetMoveSelection
+ScrCmd_GetMoveSelection: ; 0x0204280C
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	ldr r2, [r4, #8]
@@ -4156,10 +5065,10 @@ _02042850:
 	str r0, [r4]
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_353
+	thumb_func_end ScrCmd_GetMoveSelection
 
-	thumb_func_start ScrCmd_352
-ScrCmd_352: ; 0x02042860
+	thumb_func_start ScrCmd_ChooseMoveUI
+ScrCmd_ChooseMoveUI: ; 0x02042860
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -4205,18 +5114,18 @@ _020428B6:
 	add r2, r7, #0
 	bl sub_0203FB94
 _020428C4:
-	ldr r1, _020428D4 ; =sub_020429F8
+	ldr r1, _020428D4 ; =ScrNative_WaitApplication
 	str r0, [r4]
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_020428D4: .word sub_020429F8
-	thumb_func_end ScrCmd_352
+_020428D4: .word ScrNative_WaitApplication
+	thumb_func_end ScrCmd_ChooseMoveUI
 
-	thumb_func_start ScrCmd_142
-ScrCmd_142: ; 0x020428D8
+	thumb_func_start ScrCmd_GetPhoneBookRematch
+ScrCmd_GetPhoneBookRematch: ; 0x020428D8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -4243,7 +5152,7 @@ ScrCmd_142: ; 0x020428D8
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020555F0
+	bl Field_GetTimeOfDayWildParam
 	add r3, r0, #0
 	add r5, #0x80
 	ldr r1, [r5]
@@ -4253,7 +5162,7 @@ ScrCmd_142: ; 0x020428D8
 	lsr r0, r0, #0x18
 	add r2, r7, #0
 	lsr r3, r3, #0x18
-	bl sub_020932A4
+	bl PhoneBookTrainerGetRematchInfo
 	strh r0, [r6]
 	ldr r0, _02042944 ; =SDK_OVERLAY_OVY_26_ID
 	bl UnloadOverlayByID
@@ -4263,7 +5172,7 @@ ScrCmd_142: ; 0x020428D8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02042944: .word SDK_OVERLAY_OVY_26_ID
-	thumb_func_end ScrCmd_142
+	thumb_func_end ScrCmd_GetPhoneBookRematch
 
 	thumb_func_start ScrCmd_684
 ScrCmd_684: ; 0x02042948
@@ -4279,7 +5188,7 @@ ScrCmd_684: ; 0x02042948
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B984
 	strh r0, [r4]
 	mov r0, #0
@@ -4287,8 +5196,8 @@ ScrCmd_684: ; 0x02042948
 	.balign 4, 0
 	thumb_func_end ScrCmd_684
 
-	thumb_func_start sub_02042974
-sub_02042974: ; 0x02042974
+	thumb_func_start ScrNative_WaitApplication_DestroyTaskData
+ScrNative_WaitApplication_DestroyTaskData: ; 0x02042974
 	push {r3, r4, r5, lr}
 	add r0, #0x80
 	ldr r5, [r0]
@@ -4297,7 +5206,7 @@ sub_02042974: ; 0x02042974
 	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	beq _02042992
 	mov r0, #0
@@ -4309,7 +5218,7 @@ _02042992:
 	str r0, [r4]
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02042974
+	thumb_func_end ScrNative_WaitApplication_DestroyTaskData
 
 	thumb_func_start sub_020429A0
 sub_020429A0: ; 0x020429A0
@@ -4321,7 +5230,7 @@ sub_020429A0: ; 0x020429A0
 	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	beq _020429BE
 	mov r0, #0
@@ -4359,12 +5268,12 @@ _020429F0:
 	pop {r4, pc}
 	thumb_func_end sub_020429D4
 
-	thumb_func_start sub_020429F8
-sub_020429F8: ; 0x020429F8
+	thumb_func_start ScrNative_WaitApplication
+ScrNative_WaitApplication: ; 0x020429F8
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _02042A0A
 	mov r0, #1
@@ -4373,7 +5282,7 @@ _02042A0A:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_020429F8
+	thumb_func_end ScrNative_WaitApplication
 
 	thumb_func_start ScrCmd_150
 ScrCmd_150: ; 0x02042A10
@@ -4587,7 +5496,7 @@ ScrCmd_452: ; 0x02042B1C
 	str r0, [r6]
 	ldr r0, [r5]
 	add r1, r4, #0
-	bl sub_020457D4
+	bl Script_SetMonSeenFlagBySpecies
 	mov r0, #0
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
@@ -4854,13 +5763,13 @@ _02042DA0:
 	ldr r0, [r0]
 	ldr r1, [r4]
 	bl sub_0203F204
-	ldr r1, _02042DBC ; =sub_02042974
+	ldr r1, _02042DBC ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02042DBC: .word sub_02042974
+_02042DBC: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_155
 
 	thumb_func_start ScrCmd_255
@@ -4924,13 +5833,13 @@ ScrCmd_450: ; 0x02042E2C
 	add r0, #0x80
 	ldr r0, [r0]
 	bl sub_0203F964
-	ldr r1, _02042E44 ; =sub_020429F8
+	ldr r1, _02042E44 ; =ScrNative_WaitApplication
 	add r0, r4, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-_02042E44: .word sub_020429F8
+_02042E44: .word ScrNative_WaitApplication
 	thumb_func_end ScrCmd_450
 
 	thumb_func_start ScrCmd_156
@@ -4946,8 +5855,8 @@ ScrCmd_156: ; 0x02042E48
 	pop {r3, pc}
 	thumb_func_end ScrCmd_156
 
-	thumb_func_start ScrCmd_157
-ScrCmd_157: ; 0x02042E5C
+	thumb_func_start ScrCmd_TownMap
+ScrCmd_TownMap: ; 0x02042E5C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -4959,16 +5868,16 @@ ScrCmd_157: ; 0x02042E5C
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #1
-	bl Radio_new
+	bl TownMap_new
 	str r0, [r4]
-	ldr r1, _02042E88 ; =sub_02042974
+	ldr r1, _02042E88 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_02042E88: .word sub_02042974
-	thumb_func_end ScrCmd_157
+_02042E88: .word ScrNative_WaitApplication_DestroyTaskData
+	thumb_func_end ScrCmd_TownMap
 
 	thumb_func_start ScrCmd_408
 ScrCmd_408: ; 0x02042E8C
@@ -5016,13 +5925,13 @@ ScrCmd_408: ; 0x02042E8C
 	ldr r0, [r0]
 	ldr r1, [r6]
 	bl sub_0203F0A8
-	ldr r1, _02042F00 ; =sub_02042974
+	ldr r1, _02042F00 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02042F00: .word sub_02042974
+_02042F00: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_408
 
 	thumb_func_start ScrCmd_158
@@ -5076,13 +5985,13 @@ ScrCmd_159: ; 0x02042F5C
 	add r0, #0x80
 	ldr r0, [r0]
 	bl sub_0203F4C8
-	ldr r1, _02042F74 ; =sub_020429F8
+	ldr r1, _02042F74 ; =ScrNative_WaitApplication
 	add r0, r4, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-_02042F74: .word sub_020429F8
+_02042F74: .word ScrNative_WaitApplication
 	thumb_func_end ScrCmd_159
 
 	thumb_func_start ScrCmd_160
@@ -5121,17 +6030,17 @@ ScrCmd_162: ; 0x02042F98
 	ldr r0, [r0]
 	bl sub_0203F4F8
 	str r0, [r4]
-	ldr r1, _02042FC0 ; =sub_02042974
+	ldr r1, _02042FC0 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02042FC0: .word sub_02042974
+_02042FC0: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_162
 
-	thumb_func_start ScrCmd_163
-ScrCmd_163: ; 0x02042FC4
+	thumb_func_start ScrCmd_HOF_Credits
+ScrCmd_HOF_Credits: ; 0x02042FC4
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -5142,7 +6051,7 @@ ScrCmd_163: ; 0x02042FC4
 	bl Special_EnterHallOfFame
 	mov r0, #1
 	pop {r4, pc}
-	thumb_func_end ScrCmd_163
+	thumb_func_end ScrCmd_HOF_Credits
 
 	thumb_func_start ScrCmd_164
 ScrCmd_164: ; 0x02042FDC
@@ -5158,13 +6067,13 @@ ScrCmd_164: ; 0x02042FDC
 	ldr r0, [r0]
 	bl sub_0203F984
 	str r0, [r4]
-	ldr r1, _02043004 ; =sub_02042974
+	ldr r1, _02043004 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02043004: .word sub_02042974
+_02043004: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_164
 
 	thumb_func_start ScrCmd_706
@@ -5231,7 +6140,7 @@ ScrCmd_165: ; 0x02043044
 	ldr r0, [r0]
 	add r1, r6, #0
 	bl sub_0203F844
-	ldr r1, _020430A0 ; =sub_020429F8
+	ldr r1, _020430A0 ; =ScrNative_WaitApplication
 	add r0, r5, #0
 	bl SetupNativeScript
 	b _0204309C
@@ -5242,7 +6151,7 @@ _0204309C:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_020430A0: .word sub_020429F8
+_020430A0: .word ScrNative_WaitApplication
 	thumb_func_end ScrCmd_165
 
 	thumb_func_start ScrCmd_166
@@ -5262,16 +6171,16 @@ ScrCmd_166: ; 0x020430A4
 	pop {r4, pc}
 	thumb_func_end ScrCmd_166
 
-	thumb_func_start ScrCmd_167
-ScrCmd_167: ; 0x020430C4
+	thumb_func_start ScrCmd_ChooseStarter
+ScrCmd_ChooseStarter: ; 0x020430C4
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0209600C
+	bl LaunchStarterChoiceScene
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_167
+	thumb_func_end ScrCmd_ChooseStarter
 
 	thumb_func_start ScrCmd_333
 ScrCmd_333: ; 0x020430D4
@@ -5307,13 +6216,13 @@ _02043106:
 	add r1, r4, #0
 	bl sub_0203E460
 	str r0, [r6]
-	ldr r1, _02043120 ; =sub_020429F8
+	ldr r1, _02043120 ; =ScrNative_WaitApplication
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_02043120: .word sub_020429F8
+_02043120: .word ScrNative_WaitApplication
 	thumb_func_end ScrCmd_333
 
 	thumb_func_start ScrCmd_334
@@ -5381,13 +6290,13 @@ _02043196:
 	add r1, r4, #0
 	bl sub_0203E460
 	str r0, [r6]
-	ldr r1, _020431B0 ; =sub_02042974
+	ldr r1, _020431B0 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_020431B0: .word sub_02042974
+_020431B0: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_370
 
 	thumb_func_start ScrCmd_172
@@ -5408,15 +6317,15 @@ ScrCmd_172: ; 0x020431B4
 	ldr r0, [r4, #0x74]
 	add r2, r1, #0
 	mov r3, #7
-	bl sub_0203F6E0
+	bl CreateNamingScreen
 	mov r0, #1
 	add sp, #0xc
 	pop {r3, r4, pc}
 	.balign 4, 0
 	thumb_func_end ScrCmd_172
 
-	thumb_func_start ScrCmd_143
-ScrCmd_143: ; 0x020431E4
+	thumb_func_start ScrCmd_NameRival
+ScrCmd_NameRival: ; 0x020431E4
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -5433,15 +6342,15 @@ ScrCmd_143: ; 0x020431E4
 	ldr r0, [r4, #0x74]
 	mov r1, #3
 	mov r3, #7
-	bl sub_0203F6E0
+	bl CreateNamingScreen
 	mov r0, #1
 	add sp, #0xc
 	pop {r3, r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_143
+	thumb_func_end ScrCmd_NameRival
 
-	thumb_func_start ScrCmd_173
-ScrCmd_173: ; 0x02043214
+	thumb_func_start ScrCmd_NicknameInput
+ScrCmd_NicknameInput: ; 0x02043214
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x34
 	add r4, r0, #0
@@ -5458,7 +6367,7 @@ ScrCmd_173: ; 0x02043214
 	cmp r6, #0xff
 	bne _0204324E
 	add r0, r5, #0
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	ldrb r1, [r0, #0x17]
 	lsl r1, r1, #0x1f
 	lsr r1, r1, #0x1f
@@ -5500,12 +6409,12 @@ _0204325C:
 	ldr r0, [r4, #0x74]
 	mov r1, #1
 	mov r3, #0xa
-	bl sub_0203F6E0
+	bl CreateNamingScreen
 	mov r0, #1
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_173
+	thumb_func_end ScrCmd_NicknameInput
 
 	thumb_func_start ScrCmd_629
 ScrCmd_629: ; 0x020432A0
@@ -5601,8 +6510,8 @@ ScrCmd_492: ; 0x020432FC
 _02043358: .word 0x0000FFFF
 	thumb_func_end ScrCmd_492
 
-	thumb_func_start ScrCmd_493
-ScrCmd_493: ; 0x0204335C
+	thumb_func_start ScrCmd_PromptEasyChat
+ScrCmd_PromptEasyChat: ; 0x0204335C
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
@@ -5644,7 +6553,7 @@ ScrCmd_493: ; 0x0204335C
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
 _020433B8: .word 0x0000FFFF
-	thumb_func_end ScrCmd_493
+	thumb_func_end ScrCmd_PromptEasyChat
 
 	thumb_func_start ScrCmd_494
 ScrCmd_494: ; 0x020433BC
@@ -5672,14 +6581,14 @@ ScrCmd_494: ; 0x020433BC
 	add r2, r0, #0
 	ldr r0, [r4]
 	add r1, r6, #0
-	bl sub_0200C528
+	bl BufferECWord
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ScrCmd_494
 
-	thumb_func_start ScrCmd_174
-ScrCmd_174: ; 0x02043400
+	thumb_func_start ScrCmd_FadeScreen
+ScrCmd_FadeScreen: ; 0x02043400
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -5709,10 +6618,10 @@ ScrCmd_174: ; 0x02043400
 	mov r0, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_174
+	thumb_func_end ScrCmd_FadeScreen
 
-	thumb_func_start ScrCmd_175
-ScrCmd_175: ; 0x02043448
+	thumb_func_start ScrCmd_WaitFade
+ScrCmd_WaitFade: ; 0x02043448
 	push {r3, lr}
 	ldr r1, _02043454 ; =sub_02043458
 	bl SetupNativeScript
@@ -5720,7 +6629,7 @@ ScrCmd_175: ; 0x02043448
 	pop {r3, pc}
 	.balign 4, 0
 _02043454: .word sub_02043458
-	thumb_func_end ScrCmd_175
+	thumb_func_end ScrCmd_WaitFade
 
 	thumb_func_start sub_02043458
 sub_02043458: ; 0x02043458
@@ -5736,8 +6645,8 @@ _02043466:
 	.balign 4, 0
 	thumb_func_end sub_02043458
 
-	thumb_func_start ScrCmd_176
-ScrCmd_176: ; 0x0204346C
+	thumb_func_start ScrCmd_Warp
+ScrCmd_Warp: ; 0x0204346C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -5784,7 +6693,7 @@ ScrCmd_176: ; 0x0204346C
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_176
+	thumb_func_end ScrCmd_Warp
 
 	thumb_func_start ScrCmd_448
 ScrCmd_448: ; 0x020434DC
@@ -5846,7 +6755,7 @@ ScrCmd_445: ; 0x02043548
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B960
 	add r5, r0, #0
 	add r0, r4, #0
@@ -5921,8 +6830,8 @@ _020435E2:
 	.balign 4, 0
 	thumb_func_end ScrCmd_840
 
-	thumb_func_start ScrCmd_177
-ScrCmd_177: ; 0x020435E8
+	thumb_func_start ScrCmd_RockClimb
+ScrCmd_RockClimb: ; 0x020435E8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -5936,17 +6845,17 @@ ScrCmd_177: ; 0x020435E8
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	ldr r0, [r5, #0x74]
 	add r2, r4, #0
 	bl ov01_021F2590
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_177
+	thumb_func_end ScrCmd_RockClimb
 
-	thumb_func_start ScrCmd_178
-ScrCmd_178: ; 0x02043618
+	thumb_func_start ScrCmd_Surf
+ScrCmd_Surf: ; 0x02043618
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -5960,17 +6869,17 @@ ScrCmd_178: ; 0x02043618
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	ldr r0, [r5, #0x74]
 	add r2, r4, #0
 	bl ov01_021F2068
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_178
+	thumb_func_end ScrCmd_Surf
 
-	thumb_func_start ScrCmd_179
-ScrCmd_179: ; 0x02043648
+	thumb_func_start ScrCmd_Waterfall
+ScrCmd_Waterfall: ; 0x02043648
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -5984,14 +6893,14 @@ ScrCmd_179: ; 0x02043648
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	ldr r0, [r5, #0x74]
 	add r2, r4, #0
 	bl ov01_021F2908
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_179
+	thumb_func_end ScrCmd_Waterfall
 
 	thumb_func_start ScrCmd_180
 ScrCmd_180: ; 0x02043678
@@ -6036,7 +6945,7 @@ ScrCmd_181: ; 0x020436C4
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	add r5, r0, #0
 	mov r1, #0xc
 	bl sub_0203B98C
@@ -6068,7 +6977,7 @@ ScrCmd_182: ; 0x020436F4
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	ldr r0, [r5, #0x74]
 	add r2, r4, #0
@@ -6268,8 +7177,8 @@ ScrCmd_186: ; 0x02043884
 	pop {r3, pc}
 	thumb_func_end ScrCmd_186
 
-	thumb_func_start ScrCmd_187
-ScrCmd_187: ; 0x0204389C
+	thumb_func_start ScrCmd_GetPlayerState
+ScrCmd_GetPlayerState: ; 0x0204389C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -6287,10 +7196,10 @@ ScrCmd_187: ; 0x0204389C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_187
+	thumb_func_end ScrCmd_GetPlayerState
 
-	thumb_func_start ScrCmd_188
-ScrCmd_188: ; 0x020438C4
+	thumb_func_start ScrCmd_SetAvatarBits
+ScrCmd_SetAvatarBits: ; 0x020438C4
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -6301,10 +7210,10 @@ ScrCmd_188: ; 0x020438C4
 	bl sub_0205C710
 	mov r0, #1
 	pop {r4, pc}
-	thumb_func_end ScrCmd_188
+	thumb_func_end ScrCmd_SetAvatarBits
 
-	thumb_func_start ScrCmd_189
-ScrCmd_189: ; 0x020438DC
+	thumb_func_start ScrCmd_UpdateAvatarState
+ScrCmd_UpdateAvatarState: ; 0x020438DC
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -6312,7 +7221,7 @@ ScrCmd_189: ; 0x020438DC
 	bl ov01_021F1B04
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ScrCmd_189
+	thumb_func_end ScrCmd_UpdateAvatarState
 
 	thumb_func_start ScrCmd_211
 ScrCmd_211: ; 0x020438EC
@@ -6321,7 +7230,7 @@ ScrCmd_211: ; 0x020438EC
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0202D9C4
+	bl Save_Roamers_get
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -6340,7 +7249,7 @@ ScrCmd_211: ; 0x020438EC
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0202D9A8
+	bl Roamers_GetRand
 	add r1, r6, #0
 	add r2, r4, #0
 	bl sub_02097F9C
@@ -6349,8 +7258,8 @@ ScrCmd_211: ; 0x020438EC
 	.balign 4, 0
 	thumb_func_end ScrCmd_211
 
-	thumb_func_start ScrCmd_206
-ScrCmd_206: ; 0x02043938
+	thumb_func_start ScrCmd_GetStarterChoice
+ScrCmd_GetStarterChoice: ; 0x02043938
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -6364,15 +7273,15 @@ ScrCmd_206: ; 0x02043938
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066AF0
+	bl GetStarterFromScriptState
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_206
+	thumb_func_end ScrCmd_GetStarterChoice
 
-	thumb_func_start ScrCmd_131
-ScrCmd_131: ; 0x02043964
+	thumb_func_start ScrCmd_SetStarterChoice
+ScrCmd_SetStarterChoice: ; 0x02043964
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -6387,14 +7296,14 @@ ScrCmd_131: ; 0x02043964
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
 	add r1, r4, #0
-	bl sub_02066AE0
+	bl SetStarterToScriptState
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_131
+	thumb_func_end ScrCmd_SetStarterChoice
 
-	thumb_func_start ScrCmd_214
-ScrCmd_214: ; 0x02043990
+	thumb_func_start ScrCmd_TrainerMessage
+ScrCmd_TrainerMessage: ; 0x02043990
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -6457,7 +7366,7 @@ ScrCmd_214: ; 0x02043990
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02043A24: .word ov01_021EF348
-	thumb_func_end ScrCmd_214
+	thumb_func_end ScrCmd_TrainerMessage
 
 	thumb_func_start ScrCmd_226
 ScrCmd_226: ; 0x02043A28
@@ -6654,8 +7563,8 @@ ScrCmd_231: ; 0x02043BA0
 	bx lr
 	thumb_func_end ScrCmd_231
 
-	thumb_func_start ScrCmd_240
-ScrCmd_240: ; 0x02043BA4
+	thumb_func_start ScrCmd_SetDynamicWarp
+ScrCmd_SetDynamicWarp: ; 0x02043BA4
 	push {r3, r4, lr}
 	sub sp, #0x14
 	add r4, r0, #0
@@ -6701,17 +7610,17 @@ ScrCmd_240: ; 0x02043BA4
 	str r0, [sp, #0x10]
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	add r1, sp, #0
-	bl sub_0203B96C
+	bl FlyPoints_SetDynamicWarp
 	mov r0, #0
 	add sp, #0x14
 	pop {r3, r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_240
+	thumb_func_end ScrCmd_SetDynamicWarp
 
-	thumb_func_start ScrCmd_241
-ScrCmd_241: ; 0x02043C24
+	thumb_func_start ScrCmd_GetDynamicWarpFloorNo
+ScrCmd_GetDynamicWarpFloorNo: ; 0x02043C24
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -6724,17 +7633,17 @@ ScrCmd_241: ; 0x02043C24
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
-	bl sub_0203B968
+	bl Save_FlyPoints_get
+	bl FlyPoints_GetDynamicWarp
 	ldr r0, [r0]
-	bl ov01_021EE81C
+	bl MapNumToFloorNo
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_241
+	thumb_func_end ScrCmd_GetDynamicWarpFloorNo
 
-	thumb_func_start ScrCmd_242
-ScrCmd_242: ; 0x02043C54
+	thumb_func_start ScrCmd_ElevatorCurFloorBox
+ScrCmd_ElevatorCurFloorBox: ; 0x02043C54
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r0, #0
@@ -6772,15 +7681,15 @@ ScrCmd_242: ; 0x02043C54
 	ldr r0, [sp, #8]
 	add r1, r6, #0
 	add r2, r4, #0
-	bl ov01_021EE664
+	bl PrintCurFloorInNewWindow
 	mov r0, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_242
+	thumb_func_end ScrCmd_ElevatorCurFloorBox
 
-	thumb_func_start ScrCmd_243
-ScrCmd_243: ; 0x02043CB4
+	thumb_func_start ScrCmd_CountJohtoDexSeen
+ScrCmd_CountJohtoDexSeen: ; 0x02043CB4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -6796,15 +7705,15 @@ ScrCmd_243: ; 0x02043CB4
 	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02029EF4
+	bl Pokedex_CountJohtoDexSeen
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_243
+	thumb_func_end ScrCmd_CountJohtoDexSeen
 
-	thumb_func_start ScrCmd_244
-ScrCmd_244: ; 0x02043CE4
+	thumb_func_start ScrCmd_CountJohtoDexOwned
+ScrCmd_CountJohtoDexOwned: ; 0x02043CE4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -6820,15 +7729,15 @@ ScrCmd_244: ; 0x02043CE4
 	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02029EA0
+	bl Pokedex_CountJohtoDexOwned
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_244
+	thumb_func_end ScrCmd_CountJohtoDexOwned
 
-	thumb_func_start ScrCmd_245
-ScrCmd_245: ; 0x02043D14
+	thumb_func_start ScrCmd_CountNationalDexSeen
+ScrCmd_CountNationalDexSeen: ; 0x02043D14
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -6844,15 +7753,15 @@ ScrCmd_245: ; 0x02043D14
 	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02029E48
+	bl Pokedex_CountNationalDexSeen
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_245
+	thumb_func_end ScrCmd_CountNationalDexSeen
 
-	thumb_func_start ScrCmd_246
-ScrCmd_246: ; 0x02043D44
+	thumb_func_start ScrCmd_CountNationalDexOwned
+ScrCmd_CountNationalDexOwned: ; 0x02043D44
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -6868,12 +7777,12 @@ ScrCmd_246: ; 0x02043D44
 	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02029E0C
+	bl Pokedex_CountNationalDexOwned
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_246
+	thumb_func_end ScrCmd_CountNationalDexOwned
 
 	thumb_func_start ScrCmd_247
 ScrCmd_247: ; 0x02043D74
@@ -6881,8 +7790,8 @@ ScrCmd_247: ; 0x02043D74
 	bx lr
 	thumb_func_end ScrCmd_247
 
-	thumb_func_start ScrCmd_248
-ScrCmd_248: ; 0x02043D78
+	thumb_func_start ScrCmd_GetDexEvalResult
+ScrCmd_GetDexEvalResult: ; 0x02043D78
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -6918,7 +7827,7 @@ ScrCmd_248: ; 0x02043D78
 	cmp r6, #0
 	bne _02043DE6
 	add r0, r7, #0
-	bl sub_02029FAC
+	bl Pokedex_CountJohtoOwned_ExcludeMythical
 	add r6, r0, #0
 	ldr r0, [sp]
 	bl PlayerProfile_GetTrainerGender
@@ -6931,7 +7840,7 @@ ScrCmd_248: ; 0x02043D78
 	b _02043E02
 _02043DE6:
 	add r0, r7, #0
-	bl sub_02029F74
+	bl Pokedex_CountNationalOwned_ExcludeMythical
 	add r6, r0, #0
 	ldr r0, [sp]
 	bl PlayerProfile_GetTrainerGender
@@ -6945,7 +7854,7 @@ _02043E02:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_248
+	thumb_func_end ScrCmd_GetDexEvalResult
 
 	thumb_func_start ScrCmd_249
 ScrCmd_249: ; 0x02043E08
@@ -6987,8 +7896,8 @@ ScrCmd_249: ; 0x02043E08
 	pop {r4, r5, r6, pc}
 	thumb_func_end ScrCmd_249
 
-	thumb_func_start ScrCmd_589
-ScrCmd_589: ; 0x02043E5C
+	thumb_func_start ScrCmd_WildBattle
+ScrCmd_WildBattle: ; 0x02043E5C
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -7029,7 +7938,7 @@ ScrCmd_589: ; 0x02043E5C
 	mov r0, #1
 	add sp, #8
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_589
+	thumb_func_end ScrCmd_WildBattle
 
 	thumb_func_start ScrCmd_686
 ScrCmd_686: ; 0x02043EB8
@@ -7100,14 +8009,14 @@ ScrCmd_250: ; 0x02043F0C
 	.balign 4, 0
 	thumb_func_end ScrCmd_250
 
-	thumb_func_start ScrCmd_251
-ScrCmd_251: ; 0x02043F48
+	thumb_func_start ScrCmd_CatchingTutorial
+ScrCmd_CatchingTutorial: ; 0x02043F48
 	push {r3, lr}
 	ldr r0, [r0, #0x74]
 	bl sub_02051334
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end ScrCmd_251
+	thumb_func_end ScrCmd_CatchingTutorial
 
 	thumb_func_start ScrCmd_252
 ScrCmd_252: ; 0x02043F54
@@ -7116,13 +8025,13 @@ ScrCmd_252: ; 0x02043F54
 	add r0, #0x80
 	ldr r0, [r0]
 	bl sub_0203F818
-	ldr r1, _02043F6C ; =sub_020429F8
+	ldr r1, _02043F6C ; =ScrNative_WaitApplication
 	add r0, r4, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-_02043F6C: .word sub_020429F8
+_02043F6C: .word ScrNative_WaitApplication
 	thumb_func_end ScrCmd_252
 
 	thumb_func_start ScrCmd_253
@@ -7387,12 +8296,12 @@ ScrCmd_264: ; 0x02044124
 	str r0, [sp, #4]
 	ldr r0, [r5]
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_02015C28
+	bl SaveData_EasyChat_get
 	add r5, r0, #0
 	cmp r4, #0
 	bne _0204417A
 	ldr r0, [r7]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	lsl r0, r0, #0x10
 	lsr r2, r0, #0x10
 	b _0204417C
@@ -7481,7 +8390,7 @@ ScrCmd_267: ; 0x020441D8
 	bl FieldSysGetAttrAddr
 	add r7, r0, #0
 	ldr r0, [r4]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -7545,7 +8454,7 @@ ScrCmd_268: ; 0x02044270
 	bl GetVarPointer
 	add r4, r0, #0
 	ldr r0, [r6]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -7582,7 +8491,7 @@ ScrCmd_274: ; 0x020442AC
 	bl GetVarPointer
 	add r4, r0, #0
 	ldr r0, [r6]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -7779,7 +8688,7 @@ sub_02044434: ; 0x02044434
 	add r0, #0x80
 	ldr r0, [r0]
 	bl sub_0205A39C
-	ldr r1, _0204447C ; =gMain
+	ldr r1, _0204447C ; =gSystem
 	ldr r2, [r1, #0x48]
 	mov r1, #2
 	tst r1, r2
@@ -7800,7 +8709,7 @@ _02044478:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_0204447C: .word gMain
+_0204447C: .word gSystem
 	thumb_func_end sub_02044434
 
 	thumb_func_start ScrCmd_286
@@ -7951,17 +8860,17 @@ ScrCmd_289: ; 0x0204458C
 	.balign 4, 0
 	thumb_func_end ScrCmd_289
 
-	thumb_func_start ScrCmd_279
-ScrCmd_279: ; 0x020445C0
+	thumb_func_start ScrCmd_OverworldWhiteOut
+ScrCmd_OverworldWhiteOut: ; 0x020445C0
 	push {r3, lr}
 	ldr r0, [r0, #0x74]
 	bl sub_0205297C
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end ScrCmd_279
+	thumb_func_end ScrCmd_OverworldWhiteOut
 
-	thumb_func_start ScrCmd_280
-ScrCmd_280: ; 0x020445CC
+	thumb_func_start ScrCmd_SetSpawn
+ScrCmd_SetSpawn: ; 0x020445CC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -7974,16 +8883,16 @@ ScrCmd_280: ; 0x020445CC
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	add r1, r4, #0
-	bl sub_0203B99C
+	bl FlyPoints_SetDeathSpawn
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_280
+	thumb_func_end ScrCmd_SetSpawn
 
-	thumb_func_start ScrCmd_281
-ScrCmd_281: ; 0x020445F8
+	thumb_func_start ScrCmd_GetPlayerGender
+ScrCmd_GetPlayerGender: ; 0x020445F8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -8003,20 +8912,20 @@ ScrCmd_281: ; 0x020445F8
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_281
+	thumb_func_end ScrCmd_GetPlayerGender
 
-	thumb_func_start ScrCmd_282
-ScrCmd_282: ; 0x02044628
+	thumb_func_start ScrCmd_HealParty
+ScrCmd_HealParty: ; 0x02044628
 	push {r3, lr}
 	ldr r0, [r0, #0x74]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	ldr r0, [r0, #0xc]
 	bl SavArray_PlayerParty_get
 	bl HealParty
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_282
+	thumb_func_end ScrCmd_HealParty
 
 	thumb_func_start ScrCmd_283
 ScrCmd_283: ; 0x02044640
@@ -8145,14 +9054,14 @@ ScrCmd_338: ; 0x020446EC
 	ldr r0, [r5]
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_0203B75C
+	bl Field_SetObjectEventXYPos
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ScrCmd_338
 
-	thumb_func_start ScrCmd_339
-ScrCmd_339: ; 0x0204473C
+	thumb_func_start ScrCmd_MovePerson
+ScrCmd_MovePerson: ; 0x0204473C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -8199,7 +9108,7 @@ ScrCmd_339: ; 0x0204473C
 	ldr r0, [r5]
 	add r1, r6, #0
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	ldr r2, [sp, #4]
 	ldr r3, [sp, #8]
 	add r5, r0, #0
@@ -8212,10 +9121,10 @@ ScrCmd_339: ; 0x0204473C
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_339
+	thumb_func_end ScrCmd_MovePerson
 
-	thumb_func_start ScrCmd_340
-ScrCmd_340: ; 0x020447CC
+	thumb_func_start ScrCmd_SetObjectMovementType
+ScrCmd_SetObjectMovementType: ; 0x020447CC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -8236,10 +9145,10 @@ ScrCmd_340: ; 0x020447CC
 	add r2, r0, #0
 	ldr r0, [r5]
 	add r1, r4, #0
-	bl sub_0203B7C4
+	bl Field_SetObjectEventMovement
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_340
+	thumb_func_end ScrCmd_SetObjectMovementType
 
 	thumb_func_start ScrCmd_341
 ScrCmd_341: ; 0x02044804
@@ -8263,7 +9172,7 @@ ScrCmd_341: ; 0x02044804
 	add r2, r0, #0
 	ldr r0, [r5]
 	add r1, r4, #0
-	bl sub_0203B794
+	bl Field_SetObjectEventFacing
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ScrCmd_341
@@ -8299,7 +9208,7 @@ ScrCmd_342: ; 0x0204483C
 	ldr r0, [r5]
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_0203B7F4
+	bl Field_SetWarpXYPos
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -8336,7 +9245,7 @@ ScrCmd_343: ; 0x0204488C
 	ldr r0, [r5]
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_0203B80C
+	bl Field_SetBgEventXYPos
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -8365,7 +9274,7 @@ ScrCmd_344: ; 0x020448DC
 	ldr r0, [r5]
 	add r1, r6, #0
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r5, r0, #0
 	bne _0204491A
 	bl GF_AssertFail
@@ -8503,16 +9412,16 @@ ScrCmd_311: ; 0x020449F4
 	.balign 4, 0
 	thumb_func_end ScrCmd_311
 
-	thumb_func_start ScrCmd_314
-ScrCmd_314: ; 0x02044A0C
+	thumb_func_start ScrCmd_EcruteakGymInit
+ScrCmd_EcruteakGymInit: ; 0x02044A0C
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02068DE0
+	bl Fsys_InitEcruteakGymSaveData
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_314
+	thumb_func_end ScrCmd_EcruteakGymInit
 
 	thumb_func_start ScrCmd_315
 ScrCmd_315: ; 0x02044A1C
@@ -8521,8 +9430,8 @@ ScrCmd_315: ; 0x02044A1C
 	ldr r4, [r0]
 	add r0, r4, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
-	bl sub_0202AEBC
+	bl Sav2_GetGymmickPtr
+	bl SavGymmick_GetType
 	cmp r0, #1
 	beq _02044A38
 	mov r0, #0
@@ -8542,8 +9451,8 @@ ScrCmd_316: ; 0x02044A44
 	ldr r4, [r0]
 	add r0, r4, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
-	bl sub_0202AEBC
+	bl Sav2_GetGymmickPtr
+	bl SavGymmick_GetType
 	cmp r0, #1
 	beq _02044A60
 	mov r0, #0
@@ -8568,8 +9477,8 @@ ScrCmd_317: ; 0x02044A6C
 	add r0, r4, #0
 	ldrb r5, [r2]
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
-	bl sub_0202AEBC
+	bl Sav2_GetGymmickPtr
+	bl SavGymmick_GetType
 	cmp r0, #1
 	beq _02044A92
 	mov r0, #1
@@ -8589,19 +9498,19 @@ _02044A9C:
 	.balign 4, 0
 	thumb_func_end ScrCmd_317
 
-	thumb_func_start ScrCmd_318
-ScrCmd_318: ; 0x02044AA8
+	thumb_func_start ScrCmd_CianwoodGymInit
+ScrCmd_CianwoodGymInit: ; 0x02044AA8
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02068E08
+	bl Fsys_InitCianwoodGym
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_318
+	thumb_func_end ScrCmd_CianwoodGymInit
 
-	thumb_func_start ScrCmd_319
-ScrCmd_319: ; 0x02044AB8
+	thumb_func_start ScrCmd_CianwoodGymTurnWinch
+ScrCmd_CianwoodGymTurnWinch: ; 0x02044AB8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -8619,21 +9528,21 @@ ScrCmd_319: ; 0x02044AB8
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_319
+	thumb_func_end ScrCmd_CianwoodGymTurnWinch
 
-	thumb_func_start ScrCmd_320
-ScrCmd_320: ; 0x02044AE0
+	thumb_func_start ScrCmd_VermilionGymInit
+ScrCmd_VermilionGymInit: ; 0x02044AE0
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02068E24
+	bl Fsys_InitVermilionGym
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_320
+	thumb_func_end ScrCmd_VermilionGymInit
 
-	thumb_func_start ScrCmd_321
-ScrCmd_321: ; 0x02044AF0
+	thumb_func_start ScrCmd_VermilionGymLockAction
+ScrCmd_VermilionGymLockAction: ; 0x02044AF0
 	push {r4, lr}
 	add r1, r0, #0
 	add r1, #0x80
@@ -8649,10 +9558,10 @@ ScrCmd_321: ; 0x02044AF0
 	bl ov04_0225640C
 	mov r0, #1
 	pop {r4, pc}
-	thumb_func_end ScrCmd_321
+	thumb_func_end ScrCmd_VermilionGymLockAction
 
-	thumb_func_start ScrCmd_322
-ScrCmd_322: ; 0x02044B10
+	thumb_func_start ScrCmd_VermilionGymCanCheck
+ScrCmd_VermilionGymCanCheck: ; 0x02044B10
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -8674,29 +9583,29 @@ ScrCmd_322: ; 0x02044B10
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_322
+	thumb_func_end ScrCmd_VermilionGymCanCheck
 
-	thumb_func_start ScrCmd_323
-ScrCmd_323: ; 0x02044B40
+	thumb_func_start ScrCmd_ResampleVermilionGymCans
+ScrCmd_ResampleVermilionGymCans: ; 0x02044B40
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02068E70
+	bl PlaceVermilionGymSwitches
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_323
+	thumb_func_end ScrCmd_ResampleVermilionGymCans
 
-	thumb_func_start ScrCmd_324
-ScrCmd_324: ; 0x02044B50
+	thumb_func_start ScrCmd_VioletGymInit
+ScrCmd_VioletGymInit: ; 0x02044B50
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02068EB0
+	bl Fsys_InitVioletGym
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_324
+	thumb_func_end ScrCmd_VioletGymInit
 
 	thumb_func_start ScrCmd_325
 ScrCmd_325: ; 0x02044B60
@@ -8709,19 +9618,19 @@ ScrCmd_325: ; 0x02044B60
 	.balign 4, 0
 	thumb_func_end ScrCmd_325
 
-	thumb_func_start ScrCmd_326
-ScrCmd_326: ; 0x02044B70
+	thumb_func_start ScrCmd_AzaleaGymInit
+ScrCmd_AzaleaGymInit: ; 0x02044B70
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02068ED0
+	bl Fsys_InitAzaleaGym
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_326
+	thumb_func_end ScrCmd_AzaleaGymInit
 
-	thumb_func_start ScrCmd_327
-ScrCmd_327: ; 0x02044B80
+	thumb_func_start ScrCmd_AzaleaGymSpinarak
+ScrCmd_AzaleaGymSpinarak: ; 0x02044B80
 	push {r3, lr}
 	add r1, r0, #0
 	add r1, #0x80
@@ -8731,14 +9640,14 @@ ScrCmd_327: ; 0x02044B80
 	str r1, [r0, #8]
 	ldrb r1, [r2]
 	add r0, r3, #0
-	bl ov04_02254568
+	bl Fsys_BeginAzaleaGymSpinarakRide
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_327
+	thumb_func_end ScrCmd_AzaleaGymSpinarak
 
-	thumb_func_start ScrCmd_328
-ScrCmd_328: ; 0x02044B9C
+	thumb_func_start ScrCmd_AzaleaGymSwitch
+ScrCmd_AzaleaGymSwitch: ; 0x02044B9C
 	push {r3, lr}
 	add r1, r0, #0
 	add r1, #0x80
@@ -8748,47 +9657,47 @@ ScrCmd_328: ; 0x02044B9C
 	str r1, [r0, #8]
 	ldrb r1, [r2]
 	add r0, r3, #0
-	bl ov04_02254404
+	bl Fsys_FlipAzaleaGymSwitch
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_328
+	thumb_func_end ScrCmd_AzaleaGymSwitch
 
-	thumb_func_start ScrCmd_329
-ScrCmd_329: ; 0x02044BB8
+	thumb_func_start ScrCmd_BlackthornGymInit
+ScrCmd_BlackthornGymInit: ; 0x02044BB8
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02068F00
+	bl Fsys_InitBlackthornGym
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_329
+	thumb_func_end ScrCmd_BlackthornGymInit
 
-	thumb_func_start ScrCmd_330
-ScrCmd_330: ; 0x02044BC8
+	thumb_func_start ScrCmd_FuchsiaGymInit
+ScrCmd_FuchsiaGymInit: ; 0x02044BC8
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02068F40
+	bl Fsys_InitFuchsiaGym
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_330
+	thumb_func_end ScrCmd_FuchsiaGymInit
 
-	thumb_func_start ScrCmd_331
-ScrCmd_331: ; 0x02044BD8
+	thumb_func_start ScrCmd_ViridianGymInit
+ScrCmd_ViridianGymInit: ; 0x02044BD8
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02068F54
+	bl Fsys_InitViridianGym
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_331
+	thumb_func_end ScrCmd_ViridianGymInit
 
-	thumb_func_start ScrCmd_685
-ScrCmd_685: ; 0x02044BE8
+	thumb_func_start ScrCmd_GetPlayerXYZ
+ScrCmd_GetPlayerXYZ: ; 0x02044BE8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -8817,26 +9726,26 @@ ScrCmd_685: ; 0x02044BE8
 	bl GetVarPointer
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r4, r0, #0
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	strh r0, [r6]
 	add r0, r4, #0
-	bl sub_0205F924
+	bl MapObject_GetCurrentHeight
 	lsr r1, r0, #0x1f
 	add r1, r0, r1
 	asr r0, r1, #1
 	strh r0, [r7]
 	add r0, r4, #0
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_685
+	thumb_func_end ScrCmd_GetPlayerXYZ
 
-	thumb_func_start ScrCmd_369
-ScrCmd_369: ; 0x02044C54
+	thumb_func_start ScrCmd_EggHatchAnim
+ScrCmd_EggHatchAnim: ; 0x02044C54
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -8844,7 +9753,7 @@ ScrCmd_369: ; 0x02044C54
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_369
+	thumb_func_end ScrCmd_EggHatchAnim
 
 	thumb_func_start ScrCmd_374
 ScrCmd_374: ; 0x02044C64
@@ -8860,7 +9769,7 @@ ScrCmd_374: ; 0x02044C64
 	bl VarGet
 	add r1, r0, #0
 	ldr r0, [r5, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r4, r0, #0
 	bne _02044C8C
 	bl GF_AssertFail
@@ -8886,7 +9795,7 @@ ScrCmd_375: ; 0x02044C98
 	bl VarGet
 	add r1, r0, #0
 	ldr r0, [r5, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r4, r0, #0
 	bne _02044CC0
 	bl GF_AssertFail
@@ -8913,13 +9822,13 @@ ScrCmd_376: ; 0x02044CCC
 	mov r1, #0xb
 	bl sub_0203F074
 	str r0, [r4]
-	ldr r1, _02044CF8 ; =sub_02042974
+	ldr r1, _02044CF8 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_02044CF8: .word sub_02042974
+_02044CF8: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_376
 
 	thumb_func_start ScrCmd_377
@@ -8988,14 +9897,14 @@ ScrCmd_379: ; 0x02044D68
 	add r4, #0x80
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl sub_020555E0
+	bl Field_GetTimeOfDay
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ScrCmd_379
 
-	thumb_func_start ScrCmd_380
-ScrCmd_380: ; 0x02044D8C
+	thumb_func_start ScrCmd_Random
+ScrCmd_Random: ; 0x02044D8C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -9018,7 +9927,7 @@ ScrCmd_380: ; 0x02044D8C
 	strh r1, [r4]
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_380
+	thumb_func_end ScrCmd_Random
 
 	thumb_func_start ScrCmd_381
 ScrCmd_381: ; 0x02044DC4
@@ -9219,8 +10128,8 @@ ScrCmd_407: ; 0x02044F30
 	pop {r4, r5, r6, pc}
 	thumb_func_end ScrCmd_407
 
-	thumb_func_start ScrCmd_423
-ScrCmd_423: ; 0x02044F74
+	thumb_func_start ScrCmd_CheckJohtoDexComplete
+ScrCmd_CheckJohtoDexComplete: ; 0x02044F74
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -9238,7 +10147,7 @@ ScrCmd_423: ; 0x02044F74
 	mov r0, #0
 	strh r0, [r4]
 	add r0, r5, #0
-	bl sub_02029F60
+	bl Pokedex_JohtoDexIsComplete
 	cmp r0, #1
 	bne _02044FA8
 	mov r0, #1
@@ -9246,10 +10155,10 @@ ScrCmd_423: ; 0x02044F74
 _02044FA8:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_423
+	thumb_func_end ScrCmd_CheckJohtoDexComplete
 
-	thumb_func_start ScrCmd_424
-ScrCmd_424: ; 0x02044FAC
+	thumb_func_start ScrCmd_CheckNationalDexComplete
+ScrCmd_CheckNationalDexComplete: ; 0x02044FAC
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -9267,7 +10176,7 @@ ScrCmd_424: ; 0x02044FAC
 	mov r0, #0
 	strh r0, [r4]
 	add r0, r5, #0
-	bl sub_02029F48
+	bl Pokedex_NationalDexIsComplete
 	cmp r0, #1
 	bne _02044FE0
 	mov r0, #1
@@ -9275,7 +10184,7 @@ ScrCmd_424: ; 0x02044FAC
 _02044FE0:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_424
+	thumb_func_end ScrCmd_CheckNationalDexComplete
 
 	thumb_func_start ScrCmd_425
 ScrCmd_425: ; 0x02044FE4
@@ -9300,13 +10209,13 @@ ScrCmd_425: ; 0x02044FE4
 	mov r1, #0x20
 	bl sub_0203FA8C
 	str r0, [r4]
-	ldr r1, _02045024 ; =sub_02042974
+	ldr r1, _02045024 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_02045024: .word sub_02042974
+_02045024: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_425
 
 	thumb_func_start ScrCmd_427
@@ -9483,15 +10392,15 @@ ScrCmd_705: ; 0x02045160
 	pop {r4, r5, r6, pc}
 	thumb_func_end ScrCmd_705
 
-	thumb_func_start ScrCmd_447
-ScrCmd_447: ; 0x02045188
+	thumb_func_start ScrCmd_SafariZoneAction
+ScrCmd_SafariZoneAction: ; 0x02045188
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -9503,7 +10412,7 @@ ScrCmd_447: ; 0x02045188
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	str r0, [sp, #8]
 	ldr r0, [r5, #8]
 	add r1, r0, #1
@@ -9526,7 +10435,7 @@ ScrCmd_447: ; 0x02045188
 	b _02045228
 _020451E0:
 	ldr r0, [sp, #4]
-	bl sub_02066840
+	bl ScriptState_SetSafariSysFlag
 	ldr r0, [sp, #8]
 	ldr r1, [sp]
 	bl sub_0202F5F8
@@ -9537,7 +10446,7 @@ _020451E0:
 	b _02045228
 _020451F8:
 	ldr r0, [sp, #4]
-	bl sub_02066850
+	bl ScriptState_ClearSafariSysFlag
 	ldr r0, [sp, #8]
 	mov r1, #1
 	bl sub_0202F5F8
@@ -9561,7 +10470,7 @@ _02045228:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_447
+	thumb_func_end ScrCmd_SafariZoneAction
 
 	thumb_func_start ScrCmd_459
 ScrCmd_459: ; 0x02045230
@@ -9593,13 +10502,13 @@ ScrCmd_463: ; 0x02045254
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0202D9D0
+	bl RoamerSave_SetOutbreakActive
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ScrCmd_463
 
-	thumb_func_start ScrCmd_464
-ScrCmd_464: ; 0x02045264
+	thumb_func_start ScrCmd_CreateRoamer
+ScrCmd_CreateRoamer: ; 0x02045264
 	push {r3, lr}
 	ldr r2, [r0, #8]
 	add r1, r2, #1
@@ -9608,13 +10517,13 @@ ScrCmd_464: ; 0x02045264
 	ldr r0, [r0]
 	ldrb r1, [r2]
 	ldr r0, [r0, #0xc]
-	bl sub_020676EC
+	bl Save_CreateRoamerByID
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ScrCmd_464
+	thumb_func_end ScrCmd_CreateRoamer
 
-	thumb_func_start ScrCmd_470
-ScrCmd_470: ; 0x0204527C
+	thumb_func_start ScrCmd_LoadNPCTrade
+ScrCmd_LoadNPCTrade: ; 0x0204527C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -9631,13 +10540,13 @@ ScrCmd_470: ; 0x0204527C
 	bl HandleLoadOverlay
 	mov r0, #0xb
 	add r1, r5, #0
-	bl ov23_022598C0
+	bl NPCTrade_AllocWork
 	str r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
 _020452AC: .word SDK_OVERLAY_OVY_23_ID
-	thumb_func_end ScrCmd_470
+	thumb_func_end ScrCmd_LoadNPCTrade
 
 	thumb_func_start ScrCmd_471
 ScrCmd_471: ; 0x020452B0
@@ -9656,15 +10565,15 @@ ScrCmd_471: ; 0x020452B0
 	bl GetVarPointer
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov23_02259B50
+	bl NPCTradeWork_GetOfferedSpecies
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ScrCmd_471
 
-	thumb_func_start ScrCmd_472
-ScrCmd_472: ; 0x020452E0
+	thumb_func_start ScrCmd_NPCTradeGetReqSpecies
+ScrCmd_NPCTradeGetReqSpecies: ; 0x020452E0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -9680,12 +10589,12 @@ ScrCmd_472: ; 0x020452E0
 	bl GetVarPointer
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov23_02259B58
+	bl NPCTradeWork_GetRequestedSpecies
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_472
+	thumb_func_end ScrCmd_NPCTradeGetReqSpecies
 
 	thumb_func_start ScrCmd_612
 ScrCmd_612: ; 0x02045310
@@ -9704,15 +10613,15 @@ ScrCmd_612: ; 0x02045310
 	bl GetVarPointer
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov23_02259B60
+	bl NPCTradeWork_GetUnusedFlag
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ScrCmd_612
 
-	thumb_func_start ScrCmd_473
-ScrCmd_473: ; 0x02045340
+	thumb_func_start ScrCmd_NPCTradeExec
+ScrCmd_NPCTradeExec: ; 0x02045340
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -9731,31 +10640,31 @@ ScrCmd_473: ; 0x02045340
 	ldr r0, [r5, #0x74]
 	ldr r1, [r4]
 	mov r3, #0xb
-	bl sub_02067A1C
+	bl Field_CreateTask_TradeAnim
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_473
+	thumb_func_end ScrCmd_NPCTradeExec
 
-	thumb_func_start ScrCmd_474
-ScrCmd_474: ; 0x02045374
+	thumb_func_start ScrCmd_NPCTradeEnd
+ScrCmd_NPCTradeEnd: ; 0x02045374
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x15
 	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
-	bl ov23_02259944
+	bl NPCTrade_DeleteWork
 	ldr r0, _02045390 ; =SDK_OVERLAY_OVY_23_ID
 	bl UnloadOverlayByID
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
 _02045390: .word SDK_OVERLAY_OVY_23_ID
-	thumb_func_end ScrCmd_474
+	thumb_func_end ScrCmd_NPCTradeEnd
 
-	thumb_func_start ScrCmd_362
-ScrCmd_362: ; 0x02045394
+	thumb_func_start ScrCmd_GiveLoanMon
+ScrCmd_GiveLoanMon: ; 0x02045394
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r1, [r5, #8]
@@ -9775,17 +10684,17 @@ ScrCmd_362: ; 0x02045394
 	add r1, r6, #0
 	add r2, r4, #0
 	add r3, r7, #0
-	bl ov23_02259964
+	bl NPCTrade_MakeAndGiveLoanMon
 	ldr r0, _020453CC ; =SDK_OVERLAY_OVY_23_ID
 	bl UnloadOverlayByID
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _020453CC: .word SDK_OVERLAY_OVY_23_ID
-	thumb_func_end ScrCmd_362
+	thumb_func_end ScrCmd_GiveLoanMon
 
-	thumb_func_start ScrCmd_363
-ScrCmd_363: ; 0x020453D0
+	thumb_func_start ScrCmd_CheckReturnLoanMon
+ScrCmd_CheckReturnLoanMon: ; 0x020453D0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #8]
@@ -9815,7 +10724,7 @@ ScrCmd_363: ; 0x020453D0
 	ldr r0, [r5]
 	add r1, r4, #0
 	lsr r2, r2, #0x18
-	bl ov23_02259AA0
+	bl NPCTrade_CanGiveUpLoanMon
 	strh r0, [r7]
 	ldr r0, _02045424 ; =SDK_OVERLAY_OVY_23_ID
 	bl UnloadOverlayByID
@@ -9823,7 +10732,7 @@ ScrCmd_363: ; 0x020453D0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02045424: .word SDK_OVERLAY_OVY_23_ID
-	thumb_func_end ScrCmd_363
+	thumb_func_end ScrCmd_CheckReturnLoanMon
 
 	thumb_func_start ScrCmd_475
 ScrCmd_475: ; 0x02045428
@@ -9843,8 +10752,8 @@ ScrCmd_476: ; 0x0204542C
 	pop {r3, pc}
 	thumb_func_end ScrCmd_476
 
-	thumb_func_start ScrCmd_477
-ScrCmd_477: ; 0x02045440
+	thumb_func_start ScrCmd_NatDexFlagAction
+ScrCmd_NatDexFlagAction: ; 0x02045440
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #8]
@@ -9867,7 +10776,7 @@ ScrCmd_477: ; 0x02045440
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl Sav2_Pokedex_get
-	bl sub_0202A53C
+	bl Pokedex_SetNatDexFlag
 	add r5, #0x80
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
@@ -9889,10 +10798,10 @@ _0204549C:
 _020454A0:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_477
+	thumb_func_end ScrCmd_NatDexFlagAction
 
-	thumb_func_start ScrCmd_483
-ScrCmd_483: ; 0x020454A4
+	thumb_func_start ScrCmd_GetEVTotal
+ScrCmd_GetEVTotal: ; 0x020454A4
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -9959,10 +10868,10 @@ ScrCmd_483: ; 0x020454A4
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_483
+	thumb_func_end ScrCmd_GetEVTotal
 
-	thumb_func_start ScrCmd_484
-ScrCmd_484: ; 0x02045540
+	thumb_func_start ScrCmd_GetWeekday
+ScrCmd_GetWeekday: ; 0x02045540
 	push {r4, lr}
 	sub sp, #0x10
 	add r4, r0, #0
@@ -9980,7 +10889,7 @@ ScrCmd_484: ; 0x02045540
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_484
+	thumb_func_end ScrCmd_GetWeekday
 
 	thumb_func_start ScrCmd_485
 ScrCmd_485: ; 0x02045568
@@ -9999,8 +10908,8 @@ ScrCmd_485: ; 0x02045568
 	pop {r4, pc}
 	thumb_func_end ScrCmd_485
 
-	thumb_func_start ScrCmd_487
-ScrCmd_487: ; 0x02045588
+	thumb_func_start ScrCmd_PokeCenAnim
+ScrCmd_PokeCenAnim: ; 0x02045588
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -10014,14 +10923,14 @@ ScrCmd_487: ; 0x02045588
 	lsl r1, r1, #0x18
 	ldr r0, [r4]
 	lsr r1, r1, #0x18
-	bl ov02_0224BB18
+	bl PokecenterAnimCreate
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_487
+	thumb_func_end ScrCmd_PokeCenAnim
 
-	thumb_func_start ScrCmd_488
-ScrCmd_488: ; 0x020455B0
+	thumb_func_start ScrCmd_ElevatorAnim
+ScrCmd_ElevatorAnim: ; 0x020455B0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -10049,10 +10958,10 @@ ScrCmd_488: ; 0x020455B0
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_488
+	thumb_func_end ScrCmd_ElevatorAnim
 
-	thumb_func_start ScrCmd_495
-ScrCmd_495: ; 0x020455F0
+	thumb_func_start ScrCmd_GetGameVersion
+ScrCmd_GetGameVersion: ; 0x020455F0
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -10065,10 +10974,10 @@ ScrCmd_495: ; 0x020455F0
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_495
+	thumb_func_end ScrCmd_GetGameVersion
 
-	thumb_func_start ScrCmd_498
-ScrCmd_498: ; 0x0204560C
+	thumb_func_start ScrCmd_PrimoPasswordCheck1
+ScrCmd_PrimoPasswordCheck1: ; 0x0204560C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r5, r0, #0
@@ -10159,10 +11068,10 @@ _020456CE:
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_498
+	thumb_func_end ScrCmd_PrimoPasswordCheck1
 
-	thumb_func_start ScrCmd_499
-ScrCmd_499: ; 0x020456D8
+	thumb_func_start ScrCmd_PrimoPasswordCheck2
+ScrCmd_PrimoPasswordCheck2: ; 0x020456D8
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r0, #0
@@ -10234,7 +11143,7 @@ _02045778:
 	mov r0, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_499
+	thumb_func_end ScrCmd_PrimoPasswordCheck2
 
 	thumb_func_start ScrCmd_500
 ScrCmd_500: ; 0x02045780
@@ -10287,8 +11196,8 @@ ScrCmd_502: ; 0x020457B8
 	.balign 4, 0
 	thumb_func_end ScrCmd_502
 
-	thumb_func_start sub_020457D4
-sub_020457D4: ; 0x020457D4
+	thumb_func_start Script_SetMonSeenFlagBySpecies
+Script_SetMonSeenFlagBySpecies: ; 0x020457D4
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	ldr r0, [r0, #0xc]
@@ -10311,13 +11220,13 @@ sub_020457D4: ; 0x020457D4
 	bl CreateMon
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_0202A36C
+	bl Pokedex_SetMonSeenFlag
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_020457D4
+	thumb_func_end Script_SetMonSeenFlagBySpecies
 
 	thumb_func_start ScrCmd_687
 ScrCmd_687: ; 0x02045818
@@ -10332,14 +11241,14 @@ ScrCmd_687: ; 0x02045818
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_020457D4
+	bl Script_SetMonSeenFlagBySpecies
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ScrCmd_687
 
-	thumb_func_start ScrCmd_507
-ScrCmd_507: ; 0x0204583C
+	thumb_func_start ScrCmd_CountPCEmptySpace
+ScrCmd_CountPCEmptySpace: ; 0x0204583C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -10358,7 +11267,7 @@ ScrCmd_507: ; 0x0204583C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_507
+	thumb_func_end ScrCmd_CountPCEmptySpace
 
 	thumb_func_start ScrCmd_512
 ScrCmd_512: ; 0x02045868
@@ -10394,8 +11303,8 @@ ScrCmd_513: ; 0x0204588C
 	.balign 4, 0
 	thumb_func_end ScrCmd_513
 
-	thumb_func_start ScrCmd_514
-ScrCmd_514: ; 0x020458A4
+	thumb_func_start ScrCmd_HallOfFameAnim
+ScrCmd_HallOfFameAnim: ; 0x020458A4
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -10413,10 +11322,10 @@ ScrCmd_514: ; 0x020458A4
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_514
+	thumb_func_end ScrCmd_HallOfFameAnim
 
-	thumb_func_start ScrCmd_515
-ScrCmd_515: ; 0x020458CC
+	thumb_func_start ScrCmd_AddSpecialGameStat
+ScrCmd_AddSpecialGameStat: ; 0x020458CC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -10430,7 +11339,7 @@ ScrCmd_515: ; 0x020458CC
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_515
+	thumb_func_end ScrCmd_AddSpecialGameStat
 
 	thumb_func_start ScrCmd_517
 ScrCmd_517: ; 0x020458EC
@@ -10708,7 +11617,7 @@ ScrCmd_523: ; 0x02045AAC
 	ldr r0, [r0]
 	add r1, r7, #0
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r7, r0, #0
 	bne _02045B2A
 	bl GF_AssertFail
@@ -10757,7 +11666,7 @@ ScrCmd_524: ; 0x02045B40
 	ldr r0, [r0]
 	add r1, r5, #0
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r5, r0, #0
 	bne _02045B94
 	bl GF_AssertFail
@@ -10879,13 +11788,13 @@ ScrCmd_528: ; 0x02045C64
 	add r1, r0, #0
 	ldr r0, [r4]
 	bl GetVarPointer
-	ldr r1, _02045C80 ; =gMain + 0x60
+	ldr r1, _02045C80 ; =gSystem + 0x60
 	ldrb r1, [r1, #0xa]
 	strh r1, [r0]
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-_02045C80: .word gMain + 0x60
+_02045C80: .word gSystem + 0x60
 	thumb_func_end ScrCmd_528
 
 	thumb_func_start ScrCmd_530
@@ -10921,8 +11830,8 @@ _02045CBE:
 	.balign 4, 0
 	thumb_func_end ScrCmd_530
 
-	thumb_func_start ScrCmd_531
-ScrCmd_531: ; 0x02045CC4
+	thumb_func_start ScrCmd_BufferBackgroundName
+ScrCmd_BufferBackgroundName: ; 0x02045CC4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -10947,7 +11856,7 @@ ScrCmd_531: ; 0x02045CC4
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_531
+	thumb_func_end ScrCmd_BufferBackgroundName
 
 	thumb_func_start ScrCmd_534
 ScrCmd_534: ; 0x02045CFC
@@ -11041,8 +11950,8 @@ ScrCmd_538: ; 0x02045D7C
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_02015C28
-	bl sub_02015C48
+	bl SaveData_EasyChat_get
+	bl SaveEasyChat_RandomTrendySayingSet
 	cmp r0, #0x20
 	bne _02045DCE
 	ldr r0, _02045DE4 ; =0x0000FFFF
@@ -11051,11 +11960,11 @@ ScrCmd_538: ; 0x02045D7C
 	pop {r3, r4, r5, r6, r7, pc}
 _02045DCE:
 	strh r0, [r4]
-	bl sub_02015CC8
+	bl TrendyWordIdxToECWord
 	add r2, r0, #0
 	ldr r0, [r6]
 	add r1, r7, #0
-	bl sub_0200C528
+	bl BufferECWord
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -11076,8 +11985,8 @@ ScrCmd_540: ; 0x02045DE8
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_02015C28
-	bl sub_02015CAC
+	bl SaveData_EasyChat_get
+	bl SaveEasyChat_TrendySayingsUnlockedAllCheck
 	cmp r0, #1
 	bne _02045E14
 	mov r0, #1
@@ -11179,7 +12088,7 @@ ScrCmd_545: ; 0x02045EA8
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0202A14C
+	bl Pokedex_GetSeenFormeNum_Unown
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -11293,13 +12202,13 @@ ScrCmd_551: ; 0x02045F80
 	add r2, r6, #0
 	bl sub_0203E5D0
 	str r0, [r4]
-	ldr r1, _02045FC0 ; =sub_020429F8
+	ldr r1, _02045FC0 ; =ScrNative_WaitApplication
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_02045FC0: .word sub_020429F8
+_02045FC0: .word ScrNative_WaitApplication
 	thumb_func_end ScrCmd_551
 
 	thumb_func_start ScrCmd_552
@@ -11600,19 +12509,19 @@ ScrCmd_571: ; 0x020461A0
 	ldr r2, [sp, #4]
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200C528
+	bl BufferECWord
 	ldr r2, [sp, #8]
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0200C528
+	bl BufferECWord
 	ldr r2, [sp, #0xc]
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0200C528
+	bl BufferECWord
 	add r0, r4, #0
 	mov r1, #3
 	add r2, r7, #0
-	bl sub_0200C528
+	bl BufferECWord
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #1
@@ -11745,8 +12654,8 @@ ScrCmd_582: ; 0x02046300
 	add r7, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
-	bl sub_0203B964
+	bl Save_FlyPoints_get
+	bl FlyPoints_GetSpecialSpawnWarpPtr
 	str r4, [r0]
 	str r6, [r0, #8]
 	mov r1, #0
@@ -11777,7 +12686,7 @@ ScrCmd_583: ; 0x02046360
 	ldr r0, [r5]
 	ldrb r4, [r2]
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r5, r0, #0
 	bne _02046390
 	bl GF_AssertFail
@@ -11789,8 +12698,8 @@ _02046390:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ScrCmd_583
 
-	thumb_func_start ScrCmd_590
-ScrCmd_590: ; 0x0204639C
+	thumb_func_start ScrCmd_GetTrcardStars
+ScrCmd_GetTrcardStars: ; 0x0204639C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -11808,7 +12717,7 @@ ScrCmd_590: ; 0x0204639C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_590
+	thumb_func_end ScrCmd_GetTrcardStars
 
 	thumb_func_start ScrCmd_593
 ScrCmd_593: ; 0x020463C4
@@ -11946,14 +12855,14 @@ _0204647E:
 	str r0, [r4, #0x1c]
 	ldr r0, [r5, #0x74]
 	bl sub_02050624
-	ldr r1, _020464DC ; =sub_02042974
+	ldr r1, _020464DC ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _020464D8: .word _02108584
-_020464DC: .word sub_02042974
+_020464DC: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_627
 
 	thumb_func_start ScrCmd_631
@@ -12000,17 +12909,17 @@ ScrCmd_631: ; 0x020464E0
 	lsr r2, r2, #0x18
 	bl sub_0203FAB4
 	str r0, [r4]
-	ldr r1, _02046550 ; =sub_02042974
+	ldr r1, _02046550 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02046550: .word sub_02042974
+_02046550: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_631
 
-	thumb_func_start ScrCmd_649
-ScrCmd_649: ; 0x02046554
+	thumb_func_start ScrCmd_ScratchOffCard
+ScrCmd_ScratchOffCard: ; 0x02046554
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -12022,19 +12931,19 @@ ScrCmd_649: ; 0x02046554
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x20
-	bl sub_0203FB60
+	bl ScratchOffCards_Create
 	str r0, [r4]
-	ldr r1, _02046580 ; =sub_020429F8
+	ldr r1, _02046580 ; =ScrNative_WaitApplication
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_02046580: .word sub_020429F8
-	thumb_func_end ScrCmd_649
+_02046580: .word ScrNative_WaitApplication
+	thumb_func_end ScrCmd_ScratchOffCard
 
-	thumb_func_start ScrCmd_650
-ScrCmd_650: ; 0x02046584
+	thumb_func_start ScrCmd_ScratchOffCardEnd
+ScrCmd_ScratchOffCardEnd: ; 0x02046584
 	push {r4, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -12047,10 +12956,10 @@ ScrCmd_650: ; 0x02046584
 	str r0, [r4]
 	mov r0, #1
 	pop {r4, pc}
-	thumb_func_end ScrCmd_650
+	thumb_func_end ScrCmd_ScratchOffCardEnd
 
-	thumb_func_start ScrCmd_651
-ScrCmd_651: ; 0x020465A0
+	thumb_func_start ScrCmd_GetScratchOffPrize
+ScrCmd_GetScratchOffPrize: ; 0x020465A0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -12090,7 +12999,7 @@ ScrCmd_651: ; 0x020465A0
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_651
+	thumb_func_end ScrCmd_GetScratchOffPrize
 
 	thumb_func_start ScrCmd_662
 ScrCmd_662: ; 0x020465FC
@@ -12134,7 +13043,7 @@ ScrCmd_662: ; 0x020465FC
 	add r1, r7, #0
 	add r2, r6, #0
 	bl sub_0203FC14
-	ldr r1, _02046670 ; =sub_020429F8
+	ldr r1, _02046670 ; =ScrNative_WaitApplication
 	add r0, r5, #0
 	bl SetupNativeScript
 	b _0204666A
@@ -12145,7 +13054,7 @@ _0204666A:
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02046670: .word sub_020429F8
+_02046670: .word ScrNative_WaitApplication
 	thumb_func_end ScrCmd_662
 
 	thumb_func_start ScrCmd_663
@@ -12186,14 +13095,14 @@ ScrCmd_667: ; 0x020466A8
 	bl GetVarPointer
 	mov r1, #0
 	strh r1, [r0]
-	ldr r1, _020466DC ; =gMain
+	ldr r1, _020466DC ; =gSystem
 	ldr r2, [r1, #0x44]
 	mov r1, #1
 	tst r2, r1
 	beq _020466CA
 	strh r1, [r0]
 _020466CA:
-	ldr r1, _020466DC ; =gMain
+	ldr r1, _020466DC ; =gSystem
 	ldr r2, [r1, #0x44]
 	mov r1, #2
 	tst r1, r2
@@ -12204,11 +13113,11 @@ _020466D8:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-_020466DC: .word gMain
+_020466DC: .word gSystem
 	thumb_func_end ScrCmd_667
 
-	thumb_func_start ScrCmd_673
-ScrCmd_673: ; 0x020466E0
+	thumb_func_start ScrCmd_GetOwnedRotomFormes
+ScrCmd_GetOwnedRotomFormes: ; 0x020466E0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -12303,7 +13212,7 @@ _020467A2:
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_673
+	thumb_func_end ScrCmd_GetOwnedRotomFormes
 
 	thumb_func_start sub_020467A8
 sub_020467A8: ; 0x020467A8
@@ -12326,7 +13235,7 @@ _020467C2:
 	mov r2, #0
 	add r5, r0, #0
 	bl GetMonData
-	ldr r1, _020468F0 ; =0x000001DF
+	ldr r1, _020468F0 ; =SPECIES_ROTOM
 	cmp r0, r1
 	bne _020467F8
 	add r0, r5, #0
@@ -12360,7 +13269,7 @@ _02046808:
 	mov r2, #0
 	add r5, r0, #0
 	bl GetBoxMonData
-	ldr r1, _020468F0 ; =0x000001DF
+	ldr r1, _020468F0 ; =SPECIES_ROTOM
 	cmp r0, r1
 	bne _02046842
 	add r0, r5, #0
@@ -12395,7 +13304,7 @@ _02046854:
 	mov r2, #0
 	add r4, r0, #0
 	bl GetBoxMonData
-	ldr r1, _020468F0 ; =0x000001DF
+	ldr r1, _020468F0 ; =SPECIES_ROTOM
 	cmp r0, r1
 	bne _0204688C
 	add r0, r4, #0
@@ -12433,7 +13342,7 @@ _0204688C:
 	mov r1, #5
 	mov r2, #0
 	bl GetBoxMonData
-	ldr r1, _020468F0 ; =0x000001DF
+	ldr r1, _020468F0 ; =SPECIES_ROTOM
 	cmp r0, r1
 	bne _020468E4
 	add r0, r4, #0
@@ -12456,11 +13365,11 @@ _020468E4:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_020468F0: .word 0x000001DF
+_020468F0: .word SPECIES_ROTOM
 	thumb_func_end sub_020467A8
 
-	thumb_func_start ScrCmd_680
-ScrCmd_680: ; 0x020468F4
+	thumb_func_start ScrCmd_AddSpecialGameStat2
+ScrCmd_AddSpecialGameStat2: ; 0x020468F4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -12474,7 +13383,7 @@ ScrCmd_680: ; 0x020468F4
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_680
+	thumb_func_end ScrCmd_AddSpecialGameStat2
 
 	thumb_func_start ScrCmd_682
 ScrCmd_682: ; 0x02046914
@@ -12608,8 +13517,8 @@ _02046A18:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ScrCmd_696
 
-	thumb_func_start ScrCmd_698
-ScrCmd_698: ; 0x02046A1C
+	thumb_func_start ScrCmd_FollowerPokeIsEventTrigger
+ScrCmd_FollowerPokeIsEventTrigger: ; 0x02046A1C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #8]
@@ -12705,10 +13614,10 @@ _02046ADC: ; jump table
 	.short _02046AFE - _02046ADC - 2 ; case 2
 	.short _02046B0A - _02046ADC - 2 ; case 3
 _02046AE4:
-	cmp r0, #0xac
+	cmp r0, #SPECIES_PICHU
 	beq _02046AEE
-	sub r0, #0x19
-	cmp r0, #1
+	sub r0, #SPECIES_PIKACHU
+	cmp r0, #SPECIES_RAICHU - SPECIES_PIKACHU
 	bhi _02046B12
 _02046AEE:
 	add r0, r7, #0
@@ -12719,14 +13628,14 @@ _02046AEE:
 	strh r0, [r6]
 	b _02046B12
 _02046AFE:
-	ldr r1, _02046B18 ; =0x000001ED
+	ldr r1, _02046B18 ; =SPECIES_ARCEUS
 	cmp r0, r1
 	bne _02046B12
 	mov r0, #1
 	strh r0, [r6]
 	b _02046B12
 _02046B0A:
-	cmp r0, #0xfb
+	cmp r0, #SPECIES_CELEBI
 	bne _02046B12
 	mov r0, #1
 	strh r0, [r6]
@@ -12734,8 +13643,8 @@ _02046B12:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02046B18: .word 0x000001ED
-	thumb_func_end ScrCmd_698
+_02046B18: .word SPECIES_ARCEUS
+	thumb_func_end ScrCmd_FollowerPokeIsEventTrigger
 
 	thumb_func_start ScrCmd_596
 ScrCmd_596: ; 0x02046B1C
@@ -12752,7 +13661,7 @@ ScrCmd_596: ; 0x02046B1C
 	add r5, r0, #0
 	ldr r0, [r4, #0x3c]
 	mov r1, #0xfd
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	bl ov01_022055DC
 	strh r0, [r5]
 	mov r0, #0
@@ -12766,7 +13675,7 @@ ScrCmd_597: ; 0x02046B48
 	ldr r4, [r0]
 	mov r1, #0xfd
 	ldr r0, [r4, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0
@@ -12786,20 +13695,20 @@ ScrCmd_598: ; 0x02046B64
 	cmp r0, #1
 	bne _02046B88
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r1, r0, #0
 	b _02046BA6
 _02046B88:
 	cmp r0, #2
 	bne _02046B9E
 	add r0, r4, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r6, r0, #0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r1, r0, #0
 	b _02046BA6
 _02046B9E:
@@ -12842,8 +13751,8 @@ _02046BD6:
 	.balign 4, 0
 	thumb_func_end ScrCmd_600
 
-	thumb_func_start ScrCmd_601
-ScrCmd_601: ; 0x02046BDC
+	thumb_func_start ScrCmd_FollowPokeFacePlayer
+ScrCmd_FollowPokeFacePlayer: ; 0x02046BDC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x24
 	str r0, [sp, #4]
@@ -12852,42 +13761,42 @@ ScrCmd_601: ; 0x02046BDC
 	ldr r0, [sp, #4]
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02046CAC
 	ldr r0, [sp, #4]
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	bl ov01_022055DC
 	cmp r0, #0
 	beq _02046C9C
 	ldr r0, [sp, #4]
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0205CA1C
-	bl sub_0205C6DC
+	bl FieldSys_GetPlayerAvatar
+	bl PlayerAvatar_GetMapObject
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #4]
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0205CA1C
-	bl sub_0205C654
+	bl FieldSys_GetPlayerAvatar
+	bl PlayerAvatar_GetFacingDirection
 	add r4, r0, #0
 	ldr r0, [sp, #0xc]
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	lsl r5, r0, #1
 	ldr r0, [sp, #0xc]
-	bl sub_0205F924
+	bl MapObject_GetCurrentHeight
 	str r0, [sp, #0x10]
 	ldr r0, [sp, #0xc]
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	lsl r4, r0, #1
 	ldr r0, [sp, #4]
 	add r1, r6, r5
@@ -12898,7 +13807,7 @@ ScrCmd_601: ; 0x02046BDC
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0xc]
 	add r1, sp, #0x18
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [sp, #4]
@@ -12929,7 +13838,7 @@ _02046C9C:
 	cmp r0, #0
 	beq _02046CAC
 	ldr r0, [sp, #4]
-	bl ScrCmd_104
+	bl ScrCmd_FacePlayer
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 _02046CAC:
@@ -12937,7 +13846,7 @@ _02046CAC:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_601
+	thumb_func_end ScrCmd_FollowPokeFacePlayer
 
 	thumb_func_start ScrCmd_602
 ScrCmd_602: ; 0x02046CB4
@@ -12948,21 +13857,21 @@ ScrCmd_602: ; 0x02046CB4
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02046CEA
 	cmp r4, #0
 	beq _02046CDE
 	add r5, #0x80
 	ldr r0, [r5]
-	bl sub_02069D68
-	bl sub_0205F6FC
+	bl FollowingPokemon_GetMapObject
+	bl MapObject_PauseMovement
 	b _02046CEA
 _02046CDE:
 	add r5, #0x80
 	ldr r0, [r5]
-	bl sub_02069D68
-	bl sub_0205F708
+	bl FollowingPokemon_GetMapObject
+	bl MapObject_UnpauseMovement
 _02046CEA:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -12975,7 +13884,7 @@ ScrCmd_603: ; 0x02046CF0
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02046D08
 	ldr r1, _02046D0C ; =sub_02046D40
@@ -12997,14 +13906,14 @@ ScrCmd_604: ; 0x02046D10
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02046D3A
 	add r5, #0x80
 	ldr r0, [r5]
 	mov r1, #0xfd
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r1, r4, #0
 	bl sub_0205FC94
 _02046D3A:
@@ -13018,8 +13927,8 @@ sub_02046D40: ; 0x02046D40
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069D68
-	bl sub_02062198
+	bl FollowingPokemon_GetMapObject
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	beq _02046D56
 	mov r0, #1
@@ -13044,20 +13953,20 @@ ScrCmd_605: ; 0x02046D5C
 	add r0, #0x80
 	ldr r0, [r0]
 	ldrb r4, [r1]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02046DA2
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, #0x80
 	add r7, r0, #0
 	ldr r0, [r5]
 	mov r1, #0xfd
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r1, r0, #0
 	add r0, r7, #0
 	add r2, r6, #0
@@ -13075,13 +13984,13 @@ ScrCmd_606: ; 0x02046DA8
 	add r5, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02046DF4
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r4, r0, #0
 	bl sub_02069F7C
 	add r1, r5, #0
@@ -13113,13 +14022,13 @@ ScrCmd_607: ; 0x02046DF8
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02046E32
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	bl sub_02069F7C
 	add r1, r4, #0
 	add r1, #0x80
@@ -13145,14 +14054,14 @@ ScrCmd_608: ; 0x02046E38
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02046E58
 	add r4, #0x80
 	ldr r0, [r4]
 	mov r1, #0xfd
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	bl ov01_02205784
 _02046E58:
 	mov r0, #0
@@ -13165,14 +14074,14 @@ ScrCmd_609: ; 0x02046E5C
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02046E7C
 	add r4, #0x80
 	ldr r0, [r4]
 	mov r1, #0xfd
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	bl sub_020659CC
 _02046E7C:
 	mov r0, #1
@@ -13195,8 +14104,8 @@ ScrCmd_610: ; 0x02046E80
 	pop {r4, pc}
 	thumb_func_end ScrCmd_610
 
-	thumb_func_start ScrCmd_611
-ScrCmd_611: ; 0x02046E9C
+	thumb_func_start ScrCmd_Pokeathlon
+ScrCmd_Pokeathlon: ; 0x02046E9C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1c
 	add r5, r0, #0
@@ -13262,10 +14171,10 @@ ScrCmd_611: ; 0x02046E9C
 	mov r0, #1
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_611
+	thumb_func_end ScrCmd_Pokeathlon
 
-	thumb_func_start ScrCmd_144
-ScrCmd_144: ; 0x02046F34
+	thumb_func_start ScrCmd_GetFriendSprite
+ScrCmd_GetFriendSprite: ; 0x02046F34
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -13280,27 +14189,27 @@ ScrCmd_144: ; 0x02046F34
 	bl ScriptEnvironment_GetSav2Ptr
 	bl Sav2_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
-	cmp r0, #0
+	cmp r0, #0 ; MALE
 	beq _02046F62
-	mov r0, #0
+	mov r0, #SPRITE_HERO
 	b _02046F64
 _02046F62:
-	mov r0, #0x61
+	mov r0, #SPRITE_HEROINE
 _02046F64:
 	strh r0, [r4]
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_144
+	thumb_func_end ScrCmd_GetFriendSprite
 
-	thumb_func_start ScrCmd_145
-ScrCmd_145: ; 0x02046F6C
+	thumb_func_start ScrCmd_RegisterPokegearCard
+ScrCmd_RegisterPokegearCard: ; 0x02046F6C
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202ED7C
+	bl SaveData_GSPlayerMisc_get
 	ldr r2, [r4, #8]
 	add r1, r2, #1
 	str r1, [r4, #8]
@@ -13314,19 +14223,19 @@ ScrCmd_145: ; 0x02046F6C
 	b _02046FA2
 _02046F92:
 	mov r1, #1
-	bl sub_0202EE00
+	bl Pokegear_RegisterCard
 	b _02046FA8
 _02046F9A:
 	mov r1, #2
-	bl sub_0202EE00
+	bl Pokegear_RegisterCard
 	b _02046FA8
 _02046FA2:
 	mov r1, #0
-	bl sub_0202EE00
+	bl Pokegear_RegisterCard
 _02046FA8:
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ScrCmd_145
+	thumb_func_end ScrCmd_RegisterPokegearCard
 
 	thumb_func_start ScrCmd_804
 ScrCmd_804: ; 0x02046FAC
@@ -13337,21 +14246,21 @@ ScrCmd_804: ; 0x02046FAC
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0202ED7C
+	bl SaveData_GSPlayerMisc_get
 	ldrb r1, [r4]
 	bl sub_0202EE58
 	mov r0, #0
 	pop {r4, pc}
 	thumb_func_end ScrCmd_804
 
-	thumb_func_start ScrCmd_146
-ScrCmd_146: ; 0x02046FC8
+	thumb_func_start ScrCmd_RegisterGearNumber
+ScrCmd_RegisterGearNumber: ; 0x02046FC8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202ED7C
+	bl SaveData_GSPlayerMisc_get
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -13364,20 +14273,20 @@ ScrCmd_146: ; 0x02046FC8
 	cmp r1, #0x4b
 	bhs _02046FF8
 	add r0, r4, #0
-	bl sub_0202EF18
+	bl RegisterPhoneNumberInPokeGear
 _02046FF8:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_146
+	thumb_func_end ScrCmd_RegisterGearNumber
 
-	thumb_func_start ScrCmd_147
-ScrCmd_147: ; 0x02046FFC
+	thumb_func_start ScrCmd_CheckRegisteredPhoneNumber
+ScrCmd_CheckRegisteredPhoneNumber: ; 0x02046FFC
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202ED7C
+	bl SaveData_GSPlayerMisc_get
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -13399,7 +14308,7 @@ ScrCmd_147: ; 0x02046FFC
 	bhs _02047056
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0202EEE4
+	bl GSPlayerMisc_IsGearNumberRegistered
 	strh r0, [r4]
 	ldrh r0, [r4]
 	cmp r0, #0xff
@@ -13418,10 +14327,10 @@ _0204705A:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_147
+	thumb_func_end ScrCmd_CheckRegisteredPhoneNumber
 
-	thumb_func_start ScrCmd_430
-ScrCmd_430: ; 0x02047060
+	thumb_func_start ScrCmd_SetPhoneCall
+ScrCmd_SetPhoneCall: ; 0x02047060
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -13485,10 +14394,10 @@ ScrCmd_430: ; 0x02047060
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_430
+	thumb_func_end ScrCmd_SetPhoneCall
 
-	thumb_func_start ScrCmd_431
-ScrCmd_431: ; 0x020470F4
+	thumb_func_start ScrCmd_RunPhoneCall
+ScrCmd_RunPhoneCall: ; 0x020470F4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -13499,19 +14408,19 @@ ScrCmd_431: ; 0x020470F4
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0203EA84
+	bl PhoneUI_new
 	str r0, [r4]
-	ldr r1, _0204711C ; =sub_02042974
+	ldr r1, _0204711C ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_0204711C: .word sub_02042974
-	thumb_func_end ScrCmd_431
+_0204711C: .word ScrNative_WaitApplication_DestroyTaskData
+	thumb_func_end ScrCmd_RunPhoneCall
 
-	thumb_func_start ScrCmd_460
-ScrCmd_460: ; 0x02047120
+	thumb_func_start ScrCmd_LoadPhoneDat
+ScrCmd_LoadPhoneDat: ; 0x02047120
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -13541,10 +14450,10 @@ ScrCmd_460: ; 0x02047120
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_460
+	thumb_func_end ScrCmd_LoadPhoneDat
 
-	thumb_func_start ScrCmd_461
-ScrCmd_461: ; 0x02047168
+	thumb_func_start ScrCmd_GetPhoneContactMsgIds
+ScrCmd_GetPhoneContactMsgIds: ; 0x02047168
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -13578,7 +14487,7 @@ ScrCmd_461: ; 0x02047168
 	bl sub_02092E10
 	add r5, r0, #0
 	ldrb r0, [r5]
-	bl sub_02095FEC
+	bl GetPhoneMessageGmm
 	ldr r1, [sp]
 	strh r0, [r1]
 	ldrb r0, [r5]
@@ -13586,7 +14495,7 @@ ScrCmd_461: ; 0x02047168
 	bne _020471CE
 	mov r0, #0
 	strh r0, [r4]
-	mov r0, #1
+	mov r0, #1 ; error hang?
 	pop {r3, r4, r5, r6, r7, pc}
 _020471CE:
 	cmp r6, #4
@@ -13594,7 +14503,7 @@ _020471CE:
 	mov r6, #0
 _020471D4:
 	ldrh r0, [r7]
-	bl sub_020404C8
+	bl ScriptNumToTrainerNum
 	add r1, r6, #1
 	lsl r1, r1, #0x10
 	lsr r5, r1, #0x10
@@ -13606,8 +14515,8 @@ _020471D4:
 	b _02047208
 _020471EC:
 	ldrh r0, [r7]
-	bl sub_020404C8
-	bl sub_02040500
+	bl ScriptNumToTrainerNum
+	bl TrainerNumIsDouble
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bne _02047200
@@ -13615,12 +14524,12 @@ _020471EC:
 	b _02047208
 _02047200:
 	ldrh r0, [r7]
-	bl sub_020404EC
+	bl ScriptNoToDoublePartnerNo
 	strh r5, [r4]
 _02047208:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_461
+	thumb_func_end ScrCmd_GetPhoneContactMsgIds
 
 	thumb_func_start ScrCmd_462
 ScrCmd_462: ; 0x0204720C
@@ -13636,18 +14545,18 @@ ScrCmd_462: ; 0x0204720C
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetPhoneRematches
 	lsl r1, r4, #0x18
 	lsr r1, r1, #0x18
 	mov r2, #0
-	bl sub_0202F0C4
+	bl PhoneRematches_SetSeeking
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ScrCmd_462
 
-	thumb_func_start ScrCmd_613
-ScrCmd_613: ; 0x0204723C
+	thumb_func_start ScrCmd_GetPhoneContactRandomGiftBerry
+ScrCmd_GetPhoneContactRandomGiftBerry: ; 0x0204723C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -13676,10 +14585,10 @@ _02047276:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_613
+	thumb_func_end ScrCmd_GetPhoneContactRandomGiftBerry
 
-	thumb_func_start ScrCmd_614
-ScrCmd_614: ; 0x0204727C
+	thumb_func_start ScrCmd_GetPhoneContactGiftItem
+ScrCmd_GetPhoneContactGiftItem: ; 0x0204727C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -13698,18 +14607,18 @@ ScrCmd_614: ; 0x0204727C
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetPhoneRematches
 	ldrb r1, [r4]
 	add r5, r0, #0
-	bl sub_0202F128
+	bl PhoneRematches_GiftItemIdGet
 	strh r0, [r6]
 	ldrb r1, [r4]
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_0202F100
+	bl PhoneRematches_GiftItemIdSet
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_614
+	thumb_func_end ScrCmd_GetPhoneContactGiftItem
 
 	thumb_func_start ScrCmd_148
 ScrCmd_148: ; 0x020472C4
@@ -13740,26 +14649,26 @@ ScrCmd_149: ; 0x020472E8
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetPhoneRematches
 	ldrb r1, [r4]
 	bl sub_0202F050
 	mov r0, #0
 	pop {r4, pc}
 	thumb_func_end ScrCmd_149
 
-	thumb_func_start ScrCmd_615
-ScrCmd_615: ; 0x02047304
+	thumb_func_start ScrCmd_CameronPhoto
+ScrCmd_CameronPhoto: ; 0x02047304
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_0206A798
+	bl FieldSys_TakePhoto
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_615
+	thumb_func_end ScrCmd_CameronPhoto
 
 	thumb_func_start ScrCmd_616
 ScrCmd_616: ; 0x0204731C
@@ -13775,8 +14684,8 @@ ScrCmd_616: ; 0x0204731C
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202FA64
-	bl sub_0202FAB0
+	bl Save_PhotoAlbum_get
+	bl PhotoAlbum_GetNumSaved
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -13881,10 +14790,10 @@ ScrCmd_622: ; 0x020473D8
 	ldr r0, [r5]
 	add r1, r6, #0
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	cmp r0, #0
 	beq _0204740C
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	b _0204740E
 _0204740C:
 	mov r0, #0
@@ -13894,16 +14803,16 @@ _0204740E:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ScrCmd_622
 
-	thumb_func_start ScrCmd_711
-ScrCmd_711: ; 0x02047414
+	thumb_func_start ScrCmd_FollowPokeInteract
+ScrCmd_FollowPokeInteract: ; 0x02047414
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl ov02_0224EF80
+	bl Fsys_FollowPokeInteract
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_711
+	thumb_func_end ScrCmd_FollowPokeInteract
 
 	thumb_func_start ScrCmd_712
 ScrCmd_712: ; 0x02047424
@@ -13959,17 +14868,17 @@ _0204747E:
 	bl sub_0203EEA0
 	str r0, [r4]
 _0204748A:
-	ldr r1, _02047498 ; =sub_02042974
+	ldr r1, _02047498 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_02047498: .word sub_02042974
+_02047498: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_712
 
-	thumb_func_start ScrCmd_713
-ScrCmd_713: ; 0x0204749C
+	thumb_func_start ScrCmd_AlphPuzzle
+ScrCmd_AlphPuzzle: ; 0x0204749C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -13988,16 +14897,16 @@ _020474BA:
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0203EC04
+	bl Fsys_CreateApplication_AlphPuzzle
 	str r0, [r4]
-	ldr r1, _020474D4 ; =sub_02042974
+	ldr r1, _020474D4 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_020474D4: .word sub_02042974
-	thumb_func_end ScrCmd_713
+_020474D4: .word ScrNative_WaitApplication_DestroyTaskData
+	thumb_func_end ScrCmd_AlphPuzzle
 
 	thumb_func_start ScrCmd_722
 ScrCmd_722: ; 0x020474D8
@@ -14063,8 +14972,8 @@ ScrCmd_723: ; 0x02047518
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ScrCmd_723
 
-	thumb_func_start ScrCmd_773
-ScrCmd_773: ; 0x02047558
+	thumb_func_start ScrCmd_Cinematic
+ScrCmd_Cinematic: ; 0x02047558
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -14075,7 +14984,7 @@ ScrCmd_773: ; 0x02047558
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_773
+	thumb_func_end ScrCmd_Cinematic
 
 	thumb_func_start ScrCmd_727
 ScrCmd_727: ; 0x02047570
@@ -14134,7 +15043,7 @@ ScrCmd_729: ; 0x020475C0
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _020475E6
 	mov r0, #1
@@ -14162,7 +15071,7 @@ ScrCmd_730: ; 0x020475F0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	bne _0204761A
 	mov r0, #1
@@ -14261,8 +15170,8 @@ ScrCmd_734: ; 0x0204769C
 	.balign 4, 0
 	thumb_func_end ScrCmd_734
 
-	thumb_func_start ScrCmd_746
-ScrCmd_746: ; 0x020476B4
+	thumb_func_start ScrCmd_TouchscreenMenuHide
+ScrCmd_TouchscreenMenuHide: ; 0x020476B4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -14287,7 +15196,7 @@ _020476CA:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _020476E4: .word sub_020476E8
-	thumb_func_end ScrCmd_746
+	thumb_func_end ScrCmd_TouchscreenMenuHide
 
 	thumb_func_start sub_020476E8
 sub_020476E8: ; 0x020476E8
@@ -14317,8 +15226,8 @@ _02047716:
 	.balign 4, 0
 	thumb_func_end sub_020476E8
 
-	thumb_func_start ScrCmd_747
-ScrCmd_747: ; 0x0204771C
+	thumb_func_start ScrCmd_TouchscreenMenuShow
+ScrCmd_TouchscreenMenuShow: ; 0x0204771C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -14336,7 +15245,7 @@ ScrCmd_747: ; 0x0204771C
 	pop {r3, r4, r5, pc}
 	nop
 _02047740: .word sub_02047744
-	thumb_func_end ScrCmd_747
+	thumb_func_end ScrCmd_TouchscreenMenuShow
 
 	thumb_func_start sub_02047744
 sub_02047744: ; 0x02047744
@@ -14380,8 +15289,8 @@ ScrCmd_815: ; 0x02047778
 	pop {r4, pc}
 	thumb_func_end ScrCmd_815
 
-	thumb_func_start ScrCmd_748
-ScrCmd_748: ; 0x02047790
+	thumb_func_start ScrCmd_GetMenuChoice
+ScrCmd_GetMenuChoice: ; 0x02047790
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -14402,7 +15311,7 @@ ScrCmd_748: ; 0x02047790
 	pop {r3, r4, r5, pc}
 	nop
 _020477BC: .word sub_020477C0
-	thumb_func_end ScrCmd_748
+	thumb_func_end ScrCmd_GetMenuChoice
 
 	thumb_func_start sub_020477C0
 sub_020477C0: ; 0x020477C0
@@ -14434,8 +15343,8 @@ _020477F4:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_020477C0
 
-	thumb_func_start ScrCmd_749
-ScrCmd_749: ; 0x020477F8
+	thumb_func_start ScrCmd_MenuInitStdGmm
+ScrCmd_MenuInitStdGmm: ; 0x020477F8
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -14448,10 +15357,10 @@ ScrCmd_749: ; 0x020477F8
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_749
+	thumb_func_end ScrCmd_MenuInitStdGmm
 
-	thumb_func_start ScrCmd_750
-ScrCmd_750: ; 0x02047814
+	thumb_func_start ScrCmd_MenuInit
+ScrCmd_MenuInit: ; 0x02047814
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -14464,10 +15373,10 @@ ScrCmd_750: ; 0x02047814
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_750
+	thumb_func_end ScrCmd_MenuInit
 
-	thumb_func_start ScrCmd_751
-ScrCmd_751: ; 0x02047830
+	thumb_func_start ScrCmd_MenuItemAdd
+ScrCmd_MenuItemAdd: ; 0x02047830
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -14500,14 +15409,14 @@ ScrCmd_751: ; 0x02047830
 	ldr r0, [r4]
 	add r1, r6, #0
 	add r2, r7, #0
-	bl ov01_021EDF9C
+	bl MoveTutorMenu_SetListItem
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_751
+	thumb_func_end ScrCmd_MenuItemAdd
 
-	thumb_func_start ScrCmd_752
-ScrCmd_752: ; 0x02047888
+	thumb_func_start ScrCmd_MenuExec
+ScrCmd_MenuExec: ; 0x02047888
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -14537,7 +15446,7 @@ ScrCmd_752: ; 0x02047888
 	nop
 _020478C8: .word sub_02047908
 _020478CC: .word sub_020478D0
-	thumb_func_end ScrCmd_752
+	thumb_func_end ScrCmd_MenuExec
 
 	thumb_func_start sub_020478D0
 sub_020478D0: ; 0x020478D0
@@ -14587,24 +15496,24 @@ sub_02047914: ; 0x02047914
 	bl PlayerProfile_GetMoney
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetPhoneRematches
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_0202F14C
+	bl MomSavingsBalanceAction
 	cmp r6, #0
 	beq _0204793E
 	cmp r6, #1
 	beq _0204794A
 	b _02047956
 _0204793E:
-	ldr r1, _02047960 ; =0x000F423F
+	ldr r1, _02047960 ; =999999
 	sub r7, r1, r0
 	cmp r4, r7
 	bhi _0204795A
 	add r7, r4, #0
 	b _0204795A
 _0204794A:
-	ldr r1, _02047960 ; =0x000F423F
+	ldr r1, _02047960 ; =999999
 	sub r7, r1, r4
 	cmp r0, r7
 	bhi _0204795A
@@ -14616,11 +15525,11 @@ _0204795A:
 	add r0, r7, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02047960: .word 0x000F423F
+_02047960: .word 999999
 	thumb_func_end sub_02047914
 
-	thumb_func_start ScrCmd_793
-ScrCmd_793: ; 0x02047964
+	thumb_func_start ScrCmd_BankTransaction
+ScrCmd_BankTransaction: ; 0x02047964
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -14669,7 +15578,7 @@ ScrCmd_793: ; 0x02047964
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _020479D0: .word sub_020479D4
-	thumb_func_end ScrCmd_793
+	thumb_func_end ScrCmd_BankTransaction
 
 	thumb_func_start sub_020479D4
 sub_020479D4: ; 0x020479D4
@@ -14720,11 +15629,11 @@ _02047A26:
 	add r1, r6, #0
 	bl PlayerProfile_SubMoney
 	add r0, r5, #0
-	bl sub_0202ED88
+	bl SaveData_GetPhoneRematches
 	ldr r2, [r4]
 	mov r1, #2
 	ldr r2, [r2, #4]
-	bl sub_0202F14C
+	bl MomSavingsBalanceAction
 	b _02047A66
 _02047A44:
 	add r0, r5, #0
@@ -14732,11 +15641,11 @@ _02047A44:
 	add r1, r6, #0
 	bl PlayerProfile_AddMoney
 	add r0, r5, #0
-	bl sub_0202ED88
+	bl SaveData_GetPhoneRematches
 	ldr r2, [r4]
 	mov r1, #3
 	ldr r2, [r2, #4]
-	bl sub_0202F14C
+	bl MomSavingsBalanceAction
 	b _02047A66
 _02047A62:
 	bl GF_AssertFail
@@ -14753,8 +15662,8 @@ _02047A6A:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_020479D4
 
-	thumb_func_start ScrCmd_838
-ScrCmd_838: ; 0x02047A7C
+	thumb_func_start ScrCmd_BankOrWalletIsFull
+ScrCmd_BankOrWalletIsFull: ; 0x02047A7C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -14772,11 +15681,11 @@ ScrCmd_838: ; 0x02047A7C
 	add r5, #0x80
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetPhoneRematches
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_0202F14C
-	ldr r1, _02047AE4 ; =0x000F423F
+	bl MomSavingsBalanceAction
+	ldr r1, _02047AE4 ; =999999
 	cmp r0, r1
 	bne _02047ABC
 	mov r0, #1
@@ -14792,7 +15701,7 @@ _02047AC2:
 	ldr r0, [r0, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetMoney
-	ldr r1, _02047AE4 ; =0x000F423F
+	ldr r1, _02047AE4 ; =999999
 	cmp r0, r1
 	bne _02047ADC
 	mov r0, #1
@@ -14805,8 +15714,8 @@ _02047AE0:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_02047AE4: .word 0x000F423F
-	thumb_func_end ScrCmd_838
+_02047AE4: .word 999999
+	thumb_func_end ScrCmd_BankOrWalletIsFull
 
 	thumb_func_start ScrCmd_753
 ScrCmd_753: ; 0x02047AE8
@@ -15038,8 +15947,8 @@ ScrCmd_769: ; 0x02047C54
 	.balign 4, 0
 	thumb_func_end ScrCmd_769
 
-	thumb_func_start ScrCmd_783
-ScrCmd_783: ; 0x02047C64
+	thumb_func_start ScrCmd_SetFollowPokeInhibitState
+ScrCmd_SetFollowPokeInhibitState: ; 0x02047C64
 	push {r4, lr}
 	ldr r4, [r0, #8]
 	add r1, r4, #1
@@ -15047,15 +15956,17 @@ ScrCmd_783: ; 0x02047C64
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0202ED34
+	bl Sav2_FollowPoke_get
 	ldrb r1, [r4]
-	bl sub_0202ED58
+	bl SavFollowPoke_SetInhibitFlagState
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ScrCmd_783
+	thumb_func_end ScrCmd_SetFollowPokeInhibitState
 
-	thumb_func_start ScrCmd_784
-ScrCmd_784: ; 0x02047C80
+	; Loads an overlay containing additional script
+	; commands or data
+	thumb_func_start ScrCmd_ScriptOverlayCmd
+ScrCmd_ScriptOverlayCmd: ; 0x02047C80
 	push {r3, lr}
 	ldr r1, [r0, #8]
 	add r3, r1, #1
@@ -15087,10 +15998,10 @@ _02047CB4:
 	pop {r3, pc}
 	.balign 4, 0
 _02047CB8: .word _020FACB0
-	thumb_func_end ScrCmd_784
+	thumb_func_end ScrCmd_ScriptOverlayCmd
 
-	thumb_func_start ScrCmd_794
-ScrCmd_794: ; 0x02047CBC
+	thumb_func_start ScrCmd_CheckBankBalance
+ScrCmd_CheckBankBalance: ; 0x02047CBC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -15106,10 +16017,10 @@ ScrCmd_794: ; 0x02047CBC
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetPhoneRematches
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_0202F14C
+	bl MomSavingsBalanceAction
 	cmp r0, r6
 	blo _02047CF4
 	mov r0, #1
@@ -15120,10 +16031,10 @@ _02047CF6:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_794
+	thumb_func_end ScrCmd_CheckBankBalance
 
-	thumb_func_start ScrCmd_798
-ScrCmd_798: ; 0x02047CFC
+	thumb_func_start ScrCmd_BufferRulesetName
+ScrCmd_BufferRulesetName: ; 0x02047CFC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -15141,7 +16052,7 @@ ScrCmd_798: ; 0x02047CFC
 	bl ov03_022566D0
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_798
+	thumb_func_end ScrCmd_BufferRulesetName
 
 	thumb_func_start ScrCmd_799
 ScrCmd_799: ; 0x02047D24
@@ -15307,8 +16218,8 @@ ScrCmd_814: ; 0x02047E40
 	pop {r3, pc}
 	thumb_func_end ScrCmd_814
 
-	thumb_func_start ScrCmd_816
-ScrCmd_816: ; 0x02047E54
+	thumb_func_start ScrCmd_UnownCircle
+ScrCmd_UnownCircle: ; 0x02047E54
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -15316,7 +16227,7 @@ ScrCmd_816: ; 0x02047E54
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_816
+	thumb_func_end ScrCmd_UnownCircle
 
 	thumb_func_start ScrCmd_817
 ScrCmd_817: ; 0x02047E64
@@ -15333,16 +16244,16 @@ ScrCmd_817: ; 0x02047E64
 	.balign 4, 0
 	thumb_func_end ScrCmd_817
 
-	thumb_func_start ScrCmd_818
-ScrCmd_818: ; 0x02047E7C
+	thumb_func_start ScrCmd_MystriStageGymmickInit
+ScrCmd_MystriStageGymmickInit: ; 0x02047E7C
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0206DCC4
+	bl Fsys_InitMystriStageGymmick
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_818
+	thumb_func_end ScrCmd_MystriStageGymmickInit
 
 	thumb_func_start ScrCmd_819
 ScrCmd_819: ; 0x02047E8C
@@ -15404,7 +16315,7 @@ ScrCmd_823: ; 0x02047EC4
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	add r1, r4, #0
 	bl sub_0202F844
 	ldrh r1, [r6]
@@ -15424,7 +16335,7 @@ ScrCmd_824: ; 0x02047F14
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword

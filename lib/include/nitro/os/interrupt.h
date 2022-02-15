@@ -4,9 +4,14 @@
 #include <nitro/os/common/interrupt_shared.h>
 #include <nitro/hw/consts.h>
 
+#define OS_IME_DISABLE      (0UL << REG_OS_IME_IME_SHIFT)
+#define OS_IME_ENABLE       (1UL << REG_OS_IME_IME_SHIFT)
+
 #ifdef SDK_ARM7
+#include <nitro/os/ARM7/interrupt.h>
 #define OS_IRQ_TABLE_MAX 25
 #else // SDK_ARM9
+//#include <nitro/os/ARM9/interrupt.h>
 #define OS_IRQ_TABLE_MAX 22
 #endif //SDK_ARM7 SDK_ARM9
 
@@ -27,13 +32,6 @@
 #define OSi_IRQCALLBACK_NUM       (8+1)
 #endif // SDK_ARM9 SDK_ARM7
 
-#ifdef SDK_ARM7
-static inline void OSi_SetVBlankCount(u32 count)
-{
-    *(u32 *)HW_VBLANK_COUNT_BUF = count;
-}
-#endif //SDK_ARM7
-
 extern OSIrqFunction OS_IRQTable[];
 extern OSIrqCallbackInfo OSi_IrqCallbackInfo[OSi_IRQCALLBACK_NUM];
 
@@ -49,16 +47,30 @@ static inline void OS_SetIrqCheckFlag(OSIrqMask intr) {
     *(vu32 *)HW_INTR_CHECK_BUF |= (u32)intr;
 }
 
+static inline BOOL OS_EnableIrq(void) {
+    u16 prep = reg_OS_IME;
+    reg_OS_IME = OS_IME_ENABLE;
+    return (BOOL)prep;
+}
+
+#ifdef SDK_ARM9
 static inline BOOL OS_DisableIrq(void) {
     BOOL ime = reg_OS_IME;
-    reg_OS_IME = 0;
+    reg_OS_IME = OS_IME_DISABLE;
     return ime;
 }
+#else
+BOOL OS_DisableIrq(void);
+#endif
 
 static inline BOOL OS_RestoreIrq(BOOL enable) {
     BOOL ime = reg_OS_IME;
     reg_OS_IME = enable;
     return ime;
+}
+
+static inline OSIrqMask OS_GetIrqMask(void) {
+    return reg_OS_IE;
 }
 
 void OS_InitIrqTable(void);

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0468_T04FS0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You’ll run into many Trainers on\nthe way to Cerulean Cape.\rThey want to see how they stack\nup against other Trainers.</language>
+	</row>
+	<row id="msg_0468_T04FS0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Misty is about the only person in town\nwho can beat the Trainers at\fCerulean Cape.</language>
+	</row>
+</body>

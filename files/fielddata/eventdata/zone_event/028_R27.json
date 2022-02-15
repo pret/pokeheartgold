@@ -1,0 +1,252 @@
+{
+  "header": "fielddata/script/scr_seq/event_R27.h",
+  "bgs": [
+    {
+      "scr": "_EV_scr_seq_R27_002 + 1",
+      "type": 1,
+      "x": 739,
+      "y": 399,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_r27_revive",
+      "type": 2,
+      "x": 858,
+      "y": 394,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_r27_big_mushroom",
+      "type": 2,
+      "x": 882,
+      "y": 396,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_r26_r27_nugget",
+      "type": 2,
+      "x": 890,
+      "y": 408,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_R27_004 + 1",
+      "type": 1,
+      "x": 818,
+      "y": 398,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_R27_gsbigman",
+      "ovid": "SPRITE_GSBIGMAN",
+      "mvt": 16,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_R27_000 + 1",
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 739,
+      "y": 403,
+      "z": 0
+    },
+    {
+      "id": "obj_R27_gswoman3",
+      "ovid": "SPRITE_GSWOMAN3",
+      "mvt": 16,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_ACE_TRAINER_F_MEGAN)",
+      "dirn": 2,
+      "eye": 3,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 757,
+      "y": 396,
+      "z": 0
+    },
+    {
+      "id": "obj_R27_gsman3",
+      "ovid": "SPRITE_GSMAN3",
+      "mvt": 7,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_ACE_TRAINER_M_BLAKE)",
+      "dirn": 0,
+      "eye": 3,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 778,
+      "y": 397,
+      "z": 0
+    },
+    {
+      "id": "obj_R27_gsman2",
+      "ovid": "SPRITE_GSMAN2",
+      "mvt": 17,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_BIRD_KEEPER_GS_JOSE_2)",
+      "dirn": 3,
+      "eye": 5,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 789,
+      "y": 408,
+      "z": 0
+    },
+    {
+      "id": "obj_R27_gsman3_2",
+      "ovid": "SPRITE_GSMAN3",
+      "mvt": 20,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_ACE_TRAINER_M_BRIAN)",
+      "dirn": 3,
+      "eye": 3,
+      "unk10": 2,
+      "tsure_poke_color": 0,
+      "xrange": 7,
+      "yrange": 0,
+      "x": 805,
+      "y": 399,
+      "z": 0
+    },
+    {
+      "id": "obj_R27_mystery_2",
+      "ovid": "SPRITE_MYSTERY_2",
+      "mvt": 18,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_PSYCHIC_M_ELI)",
+      "dirn": 0,
+      "eye": 2,
+      "unk10": 2,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 854,
+      "y": 400,
+      "z": 0
+    },
+    {
+      "id": "obj_R27_gswoman3_2",
+      "ovid": "SPRITE_GSWOMAN3",
+      "mvt": 10,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_ACE_TRAINER_F_REENA)",
+      "dirn": 0,
+      "eye": 2,
+      "unk10": 2,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 874,
+      "y": 403,
+      "z": 0
+    },
+    {
+      "id": "obj_R27_monstarball",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_R27_RARE_CANDY",
+      "scr": "std_itemball_r27_rare_candy",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 783,
+      "y": 407,
+      "z": 0
+    },
+    {
+      "id": "obj_R27_monstarball_2",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_R27_TM02",
+      "scr": "std_itemball_r27_tm02",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 793,
+      "y": 407,
+      "z": 0
+    },
+    {
+      "id": "obj_R27_monstarball_3",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_R27_DESTINY_KNOT",
+      "scr": "std_itemball_r27_destiny_knot",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 843,
+      "y": 394,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 740,
+      "y": 396,
+      "header": "MAP_D45R0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 755,
+      "y": 394,
+      "header": "MAP_D45R0101",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 751,
+      "y": 400,
+      "header": "MAP_R27R0101",
+      "anchor": 0,
+      "height": 0
+    }
+  ],
+  "coords": [
+    {
+      "scr": "_EV_scr_seq_R27_001 + 1",
+      "x": 734,
+      "y": 402,
+      "w": 1,
+      "h": 3,
+      "z": 0,
+      "val": 0,
+      "var": "VAR_UNK_408A"
+    }
+  ]
+}

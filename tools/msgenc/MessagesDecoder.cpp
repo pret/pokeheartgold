@@ -1,5 +1,6 @@
 #include <algorithm>
 #include "MessagesDecoder.h"
+#include "Gmm.h"
 
 void MessagesDecoder::CmdmapRegisterCommand(string &command, uint16_t value)
 {
@@ -163,6 +164,10 @@ void MessagesDecoder::WriteMessagesToText(string& filename) {
     WriteTextFile(filename, ss.str());
 }
 
+void MessagesDecoder::WriteMessagesToGMM(string &filename) {
+    GMM(filename, std::ios::out).ToFile(*this);
+}
+
 // Public virtual functions
 
 void MessagesDecoder::ReadInput()
@@ -181,5 +186,12 @@ void MessagesDecoder::Convert()
 
 void MessagesDecoder::WriteOutput()
 {
-    WriteMessagesToText(textfilename);
+    switch (text_format) {
+    case PlainText:
+        WriteMessagesToText(textfilename);
+        break;
+    case GamefreakGMM:
+        WriteMessagesToGMM(textfilename);
+        break;
+    }
 }

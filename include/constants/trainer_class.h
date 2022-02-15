@@ -71,7 +71,7 @@
 #define TRAINERCLASS_LEADER_BUGSY                                   67
 #define TRAINERCLASS_POKE_MANIAC                                    68
 #define TRAINERCLASS_BIRD_KEEPER_GS                                 69
-#define TRAINERCLASS_LEADER                                         70
+#define TRAINERCLASS_LEADER_WHITNEY                                 70
 #define TRAINERCLASS_RANCHER                                        71
 #define TRAINERCLASS_LEADER_MORTY                                   72
 #define TRAINERCLASS_LEADER_PRYCE                                   73
@@ -130,6 +130,16 @@
 #define TRAINERCLASS_PKMN_TRAINER_DAWN_DP                          126
 #define TRAINERCLASS_PKMN_TRAINER_LUCAS_PT                         127
 #define TRAINERCLASS_PKMN_TRAINER_DAWN_PT                          128
+
+// Only used to display attributes of phone contacts
+#define TRAINERCLASS_PHONE_MOM                                     200
+#define TRAINERCLASS_PHONE_POKEMON_PROFESSOR                       201
+#define TRAINERCLASS_PHONE_CHILDHOOD_FRIEND                        202
+#define TRAINERCLASS_PHONE_POKE_BALL_CREATOR                       203
+#define TRAINERCLASS_PHONE_DAY_CARE                                204
+#define TRAINERCLASS_PHONE_RADIO_PERSONALITY                       205
+#define TRAINERCLASS_PHONE_POKE_MANIAC                             206
+#define TRAINERCLASS_PHONE_SAFARI_WARDEN                           207
 
 // Back pick idx
 #define TRAINER_BACKPIC_ETHAN                       0

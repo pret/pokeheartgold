@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0018_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Which facility would you\nlike to challenge? {YESNO 0}</language>
+	</row>
+	<row id="msg_0018_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} has dropped out.\r</language>
+	</row>
+	<row id="msg_0018_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Please choose the Pokémon you wish to\nenter with.\r</language>
+	</row>
+	<row id="msg_0018_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You have chosen a different facility\nand/or level setting from your friend.\fPlease choose again.\r</language>
+	</row>
+	<row id="msg_0018_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Please wait a moment.</language>
+	</row>
+	<row id="msg_0018_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Your win-streak record does not match\nyour friend’s record.\rYour challenge will start from the\nbeginning.\r</language>
+	</row>
+	<row id="msg_0018_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Both you and your friend have chosen\n{STRVAR_1 0, 0, 0}.\rPlease confer with your friend and\nchoose different Pokémon.\r</language>
+	</row>
+	<row id="msg_0018_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Both you and your friend have chosen\n{STRVAR_1 0, 0, 0} and {STRVAR_1 0, 1, 0}.\rPlease confer with your friend and\nchoose different Pokémon.\r</language>
+	</row>
+	<row id="msg_0018_00008" index="8">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0018_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Both you and your friend have chosen\n{STRVAR_1 0, 0, 0}.\rPlease confer with your friend and\nchoose different Pokémon.\r</language>
+	</row>
+	<row id="msg_0018_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Both you and your friend have chosen\n{STRVAR_1 0, 0, 0} and {STRVAR_1 0, 1, 0}.\rPlease confer with your friend and\nchoose different Pokémon.\r</language>
+	</row>
+	<row id="msg_0018_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You and your friend must choose the\nsame kind of Pokémon to battle.\r</language>
+	</row>
+	<row id="msg_0018_00012" index="12">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0018_00013" index="13">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0018_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Which would you like to challenge,\nLevel 50 cap or Open Level? {YESNO 0}</language>
+	</row>
+	<row id="msg_0018_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There is already an ongoing winning\nstreak by {STRVAR_1 0, 0, 0}.\rWould you like to delete that record\nand start a new challenge\fwith {STRVAR_1 0, 1, 0}? {YESNO 0}</language>
+	</row>
+	<row id="msg_0018_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">YES</language>
+	</row>
+	<row id="msg_0018_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NO</language>
+	</row>
+	<row id="msg_0018_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Please make your selection again.\r</language>
+	</row>
+	<row id="msg_0018_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Saving...\nDon’t turn off the power.</language>
+	</row>
+	<row id="msg_0018_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Good luck!</language>
+	</row>
+	<row id="msg_0018_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Would you like to play with\n{STRVAR_1 3, 0, 0} again? {YESNO 0}</language>
+	</row>
+	<row id="msg_0018_00022" index="22">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XX</language>
+	</row>
+	<row id="msg_0018_00023" index="23">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0018_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Awaiting your friend’s selection.\nPlease wait a moment.</language>
+	</row>
+	<row id="msg_0018_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} has dropped out.\r</language>
+	</row>
+	<row id="msg_0018_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BATTLE TOWER</language>
+	</row>
+	<row id="msg_0018_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BATTLE FACTORY</language>
+	</row>
+	<row id="msg_0018_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BATTLE CASTLE</language>
+	</row>
+	<row id="msg_0018_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BATTLE HALL</language>
+	</row>
+	<row id="msg_0018_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BATTLE ARCADE</language>
+	</row>
+	<row id="msg_0018_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CANCEL</language>
+	</row>
+	<row id="msg_0018_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LEVEL 50</language>
+	</row>
+	<row id="msg_0018_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OPEN LEVEL</language>
+	</row>
+	<row id="msg_0018_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You and your friend have chosen\ndifferent challenges.\rPlease turn off the power, select new\nPokémon, and enter again!</language>
+	</row>
+</body>

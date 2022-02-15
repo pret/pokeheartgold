@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0380_R32_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wait up!\nWhat’s the hurry?\r</language>
+	</row>
+	<row id="msg_0380_R32_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0}, right?\nSome guy wearing glasses was looking\ffor you.\rSee for yourself. He’s waiting for\nyou at the Poké Mart.</language>
+	</row>
+	<row id="msg_0380_R32_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0}, right?\nSome guy wearing glasses was looking\ffor you.\rSee for yourself. He’s waiting for\nyou at the Poké Mart.\r</language>
+	</row>
+	<row id="msg_0380_R32_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Have you gone to the Pokémon Gym?\rYou can test your Pokémon and\nyourself there.\rIt’s a rite of passage for all Trainers!</language>
+	</row>
+	<row id="msg_0380_R32_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Have you gone to the Pokémon Gym?\rYou can test your Pokémon and\nyourself there.\rIt’s a rite of passage for all Trainers!\r</language>
+	</row>
+	<row id="msg_0380_R32_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You have some good Pokémon there.\rIt must be from the training you gave\nthem around Violet City.\rThe training at the Gym must have\nbeen especially helpful.\rAs a souvenir of Violet City, take this.\rIt increases the power of\nGrass-type moves.\r</language>
+	</row>
+	<row id="msg_0380_R32_00006" index="6">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0380_R32_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Your experiences in Violet City\nshould be useful for your journey.</language>
+	</row>
+	<row id="msg_0380_R32_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey, your Bag is chock-full.</language>
+	</row>
+	<row id="msg_0380_R32_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey, your Bag is chock-full.\r</language>
+	</row>
+	<row id="msg_0380_R32_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WROOOOAR!\rPEOPLE RUN WHEN I ROAR!\nBUT YOU CAME LOOKING!\rTHAT PLEASES ME!\nNOW TAKE THIS!\r</language>
+	</row>
+	<row id="msg_0380_R32_00011" index="11">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0380_R32_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WROOOAR!\nIT’S ROAR!\rEVEN POKéMON RUN\nFROM A GOOD ROAR!</language>
+	</row>
+	<row id="msg_0380_R32_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WROOOAR! YOUR BAG IS FULL!</language>
+	</row>
+	<row id="msg_0380_R32_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">How would you like to have this\ntasty, nutritious SlowpokeTail?\rFor you right now, just $1,000,000!\nYou’ll want this! {YESNO 0}</language>
+	</row>
+	<row id="msg_0380_R32_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Tch! I thought kids these days\nwere loaded...</language>
+	</row>
+	<row id="msg_0380_R32_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You don’t want it?\nThen scram. Shoo!</language>
+	</row>
+	<row id="msg_0380_R32_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rt. 32\nSouth to Azalea Town</language>
+	</row>
+	<row id="msg_0380_R32_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ruins of Alph\nEast Entrance</language>
+	</row>
+	<row id="msg_0380_R32_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Union Cave ahead</language>
+	</row>
+</body>

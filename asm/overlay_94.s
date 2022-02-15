@@ -178,7 +178,7 @@ _021E5A4E:
 	str r0, [r4]
 	b _021E5AD2
 _021E5A5A:
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	bne _021E5AD2
 	ldr r0, [r4]

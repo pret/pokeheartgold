@@ -1,0 +1,128 @@
+{
+  "header": "fielddata/script/scr_seq/event_D17R0110.h",
+  "objects": [
+    {
+      "id": "obj_D17R0110_dancer",
+      "ovid": "SPRITE_DANCER",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS",
+      "scr": "_EV_scr_seq_D17R0110_001 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 15,
+      "y": 18,
+      "z": 0
+    },
+    {
+      "id": "obj_D17R0110_dancer_2",
+      "ovid": "SPRITE_DANCER",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS",
+      "scr": "_EV_scr_seq_D17R0110_004 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 14,
+      "y": 18,
+      "z": 0
+    },
+    {
+      "id": "obj_D17R0110_dancer_3",
+      "ovid": "SPRITE_DANCER",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS",
+      "scr": "_EV_scr_seq_D17R0110_004 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 13,
+      "y": 18,
+      "z": 0
+    },
+    {
+      "id": "obj_D17R0110_dancer_4",
+      "ovid": "SPRITE_DANCER",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS",
+      "scr": "_EV_scr_seq_D17R0110_004 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 16,
+      "y": 18,
+      "z": 0
+    },
+    {
+      "id": "obj_D17R0110_dancer_5",
+      "ovid": "SPRITE_DANCER",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS",
+      "scr": "_EV_scr_seq_D17R0110_004 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 17,
+      "y": 18,
+      "z": 0
+    },
+    {
+      "id": "obj_D17R0110_hou_obj01",
+      "ovid": "SPRITE_HOU_OBJ01",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_BELL_TOWER_HO_OH",
+      "scr": "_EV_scr_seq_D17R0110_000 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 15,
+      "y": 16,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 15,
+      "y": 24,
+      "header": "MAP_D17R0112",
+      "anchor": 1,
+      "height": 0
+    }
+  ],
+  "coords": [
+    {
+      "scr": "_EV_scr_seq_D17R0110_006 + 1",
+      "x": 15,
+      "y": 20,
+      "w": 1,
+      "h": 1,
+      "z": 0,
+      "val": 1,
+      "var": "VAR_UNK_40FA"
+    }
+  ]
+}

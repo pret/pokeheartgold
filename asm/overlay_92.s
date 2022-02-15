@@ -128,7 +128,7 @@ ov92_0225C5C4: ; 0x0225C5C4
 	ldr r0, _0225C934 ; =ov92_0225D894
 	add r1, r5, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	mov r0, #0x20
 	mov r1, #0x71
 	bl sub_0202055C
@@ -855,7 +855,7 @@ _0225CBEA:
 	add r2, r5, r2
 	bl MTX_MultVec43
 	ldr r0, _0225CC68 ; =0x0000058A
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _0225CC3A
 	ldr r0, _0225CC68 ; =0x0000058A
@@ -1287,7 +1287,7 @@ _0225CFA8:
 	bne _0225CFD2
 	ldr r0, _0225D1E8 ; =0x00000589
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r1, #0
 	mov r0, #0x17
 	add r2, r1, #0
@@ -1305,10 +1305,10 @@ _0225CFD8:
 _0225CFE6:
 	ldr r0, _0225D1EC ; =0x0000058B
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _0225D1E8 ; =0x00000589
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	add r0, r4, #0
 	add r0, #0x84
 	ldr r0, [r0]
@@ -1564,7 +1564,7 @@ ov92_0225D1FC: ; 0x0225D1FC
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl sub_020205AC
 	bl sub_02021238
 	add r0, r5, #0
@@ -1873,16 +1873,16 @@ ov92_0225D49C: ; 0x0225D49C
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #0x58]
 	mov r1, #0
 	bl FreeBgTilemapBuffer
@@ -1936,7 +1936,7 @@ ov92_0225D49C: ; 0x0225D49C
 	bl sub_0200D998
 	ldr r0, [r4, #0x50]
 	bl sub_0200D108
-	ldr r0, _0225D588 ; =gMain + 0x60
+	ldr r0, _0225D588 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -1947,7 +1947,7 @@ ov92_0225D49C: ; 0x0225D49C
 	strh r0, [r2]
 	pop {r4, pc}
 	.balign 4, 0
-_0225D588: .word gMain + 0x60
+_0225D588: .word gSystem + 0x60
 _0225D58C: .word 0x04000060
 _0225D590: .word 0x0000CFF7
 	thumb_func_end ov92_0225D49C
@@ -2148,20 +2148,20 @@ _0225D67A:
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
-	ldr r0, _0225D7C0 ; =gMain + 0x60
+	bl GX_EngineBToggleLayers
+	ldr r0, _0225D7C0 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -2186,7 +2186,7 @@ _0225D7B0: .word ov92_02263890
 _0225D7B4: .word ov92_0226390C
 _0225D7B8: .word ov92_02263934
 _0225D7BC: .word ov92_022639A4
-_0225D7C0: .word gMain + 0x60
+_0225D7C0: .word gSystem + 0x60
 _0225D7C4: .word 0x04000050
 _0225D7C8: .word 0x04001050
 	thumb_func_end ov92_0225D594
@@ -2303,7 +2303,7 @@ ov92_0225D894: ; 0x0225D894
 	ldr r0, [r4, #0x5c]
 	bl sub_0200398C
 	ldr r0, [r4, #0x58]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _0225D8BC ; =0x027E0000
 	ldr r1, _0225D8C0 ; =0x00003FF8
 	mov r0, #1
@@ -3498,7 +3498,7 @@ _0225E1D8:
 	ldr r2, [r2, #0x10]
 	mov r1, #0x4f
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	b _0225E230
 _0225E1F4:
 	ldr r2, [r5, #0x14]
@@ -3512,7 +3512,7 @@ _0225E1F4:
 	ldr r2, [r2, #0x10]
 	mov r1, #0x50
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	b _0225E230
 _0225E210:
 	ldr r2, [r5, #0x14]
@@ -3526,7 +3526,7 @@ _0225E210:
 	ldr r2, [r2, #0x10]
 	mov r1, #0x51
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	b _0225E230
 _0225E22C:
 	bl GF_AssertFail
@@ -3723,7 +3723,7 @@ _0225E3A2:
 	ldr r2, [r2, #0x10]
 	mov r1, #0x4e
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4460,7 +4460,7 @@ ov92_0225E9B4: ; 0x0225E9B4
 	mov r1, #0x48
 	add r2, r5, #0
 	mov r3, #4
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4471,7 +4471,7 @@ ov92_0225E9B4: ; 0x0225E9B4
 	mov r1, #0x4b
 	add r2, r5, #0
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4482,7 +4482,7 @@ ov92_0225E9B4: ; 0x0225E9B4
 	mov r1, #0x4a
 	add r2, r5, #0
 	mov r3, #4
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4493,7 +4493,7 @@ ov92_0225E9B4: ; 0x0225E9B4
 	mov r1, #0x4c
 	add r2, r5, #0
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4504,7 +4504,7 @@ ov92_0225E9B4: ; 0x0225E9B4
 	mov r1, #0x4d
 	add r2, r5, #0
 	mov r3, #6
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4515,7 +4515,7 @@ ov92_0225E9B4: ; 0x0225E9B4
 	mov r1, #0x4e
 	add r2, r5, #0
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0xa0
@@ -4537,7 +4537,7 @@ ov92_0225E9B4: ; 0x0225E9B4
 	mov r1, #5
 	add r2, r5, #0
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4548,7 +4548,7 @@ ov92_0225E9B4: ; 0x0225E9B4
 	mov r1, #8
 	add r2, r5, #0
 	mov r3, #1
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4559,7 +4559,7 @@ ov92_0225E9B4: ; 0x0225E9B4
 	mov r1, #7
 	add r2, r5, #0
 	mov r3, #3
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4570,7 +4570,7 @@ ov92_0225E9B4: ; 0x0225E9B4
 	mov r1, #9
 	add r2, r5, #0
 	mov r3, #1
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4581,7 +4581,7 @@ ov92_0225E9B4: ; 0x0225E9B4
 	mov r1, #0xa
 	add r2, r5, #0
 	mov r3, #2
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x20
@@ -7031,7 +7031,7 @@ _0225FE3E:
 	cmp r0, #0
 	beq _0225FE66
 	ldr r0, _0225FEB0 ; =0x0000058A
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _0225FE54
 	ldr r0, _0225FEB0 ; =0x0000058A
@@ -8786,7 +8786,7 @@ _02260C98:
 	ldr r0, [r4, #0x3c]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	asr r1, r0, #0x1f
 	asr r3, r7, #0x1f
 	add r2, r7, #0
@@ -8821,7 +8821,7 @@ _02260CE8:
 	ldr r0, [r4, #0x3c]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	asr r1, r0, #0x1f
 	asr r3, r7, #0x1f
 	add r2, r7, #0
@@ -9191,7 +9191,7 @@ _02260FCC:
 	ldr r0, [r5, #0x3c]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	asr r1, r0, #0x1f
 	asr r3, r6, #0x1f
 	add r2, r6, #0
@@ -9226,7 +9226,7 @@ _0226101C:
 	ldr r0, [r5, #0x3c]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	asr r1, r0, #0x1f
 	asr r3, r6, #0x1f
 	add r2, r6, #0
@@ -9902,7 +9902,7 @@ _02261508:
 	str r2, [r4, r1]
 	ldr r0, _02261568 ; =0x00000589
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 _02261530:
 	add r0, r4, #0
 	add r0, #8
@@ -10184,7 +10184,7 @@ _02261746:
 	ldr r0, [r0, #0x10]
 	mov r1, #7
 	asr r3, r3, #0xc
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r3, #0x5f
 	lsl r3, r3, #2
 	ldr r0, [r5, r3]
@@ -10194,7 +10194,7 @@ _02261746:
 	mov r1, #5
 	mov r2, #0
 	asr r3, r3, #0xc
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r3, #0x5f
 	lsl r3, r3, #2
 	ldr r0, [r5, r3]
@@ -10204,7 +10204,7 @@ _02261746:
 	mov r1, #6
 	mov r2, #0
 	asr r3, r3, #0xc
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r3, #0x5f
 	lsl r3, r3, #2
 	ldr r0, [r5, r3]
@@ -10214,7 +10214,7 @@ _02261746:
 	mov r1, #1
 	mov r2, #0
 	asr r3, r3, #0xc
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r3, #0x5f
 	lsl r3, r3, #2
 	ldr r0, [r5, r3]
@@ -10224,7 +10224,7 @@ _02261746:
 	mov r1, #2
 	mov r2, #0
 	asr r3, r3, #0xc
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [sp, #0xc]
 	cmp r0, #0
 	beq _022617F0
@@ -10371,7 +10371,7 @@ _022618BE:
 	ldr r0, [r0, #0x10]
 	mov r1, #7
 	asr r3, r3, #0xc
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r3, #0x5f
 	lsl r3, r3, #2
 	ldr r0, [r5, r3]
@@ -10381,7 +10381,7 @@ _022618BE:
 	mov r1, #5
 	mov r2, #0
 	asr r3, r3, #0xc
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r3, #0x5f
 	lsl r3, r3, #2
 	ldr r0, [r5, r3]
@@ -10391,7 +10391,7 @@ _022618BE:
 	mov r1, #6
 	mov r2, #0
 	asr r3, r3, #0xc
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r3, #0x5f
 	lsl r3, r3, #2
 	ldr r0, [r5, r3]
@@ -10401,7 +10401,7 @@ _022618BE:
 	mov r1, #1
 	mov r2, #0
 	asr r3, r3, #0xc
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r3, #0x5f
 	lsl r3, r3, #2
 	ldr r0, [r5, r3]
@@ -10411,7 +10411,7 @@ _022618BE:
 	mov r1, #2
 	mov r2, #0
 	asr r3, r3, #0xc
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [sp, #0xc]
 	cmp r0, #0
 	beq _02261966
@@ -10823,7 +10823,7 @@ _02261BEA:
 	lsl r3, r3, #0x14
 	bl sub_0200DF70
 	ldrh r0, [r4, #8]
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0x14
 	ldrsh r1, [r4, r1]
 	lsl r2, r1, #0xc
@@ -10831,7 +10831,7 @@ _02261BEA:
 	mul r0, r1
 	add r5, r2, r0
 	ldrh r0, [r4, #8]
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	mov r1, #0x16
 	ldrsh r1, [r4, r1]
 	mov r3, #1
@@ -10879,7 +10879,7 @@ _02261BEA:
 	add r0, r4, #0
 	add r0, #0xa8
 	ldrh r0, [r0]
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0xb4
 	ldrsh r1, [r4, r1]
 	lsl r2, r1, #0xc
@@ -10891,7 +10891,7 @@ _02261BEA:
 	add r0, r4, #0
 	add r0, #0xa8
 	ldrh r0, [r0]
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	mov r1, #0xb6
 	ldrsh r1, [r4, r1]
 	mov r3, #1
@@ -11430,7 +11430,7 @@ _02262118:
 	cmp r5, #0
 	ldrh r0, [r4, #8]
 	bne _02262144
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0x14
 	ldrsh r1, [r4, r1]
 	lsl r2, r1, #0xc
@@ -11438,10 +11438,10 @@ _02262118:
 	mul r0, r1
 	sub r5, r2, r0
 	ldrh r0, [r4, #8]
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	b _0226215A
 _02262144:
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0x14
 	ldrsh r1, [r4, r1]
 	lsl r2, r1, #0xc
@@ -11449,7 +11449,7 @@ _02262144:
 	mul r0, r1
 	add r5, r2, r0
 	ldrh r0, [r4, #8]
-	bl sub_0201FCC0
+	bl GF_CosDeg
 _0226215A:
 	mov r1, #0x16
 	ldrsh r1, [r4, r1]
@@ -11595,7 +11595,7 @@ _0226220E:
 	lsl r3, r3, #0x14
 	bl sub_0200DF70
 	ldrh r0, [r5, #8]
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0x14
 	ldrsh r1, [r5, r1]
 	lsl r6, r1, #0xc
@@ -11603,7 +11603,7 @@ _0226220E:
 	add r7, r1, #0
 	mul r7, r0
 	ldrh r0, [r5, #8]
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	mov r1, #0x16
 	ldrsh r1, [r5, r1]
 	lsl r3, r1, #0xc
@@ -11627,7 +11627,7 @@ _0226220E:
 	add r0, r5, #0
 	add r0, #0xa8
 	ldrh r0, [r0]
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0xb4
 	ldrsh r1, [r5, r1]
 	lsl r6, r1, #0xc
@@ -11639,7 +11639,7 @@ _0226220E:
 	add r0, r5, #0
 	add r0, #0xa8
 	ldrh r0, [r0]
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	mov r1, #0xb6
 	add r2, r5, #0
 	ldrsh r1, [r5, r1]
@@ -12034,7 +12034,7 @@ _022625B2:
 	lsl r3, r3, #0x14
 	bl sub_0200DF70
 	ldrh r0, [r5, #8]
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0x14
 	ldrsh r1, [r5, r1]
 	lsl r6, r1, #0xc
@@ -12042,7 +12042,7 @@ _022625B2:
 	add r7, r1, #0
 	mul r7, r0
 	ldrh r0, [r5, #8]
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	mov r1, #0x16
 	ldrsh r1, [r5, r1]
 	lsl r3, r1, #0xc
@@ -12066,7 +12066,7 @@ _022625B2:
 	add r0, r5, #0
 	add r0, #0xa8
 	ldrh r0, [r0]
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0xb4
 	ldrsh r1, [r5, r1]
 	lsl r6, r1, #0xc
@@ -12078,7 +12078,7 @@ _022625B2:
 	add r0, r5, #0
 	add r0, #0xa8
 	ldrh r0, [r0]
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	mov r1, #0xb6
 	add r2, r5, #0
 	ldrsh r1, [r5, r1]
@@ -12477,7 +12477,7 @@ _0226295E:
 	lsl r3, r3, #0x14
 	bl sub_0200DF70
 	ldrh r0, [r5, #8]
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0x14
 	ldrsh r1, [r5, r1]
 	lsl r6, r1, #0xc
@@ -12485,7 +12485,7 @@ _0226295E:
 	add r7, r1, #0
 	mul r7, r0
 	ldrh r0, [r5, #8]
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	mov r1, #0x16
 	ldrsh r1, [r5, r1]
 	lsl r3, r1, #0xc
@@ -12509,7 +12509,7 @@ _0226295E:
 	add r0, r5, #0
 	add r0, #0xa8
 	ldrh r0, [r0]
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0xb4
 	ldrsh r1, [r5, r1]
 	lsl r6, r1, #0xc
@@ -12521,7 +12521,7 @@ _0226295E:
 	add r0, r5, #0
 	add r0, #0xa8
 	ldrh r0, [r0]
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	mov r1, #0xb6
 	add r2, r5, #0
 	ldrsh r1, [r5, r1]
@@ -12958,7 +12958,7 @@ _02262D5A:
 	lsl r3, r3, #0x14
 	bl sub_0200DF70
 	ldrh r0, [r5, #8]
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0x14
 	ldrsh r1, [r5, r1]
 	lsl r6, r1, #0xc
@@ -12966,7 +12966,7 @@ _02262D5A:
 	add r7, r1, #0
 	mul r7, r0
 	ldrh r0, [r5, #8]
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	mov r1, #0x16
 	ldrsh r1, [r5, r1]
 	lsl r3, r1, #0xc
@@ -12990,7 +12990,7 @@ _02262D5A:
 	add r0, r5, #0
 	add r0, #0xa8
 	ldrh r0, [r0]
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0xb4
 	ldrsh r1, [r5, r1]
 	lsl r6, r1, #0xc
@@ -13002,7 +13002,7 @@ _02262D5A:
 	add r0, r5, #0
 	add r0, #0xa8
 	ldrh r0, [r0]
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	mov r1, #0xb6
 	add r2, r5, #0
 	ldrsh r1, [r5, r1]

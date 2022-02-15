@@ -214,7 +214,7 @@ sub_02058C80: ; 0x02058C80
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	beq _02058C92
 	mov r0, #0
@@ -263,7 +263,7 @@ sub_02058CD8: ; 0x02058CD8
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	beq _02058CEA
 	mov r0, #0
@@ -331,10 +331,10 @@ sub_02058D4C: ; 0x02058D4C
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r5, r0, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	ldr r1, [r4, #0x34]
 	cmp r1, #0x2c
 	bls _02058D66
@@ -449,7 +449,7 @@ _02058E22:
 	blx r2
 	b _02059472
 _02058E42:
-	ldr r0, _02059148 ; =gMain
+	ldr r0, _02059148 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -554,8 +554,8 @@ _02058EF6:
 	b _02059472
 _02058F0E:
 	ldr r0, [r0, #0x40]
-	bl sub_0205C6DC
-	bl sub_02062198
+	bl PlayerAvatar_GetMapObject
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	beq _02058FB2
 	mov r0, #0xb
@@ -833,7 +833,7 @@ _0205912A:
 	str r0, [r4, #0x34]
 	b _02059472
 	nop
-_02059148: .word gMain
+_02059148: .word gSystem
 _0205914C:
 	mov r0, #0
 	bl sub_02037B38
@@ -1430,7 +1430,7 @@ _02059640:
 	ldr r1, _0205964C ; =sub_02058D4C
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 _0205964A:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -1475,11 +1475,11 @@ _02059672:
 
 	thumb_func_start sub_0205969C
 sub_0205969C: ; 0x0205969C
-	ldr r3, _020596A4 ; =sub_02050650
+	ldr r3, _020596A4 ; =TaskManager_GetEnv
 	ldr r0, [r0, #0x10]
 	bx r3
 	nop
-_020596A4: .word sub_02050650
+_020596A4: .word TaskManager_GetEnv
 	thumb_func_end sub_0205969C
 
 	thumb_func_start sub_020596A8
@@ -1934,7 +1934,7 @@ sub_02059A08: ; 0x02059A08
 	push {r4, lr}
 	sub sp, #8
 	add r4, r0, #0
-	ldr r0, _02059AD0 ; =gMain
+	ldr r0, _02059AD0 ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -2029,12 +2029,12 @@ _02059A94:
 	lsl r3, r3, #4
 	bl ListMenuUpdateCursorObj
 	ldr r0, [r4, #0x7c]
-	bl sub_0201D8A0
+	bl CopyWindowPixelsToVram_TextMode
 	mov r0, #0
 	add sp, #8
 	pop {r4, pc}
 	nop
-_02059AD0: .word gMain
+_02059AD0: .word gSystem
 _02059AD4: .word 0x000005DC
 	thumb_func_end sub_02059A08
 
@@ -2131,10 +2131,10 @@ _02059B60:
 sub_02059B64: ; 0x02059B64
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	mov r1, #0
 	ldr r0, [r4, #0x24]
@@ -2262,7 +2262,7 @@ _02059C6C:
 	bl sub_0205B624
 	cmp r0, #0
 	beq _02059D36
-	ldr r0, _02059D3C ; =gMain
+	ldr r0, _02059D3C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -2311,7 +2311,7 @@ _02059CCC:
 	b _02059D36
 _02059CE8:
 	add r0, r5, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _02059D36
 	ldr r0, [r4, #0x28]
@@ -2350,7 +2350,7 @@ _02059D36:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	nop
-_02059D3C: .word gMain
+_02059D3C: .word gSystem
 _02059D40: .word 0x0000066C
 	thumb_func_end sub_02059B64
 
@@ -2389,7 +2389,7 @@ _02059D66:
 	str r0, [r2, #0x28]
 	ldr r0, [sp]
 	ldr r1, _02059DAC ; =sub_02059B64
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	bl sub_0203E2F4
 	pop {r3, r4, r5, r6, r7, pc}
 _02059D9C:

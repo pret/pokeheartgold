@@ -1,7 +1,7 @@
 #include "sound.h"
 #include "sound_chatot.h"
 #include "options.h"
-#include "main.h"
+#include "system.h"
 #include "constants/sndseq.h"
 
 #define ASM_EXTERN extern
@@ -23,7 +23,7 @@ struct SND_WORK {
     /* 0xBEBF0 */ int fadeTimer;
     /* 0xBEBF4 */ int unk_BEBF4;
     /* 0xBEBF8 */ int queuedSeqFadeInDuration;
-    /* 0xBEBFC */ u16 unk_BEBFC;
+    /* 0xBEBFC */ u16 currentSeqNo;
     /* 0xBEBFE */ u16 queuedSeqNo;
     /* 0xBEC00 */ u8 unk_BEC00;
     /* 0xBEBC1 */ u8 unk_BEC01;
@@ -57,8 +57,8 @@ struct SND_WORK {
     /* 0xBEC79 */ u8 unk_BEC79;
     /* 0xBEC7A */ u16 unk_BEC7A;
     /* 0xBEC7C */ u32 unk_BEC7C;
-    /* 0xBEC80 */ u32 unk_BEC80_00:1;
-    /* 0xBEC80 */ u32 unk_BEC80_01:31;
+    /* 0xBEC80 */ u32 micInitDone:1;
+    /* 0xBEC80 */ u32 micCounter:31;
     /* 0xBEC84 */ u32 gbSoundsVolume;
 }; // size: 0xBEC88
 
@@ -74,7 +74,7 @@ void GF_SndHandleInitAll(SND_WORK *work);
 void sub_02004898(struct SND_WORK *work);
 void GF_SndCallback(void);
 BOOL GF_SndIsFanfarePlaying(void);
-BOOL sub_02004924(void);
+BOOL GF_SndWorkMicCounterFull(void);
 
 void InitSoundData(SOUND_CHATOT *chatot, OPTIONS *options) {
     SND_WORK *work = GetSoundDataPointer();
@@ -113,11 +113,11 @@ void DoSoundUpdateFrame(void) {
 
     // debug stuff left in
     NNS_SndUpdateDriverInfo();
-    if (gMain.newKeys & PAD_BUTTON_DEBUG) {
+    if (gSystem.newKeys & PAD_BUTTON_DEBUG) {
         SNDChannelInfo sp24;
         SNDTrackInfo sp8;
         for (i = 0; i < 16; i++) {
-            NNS_SndPlayerReadDriverTrackInfo(&work->unk_BEB78[7], i, &sp8);
+            NNS_SndPlayerReadDriverTrackInfo(&work->unk_BEB78[SND_HANDLE_BGM], i, &sp8);
             NNS_SndReadDriverChannelInfo(i, &sp24);
         }
     }
@@ -135,8 +135,8 @@ void DoSoundUpdateFrame(void) {
     }
 
     // New to HG/SS
-    if (work->unk_BEC80_00 && !sub_02004924()) {
-        work->unk_BEC80_01++;
+    if (work->micInitDone && !GF_SndWorkMicCounterFull()) {
+        work->micCounter++;
     }
     NNS_SndMain();
 }
@@ -161,7 +161,7 @@ void GF_SndCallback(void) {
         break;
     case 5:
         if (!GF_SndGetFadeTimer() && !GF_SndGetAfterFadeDelayTimer()) {
-            GF_SndStopPlayerField();
+            GF_SndStopPlayerBgm();
             if (work->queuedSeqNo != 0) {
                 PlayBGM(work->queuedSeqNo);
             }
@@ -169,7 +169,7 @@ void GF_SndCallback(void) {
         break;
     case 6:
         if (!GF_SndGetFadeTimer() && !GF_SndGetAfterFadeDelayTimer()) {
-            GF_SndStopPlayerField();
+            GF_SndStopPlayerBgm();
             if (work->queuedSeqNo != 0) {
                 PlayBGM(work->queuedSeqNo);
             }
@@ -230,7 +230,7 @@ void *GF_SdatGetAttrPtr(u32 attr) {
     case 9:
         return &work->queuedSeqFadeInDuration;
     case 10:
-        return &work->unk_BEBFC;
+        return &work->currentSeqNo;
     case 11:
         return &work->queuedSeqNo;
     case 12:
@@ -422,7 +422,7 @@ NNSSndHandle *GF_GetSoundHandle(int playerNo) {
     return &work->unk_BEB78[playerNo];
 }
 
-enum SoundHandleNo sub_0200480C(int playerNo) {
+enum SoundHandleNo GF_GetSndHandleByPlayerNo(int playerNo) {
     switch (playerNo) {
     case PLAYER_FIELD:
         return SND_HANDLE_FIELD;
@@ -474,15 +474,15 @@ void GF_InitMic(SND_WORK *work) {
     MIC_Init();
     PM_SetAmp(PM_AMP_ON);
     PM_SetAmpGain(PM_AMPGAIN_80);
-    work->unk_BEC80_00 = TRUE;
+    work->micInitDone = TRUE;
 }
 
-void GF_SndStopPlayerField(void) {
+void GF_SndStopPlayerBgm(void) {
     NNS_SndPlayerStopSeqByPlayerNo(PLAYER_BGM, 0);
     NNS_SndHandleReleaseSeq(GF_GetSoundHandle(SND_HANDLE_BGM));
 }
 
-void GF_SndStopPlayerBgm(void) {
+void GF_SndStopPlayerField(void) {
     NNS_SndPlayerStopSeqByPlayerNo(PLAYER_FIELD, 0);
     NNS_SndHandleReleaseSeq(GF_GetSoundHandle(SND_HANDLE_FIELD));
 }
@@ -491,18 +491,18 @@ void sub_02004920(u16 unk) {
 #pragma unused(unk)
 }
 
-BOOL sub_02004924(void) {
+BOOL GF_SndWorkMicCounterFull(void) {
     SND_WORK *work;
 
     work = GetSoundDataPointer();
-    return (work->unk_BEC80_01 > 90) ? TRUE : FALSE;
+    return (work->micCounter > 90) ? TRUE : FALSE;
 }
 
 void GF_SndWorkMicCounterReset(void) {
     SND_WORK *work;
 
     work = GetSoundDataPointer();
-    work->unk_BEC80_01 = 0;
+    work->micCounter = 0;
 }
 
 void GF_SndWorkSetGbSoundsVolume(u8 a0) {

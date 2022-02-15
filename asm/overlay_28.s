@@ -50,12 +50,12 @@ ov28_0225D520: ; 0x0225D520
 	add r1, sp, #8
 	bl sub_0203DBF8
 	ldr r0, [sp, #8]
-	bl sub_0205F27C
+	bl MapObject_GetScript
 	bl ov01_021F6BD0
 	cmp r0, #1
 	beq _0225D59E
 	ldr r0, [sp, #8]
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	bl ov01_021F6BB0
 	cmp r0, #1
 	bne _0225D5A6
@@ -99,7 +99,7 @@ ov28_0225D5EC: ; 0x0225D5EC
 	add r0, r5, #0
 	bl sub_0201F988
 	add r4, r0, #0
-	bl ov28_0225DD3C
+	bl DowsingMchn_FreeHiddenItemLocs
 	add r0, r4, #0
 	bl ov28_0225D8D0
 	add r0, r4, #0
@@ -243,7 +243,7 @@ ov28_0225D6FC: ; 0x0225D6FC
 	add r0, r4, #0
 	mov r1, #2
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -254,7 +254,7 @@ ov28_0225D6FC: ; 0x0225D6FC
 	ldr r2, [r5, #0x10]
 	add r0, r4, #0
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -265,7 +265,7 @@ ov28_0225D6FC: ; 0x0225D6FC
 	ldr r2, [r5, #0x10]
 	add r0, r4, #0
 	mov r3, #6
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #8
@@ -273,7 +273,7 @@ ov28_0225D6FC: ; 0x0225D6FC
 	add r0, r4, #0
 	mov r1, #3
 	mov r2, #4
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov28_0225D6FC
@@ -380,7 +380,7 @@ _0225D7FC:
 	mov r3, #0
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl sub_0201D8A0
+	bl CopyWindowPixelsToVram_TextMode
 	ldr r0, [sp, #0x10]
 	add r6, #8
 	add r0, r0, #1
@@ -399,11 +399,11 @@ _0225D7FC:
 	ldrb r0, [r0, r1]
 	lsl r0, r0, #4
 	add r0, r2, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #0x7d
 	lsl r0, r0, #2
 	add r0, r7, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -734,7 +734,7 @@ ov28_0225DA74: ; 0x0225DA74
 	add r2, sp, #0x20
 	bl ov28_0225DA1C
 	ldr r0, [r5, #0x18]
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	bl sub_0205CB38
 	cmp r0, #0
 	bne _0225DB22
@@ -960,7 +960,7 @@ _0225DC98:
 	add r2, #0xf0
 	ldr r0, _0225DD24 ; =0x0000093D
 	str r1, [r4, r2]
-	bl sub_02006154
+	bl StopSE
 	b _0225DCF6
 _0225DCD0:
 	cmp r0, #1
@@ -997,21 +997,21 @@ _0225DD20: .word 0xFFFF7FFF
 _0225DD24: .word 0x0000093D
 	thumb_func_end ov28_0225DC2C
 
-	thumb_func_start ov28_0225DD28
-ov28_0225DD28: ; 0x0225DD28
+	thumb_func_start DowsingMchn_GetHiddenItemLocs
+DowsingMchn_GetHiddenItemLocs: ; 0x0225DD28
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #8
-	bl sub_02040614
+	bl AllocAndFetchNearbyHiddenItems
 	mov r1, #0x81
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	pop {r4, pc}
-	thumb_func_end ov28_0225DD28
+	thumb_func_end DowsingMchn_GetHiddenItemLocs
 
-	thumb_func_start ov28_0225DD3C
-ov28_0225DD3C: ; 0x0225DD3C
+	thumb_func_start DowsingMchn_FreeHiddenItemLocs
+DowsingMchn_FreeHiddenItemLocs: ; 0x0225DD3C
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x81
@@ -1026,14 +1026,14 @@ ov28_0225DD3C: ; 0x0225DD3C
 	str r1, [r4, r0]
 _0225DD56:
 	pop {r4, pc}
-	thumb_func_end ov28_0225DD3C
+	thumb_func_end DowsingMchn_FreeHiddenItemLocs
 
 	thumb_func_start ov28_0225DD58
 ov28_0225DD58: ; 0x0225DD58
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl ov28_0225DD28
+	bl DowsingMchn_GetHiddenItemLocs
 	mov r0, #0x83
 	mov r4, #0
 	lsl r0, r0, #2
@@ -1109,7 +1109,7 @@ _0225DDF2:
 	b _0225DD6A
 _0225DDF6:
 	add r0, r5, #0
-	bl ov28_0225DD3C
+	bl DowsingMchn_FreeHiddenItemLocs
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1123,7 +1123,7 @@ ov28_0225DE04: ; 0x0225DE04
 	add r5, r0, #0
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	mov r2, #0x11
 	asr r1, r0, #0x1f
 	lsl r2, r2, #0xe
@@ -1143,7 +1143,7 @@ ov28_0225DE04: ; 0x0225DE04
 	str r0, [r5]
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r2, #0x11
 	asr r1, r0, #0x1f
 	lsl r2, r2, #0xe
@@ -1932,7 +1932,7 @@ ov28_0225E424: ; 0x0225E424
 	add r4, r0, #0
 	lsl r0, r1, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FD00
+	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #2
@@ -2468,10 +2468,10 @@ _0225E828:
 	cmp r0, #0
 	ldr r0, [r5, #0x18]
 	bne _0225E860
-	bl sub_0205CA1C
-	bl sub_0205C6DC
+	bl FieldSys_GetPlayerAvatar
+	bl PlayerAvatar_GetMapObject
 	add r4, r0, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	sub r0, #0xbc
 	cmp r0, #1
 	bhi _0225E858
@@ -2498,12 +2498,12 @@ _0225E860:
 	add r1, sp, #0
 	bl sub_0203DBF8
 	ldr r0, [sp]
-	bl sub_0205F27C
+	bl MapObject_GetScript
 	bl ov01_021F6BD0
 	cmp r0, #1
 	beq _0225E88E
 	ldr r0, [sp]
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	bl ov01_021F6BB0
 	cmp r0, #1
 	bne _0225E890
@@ -2524,7 +2524,7 @@ _0225E890:
 	ldrb r0, [r0, r1]
 	lsl r0, r0, #4
 	add r0, r2, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 _0225E8B0:
 	pop {r3, r4, r5, pc}
 	nop
@@ -2588,14 +2588,14 @@ _0225E914:
 	bl ov28_0225E8B8
 	cmp r0, #0
 	beq _0225E92E
-	ldr r0, _0225E934 ; =gMain
+	ldr r0, _0225E934 ; =gSystem
 	mov r1, #1
 	str r1, [r0, #0x5c]
 _0225E92E:
 	pop {r4, pc}
 	.balign 4, 0
 _0225E930: .word _0225EA7C
-_0225E934: .word gMain
+_0225E934: .word gSystem
 	thumb_func_end ov28_0225E900
 
 	thumb_func_start ov28_0225E938
@@ -2639,7 +2639,7 @@ _0225E96C:
 	cmp r0, #1
 	bne _0225E9DA
 	ldr r0, [r5, #0x18]
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	add r6, r0, #0
 	bl sub_0205CB38
 	add r4, r0, #0
@@ -2687,7 +2687,7 @@ ov28_0225E9E0: ; 0x0225E9E0
 	mov r0, #0x7d
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	mov r0, #0x63
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -2703,7 +2703,7 @@ _0225EA10:
 	mov r0, #0x7d
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #0x63
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]

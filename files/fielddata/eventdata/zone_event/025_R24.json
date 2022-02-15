@@ -1,0 +1,68 @@
+{
+  "header": "fielddata/script/scr_seq/event_R24.h",
+  "objects": [
+    {
+      "id": "obj_R24_gsman1",
+      "ovid": "SPRITE_GSMAN1",
+      "mvt": 16,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_R24_000 + 1",
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1325,
+      "y": 80,
+      "z": 196608
+    },
+    {
+      "id": "obj_R24_gswoman2",
+      "ovid": "SPRITE_GSWOMAN2",
+      "mvt": 16,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_R24_001 + 1",
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1325,
+      "y": 81,
+      "z": 196608
+    },
+    {
+      "id": "obj_R24_rocketm",
+      "ovid": "SPRITE_ROCKETM",
+      "mvt": 15,
+      "type": 0,
+      "flag": "FLAG_HIDE_ROUTE_24_ROCKET",
+      "scr": "_EV_scr_seq_R24_002 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1328,
+      "y": 81,
+      "z": 196608
+    }
+  ],
+  "coords": [
+    {
+      "scr": "_EV_scr_seq_R24_003 + 1",
+      "x": 1325,
+      "y": 76,
+      "w": 4,
+      "h": 10,
+      "z": 0,
+      "val": 1,
+      "var": "VAR_SCENE_ROUTE_24_ROCKET"
+    }
+  ]
+}

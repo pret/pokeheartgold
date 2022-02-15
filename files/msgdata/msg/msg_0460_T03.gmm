@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0460_T03_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Have you visited Pewter Gym?\rThe Gym Leader uses\nRock-type Pokémon.</language>
+	</row>
+	<row id="msg_0460_T03_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">At night, CLEFAIRY come out to play\nat Mt. Moon.\rBut not every night.</language>
+	</row>
+	<row id="msg_0460_T03_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ah, you came all the way out here\nfrom Johto?\rThat brings back memories.\rWhen I was young, I went to Johto\nto train.\rYou remind me so much of what I was\nlike as a young man.\rHere. I want you to have this item\nI found in Johto.\r</language>
+	</row>
+	<row id="msg_0460_T03_00003" index="3">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0460_T03_00004" index="4">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0460_T03_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Going to new, unknown places and\nseeing new people...\fThose are the joys of travel.</language>
+	</row>
+	<row id="msg_0460_T03_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Steven: It seems that LATIOS became\nattracted to it in no time!\r</language>
+	</row>
+	<row id="msg_0460_T03_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Steven: It seems that LATIAS became\nattracted to it in no time!\r</language>
+	</row>
+	<row id="msg_0460_T03_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I can feel that LATIOS is full of\nfighting spirit!\rI would love to challenge it,\nbut I will let you go for it!</language>
+	</row>
+	<row id="msg_0460_T03_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I can feel that LATIAS is full of\nfighting spirit!\rI would love to challenge it,\nbut I will let you go for it!</language>
+	</row>
+	<row id="msg_0460_T03_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LATIOS: Shuaaaann!\r</language>
+	</row>
+	<row id="msg_0460_T03_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LATIAS: Huaaaaann!\r</language>
+	</row>
+	<row id="msg_0460_T03_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LATIOS flew away to the distant sky...\r</language>
+	</row>
+	<row id="msg_0460_T03_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LATIAS flew away to the distant sky...\r</language>
+	</row>
+	<row id="msg_0460_T03_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Steven: Impressive!\nIt was a great battle!\rI don’t think you had to give\neverything you’ve got,\fand that scares me...\r</language>
+	</row>
+	<row id="msg_0460_T03_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’ve been away from the Hoenn\nPokémon League for too long.\rI’ll have to excuse myself.\r..................\rOh, I never got your name.\f...But I won’t ask for it this time.\rOur fun will have to wait for the\nright time.\r</language>
+	</row>
+	<row id="msg_0460_T03_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Steven: Impressive!\nIt was a great battle!\rLATIOS will be back once it recovers\nto make amends for the defeat.\r</language>
+	</row>
+	<row id="msg_0460_T03_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Steven: Impressive!\nIt was a great battle!\rLATIAS will be back once it recovers\nto make amends for the defeat.\r</language>
+	</row>
+	<row id="msg_0460_T03_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Steven: I see.\nYou’d rather hide your true strength\ffrom me. You have room to breathe,\fand that scares me.\r</language>
+	</row>
+	<row id="msg_0460_T03_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Steven: What? You are not scared,\nare you? Don’t be reserved. Go for it.</language>
+	</row>
+	<row id="msg_0460_T03_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pewter City\nBetween Rugged Mountains</language>
+	</row>
+	<row id="msg_0460_T03_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pewter City Pokémon Gym\nLeader: Brock\fThe Rock-Solid Pokémon Trainer</language>
+	</row>
+	<row id="msg_0460_T03_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pewter Museum of Science</language>
+	</row>
+	<row id="msg_0460_T03_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Welcome to Pewter City!</language>
+	</row>
+	<row id="msg_0460_T03_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The door’s locked...</language>
+	</row>
+</body>

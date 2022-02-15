@@ -1,4 +1,0 @@
-So you are {STRVAR_1 3, 0, 0}?\nProfessor Oak is waiting for you in his\flab in Pallet Town.\rAlso, I received this from him.\nHe wants you to have this.\r
-So you are {STRVAR_1 3, 0, 0}?\nProfessor Oak is waiting for you in his\flab in Pallet Town.\rAlso, I received this from him.\nHe wants you to have this.\r
-Sacred Ash is an amazing item that can\nrevive all fainted Pokémon!
-To the north is Pewter City.\nTo the south is Viridian City.\rI know, I know. I sound like a sign.

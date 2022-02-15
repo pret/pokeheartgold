@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0347_R11R0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, passerby!\rHave you seen DIGLETT’s Cave?\nNormally you can go through it to get\fto Route 2, but there is a sleeping\fSNORLAX at the entrance now.\fSomebody has to wake it up!</language>
+	</row>
+	<row id="msg_0347_R11R0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, passerby!\rHave you been to DIGLETT’s Cave?\nNow that the sleeping SNORLAX is gone,\fyou can go through it to get\fto Route 2!</language>
+	</row>
+</body>

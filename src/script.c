@@ -1,6 +1,6 @@
 #include "script.h"
 
-void InitScriptContext(SCRIPTCONTEXT* ctx, ScrCmdFunc* cmd_table, u32 cmd_count) {
+void InitScriptContext(SCRIPTCONTEXT* ctx, const ScrCmdFunc* cmd_table, u32 cmd_count) {
     s32 i = 0;
 
     ctx->mode = SCRIPT_MODE_STOPPED;
@@ -19,7 +19,7 @@ void InitScriptContext(SCRIPTCONTEXT* ctx, ScrCmdFunc* cmd_table, u32 cmd_count)
         ctx->stack[i] = NULL;
     }
 
-    ctx->unk74 = NULL;
+    ctx->taskman = NULL;
 }
 
 BOOL SetupBytecodeScript(SCRIPTCONTEXT* ctx, const u8* ptr) {
@@ -38,8 +38,8 @@ void StopScript(SCRIPTCONTEXT* ctx) {
     ctx->script_ptr = NULL;
 }
 
-void sub_0203FD68(SCRIPTCONTEXT* ctx, void* unk) {
-    ctx->unk74 = unk;
+void sub_0203FD68(SCRIPTCONTEXT* ctx, TaskManager *unk) {
+    ctx->taskman = unk;
 }
 
 BOOL RunScriptCommand(SCRIPTCONTEXT* ctx) {
@@ -48,42 +48,42 @@ BOOL RunScriptCommand(SCRIPTCONTEXT* ctx) {
     }
 
     switch (ctx->mode) {
-        // Never gets run, since we have already checked for this
-        case SCRIPT_MODE_STOPPED:
-            return FALSE;
+    // Never gets run, since we have already checked for this
+    case SCRIPT_MODE_STOPPED:
+        return FALSE;
 
-        case SCRIPT_MODE_NATIVE:
-            if (ctx->native_ptr != NULL) {
-                if (ctx->native_ptr(ctx) == TRUE) {
-                    ctx->mode = SCRIPT_MODE_BYTECODE;
-                }
-
-                return TRUE;
+    case SCRIPT_MODE_NATIVE:
+        if (ctx->native_ptr != NULL) {
+            if (ctx->native_ptr(ctx) == TRUE) {
+                ctx->mode = SCRIPT_MODE_BYTECODE;
             }
 
-            ctx->mode = SCRIPT_MODE_BYTECODE;
+            return TRUE;
+        }
 
-            // fallthrough
+        ctx->mode = SCRIPT_MODE_BYTECODE;
 
-        case SCRIPT_MODE_BYTECODE:
-            while (TRUE) {
-                if (ctx->script_ptr == NULL) {
-                    ctx->mode = SCRIPT_MODE_STOPPED;
-                    return FALSE;
-                }
+        // fallthrough
 
-                u16 cmd_code = ScriptReadHalfword(ctx);
-                if (cmd_code >= ctx->cmd_count) {
-                    GF_ASSERT(FALSE);
-                    ctx->mode = SCRIPT_MODE_STOPPED;
-                    return FALSE;
-                }
-
-                ScrCmdFunc cmd = ctx->cmd_table[cmd_code];
-                if ((*cmd)(ctx) == TRUE) {
-                    break;
-                }
+    case SCRIPT_MODE_BYTECODE:
+        while (TRUE) {
+            if (ctx->script_ptr == NULL) {
+                ctx->mode = SCRIPT_MODE_STOPPED;
+                return FALSE;
             }
+
+            u16 cmd_code = ScriptReadHalfword(ctx);
+            if (cmd_code >= ctx->cmd_count) {
+                GF_ASSERT(FALSE);
+                ctx->mode = SCRIPT_MODE_STOPPED;
+                return FALSE;
+            }
+
+            ScrCmdFunc cmd = ctx->cmd_table[cmd_code];
+            if ((*cmd)(ctx) == TRUE) {
+                break;
+            }
+        }
     }
 
     return TRUE;

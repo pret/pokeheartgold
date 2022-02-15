@@ -550,7 +550,7 @@ ov93_0225C768: ; 0x0225C768
 	add r1, r5, #0
 	add r1, #0x94
 	str r0, [r1]
-	ldr r0, _0225CA84 ; =gMain + 0x60
+	ldr r0, _0225CA84 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -560,7 +560,7 @@ ov93_0225C768: ; 0x0225C768
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #1
 	bl sub_02002B50
 	mov r0, #0
@@ -609,7 +609,7 @@ _0225CA74: .word ov93_02262A90
 _0225CA78: .word 0x00001468
 _0225CA7C: .word ov93_0225D07C
 _0225CA80: .word 0x0000EA60
-_0225CA84: .word gMain + 0x60
+_0225CA84: .word gSystem + 0x60
 _0225CA88: .word ov93_0225CEA0
 	thumb_func_end ov93_0225C768
 
@@ -1106,7 +1106,7 @@ ov93_0225CEA0: ; 0x0225CEA0
 	bne _0225CED8
 	mov r0, #7
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldr r0, _0225CF04 ; =0x00001454
 	mov r1, #0
 	strb r1, [r4, r0]
@@ -1118,13 +1118,13 @@ _0225CED8:
 	bne _0225CEEE
 	mov r0, #7
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldr r0, _0225CF08 ; =0x00001455
 	mov r1, #0
 	strb r1, [r4, r0]
 _0225CEEE:
 	ldr r0, [r4, #0x2c]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _0225CF0C ; =0x027E0000
 	ldr r1, _0225CF10 ; =0x00003FF8
 	mov r0, #1
@@ -1387,10 +1387,10 @@ ov93_0225D07C: ; 0x0225D07C
 	bl NNS_G3dGlbMaterialColorSpecEmi
 	add r0, sp, #0x28
 	bl NNS_G3dGlbSetBaseTrans
-	ldr r1, _0225D1CC ; =_021DA558
+	ldr r1, _0225D1CC ; =NNS_G3dGlb + 0xBC
 	add r0, sp, #4
 	bl MI_Copy36B
-	ldr r1, _0225D1D0 ; =_021DA51C
+	ldr r1, _0225D1D0 ; =NNS_G3dGlb + 0x80
 	mov r0, #0xa4
 	ldr r2, [r1, #0x7c]
 	bic r2, r0
@@ -1446,8 +1446,8 @@ _0225D1BC: .word 0x00001428
 _0225D1C0: .word 0xFFFFF000
 _0225D1C4: .word 0x0000739C
 _0225D1C8: .word 0x00007FFF
-_0225D1CC: .word _021DA558
-_0225D1D0: .word _021DA51C
+_0225D1CC: .word NNS_G3dGlb + 0xBC
+_0225D1D0: .word NNS_G3dGlb + 0x80
 _0225D1D4: .word 0x000013B0
 	thumb_func_end ov93_0225D07C
 
@@ -1522,12 +1522,12 @@ _0225D248:
 	add r0, r5, #0
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r5, #0
 	mov r1, #1
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r5, #0
 	mov r1, #2
 	add r2, sp, #0x54
@@ -1540,12 +1540,12 @@ _0225D248:
 	add r0, r5, #0
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r5, #0
 	mov r1, #2
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r5, #0
 	mov r1, #3
 	add r2, sp, #0x70
@@ -1558,12 +1558,12 @@ _0225D248:
 	add r0, r5, #0
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r1, #3
 	add r0, r5, #0
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r1, _0225D378 ; =0x04000008
 	mov r0, #3
 	ldrh r2, [r1]
@@ -1615,21 +1615,21 @@ _0225D31A:
 	add r0, r5, #0
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r1, r4, #4
 	lsl r1, r1, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r4, r4, #1
 	add r6, #0x1c
 	cmp r4, #4
 	blo _0225D2F4
 	mov r0, #7
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add sp, #0x8c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -1782,7 +1782,7 @@ ov93_0225D468: ; 0x0225D468
 	bl String_dtor
 	add r5, #0x70
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2603,7 +2603,7 @@ ov93_0225DB2C: ; 0x0225DB2C
 	add r0, r4, #0
 	mov r1, #2
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2614,7 +2614,7 @@ ov93_0225DB2C: ; 0x0225DB2C
 	ldr r2, [r5, #0x2c]
 	add r0, r4, #0
 	add r3, r1, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -2624,7 +2624,7 @@ ov93_0225DB2C: ; 0x0225DB2C
 	ldr r2, [r5, #0x2c]
 	add r0, r4, #0
 	mov r3, #2
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2635,7 +2635,7 @@ ov93_0225DB2C: ; 0x0225DB2C
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #2
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #1
@@ -2700,7 +2700,7 @@ ov93_0225DBC8: ; 0x0225DBC8
 	add r0, r4, #0
 	mov r1, #0xd
 	mov r3, #6
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2711,7 +2711,7 @@ ov93_0225DBC8: ; 0x0225DBC8
 	add r0, r4, #0
 	mov r1, #0xe
 	mov r3, #6
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2722,7 +2722,7 @@ ov93_0225DBC8: ; 0x0225DBC8
 	add r0, r4, #0
 	mov r1, #0x12
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	ldr r0, [r5]
 	add r0, #0x30
 	ldrb r0, [r0]
@@ -2742,7 +2742,7 @@ _0225DC64:
 	add r0, r4, #0
 	mov r1, #0xf
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	b _0225DCB0
 _0225DC7E:
 	mov r0, #0
@@ -2755,7 +2755,7 @@ _0225DC7E:
 	add r0, r4, #0
 	mov r1, #0x10
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	b _0225DCB0
 _0225DC98:
 	mov r0, #0
@@ -2768,7 +2768,7 @@ _0225DC98:
 	add r0, r4, #0
 	mov r1, #0x11
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 _0225DCB0:
 	mov r0, #0
 	str r0, [sp]
@@ -2780,7 +2780,7 @@ _0225DCB0:
 	add r0, r4, #0
 	mov r1, #0x12
 	mov r3, #4
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2791,7 +2791,7 @@ _0225DCB0:
 	add r0, r4, #0
 	mov r1, #0x13
 	mov r3, #4
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add r0, r5, #0
 	bl ov93_02260BF0
 	add r0, r5, #0
@@ -4458,7 +4458,7 @@ _0225E8E8:
 	str r2, [r4, r1]
 	b _0225E920
 _0225E900:
-	ldr r2, _0225EA40 ; =gMain + 0x40
+	ldr r2, _0225EA40 ; =gSystem + 0x40
 	add r0, r1, #0
 	ldrh r3, [r2, #0x20]
 	sub r0, #0x38
@@ -4609,7 +4609,7 @@ _0225EA34:
 	.balign 4, 0
 _0225EA38: .word 0x00001758
 _0225EA3C: .word 0x00002FB8
-_0225EA40: .word gMain + 0x40
+_0225EA40: .word gSystem + 0x40
 _0225EA44: .word 0x00002FBC
 _0225EA48: .word 0x0000058E
 _0225EA4C: .word 0x00002FC8

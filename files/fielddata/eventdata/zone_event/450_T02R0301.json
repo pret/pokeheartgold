@@ -1,0 +1,141 @@
+{
+  "header": "fielddata/script/scr_seq/event_T02R0301.h",
+  "bgs": [
+    {
+      "scr": "_EV_scr_seq_T02R0301_005 + 1",
+      "type": 0,
+      "x": 6,
+      "y": 2,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": "_EV_scr_seq_T02R0301_006 + 1",
+      "type": 0,
+      "x": 8,
+      "y": 2,
+      "z": 0,
+      "dir": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_T02R0301_gswoman6",
+      "ovid": "SPRITE_GSWOMAN6",
+      "mvt": 17,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T02R0301_000 + 1",
+      "dirn": 3,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 2,
+      "y": 13,
+      "z": 0
+    },
+    {
+      "id": "obj_T02R0301_gsman3",
+      "ovid": "SPRITE_GSMAN3",
+      "mvt": 14,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T02R0301_001 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 11,
+      "y": 13,
+      "z": 0
+    },
+    {
+      "id": "obj_T02R0301_gsboy1",
+      "ovid": "SPRITE_GSBOY1",
+      "mvt": 5,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T02R0301_003 + 1",
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 1,
+      "yrange": 0,
+      "x": 7,
+      "y": 11,
+      "z": 0
+    },
+    {
+      "id": "obj_T02R0301_gsgentleman",
+      "ovid": "SPRITE_GSGENTLEMAN",
+      "mvt": 15,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T02R0301_004 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 6,
+      "y": 6,
+      "z": 0
+    },
+    {
+      "id": "obj_T02R0301_gswoman3",
+      "ovid": "SPRITE_GSWOMAN3",
+      "mvt": 15,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T02R0301_002 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 10,
+      "y": 4,
+      "z": 0
+    },
+    {
+      "id": "obj_T02R0301_babyboy1_2",
+      "ovid": "SPRITE_BABYBOY1_2",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T02R0301_007 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 8,
+      "y": 9,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 5,
+      "y": 15,
+      "header": "MAP_T02",
+      "anchor": 2,
+      "height": 0
+    },
+    {
+      "x": 13,
+      "y": 3,
+      "header": "MAP_T02R0302",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

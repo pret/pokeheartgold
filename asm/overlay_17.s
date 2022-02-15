@@ -9,7 +9,7 @@ ov17_02201BC0: ; 0x02201BC0
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -225,12 +225,12 @@ ov17_02201D30: ; 0x02201D30
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_0202A978
+	bl Sav2_BerryPots_get
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_0202A988
+	bl Sav2_BerryPotRTC_get
 	str r0, [r5, #0x18]
 	ldr r1, [r5, #4]
 	ldrb r0, [r1, #0x14]
@@ -897,7 +897,7 @@ _02202288:
 	mov r3, #0
 	bl ov17_02202944
 	ldr r0, _0220231C ; =0x000004A9
-	bl sub_02006B24
+	bl PlayFanfare
 	add r0, r4, #0
 	add r0, #0x70
 	ldrh r0, [r0]
@@ -906,7 +906,7 @@ _02202288:
 	strh r0, [r4]
 	b _02202316
 _022022B4:
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	bne _02202316
 	add r2, r4, #0
@@ -1142,7 +1142,7 @@ ov17_02202460: ; 0x02202460
 	str r0, [r4, #0x74]
 	pop {r4, pc}
 _02202478:
-	ldr r0, _022024C4 ; =gMain
+	ldr r0, _022024C4 ; =gSystem
 	ldr r1, [r0, #0x48]
 	ldr r0, _022024C8 ; =0x00000CF3
 	tst r0, r1
@@ -1150,7 +1150,7 @@ _02202478:
 	mov r0, #0
 	str r0, [r4, #0x74]
 _02202486:
-	ldr r0, _022024C4 ; =gMain
+	ldr r0, _022024C4 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -1180,7 +1180,7 @@ _022024BA:
 	pop {r4, pc}
 	nop
 _022024C0: .word 0x000005DC
-_022024C4: .word gMain
+_022024C4: .word gSystem
 _022024C8: .word 0x00000CF3
 	thumb_func_end ov17_02202460
 
@@ -1448,7 +1448,7 @@ _022026D6:
 	bne _02202704
 	ldr r0, _02202798 ; =0x00000889
 	mov r1, #2
-	bl sub_02006154
+	bl StopSE
 	mov r0, #0x5b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1674,7 +1674,7 @@ ov17_02202850: ; 0x02202850
 	bl AddTextPrinterParameterized2
 	add r4, #0xfc
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1818,7 +1818,7 @@ _02202994:
 	mov r1, #1
 	bl AddTextPrinterParameterized
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #0x3c
 	add r5, #0x7a
 	strb r0, [r5]
@@ -2124,7 +2124,7 @@ _02202C0A:
 	bl NNS_GfdDoVramTransfer
 	add r4, #0x88
 	ldr r0, [r4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _02202C24 ; =0x027E0000
 	ldr r1, _02202C28 ; =0x00003FF8
 	mov r0, #1
@@ -2386,7 +2386,7 @@ ov17_02202E28: ; 0x02202E28
 	str r1, [sp, #4]
 	mov r1, #3
 	add r4, r0, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2399,7 +2399,7 @@ ov17_02202E28: ; 0x02202E28
 	add r0, r4, #0
 	mov r1, #4
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2412,7 +2412,7 @@ ov17_02202E28: ; 0x02202E28
 	add r0, r4, #0
 	mov r1, #5
 	mov r3, #3
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r1, #0
 	str r1, [sp]
 	ldr r0, [r5]
@@ -2420,7 +2420,7 @@ ov17_02202E28: ; 0x02202E28
 	str r0, [sp, #4]
 	add r0, r4, #0
 	add r3, r1, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2433,7 +2433,7 @@ ov17_02202E28: ; 0x02202E28
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2446,7 +2446,7 @@ ov17_02202E28: ; 0x02202E28
 	add r0, r4, #0
 	mov r1, #2
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0x65
 	lsl r0, r0, #2
 	str r4, [r5, r0]
@@ -3987,7 +3987,7 @@ _02203AD0: .word 0x000005DC
 	thumb_func_start ov17_02203AD4
 ov17_02203AD4: ; 0x02203AD4
 	push {r4, lr}
-	ldr r1, _02203B60 ; =gMain
+	ldr r1, _02203B60 ; =gSystem
 	mov r3, #0
 	ldr r2, [r1, #0x48]
 	ldr r1, _02203B64 ; =0x00000CF3
@@ -3995,7 +3995,7 @@ ov17_02203AD4: ; 0x02203AD4
 	beq _02203AE4
 	str r3, [r0, #0x74]
 _02203AE4:
-	ldr r1, _02203B60 ; =gMain
+	ldr r1, _02203B60 ; =gSystem
 	ldr r2, [r1, #0x48]
 	mov r1, #2
 	tst r1, r2
@@ -4060,7 +4060,7 @@ _02203B5C:
 	mov r0, #2
 	pop {r4, pc}
 	.balign 4, 0
-_02203B60: .word gMain
+_02203B60: .word gSystem
 _02203B64: .word 0x00000CF3
 	thumb_func_end ov17_02203AD4
 
@@ -4093,14 +4093,14 @@ ov17_02203B88: ; 0x02203B88
 	mov r0, #0
 	cmp r1, #0xff
 	bne _02203C16
-	ldr r1, _02203C18 ; =gMain
+	ldr r1, _02203C18 ; =gSystem
 	ldr r2, [r1, #0x48]
 	ldr r1, _02203C1C ; =0x00000CF3
 	tst r1, r2
 	beq _02203BA4
 	str r0, [r4, #0x74]
 _02203BA4:
-	ldr r1, _02203C18 ; =gMain
+	ldr r1, _02203C18 ; =gSystem
 	ldr r2, [r1, #0x48]
 	mov r1, #0x20
 	tst r1, r2
@@ -4161,7 +4161,7 @@ _02203C14:
 _02203C16:
 	pop {r4, pc}
 	.balign 4, 0
-_02203C18: .word gMain
+_02203C18: .word gSystem
 _02203C1C: .word 0x00000CF3
 	thumb_func_end ov17_02203B88
 

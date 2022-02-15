@@ -1,3 +1,0 @@
-I am Karen of the Elite Four.\rYou’re {STRVAR_1 3, 0, 0}? How amusing.\nI love Dark-type Pokémon.\rI’m known for my overpowering tactics.\rThink you can take them?\nJust try to entertain me.\rLet’s go.\r
-Strong Pokémon.\rWeak Pokémon.\rThat is only the selfish perception\nof people.\rTruly skilled Trainers should try to\nwin with the Pokémon they love best.\rI like your style.\nYou understand what’s important.\rGo on--the Champion is waiting.\r
-Strong Pokémon.\rWeak Pokémon.\rThat is only the selfish perception\nof people.\rTruly skilled Trainers should try to\nwin with the Pokémon they love best.\rI like your style.\nYou understand what’s important.\rGo on--the Champion is waiting.

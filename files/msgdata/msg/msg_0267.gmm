@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0267_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh, hello!\nRight this way, please!\r</language>
+	</row>
+	<row id="msg_0267_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello.\nI’m glad to meet you.\rMy name is Teala, and I’m your guide\nto the Pokémon Wi-Fi Club.\rFirst, I need to give you this.\r</language>
+	</row>
+	<row id="msg_0267_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">That’s your Pal Pad. You may register\nyour friends in it.\rOnce registered, you may link with\nthose friends over Nintendo Wi-Fi\fConnection to trade Pokémon, battle,\fand so on.\rWould you like to know more? {YESNO 0}</language>
+	</row>
+	<row id="msg_0267_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You may meet people on the second\nfloor of a Pokémon Center for trades\for Colosseum battles.\rYou may register such people as\nfriends in your Pal Pad.\rYou may also manually register friends\nby entering their Friend Codes into\fyour Pal Pad.\rWould you like me to repeat that? {YESNO 0}</language>
+	</row>
+	<row id="msg_0267_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I hope you enjoy using Nintendo\nWFC!</language>
+	</row>
+	<row id="msg_0267_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Welcome to the Pokémon Center Wi-Fi\nClub!\rMay I help you with anything? {YESNO 0}</language>
+	</row>
+	<row id="msg_0267_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Let me explain how the Pokémon Wi-Fi\nClub is set up.\rFrom the middle counter, you may use\nNintendo Wi-Fi Connection.\rOver Nintendo WFC, you may conduct\ntrades and battles with friends\fthat you’ve registered in\fyour Pal Pad. {YESNO 0}</language>
+	</row>
+	<row id="msg_0267_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Welcome to the Pokémon Wi-Fi Club!\rWould you like to use Nintendo Wi-Fi\nConnection? {YESNO 0}</language>
+	</row>
+	<row id="msg_0267_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Please come again.</language>
+	</row>
+	<row id="msg_0267_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Would you like to launch\nNintendo WFC? {YESNO 0}</language>
+	</row>
+	<row id="msg_0267_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Right this way, please.\r</language>
+	</row>
+	<row id="msg_0267_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">...Oh?\rI’m sorry, but you don’t have any\nfriends registered in your Pal Pad.\rThe Wi-Fi Club cannot be used if\nno friends are in your Pal Pad.\rWould you like to get your own\nFriend Code at least? {YESNO 0}</language>
+	</row>
+	<row id="msg_0267_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">...Oh?\rI’m sorry, but you don’t have any\nfriends registered in your Pal Pad.\rThe Wi-Fi Club cannot be used if\nno friends are in your Pal Pad.\rPlease register friends in your\nPal Pad, and then come back.</language>
+	</row>
+	<row id="msg_0267_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">At any Wi-Fi Club, you may play using\nNintendo Wi-Fi Connection.\rDoing so, you may trade or battle with\nfriends you have registered in your\fPal Pad.\rTwo kinds of battles can be conducted:\nSingle or Double.\rFor each kind, you may choose one of\nthree level restrictions: Free,\fLevel 50, or Level 100.\rFor Level 50 and Level 100, the levels\nof all participating Pokémon will be\ftemporarily changed to the set level.\rConnect to Nintendo WFC? {YESNO 0}</language>
+	</row>
+	<row id="msg_0267_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GO TO WI-FI CLUB</language>
+	</row>
+	<row id="msg_0267_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">INFO</language>
+	</row>
+	<row id="msg_0267_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">EXIT</language>
+	</row>
+	<row id="msg_0267_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pardon us for the inconvenience...\nPlease return once you have stopped\fbeing a member of Team Rocket...</language>
+	</row>
+	<row id="msg_0267_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, you may enter our Pokémon\nCenter Wi-Fi Plaza from here.\rWould you like to use Nintendo\nWi-Fi Connection? {YESNO 0}</language>
+	</row>
+	<row id="msg_0267_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Connect to Nintendo WFC? {YESNO 0}</language>
+	</row>
+	<row id="msg_0267_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Please enter this way.\r</language>
+	</row>
+	<row id="msg_0267_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">We look forward to your next visit.</language>
+	</row>
+	<row id="msg_0267_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Wi-Fi Plaza is a facility where you\nmay meet Trainers from around the\fworld.\rYou can take part in chats and play\nPlaza Games.\rYou may also play with Tap Toys\nthat are exclusive to the Wi-Fi Plaza.\rPlease note there is a time limit to the\nWi-Fi Plaza connection.\rYou will be disconnected after a set\namount of time.\rWe hope you will get the most out of\neach visit to the Wi-Fi Plaza!\rConnect to Nintendo WFC? {YESNO 0}</language>
+	</row>
+	<row id="msg_0267_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GO TO WI-FI PLAZA</language>
+	</row>
+	<row id="msg_0267_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">INFO</language>
+	</row>
+	<row id="msg_0267_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">EXIT</language>
+	</row>
+	<row id="msg_0267_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sorry, we’re getting things ready.\nPlease come back later.</language>
+	</row>
+	<row id="msg_0267_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pardon us for the inconvenience...\nbut people wearing black clothing,\fpeople who engage in unlawful\factivities, and people who are\fmembers of Team Rocket\fare barred from participating.</language>
+	</row>
+	<row id="msg_0267_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pardon us for the inconvenience.\rWe have received word from Professor\nElm in New Bark Town that a PICHU\rwith spiky ears cannot be allowed\nto enter.\rPlease place it in your PC Box and\nenter again.</language>
+	</row>
+	<row id="msg_0267_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pardon us for the inconvenience.\rThe Spiky-eared Pokémon you are\ntraveling with...\fIt’s a kind that doesn’t appear in the\fPokémon Center’s database, so we\funfortunately cannot allow it to pass.\rPlease place it in a PC Box and\ncome back.</language>
+	</row>
+</body>

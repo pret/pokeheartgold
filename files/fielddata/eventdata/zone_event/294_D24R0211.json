@@ -1,0 +1,224 @@
+{
+  "header": "fielddata/script/scr_seq/event_D24R0211.h",
+  "bgs": [
+    {
+      "scr": "_EV_scr_seq_D24R0211_000 + 1",
+      "type": 0,
+      "x": 2,
+      "y": 5,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_D24R0211_000 + 1",
+      "type": 0,
+      "x": 2,
+      "y": 10,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_D24R0211_000 + 1",
+      "type": 0,
+      "x": 10,
+      "y": 5,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_D24R0211_000 + 1",
+      "type": 0,
+      "x": 10,
+      "y": 10,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_D24R0211_000 + 1",
+      "type": 0,
+      "x": 2,
+      "y": 4,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_D24R0211_000 + 1",
+      "type": 0,
+      "x": 10,
+      "y": 4,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_D24R0211_000 + 1",
+      "type": 0,
+      "x": 2,
+      "y": 9,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_D24R0211_000 + 1",
+      "type": 0,
+      "x": 10,
+      "y": 9,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_D24R0211_001 + 1",
+      "type": 0,
+      "x": 25,
+      "y": 19,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_D24R0211_000 + 1",
+      "type": 0,
+      "x": 29,
+      "y": 27,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_D24R0211_000 + 1",
+      "type": 0,
+      "x": 29,
+      "y": 26,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_D24R0211_000 + 1",
+      "type": 0,
+      "x": 29,
+      "y": 22,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_D24R0211_000 + 1",
+      "type": 0,
+      "x": 29,
+      "y": 21,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_D24R0211_000 + 1",
+      "type": 0,
+      "x": 21,
+      "y": 27,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_D24R0211_000 + 1",
+      "type": 0,
+      "x": 21,
+      "y": 26,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_D24R0211_000 + 1",
+      "type": 0,
+      "x": 21,
+      "y": 22,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_D24R0211_000 + 1",
+      "type": 0,
+      "x": 21,
+      "y": 21,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_D24R0211_gsassistantm",
+      "ovid": "SPRITE_GSASSISTANTM",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": 0,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1,
+      "y": 30,
+      "z": 0
+    },
+    {
+      "id": "obj_D24R0211_gsmiddleman1",
+      "ovid": "SPRITE_GSMIDDLEMAN1",
+      "mvt": 14,
+      "type": 0,
+      "flag": "FLAG_HIDE_CAMERON",
+      "scr": "_EV_scr_seq_D24R0211_002 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 4,
+      "y": 9,
+      "z": 0
+    },
+    {
+      "id": "obj_D24R0211_gsmiddleman1_2",
+      "ovid": "SPRITE_GSMIDDLEMAN1",
+      "mvt": 14,
+      "type": 0,
+      "flag": "FLAG_HIDE_CAMERON",
+      "scr": "_EV_scr_seq_D24R0211_004 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 23,
+      "y": 26,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 6,
+      "y": 13,
+      "header": "MAP_D24R0101",
+      "anchor": 8,
+      "height": 0
+    },
+    {
+      "x": 6,
+      "y": 7,
+      "header": "MAP_D24R0205",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 25,
+      "y": 30,
+      "header": "MAP_D24R0101",
+      "anchor": 11,
+      "height": 0
+    },
+    {
+      "x": 25,
+      "y": 24,
+      "header": "MAP_D24R0216",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0382_R32R0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Ruins of Alph.\nA look-and-touch tourist site.\fTry the sliding stone panels!</language>
+	</row>
+	<row id="msg_0382_R32R0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You’re studying the ruins?\nI see a scientist in the making.</language>
+	</row>
+	<row id="msg_0382_R32R0101_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There are drawings on stone panels.\nI tried moving them.\fI wonder what they are.</language>
+	</row>
+</body>

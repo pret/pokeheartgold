@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0727_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ID No.</language>
+	</row>
+	<row id="msg_0727_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NAME</language>
+	</row>
+	<row id="msg_0727_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MONEY</language>
+	</row>
+	<row id="msg_0727_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POKéDEX</language>
+	</row>
+	<row id="msg_0727_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SCORE</language>
+	</row>
+	<row id="msg_0727_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TIME</language>
+	</row>
+	<row id="msg_0727_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ADVENTURE STARTED</language>
+	</row>
+	<row id="msg_0727_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HALL OF FAME DEBUT</language>
+	</row>
+	<row id="msg_0727_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TIMES LINKED</language>
+	</row>
+	<row id="msg_0727_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LINK BATTLES</language>
+	</row>
+	<row id="msg_0727_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LINK TRADES</language>
+	</row>
+	<row id="msg_0727_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">:</language>
+	</row>
+	<row id="msg_0727_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">--</language>
+	</row>
+	<row id="msg_0727_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">--:--</language>
+	</row>
+	<row id="msg_0727_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cancel</language>
+	</row>
+	<row id="msg_0727_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Touch Card to flip.</language>
+	</row>
+	<row id="msg_0727_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sign Card</language>
+	</row>
+	<row id="msg_0727_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sign your Trainer Card?</language>
+	</row>
+	<row id="msg_0727_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Your current signature will be erased.\nIs that OK?</language>
+	</row>
+	<row id="msg_0727_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">${STRVAR_1 55, 5, 0}</language>
+	</row>
+	<row id="msg_0727_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 51, 0, 0}:{STRVAR_1 51, 1, 0}</language>
+	</row>
+	<row id="msg_0727_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 51, 0, 0}  {STRVAR_1 51, 1, 0}</language>
+	</row>
+	<row id="msg_0727_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_34 16, 3, 0} {STRVAR_1 51, 4, 0}, 20{STRVAR_1 51, 2, 0}</language>
+	</row>
+	<row id="msg_0727_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">W</language>
+	</row>
+	<row id="msg_0727_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">L</language>
+	</row>
+	<row id="msg_0727_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">--- --, ----</language>
+	</row>
+	<row id="msg_0727_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 52, 5, 0}</language>
+	</row>
+	<row id="msg_0727_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 55, 5, 0}</language>
+	</row>
+</body>

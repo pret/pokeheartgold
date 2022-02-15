@@ -9,321 +9,414 @@ Static main
 {
 	Address 0x02000000
 	StackSize 0 2048
-	Object pm_version.o
-	Object main.o
-	Object list_menu.o
-	Object unk_02001AF4.o
-	Object string_util.o
-	Object render_text.o
-	Object font.o
-	Object palette.o
-	Object sound.o
-	Object sound_radio_sys.o
-	Object unk_02004A44.o
-	Object unk_02005D10.o
-	Object sound_chatot.o
-	Object poke_overlay.o
-	Object unk_02007200.o
-	Object overlay_manager.o
-	Object filesystem.o
-	Object gf_gfx_loader.o
-	Object unk_02007FD8.o
-	Object unk_02009D48.o
-	Object unk_0200A090.o
-	Object unk_0200B150.o
-	Object msgdata.o
-	Object script_buffers.o
-	Object unk_0200CE7C.o
-	Object unk_0200CF18.o
-	Object unk_0200E320.o
-	Object unk_0200E398.o
-	Object unk_0200FA24.o
-	Object unk_0201010C.o
-	Object unk_02012DD8.o
-	Object unk_02013534.o
-	Object unk_02013FDC.o
-	Object gf_rtc.o
-	Object list_menu_items.o
-	Object unk_02014A08.o
-	Object unk_02014DA0.o
-	Object mail_message.o
-	Object unk_02015A9C.o
-	Object unk_02015DD8.o
-	Object unk_020163E0.o
-	Object unk_0201660C.o
-	Object unk_02016EDC.o
-	Object unk_02017FAC.o
-	Object unk_02018000.o
-	Object unk_02018380.o
-	Object unk_020183F0.o
-	Object unk_02019014.o
-	Object game_init.o
-	Object heap.o
-	Object bg_window.o
-	Object unk_0201F4C4.o
-	Object unk_0201F79C.o
-	Object math_util.o
-	Object text.o
-	Object unk_0202055C.o
-	Object unk_02020654.o
-	Object unk_020210A0.o
-	Object unk_020215A0.o
-	Object unk_02022588.o
-	Object GX_layers.o
-	Object unk_02022D74.o
-	Object unk_02023694.o
-	Object unk_02025154.o
-	Object timer3.o
-	Object error_handling.o
-	Object unk_02025534.o
-	Object unk_02025C44.o
-	Object unk_02025E88.o
-	Object pm_string.o
-	Object unk_02026C44.o
-	Object unk_02026DE0.o
-	Object unk_02026E30.o
-	Object unk_02026E84.o
-	Object unk_02026EB4.o
-	Object unk_02027010.o
-	Object unk_020270C4.o
-	Object save.o
-	Object sav_system_info.o
-	Object player_data.o
-	Object unk_020290B4.o
-	Object daycare.o
-	Object pokedex.o
-	Object unk_0202A888.o
-	Object options.o
-	Object unk_0202ADEC.o
-	Object unk_0202AE8C.o
-	Object unk_0202AEC0.o
-	Object mail.o
-	Object unk_0202B614.o
-	Object unk_0202C034.o
-	Object unk_0202C730.o
-	Object coins.o
-	Object unk_0202C9A0.o
-	Object unk_0202CA24.o
-	Object seal_case.o
-	Object igt.o
-	Object sav_chatot.o
-	Object unk_0202CF1C.o
-	Object unk_0202D230.o
-	Object unk_0202D938.o
-	Object unk_0202D968.o
-	Object unk_0202DB34.o
-	Object unk_0202DBA8.o
-	Object hall_of_fame.o
-	Object unk_0202E41C.o
-	Object unk_0202E4B0.o
-	Object unk_0202EB30.o
-	Object unk_0202ECC0.o
-	Object unk_0202ED18.o
-	Object unk_0202ED74.o
-	Object safari_zone.o
-	Object unk_0202FA5C.o
-	Object unk_02030A98.o
-	Object unk_0203170C.o
-	Object unk_020318C8.o
-	Object unk_02031904.o
-	Object unk_02031AF0.o
-	Object unk_02031B0C.o
-	Object pokewalker.o
-	Object unk_02032774.o
-	Object unk_02032844.o
-	Object unk_02033AE0.o
-	Object unk_02034354.o
-	Object unk_02034B0C.o
-	Object unk_02035900.o
-	Object unk_020379A0.o
-	Object unk_02037C94.o
-	Object unk_0203A3B0.o
-	Object communication_error.o
-	Object wfc_user_info_warning.o
-	Object map_matrix.o
-	Object map_header.o
-	Object map_events.o
-	Object unk_0203B91C.o
-	Object unk_0203BA5C.o
-	Object unk_0203BBB4.o
-	Object unk_0203BC10.o
-	Object unk_0203DB6C.o
-	Object unk_0203DE74.o
-	Object unk_0203E348.o
-	Object script.o
-	Object fieldmap.o
-	Object scrcmd.o
-	Object scrcmd_2.o
-	Object scrcmd_3.o
-	Object scrcmd_4.o
-	Object scrcmd_5.o
-	Object scrcmd_6.o
-	Object scrcmd_7.o
-	Object scrcmd_8.o
-	Object scrcmd_9.o
-	Object scrcmd_10.o
-	Object scrcmd_11.o
-	Object scrcmd_12.o
-	Object scrcmd_money.o
-	Object scrcmd_14.o
-	Object scrcmd_15.o
-	Object scrcmd_16.o
-	Object scrcmd_17.o
-	Object scrcmd_items.o
-	Object scrcmd_19.o
-	Object scrcmd_20.o
-	Object unk_0204F500.o
-	Object event_data.o
-	Object unk_020504C0.o
-	Object unk_02050660.o
-	Object unk_020517A4.o
-	Object unk_020518D8.o
-	Object unk_020525BC.o
-	Object unk_0205298C.o
-	Object unk_02052F30.o
-	Object script_pokemon_util.o
-	Object unk_02054514.o
-	Object unk_02054648.o
-	Object unk_02054E00.o
-	Object unk_020551B8.o
-	Object unk_02055244.o
-	Object unk_02055418.o
-	Object unk_020557E0.o
-	Object unk_02055BF0.o
-	Object unk_02056680.o
-	Object unk_02056D7C.o
-	Object unk_02058034.o
-	Object unk_02058AEC.o
-	Object unk_0205A44C.o
-	Object unk_0205AC88.o
-	Object unk_0205B3DC.o
-	Object text_0205B4EC.o
-	Object unk_0205B6E8.o
-	Object unk_0205BB1C.o
-	Object unk_0205BFF0.o
-	Object unk_0205C268.o
-	Object unk_02068DE0.o
-	Object unk_02068F84.o
-	Object unk_02068FC8.o
-	Object unk_02069528.o
-	Object unk_02069660.o
-	Object unk_0206979C.o
-	Object pokemon.o
-	Object waza.o
-	Object trainer_data.o
-	Object pokemon_storage_system.o
-	Object unk_02074120.o
-	Object party.o
-	Object unk_02074910.o
-	Object unk_02074944.o
-	Object unk_02074E5C.o
-	Object unk_020755E8.o
-	Object unk_020773AC.o
-	Object unk_02077678.o
-	Object bag_view.o
-	Object item.o
-	Object bag.o
-	Object unk_02078834.o
-	Object use_item_on_mon.o
-	Object unk_02090C94.o
+	Object src/pm_version.o
+	Object src/main.o
+	Object asm/list_menu.o
+	Object asm/unk_02001AF4.o
+	Object src/string_util.o
+	Object asm/render_text.o
+	Object asm/font.o
+	Object asm/palette.o
+	Object src/sound.o
+	Object src/sound_radio_sys.o
+	Object asm/unk_02004A44.o
+	Object asm/unk_02005D10.o
+	Object asm/sound_chatot.o
+	Object src/poke_overlay.o
+	Object asm/unk_02007200.o
+	Object src/overlay_manager.o
+	Object src/filesystem.o
+	Object src/gf_gfx_loader.o
+	Object asm/unk_02007FD8.o
+	Object asm/unk_02009D48.o
+	Object asm/unk_0200A090.o
+	Object asm/unk_0200B150.o
+	Object src/msgdata.o
+	Object src/msgfmt.o
+	Object asm/message_printer.o
+	Object asm/unk_0200CE7C.o
+	Object asm/unk_0200CF18.o
+	Object asm/unk_0200E320.o
+	Object asm/unk_0200E398.o
+	Object asm/unk_0200FA24.o
+	Object asm/unk_0201010C.o
+	Object asm/unk_02012DD8.o
+	Object asm/unk_02013534.o
+	Object asm/unk_02013FDC.o
+	Object src/gf_rtc.o
+	Object src/list_menu_items.o
+	Object asm/unk_02014A08.o
+	Object asm/unk_02014DA0.o
+	Object src/mail_message.o
+	Object src/easy_chat.o
+	Object asm/unk_02015DD8.o
+	Object asm/unk_020163E0.o
+	Object asm/unk_0201660C.o
+	Object asm/unk_02016EDC.o
+	Object asm/unk_02017FAC.o
+	Object asm/unk_02018000.o
+	Object asm/unk_02018380.o
+	Object asm/unk_020183F0.o
+	Object asm/unk_02019014.o
+	Object src/system.o
+	Object src/heap.o
+	Object src/bg_window.o
+	Object asm/unk_0201F4C4.o
+	Object asm/unk_0201F79C.o
+	Object src/string_control_code.o
+	Object src/math_util.o
+	Object asm/text.o
+	Object asm/unk_0202055C.o
+	Object asm/unk_02020654.o
+	Object asm/unk_020210A0.o
+	Object asm/unk_020215A0.o
+	Object asm/unk_02022588.o
+	Object src/gx_layers.o
+	Object asm/unk_02022D74.o
+	Object asm/unk_02023694.o
+	Object asm/unk_02025154.o
+	Object src/timer3.o
+	Object src/error_handling.o
+	Object asm/unk_02025534.o
+	Object asm/unk_02025C44.o
+	Object asm/unk_02025E88.o
+	Object src/pm_string.o
+	Object asm/unk_02026C44.o
+	Object asm/unk_02026DE0.o
+	Object asm/unk_02026E30.o
+	Object asm/unk_02026E84.o
+	Object asm/unk_02026EB4.o
+	Object asm/unk_02027010.o
+	Object asm/unk_020270C4.o
+	Object asm/save.o
+	Object asm/sav_system_info.o
+	Object src/player_data.o
+	Object asm/unk_020290B4.o
+	Object src/daycare.o
+	Object src/pokedex.o
+	Object src/save_misc.o
+	Object src/options.o
+	Object src/apricorn_tree_sys.o
+	Object src/save_gymmick.o
+	Object asm/unk_0202AEC0.o
+	Object src/mail.o
+	Object asm/unk_0202B614.o
+	Object asm/unk_0202C034.o
+	Object asm/unk_0202C730.o
+	Object src/coins.o
+	Object asm/unk_0202C9A0.o
+	Object asm/unk_0202CA24.o
+	Object src/seal_case.o
+	Object src/igt.o
+	Object asm/sav_chatot.o
+	Object asm/unk_0202CF1C.o
+	Object asm/unk_0202D230.o
+	Object asm/unk_0202D938.o
+	Object src/roamer.o
+	Object asm/unk_0202DB34.o
+	Object asm/unk_0202DBA8.o
+	Object src/hall_of_fame.o
+	Object asm/unk_0202E41C.o
+	Object asm/unk_0202E4B0.o
+	Object asm/unk_0202EB30.o
+	Object asm/unk_0202ECC0.o
+	Object asm/unk_0202ED18.o
+	Object asm/unk_0202ED74.o
+	Object src/safari_zone.o
+	Object asm/photo_album.o
+	Object asm/unk_0202FBCC.o
+	Object asm/unk_02030A98.o
+	Object asm/unk_0203170C.o
+	Object asm/unk_020318C8.o
+	Object asm/unk_02031904.o
+	Object asm/unk_02031AF0.o
+	Object asm/unk_02031B0C.o
+	Object src/pokewalker.o
+	Object asm/unk_02032774.o
+	Object asm/unk_02032844.o
+	Object asm/unk_02033AE0.o
+	Object asm/unk_02034354.o
+	Object asm/unk_02034B0C.o
+	Object asm/unk_02035900.o
+	Object asm/unk_020379A0.o
+	Object asm/unk_02037C94.o
+	Object asm/unk_0203A3B0.o
+	Object asm/communication_error.o
+	Object asm/unk_0203AC88.o
+	Object asm/wfc_user_info_warning.o
+	Object src/map_matrix.o
+	Object src/map_header.o
+	Object src/map_events.o
+	Object asm/unk_0203B91C.o
+	Object asm/unk_0203BA5C.o
+	Object asm/unk_0203BBB4.o
+	Object asm/unk_0203BC10.o
+	Object asm/unk_0203DB6C.o
+	Object asm/unk_0203DE74.o
+	Object asm/unk_0203E348.o
+	Object src/script.o
+	Object src/fieldmap.o
+	Object asm/scrcmd.o
+	Object asm/scrcmd_2.o
+	Object asm/scrcmd_3.o
+	Object asm/scrcmd_4.o
+	Object asm/scrcmd_5.o
+	Object asm/scrcmd_6.o
+	Object asm/scrcmd_7.o
+	Object asm/scrcmd_8.o
+	Object asm/scrcmd_9.o
+	Object asm/scrcmd_10.o
+	Object asm/scrcmd_11.o
+	Object asm/scrcmd_12.o
+	Object src/scrcmd_money.o
+	Object asm/scrcmd_14.o
+	Object asm/scrcmd_15.o
+	Object asm/scrcmd_16.o
+	Object asm/scrcmd_17.o
+	Object src/scrcmd_items.o
+	Object asm/scrcmd_19.o
+	Object asm/scrcmd_20.o
+	Object asm/unk_0204F500.o
+	Object src/event_data.o
+	Object asm/unk_020504C0.o
+	Object asm/unk_02050660.o
+	Object asm/unk_020517A4.o
+	Object asm/unk_020518D8.o
+	Object asm/unk_020525BC.o
+	Object asm/unk_0205298C.o
+	Object asm/unk_02052F30.o
+	Object src/script_pokemon_util.o
+	Object asm/unk_02054514.o
+	Object asm/unk_02054648.o
+	Object asm/unk_02054E00.o
+	Object asm/unk_020551B8.o
+	Object asm/unk_02055244.o
+	Object asm/unk_02055418.o
+	Object asm/unk_020557E0.o
+	Object asm/unk_02055BF0.o
+	Object asm/unk_02056680.o
+	Object asm/unk_02056D7C.o
+	Object asm/unk_02058034.o
+	Object asm/unk_02058AEC.o
+	Object asm/unk_0205A44C.o
+	Object asm/unk_0205AC88.o
+	Object asm/unk_0205B3DC.o
+	Object asm/text_0205B4EC.o
+	Object asm/unk_0205B6E8.o
+	Object asm/unk_0205BB1C.o
+	Object asm/unk_0205BFF0.o
+	Object asm/field_player_avatar.o
+	Object asm/unk_0205CB48.o
+	Object asm/field_map_object.o
+	Object asm/unk_data_020FCBD8.o
+	Object asm/unk_0205FD20.o
+	Object asm/unk_02061284.o
+	Object asm/unk_data_020FD978.o
+	Object asm/unk_02062108.o
+	Object asm/unk_data_020FDB44.o
+	Object asm/unk_020632B0.o
+	Object asm/unk_020648EC.o
+	Object asm/field_use_item.o
+	Object asm/unk_020658D4.o
+	Object asm/sys_flags.o
+	Object asm/sys_vars.o
+	Object asm/unk_02066EDC.o
+	Object asm/field_roamer.o
+	Object asm/unk_0206793C.o
+	Object asm/unk_02068DE0.o
+	Object asm/unk_02068F84.o
+	Object asm/unk_02068FC8.o
+	Object asm/unk_02069528.o
+	Object asm/unk_02069660.o
+	Object asm/unk_0206979C.o
+	Object src/field_follow_poke.o
+	Object asm/field_follow_poke_s.o
+	Object asm/unk_0206A360.o
+	Object asm/field_take_photo.o
+	Object asm/unk_0206B910.o
+	Object asm/field_alph_checks.o
+	Object asm/get_egg.o
+	Object asm/unk_0206D494.o
+	Object src/pokemon.o
+	Object src/waza.o
+	Object src/trainer_data.o
+	Object src/pokemon_storage_system.o
+	Object asm/unk_02074120.o
+	Object src/party.o
+	Object asm/unk_02074910.o
+	Object asm/unk_02074944.o
+	Object asm/unk_02074E5C.o
+	Object asm/unk_020755E8.o
+	Object asm/unk_020773AC.o
+	Object asm/unk_02077678.o
+	Object src/bag_view.o
+	Object src/item.o
+	Object src/bag.o
+	Object asm/unk_02078834.o
+	Object asm/unk_02078DD8.o
+	Object asm/unk_02078E30.o
+	Object asm/unk_0207CB7C.o
+	Object asm/unk_0207EB24.o
+	Object asm/unk_0207F42C.o
+	Object asm/unk_02080BB4.o
+	Object asm/unk_02082908.o
+	Object asm/unk_020850F4.o
+	Object asm/unk_02085604.o
+	Object asm/unk_020863F4.o
+	Object asm/unk_02087284.o
+	Object asm/unk_02087A78.o
+	Object asm/unk_02087E70.o
+	Object asm/unk_02087FD4.o
+	Object asm/unk_0208805C.o
+	Object asm/unk_02088288.o
+	Object asm/unk_0208B1AC.o
+	Object asm/unk_0208C3E4.o
+	Object asm/unk_0208DE40.o
+	Object asm/unk_0208E55C.o
+	Object asm/unk_0208E600.o
+	Object asm/unk_0208F658.o
+	Object asm/unk_0208F814.o
+	Object asm/unk_0208FB64.o
+	Object asm/use_item_on_mon.o
+	Object asm/unk_02090C94.o
+	Object asm/unk_020910D8.o
+	Object asm/unk_02091278.o
+	Object asm/unk_020912AC.o
+	Object asm/dex_mon_measures.o
+	Object asm/unk_02091564.o
+	Object asm/unk_020915B0.o
+	Object asm/unk_02091664.o
+	Object asm/field_blackthorn_tutors.o
+	Object asm/unk_02091880.o
+	Object asm/unk_02091CDC.o
+	Object asm/unk_020921A4.o
+	Object asm/save_data_read_error.o
+	Object asm/save_data_write_error.o
+	Object asm/unk_02092B04.o
+	Object asm/unk_02092BB8.o
+	Object asm/unk_02092BE8.o
+	Object asm/unk_020931C4.o
+	Object asm/unk_020932A4.o
+	Object asm/unk_020932E0.o
+	Object asm/unk_020957B0.o
+	Object asm/unk_02095DF4.o
+	Object asm/error_message_reset.o
+	Object asm/sin_vcount.o
+	Object asm/unk_020965A4.o
+	Object asm/unk_020968B0.o
+	Object asm/unk_02096910.o
+	Object asm/unk_02096C88.o
+	Object asm/unk_02097024.o
+	Object asm/unk_020971F8.o
+	Object asm/unk_02097268.o
+	Object asm/unk_02097720.o
+	Object asm/unk_020977CC.o
+	Object asm/unk_020979A8.o
+	Object asm/unk_02097B78.o
+	Object asm/unk_02097BE0.o
+	Object asm/unk_02097D3C.o
+	Object asm/unk_02097E4C.o
+	Object asm/unk_02097F6C.o
 
 	### Vendor libraries ###
-	Object middleware.o
-	Object jn_spl.o
-	Object wvr.o
-	Object dwcbm.o
-	Object dwcaccount.o
-	Object wifi.o
-	Object libVCT.o
-	Object nnsys.o
+	Object asm/middleware.o
+	Object lib/asm/jn_spl.o
+	Object lib/NitroSDK/asm/wvr.o
+	Object lib/NitroDWC/asm/dwcbm.o
+	Object lib/NitroDWC/asm/dwcaccount.o
+	Object lib/asm/wifi.o
+	Object lib/asm/libVCT.o
+	Object lib/asm/nnsys.o
 
 	### NitroSDK ###
-	Object fx_sincos.o
-	Object fx_mtx22.o
-	Object fx_mtx33.o
-	Object fx_mtx43.o
-	Object fx_mtx44.o
-	Object fx_cp.o
-	Object fx_vec.o
-	Object fx_trig.o
-	Object fx_atanidx.o
-	Object fx.o
-	Object gx.o
-	Object gxstate.o
-	Object gx_vramcnt.o
-	Object gx_bgcnt.o
-	Object g2.o
-	Object g3b.o
-	Object g3imm.o
-	Object g3x.o
-	Object g3_util.o
-	Object gx_load2d.o
-	Object gx_load3d.o
-	Object g3.o
-	Object gxasm.o
-	Object os_irqHandler.o
-	Object os_irqTable.o
-	Object os_interrupt.o
-	Object os_spinLock.o
-	Object os_printf.o
-	Object os_thread.o
-	Object os_context.o
-	Object os_emulator.o
-	Object os_message.o
-	Object os_mutex.o
-	Object os_cache.o
-	Object os_init.o
-	Object os_arena.o
-	Object os_alloc.o
-	Object os_tcm.o
-	Object os_protectionUnit.o
-	Object os_protectionRegion.o
-	Object os_exception.o
-	Object os_timer.o
-	Object os_tick.o
-	Object os_alarm.o
-	Object os_valarm.o
-	Object os_system.o
-	Object os_reset.o
-	Object os_ownerInfo.o
-	Object os_vramExclusive.o
-	Object os_entropy.o
-	Object os_terminate_proc.o
-	Object mi_wram.o
-	Object mi_dma.o
-	Object mi_dma_hblank.o
-	Object mi_dma_gxcommand.o
-	Object mi_memory.o
-	Object mi_swap.o
-	Object mi_uncompress.o
-	Object mi_dma_card.o
-	Object mi_compress.o
-	Object mi_init.o
-	Object nitro.o
-	Object msl.o
+	Object lib/NitroSDK/asm/fx_sincos.o
+	Object lib/NitroSDK/asm/fx_mtx22.o
+	Object lib/NitroSDK/asm/fx_mtx33.o
+	Object lib/NitroSDK/asm/fx_mtx43.o
+	Object lib/NitroSDK/asm/fx_mtx44.o
+	Object lib/NitroSDK/asm/fx_cp.o
+	Object lib/NitroSDK/asm/fx_vec.o
+	Object lib/NitroSDK/asm/fx_trig.o
+	Object lib/NitroSDK/asm/fx_atanidx.o
+	Object lib/NitroSDK/asm/fx.o
+	Object lib/NitroSDK/asm/gx.o
+	Object lib/NitroSDK/asm/gxstate.o
+	Object lib/NitroSDK/asm/gx_vramcnt.o
+	Object lib/NitroSDK/asm/gx_bgcnt.o
+	Object lib/NitroSDK/asm/g2.o
+	Object lib/NitroSDK/asm/g3b.o
+	Object lib/NitroSDK/asm/g3imm.o
+	Object lib/NitroSDK/asm/g3x.o
+	Object lib/NitroSDK/asm/g3_util.o
+	Object lib/NitroSDK/asm/gx_load2d.o
+	Object lib/NitroSDK/asm/gx_load3d.o
+	Object lib/NitroSDK/asm/g3.o
+	Object lib/NitroSDK/asm/gxasm.o
+	Object lib/NitroSDK/src/os/os_irqHandler.o
+	Object lib/NitroSDK/src/os/os_irqTable.o
+	Object lib/NitroSDK/src/os/os_interrupt.o
+	Object lib/NitroSDK/src/os/os_spinLock.o
+	Object lib/NitroSDK/src/os/os_printf.o
+	Object lib/NitroSDK/src/os/os_thread.o
+	Object lib/NitroSDK/src/os/os_context.o
+	Object lib/NitroSDK/src/os/os_emulator.o
+	Object lib/NitroSDK/src/os/os_message.o
+	Object lib/NitroSDK/src/os/os_mutex.o
+	Object lib/NitroSDK/src/os/os_cache.o
+	Object lib/NitroSDK/src/os/os_init.o
+	Object lib/NitroSDK/src/os/os_arena.o
+	Object lib/NitroSDK/src/os/os_alloc.o
+	Object lib/NitroSDK/src/os/os_tcm.o
+	Object lib/NitroSDK/src/os/os_protectionUnit.o
+	Object lib/NitroSDK/src/os/os_protectionRegion.o
+	Object lib/NitroSDK/src/os/os_exception.o
+	Object lib/NitroSDK/src/os/os_timer.o
+	Object lib/NitroSDK/src/os/os_tick.o
+	Object lib/NitroSDK/src/os/os_alarm.o
+	Object lib/NitroSDK/src/os/os_valarm.o
+	Object lib/NitroSDK/src/os/os_system.o
+	Object lib/NitroSDK/src/os/os_reset.o
+	Object lib/NitroSDK/src/os/os_ownerInfo.o
+	Object lib/NitroSDK/src/os/os_vramExclusive.o
+	Object lib/NitroSDK/src/os/os_entropy.o
+	Object lib/NitroSDK/src/os/os_terminate_proc.o
+	Object lib/NitroSDK/asm/mi_wram.o
+	Object lib/NitroSDK/asm/mi_dma.o
+	Object lib/NitroSDK/asm/mi_dma_hblank.o
+	Object lib/NitroSDK/asm/mi_dma_gxcommand.o
+	Object lib/NitroSDK/asm/mi_memory.o
+	Object lib/NitroSDK/asm/mi_swap.o
+	Object lib/NitroSDK/asm/mi_uncompress.o
+	Object lib/NitroSDK/asm/mi_dma_card.o
+	Object lib/NitroSDK/asm/mi_compress.o
+	Object lib/NitroSDK/asm/mi_init.o
+	Object lib/asm/nitro.o
+	Object lib/asm/msl.o
 }
 
 Autoload ITCM
 {
 	Address 0x01FF8000
-	Object os_irqHandler.o (.itcm)
-	Object os_reset.o (.itcm)
-	Object mi_dma.o (.itcm)
-	Object mi_dma_gxcommand.o (.itcm)
-	Object nitro.o (.itcm)
+	Object lib/NitroSDK/src/os/os_irqHandler.o (.itcm)
+	Object lib/NitroSDK/src/os/os_reset.o (.itcm)
+	Object lib/NitroSDK/asm/mi_dma.o (.itcm)
+	Object lib/NitroSDK/asm/mi_dma_gxcommand.o (.itcm)
+	Object lib/asm/nitro.o (.itcm)
 }
 
 Autoload DTCM
 {
 	Address 0x027E0000
-	Object os_irqHandler.o (.dtcm)
-	Object os_irqHandler.o (.dtcm.bss)
+	Object lib/NitroSDK/src/os/os_irqHandler.o (.dtcm)
+	Object lib/NitroSDK/src/os/os_irqTable.o (.dtcm)
+	Object lib/NitroSDK/src/os/os_irqHandler.o (.dtcm.bss)
+	Object lib/NitroSDK/src/os/os_irqTable.o (.dtcm.bss)
 }
 Overlay OVY_0
 {
     After main
-    Object overlay_00_thumb.o
-    Object overlay_00_arm.o
+    Object asm/overlay_00_thumb.o
+    Object lib/NitroDWC/asm/overlay_00_arm.o
     ### Size 0x34d80 ###
     ### BSS Size 0x1380 ###
     ### SINIT Start 0x22163f8 ###
@@ -334,7 +427,7 @@ Overlay OVY_0
 Overlay OVY_1
 {
     After main
-    Object overlay_01.o
+    Object asm/overlay_01.o
     ### Size 0x24260 ###
     ### BSS Size 0x3c020 ###
     ### SINIT Start 0x2209810 ###
@@ -345,7 +438,7 @@ Overlay OVY_1
 Overlay OVY_2
 {
     After OVY_1
-    Object overlay_02.o
+    Object asm/overlay_02.o
     ### Size 0xe2a0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2253d7c ###
@@ -356,7 +449,7 @@ Overlay OVY_2
 Overlay OVY_3
 {
     After OVY_2
-    Object overlay_03.o
+    Object asm/overlay_03.o
     ### Size 0x5a80 ###
     ### BSS Size 0x20 ###
     ### SINIT Start 0x2259818 ###
@@ -367,7 +460,7 @@ Overlay OVY_3
 Overlay OVY_4
 {
     After OVY_2
-    Object overlay_04.o
+    Object asm/overlay_04.o
     ### Size 0x3d60 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2257b64 ###
@@ -378,7 +471,7 @@ Overlay OVY_4
 Overlay OVY_5
 {
     After OVY_0
-    Object overlay_05.o
+    Object asm/overlay_05.o
     ### Size 0x3880 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x221f274 ###
@@ -389,7 +482,7 @@ Overlay OVY_5
 Overlay OVY_6
 {
     After OVY_0
-    Object overlay_06.o
+    Object asm/overlay_06.o
     ### Size 0x420 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x221be18 ###
@@ -400,7 +493,7 @@ Overlay OVY_6
 Overlay OVY_7
 {
     After OVY_6
-    Object overlay_07.o
+    Object asm/overlay_07.o
     ### Size 0x1baa0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x223783c ###
@@ -411,7 +504,7 @@ Overlay OVY_7
 Overlay OVY_8
 {
     After OVY_6
-    Object overlay_08.o
+    Object asm/overlay_08.o
     ### Size 0xa120 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2225f3c ###
@@ -433,7 +526,7 @@ Overlay OVY_9
 Overlay OVY_10
 {
     After OVY_6
-    Object overlay_10.o
+    Object asm/overlay_10.o
     ### Size 0xf460 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x222b268 ###
@@ -455,7 +548,7 @@ Overlay OVY_11
 Overlay OVY_12
 {
     After OVY_7
-    Object overlay_12.o
+    Object asm/overlay_12.o
     ### Size 0x37380 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x226ec08 ###
@@ -466,10 +559,10 @@ Overlay OVY_12
 Overlay OVY_13
 {
     After OVY_0
-    Object overlay_13_thumb_1.o
-    Object overlay_13_arm_1.o
-    Object overlay_13_thumb_2.o
-    Object overlay_13_arm_2.o
+    Object asm/overlay_13_thumb_1.o
+    Object lib/NitroSDK/asm/mb.o
+    Object asm/overlay_13_thumb_2.o
+    Object lib/NitroDWC/asm/overlay_13_arm_2.o
     ### Size 0x2ba80 ###
     ### BSS Size 0x81e0 ###
     ### SINIT Start 0x2245964 ###
@@ -480,7 +573,7 @@ Overlay OVY_13
 Overlay OVY_14
 {
     After main
-    Object overlay_14.o
+    Object asm/overlay_14.o
     ### Size 0x13a80 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21f9360 ###
@@ -491,7 +584,7 @@ Overlay OVY_14
 Overlay OVY_15
 {
     After OVY_14
-    Object overlay_15.o
+    Object asm/overlay_15.o
     ### Size 0x8100 ###
     ### BSS Size 0x20 ###
     ### SINIT Start 0x22012f8 ###
@@ -502,7 +595,7 @@ Overlay OVY_15
 Overlay OVY_16
 {
     After OVY_15
-    Object overlay_16.o
+    Object asm/overlay_16.o
     ### Size 0x720 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2201b88 ###
@@ -513,7 +606,7 @@ Overlay OVY_16
 Overlay OVY_17
 {
     After OVY_16
-    Object overlay_17.o
+    Object asm/overlay_17.o
     ### Size 0x2420 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2203fc4 ###
@@ -524,7 +617,7 @@ Overlay OVY_17
 Overlay OVY_18
 {
     After main
-    Object overlay_18.o
+    Object asm/overlay_18.o
     ### Size 0x16560 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21fbe58 ###
@@ -535,7 +628,7 @@ Overlay OVY_18
 Overlay OVY_19
 {
     After OVY_3
-    Object overlay_19.o
+    Object asm/overlay_19.o
     ### Size 0x880 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x225a13c ###
@@ -546,7 +639,7 @@ Overlay OVY_19
 Overlay OVY_20
 {
     After OVY_3
-    Object overlay_20.o
+    Object src/scrcmd_size_record.o
     ### Size 0x420 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2259cd4 ###
@@ -557,7 +650,7 @@ Overlay OVY_20
 Overlay OVY_21
 {
     After OVY_3
-    Object scrcmd_fossils.o
+    Object src/scrcmd_fossils.o
     ### Size 0x160 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2259a0c ###
@@ -568,7 +661,7 @@ Overlay OVY_21
 Overlay OVY_22
 {
     After OVY_3
-    Object overlay_22.o
+    Object asm/overlay_22.o
     ### Size 0x2c0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2259b7c ###
@@ -579,7 +672,7 @@ Overlay OVY_22
 Overlay OVY_23
 {
     After OVY_3
-    Object overlay_23.o
+    Object src/npc_trade.o
     ### Size 0x4c0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2259d7c ###
@@ -590,7 +683,7 @@ Overlay OVY_23
 Overlay OVY_24
 {
     After OVY_3
-    Object overlay_24.o
+    Object src/overlay_bug_contest.o
     ### Size 0x6c0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2259f3c ###
@@ -601,7 +694,7 @@ Overlay OVY_24
 Overlay OVY_25
 {
     After OVY_3
-    Object overlay_25.o
+    Object asm/overlay_25.o
     ### Size 0x660 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2259f1c ###
@@ -612,7 +705,7 @@ Overlay OVY_25
 Overlay OVY_26
 {
     After OVY_3
-    Object overlay_26.o
+    Object asm/overlay_26.o
     ### Size 0x520 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2259dc0 ###
@@ -623,7 +716,7 @@ Overlay OVY_26
 Overlay OVY_27
 {
     After OVY_24
-    Object overlay_27.o
+    Object asm/overlay_27.o
     ### Size 0x35a0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x225d46c ###
@@ -634,7 +727,7 @@ Overlay OVY_27
 Overlay OVY_28
 {
     After OVY_27
-    Object overlay_28.o
+    Object asm/overlay_28.o
     ### Size 0x1680 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x225eb8c ###
@@ -645,7 +738,7 @@ Overlay OVY_28
 Overlay OVY_29
 {
     After OVY_27
-    Object overlay_29.o
+    Object asm/overlay_29.o
     ### Size 0xe00 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x225e304 ###
@@ -656,7 +749,7 @@ Overlay OVY_29
 Overlay OVY_30
 {
     After OVY_27
-    Object overlay_30.o
+    Object asm/overlay_30.o
     ### Size 0x7c0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x225dc80 ###
@@ -667,7 +760,7 @@ Overlay OVY_30
 Overlay OVY_31
 {
     After OVY_27
-    Object overlay_31.o
+    Object asm/overlay_31.o
     ### Size 0x1b00 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x225ef24 ###
@@ -678,7 +771,7 @@ Overlay OVY_31
 Overlay OVY_32
 {
     After OVY_27
-    Object overlay_32.o
+    Object asm/overlay_32.o
     ### Size 0xdc0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x225e2dc ###
@@ -689,7 +782,7 @@ Overlay OVY_32
 Overlay OVY_33
 {
     After OVY_27
-    Object overlay_33.o
+    Object asm/overlay_33.o
     ### Size 0x5a0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x225dabc ###
@@ -700,7 +793,7 @@ Overlay OVY_33
 Overlay OVY_34
 {
     After OVY_27
-    Object overlay_34.o
+    Object asm/overlay_34.o
     ### Size 0x1240 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x225e750 ###
@@ -711,7 +804,7 @@ Overlay OVY_34
 Overlay OVY_35
 {
     After OVY_23
-    Object overlay_35.o
+    Object asm/overlay_35.o
     ### Size 0x40 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2259dbc ###
@@ -721,7 +814,7 @@ Overlay OVY_35
 Overlay OVY_36
 {
     After main
-    Object overlay_36.o
+    Object asm/overlay_36.o
     ### Size 0x360 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e5c44 ###
@@ -732,7 +825,7 @@ Overlay OVY_36
 Overlay OVY_37
 {
     After main
-    Object overlay_37.o
+    Object asm/overlay_37.o
     ### Size 0x24e0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e7d08 ###
@@ -743,8 +836,8 @@ Overlay OVY_37
 Overlay OVY_38
 {
     After OVY_0
-    Object overlay_38_thumb.o
-    Object overlay_38_arm.o
+    Object asm/overlay_38_thumb.o
+    Object lib/NitroDWC/asm/overlay_38_arm.o
     ### Size 0xa620 ###
     ### BSS Size 0x1040 ###
     ### SINIT Start 0x2225024 ###
@@ -755,8 +848,8 @@ Overlay OVY_38
 Overlay OVY_39
 {
     After OVY_38
-    Object overlay_39_thumb.o
-    Object overlay_39_arm.o
+    Object asm/overlay_39_thumb.o
+    Object lib/NitroDWC/asm/overlay_39_arm.o
     ### Size 0x3b20 ###
     ### BSS Size 0xb60 ###
     ### SINIT Start 0x222aa0c ###
@@ -767,7 +860,7 @@ Overlay OVY_39
 Overlay OVY_40
 {
     After OVY_39
-    Object overlay_40.o
+    Object asm/overlay_40.o
     ### Size 0x1a7c0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2245cb8 ###
@@ -778,7 +871,7 @@ Overlay OVY_40
 Overlay OVY_41
 {
     After OVY_40
-    Object overlay_41.o
+    Object asm/overlay_41.o
     ### Size 0x6200 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x224c098 ###
@@ -789,7 +882,7 @@ Overlay OVY_41
 Overlay OVY_42
 {
     After OVY_38
-    Object overlay_42.o
+    Object asm/overlay_42.o
     ### Size 0x2e80 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2229ed8 ###
@@ -800,7 +893,7 @@ Overlay OVY_42
 Overlay OVY_43
 {
     After OVY_42
-    Object overlay_43.o
+    Object asm/overlay_43.o
     ### Size 0x5300 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x222f0d8 ###
@@ -811,7 +904,7 @@ Overlay OVY_43
 Overlay OVY_44
 {
     After OVY_42
-    Object overlay_44.o
+    Object asm/overlay_44.o
     ### Size 0xc9c0 ###
     ### BSS Size 0x20 ###
     ### SINIT Start 0x2236650 ###
@@ -822,8 +915,8 @@ Overlay OVY_44
 Overlay OVY_45
 {
     After OVY_42
-    Object overlay_45_thumb.o
-    Object overlay_45_arm.o
+    Object asm/overlay_45_thumb.o
+    Object lib/NitroDWC/asm/overlay_45_arm.o
     ### Size 0x2d8e0 ###
     ### BSS Size 0x1040 ###
     ### SINIT Start 0x2254e18 ###
@@ -834,7 +927,7 @@ Overlay OVY_45
 Overlay OVY_46
 {
     After OVY_45
-    Object overlay_46.o
+    Object asm/overlay_46.o
     ### Size 0xe40 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2259630 ###
@@ -845,7 +938,7 @@ Overlay OVY_46
 Overlay OVY_47
 {
     After OVY_45
-    Object overlay_47.o
+    Object asm/overlay_47.o
     ### Size 0x17c0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2259f88 ###
@@ -856,7 +949,7 @@ Overlay OVY_47
 Overlay OVY_48
 {
     After OVY_45
-    Object overlay_48.o
+    Object asm/overlay_48.o
     ### Size 0x2d80 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x225b570 ###
@@ -867,7 +960,7 @@ Overlay OVY_48
 Overlay OVY_49
 {
     After OVY_45
-    Object overlay_49.o
+    Object asm/overlay_49.o
     ### Size 0x12120 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x226a918 ###
@@ -878,7 +971,7 @@ Overlay OVY_49
 Overlay OVY_50
 {
     After main
-    Object overlay_50.o
+    Object asm/overlay_50.o
     ### Size 0x1c0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e5aac ###
@@ -889,7 +982,7 @@ Overlay OVY_50
 Overlay OVY_51
 {
     After OVY_50
-    Object overlay_51.o
+    Object asm/overlay_51.o
     ### Size 0x2600 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e809c ###
@@ -900,7 +993,7 @@ Overlay OVY_51
 Overlay OVY_52
 {
     After OVY_51
-    Object overlay_52.o
+    Object asm/overlay_52.o
     ### Size 0x1620 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e96a0 ###
@@ -911,7 +1004,7 @@ Overlay OVY_52
 Overlay OVY_53
 {
     After main
-    Object overlay_53.o
+    Object asm/overlay_53.o
     ### Size 0x2fa0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e8888 ###
@@ -922,7 +1015,7 @@ Overlay OVY_53
 Overlay OVY_54
 {
     After main
-    Object overlay_54.o
+    Object asm/overlay_54.o
     ### Size 0x1720 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e7014 ###
@@ -933,7 +1026,7 @@ Overlay OVY_54
 Overlay OVY_55
 {
     After main
-    Object overlay_55.o
+    Object asm/overlay_55.o
     ### Size 0x320 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e5c14 ###
@@ -944,7 +1037,7 @@ Overlay OVY_55
 Overlay OVY_56
 {
     After OVY_55
-    Object overlay_56.o
+    Object asm/overlay_56.o
     ### Size 0x1300 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e6f0c ###
@@ -955,7 +1048,7 @@ Overlay OVY_56
 Overlay OVY_57
 {
     After OVY_7
-    Object overlay_57.o
+    Object asm/overlay_57.o
     ### Size 0x4680 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x223bf28 ###
@@ -966,7 +1059,7 @@ Overlay OVY_57
 Overlay OVY_58
 {
     After OVY_7
-    Object overlay_58.o
+    Object asm/overlay_58.o
     ### Size 0x480 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2237d3c ###
@@ -977,7 +1070,7 @@ Overlay OVY_58
 Overlay OVY_59
 {
     After OVY_58
-    Object overlay_59.o
+    Object asm/overlay_59.o
     ### Size 0x4e60 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x223cb64 ###
@@ -988,7 +1081,7 @@ Overlay OVY_59
 Overlay OVY_60
 {
     After main
-    Object overlay_60.o
+    Object asm/overlay_60.o
     ### Size 0x5f80 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21eb840 ###
@@ -999,7 +1092,7 @@ Overlay OVY_60
 Overlay OVY_61
 {
     After main
-    Object overlay_61.o
+    Object asm/overlay_61.o
     ### Size 0x1bc0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e74bc ###
@@ -1010,7 +1103,7 @@ Overlay OVY_61
 Overlay OVY_62
 {
     After main
-    Object overlay_62.o
+    Object asm/overlay_62.o
     ### Size 0xfe0 ###
     ### BSS Size 0x20 ###
     ### SINIT Start 0x21e68dc ###
@@ -1021,7 +1114,7 @@ Overlay OVY_62
 Overlay OVY_63
 {
     After OVY_6
-    Object overlay_63.o
+    Object asm/overlay_63.o
     ### Size 0x45c0 ###
     ### BSS Size 0x20 ###
     ### SINIT Start 0x22203ac ###
@@ -1032,7 +1125,7 @@ Overlay OVY_63
 Overlay OVY_64
 {
     After main
-    Object overlay_64.o
+    Object asm/overlay_64.o
     ### Size 0x1b80 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e7470 ###
@@ -1043,7 +1136,7 @@ Overlay OVY_64
 Overlay OVY_65
 {
     After OVY_6
-    Object overlay_65.o
+    Object asm/overlay_65.o
     ### Size 0x4380 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2220194 ###
@@ -1065,7 +1158,7 @@ Overlay OVY_66
 Overlay OVY_67
 {
     After main
-    Object overlay_67.o
+    Object asm/overlay_67.o
     ### Size 0x1840 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e7138 ###
@@ -1076,7 +1169,7 @@ Overlay OVY_67
 Overlay OVY_68
 {
     After main
-    Object overlay_68.o
+    Object asm/overlay_68.o
     ### Size 0x2800 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e80e4 ###
@@ -1087,7 +1180,7 @@ Overlay OVY_68
 Overlay OVY_69
 {
     After main
-    Object overlay_69.o
+    Object asm/overlay_69.o
     ### Size 0x1f00 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e77e0 ###
@@ -1098,7 +1191,7 @@ Overlay OVY_69
 Overlay OVY_70
 {
     After OVY_7
-    Object overlay_70.o
+    Object asm/overlay_70.o
     ### Size 0xef40 ###
     ### BSS Size 0x160 ###
     ### SINIT Start 0x2246090 ###
@@ -1109,7 +1202,7 @@ Overlay OVY_70
 Overlay OVY_71
 {
     After OVY_70
-    Object overlay_71.o
+    Object asm/overlay_71.o
     ### Size 0x56e0 ###
     ### BSS Size 0xa0 ###
     ### SINIT Start 0x224c004 ###
@@ -1120,7 +1213,7 @@ Overlay OVY_71
 Overlay OVY_72
 {
     After OVY_7
-    Object overlay_72.o
+    Object asm/overlay_72.o
     ### Size 0x3f60 ###
     ### BSS Size 0x120 ###
     ### SINIT Start 0x223b4d4 ###
@@ -1131,7 +1224,7 @@ Overlay OVY_72
 Overlay OVY_73
 {
     After main
-    Object overlay_73.o
+    Object asm/overlay_73.o
     ### Size 0x5040 ###
     ### BSS Size 0x20 ###
     ### SINIT Start 0x21ea7bc ###
@@ -1142,8 +1235,8 @@ Overlay OVY_73
 Overlay OVY_74
 {
     After OVY_38
-    Object overlay_74_thumb.o
-    Object nitrocrypto.o
+    Object asm/overlay_74_thumb.o
+    Object asm/nitrocrypto.o
     ### Size 0x16020 ###
     ### BSS Size 0x1980 ###
     ### SINIT Start 0x223bbb0 ###
@@ -1154,7 +1247,7 @@ Overlay OVY_74
 Overlay OVY_75
 {
     After OVY_70
-    Object overlay_75.o
+    Object asm/overlay_75.o
     ### Size 0x3280 ###
     ### BSS Size 0x20 ###
     ### SINIT Start 0x2249b04 ###
@@ -1165,7 +1258,7 @@ Overlay OVY_75
 Overlay OVY_76
 {
     After main
-    Object overlay_76.o
+    Object asm/overlay_76.o
     ### Size 0x2ea0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e8794 ###
@@ -1187,7 +1280,7 @@ Overlay OVY_77
 Overlay OVY_78
 {
     After main
-    Object overlay_78.o
+    Object asm/overlay_78.o
     ### Size 0x1040 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e691c ###
@@ -1209,7 +1302,7 @@ Overlay OVY_79
 Overlay OVY_80
 {
     After OVY_42
-    Object overlay_80.o
+    Object asm/overlay_80.o
     ### Size 0x13e60 ###
     ### BSS Size 0x20 ###
     ### SINIT Start 0x223dc0c ###
@@ -1220,7 +1313,7 @@ Overlay OVY_80
 Overlay OVY_81
 {
     After OVY_80
-    Object overlay_81.o
+    Object asm/overlay_81.o
     ### Size 0x5b00 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2243850 ###
@@ -1231,7 +1324,7 @@ Overlay OVY_81
 Overlay OVY_82
 {
     After OVY_80
-    Object overlay_82.o
+    Object asm/overlay_82.o
     ### Size 0x21e0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x223ff20 ###
@@ -1242,7 +1335,7 @@ Overlay OVY_82
 Overlay OVY_83
 {
     After OVY_80
-    Object overlay_83.o
+    Object asm/overlay_83.o
     ### Size 0xa900 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2248648 ###
@@ -1253,7 +1346,7 @@ Overlay OVY_83
 Overlay OVY_84
 {
     After OVY_80
-    Object overlay_84.o
+    Object asm/overlay_84.o
     ### Size 0x1cc0 ###
     ### BSS Size 0x20 ###
     ### SINIT Start 0x223fa08 ###
@@ -1264,7 +1357,7 @@ Overlay OVY_84
 Overlay OVY_85
 {
     After main
-    Object overlay_85.o
+    Object asm/overlay_85.o
     ### Size 0x51c0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21eaa60 ###
@@ -1275,7 +1368,7 @@ Overlay OVY_85
 Overlay OVY_86
 {
     After main
-    Object overlay_86.o
+    Object asm/overlay_86.o
     ### Size 0x2aa0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e8398 ###
@@ -1286,7 +1379,7 @@ Overlay OVY_86
 Overlay OVY_87
 {
     After main
-    Object overlay_87.o
+    Object asm/overlay_87.o
     ### Size 0x2be0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e84ac ###
@@ -1297,7 +1390,7 @@ Overlay OVY_87
 Overlay OVY_88
 {
     After OVY_45
-    Object overlay_88.o
+    Object asm/overlay_88.o
     ### Size 0x1280 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2259a4c ###
@@ -1308,7 +1401,7 @@ Overlay OVY_88
 Overlay OVY_89
 {
     After OVY_45
-    Object overlay_89.o
+    Object asm/overlay_89.o
     ### Size 0x4e80 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x225d664 ###
@@ -1319,7 +1412,7 @@ Overlay OVY_89
 Overlay OVY_90
 {
     After OVY_45
-    Object overlay_90.o
+    Object asm/overlay_90.o
     ### Size 0x3d40 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x225c538 ###
@@ -1330,7 +1423,7 @@ Overlay OVY_90
 Overlay OVY_91
 {
     After OVY_90
-    Object overlay_91.o
+    Object asm/overlay_91.o
     ### Size 0x6280 ###
     ### BSS Size 0x40 ###
     ### SINIT Start 0x22627b4 ###
@@ -1341,7 +1434,7 @@ Overlay OVY_91
 Overlay OVY_92
 {
     After OVY_90
-    Object overlay_92.o
+    Object asm/overlay_92.o
     ### Size 0x7c20 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2264008 ###
@@ -1352,9 +1445,9 @@ Overlay OVY_92
 Overlay OVY_93
 {
     After OVY_90
-    Object overlay_93_thumb_1.o
-    Object overlay_93_arm.o
-    Object overlay_93_thumb_2.o
+    Object asm/overlay_93_thumb_1.o
+    Object asm/overlay_93_arm.o
+    Object asm/overlay_93_thumb_2.o
     ### Size 0x6c00 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2263134 ###
@@ -1365,7 +1458,7 @@ Overlay OVY_93
 Overlay OVY_94
 {
     After main
-    Object overlay_94.o
+    Object asm/overlay_94.o
     ### Size 0x420 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e5d18 ###
@@ -1376,7 +1469,7 @@ Overlay OVY_94
 Overlay OVY_95
 {
     After main
-    Object overlay_95.o
+    Object asm/overlay_95.o
     ### Size 0x1fc0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e78b4 ###
@@ -1387,7 +1480,7 @@ Overlay OVY_95
 Overlay OVY_96
 {
     After main
-    Object overlay_96.o
+    Object asm/overlay_96.o
     ### Size 0x383a0 ###
     ### BSS Size 0x920 ###
     ### SINIT Start 0x221d9f0 ###
@@ -1398,7 +1491,7 @@ Overlay OVY_96
 Overlay OVY_97
 {
     After OVY_96
-    Object overlay_97.o
+    Object asm/overlay_97.o
     ### Size 0x17c0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x221fd74 ###
@@ -1409,7 +1502,7 @@ Overlay OVY_97
 Overlay OVY_98
 {
     After OVY_96
-    Object overlay_98.o
+    Object asm/overlay_98.o
     ### Size 0xcc0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x221f270 ###
@@ -1420,7 +1513,7 @@ Overlay OVY_98
 Overlay OVY_99
 {
     After main
-    Object overlay_99.o
+    Object asm/overlay_99.o
     ### Size 0x4d00 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21ea5a4 ###
@@ -1431,7 +1524,7 @@ Overlay OVY_99
 Overlay OVY_100
 {
     After main
-    Object overlay_100.o
+    Object asm/overlay_100.o
     ### Size 0x1e40 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e7714 ###
@@ -1442,7 +1535,7 @@ Overlay OVY_100
 Overlay OVY_101
 {
     After OVY_100
-    Object overlay_101.o
+    Object asm/overlay_101.o
     ### Size 0x13bc0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21fb2ac ###
@@ -1453,7 +1546,7 @@ Overlay OVY_101
 Overlay OVY_102
 {
     After OVY_100
-    Object overlay_102.o
+    Object asm/overlay_102.o
     ### Size 0x5200 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21ec930 ###
@@ -1464,7 +1557,7 @@ Overlay OVY_102
 Overlay OVY_103
 {
     After OVY_102
-    Object overlay_103.o
+    Object asm/overlay_103.o
     ### Size 0x2740 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21ef060 ###
@@ -1475,7 +1568,7 @@ Overlay OVY_103
 Overlay OVY_104
 {
     After main
-    Object overlay_104.o
+    Object asm/overlay_104.o
     ### Size 0x820 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e6048 ###
@@ -1486,7 +1579,7 @@ Overlay OVY_104
 Overlay OVY_105
 {
     After main
-    Object overlay_105.o
+    Object asm/overlay_105.o
     ### Size 0x5c0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e5e7c ###
@@ -1497,7 +1590,7 @@ Overlay OVY_105
 Overlay OVY_106
 {
     After main
-    Object overlay_106.o
+    Object asm/overlay_106.o
     ### Size 0x2d40 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e8634 ###
@@ -1519,7 +1612,7 @@ Overlay OVY_107
 Overlay OVY_108
 {
     After main
-    Object overlay_108.o
+    Object asm/overlay_108.o
     ### Size 0x5460 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21ead50 ###
@@ -1530,7 +1623,7 @@ Overlay OVY_108
 Overlay OVY_109
 {
     After main
-    Object overlay_109.o
+    Object asm/overlay_109.o
     ### Size 0x2240 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e7b20 ###
@@ -1541,7 +1634,7 @@ Overlay OVY_109
 Overlay OVY_110
 {
     After main
-    Object overlay_110.o
+    Object asm/overlay_110.o
     ### Size 0x1720 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e6ff4 ###
@@ -1552,7 +1645,7 @@ Overlay OVY_110
 Overlay OVY_111
 {
     After main
-    Object overlay_111.o
+    Object asm/overlay_111.o
     ### Size 0x1460 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e6d30 ###
@@ -1563,7 +1656,7 @@ Overlay OVY_111
 Overlay OVY_112
 {
     After main
-    Object overlay_112.o
+    Object asm/overlay_112.o
     ### Size 0x1a0e0 ###
     ### BSS Size 0x2c0 ###
     ### SINIT Start 0x21ff4e8 ###
@@ -1574,7 +1667,7 @@ Overlay OVY_112
 Overlay OVY_113
 {
     After main
-    Object overlay_113.o
+    Object asm/overlay_113.o
     ### Size 0x1480 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e6d70 ###
@@ -1585,7 +1678,7 @@ Overlay OVY_113
 Overlay OVY_114
 {
     After OVY_31
-    Object overlay_114.o
+    Object asm/overlay_114.o
     ### Size 0x4e0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x225f4f8 ###
@@ -1596,7 +1689,7 @@ Overlay OVY_114
 Overlay OVY_115
 {
     After OVY_31
-    Object overlay_115.o
+    Object asm/overlay_115.o
     ### Size 0x14e0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x22604f0 ###
@@ -1607,7 +1700,7 @@ Overlay OVY_115
 Overlay OVY_116
 {
     After OVY_31
-    Object overlay_116.o
+    Object asm/overlay_116.o
     ### Size 0x460 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x225f46c ###
@@ -1618,7 +1711,7 @@ Overlay OVY_116
 Overlay OVY_117
 {
     After OVY_31
-    Object overlay_117.o
+    Object asm/overlay_117.o
     ### Size 0xba0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x225fbb4 ###
@@ -1629,7 +1722,7 @@ Overlay OVY_117
 Overlay OVY_118
 {
     After OVY_31
-    Object overlay_118.o
+    Object asm/overlay_118.o
     ### Size 0x2a0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x225f2a8 ###
@@ -1640,7 +1733,7 @@ Overlay OVY_118
 Overlay OVY_119
 {
     After OVY_31
-    Object overlay_119.o
+    Object asm/overlay_119.o
     ### Size 0x1720 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x226072c ###
@@ -1651,7 +1744,7 @@ Overlay OVY_119
 Overlay OVY_120
 {
     After OVY_31
-    Object overlay_120.o
+    Object asm/overlay_120.o
     ### Size 0x1340 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2260344 ###
@@ -1662,7 +1755,7 @@ Overlay OVY_120
 Overlay OVY_121
 {
     After main
-    Object overlay_121.o
+    Object asm/overlay_121.o
     ### Size 0x18a0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e7194 ###
@@ -1673,7 +1766,7 @@ Overlay OVY_121
 Overlay OVY_122
 {
     After main
-    Object overlay_122.o
+    Object asm/overlay_122.o
     ### Size 0x42c0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e9b84 ###
@@ -1684,7 +1777,7 @@ Overlay OVY_122
 Overlay OVY_123
 {
     After OVY_31
-    Object overlay_123.o
+    Object lib/asm/overlay_123.o
     ### Size 0x1be0 ###
     ### BSS Size 0x20 ###
     ### SINIT Start 0x2260bdc ###
@@ -1695,7 +1788,7 @@ Overlay OVY_123
 Overlay OVY_124
 {
     After OVY_123
-    Object overlay_124.o
+    Object asm/overlay_124.o
     ### Size 0x160 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2260d70 ###

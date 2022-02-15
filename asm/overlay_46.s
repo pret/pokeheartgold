@@ -123,8 +123,8 @@ ov46_02258800: ; 0x02258800
 	ldr r0, _02258924 ; =ov46_02258F70
 	add r1, r5, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
-	ldr r0, _02258928 ; =gMain + 0x60
+	bl HBlankInterruptDisable
+	ldr r0, _02258928 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -136,7 +136,7 @@ _02258918: .word 0x00000404
 _0225891C: .word 0x0000047D
 _02258920: .word 0x0000030A
 _02258924: .word ov46_02258F70
-_02258928: .word gMain + 0x60
+_02258928: .word gSystem + 0x60
 	thumb_func_end ov46_02258800
 
 	thumb_func_start ov46_0225892C
@@ -366,7 +366,7 @@ _02258ADC:
 	str r0, [r4]
 	b _02258C28
 _02258B0E:
-	ldr r0, _02258C34 ; =gMain
+	ldr r0, _02258C34 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -504,7 +504,7 @@ _02258C28:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02258C30: .word 0x0000FFFF
-_02258C34: .word gMain
+_02258C34: .word gSystem
 	thumb_func_end ov46_0225892C
 
 	thumb_func_start ov46_02258C38
@@ -515,7 +515,7 @@ ov46_02258C38: ; 0x02258C38
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	add r0, r4, #0
 	add r0, #0xd4
 	ldr r0, [r0]
@@ -552,14 +552,14 @@ _02258C68:
 	bl FreeToHeap
 	mov r0, #0x77
 	bl DestroyHeap
-	ldr r0, _02258CB0 ; =gMain + 0x60
+	ldr r0, _02258CB0 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-_02258CB0: .word gMain + 0x60
+_02258CB0: .word gSystem + 0x60
 	thumb_func_end ov46_02258C38
 
 	thumb_func_start ov46_02258CB4
@@ -656,8 +656,8 @@ ov46_02258CB4: ; 0x02258CB4
 	ldr r0, _02258DA0 ; =ov46_02258F70
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
-	ldr r0, _02258DA4 ; =gMain + 0x60
+	bl HBlankInterruptDisable
+	ldr r0, _02258DA4 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -668,7 +668,7 @@ ov46_02258CB4: ; 0x02258CB4
 _02258D98: .word 0x00000404
 _02258D9C: .word 0x0000030A
 _02258DA0: .word ov46_02258F70
-_02258DA4: .word gMain + 0x60
+_02258DA4: .word gSystem + 0x60
 	thumb_func_end ov46_02258CB4
 
 	thumb_func_start ov46_02258DA8
@@ -851,7 +851,7 @@ ov46_02258EFC: ; 0x02258EFC
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	add r0, r4, #0
 	add r0, #0xd4
 	ldr r0, [r0]
@@ -885,14 +885,14 @@ _02258F2C:
 	bl FreeToHeap
 	mov r0, #0x77
 	bl DestroyHeap
-	ldr r0, _02258F6C ; =gMain + 0x60
+	ldr r0, _02258F6C ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-_02258F6C: .word gMain + 0x60
+_02258F6C: .word gSystem + 0x60
 	thumb_func_end ov46_02258EFC
 
 	thumb_func_start ov46_02258F70
@@ -1065,7 +1065,7 @@ _02258FAE:
 	mov r1, #5
 	add r2, sp, #0x38
 	add r3, r6, #0
-	bl sub_02007C48
+	bl GfGfxLoader_GetPlttDataFromOpenNarc
 	add r4, r0, #0
 	ldr r0, [sp, #0x38]
 	ldr r1, [sp, #0x10]
@@ -1323,11 +1323,11 @@ _022592DC: .word _02259598
 
 	thumb_func_start ov46_022592E0
 ov46_022592E0: ; 0x022592E0
-	ldr r3, _022592E8 ; =sub_0201EEB4
+	ldr r3, _022592E8 ; =BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_022592E8: .word sub_0201EEB4
+_022592E8: .word BgConfig_HandleScheduledScrollAndTransferOps
 	thumb_func_end ov46_022592E0
 
 	thumb_func_start ov46_022592EC
@@ -1454,7 +1454,7 @@ _022593DE:
 _022593EC:
 	add r5, #8
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0xc
 	pop {r4, r5, pc}
 	thumb_func_end ov46_02259374
@@ -1483,7 +1483,7 @@ _02259414:
 	bl sub_0200E5D4
 	add r4, #8
 	add r0, r4, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	pop {r4, pc}
 _0225942E:
 	ldr r0, [r4, #0x24]
@@ -1498,7 +1498,7 @@ _0225943A:
 	bl ClearFrameAndWindow2
 	add r4, #8
 	add r0, r4, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov46_022593F8

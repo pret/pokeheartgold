@@ -9,7 +9,7 @@ _021D2228:
 	.rodata
 
 _020F645C:
-	.word 0x00000006
+	.word 6
 _020F6460:
 	.word 0x0000002A
 _020F6464:
@@ -25,8 +25,8 @@ _020F64C4:
 	.word 0x00000002, 0x00000000, SavArray_Party_sizeof, SavArray_Party_init
 	.word 0x00000003, 0x00000000, Sav2_Bag_sizeof, Sav2_Bag_init
 	.word 0x00000004, 0x00000000, SavArray_Flags_sizeof, SavArray_Flags_init
-	.word 0x00000005, 0x00000000, sub_0203B91C, sub_0203B938
-	.word 0x00000006, 0x00000000, sub_020293E0, sub_02029D98
+	.word 0x00000005, 0x00000000, Save_FlyPoints_sizeof, Save_FlyPoints_init
+	.word 0x00000006, 0x00000000, Save_Pokedex_sizeof, Save_Pokedex_init
 	.word 0x00000007, 0x00000000, Sav2_Daycare_sizeof, Sav2_Daycare_init
 	.word 0x00000008, 0x00000000, sub_0202AEC0, sub_0202AED4
 	.word 0x00000009, 0x00000000, Sav2_Misc_sizeof, Sav2_Misc_init
@@ -41,24 +41,24 @@ _020F64C4:
 	.word 0x00000012, 0x00000000, Sav2_Chatot_sizeof, Sav2_Chatot_init
 	.word 0x00000013, 0x00000000, sub_02031000, sub_02031008
 	.word 0x00000014, 0x00000000, sub_0202D938, sub_0202D93C
-	.word 0x00000015, 0x00000000, sub_0202D968, sub_0202D96C
+	.word 0x00000015, 0x00000000, Save_Roamers_sizeof, Save_Roamers_init
 	.word 0x00000016, 0x00000000, sub_0202DB40, sub_0202DB44
 	.word 0x00000017, 0x00000000, sub_0202E41C, sub_0202E424
 	.word 0x00000018, 0x00000000, sub_0202E4F4, sub_0202E4FC
 	.word 0x00000019, 0x00000000, sub_0202C034, sub_0202C03C
 	.word 0x0000001A, 0x00000000, sub_0202CA24, sub_0202CA2C
-	.word 0x0000001B, 0x00000000, sub_0202DBA8, sub_0202DBB0
+	.word 0x0000001B, 0x00000000, Save_MysteryGift_sizeof, Save_MysteryGift_init
 	.word 0x0000001C, 0x00000000, sub_0202EB30, sub_0202EB38
 	.word 0x0000001D, 0x00000000, sub_02031AF0, sub_02031AF4
-	.word 0x0000001E, 0x00000000, sub_02015BF0, sub_02015BF4
+	.word 0x0000001E, 0x00000000, Sav2_EasyChat_sizeof, Sav2_EasyChat_init
 	.word 0x0000001F, 0x00000000, sub_0203170C, sub_02031710
 	.word 0x00000020, 0x00000000, sub_020318C8, sub_020318CC
-	.word 0x00000021, 0x00000000, sub_0202ED18, sub_0202ED1C
-	.word 0x00000022, 0x00000000, sub_0202ED74, sub_0202EDEC
-	.word 0x00000023, 0x00000000, sub_0202F574, sub_0202F588
-	.word 0x00000024, 0x00000000, sub_0202FA5C, sub_0202FA70
+	.word 0x00000021, 0x00000000, Sav2_FollowPoke_sizeof, Sav2_FollowPoke_init
+	.word 0x00000022, 0x00000000, SaveData_GSPlayerMisc_sizeof, SaveData_GSPlayerMisc_init
+	.word 0x00000023, 0x00000000, Save_SafariZone_sizeof, Save_SafariZone_init
+	.word 0x00000024, 0x00000000, Save_PhotoAlbum_sizeof, Save_PhotoAlbum_init
 	.word 0x00000025, 0x00000000, sub_02031904, sub_0203190C
-	.word 0x00000026, 0x00000000, sub_02031B0C, sub_02031B54
+	.word 0x00000026, 0x00000000, Save_ApricornBox_sizeof, Save_ApricornBox_init
 	.word 0x00000027, 0x00000000, Pokewalker_sizeof, Pokewalker_init
 	.word 0x00000028, 0x00000000, sub_02032774, sub_02032788
 	.word 0x00000029, 0x00000001, PCStorage_sizeof, PCStorage_init
@@ -3188,8 +3188,8 @@ SaveErrorHandling: ; 0x020288D4
 _020288FC: .word _021D2228
 	thumb_func_end SaveErrorHandling
 
-	thumb_func_start sub_02028900
-sub_02028900: ; 0x02028900
+	thumb_func_start SaveSubstruct_AssertCRC
+SaveSubstruct_AssertCRC: ; 0x02028900
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl sub_020272B0
@@ -3216,10 +3216,10 @@ _02028932:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02028900
+	thumb_func_end SaveSubstruct_AssertCRC
 
-	thumb_func_start sub_0202893C
-sub_0202893C: ; 0x0202893C
+	thumb_func_start SaveSubstruct_UpdateCRC
+SaveSubstruct_UpdateCRC: ; 0x0202893C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl sub_020272B0
@@ -3238,7 +3238,7 @@ sub_0202893C: ; 0x0202893C
 	lsl r1, r1, #1
 	strh r0, [r4, r1]
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0202893C
+	thumb_func_end SaveSubstruct_UpdateCRC
 
 	thumb_func_start sub_02028968
 sub_02028968: ; 0x02028968

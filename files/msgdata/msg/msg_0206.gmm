@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0206_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Please stand by...</language>
+	</row>
+	<row id="msg_0206_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 1, 0, 0}</language>
+	</row>
+	<row id="msg_0206_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 1, 1, 0} received\n{STRVAR_1 1, 2, 0}’s Egg!</language>
+	</row>
+	<row id="msg_0206_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Landed on a Bonus Area!\nReceived a free {STRVAR_1 8, 0, 0}!</language>
+	</row>
+	<row id="msg_0206_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh, no. The Bag is full...\nThe Berry had to be refused.</language>
+	</row>
+	<row id="msg_0206_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Awaiting communication.\nPlease stand by.</language>
+	</row>
+	<row id="msg_0206_00006" index="6">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0206_00007" index="7">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0206_00008" index="8">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0206_00009" index="9">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0206_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Awaiting communication.\nPlease stand by.</language>
+	</row>
+	<row id="msg_0206_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Saving...\nDon’t turn off the power.</language>
+	</row>
+	<row id="msg_0206_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There is an Egg that can’t be traded.\nSpin Trade will be canceled.</language>
+	</row>
+</body>

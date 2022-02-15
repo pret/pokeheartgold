@@ -1,3 +1,0 @@
-Mic Test
-Please say something\ndirectly into the Mic.
-{ALN_CENTER}Return

@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0385_R34R0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lyra: Grandma!\rLet me introduce my friend.\nThis is {STRVAR_1 3, 0, 0}!\r</language>
+	</row>
+	<row id="msg_0385_R34R0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ah ha.\nThis is your boy...friend.\fI see. Hmm.\r</language>
+	</row>
+	<row id="msg_0385_R34R0101_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lyra: What? Grandma...!\nWhat are you talking about?\rHe just happens to live nearby...\r</language>
+	</row>
+	<row id="msg_0385_R34R0101_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Grandma: Hahaha.\nI know. I know.\rSince you brought him here, Lyra, you\nmust be sure about his talent.\rRight, {STRVAR_1 3, 0, 0}?\nCome and see us anytime!\r</language>
+	</row>
+	<row id="msg_0385_R34R0101_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lyra: Well, I better go now...\nSee ya!\r</language>
+	</row>
+	<row id="msg_0385_R34R0101_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lyra: Oh! I almost forgot!\r</language>
+	</row>
+	<row id="msg_0385_R34R0101_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lyra: Here!\nThis is my Pokégear number!\r</language>
+	</row>
+	<row id="msg_0385_R34R0101_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} registered Lyra\nin the Pokégear!\r</language>
+	</row>
+	<row id="msg_0385_R34R0101_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lyra: You know you can talk to your\nPokémon as they follow you?\rThey do all sorts of cute stuff on the\nroad and in towns.\rI’m taking notes every time they do\nfunny things.\rGive me a call and I’ll share some of\nthem with you.\r</language>
+	</row>
+	<row id="msg_0385_R34R0101_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lyra: Grandma!\rDon’t you say anything.\rWe are both Trainers, and we are\nsupposed to exchange numbers.\fThat’s all.\r</language>
+	</row>
+	<row id="msg_0385_R34R0101_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ethan: Grandma!\rLet me introduce my friend.\nThis is {STRVAR_1 3, 0, 0}!\r</language>
+	</row>
+	<row id="msg_0385_R34R0101_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ah ha.\nThis is your girl...friend.\fI see. Hmm.\r</language>
+	</row>
+	<row id="msg_0385_R34R0101_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ethan: What? Grandma...!\nWhat are you talking about?\rShe just happens to live nearby...\r</language>
+	</row>
+	<row id="msg_0385_R34R0101_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hahaha.\nI know. I know.\rSince you took her here, Ethan, you\nmust be sure about her talent.\rRight, {STRVAR_1 3, 0, 0}?\nCome and see us anytime!\r</language>
+	</row>
+	<row id="msg_0385_R34R0101_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ethan: Well, I better go now...\nSee ya!\r</language>
+	</row>
+	<row id="msg_0385_R34R0101_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ethan: Oh! I almost forgot!\r</language>
+	</row>
+	<row id="msg_0385_R34R0101_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ethan: Here!\nThis is my Pokégear number!\r</language>
+	</row>
+	<row id="msg_0385_R34R0101_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} registered Ethan\nin the Pokégear!\r</language>
+	</row>
+	<row id="msg_0385_R34R0101_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ethan: You know you can talk to your\nPokémon as they follow you?\rThey do all sorts of cute stuff on the\nroad and in towns.\rI’m taking notes every time they do\nfunny things.\rGive me a call and I’ll share some of\nthem with you.\r</language>
+	</row>
+	<row id="msg_0385_R34R0101_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ethan: Grandma!\rDon’t you say anything.\rWe are both Trainers, and we are\nsupposed to exchange numbers.\fThat’s all.\r</language>
+	</row>
+</body>

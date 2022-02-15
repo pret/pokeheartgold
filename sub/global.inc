@@ -59,7 +59,7 @@
 .public OS_IrqHandler_ThreadSwitch
 .public OS_SetIrqMask
 .public VENEER_SVC_WaitByLoop
-.public OSi_DoLockByWord
+.public OS_LockCartridge
 .public OS_UnlockCartridge
 .public OS_UnLockCartridge
 .public OS_TryLockCartridge

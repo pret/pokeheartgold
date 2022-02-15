@@ -190,7 +190,7 @@ _021E5A5A:
 	bl sub_02025358
 	cmp r0, #0
 	bne _021E5A6C
-	ldr r0, _021E5A98 ; =gMain
+	ldr r0, _021E5A98 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -220,7 +220,7 @@ _021E5A92:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_021E5A98: .word gMain
+_021E5A98: .word gSystem
 _021E5A9C: .word 0x000005DC
 	thumb_func_end ov111_021E59E4
 
@@ -348,7 +348,7 @@ _021E5BA0:
 	bl sub_02025358
 	cmp r0, #0
 	bne _021E5BB2
-	ldr r0, _021E5BDC ; =gMain
+	ldr r0, _021E5BDC ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -376,7 +376,7 @@ _021E5BD6:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_021E5BDC: .word gMain
+_021E5BDC: .word gSystem
 _021E5BE0: .word 0x000005DC
 	thumb_func_end ov111_021E5AA0
 
@@ -513,7 +513,7 @@ ov111_021E5CD4: ; 0x021E5CD4
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -563,7 +563,7 @@ ov111_021E5D2C: ; 0x021E5D2C
 	add r4, r0, #0
 	add r5, r1, #0
 	add r7, r2, #0
-	bl sub_0201EE88
+	bl GetWindowBgConfig
 	str r0, [sp, #0x1c]
 	add r0, r4, #0
 	bl GetWindowBgId
@@ -681,7 +681,7 @@ _021E5E0E:
 	bl sub_0200D020
 	bl sub_0200D034
 	ldr r0, [r4, #8]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E5E2C ; =0x027E0000
 	ldr r1, _021E5E30 ; =0x00003FF8
 	mov r0, #1
@@ -857,7 +857,7 @@ _021E5F8A:
 	ldr r0, [r5, #8]
 	mov r2, #0
 	mov r3, #1
-	bl sub_0201C1F4
+	bl BG_FillCharDataRange
 	add r7, r7, #1
 	add r6, #0x1c
 	add r4, r4, #1
@@ -917,7 +917,7 @@ _021E6010:
 	ldr r0, [r4, #0x1c]
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -927,7 +927,7 @@ _021E6010:
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x1c]
 	ldr r2, [r4, #8]
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -938,7 +938,7 @@ _021E6010:
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x1c]
 	ldr r2, [r4, #8]
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r1, #1
 	str r1, [sp]
 	mov r0, #0
@@ -950,7 +950,7 @@ _021E6010:
 	ldr r0, [r4, #0x1c]
 	ldr r2, [r4, #8]
 	mov r3, #2
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r1, #1
 	str r1, [sp]
 	mov r0, #0
@@ -962,7 +962,7 @@ _021E6010:
 	ldr r0, [r4, #0x1c]
 	ldr r2, [r4, #8]
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #2
 	lsl r0, r0, #8
 	str r0, [sp]
@@ -972,7 +972,7 @@ _021E6010:
 	ldr r0, [r4, #0x1c]
 	mov r2, #4
 	add r3, r1, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -983,7 +983,7 @@ _021E6010:
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x1c]
 	ldr r2, [r4, #8]
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -995,7 +995,7 @@ _021E6010:
 	ldr r0, [r4, #0x1c]
 	ldr r2, [r4, #8]
 	mov r3, #4
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add sp, #0x10
 	pop {r4, pc}
 	thumb_func_end ov111_021E6000
@@ -1062,7 +1062,7 @@ ov111_021E60D4: ; 0x021E60D4
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x4c
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -1209,7 +1209,7 @@ ov111_021E6268: ; 0x021E6268
 	str r0, [sp]
 	add r0, r7, #0
 	add r3, sp, #0xc
-	bl sub_02007C10
+	bl GfGfxLoader_GetCharDataFromOpenNarc
 	ldr r1, [sp, #0xc]
 	mov r2, #1
 	str r0, [sp, #8]
@@ -1637,7 +1637,7 @@ _021E65E0:
 	add r4, r5, #0
 	add r4, #0xc
 	add r0, r4, #0
-	bl sub_0201EE88
+	bl GetWindowBgConfig
 	str r0, [sp, #4]
 	add r0, r4, #0
 	bl GetWindowBgId
@@ -1683,7 +1683,7 @@ _021E6624:
 	ldr r1, [sp]
 	mov r2, #5
 	add r3, r6, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r7, #0
 	add r4, sp, #8
 _021E6646:
@@ -1973,7 +1973,7 @@ ov111_021E67EC: ; 0x021E67EC
 	lsl r1, r1, #0xd
 	lsr r1, r1, #0x1d
 	mov r3, #1
-	bl sub_0201C1F4
+	bl BG_FillCharDataRange
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -2191,7 +2191,7 @@ _021E69D4:
 	bl sub_0200CDF0
 _021E69E8:
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

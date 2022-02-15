@@ -8,6 +8,7 @@ a/0/1/6
 a/0/1/7
 a/0/1/8
 a/0/2/7
+a/0/3/2
 a/0/3/3
 a/0/3/4
 a/0/3/7
@@ -17,6 +18,7 @@ a/0/5/6
 a/0/5/7
 a/0/7/4
 a/0/7/5
+a/0/8/1
 a/1/1/4
 a/1/1/7
 a/1/3/1
@@ -28,12 +30,16 @@ a/1/6/9
 a/1/8/5
 a/1/9/4
 a/1/9/5
+a/2/1/2
 a/2/1/4
 a/2/5/2
 msgdata/msg.narc
+fielddata/eventdata/zone_event.narc
 fielddata/encountdata/g_enc_data.narc
 fielddata/encountdata/s_enc_data.narc
 data/gs_areawindow.narc
 itemtool/itemdata/item_icon.narc
 itemtool/itemdata/item_data.narc
 poketool/personal/growtbl.narc
+resource/eng/pms_aikotoba/pms_aikotoba.narc
+data/mmodel/mmodel.narc

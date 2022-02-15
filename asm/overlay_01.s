@@ -1,3 +1,13 @@
+#include "constants/sndseq.h"
+#include "constants/moves.h"
+#include "constants/std_script.h"
+#include "constants/species.h"
+#include "constants/sprites.h"
+#include "constants/maps.h"
+#include "constants/mmodel.h"
+#include "constants/items.h"
+#include "msgdata/msg/msg_0096_D31R0201.h"
+#include "msgdata/msg/msg_0066_D23R0102.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -8,7 +18,7 @@ ov01_021E5900: ; 0x021E5900
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #8]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0202061C
 	bl sub_0200B224
 	ldr r0, [r4, #0x3c]
@@ -52,7 +62,7 @@ _021E5952:
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	ldr r0, _021E5BA4 ; =0x04000050
 	mov r1, #0
 	strh r1, [r0]
@@ -179,7 +189,7 @@ _021E5A50:
 	bl sub_0205B4EC
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_02040750
+	bl TryStartMapScriptByType
 	ldr r1, _021E5BD4 ; =0x00001079
 	add r0, r5, r7
 	bl _u32_div_f
@@ -226,7 +236,7 @@ _021E5AB6:
 	add r0, r4, #0
 	bl ov01_021E6580
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B984
 	add r1, r0, #0
 	ldr r0, [r4, #4]
@@ -252,7 +262,7 @@ _021E5B2A:
 _021E5B32:
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_02040750
+	bl TryStartMapScriptByType
 	mov r0, #4
 	bl ov01_021FB4C0
 	ldr r1, [r4, #4]
@@ -386,15 +396,15 @@ _021E5C4A:
 	add r5, r5, r1
 	bl ov01_021F6304
 	ldr r0, [r4, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	ldr r1, [r4, #0x20]
 	str r0, [r1, #8]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	ldr r1, [r4, #0x20]
 	str r0, [r1, #0xc]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	ldr r1, [r4, #0x20]
 	str r0, [r1, #0x10]
 	add r0, r4, #0
@@ -622,8 +632,8 @@ _021E5EB4: .word SDK_OVERLAY_OVY_3_ID
 ov01_021E5EB8: ; 0x021E5EB8
 	push {r3, lr}
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
-	bl sub_0202AEBC
+	bl Sav2_GetGymmickPtr
+	bl SavGymmick_GetType
 	cmp r0, #0
 	bne _021E5ECE
 	mov r0, #1
@@ -639,10 +649,10 @@ ov01_021E5ED4: ; 0x021E5ED4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	ldr r2, [r5, #0x20]
 	ldr r1, [r2, #8]
 	cmp r4, r1
@@ -668,13 +678,13 @@ ov01_021E5F04: ; 0x021E5F04
 	sub sp, #8
 	add r5, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	asr r1, r0, #4
 	lsr r1, r1, #0x1b
 	add r1, r0, r1
 	ldr r0, [r5, #0x40]
 	asr r4, r1, #5
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	asr r1, r0, #4
 	lsr r1, r1, #0x1b
 	add r1, r0, r1
@@ -692,21 +702,21 @@ ov01_021E5F04: ; 0x021E5F04
 	pop {r3, r4, r5, r6, r7, pc}
 _021E5F3E:
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	add r7, r0, #0
 	ldr r0, [r5, #0x20]
 	add r1, r4, #0
 	str r4, [r0]
 	add r0, r5, #0
-	bl sub_0203B648
+	bl Field_InitMapEvents
 	add r0, r5, #0
 	mov r1, #1
 	bl sub_02053038
 	add r0, r5, #0
-	bl sub_0203B74C
+	bl Field_GetNumObjectEvents
 	str r0, [sp, #4]
 	add r0, r5, #0
-	bl sub_0203B754
+	bl Field_GetObjectEvents
 	str r0, [sp]
 	ldr r0, [r5, #0x3c]
 	ldr r3, [sp, #4]
@@ -722,7 +732,7 @@ _021E5F3E:
 	mov r2, #1
 	bl sub_02054FDC
 	add r0, r5, #0
-	bl sub_0203B6B0
+	bl Field_InitMapObjectsFromZoneEventData
 	add r0, r7, #0
 	bl sub_0203B984
 	add r1, r0, #0
@@ -754,7 +764,7 @@ ov01_021E5FC0: ; 0x021E5FC0
 	cmp r0, #0
 	bne _021E5FD4
 	add r0, r5, #0
-	bl sub_02055418
+	bl FieldSys_StartBugContestTimer
 _021E5FD4:
 	ldr r0, [r5, #0x50]
 	bl ov01_021EA2A4
@@ -1082,7 +1092,7 @@ ov01_021E6220: ; 0x021E6220
 	lsl r2, r2, #1
 	add r2, r2, #1
 	lsl r3, r2, #1
-	ldr r2, _021E630C ; =_021094DC
+	ldr r2, _021E630C ; =FX_SinCosTable_
 	ldr r0, [r4, r0]
 	ldrsh r2, [r2, r3]
 	lsl r0, r0, #0xc
@@ -1096,7 +1106,7 @@ ov01_021E6220: ; 0x021E6220
 	adc r1, r3
 	lsl r0, r1, #0x14
 	lsr r2, r2, #0xc
-	ldr r6, _021E6310 ; =_021DA4A4
+	ldr r6, _021E6310 ; =NNS_G3dGlb + 0x8
 	orr r2, r0
 	add r5, sp, #0x48
 	mov r3, #8
@@ -1128,11 +1138,11 @@ _021E6294:
 	orr r1, r0
 	add r0, r2, r1
 	str r0, [sp, #0x40]
-	ldr r1, _021E6310 ; =_021DA4A4
+	ldr r1, _021E6310 ; =NNS_G3dGlb + 0x8
 	add r0, sp, #8
 	mov r2, #0x40
 	bl MIi_CpuCopyFast
-	ldr r1, _021E6314 ; =_021DA51C
+	ldr r1, _021E6314 ; =NNS_G3dGlb + 0x80
 	mov r0, #0x50
 	ldr r2, [r1, #0x7c]
 	bic r2, r0
@@ -1141,11 +1151,11 @@ _021E6294:
 	ldr r0, [r4, #0x44]
 	bl ov01_021F13EC
 	bl sub_020237B0
-	ldr r1, _021E6310 ; =_021DA4A4
+	ldr r1, _021E6310 ; =NNS_G3dGlb + 0x8
 	add r0, sp, #0x48
 	mov r2, #0x40
 	bl MIi_CpuCopyFast
-	ldr r1, _021E6314 ; =_021DA51C
+	ldr r1, _021E6314 ; =NNS_G3dGlb + 0x80
 	mov r0, #0x50
 	ldr r2, [r1, #0x7c]
 	bic r2, r0
@@ -1161,9 +1171,9 @@ _021E6294:
 	add sp, #0x88
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_021E630C: .word _021094DC
-_021E6310: .word _021DA4A4
-_021E6314: .word _021DA51C
+_021E630C: .word FX_SinCosTable_
+_021E6310: .word NNS_G3dGlb + 0x8
+_021E6314: .word NNS_G3dGlb + 0x80
 _021E6318: .word _0210F6DC
 	thumb_func_end ov01_021E6220
 
@@ -1459,7 +1469,7 @@ _021E6566:
 	bl sub_0205F568
 _021E656A:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6BC
+	bl PlayerAvatar_GetPositionVecConst
 	ldr r1, [r5, #0x2c]
 	bl ov01_021F62E8
 	add sp, #0x14
@@ -1482,11 +1492,11 @@ ov01_021E6580: ; 0x021E6580
 	bl ov01_021EA824
 	str r0, [r4, #0x4c]
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B9A4
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6BC
+	bl PlayerAvatar_GetPositionVecConst
 	add r1, r4, #0
 	add r2, r5, #0
 	mov r3, #1
@@ -1996,7 +2006,7 @@ ov01_021E6928: ; 0x021E6928
 	add r6, r3, #0
 	bl ov01_021E6880
 	add r0, r4, #0
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	bl sub_0205CB38
 	cmp r0, #0
 	beq _021E694E
@@ -2012,7 +2022,7 @@ _021E694E:
 	bl sub_0205C6CC
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r7, r0, #0
 	ldr r0, [sp]
 	mov r1, #2
@@ -2241,7 +2251,7 @@ ov01_021E6AF4: ; 0x021E6AF4
 	bne _021E6B12
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_02040750
+	bl TryStartMapScriptByType
 	cmp r0, #1
 	bne _021E6B12
 	mov r0, #1
@@ -2257,27 +2267,27 @@ _021E6B12:
 	add r6, r0, #0
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066644
+	bl ScriptState_CheckHaveFollower
 	cmp r0, #1
 	bne _021E6B36
 	mov r6, #1
 _021E6B36:
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_020640C8
+	bl TryGetSeenByNpcTrainers
 	cmp r0, #1
 	bne _021E6B66
 	ldr r0, [r4, #0x40]
 	bl sub_0205CF44
 	ldr r0, [r4, #0x3c]
-	bl sub_0205F574
+	bl MapObjectMan_PauseAllMovement
 	add r0, r4, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _021E6B62
 	add r0, r4, #0
-	bl sub_02069D68
-	bl sub_0205F708
+	bl FollowingPokemon_GetMapObject
+	bl MapObject_UnpauseMovement
 _021E6B62:
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2297,7 +2307,7 @@ _021E6B66:
 	pop {r3, r4, r5, r6, r7, pc}
 _021E6B86:
 	add r0, r4, #0
-	bl ov01_021E7A60
+	bl BugContestTimeoutCheck
 	cmp r0, #0
 	beq _021E6B94
 	mov r0, #1
@@ -2312,7 +2322,7 @@ _021E6B94:
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
 	mov r1, #2
-	bl sub_020668C0
+	bl StrengthFlagAction
 	cmp r0, #0
 	beq _021E6BB6
 	mov r0, #1
@@ -2320,7 +2330,7 @@ _021E6B94:
 _021E6BB6:
 	ldr r0, [r4, #0xc]
 	bl SavArray_PlayerParty_get
-	mov r1, #0x7f
+	mov r1, #MOVE_WATERFALL
 	bl GetIdxOfFirstPartyMonWithMove
 	cmp r0, #0xff
 	beq _021E6BCA
@@ -2360,7 +2370,7 @@ _021E6C02:
 	lsr r0, r0, #0x1f
 	beq _021E6C24
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	ldrb r1, [r5, #4]
 	cmp r1, r0
 	bne _021E6C24
@@ -2385,30 +2395,30 @@ _021E6C24:
 	cmp r0, #1
 	bne _021E6C50
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	ldr r0, [r4, #0x40]
 	bl sub_0205CFBC
 _021E6C50:
 	ldr r0, [sp]
-	bl sub_0205F26C
+	bl MapObject_GetType
 	cmp r0, #9
 	beq _021E6C72
 	ldr r5, [sp]
 	add r0, r5, #0
-	bl sub_0205F27C
+	bl MapObject_GetScript
 	add r1, r0, #0
 	lsl r1, r1, #0x10
 	add r0, r4, #0
 	lsr r1, r1, #0x10
 	add r2, r5, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	b _021E6C7C
 _021E6C72:
 	ldr r2, [sp]
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 _021E6C7C:
 	mov r0, #0
 	add r4, #0xd0
@@ -2417,14 +2427,14 @@ _021E6C7C:
 	pop {r3, r4, r5, r6, r7, pc}
 _021E6C86:
 	add r0, r4, #0
-	bl sub_0203B6D8
+	bl Field_GetBgEvents
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203B6E0
+	bl Field_GetNumBgEvents
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_0203DC90
+	bl GetInteractedBackgroundEventScript
 	add r1, r0, #0
 	ldr r0, _021E6DBC ; =0x0000FFFF
 	cmp r1, r0
@@ -2433,7 +2443,7 @@ _021E6C86:
 	add r0, r4, #0
 	lsr r1, r1, #0x10
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #0
 	add r4, #0xd0
 	strh r0, [r4]
@@ -2444,7 +2454,7 @@ _021E6CBC:
 	bl ov01_021E7B54
 	add r1, r0, #0
 	add r0, r4, #0
-	bl ov01_021E7418
+	bl GetInteractedMetatileScript
 	add r1, r0, #0
 	ldr r0, _021E6DBC ; =0x0000FFFF
 	cmp r1, r0
@@ -2453,7 +2463,7 @@ _021E6CBC:
 	add r0, r4, #0
 	lsr r1, r1, #0x10
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #0
 	add r4, #0xd0
 	strh r0, [r4]
@@ -2470,7 +2480,7 @@ _021E6CE8:
 	add r0, r4, #0
 	lsr r1, r1, #0x10
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #0
 	add r4, #0xd0
 	strh r0, [r4]
@@ -2496,7 +2506,7 @@ _021E6D2A:
 	lsr r1, r0, #0x1e
 	beq _021E6D4C
 	add r0, r4, #0
-	bl sub_02065690
+	bl UseRegisteredItemButtonInField
 	add r6, r0, #0
 	beq _021E6D4C
 	ldrh r1, [r5]
@@ -2515,7 +2525,7 @@ _021E6D4C:
 	bl sub_0203BC10
 	cmp r0, #1
 	bne _021E6D6E
-	ldr r0, _021E6DC0 ; =0x000005FC
+	ldr r0, _021E6DC0 ; =SEQ_SE_DP_WIN_OPEN
 	bl PlaySE
 	add r0, r4, #0
 	bl sub_0203BC28
@@ -2530,7 +2540,7 @@ _021E6D6E:
 	add r0, r4, #0
 	lsl r1, r1, #4
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _021E6D88:
@@ -2560,17 +2570,17 @@ _021E6DB6:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E6DBC: .word 0x0000FFFF
-_021E6DC0: .word 0x000005FC
+_021E6DC0: .word SEQ_SE_DP_WIN_OPEN
 	thumb_func_end ov01_021E6AF4
 
 	thumb_func_start ov01_021E6DC4
 ov01_021E6DC4: ; 0x021E6DC4
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203B6D8
+	bl Field_GetBgEvents
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203B6E0
+	bl Field_GetNumBgEvents
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r5, #0
@@ -2583,7 +2593,7 @@ ov01_021E6DC4: ; 0x021E6DC4
 	add r0, r4, #0
 	lsr r1, r1, #0x10
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021E6DF6:
@@ -2614,7 +2624,7 @@ ov01_021E6E00: ; 0x021E6E00
 	ldr r1, _021E6ED0 ; =0x0000238D
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021E6E32:
@@ -2642,7 +2652,7 @@ _021E6E52:
 	cmp r0, #1
 	bne _021E6EA2
 	ldr r0, [sp]
-	bl sub_0205F264
+	bl MapObject_GetMovement
 	cmp r0, #1
 	beq _021E6EA2
 	ldr r0, [r5, #0x40]
@@ -2650,20 +2660,20 @@ _021E6E52:
 	cmp r0, #1
 	bne _021E6E88
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	ldr r0, [r5, #0x40]
 	bl sub_0205CFBC
 _021E6E88:
 	ldr r4, [sp]
 	add r0, r4, #0
-	bl sub_0205F27C
+	bl MapObject_GetScript
 	add r1, r0, #0
 	lsl r1, r1, #0x10
 	add r0, r5, #0
 	lsr r1, r1, #0x10
 	add r2, r4, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021E6EA2:
@@ -2679,7 +2689,7 @@ _021E6EB4:
 	lsl r0, r0, #0x1d
 	lsr r0, r0, #0x1f
 	beq _021E6ECA
-	ldr r0, _021E6ED4 ; =0x000005FC
+	ldr r0, _021E6ED4 ; =SEQ_SE_DP_WIN_OPEN
 	bl PlaySE
 	add r0, r5, #0
 	bl sub_0203BD20
@@ -2690,7 +2700,7 @@ _021E6ECA:
 	pop {r3, r4, r5, pc}
 	nop
 _021E6ED0: .word 0x0000238D
-_021E6ED4: .word 0x000005FC
+_021E6ED4: .word SEQ_SE_DP_WIN_OPEN
 	thumb_func_end ov01_021E6E00
 
 	thumb_func_start ov01_021E6ED8
@@ -2735,7 +2745,7 @@ ov01_021E6EFC: ; 0x021E6EFC
 	add r0, r5, #0
 	mov r1, #5
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021E6F2A:
@@ -2756,7 +2766,7 @@ _021E6F2E:
 	cmp r0, #1
 	bne _021E6F5A
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	ldr r0, [r5, #0x40]
 	bl sub_0205CFBC
@@ -2764,13 +2774,13 @@ _021E6F5A:
 	bl sub_020380B0
 	ldr r4, [sp]
 	add r0, r4, #0
-	bl sub_0205F27C
+	bl MapObject_GetScript
 	add r1, r0, #0
 	lsl r1, r1, #0x10
 	add r0, r5, #0
 	lsr r1, r1, #0x10
 	add r2, r4, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021E6F78:
@@ -2799,7 +2809,7 @@ _021E6F98:
 	bl ov01_021E690C
 	cmp r0, #0
 	beq _021E6FCC
-	ldr r0, _021E6FD0 ; =0x000005FC
+	ldr r0, _021E6FD0 ; =SEQ_SE_DP_WIN_OPEN
 	bl PlaySE
 	add r0, r5, #0
 	bl sub_0203BCDC
@@ -2812,7 +2822,7 @@ _021E6FCC:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021E6FD0: .word 0x000005FC
+_021E6FD0: .word SEQ_SE_DP_WIN_OPEN
 	thumb_func_end ov01_021E6EFC
 
 	thumb_func_start ov01_021E6FD4
@@ -2827,7 +2837,7 @@ ov01_021E6FD4: ; 0x021E6FD4
 	bne _021E6FF6
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_02040750
+	bl TryStartMapScriptByType
 	cmp r0, #1
 	bne _021E6FF6
 	add sp, #4
@@ -2848,44 +2858,44 @@ _021E6FF6:
 	cmp r0, #1
 	bne _021E7022
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	ldr r0, [r4, #0x40]
 	bl sub_0205CFBC
 _021E7022:
 	ldr r0, [sp]
-	bl sub_0205F26C
+	bl MapObject_GetType
 	cmp r0, #9
 	beq _021E7044
 	ldr r5, [sp]
 	add r0, r5, #0
-	bl sub_0205F27C
+	bl MapObject_GetScript
 	add r1, r0, #0
 	lsl r1, r1, #0x10
 	add r0, r4, #0
 	lsr r1, r1, #0x10
 	add r2, r5, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	b _021E704E
 _021E7044:
 	ldr r2, [sp]
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 _021E704E:
 	add sp, #4
 	mov r0, #1
 	pop {r3, r4, r5, r6, pc}
 _021E7054:
 	add r0, r4, #0
-	bl sub_0203B6D8
+	bl Field_GetBgEvents
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0203B6E0
+	bl Field_GetNumBgEvents
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_0203DC90
+	bl GetInteractedBackgroundEventScript
 	add r1, r0, #0
 	ldr r0, _021E710C ; =0x0000FFFF
 	cmp r1, r0
@@ -2894,7 +2904,7 @@ _021E7054:
 	add r0, r4, #0
 	lsr r1, r1, #0x10
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	add sp, #4
 	mov r0, #1
 	pop {r3, r4, r5, r6, pc}
@@ -2903,7 +2913,7 @@ _021E7086:
 	bl ov01_021E7B54
 	add r1, r0, #0
 	add r0, r4, #0
-	bl ov01_021E7418
+	bl GetInteractedMetatileScript
 	add r1, r0, #0
 	ldr r0, _021E710C ; =0x0000FFFF
 	cmp r1, r0
@@ -2912,7 +2922,7 @@ _021E7086:
 	add r0, r4, #0
 	lsr r1, r1, #0x10
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	add sp, #4
 	mov r0, #1
 	pop {r3, r4, r5, r6, pc}
@@ -2935,7 +2945,7 @@ _021E70C8:
 	lsr r1, r0, #0x1e
 	beq _021E70EC
 	add r0, r4, #0
-	bl sub_02065690
+	bl UseRegisteredItemButtonInField
 	add r6, r0, #0
 	beq _021E70EC
 	ldrh r1, [r5]
@@ -2951,7 +2961,7 @@ _021E70EC:
 	lsl r0, r0, #0x1d
 	lsr r0, r0, #0x1f
 	beq _021E7106
-	ldr r0, _021E7110 ; =0x000005FC
+	ldr r0, _021E7110 ; =SEQ_SE_DP_WIN_OPEN
 	bl PlaySE
 	add r0, r4, #0
 	bl sub_0203BC28
@@ -2964,7 +2974,7 @@ _021E7106:
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
 _021E710C: .word 0x0000FFFF
-_021E7110: .word 0x000005FC
+_021E7110: .word SEQ_SE_DP_WIN_OPEN
 	thumb_func_end ov01_021E6FD4
 
 	thumb_func_start ov01_021E7114
@@ -2988,10 +2998,10 @@ _021E7132:
 	add r0, r4, #0
 	add r1, sp, #4
 	add r2, sp, #0
-	bl ov01_021E7AB8
+	bl PlayerAvatar_GetStandingTileCoords
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
-	bl sub_020668A0
+	bl ScriptState_CheckPalParkSysFlag
 	cmp r0, #1
 	bne _021E7172
 	ldr r1, [sp, #4]
@@ -3050,7 +3060,7 @@ ov01_021E7198: ; 0x021E7198
 _021E71B0:
 	add r1, sp, #0x10
 	add r2, sp, #0xc
-	bl ov01_021E7AB8
+	bl PlayerAvatar_GetStandingTileCoords
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0xc]
 	add r0, r6, #0
@@ -3126,7 +3136,7 @@ _021E724E:
 	add r0, r6, #0
 	add r1, sp, #0x10
 	add r2, sp, #0xc
-	bl ov01_021E7AD4
+	bl PlayerAvatar_GetFacingTileCoords
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0xc]
 	add r0, r6, #0
@@ -3174,7 +3184,7 @@ _021E72B6:
 	add r0, r6, #0
 	add r1, sp, #0x10
 	add r2, sp, #0xc
-	bl ov01_021E7AB8
+	bl PlayerAvatar_GetStandingTileCoords
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0xc]
 	add r0, r6, #0
@@ -3343,19 +3353,19 @@ _021E73FC:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov01_021E7198
 
-	thumb_func_start ov01_021E7418
-ov01_021E7418: ; 0x021E7418
+	thumb_func_start GetInteractedMetatileScript
+GetInteractedMetatileScript: ; 0x021E7418
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x40]
 	add r4, r1, #0
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r7, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
@@ -3375,70 +3385,70 @@ _021E7450:
 	beq _021E7462
 	cmp r6, #0
 	bne _021E7462
-	ldr r0, _021E75E0 ; =0x000007DA
+	ldr r0, _021E75E0 ; =std_pokecenter_pc
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7462:
 	add r0, r4, #0
 	bl sub_0205B84C
 	cmp r0, #0
 	beq _021E7470
-	ldr r0, _021E75E4 ; =0x000009C4
+	ldr r0, _021E75E4 ; =std_picture_books
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7470:
 	add r0, r4, #0
 	bl sub_0205B858
 	cmp r0, #0
 	beq _021E747E
-	ldr r0, _021E75E8 ; =0x000009C5
+	ldr r0, _021E75E8 ; =std_books_for_pkmn
 	pop {r3, r4, r5, r6, r7, pc}
 _021E747E:
 	add r0, r4, #0
 	bl sub_0205B864
 	cmp r0, #0
 	beq _021E748C
-	ldr r0, _021E75EC ; =0x000009C6
+	ldr r0, _021E75EC ; =std_chock_full
 	pop {r3, r4, r5, r6, r7, pc}
 _021E748C:
 	add r0, r4, #0
 	bl sub_0205B870
 	cmp r0, #0
 	beq _021E749A
-	ldr r0, _021E75F0 ; =0x000009C7
+	ldr r0, _021E75F0 ; =std_magazines
 	pop {r3, r4, r5, r6, r7, pc}
 _021E749A:
 	add r0, r4, #0
 	bl sub_0205B87C
 	cmp r0, #0
 	beq _021E74A8
-	ldr r0, _021E75F4 ; =0x000009C8
+	ldr r0, _021E75F4 ; =std_trash_empty
 	pop {r3, r4, r5, r6, r7, pc}
 _021E74A8:
 	add r0, r4, #0
 	bl sub_0205B888
 	cmp r0, #0
 	beq _021E74B6
-	ldr r0, _021E75F8 ; =0x000009C9
+	ldr r0, _021E75F8 ; =std_vibrant_pkmn_goods
 	pop {r3, r4, r5, r6, r7, pc}
 _021E74B6:
 	add r0, r4, #0
 	bl sub_0205B894
 	cmp r0, #0
 	beq _021E74C4
-	ldr r0, _021E75FC ; =0x000009CA
+	ldr r0, _021E75FC ; =std_convenient_items
 	pop {r3, r4, r5, r6, r7, pc}
 _021E74C4:
 	add r0, r4, #0
 	bl sub_0205B8A0
 	cmp r0, #0
 	beq _021E74D2
-	ldr r0, _021E7600 ; =0x000009CB
+	ldr r0, _021E7600 ; =std_pkmn_merchandise
 	pop {r3, r4, r5, r6, r7, pc}
 _021E74D2:
 	add r0, r4, #0
 	bl sub_0205B7EC
 	cmp r0, #0
 	beq _021E74E0
-	ldr r0, _021E7604 ; =0x000009CC
+	ldr r0, _021E7604 ; =std_town_map
 	pop {r3, r4, r5, r6, r7, pc}
 _021E74E0:
 	add r0, r4, #0
@@ -3447,14 +3457,14 @@ _021E74E0:
 	beq _021E74F2
 	cmp r6, #0
 	bne _021E74F2
-	ldr r0, _021E7608 ; =0x00002774
+	ldr r0, _021E7608 ; =std_tv
 	pop {r3, r4, r5, r6, r7, pc}
 _021E74F2:
 	add r0, r4, #0
 	bl sub_0205BAF8
 	cmp r0, #0
 	beq _021E7500
-	ldr r0, _021E760C ; =0x0000271E
+	ldr r0, _021E760C ; =std_field_headbutt
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7500:
 	add r0, r4, #0
@@ -3462,7 +3472,7 @@ _021E7500:
 	bl ov01_021F25E8
 	cmp r0, #0
 	beq _021E7510
-	ldr r0, _021E7610 ; =0x00002713
+	ldr r0, _021E7610 ; =std_field_rock_climb
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7510:
 	ldr r0, [r5, #0x40]
@@ -3485,11 +3495,11 @@ _021E7510:
 	beq _021E7550
 	ldr r0, [r5, #0xc]
 	bl SavArray_PlayerParty_get
-	mov r1, #0x39
+	mov r1, #MOVE_SURF
 	bl GetIdxOfFirstPartyMonWithMove
 	cmp r0, #0xff
 	beq _021E7550
-	ldr r0, _021E7614 ; =0x00002714
+	ldr r0, _021E7614 ; =std_field_surf
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7550:
 	add r0, r5, #0
@@ -3503,21 +3513,21 @@ _021E7550:
 	bl ov02_0224E4CC
 	cmp r0, #0
 	beq _021E75AC
-	ldr r0, _021E7618 ; =0x00002260
+	ldr r0, _021E7618 ; =std_safari_place_object
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7570:
 	add r0, r4, #0
 	bl sub_0205B8DC
 	cmp r0, #0
 	beq _021E757E
-	ldr r0, _021E761C ; =0x00002715
+	ldr r0, _021E761C ; =std_field_waterfall
 	pop {r3, r4, r5, r6, r7, pc}
 _021E757E:
 	add r0, r4, #0
 	bl sub_0205B8E8
 	cmp r0, #0
 	beq _021E758C
-	ldr r0, _021E7620 ; =0x00002720
+	ldr r0, _021E7620 ; =std_field_whirlpool
 	pop {r3, r4, r5, r6, r7, pc}
 _021E758C:
 	add r0, r5, #0
@@ -3531,16 +3541,16 @@ _021E758C:
 	bl ov02_0224E4DC
 	cmp r0, #0
 	beq _021E75AC
-	ldr r0, _021E7618 ; =0x00002260
+	ldr r0, _021E7618 ; =std_safari_place_object
 	pop {r3, r4, r5, r6, r7, pc}
 _021E75AC:
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066860
+	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #0
 	beq _021E75D6
 	ldr r0, [r5, #0xc]
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	bl sub_0202F620
 	cmp r0, #0
 	bne _021E75D6
@@ -3548,39 +3558,39 @@ _021E75AC:
 	bl sub_0205BAEC
 	cmp r0, #0
 	beq _021E75D6
-	ldr r0, _021E7624 ; =0x00002261
+	ldr r0, _021E7624 ; =std_safari_remove_object
 	pop {r3, r4, r5, r6, r7, pc}
 _021E75D6:
 	ldr r0, _021E75DC ; =0x0000FFFF
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E75DC: .word 0x0000FFFF
-_021E75E0: .word 0x000007DA
-_021E75E4: .word 0x000009C4
-_021E75E8: .word 0x000009C5
-_021E75EC: .word 0x000009C6
-_021E75F0: .word 0x000009C7
-_021E75F4: .word 0x000009C8
-_021E75F8: .word 0x000009C9
-_021E75FC: .word 0x000009CA
-_021E7600: .word 0x000009CB
-_021E7604: .word 0x000009CC
-_021E7608: .word 0x00002774
-_021E760C: .word 0x0000271E
-_021E7610: .word 0x00002713
-_021E7614: .word 0x00002714
-_021E7618: .word 0x00002260
-_021E761C: .word 0x00002715
-_021E7620: .word 0x00002720
-_021E7624: .word 0x00002261
-	thumb_func_end ov01_021E7418
+_021E75E0: .word std_pokecenter_pc
+_021E75E4: .word std_picture_books
+_021E75E8: .word std_books_for_pkmn
+_021E75EC: .word std_chock_full
+_021E75F0: .word std_magazines
+_021E75F4: .word std_trash_empty
+_021E75F8: .word std_vibrant_pkmn_goods
+_021E75FC: .word std_convenient_items
+_021E7600: .word std_pkmn_merchandise
+_021E7604: .word std_town_map
+_021E7608: .word std_tv
+_021E760C: .word std_field_headbutt
+_021E7610: .word std_field_rock_climb
+_021E7614: .word std_field_surf
+_021E7618: .word std_safari_place_object
+_021E761C: .word std_field_waterfall
+_021E7620: .word std_field_whirlpool
+_021E7624: .word std_safari_remove_object
+	thumb_func_end GetInteractedMetatileScript
 
 	thumb_func_start ov01_021E7628
 ov01_021E7628: ; 0x021E7628
 	push {r3, r4, r5, r6, r7, lr}
 	mov r1, #6
 	add r5, r0, #0
-	bl sub_02068F68
+	bl Fsys_IsSavGymmickTypeEqualTo
 	cmp r0, #0
 	beq _021E7644
 	add r0, r5, #0
@@ -3591,7 +3601,7 @@ ov01_021E7628: ; 0x021E7628
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7644:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r2, r0, #0
 	ldr r1, [r5, #0x40]
 	add r0, r5, #0
@@ -3599,7 +3609,7 @@ _021E7644:
 	cmp r0, #1
 	ldr r0, [r5, #0x40]
 	bne _021E7672
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	bl sub_0205F504
 	add r1, r0, #0
 	lsl r1, r1, #0x18
@@ -3609,10 +3619,10 @@ _021E7644:
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7672:
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -3715,10 +3725,10 @@ _021E7746:
 ov01_021E774C: ; 0x021E774C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203B744
+	bl Field_GetCoordEvents
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203B73C
+	bl Field_GetNumCoordEvents
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r5, #0
@@ -3729,7 +3739,7 @@ ov01_021E774C: ; 0x021E774C
 	beq _021E777A
 	add r0, r4, #0
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021E777A:
@@ -3758,7 +3768,7 @@ _021E779C:
 	cmp r0, #1
 	bne _021E77E0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	cmp r0, #2
 	bne _021E77B4
 	mov r0, #3
@@ -3792,7 +3802,7 @@ _021E77E0:
 	cmp r0, #1
 	bne _021E781C
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	cmp r0, #2
 	beq _021E7802
 	cmp r0, #3
@@ -3895,7 +3905,7 @@ ov01_021E788C: ; 0x021E788C
 	ldr r1, _021E78D4 ; =0x000007E5
 	add r0, r4, #0
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021E78CE:
@@ -3907,12 +3917,12 @@ _021E78D4: .word 0x000007E5
 
 	thumb_func_start ov01_021E78D8
 ov01_021E78D8: ; 0x021E78D8
-	ldr r3, _021E78E0 ; =ov02_0224BAE4
+	ldr r3, _021E78E0 ; =PlayerStepEvent_RepelCounterDecrement
 	add r1, r0, #0
 	ldr r0, [r1, #0xc]
 	bx r3
 	.balign 4, 0
-_021E78E0: .word ov02_0224BAE4
+_021E78E0: .word PlayerStepEvent_RepelCounterDecrement
 	thumb_func_end ov01_021E78D8
 
 	thumb_func_start ov01_021E78E4
@@ -3978,7 +3988,7 @@ ov01_021E794C: ; 0x021E794C
 	bl SavArray_PlayerParty_get
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B9C0
 	ldrh r1, [r0]
 	add r1, r1, #1
@@ -4024,7 +4034,7 @@ _021E79AC:
 	ldr r1, _021E79C8 ; =0x000007D3
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021E79C2:
@@ -4040,14 +4050,14 @@ ov01_021E79CC: ; 0x021E79CC
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066860
+	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #0
 	bne _021E79E2
 	mov r0, #0
 	pop {r4, pc}
 _021E79E2:
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B9B8
 	ldrh r0, [r0]
 	cmp r0, #0
@@ -4055,7 +4065,7 @@ _021E79E2:
 	ldr r1, _021E7A04 ; =0x00002263
 	add r0, r4, #0
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #1
 	pop {r4, pc}
 _021E7A00:
@@ -4070,7 +4080,7 @@ ov01_021E7A08: ; 0x021E7A08
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetPhoneRematches
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
@@ -4105,11 +4115,11 @@ _021E7A56:
 _021E7A5C: .word 0x00000984
 	thumb_func_end ov01_021E7A08
 
-	thumb_func_start ov01_021E7A60
-ov01_021E7A60: ; 0x021E7A60
+	thumb_func_start BugContestTimeoutCheck
+BugContestTimeoutCheck: ; 0x021E7A60
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
@@ -4122,18 +4132,18 @@ _021E7A7C:
 	ldr r0, [r5, #0x1c]
 	cmp r0, #0x14
 	blo _021E7A90
-	ldr r1, _021E7A94 ; =0x000028A0
+	ldr r1, _021E7A94 ; =std_bug_contest_time_up
 	add r0, r4, #0
 	mov r2, #0
-	bl sub_0203FE74
+	bl StartMapSceneScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021E7A90:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021E7A94: .word 0x000028A0
-	thumb_func_end ov01_021E7A60
+_021E7A94: .word std_bug_contest_time_up
+	thumb_func_end BugContestTimeoutCheck
 
 	thumb_func_start ov01_021E7A98
 ov01_021E7A98: ; 0x021E7A98
@@ -4145,53 +4155,53 @@ ov01_021E7A98: ; 0x021E7A98
 	bl GameStats_GetCapped
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_02031B14
+	bl Save_ApricornBox_get
 	add r1, r4, #0
 	bl sub_02032058
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021E7A98
 
-	thumb_func_start ov01_021E7AB8
-ov01_021E7AB8: ; 0x021E7AB8
+	thumb_func_start PlayerAvatar_GetStandingTileCoords
+PlayerAvatar_GetStandingTileCoords: ; 0x021E7AB8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x40]
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	str r0, [r4]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	str r0, [r6]
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021E7AB8
+	thumb_func_end PlayerAvatar_GetStandingTileCoords
 
-	thumb_func_start ov01_021E7AD4
-ov01_021E7AD4: ; 0x021E7AD4
+	thumb_func_start PlayerAvatar_GetFacingTileCoords
+PlayerAvatar_GetFacingTileCoords: ; 0x021E7AD4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x40]
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	add r0, r5, #0
 	add r2, r4, #0
 	add r3, r6, #0
-	bl ov01_021E7AF0
+	bl ShiftFieldCoordsByCompassDirection
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_021E7AD4
+	thumb_func_end PlayerAvatar_GetFacingTileCoords
 
-	thumb_func_start ov01_021E7AF0
-ov01_021E7AF0: ; 0x021E7AF0
+	thumb_func_start ShiftFieldCoordsByCompassDirection
+ShiftFieldCoordsByCompassDirection: ; 0x021E7AF0
 	push {r4, r5, r6, lr}
 	add r4, r2, #0
 	add r5, r3, #0
 	add r6, r1, #0
 	add r1, r4, #0
 	add r2, r5, #0
-	bl ov01_021E7AB8
+	bl PlayerAvatar_GetStandingTileCoords
 	cmp r6, #3
 	bhi _021E7B36
 	add r0, r6, r6
@@ -4226,7 +4236,7 @@ _021E7B30:
 	str r0, [r4]
 _021E7B36:
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_021E7AF0
+	thumb_func_end ShiftFieldCoordsByCompassDirection
 
 	thumb_func_start ov01_021E7B38
 ov01_021E7B38: ; 0x021E7B38
@@ -4235,7 +4245,7 @@ ov01_021E7B38: ; 0x021E7B38
 	add r1, sp, #4
 	add r2, sp, #0
 	add r4, r0, #0
-	bl ov01_021E7AB8
+	bl PlayerAvatar_GetStandingTileCoords
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r4, #0
@@ -4251,7 +4261,7 @@ ov01_021E7B54: ; 0x021E7B54
 	add r1, sp, #4
 	add r2, sp, #0
 	add r4, r0, #0
-	bl ov01_021E7AD4
+	bl PlayerAvatar_GetFacingTileCoords
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r4, #0
@@ -4267,7 +4277,7 @@ ov01_021E7B70: ; 0x021E7B70
 	add r1, sp, #4
 	add r2, sp, #0
 	add r4, r0, #0
-	bl ov01_021E7AD4
+	bl PlayerAvatar_GetFacingTileCoords
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r4, #0
@@ -4285,7 +4295,7 @@ ov01_021E7B90: ; 0x021E7B90
 	add r7, r1, #0
 	str r2, [sp]
 	add r5, r3, #0
-	bl sub_0203B700
+	bl Field_GetWarpEventAtXYPos
 	add r6, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -4296,7 +4306,7 @@ ov01_021E7B90: ; 0x021E7B90
 _021E7BAC:
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_0203B6E8
+	bl Field_GetWarpEventI
 	cmp r0, #0
 	bne _021E7BBC
 	mov r0, #0
@@ -4314,8 +4324,8 @@ _021E7BBC:
 	bl GF_AssertFail
 _021E7BD2:
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
-	bl sub_0203B968
+	bl Save_FlyPoints_get
+	bl FlyPoints_GetDynamicWarp
 	add r2, r0, #0
 	ldmia r2!, {r0, r1}
 	stmia r5!, {r0, r1}
@@ -4336,11 +4346,11 @@ _021E7BEC:
 	str r0, [r5, #0x10]
 _021E7BFE:
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B95C
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	ldr r1, [r4, #0x20]
 	ldr r1, [r1]
 	str r1, [r5]
@@ -4363,8 +4373,8 @@ ov01_021E7C28: ; 0x021E7C28
 	add r7, r1, #0
 	str r2, [sp]
 	add r4, r3, #0
-	bl sub_0203B9C4
-	bl sub_0203B964
+	bl Save_FlyPoints_get
+	bl FlyPoints_GetSpecialSpawnWarpPtr
 	add r6, r0, #0
 	ldr r3, [r5, #0x20]
 	add r2, r6, #0
@@ -4401,7 +4411,7 @@ ov01_021E7C70: ; 0x021E7C70
 	add r1, sp, #4
 	add r2, sp, #0
 	add r4, r0, #0
-	bl ov01_021E7AB8
+	bl PlayerAvatar_GetStandingTileCoords
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r4, #0
@@ -4419,7 +4429,7 @@ ov01_021E7C70: ; 0x021E7C70
 	cmp r0, #0
 	bne _021E7CFC
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r3, r0, #0
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
@@ -4431,7 +4441,7 @@ _021E7CBA:
 	add r0, r4, #0
 	add r1, sp, #4
 	add r2, sp, #0
-	bl ov01_021E7AD4
+	bl PlayerAvatar_GetFacingTileCoords
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r4, #0
@@ -4449,7 +4459,7 @@ _021E7CBA:
 	cmp r0, #0
 	bne _021E7CFC
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r3, r0, #0
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
@@ -4527,8 +4537,8 @@ ov01_021E7D58: ; 0x021E7D58
 	ldr r0, _021E7DE4 ; =ov01_022063BC
 	ldrh r4, [r0, r1]
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
-	bl sub_0203B958
+	bl Save_FlyPoints_get
+	bl FlyPoints_GetPosition
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0x8b
@@ -4646,7 +4656,7 @@ _021E7E30:
 	ldr r2, [r2]
 	cmp r2, r0
 	beq _021E7E80
-	ldr r2, _021E7EF4 ; =ov01_022063BE
+	ldr r2, _021E7EF4 ; =ov01_022063BC + 2
 	ldrh r1, [r2, r1]
 	cmp r1, #1
 	bne _021E7E7C
@@ -4697,7 +4707,7 @@ _021E7EC6:
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	mov r1, #0xa
-	bl sub_02006154
+	bl StopSE
 	mov r0, #0
 	mov r1, #0x80
 	mov r2, #0xf
@@ -4710,7 +4720,7 @@ _021E7EEC:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E7EF0: .word ov01_022063BC
-_021E7EF4: .word ov01_022063BE
+_021E7EF4: .word ov01_022063BC + 2
 _021E7EF8: .word ov01_02206388
 _021E7EFC: .word ov01_0220638C
 	thumb_func_end ov01_021E7DFC
@@ -4725,10 +4735,10 @@ ov01_021E7F00: ; 0x021E7F00
 	cmp r0, #0
 	bne _021E7F34
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r2, r0, #0
 	cmp r4, #0
 	beq _021E7F2C
@@ -4752,13 +4762,13 @@ ov01_021E7F38: ; 0x021E7F38
 	bl ov01_021E7FA8
 	cmp r0, #0
 	beq _021E7F46
-	ldr r0, _021E7F4C ; =0x0000271E
+	ldr r0, _021E7F4C ; =std_field_headbutt
 	pop {r3, pc}
 _021E7F46:
 	ldr r0, _021E7F50 ; =0x0000FFFF
 	pop {r3, pc}
 	nop
-_021E7F4C: .word 0x0000271E
+_021E7F4C: .word std_field_headbutt
 _021E7F50: .word 0x0000FFFF
 	thumb_func_end ov01_021E7F38
 
@@ -4771,7 +4781,7 @@ ov01_021E7F54: ; 0x021E7F54
 	cmp r0, #1
 	bne _021E7F7C
 	ldr r0, [sp]
-	bl sub_0205F26C
+	bl MapObject_GetType
 	cmp r0, #0
 	beq _021E7F74
 	cmp r0, #3
@@ -4786,14 +4796,14 @@ _021E7F78:
 	pop {r3, r4, r5, pc}
 _021E7F7C:
 	add r0, r5, #0
-	bl sub_0203B6D8
+	bl Field_GetBgEvents
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203B6E0
+	bl Field_GetNumBgEvents
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0203DC90
+	bl GetInteractedBackgroundEventScript
 	ldr r1, _021E7FA4 ; =0x0000FFFF
 	cmp r0, r1
 	beq _021E7F9E
@@ -4813,7 +4823,7 @@ ov01_021E7FA8: ; 0x021E7FA8
 	add r1, sp, #4
 	add r2, sp, #0
 	add r4, r0, #0
-	bl ov01_021E7AD4
+	bl PlayerAvatar_GetFacingTileCoords
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r4, #0
@@ -4892,7 +4902,7 @@ _021E803C:
 	ldr r0, [sp, #0x20]
 	mov r2, #0
 	add r3, r4, #0
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	ldr r1, [sp, #0x24]
 	str r0, [sp, #0x28]
 	add r2, r4, #0
@@ -5004,7 +5014,7 @@ _021E811A:
 	ldrh r1, [r1, #0xc]
 	mov r2, #0
 	add r3, r4, #0
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	mov r3, #0x4e
 	lsl r3, r3, #2
 	ldr r1, [r5, r3]
@@ -7362,7 +7372,7 @@ _021E9238:
 	add r0, r6, #0
 	add r1, r5, #0
 	mov r2, #1
-	bl ov01_021E9650
+	bl GetDoorSE
 	add r3, r0, #0
 	ldr r0, [r6, #0x58]
 	mov r1, #1
@@ -7384,12 +7394,12 @@ _021E9256:
 	b _021E934C
 _021E926A:
 	ldr r0, [r6, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	mov r1, #0xc
 	add r5, r0, #0
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	add r0, r6, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _021E92A8
 	add r0, r6, #0
@@ -7397,10 +7407,10 @@ _021E926A:
 	cmp r0, #0
 	bne _021E92A8
 	add r0, r5, #0
-	bl sub_0205F8FC
+	bl MapObject_GetPrevX
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0205F90C
+	bl MapObject_GetPrevY
 	add r3, r6, #0
 	add r2, r0, #0
 	mov r0, #0xc
@@ -7414,25 +7424,25 @@ _021E92A8:
 	b _021E934C
 _021E92B0:
 	ldr r0, [r6, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #1
 	bne _021E934C
 	add r0, r6, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _021E92EE
 	add r0, r6, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r7, r0, #0
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #1
 	bne _021E934C
 	add r0, r5, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	add r0, r7, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -7444,7 +7454,7 @@ _021E92EE:
 	b _021E934C
 _021E92F6:
 	ldr r0, [r6, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	mov r1, #1
 	bl sub_0205F690
 	add sp, #0x58
@@ -7680,7 +7690,7 @@ _021E94DC:
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #1
-	bl ov01_021E9650
+	bl GetDoorSE
 	add r3, r0, #0
 	ldr r0, [r4, #0x58]
 	mov r1, #1
@@ -7697,7 +7707,7 @@ _021E94FA:
 	cmp r0, #0
 	beq _021E95B0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	mov r1, #0
 	bl sub_0205F690
 	ldr r0, [r6]
@@ -7706,22 +7716,22 @@ _021E94FA:
 	b _021E95B0
 _021E951A:
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	mov r1, #0xd
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldr r0, [r6]
 	add r0, r0, #1
 	str r0, [r6]
 	b _021E95B0
 _021E952E:
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #1
 	bne _021E95B0
 	add r0, r5, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	add r0, r4, #0
 	mov r1, #1
 	bl ov01_02205790
@@ -7731,7 +7741,7 @@ _021E952E:
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0
-	bl ov01_021E9650
+	bl GetDoorSE
 	add r3, r0, #0
 	mov r1, #1
 	ldr r0, [r4, #0x58]
@@ -7862,8 +7872,8 @@ _021E964C:
 	.balign 4, 0
 	thumb_func_end ov01_021E9610
 
-	thumb_func_start ov01_021E9650
-ov01_021E9650: ; 0x021E9650
+	thumb_func_start GetDoorSE
+GetDoorSE: ; 0x021E9650
 	push {r3, r4, r5, lr}
 	sub sp, #0x18
 	ldr r0, [r0, #0x34]
@@ -7893,24 +7903,24 @@ _021E967E: ; jump table
 	.short _021E969A - _021E967E - 2 ; case 4
 _021E9688:
 	add sp, #0x18
-	ldr r0, _021E96E8 ; =0x00000604
+	ldr r0, _021E96E8 ; =SEQ_SE_DP_DOOR_OPEN
 	pop {r3, r4, r5, pc}
 _021E968E:
 	add sp, #0x18
-	ldr r0, _021E96EC ; =0x00000607
+	ldr r0, _021E96EC ; =SEQ_SE_DP_DOOR10
 	pop {r3, r4, r5, pc}
 _021E9694:
 	add sp, #0x18
-	ldr r0, _021E96F0 ; =0x000005DB
+	ldr r0, _021E96F0 ; =SEQ_SE_PL_DOOR_OPEN5
 	pop {r3, r4, r5, pc}
 _021E969A:
 	add sp, #0x18
-	ldr r0, _021E96F4 ; =0x00000915
+	ldr r0, _021E96F4 ; =SEQ_SE_GS_HIKIDO_OPEN
 	pop {r3, r4, r5, pc}
 _021E96A0:
 	bl GF_AssertFail
 	add sp, #0x18
-	ldr r0, _021E96E8 ; =0x00000604
+	ldr r0, _021E96E8 ; =SEQ_SE_DP_DOOR_OPEN
 	pop {r3, r4, r5, pc}
 _021E96AA:
 	ldrb r0, [r0, #4]
@@ -7930,7 +7940,7 @@ _021E96BC: ; jump table
 	.short _021E96D8 - _021E96BC - 2 ; case 4
 _021E96C6:
 	add sp, #0x18
-	ldr r0, _021E96F8 ; =0x00000606
+	ldr r0, _021E96F8 ; =SEQ_SE_DP_DOOR_CLOSE2
 	pop {r3, r4, r5, pc}
 _021E96CC:
 	add sp, #0x18
@@ -7942,21 +7952,21 @@ _021E96D2:
 	pop {r3, r4, r5, pc}
 _021E96D8:
 	add sp, #0x18
-	ldr r0, _021E96FC ; =0x00000916
+	ldr r0, _021E96FC ; =SEQ_SE_GS_HIKIDO_CLOSE
 	pop {r3, r4, r5, pc}
 _021E96DE:
 	bl GF_AssertFail
-	ldr r0, _021E96F8 ; =0x00000606
+	ldr r0, _021E96F8 ; =SEQ_SE_DP_DOOR_CLOSE2
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021E96E8: .word 0x00000604
-_021E96EC: .word 0x00000607
-_021E96F0: .word 0x000005DB
-_021E96F4: .word 0x00000915
-_021E96F8: .word 0x00000606
-_021E96FC: .word 0x00000916
-	thumb_func_end ov01_021E9650
+_021E96E8: .word SEQ_SE_DP_DOOR_OPEN
+_021E96EC: .word SEQ_SE_DP_DOOR10
+_021E96F0: .word SEQ_SE_PL_DOOR_OPEN5
+_021E96F4: .word SEQ_SE_GS_HIKIDO_OPEN
+_021E96F8: .word SEQ_SE_DP_DOOR_CLOSE2
+_021E96FC: .word SEQ_SE_GS_HIKIDO_CLOSE
+	thumb_func_end GetDoorSE
 
 	thumb_func_start ov01_021E9700
 ov01_021E9700: ; 0x021E9700
@@ -8078,14 +8088,14 @@ _021E97D6:
 	pop {r3, r4, r5, r6, r7, pc}
 _021E97E0:
 	ldr r0, [r6, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _021E97FA
 	add r0, r5, #0
 	mov r1, #0x49
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	b _021E97FE
 _021E97FA:
 	bl GF_AssertFail
@@ -8098,14 +8108,14 @@ _021E9806:
 	mov r0, #1
 	bl ov01_021E636C
 	ldr r0, [r6, #0x58]
-	ldr r3, _021E98EC ; =0x00000614
+	ldr r3, _021E98EC ; =SEQ_SE_DP_ESUKA
 	mov r1, #2
 	mov r2, #0
 	bl ov01_021E8E98
 	ldr r0, [r6, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _021E983A
 	cmp r5, #3
@@ -8116,7 +8126,7 @@ _021E9830:
 	mov r1, #0xa
 _021E9832:
 	add r0, r6, #0
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	b _021E983E
 _021E983A:
 	bl GF_AssertFail
@@ -8127,23 +8137,23 @@ _021E983E:
 	b _021E98E0
 _021E9846:
 	ldr r0, [r6, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _021E98E0
 	add r0, r5, #0
 	mov r1, #0x4a
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _021E98E0
 _021E9866:
 	ldr r0, [r6, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _021E98E0
 	cmp r5, #3
@@ -8154,20 +8164,20 @@ _021E987E:
 	mov r1, #0xa
 _021E9880:
 	add r0, r6, #0
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _021E98E0
 _021E988E:
 	ldr r0, [r6, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r7, r0, #0
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #1
 	bne _021E98E0
 	add r0, r7, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	add r0, r6, #0
 	add r1, r5, #0
 	bl ov01_02205790
@@ -8188,9 +8198,9 @@ _021E98B4:
 	ldr r1, [r6, #0x58]
 	mov r2, #2
 	bl ov01_021E8ED0
-	ldr r0, _021E98EC ; =0x00000614
+	ldr r0, _021E98EC ; =SEQ_SE_DP_ESUKA
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	add sp, #0x40
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -8200,7 +8210,7 @@ _021E98E0:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E98E8: .word ov01_02206408
-_021E98EC: .word 0x00000614
+_021E98EC: .word SEQ_SE_DP_ESUKA
 	thumb_func_end ov01_021E971C
 
 	thumb_func_start ov01_021E98F0
@@ -8303,14 +8313,14 @@ _021E99AA:
 	pop {r4, r5, r6, r7, pc}
 _021E99B4:
 	ldr r0, [r6, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _021E99CE
 	add r0, r5, #0
 	mov r1, #0x49
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	b _021E99D2
 _021E99CE:
 	bl GF_AssertFail
@@ -8321,14 +8331,14 @@ _021E99D2:
 	b _021E9AAC
 _021E99DA:
 	ldr r0, [r6, #0x58]
-	ldr r3, _021E9AB8 ; =0x00000614
+	ldr r3, _021E9AB8 ; =SEQ_SE_DP_ESUKA
 	mov r1, #2
 	mov r2, #0
 	bl ov01_021E8E98
 	ldr r0, [r6, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r7, r0, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _021E9A30
 	cmp r5, #2
@@ -8340,16 +8350,16 @@ _021E99FE:
 _021E9A00:
 	add r0, r7, #0
 	add r1, r5, #0
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	add r0, r6, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _021E9A34
 	add r0, r7, #0
-	bl sub_0205F8FC
+	bl MapObject_GetPrevX
 	str r0, [sp, #0x18]
 	add r0, r7, #0
-	bl sub_0205F90C
+	bl MapObject_GetPrevY
 	add r6, #0xe4
 	add r2, r0, #0
 	ldr r1, [sp, #0x18]
@@ -8366,14 +8376,14 @@ _021E9A34:
 	b _021E9AAC
 _021E9A3C:
 	ldr r0, [r6, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _021E9AAC
 	add r0, r5, #0
 	mov r1, #0x4a
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	mov r0, #0
 	bl ov01_021E636C
 	ldr r0, [r4]
@@ -8382,13 +8392,13 @@ _021E9A3C:
 	b _021E9AAC
 _021E9A62:
 	ldr r0, [r6, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #1
 	bne _021E9AAC
 	add r0, r5, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -8406,9 +8416,9 @@ _021E9A80:
 	ldr r1, [r6, #0x58]
 	mov r2, #2
 	bl ov01_021E8ED0
-	ldr r0, _021E9AB8 ; =0x00000614
+	ldr r0, _021E9AB8 ; =SEQ_SE_DP_ESUKA
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	add sp, #0x44
 	mov r0, #1
 	pop {r4, r5, r6, r7, pc}
@@ -8418,17 +8428,17 @@ _021E9AAC:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _021E9AB4: .word ov01_02206418
-_021E9AB8: .word 0x00000614
+_021E9AB8: .word SEQ_SE_DP_ESUKA
 	thumb_func_end ov01_021E98F0
 
 	thumb_func_start ov01_021E9ABC
 ov01_021E9ABC: ; 0x021E9ABC
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrb r1, [r4]
 	ldr r0, [r5, #0x58]
@@ -8555,7 +8565,7 @@ ov01_021E9BB8: ; 0x021E9BB8
 	add r1, r0, #0
 	add r0, r5, #0
 	mov r2, #1
-	bl ov01_021E9650
+	bl GetDoorSE
 	add r3, r0, #0
 	ldr r0, [r5, #0x58]
 	add r1, r4, #0
@@ -8574,7 +8584,7 @@ ov01_021E9BDC: ; 0x021E9BDC
 	add r1, r0, #0
 	add r0, r5, #0
 	mov r2, #0
-	bl ov01_021E9650
+	bl GetDoorSE
 	add r3, r0, #0
 	ldr r0, [r5, #0x58]
 	add r1, r4, #0
@@ -8595,7 +8605,7 @@ ov01_021E9C00: ; 0x021E9C00
 	strb r4, [r2]
 	ldr r0, [r5, #0x10]
 	ldr r1, _021E9C1C ; =ov01_021E9ABC
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E9C1C: .word ov01_021E9ABC
@@ -8629,10 +8639,10 @@ ov01_021E9C40: ; 0x021E9C40
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x5c
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r6, r0, #0
 	ldr r0, [r6]
 	cmp r0, #8
@@ -8657,7 +8667,7 @@ _021E9C68: ; jump table
 	.short _021E9E9C - _021E9C68 - 2 ; case 8
 _021E9C7A:
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	str r0, [sp, #0x28]
 	mov r0, #0
 	str r0, [r6, #0x10]
@@ -8681,7 +8691,7 @@ _021E9C7A:
 	mov r0, #1
 	str r0, [r6, #0x10]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	cmp r0, #1
 	bne _021E9D88
 	mov r1, #1
@@ -8781,7 +8791,7 @@ _021E9D50:
 	b _021E9ECC
 _021E9D88:
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	cmp r0, #1
 	bne _021E9DA0
 	ldr r0, [sp, #0x28]
@@ -8799,26 +8809,26 @@ _021E9DA0:
 	b _021E9ECC
 _021E9DAE:
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
 	mov r1, #0
 	bl sub_0205F690
 	add r0, r5, #0
 	mov r1, #0xd
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldr r0, [r6]
 	add r0, r0, #1
 	str r0, [r6]
 	b _021E9ECC
 _021E9DCC:
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #1
 	bne _021E9ECC
 	add r0, r5, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	ldr r0, [r6]
 	add r0, r0, #1
 	str r0, [r6]
@@ -8842,7 +8852,7 @@ _021E9E04:
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #1
-	bl ov01_021E9650
+	bl GetDoorSE
 	add r3, r0, #0
 	ldr r0, [r4, #0x58]
 	mov r1, #1
@@ -8858,7 +8868,7 @@ _021E9E28:
 	cmp r0, #0
 	beq _021E9ECC
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	mov r1, #0
 	bl sub_0205F690
 	mov r0, #6
@@ -8866,21 +8876,21 @@ _021E9E28:
 	b _021E9ECC
 _021E9E46:
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	mov r1, #0xd
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	mov r0, #7
 	str r0, [r6]
 	b _021E9ECC
 _021E9E58:
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #1
 	bne _021E9ECC
 	add r0, r5, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	add r0, r4, #0
 	mov r1, #1
 	bl ov01_02205790
@@ -8890,7 +8900,7 @@ _021E9E58:
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0
-	bl ov01_021E9650
+	bl GetDoorSE
 	add r3, r0, #0
 	mov r1, #1
 	ldr r0, [r4, #0x58]
@@ -8943,10 +8953,10 @@ ov01_021E9EEC: ; 0x021E9EEC
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r5, r0, #0
 	ldrb r0, [r5]
 	cmp r0, #0
@@ -8956,13 +8966,13 @@ ov01_021E9EEC: ; 0x021E9EEC
 	b _021E9F5C
 _021E9F0C:
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	mov r1, #1
 	bl sub_0205F690
 	mov r0, #0
 	str r0, [r5, #4]
 	strb r0, [r5, #1]
-	ldr r0, _021E9F70 ; =0x00000602
+	ldr r0, _021E9F70 ; =SEQ_SE_DP_KAIDAN2
 	bl PlaySE
 	mov r0, #6
 	str r0, [sp]
@@ -9002,7 +9012,7 @@ _021E9F6A:
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
-_021E9F70: .word 0x00000602
+_021E9F70: .word SEQ_SE_DP_KAIDAN2
 _021E9F74: .word 0x00007FFF
 	thumb_func_end ov01_021E9EEC
 
@@ -9011,10 +9021,10 @@ ov01_021E9F78: ; 0x021E9F78
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrb r0, [r4]
 	cmp r0, #0
@@ -9026,7 +9036,7 @@ _021E9F98:
 	mov r0, #0
 	str r0, [r4, #4]
 	strb r0, [r4, #1]
-	ldr r0, _021E9FF4 ; =0x00000602
+	ldr r0, _021E9FF4 ; =SEQ_SE_DP_KAIDAN2
 	bl PlaySE
 	mov r1, #0
 	str r1, [sp]
@@ -9067,7 +9077,7 @@ _021E9FEC:
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
-_021E9FF4: .word 0x00000602
+_021E9FF4: .word SEQ_SE_DP_KAIDAN2
 	thumb_func_end ov01_021E9F78
 
 	thumb_func_start ov01_021E9FF8
@@ -9075,10 +9085,10 @@ ov01_021E9FF8: ; 0x021E9FF8
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	str r0, [sp, #0x10]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	ldr r0, [sp, #0x10]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrb r0, [r4]
 	cmp r0, #3
@@ -9096,10 +9106,10 @@ _021EA01E: ; jump table
 	.short _021EA0F0 - _021EA01E - 2 ; case 3
 _021EA026:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	str r0, [sp, #0x14]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	lsl r0, r0, #0x18
 	lsr r7, r0, #0x18
 	cmp r7, #1
@@ -9169,26 +9179,26 @@ _021EA096:
 	b _021EA110
 _021EA0B4:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
 	mov r1, #0
 	bl sub_0205F690
 	add r0, r6, #0
 	mov r1, #0xd
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
 	b _021EA110
 _021EA0D2:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #1
 	bne _021EA110
 	add r0, r6, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
@@ -9227,10 +9237,10 @@ ov01_021EA128: ; 0x021EA128
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r7, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r7, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrb r0, [r4]
 	cmp r0, #3
@@ -9248,10 +9258,10 @@ _021EA14E: ; jump table
 	.short _021EA1DA - _021EA14E - 2 ; case 3
 _021EA156:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	cmp r0, #1
@@ -9282,26 +9292,26 @@ _021EA182:
 	b _021EA1EE
 _021EA19E:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
 	mov r1, #0
 	bl sub_0205F690
 	add r0, r5, #0
 	mov r1, #0xd
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
 	b _021EA1EE
 _021EA1BC:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #1
 	bne _021EA1EE
 	add r0, r5, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
@@ -9596,7 +9606,7 @@ ov01_021EA3E0: ; 0x021EA3E0
 	str r1, [sp]
 	mov r0, #4
 	add r1, r2, #0
-	bl sub_0201A3A4
+	bl Sys_AllocAndReadFile
 	mov r1, #0
 	str r0, [sp, #0x14]
 	str r1, [sp, #8]
@@ -10893,7 +10903,7 @@ _021EAD26:
 	ldrh r0, [r0, #4]
 	add r2, r6, #0
 	strh r0, [r5, #8]
-	ldr r0, _021EAD84 ; =ov01_02206468
+	ldr r0, _021EAD84 ; =ov01_02206464 + 4
 	strh r3, [r5, #0xa]
 	add r7, r0, r4
 	ldmia r7!, {r0, r1}
@@ -10915,7 +10925,7 @@ _021EAD26:
 	ldr r0, _021EAD78 ; =_02209B60
 	str r3, [r0]
 _021EAD6A:
-	ldr r0, _021EAD88 ; =ov01_02206474
+	ldr r0, _021EAD88 ; =ov01_02206464 + 16
 	ldr r0, [r0, r4]
 	strb r0, [r5, #4]
 	mov r0, #0
@@ -10926,8 +10936,8 @@ _021EAD74:
 _021EAD78: .word _02209B60
 _021EAD7C: .word ov01_02206478
 _021EAD80: .word ov01_02206464
-_021EAD84: .word ov01_02206468
-_021EAD88: .word ov01_02206474
+_021EAD84: .word ov01_02206464 + 4
+_021EAD88: .word ov01_02206464 + 16
 	thumb_func_end ov01_021EACBC
 
 	thumb_func_start ov01_021EAD8C
@@ -12173,7 +12183,7 @@ ov01_021EB64C: ; 0x021EB64C
 	str r0, [r4]
 	ldr r0, _021EB688 ; =ov01_0220675C
 	str r0, [r4, #4]
-	mov r0, #0x3f
+	mov r0, #0x3f ; NARC_a_0_6_3
 	bl NARC_ctor
 	mov r1, #0x42
 	lsl r1, r1, #2
@@ -12369,7 +12379,7 @@ _021EB7DA:
 	add r0, r0, #4
 	ldrh r0, [r2, r0]
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 _021EB7FA:
 	add r0, r6, #0
 	pop {r4, r5, r6, pc}
@@ -12765,7 +12775,7 @@ _021EBA92:
 	str r2, [r1, r0]
 	ldr r1, [r4, #8]
 	add r0, r3, #4
-	ldr r6, _021EBB34 ; =_021DA6F4
+	ldr r6, _021EBB34 ; =NNS_G3dGlb + 0x258
 	add r5, r1, r0
 	ldmia r6!, {r0, r1}
 	stmia r5!, {r0, r1}
@@ -12816,7 +12826,7 @@ _021EBB28:
 	.balign 4, 0
 _021EBB2C: .word 0x0000FFFF
 _021EBB30: .word 0x00000F48
-_021EBB34: .word _021DA6F4
+_021EBB34: .word NNS_G3dGlb + 0x258
 _021EBB38: .word 0x00000F58
 _021EBB3C: .word 0x0400000C
 	thumb_func_end ov01_021EBA44
@@ -13671,7 +13681,7 @@ _021EC14A:
 	ldr r0, [r0, #8]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	mov r0, #0x41
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -13902,7 +13912,7 @@ ov01_021EC304: ; 0x021EC304
 ov01_021EC31C: ; 0x021EC31C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x24
-	ldr r3, _021EC45C ; =_021DA6F4
+	ldr r3, _021EC45C ; =NNS_G3dGlb + 0x258
 	add r5, r2, #0
 	str r0, [sp, #4]
 	str r1, [sp, #8]
@@ -14055,7 +14065,7 @@ _021EC450:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_021EC45C: .word _021DA6F4
+_021EC45C: .word NNS_G3dGlb + 0x258
 _021EC460: .word 0x00000F4C
 _021EC464: .word 0x000BE8D0
 _021EC468: .word 0x000BE811
@@ -16556,7 +16566,7 @@ _021ED73A: ; jump table
 	.short _021ED8F4 - _021ED73A - 2 ; case 5
 _021ED746:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	bl ov01_02203EA0
 	ldr r1, _021ED904 ; =0x0000062C
 	mov r3, #0
@@ -16603,7 +16613,7 @@ _021ED79E:
 	pop {r3, r4, r5, r6, pc}
 _021ED7A8:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	bl ov01_02203EA0
 	ldr r1, _021ED904 ; =0x0000062C
 	mov r3, #0
@@ -16808,7 +16818,7 @@ _021ED94C: ; jump table
 	.short _021EDA34 - _021ED94C - 2 ; case 5
 _021ED958:
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	bl ov01_02203EA0
 	ldr r1, _021EDA44 ; =0x0000062C
 	mov r3, #0
@@ -16855,7 +16865,7 @@ _021ED9B2:
 	pop {r4, r5, r6, pc}
 _021ED9BC:
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	bl ov01_02203EA0
 	ldr r1, _021EDA44 ; =0x0000062C
 	mov r3, #0
@@ -17007,7 +17017,7 @@ ov01_021EDAE0: ; 0x021EDAE0
 	lsl r0, r0, #4
 	ldrh r0, [r4, r0]
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _021EDAF8 ; =0x00000F5C
 	mov r1, #0
 	str r1, [r4, r0]
@@ -17027,8 +17037,8 @@ ov01_021EDAFC: ; 0x021EDAFC
 	cmp r1, #0
 	bne _021EDB2A
 	mov r0, #1
-	mov r1, #0x1b
-	mov r2, #0xbf
+	mov r1, #0x1b ; msgdata/msg.narc
+	mov r2, #0xbf ; msg_0191.gmm
 	mov r3, #4
 	bl NewMsgDataFromNarc
 	add r1, r6, #0
@@ -17590,7 +17600,7 @@ _021EDF2E:
 ov01_021EDF38: ; 0x021EDF38
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _021EDF74 ; =0x000005DC
+	ldr r0, _021EDF74 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	add r0, r4, #0
 	add r0, #0xb8
@@ -17612,7 +17622,7 @@ ov01_021EDF38: ; 0x021EDF38
 	bl ov01_021EDF00
 	pop {r4, pc}
 	nop
-_021EDF74: .word 0x000005DC
+_021EDF74: .word SEQ_SE_DP_SELECT
 	thumb_func_end ov01_021EDF38
 
 	thumb_func_start ov01_021EDF78
@@ -17636,12 +17646,12 @@ ov01_021EDF78: ; 0x021EDF78
 	.balign 4, 0
 	thumb_func_end ov01_021EDF78
 
-	thumb_func_start ov01_021EDF9C
-ov01_021EDF9C: ; 0x021EDF9C
+	thumb_func_start MoveTutorMenu_SetListItem
+MoveTutorMenu_SetListItem: ; 0x021EDF9C
 	push {r3, lr}
-	bl ov01_021EE244
+	bl MoveTutorMenu_SetListItem_Internal
 	pop {r3, pc}
-	thumb_func_end ov01_021EDF9C
+	thumb_func_end MoveTutorMenu_SetListItem
 
 	thumb_func_start ov01_021EDFA4
 ov01_021EDFA4: ; 0x021EDFA4
@@ -17988,8 +17998,8 @@ _021EE23C: .word 0x000003D9
 _021EE240: .word ov01_021EE49C
 	thumb_func_end ov01_021EE0EC
 
-	thumb_func_start ov01_021EE244
-ov01_021EE244: ; 0x021EE244
+	thumb_func_start MoveTutorMenu_SetListItem_Internal
+MoveTutorMenu_SetListItem_Internal: ; 0x021EE244
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	str r1, [sp]
@@ -18068,7 +18078,7 @@ _021EE2C4:
 	strb r0, [r5]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EE244
+	thumb_func_end MoveTutorMenu_SetListItem_Internal
 
 	thumb_func_start ov01_021EE2E4
 ov01_021EE2E4: ; 0x021EE2E4
@@ -18340,10 +18350,10 @@ _021EE4B8:
 	ldrh r0, [r5, r0]
 	cmp r6, r0
 	beq _021EE4EE
-	ldr r0, _021EE55C ; =0x000005DC
+	ldr r0, _021EE55C ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 _021EE4EE:
-	ldr r0, _021EE560 ; =gMain
+	ldr r0, _021EE560 ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r0, #0x4c]
 	tst r1, r0
@@ -18377,7 +18387,7 @@ _021EE520:
 	lsr r0, r0, #0x1f
 	cmp r0, #1
 	bne _021EE55A
-	ldr r0, _021EE55C ; =0x000005DC
+	ldr r0, _021EE55C ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	add r0, r5, #0
 	add r0, #0xa0
@@ -18388,7 +18398,7 @@ _021EE520:
 	bl ov01_021EE568
 	pop {r4, r5, r6, pc}
 _021EE546:
-	ldr r0, _021EE55C ; =0x000005DC
+	ldr r0, _021EE55C ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	add r0, r5, #0
 	add r0, #0xa0
@@ -18399,8 +18409,8 @@ _021EE546:
 _021EE55A:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_021EE55C: .word 0x000005DC
-_021EE560: .word gMain
+_021EE55C: .word SEQ_SE_DP_SELECT
+_021EE560: .word gSystem
 _021EE564: .word 0x0000FFFE
 	thumb_func_end ov01_021EE49C
 
@@ -18408,7 +18418,7 @@ _021EE564: .word 0x0000FFFE
 ov01_021EE568: ; 0x021EE568
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
-	ldr r0, _021EE5CC ; =0x000005DC
+	ldr r0, _021EE5CC ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #0x6f
 	lsl r0, r0, #2
@@ -18451,7 +18461,7 @@ _021EE5BE:
 	bl FreeToHeap
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_021EE5CC: .word 0x000005DC
+_021EE5CC: .word SEQ_SE_DP_SELECT
 	thumb_func_end ov01_021EE568
 
 	thumb_func_start ov01_021EE5D0
@@ -18527,8 +18537,8 @@ _021EE65E:
 _021EE660: .word 0x000001C2
 	thumb_func_end ov01_021EE634
 
-	thumb_func_start ov01_021EE664
-ov01_021EE664: ; 0x021EE664
+	thumb_func_start PrintCurFloorInNewWindow
+PrintCurFloorInNewWindow: ; 0x021EE664
 	push {r4, r5, r6, lr}
 	sub sp, #0x18
 	mov r4, #0
@@ -18639,7 +18649,7 @@ _021EE698:
 	.balign 4, 0
 _021EE74C: .word 0x000003D9
 _021EE750: .word ov01_021EE7B8
-	thumb_func_end ov01_021EE664
+	thumb_func_end PrintCurFloorInNewWindow
 
 	thumb_func_start ov01_021EE754
 ov01_021EE754: ; 0x021EE754
@@ -18739,23 +18749,23 @@ _021EE816:
 _021EE818: .word 0x0000FFFF
 	thumb_func_end ov01_021EE7B8
 
-	thumb_func_start ov01_021EE81C
-ov01_021EE81C: ; 0x021EE81C
+	thumb_func_start MapNumToFloorNo
+MapNumToFloorNo: ; 0x021EE81C
 	push {r3, lr}
-	ldr r1, _021EE92C ; =0x00000175
+	ldr r1, _021EE92C ; =MAP_T07R0104
 	cmp r0, r1
 	bgt _021EE878
 	bge _021EE906
-	cmp r0, #0xe1
+	cmp r0, #MAP_D27R0107
 	bgt _021EE860
 	bge _021EE8D2
-	cmp r0, #0x73
+	cmp r0, #MAP_D27R0101
 	bgt _021EE834
 	beq _021EE8CE
 	b _021EE922
 _021EE834:
 	add r1, r0, #0
-	sub r1, #0xbd
+	sub r1, #MAP_D23R0105
 	cmp r1, #0xb
 	bhi _021EE922
 	add r1, r1, r1
@@ -18765,72 +18775,72 @@ _021EE834:
 	asr r1, r1, #0x10
 	add pc, r1
 _021EE848: ; jump table
-	.short _021EE8C6 - _021EE848 - 2 ; case 0
-	.short _021EE8CA - _021EE848 - 2 ; case 1
-	.short _021EE8DE - _021EE848 - 2 ; case 2
-	.short _021EE8E2 - _021EE848 - 2 ; case 3
-	.short _021EE8E6 - _021EE848 - 2 ; case 4
-	.short _021EE8EA - _021EE848 - 2 ; case 5
-	.short _021EE8EE - _021EE848 - 2 ; case 6
-	.short _021EE8F2 - _021EE848 - 2 ; case 7
-	.short _021EE922 - _021EE848 - 2 ; case 8
-	.short _021EE922 - _021EE848 - 2 ; case 9
-	.short _021EE922 - _021EE848 - 2 ; case 10
-	.short _021EE8F6 - _021EE848 - 2 ; case 11
+	.short _021EE8C6 - _021EE848 - 2 ; case MAP_D23R0105
+	.short _021EE8CA - _021EE848 - 2 ; case MAP_D23R0106
+	.short _021EE8DE - _021EE848 - 2 ; case MAP_T25R1001
+	.short _021EE8E2 - _021EE848 - 2 ; case MAP_T25R1002
+	.short _021EE8E6 - _021EE848 - 2 ; case MAP_T25R1003
+	.short _021EE8EA - _021EE848 - 2 ; case MAP_T25R1004
+	.short _021EE8EE - _021EE848 - 2 ; case MAP_T25R1005
+	.short _021EE8F2 - _021EE848 - 2 ; case MAP_T25R1006
+	.short _021EE922 - _021EE848 - 2 ; case MAP_T25R0501
+	.short _021EE922 - _021EE848 - 2 ; case MAP_T25R0502
+	.short _021EE922 - _021EE848 - 2 ; case MAP_D37R0102
+	.short _021EE8F6 - _021EE848 - 2 ; case MAP_D37R0103
 _021EE860:
-	ldr r1, _021EE930 ; =0x00000173
+	ldr r1, _021EE930 ; =MAP_T07R0102
 	cmp r0, r1
 	bgt _021EE870
 	bge _021EE8FE
-	sub r1, r1, #1
+	sub r1, r1, #MAP_T07R0102-MAP_T07R0101
 	cmp r0, r1
 	beq _021EE8FA
 	b _021EE922
 _021EE870:
-	add r1, r1, #1
+	add r1, r1, #MAP_T07R0103-MAP_T07R0102
 	cmp r0, r1
 	beq _021EE902
 	b _021EE922
 _021EE878:
-	add r2, r1, #4
+	add r2, r1, #MAP_T07R0202-MAP_T07R0104
 	cmp r0, r2
 	bgt _021EE898
 	bge _021EE916
-	add r2, r1, #2
+	add r2, r1, #MAP_T07R0106-MAP_T07R0104
 	cmp r0, r2
 	bgt _021EE890
 	bge _021EE90E
-	add r1, r1, #1
+	add r1, r1, #MAP_T07R0105-MAP_T07R0104
 	cmp r0, r1
 	beq _021EE90A
 	b _021EE922
 _021EE890:
-	add r1, r1, #3
+	add r1, r1, #MAP_T07R0201-MAP_T07R0104
 	cmp r0, r1
 	beq _021EE912
 	b _021EE922
 _021EE898:
 	add r2, r1, #0
-	add r2, #0x1d
+	add r2, #MAP_T11R0701-MAP_T07R0104
 	cmp r0, r2
 	bgt _021EE8BE
 	add r2, r1, #0
-	add r2, #0x1d
+	add r2, #MAP_T11R0701-MAP_T07R0104
 	cmp r0, r2
 	bge _021EE8D6
-	add r2, r1, #6
+	add r2, r1, #MAP_T07R0204-MAP_T07R0104
 	cmp r0, r2
 	bgt _021EE922
-	add r2, r1, #5
+	add r2, r1, #MAP_T07R0203-MAP_T07R0104
 	cmp r0, r2
 	blt _021EE922
 	beq _021EE91A
-	add r1, r1, #6
+	add r1, r1, #MAP_T07R0204-MAP_T07R0104
 	cmp r0, r1
 	beq _021EE91E
 	b _021EE922
 _021EE8BE:
-	add r1, #0x1e
+	add r1, #MAP_T11R0702-MAP_T07R0104
 	cmp r0, r1
 	beq _021EE8DA
 	b _021EE922
@@ -18908,9 +18918,9 @@ _021EE922:
 	mov r0, #0
 	pop {r3, pc}
 	nop
-_021EE92C: .word 0x00000175
-_021EE930: .word 0x00000173
-	thumb_func_end ov01_021EE81C
+_021EE92C: .word MAP_T07R0104
+_021EE930: .word MAP_T07R0102
+	thumb_func_end MapNumToFloorNo
 
 	thumb_func_start ov01_021EE934
 ov01_021EE934: ; 0x021EE934
@@ -19176,7 +19186,7 @@ ov01_021EEB38: ; 0x021EEB38
 	bl sub_0200E5D4
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201D54C
+	bl WindowArray_dtor
 	pop {r4, pc}
 	thumb_func_end ov01_021EEB38
 
@@ -19250,7 +19260,7 @@ ov01_021EEB4C: ; 0x021EEB4C
 	ldr r0, [sp, #0xc]
 	bl DestroyMsgData
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -19316,7 +19326,7 @@ ov01_021EEC68: ; 0x021EEC68
 	bl sub_0200E5D4
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201D54C
+	bl WindowArray_dtor
 	pop {r4, pc}
 	thumb_func_end ov01_021EEC68
 
@@ -19377,8 +19387,8 @@ _021EECEE:
 	bl NewString_ReadMsgData
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_02031968
-	bl sub_02031A6C
+	bl Save_Pokeathlon_get
+	bl SavePokeathlon_GetAthletePoints
 	add r2, r0, #0
 _021EED04:
 	mov r0, #1
@@ -19415,7 +19425,7 @@ _021EED04:
 	add r0, r7, #0
 	bl DestroyMsgData
 	ldr r0, [sp, #0xc]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021EEC7C
@@ -19520,7 +19530,7 @@ ov01_021EEE30: ; 0x021EEE30
 	bl sub_0200E5D4
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201D54C
+	bl WindowArray_dtor
 	pop {r4, pc}
 	thumb_func_end ov01_021EEE30
 
@@ -19567,10 +19577,10 @@ ov01_021EEE44: ; 0x021EEE44
 	bl NewString_ReadMsgData
 	str r0, [sp, #0x10]
 	ldr r0, [r7, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetPhoneRematches
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_0202F14C
+	bl MomSavingsBalanceAction
 	mov r1, #0
 	add r2, r0, #0
 	str r1, [sp]
@@ -19637,7 +19647,7 @@ ov01_021EEE44: ; 0x021EEE44
 	ldr r0, [sp, #0xc]
 	bl DestroyMsgData
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -19685,7 +19695,7 @@ ov01_021EEF88: ; 0x021EEF88
 	bl sub_0200E5D4
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201D54C
+	bl WindowArray_dtor
 	pop {r4, pc}
 	thumb_func_end ov01_021EEF88
 
@@ -19788,8 +19798,8 @@ ov01_021EF034: ; 0x021EF034
 	.balign 4, 0
 	thumb_func_end ov01_021EF034
 
-	thumb_func_start ScrCmd_Message
-ScrCmd_Message: ; 0x021EF050
+	thumb_func_start ScrCmd_NonNPCMsg
+ScrCmd_NonNPCMsg: ; 0x021EF050
 	push {r3, lr}
 	ldr r2, [r0, #8]
 	add r1, r2, #1
@@ -19799,10 +19809,10 @@ ScrCmd_Message: ; 0x021EF050
 	bl ovFieldMain_ShowMessageInField
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ScrCmd_Message
+	thumb_func_end ScrCmd_NonNPCMsg
 
-	thumb_func_start ScrCmd_438
-ScrCmd_438: ; 0x021EF064
+	thumb_func_start ScrCmd_GetStdMsgNaix
+ScrCmd_GetStdMsgNaix: ; 0x021EF064
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -19832,10 +19842,10 @@ _021EF098:
 	pop {r3, r4, r5, pc}
 	nop
 _021EF0A0: .word ov01_022067C8
-	thumb_func_end ScrCmd_438
+	thumb_func_end ScrCmd_GetStdMsgNaix
 
-	thumb_func_start ScrCmd_439
-ScrCmd_439: ; 0x021EF0A4
+	thumb_func_start ScrCmd_NonNpcMsgExtern
+ScrCmd_NonNpcMsgExtern: ; 0x021EF0A4
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -19867,10 +19877,10 @@ ScrCmd_439: ; 0x021EF0A4
 	bl DestroyMsgData
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_439
+	thumb_func_end ScrCmd_NonNpcMsgExtern
 
-	thumb_func_start ScrCmd_440
-ScrCmd_440: ; 0x021EF0F0
+	thumb_func_start ScrCmd_MsgboxExtern
+ScrCmd_MsgboxExtern: ; 0x021EF0F0
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -19912,7 +19922,7 @@ ScrCmd_440: ; 0x021EF0F0
 	pop {r3, r4, r5, r6, pc}
 	nop
 _021EF150: .word ov01_021EF348
-	thumb_func_end ScrCmd_440
+	thumb_func_end ScrCmd_MsgboxExtern
 
 	thumb_func_start ScrCmd_441
 ScrCmd_441: ; 0x021EF154
@@ -20133,8 +20143,8 @@ ScrCmd_527: ; 0x021EF2E0
 _021EF318: .word ov01_021EF348
 	thumb_func_end ScrCmd_527
 
-	thumb_func_start ScrCmd_045
-ScrCmd_045: ; 0x021EF31C
+	thumb_func_start ScrCmd_NPCMsg
+ScrCmd_NPCMsg: ; 0x021EF31C
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -20155,7 +20165,7 @@ ScrCmd_045: ; 0x021EF31C
 	pop {r3, r4, pc}
 	.balign 4, 0
 _021EF344: .word ov01_021EF348
-	thumb_func_end ScrCmd_045
+	thumb_func_end ScrCmd_NPCMsg
 
 	thumb_func_start ov01_021EF348
 ov01_021EF348: ; 0x021EF348
@@ -20169,8 +20179,8 @@ ov01_021EF348: ; 0x021EF348
 	pop {r3, pc}
 	thumb_func_end ov01_021EF348
 
-	thumb_func_start ScrCmd_046
-ScrCmd_046: ; 0x021EF35C
+	thumb_func_start ScrCmd_NonNpcMsgVar
+ScrCmd_NonNpcMsgVar: ; 0x021EF35C
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -20197,7 +20207,7 @@ ScrCmd_046: ; 0x021EF35C
 	pop {r3, r4, pc}
 	.balign 4, 0
 _021EF394: .word ov01_021EF348
-	thumb_func_end ScrCmd_046
+	thumb_func_end ScrCmd_NonNpcMsgVar
 
 	thumb_func_start ScrCmd_592
 ScrCmd_592: ; 0x021EF398
@@ -20234,8 +20244,8 @@ ScrCmd_592: ; 0x021EF398
 _021EF3DC: .word ov01_021EF348
 	thumb_func_end ScrCmd_592
 
-	thumb_func_start ScrCmd_047
-ScrCmd_047: ; 0x021EF3E0
+	thumb_func_start ScrCmd_NpcMsgVar
+ScrCmd_NpcMsgVar: ; 0x021EF3E0
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -20261,10 +20271,10 @@ ScrCmd_047: ; 0x021EF3E0
 	pop {r3, r4, pc}
 	nop
 _021EF418: .word ov01_021EF348
-	thumb_func_end ScrCmd_047
+	thumb_func_end ScrCmd_NpcMsgVar
 
-	thumb_func_start ScrCmd_132
-ScrCmd_132: ; 0x021EF41C
+	thumb_func_start ScrCmd_GenderMsgbox
+ScrCmd_GenderMsgbox: ; 0x021EF41C
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
@@ -20312,7 +20322,7 @@ _021EF474:
 	pop {r3, r4, r5, r6, pc}
 	nop
 _021EF484: .word ov01_021EF348
-	thumb_func_end ScrCmd_132
+	thumb_func_end ScrCmd_GenderMsgbox
 
 	thumb_func_start ScrCmd_455
 ScrCmd_455: ; 0x021EF488
@@ -20324,7 +20334,7 @@ ScrCmd_455: ; 0x021EF488
 	mov r1, #0xa
 	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
-	bl sub_0205F26C
+	bl MapObject_GetType
 	lsl r0, r0, #0x18
 	lsr r2, r0, #0x18
 	mov r0, #0
@@ -20451,7 +20461,7 @@ ov01_021EF564: ; 0x021EF564
 	str r0, [sp]
 	add r0, sp, #4
 	add r3, r7, #0
-	bl ov01_021EF708
+	bl ovFieldMain_GetFormattedECMessage
 	add r0, sp, #0x20
 	ldrb r0, [r0, #0x14]
 	cmp r0, #0xff
@@ -20637,8 +20647,8 @@ ovFieldMain_ReadAndExpandMsgDataViaBuffer: ; 0x021EF6EC
 	.balign 4, 0
 	thumb_func_end ovFieldMain_ReadAndExpandMsgDataViaBuffer
 
-	thumb_func_start ov01_021EF708
-ov01_021EF708: ; 0x021EF708
+	thumb_func_start ovFieldMain_GetFormattedECMessage
+ovFieldMain_GetFormattedECMessage: ; 0x021EF708
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -20672,7 +20682,7 @@ ov01_021EF708: ; 0x021EF708
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EF708
+	thumb_func_end ovFieldMain_GetFormattedECMessage
 
 	thumb_func_start ov01_021EF758
 ov01_021EF758: ; 0x021EF758
@@ -20926,7 +20936,7 @@ _021EF922:
 	ldr r0, [r4, #0x1c]
 	ldr r3, [r4, #0xc]
 	add r2, r1, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r4, #0xc]
 	cmp r0, #0
 	bne _021EF9A4
@@ -20960,7 +20970,7 @@ _021EF962:
 	ldr r0, [r4, #0x1c]
 	ldr r3, [r4, #0xc]
 	add r2, r1, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r4, #0xc]
 	cmp r0, #0x26
 	bne _021EF9A4
@@ -21084,7 +21094,7 @@ ov01_021EFA3C: ; 0x021EFA3C
 	ldr r0, [r4, #0x1c]
 	add r2, r1, #0
 	mov r3, #0x26
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #0x26
 	str r0, [r4, #0xc]
 	ldr r0, _021EFAC8 ; =ov01_021EF8F8
@@ -21159,7 +21169,7 @@ _021EFADA:
 	ldr r0, [r4, #0x1c]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r1, [r4, #0x1c]
 	add r0, r4, #0
 	bl ov01_021EF8E8
@@ -22437,7 +22447,7 @@ ov01_021F0454: ; 0x021F0454
 	add r6, r0, #0
 	ldr r5, [sp, #0x38]
 	ldr r4, [sp, #0x3c]
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -22448,14 +22458,14 @@ ov01_021F0454: ; 0x021F0454
 	add r0, r6, #0
 	add r2, r5, #0
 	add r3, r4, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #4
 	str r0, [sp]
 	add r0, r6, #0
 	add r1, r7, #0
 	mov r2, #0
 	add r3, sp, #0x14
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	lsl r1, r4, #0x18
 	ldr r2, [sp, #0x14]
 	mov r3, #0
@@ -22472,7 +22482,7 @@ ov01_021F0454: ; 0x021F0454
 	lsr r0, r0, #0x18
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	ldr r1, [sp, #0x14]
 	mov r2, #0
 	ldrh r0, [r1]
@@ -22491,7 +22501,7 @@ ov01_021F0454: ; 0x021F0454
 	lsr r0, r0, #0x18
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	add r0, r6, #0
 	bl FreeToHeap
 	lsl r1, r4, #0x18
@@ -23938,7 +23948,7 @@ _021F0F64:
 	add r1, r4, #0
 	mov r3, #4
 	str r2, [sp]
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r1, r0, #0
 	ldr r0, _021F0FAC ; =ov01_02209B64
 	mov r2, #0
@@ -24135,10 +24145,10 @@ ov01_021F10C8: ; 0x021F10C8
 	bl NNS_G3dGlbSetBaseTrans
 	add r0, sp, #0x24
 	bl NNS_G3dGlbSetBaseScale
-	ldr r1, _021F1140 ; =_021DA558
+	ldr r1, _021F1140 ; =NNS_G3dGlb + 0xBC
 	add r0, sp, #0
 	bl MI_Copy36B
-	ldr r1, _021F1144 ; =_021DA51C
+	ldr r1, _021F1144 ; =NNS_G3dGlb + 0x80
 	mov r0, #0xa4
 	ldr r2, [r1, #0x7c]
 	bic r2, r0
@@ -24151,7 +24161,7 @@ ov01_021F10C8: ; 0x021F10C8
 	bl ov01_021E6340
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	strb r0, [r4, #2]
 	add r0, r5, #0
@@ -24161,8 +24171,8 @@ _021F1136:
 	pop {r4, r5, pc}
 	nop
 _021F113C: .word ov01_022067E0
-_021F1140: .word _021DA558
-_021F1144: .word _021DA51C
+_021F1140: .word NNS_G3dGlb + 0xBC
+_021F1144: .word NNS_G3dGlb + 0x80
 	thumb_func_end ov01_021F10C8
 
 	thumb_func_start ov01_021F1148
@@ -24203,7 +24213,7 @@ _021F1154:
 	strh r0, [r2]
 	mov r0, #3
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #8
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -24613,7 +24623,7 @@ ov01_021F1468: ; 0x021F1468
 	thumb_func_start ov01_021F146C
 ov01_021F146C: ; 0x021F146C
 	push {r3, lr}
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	ldr r0, [r0, #0x44]
 	pop {r3, pc}
 	.balign 4, 0
@@ -25682,11 +25692,11 @@ _021F1BAC:
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_0205C78C
-	ldr r0, _021F1BBC ; =0x00000617
+	ldr r0, _021F1BBC ; =SEQ_SE_DP_JITENSYA
 	bl PlaySE
 	pop {r4, pc}
 	.balign 4, 0
-_021F1BBC: .word 0x00000617
+_021F1BBC: .word SEQ_SE_DP_JITENSYA
 	thumb_func_end ov01_021F1B78
 
 	thumb_func_start ov01_021F1BC0
@@ -25716,12 +25726,12 @@ _021F1BF6:
 	mov r1, #0
 	bl sub_0205C78C
 	add r0, r5, #0
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	mov r0, #1
 	mov r1, #0
 	str r0, [sp]
@@ -26048,7 +26058,7 @@ _021F1E64:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _021F1E74:
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	cmp r0, #0x54
 	beq _021F1E80
 	mov r0, #0
@@ -26089,7 +26099,7 @@ ov01_021F1EA4: ; 0x021F1EA4
 	ldr r1, _021F1EC8 ; =ov01_021F1ECC
 	add r0, r4, #0
 	str r6, [r2, #0xc]
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021F1EC8: .word ov01_021F1ECC
@@ -26099,10 +26109,10 @@ _021F1EC8: .word ov01_021F1ECC
 ov01_021F1ECC: ; 0x021F1ECC
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
 	ldr r0, [r4]
 	ldr r5, [r4, #0x10]
@@ -26115,11 +26125,11 @@ ov01_021F1ECC: ; 0x021F1ECC
 	b _021F1F82
 _021F1EF0:
 	add r0, r5, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _021F1F82
 	add r0, r6, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	bne _021F1F0E
 	ldr r0, [r4, #0xc]
@@ -26132,14 +26142,14 @@ _021F1F0E:
 	bl sub_0206234C
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldr r0, [r4, #4]
 	mov r1, #0x20
 	bl sub_0206234C
 	add r1, r0, #0
 	add r0, r6, #0
-	bl sub_0206214C
-	ldr r0, _021F1F88 ; =0x00000626
+	bl MapObject_SetHeldMovement
+	ldr r0, _021F1F88 ; =SEQ_SE_DP_UG_023
 	bl PlaySE
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -26147,17 +26157,17 @@ _021F1F0E:
 	b _021F1F82
 _021F1F3C:
 	add r0, r5, #0
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	beq _021F1F82
 	add r0, r6, #0
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	beq _021F1F82
 	add r0, r5, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	add r0, r6, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -26181,7 +26191,7 @@ _021F1F82:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_021F1F88: .word 0x00000626
+_021F1F88: .word SEQ_SE_DP_UG_023
 	thumb_func_end ov01_021F1ECC
 
 	thumb_func_start ov01_021F1F8C
@@ -26198,29 +26208,29 @@ _021F1F96:
 	cmp r1, r0
 	bne _021F1FF4
 	add r0, r5, #0
-	bl sub_0205F24C
+	bl MapObject_GetID
 	ldrh r1, [r4, #6]
 	cmp r1, r0
 	bne _021F1FF4
 	add r0, r5, #0
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	ldrh r1, [r4, #2]
 	cmp r1, r0
 	bne _021F1FF4
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	ldrh r1, [r4, #4]
 	cmp r1, r0
 	bne _021F1FF4
 	add r0, r5, #0
-	bl sub_0205F274
+	bl MapObject_GetFlagID
 	add r1, r0, #0
 	lsl r1, r1, #0x10
 	add r0, r7, #0
 	lsr r1, r1, #0x10
 	bl FlagSet
 	add r0, r5, #0
-	bl sub_0205E400
+	bl DeleteMapObject
 	mov r1, #0xa
 	add r2, r6, #0
 	mul r2, r1
@@ -26257,7 +26267,7 @@ _021F2018:
 	ldr r1, _021F2028 ; =0x0000271F
 	add r0, r4, #0
 	mov r2, #0
-	bl sub_0203FF0C
+	bl StartScriptFromMenu
 	mov r0, #0
 	pop {r4, pc}
 	nop
@@ -26277,7 +26287,7 @@ ov01_021F202C: ; 0x021F202C
 	str r6, [r4, #0x1c]
 	ldr r0, [r6, #0x40]
 	str r0, [r4, #0x20]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r2, r4, #0
 	str r0, [r4, #0x24]
 	add r2, #0xc
@@ -26288,7 +26298,7 @@ ov01_021F202C: ; 0x021F202C
 	ldr r0, [r6, #0x10]
 	ldr r1, _021F2064 ; =ov01_021F2118
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021F2064: .word ov01_021F2118
@@ -26300,7 +26310,7 @@ ov01_021F2068: ; 0x021F2068
 	sub sp, #0x10
 	add r6, r2, #0
 	add r5, r1, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r4, r0, #0
 	add r1, r6, #0
 	bl ov01_021F3100
@@ -26342,7 +26352,7 @@ ov01_021F20C0: ; 0x021F20C0
 	push {r4, r5, r6, lr}
 	add r4, r2, #0
 	add r5, r1, #0
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
@@ -26387,7 +26397,7 @@ _021F2112:
 ov01_021F2118: ; 0x021F2118
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #9
@@ -26496,7 +26506,7 @@ _021F21D2:
 	str r0, [r4]
 	b _021F2324
 _021F21FC:
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	bne _021F221C
 	add r0, r5, #0
@@ -26520,16 +26530,16 @@ _021F221E:
 	b _021F2324
 _021F222A:
 	ldr r0, [r4, #0x20]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r5, r0, #0
 	ldr r0, [r4, #4]
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	add r6, r0, #0
 	ldr r0, [r4, #0x20]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r7, r0, #0
 	ldr r0, [r4, #4]
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -26571,7 +26581,7 @@ _021F2274:
 	b _021F2324
 _021F22A0:
 	ldr r0, [r4, #0x24]
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _021F2324
 	ldr r0, [r4, #4]
@@ -26579,18 +26589,18 @@ _021F22A0:
 	bl sub_0206234C
 	add r1, r0, #0
 	ldr r0, [r4, #0x24]
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _021F2324
 _021F22C2:
 	ldr r0, [r4, #0x24]
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	beq _021F2324
 	ldr r0, [r4, #0x24]
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	ldr r0, [r4, #0x28]
 	mov r1, #1
 	bl ov01_021FE9F4
@@ -26603,7 +26613,7 @@ _021F22C2:
 	ldr r0, [r4, #0x20]
 	bl ov01_021F3084
 	ldr r0, [r4, #0x1c]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _021F2312
 	ldr r1, [r4, #4]
@@ -26612,7 +26622,7 @@ _021F22C2:
 	lsr r1, r1, #0x18
 	bl ov01_02205790
 	ldr r0, [r4, #0x1c]
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	mov r1, #0x38
 	bl sub_0205FC94
 _021F2312:
@@ -26647,7 +26657,7 @@ _021F2342:
 	pop {r4, r5, r6, pc}
 _021F2346:
 	add r0, r5, #0
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r1, r0, #0
 	add r0, r5, #0
 	add r2, r4, #0
@@ -26685,7 +26695,7 @@ ov01_021F2378: ; 0x021F2378
 	str r5, [r4, #8]
 	str r7, [r4, #0xc]
 	add r0, r7, #0
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	str r0, [r4, #0x10]
 	add r0, r7, #0
 	bl sub_0205C790
@@ -26697,7 +26707,7 @@ _021F23A6:
 	ldr r1, _021F23B4 ; =ov01_021F23B8
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021F23B4: .word ov01_021F23B8
@@ -26706,7 +26716,7 @@ _021F23B4: .word ov01_021F23B8
 	thumb_func_start ov01_021F23B8
 ov01_021F23B8: ; 0x021F23B8
 	push {r4, lr}
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrh r0, [r4]
 	cmp r0, #0
@@ -26718,7 +26728,7 @@ ov01_021F23B8: ; 0x021F23B8
 	b _021F24F0
 _021F23D0:
 	ldr r0, [r4, #0x10]
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	beq _021F23DC
 	b _021F24F0
@@ -26736,7 +26746,7 @@ _021F23DC:
 	bl sub_0206234C
 	add r1, r0, #0
 	ldr r0, [r4, #0x10]
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldr r0, [r4, #0x14]
 	mov r1, #0
 	bl ov01_021FE9F4
@@ -26746,11 +26756,11 @@ _021F23DC:
 	b _021F24F0
 _021F2412:
 	ldr r0, [r4, #0x10]
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	beq _021F24F0
 	ldr r0, [r4, #0x10]
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	ldr r0, [r4, #0x14]
 	bl ov01_021F1640
 	ldr r0, [r4, #0xc]
@@ -26763,7 +26773,7 @@ _021F2412:
 	mov r1, #0
 	bl ov01_021E7F00
 	ldr r0, [r4, #8]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _021F2476
 	ldr r1, [r4, #4]
@@ -26772,14 +26782,14 @@ _021F2412:
 	lsr r1, r1, #0x18
 	bl ov01_02205790
 	ldr r0, [r4, #8]
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	mov r1, #1
 	bl sub_02069DC8
 	ldr r0, [r4, #8]
 	mov r1, #1
 	bl ov01_0220609C
 	ldr r0, [r4, #8]
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	mov r1, #0x30
 	bl sub_0205FC94
 _021F2476:
@@ -26883,8 +26893,8 @@ _021F252A:
 ov01_021F2538: ; 0x021F2538
 	push {r3, lr}
 	add r0, r1, #0
-	bl sub_0205C6DC
-	bl sub_02062108
+	bl PlayerAvatar_GetMapObject
+	bl MapObject_AreBitsSetForMovementScriptInit
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ov01_021F2538
@@ -26902,7 +26912,7 @@ ov01_021F2548: ; 0x021F2548
 	str r6, [r4, #0xc]
 	ldr r0, [r6, #0x40]
 	str r0, [r4, #0x10]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r2, r4, #0
 	str r0, [r4, #0x14]
 	add r2, #0x1c
@@ -26922,7 +26932,7 @@ _021F257E:
 	ldr r0, [r6, #0x10]
 	ldr r1, _021F258C ; =ov01_021F2628
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021F258C: .word ov01_021F2628
@@ -26934,7 +26944,7 @@ ov01_021F2590: ; 0x021F2590
 	sub sp, #0x10
 	add r6, r2, #0
 	add r5, r1, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r4, r0, #0
 	add r1, r6, #0
 	bl ov01_021F3100
@@ -27013,7 +27023,7 @@ _021F2622:
 ov01_021F2628: ; 0x021F2628
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	ldr r7, _021F268C ; =ov01_022069D0
 	add r4, r0, #0
 _021F2634:
@@ -27047,7 +27057,7 @@ _021F2656:
 	lsr r1, r1, #0x18
 	bl ov01_02205790
 	ldr r0, [r4, #0xc]
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	mov r1, #1
 	bl sub_02069DC8
 	ldr r0, [r4, #0xc]
@@ -27158,7 +27168,7 @@ ov01_021F2734: ; 0x021F2734
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r5, r1, #0
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	beq _021F2746
 	mov r0, #0
@@ -27179,16 +27189,16 @@ ov01_021F2758: ; 0x021F2758
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x10]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #4]
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	add r6, r0, #0
 	ldr r0, [r5, #0x10]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r7, r0, #0
 	ldr r0, [r5, #4]
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -27199,17 +27209,17 @@ ov01_021F2758: ; 0x021F2758
 	bl ov01_021FEAB0
 	str r0, [r5, #0x18]
 	ldr r0, [r5, #0xc]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _021F27A2
 	ldr r0, [r5, #0xc]
-	bl sub_02069D68
-	bl sub_0205F708
+	bl FollowingPokemon_GetMapObject
+	bl MapObject_UnpauseMovement
 _021F27A2:
 	ldr r0, [r5, #0xc]
 	bl ov02_0224D9A4
 	str r0, [r5, #0x2c]
-	ldr r0, _021F27BC ; =0x00000626
+	ldr r0, _021F27BC ; =SEQ_SE_DP_UG_023
 	bl PlaySE
 	ldrh r0, [r5]
 	add r0, r0, #1
@@ -27217,7 +27227,7 @@ _021F27A2:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_021F27BC: .word 0x00000626
+_021F27BC: .word SEQ_SE_DP_UG_023
 	thumb_func_end ov01_021F2758
 
 	thumb_func_start ov01_021F27C0
@@ -27225,7 +27235,7 @@ ov01_021F27C0: ; 0x021F27C0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x14]
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _021F27E4
 	ldr r0, [r4, #4]
@@ -27233,7 +27243,7 @@ ov01_021F27C0: ; 0x021F27C0
 	bl sub_0206234C
 	add r1, r0, #0
 	ldr r0, [r4, #0x14]
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldrh r0, [r4]
 	add r0, r0, #1
 	strh r0, [r4]
@@ -27247,7 +27257,7 @@ ov01_021F27E8: ; 0x021F27E8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x14]
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #1
 	bne _021F2804
 	ldrh r0, [r4]
@@ -27266,7 +27276,7 @@ ov01_021F2808: ; 0x021F2808
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x14]
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _021F282C
 	ldr r0, [r4, #4]
@@ -27274,7 +27284,7 @@ ov01_021F2808: ; 0x021F2808
 	bl sub_0206234C
 	add r1, r0, #0
 	ldr r0, [r4, #0x14]
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldrh r0, [r4]
 	add r0, r0, #1
 	strh r0, [r4]
@@ -27288,14 +27298,14 @@ ov01_021F2830: ; 0x021F2830
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x14]
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	bne _021F2842
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 _021F2842:
 	ldr r0, [r5, #0x14]
-	bl sub_0205F2B8
+	bl MapObject_GetNextFacing
 	add r4, r0, #0
 	ldr r0, [r5, #0x14]
 	add r1, r4, #0
@@ -27316,7 +27326,7 @@ _021F2868:
 	bl sub_0206234C
 	add r1, r0, #0
 	ldr r0, [r5, #0x14]
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	mov r1, #0
 	str r1, [r5, #8]
 	ldrh r0, [r5]
@@ -27336,14 +27346,14 @@ ov01_021F2894: ; 0x021F2894
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x14]
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	bne _021F28A6
 	mov r0, #0
 	pop {r4, pc}
 _021F28A6:
 	ldr r0, [r4, #0x14]
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	ldr r0, [r4, #0x18]
 	bl ov01_021F1640
 	mov r0, #1
@@ -27365,7 +27375,7 @@ ov01_021F28B8: ; 0x021F28B8
 	ldr r0, [r6, #0x40]
 	str r0, [r4, #0x38]
 	ldr r0, [r6, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	str r0, [r4, #0x3c]
 	cmp r5, #0
 	beq _021F28E8
@@ -27389,7 +27399,7 @@ ov01_021F28EC: ; 0x021F28EC
 	add r2, r0, #0
 	ldr r1, _021F2904 ; =ov01_021F2944
 	add r0, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r4, pc}
 	nop
 _021F2904: .word ov01_021F2944
@@ -27402,7 +27412,7 @@ ov01_021F2908: ; 0x021F2908
 	add r5, r2, #0
 	add r6, r0, #0
 	add r7, r1, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r4, r0, #0
 	add r1, r5, #0
 	bl ov01_021F3100
@@ -27417,7 +27427,7 @@ ov01_021F2908: ; 0x021F2908
 	add r2, r0, #0
 	ldr r1, _021F2940 ; =ov01_021F2944
 	add r0, r6, #0
-	bl sub_02050530
+	bl QueueTask
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -27427,7 +27437,7 @@ _021F2940: .word ov01_021F2944
 	thumb_func_start ov01_021F2944
 ov01_021F2944: ; 0x021F2944
 	push {r4, r5, r6, lr}
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	ldr r6, _021F2990 ; =ov01_022069BC
 	ldr r4, _021F2994 ; =ov01_022069A8
 	add r5, r0, #0
@@ -27501,7 +27511,7 @@ ov01_021F29C0: ; 0x021F29C0
 	bl ov01_021F3068
 	cmp r0, #1
 	bne _021F29DA
-	ldr r0, _021F29E0 ; =0x0000064C
+	ldr r0, _021F29E0 ; =SEQ_SE_DP_FW463
 	bl PlaySE
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -27510,7 +27520,7 @@ _021F29DA:
 	mov r0, #0
 	pop {r4, pc}
 	nop
-_021F29E0: .word 0x0000064C
+_021F29E0: .word SEQ_SE_DP_FW463
 	thumb_func_end ov01_021F29C0
 
 	thumb_func_start ov01_021F29E4
@@ -27519,17 +27529,17 @@ ov01_021F29E4: ; 0x021F29E4
 	sub sp, #0x24
 	add r5, r0, #0
 	ldr r0, [r5, #0x3c]
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	add r4, r0, #0
 	mov r0, #0
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	lsl r0, r0, #1
 	add r4, r4, r0
 	ldr r0, [r5, #0x3c]
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	add r6, r0, #0
 	mov r0, #0
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	lsl r0, r0, #1
 	add r6, r6, r0
 	add r2, r5, #0
@@ -27564,7 +27574,7 @@ _021F2A3C:
 	str r6, [r5, #0x14]
 	ldr r0, [r5, #0x3c]
 	add r1, sp, #0x18
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r1, [sp, #0x20]
 	ldr r0, [r5, #0x30]
 	cmp r1, r0
@@ -27622,7 +27632,7 @@ ov01_021F2AB8: ; 0x021F2AB8
 	add r4, r0, #0
 	ldr r0, [r4, #0x3c]
 	add r1, sp, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r1, [sp, #4]
 	ldr r0, [r4, #0x20]
 	add r1, r1, r0
@@ -27634,7 +27644,7 @@ ov01_021F2AB8: ; 0x021F2AB8
 _021F2AD6:
 	ldr r0, [r4, #0x3c]
 	add r1, sp, #0
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -27658,7 +27668,7 @@ ov01_021F2AF8: ; 0x021F2AF8
 	add r4, r0, #0
 	ldr r0, [r4, #0x3c]
 	add r1, sp, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r1, [sp, #4]
 	ldr r0, [r4, #0x20]
 	add r1, r1, r0
@@ -27679,7 +27689,7 @@ _021F2B16:
 _021F2B26:
 	ldr r0, [r4, #0x3c]
 	add r1, sp, #0
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -27703,13 +27713,13 @@ _021F2B4A:
 _021F2B56:
 	ldr r0, [r4, #0x3c]
 	ldr r1, [r4, #0xc]
-	bl sub_0205F918
+	bl MapObject_SetCurrentX
 	ldr r0, [r4, #0x3c]
 	ldr r1, [r4, #0x10]
-	bl sub_0205F928
+	bl MapObject_SetCurrentHeight
 	ldr r0, [r4, #0x3c]
 	ldr r1, [r4, #0x14]
-	bl sub_0205F938
+	bl MapObject_SetCurrentY
 	ldr r0, [r4, #0x3c]
 	bl sub_02060F78
 	ldr r0, [r4, #0x50]
@@ -27749,7 +27759,7 @@ ov01_021F2BA4: ; 0x021F2BA4
 	bl ov01_021F3068
 	cmp r0, #1
 	bne _021F2BBE
-	ldr r0, _021F2BC4 ; =0x0000064C
+	ldr r0, _021F2BC4 ; =SEQ_SE_DP_FW463
 	bl PlaySE
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -27758,7 +27768,7 @@ _021F2BBE:
 	mov r0, #0
 	pop {r4, pc}
 	nop
-_021F2BC4: .word 0x0000064C
+_021F2BC4: .word SEQ_SE_DP_FW463
 	thumb_func_end ov01_021F2BA4
 
 	thumb_func_start ov01_021F2BC8
@@ -27767,17 +27777,17 @@ ov01_021F2BC8: ; 0x021F2BC8
 	sub sp, #0x18
 	add r5, r0, #0
 	ldr r0, [r5, #0x3c]
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	add r4, r0, #0
 	mov r0, #1
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	lsl r0, r0, #1
 	add r4, r4, r0
 	ldr r0, [r5, #0x3c]
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	add r6, r0, #0
 	mov r0, #1
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	lsl r0, r0, #1
 	add r6, r6, r0
 	add r2, r5, #0
@@ -27802,7 +27812,7 @@ ov01_021F2BC8: ; 0x021F2BC8
 	str r6, [r5, #0x14]
 	ldr r0, [r5, #0x3c]
 	add r1, sp, #0xc
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r1, [sp, #0x14]
 	ldr r0, [r5, #0x30]
 	cmp r1, r0
@@ -27860,7 +27870,7 @@ ov01_021F2C88: ; 0x021F2C88
 	add r4, r0, #0
 	ldr r0, [r4, #0x3c]
 	add r1, sp, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r1, [sp, #8]
 	ldr r0, [r4, #0x24]
 	add r1, r1, r0
@@ -27878,7 +27888,7 @@ _021F2CA8:
 _021F2CB0:
 	ldr r0, [r4, #0x3c]
 	add r1, sp, #0
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -27903,7 +27913,7 @@ ov01_021F2CD4: ; 0x021F2CD4
 	add r4, r0, #0
 	ldr r0, [r4, #0x3c]
 	add r1, sp, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r1, [sp, #4]
 	ldr r0, [r4, #0x20]
 	add r1, r1, r0
@@ -27930,7 +27940,7 @@ _021F2D04:
 _021F2D0C:
 	ldr r0, [r4, #0x3c]
 	add r1, sp, #0
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -27954,13 +27964,13 @@ _021F2D30:
 _021F2D3C:
 	ldr r0, [r4, #0x3c]
 	ldr r1, [r4, #0xc]
-	bl sub_0205F918
+	bl MapObject_SetCurrentX
 	ldr r0, [r4, #0x3c]
 	ldr r1, [r4, #0x10]
-	bl sub_0205F928
+	bl MapObject_SetCurrentHeight
 	ldr r0, [r4, #0x3c]
 	ldr r1, [r4, #0x14]
-	bl sub_0205F938
+	bl MapObject_SetCurrentY
 	ldr r0, [r4, #0x3c]
 	bl sub_02060F78
 	ldr r0, [r4, #0x50]
@@ -27984,7 +27994,7 @@ ov01_021F2D68: ; 0x021F2D68
 	str r6, [r4, #0x34]
 	ldr r0, [r6, #0x40]
 	str r0, [r4, #0x38]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r2, r4, #0
 	str r0, [r4, #0x3c]
 	add r2, #0x40
@@ -27995,7 +28005,7 @@ ov01_021F2D68: ; 0x021F2D68
 	ldr r0, [r6, #0x10]
 	ldr r1, _021F2DA0 ; =ov01_021F2DD0
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021F2DA0: .word ov01_021F2DD0
@@ -28007,7 +28017,7 @@ ov01_021F2DA4: ; 0x021F2DA4
 	sub sp, #0x10
 	add r5, r2, #0
 	add r6, r1, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r4, r0, #0
 	add r1, r5, #0
 	bl ov01_021F3100
@@ -28026,7 +28036,7 @@ ov01_021F2DA4: ; 0x021F2DA4
 	thumb_func_start ov01_021F2DD0
 ov01_021F2DD0: ; 0x021F2DD0
 	push {r4, r5, r6, lr}
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	ldr r6, _021F2E04 ; =ov01_02206994
 	add r5, r0, #0
 _021F2DDA:
@@ -28090,17 +28100,17 @@ ov01_021F2E38: ; 0x021F2E38
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x34]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _021F2E50
 	ldr r0, [r4, #0x34]
-	bl sub_02069D68
-	bl sub_0205F708
+	bl FollowingPokemon_GetMapObject
+	bl MapObject_UnpauseMovement
 _021F2E50:
 	ldr r0, [r4, #0x34]
 	bl ov02_0224D67C
 	str r0, [r4, #0x50]
-	ldr r0, _021F2E68 ; =0x0000064C
+	ldr r0, _021F2E68 ; =SEQ_SE_DP_FW463
 	bl PlaySE
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -28108,7 +28118,7 @@ _021F2E50:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-_021F2E68: .word 0x0000064C
+_021F2E68: .word SEQ_SE_DP_FW463
 	thumb_func_end ov01_021F2E38
 
 	thumb_func_start ov01_021F2E6C
@@ -28116,7 +28126,7 @@ ov01_021F2E6C: ; 0x021F2E6C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x3c]
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _021F2E90
 	ldr r0, [r4, #4]
@@ -28124,7 +28134,7 @@ ov01_021F2E6C: ; 0x021F2E6C
 	bl sub_0206234C
 	add r1, r0, #0
 	ldr r0, [r4, #0x3c]
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -28138,14 +28148,14 @@ ov01_021F2E94: ; 0x021F2E94
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x3c]
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	bne _021F2EA6
 	mov r0, #0
 	pop {r4, pc}
 _021F2EA6:
 	ldr r0, [r4, #0x3c]
-	bl sub_0205F2B8
+	bl MapObject_GetNextFacing
 	ldr r0, [r4, #0x3c]
 	bl sub_0205F504
 	lsl r0, r0, #0x18
@@ -28163,7 +28173,7 @@ _021F2EC6:
 	mov r0, #0
 	str r0, [r4, #0x50]
 	ldr r0, [r4, #0x3c]
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -28173,7 +28183,7 @@ _021F2EC6:
 ov01_021F2EDC: ; 0x021F2EDC
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
 	bl sub_0205F73C
 	cmp r0, #0
@@ -28183,7 +28193,7 @@ ov01_021F2EDC: ; 0x021F2EDC
 	cmp r0, #0
 	bne _021F2F22
 	add r0, r5, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	sub r0, #0xc4
 	cmp r0, #1
 	bls _021F2F22
@@ -28206,7 +28216,7 @@ _021F2F22:
 ov01_021F2F24: ; 0x021F2F24
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
 	bl sub_0205F73C
 	cmp r0, #0
@@ -28216,7 +28226,7 @@ ov01_021F2F24: ; 0x021F2F24
 	cmp r0, #0
 	bne _021F2F6C
 	add r0, r5, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	cmp r0, #0xc4
 	beq _021F2F4E
 	cmp r0, #0xc5
@@ -28253,7 +28263,7 @@ ov01_021F2F70: ; 0x021F2F70
 	pop {r3, r4, r5, r6, r7, pc}
 _021F2F88:
 	add r0, r6, #0
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	str r0, [sp]
 	mov r0, #4
 	mov r1, #0x10
@@ -28279,7 +28289,7 @@ _021F2FB6:
 	mov r4, #0x80
 _021F2FBC:
 	ldr r0, [sp]
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 	add r0, r6, #0
 	add r1, r4, #0
 	bl ov01_021F1AFC
@@ -28337,7 +28347,7 @@ _021F302E:
 ov01_021F3030: ; 0x021F3030
 	push {r3, lr}
 	ldr r0, [r1, #0xc]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	bl sub_0205F484
 	pop {r3, pc}
 	.balign 4, 0
@@ -28390,7 +28400,7 @@ _021F3080:
 ov01_021F3084: ; 0x021F3084
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r1, r4, #0
 	bl ov01_021FA930
 	pop {r4, pc}
@@ -28401,19 +28411,19 @@ ov01_021F3094: ; 0x021F3094
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r4, r0, #0
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	bl sub_0205F35C
 	ldr r2, [sp]
 	add r1, r6, r7
@@ -28471,7 +28481,7 @@ ov01_021F3114: ; 0x021F3114
 	add r6, r1, #0
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	bl sub_0205F504
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -28524,16 +28534,16 @@ ov01_021F3170: ; 0x021F3170
 	add r4, r0, #0
 	str r5, [r4, #0xc]
 	str r6, [r4, #0x10]
-	ldr r0, _021F3198 ; =0x00000657
+	ldr r0, _021F3198 ; =SEQ_SE_DP_F209
 	str r7, [r4]
 	bl PlaySE
 	ldr r1, _021F319C ; =ov01_021F31CC
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_021F3198: .word 0x00000657
+_021F3198: .word SEQ_SE_DP_F209
 _021F319C: .word ov01_021F31CC
 	thumb_func_end ov01_021F3170
 
@@ -28572,10 +28582,10 @@ _021F31C8:
 	thumb_func_start ov01_021F31CC
 ov01_021F31CC: ; 0x021F31CC
 	push {r4, r5, r6, lr}
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
 	bl sub_0205F504
 	lsl r0, r0, #0x18
@@ -28592,7 +28602,7 @@ _021F31F4:
 	mov r1, #1
 	add r0, r6, #0
 	lsl r1, r1, #8
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -28612,7 +28622,7 @@ _021F3212:
 	bl sub_0205DFD4
 	ldr r0, [r4, #0x10]
 	ldr r1, [r4]
-	bl sub_0205C660
+	bl PlayerAvatar_SetFacingDirection
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -28633,7 +28643,7 @@ _021F3244:
 	str r0, [r4]
 	ldr r0, [r4, #0x10]
 	ldr r1, [r4]
-	bl sub_0205C660
+	bl PlayerAvatar_SetFacingDirection
 _021F3254:
 	ldr r0, [r4, #4]
 	sub r0, r0, #1
@@ -28692,19 +28702,19 @@ _021F32BC:
 	str r0, [r4]
 	add r0, r6, #0
 	mov r1, #0x80
-	bl sub_0205F214
+	bl MapObject_ClearBits
 	mov r1, #1
 	add r0, r6, #0
 	lsl r1, r1, #8
-	bl sub_0205F214
+	bl MapObject_ClearBits
 	ldr r0, [r4, #0x10]
 	ldr r1, [r4]
-	bl sub_0205C660
+	bl PlayerAvatar_SetFacingDirection
 	add r0, r4, #0
 	bl ov01_021F336C
-	ldr r0, _021F3344 ; =0x00000657
+	ldr r0, _021F3344 ; =SEQ_SE_DP_F209
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _021F32FA:
@@ -28723,26 +28733,26 @@ _021F3300:
 _021F3314:
 	add r0, r6, #0
 	mov r1, #0x80
-	bl sub_0205F214
+	bl MapObject_ClearBits
 	mov r1, #1
 	add r0, r6, #0
 	lsl r1, r1, #8
-	bl sub_0205F214
+	bl MapObject_ClearBits
 	ldr r0, [r4, #0x10]
 	ldr r1, [r4]
-	bl sub_0205C660
+	bl PlayerAvatar_SetFacingDirection
 	add r0, r4, #0
 	bl ov01_021F336C
-	ldr r0, _021F3344 ; =0x00000657
+	ldr r0, _021F3344 ; =SEQ_SE_DP_F209
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _021F3340:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_021F3344: .word 0x00000657
+_021F3344: .word SEQ_SE_DP_F209
 	thumb_func_end ov01_021F31CC
 
 	thumb_func_start ov01_021F3348
@@ -28809,12 +28819,12 @@ _021F33A6:
 	str r0, [r1, #0x10]
 _021F33AA:
 	ldr r0, [r1]
-	ldr r3, _021F33B4 ; =sub_0205C660
+	ldr r3, _021F33B4 ; =PlayerAvatar_SetFacingDirection
 	ldr r0, [r0, #0x40]
 	ldr r1, [r1, #0x10]
 	bx r3
 	.balign 4, 0
-_021F33B4: .word sub_0205C660
+_021F33B4: .word PlayerAvatar_SetFacingDirection
 	thumb_func_end ov01_021F3378
 
 	thumb_func_start ov01_021F33B8
@@ -28825,7 +28835,7 @@ ov01_021F33B8: ; 0x021F33B8
 	add r7, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
 	ldr r0, [r5, #8]
 	cmp r0, #0
@@ -28837,7 +28847,7 @@ ov01_021F33B8: ; 0x021F33B8
 _021F33D8:
 	mov r0, #1
 	str r0, [r5, #8]
-	ldr r0, _021F3480 ; =0x0000064E
+	ldr r0, _021F3480 ; =SEQ_SE_DP_TELE2
 	bl PlaySE
 _021F33E2:
 	ldr r0, [r5, #0xc]
@@ -28910,7 +28920,7 @@ _021F347A:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	nop
-_021F3480: .word 0x0000064E
+_021F3480: .word SEQ_SE_DP_TELE2
 _021F3484: .word 0x9999999A
 _021F3488: .word 0x40C19999
 	thumb_func_end ov01_021F33B8
@@ -28923,7 +28933,7 @@ ov01_021F348C: ; 0x021F348C
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	ldr r1, [r5, #8]
 	add r4, r0, #0
 	cmp r1, #0
@@ -28935,7 +28945,7 @@ ov01_021F348C: ; 0x021F348C
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 _021F34B0:
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 	add r0, r4, #0
 	add r1, sp, #0x14
 	bl sub_0205F990
@@ -28965,7 +28975,7 @@ _021F34B0:
 	bl sub_0205F9A0
 	add r0, r4, #0
 	bl ov01_021F92A0
-	ldr r0, _021F35C0 ; =0x0000064E
+	ldr r0, _021F35C0 ; =SEQ_SE_DP_TELE2
 	bl PlaySE
 	mov r0, #1
 	str r0, [r5, #8]
@@ -29038,7 +29048,7 @@ _021F3590:
 	ldr r0, [r5]
 	mov r1, #1
 	ldr r0, [r0, #0x40]
-	bl sub_0205C660
+	bl PlayerAvatar_SetFacingDirection
 	ldr r0, [r5, #4]
 	mov r1, #1
 	str r1, [r0]
@@ -29052,7 +29062,7 @@ _021F35B4:
 	.balign 4, 0
 _021F35B8: .word 0x9999999A
 _021F35BC: .word 0x40C19999
-_021F35C0: .word 0x0000064E
+_021F35C0: .word SEQ_SE_DP_TELE2
 	thumb_func_end ov01_021F348C
 
 	thumb_func_start ov01_021F35C4
@@ -29071,7 +29081,7 @@ ov01_021F35C4: ; 0x021F35C4
 	str r5, [r4]
 	str r7, [r4, #4]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	str r0, [r4, #0x10]
 	cmp r6, #0
 	beq _021F35FA
@@ -29871,10 +29881,10 @@ ov01_021F3B84: ; 0x021F3B84
 	add r4, r2, #0
 	add r5, r3, #0
 	bl NNS_G3dGlbSetBaseTrans
-	ldr r1, _021F3C04 ; =_021DA558
+	ldr r1, _021F3C04 ; =NNS_G3dGlb + 0xBC
 	add r0, r4, #0
 	bl MI_Copy36B
-	ldr r1, _021F3C08 ; =_021DA51C
+	ldr r1, _021F3C08 ; =NNS_G3dGlb + 0x80
 	mov r0, #0xa4
 	ldr r2, [r1, #0x7c]
 	bic r2, r0
@@ -29926,8 +29936,8 @@ _021F3BE8:
 _021F3C00:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_021F3C04: .word _021DA558
-_021F3C08: .word _021DA51C
+_021F3C04: .word NNS_G3dGlb + 0xBC
+_021F3C08: .word NNS_G3dGlb + 0x80
 	thumb_func_end ov01_021F3B84
 
 	thumb_func_start ov01_021F3C0C
@@ -30242,7 +30252,7 @@ ov01_021F3E10: ; 0x021F3E10
 	ldr r0, [r4, #8]
 	add r2, r1, #0
 	sub r3, #0x33
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r1, [r4, #0x68]
 	ldrb r0, [r1, #0x13]
 	lsl r0, r0, #0x18
@@ -30296,7 +30306,7 @@ ov01_021F3E4C: ; 0x021F3E4C
 	ldr r0, [r4, #8]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r2, [r4, #0x68]
 	mov r0, #0x80
 	ldrb r1, [r2, #0x13]
@@ -30314,7 +30324,7 @@ ov01_021F3EA0: ; 0x021F3EA0
 	add r4, r0, #0
 	ldr r0, [r4, #8]
 	mov r1, #3
-	bl sub_0201BE00
+	bl Bg_GetYpos
 	cmp r0, #0
 	bne _021F3EB4
 	mov r0, #1
@@ -30332,13 +30342,13 @@ _021F3EC0:
 	ldr r0, [r4, #8]
 	add r2, r1, #0
 	sub r3, #0x33
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _021F3ECE:
 	ldr r0, [r4, #8]
 	mov r1, #3
 	mov r2, #4
 	mov r3, #0x10
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -30351,7 +30361,7 @@ ov01_021F3EE0: ; 0x021F3EE0
 	add r4, r0, #0
 	ldr r0, [r4, #8]
 	mov r1, #3
-	bl sub_0201BE00
+	bl Bg_GetYpos
 	mov r1, #0x2f
 	mvn r1, r1
 	cmp r0, r1
@@ -30376,7 +30386,7 @@ ov01_021F3EE0: ; 0x021F3EE0
 	ldr r0, [r4, #8]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add sp, #0x10
 	mov r0, #1
 	pop {r4, pc}
@@ -30389,13 +30399,13 @@ _021F3F32:
 	ldr r0, [r4, #8]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _021F3F3E:
 	ldr r0, [r4, #8]
 	mov r1, #3
 	mov r2, #5
 	mov r3, #0x10
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #0
 	add sp, #0x10
 	pop {r4, pc}
@@ -30407,8 +30417,8 @@ ov01_021F3F50: ; 0x021F3F50
 	ldr r4, [r1, #0xc]
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0203B9C4
-	bl sub_0203B958
+	bl Save_FlyPoints_get
+	bl FlyPoints_GetPosition
 	add r6, r0, #0
 	add r0, r4, #0
 	bl Sav2_Pokedex_get
@@ -30417,11 +30427,11 @@ ov01_021F3F50: ; 0x021F3F50
 	bl MapHeader_GetMapSec
 	str r0, [r5, #4]
 	add r0, r7, #0
-	bl sub_0202A5F4
+	bl Pokedex_IsEnabled
 	cmp r0, #0
 	beq _021F3F84
 	add r0, r7, #0
-	bl sub_02029E84
+	bl Pokedex_CountDexOwned
 	b _021F3F86
 _021F3F84:
 	mov r0, #0
@@ -31008,11 +31018,11 @@ ov01_021F4404: ; 0x021F4404
 	mov r2, #0
 	bl ov01_021F6830
 	ldr r0, [r4, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	ldr r1, [r4, #0x20]
 	str r0, [r1, #8]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	ldr r1, [r4, #0x20]
 	str r0, [r1, #0xc]
 	mov r1, #0
@@ -31020,7 +31030,7 @@ ov01_021F4404: ; 0x021F4404
 	mvn r1, r1
 	str r1, [r0, #4]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	ldr r1, [r4, #0x20]
 	str r0, [r1, #0x10]
 	pop {r4, pc}
@@ -31993,7 +32003,7 @@ _021F4B70:
 	mov r0, #0x41
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	str r0, [sp, #0x14]
 	bl sub_0202F620
 	str r0, [sp, #0x18]
@@ -37114,10 +37124,10 @@ _021F70FA:
 ov01_021F7100: ; 0x021F7100
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	ldr r0, [r4, #0x44]
 	cmp r0, #0xc
 	bhi _021F71C0
@@ -37332,13 +37342,13 @@ ov01_021F729C: ; 0x021F729C
 	ldr r1, _021F72D8 ; =ov01_021F7100
 	add r0, r6, #0
 	add r2, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r4, r5, r6, pc}
 _021F72CA:
 	ldr r1, _021F72D8 ; =ov01_021F7100
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r4, r5, r6, pc}
 	nop
 _021F72D8: .word ov01_021F7100
@@ -37348,7 +37358,7 @@ _021F72D8: .word ov01_021F7100
 ov01_021F72DC: ; 0x021F72DC
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	cmp r0, #0xf8
 	bgt _021F7356
 	bge _021F737E
@@ -37526,7 +37536,7 @@ _021F7420:
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0x14
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021F7408
 
@@ -37559,7 +37569,7 @@ _021F7456:
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0x14
-	bl sub_0205F214
+	bl MapObject_ClearBits
 _021F7476:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021F7434
@@ -37634,7 +37644,7 @@ _021F74DE:
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0x14
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021F74C8
@@ -37651,7 +37661,7 @@ ov01_021F7504: ; 0x021F7504
 	lsr r0, r0, #0x1f
 	bne _021F7522
 	add r0, r5, #0
-	bl sub_0205F24C
+	bl MapObject_GetID
 	cmp r0, #0xfd
 	beq _021F7524
 _021F7522:
@@ -37659,7 +37669,7 @@ _021F7522:
 _021F7524:
 	add r0, r5, #0
 	bl sub_0205F35C
-	bl sub_0205F1E4
+	bl MapObjectMan_GetFieldSysPtr
 	str r0, [sp, #0x10]
 	ldr r0, [r0, #0xc]
 	bl SavArray_PlayerParty_get
@@ -37681,7 +37691,7 @@ _021F7524:
 	ldr r2, [sp, #8]
 	add r0, r7, #0
 	lsr r1, r1, #0x10
-	bl sub_02069D70
+	bl FollowingPokemon_GetSpriteID
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0xc]
 	bl MonIsShiny
@@ -37695,20 +37705,20 @@ _021F7524:
 	ldr r3, [sp, #4]
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_02069EE8
+	bl FollowPokeMapObjectSetParams
 	ldr r1, [sp, #0x14]
 	add r0, r5, #0
-	bl sub_0205F258
+	bl MapObject_SetGfxID
 	add r0, r5, #0
 	bl sub_0205FCD4
 	add r0, r5, #0
 	mov r1, #4
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	add r0, r5, #0
 	add r1, sp, #0x30
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r5, #0
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	add r1, r0, #0
 	mov r0, #2
 	lsl r2, r1, #0x10
@@ -37716,14 +37726,14 @@ _021F7524:
 	add r0, r2, r0
 	str r0, [sp, #0x30]
 	add r0, r5, #0
-	bl sub_0205F900
+	bl MapObject_SetPrevX
 	add r0, r5, #0
-	bl sub_0205F924
+	bl MapObject_GetCurrentHeight
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0205F908
+	bl MapObject_SetPrevHeight
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	add r1, r0, #0
 	mov r0, #2
 	lsl r2, r1, #0x10
@@ -37731,12 +37741,12 @@ _021F7524:
 	add r0, r2, r0
 	str r0, [sp, #0x38]
 	add r0, r5, #0
-	bl sub_0205F910
+	bl MapObject_SetPrevY
 	add r0, r5, #0
 	add r1, sp, #0x30
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	add r0, r5, #0
-	bl sub_020621F0
+	bl MapObject_ClearHeldMovement
 	ldr r0, [sp, #0x10]
 	add r0, #0xf4
 	ldr r0, [r0]
@@ -37767,10 +37777,10 @@ _021F761C:
 	ldr r3, [sp, #4]
 	add r1, r7, #0
 	lsr r2, r2, #0x18
-	bl sub_02069F3C
+	bl FollowPokeFsysParamSet
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0205F288
+	bl MapObject_ForceSetFacingDirection
 _021F7636:
 	mov r1, #0
 	ldr r0, [sp, #0xc]
@@ -37813,11 +37823,11 @@ _021F766C:
 	str r0, [r1, #8]
 	add r0, r5, #0
 	add r1, sp, #0x24
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	add r0, r5, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	add r0, r5, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	add r1, r0, #0
 	add r0, r5, #0
 	add r2, sp, #0x18
@@ -37828,7 +37838,7 @@ _021F766C:
 	ldr r0, [sp, #0x20]
 	str r0, [sp, #0x2c]
 	add r0, r5, #0
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	add r0, r5, #0
 	bl ov01_02205564
 	cmp r0, #0
@@ -37857,7 +37867,7 @@ _021F76E0:
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0x14
-	bl sub_0205F214
+	bl MapObject_ClearBits
 	add r0, r5, #0
 	bl sub_0205F484
 _021F7700:
@@ -37873,7 +37883,7 @@ ov01_021F7704: ; 0x021F7704
 	mov r1, #0
 	strb r1, [r0, #0x15]
 	add r0, r4, #0
-	bl sub_0205F98C
+	bl MapObject_GetFacingVecPtr
 	mov r1, #0
 	str r1, [r0, #4]
 	pop {r4, pc}
@@ -37883,7 +37893,7 @@ ov01_021F7704: ; 0x021F7704
 ov01_021F771C: ; 0x021F771C
 	push {r3, lr}
 	mov r1, #0xfd
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	bl sub_0205F40C
 	ldr r0, [r0]
 	pop {r3, pc}
@@ -37904,7 +37914,7 @@ ov01_021F772C: ; 0x021F772C
 	cmp r7, #0
 	beq _021F779C
 	add r0, r4, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	str r0, [sp, #4]
 	add r0, r4, #0
 	bl sub_0205F330
@@ -37922,7 +37932,7 @@ _021F7760:
 	add r1, r7, #0
 	blx r5
 	add r0, r4, #0
-	bl sub_0205F98C
+	bl MapObject_GetFacingVecPtr
 	mov r1, #2
 	lsl r1, r1, #0xa
 	str r1, [r0, #8]
@@ -38043,7 +38053,7 @@ _021F7852:
 	bl ov01_02205808
 _021F7866:
 	add r0, r5, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	add r7, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -38106,7 +38116,7 @@ _021F78D6:
 	bl ov01_02205808
 _021F78EA:
 	add r0, r5, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	add r7, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -38535,7 +38545,7 @@ ov01_021F7C14: ; 0x021F7C14
 	cmp r7, #0
 	beq _021F7C78
 	add r0, r4, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	str r0, [sp, #4]
 	add r0, r4, #0
 	bl sub_0205F330
@@ -38641,7 +38651,7 @@ ov01_021F7CE4: ; 0x021F7CE4
 	cmp r4, #0
 	beq _021F7DA2
 	add r0, r5, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	add r7, r0, #0
 	add r0, r5, #0
 	bl sub_0205F330
@@ -38761,7 +38771,7 @@ ov01_021F7DD0: ; 0x021F7DD0
 	bl ov01_021F95A8
 	add r0, r4, #0
 	add r1, sp, #0
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	add sp, #0xc
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -38786,7 +38796,7 @@ _021F7E14:
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0x14
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021F7DFC
 
@@ -38819,7 +38829,7 @@ _021F7E4A:
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0x14
-	bl sub_0205F214
+	bl MapObject_ClearBits
 _021F7E6A:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021F7E28
@@ -38839,7 +38849,7 @@ ov01_021F7E6C: ; 0x021F7E6C
 	cmp r7, #0
 	beq _021F7EDC
 	add r0, r4, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	str r0, [sp, #4]
 	add r0, r4, #0
 	bl sub_0205F330
@@ -38857,7 +38867,7 @@ _021F7EA0:
 	add r1, r7, #0
 	blx r5
 	add r0, r4, #0
-	bl sub_0205F98C
+	bl MapObject_GetFacingVecPtr
 	mov r1, #2
 	lsl r1, r1, #0xa
 	str r1, [r0, #8]
@@ -39418,7 +39428,7 @@ ov01_021F82F0: ; 0x021F82F0
 	cmp r0, #0
 	beq _021F836C
 	add r0, r7, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	str r0, [sp, #8]
 	add r0, r7, #0
 	bl sub_0205F330
@@ -39672,7 +39682,7 @@ ov01_021F84F4: ; 0x021F84F4
 	cmp r0, #1
 	beq _021F8562
 	add r0, r4, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	str r0, [sp, #4]
 	add r0, r4, #0
 	bl sub_0205F330
@@ -39995,7 +40005,7 @@ _021F876E:
 	str r0, [sp, #8]
 	add r0, r5, #0
 	add r1, sp, #0
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -40018,7 +40028,7 @@ ov01_021F878C: ; 0x021F878C
 	cmp r0, #1
 	beq _021F87FA
 	add r0, r4, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	str r0, [sp, #4]
 	add r0, r4, #0
 	bl sub_0205F330
@@ -40182,7 +40192,7 @@ _021F88D4:
 _021F88DA:
 	add r0, r5, #0
 	add r1, sp, #0
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	add sp, #0xc
 	pop {r4, r5, pc}
 	nop
@@ -40204,7 +40214,7 @@ ov01_021F88F0: ; 0x021F88F0
 	cmp r4, #0
 	beq _021F894A
 	add r0, r5, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	add r7, r0, #0
 	strb r7, [r6]
 	add r0, r5, #0
@@ -40245,7 +40255,7 @@ ov01_021F894C: ; 0x021F894C
 	cmp r4, #0
 	beq _021F89B6
 	add r0, r5, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	strb r0, [r6]
 	add r0, r5, #0
 	bl sub_0205F330
@@ -40266,7 +40276,7 @@ _021F8990:
 	lsl r1, r1, #0xc
 	bl sub_02023F04
 	add r0, r5, #0
-	bl sub_0205F98C
+	bl MapObject_GetFacingVecPtr
 	mov r1, #2
 	lsl r1, r1, #0xa
 	str r1, [r0, #8]
@@ -40294,7 +40304,7 @@ ov01_021F89B8: ; 0x021F89B8
 	cmp r4, #0
 	beq _021F8A48
 	add r0, r5, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	add r7, r0, #0
 	add r0, r5, #0
 	bl sub_0205F330
@@ -40362,7 +40372,7 @@ ov01_021F8A4C: ; 0x021F8A4C
 	cmp r5, #0
 	beq _021F8AAE
 	add r0, r6, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	mov r1, #0
 	ldrsb r1, [r4, r1]
 	add r7, r0, #0
@@ -40408,7 +40418,7 @@ ov01_021F8AB0: ; 0x021F8AB0
 	cmp r4, #0
 	beq _021F8B2C
 	add r0, r5, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	str r0, [sp]
 	add r0, r5, #0
 	bl sub_0205F330
@@ -40437,7 +40447,7 @@ _021F8B00:
 	lsl r1, r1, #0xc
 	bl sub_02023F04
 	add r0, r5, #0
-	bl sub_0205F98C
+	bl MapObject_GetFacingVecPtr
 	mov r1, #2
 	lsl r1, r1, #0xa
 	str r1, [r0, #8]
@@ -40470,7 +40480,7 @@ ov01_021F8B30: ; 0x021F8B30
 	cmp r0, #1
 	beq _021F8B9E
 	add r0, r4, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	str r0, [sp, #4]
 	add r0, r4, #0
 	bl sub_0205F330
@@ -40556,7 +40566,7 @@ ov01_021F8BE0: ; 0x021F8BE0
 	lsl r2, r2, #0xa
 	add r2, r3, r2
 	str r2, [sp, #8]
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	add sp, #0xc
 	pop {pc}
 	thumb_func_end ov01_021F8BE0
@@ -40639,7 +40649,7 @@ ov01_021F8C88: ; 0x021F8C88
 	add r6, r1, #0
 	lsl r1, r4, #9
 	add r5, r0, #0
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #1
 	bne _021F8C9C
 	mov r4, #0
@@ -40647,13 +40657,13 @@ _021F8C9C:
 	mov r1, #1
 	add r0, r5, #0
 	lsl r1, r1, #0xc
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #1
 	bne _021F8CBA
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0xc
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #0
 	bne _021F8CBA
 	mov r4, #0
@@ -40706,7 +40716,7 @@ ov01_021F8CFC: ; 0x021F8CFC
 	bl sub_0205F3E8
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	add r1, sp, #0
 	bl ov01_021F8CC8
 	add r0, r5, #0
@@ -40761,7 +40771,7 @@ ov01_021F8D58: ; 0x021F8D58
 	bl sub_0205F40C
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	add r1, sp, #0
 	bl ov01_021F8CC8
 	add r0, r5, #0
@@ -40794,7 +40804,7 @@ ov01_021F8D80: ; 0x021F8D80
 	beq _021F8DBA
 	add r0, r5, #0
 	add r1, sp, #8
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	mov r0, #0x14
 	ldrsb r0, [r4, r0]
 	lsl r0, r0, #0xc
@@ -40811,7 +40821,7 @@ _021F8DBA:
 _021F8DC8:
 	add r0, r5, #0
 	add r1, sp, #8
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	mov r0, #0
 	str r0, [sp, #8]
 	str r0, [sp, #0x10]
@@ -40888,7 +40898,7 @@ _021F8E56:
 _021F8E64:
 	add r0, r5, #0
 	add r1, sp, #8
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021F8D80
@@ -40901,9 +40911,9 @@ ov01_021F8E70: ; 0x021F8E70
 	add r6, r0, #0
 	add r1, sp, #0
 	add r4, r2, #0
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	add r0, r6, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	bl ov01_021FA298
 	cmp r0, #0xa
 	bne _021F8EDE
@@ -40999,7 +41009,7 @@ ov01_021F8F08: ; 0x021F8F08
 	orr r0, r1
 	strb r0, [r4, #0x17]
 	add r0, r6, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	add r1, sp, #0
 	bl ov01_021FD9CC
 	ldr r1, [sp]
@@ -41262,7 +41272,7 @@ _021F90E6:
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0x14
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021F90D0
@@ -41295,7 +41305,7 @@ _021F911E:
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0x14
-	bl sub_0205F214
+	bl MapObject_ClearBits
 _021F913C:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -41364,7 +41374,7 @@ ov01_021F91A4: ; 0x021F91A4
 	add r6, r1, #0
 	lsl r1, r4, #9
 	add r5, r0, #0
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #1
 	bne _021F91B8
 	mov r4, #0
@@ -41372,13 +41382,13 @@ _021F91B8:
 	mov r1, #1
 	add r0, r5, #0
 	lsl r1, r1, #0xc
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #1
 	bne _021F91D6
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0xc
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #0
 	bne _021F91D6
 	mov r4, #0
@@ -41418,9 +41428,9 @@ ov01_021F91F8: ; 0x021F91F8
 	bl GF_AssertFail
 _021F9212:
 	add r0, r5, #0
-	bl ov01_021F927C
+	bl FldObjSys_OpenMModelNarc
 	add r0, r5, #0
-	bl sub_0205F168
+	bl MapObjectMan_GetCount
 	str r0, [sp, #0x14]
 	add r0, r5, #0
 	bl sub_0205F19C
@@ -41460,32 +41470,32 @@ _021F9260:
 	mov r1, #1
 	bl sub_0205F184
 	add r0, r4, #0
-	bl ov01_021F9294
+	bl FldObjSys_CloseMModelNarc
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021F9250
 
-	thumb_func_start ov01_021F927C
-ov01_021F927C: ; 0x021F927C
+	thumb_func_start FldObjSys_OpenMModelNarc
+FldObjSys_OpenMModelNarc: ; 0x021F927C
 	push {r4, lr}
 	add r4, r0, #0
-	mov r0, #0x51
+	mov r0, #0x51 ; NARC_data_mmodel_mmodel
 	mov r1, #4
 	bl NARC_ctor
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_0205F1EC
+	bl FldObjSys_SetMModelNarc
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021F927C
+	thumb_func_end FldObjSys_OpenMModelNarc
 
-	thumb_func_start ov01_021F9294
-ov01_021F9294: ; 0x021F9294
+	thumb_func_start FldObjSys_CloseMModelNarc
+FldObjSys_CloseMModelNarc: ; 0x021F9294
 	push {r3, lr}
-	bl sub_0205F1F0
+	bl FldObjSys_GetMModelNarc
 	bl NARC_dtor
 	pop {r3, pc}
-	thumb_func_end ov01_021F9294
+	thumb_func_end FldObjSys_CloseMModelNarc
 
 	thumb_func_start ov01_021F92A0
 ov01_021F92A0: ; 0x021F92A0
@@ -41499,7 +41509,7 @@ ov01_021F92A0: ; 0x021F92A0
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0xe
-	bl sub_0205F220
+	bl MapObject_GetBitsMask
 	cmp r0, #0
 	beq _021F92DA
 	add r0, r4, #0
@@ -41517,8 +41527,8 @@ _021F92DA:
 	pop {r4, pc}
 	thumb_func_end ov01_021F92A0
 
-	thumb_func_start ov01_021F92DC
-ov01_021F92DC: ; 0x021F92DC
+	thumb_func_start GetObjectEventGfxInfoPtr
+GetObjectEventGfxInfoPtr: ; 0x021F92DC
 	push {r3, lr}
 	ldr r3, _021F92FC ; =ov01_022074A8
 	ldr r1, _021F9300 ; =0x0000FFFF
@@ -41539,12 +41549,12 @@ _021F92EC:
 	.balign 4, 0
 _021F92FC: .word ov01_022074A8
 _021F9300: .word 0x0000FFFF
-	thumb_func_end ov01_021F92DC
+	thumb_func_end GetObjectEventGfxInfoPtr
 
-	thumb_func_start ov01_021F9304
-ov01_021F9304: ; 0x021F9304
+	thumb_func_start GetMoveModelNoBySpriteId
+GetMoveModelNoBySpriteId: ; 0x021F9304
 	push {r3, lr}
-	bl ov01_021F92DC
+	bl GetObjectEventGfxInfoPtr
 	cmp r0, #0
 	bne _021F9314
 	mov r0, #0
@@ -41553,12 +41563,12 @@ ov01_021F9304: ; 0x021F9304
 _021F9314:
 	ldrh r0, [r0, #2]
 	pop {r3, pc}
-	thumb_func_end ov01_021F9304
+	thumb_func_end GetMoveModelNoBySpriteId
 
 	thumb_func_start ov01_021F9318
 ov01_021F9318: ; 0x021F9318
 	push {r3, lr}
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	bl ov01_021F9324
 	pop {r3, pc}
 	thumb_func_end ov01_021F9318
@@ -41566,7 +41576,7 @@ ov01_021F9318: ; 0x021F9318
 	thumb_func_start ov01_021F9324
 ov01_021F9324: ; 0x021F9324
 	push {r3, lr}
-	bl ov01_021F92DC
+	bl GetObjectEventGfxInfoPtr
 	cmp r0, #0
 	bne _021F9332
 	mov r0, #0
@@ -41599,7 +41609,7 @@ _021F935E:
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #8
-	bl sub_0205F220
+	bl MapObject_GetBitsMask
 	cmp r0, #0
 	beq _021F9370
 	mov r0, #1
@@ -41609,12 +41619,12 @@ _021F9370:
 	pop {r4, pc}
 	thumb_func_end ov01_021F9344
 
-	thumb_func_start ov01_021F9374
-ov01_021F9374: ; 0x021F9374
+	thumb_func_start ReadMModelFromNarcInternal
+ReadMModelFromNarcInternal: ; 0x021F9374
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r5, r2, #0
-	bl sub_0205F1F0
+	bl FldObjSys_GetMModelNarc
 	add r1, r4, #0
 	add r6, r0, #0
 	bl NARC_GetMemberSize
@@ -41636,7 +41646,7 @@ _021F939A:
 	add r0, r5, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021F9374
+	thumb_func_end ReadMModelFromNarcInternal
 
 	thumb_func_start ov01_021F93AC
 ov01_021F93AC: ; 0x021F93AC
@@ -41645,10 +41655,10 @@ ov01_021F93AC: ; 0x021F93AC
 	add r4, r1, #0
 	add r5, r0, #0
 	add r1, sp, #0x24
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	add r1, sp, #0x18
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	add r0, r5, #0
 	add r1, sp, #0xc
 	bl sub_0205F990
@@ -41688,7 +41698,7 @@ ov01_021F93AC: ; 0x021F93AC
 ov01_021F9408: ; 0x021F9408
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205F290
+	bl MapObject_SetFacingDirection
 	add r0, r4, #0
 	bl sub_0205F678
 	cmp r0, #1
@@ -41709,7 +41719,7 @@ ov01_021F9424: ; 0x021F9424
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0x14
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021F9424
@@ -41839,7 +41849,7 @@ ov01_021F9510: ; 0x021F9510
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -41920,7 +41930,7 @@ ov01_021F95A8: ; 0x021F95A8
 	cmp r0, #0
 	beq _021F95C8
 	add r0, r5, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -42217,7 +42227,7 @@ ov01_021F97BC: ; 0x021F97BC
 	add r7, r0, #0
 	add r5, r1, #0
 	add r6, r2, #0
-	bl sub_0205F168
+	bl MapObjectMan_GetCount
 	add r4, r0, #0
 	add r0, r7, #0
 	bl sub_0205F1AC
@@ -42227,11 +42237,11 @@ _021F97D4:
 	ldr r0, [sp]
 	cmp r0, r5
 	beq _021F97F4
-	bl sub_0205F624
+	bl MapObject_IsInUse
 	cmp r0, #1
 	bne _021F97F4
 	ldr r0, [sp]
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	cmp r0, r7
 	beq _021F97F4
 	cmp r0, r6
@@ -42366,7 +42376,7 @@ _021F98F8:
 	mov r0, #0x41
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0205F1F0
+	bl FldObjSys_GetMModelNarc
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -42403,7 +42413,7 @@ _021F9932:
 	pop {r4, r5, r6, pc}
 _021F9942:
 	add r0, r4, #0
-	bl ov01_021F9304
+	bl GetMoveModelNoBySpriteId
 	add r2, r0, #0
 	bpl _021F9950
 	mov r0, #2
@@ -43341,7 +43351,7 @@ _021F9FEC:
 	beq _021FA006
 _021F9FF6:
 	ldr r0, [sp]
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	cmp r0, r5
 	bne _021FA006
 	add sp, #8
@@ -43385,7 +43395,7 @@ _021FA03A:
 	beq _021FA078
 _021FA044:
 	ldr r0, [sp]
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	add r4, r0, #0
 	ldr r0, _021FA090 ; =0x0000FFFF
 	cmp r4, r0
@@ -43457,7 +43467,7 @@ _021FA0BC:
 	cmp r0, #1
 	bne _021FA0EE
 	ldr r0, [sp]
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	ldr r1, _021FA104 ; =0x0000FFFF
 	add r4, r0, #0
 	cmp r4, r1
@@ -43713,19 +43723,19 @@ ov01_021FA234: ; 0x021FA234
 	bx lr
 	thumb_func_end ov01_021FA234
 
-	thumb_func_start ov01_021FA238
-ov01_021FA238: ; 0x021FA238
+	thumb_func_start FldObjSys_ReadMModelFromNarc
+FldObjSys_ReadMModelFromNarc: ; 0x021FA238
 	mov r3, #0x41
 	lsl r3, r3, #2
 	ldr r0, [r0, r3]
-	ldr r3, _021FA244 ; =ov01_021F9374
+	ldr r3, _021FA244 ; =ReadMModelFromNarcInternal
 	bx r3
 	nop
-_021FA244: .word ov01_021F9374
-	thumb_func_end ov01_021FA238
+_021FA244: .word ReadMModelFromNarcInternal
+	thumb_func_end FldObjSys_ReadMModelFromNarc
 
-	thumb_func_start ov01_021FA248
-ov01_021FA248: ; 0x021FA248
+	thumb_func_start sub_021FA248
+sub_021FA248: ; 0x021FA248
 	push {r3, lr}
 	ldr r3, _021FA280 ; =ov01_022074A8
 	ldr r1, _021FA284 ; =0x0000FFFF
@@ -43736,7 +43746,7 @@ _021FA24E:
 	ldrh r0, [r3, #4]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x1a
-	cmp r0, #0xff
+	cmp r0, #0xff ; Never eq due to data type limitations
 	bne _021FA268
 	bne _021FA264
 	bl GF_AssertFail
@@ -43760,12 +43770,12 @@ _021FA270:
 _021FA280: .word ov01_022074A8
 _021FA284: .word 0x0000FFFF
 _021FA288: .word ov01_02207318
-	thumb_func_end ov01_021FA248
+	thumb_func_end sub_021FA248
 
 	thumb_func_start ov01_021FA28C
 ov01_021FA28C: ; 0x021FA28C
 	push {r3, lr}
-	bl ov01_021FA248
+	bl sub_021FA248
 	ldrb r0, [r0, #2]
 	pop {r3, pc}
 	.balign 4, 0
@@ -43782,7 +43792,7 @@ _021FA29C: .word ov01_021FA28C
 	thumb_func_start ov01_021FA2A0
 ov01_021FA2A0: ; 0x021FA2A0
 	push {r3, lr}
-	bl ov01_021FA248
+	bl sub_021FA248
 	ldrb r0, [r0, #3]
 	pop {r3, pc}
 	.balign 4, 0
@@ -43791,7 +43801,7 @@ ov01_021FA2A0: ; 0x021FA2A0
 	thumb_func_start ov01_021FA2AC
 ov01_021FA2AC: ; 0x021FA2AC
 	push {r3, lr}
-	bl ov01_021FA248
+	bl sub_021FA248
 	ldr r0, [r0, #4]
 	pop {r3, pc}
 	.balign 4, 0
@@ -43804,12 +43814,12 @@ ov01_021FA2B8: ; 0x021FA2B8
 	bne _021FA2C8
 	mov r1, #1
 	lsl r1, r1, #0x16
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	pop {r3, pc}
 _021FA2C8:
 	mov r1, #1
 	lsl r1, r1, #0x16
-	bl sub_0205F214
+	bl MapObject_ClearBits
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021FA2B8
@@ -43819,7 +43829,7 @@ ov01_021FA2D4: ; 0x021FA2D4
 	push {r3, lr}
 	mov r1, #1
 	lsl r1, r1, #0x16
-	bl sub_0205F220
+	bl MapObject_GetBitsMask
 	cmp r0, #0
 	beq _021FA2E6
 	mov r0, #1
@@ -43980,7 +43990,7 @@ ov01_021FA40C: ; 0x021FA40C
 	add r6, r1, #0
 	lsl r1, r4, #9
 	add r5, r0, #0
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #1
 	bne _021FA420
 	mov r4, #0
@@ -43988,13 +43998,13 @@ _021FA420:
 	mov r1, #1
 	add r0, r5, #0
 	lsl r1, r1, #0xc
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #1
 	bne _021FA43E
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0xc
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #0
 	bne _021FA43E
 	mov r4, #0
@@ -44091,7 +44101,7 @@ _021FA4CC:
 	add r0, r5, #0
 	add r1, r7, #0
 	mov r2, #0
-	bl ov01_021FA238
+	bl FldObjSys_ReadMModelFromNarc
 	add r2, r0, #0
 	ldr r3, [sp]
 	add r0, r5, #0
@@ -44203,7 +44213,7 @@ _021FA584:
 	ldr r0, [sp]
 	ldr r1, [r5]
 	mov r2, #0
-	bl ov01_021FA238
+	bl FldObjSys_ReadMModelFromNarc
 	add r2, r0, #0
 	ldr r0, [sp]
 	ldr r1, [r5, #4]
@@ -44598,7 +44608,7 @@ _021FA82A:
 	mov r1, #2
 	ldr r0, [r4, #4]
 	lsl r1, r1, #0x14
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #1
 	ldr r0, [r4, #4]
 	bne _021FA848
@@ -44730,7 +44740,7 @@ ov01_021FA930: ; 0x021FA930
 	bne _021FA972
 _021FA948:
 	add r0, r5, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	add r6, r0, #0
 	add r0, r5, #0
 	bl sub_0205F35C
@@ -44776,7 +44786,7 @@ ov01_021FA97C: ; 0x021FA97C
 	str r0, [r5]
 	add r0, r6, #0
 	str r6, [r5, #0x50]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	cmp r0, #0xff
 	bne _021FA9CE
 	add r0, r6, #0
@@ -44791,7 +44801,7 @@ _021FA9CE:
 	str r0, [sp, #0x1c]
 _021FA9D2:
 	add r0, r6, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	str r0, [sp, #0x18]
 	bl ov01_021FA28C
 	ldr r4, _021FAB90 ; =ov01_02207294
@@ -44811,7 +44821,7 @@ _021FA9F6:
 	ldrh r1, [r4, #2]
 	add r0, r7, #0
 	mov r2, #0
-	bl ov01_021FA238
+	bl FldObjSys_ReadMModelFromNarc
 	str r0, [r5, #8]
 	ldr r0, [sp, #0x18]
 	bl ov01_021FA2A0
@@ -44832,13 +44842,13 @@ _021FAA20:
 	ldrh r1, [r4, #2]
 	add r0, r7, #0
 	mov r2, #0
-	bl ov01_021FA238
+	bl FldObjSys_ReadMModelFromNarc
 	add r1, r5, #0
 	add r1, #0x14
 	str r0, [r5, #0xc]
 	bl sub_02026E18
 	ldr r0, [sp, #0x18]
-	bl ov01_021F9304
+	bl GetMoveModelNoBySpriteId
 	add r1, r0, #0
 	bpl _021FAA44
 	bl GF_AssertFail
@@ -44846,7 +44856,7 @@ _021FAA20:
 _021FAA44:
 	add r0, r7, #0
 	mov r2, #0
-	bl ov01_021FA238
+	bl FldObjSys_ReadMModelFromNarc
 	str r0, [r5, #0x10]
 	bl NNS_G3dGetTex
 	add r4, r0, #0
@@ -44942,7 +44952,7 @@ _021FAB26:
 _021FAB28:
 	add r0, r6, #0
 	add r1, sp, #0x20
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r6, #0
 	bl ov01_021F146C
 	ldr r1, [sp, #0xc]
@@ -45003,7 +45013,7 @@ ov01_021FAB9C: ; 0x021FAB9C
 	pop {r4, r5, r6, pc}
 _021FABB0:
 	add r0, r4, #0
-	bl sub_0205F624
+	bl MapObject_IsInUse
 	cmp r0, #0
 	beq _021FABC4
 	add r0, r4, #0
@@ -45031,7 +45041,7 @@ _021FABCE:
 	pop {r4, r5, r6, pc}
 _021FABF4:
 	add r0, r4, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	ldr r1, [r5]
 	cmp r1, r0
 	beq _021FAC40
@@ -46320,7 +46330,7 @@ ov01_021FB4F4: ; 0x021FB4F4
 	add r4, r0, #0
 	ldr r0, _021FB510 ; =ov01_021FB594
 	add r1, r4, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	cmp r0, #1
 	beq _021FB508
 	bl GF_AssertFail
@@ -46338,7 +46348,7 @@ ov01_021FB514: ; 0x021FB514
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	cmp r0, #1
 	beq _021FB528
 	bl GF_AssertFail
@@ -46567,7 +46577,7 @@ _021FB63E:
 	str r0, [r4]
 	mov r0, #0
 	str r0, [r4, #8]
-	ldr r0, _021FB6C0 ; =0x0000060F
+	ldr r0, _021FB6C0 ; =SEQ_SE_DP_DOKU2
 	bl PlaySE
 	pop {r4, pc}
 	nop
@@ -46575,7 +46585,7 @@ _021FB6B0: .word ov01_021FB7DC
 _021FB6B4: .word ov01_021FB6C4
 _021FB6B8: .word ov01_021FB7CC
 _021FB6BC: .word ov01_021FB800
-_021FB6C0: .word 0x0000060F
+_021FB6C0: .word SEQ_SE_DP_DOKU2
 	thumb_func_end ov01_021FB630
 
 	thumb_func_start ov01_021FB6C4
@@ -47788,7 +47798,7 @@ ov01_021FBF68: ; 0x021FBF68
 	add r0, r4, #0
 	add r0, #0x70
 	ldrh r0, [r0]
-	ldr r3, _021FC000 ; =_021094DC
+	ldr r3, _021FC000 ; =FX_SinCosTable_
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -47805,7 +47815,7 @@ ov01_021FBF68: ; 0x021FBF68
 	add r0, r4, #0
 	add r0, #0x74
 	ldrh r0, [r0]
-	ldr r3, _021FC000 ; =_021094DC
+	ldr r3, _021FC000 ; =FX_SinCosTable_
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -47822,7 +47832,7 @@ ov01_021FBF68: ; 0x021FBF68
 	add r0, r4, #0
 	add r0, #0x72
 	ldrh r0, [r0]
-	ldr r3, _021FC000 ; =_021094DC
+	ldr r3, _021FC000 ; =FX_SinCosTable_
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -47847,7 +47857,7 @@ _021FBFFC:
 	add sp, #0x48
 	pop {r4, pc}
 	.balign 4, 0
-_021FC000: .word _021094DC
+_021FC000: .word FX_SinCosTable_
 	thumb_func_end ov01_021FBF68
 
 	thumb_func_start ov01_021FC004
@@ -47937,17 +47947,17 @@ ov01_021FC05C: ; 0x021FC05C
 	bl G2x_SetBlendAlpha_
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
-	ldr r0, _021FC0A4 ; =0x00000647
+	ldr r0, _021FC0A4 ; =SEQ_SE_DP_FW230
 	bl PlaySE
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
 _021FC0A0: .word 0x04000050
-_021FC0A4: .word 0x00000647
+_021FC0A4: .word SEQ_SE_DP_FW230
 	thumb_func_end ov01_021FC05C
 
 	thumb_func_start ov01_021FC0A8
@@ -48089,7 +48099,7 @@ ov01_021FC14C: ; 0x021FC14C
 	ldr r2, _021FC1A0 ; =0x00006001
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0201CB04
+	bl BgFillTilemapBufferAndCommit
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	nop
@@ -48184,11 +48194,11 @@ ov01_021FC1FC: ; 0x021FC1FC
 	ldr r0, [r4, #8]
 	add r2, r1, #0
 	mov r3, #1
-	bl sub_0201C1F4
+	bl BG_FillCharDataRange
 	ldr r0, [r4, #8]
 	ldr r2, _021FC25C ; =0x00006002
 	mov r1, #2
-	bl sub_0201CB04
+	bl BgFillTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -48229,11 +48239,11 @@ ov01_021FC260: ; 0x021FC260
 	ldr r0, [r4, #8]
 	mov r1, #3
 	mov r3, #1
-	bl sub_0201C1F4
+	bl BG_FillCharDataRange
 	ldr r0, [r4, #8]
 	ldr r2, _021FC2C0 ; =0x00006002
 	mov r1, #3
-	bl sub_0201CB04
+	bl BgFillTilemapBufferAndCommit
 	mov r0, #8
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -48305,10 +48315,10 @@ ov01_021FC30C: ; 0x021FC30C
 ov01_021FC310: ; 0x021FC310
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrh r1, [r4, #8]
 	cmp r1, #9
@@ -48360,7 +48370,7 @@ _021FC376:
 	mov r0, #2
 	mov r1, #0
 	strh r0, [r4, #8]
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -48393,10 +48403,10 @@ _021FC3A8:
 	cmp r0, #0
 	bge _021FC4B2
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
@@ -48439,7 +48449,7 @@ _021FC40E:
 	strh r1, [r0]
 	mov r0, #2
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #8
 	strh r0, [r4, #8]
 	b _021FC4B2
@@ -48470,7 +48480,7 @@ _021FC456:
 	ldr r1, _021FC4BC ; =0x000007E3
 	add r0, r6, #0
 	add r3, r2, #0
-	bl sub_0203FED4
+	bl QueueScript
 	mov r0, #9
 	strh r0, [r4, #8]
 	b _021FC4B2
@@ -48479,7 +48489,7 @@ _021FC476:
 	ldr r1, _021FC4C0 ; =0x000007E2
 	add r0, r6, #0
 	add r3, r2, #0
-	bl sub_0203FED4
+	bl QueueScript
 	mov r0, #9
 	strh r0, [r4, #8]
 	b _021FC4B2
@@ -48494,7 +48504,7 @@ _021FC498:
 	ldr r0, [r5, #8]
 	mov r1, #2
 	mov r2, #0
-	bl sub_0201CB04
+	bl BgFillTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -48798,10 +48808,10 @@ _021FC680:
 ov01_021FC698: ; 0x021FC698
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0
@@ -48811,7 +48821,7 @@ ov01_021FC698: ; 0x021FC698
 	b _021FC742
 _021FC6B6:
 	ldr r0, [r4, #0x3c]
-	bl sub_0205F574
+	bl MapObjectMan_PauseAllMovement
 	mov r0, #0
 	str r0, [r5, #0x10]
 	add r2, r5, #0
@@ -48863,7 +48873,7 @@ _021FC728:
 	bl sub_02051BF8
 _021FC732:
 	ldr r0, [r4, #0x3c]
-	bl sub_0205F5A4
+	bl MapObjectMan_UnpauseAllMovement
 	add r0, r5, #0
 	bl FreeToHeap
 	mov r0, #1
@@ -48930,7 +48940,7 @@ ov01_021FC798: ; 0x021FC798
 	ldr r0, [r5, #0x20]
 	ldr r6, [r0, #0x40]
 	add r0, r6, #0
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	ldr r7, _021FC7C0 ; =ov01_02208DC4
 	add r4, r0, #0
 _021FC7AA:
@@ -48955,7 +48965,7 @@ ov01_021FC7C4: ; 0x021FC7C4
 	add r5, r0, #0
 	bl ov01_021FCB14
 	add r0, r4, #0
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 	mov r0, #1
 	str r0, [r5, #0xc]
 	pop {r3, r4, r5, pc}
@@ -48969,11 +48979,11 @@ ov01_021FC7DC: ; 0x021FC7DC
 	add r5, r0, #0
 	add r0, r6, #0
 	add r4, r1, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _021FC80E
 	add r0, r6, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	add r0, r4, #0
 	mov r1, #0x20
 	bl ov01_021F1AFC
@@ -48999,7 +49009,7 @@ ov01_021FC814: ; 0x021FC814
 	str r0, [r4, #0x10]
 	cmp r0, #0xa
 	bne _021FC828
-	ldr r0, _021FC848 ; =0x0000064F
+	ldr r0, _021FC848 ; =SEQ_SE_DP_FW104
 	bl PlaySE
 _021FC828:
 	ldr r0, [r4, #0x10]
@@ -49022,7 +49032,7 @@ _021FC83E:
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-_021FC848: .word 0x0000064F
+_021FC848: .word SEQ_SE_DP_FW104
 	thumb_func_end ov01_021FC814
 
 	thumb_func_start ov01_021FC84C
@@ -49088,7 +49098,7 @@ _021FC8B2:
 	cmp r0, #0
 	beq _021FC8D4
 	ldr r0, [r5, #0x20]
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	mov r1, #0
 	mov r2, #1
 	bl ov01_02200540
@@ -49407,7 +49417,7 @@ _021FCAD8:
 
 	thumb_func_start ov01_021FCAE8
 ov01_021FCAE8: ; 0x021FCAE8
-	ldr r0, _021FCAF8 ; =gMain
+	ldr r0, _021FCAF8 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r1, r0
@@ -49416,12 +49426,12 @@ ov01_021FCAE8: ; 0x021FCAE8
 _021FCAF4:
 	bx lr
 	nop
-_021FCAF8: .word gMain
+_021FCAF8: .word gSystem
 	thumb_func_end ov01_021FCAE8
 
 	thumb_func_start ov01_021FCAFC
 ov01_021FCAFC: ; 0x021FCAFC
-	ldr r0, _021FCB10 ; =gMain
+	ldr r0, _021FCB10 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -49432,7 +49442,7 @@ _021FCB0A:
 	mov r0, #0
 	bx lr
 	nop
-_021FCB10: .word gMain
+_021FCB10: .word gSystem
 	thumb_func_end ov01_021FCAFC
 
 	thumb_func_start ov01_021FCB14
@@ -49592,7 +49602,7 @@ ov01_021FCC2C: ; 0x021FCC2C
 	pop {r4, pc}
 _021FCC40:
 	ldr r0, [r4, #0x20]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _021FCC6E
 	ldr r0, [r4, #0x20]
@@ -49658,7 +49668,7 @@ ov01_021FCCB0: ; 0x021FCCB0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x20]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _021FCD24
 	mov r0, #0x42
@@ -49945,13 +49955,13 @@ _021FCE92:
 ov01_021FCE98: ; 0x021FCE98
 	push {r3, r4, r5, r6, r7, lr}
 	str r0, [sp]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	ldr r0, [sp]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r7, r0, #0
 	ldr r0, [sp]
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r5, [r7, #4]
@@ -50019,7 +50029,7 @@ _021FCF20:
 	ldr r0, [sp]
 	ldr r1, _021FCFE4 ; =ov01_02205A60
 	mov r2, #0
-	bl sub_02050530
+	bl QueueTask
 	mov r0, #4
 	str r0, [r4]
 	b _021FCFDE
@@ -50085,7 +50095,7 @@ _021FCFBC:
 	ldr r0, [sp]
 	ldr r1, _021FCFE8 ; =ov01_021FC310
 	ldr r2, [r5, #4]
-	bl sub_02050530
+	bl QueueTask
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -50120,7 +50130,7 @@ ov01_021FCFEC: ; 0x021FCFEC
 	ldr r0, [r5, #0x10]
 	ldr r1, _021FD010 ; =ov01_021FD014
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021FD010: .word ov01_021FD014
@@ -50130,10 +50140,10 @@ _021FD010: .word ov01_021FD014
 ov01_021FD014: ; 0x021FD014
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -50238,9 +50248,9 @@ ov01_021FD064: ; 0x021FD064
 	mov r2, #0
 	bl ov01_021FD190
 	add r0, r6, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r1, sp, #8
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r4, #0
 	ldr r1, [sp, #8]
 	ldr r2, [sp, #0xc]
@@ -50531,7 +50541,7 @@ ov01_021FD2EC: ; 0x021FD2EC
 	bl ov01_021F146C
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	str r0, [sp, #8]
 	add r0, r5, #0
 	mov r1, #2
@@ -50566,7 +50576,7 @@ ov01_021FD328: ; 0x021FD328
 	ldr r0, [r3]
 	str r0, [r2]
 	ldr r0, [r4, #0x24]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x20]
 	ldr r1, [r4, #0x1c]
@@ -50617,10 +50627,10 @@ ov01_021FD37C: ; 0x021FD37C
 _021FD39E:
 	add r0, r6, #0
 	add r1, sp, #0xc
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r6, #0
 	add r1, sp, #0
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	ldr r1, [sp]
 	ldr r0, [r4, #0xc]
 	ldr r2, [sp, #0xc]
@@ -50998,7 +51008,7 @@ ov01_021FD640: ; 0x021FD640
 	add r0, r5, #0
 	add r1, sp, #8
 	str r5, [sp, #0x1c]
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	mov r1, #2
 	bl sub_0205F09C
@@ -51030,7 +51040,7 @@ ov01_021FD684: ; 0x021FD684
 	add r0, r5, #0
 	add r1, sp, #8
 	str r5, [sp, #0x1c]
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	mov r1, #2
 	bl sub_0205F09C
@@ -51065,10 +51075,10 @@ ov01_021FD6C8: ; 0x021FD6C8
 	bl sub_02068D90
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #0x1c]
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	str r0, [r4]
 	ldr r0, [r4, #0x1c]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x1c]
 	bl sub_0205F7D4
@@ -51124,7 +51134,7 @@ _021FD752:
 	str r0, [r4, #0xc]
 	ldr r1, _021FD780 ; =0x00100200
 	add r0, r6, #0
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #1
 	bne _021FD76A
 	mov r0, #1
@@ -51134,7 +51144,7 @@ _021FD752:
 _021FD76A:
 	add r0, r6, #0
 	add r1, sp, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	add r1, sp, #0
 	bl sub_02068DA8
@@ -51161,10 +51171,10 @@ ov01_021FD784: ; 0x021FD784
 	bl sub_02068D90
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #0x1c]
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	str r0, [r4]
 	ldr r0, [r4, #0x1c]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x1c]
 	bl sub_0205F7D4
@@ -51281,13 +51291,13 @@ _021FD84C:
 	add r0, r1, r0
 	str r0, [sp, #0x44]
 	add r0, r4, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	add r1, sp, #0x3c
 	bl ov01_021FD9CC
 	b _021FD8D4
 _021FD8A0:
 	add r0, r4, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r4, #0
 	add r1, sp, #0
 	bl ov01_021F8FA0
@@ -51338,7 +51348,7 @@ ov01_021FD8E8: ; 0x021FD8E8
 	add r0, r5, #0
 	add r1, sp, #8
 	str r5, [sp, #0x1c]
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	mov r1, #2
 	bl sub_0205F09C
@@ -51379,7 +51389,7 @@ _021FD950:
 	str r0, [r4, #0xc]
 	ldr r1, _021FD97C ; =0x00100200
 	add r0, r6, #0
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #1
 	bne _021FD968
 	mov r0, #1
@@ -51389,7 +51399,7 @@ _021FD950:
 _021FD968:
 	add r0, r6, #0
 	add r1, sp, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	add r1, sp, #0
 	bl sub_02068DA8
@@ -51547,7 +51557,7 @@ ov01_021FDA74: ; 0x021FDA74
 	sub sp, #0x24
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	str r0, [sp, #8]
 	add r0, r5, #0
 	bl ov01_021F146C
@@ -51558,7 +51568,7 @@ ov01_021FDA74: ; 0x021FDA74
 	add r0, r5, #0
 	add r1, sp, #0x18
 	str r5, [sp, #0x14]
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	mov r1, #2
 	bl sub_0205F09C
@@ -51594,13 +51604,13 @@ ov01_021FDAC0: ; 0x021FDAC0
 	bl sub_02068D90
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #0x20]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	str r0, [r4]
 	ldr r0, [r4, #0x20]
 	bl sub_0205F254
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x20]
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	str r0, [r4, #8]
 	mov r0, #1
 	lsl r0, r0, #0xc
@@ -51651,7 +51661,7 @@ ov01_021FDB44: ; 0x021FDB44
 	ldr r6, [r4, #0x20]
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	ldr r1, [r4, #8]
 	cmp r1, r0
 	bne _021FDB72
@@ -51722,7 +51732,7 @@ ov01_021FDBCC: ; 0x021FDBCC
 	add r7, r0, #0
 	add r0, r6, #0
 	mov r4, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	ldr r1, [r5, #8]
 	cmp r1, r0
 	bne _021FDBFC
@@ -51747,7 +51757,7 @@ _021FDC06:
 	beq _021FDC78
 	ldr r0, [r5, #0x20]
 	add r1, sp, #0xc
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	ldr r0, [sp, #0x10]
 	cmp r0, #0
 	beq _021FDC1C
@@ -51813,19 +51823,19 @@ ov01_021FDC7C: ; 0x021FDC7C
 	stmia r2!, {r0, r1}
 	add r0, r6, #0
 	add r1, sp, #0x20
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	ldr r0, [sp, #0x20]
 	str r0, [sp, #4]
 	add r0, r6, #0
-	bl sub_0205F24C
+	bl MapObject_GetID
 	cmp r0, #0xff
 	bne _021FDCD2
 	add r0, r6, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	cmp r0, #0xbc
 	bne _021FDCD2
 	add r0, r6, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	mov r1, #2
 	lsl r1, r1, #0xa
 	cmp r0, #1
@@ -51847,13 +51857,13 @@ _021FDCD4:
 	neg r0, r0
 	str r0, [sp]
 	add r0, r6, #0
-	bl sub_0205F24C
+	bl MapObject_GetID
 	cmp r0, #0xfd
 	bne _021FDCFE
 	ldr r0, [r5, #0x14]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C6DC
-	bl sub_0205F25C
+	bl PlayerAvatar_GetMapObject
+	bl MapObject_GetGfxID
 	cmp r0, #0xbc
 	bne _021FDCFE
 	mov r0, #0
@@ -51861,7 +51871,7 @@ _021FDCD4:
 _021FDCFE:
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r0, [r5, #0x14]
 	add r1, r4, #0
 	bl sub_0206121C
@@ -52197,7 +52207,7 @@ ov01_021FDF88: ; 0x021FDF88
 	sub sp, #0x24
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	str r0, [sp, #8]
 	add r0, r5, #0
 	bl ov01_021F146C
@@ -52208,7 +52218,7 @@ ov01_021FDF88: ; 0x021FDF88
 	add r0, r5, #0
 	add r1, sp, #0x18
 	str r5, [sp, #0x14]
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	mov r1, #2
 	bl sub_0205F09C
@@ -52244,13 +52254,13 @@ ov01_021FDFD4: ; 0x021FDFD4
 	bl sub_02068D90
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #0x20]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	str r0, [r4]
 	ldr r0, [r4, #0x20]
 	bl sub_0205F254
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x20]
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	str r0, [r4, #8]
 	mov r0, #1
 	lsl r0, r0, #0xc
@@ -52297,7 +52307,7 @@ ov01_021FE058: ; 0x021FE058
 	ldr r6, [r4, #0x20]
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	ldr r1, [r4, #8]
 	cmp r1, r0
 	bne _021FE086
@@ -52372,7 +52382,7 @@ ov01_021FE0EC: ; 0x021FE0EC
 	ldr r4, [r5, #0x20]
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	ldr r1, [r5, #8]
 	cmp r1, r0
 	bne _021FE11A
@@ -52792,19 +52802,19 @@ ov01_021FE3F8: ; 0x021FE3F8
 	sub sp, #0x38
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0205F8FC
+	bl MapObject_GetPrevX
 	str r0, [sp, #0xc]
 	add r0, r5, #0
-	bl sub_0205F90C
+	bl MapObject_GetPrevY
 	str r0, [sp, #0x10]
 	add r0, r5, #0
 	bl sub_0205F968
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	str r0, [sp, #0x14]
 	add r0, r5, #0
-	bl sub_0205F2AC
+	bl MapObject_GetPreviousFacing
 	str r0, [sp, #0x18]
 	add r0, r5, #0
 	mov r1, #2
@@ -52819,7 +52829,7 @@ ov01_021FE3F8: ; 0x021FE3F8
 	str r0, [sp, #0x1c]
 	add r0, r5, #0
 	lsl r1, r1, #8
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #1
 	bne _021FE454
 	add sp, #0x38
@@ -53353,7 +53363,7 @@ ov01_021FE7DC: ; 0x021FE7DC
 	cmp r0, #0
 	bne _021FE826
 	add r0, r5, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	mov r1, #2
 	lsl r2, r4, #0x10
 	lsl r1, r1, #0xe
@@ -53374,7 +53384,7 @@ _021FE826:
 	add r1, sp, #0x14
 	str r0, [r2]
 	add r0, r5, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	add r1, sp, #8
 	bl sub_0205F9A0
@@ -53413,7 +53423,7 @@ ov01_021FE868: ; 0x021FE868
 	ldmia r3!, {r0, r1}
 	stmia r2!, {r0, r1}
 	add r0, r4, #0
-	bl sub_0205F24C
+	bl MapObject_GetID
 	str r0, [r5, #0xc]
 	add r0, r4, #0
 	bl sub_0205F254
@@ -53469,7 +53479,7 @@ _021FE8EA:
 	mov r0, #0
 	str r0, [r5]
 	add r0, r4, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	mov r1, #0
 	mvn r1, r1
 	str r0, [r5, #4]
@@ -53519,7 +53529,7 @@ _021FE936:
 	bl sub_0205F9A0
 	add r0, r4, #0
 	add r1, sp, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	mov r0, #1
 	ldr r1, [r5, #0x1c]
 	lsl r0, r0, #0xc
@@ -53750,7 +53760,7 @@ ov01_021FEAB0: ; 0x021FEAB0
 	str r4, [sp, #0x1c]
 	str r0, [sp, #0x18]
 	add r0, r5, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	str r0, [sp, #0x20]
 	add r0, r4, #0
 	mov r1, #5
@@ -53775,7 +53785,7 @@ ov01_021FEAB0: ; 0x021FEAB0
 _021FEB06:
 	add r0, r5, #0
 	add r1, sp, #0xc
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 _021FEB0E:
 	add r0, r5, #0
 	mov r1, #2
@@ -53863,7 +53873,7 @@ ov01_021FEB8C: ; 0x021FEB8C
 	bl sub_0205F9A0
 	add r0, r4, #0
 	add r1, sp, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	add r1, sp, #0
 	bl sub_02068DA8
@@ -54009,7 +54019,7 @@ ov01_021FECA0: ; 0x021FECA0
 	add r5, r0, #0
 	add r4, r2, #0
 	add r7, r3, #0
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #1
 	beq _021FED0A
 	add r0, r5, #0
@@ -54030,7 +54040,7 @@ ov01_021FECA0: ; 0x021FECA0
 	add r0, r2, r0
 	str r0, [sp, #0x18]
 	add r0, r5, #0
-	bl sub_0205F904
+	bl MapObject_GetPrevHeight
 	lsl r1, r0, #0xf
 	mov r0, #2
 	lsl r0, r0, #0xe
@@ -54212,7 +54222,7 @@ ov01_021FEE04: ; 0x021FEE04
 	add r0, r1, r0
 	str r0, [sp, #0x18]
 	add r0, r5, #0
-	bl sub_0205F904
+	bl MapObject_GetPrevHeight
 	lsl r1, r0, #0xf
 	mov r0, #2
 	lsl r0, r0, #0xe
@@ -54495,13 +54505,13 @@ ov01_021FF070: ; 0x021FF070
 	bl ov01_021F146C
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl sub_0205F924
+	bl MapObject_GetCurrentHeight
 	str r0, [sp, #0xc]
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	str r0, [sp, #0x10]
 	mov r1, #0
 	add r0, sp, #8
@@ -54521,7 +54531,7 @@ ov01_021FF070: ; 0x021FF070
 	add r0, r5, #0
 	add r1, sp, #0x2c
 	str r5, [sp, #0x20]
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	mov r1, #2
 	bl sub_0205F09C
@@ -54551,16 +54561,16 @@ ov01_021FF0E4: ; 0x021FF0E4
 	add r7, r0, #0
 	add r0, r5, #0
 	str r4, [sp, #0xc]
-	bl sub_0205F924
+	bl MapObject_GetCurrentHeight
 	str r0, [sp, #0x10]
 	add r0, r5, #0
 	str r6, [sp, #0x14]
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	sub r1, r0, r4
 	add r0, sp, #0xc
 	strh r1, [r0, #0x1c]
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	sub r1, r0, r6
 	add r0, sp, #0xc
 	strh r1, [r0, #0x1e]
@@ -54568,7 +54578,7 @@ ov01_021FF0E4: ; 0x021FF0E4
 	cmp r0, #0
 	beq _021FF12C
 	add r0, r5, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	add r1, sp, #0x2c
 	strb r0, [r1]
 	b _021FF134
@@ -54589,7 +54599,7 @@ _021FF134:
 	add r0, r5, #0
 	add r1, sp, #0x30
 	str r5, [sp, #0x24]
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	mov r1, #2
 	bl sub_0205F09C
@@ -54626,10 +54636,10 @@ _021FF188:
 	ldr r0, [r6]
 	str r0, [r3]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	str r0, [r4, #8]
 	ldr r0, [r4, #0x30]
 	bl sub_0205F254
@@ -54668,7 +54678,7 @@ _021FF188:
 	mov r1, #2
 	ldr r0, [r4, #0x30]
 	lsl r1, r1, #8
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #1
 	bne _021FF208
 	ldr r0, [r4, #0x3c]
@@ -54723,7 +54733,7 @@ _021FF258:
 	mov r1, #2
 	add r0, r6, #0
 	lsl r1, r1, #8
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #1
 	ldr r0, [r4, #0x3c]
 	bne _021FF270
@@ -54807,12 +54817,12 @@ _021FF2F2:
 	pop {r3, r4, r5, r6, r7, pc}
 _021FF30C:
 	add r0, r6, #0
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	mov r1, #0x34
 	ldrsh r1, [r4, r1]
 	sub r7, r0, r1
 	add r0, r6, #0
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	mov r1, #0x36
 	ldrsh r1, [r4, r1]
 	sub r1, r0, r1
@@ -54834,7 +54844,7 @@ _021FF33A:
 	cmp r1, r0
 	beq _021FF358
 	add r0, r6, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	mov r1, #0x38
 	ldrsb r1, [r4, r1]
 	cmp r1, r0
@@ -55081,7 +55091,7 @@ ov01_021FF4FC: ; 0x021FF4FC
 	bl ov01_021F146C
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	mov r1, #0xa
@@ -55131,10 +55141,10 @@ ov01_021FF54C: ; 0x021FF54C
 	ldmia r3!, {r0, r1}
 	stmia r2!, {r0, r1}
 	ldr r0, [r4, #0x20]
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x20]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	str r0, [r4, #8]
 	ldr r0, [r4, #0x20]
 	bl sub_0205F254
@@ -55150,7 +55160,7 @@ ov01_021FF54C: ; 0x021FF54C
 	mov r1, #2
 	ldr r0, [r4, #0x20]
 	lsl r1, r1, #8
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #1
 	bne _021FF5B2
 	ldr r0, [r4, #0x24]
@@ -55204,7 +55214,7 @@ _021FF602:
 	mov r1, #2
 	add r0, r6, #0
 	lsl r1, r1, #8
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #1
 	ldr r0, [r4, #0x24]
 	bne _021FF61A
@@ -55264,10 +55274,10 @@ ov01_021FF658: ; 0x021FF658
 _021FF67C:
 	add r0, r4, #0
 	add r1, sp, #0xc
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r4, #0
 	add r1, sp, #0
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	ldr r1, [sp, #0xc]
 	ldr r0, [sp]
 	add r0, r1, r0
@@ -55376,7 +55386,7 @@ ov01_021FF74C: ; 0x021FF74C
 	bl ov01_021F146C
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	mov r1, #0xb
@@ -55386,12 +55396,12 @@ ov01_021FF74C: ; 0x021FF74C
 	add r0, r5, #0
 	add r1, sp, #8
 	str r5, [sp, #0x20]
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r5, #0
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	add r1, r0, #0
 	add r0, r6, #0
 	add r2, sp, #8
@@ -55428,7 +55438,7 @@ ov01_021FF7B0: ; 0x021FF7B0
 	ldmia r3!, {r0, r1}
 	stmia r2!, {r0, r1}
 	ldr r0, [r4, #0x1c]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x1c]
 	bl sub_0205F254
@@ -55591,13 +55601,13 @@ ov01_021FF8F0: ; 0x021FF8F0
 	bl ov01_021F146C
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl sub_0205F924
+	bl MapObject_GetCurrentHeight
 	str r0, [sp, #0xc]
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	str r0, [sp, #0x10]
 	mov r1, #0
 	add r0, sp, #8
@@ -55617,7 +55627,7 @@ ov01_021FF8F0: ; 0x021FF8F0
 	add r0, r5, #0
 	add r1, sp, #0x2c
 	str r5, [sp, #0x20]
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	mov r1, #2
 	bl sub_0205F09C
@@ -55647,16 +55657,16 @@ ov01_021FF964: ; 0x021FF964
 	add r7, r0, #0
 	add r0, r5, #0
 	str r4, [sp, #0xc]
-	bl sub_0205F924
+	bl MapObject_GetCurrentHeight
 	str r0, [sp, #0x10]
 	add r0, r5, #0
 	str r6, [sp, #0x14]
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	sub r1, r0, r4
 	add r0, sp, #0xc
 	strh r1, [r0, #0x1c]
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	sub r1, r0, r6
 	add r0, sp, #0xc
 	strh r1, [r0, #0x1e]
@@ -55664,7 +55674,7 @@ ov01_021FF964: ; 0x021FF964
 	cmp r0, #0
 	beq _021FF9AC
 	add r0, r5, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	add r1, sp, #0x2c
 	strb r0, [r1]
 	b _021FF9B4
@@ -55685,7 +55695,7 @@ _021FF9B4:
 	add r0, r5, #0
 	add r1, sp, #0x30
 	str r5, [sp, #0x24]
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	mov r1, #2
 	bl sub_0205F09C
@@ -55722,10 +55732,10 @@ _021FFA08:
 	ldr r0, [r6]
 	str r0, [r3]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	str r0, [r4, #8]
 	ldr r0, [r4, #0x30]
 	bl sub_0205F254
@@ -55764,7 +55774,7 @@ _021FFA08:
 	mov r1, #2
 	ldr r0, [r4, #0x30]
 	lsl r1, r1, #8
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #1
 	bne _021FFA88
 	ldr r0, [r4, #0x3c]
@@ -55822,7 +55832,7 @@ _021FFAE0:
 	mov r1, #2
 	add r0, r6, #0
 	lsl r1, r1, #8
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #1
 	ldr r0, [r4, #0x3c]
 	bne _021FFAF8
@@ -55897,12 +55907,12 @@ _021FFB6C:
 	str r0, [r4]
 _021FFB82:
 	add r0, r6, #0
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	mov r1, #0x34
 	ldrsh r1, [r4, r1]
 	sub r7, r0, r1
 	add r0, r6, #0
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	mov r1, #0x36
 	ldrsh r1, [r4, r1]
 	sub r1, r0, r1
@@ -55924,7 +55934,7 @@ _021FFBB0:
 	cmp r1, r0
 	beq _021FFBCE
 	add r0, r6, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	mov r1, #0x38
 	ldrsb r1, [r4, r1]
 	cmp r1, r0
@@ -56066,10 +56076,10 @@ _021FFCBC:
 	ldr r0, [r6]
 	str r0, [r3]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	str r0, [r4, #8]
 	ldr r0, [r4, #0x30]
 	bl sub_0205F254
@@ -56113,7 +56123,7 @@ _021FFCBC:
 	mov r1, #2
 	ldr r0, [r4, #0x30]
 	lsl r1, r1, #8
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #1
 	bne _021FFD46
 	ldr r0, [r4, #0x3c]
@@ -56167,7 +56177,7 @@ _021FFD94:
 	mov r1, #2
 	add r0, r7, #0
 	lsl r1, r1, #8
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #1
 	ldr r0, [r5, #0x3c]
 	bne _021FFDAC
@@ -56254,10 +56264,10 @@ _021FFE36:
 	pop {r3, r4, r5, r6, r7, pc}
 _021FFE50:
 	add r0, r7, #0
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	ldr r1, [r5, #0x18]
 	cmp r1, r4
 	bne _021FFE6A
@@ -56276,7 +56286,7 @@ _021FFE74:
 	cmp r1, r0
 	beq _021FFE92
 	add r0, r7, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	mov r1, #0x38
 	ldrsb r1, [r5, r1]
 	cmp r1, r0
@@ -56413,10 +56423,10 @@ ov01_021FFF5C: ; 0x021FFF5C
 	bl ov01_021F1468
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	add r1, r0, #0
 	ldr r0, [sp, #8]
 	add r2, sp, #0x20
@@ -56467,7 +56477,7 @@ ov01_021FFFCC: ; 0x021FFFCC
 	ldr r0, [r3]
 	str r0, [r2]
 	add r0, r4, #0
-	bl sub_0205F24C
+	bl MapObject_GetID
 	str r0, [r5, #8]
 	add r0, r4, #0
 	bl sub_0205F254
@@ -56609,7 +56619,7 @@ ov01_022000DC: ; 0x022000DC
 	bl ov01_021F146C
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	mov r1, #0xf
@@ -56619,12 +56629,12 @@ ov01_022000DC: ; 0x022000DC
 	add r0, r5, #0
 	add r1, sp, #8
 	str r5, [sp, #0x20]
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r5, #0
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	add r1, r0, #0
 	add r0, r6, #0
 	add r2, sp, #8
@@ -56661,7 +56671,7 @@ ov01_02200140: ; 0x02200140
 	ldmia r3!, {r0, r1}
 	stmia r2!, {r0, r1}
 	ldr r0, [r4, #0x1c]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x1c]
 	bl sub_0205F254
@@ -57113,14 +57123,14 @@ ov01_02200418: ; 0x02200418
 	bl sub_02068D90
 	cmp r0, #1
 	bne _02200474
-	ldr r0, _0220047C ; =0x000005DD
+	ldr r0, _0220047C ; =SEQ_SE_DP_DECIDE
 	bl PlaySE
 _02200474:
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, pc}
 	nop
-_0220047C: .word 0x000005DD
+_0220047C: .word SEQ_SE_DP_DECIDE
 	thumb_func_end ov01_02200418
 
 	thumb_func_start ov01_02200480
@@ -57245,10 +57255,10 @@ ov01_02200540: ; 0x02200540
 	add r0, r5, #0
 	add r1, sp, #0x14
 	str r5, [sp, #0x2c]
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	add r1, sp, #8
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	add r0, sp, #0x14
 	add r1, sp, #8
 	add r2, r0, #0
@@ -57285,7 +57295,7 @@ ov01_0220059C: ; 0x0220059C
 	ldmia r3!, {r0, r1}
 	stmia r2!, {r0, r1}
 	ldr r0, [r4, #0x3c]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	str r0, [r4, #8]
 	ldr r0, [r4, #0x3c]
 	bl sub_0205F254
@@ -57314,14 +57324,14 @@ ov01_0220059C: ; 0x0220059C
 	bl sub_02068D90
 	cmp r0, #1
 	bne _02200608
-	ldr r0, _02200610 ; =0x000005DD
+	ldr r0, _02200610 ; =SEQ_SE_DP_DECIDE
 	bl PlaySE
 _02200608:
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, pc}
 	nop
-_02200610: .word 0x000005DD
+_02200610: .word SEQ_SE_DP_DECIDE
 	thumb_func_end ov01_0220059C
 
 	thumb_func_start ov01_02200614
@@ -57483,7 +57493,7 @@ ov01_02200730: ; 0x02200730
 	bl ov01_021F146C
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	mov r1, #0x15
@@ -57533,7 +57543,7 @@ ov01_02200780: ; 0x02200780
 	ldmia r3!, {r0, r1}
 	stmia r2!, {r0, r1}
 	ldr r0, [r4, #0x1c]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x1c]
 	bl sub_0205F254
@@ -57598,10 +57608,10 @@ ov01_022007F8: ; 0x022007F8
 _0220081A:
 	add r0, r4, #0
 	add r1, sp, #0xc
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r4, #0
 	add r1, sp, #0
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	ldr r1, [sp, #0xc]
 	ldr r0, [sp]
 	add r0, r1, r0
@@ -57691,7 +57701,7 @@ ov01_022008B4: ; 0x022008B4
 	str r1, [r2, #4]
 	add r5, r0, #0
 	str r1, [r2, #8]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r4, r0, #0
 	bl ov01_021F146C
 	add r6, r0, #0
@@ -57731,12 +57741,12 @@ ov01_02200900: ; 0x02200900
 	ldr r0, [r3]
 	str r0, [r2]
 	ldr r0, [r4, #8]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	mov r1, #0
 	mvn r1, r1
 	add r4, r0, #0
 	str r1, [r5, #4]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	str r0, [r5, #0x14]
 	add r0, r4, #0
 	bl sub_0205F254
@@ -57759,7 +57769,7 @@ ov01_0220093C: ; 0x0220093C
 	str r0, [sp]
 	ldr r0, [r5, #0x2c]
 	str r0, [sp, #4]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	ldr r1, [r5, #0x14]
 	ldr r2, [r5, #0x18]
 	add r6, r0, #0
@@ -57785,7 +57795,7 @@ _02200964:
 	cmp r4, r0
 	beq _0220098C
 	ldr r0, [sp, #4]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	cmp r4, r0
 	beq _0220099A
 _0220098C:
@@ -57804,16 +57814,16 @@ _0220099A:
 	str r0, [r5, #0x20]
 _022009A4:
 	add r0, r6, #0
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	add r4, r0, #0
 	ldr r0, [r5, #4]
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	str r0, [sp, #8]
 	ldr r0, [r5, #4]
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	add r2, r0, #0
 	ldr r1, [sp, #8]
 	add r0, r4, r7
@@ -57822,7 +57832,7 @@ _022009A4:
 	bl sub_020611C8
 	add r0, r6, #0
 	add r1, sp, #0x18
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r0, [sp, #0x1c]
 	add r1, sp, #0xc
 	str r0, [sp, #0x10]
@@ -58755,7 +58765,7 @@ _022010E0:
 	ldrh r0, [r5, r0]
 	cmp r6, r0
 	beq _02201112
-	ldr r0, _02201160 ; =0x000005DC
+	ldr r0, _02201160 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 _02201112:
 	mov r0, #1
@@ -58773,7 +58783,7 @@ _02201122:
 	lsr r0, r0, #0x1f
 	cmp r0, #1
 	bne _0220115A
-	ldr r0, _02201160 ; =0x000005DC
+	ldr r0, _02201160 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #0x21
 	lsl r0, r0, #4
@@ -58784,7 +58794,7 @@ _02201122:
 	bl ov01_0220116C
 	pop {r4, r5, r6, pc}
 _02201146:
-	ldr r0, _02201160 ; =0x000005DC
+	ldr r0, _02201160 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #0x21
 	lsl r0, r0, #4
@@ -58796,7 +58806,7 @@ _0220115A:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0220115C: .word 0x000006F4
-_02201160: .word 0x000005DC
+_02201160: .word SEQ_SE_DP_SELECT
 _02201164: .word 0x00000207
 _02201168: .word 0x0000FFFE
 	thumb_func_end ov01_022010CC
@@ -58805,7 +58815,7 @@ _02201168: .word 0x0000FFFE
 ov01_0220116C: ; 0x0220116C
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
-	ldr r0, _022011CC ; =0x000005DC
+	ldr r0, _022011CC ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #0x8f
 	lsl r0, r0, #2
@@ -58846,12 +58856,12 @@ _022011BE:
 	bl FreeToHeap
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_022011CC: .word 0x000005DC
+_022011CC: .word SEQ_SE_DP_SELECT
 _022011D0: .word 0x00000207
 	thumb_func_end ov01_0220116C
 
-	thumb_func_start ScrCmd_657
-ScrCmd_657: ; 0x022011D4
+	thumb_func_start ScrCmd_StatJudge
+ScrCmd_StatJudge: ; 0x022011D4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	add r4, r0, #0
@@ -58983,18 +58993,18 @@ _022012EC:
 	strh r4, [r0]
 	ldrh r0, [r7]
 	lsl r1, r0, #1
-	ldr r0, _02201300 ; =ov01_022093C2
+	ldr r0, _02201300 ; =sStatJudgeBestStatMsgIdxs
 	ldrh r0, [r0, r1]
 	strh r0, [r7]
 	mov r0, #0
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02201300: .word ov01_022093C2
-	thumb_func_end ScrCmd_657
+_02201300: .word sStatJudgeBestStatMsgIdxs
+	thumb_func_end ScrCmd_StatJudge
 
-	thumb_func_start ScrCmd_689
-ScrCmd_689: ; 0x02201304
+	thumb_func_start ScrCmd_CommSanitizeParty
+ScrCmd_CommSanitizeParty: ; 0x02201304
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x28
 	mov r1, #0
@@ -59100,7 +59110,7 @@ _022013C0:
 	mov r1, #5
 	mov r2, #0
 	bl GetMonData
-	ldr r1, _02201420 ; =0x000001DF
+	ldr r1, _02201420 ; =SPECIES_ROTOM
 	cmp r0, r1
 	beq _022013FE
 	add r1, #8
@@ -59134,11 +59144,11 @@ _02201418:
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02201420: .word 0x000001DF
-	thumb_func_end ScrCmd_689
+_02201420: .word SPECIES_ROTOM
+	thumb_func_end ScrCmd_CommSanitizeParty
 
-	thumb_func_start ScrCmd_659
-ScrCmd_659: ; 0x02201424
+	thumb_func_start ScrCmd_SetMonForme
+ScrCmd_SetMonForme: ; 0x02201424
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
@@ -59170,10 +59180,10 @@ ScrCmd_659: ; 0x02201424
 	mov r0, #0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
-	thumb_func_end ScrCmd_659
+	thumb_func_end ScrCmd_SetMonForme
 
-	thumb_func_start ScrCmd_674
-ScrCmd_674: ; 0x02201470
+	thumb_func_start ScrCmd_CountTranformedRotomsInParty
+ScrCmd_CountTranformedRotomsInParty: ; 0x02201470
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r5, r0, #0
@@ -59224,7 +59234,7 @@ _022014BA:
 	mov r2, #0
 	bl GetMonData
 	ldr r2, [sp, #0xc]
-	ldr r1, _02201514 ; =0x000001DF
+	ldr r1, _02201514 ; =SPECIES_ROTOM
 	cmp r2, r1
 	bne _02201500
 	ldr r1, [sp, #0x10]
@@ -59250,11 +59260,11 @@ _02201508:
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
-_02201514: .word 0x000001DF
-	thumb_func_end ScrCmd_674
+_02201514: .word SPECIES_ROTOM
+	thumb_func_end ScrCmd_CountTranformedRotomsInParty
 
-	thumb_func_start ScrCmd_675
-ScrCmd_675: ; 0x02201518
+	thumb_func_start ScrCmd_UpdateRotomForme
+ScrCmd_UpdateRotomForme: ; 0x02201518
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -59304,7 +59314,7 @@ ScrCmd_675: ; 0x02201518
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_675
+	thumb_func_end ScrCmd_UpdateRotomForme
 
 	thumb_func_start ScrCmd_670
 ScrCmd_670: ; 0x02201594
@@ -59644,8 +59654,8 @@ ScrCmd_672: ; 0x022017DC
 	.balign 4, 0
 	thumb_func_end ScrCmd_672
 
-	thumb_func_start ScrCmd_676
-ScrCmd_676: ; 0x02201844
+	thumb_func_start ScrCmd_GetPartyMonForme
+ScrCmd_GetPartyMonForme: ; 0x02201844
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -59675,7 +59685,7 @@ ScrCmd_676: ; 0x02201844
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_676
+	thumb_func_end ScrCmd_GetPartyMonForme
 
 	thumb_func_start ScrCmd_699
 ScrCmd_699: ; 0x0220188C
@@ -59687,10 +59697,10 @@ ScrCmd_699: ; 0x0220188C
 	ldr r0, [r0]
 	ldr r6, [r0, #0x3c]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r1, sp, #0xc
 	str r0, [sp]
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r6, #0
 	add r1, sp, #4
 	add r2, sp, #8
@@ -59711,23 +59721,23 @@ _022018C4:
 	beq _02201916
 	mov r1, #2
 	lsl r1, r1, #0xc
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	mov r1, #1
 	ldr r0, [sp, #4]
 	lsl r1, r1, #0xc
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #1
 	bne _022018FC
 	ldr r0, [sp, #4]
 	add r1, sp, #0xc
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r0, [sp, #4]
 	add r1, sp, #0xc
 	str r5, [sp, #0x10]
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	ldr r0, [sp, #4]
 	add r1, r7, #0
-	bl sub_0205F928
+	bl MapObject_SetCurrentHeight
 _022018FC:
 	ldr r0, [sp, #4]
 	bl ov01_021F72DC
@@ -59763,7 +59773,7 @@ ScrCmd_700: ; 0x0220192C
 	ldr r0, [r0]
 	ldr r4, [r0, #0x3c]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
 	add r0, r4, #0
 	add r1, sp, #0
@@ -59780,7 +59790,7 @@ _02201958:
 	cmp r0, r5
 	beq _02201964
 	add r1, r6, #0
-	bl sub_0205F214
+	bl MapObject_ClearBits
 _02201964:
 	add r0, r4, #0
 	add r1, r7, #0
@@ -59979,14 +59989,14 @@ ScrCmd_775: ; 0x02201AB8
 	ldr r0, [r0]
 	add r1, r5, #0
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r5, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	add r1, r6, #0
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r4, #0x80
 	add r2, r0, #0
 	ldr r0, [r4]
@@ -60050,7 +60060,7 @@ ScrCmd_724: ; 0x02201B40
 	add r4, r0, #0
 	ldr r0, [r6]
 	ldr r0, [r0, #0xc]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	bl sub_0203199C
 	cmp r5, #9
 	bhi _02201B8E
@@ -60146,7 +60156,7 @@ ScrCmd_725: ; 0x02201C08
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	bl sub_020319F0
 	cmp r6, #0
 	ldr r1, [r0, #0x70]
@@ -60200,8 +60210,8 @@ ScrCmd_735: ; 0x02201C70
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_02031B14
-	bl sub_02031BD0
+	bl Save_ApricornBox_get
+	bl ApricornBox_GetKurtQuantity
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -60214,10 +60224,10 @@ ScrCmd_736: ; 0x02201C9C
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_02031B14
+	bl Save_ApricornBox_get
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_02031BB8
+	bl ApricornBox_SetKurtApricorn
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ScrCmd_736
@@ -60236,8 +60246,8 @@ ScrCmd_737: ; 0x02201CB4
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_02031B14
-	bl sub_02031BD4
+	bl Save_ApricornBox_get
+	bl ApricornBox_GetKurtBall
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -60259,13 +60269,13 @@ ScrCmd_738: ; 0x02201CE0
 	ldr r0, [r4]
 	mov r5, #0
 	ldr r0, [r0, #0xc]
-	bl sub_02031B14
+	bl Save_ApricornBox_get
 	add r6, r0, #0
 	add r4, r5, #0
 _02201D06:
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_02031BA4
+	bl ApricornBox_CountApricorn
 	add r4, r4, #1
 	add r5, r5, r0
 	cmp r4, #7
@@ -60290,13 +60300,13 @@ ScrCmd_739: ; 0x02201D1C
 	mov r1, #2
 	bl sub_0203ED24
 	str r0, [r4]
-	ldr r1, _02201D48 ; =sub_02042974
+	ldr r1, _02201D48 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_02201D48: .word sub_02042974
+_02201D48: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_739
 
 	thumb_func_start ScrCmd_740
@@ -60330,13 +60340,13 @@ ScrCmd_740: ; 0x02201D4C
 	add r1, r6, #0
 	bl sub_0203ED80
 	str r0, [r4]
-	ldr r1, _02201DA0 ; =sub_02042974
+	ldr r1, _02201DA0 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	nop
-_02201DA0: .word sub_02042974
+_02201DA0: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_740
 
 	thumb_func_start ScrCmd_741
@@ -60347,7 +60357,7 @@ ScrCmd_741: ; 0x02201DA4
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_02031B14
+	bl Save_ApricornBox_get
 	str r0, [sp, #0xc]
 	add r0, r5, #0
 	add r0, #0x80
@@ -60534,10 +60544,10 @@ _02201F44:
 	add r1, r6, #0
 	ldr r0, [r7, #0x3c]
 	add r1, #0xf6
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	cmp r0, #0
 	beq _02201F56
-	bl sub_0205E400
+	bl DeleteMapObject
 _02201F56:
 	ldrh r2, [r4]
 	cmp r2, #0
@@ -60584,7 +60594,7 @@ ov01_02201F98: ; 0x02201F98
 	ldr r1, [sp, #0x18]
 	ldr r2, [sp, #0x30]
 	add r0, r7, #0
-	bl sub_02069D70
+	bl FollowingPokemon_GetSpriteID
 	lsl r5, r0, #1
 	add r0, r7, #0
 	bl sub_02069F64
@@ -60605,7 +60615,7 @@ ov01_02201F98: ; 0x02201F98
 	add r0, r4, #0
 	mov r3, #1
 	str r5, [sp, #0x14]
-	bl sub_0205E2B4
+	bl CreateSpecialFieldObjectEx
 	add r4, r0, #0
 	bne _02201FE4
 	bl GF_AssertFail
@@ -60613,20 +60623,20 @@ _02201FE4:
 	add r6, #0xf6
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_0205F248
+	bl MapObject_SetID
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F268
+	bl MapObject_SetType
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F270
+	bl MapObject_SetFlagID
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F278
+	bl MapObject_SetScript
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #2
-	bl sub_0205F2D0
+	bl MapObject_SetParam
 	str r5, [sp]
 	ldr r2, [sp, #0x18]
 	add r0, r4, #0
@@ -60638,18 +60648,18 @@ _02201FE4:
 	mov r1, #0
 	add r0, r4, #0
 	mvn r1, r1
-	bl sub_0205F318
+	bl MapObject_SetXRange
 	mov r1, #0
 	add r0, r4, #0
 	mvn r1, r1
-	bl sub_0205F320
+	bl MapObject_SetYRange
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0x1e
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F214
+	bl MapObject_ClearBits
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_0205F89C
@@ -60677,7 +60687,7 @@ ScrCmd_770: ; 0x0220205C
 	bl Sav2_Pokedex_get
 	mov r1, #1
 	add r7, r0, #0
-	bl sub_0202A14C
+	bl Pokedex_GetSeenFormeNum_Unown
 	add r6, r0, #0
 	cmp r6, #0x1a
 	bge _02202094
@@ -60695,7 +60705,7 @@ _0220209C:
 	add r0, r7, #0
 	add r1, r4, #0
 	mov r2, #1
-	bl sub_0202A108
+	bl Pokedex_GetSeenFormeByIdx_Unown
 	cmp r0, #0x1a
 	beq _022020B0
 	cmp r0, #0x1b
@@ -60721,8 +60731,8 @@ _022020C4:
 	.balign 4, 0
 	thumb_func_end ScrCmd_770
 
-	thumb_func_start ScrCmd_776
-ScrCmd_776: ; 0x022020CC
+	thumb_func_start ScrCmd_GiveTogepiEgg
+ScrCmd_GiveTogepiEgg: ; 0x022020CC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r0, #0x80
@@ -60822,7 +60832,7 @@ _02202138:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _022021A8: .word 0x00000146
-	thumb_func_end ScrCmd_776
+	thumb_func_end ScrCmd_GiveTogepiEgg
 
 	thumb_func_start ScrCmd_777
 ScrCmd_777: ; 0x022021AC
@@ -60859,8 +60869,8 @@ ScrCmd_777: ; 0x022021AC
 	pop {r4, r5, r6, pc}
 	thumb_func_end ScrCmd_777
 
-	thumb_func_start ScrCmd_778
-ScrCmd_778: ; 0x022021F8
+	thumb_func_start ScrCmd_GiveSpikyEarPichu
+ScrCmd_GiveSpikyEarPichu: ; 0x022021F8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x24
 	str r0, [sp, #0x10]
@@ -60900,8 +60910,8 @@ _02202224:
 	str r0, [sp, #4]
 	str r1, [sp, #8]
 	add r0, r5, #0
-	mov r1, #0xac
-	mov r2, #0x1e
+	mov r1, #SPECIES_PICHU
+	mov r2, #30
 	mov r3, #0x20
 	str r4, [sp, #0xc]
 	bl CreateMon
@@ -60913,7 +60923,7 @@ _02202224:
 	mov r1, #0x70
 	add r2, #1
 	bl SetMonData
-	ldr r6, _02202304 ; =ov01_022093BA
+	ldr r6, _02202304 ; =sSpikyEarPichuMoveset
 	mov r4, #0
 	add r7, sp, #0x20
 _02202276:
@@ -60973,16 +60983,16 @@ _02202276:
 	ldr r0, [sp, #0x18]
 	add r1, r5, #0
 	ldr r0, [r0, #0xc]
-	bl sub_0202ECC0
+	bl UpdatePokedexWithReceivedSpecies
 	mov r0, #0
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	nop
-_02202304: .word ov01_022093BA
-	thumb_func_end ScrCmd_778
+_02202304: .word sSpikyEarPichuMoveset
+	thumb_func_end ScrCmd_GiveSpikyEarPichu
 
-	thumb_func_start ScrCmd_618
-ScrCmd_618: ; 0x02202308
+	thumb_func_start ScrCmd_PhotoAlbumIsFull
+ScrCmd_PhotoAlbumIsFull: ; 0x02202308
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -60995,8 +61005,8 @@ ScrCmd_618: ; 0x02202308
 	bl GetVarPointer
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0202FA64
-	bl sub_0202FAB0
+	bl Save_PhotoAlbum_get
+	bl PhotoAlbum_GetNumSaved
 	cmp r0, #0x24
 	blo _02202334
 	mov r0, #1
@@ -61007,10 +61017,10 @@ _02202336:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_618
+	thumb_func_end ScrCmd_PhotoAlbumIsFull
 
-	thumb_func_start ScrCmd_779
-ScrCmd_779: ; 0x0220233C
+	thumb_func_start ScrCmd_RadioMusicIsPlaying
+ScrCmd_RadioMusicIsPlaying: ; 0x0220233C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -61038,7 +61048,7 @@ _02202372:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_779
+	thumb_func_end ScrCmd_RadioMusicIsPlaying
 
 	thumb_func_start ov01_02202378
 ov01_02202378: ; 0x02202378
@@ -61132,8 +61142,8 @@ _02202408:
 _0220242C: .word ov01_022093D0
 	thumb_func_end ov01_02202378
 
-	thumb_func_start ScrCmd_780
-ScrCmd_780: ; 0x02202430
+	thumb_func_start ScrCmd_CasinoGame
+ScrCmd_CasinoGame: ; 0x02202430
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #8]
@@ -61162,17 +61172,17 @@ ScrCmd_780: ; 0x02202430
 	ldr r0, [r0]
 	bl sub_0203FA38
 	str r0, [r7]
-	ldr r1, _0220247C ; =sub_02042974
+	ldr r1, _0220247C ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0220247C: .word sub_02042974
-	thumb_func_end ScrCmd_780
+_0220247C: .word ScrNative_WaitApplication_DestroyTaskData
+	thumb_func_end ScrCmd_CasinoGame
 
-	thumb_func_start ScrCmd_745
-ScrCmd_745: ; 0x02202480
+	thumb_func_start ScrCmd_BufferPokeathlonCourseName
+ScrCmd_BufferPokeathlonCourseName: ; 0x02202480
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #8]
@@ -61194,10 +61204,10 @@ ScrCmd_745: ; 0x02202480
 	ldr r0, [r0]
 	add r1, r4, #0
 	lsr r2, r2, #0x18
-	bl sub_0200C944
+	bl BufferPokeathlonCourseName
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_745
+	thumb_func_end ScrCmd_BufferPokeathlonCourseName
 
 	thumb_func_start ScrCmd_811
 ScrCmd_811: ; 0x022024B8
@@ -61221,7 +61231,7 @@ ScrCmd_811: ; 0x022024B8
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetPhoneRematches
 	mov r1, #0
 	add r2, r6, #0
 	bl sub_0202F224
@@ -61237,14 +61247,14 @@ ScrCmd_812: ; 0x022024FC
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetPhoneRematches
 	bl sub_0202F1F4
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ScrCmd_812
 
-	thumb_func_start ScrCmd_821
-ScrCmd_821: ; 0x02202510
+	thumb_func_start ScrCmd_GetBuenasPassword
+ScrCmd_GetBuenasPassword: ; 0x02202510
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -61266,7 +61276,7 @@ ScrCmd_821: ; 0x02202510
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066ECC
+	bl ScriptState_GetBuenasPasswordSet
 	mov r1, #0x1e
 	bl _s32_div_f
 	lsl r0, r1, #0x18
@@ -61276,7 +61286,7 @@ ScrCmd_821: ; 0x02202510
 	bl _s32_div_f
 	lsl r1, r0, #1
 	add r0, r0, r1
-	add r0, #0x28
+	add r0, #msg_0066_D23R0102_00040
 	strh r0, [r4]
 	add r0, r5, #0
 	mov r1, #3
@@ -61284,7 +61294,7 @@ ScrCmd_821: ; 0x02202510
 	strh r1, [r6]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_821
+	thumb_func_end ScrCmd_GetBuenasPassword
 
 	thumb_func_start ov01_02202570
 ov01_02202570: ; 0x02202570
@@ -61414,8 +61424,8 @@ ScrCmd_572: ; 0x02202648
 	.balign 4, 0
 	thumb_func_end ScrCmd_572
 
-	thumb_func_start ScrCmd_133
-ScrCmd_133: ; 0x02202674
+	thumb_func_start ScrCmd_GetSealQuantity
+ScrCmd_GetSealQuantity: ; 0x02202674
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -61442,10 +61452,10 @@ ScrCmd_133: ; 0x02202674
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_133
+	thumb_func_end ScrCmd_GetSealQuantity
 
-	thumb_func_start ScrCmd_134
-ScrCmd_134: ; 0x022026B4
+	thumb_func_start ScrCmd_GiveOrTakeSeal
+ScrCmd_GiveOrTakeSeal: ; 0x022026B4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -61474,7 +61484,7 @@ ScrCmd_134: ; 0x022026B4
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_134
+	thumb_func_end ScrCmd_GiveOrTakeSeal
 
 	thumb_func_start ov01_022026F8
 ov01_022026F8: ; 0x022026F8
@@ -61501,8 +61511,8 @@ _02202714:
 	.balign 4, 0
 	thumb_func_end ov01_022026F8
 
-	thumb_func_start ScrCmd_135
-ScrCmd_135: ; 0x0220271C
+	thumb_func_start ScrCmd_GiveRandomSeal
+ScrCmd_GiveRandomSeal: ; 0x0220271C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x2c
 	mov r1, #0
@@ -61635,7 +61645,7 @@ _02202812:
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_135
+	thumb_func_end ScrCmd_GiveRandomSeal
 
 	thumb_func_start ScrCmd_836
 ScrCmd_836: ; 0x02202834
@@ -61765,8 +61775,8 @@ _0220292C:
 	pop {r4, pc}
 	thumb_func_end ScrCmd_839
 
-	thumb_func_start ScrCmd_785
-ScrCmd_785: ; 0x02202930
+	thumb_func_start ScrCmd_BugContestAction
+ScrCmd_BugContestAction: ; 0x02202930
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #8]
@@ -61785,7 +61795,7 @@ ScrCmd_785: ; 0x02202930
 	cmp r4, #0
 	bne _02202964
 	add r0, r5, #0
-	bl ov24_022598C0
+	bl BugContest_new
 	mov r1, #0x46
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -61794,7 +61804,7 @@ _02202964:
 	mov r0, #0x46
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl ov24_02259928
+	bl BugContest_delete
 	mov r0, #0x46
 	mov r1, #0
 	lsl r0, r0, #2
@@ -61804,10 +61814,10 @@ _02202964:
 _0220297C:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_785
+	thumb_func_end ScrCmd_BugContestAction
 
-	thumb_func_start ScrCmd_786
-ScrCmd_786: ; 0x02202980
+	thumb_func_start ScrCmd_BufferBugContestWinner
+ScrCmd_BufferBugContestWinner: ; 0x02202980
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -61818,26 +61828,26 @@ ScrCmd_786: ; 0x02202980
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	ldr r3, [r5, #8]
 	add r1, r3, #1
 	str r1, [r5, #8]
 	ldrb r3, [r3]
 	ldr r1, [r5, #0x78]
 	ldr r2, [r4]
-	bl ov24_02259A4C
+	bl BugContest_BufferContestWinnerNames
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_786
+	thumb_func_end ScrCmd_BufferBugContestWinner
 
-	thumb_func_start ScrCmd_787
-ScrCmd_787: ; 0x022029B0
+	thumb_func_start ScrCmd_JudgeBugContest
+ScrCmd_JudgeBugContest: ; 0x022029B0
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -61863,7 +61873,7 @@ ScrCmd_787: ; 0x022029B0
 	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov24_02259940
+	bl BugContest_Judge
 	ldrb r0, [r5, #0x17]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x1a
@@ -61886,10 +61896,10 @@ _02202A20:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_787
+	thumb_func_end ScrCmd_JudgeBugContest
 
-	thumb_func_start ScrCmd_788
-ScrCmd_788: ; 0x02202A28
+	thumb_func_start ScrCmd_BufferBugContestMonNick
+ScrCmd_BufferBugContestMonNick: ; 0x02202A28
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -61900,7 +61910,7 @@ ScrCmd_788: ; 0x02202A28
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	ldr r1, [r4, #8]
 	add r7, r0, #0
 	add r0, r1, #1
@@ -61916,15 +61926,15 @@ ScrCmd_788: ; 0x02202A28
 	ldr r1, [r6]
 	add r0, r7, #0
 	add r2, r5, #0
-	bl ov24_02259AF8
+	bl BugContest_BufferCaughtMonNick
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_788
+	thumb_func_end ScrCmd_BufferBugContestMonNick
 
-	thumb_func_start ScrCmd_789
-ScrCmd_789: ; 0x02202A70
+	thumb_func_start ScrCmd_BugContestGetTimeLeft
+ScrCmd_BugContestGetTimeLeft: ; 0x02202A70
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -61940,7 +61950,7 @@ ScrCmd_789: ; 0x02202A70
 	ldr r0, [r5]
 	ldrb r6, [r1]
 	mov r4, #1
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	cmp r0, #0
 	beq _02202AA2
 	ldr r1, [r0, #0x1c]
@@ -61961,15 +61971,15 @@ _02202AA2:
 	mov r0, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_789
+	thumb_func_end ScrCmd_BugContestGetTimeLeft
 
-	thumb_func_start ScrCmd_790
-ScrCmd_790: ; 0x02202ABC
+	thumb_func_start ScrCmd_IsBugContestantRegistered
+ScrCmd_IsBugContestantRegistered: ; 0x02202ABC
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -61989,11 +61999,11 @@ ScrCmd_790: ; 0x02202ABC
 	add r4, r0, #0
 	add r0, r6, #0
 	lsr r1, r1, #0x18
-	bl ov24_02259ADC
+	bl BugContest_ContestantIsRegistered
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_790
+	thumb_func_end ScrCmd_IsBugContestantRegistered
 
 	thumb_func_start ScrCmd_652
 ScrCmd_652: ; 0x02202B00
@@ -62030,7 +62040,7 @@ ScrCmd_652: ; 0x02202B00
 	bl GetPartyMonByIndex
 	add r1, r7, #0
 	mov r2, #0
-	bl ov01_02202D40
+	bl MonGetTutorCompat
 	cmp r0, #0
 	bne _02202B60
 	mov r0, #0
@@ -62052,8 +62062,8 @@ _02202B74:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ScrCmd_652
 
-	thumb_func_start ScrCmd_654
-ScrCmd_654: ; 0x02202B78
+	thumb_func_start ScrCmd_TutorMoveTeachInSlot
+ScrCmd_TutorMoveTeachInSlot: ; 0x02202B78
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -62090,10 +62100,10 @@ ScrCmd_654: ; 0x02202B78
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_654
+	thumb_func_end ScrCmd_TutorMoveTeachInSlot
 
-	thumb_func_start ScrCmd_655
-ScrCmd_655: ; 0x02202BD0
+	thumb_func_start ScrCmd_TutorMoveGetPrice
+ScrCmd_TutorMoveGetPrice: ; 0x02202BD0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -62109,14 +62119,14 @@ ScrCmd_655: ; 0x02202BD0
 	add r1, r0, #0
 	ldr r0, [r5]
 	bl GetVarPointer
-	ldr r2, _02202C20 ; =ov01_022093E0
+	ldr r2, _02202C20 ; =sTutorMoves
 	add r5, r0, #0
 	mov r1, #0
 _02202BFC:
 	ldrh r0, [r2]
 	cmp r4, r0
 	bne _02202C0E
-	ldr r0, _02202C24 ; =ov01_022093E0 + 2
+	ldr r0, _02202C24 ; =sTutorMoves + 2
 	lsl r1, r1, #2
 	ldrb r0, [r0, r1]
 	strh r0, [r5]
@@ -62132,9 +62142,9 @@ _02202C0E:
 	strh r0, [r5]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02202C20: .word ov01_022093E0
-_02202C24: .word ov01_022093E0 + 2
-	thumb_func_end ScrCmd_655
+_02202C20: .word sTutorMoves
+_02202C24: .word sTutorMoves + 2
+	thumb_func_end ScrCmd_TutorMoveGetPrice
 
 	thumb_func_start ScrCmd_656
 ScrCmd_656: ; 0x02202C28
@@ -62163,7 +62173,7 @@ ScrCmd_656: ; 0x02202C28
 	bl GetPartyMonByIndex
 	mov r1, #3
 	mov r2, #0
-	bl ov01_02202D40
+	bl MonGetTutorCompat
 	cmp r0, #0
 	beq _02202C72
 	mov r0, #1
@@ -62177,24 +62187,26 @@ _02202C74:
 	.balign 4, 0
 	thumb_func_end ScrCmd_656
 
-	thumb_func_start ov01_02202C7C
-ov01_02202C7C: ; 0x02202C7C
-	ldr r2, _02202D3C ; =0x000001DF
+	thumb_func_start SpeciesAndFormeToWazaOshieIndex
+SpeciesAndFormeToWazaOshieIndex: ; 0x02202C7C
+	; Convert species and forme into
+	; naix for tutor compat
+	ldr r2, _02202D3C ; =SPECIES_ROTOM
 	cmp r0, r2
 	bgt _02202CA0
 	bge _02202D02
 	add r3, r2, #0
-	sub r3, #0x5d
+	sub r3, #SPECIES_ROTOM - SPECIES_DEOXYS
 	cmp r0, r3
 	bgt _02202C96
 	add r3, r2, #0
-	sub r3, #0x5d
+	sub r3, #SPECIES_ROTOM - SPECIES_DEOXYS
 	cmp r0, r3
 	beq _02202CBC
 	b _02202D32
 _02202C96:
 	add r3, r2, #0
-	sub r3, #0x42
+	sub r3, #SPECIES_ROTOM - SPECIES_WORMADAM
 	cmp r0, r3
 	beq _02202CDA
 	b _02202D32
@@ -62291,11 +62303,11 @@ _02202D32:
 	lsr r0, r0, #0x10
 	bx lr
 	nop
-_02202D3C: .word 0x000001DF
-	thumb_func_end ov01_02202C7C
+_02202D3C: .word SPECIES_ROTOM
+	thumb_func_end SpeciesAndFormeToWazaOshieIndex
 
-	thumb_func_start ov01_02202D40
-ov01_02202D40: ; 0x02202D40
+	thumb_func_start MonGetTutorCompat
+MonGetTutorCompat: ; 0x02202D40
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r6, r0, #0
@@ -62303,6 +62315,7 @@ ov01_02202D40: ; 0x02202D40
 	add r7, r2, #0
 	mov r4, #0
 	add r5, sp, #4
+	; Get the poke's current moveset
 _02202D4E:
 	add r1, r4, #0
 	add r0, r6, #0
@@ -62314,6 +62327,8 @@ _02202D4E:
 	add r5, r5, #2
 	cmp r4, #4
 	blt _02202D4E
+	; Get species and forme, then
+	; get tutor compat flags
 	add r0, r6, #0
 	mov r1, #5
 	mov r2, #0
@@ -62328,15 +62343,17 @@ _02202D4E:
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x18
-	bl ov01_02202C7C
+	bl SpeciesAndFormeToWazaOshieIndex
 	add r1, r0, #0
 	mov r0, #0xb
-	bl ov01_02202E00
+	bl WazaOshieGet
 	mov r6, #0
 	mov ip, r0
-	ldr r1, _02202DFC ; =ov01_022093E0
+	ldr r1, _02202DFC ; =sTutorMoves
 	add r0, r6, #0
 _02202D98:
+	; waza_oshie.bin entries are 64-bit
+	; flag arrays
 	asr r2, r0, #2
 	lsr r2, r2, #0x1d
 	add r2, r0, r2
@@ -62390,11 +62407,11 @@ _02202DE6:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
-_02202DFC: .word ov01_022093E0
-	thumb_func_end ov01_02202D40
+_02202DFC: .word sTutorMoves
+	thumb_func_end MonGetTutorCompat
 
-	thumb_func_start ov01_02202E00
-ov01_02202E00: ; 0x02202E00
+	thumb_func_start WazaOshieGet
+WazaOshieGet: ; 0x02202E00
 	push {r3, r4, r5, lr}
 	sub sp, #0x48
 	add r5, r0, #0
@@ -62414,7 +62431,7 @@ _02202E24:
 	ldr r1, [sp, #0x28]
 	ldr r0, [sp, #0x24]
 	sub r1, r1, r0
-	ldr r0, _02202E64 ; =0x00000FC8
+	ldr r0, _02202E64 ; =505 * 8
 	cmp r1, r0
 	beq _02202E34
 	bl GF_AssertFail
@@ -62438,11 +62455,11 @@ _02202E34:
 	pop {r3, r4, r5, pc}
 	nop
 _02202E60: .word ov01_02209AF4
-_02202E64: .word 0x00000FC8
-	thumb_func_end ov01_02202E00
+_02202E64: .word 505 * 8
+	thumb_func_end WazaOshieGet
 
-	thumb_func_start ScrCmd_653
-ScrCmd_653: ; 0x02202E68
+	thumb_func_start ScrCmd_MoveTutorChooseMove
+ScrCmd_MoveTutorChooseMove: ; 0x02202E68
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x6c
 	str r0, [sp, #0x14]
@@ -62493,7 +62510,7 @@ ScrCmd_653: ; 0x02202E68
 	bl GetPartyMonByIndex
 	add r1, r7, #0
 	add r2, sp, #0x38
-	bl ov01_02202D40
+	bl MonGetTutorCompat
 	str r0, [sp, #0x34]
 	cmp r0, #7
 	bgt _02202EF2
@@ -62577,7 +62594,7 @@ _02202F82:
 	ldrb r1, [r5]
 	ldr r0, [sp, #0x1c]
 	lsl r2, r1, #2
-	ldr r1, _0220304C ; =ov01_022093E0
+	ldr r1, _0220304C ; =sTutorMoves
 	ldrh r1, [r1, r2]
 	add r2, r7, #0
 	bl ReadMsgDataIntoString
@@ -62597,7 +62614,7 @@ _02202F82:
 	ldr r0, [r4]
 	mov r1, #1
 	lsl r3, r2, #2
-	ldr r2, _0220304C ; =ov01_022093E0
+	ldr r2, _0220304C ; =sTutorMoves
 	add r2, r2, r3
 	ldrb r2, [r2, #2]
 	mov r3, #2
@@ -62606,11 +62623,11 @@ _02202F82:
 	ldr r0, [sp, #0x24]
 	ldr r1, [sp, #0x18]
 	lsl r6, r3, #2
-	ldr r3, _0220304C ; =ov01_022093E0
+	ldr r3, _0220304C ; =sTutorMoves
 	ldr r0, [r0]
 	ldrh r3, [r3, r6]
 	mov r2, #0xff
-	bl ov01_021EDF9C
+	bl MoveTutorMenu_SetListItem
 	ldr r0, [sp, #0x30]
 	add r5, r5, #1
 	add r1, r0, #1
@@ -62631,14 +62648,14 @@ _02202FE2:
 	ldr r0, [r0]
 	mov r1, #2
 	mov r2, #0xff
-	bl ov01_021EDF9C
+	bl MoveTutorMenu_SetListItem
 _02203002:
 	ldr r0, [sp, #0x24]
 	ldr r3, _02203054 ; =0x0000FFFE
 	ldr r0, [r0]
 	mov r1, #3
 	mov r2, #0xff
-	bl ov01_021EDF9C
+	bl MoveTutorMenu_SetListItem
 	ldr r1, [sp, #0x14]
 	ldr r0, [sp, #0x28]
 	ldr r1, [r1, #0x64]
@@ -62664,11 +62681,11 @@ _02203002:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _02203048: .word 0x000002EE
-_0220304C: .word ov01_022093E0
+_0220304C: .word sTutorMoves
 _02203050: .word 0x0000FFFD
 _02203054: .word 0x0000FFFE
 _02203058: .word ov01_0220305C
-	thumb_func_end ScrCmd_653
+	thumb_func_end ScrCmd_MoveTutorChooseMove
 
 	thumb_func_start ov01_0220305C
 ov01_0220305C: ; 0x0220305C
@@ -62963,7 +62980,7 @@ ov01_0220329C: ; 0x0220329C
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, sp, #8
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	mov r0, #6
 	ldr r1, [sp, #0x10]
 	lsl r0, r0, #0xc
@@ -62987,7 +63004,7 @@ ov01_0220329C: ; 0x0220329C
 	add r0, r6, #0
 	add r1, sp, #0x2c
 	str r6, [sp, #0x20]
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r6, #0
 	mov r1, #2
 	bl sub_0205F09C
@@ -63064,10 +63081,10 @@ _02203374:
 	ldr r0, [r3]
 	str r0, [r2]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	str r0, [r4, #8]
 	ldr r0, [r4, #0x30]
 	bl sub_0205F254
@@ -63382,10 +63399,10 @@ _022035F4:
 	ldr r0, [r3]
 	str r0, [r2]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	str r0, [r4, #8]
 	ldr r0, [r4, #0x30]
 	bl sub_0205F254
@@ -63476,7 +63493,7 @@ _022036C0:
 	pop {r3, r4, r5, r6, r7, pc}
 _022036C4:
 	ldr r0, [r5, #0x24]
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r6, r0, #0
 	ldr r0, [r5, #0x24]
 	ldr r0, [r0, #0x3c]
@@ -63501,13 +63518,13 @@ _022036C4:
 	cmp r0, #0
 	beq _02203734
 	add r0, r6, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	lsl r0, r0, #0x18
 	add r1, r5, #0
 	lsr r4, r0, #0x18
 	add r0, r6, #0
 	add r1, #0x48
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r1, r5, #0
 	add r2, r5, #0
 	add r0, r4, #0
@@ -63556,7 +63573,7 @@ _0220373E:
 	cmp r0, #0
 	beq _022037A2
 	ldr r0, [r5, #0x24]
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	ldr r3, [r5, #0x10]
 	ldr r2, [r5, #0x44]
 	add r4, r3, #0
@@ -63572,7 +63589,7 @@ _0220373E:
 	str r2, [r1]
 	add r1, r5, #0
 	add r1, #0x48
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 _022037A2:
 	ldr r0, [r5, #0x10]
 	cmp r0, #4
@@ -63658,10 +63675,10 @@ _02203838:
 	ldr r0, [r3]
 	str r0, [r2]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	str r0, [r4, #8]
 	ldr r0, [r4, #0x30]
 	bl sub_0205F254
@@ -63721,7 +63738,7 @@ _022038B4:
 	pop {r4, r5, r6, r7, pc}
 _022038C6:
 	ldr r0, [r5, #0x24]
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r6, r0, #0
 	ldr r0, [r5, #0x24]
 	ldr r0, [r0, #0x3c]
@@ -63731,13 +63748,13 @@ _022038C6:
 	cmp r0, #0
 	beq _02203912
 	add r0, r6, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	lsl r0, r0, #0x18
 	add r1, r5, #0
 	lsr r4, r0, #0x18
 	add r0, r6, #0
 	add r1, #0x48
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r1, r5, #0
 	add r2, r5, #0
 	add r0, r4, #0
@@ -63786,7 +63803,7 @@ _0220391C:
 	cmp r0, #0
 	beq _0220397E
 	ldr r0, [r5, #0x24]
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	ldr r2, [r5, #0x44]
 	ldr r1, [r5, #0x10]
 	lsl r2, r2, #0xc
@@ -63801,7 +63818,7 @@ _0220391C:
 	str r2, [r1]
 	add r1, r5, #0
 	add r1, #0x48
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 _0220397E:
 	ldr r0, [r5, #0x10]
 	cmp r0, #4
@@ -63950,10 +63967,10 @@ _02203A6E:
 	str r1, [r0, #4]
 	add r0, r5, #0
 	add r1, sp, #0x14
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	add r1, sp, #8
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	mov r0, #0
 	str r0, [sp, #0xc]
 	add r0, sp, #0x14
@@ -63991,7 +64008,7 @@ ov01_02203AB4: ; 0x02203AB4
 	str r4, [r2, #4]
 	ldr r0, [r5, #0x10]
 	ldr r1, _02203AD4 ; =ov01_02203AD8
-	bl sub_02050530
+	bl QueueTask
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02203AD4: .word ov01_02203AD8
@@ -64001,10 +64018,10 @@ _02203AD4: .word ov01_02203AD8
 ov01_02203AD8: ; 0x02203AD8
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0
@@ -64123,7 +64140,7 @@ ov01_02203BB4: ; 0x02203BB4
 	ldr r0, [r3]
 	str r0, [r2]
 	ldr r0, [r4, #0x38]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	str r0, [r4, #8]
 	ldr r0, [r4, #0x38]
 	bl sub_0205F254
@@ -64198,7 +64215,7 @@ ov01_02203BB4: ; 0x02203BB4
 	mov r1, #0
 	str r0, [r4, #0x3c]
 	bl sub_02023EA4
-	ldr r0, _02203C9C ; =0x000005DD
+	ldr r0, _02203C9C ; =SEQ_SE_DP_DECIDE
 	bl PlaySE
 	mov r0, #1
 	add sp, #0xc
@@ -64206,7 +64223,7 @@ ov01_02203BB4: ; 0x02203BB4
 	.balign 4, 0
 _02203C94: .word ov01_02209544
 _02203C98: .word ov01_02209548
-_02203C9C: .word 0x000005DD
+_02203C9C: .word SEQ_SE_DP_DECIDE
 	thumb_func_end ov01_02203BB4
 
 	thumb_func_start ov01_02203CA0
@@ -64239,10 +64256,10 @@ ov01_02203CB8: ; 0x02203CB8
 _02203CD4:
 	add r0, r5, #0
 	add r1, sp, #0x24
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	add r1, sp, #0x18
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	add r0, r5, #0
 	add r1, sp, #0xc
 	bl sub_0205F990
@@ -64505,7 +64522,7 @@ ov01_02203EA0: ; 0x02203EA0
 	str r5, [sp, #0x34]
 	add r0, r5, #0
 	add r1, sp, #0x14
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r1, [r6, #0x24]
 	add r0, sp, #8
 	bl sub_02023640
@@ -64525,7 +64542,7 @@ ov01_02203EA0: ; 0x02203EA0
 	bl VEC_Normalize
 	add r0, r5, #0
 	add r1, sp, #0x20
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	mov r1, #2
 	bl sub_0205F09C
@@ -64597,7 +64614,7 @@ ov01_02203F6C: ; 0x02203F6C
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	add r1, sp, #0xc
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r0, [r4, #0x10]
 	add r4, #0x14
 	add r1, r4, #0
@@ -65920,8 +65937,8 @@ ov01_02204834: ; 0x02204834
 _0220483C: .word ov01_022095EC
 	thumb_func_end ov01_02204834
 
-	thumb_func_start ov01_02204840
-ov01_02204840: ; 0x02204840
+	thumb_func_start FieldSys_AnimApricornTree
+FieldSys_AnimApricornTree: ; 0x02204840
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -65938,23 +65955,23 @@ ov01_02204840: ; 0x02204840
 	str r6, [r4, #8]
 	str r7, [r4, #0x24]
 	ldr r0, [r5, #0x10]
-	ldr r1, _02204870 ; =ov01_02204874
+	ldr r1, _02204870 ; =Task_AnimApricornTree
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02204870: .word ov01_02204874
-	thumb_func_end ov01_02204840
+_02204870: .word Task_AnimApricornTree
+	thumb_func_end FieldSys_AnimApricornTree
 
-	thumb_func_start ov01_02204874
-ov01_02204874: ; 0x02204874
+	thumb_func_start Task_AnimApricornTree
+Task_AnimApricornTree: ; 0x02204874
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0x14
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r1, [r4]
 	cmp r1, #0xa
@@ -65996,13 +66013,13 @@ _022048C8:
 	add r2, r0, #0
 	ldr r1, _02204A94 ; =ov01_02204B78
 	add r0, r6, #0
-	bl sub_02050530
+	bl QueueTask
 	mov r0, #1
 	str r0, [r4]
 	b _02204A8E
 _022048E0:
 	ldr r0, [r4, #8]
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 	ldr r0, [r4, #8]
 	mov r1, #1
 	bl sub_0205F328
@@ -66016,7 +66033,7 @@ _022048E0:
 	strb r1, [r0]
 	mov r0, #2
 	str r0, [r4]
-	ldr r0, _02204A98 ; =0x000008FF
+	ldr r0, _02204A98 ; =SEQ_SE_GS_KI_YURERU
 	bl PlaySE
 	b _02204A8E
 _0220490A:
@@ -66053,7 +66070,7 @@ _0220493E:
 	mov r1, #0
 	bl sub_0205F328
 	ldr r0, [r4, #8]
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	ldr r1, [r4, #8]
 	add r0, r5, #0
 	bl sub_02055708
@@ -66077,7 +66094,7 @@ _0220496C:
 	b _02204A8E
 _02204978:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	mov r1, #0
 	str r1, [r4, #0x14]
 	str r1, [r4, #0x1c]
@@ -66136,7 +66153,7 @@ _022049D8:
 	bl ov01_02204AAC
 	str r0, [r4, #4]
 	add r1, sp, #8
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	mov r0, #3
 	ldr r1, [sp, #0xc]
 	lsl r0, r0, #0xe
@@ -66144,7 +66161,7 @@ _022049D8:
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #4]
 	add r1, sp, #8
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	mov r0, #5
 	str r0, [r4]
 	b _02204A8E
@@ -66170,7 +66187,7 @@ _02204A1E:
 	mov r1, #2
 	bl sub_0205F328
 	ldr r0, [r4, #8]
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 	mov r0, #8
 	str r0, [r4]
 	b _02204A8E
@@ -66184,10 +66201,10 @@ _02204A40:
 	bgt _02204A8E
 	ldr r0, [r4, #4]
 	lsl r1, r1, #4
-	bl sub_0205F214
+	bl MapObject_ClearBits
 	mov r0, #0
 	str r0, [r4, #0xc]
-	ldr r0, _02204AA8 ; =0x000008E5
+	ldr r0, _02204AA8 ; =SEQ_SE_GS_FW255E
 	bl PlaySE
 	mov r0, #9
 	str r0, [r4]
@@ -66204,7 +66221,7 @@ _02204A66:
 	b _02204A8E
 _02204A7C:
 	ldr r0, [r4, #8]
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #0x14
@@ -66216,12 +66233,12 @@ _02204A8E:
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
 _02204A94: .word ov01_02204B78
-_02204A98: .word 0x000008FF
+_02204A98: .word SEQ_SE_GS_KI_YURERU
 _02204A9C: .word 0xFFFFF000
 _02204AA0: .word 0x0000010E
 _02204AA4: .word 0x00000106
-_02204AA8: .word 0x000008E5
-	thumb_func_end ov01_02204874
+_02204AA8: .word SEQ_SE_GS_FW255E
+	thumb_func_end Task_AnimApricornTree
 
 	thumb_func_start ov01_02204AAC
 ov01_02204AAC: ; 0x02204AAC
@@ -66235,43 +66252,43 @@ ov01_02204AAC: ; 0x02204AAC
 	add r1, r2, #0
 	add r2, r3, #0
 	add r3, r4, #0
-	bl sub_0205E294
+	bl CreateSpecialFieldObject
 	add r4, r0, #0
 	bne _02204ACC
 	bl GF_AssertFail
 _02204ACC:
 	add r0, r4, #0
 	mov r1, #0xfc
-	bl sub_0205F248
+	bl MapObject_SetID
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F268
+	bl MapObject_SetType
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F270
-	mov r1, #0
-	add r0, r4, #0
-	mvn r1, r1
-	bl sub_0205F318
+	bl MapObject_SetFlagID
 	mov r1, #0
 	add r0, r4, #0
 	mvn r1, r1
-	bl sub_0205F320
+	bl MapObject_SetXRange
+	mov r1, #0
+	add r0, r4, #0
+	mvn r1, r1
+	bl MapObject_SetYRange
 	mov r1, #9
 	add r0, r4, #0
 	lsl r1, r1, #0xa
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	mov r1, #6
 	add r0, r4, #0
 	lsl r1, r1, #6
-	bl sub_0205F214
+	bl MapObject_ClearBits
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_0205F89C
 	mov r1, #2
 	add r0, r4, #0
 	lsl r1, r1, #8
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	add r0, r4, #0
 	add sp, #0xc
 	pop {r3, r4, pc}
@@ -66284,7 +66301,7 @@ ov01_02204B24: ; 0x02204B24
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	add r1, sp, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r1, [r4, #0xc]
 	ldr r0, _02204B74 ; =ov01_022095F4
 	ldr r2, [sp, #4]
@@ -66302,14 +66319,14 @@ ov01_02204B24: ; 0x02204B24
 	str r0, [sp, #8]
 	ldr r0, [r4, #4]
 	add r1, sp, #0
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	ldr r0, [r4, #0xc]
 	add r0, r0, #1
 	str r0, [r4, #0xc]
 	cmp r0, #0x10
 	blt _02204B6E
 	ldr r0, [r4, #4]
-	bl sub_0205E3CC
+	bl MapObject_Remove
 	add sp, #0xc
 	mov r0, #1
 	pop {r3, r4, pc}
@@ -66325,16 +66342,16 @@ _02204B74: .word ov01_022095F4
 ov01_02204B78: ; 0x02204B78
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
 	add r0, r7, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r7, r0, #0
 	ldr r0, [r4]
 	cmp r0, #3
@@ -66352,18 +66369,18 @@ _02204BAC: ; jump table
 	.short _02204C30 - _02204BAC - 2 ; case 3
 _02204BB4:
 	add r0, r6, #0
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _02204C40
 _02204BC2:
 	add r0, r6, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _02204C40
 	add r0, r6, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	mov r1, #2
 	ldr r0, [r5, #0x40]
 	lsl r1, r1, #0xc
@@ -66386,11 +66403,11 @@ _02204BF6:
 	cmp r0, #0x18
 	ble _02204C40
 	add r0, r6, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _02204C40
 	add r0, r6, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	ldr r0, [r5, #0x40]
 	bl sub_0205C700
 	bl sub_0205C99C
@@ -66405,7 +66422,7 @@ _02204BF6:
 	b _02204C40
 _02204C30:
 	add r0, r6, #0
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	add r0, r7, #0
 	bl FreeToHeap
 	mov r0, #1
@@ -66443,7 +66460,7 @@ _02204C62:
 	strh r1, [r0]
 	ldr r0, [r5, #0x10]
 	ldr r1, _02204C7C ; =ov01_02204C80
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02204C7C: .word ov01_02204C80
@@ -66454,10 +66471,10 @@ ov01_02204C80: ; 0x02204C80
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, sp, #0
@@ -66487,7 +66504,7 @@ _02204CC0:
 	ldr r1, _02204CF4 ; =ov01_02204DA0
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_02050510
+	bl NowRunTask
 	add sp, #4
 	mov r0, #0
 	pop {r3, r4, r5, r6, pc}
@@ -66601,13 +66618,13 @@ _02204D98:
 ov01_02204DA0: ; 0x02204DA0
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	ldr r1, [r4]
 	cmp r1, #0
 	beq _02204DC8
@@ -66620,11 +66637,11 @@ _02204DC8:
 	ldr r1, [r5]
 	cmp r1, #0
 	beq _02204DD4
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	b _02204DDA
 _02204DD4:
 	ldr r0, [r0, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 _02204DDA:
 	mov r1, #0
 	mov r2, #1
@@ -66778,7 +66795,7 @@ ov01_02204ED8: ; 0x02204ED8
 	strh r0, [r4]
 	ldr r0, [r5, #0x10]
 	ldr r1, _02204EF8 ; =ov01_02204EFC
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02204EF8: .word ov01_02204EFC
@@ -66789,10 +66806,10 @@ ov01_02204EFC: ; 0x02204EFC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r7, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r7, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	ldr r1, [r5, #0x20]
 	add r6, r0, #0
 	ldr r1, [r1]
@@ -67054,16 +67071,16 @@ ov01_022050F8: ; 0x022050F8
 	add r2, sp, #4
 	bl sub_0205E02C
 	add r0, r4, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02205156
 	add r0, r4, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r7, r0, #0
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	add r5, r0, #0
 	add r0, r7, #0
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	add r4, r0, #0
 	ldr r0, [sp, #8]
 	cmp r0, r5
@@ -67072,15 +67089,15 @@ ov01_022050F8: ; 0x022050F8
 	cmp r0, r4
 	bne _02205156
 	add r0, r7, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	lsl r0, r0, #0x18
 	lsr r7, r0, #0x18
 	add r0, r7, #0
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	add r0, r5, r0
 	str r0, [sp, #8]
 	add r0, r7, #0
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	add r0, r4, r0
 	str r0, [sp, #4]
 _02205156:
@@ -67334,7 +67351,7 @@ ov01_02205300: ; 0x02205300
 	ldr r3, [sp, #8]
 	add r0, r4, #0
 	bl ov01_021FC00C
-	mov r0, #0x91
+	mov r0, #SEQ_SE_GS_TUREARUKI>>4
 	lsl r0, r0, #4
 	bl PlaySE
 	mov r0, #1
@@ -67627,7 +67644,7 @@ _02205538: .word ov01_02209750
 ov01_0220553C: ; 0x0220553C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205F24C
+	bl MapObject_GetID
 	cmp r0, #0xfd
 	beq _02205554
 	cmp r0, #0xfa
@@ -67639,7 +67656,7 @@ ov01_0220553C: ; 0x0220553C
 _02205554:
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	mov r1, #1
 	and r0, r1
 	pop {r4, pc}
@@ -67649,7 +67666,7 @@ _02205554:
 	thumb_func_start ov01_02205564
 ov01_02205564: ; 0x02205564
 	push {r3, lr}
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	ldr r1, _02205580 ; =0x0000019F
 	cmp r0, r1
 	blt _0220557A
@@ -67670,11 +67687,11 @@ ov01_02205584: ; 0x02205584
 	push {r3, r4, r5, lr}
 	mov r1, #1
 	add r4, r0, #0
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	add r0, r4, #0
-	bl sub_0205F24C
+	bl MapObject_GetID
 	cmp r0, #0xfd
 	beq _022055A0
 	mov r0, #0
@@ -67695,11 +67712,11 @@ ov01_022055B0: ; 0x022055B0
 	push {r3, r4, r5, lr}
 	mov r1, #1
 	add r4, r0, #0
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	add r0, r4, #0
-	bl sub_0205F24C
+	bl MapObject_GetID
 	cmp r0, #0xfd
 	beq _022055CC
 	mov r0, #0
@@ -67720,11 +67737,11 @@ ov01_022055DC: ; 0x022055DC
 	push {r3, r4, r5, lr}
 	mov r1, #1
 	add r4, r0, #0
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	add r0, r4, #0
-	bl sub_0205F24C
+	bl MapObject_GetID
 	cmp r0, #0xfd
 	beq _022055F8
 	mov r0, #0
@@ -67744,14 +67761,14 @@ ov01_02205604: ; 0x02205604
 	add r7, r0, #0
 	add r4, r1, #0
 	add r5, r2, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	add r0, r7, #0
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	str r0, [r4]
 	add r0, r7, #0
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	str r0, [r5]
 	cmp r6, #3
 	bhi _0220565C
@@ -67798,14 +67815,14 @@ ov01_02205664: ; 0x02205664
 	add r7, r0, #0
 	add r4, r1, #0
 	add r5, r2, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	add r0, r7, #0
-	bl sub_0205F8FC
+	bl MapObject_GetPrevX
 	str r0, [r4]
 	add r0, r7, #0
-	bl sub_0205F90C
+	bl MapObject_GetPrevY
 	str r0, [r5]
 	cmp r6, #3
 	bhi _022056BC
@@ -67851,13 +67868,13 @@ ov01_022056C4: ; 0x022056C4
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	add r5, r1, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	add r2, r0, #0
 	cmp r5, #5
 	bhi _02205716
@@ -67908,7 +67925,7 @@ ov01_02205720: ; 0x02205720
 	add r1, sp, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	cmp r4, #3
 	bhi _02205776
 	add r0, r4, r4
@@ -67973,16 +67990,16 @@ ov01_02205790: ; 0x02205790
 	sub sp, #0xc
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _022057BE
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r1, sp, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r6, #0
 	add r1, sp, #0
 	add r2, r4, #0
@@ -67996,7 +68013,7 @@ _022057BE:
 	thumb_func_start ov01_022057C4
 ov01_022057C4: ; 0x022057C4
 	push {r3, lr}
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	bl sub_0205F684
 	pop {r3, pc}
 	thumb_func_end ov01_022057C4
@@ -68004,7 +68021,7 @@ ov01_022057C4: ; 0x022057C4
 	thumb_func_start ov01_022057D0
 ov01_022057D0: ; 0x022057D0
 	push {r3, lr}
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	bl sub_020659B8
 	pop {r3, pc}
 	thumb_func_end ov01_022057D0
@@ -68046,13 +68063,13 @@ ov01_02205808: ; 0x02205808
 	bl sub_0205F35C
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	add r1, r0, #0
 	add r0, r7, #0
 	add r2, sp, #0
 	bl ov01_021F9744
 	add r0, r5, #0
-	bl sub_0205F24C
+	bl MapObject_GetID
 	cmp r0, #0xfd
 	beq _0220583C
 	cmp r0, #0xfa
@@ -68069,7 +68086,7 @@ _0220583C:
 	add r1, sp, #0
 	bl sub_02023EC8
 	add r0, r5, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	bl ov01_021FA44C
 	add r1, r0, #0
 	add r0, r4, #0
@@ -68121,14 +68138,14 @@ ov01_0220589C: ; 0x0220589C
 	bl MI_CpuFill8
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	lsl r0, r0, #0xf
 	lsr r0, r0, #0x10
 	bl ov01_02206088
 	add r7, r0, #0
 	add r0, r6, #0
 	bl sub_0205F35C
-	bl sub_0205F1F0
+	bl FldObjSys_GetMModelNarc
 	add r1, r7, #0
 	mov r2, #0xb
 	bl NARC_AllocAndReadWholeMember
@@ -68249,13 +68266,13 @@ ov01_022059AC: ; 0x022059AC
 	cmp r0, #0
 	bne _02205A02
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r3, r0, #0
 	ldr r0, [r5, #0x20]
 	add r1, r4, #0
@@ -68287,7 +68304,7 @@ _02205A02:
 	add r0, r5, #0
 	add r0, #0xe4
 	ldr r0, [r0]
-	bl sub_0205E3CC
+	bl MapObject_Remove
 	add r0, r5, #0
 	mov r1, #0
 	add r0, #0xfa
@@ -68306,18 +68323,18 @@ ov01_02205A34: ; 0x02205A34
 	sub sp, #0xc
 	add r4, r0, #0
 	add r5, r1, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02205A5C
 	add r0, r4, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r4, r0, #0
 	add r1, sp, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r4, #0
 	add r1, sp, #0
 	str r5, [sp, #4]
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 _02205A5C:
 	add sp, #0xc
 	pop {r4, r5, pc}
@@ -68327,13 +68344,13 @@ _02205A5C:
 ov01_02205A60: ; 0x02205A60
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	bne _02205A80
 	mov r0, #1
@@ -68355,7 +68372,7 @@ _02205A94:
 	cmp r0, #0
 	beq _02205AAA
 	add r0, r5, #0
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 	mov r0, #1
 	str r0, [r4]
 	b _02205AE6
@@ -68365,24 +68382,24 @@ _02205AAA:
 	b _02205AE6
 _02205AB0:
 	add r0, r5, #0
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	beq _02205AE6
 	add r0, r5, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _02205AE6
 	add r0, r5, #0
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _02205ACE:
 	add r0, r5, #0
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	beq _02205AE6
 	add r0, r5, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _02205AE6
 	mov r0, #1
@@ -68408,7 +68425,7 @@ ov01_02205AEC: ; 0x02205AEC
 	strb r0, [r2, #3]
 	ldr r0, [r4, #0x10]
 	ldr r1, _02205B10 ; =ov01_02205B14
-	bl sub_02050530
+	bl QueueTask
 	pop {r4, pc}
 	nop
 _02205B10: .word ov01_02205B14
@@ -68419,10 +68436,10 @@ ov01_02205B14: ; 0x02205B14
 	push {r4, r5, r6, lr}
 	sub sp, #0x30
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrb r1, [r4]
 	cmp r1, #7
@@ -68444,7 +68461,7 @@ _02205B3A: ; jump table
 	.short _02205CD0 - _02205B3A - 2 ; case 7
 _02205B4A:
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	bne _02205B60
 	add r0, r4, #0
@@ -68464,15 +68481,15 @@ _02205B60:
 	pop {r4, r5, r6, pc}
 _02205B76:
 	add r0, r5, #0
-	bl sub_02069D68
-	bl sub_0205F708
+	bl FollowingPokemon_GetMapObject
+	bl MapObject_UnpauseMovement
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
 _02205B86:
 	add r0, r5, #0
-	bl sub_02069D68
-	bl sub_02062198
+	bl FollowingPokemon_GetMapObject
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	beq _02205BD2
 	add r0, r5, #0
@@ -68487,9 +68504,9 @@ _02205BA0:
 	str r1, [sp, #0x10]
 	str r0, [sp, #0x14]
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r5, r0, #0
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	beq _02205BD2
 	ldrb r1, [r4, #3]
@@ -68499,7 +68516,7 @@ _02205BA0:
 	strb r0, [r4, #3]
 	ldr r1, [r1, r2]
 	add r0, r5, #0
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldrb r0, [r4, #3]
 	cmp r0, #2
 	bhs _02205BD4
@@ -68512,14 +68529,14 @@ _02205BD4:
 	b _02205CDA
 _02205BDC:
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r5, r0, #0
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	beq _02205CDA
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
@@ -68546,7 +68563,7 @@ _02205C14:
 	sub r1, r1, #1
 	bne _02205C14
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r6, r0, #0
 	mov r5, #2
 	ldr r0, [r4, #0x44]
@@ -68559,7 +68576,7 @@ _02205C14:
 _02205C38:
 	add r0, r6, #0
 	add r1, sp, #0x24
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldrb r2, [r4, #1]
 	add r1, sp, #8
 	ldr r0, [sp, #0x2c]
@@ -68579,7 +68596,7 @@ _02205C38:
 	add r0, r2, r0
 	str r0, [sp, #0x28]
 	add r0, r6, #0
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	ldrb r0, [r4, #1]
 	add r0, r0, #1
 	strb r0, [r4, #1]
@@ -68592,7 +68609,7 @@ _02205C38:
 	b _02205CDA
 _02205C7E:
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	mov r1, #3
 	bl ov01_0220329C
 	ldrb r0, [r4]
@@ -68649,20 +68666,20 @@ ov01_02205CF0: ; 0x02205CF0
 	add r5, r0, #0
 	ldr r0, [r5, #0x40]
 	add r4, r1, #0
-	bl sub_0205C6DC
-	bl sub_0205F914
+	bl PlayerAvatar_GetMapObject
+	bl MapObject_GetCurrentX
 	str r0, [sp]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
-	bl sub_0205F934
+	bl PlayerAvatar_GetMapObject
+	bl MapObject_GetCurrentY
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_02069D68
-	bl sub_0205F914
+	bl FollowingPokemon_GetMapObject
+	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02069D68
-	bl sub_0205F934
+	bl FollowingPokemon_GetMapObject
+	bl MapObject_GetCurrentY
 	ldr r1, [sp]
 	cmp r6, r1
 	bne _02205D38
@@ -68705,7 +68722,7 @@ _02205D60:
 ov01_02205D68: ; 0x02205D68
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	bne _02205D78
 	mov r0, #0
@@ -68731,7 +68748,7 @@ _02205D94:
 	str r0, [r2]
 	ldr r0, [r4, #0x10]
 	ldr r1, _02205DB0 ; =ov01_02205DB4
-	bl sub_02050530
+	bl QueueTask
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -68743,13 +68760,13 @@ ov01_02205DB4: ; 0x02205DB4
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #4
@@ -68768,15 +68785,15 @@ _02205DE2: ; jump table
 	.short _02205EC6 - _02205DE2 - 2 ; case 4
 _02205DEC:
 	add r0, r5, #0
-	bl sub_02069D68
-	bl sub_0205F708
+	bl FollowingPokemon_GetMapObject
+	bl MapObject_UnpauseMovement
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 _02205DFC:
 	add r0, r5, #0
-	bl sub_02069D68
-	bl sub_02062198
+	bl FollowingPokemon_GetMapObject
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	beq _02205ED2
 	ldr r0, [r4]
@@ -68785,13 +68802,13 @@ _02205DFC:
 	b _02205ED2
 _02205E12:
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	str r0, [sp]
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	bl ov01_02206088
 	add r7, r0, #0
 	ldr r0, [r5, #0x3c]
-	bl sub_0205F1F0
+	bl FldObjSys_GetMModelNarc
 	add r1, r7, #0
 	mov r2, #0xb
 	bl NARC_AllocAndReadWholeMember
@@ -68850,7 +68867,7 @@ _02205E5A:
 	add r0, r5, #0
 	bl sub_0206A054
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	mov r1, #0
 	bl sub_02069E28
 	ldr r0, [r4]
@@ -68884,7 +68901,7 @@ ov01_02205EE0: ; 0x02205EE0
 	str r0, [r2]
 	ldr r1, _02205EFC ; =ov01_02205F00
 	add r0, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r4, pc}
 	.balign 4, 0
 _02205EFC: .word ov01_02205F00
@@ -68894,13 +68911,13 @@ _02205EFC: .word ov01_02205F00
 ov01_02205F00: ; 0x02205F00
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #6
@@ -68937,11 +68954,11 @@ _02205F56:
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _02206024
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r4, #0xe4
 	ldr r1, [r4]
 	bl ov01_02206028
@@ -68953,16 +68970,16 @@ _02205F7A:
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _02206024
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
-	bl sub_0205F2A8
+	bl PlayerAvatar_GetMapObject
+	bl MapObject_GetFacingDirection
 	add r4, #0xe4
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_0205F290
+	bl MapObject_SetFacingDirection
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -68981,7 +68998,7 @@ _02205FB6:
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _02206024
 	add r0, r4, #0
@@ -68990,14 +69007,14 @@ _02205FB6:
 	mov r1, #0
 	bl sub_0206A040
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
-	bl sub_0205F2A8
+	bl PlayerAvatar_GetMapObject
+	bl MapObject_GetFacingDirection
 	mov r1, #0x34
 	bl sub_0206234C
 	add r4, #0xe4
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -69006,7 +69023,7 @@ _02205FF2:
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _02206024
 	add r0, r4, #0
@@ -69035,44 +69052,44 @@ ov01_02206028: ; 0x02206028
 	push {r3, r4, r5, r6, r7, lr}
 	str r0, [sp]
 	add r5, r1, #0
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	ldr r0, [sp]
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	sub r6, r6, r4
 	sub r4, r7, r0
 	ldr r0, [sp]
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	cmp r6, #0
 	bge _02206062
 	add r0, r5, #0
 	mov r1, #0xa
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	pop {r3, r4, r5, r6, r7, pc}
 _02206062:
 	ble _0220606E
 	add r0, r5, #0
 	mov r1, #0xb
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	pop {r3, r4, r5, r6, r7, pc}
 _0220606E:
 	cmp r4, #0
 	bge _0220607C
 	add r0, r5, #0
 	mov r1, #8
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	pop {r3, r4, r5, r6, r7, pc}
 _0220607C:
 	ble _02206086
 	add r0, r5, #0
 	mov r1, #9
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 _02206086:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov01_02206028
@@ -69080,7 +69097,7 @@ _02206086:
 	thumb_func_start ov01_02206088
 ov01_02206088: ; 0x02206088
 	push {r3, lr}
-	bl ov01_021F9304
+	bl GetMoveModelNoBySpriteId
 	cmp r0, #0
 	bge _02206098
 	bl GF_AssertFail
@@ -69095,13 +69112,13 @@ ov01_0220609C: ; 0x0220609C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _022060B4
 	add r5, #0xe4
 	ldr r0, [r5]
 	add r1, r4, #0
-	bl sub_0205F290
+	bl MapObject_SetFacingDirection
 _022060B4:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -69113,7 +69130,7 @@ ov01_022060B8: ; 0x022060B8
 	add r6, r0, #0
 	add r5, r1, #0
 	add r7, r2, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	bne _022060CC
 	mov r0, #0
@@ -69143,7 +69160,7 @@ _022060E2:
 	ldr r0, [r6, #0x10]
 	ldr r1, _02206108 ; =ov01_0220610C
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -69154,13 +69171,13 @@ _02206108: .word ov01_0220610C
 ov01_0220610C: ; 0x0220610C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #3
@@ -69180,12 +69197,12 @@ _0220613A: ; jump table
 	.short _02206250 - _0220613A - 2 ; case 3
 _02206142:
 	add r0, r6, #0
-	bl sub_02069D68
-	bl sub_0205F25C
+	bl FollowingPokemon_GetMapObject
+	bl MapObject_GetGfxID
 	bl ov01_02206088
 	add r7, r0, #0
 	ldr r0, [r6, #0x3c]
-	bl sub_0205F1F0
+	bl FldObjSys_GetMModelNarc
 	add r1, r7, #0
 	mov r2, #0xb
 	bl NARC_AllocAndReadWholeMember
@@ -69326,20 +69343,20 @@ ov01_02206268: ; 0x02206268
 	pop {r3, r4, r5, r6, r7, pc}
 _02206278:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, #0xe4
 	add r4, r0, #0
 	ldr r7, [r5]
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_0205F914
+	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	add r0, r7, #0
-	bl sub_0205F934
+	bl MapObject_GetCurrentY
 	cmp r5, r6
 	bne _022062B4
 	add r1, r4, #1
@@ -69413,20 +69430,40 @@ ov01_02206388:
 	.byte 0x60, 0x40, 0x20, 0x00
 
 ov01_0220638C: ; 0x0220638C
-	.byte 0x40, 0x60, 0x7F, 0x2E
-	.byte 0x60, 0x7F, 0x2E, 0x60, 0x7F, 0x40, 0x60, 0x7F, 0x2E, 0x40, 0x60, 0x40, 0x60, 0x6C, 0x2E, 0x60
-	.byte 0x6C, 0x2E, 0x60, 0x7F, 0x2E, 0x60, 0x7F, 0x2E, 0x60, 0x7F, 0x2E, 0x60, 0x7F, 0x2E, 0x48, 0x6C
-	.byte 0x2E, 0x60, 0x7F, 0x2E, 0x60, 0x7F, 0x40, 0x60, 0x7F, 0x2E, 0x60, 0x7F
+	.byte 0x40, 0x60, 0x7F
+	.byte 0x2E, 0x60, 0x7F
+	.byte 0x2E, 0x60, 0x7F
+	.byte 0x40, 0x60, 0x7F
+	.byte 0x2E, 0x40, 0x60
+	.byte 0x40, 0x60, 0x6C
+	.byte 0x2E, 0x60, 0x6C
+	.byte 0x2E, 0x60, 0x7F
+	.byte 0x2E, 0x60, 0x7F
+	.byte 0x2E, 0x60, 0x7F
+	.byte 0x2E, 0x60, 0x7F
+	.byte 0x2E, 0x48, 0x6C
+	.byte 0x2E, 0x60, 0x7F
+	.byte 0x2E, 0x60, 0x7F
+	.byte 0x40, 0x60, 0x7F
+	.byte 0x2E, 0x60, 0x7F
 
 ov01_022063BC: ; 0x022063BC
-	.byte 0x54, 0x08
-
-ov01_022063BE: ; 0x022063BE
-	.byte 0x01, 0x00
-	.byte 0x56, 0x08, 0x00, 0x00, 0x55, 0x08, 0x00, 0x00, 0x57, 0x08, 0x01, 0x00, 0x60, 0x08, 0x00, 0x00
-	.byte 0x5F, 0x08, 0x00, 0x00, 0x61, 0x08, 0x01, 0x00, 0x63, 0x08, 0x00, 0x00, 0x5C, 0x08, 0x00, 0x00
-	.byte 0x65, 0x08, 0x01, 0x00, 0x5D, 0x08, 0x01, 0x00, 0x5A, 0x08, 0x01, 0x00, 0x69, 0x08, 0x01, 0x00
-	.byte 0x58, 0x08, 0x01, 0x00, 0x62, 0x08, 0x00, 0x00, 0x66, 0x08, 0x00, 0x00
+	.short SEQ_SE_GS_N_SESERAGI, 0x0001
+	.short SEQ_SE_GS_N_HUUSHA, 0x0000
+	.short SEQ_SE_GS_N_UMIBE, 0x0000
+	.short SEQ_SE_GS_N_HASHIRA, 0x0001
+	.short SEQ_SE_GS_N_UZUSIO, 0x0000
+	.short SEQ_SE_GS_N_TAKI, 0x0000
+	.short SEQ_SE_GS_N_YOUGAN, 0x0001
+	.short SEQ_SE_GS_N_KANSEI, 0x0000
+	.short SEQ_SE_GS_N_KITEKI, 0x0000
+	.short SEQ_SE_GS_KABIGON_IBIKI, 0x0001
+	.short SEQ_SE_GS_N_MOTER, 0x0001
+	.short SEQ_SE_GS_N_KANE, 0x0001
+	.short SEQ_SE_GS_KYOUHUU, 0x0001
+	.short SEQ_SE_GS_N_ENGINE, 0x0001
+	.short SEQ_SE_GS_N_HUNSUI, 0x0000
+	.short SEQ_SE_GS_DENGEKIBARIA, 0x0000
 
 ov01_022063FC: ; 0x022063FC
 	.byte 0x00, 0x10, 0x00, 0x00
@@ -69441,9 +69478,8 @@ ov01_02206418: ; 0x02206418
 	.byte 0x0C, 0x00, 0x00, 0x00, 0x0E, 0x00, 0x00, 0x00
 
 ov01_02206428: ; 0x02206428
-	.byte 0x82, 0xE8, 0xC1, 0x05, 0x00, 0x00, 0x00, 0x00
-	.byte 0xC3, 0xD4, 0x05, 0x00, 0x43, 0xC0, 0xFD, 0xFF, 0xC1, 0xAE, 0x29, 0x00, 0x62, 0xE2, 0xC1, 0x05
-	.byte 0x00, 0x00, 0x00, 0x00, 0x9B, 0x20, 0x05, 0x00, 0xDA, 0x6B, 0xFC, 0xFF, 0xC1, 0x7E, 0x2C, 0x00
+	.byte 0x82, 0xE8, 0xC1, 0x05, 0x00, 0x00, 0x00, 0x00, 0xC3, 0xD4, 0x05, 0x00, 0x43, 0xC0, 0xFD, 0xFF, 0xC1, 0xAE, 0x29, 0x00
+	.byte 0x62, 0xE2, 0xC1, 0x05, 0x00, 0x00, 0x00, 0x00, 0x9B, 0x20, 0x05, 0x00, 0xDA, 0x6B, 0xFC, 0xFF, 0xC1, 0x7E, 0x2C, 0x00
 
 ov01_02206450:
 	.word ov01_02209820
@@ -69453,55 +69489,26 @@ ov01_02206450:
 	.word ov01_02209880
 
 ov01_02206464:
-	.byte 0x62, 0xE5, 0x00, 0x00
-
-ov01_02206468: ; 0x02206468
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x40, 0xF9, 0xFF
-
-ov01_02206474: ; 0x02206474
-	.byte 0x18, 0x00, 0x00, 0x00
+	.byte 0x62, 0xE5, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0xF9, 0xFF, 0x18, 0x00, 0x00, 0x00
 
 ov01_02206478: ; 0x02206478
-	.byte 0xC1, 0xAE, 0x29, 0x00, 0x62, 0xDD, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05, 0x00, 0x60, 0x09, 0x00, 0x00, 0x00, 0x4B, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x5C, 0x46, 0x19, 0x00
-	.byte 0x83, 0xE3, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x81, 0x09, 0x00, 0x60, 0x08, 0x00
-	.byte 0x00, 0x00, 0x4B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0x02, 0x00, 0x00, 0x10, 0xFF, 0xFF
-	.byte 0xC1, 0xAE, 0x29, 0x00, 0xC2, 0xE3, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05
-	.byte 0x00, 0x60, 0x09, 0x00, 0x00, 0x00, 0x4B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0xC1, 0xAE, 0x29, 0x00, 0x42, 0xF2, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0xC1, 0x05, 0x00, 0x60, 0x09, 0x00, 0x00, 0x00, 0x4B, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0xC5, 0xE9, 0x01, 0x00, 0x37, 0x3F, 0xFF, 0xFF, 0x9B, 0xB8, 0x61, 0x00, 0x82, 0xDC, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x81, 0x02, 0x00, 0x60, 0x09, 0x00, 0x00, 0x70, 0x6C, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF6, 0x19, 0x1D, 0x00
-	.byte 0xA2, 0xDD, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x81, 0x08, 0x00, 0x60, 0x09, 0x00
-	.byte 0x00, 0x80, 0x48, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xFE, 0xFF
-	.byte 0xC1, 0xAE, 0x29, 0x00, 0xE2, 0xDF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05
-	.byte 0x00, 0x60, 0x09, 0x00, 0x00, 0xC0, 0x5D, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0xC1, 0xAE, 0x29, 0x00, 0xE2, 0xE1, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0xC1, 0x05, 0x00, 0x60, 0x09, 0x00, 0x00, 0x00, 0x4B, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x5B, 0x7C, 0x01, 0x00, 0xE2, 0x95, 0xFE, 0xFF, 0x4C, 0x37, 0x20, 0x00, 0x22, 0xD9, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x70, 0x07, 0x00, 0x60, 0x09, 0x00, 0x00, 0x40, 0x38, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0xBE, 0x29, 0x00
-	.byte 0x82, 0xD5, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05, 0x00, 0x60, 0x09, 0x00
-	.byte 0x00, 0x00, 0x4B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x05, 0xC8, 0x13, 0x00, 0x42, 0xDF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x81, 0x0C
-	.byte 0x00, 0x60, 0x09, 0x00, 0x00, 0x40, 0x6A, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF1, 0xC5, 0x00, 0x00
-	.byte 0x8C, 0xA3, 0xFD, 0xFF, 0x29, 0x5C, 0x21, 0x00, 0xC2, 0xE3, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x41, 0x07, 0x00, 0x60, 0x09, 0x00, 0x00, 0x00, 0x4B, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x80, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xC1, 0xAE, 0x29, 0x00, 0xE2, 0xDF, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05, 0x00, 0x60, 0x09, 0x00, 0x00, 0x40, 0x6A, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFE, 0xFF, 0xC1, 0xAE, 0x29, 0x00
-	.byte 0x42, 0xF2, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05, 0x00, 0x60, 0x09, 0x00
-	.byte 0x00, 0x40, 0x6A, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC5, 0xE9, 0x01, 0x00, 0x37, 0x1F, 0xFE, 0xFF
-	.byte 0xC1, 0xAE, 0x29, 0x00, 0xC2, 0xD4, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05
-	.byte 0x00, 0x60, 0x09, 0x00, 0x00, 0x00, 0x4B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x9B, 0xB8, 0x61, 0x00, 0x82, 0xDC, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x01, 0x00, 0x81, 0x02, 0x00, 0x60, 0x09, 0x00, 0x00, 0x70, 0x6C, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0xFD, 0xFF, 0xC1, 0xAE, 0x29, 0x00, 0x02, 0xD6, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05, 0x00, 0x60, 0x09, 0x00, 0x00, 0x40, 0x38, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0xC1, 0xAE, 0x29, 0x00, 0x62, 0xDD, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05, 0x00, 0x60, 0x09, 0x00, 0x00, 0x00, 0x4B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x5C, 0x46, 0x19, 0x00, 0x83, 0xE3, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x81, 0x09, 0x00, 0x60, 0x08, 0x00, 0x00, 0x00, 0x4B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0x02, 0x00, 0x00, 0x10, 0xFF, 0xFF
+	.byte 0xC1, 0xAE, 0x29, 0x00, 0xC2, 0xE3, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05, 0x00, 0x60, 0x09, 0x00, 0x00, 0x00, 0x4B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0xC1, 0xAE, 0x29, 0x00, 0x42, 0xF2, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05, 0x00, 0x60, 0x09, 0x00, 0x00, 0x00, 0x4B, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC5, 0xE9, 0x01, 0x00, 0x37, 0x3F, 0xFF, 0xFF
+	.byte 0x9B, 0xB8, 0x61, 0x00, 0x82, 0xDC, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x81, 0x02, 0x00, 0x60, 0x09, 0x00, 0x00, 0x70, 0x6C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0xF6, 0x19, 0x1D, 0x00, 0xA2, 0xDD, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x81, 0x08, 0x00, 0x60, 0x09, 0x00, 0x00, 0x80, 0x48, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xFE, 0xFF
+	.byte 0xC1, 0xAE, 0x29, 0x00, 0xE2, 0xDF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05, 0x00, 0x60, 0x09, 0x00, 0x00, 0xC0, 0x5D, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0xC1, 0xAE, 0x29, 0x00, 0xE2, 0xE1, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05, 0x00, 0x60, 0x09, 0x00, 0x00, 0x00, 0x4B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x5B, 0x7C, 0x01, 0x00, 0xE2, 0x95, 0xFE, 0xFF
+	.byte 0x4C, 0x37, 0x20, 0x00, 0x22, 0xD9, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x70, 0x07, 0x00, 0x60, 0x09, 0x00, 0x00, 0x40, 0x38, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0xC1, 0xBE, 0x29, 0x00, 0x82, 0xD5, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05, 0x00, 0x60, 0x09, 0x00, 0x00, 0x00, 0x4B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x05, 0xC8, 0x13, 0x00, 0x42, 0xDF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x81, 0x0C, 0x00, 0x60, 0x09, 0x00, 0x00, 0x40, 0x6A, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF1, 0xC5, 0x00, 0x00, 0x8C, 0xA3, 0xFD, 0xFF
+	.byte 0x29, 0x5C, 0x21, 0x00, 0xC2, 0xE3, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x41, 0x07, 0x00, 0x60, 0x09, 0x00, 0x00, 0x00, 0x4B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00
+	.byte 0xC1, 0xAE, 0x29, 0x00, 0xE2, 0xDF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05, 0x00, 0x60, 0x09, 0x00, 0x00, 0x40, 0x6A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFE, 0xFF
+	.byte 0xC1, 0xAE, 0x29, 0x00, 0x42, 0xF2, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05, 0x00, 0x60, 0x09, 0x00, 0x00, 0x40, 0x6A, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC5, 0xE9, 0x01, 0x00, 0x37, 0x1F, 0xFE, 0xFF
+	.byte 0xC1, 0xAE, 0x29, 0x00, 0xC2, 0xD4, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05, 0x00, 0x60, 0x09, 0x00, 0x00, 0x00, 0x4B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x9B, 0xB8, 0x61, 0x00, 0x82, 0xDC, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x81, 0x02, 0x00, 0x60, 0x09, 0x00, 0x00, 0x70, 0x6C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0xFD, 0xFF
+	.byte 0xC1, 0xAE, 0x29, 0x00, 0x02, 0xD6, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05, 0x00, 0x60, 0x09, 0x00, 0x00, 0x40, 0x38, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
 ov01_022066DC: ; 0x022066DC
 	.word ov01_021F6894, 0x00000000, ov01_021F68B8, ov01_021F68C0
@@ -69512,12 +69519,10 @@ ov01_022066DC: ; 0x022066DC
 	.word ov01_021EAF98, 0x00000000, ov01_021EAFB4, ov01_021EAFD0
 
 ov01_0220673C: ; 0x0220673C
-	.byte 0x10, 0x00, 0x00, 0x00
-	.byte 0x20, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00
+	.word 16, 32, 16, 10
 
 ov01_0220674C: ; 0x0220674C
-	.byte 0x02, 0x00, 0x00, 0x00
-	.byte 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
+	.word 2, 2, 2, 2
 
 ov01_0220675C: ; 0x0220675C
 	.byte 0x15, 0x00, 0x00, 0x00
@@ -69530,7 +69535,10 @@ ov01_0220675C: ; 0x0220675C
 	.byte 0x30, 0x00, 0x00, 0x00, 0x32, 0x00, 0x00, 0x00
 
 ov01_022067C8: ; 0x022067C8
-	.byte 0xF0, 0x02, 0xD3, 0x00, 0x1E, 0x00, 0xB3, 0x01
+	.short 0x02F0 ; NARC_msg_msg_0752_bin
+	.short 0x00D3 ; NARC_msg_msg_0211_bin
+	.short 0x001E ; NARC_msg_msg_0030_bin
+	.short 0x01B3 ; NARC_msg_msg_0435_bin
 	.byte 0xFF, 0xFB, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00
 
 ov01_022067E0: ; 0x022067E0
@@ -69747,12 +69755,12 @@ ov01_02206BE4: ; 0x02206BE4
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00
 
 ov01_02206C08: ; 0x02206C08
-	.byte 0x96, 0x01, 0x5E, 0x01, 0x8C, 0x01, 0x99, 0x01
-	.byte 0x9A, 0x01, 0x9B, 0x01, 0x9C, 0x01, 0x9D, 0x01, 0x93, 0x01, 0x94, 0x01, 0x54, 0x00, 0x55, 0x00
-	.byte 0x56, 0x00, 0x57, 0x00, 0x06, 0x01, 0x7D, 0x01, 0x1F, 0x01, 0x7B, 0x01, 0x8D, 0x01, 0x8E, 0x01
-	.byte 0x8F, 0x01, 0x90, 0x01, 0x91, 0x01, 0x92, 0x01, 0x20, 0x01, 0xB7, 0x00, 0x21, 0x01, 0x22, 0x01
-	.byte 0x23, 0x01, 0x24, 0x01, 0x5D, 0x01, 0x78, 0x01, 0xD2, 0x00, 0x7C, 0x01, 0xEA, 0x00, 0x06, 0x01
-	.byte 0xFB, 0x00, 0xFC, 0x00, 0xFD, 0x00, 0xFE, 0x00, 0xFF, 0x00, 0x00, 0x01, 0x01, 0x01, 0x00, 0x00
+	.short 0x0196, 0x015E, 0x018C, 0x0199
+	.short 0x019A, 0x019B, 0x019C, 0x019D, 0x0193, 0x0194, 0x0054, 0x0055
+	.short 0x0056, 0x0057, 0x0106, 0x017D, 0x011F, 0x017B, 0x018D, 0x018E
+	.short 0x018F, 0x0190, 0x0191, 0x0192, 0x0120, 0x00B7, 0x0121, 0x0122
+	.short 0x0123, 0x0124, 0x015D, 0x0178, 0x00D2, 0x017C, 0x00EA, 0x0106
+	.short 0x00FB, 0x00FC, 0x00FD, 0x00FE, 0x00FF, 0x0100, 0x0101, 0x0000
 
 ov01_02206C60: ; 0x02206C60
 	.word ov27_02259F80, ov27_0225A19C, ov27_0225A2C8, 0xFFFFFFFF
@@ -69769,8 +69777,8 @@ ov01_02206CF0: ; 0x02206CF0
 	.byte 0x00, 0x00, 0x00, 0x00, 0x15, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00
 
 ov01_02206D00: ; 0x02206D00
-	.byte 0x91, 0x08, 0x11, 0x09, 0x12, 0x00, 0x00, 0x00, 0x02, 0x00, 0x01, 0x00, 0x01, 0x08, 0x11, 0x08
-	.byte 0x21, 0x08, 0x00, 0x00
+	.short 0x0891, 0x0911, 0x0012, 0x0000, 0x0002, 0x0001, 0x0801, 0x0811
+	.short 0x0821, 0x0000
 
 ov01_02206D14:
 	.word ov01_021F7478
@@ -70029,23 +70037,51 @@ ov01_02207260: ; 0x02207260
 
 	.public ov01_02207274
 ov01_02207274:
-	.byte 0x06, 0x01, 0x00, 0x00, 0x07, 0x01, 0x00, 0x00, 0x08, 0x01, 0x00, 0x00
-	.byte 0x09, 0x01, 0x00, 0x00, 0x0A, 0x01, 0x00, 0x00, 0x0B, 0x01, 0x00, 0x00, 0x0C, 0x01, 0x00, 0x00
-	.byte 0x0D, 0x01, 0x00, 0x00
+	.word 0x00000106
+	.word 0x00000107
+	.word 0x00000108
+	.word 0x00000109
+	.word 0x0000010A
+	.word 0x0000010B
+	.word 0x0000010C
+	.word 0x0000010D
 
 ov01_02207294: ; 0x02207294
-	.byte 0x00, 0x00, 0x0A, 0x01, 0x01, 0x00, 0x0B, 0x01, 0x02, 0x00, 0x0C, 0x01
-	.byte 0x05, 0x00, 0x0D, 0x01, 0x06, 0x00, 0x0E, 0x01, 0x0B, 0x00, 0x0F, 0x01, 0x07, 0x00, 0x10, 0x01
-	.byte 0x08, 0x00, 0x11, 0x01, 0x09, 0x00, 0x12, 0x01, 0x0A, 0x00, 0x0D, 0x01, 0x0C, 0x00, 0x14, 0x01
-	.byte 0x0D, 0x00, 0x16, 0x01, 0x0F, 0x00, 0x17, 0x01, 0xFF, 0x00, 0x00, 0x00
+	.short 0x0000, 0x010A
+	.short 0x0001, 0x010B
+	.short 0x0002, 0x010C
+	.short 0x0005, 0x010D
+	.short 0x0006, 0x010E
+	.short 0x000B, 0x010F
+	.short 0x0007, 0x0110
+	.short 0x0008, 0x0111
+	.short 0x0009, 0x0112
+	.short 0x000A, 0x010D
+	.short 0x000C, 0x0114
+	.short 0x000D, 0x0116
+	.short 0x000F, 0x0117
+	.short 0x00FF, 0x0000
 
 ov01_022072CC: ; 0x022072CC
-	.byte 0x00, 0x00, 0x18, 0x01
-	.byte 0x01, 0x00, 0x19, 0x01, 0x03, 0x00, 0x1A, 0x01, 0x04, 0x00, 0x1B, 0x01, 0x05, 0x00, 0x1C, 0x01
-	.byte 0x06, 0x00, 0x1D, 0x01, 0x0A, 0x00, 0x1E, 0x01, 0x17, 0x00, 0x1F, 0x01, 0x0B, 0x00, 0x20, 0x01
-	.byte 0x0D, 0x00, 0x21, 0x01, 0x0E, 0x00, 0x22, 0x01, 0x0F, 0x00, 0x23, 0x01, 0x15, 0x00, 0x24, 0x01
-	.byte 0x16, 0x00, 0x24, 0x01, 0x18, 0x00, 0x25, 0x01, 0x1A, 0x00, 0x26, 0x01, 0x1B, 0x00, 0x27, 0x01
-	.byte 0x1C, 0x00, 0x28, 0x01, 0xFF, 0x00, 0x00, 0x00
+	.short 0x0000, 0x0118
+	.short 0x0001, 0x0119
+	.short 0x0003, 0x011A
+	.short 0x0004, 0x011B
+	.short 0x0005, 0x011C
+	.short 0x0006, 0x011D
+	.short 0x000A, 0x011E
+	.short 0x0017, 0x011F
+	.short 0x000B, 0x0120
+	.short 0x000D, 0x0121
+	.short 0x000E, 0x0122
+	.short 0x000F, 0x0123
+	.short 0x0015, 0x0124
+	.short 0x0016, 0x0124
+	.short 0x0018, 0x0125
+	.short 0x001A, 0x0126
+	.short 0x001B, 0x0127
+	.short 0x001C, 0x0128
+	.short 0x00FF, 0x0000
 
 ov01_02207318: ; 0x02207318
 	.byte 0x00, 0x00, 0x00, 0x00
@@ -70098,361 +70134,937 @@ ov01_02207318: ; 0x02207318
 	.word ov01_022070D8
 
 ov01_022073D8: ; 0x022073D8
-	.byte 0xB7, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFD, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFB, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFC, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x23, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x24, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x21, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x000000B7
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x00000100
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x00000101
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x000000FD
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x000000FB
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x000000FC
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x000000FE
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x000000FF
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x00000120
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x00000123
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x00000124
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x00000121
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x0000FFFF
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
 ov01_022074A8: ; 0x022074A8
-	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00
-	.byte 0x01, 0x00, 0x00, 0x00, 0x03, 0x00, 0x02, 0x00, 0x00, 0x00, 0x04, 0x00, 0x03, 0x00, 0x00, 0x00
-	.byte 0x05, 0x00, 0x04, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x00, 0x00, 0x00, 0x07, 0x00, 0x06, 0x00
-	.byte 0x00, 0x00, 0x08, 0x00, 0x07, 0x00, 0x00, 0x00, 0x09, 0x00, 0x08, 0x00, 0x00, 0x00, 0x0A, 0x00
-	.byte 0x09, 0x00, 0x00, 0x00, 0x0B, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x0C, 0x00, 0x0C, 0x00, 0x00, 0x00
-	.byte 0x0D, 0x00, 0x0D, 0x00, 0x00, 0x00, 0x0E, 0x00, 0x0E, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x10, 0x00
-	.byte 0x00, 0x00, 0x10, 0x00, 0x11, 0x00, 0x00, 0x00, 0x11, 0x00, 0x12, 0x00, 0x00, 0x00, 0x12, 0x00
-	.byte 0x13, 0x00, 0x00, 0x00, 0x13, 0x00, 0x22, 0x00, 0x00, 0x00, 0x14, 0x00, 0x23, 0x00, 0x00, 0x00
-	.byte 0x15, 0x00, 0x47, 0x00, 0x81, 0x18, 0x16, 0x00, 0x1F, 0x00, 0x00, 0x00, 0x17, 0x00, 0x20, 0x00
-	.byte 0x00, 0x00, 0x18, 0x00, 0x17, 0x00, 0x00, 0x00, 0x19, 0x00, 0x18, 0x00, 0x00, 0x00, 0x1D, 0x00
-	.byte 0x19, 0x00, 0x00, 0x00, 0x1E, 0x00, 0x1A, 0x00, 0x00, 0x00, 0x1F, 0x00, 0x24, 0x00, 0x00, 0x00
-	.byte 0x21, 0x00, 0x16, 0x00, 0x00, 0x00, 0x22, 0x00, 0x25, 0x00, 0x00, 0x00, 0x23, 0x00, 0x26, 0x00
-	.byte 0x00, 0x00, 0x24, 0x00, 0x27, 0x00, 0x00, 0x00, 0x25, 0x00, 0x28, 0x00, 0x00, 0x00, 0x26, 0x00
-	.byte 0x14, 0x00, 0x01, 0x00, 0x27, 0x00, 0x15, 0x00, 0x01, 0x00, 0x28, 0x00, 0x29, 0x00, 0x00, 0x00
-	.byte 0x29, 0x00, 0x2A, 0x00, 0x00, 0x00, 0x2A, 0x00, 0x2B, 0x00, 0x00, 0x00, 0x2B, 0x00, 0x2C, 0x00
-	.byte 0x00, 0x00, 0x2C, 0x00, 0x2D, 0x00, 0x00, 0x00, 0x2D, 0x00, 0x2E, 0x00, 0x00, 0x00, 0x32, 0x00
-	.byte 0x2F, 0x00, 0x00, 0x00, 0x33, 0x00, 0x30, 0x00, 0x00, 0x00, 0x34, 0x00, 0x31, 0x00, 0x00, 0x00
-	.byte 0x35, 0x00, 0x32, 0x00, 0x00, 0x00, 0x36, 0x00, 0x33, 0x00, 0x00, 0x00, 0x37, 0x00, 0x34, 0x00
-	.byte 0x00, 0x00, 0x38, 0x00, 0x35, 0x00, 0x00, 0x00, 0x3B, 0x00, 0x1D, 0x00, 0x00, 0x00, 0x3C, 0x00
-	.byte 0x1E, 0x00, 0x00, 0x00, 0x3E, 0x00, 0x1B, 0x00, 0x00, 0x00, 0x3F, 0x00, 0x1C, 0x00, 0x00, 0x00
-	.byte 0x44, 0x00, 0x0B, 0x00, 0x00, 0x00, 0x45, 0x00, 0x0F, 0x00, 0x00, 0x00, 0x46, 0x00, 0x21, 0x00
-	.byte 0x00, 0x00, 0x47, 0x00, 0x44, 0x00, 0x00, 0x00, 0x54, 0x00, 0x5B, 0x00, 0x20, 0x04, 0x55, 0x00
-	.byte 0x5C, 0x00, 0x20, 0x08, 0x56, 0x00, 0x5D, 0x00, 0x20, 0x00, 0x57, 0x00, 0x5E, 0x00, 0x20, 0x04
-	.byte 0x61, 0x00, 0x46, 0x00, 0x60, 0x1C, 0x62, 0x00, 0x48, 0x00, 0x81, 0x18, 0x63, 0x00, 0x36, 0x00
-	.byte 0x00, 0x00, 0x8D, 0x00, 0x3E, 0x00, 0x00, 0x00, 0x8E, 0x00, 0x3F, 0x00, 0x00, 0x00, 0x8F, 0x00
-	.byte 0x40, 0x00, 0x00, 0x00, 0x90, 0x00, 0x41, 0x00, 0x00, 0x00, 0x91, 0x00, 0x42, 0x00, 0x00, 0x00
-	.byte 0x92, 0x00, 0x43, 0x00, 0x00, 0x00, 0x94, 0x00, 0x3A, 0x00, 0x00, 0x00, 0xA8, 0x00, 0x39, 0x00
-	.byte 0x00, 0x00, 0xA9, 0x00, 0x3D, 0x00, 0x00, 0x00, 0xAF, 0x00, 0x37, 0x00, 0x00, 0x00, 0xB0, 0x00
-	.byte 0x4B, 0x00, 0xA0, 0x20, 0xB1, 0x00, 0x4C, 0x00, 0xA0, 0x20, 0xB4, 0x00, 0x4D, 0x00, 0xC0, 0x28
-	.byte 0xB5, 0x00, 0x4E, 0x00, 0xC0, 0x28, 0xB2, 0x00, 0x49, 0x00, 0xE0, 0x24, 0xB3, 0x00, 0x4A, 0x00
-	.byte 0xE0, 0x24, 0xB7, 0x00, 0x00, 0x00, 0xE2, 0xFD, 0xBC, 0x00, 0x4F, 0x00, 0x00, 0x2D, 0xBD, 0x00
-	.byte 0x50, 0x00, 0x00, 0x2D, 0xF8, 0x00, 0x51, 0x00, 0x20, 0x31, 0xF9, 0x00, 0x52, 0x00, 0x20, 0x31
-	.byte 0xC1, 0x00, 0x38, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x03, 0xFC, 0xC4, 0x00, 0x55, 0x00
-	.byte 0x60, 0x3D, 0xC5, 0x00, 0x56, 0x00, 0x60, 0x3D, 0xC6, 0x00, 0x57, 0x00, 0xA0, 0x40, 0xC7, 0x00
-	.byte 0x58, 0x00, 0xA0, 0x40, 0xC8, 0x00, 0x59, 0x00, 0x40, 0x35, 0xC9, 0x00, 0x5A, 0x00, 0x40, 0x35
-	.byte 0xD3, 0x00, 0xAA, 0x00, 0x00, 0x00, 0xDA, 0x00, 0xAB, 0x00, 0x00, 0x00, 0xDB, 0x00, 0x53, 0x00
-	.byte 0x00, 0x00, 0xDC, 0x00, 0xAC, 0x00, 0x00, 0x00, 0xDD, 0x00, 0xAD, 0x00, 0x00, 0x00, 0xDE, 0x00
-	.byte 0xAE, 0x00, 0x00, 0x00, 0xDF, 0x00, 0xAF, 0x00, 0x00, 0x00, 0xE0, 0x00, 0xB0, 0x00, 0x00, 0x00
-	.byte 0x25, 0x01, 0xF4, 0x00, 0x00, 0x00, 0x26, 0x01, 0xF5, 0x00, 0x00, 0x00, 0xE1, 0x00, 0xB1, 0x00
-	.byte 0x00, 0x00, 0xE3, 0x00, 0xB2, 0x00, 0x00, 0x00, 0xE5, 0x00, 0xB3, 0x00, 0x00, 0x00, 0xE8, 0x00
-	.byte 0xB4, 0x00, 0x00, 0x00, 0xEB, 0x00, 0xB5, 0x00, 0x00, 0x00, 0xEC, 0x00, 0xB6, 0x00, 0x00, 0x00
-	.byte 0xED, 0x00, 0xB7, 0x00, 0x00, 0x00, 0xEE, 0x00, 0xD5, 0x00, 0x60, 0x1C, 0xEF, 0x00, 0xD6, 0x00
-	.byte 0x60, 0x1C, 0xFA, 0x00, 0x54, 0x00, 0x00, 0x0C, 0xFB, 0x00, 0x00, 0x00, 0xE4, 0xFD, 0xFC, 0x00
-	.byte 0x00, 0x00, 0xE4, 0xFD, 0xFD, 0x00, 0x00, 0x00, 0xE4, 0xFD, 0xFE, 0x00, 0x00, 0x00, 0xE4, 0xFD
-	.byte 0xFF, 0x00, 0x00, 0x00, 0xE4, 0xFD, 0x00, 0x01, 0x00, 0x00, 0xE4, 0xFD, 0x01, 0x01, 0x00, 0x00
-	.byte 0xE4, 0xFD, 0x20, 0x01, 0x00, 0x00, 0xE4, 0xFD, 0x21, 0x01, 0x00, 0x00, 0xE4, 0xFD, 0x22, 0x01
-	.byte 0x70, 0x00, 0x25, 0x10, 0x23, 0x01, 0x00, 0x00, 0xE4, 0xFD, 0x24, 0x01, 0x00, 0x00, 0xE4, 0xFD
-	.byte 0x27, 0x01, 0xF6, 0x00, 0x60, 0x1C, 0x28, 0x01, 0xF7, 0x00, 0x60, 0x1C, 0x3B, 0x01, 0x71, 0x00
-	.byte 0x00, 0x00, 0x3C, 0x01, 0x72, 0x00, 0x00, 0x00, 0x3D, 0x01, 0x73, 0x00, 0x00, 0x00, 0x3E, 0x01
-	.byte 0x74, 0x00, 0x00, 0x00, 0x3F, 0x01, 0x75, 0x00, 0x00, 0x00, 0x40, 0x01, 0x76, 0x00, 0x00, 0x00
-	.byte 0x41, 0x01, 0x77, 0x00, 0x00, 0x00, 0x42, 0x01, 0x78, 0x00, 0x00, 0x00, 0x43, 0x01, 0x79, 0x00
-	.byte 0x00, 0x00, 0x44, 0x01, 0x7A, 0x00, 0x00, 0x00, 0x45, 0x01, 0x7B, 0x00, 0x00, 0x00, 0x46, 0x01
-	.byte 0x7C, 0x00, 0x00, 0x00, 0x47, 0x01, 0x7D, 0x00, 0x00, 0x00, 0x48, 0x01, 0x7E, 0x00, 0x00, 0x00
-	.byte 0x49, 0x01, 0x7F, 0x00, 0x00, 0x00, 0x4A, 0x01, 0x80, 0x00, 0x00, 0x00, 0x4B, 0x01, 0x81, 0x00
-	.byte 0x00, 0x00, 0x4C, 0x01, 0x82, 0x00, 0x00, 0x00, 0x4D, 0x01, 0x83, 0x00, 0x00, 0x00, 0x4E, 0x01
-	.byte 0x84, 0x00, 0x00, 0x00, 0x4F, 0x01, 0x85, 0x00, 0x80, 0x15, 0x50, 0x01, 0x86, 0x00, 0x00, 0x00
-	.byte 0x51, 0x01, 0x87, 0x00, 0x00, 0x00, 0x52, 0x01, 0x88, 0x00, 0x00, 0x00, 0x55, 0x01, 0x89, 0x00
-	.byte 0x00, 0x00, 0x56, 0x01, 0x8A, 0x00, 0x00, 0x00, 0x57, 0x01, 0x8B, 0x00, 0x00, 0x00, 0x58, 0x01
-	.byte 0x8C, 0x00, 0x00, 0x00, 0x59, 0x01, 0x8D, 0x00, 0x00, 0x00, 0x5A, 0x01, 0x8E, 0x00, 0x00, 0x00
-	.byte 0x5B, 0x01, 0x8F, 0x00, 0x00, 0x00, 0x5C, 0x01, 0x90, 0x00, 0x00, 0x00, 0x5F, 0x01, 0x91, 0x00
-	.byte 0x00, 0x00, 0x60, 0x01, 0x92, 0x00, 0x00, 0x00, 0x61, 0x01, 0x93, 0x00, 0x00, 0x00, 0x62, 0x01
-	.byte 0x94, 0x00, 0x00, 0x00, 0x63, 0x01, 0x95, 0x00, 0x00, 0x00, 0x64, 0x01, 0x96, 0x00, 0x00, 0x00
-	.byte 0x65, 0x01, 0x97, 0x00, 0x00, 0x00, 0x66, 0x01, 0x98, 0x00, 0x00, 0x00, 0x67, 0x01, 0x99, 0x00
-	.byte 0x00, 0x00, 0x68, 0x01, 0x9A, 0x00, 0x00, 0x00, 0x69, 0x01, 0x9B, 0x00, 0x00, 0x00, 0x6A, 0x01
-	.byte 0x9C, 0x00, 0x00, 0x00, 0x6B, 0x01, 0x9D, 0x00, 0x00, 0x00, 0x6C, 0x01, 0x9E, 0x00, 0x00, 0x00
-	.byte 0x6D, 0x01, 0x9F, 0x00, 0x00, 0x00, 0x6E, 0x01, 0xA0, 0x00, 0x00, 0x00, 0x6F, 0x01, 0xA1, 0x00
-	.byte 0x00, 0x00, 0x70, 0x01, 0xA2, 0x00, 0x00, 0x00, 0x71, 0x01, 0xA3, 0x00, 0x00, 0x00, 0x72, 0x01
-	.byte 0xA4, 0x00, 0x00, 0x00, 0x73, 0x01, 0xA5, 0x00, 0x00, 0x00, 0x74, 0x01, 0xA6, 0x00, 0x00, 0x00
-	.byte 0x75, 0x01, 0xA7, 0x00, 0x00, 0x00, 0x76, 0x01, 0xA8, 0x00, 0x00, 0x00, 0x77, 0x01, 0xA9, 0x00
-	.byte 0x00, 0x00, 0x79, 0x01, 0xB8, 0x00, 0x00, 0x00, 0x7A, 0x01, 0xB9, 0x00, 0x00, 0x00, 0x7D, 0x01
-	.byte 0xBA, 0x00, 0x00, 0x00, 0x7E, 0x01, 0xBB, 0x00, 0x00, 0x00, 0x7F, 0x01, 0xBC, 0x00, 0x00, 0x00
-	.byte 0x80, 0x01, 0xBD, 0x00, 0x00, 0x00, 0x85, 0x01, 0xBE, 0x00, 0x00, 0x00, 0x88, 0x01, 0xBF, 0x00
-	.byte 0x00, 0x00, 0x89, 0x01, 0xC0, 0x00, 0x00, 0x00, 0x8A, 0x01, 0xC1, 0x00, 0x00, 0x00, 0x8B, 0x01
-	.byte 0xC2, 0x00, 0x06, 0x5C, 0x96, 0x01, 0xC3, 0x00, 0x06, 0x00, 0x99, 0x01, 0xC8, 0x00, 0x00, 0x00
-	.byte 0x9A, 0x01, 0xC6, 0x00, 0x00, 0x00, 0x9B, 0x01, 0xC5, 0x00, 0x00, 0x00, 0x9C, 0x01, 0xC7, 0x00
-	.byte 0x00, 0x00, 0x9D, 0x01, 0xC4, 0x00, 0x00, 0x00, 0x5D, 0x01, 0xF3, 0x00, 0x00, 0x5C, 0xEA, 0x00
-	.byte 0xF2, 0x00, 0x24, 0x00, 0x5E, 0x01, 0xE5, 0x00, 0x24, 0x00, 0x78, 0x01, 0xE6, 0x00, 0x24, 0x00
-	.byte 0x7B, 0x01, 0xE7, 0x00, 0x24, 0x00, 0xD2, 0x00, 0xEF, 0x00, 0x24, 0x5C, 0x8C, 0x01, 0xF1, 0x00
-	.byte 0x24, 0x5C, 0x8D, 0x01, 0xF0, 0x00, 0x24, 0x00, 0x8E, 0x01, 0xED, 0x00, 0x24, 0x00, 0x8F, 0x01
-	.byte 0xEA, 0x00, 0x24, 0x00, 0x90, 0x01, 0xEB, 0x00, 0x24, 0x5C, 0x91, 0x01, 0xEC, 0x00, 0x24, 0x00
-	.byte 0x92, 0x01, 0xEE, 0x00, 0x24, 0x00, 0x93, 0x01, 0xE8, 0x00, 0x24, 0x00, 0x94, 0x01, 0xE9, 0x00
-	.byte 0x24, 0x00, 0xAC, 0x01, 0x29, 0x01, 0x27, 0x4E, 0xAD, 0x01, 0x2A, 0x01, 0x27, 0x4E, 0xAE, 0x01
-	.byte 0x2B, 0x01, 0x27, 0x4E, 0xB0, 0x01, 0x2D, 0x01, 0x27, 0x4E, 0xB1, 0x01, 0x2E, 0x01, 0x27, 0x4E
-	.byte 0xB2, 0x01, 0x2F, 0x01, 0x27, 0x4E, 0xB3, 0x01, 0x30, 0x01, 0x27, 0x4E, 0xB4, 0x01, 0x31, 0x01
-	.byte 0x27, 0x4E, 0xB5, 0x01, 0x32, 0x01, 0x27, 0x4E, 0xB6, 0x01, 0x33, 0x01, 0x27, 0x4E, 0xB7, 0x01
-	.byte 0x34, 0x01, 0x27, 0x4E, 0xB8, 0x01, 0x35, 0x01, 0x27, 0x4E, 0xB9, 0x01, 0x36, 0x01, 0x27, 0x4E
-	.byte 0xBA, 0x01, 0x37, 0x01, 0x27, 0x4E, 0xBB, 0x01, 0x38, 0x01, 0x27, 0x4E, 0xBC, 0x01, 0x39, 0x01
-	.byte 0x27, 0x4E, 0xBD, 0x01, 0x3A, 0x01, 0x27, 0x4E, 0xBE, 0x01, 0x3B, 0x01, 0x27, 0x4E, 0xBF, 0x01
-	.byte 0x3C, 0x01, 0x27, 0x4E, 0xC0, 0x01, 0x3D, 0x01, 0x27, 0x4E, 0xC1, 0x01, 0x3E, 0x01, 0x27, 0x4E
-	.byte 0xC2, 0x01, 0x3F, 0x01, 0x27, 0x4E, 0xC3, 0x01, 0x40, 0x01, 0x27, 0x4E, 0xC4, 0x01, 0x41, 0x01
-	.byte 0x27, 0x4E, 0xC5, 0x01, 0x42, 0x01, 0x27, 0x4E, 0xC7, 0x01, 0x44, 0x01, 0x27, 0x4E, 0xC8, 0x01
-	.byte 0x45, 0x01, 0x27, 0x4E, 0xC9, 0x01, 0x46, 0x01, 0x27, 0x4E, 0xCA, 0x01, 0x47, 0x01, 0x27, 0x4E
-	.byte 0xCB, 0x01, 0x48, 0x01, 0x27, 0x4E, 0xCC, 0x01, 0x49, 0x01, 0x27, 0x4E, 0xCD, 0x01, 0x4A, 0x01
-	.byte 0x27, 0x4E, 0xCE, 0x01, 0x4B, 0x01, 0x27, 0x4E, 0xCF, 0x01, 0x4C, 0x01, 0x27, 0x4E, 0xD0, 0x01
-	.byte 0x4D, 0x01, 0x27, 0x4E, 0xD1, 0x01, 0x4E, 0x01, 0x27, 0x4E, 0xD2, 0x01, 0x4F, 0x01, 0x27, 0x4E
-	.byte 0xD3, 0x01, 0x50, 0x01, 0x27, 0x4E, 0xD4, 0x01, 0x51, 0x01, 0x27, 0x4E, 0xD5, 0x01, 0x52, 0x01
-	.byte 0x27, 0x4E, 0xD6, 0x01, 0x53, 0x01, 0x27, 0x4E, 0xD7, 0x01, 0x54, 0x01, 0x27, 0x4E, 0xD8, 0x01
-	.byte 0x55, 0x01, 0x27, 0x4E, 0xD9, 0x01, 0x56, 0x01, 0x27, 0x4E, 0xDA, 0x01, 0x57, 0x01, 0x27, 0x4E
-	.byte 0xDB, 0x01, 0x58, 0x01, 0x27, 0x4E, 0xDC, 0x01, 0x59, 0x01, 0x27, 0x4E, 0xDD, 0x01, 0x5A, 0x01
-	.byte 0x27, 0x4E, 0xDE, 0x01, 0x5B, 0x01, 0x27, 0x4E, 0xDF, 0x01, 0x5C, 0x01, 0x26, 0x4E, 0xE0, 0x01
-	.byte 0x5D, 0x01, 0x26, 0x4E, 0xE1, 0x01, 0x5E, 0x01, 0x27, 0x4E, 0xE2, 0x01, 0x5F, 0x01, 0x27, 0x4E
-	.byte 0xE3, 0x01, 0x60, 0x01, 0x27, 0x4E, 0xE4, 0x01, 0x61, 0x01, 0x27, 0x4E, 0xE5, 0x01, 0x62, 0x01
-	.byte 0x27, 0x4E, 0xE6, 0x01, 0x63, 0x01, 0x27, 0x4E, 0xE7, 0x01, 0x64, 0x01, 0x27, 0x4E, 0xE8, 0x01
-	.byte 0x65, 0x01, 0x27, 0x4E, 0xE9, 0x01, 0x66, 0x01, 0x27, 0x4E, 0xEA, 0x01, 0x67, 0x01, 0x27, 0x4E
-	.byte 0xEB, 0x01, 0x68, 0x01, 0x27, 0x4E, 0xEC, 0x01, 0x69, 0x01, 0x27, 0x4E, 0xED, 0x01, 0x6A, 0x01
-	.byte 0x27, 0x4E, 0xEE, 0x01, 0x6B, 0x01, 0x27, 0x4E, 0xEF, 0x01, 0x6C, 0x01, 0x27, 0x4E, 0xF0, 0x01
-	.byte 0x6D, 0x01, 0x27, 0x4E, 0xF1, 0x01, 0x6E, 0x01, 0x27, 0x4E, 0xF2, 0x01, 0x6F, 0x01, 0x27, 0x4E
-	.byte 0xF3, 0x01, 0x70, 0x01, 0x27, 0x4E, 0xF4, 0x01, 0x71, 0x01, 0x27, 0x4E, 0xF5, 0x01, 0x72, 0x01
-	.byte 0x27, 0x4E, 0xF6, 0x01, 0x73, 0x01, 0x27, 0x4E, 0xF7, 0x01, 0x74, 0x01, 0x27, 0x4E, 0xF8, 0x01
-	.byte 0x75, 0x01, 0x27, 0x4E, 0xF9, 0x01, 0x76, 0x01, 0x27, 0x4E, 0xFA, 0x01, 0x77, 0x01, 0x27, 0x4E
-	.byte 0xFB, 0x01, 0x78, 0x01, 0x27, 0x4E, 0xFC, 0x01, 0x79, 0x01, 0x27, 0x4E, 0xFD, 0x01, 0x7A, 0x01
-	.byte 0x27, 0x4E, 0xFE, 0x01, 0x7B, 0x01, 0x27, 0x4E, 0xFF, 0x01, 0x7C, 0x01, 0x27, 0x4E, 0x00, 0x02
-	.byte 0x7D, 0x01, 0x27, 0x4E, 0x01, 0x02, 0x7E, 0x01, 0x27, 0x4E, 0x02, 0x02, 0x7F, 0x01, 0x27, 0x4E
-	.byte 0x03, 0x02, 0x80, 0x01, 0x27, 0x4E, 0x04, 0x02, 0x81, 0x01, 0x27, 0x4E, 0x05, 0x02, 0x82, 0x01
-	.byte 0x27, 0x4E, 0x06, 0x02, 0x83, 0x01, 0x27, 0x4E, 0x07, 0x02, 0x84, 0x01, 0x27, 0x4E, 0x08, 0x02
-	.byte 0x85, 0x01, 0x27, 0x4E, 0x09, 0x02, 0x86, 0x01, 0x27, 0x4E, 0x0A, 0x02, 0x87, 0x01, 0x27, 0x4E
-	.byte 0x0B, 0x02, 0x88, 0x01, 0x27, 0x4E, 0x0C, 0x02, 0x89, 0x01, 0x27, 0x4E, 0x0D, 0x02, 0x8A, 0x01
-	.byte 0x27, 0x4E, 0x0E, 0x02, 0x8B, 0x01, 0x27, 0x4E, 0x0F, 0x02, 0x8C, 0x01, 0x27, 0x4E, 0x10, 0x02
-	.byte 0x8D, 0x01, 0x27, 0x4E, 0x11, 0x02, 0x8E, 0x01, 0x27, 0x4E, 0x12, 0x02, 0x8F, 0x01, 0x27, 0x4E
-	.byte 0x13, 0x02, 0x90, 0x01, 0x27, 0x4E, 0x14, 0x02, 0x91, 0x01, 0x27, 0x4E, 0x15, 0x02, 0x92, 0x01
-	.byte 0x27, 0x4E, 0x16, 0x02, 0x93, 0x01, 0x27, 0x4E, 0x17, 0x02, 0x94, 0x01, 0x27, 0x4E, 0x18, 0x02
-	.byte 0x95, 0x01, 0x27, 0x4E, 0x19, 0x02, 0x96, 0x01, 0x27, 0x4E, 0x1A, 0x02, 0x97, 0x01, 0x27, 0x4E
-	.byte 0x1B, 0x02, 0x98, 0x01, 0x27, 0x4E, 0x1C, 0x02, 0x99, 0x01, 0x27, 0x4E, 0x1D, 0x02, 0x9A, 0x01
-	.byte 0x27, 0x4E, 0x1E, 0x02, 0x9B, 0x01, 0x27, 0x4E, 0x1F, 0x02, 0x9C, 0x01, 0x27, 0x4E, 0x20, 0x02
-	.byte 0x9D, 0x01, 0x27, 0x4E, 0x21, 0x02, 0x9E, 0x01, 0x27, 0x4E, 0x22, 0x02, 0x9F, 0x01, 0x27, 0x4E
-	.byte 0x23, 0x02, 0xA0, 0x01, 0x27, 0x4E, 0x24, 0x02, 0xA1, 0x01, 0x27, 0x4E, 0x25, 0x02, 0xA2, 0x01
-	.byte 0x27, 0x4E, 0x26, 0x02, 0xA3, 0x01, 0x27, 0x4E, 0x27, 0x02, 0xA4, 0x01, 0x27, 0x4E, 0x28, 0x02
-	.byte 0xA5, 0x01, 0x27, 0x4E, 0x29, 0x02, 0xA6, 0x01, 0x27, 0x4E, 0x2A, 0x02, 0xA7, 0x01, 0x27, 0x4E
-	.byte 0x2B, 0x02, 0xA8, 0x01, 0x27, 0x4E, 0x2C, 0x02, 0xA9, 0x01, 0x27, 0x4E, 0x2D, 0x02, 0xAA, 0x01
-	.byte 0x27, 0x4E, 0x2E, 0x02, 0xAB, 0x01, 0x27, 0x4E, 0x2F, 0x02, 0xAC, 0x01, 0x27, 0x4E, 0x30, 0x02
-	.byte 0xAD, 0x01, 0x27, 0x4E, 0x31, 0x02, 0xAE, 0x01, 0x27, 0x4E, 0x32, 0x02, 0xAF, 0x01, 0x27, 0x4E
-	.byte 0x33, 0x02, 0xB0, 0x01, 0x27, 0x4E, 0x34, 0x02, 0xB1, 0x01, 0x27, 0x4E, 0x35, 0x02, 0xB2, 0x01
-	.byte 0x27, 0x4E, 0x36, 0x02, 0xB3, 0x01, 0x27, 0x4E, 0x37, 0x02, 0xB4, 0x01, 0x27, 0x4E, 0x38, 0x02
-	.byte 0xB5, 0x01, 0x27, 0x4E, 0x39, 0x02, 0xB6, 0x01, 0x27, 0x4E, 0x3A, 0x02, 0xB7, 0x01, 0x27, 0x4E
-	.byte 0x3B, 0x02, 0xB8, 0x01, 0x27, 0x4E, 0x3C, 0x02, 0xB9, 0x01, 0x27, 0x4E, 0x3D, 0x02, 0xBA, 0x01
-	.byte 0x27, 0x4E, 0x3E, 0x02, 0xBB, 0x01, 0x27, 0x4E, 0x3F, 0x02, 0xBC, 0x01, 0x27, 0x4E, 0x40, 0x02
-	.byte 0xBD, 0x01, 0x27, 0x4E, 0x41, 0x02, 0xBE, 0x01, 0x27, 0x4E, 0x42, 0x02, 0xBF, 0x01, 0x27, 0x4E
-	.byte 0x43, 0x02, 0xC0, 0x01, 0x27, 0x4E, 0x44, 0x02, 0xC1, 0x01, 0x27, 0x4E, 0x45, 0x02, 0xC2, 0x01
-	.byte 0x27, 0x4E, 0x46, 0x02, 0xC3, 0x01, 0x27, 0x4E, 0x47, 0x02, 0xC4, 0x01, 0x27, 0x4E, 0x49, 0x02
-	.byte 0xC6, 0x01, 0x27, 0x4E, 0x4A, 0x02, 0xC7, 0x01, 0x27, 0x4E, 0x4B, 0x02, 0xC8, 0x01, 0x27, 0x4E
-	.byte 0x4C, 0x02, 0xC9, 0x01, 0x27, 0x4E, 0x4D, 0x02, 0xCA, 0x01, 0x27, 0x4E, 0x4E, 0x02, 0xCB, 0x01
-	.byte 0x27, 0x4E, 0x4F, 0x02, 0xCC, 0x01, 0x27, 0x4E, 0x50, 0x02, 0xCD, 0x01, 0x27, 0x4E, 0x51, 0x02
-	.byte 0xCE, 0x01, 0x27, 0x4E, 0x52, 0x02, 0xCF, 0x01, 0x27, 0x4E, 0x53, 0x02, 0xD0, 0x01, 0x27, 0x4E
-	.byte 0x54, 0x02, 0xD1, 0x01, 0x27, 0x4E, 0x55, 0x02, 0xD2, 0x01, 0x27, 0x4E, 0x56, 0x02, 0xD3, 0x01
-	.byte 0x27, 0x4E, 0x57, 0x02, 0xD4, 0x01, 0x27, 0x4E, 0x58, 0x02, 0xD5, 0x01, 0x27, 0x4E, 0x59, 0x02
-	.byte 0xD6, 0x01, 0x27, 0x4E, 0x5A, 0x02, 0xD7, 0x01, 0x27, 0x4E, 0x5C, 0x02, 0xD9, 0x01, 0x27, 0x4E
-	.byte 0x5D, 0x02, 0xDA, 0x01, 0x27, 0x4E, 0x5E, 0x02, 0xDB, 0x01, 0x27, 0x4E, 0x5F, 0x02, 0xDC, 0x01
-	.byte 0x27, 0x4E, 0x60, 0x02, 0xDD, 0x01, 0x27, 0x4E, 0x61, 0x02, 0xDE, 0x01, 0x27, 0x4E, 0x62, 0x02
-	.byte 0xDF, 0x01, 0x27, 0x4E, 0x63, 0x02, 0xE0, 0x01, 0x27, 0x4E, 0x64, 0x02, 0xE1, 0x01, 0x27, 0x4E
-	.byte 0x65, 0x02, 0xE2, 0x01, 0x27, 0x4E, 0x66, 0x02, 0xE3, 0x01, 0x27, 0x4E, 0x67, 0x02, 0xE4, 0x01
-	.byte 0x27, 0x4E, 0x68, 0x02, 0xE5, 0x01, 0x27, 0x4E, 0x69, 0x02, 0xE6, 0x01, 0x27, 0x4E, 0x6A, 0x02
-	.byte 0xE7, 0x01, 0x27, 0x4E, 0x6B, 0x02, 0xE8, 0x01, 0x27, 0x4E, 0x6C, 0x02, 0xE9, 0x01, 0x27, 0x4E
-	.byte 0x6D, 0x02, 0xEA, 0x01, 0x27, 0x4E, 0x6E, 0x02, 0xEB, 0x01, 0x27, 0x4E, 0x6F, 0x02, 0xEC, 0x01
-	.byte 0x27, 0x4E, 0x70, 0x02, 0xED, 0x01, 0x27, 0x4E, 0x71, 0x02, 0xEE, 0x01, 0x27, 0x4E, 0x72, 0x02
-	.byte 0xEF, 0x01, 0x27, 0x4E, 0x73, 0x02, 0xF0, 0x01, 0x27, 0x4E, 0x74, 0x02, 0xF1, 0x01, 0x27, 0x4E
-	.byte 0x75, 0x02, 0xF2, 0x01, 0x27, 0x4E, 0x76, 0x02, 0xF3, 0x01, 0x27, 0x4E, 0x77, 0x02, 0xF4, 0x01
-	.byte 0x27, 0x4E, 0x78, 0x02, 0xF5, 0x01, 0x27, 0x4E, 0x79, 0x02, 0xF6, 0x01, 0x27, 0x4E, 0x7A, 0x02
-	.byte 0xF7, 0x01, 0x27, 0x4E, 0x7B, 0x02, 0xF8, 0x01, 0x27, 0x4E, 0x7C, 0x02, 0xF9, 0x01, 0x27, 0x4E
-	.byte 0x7D, 0x02, 0xFA, 0x01, 0x27, 0x4E, 0x7E, 0x02, 0xFB, 0x01, 0x27, 0x4E, 0x7F, 0x02, 0xFC, 0x01
-	.byte 0x27, 0x4E, 0x80, 0x02, 0xFD, 0x01, 0x27, 0x4E, 0x81, 0x02, 0xFE, 0x01, 0x27, 0x4E, 0x82, 0x02
-	.byte 0xFF, 0x01, 0x27, 0x4E, 0x83, 0x02, 0x00, 0x02, 0x27, 0x4E, 0x84, 0x02, 0x01, 0x02, 0x27, 0x4E
-	.byte 0x85, 0x02, 0x02, 0x02, 0x27, 0x4E, 0x86, 0x02, 0x03, 0x02, 0x27, 0x4E, 0x87, 0x02, 0x04, 0x02
-	.byte 0x27, 0x4E, 0x88, 0x02, 0x05, 0x02, 0x27, 0x4E, 0x89, 0x02, 0x06, 0x02, 0x27, 0x4E, 0x8A, 0x02
-	.byte 0x07, 0x02, 0x27, 0x4E, 0x8B, 0x02, 0x08, 0x02, 0x27, 0x4E, 0x8C, 0x02, 0x09, 0x02, 0x27, 0x4E
-	.byte 0x8D, 0x02, 0x0A, 0x02, 0x27, 0x4E, 0x8E, 0x02, 0x0B, 0x02, 0x27, 0x4E, 0x8F, 0x02, 0x0C, 0x02
-	.byte 0x27, 0x4E, 0x90, 0x02, 0x0D, 0x02, 0x27, 0x4E, 0x91, 0x02, 0x0E, 0x02, 0x27, 0x4E, 0x92, 0x02
-	.byte 0x0F, 0x02, 0x27, 0x4E, 0x93, 0x02, 0x10, 0x02, 0x27, 0x4E, 0x94, 0x02, 0x11, 0x02, 0x27, 0x4E
-	.byte 0x96, 0x02, 0x13, 0x02, 0x27, 0x4E, 0x97, 0x02, 0x14, 0x02, 0x27, 0x4E, 0x98, 0x02, 0x15, 0x02
-	.byte 0x27, 0x4E, 0x99, 0x02, 0x16, 0x02, 0x27, 0x4E, 0x9A, 0x02, 0x17, 0x02, 0x27, 0x4E, 0x9B, 0x02
-	.byte 0x18, 0x02, 0x08, 0x52, 0x9D, 0x02, 0x1A, 0x02, 0x27, 0x4E, 0x9E, 0x02, 0x1B, 0x02, 0x27, 0x4E
-	.byte 0x9F, 0x02, 0x1C, 0x02, 0x27, 0x4E, 0xA0, 0x02, 0x1D, 0x02, 0x27, 0x4E, 0xA1, 0x02, 0x1E, 0x02
-	.byte 0x27, 0x4E, 0xA2, 0x02, 0x1F, 0x02, 0x27, 0x4E, 0xA4, 0x02, 0x21, 0x02, 0x27, 0x4E, 0xA5, 0x02
-	.byte 0x22, 0x02, 0x27, 0x4E, 0xA6, 0x02, 0x23, 0x02, 0x27, 0x4E, 0xA7, 0x02, 0x24, 0x02, 0x27, 0x4E
-	.byte 0xA8, 0x02, 0x25, 0x02, 0x27, 0x4E, 0xA9, 0x02, 0x26, 0x02, 0x27, 0x4E, 0xAA, 0x02, 0x27, 0x02
-	.byte 0x27, 0x4E, 0xAB, 0x02, 0x28, 0x02, 0x27, 0x4E, 0xAC, 0x02, 0x29, 0x02, 0x27, 0x4E, 0xAD, 0x02
-	.byte 0x2A, 0x02, 0x27, 0x4E, 0xAE, 0x02, 0x2B, 0x02, 0x27, 0x4E, 0xAF, 0x02, 0x2C, 0x02, 0x27, 0x4E
-	.byte 0xB0, 0x02, 0x2D, 0x02, 0x27, 0x4E, 0xB1, 0x02, 0x2E, 0x02, 0x27, 0x4E, 0xB2, 0x02, 0x2F, 0x02
-	.byte 0x27, 0x4E, 0xB3, 0x02, 0x30, 0x02, 0x27, 0x4E, 0xB4, 0x02, 0x31, 0x02, 0x27, 0x4E, 0xB5, 0x02
-	.byte 0x32, 0x02, 0x27, 0x4E, 0xB6, 0x02, 0x33, 0x02, 0x27, 0x4E, 0xB7, 0x02, 0x34, 0x02, 0x27, 0x4E
-	.byte 0xB8, 0x02, 0x35, 0x02, 0x27, 0x4E, 0xB9, 0x02, 0x36, 0x02, 0x27, 0x4E, 0xBA, 0x02, 0x37, 0x02
-	.byte 0x27, 0x4E, 0xBB, 0x02, 0x38, 0x02, 0x27, 0x4E, 0xBC, 0x02, 0x39, 0x02, 0x27, 0x4E, 0xBD, 0x02
-	.byte 0x3A, 0x02, 0x27, 0x4E, 0xBE, 0x02, 0x3B, 0x02, 0x27, 0x4E, 0xBF, 0x02, 0x3C, 0x02, 0x27, 0x4E
-	.byte 0xC0, 0x02, 0x3D, 0x02, 0x27, 0x4E, 0xC1, 0x02, 0x3E, 0x02, 0x27, 0x4E, 0xC2, 0x02, 0x3F, 0x02
-	.byte 0x27, 0x4E, 0xC3, 0x02, 0x40, 0x02, 0x27, 0x4E, 0xC4, 0x02, 0x41, 0x02, 0x27, 0x4E, 0xC5, 0x02
-	.byte 0x42, 0x02, 0x27, 0x4E, 0xC6, 0x02, 0x43, 0x02, 0x08, 0x52, 0xC7, 0x02, 0x44, 0x02, 0x08, 0x52
-	.byte 0xC8, 0x02, 0x45, 0x02, 0x27, 0x4E, 0xC9, 0x02, 0x46, 0x02, 0x27, 0x4E, 0xCA, 0x02, 0x47, 0x02
-	.byte 0x27, 0x4E, 0xCB, 0x02, 0x48, 0x02, 0x27, 0x4E, 0xCC, 0x02, 0x49, 0x02, 0x27, 0x4E, 0xCD, 0x02
-	.byte 0x4A, 0x02, 0x27, 0x4E, 0xCE, 0x02, 0x4B, 0x02, 0x27, 0x4E, 0xCF, 0x02, 0x4C, 0x02, 0x27, 0x4E
-	.byte 0xD0, 0x02, 0x4D, 0x02, 0x27, 0x4E, 0xD1, 0x02, 0x4E, 0x02, 0x27, 0x4E, 0xD2, 0x02, 0x4F, 0x02
-	.byte 0x27, 0x4E, 0xD3, 0x02, 0x50, 0x02, 0x27, 0x4E, 0xD4, 0x02, 0x51, 0x02, 0x27, 0x4E, 0xD5, 0x02
-	.byte 0x52, 0x02, 0x27, 0x4E, 0xD6, 0x02, 0x53, 0x02, 0x27, 0x4E, 0xD7, 0x02, 0x54, 0x02, 0x27, 0x4E
-	.byte 0xD8, 0x02, 0x55, 0x02, 0x27, 0x4E, 0xD9, 0x02, 0x56, 0x02, 0x27, 0x4E, 0xDA, 0x02, 0x57, 0x02
-	.byte 0x27, 0x4E, 0xDB, 0x02, 0x58, 0x02, 0x27, 0x4E, 0xDC, 0x02, 0x59, 0x02, 0x27, 0x4E, 0xDD, 0x02
-	.byte 0x5A, 0x02, 0x27, 0x4E, 0xDE, 0x02, 0x5B, 0x02, 0x27, 0x4E, 0xDF, 0x02, 0x5C, 0x02, 0x27, 0x4E
-	.byte 0xE0, 0x02, 0x5D, 0x02, 0x27, 0x4E, 0xE1, 0x02, 0x5E, 0x02, 0x27, 0x4E, 0xE2, 0x02, 0x5F, 0x02
-	.byte 0x27, 0x4E, 0xE3, 0x02, 0x60, 0x02, 0x27, 0x4E, 0xE4, 0x02, 0x61, 0x02, 0x27, 0x4E, 0xE5, 0x02
-	.byte 0x62, 0x02, 0x27, 0x4E, 0xE6, 0x02, 0x63, 0x02, 0x27, 0x4E, 0xE7, 0x02, 0x64, 0x02, 0x27, 0x4E
-	.byte 0xE8, 0x02, 0x65, 0x02, 0x27, 0x4E, 0xE9, 0x02, 0x66, 0x02, 0x27, 0x4E, 0xEA, 0x02, 0x67, 0x02
-	.byte 0x27, 0x4E, 0xEB, 0x02, 0x68, 0x02, 0x27, 0x4E, 0xEC, 0x02, 0x69, 0x02, 0x27, 0x4E, 0xED, 0x02
-	.byte 0x6A, 0x02, 0x27, 0x4E, 0xEE, 0x02, 0x6B, 0x02, 0x27, 0x4E, 0xEF, 0x02, 0x6C, 0x02, 0x27, 0x4E
-	.byte 0xF0, 0x02, 0x6D, 0x02, 0x27, 0x4E, 0xF1, 0x02, 0x6E, 0x02, 0x27, 0x4E, 0xF2, 0x02, 0x6F, 0x02
-	.byte 0x27, 0x4E, 0xF3, 0x02, 0x70, 0x02, 0x27, 0x4E, 0xF4, 0x02, 0x71, 0x02, 0x27, 0x4E, 0xF5, 0x02
-	.byte 0x72, 0x02, 0x27, 0x4E, 0xF6, 0x02, 0x73, 0x02, 0x27, 0x4E, 0xF7, 0x02, 0x74, 0x02, 0x27, 0x4E
-	.byte 0xF8, 0x02, 0x75, 0x02, 0x27, 0x4E, 0xF9, 0x02, 0x76, 0x02, 0x27, 0x4E, 0xFA, 0x02, 0x77, 0x02
-	.byte 0x27, 0x4E, 0xFB, 0x02, 0x78, 0x02, 0x27, 0x4E, 0xFC, 0x02, 0x79, 0x02, 0x27, 0x4E, 0xFD, 0x02
-	.byte 0x7A, 0x02, 0x27, 0x4E, 0xFE, 0x02, 0x7B, 0x02, 0x27, 0x4E, 0xFF, 0x02, 0x7C, 0x02, 0x27, 0x4E
-	.byte 0x00, 0x03, 0x7D, 0x02, 0x27, 0x4E, 0x01, 0x03, 0x7E, 0x02, 0x27, 0x4E, 0x02, 0x03, 0x7F, 0x02
-	.byte 0x27, 0x4E, 0x03, 0x03, 0x80, 0x02, 0x27, 0x4E, 0x04, 0x03, 0x81, 0x02, 0x27, 0x4E, 0x05, 0x03
-	.byte 0x82, 0x02, 0x27, 0x4E, 0x06, 0x03, 0x83, 0x02, 0x27, 0x4E, 0x07, 0x03, 0x84, 0x02, 0x27, 0x4E
-	.byte 0x08, 0x03, 0x85, 0x02, 0x27, 0x4E, 0x09, 0x03, 0x86, 0x02, 0x27, 0x4E, 0x0A, 0x03, 0x87, 0x02
-	.byte 0x27, 0x4E, 0x0B, 0x03, 0x88, 0x02, 0x27, 0x4E, 0x0C, 0x03, 0x89, 0x02, 0x27, 0x4E, 0x0D, 0x03
-	.byte 0x8A, 0x02, 0x27, 0x4E, 0x0E, 0x03, 0x8B, 0x02, 0x08, 0x52, 0x0F, 0x03, 0x8C, 0x02, 0x27, 0x4E
-	.byte 0x10, 0x03, 0x8D, 0x02, 0x27, 0x4E, 0x11, 0x03, 0x8E, 0x02, 0x27, 0x4E, 0x12, 0x03, 0x8F, 0x02
-	.byte 0x27, 0x4E, 0x13, 0x03, 0x90, 0x02, 0x27, 0x4E, 0x14, 0x03, 0x91, 0x02, 0x27, 0x4E, 0x15, 0x03
-	.byte 0x92, 0x02, 0x27, 0x4E, 0x16, 0x03, 0x93, 0x02, 0x27, 0x4E, 0x17, 0x03, 0x94, 0x02, 0x27, 0x4E
-	.byte 0x18, 0x03, 0x95, 0x02, 0x27, 0x4E, 0x19, 0x03, 0x96, 0x02, 0x27, 0x4E, 0x1A, 0x03, 0x97, 0x02
-	.byte 0x27, 0x4E, 0x1B, 0x03, 0x98, 0x02, 0x27, 0x4E, 0x1C, 0x03, 0x99, 0x02, 0x27, 0x4E, 0x1D, 0x03
-	.byte 0x9A, 0x02, 0x27, 0x4E, 0x1E, 0x03, 0x9B, 0x02, 0x27, 0x4E, 0x1F, 0x03, 0x9C, 0x02, 0x27, 0x4E
-	.byte 0x20, 0x03, 0x9D, 0x02, 0x27, 0x4E, 0x21, 0x03, 0x9E, 0x02, 0x27, 0x4E, 0x22, 0x03, 0x9F, 0x02
-	.byte 0x27, 0x4E, 0x23, 0x03, 0xA0, 0x02, 0x27, 0x4E, 0x24, 0x03, 0xA1, 0x02, 0x27, 0x4E, 0x25, 0x03
-	.byte 0xA2, 0x02, 0x27, 0x4E, 0x26, 0x03, 0xA3, 0x02, 0x27, 0x4E, 0x27, 0x03, 0xA4, 0x02, 0x27, 0x4E
-	.byte 0x28, 0x03, 0xA5, 0x02, 0x27, 0x4E, 0x29, 0x03, 0xA6, 0x02, 0x27, 0x4E, 0x2A, 0x03, 0xA7, 0x02
-	.byte 0x27, 0x4E, 0x2B, 0x03, 0xA8, 0x02, 0x27, 0x4E, 0x2C, 0x03, 0xA9, 0x02, 0x27, 0x4E, 0x2D, 0x03
-	.byte 0xAA, 0x02, 0x27, 0x4E, 0x2E, 0x03, 0xAB, 0x02, 0x27, 0x4E, 0x2F, 0x03, 0xAC, 0x02, 0x27, 0x4E
-	.byte 0x30, 0x03, 0xAD, 0x02, 0x27, 0x4E, 0x31, 0x03, 0xAE, 0x02, 0x27, 0x4E, 0x32, 0x03, 0xAF, 0x02
-	.byte 0x27, 0x4E, 0x33, 0x03, 0xB0, 0x02, 0x27, 0x4E, 0x34, 0x03, 0xB1, 0x02, 0x27, 0x4E, 0x35, 0x03
-	.byte 0xB2, 0x02, 0x27, 0x4E, 0x36, 0x03, 0xB3, 0x02, 0x27, 0x4E, 0x37, 0x03, 0xB4, 0x02, 0x27, 0x4E
-	.byte 0x38, 0x03, 0xB5, 0x02, 0x27, 0x4E, 0x39, 0x03, 0xB6, 0x02, 0x27, 0x4E, 0x3A, 0x03, 0xB7, 0x02
-	.byte 0x27, 0x4E, 0x3B, 0x03, 0xB8, 0x02, 0x27, 0x4E, 0x3C, 0x03, 0xB9, 0x02, 0x27, 0x4E, 0x3D, 0x03
-	.byte 0xBA, 0x02, 0x27, 0x4E, 0x3E, 0x03, 0xBB, 0x02, 0x27, 0x4E, 0x3F, 0x03, 0xBC, 0x02, 0x27, 0x4E
-	.byte 0x40, 0x03, 0xBD, 0x02, 0x27, 0x4E, 0x41, 0x03, 0xBE, 0x02, 0x27, 0x4E, 0x42, 0x03, 0xBF, 0x02
-	.byte 0x27, 0x4E, 0x43, 0x03, 0xC0, 0x02, 0x27, 0x4E, 0x44, 0x03, 0xC1, 0x02, 0x27, 0x4E, 0x45, 0x03
-	.byte 0xC2, 0x02, 0x27, 0x4E, 0x46, 0x03, 0xC3, 0x02, 0x27, 0x4E, 0x47, 0x03, 0xC4, 0x02, 0x27, 0x4E
-	.byte 0x48, 0x03, 0xC5, 0x02, 0x27, 0x4E, 0x49, 0x03, 0xC6, 0x02, 0x27, 0x4E, 0x4A, 0x03, 0xC7, 0x02
-	.byte 0x27, 0x4E, 0x4B, 0x03, 0xC8, 0x02, 0x08, 0x52, 0x4C, 0x03, 0xC9, 0x02, 0x08, 0x52, 0x4D, 0x03
-	.byte 0xCA, 0x02, 0x08, 0x52, 0x4E, 0x03, 0xCB, 0x02, 0x27, 0x4E, 0x4F, 0x03, 0xCC, 0x02, 0x27, 0x4E
-	.byte 0x50, 0x03, 0xCD, 0x02, 0x27, 0x4E, 0x51, 0x03, 0xCE, 0x02, 0x27, 0x4E, 0x52, 0x03, 0xCF, 0x02
-	.byte 0x27, 0x4E, 0x53, 0x03, 0xD0, 0x02, 0x27, 0x4E, 0x54, 0x03, 0xD1, 0x02, 0x27, 0x4E, 0x55, 0x03
-	.byte 0xD2, 0x02, 0x27, 0x4E, 0x56, 0x03, 0xD3, 0x02, 0x27, 0x4E, 0x57, 0x03, 0xD4, 0x02, 0x27, 0x4E
-	.byte 0x58, 0x03, 0xD5, 0x02, 0x27, 0x4E, 0x59, 0x03, 0xD6, 0x02, 0x27, 0x4E, 0x5A, 0x03, 0xD7, 0x02
-	.byte 0x27, 0x4E, 0x5B, 0x03, 0xD8, 0x02, 0x27, 0x4E, 0x5C, 0x03, 0xD9, 0x02, 0x27, 0x4E, 0x5D, 0x03
-	.byte 0xDA, 0x02, 0x27, 0x4E, 0x5E, 0x03, 0xDB, 0x02, 0x27, 0x4E, 0x5F, 0x03, 0xDC, 0x02, 0x27, 0x4E
-	.byte 0x60, 0x03, 0xDD, 0x02, 0x27, 0x4E, 0x61, 0x03, 0xDE, 0x02, 0x27, 0x4E, 0x62, 0x03, 0xDF, 0x02
-	.byte 0x27, 0x4E, 0x63, 0x03, 0xE0, 0x02, 0x27, 0x4E, 0x64, 0x03, 0xE1, 0x02, 0x27, 0x4E, 0x65, 0x03
-	.byte 0xE2, 0x02, 0x27, 0x4E, 0x66, 0x03, 0xE3, 0x02, 0x27, 0x4E, 0x67, 0x03, 0xE4, 0x02, 0x27, 0x4E
-	.byte 0x68, 0x03, 0xE5, 0x02, 0x27, 0x4E, 0x69, 0x03, 0xE6, 0x02, 0x27, 0x4E, 0x6A, 0x03, 0xE7, 0x02
-	.byte 0x27, 0x4E, 0x6B, 0x03, 0xE8, 0x02, 0x27, 0x4E, 0x6C, 0x03, 0xE9, 0x02, 0x27, 0x4E, 0x6D, 0x03
-	.byte 0xEA, 0x02, 0x27, 0x4E, 0x6E, 0x03, 0xEB, 0x02, 0x27, 0x4E, 0x6F, 0x03, 0xEC, 0x02, 0x27, 0x4E
-	.byte 0x70, 0x03, 0xED, 0x02, 0x27, 0x4E, 0x71, 0x03, 0xEE, 0x02, 0x27, 0x4E, 0x72, 0x03, 0xEF, 0x02
-	.byte 0x27, 0x4E, 0x73, 0x03, 0xF0, 0x02, 0x27, 0x4E, 0x75, 0x03, 0xF2, 0x02, 0x27, 0x4E, 0x76, 0x03
-	.byte 0xF3, 0x02, 0x27, 0x4E, 0x77, 0x03, 0xF4, 0x02, 0x27, 0x4E, 0x78, 0x03, 0xF5, 0x02, 0x27, 0x4E
-	.byte 0x79, 0x03, 0xF6, 0x02, 0x27, 0x4E, 0x7A, 0x03, 0xF7, 0x02, 0x27, 0x4E, 0x7B, 0x03, 0xF8, 0x02
-	.byte 0x27, 0x4E, 0x7C, 0x03, 0xF9, 0x02, 0x27, 0x4E, 0x7D, 0x03, 0xFA, 0x02, 0x27, 0x4E, 0x7E, 0x03
-	.byte 0xFB, 0x02, 0x27, 0x4E, 0x7F, 0x03, 0xFC, 0x02, 0x27, 0x4E, 0x80, 0x03, 0xFD, 0x02, 0x27, 0x4E
-	.byte 0x81, 0x03, 0xFE, 0x02, 0x27, 0x4E, 0x82, 0x03, 0xFF, 0x02, 0x27, 0x4E, 0x83, 0x03, 0x00, 0x03
-	.byte 0x27, 0x4E, 0x84, 0x03, 0x01, 0x03, 0x27, 0x4E, 0x85, 0x03, 0x02, 0x03, 0x27, 0x4E, 0x86, 0x03
-	.byte 0x03, 0x03, 0x27, 0x4E, 0x87, 0x03, 0x04, 0x03, 0x27, 0x4E, 0x88, 0x03, 0x05, 0x03, 0x27, 0x4E
-	.byte 0x89, 0x03, 0x06, 0x03, 0x27, 0x4E, 0x8A, 0x03, 0x07, 0x03, 0x27, 0x4E, 0x8B, 0x03, 0x08, 0x03
-	.byte 0x27, 0x4E, 0x8C, 0x03, 0x09, 0x03, 0x27, 0x4E, 0x8D, 0x03, 0x0A, 0x03, 0x27, 0x4E, 0x8E, 0x03
-	.byte 0x0B, 0x03, 0x27, 0x4E, 0x8F, 0x03, 0x0C, 0x03, 0x27, 0x4E, 0x90, 0x03, 0x0D, 0x03, 0x27, 0x4E
-	.byte 0x91, 0x03, 0x0E, 0x03, 0x27, 0x4E, 0x92, 0x03, 0x0F, 0x03, 0x27, 0x4E, 0x94, 0x03, 0x11, 0x03
-	.byte 0x27, 0x4E, 0x96, 0x03, 0x13, 0x03, 0x27, 0x4E, 0x98, 0x03, 0x15, 0x03, 0x27, 0x4E, 0x99, 0x03
-	.byte 0x16, 0x03, 0x27, 0x4E, 0x9A, 0x03, 0x17, 0x03, 0x27, 0x4E, 0x9B, 0x03, 0x18, 0x03, 0x27, 0x4E
-	.byte 0x9C, 0x03, 0x19, 0x03, 0x27, 0x4E, 0x9D, 0x03, 0x1A, 0x03, 0x27, 0x4E, 0x9E, 0x03, 0x1B, 0x03
-	.byte 0x27, 0x4E, 0x9F, 0x03, 0x1C, 0x03, 0x27, 0x4E, 0xA0, 0x03, 0x1D, 0x03, 0x27, 0x4E, 0xA1, 0x03
-	.byte 0x1E, 0x03, 0x27, 0x4E, 0xA2, 0x03, 0x1F, 0x03, 0x27, 0x4E, 0xA3, 0x03, 0x20, 0x03, 0x27, 0x4E
-	.byte 0xA4, 0x03, 0x21, 0x03, 0x27, 0x4E, 0xA5, 0x03, 0x22, 0x03, 0x27, 0x4E, 0xA6, 0x03, 0x23, 0x03
-	.byte 0x27, 0x4E, 0xA7, 0x03, 0x24, 0x03, 0x27, 0x4E, 0xA8, 0x03, 0x25, 0x03, 0x27, 0x4E, 0xA9, 0x03
-	.byte 0x26, 0x03, 0x27, 0x4E, 0xAA, 0x03, 0x27, 0x03, 0x27, 0x4E, 0xAB, 0x03, 0x28, 0x03, 0x27, 0x4E
-	.byte 0xAC, 0x03, 0x29, 0x03, 0x27, 0x4E, 0xAD, 0x03, 0x2A, 0x03, 0x27, 0x4E, 0xAE, 0x03, 0x2B, 0x03
-	.byte 0x27, 0x4E, 0xAF, 0x03, 0x2C, 0x03, 0x27, 0x4E, 0xB0, 0x03, 0x2D, 0x03, 0x27, 0x4E, 0xB1, 0x03
-	.byte 0x2E, 0x03, 0x27, 0x4E, 0xB2, 0x03, 0x2F, 0x03, 0x27, 0x4E, 0xB3, 0x03, 0x30, 0x03, 0x27, 0x4E
-	.byte 0xB4, 0x03, 0x31, 0x03, 0x27, 0x4E, 0xB5, 0x03, 0x32, 0x03, 0x27, 0x4E, 0xB6, 0x03, 0x33, 0x03
-	.byte 0x27, 0x4E, 0xB7, 0x03, 0x34, 0x03, 0x27, 0x4E, 0xB8, 0x03, 0x35, 0x03, 0x27, 0x4E, 0xB9, 0x03
-	.byte 0x36, 0x03, 0x27, 0x4E, 0xBA, 0x03, 0x37, 0x03, 0x27, 0x4E, 0xBB, 0x03, 0x38, 0x03, 0x27, 0x4E
-	.byte 0xBC, 0x03, 0x39, 0x03, 0x27, 0x4E, 0xBD, 0x03, 0x3A, 0x03, 0x27, 0x4E, 0xBE, 0x03, 0x3B, 0x03
-	.byte 0x27, 0x4E, 0xBF, 0x03, 0x3C, 0x03, 0x27, 0x4E, 0xC0, 0x03, 0x3D, 0x03, 0x27, 0x4E, 0xC1, 0x03
-	.byte 0x3E, 0x03, 0x27, 0x4E, 0xC2, 0x03, 0x3F, 0x03, 0x27, 0x4E, 0xC3, 0x03, 0x40, 0x03, 0x27, 0x4E
-	.byte 0xC4, 0x03, 0x41, 0x03, 0x08, 0x52, 0xC5, 0x03, 0x42, 0x03, 0x08, 0x52, 0xC6, 0x03, 0x43, 0x03
-	.byte 0x27, 0x4E, 0xC7, 0x03, 0x44, 0x03, 0x08, 0x52, 0xC8, 0x03, 0x45, 0x03, 0x08, 0x52, 0xC9, 0x03
-	.byte 0x46, 0x03, 0x08, 0x52, 0xCA, 0x03, 0x47, 0x03, 0x27, 0x4E, 0xCB, 0x03, 0x48, 0x03, 0x27, 0x4E
-	.byte 0xCC, 0x03, 0x49, 0x03, 0x27, 0x4E, 0xCD, 0x03, 0x4A, 0x03, 0x27, 0x4E, 0xCE, 0x03, 0x4B, 0x03
-	.byte 0x27, 0x4E, 0xCF, 0x03, 0x4C, 0x03, 0x27, 0x4E, 0xD0, 0x03, 0x4D, 0x03, 0x08, 0x52, 0xD1, 0x03
-	.byte 0x4E, 0x03, 0x08, 0x52, 0xD2, 0x03, 0x4F, 0x03, 0x08, 0x52, 0xD3, 0x03, 0x50, 0x03, 0x08, 0x52
-	.byte 0xD4, 0x03, 0x51, 0x03, 0x08, 0x52, 0xD5, 0x03, 0x52, 0x03, 0x08, 0x52, 0xD6, 0x03, 0x53, 0x03
-	.byte 0x08, 0x52, 0xD7, 0x03, 0x54, 0x03, 0x08, 0x52, 0xD8, 0x03, 0x55, 0x03, 0x08, 0x52, 0xD9, 0x03
-	.byte 0x56, 0x03, 0x08, 0x52, 0xDA, 0x03, 0x57, 0x03, 0x08, 0x52, 0xDB, 0x03, 0x58, 0x03, 0x08, 0x52
-	.byte 0xDC, 0x03, 0x59, 0x03, 0x08, 0x52, 0xDD, 0x03, 0x5A, 0x03, 0x08, 0x52, 0xDE, 0x03, 0x5B, 0x03
-	.byte 0x08, 0x52, 0xDF, 0x03, 0x5C, 0x03, 0x08, 0x52, 0xE0, 0x03, 0x5D, 0x03, 0x08, 0x52, 0xE1, 0x03
-	.byte 0x5E, 0x03, 0x08, 0x52, 0x5B, 0x02, 0xD8, 0x01, 0x27, 0x4E, 0xAF, 0x01, 0x2C, 0x01, 0x27, 0x4E
-	.byte 0xC6, 0x01, 0x43, 0x01, 0x27, 0x4E, 0x48, 0x02, 0xC5, 0x01, 0x27, 0x4E, 0x95, 0x02, 0x12, 0x02
-	.byte 0x27, 0x4E, 0xA3, 0x02, 0x20, 0x02, 0x27, 0x4E, 0x9C, 0x02, 0x19, 0x02, 0x08, 0x52, 0x74, 0x03
-	.byte 0xF1, 0x02, 0x27, 0x4E, 0x93, 0x03, 0x10, 0x03, 0x27, 0x4E, 0x95, 0x03, 0x12, 0x03, 0x27, 0x4E
-	.byte 0x97, 0x03, 0x14, 0x03, 0x27, 0x4E, 0x00, 0x00, 0x45, 0x00, 0x60, 0x1C, 0x02, 0x01, 0x5F, 0x00
-	.byte 0x60, 0x1C, 0x03, 0x01, 0x60, 0x00, 0x60, 0x1C, 0x04, 0x01, 0x61, 0x00, 0x40, 0x35, 0x05, 0x01
-	.byte 0x62, 0x00, 0x40, 0x35, 0x97, 0x01, 0x63, 0x00, 0x60, 0x1C, 0x98, 0x01, 0x64, 0x00, 0x60, 0x1C
-	.byte 0x06, 0x01, 0xFB, 0x00, 0x47, 0x56, 0x07, 0x01, 0xFF, 0x00, 0x47, 0x56, 0x08, 0x01, 0x02, 0x01
-	.byte 0x47, 0x56, 0x09, 0x01, 0xFC, 0x00, 0x47, 0x56, 0x0A, 0x01, 0xFE, 0x00, 0x47, 0x56, 0x0B, 0x01
-	.byte 0x01, 0x01, 0x47, 0x56, 0x0C, 0x01, 0x00, 0x01, 0x47, 0x56, 0x0D, 0x01, 0xFD, 0x00, 0x47, 0x56
-	.byte 0x0E, 0x01, 0x06, 0x01, 0x26, 0x58, 0x0F, 0x01, 0x09, 0x01, 0x26, 0x58, 0x10, 0x01, 0x03, 0x01
-	.byte 0x26, 0x58, 0x11, 0x01, 0x05, 0x01, 0x26, 0x58, 0x12, 0x01, 0x08, 0x01, 0x26, 0x58, 0x13, 0x01
-	.byte 0x07, 0x01, 0x26, 0x58, 0x14, 0x01, 0x04, 0x01, 0x26, 0x58, 0x15, 0x01, 0x67, 0x00, 0x00, 0x00
-	.byte 0x16, 0x01, 0x68, 0x00, 0x00, 0x00, 0x17, 0x01, 0x69, 0x00, 0x00, 0x00, 0x18, 0x01, 0x6A, 0x00
-	.byte 0x00, 0x00, 0x19, 0x01, 0x6B, 0x00, 0x00, 0x00, 0x1A, 0x01, 0x6C, 0x00, 0x00, 0x00, 0x1B, 0x01
-	.byte 0x6D, 0x00, 0x00, 0x00, 0x1C, 0x01, 0x6E, 0x00, 0x00, 0x00, 0x1D, 0x01, 0x65, 0x00, 0x00, 0x00
-	.byte 0x1E, 0x01, 0x66, 0x00, 0x00, 0x00, 0x1F, 0x01, 0x6F, 0x00, 0x06, 0x00, 0x9E, 0x01, 0xD1, 0x00
-	.byte 0x00, 0x00, 0x9F, 0x01, 0xC9, 0x00, 0x25, 0x4E, 0xA0, 0x01, 0xCA, 0x00, 0x25, 0x4E, 0xA1, 0x01
-	.byte 0xCB, 0x00, 0x25, 0x4E, 0xA2, 0x01, 0xCC, 0x00, 0x25, 0x52, 0xA3, 0x01, 0xCD, 0x00, 0x25, 0x52
-	.byte 0xA4, 0x01, 0xCE, 0x00, 0x25, 0x52, 0xA5, 0x01, 0x3B, 0x00, 0x00, 0x00, 0xA6, 0x01, 0x3C, 0x00
-	.byte 0x00, 0x00, 0xA7, 0x01, 0xCF, 0x00, 0x60, 0x3A, 0xA8, 0x01, 0xD0, 0x00, 0x60, 0x3A, 0xA9, 0x01
-	.byte 0xD2, 0x00, 0xA5, 0x45, 0xAA, 0x01, 0xD3, 0x00, 0xA5, 0x49, 0xAB, 0x01, 0xD4, 0x00, 0x00, 0x00
-	.byte 0x7E, 0x00, 0xD7, 0x00, 0x00, 0x00, 0x7F, 0x00, 0xD8, 0x00, 0x00, 0x00, 0x80, 0x00, 0xD9, 0x00
-	.byte 0x00, 0x00, 0x81, 0x00, 0xDA, 0x00, 0x00, 0x00, 0x82, 0x00, 0xDB, 0x00, 0x00, 0x00, 0x83, 0x00
-	.byte 0xDC, 0x00, 0x00, 0x00, 0x84, 0x00, 0xDD, 0x00, 0x00, 0x00, 0x85, 0x00, 0xDE, 0x00, 0x00, 0x00
-	.byte 0xE9, 0x00, 0xDF, 0x00, 0x00, 0x00, 0x7C, 0x01, 0xE0, 0x00, 0x00, 0x00, 0x81, 0x01, 0xE1, 0x00
-	.byte 0x00, 0x00, 0x82, 0x01, 0xE2, 0x00, 0x00, 0x00, 0x83, 0x01, 0xE3, 0x00, 0x00, 0x00, 0x86, 0x01
-	.byte 0xE4, 0x00, 0x00, 0x00, 0x29, 0x01, 0xF8, 0x00, 0xA0, 0x40, 0x2A, 0x01, 0xF9, 0x00, 0xA0, 0x40
-	.byte 0x2B, 0x01, 0xFA, 0x00, 0x00, 0x00, 0xE2, 0x03, 0x35, 0x01, 0x27, 0x4E, 0xE3, 0x03, 0x39, 0x01
-	.byte 0x27, 0x4E, 0xE4, 0x03, 0x3C, 0x01, 0x27, 0x4E, 0xE5, 0x03, 0x3E, 0x01, 0x27, 0x4E, 0xE6, 0x03
-	.byte 0x3F, 0x01, 0x27, 0x4E, 0xE7, 0x03, 0x42, 0x01, 0x27, 0x4E, 0xE8, 0x03, 0x47, 0x01, 0x27, 0x4E
-	.byte 0xE9, 0x03, 0x4A, 0x01, 0x27, 0x4E, 0xEA, 0x03, 0x4B, 0x01, 0x27, 0x4E, 0xEB, 0x03, 0x4D, 0x01
-	.byte 0x27, 0x4E, 0xEC, 0x03, 0x51, 0x01, 0x27, 0x4E, 0xED, 0x03, 0x53, 0x01, 0x27, 0x4E, 0xEE, 0x03
-	.byte 0x55, 0x01, 0x27, 0x4E, 0xEF, 0x03, 0x5C, 0x01, 0x26, 0x4E, 0xF0, 0x03, 0x5E, 0x01, 0x27, 0x4E
-	.byte 0xF1, 0x03, 0x5F, 0x01, 0x27, 0x4E, 0xF2, 0x03, 0x60, 0x01, 0x27, 0x4E, 0xF3, 0x03, 0x68, 0x01
-	.byte 0x27, 0x4E, 0xF4, 0x03, 0x69, 0x01, 0x27, 0x4E, 0xF5, 0x03, 0x6C, 0x01, 0x27, 0x4E, 0xF6, 0x03
-	.byte 0x6D, 0x01, 0x27, 0x4E, 0xF7, 0x03, 0x79, 0x01, 0x27, 0x4E, 0xF8, 0x03, 0x7A, 0x01, 0x27, 0x4E
-	.byte 0xF9, 0x03, 0x7D, 0x01, 0x27, 0x4E, 0xFA, 0x03, 0x7F, 0x01, 0x27, 0x4E, 0xFB, 0x03, 0x8F, 0x01
-	.byte 0x27, 0x4E, 0xFC, 0x03, 0x9A, 0x01, 0x27, 0x4E, 0xFD, 0x03, 0x9B, 0x01, 0x27, 0x4E, 0xFE, 0x03
-	.byte 0x9D, 0x01, 0x27, 0x4E, 0xFF, 0x03, 0xAD, 0x01, 0x27, 0x4E, 0x00, 0x04, 0xBA, 0x01, 0x27, 0x4E
-	.byte 0x01, 0x04, 0xBB, 0x01, 0x27, 0x4E, 0x02, 0x04, 0xBC, 0x01, 0x27, 0x4E, 0x03, 0x04, 0xBD, 0x01
-	.byte 0x27, 0x4E, 0x04, 0x04, 0xBF, 0x01, 0x27, 0x4E, 0x05, 0x04, 0xC0, 0x01, 0x27, 0x4E, 0x06, 0x04
-	.byte 0xC3, 0x01, 0x27, 0x4E, 0x07, 0x04, 0xE1, 0x01, 0x27, 0x4E, 0x08, 0x04, 0xE3, 0x01, 0x27, 0x4E
-	.byte 0x09, 0x04, 0xEA, 0x01, 0x27, 0x4E, 0x0A, 0x04, 0xF2, 0x01, 0x27, 0x4E, 0x0B, 0x04, 0x3B, 0x02
-	.byte 0x27, 0x4E, 0x0C, 0x04, 0x3C, 0x02, 0x27, 0x4E, 0x0D, 0x04, 0x3D, 0x02, 0x27, 0x4E, 0x0E, 0x04
-	.byte 0x3E, 0x02, 0x27, 0x4E, 0x0F, 0x04, 0x3F, 0x02, 0x27, 0x4E, 0x10, 0x04, 0x45, 0x02, 0x27, 0x4E
-	.byte 0x11, 0x04, 0xC6, 0x02, 0x27, 0x4E, 0x12, 0x04, 0xC7, 0x02, 0x27, 0x4E, 0x13, 0x04, 0xC8, 0x02
-	.byte 0x08, 0x52, 0x14, 0x04, 0xC9, 0x02, 0x08, 0x52, 0x15, 0x04, 0xCA, 0x02, 0x08, 0x52, 0x16, 0x04
-	.byte 0xD8, 0x01, 0x27, 0x4E, 0x18, 0x04, 0xC8, 0x01, 0x27, 0x4E, 0x17, 0x04, 0xC4, 0x01, 0x27, 0x4E
-	.byte 0x19, 0x04, 0xCB, 0x01, 0x27, 0x4E, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0xFC
+	; TODO: When decompiling, the second column should derive from files/data/mmodel/mmodel.naix
+	.short SPRITE_BABYBOY1, MMODEL_BABYBOY1, 0x000 | (0 << 10)
+	.short SPRITE_BABYGIRL1, MMODEL_BABYGIRL1, 0x000 | (0 << 10)
+	.short SPRITE_BOY1, MMODEL_BOY1, 0x000 | (0 << 10)
+	.short SPRITE_BOY2, MMODEL_BOY2, 0x000 | (0 << 10)
+	.short SPRITE_BOY3, MMODEL_BOY3, 0x000 | (0 << 10)
+	.short SPRITE_GIRL1, MMODEL_GIRL1, 0x000 | (0 << 10)
+	.short SPRITE_GIRL2, MMODEL_GIRL2, 0x000 | (0 << 10)
+	.short SPRITE_GIRL3, MMODEL_GIRL3, 0x000 | (0 << 10)
+	.short SPRITE_MAN1, MMODEL_MAN1, 0x000 | (0 << 10)
+	.short SPRITE_MAN2, MMODEL_MAN2, 0x000 | (0 << 10)
+	.short SPRITE_MAN3, MMODEL_MAN3, 0x000 | (0 << 10)
+	.short SPRITE_WOMAN1, MMODEL_WOMAN1, 0x000 | (0 << 10)
+	.short SPRITE_WOMAN2, MMODEL_WOMAN2, 0x000 | (0 << 10)
+	.short SPRITE_WOMAN3, MMODEL_WOMAN3, 0x000 | (0 << 10)
+	.short SPRITE_MIDDLEMAN1, MMODEL_MIDDLEMAN1, 0x000 | (0 << 10)
+	.short SPRITE_MIDDLEWOMAN1, MMODEL_MIDDLEWOMAN1, 0x000 | (0 << 10)
+	.short SPRITE_OLDMAN1, MMODEL_OLDMAN1, 0x000 | (0 << 10)
+	.short SPRITE_OLDWOMAN1, MMODEL_OLDWOMAN1, 0x000 | (0 << 10)
+	.short SPRITE_BIGMAN, MMODEL_BIGMAN, 0x000 | (0 << 10)
+	.short SPRITE_MOUNT, MMODEL_MOUNT, 0x000 | (0 << 10)
+	.short SPRITE_CYCLEHERO, MMODEL_CYCLEHERO, 0x081 | (6 << 10)
+	.short SPRITE_REPORTER, MMODEL_REPORTER, 0x000 | (0 << 10)
+	.short SPRITE_CAMERAMAN, MMODEL_CAMERAMAN, 0x000 | (0 << 10)
+	.short SPRITE_SHOPM1, MMODEL_SHOPM1, 0x000 | (0 << 10)
+	.short SPRITE_SHOPW1, MMODEL_SHOPW1, 0x000 | (0 << 10)
+	.short SPRITE_ASSISTANTM, MMODEL_ASSISTANTM, 0x000 | (0 << 10)
+	.short SPRITE_ASSISTANTW, MMODEL_ASSISTANTW, 0x000 | (0 << 10)
+	.short SPRITE_BADMAN, MMODEL_BADMAN, 0x000 | (0 << 10)
+	.short SPRITE_SKIERW, MMODEL_SKIERW, 0x000 | (0 << 10)
+	.short SPRITE_POLICEMAN, MMODEL_POLICEMAN, 0x000 | (0 << 10)
+	.short SPRITE_IDOL, MMODEL_IDOL, 0x000 | (0 << 10)
+	.short SPRITE_GENTLEMAN, MMODEL_GENTLEMAN, 0x000 | (0 << 10)
+	.short SPRITE_LADY, MMODEL_LADY, 0x000 | (0 << 10)
+	.short SPRITE_CYCLEM, MMODEL_CYCLEM, 0x001 | (0 << 10)
+	.short SPRITE_CYCLEW, MMODEL_CYCLEW, 0x001 | (0 << 10)
+	.short SPRITE_WORKMAN, MMODEL_WORKMAN, 0x000 | (0 << 10)
+	.short SPRITE_FARMER, MMODEL_FARMER, 0x000 | (0 << 10)
+	.short SPRITE_COWGIRL, MMODEL_COWGIRL, 0x000 | (0 << 10)
+	.short SPRITE_CLOWN, MMODEL_CLOWN, 0x000 | (0 << 10)
+	.short SPRITE_ARTIST, MMODEL_ARTIST, 0x000 | (0 << 10)
+	.short SPRITE_SPORTSMAN, MMODEL_SPORTSMAN, 0x000 | (0 << 10)
+	.short SPRITE_EXPLORE, MMODEL_EXPLORE, 0x000 | (0 << 10)
+	.short SPRITE_FIGHTER, MMODEL_FIGHTER, 0x000 | (0 << 10)
+	.short SPRITE_CAMPBOY, MMODEL_CAMPBOY, 0x000 | (0 << 10)
+	.short SPRITE_PICNICGIRL, MMODEL_PICNICGIRL, 0x000 | (0 << 10)
+	.short SPRITE_FISHING, MMODEL_FISHING, 0x000 | (0 << 10)
+	.short SPRITE_AMBRELLA, MMODEL_AMBRELLA, 0x000 | (0 << 10)
+	.short SPRITE_SEAMAN, MMODEL_SEAMAN, 0x000 | (0 << 10)
+	.short SPRITE_WAITER, MMODEL_WAITER, 0x000 | (0 << 10)
+	.short SPRITE_WAITRESS, MMODEL_WAITRESS, 0x000 | (0 << 10)
+	.short SPRITE_GORGGEOUSM, MMODEL_GORGGEOUSM, 0x000 | (0 << 10)
+	.short SPRITE_GORGGEOUSW, MMODEL_GORGGEOUSW, 0x000 | (0 << 10)
+	.short SPRITE_MAN5, MMODEL_MAN5, 0x000 | (0 << 10)
+	.short SPRITE_WOMAN5, MMODEL_WOMAN5, 0x000 | (0 << 10)
+	.short SPRITE_MYSTERY, MMODEL_MYSTERY, 0x000 | (0 << 10)
+	.short SPRITE_PIKACHU, MMODEL_PIKACHU, 0x000 | (0 << 10)
+	.short SPRITE_ROCK, MMODEL_ROCK, 0x020 | (1 << 10)
+	.short SPRITE_BREAKROCK, MMODEL_BREAKROCK, 0x020 | (2 << 10)
+	.short SPRITE_TREE, MMODEL_TREE, 0x020 | (0 << 10)
+	.short SPRITE_MONSTARBALL, MMODEL_MONSTARBALL, 0x020 | (1 << 10)
+	.short SPRITE_HEROINE, MMODEL_HEROINE, 0x060 | (7 << 10)
+	.short SPRITE_CYCLEHEROINE, MMODEL_CYCLEHEROINE, 0x081 | (6 << 10)
+	.short SPRITE_DOCTOR, MMODEL_DOCTOR, 0x000 | (0 << 10)
+	.short SPRITE_SEVEN1, MMODEL_SEVEN1, 0x000 | (0 << 10)
+	.short SPRITE_SEVEN2, MMODEL_SEVEN2, 0x000 | (0 << 10)
+	.short SPRITE_SEVEN3, MMODEL_SEVEN3, 0x000 | (0 << 10)
+	.short SPRITE_SEVEN4, MMODEL_SEVEN4, 0x000 | (0 << 10)
+	.short SPRITE_SEVEN5, MMODEL_SEVEN5, 0x000 | (0 << 10)
+	.short SPRITE_GSBOY1, MMODEL_GSBOY1, 0x000 | (0 << 10)
+	.short SPRITE_GSRIVEL, MMODEL_GSRIVEL, 0x000 | (0 << 10)
+	.short SPRITE_SUNGLASSES, MMODEL_SUNGLASSES, 0x000 | (0 << 10)
+	.short SPRITE_TOWERBOSS, MMODEL_TOWERBOSS, 0x000 | (0 << 10)
+	.short SPRITE_MAID, MMODEL_MAID, 0x000 | (0 << 10)
+	.short SPRITE_SPHERO, MMODEL_SPHERO, 0x0A0 | (8 << 10)
+	.short SPRITE_SPHEROINE, MMODEL_SPHEROINE, 0x0A0 | (8 << 10)
+	.short SPRITE_WATERHERO, MMODEL_WATERHERO, 0x0C0 | (10 << 10)
+	.short SPRITE_WATERHEROINE, MMODEL_WATERHEROINE, 0x0C0 | (10 << 10)
+	.short SPRITE_SWIMHERO, MMODEL_SWIMHERO, 0x0E0 | (9 << 10)
+	.short SPRITE_SWIMHEROINE, MMODEL_SWIMHEROINE, 0x0E0 | (9 << 10)
+	.short SPRITE_BABYBOY1_2, MMODEL_BABYBOY1, 0x1E2 | (63 << 10)
+	.short SPRITE_FISHINGHERO, MMODEL_FISHINGHERO, 0x100 | (11 << 10)
+	.short SPRITE_FISH_HEROINE, MMODEL_FISH_HEROINE, 0x100 | (11 << 10)
+	.short SPRITE_LADDERHERO, MMODEL_LADDERHERO, 0x120 | (12 << 10)
+	.short SPRITE_LADDERHEROINE, MMODEL_LADDERHEROINE, 0x120 | (12 << 10)
+	.short SPRITE_DELIVERY, MMODEL_DELIVERY, 0x000 | (0 << 10)
+	.short SPRITE_BABYBOY1_14, MMODEL_BABYBOY1, 0x003 | (63 << 10)
+	.short SPRITE_POKEHERO, MMODEL_POKEHERO, 0x160 | (15 << 10)
+	.short SPRITE_POKEHEROINE, MMODEL_POKEHEROINE, 0x160 | (15 << 10)
+	.short SPRITE_SAVEHERO, MMODEL_SAVEHERO, 0x0A0 | (16 << 10)
+	.short SPRITE_SAVEHEROINE, MMODEL_SAVEHEROINE, 0x0A0 | (16 << 10)
+	.short SPRITE_BANZAIHERO, MMODEL_BANZAIHERO, 0x140 | (13 << 10)
+	.short SPRITE_BANZAIHEROINE, MMODEL_BANZAIHEROINE, 0x140 | (13 << 10)
+	.short SPRITE_RED, MMODEL_RED, 0x000 | (0 << 10)
+	.short SPRITE_THIEF, MMODEL_THIEF, 0x000 | (0 << 10)
+	.short SPRITE_ITAKO, MMODEL_ITAKO, 0x000 | (0 << 10)
+	.short SPRITE_BOZU, MMODEL_BOZU, 0x000 | (0 << 10)
+	.short SPRITE_ROCKETW, MMODEL_ROCKETW, 0x000 | (0 << 10)
+	.short SPRITE_ROCKETM, MMODEL_ROCKETM, 0x000 | (0 << 10)
+	.short SPRITE_RKANBUW, MMODEL_RKANBUW, 0x000 | (0 << 10)
+	.short SPRITE_RKANBUM, MMODEL_RKANBUM, 0x000 | (0 << 10)
+	.short SPRITE_RKANBUM2, MMODEL_RKANBUM2, 0x000 | (0 << 10)
+	.short SPRITE_RKANBUM3, MMODEL_RKANBUM3, 0x000 | (0 << 10)
+	.short SPRITE_BOARDER, MMODEL_BOARDER, 0x000 | (0 << 10)
+	.short SPRITE_FIRE, MMODEL_FIRE, 0x000 | (0 << 10)
+	.short SPRITE_GANG, MMODEL_GANG, 0x000 | (0 << 10)
+	.short SPRITE_DANCER, MMODEL_DANCER, 0x000 | (0 << 10)
+	.short SPRITE_MASAKI, MMODEL_MASAKI, 0x000 | (0 << 10)
+	.short SPRITE_CAPTAIN, MMODEL_CAPTAIN, 0x000 | (0 << 10)
+	.short SPRITE_RGYARADOSU, MMODEL_RGYARADOSU, 0x000 | (0 << 10)
+	.short SPRITE_HERO_2, MMODEL_HERO_2, 0x060 | (7 << 10)
+	.short SPRITE_HEROINE_2, MMODEL_HEROINE_2, 0x060 | (7 << 10)
+	.short SPRITE_ITAKO_, MMODEL_ITAKO_, 0x000 | (3 << 10)
+	.short SPRITE_BABYBOY1_3, MMODEL_BABYBOY1, 0x1E4 | (63 << 10)
+	.short SPRITE_BABYBOY1_4, MMODEL_BABYBOY1, 0x1E4 | (63 << 10)
+	.short SPRITE_BABYBOY1_5, MMODEL_BABYBOY1, 0x1E4 | (63 << 10)
+	.short SPRITE_BABYBOY1_6, MMODEL_BABYBOY1, 0x1E4 | (63 << 10)
+	.short SPRITE_BABYBOY1_7, MMODEL_BABYBOY1, 0x1E4 | (63 << 10)
+	.short SPRITE_BABYBOY1_8, MMODEL_BABYBOY1, 0x1E4 | (63 << 10)
+	.short SPRITE_BABYBOY1_9, MMODEL_BABYBOY1, 0x1E4 | (63 << 10)
+	.short SPRITE_BABYBOY1_10, MMODEL_BABYBOY1, 0x1E4 | (63 << 10)
+	.short SPRITE_BABYBOY1_11, MMODEL_BABYBOY1, 0x1E4 | (63 << 10)
+	.short SPRITE_LEAG_DOOR2, MMODEL_LEAG_DOOR2, 0x025 | (4 << 10)
+	.short SPRITE_BABYBOY1_12, MMODEL_BABYBOY1, 0x1E4 | (63 << 10)
+	.short SPRITE_BABYBOY1_13, MMODEL_BABYBOY1, 0x1E4 | (63 << 10)
+	.short SPRITE_PL_BOY01C, MMODEL_PL_BOY01C, 0x060 | (7 << 10)
+	.short SPRITE_PL_GIRL01C, MMODEL_PL_GIRL01C, 0x060 | (7 << 10)
+	.short SPRITE_GSBABYBOY1, MMODEL_GSBABYBOY1, 0x000 | (0 << 10)
+	.short SPRITE_GSBABYGIRL1, MMODEL_GSBABYGIRL1, 0x000 | (0 << 10)
+	.short SPRITE_GSBOY2, MMODEL_GSBOY2, 0x000 | (0 << 10)
+	.short SPRITE_GSBOY3, MMODEL_GSBOY3, 0x000 | (0 << 10)
+	.short SPRITE_GSGIRL1, MMODEL_GSGIRL1, 0x000 | (0 << 10)
+	.short SPRITE_GSGIRL2, MMODEL_GSGIRL2, 0x000 | (0 << 10)
+	.short SPRITE_GSGIRL3, MMODEL_GSGIRL3, 0x000 | (0 << 10)
+	.short SPRITE_GSMAN1, MMODEL_GSMAN1, 0x000 | (0 << 10)
+	.short SPRITE_GSMAN2, MMODEL_GSMAN2, 0x000 | (0 << 10)
+	.short SPRITE_GSMAN3, MMODEL_GSMAN3, 0x000 | (0 << 10)
+	.short SPRITE_GSWOMAN1, MMODEL_GSWOMAN1, 0x000 | (0 << 10)
+	.short SPRITE_GSWOMAN2, MMODEL_GSWOMAN2, 0x000 | (0 << 10)
+	.short SPRITE_GSWOMAN3, MMODEL_GSWOMAN3, 0x000 | (0 << 10)
+	.short SPRITE_GSMIDDLEMAN1, MMODEL_GSMIDDLEMAN1, 0x000 | (0 << 10)
+	.short SPRITE_MIDDLEWOMAN1_2, MMODEL_MIDDLEWOMAN1_2, 0x000 | (0 << 10)
+	.short SPRITE_GSOLDMAN1, MMODEL_GSOLDMAN1, 0x000 | (0 << 10)
+	.short SPRITE_GSOLDWOMAN1, MMODEL_GSOLDWOMAN1, 0x000 | (0 << 10)
+	.short SPRITE_GSBIGMAN, MMODEL_GSBIGMAN, 0x000 | (0 << 10)
+	.short SPRITE_MOUNT_2, MMODEL_MOUNT_2, 0x000 | (0 << 10)
+	.short SPRITE_SHOPM1_2, MMODEL_SHOPM1_2, 0x000 | (0 << 10)
+	.short SPRITE_PCWOMAN1, MMODEL_PCWOMAN1, 0x180 | (5 << 10)
+	.short SPRITE_PCWOMAN2, MMODEL_PCWOMAN2, 0x000 | (0 << 10)
+	.short SPRITE_PCWOMAN3, MMODEL_PCWOMAN3, 0x000 | (0 << 10)
+	.short SPRITE_GSASSISTANTM, MMODEL_GSASSISTANTM, 0x000 | (0 << 10)
+	.short SPRITE_GSGENTLEMAN, MMODEL_GSGENTLEMAN, 0x000 | (0 << 10)
+	.short SPRITE_GSSWIMMERM, MMODEL_GSSWIMMERM, 0x000 | (0 << 10)
+	.short SPRITE_GSSWIMMERW, MMODEL_GSSWIMMERW, 0x000 | (0 << 10)
+	.short SPRITE_GSFIGHTER, MMODEL_GSFIGHTER, 0x000 | (0 << 10)
+	.short SPRITE_CAMPBOY_2, MMODEL_CAMPBOY_2, 0x000 | (0 << 10)
+	.short SPRITE_PICNICGIRL_2, MMODEL_PICNICGIRL_2, 0x000 | (0 << 10)
+	.short SPRITE_FISHING_2, MMODEL_FISHING_2, 0x000 | (0 << 10)
+	.short SPRITE_SEAMAN_2, MMODEL_SEAMAN_2, 0x000 | (0 << 10)
+	.short SPRITE_MYSTERY_2, MMODEL_MYSTERY_2, 0x000 | (0 << 10)
+	.short SPRITE_GSLEADER1, MMODEL_GSLEADER1, 0x000 | (0 << 10)
+	.short SPRITE_GSLEADER2, MMODEL_GSLEADER2, 0x000 | (0 << 10)
+	.short SPRITE_GSLEADER3, MMODEL_GSLEADER3, 0x000 | (0 << 10)
+	.short SPRITE_GSLEADER4, MMODEL_GSLEADER4, 0x000 | (0 << 10)
+	.short SPRITE_GSLEADER5, MMODEL_GSLEADER5, 0x000 | (0 << 10)
+	.short SPRITE_GSLEADER6, MMODEL_GSLEADER6, 0x000 | (0 << 10)
+	.short SPRITE_GSLEADER7, MMODEL_GSLEADER7, 0x000 | (0 << 10)
+	.short SPRITE_GSLEADER8, MMODEL_GSLEADER8, 0x000 | (0 << 10)
+	.short SPRITE_GSBIGFOUR1, MMODEL_GSBIGFOUR1, 0x000 | (0 << 10)
+	.short SPRITE_GSBIGFOUR2, MMODEL_GSBIGFOUR2, 0x000 | (0 << 10)
+	.short SPRITE_GSBIGFOUR3, MMODEL_GSBIGFOUR3, 0x000 | (0 << 10)
+	.short SPRITE_GSBIGFOUR4, MMODEL_GSBIGFOUR4, 0x000 | (0 << 10)
+	.short SPRITE_WATARU, MMODEL_WATARU, 0x000 | (0 << 10)
+	.short SPRITE_GSMAMA, MMODEL_GSMAMA, 0x000 | (0 << 10)
+	.short SPRITE_OOKIDO, MMODEL_OOKIDO, 0x000 | (0 << 10)
+	.short SPRITE_GSDSBOY, MMODEL_GSDSBOY, 0x000 | (0 << 10)
+	.short SPRITE_GSLEADER9, MMODEL_GSLEADER9, 0x000 | (0 << 10)
+	.short SPRITE_GSLEADER10, MMODEL_GSLEADER10, 0x000 | (0 << 10)
+	.short SPRITE_GSLEADER11, MMODEL_GSLEADER11, 0x000 | (0 << 10)
+	.short SPRITE_GSLEADER12, MMODEL_GSLEADER12, 0x000 | (0 << 10)
+	.short SPRITE_GSLEADER13, MMODEL_GSLEADER13, 0x000 | (0 << 10)
+	.short SPRITE_GSLEADER14, MMODEL_GSLEADER14, 0x000 | (0 << 10)
+	.short SPRITE_GSLEADER15, MMODEL_GSLEADER15, 0x000 | (0 << 10)
+	.short SPRITE_GSLEADER16, MMODEL_GSLEADER16, 0x000 | (0 << 10)
+	.short SPRITE_MANIA, MMODEL_MANIA, 0x000 | (0 << 10)
+	.short SPRITE_JUGGRER, MMODEL_JUGGRER, 0x000 | (0 << 10)
+	.short SPRITE_USOKKY, MMODEL_USOKKY, 0x000 | (0 << 10)
+	.short SPRITE_MINAKI, MMODEL_MINAKI, 0x000 | (0 << 10)
+	.short SPRITE_THLONOWNER, MMODEL_THLONOWNER, 0x000 | (0 << 10)
+	.short SPRITE_INSTRUCTOR, MMODEL_INSTRUCTOR, 0x000 | (0 << 10)
+	.short SPRITE_KURUMI, MMODEL_KURUMI, 0x000 | (0 << 10)
+	.short SPRITE_NANAMI, MMODEL_NANAMI, 0x000 | (0 << 10)
+	.short SPRITE_REDMAMA, MMODEL_REDMAMA, 0x000 | (0 << 10)
+	.short SPRITE_COUNTERM, MMODEL_COUNTERM, 0x000 | (0 << 10)
+	.short SPRITE_KABIGON, MMODEL_KABIGON, 0x006 | (23 << 10)
+	.short SPRITE_ICE, MMODEL_ICE, 0x006 | (0 << 10)
+	.short SPRITE_ROTOMF, MMODEL_ROTOMF, 0x000 | (0 << 10)
+	.short SPRITE_ROTOMS, MMODEL_ROTOMS, 0x000 | (0 << 10)
+	.short SPRITE_ROTOMI, MMODEL_ROTOMI, 0x000 | (0 << 10)
+	.short SPRITE_ROTOMW, MMODEL_ROTOMW, 0x000 | (0 << 10)
+	.short SPRITE_ROTOMG, MMODEL_ROTOMG, 0x000 | (0 << 10)
+	.short SPRITE_STOP, MMODEL_STOP, 0x000 | (23 << 10)
+	.short SPRITE_MONO_PIP, MMODEL_MONO_PIP, 0x024 | (0 << 10)
+	.short SPRITE_GTOROPHY, MMODEL_GTOROPHY, 0x024 | (0 << 10)
+	.short SPRITE_STOROPHY, MMODEL_STOROPHY, 0x024 | (0 << 10)
+	.short SPRITE_BTOROPHY, MMODEL_BTOROPHY, 0x024 | (0 << 10)
+	.short SPRITE_POKEWALL, MMODEL_POKEWALL, 0x024 | (23 << 10)
+	.short SPRITE_MEDAL, MMODEL_MEDAL, 0x024 | (23 << 10)
+	.short SPRITE_SCROLL, MMODEL_SCROLL, 0x024 | (0 << 10)
+	.short SPRITE_SIGNSHOES, MMODEL_SIGNSHOES, 0x024 | (0 << 10)
+	.short SPRITE_SIGNCLOTHES, MMODEL_SIGNCLOTHES, 0x024 | (0 << 10)
+	.short SPRITE_SIGNFLAG, MMODEL_SIGNFLAG, 0x024 | (23 << 10)
+	.short SPRITE_SIGNPOKEGEAR, MMODEL_SIGNPOKEGEAR, 0x024 | (0 << 10)
+	.short SPRITE_SIGNBALL, MMODEL_SIGNBALL, 0x024 | (0 << 10)
+	.short SPRITE_STATUEHERO, MMODEL_STATUEHERO, 0x024 | (0 << 10)
+	.short SPRITE_STATUEHEROINE, MMODEL_STATUEHEROINE, 0x024 | (0 << 10)
+	.short SPRITE_TSURE_POKE_BULBASAUR, MMODEL_TSURE_POKE_BULBASAUR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_IVYSAUR, MMODEL_TSURE_POKE_IVYSAUR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_VENUSAUR, MMODEL_TSURE_POKE_VENUSAUR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CHARMANDER, MMODEL_TSURE_POKE_CHARMANDER, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CHARMELEON, MMODEL_TSURE_POKE_CHARMELEON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CHARIZARD, MMODEL_TSURE_POKE_CHARIZARD, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SQUIRTLE, MMODEL_TSURE_POKE_SQUIRTLE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_WARTORTLE, MMODEL_TSURE_POKE_WARTORTLE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BLASTOISE, MMODEL_TSURE_POKE_BLASTOISE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CATERPIE, MMODEL_TSURE_POKE_CATERPIE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_METAPOD, MMODEL_TSURE_POKE_METAPOD, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BUTTERFREE, MMODEL_TSURE_POKE_BUTTERFREE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_WEEDLE, MMODEL_TSURE_POKE_WEEDLE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_KAKUNA, MMODEL_TSURE_POKE_KAKUNA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BEEDRILL, MMODEL_TSURE_POKE_BEEDRILL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PIDGEY, MMODEL_TSURE_POKE_PIDGEY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PIDGEOTTO, MMODEL_TSURE_POKE_PIDGEOTTO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PIDGEOT, MMODEL_TSURE_POKE_PIDGEOT, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_RATTATA, MMODEL_TSURE_POKE_RATTATA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_RATICATE, MMODEL_TSURE_POKE_RATICATE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SPEAROW, MMODEL_TSURE_POKE_SPEAROW, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_FEAROW, MMODEL_TSURE_POKE_FEAROW, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_EKANS, MMODEL_TSURE_POKE_EKANS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ARBOK, MMODEL_TSURE_POKE_ARBOK, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PIKACHU, MMODEL_TSURE_POKE_PIKACHU, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_RAICHU, MMODEL_TSURE_POKE_RAICHU, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SANDSHREW, MMODEL_TSURE_POKE_SANDSHREW, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SANDSLASH, MMODEL_TSURE_POKE_SANDSLASH, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_NIDORAN_F, MMODEL_TSURE_POKE_NIDORAN_F, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_NIDORINA, MMODEL_TSURE_POKE_NIDORINA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_NIDOQUEEN, MMODEL_TSURE_POKE_NIDOQUEEN, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_NIDORAN_M, MMODEL_TSURE_POKE_NIDORAN_M, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_NIDORINO, MMODEL_TSURE_POKE_NIDORINO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_NIDOKING, MMODEL_TSURE_POKE_NIDOKING, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CLEFAIRY, MMODEL_TSURE_POKE_CLEFAIRY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CLEFABLE, MMODEL_TSURE_POKE_CLEFABLE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_VULPIX, MMODEL_TSURE_POKE_VULPIX, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_NINETALES, MMODEL_TSURE_POKE_NINETALES, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_JIGGLYPUFF, MMODEL_TSURE_POKE_JIGGLYPUFF, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_WIGGLYTUFF, MMODEL_TSURE_POKE_WIGGLYTUFF, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ZUBAT, MMODEL_TSURE_POKE_ZUBAT, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GOLBAT, MMODEL_TSURE_POKE_GOLBAT, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ODDISH, MMODEL_TSURE_POKE_ODDISH, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GLOOM, MMODEL_TSURE_POKE_GLOOM, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_VILEPLUME, MMODEL_TSURE_POKE_VILEPLUME, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PARAS, MMODEL_TSURE_POKE_PARAS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PARASECT, MMODEL_TSURE_POKE_PARASECT, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_VENONAT, MMODEL_TSURE_POKE_VENONAT, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_VENOMOTH, MMODEL_TSURE_POKE_VENOMOTH, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DIGLETT, MMODEL_TSURE_POKE_DIGLETT, 0x226 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DUGTRIO, MMODEL_TSURE_POKE_DUGTRIO, 0x226 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MEOWTH, MMODEL_TSURE_POKE_MEOWTH, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PERSIAN, MMODEL_TSURE_POKE_PERSIAN, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PSYDUCK, MMODEL_TSURE_POKE_PSYDUCK, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GOLDUCK, MMODEL_TSURE_POKE_GOLDUCK, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MANKEY, MMODEL_TSURE_POKE_MANKEY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PRIMEAPE, MMODEL_TSURE_POKE_PRIMEAPE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GROWLITHE, MMODEL_TSURE_POKE_GROWLITHE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ARCANINE, MMODEL_TSURE_POKE_ARCANINE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_POLIWAG, MMODEL_TSURE_POKE_POLIWAG, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_POLIWHIRL, MMODEL_TSURE_POKE_POLIWHIRL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_POLIWRATH, MMODEL_TSURE_POKE_POLIWRATH, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ABRA, MMODEL_TSURE_POKE_ABRA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_KADABRA, MMODEL_TSURE_POKE_KADABRA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ALAKAZAM, MMODEL_TSURE_POKE_ALAKAZAM, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MACHOP, MMODEL_TSURE_POKE_MACHOP, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MACHOKE, MMODEL_TSURE_POKE_MACHOKE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MACHAMP, MMODEL_TSURE_POKE_MACHAMP, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BELLSPROUT, MMODEL_TSURE_POKE_BELLSPROUT, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_WEEPINBELL, MMODEL_TSURE_POKE_WEEPINBELL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_VICTREEBEL, MMODEL_TSURE_POKE_VICTREEBEL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_TENTACOOL, MMODEL_TSURE_POKE_TENTACOOL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_TENTACRUEL, MMODEL_TSURE_POKE_TENTACRUEL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GEODUDE, MMODEL_TSURE_POKE_GEODUDE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GRAVELER, MMODEL_TSURE_POKE_GRAVELER, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GOLEM, MMODEL_TSURE_POKE_GOLEM, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PONYTA, MMODEL_TSURE_POKE_PONYTA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_RAPIDASH, MMODEL_TSURE_POKE_RAPIDASH, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SLOWPOKE, MMODEL_TSURE_POKE_SLOWPOKE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SLOWBRO, MMODEL_TSURE_POKE_SLOWBRO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MAGNEMITE, MMODEL_TSURE_POKE_MAGNEMITE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MAGNETON, MMODEL_TSURE_POKE_MAGNETON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_FARFETCHD, MMODEL_TSURE_POKE_FARFETCHD, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DODUO, MMODEL_TSURE_POKE_DODUO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DODRIO, MMODEL_TSURE_POKE_DODRIO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SEEL, MMODEL_TSURE_POKE_SEEL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DEWGONG, MMODEL_TSURE_POKE_DEWGONG, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GRIMER, MMODEL_TSURE_POKE_GRIMER, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MUK, MMODEL_TSURE_POKE_MUK, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SHELLDER, MMODEL_TSURE_POKE_SHELLDER, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CLOYSTER, MMODEL_TSURE_POKE_CLOYSTER, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GASTLY, MMODEL_TSURE_POKE_GASTLY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_HAUNTER, MMODEL_TSURE_POKE_HAUNTER, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GENGAR, MMODEL_TSURE_POKE_GENGAR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ONIX, MMODEL_TSURE_POKE_ONIX, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DROWZEE, MMODEL_TSURE_POKE_DROWZEE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_HYPNO, MMODEL_TSURE_POKE_HYPNO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_KRABBY, MMODEL_TSURE_POKE_KRABBY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_KINGLER, MMODEL_TSURE_POKE_KINGLER, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_VOLTORB, MMODEL_TSURE_POKE_VOLTORB, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ELECTRODE, MMODEL_TSURE_POKE_ELECTRODE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_EXEGGCUTE, MMODEL_TSURE_POKE_EXEGGCUTE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_EXEGGUTOR, MMODEL_TSURE_POKE_EXEGGUTOR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CUBONE, MMODEL_TSURE_POKE_CUBONE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MAROWAK, MMODEL_TSURE_POKE_MAROWAK, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_HITMONLEE, MMODEL_TSURE_POKE_HITMONLEE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_HITMONCHAN, MMODEL_TSURE_POKE_HITMONCHAN, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LICKITUNG, MMODEL_TSURE_POKE_LICKITUNG, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_KOFFING, MMODEL_TSURE_POKE_KOFFING, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_WEEZING, MMODEL_TSURE_POKE_WEEZING, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_RHYHORN, MMODEL_TSURE_POKE_RHYHORN, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_RHYDON, MMODEL_TSURE_POKE_RHYDON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CHANSEY, MMODEL_TSURE_POKE_CHANSEY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_TANGELA, MMODEL_TSURE_POKE_TANGELA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_KANGASKHAN, MMODEL_TSURE_POKE_KANGASKHAN, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_HORSEA, MMODEL_TSURE_POKE_HORSEA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SEADRA, MMODEL_TSURE_POKE_SEADRA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GOLDEEN, MMODEL_TSURE_POKE_GOLDEEN, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SEAKING, MMODEL_TSURE_POKE_SEAKING, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STARYU, MMODEL_TSURE_POKE_STARYU, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STARMIE, MMODEL_TSURE_POKE_STARMIE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MR_MIME, MMODEL_TSURE_POKE_MR_MIME, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SCYTHER, MMODEL_TSURE_POKE_SCYTHER, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_JYNX, MMODEL_TSURE_POKE_JYNX, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ELECTABUZZ, MMODEL_TSURE_POKE_ELECTABUZZ, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MAGMAR, MMODEL_TSURE_POKE_MAGMAR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PINSIR, MMODEL_TSURE_POKE_PINSIR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_TAUROS, MMODEL_TSURE_POKE_TAUROS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MAGIKARP, MMODEL_TSURE_POKE_MAGIKARP, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GYARADOS, MMODEL_TSURE_POKE_GYARADOS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LAPRAS, MMODEL_TSURE_POKE_LAPRAS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DITTO, MMODEL_TSURE_POKE_DITTO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_EEVEE, MMODEL_TSURE_POKE_EEVEE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_VAPOREON, MMODEL_TSURE_POKE_VAPOREON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_JOLTEON, MMODEL_TSURE_POKE_JOLTEON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_FLAREON, MMODEL_TSURE_POKE_FLAREON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PORYGON, MMODEL_TSURE_POKE_PORYGON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_OMANYTE, MMODEL_TSURE_POKE_OMANYTE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_OMASTAR, MMODEL_TSURE_POKE_OMASTAR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_KABUTO, MMODEL_TSURE_POKE_KABUTO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_KABUTOPS, MMODEL_TSURE_POKE_KABUTOPS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_AERODACTYL, MMODEL_TSURE_POKE_AERODACTYL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SNORLAX, MMODEL_TSURE_POKE_SNORLAX, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ARTICUNO, MMODEL_TSURE_POKE_ARTICUNO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ZAPDOS, MMODEL_TSURE_POKE_ZAPDOS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MOLTRES, MMODEL_TSURE_POKE_MOLTRES, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DRATINI, MMODEL_TSURE_POKE_DRATINI, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DRAGONAIR, MMODEL_TSURE_POKE_DRAGONAIR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DRAGONITE, MMODEL_TSURE_POKE_DRAGONITE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MEWTWO, MMODEL_TSURE_POKE_MEWTWO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MEW, MMODEL_TSURE_POKE_MEW, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CHIKORITA, MMODEL_TSURE_POKE_CHIKORITA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BAYLEEF, MMODEL_TSURE_POKE_BAYLEEF, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MEGANIUM, MMODEL_TSURE_POKE_MEGANIUM, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CYNDAQUIL, MMODEL_TSURE_POKE_CYNDAQUIL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_QUILAVA, MMODEL_TSURE_POKE_QUILAVA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_TYPHLOSION, MMODEL_TSURE_POKE_TYPHLOSION, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_TOTODILE, MMODEL_TSURE_POKE_TOTODILE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CROCONAW, MMODEL_TSURE_POKE_CROCONAW, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_FERALIGATR, MMODEL_TSURE_POKE_FERALIGATR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SENTRET, MMODEL_TSURE_POKE_SENTRET, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_FURRET, MMODEL_TSURE_POKE_FURRET, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_HOOTHOOT, MMODEL_TSURE_POKE_HOOTHOOT, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_NOCTOWL, MMODEL_TSURE_POKE_NOCTOWL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LEDYBA, MMODEL_TSURE_POKE_LEDYBA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LEDIAN, MMODEL_TSURE_POKE_LEDIAN, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SPINARAK, MMODEL_TSURE_POKE_SPINARAK, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ARIADOS, MMODEL_TSURE_POKE_ARIADOS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CROBAT, MMODEL_TSURE_POKE_CROBAT, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CHINCHOU, MMODEL_TSURE_POKE_CHINCHOU, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LANTURN, MMODEL_TSURE_POKE_LANTURN, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PICHU, MMODEL_TSURE_POKE_PICHU, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CLEFFA, MMODEL_TSURE_POKE_CLEFFA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_IGGLYBUFF, MMODEL_TSURE_POKE_IGGLYBUFF, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_TOGEPI, MMODEL_TSURE_POKE_TOGEPI, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_TOGETIC, MMODEL_TSURE_POKE_TOGETIC, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_NATU, MMODEL_TSURE_POKE_NATU, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_XATU, MMODEL_TSURE_POKE_XATU, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MAREEP, MMODEL_TSURE_POKE_MAREEP, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_FLAAFFY, MMODEL_TSURE_POKE_FLAAFFY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_AMPHAROS, MMODEL_TSURE_POKE_AMPHAROS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BELLOSSOM, MMODEL_TSURE_POKE_BELLOSSOM, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MARILL, MMODEL_TSURE_POKE_MARILL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_AZUMARILL, MMODEL_TSURE_POKE_AZUMARILL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SUDOWOODO, MMODEL_TSURE_POKE_SUDOWOODO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_POLITOED, MMODEL_TSURE_POKE_POLITOED, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_HOPPIP, MMODEL_TSURE_POKE_HOPPIP, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SKIPLOOM, MMODEL_TSURE_POKE_SKIPLOOM, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_JUMPLUFF, MMODEL_TSURE_POKE_JUMPLUFF, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_AIPOM, MMODEL_TSURE_POKE_AIPOM, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SUNKERN, MMODEL_TSURE_POKE_SUNKERN, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SUNFLORA, MMODEL_TSURE_POKE_SUNFLORA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_YANMA, MMODEL_TSURE_POKE_YANMA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_WOOPER, MMODEL_TSURE_POKE_WOOPER, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_QUAGSIRE, MMODEL_TSURE_POKE_QUAGSIRE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ESPEON, MMODEL_TSURE_POKE_ESPEON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UMBREON, MMODEL_TSURE_POKE_UMBREON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MURKROW, MMODEL_TSURE_POKE_MURKROW, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SLOWKING, MMODEL_TSURE_POKE_SLOWKING, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MISDREAVUS, MMODEL_TSURE_POKE_MISDREAVUS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_A, MMODEL_TSURE_POKE_UNOWN_A, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_B, MMODEL_TSURE_POKE_UNOWN_B, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_C, MMODEL_TSURE_POKE_UNOWN_C, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_D, MMODEL_TSURE_POKE_UNOWN_D, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_E, MMODEL_TSURE_POKE_UNOWN_E, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_F, MMODEL_TSURE_POKE_UNOWN_F, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_G, MMODEL_TSURE_POKE_UNOWN_G, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_H, MMODEL_TSURE_POKE_UNOWN_H, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_I, MMODEL_TSURE_POKE_UNOWN_I, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_J, MMODEL_TSURE_POKE_UNOWN_J, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_K, MMODEL_TSURE_POKE_UNOWN_K, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_L, MMODEL_TSURE_POKE_UNOWN_L, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_M, MMODEL_TSURE_POKE_UNOWN_M, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_N, MMODEL_TSURE_POKE_UNOWN_N, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_O, MMODEL_TSURE_POKE_UNOWN_O, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_P, MMODEL_TSURE_POKE_UNOWN_P, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_Q, MMODEL_TSURE_POKE_UNOWN_Q, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_R, MMODEL_TSURE_POKE_UNOWN_R, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_S, MMODEL_TSURE_POKE_UNOWN_S, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_T, MMODEL_TSURE_POKE_UNOWN_T, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_U, MMODEL_TSURE_POKE_UNOWN_U, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_V, MMODEL_TSURE_POKE_UNOWN_V, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_W, MMODEL_TSURE_POKE_UNOWN_W, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_X, MMODEL_TSURE_POKE_UNOWN_X, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_Y, MMODEL_TSURE_POKE_UNOWN_Y, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_Z, MMODEL_TSURE_POKE_UNOWN_Z, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_QMARK, MMODEL_TSURE_POKE_UNOWN_QMARK, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UNOWN_EXCL, MMODEL_TSURE_POKE_UNOWN_EXCL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_WOBBUFFET, MMODEL_TSURE_POKE_WOBBUFFET, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GIRAFARIG, MMODEL_TSURE_POKE_GIRAFARIG, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PINECO, MMODEL_TSURE_POKE_PINECO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_FORRETRESS, MMODEL_TSURE_POKE_FORRETRESS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DUNSPARCE, MMODEL_TSURE_POKE_DUNSPARCE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GLIGAR, MMODEL_TSURE_POKE_GLIGAR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STEELIX, MMODEL_TSURE_POKE_STEELIX, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_SNUBBULL, MMODEL_TSURE_POKE_SNUBBULL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GRANBULL, MMODEL_TSURE_POKE_GRANBULL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_QWILFISH, MMODEL_TSURE_POKE_QWILFISH, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SCIZOR, MMODEL_TSURE_POKE_SCIZOR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SHUCKLE, MMODEL_TSURE_POKE_SHUCKLE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_HERACROSS, MMODEL_TSURE_POKE_HERACROSS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SNEASEL, MMODEL_TSURE_POKE_SNEASEL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_TEDDIURSA, MMODEL_TSURE_POKE_TEDDIURSA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_URSARING, MMODEL_TSURE_POKE_URSARING, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SLUGMA, MMODEL_TSURE_POKE_SLUGMA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MAGCARGO, MMODEL_TSURE_POKE_MAGCARGO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SWINUB, MMODEL_TSURE_POKE_SWINUB, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PILOSWINE, MMODEL_TSURE_POKE_PILOSWINE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CORSOLA, MMODEL_TSURE_POKE_CORSOLA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_REMORAID, MMODEL_TSURE_POKE_REMORAID, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_OCTILLERY, MMODEL_TSURE_POKE_OCTILLERY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DELIBIRD, MMODEL_TSURE_POKE_DELIBIRD, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MANTINE, MMODEL_TSURE_POKE_MANTINE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SKARMORY, MMODEL_TSURE_POKE_SKARMORY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_HOUNDOUR, MMODEL_TSURE_POKE_HOUNDOUR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_HOUNDOOM, MMODEL_TSURE_POKE_HOUNDOOM, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_KINGDRA, MMODEL_TSURE_POKE_KINGDRA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PHANPY, MMODEL_TSURE_POKE_PHANPY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DONPHAN, MMODEL_TSURE_POKE_DONPHAN, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PORYGON2, MMODEL_TSURE_POKE_PORYGON2, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STANTLER, MMODEL_TSURE_POKE_STANTLER, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SMEARGLE, MMODEL_TSURE_POKE_SMEARGLE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_TYROGUE, MMODEL_TSURE_POKE_TYROGUE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_HITMONTOP, MMODEL_TSURE_POKE_HITMONTOP, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SMOOCHUM, MMODEL_TSURE_POKE_SMOOCHUM, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ELEKID, MMODEL_TSURE_POKE_ELEKID, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MAGBY, MMODEL_TSURE_POKE_MAGBY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MILTANK, MMODEL_TSURE_POKE_MILTANK, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BLISSEY, MMODEL_TSURE_POKE_BLISSEY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_RAIKOU, MMODEL_TSURE_POKE_RAIKOU, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ENTEI, MMODEL_TSURE_POKE_ENTEI, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SUICUNE, MMODEL_TSURE_POKE_SUICUNE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LARVITAR, MMODEL_TSURE_POKE_LARVITAR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PUPITAR, MMODEL_TSURE_POKE_PUPITAR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_TYRANITAR, MMODEL_TSURE_POKE_TYRANITAR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LUGIA, MMODEL_TSURE_POKE_LUGIA, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_HO_OH, MMODEL_TSURE_POKE_HO_OH, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_CELEBI, MMODEL_TSURE_POKE_CELEBI, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_TREECKO, MMODEL_TSURE_POKE_TREECKO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GROVYLE, MMODEL_TSURE_POKE_GROVYLE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SCEPTILE, MMODEL_TSURE_POKE_SCEPTILE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_TORCHIC, MMODEL_TSURE_POKE_TORCHIC, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_COMBUSKEN, MMODEL_TSURE_POKE_COMBUSKEN, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BLAZIKEN, MMODEL_TSURE_POKE_BLAZIKEN, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MUDKIP, MMODEL_TSURE_POKE_MUDKIP, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MARSHTOMP, MMODEL_TSURE_POKE_MARSHTOMP, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SWAMPERT, MMODEL_TSURE_POKE_SWAMPERT, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_POOCHYENA, MMODEL_TSURE_POKE_POOCHYENA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MIGHTYENA, MMODEL_TSURE_POKE_MIGHTYENA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ZIGZAGOON, MMODEL_TSURE_POKE_ZIGZAGOON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LINOONE, MMODEL_TSURE_POKE_LINOONE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_WURMPLE, MMODEL_TSURE_POKE_WURMPLE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SILCOON, MMODEL_TSURE_POKE_SILCOON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BEAUTIFLY, MMODEL_TSURE_POKE_BEAUTIFLY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CASCOON, MMODEL_TSURE_POKE_CASCOON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DUSTOX, MMODEL_TSURE_POKE_DUSTOX, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LOTAD, MMODEL_TSURE_POKE_LOTAD, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LOMBRE, MMODEL_TSURE_POKE_LOMBRE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LUDICOLO, MMODEL_TSURE_POKE_LUDICOLO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SEEDOT, MMODEL_TSURE_POKE_SEEDOT, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_NUZLEAF, MMODEL_TSURE_POKE_NUZLEAF, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SHIFTRY, MMODEL_TSURE_POKE_SHIFTRY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_TAILLOW, MMODEL_TSURE_POKE_TAILLOW, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SWELLOW, MMODEL_TSURE_POKE_SWELLOW, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_WINGULL, MMODEL_TSURE_POKE_WINGULL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PELIPPER, MMODEL_TSURE_POKE_PELIPPER, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_RALTS, MMODEL_TSURE_POKE_RALTS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_KIRLIA, MMODEL_TSURE_POKE_KIRLIA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GARDEVOIR, MMODEL_TSURE_POKE_GARDEVOIR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SURSKIT, MMODEL_TSURE_POKE_SURSKIT, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MASQUERAIN, MMODEL_TSURE_POKE_MASQUERAIN, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SHROOMISH, MMODEL_TSURE_POKE_SHROOMISH, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BRELOOM, MMODEL_TSURE_POKE_BRELOOM, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SLAKOTH, MMODEL_TSURE_POKE_SLAKOTH, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_VIGOROTH, MMODEL_TSURE_POKE_VIGOROTH, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SLAKING, MMODEL_TSURE_POKE_SLAKING, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_NINCADA, MMODEL_TSURE_POKE_NINCADA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_NINJASK, MMODEL_TSURE_POKE_NINJASK, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SHEDINJA, MMODEL_TSURE_POKE_SHEDINJA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_WHISMUR, MMODEL_TSURE_POKE_WHISMUR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LOUDRED, MMODEL_TSURE_POKE_LOUDRED, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_EXPLOUD, MMODEL_TSURE_POKE_EXPLOUD, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MAKUHITA, MMODEL_TSURE_POKE_MAKUHITA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_HARIYAMA, MMODEL_TSURE_POKE_HARIYAMA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_AZURILL, MMODEL_TSURE_POKE_AZURILL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_NOSEPASS, MMODEL_TSURE_POKE_NOSEPASS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SKITTY, MMODEL_TSURE_POKE_SKITTY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DELCATTY, MMODEL_TSURE_POKE_DELCATTY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SABLEYE, MMODEL_TSURE_POKE_SABLEYE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MAWILE, MMODEL_TSURE_POKE_MAWILE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ARON, MMODEL_TSURE_POKE_ARON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LAIRON, MMODEL_TSURE_POKE_LAIRON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_AGGRON, MMODEL_TSURE_POKE_AGGRON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MEDITITE, MMODEL_TSURE_POKE_MEDITITE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MEDICHAM, MMODEL_TSURE_POKE_MEDICHAM, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ELECTRIKE, MMODEL_TSURE_POKE_ELECTRIKE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MANECTRIC, MMODEL_TSURE_POKE_MANECTRIC, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PLUSLE, MMODEL_TSURE_POKE_PLUSLE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MINUN, MMODEL_TSURE_POKE_MINUN, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_VOLBEAT, MMODEL_TSURE_POKE_VOLBEAT, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ILLUMISE, MMODEL_TSURE_POKE_ILLUMISE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ROSELIA, MMODEL_TSURE_POKE_ROSELIA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GULPIN, MMODEL_TSURE_POKE_GULPIN, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SWALOT, MMODEL_TSURE_POKE_SWALOT, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CARVANHA, MMODEL_TSURE_POKE_CARVANHA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SHARPEDO, MMODEL_TSURE_POKE_SHARPEDO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_WAILMER, MMODEL_TSURE_POKE_WAILMER, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_WAILORD, MMODEL_TSURE_POKE_WAILORD, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_NUMEL, MMODEL_TSURE_POKE_NUMEL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CAMERUPT, MMODEL_TSURE_POKE_CAMERUPT, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_TORKOAL, MMODEL_TSURE_POKE_TORKOAL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SPOINK, MMODEL_TSURE_POKE_SPOINK, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GRUMPIG, MMODEL_TSURE_POKE_GRUMPIG, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SPINDA, MMODEL_TSURE_POKE_SPINDA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_TRAPINCH, MMODEL_TSURE_POKE_TRAPINCH, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_VIBRAVA, MMODEL_TSURE_POKE_VIBRAVA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_FLYGON, MMODEL_TSURE_POKE_FLYGON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CACNEA, MMODEL_TSURE_POKE_CACNEA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CACTURNE, MMODEL_TSURE_POKE_CACTURNE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SWABLU, MMODEL_TSURE_POKE_SWABLU, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ALTARIA, MMODEL_TSURE_POKE_ALTARIA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ZANGOOSE, MMODEL_TSURE_POKE_ZANGOOSE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SEVIPER, MMODEL_TSURE_POKE_SEVIPER, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LUNATONE, MMODEL_TSURE_POKE_LUNATONE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SOLROCK, MMODEL_TSURE_POKE_SOLROCK, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BARBOACH, MMODEL_TSURE_POKE_BARBOACH, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_WHISCASH, MMODEL_TSURE_POKE_WHISCASH, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CORPHISH, MMODEL_TSURE_POKE_CORPHISH, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CRAWDAUNT, MMODEL_TSURE_POKE_CRAWDAUNT, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BALTOY, MMODEL_TSURE_POKE_BALTOY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CLAYDOL, MMODEL_TSURE_POKE_CLAYDOL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LILEEP, MMODEL_TSURE_POKE_LILEEP, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CRADILY, MMODEL_TSURE_POKE_CRADILY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ANORITH, MMODEL_TSURE_POKE_ANORITH, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ARMALDO, MMODEL_TSURE_POKE_ARMALDO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_FEEBAS, MMODEL_TSURE_POKE_FEEBAS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MILOTIC, MMODEL_TSURE_POKE_MILOTIC, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CASTFORM, MMODEL_TSURE_POKE_CASTFORM, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_KECLEON, MMODEL_TSURE_POKE_KECLEON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SHUPPET, MMODEL_TSURE_POKE_SHUPPET, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BANETTE, MMODEL_TSURE_POKE_BANETTE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DUSKULL, MMODEL_TSURE_POKE_DUSKULL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DUSCLOPS, MMODEL_TSURE_POKE_DUSCLOPS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_TROPIUS, MMODEL_TSURE_POKE_TROPIUS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CHIMECHO, MMODEL_TSURE_POKE_CHIMECHO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ABSOL, MMODEL_TSURE_POKE_ABSOL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_WYNAUT, MMODEL_TSURE_POKE_WYNAUT, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SNORUNT, MMODEL_TSURE_POKE_SNORUNT, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GLALIE, MMODEL_TSURE_POKE_GLALIE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SPHEAL, MMODEL_TSURE_POKE_SPHEAL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SEALEO, MMODEL_TSURE_POKE_SEALEO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_WALREIN, MMODEL_TSURE_POKE_WALREIN, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CLAMPERL, MMODEL_TSURE_POKE_CLAMPERL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_HUNTAIL, MMODEL_TSURE_POKE_HUNTAIL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GOREBYSS, MMODEL_TSURE_POKE_GOREBYSS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_RELICANTH, MMODEL_TSURE_POKE_RELICANTH, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LUVDISC, MMODEL_TSURE_POKE_LUVDISC, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BAGON, MMODEL_TSURE_POKE_BAGON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SHELGON, MMODEL_TSURE_POKE_SHELGON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SALAMENCE, MMODEL_TSURE_POKE_SALAMENCE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BELDUM, MMODEL_TSURE_POKE_BELDUM, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_METANG, MMODEL_TSURE_POKE_METANG, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_METAGROSS, MMODEL_TSURE_POKE_METAGROSS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_REGIROCK, MMODEL_TSURE_POKE_REGIROCK, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_REGICE, MMODEL_TSURE_POKE_REGICE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_REGISTEEL, MMODEL_TSURE_POKE_REGISTEEL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LATIAS, MMODEL_TSURE_POKE_LATIAS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LATIOS, MMODEL_TSURE_POKE_LATIOS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_KYOGRE, MMODEL_TSURE_POKE_KYOGRE, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_GROUDON, MMODEL_TSURE_POKE_GROUDON, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_RAYQUAZA, MMODEL_TSURE_POKE_RAYQUAZA, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_JIRACHI, MMODEL_TSURE_POKE_JIRACHI, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DEOXYS, MMODEL_TSURE_POKE_DEOXYS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DEOXYS_ATK, MMODEL_TSURE_POKE_DEOXYS_ATK, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DEOXYS_DEF, MMODEL_TSURE_POKE_DEOXYS_DEF, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DEOXYS_SPD, MMODEL_TSURE_POKE_DEOXYS_SPD, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_TURTWIG, MMODEL_TSURE_POKE_TURTWIG, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GROTLE, MMODEL_TSURE_POKE_GROTLE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_TORTERRA, MMODEL_TSURE_POKE_TORTERRA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CHIMCHAR, MMODEL_TSURE_POKE_CHIMCHAR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MONFERNO, MMODEL_TSURE_POKE_MONFERNO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_INFERNAPE, MMODEL_TSURE_POKE_INFERNAPE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PIPLUP, MMODEL_TSURE_POKE_PIPLUP, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PRINPLUP, MMODEL_TSURE_POKE_PRINPLUP, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_EMPOLEON, MMODEL_TSURE_POKE_EMPOLEON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STARLY, MMODEL_TSURE_POKE_STARLY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STARAVIA, MMODEL_TSURE_POKE_STARAVIA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STARAPTOR, MMODEL_TSURE_POKE_STARAPTOR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BIDOOF, MMODEL_TSURE_POKE_BIDOOF, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BIBAREL, MMODEL_TSURE_POKE_BIBAREL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_KRICKETOT, MMODEL_TSURE_POKE_KRICKETOT, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_KRICKETUNE, MMODEL_TSURE_POKE_KRICKETUNE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SHINX, MMODEL_TSURE_POKE_SHINX, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LUXIO, MMODEL_TSURE_POKE_LUXIO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LUXRAY, MMODEL_TSURE_POKE_LUXRAY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BUDEW, MMODEL_TSURE_POKE_BUDEW, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ROSERADE, MMODEL_TSURE_POKE_ROSERADE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CRANIDOS, MMODEL_TSURE_POKE_CRANIDOS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_RAMPARDOS, MMODEL_TSURE_POKE_RAMPARDOS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SHIELDON, MMODEL_TSURE_POKE_SHIELDON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BASTIODON, MMODEL_TSURE_POKE_BASTIODON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BURMY, MMODEL_TSURE_POKE_BURMY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BURMY_SANDY, MMODEL_TSURE_POKE_BURMY_SANDY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BURMY_TRASH, MMODEL_TSURE_POKE_BURMY_TRASH, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_WORMADAM, MMODEL_TSURE_POKE_WORMADAM, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_WORMADAM_SANDY, MMODEL_TSURE_POKE_WORMADAM_SANDY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_WORMADAM_TRASH, MMODEL_TSURE_POKE_WORMADAM_TRASH, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MOTHIM, MMODEL_TSURE_POKE_MOTHIM, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_COMBEE, MMODEL_TSURE_POKE_COMBEE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_VESPIQUEN, MMODEL_TSURE_POKE_VESPIQUEN, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PACHIRISU, MMODEL_TSURE_POKE_PACHIRISU, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BUIZEL, MMODEL_TSURE_POKE_BUIZEL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_FLOATZEL, MMODEL_TSURE_POKE_FLOATZEL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CHERUBI, MMODEL_TSURE_POKE_CHERUBI, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CHERRIM, MMODEL_TSURE_POKE_CHERRIM, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SHELLOS_WEST, MMODEL_TSURE_POKE_SHELLOS_WEST, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SHELLOS_EAST, MMODEL_TSURE_POKE_SHELLOS_EAST, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GASTRODON_WEST, MMODEL_TSURE_POKE_GASTRODON_WEST, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GASTRODON_EAST, MMODEL_TSURE_POKE_GASTRODON_EAST, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_AMBIPOM, MMODEL_TSURE_POKE_AMBIPOM, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DRIFLOON, MMODEL_TSURE_POKE_DRIFLOON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DRIFBLIM, MMODEL_TSURE_POKE_DRIFBLIM, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BUNEARY, MMODEL_TSURE_POKE_BUNEARY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LOPUNNY, MMODEL_TSURE_POKE_LOPUNNY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MISMAGIUS, MMODEL_TSURE_POKE_MISMAGIUS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_HONCHKROW, MMODEL_TSURE_POKE_HONCHKROW, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GLAMEOW, MMODEL_TSURE_POKE_GLAMEOW, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PURUGLY, MMODEL_TSURE_POKE_PURUGLY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CHINGLING, MMODEL_TSURE_POKE_CHINGLING, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STUNKY, MMODEL_TSURE_POKE_STUNKY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SKUNTANK, MMODEL_TSURE_POKE_SKUNTANK, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BRONZOR, MMODEL_TSURE_POKE_BRONZOR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BRONZONG, MMODEL_TSURE_POKE_BRONZONG, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_BONSLY, MMODEL_TSURE_POKE_BONSLY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MIME_JR, MMODEL_TSURE_POKE_MIME_JR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_HAPPINY, MMODEL_TSURE_POKE_HAPPINY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CHATOT, MMODEL_TSURE_POKE_CHATOT, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SPIRITOMB, MMODEL_TSURE_POKE_SPIRITOMB, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GIBLE, MMODEL_TSURE_POKE_GIBLE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GABITE, MMODEL_TSURE_POKE_GABITE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GARCHOMP, MMODEL_TSURE_POKE_GARCHOMP, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MUNCHLAX, MMODEL_TSURE_POKE_MUNCHLAX, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_RIOLU, MMODEL_TSURE_POKE_RIOLU, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LUCARIO, MMODEL_TSURE_POKE_LUCARIO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_HIPPOPOTAS, MMODEL_TSURE_POKE_HIPPOPOTAS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_HIPPOPOTAS_F, MMODEL_TSURE_POKE_HIPPOPOTAS_F, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_HIPPOWDON, MMODEL_TSURE_POKE_HIPPOWDON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_HIPPOWDON_F, MMODEL_TSURE_POKE_HIPPOWDON_F, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SKORUPI, MMODEL_TSURE_POKE_SKORUPI, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DRAPION, MMODEL_TSURE_POKE_DRAPION, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CROAGUNK, MMODEL_TSURE_POKE_CROAGUNK, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_TOXICROAK, MMODEL_TSURE_POKE_TOXICROAK, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_CARNIVINE, MMODEL_TSURE_POKE_CARNIVINE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_FINNEON, MMODEL_TSURE_POKE_FINNEON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LUMINEON, MMODEL_TSURE_POKE_LUMINEON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MANTYKE, MMODEL_TSURE_POKE_MANTYKE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SNOVER, MMODEL_TSURE_POKE_SNOVER, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ABOMASNOW, MMODEL_TSURE_POKE_ABOMASNOW, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_WEAVILE, MMODEL_TSURE_POKE_WEAVILE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MAGNEZONE, MMODEL_TSURE_POKE_MAGNEZONE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LICKILICKY, MMODEL_TSURE_POKE_LICKILICKY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_RHYPERIOR, MMODEL_TSURE_POKE_RHYPERIOR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_TANGROWTH, MMODEL_TSURE_POKE_TANGROWTH, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ELECTIVIRE, MMODEL_TSURE_POKE_ELECTIVIRE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MAGMORTAR, MMODEL_TSURE_POKE_MAGMORTAR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_TOGEKISS, MMODEL_TSURE_POKE_TOGEKISS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_YANMEGA, MMODEL_TSURE_POKE_YANMEGA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_LEAFEON, MMODEL_TSURE_POKE_LEAFEON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GLACEON, MMODEL_TSURE_POKE_GLACEON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GLISCOR, MMODEL_TSURE_POKE_GLISCOR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MAMOSWINE, MMODEL_TSURE_POKE_MAMOSWINE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PORYGON_Z, MMODEL_TSURE_POKE_PORYGON_Z, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GALLADE, MMODEL_TSURE_POKE_GALLADE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PROBOPASS, MMODEL_TSURE_POKE_PROBOPASS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DUSKNOIR, MMODEL_TSURE_POKE_DUSKNOIR, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_FROSLASS, MMODEL_TSURE_POKE_FROSLASS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ROTOM, MMODEL_TSURE_POKE_ROTOM, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ROTOM_HEAT, MMODEL_TSURE_POKE_ROTOM_HEAT, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ROTOM_WASH, MMODEL_TSURE_POKE_ROTOM_WASH, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ROTOM_FROST, MMODEL_TSURE_POKE_ROTOM_FROST, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ROTOM_FAN, MMODEL_TSURE_POKE_ROTOM_FAN, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ROTOM_MOW, MMODEL_TSURE_POKE_ROTOM_MOW, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_UXIE, MMODEL_TSURE_POKE_UXIE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MESPRIT, MMODEL_TSURE_POKE_MESPRIT, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_AZELF, MMODEL_TSURE_POKE_AZELF, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DIALGA, MMODEL_TSURE_POKE_DIALGA, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_PALKIA, MMODEL_TSURE_POKE_PALKIA, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_HEATRAN, MMODEL_TSURE_POKE_HEATRAN, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_REGIGIGAS, MMODEL_TSURE_POKE_REGIGIGAS, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_GIRATINA, MMODEL_TSURE_POKE_GIRATINA, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_GIRATINA_ORIGIN, MMODEL_TSURE_POKE_GIRATINA_ORIGIN, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_CRESSELIA, MMODEL_TSURE_POKE_CRESSELIA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PHIONE, MMODEL_TSURE_POKE_PHIONE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MANAPHY, MMODEL_TSURE_POKE_MANAPHY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_DARKRAI, MMODEL_TSURE_POKE_DARKRAI, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SHAYMIN, MMODEL_TSURE_POKE_SHAYMIN, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_SHAYMIN_SKY, MMODEL_TSURE_POKE_SHAYMIN_SKY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_ARCEUS_NORMAL, MMODEL_TSURE_POKE_ARCEUS_NORMAL, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_ARCEUS_FIGHTING, MMODEL_TSURE_POKE_ARCEUS_FIGHTING, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_ARCEUS_FLYING, MMODEL_TSURE_POKE_ARCEUS_FLYING, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_ARCEUS_POISON, MMODEL_TSURE_POKE_ARCEUS_POISON, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_ARCEUS_GROUND, MMODEL_TSURE_POKE_ARCEUS_GROUND, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_ARCEUS_ROCK, MMODEL_TSURE_POKE_ARCEUS_ROCK, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_ARCEUS_BUG, MMODEL_TSURE_POKE_ARCEUS_BUG, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_ARCEUS_GHOST, MMODEL_TSURE_POKE_ARCEUS_GHOST, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_ARCEUS_STEEL, MMODEL_TSURE_POKE_ARCEUS_STEEL, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_ARCEUS_MYSTERY, MMODEL_TSURE_POKE_ARCEUS_MYSTERY, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_ARCEUS_FIRE, MMODEL_TSURE_POKE_ARCEUS_FIRE, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_ARCEUS_WATER, MMODEL_TSURE_POKE_ARCEUS_WATER, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_ARCEUS_GRASS, MMODEL_TSURE_POKE_ARCEUS_GRASS, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_ARCEUS_ELECTRIC, MMODEL_TSURE_POKE_ARCEUS_ELECTRIC, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_ARCEUS_PSYCHIC, MMODEL_TSURE_POKE_ARCEUS_PSYCHIC, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_ARCEUS_ICE, MMODEL_TSURE_POKE_ARCEUS_ICE, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_ARCEUS_DRAGON, MMODEL_TSURE_POKE_ARCEUS_DRAGON, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_ARCEUS_DARK, MMODEL_TSURE_POKE_ARCEUS_DARK, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_PICHU_SPIKY, MMODEL_TSURE_POKE_PICHU_SPIKY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_VENUSAUR_F, MMODEL_TSURE_POKE_VENUSAUR_F, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_PIKACHU_F, MMODEL_TSURE_POKE_PIKACHU_F, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_MEGANIUM_F, MMODEL_TSURE_POKE_MEGANIUM_F, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_WOBBUFFET_F, MMODEL_TSURE_POKE_WOBBUFFET_F, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_HERACROSS_F, MMODEL_TSURE_POKE_HERACROSS_F, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STEELIX_F, MMODEL_TSURE_POKE_STEELIX_F, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_COMBEE_F, MMODEL_TSURE_POKE_COMBEE_F, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GIBLE_F, MMODEL_TSURE_POKE_GIBLE_F, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GABITE_F, MMODEL_TSURE_POKE_GABITE_F, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_GARCHOMP_F, MMODEL_TSURE_POKE_GARCHOMP_F, 0x227 | (19 << 10)
+	.short SPRITE_HERO, MMODEL_HERO, 0x060 | (7 << 10)
+	.short SPRITE_RHERO, MMODEL_RHERO, 0x060 | (7 << 10)
+	.short SPRITE_RHEROINE, MMODEL_RHEROINE, 0x060 | (7 << 10)
+	.short SPRITE_RBANZAIHERO, MMODEL_RBANZAIHERO, 0x140 | (13 << 10)
+	.short SPRITE_RBANZAIINE, MMODEL_RBANZAIINE, 0x140 | (13 << 10)
+	.short SPRITE_PKTHHERO, MMODEL_PKTHHERO, 0x060 | (7 << 10)
+	.short SPRITE_PKTHHEROINE, MMODEL_PKTHHEROINE, 0x060 | (7 << 10)
+	.short SPRITE_BONGURI, MMODEL_BONGURI, 0x247 | (21 << 10)
+	.short SPRITE_BONGURI_R, MMODEL_BONGURI_R, 0x247 | (21 << 10)
+	.short SPRITE_BONGURI_Y, MMODEL_BONGURI_Y, 0x247 | (21 << 10)
+	.short SPRITE_BONGURI_B, MMODEL_BONGURI_B, 0x247 | (21 << 10)
+	.short SPRITE_BONGURI_G, MMODEL_BONGURI_G, 0x247 | (21 << 10)
+	.short SPRITE_BONGURI_P, MMODEL_BONGURI_P, 0x247 | (21 << 10)
+	.short SPRITE_BONGURI_W, MMODEL_BONGURI_W, 0x247 | (21 << 10)
+	.short SPRITE_BONGURI_BK, MMODEL_BONGURI_BK, 0x247 | (21 << 10)
+	.short SPRITE_BONMI_R, MMODEL_BONMI_R, 0x026 | (22 << 10)
+	.short SPRITE_BONMI_Y, MMODEL_BONMI_Y, 0x026 | (22 << 10)
+	.short SPRITE_BONMI_B, MMODEL_BONMI_B, 0x026 | (22 << 10)
+	.short SPRITE_BONMI_G, MMODEL_BONMI_G, 0x026 | (22 << 10)
+	.short SPRITE_BONMI_P, MMODEL_BONMI_P, 0x026 | (22 << 10)
+	.short SPRITE_BONMI_W, MMODEL_BONMI_W, 0x026 | (22 << 10)
+	.short SPRITE_BONMI_BK, MMODEL_BONMI_BK, 0x026 | (22 << 10)
+	.short SPRITE_BRAINS1, MMODEL_BRAINS1, 0x000 | (0 << 10)
+	.short SPRITE_BRAINS2, MMODEL_BRAINS2, 0x000 | (0 << 10)
+	.short SPRITE_BRAINS3, MMODEL_BRAINS3, 0x000 | (0 << 10)
+	.short SPRITE_BRAINS4, MMODEL_BRAINS4, 0x000 | (0 << 10)
+	.short SPRITE_PRINCESS, MMODEL_PRINCESS, 0x000 | (0 << 10)
+	.short SPRITE_BFSM, MMODEL_BFSM, 0x000 | (0 << 10)
+	.short SPRITE_BFSW1, MMODEL_BFSW1, 0x000 | (0 << 10)
+	.short SPRITE_BFSW2, MMODEL_BFSW2, 0x000 | (0 << 10)
+	.short SPRITE_WIFISM, MMODEL_WIFISM, 0x000 | (0 << 10)
+	.short SPRITE_WIFISF, MMODEL_WIFISF, 0x000 | (0 << 10)
+	.short SPRITE_AJI_PERU, MMODEL_AJI_PERU, 0x006 | (0 << 10)
+	.short SPRITE_YADON, MMODEL_YADON, 0x000 | (0 << 10)
+	.short SPRITE_TSURE_POKE, MMODEL_TSURE_POKE, 0x225 | (19 << 10)
+	.short SPRITE_TSURE_POKE_2, MMODEL_TSURE_POKE_2, 0x225 | (19 << 10)
+	.short SPRITE_TSURE_POKE_3, MMODEL_TSURE_POKE_3, 0x225 | (19 << 10)
+	.short SPRITE_TSURE_POKE_4, MMODEL_TSURE_POKE_4, 0x225 | (20 << 10)
+	.short SPRITE_TSURE_POKE_5, MMODEL_TSURE_POKE_5, 0x225 | (20 << 10)
+	.short SPRITE_TSURE_POKE_6, MMODEL_TSURE_POKE_6, 0x225 | (20 << 10)
+	.short SPRITE_DAIGO, MMODEL_DAIGO, 0x000 | (0 << 10)
+	.short SPRITE_CHAMPION, MMODEL_CHAMPION, 0x000 | (0 << 10)
+	.short SPRITE_SHAKEHERO, MMODEL_SHAKEHERO, 0x260 | (14 << 10)
+	.short SPRITE_SHAKEHEROINE, MMODEL_SHAKEHEROINE, 0x260 | (14 << 10)
+	.short SPRITE_HOU_OBJ01, MMODEL_HOU_OBJ01, 0x1A5 | (17 << 10)
+	.short SPRITE_LUG_OBJ01, MMODEL_LUG_OBJ01, 0x1A5 | (18 << 10)
+	.short SPRITE_GSWOMAN6, MMODEL_GSWOMAN6, 0x000 | (0 << 10)
+	.short SPRITE_LEADER1, MMODEL_LEADER1, 0x000 | (0 << 10)
+	.short SPRITE_LEADER2, MMODEL_LEADER2, 0x000 | (0 << 10)
+	.short SPRITE_LEADER3, MMODEL_LEADER3, 0x000 | (0 << 10)
+	.short SPRITE_LEADER4, MMODEL_LEADER4, 0x000 | (0 << 10)
+	.short SPRITE_LEADER5, MMODEL_LEADER5, 0x000 | (0 << 10)
+	.short SPRITE_LEADER6, MMODEL_LEADER6, 0x000 | (0 << 10)
+	.short SPRITE_LEADER7, MMODEL_LEADER7, 0x000 | (0 << 10)
+	.short SPRITE_LEADER8, MMODEL_LEADER8, 0x000 | (0 << 10)
+	.short SPRITE_GANTETSU, MMODEL_GANTETSU, 0x000 | (0 << 10)
+	.short SPRITE_JUPETTA, MMODEL_JUPETTA, 0x000 | (0 << 10)
+	.short SPRITE_SAKAKI, MMODEL_SAKAKI, 0x000 | (0 << 10)
+	.short SPRITE_SUIT, MMODEL_SUIT, 0x000 | (0 << 10)
+	.short SPRITE_CHOUROU, MMODEL_CHOUROU, 0x000 | (0 << 10)
+	.short SPRITE_RAPURASU, MMODEL_RAPURASU, 0x000 | (0 << 10)
+	.short SPRITE_SAVERHERO, MMODEL_SAVERHERO, 0x0A0 | (16 << 10)
+	.short SPRITE_SAVERHEROINE, MMODEL_SAVERHEROINE, 0x0A0 | (16 << 10)
+	.short SPRITE_DELIVERY2, MMODEL_DELIVERY2, 0x000 | (0 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_BUTTERFREE, MMODEL_TSURE_POKE_BUTTERFREE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_PIDGEY, MMODEL_TSURE_POKE_PIDGEY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_RATTATA, MMODEL_TSURE_POKE_RATTATA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_SPEAROW, MMODEL_TSURE_POKE_SPEAROW, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_FEAROW, MMODEL_TSURE_POKE_FEAROW, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_PIKACHU, MMODEL_TSURE_POKE_PIKACHU, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_NIDORAN_F, MMODEL_TSURE_POKE_NIDORAN_F, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_NIDORAN_M, MMODEL_TSURE_POKE_NIDORAN_M, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_NIDORINO, MMODEL_TSURE_POKE_NIDORINO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_CLEFAIRY, MMODEL_TSURE_POKE_CLEFAIRY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_JIGGLYPUFF, MMODEL_TSURE_POKE_JIGGLYPUFF, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_ZUBAT, MMODEL_TSURE_POKE_ZUBAT, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_ODDISH, MMODEL_TSURE_POKE_ODDISH, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_DIGLETT, MMODEL_TSURE_POKE_DIGLETT, 0x226 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_MEOWTH, MMODEL_TSURE_POKE_MEOWTH, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_PERSIAN, MMODEL_TSURE_POKE_PERSIAN, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_PSYDUCK, MMODEL_TSURE_POKE_PSYDUCK, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_POLIWRATH, MMODEL_TSURE_POKE_POLIWRATH, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_ABRA, MMODEL_TSURE_POKE_ABRA, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_MACHOP, MMODEL_TSURE_POKE_MACHOP, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_MACHOKE, MMODEL_TSURE_POKE_MACHOKE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_SLOWPOKE, MMODEL_TSURE_POKE_SLOWPOKE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_SLOWBRO, MMODEL_TSURE_POKE_SLOWBRO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_FARFETCHD, MMODEL_TSURE_POKE_FARFETCHD, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_DODRIO, MMODEL_TSURE_POKE_DODRIO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_ELECTRODE, MMODEL_TSURE_POKE_ELECTRODE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_RHYDON, MMODEL_TSURE_POKE_RHYDON, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_CHANSEY, MMODEL_TSURE_POKE_CHANSEY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_KANGASKHAN, MMODEL_TSURE_POKE_KANGASKHAN, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_LAPRAS, MMODEL_TSURE_POKE_LAPRAS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_ARTICUNO, MMODEL_TSURE_POKE_ARTICUNO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_ZAPDOS, MMODEL_TSURE_POKE_ZAPDOS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_MOLTRES, MMODEL_TSURE_POKE_MOLTRES, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_DRATINI, MMODEL_TSURE_POKE_DRATINI, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_DRAGONITE, MMODEL_TSURE_POKE_DRAGONITE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_MEWTWO, MMODEL_TSURE_POKE_MEWTWO, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_BAYLEEF, MMODEL_TSURE_POKE_BAYLEEF, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_AMPHAROS, MMODEL_TSURE_POKE_AMPHAROS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_MARILL, MMODEL_TSURE_POKE_MARILL, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_AIPOM, MMODEL_TSURE_POKE_AIPOM, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_MURKROW, MMODEL_TSURE_POKE_MURKROW, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_MILTANK, MMODEL_TSURE_POKE_MILTANK, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_BLISSEY, MMODEL_TSURE_POKE_BLISSEY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_RAIKOU, MMODEL_TSURE_POKE_RAIKOU, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_ENTEI, MMODEL_TSURE_POKE_ENTEI, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_SUICUNE, MMODEL_TSURE_POKE_SUICUNE, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_CELEBI, MMODEL_TSURE_POKE_CELEBI, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_LATIAS, MMODEL_TSURE_POKE_LATIAS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_LATIOS, MMODEL_TSURE_POKE_LATIOS, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_KYOGRE, MMODEL_TSURE_POKE_KYOGRE, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_GROUDON, MMODEL_TSURE_POKE_GROUDON, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_RAYQUAZA, MMODEL_TSURE_POKE_RAYQUAZA, 0x208 | (20 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_PICHU_SPIKY, MMODEL_TSURE_POKE_PICHU_SPIKY, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_TYPHLOSION, MMODEL_TSURE_POKE_TYPHLOSION, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_MEGANIUM, MMODEL_TSURE_POKE_MEGANIUM, 0x227 | (19 << 10)
+	.short SPRITE_TSURE_POKE_STATIC_FERALIGATR, MMODEL_TSURE_POKE_FERALIGATR, 0x227 | (19 << 10)
+	.short 0xFFFF, 0x0000, 0x000 | (63 << 10)
 
 ov01_022089CC: ; 0x022089CC
 	.word ov01_021F8BA8
@@ -70992,69 +71604,130 @@ ov01_02209354: ; 0x02209354
 ov01_022093B4: ; 0x022093B4
 	.byte 0x04, 0x0A, 0x07, 0x05, 0x0A, 0x0A
 
-ov01_022093BA: ; 0x022093BA
-	.byte 0x0E, 0x01, 0x58, 0x01, 0xCF, 0x00
-	.byte 0xDC, 0x00
+sSpikyEarPichuMoveset: ; 0x022093BA
+	.short MOVE_HELPING_HAND
+	.short MOVE_VOLT_TACKLE
+	.short MOVE_SWAGGER
+	.short MOVE_PAIN_SPLIT
 
-ov01_022093C2: ; 0x022093C2
-	.byte 0x7A, 0x00, 0x7B, 0x00, 0x7C, 0x00, 0x7F, 0x00, 0x7D, 0x00, 0x7E, 0x00, 0x00, 0x00
+sStatJudgeBestStatMsgIdxs: ; 0x022093C2
+	.short msg_0096_D31R0201_00122
+	.short msg_0096_D31R0201_00123
+	.short msg_0096_D31R0201_00124
+	.short msg_0096_D31R0201_00127
+	.short msg_0096_D31R0201_00125
+	.short msg_0096_D31R0201_00126
+
+	.balign 4, 0
 ov01_022093D0:
 	.word 7, 3
 	.word 5, 2
 
-ov01_022093E0: ; 0x022093E0
-	.byte 0x23, 0x01, 0x28, 0x00
-	.byte 0xBD, 0x00, 0x20, 0x01
-	.byte 0xD2, 0x00, 0x20, 0x00
-	.byte 0xC4, 0x00, 0x30, 0x00
-	.byte 0xCD, 0x00, 0x20, 0x01
-	.byte 0x09, 0x00, 0x40, 0x00
-	.byte 0x07, 0x00, 0x40, 0x00
-	.byte 0x14, 0x01, 0x30, 0x01
-	.byte 0x08, 0x00, 0x40, 0x00
-	.byte 0xBA, 0x01, 0x28, 0x01
-	.byte 0x91, 0x01, 0x28, 0x01
-	.byte 0xD2, 0x01, 0x30, 0x00
-	.byte 0x7C, 0x01, 0x20, 0x01
-	.byte 0xAD, 0x00, 0x20, 0x02
-	.byte 0xB4, 0x00, 0x28, 0x02
-	.byte 0x3A, 0x01, 0x30, 0x00
-	.byte 0x0E, 0x01, 0x28, 0x02
-	.byte 0x1B, 0x01, 0x40, 0x01
-	.byte 0xC8, 0x00, 0x30, 0x01
-	.byte 0xF6, 0x00, 0x28, 0x01
-	.byte 0xEB, 0x00, 0x28, 0x02
-	.byte 0x44, 0x01, 0x28, 0x01
-	.byte 0xAC, 0x01, 0x40, 0x00
-	.byte 0x9A, 0x01, 0x30, 0x00
-	.byte 0x9E, 0x01, 0x28, 0x01
-	.byte 0xB9, 0x01, 0x20, 0x01
-	.byte 0xEF, 0x00, 0x28, 0x01
-	.byte 0x92, 0x01, 0x28, 0x01
-	.byte 0x4E, 0x01, 0x28, 0x01
-	.byte 0x89, 0x01, 0x28, 0x02
-	.byte 0x83, 0x01, 0x30, 0x02
-	.byte 0x54, 0x01, 0x20, 0x01
-	.byte 0x0F, 0x01, 0x30, 0x00
-	.byte 0x01, 0x01, 0x30, 0x01
-	.byte 0x1A, 0x01, 0x28, 0x00
-	.byte 0x85, 0x01, 0x28, 0x00
-	.byte 0x81, 0x00, 0x28, 0x02
-	.byte 0xFD, 0x00, 0x30, 0x02
-	.byte 0xA2, 0x00, 0x28, 0x01
-	.byte 0xDC, 0x00, 0x40, 0x01
-	.byte 0x51, 0x00, 0x20, 0x02
-	.byte 0x6E, 0x01, 0x30, 0x02
-	.byte 0x64, 0x01, 0x20, 0x02
-	.byte 0x84, 0x01, 0x20, 0x02
-	.byte 0x15, 0x01, 0x20, 0x02
-	.byte 0x10, 0x01, 0x30, 0x02
-	.byte 0xD7, 0x00, 0x30, 0x02
-	.byte 0x43, 0x00, 0x20, 0x01
-	.byte 0x8F, 0x00, 0x40, 0x01
-	.byte 0x4F, 0x01, 0x20, 0x02
-	.byte 0xC2, 0x01, 0x20, 0x00
-	.byte 0x1D, 0x00, 0x00, 0x03
+sTutorMoves: ; 0x022093E0
+	.short MOVE_DIVE
+	.byte 40, 0
+	.short MOVE_MUD_SLAP
+	.byte 32, 1
+	.short MOVE_FURY_CUTTER
+	.byte 32, 0
+	.short MOVE_ICY_WIND
+	.byte 48, 0
+	.short MOVE_ROLLOUT
+	.byte 32, 1
+	.short MOVE_THUNDER_PUNCH
+	.byte 64, 0
+	.short MOVE_FIRE_PUNCH
+	.byte 64, 0
+	.short MOVE_SUPERPOWER
+	.byte 48, 1
+	.short MOVE_ICE_PUNCH
+	.byte 64, 0
+	.short MOVE_IRON_HEAD
+	.byte 40, 1
+	.short MOVE_AQUA_TAIL
+	.byte 40, 1
+	.short MOVE_OMINOUS_WIND
+	.byte 48, 0
+	.short MOVE_GASTRO_ACID
+	.byte 32, 1
+	.short MOVE_SNORE
+	.byte 32, 2
+	.short MOVE_SPITE
+	.byte 40, 2
+	.short MOVE_AIR_CUTTER
+	.byte 48, 0
+	.short MOVE_HELPING_HAND
+	.byte 40, 2
+	.short MOVE_ENDEAVOR
+	.byte 64, 1
+	.short MOVE_OUTRAGE
+	.byte 48, 1
+	.short MOVE_ANCIENT_POWER
+	.byte 40, 1
+	.short MOVE_SYNTHESIS
+	.byte 40, 2
+	.short MOVE_SIGNAL_BEAM
+	.byte 40, 1
+	.short MOVE_ZEN_HEADBUTT
+	.byte 64, 0
+	.short MOVE_VACUUM_WAVE
+	.byte 48, 0
+	.short MOVE_EARTH_POWER
+	.byte 40, 1
+	.short MOVE_GUNK_SHOT
+	.byte 32, 1
+	.short MOVE_TWISTER
+	.byte 40, 1
+	.short MOVE_SEED_BOMB
+	.byte 40, 1
+	.short MOVE_IRON_DEFENSE
+	.byte 40, 1
+	.short MOVE_MAGNET_RISE
+	.byte 40, 2
+	.short MOVE_LAST_RESORT
+	.byte 48, 2
+	.short MOVE_BOUNCE
+	.byte 32, 1
+	.short MOVE_TRICK
+	.byte 48, 0
+	.short MOVE_HEAT_WAVE
+	.byte 48, 1
+	.short MOVE_KNOCK_OFF
+	.byte 40, 0
+	.short MOVE_SUCKER_PUNCH
+	.byte 40, 0
+	.short MOVE_SWIFT
+	.byte 40, 2
+	.short MOVE_UPROAR
+	.byte 48, 2
+	.short MOVE_SUPER_FANG
+	.byte 40, 1
+	.short MOVE_PAIN_SPLIT
+	.byte 64, 1
+	.short MOVE_STRING_SHOT
+	.byte 32, 2
+	.short MOVE_TAILWIND
+	.byte 48, 2
+	.short MOVE_GRAVITY
+	.byte 32, 2
+	.short MOVE_WORRY_SEED
+	.byte 32, 2
+	.short MOVE_MAGIC_COAT
+	.byte 32, 2
+	.short MOVE_ROLE_PLAY
+	.byte 48, 2
+	.short MOVE_HEAL_BELL
+	.byte 48, 2
+	.short MOVE_LOW_KICK
+	.byte 32, 1
+	.short MOVE_SKY_ATTACK
+	.byte 64, 1
+	.short MOVE_BLOCK
+	.byte 32, 2
+	.short MOVE_BUG_BITE
+	.byte 32, 0
+	.short MOVE_HEADBUTT
+	.byte 0, 3
 
 ov01_022094B0: ; 0x022094B0
 	.byte 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00
@@ -71138,30 +71811,30 @@ ov01_022095F4: ; 0x022095F4
 
 ov01_02209604: ; 0x02209604
 #ifdef HEARTGOLD
-	.byte 0x48, 0x00, 0x4A, 0x00, 0x65, 0x00
+	.short ITEM_RED_SHARD, ITEM_YELLOW_SHARD, ITEM_HELIX_FOSSIL
 #else
-	.byte 0x49, 0x00, 0x4B, 0x00, 0x66, 0x00
+	.short ITEM_BLUE_SHARD, ITEM_GREEN_SHARD, ITEM_DOME_FOSSIL
 #endif
-	.byte 0x27, 0x00
+	.short ITEM_MAX_ETHER
 #ifdef HEARTGOLD
-	.byte 0x49, 0x00, 0x4B, 0x00
+	.short ITEM_BLUE_SHARD, ITEM_GREEN_SHARD
 #else
-	.byte 0x48, 0x00, 0x4A, 0x00
+	.short ITEM_RED_SHARD, ITEM_YELLOW_SHARD
 #endif
-	.byte 0x67, 0x00, 0x1D, 0x00
+	.short ITEM_OLD_AMBER, ITEM_MAX_REVIVE
 
 ov01_02209614: ; 0x02209614
-	.byte 0x27, 0x00, 0x1C, 0x00, 0x5D, 0x00, 0x48, 0x00, 0x49, 0x00, 0x4B, 0x00
-	.byte 0x4A, 0x00, 0x5B, 0x00
+	.short ITEM_MAX_ETHER, ITEM_REVIVE, ITEM_HEART_SCALE, ITEM_RED_SHARD, ITEM_BLUE_SHARD, ITEM_GREEN_SHARD
+	.short ITEM_YELLOW_SHARD, ITEM_STAR_PIECE
 
 ov01_02209624: ; 0x02209624
-	.byte 0x27, 0x00, 0x58, 0x00, 0x59, 0x00
+	.short ITEM_MAX_ETHER, ITEM_PEARL, ITEM_BIG_PEARL
 #ifdef HEARTGOLD
-	.byte 0x48, 0x00, 0x4A, 0x00, 0x64, 0x00, 0x64, 0x00
+	.short ITEM_RED_SHARD, ITEM_YELLOW_SHARD, ITEM_CLAW_FOSSIL, ITEM_CLAW_FOSSIL
 #else
-	.byte 0x49, 0x00, 0x4B, 0x00, 0x63, 0x00, 0x63, 0x00
+	.short ITEM_BLUE_SHARD, ITEM_GREEN_SHARD, ITEM_ROOT_FOSSIL, ITEM_ROOT_FOSSIL
 #endif
-	.byte 0x6A, 0x00
+	.short ITEM_RARE_BONE
 
 ov01_02209634: ; 0x02209634
 	.byte 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x00, 0x00

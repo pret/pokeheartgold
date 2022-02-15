@@ -1,10 +1,12 @@
+#include "constants/sndseq.h"
+#include "constants/species.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
 	.text
 
-	thumb_func_start ov53_021E5900
-ov53_021E5900: ; 0x021E5900
+	thumb_func_start ov53_OakSpeech_OvyInit
+ov53_OakSpeech_OvyInit: ; 0x021E5900
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	mov r2, #1
@@ -70,10 +72,10 @@ ov53_021E5900: ; 0x021E5900
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov53_021E5900
+	thumb_func_end ov53_OakSpeech_OvyInit
 
-	thumb_func_start ov53_021E5994
-ov53_021E5994: ; 0x021E5994
+	thumb_func_start ov53_OakSpeech_OvyExec
+ov53_OakSpeech_OvyExec: ; 0x021E5994
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r5, r1, #0
@@ -110,7 +112,7 @@ _021E59C2:
 	bl Main_SetVBlankIntrCB
 	add r0, r6, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -265,10 +267,10 @@ _021E5B34:
 _021E5B3C: .word 0xFFFFE0FF
 _021E5B40: .word 0x04001000
 _021E5B44: .word ov53_021E5BCC
-	thumb_func_end ov53_021E5994
+	thumb_func_end ov53_OakSpeech_OvyExec
 
-	thumb_func_start ov53_021E5B48
-ov53_021E5B48: ; 0x021E5B48
+	thumb_func_start ov53_OakSpeech_OvyExit
+ov53_OakSpeech_OvyExit: ; 0x021E5B48
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	bl OverlayManager_GetData
@@ -319,13 +321,13 @@ ov53_021E5B48: ; 0x021E5B48
 	nop
 _021E5BC4: .word SDK_OVERLAY_OVY_36_ID
 _021E5BC8: .word ov36_021E5C14
-	thumb_func_end ov53_021E5B48
+	thumb_func_end ov53_OakSpeech_OvyExit
 
 	thumb_func_start ov53_021E5BCC
 ov53_021E5BCC: ; 0x021E5BCC
 	push {r3, lr}
 	ldr r0, [r0, #0x18]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200D034
 	pop {r3, pc}
 	.balign 4, 0
@@ -502,7 +504,7 @@ _021E5BE8:
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #7
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r1, #7
 	ldr r2, [r4]
 	mov r0, #4
@@ -515,28 +517,28 @@ _021E5BE8:
 	bl BG_ClearCharDataRange
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #1
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #3
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #5
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #7
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r0, r4, #0
 	bl ov53_021E65E0
 	mov r0, #0x4a
@@ -560,28 +562,28 @@ ov53_021E5DE0: ; 0x021E5DE0
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #1
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #3
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #5
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #7
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldr r0, [r4, #0x18]
 	mov r1, #0
 	bl FreeBgTilemapBuffer
@@ -793,13 +795,13 @@ _021E5FAE:
 	bne _021E5FBC
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	b _021E60BE
 _021E5FBC:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	b _021E60BE
 _021E5FC8:
 	mov r1, #0x10
@@ -911,13 +913,13 @@ _021E6096:
 	bne _021E60A4
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	b _021E60BE
 _021E60A4:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	b _021E60BE
 _021E60B0:
 	ldr r0, _021E60C4 ; =0x04000050
@@ -972,7 +974,7 @@ ov53_021E60E8: ; 0x021E60E8
 	ldr r0, [r5, #0x18]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	lsl r1, r4, #0x18
 	ldr r0, [r5, #0x18]
 	lsr r1, r1, #0x18
@@ -1120,13 +1122,13 @@ _021E621C:
 _021E6240:
 	cmp r2, #0
 	bne _021E625E
-	ldr r0, _021E6284 ; =gMain
+	ldr r0, _021E6284 ; =gSystem
 	ldr r2, [r0, #0x48]
 	mov r0, #1
 	and r0, r2
 	cmp r0, #1
 	bne _021E6260
-	ldr r0, _021E6288 ; =0x000005DC
+	ldr r0, _021E6288 ; =SEQ_SE_DP_SELECT
 	add r1, #0x68
 	str r4, [r5, r1]
 	bl PlaySE
@@ -1151,8 +1153,8 @@ _021E6274:
 	nop
 _021E627C: .word ov53_021E8500
 _021E6280: .word 0x000003E2
-_021E6284: .word gMain
-_021E6288: .word 0x000005DC
+_021E6284: .word gSystem
+_021E6288: .word SEQ_SE_DP_SELECT
 	thumb_func_end ov53_021E611C
 
 	thumb_func_start ov53_021E628C
@@ -1189,7 +1191,7 @@ _021E62B6: ; jump table
 _021E62C2:
 	ldr r0, [sp, #0x14]
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #1
 	ldr r1, [r4]
 	lsl r0, r0, #0xa
@@ -1362,7 +1364,7 @@ _021E6406:
 	str r0, [sp, #0x14]
 	b _021E6490
 _021E6428:
-	ldr r0, _021E64A8 ; =gMain
+	ldr r0, _021E64A8 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	and r0, r1
@@ -1373,7 +1375,7 @@ _021E6428:
 	cmp r0, #2
 	bne _021E6490
 _021E643C:
-	ldr r0, _021E64AC ; =gMain + 0x40
+	ldr r0, _021E64AC ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _021E6448
@@ -1385,7 +1387,7 @@ _021E644A:
 	mov r0, #0x5b
 	lsl r0, r0, #2
 	str r1, [r4, r0]
-	ldr r0, _021E64B0 ; =0x000005DC
+	ldr r0, _021E64B0 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #0x42
 	mov r1, #4
@@ -1424,9 +1426,9 @@ _021E6498: .word 0x0000FFFF
 _021E649C: .word _021E84F8
 _021E64A0: .word 0x00010200
 _021E64A4: .word 0x000F0200
-_021E64A8: .word gMain
-_021E64AC: .word gMain + 0x40
-_021E64B0: .word 0x000005DC
+_021E64A8: .word gSystem
+_021E64AC: .word gSystem + 0x40
+_021E64B0: .word SEQ_SE_DP_SELECT
 	thumb_func_end ov53_021E628C
 
 	thumb_func_start ov53_021E64B4
@@ -1933,7 +1935,7 @@ ov53_021E6824: ; 0x021E6824
 	mov r1, #5
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	cmp r6, #1
 	bne _021E6900
 	mov r0, #0x4d
@@ -1945,34 +1947,34 @@ ov53_021E6824: ; 0x021E6824
 	mov r1, #4
 	mov r2, #0
 	mov r3, #0x88
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r5, #0x18]
 	mov r1, #6
 	mov r2, #0
 	mov r3, #0x88
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r5, #0x18]
 	mov r1, #5
 	mov r2, #0
 	mov r3, #0x88
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	add sp, #0x28
 	pop {r4, r5, r6, pc}
 _021E68DE:
 	mov r2, #0
 	mov r1, #4
 	add r3, r2, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r2, #0
 	ldr r0, [r5, #0x18]
 	mov r1, #6
 	add r3, r2, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r2, #0
 	ldr r0, [r5, #0x18]
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 _021E6900:
 	add sp, #0x28
 	pop {r4, r5, r6, pc}
@@ -2080,7 +2082,7 @@ _021E699A:
 	ldrb r7, [r5, r0]
 	b _021E6B30
 _021E69C2:
-	ldr r0, _021E6B88 ; =gMain + 0x40
+	ldr r0, _021E6B88 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _021E6A22
@@ -2101,7 +2103,7 @@ _021E69E0:
 	bl ov53_021E6928
 	mov r0, #5
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldr r0, _021E6B8C ; =0x00000163
 	mov r3, #0xc
 	strb r6, [r5, r0]
@@ -2115,14 +2117,14 @@ _021E69E0:
 	ldr r3, [r4, r3]
 	mov r1, #5
 	mov r2, #3
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, _021E6B84 ; =0x00000166
 	mov r1, #1
 	strb r1, [r5, r0]
 	mov r1, #2
 	sub r0, r0, #1
 	strb r1, [r5, r0]
-	ldr r0, _021E6B94 ; =0x000005DC
+	ldr r0, _021E6B94 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	b _021E6B30
 _021E6A22:
@@ -2130,25 +2132,25 @@ _021E6A22:
 	ldrb r0, [r5, r0]
 	cmp r0, #0
 	bne _021E6A52
-	ldr r0, _021E6B98 ; =gMain
+	ldr r0, _021E6B98 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #0xc3
 	tst r0, r1
 	beq _021E6B30
-	ldr r0, _021E6B94 ; =0x000005DC
+	ldr r0, _021E6B94 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov53_021E6928
 	mov r0, #5
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r1, #1
 	sub r0, r6, #4
 	strb r1, [r5, r0]
 	b _021E6B30
 _021E6A52:
-	ldr r0, _021E6B98 ; =gMain
+	ldr r0, _021E6B98 ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -2173,8 +2175,8 @@ _021E6A52:
 	mov r2, #3
 	add r3, r4, r3
 	ldr r3, [r6, r3]
-	bl sub_0201F238
-	ldr r0, _021E6B94 ; =0x000005DC
+	bl ScheduleSetBgPosText
+	ldr r0, _021E6B94 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	b _021E6B30
 _021E6A90:
@@ -2209,8 +2211,8 @@ _021E6A90:
 	ldr r3, [r3, r4]
 	mov r1, #5
 	mov r2, #3
-	bl sub_0201F238
-	ldr r0, _021E6B94 ; =0x000005DC
+	bl ScheduleSetBgPosText
+	ldr r0, _021E6B94 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	b _021E6B30
 _021E6ADA:
@@ -2222,7 +2224,7 @@ _021E6ADA:
 	mov r0, #2
 	add r3, #0xe5
 	strb r0, [r5, r3]
-	ldr r0, _021E6B94 ; =0x000005DC
+	ldr r0, _021E6B94 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	b _021E6B30
 _021E6AF2:
@@ -2252,8 +2254,8 @@ _021E6AF2:
 	ldr r3, [r3, r4]
 	mov r1, #5
 	mov r2, #3
-	bl sub_0201F238
-	ldr r0, _021E6B94 ; =0x000005DC
+	bl ScheduleSetBgPosText
+	ldr r0, _021E6B94 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 _021E6B30:
 	ldr r0, _021E6B84 ; =0x00000166
@@ -2285,12 +2287,12 @@ _021E6B30:
 	cmp r0, #0
 	beq _021E6B70
 	mov r0, #5
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	b _021E6B78
 _021E6B70:
 	mov r0, #5
 	add r1, r2, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 _021E6B78:
 	add r0, r7, #0
 	add sp, #0x30
@@ -2298,11 +2300,11 @@ _021E6B78:
 	nop
 _021E6B80: .word ov53_021E8650
 _021E6B84: .word 0x00000166
-_021E6B88: .word gMain + 0x40
+_021E6B88: .word gSystem + 0x40
 _021E6B8C: .word 0x00000163
 _021E6B90: .word ov53_021E8604
-_021E6B94: .word 0x000005DC
-_021E6B98: .word gMain
+_021E6B94: .word SEQ_SE_DP_SELECT
+_021E6B98: .word gSystem
 	thumb_func_end ov53_021E6988
 
 	thumb_func_start ov53_021E6B9C
@@ -2386,7 +2388,7 @@ _021E6C0E:
 	mul r0, r2
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	lsl r0, r0, #3
 	asr r4, r0, #0xc
 	b _021E6C36
@@ -2494,7 +2496,7 @@ _021E6CEE:
 	add r2, r2, #1
 	sub r1, r1, #1
 	bne _021E6CEE
-	ldr r0, _021E6DDC ; =gMain + 0x40
+	ldr r0, _021E6DDC ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _021E6D38
@@ -2515,7 +2517,7 @@ _021E6CEE:
 	strb r2, [r5, r0]
 	add r0, r5, #0
 	bl ov53_021E6BEC
-	ldr r0, _021E6DE4 ; =0x000005DC
+	ldr r0, _021E6DE4 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #0x5f
 	lsl r0, r0, #2
@@ -2527,12 +2529,12 @@ _021E6D38:
 	ldrb r0, [r5, r0]
 	cmp r0, #0
 	bne _021E6D5E
-	ldr r0, _021E6DEC ; =gMain
+	ldr r0, _021E6DEC ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #0x31
 	tst r0, r1
 	beq _021E6DD0
-	ldr r0, _021E6DE4 ; =0x000005DC
+	ldr r0, _021E6DE4 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	ldr r0, _021E6DE8 ; =0x00000162
 	mov r1, #1
@@ -2544,7 +2546,7 @@ _021E6D5E:
 	add r0, r5, #0
 	mov r1, #0
 	bl ov53_021E6BEC
-	ldr r0, _021E6DEC ; =gMain
+	ldr r0, _021E6DEC ; =gSystem
 	mov r1, #0x20
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -2555,7 +2557,7 @@ _021E6D5E:
 	beq _021E6DD0
 	sub r1, r1, #1
 	strb r1, [r5, r0]
-	ldr r0, _021E6DE4 ; =0x000005DC
+	ldr r0, _021E6DE4 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	b _021E6DD0
 _021E6D84:
@@ -2571,7 +2573,7 @@ _021E6D84:
 	beq _021E6DD0
 	add r1, r2, #1
 	strb r1, [r5, r0]
-	ldr r0, _021E6DE4 ; =0x000005DC
+	ldr r0, _021E6DE4 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	b _021E6DD0
 _021E6DA4:
@@ -2588,7 +2590,7 @@ _021E6DA4:
 	strb r2, [r5, r0]
 	add r0, r5, #0
 	bl ov53_021E6BEC
-	ldr r0, _021E6DE4 ; =0x000005DC
+	ldr r0, _021E6DE4 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	ldr r0, _021E6DE0 ; =0x00000163
 	mov r4, #1
@@ -2601,11 +2603,11 @@ _021E6DD0:
 	pop {r3, r4, r5, r6, pc}
 	nop
 _021E6DD8: .word ov53_021E8530
-_021E6DDC: .word gMain + 0x40
+_021E6DDC: .word gSystem + 0x40
 _021E6DE0: .word 0x00000163
-_021E6DE4: .word 0x000005DC
+_021E6DE4: .word SEQ_SE_DP_SELECT
 _021E6DE8: .word 0x00000162
-_021E6DEC: .word gMain
+_021E6DEC: .word gSystem
 	thumb_func_end ov53_021E6CE0
 
 	thumb_func_start ov53_021E6DF0
@@ -2822,7 +2824,7 @@ _021E6F6C:
 	ldr r0, [r4, #0x18]
 	lsr r1, r1, #0x18
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	b _021E6F86
 _021E6F7E:
 	mov r1, #0
@@ -2987,17 +2989,17 @@ _021E6FBA: ; jump table
 _021E70B8:
 	mov r0, #6
 	add r1, r5, #0
-	bl sub_0201BC28
-	mov r1, #0x3f
+	bl ToggleBgLayer
+	mov r1, #SEQ_GS_POKEMON_THEME>>4
 	mov r0, #2
 	lsl r1, r1, #4
 	mov r2, #1
 	bl sub_02004EC4
-	mov r0, #0x3f
+	mov r0, #SEQ_GS_POKEMON_THEME>>4
 	lsl r0, r0, #4
 	add r1, r5, #0
-	bl sub_02005EB4
-	ldr r0, _021E7408 ; =0x000003F1
+	bl StopBGM
+	ldr r0, _021E7408 ; =SEQ_GS_STARTING
 	bl PlayBGM
 	mov r0, #7
 	str r0, [r4, #0xc]
@@ -3013,16 +3015,16 @@ _021E70E4:
 	bl ov53_021E67C4
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #7
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #1
 	str r0, [sp]
@@ -3056,7 +3058,7 @@ _021E7154:
 	bne _021E71F6
 	mov r0, #6
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #3
 	str r0, [r4, #0xc]
 	str r0, [sp]
@@ -3090,13 +3092,13 @@ _021E719C:
 	bl ov53_021E65B4
 	mov r0, #4
 	add r1, r5, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #6
 	add r1, r5, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #5
 	add r1, r5, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #5
 	str r0, [r4, #0xc]
 	bl _021E7CF8
@@ -3158,10 +3160,10 @@ _021E7226:
 	bl ov53_021E7E08
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #7
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #1
 	str r0, [sp]
@@ -3226,7 +3228,7 @@ _021E72D4:
 	bne _021E7348
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #0x10
 	str r0, [r4, #0xc]
 	bl _021E7CF8
@@ -3300,7 +3302,7 @@ _021E7378:
 	str r0, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r0, r4, #0
 	mov r1, #1
 	bl ov53_021E66A8
@@ -3354,7 +3356,7 @@ _021E7400:
 	str r0, [r4, #0xc]
 	bl _021E7CF8
 	.balign 4, 0
-_021E7408: .word 0x000003F1
+_021E7408: .word SEQ_GS_STARTING
 _021E740C: .word 0x00000162
 _021E7410: .word 0x00000163
 _021E7414:
@@ -3400,7 +3402,7 @@ _021E7466:
 	bl ov53_021E7E08
 	mov r0, #6
 	add r1, r5, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r0, r4, #0
 	bl ov53_021E7D58
 	mov r0, #8
@@ -3419,10 +3421,10 @@ _021E7484:
 	bl ov53_021E7E08
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #7
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #1
 	str r0, [sp]
@@ -3526,7 +3528,7 @@ _021E7574:
 	bl ov53_021E7E08
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #7
 	str r0, [r4, #0xc]
 	b _021E7CF8
@@ -3543,16 +3545,16 @@ _021E7590:
 	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #3
 	add r1, r5, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #7
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #0x2d
 	str r0, [r4, #0xc]
 	mov r0, #6
@@ -3600,10 +3602,10 @@ _021E762A:
 	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _021E76A0
-	ldr r0, _021E7938 ; =0x000003F1
+	ldr r0, _021E7938 ; =SEQ_GS_STARTING
 	add r1, r5, #0
-	bl sub_02005EB4
-	ldr r0, _021E793C ; =0x000003F2
+	bl StopBGM
+	ldr r0, _021E793C ; =SEQ_GS_STARTING2
 	bl PlayBGM
 	add r0, r4, #0
 	mov r1, #1
@@ -3611,10 +3613,10 @@ _021E762A:
 	bl ov53_021E66E8
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r1, r5, #0
 	mov r0, #1
 	add r2, r1, #0
@@ -3698,7 +3700,7 @@ _021E76DE:
 	mov r2, #0x10
 	mov r3, #0x1d
 	bl sub_0200B484
-	ldr r0, _021E7940 ; =0x00000706
+	ldr r0, _021E7940 ; =SEQ_SE_DP_BOWA2
 	bl PlaySE
 	mov r0, #5
 	add r1, r5, #0
@@ -3761,7 +3763,7 @@ _021E775E:
 	ldr r0, [r0]
 	mov r1, #2
 	bl sub_020248F0
-	mov r0, #0xb7
+	mov r0, #SPECIES_MARILL
 	add r1, r5, #0
 	bl PlayCry
 	mov r0, #0x37
@@ -3860,7 +3862,7 @@ _021E7850:
 	bl ov53_021E7E08
 	mov r0, #4
 	add r1, r5, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r0, r4, #0
 	mov r1, #4
 	bl ov53_021E67C4
@@ -3966,9 +3968,9 @@ _021E7920:
 	str r0, [r4, #0xc]
 	b _021E7CF8
 	nop
-_021E7938: .word 0x000003F1
-_021E793C: .word 0x000003F2
-_021E7940: .word 0x00000706
+_021E7938: .word SEQ_GS_STARTING
+_021E793C: .word SEQ_GS_STARTING2
+_021E7940: .word SEQ_SE_DP_BOWA2
 _021E7944: .word 0x04000050
 _021E7948: .word 0x00000163
 _021E794C:
@@ -3996,10 +3998,10 @@ _021E794C:
 _021E797C:
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r1, #0x4d
 	lsl r1, r1, #2
 	ldrh r1, [r4, r1]
@@ -4048,10 +4050,10 @@ _021E79DE:
 	bne _021E7A6E
 	mov r0, #5
 	add r1, r5, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #6
 	add r1, r5, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r0, r4, #0
 	mov r1, #3
 	bl ov53_021E80B8
@@ -4065,7 +4067,7 @@ _021E79DE:
 	ldr r0, [r4, #0x18]
 	mov r1, #4
 	add r3, r2, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	add r0, r4, #0
 	bl ov53_021E6CB0
 	mov r0, #6
@@ -4136,27 +4138,27 @@ _021E7A76:
 _021E7AA4:
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #7
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r2, r5, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #0
 	bl ov53_021E7D04
 	mov r0, #6
@@ -4274,10 +4276,10 @@ _021E7BBE:
 _021E7BC8:
 	mov r0, #6
 	add r1, r5, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #5
 	add r1, r5, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r0, r4, #0
 	mov r1, #1
 	bl ov53_021E67C4
@@ -4291,7 +4293,7 @@ _021E7BC8:
 	ldr r0, [r4, #0x18]
 	mov r1, #4
 	add r3, r2, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	add r0, r4, #0
 	mov r1, #1
 	bl ov53_021E7E08
@@ -4378,7 +4380,7 @@ _021E7C90:
 	str r0, [r4, #0xc]
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	b _021E7CF8
 _021E7CB4:
 	bl sub_0200FB5C
@@ -4403,7 +4405,7 @@ _021E7CD8:
 	bl ov53_021E60CC
 	cmp r0, #1
 	bne _021E7CF8
-	ldr r0, _021E7D00 ; =0x00000918
+	ldr r0, _021E7D00 ; =SEQ_SE_GS_HERO_SHUKUSHOU
 	bl PlaySE
 	mov r0, #0x7e
 	str r0, [r4, #0xc]
@@ -4418,7 +4420,7 @@ _021E7CF8:
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
-_021E7D00: .word 0x00000918
+_021E7D00: .word SEQ_SE_GS_HERO_SHUKUSHOU
 	thumb_func_end ov53_021E6F9C
 
 	thumb_func_start ov53_021E7D04
@@ -4666,7 +4668,7 @@ ov53_021E7ECC: ; 0x021E7ECC
 	bl sub_02025358
 	cmp r0, #0
 	beq _021E7EFA
-	ldr r0, _021E7F20 ; =gMain
+	ldr r0, _021E7F20 ; =gSystem
 	mov r1, #1
 	str r1, [r0, #0x5c]
 	add r0, r4, #0
@@ -4680,7 +4682,7 @@ _021E7EFA:
 	bl ov53_021E7E94
 	cmp r0, #0
 	beq _021E7F10
-	ldr r0, _021E7F20 ; =gMain
+	ldr r0, _021E7F20 ; =gSystem
 	mov r1, #1
 	str r1, [r0, #0x5c]
 	pop {r3, r4, r5, pc}
@@ -4692,7 +4694,7 @@ _021E7F18:
 	pop {r3, r4, r5, pc}
 	nop
 _021E7F1C: .word ov53_021E8510
-_021E7F20: .word gMain
+_021E7F20: .word gSystem
 	thumb_func_end ov53_021E7ECC
 
 	thumb_func_start ov53_021E7F24
@@ -4705,7 +4707,7 @@ ov53_021E7F24: ; 0x021E7F24
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x20
 	mov r1, #0x50
 	bl sub_0202055C
@@ -4999,7 +5001,7 @@ ov53_021E816C: ; 0x021E816C
 	lsl r3, r7, #5
 	str r0, [sp, #0x10]
 	str r4, [sp, #4]
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -5009,7 +5011,7 @@ ov53_021E816C: ; 0x021E816C
 	ldr r2, [r5, #0xc]
 	mov r1, #1
 	add r3, r6, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -5019,7 +5021,7 @@ ov53_021E816C: ; 0x021E816C
 	ldr r2, [r5, #0xc]
 	mov r1, #0xa
 	add r3, r6, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x18
@@ -5031,13 +5033,13 @@ ov53_021E816C: ; 0x021E816C
 	ldr r0, [r5, #0xc]
 	add r1, r6, #0
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r0, [r5, #0xc]
 	add r1, r6, #0
 	bl BgCommitTilemapBufferToVram
 	add r0, r6, #0
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldr r0, [sp, #0x10]
 	bl NARC_dtor
 	add sp, #0x14
@@ -5075,10 +5077,10 @@ ov53_021E81F4: ; 0x021E81F4
 	bl ov53_021E8390
 	ldrb r0, [r5, #0x19]
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldrb r0, [r5, #0x1a]
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldr r0, [r5, #0x10]
 	mov r1, #1
 	bl sub_02024830
@@ -5126,10 +5128,10 @@ _021E827E:
 _021E8292:
 	ldrb r0, [r4, #0x19]
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldrb r0, [r4, #0x1a]
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldr r0, [r4, #0x10]
 	mov r1, #0
 	bl sub_02024830
@@ -5303,7 +5305,7 @@ ov53_021E83D4: ; 0x021E83D4
 	sub r0, r4, #1
 	cmp r6, r0
 	beq _021E841E
-	ldr r0, _021E84CC ; =0x000005DC
+	ldr r0, _021E84CC ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	cmp r6, #0
 	beq _021E83F8
@@ -5332,7 +5334,7 @@ _021E8418:
 	bl GF_AssertFail
 	b _021E84AA
 _021E841E:
-	ldr r0, _021E84D0 ; =gMain
+	ldr r0, _021E84D0 ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -5349,7 +5351,7 @@ _021E841E:
 	strb r0, [r5, #0x1b]
 	add r0, r5, #0
 	bl ov53_021E8390
-	ldr r0, _021E84CC ; =0x000005DC
+	ldr r0, _021E84CC ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	b _021E84AA
 _021E844A:
@@ -5368,7 +5370,7 @@ _021E844A:
 	strb r0, [r5, #0x1b]
 	add r0, r5, #0
 	bl ov53_021E8390
-	ldr r0, _021E84CC ; =0x000005DC
+	ldr r0, _021E84CC ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	b _021E84AA
 _021E8472:
@@ -5409,15 +5411,15 @@ _021E84AA:
 	ldr r0, [r5, #0x10]
 	mov r1, #3
 	bl sub_020248F0
-	ldr r0, _021E84CC ; =0x000005DC
+	ldr r0, _021E84CC ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 _021E84C2:
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	nop
 _021E84C8: .word ov53_021E887C
-_021E84CC: .word 0x000005DC
-_021E84D0: .word gMain
+_021E84CC: .word SEQ_SE_DP_SELECT
+_021E84D0: .word gSystem
 	thumb_func_end ov53_021E83D4
 
 	thumb_func_start ov53_021E84D4

@@ -188,7 +188,7 @@ sub_02003220: ; 0x02003220
 	add r1, r2, #0
 	add r2, sp, #4
 	ldr r4, [sp, #0x1c]
-	bl sub_02007C48
+	bl GfGfxLoader_GetPlttDataFromOpenNarc
 	add r6, r0, #0
 	bne _0200323A
 	bl GF_AssertFail

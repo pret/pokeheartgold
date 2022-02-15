@@ -1,0 +1,122 @@
+{
+  "header": "fielddata/script/scr_seq/event_T26GYM0101.h",
+  "bgs": [
+    {
+      "scr": "_EV_scr_seq_T26GYM0101_006 + 1",
+      "type": 0,
+      "x": 4,
+      "y": 25,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": "_EV_scr_seq_T26GYM0101_006 + 1",
+      "type": 0,
+      "x": 8,
+      "y": 25,
+      "z": 0,
+      "dir": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_T26GYM0101_gsleader6",
+      "ovid": "SPRITE_GSLEADER6",
+      "mvt": 15,
+      "type": 0,
+      "flag": "FLAG_HIDE_JASMINE_IN_GYM",
+      "scr": "_EV_scr_seq_T26GYM0101_000 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 6,
+      "y": 5,
+      "z": 0
+    },
+    {
+      "id": "obj_T26GYM0101_gsgirl1",
+      "ovid": "SPRITE_GSGIRL1",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_OLIVINE_GYM_GIRL",
+      "scr": "_EV_scr_seq_T26GYM0101_004 + 1",
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 9,
+      "y": 15,
+      "z": 0
+    },
+    {
+      "id": "obj_T26GYM0101_gsgentleman",
+      "ovid": "SPRITE_GSGENTLEMAN",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_OLIVINE_GYM_GENTLEMAN",
+      "scr": "_EV_scr_seq_T26GYM0101_003 + 1",
+      "dirn": 3,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 3,
+      "y": 23,
+      "z": 0
+    },
+    {
+      "id": "obj_T26GYM0101_sunglasses",
+      "ovid": "SPRITE_SUNGLASSES",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T26GYM0101_005 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 9,
+      "y": 25,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 6,
+      "y": 27,
+      "header": "MAP_T26",
+      "anchor": 0,
+      "height": 0
+    }
+  ],
+  "coords": [
+    {
+      "scr": "_EV_scr_seq_T26GYM0101_002 + 1",
+      "x": 5,
+      "y": 15,
+      "w": 3,
+      "h": 1,
+      "z": 0,
+      "val": 2,
+      "var": "VAR_UNK_410E"
+    },
+    {
+      "scr": "_EV_scr_seq_T26GYM0101_001 + 1",
+      "x": 5,
+      "y": 23,
+      "w": 3,
+      "h": 1,
+      "z": 0,
+      "val": 1,
+      "var": "VAR_UNK_410E"
+    }
+  ]
+}

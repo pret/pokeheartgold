@@ -23,11 +23,11 @@ ov45_022310C0: ; 0x022310C0
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl sub_020A00BC
+	bl DWC_CheckUserData
 	cmp r0, #0
 	beq _022310FC
 	mov r0, r8
-	bl sub_020A0100
+	bl DWC_CheckHasProfile
 	cmp r0, #0
 	bne _02231108
 _022310FC:
@@ -11128,7 +11128,7 @@ ov45_0223AA80: ; 0x0223AA80
 	str r0, [r6, #4]
 	cmp r5, #0
 	ldmleia sp!, {r4, r5, r6, pc}
-	ldr r4, _0223AAE0 ; =_021E58E0
+	ldr r4, _0223AAE0 ; =_ZSt7nothrow
 _0223AAAC:
 	mov r1, r4
 	mov r0, r5, lsl #3
@@ -11144,7 +11144,7 @@ _0223AAAC:
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
 _0223AADC: .word ov45_02255198
-_0223AAE0: .word _021E58E0
+_0223AAE0: .word _ZSt7nothrow
 	arm_func_end ov45_0223AA80
 
 	arm_func_start ov45_0223AAE4
@@ -22908,7 +22908,7 @@ _02244BEC:
 	ldr r0, [sl, #0x820]
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	bl ov00_021FE6E4
+	bl ArrayLength
 	mov r8, r0
 	cmp r8, #0
 	mov sb, #0
@@ -25565,7 +25565,7 @@ ov45_022471A0: ; 0x022471A0
 _022471C8:
 	ldr r0, [sl, #0x820]
 	mov r8, #0
-	bl ov00_021FE6E4
+	bl ArrayLength
 	cmp r0, #0
 	addle sp, sp, #0x18
 	ldmleia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -25675,7 +25675,7 @@ _02247354:
 	add r8, r8, #1
 _02247358:
 	ldr r0, [sl, #0x820]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	cmp r8, r0
 	blt _022471F0
 	add sp, sp, #0x18
@@ -25707,7 +25707,7 @@ ov45_0224739C: ; 0x0224739C
 	bl __msl_assertion_failed
 _022473C0:
 	ldr r0, [sl, #0x820]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	mov fp, r0
 	cmp fp, #0
 	mov r8, #0
@@ -26279,7 +26279,7 @@ ov45_02247AE0: ; 0x02247AE0
 	bl __msl_assertion_failed
 _02247B04:
 	ldr r0, [sl, #0x810]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	mov r7, r0
 	cmp r7, #0
 	mov r6, #0

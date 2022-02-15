@@ -653,7 +653,7 @@ _0221C2DA:
 	add r0, #0xc4
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0201CC2C
+	bl GetBgPriority
 	mov r1, #0x6b
 	lsl r1, r1, #2
 	strb r0, [r4, r1]
@@ -661,21 +661,21 @@ _0221C2DA:
 	add r0, #0xc4
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0201CC2C
+	bl GetBgPriority
 	ldr r1, _0221C384 ; =0x000001AD
 	strb r0, [r4, r1]
 	add r0, r4, #0
 	add r0, #0xc4
 	ldr r0, [r0]
 	mov r1, #2
-	bl sub_0201CC2C
+	bl GetBgPriority
 	ldr r1, _0221C388 ; =0x000001AE
 	strb r0, [r4, r1]
 	add r0, r4, #0
 	add r0, #0xc4
 	ldr r0, [r0]
 	mov r1, #3
-	bl sub_0201CC2C
+	bl GetBgPriority
 	ldr r1, _0221C38C ; =0x000001AF
 	mov r2, #0
 	strb r0, [r4, r1]
@@ -1156,7 +1156,7 @@ _0221C60C:
 	ldr r0, [r5, #0x14]
 	bl sub_020061EC
 	ldrh r0, [r5, #0x1a]
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _0221C61E
 	mov r4, #0
@@ -1262,7 +1262,7 @@ ov07_0221C6B4: ; 0x0221C6B4
 	mov r1, #1
 	add r2, #0x8d
 	strb r1, [r2]
-	ldr r3, _0221C6E8 ; =gMain
+	ldr r3, _0221C6E8 ; =gSystem
 	lsl r2, r1, #9
 	ldr r4, [r3, #0x44]
 	tst r2, r4
@@ -1285,7 +1285,7 @@ _0221C6E4:
 	pop {r3, r4}
 	bx lr
 	.balign 4, 0
-_0221C6E8: .word gMain
+_0221C6E8: .word gSystem
 	thumb_func_end ov07_0221C6B4
 
 	thumb_func_start ov07_0221C6EC
@@ -1765,7 +1765,7 @@ _0221CA16:
 	strb r1, [r5, r0]
 	pop {r3, r4, r5, r6, r7, pc}
 _0221CA26:
-	bl sub_02006198
+	bl GF_IsAnySEPlaying
 	cmp r0, #0
 	beq _0221CA50
 	ldr r0, _0221CBB0 ; =0x0000017D
@@ -1898,52 +1898,52 @@ _0221CADE:
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r1, #0x6b
 	lsl r1, r1, #2
 	ldrb r1, [r5, r1]
 	mov r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r1, _0221CBB4 ; =0x000001AD
 	mov r0, #1
 	ldrb r1, [r5, r1]
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r1, _0221CBB8 ; =0x000001AE
 	mov r0, #2
 	ldrb r1, [r5, r1]
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r1, _0221CBBC ; =0x000001AF
 	mov r0, #3
 	ldrb r1, [r5, r1]
-	bl sub_0201BB68
+	bl SetBgPriority
 	add r0, r5, #0
 	add r0, #0xc4
 	mov r2, #0
 	ldr r0, [r0]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r5, #0
 	add r0, #0xc4
 	ldr r0, [r0]
 	mov r1, #2
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r5, #0
 	add r0, #0xc4
 	mov r2, #0
 	ldr r0, [r0]
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r5, #0
 	add r0, #0xc4
 	mov r1, #3
 	ldr r0, [r0]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #0
 	str r0, [r5, #0x10]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -3281,13 +3281,13 @@ _0221D518:
 	mov r1, #2
 	mov r2, #0
 	neg r3, r6
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	sub r4, #0x28
 	ldr r0, [r5]
 	mov r1, #2
 	mov r2, #3
 	neg r3, r4
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _0221D55A:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov07_0221D4FC
@@ -3373,14 +3373,14 @@ ov07_0221D5B0: ; 0x0221D5B0
 	ldr r0, [r1, #8]
 	str r0, [sp, #0x10]
 	mov r0, #2
-	bl sub_0201CB4C
+	bl BgGetCharPtr
 	mov r2, #0x19
 	mov r1, #0
 	lsl r2, r2, #8
 	bl MI_CpuFill8
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #0
 	str r0, [sp]
 	add r0, r5, #0
@@ -3417,7 +3417,7 @@ ov07_0221D5B0: ; 0x0221D5B0
 	ldr r2, [r2]
 	sub r1, #0xa4
 	mov r3, #2
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	cmp r4, #1
 	bne _0221D696
 	ldr r0, [r5]
@@ -3481,7 +3481,7 @@ _0221D696:
 	mov r1, #2
 	mov r2, #0
 	neg r3, r7
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r5, #0
 	add r0, #0xc4
 	sub r4, #0x28
@@ -3489,17 +3489,17 @@ _0221D696:
 	mov r1, #2
 	mov r2, #3
 	neg r3, r4
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r0, r5, #0
 	bl ov07_0221FAE8
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	mov r0, #2
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3516,7 +3516,7 @@ ov07_0221D718: ; 0x0221D718
 	add r0, r0, #4
 	str r0, [r4, #0x18]
 	mov r0, #2
-	bl sub_0201CB4C
+	bl BgGetCharPtr
 	mov r2, #0x19
 	mov r1, #0
 	lsl r2, r2, #8
@@ -4696,14 +4696,14 @@ _0221DFC8:
 	lsl r1, r4, #0x18
 	mov r0, #3
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	lsl r1, r4, #0x18
 	mov r0, #2
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldrb r0, [r5, #5]
 	add r0, r0, #1
 	strb r0, [r5, #5]
@@ -4715,7 +4715,7 @@ _0221E006:
 	ldr r0, [r0]
 	mov r2, #2
 	add r3, r1, #0
-	bl sub_0201B1F4
+	bl SetBgControlParam
 	ldr r0, [r5, #0x48]
 	bl ov07_0221BFC0
 	cmp r0, #1
@@ -4726,7 +4726,7 @@ _0221E006:
 	ldr r0, [r0]
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201B1F4
+	bl SetBgControlParam
 _0221E030:
 	ldr r1, [r5, #0x48]
 	ldr r3, [r5, #0x10]
@@ -4824,7 +4824,7 @@ _0221E0CE: ; jump table
 _0221E0D8:
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldrb r0, [r4, #5]
 	add r0, r0, #1
 	strb r0, [r4, #5]
@@ -4840,11 +4840,11 @@ _0221E0E6:
 	add r6, r0, #0
 	mov r0, #3
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	lsl r1, r6, #0x18
 	mov r0, #2
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldrb r0, [r4, #0xa]
 	mov r1, #4
 	mov r2, #8
@@ -4907,21 +4907,21 @@ _0221E170:
 	ldr r0, [r0]
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r4, #0x48]
 	mov r1, #3
 	add r0, #0xc4
 	ldr r0, [r0]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r4, #0x48]
 	mov r1, #3
 	add r0, #0xc4
 	ldr r0, [r0]
 	mov r2, #2
 	mov r3, #4
-	bl sub_0201B1F4
+	bl SetBgControlParam
 	ldr r0, [r4, #0x48]
 	bl ov07_0221BFC0
 	cmp r0, #0
@@ -4932,7 +4932,7 @@ _0221E170:
 	ldr r0, [r0]
 	mov r2, #0
 	mov r3, #1
-	bl sub_0201B1F4
+	bl SetBgControlParam
 	ldr r0, [r4, #0x48]
 	mov r1, #3
 	bl ov07_0221FB30
@@ -5006,7 +5006,7 @@ _0221E250:
 	bl ov12_0223C340
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldr r0, [r4, #0x48]
 	mov r1, #2
 	bl ov07_0221EC7C
@@ -5116,7 +5116,7 @@ _0221E316:
 	ldr r0, [r0]
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201B1F4
+	bl SetBgControlParam
 	ldr r1, [r4, #0x48]
 	ldr r3, [r4, #0x10]
 	add r0, r4, #0
@@ -5288,7 +5288,7 @@ _0221E478:
 	bl ov07_0221E664
 	mov r0, #3
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldr r0, [r4, #0x48]
 	bl ov07_0221BFC0
 	cmp r0, #0
@@ -5299,7 +5299,7 @@ _0221E478:
 	ldr r0, [r0]
 	mov r2, #0
 	mov r3, #1
-	bl sub_0201B1F4
+	bl SetBgControlParam
 	ldr r0, [r4, #0x48]
 	mov r1, #3
 	bl ov07_0221FB30
@@ -5367,7 +5367,7 @@ _0221E504:
 	bl GfGfxLoader_LoadScrnData
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldrb r0, [r4, #5]
 	add r0, r0, #1
 	strb r0, [r4, #5]
@@ -5378,14 +5378,14 @@ _0221E536:
 	ldr r0, [r0]
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r4, #0x48]
 	mov r1, #3
 	add r0, #0xc4
 	ldr r0, [r0]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldrb r0, [r4, #0xd]
 	ldr r2, [r4, #0x48]
 	cmp r0, #0
@@ -5513,7 +5513,7 @@ _0221E61A:
 	ldr r0, [r4]
 	lsr r1, r1, #0x18
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _0221E648:
 	mov r0, #0xa
 	ldrsh r0, [r4, r0]
@@ -5526,7 +5526,7 @@ _0221E648:
 	ldr r0, [r4]
 	lsr r1, r1, #0x18
 	mov r2, #3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _0221E662:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov07_0221E600
@@ -6258,11 +6258,11 @@ ov07_0221EBA4: ; 0x0221EBA4
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r0, r5, #0
 	bl ov07_0221BFC0
 	cmp r0, #1
@@ -6274,7 +6274,7 @@ ov07_0221EBA4: ; 0x0221EBA4
 	lsr r1, r1, #0x18
 	mov r2, #2
 	mov r3, #4
-	bl sub_0201B1F4
+	bl SetBgControlParam
 	b _0221EC10
 _0221EBEA:
 	add r0, r5, #0
@@ -6285,7 +6285,7 @@ _0221EBEA:
 	lsr r1, r1, #0x18
 	mov r2, #0
 	lsr r3, r3, #0x18
-	bl sub_0201B1F4
+	bl SetBgControlParam
 	add r0, r5, #0
 	add r0, #0xc4
 	lsl r1, r4, #0x18
@@ -6293,7 +6293,7 @@ _0221EBEA:
 	lsr r1, r1, #0x18
 	mov r2, #2
 	mov r3, #4
-	bl sub_0201B1F4
+	bl SetBgControlParam
 _0221EC10:
 	add r0, r5, #0
 	add r0, #0xc4
@@ -6360,7 +6360,7 @@ ov07_0221EC7C: ; 0x0221EC7C
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	add r0, r5, #0
 	bl ov07_0221BFC0
 	cmp r0, #1
@@ -6372,7 +6372,7 @@ ov07_0221EC7C: ; 0x0221EC7C
 	lsr r1, r1, #0x18
 	mov r2, #2
 	mov r3, #3
-	bl sub_0201B1F4
+	bl SetBgControlParam
 	b _0221ECD8
 _0221ECB4:
 	add r0, r5, #0
@@ -6382,7 +6382,7 @@ _0221ECB4:
 	ldr r0, [r0]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201B1F4
+	bl SetBgControlParam
 	add r0, r5, #0
 	add r0, #0xc4
 	lsl r1, r4, #0x18
@@ -6390,7 +6390,7 @@ _0221ECB4:
 	lsr r1, r1, #0x18
 	mov r2, #2
 	mov r3, #3
-	bl sub_0201B1F4
+	bl SetBgControlParam
 _0221ECD8:
 	add r5, #0xc4
 	lsl r1, r4, #0x18
@@ -6757,14 +6757,14 @@ ov07_0221EF54: ; 0x0221EF54
 	add r0, r0, #4
 	str r0, [r5, #0x18]
 	mov r0, #3
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r0, r5, #0
 	add r0, #0xc4
 	mov r2, #0
 	ldr r0, [r0]
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201B1F4
+	bl SetBgControlParam
 	add r0, r4, #0
 	mov r1, #0
 	bl ov07_0221FB7C
@@ -6830,7 +6830,7 @@ _0221EFEC:
 	bl GfGfxLoader_LoadScrnData
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r0, r7, #0
 	bl FreeToHeap
 	add sp, #0x10
@@ -6936,7 +6936,7 @@ _0221F0AC: .word PlaySE
 	thumb_func_start ov07_0221F0B0
 ov07_0221F0B0: ; 0x0221F0B0
 	ldr r1, [r0, #0x18]
-	ldr r3, _0221F0C8 ; =sub_02006154
+	ldr r3, _0221F0C8 ; =StopSE
 	add r1, r1, #4
 	str r1, [r0, #0x18]
 	ldr r2, [r1]
@@ -6947,7 +6947,7 @@ ov07_0221F0B0: ; 0x0221F0B0
 	mov r1, #0
 	bx r3
 	nop
-_0221F0C8: .word sub_02006154
+_0221F0C8: .word StopSE
 	thumb_func_end ov07_0221F0B0
 
 	thumb_func_start ov07_0221F0CC
@@ -7324,7 +7324,7 @@ ov07_0221F39C: ; 0x0221F39C
 	strb r1, [r4, r0]
 	pop {r4, pc}
 _0221F3B8:
-	bl sub_02006198
+	bl GF_IsAnySEPlaying
 	cmp r0, #0
 	beq _0221F3DC
 	ldr r0, _0221F3F0 ; =0x0000017D
@@ -7982,7 +7982,7 @@ ov07_0221F81C: ; 0x0221F81C
 ov07_0221F880: ; 0x0221F880
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	bne _0221F8A4
 	ldr r0, [r4, #0x18]
@@ -13645,7 +13645,7 @@ _0222218A:
 	ldr r2, [r4, #0xc]
 	asr r0, r0, #4
 	lsl r1, r0, #2
-	ldr r0, _02222214 ; =_021094DC
+	ldr r0, _02222214 ; =FX_SinCosTable_
 	asr r3, r2, #0x1f
 	ldrsh r0, [r0, r1]
 	asr r1, r0, #0x1f
@@ -13666,7 +13666,7 @@ _0222218A:
 	lsl r0, r0, #1
 	add r0, r0, #1
 	lsl r1, r0, #1
-	ldr r0, _02222214 ; =_021094DC
+	ldr r0, _02222214 ; =FX_SinCosTable_
 	asr r3, r2, #0x1f
 	ldrsh r0, [r0, r1]
 	asr r1, r0, #0x1f
@@ -13687,7 +13687,7 @@ _0222220E:
 	mov r0, #0
 	pop {r4, pc}
 	nop
-_02222214: .word _021094DC
+_02222214: .word FX_SinCosTable_
 	thumb_func_end ov07_02222180
 
 	thumb_func_start ov07_02222218
@@ -14089,7 +14089,7 @@ _022224B6:
 	lsl r0, r0, #1
 	add r0, r0, #1
 	lsl r1, r0, #1
-	ldr r0, _02222504 ; =_021094DC
+	ldr r0, _02222504 ; =FX_SinCosTable_
 	asr r3, r2, #0x1f
 	ldrsh r0, [r0, r1]
 	asr r1, r0, #0x1f
@@ -14110,7 +14110,7 @@ _022224FE:
 	mov r0, #0
 	pop {r4, pc}
 	nop
-_02222504: .word _021094DC
+_02222504: .word FX_SinCosTable_
 	thumb_func_end ov07_022224AC
 
 	thumb_func_start ov07_02222508
@@ -16120,7 +16120,7 @@ _02223322:
 	ldr r0, [r5, #0x18]
 	mov r1, #3
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	pop {r3, r4, r5, r6, r7, pc}
 _0222333E:
 	ldr r0, [r5, #8]
@@ -16225,7 +16225,7 @@ _022233F8:
 	bl G2x_SetBlendAlpha_
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldrb r0, [r4, #0x1c]
 	add r0, r0, #1
 	strb r0, [r4, #0x1c]
@@ -16315,7 +16315,7 @@ _02223494:
 _022234A2:
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldr r0, [r4, #0x20]
 	add r1, r5, #0
 	bl ov07_0221C448
@@ -16391,13 +16391,13 @@ _02223526:
 	ldr r0, [r4, #0x30]
 	mov r1, #2
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r3, #0xc
 	ldrsh r3, [r4, r3]
 	ldr r0, [r4, #0x30]
 	mov r1, #2
 	mov r2, #3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02223544: .word 0x04000050
@@ -16494,7 +16494,7 @@ _02223604:
 	strh r0, [r4, #0x18]
 	mov r0, #2
 	str r1, [r4, #4]
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r0, r5, #0
 	mov r1, #0
 	bl ov07_0221C4A8
@@ -16574,13 +16574,13 @@ _02223698:
 	ldr r0, [r4, #0x30]
 	mov r1, #2
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r3, #0xc
 	ldrsh r3, [r4, r3]
 	ldr r0, [r4, #0x30]
 	mov r1, #2
 	mov r2, #3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r4, #0x20]
 	ldr r1, _022236EC ; =ov07_022233D8
 	add r2, r4, #0
@@ -16620,7 +16620,7 @@ _02223710:
 	bl G2x_SetBlendAlpha_
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldrb r0, [r4, #0x1c]
 	add r0, r0, #1
 	strb r0, [r4, #0x1c]
@@ -16708,7 +16708,7 @@ _022237A8:
 _022237B6:
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldr r0, [r4, #0x20]
 	add r1, r5, #0
 	bl ov07_0221C448
@@ -16784,13 +16784,13 @@ _0222383A:
 	ldr r0, [r4, #0x30]
 	mov r1, #2
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r3, #0xc
 	ldrsh r3, [r4, r3]
 	ldr r0, [r4, #0x30]
 	mov r1, #2
 	mov r2, #3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02223858: .word 0x04000050
@@ -16900,7 +16900,7 @@ _0222392C:
 	strh r0, [r4, #0x18]
 	mov r0, #2
 	str r1, [r4, #4]
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r0, r5, #0
 	mov r1, #0
 	bl ov07_0221C4A8
@@ -16980,13 +16980,13 @@ _022239C6:
 	ldr r0, [r4, #0x30]
 	mov r1, #2
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r3, #0xc
 	ldrsh r3, [r4, r3]
 	ldr r0, [r4, #0x30]
 	mov r1, #2
 	mov r2, #3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r4, #0x20]
 	ldr r1, _02223A18 ; =ov07_022236F0
 	add r2, r4, #0
@@ -21490,7 +21490,7 @@ _02225E14:
 	ldr r0, [r4, #0x28]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _02225E2C:
 	ldr r0, [r4, #0x24]
 	cmp r0, #0
@@ -21501,7 +21501,7 @@ _02225E2C:
 	lsr r1, r1, #0x18
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _02225E42:
 	ldrb r0, [r4, #1]
 	add sp, #4
@@ -21521,7 +21521,7 @@ _02225E4C:
 	ldr r0, [r4, #0x28]
 	lsr r1, r1, #0x18
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _02225E68:
 	mov r3, #0xd6
 	ldrsh r0, [r4, r3]
@@ -21535,7 +21535,7 @@ _02225E68:
 	ldr r0, [r4, #0x28]
 	lsr r1, r1, #0x18
 	mov r2, #3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add sp, #4
 	pop {r3, r4, pc}
 _02225E88:
@@ -21926,7 +21926,7 @@ _02226152:
 	str r0, [r5, #0x2c]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0xaa
 	ldrsh r2, [r5, r1]
 	mov r1, #0xac
@@ -27168,7 +27168,7 @@ _02228C58:
 	ldr r0, [r4, #8]
 	mov r1, #3
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 _02228C72:
@@ -27687,13 +27687,13 @@ _02229086:
 	ldr r0, [r5, #0x14]
 	mov r1, #3
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r3, #0x4e
 	mov r1, #3
 	ldrsh r3, [r5, r3]
 	ldr r0, [r5, #0x14]
 	add r2, r1, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	pop {r3, r4, r5, r6, r7, pc}
 _022290AC:
 	ldr r0, [r5, #4]
@@ -30671,7 +30671,7 @@ ov07_0222A838: ; 0x0222A838
 	bl ov07_0221EB98
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldr r0, [r4, #8]
 	ldr r1, _0222A8D4 ; =ov07_0222A710
 	add r2, r4, #0
@@ -33069,7 +33069,7 @@ _0222BCBC:
 	lsl r1, r1, #0x18
 	mov r0, #2
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 _0222BCD0:
 	ldr r0, [r4, #0x1c]
 	mov r1, #0
@@ -34655,7 +34655,7 @@ _0222C996:
 	mov r1, #2
 	mov r2, #0
 	neg r3, r3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r4]
 	bl ov07_0221C4A0
 	mov r3, #0x12
@@ -34663,7 +34663,7 @@ _0222C996:
 	mov r1, #2
 	mov r2, #3
 	neg r3, r3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -34713,14 +34713,14 @@ _0222CA06:
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r0, [r4]
 	bl ov07_0221FAE8
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	mov r0, #0
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r0, [r4]
 	mov r1, #1
 	bl ov07_0221FAEC
@@ -34898,7 +34898,7 @@ _0222CB34:
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r0, [r4]
 	bl ov07_0221FAE8
 	add r1, r0, #0
@@ -34906,7 +34906,7 @@ _0222CB34:
 	lsl r1, r1, #0x18
 	mov r0, #0
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 _0222CBE6:
 	ldr r0, [sp, #0x14]
 	add r1, r4, #0
@@ -35502,14 +35502,14 @@ _0222D0AC:
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r0, [r4]
 	bl ov07_0221FAE8
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	mov r0, #0
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r0, [r4]
 	bl ov07_0221C470
 	add r1, r0, #0
@@ -35638,7 +35638,7 @@ _0222D1EA:
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r0, [r4]
 	bl ov07_0221FAE8
 	add r1, r0, #0
@@ -35646,7 +35646,7 @@ _0222D1EA:
 	lsl r1, r1, #0x18
 	mov r0, #0
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r0, [r4, #0x48]
 	mov r1, #0
 	bl sub_0200DCE8
@@ -39581,7 +39581,7 @@ _0222F13A:
 	mul r0, r1
 	asr r0, r0, #4
 	lsl r0, r0, #2
-	ldr r1, _0222F204 ; =_021094DC
+	ldr r1, _0222F204 ; =FX_SinCosTable_
 	str r0, [sp, #0x18]
 	add r1, r1, r0
 	mov r0, #2
@@ -39601,7 +39601,7 @@ _0222F13A:
 	lsl r0, r1, #4
 	asr r6, r0, #0x10
 	mov r2, #3
-	ldr r1, _0222F204 ; =_021094DC
+	ldr r1, _0222F204 ; =FX_SinCosTable_
 	ldr r0, [sp, #0x18]
 	lsl r2, r2, #0x10
 	ldrsh r0, [r1, r0]
@@ -39667,7 +39667,7 @@ _0222F1E4:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0222F200: .word 0x00001555
-_0222F204: .word _021094DC
+_0222F204: .word FX_SinCosTable_
 _0222F208: .word 0x00000000
 _0222F20C: .word ov07_0222EF88
 	thumb_func_end ov07_0222F0B0
@@ -40938,7 +40938,7 @@ _0222FC5A:
 	lsr r0, r0, #0x10
 	asr r0, r0, #4
 	lsl r1, r0, #2
-	ldr r0, _0222FD00 ; =_021094DC
+	ldr r0, _0222FD00 ; =FX_SinCosTable_
 	ldr r3, [r6, #0x14]
 	ldrsh r0, [r0, r1]
 	lsl r2, r2, #0xc
@@ -41007,7 +41007,7 @@ _0222FCE6:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0222FD00: .word _021094DC
+_0222FD00: .word FX_SinCosTable_
 _0222FD04: .word 0x00000132
 _0222FD08: .word 0x00000000
 _0222FD0C: .word 0x00003FFF
@@ -41282,7 +41282,7 @@ ov07_0222FF04: ; 0x0222FF04
 	lsr r0, r0, #0x10
 	asr r0, r0, #4
 	lsl r1, r0, #2
-	ldr r0, _0222FFC4 ; =_021094DC
+	ldr r0, _0222FFC4 ; =FX_SinCosTable_
 	lsl r2, r2, #0xc
 	ldrsh r0, [r0, r1]
 	mov r3, #0
@@ -41345,7 +41345,7 @@ _0222FFBE:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0222FFC4: .word _021094DC
+_0222FFC4: .word FX_SinCosTable_
 _0222FFC8: .word 0x00000000
 _0222FFCC: .word 0x45800000
 	thumb_func_end ov07_0222FF04
@@ -41661,7 +41661,7 @@ _02230220:
 	lsr r0, r0, #0x10
 	asr r0, r0, #4
 	lsl r1, r0, #2
-	ldr r0, _022302A0 ; =_021094DC
+	ldr r0, _022302A0 ; =FX_SinCosTable_
 	asr r3, r2, #0x1f
 	ldrsh r0, [r0, r1]
 	asr r1, r0, #0x1f
@@ -41713,7 +41713,7 @@ _02230296:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _0223029C: .word 0x00000199
-_022302A0: .word _021094DC
+_022302A0: .word FX_SinCosTable_
 _022302A4: .word 0x00000000
 	thumb_func_end ov07_022301C4
 
@@ -41790,14 +41790,14 @@ _02230318:
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r0, [r4]
 	bl ov07_0221FAE8
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	mov r0, #0
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r0, [r4]
 	mov r1, #1
 	bl ov07_0221FAEC
@@ -41920,7 +41920,7 @@ _02230402:
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r0, [r4]
 	bl ov07_0221FAE8
 	add r1, r0, #0
@@ -41928,7 +41928,7 @@ _02230402:
 	lsl r1, r1, #0x18
 	mov r0, #0
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 _0223048A:
 	ldr r0, [r4]
 	ldr r1, _02230498 ; =ov07_022302A8
@@ -44030,7 +44030,7 @@ ov07_02231524: ; 0x02231524
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -44202,12 +44202,12 @@ _0223167C:
 	ldr r0, [r4, #0x2c]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r4, #0x2c]
 	mov r1, #2
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -44237,13 +44237,13 @@ _022316CA:
 	ldrsh r3, [r4, r3]
 	ldr r0, [r4, #0x2c]
 	mov r1, #2
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r3, #0x12
 	ldrsh r3, [r4, r3]
 	ldr r0, [r4, #0x2c]
 	mov r1, #2
 	mov r2, #3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r4, #0x34]
 	bl sub_0200DC18
 	ldr r0, [r4, #0x38]

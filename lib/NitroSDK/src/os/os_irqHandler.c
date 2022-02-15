@@ -18,35 +18,20 @@ void OS_WaitIrq(BOOL clear, OSIrqMask irqFlags) {
     }
 }
 
+#ifdef SDK_ARM9
 #include <nitro/dtcm_begin.h>
-OSIrqFunction OS_IRQTable[] = {
-    OS_IrqDummy,
-    OS_IrqDummy,
-    OS_IrqDummy,
-    OSi_IrqTimer0,
-    OSi_IrqTimer1,
-    OSi_IrqTimer2,
-    OSi_IrqTimer3,
-    OS_IrqDummy,
-    OSi_IrqDma0,
-    OSi_IrqDma1,
-    OSi_IrqDma2,
-    OSi_IrqDma3,
-    OS_IrqDummy,
-    OS_IrqDummy,
-    OS_IrqDummy,
-    OS_IrqDummy,
-    OS_IrqDummy,
-    OS_IrqDummy,
-    OS_IrqDummy,
-    OS_IrqDummy,
-    OS_IrqDummy,
-    OS_IrqDummy
-};
+#endif
 
-OSThreadQueue OSi_IrqThreadQueue;
+OSThreadQueue OSi_IrqThreadQueue = {NULL, NULL};
+
+#ifdef SDK_ARM9
 #include <nitro/dtcm_end.h>
+#endif
+
+#ifdef SDK_ARM9
 #include <nitro/itcm_begin.h>
+#endif //SDK_ARM9
+
 asm void OS_IrqHandler(register OSIrqMask irq) {
     stmdb sp!, {lr}
     mov r12, #HW_REG_BASE

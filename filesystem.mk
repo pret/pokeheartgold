@@ -390,12 +390,10 @@ NITROFS_FILES := \
 # Temporary names for now
 define arc_strip_name
 $(2): $(1)
+SRC_ARCS  += $(1)
 DIFF_ARCS += $(2)
 .PHONY: $(2)
 endef
-
-NARCS := $(filter %.narc,$(NITROFS_FILES))
-NAIXS := $(NARCS:%.narc=%.naix)
 
 $(eval $(call arc_strip_name,files/poketool/personal/personal.narc,files/a/0/0/2))
 $(eval $(call arc_strip_name,files/poketool/personal/growtbl.narc,files/a/0/0/3))
@@ -407,6 +405,7 @@ $(eval $(call arc_strip_name,files/graphic/font.narc,files/a/0/1/6))
 $(eval $(call arc_strip_name,files/itemtool/itemdata/item_data.narc,files/a/0/1/7))
 $(eval $(call arc_strip_name,files/itemtool/itemdata/item_icon.narc,files/a/0/1/8))
 $(eval $(call arc_strip_name,files/msgdata/msg.narc,files/a/0/2/7))
+$(eval $(call arc_strip_name,files/fielddata/eventdata/zone_event.narc,files/a/0/3/2))
 $(eval $(call arc_strip_name,files/poketool/personal/wotbl.narc,files/a/0/3/3))
 $(eval $(call arc_strip_name,files/poketool/personal/evo.narc,files/a/0/3/4))
 $(eval $(call arc_strip_name,files/fielddata/encountdata/g_enc_data.narc,files/a/0/3/7))
@@ -416,6 +415,7 @@ $(eval $(call arc_strip_name,files/poketool/trainer/trpoke.narc,files/a/0/5/6))
 $(eval $(call arc_strip_name,files/poketool/trmsg/trtbl.narc,files/a/0/5/7))
 $(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_data.narc,files/a/0/7/4))
 $(eval $(call arc_strip_name,files/a/0/7/5.$(buildname),files/a/0/7/5))
+$(eval $(call arc_strip_name,files/data/mmodel/mmodel.narc,files/a/0/8/1))
 $(eval $(call arc_strip_name,files/poketool/pokegra/otherpoke.narc,files/a/1/1/4))
 $(eval $(call arc_strip_name,files/poketool/pokegra/height_o.narc,files/a/1/1/7))
 $(eval $(call arc_strip_name,files/poketool/trmsg/trtblofs.narc,files/a/1/3/1))
@@ -424,16 +424,19 @@ $(eval $(call arc_strip_name,files/fielddata/encountdata/s_enc_data.narc,files/a
 $(eval $(call arc_strip_name,files/poketool/johtozukan.narc,files/a/1/3/8))
 $(eval $(call arc_strip_name,files/data/gs_areawindow.narc,files/a/1/6/3))
 $(eval $(call arc_strip_name,files/poketool/personal/performance.narc,files/a/1/6/9))
+$(eval $(call arc_strip_name,files/application/annon/puzzle_gra.narc,files/a/1/7/2))
 $(eval $(call arc_strip_name,files/application/custom_ball/edit/gs_cb_data.narc,files/a/1/8/5))
 $(eval $(call arc_strip_name,files/pbr/dp_height.narc,files/a/1/9/4))
 $(eval $(call arc_strip_name,files/pbr/dp_height_o.narc,files/a/1/9/5))
+$(eval $(call arc_strip_name,files/resource/eng/pms_aikotoba/pms_aikotoba.narc,files/a/2/1/2))
 $(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_data_gira.narc,files/a/2/1/4))
 $(eval $(call arc_strip_name,files/a/2/5/2.$(buildname),files/a/2/5/2))
 
 $(DIFF_ARCS):
 	cp $< $@
 
-$(filter-out $(DIFF_ARCS),$(NITROFS_FILES)): ;
+NARCS := $(filter %.narc,$(NITROFS_FILES) $(SRC_ARCS))
+NAIXS := $(NARCS:%.narc=%.naix)
 
 CSV2BINFLAGS := -i $(WORK_DIR)/include --naix
 
@@ -444,14 +447,28 @@ else
 endif
 
 include files/msgdata/msg.mk
+include files/fielddata/script/scr_seq.mk
+
+# This rule must come after the above includes
+# and serves to enforce build order.
+$(SCRIPT_BINS): $(MSGFILE_H)
+
+include files/fielddata/eventdata/zone_event.mk
 include files/data/sound/sound_data.mk
 include files/data/gs_areawindow.mk
 include files/fielddata/encountdata/gs_enc_data.mk
-# include files/fielddata/script/scr_seq.mk
 include files/itemtool/itemdata/item_data.mk
 include files/poketool/personal/growtbl.mk
+include files/poketool/trainer/trainer.mk
 include files/fielddata/mapmatrix/map_matrix.mk
+include files/resource/eng/pms_aikotoba/pms_aikotoba.mk
+include files/data/mmodel/mmodel.mk
+include files/fielddata/wazaoshie/waza_oshie.mk
+include files/data/mushi/mushi.mk
 
+$(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;
+
+# This must come after the above includes
 include graphics_files_rules.mk
 
 %.narc: NARC_DEPS = $(wildcard $*/*.bin)
@@ -462,9 +479,12 @@ include graphics_files_rules.mk
 
 .PHONY: filesystem clean-filesystem clean-fs
 filesystem: $(NITROFS_FILES)
+ifeq ($(COMPARE),1)
+	$(SHA1SUM) --quiet -c $(WORK_DIR)/$(buildname)/filesystem.sha1
+endif
 
 clean-fs: clean-filesystem
 clean-filesystem:
 	$(RM) files/msgdata/msg/*.bin
 	$(RM) $(DIFF_ARCS) $(NAIXS)
-	$(RM) $(FS_CLEAN_TARGETS)
+	$(RM) -r $(FS_CLEAN_TARGETS)

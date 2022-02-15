@@ -1,0 +1,540 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0021_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Apricorn Box</language>
+	</row>
+	<row id="msg_0021_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CLOSE</language>
+	</row>
+	<row id="msg_0021_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">USE</language>
+	</row>
+	<row id="msg_0021_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TASTE</language>
+	</row>
+	<row id="msg_0021_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CANCEL</language>
+	</row>
+	<row id="msg_0021_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OK</language>
+	</row>
+	<row id="msg_0021_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CLOSE</language>
+	</row>
+	<row id="msg_0021_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Red Apricorn</language>
+	</row>
+	<row id="msg_0021_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ylw Apricorn</language>
+	</row>
+	<row id="msg_0021_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Blu Apricorn</language>
+	</row>
+	<row id="msg_0021_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Grn Apricorn</language>
+	</row>
+	<row id="msg_0021_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pnk Apricorn</language>
+	</row>
+	<row id="msg_0021_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wht Apricorn</language>
+	</row>
+	<row id="msg_0021_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Blk Apricorn</language>
+	</row>
+	<row id="msg_0021_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Holden</language>
+	</row>
+	<row id="msg_0021_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Elaine</language>
+	</row>
+	<row id="msg_0021_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Gilmore</language>
+	</row>
+	<row id="msg_0021_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Krise</language>
+	</row>
+	<row id="msg_0021_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Victor</language>
+	</row>
+	<row id="msg_0021_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NoFlav Juice</language>
+	</row>
+	<row id="msg_0021_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Power Juice</language>
+	</row>
+	<row id="msg_0021_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Stam. Juice</language>
+	</row>
+	<row id="msg_0021_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Skill Juice</language>
+	</row>
+	<row id="msg_0021_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Jump Juice</language>
+	</row>
+	<row id="msg_0021_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Speed Juice</language>
+	</row>
+	<row id="msg_0021_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 51, 0, 0}</language>
+	</row>
+	<row id="msg_0021_00026" index="26">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語"></language>
+	</row>
+	<row id="msg_0021_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Collected Apricorns are inside.</language>
+	</row>
+	<row id="msg_0021_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Put the Apricorn in the Apriblender.</language>
+	</row>
+	<row id="msg_0021_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Haven’t blended enough yet...</language>
+	</row>
+	<row id="msg_0021_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Juice is almost done...</language>
+	</row>
+	<row id="msg_0021_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Just a bit longer for juice to be ready.</language>
+	</row>
+	<row id="msg_0021_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Aprijuice is ready!</language>
+	</row>
+	<row id="msg_0021_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Can still put in {STRVAR_1 50, 0, 0} Apricorns.</language>
+	</row>
+	<row id="msg_0021_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cannot put in any more Apricorns.</language>
+	</row>
+	<row id="msg_0021_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What will you do with the Aprijuice?</language>
+	</row>
+	<row id="msg_0021_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Tasted the Aprijuice!</language>
+	</row>
+	<row id="msg_0021_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Select which Apricorns to give.</language>
+	</row>
+	<row id="msg_0021_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Give how many?</language>
+	</row>
+	<row id="msg_0021_00039" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Give {STRVAR_1 51, 1, 0} {STRVAR_1 8, 0, 0}?</language>
+	</row>
+	<row id="msg_0021_00040" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Red Apricorn\nA red Apricorn.\nIt assails your nostrils.</language>
+	</row>
+	<row id="msg_0021_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ylw Apricorn\nA yellow Apricorn.\nIt has an invigorating scent.</language>
+	</row>
+	<row id="msg_0021_00042" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Blu Apricorn\nA blue Apricorn.\nIt smells a bit like grass.</language>
+	</row>
+	<row id="msg_0021_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Grn Apricorn\nA green Apricorn.\nIt has a mysterious, aromatic scent.</language>
+	</row>
+	<row id="msg_0021_00044" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pnk Apricorn\nA pink Apricorn.\nIt has a nice, sweet scent.</language>
+	</row>
+	<row id="msg_0021_00045" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wht Apricorn\nA white Apricorn.\nIt doesn’t smell like anything.</language>
+	</row>
+	<row id="msg_0021_00046" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Blk Apricorn\nA black Apricorn.\nIt has an indescribable scent.</language>
+	</row>
+	<row id="msg_0021_00047" index="47">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Apriblender</language>
+	</row>
+	<row id="msg_0021_00048" index="48">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 8, 0, 0}\nFlavor {STRVAR_1 52, 1, 0} Mildness {STRVAR_1 52, 2, 0}\nCan still put in {STRVAR_1 50, 3, 0}</language>
+	</row>
+	<row id="msg_0021_00049" index="49">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">~How to Make Aprijuice~\nCollect Apricorns and put them\nin the Apriblender!\rYou can make a drink with one,\nbut the more Apricorns,\nthe better the taste!\rPut the Apricorns in and blend\nby running to the next town!</language>
+	</row>
+	<row id="msg_0021_00050" index="50">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Made Aprijuice!</language>
+	</row>
+	<row id="msg_0021_00051" index="51">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Aprijuice’s flavor\nhas changed!</language>
+	</row>
+	<row id="msg_0021_00052" index="52">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Aprijuice is not done!\nPut Apricorns in the Apriblender\nand blend by walking!</language>
+	</row>
+	<row id="msg_0021_00053" index="53">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Can’t put in any more!\nRun and shake the Apriblender!</language>
+	</row>
+	<row id="msg_0021_00054" index="54">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Aprijuice is being made!\nShake by walking!</language>
+	</row>
+	<row id="msg_0021_00055" index="55">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Improving the Aprijuice!\nShake by walking!</language>
+	</row>
+	<row id="msg_0021_00056" index="56">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It’s a spicy flavor.</language>
+	</row>
+	<row id="msg_0021_00057" index="57">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A pungent flavor!</language>
+	</row>
+	<row id="msg_0021_00058" index="58">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">So spicy, you’ll sweat!</language>
+	</row>
+	<row id="msg_0021_00059" index="59">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">So spicy, it causes coughing!</language>
+	</row>
+	<row id="msg_0021_00060" index="60">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A resounding spiciness!</language>
+	</row>
+	<row id="msg_0021_00061" index="61">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The ultimate spiciness!</language>
+	</row>
+	<row id="msg_0021_00062" index="62">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A little sour.</language>
+	</row>
+	<row id="msg_0021_00063" index="63">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An invigorating flavor.</language>
+	</row>
+	<row id="msg_0021_00064" index="64">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mmmmmph! Sour!</language>
+	</row>
+	<row id="msg_0021_00065" index="65">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Unbearably sour!</language>
+	</row>
+	<row id="msg_0021_00066" index="66">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A deep sourness!</language>
+	</row>
+	<row id="msg_0021_00067" index="67">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An extremely sour taste!</language>
+	</row>
+	<row id="msg_0021_00068" index="68">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A refined, dry taste.</language>
+	</row>
+	<row id="msg_0021_00069" index="69">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A strong, dry taste!</language>
+	</row>
+	<row id="msg_0021_00070" index="70">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Incredibly dry!</language>
+	</row>
+	<row id="msg_0021_00071" index="71">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A pervadingly dry taste!</language>
+	</row>
+	<row id="msg_0021_00072" index="72">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A deep-seated, dry taste!</language>
+	</row>
+	<row id="msg_0021_00073" index="73">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An extremely dry taste!</language>
+	</row>
+	<row id="msg_0021_00074" index="74">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A somewhat bitter taste.</language>
+	</row>
+	<row id="msg_0021_00075" index="75">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A slightly bitter flavor.</language>
+	</row>
+	<row id="msg_0021_00076" index="76">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An intense bitterness!</language>
+	</row>
+	<row id="msg_0021_00077" index="77">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A massively bitter taste!</language>
+	</row>
+	<row id="msg_0021_00078" index="78">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A sinking bitterness!</language>
+	</row>
+	<row id="msg_0021_00079" index="79">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The peak of bitterness!</language>
+	</row>
+	<row id="msg_0021_00080" index="80">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A sweet taste.</language>
+	</row>
+	<row id="msg_0021_00081" index="81">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A nice, sweet taste.</language>
+	</row>
+	<row id="msg_0021_00082" index="82">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Very sweet!</language>
+	</row>
+	<row id="msg_0021_00083" index="83">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A sickly-sweet flavor!</language>
+	</row>
+	<row id="msg_0021_00084" index="84">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A melt-in-your-mouth sweetness.</language>
+	</row>
+	<row id="msg_0021_00085" index="85">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">So incredibly sweet!</language>
+	</row>
+	<row id="msg_0021_00086" index="86">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A hint of spicy taste...</language>
+	</row>
+	<row id="msg_0021_00087" index="87">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A little salty...</language>
+	</row>
+	<row id="msg_0021_00088" index="88">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Quite spicy...</language>
+	</row>
+	<row id="msg_0021_00089" index="89">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A strong spiciness...</language>
+	</row>
+	<row id="msg_0021_00090" index="90">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A hint of sourness...</language>
+	</row>
+	<row id="msg_0021_00091" index="91">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A little sour...</language>
+	</row>
+	<row id="msg_0021_00092" index="92">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Quite sour...</language>
+	</row>
+	<row id="msg_0021_00093" index="93">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Intensely sour...</language>
+	</row>
+	<row id="msg_0021_00094" index="94">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A slight dry taste...</language>
+	</row>
+	<row id="msg_0021_00095" index="95">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A light dry taste...</language>
+	</row>
+	<row id="msg_0021_00096" index="96">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A quite dry taste...</language>
+	</row>
+	<row id="msg_0021_00097" index="97">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An intensely dry taste...</language>
+	</row>
+	<row id="msg_0021_00098" index="98">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Barely a hint of bitterness...</language>
+	</row>
+	<row id="msg_0021_00099" index="99">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Just a little bitter...</language>
+	</row>
+	<row id="msg_0021_00100" index="100">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A strongly bitter taste...</language>
+	</row>
+	<row id="msg_0021_00101" index="101">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Intensely bitter...</language>
+	</row>
+	<row id="msg_0021_00102" index="102">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Barely a hint of sweetness...</language>
+	</row>
+	<row id="msg_0021_00103" index="103">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Just a little sweet...</language>
+	</row>
+	<row id="msg_0021_00104" index="104">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A strongly sweet taste...</language>
+	</row>
+	<row id="msg_0021_00105" index="105">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An intensely sweet taste...</language>
+	</row>
+	<row id="msg_0021_00106" index="106">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A very faint spiciness.</language>
+	</row>
+	<row id="msg_0021_00107" index="107">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Merely a hint of spiciness.</language>
+	</row>
+	<row id="msg_0021_00108" index="108">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The spiciness comes through.</language>
+	</row>
+	<row id="msg_0021_00109" index="109">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A very faint sourness.</language>
+	</row>
+	<row id="msg_0021_00110" index="110">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Merely a hint of sourness.</language>
+	</row>
+	<row id="msg_0021_00111" index="111">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The sourness comes through.</language>
+	</row>
+	<row id="msg_0021_00112" index="112">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A very faint dry taste.</language>
+	</row>
+	<row id="msg_0021_00113" index="113">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A hint of dry taste.</language>
+	</row>
+	<row id="msg_0021_00114" index="114">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The dryness comes through.</language>
+	</row>
+	<row id="msg_0021_00115" index="115">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A very faint bitterness.</language>
+	</row>
+	<row id="msg_0021_00116" index="116">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Merely a hint of bitterness.</language>
+	</row>
+	<row id="msg_0021_00117" index="117">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The bitterness comes through.</language>
+	</row>
+	<row id="msg_0021_00118" index="118">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A very faint sweetness.</language>
+	</row>
+	<row id="msg_0021_00119" index="119">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Merely a hint of sweetness.</language>
+	</row>
+	<row id="msg_0021_00120" index="120">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The sweetness comes through.</language>
+	</row>
+	<row id="msg_0021_00121" index="121">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A disgusting aftertaste.</language>
+	</row>
+	<row id="msg_0021_00122" index="122">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A refreshing aftertaste!</language>
+	</row>
+	<row id="msg_0021_00123" index="123">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Eliminating spiciness...</language>
+	</row>
+	<row id="msg_0021_00124" index="124">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Eliminating sourness...</language>
+	</row>
+	<row id="msg_0021_00125" index="125">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Eliminating dry flavor...</language>
+	</row>
+	<row id="msg_0021_00126" index="126">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Eliminating bitterness...</language>
+	</row>
+	<row id="msg_0021_00127" index="127">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Eliminating sweetness...</language>
+	</row>
+	<row id="msg_0021_00128" index="128">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The flavor is still quite weak. It\nwould be good to put in some\nApricorns with color...</language>
+	</row>
+	<row id="msg_0021_00129" index="129">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Unspeakably incredible flavor!\nIts tastes are evenly balanced.\nI can’t tell what kind of flavor!</language>
+	</row>
+	<row id="msg_0021_00130" index="130">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Incredibly unspeakable flavor!\nIts tastes are all competing.\nI can’t tell what kind of flavor!</language>
+	</row>
+	<row id="msg_0021_00131" index="131">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There’s absolutely no flavor!\nIt seems like you need to put in\na colored Apricorn.</language>
+	</row>
+	<row id="msg_0021_00132" index="132">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Spicy {STRVAR_1 51, 0, 0} Sour {STRVAR_1 51, 1, 0} Dry {STRVAR_1 51, 2, 0}\nBitter {STRVAR_1 51, 3, 0} Sweet {STRVAR_1 51, 4, 0}\nMild {STRVAR_1 51, 5, 0} Flavor {STRVAR_1 51, 6, 0}</language>
+	</row>
+	<row id="msg_0021_00133" index="133">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Now {STRVAR_1 59, 0, 0} Steps Stock {STRVAR_1 50, 1, 0}\n1: {STRVAR_1 50, 2, 0} 2: {STRVAR_1 50, 3, 0} 3: {STRVAR_1 50, 4, 0} 4: {STRVAR_1 50, 5, 0} 5: {STRVAR_1 50, 6, 0}\nJuice START {STRVAR_1 59, 7, 0} Steps  Left: {STRVAR_1 52, 8, 0}\nMild START {STRVAR_1 59, 9, 0} Steps Left: {STRVAR_1 52, 10, 0}</language>
+	</row>
+</body>

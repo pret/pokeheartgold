@@ -1,0 +1,174 @@
+{
+  "header": "fielddata/script/scr_seq/event_D38R0103.h",
+  "bgs": [
+    {
+      "scr": "std_hiddenitem_d38r0103_full_restore",
+      "type": 2,
+      "x": 53,
+      "y": 29,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_d38r0103_hp_up",
+      "type": 2,
+      "x": 34,
+      "y": 38,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_d38r0103_hyper_potion",
+      "type": 2,
+      "x": 42,
+      "y": 48,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_d38r0103_full_heal",
+      "type": 2,
+      "x": 16,
+      "y": 18,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_EVERYWHERE_monstarball",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D38R0103_RARE_CANDY",
+      "scr": "std_itemball_d38r0103_rare_candy",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 6,
+      "y": 55,
+      "z": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_monstarball_2",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D38R0103_MAX_POTION",
+      "scr": "std_itemball_d38r0103_max_potion",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 45,
+      "y": 38,
+      "z": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_monstarball_3",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D38R0103_TM40",
+      "scr": "std_itemball_d38r0103_tm40",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 29,
+      "y": 34,
+      "z": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_monstarball_4",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D38R0103_ELIXIR",
+      "scr": "std_itemball_d38r0103_elixir",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 16,
+      "y": 24,
+      "z": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_monstarball_5",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D38R0103_DRAGON_SCALE",
+      "scr": "std_itemball_d38r0103_dragon_scale",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 27,
+      "y": 14,
+      "z": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_monstarball_6",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D38R0103_ESCAPE_ROPE",
+      "scr": "std_itemball_d38r0103_escape_rope",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 45,
+      "y": 15,
+      "z": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_gsassistantm",
+      "ovid": "SPRITE_GSASSISTANTM",
+      "mvt": 2,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_SUPER_NERD_HUGH)",
+      "dirn": 1,
+      "eye": 3,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 19,
+      "y": 46,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 27,
+      "y": 55,
+      "header": "MAP_D38R0101",
+      "anchor": 9,
+      "height": 0
+    },
+    {
+      "x": 9,
+      "y": 16,
+      "header": "MAP_D38R0102",
+      "anchor": 8,
+      "height": 0
+    }
+  ]
+}

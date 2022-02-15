@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0369_R27_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey!\r</language>
+	</row>
+	<row id="msg_0369_R27_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Do you know what you just did?\rYou’ve taken your first step\ninto Kanto.\rCheck your Pokégear Map and see.</language>
+	</row>
+	<row id="msg_0369_R27_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Tohjo Falls\rThe Link between\nKanto and Johto</language>
+	</row>
+	<row id="msg_0369_R27_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">West to New Bark Town\nEast to Rt. 26</language>
+	</row>
+</body>

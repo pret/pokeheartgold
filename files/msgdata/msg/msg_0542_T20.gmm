@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0542_T20_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wow, your Pokégear is impressive!</language>
+	</row>
+	<row id="msg_0542_T20_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wait, {STRVAR_1 3, 0, 0}!</language>
+	</row>
+	<row id="msg_0542_T20_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wait, {STRVAR_1 3, 0, 0}!</language>
+	</row>
+	<row id="msg_0542_T20_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What do you think you’re doing?\r</language>
+	</row>
+	<row id="msg_0542_T20_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It’s dangerous to go out without\na Pokémon!\rWild Pokémon jump out of the grass\non the way to the next town.</language>
+	</row>
+	<row id="msg_0542_T20_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh! Your Pokémon is adorable!\nI wish I had one!</language>
+	</row>
+	<row id="msg_0542_T20_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hi, {STRVAR_1 3, 0, 0}!\nLeaving again?\rYou should tell your mom if you\nare leaving.</language>
+	</row>
+	<row id="msg_0542_T20_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hi, {STRVAR_1 3, 0, 0}!\nLeaving again?\rYou should tell your mom if you\nare leaving.</language>
+	</row>
+	<row id="msg_0542_T20_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Call your mom on your Pokégear to\nlet her know how you’re doing.</language>
+	</row>
+	<row id="msg_0542_T20_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I like your Bag!</language>
+	</row>
+	<row id="msg_0542_T20_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wait a sec!\r</language>
+	</row>
+	<row id="msg_0542_T20_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Did you leave your Pokégear at home?\rYou should ask your mom.</language>
+	</row>
+	<row id="msg_0542_T20_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Yo, {STRVAR_1 3, 0, 0}!\rI hear Professor Elm discovered some\nnew Pokémon.</language>
+	</row>
+	<row id="msg_0542_T20_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">...\rSo this is the famous Elm Pokémon Lab...\r</language>
+	</row>
+	<row id="msg_0542_T20_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">...What are you staring at?\r</language>
+	</row>
+	<row id="msg_0542_T20_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lyra: {STRVAR_1 3, 0, 0}!\rSo you picked...\n{STRVAR_1 0, 1, 0}!\rThat’s a cute Pokémon you have!\rWhen you walk with it, it’ll become\nmore friendly.\rYou should turn around and talk to it\nsometimes, too.\rOh, that’s right!\nWhy don’t you show it to your mom?\fSee ya!\r</language>
+	</row>
+	<row id="msg_0542_T20_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ethan: {STRVAR_1 3, 0, 0}!\rSo you picked...\n{STRVAR_1 0, 1, 0}!\rThat’s a cute Pokémon you have!\rWhen you walk with it, it’ll become\nmore friendly.\rYou should turn around and talk to it\nsometimes, too.\rOh, that’s right!\nWhy don’t you show it to your mom?\fSee ya!\r</language>
+	</row>
+	<row id="msg_0542_T20_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Professor Elm: Wait one second!\r</language>
+	</row>
+	<row id="msg_0542_T20_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I almost completely forgot\nabout this...\fHere, I’ll give you my number.\r</language>
+	</row>
+	<row id="msg_0542_T20_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} registered Professor Elm\nin the Pokégear!</language>
+	</row>
+	<row id="msg_0542_T20_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Professor Elm: I’ll call you if\nanything comes up.\r</language>
+	</row>
+	<row id="msg_0542_T20_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 1, 0, 0}! Where are you going?\r</language>
+	</row>
+	<row id="msg_0542_T20_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Professor Elm has been waiting for you.\fHe said he has something to give you.\r</language>
+	</row>
+	<row id="msg_0542_T20_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Did you not hear me saying that\nProfessor Elm is waiting for you?\r</language>
+	</row>
+	<row id="msg_0542_T20_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’m getting upset!\r</language>
+	</row>
+	<row id="msg_0542_T20_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lyra: I wonder what a Kimono Girl\nwants from you...</language>
+	</row>
+	<row id="msg_0542_T20_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ethan: I wonder what a Kimono Girl\nwants from you...</language>
+	</row>
+	<row id="msg_0542_T20_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lyra: Hi, {STRVAR_1 3, 0, 0}!\r</language>
+	</row>
+	<row id="msg_0542_T20_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ethan: Hey, {STRVAR_1 3, 0, 0}!\r</language>
+	</row>
+	<row id="msg_0542_T20_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Where do you think you’re going,\n{STRVAR_1 3, 0, 0}?\r</language>
+	</row>
+	<row id="msg_0542_T20_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Where do you think you’re going,\n{STRVAR_1 3, 0, 0}?\r</language>
+	</row>
+	<row id="msg_0542_T20_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lyra: Hmm... My Pokémon may be\nputting on some weight lately...</language>
+	</row>
+	<row id="msg_0542_T20_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ethan: Hmm... My Pokémon may be\nputting on some weight lately...</language>
+	</row>
+	<row id="msg_0542_T20_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MARILL: Murfu.\r</language>
+	</row>
+	<row id="msg_0542_T20_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">New Bark Town\nWinds of a New Beginning</language>
+	</row>
+	<row id="msg_0542_T20_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0}’s House</language>
+	</row>
+	<row id="msg_0542_T20_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Elm Pokémon Lab</language>
+	</row>
+	<row id="msg_0542_T20_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0}’s House</language>
+	</row>
+</body>

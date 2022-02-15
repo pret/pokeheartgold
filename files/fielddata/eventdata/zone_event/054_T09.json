@@ -1,0 +1,107 @@
+{
+  "header": "fielddata/script/scr_seq/event_T09.h",
+  "bgs": [
+    {
+      "scr": "_EV_scr_seq_T09_001 + 1",
+      "type": 1,
+      "x": 1036,
+      "y": 502,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T09_002 + 1",
+      "type": 1,
+      "x": 1033,
+      "y": 496,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_t09_w21_rare_candy",
+      "type": 2,
+      "x": 1030,
+      "y": 481,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_t09_iron",
+      "type": 2,
+      "x": 1044,
+      "y": 506,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_t09_star_piece",
+      "type": 2,
+      "x": 1041,
+      "y": 493,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_T09_gsleader16",
+      "ovid": "SPRITE_GSLEADER16",
+      "mvt": 2,
+      "type": 0,
+      "flag": "FLAG_UNK_25A",
+      "scr": "_EV_scr_seq_T09_000 + 1",
+      "dirn": 3,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1036,
+      "y": 494,
+      "z": 0
+    },
+    {
+      "id": "obj_T09_gsleader15",
+      "ovid": "SPRITE_GSLEADER15",
+      "mvt": 2,
+      "type": 0,
+      "flag": "FLAG_UNK_27D",
+      "scr": "_EV_scr_seq_T09_004 + 1",
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1035,
+      "y": 505,
+      "z": 0
+    },
+    {
+      "id": "obj_T09_monstarball",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_T09_MAGMARIZER",
+      "scr": "std_itemball_t09_magmarizer",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1045,
+      "y": 497,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 1039,
+      "y": 502,
+      "header": "MAP_T09PC0101",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

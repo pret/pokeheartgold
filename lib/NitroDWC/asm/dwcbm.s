@@ -6,47 +6,35 @@
 _021D43C8:
 	.space 0xC
 
-_021D43D4: ; 0x021D43D4
-	.space 0x5
+Wifi: ; 0x021D43D4
+	.space 0x2C
 
-_021D43D9: ; 0x021D43D9
-	.space 0x1
-
-_021D43DA: ; 0x021D43DA
-	.space 0x4
-
-_021D43DE: ; 0x021D43DE
-	.space 0x2
-
-_021D43E0: ; 0x021D43E0
-	.space 0x20
-
-_021D4400: ; 0x021D4400
+Work: ; 0x021D4400
 	.space 0x20
 
 	.text
 
-	arm_func_start sub_0209E404
-sub_0209E404: ; 0x0209E404
+	arm_func_start DWCi_BM_GetApInfo
+DWCi_BM_GetApInfo: ; 0x0209E404
 	stmdb sp!, {r3, lr}
 	ldr r1, _0209E42C ; =_021D43C8
 	mov r2, r0
 	ldr r0, [r1, #8]
 	mov r1, #0x300
-	bl sub_0209ED38
+	bl readNvram
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0209E42C: .word _021D43C8
-	arm_func_end sub_0209E404
+	arm_func_end DWCi_BM_GetApInfo
 
-	arm_func_start sub_0209E430
-sub_0209E430: ; 0x0209E430
+	arm_func_start DWCi_BM_GetWiFiInfo
+DWCi_BM_GetWiFiInfo: ; 0x0209E430
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	ldr r0, _0209E4F0 ; =_021D43D4
+	ldr r0, _0209E4F0 ; =Wifi
 	mov r1, r4
 	mov r2, #6
 	bl MI_CpuCopy8
@@ -58,7 +46,7 @@ sub_0209E430: ; 0x0209E430
 	str r0, [r4]
 	and r1, r2, r1
 	str r1, [r4, #4]
-	ldr r0, _0209E4F8 ; =_021D43D9
+	ldr r0, _0209E4F8 ; =Wifi + 5
 	add r1, r4, #8
 	mov r2, #6
 	bl MI_CpuCopy8
@@ -76,13 +64,13 @@ sub_0209E430: ; 0x0209E430
 	str r0, [r4, #8]
 	and r1, r1, r3
 	str r1, [r4, #0xc]
-	ldr r0, _0209E4FC ; =_021D43DE
+	ldr r0, _0209E4FC ; =Wifi + 10
 	add r1, r4, #0x10
 	mov r2, #2
 	bl MI_CpuCopy8
 	ldrh r1, [r4, #0x10]
 	ldr r3, _0209E500 ; =0x000003FF
-	ldr r0, _0209E504 ; =_021D43E0
+	ldr r0, _0209E504 ; =Wifi + 12
 	mov r1, r1, asr #6
 	strh r1, [r4, #0x10]
 	ldrh ip, [r4, #0x10]
@@ -93,26 +81,26 @@ sub_0209E430: ; 0x0209E430
 	bl MI_CpuCopy8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0209E4F0: .word _021D43D4
+_0209E4F0: .word Wifi
 _0209E4F4: .word 0x000007FF
-_0209E4F8: .word _021D43D9
-_0209E4FC: .word _021D43DE
+_0209E4F8: .word Wifi + 5
+_0209E4FC: .word Wifi + 10
 _0209E500: .word 0x000003FF
-_0209E504: .word _021D43E0
-	arm_func_end sub_0209E430
+_0209E504: .word Wifi + 12
+	arm_func_end DWCi_BM_GetWiFiInfo
 
-	arm_func_start sub_0209E508
-sub_0209E508: ; 0x0209E508
+	arm_func_start DWCi_BM_SetWiFiInfo
+DWCi_BM_SetWiFiInfo: ; 0x0209E508
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	ldr r2, _0209E5D8 ; =_021D43C8
 	mov sl, r1
 	ldr sb, [r2, #8]
-	bl sub_0209EF2C
+	bl DWCi_BACKUPlConvWifiInfo
 	ldr r1, _0209E5DC ; =0x0000A001
 	add r0, sl, #0x200
 	bl MATHi_CRC16InitTableRev
 	mov r5, #0x100
-	ldr r6, _0209E5E0 ; =_021D43D4
+	ldr r6, _0209E5E0 ; =Wifi
 	mov r8, #0
 	mov r4, r5
 	mov fp, #0xe
@@ -121,7 +109,7 @@ _0209E540:
 	mov r0, sb
 	mov r1, r7
 	mov r2, sl
-	bl sub_0209ED38
+	bl readNvram
 	cmp r0, #0
 	bne _0209E564
 	bl OS_Terminate
@@ -141,19 +129,19 @@ _0209E588:
 	mov r0, sb
 	mov r1, r5
 	mov r2, sl
-	bl sub_0209EDC8
+	bl writeNvram
 	mov r0, sl
 	mov r1, sb
 	mov r2, r4
 	add r3, sl, #0x100
-	bl sub_0209EE44
+	bl verify
 	cmp r0, #0
 	beq _0209E588
 	add r8, r8, #1
 	cmp r8, #2
 	add sb, sb, #0x100
 	blt _0209E540
-	bl sub_0209EE90
+	bl writeDisable
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
@@ -161,17 +149,17 @@ _0209E588:
 	.align 2, 0
 _0209E5D8: .word _021D43C8
 _0209E5DC: .word 0x0000A001
-_0209E5E0: .word _021D43D4
-	arm_func_end sub_0209E508
+_0209E5E0: .word Wifi
+	arm_func_end DWCi_BM_SetWiFiInfo
 
-	arm_func_start sub_0209E5E4
-sub_0209E5E4: ; 0x0209E5E4
+	arm_func_start DWCi_BACKUPlInit
+DWCi_BACKUPlInit: ; 0x0209E5E4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #0x20
 	mov r1, r0
 	mov r2, r4
-	bl sub_0209ED38
+	bl readNvram
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -184,26 +172,26 @@ sub_0209E5E4: ; 0x0209E5E4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0209E624: .word _021D43C8
-	arm_func_end sub_0209E5E4
+	arm_func_end DWCi_BACKUPlInit
 
-	arm_func_start sub_0209E628
-sub_0209E628: ; 0x0209E628
+	arm_func_start DWCi_BACKUPlRead
+DWCi_BACKUPlRead: ; 0x0209E628
 	stmdb sp!, {r3, lr}
 	ldr r1, _0209E650 ; =_021D43C8
 	mov r2, r0
 	ldr r0, [r1, #8]
 	mov r1, #0x400
-	bl sub_0209ED38
+	bl readNvram
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0209E650: .word _021D43C8
-	arm_func_end sub_0209E628
+	arm_func_end DWCi_BACKUPlRead
 
-	arm_func_start sub_0209E654
-sub_0209E654: ; 0x0209E654
+	arm_func_start DWCi_BACKUPlWritePage
+DWCi_BACKUPlWritePage: ; 0x0209E654
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	ldr r3, _0209E6D8 ; =_021D43C8
 	mov sl, #0x100
@@ -221,12 +209,12 @@ _0209E684:
 	mov r0, r5
 	mov r1, sl
 	mov r2, r8
-	bl sub_0209EDC8
+	bl writeNvram
 	mov r0, r8
 	mov r1, r5
 	mov r2, sb
 	mov r3, r6
-	bl sub_0209EE44
+	bl verify
 	cmp r0, #0
 	beq _0209E684
 _0209E6B0:
@@ -235,17 +223,17 @@ _0209E6B0:
 	add r8, r8, #0x100
 	add r5, r5, #0x100
 	blt _0209E678
-	bl sub_0209EE90
+	bl writeDisable
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _0209E6D8: .word _021D43C8
-	arm_func_end sub_0209E654
+	arm_func_end DWCi_BACKUPlWritePage
 
-	arm_func_start sub_0209E6DC
-sub_0209E6DC: ; 0x0209E6DC
+	arm_func_start DWCi_BACKUPlWriteAll
+DWCi_BACKUPlWriteAll: ; 0x0209E6DC
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	ldr r1, _0209E76C ; =_021D43C8
 	mov r8, r0
@@ -266,12 +254,12 @@ _0209E718:
 	mov r0, r6
 	mov r1, sl
 	mov r2, r7
-	bl sub_0209EDC8
+	bl writeNvram
 	mov r0, r7
 	mov r1, r6
 	mov r2, sb
 	add r3, r8, #0x400
-	bl sub_0209EE44
+	bl verify
 	cmp r0, #0
 	beq _0209E718
 	add r5, r5, #1
@@ -279,28 +267,28 @@ _0209E718:
 	add r7, r7, #0x100
 	add r6, r6, #0x100
 	blt _0209E700
-	bl sub_0209EE90
+	bl writeDisable
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _0209E76C: .word _021D43C8
-	arm_func_end sub_0209E6DC
+	arm_func_end DWCi_BACKUPlWriteAll
 
-	arm_func_start sub_0209E770
-sub_0209E770: ; 0x0209E770
+	arm_func_start DWCi_BACKUPlSetWiFi
+DWCi_BACKUPlSetWiFi: ; 0x0209E770
 	ldr ip, _0209E780 ; =MI_CpuCopy8
-	ldr r1, _0209E784 ; =_021D43D4
+	ldr r1, _0209E784 ; =Wifi
 	mov r2, #0xe
 	bx ip
 	.align 2, 0
 _0209E780: .word MI_CpuCopy8
-_0209E784: .word _021D43D4
-	arm_func_end sub_0209E770
+_0209E784: .word Wifi
+	arm_func_end DWCi_BACKUPlSetWiFi
 
-	arm_func_start sub_0209E788
-sub_0209E788: ; 0x0209E788
+	arm_func_start DWCi_BACKUPlConvMaskCidr
+DWCi_BACKUPlConvMaskCidr: ; 0x0209E788
 	stmdb sp!, {r4, lr}
 	mov ip, #0
 	mov r3, ip
@@ -320,10 +308,10 @@ _0209E7A0:
 	blt _0209E798
 	and r0, r3, #0xff
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0209E788
+	arm_func_end DWCi_BACKUPlConvMaskCidr
 
-	arm_func_start sub_0209E7CC
-sub_0209E7CC: ; 0x0209E7CC
+	arm_func_start DWCi_BACKUPlConvMaskAddr
+DWCi_BACKUPlConvMaskAddr: ; 0x0209E7CC
 	mvn r2, #0
 	mov r3, #0
 	eor r2, r2, r2, lsr r0
@@ -337,10 +325,10 @@ _0209E7DC:
 	add ip, ip, #8
 	blt _0209E7DC
 	bx lr
-	arm_func_end sub_0209E7CC
+	arm_func_end DWCi_BACKUPlConvMaskAddr
 
-	arm_func_start sub_0209E7FC
-sub_0209E7FC: ; 0x0209E7FC
+	arm_func_start DWC_BACKUPlCheckSsid
+DWC_BACKUPlCheckSsid: ; 0x0209E7FC
 	mov r2, #0
 _0209E800:
 	ldrb r1, [r0, r2]
@@ -352,15 +340,15 @@ _0209E800:
 	blt _0209E800
 	mov r0, #0
 	bx lr
-	arm_func_end sub_0209E7FC
+	arm_func_end DWC_BACKUPlCheckSsid
 
-	arm_func_start sub_0209E824
-sub_0209E824: ; 0x0209E824
+	arm_func_start DWC_BACKUPlCheckIp
+DWC_BACKUPlCheckIp: ; 0x0209E824
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
 	mov r5, r0
 	mov r4, r1
-	bl sub_0209E8A0
+	bl DWC_BACKUPlCheckAddress
 	cmp r0, #0
 	addeq sp, sp, #8
 	moveq r0, #0
@@ -387,10 +375,10 @@ sub_0209E824: ; 0x0209E824
 	moveq r0, #0
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0209E824
+	arm_func_end DWC_BACKUPlCheckIp
 
-	arm_func_start sub_0209E8A0
-sub_0209E8A0: ; 0x0209E8A0
+	arm_func_start DWC_BACKUPlCheckAddress
+DWC_BACKUPlCheckAddress: ; 0x0209E8A0
 	ldrb r0, [r0]
 	cmp r0, #0x7f
 	moveq r0, #0
@@ -402,13 +390,13 @@ sub_0209E8A0: ; 0x0209E8A0
 	movls r0, #1
 	movhi r0, #0
 	bx lr
-	arm_func_end sub_0209E8A0
+	arm_func_end DWC_BACKUPlCheckAddress
 
-	arm_func_start sub_0209E8CC
-sub_0209E8CC: ; 0x0209E8CC
+	arm_func_start NVRAMm_ExecuteCommand
+NVRAMm_ExecuteCommand: ; 0x0209E8CC
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x3c
-	ldr sl, _0209ED20 ; =_021D4400
+	ldr sl, _0209ED20 ; =Work
 	mov r8, r1, lsr #0x10
 	mov r4, sl, lsl #8
 	mov sb, r4
@@ -705,16 +693,16 @@ _0209ED14:
 	add sp, sp, #0x3c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0209ED20: .word _021D4400
+_0209ED20: .word Work
 _0209ED24: .word 0x01020000
 _0209ED28: .word 0x02002200
 _0209ED2C: .word 0x03002100
 _0209ED30: .word _021D43C8
 _0209ED34: .word 0x000082EA
-	arm_func_end sub_0209E8CC
+	arm_func_end NVRAMm_ExecuteCommand
 
-	arm_func_start sub_0209ED38
-sub_0209ED38: ; 0x0209ED38
+	arm_func_start readNvram
+readNvram: ; 0x0209ED38
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r4, r2
 	mov r6, r0
@@ -729,7 +717,7 @@ _0209ED58:
 	bl PXI_IsCallbackReady
 	cmp r0, #0
 	beq _0209ED58
-	ldr r1, _0209EDC4 ; =sub_0209EEFC
+	ldr r1, _0209EDC4 ; =Callback_NVRAM
 	mov r0, #4
 	bl PXI_SetFifoRecvCallback
 	mov r0, r5, lsl #0x10
@@ -741,7 +729,7 @@ _0209ED88:
 	mov r1, r6
 	mov r2, r8
 	mov r3, r4
-	bl sub_0209E8CC
+	bl NVRAMm_ExecuteCommand
 	cmp r0, #1
 	beq _0209EDB0
 	mov r0, r7
@@ -754,11 +742,11 @@ _0209EDB0:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0209EDC4: .word sub_0209EEFC
-	arm_func_end sub_0209ED38
+_0209EDC4: .word Callback_NVRAM
+	arm_func_end readNvram
 
-	arm_func_start sub_0209EDC8
-sub_0209EDC8: ; 0x0209EDC8
+	arm_func_start writeNvram
+writeNvram: ; 0x0209EDC8
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	mov r7, r1
@@ -771,7 +759,7 @@ _0209EDE0:
 	bl PXI_IsCallbackReady
 	cmp r0, #0
 	beq _0209EDE0
-	ldr r1, _0209EE40 ; =sub_0209EEFC
+	ldr r1, _0209EE40 ; =Callback_NVRAM
 	mov r0, #4
 	bl PXI_SetFifoRecvCallback
 	mov r0, r6
@@ -784,23 +772,20 @@ _0209EE14:
 	mov r1, r8
 	mov r2, r7
 	mov r3, r6
-	bl sub_0209E8CC
+	bl NVRAMm_ExecuteCommand
 	cmp r0, #1
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	mov r0, r4
 	bl SVC_WaitByLoop
 	b _0209EE14
-	arm_func_end sub_0209EDC8
-
-	arm_func_start sub_0209EE3C
-sub_0209EE3C: ; 0x0209EE3C
+_0209EE3C: ; 0x0209EE3C
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_0209EE40: .word sub_0209EEFC
-	arm_func_end sub_0209EE3C
+_0209EE40: .word Callback_NVRAM
+	arm_func_end writeNvram
 
-	arm_func_start sub_0209EE44
-sub_0209EE44: ; 0x0209EE44
+	arm_func_start verify
+verify: ; 0x0209EE44
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r2
 	mov r4, r3
@@ -808,7 +793,7 @@ sub_0209EE44: ; 0x0209EE44
 	mov r0, r1
 	mov r1, r5
 	mov r2, r4
-	bl sub_0209ED38
+	bl readNvram
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -820,10 +805,10 @@ sub_0209EE44: ; 0x0209EE44
 	moveq r0, #1
 	movne r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_0209EE44
+	arm_func_end verify
 
-	arm_func_start sub_0209EE90
-sub_0209EE90: ; 0x0209EE90
+	arm_func_start writeDisable
+writeDisable: ; 0x0209EE90
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, #4
 	mov r4, #1
@@ -833,7 +818,7 @@ _0209EE9C:
 	bl PXI_IsCallbackReady
 	cmp r0, #0
 	beq _0209EE9C
-	ldr r1, _0209EEF8 ; =sub_0209EEFC
+	ldr r1, _0209EEF8 ; =Callback_NVRAM
 	mov r0, #4
 	bl PXI_SetFifoRecvCallback
 	mov r4, #0x40000
@@ -844,7 +829,7 @@ _0209EEC8:
 	mov r1, r5
 	mov r2, r5
 	mov r3, r5
-	bl sub_0209E8CC
+	bl NVRAMm_ExecuteCommand
 	cmp r0, #1
 	beq _0209EEF0
 	mov r0, r4
@@ -854,11 +839,11 @@ _0209EEF0:
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0209EEF8: .word sub_0209EEFC
-	arm_func_end sub_0209EE90
+_0209EEF8: .word Callback_NVRAM
+	arm_func_end writeDisable
 
-	arm_func_start sub_0209EEFC
-sub_0209EEFC: ; 0x0209EEFC
+	arm_func_start Callback_NVRAM
+Callback_NVRAM: ; 0x0209EEFC
 	ldr r0, _0209EF28 ; =_021D43C8
 	and r1, r1, #0xff
 	strh r1, [r0]
@@ -872,16 +857,16 @@ sub_0209EEFC: ; 0x0209EEFC
 	bx lr
 	.align 2, 0
 _0209EF28: .word _021D43C8
-	arm_func_end sub_0209EEFC
+	arm_func_end Callback_NVRAM
 
-	arm_func_start sub_0209EF2C
-sub_0209EF2C: ; 0x0209EF2C
+	arm_func_start DWCi_BACKUPlConvWifiInfo
+DWCi_BACKUPlConvWifiInfo: ; 0x0209EF2C
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	mov r4, r0
 	ldr r3, [r4, #8]
 	ldr r2, [r4, #0xc]
-	ldr r1, _0209EFE0 ; =_021D43D4
+	ldr r1, _0209EFE0 ; =Wifi
 	str r2, [sp, #4]
 	str r3, [sp]
 	mov r2, #5
@@ -896,8 +881,8 @@ sub_0209EF2C: ; 0x0209EF2C
 	and r1, r0, lr, lsr #8
 	and r0, r2, #0x1f
 	orr lr, r1, r0, lsl #3
-	ldr r2, _0209EFE0 ; =_021D43D4
-	ldr r1, _0209EFE4 ; =_021D43DA
+	ldr r2, _0209EFE0 ; =Wifi
+	ldr r1, _0209EFE4 ; =Wifi + 6
 	strb lr, [r2, #5]
 	add r0, sp, #0
 	str ip, [sp]
@@ -906,37 +891,37 @@ sub_0209EF2C: ; 0x0209EF2C
 	bl MI_CpuCopy8
 	ldrh r0, [r4, #0x10]
 	ldr r1, [sp, #4]
-	ldr r3, _0209EFE0 ; =_021D43D4
+	ldr r3, _0209EFE0 ; =Wifi
 	and r1, r1, #0x3f
 	mov r0, r0, lsl #0x1e
 	orr r0, r1, r0, lsr #24
 	strb r0, [r3, #0xa]
 	ldrh r2, [r4, #0x10]
 	add r0, r4, #0x12
-	ldr r1, _0209EFE8 ; =_021D43E0
+	ldr r1, _0209EFE8 ; =Wifi + 12
 	mov r4, r2, asr #2
 	mov r2, #2
 	strb r4, [r3, #0xb]
 	bl MI_CpuCopy8
-	ldr r0, _0209EFE0 ; =_021D43D4
+	ldr r0, _0209EFE0 ; =Wifi
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0209EFE0: .word _021D43D4
-_0209EFE4: .word _021D43DA
-_0209EFE8: .word _021D43E0
-	arm_func_end sub_0209EF2C
+_0209EFE0: .word Wifi
+_0209EFE4: .word Wifi + 6
+_0209EFE8: .word Wifi + 12
+	arm_func_end DWCi_BACKUPlConvWifiInfo
 
-	arm_func_start sub_0209EFEC
-sub_0209EFEC: ; 0x0209EFEC
-	ldr r0, _0209EFF4 ; =_021D43D4
+	arm_func_start DWCi_BACKUPlGetWifi
+DWCi_BACKUPlGetWifi: ; 0x0209EFEC
+	ldr r0, _0209EFF4 ; =Wifi
 	bx lr
 	.align 2, 0
-_0209EFF4: .word _021D43D4
-	arm_func_end sub_0209EFEC
+_0209EFF4: .word Wifi
+	arm_func_end DWCi_BACKUPlGetWifi
 
-	arm_func_start sub_0209EFF8
-sub_0209EFF8: ; 0x0209EFF8
+	arm_func_start DWC_BM_Init
+DWC_BM_Init: ; 0x0209EFF8
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x10
 	mov r8, r0
@@ -944,7 +929,7 @@ sub_0209EFF8: ; 0x0209EFF8
 	mov r2, #0x700
 	bl MI_CpuFill8
 	mov r0, r8
-	bl sub_0209E5E4
+	bl DWCi_BACKUPlInit
 	cmp r0, #0
 	addeq sp, sp, #0x10
 	ldreq r0, _0209F2EC ; =0xFFFFD8EF
@@ -953,7 +938,7 @@ sub_0209EFF8: ; 0x0209EFF8
 	add r0, r8, #0x500
 	bl MATHi_CRC16InitTableRev
 	mov r0, r8
-	bl sub_0209E628
+	bl DWCi_BACKUPlRead
 	cmp r0, #0
 	addeq sp, sp, #0x10
 	ldreq r0, _0209F2EC ; =0xFFFFD8EF
@@ -978,7 +963,7 @@ _0209F074:
 	cmp r0, r1
 	bne _0209F0A4
 	mov r0, r7
-	bl sub_0209F300
+	bl checkAp
 	cmp r0, #0
 	strne sl, [sb, r5, lsl #2]
 _0209F0A4:
@@ -1006,7 +991,7 @@ _0209F0A4:
 	cmpne r0, #0
 	beq _0209F114
 	add r0, r8, #0xf0
-	bl sub_0209E770
+	bl DWCi_BACKUPlSetWiFi
 	add sp, sp, #0x10
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
@@ -1020,9 +1005,9 @@ _0209F114:
 	cmpeq r0, #0
 	bne _0209F158
 	mov r0, r8
-	bl sub_0209F400
+	bl init
 	mov r0, r8
-	bl sub_0209E6DC
+	bl DWCi_BACKUPlWriteAll
 	cmp r0, #0
 	movne r0, #0
 	add sp, sp, #0x10
@@ -1039,9 +1024,9 @@ _0209F158:
 	cmpne r0, #0
 	bne _0209F1A0
 	mov r0, r8
-	bl sub_0209F400
+	bl init
 	mov r0, r8
-	bl sub_0209E6DC
+	bl DWCi_BACKUPlWriteAll
 	cmp r0, #0
 	movne r0, #0
 	add sp, sp, #0x10
@@ -1053,9 +1038,9 @@ _0209F1A0:
 	cmpeq r0, #0
 	bne _0209F1D4
 	mov r0, r8
-	bl sub_0209F400
+	bl init
 	mov r0, r8
-	bl sub_0209E6DC
+	bl DWCi_BACKUPlWriteAll
 	cmp r0, #0
 	ldrne r0, _0209F2F8 ; =0xFFFFD8ED
 	add sp, sp, #0x10
@@ -1066,7 +1051,7 @@ _0209F1D4:
 	bne _0209F204
 	mov r0, r8
 	mov r1, #0
-	bl sub_0209F480
+	bl initPage
 	add r0, r8, #0x1f0
 	add r1, r8, #0xf0
 	mov r2, #0xe
@@ -1080,7 +1065,7 @@ _0209F204:
 	bne _0209F234
 	mov r0, r8
 	mov r1, #1
-	bl sub_0209F480
+	bl initPage
 	add r0, r8, #0xf0
 	add r1, r8, #0x1f0
 	mov r2, #0xe
@@ -1089,13 +1074,13 @@ _0209F204:
 	strb r0, [r8, #0x1ef]
 _0209F234:
 	add r0, r8, #0xf0
-	bl sub_0209E770
+	bl DWCi_BACKUPlSetWiFi
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	bne _0209F254
 	mov r0, r8
 	mov r1, #2
-	bl sub_0209F480
+	bl initPage
 _0209F254:
 	ldr r0, [sp, #0xc]
 	cmp r0, #0
@@ -1128,7 +1113,7 @@ _0209F2B4:
 	cmp r5, #3
 	blt _0209F280
 	mov r0, r8
-	bl sub_0209E6DC
+	bl DWCi_BACKUPlWriteAll
 	cmp r0, #0
 	addeq sp, sp, #0x10
 	ldreq r0, _0209F2F4 ; =0xFFFFD8F0
@@ -1144,10 +1129,10 @@ _0209F2F0: .word 0x0000A001
 _0209F2F4: .word 0xFFFFD8F0
 _0209F2F8: .word 0xFFFFD8ED
 _0209F2FC: .word 0xFFFFD8EE
-	arm_func_end sub_0209EFF8
+	arm_func_end DWC_BM_Init
 
-	arm_func_start sub_0209F300
-sub_0209F300: ; 0x0209F300
+	arm_func_start checkAp
+checkAp: ; 0x0209F300
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	mov r4, r0
@@ -1161,19 +1146,19 @@ sub_0209F300: ; 0x0209F300
 	movhi r0, #0
 	ldmhiia sp!, {r3, r4, pc}
 	add r0, r4, #0x40
-	bl sub_0209E7FC
+	bl DWC_BACKUPlCheckSsid
 	cmp r0, #0
 	addeq sp, sp, #4
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, pc}
-	ldr r1, _0209F3FC ; =_02108F9C
+	ldr r1, _0209F3FC ; =DWCi_SETTING_NONE
 	add r0, r4, #0xc0
 	mov r2, #4
 	bl memcmp
 	cmp r0, #0
 	beq _0209F3B0
 	add r0, r4, #0xc4
-	bl sub_0209E8A0
+	bl DWC_BACKUPlCheckAddress
 	cmp r0, #0
 	addeq sp, sp, #4
 	moveq r0, #0
@@ -1184,27 +1169,27 @@ sub_0209F300: ; 0x0209F300
 	movhi r0, #0
 	ldmhiia sp!, {r3, r4, pc}
 	add r1, sp, #0
-	bl sub_0209E7CC
+	bl DWCi_BACKUPlConvMaskAddr
 	add r1, sp, #0
 	add r0, r4, #0xc0
-	bl sub_0209E824
+	bl DWC_BACKUPlCheckIp
 	cmp r0, #0
 	addeq sp, sp, #4
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, pc}
 _0209F3B0:
-	ldr r1, _0209F3FC ; =_02108F9C
+	ldr r1, _0209F3FC ; =DWCi_SETTING_NONE
 	add r0, r4, #0xc8
 	mov r2, #4
 	bl memcmp
 	cmp r0, #0
 	beq _0209F3F0
 	add r0, r4, #0xc8
-	bl sub_0209E8A0
+	bl DWC_BACKUPlCheckAddress
 	cmp r0, #0
 	bne _0209F3F0
 	add r0, r4, #0xcc
-	bl sub_0209E8A0
+	bl DWC_BACKUPlCheckAddress
 	cmp r0, #0
 	addeq sp, sp, #4
 	moveq r0, #0
@@ -1214,11 +1199,11 @@ _0209F3F0:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
-_0209F3FC: .word _02108F9C
-	arm_func_end sub_0209F300
+_0209F3FC: .word DWCi_SETTING_NONE
+	arm_func_end checkAp
 
-	arm_func_start sub_0209F400
-sub_0209F400: ; 0x0209F400
+	arm_func_start init
+init: ; 0x0209F400
 	stmdb sp!, {r4, r5, r6, r7, lr}
 	sub sp, sp, #0x14
 	mov r7, r0
@@ -1235,9 +1220,9 @@ _0209F424:
 	cmp r2, #3
 	blt _0209F424
 	add r0, sp, #0
-	bl sub_0209F630
+	bl DWCi_AUTH_GetNewWiFiInfo
 	add r0, sp, #0
-	bl sub_0209EF2C
+	bl DWCi_BACKUPlConvWifiInfo
 	mov r5, r0
 	mov r6, #0
 	mov r4, #0xe
@@ -1253,10 +1238,10 @@ _0209F454:
 	mov r0, #0
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, pc}
-	arm_func_end sub_0209F400
+	arm_func_end init
 
-	arm_func_start sub_0209F480
-sub_0209F480: ; 0x0209F480
+	arm_func_start initPage
+initPage: ; 0x0209F480
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -1268,10 +1253,10 @@ sub_0209F480: ; 0x0209F480
 	mov r1, #0xff
 	strb r1, [r0, #0xe7]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0209F480
+	arm_func_end initPage
 
-	arm_func_start sub_0209F4AC
-sub_0209F4AC: ; 0x0209F4AC
+	arm_func_start DWCi_Util_WiFiId_scrambleUid
+DWCi_Util_WiFiId_scrambleUid: ; 0x0209F4AC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x10
 	ldr r4, _0209F624 ; =0x0000FFFF
@@ -1304,7 +1289,7 @@ _0209F510:
 	eor r0, r0, #0xd6
 	strb r0, [r2], #1
 	blt _0209F510
-	ldr r2, _0209F628 ; =_02108FA8
+	ldr r2, _0209F628 ; =DWCi_util_wifiid_ttable
 	add r4, sp, #8
 	mov r5, #0
 _0209F534:
@@ -1323,7 +1308,7 @@ _0209F534:
 	add r1, sp, #0
 	mov r2, #8
 	bl MI_CpuCopy8
-	ldr r4, _0209F62C ; =_02108FA0
+	ldr r4, _0209F62C ; =DWCi_util_wifiid_exctable
 	add r3, sp, #0
 	mov r5, #0
 	add r0, sp, #8
@@ -1372,16 +1357,16 @@ _0209F5E4:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0209F624: .word 0x0000FFFF
-_0209F628: .word _02108FA8
-_0209F62C: .word _02108FA0
-	arm_func_end sub_0209F4AC
+_0209F628: .word DWCi_util_wifiid_ttable
+_0209F62C: .word DWCi_util_wifiid_exctable
+	arm_func_end DWCi_Util_WiFiId_scrambleUid
 
-	arm_func_start sub_0209F630
-sub_0209F630: ; 0x0209F630
+	arm_func_start DWCi_AUTH_GetNewWiFiInfo
+DWCi_AUTH_GetNewWiFiInfo: ; 0x0209F630
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x24
 	mov sl, r0
-	bl sub_0209E430
+	bl DWCi_BM_GetWiFiInfo
 	bl RTC_Init
 	add r0, sp, #0x14
 	bl RTC_GetDate
@@ -1465,7 +1450,7 @@ _0209F768:
 	mov r1, r8
 	mov r2, r7
 	mov r3, #0
-	bl sub_0209F4AC
+	bl DWCi_Util_WiFiId_scrambleUid
 	str r0, [sl, #8]
 	str r1, [sl, #0xc]
 	ldr r0, [sl, #8]
@@ -1489,7 +1474,7 @@ _0209F7B8:
 	strh r0, [sl, #0x12]
 	ldrh r0, [sl, #0x12]
 	mov r3, r6
-	bl sub_0209F4AC
+	bl DWCi_Util_WiFiId_scrambleUid
 	str r0, [sl, #8]
 	str r1, [sl, #0xc]
 	ldr r0, [sl, #8]
@@ -1505,37 +1490,37 @@ _0209F7FC: .word OS_GetTick
 _0209F800: .word 0x5D588B65
 _0209F804: .word 0x00269EC3
 _0209F808: .word 0x000009BF
-	arm_func_end sub_0209F630
+	arm_func_end DWCi_AUTH_GetNewWiFiInfo
 
-	arm_func_start sub_0209F80C
-sub_0209F80C: ; 0x0209F80C
+	arm_func_start DWCi_AUTH_MakeWiFiID
+DWCi_AUTH_MakeWiFiID: ; 0x0209F80C
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x14
 	mov r4, r0
 	add r0, sp, #0
-	bl sub_0209F630
+	bl DWCi_AUTH_GetNewWiFiInfo
 	cmp r0, #0
 	addeq sp, sp, #0x14
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, pc}
 	add r0, sp, #0
 	mov r1, r4
-	bl sub_0209E508
+	bl DWCi_BM_SetWiFiInfo
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
 	add sp, sp, #0x14
 	ldmia sp!, {r3, r4, pc}
-	arm_func_end sub_0209F80C
+	arm_func_end DWCi_AUTH_MakeWiFiID
 
-	arm_func_start sub_0209F850
-sub_0209F850: ; 0x0209F850
+	arm_func_start DWCi_AUTH_UpDateWiFiID
+DWCi_AUTH_UpDateWiFiID: ; 0x0209F850
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x14
 	mov r5, r0
 	add r0, sp, #0
 	mov r4, r1
-	bl sub_0209E430
+	bl DWCi_BM_GetWiFiInfo
 	add ip, r5, #8
 	ldmia ip, {r2, r3}
 	stmia r5, {r2, r3}
@@ -1544,16 +1529,16 @@ sub_0209F850: ; 0x0209F850
 	mov r0, r5
 	mov r1, r4
 	stmia ip, {r2, r3}
-	bl sub_0209E508
+	bl DWCi_BM_SetWiFiInfo
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, pc}
-	arm_func_end sub_0209F850
+	arm_func_end DWCi_AUTH_UpDateWiFiID
 
-	arm_func_start sub_0209F8A0
-sub_0209F8A0: ; 0x0209F8A0
+	arm_func_start DWCi_AUTH_RemakeWiFiID
+DWCi_AUTH_RemakeWiFiID: ; 0x0209F8A0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x24
 	add r2, sp, #0
@@ -1565,7 +1550,7 @@ sub_0209F8A0: ; 0x0209F8A0
 	strb r1, [r2, #3]
 	strb r1, [r2, #4]
 	strb r1, [r2, #5]
-	bl sub_0209E430
+	bl DWCi_BM_GetWiFiInfo
 	bl RTC_Init
 	add r0, sp, #0x14
 	bl RTC_GetDate
@@ -1648,7 +1633,7 @@ _0209F9D8:
 	mov r1, r8
 	mov r2, r7
 	mov r3, #0
-	bl sub_0209F4AC
+	bl DWCi_Util_WiFiId_scrambleUid
 	str r0, [sl, #8]
 	str r1, [sl, #0xc]
 	ldr r0, [sl, #8]
@@ -1664,15 +1649,15 @@ _0209FA30: .word OS_GetTick
 _0209FA34: .word 0x5D588B65
 _0209FA38: .word 0x00269EC3
 _0209FA3C: .word 0x000009BF
-	arm_func_end sub_0209F8A0
+	arm_func_end DWCi_AUTH_RemakeWiFiID
 
-	arm_func_start sub_0209FA40
-sub_0209FA40: ; 0x0209FA40
+	arm_func_start DWC_Auth_GetId
+DWC_Auth_GetId: ; 0x0209FA40
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x14
 	mov r4, r0
 	add r0, sp, #0
-	bl sub_0209E430
+	bl DWCi_BM_GetWiFiInfo
 	add r0, sp, #0
 	ldmia r0, {r2, r3}
 	stmia r4, {r2, r3}
@@ -1689,14 +1674,14 @@ sub_0209FA40: ; 0x0209FA40
 	str r0, [r4, #0x10]
 	add sp, sp, #0x14
 	ldmia sp!, {r3, r4, pc}
-	arm_func_end sub_0209FA40
+	arm_func_end DWC_Auth_GetId
 
-	arm_func_start sub_0209FA94
-sub_0209FA94: ; 0x0209FA94
+	arm_func_start DWC_Auth_CheckPseudoWiFiID
+DWC_Auth_CheckPseudoWiFiID: ; 0x0209FA94
 	stmdb sp!, {lr}
 	sub sp, sp, #0x14
 	add r0, sp, #0
-	bl sub_0209E430
+	bl DWCi_BM_GetWiFiInfo
 	ldr r0, [sp, #0xc]
 	ldr r1, [sp, #8]
 	cmp r0, #0
@@ -1714,14 +1699,14 @@ _0209FAD8:
 	mov r0, #0
 	add sp, sp, #0x14
 	ldmia sp!, {pc}
-	arm_func_end sub_0209FA94
+	arm_func_end DWC_Auth_CheckPseudoWiFiID
 
 	.rodata
 
-_02108F9C:
+DWCi_SETTING_NONE:
 	.byte 0x00, 0x00, 0x00, 0x00
-_02108FA0:
+DWCi_util_wifiid_exctable:
 	.byte 0x01, 0x02, 0x00, 0x04, 0x03, 0x05, 0x06, 0x07
-_02108FA8:
+DWCi_util_wifiid_ttable:
 	.byte 0x05, 0x09, 0x01, 0x0E, 0x0C, 0x02, 0x0A, 0x00
 	.byte 0x0B, 0x0D, 0x03, 0x04, 0x08, 0x06, 0x0F, 0x07

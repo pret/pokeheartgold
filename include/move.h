@@ -34,5 +34,8 @@ typedef enum MoveAttr {
 
 u32 GetWazaAttr(u16 moveId, MoveAttr attrno);
 u8 WazaGetMaxPp(u16 moveId, u8 ppUps);
+void LoadAllWazaTbl(WAZA *dest);
+u32 GetAttrFromWazaTbl(WAZA * wazaTbl, MoveAttr attr);
+void LoadWazaEntry(u16 moveId, WAZA * wazaTbl);
 
 #endif //POKEHEARTGOLD_MOVE_H

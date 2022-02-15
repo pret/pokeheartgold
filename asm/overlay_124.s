@@ -44,8 +44,8 @@ _02260C66:
 	mul r0, r1
 	add r4, r4, r0
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
-	bl sub_0203B958
+	bl Save_FlyPoints_get
+	bl FlyPoints_GetPosition
 	str r0, [r5, #0x20]
 	bl MapMatrix_New
 	str r0, [r5, #0x30]
@@ -56,7 +56,7 @@ _02260C66:
 	add r0, r5, #0
 	mul r6, r1
 	mov r1, #0xb
-	bl sub_0203B610
+	bl Field_AllocateMapEvents
 	mov r0, #0xb
 	bl BagCursor_new
 	add r1, r5, #0

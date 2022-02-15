@@ -1,0 +1,7 @@
+#ifndef POKEHEARTGOLD_UNK_0200FA24_H
+#define POKEHEARTGOLD_UNK_0200FA24_H
+
+void sub_0200FBF4(int a0, int a1);
+void sub_0200FB2C(void);
+
+#endif //POKEHEARTGOLD_UNK_0200FA24_H

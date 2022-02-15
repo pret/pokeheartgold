@@ -1,6 +1,6 @@
 #ifndef POKEHEARTGOLD_UNK_02078834_H
 #define POKEHEARTGOLD_UNK_02078834_H
 
-void sub_0208F270(BOXMON *boxmon, PLAYERDATA *playerData, u32 a2, u32 a3, HeapID heap_id);
+void sub_0208F270(BOXMON *boxmon, PLAYERPROFILE *playerProfile, u32 a2, u32 a3, HeapID heap_id);
 
 #endif //POKEHEARTGOLD_UNK_02078834_H

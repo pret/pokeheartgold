@@ -1,0 +1,499 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0721_none" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English"> -</language>
+	</row>
+	<row id="msg_0721_stench" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STENCH</language>
+	</row>
+	<row id="msg_0721_drizzle" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DRIZZLE</language>
+	</row>
+	<row id="msg_0721_speed_boost" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SPEED BOOST</language>
+	</row>
+	<row id="msg_0721_battle_armor" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BATTLE ARMOR</language>
+	</row>
+	<row id="msg_0721_sturdy" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STURDY</language>
+	</row>
+	<row id="msg_0721_damp" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DAMP</language>
+	</row>
+	<row id="msg_0721_limber" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LIMBER</language>
+	</row>
+	<row id="msg_0721_sand_veil" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SAND VEIL</language>
+	</row>
+	<row id="msg_0721_static" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STATIC</language>
+	</row>
+	<row id="msg_0721_volt_absorb" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">VOLT ABSORB</language>
+	</row>
+	<row id="msg_0721_water_absorb" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WATER ABSORB</language>
+	</row>
+	<row id="msg_0721_oblivious" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OBLIVIOUS</language>
+	</row>
+	<row id="msg_0721_cloud_nine" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CLOUD NINE</language>
+	</row>
+	<row id="msg_0721_compoundeyes" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COMPOUNDEYES</language>
+	</row>
+	<row id="msg_0721_insomnia" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">INSOMNIA</language>
+	</row>
+	<row id="msg_0721_color_change" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COLOR CHANGE</language>
+	</row>
+	<row id="msg_0721_immunity" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">IMMUNITY</language>
+	</row>
+	<row id="msg_0721_flash_fire" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FLASH FIRE</language>
+	</row>
+	<row id="msg_0721_shield_dust" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SHIELD DUST</language>
+	</row>
+	<row id="msg_0721_own_tempo" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OWN TEMPO</language>
+	</row>
+	<row id="msg_0721_suction_cups" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SUCTION CUPS</language>
+	</row>
+	<row id="msg_0721_intimidate" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">INTIMIDATE</language>
+	</row>
+	<row id="msg_0721_shadow_tag" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SHADOW TAG</language>
+	</row>
+	<row id="msg_0721_rough_skin" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROUGH SKIN</language>
+	</row>
+	<row id="msg_0721_wonder_guard" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WONDER GUARD</language>
+	</row>
+	<row id="msg_0721_levitate" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LEVITATE</language>
+	</row>
+	<row id="msg_0721_effect_spore" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">EFFECT SPORE</language>
+	</row>
+	<row id="msg_0721_synchronize" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SYNCHRONIZE</language>
+	</row>
+	<row id="msg_0721_clear_body" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CLEAR BODY</language>
+	</row>
+	<row id="msg_0721_natural_cure" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NATURAL CURE</language>
+	</row>
+	<row id="msg_0721_lightningrod" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LIGHTNINGROD</language>
+	</row>
+	<row id="msg_0721_serene_grace" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SERENE GRACE</language>
+	</row>
+	<row id="msg_0721_swift_swim" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SWIFT SWIM</language>
+	</row>
+	<row id="msg_0721_chlorophyll" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHLOROPHYLL</language>
+	</row>
+	<row id="msg_0721_illuminate" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ILLUMINATE</language>
+	</row>
+	<row id="msg_0721_trace" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TRACE</language>
+	</row>
+	<row id="msg_0721_huge_power" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HUGE POWER</language>
+	</row>
+	<row id="msg_0721_poison_point" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POISON POINT</language>
+	</row>
+	<row id="msg_0721_inner_focus" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">INNER FOCUS</language>
+	</row>
+	<row id="msg_0721_magma_armor" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MAGMA ARMOR</language>
+	</row>
+	<row id="msg_0721_water_veil" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WATER VEIL</language>
+	</row>
+	<row id="msg_0721_magnet_pull" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MAGNET PULL</language>
+	</row>
+	<row id="msg_0721_soundproof" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SOUNDPROOF</language>
+	</row>
+	<row id="msg_0721_rain_dish" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RAIN DISH</language>
+	</row>
+	<row id="msg_0721_sand_stream" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SAND STREAM</language>
+	</row>
+	<row id="msg_0721_pressure" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PRESSURE</language>
+	</row>
+	<row id="msg_0721_thick_fat" index="47">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">THICK FAT</language>
+	</row>
+	<row id="msg_0721_early_bird" index="48">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">EARLY BIRD</language>
+	</row>
+	<row id="msg_0721_flame_body" index="49">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FLAME BODY</language>
+	</row>
+	<row id="msg_0721_run_away" index="50">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RUN AWAY</language>
+	</row>
+	<row id="msg_0721_keen_eye" index="51">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KEEN EYE</language>
+	</row>
+	<row id="msg_0721_hyper_cutter" index="52">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HYPER CUTTER</language>
+	</row>
+	<row id="msg_0721_pickup" index="53">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PICKUP</language>
+	</row>
+	<row id="msg_0721_truant" index="54">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TRUANT</language>
+	</row>
+	<row id="msg_0721_hustle" index="55">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HUSTLE</language>
+	</row>
+	<row id="msg_0721_cute_charm" index="56">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CUTE CHARM</language>
+	</row>
+	<row id="msg_0721_plus" index="57">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PLUS</language>
+	</row>
+	<row id="msg_0721_minus" index="58">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MINUS</language>
+	</row>
+	<row id="msg_0721_forecast" index="59">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FORECAST</language>
+	</row>
+	<row id="msg_0721_sticky_hold" index="60">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STICKY HOLD</language>
+	</row>
+	<row id="msg_0721_shed_skin" index="61">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SHED SKIN</language>
+	</row>
+	<row id="msg_0721_guts" index="62">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GUTS</language>
+	</row>
+	<row id="msg_0721_marvel_scale" index="63">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MARVEL SCALE</language>
+	</row>
+	<row id="msg_0721_liquid_ooze" index="64">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LIQUID OOZE</language>
+	</row>
+	<row id="msg_0721_overgrow" index="65">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OVERGROW</language>
+	</row>
+	<row id="msg_0721_blaze" index="66">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BLAZE</language>
+	</row>
+	<row id="msg_0721_torrent" index="67">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TORRENT</language>
+	</row>
+	<row id="msg_0721_swarm" index="68">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SWARM</language>
+	</row>
+	<row id="msg_0721_rock_head" index="69">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROCK HEAD</language>
+	</row>
+	<row id="msg_0721_drought" index="70">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DROUGHT</language>
+	</row>
+	<row id="msg_0721_arena_trap" index="71">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ARENA TRAP</language>
+	</row>
+	<row id="msg_0721_vital_spirit" index="72">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">VITAL SPIRIT</language>
+	</row>
+	<row id="msg_0721_white_smoke" index="73">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WHITE SMOKE</language>
+	</row>
+	<row id="msg_0721_pure_power" index="74">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PURE POWER</language>
+	</row>
+	<row id="msg_0721_shell_armor" index="75">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SHELL ARMOR</language>
+	</row>
+	<row id="msg_0721_air_lock" index="76">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AIR LOCK</language>
+	</row>
+	<row id="msg_0721_tangled_feet" index="77">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TANGLED FEET</language>
+	</row>
+	<row id="msg_0721_motor_drive" index="78">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MOTOR DRIVE</language>
+	</row>
+	<row id="msg_0721_rivalry" index="79">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RIVALRY</language>
+	</row>
+	<row id="msg_0721_steadfast" index="80">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STEADFAST</language>
+	</row>
+	<row id="msg_0721_snow_cloak" index="81">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SNOW CLOAK</language>
+	</row>
+	<row id="msg_0721_gluttony" index="82">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GLUTTONY</language>
+	</row>
+	<row id="msg_0721_anger_point" index="83">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ANGER POINT</language>
+	</row>
+	<row id="msg_0721_unburden" index="84">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">UNBURDEN</language>
+	</row>
+	<row id="msg_0721_heatproof" index="85">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HEATPROOF</language>
+	</row>
+	<row id="msg_0721_simple" index="86">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SIMPLE</language>
+	</row>
+	<row id="msg_0721_dry_skin" index="87">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DRY SKIN</language>
+	</row>
+	<row id="msg_0721_download" index="88">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DOWNLOAD</language>
+	</row>
+	<row id="msg_0721_iron_fist" index="89">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">IRON FIST</language>
+	</row>
+	<row id="msg_0721_poison_heal" index="90">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POISON HEAL</language>
+	</row>
+	<row id="msg_0721_adaptability" index="91">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ADAPTABILITY</language>
+	</row>
+	<row id="msg_0721_skill_link" index="92">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SKILL LINK</language>
+	</row>
+	<row id="msg_0721_hydration" index="93">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HYDRATION</language>
+	</row>
+	<row id="msg_0721_solar_power" index="94">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SOLAR POWER</language>
+	</row>
+	<row id="msg_0721_quick_feet" index="95">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">QUICK FEET</language>
+	</row>
+	<row id="msg_0721_normalize" index="96">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NORMALIZE</language>
+	</row>
+	<row id="msg_0721_sniper" index="97">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SNIPER</language>
+	</row>
+	<row id="msg_0721_magic_guard" index="98">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MAGIC GUARD</language>
+	</row>
+	<row id="msg_0721_no_guard" index="99">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NO GUARD</language>
+	</row>
+	<row id="msg_0721_stall" index="100">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STALL</language>
+	</row>
+	<row id="msg_0721_technician" index="101">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TECHNICIAN</language>
+	</row>
+	<row id="msg_0721_leaf_guard" index="102">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LEAF GUARD</language>
+	</row>
+	<row id="msg_0721_klutz" index="103">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KLUTZ</language>
+	</row>
+	<row id="msg_0721_mold_breaker" index="104">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MOLD BREAKER</language>
+	</row>
+	<row id="msg_0721_super_luck" index="105">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SUPER LUCK</language>
+	</row>
+	<row id="msg_0721_aftermath" index="106">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AFTERMATH</language>
+	</row>
+	<row id="msg_0721_anticipation" index="107">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ANTICIPATION</language>
+	</row>
+	<row id="msg_0721_forewarn" index="108">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FOREWARN</language>
+	</row>
+	<row id="msg_0721_unaware" index="109">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">UNAWARE</language>
+	</row>
+	<row id="msg_0721_tinted_lens" index="110">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TINTED LENS</language>
+	</row>
+	<row id="msg_0721_filter" index="111">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FILTER</language>
+	</row>
+	<row id="msg_0721_slow_start" index="112">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SLOW START</language>
+	</row>
+	<row id="msg_0721_scrappy" index="113">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SCRAPPY</language>
+	</row>
+	<row id="msg_0721_storm_drain" index="114">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STORM DRAIN</language>
+	</row>
+	<row id="msg_0721_ice_body" index="115">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ICE BODY</language>
+	</row>
+	<row id="msg_0721_solid_rock" index="116">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SOLID ROCK</language>
+	</row>
+	<row id="msg_0721_snow_warning" index="117">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SNOW WARNING</language>
+	</row>
+	<row id="msg_0721_honey_gather" index="118">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HONEY GATHER</language>
+	</row>
+	<row id="msg_0721_frisk" index="119">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FRISK</language>
+	</row>
+	<row id="msg_0721_reckless" index="120">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RECKLESS</language>
+	</row>
+	<row id="msg_0721_multitype" index="121">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MULTITYPE</language>
+	</row>
+	<row id="msg_0721_flower_gift" index="122">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FLOWER GIFT</language>
+	</row>
+	<row id="msg_0721_bad_dreams" index="123">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BAD DREAMS</language>
+	</row>
+</body>

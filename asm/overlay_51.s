@@ -13,7 +13,7 @@ ov51_021E5AC0: ; 0x021E5AC0
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -1291,7 +1291,7 @@ _021E6568:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r4]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	b _021E6608
 _021E65C8:
 	add r0, r4, #0
@@ -1324,7 +1324,7 @@ _021E65C8:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r4]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021E6608:
 	ldr r0, [r4]
 	mov r1, #2
@@ -1358,27 +1358,27 @@ ov51_021E6644: ; 0x021E6644
 	bl GX_EngineAToggleLayers
 	mov r0, #0x1f
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r2, #0
 	add r0, r4, #0
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r2, #0
 	add r0, r4, #0
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r1, #3
 	add r0, r4, #0
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #0
 	mov r1, #7
 	bl FreeBgTilemapBuffer
@@ -1864,7 +1864,7 @@ _021E6A50: .word 0x0000343A
 	thumb_func_start ov51_021E6A54
 ov51_021E6A54: ; 0x021E6A54
 	push {r3, lr}
-	ldr r1, _021E6A9C ; =gMain
+	ldr r1, _021E6A9C ; =gSystem
 	mov r2, #1
 	ldr r1, [r1, #0x48]
 	tst r2, r1
@@ -1901,7 +1901,7 @@ _021E6A98:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-_021E6A9C: .word gMain
+_021E6A9C: .word gSystem
 _021E6AA0: .word 0x000030F4
 _021E6AA4: .word 0x0000343A
 _021E6AA8: .word 0x000005DC
@@ -1954,7 +1954,7 @@ _021E6B02:
 	bl sub_02025320
 	cmp r0, #0
 	beq _021E6B24
-	ldr r1, _021E6B40 ; =gMain + 0x40
+	ldr r1, _021E6B40 ; =gSystem + 0x40
 	mov r0, #0xd1
 	ldrh r2, [r1, #0x20]
 	lsl r0, r0, #6
@@ -1976,7 +1976,7 @@ _021E6B30: .word 0x0000343A
 _021E6B34: .word ov51_021E7DBC
 _021E6B38: .word 0x000005DC
 _021E6B3C: .word ov51_021E7DC0
-_021E6B40: .word gMain + 0x40
+_021E6B40: .word gSystem + 0x40
 	thumb_func_end ov51_021E6AAC
 
 	thumb_func_start ov51_021E6B44
@@ -2026,22 +2026,22 @@ ov51_021E6B88: ; 0x021E6B88
 	neg r5, r0
 	ldr r0, [r4]
 	add r3, r5, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r4]
 	mov r1, #5
 	mov r2, #3
 	add r3, r5, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r4]
 	mov r1, #3
 	mov r2, #0
 	add r3, r5, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r1, #3
 	ldr r0, [r4]
 	add r2, r1, #0
 	add r3, r5, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, _021E6BF4 ; =0x0000343A
 	ldrb r0, [r4, r0]
 	lsl r0, r0, #0x1d
@@ -2051,7 +2051,7 @@ ov51_021E6B88: ; 0x021E6B88
 	bl ov51_021E69EC
 _021E6BD2:
 	ldr r0, [r4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0202061C
 	bl sub_0200B224
 	ldr r3, _021E6BF8 ; =0x027E0000
@@ -2154,7 +2154,7 @@ ov51_021E6C6C: ; 0x021E6C6C
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r4]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #7
 	bl BgCommitTilemapBufferToVram
@@ -2405,13 +2405,13 @@ _021E6E6C:
 	ldr r0, [r5]
 	mov r1, #7
 	mov r3, #1
-	bl sub_0201C1F4
+	bl BG_FillCharDataRange
 	mov r2, #0
 	str r2, [sp]
 	ldr r0, [r5]
 	mov r1, #4
 	mov r3, #1
-	bl sub_0201C1F4
+	bl BG_FillCharDataRange
 	ldr r0, _021E6EE8 ; =0x0000343D
 	ldr r2, _021E6EEC ; =0x000003E1
 	ldrb r0, [r5, r0]
@@ -3645,17 +3645,17 @@ ov51_021E78D0: ; 0x021E78D0
 	cmp r1, #1
 	bne _021E78E8
 	add r0, #0xd4
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r4, #0xc4
 	add r0, r4, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	pop {r4, pc}
 _021E78E8:
 	add r0, #0xd4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r4, #0xc4
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	pop {r4, pc}
 	thumb_func_end ov51_021E78D0
 
@@ -3882,7 +3882,7 @@ _021E7AB2:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x6c
 	pop {r4, r5, r6, r7, pc}
 	nop

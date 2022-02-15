@@ -1,10 +1,11 @@
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
 	.text
 
-	thumb_func_start ov110_021E5900
-ov110_021E5900: ; 0x021E5900
+	thumb_func_start ov110_AlphPuzzle_OvyInit
+ov110_AlphPuzzle_OvyInit: ; 0x021E5900
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	ldr r1, [r5]
@@ -57,10 +58,10 @@ _021E596E:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov110_021E5900
+	thumb_func_end ov110_AlphPuzzle_OvyInit
 
-	thumb_func_start ov110_021E5974
-ov110_021E5974: ; 0x021E5974
+	thumb_func_start ov110_AlphPuzzle_OvyExec
+ov110_AlphPuzzle_OvyExec: ; 0x021E5974
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -85,35 +86,35 @@ _021E5990: ; jump table
 	.short _021E59DA - _021E5990 - 2 ; case 7
 	.short _021E59E2 - _021E5990 - 2 ; case 8
 _021E59A2:
-	bl ov110_021E5B20
+	bl AlphPuzzleMainSeq_0
 	str r0, [r4]
 	b _021E59E6
 _021E59AA:
-	bl ov110_021E5BB4
+	bl AlphPuzzleMainSeq_1
 	str r0, [r4]
 	b _021E59E6
 _021E59B2:
-	bl ov110_021E5BBC
+	bl AlphPuzzleMainSeq_2
 	str r0, [r4]
 	b _021E59E6
 _021E59BA:
-	bl ov110_021E5BC4
+	bl AlphPuzzleMainSeq_3
 	str r0, [r4]
 	b _021E59E6
 _021E59C2:
-	bl ov110_021E5BCC
+	bl AlphPuzzleMainSeq_4
 	str r0, [r4]
 	b _021E59E6
 _021E59CA:
-	bl ov110_021E5BD4
+	bl AlphPuzzleMainSeq_5
 	str r0, [r4]
 	b _021E59E6
 _021E59D2:
-	bl ov110_021E5BDC
+	bl AlphPuzzleMainSeq_6
 	str r0, [r4]
 	b _021E59E6
 _021E59DA:
-	bl ov110_021E5B68
+	bl AlphPuzzleMainSeq_7
 	str r0, [r4]
 	b _021E59E6
 _021E59E2:
@@ -126,10 +127,10 @@ _021E59E6:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov110_021E5974
+	thumb_func_end ov110_AlphPuzzle_OvyExec
 
-	thumb_func_start ov110_021E59F4
-ov110_021E59F4: ; 0x021E59F4
+	thumb_func_start ov110_AlphPuzzle_OvyExit
+ov110_AlphPuzzle_OvyExit: ; 0x021E59F4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -149,7 +150,7 @@ _021E5A0A:
 	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov110_021E59F4
+	thumb_func_end ov110_AlphPuzzle_OvyExit
 
 	thumb_func_start ov110_021E5A24
 ov110_021E5A24: ; 0x021E5A24
@@ -157,7 +158,7 @@ ov110_021E5A24: ; 0x021E5A24
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -231,7 +232,7 @@ ov110_021E5AAC: ; 0x021E5AAC
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
 	ldrb r1, [r4, #0x19]
-	bl sub_020666D8
+	bl ScriptState_SetAlphPuzzleFlag
 _021E5AD2:
 	pop {r4, pc}
 	thumb_func_end ov110_021E5AAC
@@ -279,8 +280,8 @@ ov110_021E5B0C: ; 0x021E5B0C
 	.balign 4, 0
 	thumb_func_end ov110_021E5B0C
 
-	thumb_func_start ov110_021E5B20
-ov110_021E5B20: ; 0x021E5B20
+	thumb_func_start AlphPuzzleMainSeq_0
+AlphPuzzleMainSeq_0: ; 0x021E5B20
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -318,10 +319,10 @@ _021E5B62:
 	mov r0, #0
 	add sp, #0xc
 	pop {r3, r4, pc}
-	thumb_func_end ov110_021E5B20
+	thumb_func_end AlphPuzzleMainSeq_0
 
-	thumb_func_start ov110_021E5B68
-ov110_021E5B68: ; 0x021E5B68
+	thumb_func_start AlphPuzzleMainSeq_7
+AlphPuzzleMainSeq_7: ; 0x021E5B68
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -361,55 +362,55 @@ _021E5BAC:
 	add sp, #0xc
 	pop {r3, r4, pc}
 	.balign 4, 0
-	thumb_func_end ov110_021E5B68
+	thumb_func_end AlphPuzzleMainSeq_7
 
-	thumb_func_start ov110_021E5BB4
-ov110_021E5BB4: ; 0x021E5BB4
+	thumb_func_start AlphPuzzleMainSeq_1
+AlphPuzzleMainSeq_1: ; 0x021E5BB4
 	ldr r3, _021E5BB8 ; =ov110_021E5C60
 	bx r3
 	.balign 4, 0
 _021E5BB8: .word ov110_021E5C60
-	thumb_func_end ov110_021E5BB4
+	thumb_func_end AlphPuzzleMainSeq_1
 
-	thumb_func_start ov110_021E5BBC
-ov110_021E5BBC: ; 0x021E5BBC
+	thumb_func_start AlphPuzzleMainSeq_2
+AlphPuzzleMainSeq_2: ; 0x021E5BBC
 	ldr r3, _021E5BC0 ; =ov110_021E5CCC
 	bx r3
 	.balign 4, 0
 _021E5BC0: .word ov110_021E5CCC
-	thumb_func_end ov110_021E5BBC
+	thumb_func_end AlphPuzzleMainSeq_2
 
-	thumb_func_start ov110_021E5BC4
-ov110_021E5BC4: ; 0x021E5BC4
+	thumb_func_start AlphPuzzleMainSeq_3
+AlphPuzzleMainSeq_3: ; 0x021E5BC4
 	ldr r3, _021E5BC8 ; =ov110_021E5E1C
 	bx r3
 	.balign 4, 0
 _021E5BC8: .word ov110_021E5E1C
-	thumb_func_end ov110_021E5BC4
+	thumb_func_end AlphPuzzleMainSeq_3
 
-	thumb_func_start ov110_021E5BCC
-ov110_021E5BCC: ; 0x021E5BCC
+	thumb_func_start AlphPuzzleMainSeq_4
+AlphPuzzleMainSeq_4: ; 0x021E5BCC
 	ldr r3, _021E5BD0 ; =ov110_021E5F84
 	bx r3
 	.balign 4, 0
 _021E5BD0: .word ov110_021E5F84
-	thumb_func_end ov110_021E5BCC
+	thumb_func_end AlphPuzzleMainSeq_4
 
-	thumb_func_start ov110_021E5BD4
-ov110_021E5BD4: ; 0x021E5BD4
+	thumb_func_start AlphPuzzleMainSeq_5
+AlphPuzzleMainSeq_5: ; 0x021E5BD4
 	ldr r3, _021E5BD8 ; =ov110_021E6014
 	bx r3
 	.balign 4, 0
 _021E5BD8: .word ov110_021E6014
-	thumb_func_end ov110_021E5BD4
+	thumb_func_end AlphPuzzleMainSeq_5
 
-	thumb_func_start ov110_021E5BDC
-ov110_021E5BDC: ; 0x021E5BDC
+	thumb_func_start AlphPuzzleMainSeq_6
+AlphPuzzleMainSeq_6: ; 0x021E5BDC
 	ldr r3, _021E5BE0 ; =ov110_021E6070
 	bx r3
 	.balign 4, 0
 _021E5BE0: .word ov110_021E6070
-	thumb_func_end ov110_021E5BDC
+	thumb_func_end AlphPuzzleMainSeq_6
 
 	thumb_func_start ov110_021E5BE4
 ov110_021E5BE4: ; 0x021E5BE4
@@ -487,12 +488,12 @@ _021E5C70:
 	str r0, [r4, #4]
 	add r0, r4, #0
 	bl ov110_021E6D20
-	ldr r0, _021E5CC0 ; =0x000005DC
+	ldr r0, _021E5CC0 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #5
 	pop {r4, pc}
 _021E5C8E:
-	ldr r2, _021E5CC4 ; =gMain + 0x40
+	ldr r2, _021E5CC4 ; =gSystem + 0x40
 	add r0, r4, #0
 	ldrh r1, [r2, #0x20]
 	ldrh r2, [r2, #0x22]
@@ -507,7 +508,7 @@ _021E5CA2:
 	lsr r1, r1, #0x18
 	mov r2, #1
 	bl ov110_021E6C58
-	ldr r0, _021E5CC8 ; =0x0000091B
+	ldr r0, _021E5CC8 ; =SEQ_SE_GS_SEKIBAN_SENTAKU
 	bl PlaySE
 	mov r0, #1
 	str r0, [r4, #4]
@@ -515,9 +516,9 @@ _021E5CA2:
 	pop {r4, pc}
 	.balign 4, 0
 _021E5CBC: .word _021E6D8C
-_021E5CC0: .word 0x000005DC
-_021E5CC4: .word gMain + 0x40
-_021E5CC8: .word 0x0000091B
+_021E5CC0: .word SEQ_SE_DP_SELECT
+_021E5CC4: .word gSystem + 0x40
+_021E5CC8: .word SEQ_SE_GS_SEKIBAN_SENTAKU
 	thumb_func_end ov110_021E5C60
 
 	thumb_func_start ov110_021E5CCC
@@ -749,7 +750,7 @@ ov110_021E5E1C: ; 0x021E5E1C
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _021E5E8A
-	ldr r0, _021E5F78 ; =0x000005EA
+	ldr r0, _021E5F78 ; =SEQ_SE_DP_BOX01
 	bl PlaySE
 	mov r0, #0x57
 	lsl r0, r0, #2
@@ -763,7 +764,7 @@ ov110_021E5E1C: ; 0x021E5E1C
 	bl ov110_021E6C18
 	b _021E5EAE
 _021E5E8A:
-	ldr r0, _021E5F7C ; =0x0000091B
+	ldr r0, _021E5F7C ; =SEQ_SE_GS_SEKIBAN_SENTAKU
 	bl PlaySE
 	mov r0, #0x57
 	lsl r0, r0, #2
@@ -796,7 +797,7 @@ _021E5EC8:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _021E5ECE:
-	ldr r1, _021E5F80 ; =gMain + 0x40
+	ldr r1, _021E5F80 ; =gSystem + 0x40
 	mov r0, #0x20
 	ldrsh r6, [r1, r0]
 	mov r0, #0x22
@@ -883,9 +884,9 @@ _021E5F70:
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	nop
-_021E5F78: .word 0x000005EA
-_021E5F7C: .word 0x0000091B
-_021E5F80: .word gMain + 0x40
+_021E5F78: .word SEQ_SE_DP_BOX01
+_021E5F7C: .word SEQ_SE_GS_SEKIBAN_SENTAKU
+_021E5F80: .word gSystem + 0x40
 	thumb_func_end ov110_021E5E1C
 
 	thumb_func_start ov110_021E5F84
@@ -901,7 +902,7 @@ ov110_021E5F84: ; 0x021E5F84
 	beq _021E5FD4
 	b _021E600C
 _021E5F98:
-	ldr r0, _021E6010 ; =0x0000091C
+	ldr r0, _021E6010 ; =SEQ_SE_GS_SEKIBAN_KAITEN
 	bl PlaySE
 	ldrh r0, [r4, #0xc]
 	add r0, r0, #1
@@ -962,7 +963,7 @@ _021E600C:
 	mov r0, #4
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021E6010: .word 0x0000091C
+_021E6010: .word SEQ_SE_GS_SEKIBAN_KAITEN
 	thumb_func_end ov110_021E5F84
 
 	thumb_func_start ov110_021E6014
@@ -1029,7 +1030,7 @@ ov110_021E6070: ; 0x021E6070
 	beq _021E60C2
 	b _021E60F0
 _021E6086:
-	ldr r0, _021E6108 ; =0x0000091D
+	ldr r0, _021E6108 ; =SEQ_SE_GS_PUZZLETOKU
 	bl PlaySE
 	ldrh r0, [r4, #0xc]
 	add r0, r0, #1
@@ -1096,7 +1097,7 @@ _021E6102:
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
-_021E6108: .word 0x0000091D
+_021E6108: .word SEQ_SE_GS_PUZZLETOKU
 _021E610C: .word 0x00007FFF
 	thumb_func_end ov110_021E6070
 
@@ -1119,7 +1120,7 @@ _021E6120:
 _021E612E:
 	bl NNS_GfdDoVramTransfer
 	ldr r0, [r4, #0x14]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E6148 ; =0x027E0000
 	ldr r1, _021E614C ; =0x00003FF8
 	mov r0, #1
@@ -1495,7 +1496,7 @@ ov110_021E6394: ; 0x021E6394
 	ldr r2, [r5, #0x14]
 	add r0, r4, #0
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1506,7 +1507,7 @@ ov110_021E6394: ; 0x021E6394
 	ldr r2, [r5, #0x14]
 	add r0, r4, #0
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1517,7 +1518,7 @@ ov110_021E6394: ; 0x021E6394
 	ldr r2, [r5, #0x14]
 	add r0, r4, #0
 	mov r3, #6
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1528,7 +1529,7 @@ ov110_021E6394: ; 0x021E6394
 	ldr r2, [r5, #0x14]
 	add r0, r4, #0
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1539,7 +1540,7 @@ ov110_021E6394: ; 0x021E6394
 	ldr r2, [r5, #0x14]
 	add r0, r4, #0
 	mov r3, #3
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r5]
 	add r3, r5, #0
 	str r0, [sp]
@@ -1547,7 +1548,7 @@ ov110_021E6394: ; 0x021E6394
 	mov r1, #0xd
 	mov r2, #0
 	add r3, #0xd4
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	add r1, r5, #0
 	add r1, #0xd8
 	str r0, [r1]
@@ -2136,7 +2137,7 @@ _021E6948:
 	bl AddTextPrinterParameterized2
 	add r5, #0x4c
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2199,7 +2200,7 @@ _021E69D0:
 _021E69F2:
 	add r5, #0x5c
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -2231,7 +2232,7 @@ ov110_021E6A04: ; 0x021E6A04
 	bl AddTextPrinterParameterized2
 	add r4, #0x6c
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r4, pc}
 	nop
@@ -2295,7 +2296,7 @@ _021E6A74:
 	ldr r0, [r0, #0x14]
 	mov r1, #2
 	lsr r2, r2, #0x18
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	add sp, #0x1c
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -2451,7 +2452,7 @@ _021E6BB4:
 	bl FillWindowPixelBuffer
 	add r0, r5, #0
 	add r0, #0x5c
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [r5, #0x14]
 	mov r1, #0
 	bl ScheduleBgTilemapBufferTransfer
@@ -2469,7 +2470,7 @@ ov110_021E6BEC: ; 0x021E6BEC
 	lsl r3, r3, #1
 	ldrsb r4, [r4, r3]
 	add r1, r1, r4
-	ldr r4, _021E6C14 ; =ov110_021E6D95
+	ldr r4, _021E6C14 ; =ov110_021E6D94 + 1
 	lsl r1, r1, #0x10
 	ldrsb r3, [r4, r3]
 	asr r1, r1, #0x10
@@ -2480,7 +2481,7 @@ ov110_021E6BEC: ; 0x021E6BEC
 	pop {r4, pc}
 	nop
 _021E6C10: .word ov110_021E6D94
-_021E6C14: .word ov110_021E6D95
+_021E6C14: .word ov110_021E6D94 + 1
 	thumb_func_end ov110_021E6BEC
 
 	thumb_func_start ov110_021E6C18
@@ -2674,17 +2675,21 @@ _021E6D8C:
 	.byte 0xFF, 0x00, 0x00, 0x00
 
 ov110_021E6D94: ; 0x021E6D94
-	.byte 0x00
-
-ov110_021E6D95: ; 0x021E6D95
-	.byte 0x00, 0xFF, 0x00, 0xFF, 0xFF, 0x00, 0xFF
+	.byte 0x00, 0x00
+	.byte 0xFF, 0x00
+	.byte 0xFF, 0xFF
+	.byte 0x00, 0xFF
 
 ov110_021E6D9C: ; 0x021E6D9C
-	.byte 0x00, 0x00, 0x05, 0x00
-	.byte 0x00, 0x05, 0x05, 0x05
+	.byte 0x00, 0x00
+	.byte 0x05, 0x00
+	.byte 0x00, 0x05
+	.byte 0x05, 0x05
 
 ov110_021E6DA4: ; 0x021E6DA4
-	.byte 0x00, 0x02, 0x01, 0x00, 0x00, 0x04, 0x03, 0x00, 0x00, 0x06, 0x05, 0x00
+	.word 0x00010200
+	.word 0x00030400
+	.word 0x00050600
 
 ov110_021E6DB0: ; 0x021E6DB0
 	.byte 0x0A, 0x00, 0x0B, 0x00, 0x09, 0x00, 0x08, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0x4A, 0x00, 0x00, 0x00
@@ -2697,8 +2702,12 @@ ov110_021E6DD0: ; 0x021E6DD0
 	.byte 0x10, 0x00, 0x00, 0x00
 
 ov110_021E6DE4: ; 0x021E6DE4
-	.byte 0x02, 0x1A, 0x15, 0x06, 0x03, 0x03, 0xEE, 0x03, 0x00, 0x02, 0x13, 0x1B
-	.byte 0x04, 0x04, 0x5B, 0x00, 0x04, 0x04, 0x0F, 0x18, 0x06, 0x03, 0x01, 0x00
+	.byte 0x02, 0x1A, 0x15, 0x06, 0x03, 0x03
+	.short 0x03EE
+	.byte 0x00, 0x02, 0x13, 0x1B, 0x04, 0x04
+	.short 0x005B
+	.byte 0x04, 0x04, 0x0F, 0x18, 0x06, 0x03
+	.short 0x0001
 
 ov110_021E6DFC: ; 0x021E6DFC
 	.byte 0x00, 0x00, 0x00, 0x00

@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0469_T04GYM0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{SIZE 200}Bump!{SIZE 100}\r</language>
+	</row>
+	<row id="msg_0469_T04GYM0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oops! I so sorry!\nYou not hurt, OK?\fI very busy.\fNo time for talking with you.\fNot good for me if seen by somebody.\r</language>
+	</row>
+	<row id="msg_0469_T04GYM0101_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh no! You seen me already!\fI make big mistake!\r</language>
+	</row>
+	<row id="msg_0469_T04GYM0101_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey, you! Forget you see me, OK?\nYou seen, heard, known nothing, OK?\fBye!\fBye-bye a go-go!\r</language>
+	</row>
+	<row id="msg_0469_T04GYM0101_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sorry, I’ll be out for a while.\nMisty, Gym Leader</language>
+	</row>
+	<row id="msg_0469_T04GYM0101_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Since Misty’s out, we’ll be away, too.\nGym Trainers</language>
+	</row>
+	<row id="msg_0469_T04GYM0101_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cerulean City Pokémon Gym</language>
+	</row>
+	<row id="msg_0469_T04GYM0101_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cerulean City Pokémon Gym\rLeader: Misty\nCertified Trainer!\f{STRVAR_1 3, 0, 0}</language>
+	</row>
+	<row id="msg_0469_T04GYM0101_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Misty: I was expecting you,\nyou pest!\rYou may have a lot of Johto Gym Badges,\nbut you’d better not take me\ftoo lightly.\rMy Water-type Pokémon are tough!\r</language>
+	</row>
+	<row id="msg_0469_T04GYM0101_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Misty: You really are good...\rI’ll admit that you are skilled...\rHere you go.\nIt’s the Cascade Badge.\r</language>
+	</row>
+	<row id="msg_0469_T04GYM0101_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} received\nthe Cascade Badge from Misty!</language>
+	</row>
+	<row id="msg_0469_T04GYM0101_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Misty: Here is another memento\nfrom this battle. Take it!\r</language>
+	</row>
+	<row id="msg_0469_T04GYM0101_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Misty: It contains the move\nWater Pulse.\rIt can sometimes confuse your foe.\rYou’ve managed to defeat Trainers\nall the way from Johto.\fI’m sure you have a good use for it.</language>
+	</row>
+	<row id="msg_0469_T04GYM0101_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Misty: Does Johto have a lot of\npowerful Trainers?\rI will someday go on my journey\nto battle with powerful Trainers!</language>
+	</row>
+	<row id="msg_0469_T04GYM0101_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Yo! Legend in the making!\rSince Misty was away, I went out\nfor some fun, too.\fHe-he-he.</language>
+	</row>
+	<row id="msg_0469_T04GYM0101_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hoo, you showed me how tough you are.\rAs always, that was one great battle!</language>
+	</row>
+	<row id="msg_0469_T04GYM0101_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">...!\r{STRVAR_1 3, 0, 0} picked up the black item\nthat was by the pool.\rIt’s a Part from a machine!\r</language>
+	</row>
+</body>

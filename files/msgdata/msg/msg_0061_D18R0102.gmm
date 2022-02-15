@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0061_D18R0102_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Eusine: Did you see it?\rSUICUNE raced by like a blur, right in\nfront of my eyes!\rI have been chasing SUICUNE for almost\nten years, but I have never been this\fclose! I’m all choked up!\r</language>
+	</row>
+	<row id="msg_0061_D18R0102_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">By the way...\nIt was clear to me that SUICUNE took\fnotice of your presence.\rEcruteak’s legendary Pokémon are said\nto come to people only when they\frecognize their talents.\rPerhaps I should be more aggressive\ntoward SUICUNE...\rAnyway, {STRVAR_1 3, 0, 0}, we will\nmeet again!\r</language>
+	</row>
+</body>

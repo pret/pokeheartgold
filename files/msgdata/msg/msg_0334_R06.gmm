@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0334_R06_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The road is closed until the problem at\nthe Power Plant is solved.</language>
+	</row>
+	<row id="msg_0334_R06_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Underground Path\rYou can go from Vermilion City to\nCerulean City through this path under\fSaffron City.</language>
+	</row>
+</body>

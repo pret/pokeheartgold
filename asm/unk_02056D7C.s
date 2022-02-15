@@ -167,12 +167,12 @@ sub_02056E60: ; 0x02056E60
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	ldr r0, _02056E9C ; =_021D41C4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 _02056E9A:
 	pop {r3, pc}
 	.balign 4, 0
@@ -253,7 +253,7 @@ sub_02056EF4: ; 0x02056EF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	ldr r1, _02056FCC ; =_021D41C4
 	ldr r2, [r1]
 	lsl r1, r4, #3
@@ -266,7 +266,7 @@ sub_02056EF4: ; 0x02056EF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	ldr r1, _02056FCC ; =_021D41C4
 	ldr r2, [r1]
 	lsl r1, r4, #3
@@ -279,7 +279,7 @@ sub_02056EF4: ; 0x02056EF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	ldr r1, _02056FCC ; =_021D41C4
 	ldr r2, [r1]
 	lsl r1, r4, #3
@@ -292,7 +292,7 @@ sub_02056EF4: ; 0x02056EF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	ldr r1, _02056FCC ; =_021D41C4
 	ldr r2, [r1]
 	lsl r1, r4, #3
@@ -304,7 +304,7 @@ sub_02056EF4: ; 0x02056EF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	ldr r1, _02056FCC ; =_021D41C4
 	ldr r2, [r1]
 	lsl r1, r4, #3
@@ -316,7 +316,7 @@ sub_02056EF4: ; 0x02056EF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	ldr r1, _02056FCC ; =_021D41C4
 	ldr r2, [r1]
 	lsl r1, r4, #3
@@ -339,7 +339,7 @@ sub_02056FD0: ; 0x02056FD0
 	add r6, r2, #0
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, sp, #0
 	strb r4, [r1]
 	asr r2, r4, #8
@@ -377,13 +377,13 @@ sub_0205701C: ; 0x0205701C
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r4, r0, #0
 	ldr r0, _02057048 ; =_021D41C4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -595,10 +595,10 @@ sub_02057184: ; 0x02057184
 	ldr r0, [r0, #0x30]
 	add r1, r5, r1
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	cmp r0, #0
 	beq _020571CC
-	bl sub_0205E3CC
+	bl MapObject_Remove
 _020571CC:
 	ldr r0, [sp, #0x14]
 	mov r7, #2
@@ -645,11 +645,11 @@ _0205721E:
 	add r0, r0, r4
 	str r6, [r0, #4]
 	add r0, r6, #0
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	mov r1, #1
 	lsl r1, r1, #8
 	add r1, r5, r1
-	bl sub_0205F248
+	bl MapObject_SetID
 	ldr r0, _02057248 ; =_021D41C4
 	mov r1, #1
 	ldr r0, [r0]
@@ -720,7 +720,7 @@ _020572A8: .word _021D41C4
 	thumb_func_start sub_020572AC
 sub_020572AC: ; 0x020572AC
 	push {r4, lr}
-	ldr r1, _020572D8 ; =gMain
+	ldr r1, _020572D8 ; =gSystem
 	mov r4, #2
 	ldr r1, [r1, #0x44]
 	tst r1, r4
@@ -730,7 +730,7 @@ sub_020572AC: ; 0x020572AC
 _020572BC:
 	cmp r0, #0
 	beq _020572CE
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	bl sub_0205CB38
 	cmp r0, #0
 	beq _020572CE
@@ -740,7 +740,7 @@ _020572CE:
 	bl sub_02037498
 	pop {r4, pc}
 	nop
-_020572D8: .word gMain
+_020572D8: .word gSystem
 	thumb_func_end sub_020572AC
 
 	thumb_func_start sub_020572DC
@@ -984,12 +984,12 @@ sub_02057480: ; 0x02057480
 	add r6, r1, #0
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
-	bl sub_0203B74C
+	bl Field_GetNumObjectEvents
 	add r4, r0, #0
 	ldr r0, _020574C0 ; =_021D41C4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
-	bl sub_0203B754
+	bl Field_GetObjectEvents
 	mov r2, #0
 	cmp r4, #0
 	ble _020574BA
@@ -1521,16 +1521,16 @@ _02057868:
 	bne _0205787A
 	b _020579FC
 _0205787A:
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	ldrh r1, [r6]
 	sub r0, r0, r1
 	str r0, [sp, #0x10]
 	ldr r0, [sp, #0x18]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	ldrh r1, [r6, #2]
 	sub r7, r0, r1
 	ldr r0, [sp, #0x18]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x10]
 	cmp r0, #0
@@ -1868,7 +1868,7 @@ _02057AEE:
 	add r1, r0, r4
 	mov r0, #0x78
 	ldrsb r0, [r1, r0]
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	ldr r1, _02057B10 ; =_021D41C4
 	ldr r1, [r1]
 	add r1, r1, r4
@@ -1898,7 +1898,7 @@ _02057B26:
 	add r1, r0, r4
 	mov r0, #0x78
 	ldrsb r0, [r1, r0]
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	ldr r1, _02057B48 ; =_021D41C4
 	ldr r1, [r1]
 	add r1, r1, r4
@@ -2016,7 +2016,7 @@ _02057BFE:
 	add r1, r0, r4
 	mov r0, #0x38
 	ldrsb r0, [r1, r0]
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	ldr r1, _02057C20 ; =_021D41C4
 	ldr r1, [r1]
 	add r1, r1, r4
@@ -2045,7 +2045,7 @@ _02057C36:
 	add r1, r0, r4
 	mov r0, #0x38
 	ldrsb r0, [r1, r0]
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	ldr r1, _02057C58 ; =_021D41C4
 	ldr r1, [r1]
 	add r1, r1, r4
@@ -2375,12 +2375,12 @@ _02057E98:
 	ldrsb r0, [r6, r0]
 	bl sub_02057EEC
 	str r0, [sp, #4]
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	ldrh r1, [r7, r4]
 	add r0, r1, r0
 	strh r0, [r7, r4]
 	ldr r0, [sp, #4]
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	ldrh r1, [r6, #2]
 	add r0, r1, r0
 	strh r0, [r6, #2]
@@ -2458,7 +2458,7 @@ sub_02057F28: ; 0x02057F28
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C660
+	bl PlayerAvatar_SetFacingDirection
 	bl sub_0203769C
 	ldr r1, _02057F54 ; =_021D41C4
 	lsl r0, r0, #3
@@ -2543,7 +2543,7 @@ _02057FB6:
 	ldr r0, [r0]
 	add r0, r0, r4
 	ldr r0, [r0, #4]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	ldr r1, _02058020 ; =_021D41C4
 	str r0, [sp, #0xc]
 	ldr r1, [r1]
@@ -2559,10 +2559,10 @@ _02057FB6:
 	ldrsb r1, [r1, r2]
 	str r1, [sp, #4]
 	ldr r1, [sp, #8]
-	bl sub_0205F918
+	bl MapObject_SetCurrentX
 	ldr r0, [sp, #0xc]
 	add r1, r7, #0
-	bl sub_0205F938
+	bl MapObject_SetCurrentY
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #8]
 	str r0, [sp]

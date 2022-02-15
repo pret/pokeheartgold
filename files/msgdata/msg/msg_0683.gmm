@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0683_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Billy</language>
+	</row>
+	<row id="msg_0683_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’m researching Gym Leaders for a\nproject at school!\rYou can get the Gym Leaders’ phone\nnumbers, so you can talk to them\foutside of the Gym!\rHey, we should trade phone\nnumbers! {YESNO 0}</language>
+	</row>
+	<row id="msg_0683_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Gym Leaders’ locations and times\nchange, so I’ll let you know by phone!</language>
+	</row>
+	<row id="msg_0683_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Huh? Don’t you want to know anything\nabout Gym Leaders?</language>
+	</row>
+	<row id="msg_0683_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I knew it. I knew you’d want to\nknow about the Gym Leaders! {YESNO 0}</language>
+	</row>
+	<row id="msg_0683_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey, you’re nearby, aren’t you?\nSo we should talk face-to-face!</language>
+	</row>
+	<row id="msg_0683_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Whitney likes to relax on the\nsixth floor of the Goldenrod\fDepartment Store.</language>
+	</row>
+	<row id="msg_0683_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Janine delivers dinner to her father\nevery evening. You can always find her\fat the Pokémon League Reception Gate\fin the late afternoon!</language>
+	</row>
+	<row id="msg_0683_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Falkner likes to come to Celadon City on\nMondays, it seems.</language>
+	</row>
+	<row id="msg_0683_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It seems like Misty really likes\nRoute 25!\rEvery night she goes there to watch\nthe sunset!</language>
+	</row>
+	<row id="msg_0683_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sabrina likes to visit the port in Olivine\non Friday nights.\rShe really shows up in the strangest\nplaces, doesn’t she!</language>
+	</row>
+	<row id="msg_0683_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Maybe I should only tell you this...\rThe truth is that Jasmine is a bit of a\nbig eater!\rIf you go to the Olivine Café past\nnoon, you’re sure to run into\fJasmine there!</language>
+	</row>
+	<row id="msg_0683_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cinnabar Gym’s leader Blaine really\nthinks a lot about the town of\fCinnabar, you know?\rEvery Tuesday morning he sits on the\nsite where the Cinnabar Gym once was\fand contemplates.</language>
+	</row>
+	<row id="msg_0683_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pewter Gym’s Leader Brock really loves\nrocks!\rHe goes into DIGLETT’s Cave every day\npast noon.</language>
+	</row>
+	<row id="msg_0683_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bugsy goes looking for Bug-type\nPokémon. He even goes looking as far as\fthe Viridian Forest in the Kanto region!</language>
+	</row>
+	<row id="msg_0683_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pryce is certainly a man of refined\ntastes, don’t you agree?\rEvery morning at seven he goes out by\nhimself and gazes out at the\fLake of Rage.</language>
+	</row>
+	<row id="msg_0683_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Morty’s always looking at the\nBell Tower, isn’t he?\rHe’s just been engrossed by that one\nthing. To the point that he became a\fGym Leader.</language>
+	</row>
+	<row id="msg_0683_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I really need to work on my training.\nLet’s battle again, OK? I’ll be\fwaiting on {STRVAR_1 4, 3, 0}!</language>
+	</row>
+	<row id="msg_0683_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Is that all right?\nWe’re going to battle again on\f{STRVAR_1 4, 3, 0}! Hurry up already!</language>
+	</row>
+	<row id="msg_0683_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">If anything about the Gym Leaders\nchanges, I’ll be sure to call you!</language>
+	</row>
+</body>

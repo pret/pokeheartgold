@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0800_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Unable to connect to Nintendo\nWi-Fi Connection.\n\nFor help, check the software\nInstruction Booklet, or visit\nsupport.nintendo.com.\nError code: {STRVAR_1 54, 0, 0}</language>
+	</row>
+	<row id="msg_0800_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Either Nintendo Wi-Fi Connection\nis experiencing high traffic\nvolumes or the service is down.\nPlease try again later. \n\nFor help, visit\nsupport.nintendo.com.\nError code: {STRVAR_1 54, 0, 0}</language>
+	</row>
+	<row id="msg_0800_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This Nintendo Wi-Fi Connection ID\nwas removed because it was\ninactive for a long time. \n\nFor help, visit\nsupport.nintendo.com.\nError code: {STRVAR_1 54, 0, 0}</language>
+	</row>
+	<row id="msg_0800_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Nintendo Wi-Fi Connection service\nfor this software has been\ndiscontinued.\n\nVisit support.nintendo.com\nfor a list of current Nintendo\nWi-Fi Connection-compatible\nsoftware. Error code: {STRVAR_1 54, 0, 0}</language>
+	</row>
+	<row id="msg_0800_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The access point is busy.\nUnable to connect.\nPlease try again later.\n\nFor help, visit\nsupport.nintendo.com.\nError code: {STRVAR_1 54, 0, 0}</language>
+	</row>
+	<row id="msg_0800_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">No access point in range.\nPlease try again when closer to\nan access point.\n\nFor help, visit\nsupport.nintendo.com.\nError code: {STRVAR_1 54, 0, 0}</language>
+	</row>
+	<row id="msg_0800_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">No compatible access point in\nrange. \nCheck your connection settings\nand try again. \n\nFor help, visit\nsupport.nintendo.com.\nError code: {STRVAR_1 54, 0, 0}</language>
+	</row>
+	<row id="msg_0800_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Unable to connect to the Nintendo\nWi-Fi USB Connector. Check your\nconnection settings in the\nNintendo Wi-Fi Connection setup.\n\nFor help, visit\nsupport.nintendo.com.\nError code: {STRVAR_1 54, 0, 0}</language>
+	</row>
+	<row id="msg_0800_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Unable to connect to Nintendo \nWi-Fi Connection. \nCheck your connection settings.\n\nFor help, visit\nsupport.nintendo.com.\nError code: {STRVAR_1 54, 0, 0}</language>
+	</row>
+	<row id="msg_0800_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">No response.\nEither the player has been\ndisconnected, or you have\nbeen removed from the\nplayer’s friend roster.\nError code: {STRVAR_1 54, 0, 0}\n\n</language>
+	</row>
+	<row id="msg_0800_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Communication error.\nYou have been disconnected from\nNintendo Wi-Fi Connection.\n\nFor help, visit\nsupport.nintendo.com.\nError code: {STRVAR_1 54, 0, 0}</language>
+	</row>
+	<row id="msg_0800_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Communication error.\n\nFor help, visit\nsupport.nintendo.com.\nError code: {STRVAR_1 54, 0, 0}</language>
+	</row>
+	<row id="msg_0800_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Download failed.\n\nFor help, visit\nsupport.nintendo.com.\nError code: {STRVAR_1 54, 0, 0}</language>
+	</row>
+	<row id="msg_0800_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Communication error.\nYou have been disconnected from\nNintendo Wi-Fi Connection.\nPlease try again.\n\nFor help, visit\nsupport.nintendo.com.</language>
+	</row>
+	<row id="msg_0800_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Communication error...</language>
+	</row>
+	<row id="msg_0800_00015" index="15">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0800_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Your Nintendo Wi-Fi Connection\nUser Information may have been\nerased. Check your connection\nsettings with the Nintendo\nWi-Fi Connection configuration.</language>
+	</row>
+	<row id="msg_0800_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Connect to Nintendo Wi-Fi Connection?</language>
+	</row>
+	<row id="msg_0800_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Nintendo Wi-Fi Connection treats\nyour Nintendo DS Game Card\nand the system as a set. Save\nthis system’s Nintendo Wi-Fi\nConnection User Information\nto this Game Card\nand connect to Nintendo\nWi-Fi Connection?</language>
+	</row>
+	<row id="msg_0800_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Nintendo Wi-Fi Connection User\nInformation for this system\nhas been saved to the Game Card.\nFrom now on, please use this\nsystem to connect to\nNintendo Wi-Fi Connection.</language>
+	</row>
+	<row id="msg_0800_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Unable to connect to Nintendo\nWi-Fi Connection because the\nNintendo Wi-Fi Connection User\nInformation from the system\nand the Game Card do not match.</language>
+	</row>
+	<row id="msg_0800_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Update Nintendo Wi-Fi Connection\nUser Information saved on the\nGame Card?\nWhen you update your Nintendo\nWi-Fi Connection User\nInformation, you will lose all\ndata that was used to connect\nto Nintendo Wi-Fi Connection.</language>
+	</row>
+	<row id="msg_0800_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Connect to Nintendo Wi-Fi\nConnection to update\nNintendo Wi-Fi Connection\nUser Information?\n\nWarning:\nAll of the friends registered in\nyour Pal Pad will be deleted.</language>
+	</row>
+	<row id="msg_0800_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Connecting to Nintendo Wi-Fi\nConnection... Please wait a moment...</language>
+	</row>
+	<row id="msg_0800_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You cannot access Nintendo Wi-Fi\nConnection using this user name.\n\nPlease change your user name.</language>
+	</row>
+	<row id="msg_0800_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OK to disconnect from Nintendo\nWi-Fi Connection?</language>
+	</row>
+	<row id="msg_0800_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Disconnecting from Nintendo Wi-Fi\nConnection.</language>
+	</row>
+	<row id="msg_0800_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You have been disconnected from\nNintendo Wi-Fi Connection.</language>
+	</row>
+	<row id="msg_0800_00028" index="28">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XX</language>
+	</row>
+	<row id="msg_0800_00029" index="29">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0800_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Saving...\nDon’t turn off the power.</language>
+	</row>
+	<row id="msg_0800_00031" index="31">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0800_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There was a communication error\nin the Wi-Fi Plaza.\nError code: {STRVAR_1 54, 0, 0}</language>
+	</row>
+</body>

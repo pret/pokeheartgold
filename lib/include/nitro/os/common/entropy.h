@@ -1,0 +1,7 @@
+#ifndef NITRO_OS_COMMON_ENTROPY_H_
+#define NITRO_OS_COMMON_ENTROPY_H_
+
+#define OS_LOW_ENTROPY_DATA_SIZE 32
+void OS_GetLowEntropyData(u32 buffer[OS_LOW_ENTROPY_DATA_SIZE / sizeof(u32)]);
+
+#endif //NITRO_OS_COMMON_ENTROPY_H_

@@ -1,0 +1,263 @@
+{
+  "header": "fielddata/script/scr_seq/event_T01R0301.h",
+  "bgs": [
+    {
+      "scr": "_EV_scr_seq_T01R0301_005 + 1",
+      "type": 0,
+      "x": 5,
+      "y": 3,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": "_EV_scr_seq_T01R0301_004 + 1",
+      "type": 0,
+      "x": 1,
+      "y": 11,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": "_EV_scr_seq_T01R0301_004 + 1",
+      "type": 0,
+      "x": 2,
+      "y": 11,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": "_EV_scr_seq_T01R0301_004 + 1",
+      "type": 0,
+      "x": 3,
+      "y": 11,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": "_EV_scr_seq_T01R0301_004 + 1",
+      "type": 0,
+      "x": 4,
+      "y": 11,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": "_EV_scr_seq_T01R0301_004 + 1",
+      "type": 0,
+      "x": 11,
+      "y": 11,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": "_EV_scr_seq_T01R0301_004 + 1",
+      "type": 0,
+      "x": 12,
+      "y": 11,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": "_EV_scr_seq_T01R0301_004 + 1",
+      "type": 0,
+      "x": 13,
+      "y": 11,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": "_EV_scr_seq_T01R0301_004 + 1",
+      "type": 0,
+      "x": 14,
+      "y": 11,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": "_EV_scr_seq_T01R0301_007 + 1",
+      "type": 0,
+      "x": 9,
+      "y": 3,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T01R0301_009 + 1",
+      "type": 0,
+      "x": 7,
+      "y": 3,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T01R0301_008 + 1",
+      "type": 0,
+      "x": 8,
+      "y": 3,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T01R0301_004 + 1",
+      "type": 0,
+      "x": 11,
+      "y": 3,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": "_EV_scr_seq_T01R0301_004 + 1",
+      "type": 0,
+      "x": 12,
+      "y": 3,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": "_EV_scr_seq_T01R0301_004 + 1",
+      "type": 0,
+      "x": 13,
+      "y": 3,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": "_EV_scr_seq_T01R0301_004 + 1",
+      "type": 0,
+      "x": 14,
+      "y": 3,
+      "z": 0,
+      "dir": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_T01R0301_ookido",
+      "ovid": "SPRITE_OOKIDO",
+      "mvt": 15,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T01R0301_000 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 8,
+      "y": 6,
+      "z": 0
+    },
+    {
+      "id": "obj_T01R0301_assistantm",
+      "ovid": "SPRITE_ASSISTANTM",
+      "mvt": 2,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T01R0301_001 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 6,
+      "y": 10,
+      "z": 0
+    },
+    {
+      "id": "obj_T01R0301_assistantm_2",
+      "ovid": "SPRITE_ASSISTANTM",
+      "mvt": 16,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T01R0301_002 + 1",
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 11,
+      "y": 8,
+      "z": 0
+    },
+    {
+      "id": "obj_T01R0301_assistantm_3",
+      "ovid": "SPRITE_ASSISTANTM",
+      "mvt": 14,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T01R0301_003 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 12,
+      "y": 12,
+      "z": 0
+    },
+    {
+      "id": "obj_T01R0301_monstarball",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_OAKS_LAB_CHARMANDER_BALL",
+      "scr": 0,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 7,
+      "y": 3,
+      "z": 0
+    },
+    {
+      "id": "obj_T01R0301_monstarball_2",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_OAKS_LAB_SQUIRTLE_BALL",
+      "scr": 0,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 8,
+      "y": 3,
+      "z": 0
+    },
+    {
+      "id": "obj_T01R0301_monstarball_3",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_OAKS_LAB_BULBASAUR_BALL",
+      "scr": 0,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 9,
+      "y": 3,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 8,
+      "y": 13,
+      "header": "MAP_T01",
+      "anchor": 2,
+      "height": 0
+    }
+  ]
+}

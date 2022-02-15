@@ -247,7 +247,7 @@ STRING *NewString_ReadMsgData(MSGDATA *msgData, s32 msg_no) {
     }
 }
 
-u16 MsgDataGetCount(MSGDATA * msgData) {
+u32 MsgDataGetCount(MSGDATA * msgData) {
     switch (msgData->type) {
     case MSGDATA_LOAD_DIRECT:
         return GetMsgCount_ExistingTable(msgData->direct);
@@ -270,7 +270,7 @@ void ReadMsgDataIntoU16Array(MSGDATA * msgData, u32 msg_no, u16 * dest) {
 }
 
 void GetSpeciesNameIntoArray(u16 species, u32 heap_id, u16 * dest) {
-    MSGDATA * msgData = NewMsgDataFromNarc(1, NARC_msgdata_msg, NARC_msg_msg_00000237_bin, heap_id);
+    MSGDATA * msgData = NewMsgDataFromNarc(1, NARC_msgdata_msg, NARC_msg_msg_0237_bin, heap_id);
     ReadMsgDataIntoU16Array(msgData, species, dest);
     DestroyMsgData(msgData);
 }
@@ -292,7 +292,7 @@ STRING * ReadMsgData_ExpandPlaceholders(MSGFMT * a0, MSGDATA * msgData, u32 msgn
 }
 
 STRING * GetMoveName(u32 move, HeapID heapno) {
-    MSGDATA * msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000750_bin, heapno);
+    MSGDATA * msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0750_bin, heapno);
     STRING * ret;
     if (msgData != NULL) {
         ret = String_ctor(16, heapno);
@@ -307,7 +307,7 @@ STRING * GetMoveName(u32 move, HeapID heapno) {
 
 STRING * GetSpeciesName(u16 species, HeapID heap_id) {
     STRING * ret;
-    MSGDATA * msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000237_bin, heap_id);
+    MSGDATA * msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0237_bin, heap_id);
     if (msgData != NULL) {
         ret = NewString_ReadMsgData(msgData, species);
         DestroyMsgData(msgData);

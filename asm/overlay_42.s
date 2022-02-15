@@ -5217,14 +5217,14 @@ _022295DC:
 	lsr r1, r1, #0x18
 	mov r2, #0
 	add r3, r6, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r1, [r5, #0x14]
 	ldr r0, [r5, #4]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
 	mov r2, #3
 	add r3, r4, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov42_02229570
@@ -5400,7 +5400,7 @@ ov42_022296F0: ; 0x022296F0
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x20]
 	ldr r3, [sp, #0x24]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	add sp, #0x54
 	pop {r4, r5, r6, r7, pc}
 _02229748:
@@ -5537,7 +5537,7 @@ _022297EA:
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x20]
 	ldr r3, [sp, #0x24]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	add r0, r5, r6
 	lsl r0, r0, #0x18
 	asr r5, r0, #0x18

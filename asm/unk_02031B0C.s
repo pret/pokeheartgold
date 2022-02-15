@@ -1,29 +1,41 @@
+#include "constants/items.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
 	.rodata
 
 _020F68D0:
-	.byte 0xED, 0x01, 0xF2, 0x01, 0xEE, 0x01, 0xF1, 0x01, 0xF0, 0x01, 0xEC, 0x01, 0xEF, 0x01
+	.short ITEM_LEVEL_BALL
+	.short ITEM_MOON_BALL
+	.short ITEM_LURE_BALL
+	.short ITEM_FRIEND_BALL
+	.short ITEM_LOVE_BALL
+	.short ITEM_FAST_BALL
+	.short ITEM_HEAVY_BALL
 _020F68DE:
-	.byte 0x04, 0xFE
-	.byte 0x00, 0x00, 0x00, 0x00, 0x04, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x04, 0xFE, 0x00, 0x00, 0x00, 0x00
-	.byte 0x04, 0xFE, 0xFE, 0x00, 0x00, 0x00, 0x04, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0x02, 0x02, 0x02, 0x02
-	.byte 0x02, 0x00
+	.byte  4, -2,  0,  0
+	.byte  0,  0,  4, -2
+	.byte  0,  0,  0,  0
+	.byte  4, -2,  0,  0
+	.byte  0,  0,  4, -2
+	.byte -2,  0,  0,  0
+	.byte  4, -2, -2, -2
+	.byte -2, -2,  2,  2
+	.byte  2,  2,  2,  0
 _020F6902:
-	.byte 0x00, 0x00
-_020F6904:
-	.byte 0x74, 0x16, 0x0A, 0x00, 0x00, 0x00, 0x96, 0x00, 0x78, 0x00, 0x14, 0x0E
-	.byte 0x00, 0x00, 0x1C, 0x02, 0x7D, 0x00, 0x00, 0x1C, 0x14, 0x00, 0xC8, 0x00, 0x88, 0x00, 0x00, 0x00
-	.byte 0x18, 0x0E, 0x96, 0x00, 0x68, 0x0C, 0x00, 0x00, 0x00, 0x14, 0x00, 0x00
+	.byte 0x00, 0x00, 0x74, 0x16, 0x0A, 0x00, 0x00, 0x00
+	.byte 0x96, 0x00, 0x78, 0x00, 0x14, 0x0E
+	.byte 0x00, 0x00, 0x1C, 0x02, 0x7D, 0x00, 0x00, 0x1C
+	.byte 0x14, 0x00, 0xC8, 0x00, 0x88, 0x00, 0x00, 0x00
+	.byte 0x18, 0x0E, 0x96, 0x00, 0x68, 0x0C, 0x00, 0x00, 0x00, 0x14
 
 	.text
 
-	thumb_func_start sub_02031B0C
-sub_02031B0C: ; 0x02031B0C
+	thumb_func_start Save_ApricornBox_sizeof
+Save_ApricornBox_sizeof: ; 0x02031B0C
 	mov r0, #0x80
 	bx lr
-	thumb_func_end sub_02031B0C
+	thumb_func_end Save_ApricornBox_sizeof
 
 	thumb_func_start sub_02031B10
 sub_02031B10: ; 0x02031B10
@@ -31,17 +43,17 @@ sub_02031B10: ; 0x02031B10
 	bx lr
 	thumb_func_end sub_02031B10
 
-	thumb_func_start sub_02031B14
-sub_02031B14: ; 0x02031B14
+	thumb_func_start Save_ApricornBox_get
+Save_ApricornBox_get: ; 0x02031B14
 	ldr r3, _02031B1C ; =SavArray_get
 	mov r1, #0x26
 	bx r3
 	nop
 _02031B1C: .word SavArray_get
-	thumb_func_end sub_02031B14
+	thumb_func_end Save_ApricornBox_get
 
-	thumb_func_start sub_02031B20
-sub_02031B20: ; 0x02031B20
+	thumb_func_start InitApricornBox
+InitApricornBox: ; 0x02031B20
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #0
@@ -53,7 +65,7 @@ sub_02031B20: ; 0x02031B20
 	add r0, r4, #0
 	bl sub_02031B3C
 	pop {r4, pc}
-	thumb_func_end sub_02031B20
+	thumb_func_end InitApricornBox
 
 	thumb_func_start sub_02031B3C
 sub_02031B3C: ; 0x02031B3C
@@ -71,13 +83,13 @@ _02031B44:
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02031B3C
 
-	thumb_func_start sub_02031B54
-sub_02031B54: ; 0x02031B54
-	ldr r3, _02031B58 ; =sub_02031B20
+	thumb_func_start Save_ApricornBox_init
+Save_ApricornBox_init: ; 0x02031B54
+	ldr r3, _02031B58 ; =InitApricornBox
 	bx r3
 	.balign 4, 0
-_02031B58: .word sub_02031B20
-	thumb_func_end sub_02031B54
+_02031B58: .word InitApricornBox
+	thumb_func_end Save_ApricornBox_init
 
 	thumb_func_start sub_02031B5C
 sub_02031B5C: ; 0x02031B5C
@@ -89,8 +101,8 @@ sub_02031B5C: ; 0x02031B5C
 _02031B64: .word MI_CpuFill8
 	thumb_func_end sub_02031B5C
 
-	thumb_func_start sub_02031B68
-sub_02031B68: ; 0x02031B68
+	thumb_func_start ApricornBox_GiveApricorn
+ApricornBox_GiveApricorn: ; 0x02031B68
 	push {r3, lr}
 	cmp r1, #7
 	blt _02031B76
@@ -108,10 +120,10 @@ _02031B82:
 	strb r2, [r0, r1]
 	ldrb r0, [r0, r1]
 	pop {r3, pc}
-	thumb_func_end sub_02031B68
+	thumb_func_end ApricornBox_GiveApricorn
 
-	thumb_func_start sub_02031B88
-sub_02031B88: ; 0x02031B88
+	thumb_func_start ApricornBox_TakeApricorn
+ApricornBox_TakeApricorn: ; 0x02031B88
 	push {r3, lr}
 	cmp r1, #7
 	blt _02031B96
@@ -127,10 +139,10 @@ _02031B96:
 _02031BA0:
 	ldrb r0, [r0, r1]
 	pop {r3, pc}
-	thumb_func_end sub_02031B88
+	thumb_func_end ApricornBox_TakeApricorn
 
-	thumb_func_start sub_02031BA4
-sub_02031BA4: ; 0x02031BA4
+	thumb_func_start ApricornBox_CountApricorn
+ApricornBox_CountApricorn: ; 0x02031BA4
 	push {r3, lr}
 	cmp r1, #7
 	blt _02031BB2
@@ -141,10 +153,10 @@ _02031BB2:
 	ldrb r0, [r0, r1]
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02031BA4
+	thumb_func_end ApricornBox_CountApricorn
 
-	thumb_func_start sub_02031BB8
-sub_02031BB8: ; 0x02031BB8
+	thumb_func_start ApricornBox_SetKurtApricorn
+ApricornBox_SetKurtApricorn: ; 0x02031BB8
 	push {r3, lr}
 	ldrb r3, [r0, r1]
 	cmp r3, r2
@@ -154,22 +166,22 @@ sub_02031BB8: ; 0x02031BB8
 _02031BC6:
 	strb r1, [r0, #8]
 	strb r2, [r0, #7]
-	bl sub_02031B88
+	bl ApricornBox_TakeApricorn
 	pop {r3, pc}
-	thumb_func_end sub_02031BB8
+	thumb_func_end ApricornBox_SetKurtApricorn
 
-	thumb_func_start sub_02031BD0
-sub_02031BD0: ; 0x02031BD0
+	thumb_func_start ApricornBox_GetKurtQuantity
+ApricornBox_GetKurtQuantity: ; 0x02031BD0
 	ldrb r0, [r0, #7]
 	bx lr
-	thumb_func_end sub_02031BD0
+	thumb_func_end ApricornBox_GetKurtQuantity
 
-	thumb_func_start sub_02031BD4
-sub_02031BD4: ; 0x02031BD4
+	thumb_func_start ApricornBox_GetKurtBall
+ApricornBox_GetKurtBall: ; 0x02031BD4
 	ldrb r0, [r0, #8]
 	cmp r0, #7
 	blo _02031BDE
-	mov r0, #4
+	mov r0, #ITEM_POKE_BALL
 	bx lr
 _02031BDE:
 	lsl r1, r0, #1
@@ -178,7 +190,7 @@ _02031BDE:
 	bx lr
 	nop
 _02031BE8: .word _020F68D0
-	thumb_func_end sub_02031BD4
+	thumb_func_end ApricornBox_GetKurtBall
 
 	thumb_func_start sub_02031BEC
 sub_02031BEC: ; 0x02031BEC
@@ -279,7 +291,7 @@ _02031C7E:
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #1
-	bl sub_02031B88
+	bl ApricornBox_TakeApricorn
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _02031C96:

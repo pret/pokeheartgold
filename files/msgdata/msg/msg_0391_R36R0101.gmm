@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0391_R36R0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This is the Ruins of Alph.\nAn ancient tradition made of stones.\rDon’t you wonder who’d make\nsomething like this? And why?</language>
+	</row>
+	<row id="msg_0391_R36R0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Did you see that strange tree in\nthe road?\rThat may explain why fewer people\nare visiting the Ruins of Alph.</language>
+	</row>
+</body>

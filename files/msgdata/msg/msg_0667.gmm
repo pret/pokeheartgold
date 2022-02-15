@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0667_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Baoba</language>
+	</row>
+	<row id="msg_0667_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This has to be the first time I’ve done\nsomething like this from so close!\rI mean talking on the phone!</language>
+	</row>
+	<row id="msg_0667_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nThis is Warden Baoba.\rSorry to have kept you waiting!\nWe’ve finally opened the Safari Zone!\rDo you know where it is?\rYou know the Gate inside the cavern in\nCianwood City?\rIf you go through there and walk for a\nshort while, you should soon see the\fSafari Zone!\rWe’re a little out of the way, but\nplease come visit!</language>
+	</row>
+	<row id="msg_0667_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nThis is Warden Baoba.\rSorry to have kept you waiting!\nWe’ve finally opened the Safari Zone!\rDo you know where it is?\rYou know the Gate inside the cavern in\nCianwood City?\rIf you go through there and walk for a\nshort while, you should soon see the\fSafari Zone!\rWe’re a little out of the way, but\nplease come visit!</language>
+	</row>
+	<row id="msg_0667_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nThis is Warden Baoba.\rSorry to have kept you waiting!\nI’ve finally come up with the next test.\rI’ll give you more details at the Safari\nZone. See you there!</language>
+	</row>
+	<row id="msg_0667_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nThis is Warden Baoba.\rSorry to have kept you waiting!\nI’ve finally come up with the next test.\rI’ll give you more details at the Safari\nZone. See you there!</language>
+	</row>
+	<row id="msg_0667_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nThis is Warden Baoba.\rSorry to have kept you waiting!\nI thought of a new way to play!\rIt’s called Object Arrangement!\rI’ll give you more details at the\nSafari Zone. See you there!</language>
+	</row>
+	<row id="msg_0667_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nThis is Warden Baoba.\rSorry to have kept you waiting!\nI thought of a new way to play!\rIt’s called Object Arrangement!\rI’ll give you more details at the\nSafari Zone. See you there!</language>
+	</row>
+	<row id="msg_0667_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nThis is Warden Baoba.\rWe’ve come up with new objects.\rWith these, you should be able to meet\nlots of different Pokémon.\rDo your best!</language>
+	</row>
+	<row id="msg_0667_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nThis is Warden Baoba.\rWe’ve come up with new objects.\rWith these, you should be able to meet\nlots of different Pokémon.\rDo your best!</language>
+	</row>
+	<row id="msg_0667_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nThis is Warden Baoba.\rWe’ve come up with new objects!\nThere’re so many now!\rWith these new additions, that should be\nplenty I think!\rYou should try placing a bunch of\ndifferent objects to see what different\fPokémon you can meet.</language>
+	</row>
+	<row id="msg_0667_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nThis is Warden Baoba.\rWe’ve come up with new objects!\nThere’re so many now!\rWith these new additions, that should be\nplenty I think!\rYou should try placing a bunch of\ndifferent objects to see what different\fPokémon you can meet.</language>
+	</row>
+	<row id="msg_0667_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nThis is Warden Baoba.\rI thought of a new way to play!\nIt’s called Object Arrangement!\r...Wait...\nDid I already tell you about this?\rWell, we’ve got new objects for\nObject Arrangement...\r...I already told you about that,\ntoo...\rWell, that’s all right!\nIf you come to the Safari Zone, you’ll\fsee exactly what I’m talking about!\rWell, see you there!</language>
+	</row>
+	<row id="msg_0667_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nThis is Warden Baoba.\rI thought of a new way to play!\nIt’s called Object Arrangement!\r...Wait...\nDid I already tell you about this?\rWell, we’ve got new objects for\nObject Arrangement...\r...I already told you about that,\ntoo...\rWell, that’s all right!\nIf you come to the Safari Zone, you’ll\fsee exactly what I’m talking about!\rWell, see you there!</language>
+	</row>
+	<row id="msg_0667_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nThis is Warden Baoba.\rThere’s been a change in the Pokémon in\nthe {STRVAR_1 4, 10, 0}, it seems...\rAfter some time with the same objects\nin the same Area, the kinds of Pokémon\fthat settle there change.\rWe’ve found that if you completely\nremove the Area and then restore it\fwith the same objects, the original\fPokémon come back.\fNo need to worry!</language>
+	</row>
+	<row id="msg_0667_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nThis is Warden Baoba.\rThere’s been a change in the Pokémon in\nthe {STRVAR_1 4, 10, 0}, it seems...\rAfter some time with the same objects\nin the same Area, the kinds of Pokémon\fthat settle there change.\rWe’ve found that if you completely\nremove the Area and then restore it\fwith the same objects, the original\fPokémon come back.\fNo need to worry!</language>
+	</row>
+	<row id="msg_0667_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nThis is Warden Baoba.\rIt seems there’s been a slight change\nin the Pokémon at the Safari Zone!\rIt’s in the {STRVAR_1 4, 10, 0} and the\n{STRVAR_1 4, 11, 0}.\rIf you place a few objects that match\nthe Area, the types of Pokémon that\fsettle there change.\rWe’ve found that if you completely\nremove the Area and then restore it\fwith the same objects, the original\fPokémon come back.\fNo need to worry!</language>
+	</row>
+	<row id="msg_0667_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nThis is Warden Baoba.\rIt seems there’s been a slight change\nin the Pokémon at the Safari Zone!\rIt’s in the {STRVAR_1 4, 10, 0} and the\n{STRVAR_1 4, 11, 0}.\rIf you place a few objects that match\nthe Area, the types of Pokémon that\fsettle there change.\rWe’ve found that if you completely\nremove the Area and then restore it\fwith the same objects, the original\fPokémon come back.\fNo need to worry!</language>
+	</row>
+	<row id="msg_0667_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nThis is Warden Baoba.\rIt seems there’s been a slight change\nin the Pokémon at the Safari Zone!\rIt’s in the {STRVAR_1 4, 10, 0},\nthe {STRVAR_1 4, 11, 0}, and\fthe {STRVAR_1 4, 12, 0}.\rIf you place a few objects that match\nthe Area, the types of Pokémon that\fsettle there change.\rWe’ve found that if you completely\nremove the Area and then restore it\fwith the same objects, the original\fPokémon come back.\fNo need to worry!</language>
+	</row>
+	<row id="msg_0667_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nThis is Warden Baoba.\rIt seems there’s been a slight change\nin the Pokémon at the Safari Zone!\rIt’s in the {STRVAR_1 4, 10, 0},\nthe {STRVAR_1 4, 11, 0}, and\fthe {STRVAR_1 4, 12, 0}.\rIf you place a few objects that match\nthe Area, the types of Pokémon that\fsettle there change.\rWe’ve found that if you completely\nremove the Area and then restore it\fwith the same objects, the original\fPokémon come back.\fNo need to worry!</language>
+	</row>
+	<row id="msg_0667_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nThis is Warden Baoba.\rIt seems there’s been a slight change\nin the Pokémon at the Safari Zone!\rIt’s in the {STRVAR_1 4, 10, 0},\nthe {STRVAR_1 4, 11, 0},\fthe {STRVAR_1 4, 12, 0},\fand the {STRVAR_1 4, 13, 0}.\rAfter some time with the same objects\nin the same Area, the types of Pokémon\fthat settle there change.\rWe’ve found that if you completely\nremove the Area and then restore it\fwith the same objects, the original\fPokémon come back.\fNo need to worry!</language>
+	</row>
+	<row id="msg_0667_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nThis is Warden Baoba.\rIt seems there’s been a slight change\nin the Pokémon at the Safari Zone!\rIt’s in the {STRVAR_1 4, 10, 0},\nthe {STRVAR_1 4, 11, 0},\fthe {STRVAR_1 4, 12, 0},\fand the {STRVAR_1 4, 13, 0}.\rAfter some time with the same objects\nin the same Area, the types of Pokémon\fthat settle there change.\rWe’ve found that if you completely\nremove the Area and then restore it\fwith the same objects, the original\fPokémon come back.\fNo need to worry!</language>
+	</row>
+	<row id="msg_0667_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nThis is Warden Baoba.\rIt seems there’s been a slight change\nin the Pokémon at the Safari Zone!\rIt’s in the {STRVAR_1 4, 10, 0},\nthe {STRVAR_1 4, 11, 0},\fthe {STRVAR_1 4, 12, 0},\fthe {STRVAR_1 4, 13, 0}, and\fthe {STRVAR_1 4, 14, 0}.\rAfter some time with the same objects\nin the same Area, the types of Pokémon\fthat settle there change.\rWe’ve found that if you completely\nremove the Area and then restore it\fwith the same objects, the original\fPokémon come back.\fNo need to worry!</language>
+	</row>
+	<row id="msg_0667_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nThis is Warden Baoba.\rIt seems there’s been a slight change\nin the Pokémon at the Safari Zone!\rIt’s in the {STRVAR_1 4, 10, 0},\nthe {STRVAR_1 4, 11, 0},\fthe {STRVAR_1 4, 12, 0},\fthe {STRVAR_1 4, 13, 0}, and\fthe {STRVAR_1 4, 14, 0}.\rAfter some time with the same objects\nin the same Area, the types of Pokémon\fthat settle there change.\rWe’ve found that if you completely\nremove the Area and then restore it\fwith the same objects, the original\fPokémon come back.\fNo need to worry!</language>
+	</row>
+	<row id="msg_0667_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nThis is Warden Baoba.\rIt seems there’s been a slight change\nin the Pokémon at the Safari Zone!\rAfter some time with the same objects\nin the same Area, the types of Pokémon\fthat settle there change.\rWe’ve found that if you completely\nremove the Area and then restore it\fwith the same objects, the original\fPokémon come back.\fNo need to worry!</language>
+	</row>
+	<row id="msg_0667_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nThis is Warden Baoba.\rIt seems there’s been a slight change\nin the Pokémon at the Safari Zone!\rAfter some time with the same objects\nin the same Area, the types of Pokémon\fthat settle there change.\rWe’ve found that if you completely\nremove the Area and then restore it\fwith the same objects, the original\fPokémon come back.\fNo need to worry!</language>
+	</row>
+	<row id="msg_0667_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello?\nOh hi, {STRVAR_1 3, 0, 0}!\rMy apologies. The Safari Zone isn’t\nquite ready yet. I’m sorry for the\finconvenience, but if you could be\fpatient just a little longer.\rI’ll call you later.</language>
+	</row>
+	<row id="msg_0667_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello?\nOh hi, {STRVAR_1 3, 0, 0}!\rMy apologies. The Safari Zone isn’t\nquite ready yet. I’m sorry for the\finconvenience, but if you could be\fpatient just a little longer.\rI’ll call you later.</language>
+	</row>
+	<row id="msg_0667_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello?\nOh hi, {STRVAR_1 3, 0, 0}!\rThe Safari Zone is now open!\nCome visit anytime!\rDo you know where it is?\rYou know the Gate inside the cavern in\nCianwood City?\rIf you go through there and walk for a\nlittle ways, you should soon see the\fSafari Zone!\rWell, see you then!</language>
+	</row>
+	<row id="msg_0667_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello?\nOh hi, {STRVAR_1 3, 0, 0}!\rThe Safari Zone is now open!\nCome visit anytime!\rDo you know where it is?\rYou know the Gate inside the cavern in\nCianwood City?\rIf you go through there and walk for a\nlittle ways, you should soon see the\fSafari Zone!\rWell, see you then!</language>
+	</row>
+	<row id="msg_0667_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello?\nOh hi, {STRVAR_1 3, 0, 0}!\rDo you think you can catch a GEODUDE in\nthe Safari Zone?\rGive it your best shot!</language>
+	</row>
+	<row id="msg_0667_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello?\nOh hi, {STRVAR_1 3, 0, 0}!\rDo you think you can catch a GEODUDE in\nthe Safari Zone?\rGive it your best shot!</language>
+	</row>
+	<row id="msg_0667_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello?\nOh hi, {STRVAR_1 3, 0, 0}!\rSorry, I’m still thinking about the next\nchallenge. Could you give me a bit\fmore time?</language>
+	</row>
+	<row id="msg_0667_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello?\nOh hi, {STRVAR_1 3, 0, 0}!\rSorry, I’m still thinking about the next\nchallenge. Could you give me a bit\fmore time?</language>
+	</row>
+	<row id="msg_0667_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nI’ve finally come up with the next\fchallenge.\rI’ll give you more details at the\nSafari Zone. See you there!</language>
+	</row>
+	<row id="msg_0667_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hi, {STRVAR_1 3, 0, 0}!\nI’ve finally come up with the next\fchallenge.\rI’ll give you more details at the\nSafari Zone. See you there!</language>
+	</row>
+	<row id="msg_0667_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello?\nOh hi, {STRVAR_1 3, 0, 0}!\rDo you think you can catch a SANDSHREW\nin the Desert Area?\rGive it your best shot!</language>
+	</row>
+	<row id="msg_0667_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello?\nOh hi, {STRVAR_1 3, 0, 0}!\rDo you think you can catch a SANDSHREW\nin the Desert Area?\rGive it your best shot!</language>
+	</row>
+	<row id="msg_0667_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello?\nOh hi, {STRVAR_1 3, 0, 0}!\rI’m trying to come up with a new way to\nplay in the Safari Zone.\rIf I come up with something, I’ll be\nsure to give you a call!</language>
+	</row>
+	<row id="msg_0667_00039" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello?\nOh hi, {STRVAR_1 3, 0, 0}!\rI’m trying to come up with a new way to\nplay in the Safari Zone.\rIf I come up with something, I’ll be\nsure to give you a call!</language>
+	</row>
+	<row id="msg_0667_00040" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello?\nOh hi, {STRVAR_1 3, 0, 0}!\rHow are you doing? Enjoying\nthe Safari Zone, are you?\rLater, I will talk to you...</language>
+	</row>
+	<row id="msg_0667_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello?\nOh hi, {STRVAR_1 3, 0, 0}!\rHow are you doing? Enjoying\nthe Safari Zone, are you?\rLater, I will talk to you...</language>
+	</row>
+</body>

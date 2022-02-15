@@ -1,0 +1,283 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0165_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ワイプ</language>
+	</row>
+	<row id="msg_0165_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">エンカウント</language>
+	</row>
+	<row id="msg_0165_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">テスト</language>
+	</row>
+	<row id="msg_0165_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">きょくどうき</language>
+	</row>
+	<row id="msg_0165_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">てがきデ－タか</language>
+	</row>
+	<row id="msg_0165_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">マイクテスト</language>
+	</row>
+	<row id="msg_0165_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">まえ　えらんだもの</language>
+	</row>
+	<row id="msg_0165_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ステ－ジ</language>
+	</row>
+	<row id="msg_0165_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">キャッスル</language>
+	</row>
+	<row id="msg_0165_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ファクトリ－Ｒ</language>
+	</row>
+	<row id="msg_0165_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ファクトリ－Ｃ</language>
+	</row>
+	<row id="msg_0165_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">とじる</language>
+	</row>
+	<row id="msg_0165_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">アプリ</language>
+	</row>
+	<row id="msg_0165_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">べんり</language>
+	</row>
+	<row id="msg_0165_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">えんしゅつ</language>
+	</row>
+	<row id="msg_0165_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ツ－ル</language>
+	</row>
+	<row id="msg_0165_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DP</language>
+	</row>
+	<row id="msg_0165_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GSしんき</language>
+	</row>
+	<row id="msg_0165_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">　　　　　　　　　　　　　　　　　　　　</language>
+	</row>
+	<row id="msg_0165_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">くさ　００</language>
+	</row>
+	<row id="msg_0165_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">くさ　０１</language>
+	</row>
+	<row id="msg_0165_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">みず　００</language>
+	</row>
+	<row id="msg_0165_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">みず　０１</language>
+	</row>
+	<row id="msg_0165_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ダンジョン　００</language>
+	</row>
+	<row id="msg_0165_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ダンジョン　０１</language>
+	</row>
+	<row id="msg_0165_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TR くさ00</language>
+	</row>
+	<row id="msg_0165_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TR くさ01</language>
+	</row>
+	<row id="msg_0165_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TR みず00</language>
+	</row>
+	<row id="msg_0165_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TR みず01</language>
+	</row>
+	<row id="msg_0165_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TR ダン 00</language>
+	</row>
+	<row id="msg_0165_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TR ダン 01</language>
+	</row>
+	<row id="msg_0165_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">sp タワ－</language>
+	</row>
+	<row id="msg_0165_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">sp ダブル</language>
+	</row>
+	<row id="msg_0165_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GINGA 00</language>
+	</row>
+	<row id="msg_0165_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GINGA 01</language>
+	</row>
+	<row id="msg_0165_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LEGEND</language>
+	</row>
+	<row id="msg_0165_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ルギア</language>
+	</row>
+	<row id="msg_0165_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GYM ハヤト</language>
+	</row>
+	<row id="msg_0165_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GYM ツクシ</language>
+	</row>
+	<row id="msg_0165_00039" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GYM アカネ</language>
+	</row>
+	<row id="msg_0165_00040" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GYM マツバ</language>
+	</row>
+	<row id="msg_0165_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GYM ミカン</language>
+	</row>
+	<row id="msg_0165_00042" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GYM シジマ</language>
+	</row>
+	<row id="msg_0165_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GYM ヤナギ</language>
+	</row>
+	<row id="msg_0165_00044" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GYM イブキ</language>
+	</row>
+	<row id="msg_0165_00045" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SITEN 00</language>
+	</row>
+	<row id="msg_0165_00046" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SITEN 01</language>
+	</row>
+	<row id="msg_0165_00047" index="47">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SITEN 02</language>
+	</row>
+	<row id="msg_0165_00048" index="48">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SITEN 03</language>
+	</row>
+	<row id="msg_0165_00049" index="49">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHANP</language>
+	</row>
+	<row id="msg_0165_00050" index="50">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">R したっぱ</language>
+	</row>
+	<row id="msg_0165_00051" index="51">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">R ラムダ</language>
+	</row>
+	<row id="msg_0165_00052" index="52">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">R ランス</language>
+	</row>
+	<row id="msg_0165_00053" index="53">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">R アポロ</language>
+	</row>
+	<row id="msg_0165_00054" index="54">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">R アテナ</language>
+	</row>
+	<row id="msg_0165_00055" index="55">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">R サカキ</language>
+	</row>
+	<row id="msg_0165_00056" index="56">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しょうじ</language>
+	</row>
+	<row id="msg_0165_00057" index="57">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">むかし</language>
+	</row>
+	<row id="msg_0165_00058" index="58">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ライバル</language>
+	</row>
+	<row id="msg_0165_00059" index="59">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GYM タケシ</language>
+	</row>
+	<row id="msg_0165_00060" index="60">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GYM カスミ</language>
+	</row>
+	<row id="msg_0165_00061" index="61">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GYM マチス</language>
+	</row>
+	<row id="msg_0165_00062" index="62">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GYM エリカ</language>
+	</row>
+	<row id="msg_0165_00063" index="63">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GYM アンズ</language>
+	</row>
+	<row id="msg_0165_00064" index="64">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GYM ナツメ</language>
+	</row>
+	<row id="msg_0165_00065" index="65">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GYM カツラ</language>
+	</row>
+	<row id="msg_0165_00066" index="66">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GYM グリ－ン</language>
+	</row>
+	<row id="msg_0165_00067" index="67">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ホウオウ</language>
+	</row>
+	<row id="msg_0165_00068" index="68">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">キ－そうさ\n　さいせい：A　ていし：B　しゅうりょう：Y\n　BGMへんこう：ひだりみぎ\n　へんすうへんこう：うえした\nデ－タ\n　シンクすう：\n　BGMばんごう：\n　へんすうばんごう：\n　へんすうなかみ：\n　チックすう：</language>
+	</row>
+	<row id="msg_0165_00069" index="69">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">せつめい\n　てがきさいげんのためデ－タかをおこなう\n　デバッガのウィンドウにひょうじされる\n　ここから　ここまでをコピペしてください\nそうさ\n　タッチかいし　で　デ－タか　かいし\n　タッチはなし　で　デ－タか　おわり\n　LかRおしながらで　はなしても　おわらない\n　うえかXおしながらで　トリガのみ　けんち\n　Aでかくにんエフェクトを　みる\n</language>
+	</row>
+</body>

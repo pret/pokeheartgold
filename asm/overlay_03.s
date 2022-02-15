@@ -1357,7 +1357,7 @@ _02254936:
 	strb r0, [r4]
 	pop {r3, r4, r5, pc}
 _02254954:
-	ldr r0, _02254990 ; =gMain
+	ldr r0, _02254990 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -1383,7 +1383,7 @@ _02254980:
 _02254984: .word ov03_022598A0
 _02254988: .word _0225912C
 _0225498C: .word 0x0000FFFF
-_02254990: .word gMain
+_02254990: .word gSystem
 _02254994: .word 0x000005DC
 _02254998: .word ov03_0225499C
 	thumb_func_end ov03_022548E0
@@ -2494,7 +2494,7 @@ ov03_02255280: ; 0x02255280
 	bl sub_0205B624
 	cmp r0, #0
 	beq _022552BE
-	ldr r0, _022552C4 ; =gMain
+	ldr r0, _022552C4 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -2516,7 +2516,7 @@ _022552BE:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _022552C0: .word ov03_022598A0
-_022552C4: .word gMain
+_022552C4: .word gSystem
 	thumb_func_end ov03_02255280
 
 	thumb_func_start ov03_022552C8
@@ -2531,7 +2531,7 @@ ov03_022552C8: ; 0x022552C8
 	bl sub_0205B624
 	cmp r0, #0
 	beq _022552FC
-	ldr r0, _02255304 ; =gMain
+	ldr r0, _02255304 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -2547,7 +2547,7 @@ _022552FC:
 	pop {r3, pc}
 	nop
 _02255300: .word ov03_022598A0
-_02255304: .word gMain
+_02255304: .word gSystem
 _02255308: .word ov03_0225530C
 	thumb_func_end ov03_022552C8
 
@@ -2838,7 +2838,7 @@ ov03_0225554C: ; 0x0225554C
 	bl sub_0205B624
 	cmp r0, #0
 	beq _02255582
-	ldr r0, _02255588 ; =gMain
+	ldr r0, _02255588 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -2858,7 +2858,7 @@ _02255582:
 	pop {r4, pc}
 	.balign 4, 0
 _02255584: .word ov03_022598A0
-_02255588: .word gMain
+_02255588: .word gSystem
 	thumb_func_end ov03_0225554C
 
 	thumb_func_start ov03_0225558C
@@ -3427,7 +3427,7 @@ ov03_02255A2C: ; 0x02255A2C
 	bl sub_0205B624
 	cmp r0, #0
 	beq _02255A66
-	ldr r0, _02255A6C ; =gMain
+	ldr r0, _02255A6C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -3448,7 +3448,7 @@ _02255A66:
 	pop {r4, pc}
 	.balign 4, 0
 _02255A68: .word ov03_022598A0
-_02255A6C: .word gMain
+_02255A6C: .word gSystem
 	thumb_func_end ov03_02255A2C
 
 	thumb_func_start ov03_02255A70
@@ -3537,7 +3537,7 @@ ov03_02255B04: ; 0x02255B04
 	bl sub_0205B624
 	cmp r0, #0
 	beq _02255B38
-	ldr r0, _02255B40 ; =gMain
+	ldr r0, _02255B40 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -3554,7 +3554,7 @@ _02255B38:
 	pop {r3, r4, r5, pc}
 	nop
 _02255B3C: .word ov03_022598A0
-_02255B40: .word gMain
+_02255B40: .word gSystem
 	thumb_func_end ov03_02255B04
 
 	thumb_func_start ov03_02255B44
@@ -4766,9 +4766,9 @@ _022564A4: .word 0x000005F3
 ov03_022564A8: ; 0x022564A8
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r1, [r4, #0x7c]
 	cmp r1, #0xb
@@ -4891,7 +4891,7 @@ _0225658E:
 	bl sub_0205B624
 	cmp r0, #0
 	beq _0225663A
-	ldr r0, _02256640 ; =gMain
+	ldr r0, _02256640 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -4909,7 +4909,7 @@ _022565AC:
 	str r0, [r4, #0x7c]
 	b _0225663A
 _022565C0:
-	ldr r1, _02256640 ; =gMain
+	ldr r1, _02256640 ; =gSystem
 	ldr r2, [r1, #0x48]
 	mov r1, #3
 	tst r1, r2
@@ -4963,7 +4963,7 @@ _0225663A:
 	mov r0, #0
 	pop {r4, pc}
 	nop
-_02256640: .word gMain
+_02256640: .word gSystem
 	thumb_func_end ov03_022564A8
 
 	thumb_func_start ov03_02256644
@@ -5020,13 +5020,13 @@ ov03_022566B0: ; 0x022566B0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	bl ov03_02256644
 	add r2, r0, #0
 	ldr r1, _022566CC ; =ov03_022564A8
 	add r0, r5, #0
 	str r4, [r2, #0x70]
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _022566CC: .word ov03_022564A8
@@ -5908,7 +5908,7 @@ ov03_02256D34: ; 0x02256D34
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	ldr r0, [r5, #0xc]
-	bl sub_02031B14
+	bl Save_ApricornBox_get
 	mov r1, #0x96
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -5933,7 +5933,7 @@ ov03_02256D34: ; 0x02256D34
 	add r1, #0x40
 	str r0, [r4, r1]
 	ldr r0, [r5, #0xc]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	mov r1, #0x95
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -5981,7 +5981,7 @@ _02256E04:
 	ldr r1, _02256E28 ; =ov03_02256E2C
 	add r0, r7, #0
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02256E28: .word ov03_02256E2C
@@ -5991,10 +5991,10 @@ _02256E28: .word ov03_02256E2C
 ov03_02256E2C: ; 0x02256E2C
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	ldr r1, _02257064 ; =0x00000272
 	add r4, r0, #0
 	ldrb r2, [r4, r1]
@@ -6435,7 +6435,7 @@ ov03_02257184: ; 0x02257184
 	add r5, #8
 _02257194:
 	add r0, r5, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -6537,43 +6537,43 @@ _02257258: .word 0x00000283
 ov03_0225725C: ; 0x0225725C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02022D68
+	bl GX_EngineAGetLayers
 	mov r1, #0x9f
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201CC2C
+	bl GetBgPriority
 	mov r1, #0x9e
 	lsl r1, r1, #2
 	strb r0, [r4, r1]
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_0201CC2C
+	bl GetBgPriority
 	ldr r1, _022572E0 ; =0x00000279
 	strb r0, [r4, r1]
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201CC2C
+	bl GetBgPriority
 	ldr r1, _022572E4 ; =0x0000027A
 	strb r0, [r4, r1]
 	ldr r0, [r4]
 	mov r1, #3
-	bl sub_0201CC2C
+	bl GetBgPriority
 	ldr r1, _022572E8 ; =0x0000027B
 	strb r0, [r4, r1]
 	mov r0, #0
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
@@ -6601,23 +6601,23 @@ ov03_022572EC: ; 0x022572EC
 	lsl r1, r1, #2
 	ldrb r1, [r4, r1]
 	mov r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r1, _02257328 ; =0x00000279
 	mov r0, #1
 	ldrb r1, [r4, r1]
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r1, _0225732C ; =0x0000027A
 	mov r0, #2
 	ldrb r1, [r4, r1]
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r1, _02257330 ; =0x0000027B
 	mov r0, #3
 	ldrb r1, [r4, r1]
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0x9f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02022C9C
+	bl GX_EngineASetLayers
 	pop {r4, pc}
 	nop
 _02257328: .word 0x00000279
@@ -6835,7 +6835,7 @@ _022574D4:
 _022574DE:
 	add r4, #0x18
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 _022574EA:
@@ -6848,7 +6848,7 @@ _022574EA:
 	bl ov03_022585A4
 	add r4, #0x18
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 _02257504:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -6860,7 +6860,7 @@ _0225750C: .word 0x0000FFFF
 	thumb_func_start ov03_02257510
 ov03_02257510: ; 0x02257510
 	push {r4, r5, r6, lr}
-	ldr r1, _02257604 ; =gMain
+	ldr r1, _02257604 ; =gSystem
 	mov r2, #0x40
 	ldr r1, [r1, #0x48]
 	add r5, r0, #0
@@ -6953,7 +6953,7 @@ _022575B0:
 	add r0, r5, #0
 	bl ov03_022573D4
 _022575CE:
-	ldr r0, _02257604 ; =gMain
+	ldr r0, _02257604 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -6980,7 +6980,7 @@ _02257600:
 	mov r0, #3
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_02257604: .word gMain
+_02257604: .word gSystem
 _02257608: .word ov03_0225947A
 _0225760C: .word 0x000005DC
 _02257610: .word ov03_0225947B
@@ -7219,7 +7219,7 @@ ov03_022577D0: ; 0x022577D0
 	ldr r0, [r4]
 	mov r1, #1
 	mov r2, #0
-	bl sub_0201CB28
+	bl BgFillTilemapBufferAndSchedule
 	mov r0, #0x81
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -7239,7 +7239,7 @@ ov03_022577F4: ; 0x022577F4
 	mov r1, #0x95
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl sub_02031A6C
+	bl SavePokeathlon_GetAthletePoints
 	pop {r3, pc}
 _02257808:
 	mov r1, #0x92
@@ -7457,7 +7457,7 @@ _02257994:
 	add r0, #0x73
 	ldr r0, [r2, r0]
 	sub r1, r1, r3
-	bl sub_02031BA4
+	bl ApricornBox_CountApricorn
 	pop {r4, pc}
 _022579AE:
 	mov r1, #0x93
@@ -7619,7 +7619,7 @@ ov03_02257ADC: ; 0x02257ADC
 	mov r0, #7
 	pop {r4, pc}
 _02257B02:
-	ldr r0, _02257B44 ; =gMain
+	ldr r0, _02257B44 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -7649,7 +7649,7 @@ _02257B38:
 	.balign 4, 0
 _02257B3C: .word 0x00000286
 _02257B40: .word 0x00000637
-_02257B44: .word gMain
+_02257B44: .word gSystem
 _02257B48: .word 0x000005DC
 	thumb_func_end ov03_02257ADC
 
@@ -7859,7 +7859,7 @@ _02257CCA:
 	sub r2, #0x9e
 	ldr r0, [r4, r0]
 	sub r1, r1, r2
-	bl sub_02031BA4
+	bl ApricornBox_CountApricorn
 	cmp r0, #0x63
 	bne _02257D26
 	mov r0, #0xa6
@@ -8012,7 +8012,7 @@ ov03_02257DF8: ; 0x02257DF8
 	lsl r1, r1, #0x10
 	ldr r0, [r2, r3]
 	lsr r1, r1, #0x10
-	bl sub_02031A54
+	bl SavePokeathlon_SubAthletePoints
 	pop {r4, pc}
 _02257E18:
 	add r1, r3, #0
@@ -8045,7 +8045,7 @@ ov03_02257E34: ; 0x02257E34
 	ldr r0, [r3, r0]
 	sub r1, r1, r2
 	mov r2, #1
-	bl sub_02031B68
+	bl ApricornBox_GiveApricorn
 	pop {r3, pc}
 _02257E54:
 	mov r1, #0x93
@@ -8166,12 +8166,12 @@ ov03_02257F24: ; 0x02257F24
 	mov r0, #0xd
 	pop {r4, pc}
 _02257F3A:
-	ldr r0, _02257FEC ; =gMain
+	ldr r0, _02257FEC ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
 	bne _02257F4C
-	ldr r0, _02257FF0 ; =gMain + 0x40
+	ldr r0, _02257FF0 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _02257FE6
@@ -8250,8 +8250,8 @@ _02257FE6:
 	mov r0, #0xd
 	pop {r4, pc}
 	nop
-_02257FEC: .word gMain
-_02257FF0: .word gMain + 0x40
+_02257FEC: .word gSystem
+_02257FF0: .word gSystem + 0x40
 _02257FF4: .word 0x00000283
 	thumb_func_end ov03_02257F24
 
@@ -8268,12 +8268,12 @@ ov03_02257FF8: ; 0x02257FF8
 	mov r0, #0xe
 	pop {r4, pc}
 _0225800E:
-	ldr r0, _02258070 ; =gMain
+	ldr r0, _02258070 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
 	bne _02258020
-	ldr r0, _02258074 ; =gMain + 0x40
+	ldr r0, _02258074 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _0225806A
@@ -8313,8 +8313,8 @@ _0225806A:
 	mov r0, #0xe
 	pop {r4, pc}
 	nop
-_02258070: .word gMain
-_02258074: .word gMain + 0x40
+_02258070: .word gSystem
+_02258074: .word gSystem + 0x40
 	thumb_func_end ov03_02257FF8
 
 	thumb_func_start ov03_02258078
@@ -8330,12 +8330,12 @@ ov03_02258078: ; 0x02258078
 	mov r0, #0xf
 	pop {r4, pc}
 _0225808E:
-	ldr r0, _022580F0 ; =gMain
+	ldr r0, _022580F0 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
 	bne _022580A0
-	ldr r0, _022580F4 ; =gMain + 0x40
+	ldr r0, _022580F4 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _022580EA
@@ -8375,8 +8375,8 @@ _022580EA:
 	mov r0, #0xf
 	pop {r4, pc}
 	nop
-_022580F0: .word gMain
-_022580F4: .word gMain + 0x40
+_022580F0: .word gSystem
+_022580F4: .word gSystem + 0x40
 	thumb_func_end ov03_02258078
 
 	thumb_func_start ov03_022580F8
@@ -8559,7 +8559,7 @@ _022581DA:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r7, #0
 	mov r1, #0
 	bl ov03_022582C0
@@ -9228,10 +9228,10 @@ ov03_02258764: ; 0x02258764
 	cmp r0, #0
 	beq _022587C2
 	add r0, r6, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Sav2_Bag_get
@@ -9256,7 +9256,7 @@ ov03_02258764: ; 0x02258764
 	ldr r1, _022587CC ; =sub_02092B04
 	add r0, r6, #0
 	add r2, r4, #0
-	bl sub_02050510
+	bl NowRunTask
 	ldr r0, _022587D0 ; =0x00000272
 	mov r1, #0x18
 	strb r1, [r4, r0]
@@ -9397,7 +9397,7 @@ _02258890: .word 0x000005D8
 	thumb_func_start ov03_02258894
 ov03_02258894: ; 0x02258894
 	push {r3, lr}
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	ldr r1, [r0]
 	cmp r1, #0
 	bne _022588A8
@@ -9466,7 +9466,7 @@ ov03_02258910: ; 0x02258910
 	bl ov03_02258878
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	str r0, [r4, #4]
 	add r0, r4, #0
 	bl ov03_02258814
@@ -9478,7 +9478,7 @@ ov03_02258910: ; 0x02258910
 	ldr r0, [r5, #0x10]
 	ldr r1, _02258948 ; =ov03_02258894
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, pc}
 	nop
 _02258944: .word ov03_022588D4
@@ -9499,13 +9499,13 @@ ScrCmd_716: ; 0x0225894C
 	ldr r0, [r0]
 	bl sub_0203EB08
 	str r0, [r4]
-	ldr r1, _02258974 ; =sub_02042974
+	ldr r1, _02258974 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02258974: .word sub_02042974
+_02258974: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_716
 
 	thumb_func_start ScrCmd_717
@@ -9549,7 +9549,7 @@ ScrCmd_718: ; 0x02258998
 	ldr r0, [r6]
 	add r1, r4, #0
 	lsr r2, r2, #0x18
-	bl sub_0200CA4C
+	bl BufferSafariZoneObjectName
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -9605,19 +9605,19 @@ ScrCmd_720: ; 0x02258A18
 	bl VarGet
 	str r0, [sp]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	add r7, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	str r0, [sp, #0x14]
 	add r0, r4, #0
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	add r2, r6, r7
 	sub r2, #0x20
 	asr r1, r2, #4
@@ -9636,7 +9636,7 @@ ScrCmd_720: ; 0x02258A18
 	add r0, r1, r0
 	str r0, [sp, #0x10]
 	ldr r0, [r5, #0xc]
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	mov r1, #0
 	bl sub_0202F630
 	str r0, [sp, #0xc]
@@ -9930,7 +9930,7 @@ ScrCmd_792: ; 0x02258CDC
 	add r0, #0x80
 	ldr r5, [r0]
 	ldr r0, [r5, #0xc]
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Sav2_PlayerData_GetIGTAddr
@@ -9945,7 +9945,7 @@ ScrCmd_792: ; 0x02258CDC
 ov03_02258CFC: ; 0x02258CFC
 	push {r4, r5, r6, lr}
 	add r6, r1, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	mov r0, #0xb
 	mov r1, #0x40
@@ -9958,14 +9958,14 @@ ov03_02258CFC: ; 0x02258CFC
 	str r0, [r4, #0xc]
 	str r5, [r4, #8]
 	ldr r0, [r5, #0xc]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	str r0, [r4, #0x20]
 	bl sub_0203199C
 	str r0, [r4, #0x24]
 	ldr r0, [r5, #0x10]
 	ldr r1, _02258D38 ; =ov03_02258D3C
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r4, r5, r6, pc}
 	nop
 _02258D38: .word ov03_02258D3C
@@ -9975,9 +9975,9 @@ _02258D38: .word ov03_02258D3C
 ov03_02258D3C: ; 0x02258D3C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r1, [r4]
 	cmp r1, #0
@@ -10027,7 +10027,7 @@ ov03_02258D88: ; 0x02258D88
 	mov r0, #1
 	pop {r4, pc}
 _02258DAC:
-	ldr r0, _02258DE0 ; =gMain
+	ldr r0, _02258DE0 ; =gSystem
 	ldr r1, [r0, #0x48]
 	ldr r0, _02258DE4 ; =0x00000CF3
 	tst r0, r1
@@ -10039,7 +10039,7 @@ _02258DAC:
 	mov r1, #0
 	bl sub_02018410
 _02258DC4:
-	ldr r0, _02258DE0 ; =gMain
+	ldr r0, _02258DE0 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -10053,7 +10053,7 @@ _02258DD8:
 	pop {r4, pc}
 	.balign 4, 0
 _02258DDC: .word 0x000005DD
-_02258DE0: .word gMain
+_02258DE0: .word gSystem
 _02258DE4: .word 0x00000CF3
 	thumb_func_end ov03_02258D88
 
@@ -10219,7 +10219,7 @@ _02258F22:
 _02258F32:
 	add r0, r6, #0
 	add r0, #0x10
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [r6, #0xc]
 	mov r1, #3
 	bl ScheduleBgTilemapBufferTransfer

@@ -29,13 +29,13 @@ ScrCmd_394: ; 0x0204EBE8
 	mov r3, #0
 	bl sub_0203E7F4
 	str r0, [r6]
-	ldr r1, _0204EC2C ; =sub_020429F8
+	ldr r1, _0204EC2C ; =ScrNative_WaitApplication
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_0204EC2C: .word sub_020429F8
+_0204EC2C: .word ScrNative_WaitApplication
 	thumb_func_end ScrCmd_394
 
 	thumb_func_start ScrCmd_395
@@ -113,8 +113,8 @@ ScrCmd_466: ; 0x0204EC7C
 	.balign 4, 0
 	thumb_func_end ScrCmd_466
 
-	thumb_func_start sub_0204ECD0
-sub_0204ECD0: ; 0x0204ECD0
+	thumb_func_start _CreateMoveRelearner
+_CreateMoveRelearner: ; 0x0204ECD0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -127,7 +127,7 @@ sub_0204ECD0: ; 0x0204ECD0
 	bl FieldSysGetAttrAddr
 	str r0, [sp, #4]
 	mov r0, #0x20
-	bl sub_0209174C
+	bl MoveRelearner_new
 	add r4, r0, #0
 	ldr r0, [sp, #4]
 	str r4, [r0]
@@ -152,7 +152,7 @@ sub_0204ECD0: ; 0x0204ECD0
 	ldr r0, [r0]
 	add r1, r4, #0
 	bl sub_0203F9C4
-	ldr r1, _0204ED38 ; =sub_020429F8
+	ldr r1, _0204ED38 ; =ScrNative_WaitApplication
 	add r0, r5, #0
 	bl SetupNativeScript
 	add r0, r6, #0
@@ -160,11 +160,11 @@ sub_0204ECD0: ; 0x0204ECD0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0204ED38: .word sub_020429F8
-	thumb_func_end sub_0204ECD0
+_0204ED38: .word ScrNative_WaitApplication
+	thumb_func_end _CreateMoveRelearner
 
-	thumb_func_start ScrCmd_467
-ScrCmd_467: ; 0x0204ED3C
+	thumb_func_start ScrCmd_MoveRelearnerInit
+ScrCmd_MoveRelearnerInit: ; 0x0204ED3C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -188,13 +188,13 @@ ScrCmd_467: ; 0x0204ED3C
 	add r0, r5, #0
 	mov r1, #1
 	add r2, r4, #0
-	bl sub_0204ECD0
+	bl _CreateMoveRelearner
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_467
+	thumb_func_end ScrCmd_MoveRelearnerInit
 
-	thumb_func_start ScrCmd_468
-ScrCmd_468: ; 0x0204ED7C
+	thumb_func_start ScrCmd_MoveTutorInit
+ScrCmd_MoveTutorInit: ; 0x0204ED7C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -230,15 +230,15 @@ ScrCmd_468: ; 0x0204ED7C
 	add r0, r5, #0
 	mov r1, #0
 	add r2, r6, #0
-	bl sub_0204ECD0
+	bl _CreateMoveRelearner
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0204EDD8: .word 0x0000FFFF
-	thumb_func_end ScrCmd_468
+	thumb_func_end ScrCmd_MoveTutorInit
 
-	thumb_func_start ScrCmd_469
-ScrCmd_469: ; 0x0204EDDC
+	thumb_func_start ScrCmd_MoveRelearnerGetResult
+ScrCmd_MoveRelearnerGetResult: ; 0x0204EDDC
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -267,8 +267,8 @@ _0204EE10:
 _0204EE12:
 	strh r0, [r5]
 	add r0, r4, #0
-	bl sub_02091764
+	bl MoveRelearner_delete
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_469
+	thumb_func_end ScrCmd_MoveRelearnerGetResult

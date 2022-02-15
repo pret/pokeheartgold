@@ -92,7 +92,7 @@ ov98_0221E5E0: ; 0x0221E5E0
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
@@ -652,7 +652,7 @@ ov98_0221EAA8: ; 0x0221EAA8
 	str r2, [sp]
 	ldr r0, [r0, #0x10]
 	mov r2, #0
-	bl sub_02007C10
+	bl GfGfxLoader_GetCharDataFromOpenNarc
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov98_0221EAA8
@@ -711,7 +711,7 @@ _0221EB1A:
 	bl FillWindowPixelBuffer
 	ldr r0, [r4, #4]
 	add r0, r0, r5
-	bl sub_0201D634
+	bl ClearWindowTilemap
 	ldr r0, [sp, #8]
 	add r7, r7, #1
 	add r6, #8
@@ -913,7 +913,7 @@ _0221EC8A:
 	bl AddTextPrinterParameterized2
 	ldr r0, [r5, #4]
 	add r0, r0, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
 	bl String_dtor
 	add sp, #0x14
@@ -963,7 +963,7 @@ ov98_0221ECD0: ; 0x0221ECD0
 	bl AddTextPrinterParameterized2
 	ldr r0, [r5, #4]
 	add r0, r0, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	add sp, #0x10
@@ -1016,7 +1016,7 @@ ov98_0221ED48: ; 0x0221ED48
 	bl AddTextPrinterParameterized2
 	ldr r0, [r4, #4]
 	add r0, r0, r5
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
 	bl String_dtor
 	add sp, #0x10
@@ -1081,7 +1081,7 @@ ov98_0221EDC4: ; 0x0221EDC4
 	bl AddTextPrinterParameterized2
 	ldr r0, [r5, #4]
 	add r0, r0, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	add sp, #0x10
@@ -1126,7 +1126,7 @@ _0221EE3E:
 	bl AddTextPrinterParameterized2
 	ldr r0, [r5, #4]
 	add r0, r0, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -1143,7 +1143,7 @@ ov98_0221EE84: ; 0x0221EE84
 	ldr r1, [r5, #4]
 	lsl r0, r4, #4
 	add r0, r1, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov98_0221EE84
@@ -1174,7 +1174,7 @@ ov98_0221EE9C: ; 0x0221EE9C
 	bl AddTextPrinterParameterized2
 	ldr r0, [r4, #4]
 	add r0, r0, r5
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1185,11 +1185,11 @@ _0221EED8: .word 0x00010200
 ov98_0221EEDC: ; 0x0221EEDC
 	ldr r2, [r0, #4]
 	lsl r0, r1, #4
-	ldr r3, _0221EEE8 ; =sub_0201D8E4
+	ldr r3, _0221EEE8 ; =ClearWindowTilemapAndScheduleTransfer
 	add r0, r2, r0
 	bx r3
 	nop
-_0221EEE8: .word sub_0201D8E4
+_0221EEE8: .word ClearWindowTilemapAndScheduleTransfer
 	thumb_func_end ov98_0221EEDC
 
 	thumb_func_start ov98_0221EEEC
@@ -1197,11 +1197,11 @@ ov98_0221EEEC: ; 0x0221EEEC
 	ldr r3, [r0, #4]
 	lsl r0, r1, #4
 	add r0, r3, r0
-	ldr r3, _0221EEF8 ; =sub_0201EEAC
+	ldr r3, _0221EEF8 ; =SetWindowY
 	add r1, r2, #0
 	bx r3
 	.balign 4, 0
-_0221EEF8: .word sub_0201EEAC
+_0221EEF8: .word SetWindowY
 	thumb_func_end ov98_0221EEEC
 
 	thumb_func_start ov98_0221EEFC
@@ -1251,7 +1251,7 @@ ov98_0221EF24: ; 0x0221EF24
 	bl sub_02025320
 	cmp r0, #0
 	bne _0221EF52
-	ldr r0, _0221EF60 ; =gMain
+	ldr r0, _0221EF60 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -1264,7 +1264,7 @@ _0221EF54:
 	pop {r3, r4, pc}
 	nop
 _0221EF5C: .word ov98_0221F1E0
-_0221EF60: .word gMain
+_0221EF60: .word gSystem
 	thumb_func_end ov98_0221EF24
 
 	thumb_func_start ov98_0221EF64
@@ -1470,7 +1470,7 @@ ov98_0221F090: ; 0x0221F090
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -1503,7 +1503,7 @@ ov98_0221F0EC: ; 0x0221F0EC
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1

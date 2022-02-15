@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0376_R30R0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">People usually come to my house\nlooking for Mr. Pokémon’s house.\fYou did mean to visit my house, right?\rHow kind of you!\nDo you...have any Apricorns?\fApricorn trees bear fruit once a day.\fI have one of those trees, too!\rApricorns are really something.\nYou can make Poké Balls and\fother things.\rThey are quite useful.\rI have a feeling this is meant to be.\nI’m so happy that I’ll give you this!\r</language>
+	</row>
+	<row id="msg_0376_R30R0101_00001" index="1">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0376_R30R0101_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">With that Apricorn Box, you can carry\nso many Apricorns.\fYou’ll be a decent Apricorn collector!</language>
+	</row>
+	<row id="msg_0376_R30R0101_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey, collector of Apricorns!\rHave you noticed that Apricorn colors\nare different from tree to tree?\rTry to remember what color Apricorn\nyou get from each tree!</language>
+	</row>
+</body>

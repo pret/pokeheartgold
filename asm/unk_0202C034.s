@@ -408,7 +408,7 @@ _0202C2EA:
 	add r5, #0x40
 	mul r0, r4
 	add r0, r5, r0
-	bl sub_020A008C
+	bl DWC_IsValidFriendData
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0202C2DC
 

@@ -1,0 +1,89 @@
+{
+  "header": "fielddata/script/scr_seq/event_T28GYM0102.h",
+  "objects": [
+    {
+      "id": "obj_EVERYWHERE_ice",
+      "ovid": "SPRITE_ICE",
+      "mvt": 15,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": 0,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 5,
+      "y": 10,
+      "z": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_ice_2",
+      "ovid": "SPRITE_ICE",
+      "mvt": 15,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": 0,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 8,
+      "y": 10,
+      "z": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_skierw",
+      "ovid": "SPRITE_SKIERW",
+      "mvt": 15,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_SKIER_DIANA)",
+      "dirn": 1,
+      "eye": 3,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 2,
+      "y": 12,
+      "z": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_boarder",
+      "ovid": "SPRITE_BOARDER",
+      "mvt": 16,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_BOARDER_PATTON)",
+      "dirn": 2,
+      "eye": 2,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 11,
+      "y": 12,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 6,
+      "y": 15,
+      "header": "MAP_T28GYM0103",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 6,
+      "y": 2,
+      "header": "MAP_T28GYM0101",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0603_T25SP0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">We exchange your Coins for\nfabulous prizes! {YESNO 0}</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Please save your Coins and\ncome again!</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sorry! You need more Coins. {YESNO 0}</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 8, 0, 0}.\nIs that right? {YESNO 0}</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Here you go!\r</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sorry. You can’t carry any more.\r</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Your party’s full!\nPlease make some room before you\fcome back.</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Would you like {STRVAR_1 0, 1, 0}? {YESNO 0}</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} received\nthe {STRVAR_1 0, 1, 0}! {YESNO 0}</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Welcome!\rWe exchange your Coins for\nfabulous prizes! {YESNO 0}</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You put away the {STRVAR_1 8, 0, 0}\nin the {STRVAR_1 18, 1, 0} Pocket. {YESNO 0}</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CANCEL</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TECHNICAL MACHINE</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HELD ITEMS</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SUBSTITUTE\n2,000 Coins</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SWORDS DANCE\n4,000 Coins</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">REST\n6,000 Coins</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FLAMETHROWER\n10,000 Coins</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ICE BEAM\n10,000 Coins</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">THUNDERBOLT\n10,000 Coins</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SILK SCARF\n1,000 Coins</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WIDE LENS\n1,000 Coins</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ZOOM LENS\n1,000 Coins</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">METRONOME\n1,000 Coins</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ABRA{CURSOR_X 103}200 Coins</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">EKANS{CURSOR_X 103}700 Coins</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DRATINI{CURSOR_X 90}2,100 Coins</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SANDSHREW{CURSOR_X 103}700 Coins</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">My name is Mr. Game!\rMy heart pounds with excitement when\npeople enjoy my Coin game!\rIn fact, that’s what I live for!\nYou look like quite a challenger!\rWhy don’t you play my Coin game?\rYou can get fabulous prizes if\nyou manage to collect a lot\fof Coins. {YESNO 0}</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00029" index="29">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XX</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00030" index="30">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">All right!\nHere is your Coin Case!\r</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Show me how you play, and my heart\nwill pound with excitement!\r</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Playing my Coin game will make your\nheart and my heart both pound with\fexcitement, you know?</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">My name is Mr. Game!\rMy heart pounds with excitement when\npeople enjoy my Coin game!\rIn fact, that’s what I live for!\nGo ahead and play it!\rMake my heart pound with excitement!</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Go ahead and play my Coin game!\fMake my heart pound with excitement!</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What a feeling!\rNothing beats Coin-game spectatorship!\nOh! I almost forgot!\rYou can exchange your Coins for prizes\nwith the two gentlemen at the table\fover there.</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Did you come back to play\nmy Coin game?</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It seems you need a Coin Case\nto play...\r</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00039" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mr. Game: Aha!\rYou must be here to play my Coin game!\nCome here and I’ll give you a Coin Case!</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00040" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mr. Game: Show me how you play and\nmake my heart pound with excitement!\r</language>
+	</row>
+	<row id="msg_0603_T25SP0101_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mr. Game: Huh?\rWhy don’t you sit across from me\nand show me how you play?</language>
+	</row>
+</body>

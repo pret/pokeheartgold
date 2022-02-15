@@ -436,7 +436,7 @@ ov62_021E5C34: ; 0x021E5C34
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -469,7 +469,7 @@ ov62_021E5C80: ; 0x021E5C80
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -552,7 +552,7 @@ ov62_021E5CF4: ; 0x021E5CF4
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r3, r4, r5, pc}
 	nop
 _021E5D48: .word ov62_021E66B0
@@ -999,7 +999,7 @@ ov62_021E60D4: ; 0x021E60D4
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _021E60E0
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 _021E60E0:
 	pop {r3, pc}
 	.balign 4, 0
@@ -1042,7 +1042,7 @@ _021E6102:
 	mov r1, #0
 	bl FillWindowPixelBuffer
 	add r0, r5, #0
-	bl sub_0201D634
+	bl ClearWindowTilemap
 	ldr r0, [sp, #0x14]
 	add r1, r6, #0
 	ldr r0, [r0, #0x34]
@@ -1090,7 +1090,7 @@ _021E6182:
 	add r1, r6, #0
 	bl FillWindowPixelBuffer
 	add r0, r5, #0
-	bl sub_0201D634
+	bl ClearWindowTilemap
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -1560,7 +1560,7 @@ _021E64EE:
 	add r0, #0x5a
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	add r2, r0, #0
 	ldr r0, [sp, #0x18]
 	asr r3, r2, #0x1f
@@ -1581,7 +1581,7 @@ _021E64EE:
 	ldr r0, [sp, #0x1c]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	add r2, r0, #0
 	ldr r0, [sp]
 	add r1, r7, #0
@@ -1661,7 +1661,7 @@ _021E65BA:
 _021E65C6:
 	lsl r0, r3, #4
 	lsr r0, r0, #0x10
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	ldr r1, [r5, #0x28]
 	add r2, r4, #0
 	mul r0, r1
@@ -1724,7 +1724,7 @@ ov62_021E6630: ; 0x021E6630
 	bl ov62_021E6620
 	cmp r0, #0
 	beq _021E6644
-	ldr r0, _021E664C ; =gMain
+	ldr r0, _021E664C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -1736,7 +1736,7 @@ _021E6648:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-_021E664C: .word gMain
+_021E664C: .word gSystem
 	thumb_func_end ov62_021E6630
 
 	.rodata

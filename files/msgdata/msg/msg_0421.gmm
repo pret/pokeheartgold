@@ -1,0 +1,337 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0421_00000" index="0">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXX</language>
+	</row>
+	<row id="msg_0421_00001" index="1">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXX</language>
+	</row>
+	<row id="msg_0421_00002" index="2">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXX</language>
+	</row>
+	<row id="msg_0421_00003" index="3">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00004" index="4">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00005" index="5">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00006" index="6">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00007" index="7">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00008" index="8">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00009" index="9">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00010" index="10">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00011" index="11">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00012" index="12">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00013" index="13">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0421_00014" index="14">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00015" index="15">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00016" index="16">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXX</language>
+	</row>
+	<row id="msg_0421_00017" index="17">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXX</language>
+	</row>
+	<row id="msg_0421_00018" index="18">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXX</language>
+	</row>
+	<row id="msg_0421_00019" index="19">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXX</language>
+	</row>
+	<row id="msg_0421_00020" index="20">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXX</language>
+	</row>
+	<row id="msg_0421_00021" index="21">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXX</language>
+	</row>
+	<row id="msg_0421_00022" index="22">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00023" index="23">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00024" index="24">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00025" index="25">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00026" index="26">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00027" index="27">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00028" index="28">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00029" index="29">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00030" index="30">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00031" index="31">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00032" index="32">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00033" index="33">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00034" index="34">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00035" index="35">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00036" index="36">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXX</language>
+	</row>
+	<row id="msg_0421_00037" index="37">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00038" index="38">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00039" index="39">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0421_00040" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}DELETE RECORD</language>
+	</row>
+	<row id="msg_0421_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}RETURN</language>
+	</row>
+	<row id="msg_0421_00042" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 50, 0, 0}.</language>
+	</row>
+	<row id="msg_0421_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 1, 0}</language>
+	</row>
+	<row id="msg_0421_00044" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 53, 0, 0} wins</language>
+	</row>
+	<row id="msg_0421_00045" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 50, 0, 0} wins</language>
+	</row>
+	<row id="msg_0421_00046" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 55, 0, 0}</language>
+	</row>
+	<row id="msg_0421_00047" index="47">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 55, 0, 0}</language>
+	</row>
+	<row id="msg_0421_00048" index="48">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Select the record you want to\ndelete, then press the A or X Button.</language>
+	</row>
+	<row id="msg_0421_00049" index="49">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Delete {STRVAR_1 3, 0, 0}’s record?\nAre you sure?</language>
+	</row>
+	<row id="msg_0421_00050" index="50">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XX</language>
+	</row>
+	<row id="msg_0421_00051" index="51">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0421_00052" index="52">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Your own record can’t be deleted.</language>
+	</row>
+	<row id="msg_0421_00053" index="53">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Battle Tower Record</language>
+	</row>
+	<row id="msg_0421_00054" index="54">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Single Battle Win-Streak</language>
+	</row>
+	<row id="msg_0421_00055" index="55">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Battle Tower Record</language>
+	</row>
+	<row id="msg_0421_00056" index="56">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Double Battle Win-Streak</language>
+	</row>
+	<row id="msg_0421_00057" index="57">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Battle Tower Record</language>
+	</row>
+	<row id="msg_0421_00058" index="58">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Multi Battle Win-Streak</language>
+	</row>
+	<row id="msg_0421_00059" index="59">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Battle Tower Record</language>
+	</row>
+	<row id="msg_0421_00060" index="60">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Link Multi Battle Win-Streak</language>
+	</row>
+	<row id="msg_0421_00061" index="61">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Battle Tower Record</language>
+	</row>
+	<row id="msg_0421_00062" index="62">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Wi-Fi Battle Win-Streak</language>
+	</row>
+	<row id="msg_0421_00063" index="63">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Battle Tower Record</language>
+	</row>
+	<row id="msg_0421_00064" index="64">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Average Win-Streak Record</language>
+	</row>
+	<row id="msg_0421_00065" index="65">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon Record</language>
+	</row>
+	<row id="msg_0421_00066" index="66">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}The number of Pokémon defeated.</language>
+	</row>
+	<row id="msg_0421_00067" index="67">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon Record</language>
+	</row>
+	<row id="msg_0421_00068" index="68">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon caught using Poké Balls.</language>
+	</row>
+	<row id="msg_0421_00069" index="69">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon Record</language>
+	</row>
+	<row id="msg_0421_00070" index="70">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon that were hatched from Eggs.</language>
+	</row>
+	<row id="msg_0421_00071" index="71">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon Record</language>
+	</row>
+	<row id="msg_0421_00072" index="72">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon that were caught fishing.</language>
+	</row>
+</body>

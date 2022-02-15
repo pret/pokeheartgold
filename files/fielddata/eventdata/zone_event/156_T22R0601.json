@@ -1,0 +1,48 @@
+{
+  "header": "fielddata/script/scr_seq/event_T22R0601.h",
+  "objects": [
+    {
+      "id": "obj_T22R0601_gsmiddleman1",
+      "ovid": "SPRITE_GSMIDDLEMAN1",
+      "mvt": 15,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T22R0601_002 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 8,
+      "y": 6,
+      "z": 0
+    },
+    {
+      "id": "obj_T22R0601_gsboy1",
+      "ovid": "SPRITE_GSBOY1",
+      "mvt": 3,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T22R0601_001 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 1,
+      "yrange": 1,
+      "x": 2,
+      "y": 5,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 4,
+      "y": 8,
+      "header": "MAP_T22",
+      "anchor": 9,
+      "height": 0
+    }
+  ]
+}

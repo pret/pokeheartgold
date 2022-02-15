@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0461_T03FS0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Look! I have a GYARADOS!\rI raised it from a MAGIKARP slowly.\nIt finally evolved!</language>
+	</row>
+	<row id="msg_0461_T03FS0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There once was a weird old man who\nsold MAGIKARP.\rThat boy got one and kept it for\na long time!</language>
+	</row>
+</body>

@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0701_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Reese</language>
+	</row>
+	<row id="msg_0701_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I wasn’t feeling my best today,\nthat’s all!\rWe should trade phone numbers,\nthen we can battle again! {YESNO 0}</language>
+	</row>
+	<row id="msg_0701_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The next time we meet, I’ll be much\nstronger, I promise!</language>
+	</row>
+	<row id="msg_0701_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You’re just gonna win and run off?\nThat’s pretty low!</language>
+	</row>
+	<row id="msg_0701_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I wasn’t feeling my best today,\nthat’s all!\rWe should trade phone numbers,\nthen we can battle again! {YESNO 0}</language>
+	</row>
+	<row id="msg_0701_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Did you come to pick up a Dusk Stone?\nThis is it...\rDon’t be shy! This is getting kind of\nawkward, so just take it already!\r</language>
+	</row>
+	<row id="msg_0701_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey, now...\nAm I really that scary to you?\rYou know that I know you’re on\nCycling Road, right?\rIf you’re going to come all the way out\nhere, you might as well talk in person!</language>
+	</row>
+	<row id="msg_0701_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bwa ha ha ha!\nMy {STRVAR_1 0, 10, 0} has gotten so much\fstronger. You would be stunned to see\fit now!\rRecently, we were battling a\n{STRVAR_1 0, 11, 0} and knocked it flat--\fBOOM! Just like that!\rNothing scares us now...as long\nas they’re low-enough level!</language>
+	</row>
+	<row id="msg_0701_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">My {STRVAR_1 0, 10, 0} has gotten much\nstronger, but we still let a wild\f{STRVAR_1 0, 11, 0} we were battling\frun away!\rWhat, you think it got away on us?\nNo way, man! We LET it run away!</language>
+	</row>
+	<row id="msg_0701_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Recently we found a wild {STRVAR_1 0, 11, 0}\nby the roadside!\rIt just leaped out suddenly and\nsurprised me so much that I fell over!\rDid I get hurt?\rNo--I landed on my Pokémon, and it\ncushioned my fall!</language>
+	</row>
+	<row id="msg_0701_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Whoa...\nI can’t believe how buffed up I am now.\rI’ll be showing off my moves on\n{STRVAR_1 4, 3, 0}, so come by and get\fstomped! I’ll be waiting to show you!</language>
+	</row>
+	<row id="msg_0701_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What’s up with that?!\nDidn’t you say you were going to come\fout here and get schooled?!\rCome on! I’m waiting on\n{STRVAR_1 4, 3, 0}, so hurry up!</language>
+	</row>
+	<row id="msg_0701_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">After my Biker gang showed up on\nCycling Road, the atmosphere soured...\rAt least, that’s what some people\nhave been saying.\rWe’re not doing anything mean to\nanyone, though!\rAll we’re doing is challenging strong\nTrainers to Pokémon battles, that’s it!\rPeople like you, for example!</language>
+	</row>
+	<row id="msg_0701_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I was riding in the middle of the night,\nand I found this thing called a\fDusk Stone!\rYou seem like someone with a lot of\npromise, so I’d like to give it to you.\rIf you want it, I’ll be waiting on\n{STRVAR_1 4, 3, 0}.</language>
+	</row>
+	<row id="msg_0701_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You know, I went through a lot of\ntrouble saving you this Dusk Stone,\fand you don’t even want it!\rI’m on {STRVAR_1 4, 3, 0}, so come over\nwhenever. No... Come over now!</language>
+	</row>
+</body>

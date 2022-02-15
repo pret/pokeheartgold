@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0406_R46_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rt. 46\nMountain Road ahead</language>
+	</row>
+	<row id="msg_0406_R46_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dark Cave</language>
+	</row>
+	<row id="msg_0406_R46_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A dead end...?\rDid I take the wrong path?\rI didn’t know this was only\none way.</language>
+	</row>
+	<row id="msg_0406_R46_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You should try different routes\nsometime.\rYou never know what Pokémon\nyou’re gonna get!</language>
+	</row>
+</body>

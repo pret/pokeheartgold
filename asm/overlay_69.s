@@ -12,7 +12,7 @@ ov69_021E5900: ; 0x021E5900
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -95,7 +95,7 @@ _021E5960:
 	mov r0, #0
 	add r1, #0x1c
 	str r0, [r5, r1]
-	ldr r0, _021E5A30 ; =gMain + 0x60
+	ldr r0, _021E5A30 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -123,7 +123,7 @@ _021E5A20: .word 0x0000C334
 _021E5A24: .word 0x0000C010
 _021E5A28: .word 0x0000C080
 _021E5A2C: .word 0x0000C2DC
-_021E5A30: .word gMain + 0x60
+_021E5A30: .word gSystem + 0x60
 	thumb_func_end ov69_021E5900
 
 	thumb_func_start ov69_021E5A34
@@ -145,7 +145,7 @@ ov69_021E5A34: ; 0x021E5A34
 	bl sub_02025358
 	cmp r0, #0
 	beq _021E5A60
-	ldr r0, _021E5D7C ; =gMain
+	ldr r0, _021E5D7C ; =gSystem
 	mov r1, #1
 	str r1, [r0, #0x5c]
 _021E5A60:
@@ -217,13 +217,13 @@ _021E5A9A:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #1
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #1
 	str r0, [r5]
 	b _021E6028
@@ -373,10 +373,10 @@ _021E5C10:
 	ldr r1, _021E5DB4 ; =0x0000C32C
 	mov r0, #0
 	str r0, [r4, r1]
-	bl sub_02091714
+	bl LocationGmmDatGetDistrictNameMsgIdsPtr
 	add r6, r0, #0
 	mov r0, #0
-	bl sub_02091730
+	bl LocationGmmDatGetDistrictCount
 	ldr r1, _021E5DB8 ; =0x0000031E
 	ldr r2, _021E5DBC ; =ov69_021E7674
 	str r1, [sp]
@@ -408,7 +408,7 @@ _021E5C4C:
 	cmp r6, r0
 	beq _021E5C7A
 	mov r0, #0
-	bl sub_02091714
+	bl LocationGmmDatGetDistrictNameMsgIdsPtr
 	ldrb r6, [r0, r6]
 _021E5C7A:
 	mov r0, #1
@@ -450,15 +450,15 @@ _021E5CB8:
 	str r1, [r4, r0]
 	sub r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02091668
+	bl LocationGmmDatIndexGetByCountryMsgNo
 	add r6, r0, #0
-	bl sub_020916C0
+	bl LocationGmmDatGetGmmNo
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_02091714
+	bl LocationGmmDatGetDistrictNameMsgIdsPtr
 	str r0, [sp, #0x10]
 	add r0, r6, #0
-	bl sub_02091730
+	bl LocationGmmDatGetDistrictCount
 	ldr r1, [sp, #0x10]
 	str r7, [sp]
 	str r1, [sp, #4]
@@ -491,8 +491,8 @@ _021E5CF8:
 	beq _021E5D2C
 	ldr r0, _021E5DB4 ; =0x0000C32C
 	ldr r0, [r4, r0]
-	bl sub_02091668
-	bl sub_02091714
+	bl LocationGmmDatIndexGetByCountryMsgNo
+	bl LocationGmmDatGetDistrictNameMsgIdsPtr
 	ldrb r6, [r0, r6]
 _021E5D2C:
 	mov r0, #1
@@ -538,7 +538,7 @@ _021E5D68:
 	ldr r1, _021E5DA4 ; =ov69_021E7664
 	b _021E5DC8
 	.balign 4, 0
-_021E5D7C: .word gMain
+_021E5D7C: .word gSystem
 _021E5D80: .word 0x0000C070
 _021E5D84: .word 0x0000C2FC
 _021E5D88: .word 0x0000C324
@@ -693,7 +693,7 @@ _021E5EDA:
 	mov r1, #0
 	bl sub_0200E5D4
 _021E5EE2:
-	ldr r0, _021E6060 ; =gMain
+	ldr r0, _021E6060 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	add r2, r1, #0
@@ -783,7 +783,7 @@ _021E5F84:
 	bl ov69_021E6D5C
 	b _021E6028
 _021E5F98:
-	ldr r2, _021E6060 ; =gMain
+	ldr r2, _021E6060 ; =gSystem
 	add r0, r4, #0
 	ldr r2, [r2, #0x44]
 	bl ov69_021E7198
@@ -868,7 +868,7 @@ _021E6050: .word 0x0000C324
 _021E6054: .word 0x0000C338
 _021E6058: .word 0x0000C2E8
 _021E605C: .word 0x0000C044
-_021E6060: .word gMain
+_021E6060: .word gSystem
 _021E6064: .word 0x0000C308
 _021E6068: .word 0x000005DD
 _021E606C: .word 0x00000403
@@ -890,13 +890,13 @@ ov69_021E6080: ; 0x021E6080
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #0
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, _021E60E8 ; =0x0000C2DC
 	ldr r0, [r4, r0]
 	bl sub_02023120
@@ -914,7 +914,7 @@ ov69_021E6080: ; 0x021E6080
 	bl OverlayManager_FreeData
 	add r0, r5, #0
 	bl DestroyHeap
-	ldr r0, _021E60F4 ; =gMain + 0x60
+	ldr r0, _021E60F4 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	mov r0, #1
@@ -923,7 +923,7 @@ ov69_021E6080: ; 0x021E6080
 _021E60E8: .word 0x0000C2DC
 _021E60EC: .word 0x0000C080
 _021E60F0: .word 0x0000C010
-_021E60F4: .word gMain + 0x60
+_021E60F4: .word gSystem + 0x60
 	thumb_func_end ov69_021E6080
 
 	thumb_func_start ov69_021E60F8
@@ -984,7 +984,7 @@ ov69_021E6138: ; 0x021E6138
 	mov r1, #0x12
 	ldr r3, [r3]
 	str r0, [sp, #0x1c]
-	bl sub_02007CAC
+	bl GfGfxLoader_LoadFromOpenNarc_GetSizeOut
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x24]
 	mov r1, #6
@@ -1026,7 +1026,7 @@ _021E61AA:
 	ldr r0, [sp, #0x18]
 	bl FreeToHeap
 	mov r7, #1
-	bl sub_02091664
+	bl LocationGmmDatCountGet
 	str r0, [sp, #0x10]
 	cmp r0, #1
 	ble _021E6232
@@ -1034,7 +1034,7 @@ _021E61AA:
 	add r6, #0xc
 _021E61C0:
 	add r0, r7, #0
-	bl sub_020916F8
+	bl LocationGmmDatGetEarthPlaceDatId
 	add r1, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -1044,7 +1044,7 @@ _021E61C0:
 	ldr r0, [sp, #0x1c]
 	ldr r3, [r3]
 	mov r2, #0
-	bl sub_02007CAC
+	bl GfGfxLoader_LoadFromOpenNarc_GetSizeOut
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0x20]
 	mov r5, #1
@@ -1057,7 +1057,7 @@ _021E61C0:
 	ble _021E6224
 _021E61F0:
 	add r0, r7, #0
-	bl sub_020916DC
+	bl LocationGmmDatGetCountryMsgNo
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp]
@@ -1201,10 +1201,10 @@ _021E62FC: .word 0x0000C2C8
 
 	thumb_func_start ov69_021E6300
 ov69_021E6300: ; 0x021E6300
-	ldr r3, _021E6304 ; =sub_02091668
+	ldr r3, _021E6304 ; =LocationGmmDatIndexGetByCountryMsgNo
 	bx r3
 	.balign 4, 0
-_021E6304: .word sub_02091668
+_021E6304: .word LocationGmmDatIndexGetByCountryMsgNo
 	thumb_func_end ov69_021E6300
 
 	thumb_func_start ov69_021E6308
@@ -1214,7 +1214,7 @@ ov69_021E6308: ; 0x021E6308
 	add r4, r0, #0
 	ldr r0, _021E6448 ; =0x0000C308
 	mov r3, #0
-	ldr r1, _021E644C ; =gMain + 0x40
+	ldr r1, _021E644C ; =gSystem + 0x40
 	str r3, [r4, r0]
 	ldrh r2, [r1, #0x20]
 	cmp r2, #0xc0
@@ -1233,7 +1233,7 @@ ov69_021E6308: ; 0x021E6308
 _021E6332:
 	cmp r2, #0x40
 	bhi _021E6346
-	ldr r0, _021E644C ; =gMain + 0x40
+	ldr r0, _021E644C ; =gSystem + 0x40
 	ldrh r0, [r0, #0x22]
 	cmp r0, #0xa0
 	blo _021E6346
@@ -1242,7 +1242,7 @@ _021E6332:
 	mov r3, #1
 	lsl r3, r3, #0xa
 _021E6346:
-	ldr r1, _021E644C ; =gMain + 0x40
+	ldr r1, _021E644C ; =gSystem + 0x40
 	ldrh r0, [r1, #0x24]
 	cmp r0, #0
 	beq _021E638A
@@ -1278,7 +1278,7 @@ _021E635A:
 	add r0, #0x14
 	str r1, [r4, r0]
 _021E638A:
-	ldr r0, _021E644C ; =gMain + 0x40
+	ldr r0, _021E644C ; =gSystem + 0x40
 	ldrh r0, [r0, #0x26]
 	cmp r0, #0
 	beq _021E6408
@@ -1334,7 +1334,7 @@ _021E63BE:
 	add r0, #0x14
 	str r2, [r4, r0]
 	add r0, r1, #0
-	ldr r2, _021E644C ; =gMain + 0x40
+	ldr r2, _021E644C ; =gSystem + 0x40
 	add r0, #8
 	ldrh r3, [r2, #0x20]
 	add r1, #0xc
@@ -1379,7 +1379,7 @@ _021E6442:
 	pop {r3, r4, r5, pc}
 	nop
 _021E6448: .word 0x0000C308
-_021E644C: .word gMain + 0x40
+_021E644C: .word gSystem + 0x40
 _021E6450: .word 0x0000C30C
 _021E6454: .word 0x0000C310
 _021E6458: .word 0x0000C320
@@ -1389,7 +1389,7 @@ _021E6458: .word 0x0000C320
 ov69_021E645C: ; 0x021E645C
 	push {r3, r4, r5, r6, r7, lr}
 	mov lr, r0
-	ldr r0, _021E64C4 ; =gMain + 0x40
+	ldr r0, _021E64C4 ; =gSystem + 0x40
 	mov ip, r1
 	ldrh r5, [r0, #0x20]
 	mov r1, #0
@@ -1418,7 +1418,7 @@ _021E648C:
 	add r0, r3, #0
 	and r0, r1
 	str r0, [r6]
-	ldr r0, _021E64C4 ; =gMain + 0x40
+	ldr r0, _021E64C4 ; =gSystem + 0x40
 	ldrh r3, [r0, #0x22]
 	ldr r0, _021E64C8 ; =0x0000FFFF
 	cmp r3, r0
@@ -1444,7 +1444,7 @@ _021E64B4:
 	str r1, [r0]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_021E64C4: .word gMain + 0x40
+_021E64C4: .word gSystem + 0x40
 _021E64C8: .word 0x0000FFFF
 	thumb_func_end ov69_021E645C
 
@@ -1481,7 +1481,7 @@ ov69_021E64CC: ; 0x021E64CC
 	add r0, r5, #0
 	mov r1, #5
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0x80
 	str r0, [sp]
 	ldr r0, [r4]
@@ -1490,7 +1490,7 @@ ov69_021E64CC: ; 0x021E64CC
 	add r0, r5, #0
 	mov r2, #4
 	mov r3, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1502,7 +1502,7 @@ ov69_021E64CC: ; 0x021E64CC
 	add r0, r5, #0
 	ldr r2, [r4, r2]
 	add r3, r1, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r4, #8]
 	bl Options_GetFrame
 	lsl r0, r0, #0x18
@@ -1589,7 +1589,7 @@ ov69_021E64CC: ; 0x021E64CC
 	add r0, r5, #0
 	mov r1, #5
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0x80
 	str r0, [sp]
 	ldr r0, [r4]
@@ -1598,7 +1598,7 @@ ov69_021E64CC: ; 0x021E64CC
 	add r0, r5, #0
 	mov r1, #6
 	add r3, r2, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1610,7 +1610,7 @@ ov69_021E64CC: ; 0x021E64CC
 	add r0, r5, #0
 	mov r1, #7
 	mov r3, #3
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [r4]
@@ -1878,7 +1878,7 @@ _021E6886:
 _021E68A6:
 	cmp r2, #0
 	bne _021E68B4
-	ldr r0, _021E68D4 ; =gMain
+	ldr r0, _021E68D4 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -1897,7 +1897,7 @@ _021E68C4: .word 0x0000C074
 _021E68C8: .word 0x0000C07C
 _021E68CC: .word 0x0000C014
 _021E68D0: .word 0x0000C078
-_021E68D4: .word gMain
+_021E68D4: .word gSystem
 	thumb_func_end ov69_021E6810
 
 	thumb_func_start ov69_021E68D8
@@ -2855,7 +2855,7 @@ ov69_021E70A8: ; 0x021E70A8
 	sub sp, #0x24
 	add r4, r1, #0
 	ldr r1, [r4, #4]
-	ldr r3, _021E711C ; =_021094DC
+	ldr r3, _021E711C ; =FX_SinCosTable_
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	asr r1, r1, #4
@@ -2868,7 +2868,7 @@ ov69_021E70A8: ; 0x021E70A8
 	add r5, r0, #0
 	bl MTX_RotY33_
 	ldr r0, [r4]
-	ldr r3, _021E711C ; =_021094DC
+	ldr r3, _021E711C ; =FX_SinCosTable_
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	asr r0, r0, #4
@@ -2885,7 +2885,7 @@ ov69_021E70A8: ; 0x021E70A8
 	add r2, r5, #0
 	bl MTX_Concat33
 	ldr r0, [r4, #8]
-	ldr r3, _021E711C ; =_021094DC
+	ldr r3, _021E711C ; =FX_SinCosTable_
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	asr r0, r0, #4
@@ -2904,7 +2904,7 @@ ov69_021E70A8: ; 0x021E70A8
 	add sp, #0x24
 	pop {r4, r5, pc}
 	nop
-_021E711C: .word _021094DC
+_021E711C: .word FX_SinCosTable_
 	thumb_func_end ov69_021E70A8
 
 	thumb_func_start ov69_021E7120
@@ -2913,7 +2913,7 @@ ov69_021E7120: ; 0x021E7120
 	sub sp, #0x24
 	add r4, r1, #0
 	ldr r1, [r4]
-	ldr r3, _021E7194 ; =_021094DC
+	ldr r3, _021E7194 ; =FX_SinCosTable_
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	asr r1, r1, #4
@@ -2926,7 +2926,7 @@ ov69_021E7120: ; 0x021E7120
 	add r5, r0, #0
 	bl MTX_RotY33_
 	ldr r0, [r4, #4]
-	ldr r3, _021E7194 ; =_021094DC
+	ldr r3, _021E7194 ; =FX_SinCosTable_
 	neg r0, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
@@ -2944,7 +2944,7 @@ ov69_021E7120: ; 0x021E7120
 	add r2, r5, #0
 	bl MTX_Concat33
 	ldr r0, [r4, #8]
-	ldr r3, _021E7194 ; =_021094DC
+	ldr r3, _021E7194 ; =FX_SinCosTable_
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	asr r0, r0, #4
@@ -2963,7 +2963,7 @@ ov69_021E7120: ; 0x021E7120
 	add sp, #0x24
 	pop {r4, r5, pc}
 	.balign 4, 0
-_021E7194: .word _021094DC
+_021E7194: .word FX_SinCosTable_
 	thumb_func_end ov69_021E7120
 
 	thumb_func_start ov69_021E7198
@@ -3471,7 +3471,7 @@ _021E755C:
 	mov r5, #1
 _021E755E:
 	add r0, r4, #0
-	bl sub_020916C0
+	bl LocationGmmDatGetGmmNo
 	add r2, r0, #0
 	mov r0, #0
 	mov r1, #0x1b
@@ -3568,14 +3568,14 @@ _021E7604:
 	neg r5, r5
 _021E760E:
 	mov r0, #0xb4
-	bl sub_0201FCD4
+	bl GF_DegreeToSinCosIdxNoWrap
 	cmp r4, r0
 	ble _021E761C
 	ldr r0, _021E7640 ; =0x0000FFFF
 	sub r4, r0, r4
 _021E761C:
 	mov r0, #0xb4
-	bl sub_0201FCD4
+	bl GF_DegreeToSinCosIdxNoWrap
 	cmp r5, r0
 	ble _021E762A
 	ldr r0, _021E7640 ; =0x0000FFFF

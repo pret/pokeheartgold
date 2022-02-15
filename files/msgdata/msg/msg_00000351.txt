@@ -1,8 +1,0 @@
-Do you know which is the cutest Pokémon\nin the world?\fIt’s CHANSEY, of course!\fI say CHANSEY, and that’s final!\r
-I will give you something good\nif you can bring me a CHANSEY!
-That Pokémon is...CHANSEY!\rWhat are the chances of\nseeing CHANSEY this close?\rTake this as a token of my gratitude!\r
-Let a CHANSEY hold this Lucky Punch,\nand it’ll have a better chance at\fgetting critical hits!\rIsn’t that awesome?!
-Hello, you lovely CHANSEY!
-Do you know which is the cutest Pokémon\nin the world?\fIt is CHANSEY, of course!\fI say CHANSEY, and that’s final!
-Eusine: {STRVAR_1 3, 0, 0}! Not again!\nI’ll be there first next time!\rHaving followed it here, I’m\nstarting to understand what\fSUICUNE is after.\rTo be honest, I would like to keep\nthis information to myself.\rBut I want to be an honest Trainer in\nfront of SUICUNE!\rThat’s why I am sharing a clue with you.\nIt seems that...\r...SUICUNE prefers a hilly place\nnear water...\f...Somewhere north.\rI don’t know exactly where, yet.\nIt will be just you and me!\rWho’ll find it first? I challenge you!
-Eusine: What’s wrong, {STRVAR_1 3, 0, 0}?\nTo be honest, I would like to keep\fthis information to myself.\rBut I want to be an honest Trainer in\nfront of SUICUNE!\rThat’s why I am sharing a clue with you.\rIt seems that...\n...SUICUNE prefers a hilly place\fnear water...\f...Somewhere north.\rI don’t know exactly where, yet.\nIt will be just you and me!

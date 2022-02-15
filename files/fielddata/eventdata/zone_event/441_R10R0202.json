@@ -1,0 +1,163 @@
+{
+  "header": "fielddata/script/scr_seq/event_R10R0202.h",
+  "bgs": [
+    {
+      "scr": "_EV_scr_seq_R10R0202_009 + 1",
+      "type": 0,
+      "x": 11,
+      "y": 17,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": "_EV_scr_seq_R10R0202_008 + 1",
+      "type": 0,
+      "x": 17,
+      "y": 2,
+      "z": 0,
+      "dir": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_R10R0202_policeman",
+      "ovid": "SPRITE_POLICEMAN",
+      "mvt": 15,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_R10R0202_000 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 12,
+      "y": 18,
+      "z": 0
+    },
+    {
+      "id": "obj_R10R0202_gsassistantm",
+      "ovid": "SPRITE_GSASSISTANTM",
+      "mvt": 17,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_R10R0202_002 + 1",
+      "dirn": 3,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 19,
+      "y": 13,
+      "z": 0
+    },
+    {
+      "id": "obj_R10R0202_gsassistantm_2",
+      "ovid": "SPRITE_GSASSISTANTM",
+      "mvt": 17,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_R10R0202_001 + 1",
+      "dirn": 3,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 2,
+      "y": 9,
+      "z": 0
+    },
+    {
+      "id": "obj_R10R0202_policeman_2",
+      "ovid": "SPRITE_POLICEMAN",
+      "mvt": 15,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_R10R0202_003 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 15,
+      "y": 3,
+      "z": 0
+    },
+    {
+      "id": "obj_R10R0202_gsassistantm_3",
+      "ovid": "SPRITE_GSASSISTANTM",
+      "mvt": 14,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_R10R0202_005 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 6,
+      "y": 4,
+      "z": 0
+    },
+    {
+      "id": "obj_R10R0202_gsassistantm_4",
+      "ovid": "SPRITE_GSASSISTANTM",
+      "mvt": 17,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_R10R0202_004 + 1",
+      "dirn": 3,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 2,
+      "x": 19,
+      "y": 8,
+      "z": 0
+    },
+    {
+      "id": "obj_R10R0202_gsbigman",
+      "ovid": "SPRITE_GSBIGMAN",
+      "mvt": 15,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_R10R0202_006 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 2,
+      "x": 13,
+      "y": 8,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 7,
+      "y": 20,
+      "header": "MAP_R10",
+      "anchor": 1,
+      "height": 0
+    }
+  ],
+  "coords": [
+    {
+      "scr": "_EV_scr_seq_R10R0202_007 + 1",
+      "x": 14,
+      "y": 16,
+      "w": 1,
+      "h": 1,
+      "z": 0,
+      "val": 1,
+      "var": "VAR_SCENE_ROUTE_10_POWER_PLANT"
+    }
+  ]
+}

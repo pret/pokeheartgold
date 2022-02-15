@@ -1,0 +1,1980 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0810_00000" index="0">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語"></language>
+	</row>
+	<row id="msg_0810_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">うまれてから　しばらくの　あいだは\nせなかの　タネから　えいようを\nもらって　おおきく　そだつ。</language>
+	</row>
+	<row id="msg_0810_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">せなかの　つぼみが　ふくらみだすと\nあまい　においが　ただよいはじめる。\nたいりんの　はなが　さく　まえぶれ。</language>
+	</row>
+	<row id="msg_0810_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あめの　ふった　よくじつは　せなかの\nはなの　かおりが　つよまる。かおりに\nさそわれ　ポケモンが　あつまる。</language>
+	</row>
+	<row id="msg_0810_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ヒトカゲの　しっぽの　ほのおは\nいのちの　ともしび。げんきな　ときは\nほのおも　ちからづよく　もえあがる。</language>
+	</row>
+	<row id="msg_0810_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">リザ－ドが　くらす　いわやまを\nよなかに　みあげると　しっぽの\nほのおが　ほしのように　みえる。</language>
+	</row>
+	<row id="msg_0810_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">くるしい　たたかいを　けいけんした\nリザ－ドンほど　ほのおの　おんどが\nたかくなると　いわれている。</language>
+	</row>
+	<row id="msg_0810_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">こうらに　とじこもり　みを　まもる。\nあいての　すきを　みのがさず\nみずを　ふきだして　はんげきする。</language>
+	</row>
+	<row id="msg_0810_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">いちまんねんの　じゅみょうを　もつと\nいわれている。ふさふさの　しっぽは\nながいきの　シンボルとして　にんき。</language>
+	</row>
+	<row id="msg_0810_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">こうらの　ロケットほうから　ふきだす\nすいりゅうは　ぶあつい　てっぱんも\nいっぱつで　つらぬく　はかいりょく。</language>
+	</row>
+	<row id="msg_0810_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あかい　しょっかくから　においを\nだして　てきを　おいはらう。\nだっぴを　くりかえし　おおきくなる。</language>
+	</row>
+	<row id="msg_0810_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">こうてつのように　かたい　カラで\nやわらかい　なかみを　まもっている。\nしんかするまで　じっと　たえている。</language>
+	</row>
+	<row id="msg_0810_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">はなの　ミツが　だいこうぶつ。\nわずかな　かふんで　はなばたけの\nばしょを　さがしだすことが　できる。</language>
+	</row>
+	<row id="msg_0810_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">まいにち　じぶんと　おなじ　おもさの\nはっぱを　たべる。あたまの　ハリで\nおそってきた　てきを　げきたい。</language>
+	</row>
+	<row id="msg_0810_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">てんてきに　みつからないように\nはっぱの　うらや　えだの　すきまに\nかくれて　しんかの　ときを　まつ。</language>
+	</row>
+	<row id="msg_0810_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">こうそくで　とびまわり　どくバリで\nこうげきしたあと　すぐに　とびさる\nせんぽうが　とくいわざだ。</language>
+	</row>
+	<row id="msg_0810_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">たたかいを　このまない　おとなしい\nせいかくだが　へたに　てを　だすと\nきょうれつに　はんげきされるぞ。</language>
+	</row>
+	<row id="msg_0810_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ひろい　なわばりを　とびまわりながら\nえものを　さがす。はったつした\nあしの　ツメで　えものを　しとめる。</language>
+	</row>
+	<row id="msg_0810_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ピジョットが　ちからいっぱい\nはばたくと　たいぼくも　しなるほどの\nきょうふうを　まきおこす。</language>
+	</row>
+	<row id="msg_0810_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">どんな　ばしょにも　すみついて\nいきていける　せいめいりょく。\nけいかいしんが　とても　つよい。</language>
+	</row>
+	<row id="msg_0810_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">のびつづける　まえばを　けずるため\nかたい　ものを　かじる　しゅうせい。\nブロックべいも　かじって　こわす。</language>
+	</row>
+	<row id="msg_0810_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ちいさな　つばさを　いそがしく\nはばたかせて　とぶ。くさむらにいる\nえものを　くちばしで　さがしだす。</language>
+	</row>
+	<row id="msg_0810_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">おおきな　つばさで　１にちじゅう\nとびまわる　たいりょくの　もちぬし。\nするどい　くちばしで　たたかう。</language>
+	</row>
+	<row id="msg_0810_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">おとを　まったく　たてずに　くさちの\nなかを　すすむ。ゆだんしている\nえものに　はいごから　おそいかかる。</language>
+	</row>
+	<row id="msg_0810_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">おなかの　もようで　てきを　いかく。\nもように　おびえて　うごけなくなった\nすきに　からだで　しめつける。</language>
+	</row>
+	<row id="msg_0810_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">もりの　なかで　なかまと　くらす。\nほっぺたの　りょうがわにある\nでんきぶくろに　でんきを　ためる。</language>
+	</row>
+	<row id="msg_0810_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">からだの　でんきが　たまりすぎると\nこうげきてきな　きもちになる。\nしっぽから　でんきを　にがす。</language>
+	</row>
+	<row id="msg_0810_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あめが　ほとんど　ふらない\nかんそうした　とちに　せいそく。\nからだを　まるめて　みを　まもる。</language>
+	</row>
+	<row id="msg_0810_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">からだを　まるめて　せなかから\nたいあたり。するどい　トゲトゲが\nおおきな　ダメ－ジを　あたえる。</language>
+	</row>
+	<row id="msg_0810_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">たたかいを　このまない　せいかく。\nどくバリから　ぶんぴつされる　どくは\nひとしずくでも　いのちとりだ。</language>
+	</row>
+	<row id="msg_0810_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">きけんを　かんじると　ぜんしんの\nトゲを　さかだてる。ニドリ－ノに\nくらべて　トゲの　そだちが　おそい。</language>
+	</row>
+	<row id="msg_0810_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">よろいのように　かたい　ウロコが\nぜんしんを　つつむ。すあなの\nこどもを　いのちがけで　まもる。</language>
+	</row>
+	<row id="msg_0810_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">くさむらの　うえに　みみだけ　だして\nまわりの　けはいを　さぐる。\nもうどくの　ツノで　みを　まもる。</language>
+	</row>
+	<row id="msg_0810_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">きしょうが　あらい　ポケモン。\nあいてに　つきさした　しょうげきで\nツノから　もうどくが　にじみでる。</language>
+	</row>
+	<row id="msg_0810_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しっぽの　いちげきは　でんちゅうを\nまるで　マッチぼうのように\nまっぷたつに　へしおってしまう。</language>
+	</row>
+	<row id="msg_0810_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あいくるしい　しぐさで　だいにんき。\nしずかな　やまおくで　なかまたちと\nくらしていると　かんがえられている。</language>
+	</row>
+	<row id="msg_0810_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">めったに　すがたを　あらわさない。\nまんげつに　さそわれて　ひとけのない\nみずうみで　あそぶと　いわれている。</language>
+	</row>
+	<row id="msg_0810_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ほのおの　たまを　あやつる。\nせいちょうすると　６ほんの　しっぽは\nさきが　わかれて　さらに　ふえる。</language>
+	</row>
+	<row id="msg_0810_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">９ほんの　しっぽには　しんぴてきな\nちからが　やどっていると　つたわる。\n１０００ねん　いきつづけるらしい。</language>
+	</row>
+	<row id="msg_0810_00039" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">つぶらな　ひとみが　ゆれるとき\nだれもが　ねむくなってしまう\nこもりうたを　うたいはじめる。</language>
+	</row>
+	<row id="msg_0810_00040" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">キメこまやかな　たいもうは\nごくじょうの　はだざわり。\nいきを　すいこんで　ふくらむ。</language>
+	</row>
+	<row id="msg_0810_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">くちから　だす　ちょうおんぱで\nりょうめが　なくても　まわりの\nしょうがいぶつを　さっちできる。</language>
+	</row>
+	<row id="msg_0810_00042" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ひとや　ポケモンの　けつえきが\nだいこうぶつ。くびすじの　けっかんを\nねらい　よぞらを　とびまわる。</language>
+	</row>
+	<row id="msg_0810_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ひるまは　ねっこの　あしを　じめんに\nうめて　うごかないことが　おおい。\nよる　あるきまわって　タネを　まく。</language>
+	</row>
+	<row id="msg_0810_00044" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">くちから　たれている　ミツは\n２キロ　はなれていても　はなが\nまがるほど　もうれつに　くさい。</language>
+	</row>
+	<row id="msg_0810_00045" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">はなびらの　おおきさは　せかいいち。\nひどい　アレルギ－を　ひきおこす\nどくかふんを　ばらまいて　あるく。</language>
+	</row>
+	<row id="msg_0810_00046" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">とうちゅうかそうと　よばれる\nキノコを　せなかに　はやしている。\nパラスと　ともに　おおきく　そだつ。</language>
+	</row>
+	<row id="msg_0810_00047" index="47">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">からだよりも　おおきな　キノコが\nパラセクトを　あやつっている。\nどくの　ほうしを　ばらまく。</language>
+	</row>
+	<row id="msg_0810_00048" index="48">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ちいさな　めが　たくさん　あつまって\nおおきな　めに　なっている。\nよるになると　あかりに　あつまる。</language>
+	</row>
+	<row id="msg_0810_00049" index="49">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">はばたいて　りんぷんを　まきちらす。\nりんぷんが　からだに　つくと　どくの\nせいぶんが　ひふに　しみこんでくる。</language>
+	</row>
+	<row id="msg_0810_00050" index="50">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ちちゅうで　くらしている　ポケモン。\nくらい　ちかに　いるため\nあかるい　たいようが　にがて。</language>
+	</row>
+	<row id="msg_0810_00051" index="51">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">３つの　あたまが　たがいちがいに\nうごいて　どんなに　かたい　ちそうも\nちか１００キロまで　ほりすすむ。</language>
+	</row>
+	<row id="msg_0810_00052" index="52">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">よなかに　こうどうする　しゅうせい。\nきらきら　ひかるものを　みつけると\nまけないくらい　ひとみが　かがやく。</language>
+	</row>
+	<row id="msg_0810_00053" index="53">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">きぐらいが　たかい　ポケモン。\nマニアの　あいだでは　ひたいの\nほうせきの　サイズが　わだいになる。</language>
+	</row>
+	<row id="msg_0810_00054" index="54">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ずつうが　はげしくなると　ふしぎな\nちからを　つかうようになる。\nそのときの　ことは　おぼえていない。</language>
+	</row>
+	<row id="msg_0810_00055" index="55">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">みずうみに　すむ　ポケモン。\nおよぐ　スピ－ドは　オリンピックの\nきんメダリストよりも　はやい。</language>
+	</row>
+	<row id="msg_0810_00056" index="56">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">きのうえで　せいかつしている。\nむれの　１ぴきが　おこりはじめると\nぜんいんが　いみもなく　あばれだす。</language>
+	</row>
+	<row id="msg_0810_00057" index="57">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しせんが　あっただけで　おこり\nにげだしたら　また　おこり\nたたきのめしても　まだ　おこる。</language>
+	</row>
+	<row id="msg_0810_00058" index="58">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ちゅうじつな　せいかくの　ポケモン。\nトレ－ナ－の　めいれいが　あるまでは\nいっぽも　うごかない。</language>
+	</row>
+	<row id="msg_0810_00059" index="59">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">いふうどうどうとした　すがたは\nふるくから　ひとびとの　こころを\nとりこにしてきた。</language>
+	</row>
+	<row id="msg_0810_00060" index="60">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ないぞうが　すけて　みえるほど\nひふが　うすい。はえたばかりの\nあしは　あるくことが　にがて。</language>
+	</row>
+	<row id="msg_0810_00061" index="61">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">おなかの　うずまきは　びみょうに\nうねっているので　みつめていると\nだんだん　ねむくなってしまう。</language>
+	</row>
+	<row id="msg_0810_00062" index="62">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">きょうじんな　きんにくを　もつ。\nたいへいようを　やすむことなく\nおよぎつづけることが　できるのだ。</language>
+	</row>
+	<row id="msg_0810_00063" index="63">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">まいにち　１８じかん　ねむる。\nめざめている　ときも　すわったまま\nテレポ－トで　いどうする。</language>
+	</row>
+	<row id="msg_0810_00064" index="64">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ユンゲラ－が　そばにいると　テレビに\nふしぎな　かげが　うつる。それを\nみると　ふこうになると　いわれる。</language>
+	</row>
+	<row id="msg_0810_00065" index="65">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">うまれてから　たいけんした　すべてを\nおぼえているほどの　きおくりょく。\nちのうしすうは　５０００を　こえる。</language>
+	</row>
+	<row id="msg_0810_00066" index="66">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ゴロ－ンを　なんども　あげおろしして\nぜんしんの　きんにくを　きたえる。\nあらゆる　かくとうぎを　つかう。</language>
+	</row>
+	<row id="msg_0810_00067" index="67">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ゴ－リキ－の　そこしれない　パワ－は\nとても　きけんなので　ちからを\nせいぎょする　ベルトを　まいている。</language>
+	</row>
+	<row id="msg_0810_00068" index="68">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">４ほんの　うでを　めにもとまらぬ\nはやさで　うごかし　２びょうかんに\n１０００ぱつの　パンチを　くりだす。</language>
+	</row>
+	<row id="msg_0810_00069" index="69">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">こうおん　たしつの　とちを　このむ。\nツルを　のばして　えものを　とらえる\nときの　うごきは　とても　すばやい。</language>
+	</row>
+	<row id="msg_0810_00070" index="70">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しょくぶつに　そっくりな　ポケモン。\nゆだんして　ちかよってきた　えものに\nどくのこなを　あびせて　つかまえる。</language>
+	</row>
+	<row id="msg_0810_00071" index="71">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ミツのような　かおりの　えきたいを\nくちに　ためているが　それは\nなんでも　とかす　ようかいえきだ。</language>
+	</row>
+	<row id="msg_0810_00072" index="72">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">からだの　ほとんどが　すいぶん。\nすいしょうのような　めだまから\nふしぎな　ビ－ムを　はっしゃする。</language>
+	</row>
+	<row id="msg_0810_00073" index="73">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">８０ほんの　しょくしゅを　もつ。\nえものを　からめとり　どくで\nよわるまで　ぜったいに　にがさない。</language>
+	</row>
+	<row id="msg_0810_00074" index="74">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">やまみちに　おおく　せいそくする。\nからだの　はんぶんを　じめんに　うめ\nとざんしゃの　ようすを　みている。</language>
+	</row>
+	<row id="msg_0810_00075" index="75">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">けわしい　がけの　ちゅうふくに\nいくつもの　よこあなを　みつけたら\nそれは　ゴロ－ンの　すみか。</language>
+	</row>
+	<row id="msg_0810_00076" index="76">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">１ねんに　１かい　だっぴする。\nがんせきのような　かたい　からだは\nダイナマイトでも　きずつかない。</language>
+	</row>
+	<row id="msg_0810_00077" index="77">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">うまれてから　１じかんも　すると\nほのおの　たてがみや　しっぽが\nはえそろい　りっぱな　すがたになる。</language>
+	</row>
+	<row id="msg_0810_00078" index="78">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">はしる　そくどは　じそく２４０キロ。\nたてがみの　ほのおが　はげしく　もえ\nやの　ように　かけぬける。</language>
+	</row>
+	<row id="msg_0810_00079" index="79">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">うごきは　のろいが　しっぽを　つかう\nつりが　とくい。どんかんなので\nしっぽを　かまれても　いたくない。</language>
+	</row>
+	<row id="msg_0810_00080" index="80">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ぼんやりしている　ヤドランだが\nシェルダ－が　つよく　しっぽを\nかむとき　なにかが　ひらめくらしい。</language>
+	</row>
+	<row id="msg_0810_00081" index="81">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">さゆうの　ユニットから　でんじはを\nだして　くうちゅうを　いどうする。\nでんきを　たべる　ポケモン。</language>
+	</row>
+	<row id="msg_0810_00082" index="82">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">３びきの　コイルが　じりょくで\nれんけつした　ポケモン。レアコイルが\nふえると　じきあらしが　おこる。</language>
+	</row>
+	<row id="msg_0810_00083" index="83">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">クキが　なくなると　いきていけない。\nだから　クキを　ねらう　あいてとは\nいのちがけで　たたかうのだ。</language>
+	</row>
+	<row id="msg_0810_00084" index="84">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">２つの　あたまの　のうみそは\nテレパシ－のような　ちからで\nきもちを　つうじあわせているらしい。</language>
+	</row>
+	<row id="msg_0810_00085" index="85">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しんかのときに　ド－ド－の　あたまの\nどちらかが　ぶんれつした　ちんしゅ。\nじそく　６０キロいじょうで　はしる。</language>
+	</row>
+	<row id="msg_0810_00086" index="86">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ひょうざんで　くらす　ポケモン。\nあたまの　とがった　でっぱりで\nこおりを　わって　うみを　およぐ。</language>
+	</row>
+	<row id="msg_0810_00087" index="87">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ぜんしんが　まっしろな　たいもうに\nおおわれているため　ゆきの　なかでは\nてんてきに　みつからないのだ。</language>
+	</row>
+	<row id="msg_0810_00088" index="88">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">どぶがわの　ヘドロが　つきからの\nエックスせんを　あびて　うまれた。\nきたない　ばしょに　あらわれる。</language>
+	</row>
+	<row id="msg_0810_00089" index="89">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">からだから　もうどくの　たいえきが\nしみでている。その　えきに　ふれた\nくさきは　あっというまに　かれる。</language>
+	</row>
+	<row id="msg_0810_00090" index="90">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">２まいの　カラを　あけしめすることで\nうしろむきに　およぐ。どんなときでも\nおおきな　ベロは　だしっぱなし。</language>
+	</row>
+	<row id="msg_0810_00091" index="91">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">カラを　しっかりと　とじて　みを\nまもりながら　トゲを　とばして\nてきを　げきたいする　せんぽう。</language>
+	</row>
+	<row id="msg_0810_00092" index="92">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">からだの　９５パ－セントが\nガスで　できている　ポケモン。\nきょうふうに　ふきとばされてしまう。</language>
+	</row>
+	<row id="msg_0810_00093" index="93">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">どんな　ものでも　すりぬけられる。\nかべの　なかに　もぐりこんで\nあいての　ようすを　かんさつする。</language>
+	</row>
+	<row id="msg_0810_00094" index="94">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ものかげに　すがたを　かくす。\nゲンガ－の　ひそんでいる　へやは\nおんどが　５ど　さがると　いわれる。</language>
+	</row>
+	<row id="msg_0810_00095" index="95">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">イワ－クが　ちちゅうを　ほりすすむと\nじなりが　きこえ　じめんが　ゆれる。\nいどうそくどは　じそく８０キロ。</language>
+	</row>
+	<row id="msg_0810_00096" index="96">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">つきでた　はなを　ひくひくさせると\nみている　ユメが　わかるという。\nだいこうぶつは　たのしい　ユメだ。</language>
+	</row>
+	<row id="msg_0810_00097" index="97">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ふりこを　めのまえで　ゆらされると\nたったいま　めざめたばかりの　ひとも\n３びょうごには　ねむってしまう。</language>
+	</row>
+	<row id="msg_0810_00098" index="98">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">すなはまに　あなを　ほって　くらす。\nハサミは　たたかいで　とれても\nまた　はえてきて　もとどおり。</language>
+	</row>
+	<row id="msg_0810_00099" index="99">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">おおきいほうの　ハサミの　パワ－は\n１まんばりき。しかし　おもすぎるため\nねらいを　つけることが　にがてだ。</language>
+	</row>
+	<row id="msg_0810_00100" index="100">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">モンスタ－ボ－ルに　そっくり。\nまちがって　さわると　かんでんしたり\nときには　ばくはつするので　きけん。</language>
+	</row>
+	<row id="msg_0810_00101" index="101">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">でんきエネルギ－を　ためすぎて\nぱんぱんに　ふくらんだ　マルマインが\nかぜに　ながされてくることが　ある。</language>
+	</row>
+	<row id="msg_0810_00102" index="102">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">テレパシ－で　かいわをしているため\nタマタマを　ひきはなそうとしても\nすぐに　あつまって　６ぴきになる。</language>
+	</row>
+	<row id="msg_0810_00103" index="103">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あるく　ねったいうりんと　よばれる。\nおおきくなった　あたまの　ひとつが\nじめんに　おちると　タマタマになる。</language>
+	</row>
+	<row id="msg_0810_00104" index="104">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しにわかれた　ははおやを　おもいだし\nないてしまうとき　あたまに　かぶった\nホネが　からからと　おとを　たてる。</language>
+	</row>
+	<row id="msg_0810_00105" index="105">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">うまれたときから　いつも　もっている\nホネを　じざいに　つかいこなす。\nせいかくは　きょうぼうだ。</language>
+	</row>
+	<row id="msg_0810_00106" index="106">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あしが　２ばいの　ながさに　のびる。\nはじめて　たたかう　あいては\nその　まあいの　ひろさに　おどろく。</language>
+	</row>
+	<row id="msg_0810_00107" index="107">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">うでを　ねじりながら　くりだす\nパンチは　コンクリ－トも　ふんさい。\n３ぷん　たたかうと　ひとやすみする。</language>
+	</row>
+	<row id="msg_0810_00108" index="108">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ての　かわりに　しんちょうの　２ばい\nのびる　ベロを　つかう。べとべとの\nだえきが　なんでも　くっつけるのだ。</language>
+	</row>
+	<row id="msg_0810_00109" index="109">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">くうきよりも　かるい　ガスを\nからだに　ためて　うかんでいる。\nガスは　くさいうえに　ばくはつする。</language>
+	</row>
+	<row id="msg_0810_00110" index="110">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ゴミから　はっせいする　ガスを\nたべて　おおきくなる。ごくまれに\n３つごの　マタドガスが　みつかる。</language>
+	</row>
+	<row id="msg_0810_00111" index="111">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">かたい　ひふで　おおわれた　からだ。\nたいあたりで　ビルも　たおす。\nざんねんながら　あたまは　わるい。</language>
+	</row>
+	<row id="msg_0810_00112" index="112">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">うしろあしで　たつようになり　のうが\nおおきくなった。ドリルの　ツノで\nいわを　くりぬき　トンネルを　ほる。</language>
+	</row>
+	<row id="msg_0810_00113" index="113">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しあわせを　はこぶと　いわれている。\nきずついた　ひとに　タマゴを\nわけてあげる　やさしい　ポケモン。</language>
+	</row>
+	<row id="msg_0810_00114" index="114">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あおい　ツルに　おおわれている。\nツルに　かくれている　かおを\nみたものは　まだ　いない。</language>
+	</row>
+	<row id="msg_0810_00115" index="115">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">おなかの　ふくろで　こそだてをする。\nあんぜんな　ときだけ　こどもを\nふくろから　だして　あそばせる。</language>
+	</row>
+	<row id="msg_0810_00116" index="116">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">サンゴの　かげに　すみかを　つくる。\nきけんを　かんじると　くちから\nまっくろい　スミを　はいて　にげる。</language>
+	</row>
+	<row id="msg_0810_00117" index="117">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">トゲが　てきから　みを　まもる。\nひれや　ホネが　かんぽうやくの\nざいりょうとして　ちょうほうされる。</language>
+	</row>
+	<row id="msg_0810_00118" index="118">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">おびれを　ドレスのように　ゆらして\nゆうがに　およぐ　すがたは\nまるで　すいちゅうの　じょおう。</language>
+	</row>
+	<row id="msg_0810_00119" index="119">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あたまの　ツノで　かわぞこにある\nいわを　くりぬいて　すを　つくる。\nタマゴを　いのちがけで　まもる。</language>
+	</row>
+	<row id="msg_0810_00120" index="120">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あかい　コアが　あるかぎり　からだが\nちぎれても　すぐに　さいせいする。\nまよなか　コアが　てんめつする。</language>
+	</row>
+	<row id="msg_0810_00121" index="121">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">からだの　ちゅうしんにある　あかい\nコアから　よぞらに　むかって\nなぞの　でんぱを　はっしんしている。</language>
+	</row>
+	<row id="msg_0810_00122" index="122">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">パントマイムの　たつじん。\nみぶりてぶりで　つくった　カベは\nやがて　ほんものに　なるのだ。</language>
+	</row>
+	<row id="msg_0810_00123" index="123">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">りょううでの　カマによる　こうげきを\nふせぐことは　ふかのうに　ちかい。\nその　うごきは　まるで　ニンジャだ。</language>
+	</row>
+	<row id="msg_0810_00124" index="124">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">なきごえは　まるで　にんげんの\nことばのように　きこえるが\nいみは　まったく　りかいできない。</language>
+	</row>
+	<row id="msg_0810_00125" index="125">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ていでんの　げんいんの　はんぶんは\nエレブ－が　はつでんしょに　あらわれ\nでんきを　たべてしまった　ことだ。</language>
+	</row>
+	<row id="msg_0810_00126" index="126">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">かざんの　かこうで　うまれそだった。\nたいようと　おなじような　ほのおの\nゆらめきが　ぜんしんを　おおう。</language>
+	</row>
+	<row id="msg_0810_00127" index="127">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">２ほんの　ツノで　えものを　はさんで\nちぎれるまで　はなさない。ちぎれない\nときは　かなたまで　なげとばすのだ。</language>
+	</row>
+	<row id="msg_0810_00128" index="128">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">えものに　ねらいを　さだめると\nいっちょくせんに　とっしんする。\nあらっぽい　せいかくで　ゆうめい。</language>
+	</row>
+	<row id="msg_0810_00129" index="129">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">せかいいち　よわいと　いわれる\nコイキングが　なぜ　いきのこって\nいるのか　だれも　わからない。</language>
+	</row>
+	<row id="msg_0810_00130" index="130">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ひとたび　すがたを　あらわすと\nのやまの　すべてを　やきつくすまで\nいかりが　しずまらない。</language>
+	</row>
+	<row id="msg_0810_00131" index="131">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ひとや　ポケモンを　せなかに　のせて\nうみを　わたることが　だいすき。\nひとの　ことばを　りかいできる。</language>
+	</row>
+	<row id="msg_0810_00132" index="132">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ぜんしんの　さいぼうを　くみかえて\nみたものの　かたち　そっくりに\nへんしんする　のうりょくを　もつ。</language>
+	</row>
+	<row id="msg_0810_00133" index="133">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しんかのとき　すがたと　のうりょくが\nかわることで　きびしい　かんきょうに\nたいおうする　めずらしい　ポケモン。</language>
+	</row>
+	<row id="msg_0810_00134" index="134">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">すいちゅうでの　せいかつに　てきした\nからだに　しんかした。\nみずに　とけると　みえなくなる。</language>
+	</row>
+	<row id="msg_0810_00135" index="135">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">１まんボルトの　でんきを　あやつる。\nぜんしんの　たいもうが　さかだつと\nハリのように　するどく　とがる。</language>
+	</row>
+	<row id="msg_0810_00136" index="136">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">たいないに　ほのおぶくろを　もつ。\nたたかいが　はじまる　ちょくぜんには\nたいおんが　９００どまで　あがる。</language>
+	</row>
+	<row id="msg_0810_00137" index="137">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">せかいで　はじめて　じんこうてきに\nつくりだされた　ポケモン。\nでんしくうかんを　いどうできる。</language>
+	</row>
+	<row id="msg_0810_00138" index="138">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">げんだいの　すぐれた　かがくりょくで\nかせきから　ふっかつした　ポケモン。\nこだいの　うみを　およいでいた。</language>
+	</row>
+	<row id="msg_0810_00139" index="139">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">らせんじょうの　カラが　おおきく\nなりすぎたことが　げんいんで\nぜつめつしたと　かんがえられている。</language>
+	</row>
+	<row id="msg_0810_00140" index="140">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">３おくねんまえの　すなはまで\nくらしていたと　かんがえられている。\nかたい　カラが　みを　まもる。</language>
+	</row>
+	<row id="msg_0810_00141" index="141">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">えものが　りくじょうせいかつを\nはじめたため　カブトプスも　りくに\nあがったと　かんがえられている。</language>
+	</row>
+	<row id="msg_0810_00142" index="142">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">きょうりゅうじだいの　おおぞらを\nとびまわっていた　ポケモン。\nのこぎりのような　キバを　もつ。</language>
+	</row>
+	<row id="msg_0810_00143" index="143">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">カビが　はえていても　くさっていても\nだいじょうぶ。カビゴンの　いぶくろは\nなんでも　しょうか　できるのだ。</language>
+	</row>
+	<row id="msg_0810_00144" index="144">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">でんせつの　とりポケモン。\nくうきちゅうの　すいぶんを　こおらせ\nふぶきを　つくりだすことが　できる。</language>
+	</row>
+	<row id="msg_0810_00145" index="145">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">かみなりぐもの　なかに　いると\nいわれる　でんせつの　ポケモン。\nカミナリを　じざいに　あやつる。</language>
+	</row>
+	<row id="msg_0810_00146" index="146">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">でんせつの　とりポケモンの　１ぴき。\nファイヤ－が　すがたを　みせると\nはるが　おとずれると　いわれている。</language>
+	</row>
+	<row id="msg_0810_00147" index="147">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">もくげきしゃが　すくないために\nまぼろしのポケモンと　よばれていた。\nだっぴした　かわが　みつかっている。</language>
+	</row>
+	<row id="msg_0810_00148" index="148">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ぜんしんが　オ－ラに　つつまれるとき\nまわりの　てんきが　いっぺんする。\nうみや　みずうみに　すむという。</language>
+	</row>
+	<row id="msg_0810_00149" index="149">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ひろい　うみの　どこかに　すみかが\nあると　いわれている。なんぱした\nふねを　りくまで　みちびいてくれる。</language>
+	</row>
+	<row id="msg_0810_00150" index="150">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ミュウの　いでんしを　くみかえて\nうみだされた。ポケモンで　いちばん\nきょうぼうな　こころを　もつという。</language>
+	</row>
+	<row id="msg_0810_00151" index="151">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あらゆる　わざを　つかうため\nポケモンの　せんぞと　かんがえる\nがくしゃが　たくさん　いる。</language>
+	</row>
+	<row id="msg_0810_00152" index="152">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あたまの　はっぱで　まわりの\nおんどや　しつどを　さぐる。\nひざしを　あびることが　だいすき。</language>
+	</row>
+	<row id="msg_0810_00153" index="153">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">くびまわりの　つぼみから　におう\nスパイシ－な　かおりは\nかいだ　ひとを　げんきに　させる。</language>
+	</row>
+	<row id="msg_0810_00154" index="154">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">メガニウムが　はきだす　いきには\nかれた　くさばなを　よみがえらせる\nふしぎな　ちからが　ひめられている。</language>
+	</row>
+	<row id="msg_0810_00155" index="155">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">おくびょうな　せいかく。\nおどろくと　せなかの　ほのおが\nいちだんと　つよく　もえあがる。</language>
+	</row>
+	<row id="msg_0810_00156" index="156">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ほのおの　ねつで　あいてを　いかく。\nたたかう　たいせいになると\nほのおの　いきおいが　ます。</language>
+	</row>
+	<row id="msg_0810_00157" index="157">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ほのおの　ばくふうで　こうげき。\nしゃくねつの　ほのおで　かげろうを\nつくりだし　すがたを　かくす。</language>
+	</row>
+	<row id="msg_0810_00158" index="158">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">はったつした　あごを　もち\nなんにでも　かみつく　しゅうせい。\nトレ－ナ－も　ちゅういが　ひつよう。</language>
+	</row>
+	<row id="msg_0810_00159" index="159">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">いちど　かみつくと　キバが\nぬけるまで　ぜったいに　はなさない。\nぬけた　キバは　すぐに　はえてくる。</language>
+	</row>
+	<row id="msg_0810_00160" index="160">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ふだんは　ゆっくりとした　うごきだが\nえものに　かみつくときは\nめにも　とまらない　スピ－ドだ。</language>
+	</row>
+	<row id="msg_0810_00161" index="161">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">とても　しんけいしつな　せいかく。\nとおくまで　みわたせるように\nしっぽを　つかって　せのびをする。</language>
+	</row>
+	<row id="msg_0810_00162" index="162">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ははおやは　ほそながい　からだで\nこどもを　つつみこみ　ねむらせる。\nはやい　うごきで　てきを　おいこむ。</language>
+	</row>
+	<row id="msg_0810_00163" index="163">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">いつも　いっぽんあしで　たっている。\nこうげきを　うけても　２ほんあしで\nふんばるようなことは　しない。</language>
+	</row>
+	<row id="msg_0810_00164" index="164">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">すこしの　ひかりが　あれば\nくらやみでも　みわけられる\nとくしゅな　めを　もつ。</language>
+	</row>
+	<row id="msg_0810_00165" index="165">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">むれを　つくらないと　ふあんで\nうごけなくなるほど　おくびょう。\nにおいで　きもちを　つたえあう。</language>
+	</row>
+	<row id="msg_0810_00166" index="166">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ほしあかりを　エネルギ－にする。\nよぞらの　ほしの　かずが　ふえると\nせなかの　もようが　おおきくなる。</language>
+	</row>
+	<row id="msg_0810_00167" index="167">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ほそくて　じょうぶな　いとを\nはりめぐらして　わなを　しかける。\nえものが　かかるまで　じっと　まつ。</language>
+	</row>
+	<row id="msg_0810_00168" index="168">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">えものの　からだに　いとを　つけて\nわざと　にがす。いとを　たどれば\nなかまごと　つかまえられるからだ。</language>
+	</row>
+	<row id="msg_0810_00169" index="169">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">４まいの　はねで　より　しずかに\nより　はやく　とべるように　なった。\nよるになると　かつどうを　はじめる。</language>
+	</row>
+	<row id="msg_0810_00170" index="170">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">プラスと　マイナスの　でんきを\nしょくしゅの　さきから　ながす。\nてきを　かんでんさせてしまうのだ。</language>
+	</row>
+	<row id="msg_0810_00171" index="171">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しんかいを　およぐ　ランタ－ンの\nあかりは　すいめんまで　とどく。\nしんかいのほし　と　よばれている。</language>
+	</row>
+	<row id="msg_0810_00172" index="172">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ほっぺたの　でんきぶくろが\nまだ　ちいさいので\nでんきを　たくさん　ためられない。</language>
+	</row>
+	<row id="msg_0810_00173" index="173">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">よぞらの　ほしに　にた　シルエット。\nながれぼしに　のって　やってくると\nしんじられている　ポケモン。</language>
+	</row>
+	<row id="msg_0810_00174" index="174">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">やわらかく　だんりょくせいのある\nからだは　いちど　はずむと\nぜんぜん　とまれなくなってしまう。</language>
+	</row>
+	<row id="msg_0810_00175" index="175">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">カラの　なかに　たくさん　しあわせが\nつまっていて　やさしい　ひとに\nしあわせを　わけあたえるという。</language>
+	</row>
+	<row id="msg_0810_00176" index="176">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">やさしい　ひとの　もとへ　あらわれて\nしあわせのこな　と　よばれる\nひかる　うもうを　ふりまくと　いう。</language>
+	</row>
+	<row id="msg_0810_00177" index="177">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">サボテンの　つぼみや　トゲを\nきように　よけながら　ついばむ。\nとびはねるようにして　いどうする。</language>
+	</row>
+	<row id="msg_0810_00178" index="178">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">かこと　みらいを　みとおせる。\nまいにち　たいようの　うごきを\nみつづけている　ふしぎな　ポケモン。</language>
+	</row>
+	<row id="msg_0810_00179" index="179">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ふわふわの　たいもうは　せいでんきが\nたまると　２ばいに　ふくらむ。\nさわると　かんでんしてしまう。</language>
+	</row>
+	<row id="msg_0810_00180" index="180">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">たいもうに　ためた　でんきが\nまんたんになると　しっぽが　ひかる。\nふれると　しびれる　けを　とばす。</language>
+	</row>
+	<row id="msg_0810_00181" index="181">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しっぽの　さきが　ひかりかがやく。\nむかしの　ひとたちは　その　あかりを\nつかって　あいずを　おくりあった。</language>
+	</row>
+	<row id="msg_0810_00182" index="182">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">おおあめの　きせつが　おわると\nあたたかい　ひざしに　さそわれた\nキレイハナが　おどりはじめる。</language>
+	</row>
+	<row id="msg_0810_00183" index="183">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しっぽを　うきぶくろにして\nすいちゅうに　もぐる。\nかわぞこの　みずくさが　こうぶつ。</language>
+	</row>
+	<row id="msg_0810_00184" index="184">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">かわや　みずうみに　せいそくする。\nみずの　なかでは　からだの　いろと\nもようが　てきの　めを　あざむく。</language>
+	</row>
+	<row id="msg_0810_00185" index="185">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">じゅもくの　ように　みえる　からだは\nじつは　いわや　いしに　ちかい。\nみずには　めっぽう　よわいのだ。</language>
+	</row>
+	<row id="msg_0810_00186" index="186">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ニョロトノを　リ－ダ－に　グル－プが\nつくられる。ニョロトノの　なきごえが\nニョロモたちを　したがわせる。</language>
+	</row>
+	<row id="msg_0810_00187" index="187">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">かぜに　ながされて　ただよう。\nのやまに　ハネッコが　あつまりだすと\nはるが　おとずれると　いわれている。</language>
+	</row>
+	<row id="msg_0810_00188" index="188">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">きおんが　たかくなると　はなひらく。\nそらに　うかんで　ひざしを\nいっぱい　あびようとする。</language>
+	</row>
+	<row id="msg_0810_00189" index="189">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">きせつふうに　ながされて\nせかいを　いっしゅうしてしまう。\nとちゅうで　わたほうしを　ばらまく。</language>
+	</row>
+	<row id="msg_0810_00190" index="190">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">てを　のばしても　とどかない　えだに\nはえる　くだものを　しっぽで　とる。\nほんものの　うでよりも　きよう。</language>
+	</row>
+	<row id="msg_0810_00191" index="191">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あるあさ　とつぜん　ふってくる。\nなつが　さむかった　つぎの　としは\nかずが　ばくはつてきに　ふえる。</language>
+	</row>
+	<row id="msg_0810_00192" index="192">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あたたかい　ひざしが　エネルギ－。\nたいようを　おいかけて　いどうする\nしゅうせいで　しられている。</language>
+	</row>
+	<row id="msg_0810_00193" index="193">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">かおを　うごかさずに　３６０ど\nすべてを　みわたす　めを　もつので\nまうしろの　えものも　みのがさない。</language>
+	</row>
+	<row id="msg_0810_00194" index="194">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">つめたい　みずの　なかで　くらす。\nみずぞこの　どろに　からだを\nはんぶん　うずめて　ねむる。</language>
+	</row>
+	<row id="msg_0810_00195" index="195">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">のんびりとした　せいかく。\nかわぞこで　くちを　あけて　エサが\nとびこんでくるのを　ひたすら　まつ。</language>
+	</row>
+	<row id="msg_0810_00196" index="196">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">たいもうは　ビロ－ドの　つやと\nはだざわり。サイコパワ－を　つかう\nとき　ひたいの　たまが　かがやく。</language>
+	</row>
+	<row id="msg_0810_00197" index="197">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">つきの　ひかりが　イ－ブイの\nいでんしを　へんかさせた。\nやみに　ひそみ　えものを　まつ。</language>
+	</row>
+	<row id="msg_0810_00198" index="198">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">よるに　その　すがたを　みかけると\nふきつな　できごとが　おきると\nしんじられている　ポケモン。</language>
+	</row>
+	<row id="msg_0810_00199" index="199">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">シェルダ－に　かまれたことによって\nノ－ベルしょうを　じゅしょうした\nかがくしゃなみの　ちのうを　えた。</language>
+	</row>
+	<row id="msg_0810_00200" index="200">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">まよなか　はいごから　ちかづき\nなきさけぶような　なきごえを　あげて\nおどろかせては　よろこぶ　ポケモン。</language>
+	</row>
+	<row id="msg_0810_00201" index="201">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">こだいぶんめいの　もじに　にている。\nもじが　さきか　アンノ－ンが　さきか\nせかいの　７ふしぎの　ひとつ。</language>
+	</row>
+	<row id="msg_0810_00202" index="202">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">くろい　しっぽを　ひっしになって\nかくすのは　しっぽに　ひみつがある\nしょうこだと　かんぐられている。</language>
+	</row>
+	<row id="msg_0810_00203" index="203">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しっぽも　ちいさい　のうを　もつ。\nうしろから　しのびよる　あいてを\nかみついて　げきたいする。</language>
+	</row>
+	<row id="msg_0810_00204" index="204">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">きのみに　そっくり。まちがわれて\nとりポケモンに　つつかれてしまうが\nかたい　カラで　まもられている。</language>
+	</row>
+	<row id="msg_0810_00205" index="205">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">こうてつの　カラで　まもられている。\nすきまから　めだまが　のぞいているが\nなかみの　しょうたいは　なぞのまま。</language>
+	</row>
+	<row id="msg_0810_00206" index="206">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しっぽで　じめんを　ほって\nめいろのような　すあなを　つくる。\nはねで　すこしだけ　とべる。</language>
+	</row>
+	<row id="msg_0810_00207" index="207">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">てあしの　まくで　かぜに　のって\nそらから　おそいかかる　せんぽう。\nえものの　かおを　ねらう。</language>
+	</row>
+	<row id="msg_0810_00208" index="208">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ちちゅうの　たかい　あつりょくと\nねつで　きたえられた　からだは\nあらゆる　きんぞくよりも　かたい。</language>
+	</row>
+	<row id="msg_0810_00209" index="209">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ちいさな　ポケモンが　にげだすほどの\nこわいかおが　ぎゃくに　かわいいと\nじょせいに　にんきの　ポケモン。</language>
+	</row>
+	<row id="msg_0810_00210" index="210">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">かおに　にあわず　おくびょう。\nしかし　ひとたび　おこりはじめると\nおおきな　キバで　はんげきする。</language>
+	</row>
+	<row id="msg_0810_00211" index="211">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ぜんしんの　どくバリを\nしほうはっぽうに　うちだす。\nまるい　からだは　およぎが　にがて。</language>
+	</row>
+	<row id="msg_0810_00212" index="212">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">はがねの　からだを　もつ。\nめだまもようの　ついた　はさみを\nふりあげて　あいてを　いかくする。</language>
+	</row>
+	<row id="msg_0810_00213" index="213">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">こうらの　なかに　きのみを　ためる。\nそのうち　きのみは　はっこうして\nおいしい　ジュ－スに　なるのだ。</language>
+	</row>
+	<row id="msg_0810_00214" index="214">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">こうぶつの　じゅえきを　もとめて\nもりに　あつまる。たくましい　ツノで\nあいてを　ぶんなげる　ちからもち。</language>
+	</row>
+	<row id="msg_0810_00215" index="215">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">すみかから　タマゴを　かすめとり\nたべてしまう。するどい　カギヅメが\nあいての　きゅうしょを　きりさく。</language>
+	</row>
+	<row id="msg_0810_00216" index="216">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あまい　ミツを　てのひらに\nしみこませて　いつも　なめている。\nヒメグマによって　あじが　ちがう。</language>
+	</row>
+	<row id="msg_0810_00217" index="217">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">なわばりにある　おいしい　きのみや\nくだものの　なる　き　には\nツメで　きずあとを　つける。</language>
+	</row>
+	<row id="msg_0810_00218" index="218">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ようがんで　できた　からだを　もつ。\nたえず　うごいていないと　からだが\nひえて　かたまってしまうのだ。</language>
+	</row>
+	<row id="msg_0810_00219" index="219">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">たいおんは　やく１まんど。\nマグマが　かたまって　できた　カラの\nすきまから　ほのおを　ふきだす。</language>
+	</row>
+	<row id="msg_0810_00220" index="220">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">かれくさの　したに　はえた　キノコが\nだいこうぶつ。においで　キノコを\nさがすうちに　おんせんを　みつける。</language>
+	</row>
+	<row id="msg_0810_00221" index="221">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ながい　たいもうで　おおわれていて\nめが　みえないが　びんかんな　はなを\nつかって　まわりの　ようすを　しる。</language>
+	</row>
+	<row id="msg_0810_00222" index="222">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">みなみの　きれいな　うみには\nたくさんの　サニ－ゴが　いる。\nよごれた　うみでは　いきられない。</language>
+	</row>
+	<row id="msg_0810_00223" index="223">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">くちから　みずを　はっしゃして\nそらを　とぶ　えものを　うちおとす\nことから　この　なまえが　ついた。</language>
+	</row>
+	<row id="msg_0810_00224" index="224">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">かいていの　いわかげや　あなを\nすみかにして　くらす。きゅうばんで\nえものに　すいつき　にがさない。</language>
+	</row>
+	<row id="msg_0810_00225" index="225">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しっぽで　えさを　つつんで　はこぶ。\nやまで　そうなんした　ひとに\nえさを　わけあたえる　しゅうせい。</language>
+	</row>
+	<row id="msg_0810_00226" index="226">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">なみが　おだやかな　ときは\nおおうなばらを　とぶように　およぐ\nマンタインの　むれに　そうぐうする。</language>
+	</row>
+	<row id="msg_0810_00227" index="227">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">てつのような　かたい　よろいに\nおおわれている。じそく３００キロの\nスピ－ドで　おおぞらを　とびまわる。</language>
+	</row>
+	<row id="msg_0810_00228" index="228">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">なきごえを　つかいわけて　きもちを\nつたえる。みごとな　れんけいプレ－で\nえものを　おいこみ　しとめる。</language>
+	</row>
+	<row id="msg_0810_00229" index="229">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ヘルガ－の　ぶきみな　とおぼえは\nじごくから　しにがみが　よぶ　こえと\nむかしの　ひとは　そうぞうしていた。</language>
+	</row>
+	<row id="msg_0810_00230" index="230">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">かいていどうくつに　すんでいる。\nキングドラが　みうごきすると\nきょだいな　うずしおが　うまれる。</language>
+	</row>
+	<row id="msg_0810_00231" index="231">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">からだは　ちいさいが　ちからもち。\nおとなの　ひとを　かるがると\nせなかに　のせて　あるいてしまう。</language>
+	</row>
+	<row id="msg_0810_00232" index="232">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">からだを　まるめて　かいてんしながら\nとっしんする　こうげき。いちげきで\nみんかを　ばらばらに　ふきとばす。</language>
+	</row>
+	<row id="msg_0810_00233" index="233">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">わくせいかいはつようの　プログラムが\nインスト－ルされている。しんくうの\nうちゅうでも　かつどうできるのだ。</language>
+	</row>
+	<row id="msg_0810_00234" index="234">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ツノを　みつめていると　わっかの\nちゅうしんに　すいこまれそうな\nふしぎな　きぶんに　なってしまう。</language>
+	</row>
+	<row id="msg_0810_00235" index="235">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しっぽを　ふでのように　つかって\nなわばりに　マ－クを　えがく。\nその　しゅるいは　５０００いじょう。</language>
+	</row>
+	<row id="msg_0810_00236" index="236">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">けんかっぱやいことで　ゆうめい。\nじぶんよりも　おおきな　あいてに\nいどみかかるので　きずが　たえない。</language>
+	</row>
+	<row id="msg_0810_00237" index="237">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">コマのように　かいてんしながら\nたたかう。えんしんりょくの　パワ－で\nはかいりょくは　１０ばいだ。</language>
+	</row>
+	<row id="msg_0810_00238" index="238">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">なんでも　くちびるで　ふれてみて\nたしかめる。すきな　ものも　きらいな\nものも　くちびるが　おぼえている。</language>
+	</row>
+	<row id="msg_0810_00239" index="239">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">りょううでを　ぐるぐる　ふりまわして\nでんきを　はっせいさせる。しかし\nつくった　でんきは　ためておけない。</language>
+	</row>
+	<row id="msg_0810_00240" index="240">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">たいおんは　やく６００ど。\nくちから　きいろい　ほのおを\nだしていれば　げんきな　しょうこ。</language>
+	</row>
+	<row id="msg_0810_00241" index="241">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ミルタンクの　ミルクを　のんで\nそだった　こどもは　けんこうで\nたくましい　おとなに　なるという。</language>
+	</row>
+	<row id="msg_0810_00242" index="242">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">よわった　ポケモンを　なおるまで\nかんびょうする　やさしい　ポケモン。\nかなしい　きもちを　キャッチする。</language>
+	</row>
+	<row id="msg_0810_00243" index="243">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">カミナリと　ともに　おちてきたと\nいわれている。せなかの　あまぐもから\nカミナリを　うちだすことが　できる。</language>
+	</row>
+	<row id="msg_0810_00244" index="244">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">エンテイが　ほえると\nせかいの　どこかの　かざんが\nふんかすると　いわれている。</language>
+	</row>
+	<row id="msg_0810_00245" index="245">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">せかいじゅうを　かけめぐり\nよごれた　みずを　きよめている。\nきたかぜと　ともに　はしりさる。</language>
+	</row>
+	<row id="msg_0810_00246" index="246">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">つちを　たべる　ポケモン。\nおおきな　やまを　たいらげると\nせいちょうのため　ねむりはじめる。</language>
+	</row>
+	<row id="msg_0810_00247" index="247">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">がんばんのような　かたい　からだ。\nあっしゅくした　ガスを　ふんしゃして\nまるで　ロケットのように　とびだす。</language>
+	</row>
+	<row id="msg_0810_00248" index="248">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">バンギラスが　あばれると\nやまが　くずれ　かわが　うまるため\nちずを　かきかえる　ことになる。</language>
+	</row>
+	<row id="msg_0810_00249" index="249">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ふかい　かいこうの　そこで　ねむる。\nルギアが　はばたくと　４０にち\nあらしが　つづくと　いわれている。</language>
+	</row>
+	<row id="msg_0810_00250" index="250">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">なないろの　つばさを　もつ。\nホウオウを　みた　ものは　えいえんの\nしあわせが　やくそくされるという。</language>
+	</row>
+	<row id="msg_0810_00251" index="251">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">じかんを　こえる　ちからを　つかう。\nへいわな　じだいにだけ\nすがたを　みせると　いわれている。</language>
+	</row>
+	<row id="msg_0810_00252" index="252">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あしの　うらには　ちいさな　トゲが\nたくさん　ついているので　カベや\nてんじょうを　あるくことが　できる。</language>
+	</row>
+	<row id="msg_0810_00253" index="253">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">みつりんに　せいそくする。\nえだから　えだへ　とびうつりながら\nいどうして　えものに　せっきんする。</language>
+	</row>
+	<row id="msg_0810_00254" index="254">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">うでに　はえた　はっぱは　たいぼくも\nすっぱり　きりたおす　きれあじ。\nみつりんの　たたかいでは　むてき。</language>
+	</row>
+	<row id="msg_0810_00255" index="255">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">たいないで　ほのおが　もえているので\nだきしめると　とても　あたたかい。\n１０００どの　ひのたまを　とばす。</language>
+	</row>
+	<row id="msg_0810_00256" index="256">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">１びょうかんに　キックを　１０ぱつ\nくりだす　あしわざの　もちぬし。\nするどい　なきごえで　いかくする。</language>
+	</row>
+	<row id="msg_0810_00257" index="257">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">てくびから　ふきだした　ほのおで\nこぶしを　つつみこんだ　パンチは\nあいてを　くろこげに　してしまう。</language>
+	</row>
+	<row id="msg_0810_00258" index="258">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あたまの　ひれで　みずの　ながれを\nかんじて　まわりの　ようすを　しる。\nいわを　もちあげる　ちからもち。</language>
+	</row>
+	<row id="msg_0810_00259" index="259">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ぬかるんだ　あしばでも　しっかり\nあるける　じょうぶな　あしこし。\nどろに　からだを　うめて　ねむる。</language>
+	</row>
+	<row id="msg_0810_00260" index="260">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">おおがたせんを　ひっぱって　およぐ\nパワ－の　もちぬし。ふとい　うでの\nひとふりで　あいてを　たたきのめす。</language>
+	</row>
+	<row id="msg_0810_00261" index="261">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しつこい　せいかくの　ポケモン。\nめをつけた　えものが　ヘトヘトに\nつかれるまで　おいかけまわす。</language>
+	</row>
+	<row id="msg_0810_00262" index="262">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">むれで　えものを　おいつめる。\nすぐれた　トレ－ナ－の　めいれいには\nぜったいに　さからわない。</language>
+	</row>
+	<row id="msg_0810_00263" index="263">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ジグザグに　あるいて　くさかげや\nじめんに　うまっている　たからものを\nみつけるのが　とくいな　ポケモン。</language>
+	</row>
+	<row id="msg_0810_00264" index="264">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">じそく１００キロで　えものに\nおそいかかるが　まっすぐにしか\nはしれないので　しっぱいも　おおい。</language>
+	</row>
+	<row id="msg_0810_00265" index="265">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">はっぱが　だいこうぶつ。\nムックルに　おそわれたときは\nおしりの　トゲで　げきたいする。</language>
+	</row>
+	<row id="msg_0810_00266" index="266">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">からだから　のびる　いとを　えだに\nまきつけて　おちないように　こてい。\nじっと　うごかずに　しんかを　まつ。</language>
+	</row>
+	<row id="msg_0810_00267" index="267">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ほそながい　くちを　つきさして\nあいての　たいえきを　すいとる。\nこうげきてきな　せいかく。</language>
+	</row>
+	<row id="msg_0810_00268" index="268">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">マユの　なかは　おんどが　たかい。\nそのなかで　ぜんしんの　さいぼうが\nしんかの　エネルギ－を　つくりだす。</language>
+	</row>
+	<row id="msg_0810_00269" index="269">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">やこうせいの　ポケモン。\nあかりに　さそわれた　ドクケイルが\nがいろじゅの　はを　くいちらかす。</language>
+	</row>
+	<row id="msg_0810_00270" index="270">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">みずくさに　そっくりな　ポケモン。\nおよげない　ポケモンを　はっぱに\nのせて　むこうぎしまで　はこぶ。</language>
+	</row>
+	<row id="msg_0810_00271" index="271">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">つりびとを　みつけると\nすいちゅうから　つりいとを　ひっぱり\nジャマして　よろこぶ　いたずらもの。</language>
+	</row>
+	<row id="msg_0810_00272" index="272">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ようきな　おんがくを　きくと\nからだじゅうに　ちからが　みなぎり\nおどらずには　いられなくなるのだ。</language>
+	</row>
+	<row id="msg_0810_00273" index="273">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">えだに　ぶらさがっていると\nきのみに　そっくり。ついばもうとした\nポケモンを　おどろかせて　よろこぶ。</language>
+	</row>
+	<row id="msg_0810_00274" index="274">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">コノハナが　かなでる　くさぶえの\nねいろは　ひとを　ふあんにさせる。\nもりの　おくに　すんでいる。</language>
+	</row>
+	<row id="msg_0810_00275" index="275">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">はっぱの　うちわを　あおぐと\nふうそく３０メ－トルの　とっぷうが\nまきおこり　みんかを　ふきとばす。</language>
+	</row>
+	<row id="msg_0810_00276" index="276">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">つよい　あいてにも　ゆうかんに\nたちむかう　こんじょうの　もちぬし。\nあたたかい　とちを　めざして　とぶ。</language>
+	</row>
+	<row id="msg_0810_00277" index="277">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">じょうくうを　せんかいしながら\nえものを　さがし　まっさかさまに\nきゅうこうかして　つかまえる。</language>
+	</row>
+	<row id="msg_0810_00278" index="278">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">うみべの　だんがいぜっぺきに\nすを　つくる。じょうしょうきりゅうを\nりようして　おおぞらに　まいあがる。</language>
+	</row>
+	<row id="msg_0810_00279" index="279">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">おおきな　クチバシを　うみに　いれて\nひとすくいすると　エサが　たくさん\nはいっているという　すんぽうだ。</language>
+	</row>
+	<row id="msg_0810_00280" index="280">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あたまの　ツノで　ひとの　きもちを\nかんじとる。あかるい　きぶんの\nひとの　まえに　あらわれるという。</language>
+	</row>
+	<row id="msg_0810_00281" index="281">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">トレ－ナ－の　きもちを　びんかんに\nキャッチする　ちからを　もつ。\nたのしくなると　おどりはじめる。</language>
+	</row>
+	<row id="msg_0810_00282" index="282">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">いのちがけで　しんらいする\nトレ－ナ－を　まもろうとする。\nみらいを　よちする　ちからを　もつ。</language>
+	</row>
+	<row id="msg_0810_00283" index="283">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">すいめんを　すべるように　あるく。\nあたまの　さきから　あまい　においを\nだして　えものを　さそう。</language>
+	</row>
+	<row id="msg_0810_00284" index="284">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">めだまもようの　しょっかくを　もつ。\n４まいの　はねで　うかびあがり\nぜんごさゆうに　うごくことができる。</language>
+	</row>
+	<row id="msg_0810_00285" index="285">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あたまの　てっぺんから　どくほうしを\nふきだす。ほうしを　すいこむと\nからだの　ふしぶしが　いたくなる。</language>
+	</row>
+	<row id="msg_0810_00286" index="286">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">みじかい　うでは　パンチを　だすとき\nぐ－んと　のびる。プロボクサ－\nかおまけの　テクニックを　もつ。</language>
+	</row>
+	<row id="msg_0810_00287" index="287">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">１にちのうち　ほとんどの　じかんを\nねころがって　すごす。その　ようすを\nみていると　ねむけに　おそわれる。</language>
+	</row>
+	<row id="msg_0810_00288" index="288">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しんぞうが　１０ばいの　テンポで\nこどう　しているため\nひとときも　じっとしていられない。</language>
+	</row>
+	<row id="msg_0810_00289" index="289">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">せかいいち　ぐうたらな　ポケモン。\nねころがっているだけに　みえるが\nはんげきの　パワ－を　ためている。</language>
+	</row>
+	<row id="msg_0810_00290" index="290">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">じめんの　したで　せいちょうする。\nほとんど　みえない　めの　かわりに\nしょっかくで　ようすを　さぐる。</language>
+	</row>
+	<row id="msg_0810_00291" index="291">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あまりに　こうそくで　うごくため\nすがたが　みえなくなる　ことがある。\nじゅえきに　あつまってくる。</language>
+	</row>
+	<row id="msg_0810_00292" index="292">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ぬけがらが　たましいを　やどした。\nせなかの　すきまから　のぞきこむと\nたましいを　すわれてしまうらしい。</language>
+	</row>
+	<row id="msg_0810_00293" index="293">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ふだんは　ささやくような　なきごえ。\nふあんになると　ジェットきと　おなじ\nおんりょうで　なきつづける。</language>
+	</row>
+	<row id="msg_0810_00294" index="294">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">おおごえの　しょうげきはで\nトラックを　ひっくりかえしてしまう。\nあしを　ふみならして　パワ－アップ。</language>
+	</row>
+	<row id="msg_0810_00295" index="295">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">バクオングの　とおぼえは　１０キロ\nさきまで　とどく。からだじゅうの\nあなから　さまざまな　おとを　だす。</language>
+	</row>
+	<row id="msg_0810_00296" index="296">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ふとい　きのみきに　ぶつかって\nからだを　きたえる。すみかの　そばは\nへしおられた　きが　たくさんある。</language>
+	</row>
+	<row id="msg_0810_00297" index="297">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">からだの　おおきな　ポケモンたちと\nちからくらべをすることが　だいすき。\nはりてで　トラックを　ふっとばす。</language>
+	</row>
+	<row id="msg_0810_00298" index="298">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">おおきな　しっぽに　のって　はずむと\nちじょうでは　はやく　いどうできる。\nみずべで　くらす　ポケモン。</language>
+	</row>
+	<row id="msg_0810_00299" index="299">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">はなが　じしゃくに　なっているので\nつねに　ほっきょくの　ほうがくに\nかおを　むけている　ポケモン。</language>
+	</row>
+	<row id="msg_0810_00300" index="300">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">うごくものを　つい　おってしまう。\nじぶんの　しっぽを　おいかけて\nおなじ　ばしょを　グルグル　まわる。</language>
+	</row>
+	<row id="msg_0810_00301" index="301">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">うつくしい　けなみを　もち\nじょせいトレ－ナ－に　だいにんき。\nきまった　すみかを　もたない。</language>
+	</row>
+	<row id="msg_0810_00302" index="302">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">どうくつの　くらやみに　ひそむ。\nほうせきを　たべているうちに\nめが　ほうせきに　なってしまった。</language>
+	</row>
+	<row id="msg_0810_00303" index="303">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ツノが　へんけいして　できた\nおおあごが　あたまに　ついている。\nてっこつを　かみきってしまう。</language>
+	</row>
+	<row id="msg_0810_00304" index="304">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ふだんは　やまおくで　くらしているが\nおなかが　すくと　ふもとに　あらわれ\nせんろや　くるまを　たべてしまう。</language>
+	</row>
+	<row id="msg_0810_00305" index="305">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">てっこうせきを　ほりだして　たべる。\nはがねの　からだを　ぶつけあって\nなわばりあらそいをする　しゅうせい。</language>
+	</row>
+	<row id="msg_0810_00306" index="306">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">はがねの　ツノで　かたい　がんばんを\nつきくずしながら　しょくりょうの\nてつを　さがして　トンネルを　ほる。</language>
+	</row>
+	<row id="msg_0810_00307" index="307">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">１にち　１こだけ　きのみを　たべる。\nくうふくに　たえることで\nこころが　とぎすまされていく。</language>
+	</row>
+	<row id="msg_0810_00308" index="308">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ヨガの　しゅぎょうによって\nだい６かんが　はったつした。\nゆうがに　おどるような　みのこなし。</language>
+	</row>
+	<row id="msg_0810_00309" index="309">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">たいもうに　ためた　でんきを　つかい\nきんにくを　しげきすることで\nしゅんぱつりょくを　たかめる。</language>
+	</row>
+	<row id="msg_0810_00310" index="310">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">たてがみから　ほうでんしている。\nずじょうに　かみなりぐもを　つくり\nいなずまを　おとして　こうげきする。</language>
+	</row>
+	<row id="msg_0810_00311" index="311">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ひばなの　ボンボンを　つくって\nなかまを　おうえんする。\nでんちゅうから　でんきを　すいとる。</language>
+	</row>
+	<row id="msg_0810_00312" index="312">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">なかまを　おうえんする　しゅうせい。\nまけそうになると　からだから　だす\nひばなの　かずが　どんどん　ふえる。</language>
+	</row>
+	<row id="msg_0810_00313" index="313">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">よるになると　おしりを　ひからせ\nなかまと　かいわする。イルミ－ゼの\nだす　あまい　かおりが　だいすき。</language>
+	</row>
+	<row id="msg_0810_00314" index="314">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あまい　かおりで　バルビ－トを\nゆうどうして　よぞらに\nひかりの　サインを　えがく。</language>
+	</row>
+	<row id="msg_0810_00315" index="315">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">きれいな　みずを　のんで　そだった\nロゼリアは　いろあざやかな　はなを\nさかせる　ことで　しられている。</language>
+	</row>
+	<row id="msg_0810_00316" index="316">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">からだの　ほとんどが　いぶくろ。\nきょうりょくな　いえきで　のみこんだ\nものを　たちまち　しょうかする。</language>
+	</row>
+	<row id="msg_0810_00317" index="317">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">なんでも　まるのみしてしまう。\nけあなから　もうどくの　たいえきを\nぶんぴつして　てきに　あびせかける。</language>
+	</row>
+	<row id="msg_0810_00318" index="318">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">なわばりに　はいってきた　あいてを\nしゅうだんで　こうげき。するどい\nキバは　ボ－トの　そこも　かみきる。</language>
+	</row>
+	<row id="msg_0810_00319" index="319">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">てっぱんも　かみちぎる　キバを　もち\nおよぐ　そくどは　じそく１２０キロ。　\nべつめいは　うみのギャング。</language>
+	</row>
+	<row id="msg_0810_00320" index="320">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">はれた　ひは　すなはまに　あがり\nボ－ルのように　はずんで　あそぶ。\nはなから　みずを　ふきあげる。</language>
+	</row>
+	<row id="msg_0810_00321" index="321">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">いちばん　おおきい　ポケモン。\nいきつぎせずに　３０００メ－トルの\nふかさまで　もぐることが　できる。</language>
+	</row>
+	<row id="msg_0810_00322" index="322">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しゃくねつの　マグマを　せなかの\nコブに　ためている。あめに　あたると\nマグマが　ひえて　うごきが　にぶる。</language>
+	</row>
+	<row id="msg_0810_00323" index="323">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">せなかに　かざんを　もつ　ポケモン。\nたいないの　マグマが　ふえると\nふるえた　あとに　だいばくはつする。</language>
+	</row>
+	<row id="msg_0810_00324" index="324">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">こうらの　なかで　せきたんを　もやし\nエネルギ－に　している。ピンチの\nときは　くろい　ススを　ふきだす。</language>
+	</row>
+	<row id="msg_0810_00325" index="325">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しっぽを　バネのかわりに　いつも\nとびはねている。はねる　しんどうで\nしんぞうを　こどう　させているのだ。</language>
+	</row>
+	<row id="msg_0810_00326" index="326">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">くろしんじゅで　サイコパワ－を\nぞうふくさせる。ふしぎな　ステップで\nあいての　こころを　あやつる。</language>
+	</row>
+	<row id="msg_0810_00327" index="327">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">おなじ　ブチもようの　パッチ－ルは\nいない。フラフラした　あしどりで\nあいての　ねらいを　はずす。</language>
+	</row>
+	<row id="msg_0810_00328" index="328">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">さばくに　つくった　すりばちがたの\nあなの　そこで　えものが　はまって\nおちてくるのを　まちつづける。</language>
+	</row>
+	<row id="msg_0810_00329" index="329">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">はねを　はげしく　しんどうさせて\nちょうおんぱを　だす。にんげんも\nずつうを　おこすほど　きょうりょく。</language>
+	</row>
+	<row id="msg_0810_00330" index="330">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">きょうれつな　ハネの　はばたきで\nすなあらしを　おこす。\nさばくのせいれい　と　よばれる。</language>
+	</row>
+	<row id="msg_0810_00331" index="331">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">さばくに　せいそく。たいないに\nすいぶんを　ためることで　みずを\nのまずに　３０にちかん　いきられる。</language>
+	</row>
+	<row id="msg_0810_00332" index="332">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">よるになると　かつどうを　はじめる。\nさばくの　あつさに　つかれはてた\nえものを　みつけだし　とらえるのだ。</language>
+	</row>
+	<row id="msg_0810_00333" index="333">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">わたのような　つばさを　もつ。\nひとの　あたまに　ちょこんと　のると\nわたの　ぼうしみたいに　みえる。</language>
+	</row>
+	<row id="msg_0810_00334" index="334">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">そらを　とぶ　すがたは\nまるで　わたぐものように　みえる。\nソプラノの　こえで　ハミングする。</language>
+	</row>
+	<row id="msg_0810_00335" index="335">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">なんせだいにも　わたって\nハブネ－クと　たたかってきた。\nするどい　ツメが　さいだいの　ぶき。</language>
+	</row>
+	<row id="msg_0810_00336" index="336">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">せんぞだいだい　ザング－スと\nたたかってきた。しっぽの　やいばを\nいわで　とぎ　たたかいに　そなえる。</language>
+	</row>
+	<row id="msg_0810_00337" index="337">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">まんげつの　よるになると　かっぱつに\nかつどうするため　つきの　みちかけと\nかんけいしていると　いわれている。</language>
+	</row>
+	<row id="msg_0810_00338" index="338">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">たいようの　ぶんしんと　うわさされる\nしんしゅの　ポケモン。からだを\nかいてんさせて　ひかりを　はなつ。</language>
+	</row>
+	<row id="msg_0810_00339" index="339">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ぜんしんが　ヌルヌルの　たいえきで\nおおわれているため　つかまっても\nぬるりと　ぬけだすことが　できる。</language>
+	</row>
+	<row id="msg_0810_00340" index="340">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">なわばり　いしきが　とても　つよい。\nしゅうい　５キロの　はんいで\nじしんを　おこし　げきたいする。</language>
+	</row>
+	<row id="msg_0810_00341" index="341">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">どんな　かんきょうにも　てきおうする\nつよい　せいめいりょくの　もちぬし。\nはさんだ　えものは　はなさない。</language>
+	</row>
+	<row id="msg_0810_00342" index="342">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">いけに　すむ　ほかの　ポケモンを\nハサミで　つまみあげ　いけの　そとへ\nほうりだしてしまう　あばれんぼう。</language>
+	</row>
+	<row id="msg_0810_00343" index="343">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">いっぽんあしで　かいてんしながら\nいどうする。こだいの　いせきから\nみつかった　めずらしい　ポケモン。</language>
+	</row>
+	<row id="msg_0810_00344" index="344">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">こだいの　どろにんぎょうが\nかいこうせんを　あびたことで\nいのちが　やどり　ポケモンとなった。</language>
+	</row>
+	<row id="msg_0810_00345" index="345">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">およそ　１おくねんまえの　かいていで\nくらしていた　こだいの　ポケモン。\nかがくの　ちからで　ふっかつした。</language>
+	</row>
+	<row id="msg_0810_00346" index="346">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あたたかい　うみの　あさせに　いる。\nしおが　ひくと　すなはまに　もぐった\nえものを　ほりだして　たべる。</language>
+	</row>
+	<row id="msg_0810_00347" index="347">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">かせきから　ふっかつした　ポケモンの\nせんぞの　いっしゅ。うみで　くらし\nツメで　えものを　つかまえる。</language>
+	</row>
+	<row id="msg_0810_00348" index="348">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しんかして　ちじょうで　くらすように\nなった。ぜんしんが　がんじょうな\nよろいに　おおわれている。</language>
+	</row>
+	<row id="msg_0810_00349" index="349">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">みすぼらしい　すがたで　ゆうめい。\nせいそくすうは　おおいが\nいっかしょに　あつまる　しゅうせい。</language>
+	</row>
+	<row id="msg_0810_00350" index="350">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ひとびとが　あらそいを　はじめると\nみずうみの　おくそこから　あらわれて\nすさんだ　こころを　いやすという。</language>
+	</row>
+	<row id="msg_0810_00351" index="351">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">てんきによって　すがたが　かわる。\nみずの　ぶんしと　そっくりなことが\nさいきんになって　はっけんされた。</language>
+	</row>
+	<row id="msg_0810_00352" index="352">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">からだの　いろを　じゆうに　かえる\nのうりょくを　もつ。おなかにある\nギザギザもよう　だけは　かわらない。</language>
+	</row>
+	<row id="msg_0810_00353" index="353">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">うらみの　かんじょうが　だいすき。\nうらみを　もつ　ひとが　すむ　いえの\nのきしたに　ずらりと　ぶらさがる。</language>
+	</row>
+	<row id="msg_0810_00354" index="354">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">すてられた　ぬいぐるみに　おんねんが\nやどり　ポケモンになった。じぶんを\nすてた　こどもを　さがしている。</language>
+	</row>
+	<row id="msg_0810_00355" index="355">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">どこまでも　えものを　おいつづける\nしゅうねんぶかい　せいかくだが\nあさひが　のぼると　あきらめる。</language>
+	</row>
+	<row id="msg_0810_00356" index="356">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">からだの　なかみは　くうどうに\nなっていて　のぞきこんだ　あいてを\nすいこんでしまうと　いわれている。</language>
+	</row>
+	<row id="msg_0810_00357" index="357">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">だいこうぶつの　くだものばかり\nたべていたら　じぶんの　くびに\nくだものが　できるようになった。</language>
+	</row>
+	<row id="msg_0810_00358" index="358">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">なきごえで　くうきを　しんどうさせ\nあいてを　ふきとばす。７しゅるいの\nこえで　なかまと　かいわする。</language>
+	</row>
+	<row id="msg_0810_00359" index="359">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">さいがいの　よかんを　かんじとる。\nきけんを　しらせる　ときだけ\nひとまえに　あらわれるという。</language>
+	</row>
+	<row id="msg_0810_00360" index="360">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">なかまたちと　おしくらまんじゅうを\nやることで　がまんづよく　そだつ。\nあまい　くだものが　だいこうぶつ。</language>
+	</row>
+	<row id="msg_0810_00361" index="361">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ユキワラシの　すみついた　いえは\nおかねもちになるという　いいつたえが\nゆきぐにには　のこっている。</language>
+	</row>
+	<row id="msg_0810_00362" index="362">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">くうきちゅうの　すいぶんを　こおらせ\nこおりの　そうこうで　からだを\nつつみこみ　みを　まもっている。</language>
+	</row>
+	<row id="msg_0810_00363" index="363">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">りゅうひょうの　うえを　コロコロと\nころがって　かいがんに　たどりつく。\nおよぐには　ふべんな　たいけい。</language>
+	</row>
+	<row id="msg_0810_00364" index="364">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">なんでも　はなの　うえで　まわす\nクセを　もつ。まわしながら　においや\nかんしょくを　おぼえるのだ。</language>
+	</row>
+	<row id="msg_0810_00365" index="365">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">おおきな　こおりを　キバで　くだく。\nあつい　しぼうは　さむさだけでなく\nてきの　こうげきも　はねかえす。</language>
+	</row>
+	<row id="msg_0810_00366" index="366">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">いっしょうに　１こだけ　つくる\nしんじゅは　サイコパワ－を\nぞうふくする　さようが　あるという。</language>
+	</row>
+	<row id="msg_0810_00367" index="367">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しんかいに　せいそくする　ポケモン。\nこざかなの　かたちをした　しっぽで\nえものを　おびきよせ　つかまえる。</language>
+	</row>
+	<row id="msg_0810_00368" index="368">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">うみの　そこで　くらしているが\nはるになると　からだの　ピンクいろが\nなぜか　あざやかに　いろづく。</language>
+	</row>
+	<row id="msg_0810_00369" index="369">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しんかいちょうさで　はっけんされた\nめずらしい　ポケモン。１おくねんの\nあいだ　すがたが　かわっていない。</language>
+	</row>
+	<row id="msg_0810_00370" index="370">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あたたかい　うみに　せいそくする。\nラブカスを　みつけた　カップルは\nえいえんの　あいが　つづくという。</language>
+	</row>
+	<row id="msg_0810_00371" index="371">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">おおぞらを　とぶことを　ゆめみて\nまいにち　とぶ　れんしゅうのために\nがけから　とびおりている。</language>
+	</row>
+	<row id="msg_0810_00372" index="372">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">かたい　カラの　なかでは　さいぼうが\nへんかを　はじめている。しんかする\nしゅんかんに　カラが　はがれおちる。</language>
+	</row>
+	<row id="msg_0810_00373" index="373">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">そらを　とぶことを　ねがいつづけた\nけっか　からだの　さいぼうが\nへんかして　つばさが　はえてきた。</language>
+	</row>
+	<row id="msg_0810_00374" index="374">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">じりょくの　はちょうで　なかまと\nかいわする。むれになった　ダンバルは\nいっしみだれぬ　うごきを　する。</language>
+	</row>
+	<row id="msg_0810_00375" index="375">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">２ひきの　ダンバルが　がったいした。\nはがねの　ボディは　ジェットきと\nしょうとつしても　きずつかない。</language>
+	</row>
+	<row id="msg_0810_00376" index="376">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">メタングが　がったいして　うまれた。\n４つの　のうを　もつ　メタグロスは\nス－パ－コンピュ－タなみの　ちのう。</language>
+	</row>
+	<row id="msg_0810_00377" index="377">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ぜんしんが　いわで　できている。\nたたかいで　からだが　かけても\nいわを　くっつけて　なおしてしまう。</language>
+	</row>
+	<row id="msg_0810_00378" index="378">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ひょうがきに　できた　こおりで\nからだが　つくられている。マイナス\n２００どの　れいきを　あやつる。</language>
+	</row>
+	<row id="msg_0810_00379" index="379">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">なんまんねんも　ちかの　あつりょくで\nきたえられた　きんぞくの　ボディは\nきずひとつ　つかない。</language>
+	</row>
+	<row id="msg_0810_00380" index="380">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ひかりを　くっせつさせる　うもうで\nぜんしんを　つつみこみ　すがたを\nみえなくする　のうりょくを　もつ。</language>
+	</row>
+	<row id="msg_0810_00381" index="381">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">たかい　ちのうを　もつ　ポケモン。\nうでを　おりたたんで　とべば\nジェットきを　おいこす　スピ－ドだ。</language>
+	</row>
+	<row id="msg_0810_00382" index="382">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">おおあめを　ふらせる　のうりょくで\nうみを　ひろげたと　いわれている。\nかいこうの　そこで　ねむっていた。</language>
+	</row>
+	<row id="msg_0810_00383" index="383">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">おおむかし　カイオ－ガとの　しとうの\nすえに　ちかマグマの　なかで\nねむっていた　ポケモン。</language>
+	</row>
+	<row id="msg_0810_00384" index="384">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">くもより　はるかうえの　オゾンそうに\nせいそくしているため　ちじょうから\nすがたを　みることは　できない。</language>
+	</row>
+	<row id="msg_0810_00385" index="385">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">１０００ねんかんで　７にちだけ\nめを　さまし　どんな　ねがいごとでも\nかなえる　ちからを　つかうという。</language>
+	</row>
+	<row id="msg_0810_00386" index="386">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">いんせきに　ふちゃくしていた\nうちゅうウイルスの　ＤＮＡが\nへんいして　うまれた　ポケモン。</language>
+	</row>
+	<row id="msg_0810_00387" index="387">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">つちで　できた　せなかの　こうらは\nみずを　のむと　さらに　かたくなる。\nみずうみの　ほとりで　くらしている。</language>
+	</row>
+	<row id="msg_0810_00388" index="388">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">もりの　なかの　みずべで　くらす。\nひるまは　もりの　そとに　でて\nこうらの　きに　ひかりを　あてる。</language>
+	</row>
+	<row id="msg_0810_00389" index="389">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ちいさな　ポケモンたちが　あつまり\nうごかない　ドダイトスの　せなかで\nすづくりを　はじめることがある。</language>
+	</row>
+	<row id="msg_0810_00390" index="390">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">だんがいぜっぺきを　みがるに　のぼり\nいわやまの　うえで　せいかつする。\nほのおを　けして　ねむる。</language>
+	</row>
+	<row id="msg_0810_00391" index="391">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しっぽの　ほのおを　ながく　のばして\nからだを　おおきく　みせることで\nおそってきた　てきを　こわがらせる。</language>
+	</row>
+	<row id="msg_0810_00392" index="392">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">りょうて　りょうあしを　つかった\nとくしゅな　かくとうわざを　つかう。\nほのおは　いっしょう　きえない。</language>
+	</row>
+	<row id="msg_0810_00393" index="393">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">プライドが　たかく　ひとから\nたべものを　もらう　ことを　きらう。\nながい　うぶげが　さむさを　ふせぐ。</language>
+	</row>
+	<row id="msg_0810_00394" index="394">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">むれを　つくらずに　１ぴきで　いる。\nじぶんが　いちばん　えらいと　どの\nポッタイシも　かんがえているようだ。</language>
+	</row>
+	<row id="msg_0810_00395" index="395">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">クチバシから　のびている　３ぼんの\nツノは　つよさの　しょうちょう。\nリ－ダ－が　いちばん　おおきい。</language>
+	</row>
+	<row id="msg_0810_00396" index="396">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">たくさんの　むれで　こうどうする。\nからだは　ちいさいが　はばたく\nちからは　ひじょうに　つよい。</language>
+	</row>
+	<row id="msg_0810_00397" index="397">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">むしポケモンを　ねらって\nもりや　そうげんを　とびまわる。\nおおきな　むれで　こうどうする。</language>
+	</row>
+	<row id="msg_0810_00398" index="398">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">どうもうな　せいかくの　ポケモン。\nじぶんよりも　からだの　おおきい\nあいてにも　かかんに　いどみかかる。</language>
+	</row>
+	<row id="msg_0810_00399" index="399">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">なにごとにも　どうじない　ずぶとい\nしんけいの　もちぬし。みかけの\nわりには　きびんに　かつどうする。</language>
+	</row>
+	<row id="msg_0810_00400" index="400">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">かわを　きのみきや　どろの　ダムで\nせきとめて　すみかを　つくる。\nはたらきものとして　しられている。</language>
+	</row>
+	<row id="msg_0810_00401" index="401">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あたまを　ぜんごに　ゆすって\nしょっかくを　ぶつけあうことで\nもっきんのような　おとを　ならす。</language>
+	</row>
+	<row id="msg_0810_00402" index="402">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">なくときは　ナイフのような　うでを\nむねの　まえで　こうささせる。\nそっきょうで　メロディを　つくる。</language>
+	</row>
+	<row id="msg_0810_00403" index="403">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">きけんを　かんじると　ぜんしんの\nたいもうが　ひかる。あいてが　めを\nくらませている　あいだに　にげる。</language>
+	</row>
+	<row id="msg_0810_00404" index="404">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">いっぱつで　きぜつさせるほどの\nでんりゅうを　ツメから　ながす。\nすうひきの　グル－プで　くらす。</language>
+	</row>
+	<row id="msg_0810_00405" index="405">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あらゆるものを　とうししてしまう\nめを　もつ。ものかげに　かくれた\nえものを　みつけて　とらえる。</language>
+	</row>
+	<row id="msg_0810_00406" index="406">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ふゆの　あいだは　つぼみを　とざして\nさむさに　たえる。はるになると\nつぼみを　ひらき　かふんを　とばす。</language>
+	</row>
+	<row id="msg_0810_00407" index="407">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あまい　かおりで　おびきよせて\nりょううでの　はなたばの　なかに\nある　トゲの　ムチで　しとめる。</language>
+	</row>
+	<row id="msg_0810_00408" index="408">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">およそ　１おくねんまえに\nこだいの　みつりんで　くらしていた。\nてつのように　かたい　ずがいこつ。</language>
+	</row>
+	<row id="msg_0810_00409" index="409">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">きょうれつな　ずつきの　こうげきは\nどんなに　がんじょうな　ものでも\nいちげきで　ふんさいする　いりょく。</language>
+	</row>
+	<row id="msg_0810_00410" index="410">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">およそ　１おくねんまえに\nみつりんで　くらしていた　ポケモン。\nかおの　ひふが　ひじょうに　かたい。</language>
+	</row>
+	<row id="msg_0810_00411" index="411">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しょうめんからの　こうげきは\nすべて　はねかえす。くさや　きのみを\nたべる　おとなしい　せいかく。</language>
+	</row>
+	<row id="msg_0810_00412" index="412">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">つめたい　こがらしを　ふせぐため\nこえだや　おちばを　ざいりょうに\nミノを　つくり　からだを　おおう。</language>
+	</row>
+	<row id="msg_0810_00413" index="413">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ミノムッチから　しんかしたとき\nミノが　からだの　いちぶに　なった。\nいっしょう　ミノを　ぬぐことはない。</language>
+	</row>
+	<row id="msg_0810_00414" index="414">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">はなの　ミツが　だいすき。\nミツハニ－の　あつめた　ミツを\nよこどりして　たべてしまう。</language>
+	</row>
+	<row id="msg_0810_00415" index="415">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">３びきが　ひとつになった　ポケモン。\nビ－クインのために　せっせと\nはなの　あまい　ミツを　はこぶ。</language>
+	</row>
+	<row id="msg_0810_00416" index="416">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">どうたいが　こどもたちの　すあなに\nなっている。ミツハニ－の　あつめた\nミツで　こどもたちを　そだてる。</language>
+	</row>
+	<row id="msg_0810_00417" index="417">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">せいでんきが　たまって　パチパチする\nけだまを　だいこうぶつの　きのみと\nいっしょに　みきの　あなに　かくす。</language>
+	</row>
+	<row id="msg_0810_00418" index="418">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">くびに　ある　うきぶくろに　くうきを\nためると　うきわのように　ふくらむ。\nすいめんに　かおを　だして　うかぶ。</language>
+	</row>
+	<row id="msg_0810_00419" index="419">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">はったつした　うきぶくろで　うかぶ。\nおぼれた　ひとを　きゅうじょする\nてつだいを　している　ポケモンだ。</language>
+	</row>
+	<row id="msg_0810_00420" index="420">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しんかに　ひつような　えいようぶんが\nちいさい　たまに　ためられている。\nとても　あまくて　おいしい　らしい。</language>
+	</row>
+	<row id="msg_0810_00421" index="421">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ひざしが　つよくなると　はなひらく。\nつぼみの　ときに　たえしのんだ\nうっぷんを　いっきに　はらすのだ。</language>
+	</row>
+	<row id="msg_0810_00422" index="422">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">せいそくちにより　ちがった　かたちや\nいろを　している。シンオウちほうでは\n２しゅるいが　かくにんされている。</language>
+	</row>
+	<row id="msg_0810_00423" index="423">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ホネがなく　グニャグニャの　からだ。\nからだの　いちぶが　ちぎれても\nすぐに　さいせいされて　もとどおり。</language>
+	</row>
+	<row id="msg_0810_00424" index="424">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">２ほんの　しっぽで　きのみの　からを\nきように　むいて　たべる。ほんものの\nうでは　ほとんど　つかわなくなった。</language>
+	</row>
+	<row id="msg_0810_00425" index="425">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ひとや　ポケモンの　たましいが\nかたまって　うまれた　ポケモン。\nジメジメした　きせつが　だいすき。</language>
+	</row>
+	<row id="msg_0810_00426" index="426">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ひるまは　ねぼけて　うかんでいるが\nゆうがた　たいぐんで　とんでいく。\nいきさきは　だれも　しらない。</language>
+	</row>
+	<row id="msg_0810_00427" index="427">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">まるめた　みみを　いきおいよく\nのばして　あいてに　たたきつける。\nおとなでも　とびあがるほど　いたい。</language>
+	</row>
+	<row id="msg_0810_00428" index="428">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">けいかいしんの　つよい　ポケモン。\nきけんを　かんじると　ふわふわした\nみみさきの　けで　からだを　つつむ。</language>
+	</row>
+	<row id="msg_0810_00429" index="429">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">じゅもんのような　なきごえを　だして\nみみにした　あいてを\nずつうや　げんかくで　くるしめる。</language>
+	</row>
+	<row id="msg_0810_00430" index="430">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">よるになると　かつどうを　はじめる。\nたくさんの　ヤミカラスを　ひきつれ\nむれを　つくることで　しられる。</language>
+	</row>
+	<row id="msg_0810_00431" index="431">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">きにいらないと　ツメを　たてるが\nたまに　のどを　ならして　あまえる\nせいかくが　いちぶに　だいにんきだ。</language>
+	</row>
+	<row id="msg_0810_00432" index="432">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ほかの　ポケモンの　すみかにも\nかまわず　はいりこんで　じぶんの\nねばしょにしてしまう　ずうずうしさ。</language>
+	</row>
+	<row id="msg_0810_00433" index="433">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">のどの　おくで　まるい　たまを\nふるわせて　なきごえを　だす。\nふわりと　はずんで　いどうする。</language>
+	</row>
+	<row id="msg_0810_00434" index="434">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">おしりから　きょうれつに　くさい\nえきたいを　とばして　みを　まもる。\nにおいは　２４じかん　きえない。</language>
+	</row>
+	<row id="msg_0810_00435" index="435">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しっぽの　さきから　ひどい　においの\nえきたいを　とばして　こうげきする。\nひきょりは　５０メ－トルいじょう。</language>
+	</row>
+	<row id="msg_0810_00436" index="436">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ふるい　おはかから　ド－ミラ－に\nそっくりな　どうぐが　ほりだされたが\nかんけいは　わかっていない。</language>
+	</row>
+	<row id="msg_0810_00437" index="437">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">２０００ねん　いじょう　ねむっていた\nド－タクンが　こうじげんばから\nほりだされ　だいニュ－スに　なった。</language>
+	</row>
+	<row id="msg_0810_00438" index="438">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">いつも　ないているように　みえるが\nたいないの　すいぶんを　そとに\nだして　ちょうせつしているのだ。</language>
+	</row>
+	<row id="msg_0810_00439" index="439">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あいての　うごきを　モノマネする\nしゅうせい。まねを　された　あいては\nめが　はなせなくなる　という。</language>
+	</row>
+	<row id="msg_0810_00440" index="440">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しろくて　まるいものが　だいすき。\nラッキ－の　まねをして　タマゴに\nそっくりな　いしを　かかえている。</language>
+	</row>
+	<row id="msg_0810_00441" index="441">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ひとの　ことばを　おぼえて　なく。\nなかまが　いっかしょに　あつまると\nみんな　おなじ　ことばを　おぼえる。</language>
+	</row>
+	<row id="msg_0810_00442" index="442">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">１０８この　たましいが　あつまって\nうまれた　ポケモン。かなめいしの\nひびわれに　つながれている。</language>
+	</row>
+	<row id="msg_0810_00443" index="443">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">どうくつの　ちいさな　よこあなを\nねぐらにする。えものが　ちかづくと\nすばやく　とびだして　つかまえる。</language>
+	</row>
+	<row id="msg_0810_00444" index="444">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ガバイトの　ウロコから　つくった\nくすりが　ふじのやまいを　なおすと\nふるくから　しんじられてきた。</language>
+	</row>
+	<row id="msg_0810_00445" index="445">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">からだを　おりたたみ　つばさを\nのばすと　まるで　ジェットき。\nおんそくで　とぶことが　できる。</language>
+	</row>
+	<row id="msg_0810_00446" index="446">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">１にち　１かい　たいじゅうと　おなじ\nりょうの　エサを　いっきに　たべる。\nほとんど　かまずに　まるのみ。</language>
+	</row>
+	<row id="msg_0810_00447" index="447">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">からだから　はっする　はどうは\nこわいとき　かなしいときに　つよまり\nピンチを　なかまに　つたえる。</language>
+	</row>
+	<row id="msg_0810_00448" index="448">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あらゆる　ものが　はっする　はどうを\nキャッチする　のうりょくを　もつ。\nひとの　ことばを　りかいできる。</language>
+	</row>
+	<row id="msg_0810_00449" index="449">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">かんそうした　とちで　くらす。\nあせの　かわりに　すなつぶを\nからだから　ぶんぴつする　ポケモン。</language>
+	</row>
+	<row id="msg_0810_00450" index="450">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">たいないに　ためた　すなを　からだの\nあなから　ふきあげて　きょだいな\nたつまきを　つくり　こうげきする。</language>
+	</row>
+	<row id="msg_0810_00451" index="451">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しっぽの　ツメで　えものを　はさみ\nどくを　おくりこむ。どくが　きくまで\nぜったいに　はなさない　しゅうねん。</language>
+	</row>
+	<row id="msg_0810_00452" index="452">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">りょううでの　ツメは　じどうしゃを\nスクラップにする　はかいりょく。\nツメの　さきから　どくを　だす。</language>
+	</row>
+	<row id="msg_0810_00453" index="453">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ほっぺたに　どくぶくろを　もつ。\nあいての　すきを　ついて　もうどくを\nにじませている　ゆびを　つきさす。</language>
+	</row>
+	<row id="msg_0810_00454" index="454">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">こぶしの　トゲからは　かすりきずでも\nいのちを　おとすほどの　もうどくを\nぶんぴつしている。</language>
+	</row>
+	<row id="msg_0810_00455" index="455">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あまい　においの　だえきで　えものを\nおびきよせ　おおあごで　がぶり。\n１にち　かけて　えものを　たべる。</language>
+	</row>
+	<row id="msg_0810_00456" index="456">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">たいようを　いっぱいに　あびた\nおびれの　もようは　くらくなると\nあざやかな　いろで　ひかりだす。</language>
+	</row>
+	<row id="msg_0810_00457" index="457">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ふかい　うみの　そこで　くらす。\n４まいの　ひれの　もようを　ひからせ\nえものを　おびきよせる。</language>
+	</row>
+	<row id="msg_0810_00458" index="458">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">２ほんの　しょっかくで　かいすいの\nびみょうな　うごきを　キャッチする。\nひとなつっこい　ポケモン。</language>
+	</row>
+	<row id="msg_0810_00459" index="459">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ゆきやまで　くらしている。\nめったに　であわない　にんげんを\nめずらしがって　ちかよってくる。</language>
+	</row>
+	<row id="msg_0810_00460" index="460">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">まんねんゆきの　つもる　やまで\nくらし　ブリザ－ドを　まきおこす。\nゆきおとこの　しょうたいだ。</language>
+	</row>
+	<row id="msg_0810_00461" index="461">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">さむい　ちいきで　くらす　ポケモン。\n４、５ひきの　グル－プは　みごとな\nれんけいで　えものを　おいつめる。</language>
+	</row>
+	<row id="msg_0810_00462" index="462">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">とくしゅな　じばの　えいきょうで\nレアコイルが　しんかした。３つの\nユニットから　じりょくを　だす。</language>
+	</row>
+	<row id="msg_0810_00463" index="463">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ぐんぐん　のびる　ベロを　なんにでも\nまきつける。うかつに　ちかよると\nだえきで　べとべとに　されてしまう。</language>
+	</row>
+	<row id="msg_0810_00464" index="464">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">いわを　てのひらの　あなに　つめて\nきんにくの　ちからで　はっしゃする。\nまれに　イシツブテを　とばす。</language>
+	</row>
+	<row id="msg_0810_00465" index="465">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しょくぶつの　ツルで　できた　うでを\nのばして　えものを　からめとる。\nうでを　たべられても　へっちゃら。</language>
+	</row>
+	<row id="msg_0810_00466" index="466">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">２ほんの　しっぽの　さきを　あいてに\nおしあてて　２まんボルトいじょうの\nでんりゅうを　ながして　こうげき。</language>
+	</row>
+	<row id="msg_0810_00467" index="467">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">うでの　さきから　せっし２０００どの\nひのたまを　はっしゃする。\nかざんの　かこうを　すみかにする。</language>
+	</row>
+	<row id="msg_0810_00468" index="468">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">もめごとの　おこる　ばしょには\nけっして　あらわれない。ちかごろは\nすがたを　みかけなくなった。</language>
+	</row>
+	<row id="msg_0810_00469" index="469">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">はばたいたときの　しょうげきはで\nあいての　からだの　うちがわに\nちめいてきな　ダメ－ジを　あたえる。</language>
+	</row>
+	<row id="msg_0810_00470" index="470">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しょくぶつのように　こうごうせいを\nするため　リ－フィアの　まわりは\nすんだ　くうきに　つつまれている。</language>
+	</row>
+	<row id="msg_0810_00471" index="471">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ぜんしんの　たいもうを　こおらせて\nハリのように　するどく　とがらせる。\nてきから　みを　まもる　しゅだん。</language>
+	</row>
+	<row id="msg_0810_00472" index="472">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">しっぽで　きのえだに　ぶらさがり\nえものを　かんさつする。すきを\nみて　じょうくうから　おそいかかる。</language>
+	</row>
+	<row id="msg_0810_00473" index="473">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">こおりで　できた　りっぱな　キバ。\nひょうがきが　おわり　あたたかく\nなったため　かずが　へってしまった。</language>
+	</row>
+	<row id="msg_0810_00474" index="474">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">より　すぐれた　ポケモンに　するため\nプログラムを　ついかしたが　なぜか\nおかしな　こうどうを　はじめた。</language>
+	</row>
+	<row id="msg_0810_00475" index="475">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">のびちぢみする　ひじの　かたなで\nたたかう。いあいの　めいしゅ。\nれいぎ　ただしい　ポケモン。</language>
+	</row>
+	<row id="msg_0810_00476" index="476">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ぜんしんから　つよい　じりょくを\nだしている。３この　チビノ－ズと\nよばれる　ユニットを　あやつる。</language>
+	</row>
+	<row id="msg_0810_00477" index="477">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あたまの　アンテナで　れいかいからの\nでんぱを　じゅしん。しじを　うけて\nひとを　れいかいへ　つれていくのだ。</language>
+	</row>
+	<row id="msg_0810_00478" index="478">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">マイナス５０どの　れいきを　はいて\nあいてを　こおらせる。どうたいに\nみえる　ぶぶんは　じつは　くうどう。</language>
+	</row>
+	<row id="msg_0810_00479" index="479">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">プラズマで　できた　からだを　もつ。\nでんかせいひんに　もぐりこみ\nわるさを　することで　しられている。</language>
+	</row>
+	<row id="msg_0810_00480" index="480">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ちしきのかみ　と　よばれている。\nめを　あわせた　ものの　きおくを\nけしてしまう　ちからを　もつという。</language>
+	</row>
+	<row id="msg_0810_00481" index="481">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">かなしみの　くるしさと　よろこびの\nとうとさを　ひとびとに　おしえた。\nかんじょうのかみ　と　よばれている。</language>
+	</row>
+	<row id="msg_0810_00482" index="482">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">いしのかみ　と　よばれている。\nみずうみの　そこで　ねむりつづけ\nせかいの　バランスを　とっている。</language>
+	</row>
+	<row id="msg_0810_00483" index="483">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">じかんを　あやつる　ちからを　もつ。\nシンオウちほうでは　かみさまと\nよばれ　しんわに　とうじょうする。</language>
+	</row>
+	<row id="msg_0810_00484" index="484">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">くうかんを　ゆがめる　のうりょくを\nもち　シンオウちほうの　しんわでは\nかみさまとして　えがかれている。</language>
+	</row>
+	<row id="msg_0810_00485" index="485">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">かざんの　ほらあなに　せいそく。\nじゅうじの　ツメを　くいこませて\nカベや　てんじょうを　はいまわる。</language>
+	</row>
+	<row id="msg_0810_00486" index="486">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">なわで　しばった　たいりくを\nひっぱって　うごかしたという\nでんせつが　のこされている。</language>
+	</row>
+	<row id="msg_0810_00487" index="487">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">このよの　うらがわにある　せかいに\nすんでいると　いわれる　ポケモン。\nこだいの　はかばに　あらわれる。</language>
+	</row>
+	<row id="msg_0810_00488" index="488">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ひこうするときは　ベ－ルのような\nはねから　ひかる　りゅうしを　だす。\nみかづきのけしんと　よばれている。</language>
+	</row>
+	<row id="msg_0810_00489" index="489">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">あたたかい　うみに　すむ　ポケモン。\nあたまの　うきぶくろを　ふくらませて\nなみまを　ただよい　えさを　さがす。</language>
+	</row>
+	<row id="msg_0810_00490" index="490">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">つめたい　うみの　そこで　うまれた。\nじぶんが　うまれた　うみの　そこへ\nながい　きょりを　およいで　かえる。</language>
+	</row>
+	<row id="msg_0810_00491" index="491">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ひとびとを　ふかい　ねむりに　さそい\nゆめを　みせる　のうりょくを　もつ。\nしんげつの　よるに　かつどうする。</language>
+	</row>
+	<row id="msg_0810_00492" index="492">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">はなばたけの　なかで　くらしているが\nからだを　まるめると　はなのように\nみえるため　だれも　きづかないのだ。</language>
+	</row>
+	<row id="msg_0810_00493" index="493">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">１０００ぼんの　うでで\nうちゅうを　つくった　ポケモンとして\nしんわに　えがかれている。</language>
+	</row>
+</body>

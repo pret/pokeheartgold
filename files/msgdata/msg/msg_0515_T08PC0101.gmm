@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0515_T08PC0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey! You have a Pokédex!\nDid Professor Oak give that to you?</language>
+	</row>
+	<row id="msg_0515_T08PC0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I got quite a shock at the Gym.\nThere were all these girls who\flooked identical.</language>
+	</row>
+	<row id="msg_0515_T08PC0101_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’m Janine! Hocus-pocus...\nPoof!\r</language>
+	</row>
+	<row id="msg_0515_T08PC0101_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">See? I look just like her now!\r...?\rHuh? Didn’t work?</language>
+	</row>
+</body>

@@ -6,14 +6,11 @@
 #include "map_header.h"
 #include "map_matrix.h"
 #include "safari_zone.h"
+#include "event_data.h"
 #include <nitro/rtc.h>
 
-struct ScriptState;
-
-extern void* SavArray_Flags_get(SAVEDATA* savedata);
-extern void sub_02066C1C(struct ScriptState* state, u32);
-extern void sub_02066C4C(struct ScriptState* state, u32);
-extern BOOL CheckFlagInArray(struct ScriptState* state, u16 flag_id);
+extern void sub_02066C1C(SCRIPT_STATE* state, u32);
+extern void sub_02066C4C(SCRIPT_STATE* state, u32);
 
 static void MapMatrix_MapMatrixData_Load(MAPMATRIXDATA* map_matrix_data, u16 matrix_id, u32 map_no) {
     map_matrix_data->width = 0;
@@ -152,7 +149,7 @@ void RemoveMahoganyTownAntennaTree(MAPMATRIX* map_matrix) {
     u16* models = map_matrix->data.maps.models;
     u8 width = map_matrix->width;
 
-    if (map_matrix->matrix_id != NARC_map_matrix_map_matrix_00000000_bin) {
+    if (map_matrix->matrix_id != NARC_map_matrix_map_matrix_0000_EVERYWHERE_bin) {
         return;
     }
 
@@ -165,11 +162,11 @@ static inline BOOL MapAndDayCheck(u32 map_no, RTCDate* date) {
 
 BOOL ShouldUseAlternateLakeOfRage(SAVEDATA* savedata, u32 map_no) {
     RTCDate date;
-    struct ScriptState *state = SavArray_Flags_get(savedata);
+    SCRIPT_STATE *state = SavArray_Flags_get(savedata);
 
     GF_RTC_CopyDate(&date);
 
-    if (CheckFlagInArray(state, 202) == FALSE) {
+    if (CheckFlagInArray(state, FLAG_RED_GYARADOS_MEET) == FALSE) {
         // The player hasn't battled the Red Gyarados yet.
         sub_02066C4C(state, 1);
         return FALSE;
@@ -188,7 +185,7 @@ void SetLakeOfRageWaterLevel(MAPMATRIX* map_matrix, BOOL lower_water_level) {
     u16* models = map_matrix->data.maps.models;
     u8 width = map_matrix->width;
 
-    if (map_matrix->matrix_id != NARC_map_matrix_map_matrix_00000000_bin) {
+    if (map_matrix->matrix_id != NARC_map_matrix_map_matrix_0000_EVERYWHERE_bin) {
         return;
     }
 
@@ -213,11 +210,11 @@ void PlaceSafariZoneAreas(MAPMATRIX* map_matrix, SAVEDATA* save) {
     u16* models = map_matrix->data.maps.models;
     s32 width = map_matrix->width;
 
-    if (map_matrix->matrix_id != NARC_map_matrix_map_matrix_00000212_bin) { // Safari Zone
+    if (map_matrix->matrix_id != NARC_map_matrix_map_matrix_0212_D47R0102_bin) { // Safari Zone
         return;
     }
 
-    SAFARIZONE* safari_zone = sub_0202F57C(save);
+    SAFARIZONE* safari_zone = Save_SafariZone_get(save);
     SAFARIZONE_AREASET* sz_area_set = sub_0202F630(safari_zone, 3);
 
     for (s32 y = 0; y < SAFARI_ZONE_AREA_SET_ROWS; y++) {

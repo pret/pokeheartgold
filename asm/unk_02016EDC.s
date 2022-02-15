@@ -1327,7 +1327,7 @@ sub_02017808: ; 0x02017808
 	ldr r2, [sp, #4]
 	asr r0, r0, #4
 	lsl r1, r0, #2
-	ldr r0, _02017838 ; =_021094DC
+	ldr r0, _02017838 ; =FX_SinCosTable_
 	ldrsh r0, [r0, r1]
 	mul r0, r2
 	asr r1, r0, #0xc
@@ -1339,7 +1339,7 @@ sub_02017808: ; 0x02017808
 	add sp, #0xc
 	pop {r3, r4, pc}
 	nop
-_02017838: .word _021094DC
+_02017838: .word FX_SinCosTable_
 	thumb_func_end sub_02017808
 
 	thumb_func_start sub_0201783C
@@ -1357,7 +1357,7 @@ sub_0201783C: ; 0x0201783C
 	lsl r1, r1, #1
 	add r1, r1, #1
 	lsl r2, r1, #1
-	ldr r1, _02017870 ; =_021094DC
+	ldr r1, _02017870 ; =FX_SinCosTable_
 	ldrsh r1, [r1, r2]
 	mul r1, r0
 	add r0, sp, #0
@@ -1369,7 +1369,7 @@ sub_0201783C: ; 0x0201783C
 	add sp, #0xc
 	pop {r3, r4, pc}
 	nop
-_02017870: .word _021094DC
+_02017870: .word FX_SinCosTable_
 	thumb_func_end sub_0201783C
 
 	thumb_func_start sub_02017874
@@ -2069,7 +2069,7 @@ _02017D48: ; jump table
 _02017D50:
 	asr r0, r1, #4
 	lsl r1, r0, #2
-	ldr r0, _02017DD4 ; =_021094DC
+	ldr r0, _02017DD4 ; =FX_SinCosTable_
 	ldr r2, [r4, #0xc]
 	ldrsh r0, [r0, r1]
 	mul r0, r2
@@ -2082,7 +2082,7 @@ _02017D64:
 	lsl r1, r1, #1
 	add r1, r1, #1
 	lsl r2, r1, #1
-	ldr r1, _02017DD4 ; =_021094DC
+	ldr r1, _02017DD4 ; =FX_SinCosTable_
 	ldr r0, [r4, #0xc]
 	ldrsh r1, [r1, r2]
 	mul r1, r0
@@ -2093,7 +2093,7 @@ _02017D64:
 _02017D7C:
 	asr r0, r1, #4
 	lsl r1, r0, #2
-	ldr r0, _02017DD4 ; =_021094DC
+	ldr r0, _02017DD4 ; =FX_SinCosTable_
 	ldr r2, [r4, #0xc]
 	ldrsh r0, [r0, r1]
 	mul r0, r2
@@ -2107,7 +2107,7 @@ _02017D92:
 	lsl r1, r1, #1
 	add r1, r1, #1
 	lsl r2, r1, #1
-	ldr r1, _02017DD4 ; =_021094DC
+	ldr r1, _02017DD4 ; =FX_SinCosTable_
 	ldr r0, [r4, #0xc]
 	ldrsh r1, [r1, r2]
 	mul r1, r0
@@ -2138,7 +2138,7 @@ _02017DB0:
 _02017DD2:
 	pop {r4, pc}
 	.balign 4, 0
-_02017DD4: .word _021094DC
+_02017DD4: .word FX_SinCosTable_
 	thumb_func_end sub_02017D20
 
 	thumb_func_start sub_02017DD8
@@ -2173,7 +2173,7 @@ _02017E06: ; jump table
 _02017E0E:
 	asr r0, r1, #4
 	lsl r1, r0, #2
-	ldr r0, _02017E94 ; =_021094DC
+	ldr r0, _02017E94 ; =FX_SinCosTable_
 	ldr r2, [r4, #0xc]
 	ldrsh r0, [r0, r1]
 	mul r0, r2
@@ -2186,7 +2186,7 @@ _02017E22:
 	lsl r1, r1, #1
 	add r1, r1, #1
 	lsl r2, r1, #1
-	ldr r1, _02017E94 ; =_021094DC
+	ldr r1, _02017E94 ; =FX_SinCosTable_
 	ldr r0, [r4, #0xc]
 	ldrsh r1, [r1, r2]
 	mul r1, r0
@@ -2197,7 +2197,7 @@ _02017E22:
 _02017E3A:
 	asr r0, r1, #4
 	lsl r1, r0, #2
-	ldr r0, _02017E94 ; =_021094DC
+	ldr r0, _02017E94 ; =FX_SinCosTable_
 	ldr r2, [r4, #0xc]
 	ldrsh r0, [r0, r1]
 	mul r0, r2
@@ -2211,7 +2211,7 @@ _02017E50:
 	lsl r1, r1, #1
 	add r1, r1, #1
 	lsl r2, r1, #1
-	ldr r1, _02017E94 ; =_021094DC
+	ldr r1, _02017E94 ; =FX_SinCosTable_
 	ldr r0, [r4, #0xc]
 	ldrsh r1, [r1, r2]
 	mul r1, r0
@@ -2242,7 +2242,7 @@ _02017E6E:
 _02017E90:
 	pop {r4, pc}
 	nop
-_02017E94: .word _021094DC
+_02017E94: .word FX_SinCosTable_
 	thumb_func_end sub_02017DD8
 
 	thumb_func_start sub_02017E98

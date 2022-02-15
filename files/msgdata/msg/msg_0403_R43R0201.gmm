@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0403_R43R0201_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hold it there, kiddo!\rThe toll is $1,000 to go through.\r</language>
+	</row>
+	<row id="msg_0403_R43R0201_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Thank you very much!\r</language>
+	</row>
+	<row id="msg_0403_R43R0201_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Then pay what you have, please.\rThose who have no money, hmm...\ncan go through free of charge!\r</language>
+	</row>
+	<row id="msg_0403_R43R0201_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">He-he-he. We’re making a bundle.\rEveryone wants to see what’s going\non up at Lake of Rage.</language>
+	</row>
+	<row id="msg_0403_R43R0201_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I got chased from my post by\nthese Team Rocket thugs.\rThen they just disappeared.\nSomeone apparently destroyed\ftheir hideout.\r...One more thing!\fI found this under the counter.\fIt makes me uncomfortable.\fCould I give it to you?\r</language>
+	</row>
+	<row id="msg_0403_R43R0201_00005" index="5">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0403_R43R0201_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It contains Sludge Bomb!\rIt not only damages the target\nbut also poisons it sometimes.\fSee!\rDoesn’t it make you feel\nuncomfortable?</language>
+	</row>
+</body>

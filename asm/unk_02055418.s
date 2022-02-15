@@ -3,8 +3,8 @@
 
 	.text
 
-	thumb_func_start sub_02055418
-sub_02055418: ; 0x02055418
+	thumb_func_start FieldSys_StartBugContestTimer
+FieldSys_StartBugContestTimer: ; 0x02055418
 	push {r4, r5, lr}
 	sub sp, #0x1c
 	add r5, r0, #0
@@ -30,7 +30,7 @@ _0205544A:
 	add sp, #0x1c
 	pop {r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02055418
+	thumb_func_end FieldSys_StartBugContestTimer
 
 	thumb_func_start sub_02055450
 sub_02055450: ; 0x02055450
@@ -145,14 +145,14 @@ sub_02055508: ; 0x02055508
 	add r1, r4, #0
 	bl sub_0202C78C
 	ldr r0, [r5, #0xc]
-	bl sub_0202D9C4
+	bl Save_Roamers_get
 	add r7, r0, #0
 	ldr r0, [r5, #0xc]
 	bl sub_0202C854
 	bl sub_0202C7DC
 	add r1, r0, #0
 	add r0, r7, #0
-	bl sub_0202D9A0
+	bl Roamers_SetRand
 	ldr r0, [r5, #0xc]
 	bl SavArray_PlayerParty_get
 	add r1, r4, #0
@@ -160,7 +160,7 @@ sub_02055508: ; 0x02055508
 	lsl r1, r4, #0x10
 	ldr r0, [r5, #0xc]
 	lsr r1, r1, #0x10
-	bl sub_02066D10
+	bl Save_LCRNGAdvanceLotoID
 	ldr r0, [r5, #0xc]
 	bl sub_02066D60
 	ldr r0, [r5, #0xc]
@@ -171,13 +171,13 @@ sub_02055508: ; 0x02055508
 	add r0, r5, #0
 	bl sub_020556B8
 	ldr r0, [r5, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetPhoneRematches
 	add r1, r4, #0
 	bl sub_0202F294
 	cmp r6, #0
 	bne _0205559E
 	ldr r0, [r5, #0xc]
-	bl sub_02031B14
+	bl Save_ApricornBox_get
 	add r1, r4, #0
 	bl sub_02031CCC
 	ldr r0, [r5, #0xc]
@@ -185,11 +185,11 @@ sub_02055508: ; 0x02055508
 	bl sub_0209730C
 _0205559E:
 	ldr r0, [r5, #0xc]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	bl sub_02031AE4
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066E94
+	bl ScriptState_UpdateBuenasPasswordSet
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02055508
 
@@ -205,7 +205,7 @@ sub_020555B4: ; 0x020555B4
 	bl sub_02092E34
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0206DB34
+	bl FieldSys_IncrementBugContestTimer
 	ldr r0, [r5, #0xc]
 	bl SavArray_PlayerParty_get
 	add r1, r4, #0
@@ -214,25 +214,25 @@ sub_020555B4: ; 0x020555B4
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_020555B4
 
-	thumb_func_start sub_020555E0
-sub_020555E0: ; 0x020555E0
+	thumb_func_start Field_GetTimeOfDay
+Field_GetTimeOfDay: ; 0x020555E0
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
 	bl Sav2_SysInfo_RTC_get
 	ldr r0, [r0, #0x14]
 	bl GF_RTC_GetTimeOfDayByHour
 	pop {r3, pc}
-	thumb_func_end sub_020555E0
+	thumb_func_end Field_GetTimeOfDay
 
-	thumb_func_start sub_020555F0
-sub_020555F0: ; 0x020555F0
+	thumb_func_start Field_GetTimeOfDayWildParam
+Field_GetTimeOfDayWildParam: ; 0x020555F0
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
 	bl Sav2_SysInfo_RTC_get
 	ldr r0, [r0, #0x14]
 	bl GF_RTC_GetTimeOfDayWildParamByHour
 	pop {r3, pc}
-	thumb_func_end sub_020555F0
+	thumb_func_end Field_GetTimeOfDayWildParam
 
 	thumb_func_start sub_02055600
 sub_02055600: ; 0x02055600
@@ -350,7 +350,7 @@ sub_020556A8: ; 0x020556A8
 sub_020556B8: ; 0x020556B8
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl sub_0202A96C
+	bl Sav2_FieldApricornTrees_get
 	bl sub_0202AE74
 	pop {r3, pc}
 	.balign 4, 0
@@ -401,7 +401,7 @@ sub_02055708: ; 0x02055708
 	pop {r3, r4, r5, pc}
 _02055714:
 	add r0, r4, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	ldr r1, _0205575C ; =0x00000107
 	cmp r0, r1
 	beq _02055748
@@ -445,11 +445,11 @@ sub_02055760: ; 0x02055760
 	push {r3, r4, r5, lr}
 	ldr r0, [r0, #0xc]
 	add r5, r1, #0
-	bl sub_0202A96C
+	bl Sav2_FieldApricornTrees_get
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_0202AE68
@@ -462,11 +462,11 @@ sub_02055780: ; 0x02055780
 	push {r3, r4, r5, lr}
 	ldr r0, [r0, #0xc]
 	add r5, r1, #0
-	bl sub_0202A96C
+	bl Sav2_FieldApricornTrees_get
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_0202AE38
@@ -479,11 +479,11 @@ sub_020557A0: ; 0x020557A0
 	push {r3, r4, r5, lr}
 	ldr r0, [r0, #0xc]
 	add r5, r1, #0
-	bl sub_0202A96C
+	bl Sav2_FieldApricornTrees_get
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_0202AE40
@@ -491,19 +491,19 @@ sub_020557A0: ; 0x020557A0
 	.balign 4, 0
 	thumb_func_end sub_020557A0
 
-	thumb_func_start sub_020557C0
-sub_020557C0: ; 0x020557C0
+	thumb_func_start FieldSys_ApricornTree_GetApricorn
+FieldSys_ApricornTree_GetApricorn: ; 0x020557C0
 	push {r3, r4, r5, lr}
 	ldr r0, [r0, #0xc]
 	add r5, r1, #0
-	bl sub_0202A96C
+	bl Sav2_FieldApricornTrees_get
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_0202AE4C
+	bl ApricornTrees_GetApricorn
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_020557C0
+	thumb_func_end FieldSys_ApricornTree_GetApricorn

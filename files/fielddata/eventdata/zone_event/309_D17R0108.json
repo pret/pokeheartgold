@@ -1,0 +1,110 @@
+{
+  "header": "fielddata/script/scr_seq/event_D17R0108.h",
+  "bgs": [
+    {
+      "scr": "std_hiddenitem_d17r0108_carbos",
+      "type": 2,
+      "x": 21,
+      "y": 6,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_EVERYWHERE_monstarball",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D17R0108_FULL_RESTORE",
+      "scr": "std_itemball_d17r0108_full_restore",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 6,
+      "y": 6,
+      "z": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_monstarball_2",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D17R0108_MAX_ELIXIR",
+      "scr": "std_itemball_d17r0108_max_elixir",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 17,
+      "y": 14,
+      "z": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_monstarball_3",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D17R0108_NUGGET",
+      "scr": "std_itemball_d17r0108_nugget",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 19,
+      "y": 24,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 7,
+      "y": 12,
+      "header": "MAP_D17R0107",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 7,
+      "y": 20,
+      "header": "MAP_D17R0109",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 16,
+      "y": 9,
+      "header": "MAP_D17R0109",
+      "anchor": 2,
+      "height": 0
+    },
+    {
+      "x": 11,
+      "y": 18,
+      "header": "MAP_D17R0109",
+      "anchor": 5,
+      "height": 0
+    },
+    {
+      "x": 23,
+      "y": 17,
+      "header": "MAP_D17R0109",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 24,
+      "y": 24,
+      "header": "MAP_D17R0109",
+      "anchor": 4,
+      "height": 0
+    }
+  ]
+}

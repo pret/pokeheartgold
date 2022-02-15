@@ -4021,7 +4021,7 @@ _02039A36:
 	ldr r0, [r0]
 	ldr r0, [r0, #0x28]
 	bl sub_020275A4
-	ldr r1, _02039AA0 ; =gMain + 0x60
+	ldr r1, _02039AA0 ; =gSystem + 0x60
 	mov r0, #1
 	strb r0, [r1, #8]
 	ldr r1, _02039A9C ; =_021D4150
@@ -4059,7 +4059,7 @@ _02039A98:
 	pop {r3, pc}
 	nop
 _02039A9C: .word _021D4150
-_02039AA0: .word gMain + 0x60
+_02039AA0: .word gSystem + 0x60
 	thumb_func_end sub_02039A00
 
 	thumb_func_start sub_02039AA4
@@ -4768,7 +4768,7 @@ sub_02039FD8: ; 0x02039FD8
 	add r0, #0x1f
 	mov r1, #0x1f
 	bic r0, r1
-	bl sub_0209FAE4
+	bl DWC_Init
 	add r5, r0, #0
 	add r0, r4, #0
 	bl FreeToHeap
@@ -4797,14 +4797,14 @@ sub_0203A01C: ; 0x0203A01C
 	push {r4, lr}
 	bl sub_0202C08C
 	add r4, r0, #0
-	bl sub_020A00BC
+	bl DWC_CheckUserData
 	cmp r0, #0
 	bne _0203A03A
 	ldr r1, _0203A03C ; =0x4144414A
 	add r0, r4, #0
-	bl sub_020A00B0
+	bl DWC_CreateUserData
 	add r0, r4, #0
-	bl sub_020A0214
+	bl DWC_ClearDirtyFlag
 _0203A03A:
 	pop {r4, pc}
 	.balign 4, 0
@@ -4818,10 +4818,10 @@ sub_0203A040: ; 0x0203A040
 	bl sub_0202C08C
 	add r4, r0, #0
 	add r1, sp, #0
-	bl sub_020A037C
+	bl DWC_CreateExchangeToken
 	add r0, r4, #0
 	add r1, sp, #0
-	bl sub_020A028C
+	bl DWC_GetGsProfileId
 	add sp, #0xc
 	pop {r3, r4, pc}
 	thumb_func_end sub_0203A040
@@ -4832,11 +4832,11 @@ sub_0203A05C: ; 0x0203A05C
 	bl sub_0202C6F4
 	bl sub_0202C08C
 	add r4, r0, #0
-	bl sub_020A0100
+	bl DWC_CheckHasProfile
 	cmp r0, #0
 	beq _0203A07E
 	add r0, r4, #0
-	bl sub_020A0130
+	bl DWC_CheckValidConsole
 	cmp r0, #0
 	beq _0203A07E
 	mov r0, #1
@@ -4867,7 +4867,7 @@ sub_0203A084: ; 0x0203A084
 	mvn r1, r1
 	str r1, [r0]
 	add r0, r5, #0
-	bl sub_020A008C
+	bl DWC_IsValidFriendData
 	cmp r0, #0
 	bne _0203A0BE
 	add sp, #8
@@ -4878,7 +4878,7 @@ _0203A0BE:
 _0203A0C0:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_020A041C
+	bl DWC_IsEqualFriendData
 	cmp r0, #0
 	beq _0203A0D6
 	ldr r0, [sp]
@@ -4889,16 +4889,16 @@ _0203A0C0:
 _0203A0D6:
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_020A028C
+	bl DWC_GetGsProfileId
 	cmp r0, #0
 	ble _0203A104
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_020A028C
+	bl DWC_GetGsProfileId
 	str r0, [sp, #4]
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_020A028C
+	bl DWC_GetGsProfileId
 	ldr r1, [sp, #4]
 	cmp r1, r0
 	bne _0203A104
@@ -4913,7 +4913,7 @@ _0203A104:
 	cmp r0, #0
 	bge _0203A11A
 	add r0, r4, #0
-	bl sub_020A008C
+	bl DWC_IsValidFriendData
 	cmp r0, #0
 	bne _0203A11A
 	ldr r0, [sp]
@@ -4947,7 +4947,7 @@ sub_0203A128: ; 0x0203A128
 	ldr r1, [sp]
 	ldr r2, [sp, #4]
 	add r0, r7, #0
-	bl sub_0209FD0C
+	bl DWC_CheckFriendKey
 	cmp r0, #0
 	bne _0203A160
 	add sp, #0x18
@@ -4957,10 +4957,10 @@ _0203A160:
 	ldr r1, [sp]
 	ldr r2, [sp, #4]
 	add r0, sp, #0xc
-	bl sub_020A0340
+	bl DWC_CreateFriendKeyToken
 	add r0, r7, #0
 	add r1, sp, #0xc
-	bl sub_020A028C
+	bl DWC_GetGsProfileId
 	cmp r0, #0
 	bgt _0203A17C
 	add sp, #0x18
@@ -4974,11 +4974,11 @@ _0203A17C:
 _0203A184:
 	add r0, r7, #0
 	add r1, sp, #0xc
-	bl sub_020A028C
+	bl DWC_GetGsProfileId
 	str r0, [sp, #8]
 	add r0, r7, #0
 	add r1, r5, #0
-	bl sub_020A028C
+	bl DWC_GetGsProfileId
 	ldr r1, [sp, #8]
 	cmp r1, r0
 	bne _0203A1A4
@@ -4991,7 +4991,7 @@ _0203A1A4:
 	cmp r0, #0
 	bge _0203A1B6
 	add r0, r5, #0
-	bl sub_020A008C
+	bl DWC_IsValidFriendData
 	cmp r0, #0
 	bne _0203A1B6
 	str r4, [r6]
@@ -5218,7 +5218,7 @@ _0203A38E:
 	bl sub_0202C23C
 	add r1, r0, #0
 	add r0, r6, #0
-	bl sub_020A041C
+	bl DWC_IsEqualFriendData
 	cmp r0, #0
 	beq _0203A3A6
 	add r0, r4, #0

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0418_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Team Rocket Announcement</language>
+	</row>
+	<row id="msg_0418_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Team Rocket</language>
+	</row>
+	<row id="msg_0418_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">...Uh... um. Testing! Testing 1, 2, 3...\nWe’re the amazing Team Rocket! It’s been\nthree years but we’ve rebuilt the team\nand restructured! We’re proud to\nannounce that we’re back!\nGiovanni! Can you hear this?!\n...We finally did it!\nWhere could the boss be, I wonder?\nI wonder if he heard this announcement...\n</language>
+	</row>
+</body>

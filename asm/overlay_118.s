@@ -100,10 +100,10 @@ _0225F050:
 	bl ov01_021F0500
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #8
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #0
 	bl BG_SetMaskColor
@@ -112,16 +112,16 @@ _0225F050:
 	ldr r0, [r0, #8]
 	mov r2, #0
 	mov r3, #0x80
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r4, #0x10]
 	mov r1, #3
 	add r3, r1, #0
 	ldr r0, [r0, #8]
 	mov r2, #0
 	add r3, #0xfd
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #0x15
-	bl sub_02022C9C
+	bl GX_EngineASetLayers
 	mov r0, #1
 	str r0, [r4]
 	b _0225F218
@@ -179,13 +179,13 @@ _0225F18E:
 	ldr r0, [r0, #8]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r4, #0x10]
 	mov r1, #3
 	ldr r0, [r0, #8]
 	mov r2, #0
 	lsl r3, r1, #7
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r1, #0
 	str r1, [r5, #0x1c]
 	ldr r2, [r5, #0x18]
@@ -250,13 +250,13 @@ _0225F218:
 	mov r1, #1
 	mov r2, #0
 	asr r3, r3, #0xc
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r4, #0x10]
 	mov r1, #1
 	ldr r0, [r0, #8]
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r4, #0x10]
 	ldr r3, [r5]
 	mov r1, #3
@@ -265,13 +265,13 @@ _0225F218:
 	ldr r0, [r0, #8]
 	mov r2, #0
 	sub r3, r3, r5
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r4, #0x10]
 	mov r1, #3
 	ldr r0, [r0, #8]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 _0225F25E:
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}

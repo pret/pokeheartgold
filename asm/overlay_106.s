@@ -1,3 +1,5 @@
+#include "constants/mmodel.h"
+#include "constants/species.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -10,11 +12,11 @@ ov106_021E5900: ; 0x021E5900
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	mov r0, #0
-	bl sub_02022C9C
+	bl GX_EngineASetLayers
 	mov r0, #0
-	bl sub_02022D04
+	bl GX_EngineBSetLayers
 	ldr r0, _021E5940 ; =0x04000050
 	mov r1, #0
 	strh r1, [r0]
@@ -656,7 +658,7 @@ ov106_021E5D70: ; 0x021E5D70
 	bl NNS_G3dGlbPolygonAttr
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
@@ -1004,14 +1006,14 @@ ov106_021E6064: ; 0x021E6064
 	pop {r3, pc}
 	thumb_func_end ov106_021E6064
 
-	thumb_func_start ov106_021E6080
-ov106_021E6080: ; 0x021E6080
+	thumb_func_start ScriptCinematic_HoOh
+ScriptCinematic_HoOh: ; 0x021E6080
 	push {r4, lr}
 	ldr r1, _021E60A8 ; =0x0000040C
 	add r4, r0, #0
 	ldr r1, [r4, r1]
 	lsl r2, r1, #2
-	ldr r1, _021E60AC ; =ov106_021E6E14
+	ldr r1, _021E60AC ; =sScriptCinematicSubs_HoOh
 	ldr r1, [r1, r2]
 	blx r1
 	ldr r1, _021E60A8 ; =0x0000040C
@@ -1028,8 +1030,8 @@ _021E609E:
 	pop {r4, pc}
 	.balign 4, 0
 _021E60A8: .word 0x0000040C
-_021E60AC: .word ov106_021E6E14
-	thumb_func_end ov106_021E6080
+_021E60AC: .word sScriptCinematicSubs_HoOh
+	thumb_func_end ScriptCinematic_HoOh
 
 	thumb_func_start ov106_021E60B0
 ov106_021E60B0: ; 0x021E60B0
@@ -1238,14 +1240,14 @@ _021E6248: .word 0x00000414
 _021E624C: .word 0x0000092D
 	thumb_func_end ov106_021E61F8
 
-	thumb_func_start ov106_021E6250
-ov106_021E6250: ; 0x021E6250
+	thumb_func_start ScriptCinematic_Lugia
+ScriptCinematic_Lugia: ; 0x021E6250
 	push {r4, lr}
 	ldr r1, _021E6278 ; =0x0000040C
 	add r4, r0, #0
 	ldr r1, [r4, r1]
 	lsl r2, r1, #2
-	ldr r1, _021E627C ; =ov106_021E6ED4
+	ldr r1, _021E627C ; =sScriptCinematicSubs_Lugia
 	ldr r1, [r1, r2]
 	blx r1
 	ldr r1, _021E6278 ; =0x0000040C
@@ -1262,8 +1264,8 @@ _021E626E:
 	pop {r4, pc}
 	.balign 4, 0
 _021E6278: .word 0x0000040C
-_021E627C: .word ov106_021E6ED4
-	thumb_func_end ov106_021E6250
+_021E627C: .word sScriptCinematicSubs_Lugia
+	thumb_func_end ScriptCinematic_Lugia
 
 	thumb_func_start ov106_021E6280
 ov106_021E6280: ; 0x021E6280
@@ -1338,7 +1340,7 @@ ov106_021E62F4: ; 0x021E62F4
 	mov r1, #0
 	str r1, [r4, r0]
 	ldr r0, _021E639C ; =0x00000868
-	bl sub_02006154
+	bl StopSE
 	ldr r0, [r4, #4]
 	bl ov106_021E6064
 	mov r0, #1
@@ -1386,7 +1388,7 @@ _021E6364:
 	bne _021E637A
 	ldr r0, _021E639C ; =0x00000868
 	mov r1, #0x1e
-	bl sub_020054AC
+	bl GF_SetVolumeBySeqNo
 	b _021E638A
 _021E637A:
 	bhs _021E638A
@@ -1395,7 +1397,7 @@ _021E637A:
 	lsl r1, r1, #8
 	ldr r0, _021E639C ; =0x00000868
 	lsr r1, r1, #8
-	bl sub_020054AC
+	bl GF_SetVolumeBySeqNo
 _021E638A:
 	ldr r0, _021E6398 ; =0x00000414
 	ldr r1, [r4, r0]
@@ -1409,14 +1411,14 @@ _021E639C: .word 0x00000868
 _021E63A0: .word 0x00000931
 	thumb_func_end ov106_021E62F4
 
-	thumb_func_start ov106_021E63A4
-ov106_021E63A4: ; 0x021E63A4
+	thumb_func_start ScriptCinematic_Arceus
+ScriptCinematic_Arceus: ; 0x021E63A4
 	push {r4, lr}
 	ldr r1, _021E63D8 ; =0x0000040C
 	add r4, r0, #0
 	ldr r1, [r4, r1]
 	lsl r2, r1, #2
-	ldr r1, _021E63DC ; =ov106_021E6F34
+	ldr r1, _021E63DC ; =sScriptCinematicSubs_Arceus
 	ldr r1, [r1, r2]
 	blx r1
 	ldr r1, _021E63D8 ; =0x0000040C
@@ -1437,8 +1439,8 @@ _021E63C2:
 	pop {r4, pc}
 	nop
 _021E63D8: .word 0x0000040C
-_021E63DC: .word ov106_021E6F34
-	thumb_func_end ov106_021E63A4
+_021E63DC: .word sScriptCinematicSubs_Arceus
+	thumb_func_end ScriptCinematic_Arceus
 
 	thumb_func_start ov106_021E63E0
 ov106_021E63E0: ; 0x021E63E0
@@ -1446,7 +1448,7 @@ ov106_021E63E0: ; 0x021E63E0
 	add r4, r0, #0
 	bl ov106_021E6A34
 	ldr r0, [r4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200D034
 	ldr r3, _021E6400 ; =0x027E0000
 	ldr r1, _021E6404 ; =0x00003FF8
@@ -1793,18 +1795,18 @@ ov106_021E66B0: ; 0x021E66B0
 	add r7, r2, #0
 	cmp r5, #0
 	ble _021E66C2
-	ldr r1, _021E66F4 ; =0x000001ED
+	ldr r1, _021E66F4 ; =NATIONAL_DEX_COUNT
 	cmp r5, r1
 	ble _021E66C6
 _021E66C2:
-	mov r4, #1
+	mov r4, #MMODEL_BABYGIRL1
 	b _021E66EE
 _021E66C6:
-	bl sub_0206A304
-	ldr r1, _021E66F8 ; =0x00000129
+	bl SpeciesToOverworldModelIndexOffset
+	ldr r1, _021E66F8 ; =MMODEL_TSURE_POKE_BULBASAUR
 	add r4, r0, r1
 	add r0, r5, #0
-	bl sub_0206A338
+	bl OverworldModelLookupHasFemaleForme
 	cmp r0, #0
 	beq _021E66E0
 	cmp r7, #1
@@ -1813,7 +1815,7 @@ _021E66C6:
 	b _021E66EE
 _021E66E0:
 	add r0, r5, #0
-	bl sub_0206A310
+	bl OverworldModelLookupFormeCount
 	cmp r6, r0
 	ble _021E66EC
 	mov r6, #0
@@ -1823,8 +1825,8 @@ _021E66EE:
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_021E66F4: .word 0x000001ED
-_021E66F8: .word 0x00000129
+_021E66F4: .word NATIONAL_DEX_COUNT
+_021E66F8: .word MMODEL_TSURE_POKE_BULBASAUR
 	thumb_func_end ov106_021E66B0
 
 	thumb_func_start ov106_021E66FC
@@ -1882,7 +1884,7 @@ _021E6764:
 	add r2, r4, #0
 	bl ov106_021E66B0
 	add r1, r0, #0
-	mov r0, #0x51
+	mov r0, #0x51 ; mmodel.narc
 	mov r2, #0x99
 	bl AllocAndReadWholeNarcMemberByIdPair
 	str r0, [sp, #0xc]
@@ -1961,11 +1963,11 @@ ov106_021E6814: ; 0x021E6814
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	mov r0, #0
-	bl sub_02022C9C
+	bl GX_EngineASetLayers
 	mov r0, #0
-	bl sub_02022D04
+	bl GX_EngineBSetLayers
 	ldr r0, _021E688C ; =0x04000050
 	mov r1, #0
 	strh r1, [r0]
@@ -2194,7 +2196,7 @@ ov106_021E69F0: ; 0x021E69F0
 	add r1, r2, #0
 	add r2, sp, #0
 	mov r3, #0x99
-	bl sub_02007C48
+	bl GfGfxLoader_GetPlttDataFromOpenNarc
 	add r6, r0, #0
 	ldr r2, _021E6A30 ; =0x00002004
 	add r0, r4, #0
@@ -2405,7 +2407,7 @@ _021E6B64:
 	ldr r2, [r4]
 	ldr r3, [r5, #4]
 	add r1, #0x44
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	ldr r1, [r5, #4]
 	ldr r2, [r5, #8]
 	add r0, r4, #0
@@ -2421,7 +2423,7 @@ _021E6B64:
 	ldr r1, [r5, #8]
 	ldr r2, [r4]
 	ldr r3, [r5, #4]
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #1
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
@@ -2444,7 +2446,7 @@ _021E6BBE:
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -2465,7 +2467,7 @@ _021E6BE2:
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -2564,7 +2566,7 @@ ov106_021E6C88: ; 0x021E6C88
 	beq _021E6C98
 	bl GF_AssertFail
 _021E6C98:
-	bl sub_02004A90
+	bl GF_GetCurrentPlayingBGM
 	strh r0, [r4, #0x18]
 	mov r0, #1
 	pop {r4, pc}
@@ -2580,9 +2582,9 @@ ov106_021E6CA8: ; 0x021E6CA8
 	beq _021E6CB4
 	bl GF_AssertFail
 _021E6CB4:
-	bl sub_02004A90
+	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
@@ -2718,7 +2720,7 @@ ov106_021E6E04: ; 0x021E6E04
 	.byte 0x00, 0x00, 0x84, 0x10, 0x84, 0x10, 0x84, 0x10, 0x84, 0x10, 0x84, 0x10
 	.byte 0x84, 0x10, 0x84, 0x10
 
-ov106_021E6E14: ; 0x021E6E14
+sScriptCinematicSubs_HoOh: ; 0x021E6E14
 	.word ov106_021E60B0
 	.word ov106_021E6104
 	.word ov106_021E6118
@@ -2751,7 +2753,7 @@ ov106_021E6EC4: ; 0x021E6EC4
 	.byte 0x00, 0x00, 0x89, 0x7A, 0x84, 0x10, 0x84, 0x10, 0x84, 0x10, 0x84, 0x10
 	.byte 0x84, 0x10, 0x84, 0x10
 
-ov106_021E6ED4: ; 0x021E6ED4
+sScriptCinematicSubs_Lugia: ; 0x021E6ED4
 	.word ov106_021E6280
 	.word ov106_021E62C8
 	.word ov106_021E62DC
@@ -2771,7 +2773,7 @@ ov106_021E6F24: ; 0x021E6F24
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
 
-ov106_021E6F34: ; 0x021E6F34
+sScriptCinematicSubs_Arceus: ; 0x021E6F34
 	.word ov106_021E6814
 	.word ov106_021E68A8
 	.word ov106_021E68DC

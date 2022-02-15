@@ -78,7 +78,7 @@ ScrCmd_772: ; 0x02048298
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	add r4, r0, #0
 	mov r5, #0
 _020482AC:
@@ -132,7 +132,7 @@ ScrCmd_834: ; 0x020482F4
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	add r7, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -217,7 +217,7 @@ ScrCmd_835: ; 0x0204839C
 	add r6, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	add r5, r0, #0
 	mov r4, #0
 _020483C0:

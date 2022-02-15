@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0744_W40_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You have to warm up before going into\nthe water.\rThat’s basic.\n</language>
+	</row>
+	<row id="msg_0744_W40_00001" index="1">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXX</language>
+	</row>
+	<row id="msg_0744_W40_00002" index="2">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0744_W40_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey, you’re young and fit!\nDon’t ride your Pokémon! Swim!\n</language>
+	</row>
+	<row id="msg_0744_W40_00004" index="4">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXX</language>
+	</row>
+	<row id="msg_0744_W40_00005" index="5">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0744_W40_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Are you going to Cianwood?\rHow about a quick battle first?\n</language>
+	</row>
+	<row id="msg_0744_W40_00007" index="7">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXX</language>
+	</row>
+	<row id="msg_0744_W40_00008" index="8">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0744_W40_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">No inflatable tube for me.\nI’m hanging on to a sea Pokémon!\n</language>
+	</row>
+	<row id="msg_0744_W40_00010" index="10">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0744_W40_00011" index="11">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0744_W40_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You can’t see it from here, but there\nis a big city called Cianwood\facross the sea.</language>
+	</row>
+	<row id="msg_0744_W40_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I took the ship to go to Olivine for\nsome sightseeing. I really liked\fthe atmosphere.\rBeing a port, it was nothing like\nthe big cities.</language>
+	</row>
+	<row id="msg_0744_W40_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Do you know what lies just past\nthis gate?\rIt’s the Battle Frontier!\rEvery time I have a journey, I’ve\nraised mostly “useful” Pokémon.\rBut now that I am here, I think I\nshould have brought my\f“battle” Pokémon!</language>
+	</row>
+	<row id="msg_0744_W40_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey!\nGreat waves here!\rNo one can resist such\ngood waves!\r</language>
+	</row>
+	<row id="msg_0744_W40_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I see... You don’t have Surf yet...\nThis is just between you and me...\rI got Surf from a man at Ecruteak,\nand I think he’s still there.\rWhy don’t you try going there?\r</language>
+	</row>
+	<row id="msg_0744_W40_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This is just between you and me.\nI got Surf from a man at Ecruteak.\fI think he’s still there.\rWhy don’t you try going there?</language>
+	</row>
+	<row id="msg_0744_W40_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey!\nGreat waves here!\rNo one can resist such\ngood waves!</language>
+	</row>
+	<row id="msg_0744_W40_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rt. 40\nSouth to Cianwood City</language>
+	</row>
+	<row id="msg_0744_W40_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battle Frontier Ahead</language>
+	</row>
+</body>

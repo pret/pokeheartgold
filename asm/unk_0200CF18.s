@@ -365,7 +365,7 @@ _0200D174:
 	ldr r0, [sp, #0x20]
 	ldr r3, [r5]
 	mov r2, #0
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	ldr r1, [sp, #0x28]
 	ldr r2, [r5]
 	str r0, [sp, #0x2c]
@@ -466,7 +466,7 @@ _0200D24C:
 	ldrh r1, [r1, #0xc]
 	ldr r3, [r5]
 	mov r2, #0
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	ldr r1, [r4, #0x14]
 	add r6, r0, #0
 	str r1, [sp]

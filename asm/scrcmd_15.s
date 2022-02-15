@@ -3,8 +3,8 @@
 
 	.text
 
-	thumb_func_start ScrCmd_137
-ScrCmd_137: ; 0x0204D088
+	thumb_func_start ScrCmd_GiveMon
+ScrCmd_GiveMon: ; 0x0204D088
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x24
 	add r4, r0, #0
@@ -91,10 +91,10 @@ ScrCmd_137: ; 0x0204D088
 	mov r0, #0
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_137
+	thumb_func_end ScrCmd_GiveMon
 
-	thumb_func_start ScrCmd_364
-ScrCmd_364: ; 0x0204D154
+	thumb_func_start ScrCmd_TakeMon
+ScrCmd_TakeMon: ; 0x0204D154
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -113,10 +113,10 @@ ScrCmd_364: ; 0x0204D154
 	bl RemoveMonFromParty
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_364
+	thumb_func_end ScrCmd_TakeMon
 
-	thumb_func_start ScrCmd_354
-ScrCmd_354: ; 0x0204D180
+	thumb_func_start ScrCmd_GetPartyMonSpecies
+ScrCmd_GetPartyMonSpecies: ; 0x0204D180
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -157,10 +157,10 @@ _0204D1D6:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_354
+	thumb_func_end ScrCmd_GetPartyMonSpecies
 
-	thumb_func_start ScrCmd_355
-ScrCmd_355: ; 0x0204D1DC
+	thumb_func_start ScrCmd_PartymonIsMine
+ScrCmd_PartymonIsMine: ; 0x0204D1DC
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -207,10 +207,10 @@ _0204D242:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_355
+	thumb_func_end ScrCmd_PartymonIsMine
 
-	thumb_func_start ScrCmd_138
-ScrCmd_138: ; 0x0204D248
+	thumb_func_start ScrCmd_GiveEgg
+ScrCmd_GiveEgg: ; 0x0204D248
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -267,10 +267,10 @@ _0204D2C8:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_138
+	thumb_func_end ScrCmd_GiveEgg
 
-	thumb_func_start ScrCmd_139
-ScrCmd_139: ; 0x0204D2D0
+	thumb_func_start ScrCmd_SetMonMove
+ScrCmd_SetMonMove: ; 0x0204D2D0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -307,10 +307,10 @@ ScrCmd_139: ; 0x0204D2D0
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_139
+	thumb_func_end ScrCmd_SetMonMove
 
-	thumb_func_start ScrCmd_140
-ScrCmd_140: ; 0x0204D328
+	thumb_func_start ScrCmd_MonHasMove
+ScrCmd_MonHasMove: ; 0x0204D328
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -383,10 +383,10 @@ _0204D3C6:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_140
+	thumb_func_end ScrCmd_MonHasMove
 
-	thumb_func_start ScrCmd_141
-ScrCmd_141: ; 0x0204D3CC
+	thumb_func_start ScrCmd_GetPartySlotWithMove
+ScrCmd_GetPartySlotWithMove: ; 0x0204D3CC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -472,10 +472,10 @@ _0204D47C:
 	nop
 _0204D484: .word 0x00000006
 _0204D488: .word 0x00000000
-	thumb_func_end ScrCmd_141
+	thumb_func_end ScrCmd_GetPartySlotWithMove
 
-	thumb_func_start ScrCmd_435
-ScrCmd_435: ; 0x0204D48C
+	thumb_func_start ScrCmd_SurvivePoisoning
+ScrCmd_SurvivePoisoning: ; 0x0204D48C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -503,7 +503,7 @@ ScrCmd_435: ; 0x0204D48C
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_435
+	thumb_func_end ScrCmd_SurvivePoisoning
 
 	thumb_func_start ScrCmd_434
 ScrCmd_434: ; 0x0204D4D0
@@ -984,8 +984,8 @@ ScrCmd_496: ; 0x0204D8A0
 	.balign 4, 0
 	thumb_func_end ScrCmd_496
 
-	thumb_func_start ScrCmd_529
-ScrCmd_529: ; 0x0204D8C8
+	thumb_func_start ScrCmd_PartySelectMon
+ScrCmd_PartySelectMon: ; 0x0204D8C8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -998,15 +998,15 @@ ScrCmd_529: ; 0x0204D8C8
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0205BD64
+	bl Save_GetLeadMonIdxForBugContest
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_529
+	thumb_func_end ScrCmd_PartySelectMon
 
-	thumb_func_start ScrCmd_497
-ScrCmd_497: ; 0x0204D8F0
+	thumb_func_start ScrCmd_GetMonTypes
+ScrCmd_GetMonTypes: ; 0x0204D8F0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -1051,10 +1051,10 @@ ScrCmd_497: ; 0x0204D8F0
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_497
+	thumb_func_end ScrCmd_GetMonTypes
 
-	thumb_func_start ScrCmd_332
-ScrCmd_332: ; 0x0204D95C
+	thumb_func_start ScrCmd_GetPartyCount
+ScrCmd_GetPartyCount: ; 0x0204D95C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -1073,10 +1073,10 @@ ScrCmd_332: ; 0x0204D95C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_332
+	thumb_func_end ScrCmd_GetPartyCount
 
-	thumb_func_start ScrCmd_356
-ScrCmd_356: ; 0x0204D988
+	thumb_func_start ScrCmd_PartyCountNotEgg
+ScrCmd_PartyCountNotEgg: ; 0x0204D988
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -1117,10 +1117,10 @@ _0204D9D6:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_356
+	thumb_func_end ScrCmd_PartyCountNotEgg
 
-	thumb_func_start ScrCmd_357
-ScrCmd_357: ; 0x0204D9E0
+	thumb_func_start ScrCmd_CountAliveMons
+ScrCmd_CountAliveMons: ; 0x0204D9E0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -1182,10 +1182,10 @@ _0204DA5C:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_357
+	thumb_func_end ScrCmd_CountAliveMons
 
-	thumb_func_start ScrCmd_358
-ScrCmd_358: ; 0x0204DA68
+	thumb_func_start ScrCmd_PokeathlonPartyCount
+ScrCmd_PokeathlonPartyCount: ; 0x0204DA68
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -1241,7 +1241,7 @@ _0204DAD2:
 	mov r0, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_358
+	thumb_func_end ScrCmd_PokeathlonPartyCount
 
 	thumb_func_start ScrCmd_359
 ScrCmd_359: ; 0x0204DAE4
@@ -1370,8 +1370,8 @@ ScrCmd_239: ; 0x0204DBA0
 	pop {r4, r5, r6, pc}
 	thumb_func_end ScrCmd_239
 
-	thumb_func_start ScrCmd_396
-ScrCmd_396: ; 0x0204DBE8
+	thumb_func_start ScrCmd_CountMonMoves
+ScrCmd_CountMonMoves: ; 0x0204DBE8
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -1450,7 +1450,7 @@ _0204DC88:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_396
+	thumb_func_end ScrCmd_CountMonMoves
 
 	thumb_func_start ScrCmd_397
 ScrCmd_397: ; 0x0204DC90
@@ -1526,8 +1526,8 @@ ScrCmd_398: ; 0x0204DCD4
 	.balign 4, 0
 	thumb_func_end ScrCmd_398
 
-	thumb_func_start ScrCmd_426
-ScrCmd_426: ; 0x0204DD34
+	thumb_func_start ScrCmd_KenyaCheck
+ScrCmd_KenyaCheck: ; 0x0204DD34
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -1579,7 +1579,7 @@ _0204DDA0:
 	ldr r0, _0204DDE0 ; =SDK_OVERLAY_OVY_23_ID
 	mov r1, #2
 	bl HandleLoadOverlay
-	bl ov23_02259A24
+	bl NPCTrade_MakeKenyaMail
 	add r6, r0, #0
 	mov r0, #0xb
 	bl Mail_new
@@ -1602,7 +1602,7 @@ _0204DDA0:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0204DDE0: .word SDK_OVERLAY_OVY_23_ID
-	thumb_func_end ScrCmd_426
+	thumb_func_end ScrCmd_KenyaCheck
 
 	thumb_func_start ScrCmd_781
 ScrCmd_781: ; 0x0204DDE4
@@ -1629,7 +1629,7 @@ ScrCmd_781: ; 0x0204DDE4
 	add r0, r4, #0
 	mov r1, #2
 	bl HandleLoadOverlay
-	bl ov23_02259A24
+	bl NPCTrade_MakeKenyaMail
 	add r7, r0, #0
 	mov r0, #0xb
 	bl Mail_new
@@ -1770,8 +1770,8 @@ _0204DF24:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ScrCmd_428
 
-	thumb_func_start ScrCmd_389
-ScrCmd_389: ; 0x0204DF54
+	thumb_func_start ScrCmd_PlayerHasSpecies
+ScrCmd_PlayerHasSpecies: ; 0x0204DF54
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -1837,10 +1837,12 @@ _0204DFDA:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0204DFE0: .word 0x00000000
-	thumb_func_end ScrCmd_389
+	thumb_func_end ScrCmd_PlayerHasSpecies
 
-	thumb_func_start ScrCmd_632
-ScrCmd_632: ; 0x0204DFE4
+	thumb_func_start ScrCmd_CountPartyMonsOfSpecies
+ScrCmd_CountPartyMonsOfSpecies: ; 0x0204DFE4
+	; second argument is a species
+	; if this is 0, returns TRUE if exists duplicate pokemon in party
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	add r4, r0, #0
@@ -1946,7 +1948,7 @@ _0204E0B6:
 	mov r0, #0
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_632
+	thumb_func_end ScrCmd_CountPartyMonsOfSpecies
 
 	thumb_func_start ScrCmd_647
 ScrCmd_647: ; 0x0204E0BC
@@ -2157,8 +2159,8 @@ _0204E250:
 	.balign 4, 0
 	thumb_func_end ScrCmd_479
 
-	thumb_func_start ScrCmd_480
-ScrCmd_480: ; 0x0204E26C
+	thumb_func_start ScrCmd_MonHasRibbon
+ScrCmd_MonHasRibbon: ; 0x0204E26C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -2203,10 +2205,10 @@ ScrCmd_480: ; 0x0204E26C
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_480
+	thumb_func_end ScrCmd_MonHasRibbon
 
-	thumb_func_start ScrCmd_481
-ScrCmd_481: ; 0x0204E2D8
+	thumb_func_start ScrCmd_GiveRibbon
+ScrCmd_GiveRibbon: ; 0x0204E2D8
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
@@ -2247,10 +2249,10 @@ ScrCmd_481: ; 0x0204E2D8
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_481
+	thumb_func_end ScrCmd_GiveRibbon
 
-	thumb_func_start ScrCmd_584
-ScrCmd_584: ; 0x0204E338
+	thumb_func_start ScrCmd_PartyLegalCheck
+ScrCmd_PartyLegalCheck: ; 0x0204E338
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -2321,7 +2323,7 @@ _0204E3B4:
 	strh r0, [r1]
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_584
+	thumb_func_end ScrCmd_PartyLegalCheck
 
 	thumb_func_start ScrCmd_688
 ScrCmd_688: ; 0x0204E3CC
@@ -2453,8 +2455,8 @@ _0204E4DA:
 	.balign 4, 0
 	thumb_func_end ScrCmd_701
 
-	thumb_func_start ScrCmd_827
-ScrCmd_827: ; 0x0204E4E0
+	thumb_func_start ScrCmd_GetPartymonForme
+ScrCmd_GetPartymonForme: ; 0x0204E4E0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -2484,7 +2486,7 @@ ScrCmd_827: ; 0x0204E4E0
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_827
+	thumb_func_end ScrCmd_GetPartymonForme
 
 	thumb_func_start ScrCmd_828
 ScrCmd_828: ; 0x0204E528

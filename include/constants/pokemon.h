@@ -7,6 +7,10 @@
 #define MAX_EV        100
 #define MAX_EV_SUM    510
 
+#define NUM_BOXES              18
+#define MONS_PER_BOX           30
+#define BOX_NAME_LENGTH  20
+
 // Pokemon types
 #define TYPE_NONE             255
 #define TYPE_NORMAL           0
@@ -28,6 +32,11 @@
 #define TYPE_DRAGON           16
 #define TYPE_DARK             17
 #define NUMBER_OF_MON_TYPES   18
+
+// Status flags
+#define STATUS_POISON                  (1<<3)
+#define STATUS_TOX_POISON              (1<<7)
+#define STATUS_POISON_ANY              (STATUS_POISON|STATUS_TOX_POISON)
 
 // Contest types
 #define COOL           0
@@ -329,7 +338,7 @@
 #define MON_DATA_SHINY_LEAF_D                   184
 #define MON_DATA_SHINY_LEAF_E                   185
 #define MON_DATA_SHINY_LEAF_CROWN               186
-#define MON_DATA_187                            187
+#define MON_DATA_MOOD                            187
 
 #define OT_ID_PLAYER_ID       0
 #define OT_ID_PRESET          1

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0544_T20R0102_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hi, {STRVAR_1 3, 0, 0}!\rMy husband’s always\nso busy--I hope he’s OK.\rWhen he’s caught up in his Pokémon\nresearch, he even forgets to eat.</language>
+	</row>
+	<row id="msg_0544_T20R0102_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hi, {STRVAR_1 3, 0, 0}!\rMy husband’s always\nso busy--I hope he’s OK.\rWhen he’s caught up in his Pokémon\nresearch, he even forgets to eat.</language>
+	</row>
+	<row id="msg_0544_T20R0102_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">When I grow up, I’m going to help\nmy dad!\rI’m going to be a great\nPokémon Professor!</language>
+	</row>
+	<row id="msg_0544_T20R0102_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">“Pokémon. Where do they come from?\nWhere are they going?\rWhy has no one ever witnessed a\nPokémon’s birth?\rI want to know! I will dedicate my\rlife to the study of Pokémon!”\r...\rIt’s a part of Professor Elm’s\nresearch papers.</language>
+	</row>
+</body>

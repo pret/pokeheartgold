@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0570_T23R0201_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">All the SLOWPOKE have disappeared\nfrom the town.\rThe forest’s protector may be\nangry with us...\rIt may be a bad omen. We should stay in.</language>
+	</row>
+	<row id="msg_0570_T23R0201_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The SLOWPOKE have returned...\rBut my FARFETCH’D haven’t come back.\nMy apprentice has gone to look for them\fin the Ilex Forest.\rIt’s been ages now.\nWhere in the world is that lazy guy?</language>
+	</row>
+	<row id="msg_0570_T23R0201_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You chased off Team Rocket and went to\nIlex Forest alone?\rThat takes guts!\nI like that. Come train with us.</language>
+	</row>
+	<row id="msg_0570_T23R0201_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Where have all the SLOWPOKE gone?\nAre they out playing somewhere?</language>
+	</row>
+	<row id="msg_0570_T23R0201_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’m sorry--I forgot to thank you.\nThis is Charcoal that I made.\rFire-type moves will become\nmore powerful when a Pokémon\fholds that.</language>
+	</row>
+	<row id="msg_0570_T23R0201_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} received\nthe Charcoal!</language>
+	</row>
+	<row id="msg_0570_T23R0201_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The SLOWPOKE came back, and you even\nfound FARFETCH’D.\fYou’re the coolest, man!</language>
+	</row>
+	<row id="msg_0570_T23R0201_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Uh-oh, your Bag is chock-full.</language>
+	</row>
+	<row id="msg_0570_T23R0201_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FARFETCH’D: Kwaa!</language>
+	</row>
+</body>

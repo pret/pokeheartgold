@@ -229,4 +229,6 @@ static inline void CARDi_SendPxi(u32 data)
         ;
 }
 
+void CARD_SetCacheFlushThreshold(u32 icache, u32 dcache);
+
 #endif //NITRO_CARD_COMMON_H_

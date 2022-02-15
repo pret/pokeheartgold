@@ -27,7 +27,7 @@ _021E80D6:
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -304,7 +304,7 @@ ov52_021E837C: ; 0x021E837C
 	bl sub_0202061C
 	bl sub_0200B224
 	add r0, r4, #0
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E839C ; =0x027E0000
 	ldr r1, _021E83A0 ; =0x00003FF8
 	mov r0, #1
@@ -596,7 +596,7 @@ ov52_021E85DC: ; 0x021E85DC
 	add r0, r5, #0
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0x40
 	str r0, [sp]
 	mov r0, #0x27
@@ -605,7 +605,7 @@ ov52_021E85DC: ; 0x021E85DC
 	mov r1, #2
 	mov r2, #4
 	mov r3, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r1, #0x1a
 	mov r0, #0
 	lsl r1, r1, #4
@@ -634,7 +634,7 @@ ov52_021E85DC: ; 0x021E85DC
 	mov r1, #3
 	add r2, r4, #0
 	mov r3, #2
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -648,7 +648,7 @@ ov52_021E85DC: ; 0x021E85DC
 	mov r1, #5
 	add r2, r4, #0
 	mov r3, #2
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2
@@ -662,7 +662,7 @@ ov52_021E85DC: ; 0x021E85DC
 	mov r1, #4
 	add r2, r4, #0
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -676,7 +676,7 @@ ov52_021E85DC: ; 0x021E85DC
 	mov r1, #6
 	add r2, r4, #0
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r6, #0xc]
 	bl Options_GetFrame
 	lsl r0, r0, #0x18
@@ -1026,7 +1026,7 @@ ov52_021E888C: ; 0x021E888C
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x5c
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -2175,7 +2175,7 @@ ov52_021E921C: ; 0x021E921C
 	strh r1, [r0]
 _021E9232:
 	ldrh r0, [r0]
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0xa
 	mul r1, r0
 	asr r0, r1, #0xb
@@ -2347,7 +2347,7 @@ _021E9356:
 	thumb_func_start ov52_021E9364
 ov52_021E9364: ; 0x021E9364
 	push {r3, r4, r5, lr}
-	ldr r1, _021E9410 ; =gMain + 0x40
+	ldr r1, _021E9410 ; =gSystem + 0x40
 	add r4, r0, #0
 	ldrh r0, [r1, #0x20]
 	ldr r3, _021E9414 ; =0x0000FFFF
@@ -2380,7 +2380,7 @@ _021E9398:
 	blt _021E93CE
 	cmp r3, #0x28
 	bgt _021E93CE
-	ldr r0, _021E9410 ; =gMain + 0x40
+	ldr r0, _021E9410 ; =gSystem + 0x40
 	ldrh r2, [r0, #0x22]
 	ldr r0, _021E941C ; =0x00005CAC
 	ldr r1, [r4, r0]
@@ -2405,7 +2405,7 @@ _021E93BC:
 _021E93CE:
 	cmp r3, #0x28
 	bgt _021E93FE
-	ldr r0, _021E9410 ; =gMain + 0x40
+	ldr r0, _021E9410 ; =gSystem + 0x40
 	ldrh r2, [r0, #0x22]
 	ldr r0, _021E941C ; =0x00005CAC
 	ldr r1, [r4, r0]
@@ -2429,7 +2429,7 @@ _021E93EA:
 	add r0, r4, r0
 	bl ov52_021E9424
 _021E93FE:
-	ldr r1, _021E9410 ; =gMain + 0x40
+	ldr r1, _021E9410 ; =gSystem + 0x40
 	ldr r0, _021E9418 ; =0x00005CA8
 	ldrh r2, [r1, #0x20]
 	str r2, [r4, r0]
@@ -2438,7 +2438,7 @@ _021E93FE:
 	str r1, [r4, r0]
 	pop {r3, r4, r5, pc}
 	nop
-_021E9410: .word gMain + 0x40
+_021E9410: .word gSystem + 0x40
 _021E9414: .word 0x0000FFFF
 _021E9418: .word 0x00005CA8
 _021E941C: .word 0x00005CAC
@@ -2458,7 +2458,7 @@ ov52_021E9424: ; 0x021E9424
 	cmp r0, #0
 	bne _021E9448
 	ldr r0, _021E9484 ; =0x00000699
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _021E9448
 	ldr r0, _021E9484 ; =0x00000699
@@ -2478,7 +2478,7 @@ _021E9448:
 	bpl _021E9470
 _021E9460:
 	ldr r0, _021E9484 ; =0x00000699
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _021E9470
 	ldr r0, _021E9484 ; =0x00000699

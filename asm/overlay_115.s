@@ -309,7 +309,7 @@ _0225F260:
 	mov r1, #0x10
 	mov r2, #0
 	mov r3, #0x40
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -502,13 +502,13 @@ _0225F3E2:
 	bl ov01_021F0B78
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #8
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -662,7 +662,7 @@ _0225F560:
 	mvn r0, r0
 	mov r1, #0x21
 	mov r2, #1
-	bl SetBrightness
+	bl SetBlendBrightness
 	ldr r3, [r4]
 	ldr r0, [r5, #0x10]
 	asr r3, r3, #0xc
@@ -671,7 +671,7 @@ _0225F560:
 	mov r1, #2
 	mov r2, #0
 	neg r3, r3
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -799,13 +799,13 @@ _0225F650:
 	mov r0, #0
 	add r1, r0, #0
 	mov r2, #1
-	bl SetBrightness
+	bl SetBlendBrightness
 	ldr r0, [r5, #0x10]
 	mov r2, #0
 	ldr r0, [r0, #8]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add sp, #0x28
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -821,7 +821,7 @@ _0225F6BC:
 	ldr r3, [r4, r3]
 	mov r1, #3
 	mov r2, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r3, #0x29
 	lsl r3, r3, #4
 	ldr r0, [r4, r3]
@@ -1617,7 +1617,7 @@ _0225FC0E:
 	ldr r0, [r6, #0x20]
 	mov r2, #0
 	mov r3, #0x40
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -1864,7 +1864,7 @@ _0225FF02:
 	bl ov01_021F0FB8
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r0, [r6]
 	add r0, r0, #1
 	str r0, [r6]

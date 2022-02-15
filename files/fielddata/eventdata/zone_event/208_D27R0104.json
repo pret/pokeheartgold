@@ -1,0 +1,127 @@
+{
+  "header": "fielddata/script/scr_seq/event_D27R0104.h",
+  "bgs": [
+    {
+      "scr": "std_hiddenitem_d27r0104_hyper_potion",
+      "type": 2,
+      "x": 5,
+      "y": 14,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_EVERYWHERE_seaman_2",
+      "ovid": "SPRITE_SEAMAN_2",
+      "mvt": 0,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_SAILOR_KENT)",
+      "dirn": 1,
+      "eye": 4,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 11,
+      "y": 13,
+      "z": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_gsman2",
+      "ovid": "SPRITE_GSMAN2",
+      "mvt": 9,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_BIRD_KEEPER_GS_DENIS)",
+      "dirn": 3,
+      "eye": 6,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1,
+      "y": 8,
+      "z": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_gsman2_2",
+      "ovid": "SPRITE_GSMAN2",
+      "mvt": 8,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_BIRD_KEEPER_GS_THEO)",
+      "dirn": 2,
+      "eye": 5,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 12,
+      "y": 4,
+      "z": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_monstarball",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D27R0104_ETHER",
+      "scr": "std_itemball_d27r0104_ether",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 14,
+      "y": 13,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 13,
+      "y": 7,
+      "header": "MAP_D27R0102",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 10,
+      "y": 7,
+      "header": "MAP_D27R0105",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 10,
+      "y": 6,
+      "header": "MAP_D27R0105",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 6,
+      "y": 7,
+      "header": "MAP_D27R0105",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 6,
+      "y": 6,
+      "header": "MAP_D27R0105",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 8,
+      "y": 18,
+      "header": "MAP_D27R0103",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

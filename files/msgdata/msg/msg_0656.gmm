@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0656_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Chuck</language>
+	</row>
+	<row id="msg_0656_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Huh? Wha...? I can’t hear you.\nMaybe we’ve got a bad connection.\rGo somewhere else and try\ncalling again!</language>
+	</row>
+	<row id="msg_0656_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello?!\nOh, hey, sorry for shouting!\rI’m doing great!\r</language>
+	</row>
+	<row id="msg_0656_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You know there’re some stronger\nGym Leaders around.\fDon’t lose heart! Keep going!</language>
+	</row>
+	<row id="msg_0656_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Let’s see... I’m free most Wednesday\nnights. Give me a call then, OK?</language>
+	</row>
+	<row id="msg_0656_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hey! I just finished training.\nDo you want to battle again? {YESNO 0}</language>
+	</row>
+	<row id="msg_0656_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">All right!\rI’ll be waiting over at the Fighting Dojo\nin Saffron City!</language>
+	</row>
+	<row id="msg_0656_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Noooooo!\nThat’s terrible!</language>
+	</row>
+	<row id="msg_0656_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hmm... You’re just battling me, right?\nDon’t you have other plans?</language>
+	</row>
+	<row id="msg_0656_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’ll be waiting at the Fighting Dojo in\nSaffron City.\fLook forward to it!</language>
+	</row>
+	<row id="msg_0656_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Yo! Chuck here!\nWhat’s up?\r</language>
+	</row>
+	<row id="msg_0656_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey, didn’t we make plans to meet at\nthe Fighting Dojo in Saffron City?\fDon’t tell me you forgot?\fCome on, man! I’m waiting!</language>
+	</row>
+	<row id="msg_0656_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You know, I spend a lot of time training\nunder a pounding waterfall every day.\rI guess that’s why I’ve been\ndisagreeing with my wife a lot lately.\rI was thinking of taking her on a trip as\nan apology, but I can’t think of any\fgood places to go.\r...That’s it!\rI should take her to Tohjo Falls! What\ndo you think?</language>
+	</row>
+	<row id="msg_0656_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You know, I’m just going to say this\nonce, but I...\rI really like sweets. They’re the best.\rAfter training every day, the thing\nthat I absolutely look forward to more\fthan anything is sneaking behind my\fwife’s back to eat something sweet.\rFortunately, I haven’t been packing on\ntoo many pounds...\rOh! Don’t tell my wife! Please!</language>
+	</row>
+	<row id="msg_0656_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lately my Gym’s waterfall device has\nbeen malfunction... Aaaaahh!\rBoomwhooshoowhooshoowhoosh\foowhooshoowhooshoowhoosh\foowhooshoowhooshoowhoosh...!\r...Haa haaa haaaaa. Sorry.\nWhile I was on the phone with you, the\fdevice broke and I just got doused\fwith water.\rI’ll call you back once things have\ncalmed down a bit here!</language>
+	</row>
+</body>

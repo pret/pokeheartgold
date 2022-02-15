@@ -395,7 +395,7 @@ sub_020192D0: ; 0x020192D0
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r1, #1
@@ -896,7 +896,7 @@ sub_020196B8: ; 0x020196B8
 	add r1, r3, #0
 	ldr r2, [sp, #0x18]
 	add r3, sp, #4
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	ldr r2, [sp, #4]
 	add r6, r0, #0
 	add r0, r5, #0
@@ -1026,7 +1026,7 @@ _0201979E:
 	ldrb r1, [r4, #0xa]
 	ldr r0, [r0]
 	ldr r2, [sp, #0x34]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r2, [sp, #0x1c]
 	ldr r0, [sp, #0x1c]
 	ldrh r2, [r2, #0xa]
@@ -1673,7 +1673,7 @@ _02019C26:
 	ldrb r0, [r5, #0xc]
 	cmp r0, #1
 	bne _02019C4C
-	ldr r0, _02019D14 ; =gMain
+	ldr r0, _02019D14 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #0xf3
 	tst r1, r0
@@ -1687,7 +1687,7 @@ _02019C46:
 	sub r0, #0xf4
 	pop {r3, r4, r5, r6, r7, pc}
 _02019C4C:
-	ldr r0, _02019D14 ; =gMain
+	ldr r0, _02019D14 ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -1770,7 +1770,7 @@ _02019CE0:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 _02019CF0:
-	ldr r0, _02019D14 ; =gMain
+	ldr r0, _02019D14 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -1791,7 +1791,7 @@ _02019D0E:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02019D14: .word gMain
+_02019D14: .word gSystem
 	thumb_func_end sub_02019BE4
 
 	thumb_func_start sub_02019D18
@@ -1837,7 +1837,7 @@ _02019D5A:
 	ldrb r0, [r5, #0xc]
 	cmp r0, #1
 	bne _02019D80
-	ldr r0, _02019E48 ; =gMain
+	ldr r0, _02019E48 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #0xf3
 	tst r1, r0
@@ -1851,7 +1851,7 @@ _02019D7A:
 	sub r0, #0xf4
 	pop {r3, r4, r5, r6, r7, pc}
 _02019D80:
-	ldr r0, _02019E48 ; =gMain
+	ldr r0, _02019E48 ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r0, #0x4c]
 	tst r1, r0
@@ -1934,7 +1934,7 @@ _02019E14:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 _02019E24:
-	ldr r0, _02019E48 ; =gMain
+	ldr r0, _02019E48 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -1955,7 +1955,7 @@ _02019E42:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02019E48: .word gMain
+_02019E48: .word gSystem
 	thumb_func_end sub_02019D18
 
 	thumb_func_start sub_02019E4C

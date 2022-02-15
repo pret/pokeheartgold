@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0682_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Josh</language>
+	</row>
+	<row id="msg_0682_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It was fun battling you!\nI’d love to trade phone numbers with\fyou, please?\fCome on, let’s trade numbers! {YESNO 0}</language>
+	</row>
+	<row id="msg_0682_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Thanks! Let’s have another battle\nagain sometime!\rJust give me a call when you’re ready.</language>
+	</row>
+	<row id="msg_0682_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ulp!\rAre you saying you think I’m so weak,\nI don’t measure up as an opponent?</language>
+	</row>
+	<row id="msg_0682_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’d do anything to get your phone\nnumber!\rPlease, let’s trade numbers! {YESNO 0}</language>
+	</row>
+	<row id="msg_0682_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh yeah.\nThis is a Shiny Stone.\rIt’s all right, don’t be shy! You can\nhave it. Go ahead!\r</language>
+	</row>
+	<row id="msg_0682_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Huh? There’s something odd about your\nvoice... Don’t tell me... You’re\fstanding nearby, aren’t you?\rIf you’ve already gotten this close,\nwhy not come talk in person?</language>
+	</row>
+	<row id="msg_0682_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’m still a featherweight, as usual...\rMy constant companion, {STRVAR_1 0, 10, 0},\nis training hard!\rIt even knocked out a {STRVAR_1 0, 11, 0} in\nunder two seconds in a recent battle!\rOK, OK, two seconds is a bit of an\nexaggeration... It was actually five\fminutes and 37 seconds...</language>
+	</row>
+	<row id="msg_0682_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">My {STRVAR_1 0, 10, 0} has gotten pretty\nstrong!\rWell, it’s gotten strong, but this\n{STRVAR_1 0, 11, 0} it was battling ran away\fbefore the fight was over...\rThat was {STRVAR_1 0, 10, 0}’s fault, right?\rIt was my fault?\rI guess that’s a possibility!</language>
+	</row>
+	<row id="msg_0682_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Earlier, I was contemplating something\nwhile walking...\rSuddenly this {STRVAR_1 0, 11, 0} jumped out!\rI was pretty surprised, and then it\nran away!\rI was thinking about it, and I had made\nplans to trade with a friend, so I was\flooking for a {STRVAR_1 0, 11, 0}...\rIt’s too bad...</language>
+	</row>
+	<row id="msg_0682_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Where are you now? I’m always on\n{STRVAR_1 4, 3, 0} myself.\rWhat do you think about battling with me\nagain? Sounds like a good idea?\fI’ll be waiting!</language>
+	</row>
+	<row id="msg_0682_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’m waiting on {STRVAR_1 4, 3, 0}.\nDon’t forget!</language>
+	</row>
+	<row id="msg_0682_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ah... Ah... Achoo!\rAh... Ah... Ah... Achoo!\rOh, it’s nothing. It’s just that my bird\nPokémon suddenly started flapping its\fwings...so there’s dust and stuff from\ftheir wings floating around my face...\fAh... Ah... Now my nose is itchy...\rAchoooo!</language>
+	</row>
+	<row id="msg_0682_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">My Pokémon was holding something in its\nmouth recently.\rI was thinking “What in the world?” and\nI pulled it out... It was a Shiny Stone!\fI was surprised. Wouldn’t you be?\r...But what’s a Shiny Stone?\rI don’t really have any use for it, and\nI don’t know what it’s worth...so I’ll\fjust give it to you!\rI’ll wait for you on {STRVAR_1 4, 3, 0}.\nCome get it!</language>
+	</row>
+	<row id="msg_0682_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You want a Shiny Stone, right?\nI’m on {STRVAR_1 4, 3, 0}. Come get it!</language>
+	</row>
+</body>

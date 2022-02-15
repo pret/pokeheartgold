@@ -85,7 +85,7 @@ ov43_02229EE0: ; 0x02229EE0
 	ldr r0, _02229FB0 ; =ov43_0222A148
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -235,7 +235,7 @@ ov43_0222A0AC: ; 0x0222A0AC
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	mov r1, #0xa
 	lsl r1, r1, #6
 	add r0, r4, r1
@@ -359,7 +359,7 @@ ov43_0222A154: ; 0x0222A154
 	ldr r0, _0222A1D8 ; =ov43_0222A148
 	add r1, r5, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0222A1D4: .word 0x00000408
@@ -373,7 +373,7 @@ ov43_0222A1DC: ; 0x0222A1DC
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	mov r1, #0xa
 	lsl r1, r1, #6
 	add r0, r4, r1
@@ -527,7 +527,7 @@ ov43_0222A318: ; 0x0222A318
 
 	thumb_func_start ov43_0222A320
 ov43_0222A320: ; 0x0222A320
-	ldr r1, _0222A330 ; =gMain
+	ldr r1, _0222A330 ; =gSystem
 	ldr r2, [r1, #0x48]
 	ldr r1, _0222A334 ; =0x00000CF3
 	tst r1, r2
@@ -537,7 +537,7 @@ ov43_0222A320: ; 0x0222A320
 _0222A32E:
 	bx lr
 	.balign 4, 0
-_0222A330: .word gMain
+_0222A330: .word gSystem
 _0222A334: .word 0x00000CF3
 	thumb_func_end ov43_0222A320
 
@@ -572,7 +572,7 @@ ov43_0222A358: ; 0x0222A358
 	bl sub_0202C6F4
 	add r5, r0, #0
 	bl sub_0202C08C
-	bl sub_020A0310
+	bl DWC_CreateFriendKey
 	str r0, [sp, #0x10]
 	str r1, [sp, #0xc]
 	mov r4, #0
@@ -600,7 +600,7 @@ _0222A378:
 	bl sub_0202C08C
 	add r1, r7, #0
 	add r2, r6, #0
-	bl sub_0209FD0C
+	bl DWC_CheckFriendKey
 	cmp r0, #0
 	bne _0222A3BA
 	add sp, #0x20
@@ -624,7 +624,7 @@ _0222A3D2:
 	bl sub_0202C23C
 	add r1, r7, #0
 	add r2, r6, #0
-	bl sub_020A0340
+	bl DWC_CreateFriendKeyToken
 	ldr r2, [sp, #4]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -728,7 +728,7 @@ ov43_0222A48C: ; 0x0222A48C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
-	ldr r0, _0222A4FC ; =gMain + 0x60
+	ldr r0, _0222A4FC ; =gSystem + 0x60
 	mov r1, #1
 	add r4, r2, #0
 	strb r1, [r0, #9]
@@ -768,7 +768,7 @@ ov43_0222A48C: ; 0x0222A48C
 	bl sub_02002B8C
 	pop {r4, r5, r6, pc}
 	nop
-_0222A4FC: .word gMain + 0x60
+_0222A4FC: .word gSystem + 0x60
 	thumb_func_end ov43_0222A48C
 
 	thumb_func_start ov43_0222A500
@@ -784,7 +784,7 @@ _0222A508: .word sub_0202457C
 ov43_0222A50C: ; 0x0222A50C
 	push {r3, lr}
 	ldr r0, [r0]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0202061C
 	bl sub_0200B224
 	pop {r3, pc}
@@ -881,7 +881,7 @@ _0222A598:
 	ldr r0, [r5, #0x58]
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0xa0
 	str r0, [sp]
 	str r7, [sp, #4]
@@ -889,7 +889,7 @@ _0222A598:
 	ldr r0, [r5, #0x58]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -899,7 +899,7 @@ _0222A598:
 	ldr r0, [r5, #0x58]
 	ldr r2, [r5]
 	mov r1, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -910,7 +910,7 @@ _0222A598:
 	ldr r2, [r5]
 	mov r1, #7
 	mov r3, #2
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -921,7 +921,7 @@ _0222A598:
 	ldr r0, [r5, #0x58]
 	ldr r2, [r5]
 	add r3, r1, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -931,7 +931,7 @@ _0222A598:
 	ldr r0, [r5, #0x58]
 	ldr r2, [r5]
 	mov r1, #0xa
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -942,7 +942,7 @@ _0222A598:
 	ldr r2, [r5]
 	mov r1, #8
 	mov r3, #6
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1352,7 +1352,7 @@ _0222A9AC:
 	ldrb r1, [r4]
 	ldr r0, [r0, #0x58]
 	add r3, r6, #0
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r1, #2
 	lsl r1, r1, #8
 	str r0, [r5, r1]
@@ -1437,7 +1437,7 @@ _0222AA22:
 	add r5, #0x84
 	str r0, [r5]
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -1466,7 +1466,7 @@ ov43_0222AA70: ; 0x0222AA70
 _0222AA98:
 	add r4, #0x64
 	add r0, r4, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov43_0222AA70
@@ -1651,13 +1651,13 @@ ov43_0222ABFC: ; 0x0222ABFC
 
 	thumb_func_start ov43_0222AC18
 ov43_0222AC18: ; 0x0222AC18
-	ldr r3, _0222AC24 ; =sub_0200C74C
+	ldr r3, _0222AC24 ; =BufferWiFiPlazaActivityName
 	add r2, r1, #0
 	ldr r0, [r0, #0x50]
 	mov r1, #0
 	bx r3
 	nop
-_0222AC24: .word sub_0200C74C
+_0222AC24: .word BufferWiFiPlazaActivityName
 	thumb_func_end ov43_0222AC18
 
 	thumb_func_start ov43_0222AC28
@@ -1951,7 +1951,7 @@ ov43_0222AE2C: ; 0x0222AE2C
 	mov r0, #0
 	mov r1, #0x3d
 	mov r2, #1
-	bl SetBrightness
+	bl SetBlendBrightness
 _0222AE58:
 	add r0, r6, #0
 	pop {r4, r5, r6, pc}
@@ -2212,7 +2212,7 @@ _0222B058:
 	bl ov43_0222B534
 	cmp r0, #0
 	beq _0222B08A
-	ldr r0, _0222B094 ; =gMain
+	ldr r0, _0222B094 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -2237,7 +2237,7 @@ _0222B08A:
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0222B090: .word ov43_0222F0C8
-_0222B094: .word gMain
+_0222B094: .word gSystem
 	thumb_func_end ov43_0222AE64
 
 	thumb_func_start ov43_0222B098
@@ -2380,7 +2380,7 @@ _0222B160:
 	ldr r0, [r0, #0x58]
 	mov r2, #1
 	add r3, #0x1c
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	ldr r1, [sp, #0x14]
 	str r0, [r1, #0x18]
 	add sp, #0x28
@@ -2420,7 +2420,7 @@ ov43_0222B1FC: ; 0x0222B1FC
 	bl ov43_0222A9F4
 	add r0, r5, #0
 	add r0, #8
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r2, [r5, #0x1c]
 	mov r3, #0
 	str r3, [sp]
@@ -2435,17 +2435,17 @@ ov43_0222B1FC: ; 0x0222B1FC
 	lsr r0, r0, #0x18
 	str r0, [sp, #8]
 	ldr r0, [r4]
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	mov r2, #0
 	ldr r0, [r4]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r4]
 	mov r1, #2
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0
@@ -2468,7 +2468,7 @@ ov43_0222B1FC: ; 0x0222B1FC
 ov43_0222B278: ; 0x0222B278
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	ldr r0, _0222B314 ; =gMain
+	ldr r0, _0222B314 ; =gSystem
 	add r4, r2, #0
 	ldr r3, [r0, #0x48]
 	ldr r0, _0222B318 ; =0x00000CF3
@@ -2477,7 +2477,7 @@ ov43_0222B278: ; 0x0222B278
 	beq _0222B28C
 	str r2, [r1]
 _0222B28C:
-	ldr r6, _0222B314 ; =gMain
+	ldr r6, _0222B314 ; =gSystem
 	mov r0, #1
 	ldr r1, [r6, #0x48]
 	add r3, r1, #0
@@ -2547,7 +2547,7 @@ _0222B310:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_0222B314: .word gMain
+_0222B314: .word gSystem
 _0222B318: .word 0x00000CF3
 _0222B31C: .word 0x000005DD
 _0222B320: .word 0x000005E5
@@ -2664,7 +2664,7 @@ _0222B3DC:
 	ldr r0, [r6]
 	add r2, r1, #0
 	lsr r3, r3, #0x18
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	add r4, r4, #1
 	add r5, r5, #5
 	cmp r4, #4
@@ -2695,7 +2695,7 @@ _0222B414:
 	add r1, r7, #0
 	add r2, r7, #0
 	lsr r3, r3, #0x18
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r0, [r5]
 	mov r1, #2
 	bl ScheduleBgTilemapBufferTransfer
@@ -2760,7 +2760,7 @@ ov43_0222B458: ; 0x0222B458
 	bl ScheduleBgTilemapBufferTransfer
 	add r5, #8
 	add r0, r5, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0xff
@@ -2815,7 +2815,7 @@ ov43_0222B4BC: ; 0x0222B4BC
 	bl DrawFrameAndWindow2
 	add r5, #0x20
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	add sp, #0x10
@@ -2855,7 +2855,7 @@ ov43_0222B55C: ; 0x0222B55C
 	bl ClearFrameAndWindow2
 	add r4, #0x20
 	add r0, r4, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov43_0222B55C
@@ -3300,7 +3300,7 @@ _0222B8E2:
 	bl ov43_0222C5D8
 	cmp r0, #0
 	beq _0222B932
-	ldr r0, _0222B938 ; =gMain
+	ldr r0, _0222B938 ; =gSystem
 	ldr r0, [r0, #0x48]
 	cmp r0, #0
 	bne _0222B8FA
@@ -3337,7 +3337,7 @@ _0222B932:
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0222B938: .word gMain
+_0222B938: .word gSystem
 	thumb_func_end ov43_0222B5D0
 
 	thumb_func_start ov43_0222B93C
@@ -3611,10 +3611,10 @@ ov43_0222BB20: ; 0x0222BB20
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r4]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	add r0, r5, #0
 	add r0, #0xb8
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [r4]
 	mov r1, #0
 	bl ScheduleBgTilemapBufferTransfer
@@ -3655,7 +3655,7 @@ ov43_0222BBB8: ; 0x0222BBB8
 	bl ov43_0222AA70
 	add r0, r5, #0
 	add r0, #0xb8
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	mov r7, #2
 	mov r6, #0
 	add r5, #8
@@ -3704,7 +3704,7 @@ _0222BBD6:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r4]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	mov r0, #0x83
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -3728,7 +3728,7 @@ _0222BBD6:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r4]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #0
 	bl ScheduleBgTilemapBufferTransfer
@@ -3823,7 +3823,7 @@ ov43_0222BD18: ; 0x0222BD18
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	ldr r0, _0222BEE0 ; =gMain
+	ldr r0, _0222BEE0 ; =gSystem
 	add r6, r1, #0
 	ldr r1, [r0, #0x48]
 	ldr r0, _0222BEE4 ; =0x00000CF3
@@ -3833,7 +3833,7 @@ ov43_0222BD18: ; 0x0222BD18
 	mov r0, #0
 	str r0, [r6]
 _0222BD30:
-	ldr r0, _0222BEE0 ; =gMain
+	ldr r0, _0222BEE0 ; =gSystem
 	mov r2, #1
 	ldr r1, [r0, #0x48]
 	tst r2, r1
@@ -4060,7 +4060,7 @@ _0222BED8:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
-_0222BEE0: .word gMain
+_0222BEE0: .word gSystem
 _0222BEE4: .word 0x00000CF3
 _0222BEE8: .word 0x000005E5
 	thumb_func_end ov43_0222BD18
@@ -4245,12 +4245,12 @@ ov43_0222C024: ; 0x0222C024
 	ldr r0, [r4]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r2, #0
 	ldr r0, [r4]
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r3, _0222C140 ; =ov43_0222F0FC
 	add r2, sp, #0x10
 	add r7, r2, #0
@@ -4316,12 +4316,12 @@ _0222C0CA:
 	mov r1, #2
 	mov r2, #0
 	add r3, r6, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r4]
 	mov r1, #3
 	mov r2, #0
 	add r3, r6, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r3, _0222C140 ; =ov43_0222F0FC
 	add r2, sp, #0x10
 	add r7, r2, #0
@@ -4543,7 +4543,7 @@ _0222C2A0:
 	mov r0, #0
 	mov r1, #0x3d
 	mov r2, #1
-	bl SetBrightness
+	bl SetBlendBrightness
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4568,7 +4568,7 @@ ov43_0222C2B0: ; 0x0222C2B0
 	ldrb r1, [r6, r7]
 	ldr r0, [sp, #0x1c]
 	bl sub_0202C23C
-	bl sub_020A0264
+	bl DWC_GetFriendKey
 	str r1, [sp, #0x10]
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0x10]
@@ -4737,7 +4737,7 @@ ov43_0222C3E8: ; 0x0222C3E8
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r5]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	mov r0, #0x83
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -4767,7 +4767,7 @@ ov43_0222C3E8: ; 0x0222C3E8
 	str r0, [sp, #0x18]
 	ldr r0, [r5]
 	add r3, r1, #0
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r5]
 	mov r1, #0
 	bl ScheduleBgTilemapBufferTransfer
@@ -4807,7 +4807,7 @@ ov43_0222C46C: ; 0x0222C46C
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r4]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #0
 	bl ScheduleBgTilemapBufferTransfer
@@ -4844,7 +4844,7 @@ ov43_0222C4B8: ; 0x0222C4B8
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r5]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	mov r0, #0x83
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -4874,7 +4874,7 @@ ov43_0222C4B8: ; 0x0222C4B8
 	str r0, [sp, #0x18]
 	ldr r0, [r5]
 	add r3, r1, #0
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r5]
 	mov r1, #0
 	bl ScheduleBgTilemapBufferTransfer
@@ -4950,7 +4950,7 @@ ov43_0222C550: ; 0x0222C550
 	bl DrawFrameAndWindow2
 	add r5, #0xc8
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	add sp, #0x10
@@ -4990,10 +4990,10 @@ ov43_0222C600: ; 0x0222C600
 	bl ClearFrameAndWindow2
 	add r0, r4, #0
 	add r0, #0xc8
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r4, #0xb8
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov43_0222C600
@@ -5279,7 +5279,7 @@ _0222C812:
 	lsr r0, r0, #0x18
 	str r0, [sp, #8]
 	ldr r0, [r4]
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #2
 	bl ScheduleBgTilemapBufferTransfer
@@ -5380,7 +5380,7 @@ _0222C8C6:
 	lsl r3, r3, #0x18
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	add r4, r4, #1
 	add r5, #0xa
 	cmp r4, #9
@@ -5464,7 +5464,7 @@ _0222C988:
 	bl ScheduleBgTilemapBufferTransfer
 	add r6, #8
 	add r0, r6, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov43_0222C918
@@ -5478,7 +5478,7 @@ ov43_0222C9A4: ; 0x0222C9A4
 	bl ov43_0222CA30
 	add r0, r5, #0
 	add r0, #8
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	mov r0, #2
 	ldrsh r1, [r5, r0]
 	cmp r1, #0
@@ -5722,7 +5722,7 @@ _0222CB50:
 	mov r1, #2
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #2
 	bl ScheduleBgTilemapBufferTransfer
@@ -6069,7 +6069,7 @@ ov43_0222CE14: ; 0x0222CE14
 _0222CE28:
 	add r0, r4, #0
 	bl ov43_0222A320
-	ldr r0, _0222CE44 ; =gMain
+	ldr r0, _0222CE44 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -6081,7 +6081,7 @@ _0222CE3C:
 	pop {r4, pc}
 	.balign 4, 0
 _0222CE40: .word ov43_0222ED7A
-_0222CE44: .word gMain
+_0222CE44: .word gSystem
 	thumb_func_end ov43_0222CE14
 
 	thumb_func_start ov43_0222CE48
@@ -6167,7 +6167,7 @@ ov43_0222CE48: ; 0x0222CE48
 	ldr r0, [r0, #4]
 	bl sub_0202C6F4
 	bl sub_0202C08C
-	bl sub_020A0310
+	bl DWC_CreateFriendKey
 	str r1, [sp, #0x1c]
 	str r0, [sp, #0x24]
 	ldr r0, [sp, #0x1c]
@@ -6272,7 +6272,7 @@ _0222CFB4:
 	mov r1, #0xe
 	mov r2, #1
 	add r3, #0x34
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	str r0, [r5, #0x30]
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
@@ -6329,18 +6329,18 @@ ov43_0222D028: ; 0x0222D028
 	lsr r0, r0, #0x18
 	str r0, [sp, #8]
 	ldr r0, [r4]
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #2
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	add r0, #0x10
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r5, #0x20
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -6369,13 +6369,13 @@ ov43_0222D090: ; 0x0222D090
 	mov r1, #2
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r5, #0
 	add r0, #0x10
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r5, #0x20
 	add r0, r5, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x20
@@ -6416,7 +6416,7 @@ ov43_0222D0F8: ; 0x0222D0F8
 	str r0, [sp, #8]
 	ldr r0, [r4]
 	mov r3, #0x14
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r0, [r4]
 	mov r1, #2
 	bl ScheduleBgTilemapBufferTransfer
@@ -6437,7 +6437,7 @@ ov43_0222D134: ; 0x0222D134
 	bl SavArray_Flags_get
 	mov r1, #2
 	mov r2, #0x1b
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	str r0, [r5, #0x10]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -6676,7 +6676,7 @@ _0222D2F8: .word 0x000005DD
 ov43_0222D2FC: ; 0x0222D2FC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	ldr r0, _0222D3B0 ; =gMain
+	ldr r0, _0222D3B0 ; =gSystem
 	add r4, r1, #0
 	ldr r1, [r0, #0x48]
 	ldr r0, _0222D3B4 ; =0x00000CF3
@@ -6686,7 +6686,7 @@ ov43_0222D2FC: ; 0x0222D2FC
 	mov r0, #0
 	str r0, [r4]
 _0222D312:
-	ldr r1, _0222D3B0 ; =gMain
+	ldr r1, _0222D3B0 ; =gSystem
 	mov r0, #3
 	ldr r2, [r1, #0x48]
 	tst r0, r2
@@ -6741,7 +6741,7 @@ _0222D36A:
 	bl ov43_0222D24C
 	pop {r4, r5, r6, pc}
 _0222D380:
-	ldr r0, _0222D3B0 ; =gMain
+	ldr r0, _0222D3B0 ; =gSystem
 	ldr r1, [r0, #0x44]
 	mov r0, #0x40
 	tst r0, r1
@@ -6766,7 +6766,7 @@ _0222D3AC:
 	mov r0, #2
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_0222D3B0: .word gMain
+_0222D3B0: .word gSystem
 _0222D3B4: .word 0x00000CF3
 	thumb_func_end ov43_0222D2FC
 
@@ -6874,7 +6874,7 @@ ov43_0222D47C: ; 0x0222D47C
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r4, r1, #0
-	ldr r1, _0222D4C0 ; =gMain
+	ldr r1, _0222D4C0 ; =gSystem
 	add r6, r2, #0
 	ldr r2, [r1, #0x44]
 	add r5, r0, #0
@@ -6905,7 +6905,7 @@ _0222D4B0:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	nop
-_0222D4C0: .word gMain
+_0222D4C0: .word gSystem
 	thumb_func_end ov43_0222D47C
 
 	thumb_func_start ov43_0222D4C4
@@ -6959,12 +6959,12 @@ ov43_0222D508: ; 0x0222D508
 	ldr r0, [r4]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r2, #0
 	ldr r0, [r4]
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r3, #0
 	ldrsh r0, [r5, r3]
 	add r1, r7, #0
@@ -6997,7 +6997,7 @@ _0222D56E:
 	ldr r0, [r4]
 	mov r1, #3
 	mov r2, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r5, #4]
 	add r0, r0, #1
 	str r0, [r5, #4]
@@ -7148,7 +7148,7 @@ ov43_0222D654: ; 0x0222D654
 	lsr r0, r0, #0x18
 	str r0, [sp, #8]
 	ldr r0, [r4]
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #5
 	bl ScheduleBgTilemapBufferTransfer
@@ -7168,7 +7168,7 @@ ov43_0222D654: ; 0x0222D654
 	lsr r0, r0, #0x18
 	str r0, [sp, #8]
 	ldr r0, [r4]
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #0
 	bl ScheduleBgTilemapBufferTransfer
@@ -7188,7 +7188,7 @@ ov43_0222D654: ; 0x0222D654
 	lsr r0, r0, #0x18
 	str r0, [sp, #8]
 	ldr r0, [r4]
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #2
 	bl ScheduleBgTilemapBufferTransfer
@@ -7238,7 +7238,7 @@ ov43_0222D654: ; 0x0222D654
 	bl ov43_0222AD00
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov43_0222D654
@@ -7346,7 +7346,7 @@ _0222D7BE:
 	lsr r0, r0, #0x18
 	str r0, [sp, #8]
 	ldr r0, [r5]
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	ldr r0, [r5]
 	mov r1, #0
 	bl ScheduleBgTilemapBufferTransfer
@@ -7354,7 +7354,7 @@ _0222D7BE:
 	bl ov43_0222AA70
 	mov r0, #2
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov43_0222D778
@@ -7381,7 +7381,7 @@ _0222D888:
 	add r4, r7, r0
 _0222D8A0:
 	add r0, r4, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r5, r5, #1
 	add r4, #0x10
 	cmp r5, #5
@@ -7621,14 +7621,14 @@ _0222DA0E:
 	add r2, r1, #0
 	ldr r0, [r0]
 	add r3, r1, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	mov r0, #0x46
 	lsl r0, r0, #2
 	mov r4, #0
 	add r5, r7, r0
 _0222DAAC:
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #8
@@ -7650,7 +7650,7 @@ ov43_0222DACC: ; 0x0222DACC
 	add r5, r0, r1
 _0222DAD6:
 	add r0, r5, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #8
@@ -7789,7 +7789,7 @@ ov43_0222DB94: ; 0x0222DB94
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r5]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	b _0222DC10
 _0222DBDC:
 	mov r0, #0x83
@@ -7816,7 +7816,7 @@ _0222DBDC:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r5]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _0222DC10:
 	cmp r4, #0xff
 	bne _0222DC20
@@ -7858,7 +7858,7 @@ _0222DC20:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r5]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r5]
 	mov r1, #2
 	bl ScheduleBgTilemapBufferTransfer
@@ -7900,7 +7900,7 @@ ov43_0222DC7C: ; 0x0222DC7C
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r4]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #2
 	bl ScheduleBgTilemapBufferTransfer
@@ -8003,7 +8003,7 @@ _0222DD62:
 	ldrh r1, [r4]
 	ldr r0, [r7, #0x58]
 	add r3, r5, #4
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	str r0, [r5]
 	add r6, r6, #1
 	add r5, #8
@@ -8217,7 +8217,7 @@ ov43_0222DED0: ; 0x0222DED0
 	ldr r1, [r6, r4]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201D54C
+	bl WindowArray_dtor
 	mov r1, #0
 	add r0, r5, r4
 	str r1, [r0, #0xc]
@@ -8240,7 +8240,7 @@ ov43_0222DEF8: ; 0x0222DEF8
 _0222DF08:
 	ldr r0, [r5, #0xc]
 	add r0, r0, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [r5, #0x2c]
 	add r6, r6, #1
 	add r4, #0x10
@@ -8264,7 +8264,7 @@ ov43_0222DF1C: ; 0x0222DF1C
 _0222DF2E:
 	ldr r0, [r5, #0xc]
 	add r0, r0, r4
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	ldr r0, [r5, #0xc]
 	add r1, r7, #0
 	add r0, r0, r4

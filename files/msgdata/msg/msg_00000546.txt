@@ -1,3 +1,0 @@
-{STRVAR_1 3, 0, 0} booted up the PC and\nchecked the Mailbox!\r
-There is no Mail...
-It’s a Wii!\rWii is huge in Johto, too!

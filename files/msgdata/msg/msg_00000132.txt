@@ -1,5 +1,0 @@
-Bugsy: I came to Kanto to look for\nBug-type Pokémon, so I can become\fa stronger Bug-type Pokémon Trainer!\rHey, why don’t we swap phone\nnumbers? {YESNO 0}
-{STRVAR_1 3, 0, 0} registered Bugsy\nin the Pokégear!
-Bugsy: We can battle around lunch\non Thursdays!\fGive me a call!
-Bugsy: Oh, well...\nThat’s OK...
-Bugsy: Will you give me your phone\nnumber? {YESNO 0}

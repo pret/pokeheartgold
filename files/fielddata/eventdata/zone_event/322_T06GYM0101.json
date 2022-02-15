@@ -1,0 +1,339 @@
+{
+  "header": "fielddata/script/scr_seq/event_T06GYM0101.h",
+  "bgs": [
+    {
+      "scr": "_EV_scr_seq_T06GYM0101_000 + 1",
+      "type": 0,
+      "x": 2,
+      "y": 13,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T06GYM0101_001 + 1",
+      "type": 0,
+      "x": 4,
+      "y": 13,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T06GYM0101_002 + 1",
+      "type": 0,
+      "x": 6,
+      "y": 13,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T06GYM0101_003 + 1",
+      "type": 0,
+      "x": 8,
+      "y": 13,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T06GYM0101_004 + 1",
+      "type": 0,
+      "x": 10,
+      "y": 13,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T06GYM0101_005 + 1",
+      "type": 0,
+      "x": 2,
+      "y": 15,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T06GYM0101_006 + 1",
+      "type": 0,
+      "x": 4,
+      "y": 15,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T06GYM0101_007 + 1",
+      "type": 0,
+      "x": 6,
+      "y": 15,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T06GYM0101_008 + 1",
+      "type": 0,
+      "x": 8,
+      "y": 15,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T06GYM0101_009 + 1",
+      "type": 0,
+      "x": 10,
+      "y": 15,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T06GYM0101_010 + 1",
+      "type": 0,
+      "x": 2,
+      "y": 17,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T06GYM0101_011 + 1",
+      "type": 0,
+      "x": 4,
+      "y": 17,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T06GYM0101_012 + 1",
+      "type": 0,
+      "x": 6,
+      "y": 17,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T06GYM0101_013 + 1",
+      "type": 0,
+      "x": 8,
+      "y": 17,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T06GYM0101_014 + 1",
+      "type": 0,
+      "x": 10,
+      "y": 17,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T06GYM0101_025 + 1",
+      "type": 0,
+      "x": 4,
+      "y": 20,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": "_EV_scr_seq_T06GYM0101_025 + 1",
+      "type": 0,
+      "x": 8,
+      "y": 20,
+      "z": 0,
+      "dir": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_T06GYM0101_stop",
+      "ovid": "SPRITE_STOP",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_UNK_31A",
+      "scr": "_EV_scr_seq_T06GYM0101_015 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 5,
+      "y": 8,
+      "z": 0
+    },
+    {
+      "id": "obj_T06GYM0101_stop_2",
+      "ovid": "SPRITE_STOP",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_UNK_31A",
+      "scr": "_EV_scr_seq_T06GYM0101_016 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 6,
+      "y": 8,
+      "z": 0
+    },
+    {
+      "id": "obj_T06GYM0101_stop_3",
+      "ovid": "SPRITE_STOP",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_UNK_31A",
+      "scr": "_EV_scr_seq_T06GYM0101_017 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 7,
+      "y": 8,
+      "z": 0
+    },
+    {
+      "id": "obj_T06GYM0101_stop_4",
+      "ovid": "SPRITE_STOP",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_UNK_31A",
+      "scr": "_EV_scr_seq_T06GYM0101_018 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 5,
+      "y": 10,
+      "z": 0
+    },
+    {
+      "id": "obj_T06GYM0101_stop_5",
+      "ovid": "SPRITE_STOP",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_UNK_31A",
+      "scr": "_EV_scr_seq_T06GYM0101_019 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 6,
+      "y": 10,
+      "z": 0
+    },
+    {
+      "id": "obj_T06GYM0101_stop_6",
+      "ovid": "SPRITE_STOP",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_UNK_31A",
+      "scr": "_EV_scr_seq_T06GYM0101_020 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 7,
+      "y": 10,
+      "z": 0
+    },
+    {
+      "id": "obj_T06GYM0101_gsman2",
+      "ovid": "SPRITE_GSMAN2",
+      "mvt": 15,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_GUITARIST_VINCENT)",
+      "dirn": 1,
+      "eye": 3,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 5,
+      "y": 13,
+      "z": 0
+    },
+    {
+      "id": "obj_T06GYM0101_juggrer",
+      "ovid": "SPRITE_JUGGRER",
+      "mvt": 17,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_JUGGLER_HORTON)",
+      "dirn": 3,
+      "eye": 2,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 3,
+      "y": 16,
+      "z": 0
+    },
+    {
+      "id": "obj_T06GYM0101_gsgentleman",
+      "ovid": "SPRITE_GSGENTLEMAN",
+      "mvt": 16,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_GENTLEMAN_GREGORY)",
+      "dirn": 2,
+      "eye": 5,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 10,
+      "y": 14,
+      "z": 0
+    },
+    {
+      "id": "obj_T06GYM0101_gsleader9",
+      "ovid": "SPRITE_GSLEADER9",
+      "mvt": 15,
+      "type": 0,
+      "flag": "FLAG_UNK_2F0",
+      "scr": "_EV_scr_seq_T06GYM0101_023 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 6,
+      "y": 4,
+      "z": 0
+    },
+    {
+      "id": "obj_T06GYM0101_sunglasses",
+      "ovid": "SPRITE_SUNGLASSES",
+      "mvt": 15,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T06GYM0101_024 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 9,
+      "y": 20,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 6,
+      "y": 22,
+      "header": "MAP_T06",
+      "anchor": 6,
+      "height": 0
+    }
+  ]
+}

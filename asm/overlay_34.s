@@ -36,7 +36,7 @@ _0225D554: .word 0x000F0200
 ov34_0225D558: ; 0x0225D558
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _0225D59C ; =gMain
+	ldr r0, _0225D59C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	lsl r0, r0, #0xa
@@ -63,7 +63,7 @@ _0225D576:
 	bl ov34_0225E630
 	pop {r4, pc}
 	.balign 4, 0
-_0225D59C: .word gMain
+_0225D59C: .word gSystem
 	thumb_func_end ov34_0225D558
 
 	thumb_func_start ov34_0225D5A0
@@ -392,19 +392,19 @@ ov34_0225D7A8: ; 0x0225D7A8
 	bl ov34_0225D520
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	bl ov34_0225E560
 	add r0, r4, #0
@@ -518,7 +518,7 @@ ov34_0225D924: ; 0x0225D924
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r5, _0225DA44 ; =ov34_0225E6F8
 	add r3, sp, #0x48
 	ldmia r5!, {r0, r1}
@@ -539,7 +539,7 @@ ov34_0225D924: ; 0x0225D924
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r5, _0225DA48 ; =ov34_0225E6C0
 	add r3, sp, #0x2c
 	ldmia r5!, {r0, r1}
@@ -560,7 +560,7 @@ ov34_0225D924: ; 0x0225D924
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r5, _0225DA4C ; =ov34_0225E6DC
 	add r3, sp, #0x10
 	ldmia r5!, {r0, r1}
@@ -578,7 +578,7 @@ ov34_0225D924: ; 0x0225D924
 	bl InitBgFromTemplate
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x60
 	mov r1, #0
 	str r0, [sp]
@@ -897,7 +897,7 @@ ov34_0225DC18: ; 0x0225DC18
 	ldr r0, [r5, #0x14]
 	mov r2, #0
 	lsr r3, r3, #0x18
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	mov r0, #0x72
 	lsl r0, r0, #2
 	add r7, r5, r0
@@ -941,10 +941,10 @@ ov34_0225DC18: ; 0x0225DC18
 	add r0, r0, r4
 	bl AddTextPrinterParameterized2
 	add r0, r7, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x1c]
 	add r0, r0, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r2, [r6, #8]
 	cmp r2, #0
 	beq _0225DCF0
@@ -960,7 +960,7 @@ ov34_0225DC18: ; 0x0225DC18
 	bl AddTextPrinterParameterized2
 _0225DCF0:
 	add r0, r5, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -1262,7 +1262,7 @@ _0225DF36:
 	str r1, [r4, r0]
 	b _0225E006
 _0225DF40:
-	ldr r0, _0225E014 ; =gMain + 0x40
+	ldr r0, _0225E014 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _0225E006
@@ -1276,7 +1276,7 @@ _0225DF40:
 	str r0, [r4]
 	b _0225E006
 _0225DF5E:
-	ldr r0, _0225E014 ; =gMain + 0x40
+	ldr r0, _0225E014 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _0225E006
@@ -1364,7 +1364,7 @@ _0225E006:
 	nop
 _0225E00C: .word ov34_0225E730
 _0225E010: .word 0x000005E5
-_0225E014: .word gMain + 0x40
+_0225E014: .word gSystem + 0x40
 _0225E018: .word 0x000005FC
 _0225E01C: .word 0x000004BF
 	thumb_func_end ov34_0225DE94
@@ -1472,7 +1472,7 @@ _0225E0E0: .word ov34_0225E6AC
 	thumb_func_start ov34_0225E0E4
 ov34_0225E0E4: ; 0x0225E0E4
 	push {r4, lr}
-	ldr r1, _0225E15C ; =gMain
+	ldr r1, _0225E15C ; =gSystem
 	add r4, r0, #0
 	ldr r3, [r1, #0x44]
 	mov r1, #2
@@ -1482,7 +1482,7 @@ ov34_0225E0E4: ; 0x0225E0E4
 	beq _0225E126
 	mov r1, #0
 	bl ov34_0225E5EC
-	ldr r0, _0225E15C ; =gMain
+	ldr r0, _0225E15C ; =gSystem
 	mov r1, #2
 	ldr r0, [r0, #0x4c]
 	lsl r1, r1, #8
@@ -1508,7 +1508,7 @@ _0225E126:
 	beq _0225E158
 	mov r1, #1
 	bl ov34_0225E5EC
-	ldr r0, _0225E15C ; =gMain
+	ldr r0, _0225E15C ; =gSystem
 	ldr r1, [r0, #0x4c]
 	mov r0, #1
 	lsl r0, r0, #8
@@ -1529,7 +1529,7 @@ _0225E126:
 _0225E158:
 	pop {r4, pc}
 	nop
-_0225E15C: .word gMain
+_0225E15C: .word gSystem
 _0225E160: .word 0x000005E5
 	thumb_func_end ov34_0225E0E4
 
@@ -1669,7 +1669,7 @@ _0225E226:
 	ldr r0, [sp, #0x1c]
 	mov r1, #7
 	mov r2, #0
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r3, [sp, #0x24]
 	add r1, r4, #4
 	lsl r6, r3, #2
@@ -1679,7 +1679,7 @@ _0225E226:
 	ldr r3, [r3, r6]
 	lsr r1, r1, #0x18
 	mov r2, #3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [sp, #0x40]
 	add r4, r4, #1
 	add r5, #0x38
@@ -2093,7 +2093,7 @@ ov34_0225E58C: ; 0x0225E58C
 	mov r1, #0
 	lsl r2, r2, #2
 	strb r1, [r0, r2]
-	ldr r1, _0225E5D0 ; =gMain + 0x40
+	ldr r1, _0225E5D0 ; =gSystem + 0x40
 	ldrh r3, [r1, #0x24]
 	cmp r3, #0
 	beq _0225E5A2
@@ -2127,7 +2127,7 @@ _0225E5C6:
 _0225E5CE:
 	bx lr
 	.balign 4, 0
-_0225E5D0: .word gMain + 0x40
+_0225E5D0: .word gSystem + 0x40
 	thumb_func_end ov34_0225E58C
 
 	thumb_func_start ov34_0225E5D4

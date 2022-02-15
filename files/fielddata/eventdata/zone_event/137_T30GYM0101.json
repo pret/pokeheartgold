@@ -1,0 +1,193 @@
+{
+  "header": "fielddata/script/scr_seq/event_T30GYM0101.h",
+  "bgs": [
+    {
+      "scr": "_EV_scr_seq_T30GYM0101_005 + 1",
+      "type": 0,
+      "x": 11,
+      "y": 86,
+      "z": 0,
+      "dir": 0
+    },
+    {
+      "scr": "_EV_scr_seq_T30GYM0101_005 + 1",
+      "type": 0,
+      "x": 15,
+      "y": 86,
+      "z": 0,
+      "dir": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_T30GYM0101_gsleader8",
+      "ovid": "SPRITE_GSLEADER8",
+      "mvt": 15,
+      "type": 0,
+      "flag": "FLAG_UNK_2EF",
+      "scr": "_EV_scr_seq_T30GYM0101_000 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 12,
+      "y": 3,
+      "z": 0
+    },
+    {
+      "id": "obj_T30GYM0101_gsman3",
+      "ovid": "SPRITE_GSMAN3",
+      "mvt": 7,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_ACE_TRAINER_M_PAULO)",
+      "dirn": 3,
+      "eye": 4,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 11,
+      "y": 66,
+      "z": 0
+    },
+    {
+      "id": "obj_T30GYM0101_gswoman3",
+      "ovid": "SPRITE_GSWOMAN3",
+      "mvt": 16,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_ACE_TRAINER_F_LOLA)",
+      "dirn": 2,
+      "eye": 3,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 8,
+      "y": 61,
+      "z": 0
+    },
+    {
+      "id": "obj_T30GYM0101_gsman3_2",
+      "ovid": "SPRITE_GSMAN3",
+      "mvt": 4,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_ACE_TRAINER_M_CODY)",
+      "dirn": 1,
+      "eye": 4,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 20,
+      "y": 54,
+      "z": 0
+    },
+    {
+      "id": "obj_T30GYM0101_gswoman3_2",
+      "ovid": "SPRITE_GSWOMAN3",
+      "mvt": 8,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_ACE_TRAINER_F_FRAN)",
+      "dirn": 2,
+      "eye": 4,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 21,
+      "y": 45,
+      "z": 0
+    },
+    {
+      "id": "obj_T30GYM0101_gsman3_3",
+      "ovid": "SPRITE_GSMAN3",
+      "mvt": 17,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_ACE_TRAINER_M_MIKE)",
+      "dirn": 1,
+      "eye": 2,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 13,
+      "y": 40,
+      "z": 0
+    },
+    {
+      "id": "obj_T30GYM0101_sunglasses",
+      "ovid": "SPRITE_SUNGLASSES",
+      "mvt": 15,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T30GYM0101_003 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 15,
+      "y": 82,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 13,
+      "y": 87,
+      "header": "MAP_T30",
+      "anchor": 1,
+      "height": 0
+    }
+  ],
+  "coords": [
+    {
+      "scr": "_EV_scr_seq_T30GYM0101_002 + 1",
+      "x": 5,
+      "y": 9,
+      "w": 1,
+      "h": 1,
+      "z": 0,
+      "val": 0,
+      "var": "VAR_UNK_4111"
+    },
+    {
+      "scr": "_EV_scr_seq_T30GYM0101_002 + 1",
+      "x": 23,
+      "y": 41,
+      "w": 1,
+      "h": 1,
+      "z": 0,
+      "val": 0,
+      "var": "VAR_UNK_4111"
+    },
+    {
+      "scr": "_EV_scr_seq_T30GYM0101_002 + 1",
+      "x": 3,
+      "y": 62,
+      "w": 1,
+      "h": 1,
+      "z": 0,
+      "val": 0,
+      "var": "VAR_UNK_4111"
+    },
+    {
+      "scr": "_EV_scr_seq_T30GYM0101_004 + 1",
+      "x": 12,
+      "y": 82,
+      "w": 3,
+      "h": 1,
+      "z": 0,
+      "val": 0,
+      "var": "VAR_UNK_4120"
+    }
+  ]
+}

@@ -1,0 +1,1988 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0238_00000" index="0">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語"></language>
+	</row>
+	<row id="msg_0238_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BULBASAUR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}IVYSAUR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}VENUSAUR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CHARMANDER{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CHARMELEON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CHARIZARD{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SQUIRTLE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}WARTORTLE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BLASTOISE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CATERPIE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}METAPOD{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BUTTERFREE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}WEEDLE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}KAKUNA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BEEDRILL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PIDGEY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PIDGEOTTO{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PIDGEOT{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}RATTATA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}RATICATE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SPEAROW{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}FEAROW{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}EKANS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}ARBOK{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PIKACHU{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}RAICHU{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SANDSHREW{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SANDSLASH{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}NIDORAN♀{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}NIDORINA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}NIDOQUEEN{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}NIDORAN♂{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}NIDORINO{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}NIDOKING{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CLEFAIRY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CLEFABLE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}VULPIX{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}NINETALES{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00039" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}JIGGLYPUFF{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00040" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}WIGGLYTUFF{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}ZUBAT{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00042" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GOLBAT{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}ODDISH{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00044" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GLOOM{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00045" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}VILEPLUME{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00046" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PARAS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00047" index="47">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PARASECT{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00048" index="48">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}VENONAT{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00049" index="49">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}VENOMOTH{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00050" index="50">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}DIGLETT{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00051" index="51">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}DUGTRIO{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00052" index="52">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MEOWTH{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00053" index="53">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PERSIAN{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00054" index="54">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PSYDUCK{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00055" index="55">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GOLDUCK{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00056" index="56">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MANKEY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00057" index="57">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PRIMEAPE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00058" index="58">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GROWLITHE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00059" index="59">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}ARCANINE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00060" index="60">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}POLIWAG{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00061" index="61">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}POLIWHIRL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00062" index="62">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}POLIWRATH{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00063" index="63">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}ABRA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00064" index="64">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}KADABRA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00065" index="65">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}ALAKAZAM{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00066" index="66">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MACHOP{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00067" index="67">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MACHOKE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00068" index="68">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MACHAMP{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00069" index="69">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BELLSPROUT{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00070" index="70">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}WEEPINBELL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00071" index="71">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}VICTREEBEL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00072" index="72">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}TENTACOOL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00073" index="73">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}TENTACRUEL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00074" index="74">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GEODUDE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00075" index="75">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GRAVELER{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00076" index="76">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GOLEM{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00077" index="77">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PONYTA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00078" index="78">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}RAPIDASH{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00079" index="79">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SLOWPOKE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00080" index="80">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SLOWBRO{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00081" index="81">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MAGNEMITE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00082" index="82">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MAGNETON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00083" index="83">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}FARFETCH’D{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00084" index="84">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}DODUO{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00085" index="85">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}DODRIO{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00086" index="86">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SEEL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00087" index="87">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}DEWGONG{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00088" index="88">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GRIMER{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00089" index="89">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MUK{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00090" index="90">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SHELLDER{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00091" index="91">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CLOYSTER{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00092" index="92">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GASTLY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00093" index="93">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}HAUNTER{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00094" index="94">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GENGAR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00095" index="95">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}ONIX{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00096" index="96">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}DROWZEE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00097" index="97">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}HYPNO{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00098" index="98">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}KRABBY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00099" index="99">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}KINGLER{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00100" index="100">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}VOLTORB{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00101" index="101">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}ELECTRODE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00102" index="102">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}EXEGGCUTE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00103" index="103">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}EXEGGUTOR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00104" index="104">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CUBONE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00105" index="105">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MAROWAK{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00106" index="106">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}HITMONLEE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00107" index="107">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}HITMONCHAN{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00108" index="108">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LICKITUNG{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00109" index="109">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}KOFFING{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00110" index="110">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}WEEZING{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00111" index="111">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}RHYHORN{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00112" index="112">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}RHYDON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00113" index="113">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CHANSEY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00114" index="114">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}TANGELA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00115" index="115">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}KANGASKHAN{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00116" index="116">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}HORSEA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00117" index="117">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SEADRA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00118" index="118">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GOLDEEN{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00119" index="119">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SEAKING{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00120" index="120">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}STARYU{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00121" index="121">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}STARMIE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00122" index="122">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MR. MIME{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00123" index="123">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SCYTHER{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00124" index="124">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}JYNX{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00125" index="125">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}ELECTABUZZ{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00126" index="126">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MAGMAR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00127" index="127">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PINSIR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00128" index="128">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}TAUROS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00129" index="129">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MAGIKARP{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00130" index="130">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GYARADOS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00131" index="131">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LAPRAS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00132" index="132">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}DITTO{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00133" index="133">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}EEVEE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00134" index="134">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}VAPOREON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00135" index="135">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}JOLTEON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00136" index="136">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}FLAREON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00137" index="137">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PORYGON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00138" index="138">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}OMANYTE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00139" index="139">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}OMASTAR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00140" index="140">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}KABUTO{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00141" index="141">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}KABUTOPS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00142" index="142">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}AERODACTYL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00143" index="143">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SNORLAX{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00144" index="144">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}ARTICUNO{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00145" index="145">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}ZAPDOS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00146" index="146">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MOLTRES{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00147" index="147">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}DRATINI{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00148" index="148">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}DRAGONAIR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00149" index="149">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}DRAGONITE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00150" index="150">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MEWTWO{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00151" index="151">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MEW{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00152" index="152">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CHIKORITA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00153" index="153">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BAYLEEF{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00154" index="154">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MEGANIUM{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00155" index="155">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CYNDAQUIL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00156" index="156">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}QUILAVA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00157" index="157">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}TYPHLOSION{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00158" index="158">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}TOTODILE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00159" index="159">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CROCONAW{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00160" index="160">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}FERALIGATR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00161" index="161">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SENTRET{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00162" index="162">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}FURRET{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00163" index="163">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}HOOTHOOT{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00164" index="164">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}NOCTOWL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00165" index="165">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LEDYBA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00166" index="166">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LEDIAN{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00167" index="167">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SPINARAK{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00168" index="168">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}ARIADOS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00169" index="169">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CROBAT{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00170" index="170">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CHINCHOU{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00171" index="171">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LANTURN{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00172" index="172">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PICHU{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00173" index="173">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CLEFFA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00174" index="174">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}IGGLYBUFF{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00175" index="175">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}TOGEPI{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00176" index="176">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}TOGETIC{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00177" index="177">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}NATU{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00178" index="178">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}XATU{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00179" index="179">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MAREEP{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00180" index="180">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}FLAAFFY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00181" index="181">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}AMPHAROS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00182" index="182">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BELLOSSOM{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00183" index="183">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MARILL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00184" index="184">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}AZUMARILL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00185" index="185">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SUDOWOODO{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00186" index="186">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}POLITOED{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00187" index="187">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}HOPPIP{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00188" index="188">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SKIPLOOM{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00189" index="189">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}JUMPLUFF{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00190" index="190">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}AIPOM{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00191" index="191">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SUNKERN{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00192" index="192">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SUNFLORA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00193" index="193">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}YANMA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00194" index="194">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}WOOPER{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00195" index="195">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}QUAGSIRE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00196" index="196">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}ESPEON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00197" index="197">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}UMBREON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00198" index="198">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MURKROW{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00199" index="199">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SLOWKING{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00200" index="200">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MISDREAVUS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00201" index="201">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}UNOWN{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00202" index="202">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}WOBBUFFET{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00203" index="203">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GIRAFARIG{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00204" index="204">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PINECO{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00205" index="205">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}FORRETRESS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00206" index="206">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}DUNSPARCE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00207" index="207">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GLIGAR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00208" index="208">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}STEELIX{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00209" index="209">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SNUBBULL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00210" index="210">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GRANBULL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00211" index="211">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}QWILFISH{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00212" index="212">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SCIZOR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00213" index="213">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SHUCKLE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00214" index="214">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}HERACROSS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00215" index="215">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SNEASEL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00216" index="216">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}TEDDIURSA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00217" index="217">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}URSARING{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00218" index="218">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SLUGMA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00219" index="219">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MAGCARGO{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00220" index="220">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SWINUB{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00221" index="221">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PILOSWINE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00222" index="222">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CORSOLA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00223" index="223">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}REMORAID{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00224" index="224">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}OCTILLERY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00225" index="225">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}DELIBIRD{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00226" index="226">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MANTINE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00227" index="227">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SKARMORY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00228" index="228">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}HOUNDOUR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00229" index="229">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}HOUNDOOM{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00230" index="230">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}KINGDRA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00231" index="231">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PHANPY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00232" index="232">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}DONPHAN{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00233" index="233">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PORYGON2{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00234" index="234">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}STANTLER{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00235" index="235">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SMEARGLE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00236" index="236">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}TYROGUE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00237" index="237">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}HITMONTOP{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00238" index="238">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SMOOCHUM{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00239" index="239">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}ELEKID{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00240" index="240">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MAGBY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00241" index="241">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MILTANK{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00242" index="242">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BLISSEY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00243" index="243">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}RAIKOU{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00244" index="244">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}ENTEI{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00245" index="245">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SUICUNE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00246" index="246">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LARVITAR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00247" index="247">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PUPITAR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00248" index="248">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}TYRANITAR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00249" index="249">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LUGIA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00250" index="250">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}HO-OH{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00251" index="251">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CELEBI{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00252" index="252">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}TREECKO{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00253" index="253">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GROVYLE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00254" index="254">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SCEPTILE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00255" index="255">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}TORCHIC{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00256" index="256">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}COMBUSKEN{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00257" index="257">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BLAZIKEN{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00258" index="258">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MUDKIP{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00259" index="259">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MARSHTOMP{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00260" index="260">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SWAMPERT{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00261" index="261">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}POOCHYENA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00262" index="262">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MIGHTYENA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00263" index="263">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}ZIGZAGOON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00264" index="264">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LINOONE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00265" index="265">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}WURMPLE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00266" index="266">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SILCOON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00267" index="267">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BEAUTIFLY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00268" index="268">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CASCOON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00269" index="269">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}DUSTOX{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00270" index="270">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LOTAD{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00271" index="271">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LOMBRE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00272" index="272">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LUDICOLO{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00273" index="273">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SEEDOT{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00274" index="274">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}NUZLEAF{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00275" index="275">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SHIFTRY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00276" index="276">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}TAILLOW{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00277" index="277">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SWELLOW{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00278" index="278">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}WINGULL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00279" index="279">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PELIPPER{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00280" index="280">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}RALTS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00281" index="281">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}KIRLIA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00282" index="282">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GARDEVOIR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00283" index="283">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SURSKIT{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00284" index="284">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MASQUERAIN{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00285" index="285">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SHROOMISH{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00286" index="286">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BRELOOM{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00287" index="287">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SLAKOTH{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00288" index="288">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}VIGOROTH{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00289" index="289">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SLAKING{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00290" index="290">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}NINCADA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00291" index="291">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}NINJASK{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00292" index="292">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SHEDINJA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00293" index="293">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}WHISMUR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00294" index="294">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LOUDRED{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00295" index="295">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}EXPLOUD{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00296" index="296">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MAKUHITA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00297" index="297">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}HARIYAMA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00298" index="298">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}AZURILL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00299" index="299">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}NOSEPASS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00300" index="300">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SKITTY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00301" index="301">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}DELCATTY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00302" index="302">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SABLEYE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00303" index="303">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MAWILE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00304" index="304">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}ARON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00305" index="305">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LAIRON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00306" index="306">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}AGGRON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00307" index="307">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MEDITITE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00308" index="308">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MEDICHAM{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00309" index="309">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}ELECTRIKE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00310" index="310">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MANECTRIC{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00311" index="311">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PLUSLE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00312" index="312">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MINUN{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00313" index="313">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}VOLBEAT{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00314" index="314">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}ILLUMISE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00315" index="315">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}ROSELIA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00316" index="316">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GULPIN{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00317" index="317">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SWALOT{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00318" index="318">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CARVANHA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00319" index="319">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SHARPEDO{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00320" index="320">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}WAILMER{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00321" index="321">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}WAILORD{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00322" index="322">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}NUMEL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00323" index="323">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CAMERUPT{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00324" index="324">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}TORKOAL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00325" index="325">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SPOINK{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00326" index="326">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GRUMPIG{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00327" index="327">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SPINDA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00328" index="328">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}TRAPINCH{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00329" index="329">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}VIBRAVA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00330" index="330">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}FLYGON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00331" index="331">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CACNEA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00332" index="332">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CACTURNE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00333" index="333">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SWABLU{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00334" index="334">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}ALTARIA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00335" index="335">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}ZANGOOSE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00336" index="336">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SEVIPER{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00337" index="337">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LUNATONE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00338" index="338">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SOLROCK{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00339" index="339">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BARBOACH{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00340" index="340">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}WHISCASH{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00341" index="341">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CORPHISH{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00342" index="342">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CRAWDAUNT{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00343" index="343">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BALTOY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00344" index="344">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CLAYDOL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00345" index="345">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LILEEP{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00346" index="346">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CRADILY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00347" index="347">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}ANORITH{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00348" index="348">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}ARMALDO{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00349" index="349">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}FEEBAS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00350" index="350">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MILOTIC{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00351" index="351">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CASTFORM{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00352" index="352">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}KECLEON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00353" index="353">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SHUPPET{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00354" index="354">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BANETTE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00355" index="355">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}DUSKULL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00356" index="356">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}DUSCLOPS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00357" index="357">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}TROPIUS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00358" index="358">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CHIMECHO{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00359" index="359">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}ABSOL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00360" index="360">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}WYNAUT{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00361" index="361">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SNORUNT{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00362" index="362">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GLALIE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00363" index="363">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SPHEAL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00364" index="364">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SEALEO{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00365" index="365">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}WALREIN{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00366" index="366">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CLAMPERL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00367" index="367">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}HUNTAIL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00368" index="368">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GOREBYSS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00369" index="369">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}RELICANTH{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00370" index="370">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LUVDISC{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00371" index="371">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BAGON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00372" index="372">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SHELGON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00373" index="373">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SALAMENCE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00374" index="374">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BELDUM{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00375" index="375">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}METANG{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00376" index="376">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}METAGROSS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00377" index="377">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}REGIROCK{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00378" index="378">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}REGICE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00379" index="379">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}REGISTEEL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00380" index="380">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LATIAS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00381" index="381">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LATIOS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00382" index="382">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}KYOGRE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00383" index="383">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GROUDON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00384" index="384">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}RAYQUAZA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00385" index="385">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}JIRACHI{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00386" index="386">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}DEOXYS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00387" index="387">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}TURTWIG{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00388" index="388">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GROTLE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00389" index="389">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}TORTERRA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00390" index="390">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CHIMCHAR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00391" index="391">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MONFERNO{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00392" index="392">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}INFERNAPE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00393" index="393">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PIPLUP{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00394" index="394">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PRINPLUP{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00395" index="395">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}EMPOLEON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00396" index="396">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}STARLY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00397" index="397">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}STARAVIA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00398" index="398">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}STARAPTOR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00399" index="399">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BIDOOF{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00400" index="400">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BIBAREL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00401" index="401">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}KRICKETOT{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00402" index="402">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}KRICKETUNE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00403" index="403">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SHINX{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00404" index="404">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LUXIO{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00405" index="405">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LUXRAY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00406" index="406">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BUDEW{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00407" index="407">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}ROSERADE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00408" index="408">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CRANIDOS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00409" index="409">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}RAMPARDOS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00410" index="410">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SHIELDON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00411" index="411">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BASTIODON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00412" index="412">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BURMY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00413" index="413">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}WORMADAM{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00414" index="414">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MOTHIM{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00415" index="415">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}COMBEE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00416" index="416">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}VESPIQUEN{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00417" index="417">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PACHIRISU{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00418" index="418">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BUIZEL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00419" index="419">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}FLOATZEL{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00420" index="420">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CHERUBI{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00421" index="421">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CHERRIM{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00422" index="422">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SHELLOS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00423" index="423">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GASTRODON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00424" index="424">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}AMBIPOM{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00425" index="425">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}DRIFLOON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00426" index="426">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}DRIFBLIM{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00427" index="427">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BUNEARY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00428" index="428">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LOPUNNY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00429" index="429">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MISMAGIUS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00430" index="430">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}HONCHKROW{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00431" index="431">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GLAMEOW{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00432" index="432">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PURUGLY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00433" index="433">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CHINGLING{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00434" index="434">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}STUNKY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00435" index="435">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SKUNTANK{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00436" index="436">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BRONZOR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00437" index="437">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BRONZONG{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00438" index="438">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}BONSLY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00439" index="439">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MIME JR.{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00440" index="440">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}HAPPINY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00441" index="441">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CHATOT{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00442" index="442">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SPIRITOMB{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00443" index="443">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GIBLE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00444" index="444">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GABITE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00445" index="445">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GARCHOMP{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00446" index="446">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MUNCHLAX{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00447" index="447">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}RIOLU{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00448" index="448">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LUCARIO{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00449" index="449">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}HIPPOPOTAS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00450" index="450">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}HIPPOWDON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00451" index="451">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SKORUPI{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00452" index="452">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}DRAPION{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00453" index="453">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CROAGUNK{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00454" index="454">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}TOXICROAK{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00455" index="455">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CARNIVINE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00456" index="456">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}FINNEON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00457" index="457">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LUMINEON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00458" index="458">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MANTYKE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00459" index="459">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SNOVER{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00460" index="460">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}ABOMASNOW{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00461" index="461">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}WEAVILE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00462" index="462">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MAGNEZONE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00463" index="463">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LICKILICKY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00464" index="464">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}RHYPERIOR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00465" index="465">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}TANGROWTH{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00466" index="466">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}ELECTIVIRE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00467" index="467">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MAGMORTAR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00468" index="468">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}TOGEKISS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00469" index="469">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}YANMEGA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00470" index="470">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}LEAFEON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00471" index="471">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GLACEON{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00472" index="472">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GLISCOR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00473" index="473">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MAMOSWINE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00474" index="474">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PORYGON-Z{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00475" index="475">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GALLADE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00476" index="476">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PROBOPASS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00477" index="477">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}DUSKNOIR{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00478" index="478">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}FROSLASS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00479" index="479">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}ROTOM{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00480" index="480">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}UXIE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00481" index="481">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MESPRIT{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00482" index="482">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}AZELF{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00483" index="483">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}DIALGA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00484" index="484">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PALKIA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00485" index="485">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}HEATRAN{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00486" index="486">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}REGIGIGAS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00487" index="487">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}GIRATINA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00488" index="488">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}CRESSELIA{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00489" index="489">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}PHIONE{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00490" index="490">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}MANAPHY{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00491" index="491">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}DARKRAI{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00492" index="492">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}SHAYMIN{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00493" index="493">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}ARCEUS{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00494" index="494">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">an {COLOR 255}Egg{COLOR 0}</language>
+	</row>
+	<row id="msg_0238_00495" index="495">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">a {COLOR 255}Bad Egg{COLOR 0}</language>
+	</row>
+</body>

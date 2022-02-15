@@ -5,8 +5,8 @@ struct PhoneBookEntry {
     u8 unk0;
     u8 unk1;
     u8 unk2;
-    u8 unk3;
-    u16 unk4;
+    u8 trainerClass;
+    u16 trainerId;
     u16 unk6;
     u8 unk8[7];
     u8 unkF;
@@ -16,6 +16,11 @@ struct PhoneBookEntry {
 struct PhoneBook {
     u32 count;
     struct PhoneBookEntry * entries;
+};
+
+struct UnkFsysSub_114 {
+    u8 filler_00[0x1C];
+    struct PhoneBookEntry entry;
 };
 
 #endif //POKEHEARTGOLD_GEAR_PHONE_H

@@ -1045,7 +1045,7 @@ sub_02020D2C: ; 0x02020D2C
 	sub sp, #0x24
 	add r4, r1, #0
 	ldr r1, [r4]
-	ldr r3, _02020DA0 ; =_021094DC
+	ldr r3, _02020DA0 ; =FX_SinCosTable_
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	asr r1, r1, #4
@@ -1058,7 +1058,7 @@ sub_02020D2C: ; 0x02020D2C
 	add r5, r0, #0
 	bl MTX_RotX33_
 	ldr r0, [r4, #4]
-	ldr r3, _02020DA0 ; =_021094DC
+	ldr r3, _02020DA0 ; =FX_SinCosTable_
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	asr r0, r0, #4
@@ -1075,7 +1075,7 @@ sub_02020D2C: ; 0x02020D2C
 	add r2, r5, #0
 	bl MTX_Concat33
 	ldr r0, [r4, #8]
-	ldr r3, _02020DA0 ; =_021094DC
+	ldr r3, _02020DA0 ; =FX_SinCosTable_
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	asr r0, r0, #4
@@ -1094,7 +1094,7 @@ sub_02020D2C: ; 0x02020D2C
 	add sp, #0x24
 	pop {r4, r5, pc}
 	nop
-_02020DA0: .word _021094DC
+_02020DA0: .word FX_SinCosTable_
 	thumb_func_end sub_02020D2C
 
 	thumb_func_start sub_02020DA4
@@ -1106,19 +1106,19 @@ sub_02020DA4: ; 0x02020DA4
 	add r0, r5, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_0201FC30
+	bl GF_CosDegNoWrap
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	add r1, r0, #0
 	ldr r0, [sp]
 	add r2, r7, #0
 	bl MTX_RotX33_
 	add r0, r4, #0
-	bl sub_0201FC30
+	bl GF_CosDegNoWrap
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	add r1, r0, #0
 	add r0, sp, #4
 	add r2, r5, #0
@@ -1128,10 +1128,10 @@ sub_02020DA4: ; 0x02020DA4
 	add r2, r0, #0
 	bl MTX_Concat33
 	add r0, r6, #0
-	bl sub_0201FC30
+	bl GF_CosDegNoWrap
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	add r1, r0, #0
 	add r0, sp, #4
 	add r2, r4, #0
@@ -1152,7 +1152,7 @@ sub_02020E10: ; 0x02020E10
 	lsl r2, r0, #1
 	add r6, r1, #0
 	lsl r0, r2, #1
-	ldr r1, _02020E7C ; =_021094DC
+	ldr r1, _02020E7C ; =FX_SinCosTable_
 	add r2, r2, #1
 	lsl r2, r2, #1
 	ldrsh r0, [r1, r0]
@@ -1198,7 +1198,7 @@ sub_02020E10: ; 0x02020E10
 	str r1, [r5]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02020E7C: .word _021094DC
+_02020E7C: .word FX_SinCosTable_
 	thumb_func_end sub_02020E10
 
 	thumb_func_start sub_02020E80

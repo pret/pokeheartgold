@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0276_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 0, 0, 0}</language>
+	</row>
+	<row id="msg_0276_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">㊚</language>
+	</row>
+	<row id="msg_0276_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">㊛</language>
+	</row>
+	<row id="msg_0276_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lv.{STRVAR_1 52, 0, 0}</language>
+	</row>
+	<row id="msg_0276_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Item</language>
+	</row>
+	<row id="msg_0276_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 8, 0, 0}</language>
+	</row>
+</body>

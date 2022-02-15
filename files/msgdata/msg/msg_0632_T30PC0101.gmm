@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0632_T30PC0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Deep inside far-off Indigo Plateau is\nthe Pokémon League.\rI hear the best Trainers gather there\nfrom around the country.</language>
+	</row>
+	<row id="msg_0632_T30PC0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There was this move I just had\nto teach my Pokémon.\rSo I got the Move Deleter to make it\nforget an HM move.</language>
+	</row>
+	<row id="msg_0632_T30PC0101_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">They say that behind the Pokémon Gym is\na special cave for Gym Leaders to train\fthemselves.</language>
+	</row>
+</body>

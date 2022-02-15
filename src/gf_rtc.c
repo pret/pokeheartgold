@@ -17,8 +17,8 @@ struct GFRtcWork {
 
 struct GFRtcWork sRTCWork;
 
-void GF_RTC_GetDateTime(struct GFRtcWork *work);
-void sub_02014700(struct GFRtcWork *work);
+static void GF_RTC_GetDateTime(struct GFRtcWork *work);
+static void sub_02014700(struct GFRtcWork *work);
 
 static inline RTCDate *getDate(struct GFRtcWork *work) {
     return &work->date;
@@ -45,7 +45,7 @@ void GF_RTC_UpdateOnFrame(void) {
     }
 }
 
-void GF_RTC_GetDateTime_Callback(RTCResult result, void *arg) {
+static void GF_RTC_GetDateTime_Callback(RTCResult result, void *arg) {
     struct GFRtcWork *work = arg;
     work->getDateTimeErrorCode = result;
     GF_ASSERT(result == RTC_RESULT_SUCCESS);
@@ -55,19 +55,19 @@ void GF_RTC_GetDateTime_Callback(RTCResult result, void *arg) {
     work->getDateTimeLock = FALSE;
 }
 
-void GF_RTC_GetDateTime(struct GFRtcWork *work) {
+static void GF_RTC_GetDateTime(struct GFRtcWork *work) {
     work->getDateTimeLock = TRUE;
     work->getDateTimeErrorCode = RTC_GetDateTimeAsync(&work->date_async, &work->time_async, GF_RTC_GetDateTime_Callback, work);
     GF_ASSERT(work->getDateTimeErrorCode == RTC_RESULT_SUCCESS);
 }
 
-void sub_020146F4(struct GFRtcWork *work, s32 hour, s32 minute) {
+static void sub_020146F4(struct GFRtcWork *work, s32 hour, s32 minute) {
     work->unk_48 = 3;
     work->unk_4C.hour = hour;
     work->unk_4C.minute = minute;
 }
 
-void sub_02014700(struct GFRtcWork *work) {
+static void sub_02014700(struct GFRtcWork *work) {
     work->unk_48 = 0;
 }
 
@@ -96,8 +96,6 @@ s64 GF_RTC_DateTimeToSec(void) {
     return RTC_ConvertDateTimeToSecond(getDate(&sRTCWork), getTime(&sRTCWork));
 }
 
-// TODO: Uncomment when we can safely pass -nodead
-/*
 static inline BOOL IsLeapYear(s32 year) {
     return ((year % 4) == 0 && (year % 100) != 0) || ((year % 400) == 0);
 }
@@ -105,7 +103,6 @@ static inline BOOL IsLeapYear(s32 year) {
 s32 GF_RTC_GetDayOfYear(const RTCDate * date) {
     RTCDate date_stack;
     s32 days;
-*/
     static const u16 sGF_DaysPerMonth[] = {
         0,   // Jan
         31,  // Feb
@@ -120,22 +117,25 @@ s32 GF_RTC_GetDayOfYear(const RTCDate * date) {
         304, // Nov
         334, // Dec
     };
-/*
     days = date->day;
     days += sGF_DaysPerMonth[date->month - 1];
-    if (date->month >= RTC_MONTH_MARCH && IsLeapYear(date->year))
+    if (date->month >= 3 && IsLeapYear(date->year))
         days++;
-    date_stack = *date;
-    date_stack.month = RTC_MONTH_JANUARY;
-    date_stack.day = 1;
-    RTC_ConvertDateToDay(&date_stack);
-    RTC_ConvertDateToDay(date);
+//    {
+//        int check;
+//        date_stack = *date;
+//        date_stack.month = 1;
+//        date_stack.day = 1;
+//        check = RTC_ConvertDateToDay(date) - RTC_ConvertDateToDay(&date_stack);
+//        if (check + 1 != days) {
+//            OS_Printf("%d(Nitro) != %d(InHouse)", check + 1, days);
+//        }
+//        GF_ASSERT(check + 1 == days);
+//    }
     return days;
 }
-*/
 
 BOOL IsNighttime(void) {
-    (void)sGF_DaysPerMonth; // TODO: Remove when the above is uncommented
     switch (GF_RTC_GetTimeOfDay()) {
     case RTC_TIMEOFDAY_NITE:
     case RTC_TIMEOFDAY_LATE:

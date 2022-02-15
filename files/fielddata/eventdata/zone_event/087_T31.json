@@ -1,0 +1,73 @@
+{
+  "header": "fielddata/script/scr_seq/event_T31.h",
+  "bgs": [
+    {
+      "scr": "std_hiddenitem_t31_full_restore",
+      "type": 2,
+      "x": 827,
+      "y": 263,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T31_002 + 1",
+      "type": 1,
+      "x": 810,
+      "y": 262,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_T31_monstarball",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_T31_REAPER_CLOTH",
+      "scr": "std_itemball_t31_reaper_cloth",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 808,
+      "y": 277,
+      "z": 0
+    },
+    {
+      "id": "obj_T31_gsmiddleman1",
+      "ovid": "SPRITE_GSMIDDLEMAN1",
+      "mvt": 14,
+      "type": 0,
+      "flag": "FLAG_HIDE_CAMERON",
+      "scr": "_EV_scr_seq_T31_000 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 820,
+      "y": 271,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 811,
+      "y": 260,
+      "header": "MAP_D41R0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 820,
+      "y": 265,
+      "header": "MAP_T31PC0101",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

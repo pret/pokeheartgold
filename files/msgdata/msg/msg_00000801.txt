@@ -1,6 +1,0 @@
-Press the X Button over a dot\nto display the player’s location.
-EXIT
-PLACE NAME
-{STRVAR_1 36, 0, 0}
-{STRVAR_1 37, 0, 0}
-Exit the Visitor Profiles?

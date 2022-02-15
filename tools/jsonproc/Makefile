@@ -4,7 +4,22 @@ INCLUDES := -I .
 
 SRCS := jsonproc.cpp
 
-HEADERS := jsonproc.h inja.hpp nlohmann/json.hpp
+HEADERS := jsonproc.h \
+	inja.hpp \
+	config.hpp \
+	environment.hpp \
+	exceptions.hpp \
+	function_storage.hpp \
+	lexer.hpp \
+	node.hpp \
+	parser.hpp \
+	renderer.hpp \
+	statistics.hpp \
+	string_view.hpp \
+	template.hpp \
+	token.hpp \
+	utils.hpp \
+ 	nlohmann/json.hpp
 
 .PHONY: all clean
 

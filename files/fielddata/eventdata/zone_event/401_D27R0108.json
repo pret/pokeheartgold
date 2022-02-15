@@ -1,0 +1,12 @@
+{
+  "header": "fielddata/script/scr_seq/event_D27R0108.h",
+  "warps": [
+    {
+      "x": 3,
+      "y": 6,
+      "header": 4095,
+      "anchor": 256,
+      "height": 0
+    }
+  ]
+}

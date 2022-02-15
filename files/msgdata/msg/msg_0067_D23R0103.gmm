@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0067_D23R0103_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">We have recordings of the cries of many\nof the Pokémon that have been found.\rWe must have about 200 kinds.</language>
+	</row>
+	<row id="msg_0067_D23R0103_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">To Trainers, Pokémon are their\nbeloved partners.\rIt’s terrible how Team Rocket is trying\nto control Pokémon.</language>
+	</row>
+	<row id="msg_0067_D23R0103_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">We run 24 hours a day to broadcast\nentertaining programs.\rI’ll do my best to run around the\nclock, too!</language>
+	</row>
+	<row id="msg_0067_D23R0103_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Team Rocket boss has locked\nhimself in.\rBut the Director can open it.\rHe’s up on the fifth floor.\nPlease save him!</language>
+	</row>
+	<row id="msg_0067_D23R0103_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Is the Director safe?</language>
+	</row>
+	<row id="msg_0067_D23R0103_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Thank you, kiddo! You’re the best!\nThis is a token of my appreciation.\r</language>
+	</row>
+	<row id="msg_0067_D23R0103_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} received TM11!</language>
+	</row>
+	<row id="msg_0067_D23R0103_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It’s Sunny Day.\nIt powers up Fire-type moves for\fa while.</language>
+	</row>
+	<row id="msg_0067_D23R0103_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh, your Bag is full.</language>
+	</row>
+	<row id="msg_0067_D23R0103_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You were simply marvelous!</language>
+	</row>
+	<row id="msg_0067_D23R0103_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The door is locked...\nYou need a Card Key.</language>
+	</row>
+	<row id="msg_0067_D23R0103_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It’s the Card Key slot.\r</language>
+	</row>
+	<row id="msg_0067_D23R0103_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} inserted the Card Key.\r</language>
+	</row>
+	<row id="msg_0067_D23R0103_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You should be able to unlock the door\nwith the Card Key!</language>
+	</row>
+	<row id="msg_0067_D23R0103_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It’s the Card Key slot.</language>
+	</row>
+	<row id="msg_0067_D23R0103_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">3F Personnel</language>
+	</row>
+	<row id="msg_0067_D23R0103_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pokémon Music with host: DJ Ben</language>
+	</row>
+</body>

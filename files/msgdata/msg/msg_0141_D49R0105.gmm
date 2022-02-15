@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0141_D49R0105_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This is the “Trust” room.\rIt is to show the mutual reliance\nbetween Pokémon and people.</language>
+	</row>
+	<row id="msg_0141_D49R0105_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Only the Pokéathletes who have\ncome first in five courses with\fone Pokémon are allowed here.</language>
+	</row>
+	<row id="msg_0141_D49R0105_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This is the “Potential” room.\nPlease go ahead.</language>
+	</row>
+	<row id="msg_0141_D49R0105_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">To win Medals with different kinds of\nPokémon, it is essential to believe in\fyour Pokémon.</language>
+	</row>
+	<row id="msg_0141_D49R0105_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I would love to see my own shoes here!</language>
+	</row>
+	<row id="msg_0141_D49R0105_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This Dome contains so many\nother Domes...</language>
+	</row>
+	<row id="msg_0141_D49R0105_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} checked the Medal!\r</language>
+	</row>
+	<row id="msg_0141_D49R0105_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Those who have participated in the\nPokéathlon 50 times are commemorated\fhere for their never-yielding spirits.</language>
+	</row>
+	<row id="msg_0141_D49R0105_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It’s your jersey with\nyour autograph!</language>
+	</row>
+	<row id="msg_0141_D49R0105_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Those who have dashed 5,000 times\nare commemorated here for their\fachievement in breaking the\flegendary record.</language>
+	</row>
+	<row id="msg_0141_D49R0105_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cool shoes!\nAnd they’re your model!</language>
+	</row>
+	<row id="msg_0141_D49R0105_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Those who have switched 200 times\nare commemorated here for great\fteamwork and their bond with\ftheir Pokémon.</language>
+	</row>
+	<row id="msg_0141_D49R0105_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It’s a cool flag!\nAnd it’s yours!</language>
+	</row>
+	<row id="msg_0141_D49R0105_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pokéathlon Medals...\rThose are the proof of the hard work\nof both Pokéathletes and Pokémon.\rThose Pokémon that have won all five\nMedals are called “Medalist Pokémon”\fto commemorate the trust they’ve\fearned from their Pokéathlete.</language>
+	</row>
+	<row id="msg_0141_D49R0105_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ABRA: ...\n...\f...\rIt must be asleep!</language>
+	</row>
+	<row id="msg_0141_D49R0105_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DRATINI: Achoo!</language>
+	</row>
+</body>

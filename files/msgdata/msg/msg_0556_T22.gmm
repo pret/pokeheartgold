@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0556_T22_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}? We discovered\nsomething about the Egg!\rMy assistant is at the Pokémon Center\nin Violet City.\fCould you talk to him?</language>
+	</row>
+	<row id="msg_0556_T22_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bonjour!\nYou are Trainer?\rBattle Gym Leader, win you did? {YESNO 0}</language>
+	</row>
+	<row id="msg_0556_T22_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ooh, la la!\nVery indeed nice!</language>
+	</row>
+	<row id="msg_0556_T22_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Is that so? Then study shall you!\fFollow me!\r</language>
+	</row>
+	<row id="msg_0556_T22_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Here, teacher I am.\nGood it is you study here!\r</language>
+	</row>
+	<row id="msg_0556_T22_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There have been reports of Ghost-type\nPokémon appearing in Sprout Tower.\rThey say Normal-type Pokémon moves\nhave no effect on them.</language>
+	</row>
+	<row id="msg_0556_T22_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey, you’re a Pokémon Trainer?\rIf you beat the Gym Leader here,\nyou’ll be ready for prime time!</language>
+	</row>
+	<row id="msg_0556_T22_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Falkner, from the Violet City Pokémon\nGym, is a fine Trainer!\rHe inherited his father’s Gym and\nhas done a great job with it.</language>
+	</row>
+	<row id="msg_0556_T22_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You cannot have your Pokémon out\nwalking with you in some places.\rPlaces like buildings, caves, and\nwhere there are huge crowds.\rBut all you have to do is to put it in\na Poké Ball!</language>
+	</row>
+	<row id="msg_0556_T22_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Violet City\nThe City of Nostalgic Scents</language>
+	</row>
+	<row id="msg_0556_T22_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Violet City Pokémon Gym\nLeader: Falkner\fThe Elegant Master of Flying Pokémon</language>
+	</row>
+	<row id="msg_0556_T22_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sprout Tower\rExperience the Way of Pokémon\nto Cast Aside Your Doubts.</language>
+	</row>
+	<row id="msg_0556_T22_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pokémon School\rEarl will show you all\nthere is to Pokémon!</language>
+	</row>
+	<row id="msg_0556_T22_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Me oh my...\nThat Egg must be...!\r</language>
+	</row>
+	<row id="msg_0556_T22_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I see...\nSo it was handed from Mr. Pokémon to\fProfessor Elm, then from Professor Elm\fto you.\rNow I get it...\r</language>
+	</row>
+	<row id="msg_0556_T22_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">That Egg is truly an important Egg.\nPlease do take good care of it for me.\rIs that understood?\r</language>
+	</row>
+	<row id="msg_0556_T22_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I am counting on you.\r</language>
+	</row>
+	<row id="msg_0556_T22_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Shard de Berry!\nShard de Berry!\rYah, yah!\nI trade Berry for a Shard.\rIf ya bring me some Shards,\nI will give ya three Berries, yah.\r</language>
+	</row>
+	<row id="msg_0556_T22_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Shard de Berry!\nShard de Berry!\rYah, yah!\nI trade Berry for Shard.\rIf ya bring me some Shards,\nI will give ya three Berries, yah.\rWhich Shard will ya trade for\nde Berry? {YESNO 0}</language>
+	</row>
+	<row id="msg_0556_T22_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">More Shards to trade for\nde Berries? {YESNO 0}</language>
+	</row>
+	<row id="msg_0556_T22_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Yah, yah!\nCome back when ya’ve changed\fya mind, yah.\r</language>
+	</row>
+	<row id="msg_0556_T22_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’ll give ya de Berry set A\nfor de Red Shard, yah.\r</language>
+	</row>
+	<row id="msg_0556_T22_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’ll give ya de Berry set B\nfor de Blue Shard, yah.\r</language>
+	</row>
+	<row id="msg_0556_T22_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’ll give ya de Berry set C\nfor de Yellow Shard, yah.\r</language>
+	</row>
+	<row id="msg_0556_T22_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’ll give ya de Berry set D\nfor de Green Shard, yah.\r</language>
+	</row>
+	<row id="msg_0556_T22_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ya already have many Berries\nof dis set.\rCome back when ya need more, yah.\r</language>
+	</row>
+	<row id="msg_0556_T22_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">We care about the traditional buildings\naround here. That’s why even the\fPoké Mart and Pokémon Center are\fpainted a bit somberly to blend in.</language>
+	</row>
+	<row id="msg_0556_T22_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Did you know that Pokégear allows you\nto put marks and memos on its Map?\rI’d love to have one of those\nPokégears, but my mom won’t let me.</language>
+	</row>
+</body>

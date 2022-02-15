@@ -1,0 +1,244 @@
+{
+  "header": "fielddata/script/scr_seq/event_R36.h",
+  "bgs": [
+    {
+      "scr": "_EV_scr_seq_R36_005 + 1",
+      "type": 1,
+      "x": 377,
+      "y": 235,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_R36_004 + 1",
+      "type": 1,
+      "x": 427,
+      "y": 248,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_R36_003 + 1",
+      "type": 1,
+      "x": 441,
+      "y": 244,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_R36_006 + 1",
+      "type": 1,
+      "x": 394,
+      "y": 223,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_r36_awakening",
+      "type": 2,
+      "x": 391,
+      "y": 243,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_R36_gsbigman",
+      "ovid": "SPRITE_GSBIGMAN",
+      "mvt": 16,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_R36_008 + 1",
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 426,
+      "y": 246,
+      "z": 0
+    },
+    {
+      "id": "obj_R36_gsgirl1",
+      "ovid": "SPRITE_GSGIRL1",
+      "mvt": 5,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_R36_009 + 1",
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 2,
+      "yrange": 0,
+      "x": 435,
+      "y": 245,
+      "z": 0
+    },
+    {
+      "id": "obj_R36_mystery_2",
+      "ovid": "SPRITE_MYSTERY_2",
+      "mvt": 17,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_PSYCHIC_M_MARK)",
+      "dirn": 3,
+      "eye": 3,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 380,
+      "y": 244,
+      "z": 0
+    },
+    {
+      "id": "obj_R36_gsboy1",
+      "ovid": "SPRITE_GSBOY1",
+      "mvt": 16,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_SCHOOL_KID_M_ALAN)",
+      "dirn": 2,
+      "eye": 6,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 401,
+      "y": 248,
+      "z": 0
+    },
+    {
+      "id": "obj_R36_usokky",
+      "ovid": "SPRITE_USOKKY",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_UNK_1C2",
+      "scr": "_EV_scr_seq_R36_000 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 415,
+      "y": 246,
+      "z": 0
+    },
+    {
+      "id": "obj_R36_gsgirl1_2",
+      "ovid": "SPRITE_GSGIRL1",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_UNK_1CF",
+      "scr": "_EV_scr_seq_R36_007 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 415,
+      "y": 249,
+      "z": 0
+    },
+    {
+      "id": "obj_R36_gsboy1_2",
+      "ovid": "SPRITE_GSBOY1",
+      "mvt": 2,
+      "type": 0,
+      "flag": "FLAG_UNK_1C4",
+      "scr": "_EV_scr_seq_R36_001 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 431,
+      "y": 244,
+      "z": 0
+    },
+    {
+      "id": "obj_R36_bonguri",
+      "ovid": "SPRITE_BONGURI",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_apricorn_tree",
+      "dirn": 0,
+      "eye": 12,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 382,
+      "y": 233,
+      "z": 0
+    },
+    {
+      "id": "obj_R36_monstarball",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_R36_HYPER_POTION",
+      "scr": "std_itemball_r36_hyper_potion",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 393,
+      "y": 237,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 374,
+      "y": 238,
+      "header": "MAP_R36R0201",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 374,
+      "y": 237,
+      "header": "MAP_R36R0201",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 430,
+      "y": 252,
+      "header": "MAP_R36R0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 431,
+      "y": 252,
+      "header": "MAP_R36R0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 447,
+      "y": 246,
+      "header": "MAP_T22R0701",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 447,
+      "y": 247,
+      "header": "MAP_T22R0701",
+      "anchor": 1,
+      "height": 0
+    }
+  ]
+}

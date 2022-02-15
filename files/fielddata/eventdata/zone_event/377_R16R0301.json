@@ -1,0 +1,45 @@
+{
+  "header": "fielddata/script/scr_seq/event_R16R0301.h",
+  "objects": [
+    {
+      "id": "obj_R16R0301_tree",
+      "ovid": "SPRITE_TREE",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_MAPTEMP_010",
+      "scr": "std_field_cut",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1167,
+      "y": 264,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 1158,
+      "y": 276,
+      "header": "MAP_R16R0201",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1158,
+      "y": 277,
+      "header": "MAP_R16R0201",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 1153,
+      "y": 258,
+      "header": "MAP_R16R0101",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

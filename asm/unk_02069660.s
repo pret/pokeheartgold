@@ -74,7 +74,7 @@ sub_020696C4: ; 0x020696C4
 	add r0, r2, #0
 	ldr r3, [sp, #0x10]
 	mov r2, #0
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r1, r0, #0
 	add r0, r5, #0
 	add r2, r4, #0

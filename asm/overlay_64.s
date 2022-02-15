@@ -10,11 +10,11 @@ ov64_021E5900: ; 0x021E5900
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	mov r0, #0
-	bl sub_02022C9C
+	bl GX_EngineASetLayers
 	mov r0, #0
-	bl sub_02022D04
+	bl GX_EngineBSetLayers
 	ldr r0, _021E59B4 ; =0x04000050
 	mov r1, #0
 	strh r1, [r0]
@@ -179,7 +179,7 @@ _021E5A74:
 ov64_021E5A88: ; 0x021E5A88
 	push {r3, lr}
 	ldr r0, [r0, #4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200D034
 	ldr r3, _021E5AA4 ; =0x027E0000
 	ldr r1, _021E5AA8 ; =0x00003FF8
@@ -356,7 +356,7 @@ ov64_021E5B10: ; 0x021E5B10
 	str r2, [sp, #0xc]
 	ldr r2, [r5, #4]
 	add r4, r0, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -367,7 +367,7 @@ ov64_021E5B10: ; 0x021E5B10
 	ldr r2, [r5, #4]
 	add r0, r4, #0
 	add r3, r1, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x3b
@@ -376,7 +376,7 @@ ov64_021E5B10: ; 0x021E5B10
 	add r0, r4, #0
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -388,7 +388,7 @@ ov64_021E5B10: ; 0x021E5B10
 	add r0, r4, #0
 	mov r1, #3
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -400,7 +400,7 @@ ov64_021E5B10: ; 0x021E5B10
 	add r0, r4, #0
 	mov r1, #4
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x3b
@@ -409,7 +409,7 @@ ov64_021E5B10: ; 0x021E5B10
 	mov r1, #5
 	mov r2, #4
 	mov r3, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	add r0, r4, #0
 	bl NARC_dtor
 	mov r1, #0x1e
@@ -802,7 +802,7 @@ _021E5EF0:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x5c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -1063,11 +1063,11 @@ _021E6186:
 	mov r0, #0x42
 	lsl r0, r0, #2
 	add r0, r6, r0
-	bl sub_0201D8A0
+	bl CopyWindowPixelsToVram_TextMode
 	mov r0, #0x42
 	lsl r0, r0, #2
 	add r0, r6, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -1321,7 +1321,7 @@ _021E63AC:
 	add r0, r4, #0
 	add r1, r5, #0
 	bl ov64_021E677C
-	ldr r0, _021E64F0 ; =gMain
+	ldr r0, _021E64F0 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -1371,7 +1371,7 @@ _021E6410:
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
 	bl sub_02019F74
-	ldr r1, _021E64F0 ; =gMain
+	ldr r1, _021E64F0 ; =gSystem
 	ldr r2, [r1, #0x4c]
 	mov r1, #0x10
 	tst r1, r2
@@ -1475,7 +1475,7 @@ _021E64E2:
 	nop
 _021E64E8: .word _021E6E7C
 _021E64EC: .word 0x000005DC
-_021E64F0: .word gMain
+_021E64F0: .word gSystem
 _021E64F4: .word 0x0000060D
 	thumb_func_end ov64_021E62C8
 
@@ -1752,9 +1752,9 @@ _021E6656:
 	add r3, r1, #0
 	bl AddTextPrinterParameterized2
 	add r0, r4, r6
-	bl sub_0201D8A0
+	bl CopyWindowPixelsToVram_TextMode
 	add r0, r4, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r1, _021E6750 ; =0x000001C6
 	mov r0, #1
 	ldrh r2, [r5, r1]
@@ -1786,7 +1786,7 @@ ov64_021E6754: ; 0x021E6754
 	ldr r0, [r4, #4]
 	mov r1, #4
 	mov r2, #0
-	bl sub_0201CB28
+	bl BgFillTilemapBufferAndSchedule
 	pop {r4, pc}
 	thumb_func_end ov64_021E6754
 
@@ -2255,10 +2255,10 @@ _021E6B56:
 	lsl r0, r4, #4
 	str r0, [sp, #0x34]
 	add r0, r6, r0
-	bl sub_0201D8A0
+	bl CopyWindowPixelsToVram_TextMode
 	ldr r0, [sp, #0x34]
 	add r0, r6, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r7, r7, #1
 	add r4, r4, #1
 	cmp r7, #7
@@ -2369,7 +2369,7 @@ ov64_021E6C1C: ; 0x021E6C1C
 	str r1, [sp, #0xc]
 	str r2, [sp, #0x10]
 	add r7, r3, #0
-	bl sub_0206A304
+	bl SpeciesToOverworldModelIndexOffset
 	add r2, r0, #0
 	add r0, sp, #0x30
 	mov r1, #0x8d
@@ -2616,11 +2616,11 @@ _021E6E42:
 	mov r4, #1
 	b _021E6E6E
 _021E6E46:
-	bl sub_0206A304
+	bl SpeciesToOverworldModelIndexOffset
 	ldr r1, _021E6E78 ; =0x00000129
 	add r4, r0, r1
 	add r0, r5, #0
-	bl sub_0206A338
+	bl OverworldModelLookupHasFemaleForme
 	cmp r0, #0
 	beq _021E6E60
 	cmp r7, #1
@@ -2629,7 +2629,7 @@ _021E6E46:
 	b _021E6E6E
 _021E6E60:
 	add r0, r5, #0
-	bl sub_0206A310
+	bl OverworldModelLookupFormeCount
 	cmp r6, r0
 	ble _021E6E6C
 	mov r6, #0

@@ -119,7 +119,7 @@ _020251FC:
 	thumb_func_start sub_02025204
 sub_02025204: ; 0x02025204
 	push {r3, lr}
-	ldr r2, _02025220 ; =gMain + 0x40
+	ldr r2, _02025220 ; =gSystem + 0x40
 	ldrh r1, [r2, #0x26]
 	cmp r1, #0
 	beq _02025218
@@ -132,13 +132,13 @@ _02025218:
 	mvn r0, r0
 	pop {r3, pc}
 	nop
-_02025220: .word gMain + 0x40
+_02025220: .word gSystem + 0x40
 	thumb_func_end sub_02025204
 
 	thumb_func_start sub_02025224
 sub_02025224: ; 0x02025224
 	push {r3, lr}
-	ldr r2, _02025240 ; =gMain + 0x40
+	ldr r2, _02025240 ; =gSystem + 0x40
 	ldrh r1, [r2, #0x24]
 	cmp r1, #0
 	beq _02025238
@@ -151,13 +151,13 @@ _02025238:
 	mvn r0, r0
 	pop {r3, pc}
 	nop
-_02025240: .word gMain + 0x40
+_02025240: .word gSystem + 0x40
 	thumb_func_end sub_02025224
 
 	thumb_func_start sub_02025244
 sub_02025244: ; 0x02025244
 	push {r3, r4, r5, r6, r7, lr}
-	ldr r7, _02025298 ; =gMain + 0x40
+	ldr r7, _02025298 ; =gSystem + 0x40
 	add r5, r0, #0
 	ldrh r0, [r7, #0x26]
 	cmp r0, #0
@@ -200,13 +200,13 @@ _02025290:
 	mvn r0, r0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02025298: .word gMain + 0x40
+_02025298: .word gSystem + 0x40
 	thumb_func_end sub_02025244
 
 	thumb_func_start sub_0202529C
 sub_0202529C: ; 0x0202529C
 	push {r3, r4, r5, r6, r7, lr}
-	ldr r7, _020252F0 ; =gMain + 0x40
+	ldr r7, _020252F0 ; =gSystem + 0x40
 	add r5, r0, #0
 	ldrh r0, [r7, #0x24]
 	cmp r0, #0
@@ -249,13 +249,13 @@ _020252E8:
 	mvn r0, r0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_020252F0: .word gMain + 0x40
+_020252F0: .word gSystem + 0x40
 	thumb_func_end sub_0202529C
 
 	thumb_func_start sub_020252F4
 sub_020252F4: ; 0x020252F4
 	push {r3, lr}
-	ldr r2, _0202531C ; =gMain + 0x40
+	ldr r2, _0202531C ; =gSystem + 0x40
 	ldrh r1, [r2, #0x26]
 	cmp r1, #0
 	beq _02025316
@@ -274,13 +274,13 @@ _02025316:
 	mov r0, #0
 	pop {r3, pc}
 	nop
-_0202531C: .word gMain + 0x40
+_0202531C: .word gSystem + 0x40
 	thumb_func_end sub_020252F4
 
 	thumb_func_start sub_02025320
 sub_02025320: ; 0x02025320
 	push {r3, lr}
-	ldr r2, _02025348 ; =gMain + 0x40
+	ldr r2, _02025348 ; =gSystem + 0x40
 	ldrh r1, [r2, #0x24]
 	cmp r1, #0
 	beq _02025342
@@ -299,30 +299,30 @@ _02025342:
 	mov r0, #0
 	pop {r3, pc}
 	nop
-_02025348: .word gMain + 0x40
+_02025348: .word gSystem + 0x40
 	thumb_func_end sub_02025320
 
 	thumb_func_start sub_0202534C
 sub_0202534C: ; 0x0202534C
-	ldr r0, _02025354 ; =gMain + 0x40
+	ldr r0, _02025354 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x26]
 	bx lr
 	nop
-_02025354: .word gMain + 0x40
+_02025354: .word gSystem + 0x40
 	thumb_func_end sub_0202534C
 
 	thumb_func_start sub_02025358
 sub_02025358: ; 0x02025358
-	ldr r0, _02025360 ; =gMain + 0x40
+	ldr r0, _02025360 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	bx lr
 	nop
-_02025360: .word gMain + 0x40
+_02025360: .word gSystem + 0x40
 	thumb_func_end sub_02025358
 
 	thumb_func_start sub_02025364
 sub_02025364: ; 0x02025364
-	ldr r2, _0202537C ; =gMain + 0x40
+	ldr r2, _0202537C ; =gSystem + 0x40
 	ldrh r3, [r2, #0x26]
 	cmp r3, #0
 	beq _02025378
@@ -336,12 +336,12 @@ _02025378:
 	mov r0, #0
 	bx lr
 	.balign 4, 0
-_0202537C: .word gMain + 0x40
+_0202537C: .word gSystem + 0x40
 	thumb_func_end sub_02025364
 
 	thumb_func_start sub_02025380
 sub_02025380: ; 0x02025380
-	ldr r2, _02025398 ; =gMain + 0x40
+	ldr r2, _02025398 ; =gSystem + 0x40
 	ldrh r3, [r2, #0x24]
 	cmp r3, #0
 	beq _02025394
@@ -355,7 +355,7 @@ _02025394:
 	mov r0, #0
 	bx lr
 	.balign 4, 0
-_02025398: .word gMain + 0x40
+_02025398: .word gSystem + 0x40
 	thumb_func_end sub_02025380
 
 	thumb_func_start sub_0202539C

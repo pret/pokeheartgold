@@ -2120,7 +2120,7 @@ _020244B8:
 	str r0, [r4, r1]
 	ldr r0, [r5, #8]
 	ldr r1, _02024500 ; =_0210F6E0
-	bl sub_0201A3A4
+	bl Sys_AllocAndReadFile
 	mov r1, #0x46
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -3683,7 +3683,7 @@ _02024F2A:
 	ldr r2, [r4, #0x20]
 	bl NNS_G2dScale
 	ldrh r0, [r4, #0x24]
-	ldr r2, _0202500C ; =_021094DC
+	ldr r2, _0202500C ; =FX_SinCosTable_
 	asr r0, r0, #4
 	lsl r1, r0, #1
 	lsl r0, r1, #1
@@ -3774,7 +3774,7 @@ _02025000:
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_0202500C: .word _021094DC
+_0202500C: .word FX_SinCosTable_
 	thumb_func_end sub_02024EB4
 
 	thumb_func_start sub_02025010

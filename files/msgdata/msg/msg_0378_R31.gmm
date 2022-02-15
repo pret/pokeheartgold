@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0378_R31_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">...Hnuurg ...Huh?\rI walked too far today looking\nfor Pokémon.\rMy feet hurt and I’m sleepy...\rIf I were a wild Pokémon, I’d be\neasy to catch...\r...Zzzz...</language>
+	</row>
+	<row id="msg_0378_R31_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">...Hnuurg! ...Huh?\rI feel like reading some words\non a piece of paper or something...\r...Zzz...\n...!!\r</language>
+	</row>
+	<row id="msg_0378_R31_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Huh? What?\nWhat about that Pokémon?\fI don’t have any mail.\rZzz...</language>
+	</row>
+	<row id="msg_0378_R31_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This Mail isn’t for me.</language>
+	</row>
+	<row id="msg_0378_R31_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh, hey! I got an email!\r...\nHuh?\fI don’t know this Pokémon.\fI’ll just let you take care of it.\r</language>
+	</row>
+	<row id="msg_0378_R31_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} handed over the Pokémon\nholding the Mail.</language>
+	</row>
+	<row id="msg_0378_R31_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} handed over the Mail.</language>
+	</row>
+	<row id="msg_0378_R31_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Let’s see...\r“Thank you for your Mail.\nIt was such an exciting adventure.\rI did not like ZUBAT, though...”\nThat’s what it says.\rI went to a dark cave the other day\nwith a friend.\rThat cave leads to another route.\nBy the way, I must thank you for\fbeing so kind.\rI’d like to do something good in return.\r</language>
+	</row>
+	<row id="msg_0378_R31_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TM44 is...\n...Zzz...\f...\r...Umm... Rest!\rThe phrase “recover fast” became\nshortened to “Rest,” you see?\fThis is a move to sleep and recover HP.</language>
+	</row>
+	<row id="msg_0378_R31_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">...I’m\nsleepy...</language>
+	</row>
+	<row id="msg_0378_R31_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">...Wait!\nThat would make you not have\fany Pokémon!</language>
+	</row>
+	<row id="msg_0378_R31_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I found a good Pokémon in Dark Cave.\nI’m going to raise it to take on\fFalkner.\rHe’s the leader of Violet City’s Gym.</language>
+	</row>
+	<row id="msg_0378_R31_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dark Cave...\rIf a Pokémon could light it up,\nI’d explore it.</language>
+	</row>
+	<row id="msg_0378_R31_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rt. 31\nWest to Violet City</language>
+	</row>
+	<row id="msg_0378_R31_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dark Cave</language>
+	</row>
+	<row id="msg_0378_R31_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Huh? What is it?\nIs that a Pokémon Egg?\fI’ve never seen one.\r...Zzz...</language>
+	</row>
+</body>

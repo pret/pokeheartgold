@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0643_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Kurt</language>
+	</row>
+	<row id="msg_0643_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh hey, {STRVAR_1 1, 0, 0}!\nTalking on the phone’s a bit odd.\fJust talk to me!</language>
+	</row>
+	<row id="msg_0643_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This is Kurt!\nYou’re {STRVAR_1 1, 0, 0}, right?\r</language>
+	</row>
+	<row id="msg_0643_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey, I turned all the Apricorns you\ngave me into Poké Balls.\rCome pick up the {STRVAR_1 51, 11, 0} {STRVAR_1 8, 10, 0}(s)\nwhenever you’ve got time!</language>
+	</row>
+	<row id="msg_0643_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You just asked me to make ’em!\nYa gotta give me a day at least!</language>
+	</row>
+	<row id="msg_0643_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">If you bring me some Apricorns, I can\nmake you some Poké Balls.\fCome over whenever you’ve got time!</language>
+	</row>
+	<row id="msg_0643_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh, hey! My old man had something he\nwanted to ask you about!\fI’ll put him on the line. Just a sec!\r</language>
+	</row>
+</body>

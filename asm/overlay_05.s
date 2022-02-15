@@ -222,7 +222,7 @@ _0221BBA6:
 	ldr r0, [r4, r0]
 	cmp r0, #1
 	bne _0221BBBA
-	ldr r0, _0221BD1C ; =gMain
+	ldr r0, _0221BD1C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -398,7 +398,7 @@ _0221BD0C: .word 0x00000BBC
 _0221BD10: .word 0x00000BAC
 _0221BD14: .word 0x00000B88
 _0221BD18: .word 0x00000BB8
-_0221BD1C: .word gMain
+_0221BD1C: .word gSystem
 _0221BD20: .word 0x00000B98
 _0221BD24: .word ov05_0221EA58
 	thumb_func_end ov05_0221BB30
@@ -412,7 +412,7 @@ ov05_0221BD28: ; 0x0221BD28
 	strh r0, [r1]
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r1, #1
@@ -792,7 +792,7 @@ ov05_0221C050: ; 0x0221C050
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
 	mov r1, #3
-	bl sub_0201BDF4
+	bl Bg_GetXpos
 	cmp r0, #0x18
 	bgt _0221C0EC
 	ldr r1, _0221C214 ; =0x00000B82
@@ -806,13 +806,13 @@ ov05_0221C050: ; 0x0221C050
 	ldr r0, [r4, #0xc]
 	mov r1, #3
 	mov r3, #0x18
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r2, #0
 	add r3, r2, #0
 	ldr r0, [r4, #0xc]
 	mov r1, #2
 	sub r3, #0x18
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r1, #0
 	add r0, r4, #0
 	add r2, r1, #0
@@ -861,13 +861,13 @@ _0221C0EC:
 	ldr r3, [r4, r3]
 	mov r1, #3
 	mov r2, #2
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r3, _0221C218 ; =0x00000B74
 	ldr r0, [r4, #0xc]
 	ldr r3, [r4, r3]
 	mov r1, #2
 	mov r2, #1
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r3, _0221C214 ; =0x00000B82
 	mov r1, #0
 	ldrb r0, [r4, r3]
@@ -1039,23 +1039,23 @@ _0221C258:
 	mov r1, #3
 	mov r2, #0
 	mov r3, #0x18
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r2, #0
 	add r3, r2, #0
 	ldr r0, [r5, #0xc]
 	mov r1, #2
 	sub r3, #0x18
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r1, #3
 	ldr r0, [r5, #0xc]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r5, #0xc]
 	mov r1, #2
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r1, #0
 	add r0, r5, #0
 	add r2, r1, #0
@@ -1168,23 +1168,23 @@ _0221C370:
 	mov r1, #3
 	mov r2, #0
 	add r3, #0x18
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	add r3, r6, #0
 	ldr r0, [r5, #0xc]
 	mov r1, #2
 	mov r2, #0
 	sub r3, #0x18
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r1, #3
 	ldr r0, [r5, #0xc]
 	add r2, r1, #0
 	add r3, r4, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r5, #0xc]
 	mov r1, #2
 	mov r2, #3
 	add r3, r4, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	add r0, r5, #0
 	mov r1, #0
 	add r2, r6, #0
@@ -1292,12 +1292,12 @@ _0221C482:
 	mov r1, #3
 	mov r2, #1
 	mov r3, #0x10
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r1, #2
 	ldr r0, [r4, #0xc]
 	add r2, r1, #0
 	mov r3, #0x10
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r2, _0221C548 ; =0x00000B82
 	mov r1, #0
 	ldrb r0, [r4, r2]
@@ -1461,7 +1461,7 @@ ov05_0221C5C4: ; 0x0221C5C4
 	ldr r3, _0221C6BC ; =ov05_0221EA6C
 	add r2, r1, #0
 	ldrb r3, [r3, r5]
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r3, _0221C6B8 ; =0x00000B82
 	ldr r0, [r4, #0xc]
 	ldrb r3, [r4, r3]
@@ -1470,7 +1470,7 @@ ov05_0221C5C4: ; 0x0221C5C4
 	lsl r5, r3, #1
 	ldr r3, _0221C6BC ; =ov05_0221EA6C
 	ldrb r3, [r3, r5]
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r2, _0221C6B8 ; =0x00000B82
 	mov r1, #0
 	ldrb r2, [r4, r2]
@@ -1582,7 +1582,7 @@ ov05_0221C6C8: ; 0x0221C6C8
 	ldr r3, _0221C7F0 ; =ov05_0221EA6C
 	mov r2, #1
 	ldrb r3, [r3, r5]
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r3, _0221C7EC ; =0x00000B82
 	ldr r0, [r4, #0xc]
 	ldrb r3, [r4, r3]
@@ -1591,7 +1591,7 @@ ov05_0221C6C8: ; 0x0221C6C8
 	lsl r5, r3, #1
 	ldr r3, _0221C7F0 ; =ov05_0221EA6C
 	ldrb r3, [r3, r5]
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r2, _0221C7EC ; =0x00000B82
 	mov r1, #0
 	ldrb r2, [r4, r2]
@@ -2560,7 +2560,7 @@ ov05_0221CE88: ; 0x0221CE88
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r0, [r4, #8]
 	bl sub_0200398C
 	bl sub_0202061C
@@ -2619,7 +2619,7 @@ ov05_0221CEB8: ; 0x0221CEB8
 	ldr r0, [r5, #0xc]
 	mov r2, #0
 	add r3, #0xfd
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r6, _0221CFE0 ; =ov05_0221EB54
 	add r3, sp, #0x38
 	ldmia r6!, {r0, r1}
@@ -2643,7 +2643,7 @@ ov05_0221CEB8: ; 0x0221CEB8
 	mov r1, #2
 	mov r2, #0
 	mvn r3, r3
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r6, _0221CFE4 ; =ov05_0221EB70
 	add r3, sp, #0x1c
 	ldmia r6!, {r0, r1}
@@ -2671,7 +2671,7 @@ ov05_0221CEB8: ; 0x0221CEB8
 	mov r1, #1
 	mov r2, #3
 	mov r3, #0x18
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _0221CF88:
 	cmp r4, #0
 	bne _0221CFD0
@@ -2824,7 +2824,7 @@ ov05_0221D094: ; 0x0221D094
 	add r4, r0, #0
 	str r2, [sp, #0xc]
 	ldr r2, [r5, #0xc]
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2836,7 +2836,7 @@ ov05_0221D094: ; 0x0221D094
 	str r0, [sp, #0xc]
 	ldr r2, [r5, #0xc]
 	add r0, r4, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2848,7 +2848,7 @@ ov05_0221D094: ; 0x0221D094
 	str r0, [sp, #0xc]
 	ldr r2, [r5, #0xc]
 	add r0, r4, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2860,7 +2860,7 @@ ov05_0221D094: ; 0x0221D094
 	str r0, [sp, #0xc]
 	ldr r2, [r5, #0xc]
 	add r0, r4, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r2, #0
 	str r2, [sp]
 	ldr r0, [r5]
@@ -2869,7 +2869,7 @@ ov05_0221D094: ; 0x0221D094
 	add r3, r2, #0
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r1, #0
 	ldr r0, [r5, #8]
 	add r2, r1, #0
@@ -3391,7 +3391,7 @@ ov05_0221D530: ; 0x0221D530
 	add r1, r5, #0
 	mov r2, #8
 	mov r3, #2
-	bl sub_0201D494
+	bl AddTextWindowTopLeftCorner
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -4276,7 +4276,7 @@ ov05_0221DC60: ; 0x0221DC60
 	str r1, [sp, #0xc]
 	ldr r2, [r5, #0xc]
 	mov r1, #0xf
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4288,7 +4288,7 @@ ov05_0221DC60: ; 0x0221DC60
 	str r0, [sp, #0xc]
 	ldr r2, [r5, #0xc]
 	add r0, r4, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r2, [r5]
 	add r0, r4, #0
 	ldr r2, [r2, #0x24]
@@ -4381,7 +4381,7 @@ _0221DD3A:
 	ldrb r3, [r6, #1]
 	ldr r0, [r5, #0xc]
 	mov r1, #2
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	mov r0, #0x86
 	lsl r0, r0, #2
 	ldrh r0, [r7, r0]
@@ -4399,7 +4399,7 @@ _0221DD3A:
 	ldrb r3, [r6, #1]
 	ldr r0, [r5, #0xc]
 	mov r1, #2
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	cmp r4, #3
 	bhs _0221DD92
 	ldr r0, [r5]
@@ -4548,7 +4548,7 @@ ov05_0221DE6C: ; 0x0221DE6C
 	ldr r0, [r5, #0xc]
 	mov r1, #1
 	lsr r2, r2, #0x18
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, _0221DF34 ; =0x00000844
 	lsl r2, r6, #0x18
 	str r4, [sp]
@@ -4565,7 +4565,7 @@ ov05_0221DE6C: ; 0x0221DE6C
 	ldr r0, [r5, #0xc]
 	mov r1, #2
 	lsr r2, r2, #0x18
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	b _0221DF1A
 _0221DECC:
 	ldr r2, _0221DF30 ; =0x00000544
@@ -4586,7 +4586,7 @@ _0221DECC:
 	ldr r0, [r5, #0xc]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r1, _0221DF34 ; =0x00000844
 	mov r2, #0
 	str r4, [sp]
@@ -4604,7 +4604,7 @@ _0221DECC:
 	ldr r0, [r5, #0xc]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _0221DF1A:
 	ldr r0, [r5, #0xc]
 	mov r1, #1
@@ -5866,16 +5866,16 @@ ov05_0221E8A8: ; 0x0221E8A8
 	add r1, r6, #0
 	bl ov05_0221E7B8
 	add r0, r5, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, r4
 	add r0, #0x10
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, r4
 	add r0, #0x20
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, r4
 	add r0, #0x30
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

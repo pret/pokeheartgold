@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0628_T29R0201_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Lake of Rage is actually a crater\nmade by rampaging GYARADOS.\rThe crater filled up with rainwater,\nand the lake was formed.\rThat’s the story passed on from my\ngrandpa’s great-great-grandpa.\rIt used to be that you could catch\nlively MAGIKARP there, but...\rI don’t understand what’s happening.</language>
+	</row>
+	<row id="msg_0628_T29R0201_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Lake of Rage hasn’t been normal\nsince those men wearing black arrived.</language>
+	</row>
+	<row id="msg_0628_T29R0201_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Lake of Rage is back to normal.\nThe MAGIKARP have returned.\rI may yet achieve my dream of seeing\nthe world’s largest MAGIKARP.\rDo you have a Rod?\nPlease help me if you do.</language>
+	</row>
+	<row id="msg_0628_T29R0201_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ah, you have a MAGIKARP!\nLet’s see how big that baby is.\r</language>
+	</row>
+	<row id="msg_0628_T29R0201_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 52, 0, 0}.{STRVAR_1 50, 1, 0} inches!\nA MAGIKARP of {STRVAR_1 52, 0, 0}.{STRVAR_1 50, 1, 0} inches!\rWow! This one is outstanding!\nI tip my hat to you!\rTake this as a memento!\r</language>
+	</row>
+	<row id="msg_0628_T29R0201_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The record is the important thing.\nThink of that as a bonus!</language>
+	</row>
+	<row id="msg_0628_T29R0201_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 52, 0, 0}.{STRVAR_1 50, 1, 0} inches!\rThat’s wonderful!\n...Or not.\fI’ve seen a MAGIKARP\fof the same size before.</language>
+	</row>
+	<row id="msg_0628_T29R0201_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This MAGIKARP is {STRVAR_1 52, 0, 0}.{STRVAR_1 50, 1, 0} inches.\rBut I’ve already seen a MAGIKARP that\nwas {STRVAR_1 52, 2, 0}.{STRVAR_1 50, 3, 0} inches.</language>
+	</row>
+	<row id="msg_0628_T29R0201_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What? That’s not a MAGIKARP!</language>
+	</row>
+	<row id="msg_0628_T29R0201_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">...Your Bag is too full!\nNothing will fit...</language>
+	</row>
+	<row id="msg_0628_T29R0201_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh... So you didn’t get one good\nenough to show me?\fMaybe next time.</language>
+	</row>
+</body>

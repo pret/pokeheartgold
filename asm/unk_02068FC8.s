@@ -53,11 +53,11 @@ sub_02068FC8: ; 0x02068FC8
 	str r0, [sp, #0x34]
 	ldr r0, [r6, #0xc]
 	bl Sav2_Pokedex_get
-	bl sub_02029E84
+	bl Pokedex_CountDexOwned
 	str r0, [sp, #0x38]
 	ldr r0, [r6, #0xc]
 	bl Sav2_Pokedex_get
-	bl sub_0202A5F4
+	bl Pokedex_IsEnabled
 	str r0, [sp, #0x3c]
 	add r0, r4, #0
 	bl GameStats_GetStat2
@@ -87,7 +87,7 @@ sub_02068FC8: ; 0x02068FC8
 	bl sub_02055640
 	ldr r0, [r6, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066614
+	bl CheckGameClearFlag
 	add r1, sp, #0x78
 	str r1, [sp]
 	ldr r1, [sp, #0x14]
@@ -258,7 +258,7 @@ sub_020691E8: ; 0x020691E8
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r4, #0
-	bl sub_02066614
+	bl CheckGameClearFlag
 	cmp r0, #0
 	beq _02069216
 	add r0, r4, #1
@@ -267,7 +267,7 @@ sub_020691E8: ; 0x020691E8
 _02069216:
 	add r0, r7, #0
 	bl Sav2_Pokedex_get
-	bl sub_02029F48
+	bl Pokedex_NationalDexIsComplete
 	cmp r0, #0
 	beq _0206922A
 	add r0, r4, #1
@@ -596,7 +596,7 @@ sub_02069464: ; 0x02069464
 	ldr r0, [r5, #0x10]
 	ldr r1, _02069494 ; =sub_02069498
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, pc}
 	nop
 _02069490: .word 0x00000684
@@ -607,10 +607,10 @@ _02069494: .word sub_02069498
 sub_02069498: ; 0x02069498
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0xa
@@ -658,7 +658,7 @@ _020694E4:
 	b _0206951C
 _02069500:
 	add r0, r4, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _0206951C
 	add r4, #0x80

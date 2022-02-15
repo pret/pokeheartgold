@@ -105,6 +105,21 @@ void OS_SetAlarm(OSAlarm *alarm, OSTick tick, OSAlarmHandler handler, void *arg)
     OS_RestoreInterrupts(enabled);
 }
 
+void OS_SetPeriodicAlarm(OSAlarm *alarm, OSTick start, OSTick period, OSAlarmHandler handler, void *arg) {
+    OSIntrMode enabled;
+
+    if (alarm == NULL || alarm->handler != NULL) {
+        OS_Panic("");
+    }
+
+    enabled = OS_DisableInterrupts();
+    alarm->period = period;
+    alarm->start = start;
+    alarm->handler = handler;
+    alarm->arg = arg;
+    OSi_InsertAlarm(alarm, 0);
+}
+
 void OS_CancelAlarm(OSAlarm *alarm) {
     OSAlarm *next;
     OSIntrMode enabled;

@@ -1,0 +1,19 @@
+{
+  "header": "fielddata/script/scr_seq/event_D44R0101.h",
+  "warps": [
+    {
+      "x": 6,
+      "y": 9,
+      "header": "MAP_T30",
+      "anchor": 2,
+      "height": 0
+    },
+    {
+      "x": 6,
+      "y": 5,
+      "header": "MAP_D44R0102",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

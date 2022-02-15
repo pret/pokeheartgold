@@ -1,0 +1,50 @@
+{
+  "header": "fielddata/script/scr_seq/event_D10R0101.h",
+  "objects": [
+    {
+      "id": "obj_D10R0101_mount_2",
+      "ovid": "SPRITE_MOUNT_2",
+      "mvt": 16,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_D10R0101_005 + 1",
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 28,
+      "y": 48,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 24,
+      "y": 52,
+      "header": "MAP_T08R0201",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 25,
+      "y": 52,
+      "header": "MAP_T08R0201",
+      "anchor": 0,
+      "height": 0
+    }
+  ],
+  "coords": [
+    {
+      "scr": "_EV_scr_seq_D10R0101_004 + 1",
+      "x": 22,
+      "y": 48,
+      "w": 6,
+      "h": 1,
+      "z": 0,
+      "val": 1,
+      "var": "VAR_UNK_4124"
+    }
+  ]
+}

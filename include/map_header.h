@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_MAP_HEADER_H
 #define POKEHEARTGOLD_MAP_HEADER_H
 
-struct MapHeader
+typedef struct MapHeader
 {
     u8 wild_encounter_bank;     // fielddata/encountdata/[gs]_enc_data.naix
     u8 area_data_bank;          // fielddata/areadata/area_data.naix
@@ -10,7 +10,7 @@ struct MapHeader
     u16 world_map_y:6;
     u16 matrix_id;              // fielddata/mapmatrix/map_matrix.naix
     u16 scripts_bank;           // fielddata/script/scr_seq_release.naix
-    u16 level_scripts_bank;     // fielddata/script/scr_seq_release.naix
+    u16 script_header_bank;     // fielddata/script/scr_seq_release.naix
     u16 msg_bank;               // msgdata/msg.naix
     u16 day_music_id;           // data/sound/gs_sound_data.sdat
     u16 night_music_id;         // data/sound/gs_sound_data.sdat
@@ -31,14 +31,14 @@ struct MapHeader
     u32 unk_14_1D:1;
     u32 unk_14_1E:1;
     u32 unk_14_1F:1;
-};
+} MAP_HEADER;
 
 u8 MapHeader_GetAreaDataBank(u32 map_no);
 u16 MapHeader_GetMoveModelBank(u32 map_no);
 u16 MapHeader_GetMatrixId(u32 map_no);
 u16 MapHeader_GetMsgBank(u32 map_no);
 u16 MapHeader_GetScriptsBank(u32 map_no);
-u16 MapHeader_GetLevelScriptsBank(u32 map_no);
+u16 MapHeader_GetScriptHeaderBank(u32 map_no);
 u16 MapHeader_GetDayMusicId(u32 map_no);
 u16 MapHeader_GetNightMusicId(u32 map_no);
 BOOL MapHeader_HasWildEncounters(u32 map_no);

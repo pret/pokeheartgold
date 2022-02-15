@@ -1,7 +1,0 @@
-A comfy bed!\nTime to sleep...\r
-Ah, refreshed and restored!\r
-Fast Ship S.S. Aqua\nhas arrived in Olivine City.
-Fast Ship S.S. Aqua\nhas arrived in Vermilion City.
-Zzz... Zzz...\rWh-what?\nI’m awake, of course...\rZzz... Zzz...
-What? You’re saying I was asleep?\nShow some respect!\rA crewman on duty would never\nbe so unmindful as to take a nap\fin a place like this!\rI resent your implication!\nI challenge you!\r
-Losing to you has woken me up.\nI will mend my ways and work hard.\rCan you keep it a secret that I was\ntaking a nap here?\fPlease don’t tell the Captain.\r

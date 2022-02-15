@@ -201,7 +201,7 @@ _021E5A7C:
 	mov r0, #0xf1
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
-	bl sub_020A0100
+	bl DWC_CheckHasProfile
 	cmp r0, #0
 	bne _021E5AA4
 	add sp, #8
@@ -213,7 +213,7 @@ _021E5AA4:
 	mov r0, #0xf1
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
-	bl sub_020A0130
+	bl DWC_CheckValidConsole
 	cmp r0, #0
 	beq _021E5ABC
 	add sp, #8
@@ -1101,7 +1101,7 @@ ov00_021E61A8: ; 0x021E61A8
 	mov r0, #0xf1
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
-	bl sub_020A01F0
+	bl DWC_CheckDirtyFlag
 	cmp r0, #0
 	beq _021E61DA
 	ldr r0, _021E6224 ; =_0221A680
@@ -1109,7 +1109,7 @@ ov00_021E61A8: ; 0x021E61A8
 	mov r0, #0xf1
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
-	bl sub_020A0214
+	bl DWC_ClearDirtyFlag
 	ldr r0, _021E6224 ; =_0221A680
 	mov r2, #1
 	ldr r1, [r0]
@@ -2628,7 +2628,7 @@ ov00_021E6CE8: ; 0x021E6CE8
 	add r1, #0xf4
 	ldr r0, [r0, r1]
 	add r0, r0, r4
-	bl sub_0209FC1C
+	bl DWC_IsBuddyFriendData
 	cmp r0, #0
 	beq _021E6D3E
 	ldr r0, _021E6D50 ; =_0221A680
@@ -3026,7 +3026,7 @@ ov00_021E700C: ; 0x021E700C
 	mov r0, #0xf1
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
-	bl sub_020A0100
+	bl DWC_CheckHasProfile
 	cmp r0, #0
 	bne _021E7034
 	ldr r0, _021E7074 ; =_0221A680
@@ -3035,7 +3035,7 @@ ov00_021E700C: ; 0x021E700C
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	add r1, sp, #0xc
-	bl sub_020A037C
+	bl DWC_CreateExchangeToken
 	b _021E7044
 _021E7034:
 	ldr r0, _021E7074 ; =_0221A680
@@ -3044,7 +3044,7 @@ _021E7034:
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	add r1, sp, #0
-	bl sub_020A037C
+	bl DWC_CreateExchangeToken
 _021E7044:
 	mov r4, #0
 	mov r7, #1
@@ -3057,11 +3057,11 @@ _021E704E:
 	lsl r0, r0, #8
 	ldr r0, [r1, r0]
 	add r0, r0, r5
-	bl sub_0209FC54
+	bl DWC_GetFriendDataType
 	ldr r0, [r6]
 	ldr r0, [r0, r7]
 	add r0, r0, r5
-	bl sub_0209FC1C
+	bl DWC_IsBuddyFriendData
 	add r4, r4, #1
 	add r5, #0xc
 	cmp r4, #0x20
@@ -3503,7 +3503,7 @@ _021E737E:
 	ldr r0, _021E73D8 ; =0x00001AAC
 	str r1, [r2, r0]
 	mov r0, #1
-	bl sub_020B1D6C
+	bl VCT_EnableVAD
 	bl NNS_SndInit
 	ldr r0, _021E73CC ; =_0221A684
 	ldr r1, [r0, #4]
@@ -3522,7 +3522,7 @@ _021E737E:
 	mov r1, #0
 	str r1, [r0]
 	mov r0, #1
-	bl sub_020B1D9C
+	bl VCT_EnableEchoCancel
 	pop {r3, r4, r5, pc}
 	nop
 _021E73CC: .word _0221A684
@@ -3605,7 +3605,7 @@ _021E7454:
 	bne _021E7468
 	add r0, r7, #0
 	add r1, r6, #0
-	bl sub_020B1880
+	bl VCT_SendAudio
 _021E7468:
 	mov r7, #0
 	cmp r5, #0
@@ -3614,7 +3614,7 @@ _021E746E:
 	ldr r0, [r4]
 	add r1, r6, #0
 	mov r2, #0
-	bl sub_020B1BDC
+	bl VCT_ReceiveAudio
 	add r7, r7, #1
 	add r4, r4, #4
 	cmp r7, r5
@@ -3646,24 +3646,24 @@ ov00_021E74A8: ; 0x021E74A8
 	ldr r4, [r2, r1]
 	cmp r4, #0
 	bne _021E74CA
-	bl sub_020B304C
+	bl VCT_CreateSession
 	add r4, r0, #0
 	bne _021E74C2
 	mov r0, #0
 	pop {r4, pc}
 _021E74C2:
 	mov r1, #0
-	bl sub_020B31E0
+	bl VCT_Request
 	b _021E74D2
 _021E74CA:
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_020B31E0
+	bl VCT_Request
 _021E74D2:
 	cmp r0, #0
 	beq _021E74E8
 	add r0, r4, #0
-	bl sub_020B3074
+	bl VCT_DeleteSession
 	ldr r1, _021E74F4 ; =_0221A684
 	mov r0, #0
 	ldr r2, [r1, #4]
@@ -3695,7 +3695,7 @@ ov00_021E74FC: ; 0x021E74FC
 	cmp r1, #4
 	bne _021E7536
 	mov r1, #0
-	bl sub_020B32BC
+	bl VCT_Response
 	cmp r0, #0
 	beq _021E751E
 	mov r0, #0
@@ -3705,7 +3705,7 @@ _021E751E:
 	ldr r1, [r0, #4]
 	ldr r0, _021E7540 ; =0x00001A54
 	ldr r0, [r1, r0]
-	bl sub_020B1694
+	bl VCT_StartStreaming
 	cmp r0, #0
 	beq _021E7532
 	mov r0, #1
@@ -3737,7 +3737,7 @@ _021E7554:
 	pop {r3, pc}
 _021E755C:
 	add r0, r2, #0
-	bl sub_020B1694
+	bl VCT_StartStreaming
 	pop {r3, pc}
 _021E7564:
 	add r0, r2, #0
@@ -3780,9 +3780,9 @@ _021E759A:
 	beq _021E75B6
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_020B32BC
+	bl VCT_Response
 	add r0, r4, #0
-	bl sub_020B3074
+	bl VCT_DeleteSession
 	pop {r4, pc}
 _021E75B6:
 	str r4, [r2, r0]
@@ -3790,7 +3790,7 @@ _021E75B6:
 _021E75BA:
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_020B32BC
+	bl VCT_Response
 	add r0, r4, #0
 	bl ov00_021E7638
 	bl ov00_021E6A4C
@@ -3803,7 +3803,7 @@ _021E75CE:
 _021E75DA:
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_020B32BC
+	bl VCT_Response
 	add r0, r4, #0
 	bl ov00_021E7638
 	pop {r4, pc}
@@ -3820,7 +3820,7 @@ _021E75EA:
 	pop {r4, pc}
 _021E7600:
 	add r0, r4, #0
-	bl sub_020B1694
+	bl VCT_StartStreaming
 	cmp r0, #0
 	beq _021E7624
 	ldr r0, _021E7628 ; =_0221A684
@@ -3849,9 +3849,9 @@ _021E7634: .word 0x000019EC
 ov00_021E7638: ; 0x021E7638
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_020B17CC
+	bl VCT_StopStreaming
 	add r0, r4, #0
-	bl sub_020B3074
+	bl VCT_DeleteSession
 	ldr r0, _021E7654 ; =_0221A684
 	mov r2, #0
 	ldr r1, [r0, #4]
@@ -3892,7 +3892,7 @@ _021E768E:
 	ldr r0, _021E778C ; =_0221A684
 	str r4, [r0, #8]
 	str r5, [r0, #0xc]
-	bl sub_020B49D4
+	bl VCT_Main
 	ldr r4, _021E778C ; =_0221A684
 	ldr r0, _021E7794 ; =0x0000411A
 	ldr r1, [r4]
@@ -3901,7 +3901,7 @@ _021E768E:
 	add r6, r0, #0
 	add r5, r0, #0
 _021E76A6:
-	bl sub_020B49D4
+	bl VCT_Main
 	ldr r0, [r4]
 	sub r0, r0, r6
 	str r0, [r4]
@@ -4039,7 +4039,7 @@ ov00_021E77A4: ; 0x021E77A4
 _021E77B2:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020B4A18
+	bl VCT_HandleData
 	cmp r0, #0
 	beq _021E77C2
 	mov r0, #1
@@ -4250,17 +4250,17 @@ _021E7944:
 	add r0, #0x20
 	str r0, [sp, #0x2c]
 	add r0, sp, #0x18
-	bl sub_020B4874
+	bl VCT_Init
 	ldr r0, _021E797C ; =_0221A684
 	mov r2, #0
 	ldr r1, [r0, #4]
 	ldr r0, _021E79B0 ; =0x000019F0
 	str r2, [r1, r0]
 	add r0, r6, #0
-	bl sub_020B1CF8
+	bl VCT_SetCodec
 	bl ov00_021E79B4
 	mov r0, #1
-	bl sub_020B1D9C
+	bl VCT_EnableEchoCancel
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4314,7 +4314,7 @@ _021E79E8:
 	cmp r1, #1
 	bne _021E79FC
 	mov r1, #2
-	bl sub_020B31E0
+	bl VCT_Request
 	cmp r0, #0
 	beq _021E79FC
 	bl ov00_021E6A4C
@@ -4325,7 +4325,7 @@ _021E79FC:
 	ldr r0, _021E7A18 ; =0x00001A54
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_020B31E0
+	bl VCT_Request
 	cmp r0, #0
 	beq _021E7A12
 	bl ov00_021E6A4C
@@ -4368,7 +4368,7 @@ ov00_021E7A30: ; 0x021E7A30
 	ldr r0, _021E7A98 ; =0x000019F8
 	add r0, r1, r0
 	bl NNS_SndStrmFreeChannel
-	bl sub_020B49AC
+	bl VCT_Cleanup
 	ldr r0, _021E7A90 ; =_0221A684
 	ldr r1, _021E7A9C ; =0x00000888
 	ldr r2, [r0, #4]
@@ -4409,7 +4409,7 @@ ov00_021E7AA4: ; 0x021E7AA4
 	cmp r0, #0
 	beq _021E7AC2
 	add r0, sp, #0
-	bl sub_020B41A8
+	bl VCT_GetVADInfo
 	ldr r0, [sp, #4]
 	cmp r0, #2
 	ble _021E7AC2
@@ -4485,7 +4485,7 @@ _021E7B12:
 	beq _021E7B48
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020B32E0
+	bl VCT_AddConferenceClient
 	cmp r0, #0
 	beq _021E7B3C
 	mov r0, #0

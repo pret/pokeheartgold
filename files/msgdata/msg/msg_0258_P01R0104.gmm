@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0258_P01R0104_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OK!\nYou must be the last passenger.\r</language>
+	</row>
+	<row id="msg_0258_P01R0104_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Huh?\nThe ship won’t go anywhere today.</language>
+	</row>
+</body>

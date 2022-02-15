@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0601_T25R1202_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Why? It’s not fair!\nWhy are there only shots of Pokémon?\rWhy aren’t there any shots of ladies?\nI call discrimination!</language>
+	</row>
+	<row id="msg_0601_T25R1202_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Climbing the mountain to enjoy\nits great view is one thing...\rBut sneaking a peek at other people’s\nPC Boxes fills me with a guilty glee.</language>
+	</row>
+	<row id="msg_0601_T25R1202_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Did you know?\nAbout my PC Box, I mean.\rIt’s full of Pokémon everyone longs\nfor, like...\r...No, it would be immodest for me to\nsay. It would sound like bragging.\rIf you really must know, you can always\nfind out yourself.</language>
+	</row>
+	<row id="msg_0601_T25R1202_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I visit every day to check on other\npeople’s Dress-Up Data.\rFor me, it’s like the first step to\nfashion!</language>
+	</row>
+	<row id="msg_0601_T25R1202_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh, dear me! Gracious!\nThis is almost scandalous!</language>
+	</row>
+	<row id="msg_0601_T25R1202_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">For combinations of Pokémon and\nAccessories, you can get ideas from\fothers by observing what they do.</language>
+	</row>
+	<row id="msg_0601_T25R1202_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The same kind of Accessory can create\nentirely different impressions.\rIt really depends on where and how\nit’s used.</language>
+	</row>
+	<row id="msg_0601_T25R1202_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I won a Backdrop drawing for\nAccessories in the Goldenrod Tunnel.</language>
+	</row>
+	<row id="msg_0601_T25R1202_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What I like to do...\rI like sneaking glances at the people\nchecking out Dress-Up Data.</language>
+	</row>
+	<row id="msg_0601_T25R1202_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Warps to the GTS and the Trainer\nRankings on 1F.</language>
+	</row>
+	<row id="msg_0601_T25R1202_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Warps to the Battle Video Gallery on 3F.</language>
+	</row>
+	<row id="msg_0601_T25R1202_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Connect to Nintendo Wi-Fi\nConnection for Dress-Up Data? {YESNO 0}</language>
+	</row>
+	<row id="msg_0601_T25R1202_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Here, you may post the Dress-Up Data\nof your Pokémon.\rThe Dress-Up Data can be set up and\nsaved in the Goldenrod Tunnel.\rThe Dress-Up Data posted by other\nTrainers may also be viewed here.\rThe data may be sorted by Pokémon\nfor convenient viewing.\r</language>
+	</row>
+	<row id="msg_0601_T25R1202_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Connect to Nintendo Wi-Fi\nConnection for Box Data? {YESNO 0}</language>
+	</row>
+	<row id="msg_0601_T25R1202_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Here, you may post the Box Data\ncontaining your Pokémon.\rChoose a wallpaper, then place your\nPokémon on it to compose your scene.\rWhen you are done, post it for other\nTrainers to see.\rThe Box Data posted by other Trainers\nmay also be viewed here.\r</language>
+	</row>
+	<row id="msg_0601_T25R1202_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">USE</language>
+	</row>
+	<row id="msg_0601_T25R1202_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">INFO</language>
+	</row>
+	<row id="msg_0601_T25R1202_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CANCEL</language>
+	</row>
+</body>

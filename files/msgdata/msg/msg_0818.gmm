@@ -1,0 +1,1979 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0818_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">----------</language>
+	</row>
+	<row id="msg_0818_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BULBIZARRE</language>
+	</row>
+	<row id="msg_0818_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HERBIZARRE</language>
+	</row>
+	<row id="msg_0818_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FLORIZARRE</language>
+	</row>
+	<row id="msg_0818_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SALAMECHE</language>
+	</row>
+	<row id="msg_0818_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">REPTINCEL</language>
+	</row>
+	<row id="msg_0818_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DRACAUFEU</language>
+	</row>
+	<row id="msg_0818_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CARAPUCE</language>
+	</row>
+	<row id="msg_0818_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CARABAFFE</language>
+	</row>
+	<row id="msg_0818_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TORTANK</language>
+	</row>
+	<row id="msg_0818_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHENIPAN</language>
+	</row>
+	<row id="msg_0818_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHRYSACIER</language>
+	</row>
+	<row id="msg_0818_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PAPILUSION</language>
+	</row>
+	<row id="msg_0818_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ASPICOT</language>
+	</row>
+	<row id="msg_0818_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COCONFORT</language>
+	</row>
+	<row id="msg_0818_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DARDARGNAN</language>
+	</row>
+	<row id="msg_0818_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROUCOOL</language>
+	</row>
+	<row id="msg_0818_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROUCOUPS</language>
+	</row>
+	<row id="msg_0818_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROUCARNAGE</language>
+	</row>
+	<row id="msg_0818_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RATTATA</language>
+	</row>
+	<row id="msg_0818_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RATTATAC</language>
+	</row>
+	<row id="msg_0818_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PIAFABEC</language>
+	</row>
+	<row id="msg_0818_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RAPASDEPIC</language>
+	</row>
+	<row id="msg_0818_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ABO</language>
+	</row>
+	<row id="msg_0818_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ARBOK</language>
+	</row>
+	<row id="msg_0818_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PIKACHU</language>
+	</row>
+	<row id="msg_0818_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RAICHU</language>
+	</row>
+	<row id="msg_0818_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SABELETTE</language>
+	</row>
+	<row id="msg_0818_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SABLAIREAU</language>
+	</row>
+	<row id="msg_0818_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NIDORAN♀</language>
+	</row>
+	<row id="msg_0818_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NIDORINA</language>
+	</row>
+	<row id="msg_0818_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NIDOQUEEN</language>
+	</row>
+	<row id="msg_0818_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NIDORAN♂</language>
+	</row>
+	<row id="msg_0818_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NIDORINO</language>
+	</row>
+	<row id="msg_0818_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NIDOKING</language>
+	</row>
+	<row id="msg_0818_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MELOFEE</language>
+	</row>
+	<row id="msg_0818_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MELODELFE</language>
+	</row>
+	<row id="msg_0818_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GOUPIX</language>
+	</row>
+	<row id="msg_0818_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FEUNARD</language>
+	</row>
+	<row id="msg_0818_00039" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RONDOUDOU</language>
+	</row>
+	<row id="msg_0818_00040" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GRODOUDOU</language>
+	</row>
+	<row id="msg_0818_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NOSFERAPTI</language>
+	</row>
+	<row id="msg_0818_00042" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NOSFERALTO</language>
+	</row>
+	<row id="msg_0818_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MYSTHERBE</language>
+	</row>
+	<row id="msg_0818_00044" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ORTIDE</language>
+	</row>
+	<row id="msg_0818_00045" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RAFFLESIA</language>
+	</row>
+	<row id="msg_0818_00046" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PARAS</language>
+	</row>
+	<row id="msg_0818_00047" index="47">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PARASECT</language>
+	</row>
+	<row id="msg_0818_00048" index="48">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MIMITOSS</language>
+	</row>
+	<row id="msg_0818_00049" index="49">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AEROMITE</language>
+	</row>
+	<row id="msg_0818_00050" index="50">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TAUPIQUEUR</language>
+	</row>
+	<row id="msg_0818_00051" index="51">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TRIOPIKEUR</language>
+	</row>
+	<row id="msg_0818_00052" index="52">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MIAOUSS</language>
+	</row>
+	<row id="msg_0818_00053" index="53">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PERSIAN</language>
+	</row>
+	<row id="msg_0818_00054" index="54">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PSYKOKWAK</language>
+	</row>
+	<row id="msg_0818_00055" index="55">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AKWAKWAK</language>
+	</row>
+	<row id="msg_0818_00056" index="56">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FEROSINGE</language>
+	</row>
+	<row id="msg_0818_00057" index="57">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COLOSSINGE</language>
+	</row>
+	<row id="msg_0818_00058" index="58">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CANINOS</language>
+	</row>
+	<row id="msg_0818_00059" index="59">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ARCANIN</language>
+	</row>
+	<row id="msg_0818_00060" index="60">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PTITARD</language>
+	</row>
+	<row id="msg_0818_00061" index="61">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TETARTE</language>
+	</row>
+	<row id="msg_0818_00062" index="62">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TARTARD</language>
+	</row>
+	<row id="msg_0818_00063" index="63">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ABRA</language>
+	</row>
+	<row id="msg_0818_00064" index="64">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KADABRA</language>
+	</row>
+	<row id="msg_0818_00065" index="65">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ALAKAZAM</language>
+	</row>
+	<row id="msg_0818_00066" index="66">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MACHOC</language>
+	</row>
+	<row id="msg_0818_00067" index="67">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MACHOPEUR</language>
+	</row>
+	<row id="msg_0818_00068" index="68">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MACKOGNEUR</language>
+	</row>
+	<row id="msg_0818_00069" index="69">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHETIFLOR</language>
+	</row>
+	<row id="msg_0818_00070" index="70">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BOUSTIFLOR</language>
+	</row>
+	<row id="msg_0818_00071" index="71">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">EMPIFLOR</language>
+	</row>
+	<row id="msg_0818_00072" index="72">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TENTACOOL</language>
+	</row>
+	<row id="msg_0818_00073" index="73">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TENTACRUEL</language>
+	</row>
+	<row id="msg_0818_00074" index="74">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RACAILLOU</language>
+	</row>
+	<row id="msg_0818_00075" index="75">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GRAVALANCH</language>
+	</row>
+	<row id="msg_0818_00076" index="76">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GROLEM</language>
+	</row>
+	<row id="msg_0818_00077" index="77">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PONYTA</language>
+	</row>
+	<row id="msg_0818_00078" index="78">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GALOPA</language>
+	</row>
+	<row id="msg_0818_00079" index="79">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RAMOLOSS</language>
+	</row>
+	<row id="msg_0818_00080" index="80">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FLAGADOSS</language>
+	</row>
+	<row id="msg_0818_00081" index="81">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MAGNETI</language>
+	</row>
+	<row id="msg_0818_00082" index="82">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MAGNETON</language>
+	</row>
+	<row id="msg_0818_00083" index="83">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CANARTICHO</language>
+	</row>
+	<row id="msg_0818_00084" index="84">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DODUO</language>
+	</row>
+	<row id="msg_0818_00085" index="85">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DODRIO</language>
+	</row>
+	<row id="msg_0818_00086" index="86">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OTARIA</language>
+	</row>
+	<row id="msg_0818_00087" index="87">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LAMANTINE</language>
+	</row>
+	<row id="msg_0818_00088" index="88">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TADMORV</language>
+	</row>
+	<row id="msg_0818_00089" index="89">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GROTADMORV</language>
+	</row>
+	<row id="msg_0818_00090" index="90">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KOKIYAS</language>
+	</row>
+	<row id="msg_0818_00091" index="91">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CRUSTABRI</language>
+	</row>
+	<row id="msg_0818_00092" index="92">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FANTOMINUS</language>
+	</row>
+	<row id="msg_0818_00093" index="93">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SPECTRUM</language>
+	</row>
+	<row id="msg_0818_00094" index="94">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ECTOPLASMA</language>
+	</row>
+	<row id="msg_0818_00095" index="95">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ONIX</language>
+	</row>
+	<row id="msg_0818_00096" index="96">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SOPORIFIK</language>
+	</row>
+	<row id="msg_0818_00097" index="97">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HYPNOMADE</language>
+	</row>
+	<row id="msg_0818_00098" index="98">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KRABBY</language>
+	</row>
+	<row id="msg_0818_00099" index="99">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KRABBOSS</language>
+	</row>
+	<row id="msg_0818_00100" index="100">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">VOLTORBE</language>
+	</row>
+	<row id="msg_0818_00101" index="101">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ELECTRODE</language>
+	</row>
+	<row id="msg_0818_00102" index="102">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NOEUNOEUF</language>
+	</row>
+	<row id="msg_0818_00103" index="103">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NOADKOKO</language>
+	</row>
+	<row id="msg_0818_00104" index="104">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OSSELAIT</language>
+	</row>
+	<row id="msg_0818_00105" index="105">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OSSATUEUR</language>
+	</row>
+	<row id="msg_0818_00106" index="106">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KICKLEE</language>
+	</row>
+	<row id="msg_0818_00107" index="107">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TYGNON</language>
+	</row>
+	<row id="msg_0818_00108" index="108">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">EXCELANGUE</language>
+	</row>
+	<row id="msg_0818_00109" index="109">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SMOGO</language>
+	</row>
+	<row id="msg_0818_00110" index="110">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SMOGOGO</language>
+	</row>
+	<row id="msg_0818_00111" index="111">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RHINOCORNE</language>
+	</row>
+	<row id="msg_0818_00112" index="112">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RHINOFEROS</language>
+	</row>
+	<row id="msg_0818_00113" index="113">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LEVEINARD</language>
+	</row>
+	<row id="msg_0818_00114" index="114">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SAQUEDENEU</language>
+	</row>
+	<row id="msg_0818_00115" index="115">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KANGOUREX</language>
+	</row>
+	<row id="msg_0818_00116" index="116">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HYPOTREMPE</language>
+	</row>
+	<row id="msg_0818_00117" index="117">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HYPOCEAN</language>
+	</row>
+	<row id="msg_0818_00118" index="118">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POISSIRENE</language>
+	</row>
+	<row id="msg_0818_00119" index="119">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POISSOROY</language>
+	</row>
+	<row id="msg_0818_00120" index="120">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STARI</language>
+	</row>
+	<row id="msg_0818_00121" index="121">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STAROSS</language>
+	</row>
+	<row id="msg_0818_00122" index="122">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">M. MIME</language>
+	</row>
+	<row id="msg_0818_00123" index="123">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">INSECATEUR</language>
+	</row>
+	<row id="msg_0818_00124" index="124">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LIPPOUTOU</language>
+	</row>
+	<row id="msg_0818_00125" index="125">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ELEKTEK</language>
+	</row>
+	<row id="msg_0818_00126" index="126">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MAGMAR</language>
+	</row>
+	<row id="msg_0818_00127" index="127">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SCARABRUTE</language>
+	</row>
+	<row id="msg_0818_00128" index="128">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TAUROS</language>
+	</row>
+	<row id="msg_0818_00129" index="129">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MAGICARPE</language>
+	</row>
+	<row id="msg_0818_00130" index="130">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LEVIATOR</language>
+	</row>
+	<row id="msg_0818_00131" index="131">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LOKHLASS</language>
+	</row>
+	<row id="msg_0818_00132" index="132">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">METAMORPH</language>
+	</row>
+	<row id="msg_0818_00133" index="133">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">EVOLI</language>
+	</row>
+	<row id="msg_0818_00134" index="134">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AQUALI</language>
+	</row>
+	<row id="msg_0818_00135" index="135">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">VOLTALI</language>
+	</row>
+	<row id="msg_0818_00136" index="136">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PYROLI</language>
+	</row>
+	<row id="msg_0818_00137" index="137">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PORYGON</language>
+	</row>
+	<row id="msg_0818_00138" index="138">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AMONITA</language>
+	</row>
+	<row id="msg_0818_00139" index="139">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AMONISTAR</language>
+	</row>
+	<row id="msg_0818_00140" index="140">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KABUTO</language>
+	</row>
+	<row id="msg_0818_00141" index="141">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KABUTOPS</language>
+	</row>
+	<row id="msg_0818_00142" index="142">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PTERA</language>
+	</row>
+	<row id="msg_0818_00143" index="143">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RONFLEX</language>
+	</row>
+	<row id="msg_0818_00144" index="144">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ARTIKODIN</language>
+	</row>
+	<row id="msg_0818_00145" index="145">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ELECTHOR</language>
+	</row>
+	<row id="msg_0818_00146" index="146">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SULFURA</language>
+	</row>
+	<row id="msg_0818_00147" index="147">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MINIDRACO</language>
+	</row>
+	<row id="msg_0818_00148" index="148">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DRACO</language>
+	</row>
+	<row id="msg_0818_00149" index="149">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DRACOLOSSE</language>
+	</row>
+	<row id="msg_0818_00150" index="150">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MEWTWO</language>
+	</row>
+	<row id="msg_0818_00151" index="151">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MEW</language>
+	</row>
+	<row id="msg_0818_00152" index="152">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GERMIGNON</language>
+	</row>
+	<row id="msg_0818_00153" index="153">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MACRONIUM</language>
+	</row>
+	<row id="msg_0818_00154" index="154">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MEGANIUM</language>
+	</row>
+	<row id="msg_0818_00155" index="155">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HERICENDRE</language>
+	</row>
+	<row id="msg_0818_00156" index="156">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FEURISSON</language>
+	</row>
+	<row id="msg_0818_00157" index="157">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TYPHLOSION</language>
+	</row>
+	<row id="msg_0818_00158" index="158">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KAIMINUS</language>
+	</row>
+	<row id="msg_0818_00159" index="159">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CROCRODIL</language>
+	</row>
+	<row id="msg_0818_00160" index="160">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ALIGATUEUR</language>
+	</row>
+	<row id="msg_0818_00161" index="161">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FOUINETTE</language>
+	</row>
+	<row id="msg_0818_00162" index="162">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FOUINAR</language>
+	</row>
+	<row id="msg_0818_00163" index="163">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HOOTHOOT</language>
+	</row>
+	<row id="msg_0818_00164" index="164">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NOARFANG</language>
+	</row>
+	<row id="msg_0818_00165" index="165">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COXY</language>
+	</row>
+	<row id="msg_0818_00166" index="166">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COXYCLAQUE</language>
+	</row>
+	<row id="msg_0818_00167" index="167">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MIMIGAL</language>
+	</row>
+	<row id="msg_0818_00168" index="168">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MIGALOS</language>
+	</row>
+	<row id="msg_0818_00169" index="169">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NOSTENFER</language>
+	</row>
+	<row id="msg_0818_00170" index="170">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LOUPIO</language>
+	</row>
+	<row id="msg_0818_00171" index="171">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LANTURN</language>
+	</row>
+	<row id="msg_0818_00172" index="172">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PICHU</language>
+	</row>
+	<row id="msg_0818_00173" index="173">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MELO</language>
+	</row>
+	<row id="msg_0818_00174" index="174">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TOUDOUDOU</language>
+	</row>
+	<row id="msg_0818_00175" index="175">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TOGEPI</language>
+	</row>
+	<row id="msg_0818_00176" index="176">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TOGETIC</language>
+	</row>
+	<row id="msg_0818_00177" index="177">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NATU</language>
+	</row>
+	<row id="msg_0818_00178" index="178">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">XATU</language>
+	</row>
+	<row id="msg_0818_00179" index="179">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WATTOUAT</language>
+	</row>
+	<row id="msg_0818_00180" index="180">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LAINERGIE</language>
+	</row>
+	<row id="msg_0818_00181" index="181">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PHARAMP</language>
+	</row>
+	<row id="msg_0818_00182" index="182">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">JOLIFLOR</language>
+	</row>
+	<row id="msg_0818_00183" index="183">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MARILL</language>
+	</row>
+	<row id="msg_0818_00184" index="184">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AZUMARILL</language>
+	</row>
+	<row id="msg_0818_00185" index="185">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SIMULARBRE</language>
+	</row>
+	<row id="msg_0818_00186" index="186">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TARPAUD</language>
+	</row>
+	<row id="msg_0818_00187" index="187">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GRANIVOL</language>
+	</row>
+	<row id="msg_0818_00188" index="188">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FLORAVOL</language>
+	</row>
+	<row id="msg_0818_00189" index="189">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COTOVOL</language>
+	</row>
+	<row id="msg_0818_00190" index="190">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CAPUMAIN</language>
+	</row>
+	<row id="msg_0818_00191" index="191">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TOURNEGRIN</language>
+	</row>
+	<row id="msg_0818_00192" index="192">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HELIATRONC</language>
+	</row>
+	<row id="msg_0818_00193" index="193">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">YANMA</language>
+	</row>
+	<row id="msg_0818_00194" index="194">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AXOLOTO</language>
+	</row>
+	<row id="msg_0818_00195" index="195">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MARAISTE</language>
+	</row>
+	<row id="msg_0818_00196" index="196">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MENTALI</language>
+	</row>
+	<row id="msg_0818_00197" index="197">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NOCTALI</language>
+	</row>
+	<row id="msg_0818_00198" index="198">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CORNEBRE</language>
+	</row>
+	<row id="msg_0818_00199" index="199">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROIGADA</language>
+	</row>
+	<row id="msg_0818_00200" index="200">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FEUFOREVE</language>
+	</row>
+	<row id="msg_0818_00201" index="201">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ZARBI</language>
+	</row>
+	<row id="msg_0818_00202" index="202">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">QULBUTOKE</language>
+	</row>
+	<row id="msg_0818_00203" index="203">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GIRAFARIG</language>
+	</row>
+	<row id="msg_0818_00204" index="204">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POMDEPIK</language>
+	</row>
+	<row id="msg_0818_00205" index="205">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FORETRESS</language>
+	</row>
+	<row id="msg_0818_00206" index="206">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">INSOLOURDO</language>
+	</row>
+	<row id="msg_0818_00207" index="207">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SCORPLANE</language>
+	</row>
+	<row id="msg_0818_00208" index="208">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STEELIX</language>
+	</row>
+	<row id="msg_0818_00209" index="209">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SNUBBULL</language>
+	</row>
+	<row id="msg_0818_00210" index="210">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GRANBULL</language>
+	</row>
+	<row id="msg_0818_00211" index="211">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">QWILFISH</language>
+	</row>
+	<row id="msg_0818_00212" index="212">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CIZAYOX</language>
+	</row>
+	<row id="msg_0818_00213" index="213">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CARATROC</language>
+	</row>
+	<row id="msg_0818_00214" index="214">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SCARHINO</language>
+	</row>
+	<row id="msg_0818_00215" index="215">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FARFURET</language>
+	</row>
+	<row id="msg_0818_00216" index="216">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TEDDIURSA</language>
+	</row>
+	<row id="msg_0818_00217" index="217">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">URSARING</language>
+	</row>
+	<row id="msg_0818_00218" index="218">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LIMAGMA</language>
+	</row>
+	<row id="msg_0818_00219" index="219">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">VOLCAROPOD</language>
+	</row>
+	<row id="msg_0818_00220" index="220">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MARCACRIN</language>
+	</row>
+	<row id="msg_0818_00221" index="221">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COCHIGNON</language>
+	</row>
+	<row id="msg_0818_00222" index="222">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CORAYON</language>
+	</row>
+	<row id="msg_0818_00223" index="223">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">REMORAID</language>
+	</row>
+	<row id="msg_0818_00224" index="224">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OCTILLERY</language>
+	</row>
+	<row id="msg_0818_00225" index="225">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CADOIZO</language>
+	</row>
+	<row id="msg_0818_00226" index="226">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DEMANTA</language>
+	</row>
+	<row id="msg_0818_00227" index="227">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AIRMURE</language>
+	</row>
+	<row id="msg_0818_00228" index="228">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MALOSSE</language>
+	</row>
+	<row id="msg_0818_00229" index="229">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DEMOLOSSE</language>
+	</row>
+	<row id="msg_0818_00230" index="230">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HYPOROI</language>
+	</row>
+	<row id="msg_0818_00231" index="231">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PHANPY</language>
+	</row>
+	<row id="msg_0818_00232" index="232">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DONPHAN</language>
+	</row>
+	<row id="msg_0818_00233" index="233">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PORYGON2</language>
+	</row>
+	<row id="msg_0818_00234" index="234">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CERFROUSSE</language>
+	</row>
+	<row id="msg_0818_00235" index="235">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">QUEULORIOR</language>
+	</row>
+	<row id="msg_0818_00236" index="236">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DEBUGANT</language>
+	</row>
+	<row id="msg_0818_00237" index="237">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KAPOERA</language>
+	</row>
+	<row id="msg_0818_00238" index="238">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LIPPOUTI</language>
+	</row>
+	<row id="msg_0818_00239" index="239">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ELEKID</language>
+	</row>
+	<row id="msg_0818_00240" index="240">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MAGBY</language>
+	</row>
+	<row id="msg_0818_00241" index="241">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ECREMEUH</language>
+	</row>
+	<row id="msg_0818_00242" index="242">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LEUPHORIE</language>
+	</row>
+	<row id="msg_0818_00243" index="243">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RAIKOU</language>
+	</row>
+	<row id="msg_0818_00244" index="244">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ENTEI</language>
+	</row>
+	<row id="msg_0818_00245" index="245">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SUICUNE</language>
+	</row>
+	<row id="msg_0818_00246" index="246">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">EMBRYLEX</language>
+	</row>
+	<row id="msg_0818_00247" index="247">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">YMPHECT</language>
+	</row>
+	<row id="msg_0818_00248" index="248">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TYRANOCIF</language>
+	</row>
+	<row id="msg_0818_00249" index="249">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LUGIA</language>
+	</row>
+	<row id="msg_0818_00250" index="250">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HO-OH</language>
+	</row>
+	<row id="msg_0818_00251" index="251">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CELEBI</language>
+	</row>
+	<row id="msg_0818_00252" index="252">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ARCKO</language>
+	</row>
+	<row id="msg_0818_00253" index="253">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MASSKO</language>
+	</row>
+	<row id="msg_0818_00254" index="254">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">JUNGKO</language>
+	</row>
+	<row id="msg_0818_00255" index="255">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POUSSIFEU</language>
+	</row>
+	<row id="msg_0818_00256" index="256">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GALIFEU</language>
+	</row>
+	<row id="msg_0818_00257" index="257">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BRASEGALI</language>
+	</row>
+	<row id="msg_0818_00258" index="258">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GOBOU</language>
+	</row>
+	<row id="msg_0818_00259" index="259">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FLOBIO</language>
+	</row>
+	<row id="msg_0818_00260" index="260">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LAGGRON</language>
+	</row>
+	<row id="msg_0818_00261" index="261">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MEDHYENA</language>
+	</row>
+	<row id="msg_0818_00262" index="262">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GRAHYENA</language>
+	</row>
+	<row id="msg_0818_00263" index="263">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ZIGZATON</language>
+	</row>
+	<row id="msg_0818_00264" index="264">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LINEON</language>
+	</row>
+	<row id="msg_0818_00265" index="265">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHENIPOTTE</language>
+	</row>
+	<row id="msg_0818_00266" index="266">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ARMULYS</language>
+	</row>
+	<row id="msg_0818_00267" index="267">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHARMILLON</language>
+	</row>
+	<row id="msg_0818_00268" index="268">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BLINDALYS</language>
+	</row>
+	<row id="msg_0818_00269" index="269">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PAPINOX</language>
+	</row>
+	<row id="msg_0818_00270" index="270">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NENUPIOT</language>
+	</row>
+	<row id="msg_0818_00271" index="271">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LOMBRE</language>
+	</row>
+	<row id="msg_0818_00272" index="272">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LUDICOLO</language>
+	</row>
+	<row id="msg_0818_00273" index="273">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GRAINIPIOT</language>
+	</row>
+	<row id="msg_0818_00274" index="274">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PIFEUIL</language>
+	</row>
+	<row id="msg_0818_00275" index="275">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TENGALICE</language>
+	</row>
+	<row id="msg_0818_00276" index="276">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NIRONDELLE</language>
+	</row>
+	<row id="msg_0818_00277" index="277">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HELEDELLE</language>
+	</row>
+	<row id="msg_0818_00278" index="278">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GOELISE</language>
+	</row>
+	<row id="msg_0818_00279" index="279">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BEKIPAN</language>
+	</row>
+	<row id="msg_0818_00280" index="280">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TARSAL</language>
+	</row>
+	<row id="msg_0818_00281" index="281">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KIRLIA</language>
+	</row>
+	<row id="msg_0818_00282" index="282">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GARDEVOIR</language>
+	</row>
+	<row id="msg_0818_00283" index="283">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ARAKDO</language>
+	</row>
+	<row id="msg_0818_00284" index="284">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MASKADRA</language>
+	</row>
+	<row id="msg_0818_00285" index="285">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BALIGNON</language>
+	</row>
+	<row id="msg_0818_00286" index="286">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHAPIGNON</language>
+	</row>
+	<row id="msg_0818_00287" index="287">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PARECOOL</language>
+	</row>
+	<row id="msg_0818_00288" index="288">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">VIGOROTH</language>
+	</row>
+	<row id="msg_0818_00289" index="289">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MONAFLEMIT</language>
+	</row>
+	<row id="msg_0818_00290" index="290">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NINGALE</language>
+	</row>
+	<row id="msg_0818_00291" index="291">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NINJASK</language>
+	</row>
+	<row id="msg_0818_00292" index="292">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MUNJA</language>
+	</row>
+	<row id="msg_0818_00293" index="293">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHUCHMUR</language>
+	</row>
+	<row id="msg_0818_00294" index="294">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RAMBOUM</language>
+	</row>
+	<row id="msg_0818_00295" index="295">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BROUHABAM</language>
+	</row>
+	<row id="msg_0818_00296" index="296">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MAKUHITA</language>
+	</row>
+	<row id="msg_0818_00297" index="297">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HARIYAMA</language>
+	</row>
+	<row id="msg_0818_00298" index="298">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AZURILL</language>
+	</row>
+	<row id="msg_0818_00299" index="299">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TARINOR</language>
+	</row>
+	<row id="msg_0818_00300" index="300">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SKITTY</language>
+	</row>
+	<row id="msg_0818_00301" index="301">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DELCATTY</language>
+	</row>
+	<row id="msg_0818_00302" index="302">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TENEFIX</language>
+	</row>
+	<row id="msg_0818_00303" index="303">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MYSDIBULE</language>
+	</row>
+	<row id="msg_0818_00304" index="304">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GALEKID</language>
+	</row>
+	<row id="msg_0818_00305" index="305">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GALEGON</language>
+	</row>
+	<row id="msg_0818_00306" index="306">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GALEKING</language>
+	</row>
+	<row id="msg_0818_00307" index="307">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MEDITIKKA</language>
+	</row>
+	<row id="msg_0818_00308" index="308">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHARMINA</language>
+	</row>
+	<row id="msg_0818_00309" index="309">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DYNAVOLT</language>
+	</row>
+	<row id="msg_0818_00310" index="310">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ELECSPRINT</language>
+	</row>
+	<row id="msg_0818_00311" index="311">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POSIPI</language>
+	</row>
+	<row id="msg_0818_00312" index="312">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NEGAPI</language>
+	</row>
+	<row id="msg_0818_00313" index="313">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MUCIOLE</language>
+	</row>
+	<row id="msg_0818_00314" index="314">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LUMIVOLE</language>
+	</row>
+	<row id="msg_0818_00315" index="315">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROSELIA</language>
+	</row>
+	<row id="msg_0818_00316" index="316">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GLOUPTI</language>
+	</row>
+	<row id="msg_0818_00317" index="317">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AVALTOUT</language>
+	</row>
+	<row id="msg_0818_00318" index="318">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CARVANHA</language>
+	</row>
+	<row id="msg_0818_00319" index="319">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SHARPEDO</language>
+	</row>
+	<row id="msg_0818_00320" index="320">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WAILMER</language>
+	</row>
+	<row id="msg_0818_00321" index="321">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WAILORD</language>
+	</row>
+	<row id="msg_0818_00322" index="322">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHAMALLOT</language>
+	</row>
+	<row id="msg_0818_00323" index="323">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CAMERUPT</language>
+	</row>
+	<row id="msg_0818_00324" index="324">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHARTOR</language>
+	</row>
+	<row id="msg_0818_00325" index="325">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SPOINK</language>
+	</row>
+	<row id="msg_0818_00326" index="326">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GRORET</language>
+	</row>
+	<row id="msg_0818_00327" index="327">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SPINDA</language>
+	</row>
+	<row id="msg_0818_00328" index="328">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KRAKNOIX</language>
+	</row>
+	<row id="msg_0818_00329" index="329">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">VIBRANINF</language>
+	</row>
+	<row id="msg_0818_00330" index="330">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LIBEGON</language>
+	</row>
+	<row id="msg_0818_00331" index="331">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CACNEA</language>
+	</row>
+	<row id="msg_0818_00332" index="332">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CACTURNE</language>
+	</row>
+	<row id="msg_0818_00333" index="333">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TYLTON</language>
+	</row>
+	<row id="msg_0818_00334" index="334">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ALTARIA</language>
+	</row>
+	<row id="msg_0818_00335" index="335">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MANGRIFF</language>
+	</row>
+	<row id="msg_0818_00336" index="336">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SEVIPER</language>
+	</row>
+	<row id="msg_0818_00337" index="337">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SELEROC</language>
+	</row>
+	<row id="msg_0818_00338" index="338">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SOLAROC</language>
+	</row>
+	<row id="msg_0818_00339" index="339">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BARLOCHE</language>
+	</row>
+	<row id="msg_0818_00340" index="340">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BARBICHA</language>
+	</row>
+	<row id="msg_0818_00341" index="341">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ECRAPINCE</language>
+	</row>
+	<row id="msg_0818_00342" index="342">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COLHOMARD</language>
+	</row>
+	<row id="msg_0818_00343" index="343">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BALBUTO</language>
+	</row>
+	<row id="msg_0818_00344" index="344">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KAORINE</language>
+	</row>
+	<row id="msg_0818_00345" index="345">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LILIA</language>
+	</row>
+	<row id="msg_0818_00346" index="346">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">VACILYS</language>
+	</row>
+	<row id="msg_0818_00347" index="347">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ANORITH</language>
+	</row>
+	<row id="msg_0818_00348" index="348">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ARMALDO</language>
+	</row>
+	<row id="msg_0818_00349" index="349">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BARPAU</language>
+	</row>
+	<row id="msg_0818_00350" index="350">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MILOBELLUS</language>
+	</row>
+	<row id="msg_0818_00351" index="351">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MORPHEO</language>
+	</row>
+	<row id="msg_0818_00352" index="352">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KECLEON</language>
+	</row>
+	<row id="msg_0818_00353" index="353">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POLICHOMBR</language>
+	</row>
+	<row id="msg_0818_00354" index="354">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BRANETTE</language>
+	</row>
+	<row id="msg_0818_00355" index="355">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SKELENOX</language>
+	</row>
+	<row id="msg_0818_00356" index="356">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TERACLOPE</language>
+	</row>
+	<row id="msg_0818_00357" index="357">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TROPIUS</language>
+	</row>
+	<row id="msg_0818_00358" index="358">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">EOKO</language>
+	</row>
+	<row id="msg_0818_00359" index="359">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ABSOL</language>
+	</row>
+	<row id="msg_0818_00360" index="360">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OKEOKE</language>
+	</row>
+	<row id="msg_0818_00361" index="361">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STALGAMIN</language>
+	</row>
+	<row id="msg_0818_00362" index="362">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ONIGLALI</language>
+	</row>
+	<row id="msg_0818_00363" index="363">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OBALIE</language>
+	</row>
+	<row id="msg_0818_00364" index="364">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PHOGLEUR</language>
+	</row>
+	<row id="msg_0818_00365" index="365">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KAIMORSE</language>
+	</row>
+	<row id="msg_0818_00366" index="366">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COQUIPERL</language>
+	</row>
+	<row id="msg_0818_00367" index="367">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SERPANG</language>
+	</row>
+	<row id="msg_0818_00368" index="368">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROSABYSS</language>
+	</row>
+	<row id="msg_0818_00369" index="369">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RELICANTH</language>
+	</row>
+	<row id="msg_0818_00370" index="370">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LOVDISC</language>
+	</row>
+	<row id="msg_0818_00371" index="371">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DRABY</language>
+	</row>
+	<row id="msg_0818_00372" index="372">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DRACKHAUS</language>
+	</row>
+	<row id="msg_0818_00373" index="373">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DRATTAK</language>
+	</row>
+	<row id="msg_0818_00374" index="374">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TERHAL</language>
+	</row>
+	<row id="msg_0818_00375" index="375">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">METANG</language>
+	</row>
+	<row id="msg_0818_00376" index="376">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">METALOSSE</language>
+	</row>
+	<row id="msg_0818_00377" index="377">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">REGIROCK</language>
+	</row>
+	<row id="msg_0818_00378" index="378">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">REGICE</language>
+	</row>
+	<row id="msg_0818_00379" index="379">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">REGISTEEL</language>
+	</row>
+	<row id="msg_0818_00380" index="380">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LATIAS</language>
+	</row>
+	<row id="msg_0818_00381" index="381">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LATIOS</language>
+	</row>
+	<row id="msg_0818_00382" index="382">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KYOGRE</language>
+	</row>
+	<row id="msg_0818_00383" index="383">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GROUDON</language>
+	</row>
+	<row id="msg_0818_00384" index="384">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RAYQUAZA</language>
+	</row>
+	<row id="msg_0818_00385" index="385">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">JIRACHI</language>
+	</row>
+	<row id="msg_0818_00386" index="386">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DEOXYS</language>
+	</row>
+	<row id="msg_0818_00387" index="387">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TORTIPOUSS</language>
+	</row>
+	<row id="msg_0818_00388" index="388">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BOSKARA</language>
+	</row>
+	<row id="msg_0818_00389" index="389">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TORTERRA</language>
+	</row>
+	<row id="msg_0818_00390" index="390">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OUISTICRAM</language>
+	</row>
+	<row id="msg_0818_00391" index="391">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHIMPENFEU</language>
+	</row>
+	<row id="msg_0818_00392" index="392">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SIMIABRAZ</language>
+	</row>
+	<row id="msg_0818_00393" index="393">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TIPLOUF</language>
+	</row>
+	<row id="msg_0818_00394" index="394">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PRINPLOUF</language>
+	</row>
+	<row id="msg_0818_00395" index="395">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PINGOLEON</language>
+	</row>
+	<row id="msg_0818_00396" index="396">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ETOURMI</language>
+	</row>
+	<row id="msg_0818_00397" index="397">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ETOURVOL</language>
+	</row>
+	<row id="msg_0818_00398" index="398">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ETOURAPTOR</language>
+	</row>
+	<row id="msg_0818_00399" index="399">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KEUNOTOR</language>
+	</row>
+	<row id="msg_0818_00400" index="400">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CASTORNO</language>
+	</row>
+	<row id="msg_0818_00401" index="401">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CRIKZIK</language>
+	</row>
+	<row id="msg_0818_00402" index="402">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MELOKRIK</language>
+	</row>
+	<row id="msg_0818_00403" index="403">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LIXY</language>
+	</row>
+	<row id="msg_0818_00404" index="404">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LUXIO</language>
+	</row>
+	<row id="msg_0818_00405" index="405">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LUXRAY</language>
+	</row>
+	<row id="msg_0818_00406" index="406">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROZBOUTON</language>
+	</row>
+	<row id="msg_0818_00407" index="407">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROSERADE</language>
+	</row>
+	<row id="msg_0818_00408" index="408">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KRANIDOS</language>
+	</row>
+	<row id="msg_0818_00409" index="409">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHARKOS</language>
+	</row>
+	<row id="msg_0818_00410" index="410">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DINOCLIER</language>
+	</row>
+	<row id="msg_0818_00411" index="411">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BASTIODON</language>
+	</row>
+	<row id="msg_0818_00412" index="412">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHENITI</language>
+	</row>
+	<row id="msg_0818_00413" index="413">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHENISELLE</language>
+	</row>
+	<row id="msg_0818_00414" index="414">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PAPILORD</language>
+	</row>
+	<row id="msg_0818_00415" index="415">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">APITRINI</language>
+	</row>
+	<row id="msg_0818_00416" index="416">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">APIREINE</language>
+	</row>
+	<row id="msg_0818_00417" index="417">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PACHIRISU</language>
+	</row>
+	<row id="msg_0818_00418" index="418">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MUSTEBOUEE</language>
+	</row>
+	<row id="msg_0818_00419" index="419">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MUSTEFLOTT</language>
+	</row>
+	<row id="msg_0818_00420" index="420">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CERIBOU</language>
+	</row>
+	<row id="msg_0818_00421" index="421">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CERIFLOR</language>
+	</row>
+	<row id="msg_0818_00422" index="422">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SANCOKI</language>
+	</row>
+	<row id="msg_0818_00423" index="423">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TRITOSOR</language>
+	</row>
+	<row id="msg_0818_00424" index="424">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CAPIDEXTRE</language>
+	</row>
+	<row id="msg_0818_00425" index="425">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BAUDRIVE</language>
+	</row>
+	<row id="msg_0818_00426" index="426">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GRODRIVE</language>
+	</row>
+	<row id="msg_0818_00427" index="427">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LAPOREILLE</language>
+	</row>
+	<row id="msg_0818_00428" index="428">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LOCKPIN</language>
+	</row>
+	<row id="msg_0818_00429" index="429">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MAGIREVE</language>
+	</row>
+	<row id="msg_0818_00430" index="430">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CORBOSS</language>
+	</row>
+	<row id="msg_0818_00431" index="431">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHAGLAM</language>
+	</row>
+	<row id="msg_0818_00432" index="432">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHAFFREUX</language>
+	</row>
+	<row id="msg_0818_00433" index="433">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KORILLON</language>
+	</row>
+	<row id="msg_0818_00434" index="434">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MOUFOUETTE</language>
+	</row>
+	<row id="msg_0818_00435" index="435">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MOUFFLAIR</language>
+	</row>
+	<row id="msg_0818_00436" index="436">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ARCHEOMIRE</language>
+	</row>
+	<row id="msg_0818_00437" index="437">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ARCHEODONG</language>
+	</row>
+	<row id="msg_0818_00438" index="438">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MANZAI</language>
+	</row>
+	<row id="msg_0818_00439" index="439">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MIME JR.</language>
+	</row>
+	<row id="msg_0818_00440" index="440">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PTIRAVI</language>
+	</row>
+	<row id="msg_0818_00441" index="441">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PIJAKO</language>
+	</row>
+	<row id="msg_0818_00442" index="442">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SPIRITOMB</language>
+	</row>
+	<row id="msg_0818_00443" index="443">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GRIKNOT</language>
+	</row>
+	<row id="msg_0818_00444" index="444">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CARMACHE</language>
+	</row>
+	<row id="msg_0818_00445" index="445">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CARCHACROK</language>
+	</row>
+	<row id="msg_0818_00446" index="446">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GOINFREX</language>
+	</row>
+	<row id="msg_0818_00447" index="447">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RIOLU</language>
+	</row>
+	<row id="msg_0818_00448" index="448">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LUCARIO</language>
+	</row>
+	<row id="msg_0818_00449" index="449">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HIPPOPOTAS</language>
+	</row>
+	<row id="msg_0818_00450" index="450">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HIPPODOCUS</language>
+	</row>
+	<row id="msg_0818_00451" index="451">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RAPION</language>
+	</row>
+	<row id="msg_0818_00452" index="452">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DRASCORE</language>
+	</row>
+	<row id="msg_0818_00453" index="453">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CRADOPAUD</language>
+	</row>
+	<row id="msg_0818_00454" index="454">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COATOX</language>
+	</row>
+	<row id="msg_0818_00455" index="455">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">VORTENTE</language>
+	</row>
+	<row id="msg_0818_00456" index="456">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ECAYON</language>
+	</row>
+	<row id="msg_0818_00457" index="457">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LUMINEON</language>
+	</row>
+	<row id="msg_0818_00458" index="458">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BABIMANTA</language>
+	</row>
+	<row id="msg_0818_00459" index="459">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BLIZZI</language>
+	</row>
+	<row id="msg_0818_00460" index="460">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BLIZZAROI</language>
+	</row>
+	<row id="msg_0818_00461" index="461">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DIMORET</language>
+	</row>
+	<row id="msg_0818_00462" index="462">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MAGNEZONE</language>
+	</row>
+	<row id="msg_0818_00463" index="463">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COUDLANGUE</language>
+	</row>
+	<row id="msg_0818_00464" index="464">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RHINASTOC</language>
+	</row>
+	<row id="msg_0818_00465" index="465">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BOULDENEU</language>
+	</row>
+	<row id="msg_0818_00466" index="466">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ELEKABLE</language>
+	</row>
+	<row id="msg_0818_00467" index="467">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MAGANON</language>
+	</row>
+	<row id="msg_0818_00468" index="468">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TOGEKISS</language>
+	</row>
+	<row id="msg_0818_00469" index="469">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">YANMEGA</language>
+	</row>
+	<row id="msg_0818_00470" index="470">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PHYLLALI</language>
+	</row>
+	<row id="msg_0818_00471" index="471">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GIVRALI</language>
+	</row>
+	<row id="msg_0818_00472" index="472">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SCORVOL</language>
+	</row>
+	<row id="msg_0818_00473" index="473">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MAMMOCHON</language>
+	</row>
+	<row id="msg_0818_00474" index="474">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PORYGON-Z</language>
+	</row>
+	<row id="msg_0818_00475" index="475">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GALLAME</language>
+	</row>
+	<row id="msg_0818_00476" index="476">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TARINORME</language>
+	</row>
+	<row id="msg_0818_00477" index="477">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NOCTUNOIR</language>
+	</row>
+	<row id="msg_0818_00478" index="478">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MOMARTIK</language>
+	</row>
+	<row id="msg_0818_00479" index="479">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MOTISMA</language>
+	</row>
+	<row id="msg_0818_00480" index="480">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CREHELF</language>
+	</row>
+	<row id="msg_0818_00481" index="481">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CREFOLLET</language>
+	</row>
+	<row id="msg_0818_00482" index="482">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CREFADET</language>
+	</row>
+	<row id="msg_0818_00483" index="483">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DIALGA</language>
+	</row>
+	<row id="msg_0818_00484" index="484">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PALKIA</language>
+	</row>
+	<row id="msg_0818_00485" index="485">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HEATRAN</language>
+	</row>
+	<row id="msg_0818_00486" index="486">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">REGIGIGAS</language>
+	</row>
+	<row id="msg_0818_00487" index="487">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GIRATINA</language>
+	</row>
+	<row id="msg_0818_00488" index="488">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CRESSELIA</language>
+	</row>
+	<row id="msg_0818_00489" index="489">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PHIONE</language>
+	</row>
+	<row id="msg_0818_00490" index="490">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MANAPHY</language>
+	</row>
+	<row id="msg_0818_00491" index="491">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DARKRAI</language>
+	</row>
+	<row id="msg_0818_00492" index="492">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SHAYMIN</language>
+	</row>
+	<row id="msg_0818_00493" index="493">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ARCEUS</language>
+	</row>
+</body>

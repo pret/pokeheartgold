@@ -27,15 +27,15 @@ static const u8 sSafariZoneDefaultAreaSets[10][6] = {
       SAFARI_ZONE_AREA_SWAMP, SAFARI_ZONE_AREA_PEAK, SAFARI_ZONE_AREA_WASTELAND },
 };
 
-u32 sub_0202F574(void) {
+u32 Save_SafariZone_sizeof(void) {
     return sizeof(SAFARIZONE);
 }
 
-SAFARIZONE* sub_0202F57C(SAVEDATA* savedata) {
+SAFARIZONE* Save_SafariZone_get(SAVEDATA* savedata) {
     return SavArray_get(savedata, SAVE_SAFARI_ZONE);
 }
 
-void sub_0202F588(SAFARIZONE* safari_zone) {
+void Save_SafariZone_init(SAFARIZONE* safari_zone) {
     for (s32 i = 0; i < SAFARI_ZONE_MAX_AREA_SETS; i++) {
         MI_CpuFill8(&safari_zone->area_sets[i], 0, sizeof(SAFARIZONE_AREASET));
     }
@@ -52,13 +52,13 @@ void sub_0202F5B8(SAFARIZONE_AREASET* area_set, u32 a1) {
     MI_CpuFill8(area_set->unk2DC, 0, sizeof(area_set->unk2DC));
 }
 
-void sub_0202F5F8(SAFARIZONE* safari_zone, s32 a1) {
-    if (a1 >= 2) {
+void sub_0202F5F8(SAFARIZONE* safari_zone, s32 areaSet) {
+    if (areaSet >= SAFARI_ZONE_MAX_AREA_SETS) {
         GF_ASSERT(FALSE);
-        a1 = 0;
+        areaSet = 0;
     }
 
-    safari_zone->unk5F9_6 = a1;
+    safari_zone->unk5F9_6 = areaSet;
 }
 
 u8 sub_0202F620(SAFARIZONE* safari_zone) {

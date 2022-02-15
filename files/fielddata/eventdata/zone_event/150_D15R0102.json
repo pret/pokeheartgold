@@ -1,0 +1,86 @@
+{
+  "header": "fielddata/script/scr_seq/event_D15R0102.h",
+  "objects": [
+    {
+      "id": "obj_D15R0102_bozu",
+      "ovid": "SPRITE_BOZU",
+      "mvt": 15,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_SAGE_NICO)",
+      "dirn": 1,
+      "eye": 2,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 20,
+      "y": 13,
+      "z": 0
+    },
+    {
+      "id": "obj_D15R0102_bozu_2",
+      "ovid": "SPRITE_BOZU",
+      "mvt": 16,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_SAGE_EDMOND)",
+      "dirn": 2,
+      "eye": 6,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 13,
+      "y": 27,
+      "z": 0
+    },
+    {
+      "id": "obj_D15R0102_monstarball",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D15R0102_X_ACCURACY",
+      "scr": "std_itemball_d15r0102_x_accuracy",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 6,
+      "y": 9,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 11,
+      "y": 14,
+      "header": "MAP_D15R0101",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 24,
+      "y": 9,
+      "header": "MAP_D15R0101",
+      "anchor": 2,
+      "height": 0
+    },
+    {
+      "x": 6,
+      "y": 16,
+      "header": "MAP_D15R0101",
+      "anchor": 3,
+      "height": 0
+    },
+    {
+      "x": 15,
+      "y": 27,
+      "header": "MAP_D15R0103",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

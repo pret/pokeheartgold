@@ -404,10 +404,10 @@ _02075878:
 	bl sub_020757AC
 	mov r0, #5
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r5, #0xb4
 	ldr r0, [r5]
 	mov r1, #1
@@ -461,7 +461,7 @@ _0207591A:
 	bl GF_AssertFail
 	b _020759A0
 _02075920:
-	ldr r0, _020759C8 ; =gMain
+	ldr r0, _020759C8 ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -541,7 +541,7 @@ _020759BA:
 	nop
 _020759C0: .word _020FFECC
 _020759C4: .word 0x000005DC
-_020759C8: .word gMain
+_020759C8: .word gSystem
 	thumb_func_end sub_020758D0
 
 	thumb_func_start sub_020759CC
@@ -618,10 +618,10 @@ _02075A44:
 _02075A52:
 	mov r0, #5
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r0, r4, #0
 	add r0, #0xb4
 	ldr r0, [r0]
@@ -644,7 +644,7 @@ sub_02075A7C: ; 0x02075A7C
 	add r6, r0, #0
 	add r7, r1, #0
 	ldr r5, [sp, #0x50]
-	ldr r0, _02075CFC ; =gMain + 0x60
+	ldr r0, _02075CFC ; =gSystem + 0x60
 	mov r1, #0
 	str r2, [sp, #0x14]
 	str r3, [sp, #0x18]
@@ -911,7 +911,7 @@ sub_02075A7C: ; 0x02075A7C
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02075CFC: .word gMain + 0x60
+_02075CFC: .word gSystem + 0x60
 _02075D00: .word 0x0000FFFF
 _02075D04: .word sub_02075D08
 	thumb_func_end sub_02075A7C
@@ -975,7 +975,7 @@ sub_02075D4C: ; 0x02075D4C
 	bl sub_02075770
 	ldr r0, [r4, #4]
 	mov r1, #1
-	bl sub_0201D54C
+	bl WindowArray_dtor
 	add r0, r4, #0
 	add r0, #0x8c
 	bl RemoveWindow
@@ -1023,13 +1023,13 @@ sub_02075D4C: ; 0x02075D4C
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B8C
-	ldr r0, _02075E10 ; =gMain + 0x60
+	ldr r0, _02075E10 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
 	pop {r4, pc}
 	nop
-_02075E10: .word gMain + 0x60
+_02075E10: .word gSystem + 0x60
 	thumb_func_end sub_02075D4C
 
 	thumb_func_start sub_02075E14
@@ -1145,7 +1145,7 @@ _02075EF0:
 	ldrb r0, [r0]
 	cmp r0, #8
 	bne _02075F2A
-	ldr r0, _02076210 ; =gMain
+	ldr r0, _02076210 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -1246,9 +1246,9 @@ _02075F9C:
 	pop {r4, pc}
 _02075FC4:
 	mov r0, #0
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	mov r0, #1
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	ldr r0, [r4, #0x58]
 	mov r1, #0
 	bl sub_0201649C
@@ -1376,7 +1376,7 @@ _020760CE:
 	bl sub_02020094
 	cmp r0, #0
 	bne _02076132
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	bne _02076132
 	ldr r0, [r4, #0x44]
@@ -1517,7 +1517,7 @@ _020761C2:
 	ldr r0, _0207622C ; =0x000005F9
 	b _02076230
 	nop
-_02076210: .word gMain
+_02076210: .word gSystem
 _02076214: .word 0x00007FFF
 _02076218: .word 0x0000F3FF
 _0207621C: .word 0x00000395
@@ -1738,7 +1738,7 @@ _0207639A:
 	strb r0, [r4]
 	pop {r4, pc}
 _020763FC:
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	bne _020764F4
 	ldr r0, [r4, #0x44]
@@ -2188,9 +2188,9 @@ _02076754:
 	pop {r4, pc}
 _020767D0:
 	mov r0, #0
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	mov r0, #1
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	ldr r0, [r4, #0x14]
 	bl sub_02003B44
 	cmp r0, #0
@@ -2469,7 +2469,7 @@ _02076A06:
 	strb r0, [r4]
 	pop {r4, pc}
 _02076A24:
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	bne _02076A44
 	add r0, r4, #0
@@ -2594,7 +2594,7 @@ _02076AA4:
 	add r0, #0x70
 	strb r1, [r0]
 	ldr r0, _02076C88 ; =0x000003F3
-	bl sub_02005EB4
+	bl StopBGM
 	ldr r0, [r4, #0x30]
 	bl sub_02077664
 	add r0, r4, #0
@@ -2658,7 +2658,7 @@ _02076B56:
 	strb r0, [r4]
 	pop {r4, pc}
 _02076BB8:
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	bne _02076C76
 	ldr r0, [r4, #0x44]
@@ -3228,7 +3228,7 @@ _02076F38:
 	mov r1, #0x10
 	mov r3, #4
 	add r6, r0, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3239,7 +3239,7 @@ _02076F38:
 	add r0, r6, #0
 	add r2, r4, #0
 	mov r3, #4
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3250,7 +3250,7 @@ _02076F38:
 	add r0, r6, #0
 	add r2, r4, #0
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3261,15 +3261,15 @@ _02076F38:
 	add r0, r6, #0
 	add r2, r4, #0
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add r0, r6, #0
 	bl NARC_dtor
 	mov r0, #5
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #1
 	lsl r0, r0, #0x1a
 	ldr r1, [r0]
@@ -3318,7 +3318,7 @@ _02076F38:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, _0207719C ; =sub_02077270
 	add r1, r5, #0
 	bl Main_SetVBlankIntrCB
@@ -3479,7 +3479,7 @@ _020772CE:
 	ldr r0, [r4, #0x14]
 	bl sub_0200398C
 	ldr r0, [r4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _020772F0 ; =OS_IRQTable
 	ldr r1, _020772F4 ; =0x00003FF8
 	mov r0, #1
@@ -3547,16 +3547,16 @@ _02077354: ; jump table
 	.short _02077378 - _02077354 - 2 ; case 4
 	.short _02077380 - _02077354 - 2 ; case 5
 _02077360:
-	bl sub_02006198
+	bl GF_IsAnySEPlaying
 	add r4, r0, #0
 	b _02077388
 _02077368:
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	add r4, r0, #0
 	b _02077388
 _02077370:
 	ldr r0, _0207738C ; =0x000004A4
-	bl sub_02006B24
+	bl PlayFanfare
 	b _02077388
 _02077378:
 	ldr r0, _02077390 ; =0x000005E6
@@ -3565,7 +3565,7 @@ _02077378:
 _02077380:
 	mov r0, #0x4a
 	lsl r0, r0, #4
-	bl sub_02006B24
+	bl PlayFanfare
 _02077388:
 	add r0, r4, #0
 	pop {r4, pc}

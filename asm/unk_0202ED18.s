@@ -3,14 +3,14 @@
 
 	.text
 
-	thumb_func_start sub_0202ED18
-sub_0202ED18: ; 0x0202ED18
+	thumb_func_start Sav2_FollowPoke_sizeof
+Sav2_FollowPoke_sizeof: ; 0x0202ED18
 	mov r0, #8
 	bx lr
-	thumb_func_end sub_0202ED18
+	thumb_func_end Sav2_FollowPoke_sizeof
 
-	thumb_func_start sub_0202ED1C
-sub_0202ED1C: ; 0x0202ED1C
+	thumb_func_start Sav2_FollowPoke_init
+Sav2_FollowPoke_init: ; 0x0202ED1C
 	mov r1, #0
 	strb r1, [r0]
 	strb r1, [r0, #1]
@@ -23,31 +23,31 @@ sub_0202ED1C: ; 0x0202ED1C
 	str r1, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0202ED1C
+	thumb_func_end Sav2_FollowPoke_init
 
-	thumb_func_start sub_0202ED34
-sub_0202ED34: ; 0x0202ED34
+	thumb_func_start Sav2_FollowPoke_get
+Sav2_FollowPoke_get: ; 0x0202ED34
 	ldr r3, _0202ED3C ; =SavArray_get
 	mov r1, #0x21
 	bx r3
 	nop
 _0202ED3C: .word SavArray_get
-	thumb_func_end sub_0202ED34
+	thumb_func_end Sav2_FollowPoke_get
 
-	thumb_func_start sub_0202ED40
-sub_0202ED40: ; 0x0202ED40
+	thumb_func_start SavFollowPoke_SetMapId
+SavFollowPoke_SetMapId: ; 0x0202ED40
 	str r0, [r1]
 	bx lr
-	thumb_func_end sub_0202ED40
+	thumb_func_end SavFollowPoke_SetMapId
 
-	thumb_func_start sub_0202ED44
-sub_0202ED44: ; 0x0202ED44
+	thumb_func_start SavFollowPoke_GetMapId
+SavFollowPoke_GetMapId: ; 0x0202ED44
 	ldr r0, [r0]
 	bx lr
-	thumb_func_end sub_0202ED44
+	thumb_func_end SavFollowPoke_GetMapId
 
-	thumb_func_start sub_0202ED48
-sub_0202ED48: ; 0x0202ED48
+	thumb_func_start SavFollowPoke_SetUnused2bitField
+SavFollowPoke_SetUnused2bitField: ; 0x0202ED48
 	ldr r3, [r1, #4]
 	mov r2, #3
 	bic r3, r2
@@ -56,10 +56,10 @@ sub_0202ED48: ; 0x0202ED48
 	orr r0, r3
 	str r0, [r1, #4]
 	bx lr
-	thumb_func_end sub_0202ED48
+	thumb_func_end SavFollowPoke_SetUnused2bitField
 
-	thumb_func_start sub_0202ED58
-sub_0202ED58: ; 0x0202ED58
+	thumb_func_start SavFollowPoke_SetInhibitFlagState
+SavFollowPoke_SetInhibitFlagState: ; 0x0202ED58
 	ldr r3, [r0, #4]
 	mov r2, #4
 	lsl r1, r1, #0x1f
@@ -68,14 +68,14 @@ sub_0202ED58: ; 0x0202ED58
 	orr r1, r3
 	str r1, [r0, #4]
 	bx lr
-	thumb_func_end sub_0202ED58
+	thumb_func_end SavFollowPoke_SetInhibitFlagState
 
-	thumb_func_start sub_0202ED68
-sub_0202ED68: ; 0x0202ED68
+	thumb_func_start SavFollowPoke_GetInhibitFlagState
+SavFollowPoke_GetInhibitFlagState: ; 0x0202ED68
 	ldr r0, [r0, #4]
 	lsl r0, r0, #0x1d
 	asr r0, r0, #0x1f
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	bx lr
-	thumb_func_end sub_0202ED68
+	thumb_func_end SavFollowPoke_GetInhibitFlagState

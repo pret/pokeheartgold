@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0257_P01R0103_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Welcome to the S.S. Aqua!\rYour Ticket is...right there.\nPlease come through.\r</language>
+	</row>
+	<row id="msg_0257_P01R0103_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Operating a ship every day can wear\nyou out! It’s not running today.\rIt leaves for Olivine City on Wednesdays\nand Sundays!</language>
+	</row>
+	<row id="msg_0257_P01R0103_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Welcome to the S.S. Aqua!\rYour Ticket is...right there.\nPlease come through.</language>
+	</row>
+	<row id="msg_0257_P01R0103_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You came from Johto?\rI envy you!\nI hear many rare Pokémon live\fover there.</language>
+	</row>
+</body>

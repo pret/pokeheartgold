@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0336_R07_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There is a notice!\r...Uncouth Trainers have been holding\nbattles in the Underground Path.\rBecause of rising complaints by local\nresidents, the Underground Path has\fbeen sealed indefinitely.\f           Signed, the Celadon Police</language>
+	</row>
+	<row id="msg_0336_R07_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It won’t open!\rIt’s locked...</language>
+	</row>
+</body>

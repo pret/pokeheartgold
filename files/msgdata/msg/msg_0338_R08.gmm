@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0338_R08_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It won’t open!\rIt’s locked...</language>
+	</row>
+	<row id="msg_0338_R08_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The notice is torn.\nIt’s impossible to read...</language>
+	</row>
+</body>

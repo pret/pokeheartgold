@@ -226,7 +226,7 @@ ov29_0225D6C8: ; 0x0225D6C8
 	add r0, r4, #0
 	mov r1, #9
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -237,14 +237,14 @@ ov29_0225D6C8: ; 0x0225D6C8
 	add r0, r4, #0
 	mov r1, #0xa
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r3, #0
 	str r3, [sp]
 	mov r1, #8
 	add r0, r4, #0
 	mov r2, #4
 	str r1, [sp, #4]
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov29_0225D6C8
@@ -317,9 +317,9 @@ _0225D73A:
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r5, r4
-	bl sub_0201D8A0
+	bl CopyWindowPixelsToVram_TextMode
 	add r0, r5, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #1
 	lsl r0, r0, #0x10
 	lsr r6, r0, #0x10
@@ -1039,7 +1039,7 @@ _0225DCEA:
 	bl PlaySE
 	b _0225DE98
 _0225DD42:
-	ldr r0, _0225DEB0 ; =gMain
+	ldr r0, _0225DEB0 ; =gSystem
 	ldr r2, [r0, #0x48]
 	mov r0, #8
 	tst r0, r2
@@ -1208,7 +1208,7 @@ _0225DE98:
 	.balign 4, 0
 _0225DEA8: .word ov29_0225E1AC
 _0225DEAC: .word 0x000005DD
-_0225DEB0: .word gMain
+_0225DEB0: .word gSystem
 _0225DEB4: .word 0x000001FA
 	thumb_func_end ov29_0225DCD0
 
@@ -1305,7 +1305,7 @@ _0225DF3E:
 	ldrb r3, [r4, r3]
 	ldr r0, [r4]
 	lsr r1, r1, #0x19
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	mov r1, #0x75
 	lsl r1, r1, #2
 	ldrb r1, [r4, r1]

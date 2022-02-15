@@ -1,3 +1,5 @@
+This doc details the steps necessary to build a copy of Pokemon HeartGold (EN-US) from the sources contained in this repository.
+
 ### 1. Install MWCC compiler
 
 The build system requires the use of the Metrowerks C Compiler versions 2.0/sp2p2 to compile matching files. We cannot distribute the correct compiler here so join the PRET discord and download the pinned mwccarm.zip zip in #pokeheartgold and extract it to tools/. Run each of the executables so they ask for a license.dat and provide the one in the rar (it may also ask for it when compiling). This only needs to be done once.
@@ -6,7 +8,7 @@ In the future, a GCC option will be available so MWCC is not required to build, 
 
 ### 2. Install Nitro SDK
 
-As with the compiler, the Nitro SDK is proprietary and cannot be distributed here. Download the "NitroSDK-4_2-071210-jp.7z" file pinned in the PRET discord. Extract and copy the contents of tools/bin from the Nitro SDK to tools/bin in your pokeheartgold clone. Finally, copy include/nitro/specfiles/ARM7-TS.lcf.template into the subdirectory `sub`, and include/nitro/specfiles/ARM9-TS.lcf.template into the project root.
+As with the compiler, the Nitro SDK is proprietary and cannot be distributed here. Download the "NitroSDK-4_2-071210-jp.7z" file pinned in the PRET discord. Extract and copy the contents of tools/bin from the Nitro SDK to tools/bin in your pokeheartgold clone. Finally, copy include/nitro/specfiles/ARM7-TS.lcf.template into the subdirectory `sub`, and include/nitro/specfiles/ARM9-TS.lcf.template and include/nitro/specfiles/mwldarm.response.template into the project root.
 
 ### 3. Dependencies
 
@@ -22,6 +24,7 @@ Building the ROM requires the following packages:
 * python3 (for asm preprocessor)
 * libpng-devel (libpng-dev on Ubuntu)
 * pkg-config
+* pugixml
 
 NOTE: If you are using Arch/Manjaro or Void you will only need base-devel instead of build-essentials or make or git. You will still need wine.
 
@@ -49,6 +52,7 @@ You will still require the following packages:
 * git
 * build-essentials
 * libpng-devel
+* pugixml
 * pkg-config
 
 Install them using either the Cygwin package manager or using pacman on Msys2.
@@ -67,6 +71,7 @@ macOS 10.15 Catalina and later is supported on Intel and ARM64 hardware configur
 * git
 * libpng
 * pkg-config
+* pugixml
 * wine-crossover (includes wine32on64, required on Catalina and later to run 32-bit x86 EXEs)
 
 They can be installed with the following commands:
@@ -84,6 +89,10 @@ Run `make` to build the ROM. The ROM will be output as `build/heartgold.us/pokeh
 
 To build Pokemon SoulSilver, run `make soulsilver`. You do not need to clean your working tree in between compiling. Pokemon SoulSilver will be built as `build/soulsilver.us/pokesoulsilver.us.nds`.
 
+There are targets for building and testing changes to individual components without repackaging the ROM. For the ARM9 modules, run `make main`. For the ARM7 module, run `make sub`. For the filesystem, run `make filesystem`. To build these for SoulSilver, append `GAME_VERSION=SOULSILVER` to the appropriate command.
+
+At the end of building each of these, there is a checksum verification step. This makes sure that the final product is byte-for-byte equivalent to the retail ROM. To disable this, append `COMPARE=0` to your command.
+
 #### Windows
 
 If you get an error in saving configuration settings when specifying the license file, you need to add a system environment variable called LM_LICENSE_FILE and point it to the license.dat file. Alternatively, run mwccarm.exe from an Administrator command prompt, PowerShell, or WSL session.
@@ -100,11 +109,14 @@ $ ./contrib/docker/build_docker.sh soulsilver # build pokesoulsilver
 
 Note: Docker may not run at a full performance if its underlying Linux kernel is being virtualized (mainly Windows and macOS hosts).
 
-#### macOS
+#### After updating from upstream
 
-To avoid issues, you will need to run the build as shown below. This avoids issues with missing features (i.e. "introduced in macOS 10.15" errors) and Apple's `make` being an older version.
+This repository is still in a volatile state, and several files may be moved around or renamed. If you pull from upstream and experience errors rebuilding, try the following troubleshooting steps, **one line at a time** until you get the non_npc_msg `build/heartgold.us/pokeheartgold.us.nds: OK`:
 
-```console
-$ export PATH=${HOMEBREW_PREFIX}/opt/llvm/bin:$PATH CC=clang CXX=clang++
-$ gmake
+```shell
+make tidy compare
+make clean compare
+git clean -fdx && make compare
 ```
+
+If, after the third step, you're still getting errors, please ask for help in the Discord.

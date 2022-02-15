@@ -11,14 +11,22 @@
 #define OSi_ANYP_LOCK_ID_START OS_SUBP_LOCK_ID_START
 #endif
 
-void OSi_AllocateCartridge(void);
-void OSi_FreeCartridge(void);
+void OSi_AllocateCartridgeBus(void);
+void OSi_FreeCartridgeBus(void);
 void OSi_AllocateCardBus(void);
 void OSi_FreeCardBus(void);
 
+// FIXME: This looks like it's meant to be a linker-inserted veneer, but I can't get it to insert properly yet
+#ifdef SDK_ARM9
 static inline void OSi_WaitByLoop(void) {
     SVC_WaitByLoop(0x1000 / 4);
 }
+#else
+void VENEER_SVC_WaitByLoop(s32 count);
+static inline void OSi_WaitByLoop(void) {
+    VENEER_SVC_WaitByLoop(0x1000 / 4);
+}
+#endif
 
 void OS_InitLock(void) {
     static BOOL isInitialized = FALSE;
@@ -46,14 +54,24 @@ void OS_InitLock(void) {
 #else
     lockp->extension = 0;
     while (lockp->ownerID != OS_MAINP_SYSTEM_LOCK_ID) {
-        OSi_WaitByLoop():
+        OSi_WaitByLoop();
     }
     ((u32 *)OSi_ANYP_LOCK_ID_FLAG)[0] = OSi_LOCKID_INITIAL_FLAG_0;
-((u32 *)OSi_ANYP_LOCK_ID_FLAG)[1] = OSi_LOCKID_INITIAL_FLAG_1;
+    ((u32 *)OSi_ANYP_LOCK_ID_FLAG)[1] = OSi_LOCKID_INITIAL_FLAG_1;
     lockp->extension = OS_SUBP_SYSTEM_LOCK_ID;
 #endif
 }
 
+#ifdef SDK_ARM7
+asm void VENEER_SVC_WaitByLoop(register s32 count) {
+    ldr ip, =SVC_WaitByLoop
+    bx ip
+}
+#endif
+
+#ifdef SDK_ARM7
+static inline
+#endif //SDK_ARM7
 s32 OSi_DoLockByWord(u16 lockID, OSLockWord *lockp, void (*ctrlFuncp)(void), BOOL disableFiq) {
     s32 lastLockFlag;
 
@@ -110,11 +128,11 @@ s32 OSi_DoTryLockByWord(u16 lockID, OSLockWord *lockp, void (*ctrlFuncp)(void), 
 }
 
 s32 OS_LockCartridge(u16 lockID) {
-    return OSi_DoLockByWord(lockID, (OSLockWord*)HW_CTRDG_LOCK_BUF, OSi_AllocateCartridge, TRUE);
+    return OSi_DoLockByWord(lockID, (OSLockWord*)HW_CTRDG_LOCK_BUF, OSi_AllocateCartridgeBus, TRUE);
 }
 
 s32 OS_UnlockCartridge(u16 lockID) {
-    return OSi_DoUnlockByWord(lockID, (OSLockWord*)HW_CTRDG_LOCK_BUF, OSi_FreeCartridge, TRUE);
+    return OSi_DoUnlockByWord(lockID, (OSLockWord*)HW_CTRDG_LOCK_BUF, OSi_FreeCartridgeBus, TRUE);
 }
 
 // For backwards compatibility.
@@ -126,15 +144,19 @@ asm s32 OS_UnLockCartridge(u16 lockID) {
 }
 
 s32 OS_TryLockCartridge(u16 lockID) {
-    return OSi_DoTryLockByWord(lockID, (OSLockWord*)HW_CTRDG_LOCK_BUF, OSi_AllocateCartridge, TRUE);
+    return OSi_DoTryLockByWord(lockID, (OSLockWord*)HW_CTRDG_LOCK_BUF, OSi_AllocateCartridgeBus, TRUE);
 }
 
-void OSi_AllocateCartridge(void) {
+void OSi_AllocateCartridgeBus(void) {
+#ifdef SDK_ARM9
     MIi_SetCartridgeProcessor(MI_PROCESSOR_ARM9);
+#endif
 }
 
-void OSi_FreeCartridge(void) {
+void OSi_FreeCartridgeBus(void) {
+#ifdef SDK_ARM9
     MIi_SetCartridgeProcessor(MI_PROCESSOR_ARM7);
+#endif
 }
 
 s32 OS_LockCard(u16 lockID) {
@@ -153,12 +175,20 @@ asm s32 OS_UnLockCard(u16 lockID) {
     bx r1
 }
 
+BOOL OS_TryLockCard(u16 lockID) {
+    return OSi_DoTryLockByWord(lockID, (OSLockWord*)HW_CARD_LOCK_BUF, OSi_AllocateCardBus, FALSE);
+}
+
 void OSi_AllocateCardBus(void) {
+#ifdef SDK_ARM9
     MIi_SetCardProcessor(MI_PROCESSOR_ARM9);
+#endif
 }
 
 void OSi_FreeCardBus(void) {
+#ifdef SDK_ARM9
     MIi_SetCardProcessor(MI_PROCESSOR_ARM7);
+#endif
 }
 
 u16 OS_ReadOwnerOfLockWord(OSLockWord *lockp) {
@@ -207,7 +237,7 @@ _ex2:
     ldr r0, =-3
     bxeq lr
     mov r0, #OSi_ANYP_LOCK_ID_START + 32
-@movne:
+    @movne:
     add r0, r0, r2
     mov r1, #0x80000000
     mov r1, r1, lsr r2

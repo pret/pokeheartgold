@@ -3,54 +3,51 @@
 
 	.rodata
 
-_020FE82C:
-	.word 0x02
-	.byte 0x01, 0x05, 0xFF, 0xFF
-	.word 0x03
-	.byte 0x00, 0x02, 0x06, 0xFF
-	.word 0x03
-	.byte 0x01, 0x03, 0x07, 0xFF
-	.word 0x03
-	.byte 0x02, 0x04, 0x08, 0xFF
-	.word 0x02
-	.byte 0x03, 0x09, 0xFF, 0xFF
-	.word 0x03
-	.byte 0x00, 0x06, 0x0A, 0xFF
-	.word 0x04
-	.byte 0x01, 0x05, 0x07, 0x0B
-	.balign 4, 0
-	.word 0x04
-	.byte 0x02, 0x06, 0x08, 0x0C
-	.balign 4, 0
-	.word 0x04
-	.byte 0x03, 0x07, 0x09, 0x0D
-	.balign 4, 0
-	.word 0x03
-	.byte 0x04, 0x08, 0x0E, 0xFF
-	.word 0x02
-	.byte 0x05, 0x0B, 0xFF, 0xFF
-	.word 0x03
-	.byte 0x06, 0x0A, 0x0C, 0xFF
-	.word 0x03
-	.byte 0x07, 0x0B, 0x0D, 0xFF
-	.word 0x03
-	.byte 0x08, 0x0C, 0x0E, 0xFF
-	.word 0x02
-	.byte 0x09, 0x0D, 0xFF, 0xFF
+sTrashCanData:
+	.word 2
+	.byte 1, 5, 0xFF, 0xFF
+	.word 3
+	.byte 0, 2, 6, 0xFF
+	.word 3
+	.byte 1, 3, 7, 0xFF
+	.word 3
+	.byte 2, 4, 8, 0xFF
+	.word 2
+	.byte 3, 9, 0xFF, 0xFF
+	.word 3
+	.byte 0, 6, 10, 0xFF
+	.word 4
+	.byte 1, 5, 7, 11
+	.word 4
+	.byte 2, 6, 8, 12
+	.word 4
+	.byte 3, 7, 9, 13
+	.word 3
+	.byte 4, 8, 14, 0xFF
+	.word 2
+	.byte 5, 11, 0xFF, 0xFF
+	.word 3
+	.byte 6, 10, 12, 0xFF
+	.word 3
+	.byte 7, 11, 13, 0xFF
+	.word 3
+	.byte 8, 12, 14, 0xFF
+	.word 2
+	.byte 9, 13, 0xFF, 0xFF
 
 	.text
 
-	thumb_func_start sub_02068DE0
-sub_02068DE0: ; 0x02068DE0
+	thumb_func_start Fsys_InitEcruteakGymSaveData
+Fsys_InitEcruteakGymSaveData: ; 0x02068DE0
 	push {r4, lr}
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	add r4, r0, #0
 	mov r1, #1
-	bl sub_0202AE98
+	bl SavGymmick_Init
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	mov r2, #0
 	add r1, r2, #0
 _02068DFE:
@@ -59,34 +56,34 @@ _02068DFE:
 	cmp r2, #4
 	blt _02068DFE
 	pop {r4, pc}
-	thumb_func_end sub_02068DE0
+	thumb_func_end Fsys_InitEcruteakGymSaveData
 
-	thumb_func_start sub_02068E08
-sub_02068E08: ; 0x02068E08
+	thumb_func_start Fsys_InitCianwoodGym
+Fsys_InitCianwoodGym: ; 0x02068E08
 	push {r4, lr}
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	add r4, r0, #0
 	mov r1, #2
-	bl sub_0202AE98
+	bl SavGymmick_Init
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	pop {r4, pc}
-	thumb_func_end sub_02068E08
+	thumb_func_end Fsys_InitCianwoodGym
 
-	thumb_func_start sub_02068E24
-sub_02068E24: ; 0x02068E24
+	thumb_func_start Fsys_InitVermilionGym
+Fsys_InitVermilionGym: ; 0x02068E24
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	add r4, r0, #0
 	mov r1, #3
-	bl sub_0202AE98
+	bl SavGymmick_Init
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
@@ -103,28 +100,28 @@ sub_02068E24: ; 0x02068E24
 	pop {r3, r4, r5, pc}
 _02068E60:
 	add r0, r5, #0
-	bl sub_02068E70
+	bl PlaceVermilionGymSwitches
 	mov r0, #0
 	strb r0, [r4, #2]
 	strb r0, [r4, #3]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02068E24
+	thumb_func_end Fsys_InitVermilionGym
 
-	thumb_func_start sub_02068E70
-sub_02068E70: ; 0x02068E70
+	thumb_func_start PlaceVermilionGymSwitches
+PlaceVermilionGymSwitches: ; 0x02068E70
 	push {r3, r4, r5, r6, r7, lr}
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	mov r1, #3
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	add r5, r0, #0
 	bl LCRandom
 	mov r1, #0xf
 	bl _s32_div_f
 	strb r1, [r5]
 	ldrb r0, [r5]
-	ldr r7, _02068EAC ; =_020FE82C
+	ldr r7, _02068EAC ; =sTrashCanData
 	lsl r4, r0, #3
 	add r6, r7, r4
 	bl LCRandom
@@ -137,36 +134,36 @@ sub_02068E70: ; 0x02068E70
 	strb r0, [r5, #1]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02068EAC: .word _020FE82C
-	thumb_func_end sub_02068E70
+_02068EAC: .word sTrashCanData
+	thumb_func_end PlaceVermilionGymSwitches
 
-	thumb_func_start sub_02068EB0
-sub_02068EB0: ; 0x02068EB0
+	thumb_func_start Fsys_InitVioletGym
+Fsys_InitVioletGym: ; 0x02068EB0
 	push {r4, lr}
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	add r4, r0, #0
 	mov r1, #4
-	bl sub_0202AE98
+	bl SavGymmick_Init
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	mov r1, #0
 	str r1, [r0]
 	pop {r4, pc}
-	thumb_func_end sub_02068EB0
+	thumb_func_end Fsys_InitVioletGym
 
-	thumb_func_start sub_02068ED0
-sub_02068ED0: ; 0x02068ED0
+	thumb_func_start Fsys_InitAzaleaGym
+Fsys_InitAzaleaGym: ; 0x02068ED0
 	push {r4, lr}
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	add r4, r0, #0
 	mov r1, #5
-	bl sub_0202AE98
+	bl SavGymmick_Init
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	mov r2, #0
 	strb r2, [r0]
 	mov r1, #1
@@ -178,19 +175,19 @@ sub_02068ED0: ; 0x02068ED0
 	str r2, [r0, #4]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02068ED0
+	thumb_func_end Fsys_InitAzaleaGym
 
-	thumb_func_start sub_02068F00
-sub_02068F00: ; 0x02068F00
+	thumb_func_start Fsys_InitBlackthornGym
+Fsys_InitBlackthornGym: ; 0x02068F00
 	push {r4, lr}
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	add r4, r0, #0
 	mov r1, #6
-	bl sub_0202AE98
+	bl SavGymmick_Init
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	mov r1, #0xd
 	strh r1, [r0]
 	mov r1, #0x4b
@@ -210,37 +207,37 @@ sub_02068F00: ; 0x02068F00
 	strb r2, [r0, #0xe]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02068F00
+	thumb_func_end Fsys_InitBlackthornGym
 
-	thumb_func_start sub_02068F40
-sub_02068F40: ; 0x02068F40
+	thumb_func_start Fsys_InitFuchsiaGym
+Fsys_InitFuchsiaGym: ; 0x02068F40
 	push {r3, lr}
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	mov r1, #7
-	bl sub_0202AE98
+	bl SavGymmick_Init
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02068F40
+	thumb_func_end Fsys_InitFuchsiaGym
 
-	thumb_func_start sub_02068F54
-sub_02068F54: ; 0x02068F54
+	thumb_func_start Fsys_InitViridianGym
+Fsys_InitViridianGym: ; 0x02068F54
 	push {r3, lr}
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	mov r1, #8
-	bl sub_0202AE98
+	bl SavGymmick_Init
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02068F54
+	thumb_func_end Fsys_InitViridianGym
 
-	thumb_func_start sub_02068F68
-sub_02068F68: ; 0x02068F68
+	thumb_func_start Fsys_IsSavGymmickTypeEqualTo
+Fsys_IsSavGymmickTypeEqualTo: ; 0x02068F68
 	push {r4, lr}
 	add r4, r1, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
-	bl sub_0202AEBC
+	bl Sav2_GetGymmickPtr
+	bl SavGymmick_GetType
 	cmp r4, r0
 	bne _02068F80
 	mov r0, #1
@@ -248,4 +245,4 @@ sub_02068F68: ; 0x02068F68
 _02068F80:
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end sub_02068F68
+	thumb_func_end Fsys_IsSavGymmickTypeEqualTo

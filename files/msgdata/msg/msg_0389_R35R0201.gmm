@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0389_R35R0201_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I heard about the Bug-Catching Contest\nwhere Bug-type lovers gather from all\fover the region.\r...Me?\nI cannot take Bug types...</language>
+	</row>
+	<row id="msg_0389_R35R0201_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Bug-Catching Contest is held on\nTuesday, Thursday, and Saturday.\rNot only do you earn a prize just\nfor participating, you also get to\fkeep the Bug-type Pokémon you catch.</language>
+	</row>
+	<row id="msg_0389_R35R0201_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sorry to tell you this, but the\nPokéathlon Dome is still under\fconstruction, and the entrance there\fis off-limits.\rYou know what a rush construction is?\rIn short, they are working really hard.\nIt shouldn’t take too long.\rJust a little more patience, OK?</language>
+	</row>
+	<row id="msg_0389_R35R0201_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Pokéathlon Dome is this way.\rPlease go through the entrance gate,\nand do participate in the games!</language>
+	</row>
+	<row id="msg_0389_R35R0201_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Arrgh!\rWhen is the Pokéathlon going to\nbe ready?\rI can’t just sit here and wait!\nI’ll go on an around-Johto run!</language>
+	</row>
+	<row id="msg_0389_R35R0201_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’ve been waiting for this moment!\rBehold my friendship with my Pokémon!</language>
+	</row>
+	<row id="msg_0389_R35R0201_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I wonder if I can participate, too.\nIt’s only running with Pokémon, right?</language>
+	</row>
+	<row id="msg_0389_R35R0201_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Play collectively with your Pokémon,\ntrust your Pokémon, and believe in your\fPokémon’s potential!\rYour friendship with Pokémon\nwill make your dream come true!\rPokéathlon for you!</language>
+	</row>
+	<row id="msg_0389_R35R0201_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Charge your energy with friendship!\nGive Aprijuice to your Pokémon!</language>
+	</row>
+	<row id="msg_0389_R35R0201_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Tap tap ding ding!\rWe are in a big hurry!\nJust a little more work before you\fcan come through.\rI hope you are looking forward to it!</language>
+	</row>
+	<row id="msg_0389_R35R0201_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey, hey!\nWatch yourself! The construction\fmakes it dangerous around here.\rJust wait a little longer for the\nexciting reveal!\r</language>
+	</row>
+</body>

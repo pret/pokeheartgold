@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0615_T27PC0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bill: Hi, I’m Bill. And who are you?\rHmm, {STRVAR_1 3, 0, 0}, huh?\r</language>
+	</row>
+	<row id="msg_0615_T27PC0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You know what?\nI’m the one who developed\fthe system to transfer Pokémon.\rBut it couldn’t have been done by\nme alone.\rFor example, do you know the Hoenn\nregion? This girl Lanette from Hoenn\fmade the Pokémon Storage System\feasier to use.\rMy friends all over the world are\nworking together to improve\fthe Pokémon trade and\fstorage systems.\rI have to hurry on back to Goldenrod\nand see my folks.\fBuh-bye!\r</language>
+	</row>
+	<row id="msg_0615_T27PC0101_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Kimono Girls are so pretty.\rThe way the Kimono Girls dance and\nthe way they use their Pokémon are\fboth marvels.</language>
+	</row>
+	<row id="msg_0615_T27PC0101_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Morty, the Gym Leader, is soooo cool.\rHis Pokémon are really tough, too.</language>
+	</row>
+	<row id="msg_0615_T27PC0101_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lake of Rage...\nThe appearance of a red GYARADOS...\fI smell a conspiracy. I know it!</language>
+	</row>
+</body>

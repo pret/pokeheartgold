@@ -714,7 +714,7 @@ _0223E2D0:
 	strb r0, [r4, #8]
 	b _0223E372
 _0223E2FC:
-	ldr r1, _0223E380 ; =gMain
+	ldr r1, _0223E380 ; =gSystem
 	ldr r1, [r1, #0x48]
 	bl ov84_0223EBE8
 	bl sub_0203769C
@@ -778,7 +778,7 @@ _0223E372:
 	nop
 _0223E378: .word 0x00000608
 _0223E37C: .word 0x00000623
-_0223E380: .word gMain
+_0223E380: .word gSystem
 	thumb_func_end ov84_0223E1A8
 
 	thumb_func_start ov84_0223E384
@@ -1085,7 +1085,7 @@ ov84_0223E5C4: ; 0x0223E5C4
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -1517,7 +1517,7 @@ ov84_0223E958: ; 0x0223E958
 	bl GX_EngineAToggleLayers
 	mov r0, #0x1f
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	mov r1, #3
 	bl FreeBgTilemapBuffer
@@ -1544,7 +1544,7 @@ ov84_0223E98C: ; 0x0223E98C
 _0223E99C:
 	add r4, #0x90
 	ldr r0, [r4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0202061C
 	bl sub_0200B224
 	ldr r3, _0223E9BC ; =0x027E0000
@@ -1691,7 +1691,7 @@ ov84_0223EAAC: ; 0x0223EAAC
 	ldr r2, [r2]
 	mov r1, #0x7c
 	add r3, r4, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	ldrb r0, [r5, #9]
 	bl ov80_02238374
 	cmp r0, #0
@@ -1714,7 +1714,7 @@ _0223EAE6:
 	add r5, #0x90
 	ldr r2, [r5]
 	add r3, r4, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov84_0223EAAC
@@ -1747,7 +1747,7 @@ _0223EB20:
 	add r5, #0x90
 	ldr r2, [r5]
 	add r3, r4, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1800,7 +1800,7 @@ ov84_0223EB78: ; 0x0223EB78
 	ldr r2, [r2]
 	mov r1, #0x7e
 	add r3, r4, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0x40
 	str r0, [sp]
 	mov r0, #0x6e
@@ -1811,7 +1811,7 @@ ov84_0223EB78: ; 0x0223EB78
 	mov r1, #0xbb
 	mov r2, #4
 	mov r3, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1826,7 +1826,7 @@ ov84_0223EB78: ; 0x0223EB78
 	ldr r2, [r5]
 	mov r1, #0x7d
 	add r3, r4, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2807,7 +2807,7 @@ ov84_0223F28C: ; 0x0223F28C
 	add r4, r0, #0
 	ldr r0, _0223F2AC ; =0x000005DC
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _0223F2B0 ; =0x000005E4
 	bl PlaySE
 	mov r0, #0xd6
@@ -2900,7 +2900,7 @@ _0223F34E:
 	blt _0223F34E
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers

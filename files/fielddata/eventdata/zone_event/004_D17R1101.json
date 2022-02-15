@@ -1,0 +1,87 @@
+{
+  "header": "fielddata/script/scr_seq/event_D17R1101.h",
+  "bgs": [
+    {
+      "scr": "std_hiddenitem_d17r1101_tinymushroom",
+      "type": 2,
+      "x": 33,
+      "y": 10,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_d17r1101_big_mushroom",
+      "type": 2,
+      "x": 39,
+      "y": 20,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_d17r1101_tinymushroom_2",
+      "type": 2,
+      "x": 14,
+      "y": 7,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_d17r1101_big_mushroom_2",
+      "type": 2,
+      "x": 23,
+      "y": 7,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_d17r1101_tinymushroom_3",
+      "type": 2,
+      "x": 17,
+      "y": 7,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_D17R1101_gsleader4",
+      "ovid": "SPRITE_GSLEADER4",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_UNK_2CA",
+      "scr": "_EV_scr_seq_D17R1101_001 + 1",
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 30,
+      "y": 11,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 9,
+      "y": 9,
+      "header": "MAP_T27R0202",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 9,
+      "y": 10,
+      "header": "MAP_T27R0202",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 37,
+      "y": 16,
+      "header": "MAP_D17R0101",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

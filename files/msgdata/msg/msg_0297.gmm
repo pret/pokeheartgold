@@ -1,0 +1,575 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0297_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">つぶれて　はねる</language>
+	</row>
+	<row id="msg_0297_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Tremble vertically</language>
+	</row>
+	<row id="msg_0297_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pull vertically</language>
+	</row>
+	<row id="msg_0297_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Shrink then swell</language>
+	</row>
+	<row id="msg_0297_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Store then jump: slow</language>
+	</row>
+	<row id="msg_0297_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Tremble horizontally</language>
+	</row>
+	<row id="msg_0297_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Jumpin’: small </language>
+	</row>
+	<row id="msg_0297_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Store then jump horizontally</language>
+	</row>
+	<row id="msg_0297_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Vertical shake</language>
+	</row>
+	<row id="msg_0297_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BALTOY: slow</language>
+	</row>
+	<row id="msg_0297_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">jump horizontally: slow</language>
+	</row>
+	<row id="msg_0297_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sliced sideways jump</language>
+	</row>
+	<row id="msg_0297_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">jump horizontally: small</language>
+	</row>
+	<row id="msg_0297_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">----------</language>
+	</row>
+	<row id="msg_0297_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Jerk</language>
+	</row>
+	<row id="msg_0297_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Double Team</language>
+	</row>
+	<row id="msg_0297_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Horizontal shake: slow</language>
+	</row>
+	<row id="msg_0297_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">----------</language>
+	</row>
+	<row id="msg_0297_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pull horizontally</language>
+	</row>
+	<row id="msg_0297_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Spark</language>
+	</row>
+	<row id="msg_0297_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">----------</language>
+	</row>
+	<row id="msg_0297_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Shrink twice then swell</language>
+	</row>
+	<row id="msg_0297_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cradle: slow</language>
+	</row>
+	<row id="msg_0297_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">jump hrizontally</language>
+	</row>
+	<row id="msg_0297_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">vertical jump to horizontal jump</language>
+	</row>
+	<row id="msg_0297_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Jumpin’</language>
+	</row>
+	<row id="msg_0297_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Vertical shake: slow</language>
+	</row>
+	<row id="msg_0297_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">----------</language>
+	</row>
+	<row id="msg_0297_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BALTOY: twice</language>
+	</row>
+	<row id="msg_0297_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Horizontal shake </language>
+	</row>
+	<row id="msg_0297_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dummy</language>
+	</row>
+	<row id="msg_0297_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dummy</language>
+	</row>
+	<row id="msg_0297_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dummy</language>
+	</row>
+	<row id="msg_0297_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dummy</language>
+	</row>
+	<row id="msg_0297_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dummy</language>
+	</row>
+	<row id="msg_0297_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dummy</language>
+	</row>
+	<row id="msg_0297_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dummy</language>
+	</row>
+	<row id="msg_0297_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dummy</language>
+	</row>
+	<row id="msg_0297_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dummy</language>
+	</row>
+	<row id="msg_0297_00039" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dummy</language>
+	</row>
+	<row id="msg_0297_00040" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dummy</language>
+	</row>
+	<row id="msg_0297_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dummy</language>
+	</row>
+	<row id="msg_0297_00042" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dummy</language>
+	</row>
+	<row id="msg_0297_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dummy</language>
+	</row>
+	<row id="msg_0297_00044" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dummy</language>
+	</row>
+	<row id="msg_0297_00045" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dummy</language>
+	</row>
+	<row id="msg_0297_00046" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dummy</language>
+	</row>
+	<row id="msg_0297_00047" index="47">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dummy</language>
+	</row>
+	<row id="msg_0297_00048" index="48">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dummy</language>
+	</row>
+	<row id="msg_0297_00049" index="49">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dummy</language>
+	</row>
+	<row id="msg_0297_00050" index="50">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Double Team 1</language>
+	</row>
+	<row id="msg_0297_00051" index="51">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Double Team 2</language>
+	</row>
+	<row id="msg_0297_00052" index="52">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Double Team 3</language>
+	</row>
+	<row id="msg_0297_00053" index="53">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Horizontal shake 1</language>
+	</row>
+	<row id="msg_0297_00054" index="54">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Horizontal shake 2</language>
+	</row>
+	<row id="msg_0297_00055" index="55">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Horizontal shake 3</language>
+	</row>
+	<row id="msg_0297_00056" index="56">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Vertical tremble 1</language>
+	</row>
+	<row id="msg_0297_00057" index="57">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Vertical tremble 2</language>
+	</row>
+	<row id="msg_0297_00058" index="58">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Vertical tremble 3</language>
+	</row>
+	<row id="msg_0297_00059" index="59">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Horizontal tremble 1</language>
+	</row>
+	<row id="msg_0297_00060" index="60">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Horizontal tremble 2</language>
+	</row>
+	<row id="msg_0297_00061" index="61">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Horizontal tremble 3</language>
+	</row>
+	<row id="msg_0297_00062" index="62">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Vertical stretch 1</language>
+	</row>
+	<row id="msg_0297_00063" index="63">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Vertical stretch 2</language>
+	</row>
+	<row id="msg_0297_00064" index="64">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Vertical stretch 3</language>
+	</row>
+	<row id="msg_0297_00065" index="65">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Horizontal stretch 1</language>
+	</row>
+	<row id="msg_0297_00066" index="66">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Horizontal stretch 2</language>
+	</row>
+	<row id="msg_0297_00067" index="67">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Horizontal stretch 3</language>
+	</row>
+	<row id="msg_0297_00068" index="68">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Vertical &amp; horizontal stretch 1</language>
+	</row>
+	<row id="msg_0297_00069" index="69">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Vertical &amp; horizontal stretch 2</language>
+	</row>
+	<row id="msg_0297_00070" index="70">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Vertical &amp; horizontal stretch 3</language>
+	</row>
+	<row id="msg_0297_00071" index="71">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Jerk 1</language>
+	</row>
+	<row id="msg_0297_00072" index="72">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Jerk 2</language>
+	</row>
+	<row id="msg_0297_00073" index="73">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Jerk 3</language>
+	</row>
+	<row id="msg_0297_00074" index="74">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Triangle1</language>
+	</row>
+	<row id="msg_0297_00075" index="75">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Triangle2</language>
+	</row>
+	<row id="msg_0297_00076" index="76">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Triangle3</language>
+	</row>
+	<row id="msg_0297_00077" index="77">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Bound1</language>
+	</row>
+	<row id="msg_0297_00078" index="78">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Bound2</language>
+	</row>
+	<row id="msg_0297_00079" index="79">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Bound3</language>
+	</row>
+	<row id="msg_0297_00080" index="80">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Bound： small1</language>
+	</row>
+	<row id="msg_0297_00081" index="81">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Bound： small2</language>
+	</row>
+	<row id="msg_0297_00082" index="82">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Bound： small3</language>
+	</row>
+	<row id="msg_0297_00083" index="83">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　さゆうゆれ1</language>
+	</row>
+	<row id="msg_0297_00084" index="84">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　さゆうゆれ2</language>
+	</row>
+	<row id="msg_0297_00085" index="85">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　さゆうゆれ3</language>
+	</row>
+	<row id="msg_0297_00086" index="86">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　sink 1</language>
+	</row>
+	<row id="msg_0297_00087" index="87">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　sink 2</language>
+	</row>
+	<row id="msg_0297_00088" index="88">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　sink 3</language>
+	</row>
+	<row id="msg_0297_00089" index="89">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Shrink and Swell　1</language>
+	</row>
+	<row id="msg_0297_00090" index="90">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Shrink and Swell　2</language>
+	</row>
+	<row id="msg_0297_00091" index="91">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Shrink and Swell　3</language>
+	</row>
+	<row id="msg_0297_00092" index="92">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Take Down 1</language>
+	</row>
+	<row id="msg_0297_00093" index="93">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Take Down</language>
+	</row>
+	<row id="msg_0297_00094" index="94">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Take Down</language>
+	</row>
+	<row id="msg_0297_00095" index="95">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Fade: red 1</language>
+	</row>
+	<row id="msg_0297_00096" index="96">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Fade: red 2</language>
+	</row>
+	<row id="msg_0297_00097" index="97">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Fade: red 3</language>
+	</row>
+	<row id="msg_0297_00098" index="98">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Fade: blue 1</language>
+	</row>
+	<row id="msg_0297_00099" index="99">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Fade: blue 2</language>
+	</row>
+	<row id="msg_0297_00100" index="100">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Fade: blue 3</language>
+	</row>
+	<row id="msg_0297_00101" index="101">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Fade: green 1</language>
+	</row>
+	<row id="msg_0297_00102" index="102">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Fade: green 2</language>
+	</row>
+	<row id="msg_0297_00103" index="103">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Fade: green 3</language>
+	</row>
+	<row id="msg_0297_00104" index="104">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Spark1</language>
+	</row>
+	<row id="msg_0297_00105" index="105">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Spark2</language>
+	</row>
+	<row id="msg_0297_00106" index="106">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Spark3</language>
+	</row>
+	<row id="msg_0297_00107" index="107">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Move horizontally with tremble 1</language>
+	</row>
+	<row id="msg_0297_00108" index="108">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Move horizontally with tremble 2</language>
+	</row>
+	<row id="msg_0297_00109" index="109">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Move horizontally with tremble 3</language>
+	</row>
+	<row id="msg_0297_00110" index="110">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Rapid rotation 1</language>
+	</row>
+	<row id="msg_0297_00111" index="111">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Rapid rotation 2</language>
+	</row>
+	<row id="msg_0297_00112" index="112">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Rapid rotation 3</language>
+	</row>
+	<row id="msg_0297_00113" index="113">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Swell 1</language>
+	</row>
+	<row id="msg_0297_00114" index="114">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Swell 2</language>
+	</row>
+	<row id="msg_0297_00115" index="115">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Swell 3</language>
+	</row>
+	<row id="msg_0297_00116" index="116">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Shrink &amp; Swell 1</language>
+	</row>
+	<row id="msg_0297_00117" index="117">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Shrink &amp; Swell 2</language>
+	</row>
+	<row id="msg_0297_00118" index="118">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Shrink &amp; Swell 3</language>
+	</row>
+	<row id="msg_0297_00119" index="119">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Squashed with horizontal shake Ａ1</language>
+	</row>
+	<row id="msg_0297_00120" index="120">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Squashed with horizontal shake Ａ2</language>
+	</row>
+	<row id="msg_0297_00121" index="121">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Squashed with horizontal shake Ａ3</language>
+	</row>
+	<row id="msg_0297_00122" index="122">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Squashed with horizontal shake Ｂ1</language>
+	</row>
+	<row id="msg_0297_00123" index="123">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Squashed with horizontal shake Ｂ2</language>
+	</row>
+	<row id="msg_0297_00124" index="124">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Squashed with horizontal shake Ｂ3</language>
+	</row>
+	<row id="msg_0297_00125" index="125">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Jumpin’ 1</language>
+	</row>
+	<row id="msg_0297_00126" index="126">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Jumpin’ 2</language>
+	</row>
+	<row id="msg_0297_00127" index="127">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Jumpin’ 3</language>
+	</row>
+	<row id="msg_0297_00128" index="128">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Up &amp; down with shake 1</language>
+	</row>
+	<row id="msg_0297_00129" index="129">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Up &amp; down with shake 2</language>
+	</row>
+	<row id="msg_0297_00130" index="130">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Up &amp; down with shake 3</language>
+	</row>
+	<row id="msg_0297_00131" index="131">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Walk in place 1</language>
+	</row>
+	<row id="msg_0297_00132" index="132">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Walk in place 2</language>
+	</row>
+	<row id="msg_0297_00133" index="133">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ｂ　Walk in place 3</language>
+	</row>
+	<row id="msg_0297_00134" index="134">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ＰＬ　Ｂ　Jumpin’: small</language>
+	</row>
+	<row id="msg_0297_00135" index="135">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ＰＬ　Ｂ　Store then jump horizontally</language>
+	</row>
+	<row id="msg_0297_00136" index="136">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ＰＬ　Ｂ　BALTOY: slow</language>
+	</row>
+	<row id="msg_0297_00137" index="137">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ＰＬ　Ｂ　horizontal jump: slow</language>
+	</row>
+	<row id="msg_0297_00138" index="138">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ＰＬ　Ｂ　Horiozonta jump: small</language>
+	</row>
+	<row id="msg_0297_00139" index="139">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ＰＬ　Ｂ　ゆれながら　さゆう</language>
+	</row>
+	<row id="msg_0297_00140" index="140">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ＰＬ　Ｂ　ゆれながら　じょうげ</language>
+	</row>
+	<row id="msg_0297_00141" index="141">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ＰＬ　Ｂ　Cradle: slow</language>
+	</row>
+	<row id="msg_0297_00142" index="142">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ＰＬ　Ｂ　Horizontal jump</language>
+	</row>
+</body>

@@ -51,7 +51,7 @@ _02229F18:
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	ldr r0, _02229F6C ; =ov45_02229FE0
 	add r1, r5, #0
 	mov r2, #0
@@ -97,7 +97,7 @@ ov45_02229F94: ; 0x02229F94
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	ldr r0, [r4, #8]
 	bl ov45_0222CD68
 	ldr r0, [r4, #4]
@@ -6050,7 +6050,7 @@ ov45_0222C978: ; 0x0222C978
 	add r5, r0, #0
 	bl MI_CpuFill8
 	add r0, r4, #0
-	bl sub_02015D14
+	bl WallpaperPasswordBank_Create
 	add r5, #0xb4
 	str r0, [r5]
 	pop {r3, r4, r5, pc}
@@ -6059,12 +6059,12 @@ ov45_0222C978: ; 0x0222C978
 
 	thumb_func_start ov45_0222C994
 ov45_0222C994: ; 0x0222C994
-	ldr r3, _0222C99C ; =sub_02015D54
+	ldr r3, _0222C99C ; =WallpaperPasswordBank_Delete
 	add r0, #0xb4
 	ldr r0, [r0]
 	bx r3
 	.balign 4, 0
-_0222C99C: .word sub_02015D54
+_0222C99C: .word WallpaperPasswordBank_Delete
 	thumb_func_end ov45_0222C994
 
 	thumb_func_start ov45_0222C9A0
@@ -6144,7 +6144,7 @@ ov45_0222CA10: ; 0x0222CA10
 	add r4, r1, #0
 	add r6, r0, #0
 	add r5, r2, #0
-	bl sub_02015D68
+	bl WallpaperPasswordBank_GetNum
 	add r7, r0, #0
 	str r4, [sp, #8]
 	add r0, sp, #8
@@ -6155,7 +6155,7 @@ ov45_0222CA10: ; 0x0222CA10
 	add r0, r0, r4
 	bl _u32_div_f
 	add r0, r6, #0
-	bl sub_02015D6C
+	bl WallpaperPasswordBank_GetWordI
 	strh r0, [r5]
 	add r0, sp, #8
 	ldrb r0, [r0, #1]
@@ -6164,7 +6164,7 @@ ov45_0222CA10: ; 0x0222CA10
 	add r0, r4, r0
 	bl _u32_div_f
 	add r0, r6, #0
-	bl sub_02015D6C
+	bl WallpaperPasswordBank_GetWordI
 	strh r0, [r5, #2]
 	add r0, sp, #8
 	ldrb r4, [r0, #2]
@@ -6173,14 +6173,14 @@ ov45_0222CA10: ; 0x0222CA10
 	add r0, r0, r4
 	bl _u32_div_f
 	add r0, r6, #0
-	bl sub_02015D6C
+	bl WallpaperPasswordBank_GetWordI
 	strh r0, [r5, #4]
 	ldr r0, [sp]
 	add r1, r7, #0
 	add r0, r4, r0
 	bl _u32_div_f
 	add r0, r6, #0
-	bl sub_02015D6C
+	bl WallpaperPasswordBank_GetWordI
 	strh r0, [r5, #6]
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -7898,7 +7898,7 @@ ov45_0222D638: ; 0x0222D638
 	cmp r5, #0
 	beq _0222D6AE
 	add r0, r5, #0
-	bl sub_02091688
+	bl LocationGmmDatRegionCountGetByCountryMsgNo
 	cmp r4, r0
 	bhi _0222D6AE
 	mov r1, #0
@@ -8097,7 +8097,7 @@ _0222D76C:
 ov45_0222D79C: ; 0x0222D79C
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_02091688
+	bl LocationGmmDatRegionCountGetByCountryMsgNo
 	cmp r0, #0
 	bne _0222D7B0
 	cmp r4, #0
@@ -9598,7 +9598,7 @@ ov45_0222E1A0: ; 0x0222E1A0
 	ldr r2, [r5, #4]
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_0200C7BC
+	bl BufferWiFiPlazaInstrumentName
 	add r0, r7, #0
 	mov r1, #8
 	bl NewString_ReadMsgData
@@ -9626,7 +9626,7 @@ ov45_0222E200: ; 0x0222E200
 	add r0, r4, #0
 	mov r1, #0
 	add r7, r3, #0
-	bl sub_0200C74C
+	bl BufferWiFiPlazaActivityName
 	ldr r0, [r5, #0xc]
 	cmp r0, #1
 	bne _0222E2EE
@@ -9778,7 +9778,7 @@ ov45_0222E33C: ; 0x0222E33C
 	add r0, r4, #0
 	mov r1, #0
 	add r6, r3, #0
-	bl sub_0200C74C
+	bl BufferWiFiPlazaActivityName
 	ldr r0, _0222E398 ; =gGameLanguage
 	mov r1, #1
 	ldrb r0, [r0]
@@ -9850,12 +9850,12 @@ _0222E3D4:
 	bne _0222E3E4
 	add r0, r7, #0
 	mov r2, #5
-	bl sub_0200C74C
+	bl BufferWiFiPlazaActivityName
 	b _0222E3EC
 _0222E3E4:
 	add r0, r7, #0
 	mov r2, #6
-	bl sub_0200C74C
+	bl BufferWiFiPlazaActivityName
 _0222E3EC:
 	ldr r2, [r6, #4]
 	mov r1, #0xe
@@ -9900,21 +9900,21 @@ _0222E436:
 	mov r1, #0
 	add r0, r4, #0
 	add r2, r1, #0
-	bl sub_0200C784
+	bl BufferWiFiPlazaEventName
 	mov r1, #0xf
 	b _0222E468
 _0222E444:
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #1
-	bl sub_0200C784
+	bl BufferWiFiPlazaEventName
 	mov r1, #0x14
 	b _0222E468
 _0222E452:
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #2
-	bl sub_0200C784
+	bl BufferWiFiPlazaEventName
 	mov r1, #0x10
 	b _0222E468
 _0222E460:
@@ -9979,7 +9979,7 @@ _0222E4C4:
 	ldr r2, [r6, #4]
 	add r0, r7, #0
 	mov r1, #0
-	bl sub_0200C74C
+	bl BufferWiFiPlazaActivityName
 	ldr r1, [r6, #8]
 	mov r4, #0
 	cmp r1, #0
@@ -14500,7 +14500,7 @@ _022304E2:
 	str r2, [sp]
 	mov r1, #0x7f
 	str r0, [sp, #0x14]
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r5, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
@@ -14545,7 +14545,7 @@ _02230582:
 	ldr r0, [sp, #0x18]
 	ldr r3, [sp, #0xc]
 	add r2, r7, #0
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r1, r0, #0
 	ldrh r2, [r5]
 	ldr r0, [r4, #4]
@@ -14587,7 +14587,7 @@ _022305CA:
 	lsl r1, r1, #0x11
 	lsr r1, r1, #0x11
 	mov r2, #0
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r1, r0, #0
 	ldr r0, [sp, #0xc]
 	add r3, r6, #0
@@ -15879,10 +15879,10 @@ _02230E8E:
 	str r0, [sp, #0x40]
 	add r0, sp, #0
 	bl MTX_Identity33_
-	ldr r1, _02230F8C ; =_021DA558
+	ldr r1, _02230F8C ; =NNS_G3dGlb + 0xBC
 	add r0, sp, #0
 	bl MI_Copy36B
-	ldr r1, _02230F90 ; =_021DA51C
+	ldr r1, _02230F90 ; =NNS_G3dGlb + 0x80
 	mov r0, #0xa4
 	ldr r2, [r1, #0x7c]
 	bic r2, r0
@@ -15903,8 +15903,8 @@ _02230F84:
 	add sp, #0x44
 	pop {r3, r4, r5, r6, pc}
 	nop
-_02230F8C: .word _021DA558
-_02230F90: .word _021DA51C
+_02230F8C: .word NNS_G3dGlb + 0xBC
+_02230F90: .word NNS_G3dGlb + 0x80
 	thumb_func_end ov45_02230E78
 
 	thumb_func_start ov45_02230F94
@@ -15987,7 +15987,7 @@ ov45_02231018: ; 0x02231018
 	add r2, r7, #0
 	str r0, [sp, #8]
 	ldr r4, [sp, #0x30]
-	bl sub_02007CAC
+	bl GfGfxLoader_LoadFromOpenNarc_GetSizeOut
 	add r6, r0, #0
 	ldr r0, [sp, #0x18]
 	mov r1, #6
@@ -16013,8 +16013,8 @@ _02231060:
 	cmp r7, #0
 	bne _022310AC
 	add r0, r5, #0
-	bl sub_02091668
-	bl sub_020916F8
+	bl LocationGmmDatIndexGetByCountryMsgNo
+	bl LocationGmmDatGetEarthPlaceDatId
 	mov r2, #0
 	add r1, r0, #0
 	str r2, [sp]
@@ -16022,7 +16022,7 @@ _02231060:
 	str r0, [sp, #4]
 	ldr r0, [sp, #8]
 	ldr r3, [sp, #0xc]
-	bl sub_02007CAC
+	bl GfGfxLoader_LoadFromOpenNarc_GetSizeOut
 	add r5, r0, #0
 	ldr r0, [sp, #0x14]
 	lsr r1, r0, #2

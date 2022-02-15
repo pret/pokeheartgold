@@ -11,7 +11,7 @@ ov40_0222B6E0: ; 0x0222B6E0
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -269,16 +269,16 @@ ov40_0222B934: ; 0x0222B934
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #0x24]
 	mov r1, #0
 	bl FreeBgTilemapBuffer
@@ -519,19 +519,19 @@ _0222BAB4:
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #1
 	bl ov40_0222BC44
 	mov r0, #8
@@ -567,12 +567,12 @@ _0222BC40: .word 0x04001050
 
 	thumb_func_start ov40_0222BC44
 ov40_0222BC44: ; 0x0222BC44
-	ldr r1, _0222BC4C ; =gMain + 0x60
+	ldr r1, _0222BC4C ; =gSystem + 0x60
 	ldr r3, _0222BC50 ; =GX_SwapDisplay
 	strb r0, [r1, #9]
 	bx r3
 	.balign 4, 0
-_0222BC4C: .word gMain + 0x60
+_0222BC4C: .word gSystem + 0x60
 _0222BC50: .word GX_SwapDisplay
 	thumb_func_end ov40_0222BC44
 
@@ -670,7 +670,7 @@ ov40_0222BD04: ; 0x0222BD04
 	ldr r0, [r4, #0x28]
 	bl sub_0200398C
 	ldr r0, [r4, #0x24]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _0222BD28 ; =0x027E0000
 	ldr r1, _0222BD2C ; =0x00003FF8
 	mov r0, #1
@@ -1720,7 +1720,7 @@ ov40_0222C4F8: ; 0x0222C4F8
 	mov r1, #0x43
 	add r2, r4, #0
 	mov r3, #1
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1731,7 +1731,7 @@ ov40_0222C4F8: ; 0x0222C4F8
 	mov r1, #0x43
 	add r2, r4, #0
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1742,7 +1742,7 @@ ov40_0222C4F8: ; 0x0222C4F8
 	mov r1, #0x45
 	add r2, r4, #0
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add r0, r7, #0
 	mov r1, #3
 	bl ov40_0222DB30
@@ -1812,7 +1812,7 @@ _0222C5D6:
 	mov r1, #0x36
 	add r2, r4, #0
 	mov r3, #1
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1823,7 +1823,7 @@ _0222C5D6:
 	mov r1, #0x36
 	add r2, r4, #0
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1834,7 +1834,7 @@ _0222C5D6:
 	mov r1, #0x37
 	add r2, r4, #0
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r1, #0
 	mov r0, #0x12
 	str r1, [sp]
@@ -1891,7 +1891,7 @@ _0222C680:
 	mov r1, #0x46
 	add r2, r4, #0
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1902,7 +1902,7 @@ _0222C680:
 	mov r1, #0x46
 	add r2, r4, #0
 	mov r3, #1
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r7, #0x58]
 	mov r1, #1
 	lsl r0, r0, #0x10
@@ -1938,7 +1938,7 @@ _0222C6DA:
 	mov r1, #0x2d
 	add r2, r4, #0
 	add r3, r7, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1949,7 +1949,7 @@ _0222C6DA:
 	add r1, r5, #0
 	add r2, r4, #0
 	add r3, r7, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1972,7 +1972,7 @@ ov40_0222C710: ; 0x0222C710
 	mov r1, #0x2d
 	add r2, r5, #0
 	add r3, r6, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1983,7 +1983,7 @@ ov40_0222C710: ; 0x0222C710
 	mov r1, #1
 	add r2, r5, #0
 	add r3, r6, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -3203,7 +3203,7 @@ _0222D0A6:
 	bl _s32_div_f
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0x18
 	ldrsb r1, [r4, r1]
 	ldr r2, [sp, #0x24]
@@ -3344,7 +3344,7 @@ _0222D1CE:
 	bl _s32_div_f
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r2, #0x18
 	ldrsb r2, [r4, r2]
 	ldr r1, [r4, #0xc]
@@ -3480,7 +3480,7 @@ _0222D2E6:
 	add r1, r7, #0
 	mov r2, #0x14
 	mov r3, #2
-	bl sub_0201D494
+	bl AddTextWindowTopLeftCorner
 	add r0, r7, #0
 	mov r1, #0x6d
 	bl sub_02013910
@@ -3723,7 +3723,7 @@ _0222D504:
 	add r1, sp, #0x1c
 	mov r2, #0x14
 	mov r3, #2
-	bl sub_0201D494
+	bl AddTextWindowTopLeftCorner
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -3816,7 +3816,7 @@ _0222D5BE:
 	add r1, sp, #0xc
 	mov r2, #0x14
 	mov r3, #2
-	bl sub_0201D494
+	bl AddTextWindowTopLeftCorner
 	add r0, sp, #0xc
 	mov r1, #0x6d
 	bl sub_02013910
@@ -3902,7 +3902,7 @@ ov40_0222D66C: ; 0x0222D66C
 	add r1, sp, #0x10
 	mov r2, #0x14
 	mov r3, #2
-	bl sub_0201D494
+	bl AddTextWindowTopLeftCorner
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -4850,7 +4850,7 @@ ov40_0222DD9C: ; 0x0222DD9C
 	mov r1, #0
 	strh r1, [r0]
 	mov r0, #6
-	bl sub_0201BB68
+	bl SetBgPriority
 	add r0, r5, r4
 	bl InitWindow
 	mov r0, #0x13
@@ -4887,13 +4887,13 @@ ov40_0222DD9C: ; 0x0222DD9C
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	bl OS_WaitVBlankIntr
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 _0222DE30:
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
@@ -4926,10 +4926,10 @@ ov40_0222DE40: ; 0x0222DE40
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #6
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #8
 	str r0, [sp]
 	ldr r0, _0222DEA4 ; =0x04000050
@@ -5027,7 +5027,7 @@ ov40_0222DED0: ; 0x0222DED0
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 _0222DF54:
@@ -5066,7 +5066,7 @@ ov40_0222DF60: ; 0x0222DF60
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl String_dtor
 _0222DFA4:
@@ -5132,14 +5132,14 @@ ov40_0222DFE8: ; 0x0222DFE8
 	mov r1, #0
 	strh r1, [r0]
 	mov r0, #6
-	bl sub_0201BB68
+	bl SetBgPriority
 	add r0, r5, #0
 	mov r1, #6
 	mov r2, #0
 	bl ov40_0222C6C8
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r5, r4
 	bl InitWindow
 	mov r0, #0x13
@@ -5176,7 +5176,7 @@ ov40_0222DFE8: ; 0x0222DFE8
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 _0222E08A:
@@ -5278,7 +5278,7 @@ _0222E0D6:
 	add r2, r6, #0
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #4
 	ldrsh r1, [r5, r0]
 	mov r0, #6
@@ -5354,7 +5354,7 @@ _0222E0D6:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x2c]
 	bl String_dtor
 	ldr r0, [sp, #0x30]
@@ -5409,7 +5409,7 @@ _0222E0D6:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x38]
 	bl String_dtor
 	ldr r0, [sp, #0x3c]
@@ -5442,7 +5442,7 @@ _0222E0D6:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	ldr r0, [sp, #0x20]
@@ -5474,7 +5474,7 @@ _0222E0D6:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	b _0222E3F6
@@ -5507,7 +5507,7 @@ _0222E33C:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x44]
 	bl String_dtor
 	ldr r0, [sp, #0x48]
@@ -5550,7 +5550,7 @@ _0222E33C:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x18]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	bl String_dtor
 	ldr r0, [sp, #0x4c]
@@ -5588,7 +5588,7 @@ _0222E434:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	ldr r0, [sp, #0x14]
@@ -5620,7 +5620,7 @@ _0222E46A:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x14]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, #0
@@ -6139,7 +6139,7 @@ _0222E890:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x14]
 	bl String_dtor
 	add sp, #0x18
@@ -6262,7 +6262,7 @@ _0222E99E:
 	blt _0222E95C
 _0222E9A8:
 	ldr r0, [sp, #0x18]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -6493,7 +6493,7 @@ _0222EAC0:
 	blt _0222EAC0
 _0222EB8A:
 	ldr r0, [sp, #0x20]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -6884,7 +6884,7 @@ _0222EE7A:
 	b _0222ECEE
 _0222EEB4:
 	ldr r0, [sp, #0x50]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	bl ScrStrBufs_delete
 	add sp, #0x1fc
@@ -7020,7 +7020,7 @@ _0222EF7C:
 	blt _0222EF7C
 _0222EFCA:
 	ldr r0, [sp, #0x14]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -7479,7 +7479,7 @@ _0222F32A:
 	b _0222F19E
 _0222F36A:
 	ldr r0, [sp, #0x58]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	bl ScrStrBufs_delete
 	mov r0, #8
@@ -9182,7 +9182,7 @@ _0222FFAE:
 	add r2, r6, #0
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #4
 	ldrsh r1, [r4, r0]
 	mov r0, #6
@@ -9258,7 +9258,7 @@ _02230062:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x44]
 	bl String_dtor
 	ldr r0, [sp, #0x48]
@@ -9294,7 +9294,7 @@ _02230062:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r4, #0
@@ -9359,7 +9359,7 @@ _02230062:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x50]
 	bl String_dtor
 	ldr r0, [sp, #0x54]
@@ -9376,7 +9376,7 @@ _022301F4:
 	add r0, r5, #0
 	bl FillWindowPixelBuffer
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 _02230206:
 	ldr r0, [sp, #0x14]
 	mov r1, #4
@@ -9526,7 +9526,7 @@ _022302BA:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x14]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x38]
 	bl String_dtor
 	ldr r0, [sp, #0x34]
@@ -10041,28 +10041,28 @@ ov40_02230738: ; 0x02230738
 	push {r3, lr}
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #5
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #6
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	pop {r3, pc}
 	thumb_func_end ov40_02230738
 
@@ -10134,7 +10134,7 @@ ov40_022307DC: ; 0x022307DC
 	add r3, r2, #0
 	ldr r0, [r4, #0x14]
 	ldr r2, [r4, #0x24]
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add sp, #0x10
 	pop {r4, pc}
 	thumb_func_end ov40_022307DC
@@ -10207,7 +10207,7 @@ _0223087E:
 	mov r1, #0
 	str r1, [r4, r0]
 _02230884:
-	ldr r0, _02230934 ; =gMain + 0x60
+	ldr r0, _02230934 ; =gSystem + 0x60
 	ldrb r0, [r0, #9]
 	cmp r0, #0
 	bne _02230890
@@ -10286,7 +10286,7 @@ _02230912:
 	nop
 _0223092C: .word 0x0000415C
 _02230930: .word 0x00004168
-_02230934: .word gMain + 0x60
+_02230934: .word gSystem + 0x60
 _02230938: .word 0x000006F4
 _0223093C: .word 0x00004164
 _02230940: .word ov40_022307FC
@@ -11087,7 +11087,7 @@ ov40_02230E34: ; 0x02230E34
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r5, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -11425,7 +11425,7 @@ _02231118:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x45
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	b _02231192
 _0223117A:
 	mov r0, #0
@@ -11438,7 +11438,7 @@ _0223117A:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x37
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 _02231192:
 	mov r0, #0x6f
 	lsl r0, r0, #4
@@ -11583,7 +11583,7 @@ _022312AE:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x45
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	b _022312E6
 _022312CE:
 	mov r0, #0
@@ -11596,7 +11596,7 @@ _022312CE:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x37
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 _022312E6:
 	ldr r0, [r4, #8]
 	add r0, r0, #1
@@ -11968,7 +11968,7 @@ _022315B2:
 	bl _s32_div_f
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	lsl r1, r0, #4
 	ldr r0, [r4, #4]
 	ldr r2, [r4, #0xc]
@@ -13208,7 +13208,7 @@ _02231F6E:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r1, r4, #0
 	add r1, #0x5c
 	ldrb r1, [r1]
@@ -13268,7 +13268,7 @@ _02231FF2:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -13450,7 +13450,7 @@ _02232162:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r1, r4, #0
 	add r1, #0x5c
 	ldrb r1, [r1]
@@ -13510,7 +13510,7 @@ _022321E6:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -13693,28 +13693,28 @@ _02232356:
 	bl ov40_02230964
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #5
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #6
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -13725,7 +13725,7 @@ _02232356:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x3e
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -13736,7 +13736,7 @@ _02232356:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x3e
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -13887,13 +13887,13 @@ _022324CE:
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -13921,7 +13921,7 @@ _0223252A:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -14087,7 +14087,7 @@ _0223269C:
 _022326A6:
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -14162,7 +14162,7 @@ ov40_022326DC: ; 0x022326DC
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r4, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r6, #0x10
 	add r0, r4, r6
 	bl InitWindow
@@ -14204,7 +14204,7 @@ ov40_022326DC: ; 0x022326DC
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -14272,7 +14272,7 @@ _02232820:
 	bl sub_02026CAC
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -14358,13 +14358,13 @@ _022328CC:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x54
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #8
 	mov r1, #1
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -14386,7 +14386,7 @@ _0223290A:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -14735,7 +14735,7 @@ _02232BF2:
 	bl sub_02026CAC
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -14915,7 +14915,7 @@ _02232D70:
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -14962,13 +14962,13 @@ _02232DB2:
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -14996,7 +14996,7 @@ _02232E0E:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x66
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -15252,7 +15252,7 @@ ov40_02232FEC: ; 0x02232FEC
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -15523,7 +15523,7 @@ ov40_02233238: ; 0x02233238
 	add r0, r7, #0
 	add r2, r5, #0
 	mov r3, #6
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -15534,7 +15534,7 @@ ov40_02233238: ; 0x02233238
 	mov r1, #0x44
 	add r2, r5, #0
 	mov r3, #6
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [sp, #0x18]
 	mov r1, #0
 	bl ov40_0222DB30
@@ -16468,14 +16468,14 @@ _02233A3A:
 	ldr r0, [r5, #0x2c]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	ldr r1, [r5, #0x18]
 	add r7, r1, #0
 	mul r7, r0
 	ldr r0, [r5, #0x2c]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	ldr r1, [r5, #0x18]
 	add r2, r1, #0
 	mul r2, r0
@@ -16627,7 +16627,7 @@ _02233B88:
 	ldr r0, [r5, #0x2c]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	ldr r1, [r5, #0x18]
 	add r2, r1, #0
 	mul r2, r0
@@ -16637,7 +16637,7 @@ _02233B88:
 	ldr r0, [r5, #0x2c]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	ldr r1, [r5, #0x18]
 	add r2, r1, #0
 	mul r2, r0
@@ -16937,7 +16937,7 @@ _02233DE6:
 	bl ov40_02230738
 	mov r0, #6
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	add r0, r4, #0
 	bl ov40_02233238
 	ldr r0, [r4, #0x58]
@@ -16974,10 +16974,10 @@ _02233E42:
 	bl ov40_02230964
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -17155,10 +17155,10 @@ _02233FB2:
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0
 	str r0, [r5]
 	ldr r0, [r4, #8]
@@ -17446,28 +17446,28 @@ _02234210:
 _0223425A:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #6
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #5
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0x6f
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -17514,7 +17514,7 @@ _022342C4:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x3e
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -17525,7 +17525,7 @@ _022342C4:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x3e
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	add r0, r5, #0
 	mov r1, #2
 	bl ov40_0222BF80
@@ -17563,7 +17563,7 @@ _0223434A:
 	bl ov40_022307DC
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -17767,28 +17767,28 @@ _02234506: ; jump table
 _02234514:
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #5
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #6
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0x8e
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -17839,10 +17839,10 @@ _02234586:
 	ldr r0, [r4, #0x24]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -17929,7 +17929,7 @@ _0223467E:
 	ldr r0, _022347FC ; =0x0000057D
 	bne _022346B2
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r3, [sp, #4]
 	add r0, r4, #0
 	ldr r2, [r3, #0xc]
@@ -17942,7 +17942,7 @@ _0223467E:
 	b _022347F2
 _022346B2:
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	add r0, r4, #0
 	mov r1, #0x24
 	bl ov40_0222FB28
@@ -18020,7 +18020,7 @@ _0223473E:
 	bl ov40_0222BC54
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	bl ov40_02235994
 _02234776:
 	add r0, r4, #0
@@ -18106,28 +18106,28 @@ ov40_0223480C: ; 0x0223480C
 _02234826:
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #5
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #6
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0x8e
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -18244,7 +18244,7 @@ _02234946:
 	bl ov40_0222BC54
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	bl ov40_02235994
 _02234984:
 	add r0, r5, #0
@@ -18366,13 +18366,13 @@ _02234A60:
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x6d
 	str r0, [sp]
 	ldr r0, _02234BB0 ; =ov40_02245708
@@ -18759,28 +18759,28 @@ ov40_02234D94: ; 0x02234D94
 _02234DAE:
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #5
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #6
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0x8e
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -18895,7 +18895,7 @@ _02234EC8:
 	bl ov40_0222BC54
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	bl ov40_02235994
 _02234F06:
 	add r0, r5, #0
@@ -19044,7 +19044,7 @@ _02235028:
 	ldr r0, _02235120 ; =0x0000057D
 	bne _02235072
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r3, [sp]
 	add r0, r4, #0
 	ldr r2, [r3, #0xc]
@@ -19066,7 +19066,7 @@ _02235028:
 	b _02235118
 _02235072:
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _02235124 ; =0x00000577
 	bl PlaySE
 	ldr r0, [r4, #8]
@@ -19082,7 +19082,7 @@ _02235086:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x6f
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -19204,10 +19204,10 @@ _02235146:
 	bl ov40_022307DC
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -19466,7 +19466,7 @@ _022353A8:
 	bl ov40_0222BC54
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0x8a
 	mov r1, #0
 	lsl r0, r0, #2
@@ -19581,7 +19581,7 @@ _022354A4:
 	bl ov40_0222BC54
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0x8a
 	mov r1, #0
 	lsl r0, r0, #2
@@ -19669,7 +19669,7 @@ _02235542:
 	bl ov40_022307DC
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -19830,7 +19830,7 @@ _022356B4:
 	bl ov40_0222BC54
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0x8a
 	mov r1, #0
 	lsl r0, r0, #2
@@ -19888,7 +19888,7 @@ _02235702:
 	bl ov40_022307DC
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -20053,7 +20053,7 @@ ov40_02235868: ; 0x02235868
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -20111,7 +20111,7 @@ _02235918:
 	ldr r0, [r4, #0x28]
 	bl sub_0200398C
 	ldr r0, [r4, #0x24]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _02235938 ; =0x027E0000
 	ldr r1, _0223593C ; =0x00003FF8
 	mov r0, #1
@@ -20453,7 +20453,7 @@ _02235B66:
 	ldr r0, [sp, #0x18]
 	mov r1, #1
 	add r2, r5, #0
-	bl sub_0200C528
+	bl BufferECWord
 	ldr r0, [sp, #0x18]
 	ldr r2, [sp, #0x1c]
 	add r1, r7, #0
@@ -20495,7 +20495,7 @@ _02235C18:
 	blo _02235C18
 _02235C54:
 	ldr r0, [sp, #0x20]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl String_dtor
 	ldr r0, [sp, #0x1c]
@@ -20589,7 +20589,7 @@ _02235C96:
 	ldr r0, [sp, #0x18]
 	mov r1, #1
 	add r2, r5, #0
-	bl sub_0200C528
+	bl BufferECWord
 	ldr r0, [sp, #0x18]
 	ldr r2, [sp, #0x1c]
 	add r1, r7, #0
@@ -20631,7 +20631,7 @@ _02235D48:
 	blo _02235D48
 _02235D84:
 	ldr r0, [sp, #0x20]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl String_dtor
 	ldr r0, [sp, #0x1c]
@@ -21066,7 +21066,7 @@ _022360BE:
 	bl AddTextPrinterParameterized2
 _022360DA:
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x2c]
 	bl String_dtor
 	ldr r0, [sp, #0x1c]
@@ -22196,7 +22196,7 @@ _02236980:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x4f
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add r0, r5, #0
 	bl ov40_02236F38
 	add r0, r5, #0
@@ -22238,7 +22238,7 @@ _022369F6:
 	beq _02236A32
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r5, #0
 	mov r1, #6
 	bl ov40_0222BF80
@@ -22327,7 +22327,7 @@ _02236AAE:
 	bl sub_020879E0
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -22460,7 +22460,7 @@ _02236BCE:
 	ldr r0, _02236C5C ; =0x0000057D
 	bne _02236C02
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r3, [sp, #0xc]
 	add r0, r4, #0
 	ldr r2, [r3, #0xc]
@@ -22473,7 +22473,7 @@ _02236BCE:
 	b _02236C50
 _02236C02:
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	add r0, r4, #0
 	mov r1, #0x25
 	bl ov40_0222FB28
@@ -22541,7 +22541,7 @@ _02236C80:
 	bl ov40_02236FE0
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -22574,7 +22574,7 @@ _02236C9E:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x4d
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -22851,7 +22851,7 @@ _02236ED2:
 	lsr r1, r1, #0x18
 	bl FillWindowPixelBuffer
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldrb r1, [r5, #2]
 	ldrb r0, [r5, #3]
 	add r4, #0x10
@@ -22933,7 +22933,7 @@ _02236F50:
 	mov r1, #0
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x18]
 	bl String_dtor
 	ldrb r1, [r5, #2]
@@ -23025,7 +23025,7 @@ ov40_02237030: ; 0x02237030
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #0x10
@@ -23106,7 +23106,7 @@ ov40_0223707C: ; 0x0223707C
 	mov r0, #0x75
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x10]
 	bl String_dtor
 	add r0, r6, #0
@@ -23156,7 +23156,7 @@ ov40_02237144: ; 0x02237144
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #0x10
@@ -23183,7 +23183,7 @@ _022371B2:
 	lsr r1, r1, #0x18
 	bl FillWindowPixelBuffer
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r6, r6, #1
 	add r4, #0x10
 	add r5, r5, #4
@@ -23227,7 +23227,7 @@ ov40_022371E4: ; 0x022371E4
 	cmp r6, #0
 	bne _02237214
 	add r0, r4, r7
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x1fc
 	add sp, #0x14
 	pop {r3, r4, r5, r6, r7, pc}
@@ -23272,7 +23272,7 @@ _02237238:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r4, r7
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	bl String_dtor
 	add sp, #0x1fc
@@ -23704,7 +23704,7 @@ _022375AC:
 	add r1, r2, r1
 	ldr r2, [r5, #0x24]
 	add r1, #0x8a
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -23719,7 +23719,7 @@ _022375AC:
 	add r1, r2, r1
 	ldr r2, [r5, #0x24]
 	add r1, #0x8c
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0x40
@@ -23806,7 +23806,7 @@ _02237684:
 	add r1, r2, r1
 	ldr r2, [r5, #0x24]
 	add r1, #0x8a
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -23821,7 +23821,7 @@ _02237684:
 	add r1, r2, r1
 	ldr r2, [r5, #0x24]
 	add r1, #0x8c
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0x40
@@ -23894,7 +23894,7 @@ _02237718:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x3e
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -23905,13 +23905,13 @@ _02237718:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x4d
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #8
 	mov r1, #1
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -24181,7 +24181,7 @@ _02237994:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x3e
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -24192,7 +24192,7 @@ _02237994:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x4f
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add r0, r5, #0
 	bl ov40_02236F38
 	add r0, r5, #0
@@ -24206,13 +24206,13 @@ _02237994:
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -24236,7 +24236,7 @@ _02237A1E:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, _02237AA4 ; =0x04000050
 	mov r1, #0
 	strh r1, [r0]
@@ -24364,7 +24364,7 @@ _02237AE6:
 	mov r1, #0
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldrb r1, [r5, #2]
 	ldrb r0, [r5, #3]
 	mul r0, r1
@@ -24422,7 +24422,7 @@ ov40_02237B7C: ; 0x02237B7C
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -24480,7 +24480,7 @@ ov40_02237BD4: ; 0x02237BD4
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r4, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	bl String_dtor
 	add sp, #0x14
@@ -24609,7 +24609,7 @@ _02237D16:
 	bl String_dtor
 _02237D3C:
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldrb r1, [r5, #2]
 	ldrb r0, [r5, #3]
 	add r7, r7, #1
@@ -24745,7 +24745,7 @@ _02237E1A:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x3e
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -24756,7 +24756,7 @@ _02237E1A:
 	ldr r0, [r4, #0x14]
 	ldr r2, [r4, #0x24]
 	add r3, r1, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -24767,7 +24767,7 @@ _02237E1A:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x4e
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -24840,7 +24840,7 @@ _02237F06:
 	ldr r0, _0223812C ; =0x0000057D
 	bne _02237F9A
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r3, [sp, #0x10]
 	add r0, r4, #0
 	ldr r2, [r3, #0xc]
@@ -24892,7 +24892,7 @@ _02237F06:
 	b _02238272
 _02237F9A:
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _02238134 ; =0x00000577
 	bl PlaySE
 	ldr r0, [r4, #8]
@@ -25003,7 +25003,7 @@ _02238084:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -25014,7 +25014,7 @@ _02238084:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x4f
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -25048,7 +25048,7 @@ _022380B4:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	mov r1, #3
 	bl ov40_0222BF80
@@ -25152,7 +25152,7 @@ _0223817E:
 	bl ov40_02237AC0
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -25502,7 +25502,7 @@ _022384B4:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x4f
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -25526,7 +25526,7 @@ _022384EA:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r1, _02238548 ; =0x00000113
 	add r0, r5, #0
 	bl ov40_02237030
@@ -25695,7 +25695,7 @@ _02238648:
 	bl ov40_02230964
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -25706,13 +25706,13 @@ _02238648:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x4b
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #8
 	mov r1, #1
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -25741,7 +25741,7 @@ _022386DE:
 	bl ov40_02237BD4
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
@@ -25962,7 +25962,7 @@ _022388BE:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x3e
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -25973,7 +25973,7 @@ _022388BE:
 	ldr r0, [r5, #0x14]
 	ldr r2, [r5, #0x24]
 	add r3, r1, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -25984,10 +25984,10 @@ _022388BE:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x4e
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -26109,7 +26109,7 @@ _02238A10:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r5, #0
 	mov r1, #5
 	bl ov40_0222BF80
@@ -26228,7 +26228,7 @@ _02238AD6:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x3e
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -26239,7 +26239,7 @@ _02238AD6:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x50
 	mov r3, #3
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -26266,7 +26266,7 @@ _02238B52:
 	bl ov40_02237B7C
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -26353,7 +26353,7 @@ _02238C16:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x3e
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -26364,7 +26364,7 @@ _02238C16:
 	ldr r0, [r5, #0x14]
 	ldr r2, [r5, #0x24]
 	add r3, r1, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -27287,7 +27287,7 @@ _02239358:
 	add r2, r7, #0
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
 	bl String_dtor
 	ldr r0, [sp, #0x18]
@@ -27429,7 +27429,7 @@ _022394B4:
 	add r3, r1, #0
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x20]
 	bl String_dtor
 	ldr r0, [sp, #0x18]
@@ -27558,7 +27558,7 @@ _022395CE:
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	add r0, #0x24
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r4, #0
@@ -27592,7 +27592,7 @@ _0223961A:
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	add r0, #0x34
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
 	bl String_dtor
 	ldr r0, _022397B0 ; =0x0000088C
@@ -27733,7 +27733,7 @@ _0223973A:
 	bl AddTextPrinterParameterized2
 	add r4, #0x34
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
 	bl String_dtor
 	ldr r0, [sp, #0x1c]
@@ -28143,28 +28143,28 @@ _02239ACC:
 	bl ov40_02230964
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #5
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #6
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	add r0, r5, #0
 	mov r1, #0
 	bl ov40_0222FB90
@@ -28273,7 +28273,7 @@ _02239BEC:
 	bne _02239C2A
 	ldr r0, _02239ED4 ; =0x0000057D
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	add r0, r4, #0
 	bl ov40_0222DFB0
 	ldr r3, [sp, #4]
@@ -28362,7 +28362,7 @@ _02239C2A:
 	str r0, [r5, r1]
 	ldr r0, _02239ED4 ; =0x0000057D
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -28394,7 +28394,7 @@ _02239CF6:
 	bne _02239D34
 	ldr r0, _02239ED4 ; =0x0000057D
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r3, [sp, #4]
 	add r0, r4, #0
 	ldr r2, [r3, #0xc]
@@ -28472,7 +28472,7 @@ _02239D7A:
 _02239DA6:
 	ldr r0, _02239ED4 ; =0x0000057D
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _02239EF8 ; =0x00000577
 	bl PlaySE
 	mov r0, #0xff
@@ -28635,7 +28635,7 @@ _02239F14:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x3e
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -28646,7 +28646,7 @@ _02239F14:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x3e
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -28657,7 +28657,7 @@ _02239F14:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x21
 	mov r3, #3
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -28668,7 +28668,7 @@ _02239F14:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x22
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add r0, r5, #0
 	bl ov40_02239418
 	add r0, r5, #0
@@ -28693,7 +28693,7 @@ _02239F14:
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -28715,7 +28715,7 @@ _02239FC0:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -28830,7 +28830,7 @@ _0223A0B8:
 	bl sub_020879E0
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -29466,7 +29466,7 @@ _0223A602:
 	bl AddTextPrinterParameterized2
 	ldr r0, _0223A638 ; =0x000008A4
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	add sp, #0x20
@@ -29625,7 +29625,7 @@ _0223A75A:
 	ldr r0, _0223A81C ; =0x0000057D
 	bne _0223A794
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r3, [sp, #4]
 	add r0, r4, #0
 	ldr r2, [r3, #0xc]
@@ -29641,7 +29641,7 @@ _0223A75A:
 	b _0223A7CC
 _0223A794:
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #0xff
 	ldr r1, _0223A818 ; =0x00002038
 	str r0, [r4, #8]
@@ -29765,7 +29765,7 @@ ov40_0223A874: ; 0x0223A874
 _0223A88E:
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -29808,7 +29808,7 @@ _0223A8CC:
 	bl ov40_0223A510
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -29865,7 +29865,7 @@ _0223A944: ; jump table
 _0223A954:
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -29992,11 +29992,11 @@ _0223AA5C:
 	ldr r0, _0223AC14 ; =0x0000057D
 	bne _0223AA76
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	b _0223AA82
 _0223AA76:
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _0223AC18 ; =0x00000577
 	bl PlaySE
 _0223AA82:
@@ -30209,7 +30209,7 @@ _0223AC3C:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x54
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r2, _0223ACCC ; =0x00002028
 	add r0, r5, #0
 	ldr r2, [r4, r2]
@@ -30243,7 +30243,7 @@ _0223AC9A:
 	bl ov40_0223CD58
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -30292,7 +30292,7 @@ _0223ACF8:
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -30372,7 +30372,7 @@ _0223AD9A:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x3e
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -30383,7 +30383,7 @@ _0223AD9A:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x3e
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	add r0, r4, #0
 	mov r1, #1
 	bl ov40_02230964
@@ -30440,7 +30440,7 @@ _0223AE1E:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x50
 	mov r3, #3
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 _0223AE5A:
 	add r0, r4, #0
 	mov r1, #0
@@ -30455,7 +30455,7 @@ _0223AE5A:
 	ldr r2, [r4, #0x24]
 	mov r1, #6
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -30490,7 +30490,7 @@ _0223AEB0:
 _0223AEBC:
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -30590,7 +30590,7 @@ _0223AF64:
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -30677,7 +30677,7 @@ _0223B020:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x3e
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -30688,7 +30688,7 @@ _0223B020:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x3e
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	add r0, r4, #0
 	mov r1, #1
 	bl ov40_02230964
@@ -30735,7 +30735,7 @@ _0223B092:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x50
 	mov r3, #3
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 _0223B0C2:
 	add r0, r4, #0
 	mov r1, #0
@@ -30750,7 +30750,7 @@ _0223B0C2:
 	ldr r2, [r4, #0x24]
 	mov r1, #6
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -30785,7 +30785,7 @@ _0223B118:
 _0223B124:
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -30866,7 +30866,7 @@ _0223B1A6:
 	bl sub_02026CAC
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -31028,7 +31028,7 @@ _0223B31A:
 	add r1, sp, #0x18
 	mov r2, #0x14
 	mov r3, #2
-	bl sub_0201D494
+	bl AddTextWindowTopLeftCorner
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -31468,28 +31468,28 @@ _0223B65A:
 _0223B6A4:
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #5
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #6
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	add r0, r5, #0
 	mov r1, #0
 	bl ov40_0222FB90
@@ -31697,7 +31697,7 @@ _0223B87C:
 	ldr r0, _0223BA64 ; =0x0000057D
 	bne _0223B8B0
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r3, [sp, #4]
 	add r0, r4, #0
 	ldr r2, [r3, #0xc]
@@ -31710,7 +31710,7 @@ _0223B87C:
 	b _0223BA58
 _0223B8B0:
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _0223BA68 ; =0x00000577
 	bl PlaySE
 	ldr r0, _0223BA6C ; =0x00004138
@@ -31964,7 +31964,7 @@ ov40_0223BA70: ; 0x0223BA70
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r6, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
 	bl String_dtor
 	add r6, r4, #0
@@ -32010,7 +32010,7 @@ ov40_0223BA70: ; 0x0223BA70
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r6, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	bl String_dtor
 	ldr r0, _0223BB70 ; =0x0000202C
@@ -32087,7 +32087,7 @@ _0223BBA2:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x3e
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -32098,7 +32098,7 @@ _0223BBA2:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x3e
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	add r0, r5, #0
 	mov r1, #4
 	mov r2, #3
@@ -32109,7 +32109,7 @@ _0223BBA2:
 	bl ov40_022307DC
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -32118,7 +32118,7 @@ _0223BBA2:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r5, #0
 	mov r1, #1
 	bl ov40_0223B4BC
@@ -32196,7 +32196,7 @@ _0223BCCE:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r5, #0
 	mov r1, #1
 	bl ov40_0223D1AC
@@ -32739,13 +32739,13 @@ _0223C15C:
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -32774,7 +32774,7 @@ _0223C1BE:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -32960,7 +32960,7 @@ _0223C364:
 _0223C370:
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -33162,7 +33162,7 @@ _0223C4F8:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x3e
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -33173,7 +33173,7 @@ _0223C4F8:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x3e
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	add r0, r4, #0
 	mov r1, #6
 	mov r2, #7
@@ -33183,7 +33183,7 @@ _0223C4F8:
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x45
 	lsl r0, r0, #2
 	add r1, r4, #0
@@ -33285,13 +33285,13 @@ _0223C5E0:
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -33320,7 +33320,7 @@ _0223C642:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -33489,7 +33489,7 @@ _0223C7CE:
 	bl AddTextPrinterParameterized2
 	ldr r0, _0223C804 ; =0x000008A4
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	add sp, #0x1c
@@ -33577,7 +33577,7 @@ _0223C880:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -33648,7 +33648,7 @@ _0223C936:
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -33742,7 +33742,7 @@ _0223CA0A:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x3e
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -33753,7 +33753,7 @@ _0223CA0A:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x3e
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	add r0, r4, #0
 	mov r1, #1
 	bl ov40_02230964
@@ -33800,7 +33800,7 @@ _0223CA7C:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x50
 	mov r3, #3
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 _0223CAAC:
 	add r0, r4, #0
 	mov r1, #0
@@ -33815,7 +33815,7 @@ _0223CAAC:
 	ldr r2, [r4, #0x24]
 	mov r1, #6
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -33850,7 +33850,7 @@ _0223CB02:
 _0223CB0E:
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -33941,7 +33941,7 @@ _0223CBA2:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -34085,7 +34085,7 @@ ov40_0223CCBC: ; 0x0223CCBC
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -34177,7 +34177,7 @@ ov40_0223CD58: ; 0x0223CD58
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r6, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r4, #0xa4
 	add r0, r4, #0
 	bl InitWindow
@@ -34219,7 +34219,7 @@ ov40_0223CD58: ; 0x0223CD58
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -36152,7 +36152,7 @@ _0223DC94:
 	add r3, r1, #0
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	ldr r0, [sp, #0x18]
@@ -36229,7 +36229,7 @@ _0223DD38:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r6, r7
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #0x10
@@ -36286,7 +36286,7 @@ _0223DDB0:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r4, r7
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	bl String_dtor
 	add sp, #0x1fc
@@ -36383,7 +36383,7 @@ _0223DE84:
 	bl AddTextPrinterParameterized2
 	ldr r0, _0223DEB0 ; =0x00000664
 	add r0, r7, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x14]
 	bl String_dtor
 	add sp, #0x18
@@ -36428,7 +36428,7 @@ _0223DED2:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #0x10
@@ -36546,7 +36546,7 @@ _0223DFC6:
 	add r3, r1, #0
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl String_dtor
 	add r6, r6, #1
@@ -36679,7 +36679,7 @@ ov40_0223E0A4: ; 0x0223E0A4
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r4, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
 	bl String_dtor
 	add r6, #0xc0
@@ -36724,7 +36724,7 @@ ov40_0223E0A4: ; 0x0223E0A4
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r4, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	bl String_dtor
 	ldr r0, _0223E18C ; =0x00000798
@@ -36770,7 +36770,7 @@ _0223E1A8:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x3e
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -36781,7 +36781,7 @@ _0223E1A8:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x3e
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	add r0, r5, #0
 	mov r1, #0x38
 	mov r2, #3
@@ -36795,7 +36795,7 @@ _0223E1A8:
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r5, #0
 	bl ov40_02242110
 	add r0, r5, #0
@@ -36880,7 +36880,7 @@ _0223E252:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -37516,7 +37516,7 @@ _0223E7F4:
 	bl AddTextPrinterParameterized2
 _0223E810:
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x2c]
 	bl String_dtor
 	ldr r0, [sp, #0x1c]
@@ -38597,7 +38597,7 @@ _0223F0B2:
 	ldr r0, _0223F150 ; =0x0000057D
 	bne _0223F0E6
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r3, [sp, #4]
 	add r0, r4, #0
 	ldr r2, [r3, #0xc]
@@ -38613,7 +38613,7 @@ _0223F0B2:
 	b _0223F148
 _0223F0E6:
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #0x51
 	mov r1, #0x76
 	lsl r0, r0, #4
@@ -38805,7 +38805,7 @@ _0223F230:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r5, #0
 	bl ov40_0223E0A4
 	add r0, r5, #0
@@ -38886,7 +38886,7 @@ _0223F31C:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r5, #0
 	mov r1, #1
 	bl ov40_0223D830
@@ -39205,7 +39205,7 @@ _0223F5B2:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -39248,7 +39248,7 @@ _0223F614:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -39380,13 +39380,13 @@ _0223F73C:
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -39415,7 +39415,7 @@ _0223F7A6:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -39525,7 +39525,7 @@ _0223F896:
 	bl sub_02026CAC
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -39688,7 +39688,7 @@ _0223F9F6:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -39763,7 +39763,7 @@ _0223FA9C:
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -39815,7 +39815,7 @@ _0223FB12:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x3e
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -39826,7 +39826,7 @@ _0223FB12:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x3e
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	add r0, r4, #0
 	mov r1, #1
 	bl ov40_02230964
@@ -39872,7 +39872,7 @@ _0223FB8E:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x50
 	mov r3, #3
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 _0223FBBA:
 	add r0, r4, #0
 	mov r1, #0
@@ -39887,7 +39887,7 @@ _0223FBBA:
 	ldr r2, [r4, #0x24]
 	mov r1, #6
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -39922,7 +39922,7 @@ _0223FC12:
 _0223FC1C:
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -40275,7 +40275,7 @@ _0223FEA6:
 	ldr r0, _0223FF7C ; =0x0000057D
 	bne _0223FEE0
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	add r0, r4, #0
 	bl ov40_0222DFB0
 	ldr r3, [sp, #4]
@@ -40293,7 +40293,7 @@ _0223FEA6:
 	b _0223FF18
 _0223FEE0:
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #0xff
 	str r0, [r4, #8]
 	ldr r0, _0223FF70 ; =0x000004B8
@@ -40437,7 +40437,7 @@ _0223FFEC:
 	ldr r0, [r4, #0x14]
 	ldr r2, [r4, #0x24]
 	mov r1, #0x3e
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -40448,7 +40448,7 @@ _0223FFEC:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x3e
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	add r0, r4, #0
 	mov r1, #6
 	mov r2, #7
@@ -40458,7 +40458,7 @@ _0223FFEC:
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	bl ov40_02242110
 	add r0, r4, #0
@@ -40569,13 +40569,13 @@ _022400F8:
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -40604,7 +40604,7 @@ _0224015A:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -40783,28 +40783,28 @@ _02240304:
 	bl ov40_02230964
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #5
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #6
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -41328,7 +41328,7 @@ _02240772:
 	ldr r0, _02240844 ; =0x0000057D
 	bne _022407BA
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _02240848 ; =0x04000050
 	mov r1, #0
 	strh r1, [r0]
@@ -41350,7 +41350,7 @@ _02240772:
 	b _022407EE
 _022407BA:
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #0xff
 	str r0, [r4, #8]
 	ldr r0, _02240840 ; =0x000004B8
@@ -41582,7 +41582,7 @@ _0224096C:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x3e
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -41593,35 +41593,35 @@ _0224096C:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x3e
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	add r0, r4, #0
 	mov r1, #6
 	mov r2, #7
 	bl ov40_022307DC
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #5
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #6
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	add r0, r4, #0
 	bl ov40_0224085C
 	add r0, r4, #0
@@ -41690,13 +41690,13 @@ _02240A4C:
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -41725,7 +41725,7 @@ _02240AB4:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -41846,7 +41846,7 @@ _02240BB6:
 	bl sub_02026CAC
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -42076,7 +42076,7 @@ _02240DCE:
 	add r1, sp, #0x18
 	mov r2, #0x14
 	mov r3, #2
-	bl sub_0201D494
+	bl AddTextWindowTopLeftCorner
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -42207,7 +42207,7 @@ _02240EE4:
 	bl AddTextPrinterParameterized2
 	ldr r0, _02240F1C ; =0x000008A4
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	add sp, #0x1c
@@ -42339,7 +42339,7 @@ _02241014:
 	bl AddTextPrinterParameterized2
 	ldr r0, _0224104C ; =0x000008A4
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	add sp, #0x20
@@ -42535,7 +42535,7 @@ _022411B4:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -42608,7 +42608,7 @@ _0224125A:
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -42926,7 +42926,7 @@ _022414B4:
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -42940,7 +42940,7 @@ _022414B4:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x3e
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -42951,7 +42951,7 @@ _022414B4:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x3e
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	add r0, r4, #0
 	mov r1, #0
 	bl ov40_0222FB90
@@ -42975,28 +42975,28 @@ _02241560:
 _02241562:
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #5
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #6
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0x6d
 	str r0, [sp]
 	ldr r0, _02241780 ; =ov40_022456B4
@@ -43043,7 +43043,7 @@ _022415E8:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x3e
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -43054,7 +43054,7 @@ _022415E8:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x3e
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	add r0, r4, #0
 	mov r1, #1
 	bl ov40_02230964
@@ -43100,7 +43100,7 @@ _02241660:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x50
 	mov r3, #3
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 _0224168C:
 	add r0, r4, #0
 	mov r1, #0
@@ -43115,7 +43115,7 @@ _0224168C:
 	ldr r2, [r4, #0x24]
 	mov r1, #6
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -43147,13 +43147,13 @@ _022416DC:
 _022416E6:
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -43348,7 +43348,7 @@ _02241884:
 	bne _022418D4
 	ldr r0, _02241940 ; =0x0000057D
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r3, [sp, #8]
 	add r0, r4, #0
 	ldr r2, [r3, #0xc]
@@ -43378,7 +43378,7 @@ _022418D4:
 	bl ov40_02242E4C
 	ldr r0, _02241940 ; =0x0000057D
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _02241944 ; =0x00000577
 	bl PlaySE
 	ldr r0, [r4, #8]
@@ -43578,7 +43578,7 @@ ov40_02241A54: ; 0x02241A54
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -43673,7 +43673,7 @@ ov40_02241AFC: ; 0x02241AFC
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r4, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r6, #0x10
 	add r0, r4, r6
 	bl InitWindow
@@ -43715,7 +43715,7 @@ ov40_02241AFC: ; 0x02241AFC
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -44645,7 +44645,7 @@ _02242338:
 _02242342:
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -44715,7 +44715,7 @@ _022423B8:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -44840,7 +44840,7 @@ _022424A8:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x54
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r2, #0x72
 	lsl r2, r2, #2
 	ldr r2, [r4, r2]
@@ -44875,7 +44875,7 @@ _02242508:
 	bl ov40_02241AFC
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -44909,7 +44909,7 @@ ov40_0224253C: ; 0x0224253C
 _02242556:
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -44952,7 +44952,7 @@ _02242594:
 	bl ov40_02240F24
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -45008,7 +45008,7 @@ _02242608: ; jump table
 _02242618:
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -45136,11 +45136,11 @@ _02242722:
 	ldr r0, _022428BC ; =0x0000057D
 	bne _0224273C
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	b _02242748
 _0224273C:
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _022428C0 ; =0x00000577
 	bl PlaySE
 _02242748:
@@ -45342,7 +45342,7 @@ _022428FC:
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -45416,7 +45416,7 @@ _02242992:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x3e
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -45427,7 +45427,7 @@ _02242992:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x3e
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	add r0, r4, #0
 	mov r1, #1
 	bl ov40_02230964
@@ -45482,7 +45482,7 @@ _02242A18:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x50
 	mov r3, #3
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 _02242A4E:
 	add r0, r4, #0
 	mov r1, #0
@@ -45497,7 +45497,7 @@ _02242A4E:
 	ldr r2, [r4, #0x24]
 	mov r1, #6
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -45532,7 +45532,7 @@ _02242AA6:
 _02242AB0:
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -45596,7 +45596,7 @@ _02242B14:
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -45671,7 +45671,7 @@ _02242BB8:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x3e
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -45682,7 +45682,7 @@ _02242BB8:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x3e
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	add r0, r4, #0
 	mov r1, #1
 	bl ov40_02230964
@@ -45728,7 +45728,7 @@ _02242C2C:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x50
 	mov r3, #3
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 _02242C58:
 	add r0, r4, #0
 	mov r1, #0
@@ -45743,7 +45743,7 @@ _02242C58:
 	ldr r2, [r4, #0x24]
 	mov r1, #6
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -45778,7 +45778,7 @@ _02242CB0:
 _02242CBA:
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -46101,7 +46101,7 @@ ov40_02242E4C: ; 0x02242E4C
 	bl AddTextPrinterParameterized2
 	ldr r0, _02242FA4 ; =0x000008A4
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x18]
 	bl String_dtor
 	ldr r0, [sp, #0x1c]
@@ -47551,7 +47551,7 @@ ov40_02243A28: ; 0x02243A28
 	mov r1, #0x36
 	add r2, r7, #0
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -47562,7 +47562,7 @@ ov40_02243A28: ; 0x02243A28
 	mov r1, #0x2b
 	add r2, r7, #0
 	mov r3, #3
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	str r4, [sp]
 	mov r0, #0x2c
 	str r0, [sp, #4]
@@ -48750,7 +48750,7 @@ _02244372:
 	bl AddTextPrinterParameterized2
 	ldr r0, _022443AC ; =0x000008A4
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #0x18
@@ -48811,7 +48811,7 @@ ov40_022443B4: ; 0x022443B4
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r6, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r4, #0x20
 	add r0, r4, #0
 	bl InitWindow
@@ -48853,7 +48853,7 @@ ov40_022443B4: ; 0x022443B4
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -48982,28 +48982,28 @@ _02244540:
 _0224458A:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #5
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #6
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -49014,7 +49014,7 @@ _0224458A:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x3e
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -49025,7 +49025,7 @@ _0224458A:
 	ldr r2, [r5, #0x24]
 	mov r1, #0x3e
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	add r0, r5, #0
 	mov r1, #1
 	bl ov40_02230964
@@ -49092,19 +49092,19 @@ _0224465A:
 	ldr r2, [r4, #0x24]
 	mov r1, #0x54
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #8
 	mov r1, #1
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -49131,7 +49131,7 @@ _022446A6:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]

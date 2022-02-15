@@ -771,7 +771,7 @@ sub_02018998: ; 0x02018998
 	bl FreeToHeap
 	ldrb r1, [r4, #0x18]
 	ldr r0, [r4, #0x1c]
-	bl sub_0201D54C
+	bl WindowArray_dtor
 	pop {r4, pc}
 	thumb_func_end sub_02018998
 
@@ -1199,7 +1199,7 @@ _02018CC8:
 	bl AddTextPrinterParameterized2
 	ldr r0, [r5, #0x1c]
 	add r0, r0, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldrb r0, [r5, #0x18]
 	add r7, r7, #1
 	add r6, #8
@@ -1276,7 +1276,7 @@ _02018D50:
 	bl AddTextPrinterParameterized2
 	ldr r0, [r5, #0x1c]
 	add r0, r0, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -1297,7 +1297,7 @@ sub_02018D90: ; 0x02018D90
 _02018DA0:
 	ldr r0, [r5, #0x1c]
 	add r0, r0, r4
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	ldrb r0, [r5, #0x18]
 	add r6, r6, #1
 	add r4, #0x10
@@ -1417,7 +1417,7 @@ _02018E88: .word 0x000005DC
 sub_02018E8C: ; 0x02018E8C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	ldr r0, _02018FDC ; =gMain
+	ldr r0, _02018FDC ; =gSystem
 	ldr r1, [r0, #0x48]
 	ldr r0, _02018FE0 ; =0x00000CF3
 	tst r0, r1
@@ -1431,7 +1431,7 @@ sub_02018E8C: ; 0x02018E8C
 	add r0, #0x27
 	strb r1, [r0]
 _02018EAA:
-	ldr r0, _02018FDC ; =gMain
+	ldr r0, _02018FDC ; =gSystem
 	mov r1, #2
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -1525,7 +1525,7 @@ _02018F48:
 	add r0, r5, #0
 	bl sub_02018DF4
 _02018F6E:
-	ldr r0, _02018FDC ; =gMain
+	ldr r0, _02018FDC ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #0x80
 	tst r0, r1
@@ -1580,7 +1580,7 @@ _02018FD6:
 	mvn r0, r0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02018FDC: .word gMain
+_02018FDC: .word gSystem
 _02018FE0: .word 0x00000CF3
 _02018FE4: .word 0x000005DC
 	thumb_func_end sub_02018E8C

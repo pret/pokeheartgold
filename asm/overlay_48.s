@@ -114,7 +114,7 @@ ov48_02258800: ; 0x02258800
 	ldr r0, _0225891C ; =ov48_02259090
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -247,7 +247,7 @@ ov48_022589FC: ; 0x022589FC
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	ldr r0, _02258A74 ; =0x0000C40C
 	add r1, r4, #0
 	add r0, r4, r0
@@ -308,7 +308,7 @@ ov48_02258A80: ; 0x02258A80
 	ldr r3, [sp, #0x10]
 	mov r1, #0x12
 	str r0, [sp, #0x24]
-	bl sub_02007CAC
+	bl GfGfxLoader_LoadFromOpenNarc_GetSizeOut
 	str r0, [sp, #0x20]
 	ldr r0, [sp, #0x2c]
 	mov r1, #6
@@ -349,13 +349,13 @@ _02258AEE:
 	ldr r0, [sp, #0x20]
 	bl FreeToHeap
 	mov r7, #1
-	bl sub_02091664
+	bl LocationGmmDatCountGet
 	str r0, [sp, #0x18]
 	cmp r0, #1
 	ble _02258B72
 _02258B00:
 	add r0, r7, #0
-	bl sub_020916F8
+	bl LocationGmmDatGetEarthPlaceDatId
 	add r1, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -364,7 +364,7 @@ _02258B00:
 	ldr r0, [sp, #0x24]
 	ldr r3, [sp, #0x10]
 	mov r2, #0
-	bl sub_02007CAC
+	bl GfGfxLoader_LoadFromOpenNarc_GetSizeOut
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #0x28]
 	mov r6, #1
@@ -377,7 +377,7 @@ _02258B00:
 	ble _02258B64
 _02258B2E:
 	add r0, r7, #0
-	bl sub_020916DC
+	bl LocationGmmDatGetCountryMsgNo
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp]
@@ -486,7 +486,7 @@ ov48_02258BF4: ; 0x02258BF4
 	sub sp, #0x24
 	add r4, r1, #0
 	ldr r1, [r4, #4]
-	ldr r3, _02258C68 ; =_021094DC
+	ldr r3, _02258C68 ; =FX_SinCosTable_
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	asr r1, r1, #4
@@ -499,7 +499,7 @@ ov48_02258BF4: ; 0x02258BF4
 	add r5, r0, #0
 	bl MTX_RotY33_
 	ldr r0, [r4]
-	ldr r3, _02258C68 ; =_021094DC
+	ldr r3, _02258C68 ; =FX_SinCosTable_
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	asr r0, r0, #4
@@ -516,7 +516,7 @@ ov48_02258BF4: ; 0x02258BF4
 	add r2, r5, #0
 	bl MTX_Concat33
 	ldr r0, [r4, #8]
-	ldr r3, _02258C68 ; =_021094DC
+	ldr r3, _02258C68 ; =FX_SinCosTable_
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	asr r0, r0, #4
@@ -535,7 +535,7 @@ ov48_02258BF4: ; 0x02258BF4
 	add sp, #0x24
 	pop {r4, r5, pc}
 	nop
-_02258C68: .word _021094DC
+_02258C68: .word FX_SinCosTable_
 	thumb_func_end ov48_02258BF4
 
 	thumb_func_start ov48_02258C6C
@@ -544,7 +544,7 @@ ov48_02258C6C: ; 0x02258C6C
 	sub sp, #0x24
 	add r4, r1, #0
 	ldr r1, [r4]
-	ldr r3, _02258CE0 ; =_021094DC
+	ldr r3, _02258CE0 ; =FX_SinCosTable_
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	asr r1, r1, #4
@@ -557,7 +557,7 @@ ov48_02258C6C: ; 0x02258C6C
 	add r5, r0, #0
 	bl MTX_RotY33_
 	ldr r0, [r4, #4]
-	ldr r3, _02258CE0 ; =_021094DC
+	ldr r3, _02258CE0 ; =FX_SinCosTable_
 	neg r0, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
@@ -575,7 +575,7 @@ ov48_02258C6C: ; 0x02258C6C
 	add r2, r5, #0
 	bl MTX_Concat33
 	ldr r0, [r4, #8]
-	ldr r3, _02258CE0 ; =_021094DC
+	ldr r3, _02258CE0 ; =FX_SinCosTable_
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	asr r0, r0, #4
@@ -594,14 +594,14 @@ ov48_02258C6C: ; 0x02258C6C
 	add sp, #0x24
 	pop {r4, r5, pc}
 	.balign 4, 0
-_02258CE0: .word _021094DC
+_02258CE0: .word FX_SinCosTable_
 	thumb_func_end ov48_02258C6C
 
 	thumb_func_start ov48_02258CE4
 ov48_02258CE4: ; 0x02258CE4
 	push {r3, r4, r5, r6, r7, lr}
 	mov lr, r0
-	ldr r0, _02258D4C ; =gMain + 0x40
+	ldr r0, _02258D4C ; =gSystem + 0x40
 	mov ip, r1
 	ldrh r5, [r0, #0x20]
 	mov r1, #0
@@ -630,7 +630,7 @@ _02258D14:
 	add r0, r3, #0
 	and r0, r1
 	str r0, [r6]
-	ldr r0, _02258D4C ; =gMain + 0x40
+	ldr r0, _02258D4C ; =gSystem + 0x40
 	ldrh r3, [r0, #0x22]
 	ldr r0, _02258D50 ; =0x0000FFFF
 	cmp r3, r0
@@ -656,7 +656,7 @@ _02258D3C:
 	str r1, [r0]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02258D4C: .word gMain + 0x40
+_02258D4C: .word gSystem + 0x40
 _02258D50: .word 0x0000FFFF
 	thumb_func_end ov48_02258CE4
 
@@ -1124,7 +1124,7 @@ ov48_0225909C: ; 0x0225909C
 	mov r0, #2
 	pop {r4, r5, pc}
 _022590C0:
-	ldr r2, _02259124 ; =gMain
+	ldr r2, _02259124 ; =gSystem
 	lsl r0, r0, #9
 	ldr r1, [r2, #0x48]
 	tst r0, r1
@@ -1169,7 +1169,7 @@ _02259116:
 	.balign 4, 0
 _0225911C: .word 0x0000C3E0
 _02259120: .word 0x000005DD
-_02259124: .word gMain
+_02259124: .word gSystem
 _02259128: .word 0x0000C40C
 _0225912C: .word 0x000005D6
 	thumb_func_end ov48_0225909C
@@ -1412,14 +1412,14 @@ _022592EC:
 	neg r5, r5
 _022592F6:
 	mov r0, #0xb4
-	bl sub_0201FCD4
+	bl GF_DegreeToSinCosIdxNoWrap
 	cmp r4, r0
 	ble _02259304
 	ldr r0, _02259328 ; =0x0000FFFF
 	sub r4, r0, r4
 _02259304:
 	mov r0, #0xb4
-	bl sub_0201FCD4
+	bl GF_DegreeToSinCosIdxNoWrap
 	cmp r5, r0
 	ble _02259312
 	ldr r0, _02259328 ; =0x0000FFFF
@@ -1668,7 +1668,7 @@ _022594D8: .word sub_0202457C
 ov48_022594DC: ; 0x022594DC
 	push {r3, lr}
 	ldr r0, [r0]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200B224
 	bl sub_0202061C
 	pop {r3, pc}
@@ -1687,7 +1687,7 @@ ov48_022594F0: ; 0x022594F0
 	add r0, r7, #0
 	bl BgConfig_Alloc
 	str r0, [r5]
-	ldr r0, _02259640 ; =gMain + 0x60
+	ldr r0, _02259640 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -1730,7 +1730,7 @@ _0225951A:
 	ldr r0, [r5, r0]
 	mov r1, #5
 	mov r2, #4
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1742,7 +1742,7 @@ _0225951A:
 	ldr r2, [r5]
 	mov r1, #0xb
 	mov r3, #4
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1754,7 +1754,7 @@ _0225951A:
 	ldr r2, [r5]
 	mov r1, #0xc
 	mov r3, #4
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1766,7 +1766,7 @@ _0225951A:
 	ldr r2, [r5]
 	mov r1, #4
 	mov r3, #6
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1778,7 +1778,7 @@ _0225951A:
 	ldr r2, [r5]
 	mov r1, #0x12
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	mov r1, #0x20
 	add r2, r7, #0
@@ -1827,7 +1827,7 @@ _0225951A:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0225963C: .word ov48_0225B190
-_02259640: .word gMain + 0x60
+_02259640: .word gSystem + 0x60
 _02259644: .word ov48_0225B2A4
 _02259648: .word ov48_0225B1B0
 _0225964C: .word 0x000072CA
@@ -1851,14 +1851,14 @@ _02259658:
 	blt _02259658
 	ldr r0, [r6]
 	bl FreeToHeap
-	ldr r0, _02259684 ; =gMain + 0x60
+	ldr r0, _02259684 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
 	pop {r4, r5, r6, pc}
 	nop
 _02259680: .word ov48_0225B1B0
-_02259684: .word gMain + 0x60
+_02259684: .word gSystem + 0x60
 	thumb_func_end ov48_02259650
 
 	thumb_func_start ov48_02259688
@@ -1923,7 +1923,7 @@ _022596F4:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2835,7 +2835,7 @@ ov48_02259DA0: ; 0x02259DA0
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [r4]
-	ldr r0, _02259E58 ; =gMain + 0x40
+	ldr r0, _02259E58 ; =gSystem + 0x40
 	ldrh r1, [r0, #0x24]
 	cmp r1, #0
 	beq _02259DE8
@@ -2860,7 +2860,7 @@ _02259DCE:
 	str r0, [r4, #0x14]
 	str r0, [r4, #0x18]
 	str r0, [r4]
-	ldr r0, _02259E58 ; =gMain + 0x40
+	ldr r0, _02259E58 ; =gSystem + 0x40
 	ldrh r1, [r0, #0x20]
 	str r1, [r4, #8]
 	ldrh r0, [r0, #0x22]
@@ -2868,7 +2868,7 @@ _02259DCE:
 	mov r0, #4
 	str r0, [r4, #0x18]
 _02259DE8:
-	ldr r0, _02259E58 ; =gMain + 0x40
+	ldr r0, _02259E58 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x26]
 	cmp r0, #0
 	beq _02259E40
@@ -2908,7 +2908,7 @@ _02259E0E:
 	ldr r0, [sp, #8]
 	add sp, #0x18
 	str r0, [r4, #0x14]
-	ldr r0, _02259E58 ; =gMain + 0x40
+	ldr r0, _02259E58 ; =gSystem + 0x40
 	ldrh r1, [r0, #0x20]
 	str r1, [r4, #8]
 	ldrh r0, [r0, #0x22]
@@ -2929,7 +2929,7 @@ _02259E4A:
 	add sp, #0x18
 	pop {r4, pc}
 	.balign 4, 0
-_02259E58: .word gMain + 0x40
+_02259E58: .word gSystem + 0x40
 	thumb_func_end ov48_02259DA0
 
 	thumb_func_start ov48_02259E5C
@@ -2962,7 +2962,7 @@ ov48_02259E78: ; 0x02259E78
 	bl sub_0200E5D4
 	add r4, #0x1c
 	add r0, r4, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov48_02259E78
@@ -2972,7 +2972,7 @@ ov48_02259E90: ; 0x02259E90
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, #0x1c
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r4, #0x1c
 	mov r1, #0
 	add r0, r4, #0
@@ -3073,7 +3073,7 @@ ov48_02259F48: ; 0x02259F48
 	bl DrawFrameAndWindow2
 	add r0, r4, #0
 	add r0, #0x10
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r4, #8]
@@ -3120,7 +3120,7 @@ _02259F9E:
 	str r0, [r2]
 	add r0, r5, #0
 	add r0, #0x10
-	bl sub_0201EE88
+	bl GetWindowBgConfig
 	str r0, [sp]
 	ldr r0, [r5, #0x20]
 	add r1, sp, #0
@@ -3153,7 +3153,7 @@ ov48_02259FEC: ; 0x02259FEC
 	bl ClearFrameAndWindow2
 	add r4, #0x10
 	add r0, r4, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov48_02259FEC
@@ -3249,7 +3249,7 @@ _0225A02C:
 	mov r1, #0x13
 	mov r2, #0
 	add r3, #0x98
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	ldr r1, [sp, #0x14]
 	mov r3, #0xb9
 	add r1, #0x94
@@ -3390,7 +3390,7 @@ ov48_0225A1D0: ; 0x0225A1D0
 	mov r0, #0x6a
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	pop {r4, pc}
 	thumb_func_end ov48_0225A1D0
 
@@ -3401,7 +3401,7 @@ ov48_0225A1EC: ; 0x0225A1EC
 	mov r0, #0x6a
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #0x6a
 	lsl r0, r0, #2
 	mov r2, #0xa
@@ -3940,7 +3940,7 @@ ov48_0225A57C: ; 0x0225A57C
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r4]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #6
 	bl ScheduleBgTilemapBufferTransfer
@@ -4319,7 +4319,7 @@ ov48_0225A868: ; 0x0225A868
 	lsl r0, r1, #4
 	add r0, r2, r0
 	add r4, r3, #0
-	bl sub_0201EEA0
+	bl GetWindowBaseTile
 	mov r3, #0x1b
 	add r1, r5, #0
 	mul r1, r3
@@ -4371,7 +4371,7 @@ _0225A8CA:
 	ldrh r1, [r4]
 	mov r2, #0
 	add r3, r6, #0
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	str r0, [r5, #8]
 	ldr r0, [sp, #0xc]
 	ldrh r1, [r7, #0x18]
@@ -4404,7 +4404,7 @@ _0225A8F4:
 	ldr r3, [sp, #0x28]
 	ldrh r1, [r1, #6]
 	add r2, #0x20
-	bl sub_02007C48
+	bl GfGfxLoader_GetPlttDataFromOpenNarc
 	str r0, [r7, #0x1c]
 _0225A924:
 	add sp, #0x10
@@ -4508,7 +4508,7 @@ _0225A9A2:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r7]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r7]
 	mov r1, #6
 	bl ScheduleBgTilemapBufferTransfer
@@ -4613,7 +4613,7 @@ ov48_0225AA5C: ; 0x0225AA5C
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r4]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #6
 	bl ScheduleBgTilemapBufferTransfer
@@ -4816,7 +4816,7 @@ ov48_0225AC34: ; 0x0225AC34
 	str r1, [sp, #4]
 	ldr r0, _0225ACA8 ; =0x000005D8
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #0
 	ldr r7, [sp]
 	str r0, [sp, #8]
@@ -5004,7 +5004,7 @@ _0225AD82:
 _0225ADA6:
 	ldr r0, _0225ADB8 ; =0x000005D8
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #2
 	strh r0, [r5, #0x30]
 	mov r0, #0x80
@@ -5252,7 +5252,7 @@ _0225AF0E:
 	lsr r0, r0, #0x10
 	asr r0, r0, #4
 	lsl r1, r0, #2
-	ldr r0, _0225AFB0 ; =_021094DC
+	ldr r0, _0225AFB0 ; =FX_SinCosTable_
 	ldrsh r6, [r0, r1]
 	mov r0, #0xa
 	ldrsh r0, [r4, r0]
@@ -5292,7 +5292,7 @@ _0225AF84:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0225AFAC: .word 0x0000FFFF
-_0225AFB0: .word _021094DC
+_0225AFB0: .word FX_SinCosTable_
 	thumb_func_end ov48_0225AEDC
 
 	thumb_func_start ov48_0225AFB4

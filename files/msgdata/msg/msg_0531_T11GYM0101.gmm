@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0531_T11GYM0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sabrina: I knew you were coming...\rThree years ago I had a vision of\nyour arrival. You’re after my Badge.\rI don’t enjoy battling, but it’s my\nduty as a Gym Leader to confer\fBadges on anyone who has proven\fhim- or herself worthy.\rSince you wish it, I will show you my\npsychic powers!\r</language>
+	</row>
+	<row id="msg_0531_T11GYM0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sabrina: Your power...\nIt far exceeds what I foresaw...\rMaybe it isn’t possible to fully\npredict what the future holds...\rOK, you win. You earned yourself\nthe Marsh Badge.\r</language>
+	</row>
+	<row id="msg_0531_T11GYM0101_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} received\nthe Marsh Badge!</language>
+	</row>
+	<row id="msg_0531_T11GYM0101_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sabrina: I failed to accurately predict\nyour power. That means that your\fpower is beyond my psychic ability.\rYou deserve this.\nPlease take this TM, too!\r</language>
+	</row>
+	<row id="msg_0531_T11GYM0101_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sabrina: It contains Skill Swap!\nIt swaps Abilities between the user\fand the target.\rYou will become a celebrated and\nbeloved Champion!</language>
+	</row>
+	<row id="msg_0531_T11GYM0101_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sabrina: Your love for your Pokémon\nsmashed my psychic abilities...\rThe ability to love, I think, is some\nkind of psychic ability...</language>
+	</row>
+	<row id="msg_0531_T11GYM0101_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Yo, legend in the making!\rA Trainer as skilled as you doesn’t\nneed to be told how to deal\fwith Psychic-type Pokémon, right?\rI expect great things from you!\rGood luck!</language>
+	</row>
+	<row id="msg_0531_T11GYM0101_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">That was another fantastic battle!</language>
+	</row>
+	<row id="msg_0531_T11GYM0101_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Saffron City Pokémon Gym</language>
+	</row>
+	<row id="msg_0531_T11GYM0101_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Saffron City Pokémon Gym\rLeader: Sabrina\nCertified Trainer!\f{STRVAR_1 3, 0, 0}</language>
+	</row>
+</body>

@@ -276,7 +276,7 @@ ov95_021E5B24: ; 0x021E5B24
 	ldr r0, [r4, #8]
 	bl sub_0200398C
 	ldr r0, [r4, #4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E5B50 ; =0x027E0000
 	ldr r1, _021E5B54 ; =0x00003FF8
 	mov r0, #1
@@ -1475,16 +1475,16 @@ _021E643C:
 	str r0, [r4, #0x60]
 	b _021E6586
 _021E648C:
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	bne _021E6586
 	ldr r0, _021E659C ; =0x000004A4
-	bl sub_02006B24
+	bl PlayFanfare
 	ldr r0, [r4, #0x60]
 	add r0, r0, #1
 	str r0, [r4, #0x60]
 _021E64A0:
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	bne _021E6586
 	ldr r0, [r4, #0x60]
@@ -1756,16 +1756,16 @@ _021E66D8:
 	bl GF_AssertFail
 	b _021E67D8
 _021E66DE:
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	bne _021E67D8
 	ldr r0, _021E67EC ; =0x000004A4
-	bl sub_02006B24
+	bl PlayFanfare
 	ldr r0, [r4, #0x60]
 	add r0, r0, #1
 	str r0, [r4, #0x60]
 _021E66F2:
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	bne _021E67D8
 	ldr r0, [r4, #0x60]
@@ -2594,7 +2594,7 @@ ov95_021E6D70: ; 0x021E6D70
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	mov r2, #1
 	mov r0, #3
 	mov r1, #0x46
@@ -2791,7 +2791,7 @@ ov95_021E6F0C: ; 0x021E6F0C
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	mov r1, #0
 	bl PaletteData_FreeBuffers
@@ -2832,7 +2832,7 @@ ov95_021E6F0C: ; 0x021E6F0C
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl sub_0203E354
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -3062,7 +3062,7 @@ _021E70E2:
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #4
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3073,7 +3073,7 @@ _021E70E2:
 	add r0, r4, #0
 	mov r1, #9
 	mov r3, #4
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3084,7 +3084,7 @@ _021E70E2:
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3095,13 +3095,13 @@ _021E70E2:
 	add r0, r4, #0
 	mov r1, #0xa
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #5
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -3134,13 +3134,13 @@ ov95_021E7208: ; 0x021E7208
 	bl ov95_021E7410
 	mov r0, #5
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #0x10]
 	mov r1, #1
 	bl sub_0200DCE8
@@ -3177,16 +3177,16 @@ _021E7278:
 _021E728A:
 	mov r0, #5
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldr r0, [r4, #0x10]
 	mov r1, #0
 	bl sub_0200DCE8
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldrb r0, [r4, #0x19]
 	pop {r4, pc}
 _021E72AE:
@@ -3443,7 +3443,7 @@ _021E7482:
 	bl GF_AssertFail
 	b _021E74EC
 _021E7488:
-	ldr r0, _021E7510 ; =gMain
+	ldr r0, _021E7510 ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -3508,7 +3508,7 @@ _021E7504:
 	.balign 4, 0
 _021E7508: .word ov95_021E7820
 _021E750C: .word 0x000005DC
-_021E7510: .word gMain
+_021E7510: .word gSystem
 	thumb_func_end ov95_021E7450
 
 	thumb_func_start ov95_021E7514

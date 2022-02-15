@@ -1,0 +1,98 @@
+{
+  "header": "fielddata/script/scr_seq/event_D42R0101.h",
+  "bgs": [
+    {
+      "scr": "std_hiddenitem_d42r0101_max_revive",
+      "type": 2,
+      "x": 14,
+      "y": 9,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_d42r0101_hyper_potion",
+      "type": 2,
+      "x": 9,
+      "y": 52,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_d42r0101_elixir",
+      "type": 2,
+      "x": 48,
+      "y": 16,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_D42R0101_sunglasses",
+      "ovid": "SPRITE_SUNGLASSES",
+      "mvt": 2,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_D42R0101_000 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 16,
+      "y": 12,
+      "z": 0
+    },
+    {
+      "id": "obj_D42R0101_monstarball",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D42R0101_TM54",
+      "scr": "std_itemball_d42r0101_tm54",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 14,
+      "y": 49,
+      "z": 0
+    },
+    {
+      "id": "obj_D42R0101_monstarball_2",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D42R0101_REVIVE",
+      "scr": "std_itemball_d42r0101_revive",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 42,
+      "y": 44,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 6,
+      "y": 57,
+      "header": "MAP_D42R0102",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 60,
+      "y": 4,
+      "header": "MAP_R45",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

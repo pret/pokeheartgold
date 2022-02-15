@@ -11,7 +11,7 @@ ov65_0221BE20: ; 0x0221BE20
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -137,7 +137,7 @@ ov65_0221BE20: ; 0x0221BE20
 	bl sub_0208F658
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -321,28 +321,28 @@ ov65_0221C08C: ; 0x0221C08C
 	bl ov65_0221FB90
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #5
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -1243,13 +1243,13 @@ _0221C890:
 	bl sub_0200B484
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -1298,16 +1298,16 @@ _0221C90C:
 	bl sub_0200B484
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #5
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #0x58]
 	add r0, r0, #1
 	str r0, [r4, #0x58]
@@ -1886,7 +1886,7 @@ ov65_0221CE1C: ; 0x0221CE1C
 	mov r0, #6
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r0, _0221CE84 ; =0x0000211C
 	ldr r0, [r5, r0]
 	cmp r0, #0
@@ -2111,51 +2111,51 @@ _0221CFFC:
 	add r0, r5, #0
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	lsl r1, r4, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r1, r4, #4
 	lsl r1, r1, #0x18
 	mov r2, #0
 	add r0, r5, #0
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r1, r4, #4
 	lsl r1, r1, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r4, r4, #1
 	cmp r4, #4
 	blt _0221CFFC
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #1
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #3
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #5
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #1
 	lsl r0, r0, #0x1a
 	add r3, r0, #0
@@ -2344,7 +2344,7 @@ ov65_0221D204: ; 0x0221D204
 	str r2, [sp]
 	ldr r2, [sp, #0x20]
 	ldr r3, [sp, #0x24]
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r6, r0, #0
 	beq _0221D256
 	add r1, sp, #4
@@ -2416,7 +2416,7 @@ ov65_0221D280: ; 0x0221D280
 	add r0, r5, #0
 	mov r2, #4
 	add r3, r1, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r1, #0
 	mov r0, #0x12
 	lsl r0, r0, #4
@@ -2426,7 +2426,7 @@ ov65_0221D280: ; 0x0221D280
 	add r0, r5, #0
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	add r1, r0, #0
 	bl BG_SetMaskColor
@@ -2450,7 +2450,7 @@ ov65_0221D280: ; 0x0221D280
 	add r0, r5, #0
 	add r2, r4, #0
 	mov r3, #2
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -2478,7 +2478,7 @@ ov65_0221D280: ; 0x0221D280
 	mov r1, #4
 	add r2, r4, #0
 	mov r3, #3
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	mov r1, #0x40
 	mov r2, #0x1a
@@ -2500,7 +2500,7 @@ ov65_0221D280: ; 0x0221D280
 	mov r1, #2
 	add r2, r4, #0
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -2514,7 +2514,7 @@ ov65_0221D280: ; 0x0221D280
 	add r0, r5, #0
 	add r2, r4, #0
 	add r3, r1, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -2528,7 +2528,7 @@ ov65_0221D280: ; 0x0221D280
 	add r0, r5, #0
 	add r2, r4, #0
 	add r3, r1, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #4
 	mov r1, #0x40
 	mov r2, #0x1a
@@ -3533,7 +3533,7 @@ _0221DBF0: .word 0x0000040C
 	thumb_func_start ov65_0221DBF4
 ov65_0221DBF4: ; 0x0221DBF4
 	push {r3, r4}
-	ldr r3, _0221DC30 ; =gMain
+	ldr r3, _0221DC30 ; =gSystem
 	mov r1, #0
 	ldr r3, [r3, #0x4c]
 	mov r4, #0x40
@@ -3568,7 +3568,7 @@ _0221DC2C:
 	pop {r3, r4}
 	bx lr
 	.balign 4, 0
-_0221DC30: .word gMain
+_0221DC30: .word gSystem
 	thumb_func_end ov65_0221DBF4
 
 	thumb_func_start ov65_0221DC34
@@ -3652,7 +3652,7 @@ ov65_0221DCBC: ; 0x0221DCBC
 	strh r1, [r0]
 _0221DCD2:
 	ldrh r0, [r0]
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0xa
 	mul r1, r0
 	asr r0, r1, #0xb
@@ -3969,7 +3969,7 @@ _0221DF18: .word sub_02036FD8
 ov65_0221DF1C: ; 0x0221DF1C
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _0221DFA0 ; =gMain
+	ldr r0, _0221DFA0 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -3996,7 +3996,7 @@ _0221DF52:
 	lsl r0, r0, #2
 	add r0, r4, r0
 	bl ov65_0221DBF4
-	ldr r0, _0221DFA0 ; =gMain
+	ldr r0, _0221DFA0 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -4033,7 +4033,7 @@ _0221DF9A:
 	mov r0, #0
 	pop {r4, pc}
 	nop
-_0221DFA0: .word gMain
+_0221DFA0: .word gSystem
 _0221DFA4: .word 0x000005DC
 _0221DFA8: .word ov65_0221E144
 _0221DFAC: .word 0x00002220
@@ -4418,12 +4418,12 @@ ov65_0221E2C0: ; 0x0221E2C0
 	push {r4, lr}
 	sub sp, #0x10
 	add r4, r0, #0
-	ldr r0, _0221E31C ; =gMain
+	ldr r0, _0221E31C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
 	bne _0221E2D8
-	ldr r0, _0221E320 ; =gMain + 0x40
+	ldr r0, _0221E320 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _0221E316
@@ -4461,8 +4461,8 @@ _0221E316:
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
-_0221E31C: .word gMain
-_0221E320: .word gMain + 0x40
+_0221E31C: .word gSystem
+_0221E320: .word gSystem + 0x40
 _0221E324: .word 0x00000594
 _0221E328: .word ov65_0221E050
 _0221E32C: .word 0x00002220
@@ -5609,7 +5609,7 @@ _0221EC84:
 	lsl r1, r0, #4
 	ldr r0, [sp, #4]
 	add r0, r0, r1
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r7, #0
 	add r0, #0x98
 	ldr r0, [r0]
@@ -5646,7 +5646,7 @@ _0221ECD0:
 	lsl r1, r0, #4
 	ldr r0, [sp, #4]
 	add r0, r0, r1
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r6, r6, #1
 	add r4, r4, #4
 	add r5, #0x10
@@ -5916,11 +5916,11 @@ ov65_0221EF0C: ; 0x0221EF0C
 	ldr r1, _0221F004 ; =0x00000574
 	str r0, [sp]
 	add r0, r0, r1
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	ldr r1, _0221F008 ; =0x00000584
 	ldr r0, [sp]
 	add r0, r0, r1
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	ldr r6, [sp]
 	ldr r1, _0221F00C ; =0x00000444
 	add r0, r6, #0
@@ -5987,7 +5987,7 @@ _0221EFA6:
 	lsl r1, r0, #4
 	ldr r0, [sp, #4]
 	add r0, r0, r1
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 _0221EFB2:
 	add r7, r7, #1
 	add r6, #0x10
@@ -6806,7 +6806,7 @@ _0221F664:
 	add r0, r4, #0
 	mov r2, #5
 	mov r3, #0
-	bl sub_0208F260
+	bl MonSetTrainerMemo
 	add r0, r4, #0
 	bl Pokemon_RemoveCapsule
 	ldr r0, [sp, #0xc]
@@ -6833,7 +6833,7 @@ _0221F664:
 _0221F6BC:
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
-	bl sub_0202ECC0
+	bl UpdatePokedexWithReceivedSpecies
 	add r0, r7, #0
 	add r1, r6, #0
 	bl GetPartyMonByIndex
@@ -6848,10 +6848,10 @@ _0221F6BC:
 	bl CopyPokemonToPokemon
 	add r0, r7, #0
 	add r1, r6, #0
-	bl sub_02074708
+	bl Party_ResetUnkSubSlot
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #8]
-	bl sub_02074708
+	bl Party_ResetUnkSubSlot
 	ldr r0, [r5, #0x1c]
 	mov r1, #0x14
 	bl GameStats_Inc
@@ -6880,7 +6880,7 @@ ov65_0221F714: ; 0x0221F714
 	ldr r0, [r4, r0]
 	ldr r3, [r4, r3]
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #6
 	ldr r3, _0221F744 ; =0x000022C4
 	lsl r0, r0, #6
@@ -6888,7 +6888,7 @@ ov65_0221F714: ; 0x0221F714
 	ldr r3, [r4, r3]
 	mov r1, #3
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	pop {r4, pc}
 	.balign 4, 0
 _0221F744: .word 0x000022C4
@@ -7492,7 +7492,7 @@ _0221FBC6:
 	bl AddTextPrinterParameterized2
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r4, #0

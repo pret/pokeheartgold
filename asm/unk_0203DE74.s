@@ -1,6 +1,15 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.rodata
+
+	.public _020FA15C
+_020FA15C:
+	.word sub_0203DEA4, sub_0203DEBC, sub_0203DED4, 0xFFFFFFFF
+	.public _020FA16C
+_020FA16C:
+	.word sub_0203DE74, sub_0203DEBC, sub_0203DED4, 0xFFFFFFFF
+
 	.bss
 
 _021D4158:
@@ -295,7 +304,7 @@ sub_0203E058: ; 0x0203E058
 	ldr r0, [r4, #0x30]
 	bl MapMatrix_Free
 	add r0, r4, #0
-	bl sub_0203B630
+	bl Field_FreeMapEvents
 	add r0, r4, #0
 	add r0, #0x94
 	ldr r0, [r0]
@@ -428,7 +437,7 @@ sub_0203E15C: ; 0x0203E15C
 	beq _0203E186
 	ldr r0, [r4, #0x40]
 	bl sub_0205CE68
-	ldr r3, _0203E2EC ; =gMain
+	ldr r3, _0203E2EC ; =gSystem
 	add r0, sp, #8
 	ldr r2, [r3, #0x48]
 	ldr r3, [r3, #0x44]
@@ -521,7 +530,7 @@ _0203E1F8:
 	add sp, #0x14
 	pop {r4, r5, pc}
 _0203E22C:
-	ldr r0, _0203E2EC ; =gMain
+	ldr r0, _0203E2EC ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -580,7 +589,7 @@ _0203E268:
 	add sp, #0x14
 	pop {r4, r5, pc}
 _0203E2B0:
-	ldr r0, _0203E2EC ; =gMain
+	ldr r0, _0203E2EC ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -610,7 +619,7 @@ _0203E2E8:
 	add sp, #0x14
 	pop {r4, r5, pc}
 	.balign 4, 0
-_0203E2EC: .word gMain
+_0203E2EC: .word gSystem
 _0203E2F0: .word 0x00000109
 	thumb_func_end sub_0203E15C
 

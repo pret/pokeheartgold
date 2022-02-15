@@ -325,7 +325,7 @@ ov00_021E7F38: ; 0x021E7F38
 	cmp r4, #1
 	bne _021E7FA8
 	ldr r0, _021E8040 ; =ov00_0221A6A0
-	bl sub_0209E430
+	bl DWCi_BM_GetWiFiInfo
 _021E7FA8:
 	ldr r0, _021E8038 ; =ov00_0221A694
 	ldr r1, [r0, #8]
@@ -620,7 +620,7 @@ _021E83AC:
 	add r1, r4, #0x1f
 	ldr r0, _021E84C4 ; =ov00_0221A6A0
 	bic r1, r1, #0x1f
-	bl sub_0209F850
+	bl DWCi_AUTH_UpDateWiFiID
 	cmp r0, #1
 	mov r2, #0
 	beq _021E83F0
@@ -651,7 +651,7 @@ _021E8404:
 	b _021E84AC
 _021E8420:
 	ldr r0, _021E84C4 ; =ov00_0221A6A0
-	bl sub_0209F8A0
+	bl DWCi_AUTH_RemakeWiFiID
 	ldr r0, _021E84B4 ; =ov00_0221A694
 	ldr r2, _021E84CC ; =0x00004E88
 	ldr r1, [r0, #8]
@@ -675,7 +675,7 @@ _021E8444:
 _021E8474:
 	add r0, r4, #0x1f
 	bic r0, r0, #0x1f
-	bl sub_0209F80C
+	bl DWCi_AUTH_MakeWiFiID
 	ldr r0, _021E84C8 ; =ov00_022164B4
 	mov r1, r4
 	mov r2, #0
@@ -1032,7 +1032,7 @@ ov00_021E8984: ; 0x021E8984
 	sub sp, sp, #0x14
 	mov r4, r0
 	add r0, sp, #0
-	bl sub_0209E430
+	bl DWCi_BM_GetWiFiInfo
 	add r1, sp, #0
 	mov r0, r4
 	bl ov00_021E89AC
@@ -3449,7 +3449,7 @@ _021EAB58:
 	ldr r0, [r5, #0x14]
 	bl ov00_021E9754
 	add r0, sp, #0x30
-	bl sub_0209E430
+	bl DWCi_BM_GetWiFiInfo
 	ldr r2, [sp, #0x30]
 	ldr r1, [sp, #0x34]
 	mov r0, #0
@@ -9171,7 +9171,7 @@ ov00_021EF6F4: ; 0x021EF6F4
 	str r4, [r0]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x1c]
-	bl sub_020A007C
+	bl DWCi_Acc_IsAuthentic
 	cmp r0, #0
 	beq _021EF754
 	ldr r0, _021EF8A4 ; =ov00_0221A90C
@@ -9180,20 +9180,20 @@ ov00_021EF6F4: ; 0x021EF6F4
 	add r2, r1, #0x248
 	ldr r1, [r0, #0x24]
 	add r0, r0, #0x10
-	bl sub_0209FE28
+	bl DWCi_Acc_LoginIdToUserName
 	b _021EF808
 _021EF754:
 	ldr r0, _021EF8A4 ; =ov00_0221A90C
 	ldr r0, [r0, #4]
 	add r0, r0, #0x3c
-	bl sub_020A0064
+	bl DWCi_Acc_IsValidLoginId
 	cmp r0, #0
 	bne _021EF7BC
 	ldr r0, _021EF8A4 ; =ov00_0221A90C
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x1c]
 	add r0, r0, #4
-	bl sub_0209FFF8
+	bl DWCi_Acc_CheckConsoleUserId
 	cmp r0, #0
 	beq _021EF7A8
 	ldr r0, _021EF8A4 ; =ov00_0221A90C
@@ -9208,7 +9208,7 @@ _021EF7A8:
 	ldr r0, _021EF8A4 ; =ov00_0221A90C
 	ldr r0, [r0, #4]
 	add r0, r0, #0x3c
-	bl sub_0209FF34
+	bl DWCi_Acc_CreateTempLoginId
 	b _021EF7F0
 _021EF7BC:
 	bl OS_GetTick
@@ -9223,14 +9223,14 @@ _021EF7BC:
 	ldr r3, [r3, #4]
 	adc r1, r4, #0
 	add r0, r3, #0x3c
-	bl sub_0209FBE0
+	bl DWCi_Acc_SetPlayerId
 _021EF7F0:
 	ldr r0, _021EF8A4 ; =ov00_0221A90C
 	ldr r2, [r0, #4]
 	ldr r1, [r2, #0xc]
 	add r0, r2, #0x3c
 	add r2, r2, #0x248
-	bl sub_0209FE28
+	bl DWCi_Acc_LoginIdToUserName
 _021EF808:
 	ldr r0, _021EF8A4 ; =ov00_0221A90C
 	ldr r0, [r0, #4]
@@ -9315,7 +9315,7 @@ ov00_021EF8C0: ; 0x021EF8C0
 	str r2, [r1, #0x24]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x1c]
-	bl sub_020A007C
+	bl DWCi_Acc_IsAuthentic
 	cmp r0, #0
 	beq _021EF96C
 	ldr r0, _021EFAB0 ; =ov00_0221A90C
@@ -9441,7 +9441,7 @@ ov00_021EFAC8: ; 0x021EFAC8
 	ldr r1, [r2, #0xc]
 	add r2, sp, #0x32
 	add r0, r0, #4
-	bl sub_0209FE28
+	bl DWCi_Acc_LoginIdToUserName
 	ldr r1, _021EFC60 ; =0x00000705
 	add r2, sp, #0x32
 	mov r0, r5
@@ -9484,7 +9484,7 @@ _021EFBA0:
 	ldr r1, [r2, #0xc]
 	add r2, sp, #0x1d
 	add r0, r0, #4
-	bl sub_0209FE28
+	bl DWCi_Acc_LoginIdToUserName
 	add r1, sp, #0x1d
 	add r0, r4, #0x8e
 	bl strcmp
@@ -9495,13 +9495,13 @@ _021EFBA0:
 	ldr r0, [r0, #4]
 	ldr r1, [r0, #0xc]
 	add r0, r0, #0x3c
-	bl sub_0209FE28
+	bl DWCi_Acc_LoginIdToUserName
 	ldr r0, _021EFC5C ; =ov00_0221A90C
 	ldr r2, [r4, #4]
 	ldr r1, [r0, #4]
 	ldr r0, [r1, #0x1c]
 	add r1, r1, #0x3c
-	bl sub_020A0198
+	bl DWCi_Acc_SetLoginIdToUserData
 	ldr r1, _021EFC5C ; =ov00_0221A90C
 	mov r3, #2
 	ldr r2, [r1, #4]
@@ -10105,7 +10105,7 @@ ov00_021F03BC: ; 0x021F03BC
 	bl ov00_021EF3A4
 	mov r1, #0xc
 	mla r1, r5, r1, r4
-	bl sub_020A028C
+	bl DWC_GetGsProfileId
 	cmp r0, #0
 	mvnne r1, #0
 	cmpne r0, r1
@@ -10368,14 +10368,14 @@ _021F0718:
 	mov r0, #0xc
 	mul r5, r4, r0
 	add r0, r7, r5
-	bl sub_0209FC1C
+	bl DWC_IsBuddyFriendData
 	cmp r0, #0
 	bne _021F0778
 	ldr r1, [sp, #0x38]
 	add r0, r7, r5
-	bl sub_020A03D0
+	bl DWC_SetGsProfileId
 	add r0, r7, r5
-	bl sub_0209FC9C
+	bl DWCi_SetBuddyFriendData
 	ldr r0, _021F090C ; =ov00_0221A918
 	mov r1, #1
 	ldr r0, [r0, #8]
@@ -10450,7 +10450,7 @@ _021F0854:
 	ldr r1, [sl, #8]
 	ldrb r2, [r1, #0x1c]
 	mla r1, r2, r8, r7
-	bl sub_020A028C
+	bl DWC_GetGsProfileId
 	cmp r0, sb
 	bne _021F08E4
 	bl ov00_021EF3A4
@@ -10460,7 +10460,7 @@ _021F0854:
 	add r2, sp, #0x20
 	ldrb r3, [r3, #0x1c]
 	mla r1, r3, r1, r7
-	bl sub_020A0404
+	bl DWC_LoginIdToUserName
 	ldr r0, _021F090C ; =ov00_0221A918
 	mov r1, #0
 	ldr r4, [r0, #8]
@@ -10562,12 +10562,12 @@ _021F09C0:
 	bne _021F0A38
 	mov r0, #0xc
 	mla r0, r6, r0, r7
-	bl sub_0209FC1C
+	bl DWC_IsBuddyFriendData
 	cmp r0, #0
 	beq _021F0A14
 	mov r0, #0xc
 	mla r0, r4, r0, r7
-	bl sub_0209FC1C
+	bl DWC_IsBuddyFriendData
 	cmp r0, #0
 	bne _021F0A14
 	mov r0, r7
@@ -10630,23 +10630,23 @@ _021F0AB0:
 	cmp r4, r0
 	bne _021F0B24
 	mov r0, r7
-	bl sub_0209FC54
+	bl DWC_GetFriendDataType
 	cmp r0, #2
 	bne _021F0AEC
 	mov r0, sb
-	bl sub_0209FC54
+	bl DWC_GetFriendDataType
 	cmp r0, #3
 	bne _021F0AEC
 	mov r0, r8
 	mov r1, r4
-	bl sub_020A03D0
+	bl DWC_SetGsProfileId
 _021F0AEC:
 	mov r0, sb
-	bl sub_0209FC1C
+	bl DWC_IsBuddyFriendData
 	cmp r0, #0
 	beq _021F0B04
 	mov r0, r8
-	bl sub_0209FC9C
+	bl DWCi_SetBuddyFriendData
 _021F0B04:
 	mov r0, fp
 	mov r1, r6
@@ -10713,7 +10713,7 @@ _021F0BBC:
 _021F0BC4:
 	bl ov00_021EF3A4
 	mov r1, r5
-	bl sub_020A028C
+	bl DWC_GetGsProfileId
 	mov r5, r0
 	cmp r5, #0
 	ble _021F0C00
@@ -10808,7 +10808,7 @@ ov00_021F0CBC: ; 0x021F0CBC
 	ldr r0, [r1, #8]
 	ldr r0, [r0, #0x18]
 	add r0, r0, r6
-	bl sub_0209FC54
+	bl DWC_GetFriendDataType
 	cmp r0, #0
 	beq _021F0E8C
 	ldr r7, _021F0EF4 ; =ov00_0221A918
@@ -10875,12 +10875,12 @@ _021F0DDC:
 	ldr r1, [r1]
 	ldr r0, [r0, #0x18]
 	add r0, r0, r6
-	bl sub_020A03D0
+	bl DWC_SetGsProfileId
 	ldr r0, _021F0EF4 ; =ov00_0221A918
 	ldr r0, [r0, #8]
 	ldr r0, [r0, #0x18]
 	add r0, r0, r6
-	bl sub_0209FC9C
+	bl DWCi_SetBuddyFriendData
 	mov r0, r8
 	bl ov00_021F0550
 	ldr r0, _021F0EF4 ; =ov00_0221A918
@@ -10931,7 +10931,7 @@ _021F0EA4:
 	ldr r1, [r1, #0x18]
 	mov r0, #0xc
 	mla r0, r8, r0, r1
-	bl sub_0209FC54
+	bl DWC_GetFriendDataType
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _021F0ED0:
@@ -10970,7 +10970,7 @@ ov00_021F0EF8: ; 0x021F0EF8
 _021F0F3C:
 	ldr r0, [r1, #0x18]
 	add r0, r0, r7
-	bl sub_0209FC54
+	bl DWC_GetFriendDataType
 	cmp r0, #1
 	bne _021F0FA4
 	bl ov00_021EF3A4
@@ -10978,7 +10978,7 @@ _021F0F3C:
 	mov r2, fp
 	ldr r1, [r1, #0x18]
 	add r1, r1, r7
-	bl sub_020A0404
+	bl DWC_LoginIdToUserName
 	mov r0, fp
 	add r1, sb, #0x8e
 	bl strcmp
@@ -10991,20 +10991,20 @@ _021F0F3C:
 	ldr r1, [sb, #4]
 	ldr r0, [r0, #0x18]
 	add r0, r0, r7
-	bl sub_020A03D0
+	bl DWC_SetGsProfileId
 	mov r6, #1
 	b _021F105C
 _021F0FA4:
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #0x18]
 	add r0, r0, r7
-	bl sub_0209FC54
+	bl DWC_GetFriendDataType
 	cmp r0, #3
 	beq _021F0FD4
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #0x18]
 	add r0, r0, r7
-	bl sub_0209FC54
+	bl DWC_GetFriendDataType
 	cmp r0, #2
 	bne _021F105C
 _021F0FD4:
@@ -11029,7 +11029,7 @@ _021F0FD4:
 	ldr r1, [r4, #8]
 	ldr r1, [r1, #0x18]
 	add r1, r1, r7
-	bl sub_020A028C
+	bl DWC_GetGsProfileId
 	cmp r8, r0
 	bne _021F105C
 	add r0, sp, #0xc
@@ -11090,7 +11090,7 @@ ov00_021F10A8: ; 0x021F10A8
 _021F10F0:
 	ldr r0, [r0, #0x18]
 	add r0, r0, sb
-	bl sub_0209FC54
+	bl DWC_GetFriendDataType
 	cmp r0, #1
 	bne _021F115C
 	bl ov00_021EF3A4
@@ -11098,7 +11098,7 @@ _021F10F0:
 	mov r2, r5
 	ldr r1, [r1, #0x18]
 	add r1, r1, sb
-	bl sub_020A0404
+	bl DWC_LoginIdToUserName
 	mov r0, r5
 	add r1, sl, #0x8e
 	bl strcmp
@@ -11108,24 +11108,24 @@ _021F10F0:
 	ldr r1, [sl, #4]
 	ldr r0, [r0, #0x18]
 	add r0, r0, sb
-	bl sub_020A03D0
+	bl DWC_SetGsProfileId
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #0x18]
 	add r0, r0, sb
-	bl sub_0209FC9C
+	bl DWCi_SetBuddyFriendData
 	mov r7, fp
 	b _021F11F0
 _021F115C:
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #0x18]
 	add r0, r0, sb
-	bl sub_0209FC54
+	bl DWC_GetFriendDataType
 	cmp r0, #3
 	beq _021F118C
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #0x18]
 	add r0, r0, sb
-	bl sub_0209FC54
+	bl DWC_GetFriendDataType
 	cmp r0, #2
 	bne _021F11F0
 _021F118C:
@@ -11133,14 +11133,14 @@ _021F118C:
 	ldr r1, [r4, #8]
 	ldr r1, [r1, #0x18]
 	add r1, r1, sb
-	bl sub_020A028C
+	bl DWC_GetGsProfileId
 	ldr r1, [sl, #4]
 	cmp r1, r0
 	bne _021F11F0
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #0x18]
 	add r0, r0, sb
-	bl sub_0209FC1C
+	bl DWC_IsBuddyFriendData
 	cmp r0, #1
 	moveq r8, #1
 	beq _021F11F0
@@ -11148,11 +11148,11 @@ _021F118C:
 	ldr r1, [sl, #4]
 	ldr r0, [r0, #0x18]
 	add r0, r0, sb
-	bl sub_020A03D0
+	bl DWC_SetGsProfileId
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #0x18]
 	add r0, r0, sb
-	bl sub_0209FC9C
+	bl DWCi_SetBuddyFriendData
 	mov r7, #1
 _021F11F0:
 	ldr r0, [r4, #8]
@@ -16540,7 +16540,7 @@ _021F5E04:
 	ldrb r2, [r2, #0x304]
 	mov r0, sl
 	mla r1, r2, r1, r3
-	bl sub_020A028C
+	bl DWC_GetGsProfileId
 	movs r4, r0
 	mvnne r0, #0
 	cmpne r4, r0
@@ -16556,7 +16556,7 @@ _021F5E04:
 	add r1, sb, r1
 	ldrb r1, [r1, #0x304]
 	mla r0, r1, r0, r2
-	bl sub_020A00A4
+	bl DWCi_Acc_IsValidFriendData
 	cmp r0, #0
 	beq _021F5D70
 	mov sb, r5
@@ -20651,8 +20651,8 @@ _021F95D8:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov00_021F9590
 
-	arm_func_start ov00_021F9610
-ov00_021F9610: ; 0x021F9610
+	arm_func_start DWC_SendReliable
+DWC_SendReliable: ; 0x021F9610
 	stmdb sp!, {r3, lr}
 	mov ip, r1
 	mov r3, r2
@@ -20661,7 +20661,7 @@ ov00_021F9610: ; 0x021F9610
 	mov r0, #1
 	bl ov00_021F9630
 	ldmia sp!, {r3, pc}
-	arm_func_end ov00_021F9610
+	arm_func_end DWC_SendReliable
 
 	arm_func_start ov00_021F9630
 ov00_021F9630: ; 0x021F9630
@@ -20762,7 +20762,7 @@ _021F976C:
 	mov r0, sb
 	mov r1, r5
 	mov r2, r4
-	bl ov00_021F9610
+	bl DWC_SendReliable
 	cmp r0, #0
 	mvneq r0, sl
 	andeq r6, r6, r0
@@ -20775,8 +20775,8 @@ _021F97A8:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	arm_func_end ov00_021F9750
 
-	arm_func_start ov00_021F97C0
-ov00_021F97C0: ; 0x021F97C0
+	arm_func_start DWC_SendUnreliable
+DWC_SendUnreliable: ; 0x021F97C0
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	mov r6, r1
@@ -20815,7 +20815,7 @@ _021F9844:
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
 _021F984C: .word ov00_0221B0A0
-	arm_func_end ov00_021F97C0
+	arm_func_end DWC_SendUnreliable
 
 	arm_func_start ov00_021F9850
 ov00_021F9850: ; 0x021F9850
@@ -21737,7 +21737,7 @@ _021FA3B8:
 	mov r0, r5
 	mov r3, r4
 	str r7, [sp, #0x14]
-	bl ov38_0221D8A0
+	bl ghttpGetExA
 	b _021FA428
 _021FA3F8:
 	str r1, [sp]
@@ -21751,7 +21751,7 @@ _021FA3F8:
 	mov r0, r5
 	mov r3, r4
 	str r7, [sp, #0x14]
-	bl ov38_0221D8A0
+	bl ghttpGetExA
 _021FA428:
 	mov r4, r0
 	cmp r4, #0
@@ -22104,7 +22104,7 @@ ov00_021FA75C: ; 0x021FA75C
 	mov r1, r1, lsl #0x1e
 	orr r1, r2, r1, lsr #26
 	strb r1, [r0, #0xd0c]
-	bl sub_0209E404
+	bl DWCi_BM_GetApInfo
 	ldr r0, _021FA8FC ; =ov00_0221B0AC
 	mov r1, #0x2300
 	ldr r0, [r0]
@@ -25746,7 +25746,7 @@ _021FD794:
 	add r0, sp, #8
 	add r1, sp, #0
 	mov r2, #8
-	bl sub_020A0500
+	bl CRYPTO_RC4FastInit
 	ldr r0, _021FD9B4 ; =ov00_0221B0C0
 	mov r2, #0x70
 	ldr r3, [r0]
@@ -25758,7 +25758,7 @@ _021FD794:
 	mul r3, r1, r2
 	add r1, r4, r3
 	add r3, r4, r3
-	bl sub_020A0628
+	bl CRYPTO_RC4FastEncrypt
 	ldr r0, _021FD9B4 ; =ov00_0221B0C0
 	mov r1, #0x70
 	ldr ip, [r0]
@@ -26870,11 +26870,11 @@ _021FE6DC: .word ov00_02217D1C
 _021FE6E0: .word ov00_02217C70
 	arm_func_end ov00_021FE678
 
-	arm_func_start ov00_021FE6E4
-ov00_021FE6E4: ; 0x021FE6E4
+	arm_func_start ArrayLength
+ArrayLength: ; 0x021FE6E4
 	ldr r0, [r0]
 	bx lr
-	arm_func_end ov00_021FE6E4
+	arm_func_end ArrayLength
 
 	arm_func_start ov00_021FE6EC
 ov00_021FE6EC: ; 0x021FE6EC
@@ -27305,7 +27305,7 @@ _021FEC38: .word 0x00000121
 ov00_021FEC3C: ; 0x021FEC3C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl ov00_021FE6E4
+	bl ArrayLength
 	subs r4, r0, #1
 	ldmmiia sp!, {r3, r4, r5, pc}
 _021FEC50:
@@ -27542,7 +27542,7 @@ _021FEF24:
 _021FEF40:
 	ldr r0, [r6]
 	ldr r0, [r0, r4, lsl #2]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	ldr r1, [r6, #4]
 	add r4, r4, #1
 	cmp r4, r1
@@ -31385,7 +31385,7 @@ _02202278:
 	subs r0, r1, r0
 	bne _022022F4
 	ldr r0, [r4, #0x38]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	cmp r0, #0
 	bne _022022F4
 	add r0, sp, #0x10
@@ -31454,7 +31454,7 @@ _0220235C:
 	subs r0, r1, r0
 	bne _022023E0
 	ldr r0, [sb, #0x38]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	cmp r0, #0
 	bne _022023E0
 	ldr fp, _02202420 ; =ov00_022184C0
@@ -36736,7 +36736,7 @@ ov00_02206E04: ; 0x02206E04
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	ldr r0, [sb, #0x38]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	cmp r0, #0
 	beq _02206EC8
 	mov fp, #0
@@ -36774,7 +36774,7 @@ _02206E9C:
 	mov r1, fp
 	bl ov00_021FE968
 	ldr r0, [sb, #0x38]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	cmp r0, #0
 	bne _02206E4C
 _02206EC8:
@@ -37083,7 +37083,7 @@ _022072D8:
 	str r0, [r1, #0x3c]
 _022072E0:
 	ldr r0, [r4, #0x38]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	cmp r0, #0
 	beq _02207344
 	mov r6, #0
@@ -37106,7 +37106,7 @@ _02207328:
 	mov r1, r6
 	bl ov00_021FE968
 	ldr r0, [r4, #0x38]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	cmp r0, #0
 	bne _022072F8
 _02207344:
@@ -41653,7 +41653,7 @@ ov00_0220B1E8: ; 0x0220B1E8
 	mvneq r0, #0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	mov r4, #0
-	bl ov00_021FE6E4
+	bl ArrayLength
 	cmp r0, #0
 	ble _0220B260
 	ldr r8, _0220B268 ; =ov00_0221B200
@@ -41671,7 +41671,7 @@ _0220B220:
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	ldr r0, [r8, #4]
 	add r4, r4, #1
-	bl ov00_021FE6E4
+	bl ArrayLength
 	cmp r4, r0
 	blt _0220B220
 _0220B260:
@@ -41996,7 +41996,7 @@ ov00_0220B694: ; 0x0220B694
 	ldmmiia sp!, {r4, r5, r6, r7, pc}
 	ldr r0, _0220B794 ; =ov00_0221B200
 	ldr r0, [r0, #4]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	cmp r7, r0
 	addge sp, sp, #0x14
 	ldmgeia sp!, {r4, r5, r6, r7, pc}
@@ -42069,7 +42069,7 @@ ov00_0220B798: ; 0x0220B798
 	cmp r0, #0
 	addeq sp, sp, #0x24
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, pc}
-	bl ov00_021FE6E4
+	bl ArrayLength
 	subs r4, r0, #1
 	bmi _0220B85C
 	ldr r5, _0220B880 ; =ov00_02216164
@@ -43679,7 +43679,7 @@ ov00_0220CD24: ; 0x0220CD24
 	mov r7, r0
 	ldr r0, [r7, #0x60]
 	mov r6, r1
-	bl ov00_021FE6E4
+	bl ArrayLength
 	mov r5, r0
 	cmp r5, #0
 	mov r4, #0
@@ -44049,7 +44049,7 @@ ov00_0220D194: ; 0x0220D194
 	add r1, sp, #0x18
 	bl ov00_0220F958
 	ldr r0, [r5, #0x98]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	cmp r0, #0
 	beq _0220D1F8
 	str r4, [sp]
@@ -44283,7 +44283,7 @@ ov00_0220D430: ; 0x0220D430
 	mov r4, r0
 	ldr r0, [r4, #0x60]
 	mov r7, r1
-	bl ov00_021FE6E4
+	bl ArrayLength
 	movs r5, r0
 	moveq r0, #1
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
@@ -44317,7 +44317,7 @@ _0220D49C:
 	bne _0220D49C
 _0220D4B4:
 	ldr r0, [r4, #0x60]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	movs r6, r0
 	bne _0220D4D4
 	mov r0, #0
@@ -44365,7 +44365,7 @@ ov00_0220D52C: ; 0x0220D52C
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, r6, pc}
 	ldr r0, [r6, #0x9c]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	cmp r0, #0
 	beq _0220D594
 	mov r1, #0
@@ -44411,7 +44411,7 @@ ov00_0220D5BC: ; 0x0220D5BC
 	ldmia sp!, {r3, r4, r5, r6, pc}
 _0220D5F8:
 	ldr r0, [r6, #0x9c]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	cmp r0, #0
 	beq _0220D638
 	mov ip, #1
@@ -44797,7 +44797,7 @@ ov00_0220DAFC: ; 0x0220DAFC
 	mov r7, r2
 	mov r6, r3
 	ldr r5, [sp, #0x34]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	mov r4, r0
 	cmp r4, #0
 	mov sl, #0
@@ -44841,7 +44841,7 @@ _0220DB78:
 	ldr r2, _0220DCAC ; =ov00_0220DAE8
 	bl ov00_021FE858
 	ldr r0, [sb, #0x5c]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	add r1, r4, #1
 	cmp r1, r0
 	movne r0, #1
@@ -44916,7 +44916,7 @@ ov00_0220DCB0: ; 0x0220DCB0
 	mov r8, #0
 	bl ov00_021FE968
 	ldr r0, [sb, #0x5c]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	mov r6, r0
 	cmp r6, #0
 	mov r7, r8
@@ -44952,7 +44952,7 @@ ov00_0220DD34: ; 0x0220DD34
 	mov r6, r0
 _0220DD3C:
 	ldr r0, [r6, #0x5c]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	subs r5, r0, #1
 	bmi _0220DDAC
 _0220DD4C:
@@ -45144,7 +45144,7 @@ _0220DFBC:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _0220DFD4:
 	ldr r0, [r4, #0x60]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	mov r8, r0
 	cmp r8, #0
 	mov sb, #0
@@ -45672,13 +45672,13 @@ ov00_0220E6C0: ; 0x0220E6C0
 	bl ov00_021FF368
 	str r0, [sp, #0xc]
 	ldr r0, [r5, #0x60]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	mov r4, r0
 	ldr r0, [r5, #0x60]
 	add r1, sp, #0
 	bl ov00_021FE754
 	ldr r0, [r5, #0x60]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	add r1, r4, #1
 	cmp r1, r0
 	moveq r0, #1
@@ -45748,7 +45748,7 @@ ov00_0220E7F8: ; 0x0220E7F8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r0, [r5, #0x60]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	mov r4, r0
 	cmp r4, #0
 	bgt _0220E828
@@ -46639,7 +46639,7 @@ ov00_0220F3B0: ; 0x0220F3B0
 	ldr r0, [r1, #8]
 	bne _0220F45C
 	ldr r0, [r0, #0x10]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	mov r4, r0
 	mov r5, #0
 	cmp r4, #0
@@ -46844,7 +46844,7 @@ ov00_0220F6B0: ; 0x0220F6B0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r0, [r5, #0x10]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	subs r4, r0, #1
 	ldmmiia sp!, {r3, r4, r5, pc}
 _0220F6C8:
@@ -47079,7 +47079,7 @@ ov00_0220F9A8: ; 0x0220F9A8
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r5, #0
-	bl ov00_021FE6E4
+	bl ArrayLength
 	cmp r0, #0
 	ble _0220FA04
 	ldr r4, _0220FA0C ; =ov00_0221B664
@@ -47092,7 +47092,7 @@ _0220F9D8:
 	ldmeqia sp!, {r4, r5, r6, pc}
 	ldr r0, [r4, #0x10]
 	add r5, r5, #1
-	bl ov00_021FE6E4
+	bl ArrayLength
 	cmp r5, r0
 	blt _0220F9D8
 _0220FA04:
@@ -47151,7 +47151,7 @@ _0220FA9C:
 	bl ov00_021FE754
 	ldr r0, _0220FAD0 ; =ov00_0221B664
 	ldr r0, [r0, #0x10]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	ldr r2, _0220FAD0 ; =ov00_0221B664
 	sub r1, r0, #1
 	ldr r0, [r2, #0x10]
@@ -47170,7 +47170,7 @@ ov00_0220FAD8: ; 0x0220FAD8
 	mov r6, r0
 	ldr r0, [r1, #0x10]
 	mov r5, #0
-	bl ov00_021FE6E4
+	bl ArrayLength
 	cmp r0, #0
 	ldmleia sp!, {r4, r5, r6, pc}
 	ldr r4, _0220FB3C ; =ov00_0221B664
@@ -47188,7 +47188,7 @@ _0220FAFC:
 _0220FB24:
 	ldr r0, [r4, #0x10]
 	add r5, r5, #1
-	bl ov00_021FE6E4
+	bl ArrayLength
 	cmp r5, r0
 	blt _0220FAFC
 	ldmia sp!, {r4, r5, r6, pc}
@@ -47828,7 +47828,7 @@ ov00_022103C4: ; 0x022103C4
 	ldr r0, [r0, #0x10]
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
-	bl ov00_021FE6E4
+	bl ArrayLength
 	subs r5, r0, #1
 	ldmmiia sp!, {r3, r4, r5, pc}
 	ldr r4, _02210404 ; =ov00_0221B664
@@ -51577,7 +51577,7 @@ _022134D0:
 	bl ov00_02214908
 _022134E0:
 	ldr r0, [r6, #4]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	cmp r0, #0
 	ldrne r0, [r4, #0x10]
 	cmpne r0, #0
@@ -52201,7 +52201,7 @@ ov00_02213CA8: ; 0x02213CA8
 	mov r7, r0
 	ldr r0, [r7, #4]
 	mov r6, r1
-	bl ov00_021FE6E4
+	bl ArrayLength
 	mov r4, r0
 	cmp r4, #0
 	mov r5, #0
@@ -52229,7 +52229,7 @@ ov00_02213CFC: ; 0x02213CFC
 	ldr r0, [sb, #4]
 	mov r8, r1
 	mov r7, r2
-	bl ov00_021FE6E4
+	bl ArrayLength
 	mov r4, r0
 	cmp r4, #0
 	mov r6, #0
@@ -52301,11 +52301,11 @@ ov00_02213DA0: ; 0x02213DA0
 
 	arm_func_start ov00_02213DEC
 ov00_02213DEC: ; 0x02213DEC
-	ldr ip, _02213DF8 ; =ov00_021FE6E4
+	ldr ip, _02213DF8 ; =ArrayLength
 	ldr r0, [r0, #4]
 	bx ip
 	.balign 4, 0
-_02213DF8: .word ov00_021FE6E4
+_02213DF8: .word ArrayLength
 	arm_func_end ov00_02213DEC
 
 	arm_func_start ov00_02213DFC
@@ -52350,7 +52350,7 @@ ov00_02213E68: ; 0x02213E68
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	ldr r0, [r6, #4]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	mov r5, r0
 	cmp r5, #0
 	mov r4, #0
@@ -53115,7 +53115,7 @@ ov00_022148A4: ; 0x022148A4
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r4, #0
-	bl ov00_021FE6E4
+	bl ArrayLength
 	cmp r0, #0
 	ble _022148F4
 _022148C8:
@@ -53127,7 +53127,7 @@ _022148C8:
 	bl ov00_02213F58
 	ldr r0, [r5, #8]
 	add r4, r4, #1
-	bl ov00_021FE6E4
+	bl ArrayLength
 	cmp r4, r0
 	blt _022148C8
 _022148F4:
@@ -53296,7 +53296,7 @@ ov00_02214AF4: ; 0x02214AF4
 	ldr r0, [r8, #8]
 	mov r7, r1
 	mov r6, r2
-	bl ov00_021FE6E4
+	bl ArrayLength
 	mov r4, r0
 	cmp r4, #0
 	mov r5, #0
@@ -53474,7 +53474,7 @@ _02214D70:
 	tst r0, #0x40
 	beq _02214EA0
 	ldr r0, [sl, #8]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	mov r4, r0
 	cmp r4, #0
 	mov r5, #0
@@ -53815,7 +53815,7 @@ _022151FC:
 	sub r6, r6, #1
 _02215244:
 	ldr r0, [r7, #8]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	ldr r1, [r7, #0x484]
 	cmp r1, r0
 	ble _022152C4
@@ -53843,13 +53843,13 @@ _02215260:
 	ldr r0, [r7, #8]
 	add r5, r5, r1
 	sub r6, r6, r1
-	bl ov00_021FE6E4
+	bl ArrayLength
 	ldr r1, [r7, #0x484]
 	cmp r1, r0
 	bgt _02215260
 _022152C4:
 	ldr r0, [r7, #8]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	ldr r1, [r7, #0x484]
 	cmp r1, r0
 	bgt _02215424
@@ -55343,12 +55343,13 @@ ov00_02216BAC:
 	.balign 4, 0
 
 ov00_02216BF0:
-	.byte 0x01, 0x00, 0x01, 0x00
+	.byte 0x01, 0x00, 0x01
+	.balign 4, 0
 ov00_02216BF4:
 	.word ov00_02216C08
-	.byte 0x00, 0x01, 0x00, 0x00
+	.word 0x00000100
 	.word ov00_02216C3C
-	.byte 0x03, 0x00, 0x00, 0x00
+	.word 0x00000003
 	.word ov00_02216BF0
 ov00_02216C08:
 	.asciz "BE, GlobalSign nv-sa, Root CA, GlobalSign Root CA"
@@ -55372,14 +55373,16 @@ ov00_02216C3C:
 	.byte 0xD7, 0x83, 0x34, 0xFF, 0x2C, 0x2A, 0xC1, 0x6C, 0x19, 0x43, 0x4A, 0x07, 0x85, 0xE7, 0xD3, 0x7C
 	.byte 0xF6, 0x21, 0x68, 0xEF, 0xEA, 0xF2, 0x52, 0x9F, 0x7F, 0x93, 0x90, 0xCF
 
+	.balign 4, 0
 ov00_02216D3C:
-	.byte 0x01, 0x00, 0x01, 0x00
+	.byte 0x01, 0x00, 0x01
+	.balign 4, 0
 
 ov00_02216D40:
 	.word ov00_02216D54
-	.byte 0x00, 0x01, 0x00, 0x00
+	.word 0x00000100
 	.word ov00_02216D8C
-	.byte 0x03, 0x00, 0x00, 0x00
+	.word 0x00000003
 	.word ov00_02216D3C
 
 ov00_02216D54:
@@ -55404,14 +55407,16 @@ ov00_02216D8C:
 	.byte 0x3A, 0x6B, 0x97, 0x74, 0x63, 0x33, 0xBD, 0x68, 0x18, 0x31, 0xF0, 0x78, 0x8D, 0x76, 0xBF, 0xFC
 	.byte 0x9E, 0x8E, 0x5D, 0x2A, 0x86, 0xA7, 0x4D, 0x90, 0xDC, 0x27, 0x1A, 0x39
 
+	.balign 4, 0
 ov00_02216E8C:
-	.byte 0x01, 0x00, 0x01, 0x00
+	.byte 0x01, 0x00, 0x01
+	.balign 4, 0
 
 ov00_02216E90:
 	.word ov00_02216EA4
-	.byte 0x80, 0x00, 0x00, 0x00
+	.word 0x00000080
 	.word ov00_02216EF4
-	.byte 0x03, 0x00, 0x00, 0x00
+	.word 0x00000003
 	.word ov00_02216E8C
 
 ov00_02216EA4:
@@ -55429,14 +55434,16 @@ ov00_02216EF4:
 	.byte 0xAA, 0x93, 0x69, 0x26, 0x85, 0x70, 0x48, 0x80, 0x3F, 0x12, 0x15, 0xC7, 0x79, 0xB4, 0x1F, 0x05
 	.byte 0x2F, 0x3B, 0x62, 0x99
 
+	.balign 4, 0
 ov00_02216F74:
-	.byte 0x01, 0x00, 0x01, 0x00
+	.byte 0x01, 0x00, 0x01
+	.balign 4, 0
 
 ov00_02216F78:
 	.word ov00_02216F8C
-	.byte 0x80, 0x00, 0x00, 0x00
+	.word 0x00000080
 	.word ov00_02216FB8
-	.byte 0x03, 0x00, 0x00, 0x00
+	.word 0x00000003
 	.word ov00_02216F74
 
 ov00_02216F8C:
@@ -55454,14 +55461,16 @@ ov00_02216FB8:
 	.byte 0xDF, 0xF9, 0xD4, 0xA8, 0x8E, 0x42, 0xCC, 0x24, 0xC0, 0x1E, 0x91, 0x27, 0x4A, 0xB5, 0x6D, 0x06
 	.byte 0x80, 0x63, 0x39, 0xC4, 0xA2, 0x5E, 0x38, 0x03
 
+	.balign 4, 0
 ov00_02217038:
-	.byte 0x01, 0x00, 0x01, 0x00
+	.byte 0x01, 0x00, 0x01
+	.balign 4, 0
 
 ov00_0221703C:
 	.word ov00_02217050
-	.byte 0x80, 0x00, 0x00, 0x00
+	.word 0x00000080
 	.word ov00_022170A0
-	.byte 0x03, 0x00, 0x00, 0x00
+	.word 0x00000003
 	.word ov00_02217038
 
 ov00_02217050:
@@ -55478,14 +55487,16 @@ ov00_022170A0:
 	.byte 0x3D, 0xBF, 0xE2, 0x4B, 0x49, 0xEC, 0xCE, 0x66, 0x98, 0x58, 0x26, 0x12, 0xC0, 0xFB, 0xF4, 0x77
 	.byte 0x65, 0x1B, 0xEA, 0xFB, 0xCB, 0x7F, 0xE0, 0x8C, 0xCB, 0x02, 0xA3, 0x4E, 0x5E, 0x8C, 0xEA, 0x9B
 
+	.balign 4, 0
 ov00_02217120:
-	.byte 0x01, 0x00, 0x01, 0x00
+	.byte 0x01, 0x00, 0x01
+	.balign 4, 0
 
 ov00_02217124:
 	.word ov00_022171B8
-	.byte 0x80, 0x00, 0x00, 0x00
+	.word 0x00000080
 	.word ov00_02217138
-	.byte 0x03, 0x00, 0x00, 0x00
+	.word 0x00000003
 	.word ov00_02217120
 
 ov00_02217138:
@@ -55502,27 +55513,22 @@ ov00_02217138:
 ov00_022171B8:
 	.asciz "ZA, Western Cape, Cape Town, Thawte Consulting cc, Certification Services Division, Thawte Premium Server CA, premium-server@thawte.com"
 
+	.balign 4, 0
 ov00_02217240:
-	.byte 0x01, 0x00, 0x01, 0x00
+	.byte 0x01, 0x00, 0x01
+	.balign 4, 0
 
 ov00_02217244:
 	.word ov00_02217258
-	.byte 0x80, 0x00, 0x00, 0x00
+	.word 0x00000080
 	.word ov00_022182D8
-	.byte 0x03, 0x00, 0x00, 0x00
+	.word 0x00000003
 	.word ov00_02217240
 
 ov00_02217258:
-	.byte 0x5A, 0x41, 0x2C, 0x20, 0x57, 0x65, 0x73, 0x74
-	.byte 0x65, 0x72, 0x6E, 0x20, 0x43, 0x61, 0x70, 0x65, 0x2C, 0x20, 0x43, 0x61, 0x70, 0x65, 0x20, 0x54
-	.byte 0x6F, 0x77, 0x6E, 0x2C, 0x20, 0x54, 0x68, 0x61, 0x77, 0x74, 0x65, 0x20, 0x43, 0x6F, 0x6E, 0x73
-	.byte 0x75, 0x6C, 0x74, 0x69, 0x6E, 0x67, 0x20, 0x63, 0x63, 0x2C, 0x20, 0x43, 0x65, 0x72, 0x74, 0x69
-	.byte 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6F, 0x6E, 0x20, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65
-	.byte 0x73, 0x20, 0x44, 0x69, 0x76, 0x69, 0x73, 0x69, 0x6F, 0x6E, 0x2C, 0x20, 0x54, 0x68, 0x61, 0x77
-	.byte 0x74, 0x65, 0x20, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x20, 0x43, 0x41, 0x2C, 0x20, 0x73, 0x65
-	.byte 0x72, 0x76, 0x65, 0x72, 0x2D, 0x63, 0x65, 0x72, 0x74, 0x73, 0x40, 0x74, 0x68, 0x61, 0x77, 0x74
-	.byte 0x65, 0x2E, 0x63, 0x6F, 0x6D, 0x00, 0x00, 0x00
+	.asciz "ZA, Western Cape, Cape Town, Thawte Consulting cc, Certification Services Division, Thawte Server CA, server-certs@thawte.com"
 
+	.balign 4, 0
 ov00_022182D8:
 	.byte 0xD3, 0xA4, 0x50, 0x6E, 0xC8, 0xFF, 0x56, 0x6B
 	.byte 0xE6, 0xCF, 0x5D, 0xB6, 0xEA, 0x0C, 0x68, 0x75, 0x47, 0xA2, 0xAA, 0xC2, 0xDA, 0x84, 0x25, 0xFC
@@ -55534,14 +55540,16 @@ ov00_022182D8:
 	.byte 0x5D, 0xC3, 0x58, 0xE1, 0xC0, 0xE4, 0xD9, 0x5B, 0xB0, 0xB8, 0xDC, 0xB4, 0x7B, 0xDF, 0x36, 0x3A
 	.byte 0xC2, 0xB5, 0x66, 0x22, 0x12, 0xD6, 0x87, 0x0D
 
+	.balign 4, 0
 ov00_02217358:
-	.byte 0x01, 0x00, 0x01, 0x00
+	.byte 0x01, 0x00, 0x01
+	.balign 4, 0
 
 ov00_0221735C:
 	.word ov00_022173F0
-	.byte 0x80, 0x00, 0x00, 0x00
+	.word 0x00000080
 	.word ov00_02217370
-	.byte 0x03, 0x00, 0x00, 0x00
+	.word 0x00000003
 	.word ov00_02217358
 
 ov00_02217370:
@@ -55558,14 +55566,16 @@ ov00_022173F0:
 	.asciz "US, VeriSign, Inc., Class 3 Public Primary Certification Authority - G2, (c) 1998 VeriSign, Inc. - For authorized use only, VeriSign Trust Network"
 	.balign 4, 0
 
+	.balign 4, 0
 ov00_02217484:
-	.byte 0x01, 0x00, 0x01, 0x00
+	.byte 0x01, 0x00, 0x01
+	.balign 4, 0
 
 ov00_02217488:
 	.word ov00_0221749C
-	.byte 0x00, 0x01, 0x00, 0x00
+	.word 0x00000100
 	.word ov00_02217538
-	.byte 0x03, 0x00, 0x00, 0x00
+	.word 0x00000003
 	.word ov00_02217484
 
 ov00_0221749C:
@@ -55591,14 +55601,16 @@ ov00_02217538:
 	.byte 0x0E, 0xE6, 0x53, 0x24, 0x74, 0x1B, 0x5E, 0x1D, 0x12, 0x53, 0x5B, 0xC7, 0x2C, 0xE7, 0x83, 0x49
 	.byte 0x3B, 0x15, 0xAE, 0x8A, 0x68, 0xB9, 0x57, 0x97
 
+	.balign 4, 0
 ov00_02217638:
-	.byte 0x01, 0x00, 0x01, 0x00
+	.byte 0x01, 0x00, 0x01
+	.balign 4, 0
 
 ov00_0221763C:
 	.word ov00_02217650
-	.byte 0x80, 0x00, 0x00, 0x00
+	.word 0x00000080
 	.word ov00_02217694
-	.byte 0x03, 0x00, 0x00, 0x00
+	.word 0x00000003
 	.word ov00_02217638
 
 ov00_02217650:
@@ -55616,14 +55628,16 @@ ov00_02217694:
 	.byte 0x9A, 0xFE, 0x24, 0x45, 0x33, 0xDC, 0x76, 0x15, 0xED, 0x0F, 0xA2, 0x71, 0x64, 0x4C, 0x65, 0x2E
 	.byte 0x81, 0x68, 0x45, 0xA7
 
+	.balign 4, 0
 ov00_02217714:
-	.byte 0x01, 0x00, 0x01, 0x00
+	.byte 0x01, 0x00, 0x01
+	.balign 4, 0
 
 ov00_02217718:
 	.word ov00_0221772C
-	.byte 0x7D, 0x00, 0x00, 0x00
+	.word 0x0000007D
 	.word ov00_02217770
-	.byte 0x03, 0x00, 0x00, 0x00
+	.word 0x00000003
 	.word ov00_02217714
 
 ov00_0221772C:
@@ -55638,16 +55652,18 @@ ov00_02217770:
 	.byte 0x6C, 0x88, 0x07, 0x8F, 0xF7, 0x81, 0x59, 0x6D, 0x84, 0x07, 0x65, 0x70, 0x13, 0x71, 0x76, 0x3E
 	.byte 0x9B, 0x77, 0x4C, 0xE3, 0x50, 0x89, 0x56, 0x98, 0x48, 0xB9, 0x1D, 0xA7, 0x29, 0x1A, 0x13, 0x2E
 	.byte 0x4A, 0x11, 0x59, 0x9C, 0x1E, 0x15, 0xD5, 0x49, 0x54, 0x2C, 0x73, 0x3A, 0x69, 0x82, 0xB1, 0x97
-	.byte 0x39, 0x9C, 0x6D, 0x70, 0x67, 0x48, 0xE5, 0xDD, 0x2D, 0xD6, 0xC8, 0x1E, 0x7B, 0x00, 0x00, 0x00
+	.byte 0x39, 0x9C, 0x6D, 0x70, 0x67, 0x48, 0xE5, 0xDD, 0x2D, 0xD6, 0xC8, 0x1E, 0x7B
 
+	.balign 4, 0
 ov00_022177F0:
-	.byte 0x01, 0x00, 0x01, 0x00
+	.byte 0x01, 0x00, 0x01
+	.balign 4, 0
 
 ov00_022177F4:
 	.word ov00_02217808
-	.byte 0x00, 0x01, 0x00, 0x00
+	.word 0x00000100
 	.word ov00_02217838
-	.byte 0x03, 0x00, 0x00, 0x00
+	.word 0x00000003
 	.word ov00_022177F0
 
 ov00_02217808:
@@ -55672,6 +55688,7 @@ ov00_02217838:
 	.byte 0x8A, 0x5A, 0xCE, 0xAF, 0xAB, 0xD5, 0xF7, 0xAA, 0x09, 0xAA, 0x60, 0xBD, 0xDC, 0xD9, 0x5F, 0xDF
 	.byte 0x72, 0xA9, 0x60, 0x13, 0x5E, 0x00, 0x01, 0xC9, 0x4A, 0xFA, 0x3F, 0xA4, 0xEA, 0x07, 0x03, 0x21
 	.byte 0x02, 0x8E, 0x82, 0xCA, 0x03, 0xC2, 0x9B, 0x8F
+	.balign 4, 0
 ov00_02217938:
 	.asciz "https://nas.test.nintendowifi.net/ac"
 	.balign 4, 0

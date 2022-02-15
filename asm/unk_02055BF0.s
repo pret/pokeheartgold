@@ -63,7 +63,7 @@ sub_02055BF0: ; 0x02055BF0
 	mov r0, #0
 	str r0, [r2]
 	add r0, r7, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02055C2C: .word sub_02055C30
@@ -74,10 +74,10 @@ sub_02055C30: ; 0x02055C30
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -149,7 +149,7 @@ sub_02055C9C: ; 0x02055C9C
 	ldr r0, [sp, #0x20]
 	str r0, [r2, #0x1c]
 	add r0, r7, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02055CD4: .word sub_02055DBC
@@ -259,7 +259,7 @@ _02055DA8:
 	add r0, r7, #0
 	add r2, r6, #0
 	str r4, [r6, #0x1c]
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -270,10 +270,10 @@ _02055DB8: .word sub_02055DBC
 sub_02055DBC: ; 0x02055DBC
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrb r0, [r4]
 	cmp r0, #9
@@ -301,7 +301,7 @@ _02055DF4:
 	str r0, [r4, #0x24]
 	strb r0, [r4, #1]
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02055E20
 	add r0, r5, #0
@@ -317,7 +317,7 @@ _02055DF4:
 	b _02055FF2
 _02055E20:
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02055E5E
 	add r0, r5, #0
@@ -329,7 +329,7 @@ _02055E20:
 	cmp r0, #1
 	beq _02055E5E
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r5, r0, #0
 	bl sub_02069F7C
 	ldr r1, [r4, #4]
@@ -364,9 +364,9 @@ _02055E76:
 	ldr r1, _02055FF8 ; =_020FC748
 	ldr r1, [r1, r2]
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02055EB2
 	add r0, r5, #0
@@ -381,11 +381,11 @@ _02055E76:
 	bl ov01_022057D0
 _02055EB2:
 	ldr r0, [r5, #0xc]
-	bl sub_0202ED34
+	bl Sav2_FollowPoke_get
 	add r1, r0, #0
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
-	bl sub_0202ED40
+	bl SavFollowPoke_SetMapId
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
 	str r0, [r4, #0x20]
@@ -484,12 +484,12 @@ _02055F78:
 	ldr r1, _02056000 ; =_020FC724
 	ldr r1, [r1, r2]
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02055FC8
 	add r0, r5, #0
@@ -500,7 +500,7 @@ _02055F78:
 	mov r1, #1
 	bl sub_02069E84
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	add r0, r5, #0
@@ -541,9 +541,9 @@ _02056000: .word _020FC724
 sub_02056004: ; 0x02056004
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrh r0, [r4, #2]
 	cmp r0, #0
@@ -574,10 +574,10 @@ _0205603C: .word 0x00000602
 sub_02056040: ; 0x02056040
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrh r0, [r4, #2]
 	cmp r0, #3
@@ -597,10 +597,10 @@ _0205606C:
 	bl ov01_021E90C0
 	str r0, [r4, #0x18]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r1, r0, #0
 	ldr r2, [r4, #0x18]
 	add r0, r6, #0
@@ -641,10 +641,10 @@ _020560BE:
 sub_020560C4: ; 0x020560C4
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrh r0, [r4, #2]
 	cmp r0, #0
@@ -658,10 +658,10 @@ _020560E6:
 	bl ov01_021E90C0
 	str r0, [r4, #0x18]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r1, r0, #0
 	ldr r2, [r4, #0x18]
 	add r0, r6, #0
@@ -673,7 +673,7 @@ _020560E6:
 _0205610C:
 	ldr r0, [r5, #0x40]
 	ldr r6, [r4, #0x18]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r2, r0, #0
 	lsl r2, r2, #0x18
 	add r0, r5, #0
@@ -700,10 +700,10 @@ _02056138:
 sub_0205613C: ; 0x0205613C
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrh r0, [r4, #2]
 	cmp r0, #4
@@ -722,7 +722,7 @@ _02056160: ; jump table
 	.short _0205620C - _02056160 - 2 ; case 4
 _0205616A:
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _020561A0
 	add r0, r5, #0
@@ -730,12 +730,12 @@ _0205616A:
 	cmp r0, #0
 	beq _020561A0
 	add r0, r5, #0
-	bl sub_02069D68
-	bl sub_02062198
+	bl FollowingPokemon_GetMapObject
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	beq _02056218
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	mov r1, #0x37
 	bl sub_0205FC94
 	ldrh r0, [r4, #2]
@@ -749,20 +749,20 @@ _020561A0:
 	b _02056218
 _020561A8:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	cmp r6, #2
 	bne _020561C2
 	mov r1, #0xa
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	b _020561D2
 _020561C2:
 	cmp r6, #3
 	bne _020561CE
 	mov r1, #0xb
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	b _020561D2
 _020561CE:
 	bl GF_AssertFail
@@ -773,13 +773,13 @@ _020561D2:
 	b _02056218
 _020561DA:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
-	bl sub_02062198
+	bl MapObject_IsMovementPaused
 	cmp r0, #1
 	bne _02056218
 	add r0, r5, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]
@@ -810,13 +810,13 @@ _0205621C: .word 0x00000602
 sub_02056220: ; 0x02056220
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r6, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	ldrh r0, [r4, #2]
 	cmp r0, #0
 	beq _02056244
@@ -828,7 +828,7 @@ _02056244:
 	add r2, r0, #0
 	ldr r1, _02056264 ; =ov01_021E9F78
 	add r0, r5, #0
-	bl sub_02050530
+	bl QueueTask
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]
@@ -847,13 +847,13 @@ _02056264: .word ov01_021E9F78
 sub_02056268: ; 0x02056268
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r6, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	ldrh r0, [r4, #2]
 	cmp r0, #0
 	beq _0205628C
@@ -865,7 +865,7 @@ _0205628C:
 	add r2, r0, #0
 	ldr r1, _020562AC ; =ov01_021E9EEC
 	add r0, r5, #0
-	bl sub_02050530
+	bl QueueTask
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]
@@ -885,10 +885,10 @@ sub_020562B0: ; 0x020562B0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r5, r0, #0
 	ldrh r0, [r5, #2]
 	cmp r0, #3
@@ -908,9 +908,9 @@ _020562D8: ; jump table
 	.short _020563FC - _020562D8 - 2 ; case 3
 _020562E0:
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	str r0, [sp]
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	mov r1, #2
 	ldr r0, [r4, #0x40]
 	lsl r1, r1, #8
@@ -928,7 +928,7 @@ _020562E0:
 	mov r0, #0
 	str r0, [r7]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	str r0, [r7, #4]
 	ldr r0, [r4, #0x40]
 	mov r1, #0
@@ -936,13 +936,13 @@ _020562E0:
 	ldr r0, [r4, #0x2c]
 	bl ov01_021F6304
 	add r0, r4, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _0205638E
 	add r0, r4, #0
 	mov r7, #1
-	bl sub_02069D68
-	bl sub_0205F2A8
+	bl FollowingPokemon_GetMapObject
+	bl MapObject_GetFacingDirection
 	cmp r0, #3
 	bhi _02056368
 	add r0, r0, r0
@@ -975,10 +975,10 @@ _0205636E:
 	cmp r7, #0
 	beq _0205638E
 	ldr r0, [sp]
-	bl sub_0205F8FC
+	bl MapObject_GetPrevX
 	add r7, r0, #0
 	ldr r0, [sp]
-	bl sub_0205F90C
+	bl MapObject_GetPrevY
 	add r4, #0xe4
 	add r2, r0, #0
 	add r0, r6, #0
@@ -992,14 +992,14 @@ _0205638E:
 	b _02056418
 _02056396:
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	ldr r4, [r5, #0x18]
 	add r6, r0, #0
 	ldr r1, [r4]
 	add r1, r1, #1
 	str r1, [r4]
 	add r1, sp, #4
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r0, [r4, #4]
 	cmp r0, #1
 	bne _020563C8
@@ -1023,7 +1023,7 @@ _020563C8:
 _020563D2:
 	add r0, r6, #0
 	add r1, sp, #4
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	ldr r0, [r4]
 	cmp r0, #0x10
 	blt _02056418
@@ -1065,10 +1065,10 @@ sub_02056424: ; 0x02056424
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrh r0, [r4, #2]
 	cmp r0, #4
@@ -1087,27 +1087,27 @@ _0205644A: ; jump table
 	.short _02056508 - _0205644A - 2 ; case 4
 _02056454:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _02056524
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]
 	b _02056524
 _02056474:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _02056524
 	add r0, r6, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	mov r1, #2
 	ldr r0, [r5, #0x40]
 	lsl r1, r1, #8
@@ -1131,14 +1131,14 @@ _02056474:
 	b _02056524
 _020564BE:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	ldr r5, [r4, #0x18]
 	add r6, r0, #0
 	ldr r1, [r5]
 	add r1, r1, #1
 	str r1, [r5]
 	add r1, sp, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	mov r0, #2
 	ldr r1, [sp, #4]
 	lsl r0, r0, #0xc
@@ -1146,7 +1146,7 @@ _020564BE:
 	str r0, [sp, #4]
 	add r0, r6, #0
 	add r1, sp, #0
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	ldr r0, [r5]
 	cmp r0, #0x10
 	blt _02056524
@@ -1187,10 +1187,10 @@ _0205652C: .word 0x00000602
 sub_02056530: ; 0x02056530
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r5, r0, #0
 	ldrh r0, [r5, #2]
 	cmp r0, #3
@@ -1208,13 +1208,13 @@ _02056554: ; jump table
 	.short _020565F0 - _02056554 - 2 ; case 3
 _0205655C:
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r7, r0, #0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	str r0, [sp]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r2, r0, #0
 	ldr r1, [sp]
 	add r0, r4, #0
@@ -1233,7 +1233,7 @@ _02056592:
 	add r2, r0, #0
 	ldr r1, _020565F8 ; =ov01_021E9FF8
 	add r0, r6, #0
-	bl sub_02050530
+	bl QueueTask
 	mov r0, #3
 	strh r0, [r5, #2]
 	b _020565F4
@@ -1241,10 +1241,10 @@ _020565A6:
 	bl ov01_021E90C0
 	str r0, [r5, #0x18]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	add r6, r0, #0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r1, r0, #0
 	ldr r2, [r5, #0x18]
 	add r0, r6, #0
@@ -1263,7 +1263,7 @@ _020565CC:
 	add r0, r5, #0
 	bl ov01_021E90D4
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	mov r1, #0
 	bl sub_0205F690
 	mov r0, #1
@@ -1282,10 +1282,10 @@ _020565F8: .word ov01_021E9FF8
 sub_020565FC: ; 0x020565FC
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrh r0, [r4, #2]
 	cmp r0, #0
@@ -1295,13 +1295,13 @@ sub_020565FC: ; 0x020565FC
 	b _02056674
 _0205661A:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r7, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	str r0, [sp]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r2, r0, #0
 	ldr r1, [sp]
 	add r0, r5, #0
@@ -1317,14 +1317,14 @@ _0205661A:
 	ldr r1, _02056678 ; =sub_02056530
 	add r0, r6, #0
 	add r2, r4, #0
-	bl sub_02050510
+	bl NowRunTask
 	b _02056674
 _0205665A:
 	bl ov01_021E9C30
 	add r2, r0, #0
 	ldr r1, _0205667C ; =ov01_021EA128
 	add r0, r6, #0
-	bl sub_02050530
+	bl QueueTask
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0122_D39R0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You see the item over there?\rIt was me who dropped it, but I cannot\nget over there to pick it up.\rWhy?\rWalking on ice makes your feet freeze!\rMy shoes are so worn that the soles\nare gone!</language>
+	</row>
+	<row id="msg_0122_D39R0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You see the item over there?\rIt was me who dropped it, but I cannot\nget over there to pick it up.\rWhy?\rWalking on ice makes your feet freeze!\rMy shoes are so worn that the soles\nare gone!\r</language>
+	</row>
+	<row id="msg_0122_D39R0101_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The item you picked up over there...\nit was an HM, wasn’t it?\rI am the one who dropped it...but I\nwant you to keep it.\fYou took the time to get it, right?\rIt contains Waterfall.\nHave fun climbing waterfalls!\rMe?\rI still need a new pair of shoes\nbefore I can enjoy waterfalls.</language>
+	</row>
+	<row id="msg_0122_D39R0101_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Me oh my...\nIs that you, {STRVAR_1 3, 0, 0}?\fFancy meeting you here!\rTo tell the truth...my sandals are\nfrozen on the ice, and I am stuck here.\rIn other words, my flip-flops are\nquick-frozen to the ground.\rTee hee.\rWell, it’s no laughing matter. Would you\ncome around and push my back?</language>
+	</row>
+	<row id="msg_0122_D39R0101_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Me oh my...\nIs that you, {STRVAR_1 3, 0, 0}?\fFancy meeting you here!\rTo tell the truth...my sandals are\nfrozen on the ice, and I am stuck here.\rIn other words, my flip-flops are\nquick-frozen with the ground.\rTee hee.\rWell, it’s no laughing matter.\nWould you push my back? {YESNO 0}</language>
+	</row>
+	<row id="msg_0122_D39R0101_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{SIZE 200}SHOVE!{SIZE 100}\r</language>
+	</row>
+	<row id="msg_0122_D39R0101_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Don’t be so cruel.\nYou will push my back,\fwon’t you? {YESNO 0}</language>
+	</row>
+	<row id="msg_0122_D39R0101_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You really are kind.\rThank you so much!\r</language>
+	</row>
+</body>

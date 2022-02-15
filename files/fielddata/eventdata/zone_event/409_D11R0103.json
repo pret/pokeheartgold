@@ -1,0 +1,177 @@
+{
+  "header": "fielddata/script/scr_seq/event_D11R0103.h",
+  "bgs": [
+    {
+      "scr": "std_hiddenitem_d11r0103_pearl",
+      "type": 2,
+      "x": 5,
+      "y": 7,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_d11r0103_pearl_2",
+      "type": 2,
+      "x": 42,
+      "y": 18,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_EVERYWHERE_boarder",
+      "ovid": "SPRITE_BOARDER",
+      "mvt": 14,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_BOARDER_BRYCE)",
+      "dirn": 0,
+      "eye": 2,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 33,
+      "y": 14,
+      "z": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_boarder_2",
+      "ovid": "SPRITE_BOARDER",
+      "mvt": 20,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_BOARDER_SHAUN)",
+      "dirn": 2,
+      "eye": 2,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 4,
+      "yrange": 0,
+      "x": 25,
+      "y": 8,
+      "z": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_skierw",
+      "ovid": "SPRITE_SKIERW",
+      "mvt": 16,
+      "type": 1,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_trainer(TRAINER_SKIER_CADY)",
+      "dirn": 2,
+      "eye": 1,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 17,
+      "y": 7,
+      "z": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_monstarball",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D11R0103_WATER_STONE",
+      "scr": "std_itemball_d11r0103_water_stone",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 19,
+      "y": 25,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 34,
+      "y": 25,
+      "header": "MAP_D11R0102",
+      "anchor": 2,
+      "height": 0
+    },
+    {
+      "x": 15,
+      "y": 21,
+      "header": "MAP_D11R0102",
+      "anchor": 3,
+      "height": 0
+    },
+    {
+      "x": 18,
+      "y": 12,
+      "header": "MAP_D11R0102",
+      "anchor": 4,
+      "height": 0
+    },
+    {
+      "x": 9,
+      "y": 23,
+      "header": "MAP_D11R0102",
+      "anchor": 5,
+      "height": 0
+    },
+    {
+      "x": 43,
+      "y": 12,
+      "header": "MAP_D11R0104",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 42,
+      "y": 23,
+      "header": "MAP_D11R0104",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 23,
+      "y": 14,
+      "header": "MAP_D11R0104",
+      "anchor": 2,
+      "height": 0
+    },
+    {
+      "x": 5,
+      "y": 24,
+      "header": "MAP_D11R0104",
+      "anchor": 3,
+      "height": 0
+    },
+    {
+      "x": 34,
+      "y": 24,
+      "header": "MAP_D11R0102",
+      "anchor": 2,
+      "height": 0
+    },
+    {
+      "x": 18,
+      "y": 11,
+      "header": "MAP_D11R0102",
+      "anchor": 4,
+      "height": 0
+    },
+    {
+      "x": 15,
+      "y": 20,
+      "header": "MAP_D11R0102",
+      "anchor": 3,
+      "height": 0
+    },
+    {
+      "x": 9,
+      "y": 22,
+      "header": "MAP_D11R0102",
+      "anchor": 5,
+      "height": 0
+    }
+  ]
+}

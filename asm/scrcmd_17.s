@@ -20,24 +20,24 @@ ScrCmd_290: ; 0x0204E610
 	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0202A5F4
+	bl Pokedex_IsEnabled
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ScrCmd_290
 
-	thumb_func_start ScrCmd_291
-ScrCmd_291: ; 0x0204E640
+	thumb_func_start ScrCmd_GivePokedex
+ScrCmd_GivePokedex: ; 0x0204E640
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl Sav2_Pokedex_get
-	bl sub_0202A614
+	bl Pokedex_Enable
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ScrCmd_291
+	thumb_func_end ScrCmd_GivePokedex
 
 	thumb_func_start ScrCmd_292
 ScrCmd_292: ; 0x0204E654
@@ -53,7 +53,7 @@ ScrCmd_292: ; 0x0204E654
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B9B4
 	bl sub_0205C7C8
 	strh r0, [r4]
@@ -62,23 +62,23 @@ ScrCmd_292: ; 0x0204E654
 	.balign 4, 0
 	thumb_func_end ScrCmd_292
 
-	thumb_func_start ScrCmd_293
-ScrCmd_293: ; 0x0204E684
+	thumb_func_start ScrCmd_GiveRunningShoes
+ScrCmd_GiveRunningShoes: ; 0x0204E684
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B9B4
 	mov r1, #1
 	bl sub_0205C7DC
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_293
+	thumb_func_end ScrCmd_GiveRunningShoes
 
-	thumb_func_start ScrCmd_294
-ScrCmd_294: ; 0x0204E6A0
+	thumb_func_start ScrCmd_CheckBadge
+ScrCmd_CheckBadge: ; 0x0204E6A0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -109,10 +109,10 @@ _0204E6D2:
 	strh r0, [r6]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_294
+	thumb_func_end ScrCmd_CheckBadge
 
-	thumb_func_start ScrCmd_295
-ScrCmd_295: ; 0x0204E6E8
+	thumb_func_start ScrCmd_GiveBadge
+ScrCmd_GiveBadge: ; 0x0204E6E8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -135,7 +135,7 @@ _0204E706:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_295
+	thumb_func_end ScrCmd_GiveBadge
 
 	thumb_func_start ScrCmd_297
 ScrCmd_297: ; 0x0204E71C
@@ -159,8 +159,8 @@ ScrCmd_297: ; 0x0204E71C
 	.balign 4, 0
 	thumb_func_end ScrCmd_297
 
-	thumb_func_start ScrCmd_296
-ScrCmd_296: ; 0x0204E748
+	thumb_func_start ScrCmd_CountBadges
+ScrCmd_CountBadges: ; 0x0204E748
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -179,7 +179,7 @@ ScrCmd_296: ; 0x0204E748
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_296
+	thumb_func_end ScrCmd_CountBadges
 
 	thumb_func_start ScrCmd_298
 ScrCmd_298: ; 0x0204E774
@@ -193,8 +193,8 @@ ScrCmd_298: ; 0x0204E774
 	pop {r3, pc}
 	thumb_func_end ScrCmd_298
 
-	thumb_func_start ScrCmd_299
-ScrCmd_299: ; 0x0204E788
+	thumb_func_start ScrCmd_CheckEscortMode
+ScrCmd_CheckEscortMode: ; 0x0204E788
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -208,36 +208,36 @@ ScrCmd_299: ; 0x0204E788
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066644
+	bl ScriptState_CheckHaveFollower
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_299
+	thumb_func_end ScrCmd_CheckEscortMode
 
-	thumb_func_start ScrCmd_300
-ScrCmd_300: ; 0x0204E7B4
+	thumb_func_start ScrCmd_SetEscortMode
+ScrCmd_SetEscortMode: ; 0x0204E7B4
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066624
+	bl ScriptState_SetHaveFollowerFlag
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ScrCmd_300
+	thumb_func_end ScrCmd_SetEscortMode
 
-	thumb_func_start ScrCmd_301
-ScrCmd_301: ; 0x0204E7C8
+	thumb_func_start ScrCmd_ClearEscortMode
+ScrCmd_ClearEscortMode: ; 0x0204E7C8
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066634
+	bl ScriptState_ClearHaveFollowerFlag
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ScrCmd_301
+	thumb_func_end ScrCmd_ClearEscortMode
 
 	thumb_func_start ScrCmd_619
 ScrCmd_619: ; 0x0204E7DC
@@ -348,7 +348,7 @@ ScrCmd_305: ; 0x0204E88C
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066614
+	bl CheckGameClearFlag
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -362,13 +362,13 @@ ScrCmd_306: ; 0x0204E8B8
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066604
+	bl SetGameClearFlag
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ScrCmd_306
 
-	thumb_func_start ScrCmd_400
-ScrCmd_400: ; 0x0204E8CC
+	thumb_func_start ScrCmd_StrengthFlagAction
+ScrCmd_StrengthFlagAction: ; 0x0204E8CC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -389,11 +389,11 @@ ScrCmd_400: ; 0x0204E8CC
 	b _0204E920
 _0204E8F2:
 	mov r1, #1
-	bl sub_020668C0
+	bl StrengthFlagAction
 	b _0204E924
 _0204E8FA:
 	mov r1, #0
-	bl sub_020668C0
+	bl StrengthFlagAction
 	b _0204E924
 _0204E902:
 	add r0, r5, #0
@@ -405,7 +405,7 @@ _0204E902:
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_020668C0
+	bl StrengthFlagAction
 	strh r0, [r5]
 	b _0204E924
 _0204E920:
@@ -413,7 +413,7 @@ _0204E920:
 _0204E924:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_400
+	thumb_func_end ScrCmd_StrengthFlagAction
 
 	thumb_func_start ScrCmd_401
 ScrCmd_401: ; 0x0204E928

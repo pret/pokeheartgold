@@ -1,5 +1,6 @@
 CXXFLAGS := -std=c++17 -O2 -Wall -Wno-switch
 CFLAGS   := -O2 -Wall -Wno-switch
+LDFLAGS  :=
 
 ifeq ($(DEBUG),)
 CXXFLAGS += -DNDEBUG
@@ -10,9 +11,12 @@ DEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
 
 SRCS := \
 	msgenc.cpp \
+	Options.cpp \
 	MessagesConverter.cpp \
 	MessagesDecoder.cpp \
-	MessagesEncoder.cpp
+	MessagesEncoder.cpp \
+	Gmm.cpp \
+	pugixml.cpp
 
 OBJS := $(SRCS:%.cpp=%.o)
 

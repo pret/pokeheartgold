@@ -1,4 +1,0 @@
-Lighthouse elevator.\nGoing up to the light room.\r
-Lighthouse elevator.\nGoing down to the first floor.\r
-You’ve arrived at the light room.
-You’ve arrived at the first floor.

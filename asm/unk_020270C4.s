@@ -8,7 +8,7 @@ sub_020270C4: ; 0x020270C4
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x17
-	bl sub_02028900
+	bl SaveSubstruct_AssertCRC
 	add r0, r4, #0
 	mov r1, #0x17
 	bl SavArray_get
@@ -24,17 +24,17 @@ GetStoragePCPointer: ; 0x020270D8
 _020270E0: .word SavArray_get
 	thumb_func_end GetStoragePCPointer
 
-	thumb_func_start sub_020270E4
-sub_020270E4: ; 0x020270E4
+	thumb_func_start Save_MysteryGift_get
+Save_MysteryGift_get: ; 0x020270E4
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x1b
-	bl sub_02028900
+	bl SaveSubstruct_AssertCRC
 	add r0, r4, #0
 	mov r1, #0x1b
 	bl SavArray_get
 	pop {r4, pc}
-	thumb_func_end sub_020270E4
+	thumb_func_end Save_MysteryGift_get
 
 	thumb_func_start sub_020270F8
 sub_020270F8: ; 0x020270F8

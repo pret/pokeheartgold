@@ -1,0 +1,62 @@
+{
+  "header": "fielddata/script/scr_seq/event_D45R0101.h",
+  "objects": [
+    {
+      "id": "obj_D45R0101_stop",
+      "ovid": "SPRITE_STOP",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": 0,
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 27,
+      "y": 11,
+      "z": 589824
+    },
+    {
+      "id": "obj_D45R0101_monstarball",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D45R0101_MOON_STONE",
+      "scr": "std_itemball_d45r0101_moon_stone",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 23,
+      "y": 12,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 30,
+      "y": 22,
+      "header": "MAP_R27",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 45,
+      "y": 20,
+      "header": "MAP_R27",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 27,
+      "y": 11,
+      "header": "MAP_D45R0102",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

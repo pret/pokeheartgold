@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0518_T08R0601_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">My grandpa closed the Safari Zone\nand now that we have an empty lot,\fmy dad decided to run the Pal Park!\rIt seems that catching and releasing\nPokémon runs in my family.</language>
+	</row>
+	<row id="msg_0518_T08R0601_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AIPOM: Pom Pom...?</language>
+	</row>
+	<row id="msg_0518_T08R0601_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AIPOM: Pom Pom!</language>
+	</row>
+	<row id="msg_0518_T08R0601_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AIPOM: Pommm...</language>
+	</row>
+</body>

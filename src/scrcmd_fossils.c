@@ -14,8 +14,8 @@ static const u16 sFossilPokemonMap[7][2] = {
 };
 
 BOOL ScrCmd_CountFossils(SCRIPTCONTEXT* ctx) {
-    UnkSavStruct80* sav_ptr = ctx->unk80;
-    u16* ret_ptr = GetVarPointer(ctx->unk80, ScriptReadHalfword(ctx));
+    FieldSystem* sav_ptr = ctx->fsys;
+    u16* ret_ptr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
 
     u8 i;
     u16 total;
@@ -28,8 +28,8 @@ BOOL ScrCmd_CountFossils(SCRIPTCONTEXT* ctx) {
 }
 
 BOOL ScrCmd_GetFossilPokemon(SCRIPTCONTEXT* ctx) {
-    u16 *ret_ptr = GetVarPointer(ctx->unk80, ScriptReadHalfword(ctx));
-    u16 fossil_id = VarGet(ctx->unk80, ScriptReadHalfword(ctx));
+    u16 *ret_ptr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    u16 fossil_id = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
 
     *ret_ptr = 0;
     for (u16 i = 0; i < NELEMS(sFossilPokemonMap); i++) {
@@ -43,10 +43,10 @@ BOOL ScrCmd_GetFossilPokemon(SCRIPTCONTEXT* ctx) {
 }
 
 BOOL ScrCmd_GetFossilMinimumAmount(SCRIPTCONTEXT* ctx) {
-    UnkSavStruct80* sav_ptr = ctx->unk80;
-    u16* ret_ptr1 = GetVarPointer(ctx->unk80, ScriptReadHalfword(ctx));
-    u16* ret_ptr2 = GetVarPointer(ctx->unk80, ScriptReadHalfword(ctx));
-    u16 needed_amount = VarGet(ctx->unk80, ScriptReadHalfword(ctx));
+    FieldSystem* sav_ptr = ctx->fsys;
+    u16* ret_ptr1 = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    u16* ret_ptr2 = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    u16 needed_amount = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
 
     *ret_ptr1 = 0;
     *ret_ptr2 = 0;

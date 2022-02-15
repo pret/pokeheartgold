@@ -24,7 +24,7 @@ ov78_021E5900: ; 0x021E5900
 	bl OverlayManager_GetField18
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl sub_0205BD64
+	bl Save_GetLeadMonIdxForBugContest
 	add r6, r0, #0
 	cmp r5, #0
 	bne _021E593C
@@ -62,7 +62,7 @@ _021E5946:
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -136,22 +136,22 @@ _021E5A1A:
 	bl ov78_021E6068
 	add r0, r6, #0
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #5
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #7
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #1
 	str r0, [sp]
@@ -213,7 +213,7 @@ _021E5ABE:
 	str r0, [r5]
 	b _021E5B14
 _021E5AD0:
-	ldr r0, _021E5B1C ; =gMain
+	ldr r0, _021E5B1C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	and r0, r1
@@ -223,7 +223,7 @@ _021E5AD0:
 	and r0, r1
 	cmp r0, #2
 	beq _021E5AEC
-	ldr r0, _021E5B20 ; =gMain + 0x40
+	ldr r0, _021E5B20 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _021E5B14
@@ -252,8 +252,8 @@ _021E5B14:
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	nop
-_021E5B1C: .word gMain
-_021E5B20: .word gMain + 0x40
+_021E5B1C: .word gSystem
+_021E5B20: .word gSystem + 0x40
 	thumb_func_end ov78_021E59EC
 
 	thumb_func_start ov78_021E5B24
@@ -309,7 +309,7 @@ _021E5B84:
 	bl sub_0200D034
 _021E5B8E:
 	ldr r0, [r4, #0x14]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E5BA4 ; =0x027E0000
 	ldr r1, _021E5BA8 ; =0x00003FF8
 	mov r0, #1
@@ -454,28 +454,28 @@ _021E5BB8:
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #1
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #3
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #5
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #7
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add sp, #0x54
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -490,28 +490,28 @@ ov78_021E5D18: ; 0x021E5D18
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #1
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #3
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #5
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #7
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldr r0, [r4, #0x14]
 	mov r1, #0
 	bl FreeBgTilemapBuffer
@@ -641,27 +641,27 @@ ov78_021E5E54: ; 0x021E5E54
 	ldr r0, [r4, #0x14]
 	mov r1, #1
 	mov r2, #3
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r3, #0x40
 	ldrsh r3, [r4, r3]
 	ldr r0, [r4, #0x14]
 	mov r1, #5
 	mov r2, #3
 	add r3, #0xc0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r3, #0x40
 	ldrsh r3, [r4, r3]
 	ldr r0, [r4, #0x14]
 	mov r1, #0
 	mov r2, #3
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r3, #0x40
 	ldrsh r3, [r4, r3]
 	ldr r0, [r4, #0x14]
 	mov r1, #4
 	mov r2, #3
 	add r3, #0xc0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r4, #4]
 	cmp r0, #2
 	bne _021E5EA0
@@ -796,7 +796,7 @@ _021E5EEE:
 	mov r2, #0
 	ldr r0, [r5, #0x14]
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r0, [r5, #0x14]
 	mov r1, #1
 	bl BgCommitTilemapBufferToVram
@@ -840,7 +840,7 @@ _021E5EEE:
 	ldr r0, [r5, #0x14]
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r0, [r5, #0x14]
 	mov r1, #5
 	bl BgCommitTilemapBufferToVram
@@ -1221,7 +1221,7 @@ ov78_021E628C: ; 0x021E628C
 	mov r1, #5
 	mov r2, #0
 	bl GetMonData
-	bl sub_0206A304
+	bl SpeciesToOverworldModelIndexOffset
 	add r2, r0, #0
 	add r0, sp, #0
 	mov r1, #0x8d
@@ -1461,7 +1461,7 @@ ov78_021E636C: ; 0x021E636C
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -1650,11 +1650,11 @@ _021E669A:
 	mov r4, #1
 	b _021E66C6
 _021E669E:
-	bl sub_0206A304
+	bl SpeciesToOverworldModelIndexOffset
 	ldr r1, _021E66D0 ; =0x00000129
 	add r4, r0, r1
 	add r0, r5, #0
-	bl sub_0206A338
+	bl OverworldModelLookupHasFemaleForme
 	cmp r0, #0
 	beq _021E66B8
 	cmp r7, #1
@@ -1663,7 +1663,7 @@ _021E669E:
 	b _021E66C6
 _021E66B8:
 	add r0, r5, #0
-	bl sub_0206A310
+	bl OverworldModelLookupFormeCount
 	cmp r6, r0
 	ble _021E66C4
 	mov r6, #0

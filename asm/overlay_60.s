@@ -1,3 +1,5 @@
+#include "constants/sndseq.h"
+#include "constants/species.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 	.public ov62_021E68CC
@@ -19,7 +21,7 @@ ov60_021E5900: ; 0x021E5900
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -131,7 +133,7 @@ _021E5A06:
 	mov r1, #0x1e
 	lsl r0, r0, #2
 	str r1, [r4, r0]
-	ldr r0, _021E5C94 ; =gMain
+	ldr r0, _021E5C94 ; =gSystem
 	str r2, [r0, #0x70]
 	mov r0, #1
 	str r0, [r5]
@@ -140,7 +142,7 @@ _021E5A20:
 	mov r0, #0
 	bl sub_02004AD8
 	mov r0, #1
-	mov r1, #0x3f
+	mov r1, #SEQ_GS_POKEMON_THEME>>4
 	lsl r1, r1, #4
 	add r2, r0, #0
 	bl sub_02004EC4
@@ -179,7 +181,7 @@ _021E5A5A:
 	mov r2, #1
 	add r1, r1, #1
 	str r1, [r4, r0]
-	ldr r1, _021E5C94 ; =gMain
+	ldr r1, _021E5C94 ; =gSystem
 	ldr r3, [r1, #0x48]
 	add r6, r3, #0
 	and r6, r2
@@ -189,7 +191,7 @@ _021E5A5A:
 	and r3, r7
 	cmp r3, #8
 	beq _021E5A94
-	ldr r3, _021E5C98 ; =gMain + 0x40
+	ldr r3, _021E5C98 ; =gSystem + 0x40
 	ldrh r3, [r3, #0x24]
 	cmp r3, #0
 	beq _021E5AD2
@@ -202,15 +204,15 @@ _021E5A94:
 	mov r1, #0x3c
 	bl GF_SndStartFadeOutBGM
 #ifdef HEARTGOLD
-	mov r0, #0xfa ; HO-OH
+	mov r0, #SPECIES_HO_OH
 #else
-	mov r0, #0xf9 ; LUGIA
+	mov r0, #SPECIES_LUGIA
 #endif
 	mov r1, #0
 	bl PlayCry
 	mov r0, #1
 	mov r1, #0x30
-	bl sub_020054AC
+	bl GF_SetVolumeBySeqNo
 	mov r0, #5
 	str r0, [sp]
 	mov r0, #1
@@ -330,7 +332,7 @@ _021E5BA0:
 	mov r0, #0x3f
 	lsl r0, r0, #4
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #1
@@ -364,7 +366,7 @@ _021E5BD0:
 	mov r0, #0x3f
 	lsl r0, r0, #4
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #1
@@ -398,7 +400,7 @@ _021E5C1C:
 	mov r0, #0x3f
 	lsl r0, r0, #4
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #1
@@ -435,8 +437,8 @@ _021E5C8E:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_021E5C94: .word gMain
-_021E5C98: .word gMain + 0x40
+_021E5C94: .word gSystem
+_021E5C98: .word gSystem + 0x40
 _021E5C9C: .word 0x00007FFF
 _021E5CA0: .word 0x00000924
 	thumb_func_end ov60_021E59C8
@@ -527,9 +529,9 @@ ov60_021E5D44: ; 0x021E5D44
 	cmp r0, #0
 	beq _021E5D66
 	mov r0, #0
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	mov r0, #1
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	mov r0, #0xbd
 	mov r1, #0
 	lsl r0, r0, #2
@@ -543,7 +545,7 @@ _021E5D66:
 	bl sub_0200398C
 _021E5D74:
 	ldr r0, [r4, #4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	pop {r4, pc}
 	thumb_func_end ov60_021E5D44
 
@@ -1055,16 +1057,16 @@ ov60_021E6074: ; 0x021E6074
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0
 	add r1, r0, #0
 	bl BG_SetMaskColor
@@ -1101,16 +1103,16 @@ ov60_021E61C8: ; 0x021E61C8
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #4]
 	mov r1, #3
 	bl FreeBgTilemapBuffer
@@ -1306,7 +1308,7 @@ _021E62C0:
 	mov r0, #0x10
 	orr r0, r1
 	strh r0, [r2]
-	ldr r0, _021E6418 ; =gMain + 0x60
+	ldr r0, _021E6418 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -1350,7 +1352,7 @@ _021E6408: .word 0x04000060
 _021E640C: .word 0xFFFFCFFF
 _021E6410: .word 0x00007FFF
 _021E6414: .word 0x000001E2
-_021E6418: .word gMain + 0x60
+_021E6418: .word gSystem + 0x60
 	thumb_func_end ov60_021E6244
 
 	thumb_func_start ov60_021E641C
@@ -1387,28 +1389,28 @@ _021E642E:
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #1
 	bl GX_EngineAToggleLayers
 	add r0, r4, #0
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	mov r0, #1
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	add r0, r4, #0
 	mov r1, #6
 	mov r2, #1
-	bl SetBrightness
+	bl SetBlendBrightness
 	add r0, r4, #0
 	mov r1, #7
 	mov r2, #2
-	bl SetBrightness
+	bl SetBlendBrightness
 	mov r0, #0x1f
 	str r0, [sp]
 	ldr r0, _021E653C ; =0x04001050
@@ -1529,7 +1531,7 @@ ov60_021E6544: ; 0x021E6544
 	ldr r0, _021E65AC ; =0x0000CFDF
 	and r0, r1
 	strh r0, [r2]
-	ldr r0, _021E65B0 ; =gMain + 0x60
+	ldr r0, _021E65B0 ; =gSystem + 0x60
 	strb r3, [r0, #9]
 	bl GX_SwapDisplay
 	mov r0, #1
@@ -1537,7 +1539,7 @@ ov60_021E6544: ; 0x021E6544
 	.balign 4, 0
 _021E65A8: .word 0x04000050
 _021E65AC: .word 0x0000CFDF
-_021E65B0: .word gMain + 0x60
+_021E65B0: .word gSystem + 0x60
 	thumb_func_end ov60_021E6544
 
 	thumb_func_start ov60_021E65B4
@@ -2288,7 +2290,7 @@ ov60_021E6B68: ; 0x021E6B68
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r0, #4
@@ -2313,7 +2315,7 @@ ov60_021E6B68: ; 0x021E6B68
 	ldr r0, _021E6C00 ; =0x00000628
 	str r1, [r4, #8]
 	strb r1, [r4, r0]
-	ldr r0, _021E6C04 ; =gMain + 0x60
+	ldr r0, _021E6C04 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -2334,7 +2336,7 @@ ov60_021E6B68: ; 0x021E6B68
 	.balign 4, 0
 _021E6BFC: .word 0x0000062C
 _021E6C00: .word 0x00000628
-_021E6C04: .word gMain + 0x60
+_021E6C04: .word gSystem + 0x60
 	thumb_func_end ov60_021E6B68
 
 	thumb_func_start ov60_021E6C08
@@ -2347,7 +2349,7 @@ ov60_021E6C08: ; 0x021E6C08
 	ldrb r0, [r4, r0]
 	cmp r0, #0
 	beq _021E6C4A
-	ldr r0, _021E6CE4 ; =gMain
+	ldr r0, _021E6CE4 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -2355,14 +2357,14 @@ ov60_021E6C08: ; 0x021E6C08
 	mov r0, #8
 	tst r0, r1
 	bne _021E6C32
-	ldr r0, _021E6CE8 ; =gMain + 0x40
+	ldr r0, _021E6CE8 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _021E6C4A
 _021E6C32:
 	mov r0, #1
 	str r0, [r4, #8]
-	ldr r1, _021E6CE4 ; =gMain
+	ldr r1, _021E6CE4 ; =gSystem
 	mov r0, #0
 	str r0, [r1, #0x70]
 	ldr r1, _021E6CEC ; =0x00007FFF
@@ -2386,7 +2388,7 @@ _021E6C5A:
 	mov r0, #0x55
 	lsl r0, r0, #2
 	str r1, [r4, r0]
-	mov r1, #0xfb
+	mov r1, #SEQ_GS_TITLE>>2
 	mov r0, #2
 	lsl r1, r1, #2
 	bl sub_02004EC4
@@ -2450,8 +2452,8 @@ _021E6CCE:
 	pop {r3, r4, r5, pc}
 	nop
 _021E6CE0: .word 0x00000628
-_021E6CE4: .word gMain
-_021E6CE8: .word gMain + 0x40
+_021E6CE4: .word gSystem
+_021E6CE8: .word gSystem + 0x40
 _021E6CEC: .word 0x00007FFF
 _021E6CF0: .word 0x0000062B
 _021E6CF4: .word _021EB860
@@ -2540,7 +2542,7 @@ _021E6D98:
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	ldr r3, _021E6E00 ; =0x04000050
 	mov r0, #0
 	strh r0, [r3]
@@ -2938,11 +2940,11 @@ _021E709A:
 	bne _021E70DE
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0201BDF4
+	bl Bg_GetXpos
 	str r0, [sp]
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0201BE00
+	bl Bg_GetYpos
 	str r0, [sp, #4]
 	ldr r3, [sp]
 	add r1, sp, #0x10
@@ -2953,14 +2955,14 @@ _021E709A:
 	lsr r1, r1, #0x18
 	mov r2, #0
 	add r3, r7, r3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r3, [sp, #4]
 	lsl r1, r5, #0x18
 	add r0, r6, #0
 	lsr r1, r1, #0x18
 	mov r2, #3
 	add r3, r4, r3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 _021E70DE:
@@ -2972,11 +2974,11 @@ _021E70DE:
 	strh r1, [r4, #0xc]
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0201BDF4
+	bl Bg_GetXpos
 	strh r0, [r4, #0x18]
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0201BE00
+	bl Bg_GetYpos
 	strh r0, [r4, #0x1a]
 	strh r7, [r4, #0x14]
 	add r1, sp, #0x10
@@ -3021,11 +3023,11 @@ _021E7146:
 	bne _021E718A
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0201BDF4
+	bl Bg_GetXpos
 	str r0, [sp]
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0201BE00
+	bl Bg_GetYpos
 	str r0, [sp, #4]
 	ldr r3, [sp]
 	add r1, sp, #0x10
@@ -3036,14 +3038,14 @@ _021E7146:
 	lsr r1, r1, #0x18
 	mov r2, #0
 	add r3, r7, r3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r3, [sp, #4]
 	lsl r1, r5, #0x18
 	add r0, r6, #0
 	lsr r1, r1, #0x18
 	mov r2, #3
 	add r3, r4, r3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 _021E718A:
@@ -3055,11 +3057,11 @@ _021E718A:
 	strh r1, [r4, #0xc]
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0201BDF4
+	bl Bg_GetXpos
 	strh r0, [r4, #0x18]
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0201BE00
+	bl Bg_GetYpos
 	strh r0, [r4, #0x1a]
 	strh r7, [r4, #0x14]
 	add r1, sp, #0x10
@@ -3089,14 +3091,14 @@ ov60_021E71CC: ; 0x021E71CC
 	bge _021E71F8
 	ldr r0, [r5]
 	ldr r1, [r5, #8]
-	bl sub_0201BDF4
+	bl Bg_GetXpos
 	mov r1, #0x14
 	ldrsh r1, [r5, r1]
 	add r0, r1, r0
 	str r0, [sp]
 	ldr r0, [r5]
 	ldr r1, [r5, #8]
-	bl sub_0201BE00
+	bl Bg_GetYpos
 	mov r1, #0x16
 	ldrsh r1, [r5, r1]
 	add r7, r1, r0
@@ -3143,14 +3145,14 @@ _021E7242:
 	ldr r3, [sp]
 	lsr r1, r1, #0x18
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r1, [r5, #8]
 	ldr r0, [r5]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
 	mov r2, #3
 	add r3, r7, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov60_021E71CC
 
@@ -3164,14 +3166,14 @@ ov60_021E7264: ; 0x021E7264
 	bge _021E7290
 	ldr r0, [r5]
 	ldr r1, [r5, #8]
-	bl sub_0201BDF4
+	bl Bg_GetXpos
 	mov r1, #0x14
 	ldrsh r1, [r5, r1]
 	add r0, r1, r0
 	str r0, [sp]
 	ldr r0, [r5]
 	ldr r1, [r5, #8]
-	bl sub_0201BE00
+	bl Bg_GetYpos
 	mov r1, #0x16
 	ldrsh r1, [r5, r1]
 	add r7, r1, r0
@@ -3218,14 +3220,14 @@ _021E72DA:
 	ldr r3, [sp]
 	lsr r1, r1, #0x18
 	mov r2, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r1, [r5, #8]
 	ldr r0, [r5]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
 	mov r2, #3
 	add r3, r7, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov60_021E7264
 
@@ -3774,13 +3776,13 @@ _021E76C4:
 	ldr r0, [r5, #0xc]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	lsl r1, r4, #0x18
 	ldr r0, [r5, #0xc]
 	lsr r1, r1, #0x18
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021E76C4
@@ -3860,7 +3862,7 @@ _021E7752:
 	cmp r5, #0
 	beq _021E7778
 	add r0, r7, #0
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 _021E7778:
 	ldr r0, _021E7798 ; =ov60_021E77C0
 	add r1, r4, #0
@@ -3869,7 +3871,7 @@ _021E7778:
 	str r0, [r4, #8]
 	ldr r0, _021E779C ; =ov60_021E7864
 	add r1, r4, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3914,7 +3916,7 @@ ov60_021E77C0: ; 0x021E77C0
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	add r0, r2, #1
-	ldr r1, _021E7854 ; =_021094DC
+	ldr r1, _021E7854 ; =FX_SinCosTable_
 	lsl r0, r0, #1
 	ldrsh r0, [r1, r0]
 	strh r0, [r4, #0xc]
@@ -3970,15 +3972,15 @@ _021E783C:
 	and r1, r2
 	str r1, [r3]
 _021E7844:
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 _021E7848:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 _021E7850:
 	pop {r4, pc}
 	nop
-_021E7854: .word _021094DC
+_021E7854: .word FX_SinCosTable_
 _021E7858: .word 0x00007FFF
 _021E785C: .word 0xFFFF1FFF
 _021E7860: .word 0x04001000
@@ -4208,7 +4210,7 @@ _021E79DE:
 ov60_021E79E4: ; 0x021E79E4
 	push {r3, lr}
 	bl ov60_021E7688
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200B224
 	pop {r3, pc}
 	thumb_func_end ov60_021E79E4
@@ -4222,7 +4224,7 @@ ov60_021E79F4: ; 0x021E79F4
 	add r6, r0, #0
 	bl sub_020216C8
 	bl sub_02022638
-	ldr r0, _021E7A48 ; =gMain + 0x60
+	ldr r0, _021E7A48 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -4247,7 +4249,7 @@ ov60_021E79F4: ; 0x021E79F4
 	strb r0, [r4, #1]
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_021E7A48: .word gMain + 0x60
+_021E7A48: .word gSystem + 0x60
 _021E7A4C: .word ov60_021E79E4
 	thumb_func_end ov60_021E79F4
 
@@ -4292,13 +4294,13 @@ _021E7A9A:
 	mov r1, #0
 	mov r2, #3
 	mov r3, #0x80
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r5, #0
 	bl ov60_021E7958
 	b _021E7C4C
@@ -4341,15 +4343,15 @@ _021E7B02:
 	mov r0, #1
 	strb r0, [r1]
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r1, #0
 	ldr r0, [sp, #0xc]
 	mov r2, #3
 	add r3, r1, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _021E7C54 ; =0x04000050
@@ -4375,7 +4377,7 @@ _021E7B4C:
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r7, #0x18]
 	mov r1, #1
 	bl sub_02024830
@@ -4883,7 +4885,7 @@ ov60_021E7E0C: ; 0x021E7E0C
 	bl GX_EngineAToggleLayers
 	mov r0, #0xf
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #1
 	add r1, r0, #0
 	bl OS_WaitIrq
@@ -4902,9 +4904,9 @@ ov60_021E7F74: ; 0x021E7F74
 	mov r1, #0
 	bl BG_SetMaskColor
 	mov r0, #1
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	mov r0, #0
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	pop {r3, pc}
 	thumb_func_end ov60_021E7F74
 
@@ -5133,7 +5135,7 @@ _021E813A:
 ov60_021E8140: ; 0x021E8140
 	push {r3, lr}
 	bl ov60_021E7688
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200B224
 	pop {r3, pc}
 	thumb_func_end ov60_021E8140
@@ -5155,7 +5157,7 @@ ov60_021E8150: ; 0x021E8150
 	add r6, r0, #0
 	bl sub_020216C8
 	bl sub_02022638
-	ldr r0, _021E81D0 ; =gMain + 0x60
+	ldr r0, _021E81D0 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -5190,7 +5192,7 @@ ov60_021E8150: ; 0x021E8150
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
 _021E81CC: .word 0x00007FFF
-_021E81D0: .word gMain + 0x60
+_021E81D0: .word gSystem + 0x60
 _021E81D4: .word ov60_021E8140
 	thumb_func_end ov60_021E8150
 
@@ -6046,7 +6048,7 @@ _021E88E0:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -6459,7 +6461,7 @@ _021E8C52:
 ov60_021E8C58: ; 0x021E8C58
 	push {r3, lr}
 	bl ov60_021E7688
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200B224
 	pop {r3, pc}
 	thumb_func_end ov60_021E8C58
@@ -6474,7 +6476,7 @@ ov60_021E8C68: ; 0x021E8C68
 	add r6, r0, #0
 	bl sub_020216C8
 	bl sub_02022638
-	ldr r0, _021E8CF8 ; =gMain + 0x60
+	ldr r0, _021E8CF8 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -6524,7 +6526,7 @@ ov60_021E8C68: ; 0x021E8C68
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	nop
-_021E8CF8: .word gMain + 0x60
+_021E8CF8: .word gSystem + 0x60
 _021E8CFC: .word ov60_021E8C58
 _021E8D00: .word ov60_021E9BFC
 	thumb_func_end ov60_021E8C68
@@ -6537,7 +6539,7 @@ ov60_021E8D04: ; 0x021E8D04
 	bl ov60_021E6F28
 	mov r0, #6
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
@@ -6777,7 +6779,7 @@ _021E8F0E:
 _021E8F10:
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r3, [r5, #0x34]
 	add r0, r7, #0
 	add r2, r3, #0
@@ -6853,7 +6855,7 @@ _021E8F6C:
 	bl ov60_021E7074
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r6, #0
 	bl ov60_021E7958
 	b _021E9476
@@ -6894,7 +6896,7 @@ _021E8FD2:
 	bl ov60_021E7074
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r6, #0
 	bl ov60_021E7958
 	b _021E9476
@@ -6938,7 +6940,7 @@ _021E902C:
 	bl ov60_021E7074
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r6, #0
 	bl ov60_021E7958
 	b _021E9476
@@ -7092,7 +7094,7 @@ _021E918E:
 	beq _021E9294
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r5, _021E91E0 ; =_021EB4D0
 	b _021E91E4
 	.balign 4, 0
@@ -7201,7 +7203,7 @@ _021E9294:
 _021E9296:
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #5
 	ldr r2, _021E9494 ; =_021EB528
 	add r3, sp, #0x6c
@@ -7256,38 +7258,38 @@ _021E92A6:
 	add r0, r7, #0
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r7, #0
 	mov r1, #5
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r2, #0
 	add r0, r7, #0
 	mov r1, #6
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r7, #0
 	mov r1, #6
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r2, #0
 	add r0, r7, #0
 	mov r1, #7
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r7, #0
 	mov r1, #7
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r6, #0
 	bl ov60_021E7958
 	b _021E9476
@@ -7351,7 +7353,7 @@ _021E93D8:
 	beq _021E9476
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r3, _021E949C ; =_021EB39C
 	add r2, sp, #0x14
 	mov r5, #5
@@ -7888,7 +7890,7 @@ _021E984E:
 	blo _021E984E
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -8492,7 +8494,7 @@ _021E9D62:
 ov60_021E9D68: ; 0x021E9D68
 	push {r3, lr}
 	bl ov60_021E7688
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200B224
 	pop {r3, pc}
 	thumb_func_end ov60_021E9D68
@@ -8507,7 +8509,7 @@ ov60_021E9D78: ; 0x021E9D78
 	add r6, r0, #0
 	bl sub_020216C8
 	bl sub_02022638
-	ldr r0, _021E9E6C ; =gMain + 0x60
+	ldr r0, _021E9E6C ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -8598,7 +8600,7 @@ ov60_021E9D78: ; 0x021E9D78
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	nop
-_021E9E6C: .word gMain + 0x60
+_021E9E6C: .word gSystem + 0x60
 _021E9E70: .word ov60_021E9D68
 _021E9E74: .word ov60_021EA918
 _021E9E78: .word ov60_021EA828
@@ -8743,7 +8745,7 @@ _021E9F3C:
 	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r6, #0
 	bl ov60_021E7958
 	b _021EA1FA
@@ -8855,7 +8857,7 @@ _021EA05A:
 	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -9000,7 +9002,7 @@ _021EA1B6:
 	b _021EA1FA
 _021EA1D4:
 	mov r0, #0
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	ldr r0, [r4, #0x4c]
 	mov r1, #1
 	bl ov60_021E6F28
@@ -9364,7 +9366,7 @@ ov60_021EA4AC: ; 0x021EA4AC
 	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
@@ -9558,7 +9560,7 @@ _021EA664:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x54
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -9947,7 +9949,7 @@ ov60_021EA9A8: ; 0x021EA9A8
 	ldr r0, [r4, #0x68]
 	cmp r0, #0
 	beq _021EA9DA
-	ldr r0, _021EAA10 ; =gMain + 0x60
+	ldr r0, _021EAA10 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	mov r0, #4
@@ -9958,13 +9960,13 @@ ov60_021EA9A8: ; 0x021EA9A8
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	b _021EAA00
 _021EA9DA:
-	ldr r0, _021EAA10 ; =gMain + 0x60
+	ldr r0, _021EAA10 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	mov r0, #4
@@ -9975,10 +9977,10 @@ _021EA9DA:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 _021EAA00:
 	bl GX_SwapDisplay
 	ldr r0, [r4, #0x6c]
@@ -9987,7 +9989,7 @@ _021EAA00:
 	str r0, [r4, #0x6c]
 	pop {r4, pc}
 	.balign 4, 0
-_021EAA10: .word gMain + 0x60
+_021EAA10: .word gSystem + 0x60
 	thumb_func_end ov60_021EA9A8
 
 	thumb_func_start ov60_021EAA14
@@ -10046,7 +10048,7 @@ _021EAA6E:
 ov60_021EAA74: ; 0x021EAA74
 	push {r3, lr}
 	bl ov60_021E7688
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200B224
 	pop {r3, pc}
 	thumb_func_end ov60_021EAA74
@@ -10059,7 +10061,7 @@ ov60_021EAA84: ; 0x021EAA84
 	add r4, r1, #0
 	bl ov60_021E7688
 	add r6, r0, #0
-	ldr r0, _021EAAFC ; =gMain + 0x60
+	ldr r0, _021EAAFC ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -10101,7 +10103,7 @@ ov60_021EAA84: ; 0x021EAA84
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	nop
-_021EAAFC: .word gMain + 0x60
+_021EAAFC: .word gSystem + 0x60
 _021EAB00: .word ov60_021EAA74
 	thumb_func_end ov60_021EAA84
 
@@ -10480,12 +10482,12 @@ ov60_021EADF0: ; 0x021EADF0
 	mov r1, #2
 	mov r2, #3
 	mov r3, #0xa0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #0
 	mov r1, #6
 	mov r2, #3
 	mov r3, #0xa0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov60_021EADF0

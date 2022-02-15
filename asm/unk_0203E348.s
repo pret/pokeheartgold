@@ -38,13 +38,13 @@ _020FA224:
 _020FA234:
 	.word ov122_021E82A8, ov122_021E8360, ov122_021E8308, SDK_OVERLAY_OVY_122_ID
 _020FA244:
-	.word ov96_021E5900, ov96_021E5A40, ov96_021E5B88, SDK_OVERLAY_OVY_96_ID
+	.word PokeathlonCourseApplication_OvyInit, PokeathlonCourseApplication_OvyExec, PokeathlonCourseApplication_OvyExit, SDK_OVERLAY_OVY_96_ID
 _020FA254:
 	.word ov52_021E80C0, ov52_021E8248, ov52_021E82AC, SDK_OVERLAY_OVY_52_ID
 _020FA264:
 	.word ov70_02238430, ov70_022385C0, ov70_022386F4, SDK_OVERLAY_OVY_70_ID
 _020FA274:
-	.word ov61_021E5900, ov61_021E5A38, ov61_021E5F74, SDK_OVERLAY_OVY_61_ID
+	.word ChooseStarterApplication_OvyInit, ChooseStarterApplication_OvyExec, ChooseStarterApplication_OvyExit, SDK_OVERLAY_OVY_61_ID
 _020FA284:
 	.word ov18_021E5AA0, ov18_021E5B64, ov18_021E5B80, SDK_OVERLAY_OVY_18_ID
 _020FA294:
@@ -82,7 +82,7 @@ _020FA384:
 _020FA394:
 	.word ov113_021E5900, ov113_021E5968, ov113_021E59C8, SDK_OVERLAY_OVY_113_ID
 _020FA3A4:
-	.word ov110_021E5900, ov110_021E5974, ov110_021E59F4, SDK_OVERLAY_OVY_110_ID
+	.word ov110_AlphPuzzle_OvyInit, ov110_AlphPuzzle_OvyExec, ov110_AlphPuzzle_OvyExit, SDK_OVERLAY_OVY_110_ID
 _020FA3B4:
 	.word ov109_021E5900, ov109_021E5968, ov109_021E59F0, SDK_OVERLAY_OVY_109_ID
 _020FA3C4:
@@ -90,9 +90,9 @@ _020FA3C4:
 _020FA3D4:
 	.word ov108_021E5900, ov108_021E5978, ov108_021E5948, SDK_OVERLAY_OVY_108_ID
 _020FA3E4:
-	.word ov101_Radio_OvyInit, ov101_Radio_OvyExec, ov101_Radio_OvyExit, SDK_OVERLAY_OVY_101_ID
+	.word ov101_TownMap_OvyInit, ov101_TownMap_OvyExec, ov101_TownMap_OvyExit, SDK_OVERLAY_OVY_101_ID
 _020FA3F4:
-	.word ov100_021E642C, ov100_021E6520, ov100_021E65BC, SDK_OVERLAY_OVY_100_ID
+	.word ov100_Phone_OvyInit, ov100_Phone_OvyExec, ov100_Phone_OvyExit, SDK_OVERLAY_OVY_100_ID
 _020FA404:
 	.word ov102_021E7740, ov102_021E77B8, ov102_021E7868, SDK_OVERLAY_OVY_102_ID
 _020FA414:
@@ -106,7 +106,7 @@ _020FA444:
 _020FA454:
 	.word ov104_021E5900, ov104_021E59E4, ov104_021E5B14, SDK_OVERLAY_OVY_104_ID
 _020FA464:
-	.word ov15_021F9380, ov15_021F9608, ov15_021F982C, SDK_OVERLAY_OVY_15_ID
+	.word ov15_BagApp_init, ov15_BagApp_exec, ov15_BagApp_exit, SDK_OVERLAY_OVY_15_ID
 _020FA474:
 	.word sub_02097B78, sub_02097BAC, sub_02097BD0, SDK_OVERLAY_OVY_106_ID
 	.public _020FA484
@@ -132,8 +132,8 @@ _0210F9BC:
 
 	.text
 
-	thumb_func_start sub_0203E368
-sub_0203E368: ; 0x0203E368
+	thumb_func_start LocationData_BackUp
+LocationData_BackUp: ; 0x0203E368
 	ldr r2, _0203E37C ; =_020FA17C
 	add r3, r0, #0
 	ldmia r2!, {r0, r1}
@@ -145,10 +145,10 @@ sub_0203E368: ; 0x0203E368
 	bx lr
 	nop
 _0203E37C: .word _020FA17C
-	thumb_func_end sub_0203E368
+	thumb_func_end LocationData_BackUp
 
-	thumb_func_start sub_0203E380
-sub_0203E380: ; 0x0203E380
+	thumb_func_start LocationData_Restore
+LocationData_Restore: ; 0x0203E380
 	ldr r2, _0203E394 ; =_020FA190
 	add r3, r0, #0
 	ldmia r2!, {r0, r1}
@@ -160,16 +160,16 @@ sub_0203E380: ; 0x0203E380
 	bx lr
 	nop
 _0203E394: .word _020FA190
-	thumb_func_end sub_0203E380
+	thumb_func_end LocationData_Restore
 
-	thumb_func_start sub_0203E398
-sub_0203E398: ; 0x0203E398
+	thumb_func_start Save_CurrentLocation_BackUp
+Save_CurrentLocation_BackUp: ; 0x0203E398
 	push {r3, lr}
-	bl sub_0203B9C4
-	bl sub_0203B958
-	bl sub_0203E368
+	bl Save_FlyPoints_get
+	bl FlyPoints_GetPosition
+	bl LocationData_BackUp
 	pop {r3, pc}
-	thumb_func_end sub_0203E398
+	thumb_func_end Save_CurrentLocation_BackUp
 
 	thumb_func_start sub_0203E3A8
 sub_0203E3A8: ; 0x0203E3A8
@@ -512,13 +512,13 @@ sub_0203E600: ; 0x0203E600
 sub_0203E604: ; 0x0203E604
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #4
@@ -545,7 +545,7 @@ _0203E63A:
 	b _0203E6CC
 _0203E64A:
 	add r0, r6, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _0203E6CC
 	ldr r0, [r4, #4]
@@ -588,7 +588,7 @@ _0203E680:
 	b _0203E6CC
 _0203E6A2:
 	add r0, r6, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _0203E6CC
 	ldr r0, [r4, #8]
@@ -618,7 +618,7 @@ sub_0203E6D4: ; 0x0203E6D4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r7, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #0xc
@@ -660,7 +660,7 @@ sub_0203E6D4: ; 0x0203E6D4
 	ldr r1, _0203E73C ; =sub_0203E604
 	add r0, r7, #0
 	str r5, [r4, #4]
-	bl sub_02050530
+	bl QueueTask
 	add r0, r5, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -822,13 +822,13 @@ sub_0203E878: ; 0x0203E878
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r6, r0, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	ldr r1, [r5]
 	add r6, r0, #0
 	cmp r1, #0
@@ -846,7 +846,7 @@ _0203E8A4:
 	str r0, [r5]
 	b _0203E958
 _0203E8B2:
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _0203E958
 	ldr r0, [r5]
@@ -942,7 +942,7 @@ sub_0203E960: ; 0x0203E960
 	add r6, r1, #0
 	str r2, [sp, #8]
 	add r7, r3, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	mov r0, #0x20
 	mov r1, #0x14
@@ -1022,7 +1022,7 @@ _0203EA12:
 	ldr r0, [sp, #4]
 	ldr r1, _0203EA20 ; =sub_0203E878
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1040,8 +1040,8 @@ _0203EA2C: .word ScrUnk80_AddOvyMan
 _0203EA30: .word _020FA404
 	thumb_func_end sub_0203EA24
 
-	thumb_func_start sub_0203EA34
-sub_0203EA34: ; 0x0203EA34
+	thumb_func_start SwitchToPokegearApp_Phone
+SwitchToPokegearApp_Phone: ; 0x0203EA34
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	ldr r5, _0203EA58 ; =_020FA3F4
@@ -1060,10 +1060,10 @@ sub_0203EA34: ; 0x0203EA34
 	pop {r4, r5, r6, pc}
 	nop
 _0203EA58: .word _020FA3F4
-	thumb_func_end sub_0203EA34
+	thumb_func_end SwitchToPokegearApp_Phone
 
-	thumb_func_start SwitchToPokegearApp_Radio
-SwitchToPokegearApp_Radio: ; 0x0203EA5C
+	thumb_func_start SwitchToPokegearApp_TownMap
+SwitchToPokegearApp_TownMap: ; 0x0203EA5C
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	ldr r5, _0203EA80 ; =_020FA3E4
@@ -1082,10 +1082,10 @@ SwitchToPokegearApp_Radio: ; 0x0203EA5C
 	pop {r4, r5, r6, pc}
 	nop
 _0203EA80: .word _020FA3E4
-	thumb_func_end SwitchToPokegearApp_Radio
+	thumb_func_end SwitchToPokegearApp_TownMap
 
-	thumb_func_start sub_0203EA84
-sub_0203EA84: ; 0x0203EA84
+	thumb_func_start PhoneUI_new
+PhoneUI_new: ; 0x0203EA84
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r0, #0xb
@@ -1100,14 +1100,14 @@ sub_0203EA84: ; 0x0203EA84
 	bl sub_02092D80
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0203EA34
+	bl SwitchToPokegearApp_Phone
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0203EA84
+	thumb_func_end PhoneUI_new
 
-	thumb_func_start Radio_new
-Radio_new: ; 0x0203EAB0
+	thumb_func_start TownMap_new
+TownMap_new: ; 0x0203EAB0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -1124,11 +1124,11 @@ Radio_new: ; 0x0203EAB0
 	add r0, r5, #0
 	add r1, r4, #0
 	strb r6, [r4]
-	bl SwitchToPokegearApp_Radio
+	bl SwitchToPokegearApp_TownMap
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end Radio_new
+	thumb_func_end TownMap_new
 
 	thumb_func_start sub_0203EAE0
 sub_0203EAE0: ; 0x0203EAE0
@@ -1264,8 +1264,8 @@ sub_0203EBA4: ; 0x0203EBA4
 	.balign 4, 0
 	thumb_func_end sub_0203EBA4
 
-	thumb_func_start sub_0203EBDC
-sub_0203EBDC: ; 0x0203EBDC
+	thumb_func_start Fsys_LaunchApplication_AlphPuzzle
+Fsys_LaunchApplication_AlphPuzzle: ; 0x0203EBDC
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	ldr r5, _0203EC00 ; =_020FA3A4
@@ -1284,10 +1284,10 @@ sub_0203EBDC: ; 0x0203EBDC
 	pop {r4, r5, r6, pc}
 	nop
 _0203EC00: .word _020FA3A4
-	thumb_func_end sub_0203EBDC
+	thumb_func_end Fsys_LaunchApplication_AlphPuzzle
 
-	thumb_func_start sub_0203EC04
-sub_0203EC04: ; 0x0203EC04
+	thumb_func_start Fsys_CreateApplication_AlphPuzzle
+Fsys_CreateApplication_AlphPuzzle: ; 0x0203EC04
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -1308,11 +1308,11 @@ sub_0203EC04: ; 0x0203EC04
 	add r0, r5, #0
 	add r1, r4, #0
 	strb r6, [r4, #5]
-	bl sub_0203EBDC
+	bl Fsys_LaunchApplication_AlphPuzzle
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0203EC04
+	thumb_func_end Fsys_CreateApplication_AlphPuzzle
 
 	thumb_func_start sub_0203EC3C
 sub_0203EC3C: ; 0x0203EC3C
@@ -1641,7 +1641,7 @@ sub_0203EEA0: ; 0x0203EEA0
 	add r0, r5, #0
 	bl ScriptEnvironment_GetSav2Ptr
 	add r6, r0, #0
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	bl sub_02031974
 	str r0, [r4]
 	add r0, r6, #0
@@ -1676,7 +1676,7 @@ sub_0203EEE4: ; 0x0203EEE4
 	add r0, r5, #0
 	bl ScriptEnvironment_GetSav2Ptr
 	add r6, r0, #0
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	add r7, r0, #0
 	add r0, r6, #0
 	bl Sav2_Pokedex_get
@@ -1721,7 +1721,7 @@ sub_0203EF40: ; 0x0203EF40
 	add r0, r5, #0
 	bl ScriptEnvironment_GetSav2Ptr
 	add r6, r0, #0
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	add r7, r0, #0
 	bl sub_0203197C
 	str r0, [r4]
@@ -1770,7 +1770,7 @@ sub_0203EFA0: ; 0x0203EFA0
 	bl Sav2_PlayerData_GetProfileAddr
 	add r6, r0, #0
 	add r0, r7, #0
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	str r0, [r4]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1963,10 +1963,10 @@ sub_0203F0D0: ; 0x0203F0D0
 sub_0203F134: ; 0x0203F134
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0
@@ -1984,7 +1984,7 @@ _0203F152:
 	b _0203F192
 _0203F162:
 	add r0, r4, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _0203F192
 	ldr r1, [r5, #4]
@@ -2046,7 +2046,7 @@ _0203F1B4:
 	add r0, r6, #0
 	add r2, r4, #0
 	str r5, [r4, #4]
-	bl sub_02050530
+	bl QueueTask
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -2168,10 +2168,10 @@ sub_0203F2C8: ; 0x0203F2C8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x2c
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #7
@@ -2250,7 +2250,7 @@ _0203F354:
 	mov r0, #1
 	str r0, [r4, #0x54]
 	add r0, r5, #0
-	bl sub_020555E0
+	bl Field_GetTimeOfDay
 	cmp r0, #4
 	bhi _0203F394
 	add r0, r0, r0
@@ -2406,7 +2406,7 @@ sub_0203F4A8: ; 0x0203F4A8
 	str r0, [r2]
 	ldr r1, _0203F4C4 ; =sub_0203F2C8
 	add r0, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r4, pc}
 	.balign 4, 0
 _0203F4C4: .word sub_0203F2C8
@@ -2512,10 +2512,10 @@ _0203F57C: .word _02102830
 sub_0203F580: ; 0x0203F580
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #3
@@ -2617,10 +2617,10 @@ _0203F64C: .word _02102610
 NamingScreen_SetName: ; 0x0203F650
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0]
@@ -2658,7 +2658,7 @@ _0203F6A2:
 	cmp r6, #0xff
 	bne _0203F6B2
 	add r0, r5, #0
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	ldr r0, [r0, #0x10]
 	b _0203F6BE
 _0203F6B2:
@@ -2685,8 +2685,8 @@ _0203F6DC:
 	.balign 4, 0
 	thumb_func_end NamingScreen_SetName
 
-	thumb_func_start sub_0203F6E0
-sub_0203F6E0: ; 0x0203F6E0
+	thumb_func_start CreateNamingScreen
+CreateNamingScreen: ; 0x0203F6E0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	str r0, [sp, #8]
@@ -2694,7 +2694,7 @@ sub_0203F6E0: ; 0x0203F6E0
 	str r2, [sp, #0xc]
 	str r3, [sp, #0x10]
 	ldr r5, [sp, #0x2c]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	mov r0, #0xb
 	mov r1, #0x14
@@ -2733,7 +2733,7 @@ _0203F73C:
 	cmp r0, #0xff
 	bne _0203F74C
 	add r0, r6, #0
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	ldr r6, [r0, #0x10]
 	b _0203F75A
 _0203F74C:
@@ -2777,12 +2777,12 @@ _0203F79C:
 	ldr r0, [sp, #8]
 	ldr r1, _0203F7AC ; =sub_0203F580
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
 _0203F7AC: .word sub_0203F580
-	thumb_func_end sub_0203F6E0
+	thumb_func_end CreateNamingScreen
 
 	thumb_func_start sub_0203F7B0
 sub_0203F7B0: ; 0x0203F7B0
@@ -2799,7 +2799,7 @@ sub_0203F7B0: ; 0x0203F7B0
 	str r1, [r4, r0]
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066614
+	bl CheckGameClearFlag
 	ldr r1, _0203F7EC ; =0x00000678
 	mov r2, #0
 	str r0, [r4, r1]
@@ -2828,8 +2828,8 @@ sub_0203F7F4: ; 0x0203F7F4
 _0203F804: .word _020FA284
 	thumb_func_end sub_0203F7F4
 
-	thumb_func_start sub_0203F808
-sub_0203F808: ; 0x0203F808
+	thumb_func_start FieldSys_LaunchChooseStarterApplication
+FieldSys_LaunchChooseStarterApplication: ; 0x0203F808
 	ldr r3, _0203F810 ; =ScrUnk80_AddOvyMan
 	add r2, r1, #0
 	ldr r1, _0203F814 ; =_020FA274
@@ -2837,7 +2837,7 @@ sub_0203F808: ; 0x0203F808
 	.balign 4, 0
 _0203F810: .word ScrUnk80_AddOvyMan
 _0203F814: .word _020FA274
-	thumb_func_end sub_0203F808
+	thumb_func_end FieldSys_LaunchChooseStarterApplication
 
 	thumb_func_start sub_0203F818
 sub_0203F818: ; 0x0203F818
@@ -3248,8 +3248,8 @@ sub_0203FAE8: ; 0x0203FAE8
 _0203FB5C: .word _0210159C
 	thumb_func_end sub_0203FAE8
 
-	thumb_func_start sub_0203FB60
-sub_0203FB60: ; 0x0203FB60
+	thumb_func_start ScratchOffCards_Create
+ScratchOffCards_Create: ; 0x0203FB60
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, r1, #0
@@ -3274,7 +3274,7 @@ _0203FB74:
 	pop {r3, r4, r5, pc}
 	nop
 _0203FB90: .word _0210F97C
-	thumb_func_end sub_0203FB60
+	thumb_func_end ScratchOffCards_Create
 
 	thumb_func_start sub_0203FB94
 sub_0203FB94: ; 0x0203FB94
@@ -3366,8 +3366,8 @@ sub_0203FC14: ; 0x0203FC14
 _0203FC54: .word _020FA1C4
 	thumb_func_end sub_0203FC14
 
-	thumb_func_start sub_0203FC58
-sub_0203FC58: ; 0x0203FC58
+	thumb_func_start Fsys_LaunchPokeathlonCourseApplication
+Fsys_LaunchPokeathlonCourseApplication: ; 0x0203FC58
 	ldr r3, _0203FC60 ; =ScrUnk80_AddOvyMan
 	add r2, r1, #0
 	ldr r1, _0203FC64 ; =_020FA244
@@ -3375,7 +3375,7 @@ sub_0203FC58: ; 0x0203FC58
 	.balign 4, 0
 _0203FC60: .word ScrUnk80_AddOvyMan
 _0203FC64: .word _020FA244
-	thumb_func_end sub_0203FC58
+	thumb_func_end Fsys_LaunchPokeathlonCourseApplication
 
 	thumb_func_start sub_0203FC68
 sub_0203FC68: ; 0x0203FC68

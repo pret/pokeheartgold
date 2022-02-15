@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0128_D43R0103_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hold it.\r...Are you going to challenge the\nPokémon League?\rVictory Road is at its end, for sure.\rBut did you notice...?\nYou didn’t see any real Trainers on the\fway, did you?\rMan, they were all spineless!\rWell, the fact that you have come this\nfar means you’re not one of them.\rBut!\rYour journey ends here!\rBecause...right here, right now...\nI will crush you!\r</language>
+	</row>
+	<row id="msg_0128_D43R0103_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">..................\rI haven’t given up on becoming the\ngreatest Trainer...\rI’m going to find out why I can’t win and\nbecome stronger...\rWhen I do, I will challenge you.\rI’ll beat you down with all my power.\n...Humph! You keep at it until then.\r</language>
+	</row>
+</body>

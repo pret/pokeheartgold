@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0699_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Kenny</language>
+	</row>
+	<row id="msg_0699_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The same opponent, the same Pokémon,\nbut the battle results are different\fevery time!\rI’d like to battle with you again.\nLet’s trade phone numbers!{YESNO 0}</language>
+	</row>
+	<row id="msg_0699_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Once I’ve gotten ready, I’ll give you\na call!</language>
+	</row>
+	<row id="msg_0699_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I see... Well, that’s fine by me.\nI’ve always got my mountain!</language>
+	</row>
+	<row id="msg_0699_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’d like to battle with you again.\nLet’s exchange numbers! {YESNO 0}</language>
+	</row>
+	<row id="msg_0699_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">That’s strange...\nI can hear your voice so clearly...\rWait, you’re nearby, aren’t you!\nLet’s talk in person!</language>
+	</row>
+	<row id="msg_0699_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pokémon easily develop an affection for\nus nature-loving Hikers!\rNo, no, it’s not just my imagination!\nI’ve got proof! Seriously, my\f{STRVAR_1 0, 10, 0} never disobeys me!</language>
+	</row>
+	<row id="msg_0699_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey, listen up!\rYesterday, I ran into a wild\n{STRVAR_1 0, 11, 0}! Just out in nature!\rOf course, my Pokémon were in top form\nfor the battle. It was great.\fIt all happened so naturally!\rHow do I describe this wonderful\nfeeling... How do I put it into words?\fWell, for now, how about...\rHOOOORAY!</language>
+	</row>
+	<row id="msg_0699_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A few days ago, while I was hiking in the\nmountains, a wild {STRVAR_1 0, 11, 0}\fsuddenly jumped out at me.\rI was completely unprepared for the\nexperience, and it ran away.\rIt’s said we Hikers stake our life on\nbeing prepared for anything, so I have\fto count this as a failure as a Hiker!</language>
+	</row>
+	<row id="msg_0699_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">We absolutely must have another \nbattle together!\fThat’s why we’re speaking right now!\rAm I right? I hope I am!\nI’ll be waiting on {STRVAR_1 4, 3, 0}!</language>
+	</row>
+	<row id="msg_0699_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">We’re having a battle on\n{STRVAR_1 4, 3, 0}, remember. I’m out\fhere, waiting in the midst of nature!</language>
+	</row>
+	<row id="msg_0699_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">That’s right... I’m up on this mountain\nalmost the whole year round...\rBaths?\rThere’s no such thing on a mountain!\rInstead, I just look for a flowing\nriver, and wash myself off in that.\rThat’s right! A few days ago, when\nI was bathing in the river, someone\fmistook me for a Swimmer♂!</language>
+	</row>
+</body>

@@ -1,0 +1,38 @@
+{
+  "header": "fielddata/script/scr_seq/event_T01R0201.h",
+  "objects": [
+    {
+      "id": "obj_T01R0201_nanami",
+      "ovid": "SPRITE_NANAMI",
+      "mvt": 17,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T01R0201_000 + 1",
+      "dirn": 3,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 6,
+      "y": 6,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 5,
+      "y": 10,
+      "header": "MAP_T01",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 3,
+      "y": 3,
+      "header": "MAP_T01R0202",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

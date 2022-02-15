@@ -18,74 +18,28 @@ _020F6955:
 	.byte 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x00, 0x00, 0x01
 	.byte 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x00, 0x01, 0x01, 0x01, 0x01, 0x00, 0x00
 _020F6980:
-	.word 0x00000000
-_020F6984:
-	.word sub_020342C0
-_020F6988:
-	.word 0
-	.word 0
-	.word sub_020342C0
-	.word 0
-	.word sub_0203776C
-	.word sub_020342C0
-	.word 0
-	.word sub_020345D0
-	.word sub_02034520
-	.word 0
-	.word sub_0203453C
-	.word sub_02034520
-	.word 0
-	.word sub_02034524
-	.word sub_020342C0
-	.word 0
-	.word sub_02038B3C
-	.word sub_02038C18
-	.word 0
-	.word sub_02038B9C
-	.word sub_02038C18
-	.word 0
-	.word 0
-	.word 0
-	.word 0
-	.word 0
-	.word 0
-	.word 0
-	.word sub_02037618
-	.word sub_020342C4
-	.word 0
-	.word sub_02037640
-	.word sub_020342C4
-	.word 0
-	.word sub_02037668
-	.word sub_020342C4
-	.word 0
-	.word sub_020342CC
-	.word sub_020342C0
-	.word 0
-	.word sub_02034310
-	.word sub_020342C0
-	.word 0
-	.word sub_02034338
-	.word sub_020342C0
-	.word 0
-	.word sub_02037A24
-	.word sub_020342C4
-	.word 0
-	.word sub_02037AAC
-	.word sub_020342C4
-	.word 0
-	.word sub_02037A98
-	.word sub_020342C8
-	.word 0
-	.word sub_02037B6C
-	.word sub_02037B88
-	.word 0
-	.word sub_02037C68
-	.word sub_02037C94
-	.word 0
-	.word sub_02039220
-	.word sub_020342C0
-	.word 0
+	.word 0, sub_020342C0, 0
+	.word 0, sub_020342C0, 0
+	.word sub_0203776C, sub_020342C0, 0
+	.word sub_020345D0, sub_02034520, 0
+	.word sub_0203453C, sub_02034520, 0
+	.word sub_02034524, sub_020342C0, 0
+	.word sub_02038B3C, sub_02038C18, 0
+	.word sub_02038B9C, sub_02038C18, 0
+	.word 0, 0, 0
+	.word 0, 0, 0
+	.word sub_02037618, sub_020342C4, 0
+	.word sub_02037640, sub_020342C4, 0
+	.word sub_02037668, sub_020342C4, 0
+	.word sub_020342CC, sub_020342C0, 0
+	.word sub_02034310, sub_020342C0, 0
+	.word sub_02034338, sub_020342C0, 0
+	.word sub_02037A24, sub_020342C4, 0
+	.word sub_02037AAC, sub_020342C4, 0
+	.word sub_02037A98, sub_020342C8, 0
+	.word sub_02037B6C, sub_02037B88, 0
+	.word sub_02037C68, sub_02037C94, 0
+	.word sub_02039220, sub_020342C0, 0
 
 	.text
 
@@ -1162,7 +1116,7 @@ sub_020341DC: ; 0x020341DC
 	mov r0, #0xc
 	add r1, r5, #0
 	mul r1, r0
-	ldr r0, _0203423C ; =_020F6984
+	ldr r0, _0203423C ; =_020F6980 + 4
 	ldr r0, [r0, r1]
 	b _0203422E
 _020341F2:
@@ -1204,7 +1158,7 @@ _02034236:
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	nop
-_0203423C: .word _020F6984
+_0203423C: .word _020F6980 + 4
 _02034240: .word _021D412C
 	thumb_func_end sub_020341DC
 
@@ -1214,7 +1168,7 @@ sub_02034244: ; 0x02034244
 	bge _0203425C
 	mov r1, #0xc
 	mul r1, r0
-	ldr r0, _02034278 ; =_020F6988
+	ldr r0, _02034278 ; =_020F6980 + 8
 	ldr r0, [r0, r1]
 	cmp r0, #0
 	beq _02034258
@@ -1240,7 +1194,7 @@ _02034274:
 	mov r0, #0
 	bx lr
 	.balign 4, 0
-_02034278: .word _020F6988
+_02034278: .word _020F6980 + 8
 _0203427C: .word _021D412C
 	thumb_func_end sub_02034244
 
@@ -1252,7 +1206,7 @@ sub_02034280: ; 0x02034280
 	bge _02034298
 	mov r4, #0xc
 	mul r4, r3
-	ldr r3, _020342B0 ; =_020F6988
+	ldr r3, _020342B0 ; =_020F6980 + 8
 	add r0, r1, #0
 	ldr r3, [r3, r4]
 	mov r1, #0
@@ -1272,7 +1226,7 @@ _02034298:
 	blx r3
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_020342B0: .word _020F6988
+_020342B0: .word _020F6980 + 8
 _020342B4: .word _021D412C
 	thumb_func_end sub_02034280
 

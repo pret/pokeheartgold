@@ -3,16 +3,6 @@
 
 	.rodata
 
-_020F6B2C:
-	.word sub_02097238
-	.word sub_02097230
-	.word 0
-	.word sub_02097248
-	.word sub_0209722C
-	.word 0
-	.word sub_02097258
-	.word sub_02097234
-	.word 0
 _020F6B50:
 	.byte 0x00, 0x03, 0x03, 0x1A, 0x12, 0x01, 0x23, 0x00
 _020F6B58:
@@ -28,20 +18,6 @@ _020F6B84:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
 	.text
-
-	thumb_func_start sub_0203AC88
-sub_0203AC88: ; 0x0203AC88
-	ldr r0, _0203AC8C ; =_020F6B2C
-	bx lr
-	.balign 4, 0
-_0203AC8C: .word _020F6B2C
-	thumb_func_end sub_0203AC88
-
-	thumb_func_start sub_0203AC90
-sub_0203AC90: ; 0x0203AC90
-	mov r0, #3
-	bx lr
-	thumb_func_end sub_0203AC90
 
 	thumb_func_start ShowWFCUserInfoWarning
 ShowWFCUserInfoWarning: ; 0x0203AC94
@@ -59,7 +35,7 @@ ShowWFCUserInfoWarning: ; 0x0203AC94
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -75,7 +51,7 @@ ShowWFCUserInfoWarning: ; 0x0203AC94
 	mov r0, #4
 	mov r1, #8
 	bl SetKeyRepeatTimers
-	ldr r0, _0203AE78 ; =gMain + 0x60
+	ldr r0, _0203AE78 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -177,13 +153,13 @@ ShowWFCUserInfoWarning: ; 0x0203AC94
 	bl String_dtor
 	bl GX_BothDispOn
 	mov r0, #0
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	mov r0, #1
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	mov r0, #0
 	mov r1, #0x3f
 	mov r2, #3
-	bl SetBrightness
+	bl SetBlendBrightness
 	ldr r4, _0203AEA0 ; =0x04000130
 	ldr r6, _0203AEA4 ; =0x027FFFA8
 	mov r7, #1
@@ -211,28 +187,28 @@ _0203AE12:
 	bl DestroyMsgData
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #1
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #3
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #5
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #7
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldr r0, [sp, #0x10]
 	mov r1, #0
 	bl FreeBgTilemapBuffer
@@ -243,7 +219,7 @@ _0203AE12:
 	.balign 4, 0
 _0203AE70: .word 0xFFFFE0FF
 _0203AE74: .word 0x04001000
-_0203AE78: .word gMain + 0x60
+_0203AE78: .word gSystem + 0x60
 _0203AE7C: .word 0x04000050
 _0203AE80: .word 0x04001050
 _0203AE84: .word 0xFFFF1FFF

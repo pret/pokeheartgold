@@ -1,7 +1,0 @@
-Kurt
-Oh hey, {STRVAR_1 1, 0, 0}!\nTalking on the phone’s a bit odd.\fJust talk to me!
-This is Kurt!\nYou’re {STRVAR_1 1, 0, 0}, right?\r
-Hey, I turned all the Apricorns you\ngave me into Poké Balls.\rCome pick up the {STRVAR_1 51, 11, 0} {STRVAR_1 8, 10, 0}(s)\nwhenever you’ve got time!
-You just asked me to make ’em!\nYa gotta give me a day at least!
-If you bring me some Apricorns, I can\nmake you some Poké Balls.\fCome over whenever you’ve got time!
-Oh, hey! My old man had something he\nwanted to ask you about!\fI’ll put him on the line. Just a sec!\r

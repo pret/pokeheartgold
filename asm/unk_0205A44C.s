@@ -896,7 +896,7 @@ _0205AA1E:
 	beq _0205AA3A
 	add r0, r6, #0
 	mov r1, #0
-	bl sub_0200C528
+	bl BufferECWord
 _0205AA3A:
 	ldr r0, _0205AA48 ; =_020FC9D4
 	lsl r1, r4, #2
@@ -1019,7 +1019,7 @@ _0205AADE:
 	cmp r1, #0
 	blt _0205AB1C
 	ldr r0, [sp, #0x20]
-	bl sub_02015CFC
+	bl SaveEasyChat_SetGreetingFlag
 _0205AB1C:
 	cmp r4, #7
 	bhi _0205AB54

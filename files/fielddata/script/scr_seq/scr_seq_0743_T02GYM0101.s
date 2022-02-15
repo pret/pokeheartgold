@@ -1,0 +1,358 @@
+#include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T02GYM0101.h"
+#include "msgdata/msg/msg_0454_T02GYM0101.h"
+	.include "asm/macros/script.inc"
+
+	.rodata
+
+	scrdef scr_seq_T02GYM0101_000
+	scrdef scr_seq_T02GYM0101_001
+	scrdef scr_seq_T02GYM0101_002
+	scrdef scr_seq_T02GYM0101_003
+	scrdef scr_seq_T02GYM0101_004
+	scrdef_end
+
+scr_seq_T02GYM0101_002:
+	viridian_gym_init
+	setvar VAR_UNK_4127, 0
+	get_phone_book_rematch PHONE_CONTACT_BLUE, VAR_TEMP_x4001
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _0065
+	compare VAR_UNK_40FD, 0
+	goto_if_eq _005F
+	get_weekday VAR_TEMP_x4002
+	compare VAR_TEMP_x4002, 5
+	goto_if_ne _0059
+	setflag FLAG_UNK_2F6
+	goto _005D
+
+_0059:
+	clearflag FLAG_UNK_2F6
+_005D:
+	end
+
+_005F:
+	clearflag FLAG_UNK_2F6
+	end
+
+_0065:
+	setflag FLAG_UNK_2F6
+	end
+
+scr_seq_T02GYM0101_000:
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	check_badge 15, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
+	goto_if_eq _0131
+	npc_msg msg_0454_T02GYM0101_00000
+	closemsg
+	trainer_battle TRAINER_LEADER_BLUE_BLUE, 0, 0, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
+	goto_if_eq _0147
+	give_badge 15
+	addvar VAR_UNK_4135, 1
+	setflag FLAG_UNK_998
+	add_special_game_stat 22
+	settrainerflag TRAINER_ACE_TRAINER_M_ARABELLA
+	settrainerflag TRAINER_ACE_TRAINER_F_SALMA
+	settrainerflag TRAINER_ACE_TRAINER_M_BONITA
+	settrainerflag TRAINER_DOUBLE_TEAM_ELAN_AND_IDA
+	setflag FLAG_UNK_97F
+	clearflag FLAG_HIDE_ROUTE_10_ZAPDOS
+	setflag FLAG_UNK_30F
+	setvar VAR_UNK_4096, 1
+	npc_msg msg_0454_T02GYM0101_00001
+	buffer_players_name 0
+	npc_msg msg_0454_T02GYM0101_00002
+	play_fanfare SEQ_ME_BADGE
+	wait_fanfare
+	npc_msg msg_0454_T02GYM0101_00003
+	goto _00F0
+
+_00F0:
+	goto_if_no_item_space ITEM_TM92, 1, _0127
+	callstd std_give_item_verbose
+	setflag FLAG_UNK_17E
+	buffer_players_name 0
+	npc_msg msg_0454_T02GYM0101_00004
+	waitbutton
+	closemsg
+	releaseall
+	end
+
+_0127:
+	callstd std_bag_is_full
+	closemsg
+	releaseall
+	end
+
+_0131:
+	goto_if_unset FLAG_UNK_17E, _00F0
+	npc_msg msg_0454_T02GYM0101_00005
+	waitbutton
+	closemsg
+	releaseall
+	end
+
+_0147:
+	white_out
+	releaseall
+	end
+
+scr_seq_T02GYM0101_001:
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	check_badge 15, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
+	goto_if_eq _0186
+	npc_msg msg_0454_T02GYM0101_00006
+	scrcmd_600
+	set_follow_poke_inhibit_state 1
+	scrcmd_607
+	scrcmd_109 253, 56
+	setvar VAR_UNK_4127, 1
+	waitbutton
+	closemsg
+	releaseall
+	end
+
+_0186:
+	npc_msg msg_0454_T02GYM0101_00007
+	waitbutton
+	closemsg
+	releaseall
+	end
+
+scr_seq_T02GYM0101_003:
+	scrcmd_609
+	lockall
+	goto_if_set FLAG_UNK_13A, _037D
+	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
+	compare VAR_TEMP_x4000, 1
+	goto_if_ne _01C9
+	apply_movement obj_T02GYM0101_sunglasses, _0394
+	apply_movement obj_player, _040C
+	goto _02AB
+
+_01C9:
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _01EC
+	apply_movement obj_T02GYM0101_sunglasses, _03A4
+	apply_movement obj_player, _040C
+	goto _02AB
+
+_01EC:
+	compare VAR_TEMP_x4000, 3
+	goto_if_ne _020F
+	apply_movement obj_T02GYM0101_sunglasses, _03B4
+	apply_movement obj_player, _040C
+	goto _02AB
+
+_020F:
+	compare VAR_TEMP_x4000, 4
+	goto_if_ne _0232
+	apply_movement obj_T02GYM0101_sunglasses, _03C4
+	apply_movement obj_player, _0418
+	goto _02AB
+
+_0232:
+	compare VAR_TEMP_x4000, 5
+	goto_if_ne _0255
+	apply_movement obj_T02GYM0101_sunglasses, _03D4
+	apply_movement obj_player, _0418
+	goto _02AB
+
+_0255:
+	compare VAR_TEMP_x4000, 6
+	goto_if_ne _0278
+	apply_movement obj_T02GYM0101_sunglasses, _03E4
+	apply_movement obj_player, _0418
+	goto _02AB
+
+_0278:
+	compare VAR_TEMP_x4000, 8
+	goto_if_ne _029B
+	apply_movement obj_T02GYM0101_sunglasses, _03F0
+	apply_movement obj_player, _0424
+	goto _02AB
+
+_029B:
+	apply_movement obj_T02GYM0101_sunglasses, _03FC
+	apply_movement obj_player, _0424
+_02AB:
+	wait_movement
+	npc_msg msg_0454_T02GYM0101_00008
+	closemsg
+	setflag FLAG_UNK_13A
+	compare VAR_TEMP_x4000, 1
+	goto_if_ne _02D1
+	apply_movement obj_T02GYM0101_sunglasses, _0430
+	goto _037B
+
+_02D1:
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _02EC
+	apply_movement obj_T02GYM0101_sunglasses, _043C
+	goto _037B
+
+_02EC:
+	compare VAR_TEMP_x4000, 3
+	goto_if_ne _0307
+	apply_movement obj_T02GYM0101_sunglasses, _0448
+	goto _037B
+
+_0307:
+	compare VAR_TEMP_x4000, 4
+	goto_if_ne _0322
+	apply_movement obj_T02GYM0101_sunglasses, _0454
+	goto _037B
+
+_0322:
+	compare VAR_TEMP_x4000, 5
+	goto_if_ne _033D
+	apply_movement obj_T02GYM0101_sunglasses, _0460
+	goto _037B
+
+_033D:
+	compare VAR_TEMP_x4000, 6
+	goto_if_ne _0358
+	apply_movement obj_T02GYM0101_sunglasses, _046C
+	goto _037B
+
+_0358:
+	compare VAR_TEMP_x4000, 8
+	goto_if_ne _0373
+	apply_movement obj_T02GYM0101_sunglasses, _046C
+	goto _037B
+
+_0373:
+	apply_movement obj_T02GYM0101_sunglasses, _0474
+_037B:
+	wait_movement
+_037D:
+	scrcmd_600
+	set_follow_poke_inhibit_state 1
+	scrcmd_607
+	scrcmd_109 253, 56
+	setvar VAR_UNK_4127, 1
+	releaseall
+	end
+
+
+_0394:
+	step 2, 1
+	step 75, 1
+	step 14, 5
+	step_end
+
+_03A4:
+	step 2, 1
+	step 75, 1
+	step 14, 4
+	step_end
+
+_03B4:
+	step 2, 1
+	step 75, 1
+	step 14, 3
+	step_end
+
+_03C4:
+	step 2, 1
+	step 75, 1
+	step 14, 2
+	step_end
+
+_03D4:
+	step 2, 1
+	step 75, 1
+	step 14, 1
+	step_end
+
+_03E4:
+	step 2, 1
+	step 75, 1
+	step_end
+
+_03F0:
+	step 3, 1
+	step 75, 1
+	step_end
+
+_03FC:
+	step 3, 1
+	step 75, 1
+	step 15, 1
+	step_end
+
+_040C:
+	step 65, 2
+	step 3, 1
+	step_end
+
+_0418:
+	step 63, 2
+	step 3, 1
+	step_end
+
+_0424:
+	step 63, 2
+	step 2, 1
+	step_end
+
+_0430:
+	step 15, 5
+	step 1, 1
+	step_end
+
+_043C:
+	step 15, 4
+	step 1, 1
+	step_end
+
+_0448:
+	step 15, 3
+	step 1, 1
+	step_end
+
+_0454:
+	step 15, 2
+	step 1, 1
+	step_end
+
+_0460:
+	step 15, 1
+	step 1, 1
+	step_end
+
+_046C:
+	step 1, 1
+	step_end
+
+_0474:
+	step 14, 1
+	step 1, 1
+	step_end
+scr_seq_T02GYM0101_004:
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	check_badge 15, VAR_SPECIAL_RESULT
+	buffer_players_name 0
+	compare VAR_SPECIAL_RESULT, 0
+	goto_if_ne _04A7
+	npc_msg msg_0454_T02GYM0101_00009
+	goto _04AA
+
+_04A7:
+	npc_msg msg_0454_T02GYM0101_00010
+_04AA:
+	waitbutton
+	closemsg
+	releaseall
+	end
+	.balign 4, 0

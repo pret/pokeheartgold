@@ -1,9 +1,14 @@
 #ifndef POKEHEARTGOLD_TRAINER_DATA_H
 #define POKEHEARTGOLD_TRAINER_DATA_H
 
-#include "pm_string.h"
-#include "pokemon_types_def.h"
 #include "constants/pokemon.h"
+#include "constants/trainers.h"
+#include "constants/trainer_class.h"
+
+#ifndef PM_ASM
+#include "pm_string.h"
+#include "mail_message.h"
+#include "pokemon_types_def.h"
 
 typedef enum TrainerAttr {
     TRATTR_TYPE,
@@ -14,7 +19,7 @@ typedef enum TrainerAttr {
     TRATTR_ITEM2,
     TRATTR_ITEM3,
     TRATTR_ITEM4,
-    TRATTR_UNKC,
+    TRATTR_AIFLAGS,
     TRATTR_DOUBLEBTL,
 } TrainerAttr;
 
@@ -23,14 +28,6 @@ typedef enum TrainerGender {
     TRAINER_FEMALE,
     TRAINER_DOUBLE,
 } TrainerGender;
-
-#define TRTYPE_MOVES_F                      (0)
-#define TRTYPE_ITEM_F                       (1)
-
-#define TRTYPE_MON            ((0<<TRTYPE_MOVES_F)|(0<<TRTYPE_ITEM_F))
-#define TRTYPE_MON_MOVES      ((1<<TRTYPE_MOVES_F)|(0<<TRTYPE_ITEM_F))
-#define TRTYPE_MON_ITEM       ((0<<TRTYPE_MOVES_F)|(1<<TRTYPE_ITEM_F))
-#define TRTYPE_MON_ITEM_MOVES ((1<<TRTYPE_MOVES_F)|(1<<TRTYPE_ITEM_F))
 
 typedef struct TrainerMonSpecies {
     // IV scale parameter
@@ -87,30 +84,40 @@ typedef union TrainerMon {
 } TRPOKE;
 
 typedef struct TrainerData {
-    u8 trainerType;
-    u8 trainerClass;
-    u8 unk_2;
-    u8 npoke;
-    u16 items[4];
-    u32 unk_C;
-    u32 doubleBattle;
-} TRAINER;
-
-typedef struct TrainerRam {
-    TRAINER data;
-    u16 name[OT_NAME_LENGTH + 1];
-    u8 padding[16];
-} TRAINER_RAM;
+    /*000*/ u8 trainerType;
+    /*001*/ u8 trainerClass;
+    /*002*/ u8 unk_2; // unused
+    /*003*/ u8 npoke;
+    /*004*/ u16 items[4];
+    /*00C*/ u32 ai_flags;
+    /*010*/ u32 doubleBattle;
+    /*014*/ u16 name[OT_NAME_LENGTH + 1];
+    // Used in the Frontier
+    /*024*/ MAIL_MESSAGE winMessage;
+    /*02C*/ MAIL_MESSAGE loseMessage;
+} TRAINER; // size=0x34
 
 typedef struct BattleSetupStruct {
-    u32 flags;
-    PARTY *parties[4];
-    u16 field_14[2];
-    u32 trainer_idxs[4];
-    TRAINER_RAM trainers[4];
-} BATTLE_SETUP;
+    /*000*/ u32 flags;
+    /*004*/ PARTY *parties[4];
+    /*014*/ u16 field_14[2];
+    /*018*/ u32 trainer_idxs[4];
+    /*028*/ TRAINER trainers[4];
+    /*0F8*/ u8 unk_0F8[0x60];
+    /*158*/ u32 unk_158;
+    /*15C*/ u8 unk_15C[0x78];
+} BATTLE_SETUP; // size=0x1d4
 
 void TrainerData_ReadTrData(u32 trno, TRAINER *dest);
 TrainerGender TrainerClass_GetGenderOrTrainerCount(int trainerClass);
+int TrainerData_GetAttr(u32 tr_idx, TrainerAttr attr_no);
+void EnemyTrainerSet_Init(BATTLE_SETUP *battleSetup, SAVEDATA *saveData, HeapID heap_id);
+BOOL TrainerMessageWithIdPairExists(u32 trainer_idx, u32 msg_id, HeapID heap_id);
+void GetTrainerMessageByIdPair(u32 trainer_idx, u32 msg_id, STRING * str, HeapID heap_id);
+void TrainerData_ReadTrPoke(u32 idx, TRPOKE * dest);
+void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id);
+void TrMon_OverridePidGender(int species, int forme, int overrideParam, u32 *pid);
+void TrMon_FrustrationCheckAndSetFriendship(POKEMON *pokemon);
+#endif //PM_ASM
 
 #endif //POKEHEARTGOLD_TRAINER_DATA_H

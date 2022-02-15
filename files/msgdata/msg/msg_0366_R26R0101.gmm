@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0366_R26R0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Did you think you were lucky to find\na place to rest right where you\fneeded it?\rDon’t be reserved!\nI look forward to people’s smiles.\fLet your Pokémon rest here!\r</language>
+	</row>
+	<row id="msg_0366_R26R0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There!\nYour Pokémon are looking good!\fKeep at it!</language>
+	</row>
+	<row id="msg_0366_R26R0101_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHANSEY: Ch-Chansey!</language>
+	</row>
+</body>

@@ -22,10 +22,10 @@ sub_0205298C: ; 0x0205298C
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #5
@@ -48,7 +48,7 @@ _020529BE:
 	add r1, r5, #0
 	bl sub_0206DB58
 	add r0, r5, #0
-	bl sub_02067BD0
+	bl Fsys_ClearFollowingTrainer
 	ldr r0, [r5, #0xc]
 	bl SavArray_PlayerParty_get
 	bl HealParty
@@ -158,13 +158,13 @@ sub_02052AA0: ; 0x02052AA0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0xb
@@ -218,7 +218,7 @@ _02052AFC:
 	b _02052CA8
 _02052B20:
 	add r0, r6, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _02052B8C
 	mov r1, #4
@@ -347,9 +347,9 @@ _02052C20:
 	ldr r0, [r5, #0x40]
 	cmp r0, #0
 	bne _02052CA8
-	bl sub_02004A90
+	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	mov r0, #0
 	bl sub_0200616C
 	mov r0, #0x20
@@ -388,7 +388,7 @@ _02052C5E:
 	b _02052CA8
 _02052C86:
 	add r0, r6, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _02052CA8
 	add r0, r5, #0
@@ -414,7 +414,7 @@ Special_EnterHallOfFame: ; 0x02052CB4
 	sub sp, #0x10
 	str r0, [sp]
 	add r7, r1, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r4, r0, #0
 	mov r0, #0x20
 	mov r1, #0x44
@@ -427,15 +427,15 @@ Special_EnterHallOfFame: ; 0x02052CB4
 	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [sp, #4]
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
-	bl sub_0203B968
+	bl Save_FlyPoints_get
+	bl FlyPoints_GetDynamicWarp
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
-	bl sub_0203B964
+	bl Save_FlyPoints_get
+	bl FlyPoints_GetSpecialSpawnWarpPtr
 	str r0, [sp, #8]
 	add r0, r6, #0
-	bl sub_02066614
+	bl CheckGameClearFlag
 	str r0, [r5]
 	ldr r0, [r4, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
@@ -451,11 +451,11 @@ Special_EnterHallOfFame: ; 0x02052CB4
 	bl PlayerProfile_GetTrainerGender
 	str r0, [r5, #0x10]
 	add r0, r6, #0
-	bl sub_02066614
+	bl CheckGameClearFlag
 	str r0, [r5, #0x14]
 	add r0, r6, #0
 	str r7, [r5, #0x3c]
-	bl sub_02066614
+	bl CheckGameClearFlag
 	cmp r0, #0
 	bne _02052D3A
 	add r0, r4, #0
@@ -464,13 +464,13 @@ _02052D3A:
 	ldr r0, [r4, #0xc]
 	bl SavArray_PlayerParty_get
 	ldr r0, [sp, #0xc]
-	bl sub_0203E368
+	bl LocationData_BackUp
 	ldr r0, [sp, #8]
-	bl sub_0203E380
+	bl LocationData_Restore
 	add r0, r6, #0
 	bl sub_020667E0
 	add r0, r6, #0
-	bl sub_02066604
+	bl SetGameClearFlag
 	ldr r0, [sp, #4]
 	bl PlayerProfile_SetGameClearFlag
 	ldr r0, [r5, #0x3c]
@@ -484,7 +484,7 @@ _02052D70:
 	ldr r0, [sp]
 	ldr r1, _02052D80 ; =sub_02052AA0
 	add r2, r5, #0
-	bl sub_02050530
+	bl QueueTask
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

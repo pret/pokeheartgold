@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0467_T04_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Kanto’s Power Plant?\rIt’s near the end of Route 9, the road\nthat heads east from here.\rI think there was an accident of\nsome sort there.</language>
+	</row>
+	<row id="msg_0467_T04_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You’re collecting every single kind\nof Pokémon?\rThat must be quite a challenge, but\nit sounds fun, too.</language>
+	</row>
+	<row id="msg_0467_T04_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The cape in the north is a good\nplace for dates.\rGirls like it!\rJust between you and me...\nMisty, the Gym Leader, is sometimes\fthere at the cape.\rGuess I don’t stand a chance!</language>
+	</row>
+	<row id="msg_0467_T04_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SLOWBRO: Yarah?</language>
+	</row>
+	<row id="msg_0467_T04_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SLOWBRO is full of the fighting spirit!</language>
+	</row>
+	<row id="msg_0467_T04_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">My SLOWBRO and I make an\nawesome combination!\rSLOWBRO, show me your Psychic!\r...!\nSLOWBRO’s Psychic hits hard!</language>
+	</row>
+	<row id="msg_0467_T04_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This shady character asked me just now\nhow to get to the Power Plant.\rHe said it must be kept\n“...confidential.”\rWhat does that mean?</language>
+	</row>
+	<row id="msg_0467_T04_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A shady character sneaked into\nthe Gym! What business does\fhe have with Misty?</language>
+	</row>
+	<row id="msg_0467_T04_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I saw this shady guy in black go\noff toward the Cape.</language>
+	</row>
+	<row id="msg_0467_T04_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’m a huge fan of Cerulean Gym’s Misty.</language>
+	</row>
+	<row id="msg_0467_T04_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I heard of a cave here that had\nhorribly powerful Pokémon in it.\fThat’s why I came here.\r</language>
+	</row>
+	<row id="msg_0467_T04_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ayuh?\rMy Dowsing Machine is responding...</language>
+	</row>
+	<row id="msg_0467_T04_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This is...\nThe notorious Cerulean Cave!\rHorribly powerful Pokémon live here.\nOnly those who have defeated all eight\fKanto Gym Leaders are allowed to\fchallenge it.</language>
+	</row>
+	<row id="msg_0467_T04_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cerulean City\nThe Floral Lagoon City</language>
+	</row>
+	<row id="msg_0467_T04_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cerulean City Pokémon Gym\nLeader: Misty\fThe Tomboyish Mermaid</language>
+	</row>
+	<row id="msg_0467_T04_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Trendsetter of the Bicycle Boom\rCerulean Bike Main Shop</language>
+	</row>
+	<row id="msg_0467_T04_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There’s a notice here...\rStamp out thievery and make the city\na friendlier, more cheerful place!\fCerulean Police</language>
+	</row>
+	<row id="msg_0467_T04_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rt. 24 Ahead\nEast to Cerulean Cape</language>
+	</row>
+	<row id="msg_0467_T04_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It’s locked...</language>
+	</row>
+</body>

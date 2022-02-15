@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0499_T07R0106_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A vending machine with a \nprize roulette...\rIt makes you happy when you get\nsomething for free even if it’s worth\fonly $200.\rHappiness does not come from how much\nthings are worth.\rIt is up to the heart of the one to\nreceive it...</language>
+	</row>
+	<row id="msg_0499_T07R0106_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Aww! There are no games here!\nI wanted to play...</language>
+	</row>
+	<row id="msg_0499_T07R0106_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Have a Break at the Vending Machines\n6F: Rooftop Atrium</language>
+	</row>
+	<row id="msg_0499_T07R0106_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It’s a vending machine.\nWhich drink would you like? {YESNO 0}</language>
+	</row>
+	<row id="msg_0499_T07R0106_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Clang!\rA can of {STRVAR_1 8, 0, 0} dropped down.\r</language>
+	</row>
+	<row id="msg_0499_T07R0106_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Clang!\rBonus! Another can of {STRVAR_1 8, 0, 0}\ndropped down.\r</language>
+	</row>
+	<row id="msg_0499_T07R0106_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Not enough money...</language>
+	</row>
+	<row id="msg_0499_T07R0106_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Decided not to buy a drink.</language>
+	</row>
+</body>

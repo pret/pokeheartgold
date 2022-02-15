@@ -240,7 +240,7 @@ _02259A90: .word 0x000005DC
 
 	thumb_func_start ov19_02259A94
 ov19_02259A94: ; 0x02259A94
-	ldr r0, _02259AB8 ; =gMain
+	ldr r0, _02259AB8 ; =gSystem
 	ldr r2, [r0, #0x48]
 	mov r0, #3
 	add r1, r2, #0
@@ -262,7 +262,7 @@ _02259AAE:
 _02259AB6:
 	bx lr
 	.balign 4, 0
-_02259AB8: .word gMain
+_02259AB8: .word gSystem
 	thumb_func_end ov19_02259A94
 
 	thumb_func_start ov19_02259ABC
@@ -358,7 +358,7 @@ ov19_02259AD8: ; 0x02259AD8
 	ldr r0, [r4, #0x18]
 	mov r1, #7
 	sub r3, r2, #4
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add sp, #0x54
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -375,7 +375,7 @@ ov19_02259B90: ; 0x02259B90
 	ldr r0, [r4, #0x18]
 	mov r1, #7
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #7
 	bl FreeBgTilemapBuffer
@@ -405,7 +405,7 @@ ov19_02259BC0: ; 0x02259BC0
 	str r1, [sp, #4]
 	mov r1, #4
 	add r2, r1, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -416,7 +416,7 @@ ov19_02259BC0: ; 0x02259BC0
 	ldr r2, [r5, #0x18]
 	add r0, r4, #0
 	mov r3, #6
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -427,14 +427,14 @@ ov19_02259BC0: ; 0x02259BC0
 	ldr r2, [r5, #0x18]
 	add r0, r4, #0
 	mov r3, #6
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r5]
 	mov r1, #5
 	str r0, [sp]
 	add r0, r4, #0
 	mov r2, #0
 	add r3, sp, #0x10
-	bl sub_02007C10
+	bl GfGfxLoader_GetCharDataFromOpenNarc
 	add r6, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -666,7 +666,7 @@ _02259DD4:
 _02259DE0:
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02259DEC: .word ov19_0225A040
@@ -693,7 +693,7 @@ _02259E00:
 	bl ov01_021E8194
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov19_02259DF4
 
@@ -891,7 +891,7 @@ ov19_02259F64: ; 0x02259F64
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	add r0, #0x3c
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [r4, #0x10]
 	str r0, [sp]
 	mov r0, #0x1d
@@ -931,7 +931,7 @@ _02259FD4:
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	add r0, #0x4c
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl ov19_02259F0C
 	add sp, #0x10

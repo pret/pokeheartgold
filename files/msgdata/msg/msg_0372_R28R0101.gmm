@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0372_R28R0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Alas!\nYou’ve found me...\rMy peace and quiet to heal myself from\nthe exhaustion of standing in the\fspotlight has been exposed!\r</language>
+	</row>
+	<row id="msg_0372_R28R0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What? You are not the media?\nThen you must be one of my fans.\rWhy didn’t you say so?\nGiggle...\rYou can keep it to yourself that\nI’m here, right?\rI’ll give you this for that!\r</language>
+	</row>
+	<row id="msg_0372_R28R0101_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It contains Steel Wing!\rI remember I was wearing a dress\ninspired by this move on my\fdebut stage...\rAlas...\nBeing a legendary Idol is so demanding.\rI’ve been retired for some time, but\npeople never stop chasing after me...\flike you!</language>
+	</row>
+	<row id="msg_0372_R28R0101_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FEAROW: Feero!</language>
+	</row>
+</body>

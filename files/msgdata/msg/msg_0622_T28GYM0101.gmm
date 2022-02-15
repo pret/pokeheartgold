@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0622_T28GYM0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pryce: Pokémon have many experiences\nin their lives, just like we do.\rI, too, have seen and suffered much in\nmy life.\rSince I am your elder, let me show you\nwhat I mean.\rI have been training Pokémon since\nbefore you were born.\rI do not lose easily.\nI, Pryce--the Winter Trainer--\fshall demonstrate my power!\r</language>
+	</row>
+	<row id="msg_0622_T28GYM0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pryce: I am impressed by your prowess.\rWith your strong will, I know you\nwill overcome all life’s obstacles.\fYou are worthy of this Badge!\r</language>
+	</row>
+	<row id="msg_0622_T28GYM0101_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} received\nthe Glacier Badge from Pryce!</language>
+	</row>
+	<row id="msg_0622_T28GYM0101_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pryce: That Badge will raise the Special\nstats of Pokémon.\rIt also lets your Pokémon use\nWhirlpool to get across\freal whirlpools.\rAnd this... This is a gift from me!\r</language>
+	</row>
+	<row id="msg_0622_T28GYM0101_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pryce: That TM contains Hail.\rIt summons a hailstorm that lasts for\nfive turns. The hailstorm damages\fall types except Ice.</language>
+	</row>
+	<row id="msg_0622_T28GYM0101_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pryce: When the ice and snow melt,\nspring arrives.\rYou and your Pokémon will be together\nfor many years to come.\fCherish your time together!</language>
+	</row>
+	<row id="msg_0622_T28GYM0101_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pryce: It is you...\rSince you are here, why don’t we\ntake a picture together? {YESNO 0}</language>
+	</row>
+	<row id="msg_0622_T28GYM0101_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pryce: I have advice to give you before\nwe take the picture.\rBreathe in and relax first.\nThen slowly begin to smile.\fAre you ready?\r</language>
+	</row>
+	<row id="msg_0622_T28GYM0101_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pryce: Let’s see...\nDid we get a good one?</language>
+	</row>
+	<row id="msg_0622_T28GYM0101_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pryce: That’s OK, too.\nSuit yourself.</language>
+	</row>
+	<row id="msg_0622_T28GYM0101_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Your Photo Album is full.\rAccess your PC to delete\nsome pictures.</language>
+	</row>
+</body>

@@ -1,5 +1,10 @@
 #include "constants/species.h"
 #include "constants/sndseq.h"
+#include "constants/items.h"
+#include "constants/phone_contacts.h"
+#include "constants/flags.h"
+#include "msgdata/msg/msg_0416.h"
+#include "msgdata/msg/msg_0411.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -348,7 +353,7 @@ _021E799A:
 	str r0, [r5, #0x38]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x24]
-	bl sub_0202ED88
+	bl SaveData_GetPhoneRematches
 	mov r1, #0x49
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -360,13 +365,13 @@ _021E799A:
 	ldr r0, [r5, #0x10]
 	ldr r1, [r5]
 	ldr r0, [r0, #0x28]
-	bl sub_0202EF44
+	bl GSPlayerMisc_AllocAndCopyPhonebook
 	mov r1, #0x4b
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x28]
-	bl sub_0202EEC0
+	bl GSPlayerMisc_FindEmptyGearPhonebookSlot
 	mov r2, #0x13
 	lsl r2, r2, #4
 	strb r0, [r5, r2]
@@ -452,7 +457,7 @@ _021E799A:
 	ldr r0, [r5, #0x10]
 	mov r2, #0xf
 	ldr r0, [r0, #0x2c]
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	ldr r3, _021E7B4C ; =0x0000013D
 	mov r2, #1
 	ldrb r1, [r5, r3]
@@ -491,7 +496,7 @@ _021E799A:
 	strb r0, [r5, r3]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x24]
-	bl sub_0202D9C4
+	bl Save_Roamers_get
 	mov r4, #0
 	add r6, r0, #0
 	add r7, r4, #0
@@ -499,15 +504,15 @@ _021E7B0A:
 	lsl r1, r4, #0x18
 	add r0, r6, #0
 	lsr r1, r1, #0x18
-	bl sub_0202DA28
+	bl GetRoamerIsActiveByIndex
 	cmp r0, #0
 	beq _021E7B2E
 	lsl r1, r4, #0x18
 	add r0, r6, #0
 	lsr r1, r1, #0x18
-	bl sub_0202DA54
+	bl Roamers_GetRoamMonStats
 	mov r1, #1
-	bl sub_0202DA6C
+	bl GetRoamerData
 	ldr r1, _021E7B50 ; =0x000009E8
 	strh r0, [r5, r1]
 	b _021E7B32
@@ -848,7 +853,7 @@ _021E7D82:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #4
 	blt _021E7D82
@@ -860,7 +865,7 @@ _021E7D9A:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021E7D9A
@@ -898,7 +903,7 @@ _021E7DAA:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #4]
 	add r0, r0, #1
 	str r0, [r5, #4]
@@ -962,7 +967,7 @@ _021E7E66:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021E7E66
@@ -971,7 +976,7 @@ _021E7E66:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0
 	str r0, [r5, #4]
 	add sp, #0xc
@@ -1010,14 +1015,14 @@ _021E7EBE:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021E7EBE
 	mov r0, #0
 	mov r1, #0xe
 	mov r2, #1
-	bl SetBrightness
+	bl SetBlendBrightness
 	ldr r0, [r5, #4]
 	add r0, r0, #1
 	str r0, [r5, #4]
@@ -1079,7 +1084,7 @@ _021E7F44:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021E7F44
@@ -1138,7 +1143,7 @@ _021E7FC2:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021E7FC2
@@ -1499,7 +1504,7 @@ _021E827A:
 	mov r1, #1
 	ldr r0, [r0, #0x74]
 	add r2, sp, #4
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [r5, #0x10]
@@ -1507,7 +1512,7 @@ _021E827A:
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x20
 	add r3, r1, #0
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [r5, #0x10]
@@ -1515,28 +1520,28 @@ _021E827A:
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x3c
 	mov r3, #2
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0x10]
 	mov r1, #5
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x58
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0x10]
 	mov r1, #6
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x74
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0x10]
 	mov r1, #7
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x90
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r4, #0
 	mov r6, #0x40
 	add r7, r4, #0
@@ -1681,7 +1686,7 @@ ov101_021E8370: ; 0x021E8370
 	add r1, #0x38
 	mov r2, #0
 	add r3, r5, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r3, #0x55
 	lsl r3, r3, #2
 	str r0, [r5, r3]
@@ -1692,7 +1697,7 @@ ov101_021E8370: ; 0x021E8370
 	mov r1, #0xb
 	mov r2, #0
 	add r3, r5, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r3, #0x56
 	lsl r3, r3, #2
 	str r0, [r5, r3]
@@ -1703,7 +1708,7 @@ ov101_021E8370: ; 0x021E8370
 	mov r1, #0xd
 	mov r2, #0
 	add r3, r5, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r3, #0x57
 	lsl r3, r3, #2
 	str r0, [r5, r3]
@@ -1715,7 +1720,7 @@ ov101_021E8370: ; 0x021E8370
 	add r1, #0x20
 	mov r2, #0
 	add r3, r5, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r3, #0x16
 	lsl r3, r3, #4
 	str r0, [r5, r3]
@@ -1727,7 +1732,7 @@ ov101_021E8370: ; 0x021E8370
 	add r1, #0x26
 	mov r2, #0
 	add r3, r5, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r3, #0x59
 	lsl r3, r3, #2
 	str r0, [r5, r3]
@@ -1739,7 +1744,7 @@ ov101_021E8370: ; 0x021E8370
 	add r1, r6, #0
 	mov r2, #0
 	add r3, r5, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r1, #0x5a
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -1840,12 +1845,12 @@ _021E850C:
 	add r1, r7, r1
 	mov r2, #0xb
 	mov r3, #2
-	bl sub_0201D494
+	bl AddTextWindowTopLeftCorner
 	mov r0, #0x81
 	lsl r0, r0, #2
 	add r0, r7, r0
 	mov r1, #0
-	bl sub_0201D9B0
+	bl FillWindowPixelBufferText_AssumeTileSize32
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2963,7 +2968,7 @@ _021E8E76:
 	lsr r1, r1, #0x18
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_0201B1F4
+	bl SetBgControlParam
 	ldr r0, [r5, #0x10]
 	add r1, r4, #2
 	lsl r1, r1, #0x18
@@ -2971,7 +2976,7 @@ _021E8E76:
 	lsr r1, r1, #0x18
 	mov r2, #2
 	mov r3, #4
-	bl sub_0201B1F4
+	bl SetBgControlParam
 	ldr r0, [r5, #0x10]
 	add r1, r4, #2
 	lsl r1, r1, #0x18
@@ -2979,7 +2984,7 @@ _021E8E76:
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	add r1, r4, #2
 	lsl r1, r1, #0x18
@@ -2987,7 +2992,7 @@ _021E8E76:
 	lsr r1, r1, #0x18
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r4, r4, #1
 	cmp r4, #2
 	blt _021E8E76
@@ -3000,7 +3005,7 @@ _021E8E76:
 	bl G2x_SetBlendAlpha_
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r4, #0
 	mov r6, #3
 	add r7, r4, #0
@@ -3018,7 +3023,7 @@ _021E8EE2:
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	add r1, r4, #1
 	lsl r1, r1, #0x18
@@ -3026,7 +3031,7 @@ _021E8EE2:
 	lsr r1, r1, #0x18
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021E8EE2
@@ -3067,7 +3072,7 @@ _021E8EE2:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	add r0, r5, #0
 	bl ov101_021EAF40
 	mov r2, #0x4e
@@ -3103,7 +3108,7 @@ _021E8EE2:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	mov r3, #0x46
 	lsl r3, r3, #2
 	add r2, r3, #0
@@ -3226,7 +3231,7 @@ _021E90BE:
 	lsr r1, r1, #0x18
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_0201B1F4
+	bl SetBgControlParam
 	ldr r0, [r5, #0x10]
 	add r1, r4, #2
 	lsl r1, r1, #0x18
@@ -3234,7 +3239,7 @@ _021E90BE:
 	lsr r1, r1, #0x18
 	mov r2, #2
 	mov r3, #0
-	bl sub_0201B1F4
+	bl SetBgControlParam
 	ldr r0, [r5, #0x10]
 	add r1, r4, #2
 	lsl r1, r1, #0x18
@@ -3242,7 +3247,7 @@ _021E90BE:
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201B1F4
+	bl SetBgControlParam
 	ldr r0, [r5, #0x10]
 	add r1, r4, #2
 	lsl r1, r1, #0x18
@@ -3250,7 +3255,7 @@ _021E90BE:
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	add r1, r4, #2
 	lsl r1, r1, #0x18
@@ -3258,13 +3263,13 @@ _021E90BE:
 	lsr r1, r1, #0x18
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r4, r4, #1
 	cmp r4, #2
 	blt _021E90BE
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r1, #0
 	ldr r0, _021E9258 ; =0x04000050
 	add r2, r1, #0
@@ -3307,7 +3312,7 @@ _021E9136:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	mov r0, #6
 	lsl r0, r0, #6
 	mov r2, #0
@@ -3333,10 +3338,10 @@ _021E9136:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldr r0, [r5, #0x10]
 	mov r1, #1
 	ldr r0, [r0, #0x74]
@@ -4614,7 +4619,7 @@ _021E9B90:
 	lsr r1, r1, #0x18
 	mov r2, #0
 	add r3, r7, r3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r3, _021E9BF0 ; =0x00000133
 	ldr r0, [r4, #0x10]
 	add r1, r5, #2
@@ -4625,7 +4630,7 @@ _021E9B90:
 	lsr r1, r1, #0x18
 	mov r2, #3
 	add r3, r7, r3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r6, #0x14]
 	add r1, r5, #2
 	str r0, [sp]
@@ -4635,7 +4640,7 @@ _021E9B90:
 	ldr r3, [r6, #0x10]
 	lsr r1, r1, #0x18
 	add r2, sp, #4
-	bl sub_0201BE7C
+	bl SetBgAffine
 	add r5, r5, #1
 	cmp r5, #2
 	blt _021E9B90
@@ -4911,12 +4916,12 @@ _021E9DD6:
 	lsr r1, r1, #0x18
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #5
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021E9DD6
@@ -4966,19 +4971,19 @@ _021E9E4A:
 	ldr r0, [r0, #0x74]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	mov r1, #6
 	ldr r0, [r0, #0x74]
 	mov r2, #5
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	mov r1, #7
 	ldr r0, [r0, #0x74]
 	mov r2, #5
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _021E9E74:
 	mov r0, #0
 	str r0, [r5, #0x34]
@@ -5013,19 +5018,19 @@ _021E9EA6:
 	mov r1, #5
 	mov r2, #4
 	mov r3, #0x20
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	mov r1, #6
 	ldr r0, [r0, #0x74]
 	mov r2, #4
 	mov r3, #0x20
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	mov r1, #7
 	ldr r0, [r0, #0x74]
 	mov r2, #4
 	mov r3, #0x20
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r2, #0
 	mov r0, #6
 _021E9ED8:
@@ -5042,19 +5047,19 @@ _021E9EE8:
 	ldr r0, [r0, #0x74]
 	add r2, r1, #0
 	mov r3, #0x20
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	mov r1, #6
 	ldr r0, [r0, #0x74]
 	mov r2, #5
 	mov r3, #0x20
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	mov r1, #7
 	ldr r0, [r0, #0x74]
 	mov r2, #5
 	mov r3, #0x20
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r2, #0
 	mov r0, #6
 _021E9F14:
@@ -5091,7 +5096,7 @@ _021E9F4A:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldr r0, [r5, #0x10]
 	add r1, r4, #5
 	lsl r1, r1, #0x18
@@ -5105,7 +5110,7 @@ _021E9F4A:
 	lsr r1, r1, #0x18
 	add r2, r7, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	add r1, r4, #5
 	lsl r1, r1, #0x18
@@ -5214,7 +5219,7 @@ _021EA03C:
 	lsr r1, r1, #0x18
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r4, r4, #1
 	cmp r4, #2
 	blt _021EA03C
@@ -5256,13 +5261,13 @@ _021EA094:
 	ldr r0, [r0, #0x74]
 	mov r2, #5
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	mov r1, #2
 	ldr r0, [r0, #0x74]
 	mov r2, #5
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r5, #0
 	add r0, #0x84
 	ldr r0, [r0]
@@ -5305,13 +5310,13 @@ _021EA0EE:
 	mov r1, #1
 	mov r2, #5
 	mov r3, #0x1c
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	mov r1, #2
 	ldr r0, [r0, #0x74]
 	mov r2, #5
 	mov r3, #0x1c
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #0x32
 	lsl r0, r0, #4
 	add r3, r4, r0
@@ -5331,13 +5336,13 @@ _021EA12A:
 	mov r1, #1
 	mov r2, #4
 	mov r3, #0x1c
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	mov r1, #2
 	ldr r0, [r0, #0x74]
 	mov r2, #4
 	mov r3, #0x1c
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #0x32
 	lsl r0, r0, #4
 	add r2, r4, r0
@@ -5880,7 +5885,7 @@ _021EA540:
 	ldrb r2, [r6, #4]
 	ldr r0, [r0, #0x2c]
 	mov r1, #2
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	cmp r0, #0
 	beq _021EA582
 	add r0, r5, #0
@@ -6303,7 +6308,7 @@ _021EA828:
 	ldr r0, [r0, #0x10]
 	mov r1, #2
 	ldr r0, [r0, #0x2c]
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	cmp r0, #0
 	beq _021EA860
 	add r0, r7, #0
@@ -6502,7 +6507,7 @@ _021EA9AA:
 	ldr r1, [r5, #0x10]
 	add r3, r7, #0
 	ldr r1, [r1, #0x24]
-	bl sub_020932A4
+	bl PhoneBookTrainerGetRematchInfo
 	cmp r0, #0
 	beq _021EA9E0
 	mov r0, #1
@@ -6515,7 +6520,7 @@ _021EA9E0:
 	lsl r0, r0, #2
 	ldrb r1, [r1, r4]
 	ldr r0, [r5, r0]
-	bl sub_0202F128
+	bl PhoneRematches_GiftItemIdGet
 	cmp r0, #0
 	beq _021EA9FA
 	mov r0, #1
@@ -6677,7 +6682,7 @@ _021EAAEA:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r5, #0x10]
 	mov r1, #5
 	ldr r0, [r0, #0x74]
@@ -6726,7 +6731,7 @@ _021EAB5A:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	mov r0, #0x5d
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -6761,7 +6766,7 @@ _021EAB5A:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	add r0, r5, #0
 	add r0, #0x90
 	ldr r0, [r0]
@@ -6826,7 +6831,7 @@ _021EAC2E:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	add r0, r4, #0
 	add r0, #0xc0
 	ldr r0, [r0]
@@ -6879,7 +6884,7 @@ _021EACC2:
 	add r0, #0x8c
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200C528
+	bl BufferECWord
 	add r0, r5, #0
 	add r1, r5, #0
 	add r2, r5, #0
@@ -7017,7 +7022,7 @@ _021EADDE:
 	add r0, #0x8c
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200C528
+	bl BufferECWord
 	add r0, r5, #0
 	add r1, r5, #0
 	add r2, r5, #0
@@ -7032,7 +7037,7 @@ _021EADDE:
 	lsl r0, r0, #2
 	add r0, r5, r0
 	mov r1, #0
-	bl sub_0201D9B0
+	bl FillWindowPixelBufferText_AssumeTileSize32
 	mov r1, #0
 	add r2, r5, #0
 	str r1, [sp]
@@ -7213,7 +7218,7 @@ ov101_021EAF40: ; 0x021EAF40
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	mov r0, #0x4e
 	lsl r0, r0, #2
 	ldrb r1, [r5, r0]
@@ -7249,7 +7254,7 @@ _021EAF8E:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	b _021EAFFA
 _021EAFC6:
 	add r0, #0x38
@@ -7276,7 +7281,7 @@ _021EAFC6:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021EAFFA:
 	ldr r4, _021EB1D8 ; =ov101_021F79B4
 	mov r7, #0
@@ -7304,7 +7309,7 @@ _021EB024:
 	ldrb r2, [r4, #4]
 	ldr r0, [r0, #0x2c]
 	mov r1, #2
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	cmp r0, #0
 	bne _021EB08E
 	ldrb r1, [r4, #0xb]
@@ -7350,7 +7355,7 @@ _021EB024:
 	lsl r3, r3, #0x18
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021EB08E:
 	add r7, r7, #1
 	add r4, #0xe
@@ -7390,7 +7395,7 @@ _021EB08E:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	b _021EB158
 _021EB0E0:
 	lsl r1, r1, #0x1f
@@ -7422,7 +7427,7 @@ _021EB0E0:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	b _021EB158
 _021EB120:
 	add r0, #0x33
@@ -7451,7 +7456,7 @@ _021EB120:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021EB158:
 	ldr r0, _021EB1DC ; =0x0000013D
 	ldrb r1, [r5, r0]
@@ -7483,7 +7488,7 @@ _021EB158:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021EB198:
 	ldr r0, _021EB1DC ; =0x0000013D
 	ldrb r1, [r5, r0]
@@ -7513,7 +7518,7 @@ _021EB198:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021EB1D4:
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
@@ -7627,7 +7632,7 @@ _021EB274:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021EB2AE:
 	ldr r0, [sp, #0x1c]
 	add r4, #0x10
@@ -7696,7 +7701,7 @@ ov101_021EB2FC: ; 0x021EB2FC
 	bl ov101_021EB1E0
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov101_021EB2FC
@@ -7787,7 +7792,7 @@ ov101_021EB38C: ; 0x021EB38C
 	str r0, [sp, #0x18]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	b _021EB41A
 _021EB3D8:
 	mov r0, #0x5e
@@ -7821,7 +7826,7 @@ _021EB3D8:
 	str r0, [sp, #0x18]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021EB41A:
 	ldr r0, [r4, #0x10]
 	mov r1, #1
@@ -8001,7 +8006,7 @@ _021EB564: .word sub_02068F98
 ov101_021EB568: ; 0x021EB568
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _021EB5D4 ; =gMain
+	ldr r0, _021EB5D4 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -8047,7 +8052,7 @@ _021EB5B6:
 _021EB5D0:
 	pop {r4, pc}
 	nop
-_021EB5D4: .word gMain
+_021EB5D4: .word gSystem
 _021EB5D8: .word 0x00000139
 	thumb_func_end ov101_021EB568
 
@@ -8120,7 +8125,7 @@ _021EB650: .word 0x00000139
 ov101_021EB654: ; 0x021EB654
 	push {r3, r4, r5, r6}
 	add r2, r0, #0
-	ldr r0, _021EB778 ; =gMain
+	ldr r0, _021EB778 ; =gSystem
 	mov r4, #0
 	ldr r5, [r0, #0x44]
 	add r0, r2, #0
@@ -8270,7 +8275,7 @@ _021EB772:
 	pop {r3, r4, r5, r6}
 	bx lr
 	.balign 4, 0
-_021EB778: .word gMain
+_021EB778: .word gSystem
 _021EB77C: .word 0x0000013B
 _021EB780: .word 0x0000013A
 	thumb_func_end ov101_021EB654
@@ -8311,7 +8316,7 @@ _021EB796:
 	bne _021EB7DA
 	add r1, sp, #4
 	str r1, [sp]
-	ldr r3, _021EB814 ; =gMain + 0x40
+	ldr r3, _021EB814 ; =gSystem + 0x40
 	mov r1, #0x20
 	mov r2, #0x22
 	ldrsh r1, [r3, r1]
@@ -8349,13 +8354,13 @@ _021EB7F6:
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
-_021EB814: .word gMain + 0x40
+_021EB814: .word gSystem + 0x40
 	thumb_func_end ov101_021EB784
 
 	thumb_func_start ov101_021EB818
 ov101_021EB818: ; 0x021EB818
 	push {r3, r4, r5, lr}
-	ldr r2, _021EB938 ; =gMain
+	ldr r2, _021EB938 ; =gSystem
 	add r4, r0, #0
 	ldr r1, [r2, #0x48]
 	ldr r2, [r2, #0x44]
@@ -8496,7 +8501,7 @@ _021EB932:
 	mvn r0, r0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021EB938: .word gMain
+_021EB938: .word gSystem
 _021EB93C: .word 0x00000139
 _021EB940: .word 0x00000943
 _021EB944: .word 0x00000949
@@ -8506,7 +8511,7 @@ _021EB948: .word 0x00000941
 	thumb_func_start ov101_021EB94C
 ov101_021EB94C: ; 0x021EB94C
 	push {r3, r4, r5, lr}
-	ldr r2, _021EBA38 ; =gMain
+	ldr r2, _021EBA38 ; =gSystem
 	add r4, r0, #0
 	ldr r1, [r2, #0x48]
 	ldr r2, [r2, #0x44]
@@ -8621,7 +8626,7 @@ _021EBA32:
 	mvn r0, r0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021EBA38: .word gMain
+_021EBA38: .word gSystem
 _021EBA3C: .word 0x00000139
 _021EBA40: .word 0x00000941
 	thumb_func_end ov101_021EB94C
@@ -8770,12 +8775,12 @@ _021EBB5A:
 	strh r1, [r0]
 	add r0, sp, #4
 	str r0, [sp]
-	ldr r3, _021EBC10 ; =gMain + 0x40
+	ldr r3, _021EBC10 ; =gSystem + 0x40
 	ldr r0, [r5, #0x10]
 	ldrh r2, [r3, #0x20]
 	ldrh r3, [r3, #0x22]
 	ldr r0, [r0, #0x74]
-	bl sub_0201F2CC
+	bl DoesPixelAtScreenXYMatchPtrVal
 	cmp r0, #0
 	bne _021EBB7E
 	mov r0, #0
@@ -8812,7 +8817,7 @@ _021EBB7E:
 	add r0, r5, #0
 	mov r1, #1
 	bl ov101_021EB1E0
-	ldr r2, _021EBC10 ; =gMain + 0x40
+	ldr r2, _021EBC10 ; =gSystem + 0x40
 	ldr r0, _021EBC18 ; =0x00000142
 	ldrh r1, [r2, #0x20]
 	strh r1, [r5, r0]
@@ -8844,7 +8849,7 @@ _021EBC00: .word 0x00000941
 _021EBC04: .word 0x00000943
 _021EBC08: .word 0x00000949
 _021EBC0C: .word ov101_021F7EA4
-_021EBC10: .word gMain + 0x40
+_021EBC10: .word gSystem + 0x40
 _021EBC14: .word 0x00000945
 _021EBC18: .word 0x00000142
 	thumb_func_end ov101_021EBA44
@@ -8905,7 +8910,7 @@ _021EBC46:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r5, #0x10]
 	mov r1, #1
 	ldr r0, [r0, #0x74]
@@ -8935,12 +8940,12 @@ _021EBCC0:
 	strh r1, [r0]
 	add r0, sp, #0x1c
 	str r0, [sp]
-	ldr r3, _021EBDDC ; =gMain + 0x40
+	ldr r3, _021EBDDC ; =gSystem + 0x40
 	ldr r0, [r5, #0x10]
 	ldrh r2, [r3, #0x20]
 	ldrh r3, [r3, #0x22]
 	ldr r0, [r0, #0x74]
-	bl sub_0201F2CC
+	bl DoesPixelAtScreenXYMatchPtrVal
 	cmp r0, #0
 	bne _021EBCE4
 	mov r0, #0
@@ -9032,7 +9037,7 @@ _021EBD34:
 	add sp, #0x20
 	pop {r3, r4, r5, pc}
 _021EBDA0:
-	ldr r2, _021EBDDC ; =gMain + 0x40
+	ldr r2, _021EBDDC ; =gSystem + 0x40
 	ldr r0, _021EBDE8 ; =0x00000142
 	ldrh r1, [r2, #0x20]
 	strh r1, [r5, r0]
@@ -9059,7 +9064,7 @@ _021EBDA0:
 _021EBDD0: .word 0x00000139
 _021EBDD4: .word ov101_021F7E94
 _021EBDD8: .word ov101_021F7EA8
-_021EBDDC: .word gMain + 0x40
+_021EBDDC: .word gSystem + 0x40
 _021EBDE0: .word 0x00000945
 _021EBDE4: .word 0x00000941
 _021EBDE8: .word 0x00000142
@@ -9090,7 +9095,7 @@ _021EBE10:
 	add r0, r1, #1
 	lsl r0, r0, #0x1b
 	lsr r5, r0, #0x18
-	ldr r0, _021EBF28 ; =gMain + 0x40
+	ldr r0, _021EBF28 ; =gSystem + 0x40
 	ldrh r1, [r0, #0x20]
 	ldr r0, _021EBF2C ; =0x00000132
 	ldrb r0, [r4, r0]
@@ -9107,7 +9112,7 @@ _021EBE10:
 	lsl r0, r0, #0x10
 	asr r0, r0, #0x10
 	str r0, [sp, #0x14]
-	ldr r0, _021EBF28 ; =gMain + 0x40
+	ldr r0, _021EBF28 ; =gSystem + 0x40
 	ldrh r1, [r0, #0x22]
 	ldr r0, _021EBF30 ; =0x00000131
 	ldrb r0, [r4, r0]
@@ -9228,7 +9233,7 @@ _021EBEE0:
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_021EBF28: .word gMain + 0x40
+_021EBF28: .word gSystem + 0x40
 _021EBF2C: .word 0x00000132
 _021EBF30: .word 0x00000131
 _021EBF34: .word 0x00000112
@@ -9442,7 +9447,7 @@ _021EC0A8: .word 0x00000106
 ov101_021EC0AC: ; 0x021EC0AC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
-	ldr r1, _021EC2F4 ; =gMain + 0x40
+	ldr r1, _021EC2F4 ; =gSystem + 0x40
 	add r5, r0, #0
 	mov r0, #0x20
 	ldrsh r0, [r1, r0]
@@ -9730,7 +9735,7 @@ _021EC2EA:
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_021EC2F4: .word gMain + 0x40
+_021EC2F4: .word gSystem + 0x40
 _021EC2F8: .word 0x0000013A
 _021EC2FC: .word 0x00000139
 _021EC300: .word 0x00000142
@@ -10600,7 +10605,7 @@ ov101_021EC980: ; 0x021EC980
 	add r6, r3, r0
 	add r1, r1, #1
 	lsl r1, r1, #3
-	ldr r3, _021ECA2C ; =gMain + 0x40
+	ldr r3, _021ECA2C ; =gSystem + 0x40
 	str r0, [sp, #0xc]
 	ldrh r0, [r3, #0x20]
 	ldrb r4, [r5, r4]
@@ -10671,7 +10676,7 @@ _021ECA1C:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021ECA28: .word ov101_021F7E9C
-_021ECA2C: .word gMain + 0x40
+_021ECA2C: .word gSystem + 0x40
 	thumb_func_end ov101_021EC980
 
 	thumb_func_start ov101_021ECA30
@@ -10770,7 +10775,7 @@ ov101_021ECA84: ; 0x021ECA84
 	str r0, [sp, #0x18]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r4, #0x10]
 	mov r1, #2
 	ldr r0, [r0, #0x74]
@@ -10783,7 +10788,7 @@ ov101_021ECA84: ; 0x021ECA84
 ov101_021ECAF0: ; 0x021ECAF0
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	ldr r0, _021ECC48 ; =gMain
+	ldr r0, _021ECC48 ; =gSystem
 	mov r1, #2
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -10941,7 +10946,7 @@ _021ECC40:
 	mvn r0, r0
 	pop {r3, r4, r5, pc}
 	nop
-_021ECC48: .word gMain
+_021ECC48: .word gSystem
 _021ECC4C: .word 0x0000FFFF
 _021ECC50: .word 0x00000941
 _021ECC54: .word 0x0000093F
@@ -11014,7 +11019,7 @@ _021ECC9A:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r5, #0x10]
 	mov r1, #2
 	ldr r0, [r0, #0x74]
@@ -11120,7 +11125,7 @@ _021ECD92:
 	ror r0, r1
 	add r1, r2, r0
 	add r2, r1, #0
-	ldr r1, _021ECE50 ; =gMain + 0x40
+	ldr r1, _021ECE50 ; =gSystem + 0x40
 	mov r0, #0x68
 	mul r2, r0
 	ldrh r3, [r1, #0x20]
@@ -11195,7 +11200,7 @@ _021ECE3E:
 _021ECE44: .word 0x00000139
 _021ECE48: .word ov101_021F7EF4
 _021ECE4C: .word 0x00000947
-_021ECE50: .word gMain + 0x40
+_021ECE50: .word gSystem + 0x40
 _021ECE54: .word 0x00000941
 	thumb_func_end ov101_021ECC58
 
@@ -11241,7 +11246,7 @@ _021ECEA4: .word 0x0000FFFF
 ov101_021ECEA8: ; 0x021ECEA8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	ldr r0, _021ECF8C ; =gMain
+	ldr r0, _021ECF8C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -11282,7 +11287,7 @@ _021ECEEE:
 	mov r1, #0
 	bl ov101_021EAE54
 _021ECF06:
-	ldr r0, _021ECF8C ; =gMain
+	ldr r0, _021ECF8C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -11318,7 +11323,7 @@ _021ECF4E:
 	mvn r0, r0
 	pop {r4, r5, r6, pc}
 _021ECF54:
-	ldr r0, _021ECF8C ; =gMain
+	ldr r0, _021ECF8C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #0x20
 	tst r0, r1
@@ -11345,7 +11350,7 @@ _021ECF86:
 	mvn r0, r0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_021ECF8C: .word gMain
+_021ECF8C: .word gSystem
 _021ECF90: .word 0x00000941
 _021ECF94: .word 0x0000093F
 	thumb_func_end ov101_021ECEA8
@@ -11359,7 +11364,7 @@ ov101_021ECF98: ; 0x021ECF98
 	beq _021ECFA6
 	b _021ED0C8
 _021ECFA6:
-	ldr r2, _021ED100 ; =gMain + 0x40
+	ldr r2, _021ED100 ; =gSystem + 0x40
 	ldr r0, _021ED104 ; =ov101_021F7EB8
 	ldrh r1, [r2, #0x20]
 	ldrh r2, [r2, #0x22]
@@ -11502,7 +11507,7 @@ _021ED0C8:
 	add r1, r4, #0
 	ldrb r2, [r4, r2]
 	add r1, #0x84
-	ldr r0, _021ED100 ; =gMain + 0x40
+	ldr r0, _021ED100 ; =gSystem + 0x40
 	ldr r1, [r1]
 	lsl r2, r2, #0x18
 	lsr r4, r2, #0x1c
@@ -11525,7 +11530,7 @@ _021ED0C8:
 	mvn r0, r0
 	pop {r3, r4, r5, pc}
 	nop
-_021ED100: .word gMain + 0x40
+_021ED100: .word gSystem + 0x40
 _021ED104: .word ov101_021F7EB8
 _021ED108: .word 0x00000948
 _021ED10C: .word 0x00000139
@@ -11574,7 +11579,7 @@ _021ED14E:
 ov101_021ED158: ; 0x021ED158
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	ldr r0, _021ED1FC ; =gMain
+	ldr r0, _021ED1FC ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -11604,7 +11609,7 @@ ov101_021ED158: ; 0x021ED158
 	mov r1, #0
 	bl ov101_021ECA84
 _021ED1A0:
-	ldr r0, _021ED1FC ; =gMain
+	ldr r0, _021ED1FC ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -11644,7 +11649,7 @@ _021ED1F4:
 	mvn r0, r0
 	pop {r3, r4, r5, pc}
 	nop
-_021ED1FC: .word gMain
+_021ED1FC: .word gSystem
 _021ED200: .word 0x00000946
 	thumb_func_end ov101_021ED158
 
@@ -11750,7 +11755,7 @@ ov101_021ED2C0: ; 0x021ED2C0
 	beq _021ED2CE
 	b _021ED3F8
 _021ED2CE:
-	ldr r2, _021ED480 ; =gMain + 0x40
+	ldr r2, _021ED480 ; =gSystem + 0x40
 	ldr r0, _021ED484 ; =ov101_021F7ECC
 	ldrh r1, [r2, #0x20]
 	ldrh r2, [r2, #0x22]
@@ -11893,7 +11898,7 @@ _021ED3CA:
 	mvn r0, r0
 	pop {r4, r5, r6, pc}
 _021ED3F8:
-	ldr r0, _021ED480 ; =gMain + 0x40
+	ldr r0, _021ED480 ; =gSystem + 0x40
 	mov r5, #5
 	lsl r5, r5, #6
 	ldrh r2, [r0, #0x22]
@@ -11941,7 +11946,7 @@ _021ED454:
 	mov r0, #0x4f
 	lsl r0, r0, #2
 	ldrb r0, [r4, r0]
-	ldr r2, _021ED480 ; =gMain + 0x40
+	ldr r2, _021ED480 ; =gSystem + 0x40
 	lsl r0, r0, #0x18
 	ldrh r1, [r2, #0x20]
 	lsr r5, r0, #0x1f
@@ -11959,7 +11964,7 @@ _021ED478:
 	mvn r0, r0
 	pop {r4, r5, r6, pc}
 	nop
-_021ED480: .word gMain + 0x40
+_021ED480: .word gSystem + 0x40
 _021ED484: .word ov101_021F7ECC
 _021ED488: .word 0x00000139
 _021ED48C: .word 0x00000946
@@ -12463,8 +12468,8 @@ _021ED7E4:
 	bx lr
 	thumb_func_end ov101_021ED7D8
 
-	thumb_func_start ov101_Radio_OvyInit
-ov101_Radio_OvyInit: ; 0x021ED7F8
+	thumb_func_start ov101_TownMap_OvyInit
+ov101_TownMap_OvyInit: ; 0x021ED7F8
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl OverlayManager_GetField18
@@ -12507,7 +12512,7 @@ ov101_Radio_OvyInit: ; 0x021ED7F8
 	str r0, [r1, #0x24]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x24]
-	bl sub_0202ED7C
+	bl SaveData_GSPlayerMisc_get
 	ldr r1, [r4, #0x10]
 	str r0, [r1, #0x28]
 	ldr r0, [r4, #0x10]
@@ -12542,10 +12547,10 @@ _021ED8A4: .word SDK_OVERLAY_OVY_100_ID
 _021ED8A8: .word SDK_OVERLAY_OVY_26_ID
 _021ED8AC: .word 0x000009F4
 _021ED8B0: .word ov101_021F7372
-	thumb_func_end ov101_Radio_OvyInit
+	thumb_func_end ov101_TownMap_OvyInit
 
-	thumb_func_start ov101_Radio_OvyExec
-ov101_Radio_OvyExec: ; 0x021ED8B4
+	thumb_func_start ov101_TownMap_OvyExec
+ov101_TownMap_OvyExec: ; 0x021ED8B4
 	push {r4, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -12604,10 +12609,10 @@ _021ED91E:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov101_Radio_OvyExec
+	thumb_func_end ov101_TownMap_OvyExec
 
-	thumb_func_start ov101_Radio_OvyExit
-ov101_Radio_OvyExit: ; 0x021ED924
+	thumb_func_start ov101_TownMap_OvyExit
+ov101_TownMap_OvyExit: ; 0x021ED924
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -12644,7 +12649,7 @@ _021ED948:
 	nop
 _021ED978: .word SDK_OVERLAY_OVY_26_ID
 _021ED97C: .word SDK_OVERLAY_OVY_100_ID
-	thumb_func_end ov101_Radio_OvyExit
+	thumb_func_end ov101_TownMap_OvyExit
 
 	thumb_func_start ov101_021ED980
 ov101_021ED980: ; 0x021ED980
@@ -12695,7 +12700,7 @@ ov101_021ED980: ; 0x021ED980
 	str r0, [r4, #0x38]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x24]
-	bl sub_0202ED88
+	bl SaveData_GetPhoneRematches
 	mov r1, #0x49
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -12707,13 +12712,13 @@ ov101_021ED980: ; 0x021ED980
 	ldr r0, [r4, #0x10]
 	ldr r1, [r4]
 	ldr r0, [r0, #0x28]
-	bl sub_0202EF44
+	bl GSPlayerMisc_AllocAndCopyPhonebook
 	mov r1, #0x4b
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x28]
-	bl sub_0202EEC0
+	bl GSPlayerMisc_FindEmptyGearPhonebookSlot
 	mov r2, #0x13
 	lsl r2, r2, #4
 	strb r0, [r4, r2]
@@ -12803,7 +12808,7 @@ ov101_021ED980: ; 0x021ED980
 	ldr r0, [r4, #0x10]
 	mov r2, #0xf
 	ldr r0, [r0, #0x2c]
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	ldr r3, _021EDAF4 ; =0x0000013D
 	mov r2, #1
 	ldrb r1, [r4, r3]
@@ -12906,7 +12911,7 @@ _021EDB7E:
 	mov r0, #1
 	pop {r3, r4, pc}
 _021EDB84:
-	ldr r0, _021EDBCC ; =gMain
+	ldr r0, _021EDBCC ; =gSystem
 	ldr r1, [r0, #0x48]
 	ldr r0, _021EDBD0 ; =0x00000CF3
 	tst r0, r1
@@ -12942,7 +12947,7 @@ _021EDBBA:
 	pop {r3, r4, pc}
 	nop
 _021EDBC8: .word 0x00000139
-_021EDBCC: .word gMain
+_021EDBCC: .word gSystem
 _021EDBD0: .word 0x00000CF3
 	thumb_func_end ov101_021EDB30
 
@@ -13007,7 +13012,7 @@ _021EDC30:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021EDC30
@@ -13016,7 +13021,7 @@ _021EDC30:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #4]
 	add r0, r0, #1
 	str r0, [r5, #4]
@@ -13073,7 +13078,7 @@ _021EDCAE:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021EDCAE
@@ -13082,7 +13087,7 @@ _021EDCAE:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0
 	str r0, [r5, #4]
 	add sp, #0xc
@@ -13118,7 +13123,7 @@ _021EDD00:
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -13348,7 +13353,7 @@ _021EDE84:
 	bl GX_EngineAToggleLayers
 	mov r0, #0xf
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r4, #0
 	mov r6, #0x20
 	add r7, r4, #0
@@ -13391,13 +13396,13 @@ ov101_021EDF54: ; 0x021EDF54
 	mov r0, #1
 	lsl r1, r1, #6
 	mov r2, #0
-	bl sub_0201C290
+	bl BG_LoadBlankPltt
 	mov r1, #6
 	ldr r3, [r4]
 	mov r0, #5
 	lsl r1, r1, #6
 	mov r2, #0
-	bl sub_0201C290
+	bl BG_LoadBlankPltt
 	ldr r0, [r4, #0x10]
 	mov r1, #7
 	ldr r0, [r0, #0x74]
@@ -13584,7 +13589,7 @@ ov101_021EDFF8: ; 0x021EDFF8
 	mov r1, #0x45
 	mov r2, #0
 	add r3, r5, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r3, #0x55
 	lsl r3, r3, #2
 	str r0, [r5, r3]
@@ -13595,7 +13600,7 @@ ov101_021EDFF8: ; 0x021EDFF8
 	mov r1, #0xb
 	mov r2, #0
 	add r3, r5, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r3, #0x56
 	lsl r3, r3, #2
 	str r0, [r5, r3]
@@ -13606,7 +13611,7 @@ ov101_021EDFF8: ; 0x021EDFF8
 	mov r1, #0xd
 	mov r2, #0
 	add r3, r5, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r3, #0x57
 	lsl r3, r3, #2
 	str r0, [r5, r3]
@@ -13617,7 +13622,7 @@ ov101_021EDFF8: ; 0x021EDFF8
 	mov r1, #0x43
 	mov r2, #0
 	add r3, r5, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r1, #0x16
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -14268,7 +14273,7 @@ _021EE694:
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	add r1, r4, #1
 	lsl r1, r1, #0x18
@@ -14276,7 +14281,7 @@ _021EE694:
 	lsr r1, r1, #0x18
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021EE694
@@ -14317,7 +14322,7 @@ _021EE694:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	add r0, r5, #0
 	bl ov101_021EAF40
 	mov r0, #0
@@ -14350,7 +14355,7 @@ _021EE694:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	mov r3, #0x46
 	lsl r3, r3, #2
 	add r2, r3, #0
@@ -14374,21 +14379,21 @@ _021EE694:
 	ldr r0, [r0, #0x74]
 	mov r1, #5
 	sub r3, #0x54
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	mov r2, #3
 	add r3, r2, #0
 	ldr r0, [r0, #0x74]
 	mov r1, #6
 	sub r3, #0x54
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	mov r2, #3
 	add r3, r2, #0
 	ldr r0, [r0, #0x74]
 	mov r1, #7
 	sub r3, #0x54
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	b _021EE82A
 _021EE7BC:
 	add r0, r5, #0
@@ -14419,7 +14424,7 @@ _021EE7BC:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	mov r3, #0x46
 	lsl r3, r3, #2
 	add r2, r3, #0
@@ -14843,7 +14848,7 @@ _021EEB20:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021EEB20
@@ -14880,7 +14885,7 @@ _021EEB20:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #4]
 	add r0, r0, #1
 	str r0, [r5, #4]
@@ -14938,7 +14943,7 @@ _021EEBE2:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021EEBE2
@@ -14974,7 +14979,7 @@ _021EEC18:
 	mov r0, #0
 	mov r1, #0xe
 	mov r2, #1
-	bl SetBrightness
+	bl SetBlendBrightness
 	mov r6, #1
 	mov r4, #0
 	add r7, r6, #0
@@ -14983,12 +14988,12 @@ _021EEC32:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r0, r4, #5
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r7, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021EEC32
@@ -15091,12 +15096,12 @@ _021EED06:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r0, r4, #5
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r7, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021EED06
@@ -15370,42 +15375,42 @@ _021EEF22:
 	mov r1, #1
 	ldr r0, [r0, #0x74]
 	add r2, sp, #4
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #2
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x20
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #3
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x3c
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #5
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x58
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #6
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x74
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #7
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x90
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r4, #0
 	mov r6, #0x20
 	add r7, r4, #0
@@ -15770,7 +15775,7 @@ ov101_021EF1D8: ; 0x021EF1D8
 	lsr r1, r1, #0x19
 	add r1, #0x16
 	add r3, #0x48
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	str r0, [r5, #0x44]
 	add r0, r4, #0
 	bl NARC_dtor
@@ -15984,7 +15989,7 @@ ov101_021EF384: ; 0x021EF384
 	mov r1, #2
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r5, #0xc]
 	mov r1, #2
 	ldr r0, [r0, #0x74]
@@ -16054,7 +16059,7 @@ _021EF42A:
 	mov r1, #3
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021EF48A:
 	lsl r0, r4, #0x11
 	add r6, r6, #1
@@ -16358,7 +16363,7 @@ ov101_021EF6D0: ; 0x021EF6D0
 ov101_021EF6E4: ; 0x021EF6E4
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	ldr r0, _021EF7C8 ; =gMain
+	ldr r0, _021EF7C8 ; =gSystem
 	mov r2, #2
 	ldr r0, [r0, #0x48]
 	add r1, r0, #0
@@ -16461,7 +16466,7 @@ _021EF7C2:
 	mvn r0, r0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021EF7C8: .word gMain
+_021EF7C8: .word gSystem
 _021EF7CC: .word 0x00000941
 _021EF7D0: .word 0x0000093F
 	thumb_func_end ov101_021EF6E4
@@ -16688,13 +16693,13 @@ ov101_021EF96C: ; 0x021EF96C
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4]
 	ldr r0, [r0, #0x28]
-	bl sub_0202EF44
+	bl GSPlayerMisc_AllocAndCopyPhonebook
 	add r1, r4, #0
 	add r1, #0xd0
 	str r0, [r1]
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0x28]
-	bl sub_0202EEC0
+	bl GSPlayerMisc_FindEmptyGearPhonebookSlot
 	add r1, r4, #0
 	add r1, #0xcd
 	strb r0, [r1]
@@ -17010,7 +17015,7 @@ _021EFBAE:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021EFBAE
@@ -17046,7 +17051,7 @@ _021EFBE4:
 	mov r0, #0
 	mov r1, #0xe
 	mov r2, #1
-	bl SetBrightness
+	bl SetBlendBrightness
 	mov r6, #1
 	mov r4, #0
 	add r7, r6, #0
@@ -17055,12 +17060,12 @@ _021EFBFE:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r0, r4, #5
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r7, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021EFBFE
@@ -17169,12 +17174,12 @@ _021EFCDC:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r0, r5, #5
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r7, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r5, r5, #1
 	cmp r5, #3
 	blt _021EFCDC
@@ -17498,7 +17503,7 @@ _021EFF7C:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021EFF7C
@@ -17507,7 +17512,7 @@ _021EFF7C:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -17695,7 +17700,7 @@ _021F00DC:
 	b _021F0162
 _021F0106:
 	ldr r0, _021F0174 ; =0x000005DC
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	beq _021F0116
 	add sp, #0x10
@@ -17707,7 +17712,7 @@ _021F0116:
 	b _021F0162
 _021F011E:
 	ldr r0, _021F0178 ; =0x000005F3
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	beq _021F012E
 	add sp, #0x10
@@ -17719,7 +17724,7 @@ _021F012E:
 	b _021F0162
 _021F0136:
 	ldr r0, _021F0178 ; =0x000005F3
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	beq _021F0146
 	add sp, #0x10
@@ -17774,42 +17779,42 @@ _021F0192:
 	mov r1, #1
 	ldr r0, [r0, #0x74]
 	add r2, sp, #4
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #2
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x20
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #3
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x3c
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #5
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x58
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #6
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x74
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #7
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x90
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r4, #0
 	mov r6, #0x20
 	add r7, r4, #0
@@ -17845,13 +17850,13 @@ _021F0200:
 	blt _021F0200
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r0, [r5, #0xc]
 	mov r1, #3
 	ldr r0, [r0, #0x74]
 	add r2, r1, #0
 	mov r3, #0x20
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add sp, #0xac
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -17864,13 +17869,13 @@ ov101_021F0260: ; 0x021F0260
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r0, [r4, #0xc]
 	mov r1, #3
 	ldr r0, [r0, #0x74]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r4, #0xc]
 	bl ov100_021E5CA4
 	pop {r4, pc}
@@ -17943,7 +17948,7 @@ ov101_021F0284: ; 0x021F0284
 	mov r2, #0
 	add r1, #0x22
 	add r3, r5, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	ldr r1, _021F036C ; =0x00000508
 	mov r2, #0
 	str r0, [r5, r1]
@@ -17970,7 +17975,7 @@ ov101_021F0284: ; 0x021F0284
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0xc]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	add r0, r4, #0
 	bl NARC_dtor
 	ldr r0, [r5, #0xc]
@@ -18166,7 +18171,7 @@ ov101_021F0464: ; 0x021F0464
 	add r0, #0xc4
 	ldrb r1, [r1]
 	ldr r0, [r0]
-	bl ov101_021F1EE8
+	bl PhoneContact_GetName
 	mov r1, #0
 	add r2, r0, #0
 	str r1, [sp]
@@ -18422,7 +18427,7 @@ ov101_021F0694: ; 0x021F0694
 	str r0, [sp, #0x20]
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0x24]
-	bl sub_0202ED88
+	bl SaveData_GetPhoneRematches
 	str r0, [sp, #0x24]
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0x34]
@@ -18962,7 +18967,7 @@ ov101_021F0ACC: ; 0x021F0ACC
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0xc]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	add r0, r5, #0
 	add r0, #0x78
 	mov r1, #5
@@ -18991,7 +18996,7 @@ ov101_021F0ACC: ; 0x021F0ACC
 	b _021F0B6C
 _021F0B48:
 	add r0, #0x78
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	mov r0, #0x14
 	str r0, [sp]
 	mov r0, #0x20
@@ -19037,7 +19042,7 @@ ov101_021F0B84: ; 0x021F0B84
 ov101_021F0BA0: ; 0x021F0BA0
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _021F0C44 ; =gMain
+	ldr r0, _021F0C44 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -19109,7 +19114,7 @@ _021F0C3E:
 	mvn r0, r0
 	pop {r4, pc}
 	.balign 4, 0
-_021F0C44: .word gMain
+_021F0C44: .word gSystem
 _021F0C48: .word 0x00000941
 	thumb_func_end ov101_021F0BA0
 
@@ -19326,7 +19331,7 @@ _021F0DD6:
 	ldrb r2, [r2]
 	ldr r0, [r0, #0x28]
 	ldr r1, [r1]
-	bl sub_0202EF70
+	bl GSPlayerMisc_SetPhonebookFromBuffer
 	add r2, r4, #0
 	add r2, #0xcd
 	add r0, r4, #0
@@ -20188,7 +20193,7 @@ _021F141E:
 _021F143C:
 	ldrb r6, [r5, #3]
 	ldrb r1, [r5, #1]
-	ldr r7, _021F1558 ; =gMain
+	ldr r7, _021F1558 ; =gSystem
 	mov r3, #1
 	add r1, r6, r1
 	lsl r1, r1, #0x18
@@ -20329,7 +20334,7 @@ _021F1552:
 	sub r0, #0x11
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_021F1558: .word gMain
+_021F1558: .word gSystem
 _021F155C: .word 0x00000941
 _021F1560: .word 0x0000093F
 	thumb_func_end ov101_021F1408
@@ -20365,7 +20370,7 @@ _021F157A:
 _021F1598:
 	ldrb r2, [r5, #3]
 	ldrb r0, [r5, #1]
-	ldr r3, _021F16A0 ; =gMain
+	ldr r3, _021F16A0 ; =gSystem
 	add r0, r2, r0
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -20500,7 +20505,7 @@ _021F169C:
 	sub r0, #0x11
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_021F16A0: .word gMain
+_021F16A0: .word gSystem
 _021F16A4: .word 0x0000093F
 	thumb_func_end ov101_021F1564
 
@@ -21031,7 +21036,7 @@ _021F1A88:
 	lsl r0, r0, #2
 	ldrb r1, [r4, #8]
 	ldr r0, [r5, r0]
-	bl ov101_021F1EE8
+	bl PhoneContact_GetName
 	add r2, r0, #0
 	str r7, [sp]
 	mov r0, #0xff
@@ -21050,7 +21055,7 @@ _021F1A88:
 	lsl r0, r0, #2
 	ldrb r1, [r4, #8]
 	ldr r0, [r5, r0]
-	bl ov101_021F1F18
+	bl PhoneContact_GetClass
 	add r2, r0, #0
 	str r7, [sp]
 	mov r0, #0xff
@@ -21071,7 +21076,7 @@ _021F1ADE:
 	lsl r0, r0, #2
 	ldrb r1, [r4, #8]
 	ldr r0, [r5, r0]
-	bl ov101_021F1EE8
+	bl PhoneContact_GetName
 	add r2, r0, #0
 	str r7, [sp]
 	mov r0, #0xff
@@ -21090,7 +21095,7 @@ _021F1ADE:
 	lsl r0, r0, #2
 	ldrb r1, [r4, #8]
 	ldr r0, [r5, r0]
-	bl ov101_021F1F18
+	bl PhoneContact_GetClass
 	add r2, r0, #0
 	str r7, [sp]
 	mov r0, #0xff
@@ -21589,16 +21594,16 @@ _021F1E88:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov101_021F1E80
 
-	thumb_func_start ov101_021F1EE8
-ov101_021F1EE8: ; 0x021F1EE8
+	thumb_func_start PhoneContact_GetName
+PhoneContact_GetName: ; 0x021F1EE8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	cmp r1, #0x4b
+	cmp r1, #NUM_PHONE_CONTACTS
 	blo _021F1EF2
 	mov r1, #0
 _021F1EF2:
 	add r0, r1, #0
-	bl sub_02095FEC
+	bl GetPhoneMessageGmm
 	add r2, r0, #0
 	ldr r3, [r5]
 	mov r0, #0
@@ -21612,13 +21617,13 @@ _021F1EF2:
 	bl DestroyMsgData
 	ldr r0, [r5, #0x58]
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov101_021F1EE8
+	thumb_func_end PhoneContact_GetName
 
-	thumb_func_start ov101_021F1F18
-ov101_021F1F18: ; 0x021F1F18
+	thumb_func_start PhoneContact_GetClass
+PhoneContact_GetClass: ; 0x021F1F18
 	push {r4, lr}
 	add r4, r0, #0
-	cmp r1, #0x4b
+	cmp r1, #NUM_PHONE_CONTACTS
 	blo _021F1F22
 	mov r1, #0
 _021F1F22:
@@ -21654,7 +21659,7 @@ _021F1F4E:
 _021F1F60:
 	ldr r0, [r4, #0x5c]
 	pop {r4, pc}
-	thumb_func_end ov101_021F1F18
+	thumb_func_end PhoneContact_GetClass
 
 	thumb_func_start ov101_021F1F64
 ov101_021F1F64: ; 0x021F1F64
@@ -21669,7 +21674,7 @@ ov101_021F1F64: ; 0x021F1F64
 	mov r2, #0x54
 	str r3, [sp]
 	bl MI_CpuFill8
-	cmp r6, #0x4b
+	cmp r6, #NUM_PHONE_CONTACTS
 	blo _021F1F8C
 	bl GF_AssertFail
 	mov r0, #0xff
@@ -21739,7 +21744,7 @@ ov101_021F1FF4: ; 0x021F1FF4
 	add r4, #0x88
 	bl FillWindowPixelBuffer
 	ldr r0, [r5, #0xc]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [r4, #0x10]
 	ldrb r0, [r0, #1]
 	cmp r0, #0xf
@@ -21884,7 +21889,7 @@ ov101_021F2110: ; 0x021F2110
 	add r4, r0, #0
 	add r0, #0xa0
 	ldrb r0, [r0]
-	bl sub_02095FEC
+	bl GetPhoneMessageGmm
 	add r2, r0, #0
 	ldr r3, [r4]
 	mov r0, #0
@@ -21899,7 +21904,7 @@ ov101_021F2110: ; 0x021F2110
 	add r1, #0xa0
 	ldrb r1, [r1]
 	add r0, r4, #0
-	bl ov101_021F1EE8
+	bl PhoneContact_GetName
 	mov r1, #1
 	str r1, [sp]
 	mov r3, #2
@@ -22068,7 +22073,7 @@ _021F2276:
 	ldrb r1, [r6, #0x18]
 	ldr r0, [r4, #0x20]
 	mov r2, #1
-	bl sub_0202F0C4
+	bl PhoneRematches_SetSeeking
 	add sp, #8
 	pop {r4, r5, r6, pc}
 _021F2284:
@@ -22094,7 +22099,7 @@ _021F229C:
 _021F22B0:
 	ldrb r1, [r6, #0x18]
 	ldr r0, [r4, #0x20]
-	bl sub_0202F100
+	bl PhoneRematches_GiftItemIdSet
 	add sp, #8
 	pop {r4, r5, r6, pc}
 _021F22BC:
@@ -22260,7 +22265,7 @@ ov101_021F23F0: ; 0x021F23F0
 	push {r4, lr}
 	add r4, r0, #0
 	bl ov101_021F217C
-	ldr r0, _021F2430 ; =gMain
+	ldr r0, _021F2430 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -22287,7 +22292,7 @@ _021F242A:
 	mov r0, #0
 	pop {r4, pc}
 	nop
-_021F2430: .word gMain
+_021F2430: .word gSystem
 _021F2434: .word 0x000005DC
 _021F2438: .word ov101_021F8400
 	thumb_func_end ov101_021F23F0
@@ -22365,7 +22370,7 @@ _021F24B0:
 	b _021F2500
 _021F24C6:
 	ldr r0, _021F250C ; =0x00000878
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	beq _021F24D4
 	mov r0, #0
@@ -22382,7 +22387,7 @@ _021F24D4:
 	b _021F2500
 _021F24EA:
 	ldr r0, _021F250C ; =0x00000878
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	beq _021F24F8
 	mov r0, #0
@@ -22886,7 +22891,7 @@ _021F2870:
 	mov r1, #0
 	ldr r0, [r5, #0x20]
 	add r2, r1, #0
-	bl sub_0202F14C
+	bl MomSavingsBalanceAction
 	str r0, [r4, #0x44]
 	mov r0, #0
 	str r0, [sp]
@@ -23228,7 +23233,7 @@ _021F2B04:
 	pop {r3, r4, r5, r6, r7, pc}
 _021F2B0C:
 	ldr r0, [r5, #0x28]
-	bl sub_02066614
+	bl CheckGameClearFlag
 	cmp r0, #0
 	bne _021F2B1A
 	mov r0, #0x12
@@ -23467,7 +23472,7 @@ ov101_021F2CB8: ; 0x021F2CB8
 	add r4, r1, #0
 	ldrb r1, [r6, #0x18]
 	ldr r0, [r5, #0x20]
-	bl sub_0202F0E8
+	bl PhoneRematches_IsSeeking
 	cmp r0, #0
 	beq _021F2CD2
 	mov r0, #0
@@ -23475,7 +23480,7 @@ ov101_021F2CB8: ; 0x021F2CB8
 _021F2CD2:
 	ldrb r1, [r6, #0x18]
 	ldr r0, [r5, #0x20]
-	bl sub_0202F128
+	bl PhoneRematches_GiftItemIdGet
 	cmp r0, #0
 	beq _021F2CE2
 	mov r0, #0
@@ -23565,7 +23570,7 @@ _021F2D62:
 _021F2D78:
 	ldrb r1, [r4, #0x18]
 	ldr r0, [r5, #0x20]
-	bl sub_0202F0E8
+	bl PhoneRematches_IsSeeking
 	cmp r0, #0
 	bne _021F2D88
 	mov r0, #0
@@ -23596,7 +23601,7 @@ ov101_021F2D90: ; 0x021F2D90
 _021F2DB0:
 	ldrb r1, [r4, #0x18]
 	ldr r0, [r5, #0x20]
-	bl sub_0202F128
+	bl PhoneRematches_GiftItemIdGet
 	cmp r0, #0
 	bne _021F2DC0
 	mov r0, #0
@@ -24016,7 +24021,7 @@ _021F30CC:
 	ldrb r1, [r4, #0x19]
 	cmp r1, #0
 	beq _021F30F4
-	bl sub_02029E0C
+	bl Pokedex_CountNationalDexOwned
 	mov r1, #0x32
 	bl _s32_div_f
 	lsl r0, r0, #0x10
@@ -24116,7 +24121,7 @@ _021F3166:
 	add r0, #0x4d
 	strb r1, [r0]
 	add r0, r6, #0
-	bl sub_02029F60
+	bl Pokedex_JohtoDexIsComplete
 	add r1, r4, #0
 	add r1, #0x4d
 	lsl r0, r0, #0x18
@@ -24131,7 +24136,7 @@ _021F3166:
 	add r0, #0x4d
 	strb r1, [r0]
 	add r0, r6, #0
-	bl sub_02029F48
+	bl Pokedex_NationalDexIsComplete
 	add r1, r4, #0
 	add r1, #0x4d
 	lsl r0, r0, #0x18
@@ -24284,16 +24289,16 @@ _021F32D0:
 	lsr r0, r0, #0x1f
 	ldr r0, [r4, #0x50]
 	bne _021F32EC
-	bl sub_02029EF4
+	bl Pokedex_CountJohtoDexSeen
 	add r7, r0, #0
 	ldr r0, [r4, #0x50]
-	bl sub_02029EA0
+	bl Pokedex_CountJohtoDexOwned
 	b _021F32F8
 _021F32EC:
-	bl sub_02029E48
+	bl Pokedex_CountNationalDexSeen
 	add r7, r0, #0
 	ldr r0, [r4, #0x50]
-	bl sub_02029E0C
+	bl Pokedex_CountNationalDexOwned
 _021F32F8:
 	add r6, r0, #0
 	mov r0, #0
@@ -24335,7 +24340,7 @@ _021F333C:
 	lsr r0, r0, #0x1f
 	ldr r0, [r4, #0x50]
 	bne _021F3376
-	bl sub_02029FAC
+	bl Pokedex_CountJohtoOwned_ExcludeMythical
 	add r1, r5, #0
 	add r1, #0x36
 	ldrb r1, [r1]
@@ -24354,7 +24359,7 @@ _021F333C:
 	mov r6, #1
 	b _021F339E
 _021F3376:
-	bl sub_02029F74
+	bl Pokedex_CountNationalOwned_ExcludeMythical
 	add r1, r5, #0
 	add r1, #0x36
 	ldrb r1, [r1]
@@ -24374,7 +24379,7 @@ _021F3376:
 _021F339E:
 	add r0, sp, #8
 	ldrh r0, [r0]
-	bl sub_02006B24
+	bl PlayFanfare
 	lsl r2, r7, #0x18
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
@@ -24395,7 +24400,7 @@ _021F33C0:
 	mov r0, #0
 	pop {r4, r5, r6, r7, pc}
 _021F33CE:
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	beq _021F33DC
 	add sp, #0xc
@@ -24419,7 +24424,7 @@ _021F33F8:
 	ldr r0, [r4, #4]
 	cmp r0, #0xff
 	bne _021F340C
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	beq _021F340C
 	add sp, #0xc
@@ -24502,9 +24507,9 @@ _021F3486:
 	pop {r3, r4, r5, r6, r7, pc}
 _021F3494:
 	ldr r0, [r5, #0x1c]
-	bl sub_02031B14
+	bl Save_ApricornBox_get
 	add r6, r0, #0
-	bl sub_02031BD0
+	bl ApricornBox_GetKurtQuantity
 	add r7, r0, #0
 	bne _021F34A8
 	mov r2, #5
@@ -24519,7 +24524,7 @@ _021F34A8:
 	b _021F34DE
 _021F34B8:
 	add r0, r6, #0
-	bl sub_02031BD4
+	bl ApricornBox_GetKurtBall
 	add r2, r0, #0
 	ldr r0, [r5, #0x50]
 	mov r1, #0xa
@@ -24620,7 +24625,7 @@ _021F3568:
 	beq _021F3584
 	ldr r0, [r5, #0x20]
 	mov r1, #0x10
-	bl sub_0202F0E8
+	bl PhoneRematches_IsSeeking
 	cmp r0, #0
 	bne _021F3584
 	mov r0, #0x57
@@ -24646,7 +24651,7 @@ _021F359C:
 	ldr r0, [r5, #0x20]
 	mov r1, #0x10
 	mov r2, #1
-	bl sub_0202F0C4
+	bl PhoneRematches_SetSeeking
 _021F35B2:
 	add r4, #0x23
 	ldrb r0, [r4]
@@ -24883,7 +24888,7 @@ _021F376A:
 	cmp r0, #2
 	bne _021F3786
 	ldr r0, [sp, #4]
-	bl sub_0206D02C
+	bl Sav2_DayCare_CalcCompatibility
 	ldr r1, [sp]
 	add r1, #0x48
 	strh r0, [r1]
@@ -25064,7 +25069,7 @@ _021F38B8:
 	add r0, r0, #1
 	strb r0, [r6]
 	add r0, r7, #0
-	bl sub_0206C0E8
+	bl DayCareMon_CalcLevelGrowth
 	add r1, r5, r4
 	add r1, #0x4b
 	b _021F38EA
@@ -25305,7 +25310,7 @@ ov101_021F3AA4: ; 0x021F3AA4
 	mov r0, #0
 	strh r0, [r4, #0x20]
 	ldr r0, [r5, #0x28]
-	bl sub_02066614
+	bl CheckGameClearFlag
 	add r1, r4, #0
 	add r1, #0x4d
 	ldrb r1, [r1]
@@ -25657,7 +25662,7 @@ ov101_021F3D34: ; 0x021F3D34
 	add r5, r0, #0
 	ldr r0, [r5, #0x1c]
 	mov r4, #0
-	bl sub_0202ED7C
+	bl SaveData_GSPlayerMisc_get
 	bl sub_0202EE70
 	add r6, r0, #0
 	mov r1, #1
@@ -25666,7 +25671,7 @@ ov101_021F3D34: ; 0x021F3D34
 	ldr r0, [r5, #0x28]
 	mov r1, #2
 	mov r2, #0x19
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	cmp r0, #0
 	beq _021F3D62
 	mov r1, #1
@@ -25868,7 +25873,7 @@ _021F3ED2:
 	strb r1, [r0]
 	ldrb r1, [r4, #0x18]
 	ldr r0, [r5, #0x20]
-	bl sub_0202F0E8
+	bl PhoneRematches_IsSeeking
 	add r1, r4, #0
 	add r1, #0x4d
 	ldrb r2, [r1]
@@ -26043,7 +26048,7 @@ _021F4014:
 	ldrb r1, [r4, #0x18]
 	ldr r0, [r5, #0x20]
 	mov r2, #1
-	bl sub_0202F0C4
+	bl PhoneRematches_SetSeeking
 	b _021F405A
 _021F4036:
 	ldr r1, [r5, #0x4c]
@@ -26147,7 +26152,7 @@ ov101_021F40E8: ; 0x021F40E8
 	beq _021F40FE
 	ldr r0, [r0, #0x20]
 	mov r1, #0x12
-	bl sub_0202F0E8
+	bl PhoneRematches_IsSeeking
 	cmp r0, #0
 	beq _021F40FE
 	add r4, r4, #1
@@ -26179,7 +26184,7 @@ _021F4120:
 	cmp r0, #0
 	beq _021F419A
 	ldr r0, [r5, #0x1c]
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	ldrh r1, [r4, #0x1c]
 	add r6, r0, #0
 	cmp r1, #0
@@ -26501,14 +26506,14 @@ _021F4394:
 _021F4398:
 	mov r1, #2
 	mov r2, #5
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	cmp r0, #0
 	beq _021F43A8
 	mov r0, #0xa4
 	pop {r4, r5, r6, pc}
 _021F43A8:
 	ldr r0, [r5, #0x28]
-	bl sub_02066614
+	bl CheckGameClearFlag
 	cmp r0, #0
 	beq _021F43CE
 	ldr r0, [r5, #0x28]
@@ -26773,7 +26778,7 @@ ov101_021F4558: ; 0x021F4558
 	mov r1, #0xff
 	add r0, #0x27
 	strb r1, [r0]
-	bl sub_02004A90
+	bl GF_GetCurrentPlayingBGM
 	strh r0, [r4, #0x2c]
 	pop {r4, pc}
 	.balign 4, 0
@@ -27034,7 +27039,7 @@ _021F4790:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021F4790
@@ -27071,10 +27076,10 @@ _021F4790:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
-	bl sub_02004A90
+	bl GX_EngineBToggleLayers
+	bl GF_GetCurrentPlayingBGM
 	mov r1, #6
-	bl sub_02005EB4
+	bl StopBGM
 	ldr r0, [r5, #4]
 	add r0, r0, #1
 	str r0, [r5, #4]
@@ -27136,7 +27141,7 @@ _021F4868:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021F4868
@@ -27180,17 +27185,17 @@ _021F48B6:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021F48B6
 	mov r0, #0
 	mov r1, #0xe
 	mov r2, #1
-	bl SetBrightness
-	bl sub_02004A90
+	bl SetBlendBrightness
+	bl GF_GetCurrentPlayingBGM
 	mov r1, #6
-	bl sub_02005EB4
+	bl StopBGM
 	ldr r0, [r5, #4]
 	add r0, r0, #1
 	str r0, [r5, #4]
@@ -27305,12 +27310,12 @@ _021F49BA:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r0, r4, #5
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r7, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021F49BA
@@ -27478,42 +27483,42 @@ _021F4B02:
 	mov r1, #1
 	ldr r0, [r0, #0x74]
 	add r2, sp, #4
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #2
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x20
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #3
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x3c
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #5
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x58
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #6
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x74
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #7
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x90
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r4, #0
 	mov r6, #0x20
 	add r7, r4, #0
@@ -27675,7 +27680,7 @@ ov101_021F4BC8: ; 0x021F4BC8
 	add r1, #0x16
 	mov r2, #0
 	add r3, #0x68
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	str r0, [r5, #0x64]
 	add r0, r4, #0
 	bl NARC_dtor
@@ -28025,7 +28030,7 @@ ov101_021F4F34: ; 0x021F4F34
 	lsr r1, r1, #0x18
 	str r1, [sp, #0x14]
 	ldrh r0, [r0, #2]
-	ldr r6, _021F4FC8 ; =ov101_021FB2C9
+	ldr r6, _021F4FC8 ; =ov101_021FB2C8 + 1
 	ldrb r2, [r2, r3]
 	lsl r0, r0, #0x15
 	lsr r0, r0, #0x18
@@ -28034,7 +28039,7 @@ ov101_021F4F34: ; 0x021F4F34
 	ldrb r3, [r6, r3]
 	ldr r0, [r0, #0x74]
 	mov r1, #2
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021F4F7A:
 	cmp r4, #4
 	bhs _021F4FB6
@@ -28055,7 +28060,7 @@ _021F4F7A:
 	lsr r1, r1, #0x18
 	str r1, [sp, #0x14]
 	ldrh r0, [r0, #2]
-	ldr r4, _021F4FC8 ; =ov101_021FB2C9
+	ldr r4, _021F4FC8 ; =ov101_021FB2C8 + 1
 	ldrb r2, [r2, r3]
 	lsl r0, r0, #0x15
 	lsr r0, r0, #0x18
@@ -28064,7 +28069,7 @@ _021F4F7A:
 	ldrb r3, [r4, r3]
 	ldr r0, [r0, #0x74]
 	mov r1, #2
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021F4FB6:
 	ldr r0, [r5, #0xc]
 	mov r1, #2
@@ -28074,7 +28079,7 @@ _021F4FB6:
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
 _021F4FC4: .word ov101_021FB2C8
-_021F4FC8: .word ov101_021FB2C9
+_021F4FC8: .word ov101_021FB2C8 + 1
 	thumb_func_end ov101_021F4F34
 
 	thumb_func_start ov101_021F4FCC
@@ -28173,10 +28178,10 @@ ov101_021F5048: ; 0x021F5048
 	bl FillWindowPixelBuffer
 	add r0, r4, #0
 	add r0, #0x50
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	add r0, #0x40
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	add r0, #0x26
 	ldrb r1, [r0]
@@ -28298,12 +28303,12 @@ _021F514A:
 	lsr r1, r1, #0x18
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #5
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	mov r1, #1
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021F514A
@@ -28314,19 +28319,19 @@ _021F5170:
 	ldr r0, [r0, #0x74]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0xc]
 	mov r1, #6
 	ldr r0, [r0, #0x74]
 	mov r2, #5
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0xc]
 	mov r1, #7
 	ldr r0, [r0, #0x74]
 	mov r2, #5
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _021F519A:
 	ldrh r1, [r5, #0x2e]
 	ldr r0, _021F51BC ; =0xFFFF8000
@@ -28364,38 +28369,38 @@ _021F51D2:
 	mov r1, #5
 	mov r2, #4
 	mov r3, #0xa
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0xc]
 	mov r1, #6
 	ldr r0, [r0, #0x74]
 	mov r2, #4
 	mov r3, #0xa
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0xc]
 	mov r1, #7
 	ldr r0, [r0, #0x74]
 	mov r2, #4
 	mov r3, #0xa
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	b _021F522A
 _021F5202:
 	mov r1, #5
 	ldr r0, [r0, #0x74]
 	add r2, r1, #0
 	mov r3, #0xa
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0xc]
 	mov r1, #6
 	ldr r0, [r0, #0x74]
 	mov r2, #5
 	mov r3, #0xa
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0xc]
 	mov r1, #7
 	ldr r0, [r0, #0x74]
 	mov r2, #5
 	mov r3, #0xa
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _021F522A:
 	ldrh r3, [r5, #0x2e]
 	add r1, r5, #0
@@ -28438,7 +28443,7 @@ _021F5270:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	ldr r0, [r5, #0xc]
 	add r1, r4, #5
 	lsl r1, r1, #0x18
@@ -28452,7 +28457,7 @@ _021F5270:
 	lsr r1, r1, #0x18
 	add r2, r7, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0xc]
 	add r1, r4, #5
 	lsl r1, r1, #0x18
@@ -28507,7 +28512,7 @@ _021F5300: .word 0xFFFFC0FF
 	thumb_func_start ov101_021F5304
 ov101_021F5304: ; 0x021F5304
 	push {r3, r4, r5, r6, r7, lr}
-	ldr r1, _021F545C ; =gMain
+	ldr r1, _021F545C ; =gSystem
 	mov r4, #0
 	ldr r2, [r1, #0x48]
 	mov r3, #2
@@ -28677,7 +28682,7 @@ _021F5434:
 	mvn r0, r0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_021F545C: .word gMain
+_021F545C: .word gSystem
 _021F5460: .word 0x0000093F
 _021F5464: .word ov101_021F8968
 	thumb_func_end ov101_021F5304
@@ -28854,7 +28859,7 @@ _021F5552:
 	sub r0, r0, #2
 	pop {r3, r4, r5, r6, pc}
 _021F55A8:
-	ldr r2, _021F5648 ; =gMain + 0x40
+	ldr r2, _021F5648 ; =gSystem + 0x40
 	ldr r0, _021F564C ; =ov101_021F8968
 	ldrh r1, [r2, #0x20]
 	ldrh r2, [r2, #0x22]
@@ -28873,7 +28878,7 @@ _021F55C0:
 	strb r0, [r1, #3]
 	mov r0, #0x28
 	ldrsh r0, [r5, r0]
-	ldr r2, _021F5648 ; =gMain + 0x40
+	ldr r2, _021F5648 ; =gSystem + 0x40
 	strb r0, [r1, #1]
 	mov r0, #0x2a
 	ldrsh r0, [r5, r0]
@@ -28884,7 +28889,7 @@ _021F55C0:
 	bl sub_020253F0
 	cmp r0, #0
 	beq _021F5636
-	ldr r0, _021F5648 ; =gMain + 0x40
+	ldr r0, _021F5648 ; =gSystem + 0x40
 	mov r2, #0x2a
 	ldrh r1, [r0, #0x20]
 	strh r1, [r5, #0x28]
@@ -28929,7 +28934,7 @@ _021F5636:
 	nop
 _021F5640: .word ov101_021F8984
 _021F5644: .word 0x0000093F
-_021F5648: .word gMain + 0x40
+_021F5648: .word gSystem + 0x40
 _021F564C: .word ov101_021F8968
 	thumb_func_end ov101_021F5524
 
@@ -28951,14 +28956,14 @@ ov101_021F5650: ; 0x021F5650
 	mvn r0, r0
 	pop {r4, pc}
 _021F5670:
-	ldr r2, _021F56AC ; =gMain + 0x40
+	ldr r2, _021F56AC ; =gSystem + 0x40
 	ldr r0, _021F56B0 ; =ov101_021F8968
 	ldrh r1, [r2, #0x20]
 	ldrh r2, [r2, #0x22]
 	bl sub_020253F0
 	cmp r0, #0
 	beq _021F56A6
-	ldr r0, _021F56AC ; =gMain + 0x40
+	ldr r0, _021F56AC ; =gSystem + 0x40
 	mov r2, #0x2a
 	ldrh r1, [r0, #0x20]
 	strh r1, [r4, #0x28]
@@ -28980,7 +28985,7 @@ _021F56A6:
 	mvn r0, r0
 	pop {r4, pc}
 	.balign 4, 0
-_021F56AC: .word gMain + 0x40
+_021F56AC: .word gSystem + 0x40
 _021F56B0: .word ov101_021F8968
 	thumb_func_end ov101_021F5650
 
@@ -29004,9 +29009,9 @@ ov101_021F56B4: ; 0x021F56B4
 	beq _021F56E6
 	add r0, r5, #0
 	bl ov101_021F5048
-	bl sub_02004A90
+	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 _021F56E6:
 	add r0, r5, #0
 	add r0, #0x26
@@ -29093,12 +29098,12 @@ _021F5756:
 ov101_021F5780: ; 0x021F5780
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _021F57B0 ; =ov101_021F89B5
+	ldr r0, _021F57B0 ; =ov101_021F89B4 + 1
 	lsl r1, r1, #3
 	ldrb r0, [r0, r1]
 	mov r2, #0x2a
 	strh r0, [r4, #0x28]
-	ldr r0, _021F57B4 ; =ov101_021F89B6
+	ldr r0, _021F57B4 ; =ov101_021F89B4 + 2
 	ldrb r0, [r0, r1]
 	mov r1, #0x28
 	strh r0, [r4, #0x2a]
@@ -29114,8 +29119,8 @@ ov101_021F5780: ; 0x021F5780
 	bl ov101_021F56B4
 	pop {r4, pc}
 	.balign 4, 0
-_021F57B0: .word ov101_021F89B5
-_021F57B4: .word ov101_021F89B6
+_021F57B0: .word ov101_021F89B4 + 1
+_021F57B4: .word ov101_021F89B4 + 2
 	thumb_func_end ov101_021F5780
 
 	thumb_func_start ov101_021F57B8
@@ -29126,7 +29131,7 @@ ov101_021F57B8: ; 0x021F57B8
 	add r6, r1, #0
 	add r7, r2, #0
 	str r3, [sp]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	add r4, r0, #0
 	bl sub_0203B9B4
 	str r0, [sp, #4]
@@ -29467,7 +29472,7 @@ ov101_021F5A50: ; 0x021F5A50
 	mov r1, #0xc
 	add r3, r2, #0
 	mul r3, r1
-	ldr r1, _021F5A98 ; =ov101_021F8A0C
+	ldr r1, _021F5A98 ; =ov101_021F8A04 + 8
 	ldr r1, [r1, r3]
 	blx r1
 _021F5A6C:
@@ -29491,7 +29496,7 @@ _021F5A6C:
 	strb r1, [r4]
 	pop {r4, pc}
 	nop
-_021F5A98: .word ov101_021F8A0C
+_021F5A98: .word ov101_021F8A04 + 8
 	thumb_func_end ov101_021F5A50
 
 	thumb_func_start ov101_021F5A9C
@@ -29662,7 +29667,7 @@ _021F5BB6:
 	mov r1, #0xc
 	add r3, r2, #0
 	mul r3, r1
-	ldr r1, _021F5C3C ; =ov101_021F8A08
+	ldr r1, _021F5C3C ; =ov101_021F8A04 + 4
 	ldr r1, [r1, r3]
 	blx r1
 	add r4, #0x5e
@@ -29675,7 +29680,7 @@ _021F5BCE:
 	mov r1, #0xc
 	add r3, r2, #0
 	mul r3, r1
-	ldr r1, _021F5C40 ; =ov101_021F8A0C
+	ldr r1, _021F5C40 ; =ov101_021F8A04 + 8
 	ldr r1, [r1, r3]
 	blx r1
 	add r0, r4, #0
@@ -29724,8 +29729,8 @@ _021F5C14:
 _021F5C38:
 	pop {r4, pc}
 	nop
-_021F5C3C: .word ov101_021F8A08
-_021F5C40: .word ov101_021F8A0C
+_021F5C3C: .word ov101_021F8A04 + 4
+_021F5C40: .word ov101_021F8A04 + 8
 	thumb_func_end ov101_021F5B94
 
 	thumb_func_start ov101_021F5C44
@@ -29762,17 +29767,17 @@ ov101_021F5C44: ; 0x021F5C44
 	ldr r2, [r4, #0x50]
 	bl AddTextPrinterParameterized2
 	ldr r0, [r4, #0x10]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [r4, #0x14]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r4, pc}
 	nop
 _021F5C9C: .word 0x00010200
 	thumb_func_end ov101_021F5C44
 
-	thumb_func_start ov101_021F5CA0
-ov101_021F5CA0: ; 0x021F5CA0
+	thumb_func_start PrintRadioLine
+PrintRadioLine: ; 0x021F5CA0
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	add r5, r0, #0
@@ -29802,10 +29807,10 @@ _021F5CBE:
 	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov101_021F5CA0
+	thumb_func_end PrintRadioLine
 
-	thumb_func_start ov101_021F5CDC
-ov101_021F5CDC: ; 0x021F5CDC
+	thumb_func_start RadioPrintAdvance
+RadioPrintAdvance: ; 0x021F5CDC
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, #0x66
@@ -29840,7 +29845,7 @@ _021F5CFE:
 	ldr r1, [r4, #0x48]
 	add r0, r4, #0
 	mov r2, #1
-	bl ov101_021F5CA0
+	bl PrintRadioLine
 	ldr r0, [r4, #0xc]
 	bl CopyWindowToVram
 	add r0, r4, #0
@@ -29855,10 +29860,10 @@ _021F5CFE:
 _021F5D3C:
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ov101_021F5CDC
+	thumb_func_end RadioPrintAdvance
 
-	thumb_func_start ov101_021F5D40
-ov101_021F5D40: ; 0x021F5D40
+	thumb_func_start RadioPrintInit
+RadioPrintInit: ; 0x021F5D40
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, #0x65
@@ -29903,7 +29908,7 @@ ov101_021F5D40: ; 0x021F5D40
 	add r0, r4, #0
 	lsl r2, r2, #0x1f
 	lsr r2, r2, #0x1f
-	bl ov101_021F5CA0
+	bl PrintRadioLine
 	ldr r0, [r4, #0xc]
 	bl CopyWindowToVram
 	add r0, r4, #0
@@ -29935,22 +29940,22 @@ _021F5DD6:
 	strb r0, [r4]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov101_021F5D40
+	thumb_func_end RadioPrintInit
 
-	thumb_func_start ov101_021F5DE0
-ov101_021F5DE0: ; 0x021F5DE0
-	ldr r3, _021F5DE8 ; =ov101_021F5D40
+	thumb_func_start RadioPrintInitEz
+RadioPrintInitEz: ; 0x021F5DE0
+	ldr r3, _021F5DE8 ; =RadioPrintInit
 	mov r2, #0
 	bx r3
 	nop
-_021F5DE8: .word ov101_021F5D40
-	thumb_func_end ov101_021F5DE0
+_021F5DE8: .word RadioPrintInit
+	thumb_func_end RadioPrintInitEz
 
-	thumb_func_start ov101_021F5DEC
-ov101_021F5DEC: ; 0x021F5DEC
+	thumb_func_start RadioPrintAndPlayJingle
+RadioPrintAndPlayJingle: ; 0x021F5DEC
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov101_021F5DE0
+	bl RadioPrintInitEz
 	add r0, r4, #0
 	mov r1, #1
 	add r0, #0x65
@@ -29969,10 +29974,10 @@ ov101_021F5DEC: ; 0x021F5DEC
 	pop {r4, pc}
 	.balign 4, 0
 _021F5E18: .word SEQ_GS_RADIO_JINGLE
-	thumb_func_end ov101_021F5DEC
+	thumb_func_end RadioPrintAndPlayJingle
 
-	thumb_func_start ov101_021F5E1C
-ov101_021F5E1C: ; 0x021F5E1C
+	thumb_func_start Radio_RunTextPrinter
+Radio_RunTextPrinter: ; 0x021F5E1C
 	push {r4, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -29995,7 +30000,7 @@ _021F5E36: ; jump table
 	.short _021F5E9E - _021F5E36 - 2 ; case 5
 	.short _021F5EA6 - _021F5E36 - 2 ; case 6
 _021F5E44:
-	bl ov101_021F5CDC
+	bl RadioPrintAdvance
 	cmp r0, #0
 	beq _021F5E66
 	add r0, r4, #0
@@ -30054,10 +30059,10 @@ _021F5EA6:
 _021F5EB0:
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ov101_021F5E1C
+	thumb_func_end Radio_RunTextPrinter
 
-	thumb_func_start ov101_021F5EB4
-ov101_021F5EB4: ; 0x021F5EB4
+	thumb_func_start Radio_RunTextPrinter_WaitJingle
+Radio_RunTextPrinter_WaitJingle: ; 0x021F5EB4
 	push {r4, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -30069,7 +30074,7 @@ ov101_021F5EB4: ; 0x021F5EB4
 	beq _021F5EDE
 	b _021F5EF0
 _021F5EC8:
-	bl ov101_021F5E1C
+	bl Radio_RunTextPrinter
 	cmp r0, #0
 	beq _021F5EF0
 	add r0, r4, #0
@@ -30091,10 +30096,10 @@ _021F5EDE:
 _021F5EF0:
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ov101_021F5EB4
+	thumb_func_end Radio_RunTextPrinter_WaitJingle
 
-	thumb_func_start ov101_021F5EF4
-ov101_021F5EF4: ; 0x021F5EF4
+	thumb_func_start RadioShow_PokemonMusic_StartPlaying
+RadioShow_PokemonMusic_StartPlaying: ; 0x021F5EF4
 	push {r4, lr}
 	ldr r4, [r0, #0x1c]
 	cmp r1, #4
@@ -30103,7 +30108,7 @@ ov101_021F5EF4: ; 0x021F5EF4
 	ldr r1, _021F5F34 ; =25000
 	bl _s32_div_f
 	add r0, r1, #0
-	mov r1, #0xfa
+	mov r1, #1000>>2
 	lsl r1, r1, #2
 	bl _s32_div_f
 	lsl r0, r0, #0x18
@@ -30129,10 +30134,10 @@ _021F5F1E:
 _021F5F34: .word 25000
 _021F5F38: .word ov101_021F8A9C
 _021F5F3C: .word ov101_021F8A94
-	thumb_func_end ov101_021F5EF4
+	thumb_func_end RadioShow_PokemonMusic_StartPlaying
 
-	thumb_func_start ov101_021F5F40
-ov101_021F5F40: ; 0x021F5F40
+	thumb_func_start RadioShow_PokemonMusic_setup
+RadioShow_PokemonMusic_setup: ; 0x021F5F40
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -30162,7 +30167,7 @@ ov101_021F5F40: ; 0x021F5F40
 	ldr r0, [r4, #0x18]
 	strb r0, [r4, #6]
 	ldrb r0, [r4, #6]
-	add r0, r0, #3
+	add r0, r0, #msg_0416_00003
 	strb r0, [r4, #5]
 	ldrb r0, [r4, #6]
 	cmp r0, #6
@@ -30184,7 +30189,7 @@ _021F5F9A: ; jump table
 _021F5FA8:
 	ldr r0, [r5, #4]
 	bl Sav2_Bag_get
-	ldr r1, _021F603C ; =0x000001F6
+	ldr r1, _021F603C ; =ITEM_GB_SOUNDS
 	ldr r3, [r4]
 	mov r2, #1
 	bl Bag_HasItem
@@ -30196,7 +30201,7 @@ _021F5FA8:
 _021F5FC2:
 	mov r0, #0
 	strb r0, [r4, #7]
-	mov r0, #0xc
+	mov r0, #msg_0416_00012 ; Sunday March
 	strb r0, [r4, #5]
 	b _021F6006
 _021F5FCC:
@@ -30210,7 +30215,7 @@ _021F5FD2:
 	beq _021F5FE4
 	mov r0, #2
 	strb r0, [r4, #7]
-	mov r0, #0xa
+	mov r0, #msg_0416_00010 ; Wednesday Hoenn
 	strb r0, [r4, #5]
 	b _021F6006
 _021F5FE4:
@@ -30228,7 +30233,7 @@ _021F5FF0:
 	beq _021F6002
 	mov r0, #3
 	strb r0, [r4, #7]
-	mov r0, #0xb
+	mov r0, #msg_0416_00011 ; Thursday Sinnoh
 	strb r0, [r4, #5]
 	b _021F6006
 _021F6002:
@@ -30241,13 +30246,13 @@ _021F6006:
 	add r0, #0x61
 	strb r1, [r0]
 	add r0, r5, #0
-	bl ov101_021F6114
-	bl sub_02004A90
+	bl RadioShow_PokemonMusic_InitGMM
+	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	ldrb r1, [r4, #7]
 	add r0, r5, #0
-	bl ov101_021F5EF4
+	bl RadioShow_PokemonMusic_StartPlaying
 	add r0, r5, #0
 	add r0, #0x66
 	ldrb r1, [r0]
@@ -30259,11 +30264,11 @@ _021F6006:
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
-_021F603C: .word 0x000001F6
-	thumb_func_end ov101_021F5F40
+_021F603C: .word ITEM_GB_SOUNDS
+	thumb_func_end RadioShow_PokemonMusic_setup
 
-	thumb_func_start ov101_021F6040
-ov101_021F6040: ; 0x021F6040
+	thumb_func_start RadioShow_PokemonMusic_teardown
+RadioShow_PokemonMusic_teardown: ; 0x021F6040
 	push {r4, lr}
 	add r4, r0, #0
 	bl ov101_021F613C
@@ -30277,10 +30282,10 @@ ov101_021F6040: ; 0x021F6040
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov101_021F6040
+	thumb_func_end RadioShow_PokemonMusic_teardown
 
-	thumb_func_start ov101_021F6060
-ov101_021F6060: ; 0x021F6060
+	thumb_func_start RadioShow_PokemonMusic_print
+RadioShow_PokemonMusic_print: ; 0x021F6060
 	push {r3, r4, r5, lr}
 	sub sp, #0x10
 	add r5, r0, #0
@@ -30302,13 +30307,13 @@ _021F607A: ; jump table
 	.short _021F6100 - _021F607A - 2 ; case 4
 _021F6084:
 	mov r1, #2
-	bl ov101_021F5DE0
+	bl RadioPrintInitEz
 	ldrb r0, [r4, #8]
 	add r0, r0, #1
 	strb r0, [r4, #8]
 	b _021F610E
 _021F6092:
-	bl ov101_021F5E1C
+	bl Radio_RunTextPrinter
 	cmp r0, #0
 	beq _021F610E
 	ldrb r0, [r4, #8]
@@ -30321,13 +30326,13 @@ _021F60A2:
 	bl GF_RTC_CopyDate
 	ldrb r1, [r4, #5]
 	add r0, r5, #0
-	bl ov101_021F5DE0
+	bl RadioPrintInitEz
 	ldrb r0, [r4, #8]
 	add r0, r0, #1
 	strb r0, [r4, #8]
 	b _021F610E
 _021F60BA:
-	bl ov101_021F5E1C
+	bl Radio_RunTextPrinter
 	cmp r0, #0
 	beq _021F610E
 	add r0, sp, #0
@@ -30352,9 +30357,9 @@ _021F60E0:
 	add r5, #0x66
 	orr r0, r1
 	strb r0, [r5]
-	bl sub_02004A90
+	bl GF_GetCurrentPlayingBGM
 	mov r1, #0x1e
-	bl sub_02005EB4
+	bl StopBGM
 	ldrb r0, [r4, #8]
 	add r0, r0, #1
 	strb r0, [r4, #8]
@@ -30370,10 +30375,10 @@ _021F610E:
 	mov r0, #0
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov101_021F6060
+	thumb_func_end RadioShow_PokemonMusic_print
 
-	thumb_func_start ov101_021F6114
-ov101_021F6114: ; 0x021F6114
+	thumb_func_start RadioShow_PokemonMusic_InitGMM
+RadioShow_PokemonMusic_InitGMM: ; 0x021F6114
 	push {r4, lr}
 	add r4, r0, #0
 	mov r2, #0x1a
@@ -30391,7 +30396,7 @@ ov101_021F6114: ; 0x021F6114
 	mov r1, #1
 	bl ReadMsgDataIntoString
 	pop {r4, pc}
-	thumb_func_end ov101_021F6114
+	thumb_func_end RadioShow_PokemonMusic_InitGMM
 
 	thumb_func_start ov101_021F613C
 ov101_021F613C: ; 0x021F613C
@@ -30402,8 +30407,8 @@ ov101_021F613C: ; 0x021F613C
 _021F6144: .word DestroyMsgData
 	thumb_func_end ov101_021F613C
 
-	thumb_func_start ov101_021F6148
-ov101_021F6148: ; 0x021F6148
+	thumb_func_start RadioShow_PokeFlute_setup
+RadioShow_PokeFlute_setup: ; 0x021F6148
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -30416,19 +30421,19 @@ ov101_021F6148: ; 0x021F6148
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
 	bl ov101_021F61A4
-	bl sub_02004A90
+	bl GF_GetCurrentPlayingBGM
 	mov r1, #1
-	bl sub_02005EB4
+	bl StopBGM
 	ldr r0, _021F617C ; =SEQ_GS_HUE
 	bl SndRadio_StartSeq
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
 _021F617C: .word SEQ_GS_HUE
-	thumb_func_end ov101_021F6148
+	thumb_func_end RadioShow_PokeFlute_setup
 
-	thumb_func_start ov101_021F6180
-ov101_021F6180: ; 0x021F6180
+	thumb_func_start RadioShow_PokeFlute_teardown
+RadioShow_PokeFlute_teardown: ; 0x021F6180
 	push {r4, lr}
 	add r4, r0, #0
 	bl ov101_021F61CC
@@ -30442,13 +30447,13 @@ ov101_021F6180: ; 0x021F6180
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov101_021F6180
+	thumb_func_end RadioShow_PokeFlute_teardown
 
-	thumb_func_start ov101_021F61A0
-ov101_021F61A0: ; 0x021F61A0
+	thumb_func_start RadioShow_PokeFlute_print
+RadioShow_PokeFlute_print: ; 0x021F61A0
 	mov r0, #0
 	bx lr
-	thumb_func_end ov101_021F61A0
+	thumb_func_end RadioShow_PokeFlute_print
 
 	thumb_func_start ov101_021F61A4
 ov101_021F61A4: ; 0x021F61A4
@@ -30479,8 +30484,8 @@ ov101_021F61CC: ; 0x021F61CC
 _021F61D4: .word DestroyMsgData
 	thumb_func_end ov101_021F61CC
 
-	thumb_func_start ov101_021F61D8
-ov101_021F61D8: ; 0x021F61D8
+	thumb_func_start RadioShow_Unown_setup
+RadioShow_Unown_setup: ; 0x021F61D8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -30492,20 +30497,20 @@ ov101_021F61D8: ; 0x021F61D8
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl ov101_021F6234
-	bl sub_02004A90
+	bl RadioShow_Unown_init
+	bl GF_GetCurrentPlayingBGM
 	mov r1, #1
-	bl sub_02005EB4
+	bl StopBGM
 	ldr r0, _021F620C ; =SEQ_GS_RADIO_UNKNOWN
 	bl SndRadio_StartSeq
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
 _021F620C: .word SEQ_GS_RADIO_UNKNOWN
-	thumb_func_end ov101_021F61D8
+	thumb_func_end RadioShow_Unown_setup
 
-	thumb_func_start ov101_021F6210
-ov101_021F6210: ; 0x021F6210
+	thumb_func_start RadioShow_Unown_teardown
+RadioShow_Unown_teardown: ; 0x021F6210
 	push {r4, lr}
 	add r4, r0, #0
 	bl ov101_021F625C
@@ -30519,16 +30524,16 @@ ov101_021F6210: ; 0x021F6210
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov101_021F6210
+	thumb_func_end RadioShow_Unown_teardown
 
-	thumb_func_start ov101_021F6230
-ov101_021F6230: ; 0x021F6230
+	thumb_func_start RadioShow_Unown_print
+RadioShow_Unown_print: ; 0x021F6230
 	mov r0, #0
 	bx lr
-	thumb_func_end ov101_021F6230
+	thumb_func_end RadioShow_Unown_print
 
-	thumb_func_start ov101_021F6234
-ov101_021F6234: ; 0x021F6234
+	thumb_func_start RadioShow_Unown_init
+RadioShow_Unown_init: ; 0x021F6234
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r2, _021F6258 ; =0x0000019A
@@ -30545,7 +30550,7 @@ ov101_021F6234: ; 0x021F6234
 	pop {r4, pc}
 	nop
 _021F6258: .word 0x0000019A
-	thumb_func_end ov101_021F6234
+	thumb_func_end RadioShow_Unown_init
 
 	thumb_func_start ov101_021F625C
 ov101_021F625C: ; 0x021F625C
@@ -30556,8 +30561,8 @@ ov101_021F625C: ; 0x021F625C
 _021F6264: .word DestroyMsgData
 	thumb_func_end ov101_021F625C
 
-	thumb_func_start ov101_021F6268
-ov101_021F6268: ; 0x021F6268
+	thumb_func_start RadioShow_TeamRocket_setup
+RadioShow_TeamRocket_setup: ; 0x021F6268
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -30569,10 +30574,10 @@ ov101_021F6268: ; 0x021F6268
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl ov101_021F62F4
-	bl sub_02004A90
+	bl RadioShow_TeamRocket_init
+	bl GF_GetCurrentPlayingBGM
 	mov r1, #1
-	bl sub_02005EB4
+	bl StopBGM
 	mov r0, #0
 	strb r0, [r4, #4]
 	ldr r0, _021F62A0 ; =SEQ_GS_SENKYO_R
@@ -30581,10 +30586,10 @@ ov101_021F6268: ; 0x021F6268
 	pop {r3, r4, r5, pc}
 	nop
 _021F62A0: .word SEQ_GS_SENKYO_R
-	thumb_func_end ov101_021F6268
+	thumb_func_end RadioShow_TeamRocket_setup
 
-	thumb_func_start ov101_021F62A4
-ov101_021F62A4: ; 0x021F62A4
+	thumb_func_start RadioShow_TeamRocket_teardown
+RadioShow_TeamRocket_teardown: ; 0x021F62A4
 	push {r4, lr}
 	add r4, r0, #0
 	bl ov101_021F6320
@@ -30598,10 +30603,10 @@ ov101_021F62A4: ; 0x021F62A4
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov101_021F62A4
+	thumb_func_end RadioShow_TeamRocket_teardown
 
-	thumb_func_start ov101_021F62C4
-ov101_021F62C4: ; 0x021F62C4
+	thumb_func_start RadioShow_TeamRocket_print
+RadioShow_TeamRocket_print: ; 0x021F62C4
 	push {r4, lr}
 	ldr r4, [r0, #0x1c]
 	ldrb r1, [r4, #4]
@@ -30612,13 +30617,13 @@ ov101_021F62C4: ; 0x021F62C4
 	b _021F62EE
 _021F62D4:
 	mov r1, #2
-	bl ov101_021F5DE0
+	bl RadioPrintInitEz
 	ldrb r0, [r4, #4]
 	add r0, r0, #1
 	strb r0, [r4, #4]
 	b _021F62EE
 _021F62E2:
-	bl ov101_021F5E1C
+	bl Radio_RunTextPrinter
 	cmp r0, #0
 	beq _021F62EE
 	mov r0, #0
@@ -30627,10 +30632,10 @@ _021F62EE:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov101_021F62C4
+	thumb_func_end RadioShow_TeamRocket_print
 
-	thumb_func_start ov101_021F62F4
-ov101_021F62F4: ; 0x021F62F4
+	thumb_func_start RadioShow_TeamRocket_init
+RadioShow_TeamRocket_init: ; 0x021F62F4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r2, _021F631C ; =0x000001A2
@@ -30649,7 +30654,7 @@ ov101_021F62F4: ; 0x021F62F4
 	pop {r4, pc}
 	nop
 _021F631C: .word 0x000001A2
-	thumb_func_end ov101_021F62F4
+	thumb_func_end RadioShow_TeamRocket_init
 
 	thumb_func_start ov101_021F6320
 ov101_021F6320: ; 0x021F6320
@@ -30660,8 +30665,8 @@ ov101_021F6320: ; 0x021F6320
 _021F6328: .word DestroyMsgData
 	thumb_func_end ov101_021F6320
 
-	thumb_func_start ov101_021F632C
-ov101_021F632C: ; 0x021F632C
+	thumb_func_start RadioShow_SerialRadioDrama_setup
+RadioShow_SerialRadioDrama_setup: ; 0x021F632C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -30673,20 +30678,20 @@ ov101_021F632C: ; 0x021F632C
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl ov101_021F6420
-	bl sub_02004A90
+	bl RadioShow_SerialRadioDrama_init
+	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	ldr r0, _021F6360 ; =SEQ_GS_RADIO_VARIETY
 	bl SndRadio_StartSeq
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
 _021F6360: .word SEQ_GS_RADIO_VARIETY
-	thumb_func_end ov101_021F632C
+	thumb_func_end RadioShow_SerialRadioDrama_setup
 
-	thumb_func_start ov101_021F6364
-ov101_021F6364: ; 0x021F6364
+	thumb_func_start RadioShow_SerialRadioDrama_teardown
+RadioShow_SerialRadioDrama_teardown: ; 0x021F6364
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0x1c]
@@ -30705,10 +30710,10 @@ _021F6372:
 	mov r0, #0
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
-	thumb_func_end ov101_021F6364
+	thumb_func_end RadioShow_SerialRadioDrama_teardown
 
-	thumb_func_start ov101_021F638C
-ov101_021F638C: ; 0x021F638C
+	thumb_func_start RadioShow_SerialRadioDrama_print
+RadioShow_SerialRadioDrama_print: ; 0x021F638C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r4, [r5, #0x1c]
@@ -30729,13 +30734,13 @@ _021F63A4: ; jump table
 	.short _021F6402 - _021F63A4 - 2 ; case 4
 _021F63AE:
 	mov r1, #2
-	bl ov101_021F5DE0
+	bl RadioPrintInitEz
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
 	strh r0, [r4, #4]
 	b _021F641C
 _021F63BC:
-	bl ov101_021F5E1C
+	bl Radio_RunTextPrinter
 	cmp r0, #0
 	beq _021F641C
 	ldrh r1, [r4, #6]
@@ -30743,13 +30748,13 @@ _021F63BC:
 	add r1, r1, #4
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	bl ov101_021F5DE0
+	bl RadioPrintInitEz
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
 	strh r0, [r4, #4]
 	b _021F641C
 _021F63DA:
-	bl ov101_021F5E1C
+	bl Radio_RunTextPrinter
 	cmp r0, #0
 	beq _021F641C
 	ldrh r0, [r4, #4]
@@ -30762,13 +30767,13 @@ _021F63EA:
 	beq _021F641C
 	add r0, r5, #0
 	mov r1, #3
-	bl ov101_021F5DEC
+	bl RadioPrintAndPlayJingle
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
 	strh r0, [r4, #4]
 	b _021F641C
 _021F6402:
-	bl ov101_021F5EB4
+	bl Radio_RunTextPrinter_WaitJingle
 	cmp r0, #0
 	beq _021F641C
 	add r0, r5, #0
@@ -30783,10 +30788,10 @@ _021F6402:
 _021F641C:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov101_021F638C
+	thumb_func_end RadioShow_SerialRadioDrama_print
 
-	thumb_func_start ov101_021F6420
-ov101_021F6420: ; 0x021F6420
+	thumb_func_start RadioShow_SerialRadioDrama_init
+RadioShow_SerialRadioDrama_init: ; 0x021F6420
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r4, [r5, #0x1c]
@@ -30821,7 +30826,7 @@ _021F6464:
 	pop {r3, r4, r5, pc}
 	nop
 _021F646C: .word 0x0000019D
-	thumb_func_end ov101_021F6420
+	thumb_func_end RadioShow_SerialRadioDrama_init
 
 	thumb_func_start ov101_021F6470
 ov101_021F6470: ; 0x021F6470
@@ -30832,8 +30837,8 @@ ov101_021F6470: ; 0x021F6470
 _021F6478: .word DestroyMsgData
 	thumb_func_end ov101_021F6470
 
-	thumb_func_start ov101_021F647C
-ov101_021F647C: ; 0x021F647C
+	thumb_func_start RadioShow_Commercials_setup
+RadioShow_Commercials_setup: ; 0x021F647C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -30853,14 +30858,14 @@ ov101_021F647C: ; 0x021F647C
 	strb r1, [r0]
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl ov101_021F6514
+	bl RadioShow_Commercials_init
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov101_021F647C
+	thumb_func_end RadioShow_Commercials_setup
 
-	thumb_func_start ov101_021F64B0
-ov101_021F64B0: ; 0x021F64B0
+	thumb_func_start RadioShow_Commercials_teardown
+RadioShow_Commercials_teardown: ; 0x021F64B0
 	push {r4, lr}
 	add r4, r0, #0
 	bl ov101_021F6614
@@ -30874,10 +30879,10 @@ ov101_021F64B0: ; 0x021F64B0
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov101_021F64B0
+	thumb_func_end RadioShow_Commercials_teardown
 
-	thumb_func_start ov101_021F64D0
-ov101_021F64D0: ; 0x021F64D0
+	thumb_func_start RadioShow_Commercials_print
+RadioShow_Commercials_print: ; 0x021F64D0
 	push {r4, lr}
 	ldr r4, [r0, #0x1c]
 	ldrh r1, [r4, #4]
@@ -30891,13 +30896,13 @@ ov101_021F64D0: ; 0x021F64D0
 _021F64E4:
 	ldrh r1, [r4, #6]
 	mov r2, #1
-	bl ov101_021F5D40
+	bl RadioPrintInit
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
 	strh r0, [r4, #4]
 	b _021F6510
 _021F64F4:
-	bl ov101_021F5E1C
+	bl Radio_RunTextPrinter
 	cmp r0, #0
 	beq _021F6510
 	ldrh r0, [r4, #4]
@@ -30913,10 +30918,10 @@ _021F6504:
 _021F6510:
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ov101_021F64D0
+	thumb_func_end RadioShow_Commercials_print
 
-	thumb_func_start ov101_021F6514
-ov101_021F6514: ; 0x021F6514
+	thumb_func_start RadioShow_Commercials_init
+RadioShow_Commercials_init: ; 0x021F6514
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	mov r6, #0
@@ -30954,22 +30959,22 @@ ov101_021F6514: ; 0x021F6514
 	add r0, r7, #0
 	mov r1, #2
 	mov r2, #0x10
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	strb r0, [r4, #0xa]
 	add r0, r7, #0
 	mov r1, #2
 	mov r2, #0x12
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	strb r0, [r4, #0xb]
 	add r0, r7, #0
 	mov r1, #2
 	mov r2, #0x11
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	strb r0, [r4, #0xc]
 	add r0, r7, #0
 	mov r1, #2
 	mov r2, #5
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	strb r0, [r4, #0xe]
 	ldr r1, _021F660C ; =0x00000964
 	add r0, r7, #0
@@ -31032,7 +31037,7 @@ _021F65EE:
 	.balign 4, 0
 _021F660C: .word 0x00000964
 _021F6610: .word ov101_021F8AD0
-	thumb_func_end ov101_021F6514
+	thumb_func_end RadioShow_Commercials_init
 
 	thumb_func_start ov101_021F6614
 ov101_021F6614: ; 0x021F6614
@@ -31043,8 +31048,8 @@ ov101_021F6614: ; 0x021F6614
 _021F661C: .word DestroyMsgData
 	thumb_func_end ov101_021F6614
 
-	thumb_func_start ov101_021F6620
-ov101_021F6620: ; 0x021F6620
+	thumb_func_start RadioShow_PokemonSearchParty_setup
+RadioShow_PokemonSearchParty_setup: ; 0x021F6620
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -31056,20 +31061,20 @@ ov101_021F6620: ; 0x021F6620
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl ov101_021F6710
-	bl sub_02004A90
+	bl RadioShow_PokemonSearchParty_init
+	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	ldr r0, _021F6654 ; =SEQ_GS_RADIO_VARIETY
 	bl SndRadio_StartSeq
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
 _021F6654: .word SEQ_GS_RADIO_VARIETY
-	thumb_func_end ov101_021F6620
+	thumb_func_end RadioShow_PokemonSearchParty_setup
 
-	thumb_func_start ov101_021F6658
-ov101_021F6658: ; 0x021F6658
+	thumb_func_start RadioShow_PokemonSearchParty_teardown
+RadioShow_PokemonSearchParty_teardown: ; 0x021F6658
 	push {r4, lr}
 	add r4, r0, #0
 	bl ov101_021F6800
@@ -31083,10 +31088,10 @@ ov101_021F6658: ; 0x021F6658
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov101_021F6658
+	thumb_func_end RadioShow_PokemonSearchParty_teardown
 
-	thumb_func_start ov101_021F6678
-ov101_021F6678: ; 0x021F6678
+	thumb_func_start RadioShow_PokemonSearchParty_print
+RadioShow_PokemonSearchParty_print: ; 0x021F6678
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r4, [r5, #0x1c]
@@ -31107,13 +31112,13 @@ _021F6690: ; jump table
 	.short _021F66F2 - _021F6690 - 2 ; case 4
 _021F669A:
 	mov r1, #2
-	bl ov101_021F5DE0
+	bl RadioPrintInitEz
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
 	strh r0, [r4, #4]
 	b _021F670C
 _021F66A8:
-	bl ov101_021F5E1C
+	bl Radio_RunTextPrinter
 	cmp r0, #0
 	beq _021F670C
 	ldrh r1, [r4, #6]
@@ -31123,13 +31128,13 @@ _021F66A8:
 	add r1, r1, #4
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	bl ov101_021F5DE0
+	bl RadioPrintInitEz
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
 	strh r0, [r4, #4]
 	b _021F670C
 _021F66CA:
-	bl ov101_021F5E1C
+	bl Radio_RunTextPrinter
 	cmp r0, #0
 	beq _021F670C
 	ldrh r0, [r4, #4]
@@ -31142,13 +31147,13 @@ _021F66DA:
 	beq _021F670C
 	add r0, r5, #0
 	mov r1, #3
-	bl ov101_021F5DEC
+	bl RadioPrintAndPlayJingle
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
 	strh r0, [r4, #4]
 	b _021F670C
 _021F66F2:
-	bl ov101_021F5EB4
+	bl Radio_RunTextPrinter_WaitJingle
 	cmp r0, #0
 	beq _021F670C
 	add r0, r5, #0
@@ -31163,10 +31168,10 @@ _021F66F2:
 _021F670C:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov101_021F6678
+	thumb_func_end RadioShow_PokemonSearchParty_print
 
-	thumb_func_start ov101_021F6710
-ov101_021F6710: ; 0x021F6710
+	thumb_func_start RadioShow_PokemonSearchParty_init
+RadioShow_PokemonSearchParty_init: ; 0x021F6710
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	mov r4, #0
@@ -31203,7 +31208,7 @@ ov101_021F6710: ; 0x021F6710
 	mov r0, #1
 	strb r0, [r5, #8]
 	add r0, r7, #0
-	mov r1, #0x7b
+	mov r1, #FLAG_BEAT_AZALEA_ROCKETS
 	bl CheckFlagInArray
 	strb r0, [r5, #9]
 	ldr r0, [sp]
@@ -31211,7 +31216,7 @@ ov101_021F6710: ; 0x021F6710
 	bl PlayerProfile_TestBadgeFlag
 	strb r0, [r5, #0xa]
 	add r0, r7, #0
-	mov r1, #0xc6
+	mov r1, #FLAG_BEAT_RADIO_TOWER_ROCKETS
 	bl CheckFlagInArray
 	strb r0, [r5, #0xb]
 	ldr r0, [sp]
@@ -31236,7 +31241,7 @@ _021F67A4:
 	add r0, r7, #0
 	mov r1, #2
 	mov r2, #5
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	strb r0, [r5, #0xe]
 	ldr r0, _021F67FC ; =ov101_021F8B3C
 	mov r1, #0
@@ -31277,7 +31282,7 @@ _021F67F2:
 	.balign 4, 0
 _021F67F8: .word 0x000001A3
 _021F67FC: .word ov101_021F8B3C
-	thumb_func_end ov101_021F6710
+	thumb_func_end RadioShow_PokemonSearchParty_init
 
 	thumb_func_start ov101_021F6800
 ov101_021F6800: ; 0x021F6800
@@ -31288,8 +31293,8 @@ ov101_021F6800: ; 0x021F6800
 _021F6808: .word DestroyMsgData
 	thumb_func_end ov101_021F6800
 
-	thumb_func_start ov101_021F680C
-ov101_021F680C: ; 0x021F680C
+	thumb_func_start RadioShow_BuenasPassword_setup
+RadioShow_BuenasPassword_setup: ; 0x021F680C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -31301,19 +31306,19 @@ ov101_021F680C: ; 0x021F680C
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl ov101_021F6904
-	bl sub_02004A90
+	bl RadioShow_BuenasPassword_init
+	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	mov r0, #SEQ_GS_AIKOTOBA>>4
 	lsl r0, r0, #4
 	bl SndRadio_StartSeq
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov101_021F680C
+	thumb_func_end RadioShow_BuenasPassword_setup
 
-	thumb_func_start ov101_021F6840
-ov101_021F6840: ; 0x021F6840
+	thumb_func_start RadioShow_BuenasPassword_teardown
+RadioShow_BuenasPassword_teardown: ; 0x021F6840
 	push {r4, lr}
 	add r4, r0, #0
 	bl ov101_021F699C
@@ -31327,10 +31332,10 @@ ov101_021F6840: ; 0x021F6840
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov101_021F6840
+	thumb_func_end RadioShow_BuenasPassword_teardown
 
-	thumb_func_start ov101_021F6860
-ov101_021F6860: ; 0x021F6860
+	thumb_func_start RadioShow_BuenasPassword_print
+RadioShow_BuenasPassword_print: ; 0x021F6860
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r4, [r5, #0x1c]
@@ -31351,24 +31356,24 @@ _021F6878: ; jump table
 	.short _021F68E2 - _021F6878 - 2 ; case 4
 _021F6882:
 	mov r1, #2
-	bl ov101_021F5DE0
+	bl RadioPrintInitEz
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
 	strh r0, [r4, #4]
 	b _021F68FC
 _021F6890:
-	bl ov101_021F5E1C
+	bl Radio_RunTextPrinter
 	cmp r0, #0
 	beq _021F68FC
 	ldrh r1, [r4, #6]
 	add r0, r5, #0
-	bl ov101_021F5DE0
+	bl RadioPrintInitEz
 	ldrh r0, [r4, #6]
 	cmp r0, #4
 	bne _021F68B2
 	ldr r0, [r5, #4]
 	bl SavArray_Flags_get
-	ldr r1, _021F6900 ; =0x00000AB6
+	ldr r1, _021F6900 ; =FLAG_DAILY_HEARD_BUENAS_PASSWORD
 	bl SetFlagInArray
 _021F68B2:
 	ldrh r0, [r4, #4]
@@ -31376,7 +31381,7 @@ _021F68B2:
 	strh r0, [r4, #4]
 	b _021F68FC
 _021F68BA:
-	bl ov101_021F5E1C
+	bl Radio_RunTextPrinter
 	cmp r0, #0
 	beq _021F68FC
 	ldrh r0, [r4, #4]
@@ -31389,13 +31394,13 @@ _021F68CA:
 	beq _021F68FC
 	add r0, r5, #0
 	mov r1, #3
-	bl ov101_021F5DEC
+	bl RadioPrintAndPlayJingle
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
 	strh r0, [r4, #4]
 	b _021F68FC
 _021F68E2:
-	bl ov101_021F5EB4
+	bl Radio_RunTextPrinter_WaitJingle
 	cmp r0, #0
 	beq _021F68FC
 	add r0, r5, #0
@@ -31411,11 +31416,11 @@ _021F68FC:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021F6900: .word 0x00000AB6
-	thumb_func_end ov101_021F6860
+_021F6900: .word FLAG_DAILY_HEARD_BUENAS_PASSWORD
+	thumb_func_end RadioShow_BuenasPassword_print
 
-	thumb_func_start ov101_021F6904
-ov101_021F6904: ; 0x021F6904
+	thumb_func_start RadioShow_BuenasPassword_init
+RadioShow_BuenasPassword_init: ; 0x021F6904
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -31427,36 +31432,36 @@ ov101_021F6904: ; 0x021F6904
 	bl NewMsgDataFromNarc
 	str r0, [r5, #0x24]
 	ldr r2, [r5, #0x4c]
-	mov r1, #0
+	mov r1, #msg_0411_00000
 	bl ReadMsgDataIntoString
 	ldr r0, [r5, #0x24]
 	ldr r2, [r5, #0x50]
-	mov r1, #1
+	mov r1, #msg_0411_00001
 	bl ReadMsgDataIntoString
 	ldr r0, [r5, #4]
 	bl Sav2_Bag_get
-	mov r1, #0x76
+	mov r1, #ITEM_BLUE_CARD>>2
 	ldr r3, [r5]
 	lsl r1, r1, #2
 	mov r2, #1
 	bl Bag_HasItem
 	cmp r0, #0
 	beq _021F6946
-	mov r0, #4
+	mov r0, #msg_0411_00004
 	b _021F6948
 _021F6946:
-	mov r0, #5
+	mov r0, #msg_0411_00005
 _021F6948:
 	strh r0, [r4, #6]
 	ldr r3, [r5]
 	mov r0, #0
 	mov r1, #0x1b
-	mov r2, #0x42
+	mov r2, #0x42 ; msg_0066_D23R0102.gmm
 	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	ldr r0, [r5, #4]
 	bl SavArray_Flags_get
-	bl sub_02066ECC
+	bl ScriptState_GetBuenasPasswordSet
 	mov r1, #0x1e
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -31481,7 +31486,7 @@ _021F6948:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021F6998: .word 0x0000019B
-	thumb_func_end ov101_021F6904
+	thumb_func_end RadioShow_BuenasPassword_init
 
 	thumb_func_start ov101_021F699C
 ov101_021F699C: ; 0x021F699C
@@ -31492,8 +31497,8 @@ ov101_021F699C: ; 0x021F699C
 _021F69A4: .word DestroyMsgData
 	thumb_func_end ov101_021F699C
 
-	thumb_func_start ov101_021F69A8
-ov101_021F69A8: ; 0x021F69A8
+	thumb_func_start RadioShow_ThatTownThesePeople_setup
+RadioShow_ThatTownThesePeople_setup: ; 0x021F69A8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -31505,20 +31510,20 @@ ov101_021F69A8: ; 0x021F69A8
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl ov101_021F6AAC
-	bl sub_02004A90
+	bl RadioShow_ThatTownThesePeople_init
+	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	ldr r0, _021F69DC ; =SEQ_GS_RADIO_PT
 	bl SndRadio_StartSeq
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
 _021F69DC: .word SEQ_GS_RADIO_PT
-	thumb_func_end ov101_021F69A8
+	thumb_func_end RadioShow_ThatTownThesePeople_setup
 
-	thumb_func_start ov101_021F69E0
-ov101_021F69E0: ; 0x021F69E0
+	thumb_func_start RadioShow_ThatTownThesePeople_teardown
+RadioShow_ThatTownThesePeople_teardown: ; 0x021F69E0
 	push {r4, lr}
 	add r4, r0, #0
 	bl ov101_021F6B7C
@@ -31532,10 +31537,10 @@ ov101_021F69E0: ; 0x021F69E0
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov101_021F69E0
+	thumb_func_end RadioShow_ThatTownThesePeople_teardown
 
-	thumb_func_start ov101_021F6A00
-ov101_021F6A00: ; 0x021F6A00
+	thumb_func_start RadioShow_ThatTownThesePeople_print
+RadioShow_ThatTownThesePeople_print: ; 0x021F6A00
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r4, [r5, #0x1c]
@@ -31557,13 +31562,13 @@ _021F6A18: ; jump table
 	.short _021F6A8E - _021F6A18 - 2 ; case 5
 _021F6A24:
 	mov r1, #2
-	bl ov101_021F5DE0
+	bl RadioPrintInitEz
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
 	strh r0, [r4, #4]
 	b _021F6AA8
 _021F6A32:
-	bl ov101_021F5E1C
+	bl Radio_RunTextPrinter
 	cmp r0, #0
 	beq _021F6AA8
 	ldrh r0, [r4, #4]
@@ -31574,13 +31579,13 @@ _021F6A40:
 	add r0, r5, #0
 	add r1, r4, r1
 	ldrb r1, [r1, #6]
-	bl ov101_021F5DE0
+	bl RadioPrintInitEz
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
 	strh r0, [r4, #4]
 	b _021F6AA8
 _021F6A54:
-	bl ov101_021F5E1C
+	bl Radio_RunTextPrinter
 	cmp r0, #0
 	beq _021F6AA8
 	ldrb r0, [r4, #9]
@@ -31603,13 +31608,13 @@ _021F6A76:
 	beq _021F6AA8
 	add r0, r5, #0
 	mov r1, #3
-	bl ov101_021F5DEC
+	bl RadioPrintAndPlayJingle
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
 	strh r0, [r4, #4]
 	b _021F6AA8
 _021F6A8E:
-	bl ov101_021F5EB4
+	bl Radio_RunTextPrinter_WaitJingle
 	cmp r0, #0
 	beq _021F6AA8
 	add r0, r5, #0
@@ -31624,10 +31629,10 @@ _021F6A8E:
 _021F6AA8:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov101_021F6A00
+	thumb_func_end RadioShow_ThatTownThesePeople_print
 
-	thumb_func_start ov101_021F6AAC
-ov101_021F6AAC: ; 0x021F6AAC
+	thumb_func_start RadioShow_ThatTownThesePeople_init
+RadioShow_ThatTownThesePeople_init: ; 0x021F6AAC
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r4, [r5, #0x1c]
@@ -31661,22 +31666,22 @@ ov101_021F6AAC: ; 0x021F6AAC
 	add r5, r0, #0
 	mov r1, #2
 	mov r2, #0xf
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	strb r0, [r4, #0xb]
 	add r0, r5, #0
 	mov r1, #2
 	mov r2, #0x13
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	strb r0, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
 	mov r2, #0x15
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	strb r0, [r4, #0xd]
 	add r0, r5, #0
 	mov r1, #2
 	mov r2, #5
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	mov r6, #0
 	strb r0, [r4, #0xe]
 	ldr r1, _021F6B78 ; =ov101_021F8B4C
@@ -31721,7 +31726,7 @@ _021F6B44:
 	.balign 4, 0
 _021F6B74: .word 0x0000019F
 _021F6B78: .word ov101_021F8B4C
-	thumb_func_end ov101_021F6AAC
+	thumb_func_end RadioShow_ThatTownThesePeople_init
 
 	thumb_func_start ov101_021F6B7C
 ov101_021F6B7C: ; 0x021F6B7C
@@ -31757,8 +31762,8 @@ _021F6BA4:
 	.balign 4, 0
 	thumb_func_end ov101_021F6B88
 
-	thumb_func_start ov101_021F6BAC
-ov101_021F6BAC: ; 0x021F6BAC
+	thumb_func_start RadioShow_TrainerProfiles_setup
+RadioShow_TrainerProfiles_setup: ; 0x021F6BAC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -31770,20 +31775,20 @@ ov101_021F6BAC: ; 0x021F6BAC
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl ov101_021F6CB0
-	bl sub_02004A90
+	bl RadioShow_TrainerProfiles_init
+	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	ldr r0, _021F6BE0 ; =SEQ_GS_RADIO_TRAINER
 	bl SndRadio_StartSeq
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
 _021F6BE0: .word SEQ_GS_RADIO_TRAINER
-	thumb_func_end ov101_021F6BAC
+	thumb_func_end RadioShow_TrainerProfiles_setup
 
-	thumb_func_start ov101_021F6BE4
-ov101_021F6BE4: ; 0x021F6BE4
+	thumb_func_start RadioShow_TrainerProfiles_teardown
+RadioShow_TrainerProfiles_teardown: ; 0x021F6BE4
 	push {r4, lr}
 	add r4, r0, #0
 	bl ov101_021F6D0C
@@ -31797,10 +31802,10 @@ ov101_021F6BE4: ; 0x021F6BE4
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov101_021F6BE4
+	thumb_func_end RadioShow_TrainerProfiles_teardown
 
-	thumb_func_start ov101_021F6C04
-ov101_021F6C04: ; 0x021F6C04
+	thumb_func_start RadioShow_TrainerProfiles_print
+RadioShow_TrainerProfiles_print: ; 0x021F6C04
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r4, [r5, #0x1c]
@@ -31822,13 +31827,13 @@ _021F6C1C: ; jump table
 	.short _021F6C92 - _021F6C1C - 2 ; case 5
 _021F6C28:
 	mov r1, #2
-	bl ov101_021F5DE0
+	bl RadioPrintInitEz
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
 	strh r0, [r4, #4]
 	b _021F6CAC
 _021F6C36:
-	bl ov101_021F5E1C
+	bl Radio_RunTextPrinter
 	cmp r0, #0
 	beq _021F6CAC
 	ldrh r0, [r4, #4]
@@ -31839,13 +31844,13 @@ _021F6C44:
 	add r0, r5, #0
 	add r1, r4, r1
 	ldrb r1, [r1, #6]
-	bl ov101_021F5DE0
+	bl RadioPrintInitEz
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
 	strh r0, [r4, #4]
 	b _021F6CAC
 _021F6C58:
-	bl ov101_021F5E1C
+	bl Radio_RunTextPrinter
 	cmp r0, #0
 	beq _021F6CAC
 	ldrb r0, [r4, #9]
@@ -31868,13 +31873,13 @@ _021F6C7A:
 	beq _021F6CAC
 	add r0, r5, #0
 	mov r1, #3
-	bl ov101_021F5DEC
+	bl RadioPrintAndPlayJingle
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
 	strh r0, [r4, #4]
 	b _021F6CAC
 _021F6C92:
-	bl ov101_021F5EB4
+	bl Radio_RunTextPrinter_WaitJingle
 	cmp r0, #0
 	beq _021F6CAC
 	add r0, r5, #0
@@ -31889,10 +31894,10 @@ _021F6C92:
 _021F6CAC:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov101_021F6C04
+	thumb_func_end RadioShow_TrainerProfiles_print
 
-	thumb_func_start ov101_021F6CB0
-ov101_021F6CB0: ; 0x021F6CB0
+	thumb_func_start RadioShow_TrainerProfiles_init
+RadioShow_TrainerProfiles_init: ; 0x021F6CB0
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	mov r2, #0x69
@@ -31935,7 +31940,7 @@ _021F6CDC:
 	cmp r4, #3
 	blt _021F6CDC
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov101_021F6CB0
+	thumb_func_end RadioShow_TrainerProfiles_init
 
 	thumb_func_start ov101_021F6D0C
 ov101_021F6D0C: ; 0x021F6D0C
@@ -31971,8 +31976,8 @@ _021F6D34:
 	.balign 4, 0
 	thumb_func_end ov101_021F6D18
 
-	thumb_func_start ov101_021F6D3C
-ov101_021F6D3C: ; 0x021F6D3C
+	thumb_func_start RadioShow_PokemonTalk_setup
+RadioShow_PokemonTalk_setup: ; 0x021F6D3C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r1, #0x95
@@ -31986,20 +31991,20 @@ ov101_021F6D3C: ; 0x021F6D3C
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl ov101_021F6F14
-	bl sub_02004A90
+	bl RadioShow_PokemonTalk_init
+	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	ldr r0, _021F6D74 ; =SEQ_GS_OHKIDO_RABO
 	bl SndRadio_StartSeq
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
 _021F6D74: .word SEQ_GS_OHKIDO_RABO
-	thumb_func_end ov101_021F6D3C
+	thumb_func_end RadioShow_PokemonTalk_setup
 
-	thumb_func_start ov101_021F6D78
-ov101_021F6D78: ; 0x021F6D78
+	thumb_func_start RadioShow_PokemonTalk_teardown
+RadioShow_PokemonTalk_teardown: ; 0x021F6D78
 	push {r4, lr}
 	add r4, r0, #0
 	bl ov101_021F6FC0
@@ -32013,10 +32018,10 @@ ov101_021F6D78: ; 0x021F6D78
 	mov r0, #0
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
-	thumb_func_end ov101_021F6D78
+	thumb_func_end RadioShow_PokemonTalk_teardown
 
-	thumb_func_start ov101_021F6D98
-ov101_021F6D98: ; 0x021F6D98
+	thumb_func_start RadioShow_PokemonTalk_print
+RadioShow_PokemonTalk_print: ; 0x021F6D98
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r6, r0, #0
@@ -32041,13 +32046,13 @@ _021F6DB2: ; jump table
 	.short _021F6EF0 - _021F6DB2 - 2 ; case 7
 _021F6DC2:
 	mov r1, #2
-	bl ov101_021F5DE0
+	bl RadioPrintInitEz
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
 	strh r0, [r4, #4]
 	b _021F6F0C
 _021F6DD0:
-	bl ov101_021F5E1C
+	bl Radio_RunTextPrinter
 	cmp r0, #0
 	bne _021F6DDA
 _021F6DD8:
@@ -32072,13 +32077,13 @@ _021F6DE6:
 	bl BufferSpeciesName
 	add r0, r6, #0
 	mov r1, #0x20
-	bl ov101_021F5DE0
+	bl RadioPrintInitEz
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
 	strh r0, [r4, #4]
 	b _021F6F0C
 _021F6E10:
-	bl ov101_021F5E1C
+	bl Radio_RunTextPrinter
 	cmp r0, #0
 	beq _021F6F0C
 	ldrh r0, [r4, #4]
@@ -32105,13 +32110,13 @@ _021F6E1E:
 	bl BufferSpeciesName
 	add r0, r6, #0
 	mov r1, #4
-	bl ov101_021F5DE0
+	bl RadioPrintInitEz
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
 	strh r0, [r4, #4]
 	b _021F6F0C
 _021F6E56:
-	bl ov101_021F5E1C
+	bl Radio_RunTextPrinter
 	cmp r0, #0
 	beq _021F6F0C
 	mov r5, #0
@@ -32149,13 +32154,13 @@ _021F6E64:
 	blt _021F6E64
 	add r0, r6, #0
 	mov r1, #5
-	bl ov101_021F5DE0
+	bl RadioPrintInitEz
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
 	strh r0, [r4, #4]
 	b _021F6F0C
 _021F6EB2:
-	bl ov101_021F5E1C
+	bl Radio_RunTextPrinter
 	cmp r0, #0
 	beq _021F6F0C
 	mov r0, #0x25
@@ -32180,13 +32185,13 @@ _021F6ED8:
 	beq _021F6F0C
 	add r0, r6, #0
 	mov r1, #3
-	bl ov101_021F5DEC
+	bl RadioPrintAndPlayJingle
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
 	strh r0, [r4, #4]
 	b _021F6F0C
 _021F6EF0:
-	bl ov101_021F5EB4
+	bl Radio_RunTextPrinter_WaitJingle
 	cmp r0, #0
 	beq _021F6F0C
 	add r0, r6, #0
@@ -32204,10 +32209,10 @@ _021F6F0C:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov101_021F6D98
+	thumb_func_end RadioShow_PokemonTalk_print
 
-	thumb_func_start ov101_021F6F14
-ov101_021F6F14: ; 0x021F6F14
+	thumb_func_start RadioShow_PokemonTalk_init
+RadioShow_PokemonTalk_init: ; 0x021F6F14
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	ldr r5, [r4, #0x1c]
@@ -32225,14 +32230,14 @@ ov101_021F6F14: ; 0x021F6F14
 	mov r1, #1
 	bl ReadMsgDataIntoString
 	ldr r0, [r4, #4]
-	bl sub_0202D9C4
+	bl Save_Roamers_get
 	add r6, r0, #0
-	bl sub_0202D9E0
+	bl RoamerSave_OutbreakActive
 	cmp r0, #0
 	beq _021F6F5C
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_0202D9A8
+	bl Roamers_GetRand
 	add r1, r5, #0
 	add r1, #8
 	add r2, r5, #6
@@ -32280,7 +32285,7 @@ _021F6F92:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021F6FBC: .word 0x0000019E
-	thumb_func_end ov101_021F6F14
+	thumb_func_end RadioShow_PokemonTalk_init
 
 	thumb_func_start ov101_021F6FC0
 ov101_021F6FC0: ; 0x021F6FC0
@@ -32304,7 +32309,7 @@ ov101_021F6FCC: ; 0x021F6FCC
 	bl SavArray_Flags_get
 	mov r1, #2
 	mov r2, #0x19
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	str r0, [sp, #0xc]
 	add r0, r5, #0
 	mov r2, #0x4b
@@ -32681,8 +32686,8 @@ _021F72AA:
 _021F72C0: .word 0x000001DA
 	thumb_func_end ov101_021F7174
 
-	thumb_func_start ov101_021F72C4
-ov101_021F72C4: ; 0x021F72C4
+	thumb_func_start RadioShow_MahoganySignal_setup
+RadioShow_MahoganySignal_setup: ; 0x021F72C4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -32694,10 +32699,10 @@ ov101_021F72C4: ; 0x021F72C4
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl ov101_021F7324
-	bl sub_02004A90
+	bl RadioShow_MahoganySignal_init
+	bl GF_GetCurrentPlayingBGM
 	mov r1, #1
-	bl sub_02005EB4
+	bl StopBGM
 	mov r0, #0
 	strb r0, [r4, #4]
 	ldr r0, _021F72FC ; =SEQ_GS_KAIDENPA
@@ -32706,10 +32711,10 @@ ov101_021F72C4: ; 0x021F72C4
 	pop {r3, r4, r5, pc}
 	nop
 _021F72FC: .word SEQ_GS_KAIDENPA
-	thumb_func_end ov101_021F72C4
+	thumb_func_end RadioShow_MahoganySignal_setup
 
-	thumb_func_start ov101_021F7300
-ov101_021F7300: ; 0x021F7300
+	thumb_func_start RadioShow_MahoganySignal_teardown
+RadioShow_MahoganySignal_teardown: ; 0x021F7300
 	push {r4, lr}
 	add r4, r0, #0
 	bl ov101_021F734C
@@ -32723,16 +32728,16 @@ ov101_021F7300: ; 0x021F7300
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov101_021F7300
+	thumb_func_end RadioShow_MahoganySignal_teardown
 
-	thumb_func_start ov101_021F7320
-ov101_021F7320: ; 0x021F7320
+	thumb_func_start RadioShow_MahoganySignal_print
+RadioShow_MahoganySignal_print: ; 0x021F7320
 	mov r0, #0
 	bx lr
-	thumb_func_end ov101_021F7320
+	thumb_func_end RadioShow_MahoganySignal_print
 
-	thumb_func_start ov101_021F7324
-ov101_021F7324: ; 0x021F7324
+	thumb_func_start RadioShow_MahoganySignal_init
+RadioShow_MahoganySignal_init: ; 0x021F7324
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r2, _021F7348 ; =0x00000199
@@ -32749,7 +32754,7 @@ ov101_021F7324: ; 0x021F7324
 	pop {r4, pc}
 	nop
 _021F7348: .word 0x00000199
-	thumb_func_end ov101_021F7324
+	thumb_func_end RadioShow_MahoganySignal_init
 
 	thumb_func_start ov101_021F734C
 ov101_021F734C: ; 0x021F734C
@@ -32763,116 +32768,114 @@ _021F7354: .word DestroyMsgData
 	.rodata
 
 _021F7358:
-	.byte 0x1A, 0x00, 0x1D, 0x00, 0x2D, 0x00, 0x09, 0x02
-	.byte 0x0A, 0x02, 0x0B, 0x02
+	.short 0x001A, 0x001D, 0x002D, 0x0209, 0x020A, 0x020B
 
 ov101_021F7364: ; 0x021F7364
-	.byte 0x33, 0x01, 0x34, 0x01, 0x35, 0x01, 0x36, 0x01, 0x37, 0x01, 0x48, 0x01
-	.byte 0x49, 0x01
+	.short 0x0133, 0x0134, 0x0135, 0x0136, 0x0137, 0x0148, 0x0149
 
 ov101_021F7372: ; 0x021F7372
-	.byte 0x09, 0x02, 0x13, 0x02, 0x33, 0xC0, 0x41, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x33, 0x01, 0x18, 0x10, 0x33, 0xC0, 0x45, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x78, 0x00, 0x15, 0x06, 0x11, 0x00, 0x37, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x28
-	.byte 0x01, 0x01, 0x7B, 0x00, 0x11, 0x0A, 0x11, 0x00, 0x3A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0A, 0x28
-	.byte 0x01, 0x01, 0x7B, 0x00, 0x13, 0x0C, 0x11, 0x00, 0x3A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x2C
-	.byte 0x01, 0x01, 0x7B, 0x00, 0x14, 0x08, 0x11, 0x00, 0x3A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0D, 0x28
-	.byte 0x01, 0x01, 0x6E, 0x00, 0x0F, 0x09, 0x11, 0x00, 0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x28
-	.byte 0x01, 0x01, 0x63, 0x00, 0x0E, 0x0F, 0x11, 0x00, 0x2E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x2C
-	.byte 0x01, 0x01, 0x72, 0x00, 0x0D, 0x10, 0x11, 0x00, 0x2F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x28
-	.byte 0x01, 0x01, 0x75, 0x00, 0x0B, 0x10, 0x11, 0x00, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x2D
-	.byte 0x01, 0x01, 0x60, 0x00, 0x0A, 0x08, 0x22, 0x44, 0x2B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x25
-	.byte 0x02, 0x02, 0x6F, 0x00, 0x0C, 0x06, 0x11, 0x00, 0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x28
-	.byte 0x01, 0x01, 0x07, 0x00, 0x0B, 0x06, 0x11, 0x00, 0x2A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x28
-	.byte 0x01, 0x01, 0x77, 0x00, 0x0E, 0x07, 0x11, 0x00, 0x36, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x28
-	.byte 0x01, 0x01, 0x79, 0x00, 0x07, 0x0D, 0x11, 0x00, 0x38, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x2E
-	.byte 0x01, 0x01, 0x7E, 0x00, 0x17, 0x0E, 0x11, 0x00, 0x3D, 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x28
-	.byte 0x01, 0x01, 0x7C, 0x00, 0x1C, 0x09, 0x21, 0x40, 0x3B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x25
-	.byte 0x01, 0x02, 0x93, 0x00, 0x20, 0x07, 0x11, 0x00, 0x3E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0F, 0x29
-	.byte 0x01, 0x01, 0x6A, 0x00, 0x20, 0x06, 0x11, 0x00, 0x21, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0F, 0x28
-	.byte 0x01, 0x01, 0x6A, 0x00, 0x2A, 0x0B, 0x11, 0x00, 0x21, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1C, 0x2B
-	.byte 0x01, 0x01, 0x6B, 0x00, 0x24, 0x05, 0x11, 0x00, 0x22, 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x28
-	.byte 0x01, 0x01, 0x91, 0x00, 0x28, 0x05, 0x11, 0x00, 0x23, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x28
-	.byte 0x01, 0x01, 0x6C, 0x00, 0x2C, 0x06, 0x11, 0x00, 0x24, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1F, 0x29
-	.byte 0x01, 0x01, 0xE9, 0x01, 0x2C, 0x07, 0x11, 0x00, 0x43, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1F, 0x2A
-	.byte 0x01, 0x01, 0x92, 0x00, 0x23, 0x11, 0x11, 0x00, 0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x28
-	.byte 0x01, 0x01, 0x10, 0x01, 0x06, 0x08, 0x22, 0x44, 0x32, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x25
-	.byte 0x02, 0x02, 0xDF, 0x01, 0x25, 0x0E, 0x11, 0x00, 0x25, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x28
-	.byte 0x01, 0x01, 0xDC, 0x00, 0x09, 0x0A, 0x11, 0x00, 0x30, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x28
-	.byte 0x01, 0x01, 0x31, 0x00, 0x20, 0x0D, 0x11, 0x00, 0x0A, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20
-	.byte 0x03, 0x03, 0x32, 0x00, 0x1F, 0x09, 0x22, 0x44, 0x0B, 0x02, 0x00, 0x00, 0x00, 0x00, 0x23, 0x20
-	.byte 0x04, 0x04, 0x33, 0x00, 0x20, 0x04, 0x22, 0x44, 0x0C, 0x03, 0x00, 0x00, 0x00, 0x00, 0x23, 0x20
-	.byte 0x04, 0x04, 0x34, 0x00, 0x28, 0x05, 0x22, 0x84, 0x0D, 0x04, 0x00, 0x00, 0x00, 0x00, 0x12, 0x20
-	.byte 0x04, 0x04, 0x35, 0x00, 0x2C, 0x09, 0x11, 0x00, 0x0E, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20
-	.byte 0x03, 0x03, 0x36, 0x00, 0x28, 0x0B, 0x22, 0x44, 0x0F, 0x06, 0x00, 0x00, 0x00, 0x00, 0x23, 0x20
-	.byte 0x04, 0x04, 0x37, 0x00, 0x25, 0x09, 0x22, 0x44, 0x10, 0x07, 0x00, 0x00, 0x00, 0x00, 0x23, 0x20
-	.byte 0x04, 0x04, 0x38, 0x00, 0x25, 0x0E, 0x22, 0x84, 0x11, 0x08, 0x00, 0x00, 0x00, 0x00, 0x12, 0x20
-	.byte 0x04, 0x04, 0x39, 0x00, 0x20, 0x11, 0x11, 0x00, 0x12, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20
-	.byte 0x03, 0x03, 0x3B, 0x00, 0x28, 0x08, 0x22, 0x44, 0x14, 0x0A, 0x00, 0x00, 0x00, 0x00, 0x23, 0x20
-	.byte 0x04, 0x04, 0x3C, 0x00, 0x15, 0x0E, 0x11, 0x00, 0x15, 0x0B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20
-	.byte 0x03, 0x03, 0x43, 0x00, 0x10, 0x0E, 0x12, 0x04, 0x16, 0x0C, 0x00, 0x00, 0x00, 0x00, 0x1A, 0x20
-	.byte 0x04, 0x03, 0x49, 0x00, 0x0E, 0x09, 0x22, 0x84, 0x17, 0x0D, 0x00, 0x00, 0x00, 0x00, 0x0E, 0x20
-	.byte 0x04, 0x04, 0x4A, 0x00, 0x0C, 0x10, 0x11, 0x00, 0x18, 0x0E, 0x00, 0x00, 0x00, 0x00, 0x16, 0x20
-	.byte 0x04, 0x03, 0x4B, 0x00, 0x05, 0x0C, 0x21, 0x40, 0x19, 0x0F, 0x00, 0x00, 0x00, 0x00, 0x03, 0x20
-	.byte 0x03, 0x04, 0x4C, 0x00, 0x09, 0x0C, 0x23, 0x48, 0x1A, 0x10, 0x00, 0x00, 0x00, 0x00, 0x1E, 0x20
-	.byte 0x05, 0x04, 0x4D, 0x00, 0x08, 0x09, 0x22, 0x04, 0x1B, 0x11, 0x00, 0x00, 0x00, 0x00, 0x06, 0x20
-	.byte 0x04, 0x04, 0x4E, 0x00, 0x0B, 0x06, 0x22, 0x84, 0x1C, 0x12, 0x00, 0x00, 0x00, 0x00, 0x0A, 0x20
-	.byte 0x04, 0x04, 0x57, 0x00, 0x10, 0x07, 0x11, 0x00, 0x1D, 0x13, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20
-	.byte 0x03, 0x03, 0x59, 0x00, 0x14, 0x06, 0x22, 0x84, 0x1F, 0x14, 0x00, 0x00, 0x00, 0x00, 0x0E, 0x20
-	.byte 0x04, 0x04, 0x3A, 0x00, 0x1C, 0x08, 0x11, 0x00, 0x13, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x28
-	.byte 0x01, 0x01, 0x58, 0x00, 0x0F, 0x03, 0x23, 0x48, 0x1E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1E, 0x20
-	.byte 0x05, 0x04, 0x5A, 0x00, 0x19, 0x0A, 0x11, 0x00, 0x39, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x28
-	.byte 0x01, 0x01, 0x08, 0x00, 0x0D, 0x0A, 0x21, 0x40, 0x2D, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x20
-	.byte 0x03, 0x04, 0xAE, 0x00, 0x02, 0x0A, 0x22, 0x44, 0x44, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x25
-	.byte 0x02, 0x02, 0x09, 0x00, 0x20, 0x0B, 0x21, 0x40, 0x46, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0F, 0x2E
-	.byte 0x01, 0x02, 0x0A, 0x00, 0x20, 0x08, 0x11, 0x00, 0x47, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0F, 0x2A
-	.byte 0x01, 0x01, 0x0B, 0x00, 0x22, 0x05, 0x12, 0x04, 0x48, 0x00, 0x00, 0x00, 0x00, 0x00, 0x19, 0x28
-	.byte 0x02, 0x01, 0x0C, 0x00, 0x25, 0x05, 0x13, 0x04, 0x49, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1C, 0x28
-	.byte 0x03, 0x01, 0x0D, 0x00, 0x28, 0x07, 0x11, 0x00, 0x4A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x19, 0x2C
-	.byte 0x01, 0x01, 0x0E, 0x00, 0x28, 0x0A, 0x11, 0x00, 0x4B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1A, 0x2C
-	.byte 0x01, 0x01, 0x0F, 0x00, 0x27, 0x09, 0x11, 0x00, 0x4C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x18, 0x2C
-	.byte 0x01, 0x01, 0x10, 0x00, 0x2A, 0x09, 0x12, 0x04, 0x4D, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1B, 0x2C
-	.byte 0x02, 0x01, 0x11, 0x00, 0x2A, 0x06, 0x12, 0x04, 0x4E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1D, 0x29
-	.byte 0x02, 0x01, 0x12, 0x00, 0x2C, 0x08, 0x11, 0x00, 0x4F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1F, 0x2B
-	.byte 0x01, 0x01, 0x13, 0x00, 0x2B, 0x0B, 0x11, 0x00, 0x50, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1D, 0x2B
-	.byte 0x01, 0x01, 0x14, 0x00, 0x2C, 0x0A, 0x31, 0x40, 0x51, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1E, 0x2A
-	.byte 0x01, 0x03, 0x15, 0x00, 0x2A, 0x0D, 0x13, 0x04, 0x52, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1C, 0x2D
-	.byte 0x03, 0x01, 0x16, 0x00, 0x2A, 0x0E, 0x21, 0x40, 0x53, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1C, 0x2E
-	.byte 0x01, 0x02, 0x17, 0x00, 0x27, 0x0F, 0x13, 0x0C, 0x54, 0x00, 0x00, 0x00, 0x00, 0x00, 0x19, 0x2F
-	.byte 0x03, 0x01, 0x18, 0x00, 0x23, 0x0A, 0x12, 0x04, 0x55, 0x00, 0x00, 0x00, 0x00, 0x00, 0x17, 0x28
-	.byte 0x02, 0x01, 0x19, 0x00, 0x23, 0x0B, 0x41, 0xC0, 0x56, 0x00, 0x00, 0x00, 0x00, 0x00, 0x17, 0x29
-	.byte 0x01, 0x04, 0x1A, 0x00, 0x23, 0x0F, 0x12, 0x04, 0x57, 0x00, 0x00, 0x00, 0x00, 0x00, 0x17, 0x2D
-	.byte 0x02, 0x01, 0x5B, 0x00, 0x25, 0x10, 0x21, 0x40, 0x58, 0x00, 0x00, 0x00, 0x00, 0x00, 0x16, 0x2D
-	.byte 0x01, 0x02, 0x5C, 0x00, 0x21, 0x11, 0x14, 0x08, 0x59, 0x00, 0x00, 0x00, 0x00, 0x00, 0x12, 0x2E
-	.byte 0x04, 0x01, 0x5D, 0x00, 0x20, 0x0E, 0x31, 0xC0, 0x5A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x11, 0x2D
-	.byte 0x01, 0x03, 0x1B, 0x00, 0x1D, 0x0A, 0x12, 0x04, 0x5B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x15, 0x28
-	.byte 0x02, 0x01, 0x1C, 0x00, 0x29, 0x04, 0x11, 0x00, 0x5D, 0x00, 0x00, 0x00, 0x00, 0x00, 0x18, 0x2A
-	.byte 0x01, 0x01, 0x1D, 0x00, 0x29, 0x03, 0x14, 0x0C, 0x5E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x18, 0x29
-	.byte 0x04, 0x01, 0x1E, 0x00, 0x1C, 0x0B, 0x41, 0xC0, 0x5F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x14, 0x29
-	.byte 0x01, 0x04, 0x1F, 0x00, 0x16, 0x0E, 0x16, 0x0F, 0x60, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0E, 0x2C
-	.byte 0x06, 0x01, 0x20, 0x00, 0x1A, 0x0A, 0x12, 0x04, 0x61, 0x00, 0x00, 0x00, 0x00, 0x00, 0x12, 0x28
-	.byte 0x02, 0x01, 0x21, 0x00, 0x12, 0x0E, 0x13, 0x0C, 0x62, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0B, 0x2E
-	.byte 0x03, 0x01, 0x22, 0x00, 0x11, 0x0B, 0x31, 0x40, 0x63, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0A, 0x29
-	.byte 0x01, 0x03, 0x23, 0x00, 0x10, 0x0A, 0x12, 0x01, 0x64, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x28
-	.byte 0x01, 0x01, 0x24, 0x00, 0x0E, 0x0B, 0x41, 0xC0, 0x65, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x28
-	.byte 0x01, 0x04, 0x25, 0x00, 0x0E, 0x10, 0x11, 0x00, 0x66, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x2D
-	.byte 0x01, 0x01, 0x26, 0x00, 0x0B, 0x0E, 0x31, 0x40, 0x67, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x2B
-	.byte 0x01, 0x02, 0x27, 0x00, 0x0B, 0x0A, 0x21, 0x40, 0x68, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x2D
-	.byte 0x01, 0x02, 0x28, 0x00, 0x0B, 0x09, 0x13, 0x04, 0x69, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x2C
-	.byte 0x03, 0x01, 0x29, 0x00, 0x0C, 0x08, 0x11, 0x00, 0x6A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x2B
-	.byte 0x01, 0x01, 0x2A, 0x00, 0x09, 0x07, 0x12, 0x04, 0x6B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x28
-	.byte 0x02, 0x01, 0x2B, 0x00, 0x08, 0x07, 0x21, 0x40, 0x6C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x28
-	.byte 0x01, 0x02, 0x5E, 0x00, 0x07, 0x0A, 0x21, 0x40, 0x6D, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x2A
-	.byte 0x01, 0x02, 0x5F, 0x00, 0x06, 0x0C, 0x22, 0x04, 0x6E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2C
-	.byte 0x02, 0x02, 0x2C, 0x00, 0x0D, 0x07, 0x13, 0x02, 0x6F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x2A
-	.byte 0x03, 0x01, 0x2D, 0x00, 0x10, 0x05, 0x21, 0x40, 0x70, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x28
-	.byte 0x01, 0x02, 0x2E, 0x00, 0x11, 0x07, 0x13, 0x08, 0x71, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x2A
-	.byte 0x03, 0x01, 0x2F, 0x00, 0x14, 0x09, 0x41, 0x80, 0x72, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0D, 0x29
-	.byte 0x01, 0x04, 0x30, 0x00, 0x13, 0x0D, 0x21, 0x00, 0x73, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x2D
-	.byte 0x01, 0x01, 0x97, 0x00, 0x02, 0x0D, 0x23, 0x48, 0x74, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x29
-	.byte 0x03, 0x02, 0x98, 0x00, 0x02, 0x0C, 0x12, 0x04, 0x75, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x28
-	.byte 0x02, 0x01, 0x00, 0x00
+	.byte 0x09, 0x02, 0x13, 0x02, 0x33, 0xC0, 0x41, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x33, 0x01, 0x18, 0x10, 0x33, 0xC0, 0x45, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x78, 0x00, 0x15, 0x06, 0x11, 0x00, 0x37, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x28, 0x01, 0x01
+	.byte 0x7B, 0x00, 0x11, 0x0A, 0x11, 0x00, 0x3A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0A, 0x28, 0x01, 0x01
+	.byte 0x7B, 0x00, 0x13, 0x0C, 0x11, 0x00, 0x3A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x2C, 0x01, 0x01
+	.byte 0x7B, 0x00, 0x14, 0x08, 0x11, 0x00, 0x3A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0D, 0x28, 0x01, 0x01
+	.byte 0x6E, 0x00, 0x0F, 0x09, 0x11, 0x00, 0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x28, 0x01, 0x01
+	.byte 0x63, 0x00, 0x0E, 0x0F, 0x11, 0x00, 0x2E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x2C, 0x01, 0x01
+	.byte 0x72, 0x00, 0x0D, 0x10, 0x11, 0x00, 0x2F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x28, 0x01, 0x01
+	.byte 0x75, 0x00, 0x0B, 0x10, 0x11, 0x00, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x2D, 0x01, 0x01
+	.byte 0x60, 0x00, 0x0A, 0x08, 0x22, 0x44, 0x2B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x25, 0x02, 0x02
+	.byte 0x6F, 0x00, 0x0C, 0x06, 0x11, 0x00, 0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x28, 0x01, 0x01
+	.byte 0x07, 0x00, 0x0B, 0x06, 0x11, 0x00, 0x2A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x28, 0x01, 0x01
+	.byte 0x77, 0x00, 0x0E, 0x07, 0x11, 0x00, 0x36, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x28, 0x01, 0x01
+	.byte 0x79, 0x00, 0x07, 0x0D, 0x11, 0x00, 0x38, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x2E, 0x01, 0x01
+	.byte 0x7E, 0x00, 0x17, 0x0E, 0x11, 0x00, 0x3D, 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x28, 0x01, 0x01
+	.byte 0x7C, 0x00, 0x1C, 0x09, 0x21, 0x40, 0x3B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x25, 0x01, 0x02
+	.byte 0x93, 0x00, 0x20, 0x07, 0x11, 0x00, 0x3E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0F, 0x29, 0x01, 0x01
+	.byte 0x6A, 0x00, 0x20, 0x06, 0x11, 0x00, 0x21, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0F, 0x28, 0x01, 0x01
+	.byte 0x6A, 0x00, 0x2A, 0x0B, 0x11, 0x00, 0x21, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1C, 0x2B, 0x01, 0x01
+	.byte 0x6B, 0x00, 0x24, 0x05, 0x11, 0x00, 0x22, 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x28, 0x01, 0x01
+	.byte 0x91, 0x00, 0x28, 0x05, 0x11, 0x00, 0x23, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x28, 0x01, 0x01
+	.byte 0x6C, 0x00, 0x2C, 0x06, 0x11, 0x00, 0x24, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1F, 0x29, 0x01, 0x01
+	.byte 0xE9, 0x01, 0x2C, 0x07, 0x11, 0x00, 0x43, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1F, 0x2A, 0x01, 0x01
+	.byte 0x92, 0x00, 0x23, 0x11, 0x11, 0x00, 0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x28, 0x01, 0x01
+	.byte 0x10, 0x01, 0x06, 0x08, 0x22, 0x44, 0x32, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x25, 0x02, 0x02
+	.byte 0xDF, 0x01, 0x25, 0x0E, 0x11, 0x00, 0x25, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x28, 0x01, 0x01
+	.byte 0xDC, 0x00, 0x09, 0x0A, 0x11, 0x00, 0x30, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x28, 0x01, 0x01
+	.byte 0x31, 0x00, 0x20, 0x0D, 0x11, 0x00, 0x0A, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x03, 0x03
+	.byte 0x32, 0x00, 0x1F, 0x09, 0x22, 0x44, 0x0B, 0x02, 0x00, 0x00, 0x00, 0x00, 0x23, 0x20, 0x04, 0x04
+	.byte 0x33, 0x00, 0x20, 0x04, 0x22, 0x44, 0x0C, 0x03, 0x00, 0x00, 0x00, 0x00, 0x23, 0x20, 0x04, 0x04
+	.byte 0x34, 0x00, 0x28, 0x05, 0x22, 0x84, 0x0D, 0x04, 0x00, 0x00, 0x00, 0x00, 0x12, 0x20, 0x04, 0x04
+	.byte 0x35, 0x00, 0x2C, 0x09, 0x11, 0x00, 0x0E, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x03, 0x03
+	.byte 0x36, 0x00, 0x28, 0x0B, 0x22, 0x44, 0x0F, 0x06, 0x00, 0x00, 0x00, 0x00, 0x23, 0x20, 0x04, 0x04
+	.byte 0x37, 0x00, 0x25, 0x09, 0x22, 0x44, 0x10, 0x07, 0x00, 0x00, 0x00, 0x00, 0x23, 0x20, 0x04, 0x04
+	.byte 0x38, 0x00, 0x25, 0x0E, 0x22, 0x84, 0x11, 0x08, 0x00, 0x00, 0x00, 0x00, 0x12, 0x20, 0x04, 0x04
+	.byte 0x39, 0x00, 0x20, 0x11, 0x11, 0x00, 0x12, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x03, 0x03
+	.byte 0x3B, 0x00, 0x28, 0x08, 0x22, 0x44, 0x14, 0x0A, 0x00, 0x00, 0x00, 0x00, 0x23, 0x20, 0x04, 0x04
+	.byte 0x3C, 0x00, 0x15, 0x0E, 0x11, 0x00, 0x15, 0x0B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x03, 0x03
+	.byte 0x43, 0x00, 0x10, 0x0E, 0x12, 0x04, 0x16, 0x0C, 0x00, 0x00, 0x00, 0x00, 0x1A, 0x20, 0x04, 0x03
+	.byte 0x49, 0x00, 0x0E, 0x09, 0x22, 0x84, 0x17, 0x0D, 0x00, 0x00, 0x00, 0x00, 0x0E, 0x20, 0x04, 0x04
+	.byte 0x4A, 0x00, 0x0C, 0x10, 0x11, 0x00, 0x18, 0x0E, 0x00, 0x00, 0x00, 0x00, 0x16, 0x20, 0x04, 0x03
+	.byte 0x4B, 0x00, 0x05, 0x0C, 0x21, 0x40, 0x19, 0x0F, 0x00, 0x00, 0x00, 0x00, 0x03, 0x20, 0x03, 0x04
+	.byte 0x4C, 0x00, 0x09, 0x0C, 0x23, 0x48, 0x1A, 0x10, 0x00, 0x00, 0x00, 0x00, 0x1E, 0x20, 0x05, 0x04
+	.byte 0x4D, 0x00, 0x08, 0x09, 0x22, 0x04, 0x1B, 0x11, 0x00, 0x00, 0x00, 0x00, 0x06, 0x20, 0x04, 0x04
+	.byte 0x4E, 0x00, 0x0B, 0x06, 0x22, 0x84, 0x1C, 0x12, 0x00, 0x00, 0x00, 0x00, 0x0A, 0x20, 0x04, 0x04
+	.byte 0x57, 0x00, 0x10, 0x07, 0x11, 0x00, 0x1D, 0x13, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x03, 0x03
+	.byte 0x59, 0x00, 0x14, 0x06, 0x22, 0x84, 0x1F, 0x14, 0x00, 0x00, 0x00, 0x00, 0x0E, 0x20, 0x04, 0x04
+	.byte 0x3A, 0x00, 0x1C, 0x08, 0x11, 0x00, 0x13, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x28, 0x01, 0x01
+	.byte 0x58, 0x00, 0x0F, 0x03, 0x23, 0x48, 0x1E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1E, 0x20, 0x05, 0x04
+	.byte 0x5A, 0x00, 0x19, 0x0A, 0x11, 0x00, 0x39, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x28, 0x01, 0x01
+	.byte 0x08, 0x00, 0x0D, 0x0A, 0x21, 0x40, 0x2D, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x20, 0x03, 0x04
+	.byte 0xAE, 0x00, 0x02, 0x0A, 0x22, 0x44, 0x44, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x25, 0x02, 0x02
+	.byte 0x09, 0x00, 0x20, 0x0B, 0x21, 0x40, 0x46, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0F, 0x2E, 0x01, 0x02
+	.byte 0x0A, 0x00, 0x20, 0x08, 0x11, 0x00, 0x47, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0F, 0x2A, 0x01, 0x01
+	.byte 0x0B, 0x00, 0x22, 0x05, 0x12, 0x04, 0x48, 0x00, 0x00, 0x00, 0x00, 0x00, 0x19, 0x28, 0x02, 0x01
+	.byte 0x0C, 0x00, 0x25, 0x05, 0x13, 0x04, 0x49, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1C, 0x28, 0x03, 0x01
+	.byte 0x0D, 0x00, 0x28, 0x07, 0x11, 0x00, 0x4A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x19, 0x2C, 0x01, 0x01
+	.byte 0x0E, 0x00, 0x28, 0x0A, 0x11, 0x00, 0x4B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1A, 0x2C, 0x01, 0x01
+	.byte 0x0F, 0x00, 0x27, 0x09, 0x11, 0x00, 0x4C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x18, 0x2C, 0x01, 0x01
+	.byte 0x10, 0x00, 0x2A, 0x09, 0x12, 0x04, 0x4D, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1B, 0x2C, 0x02, 0x01
+	.byte 0x11, 0x00, 0x2A, 0x06, 0x12, 0x04, 0x4E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1D, 0x29, 0x02, 0x01
+	.byte 0x12, 0x00, 0x2C, 0x08, 0x11, 0x00, 0x4F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1F, 0x2B, 0x01, 0x01
+	.byte 0x13, 0x00, 0x2B, 0x0B, 0x11, 0x00, 0x50, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1D, 0x2B, 0x01, 0x01
+	.byte 0x14, 0x00, 0x2C, 0x0A, 0x31, 0x40, 0x51, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1E, 0x2A, 0x01, 0x03
+	.byte 0x15, 0x00, 0x2A, 0x0D, 0x13, 0x04, 0x52, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1C, 0x2D, 0x03, 0x01
+	.byte 0x16, 0x00, 0x2A, 0x0E, 0x21, 0x40, 0x53, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1C, 0x2E, 0x01, 0x02
+	.byte 0x17, 0x00, 0x27, 0x0F, 0x13, 0x0C, 0x54, 0x00, 0x00, 0x00, 0x00, 0x00, 0x19, 0x2F, 0x03, 0x01
+	.byte 0x18, 0x00, 0x23, 0x0A, 0x12, 0x04, 0x55, 0x00, 0x00, 0x00, 0x00, 0x00, 0x17, 0x28, 0x02, 0x01
+	.byte 0x19, 0x00, 0x23, 0x0B, 0x41, 0xC0, 0x56, 0x00, 0x00, 0x00, 0x00, 0x00, 0x17, 0x29, 0x01, 0x04
+	.byte 0x1A, 0x00, 0x23, 0x0F, 0x12, 0x04, 0x57, 0x00, 0x00, 0x00, 0x00, 0x00, 0x17, 0x2D, 0x02, 0x01
+	.byte 0x5B, 0x00, 0x25, 0x10, 0x21, 0x40, 0x58, 0x00, 0x00, 0x00, 0x00, 0x00, 0x16, 0x2D, 0x01, 0x02
+	.byte 0x5C, 0x00, 0x21, 0x11, 0x14, 0x08, 0x59, 0x00, 0x00, 0x00, 0x00, 0x00, 0x12, 0x2E, 0x04, 0x01
+	.byte 0x5D, 0x00, 0x20, 0x0E, 0x31, 0xC0, 0x5A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x11, 0x2D, 0x01, 0x03
+	.byte 0x1B, 0x00, 0x1D, 0x0A, 0x12, 0x04, 0x5B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x15, 0x28, 0x02, 0x01
+	.byte 0x1C, 0x00, 0x29, 0x04, 0x11, 0x00, 0x5D, 0x00, 0x00, 0x00, 0x00, 0x00, 0x18, 0x2A, 0x01, 0x01
+	.byte 0x1D, 0x00, 0x29, 0x03, 0x14, 0x0C, 0x5E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x18, 0x29, 0x04, 0x01
+	.byte 0x1E, 0x00, 0x1C, 0x0B, 0x41, 0xC0, 0x5F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x14, 0x29, 0x01, 0x04
+	.byte 0x1F, 0x00, 0x16, 0x0E, 0x16, 0x0F, 0x60, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0E, 0x2C, 0x06, 0x01
+	.byte 0x20, 0x00, 0x1A, 0x0A, 0x12, 0x04, 0x61, 0x00, 0x00, 0x00, 0x00, 0x00, 0x12, 0x28, 0x02, 0x01
+	.byte 0x21, 0x00, 0x12, 0x0E, 0x13, 0x0C, 0x62, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0B, 0x2E, 0x03, 0x01
+	.byte 0x22, 0x00, 0x11, 0x0B, 0x31, 0x40, 0x63, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0A, 0x29, 0x01, 0x03
+	.byte 0x23, 0x00, 0x10, 0x0A, 0x12, 0x01, 0x64, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x28, 0x01, 0x01
+	.byte 0x24, 0x00, 0x0E, 0x0B, 0x41, 0xC0, 0x65, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x28, 0x01, 0x04
+	.byte 0x25, 0x00, 0x0E, 0x10, 0x11, 0x00, 0x66, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x2D, 0x01, 0x01
+	.byte 0x26, 0x00, 0x0B, 0x0E, 0x31, 0x40, 0x67, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x2B, 0x01, 0x02
+	.byte 0x27, 0x00, 0x0B, 0x0A, 0x21, 0x40, 0x68, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x2D, 0x01, 0x02
+	.byte 0x28, 0x00, 0x0B, 0x09, 0x13, 0x04, 0x69, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x2C, 0x03, 0x01
+	.byte 0x29, 0x00, 0x0C, 0x08, 0x11, 0x00, 0x6A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x2B, 0x01, 0x01
+	.byte 0x2A, 0x00, 0x09, 0x07, 0x12, 0x04, 0x6B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x28, 0x02, 0x01
+	.byte 0x2B, 0x00, 0x08, 0x07, 0x21, 0x40, 0x6C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x28, 0x01, 0x02
+	.byte 0x5E, 0x00, 0x07, 0x0A, 0x21, 0x40, 0x6D, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x2A, 0x01, 0x02
+	.byte 0x5F, 0x00, 0x06, 0x0C, 0x22, 0x04, 0x6E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2C, 0x02, 0x02
+	.byte 0x2C, 0x00, 0x0D, 0x07, 0x13, 0x02, 0x6F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x2A, 0x03, 0x01
+	.byte 0x2D, 0x00, 0x10, 0x05, 0x21, 0x40, 0x70, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x28, 0x01, 0x02
+	.byte 0x2E, 0x00, 0x11, 0x07, 0x13, 0x08, 0x71, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x2A, 0x03, 0x01
+	.byte 0x2F, 0x00, 0x14, 0x09, 0x41, 0x80, 0x72, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0D, 0x29, 0x01, 0x04
+	.byte 0x30, 0x00, 0x13, 0x0D, 0x21, 0x00, 0x73, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x2D, 0x01, 0x01
+	.byte 0x97, 0x00, 0x02, 0x0D, 0x23, 0x48, 0x74, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x29, 0x03, 0x02
+	.byte 0x98, 0x00, 0x02, 0x0C, 0x12, 0x04, 0x75, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x28, 0x02, 0x01
 
+	.balign 4, 0
 ov101_021F79B4: ; 0x021F79B4
 	.byte 0x31, 0x00
 
@@ -33289,6 +33292,8 @@ ov101_021F8760: ; 0x021F8760
 	.byte 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x02, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 
+	; file boundary
+
 ov101_021F87AC: ; 0x021F87AC
 	.byte 0x05, 0x11, 0x00, 0x00
 
@@ -33334,6 +33339,8 @@ ov101_021F889C: ; 0x021F889C
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
 
+	; file boundary
+
 ov101_021F8964:
 	.byte 0xFF, 0x00, 0x00, 0x00
 
@@ -33358,13 +33365,7 @@ ov101_021F8998:
 	.byte 0xFF, 0x00, 0x00, 0x00
 
 ov101_021F89B4:
-	.byte 0xFE
-
-ov101_021F89B5: ; 0x021F89B5
-	.byte 0x70
-
-ov101_021F89B6: ; 0x021F89B6
-	.byte 0x4C, 0x04, 0xFE, 0x70, 0x4C, 0x10, 0xFE, 0x98, 0x4C, 0x04
+	.byte 0xFE, 0x70, 0x4C, 0x04, 0xFE, 0x70, 0x4C, 0x10, 0xFE, 0x98, 0x4C, 0x04
 	.byte 0xFE, 0x98, 0x4C, 0x14, 0xFE, 0x60, 0x6C, 0x04, 0xFE, 0x60, 0x6C, 0x10, 0xFE, 0x88, 0x74, 0x04
 	.byte 0xFE, 0x88, 0x74, 0x14, 0xFF, 0x00, 0x00, 0x00
 
@@ -33375,47 +33376,19 @@ ov101_021F89D8:
 	.byte 0xFF, 0x00, 0x00, 0x00
 
 ov101_021F8A04: ; 0x021F8A04
-	.word ov101_021F5F40
-
-ov101_021F8A08: ; 0x021F8A08
-	.word ov101_021F6060
-
-ov101_021F8A0C: ; 0x021F8A0C
-	.word ov101_021F6040
-	.word ov101_021F6D3C
-	.word ov101_021F6D98
-	.word ov101_021F6D78
-	.word ov101_021F6620
-	.word ov101_021F6678
-	.word ov101_021F6658
-	.word ov101_021F632C
-	.word ov101_021F638C
-	.word ov101_021F6364
-	.word ov101_021F680C
-	.word ov101_021F6860
-	.word ov101_021F6840
-	.word ov101_021F6BAC
-	.word ov101_021F6C04
-	.word ov101_021F6BE4
-	.word ov101_021F69A8
-	.word ov101_021F6A00
-	.word ov101_021F69E0
-	.word ov101_021F6148
-	.word ov101_021F61A0
-	.word ov101_021F6180
-	.word ov101_021F61D8
-	.word ov101_021F6230
-	.word ov101_021F6210
-	.word ov101_021F6268
-	.word ov101_021F62C4
-	.word ov101_021F62A4
-	.word ov101_021F72C4
-	.word ov101_021F7320
-	.word ov101_021F7300
-	.word ov101_021F647C
-	.word ov101_021F64D0
-	.word ov101_021F64B0
-
+	.word RadioShow_PokemonMusic_setup, RadioShow_PokemonMusic_print, RadioShow_PokemonMusic_teardown ; RADIO_STATION_POKEMON_MUSIC
+	.word RadioShow_PokemonTalk_setup, RadioShow_PokemonTalk_print, RadioShow_PokemonTalk_teardown ; RADIO_STATION_POKEMON_TALK
+	.word RadioShow_PokemonSearchParty_setup, RadioShow_PokemonSearchParty_print, RadioShow_PokemonSearchParty_teardown ; RADIO_STATION_POKEMON_SEARCH_PARTY
+	.word RadioShow_SerialRadioDrama_setup, RadioShow_SerialRadioDrama_print, RadioShow_SerialRadioDrama_teardown ; RADIO_STATION_SERIAL_RADIO_DRAMA
+	.word RadioShow_BuenasPassword_setup, RadioShow_BuenasPassword_print, RadioShow_BuenasPassword_teardown ; RADIO_STATION_BUENAS_PASSWORD
+	.word RadioShow_TrainerProfiles_setup, RadioShow_TrainerProfiles_print, RadioShow_TrainerProfiles_teardown ; RADIO_STATION_TRAINER_PROFILES
+	.word RadioShow_ThatTownThesePeople_setup, RadioShow_ThatTownThesePeople_print, RadioShow_ThatTownThesePeople_teardown ; RADIO_STATION_THAT_TOWN_THESE_PEOPLE
+	.word RadioShow_PokeFlute_setup, RadioShow_PokeFlute_print, RadioShow_PokeFlute_teardown ; RADIO_STATION_POKE_FLUTE
+	.word RadioShow_Unown_setup, RadioShow_Unown_print, RadioShow_Unown_teardown ; RADIO_STATION_UNOWN
+	.word RadioShow_TeamRocket_setup, RadioShow_TeamRocket_print, RadioShow_TeamRocket_teardown ; RADIO_STATION_TEAM_ROCKET
+	.word RadioShow_MahoganySignal_setup, RadioShow_MahoganySignal_print, RadioShow_MahoganySignal_teardown ; RADIO_STATION_MAHOGANY_SIGNAL
+	.word RadioShow_Commercials_setup, RadioShow_Commercials_print, RadioShow_Commercials_teardown ; RADIO_STATION_COMMERCIALS
+	; file boundary
 ov101_021F8A94:
 	.short SEQ_GS_RADIO_MARCH, SEQ_GS_RADIO_KOMORIUTA, SEQ_GS_RADIO_R_101, SEQ_GS_RADIO_R_201
 ov101_021F8A9C:
@@ -34089,10 +34062,10 @@ ov101_021FB2C0:
 	.word ov101_021F87BA
 
 ov101_021FB2C8: ; 0x021FB2C8
-	.byte 0x02
-
-ov101_021FB2C9: ; 0x021FB2C9
-	.byte 0x06, 0x1A, 0x06, 0x02, 0x0E, 0x1A, 0x0E
+	.byte  2,  6
+	.byte 26,  6
+	.byte  2, 14
+	.byte 26, 14
 
 ov101_021FB2D0: ; 0x021FB2D0
 	.word ov101_021F89B4

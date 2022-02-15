@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0480_T05R0401_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, there!\nI am the official Name Rater!\rWant me to rate the nicknames\nof your Pokémon? {YESNO 0}</language>
+	</row>
+	<row id="msg_0480_T05R0401_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Which Pokémon nickname should\nI critique, kid?</language>
+	</row>
+	<row id="msg_0480_T05R0401_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 1, 0, 0}, is it?\nThat is a decent nickname!\rBut, would you like me to give it\na much better name?\fHow about it? {YESNO 0}</language>
+	</row>
+	<row id="msg_0480_T05R0401_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">All right! Then, what shall the new\nnickname be?\r</language>
+	</row>
+	<row id="msg_0480_T05R0401_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There! From now on, this Pokémon\nshall be known as {STRVAR_1 1, 0, 0}!\rIt is a much better name than before!\nDon’t you agree?</language>
+	</row>
+	<row id="msg_0480_T05R0401_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OK.\nSuit yourself.\rDo come visit again if you’ve changed\nyour mind.</language>
+	</row>
+	<row id="msg_0480_T05R0401_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There! From now on, this Pokémon\nshall be known as {STRVAR_1 1, 0, 0}!\rNot so different from before?\nYour eyes are tricking you!\rThis one is better.\nHow fortunate for you!</language>
+	</row>
+	<row id="msg_0480_T05R0401_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hmm.\n{STRVAR_1 1, 0, 0}, is it?\rThat is a truly impeccable name!\rTake good care of {STRVAR_1 1, 0, 0}!</language>
+	</row>
+	<row id="msg_0480_T05R0401_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Huh...\nThat is merely an Egg!</language>
+	</row>
+</body>

@@ -5,8 +5,14 @@ extern void SDK_IRQ_STACKSIZE(void);
 #define OSi_HW_DTCM                 SDK_AUTOLOAD_DTCM_START
 #define RESET_HW_DTCM_IRQ_STACK_END SDK_AUTOLOAD_DTCM_START + 0x00003fc0 - HW_SVC_STACK_SIZE
 
+#ifdef SDK_ARM9
 static vu16 OSi_IsResetOccurred = FALSE;
-u16 OSi_IsInitReset = FALSE;
+static u16 OSi_IsInitReset = FALSE;
+#else
+static u16 OSi_IsInitReset = FALSE;
+static vu16 OSi_IsResetOccurred = FALSE;
+#endif
+
 u32 OSi_CpuClear32(u32 value, void *ptr, u32 size);
 void OSi_ReadCardRom32(u32 src, void *dst, int len);
 
@@ -19,9 +25,15 @@ void OS_InitReset(void) {
         return;
     }
     OSi_IsInitReset = TRUE;
+#ifdef SDK_ARM9
     PXI_Init();
     while (!PXI_IsCallbackReady(PXI_FIFO_TAG_OS, PXI_PROC_ARM7)) {}
+#endif //SDK_ARM9
     PXI_SetFifoRecvCallback(PXI_FIFO_TAG_OS, OSi_CommonCallback);
+}
+
+BOOL OS_IsResetOccurred(void) {
+    return OSi_IsResetOccurred;
 }
 
 void OSi_CommonCallback(PXIFifoTag tag, u32 data, BOOL err) {
@@ -90,7 +102,7 @@ asm void OSi_DoBoot(void) {
     mov r0, #0
     str r0, [r1]
     ldr r1, =REG_SUBINTF_ADDR
-@waitSubIntf:
+    @waitSubIntf:
     ldrh r0, [r1]
     and r0, r0, #0x000F
     cmp r0, #0x0001
@@ -113,7 +125,7 @@ asm void OSi_DoBoot(void) {
     mov r2, #0x64
     bl OSi_CpuClear32
     ldr r1, =REG_SUBINTF_ADDR
-@waitSubIntf2:
+    @waitSubIntf2:
     ldrh r0, [r1]
     and r0, r0, #0x000F
     cmp r0, #0x0001
@@ -131,7 +143,7 @@ asm void OSi_DoBoot(void) {
 
 asm u32 OSi_CpuClear32(register u32 value, register void * startAddr, register u32 size) {
     add r12, r1, r2
-@loop:
+    @loop:
     cmp r1, r12
     stmltia r1!, {r0}
     blt @loop
@@ -246,6 +258,7 @@ void OSi_DoResetSystem(void) {
     OSi_DoBoot();
 }
 
+#include <nitro/wram_begin.h>
 asm void OSi_DoBoot(void) {
     mov r12, #HW_REG_BASE
     str r12, [r12, #REG_IME_OFFSET]
@@ -258,15 +271,15 @@ asm void OSi_DoBoot(void) {
 @waitMainpIntf:
     ldrh r0, [r1]
     and r0, r0, #0x000F
-    cmp r0, r0, #0x0001
+    cmp r0, #0x0001
     bne @waitMainpIntf
     ldr r1, =REG_MAINPINTF_ADDR
     mov r0, #0
     strh r0, [r1]
-@waitMainpIntf:
+@waitMainpIntf2:
     ldrh r0, [r1]
     and r0, r0, #0x000F
-    beq @waitMainpIntf
+    beq @waitMainpIntf2
     ldr r3, =HW_ROM_HEADER_BUF
     ldr r12, [r3, #0x34] // ARM7 entry
     mov lr, r12
@@ -276,4 +289,5 @@ asm void OSi_DoBoot(void) {
     mov r3, #0
     bx r12
 }
+#include <nitro/wram_end.h>
 #endif

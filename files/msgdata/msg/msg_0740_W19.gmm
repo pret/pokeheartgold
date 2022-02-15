@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0740_W19_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I have removed the boulder that was\nin the way, but it may still take some\ftime to flatten the ground...</language>
+	</row>
+	<row id="msg_0740_W19_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The roadwork is finally finished.\rNow I can go fishing again.</language>
+	</row>
+	<row id="msg_0740_W19_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sorry. This road is closed for\nconstruction.\rIf you want to get to Cinnabar, you’d\nbetter go south from Pallet Town.</language>
+	</row>
+	<row id="msg_0740_W19_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’m all sweaty.\nTime for a swim!</language>
+	</row>
+	<row id="msg_0740_W19_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rt. 19 Fuchsia City to\nSeafoam Islands</language>
+	</row>
+	<row id="msg_0740_W19_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What’s this notice?\rPlease be careful if you are swimming\nto Seafoam Islands.\fFuchsia Police</language>
+	</row>
+</body>

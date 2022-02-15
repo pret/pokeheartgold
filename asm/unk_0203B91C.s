@@ -3,11 +3,11 @@
 
 	.text
 
-	thumb_func_start sub_0203B91C
-sub_0203B91C: ; 0x0203B91C
+	thumb_func_start Save_FlyPoints_sizeof
+Save_FlyPoints_sizeof: ; 0x0203B91C
 	mov r0, #0x80
 	bx lr
-	thumb_func_end sub_0203B91C
+	thumb_func_end Save_FlyPoints_sizeof
 
 	thumb_func_start sub_0203B920
 sub_0203B920: ; 0x0203B920
@@ -29,8 +29,8 @@ sub_0203B928: ; 0x0203B928
 _0203B934: .word MIi_CpuClear32
 	thumb_func_end sub_0203B928
 
-	thumb_func_start sub_0203B938
-sub_0203B938: ; 0x0203B938
+	thumb_func_start Save_FlyPoints_init
+Save_FlyPoints_init: ; 0x0203B938
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #0
@@ -39,18 +39,18 @@ sub_0203B938: ; 0x0203B938
 	add r0, r4, #0
 	add r0, #0x6c
 	bl sub_0205C7BC
-	bl sub_0203BA70
+	bl GetMomSpawnId
 	add r4, #0x68
 	strh r0, [r4]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0203B938
+	thumb_func_end Save_FlyPoints_init
 
-	thumb_func_start sub_0203B958
-sub_0203B958: ; 0x0203B958
+	thumb_func_start FlyPoints_GetPosition
+FlyPoints_GetPosition: ; 0x0203B958
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0203B958
+	thumb_func_end FlyPoints_GetPosition
 
 	thumb_func_start sub_0203B95C
 sub_0203B95C: ; 0x0203B95C
@@ -64,20 +64,20 @@ sub_0203B960: ; 0x0203B960
 	bx lr
 	thumb_func_end sub_0203B960
 
-	thumb_func_start sub_0203B964
-sub_0203B964: ; 0x0203B964
+	thumb_func_start FlyPoints_GetSpecialSpawnWarpPtr
+FlyPoints_GetSpecialSpawnWarpPtr: ; 0x0203B964
 	add r0, #0x50
 	bx lr
-	thumb_func_end sub_0203B964
+	thumb_func_end FlyPoints_GetSpecialSpawnWarpPtr
 
-	thumb_func_start sub_0203B968
-sub_0203B968: ; 0x0203B968
+	thumb_func_start FlyPoints_GetDynamicWarp
+FlyPoints_GetDynamicWarp: ; 0x0203B968
 	add r0, #0x3c
 	bx lr
-	thumb_func_end sub_0203B968
+	thumb_func_end FlyPoints_GetDynamicWarp
 
-	thumb_func_start sub_0203B96C
-sub_0203B96C: ; 0x0203B96C
+	thumb_func_start FlyPoints_SetDynamicWarp
+FlyPoints_SetDynamicWarp: ; 0x0203B96C
 	add r3, r1, #0
 	add r2, r0, #0
 	ldmia r3!, {r0, r1}
@@ -88,7 +88,7 @@ sub_0203B96C: ; 0x0203B96C
 	ldr r0, [r3]
 	str r0, [r2]
 	bx lr
-	thumb_func_end sub_0203B96C
+	thumb_func_end FlyPoints_SetDynamicWarp
 
 	thumb_func_start sub_0203B980
 sub_0203B980: ; 0x0203B980
@@ -112,21 +112,21 @@ sub_0203B98C: ; 0x0203B98C
 	.balign 4, 0
 	thumb_func_end sub_0203B98C
 
-	thumb_func_start sub_0203B994
-sub_0203B994: ; 0x0203B994
+	thumb_func_start FlyPoints_GetDeathSpawn
+FlyPoints_GetDeathSpawn: ; 0x0203B994
 	add r0, #0x68
 	ldrh r0, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0203B994
+	thumb_func_end FlyPoints_GetDeathSpawn
 
-	thumb_func_start sub_0203B99C
-sub_0203B99C: ; 0x0203B99C
+	thumb_func_start FlyPoints_SetDeathSpawn
+FlyPoints_SetDeathSpawn: ; 0x0203B99C
 	add r0, #0x68
 	strh r1, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0203B99C
+	thumb_func_end FlyPoints_SetDeathSpawn
 
 	thumb_func_start sub_0203B9A4
 sub_0203B9A4: ; 0x0203B9A4
@@ -168,14 +168,14 @@ sub_0203B9C0: ; 0x0203B9C0
 	bx lr
 	thumb_func_end sub_0203B9C0
 
-	thumb_func_start sub_0203B9C4
-sub_0203B9C4: ; 0x0203B9C4
+	thumb_func_start Save_FlyPoints_get
+Save_FlyPoints_get: ; 0x0203B9C4
 	ldr r3, _0203B9CC ; =SavArray_get
 	mov r1, #5
 	bx r3
 	nop
 _0203B9CC: .word SavArray_get
-	thumb_func_end sub_0203B9C4
+	thumb_func_end Save_FlyPoints_get
 
 	thumb_func_start sub_0203B9D0
 sub_0203B9D0: ; 0x0203B9D0

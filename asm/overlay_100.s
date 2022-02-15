@@ -7,7 +7,7 @@
 ov100_021E5900: ; 0x021E5900
 	ldr r1, [r0, #0xc]
 	str r1, [r0, #0x10]
-	ldr r1, _021E591C ; =gMain
+	ldr r1, _021E591C ; =gSystem
 	ldr r2, [r1, #0x48]
 	ldr r1, _021E5920 ; =0x00000CF3
 	tst r1, r2
@@ -20,7 +20,7 @@ _021E5916:
 	mov r0, #0
 	bx lr
 	nop
-_021E591C: .word gMain
+_021E591C: .word gSystem
 _021E5920: .word 0x00000CF3
 	thumb_func_end ov100_021E5900
 
@@ -41,11 +41,11 @@ ov100_021E5924: ; 0x021E5924
 	strh r1, [r0]
 	add r0, sp, #4
 	str r0, [sp]
-	ldr r3, _021E59C4 ; =gMain + 0x40
+	ldr r3, _021E59C4 ; =gSystem + 0x40
 	ldr r0, [r5, #0x74]
 	ldrh r2, [r3, #0x20]
 	ldrh r3, [r3, #0x22]
-	bl sub_0201F2CC
+	bl DoesPixelAtScreenXYMatchPtrVal
 	cmp r0, #1
 	bne _021E595C
 	mov r0, #0
@@ -110,7 +110,7 @@ _021E59BC:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E59C0: .word ov100_021E74C4
-_021E59C4: .word gMain + 0x40
+_021E59C4: .word gSystem + 0x40
 _021E59C8: .word 0x00000942
 	thumb_func_end ov100_021E5924
 
@@ -118,7 +118,7 @@ _021E59C8: .word 0x00000942
 ov100_021E59CC: ; 0x021E59CC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	ldr r0, _021E5A7C ; =gMain
+	ldr r0, _021E5A7C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -205,7 +205,7 @@ _021E5A78:
 	sub r0, #0x11
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_021E5A7C: .word gMain
+_021E5A7C: .word gSystem
 _021E5A80: .word 0x00000942
 _021E5A84: .word 0x0000093F
 	thumb_func_end ov100_021E59CC
@@ -242,7 +242,7 @@ ov100_021E5A88: ; 0x021E5A88
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	mov r0, #1
 	tst r0, r4
 	bne _021E5B04
@@ -271,7 +271,7 @@ ov100_021E5A88: ; 0x021E5A88
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021E5B04:
 	mov r0, #2
 	tst r0, r4
@@ -301,7 +301,7 @@ _021E5B04:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021E5B40:
 	ldr r0, [r5, #0x74]
 	mov r1, #0
@@ -354,7 +354,7 @@ _021E5B6C:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r5, #0x74]
 	mov r1, #0
 	bl ScheduleBgTilemapBufferTransfer
@@ -505,13 +505,13 @@ ov100_021E5CA4: ; 0x021E5CA4
 	mov r0, #3
 	lsl r1, r1, #6
 	mov r2, #0
-	bl sub_0201C290
+	bl BG_LoadBlankPltt
 	mov r1, #6
 	ldr r3, [r5]
 	mov r0, #7
 	lsl r1, r1, #6
 	mov r2, #0
-	bl sub_0201C290
+	bl BG_LoadBlankPltt
 	mov r4, #0
 	mov r6, #0x40
 	add r7, r4, #0
@@ -677,7 +677,7 @@ _021E5DFA:
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -971,10 +971,10 @@ _021E6040:
 	blt _021E6040
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201BC28
+	bl ToggleBgLayer
 	add sp, #0x48
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1431,8 +1431,8 @@ _021E6428:
 	pop {r4, pc}
 	thumb_func_end ov100_021E6408
 
-	thumb_func_start ov100_021E642C
-ov100_021E642C: ; 0x021E642C
+	thumb_func_start ov100_Phone_OvyInit
+ov100_Phone_OvyInit: ; 0x021E642C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl OverlayManager_GetField18
@@ -1460,7 +1460,7 @@ ov100_021E642C: ; 0x021E642C
 	str r0, [r4, #0x24]
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0x24]
-	bl sub_0202ED7C
+	bl SaveData_GSPlayerMisc_get
 	str r0, [r4, #0x28]
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0x24]
@@ -1544,10 +1544,10 @@ _021E64FC:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E651C: .word 0x0000FFFF
-	thumb_func_end ov100_021E642C
+	thumb_func_end ov100_Phone_OvyInit
 
-	thumb_func_start ov100_021E6520
-ov100_021E6520: ; 0x021E6520
+	thumb_func_start ov100_Phone_OvyExec
+ov100_Phone_OvyExec: ; 0x021E6520
 	push {r4, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -1628,10 +1628,10 @@ _021E65B4:
 _021E65B8:
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ov100_021E6520
+	thumb_func_end ov100_Phone_OvyExec
 
-	thumb_func_start ov100_021E65BC
-ov100_021E65BC: ; 0x021E65BC
+	thumb_func_start ov100_Phone_OvyExit
+ov100_Phone_OvyExit: ; 0x021E65BC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -1653,7 +1653,7 @@ ov100_021E65BC: ; 0x021E65BC
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov100_021E65BC
+	thumb_func_end ov100_Phone_OvyExit
 
 	thumb_func_start ov100_021E65F4
 ov100_021E65F4: ; 0x021E65F4
@@ -1694,7 +1694,7 @@ _021E6632:
 _021E663C:
 	bl sub_0202061C
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E6654 ; =0x027E0000
 	ldr r1, _021E6658 ; =0x00003FF8
 	mov r0, #1
@@ -1821,21 +1821,21 @@ _021E6706:
 _021E670E:
 	strb r1, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #2
 	pop {r4, pc}
 _021E671A:
 	mov r0, #1
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #4
 	pop {r4, pc}
 _021E6728:
 	mov r0, #3
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #0xa
 	pop {r4, pc}
 _021E6736:
@@ -1961,21 +1961,21 @@ _021E6812:
 	mov r0, #2
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #6
 	pop {r4, pc}
 _021E6820:
 	mov r0, #1
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #4
 	pop {r4, pc}
 _021E682E:
 	mov r0, #3
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #0xa
 	pop {r4, pc}
 _021E683C:
@@ -2021,20 +2021,20 @@ _021E686A:
 	mov r0, #2
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #6
 	pop {r4, pc}
 _021E688A:
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #2
 	pop {r4, pc}
 _021E6896:
 	mov r0, #1
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #4
 	pop {r4, pc}
 _021E68A4:
@@ -2082,20 +2082,20 @@ _021E68E6:
 	mov r0, #2
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #6
 	pop {r4, pc}
 _021E68F4:
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #2
 	pop {r4, pc}
 _021E6900:
 	mov r0, #3
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #0xa
 	pop {r4, pc}
 _021E690E:

@@ -1,0 +1,65 @@
+{
+  "header": "fielddata/script/scr_seq/event_T24PC0102.h",
+  "objects": [
+    {
+      "id": "obj_T24PC0102_wifisf",
+      "ovid": "SPRITE_WIFISF",
+      "mvt": 15,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_wifi_reception",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 4,
+      "y": 4,
+      "z": 0
+    },
+    {
+      "id": "obj_T24PC0102_pcwoman2",
+      "ovid": "SPRITE_PCWOMAN2",
+      "mvt": 15,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_wifi_pichu_check",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 8,
+      "y": 4,
+      "z": 0
+    },
+    {
+      "id": "obj_T24PC0102_pcwoman2_2",
+      "ovid": "SPRITE_PCWOMAN2",
+      "mvt": 15,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "std_teala_subsequent_talk",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 12,
+      "y": 4,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 14,
+      "y": 10,
+      "header": "MAP_T24PC0101",
+      "anchor": 1,
+      "height": 0
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0532_T11PC0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What are Johto’s Pokémon Centers like?\r...Oh, I see. So they’re not much\ndifferent from the ones in Kanto.\rThen I’ll get my friend in Johto to\ncatch a MARILL and trade it to me!</language>
+	</row>
+	<row id="msg_0532_T11PC0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I just happened to come through the\nRock Tunnel. There was some commotion\fat the Power Plant.</language>
+	</row>
+	<row id="msg_0532_T11PC0101_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Adventures are not always full of\noceans and mountains!\rDaily life can be quite adventurous!\r...By the way, I’ve heard people\ntalking about a cave in Cerulean.\rDo you know anything?</language>
+	</row>
+	<row id="msg_0532_T11PC0101_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Silph Co.’s head office and the\nMagnet Train station--\fthey’re the places to see in Saffron.</language>
+	</row>
+</body>

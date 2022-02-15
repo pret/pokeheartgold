@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0355_R16R0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">If you cruise down the Cycling Road,\nyou will end up in Fuchsia City.</language>
+	</row>
+	<row id="msg_0355_R16R0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, hello. Would you like to hear\na trendy saying? {YESNO 0}</language>
+	</row>
+	<row id="msg_0355_R16R0101_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Very well...\rThe trendy thing for you to say\nwould be...\r{STRVAR_1 28, 0, 0}!\rThat’s a trendy sort of thing\nto say.</language>
+	</row>
+	<row id="msg_0355_R16R0101_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh, come on now! With an attitude\nlike that, you’ll fall behind the times!</language>
+	</row>
+	<row id="msg_0355_R16R0101_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I hope you’ll use trendy sayings\nin trendy ways.</language>
+	</row>
+	<row id="msg_0355_R16R0101_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, hello. Are you using\ntrendy sayings?</language>
+	</row>
+</body>

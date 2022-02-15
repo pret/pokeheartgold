@@ -1,6 +1,12 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.data
+
+	.public _0210F6D8
+_0210F6D8:
+	.byte 0x00, 0x00, 0x00, 0x00
+
 	.bss
 
 _021D1F6C:

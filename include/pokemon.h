@@ -2,6 +2,7 @@
 #define POKEDIAMOND_POKEMON_H
 
 #include "pokemon_types_def.h"
+#include "unk_02016EDC.h"
 // Enums
 
 #include "constants/species.h"
@@ -74,6 +75,7 @@ void DeleteBoxMonFirstMoveAndAppend(BOXMON *boxmon, u16 move);
 void LoadWotbl_HandleAlternateForme(int species, int forme, u16 *wotbl);
 void MonSwapMoves(POKEMON *pokemon, int a, int b);
 void BoxMonSwapMoves(BOXMON *boxmon, int a, int b);
+BOXMON *Mon_GetBoxMon(POKEMON *pokemon);
 
 u16 GetMonEvolution(PARTY * party, POKEMON * pokemon, u8 context, u16 usedItem, int *method_ret);
 u16 ReadFromPersonalPmsNarc(u16 species);
@@ -112,5 +114,79 @@ u16 GetLegendaryMon(u32 idx);
 void Pokemon_RemoveCapsule(POKEMON * pokemon);
 void RestoreBoxMonPP(BOXMON * boxmon);
 BOOL SetTrMonCapsule(int a0, POKEMON *pokemon, HeapID heap_id);
+
+int GetMonBaseStatEx_HandleAlternateForme(NARC *narc, int species, int forme, BaseStat attr);
+u16 ModifyStatByNature(u8 nature, u16 n, u8 statIndex);
+u8 GetGenderBySpeciesAndPersonality_PreloadedPersonal(const BASE_STATS *personal, u16 species, u32 pid);
+BOOL BoxMonIsHoldingMail(BOXMON *boxmon);
+void sub_02070124(struct SomeDrawPokemonStruct *a0, BOXMON *boxmon, u8 whichFacing);
+void sub_02070130(struct SomeDrawPokemonStruct *a0, BOXMON *boxmon, u8 whichFacing);
+void sub_0207013C(struct SomeDrawPokemonStruct *spC, BOXMON *boxmon, u8 whichFacing, BOOL sp14);
+void sub_020701E4(struct SomeDrawPokemonStruct * spC, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 forme, u32 personality);
+u8 sub_02070438(u16 species, u8 forme);
+void sub_02070560(struct SomeDrawPokemonStruct * spC, u16 species, u8 whichFacing, u8 gender, u32 shiny);
+void sub_02070588(struct SomeDrawPokemonStruct * spC, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 forme, u32 personality);
+u8 sub_0207083C(BOXMON *boxmon, u8 whichFacing);
+u8 sub_02070848(BOXMON *boxmon, u8 whichFacing);
+u8 sub_02070854(BOXMON *boxmon, u8 whichFacing, BOOL a2);
+u8 sub_020708D8(u16 species, u8 gender, u8 whichFacing, u8 forme, u32 pid);
+u8 sub_02070A64(u16 species, u8 gender, u8 whichFacing, u8 forme, u32 pid);
+void sub_02070D3C(s32 trainer_class, s32 a1, s32 a2, struct UnkStruct_02070D3C *a3);
+void sub_02070D84(s32 trainer_class, s32 a1, struct UnkStruct_02070D3C *a2);
+u32 sub_02070D90(void);
+u32 sub_02070D94(void);
+BOXMON * Mon_GetBoxMon(POKEMON * pokemon);
+BOOL sub_02070DB4(POKEMON * pokemon);
+void InitBoxMonMoveset(BOXMON * boxmon);
+void MonSetMoveInSlot_ResetPpUp(POKEMON* pokemon, u16 move, u8 slot);
+u32 MonTryLearnMoveOnLevelUp(POKEMON * pokemon, int * last_i, u16 * sp0);
+void MonDeleteMoveSlot(POKEMON * pokemon, u32 slot);
+BOOL MonHasMove(POKEMON* pokemon, u16 move);
+u16 SpeciesToJohtoDexNo(u16 species);
+void Mon_ForceSetGiratinaOriginForme(POKEMON *pokemon);
+void Party_UpdateAllGiratina_DistortionWorld(PARTY *party, BOOL force_origin);
+BOOL Mon_CanUseGracidea(POKEMON *pokemon);
+void Party_ResetAllShayminToLandForme(PARTY *party);
+BOOL Party_TryResetShaymin(PARTY *party, int min_max, const RTCTime *time);
+BOOL Mon_UpdateRotomForme(POKEMON *pokemon, int forme, int defaultSlot);
+void sub_02071FDC(SOUND_CHATOT *r6, u32 r5, u16 r4, s32 unused, s32 sp18, u32 sp1C, u32 sp20, u32 sp24);
+void sub_0207204C(SOUND_CHATOT *r7, u32 r6, u16 r5, s32 r4, s32 sp20, u32 sp24, u32 sp28, u32 sp2C, u8 sp30);
+void sub_020720D4(POKEMON *pokemon);
+void sub_020720FC(POKEMON * pokemon, PLAYERPROFILE *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id);
+void sub_0207213C(BOXMON * boxmon, PLAYERPROFILE *playerProfile, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id);
+void sub_0207217C(POKEMON *pokemon, PLAYERPROFILE *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id);
+void sub_02072190(BOXMON *boxmon, PLAYERPROFILE *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id);
+void WildMonSetRandomHeldItem(struct Pokemon * pokemon, u32 a1, u32 a2);
+BOOL GetMonTMHMCompat(POKEMON *pokemon, u32 tmhm);
+BOOL GetBoxMonTMHMCompat(BOXMON *boxmon, u32 tmhm);
+BOOL GetTMHMCompatBySpeciesAndForme(u16 species, u32 forme, u32 tmhm);
+void SetMonPersonality(struct Pokemon * r5, u32 personality);
+u32 sub_02072490(u32 pid, u16 species, u8 nature, u8 gender, u8 ability, BOOL gen_mode);
+void LoadMonPersonal(int species, BASE_STATS *personal);
+void LoadMonBaseStats_HandleAlternateForme(int species, int forme, BASE_STATS *personal);
+void LoadMonEvolutionTable(u16 species, struct Evolution *evo);
+void MonEncryptSegment(void *data, u32 size, u32 seed);
+void MonDecryptSegment(void *data, u32 size, u32 seed);
+u32 CalcMonChecksum(void * _data, u32 size);
+int ResolveMonForme(int species, int forme);
+u32 MaskOfFlagNo(int flagno);
+BOOL SpeciesIsMythical(u16 species);
+BOOL MonCheckFrontierIneligibility(POKEMON *pokemon);
+BOOL BoxmonBelongsToPlayer(BOXMON * boxmon, PLAYERPROFILE * profile, HeapID heap_id);
+int TrainerClassToBackpicID(int trainerClass, int a1);
+void sub_02072914(NARC *narc, struct UnkStruct_02072914_sub *dest, u16 a2, u16 a3);
+void sub_0207294C(NARC *narc, void *a1, void *a2, u16 a3, int a4, int a5, int a6);
+void sub_020729A4(NARC *narc, u8 *ret, u16 a2, u16 a3);
+void sub_020729D8(NARC *narc, s8 *ret, u16 a2, u16 a3);
+void sub_020729FC(NARC *narc, s8 *ret, u16 a2, u16 a3);
+void sub_02072A20(NARC *narc, u8 *ret, u16 a2, u16 a3);
+void sub_02072A98(POKEMON *pokemon, struct UnkPokemonStruct_02072A98 *dest);
+void sub_02072D64(const struct UnkPokemonStruct_02072A98 *src, POKEMON *pokemon);
+u32 _u32_getDigitN(u32 num, u8 digit);
+s16 PokeathlonStatScoreToStars(s16 a0);
+void CalcBoxMonPokeathlonPerformance(BOXMON *boxmon, struct PokeathlonTodayPerformance *dest);
+void CalcMonPokeathlonPerformance(POKEMON *pokemon, struct PokeathlonTodayPerformance *dest);
+void CalcBoxmonPokeathlonStars(struct PokeathlonPerformanceStars *dest, BOXMON *boxmon, const s8 *aprijuice, HeapID heap_id);
+void CalcMonPokeathlonStars(struct PokeathlonPerformanceStars *dest, POKEMON *pokemon, const s8 *aprijuice, HeapID heap_id);
 
 #endif //POKEDIAMOND_POKEMON_H

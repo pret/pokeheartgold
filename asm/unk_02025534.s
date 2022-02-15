@@ -145,7 +145,7 @@ _02025628:
 _02025638:
 	ldr r0, [sp]
 	add r1, r6, #0
-	bl sub_0201A3A4
+	bl Sys_AllocAndReadFile
 	str r0, [r4, #4]
 	cmp r0, #0
 	bne _0202564A

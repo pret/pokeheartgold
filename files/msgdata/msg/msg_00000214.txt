@@ -1,4 +1,0 @@
-Please touch the bottom screen.{YESNO 0}
-Please look at the bottom screen.{YESNO 1}
-Please operate the top screen.{YESNO 2}
-Please look at the top screen.{YESNO 3}

@@ -1,0 +1,38 @@
+{
+  "header": "fielddata/script/scr_seq/event_W19R0101.h",
+  "objects": [
+    {
+      "id": "obj_W19R0101_counterm",
+      "ovid": "SPRITE_COUNTERM",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_W19R0101_000 + 1",
+      "dirn": 3,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 1,
+      "y": 7,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 5,
+      "y": 2,
+      "header": "MAP_T08",
+      "anchor": 2,
+      "height": 0
+    },
+    {
+      "x": 5,
+      "y": 12,
+      "header": "MAP_W19",
+      "anchor": 0,
+      "height": 0
+    }
+  ]
+}

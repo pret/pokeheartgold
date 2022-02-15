@@ -77,7 +77,7 @@ sub_02052F94: ; 0x02052F94
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	add r4, r1, #0
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	add r6, r0, #0
 	bl sub_0203B960
 	add r2, r0, #0
@@ -101,7 +101,7 @@ _02052FC8:
 	ldr r1, [r5, #0x20]
 	add r0, r5, #0
 	ldr r1, [r1]
-	bl sub_0203B648
+	bl Field_InitMapEvents
 	ldr r0, [r5, #0x20]
 	ldr r1, [r0, #4]
 	mov r0, #0
@@ -109,7 +109,7 @@ _02052FC8:
 	cmp r1, r0
 	beq _02053016
 	add r0, r5, #0
-	bl sub_0203B6E8
+	bl Field_GetWarpEventI
 	ldrh r2, [r0]
 	ldr r1, [r5, #0x20]
 	str r2, [r1, #8]
@@ -122,7 +122,7 @@ _02052FC8:
 	cmp r1, r0
 	bne _02053016
 	add r0, r6, #0
-	bl sub_0203B968
+	bl FlyPoints_GetDynamicWarp
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_0203B95C
@@ -150,11 +150,11 @@ _02053026:
 	ldr r0, [r0]
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x1c
-	ldr r0, _02053034 ; =gMain + 0x60
+	ldr r0, _02053034 ; =gSystem + 0x60
 	strb r1, [r0, #9]
 	pop {r4, pc}
 	.balign 4, 0
-_02053034: .word gMain + 0x60
+_02053034: .word gSystem + 0x60
 	thumb_func_end sub_02053018
 
 	thumb_func_start sub_02053038
@@ -166,7 +166,7 @@ sub_02053038: ; 0x02053038
 	add r6, r1, #0
 	ldr r7, [r0]
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	str r0, [sp, #4]
 	add r0, r4, #0
 	bl sub_02054F4C
@@ -195,13 +195,13 @@ _02053074:
 	cmp r6, #0
 	bne _02053088
 	add r0, r4, #0
-	bl sub_02055418
+	bl FieldSys_StartBugContestTimer
 _02053088:
 	cmp r6, #0
 	bne _020530A6
 	ldr r0, [r4, #0xc]
-	bl sub_0202A998
-	bl sub_0202AE8C
+	bl Sav2_GetGymmickPtr
+	bl SavGymmick_Clear
 	ldr r0, [r4, #0xc]
 	add r1, r7, #0
 	bl ShouldUseAlternateLakeOfRage
@@ -266,16 +266,16 @@ _0205311E:
 	cmp r6, #0
 	bne _02053134
 	add r0, r7, #0
-	bl sub_0203BB20
+	bl MapHeader_GetSpawnIdForDeathWarp
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
 	beq _02053134
 	ldr r0, [sp, #4]
-	bl sub_0203B99C
+	bl FlyPoints_SetDeathSpawn
 _02053134:
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_02040750
+	bl TryStartMapScriptByType
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0x7e
@@ -287,9 +287,9 @@ _02053134:
 	add r0, #0x78
 	strh r1, [r0]
 	ldr r0, [r4, #0xc]
-	bl sub_0202ED34
+	bl Sav2_FollowPoke_get
 	mov r1, #0
-	bl sub_0202ED58
+	bl SavFollowPoke_SetInhibitFlagState
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
 	bl sub_02066A2C
@@ -313,7 +313,7 @@ sub_0205316C: ; 0x0205316C
 	bl PlayerProfile_GetTrainerGender
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B9B4
 	ldr r3, [r4, #0x20]
 	ldr r1, [r0, #4]
@@ -340,7 +340,7 @@ _020531B2:
 	bl PlayerProfile_GetTrainerGender
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B9B4
 	ldr r3, [r4, #0x20]
 	ldr r1, [r0, #4]
@@ -364,7 +364,7 @@ _020531B2:
 	ldr r3, [r3, #0x10]
 	bl sub_020699F8
 	add r0, r4, #0
-	bl sub_0203B6B0
+	bl Field_InitMapObjectsFromZoneEventData
 	ldr r0, [r4, #0x3c]
 	bl sub_0205F55C
 	add sp, #0x10
@@ -404,7 +404,7 @@ sub_0205323C: ; 0x0205323C
 	add r0, r4, #0
 	bl sub_0203B9F4
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B9B4
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
@@ -531,10 +531,10 @@ sub_02053350: ; 0x02053350
 	add r4, r1, #0
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C688
+	bl GetPlayerYCoord
 	add r6, r0, #0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C67C
+	bl GetPlayerXCoord
 	ldr r1, [r4, #0x20]
 	ldr r1, [r1]
 	str r1, [r5]
@@ -592,8 +592,8 @@ sub_020533C0: ; 0x020533C0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
-	bl sub_0203B968
+	bl Save_FlyPoints_get
+	bl FlyPoints_GetDynamicWarp
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
@@ -634,10 +634,10 @@ _020533FC:
 sub_02053414: ; 0x02053414
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -683,11 +683,11 @@ sub_02053470: ; 0x02053470
 	add r4, r0, #0
 	mov r1, #0
 	str r1, [r4, #0x70]
-	bl RunPokemonCenterScriptsInNewContext
+	bl RunInitScript
 	ldr r1, _02053488 ; =sub_02053414
 	add r0, r4, #0
 	mov r2, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r4, pc}
 	.balign 4, 0
 _02053488: .word sub_02053414
@@ -697,13 +697,13 @@ _02053488: .word sub_02053414
 sub_0205348C: ; 0x0205348C
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0
@@ -719,7 +719,7 @@ _020534B6:
 	cmp r0, #0
 	beq _02053502
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	add r6, r0, #0
 	add r0, r4, #0
 	bl sub_0205337C
@@ -731,7 +731,7 @@ _020534D8:
 	add r0, r7, #0
 	bl sub_020667F0
 	add r0, r6, #0
-	bl sub_0203B968
+	bl FlyPoints_GetDynamicWarp
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_02052F94
@@ -750,7 +750,7 @@ _02053502:
 	add r0, r4, #0
 	bl sub_02053284
 	add r0, r4, #0
-	bl sub_02055418
+	bl FieldSys_StartBugContestTimer
 	add r0, r4, #0
 	bl sub_0205323C
 _0205351C:
@@ -775,13 +775,13 @@ _02053538:
 
 	thumb_func_start sub_0205353C
 sub_0205353C: ; 0x0205353C
-	ldr r3, _02053548 ; =sub_020504F0
+	ldr r3, _02053548 ; =FieldSys_CreateTask
 	mov r2, #0
 	str r2, [r0, #0x70]
 	ldr r1, _0205354C ; =sub_0205348C
 	bx r3
 	nop
-_02053548: .word sub_020504F0
+_02053548: .word FieldSys_CreateTask
 _0205354C: .word sub_0205348C
 	thumb_func_end sub_0205353C
 
@@ -789,15 +789,15 @@ _0205354C: .word sub_0205348C
 sub_02053550: ; 0x02053550
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r7, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r6, r0, #0
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
 	add r0, r7, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #5
@@ -930,7 +930,7 @@ _02053658:
 	str r1, [r4, #0x70]
 	ldr r1, _02053684 ; =sub_02053550
 	add r0, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02053684: .word sub_02053550
@@ -940,10 +940,10 @@ _02053684: .word sub_02053550
 sub_02053688: ; 0x02053688
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r1, [r4]
 	cmp r1, #3
@@ -1024,7 +1024,7 @@ sub_02053710: ; 0x02053710
 	ldr r1, _0205373C ; =sub_02053688
 	str r0, [r3]
 	add r0, r5, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0205373C: .word sub_02053688
@@ -1034,10 +1034,10 @@ _0205373C: .word sub_02053688
 sub_02053740: ; 0x02053740
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -1086,7 +1086,7 @@ sub_020537A8: ; 0x020537A8
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	add r5, r1, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r7, r0, #0
 	mov r0, #0xb
 	mov r1, #0x18
@@ -1111,7 +1111,7 @@ _020537CE:
 	str r0, [r2]
 	add r0, r6, #0
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _020537EC: .word sub_02053740
@@ -1138,10 +1138,10 @@ sub_020537F0: ; 0x020537F0
 sub_0205380C: ; 0x0205380C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r1, [r4]
 	cmp r1, #3
@@ -1221,7 +1221,7 @@ sub_0205388C: ; 0x0205388C
 	ldr r1, _020538BC ; =sub_0205380C
 	str r0, [r2, #0x14]
 	add r0, r7, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _020538BC: .word sub_0205380C
@@ -1257,7 +1257,7 @@ sub_020538C0: ; 0x020538C0
 	ldr r1, _02053904 ; =sub_02053950
 	str r0, [r3]
 	add r0, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	add sp, #0x14
 	pop {r4, r5, pc}
 	nop
@@ -1294,7 +1294,7 @@ sub_02053908: ; 0x02053908
 	ldr r1, _0205394C ; =sub_02053950
 	str r0, [r3]
 	add r0, r4, #0
-	bl sub_02050510
+	bl NowRunTask
 	add sp, #0x14
 	pop {r4, r5, pc}
 	nop
@@ -1305,10 +1305,10 @@ _0205394C: .word sub_02053950
 sub_02053950: ; 0x02053950
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r1, r4, #0
 	ldr r2, [r4]
@@ -1371,12 +1371,12 @@ _020539D4:
 
 	thumb_func_start sub_020539D8
 sub_020539D8: ; 0x020539D8
-	ldr r3, _020539E0 ; =sub_02050530
+	ldr r3, _020539E0 ; =QueueTask
 	ldr r1, _020539E4 ; =sub_020539E8
 	mov r2, #0
 	bx r3
 	.balign 4, 0
-_020539E0: .word sub_02050530
+_020539E0: .word QueueTask
 _020539E4: .word sub_020539E8
 	thumb_func_end sub_020539D8
 
@@ -1384,7 +1384,7 @@ _020539E4: .word sub_020539E8
 sub_020539E8: ; 0x020539E8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -1411,11 +1411,11 @@ _02053A10:
 sub_02053A14: ; 0x02053A14
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r2, r0, #0
 	ldr r1, _02053A28 ; =sub_02053A2C
 	add r0, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r4, pc}
 	.balign 4, 0
 _02053A28: .word sub_02053A2C
@@ -1425,10 +1425,10 @@ _02053A28: .word sub_02053A2C
 sub_02053A2C: ; 0x02053A2C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -1483,10 +1483,10 @@ _02053A9C:
 sub_02053AA0: ; 0x02053AA0
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_0203DF7C
@@ -1504,7 +1504,7 @@ _02053AC2:
 	ldr r1, _02053AE0 ; =sub_02053AE4
 	add r0, r6, #0
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r4, r5, r6, pc}
 	nop
 _02053AE0: .word sub_02053AE4
@@ -1513,7 +1513,7 @@ _02053AE0: .word sub_02053AE4
 	thumb_func_start sub_02053AE4
 sub_02053AE4: ; 0x02053AE4
 	push {r4, lr}
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	bl ov02_0224B43C
@@ -1552,7 +1552,7 @@ sub_02053B04: ; 0x02053B04
 	ldr r1, _02053B38 ; =sub_02053B3C
 	str r0, [r3]
 	add r0, r6, #0
-	bl sub_02050510
+	bl NowRunTask
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02053B38: .word sub_02053B3C
@@ -1562,10 +1562,10 @@ _02053B38: .word sub_02053B3C
 sub_02053B3C: ; 0x02053B3C
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r7, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r6, r4, #0
 	ldr r1, [r4]
@@ -1646,12 +1646,12 @@ _02053BE2:
 
 	thumb_func_start sub_02053BE8
 sub_02053BE8: ; 0x02053BE8
-	ldr r3, _02053BF0 ; =sub_02050530
+	ldr r3, _02053BF0 ; =QueueTask
 	ldr r1, _02053BF4 ; =sub_02053BF8
 	mov r2, #0
 	bx r3
 	.balign 4, 0
-_02053BF0: .word sub_02050530
+_02053BF0: .word QueueTask
 _02053BF4: .word sub_02053BF8
 	thumb_func_end sub_02053BE8
 
@@ -1659,7 +1659,7 @@ _02053BF4: .word sub_02053BF8
 sub_02053BF8: ; 0x02053BF8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -1686,11 +1686,11 @@ _02053C20:
 sub_02053C24: ; 0x02053C24
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r2, r0, #0
 	ldr r1, _02053C38 ; =sub_02053C3C
 	add r0, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r4, pc}
 	.balign 4, 0
 _02053C38: .word sub_02053C3C
@@ -1700,13 +1700,13 @@ _02053C38: .word sub_02053C3C
 sub_02053C3C: ; 0x02053C3C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _02053C64
@@ -1744,10 +1744,10 @@ _02053C8A:
 sub_02053C90: ; 0x02053C90
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r6, r0, #0
 	add r0, r4, #0
 	bl sub_0203DF7C
@@ -1763,7 +1763,7 @@ _02053CB2:
 	add r2, r0, #0
 	ldr r1, _02053CC8 ; =ov02_0224C1F8
 	add r0, r5, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02053CC8: .word ov02_0224C1F8
@@ -1773,10 +1773,10 @@ _02053CC8: .word ov02_0224C1F8
 sub_02053CCC: ; 0x02053CCC
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r7, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r6, r4, #0
 	ldr r1, [r4]
@@ -1804,7 +1804,7 @@ _02053D06:
 	mov r0, #0
 	str r0, [r4, #0x1c]
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02053D36
 	add r0, r5, #0
@@ -1816,7 +1816,7 @@ _02053D06:
 	cmp r0, #1
 	beq _02053D36
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	mov r1, #1
 	bl ov01_0220329C
 	str r0, [r4, #0x1c]
@@ -1883,11 +1883,11 @@ _02053DAA:
 	str r1, [r4, #4]
 	bl ov01_021F35C4
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02053DE6
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r7, r0, #0
 	bl sub_02069F7C
 	ldr r1, [r6]
@@ -1937,7 +1937,7 @@ sub_02053E08: ; 0x02053E08
 	add r7, r0, #0
 	bl MI_CpuFill8
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	mov r1, #0
 	add r2, r7, #0
 	str r4, [sp]
@@ -1956,7 +1956,7 @@ sub_02053E08: ; 0x02053E08
 	str r0, [r2]
 	add r0, r5, #0
 	add r2, r7, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -1967,13 +1967,13 @@ _02053E58: .word sub_02053CCC
 sub_02053E5C: ; 0x02053E5C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	add r6, r7, #0
 	ldr r0, [r4]
@@ -2060,8 +2060,8 @@ sub_02053F14: ; 0x02053F14
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
-	bl sub_0203B968
+	bl Save_FlyPoints_get
+	bl FlyPoints_GetDynamicWarp
 	add r4, r0, #0
 	mov r0, #0xb
 	mov r1, #0x1c
@@ -2089,7 +2089,7 @@ sub_02053F14: ; 0x02053F14
 	ldr r1, _02053F6C ; =sub_02053E5C
 	add r0, r5, #0
 	add r2, r6, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	mov r0, #0
 	add r5, #0x80
 	str r0, [r5]
@@ -2102,13 +2102,13 @@ _02053F6C: .word sub_02053E5C
 sub_02053F70: ; 0x02053F70
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	add r6, r7, #0
 	ldr r0, [r4]
@@ -2199,11 +2199,11 @@ _0205402C:
 sub_02054030: ; 0x02054030
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
-	bl sub_0203B968
+	bl Save_FlyPoints_get
+	bl FlyPoints_GetDynamicWarp
 	add r7, r0, #0
 	mov r0, #0xb
 	mov r1, #0x1c
@@ -2242,7 +2242,7 @@ sub_02054030: ; 0x02054030
 	ldr r1, _020540A0 ; =sub_02053F70
 	add r0, r6, #0
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _020540A0: .word sub_02053F70
@@ -2252,10 +2252,10 @@ _020540A0: .word sub_02053F70
 sub_020540A4: ; 0x020540A4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r1, [r4]
 	cmp r1, #3
@@ -2324,11 +2324,11 @@ sub_0205412C: ; 0x0205412C
 	add r5, r1, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	str r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
-	bl sub_0203B968
+	bl Save_FlyPoints_get
+	bl FlyPoints_GetDynamicWarp
 	ldr r1, [sp]
 	bl sub_02053350
 	ldr r0, [sp]
@@ -2357,7 +2357,7 @@ sub_0205412C: ; 0x0205412C
 	ldr r1, _0205418C ; =sub_020540A4
 	str r0, [r3]
 	add r0, r7, #0
-	bl sub_02050530
+	bl QueueTask
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2367,11 +2367,11 @@ _0205418C: .word sub_020540A4
 	thumb_func_start sub_02054190
 sub_02054190: ; 0x02054190
 	push {r4, lr}
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
-	bl sub_0203B968
+	bl Save_FlyPoints_get
+	bl FlyPoints_GetDynamicWarp
 	add r1, r0, #0
 	mov r0, #0
 	str r0, [r4, #0x70]

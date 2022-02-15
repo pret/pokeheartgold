@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0572_T24_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You crossed the sea to get here?\rThat must have been hard.\rIt would be much easier if your\nPokémon knew how to Fly...\r</language>
+	</row>
+	<row id="msg_0572_T24_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">But you can’t use Fly without this\ncity’s Gym Badge.\rIf you beat the Gym Leader here,\ncome see me.\fI’ll have a nice gift for you.</language>
+	</row>
+	<row id="msg_0572_T24_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">That’s Cianwood’s Gym Badge!\rThen you should take this HM.\r</language>
+	</row>
+	<row id="msg_0572_T24_00003" index="3">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0572_T24_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Teach Fly to your Pokémon.\rYou will be able to Fly instantly\nto anywhere you have visited.</language>
+	</row>
+	<row id="msg_0572_T24_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">My husband lost to you, so he needs\nto train harder.\rThat’s good, since he was getting a\nlittle chubby.</language>
+	</row>
+	<row id="msg_0572_T24_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Your Bag is full.</language>
+	</row>
+	<row id="msg_0572_T24_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">His only hobby is to battle\ntough Trainers.\rDo you want to have my\nhusband’s phone number? {YESNO 0}</language>
+	</row>
+	<row id="msg_0572_T24_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} registered Chuck\nin the Pokégear!</language>
+	</row>
+	<row id="msg_0572_T24_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">He takes a break from the pounding\nwaterfall on Wednesday nights.\rHe should be able to chat with\nyou then.</language>
+	</row>
+	<row id="msg_0572_T24_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh, I see.\nMy husband won’t be a good match?</language>
+	</row>
+	<row id="msg_0572_T24_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Do you want to exchange your\nnumber for my husband’s? {YESNO 0}</language>
+	</row>
+	<row id="msg_0572_T24_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">If you use Fly, you can get back\nto Olivine instantly.</language>
+	</row>
+	<row id="msg_0572_T24_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Boulders to the north of town can\nbe crushed.\rThey may be hiding something.\nYour Pokémon could use Rock Smash to\fbreak them.</language>
+	</row>
+	<row id="msg_0572_T24_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Chuck, the Gym Leader, spars with\nhis Fighting-type Pokémon.</language>
+	</row>
+	<row id="msg_0572_T24_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Eusine: Yo, {STRVAR_1 3, 0, 0}.\rWasn’t that SUICUNE just now?\rI only caught a quick glimpse, but I\nthought I saw SUICUNE running on\fthe waves.\rSUICUNE is beautiful and grand.\nAnd it races through towns and\froads at simply awesome speeds.\rIt’s wonderful...\rI want to see SUICUNE up close...\rI’ve decided.\nI’ll battle you as a Trainer to earn\fSUICUNE’s respect!\rCome on, {STRVAR_1 3, 0, 0}.\nLet’s battle now!</language>
+	</row>
+	<row id="msg_0572_T24_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You’re amazing, {STRVAR_1 3, 0, 0}!\rI’m starting to understand why SUICUNE\nwas keeping an eye on you.\rI’m going to keep searching\nfor SUICUNE.\rI have a feeling we’ll see each other\nagain. See you around!\r</language>
+	</row>
+	<row id="msg_0572_T24_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There are several islands between\nhere and Olivine.\rA mythical sea creature supposedly\nlives there.</language>
+	</row>
+	<row id="msg_0572_T24_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cianwood City\nA Port of Crashing Waves</language>
+	</row>
+	<row id="msg_0572_T24_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cianwood City Pokémon Gym\nLeader: Chuck\fHis Roaring Fists Do the Talking</language>
+	</row>
+	<row id="msg_0572_T24_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cianwood City Pharmacy\r500 Years of Tradition\nWe Await Your Medicinal Queries</language>
+	</row>
+	<row id="msg_0572_T24_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This is the house of Cameron,\nthe Photographer.\fTake a Snapshot as a Keepsake!</language>
+	</row>
+	<row id="msg_0572_T24_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Entrance to the road for the\nSafari Zone.\rExperience thrilling encounters\nwith wild Pokémon for heart-to-heart\fcontact!\rThe Safari Zone is just around the\ncorner from this entrance!</language>
+	</row>
+</body>

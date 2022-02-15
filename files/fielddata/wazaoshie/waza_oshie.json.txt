@@ -1,0 +1,53 @@
+{{ doNotModifyHeader }}
+#include "constants/moves.h"
+
+    .macro oshie_begin
+    .set _waza_oshie_0, 0
+    .set _waza_oshie_1, 0
+    .set _waza_oshie_2, 0
+    .set _waza_oshie_3, 0
+    .set _waza_oshie_4, 0
+    .set _waza_oshie_5, 0
+    .set _waza_oshie_6, 0
+    .set _waza_oshie_7, 0
+    .endm
+
+    .macro oshie_add waza
+    .if \waza < 8
+    .set _waza_oshie_0, _waza_oshie_0 | (1 << (\waza - 0))
+    .elseif \waza < 16
+    .set _waza_oshie_1, _waza_oshie_1 | (1 << (\waza - 8))
+    .elseif \waza < 24
+    .set _waza_oshie_2, _waza_oshie_2 | (1 << (\waza - 16))
+    .elseif \waza < 32
+    .set _waza_oshie_3, _waza_oshie_3 | (1 << (\waza - 24))
+    .elseif \waza < 40
+    .set _waza_oshie_4, _waza_oshie_4 | (1 << (\waza - 32))
+    .elseif \waza < 48
+    .set _waza_oshie_5, _waza_oshie_5 | (1 << (\waza - 40))
+    .elseif \waza < 56
+    .set _waza_oshie_6, _waza_oshie_6 | (1 << (\waza - 48))
+    .elseif \waza < 64
+    .set _waza_oshie_7, _waza_oshie_7 | (1 << (\waza - 56))
+    .else
+    .error "Tutor move out of range"
+    .endif
+    .endm
+
+    .macro oshie_end
+    .byte _waza_oshie_0, _waza_oshie_1, _waza_oshie_2, _waza_oshie_3, _waza_oshie_4, _waza_oshie_5, _waza_oshie_6, _waza_oshie_7
+    .endm
+
+    .rodata
+
+    .global gWazaOshieMoves
+    .type gWazaOshieMoves,@object
+gWazaOshieMoves:
+## for set in tutor
+    oshie_begin
+## for move in set.moves
+    oshie_add {{ move }}
+## endfor
+    oshie_end
+## endfor
+    .size gWazaOshieMoves,.-gWazaOshieMoves

@@ -1,0 +1,62 @@
+{
+  "header": "fielddata/script/scr_seq/event_D41R0103.h",
+  "objects": [
+    {
+      "id": "obj_EVERYWHERE_monstarball",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D41R0103_ESCAPE_ROPE",
+      "scr": "std_itemball_d41r0103_escape_rope",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 27,
+      "y": 46,
+      "z": 0
+    },
+    {
+      "id": "obj_EVERYWHERE_monstarball_2",
+      "ovid": "SPRITE_MONSTARBALL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_ITEMBALL_D41R0103_TM76",
+      "scr": "std_itemball_d41r0103_tm76",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 15,
+      "y": 45,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 19,
+      "y": 20,
+      "header": "MAP_D41R0101",
+      "anchor": 5,
+      "height": 0
+    },
+    {
+      "x": 23,
+      "y": 37,
+      "header": "MAP_D41R0101",
+      "anchor": 4,
+      "height": 0
+    },
+    {
+      "x": 27,
+      "y": 42,
+      "header": "MAP_D41R0101",
+      "anchor": 3,
+      "height": 0
+    }
+  ]
+}

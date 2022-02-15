@@ -4,7 +4,7 @@
 #include "pokemon_types_def.h"
 
 u32 SavArray_Party_sizeof(void);
-u32 sub_020744B4(void);
+u32 PartyCore_sizeof(void);
 PARTY * SavArray_Party_alloc(HeapID heapId);
 void SavArray_Party_init(PARTY *party);
 void InitPartyWithMaxSize(PARTY *party, int maxSize);
@@ -13,12 +13,12 @@ BOOL RemoveMonFromParty(PARTY *party, int slot);
 int GetPartyMaxCount(const PARTY *party);
 int GetPartyCount(const PARTY *party);
 POKEMON *GetPartyMonByIndex(PARTY *party, int slot);
-void sub_02074670(const PARTY *party, PARTY_EXTRA_SUB *dest, int slot);
-void sub_020746BC(PARTY *party, const PARTY_EXTRA_SUB *src, int slot);
-void sub_02074708(PARTY *party, int slot);
-void sub_02074740(PARTY *party, int slot, POKEMON *src);
-BOOL sub_020747BC(PARTY *party, int slotA, int slotB);
-void sub_020748B8(const PARTY *src, PARTY *dest);
+void Party_GetUnkSubSlot(const PARTY *party, PARTY_EXTRA_SUB *dest, int slot);
+void Party_SetUnkSubSlot(PARTY *party, const PARTY_EXTRA_SUB *src, int slot);
+void Party_ResetUnkSubSlot(PARTY *party, int slot);
+void Party_SafeCopyMonToSlot_ResetUnkSub(PARTY *party, int slot, POKEMON *src);
+BOOL Party_SwapSlots(PARTY *party, int slotA, int slotB);
+void Party_copy(const PARTY *src, PARTY *dest);
 BOOL PartyHasMon(PARTY *party, u16 species);
 PARTY *SavArray_PlayerParty_get(SAVEDATA *saveData);
 

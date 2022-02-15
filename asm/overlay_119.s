@@ -1368,7 +1368,7 @@ _0225FACC:
 	mov r0, #0x83
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x1c]
 	ldr r0, [r0]
 	add r1, r0, #1
@@ -1763,7 +1763,7 @@ _0225FE64:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_0201D54C
+	bl WindowArray_dtor
 	mov r0, #3
 	mov r1, #0x20
 	mov r2, #0
@@ -1866,7 +1866,7 @@ _0225FF68:
 	mov r0, #0x83
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x1c]
 	ldr r0, [r0]
 	cmp r0, #7
@@ -2338,7 +2338,7 @@ _022602EA:
 	mov r0, #2
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #4
 	bl ov01_021F09BC
 	mov r1, #0x81
@@ -2626,7 +2626,7 @@ _022605B4:
 	mov r0, #2
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #0x83
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -2694,7 +2694,7 @@ _0226061E:
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_0201D54C
+	bl WindowArray_dtor
 	mov r0, #3
 	mov r1, #0x20
 	mov r2, #0

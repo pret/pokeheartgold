@@ -3245,7 +3245,7 @@ _03803324:
 	mov r0, r0, lsl #0x10
 	mov r7, r0, lsr #0x10
 	mov r0, r7
-	bl OSi_DoLockByWord
+	bl OS_LockCartridge
 	ldr ip, _03803434 ; =0x0000FFFF
 	mov sl, #0
 	eor r0, ip, #3
@@ -7168,42 +7168,6 @@ micIntrPrio: ; 0x038067A4
 	.byte 0x17, 0x00, 0x00, 0x00
 
 	.section .wram,4,1,5
-
-	arm_func_start OSi_DoBoot
-OSi_DoBoot: ; 0x03806854
-	mov ip, #0x4000000
-	str ip, [ip, #0x208]
-	ldr r1, _038068BC ; =0x0380FFFC
-	mov r0, #0
-	str r0, [r1]
-	ldr r1, _038068C0 ; =0x04000180
-	mov r0, #0x100
-	strh r0, [r1]
-_03806874:
-	ldrh r0, [r1]
-	and r0, r0, #0xf
-	cmp r0, #1
-	bne _03806874
-	ldr r1, _038068C0 ; =0x04000180
-	mov r0, #0
-	strh r0, [r1]
-_03806890:
-	ldrh r0, [r1]
-	cmp r0, #1
-	beq _03806890
-	ldr r3, _038068C4 ; =0x027FFE00
-	ldr ip, [r3, #0x34]
-	mov lr, ip
-	mov r0, #0
-	mov r1, #0
-	mov r2, #0
-	mov r3, #0
-	bx ip
-	.align 2, 0
-_038068BC: .word 0x0380FFFC
-_038068C0: .word 0x04000180
-_038068C4: .word 0x027FFE00
-	arm_func_end OSi_DoBoot
 
 	arm_func_start WMSP_ReturnResult2Wm9
 WMSP_ReturnResult2Wm9: ; 0x038068C8

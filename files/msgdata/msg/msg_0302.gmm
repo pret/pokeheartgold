@@ -1,0 +1,814 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0302_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 1, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">♂</language>
+	</row>
+	<row id="msg_0302_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">♀</language>
+	</row>
+	<row id="msg_0302_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 52, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Item</language>
+	</row>
+	<row id="msg_0302_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 8, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">None</language>
+	</row>
+	<row id="msg_0302_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">INFO</language>
+	</row>
+	<row id="msg_0302_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dex No.</language>
+	</row>
+	<row id="msg_0302_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 52, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Name</language>
+	</row>
+	<row id="msg_0302_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 0, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Type</language>
+	</row>
+	<row id="msg_0302_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OT</language>
+	</row>
+	<row id="msg_0302_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ID No.</language>
+	</row>
+	<row id="msg_0302_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 54, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Exp. Points</language>
+	</row>
+	<row id="msg_0302_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 56, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">To Next Lv.</language>
+	</row>
+	<row id="msg_0302_00020" index="20">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語"></language>
+	</row>
+	<row id="msg_0302_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 55, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">???</language>
+	</row>
+	<row id="msg_0302_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TRAINER MEMO</language>
+	</row>
+	<row id="msg_0302_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Hardy{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Lonely{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Brave{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Adamant{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Naughty{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Bold{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Docile{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Relaxed{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Impish{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Lax{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Timid{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Hasty{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Serious{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Jolly{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Naive{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00039" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Modest{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00040" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Mild{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Quiet{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00042" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Bashful{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Rash{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00044" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Calm{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00045" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Gentle{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00046" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Sassy{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00047" index="47">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Careful{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00048" index="48">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{COLOR 2}Quirky{COLOR 0} nature.</language>
+	</row>
+	<row id="msg_0302_00049" index="49">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nMet at Lv. {STRVAR_1 52, 3, 0}.</language>
+	</row>
+	<row id="msg_0302_00050" index="50">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nApparently met at\nLv. {STRVAR_1 52, 3, 0}.</language>
+	</row>
+	<row id="msg_0302_00051" index="51">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nArrived at Lv. {STRVAR_1 52, 3, 0}.</language>
+	</row>
+	<row id="msg_0302_00052" index="52">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\nEgg obtained.\n{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nEgg hatched.</language>
+	</row>
+	<row id="msg_0302_00053" index="53">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\nEgg obtained.\n{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nEgg apparently hatched.</language>
+	</row>
+	<row id="msg_0302_00054" index="54">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\nEgg received.\n{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nEgg hatched.</language>
+	</row>
+	<row id="msg_0302_00055" index="55">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\nEgg received.\n{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nEgg apparently hatched.</language>
+	</row>
+	<row id="msg_0302_00056" index="56">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nHad a fateful encounter\nat Lv. {STRVAR_1 52, 3, 0}.</language>
+	</row>
+	<row id="msg_0302_00057" index="57">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nApparently had a\nfateful encounter at\nLv. {STRVAR_1 52, 3, 0}.</language>
+	</row>
+	<row id="msg_0302_00058" index="58">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\nEgg obtained.\n{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nEgg hatched.\nFateful encounter.</language>
+	</row>
+	<row id="msg_0302_00059" index="59">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\nEgg obtained.\n{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nEgg apparently hatched.\nFateful encounter.</language>
+	</row>
+	<row id="msg_0302_00060" index="60">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\nEgg arrived.\n{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nEgg hatched.\nFateful encounter.</language>
+	</row>
+	<row id="msg_0302_00061" index="61">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\nEgg arrived.\n{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nEgg apparently hatched.\nFateful encounter.</language>
+	</row>
+	<row id="msg_0302_00062" index="62">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\nEgg obtained.\n{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nEgg hatched.\nFateful encounter.</language>
+	</row>
+	<row id="msg_0302_00063" index="63">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\nEgg obtained.\n{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nEgg apparently hatched.\nFateful encounter.</language>
+	</row>
+	<row id="msg_0302_00064" index="64">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nArrived at Lv. {STRVAR_1 52, 3, 0}.</language>
+	</row>
+	<row id="msg_0302_00065" index="65">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Likes {COLOR 2}spicy{COLOR 0} food.</language>
+	</row>
+	<row id="msg_0302_00066" index="66">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Likes {COLOR 2}dry{COLOR 0} food.</language>
+	</row>
+	<row id="msg_0302_00067" index="67">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Likes {COLOR 2}sweet{COLOR 0} food.</language>
+	</row>
+	<row id="msg_0302_00068" index="68">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Likes {COLOR 2}bitter{COLOR 0} food.</language>
+	</row>
+	<row id="msg_0302_00069" index="69">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Likes {COLOR 2}sour{COLOR 0} food.</language>
+	</row>
+	<row id="msg_0302_00070" index="70">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Happily eats anything.</language>
+	</row>
+	<row id="msg_0302_00071" index="71">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Loves to eat.</language>
+	</row>
+	<row id="msg_0302_00072" index="72">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Often dozes off.</language>
+	</row>
+	<row id="msg_0302_00073" index="73">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Often scatters things.</language>
+	</row>
+	<row id="msg_0302_00074" index="74">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Scatters things often.</language>
+	</row>
+	<row id="msg_0302_00075" index="75">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Likes to relax.</language>
+	</row>
+	<row id="msg_0302_00076" index="76">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Proud of its power.</language>
+	</row>
+	<row id="msg_0302_00077" index="77">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Likes to thrash about.</language>
+	</row>
+	<row id="msg_0302_00078" index="78">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A little quick tempered.</language>
+	</row>
+	<row id="msg_0302_00079" index="79">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Likes to fight.</language>
+	</row>
+	<row id="msg_0302_00080" index="80">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Quick tempered.</language>
+	</row>
+	<row id="msg_0302_00081" index="81">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sturdy body.</language>
+	</row>
+	<row id="msg_0302_00082" index="82">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Capable of taking hits.</language>
+	</row>
+	<row id="msg_0302_00083" index="83">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Highly persistent.</language>
+	</row>
+	<row id="msg_0302_00084" index="84">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Good endurance.</language>
+	</row>
+	<row id="msg_0302_00085" index="85">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Good perseverance.</language>
+	</row>
+	<row id="msg_0302_00086" index="86">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Likes to run.</language>
+	</row>
+	<row id="msg_0302_00087" index="87">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Alert to sounds.</language>
+	</row>
+	<row id="msg_0302_00088" index="88">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Impetuous and silly.</language>
+	</row>
+	<row id="msg_0302_00089" index="89">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Somewhat of a clown.</language>
+	</row>
+	<row id="msg_0302_00090" index="90">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Quick to flee.</language>
+	</row>
+	<row id="msg_0302_00091" index="91">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Highly curious.</language>
+	</row>
+	<row id="msg_0302_00092" index="92">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mischievous.</language>
+	</row>
+	<row id="msg_0302_00093" index="93">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Thoroughly cunning.</language>
+	</row>
+	<row id="msg_0302_00094" index="94">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Often lost in thought.</language>
+	</row>
+	<row id="msg_0302_00095" index="95">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Very finicky.</language>
+	</row>
+	<row id="msg_0302_00096" index="96">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Strong willed.</language>
+	</row>
+	<row id="msg_0302_00097" index="97">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Somewhat vain.</language>
+	</row>
+	<row id="msg_0302_00098" index="98">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Strongly defiant.</language>
+	</row>
+	<row id="msg_0302_00099" index="99">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hates to lose.</language>
+	</row>
+	<row id="msg_0302_00100" index="100">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Somewhat stubborn.</language>
+	</row>
+	<row id="msg_0302_00101" index="101">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\nA mysterious Pokémon\nEgg received from\n{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}.\n</language>
+	</row>
+	<row id="msg_0302_00102" index="102">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\nA mysterious Pokémon\nEgg obtained in\n{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}.\n</language>
+	</row>
+	<row id="msg_0302_00103" index="103">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\nA very mysterious\nPokémon Egg obtained\nat {COLOR 1}{STRVAR_1 4, 8, 0}{COLOR 0}.\n</language>
+	</row>
+	<row id="msg_0302_00104" index="104">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\nA very mysterious\nPokémon Egg that came\nfrom {COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}.\n</language>
+	</row>
+	<row id="msg_0302_00105" index="105">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">“The Egg Watch”\nSounds can be heard\ncoming from inside!\nIt will hatch soon!</language>
+	</row>
+	<row id="msg_0302_00106" index="106">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">“The Egg Watch”\nIt appears to move\noccasionally. It may\nbe close to hatching.</language>
+	</row>
+	<row id="msg_0302_00107" index="107">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">“The Egg Watch”\nWhat will hatch from\nthis? It doesn’t seem\nclose to hatching.</language>
+	</row>
+	<row id="msg_0302_00108" index="108">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">“The Egg Watch”\nIt looks like this Egg\nwill take a long time to\nhatch.</language>
+	</row>
+	<row id="msg_0302_00109" index="109">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SKILLS</language>
+	</row>
+	<row id="msg_0302_00110" index="110">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HP</language>
+	</row>
+	<row id="msg_0302_00111" index="111">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Attack</language>
+	</row>
+	<row id="msg_0302_00112" index="112">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Defense</language>
+	</row>
+	<row id="msg_0302_00113" index="113">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sp. Atk</language>
+	</row>
+	<row id="msg_0302_00114" index="114">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sp. Def</language>
+	</row>
+	<row id="msg_0302_00115" index="115">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Speed</language>
+	</row>
+	<row id="msg_0302_00116" index="116">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ability</language>
+	</row>
+	<row id="msg_0302_00117" index="117">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">/</language>
+	</row>
+	<row id="msg_0302_00118" index="118">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 52, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00119" index="119">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 52, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00120" index="120">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 52, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00121" index="121">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 52, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00122" index="122">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 52, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00123" index="123">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 52, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00124" index="124">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 52, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00125" index="125">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 5, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00126" index="126">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXX</language>
+	</row>
+	<row id="msg_0302_00127" index="127">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0302_00128" index="128">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BATTLE MOVES</language>
+	</row>
+	<row id="msg_0302_00129" index="129">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXX</language>
+	</row>
+	<row id="msg_0302_00130" index="130">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 6, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00131" index="131">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 6, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00132" index="132">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 6, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00133" index="133">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 6, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00134" index="134">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 6, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00135" index="135">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PP</language>
+	</row>
+	<row id="msg_0302_00136" index="136">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 51, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00137" index="137">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 51, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00138" index="138">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 51, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00139" index="139">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 51, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00140" index="140">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 51, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00141" index="141">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 51, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00142" index="142">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 51, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00143" index="143">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 51, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00144" index="144">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 51, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00145" index="145">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 51, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00146" index="146">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Cancel</language>
+	</row>
+	<row id="msg_0302_00147" index="147">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POWER</language>
+	</row>
+	<row id="msg_0302_00148" index="148">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ACCURACY</language>
+	</row>
+	<row id="msg_0302_00149" index="149">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CATEGORY</language>
+	</row>
+	<row id="msg_0302_00150" index="150">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 52, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00151" index="151">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 52, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00152" index="152">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SWITCH</language>
+	</row>
+	<row id="msg_0302_00153" index="153">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">--</language>
+	</row>
+	<row id="msg_0302_00154" index="154">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">---</language>
+	</row>
+	<row id="msg_0302_00155" index="155">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXX</language>
+	</row>
+	<row id="msg_0302_00156" index="156">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HM moves can’t be\nforgotten now.</language>
+	</row>
+	<row id="msg_0302_00157" index="157">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PERFORMANCE</language>
+	</row>
+	<row id="msg_0302_00158" index="158">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXX</language>
+	</row>
+	<row id="msg_0302_00159" index="159">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXX</language>
+	</row>
+	<row id="msg_0302_00160" index="160">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXX</language>
+	</row>
+	<row id="msg_0302_00161" index="161">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0302_00162" index="162">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXX</language>
+	</row>
+	<row id="msg_0302_00163" index="163">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXX</language>
+	</row>
+	<row id="msg_0302_00164" index="164">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0302_00165" index="165">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXX</language>
+	</row>
+	<row id="msg_0302_00166" index="166">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0302_00167" index="167">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0302_00168" index="168">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0302_00169" index="169">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0302_00170" index="170">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0302_00171" index="171">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXX</language>
+	</row>
+	<row id="msg_0302_00172" index="172">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0302_00173" index="173">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0302_00174" index="174">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0302_00175" index="175">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0302_00176" index="176">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0302_00177" index="177">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0302_00178" index="178">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0302_00179" index="179">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RIBBONS</language>
+	</row>
+	<row id="msg_0302_00180" index="180">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXX</language>
+	</row>
+	<row id="msg_0302_00181" index="181">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0302_00182" index="182">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">No. of Ribbons:</language>
+	</row>
+	<row id="msg_0302_00183" index="183">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 52, 0, 0}</language>
+	</row>
+	<row id="msg_0302_00184" index="184">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXX</language>
+	</row>
+	<row id="msg_0302_00185" index="185">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">X</language>
+	</row>
+	<row id="msg_0302_00186" index="186">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXX</language>
+	</row>
+	<row id="msg_0302_00187" index="187">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Speed</language>
+	</row>
+	<row id="msg_0302_00188" index="188">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Power</language>
+	</row>
+	<row id="msg_0302_00189" index="189">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Skill</language>
+	</row>
+	<row id="msg_0302_00190" index="190">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Stamina</language>
+	</row>
+	<row id="msg_0302_00191" index="191">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Jump</language>
+	</row>
+	<row id="msg_0302_00192" index="192">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Shiny Leaf</language>
+	</row>
+	<row id="msg_0302_00193" index="193">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Forget!</language>
+	</row>
+	<row id="msg_0302_00194" index="194">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Switch</language>
+	</row>
+</body>

@@ -1,6 +1,0 @@
-A Pokémon you get in a trade\ngrows quickly.\rBut if you don’t have the right Gym\nBadge, they may disobey you.
-I collect Pokémon.\nDo you have BELLSPROUT?\rWant to trade it for my ONIX? {YESNO 0}
-Yay! I got myself BELLSPROUT!\nThanks!
-Huh? That’s not BELLSPROUT.\fWhat a letdown...
-You don’t want to trade? Aww...
-Hi, how’s my old ONIX doing?

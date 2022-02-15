@@ -1,0 +1,210 @@
+{
+  "header": "fielddata/script/scr_seq/event_T21.h",
+  "bgs": [
+    {
+      "scr": "_EV_scr_seq_T21_005 + 1",
+      "type": 1,
+      "x": 556,
+      "y": 401,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_T21_006 + 1",
+      "type": 1,
+      "x": 554,
+      "y": 396,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_r29_r30_t21_nugget",
+      "type": 2,
+      "x": 572,
+      "y": 390,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_t21_nugget",
+      "type": 2,
+      "x": 522,
+      "y": 388,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_T21_gsoldman1",
+      "ovid": "SPRITE_GSOLDMAN1",
+      "mvt": 15,
+      "type": 0,
+      "flag": "FLAG_HIDE_CHERRYGROVE_GUIDE_GENT",
+      "scr": "_EV_scr_seq_T21_000 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 566,
+      "y": 396,
+      "z": 0
+    },
+    {
+      "id": "obj_T21_gsboy1",
+      "ovid": "SPRITE_GSBOY1",
+      "mvt": 3,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T21_007 + 1",
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 1,
+      "x": 554,
+      "y": 399,
+      "z": 0
+    },
+    {
+      "id": "obj_T21_gswoman1",
+      "ovid": "SPRITE_GSWOMAN1",
+      "mvt": 5,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T21_008 + 1",
+      "dirn": 3,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 1,
+      "yrange": 0,
+      "x": 561,
+      "y": 407,
+      "z": 0
+    },
+    {
+      "id": "obj_T21_gsbigman",
+      "ovid": "SPRITE_GSBIGMAN",
+      "mvt": 17,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_T21_004 + 1",
+      "dirn": 3,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 530,
+      "y": 406,
+      "z": 0
+    },
+    {
+      "id": "obj_T21_gsrivel",
+      "ovid": "SPRITE_GSRIVEL",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_HIDE_CHERRYGROVE_RIVAL",
+      "scr": 0,
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 575,
+      "y": 384,
+      "z": 0
+    },
+    {
+      "id": "obj_T21_gsmiddleman1",
+      "ovid": "SPRITE_GSMIDDLEMAN1",
+      "mvt": 14,
+      "type": 0,
+      "flag": "FLAG_HIDE_CAMERON",
+      "scr": "_EV_scr_seq_T21_009 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 562,
+      "y": 402,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 564,
+      "y": 391,
+      "header": "MAP_T21PC0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 555,
+      "y": 391,
+      "header": "MAP_T21FS0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 547,
+      "y": 399,
+      "header": "MAP_T21R0301",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 558,
+      "y": 401,
+      "header": "MAP_T21R0401",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 567,
+      "y": 405,
+      "header": "MAP_T21R0501",
+      "anchor": 0,
+      "height": 0
+    }
+  ],
+  "coords": [
+    {
+      "scr": "_EV_scr_seq_T21_001 + 1",
+      "x": 566,
+      "y": 397,
+      "w": 1,
+      "h": 4,
+      "z": 0,
+      "val": 0,
+      "var": "VAR_SCENE_CHERRYGROVE_CITY_OW"
+    },
+    {
+      "scr": "_EV_scr_seq_T21_003 + 1",
+      "x": 575,
+      "y": 398,
+      "w": 1,
+      "h": 4,
+      "z": 0,
+      "val": 3,
+      "var": "VAR_SCENE_CHERRYGROVE_CITY_OW"
+    },
+    {
+      "scr": "_EV_scr_seq_T21_002 + 1",
+      "x": 547,
+      "y": 385,
+      "w": 4,
+      "h": 1,
+      "z": 0,
+      "val": 1,
+      "var": "VAR_SCENE_CHERRYGROVE_CITY_OW"
+    }
+  ]
+}

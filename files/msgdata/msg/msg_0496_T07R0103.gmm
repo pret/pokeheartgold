@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0496_T07R0103_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I can’t decide which Pokémon I\nshould use this TM on...</language>
+	</row>
+	<row id="msg_0496_T07R0103_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Uh-oh! I traded my Pokémon without\nremoving the Up-Grade from it.</language>
+	</row>
+	<row id="msg_0496_T07R0103_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Yeah! I’m finally getting a PORYGON!\rI’m no good at the Coin game,\nso I could never get enough Coins...\r...Huh?\rI traded PORYGON, and it turned into a\ndifferent Pokémon!</language>
+	</row>
+	<row id="msg_0496_T07R0103_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The TM Shop sells\nsome rare moves.</language>
+	</row>
+	<row id="msg_0496_T07R0103_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Make Your Pokémon Stronger!\n3F: TM Shop</language>
+	</row>
+</body>

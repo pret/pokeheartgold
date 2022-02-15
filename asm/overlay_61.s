@@ -1,10 +1,15 @@
+; Choose starter application
+
+#include "constants/species.h"
+#include "constants/sndseq.h"
+#include "msgdata/msg/msg_0190.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
 	.text
 
-	thumb_func_start ov61_021E5900
-ov61_021E5900: ; 0x021E5900
+	thumb_func_start ChooseStarterApplication_OvyInit
+ChooseStarterApplication_OvyInit: ; 0x021E5900
 	push {r3, r4, r5, lr}
 	sub sp, #0x10
 	mov r2, #1
@@ -52,7 +57,7 @@ _021E5950:
 	ldr r0, _021E5A2C ; =ov61_021E60B8
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl ov61_021E60C8
 	ldr r0, [r4, #4]
 	bl ov61_021E60E8
@@ -81,7 +86,7 @@ _021E5950:
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
-	ldr r0, _021E5A30 ; =gMain + 0x60
+	ldr r0, _021E5A30 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -123,12 +128,12 @@ _021E5A20: .word 0x00000598
 _021E5A24: .word 0x00000578
 _021E5A28: .word 0x000003A5
 _021E5A2C: .word ov61_021E60B8
-_021E5A30: .word gMain + 0x60
+_021E5A30: .word gSystem + 0x60
 _021E5A34: .word 0x00000574
-	thumb_func_end ov61_021E5900
+	thumb_func_end ChooseStarterApplication_OvyInit
 
-	thumb_func_start ov61_021E5A38
-ov61_021E5A38: ; 0x021E5A38
+	thumb_func_start ChooseStarterApplication_OvyExec
+ChooseStarterApplication_OvyExec: ; 0x021E5A38
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x40
 	add r5, r1, #0
@@ -161,7 +166,7 @@ _021E5A5A: ; jump table
 	.short _021E5E52 - _021E5A5A - 2 ; case 11
 	.short _021E5E78 - _021E5A5A - 2 ; case 12
 _021E5A74:
-	mov r1, #7
+	mov r1, #msg_0190_00007
 	bl ov61_021E6DFC
 	mov r0, #2
 	add r1, r6, #0
@@ -195,7 +200,7 @@ _021E5AB4:
 	bl sub_020190E8
 	cmp r0, #0
 	beq _021E5B94
-	add r0, r6, #0
+	add r0, r6, #0 ; msg_0190_00000
 	str r0, [sp]
 	ldr r0, _021E5E10 ; =0x0001020F
 	ldr r1, _021E5E14 ; =0x000003A5
@@ -228,7 +233,7 @@ _021E5AFE:
 	lsl r1, r1, #2
 	ldr r0, [r4, r1]
 	mov r2, #1
-	add r0, r0, #1
+	add r0, r0, #msg_0190_00001
 	str r0, [sp]
 	ldr r0, _021E5E10 ; =0x0001020F
 	mov r3, #0xbe
@@ -248,7 +253,7 @@ _021E5AFE:
 	ldr r1, _021E5E18 ; =0x000003A6
 	strb r0, [r4, r1]
 	add r0, r4, #0
-	mov r1, #8
+	mov r1, #msg_0190_00008
 	bl ov61_021E6DFC
 	mov r0, #2
 	mov r1, #1
@@ -324,7 +329,7 @@ _021E5BB4:
 	lsl r0, r0, #2
 	ldr r1, [r4, r0]
 	add r0, #8
-	add r1, r1, #4
+	add r1, r1, #msg_0190_00004
 	str r1, [sp]
 	ldr r1, _021E5E10 ; =0x0001020F
 	mov r3, #0xbe
@@ -348,7 +353,7 @@ _021E5BB4:
 	lsr r0, r0, #0x10
 	bl PlayCry
 	add r0, r4, #0
-	mov r1, #7
+	mov r1, #msg_0190_00007
 	bl ov61_021E6DFC
 	mov r0, #2
 	mov r1, #1
@@ -442,7 +447,7 @@ _021E5CB2:
 	mov r1, #0
 	str r1, [r4, r0]
 	add r0, r4, #0
-	mov r1, #7
+	mov r1, #msg_0190_00007
 	bl ov61_021E6DFC
 	mov r0, #2
 	mov r1, #0
@@ -476,7 +481,7 @@ _021E5CF2:
 	lsl r0, r0, #2
 	ldr r1, [r4, r0]
 	add r0, #8
-	add r1, r1, #4
+	add r1, r1, #msg_0190_00004
 	str r1, [sp]
 	ldr r1, _021E5E10 ; =0x0001020F
 	mov r3, #0xbe
@@ -593,7 +598,7 @@ _021E5DBC:
 	bl sub_02019040
 	mov r0, #0xb
 	str r0, [r5]
-	ldr r0, _021E5E48 ; =0x000005F8
+	ldr r0, _021E5E48 ; =SEQ_SE_DP_W025
 	b _021E5E4C
 	nop
 _021E5E0C: .word 0x00000574
@@ -611,7 +616,7 @@ _021E5E38: .word 0x00007FFF
 _021E5E3C: .word 0x0000DCC0
 _021E5E40: .word 0x000011A4
 _021E5E44: .word ov61_021E73A4
-_021E5E48: .word 0x000005F8
+_021E5E48: .word SEQ_SE_DP_W025
 _021E5E4C:
 	bl PlaySE
 	b _021E5E86
@@ -753,10 +758,10 @@ _021E5F64: .word ov61_021E73BC
 _021E5F68: .word 0x00001024
 _021E5F6C: .word 0x00000574
 _021E5F70: .word 0x00000584
-	thumb_func_end ov61_021E5A38
+	thumb_func_end ChooseStarterApplication_OvyExec
 
-	thumb_func_start ov61_021E5F74
-ov61_021E5F74: ; 0x021E5F74
+	thumb_func_start ChooseStarterApplication_OvyExit
+ChooseStarterApplication_OvyExit: ; 0x021E5F74
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -848,7 +853,7 @@ ov61_021E5F74: ; 0x021E5F74
 	.balign 4, 0
 _021E6060: .word 0x00000574
 _021E6064: .word 0x0000043C
-	thumb_func_end ov61_021E5F74
+	thumb_func_end ChooseStarterApplication_OvyExit
 
 	thumb_func_start ov61_021E6068
 ov61_021E6068: ; 0x021E6068
@@ -893,7 +898,7 @@ ov61_021E60B8: ; 0x021E60B8
 	add r4, r0, #0
 	bl sub_0200B224
 	ldr r0, [r4, #8]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	pop {r4, pc}
 	thumb_func_end ov61_021E60B8
 
@@ -1097,10 +1102,10 @@ _021E625C:
 	add r0, r4, #0
 	add r0, #0x74
 	ldrh r0, [r0]
-	ldr r1, _021E6340 ; =_021094DC
+	ldr r1, _021E6340 ; =FX_SinCosTable_
 	asr r0, r0, #4
 	lsl r3, r0, #2
-	ldr r0, _021E6340 ; =_021094DC
+	ldr r0, _021E6340 ; =FX_SinCosTable_
 	ldrsh r1, [r1, r3]
 	add r2, r0, r3
 	mov r3, #2
@@ -1143,17 +1148,17 @@ _021E629C:
 	asr r0, r4, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
-	ldr r3, _021E6340 ; =_021094DC
+	ldr r3, _021E6340 ; =FX_SinCosTable_
 	add r2, r2, #1
 	lsl r2, r2, #1
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	add r0, sp, #0x20
 	bl MTX_RotY33_
-	ldr r1, _021E6348 ; =_021DA558
+	ldr r1, _021E6348 ; =NNS_G3dGlb + 0xBC
 	add r0, sp, #0x20
 	bl MI_Copy36B
-	ldr r1, _021E634C ; =_021DA51C
+	ldr r1, _021E634C ; =NNS_G3dGlb + 0x80
 	mov r0, #0xa4
 	ldr r2, [r1, #0x7c]
 	bic r2, r0
@@ -1191,10 +1196,10 @@ _021E632E:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E633C: .word ov61_021E73EC
-_021E6340: .word _021094DC
+_021E6340: .word FX_SinCosTable_
 _021E6344: .word ov61_021E73E0
-_021E6348: .word _021DA558
-_021E634C: .word _021DA51C
+_021E6348: .word NNS_G3dGlb + 0xBC
+_021E634C: .word NNS_G3dGlb + 0x80
 	thumb_func_end ov61_021E6240
 
 	thumb_func_start ov61_021E6350
@@ -1436,7 +1441,7 @@ ov61_021E6508: ; 0x021E6508
 	str r0, [r4, #0xc]
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov61_021E6508
@@ -2004,8 +2009,8 @@ _021E696E:
 	str r0, [sp]
 	asr r0, r0, #4
 	lsl r1, r0, #2
-	ldr r0, _021E6A24 ; =_021094DC
-	ldr r3, _021E6A24 ; =_021094DC
+	ldr r0, _021E6A24 ; =FX_SinCosTable_
+	ldr r3, _021E6A24 ; =FX_SinCosTable_
 	add r2, r0, r1
 	ldrsh r1, [r3, r1]
 	mov r3, #2
@@ -2080,7 +2085,7 @@ _021E696E:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _021E6A20: .word ov61_021E73B0
-_021E6A24: .word _021094DC
+_021E6A24: .word FX_SinCosTable_
 	thumb_func_end ov61_021E6944
 
 	thumb_func_start ov61_021E6A28
@@ -2120,7 +2125,7 @@ ov61_021E6A48: ; 0x021E6A48
 	add r0, r5, #0
 	add r0, #0x76
 	ldrh r0, [r0]
-	ldr r3, _021E6ADC ; =_021094DC
+	ldr r3, _021E6ADC ; =FX_SinCosTable_
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -2137,7 +2142,7 @@ ov61_021E6A48: ; 0x021E6A48
 	add r0, r5, #0
 	add r0, #0x74
 	ldrh r0, [r0]
-	ldr r3, _021E6ADC ; =_021094DC
+	ldr r3, _021E6ADC ; =FX_SinCosTable_
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -2167,7 +2172,7 @@ ov61_021E6A48: ; 0x021E6A48
 	add sp, #0x94
 	pop {r4, r5, pc}
 	.balign 4, 0
-_021E6ADC: .word _021094DC
+_021E6ADC: .word FX_SinCosTable_
 	thumb_func_end ov61_021E6A48
 
 	thumb_func_start ov61_021E6AE0
@@ -2445,7 +2450,7 @@ ov61_021E6C3C: ; 0x021E6C3C
 	add r0, r5, #0
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x18
@@ -2456,7 +2461,7 @@ ov61_021E6C3C: ; 0x021E6C3C
 	add r0, r5, #0
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x18
@@ -2467,7 +2472,7 @@ ov61_021E6C3C: ; 0x021E6C3C
 	add r0, r5, #0
 	mov r1, #6
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	add r0, r5, #0
 	mov r1, #2
 	bl BgCommitTilemapBufferToVram
@@ -2492,6 +2497,7 @@ _021E6D74: .word 0x04001050
 
 	thumb_func_start ov61_021E6D78
 ov61_021E6D78: ; 0x021E6D78
+	; int ov61_021E6D78(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgbank, u16 msgno, u32 color, u32 speed, STRING **out)
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	ldr r4, [sp, #0x34]
@@ -2557,6 +2563,7 @@ _021E6DEE:
 
 	thumb_func_start ov61_021E6DFC
 ov61_021E6DFC: ; 0x021E6DFC
+	; void ov61_021E6DFC(StartChoiceApp *app, u16 msgno);
 	push {lr}
 	sub sp, #0x14
 	mov r2, #0
@@ -2572,7 +2579,7 @@ ov61_021E6DFC: ; 0x021E6DFC
 	lsl r0, r0, #4
 	ldr r0, [r3, r0]
 	ldr r1, [r3, #4]
-	mov r3, #0xbe
+	mov r3, #0xbe ; msg_0190.gmm
 	bl ov61_021E6D78
 	ldr r0, [sp, #0x10]
 	bl String_dtor
@@ -2601,7 +2608,7 @@ ov61_021E6E40: ; 0x021E6E40
 	bl sub_0202534C
 	cmp r0, #0
 	bne _021E6EB6
-	ldr r0, _021E6F74 ; =gMain
+	ldr r0, _021E6F74 ; =gSystem
 	mov r1, #1
 	ldr r2, [r0, #0x48]
 	add r0, r2, #0
@@ -2658,14 +2665,14 @@ _021E6EA2:
 	add r4, r0, #0
 	b _021E6F62
 _021E6EB6:
-	ldr r0, _021E6F74 ; =gMain
+	ldr r0, _021E6F74 ; =gSystem
 	ldr r0, [r0, #0x44]
 	cmp r0, #0
 	bne _021E6F62
 	bl sub_02025358
 	cmp r0, #0
 	beq _021E6F62
-	ldr r1, _021E6F78 ; =gMain + 0x40
+	ldr r1, _021E6F78 ; =gSystem + 0x40
 	add r2, sp, #0xc
 	ldrh r0, [r1, #0x20]
 	ldrh r1, [r1, #0x22]
@@ -2750,16 +2757,16 @@ _021E6F56:
 _021E6F62:
 	cmp r4, #6
 	bne _021E6F6C
-	ldr r0, _021E6F7C ; =0x000005EA
+	ldr r0, _021E6F7C ; =SEQ_SE_DP_BOX01
 	bl PlaySE
 _021E6F6C:
 	add r0, r4, #0
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
 	nop
-_021E6F74: .word gMain
-_021E6F78: .word gMain + 0x40
-_021E6F7C: .word 0x000005EA
+_021E6F74: .word gSystem
+_021E6F78: .word gSystem + 0x40
+_021E6F7C: .word SEQ_SE_DP_BOX01
 	thumb_func_end ov61_021E6E40
 
 	thumb_func_start ov61_021E6F80
@@ -3179,7 +3186,7 @@ ov61_021E7268: ; 0x021E7268
 	asr r0, r6, #4
 	lsl r3, r0, #1
 	lsl r1, r3, #1
-	ldr r2, _021E733C ; =_021094DC
+	ldr r2, _021E733C ; =FX_SinCosTable_
 	add r3, r3, #1
 	lsl r3, r3, #1
 	ldrsh r1, [r2, r1]
@@ -3232,7 +3239,7 @@ _021E7324:
 _021E7330: .word ov61_021E73D4
 _021E7334: .word ov61_021E738C
 _021E7338: .word 0x0000D73F
-_021E733C: .word _021094DC
+_021E733C: .word FX_SinCosTable_
 _021E7340: .word 0x0000024E
 _021E7344: .word 0x000003A7
 	thumb_func_end ov61_021E7268
@@ -3279,8 +3286,9 @@ ov61_021E738C: ; 0x021E738C
 	.byte 0x00, 0xE0, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00
 
 ov61_021E7398: ; 0x021E7398
-	.byte 0x98, 0x00, 0x00, 0x00, 0x9B, 0x00, 0x00, 0x00
-	.byte 0x9E, 0x00, 0x00, 0x00
+	.word SPECIES_CHIKORITA
+	.word SPECIES_CYNDAQUIL
+	.word SPECIES_TOTODILE
 
 ov61_021E73A4: ; 0x021E73A4
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xE0, 0x00, 0x00

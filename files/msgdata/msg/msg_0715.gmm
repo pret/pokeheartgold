@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0715_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Krise</language>
+	</row>
+	<row id="msg_0715_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You...\nYou think I’m cool right?\rSo how about we exchange phone\nnumbers? {YESNO 0}</language>
+	</row>
+	<row id="msg_0715_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Don’t worry, you can call me anytime!</language>
+	</row>
+	<row id="msg_0715_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh, I see...\nMaybe I was overthinking things...</language>
+	</row>
+	<row id="msg_0715_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I knew it! I knew you’d think I\nwas cool!\rSo, shall we trade phone\nnumbers now? {YESNO 0}</language>
+	</row>
+	<row id="msg_0715_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You must be really shy.\nIf you’re nearby, you can come talk to\fme in person. It’s all right.</language>
+	</row>
+	<row id="msg_0715_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">My prized {STRVAR_1 0, 10, 0} is doing great.\rWhich Pokémon do you like best?\nYou should show me sometime.</language>
+	</row>
+	<row id="msg_0715_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey, listen up!\nYesterday we were fighting a wild\f{STRVAR_1 0, 11, 0}.\rI thoughtlessly used a Potion at the\nwrong moment, and it looked like we were\fgoing to lose.\rMy Pokémon worked so hard. I really\nwanted to win, you know?\rWell, those kinds of things happen,\nI guess.</language>
+	</row>
+	<row id="msg_0715_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Do you keep all the Pokémon you\ncapture in PC Boxes?\rMe, I usually just let them go...\rThat reminds me, I recently let this\n{STRVAR_1 0, 11, 0} go...\rThat’s kind of a waste, isn’t it?</language>
+	</row>
+	<row id="msg_0715_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey, what do you think about battling\nwith me again?\rI’m at the {STRVAR_1 4, 3, 0}\nright now.\rCome on over!</language>
+	</row>
+	<row id="msg_0715_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello?\nDo you remember your promise?\rWe have to battle soon!\nI’ll be at the {STRVAR_1 4, 3, 0}.</language>
+	</row>
+	<row id="msg_0715_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It wasn’t a very smart move to come to\nthe Park in a miniskirt, was it...?\rI mean, these leaves keep scratching\nmy legs...</language>
+	</row>
+</body>

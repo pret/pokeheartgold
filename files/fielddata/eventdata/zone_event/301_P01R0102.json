@@ -1,0 +1,114 @@
+{
+  "header": "fielddata/script/scr_seq/event_P01R0102.h",
+  "bgs": [
+    {
+      "scr": "std_hiddenitem_p01r0102_protein",
+      "type": 2,
+      "x": 23,
+      "y": 26,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "std_hiddenitem_p01r0102_pearl",
+      "type": 2,
+      "x": 13,
+      "y": 16,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_P01R0102_seaman_2",
+      "ovid": "SPRITE_SEAMAN_2",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_P01R0102_000 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 27,
+      "y": 22,
+      "z": 0
+    },
+    {
+      "id": "obj_P01R0102_seaman_2_2",
+      "ovid": "SPRITE_SEAMAN_2",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_P01R0102_003 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 10,
+      "y": 15,
+      "z": 0
+    },
+    {
+      "id": "obj_P01R0102_gswoman2",
+      "ovid": "SPRITE_GSWOMAN2",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_P01R0102_004 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 10,
+      "y": 16,
+      "z": 0
+    },
+    {
+      "id": "obj_P01R0102_gsleader10",
+      "ovid": "SPRITE_GSLEADER10",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_UNK_2C9",
+      "scr": "_EV_scr_seq_P01R0102_006 + 1",
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 18,
+      "y": 22,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 16,
+      "y": 15,
+      "header": "MAP_P01R0101",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 27,
+      "y": 20,
+      "header": "MAP_P01R0301",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 11,
+      "y": 13,
+      "header": "MAP_P01R0101",
+      "anchor": 2,
+      "height": 0
+    }
+  ]
+}

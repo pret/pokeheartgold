@@ -31,8 +31,8 @@ ov36_021E5918: ; 0x021E5918
 
 	.public _02106068
 
-	thumb_func_start ov36_021E592C
-ov36_021E592C: ; 0x021E592C
+	thumb_func_start ov36_TitleScreen_SwitchToNewGame
+ov36_TitleScreen_SwitchToNewGame: ; 0x021E592C
 	push {r3, lr}
 	mov r0, #0x4b
 	bl DestroyHeap
@@ -44,7 +44,7 @@ ov36_021E592C: ; 0x021E592C
 	pop {r3, pc}
 	nop
 _021E5944: .word _02106068
-	thumb_func_end ov36_021E592C
+	thumb_func_end ov36_TitleScreen_SwitchToNewGame
 
 	thumb_func_start ov36_021E5948
 ov36_021E5948: ; 0x021E5948
@@ -134,8 +134,8 @@ _021E59E8:
 	bl Sav2_SysInfo_RTC_get
 	bl sub_02028E4C
 	add r0, r4, #0
-	bl sub_0202A988
-	bl sub_0202A8A8
+	bl Sav2_BerryPotRTC_get
+	bl Sav2_BerryPotRTC_init
 	add r0, r5, #0
 	bl Sav2_SysInfo_InitFromSystem
 	add r0, r4, #0
@@ -180,8 +180,8 @@ ov36_021E5A38: ; 0x021E5A38
 	bl Sav2_SysInfo_RTC_get
 	bl Sav2_SysInfo_RTC_init
 	add r0, r6, #0
-	bl sub_0202A988
-	bl sub_0202A8A8
+	bl Sav2_BerryPotRTC_get
+	bl Sav2_BerryPotRTC_init
 	add r0, r6, #0
 	bl sub_0202C854
 	add r4, r0, #0
@@ -204,7 +204,7 @@ ov36_021E5A38: ; 0x021E5A38
 	bl PlayerProfile_SetTrainerID
 _021E5A94:
 	add r0, r6, #0
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	add r1, r4, #0
 	bl sub_0202F5B8
 	add r0, r7, #0
@@ -219,7 +219,7 @@ _021E5A94:
 	lsr r1, r1, #0x18
 	bl PlayerProfile_SetAvatar
 	add r0, r6, #0
-	bl sub_0202A96C
+	bl Sav2_FieldApricornTrees_get
 	bl sub_0202AE0C
 	add r0, r6, #0
 	bl Sav2_Pokewalker_get
@@ -343,22 +343,22 @@ ov36_021E5BC8: ; 0x021E5BC8
 	add r0, r4, #0
 	bl Sav2_InitDynamicRegion
 	add r0, r4, #0
-	bl sub_0203E398
+	bl Save_CurrentLocation_BackUp
 	add r0, r4, #0
 	bl Sav2_PlayerData_GetProfileAddr
-	ldr r1, _021E5BFC ; =0x00000BB8
+	ldr r1, _021E5BFC ; =3000
 	bl PlayerProfile_SetMoney
 	add r0, r4, #0
 	bl SavArray_Flags_get
-	ldr r1, _021E5C00 ; =0x0000DB56
-	bl sub_02066B60
+	ldr r1, _021E5C00 ; =56150
+	bl ScriptState_SetFishingCompetitionLengthRecord
 	add r0, r4, #0
 	bl SavArray_Flags_get
 	bl sub_020665EC
 	pop {r4, pc}
 	.balign 4, 0
-_021E5BFC: .word 0x00000BB8
-_021E5C00: .word 0x0000DB56
+_021E5BFC: .word 3000
+_021E5C00: .word 56150
 	thumb_func_end ov36_021E5BC8
 
 	.rodata
@@ -371,6 +371,6 @@ ov36_021E5C14:
 	.word ov36_021E5948, ov36_021E5960, ov36_021E5980, 0xFFFFFFFF
 	.public ov36_021E5C24
 ov36_021E5C24:
-	.word ov36_021E5900, ov36_021E5918, ov36_021E592C, 0xFFFFFFFF
+	.word ov36_021E5900, ov36_021E5918, ov36_TitleScreen_SwitchToNewGame, 0xFFFFFFFF
 ov36_021E5C34:
 	.byte 0x02, 0x04, 0x07, 0x08, 0x52, 0x00, 0x18, 0x00, 0x03, 0x01, 0x0A, 0xFF, 0x07, 0x00, 0x00, 0x00

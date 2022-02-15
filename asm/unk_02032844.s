@@ -1317,7 +1317,7 @@ sub_02033214: ; 0x02033214
 _02033224:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0209E248
+	bl WVR_TerminateAsync
 	mov r0, #0
 	bl sub_02032844
 	pop {r3, pc}

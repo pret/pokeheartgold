@@ -213,11 +213,11 @@ _0225D6A8:
 	strh r1, [r4, r0]
 	pop {r4, pc}
 _0225D6D2:
-	ldr r0, _0225D6F0 ; =gMain + 0x40
+	ldr r0, _0225D6F0 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x26]
 	cmp r0, #0
 	beq _0225D6E0
-	ldr r0, _0225D6F4 ; =gMain
+	ldr r0, _0225D6F4 ; =gSystem
 	mov r1, #1
 	str r1, [r0, #0x5c]
 _0225D6E0:
@@ -226,8 +226,8 @@ _0225D6E0:
 _0225D6E4: .word 0x000001BA
 _0225D6E8: .word ov33_0225DA50
 _0225D6EC: .word 0x0000FFFF
-_0225D6F0: .word gMain + 0x40
-_0225D6F4: .word gMain
+_0225D6F0: .word gSystem + 0x40
+_0225D6F4: .word gSystem
 	thumb_func_end ov33_0225D5D0
 
 	thumb_func_start ov33_0225D6F8
@@ -420,7 +420,7 @@ ov33_0225D84C: ; 0x0225D84C
 	mov r2, #4
 	add r3, r1, #0
 	add r4, r0, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -431,7 +431,7 @@ ov33_0225D84C: ; 0x0225D84C
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -442,14 +442,14 @@ ov33_0225D84C: ; 0x0225D84C
 	add r0, r4, #0
 	mov r1, #9
 	mov r3, #6
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #8
 	str r0, [sp]
 	add r0, r4, #0
 	mov r1, #0xa
 	mov r2, #0
 	add r3, sp, #0x10
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	add r6, r0, #0
 	ldr r0, [sp, #0x10]
 	mov r2, #6
@@ -520,7 +520,7 @@ _0225D912:
 	ldr r0, [r7]
 	ldr r2, [sp, #0x1c]
 	mov r1, #5
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	ldr r1, [r7, #0x10]
 	ldr r0, [sp, #0x14]
 	ldr r2, [r1]
@@ -559,9 +559,9 @@ _0225D912:
 	add r0, r4, r6
 	bl AddTextPrinterParameterized2
 	add r0, r4, r6
-	bl sub_0201D8A0
+	bl CopyWindowPixelsToVram_TextMode
 	add r0, r4, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x20]
 	bl String_dtor
 	add r0, r5, #1
@@ -616,7 +616,7 @@ ov33_0225D9D4: ; 0x0225D9D4
 	lsl r3, r3, #0x18
 	mov r1, #5
 	lsr r3, r3, #0x18
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r0, [r4]
 	mov r1, #5
 	bl ScheduleBgTilemapBufferTransfer

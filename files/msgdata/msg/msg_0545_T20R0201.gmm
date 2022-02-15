@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0545_T20R0201_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hi, {STRVAR_1 3, 0, 0}!\nYou’re finally awake.\fYour friend Lyra was just here.\rShe was playing hide-and-seek with\nher MARILL.\rOh, I almost forgot! Our acquaintance,\nProfessor Elm, was looking for you.\rHe said he had a favor to ask of you.\rYou know where the lab is, right?\nIt’s right next door to us.\rBy the way, do you have everything\nyou need to go out?\fHere, use this Bag to carry things...\r</language>
+	</row>
+	<row id="msg_0545_T20R0201_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hi, {STRVAR_1 3, 0, 0}!\nYou’re finally awake.\fYour friend Ethan was just here.\rHe was playing hide-and-seek with\nhis MARILL.\rOh, I almost forgot! Our acquaintance,\nProfessor Elm, was looking for you.\rHe said he had a favor to ask of you.\rYou know where the lab is, right?\nIt’s right next door to us.\rBy the way, do you have everything\nyou need to go out?\fHere, use this Bag to carry things...\r</language>
+	</row>
+	<row id="msg_0545_T20R0201_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This is your Trainer Card...\r</language>
+	</row>
+	<row id="msg_0545_T20R0201_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Here you can save a record of\nyour progress...\r</language>
+	</row>
+	<row id="msg_0545_T20R0201_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">These are also rather helpful...\r</language>
+	</row>
+	<row id="msg_0545_T20R0201_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Just try touching the buttons, and\nyou’ll know what to do in no time.\r</language>
+	</row>
+	<row id="msg_0545_T20R0201_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Professor Elm has been waiting for\nyou, dear. Please, go and help him.</language>
+	</row>
+	<row id="msg_0545_T20R0201_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh! {STRVAR_1 3, 0, 0}!\nThat’s a cute Pokémon you have.\rProfessor Elm must have given it\nto you?\rOh, Professor Elm has a task for you,\nyou say?\fWhat kind of task?\r...\rI see. That sounds a little difficult.\rBut when someone makes that kind of\nrequest of you, it must be important!\rOh, that’s right!\nI completely forgot!\rYour Pokégear came back from the\nrepair shop!\rHere you go!\r</language>
+	</row>
+	<row id="msg_0545_T20R0201_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} received\nthe Pokégear!\r</language>
+	</row>
+	<row id="msg_0545_T20R0201_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Pokémon Gear...\nor Pokégear, as it’s often called,\fis what every Trainer should have.\r</language>
+	</row>
+	<row id="msg_0545_T20R0201_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Guess what?\nYou can use the Pokégear to make a\fphone call, too.\fDo you remember how? {YESNO 0}</language>
+	</row>
+	<row id="msg_0545_T20R0201_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Just power on the Pokégear and\ntouch the telephone button, OK?\r</language>
+	</row>
+	<row id="msg_0545_T20R0201_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Select the POKéGEAR button on the\nTouch Screen. Then select the\ftelephone button.\r</language>
+	</row>
+	<row id="msg_0545_T20R0201_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The names of the people you can call\nare automatically registered.\rJust select one to give him or her\na call.\rWow, I can’t believe it’s so easy\nto make a phone call!</language>
+	</row>
+	<row id="msg_0545_T20R0201_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What’s wrong?\rDid you forget how to get to\nMr. Pokémon’s house?\rGo north on Route 30.\nTake care, dear.</language>
+	</row>
+	<row id="msg_0545_T20R0201_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">...\nSo, you’re leaving on an adventure...\rOK! I’ll help, too.\nBut what can I do for you?\rI know!\nEvery time you receive prize money,\fI’ll save some of it for you.\rOn a long journey, money’s important.\rDo you want me to save\nyour money for you? {YESNO 0}</language>
+	</row>
+	<row id="msg_0545_T20R0201_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I want to support you on your\nadventure, {STRVAR_1 3, 0, 0}.\fOK! I’ll help, too.\fBut what can I do for you?\rI know!\rEvery time you receive prize money,\nI’ll save some of it for you.\rOn a long journey, money’s important.\nDo you want me to save\fyour money for you? {YESNO 0}</language>
+	</row>
+	<row id="msg_0545_T20R0201_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OK, I’ll take care of your money.\rBe careful.\rPokémon are your friends.\nWhen you work as a team,\fyou can accomplish anything!\fNow, go on!</language>
+	</row>
+	<row id="msg_0545_T20R0201_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OK, but be careful out there.\rPokémon are your friends.\nWhen you work as a team,\fyou can accomplish anything!\fNow, go on!</language>
+	</row>
+	<row id="msg_0545_T20R0201_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0}, stand firm!\nI’m always there for you!</language>
+	</row>
+	<row id="msg_0545_T20R0201_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hi! Welcome home!\nYou’re doing fine, I see.\rI’ve kept your room tidy and clean.\nOr...\fIs this about your money? {YESNO 0}</language>
+	</row>
+	<row id="msg_0545_T20R0201_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Just do what you can.</language>
+	</row>
+	<row id="msg_0545_T20R0201_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh!\nYou have no money saved.</language>
+	</row>
+	<row id="msg_0545_T20R0201_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Your money’s safe here!\nTake care of yourself!</language>
+	</row>
+	<row id="msg_0545_T20R0201_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0}\nYou should think hard how you spend it!</language>
+	</row>
+	<row id="msg_0545_T20R0201_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Do you want to save some money? {YESNO 0}</language>
+	</row>
+	<row id="msg_0545_T20R0201_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh!\nYou have no money left to save.\rDon’t waste your money on\nfrivolous things, OK?\rI know you are sensible like me\nand that I can count on you!</language>
+	</row>
+	<row id="msg_0545_T20R0201_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I have saved so much.\nI can’t save any more.</language>
+	</row>
+	<row id="msg_0545_T20R0201_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You have so much money already.\nI can’t let you have any more.</language>
+	</row>
+	<row id="msg_0545_T20R0201_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WITHDRAW</language>
+	</row>
+	<row id="msg_0545_T20R0201_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DEPOSIT MONEY</language>
+	</row>
+	<row id="msg_0545_T20R0201_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHANGE</language>
+	</row>
+	<row id="msg_0545_T20R0201_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">EXIT</language>
+	</row>
+	<row id="msg_0545_T20R0201_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hi, {STRVAR_1 3, 0, 0}!\nProfessor Elm told me that\fhe has something to give you!\r</language>
+	</row>
+	<row id="msg_0545_T20R0201_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Professor Elm told me that\nhe has something to give you.\fWhy don’t you visit his lab?</language>
+	</row>
+	<row id="msg_0545_T20R0201_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The TV is playing a movie!\rTwo boys are in a cave searching\nfor treasure!\rI better get going...</language>
+	</row>
+	<row id="msg_0545_T20R0201_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cinnabar Volcano Burger!\nMom’s specialty!</language>
+	</row>
+	<row id="msg_0545_T20R0201_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A squeaky-clean sink!\nMom loves having it clean.</language>
+	</row>
+	<row id="msg_0545_T20R0201_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What’s in the fridge...?\rLots of drinking water and\nsweeeet lemonade!</language>
+	</row>
+</body>

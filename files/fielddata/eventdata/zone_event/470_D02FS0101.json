@@ -1,0 +1,48 @@
+{
+  "header": "fielddata/script/scr_seq/event_D02FS0101.h",
+  "objects": [
+    {
+      "id": "obj_D02FS0101_gsgirl1",
+      "ovid": "SPRITE_GSGIRL1",
+      "mvt": 3,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_D02FS0101_000 + 1",
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 1,
+      "yrange": 1,
+      "x": 9,
+      "y": 6,
+      "z": 0
+    },
+    {
+      "id": "obj_D02FS0101_gsoldman1",
+      "ovid": "SPRITE_GSOLDMAN1",
+      "mvt": 15,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_D02FS0101_001 + 1",
+      "dirn": 1,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 1,
+      "yrange": 1,
+      "x": 5,
+      "y": 5,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 5,
+      "y": 9,
+      "header": "MAP_D02R0103",
+      "anchor": 2,
+      "height": 0
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0482_T05R0701_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Welcome!\rFeel free to look around anywhere\non this floor.</language>
+	</row>
+	<row id="msg_0482_T05R0701_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sorry, but you can only tour the\nground floor.\rEver since Johto’s Radio Tower was\ntaken over by a criminal gang,\fwe have had to step up our security.</language>
+	</row>
+	<row id="msg_0482_T05R0701_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Many people are hard at work here\nin the Radio Tower.\rThey must be doing their best to put\non good shows.</language>
+	</row>
+	<row id="msg_0482_T05R0701_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh, no, no, no!\rWe’ve been off the air ever since the\nPower Plant shut down.\rAll my efforts to start this station\nwould be wasted if I can’t broadcast.\fI’ll be ruined!</language>
+	</row>
+	<row id="msg_0482_T05R0701_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ah! So you’re the {STRVAR_1 3, 0, 0} who\nsolved the Power Plant’s problem?\rThanks to you, I never lost my job.\nI tell you, you’re a real lifesaver!\fPlease take this as my thanks.\r</language>
+	</row>
+	<row id="msg_0482_T05R0701_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ah! So you’re the {STRVAR_1 3, 0, 0} who\nsolved the Power Plant’s problem?\rThanks to you, I never lost my job.\nI tell you, you’re a real lifesaver!\fPlease take this as my thanks.\r</language>
+	</row>
+	<row id="msg_0482_T05R0701_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Director loaded the EXPN Card\non {STRVAR_1 3, 0, 0}’s Pokégear!\r{STRVAR_1 3, 0, 0}’s Pokégear has been\nupgraded!</language>
+	</row>
+	<row id="msg_0482_T05R0701_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">With that thing, you can tune in to\neven more radio programs here in\fKanto.\fGahahahaha!</language>
+	</row>
+	<row id="msg_0482_T05R0701_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey there!\nI am the super Music Director!\rHuh? Your Pokégear can’t tune in to my\nmusic shows.\rHow unfortunate!\rIf you upgrade it with the EXPN Card,\nyou can tune in.\fYou’d better get one!</language>
+	</row>
+	<row id="msg_0482_T05R0701_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey there!\nI am the super Music Director!\rI’m responsible for the gorgeous\nmelodies that go out over the air.\rDon’t be square. Grab your music\noff the air!</language>
+	</row>
+	<row id="msg_0482_T05R0701_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">1F Reception\n2F Sales\f3F Personnel\f4F Production\f5F Director’s Office\n</language>
+	</row>
+	<row id="msg_0482_T05R0701_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Perk Up Pokémon with Mellow Sounds\nof the Poké Flute.\rThe Poké Flute broadcast is only\navailable around the Kanto region.\rTry to tune in around the upper area\nof the radio!</language>
+	</row>
+</body>

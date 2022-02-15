@@ -1,0 +1,763 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0175_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Light ON/OFF</language>
+	</row>
+	<row id="msg_0175_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Light Color 1</language>
+	</row>
+	<row id="msg_0175_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Light Color 2</language>
+	</row>
+	<row id="msg_0175_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Light Color 3</language>
+	</row>
+	<row id="msg_0175_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Light Color 4</language>
+	</row>
+	<row id="msg_0175_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Light Vector 1</language>
+	</row>
+	<row id="msg_0175_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Light Vector 2</language>
+	</row>
+	<row id="msg_0175_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Light Vector 3</language>
+	</row>
+	<row id="msg_0175_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Light Vector 4</language>
+	</row>
+	<row id="msg_0175_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Polygon Color: diffused</language>
+	</row>
+	<row id="msg_0175_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Environment Lighting: ambient</language>
+	</row>
+	<row id="msg_0175_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Specular Reflexion: specular</language>
+	</row>
+	<row id="msg_0175_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Radiant Light: emitted</language>
+	</row>
+	<row id="msg_0175_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Select debug windows</language>
+	</row>
+	<row id="msg_0175_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Light: End Frames</language>
+	</row>
+	<row id="msg_0175_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ON</language>
+	</row>
+	<row id="msg_0175_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OFF</language>
+	</row>
+	<row id="msg_0175_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Y</language>
+	</row>
+	<row id="msg_0175_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">X</language>
+	</row>
+	<row id="msg_0175_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Z</language>
+	</row>
+	<row id="msg_0175_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A</language>
+	</row>
+	<row id="msg_0175_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">B</language>
+	</row>
+	<row id="msg_0175_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Y up down</language>
+	</row>
+	<row id="msg_0175_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">X up down</language>
+	</row>
+	<row id="msg_0175_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A up down</language>
+	</row>
+	<row id="msg_0175_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">B up down</language>
+	</row>
+	<row id="msg_0175_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Y left</language>
+	</row>
+	<row id="msg_0175_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">X up</language>
+	</row>
+	<row id="msg_0175_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A right</language>
+	</row>
+	<row id="msg_0175_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">B down</language>
+	</row>
+	<row id="msg_0175_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Red</language>
+	</row>
+	<row id="msg_0175_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Green</language>
+	</row>
+	<row id="msg_0175_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Blue</language>
+	</row>
+	<row id="msg_0175_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Alpha</language>
+	</row>
+	<row id="msg_0175_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Light 1</language>
+	</row>
+	<row id="msg_0175_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Light 2</language>
+	</row>
+	<row id="msg_0175_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Light 3</language>
+	</row>
+	<row id="msg_0175_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Light 4</language>
+	</row>
+	<row id="msg_0175_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Change template LR</language>
+	</row>
+	<row id="msg_0175_00039" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Modes</language>
+	</row>
+	<row id="msg_0175_00040" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">かかりぐあい</language>
+	</row>
+	<row id="msg_0175_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Offset</language>
+	</row>
+	<row id="msg_0175_00042" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ON OFF</language>
+	</row>
+	<row id="msg_0175_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">1 B</language>
+	</row>
+	<row id="msg_0175_00044" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">10 A</language>
+	</row>
+	<row id="msg_0175_00045" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">100 X</language>
+	</row>
+	<row id="msg_0175_00046" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">1000 Y</language>
+	</row>
+	<row id="msg_0175_00047" index="47">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fog Settings</language>
+	</row>
+	<row id="msg_0175_00048" index="48">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fog Color</language>
+	</row>
+	<row id="msg_0175_00049" index="49">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fog Table</language>
+	</row>
+	<row id="msg_0175_00050" index="50">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Next data X</language>
+	</row>
+	<row id="msg_0175_00051" index="51">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Previous data B</language>
+	</row>
+	<row id="msg_0175_00052" index="52">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Data</language>
+	</row>
+	<row id="msg_0175_00053" index="53">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BGめんに　ひょうじ　SELECT</language>
+	</row>
+	<row id="msg_0175_00054" index="54">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sunny</language>
+	</row>
+	<row id="msg_0175_00055" index="55">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cloudy</language>
+	</row>
+	<row id="msg_0175_00056" index="56">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rain</language>
+	</row>
+	<row id="msg_0175_00057" index="57">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Heavy Rain</language>
+	</row>
+	<row id="msg_0175_00058" index="58">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Thunder</language>
+	</row>
+	<row id="msg_0175_00059" index="59">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Snow</language>
+	</row>
+	<row id="msg_0175_00060" index="60">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Blizzard</language>
+	</row>
+	<row id="msg_0175_00061" index="61">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Whiteout</language>
+	</row>
+	<row id="msg_0175_00062" index="62">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fog</language>
+	</row>
+	<row id="msg_0175_00063" index="63">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Volcanic Ash</language>
+	</row>
+	<row id="msg_0175_00064" index="64">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sandstorm</language>
+	</row>
+	<row id="msg_0175_00065" index="65">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Diamond</language>
+	</row>
+	<row id="msg_0175_00066" index="66">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Defog</language>
+	</row>
+	<row id="msg_0175_00067" index="67">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Flash</language>
+	</row>
+	<row id="msg_0175_00068" index="68">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Determination</language>
+	</row>
+	<row id="msg_0175_00069" index="69">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mystery</language>
+	</row>
+	<row id="msg_0175_00070" index="70">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rainbow</language>
+	</row>
+	<row id="msg_0175_00071" index="71">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Stop</language>
+	</row>
+	<row id="msg_0175_00072" index="72">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ambition</language>
+	</row>
+	<row id="msg_0175_00073" index="73">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">こごれび</language>
+	</row>
+	<row id="msg_0175_00074" index="74">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Scary Feel</language>
+	</row>
+	<row id="msg_0175_00075" index="75">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Galactic 00</language>
+	</row>
+	<row id="msg_0175_00076" index="76">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lost Tower</language>
+	</row>
+	<row id="msg_0175_00077" index="77">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Stark Mt.</language>
+	</row>
+	<row id="msg_0175_00078" index="78">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cave 02</language>
+	</row>
+	<row id="msg_0175_00079" index="79">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cell</language>
+	</row>
+	<row id="msg_0175_00080" index="80">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Image</language>
+	</row>
+	<row id="msg_0175_00081" index="81">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wipe</language>
+	</row>
+	<row id="msg_0175_00082" index="82">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Material</language>
+	</row>
+	<row id="msg_0175_00083" index="83">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FOG</language>
+	</row>
+	<row id="msg_0175_00084" index="84">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Weather</language>
+	</row>
+	<row id="msg_0175_00085" index="85">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Light</language>
+	</row>
+	<row id="msg_0175_00086" index="86">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ライトスピ</language>
+	</row>
+	<row id="msg_0175_00087" index="87">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">No. of Pokémon encounter</language>
+	</row>
+	<row id="msg_0175_00088" index="88">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Close</language>
+	</row>
+	<row id="msg_0175_00089" index="89">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">3D Transfer</language>
+	</row>
+	<row id="msg_0175_00090" index="90">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ON</language>
+	</row>
+	<row id="msg_0175_00091" index="91">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OFF</language>
+	</row>
+	<row id="msg_0175_00092" index="92">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">High</language>
+	</row>
+	<row id="msg_0175_00093" index="93">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Low</language>
+	</row>
+	<row id="msg_0175_00094" index="94">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ST</language>
+	</row>
+	<row id="msg_0175_00095" index="95">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Test</language>
+	</row>
+	<row id="msg_0175_00096" index="96">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pokedex</language>
+	</row>
+	<row id="msg_0175_00097" index="97">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">X　0</language>
+	</row>
+	<row id="msg_0175_00098" index="98">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">X 1</language>
+	</row>
+	<row id="msg_0175_00099" index="99">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">X 2</language>
+	</row>
+	<row id="msg_0175_00100" index="100">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Y 0</language>
+	</row>
+	<row id="msg_0175_00101" index="101">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Y 1</language>
+	</row>
+	<row id="msg_0175_00102" index="102">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Y 2</language>
+	</row>
+	<row id="msg_0175_00103" index="103">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SELECT: Trash all Pokémon data\nkey   A=1 right=10 up=100\nkey   Y=-1 left=-10 down=-100\nL: Start to change\nR: End to change\nSTART: Settings\nB: Exit from the debug</language>
+	</row>
+	<row id="msg_0175_00104" index="104">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pokédex control</language>
+	</row>
+	<row id="msg_0175_00105" index="105">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Begin</language>
+	</row>
+	<row id="msg_0175_00106" index="106">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">End</language>
+	</row>
+	<row id="msg_0175_00107" index="107">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">♡National Pokédex flag ON</language>
+	</row>
+	<row id="msg_0175_00108" index="108">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">♡Set Sinnoh Pokédex</language>
+	</row>
+	<row id="msg_0175_00109" index="109">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">♡Set National Pokédex</language>
+	</row>
+	<row id="msg_0175_00110" index="110">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">♡Seen National Pokédex</language>
+	</row>
+	<row id="msg_0175_00111" index="111">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">♡Seen Sinnoh Pokédex</language>
+	</row>
+	<row id="msg_0175_00112" index="112">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DEOXYS save data</language>
+	</row>
+	<row id="msg_0175_00113" index="113">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SHELLOS save data</language>
+	</row>
+	<row id="msg_0175_00114" index="114">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">♡Set all languages</language>
+	</row>
+	<row id="msg_0175_00115" index="115">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">♡Set a random-select language</language>
+	</row>
+	<row id="msg_0175_00116" index="116">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">♡Set English</language>
+	</row>
+	<row id="msg_0175_00117" index="117">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">♡Set French</language>
+	</row>
+	<row id="msg_0175_00118" index="118">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">♡Set Italian</language>
+	</row>
+	<row id="msg_0175_00119" index="119">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">♡Set German</language>
+	</row>
+	<row id="msg_0175_00120" index="120">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">♡Set Spanish</language>
+	</row>
+	<row id="msg_0175_00121" index="121">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">♡Set Unown from A to Z</language>
+	</row>
+	<row id="msg_0175_00122" index="122">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">♡Set full set of Unown</language>
+	</row>
+	<row id="msg_0175_00123" index="123">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pokémon</language>
+	</row>
+	<row id="msg_0175_00124" index="124">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Poison</language>
+	</row>
+	<row id="msg_0175_00125" index="125">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Climax</language>
+	</row>
+	<row id="msg_0175_00126" index="126">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Grass 00</language>
+	</row>
+	<row id="msg_0175_00127" index="127">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Grass 01</language>
+	</row>
+	<row id="msg_0175_00128" index="128">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Water 00</language>
+	</row>
+	<row id="msg_0175_00129" index="129">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Water 01</language>
+	</row>
+	<row id="msg_0175_00130" index="130">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sweet Scent</language>
+	</row>
+	<row id="msg_0175_00131" index="131">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Trade</language>
+	</row>
+	<row id="msg_0175_00132" index="132">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Image records</language>
+	</row>
+	<row id="msg_0175_00133" index="133">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Accessory Exchange</language>
+	</row>
+	<row id="msg_0175_00134" index="134">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HM00</language>
+	</row>
+	<row id="msg_0175_00135" index="135">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HM01</language>
+	</row>
+	<row id="msg_0175_00136" index="136">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HM02</language>
+	</row>
+	<row id="msg_0175_00137" index="137">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mixing teams</language>
+	</row>
+	<row id="msg_0175_00138" index="138">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">World Clock</language>
+	</row>
+	<row id="msg_0175_00139" index="139">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">News</language>
+	</row>
+	<row id="msg_0175_00140" index="140">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Early Plaza Events</language>
+	</row>
+	<row id="msg_0175_00141" index="141">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Plaza Room0</language>
+	</row>
+	<row id="msg_0175_00142" index="142">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Plaza Room1</language>
+	</row>
+	<row id="msg_0175_00143" index="143">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Plaza Room2</language>
+	</row>
+	<row id="msg_0175_00144" index="144">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Plaza: normal</language>
+	</row>
+	<row id="msg_0175_00145" index="145">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Plaza: everyone VIP</language>
+	</row>
+	<row id="msg_0175_00146" index="146">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Plaza: Delay the lock timing</language>
+	</row>
+	<row id="msg_0175_00147" index="147">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dungeon 00</language>
+	</row>
+	<row id="msg_0175_00148" index="148">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dungeon 01</language>
+	</row>
+	<row id="msg_0175_00149" index="149">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TR Grass 00</language>
+	</row>
+	<row id="msg_0175_00150" index="150">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TR Grass 01</language>
+	</row>
+	<row id="msg_0175_00151" index="151">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TR Water 00</language>
+	</row>
+	<row id="msg_0175_00152" index="152">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TR Water 01</language>
+	</row>
+	<row id="msg_0175_00153" index="153">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TR Dungeon 00</language>
+	</row>
+	<row id="msg_0175_00154" index="154">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TR Dungeon 01</language>
+	</row>
+	<row id="msg_0175_00155" index="155">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">sp Tower</language>
+	</row>
+	<row id="msg_0175_00156" index="156">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">sp Double</language>
+	</row>
+	<row id="msg_0175_00157" index="157">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Galactic 00</language>
+	</row>
+	<row id="msg_0175_00158" index="158">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Galactic 01</language>
+	</row>
+	<row id="msg_0175_00159" index="159">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Legend</language>
+	</row>
+	<row id="msg_0175_00160" index="160">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Package</language>
+	</row>
+	<row id="msg_0175_00161" index="161">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Gym Oreburgh</language>
+	</row>
+	<row id="msg_0175_00162" index="162">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Gym Eterna</language>
+	</row>
+	<row id="msg_0175_00163" index="163">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Gym Pastoria</language>
+	</row>
+	<row id="msg_0175_00164" index="164">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Gym Veilstone</language>
+	</row>
+	<row id="msg_0175_00165" index="165">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Gym Hearthome</language>
+	</row>
+	<row id="msg_0175_00166" index="166">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Gym Snowpoint</language>
+	</row>
+	<row id="msg_0175_00167" index="167">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Gym Canalave</language>
+	</row>
+	<row id="msg_0175_00168" index="168">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Gym Sunyshore</language>
+	</row>
+	<row id="msg_0175_00169" index="169">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Point 00</language>
+	</row>
+	<row id="msg_0175_00170" index="170">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Point 01</language>
+	</row>
+	<row id="msg_0175_00171" index="171">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Point 02</language>
+	</row>
+	<row id="msg_0175_00172" index="172">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Point 03</language>
+	</row>
+	<row id="msg_0175_00173" index="173">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHANP</language>
+	</row>
+	<row id="msg_0175_00174" index="174">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ブラシぬり</language>
+	</row>
+	<row id="msg_0175_00175" index="175">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">むかしをさいげん</language>
+	</row>
+	<row id="msg_0175_00176" index="176">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Horizontal Rotation　A up down　value:{STRVAR_1 59, 0, 0}\n　　　　　　　　　　　　　　　angle:{STRVAR_1 59, 5, 0}</language>
+	</row>
+	<row id="msg_0175_00177" index="177">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Vertical Rotation　B up down　value:{STRVAR_1 59, 1, 0}\n　　　　　　　　　　　　　　　angle:{STRVAR_1 59, 6, 0}</language>
+	</row>
+	<row id="msg_0175_00178" index="178">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Overall Slope　Y up down　value:{STRVAR_1 59, 2, 0}\n                              angle:{STRVAR_1 59, 0, 0}</language>
+	</row>
+	<row id="msg_0175_00179" index="179">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Camera Distance A up down　value:{STRVAR_1 59, 3, 0}</language>
+	</row>
+	<row id="msg_0175_00180" index="180">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Camera Target　B up down　value:{STRVAR_1 59, 4, 0}</language>
+	</row>
+	<row id="msg_0175_00181" index="181">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Stop Timer: START　Switch Control: R\nStop Operation: X  End: L   Start drawing: right</language>
+	</row>
+	<row id="msg_0175_00182" index="182">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Camera Angle　Y up down value:{STRVAR_1 59, 0, 0}</language>
+	</row>
+	<row id="msg_0175_00183" index="183">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Poition　Y up down value:{STRVAR_1 59, 0, 0}</language>
+	</row>
+	<row id="msg_0175_00184" index="184">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Size　A up down value:{STRVAR_1 59, 0, 0}</language>
+	</row>
+	<row id="msg_0175_00185" index="185">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Gravity B up down value:{STRVAR_1 59, 0, 0}</language>
+	</row>
+	<row id="msg_0175_00186" index="186">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Gravity Area　Y up down value:{STRVAR_1 59, 0, 0}</language>
+	</row>
+	<row id="msg_0175_00187" index="187">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Room kind？{STRVAR_1 51, 0, 0} \nA...Confirm 　UP DOWN...Select</language>
+	</row>
+	<row id="msg_0175_00188" index="188">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Season？{STRVAR_1 51, 0, 0}\nA...Confirm 　UP DOWN...Select</language>
+	</row>
+	<row id="msg_0175_00189" index="189">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Which Tap Toy？{STRVAR_3 2, 0, 0}\nA...Confirm 　UP DOWN...Select</language>
+	</row>
+</body>

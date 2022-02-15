@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0337_R07R0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Did you hear about the accident at\nthe Power Plant?\rIt’s located in the east, close to\nLavender Town.</language>
+	</row>
+	<row id="msg_0337_R07R0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I take my guard job seriously.\nHey! You have a Pokédex.\fOK. You can go through.</language>
+	</row>
+</body>

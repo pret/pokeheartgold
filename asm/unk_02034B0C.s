@@ -353,7 +353,7 @@ sub_02034D8C: ; 0x02034D8C
 	ldr r1, _02034DB4 ; =sub_02034D60
 	mov r0, #8
 	mov r2, #0
-	bl sub_0209E00C
+	bl WVR_StartUpAsync
 	cmp r0, #1
 	beq _02034DAC
 	bl OS_Terminate
@@ -396,12 +396,12 @@ _02034DDC: .word _021D4134
 
 	thumb_func_start sub_02034DE0
 sub_02034DE0: ; 0x02034DE0
-	ldr r3, _02034DE8 ; =sub_0209E248
+	ldr r3, _02034DE8 ; =WVR_TerminateAsync
 	ldr r0, _02034DEC ; =sub_02034D78
 	mov r1, #0
 	bx r3
 	.balign 4, 0
-_02034DE8: .word sub_0209E248
+_02034DE8: .word WVR_TerminateAsync
 _02034DEC: .word sub_02034D78
 	thumb_func_end sub_02034DE0
 

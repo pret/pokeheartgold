@@ -1145,7 +1145,7 @@ ov90_02258FF0: ; 0x02258FF0
 	ldr r0, [sp]
 	str r6, [r5, #4]
 	str r0, [r5, #8]
-	ldr r0, _02259080 ; =gMain + 0x60
+	ldr r0, _02259080 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -1180,14 +1180,14 @@ _02259024:
 	ldr r0, [r5]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r1, [r4]
 	ldr r0, [r5]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [sp]
 	add r7, r7, #1
 	add r6, #0x20
@@ -1197,7 +1197,7 @@ _02259024:
 _0225907C:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02259080: .word gMain + 0x60
+_02259080: .word gSystem + 0x60
 	thumb_func_end ov90_02258FF0
 
 	thumb_func_start ov90_02259084
@@ -1208,7 +1208,7 @@ ov90_02259084: ; 0x02259084
 	ldr r0, [r5]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #8]
 	mov r6, #0
 	cmp r0, #0
@@ -1235,11 +1235,11 @@ _022590B6:
 
 	thumb_func_start ov90_022590C0
 ov90_022590C0: ; 0x022590C0
-	ldr r3, _022590C8 ; =sub_0201EEB4
+	ldr r3, _022590C8 ; =BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r0, [r0]
 	bx r3
 	nop
-_022590C8: .word sub_0201EEB4
+_022590C8: .word BgConfig_HandleScheduledScrollAndTransferOps
 	thumb_func_end ov90_022590C0
 
 	thumb_func_start ov90_022590CC
@@ -1296,7 +1296,7 @@ ov90_022590CC: ; 0x022590CC
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -1466,24 +1466,24 @@ ov90_02259250: ; 0x02259250
 
 	thumb_func_start ov90_0225926C
 ov90_0225926C: ; 0x0225926C
-	ldr r3, _02259278 ; =sub_0200C7BC
+	ldr r3, _02259278 ; =BufferWiFiPlazaInstrumentName
 	add r2, r1, #0
 	ldr r0, [r0, #4]
 	mov r1, #1
 	bx r3
 	nop
-_02259278: .word sub_0200C7BC
+_02259278: .word BufferWiFiPlazaInstrumentName
 	thumb_func_end ov90_0225926C
 
 	thumb_func_start ov90_0225927C
 ov90_0225927C: ; 0x0225927C
-	ldr r3, _02259288 ; =sub_0200C74C
+	ldr r3, _02259288 ; =BufferWiFiPlazaActivityName
 	add r2, r1, #0
 	ldr r0, [r0, #4]
 	mov r1, #0
 	bx r3
 	nop
-_02259288: .word sub_0200C74C
+_02259288: .word BufferWiFiPlazaActivityName
 	thumb_func_end ov90_0225927C
 
 	thumb_func_start ov90_0225928C
@@ -1797,7 +1797,7 @@ _022594B4:
 	add r2, r1, #0
 	bl DrawFrameAndWindow2
 	add r0, r5, r7
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -1829,7 +1829,7 @@ _02259524:
 	mov r1, #1
 	bl ClearFrameAndWindow2
 	add r0, r5, r4
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov90_022594FC
@@ -2040,7 +2040,7 @@ ov90_022596C8: ; 0x022596C8
 	add r3, r2, #0
 	add r6, r0, #0
 	str r4, [sp, #4]
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2050,7 +2050,7 @@ ov90_022596C8: ; 0x022596C8
 	add r0, r6, #0
 	mov r1, #6
 	mov r3, #1
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r3, #2
 	lsl r3, r3, #8
 	add r0, r6, #0
@@ -2058,7 +2058,7 @@ ov90_022596C8: ; 0x022596C8
 	mov r2, #0
 	add r3, r5, r3
 	str r4, [sp]
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r1, #0x7f
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -2071,7 +2071,7 @@ ov90_022596C8: ; 0x022596C8
 	add r0, r6, #0
 	mov r1, #8
 	mov r3, #3
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldrh r1, [r5, #4]
 	add r0, r6, #0
 	add r2, r4, #0
@@ -2559,12 +2559,12 @@ _02259AF2:
 	mov r1, #3
 	mov r2, #4
 	mov r3, #2
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r4, #0x30]
 	mov r1, #5
 	mov r2, #4
 	mov r3, #2
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2715,10 +2715,10 @@ _02259C10:
 _02259C12:
 	mov r0, #1
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r1, [sp, #0x1c]
 	mov r0, #0xc
 	add r2, r1, #0
@@ -2781,7 +2781,7 @@ _02259C12:
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x48]
 	ldr r0, [r0]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [sp, #0x28]
 	ldr r1, _02259D44 ; =ov90_0225C318
 	lsl r0, r0, #3
@@ -3022,7 +3022,7 @@ _02259E70:
 ov90_02259E8C: ; 0x02259E8C
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [r4]
 	mov r1, #1
 	bl ScheduleBgTilemapBufferTransfer
@@ -3308,14 +3308,14 @@ _0225A09E:
 	ldr r0, [r4]
 	add r2, r1, #0
 	sub r3, #0xff
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r6]
 	mov r2, #0
 	add r3, r2, #0
 	ldr r0, [r0]
 	mov r1, #1
 	sub r3, #0xff
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r7, #6
 	mov r4, #0
 	add r5, r6, #4
@@ -3344,7 +3344,7 @@ _0225A0C6:
 	bl sub_02014A78
 	ldr r0, _0225A104 ; =ov90_0225A1B8
 	add r1, r6, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0225A100: .word 0x0000FF01
@@ -3362,7 +3362,7 @@ ov90_0225A108: ; 0x0225A108
 	beq _0225A130
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	mov r0, #0xc1
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -3473,13 +3473,13 @@ ov90_0225A1B8: ; 0x0225A1B8
 	ldrsh r3, [r6, r4]
 	ldr r0, [r0]
 	add r2, r1, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5]
 	ldrsh r3, [r6, r4]
 	ldr r0, [r0]
 	mov r1, #1
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _0225A1F8:
 	pop {r4, r5, r6, pc}
 	nop
@@ -3637,7 +3637,7 @@ ov90_0225A2B0: ; 0x0225A2B0
 	ldr r0, [sp, #0x28]
 	ldr r2, [r4]
 	mov r1, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -3647,7 +3647,7 @@ ov90_0225A2B0: ; 0x0225A2B0
 	ldr r0, [sp, #0x28]
 	ldr r2, [r4]
 	mov r1, #0xa
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -3980,24 +3980,24 @@ _0225A5D2:
 	ldr r0, [r5]
 	add r2, r1, #0
 	add r3, r4, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5]
 	mov r1, #1
 	mov r2, #0
 	add r3, r4, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	pop {r3, r4, r5, pc}
 _0225A5EC:
 	ldr r0, [r5]
 	mov r1, #0
 	mov r2, #3
 	add r3, r4, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5]
 	mov r1, #1
 	mov r2, #3
 	add r3, r4, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	pop {r3, r4, r5, pc}
 _0225A606:
 	bl GF_AssertFail
@@ -4022,24 +4022,24 @@ _0225A622:
 	ldr r0, [r5]
 	add r2, r1, #0
 	add r3, r4, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r5]
 	mov r1, #1
 	mov r2, #0
 	add r3, r4, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	pop {r3, r4, r5, pc}
 _0225A63C:
 	ldr r0, [r5]
 	mov r1, #0
 	mov r2, #3
 	add r3, r4, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r5]
 	mov r1, #1
 	mov r2, #3
 	add r3, r4, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	pop {r3, r4, r5, pc}
 _0225A656:
 	bl GF_AssertFail
@@ -4081,7 +4081,7 @@ _0225A680:
 	mov r2, #0
 	add r3, r4, #0
 	str r5, [sp, #8]
-	bl sub_02007BA4
+	bl GfGfxLoader_GXLoadPalWithSrcOffsetFromOpenNarc
 	mov r0, #0xa0
 	str r0, [sp]
 	mov r0, #0x20
@@ -4091,7 +4091,7 @@ _0225A680:
 	mov r2, #4
 	add r3, r4, #0
 	str r5, [sp, #8]
-	bl sub_02007BA4
+	bl GfGfxLoader_GXLoadPalWithSrcOffsetFromOpenNarc
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -4297,7 +4297,7 @@ ov90_0225A850: ; 0x0225A850
 	add r3, r2, #0
 	add r6, r0, #0
 	str r4, [sp, #4]
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0x12
 	lsl r0, r0, #4
 	str r0, [sp]
@@ -4306,7 +4306,7 @@ ov90_0225A850: ; 0x0225A850
 	add r2, r1, #0
 	mov r3, #0
 	str r4, [sp, #4]
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4316,7 +4316,7 @@ ov90_0225A850: ; 0x0225A850
 	add r0, r6, #0
 	mov r1, #6
 	mov r3, #1
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r1, #0
 	mov r0, #1
 	str r1, [sp]
@@ -4328,7 +4328,7 @@ ov90_0225A850: ; 0x0225A850
 	add r0, r6, #0
 	mov r1, #6
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r3, #0x96
 	lsl r3, r3, #2
 	add r0, r6, #0
@@ -4336,7 +4336,7 @@ ov90_0225A850: ; 0x0225A850
 	mov r2, #0
 	add r3, r5, r3
 	str r4, [sp]
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r1, #0x95
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -4349,7 +4349,7 @@ ov90_0225A850: ; 0x0225A850
 	add r0, r6, #0
 	mov r1, #8
 	mov r3, #3
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4359,7 +4359,7 @@ ov90_0225A850: ; 0x0225A850
 	add r0, r6, #0
 	mov r1, #8
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldrb r1, [r5, #7]
 	add r0, r6, #0
 	add r2, r4, #0
@@ -5055,12 +5055,12 @@ _0225AE1C:
 	mov r1, #3
 	mov r2, #4
 	mov r3, #2
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r4, #0x4c]
 	mov r1, #5
 	mov r2, #4
 	mov r3, #2
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -5561,12 +5561,12 @@ _0225B204:
 	mov r1, #3
 	mov r2, #4
 	mov r3, #2
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r4, #0x4c]
 	mov r1, #5
 	mov r2, #4
 	mov r3, #2
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -5599,7 +5599,7 @@ ov90_0225B254: ; 0x0225B254
 	add r0, r1, #0
 	mov r1, #5
 	add r2, r4, r2
-	bl sub_02007C48
+	bl GfGfxLoader_GetPlttDataFromOpenNarc
 	ldr r1, _0225B270 ; =0x00000654
 	str r0, [r4, r1]
 	pop {r4, pc}
@@ -6076,7 +6076,7 @@ ov90_0225B59C: ; 0x0225B59C
 	mov r1, #0x18
 	mov r2, #0
 	lsl r3, r3, #6
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0x8b
 	str r0, [sp]
 	mov r0, #0
@@ -6088,14 +6088,14 @@ ov90_0225B59C: ; 0x0225B59C
 	ldr r2, [r5]
 	add r0, r4, #0
 	mov r3, #2
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	ldr r0, [sp, #0x44]
 	mov r1, #0x1a
 	str r0, [sp]
 	add r0, r4, #0
 	mov r2, #0
 	add r3, r7, #4
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	str r0, [r7]
 	mov r0, #0x10
 	str r0, [sp]
@@ -6241,7 +6241,7 @@ _0225B6EA:
 	ldr r0, [r5]
 	mov r1, #2
 	add r2, #0xc
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x14
@@ -6252,7 +6252,7 @@ _0225B6EA:
 	ldr r0, [r5]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r0, [r5]
 	mov r1, #2
 	bl ScheduleBgTilemapBufferTransfer
@@ -6548,7 +6548,7 @@ ov90_0225B954: ; 0x0225B954
 	cmp r0, #0
 	bne _0225B970
 	ldr r0, _0225B974 ; =0x000004BF
-	bl sub_02006B24
+	bl PlayFanfare
 	mov r0, #0x66
 	mov r1, #1
 	lsl r0, r0, #4
@@ -6568,7 +6568,7 @@ ov90_0225B978: ; 0x0225B978
 	ldr r0, [r4, r0]
 	cmp r0, #1
 	bne _0225B996
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	bne _0225B996
 	mov r0, #0x66
@@ -6866,7 +6866,7 @@ _0225BB02:
 	strb r1, [r7, r0]
 	ldr r0, _0225BBCC ; =ov90_0225BE08
 	add r1, r7, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	ldr r0, [r7, #4]
 	mov r1, #2
 	bl sub_02024890
@@ -7071,7 +7071,7 @@ _0225BD34:
 	add r5, r5, #4
 	cmp r4, #2
 	blt _0225BD28
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]

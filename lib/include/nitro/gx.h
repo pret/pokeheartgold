@@ -1,8 +1,14 @@
 #ifndef NITRO_GX_H_
 #define NITRO_GX_H_
 
-static inline s32 GX_GetVCount(void) {
-    return reg_GX_VCOUNT;
-}
+#include <nitro/gx/gx.h>
+#include <nitro/gx/gx_bgcnt.h>
+#include <nitro/gx/g2.h>
+#include <nitro/gx/g3.h>
+#include <nitro/gx/gx_load.h>
+
+#ifdef SDK_ARM9
+#include <nitro/gx/gx_vramcnt.h>
+#endif //SDK_ARM9
 
 #endif //NITRO_GX_H_

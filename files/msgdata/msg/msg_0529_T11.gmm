@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0529_T11_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Our city was featured on a\nradio show.\rIt’s nice to hear praise for your\ncity, but it’s a bit embarrassing, too.</language>
+	</row>
+	<row id="msg_0529_T11_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I went to the Gym, raring for battles\nagainst Trainers...\rIt turns out, I stumbled into the\nunused Gym next door.\fBoy, I was pretty embarrassed.</language>
+	</row>
+	<row id="msg_0529_T11_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This is the house of the Copycat girl.\rShe is so good at being a copycat\nof the way people talk that it’ll\fconfuse you when you talk to her.</language>
+	</row>
+	<row id="msg_0529_T11_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Copycat girl looked unhappy.\rShe said she lost her cherished\nPoké Doll--CLEFAIRY.</language>
+	</row>
+	<row id="msg_0529_T11_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Going into an alley for the first time\nmakes me sorta anxious.</language>
+	</row>
+	<row id="msg_0529_T11_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Chomp... Chew...\rThe manager of the Power Plant\nused to be a repairman in a\fsmall factory.\rChew... Chew...\rHis hard work has taken him up the\nladder to eventually become the\fmanager of the Power Plant.\fChew... Gulp...\rQuite impressive, don’t you think?\nHaaah, I’m full!</language>
+	</row>
+	<row id="msg_0529_T11_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This is Silph Co., famous for\nPokémon merchandise.\rIn the past, Team Rocket wanted the\ncompany because of that.</language>
+	</row>
+	<row id="msg_0529_T11_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There’s a place called Trainer House\nin Viridian where Trainers gather from\fall over the place.</language>
+	</row>
+	<row id="msg_0529_T11_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You came out from Johto?\rYou can zip back home by hopping on\nthe Magnet Train.</language>
+	</row>
+	<row id="msg_0529_T11_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Kanto-Johto Magnet Train Line\nSaffron City Station</language>
+	</row>
+	<row id="msg_0529_T11_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Saffron City\nShining Big City</language>
+	</row>
+	<row id="msg_0529_T11_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Everyone Is Welcome!\nFighting Dojo</language>
+	</row>
+	<row id="msg_0529_T11_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Saffron City Pokémon Gym\nLeader: Sabrina\fThe Mistress of Psychic-Type Pokémon!</language>
+	</row>
+	<row id="msg_0529_T11_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Silph Co.\nOffice Building</language>
+	</row>
+	<row id="msg_0529_T11_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Don’t Call Me Uncle Psychic!\nMr. Psychic’s House</language>
+	</row>
+</body>

@@ -1,0 +1,171 @@
+{
+  "header": "fielddata/script/scr_seq/event_D32R0102.h",
+  "bgs": [
+    {
+      "scr": "std_hiddenitem_d32r0102_rare_candy",
+      "type": 2,
+      "x": 24,
+      "y": 21,
+      "z": 0,
+      "dir": 4
+    },
+    {
+      "scr": "_EV_scr_seq_D32R0102_008 + 1",
+      "type": 1,
+      "x": 12,
+      "y": 10,
+      "z": 0,
+      "dir": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj_D32R0102_gsmiddleman1",
+      "ovid": "SPRITE_GSMIDDLEMAN1",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_D32R0102_000 + 1",
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    {
+      "id": "obj_D32R0102_gsmiddleman1_2",
+      "ovid": "SPRITE_GSMIDDLEMAN1",
+      "mvt": 14,
+      "type": 0,
+      "flag": "FLAG_HIDE_CAMERON",
+      "scr": "_EV_scr_seq_D32R0102_003 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 13,
+      "y": 16,
+      "z": 0
+    },
+    {
+      "id": "obj_D32R0102_gsman1",
+      "ovid": "SPRITE_GSMAN1",
+      "mvt": 0,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_D32R0102_005 + 1",
+      "dirn": 0,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 0,
+      "yrange": 0,
+      "x": 2,
+      "y": 20,
+      "z": 0
+    },
+    {
+      "id": "obj_D32R0102_mount_2",
+      "ovid": "SPRITE_MOUNT_2",
+      "mvt": 3,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_D32R0102_006 + 1",
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 1,
+      "yrange": 1,
+      "x": 22,
+      "y": 21,
+      "z": 0
+    },
+    {
+      "id": "obj_D32R0102_gsgirl2",
+      "ovid": "SPRITE_GSGIRL2",
+      "mvt": 4,
+      "type": 0,
+      "flag": "FLAG_NOTHING",
+      "scr": "_EV_scr_seq_D32R0102_007 + 1",
+      "dirn": 2,
+      "eye": 0,
+      "unk10": 0,
+      "tsure_poke_color": 0,
+      "xrange": 1,
+      "yrange": 1,
+      "x": 9,
+      "y": 22,
+      "z": 0
+    }
+  ],
+  "warps": [
+    {
+      "x": 14,
+      "y": 34,
+      "header": "MAP_W40R0101",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 15,
+      "y": 34,
+      "header": "MAP_W40R0101",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 14,
+      "y": 7,
+      "header": "MAP_D32R0101",
+      "anchor": 4,
+      "height": 0
+    },
+    {
+      "x": 15,
+      "y": 7,
+      "header": "MAP_D32R0101",
+      "anchor": 4,
+      "height": 0
+    },
+    {
+      "x": 8,
+      "y": 14,
+      "header": "MAP_D32PC0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 19,
+      "y": 14,
+      "header": "MAP_D32FS0101",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 4,
+      "y": 23,
+      "header": "MAP_D32R0103",
+      "anchor": 0,
+      "height": 0
+    }
+  ],
+  "coords": [
+    {
+      "scr": "_EV_scr_seq_D32R0102_001 + 1",
+      "x": 12,
+      "y": 28,
+      "w": 6,
+      "h": 1,
+      "z": 0,
+      "val": 0,
+      "var": "VAR_UNK_40E5"
+    }
+  ]
+}

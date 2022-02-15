@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0597_T25R1006_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Do you listen to the radio?\rWhich shows do you prefer?\rI like Buena’s Password!\rWhen I catch it, I take notes so\nI don’t forget the password.\rThat’s why my Pokégear is full\nof scribbles!</language>
+	</row>
+	<row id="msg_0597_T25R1006_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Even Team Rocket would understand\nhow refreshing it is to listen to the\fRadio on the rooftop, right?</language>
+	</row>
+	<row id="msg_0597_T25R1006_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">If you’re tired, try the Vending\nMachine’s drinks.\fYour Pokémon will love them, too.</language>
+	</row>
+	<row id="msg_0597_T25R1006_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Team Rocket...\rYou should have a drink from the\nvending machine and take a break.\rIt’s about time you started thinking\nof how you want to live your life.</language>
+	</row>
+	<row id="msg_0597_T25R1006_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Take a Break from Shopping!\n6F Rooftop Atrium</language>
+	</row>
+	<row id="msg_0597_T25R1006_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It’s a vending machine.\nWhich drink would you like? {YESNO 0}</language>
+	</row>
+	<row id="msg_0597_T25R1006_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Clang!\rA can of {STRVAR_1 8, 0, 0} dropped down.\r</language>
+	</row>
+	<row id="msg_0597_T25R1006_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Clang!\rBonus! Another can of {STRVAR_1 8, 0, 0}\ndropped down.\r</language>
+	</row>
+	<row id="msg_0597_T25R1006_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Not enough money...</language>
+	</row>
+	<row id="msg_0597_T25R1006_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Decided not to buy a drink.</language>
+	</row>
+	<row id="msg_0597_T25R1006_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The must-try of the Goldenrod\nDepartment Store!\fWelcome to the Daily Drawing Corner!\rYou can try it for $300, and we have\nwonderful prizes!\rWould you like to try it? {YESNO 0}</language>
+	</row>
+	<row id="msg_0597_T25R1006_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">All right. Please draw one!\r...\n...\r</language>
+	</row>
+	<row id="msg_0597_T25R1006_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wow!\nYou’ve got yourself the no. {STRVAR_1 50, 0, 0} prize!\rPlease take it.\r</language>
+	</row>
+	<row id="msg_0597_T25R1006_00013" index="13">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0597_T25R1006_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh my...</language>
+	</row>
+	<row id="msg_0597_T25R1006_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh my...\nYour Bag is full.\rThen we’ll refund you the money.\r</language>
+	</row>
+	<row id="msg_0597_T25R1006_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh my...\nYou’re short of money.\rPlease come again.</language>
+	</row>
+	<row id="msg_0597_T25R1006_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Please come again.</language>
+	</row>
+	<row id="msg_0597_T25R1006_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sunday’s prizes will be:\rNo. 1, TM02!\nNo. 2, Luxury Ball!\fOr No. 3, a Berry!</language>
+	</row>
+	<row id="msg_0597_T25R1006_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Monday’s prizes will be:\rNo. 1, TM65!\nNo. 2, Nest Ball!\fOr No. 3, a Berry!</language>
+	</row>
+	<row id="msg_0597_T25R1006_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Tuesday’s prizes will be:\rNo. 1, TM91!\nNo. 2, Repeat Ball!\fOr No. 3, a Berry!</language>
+	</row>
+	<row id="msg_0597_T25R1006_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wednesday’s prizes will be:\rNo. 1, TM57!\nNo. 2, Net Ball!\fOr No. 3, a Berry!</language>
+	</row>
+	<row id="msg_0597_T25R1006_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Thursday’s prizes will be:\rNo. 1, TM60!\nNo. 2, Quick Ball!\fOr No. 3, a Berry!</language>
+	</row>
+	<row id="msg_0597_T25R1006_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Friday’s prizes will be:\rNo. 1, TM42!\nNo. 2, Dusk Ball!\fOr No. 3, a Berry!</language>
+	</row>
+	<row id="msg_0597_T25R1006_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Saturday’s prizes will be:\rNo. 1, TM62!\nNo. 2, Timer Ball!\fOr No. 3, a Berry!</language>
+	</row>
+	<row id="msg_0597_T25R1006_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Whitney: What a coincidence!\nThis must be meant to be.\rDo you want to exchange\nphone numbers? Please? {YESNO 0}</language>
+	</row>
+	<row id="msg_0597_T25R1006_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} registered Whitney\nin the Pokégear!</language>
+	</row>
+	<row id="msg_0597_T25R1006_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Whitney: I’m available around noon\non Saturdays.\rGive me a call when you’ve got time.</language>
+	</row>
+	<row id="msg_0597_T25R1006_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Whitney: Don’t be so mean.</language>
+	</row>
+	<row id="msg_0597_T25R1006_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Whitney: Do you want to know\nmy phone number now? {YESNO 0}</language>
+	</row>
+	<row id="msg_0597_T25R1006_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Whitney: Why don’t we take a\npicture together? {YESNO 0}</language>
+	</row>
+	<row id="msg_0597_T25R1006_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Whitney: OK!\nStand right next to me, right here!\r</language>
+	</row>
+	<row id="msg_0597_T25R1006_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Whitney: Don’t we look good together?</language>
+	</row>
+	<row id="msg_0597_T25R1006_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Whitney: That’s a shame!</language>
+	</row>
+	<row id="msg_0597_T25R1006_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Your Photo Album is full.\rAccess your PC to delete\nsome pictures.</language>
+	</row>
+</body>

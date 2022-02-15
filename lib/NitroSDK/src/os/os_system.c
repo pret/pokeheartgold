@@ -54,12 +54,20 @@ asm OSProcMode OS_GetProcMode(void) {
     bx lr
 }
 
+#ifdef SDK_ARM9
+#include <nitro/code32.h>
 asm void OS_SpinWait(register u32 cycles) {
-@loop:
+    @loop:
     subs r0, r0, #4
     bhs @loop
     bx lr
 }
+#include <nitro/codereset.h>
+#else
+void OS_SpinWait(u32 cycles) {
+    SVC_WaitByLoop((s32)cycles / 4);
+}
+#endif
 
 void OS_WaitVBlankIntr(void) {
     SVC_WaitByLoop(1);

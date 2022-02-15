@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0644_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Whitney</language>
+	</row>
+	<row id="msg_0644_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Um, ’scuse me? I can’t hear you very\nwell. We must have a bad connection.\rTry calling again from somewhere else!</language>
+	</row>
+	<row id="msg_0644_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello...\nUm, hey, what’s up?\fI’m doing great over here...totally!\r</language>
+	</row>
+	<row id="msg_0644_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There are so many Gym Leaders that are\nstronger than me... Um, I really need\fto work harder and improve!</language>
+	</row>
+	<row id="msg_0644_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’m often bored Saturdays at noon.\nThere’s nothing to do...\fUm... So, call me Saturday, OK?</language>
+	</row>
+	<row id="msg_0644_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Yeah, I’m bored! Nothing to do!\nOh, yeah!\fYou wanna battle me again? {YESNO 0}</language>
+	</row>
+	<row id="msg_0644_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">For sure! I really want to battle, too.\rUm, you know where to find me...\nthe Fighting Dojo in Saffron City.</language>
+	</row>
+	<row id="msg_0644_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What’s that?\nUm, bo-ring...</language>
+	</row>
+	<row id="msg_0644_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Um, really?\nYou really have time to battle me?\rDon’t break a promise you made to\nsomeone else--that’s not fair!</language>
+	</row>
+	<row id="msg_0644_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’m waiting at the Fighting Dojo in\nSaffron City.\fBroken promises are unforgivable,\fget me?</language>
+	</row>
+	<row id="msg_0644_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Um, this is Whitney.\nHow are you?\r</language>
+	</row>
+	<row id="msg_0644_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Don’t forget you promised to meet me at\nthe Fighting Dojo in Saffron City.\fYou’re not gonna make me wait, are you?</language>
+	</row>
+	<row id="msg_0644_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Um, have you ever been to the\nMoomoo Farm off Route 39?\rMy Milky...\nUm, I mean, my MILTANK, is staying over\fthere now...</language>
+	</row>
+	<row id="msg_0644_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Um, I’ve gotta tell you, I’m so\nhungry... Do you know how it feels?\rI’m not an overeater or anything! This\nis completely normal for my age!</language>
+	</row>
+	<row id="msg_0644_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The coolest member of the Elite Four?\nUmm... I’d have to say...\fBruno?\rI’m not the only one. Everyone says the\nsame thing, seriously.\fHe looks like quite a guy...</language>
+	</row>
+</body>

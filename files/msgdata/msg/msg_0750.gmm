@@ -1,0 +1,1875 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0750_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">-</language>
+	</row>
+	<row id="msg_0750_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pound</language>
+	</row>
+	<row id="msg_0750_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Karate Chop</language>
+	</row>
+	<row id="msg_0750_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DoubleSlap</language>
+	</row>
+	<row id="msg_0750_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Comet Punch</language>
+	</row>
+	<row id="msg_0750_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mega Punch</language>
+	</row>
+	<row id="msg_0750_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pay Day</language>
+	</row>
+	<row id="msg_0750_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fire Punch</language>
+	</row>
+	<row id="msg_0750_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ice Punch</language>
+	</row>
+	<row id="msg_0750_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ThunderPunch</language>
+	</row>
+	<row id="msg_0750_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Scratch</language>
+	</row>
+	<row id="msg_0750_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ViceGrip</language>
+	</row>
+	<row id="msg_0750_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Guillotine</language>
+	</row>
+	<row id="msg_0750_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Razor Wind</language>
+	</row>
+	<row id="msg_0750_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Swords Dance</language>
+	</row>
+	<row id="msg_0750_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cut</language>
+	</row>
+	<row id="msg_0750_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Gust</language>
+	</row>
+	<row id="msg_0750_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wing Attack</language>
+	</row>
+	<row id="msg_0750_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Whirlwind</language>
+	</row>
+	<row id="msg_0750_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fly</language>
+	</row>
+	<row id="msg_0750_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bind</language>
+	</row>
+	<row id="msg_0750_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Slam</language>
+	</row>
+	<row id="msg_0750_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Vine Whip</language>
+	</row>
+	<row id="msg_0750_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Stomp</language>
+	</row>
+	<row id="msg_0750_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Double Kick</language>
+	</row>
+	<row id="msg_0750_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mega Kick</language>
+	</row>
+	<row id="msg_0750_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Jump Kick</language>
+	</row>
+	<row id="msg_0750_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rolling Kick</language>
+	</row>
+	<row id="msg_0750_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sand-Attack</language>
+	</row>
+	<row id="msg_0750_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Headbutt</language>
+	</row>
+	<row id="msg_0750_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Horn Attack</language>
+	</row>
+	<row id="msg_0750_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fury Attack</language>
+	</row>
+	<row id="msg_0750_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Horn Drill</language>
+	</row>
+	<row id="msg_0750_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Tackle</language>
+	</row>
+	<row id="msg_0750_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Body Slam</language>
+	</row>
+	<row id="msg_0750_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wrap</language>
+	</row>
+	<row id="msg_0750_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Take Down</language>
+	</row>
+	<row id="msg_0750_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Thrash</language>
+	</row>
+	<row id="msg_0750_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Double-Edge</language>
+	</row>
+	<row id="msg_0750_00039" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Tail Whip</language>
+	</row>
+	<row id="msg_0750_00040" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Poison Sting</language>
+	</row>
+	<row id="msg_0750_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Twineedle</language>
+	</row>
+	<row id="msg_0750_00042" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pin Missile</language>
+	</row>
+	<row id="msg_0750_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Leer</language>
+	</row>
+	<row id="msg_0750_00044" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bite</language>
+	</row>
+	<row id="msg_0750_00045" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Growl</language>
+	</row>
+	<row id="msg_0750_00046" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Roar</language>
+	</row>
+	<row id="msg_0750_00047" index="47">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sing</language>
+	</row>
+	<row id="msg_0750_00048" index="48">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Supersonic</language>
+	</row>
+	<row id="msg_0750_00049" index="49">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SonicBoom</language>
+	</row>
+	<row id="msg_0750_00050" index="50">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Disable</language>
+	</row>
+	<row id="msg_0750_00051" index="51">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Acid</language>
+	</row>
+	<row id="msg_0750_00052" index="52">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ember</language>
+	</row>
+	<row id="msg_0750_00053" index="53">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Flamethrower</language>
+	</row>
+	<row id="msg_0750_00054" index="54">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mist</language>
+	</row>
+	<row id="msg_0750_00055" index="55">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Water Gun</language>
+	</row>
+	<row id="msg_0750_00056" index="56">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hydro Pump</language>
+	</row>
+	<row id="msg_0750_00057" index="57">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Surf</language>
+	</row>
+	<row id="msg_0750_00058" index="58">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ice Beam</language>
+	</row>
+	<row id="msg_0750_00059" index="59">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Blizzard</language>
+	</row>
+	<row id="msg_0750_00060" index="60">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Psybeam</language>
+	</row>
+	<row id="msg_0750_00061" index="61">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BubbleBeam</language>
+	</row>
+	<row id="msg_0750_00062" index="62">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Aurora Beam</language>
+	</row>
+	<row id="msg_0750_00063" index="63">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hyper Beam</language>
+	</row>
+	<row id="msg_0750_00064" index="64">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Peck</language>
+	</row>
+	<row id="msg_0750_00065" index="65">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Drill Peck</language>
+	</row>
+	<row id="msg_0750_00066" index="66">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Submission</language>
+	</row>
+	<row id="msg_0750_00067" index="67">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Low Kick</language>
+	</row>
+	<row id="msg_0750_00068" index="68">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Counter</language>
+	</row>
+	<row id="msg_0750_00069" index="69">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Seismic Toss</language>
+	</row>
+	<row id="msg_0750_00070" index="70">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Strength</language>
+	</row>
+	<row id="msg_0750_00071" index="71">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Absorb</language>
+	</row>
+	<row id="msg_0750_00072" index="72">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mega Drain</language>
+	</row>
+	<row id="msg_0750_00073" index="73">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Leech Seed</language>
+	</row>
+	<row id="msg_0750_00074" index="74">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Growth</language>
+	</row>
+	<row id="msg_0750_00075" index="75">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Razor Leaf</language>
+	</row>
+	<row id="msg_0750_00076" index="76">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SolarBeam</language>
+	</row>
+	<row id="msg_0750_00077" index="77">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PoisonPowder</language>
+	</row>
+	<row id="msg_0750_00078" index="78">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Stun Spore</language>
+	</row>
+	<row id="msg_0750_00079" index="79">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sleep Powder</language>
+	</row>
+	<row id="msg_0750_00080" index="80">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Petal Dance</language>
+	</row>
+	<row id="msg_0750_00081" index="81">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">String Shot</language>
+	</row>
+	<row id="msg_0750_00082" index="82">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dragon Rage</language>
+	</row>
+	<row id="msg_0750_00083" index="83">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fire Spin</language>
+	</row>
+	<row id="msg_0750_00084" index="84">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ThunderShock</language>
+	</row>
+	<row id="msg_0750_00085" index="85">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Thunderbolt</language>
+	</row>
+	<row id="msg_0750_00086" index="86">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Thunder Wave</language>
+	</row>
+	<row id="msg_0750_00087" index="87">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Thunder</language>
+	</row>
+	<row id="msg_0750_00088" index="88">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rock Throw</language>
+	</row>
+	<row id="msg_0750_00089" index="89">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Earthquake</language>
+	</row>
+	<row id="msg_0750_00090" index="90">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fissure</language>
+	</row>
+	<row id="msg_0750_00091" index="91">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dig</language>
+	</row>
+	<row id="msg_0750_00092" index="92">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Toxic</language>
+	</row>
+	<row id="msg_0750_00093" index="93">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Confusion</language>
+	</row>
+	<row id="msg_0750_00094" index="94">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Psychic</language>
+	</row>
+	<row id="msg_0750_00095" index="95">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hypnosis</language>
+	</row>
+	<row id="msg_0750_00096" index="96">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Meditate</language>
+	</row>
+	<row id="msg_0750_00097" index="97">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Agility</language>
+	</row>
+	<row id="msg_0750_00098" index="98">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Quick Attack</language>
+	</row>
+	<row id="msg_0750_00099" index="99">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rage</language>
+	</row>
+	<row id="msg_0750_00100" index="100">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Teleport</language>
+	</row>
+	<row id="msg_0750_00101" index="101">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Night Shade</language>
+	</row>
+	<row id="msg_0750_00102" index="102">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mimic</language>
+	</row>
+	<row id="msg_0750_00103" index="103">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Screech</language>
+	</row>
+	<row id="msg_0750_00104" index="104">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Double Team</language>
+	</row>
+	<row id="msg_0750_00105" index="105">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Recover</language>
+	</row>
+	<row id="msg_0750_00106" index="106">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Harden</language>
+	</row>
+	<row id="msg_0750_00107" index="107">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Minimize</language>
+	</row>
+	<row id="msg_0750_00108" index="108">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SmokeScreen</language>
+	</row>
+	<row id="msg_0750_00109" index="109">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Confuse Ray</language>
+	</row>
+	<row id="msg_0750_00110" index="110">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Withdraw</language>
+	</row>
+	<row id="msg_0750_00111" index="111">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Defense Curl</language>
+	</row>
+	<row id="msg_0750_00112" index="112">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Barrier</language>
+	</row>
+	<row id="msg_0750_00113" index="113">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Light Screen</language>
+	</row>
+	<row id="msg_0750_00114" index="114">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Haze</language>
+	</row>
+	<row id="msg_0750_00115" index="115">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Reflect</language>
+	</row>
+	<row id="msg_0750_00116" index="116">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Focus Energy</language>
+	</row>
+	<row id="msg_0750_00117" index="117">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bide</language>
+	</row>
+	<row id="msg_0750_00118" index="118">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Metronome</language>
+	</row>
+	<row id="msg_0750_00119" index="119">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mirror Move</language>
+	</row>
+	<row id="msg_0750_00120" index="120">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Selfdestruct</language>
+	</row>
+	<row id="msg_0750_00121" index="121">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Egg Bomb</language>
+	</row>
+	<row id="msg_0750_00122" index="122">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lick</language>
+	</row>
+	<row id="msg_0750_00123" index="123">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Smog</language>
+	</row>
+	<row id="msg_0750_00124" index="124">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sludge</language>
+	</row>
+	<row id="msg_0750_00125" index="125">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bone Club</language>
+	</row>
+	<row id="msg_0750_00126" index="126">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fire Blast</language>
+	</row>
+	<row id="msg_0750_00127" index="127">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Waterfall</language>
+	</row>
+	<row id="msg_0750_00128" index="128">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Clamp</language>
+	</row>
+	<row id="msg_0750_00129" index="129">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Swift</language>
+	</row>
+	<row id="msg_0750_00130" index="130">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Skull Bash</language>
+	</row>
+	<row id="msg_0750_00131" index="131">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Spike Cannon</language>
+	</row>
+	<row id="msg_0750_00132" index="132">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Constrict</language>
+	</row>
+	<row id="msg_0750_00133" index="133">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Amnesia</language>
+	</row>
+	<row id="msg_0750_00134" index="134">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Kinesis</language>
+	</row>
+	<row id="msg_0750_00135" index="135">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Softboiled</language>
+	</row>
+	<row id="msg_0750_00136" index="136">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hi Jump Kick</language>
+	</row>
+	<row id="msg_0750_00137" index="137">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Glare</language>
+	</row>
+	<row id="msg_0750_00138" index="138">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dream Eater</language>
+	</row>
+	<row id="msg_0750_00139" index="139">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Poison Gas</language>
+	</row>
+	<row id="msg_0750_00140" index="140">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Barrage</language>
+	</row>
+	<row id="msg_0750_00141" index="141">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Leech Life</language>
+	</row>
+	<row id="msg_0750_00142" index="142">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lovely Kiss</language>
+	</row>
+	<row id="msg_0750_00143" index="143">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sky Attack</language>
+	</row>
+	<row id="msg_0750_00144" index="144">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Transform</language>
+	</row>
+	<row id="msg_0750_00145" index="145">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bubble</language>
+	</row>
+	<row id="msg_0750_00146" index="146">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dizzy Punch</language>
+	</row>
+	<row id="msg_0750_00147" index="147">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Spore</language>
+	</row>
+	<row id="msg_0750_00148" index="148">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Flash</language>
+	</row>
+	<row id="msg_0750_00149" index="149">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Psywave</language>
+	</row>
+	<row id="msg_0750_00150" index="150">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Splash</language>
+	</row>
+	<row id="msg_0750_00151" index="151">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Acid Armor</language>
+	</row>
+	<row id="msg_0750_00152" index="152">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Crabhammer</language>
+	</row>
+	<row id="msg_0750_00153" index="153">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Explosion</language>
+	</row>
+	<row id="msg_0750_00154" index="154">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fury Swipes</language>
+	</row>
+	<row id="msg_0750_00155" index="155">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bonemerang</language>
+	</row>
+	<row id="msg_0750_00156" index="156">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rest</language>
+	</row>
+	<row id="msg_0750_00157" index="157">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rock Slide</language>
+	</row>
+	<row id="msg_0750_00158" index="158">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hyper Fang</language>
+	</row>
+	<row id="msg_0750_00159" index="159">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sharpen</language>
+	</row>
+	<row id="msg_0750_00160" index="160">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Conversion</language>
+	</row>
+	<row id="msg_0750_00161" index="161">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Tri Attack</language>
+	</row>
+	<row id="msg_0750_00162" index="162">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Super Fang</language>
+	</row>
+	<row id="msg_0750_00163" index="163">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Slash</language>
+	</row>
+	<row id="msg_0750_00164" index="164">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Substitute</language>
+	</row>
+	<row id="msg_0750_00165" index="165">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Struggle</language>
+	</row>
+	<row id="msg_0750_00166" index="166">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sketch</language>
+	</row>
+	<row id="msg_0750_00167" index="167">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Triple Kick</language>
+	</row>
+	<row id="msg_0750_00168" index="168">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Thief</language>
+	</row>
+	<row id="msg_0750_00169" index="169">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Spider Web</language>
+	</row>
+	<row id="msg_0750_00170" index="170">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mind Reader</language>
+	</row>
+	<row id="msg_0750_00171" index="171">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Nightmare</language>
+	</row>
+	<row id="msg_0750_00172" index="172">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Flame Wheel</language>
+	</row>
+	<row id="msg_0750_00173" index="173">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Snore</language>
+	</row>
+	<row id="msg_0750_00174" index="174">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Curse</language>
+	</row>
+	<row id="msg_0750_00175" index="175">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Flail</language>
+	</row>
+	<row id="msg_0750_00176" index="176">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Conversion 2</language>
+	</row>
+	<row id="msg_0750_00177" index="177">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Aeroblast</language>
+	</row>
+	<row id="msg_0750_00178" index="178">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cotton Spore</language>
+	</row>
+	<row id="msg_0750_00179" index="179">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Reversal</language>
+	</row>
+	<row id="msg_0750_00180" index="180">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Spite</language>
+	</row>
+	<row id="msg_0750_00181" index="181">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Powder Snow</language>
+	</row>
+	<row id="msg_0750_00182" index="182">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Protect</language>
+	</row>
+	<row id="msg_0750_00183" index="183">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mach Punch</language>
+	</row>
+	<row id="msg_0750_00184" index="184">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Scary Face</language>
+	</row>
+	<row id="msg_0750_00185" index="185">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Faint Attack</language>
+	</row>
+	<row id="msg_0750_00186" index="186">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sweet Kiss</language>
+	</row>
+	<row id="msg_0750_00187" index="187">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Belly Drum</language>
+	</row>
+	<row id="msg_0750_00188" index="188">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sludge Bomb</language>
+	</row>
+	<row id="msg_0750_00189" index="189">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mud-Slap</language>
+	</row>
+	<row id="msg_0750_00190" index="190">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Octazooka</language>
+	</row>
+	<row id="msg_0750_00191" index="191">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Spikes</language>
+	</row>
+	<row id="msg_0750_00192" index="192">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Zap Cannon</language>
+	</row>
+	<row id="msg_0750_00193" index="193">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Foresight</language>
+	</row>
+	<row id="msg_0750_00194" index="194">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Destiny Bond</language>
+	</row>
+	<row id="msg_0750_00195" index="195">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Perish Song</language>
+	</row>
+	<row id="msg_0750_00196" index="196">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Icy Wind</language>
+	</row>
+	<row id="msg_0750_00197" index="197">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Detect</language>
+	</row>
+	<row id="msg_0750_00198" index="198">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bone Rush</language>
+	</row>
+	<row id="msg_0750_00199" index="199">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lock-On</language>
+	</row>
+	<row id="msg_0750_00200" index="200">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Outrage</language>
+	</row>
+	<row id="msg_0750_00201" index="201">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sandstorm</language>
+	</row>
+	<row id="msg_0750_00202" index="202">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Giga Drain</language>
+	</row>
+	<row id="msg_0750_00203" index="203">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Endure</language>
+	</row>
+	<row id="msg_0750_00204" index="204">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Charm</language>
+	</row>
+	<row id="msg_0750_00205" index="205">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rollout</language>
+	</row>
+	<row id="msg_0750_00206" index="206">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">False Swipe</language>
+	</row>
+	<row id="msg_0750_00207" index="207">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Swagger</language>
+	</row>
+	<row id="msg_0750_00208" index="208">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Milk Drink</language>
+	</row>
+	<row id="msg_0750_00209" index="209">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Spark</language>
+	</row>
+	<row id="msg_0750_00210" index="210">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fury Cutter</language>
+	</row>
+	<row id="msg_0750_00211" index="211">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Steel Wing</language>
+	</row>
+	<row id="msg_0750_00212" index="212">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mean Look</language>
+	</row>
+	<row id="msg_0750_00213" index="213">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Attract</language>
+	</row>
+	<row id="msg_0750_00214" index="214">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sleep Talk</language>
+	</row>
+	<row id="msg_0750_00215" index="215">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Heal Bell</language>
+	</row>
+	<row id="msg_0750_00216" index="216">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Return</language>
+	</row>
+	<row id="msg_0750_00217" index="217">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Present</language>
+	</row>
+	<row id="msg_0750_00218" index="218">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Frustration</language>
+	</row>
+	<row id="msg_0750_00219" index="219">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Safeguard</language>
+	</row>
+	<row id="msg_0750_00220" index="220">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pain Split</language>
+	</row>
+	<row id="msg_0750_00221" index="221">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sacred Fire</language>
+	</row>
+	<row id="msg_0750_00222" index="222">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Magnitude</language>
+	</row>
+	<row id="msg_0750_00223" index="223">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DynamicPunch</language>
+	</row>
+	<row id="msg_0750_00224" index="224">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Megahorn</language>
+	</row>
+	<row id="msg_0750_00225" index="225">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DragonBreath</language>
+	</row>
+	<row id="msg_0750_00226" index="226">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Baton Pass</language>
+	</row>
+	<row id="msg_0750_00227" index="227">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Encore</language>
+	</row>
+	<row id="msg_0750_00228" index="228">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pursuit</language>
+	</row>
+	<row id="msg_0750_00229" index="229">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rapid Spin</language>
+	</row>
+	<row id="msg_0750_00230" index="230">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sweet Scent</language>
+	</row>
+	<row id="msg_0750_00231" index="231">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Iron Tail</language>
+	</row>
+	<row id="msg_0750_00232" index="232">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Metal Claw</language>
+	</row>
+	<row id="msg_0750_00233" index="233">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Vital Throw</language>
+	</row>
+	<row id="msg_0750_00234" index="234">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Morning Sun</language>
+	</row>
+	<row id="msg_0750_00235" index="235">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Synthesis</language>
+	</row>
+	<row id="msg_0750_00236" index="236">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Moonlight</language>
+	</row>
+	<row id="msg_0750_00237" index="237">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hidden Power</language>
+	</row>
+	<row id="msg_0750_00238" index="238">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cross Chop</language>
+	</row>
+	<row id="msg_0750_00239" index="239">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Twister</language>
+	</row>
+	<row id="msg_0750_00240" index="240">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rain Dance</language>
+	</row>
+	<row id="msg_0750_00241" index="241">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sunny Day</language>
+	</row>
+	<row id="msg_0750_00242" index="242">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Crunch</language>
+	</row>
+	<row id="msg_0750_00243" index="243">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mirror Coat</language>
+	</row>
+	<row id="msg_0750_00244" index="244">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Psych Up</language>
+	</row>
+	<row id="msg_0750_00245" index="245">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ExtremeSpeed</language>
+	</row>
+	<row id="msg_0750_00246" index="246">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AncientPower</language>
+	</row>
+	<row id="msg_0750_00247" index="247">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Shadow Ball</language>
+	</row>
+	<row id="msg_0750_00248" index="248">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Future Sight</language>
+	</row>
+	<row id="msg_0750_00249" index="249">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rock Smash</language>
+	</row>
+	<row id="msg_0750_00250" index="250">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Whirlpool</language>
+	</row>
+	<row id="msg_0750_00251" index="251">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Beat Up</language>
+	</row>
+	<row id="msg_0750_00252" index="252">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fake Out</language>
+	</row>
+	<row id="msg_0750_00253" index="253">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Uproar</language>
+	</row>
+	<row id="msg_0750_00254" index="254">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Stockpile</language>
+	</row>
+	<row id="msg_0750_00255" index="255">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Spit Up</language>
+	</row>
+	<row id="msg_0750_00256" index="256">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Swallow</language>
+	</row>
+	<row id="msg_0750_00257" index="257">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Heat Wave</language>
+	</row>
+	<row id="msg_0750_00258" index="258">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hail</language>
+	</row>
+	<row id="msg_0750_00259" index="259">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Torment</language>
+	</row>
+	<row id="msg_0750_00260" index="260">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Flatter</language>
+	</row>
+	<row id="msg_0750_00261" index="261">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Will-O-Wisp</language>
+	</row>
+	<row id="msg_0750_00262" index="262">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Memento</language>
+	</row>
+	<row id="msg_0750_00263" index="263">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Facade</language>
+	</row>
+	<row id="msg_0750_00264" index="264">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Focus Punch</language>
+	</row>
+	<row id="msg_0750_00265" index="265">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SmellingSalt</language>
+	</row>
+	<row id="msg_0750_00266" index="266">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Follow Me</language>
+	</row>
+	<row id="msg_0750_00267" index="267">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Nature Power</language>
+	</row>
+	<row id="msg_0750_00268" index="268">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Charge</language>
+	</row>
+	<row id="msg_0750_00269" index="269">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Taunt</language>
+	</row>
+	<row id="msg_0750_00270" index="270">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Helping Hand</language>
+	</row>
+	<row id="msg_0750_00271" index="271">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Trick</language>
+	</row>
+	<row id="msg_0750_00272" index="272">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Role Play</language>
+	</row>
+	<row id="msg_0750_00273" index="273">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wish</language>
+	</row>
+	<row id="msg_0750_00274" index="274">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Assist</language>
+	</row>
+	<row id="msg_0750_00275" index="275">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ingrain</language>
+	</row>
+	<row id="msg_0750_00276" index="276">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Superpower</language>
+	</row>
+	<row id="msg_0750_00277" index="277">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Magic Coat</language>
+	</row>
+	<row id="msg_0750_00278" index="278">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Recycle</language>
+	</row>
+	<row id="msg_0750_00279" index="279">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Revenge</language>
+	</row>
+	<row id="msg_0750_00280" index="280">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Brick Break</language>
+	</row>
+	<row id="msg_0750_00281" index="281">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Yawn</language>
+	</row>
+	<row id="msg_0750_00282" index="282">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Knock Off</language>
+	</row>
+	<row id="msg_0750_00283" index="283">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Endeavor</language>
+	</row>
+	<row id="msg_0750_00284" index="284">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Eruption</language>
+	</row>
+	<row id="msg_0750_00285" index="285">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Skill Swap</language>
+	</row>
+	<row id="msg_0750_00286" index="286">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Imprison</language>
+	</row>
+	<row id="msg_0750_00287" index="287">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Refresh</language>
+	</row>
+	<row id="msg_0750_00288" index="288">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Grudge</language>
+	</row>
+	<row id="msg_0750_00289" index="289">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Snatch</language>
+	</row>
+	<row id="msg_0750_00290" index="290">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Secret Power</language>
+	</row>
+	<row id="msg_0750_00291" index="291">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dive</language>
+	</row>
+	<row id="msg_0750_00292" index="292">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Arm Thrust</language>
+	</row>
+	<row id="msg_0750_00293" index="293">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Camouflage</language>
+	</row>
+	<row id="msg_0750_00294" index="294">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Tail Glow</language>
+	</row>
+	<row id="msg_0750_00295" index="295">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Luster Purge</language>
+	</row>
+	<row id="msg_0750_00296" index="296">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mist Ball</language>
+	</row>
+	<row id="msg_0750_00297" index="297">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FeatherDance</language>
+	</row>
+	<row id="msg_0750_00298" index="298">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Teeter Dance</language>
+	</row>
+	<row id="msg_0750_00299" index="299">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Blaze Kick</language>
+	</row>
+	<row id="msg_0750_00300" index="300">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mud Sport</language>
+	</row>
+	<row id="msg_0750_00301" index="301">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ice Ball</language>
+	</row>
+	<row id="msg_0750_00302" index="302">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Needle Arm</language>
+	</row>
+	<row id="msg_0750_00303" index="303">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Slack Off</language>
+	</row>
+	<row id="msg_0750_00304" index="304">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hyper Voice</language>
+	</row>
+	<row id="msg_0750_00305" index="305">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Poison Fang</language>
+	</row>
+	<row id="msg_0750_00306" index="306">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Crush Claw</language>
+	</row>
+	<row id="msg_0750_00307" index="307">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Blast Burn</language>
+	</row>
+	<row id="msg_0750_00308" index="308">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hydro Cannon</language>
+	</row>
+	<row id="msg_0750_00309" index="309">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Meteor Mash</language>
+	</row>
+	<row id="msg_0750_00310" index="310">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Astonish</language>
+	</row>
+	<row id="msg_0750_00311" index="311">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Weather Ball</language>
+	</row>
+	<row id="msg_0750_00312" index="312">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Aromatherapy</language>
+	</row>
+	<row id="msg_0750_00313" index="313">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fake Tears</language>
+	</row>
+	<row id="msg_0750_00314" index="314">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Air Cutter</language>
+	</row>
+	<row id="msg_0750_00315" index="315">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Overheat</language>
+	</row>
+	<row id="msg_0750_00316" index="316">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Odor Sleuth</language>
+	</row>
+	<row id="msg_0750_00317" index="317">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rock Tomb</language>
+	</row>
+	<row id="msg_0750_00318" index="318">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Silver Wind</language>
+	</row>
+	<row id="msg_0750_00319" index="319">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Metal Sound</language>
+	</row>
+	<row id="msg_0750_00320" index="320">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GrassWhistle</language>
+	</row>
+	<row id="msg_0750_00321" index="321">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Tickle</language>
+	</row>
+	<row id="msg_0750_00322" index="322">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cosmic Power</language>
+	</row>
+	<row id="msg_0750_00323" index="323">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Water Spout</language>
+	</row>
+	<row id="msg_0750_00324" index="324">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Signal Beam</language>
+	</row>
+	<row id="msg_0750_00325" index="325">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Shadow Punch</language>
+	</row>
+	<row id="msg_0750_00326" index="326">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Extrasensory</language>
+	</row>
+	<row id="msg_0750_00327" index="327">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sky Uppercut</language>
+	</row>
+	<row id="msg_0750_00328" index="328">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sand Tomb</language>
+	</row>
+	<row id="msg_0750_00329" index="329">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sheer Cold</language>
+	</row>
+	<row id="msg_0750_00330" index="330">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Muddy Water</language>
+	</row>
+	<row id="msg_0750_00331" index="331">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bullet Seed</language>
+	</row>
+	<row id="msg_0750_00332" index="332">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Aerial Ace</language>
+	</row>
+	<row id="msg_0750_00333" index="333">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Icicle Spear</language>
+	</row>
+	<row id="msg_0750_00334" index="334">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Iron Defense</language>
+	</row>
+	<row id="msg_0750_00335" index="335">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Block</language>
+	</row>
+	<row id="msg_0750_00336" index="336">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Howl</language>
+	</row>
+	<row id="msg_0750_00337" index="337">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dragon Claw</language>
+	</row>
+	<row id="msg_0750_00338" index="338">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Frenzy Plant</language>
+	</row>
+	<row id="msg_0750_00339" index="339">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bulk Up</language>
+	</row>
+	<row id="msg_0750_00340" index="340">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bounce</language>
+	</row>
+	<row id="msg_0750_00341" index="341">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mud Shot</language>
+	</row>
+	<row id="msg_0750_00342" index="342">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Poison Tail</language>
+	</row>
+	<row id="msg_0750_00343" index="343">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Covet</language>
+	</row>
+	<row id="msg_0750_00344" index="344">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Volt Tackle</language>
+	</row>
+	<row id="msg_0750_00345" index="345">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Magical Leaf</language>
+	</row>
+	<row id="msg_0750_00346" index="346">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Water Sport</language>
+	</row>
+	<row id="msg_0750_00347" index="347">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Calm Mind</language>
+	</row>
+	<row id="msg_0750_00348" index="348">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Leaf Blade</language>
+	</row>
+	<row id="msg_0750_00349" index="349">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dragon Dance</language>
+	</row>
+	<row id="msg_0750_00350" index="350">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rock Blast</language>
+	</row>
+	<row id="msg_0750_00351" index="351">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Shock Wave</language>
+	</row>
+	<row id="msg_0750_00352" index="352">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Water Pulse</language>
+	</row>
+	<row id="msg_0750_00353" index="353">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Doom Desire</language>
+	</row>
+	<row id="msg_0750_00354" index="354">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Psycho Boost</language>
+	</row>
+	<row id="msg_0750_00355" index="355">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Roost</language>
+	</row>
+	<row id="msg_0750_00356" index="356">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Gravity</language>
+	</row>
+	<row id="msg_0750_00357" index="357">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Miracle Eye</language>
+	</row>
+	<row id="msg_0750_00358" index="358">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wake-Up Slap</language>
+	</row>
+	<row id="msg_0750_00359" index="359">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hammer Arm</language>
+	</row>
+	<row id="msg_0750_00360" index="360">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Gyro Ball</language>
+	</row>
+	<row id="msg_0750_00361" index="361">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Healing Wish</language>
+	</row>
+	<row id="msg_0750_00362" index="362">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Brine</language>
+	</row>
+	<row id="msg_0750_00363" index="363">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Natural Gift</language>
+	</row>
+	<row id="msg_0750_00364" index="364">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Feint</language>
+	</row>
+	<row id="msg_0750_00365" index="365">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pluck</language>
+	</row>
+	<row id="msg_0750_00366" index="366">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Tailwind</language>
+	</row>
+	<row id="msg_0750_00367" index="367">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Acupressure</language>
+	</row>
+	<row id="msg_0750_00368" index="368">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Metal Burst</language>
+	</row>
+	<row id="msg_0750_00369" index="369">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">U-turn</language>
+	</row>
+	<row id="msg_0750_00370" index="370">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Close Combat</language>
+	</row>
+	<row id="msg_0750_00371" index="371">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Payback</language>
+	</row>
+	<row id="msg_0750_00372" index="372">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Assurance</language>
+	</row>
+	<row id="msg_0750_00373" index="373">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Embargo</language>
+	</row>
+	<row id="msg_0750_00374" index="374">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fling</language>
+	</row>
+	<row id="msg_0750_00375" index="375">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Psycho Shift</language>
+	</row>
+	<row id="msg_0750_00376" index="376">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Trump Card</language>
+	</row>
+	<row id="msg_0750_00377" index="377">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Heal Block</language>
+	</row>
+	<row id="msg_0750_00378" index="378">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wring Out</language>
+	</row>
+	<row id="msg_0750_00379" index="379">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Power Trick</language>
+	</row>
+	<row id="msg_0750_00380" index="380">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Gastro Acid</language>
+	</row>
+	<row id="msg_0750_00381" index="381">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lucky Chant</language>
+	</row>
+	<row id="msg_0750_00382" index="382">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Me First</language>
+	</row>
+	<row id="msg_0750_00383" index="383">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Copycat</language>
+	</row>
+	<row id="msg_0750_00384" index="384">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Power Swap</language>
+	</row>
+	<row id="msg_0750_00385" index="385">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Guard Swap</language>
+	</row>
+	<row id="msg_0750_00386" index="386">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Punishment</language>
+	</row>
+	<row id="msg_0750_00387" index="387">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Last Resort</language>
+	</row>
+	<row id="msg_0750_00388" index="388">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Worry Seed</language>
+	</row>
+	<row id="msg_0750_00389" index="389">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sucker Punch</language>
+	</row>
+	<row id="msg_0750_00390" index="390">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Toxic Spikes</language>
+	</row>
+	<row id="msg_0750_00391" index="391">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Heart Swap</language>
+	</row>
+	<row id="msg_0750_00392" index="392">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Aqua Ring</language>
+	</row>
+	<row id="msg_0750_00393" index="393">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Magnet Rise</language>
+	</row>
+	<row id="msg_0750_00394" index="394">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Flare Blitz</language>
+	</row>
+	<row id="msg_0750_00395" index="395">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Force Palm</language>
+	</row>
+	<row id="msg_0750_00396" index="396">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Aura Sphere</language>
+	</row>
+	<row id="msg_0750_00397" index="397">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rock Polish</language>
+	</row>
+	<row id="msg_0750_00398" index="398">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Poison Jab</language>
+	</row>
+	<row id="msg_0750_00399" index="399">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dark Pulse</language>
+	</row>
+	<row id="msg_0750_00400" index="400">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Night Slash</language>
+	</row>
+	<row id="msg_0750_00401" index="401">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Aqua Tail</language>
+	</row>
+	<row id="msg_0750_00402" index="402">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Seed Bomb</language>
+	</row>
+	<row id="msg_0750_00403" index="403">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Air Slash</language>
+	</row>
+	<row id="msg_0750_00404" index="404">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">X-Scissor</language>
+	</row>
+	<row id="msg_0750_00405" index="405">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bug Buzz</language>
+	</row>
+	<row id="msg_0750_00406" index="406">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dragon Pulse</language>
+	</row>
+	<row id="msg_0750_00407" index="407">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dragon Rush</language>
+	</row>
+	<row id="msg_0750_00408" index="408">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Power Gem</language>
+	</row>
+	<row id="msg_0750_00409" index="409">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Drain Punch</language>
+	</row>
+	<row id="msg_0750_00410" index="410">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Vacuum Wave</language>
+	</row>
+	<row id="msg_0750_00411" index="411">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Focus Blast</language>
+	</row>
+	<row id="msg_0750_00412" index="412">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Energy Ball</language>
+	</row>
+	<row id="msg_0750_00413" index="413">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Brave Bird</language>
+	</row>
+	<row id="msg_0750_00414" index="414">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Earth Power</language>
+	</row>
+	<row id="msg_0750_00415" index="415">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Switcheroo</language>
+	</row>
+	<row id="msg_0750_00416" index="416">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Giga Impact</language>
+	</row>
+	<row id="msg_0750_00417" index="417">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Nasty Plot</language>
+	</row>
+	<row id="msg_0750_00418" index="418">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bullet Punch</language>
+	</row>
+	<row id="msg_0750_00419" index="419">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Avalanche</language>
+	</row>
+	<row id="msg_0750_00420" index="420">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ice Shard</language>
+	</row>
+	<row id="msg_0750_00421" index="421">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Shadow Claw</language>
+	</row>
+	<row id="msg_0750_00422" index="422">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Thunder Fang</language>
+	</row>
+	<row id="msg_0750_00423" index="423">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ice Fang</language>
+	</row>
+	<row id="msg_0750_00424" index="424">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fire Fang</language>
+	</row>
+	<row id="msg_0750_00425" index="425">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Shadow Sneak</language>
+	</row>
+	<row id="msg_0750_00426" index="426">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mud Bomb</language>
+	</row>
+	<row id="msg_0750_00427" index="427">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Psycho Cut</language>
+	</row>
+	<row id="msg_0750_00428" index="428">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Zen Headbutt</language>
+	</row>
+	<row id="msg_0750_00429" index="429">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mirror Shot</language>
+	</row>
+	<row id="msg_0750_00430" index="430">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Flash Cannon</language>
+	</row>
+	<row id="msg_0750_00431" index="431">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rock Climb</language>
+	</row>
+	<row id="msg_0750_00432" index="432">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Defog</language>
+	</row>
+	<row id="msg_0750_00433" index="433">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Trick Room</language>
+	</row>
+	<row id="msg_0750_00434" index="434">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Draco Meteor</language>
+	</row>
+	<row id="msg_0750_00435" index="435">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Discharge</language>
+	</row>
+	<row id="msg_0750_00436" index="436">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lava Plume</language>
+	</row>
+	<row id="msg_0750_00437" index="437">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Leaf Storm</language>
+	</row>
+	<row id="msg_0750_00438" index="438">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Power Whip</language>
+	</row>
+	<row id="msg_0750_00439" index="439">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rock Wrecker</language>
+	</row>
+	<row id="msg_0750_00440" index="440">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cross Poison</language>
+	</row>
+	<row id="msg_0750_00441" index="441">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Gunk Shot</language>
+	</row>
+	<row id="msg_0750_00442" index="442">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Iron Head</language>
+	</row>
+	<row id="msg_0750_00443" index="443">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Magnet Bomb</language>
+	</row>
+	<row id="msg_0750_00444" index="444">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Stone Edge</language>
+	</row>
+	<row id="msg_0750_00445" index="445">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Captivate</language>
+	</row>
+	<row id="msg_0750_00446" index="446">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Stealth Rock</language>
+	</row>
+	<row id="msg_0750_00447" index="447">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Grass Knot</language>
+	</row>
+	<row id="msg_0750_00448" index="448">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Chatter</language>
+	</row>
+	<row id="msg_0750_00449" index="449">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Judgment</language>
+	</row>
+	<row id="msg_0750_00450" index="450">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bug Bite</language>
+	</row>
+	<row id="msg_0750_00451" index="451">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Charge Beam</language>
+	</row>
+	<row id="msg_0750_00452" index="452">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wood Hammer</language>
+	</row>
+	<row id="msg_0750_00453" index="453">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Aqua Jet</language>
+	</row>
+	<row id="msg_0750_00454" index="454">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Attack Order</language>
+	</row>
+	<row id="msg_0750_00455" index="455">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Defend Order</language>
+	</row>
+	<row id="msg_0750_00456" index="456">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Heal Order</language>
+	</row>
+	<row id="msg_0750_00457" index="457">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Head Smash</language>
+	</row>
+	<row id="msg_0750_00458" index="458">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Double Hit</language>
+	</row>
+	<row id="msg_0750_00459" index="459">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Roar of Time</language>
+	</row>
+	<row id="msg_0750_00460" index="460">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Spacial Rend</language>
+	</row>
+	<row id="msg_0750_00461" index="461">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lunar Dance</language>
+	</row>
+	<row id="msg_0750_00462" index="462">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Crush Grip</language>
+	</row>
+	<row id="msg_0750_00463" index="463">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Magma Storm</language>
+	</row>
+	<row id="msg_0750_00464" index="464">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dark Void</language>
+	</row>
+	<row id="msg_0750_00465" index="465">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Seed Flare</language>
+	</row>
+	<row id="msg_0750_00466" index="466">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ominous Wind</language>
+	</row>
+	<row id="msg_0750_00467" index="467">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Shadow Force</language>
+	</row>
+</body>

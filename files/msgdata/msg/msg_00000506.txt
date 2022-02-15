@@ -1,8 +1,0 @@
-This elevator is for Game Freak only.\rPlease select the floor you’d like\nto go to. {YESNO 0}
-Please come again.
-Going up.\r
-Going down.\r
-We are already there.
-You’ve arrived at the first floor.\r
-You’ve arrived at the third floor--\nGame Freak.\r
-You’ve arrived at the roof.\r

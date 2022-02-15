@@ -3,8 +3,8 @@
 
 	.text
 
-	thumb_func_start ScrCmd_623
-ScrCmd_623: ; 0x0204BC98
+	thumb_func_start ScrCmd_AnimApricornTree
+ScrCmd_AnimApricornTree: ; 0x0204BC98
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -24,13 +24,13 @@ ScrCmd_623: ; 0x0204BC98
 	add r2, r0, #0
 	ldr r0, [r5]
 	ldr r1, [r4]
-	bl ov01_02204840
+	bl FieldSys_AnimApricornTree
 	mov r0, #1
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_623
+	thumb_func_end ScrCmd_AnimApricornTree
 
-	thumb_func_start ScrCmd_624
-ScrCmd_624: ; 0x0204BCCC
+	thumb_func_start ScrCmd_ApricornTreeGetApricorn
+ScrCmd_ApricornTreeGetApricorn: ; 0x0204BCCC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -50,15 +50,15 @@ ScrCmd_624: ; 0x0204BCCC
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r1, [r4]
-	bl sub_020557C0
+	bl FieldSys_ApricornTree_GetApricorn
 	strh r0, [r6]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_624
+	thumb_func_end ScrCmd_ApricornTreeGetApricorn
 
-	thumb_func_start ScrCmd_625
-ScrCmd_625: ; 0x0204BD04
+	thumb_func_start ScrCmd_GiveApricornFromTree
+ScrCmd_GiveApricornFromTree: ; 0x0204BD04
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -88,19 +88,20 @@ ScrCmd_625: ; 0x0204BD04
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_02031B14
+	bl Save_ApricornBox_get
+	; this looks like an inline
 	lsl r1, r7, #0x18
 	lsr r5, r1, #0x18
 	add r1, r5, #0
 	str r0, [sp]
-	bl sub_02031BA4
+	bl ApricornBox_CountApricorn
 	add r0, r4, r0
 	cmp r0, #0x63
 	bgt _0204BD6E
 	ldr r0, [sp]
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_02031B68
+	bl ApricornBox_GiveApricorn
 	mov r0, #1
 	b _0204BD70
 _0204BD6E:
@@ -110,4 +111,4 @@ _0204BD70:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_625
+	thumb_func_end ScrCmd_GiveApricornFromTree

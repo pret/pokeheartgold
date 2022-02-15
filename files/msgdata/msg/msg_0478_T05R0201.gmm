@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0478_T05R0201_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mr. Fuji does live here, but he’s\naway now.\rHe should be at the House of Memories.</language>
+	</row>
+	<row id="msg_0478_T05R0201_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Can you believe it?\rSome people get bored with taking\ncare of Pokémon.\rGrandpa takes in such poor homeless\nPokémon and takes care of them.</language>
+	</row>
+	<row id="msg_0478_T05R0201_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PSYDUCK: Gu-guwa?</language>
+	</row>
+	<row id="msg_0478_T05R0201_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">NIDORINO: Gyun!</language>
+	</row>
+	<row id="msg_0478_T05R0201_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PIDGEY: Pijji!</language>
+	</row>
+</body>

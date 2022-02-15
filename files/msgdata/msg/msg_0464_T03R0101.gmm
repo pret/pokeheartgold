@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0464_T03R0101_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Welcome!\rJust to let you know, all the large\nspecimens have been taken to the\fother museums for display.\rSo for now, admission is free\nof charge!\rPlease go ahead.</language>
+	</row>
+	<row id="msg_0464_T03R0101_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Did you know that you can\nextract Pokémon from Fossils?\rIf you ever need to, let me take care\nof it for you!\r</language>
+	</row>
+	<row id="msg_0464_T03R0101_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Please come by again if you ever want to\nextract Pokémon.</language>
+	</row>
+	<row id="msg_0464_T03R0101_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’ll extract it for you.\rCome back after a while!</language>
+	</row>
+	<row id="msg_0464_T03R0101_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hi, there!\rI have extracted a Pokémon from\nyour Fossil!\rIt is called {STRVAR_1 0, 0, 0}.\nTake good care of it!\r</language>
+	</row>
+	<row id="msg_0464_T03R0101_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oops!\nYour party seems full.\rWhy don’t you go to the PC\nto make room for it?</language>
+	</row>
+	<row id="msg_0464_T03R0101_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey!\nYou don’t have any Fossils.\rI heard that sometimes you find Fossils\nwhen you smash rocks at the\fRuins of Alph and other places.</language>
+	</row>
+	<row id="msg_0464_T03R0101_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Do you want to extract a Pokémon\nfrom the {STRVAR_1 8, 0, 0}? {YESNO 0}</language>
+	</row>
+	<row id="msg_0464_T03R0101_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} received\nthe {STRVAR_1 0, 1, 0}!</language>
+	</row>
+	<row id="msg_0464_T03R0101_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Would you like to give a nickname\nto the {STRVAR_1 0, 1, 0} you received? {YESNO 0}</language>
+	</row>
+	<row id="msg_0464_T03R0101_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">They say that meteorites struck\nsomewhere near Pewter City.\rWe would love to display them here\nin our museum, but...\rThese meteorites are said to\nemit strange energy and cannot\fbe carried away...</language>
+	</row>
+	<row id="msg_0464_T03R0101_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There are two places that I love!\nOne is the Ruins of Alph in Johto...\rThe other is the Pewter Museum!\nIt’s so quiet and makes me feel calm.\rDo you feel its admirable history\nsilently creeping up on you?</language>
+	</row>
+	<row id="msg_0464_T03R0101_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I should be grateful for my long life.\rNever did I think I would get to\nsee the bones of a dragon!</language>
+	</row>
+	<row id="msg_0464_T03R0101_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">..................\rAll those shining stars at night are\nthe stones I’ll never get to know...</language>
+	</row>
+	<row id="msg_0464_T03R0101_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Steven: People who dedicate themselves\nto what they believe stand out in\fa crowd.\rBut, my passion is no less than yours.\r</language>
+	</row>
+	<row id="msg_0464_T03R0101_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wow!\nThe thing you have...\r</language>
+	</row>
+	<row id="msg_0464_T03R0101_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This stone is...so mysterious!\rSomething seems to be shining inside...\nThe stone is modest...yet hiding\fsomething wonderful!\rYou should have it studied\nby experts.\r</language>
+	</row>
+	<row id="msg_0464_T03R0101_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} handed the Enigma Stone\nto the researcher!\r</language>
+	</row>
+	<row id="msg_0464_T03R0101_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I will check it.\nCan you hold on a second?\r</language>
+	</row>
+	<row id="msg_0464_T03R0101_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Thank you for your patience!\nIt took me a little while,\fbut I have confirmed it!\rThis is an Orb that contains\nwhat is called {COLOR 2}Soul Dew{COLOR 0}.\r</language>
+	</row>
+	<row id="msg_0464_T03R0101_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Soul Dew is no ordinary thing\nand is rarely seen.\fI would love to study it closely.</language>
+	</row>
+	<row id="msg_0464_T03R0101_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Steven: Soul Dew is said to be the\nsolidified spirits of LATIAS and LATIOS.\rIt has the power to bring out the\ntrue potential of LATIAS and LATIOS.\rThe spirits of these Pokémon and\nSoul Dew are said to call out to\feach other...\rThe only thing that puzzles me is\nthe place Soul Dew was found.\fWhy Kanto?\r</language>
+	</row>
+	<row id="msg_0464_T03R0101_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Stringy and winding...\nIs this a plant Fossil?</language>
+	</row>
+	<row id="msg_0464_T03R0101_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It’s a curving, sharp Fossil.\nThis may be...\fthe Fossil of a carnivore?</language>
+	</row>
+	<row id="msg_0464_T03R0101_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It’s flat and looks hard.\nThis may be...\fa part that protected its body?</language>
+	</row>
+	<row id="msg_0464_T03R0101_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Solid amber tree sap has\nsomething inside!\rIf you can take it out, you can\nextract a Pokémon from\fancient times...?</language>
+	</row>
+	<row id="msg_0464_T03R0101_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Small bones are put together to form\nsome kind of a Pokémon!</language>
+	</row>
+	<row id="msg_0464_T03R0101_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The rough stone has words etched\ninto it...\r“This is an unidentified object\nfound at Mt. Moon. It is possibly a\fmoon rock.”</language>
+	</row>
+	<row id="msg_0464_T03R0101_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There are thick and well-read books!\r“The Principles of Fossil Extraction”\f“Archaeology Manual”\f“Lost Pokémon”\f“Pokémon Ancestors”\f“Friendships of Trainers and Pokémon”\f“Caring at the Loamy Layer of Kanto”</language>
+	</row>
+	<row id="msg_0464_T03R0101_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Our museum mainly displays\nFossils and specimens from Kanto.\rPlease enjoy the extinct Pokémon\nthrough their remembrance, and\fstep through time to the ancient world.</language>
+	</row>
+</body>

@@ -1,0 +1,47 @@
+{
+  "header": "fielddata/script/scr_seq/event_D02R0102.h",
+  "warps": [
+    {
+      "x": 5,
+      "y": 4,
+      "header": "MAP_D02R0101",
+      "anchor": 2,
+      "height": 0
+    },
+    {
+      "x": 5,
+      "y": 6,
+      "header": "MAP_D02R0103",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 5,
+      "y": 25,
+      "header": "MAP_D02R0103",
+      "anchor": 1,
+      "height": 0
+    },
+    {
+      "x": 5,
+      "y": 23,
+      "header": "MAP_D02R0101",
+      "anchor": 3,
+      "height": 0
+    },
+    {
+      "x": 9,
+      "y": 7,
+      "header": "MAP_D02R0104",
+      "anchor": 0,
+      "height": 0
+    },
+    {
+      "x": 9,
+      "y": 26,
+      "header": "MAP_D02R0104",
+      "anchor": 1,
+      "height": 0
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0796_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">None</language>
+	</row>
+	<row id="msg_0796_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Angermanland</language>
+	</row>
+	<row id="msg_0796_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Blekinge</language>
+	</row>
+	<row id="msg_0796_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bohuslan</language>
+	</row>
+	<row id="msg_0796_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dalarna</language>
+	</row>
+	<row id="msg_0796_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dalsland</language>
+	</row>
+	<row id="msg_0796_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Gastrikland</language>
+	</row>
+	<row id="msg_0796_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Gotland</language>
+	</row>
+	<row id="msg_0796_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Halland</language>
+	</row>
+	<row id="msg_0796_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Halsingland</language>
+	</row>
+	<row id="msg_0796_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Jamtland</language>
+	</row>
+	<row id="msg_0796_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">North Lapland</language>
+	</row>
+	<row id="msg_0796_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">South Lapland</language>
+	</row>
+	<row id="msg_0796_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Medelpad</language>
+	</row>
+	<row id="msg_0796_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Narke</language>
+	</row>
+	<row id="msg_0796_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Norrbotten</language>
+	</row>
+	<row id="msg_0796_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oland</language>
+	</row>
+	<row id="msg_0796_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ostergotland / Vastergotland</language>
+	</row>
+	<row id="msg_0796_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Skane</language>
+	</row>
+	<row id="msg_0796_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Smaland</language>
+	</row>
+	<row id="msg_0796_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sodermanland</language>
+	</row>
+	<row id="msg_0796_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Uppland</language>
+	</row>
+	<row id="msg_0796_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Varmland</language>
+	</row>
+	<row id="msg_0796_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Vasterbotten</language>
+	</row>
+	<row id="msg_0796_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Vastmanland</language>
+	</row>
+</body>
