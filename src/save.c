@@ -1,5 +1,6 @@
 #include "save.h"
 #include "heap.h"
+#include "save_misc_data.h"
 
 struct SavArrayHeader {
     int id;
@@ -241,3 +242,12 @@ u32 sub_020274E4(SAVEDATA *saveData) {
     return saveData->unk_00008;
 }
 
+BOOL sub_020274E8(SAVEDATA *saveData) {
+    SAVE_MISC_DATA *misc = Sav2_Misc_get(saveData);
+    return sub_0202A9D8(misc);
+}
+
+void sub_020274F4(SAVEDATA *saveData) {
+    SAVE_MISC_DATA *misc = Sav2_Misc_get(saveData);
+    sub_0202A9C4(misc);
+}

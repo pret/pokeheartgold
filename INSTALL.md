@@ -1,5 +1,9 @@
 This doc details the steps necessary to build a copy of Pokemon HeartGold (EN-US) from the sources contained in this repository.
 
+### 0. Clone the repository
+
+Using a terminal or git client, clone this repository to your local device. All the steps that followed should be performed in the directory to which you cloned this repository.
+
 ### 1. Install MWCC compiler
 
 The build system requires the use of the Metrowerks C Compiler versions 2.0/sp2p2 to compile matching files. We cannot distribute the correct compiler here so join the PRET discord and download the pinned mwccarm.zip zip in #pokeheartgold and extract it to tools/. Run each of the executables so they ask for a license.dat and provide the one in the rar (it may also ask for it when compiling). This only needs to be done once.

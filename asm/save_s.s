@@ -16,22 +16,7 @@
 	.text
 
 	.public sub_020274E4
-
-	thumb_func_start sub_020274E8
-sub_020274E8: ; 0x020274E8
-	push {r3, lr}
-	bl Sav2_Misc_get
-	bl sub_0202A9D8
-	pop {r3, pc}
-	thumb_func_end sub_020274E8
-
-	thumb_func_start sub_020274F4
-sub_020274F4: ; 0x020274F4
-	push {r3, lr}
-	bl Sav2_Misc_get
-	bl sub_0202A9C4
-	pop {r3, pc}
-	thumb_func_end sub_020274F4
+	.public sub_020274F4
 
 	thumb_func_start sub_02027500
 sub_02027500: ; 0x02027500
