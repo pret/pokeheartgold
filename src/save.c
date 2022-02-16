@@ -40,7 +40,7 @@ struct SaveBlock2 {
     struct SavArrayHeader arrayHeaders[SAVE_BLOCK_NUM]; // 23014
     struct SaveSlotSpec saveSlotSpecs[2]; // 232B4
     struct UnkSavSub_232CC unk_232CC;
-    int unk_232F8;
+    int boxModifiedFlags;
     u8 filler_232FC[4];
     u16 unk_23300;
     u8 unk_23302[6];
@@ -101,7 +101,7 @@ SAVEDATA *SaveBlock2_new(void) {
         if (r5 == 2) {
             ret->unk_0000C |= 1;
         } else {
-            ret->unk_232F8 = sub_02027170(ret);
+            ret->boxModifiedFlags = sub_02027170(ret);
         }
         sub_020279EC(ret, &sp4, &sp0);
         if (sp4 == 3) {

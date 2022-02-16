@@ -1569,7 +1569,7 @@ _02028018:
 	add r0, r6, #0
 	mov r1, #3
 	add r3, sp, #4
-	bl ReadSaveFileFromFlash
+	bl ReadExtraSaveChunk
 	add r4, r0, #0
 	bne _02028030
 	bl GF_AssertFail
@@ -1586,7 +1586,7 @@ _02028030:
 	ldr r1, [r5]
 	add r0, r6, #0
 	add r2, r4, #0
-	bl WriteSaveFileToFlash
+	bl WriteExtraSaveChunk
 	add r0, r4, #0
 	bl FreeToHeap
 _02028054:
@@ -1676,8 +1676,8 @@ sub_020280DC: ; 0x020280DC
 	.balign 4, 0
 	thumb_func_end sub_020280DC
 
-	thumb_func_start WriteSaveFileToFlash
-WriteSaveFileToFlash: ; 0x020280E4
+	thumb_func_start WriteExtraSaveChunk
+WriteExtraSaveChunk: ; 0x020280E4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r7, r0, #0
@@ -1828,7 +1828,7 @@ _02028218:
 _02028224: .word _020F645C
 _02028228: .word _020F6464
 _0202822C: .word 0x000232F0
-	thumb_func_end WriteSaveFileToFlash
+	thumb_func_end WriteExtraSaveChunk
 
 	thumb_func_start sub_02028230
 sub_02028230: ; 0x02028230
@@ -1957,8 +1957,8 @@ _02028334: .word _020F645C
 _02028338: .word _020F6464
 	thumb_func_end sub_02028230
 
-	thumb_func_start ReadSaveFileFromFlash
-ReadSaveFileFromFlash: ; 0x0202833C
+	thumb_func_start ReadExtraSaveChunk
+ReadExtraSaveChunk: ; 0x0202833C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r5, r0, #0
@@ -2128,7 +2128,7 @@ _02028480:
 _02028498: .word _020F645C
 _0202849C: .word _020F6464
 _020284A0: .word 0x000232F0
-	thumb_func_end ReadSaveFileFromFlash
+	thumb_func_end ReadExtraSaveChunk
 
 	thumb_func_start sub_020284A4
 sub_020284A4: ; 0x020284A4

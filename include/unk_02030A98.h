@@ -1,0 +1,8 @@
+#ifndef POKEHEARTGOLD_UNK_02030A98_H
+#define POKEHEARTGOLD_UNK_02030A98_H
+
+struct UnkStruct_02030A98 {
+    u8 filler_000[0xBA0];
+}; // size = 0xBA0
+
+#endif //POKEHEARTGOLD_UNK_02030A98_H

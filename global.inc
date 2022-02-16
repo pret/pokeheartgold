@@ -1424,7 +1424,7 @@
 .public ReadMsgData_ExpandPlaceholders
 .public ReadMsgData_NewNarc_ExistingString
 .public ReadMsgData_NewNarc_NewString
-.public ReadSaveFileFromFlash
+.public ReadExtraSaveChunk
 .public ReadWholeNarcMemberByIdPair
 .public ReallocFromHeap
 .public RedrawListMenu
@@ -2781,7 +2781,7 @@
 .public WildEncounters_ReadFromNarc
 .public WildMonSetRandomHeldItem
 .public WindowIsInUse
-.public WriteSaveFileToFlash
+.public WriteExtraSaveChunk
 .public ZeroBoxMonData
 .public ZeroMonData
 .public _020FA484
