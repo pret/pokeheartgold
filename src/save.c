@@ -49,7 +49,6 @@ struct UnkSavSub_232CC {
     u32 unk_14;
     u32 unk_18;
     u32 unk_1C[2];
-    u8 padding_24[8];
 };
 
 struct SaveBlock2 {
@@ -62,10 +61,13 @@ struct SaveBlock2 {
     struct SavArrayHeader arrayHeaders[SAVE_BLOCK_NUM]; // 23014
     struct SaveSlotSpec saveSlotSpecs[2]; // 232B4
     struct UnkSavSub_232CC unk_232CC;
+    u8 filler_232F0[8];
     int boxModifiedFlags;
     u8 filler_232FC[4];
     u16 unk_23300;
-    u8 unk_23302[6];
+    u16 unk_23302;
+    u16 unk_23304;
+    u16 unk_23306;
     u8 unk_23308[2];
     u16 unk_2330A;
 }; // size=0x2330C
@@ -85,22 +87,23 @@ int sub_02027564(SAVEDATA *saveData);
 int sub_020277D4(SAVEDATA *saveData);
 BOOL Sav2_LoadDynamicRegion(SAVEDATA *saveData);
 void sub_020279EC(SAVEDATA *saveData, int *err1, int *err2);
+void sub_02027BDC(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC, int a2);
+int sub_02027C18(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC);
+void sub_02027CEC(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC, int a2);
 int FlashWriteChunkInternal(u32 offset, void *data, u32 size);
 BOOL FlashLoadChunk(u32 offset, void *data, u32 size);
 void sub_02027D6C(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC);
-void sub_02027BDC(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC, int a2);
+BOOL WaitFlashWrite(int a0, int a1, int *a2);
 BOOL SaveDetectFlash(void);
 void SaveBlock2_InitSubstructs(struct SavArrayHeader *headers);
 void sub_02027EFC(struct SaveSlotSpec *slotSpecs, struct SavArrayHeader *headers);
 int FlashClobberChunkFooter(SAVEDATA *saveData, int spec, int sector);
 int sub_02027DB4(SAVEDATA *saveData);
-void FlashWriteChunk(u32 offset, void *data, u32 size);
+int FlashWriteChunk(u32 offset, void *data, u32 size);
 void Sav2_InitDynamicRegion_Internal(u8 *dynamic_region, struct SavArrayHeader *headers);
 u32 sub_02028C70(SAVEDATA *saveData);
 u32 sub_02028C9C(u32 flags);
 int sub_02028968(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC);
-int sub_02027C18(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC);
-void sub_02027CEC(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC, int a2);
 
 extern void sub_0201A4BC(int);
 extern void sub_0201A4CC(int);
@@ -633,7 +636,7 @@ BOOL Sav2_LoadDynamicRegion(SAVEDATA *saveData) {
     return TRUE;
 }
 
-int sub_02027B74(SAVEDATA *saveData, int idx, int slot) {
+int sub_02027B74(SAVEDATA *saveData, int idx, u8 slot) {
     struct SaveSlotSpec *spec;
 
     spec = &saveData->saveSlotSpecs[idx];
@@ -641,7 +644,7 @@ int sub_02027B74(SAVEDATA *saveData, int idx, int slot) {
     return FlashWriteChunkInternal(GetChunkOffsetFromCurrentSaveSlot(slot, spec), saveData->dynamic_region + spec->offset, spec->size - sizeof(struct SaveChunkFooter));
 }
 
-int sub_02027BAC(SAVEDATA *saveData, int idx, int slot) {
+int sub_02027BAC(SAVEDATA *saveData, int idx, u8 slot) {
     struct SaveSlotSpec *spec;
     u32 size;
 
@@ -665,4 +668,143 @@ void sub_02027BDC(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC, int a2) 
     unk232CC->unk_8 = 0;
     unk232CC->unk_C = 2;
     sub_0201A4BC(1);
+}
+
+int sub_02027C18(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC) {
+    int sp0;
+    switch (unk232CC->unk_14) {
+    case 0:
+        unk232CC->unk_10 = sub_02027B74(saveData, unk232CC->unk_8, saveData->unk_2330A == 0);
+        unk232CC->unk_1C[0] = 1;
+        unk232CC->unk_14++;
+        // fallthrough
+    case 1:
+        if (!WaitFlashWrite(unk232CC->unk_10, unk232CC->unk_1C[0], &sp0)) {
+            break;
+        }
+        unk232CC->unk_1C[0] = 0;
+        if (!sp0) {
+            return 3;
+        }
+        unk232CC->unk_14++;
+        if (unk232CC->unk_8 + 1 == unk232CC->unk_C) {
+            return 1;
+        }
+        // fallthrough
+    case 2:
+        unk232CC->unk_10 = sub_02027BAC(saveData, unk232CC->unk_8, saveData->unk_2330A == 0);
+        unk232CC->unk_1C[0] = 1;
+        unk232CC->unk_14++;
+        // fallthrough
+    case 3:
+        if (!WaitFlashWrite(unk232CC->unk_10, unk232CC->unk_1C[0], &sp0)) {
+            break;
+        }
+        unk232CC->unk_1C[0] = 0;
+        if (!sp0) {
+            return 3;
+        }
+        if (++unk232CC->unk_8 == unk232CC->unk_C) {
+            return 2;
+        }
+        unk232CC->unk_14 = 0;
+        break;
+    }
+    return 0;
+}
+
+void sub_02027CEC(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC, int a2) {
+    saveData->unk_23304 = 0;
+    saveData->unk_23306 = 0;
+    if (a2 == 3) {
+        if (unk232CC->unk_0) {
+            saveData->unk_23010 = unk232CC->unk_18;
+        }
+    } else {
+        saveData->boxModifiedFlags = sub_02027170(saveData);
+        saveData->unk_23300 = saveData->unk_23302;
+        sub_02027180(saveData);
+        saveData->unk_23308[saveData->unk_2330A == 0] = 0;
+        saveData->unk_2330A = saveData->unk_2330A == 0;
+        saveData->unk_00004 = 1;
+        saveData->unk_00008 = 0;
+    }
+    sub_0201A4CC(1);
+}
+
+void sub_02027D6C(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC) {
+    if (unk232CC->unk_0) {
+        saveData->unk_23010 = unk232CC->unk_18;
+    }
+    if (!CARD_TryWaitBackupAsync()) {
+        CARD_CancelBackupAsync();
+    }
+    if (unk232CC->unk_1C[0]) {
+        CARD_UnlockBackup(unk232CC->unk_10);
+        OS_ReleaseLockID(unk232CC->unk_10);
+        unk232CC->unk_1C[0] = 0;
+    }
+    sub_0201A4CC(1);
+}
+
+int sub_02027DB4(SAVEDATA *saveData) {
+    struct UnkSavSub_232CC sp0;
+    int ret;
+
+    sub_02027BDC(saveData, &sp0, 2);
+    do {
+        if (sp0.unk_8 != 1) {
+            ret = sub_02027C18(saveData, &sp0);
+        } else {
+            ret = sub_02028968(saveData, &sp0);
+        }
+    } while (ret == 0 || ret == 1);
+    sub_02027CEC(saveData, &sp0, ret);
+    return ret;
+}
+
+int FlashClobberChunkFooter(SAVEDATA *saveData, int spec, int sector) {
+    struct SaveChunkFooter sp0;
+    struct SaveSlotSpec *slotSpec;
+
+    slotSpec = &saveData->saveSlotSpecs[spec];
+    MI_CpuFill8(&sp0, 0xFF, sizeof(struct SaveChunkFooter));
+    return FlashWriteChunk(GetChunkOffsetFromCurrentSaveSlot(sector, slotSpec) + slotSpec->size - sizeof(struct SaveChunkFooter), &sp0, sizeof(struct SaveChunkFooter));
+}
+
+u32 sub_02027E30(int idx) {
+    u32 size;
+    const struct SaveChunkHeader *hdr;
+
+    hdr = _020F64C4;
+    GF_ASSERT(idx < _020F6460);
+    size = hdr[idx].sizeFunc();
+    size = ((size + 3) & ~3) + 4;
+    return size;
+}
+
+void SaveBlock2_InitSubstructs(struct SavArrayHeader *arr_hdr) {
+    int i;
+    const struct SaveChunkHeader *hdr;
+    int adrs;
+
+    hdr = _020F64C4;
+    adrs = 0;
+    GF_ASSERT(_020F6460 == SAVE_BLOCK_NUM);
+    for (i = 0; i < _020F6460; i++) {
+        GF_ASSERT(i == hdr[i].id);
+        arr_hdr[i].id = hdr[i].id;
+        arr_hdr[i].size = sub_02027E30(i);
+        arr_hdr[i].offset = adrs;
+        arr_hdr[i].crc = 0;
+        arr_hdr[i].field_E = hdr[i].block;
+        adrs += arr_hdr[i].size;
+        if (i == _020F6460 - 1 || hdr[i].block != hdr[i + 1].block) {
+            adrs += sizeof(struct SaveChunkFooter);
+            if (hdr[i].block != hdr[i + 1].block && i + 1 < _020F6460 && (adrs % 0x100) != 0) {
+                adrs += 0x100 - (adrs % 0x100);
+            }
+        }
+    }
+    GF_ASSERT(adrs <= SAVE_PAGE_MAX * SAVE_SECTOR_SIZE);
 }
