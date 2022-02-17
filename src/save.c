@@ -17,9 +17,9 @@ struct SavArrayHeader {
 
 struct SavArrayFooter {
     u32 magic;
-    u32 unk_4;
-    u32 unk_8;
-    u16 unk_C;
+    u32 saveno;
+    u32 size;
+    u16 idx;
     u16 crc;
 };
 
@@ -61,7 +61,8 @@ struct SaveBlock2 {
     struct SavArrayHeader arrayHeaders[SAVE_BLOCK_NUM]; // 23014
     struct SaveSlotSpec saveSlotSpecs[2]; // 232B4
     struct UnkSavSub_232CC unk_232CC;
-    u8 filler_232F0[8];
+    u8 filler_232F0[4];
+    u32 unk_232F4;
     int boxModifiedFlags;
     u8 filler_232FC[4];
     u16 unk_23300;
@@ -852,4 +853,67 @@ void Sav2_InitDynamicRegion_Internal(u8 *dynamic_region, struct SavArrayHeader *
         MI_CpuClearFast(ptr, headers[i].size);
         chunkHeaders[i].initFunc(ptr);
     }
+}
+
+void sub_02027FFC(SAVEDATA *saveData) {
+    const struct ExtraSaveChunkHeader *chunkHeaders;
+    int i;
+    void *data;
+    int status;
+
+    chunkHeaders = _020F6464;
+    if (sub_020274E8(saveData) == 1) {
+        return;
+    }
+
+    for (i = 0; i < _020F645C; i++) {
+        if (chunkHeaders[i].id != 0) {
+            data = ReadExtraSaveChunk(saveData, 3, chunkHeaders[i].id, &status);
+            GF_ASSERT(data != NULL);
+            MI_CpuFill8(data, 0, chunkHeaders[i].sizeFunc());
+            chunkHeaders[i].initFunc(data);
+            WriteExtraSaveChunk(saveData, chunkHeaders[i].id, data);
+            FreeToHeap(data);
+        }
+    }
+
+    sub_020274F4(saveData);
+}
+
+void CreateChunkFooter(SAVEDATA *saveData, void *data, int idx, u32 size) {
+    struct SavArrayFooter *footer;
+
+    footer = (struct SavArrayFooter *)((u8 *)data + size);
+
+    footer->magic = SAVE_CHUNK_MAGIC;
+    footer->saveno = saveData->unk_232F4 + 1;
+    footer->size = size;
+    footer->idx = idx;
+    footer->crc = GF_CalcCRC16(data, size + offsetof(struct SavArrayFooter, crc));
+}
+
+BOOL ValidateChunk(SAVEDATA *saveData, void *data, int idx, u32 size) {
+#pragma unused(saveData)
+    struct SavArrayFooter *footer;
+
+    footer = (struct SavArrayFooter *)((u8 *)data + size);
+
+    if (footer->magic != SAVE_CHUNK_MAGIC) {
+        return FALSE;
+    }
+    if (footer->size != size) {
+        return FALSE;
+    }
+    if (footer->idx != idx) {
+        return FALSE;
+    }
+    return footer->crc == GF_CalcCRC16(data, size + offsetof(struct SavArrayFooter, crc));
+}
+
+u32 sub_020280DC(void *data, u32 size) {
+    struct SavArrayFooter *footer;
+
+    footer = (struct SavArrayFooter *)((u8 *)data + size);
+
+    return footer->saveno;
 }
