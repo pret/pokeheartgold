@@ -1,6 +1,8 @@
 #include "save.h"
 #include "heap.h"
 #include "save_misc_data.h"
+#include "save_arrays.h"
+#include "math_util.h"
 
 struct SavArrayHeader {
     int id;
@@ -9,6 +11,14 @@ struct SavArrayHeader {
     u16 field_C;
     u16 field_E;
 }; // size=0x10
+
+struct SavArrayFooter {
+    u32 magic;
+    u32 unk_4;
+    u32 unk_8;
+    u16 unk_C;
+    u16 crc;
+};
 
 struct SaveSlotSpec {
     u8 unk_0;
@@ -50,27 +60,38 @@ struct SaveBlock2 {
     u16 unk_2330A;
 }; // size=0x2330C
 
+struct UnkStruct_2027744 {
+    BOOL unk0;
+    u32 unk4;
+};
+
 BOOL saveWritten;
 SAVEDATA *_021D2228;
 
+void Sav2_InitDynamicRegion(SAVEDATA *saveData);
+u32 sub_02027544(SAVEDATA *saveData);
+void sub_02027550(SAVEDATA *saveData, int a1);
+int sub_02027564(SAVEDATA *saveData);
+void sub_02027D6C(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC);
+void sub_02027BDC(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC, int a2);
 BOOL SaveDetectFlash(void);
 void SaveBlock2_InitSubstructs(struct SavArrayHeader *headers);
 void sub_02027EFC(struct SaveSlotSpec *slotSpecs, struct SavArrayHeader *headers);
 int sub_020277D4(SAVEDATA *saveData);
 BOOL Sav2_LoadDynamicRegion(SAVEDATA *saveData);
 void sub_020279EC(SAVEDATA *saveData, int *err1, int *err2);
-void Sav2_InitDynamicRegion(SAVEDATA *saveData);
 int FlashClobberChunkFooter(SAVEDATA *saveData, int spec, int sector);
 int sub_02027DB4(SAVEDATA *saveData);
 void FlashWriteChunk(u32 offset, void *data, u32 size);
-void sub_02027550(SAVEDATA *saveData, int a1);
-int sub_02027564(SAVEDATA *saveData);
 void Sav2_InitDynamicRegion_Internal(u8 *dynamic_region, struct SavArrayHeader *headers);
+u32 sub_02028C70(SAVEDATA *saveData);
+u32 sub_02028C9C(u32 flags);
+int sub_02028968(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC);
+int sub_02027C18(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC);
+void sub_02027CEC(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC, int a2);
 
 extern void sub_0201A4BC(int);
 extern void sub_0201A4CC(int);
-extern u32 sub_02027170(SAVEDATA *saveData);
-extern void sub_02027180(SAVEDATA *saveData);
 
 SAVEDATA *SaveBlock2_new(void) {
     SAVEDATA *ret;
@@ -250,4 +271,65 @@ BOOL sub_020274E8(SAVEDATA *saveData) {
 void sub_020274F4(SAVEDATA *saveData) {
     SAVE_MISC_DATA *misc = Sav2_Misc_get(saveData);
     sub_0202A9C4(misc);
+}
+
+BOOL sub_02027500(SAVEDATA *saveData) {
+    return sub_020274E4(saveData) != 0 && sub_020274E0(saveData) != 0;
+}
+
+BOOL sub_02027520(SAVEDATA *saveData) {
+    return sub_02027544(saveData) >= 6;
+}
+
+void sub_02027534(void) {
+    sub_02027190(_021D2228);
+}
+
+u32 sub_02027544(SAVEDATA *saveData) {
+    return sub_02028C9C(sub_02028C70(saveData));
+}
+
+void sub_02027550(SAVEDATA *saveData, int a1) {
+    sub_02027BDC(saveData, &saveData->unk_232CC, a1);
+}
+
+int sub_02027564(SAVEDATA *saveData) {
+    int ret;
+
+    if (saveData->unk_232CC.unk_8 == 1) {
+        ret = sub_02028968(saveData, &saveData->unk_232CC);
+    } else {
+        ret = sub_02027C18(saveData, &saveData->unk_232CC);
+    }
+    if (!(ret == 0 || ret == 1)) {
+        sub_02027CEC(saveData, &saveData->unk_232CC, ret);
+    }
+    return ret;
+}
+
+void sub_020275A4(SAVEDATA *saveData) {
+    sub_02027D6C(saveData, &saveData->unk_232CC);
+}
+
+void sub_020275B4(SAVEDATA *saveData) {
+#pragma unused(saveData)
+}
+
+void sub_020275B8(struct UnkStruct_2027744 *unk) {
+#pragma unused(unk)
+}
+
+void sub_020275BC(struct UnkStruct_2027744 *unk) {
+    unk->unk0 = FALSE;
+    unk->unk4 = 0;
+}
+
+u16 sub_020275C4(SAVEDATA *saveData, const void *data, u32 size) {
+#pragma unused(saveData)
+    return GF_CalcCRC16(data, size);
+}
+
+u16 sub_020275D0(SAVEDATA *saveData, const void *data, u32 size) {
+#pragma unused(saveData)
+    return GF_CalcCRC16(data, size - sizeof(struct SavArrayFooter));
 }
