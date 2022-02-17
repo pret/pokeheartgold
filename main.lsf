@@ -169,7 +169,7 @@ Static main
 	Object asm/scrcmd_11.o
 	Object asm/scrcmd_12.o
 	Object src/scrcmd_money.o
-	Object asm/scrcmd_14.o
+	Object src/scrcmd_daycare.o
 	Object asm/scrcmd_15.o
 	Object asm/scrcmd_16.o
 	Object asm/scrcmd_17.o

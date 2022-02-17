@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_SCRCMD_H
 #define POKEHEARTGOLD_SCRCMD_H
 
+#include "constants/scrcmd.h"
 #include "fieldmap.h"
 #include "script.h"
 

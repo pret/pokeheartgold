@@ -174,6 +174,8 @@ struct FieldSystemUnk108 {
     u32 unk8;
 };
 
+typedef struct MapObjectMan MapObjectMan;
+
 struct FieldSystem {
     u8 unk0[0x8];
     void* bg_config;
@@ -185,7 +187,7 @@ struct FieldSystem {
     u8 unk24[0xC];
     MAPMATRIX* map_matrix;
     u8 unk34[0x8];
-    LocalMapObject* unk3C;
+    MapObjectMan* unk3C;
     FIELD_PLAYER_AVATAR *playerAvatar;
     u8 unk44[0x68];
     u32 unkAC;
