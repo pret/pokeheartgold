@@ -364,7 +364,7 @@ _0202FE36:
 	add r0, r7, #0
 	add r1, r5, #0
 	mov r2, #0x58
-	bl sub_020275C4
+	bl SavArray_CalcCRC16
 	add r5, #0x60
 	strh r0, [r5]
 	ldr r0, _0202FEA8 ; =0x0000E281
@@ -373,7 +373,7 @@ _0202FE36:
 	strh r0, [r4, r2]
 	add r0, r7, #0
 	add r2, r2, #2
-	bl sub_020275C4
+	bl SavArray_CalcCRC16
 	ldr r1, _0202FEB0 ; =0x00001C64
 	ldr r3, _0202FEB4 ; =0x0000FFFF
 	strh r0, [r4, r1]
@@ -830,7 +830,7 @@ _020301AC:
 _020301B0:
 	add r1, r5, #0
 	mov r2, #0x58
-	bl sub_020275C4
+	bl SavArray_CalcCRC16
 	add r5, #0x60
 	ldrh r1, [r5]
 	cmp r0, r1
@@ -841,7 +841,7 @@ _020301C4:
 	ldr r2, _02030244 ; =0x00001C64
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_020275C4
+	bl SavArray_CalcCRC16
 	ldr r1, _02030244 ; =0x00001C64
 	ldrh r1, [r4, r1]
 	cmp r0, r1

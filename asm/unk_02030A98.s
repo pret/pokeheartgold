@@ -1680,7 +1680,7 @@ _02031566:
 	add r0, r6, #0
 	add r1, r5, #0
 	mov r2, #0x7c
-	bl sub_020275C4
+	bl SavArray_CalcCRC16
 	add r5, #0x7c
 	strh r0, [r5]
 	add sp, #0x64

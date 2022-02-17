@@ -3941,7 +3941,7 @@ ov45_0222BAC4: ; 0x0222BAC4
 	add r1, r4, #0
 	add r1, #0x20
 	mov r2, #0x94
-	bl sub_020275C4
+	bl SavArray_CalcCRC16
 	add r4, #0xb4
 	str r0, [r4]
 	pop {r4, pc}
@@ -3956,7 +3956,7 @@ ov45_0222BADC: ; 0x0222BADC
 	add r1, r4, #0
 	add r1, #0x20
 	mov r2, #0x94
-	bl sub_020275C4
+	bl SavArray_CalcCRC16
 	add r4, #0xb4
 	ldr r1, [r4]
 	cmp r0, r1
@@ -6509,7 +6509,7 @@ ov45_0222CCA4: ; 0x0222CCA4
 	ldr r0, [r4, #0x44]
 	add r1, r4, #0
 	mov r2, #0x44
-	bl sub_020275C4
+	bl SavArray_CalcCRC16
 	add r4, #0x48
 	strh r0, [r4]
 	pop {r4, pc}
@@ -6522,7 +6522,7 @@ ov45_0222CCB8: ; 0x0222CCB8
 	ldr r0, [r4, #0x44]
 	add r1, r4, #0
 	mov r2, #0x44
-	bl sub_020275C4
+	bl SavArray_CalcCRC16
 	add r1, r4, #0
 	add r1, #0x48
 	ldrh r1, [r1]

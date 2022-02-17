@@ -27217,7 +27217,7 @@
 .public sub_02027550
 .public sub_02027564
 .public sub_020275A4
-.public sub_020275C4
+.public SavArray_CalcCRC16
 .public sub_02027FFC
 .public sub_02028230
 .public sub_020284A4

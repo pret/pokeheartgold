@@ -49626,7 +49626,7 @@ _02244AD2:
 	add r0, r7, #0
 	add r1, #0x84
 	mov r2, #0x58
-	bl sub_020275C4
+	bl SavArray_CalcCRC16
 	ldr r1, _02244B2C ; =_021D2AF8
 	ldr r1, [r1]
 	add r1, #0xe4
@@ -49759,7 +49759,7 @@ _02244BCE:
 	add r0, r5, #0
 	add r1, #0x84
 	mov r2, #0x58
-	bl sub_020275C4
+	bl SavArray_CalcCRC16
 	ldr r1, _02244C34 ; =_021D2AF8
 	ldr r3, _02244C3C ; =0x0000FFFF
 	ldr r2, [r1]
