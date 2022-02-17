@@ -3,6 +3,7 @@
 #include "save_misc_data.h"
 #include "save_arrays.h"
 #include "math_util.h"
+#include "unk_0202C034.h"
 
 #define SAVE_CHUNK_MAGIC 0x20060623
 
@@ -10,7 +11,7 @@ struct SavArrayHeader {
     int id;
     u32 size;
     u32 offset;
-    u16 field_C;
+    u16 crc;
     u16 field_E;
 }; // size=0x10
 
@@ -82,14 +83,15 @@ u32 sub_02027544(SAVEDATA *saveData);
 void sub_02027550(SAVEDATA *saveData, int a1);
 int sub_02027564(SAVEDATA *saveData);
 int sub_020277D4(SAVEDATA *saveData);
+BOOL Sav2_LoadDynamicRegion(SAVEDATA *saveData);
+void sub_020279EC(SAVEDATA *saveData, int *err1, int *err2);
+int FlashWriteChunkInternal(u32 offset, void *data, u32 size);
 BOOL FlashLoadChunk(u32 offset, void *data, u32 size);
 void sub_02027D6C(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC);
 void sub_02027BDC(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC, int a2);
 BOOL SaveDetectFlash(void);
 void SaveBlock2_InitSubstructs(struct SavArrayHeader *headers);
 void sub_02027EFC(struct SaveSlotSpec *slotSpecs, struct SavArrayHeader *headers);
-BOOL Sav2_LoadDynamicRegion(SAVEDATA *saveData);
-void sub_020279EC(SAVEDATA *saveData, int *err1, int *err2);
 int FlashClobberChunkFooter(SAVEDATA *saveData, int spec, int sector);
 int sub_02027DB4(SAVEDATA *saveData);
 void FlashWriteChunk(u32 offset, void *data, u32 size);
@@ -561,4 +563,80 @@ int sub_020277D4(SAVEDATA *saveData) {
         }
     }
     return 3;
+}
+
+void sub_020279EC(SAVEDATA *saveData, int *err1, int *err2) {
+    SAVE_MISC_DATA *misc;
+    int sp14;
+    int sp10;
+    int sp0C;
+    int sp08;
+    u8 sp04;
+    int i;
+
+    misc = Sav2_Misc_get(saveData);
+    *err1 = 1;
+    *err2 = 1;
+    if (sub_020274E8(saveData)) {
+        sub_0202AC38(misc, 1, &sp0C, &sp08, &sp04);
+        if (sp0C != -1 || sp08 != -1) {
+            FreeToHeap(sub_020284A4(saveData, 3, 1, &sp14, &sp10));
+            if (sp14 == 2) {
+                *err1 = 3;
+            } else if (sp14 == 1 && sp10 == 1) {
+                *err1 = 2;
+            }
+        }
+        for (i = 2; i <= 5; i++) {
+            sub_0202AC38(misc, i, &sp0C, &sp08, &sp04);
+            if (sp0C != -1 || sp08 != -1) {
+                FreeToHeap(sub_020284A4(saveData, 3, i, &sp14, &sp10));
+                if (sp14 == 2) {
+                    *err2 = 3;
+                } else if (sp14 == 1 && sp10 == 1 && *err2 != 3) {
+                    *err2 = 2;
+                }
+            }
+        }
+    }
+}
+
+BOOL sub_02027ABC(u32 slot, struct SaveSlotSpec *spec, void *dest) {
+    return FlashLoadChunk(GetChunkOffsetFromCurrentSaveSlot(slot, spec), (u8 *)dest + spec->offset, spec->size);
+}
+
+BOOL Sav2_LoadDynamicRegion(SAVEDATA *saveData) {
+    int i;
+    u8 *data;
+    u32 pc_offs;
+    u32 pc_size;
+
+    struct SaveSlotSpec *specs = saveData->saveSlotSpecs;
+
+    for (i = 0; i < 2; i++) {
+        data = saveData->dynamic_region;
+        if (!sub_02027ABC(saveData->unk_2330A, &saveData->saveSlotSpecs[i], saveData->dynamic_region)) {
+            return FALSE;
+        }
+        if (!sub_0202761C(saveData, saveData->dynamic_region, i)) {
+            return FALSE;
+        }
+    }
+    for (i = 0; i < SAVE_BLOCK_NUM; i++) {
+        saveData->arrayHeaders[i].crc = GF_CalcCRC16(SavArray_get(saveData, i), saveData->arrayHeaders[i].size);
+    }
+    pc_offs = saveData->saveSlotSpecs[1].offset;
+    pc_size = sub_02027164() * sub_0202716C();
+    saveData->unk_23300 = GF_CalcCRC16(data + pc_offs, pc_size);
+    sub_020310A0(saveData);
+    sub_0202C6FC(saveData);
+    return TRUE;
+}
+
+int sub_02027B74(SAVEDATA *saveData, int idx, int slot) {
+    struct SaveSlotSpec *spec;
+
+    spec = &saveData->saveSlotSpecs[idx];
+    sub_020276C0(saveData, saveData->dynamic_region, idx);
+    return FlashWriteChunkInternal(GetChunkOffsetFromCurrentSaveSlot(slot, spec), saveData->dynamic_region + spec->offset, spec->size - sizeof(struct SaveChunkFooter));
 }
