@@ -12,7 +12,7 @@ struct SavArrayHeader {
     u32 size;
     u32 offset;
     u16 crc;
-    u16 field_E;
+    u16 slot;
 }; // size=0x10
 
 struct SavArrayFooter {
@@ -32,9 +32,9 @@ struct SaveChunkFooter {
 };
 
 struct SaveSlotSpec {
-    u8 unk_0;
-    u8 unk_1;
-    u8 unk_2;
+    u8 id;
+    u8 firstPage;
+    u8 numPages;
     u8 padding_3;
     u32 offset;
     u32 size;
@@ -797,7 +797,7 @@ void SaveBlock2_InitSubstructs(struct SavArrayHeader *arr_hdr) {
         arr_hdr[i].size = sub_02027E30(i);
         arr_hdr[i].offset = adrs;
         arr_hdr[i].crc = 0;
-        arr_hdr[i].field_E = hdr[i].block;
+        arr_hdr[i].slot = hdr[i].block;
         adrs += arr_hdr[i].size;
         if (i == _020F6460 - 1 || hdr[i].block != hdr[i + 1].block) {
             adrs += sizeof(struct SaveChunkFooter);
@@ -807,4 +807,49 @@ void SaveBlock2_InitSubstructs(struct SavArrayHeader *arr_hdr) {
         }
     }
     GF_ASSERT(adrs <= SAVE_PAGE_MAX * SAVE_SECTOR_SIZE);
+}
+
+void sub_02027EFC(struct SaveSlotSpec *slotSpecs, struct SavArrayHeader *headers) {
+    int i;
+    int adrs;
+    int npage;
+    int j;
+
+    npage = 0;
+    adrs = 0;
+    j = 0;
+    for (i = 0; i < 2; i++) {
+        slotSpecs[i].id = i;
+        slotSpecs[i].size = 0;
+        for (; i == headers[j].slot && j < _020F6460; j++) {
+            slotSpecs[i].size += headers[j].size;
+        }
+        slotSpecs[i].size += sizeof(struct SaveChunkFooter);
+        slotSpecs[i].firstPage = npage;
+        slotSpecs[i].offset = adrs;
+        slotSpecs[i].numPages = (slotSpecs[i].size + SAVE_SECTOR_SIZE - 1) / SAVE_SECTOR_SIZE;
+        npage += slotSpecs[i].numPages;
+        adrs += slotSpecs[i].size;
+        if (adrs % 0x100 != 0) {
+            adrs += (0x100 - (adrs % 0x100));
+        }
+    }
+    GF_ASSERT(npage == slotSpecs[1].firstPage + slotSpecs[1].numPages);
+    GF_ASSERT(npage <= SAVE_PAGE_MAX);
+}
+
+void Sav2_InitDynamicRegion_Internal(u8 *dynamic_region, struct SavArrayHeader *headers) {
+    const struct SaveChunkHeader *chunkHeaders;
+    int i;
+    u32 adrs;
+    void *ptr;
+
+    chunkHeaders = _020F64C4;
+    MI_CpuClearFast(dynamic_region, SAVE_PAGE_MAX * SAVE_SECTOR_SIZE);
+    for (i = 0; i < _020F6460; i++) {
+        adrs = headers[i].offset;
+        ptr = dynamic_region + adrs;
+        MI_CpuClearFast(ptr, headers[i].size);
+        chunkHeaders[i].initFunc(ptr);
+    }
 }
