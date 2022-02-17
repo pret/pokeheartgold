@@ -31,62 +31,8 @@
 	.public sub_020277BC
 	.public sub_02027ABC
 	.public sub_02027B74
-
-	thumb_func_start sub_02027BAC
-sub_02027BAC: ; 0x02027BAC
-	push {r4, r5, r6, lr}
-	add r6, r0, #0
-	ldr r0, _02027BD8 ; =0x000232B4
-	add r3, r6, r0
-	mov r0, #0xc
-	mul r0, r1
-	add r4, r3, r0
-	add r0, r2, #0
-	add r1, r4, #0
-	ldr r5, [r4, #8]
-	bl GetChunkOffsetFromCurrentSaveSlot
-	ldr r1, [r4, #4]
-	add r0, r5, r0
-	add r1, r6, r1
-	sub r0, #0x10
-	add r1, r1, r5
-	mov r2, #0x10
-	bl FlashWriteChunkInternal
-	pop {r4, r5, r6, pc}
-	nop
-_02027BD8: .word 0x000232B4
-	thumb_func_end sub_02027BAC
-
-	thumb_func_start sub_02027BDC
-sub_02027BDC: ; 0x02027BDC
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	bl sub_0202C714
-	add r0, r5, #0
-	bl sub_02031084
-	mov r1, #0
-	str r1, [r4, #0x14]
-	str r1, [r4, #0x20]
-	str r1, [r4]
-	str r1, [r4, #0x1c]
-	mov r0, #1
-	ldr r2, _02027C14 ; =0x00023010
-	str r0, [r4]
-	ldr r3, [r5, r2]
-	str r3, [r4, #0x18]
-	ldr r3, [r5, r2]
-	add r3, r3, #1
-	str r3, [r5, r2]
-	str r1, [r4, #4]
-	str r1, [r4, #8]
-	mov r1, #2
-	str r1, [r4, #0xc]
-	bl sub_0201A4BC
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-_02027C14: .word 0x00023010
-	thumb_func_end sub_02027BDC
+	.public sub_02027BAC
+	.public sub_02027BDC
 
 	thumb_func_start sub_02027C18
 sub_02027C18: ; 0x02027C18

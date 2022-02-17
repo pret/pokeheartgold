@@ -640,3 +640,29 @@ int sub_02027B74(SAVEDATA *saveData, int idx, int slot) {
     sub_020276C0(saveData, saveData->dynamic_region, idx);
     return FlashWriteChunkInternal(GetChunkOffsetFromCurrentSaveSlot(slot, spec), saveData->dynamic_region + spec->offset, spec->size - sizeof(struct SaveChunkFooter));
 }
+
+int sub_02027BAC(SAVEDATA *saveData, int idx, int slot) {
+    struct SaveSlotSpec *spec;
+    u32 size;
+
+    spec = &saveData->saveSlotSpecs[idx];
+    size = spec->size;
+    return FlashWriteChunkInternal(GetChunkOffsetFromCurrentSaveSlot(slot, spec) + size - sizeof(struct SaveChunkFooter), saveData->dynamic_region + spec->offset + size - sizeof(struct SaveChunkFooter), sizeof(struct SaveChunkFooter));
+}
+
+void sub_02027BDC(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC, int a2) {
+    sub_0202C714(saveData);
+    sub_02031084(saveData);
+
+    unk232CC->unk_14 = 0;
+    unk232CC->unk_1C[1] = 0;
+    unk232CC->unk_0 = 0;
+    unk232CC->unk_1C[0] = 0;
+    unk232CC->unk_0 = 1;
+    unk232CC->unk_18 = saveData->unk_23010;
+    saveData->unk_23010++;
+    unk232CC->unk_4 = 0;
+    unk232CC->unk_8 = 0;
+    unk232CC->unk_C = 2;
+    sub_0201A4BC(1);
+}
