@@ -6,6 +6,7 @@
 #include "save_data_read_error.h"
 #include "save_data_write_error.h"
 #include "unk_0202C034.h"
+#include "system.h"
 
 #define SAVE_CHUNK_MAGIC 0x20060623
 
@@ -84,40 +85,56 @@ struct UnkStruct_2027744 {
 BOOL saveWritten;
 SAVEDATA *_021D2228;
 
-void Sav2_InitDynamicRegion(SAVEDATA *saveData);
-u32 sub_02027544(SAVEDATA *saveData);
-void sub_02027550(SAVEDATA *saveData, int a1);
-int sub_02027564(SAVEDATA *saveData);
-int sub_020277D4(SAVEDATA *saveData);
-BOOL Sav2_LoadDynamicRegion(SAVEDATA *saveData);
-void sub_020279EC(SAVEDATA *saveData, int *err1, int *err2);
-void sub_02027BDC(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC, int a2);
-int sub_02027C18(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC);
-void sub_02027CEC(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC, int a2);
-void sub_02027D6C(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC);
-void SaveBlock2_InitSubstructs(struct SavArrayHeader *headers);
-void sub_02027EFC(struct SaveSlotSpec *slotSpecs, struct SavArrayHeader *headers);
-int FlashClobberChunkFooter(SAVEDATA *saveData, int spec, int sector);
-int sub_02027DB4(SAVEDATA *saveData);
-void Sav2_InitDynamicRegion_Internal(u8 *dynamic_region, struct SavArrayHeader *headers);
-s32 FlashWriteChunkInternal(u32 offset, void *data, u32 size);
-BOOL FlashLoadChunk(u32 offset, void *data, u32 size);
-BOOL WaitFlashWrite(s32 lockId, int a1, int *a2);
-BOOL SaveDetectFlash(void);
-s32 FlashWriteChunk(u32 offset, void *data, u32 size);
-void sub_020286B4(SAVEDATA *saveData, int a1, u32 *a2, u32 *a3, u8 *a4);
-void sub_020286D4(SAVEDATA *saveData, int idx, u32 rand, u32 seed, u8 sector);
-void SaveErrorHandling(s32 lockId, int code);
-int sub_02028968(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC);
-int sub_02028AB4(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC);
-int sub_02028BA8(SAVEDATA *saveData, struct SaveSlotSpec *spec, u8 a2);
-int sub_02028BF8(SAVEDATA *saveData, struct SaveSlotSpec *spec, u8 a2);
-u32 sub_02028C70(SAVEDATA *saveData);
-u32 sub_02028C9C(u32 flags);
-u32 sub_02028CD4(u32 flags, u8 last);
-
-extern void sub_0201A4BC(int);
-extern void sub_0201A4CC(int);
+static u32 sub_020274E4(SAVEDATA *saveData);
+static void sub_020274F4(SAVEDATA *saveData);
+static u32 sub_02027544(SAVEDATA *saveData);
+static void sub_020275B4(struct SaveChunkFooter *footer);
+static void sub_020275B8(BOOL unk);
+static void sub_020275BC(struct UnkStruct_2027744 *unk);
+static u16 SavArray_CalcCRC16MinusFooter(SAVEDATA *saveData, const void *data, u32 size);
+static u32 GetChunkOffsetFromCurrentSaveSlot(u32 slot, struct SaveSlotSpec *spec);
+static struct SaveChunkFooter *sub_020275F4(SAVEDATA *saveData, void *data, int idx);
+static BOOL sub_0202761C(SAVEDATA *saveData, void *data, int idx);
+static void sub_0202768C(struct UnkStruct_2027744 *unk, SAVEDATA *saveData, void *data, int idx);
+static void sub_020276C0(SAVEDATA *saveData, void *data, int idx);
+static int sub_0202770C(u32 stat1, u32 stat2);
+static u32 sub_02027744(struct UnkStruct_2027744 *first, struct UnkStruct_2027744 *second, u32 *ret1_p, u32 *ret2_p);
+static void sub_020277BC(SAVEDATA *saveData, struct UnkStruct_2027744 *a1, struct UnkStruct_2027744 *a2, int a3);
+static int sub_020277D4(SAVEDATA *saveData);
+static void sub_020279EC(SAVEDATA *saveData, int *err1, int *err2);
+static BOOL sub_02027ABC(u32 slot, struct SaveSlotSpec *spec, void *dest);
+static BOOL Sav2_LoadDynamicRegion(SAVEDATA *saveData);
+static int sub_02027B74(SAVEDATA *saveData, int idx, u8 slot);
+static int sub_02027BAC(SAVEDATA *saveData, int idx, u8 slot);
+static void sub_02027BDC(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC, int a2);
+static int sub_02027C18(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC);
+static void sub_02027CEC(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC, int a2);
+static void sub_02027D6C(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC);
+static int sub_02027DB4(SAVEDATA *saveData);
+static int FlashClobberChunkFooter(SAVEDATA *saveData, int spec, int sector);
+static u32 sub_02027E30(int idx);
+static void SaveBlock2_InitSubstructs(struct SavArrayHeader *arr_hdr);
+static void sub_02027EFC(struct SaveSlotSpec *slotSpecs, struct SavArrayHeader *headers);
+static void Sav2_InitDynamicRegion_Internal(u8 *dynamic_region, struct SavArrayHeader *headers);
+static void CreateChunkFooter(SAVEDATA *saveData, void *data, int idx, u32 size);
+static BOOL ValidateChunk(SAVEDATA *saveData, void *data, int idx, u32 size);
+static u32 sub_020280DC(void *data, u32 size);
+static void sub_020286B4(SAVEDATA *saveData, int a1, u32 *a2, u32 *a3, u8 *a4);
+static void sub_020286D4(SAVEDATA *saveData, int a1, u32 a2, u32 a3, u8 a4);
+static BOOL SaveDetectFlash(void);
+static s32 FlashWriteChunk(u32 offset, void *data, u32 size);
+static BOOL FlashLoadChunk(u32 offset, void *data, u32 size);
+static void FlashWriteCommandCallback(void *arg);
+static s32 FlashWriteChunkInternal(u32 offset, void *data, u32 size);
+static BOOL WaitFlashWrite(s32 lockId, int a1, int *a2);
+static void SaveErrorHandling(s32 lockId, int code);
+static int sub_02028968(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC);
+static int sub_02028AB4(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC);
+static int sub_02028BA8(SAVEDATA *saveData, struct SaveSlotSpec *spec, u8 a2);
+static int sub_02028BF8(SAVEDATA *saveData, struct SaveSlotSpec *spec, u8 a2);
+static u32 sub_02028C70(SAVEDATA *saveData);
+static u32 sub_02028C9C(u32 flags);
+static u32 sub_02028CD4(u32 flags, u8 last);
 
 SAVEDATA *SaveBlock2_new(void) {
     SAVEDATA *ret;
@@ -285,7 +302,7 @@ u32 sub_020274E0(SAVEDATA *saveData) {
     return saveData->unk_00004;
 }
 
-u32 sub_020274E4(SAVEDATA *saveData) {
+static u32 sub_020274E4(SAVEDATA *saveData) {
     return saveData->unk_00008;
 }
 
@@ -294,7 +311,7 @@ BOOL sub_020274E8(SAVEDATA *saveData) {
     return sub_0202A9D8(misc);
 }
 
-void sub_020274F4(SAVEDATA *saveData) {
+static void sub_020274F4(SAVEDATA *saveData) {
     SAVE_MISC_DATA *misc = Sav2_Misc_get(saveData);
     sub_0202A9C4(misc);
 }
@@ -311,7 +328,7 @@ void sub_02027534(void) {
     sub_02027190(_021D2228);
 }
 
-u32 sub_02027544(SAVEDATA *saveData) {
+static u32 sub_02027544(SAVEDATA *saveData) {
     return sub_02028C9C(sub_02028C70(saveData));
 }
 
@@ -337,15 +354,15 @@ void sub_020275A4(SAVEDATA *saveData) {
     sub_02027D6C(saveData, &saveData->unk_232CC);
 }
 
-void sub_020275B4(struct SaveChunkFooter *footer) {
+static void sub_020275B4(struct SaveChunkFooter *footer) {
 #pragma unused(footer)
 }
 
-void sub_020275B8(BOOL unk) {
+static void sub_020275B8(BOOL unk) {
 #pragma unused(unk)
 }
 
-void sub_020275BC(struct UnkStruct_2027744 *unk) {
+static void sub_020275BC(struct UnkStruct_2027744 *unk) {
     unk->unk0 = FALSE;
     unk->unk4 = 0;
 }
@@ -355,12 +372,12 @@ u16 SavArray_CalcCRC16(SAVEDATA *saveData, const void *data, u32 size) {
     return GF_CalcCRC16(data, size);
 }
 
-u16 SavArray_CalcCRC16MinusFooter(SAVEDATA *saveData, const void *data, u32 size) {
+static u16 SavArray_CalcCRC16MinusFooter(SAVEDATA *saveData, const void *data, u32 size) {
 #pragma unused(saveData)
     return GF_CalcCRC16(data, size - sizeof(struct SavArrayFooter));
 }
 
-u32 GetChunkOffsetFromCurrentSaveSlot(u32 slot, struct SaveSlotSpec *spec) {
+static u32 GetChunkOffsetFromCurrentSaveSlot(u32 slot, struct SaveSlotSpec *spec) {
     u32 adrs;
     if (slot == 0) {
         adrs = 0;
@@ -370,7 +387,7 @@ u32 GetChunkOffsetFromCurrentSaveSlot(u32 slot, struct SaveSlotSpec *spec) {
     return adrs + spec->offset;
 }
 
-struct SaveChunkFooter *sub_020275F4(SAVEDATA *saveData, void *data, int idx) {
+static struct SaveChunkFooter *sub_020275F4(SAVEDATA *saveData, void *data, int idx) {
     u8 *ret;
     struct SaveSlotSpec *spec;
 
@@ -380,7 +397,7 @@ struct SaveChunkFooter *sub_020275F4(SAVEDATA *saveData, void *data, int idx) {
     return (struct SaveChunkFooter *)(ret + spec->size - sizeof(struct SaveChunkFooter));
 }
 
-BOOL sub_0202761C(SAVEDATA *saveData, void *data, int idx) {
+static BOOL sub_0202761C(SAVEDATA *saveData, void *data, int idx) {
     struct SaveSlotSpec *spec;
     struct SaveChunkFooter *footer;
     u32 offset;
@@ -401,7 +418,7 @@ BOOL sub_0202761C(SAVEDATA *saveData, void *data, int idx) {
     return SavArray_CalcCRC16MinusFooter(saveData, (u8 *)data + offset, spec->size) == footer->crc;
 }
 
-void sub_0202768C(struct UnkStruct_2027744 *unk, SAVEDATA *saveData, void *data, int idx) {
+static void sub_0202768C(struct UnkStruct_2027744 *unk, SAVEDATA *saveData, void *data, int idx) {
     struct SaveChunkFooter *footer;
 
     footer = sub_020275F4(saveData, data, idx);
@@ -413,7 +430,7 @@ void sub_0202768C(struct UnkStruct_2027744 *unk, SAVEDATA *saveData, void *data,
     }
 }
 
-void sub_020276C0(SAVEDATA *saveData, void *data, int idx) {
+static void sub_020276C0(SAVEDATA *saveData, void *data, int idx) {
     struct SaveSlotSpec *spec;
     struct SaveChunkFooter *footer;
     u32 offset;
@@ -429,7 +446,7 @@ void sub_020276C0(SAVEDATA *saveData, void *data, int idx) {
     sub_020275B4(footer);
 }
 
-int sub_0202770C(u32 stat1, u32 stat2) {
+static int sub_0202770C(u32 stat1, u32 stat2) {
     if (stat1 == -1 && stat2 == 0) {
         return -1;
     }
@@ -442,7 +459,7 @@ int sub_0202770C(u32 stat1, u32 stat2) {
     return -((stat1 < stat2) ? 1 : 0);
 }
 
-u32 sub_02027744(struct UnkStruct_2027744 *first, struct UnkStruct_2027744 *second, u32 *ret1_p, u32 *ret2_p) {
+static u32 sub_02027744(struct UnkStruct_2027744 *first, struct UnkStruct_2027744 *second, u32 *ret1_p, u32 *ret2_p) {
     int r0;
 
     r0 = sub_0202770C(first->unk4, second->unk4);
@@ -474,13 +491,13 @@ u32 sub_02027744(struct UnkStruct_2027744 *first, struct UnkStruct_2027744 *seco
     return 0;
 }
 
-void sub_020277BC(SAVEDATA *saveData, struct UnkStruct_2027744 *a1, struct UnkStruct_2027744 *a2, int a3) {
+static void sub_020277BC(SAVEDATA *saveData, struct UnkStruct_2027744 *a1, struct UnkStruct_2027744 *a2, int a3) {
 #pragma unused(a2)
     saveData->unk_23010 = a1[a3].unk4;
     saveData->unk_2330A = a3;
 }
 
-int sub_020277D4(SAVEDATA *saveData) {
+static int sub_020277D4(SAVEDATA *saveData) {
     u8 *data1;
     u8 *data2;
 
@@ -579,7 +596,7 @@ int sub_020277D4(SAVEDATA *saveData) {
     return 3;
 }
 
-void sub_020279EC(SAVEDATA *saveData, int *err1, int *err2) {
+static void sub_020279EC(SAVEDATA *saveData, int *err1, int *err2) {
     SAVE_MISC_DATA *misc;
     int sp14;
     int sp10;
@@ -615,11 +632,11 @@ void sub_020279EC(SAVEDATA *saveData, int *err1, int *err2) {
     }
 }
 
-BOOL sub_02027ABC(u32 slot, struct SaveSlotSpec *spec, void *dest) {
+static BOOL sub_02027ABC(u32 slot, struct SaveSlotSpec *spec, void *dest) {
     return FlashLoadChunk(GetChunkOffsetFromCurrentSaveSlot(slot, spec), (u8 *)dest + spec->offset, spec->size);
 }
 
-BOOL Sav2_LoadDynamicRegion(SAVEDATA *saveData) {
+static BOOL Sav2_LoadDynamicRegion(SAVEDATA *saveData) {
     int i;
     u8 *data;
     u32 pc_offs;
@@ -647,7 +664,7 @@ BOOL Sav2_LoadDynamicRegion(SAVEDATA *saveData) {
     return TRUE;
 }
 
-int sub_02027B74(SAVEDATA *saveData, int idx, u8 slot) {
+static int sub_02027B74(SAVEDATA *saveData, int idx, u8 slot) {
     struct SaveSlotSpec *spec;
 
     spec = &saveData->saveSlotSpecs[idx];
@@ -655,7 +672,7 @@ int sub_02027B74(SAVEDATA *saveData, int idx, u8 slot) {
     return FlashWriteChunkInternal(GetChunkOffsetFromCurrentSaveSlot(slot, spec), saveData->dynamic_region + spec->offset, spec->size - sizeof(struct SaveChunkFooter));
 }
 
-int sub_02027BAC(SAVEDATA *saveData, int idx, u8 slot) {
+static int sub_02027BAC(SAVEDATA *saveData, int idx, u8 slot) {
     struct SaveSlotSpec *spec;
     u32 size;
 
@@ -664,7 +681,7 @@ int sub_02027BAC(SAVEDATA *saveData, int idx, u8 slot) {
     return FlashWriteChunkInternal(GetChunkOffsetFromCurrentSaveSlot(slot, spec) + size - sizeof(struct SaveChunkFooter), saveData->dynamic_region + spec->offset + size - sizeof(struct SaveChunkFooter), sizeof(struct SaveChunkFooter));
 }
 
-void sub_02027BDC(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC, int a2) {
+static void sub_02027BDC(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC, int a2) {
     sub_0202C714(saveData);
     sub_02031084(saveData);
 
@@ -681,7 +698,7 @@ void sub_02027BDC(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC, int a2) 
     sub_0201A4BC(1);
 }
 
-int sub_02027C18(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC) {
+static int sub_02027C18(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC) {
     int sp0;
     switch (unk232CC->unk_14) {
     case 0:
@@ -724,7 +741,7 @@ int sub_02027C18(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC) {
     return 0;
 }
 
-void sub_02027CEC(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC, int a2) {
+static void sub_02027CEC(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC, int a2) {
     saveData->unk_23304 = 0;
     saveData->unk_23306 = 0;
     if (a2 == 3) {
@@ -743,7 +760,7 @@ void sub_02027CEC(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC, int a2) 
     sub_0201A4CC(1);
 }
 
-void sub_02027D6C(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC) {
+static void sub_02027D6C(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC) {
     if (unk232CC->unk_0) {
         saveData->unk_23010 = unk232CC->unk_18;
     }
@@ -758,7 +775,7 @@ void sub_02027D6C(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC) {
     sub_0201A4CC(1);
 }
 
-int sub_02027DB4(SAVEDATA *saveData) {
+static int sub_02027DB4(SAVEDATA *saveData) {
     struct UnkSavSub_232CC sp0;
     int ret;
 
@@ -774,7 +791,7 @@ int sub_02027DB4(SAVEDATA *saveData) {
     return ret;
 }
 
-int FlashClobberChunkFooter(SAVEDATA *saveData, int spec, int sector) {
+static int FlashClobberChunkFooter(SAVEDATA *saveData, int spec, int sector) {
     struct SaveChunkFooter sp0;
     struct SaveSlotSpec *slotSpec;
 
@@ -783,7 +800,7 @@ int FlashClobberChunkFooter(SAVEDATA *saveData, int spec, int sector) {
     return FlashWriteChunk(GetChunkOffsetFromCurrentSaveSlot(sector, slotSpec) + slotSpec->size - sizeof(struct SaveChunkFooter), &sp0, sizeof(struct SaveChunkFooter));
 }
 
-u32 sub_02027E30(int idx) {
+static u32 sub_02027E30(int idx) {
     u32 size;
     const struct SaveChunkHeader *hdr;
 
@@ -794,7 +811,7 @@ u32 sub_02027E30(int idx) {
     return size;
 }
 
-void SaveBlock2_InitSubstructs(struct SavArrayHeader *arr_hdr) {
+static void SaveBlock2_InitSubstructs(struct SavArrayHeader *arr_hdr) {
     int i;
     const struct SaveChunkHeader *hdr;
     int adrs;
@@ -820,7 +837,7 @@ void SaveBlock2_InitSubstructs(struct SavArrayHeader *arr_hdr) {
     GF_ASSERT(adrs <= SAVE_PAGE_MAX * SAVE_SECTOR_SIZE);
 }
 
-void sub_02027EFC(struct SaveSlotSpec *slotSpecs, struct SavArrayHeader *headers) {
+static void sub_02027EFC(struct SaveSlotSpec *slotSpecs, struct SavArrayHeader *headers) {
     int i;
     int adrs;
     int npage;
@@ -849,7 +866,7 @@ void sub_02027EFC(struct SaveSlotSpec *slotSpecs, struct SavArrayHeader *headers
     GF_ASSERT(npage <= SAVE_PAGE_MAX);
 }
 
-void Sav2_InitDynamicRegion_Internal(u8 *dynamic_region, struct SavArrayHeader *headers) {
+static void Sav2_InitDynamicRegion_Internal(u8 *dynamic_region, struct SavArrayHeader *headers) {
     const struct SaveChunkHeader *chunkHeaders;
     int i;
     u32 adrs;
@@ -890,7 +907,7 @@ void sub_02027FFC(SAVEDATA *saveData) {
     sub_020274F4(saveData);
 }
 
-void CreateChunkFooter(SAVEDATA *saveData, void *data, int idx, u32 size) {
+static void CreateChunkFooter(SAVEDATA *saveData, void *data, int idx, u32 size) {
     struct SavArrayFooter *footer;
 
     footer = (struct SavArrayFooter *)((u8 *)data + size);
@@ -902,7 +919,7 @@ void CreateChunkFooter(SAVEDATA *saveData, void *data, int idx, u32 size) {
     footer->crc = GF_CalcCRC16(data, size + offsetof(struct SavArrayFooter, crc));
 }
 
-BOOL ValidateChunk(SAVEDATA *saveData, void *data, int idx, u32 size) {
+static BOOL ValidateChunk(SAVEDATA *saveData, void *data, int idx, u32 size) {
 #pragma unused(saveData)
     struct SavArrayFooter *footer;
 
@@ -920,7 +937,7 @@ BOOL ValidateChunk(SAVEDATA *saveData, void *data, int idx, u32 size) {
     return footer->crc == GF_CalcCRC16(data, size + offsetof(struct SavArrayFooter, crc));
 }
 
-u32 sub_020280DC(void *data, u32 size) {
+static u32 sub_020280DC(void *data, u32 size) {
     struct SavArrayFooter *footer;
 
     footer = (struct SavArrayFooter *)((u8 *)data + size);
@@ -1130,15 +1147,15 @@ void *sub_020284A4(SAVEDATA *saveData, HeapID heapId, int idx, int *ret_p, int *
     return ret;
 }
 
-void sub_020286B4(SAVEDATA *saveData, int a1, u32 *a2, u32 *a3, u8 *a4) {
+static void sub_020286B4(SAVEDATA *saveData, int a1, u32 *a2, u32 *a3, u8 *a4) {
     sub_0202AC38(Sav2_Misc_get(saveData), a1, a2, a3, a4);
 }
 
-void sub_020286D4(SAVEDATA *saveData, int a1, u32 a2, u32 a3, u8 a4) {
+static void sub_020286D4(SAVEDATA *saveData, int a1, u32 a2, u32 a3, u8 a4) {
     sub_0202AC60(Sav2_Misc_get(saveData), a1, a2, a3, a4);
 }
 
-BOOL SaveDetectFlash(void) {
+static BOOL SaveDetectFlash(void) {
     s32 lockId;
     CARDBackupType flash_id;
 
@@ -1157,7 +1174,7 @@ BOOL SaveDetectFlash(void) {
     return flash_id != CARD_BACKUP_TYPE_NOT_USE;
 }
 
-s32 FlashWriteChunk(u32 offset, void *data, u32 size) {
+static s32 FlashWriteChunk(u32 offset, void *data, u32 size) {
     int stat;
     s32 lockId;
     lockId = FlashWriteChunkInternal(offset, data, size);
@@ -1165,7 +1182,7 @@ s32 FlashWriteChunk(u32 offset, void *data, u32 size) {
     return stat;
 }
 
-BOOL FlashLoadChunk(u32 offset, void *data, u32 size) {
+static BOOL FlashLoadChunk(u32 offset, void *data, u32 size) {
     u32 lock;
     BOOL result;
 
@@ -1183,12 +1200,12 @@ BOOL FlashLoadChunk(u32 offset, void *data, u32 size) {
     return result;
 }
 
-void FlashWriteCommandCallback(void *arg) {
+static void FlashWriteCommandCallback(void *arg) {
 #pragma unused(arg)
     saveWritten = TRUE;
 }
 
-s32 FlashWriteChunkInternal(u32 offset, void *data, u32 size) {
+static s32 FlashWriteChunkInternal(u32 offset, void *data, u32 size) {
     s32 lock;
     BOOL result;
     u32 sp14;
@@ -1204,7 +1221,7 @@ s32 FlashWriteChunkInternal(u32 offset, void *data, u32 size) {
     return lock;
 }
 
-BOOL WaitFlashWrite(s32 lockId, int a1, int *a2) {
+static BOOL WaitFlashWrite(s32 lockId, int a1, int *a2) {
     if (saveWritten == TRUE) {
         if (!a1) {
             return TRUE;
@@ -1228,7 +1245,7 @@ BOOL WaitFlashWrite(s32 lockId, int a1, int *a2) {
     return FALSE;
 }
 
-void SaveErrorHandling(s32 lockId, int code) {
+static void SaveErrorHandling(s32 lockId, int code) {
     CARD_UnlockBackup(lockId);
     OS_ReleaseLockID(lockId);
     FreeToHeap(_021D2228);
@@ -1266,7 +1283,7 @@ void SaveSubstruct_UpdateCRC(int idx) {
     data_u16[size / 2] = crc;
 }
 
-int sub_02028968(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC) {
+static int sub_02028968(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC) {
     u32 r7;
     int r0;
     int sp0;
@@ -1327,7 +1344,7 @@ int sub_02028968(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC) {
     return 0;
 }
 
-int sub_02028AB4(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC) {
+static int sub_02028AB4(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC) {
     int sp0;
 
     switch (unk232CC->unk_20) {
@@ -1372,7 +1389,7 @@ int sub_02028AB4(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC) {
     return 2;
 }
 
-int sub_02028BA8(SAVEDATA *saveData, struct SaveSlotSpec *spec, u8 a2) {
+static int sub_02028BA8(SAVEDATA *saveData, struct SaveSlotSpec *spec, u8 a2) {
     u32 boxno;
     u32 box_size;
     u32 offset;
@@ -1384,7 +1401,7 @@ int sub_02028BA8(SAVEDATA *saveData, struct SaveSlotSpec *spec, u8 a2) {
     return FlashWriteChunkInternal(offset + box_size * boxno, saveData->dynamic_region + spec->offset + box_size * boxno, box_size);
 }
 
-int sub_02028BF8(SAVEDATA *saveData, struct SaveSlotSpec *spec, u8 a2) {
+static int sub_02028BF8(SAVEDATA *saveData, struct SaveSlotSpec *spec, u8 a2) {
     u32 sector_size;
     struct SaveChunkFooter *footer;
     u32 spec_offset;
@@ -1407,7 +1424,7 @@ int sub_02028BF8(SAVEDATA *saveData, struct SaveSlotSpec *spec, u8 a2) {
     return FlashWriteChunkInternal(offset + pc_size, data + pc_size, sector_size - pc_size);
 }
 
-u32 sub_02028C70(SAVEDATA *saveData) {
+static u32 sub_02028C70(SAVEDATA *saveData) {
     u32 ret;
 
     ret = sub_02027170(saveData);
@@ -1418,7 +1435,7 @@ u32 sub_02028C70(SAVEDATA *saveData) {
     return ret;
 }
 
-u32 sub_02028C9C(u32 flags) {
+static u32 sub_02028C9C(u32 flags) {
     u8 i, n;
     u32 t;
 
@@ -1434,7 +1451,7 @@ u32 sub_02028C9C(u32 flags) {
     return n;
 }
 
-u32 sub_02028CD4(u32 flags, u8 last) {
+static u32 sub_02028CD4(u32 flags, u8 last) {
     u8 i, n;
     u32 t;
 
