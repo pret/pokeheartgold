@@ -73,7 +73,7 @@ void sub_0202ABD0(SAVE_MISC_DATA *saveMiscData, MAIL_MESSAGE *a1);
 void sub_0202ABEC(SAVE_MISC_DATA *saveMiscData, MAIL_MESSAGE *a1);
 void sub_0202AC0C(SAVE_MISC_DATA *saveMiscData, u8 *a1);
 void sub_0202AC1C(SAVE_MISC_DATA *saveMiscData, u8 a1);
-void sub_0202AC38(SAVE_MISC_DATA *saveMiscData, int a1, int *a2, int *a3, u8 *a4);
-void sub_0202AC60(SAVE_MISC_DATA *saveMiscData, int a1, int a2, int a3, u8 a4);
+void sub_0202AC38(SAVE_MISC_DATA *saveMiscData, int a1, u32 *a2, u32 *a3, u8 *a4);
+void sub_0202AC60(SAVE_MISC_DATA *saveMiscData, int a1, u32 a2, u32 a3, u8 a4);
 
 #endif //POKEHEARTGOLD_SAVE_MISC_DATA_H

@@ -51,6 +51,8 @@ typedef enum
     CARD_BACKUP_TYPE_NOT_USE = 0
 } CARDBackupType;
 
+#define CARD_BACKUP_TYPE_FLASH_4MBITS_EX (CARDBackupType)(CARD_BACKUP_TYPE_FLASH_4MBITS | (255<<CARD_BACKUP_TYPE_VENDER_SHIFT))
+
 typedef enum
 {
     CARD_RESULT_SUCCESS = 0,
@@ -230,5 +232,8 @@ static inline void CARDi_SendPxi(u32 data)
 }
 
 void CARD_SetCacheFlushThreshold(u32 icache, u32 dcache);
+BOOL CARD_IdentifyBackup(CARDBackupType type);
+void CARD_LockBackup(u16 lock_id);
+void CARD_UnlockBackup(u16 lock_id);
 
 #endif //NITRO_CARD_COMMON_H_

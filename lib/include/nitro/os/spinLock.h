@@ -10,6 +10,8 @@
 #define OS_MAINP_LOCK_ID_START  0x40
 #define OS_SUBP_LOCK_ID_START   0x80
 
+#define OS_LOCK_ID_ERROR (-3)
+
 void OS_InitLock(void);
 void FUN_037F8CB4(s32 ct);
 s32 OSi_DoLockByWord(u16 lockId, OSLockWord *lockp, void (*ctrlFuncp) (void), BOOL disableFiq);

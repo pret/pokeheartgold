@@ -3,6 +3,8 @@
 #include "save_misc_data.h"
 #include "save_arrays.h"
 #include "math_util.h"
+#include "save_data_read_error.h"
+#include "save_data_write_error.h"
 #include "unk_0202C034.h"
 
 #define SAVE_CHUNK_MAGIC 0x20060623
@@ -97,13 +99,14 @@ void sub_02027EFC(struct SaveSlotSpec *slotSpecs, struct SavArrayHeader *headers
 int FlashClobberChunkFooter(SAVEDATA *saveData, int spec, int sector);
 int sub_02027DB4(SAVEDATA *saveData);
 void Sav2_InitDynamicRegion_Internal(u8 *dynamic_region, struct SavArrayHeader *headers);
-int FlashWriteChunkInternal(u32 offset, void *data, u32 size);
+s32 FlashWriteChunkInternal(u32 offset, void *data, u32 size);
 BOOL FlashLoadChunk(u32 offset, void *data, u32 size);
-BOOL WaitFlashWrite(int a0, int a1, int *a2);
+BOOL WaitFlashWrite(s32 lockId, int a1, int *a2);
 BOOL SaveDetectFlash(void);
-int FlashWriteChunk(u32 offset, void *data, u32 size);
-void sub_020286B4(SAVEDATA *saveData, int idx, u32 *seed, int *a3, u8 *a4);
+s32 FlashWriteChunk(u32 offset, void *data, u32 size);
+void sub_020286B4(SAVEDATA *saveData, int a1, u32 *a2, u32 *a3, u8 *a4);
 void sub_020286D4(SAVEDATA *saveData, int idx, u32 rand, u32 seed, u8 sector);
+void SaveErrorHandling(s32 lockId, int code);
 
 u32 sub_02028C70(SAVEDATA *saveData);
 u32 sub_02028C9C(u32 flags);
@@ -576,8 +579,8 @@ void sub_020279EC(SAVEDATA *saveData, int *err1, int *err2) {
     SAVE_MISC_DATA *misc;
     int sp14;
     int sp10;
-    int sp0C;
-    int sp08;
+    u32 sp0C;
+    u32 sp08;
     u8 sp04;
     int i;
 
@@ -961,7 +964,7 @@ int sub_02028230(SAVEDATA *saveData, int idx, void *data) {
     u32 size;
     int ret;
     u32 sp14;
-    int sp10;
+    u32 sp10;
     u8 sp0C;
     u32 r6;
 
@@ -991,4 +994,270 @@ int sub_02028230(SAVEDATA *saveData, int idx, void *data) {
     }
     sub_0201A4CC(1);
     return 3;
+}
+
+void *ReadExtraSaveChunk(SAVEDATA *saveData, HeapID heapId, int idx, int *ret_p) {
+    const struct ExtraSaveChunkHeader *hdr;
+    u32 size;
+    void *ret;
+    BOOL valid1;
+    BOOL valid2;
+    u32 saveno1;
+    u32 saveno2;
+
+    GF_ASSERT(idx < _020F645C);
+    hdr = &_020F6464[idx];
+    GF_ASSERT(hdr->id == idx);
+
+    size = hdr->sizeFunc() + sizeof(struct SavArrayFooter);
+    ret = AllocFromHeap(heapId, size);
+    FlashLoadChunk(hdr->sector * SAVE_SECTOR_SIZE, ret, size);
+    valid1 = ValidateChunk(saveData, ret, idx, hdr->sizeFunc());
+    saveno1 = sub_020280DC(ret, hdr->sizeFunc());
+    FlashLoadChunk((hdr->sector + 64) * SAVE_SECTOR_SIZE, ret, size);
+    valid2 = ValidateChunk(saveData, ret, idx, hdr->sizeFunc());
+    saveno2 = sub_020280DC(ret, hdr->sizeFunc());
+
+    *ret_p = 1;
+    if (valid1 == TRUE && valid2 == FALSE) {
+        saveData->unk_232F0 = 0;
+        saveData->unk_232F4 = saveno1;
+        FlashLoadChunk(hdr->sector * SAVE_SECTOR_SIZE, ret, size);
+        return ret;
+    }
+    if (valid1 == FALSE && valid2 == TRUE) {
+        saveData->unk_232F0 = 1;
+        saveData->unk_232F4 = saveno2;
+        FlashLoadChunk((hdr->sector + 64) * SAVE_SECTOR_SIZE, ret, size);
+        return ret;
+    }
+    if (valid1 == TRUE && valid2 == TRUE) {
+        if (sub_0202770C(saveno1, saveno2) != -1) {
+            saveData->unk_232F0 = 0;
+            saveData->unk_232F4 = saveno1;
+            FlashLoadChunk(hdr->sector * SAVE_SECTOR_SIZE, ret, size);
+            return ret;
+        } else {
+            saveData->unk_232F0 = 1;
+            saveData->unk_232F4 = saveno2;
+            FlashLoadChunk((hdr->sector + 64) * SAVE_SECTOR_SIZE, ret, size);
+            return ret;
+        }
+    }
+    *ret_p = 2;
+    saveData->unk_232F0 = 0;
+    saveData->unk_232F4 = 0;
+    return ret;
+}
+
+void *sub_020284A4(SAVEDATA *saveData, HeapID heapId, int idx, int *ret_p, int *ret2_p) {
+    const struct ExtraSaveChunkHeader *hdr;
+    u32 sp2C;
+    u32 sp28;
+    u32 sp24;
+    u32 sp20;
+    u8 sp1C;
+    u32 size;
+    void *ret;
+    BOOL valid1;
+    BOOL valid2;
+    u32 saveno1;
+    u32 saveno2;
+    SAVE_MISC_DATA *misc;
+
+    misc = Sav2_Misc_get(saveData);
+
+    GF_ASSERT(idx < _020F645C);
+    GF_ASSERT(idx != 0);
+    hdr = &_020F6464[idx];
+    GF_ASSERT(hdr->id == idx);
+    size = hdr->sizeFunc() + sizeof(struct SavArrayFooter);
+    ret = AllocFromHeap(heapId, size);
+    sub_020286B4(saveData, idx, &sp24, &sp20, &sp1C);
+    FlashLoadChunk(hdr->sector * SAVE_SECTOR_SIZE, ret, size);
+    valid1 = ValidateChunk(saveData, ret, idx, hdr->sizeFunc());
+    MI_CpuCopy8(ret, &sp2C, sizeof(u32));
+    FlashLoadChunk((hdr->sector + 64) * SAVE_SECTOR_SIZE, ret, size);
+    valid2 = ValidateChunk(saveData, ret, idx, hdr->sizeFunc());
+    MI_CpuCopy8(ret, &sp28, sizeof(u32));
+    *ret_p = 1;
+    *ret2_p = 0;
+    if (valid1 == TRUE && valid2 == FALSE && sp24 == sp2C) {
+        if (sp1C == 1) {
+            sub_020286D4(saveData, idx, sp20, sp20, 0);
+            *ret2_p = 1;
+        }
+        FlashLoadChunk(hdr->sector * SAVE_SECTOR_SIZE, ret, size);
+        return ret;
+    }
+    if (valid1 == FALSE && valid2 == TRUE && sp24 == sp28) {
+        if (sp1C == 0) {
+            sub_020286D4(saveData, idx, sp20, sp20, 1);
+            *ret2_p = 1;
+        }
+        FlashLoadChunk((hdr->sector + 64) * SAVE_SECTOR_SIZE, ret, size);
+        return ret;
+    }
+    if (valid1 == TRUE && valid2 == TRUE) {
+        if (sp1C == 0) {
+            if (sp24 == sp2C) {
+                FlashLoadChunk(hdr->sector * SAVE_SECTOR_SIZE, ret, size);
+                return ret;
+            } else if (sp20 == sp28) {
+                sub_020286D4(saveData, idx, sp20, sp20, sp1C ^ 1);
+                *ret2_p = 1;
+                FlashLoadChunk((hdr->sector + 64) * SAVE_SECTOR_SIZE, ret, size);
+                return ret;
+            }
+        } else{
+            if (sp24 == sp28) {
+                FlashLoadChunk((hdr->sector + 64) * SAVE_SECTOR_SIZE, ret, size);
+                return ret;
+            } else if (sp20 == sp2C) {
+                sub_020286D4(saveData, idx, sp20, sp20, sp1C ^ 1);
+                *ret2_p = 1;
+                FlashLoadChunk(hdr->sector * SAVE_SECTOR_SIZE, ret, size);
+                return ret;
+            }
+        }
+    }
+    *ret_p = 2;
+    sub_0202AC60(misc, hdr->id, -1, -1, 0);
+    return ret;
+}
+
+void sub_020286B4(SAVEDATA *saveData, int a1, u32 *a2, u32 *a3, u8 *a4) {
+    sub_0202AC38(Sav2_Misc_get(saveData), a1, a2, a3, a4);
+}
+
+void sub_020286D4(SAVEDATA *saveData, int a1, u32 a2, u32 a3, u8 a4) {
+    sub_0202AC60(Sav2_Misc_get(saveData), a1, a2, a3, a4);
+}
+
+BOOL SaveDetectFlash(void) {
+    s32 lockId;
+    CARDBackupType flash_id;
+
+    lockId = OS_GetLockID();
+    GF_ASSERT(lockId != OS_LOCK_ID_ERROR);
+    CARD_LockBackup(lockId);
+    if (CARD_IdentifyBackup(CARD_BACKUP_TYPE_FLASH_4MBITS_EX)) {
+        flash_id = CARD_BACKUP_TYPE_FLASH_4MBITS_EX;
+    } else if (CARD_IdentifyBackup(CARD_BACKUP_TYPE_FLASH_4MBITS)) {
+        flash_id = CARD_BACKUP_TYPE_FLASH_4MBITS;
+    } else {
+        flash_id = CARD_BACKUP_TYPE_NOT_USE;
+    }
+    CARD_UnlockBackup(lockId);
+    OS_ReleaseLockID(lockId);
+    return flash_id != CARD_BACKUP_TYPE_NOT_USE;
+}
+
+s32 FlashWriteChunk(u32 offset, void *data, u32 size) {
+    int stat;
+    s32 lockId;
+    lockId = FlashWriteChunkInternal(offset, data, size);
+    while (!WaitFlashWrite(lockId, 1, &stat)) {}
+    return stat;
+}
+
+BOOL FlashLoadChunk(u32 offset, void *data, u32 size) {
+    u32 lock;
+    BOOL result;
+
+    lock = OS_GetLockID();
+    GF_ASSERT(lock != OS_LOCK_ID_ERROR);
+    CARD_LockBackup(lock);
+    CARD_ReadBackupAsync(offset, data, size, NULL, NULL);
+    result = CARD_WaitBackupAsync();
+    CARD_UnlockBackup(lock);
+    OS_ReleaseLockID(lock);
+    if (!result) {
+        FreeToHeap(_021D2228);
+        ShowSaveDataReadError(1);
+    }
+    return result;
+}
+
+void FlashWriteCommandCallback(void *arg) {
+#pragma unused(arg)
+    saveWritten = TRUE;
+}
+
+s32 FlashWriteChunkInternal(u32 offset, void *data, u32 size) {
+    s32 lock;
+    BOOL result;
+    u32 sp14;
+
+    lock = OS_GetLockID();
+    GF_ASSERT(lock != OS_LOCK_ID_ERROR);
+    CARD_LockBackup(lock);
+    if (!CARD_ReadBackup(0, &sp14, sizeof(u32))) {
+        SaveErrorHandling(lock, 1);
+    }
+    saveWritten = FALSE;
+    CARD_WriteAndVerifyBackupAsync(offset, data, size, FlashWriteCommandCallback, NULL);
+    return lock;
+}
+
+BOOL WaitFlashWrite(s32 lockId, int a1, int *a2) {
+    if (saveWritten == TRUE) {
+        if (!a1) {
+            return TRUE;
+        }
+        switch (CARD_GetResultCode()) {
+        case CARD_RESULT_SUCCESS:
+            *a2 = TRUE;
+            break;
+        case CARD_RESULT_TIMEOUT:
+        default:
+            *a2 = FALSE;
+            SaveErrorHandling(lockId, 0);
+        case CARD_RESULT_NO_RESPONSE:
+            *a2 = FALSE;
+            SaveErrorHandling(lockId, 1);
+        }
+        CARD_UnlockBackup(lockId);
+        OS_ReleaseLockID(lockId);
+        return TRUE;
+    }
+    return FALSE;
+}
+
+void SaveErrorHandling(s32 lockId, int code) {
+    CARD_UnlockBackup(lockId);
+    OS_ReleaseLockID(lockId);
+    FreeToHeap(_021D2228);
+    ShowSaveDataWriteError(1, code);
+}
+
+BOOL SaveSubstruct_AssertCRC(int idx) {
+    u8 *data;
+    int size;
+    u16 *data_u16;
+    u16 crc;
+
+    data = SavArray_get(SaveBlock2_get(), idx);
+    data_u16 = (u16 *)data;
+    size = sub_02027E30(idx) - 4;
+    crc = GF_CalcCRC16(data, size);
+    if (crc == data_u16[size / 2]) {
+        return TRUE;
+    }
+
+    GF_ASSERT(0);
+    return FALSE;
+}
+
+void SaveSubstruct_UpdateCRC(int idx) {
+    u8 *data;
+    int size;
+    u16 *data_u16;
+    u16 crc;
+
+    data = SavArray_get(SaveBlock2_get(), idx);
+    data_u16 = (u16 *)data;
+    size = sub_02027E30(idx) - 4;
+    crc = GF_CalcCRC16(data, size);
+    data_u16[size / 2] = crc;
 }
