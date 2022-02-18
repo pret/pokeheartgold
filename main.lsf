@@ -89,7 +89,6 @@ Static main
 	Object asm/unk_02027010.o
 	Object src/save_arrays.o
 	Object src/save.o
-	Object asm/save_s.o
 	Object asm/sav_system_info.o
 	Object src/player_data.o
 	Object asm/unk_020290B4.o
