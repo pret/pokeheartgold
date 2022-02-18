@@ -642,7 +642,7 @@ sub_020194B4: ; 0x020194B4
 	str r0, [r4, #0x10]
 	bl sub_02034D8C
 	mov r0, #4
-	bl sub_0201A4CC
+	bl Sys_ClearSleepDisableFlag
 _020194F2:
 	pop {r4, pc}
 	.balign 4, 0

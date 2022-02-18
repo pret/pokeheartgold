@@ -61765,11 +61765,11 @@ ScrCmd_839: ; 0x02202908
 	cmp r0, #0
 	beq _02202926
 	mov r0, #8
-	bl sub_0201A4BC
+	bl Sys_SetSleepDisableFlag
 	b _0220292C
 _02202926:
 	mov r0, #8
-	bl sub_0201A4CC
+	bl Sys_ClearSleepDisableFlag
 _0220292C:
 	mov r0, #0
 	pop {r4, pc}

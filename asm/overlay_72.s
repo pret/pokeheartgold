@@ -2028,7 +2028,7 @@ ov72_0223886C: ; 0x0223886C
 	b _0223893A
 _02238922:
 	mov r0, #4
-	bl sub_0201A4CC
+	bl Sys_ClearSleepDisableFlag
 	mov r0, #0
 	str r0, [r4, #0x1c]
 	b _0223893A
@@ -3097,7 +3097,7 @@ ov72_022391E8: ; 0x022391E8
 	ldr r0, [r0, #0xc]
 	bl sub_02039418
 	mov r0, #4
-	bl sub_0201A4BC
+	bl Sys_SetSleepDisableFlag
 	add r0, r4, #0
 	bl ov72_0223A414
 	add r0, r4, #0

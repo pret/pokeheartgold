@@ -262,7 +262,7 @@ ov75_02246B48: ; 0x02246B48
 	str r0, [r4, #0x10]
 	bl sub_02034D8C
 	mov r0, #4
-	bl sub_0201A4CC
+	bl Sys_ClearSleepDisableFlag
 _02246B8E:
 	pop {r4, pc}
 	.balign 4, 0
@@ -3735,7 +3735,7 @@ ov75_02248714: ; 0x02248714
 	bl ov00_021EC8D8
 	bl sub_0203A914
 	mov r0, #4
-	bl sub_0201A4CC
+	bl Sys_ClearSleepDisableFlag
 	mov r0, #0x46
 	ldr r1, [r4]
 	lsl r0, r0, #2
@@ -3826,7 +3826,7 @@ _022487BC:
 	b _022487F6
 _022487D4:
 	mov r0, #4
-	bl sub_0201A4BC
+	bl Sys_SetSleepDisableFlag
 	ldr r0, [r4]
 	mov r1, #2
 	add r0, #0x14
@@ -3888,7 +3888,7 @@ _02248838:
 	bl sub_0203A914
 	bl sub_0203957C
 	mov r0, #4
-	bl sub_0201A4CC
+	bl Sys_ClearSleepDisableFlag
 	mov r0, #0x46
 	ldr r1, [r4]
 	lsl r0, r0, #2
@@ -3978,7 +3978,7 @@ _022488E8:
 	bl sub_0203A914
 	bl sub_0203957C
 	mov r0, #4
-	bl sub_0201A4CC
+	bl Sys_ClearSleepDisableFlag
 	mov r0, #0x46
 	ldr r1, [r4]
 	lsl r0, r0, #2
@@ -5051,7 +5051,7 @@ _0224912C:
 	bl sub_0203A914
 	bl sub_0203957C
 	mov r0, #4
-	bl sub_0201A4CC
+	bl Sys_ClearSleepDisableFlag
 	mov r0, #0x46
 	ldr r1, [r4]
 	lsl r0, r0, #2
@@ -5418,7 +5418,7 @@ _022493BC:
 	bl ov00_021EC8D8
 	bl sub_0203A914
 	mov r0, #4
-	bl sub_0201A4CC
+	bl Sys_ClearSleepDisableFlag
 	mov r0, #0x46
 	ldr r1, [r4]
 	lsl r0, r0, #2

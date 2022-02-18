@@ -227,11 +227,11 @@ void sub_0201A4B0(int a0) {
     gSystem.unk6A = a0;
 }
 
-void sub_0201A4BC(int a0) {
+void Sys_SetSleepDisableFlag(int a0) {
     gSystem.lidClosedPauseDisabled |= a0;
 }
 
-void sub_0201A4CC(int a0) {
+void Sys_ClearSleepDisableFlag(int a0) {
     gSystem.lidClosedPauseDisabled &= ~a0;
 }
 

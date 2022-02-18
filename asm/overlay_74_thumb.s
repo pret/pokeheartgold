@@ -21297,7 +21297,7 @@ _02231892:
 	cmp r0, #0
 	bne _022318A6
 	mov r0, #1
-	bl sub_0201A4CC
+	bl Sys_ClearSleepDisableFlag
 	add sp, #0x10
 	mov r0, #0xc
 	pop {r3, r4, r5, pc}
@@ -21322,7 +21322,7 @@ _022318C6:
 	cmp r0, #8
 	bne _02231924
 	mov r0, #1
-	bl sub_0201A4CC
+	bl Sys_ClearSleepDisableFlag
 	add sp, #0x10
 	mov r0, #0xc
 	pop {r3, r4, r5, pc}
@@ -21339,7 +21339,7 @@ _022318EA:
 	bne _022318DA
 	bl ov74_02233ED4
 	mov r0, #1
-	bl sub_0201A4BC
+	bl Sys_SetSleepDisableFlag
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -21349,7 +21349,7 @@ _02231900:
 	cmp r0, #8
 	bne _02231914
 	mov r0, #1
-	bl sub_0201A4CC
+	bl Sys_ClearSleepDisableFlag
 	add sp, #0x10
 	mov r0, #0xc
 	pop {r3, r4, r5, pc}
@@ -21357,7 +21357,7 @@ _02231914:
 	cmp r0, #0
 	bne _02231924
 	mov r0, #1
-	bl sub_0201A4CC
+	bl Sys_ClearSleepDisableFlag
 	add sp, #0x10
 	mov r0, #0xb
 	pop {r3, r4, r5, pc}
@@ -24615,7 +24615,7 @@ _02233312:
 	cmp r0, #1
 	bhi _02233322
 	ldr r0, [r4, #0x10]
-	bl sub_020275A4
+	bl Save_Cancel
 _02233322:
 	mov r0, #0x4c
 	bl ShowGBACartRemovedError
@@ -30792,7 +30792,7 @@ ov74_02236140: ; 0x02236140
 	push {r3, lr}
 	ldr r0, _02236158 ; =ov74_0223D454
 	ldr r0, [r0, #0x18]
-	bl sub_020275A4
+	bl Save_Cancel
 	ldr r0, _02236158 ; =ov74_0223D454
 	mov r1, #3
 	str r1, [r0, #0x14]

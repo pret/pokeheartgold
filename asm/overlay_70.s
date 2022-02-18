@@ -18080,7 +18080,7 @@ ov70_02240838: ; 0x02240838
 ov70_02240854: ; 0x02240854
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02027534
+	bl SetAllPCBoxesModified
 	ldr r0, [r4]
 	mov r1, #2
 	ldr r0, [r0, #0x20]
@@ -18161,7 +18161,7 @@ _022408DC: .word 0x000011D6
 ov70_022408E0: ; 0x022408E0
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02027534
+	bl SetAllPCBoxesModified
 	ldr r0, [r4]
 	mov r1, #2
 	ldr r0, [r0, #0x20]
@@ -25307,7 +25307,7 @@ ov70_02244038: ; 0x02244038
 	b _0224410C
 _022440EE:
 	mov r0, #4
-	bl sub_0201A4CC
+	bl Sys_ClearSleepDisableFlag
 	mov r0, #0
 	str r0, [r4, #0x2c]
 	b _0224410C
@@ -26249,7 +26249,7 @@ ov70_02244888: ; 0x02244888
 	ldr r0, [r0, #0x20]
 	bl sub_02039418
 	mov r0, #4
-	bl sub_0201A4BC
+	bl Sys_SetSleepDisableFlag
 	add r0, r4, #0
 	bl ov70_02245124
 	add r0, r4, #0

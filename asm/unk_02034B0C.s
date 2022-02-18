@@ -334,19 +334,19 @@ sub_02034D78: ; 0x02034D78
 	ldr r0, _02034D84 ; =_021D4134
 	mov r1, #0
 	str r1, [r0, #4]
-	ldr r3, _02034D88 ; =sub_0201A4CC
+	ldr r3, _02034D88 ; =Sys_ClearSleepDisableFlag
 	mov r0, #4
 	bx r3
 	.balign 4, 0
 _02034D84: .word _021D4134
-_02034D88: .word sub_0201A4CC
+_02034D88: .word Sys_ClearSleepDisableFlag
 	thumb_func_end sub_02034D78
 
 	thumb_func_start sub_02034D8C
 sub_02034D8C: ; 0x02034D8C
 	push {r3, lr}
 	mov r0, #4
-	bl sub_0201A4BC
+	bl Sys_SetSleepDisableFlag
 	ldr r0, _02034DB0 ; =_021D4134
 	mov r1, #1
 	str r1, [r0, #4]

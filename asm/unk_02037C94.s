@@ -4020,7 +4020,7 @@ _02039A36:
 	ldr r0, _02039A9C ; =_021D4150
 	ldr r0, [r0]
 	ldr r0, [r0, #0x28]
-	bl sub_020275A4
+	bl Save_Cancel
 	ldr r1, _02039AA0 ; =gSystem + 0x60
 	mov r0, #1
 	strb r0, [r1, #8]

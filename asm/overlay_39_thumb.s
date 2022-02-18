@@ -3768,7 +3768,7 @@ _02228C90:
 	ldr r0, [r0, #4]
 	bl sub_02039418
 	mov r0, #4
-	bl sub_0201A4BC
+	bl Sys_SetSleepDisableFlag
 	bl sub_0203A880
 	ldr r0, _02228D08 ; =0x00000F0F
 	add r3, r4, #0
