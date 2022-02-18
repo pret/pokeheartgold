@@ -15,8 +15,8 @@ BOOL sub_020274D0(SAVEDATA *save);
 SAVEDATA *SaveBlock2_get(void);
 void sub_020275A4(SAVEDATA *saveData);
 void *ReadExtraSaveChunk(SAVEDATA *saveData, HeapID heapId, int idx, int *ret_p);
-int WriteExtraSaveChunk(SAVEDATA *saveData, int idx, const void *data);
+int WriteExtraSaveChunk(SAVEDATA *saveData, int idx, void *data);
 void *sub_020284A4(SAVEDATA *saveData, HeapID heapId, int idx, int *ret_p, int *ret2_p);
-int sub_02028230(SAVEDATA *saveData, int idx, const void *data);
+int sub_02028230(SAVEDATA *saveData, int idx, void *data);
 
 #endif //POKEHEARTGOLD_SAVE_H

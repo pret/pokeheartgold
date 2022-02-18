@@ -61,7 +61,7 @@ struct SaveBlock2 {
     struct SavArrayHeader arrayHeaders[SAVE_BLOCK_NUM]; // 23014
     struct SaveSlotSpec saveSlotSpecs[2]; // 232B4
     struct UnkSavSub_232CC unk_232CC;
-    u8 filler_232F0[4];
+    u32 unk_232F0;
     u32 unk_232F4;
     int boxModifiedFlags;
     u8 filler_232FC[4];
@@ -91,17 +91,20 @@ void sub_020279EC(SAVEDATA *saveData, int *err1, int *err2);
 void sub_02027BDC(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC, int a2);
 int sub_02027C18(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC);
 void sub_02027CEC(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC, int a2);
-int FlashWriteChunkInternal(u32 offset, void *data, u32 size);
-BOOL FlashLoadChunk(u32 offset, void *data, u32 size);
 void sub_02027D6C(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC);
-BOOL WaitFlashWrite(int a0, int a1, int *a2);
-BOOL SaveDetectFlash(void);
 void SaveBlock2_InitSubstructs(struct SavArrayHeader *headers);
 void sub_02027EFC(struct SaveSlotSpec *slotSpecs, struct SavArrayHeader *headers);
 int FlashClobberChunkFooter(SAVEDATA *saveData, int spec, int sector);
 int sub_02027DB4(SAVEDATA *saveData);
-int FlashWriteChunk(u32 offset, void *data, u32 size);
 void Sav2_InitDynamicRegion_Internal(u8 *dynamic_region, struct SavArrayHeader *headers);
+int FlashWriteChunkInternal(u32 offset, void *data, u32 size);
+BOOL FlashLoadChunk(u32 offset, void *data, u32 size);
+BOOL WaitFlashWrite(int a0, int a1, int *a2);
+BOOL SaveDetectFlash(void);
+int FlashWriteChunk(u32 offset, void *data, u32 size);
+void sub_020286B4(SAVEDATA *saveData, int idx, u32 *seed, int *a3, u8 *a4);
+void sub_020286D4(SAVEDATA *saveData, int idx, u32 rand, u32 seed, u8 sector);
+
 u32 sub_02028C70(SAVEDATA *saveData);
 u32 sub_02028C9C(u32 flags);
 int sub_02028968(SAVEDATA *saveData, struct UnkSavSub_232CC *unk232CC);
@@ -916,4 +919,76 @@ u32 sub_020280DC(void *data, u32 size) {
     footer = (struct SavArrayFooter *)((u8 *)data + size);
 
     return footer->saveno;
+}
+
+int WriteExtraSaveChunk(SAVEDATA *saveData, int idx, void *data) {
+    const struct ExtraSaveChunkHeader *hdr;
+    u32 size;
+    int ret;
+
+    sub_0201A4BC(1);
+    GF_ASSERT(idx < _020F645C);
+    hdr = &_020F6464[idx];
+    GF_ASSERT(hdr->id == idx);
+    size = hdr->sizeFunc() + sizeof(struct SavArrayFooter);
+    if (saveData->unk_232F0 == 1) {
+        CreateChunkFooter(saveData, data, idx, hdr->sizeFunc());
+        ret = FlashWriteChunk(hdr->sector * SAVE_SECTOR_SIZE, data, size);
+        GF_ASSERT(ValidateChunk(saveData, data, idx, hdr->sizeFunc()) == TRUE);
+
+        CreateChunkFooter(saveData, data, idx, hdr->sizeFunc());
+        ret |= FlashWriteChunk((hdr->sector + 64) * SAVE_SECTOR_SIZE, data, size);
+        GF_ASSERT(ValidateChunk(saveData, data, idx, hdr->sizeFunc()) == TRUE);
+    } else {
+        CreateChunkFooter(saveData, data, idx, hdr->sizeFunc());
+        ret = FlashWriteChunk((hdr->sector + 64) * SAVE_SECTOR_SIZE, data, size);
+        GF_ASSERT(ValidateChunk(saveData, data, idx, hdr->sizeFunc()) == TRUE);
+
+        CreateChunkFooter(saveData, data, idx, hdr->sizeFunc());
+        ret |= FlashWriteChunk(hdr->sector * SAVE_SECTOR_SIZE, data, size);
+        GF_ASSERT(ValidateChunk(saveData, data, idx, hdr->sizeFunc()) == TRUE);
+    }
+    if (ret == 1) {
+        sub_0201A4CC(1);
+        return 2;
+    }
+    sub_0201A4CC(1);
+    return 3;
+}
+
+int sub_02028230(SAVEDATA *saveData, int idx, void *data) {
+    const struct ExtraSaveChunkHeader *hdr;
+    u32 size;
+    int ret;
+    u32 sp14;
+    int sp10;
+    u8 sp0C;
+    u32 r6;
+
+    sub_0201A4BC(1);
+    GF_ASSERT(idx < _020F645C);
+    hdr = &_020F6464[idx];
+    GF_ASSERT(hdr->id == idx);
+    size = hdr->sizeFunc() + sizeof(struct SavArrayFooter);
+    sub_020286B4(saveData, idx, &sp14, &sp10, &sp0C);
+    do {
+        r6 = PRandom(sp14);
+    } while (r6 == -1);
+    sub_020286D4(saveData, idx, r6, sp14, sp0C ^ 1);
+    *(u32 *)data = r6;
+    if (sp0C == 1) {
+        CreateChunkFooter(saveData, data, idx, hdr->sizeFunc());
+        ret = FlashWriteChunk(hdr->sector * SAVE_SECTOR_SIZE, data, size);
+        GF_ASSERT(ValidateChunk(saveData, data, idx, hdr->sizeFunc()) == TRUE);
+    } else {
+        CreateChunkFooter(saveData, data, idx, hdr->sizeFunc());
+        ret = FlashWriteChunk((hdr->sector + 64) * SAVE_SECTOR_SIZE, data, size);
+        GF_ASSERT(ValidateChunk(saveData, data, idx, hdr->sizeFunc()) == TRUE);
+    }
+    if (ret == 1) {
+        sub_0201A4CC(1);
+        return 2;
+    }
+    sub_0201A4CC(1);
+    return 3;
 }
