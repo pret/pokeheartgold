@@ -156,6 +156,7 @@ Static main
 	Object asm/unk_0203E348.o
 	Object src/script.o
 	Object src/fieldmap.o
+	Object src/scrcmd_c.o
 	Object asm/scrcmd.o
 	Object asm/scrcmd_2.o
 	Object asm/scrcmd_3.o

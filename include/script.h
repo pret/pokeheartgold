@@ -210,7 +210,7 @@ struct SCRIPTCONTEXT {
     u8 stack_depth;
     u8 mode;
     u8 comparison_result;
-    u8 unk3;
+    u8 id;
     ScrCmdFunc native_ptr;
     const u8* script_ptr;
     const u8* stack[20];
