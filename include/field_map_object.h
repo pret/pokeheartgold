@@ -3,7 +3,7 @@
 
 typedef struct LocalMapObject LocalMapObject;
 
-LocalMapObject *CreateSpecialFieldObject(MapObjectMan* objectMan, u32 x, u32 y, u32 direction, u32 sprite, u32 movement, u32 mapNo);
+LocalMapObject *CreateSpecialFieldObject(MapObjectMan *objectMan, u32 x, u32 y, u32 direction, u32 sprite, u32 movement, u32 mapNo);
 void DeleteMapObject(LocalMapObject *mapObject);
 LocalMapObject *GetMapObjectByID(MapObjectMan *arr, int id);
 void sub_0205FC94(LocalMapObject *mapObject, int movement);

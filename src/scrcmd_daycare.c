@@ -24,7 +24,7 @@ BOOL ScrCmd_BufferDayCareMonNicks(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_GetDayCareState(SCRIPTCONTEXT* ctx) {
     SAVEDATA* savedata = ctx->fsys->savedata;
-    u16* ret_ptr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    u16* ret_ptr = ScriptGetVarPointer(ctx);
     DAYCARE* daycare = SavArray_get(savedata, SAVE_DAYCARE);
 
     *ret_ptr = Sav2_DayCare_GetState(daycare);
@@ -56,8 +56,8 @@ BOOL ScrCmd_RetrieveDayCareMon(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     MSGFMT** msg_fmt = FieldSysGetAttrAddr(fsys, UNK80_10_C_MSGFMT);
     SAVEDATA* savedata = fsys->savedata;
-    u16* ret_ptr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
-    u16 daycare_mon_idx = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    u16* ret_ptr = ScriptGetVarPointer(ctx);
+    u16 daycare_mon_idx = ScriptGetVar(ctx);
     DAYCARE* daycare = SavArray_get(savedata, SAVE_DAYCARE);
     PARTY* party = SavArray_PlayerParty_get(fsys->savedata);
 
@@ -70,8 +70,8 @@ BOOL ScrCmd_BufferDayCareWithdrawCost(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     MSGFMT** msg_fmt = FieldSysGetAttrAddr(fsys, UNK80_10_C_MSGFMT);
     SAVEDATA* savedata = fsys->savedata;
-    u16* ret_ptr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
-    u16 daycare_mon_idx = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    u16* ret_ptr = ScriptGetVarPointer(ctx);
+    u16 daycare_mon_idx = ScriptGetVar(ctx);
     DAYCARE* daycare = SavArray_get(savedata, SAVE_DAYCARE);
 
     *ret_ptr = Sav2_DayCare_BufferMonNickAndRetrievalPrice(daycare, (u8)daycare_mon_idx, *msg_fmt);
@@ -82,8 +82,8 @@ BOOL ScrCmd_BufferDayCareWithdrawCost(SCRIPTCONTEXT* ctx) {
 BOOL ScrCmd_BufferDayCareMonGrowth(SCRIPTCONTEXT* ctx) {
     SAVEDATA* savedata = ctx->fsys->savedata;
     MSGFMT** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, UNK80_10_C_MSGFMT);
-    u16* ret_ptr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
-    u16 daycare_mon_idx = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    u16* ret_ptr = ScriptGetVarPointer(ctx);
+    u16 daycare_mon_idx = ScriptGetVar(ctx);
     DAYCARE* daycare = SavArray_get(savedata, SAVE_DAYCARE);
 
     *ret_ptr = Sav2_DayCare_BufferGrowthAndNick(daycare, daycare_mon_idx, *msg_fmt);
@@ -94,7 +94,7 @@ BOOL ScrCmd_BufferDayCareMonGrowth(SCRIPTCONTEXT* ctx) {
 BOOL ScrCmd_GetTailDayCareMonSpeciesAndNick(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     MSGFMT** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, UNK80_10_C_MSGFMT);
-    u16* ret_ptr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    u16* ret_ptr = ScriptGetVarPointer(ctx);
     DAYCARE* daycare = Sav2_DayCare_get(fsys->savedata);
 
     *ret_ptr = Sav2_DayCare_BufferTailMonNick(daycare, *msg_fmt);
@@ -105,7 +105,7 @@ BOOL ScrCmd_GetTailDayCareMonSpeciesAndNick(SCRIPTCONTEXT* ctx) {
 BOOL ScrCmd_PutMonInDayCare(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     SAVEDATA* savedata = fsys->savedata;
-    u16 slot = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    u16 slot = ScriptGetVar(ctx);
     PARTY* party = SavArray_PlayerParty_get(fsys->savedata);
     DAYCARE* daycare = SavArray_get(savedata, SAVE_DAYCARE);
 
@@ -117,10 +117,10 @@ BOOL ScrCmd_PutMonInDayCare(SCRIPTCONTEXT* ctx) {
 BOOL ScrCmd_BufferDayCareMonStats(SCRIPTCONTEXT* ctx) {
     SAVEDATA* savedata = ctx->fsys->savedata;
     MSGFMT** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, UNK80_10_C_MSGFMT);
-    u16 nickname_idx = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
-    u16 level_idx = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
-    u16 gender_idx = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
-    u16 slot = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    u16 nickname_idx = ScriptGetVar(ctx);
+    u16 level_idx = ScriptGetVar(ctx);
+    u16 gender_idx = ScriptGetVar(ctx);
+    u16 slot = ScriptGetVar(ctx);
     DAYCARE* daycare = Sav2_DayCare_get(savedata);
 
     Sav2_DayCare_BufferMonStats(daycare, (u8)nickname_idx, (u8)level_idx, (u8)gender_idx, (u8)slot, *msg_fmt);
@@ -130,7 +130,7 @@ BOOL ScrCmd_BufferDayCareMonStats(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_GetDayCareCompatibility(SCRIPTCONTEXT* ctx) {
     SAVEDATA* savedata = ctx->fsys->savedata;
-    u16* ret_ptr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    u16* ret_ptr = ScriptGetVarPointer(ctx);
     DAYCARE* daycare = SavArray_get(savedata, SAVE_DAYCARE);
 
     *ret_ptr = Sav2_DayCare_CalcCompatibility(daycare);
@@ -140,7 +140,7 @@ BOOL ScrCmd_GetDayCareCompatibility(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_CheckDayCareEgg(SCRIPTCONTEXT* ctx) {
     SAVEDATA* savedata = ctx->fsys->savedata;
-    u16* ret_ptr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    u16* ret_ptr = ScriptGetVarPointer(ctx);
     DAYCARE* daycare = SavArray_get(savedata, SAVE_DAYCARE);
 
     *ret_ptr = Sav2_DayCare_HasEgg(daycare);
@@ -203,8 +203,8 @@ BOOL ScrCmd_DayCareSanitizeMon(SCRIPTCONTEXT* ctx) {
     POKEMON* party_mon;
 
     FieldSystem* fsys = ctx->fsys;
-    u16 party_slot = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
-    u16* ret_ptr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    u16 party_slot = ScriptGetVar(ctx);
+    u16* ret_ptr = ScriptGetVarPointer(ctx);
     PARTY* party = SavArray_PlayerParty_get(fsys->savedata);
     party_mon = GetPartyMonByIndex(party, party_slot);
 
