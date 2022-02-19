@@ -37,7 +37,7 @@ BOOL ScrCmd_CompareAddrToAddr(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_CompareVarToValue(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_CompareVarToVar(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_RunScript(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_RunScriptWait(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_CallStd(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_RestartCurrentScript(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GoTo(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_ObjectGoTo(SCRIPTCONTEXT* ctx);

@@ -70,7 +70,7 @@ gScriptCmdTable:
 	.word ScrCmd_CompareVarToValue                      ; 017
 	.word ScrCmd_CompareVarToVar                        ; 018
 	.word ScrCmd_RunScript                              ; 019
-	.word ScrCmd_RunScriptWait                          ; 020
+	.word ScrCmd_CallStd                                ; 020
 	.word ScrCmd_RestartCurrentScript                   ; 021
 	.word ScrCmd_GoTo                                   ; 022
 	.word ScrCmd_ObjectGoTo                             ; 023
@@ -1344,8 +1344,8 @@ ScrCmd_RunScript: ; 0x02040B30
 	.balign 4, 0
 	thumb_func_end ScrCmd_RunScript
 
-	thumb_func_start ScrCmd_RunScriptWait
-ScrCmd_RunScriptWait: ; 0x02040B68
+	thumb_func_start ScrCmd_CallStd
+ScrCmd_CallStd: ; 0x02040B68
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	add r0, #0x80
@@ -1389,7 +1389,7 @@ ScrCmd_RunScriptWait: ; 0x02040B68
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02040BC8: .word sub_02040BCC
-	thumb_func_end ScrCmd_RunScriptWait
+	thumb_func_end ScrCmd_CallStd
 
 	thumb_func_start sub_02040BCC
 sub_02040BCC: ; 0x02040BCC
