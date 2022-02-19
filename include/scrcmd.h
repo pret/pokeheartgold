@@ -8,6 +8,14 @@
 // unk_0203DE74.s
 extern SAVEDATA* ScriptEnvironment_GetSav2Ptr(FieldSystem*);
 
+static inline u16 ScriptGetVar(SCRIPTCONTEXT* ctx) {
+    return VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+}
+
+static inline u16* ScriptGetVarPointer(SCRIPTCONTEXT* ctx) {
+    return GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+}
+
 // Basic commands
 BOOL ScrCmd_Nop(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_Dummy(SCRIPTCONTEXT* ctx);
