@@ -601,7 +601,7 @@ scr_seq_D32R0401_001:
 	.byte 0x02, 0x00
 _08D9:
 	scrcmd_345
-	scrcmd_254 VAR_SPECIAL_RESULT
+	save_game_normal VAR_SPECIAL_RESULT
 	scrcmd_346
 	play_se SEQ_SE_DP_SAVE
 	wait_se SEQ_SE_DP_SAVE

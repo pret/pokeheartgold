@@ -1308,7 +1308,7 @@ sub_020312CC: ; 0x020312CC
 	bl sub_02027158
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_020273F0
+	bl SaveGameNormal
 	orr r0, r4
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_020312CC
@@ -1319,7 +1319,7 @@ sub_020312E0: ; 0x020312E0
 	add r5, r1, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_020274E8
+	bl Save_CheckExtraChunksExist
 	cmp r0, #0
 	bne _020312F4
 	mov r0, #0
@@ -1410,7 +1410,7 @@ sub_02031378: ; 0x02031378
 	add r5, r1, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_020274E8
+	bl Save_CheckExtraChunksExist
 	cmp r0, #0
 	bne _0203138E
 	mov r0, #0
@@ -1492,7 +1492,7 @@ _02031404:
 	pop {r4, r5, r6, r7, pc}
 _02031418:
 	add r0, r5, #0
-	bl sub_020274E8
+	bl Save_CheckExtraChunksExist
 	cmp r0, #0
 	bne _02031428
 	add sp, #0x1c

@@ -18084,7 +18084,7 @@ ov70_02240854: ; 0x02240854
 	ldr r0, [r4]
 	mov r1, #2
 	ldr r0, [r0, #0x20]
-	bl sub_02027550
+	bl Save_PrepareForAsyncWrite
 	mov r0, #0x1f
 	str r0, [r4, #0x2c]
 	bl LCRandom
@@ -18123,7 +18123,7 @@ ov70_0224089C: ; 0x0224089C
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0, #0x20]
-	bl sub_02027564
+	bl Save_WriteFileAsync
 	cmp r0, #1
 	bne _022408B2
 	ldr r0, _022408B8 ; =0x000011D4
@@ -18142,7 +18142,7 @@ ov70_022408BC: ; 0x022408BC
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0, #0x20]
-	bl sub_02027564
+	bl Save_WriteFileAsync
 	cmp r0, #2
 	bne _022408D8
 	ldr r0, _022408DC ; =0x000011D6
@@ -18165,7 +18165,7 @@ ov70_022408E0: ; 0x022408E0
 	ldr r0, [r4]
 	mov r1, #2
 	ldr r0, [r0, #0x20]
-	bl sub_02027550
+	bl Save_PrepareForAsyncWrite
 	mov r0, #0x23
 	str r0, [r4, #0x2c]
 	mov r0, #3
@@ -18180,7 +18180,7 @@ ov70_022408FC: ; 0x022408FC
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0, #0x20]
-	bl sub_02027564
+	bl Save_WriteFileAsync
 	cmp r0, #2
 	bne _0224093C
 	add r0, r4, #0

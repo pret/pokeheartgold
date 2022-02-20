@@ -460,13 +460,13 @@ scr_seq_0003_006:
 	end
 
 _0646:
-	scrcmd_593
+	show_save_stats
 	npc_msg msg_0040_00013
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0740
-	scrcmd_253 VAR_SPECIAL_RESULT
+	get_save_file_state VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0698
 	compare VAR_SPECIAL_RESULT, 1
@@ -478,7 +478,7 @@ _0646:
 	end
 
 _0698:
-	scrcmd_594
+	hide_save_stats
 	touchscreen_menu_show
 	npc_msg msg_0040_00020
 	scrcmd_049
@@ -504,16 +504,16 @@ _06C6:
 	end
 
 _06F2:
-	scrcmd_512
+	player_movement_saving_set
 	wait 2, VAR_SPECIAL_RESULT
 	call _0708
-	scrcmd_513
+	player_movement_saving_clear
 	goto _071D
 
 _0708:
 	scrcmd_345
 	call_if_set FLAG_MAPTEMP_020, _0762
-	scrcmd_254 VAR_SPECIAL_RESULT
+	save_game_normal VAR_SPECIAL_RESULT
 	scrcmd_346
 	return
 
@@ -525,11 +525,11 @@ _071D:
 	play_se SEQ_SE_DP_SAVE
 	wait_se SEQ_SE_DP_SAVE
 	scrcmd_348 30
-	scrcmd_594
+	hide_save_stats
 	return
 
 _0740:
-	scrcmd_594
+	hide_save_stats
 	touchscreen_menu_show
 	setvar VAR_SPECIAL_RESULT, 0
 	return
@@ -537,7 +537,7 @@ _0740:
 _074C:
 	npc_msg msg_0040_00018
 	scrcmd_049
-	scrcmd_594
+	hide_save_stats
 	touchscreen_menu_show
 	return
 
@@ -546,7 +546,7 @@ _0757:
 	goto _06F2
 	.byte 0x02, 0x00
 _0762:
-	scrcmd_641
+	save_wipe_extra_chunks
 	clearflag FLAG_MAPTEMP_020
 	return
 

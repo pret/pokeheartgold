@@ -28248,8 +28248,8 @@ _021F2F6C:
 	.balign 4, 0
 	thumb_func_end ov01_021F2F24
 
-	thumb_func_start ov01_021F2F70
-ov01_021F2F70: ; 0x021F2F70
+	thumb_func_start Field_PlayerMovementSavingSet
+Field_PlayerMovementSavingSet: ; 0x021F2F70
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	ldr r6, [r7, #0x40]
@@ -28308,10 +28308,10 @@ _021F2FE2:
 	nop
 _021F2FE8: .word ov01_021F3030
 _021F2FEC: .word 0x0000FFFF
-	thumb_func_end ov01_021F2F70
+	thumb_func_end Field_PlayerMovementSavingSet
 
-	thumb_func_start ov01_021F2FF0
-ov01_021F2FF0: ; 0x021F2FF0
+	thumb_func_start Field_PlayerMovementSavingClear
+Field_PlayerMovementSavingClear: ; 0x021F2FF0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	beq _021F302E
@@ -28341,7 +28341,7 @@ _021F3022:
 	bl sub_0200E390
 _021F302E:
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_021F2FF0
+	thumb_func_end Field_PlayerMovementSavingClear
 
 	thumb_func_start ov01_021F3030
 ov01_021F3030: ; 0x021F3030
@@ -30645,8 +30645,8 @@ _021F4124: .word ov01_02206AF4
 _021F4128: .word ov01_02206AE4
 	thumb_func_end ov01_021F4048
 
-	thumb_func_start ov01_021F412C
-ov01_021F412C: ; 0x021F412C
+	thumb_func_start SaveStatsPrinter_Print
+SaveStatsPrinter_Print: ; 0x021F412C
 	push {r3, r4, lr}
 	sub sp, #0x14
 	add r4, r0, #0
@@ -30699,10 +30699,10 @@ ov01_021F412C: ; 0x021F412C
 	.balign 4, 0
 _021F419C: .word 0x00000189
 _021F41A0: .word 0x000003D9
-	thumb_func_end ov01_021F412C
+	thumb_func_end SaveStatsPrinter_Print
 
-	thumb_func_start ov01_021F41A4
-ov01_021F41A4: ; 0x021F41A4
+	thumb_func_start SaveStatsPrinter_RemoveFromScreen
+SaveStatsPrinter_RemoveFromScreen: ; 0x021F41A4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
@@ -30714,10 +30714,10 @@ ov01_021F41A4: ; 0x021F41A4
 	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021F41A4
+	thumb_func_end SaveStatsPrinter_RemoveFromScreen
 
-	thumb_func_start ov01_021F41C0
-ov01_021F41C0: ; 0x021F41C0
+	thumb_func_start Field_CreateSaveStatsPrinter
+Field_CreateSaveStatsPrinter: ; 0x021F41C0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r0, #0
@@ -30758,10 +30758,10 @@ ov01_021F41C0: ; 0x021F41C0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021F4218: .word 0x000001A7
-	thumb_func_end ov01_021F41C0
+	thumb_func_end Field_CreateSaveStatsPrinter
 
-	thumb_func_start ov01_021F421C
-ov01_021F421C: ; 0x021F421C
+	thumb_func_start SaveStatsPrinter_Delete
+SaveStatsPrinter_Delete: ; 0x021F421C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
@@ -30771,7 +30771,7 @@ ov01_021F421C: ; 0x021F421C
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
-	thumb_func_end ov01_021F421C
+	thumb_func_end SaveStatsPrinter_Delete
 
 	thumb_func_start ov01_021F4234
 ov01_021F4234: ; 0x021F4234
@@ -30991,13 +30991,13 @@ ov01_021F43D0: ; 0x021F43D0
 	pop {r4, pc}
 	thumb_func_end ov01_021F43D0
 
-	thumb_func_start ov01_021F43E8
-ov01_021F43E8: ; 0x021F43E8
+	thumb_func_start Field_SaveGameNormal
+Field_SaveGameNormal: ; 0x021F43E8
 	push {r4, lr}
 	add r4, r0, #0
 	bl ov01_021F4404
 	ldr r0, [r4, #0xc]
-	bl sub_020273F0
+	bl SaveGameNormal
 	cmp r0, #2
 	bne _021F43FE
 	mov r0, #1
@@ -31006,7 +31006,7 @@ _021F43FE:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021F43E8
+	thumb_func_end Field_SaveGameNormal
 
 	thumb_func_start ov01_021F4404
 ov01_021F4404: ; 0x021F4404

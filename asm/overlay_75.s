@@ -4921,7 +4921,7 @@ _0224900C:
 _0224902E:
 	ldr r0, [r4]
 	ldr r0, [r0, #4]
-	bl sub_020273F0
+	bl SaveGameNormal
 	cmp r0, #2
 	bne _0224906C
 	ldr r0, [r4]
@@ -4942,7 +4942,7 @@ _0224902E:
 	bl PlaySE
 	ldr r0, [r4]
 	ldr r0, [r0, #4]
-	bl sub_020274D8
+	bl Save_ClearStatusFlags
 	b _0224907C
 _0224906C:
 	ldr r0, _022490D0 ; =0x00000F0F

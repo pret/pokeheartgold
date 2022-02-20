@@ -81,12 +81,12 @@ void Sav2_Misc_RivalName_set(SAVE_MISC_DATA *saveMiscData, const STRING *name) {
     CopyStringToU16Array(name, saveMiscData->rivalName, OT_NAME_LENGTH + 1);
 }
 
-void sub_0202A9C4(SAVE_MISC_DATA *saveMiscData) {
-    saveMiscData->unk_029B_0 = TRUE;
+void SaveMisc_SetExtraChunksExist(SAVE_MISC_DATA *saveMiscData) {
+    saveMiscData->extraChunksExist = TRUE;
 }
 
-BOOL sub_0202A9D8(SAVE_MISC_DATA *saveMiscData) {
-    return saveMiscData->unk_029B_0;
+BOOL SaveMisc_CheckExtraChunksExist(SAVE_MISC_DATA *saveMiscData) {
+    return saveMiscData->extraChunksExist;
 }
 
 void sub_0202A9E8(SAVE_MISC_DATA *saveMiscData, int a1, int a2, int a3) {

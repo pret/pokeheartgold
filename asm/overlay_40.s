@@ -14417,7 +14417,7 @@ _02232954:
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02027520
+	bl Save_NumModifiedPCBoxesIsMany
 	cmp r0, #0
 	beq _02232984
 	ldr r1, _02232A3C ; =0x0000012A
@@ -14450,7 +14450,7 @@ _02232994:
 _022329B2:
 	sub r1, #0x30
 	ldr r0, [r4, r1]
-	bl sub_020273F0
+	bl SaveGameNormal
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -49785,7 +49785,7 @@ _02244BCE:
 	cmp r4, #2
 	bne _02244C2A
 	add r0, r5, #0
-	bl sub_020273F0
+	bl SaveGameNormal
 	add r4, r0, #0
 _02244C2A:
 	mov r0, #8

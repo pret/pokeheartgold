@@ -6558,7 +6558,7 @@ ov80_0222CE28: ; 0x0222CE28
 	add r0, r4, #0
 	bl ov80_0222BDF4
 	ldr r0, [r5, #8]
-	bl sub_020273F0
+	bl SaveGameNormal
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -6580,7 +6580,7 @@ ov80_0222CE48: ; 0x0222CE48
 	bl sub_0201A748
 	ldr r0, [r6, #8]
 	mov r1, #2
-	bl sub_02027550
+	bl Save_PrepareForAsyncWrite
 	ldr r1, _0222CE7C ; =ov80_0222CE80
 	add r0, r5, #0
 	bl ov80_0222AB84
@@ -6597,7 +6597,7 @@ ov80_0222CE80: ; 0x0222CE80
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl sub_02027564
+	bl Save_WriteFileAsync
 	cmp r0, #2
 	bne _0222CEA2
 	bl sub_0201A774
@@ -6625,7 +6625,7 @@ ov80_0222CEB8: ; 0x0222CEB8
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl sub_02027FFC
+	bl Save_WipeExtraChunks
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ov80_0222CEB8
@@ -6642,7 +6642,7 @@ ov80_0222CECC: ; 0x0222CECC
 	bl ov80_0222BDF4
 	add r5, r0, #0
 	ldr r0, [r4, #8]
-	bl sub_020274E8
+	bl Save_CheckExtraChunksExist
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}

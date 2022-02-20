@@ -3225,7 +3225,7 @@ ov74_02228920: ; 0x02228920
 	mov r0, #0x4f
 	bl ov74_022352A0
 	ldr r0, [r4, #4]
-	bl sub_020274E0
+	bl Save_FileExists
 	cmp r0, #0
 	bne _022289C4
 	mov r0, #0x61
@@ -12393,7 +12393,7 @@ _0222D39A:
 _0222D3A4:
 	ldr r0, _0222D40C ; =0x00002BA4
 	ldr r0, [r4, r0]
-	bl sub_020273F0
+	bl SaveGameNormal
 	ldr r0, _0222D404 ; =0x00003D50
 	ldr r0, [r4, r0]
 	bl sub_0200F450
@@ -21262,14 +21262,14 @@ _02231842:
 _02231852:
 	ldr r0, [r5, #0x10]
 	mov r1, #2
-	bl sub_02027550
+	bl Save_PrepareForAsyncWrite
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _02231924
 _02231862:
 	ldr r0, [r5, #0x10]
-	bl sub_02027564
+	bl Save_WriteFileAsync
 	cmp r0, #3
 	bne _02231872
 	add sp, #0x10
@@ -21328,7 +21328,7 @@ _022318C6:
 	pop {r3, r4, r5, pc}
 _022318DA:
 	ldr r0, [r5, #0x10]
-	bl sub_02027564
+	bl Save_WriteFileAsync
 	cmp r0, #3
 	bne _022318EA
 	add sp, #0x10
@@ -21383,7 +21383,7 @@ ov74_02231930: ; 0x02231930
 	mov r0, #4
 	bl sub_0201A728
 	ldr r0, [r5, #0x10]
-	bl sub_020273F0
+	bl SaveGameNormal
 	mov r0, #4
 	bl sub_0201A738
 	pop {r3, r4, r5, pc}
@@ -30729,14 +30729,14 @@ _022360D2:
 	bl sub_0201A728
 	ldr r0, [r4, #0x18]
 	mov r1, #2
-	bl sub_02027550
+	bl Save_PrepareForAsyncWrite
 	ldr r0, [r4, #0x14]
 	add r0, r0, #1
 	str r0, [r4, #0x14]
 	b _0223611C
 _022360E8:
 	ldr r0, [r4, #0x18]
-	bl sub_02027564
+	bl Save_WriteFileAsync
 	add r5, r0, #0
 	cmp r5, #3
 	bne _022360FA

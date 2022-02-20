@@ -10,6 +10,16 @@
 
 #define SAVE_CHUNK_MAGIC 0x20060623
 
+#define LOAD_STATUS_NOT_EXIST       0
+#define LOAD_STATUS_IS_GOOD         1
+#define LOAD_STATUS_SLOT_FAIL       2
+#define LOAD_STATUS_TOTAL_FAIL      3
+
+#define WRITE_STATUS_CONTINUE       0
+#define WRITE_STATUS_NEXT           1
+#define WRITE_STATUS_SUCCESS        2
+#define WRITE_STATUS_TOTAL_FAIL     3
+
 struct SavArrayHeader {
     int id;
     u32 size;
@@ -44,7 +54,7 @@ struct SaveSlotSpec {
 }; // size=0xC
 
 struct AsyncWriteManager {
-    int unk_0;
+    int rollbackCounter;
     int unk_4;
     int curSector;
     int numSectors;
@@ -57,9 +67,9 @@ struct AsyncWriteManager {
 
 struct SaveBlock2 {
     BOOL flashChipDetected;
-    BOOL unk_00004;
-    BOOL unk_00008;
-    u32 unk_0000C;
+    BOOL saveFileExists;
+    BOOL isNewGame;
+    u32 statusFlags;
     u8 dynamic_region[SAVE_PAGE_MAX * SAVE_SECTOR_SIZE];
     u32 saveCounter;
     struct SavArrayHeader arrayHeaders[SAVE_BLOCK_NUM]; // 23014
@@ -72,7 +82,7 @@ struct SaveBlock2 {
     u16 pcStorageLastCRC;
     u16 pcStorageCRC;
     u16 numModifiedBoxes;
-    u16 unk_23306;
+    u16 nextBoxToWrite;
     u8 sectorCleanFlag[2];
     u16 lastGoodSector;
 }; // size=0x2330C
@@ -85,9 +95,9 @@ struct SaveSlotCheck {
 static BOOL saveWritten;
 static SAVEDATA *sSaveDataPtr;
 
-static u32 sub_020274E4(SAVEDATA *saveData);
-static void sub_020274F4(SAVEDATA *saveData);
-static u32 sub_02027544(SAVEDATA *saveData);
+static u32 Save_IsNewGame(SAVEDATA *saveData);
+static void Save_SetExtraChunksExist(SAVEDATA *saveData);
+static u32 Save_CalcNumModifiedPCBoxes(SAVEDATA *saveData);
 static void SaveFooterDebugPrn(struct SaveChunkFooter *footer);
 static void DebugPrn_MirrorValid(BOOL unk);
 static void SaveSlotCheck_InitDummy(struct SaveSlotCheck *unk);
@@ -101,16 +111,16 @@ static int SaveCounterCompare(u32 stat1, u32 stat2);
 static u32 SaveSlotCheckCompare(struct SaveSlotCheck *first, struct SaveSlotCheck *second, u32 *ret1_p, u32 *ret2_p);
 static void Save_RecordWhichLatestGoodSector(SAVEDATA *saveData, struct SaveSlotCheck *a1, struct SaveSlotCheck *a2, int idx);
 static int Save_GetSaveFilesStatus(SAVEDATA *saveData);
-static void sub_020279EC(SAVEDATA *saveData, int *err1, int *err2);
+static void Save_CheckFrontierData(SAVEDATA *saveData, int *err1, int *err2);
 static BOOL FlashLoadSaveDataFromChunk(u32 slot, struct SaveSlotSpec *spec, void *dest);
 static BOOL Sav2_LoadDynamicRegion(SAVEDATA *saveData);
-static int Save_WriteSlot(SAVEDATA *saveData, int idx, u8 slot);
-static int sub_02027BAC(SAVEDATA *saveData, int idx, u8 slot);
-static void sub_02027BDC(SAVEDATA *saveData, struct AsyncWriteManager *writeMan, int a2);
-static int sub_02027C18(SAVEDATA *saveData, struct AsyncWriteManager *writeMan);
-static void sub_02027CEC(SAVEDATA *saveData, struct AsyncWriteManager *writeMan, int a2);
+static int Save_WriteSlotAsync(SAVEDATA *saveData, int idx, u8 slot);
+static int Save_WriteChunkFooterAsync(SAVEDATA *saveData, int idx, u8 slot);
+static void Save_WriteManInit(SAVEDATA *saveData, struct AsyncWriteManager *writeMan, int a2);
+static int HandleWriteSaveAsync_NormalData(SAVEDATA *saveData, struct AsyncWriteManager *writeMan);
+static void Save_WriteManFinish(SAVEDATA *saveData, struct AsyncWriteManager *writeMan, int a2);
 static void CancelAsyncSave(SAVEDATA *saveData, struct AsyncWriteManager *writeMan);
-static int sub_02027DB4(SAVEDATA *saveData);
+static int _NowWriteFlash(SAVEDATA *saveData);
 static int FlashClobberChunkFooter(SAVEDATA *saveData, int spec, int sector);
 static u32 GetSaveChunkSizePlusCRC(int idx);
 static void SaveBlock2_InitSubstructs(struct SavArrayHeader *arr_hdr);
@@ -128,17 +138,17 @@ static void FlashWriteCommandCallback(void *arg);
 static s32 FlashWriteChunkInternal(u32 offset, void *data, u32 size);
 static BOOL WaitFlashWrite(s32 lockId, BOOL checkResult, BOOL *resultSuccess);
 static void SaveErrorHandling(s32 lockId, int code);
-static int sub_02028968(SAVEDATA *saveData, struct AsyncWriteManager *writeMan);
-static int sub_02028AB4(SAVEDATA *saveData, struct AsyncWriteManager *writeMan);
-static int sub_02028BA8(SAVEDATA *saveData, struct SaveSlotSpec *spec, u8 a2);
-static int sub_02028BF8(SAVEDATA *saveData, struct SaveSlotSpec *spec, u8 a2);
-static u32 sub_02028C70(SAVEDATA *saveData);
+static int HandleWriteSaveAsync_PCBoxes(SAVEDATA *saveData, struct AsyncWriteManager *writeMan);
+static int Save_WritePCBoxes(SAVEDATA *saveData, struct AsyncWriteManager *writeMan);
+static int Save_WriteNextPCBox(SAVEDATA *saveData, struct SaveSlotSpec *spec, u8 slot);
+static int Save_WritePCFooter(SAVEDATA *saveData, struct SaveSlotSpec *spec, u8 slot);
+static u32 Save_CalcPCBoxModifiedFlags(SAVEDATA *saveData);
 static u32 PCModifiedFlags_CountModifiedBoxes(u32 flags);
 static u32 PCModifiedFlags_GetIndexOfNthModifiedBox(u32 flags, u8 last);
 
 SAVEDATA *SaveBlock2_new(void) {
     SAVEDATA *ret;
-    int r5;
+    int status;
     int sp4;
     int sp0;
 
@@ -147,43 +157,43 @@ SAVEDATA *SaveBlock2_new(void) {
     sSaveDataPtr = ret;
 
     ret->flashChipDetected = SaveDetectFlash();
-    ret->unk_00004 = 0;
-    ret->unk_00008 = 1;
+    ret->saveFileExists = FALSE;
+    ret->isNewGame = TRUE;
     ret->sectorCleanFlag[0] = 1;
     ret->sectorCleanFlag[1] = 1;
 
     SaveBlock2_InitSubstructs(ret->arrayHeaders);
     SaveBlock2_InitSlotSpecs(ret->saveSlotSpecs, ret->arrayHeaders);
 
-    r5 = Save_GetSaveFilesStatus(ret);
-    ret->unk_0000C = 0;
-    switch (r5) {
-    case 1:
-    case 2:
+    status = Save_GetSaveFilesStatus(ret);
+    ret->statusFlags = 0;
+    switch (status) {
+    case LOAD_STATUS_IS_GOOD:
+    case LOAD_STATUS_SLOT_FAIL:
         Sav2_LoadDynamicRegion(ret);
-        ret->unk_00004 = 1;
-        ret->unk_00008 = 0;
-        if (r5 == 2) {
-            ret->unk_0000C |= 1;
+        ret->saveFileExists = TRUE;
+        ret->isNewGame = FALSE;
+        if (status == LOAD_STATUS_SLOT_FAIL) {
+            ret->statusFlags |= 1;
         } else {
             ret->boxModifiedFlags = Save_GetPCBoxModifiedFlags(ret);
         }
-        sub_020279EC(ret, &sp4, &sp0);
+        Save_CheckFrontierData(ret, &sp4, &sp0);
         if (sp4 == 3) {
-            ret->unk_0000C |= 8;
+            ret->statusFlags |= 8;
         } else if (sp4 == 2) {
-            ret->unk_0000C |= 4;
+            ret->statusFlags |= 4;
         }
         if (sp0 == 3) {
-            ret->unk_0000C |= 0x20;
+            ret->statusFlags |= 0x20;
         } else if (sp0 == 2) {
-            ret->unk_0000C |= 0x10;
+            ret->statusFlags |= 0x10;
         }
         break;
-    case 3:
-        ret->unk_0000C |= 2;
+    case LOAD_STATUS_TOTAL_FAIL:
+        ret->statusFlags |= 2;
         // fallthrough
-    case 0:
+    case LOAD_STATUS_NOT_EXIST:
         Sav2_InitDynamicRegion(ret);
         break;
     }
@@ -205,7 +215,7 @@ const void *SavArray_const_get(const SAVEDATA *saveData, int id) {
     return SavArray_get((SAVEDATA *)saveData, id);
 }
 
-BOOL sub_020272F4(SAVEDATA *saveData) {
+BOOL Save_DeleteAllData(SAVEDATA *saveData) {
     u8 *r6;
     int i;
 
@@ -222,7 +232,7 @@ BOOL sub_020272F4(SAVEDATA *saveData) {
     }
     FreeToHeap(r6);
     Sav2_InitDynamicRegion(saveData);
-    saveData->unk_00004 = 0;
+    saveData->saveFileExists = FALSE;
     Sys_ClearSleepDisableFlag(1);
     return TRUE;
 }
@@ -235,22 +245,22 @@ BOOL sub_020273B0(SAVEDATA *saveData) {
         return FALSE;
     }
     if (Sav2_LoadDynamicRegion(saveData)) {
-        saveData->unk_00004 = 1;
-        saveData->unk_00008 = 0;
-        sub_020279EC(saveData, &sp4, &sp0);
+        saveData->saveFileExists = TRUE;
+        saveData->isNewGame = FALSE;
+        Save_CheckFrontierData(saveData, &sp4, &sp0);
         Save_ResetPCBoxModifiedFlags(saveData);
         return TRUE;
     }
     return FALSE;
 }
 
-int sub_020273F0(SAVEDATA *saveData) {
+int SaveGameNormal(SAVEDATA *saveData) {
     int ret;
 
     if (!saveData->flashChipDetected) {
         return 3;
     }
-    if (saveData->unk_00008) {
+    if (saveData->isNewGame) {
         Sys_SetSleepDisableFlag(1);
         FlashClobberChunkFooter(saveData, 0, saveData->lastGoodSector == 0 ? 1 : 0);
         FlashClobberChunkFooter(saveData, 1, saveData->lastGoodSector == 0 ? 1 : 0);
@@ -258,10 +268,10 @@ int sub_020273F0(SAVEDATA *saveData) {
         FlashClobberChunkFooter(saveData, 1, saveData->lastGoodSector);
         Sys_ClearSleepDisableFlag(1);
     }
-    ret = sub_02027DB4(saveData);
+    ret = _NowWriteFlash(saveData);
     if (ret == 2) {
-        saveData->unk_00004 = 1;
-        saveData->unk_00008 = 0;
+        saveData->saveFileExists = TRUE;
+        saveData->isNewGame = FALSE;
     }
     return ret;
 }
@@ -270,82 +280,82 @@ int sub_0202746C(SAVEDATA *saveData, int a1) {
     int ret;
 
     GF_ASSERT(a1 < 2);
-    GF_ASSERT(saveData->unk_00008 == 0);
-    GF_ASSERT(saveData->unk_00004 == 1);
-    sub_02027550(saveData, a1);
+    GF_ASSERT(saveData->isNewGame == FALSE);
+    GF_ASSERT(saveData->saveFileExists == TRUE);
+    Save_PrepareForAsyncWrite(saveData, a1);
     do {
-        ret = sub_02027564(saveData);
+        ret = Save_WriteFileAsync(saveData);
     } while (ret == 0 || ret == 1);
     return ret;
 }
 
 void Sav2_InitDynamicRegion(SAVEDATA *saveData) {
-    saveData->unk_00008 = 1;
+    saveData->isNewGame = TRUE;
     saveData->sectorCleanFlag[0] = 1;
     saveData->sectorCleanFlag[1] = 1;
     Sav2_InitDynamicRegion_Internal(saveData->dynamic_region, saveData->arrayHeaders);
 }
 
-BOOL sub_020274D0(SAVEDATA *saveData) {
+BOOL Save_FlashChipIsDetected(SAVEDATA *saveData) {
     return saveData->flashChipDetected;
 }
 
-u32 sub_020274D4(SAVEDATA *saveData) {
-    return saveData->unk_0000C;
+u32 Save_GetStatusFlags(SAVEDATA *saveData) {
+    return saveData->statusFlags;
 }
 
-void sub_020274D8(SAVEDATA *saveData) {
-    saveData->unk_0000C = 0;
+void Save_ClearStatusFlags(SAVEDATA *saveData) {
+    saveData->statusFlags = 0;
 }
 
-u32 sub_020274E0(SAVEDATA *saveData) {
-    return saveData->unk_00004;
+u32 Save_FileExists(SAVEDATA *saveData) {
+    return saveData->saveFileExists;
 }
 
-static u32 sub_020274E4(SAVEDATA *saveData) {
-    return saveData->unk_00008;
+static u32 Save_IsNewGame(SAVEDATA *saveData) {
+    return saveData->isNewGame;
 }
 
-BOOL sub_020274E8(SAVEDATA *saveData) {
+BOOL Save_CheckExtraChunksExist(SAVEDATA *saveData) {
     SAVE_MISC_DATA *misc = Sav2_Misc_get(saveData);
-    return sub_0202A9D8(misc);
+    return SaveMisc_CheckExtraChunksExist(misc);
 }
 
-static void sub_020274F4(SAVEDATA *saveData) {
+static void Save_SetExtraChunksExist(SAVEDATA *saveData) {
     SAVE_MISC_DATA *misc = Sav2_Misc_get(saveData);
-    sub_0202A9C4(misc);
+    SaveMisc_SetExtraChunksExist(misc);
 }
 
-BOOL sub_02027500(SAVEDATA *saveData) {
-    return sub_020274E4(saveData) != 0 && sub_020274E0(saveData) != 0;
+BOOL Save_FileDoesNotBelongToPlayer(SAVEDATA *saveData) {
+    return Save_IsNewGame(saveData) != 0 && Save_FileExists(saveData) != 0;
 }
 
-BOOL sub_02027520(SAVEDATA *saveData) {
-    return sub_02027544(saveData) >= 6;
+BOOL Save_NumModifiedPCBoxesIsMany(SAVEDATA *saveData) {
+    return Save_CalcNumModifiedPCBoxes(saveData) >= 6;
 }
 
 void SetAllPCBoxesModified(void) {
     Save_SetAllPCBoxesModified(sSaveDataPtr);
 }
 
-static u32 sub_02027544(SAVEDATA *saveData) {
-    return PCModifiedFlags_CountModifiedBoxes(sub_02028C70(saveData));
+static u32 Save_CalcNumModifiedPCBoxes(SAVEDATA *saveData) {
+    return PCModifiedFlags_CountModifiedBoxes(Save_CalcPCBoxModifiedFlags(saveData));
 }
 
-void sub_02027550(SAVEDATA *saveData, int a1) {
-    sub_02027BDC(saveData, &saveData->async_write_man, a1);
+void Save_PrepareForAsyncWrite(SAVEDATA *saveData, int a1) {
+    Save_WriteManInit(saveData, &saveData->async_write_man, a1);
 }
 
-int sub_02027564(SAVEDATA *saveData) {
+int Save_WriteFileAsync(SAVEDATA *saveData) {
     int ret;
 
     if (saveData->async_write_man.curSector == 1) {
-        ret = sub_02028968(saveData, &saveData->async_write_man);
+        ret = HandleWriteSaveAsync_PCBoxes(saveData, &saveData->async_write_man);
     } else {
-        ret = sub_02027C18(saveData, &saveData->async_write_man);
+        ret = HandleWriteSaveAsync_NormalData(saveData, &saveData->async_write_man);
     }
     if (!(ret == 0 || ret == 1)) {
-        sub_02027CEC(saveData, &saveData->async_write_man, ret);
+        Save_WriteManFinish(saveData, &saveData->async_write_man, ret);
     }
     return ret;
 }
@@ -542,11 +552,11 @@ static int Save_GetSaveFilesStatus(SAVEDATA *saveData) {
     DebugPrn_MirrorValid(checks_sub[1].valid);
 
     if (numGood_main == 0 && numGood_sub == 0) {
-        return 0;
+        return LOAD_STATUS_NOT_EXIST;
     }
 
     if (numGood_main == 0 || numGood_sub == 0) {
-        return 3;
+        return LOAD_STATUS_TOTAL_FAIL;
     }
 
     GF_ASSERT(__newer_main != 2);
@@ -556,47 +566,47 @@ static int Save_GetSaveFilesStatus(SAVEDATA *saveData) {
             Save_RecordWhichLatestGoodSector(saveData, checks_main, checks_sub, __newer_main);
             saveData->sectorCleanFlag[0] = 0;
             saveData->sectorCleanFlag[1] = 0;
-            return 1;
+            return LOAD_STATUS_IS_GOOD;
         }
         if (checks_main[__older_main].count != checks_sub[__older_main].count) {
-            return 3;
+            return LOAD_STATUS_TOTAL_FAIL;
         }
         Save_RecordWhichLatestGoodSector(saveData, checks_main, checks_sub, __older_main);
-        return 2;
+        return LOAD_STATUS_SLOT_FAIL;
     }
     if (numGood_main == 1 && numGood_sub == 2) {
         if (checks_main[__newer_main].count == checks_sub[__newer_main].count) {
             Save_RecordWhichLatestGoodSector(saveData, checks_main, checks_sub, __newer_main);
-            return 2;
+            return LOAD_STATUS_SLOT_FAIL;
         }
-        return 3;
+        return LOAD_STATUS_TOTAL_FAIL;
     }
     if (numGood_main == 2 && numGood_sub == 1) {
         if (checks_main[__newer_main].count == checks_sub[__newer_main].count) {
             Save_RecordWhichLatestGoodSector(saveData, checks_main, checks_sub, __newer_main);
-            return 1;
+            return LOAD_STATUS_IS_GOOD;
         }
         if (__older_main == 2) {
-            return 3;
+            return LOAD_STATUS_TOTAL_FAIL;
         }
         if (checks_main[__older_main].count == checks_sub[__older_main].count) {
             Save_RecordWhichLatestGoodSector(saveData, checks_main, checks_sub, __older_main);
-            return 2;
+            return LOAD_STATUS_SLOT_FAIL;
         }
-        return 3;
+        return LOAD_STATUS_TOTAL_FAIL;
     }
     if (numGood_main == 1 && numGood_sub == 1) {
         if (newer_main == newer_sub) {
             GF_ASSERT(checks_main[newer_main].count == checks_sub[newer_sub].count);
             Save_RecordWhichLatestGoodSector(saveData, checks_main, checks_sub, newer_main);
             saveData->sectorCleanFlag[newer_main] = 0;
-            return 1;
+            return LOAD_STATUS_IS_GOOD;
         }
     }
-    return 3;
+    return LOAD_STATUS_TOTAL_FAIL;
 }
 
-static void sub_020279EC(SAVEDATA *saveData, int *err1, int *err2) {
+static void Save_CheckFrontierData(SAVEDATA *saveData, int *err1, int *err2) {
     SAVE_MISC_DATA *misc;
     int sp14;
     int sp10;
@@ -608,7 +618,7 @@ static void sub_020279EC(SAVEDATA *saveData, int *err1, int *err2) {
     misc = Sav2_Misc_get(saveData);
     *err1 = 1;
     *err2 = 1;
-    if (sub_020274E8(saveData)) {
+    if (Save_CheckExtraChunksExist(saveData)) {
         sub_0202AC38(misc, 1, &sp0C, &sp08, &sp04);
         if (sp0C != -1 || sp08 != -1) {
             FreeToHeap(sub_020284A4(saveData, 3, 1, &sp14, &sp10));
@@ -664,7 +674,7 @@ static BOOL Sav2_LoadDynamicRegion(SAVEDATA *saveData) {
     return TRUE;
 }
 
-static int Save_WriteSlot(SAVEDATA *saveData, int idx, u8 slot) {
+static int Save_WriteSlotAsync(SAVEDATA *saveData, int idx, u8 slot) {
     struct SaveSlotSpec *spec;
 
     spec = &saveData->saveSlotSpecs[idx];
@@ -672,7 +682,7 @@ static int Save_WriteSlot(SAVEDATA *saveData, int idx, u8 slot) {
     return FlashWriteChunkInternal(GetChunkOffsetFromCurrentSaveSlot(slot, spec), saveData->dynamic_region + spec->offset, spec->size - sizeof(struct SaveChunkFooter));
 }
 
-static int sub_02027BAC(SAVEDATA *saveData, int idx, u8 slot) {
+static int Save_WriteChunkFooterAsync(SAVEDATA *saveData, int idx, u8 slot) {
     struct SaveSlotSpec *spec;
     u32 size;
 
@@ -681,15 +691,16 @@ static int sub_02027BAC(SAVEDATA *saveData, int idx, u8 slot) {
     return FlashWriteChunkInternal(GetChunkOffsetFromCurrentSaveSlot(slot, spec) + size - sizeof(struct SaveChunkFooter), saveData->dynamic_region + spec->offset + size - sizeof(struct SaveChunkFooter), sizeof(struct SaveChunkFooter));
 }
 
-static void sub_02027BDC(SAVEDATA *saveData, struct AsyncWriteManager *writeMan, int a2) {
+static void Save_WriteManInit(SAVEDATA *saveData, struct AsyncWriteManager *writeMan, int a2) {
+#pragma unused(a2)
     sub_0202C714(saveData);
     sub_02031084(saveData);
 
     writeMan->state = 0;
     writeMan->state_sub = 0;
-    writeMan->unk_0 = 0;
+    writeMan->rollbackCounter = 0;
     writeMan->waitingAsync = FALSE;
-    writeMan->unk_0 = 1;
+    writeMan->rollbackCounter = 1;
     writeMan->count = saveData->saveCounter;
     saveData->saveCounter++;
     writeMan->unk_4 = 0;
@@ -698,54 +709,54 @@ static void sub_02027BDC(SAVEDATA *saveData, struct AsyncWriteManager *writeMan,
     Sys_SetSleepDisableFlag(1);
 }
 
-static int sub_02027C18(SAVEDATA *saveData, struct AsyncWriteManager *writeMan) {
-    int sp0;
+static int HandleWriteSaveAsync_NormalData(SAVEDATA *saveData, struct AsyncWriteManager *writeMan) {
+    BOOL result;
     switch (writeMan->state) {
     case 0:
-        writeMan->lockId = Save_WriteSlot(saveData, writeMan->curSector, saveData->lastGoodSector == 0);
+        writeMan->lockId = Save_WriteSlotAsync(saveData, writeMan->curSector, saveData->lastGoodSector == 0);
         writeMan->waitingAsync = TRUE;
         writeMan->state++;
         // fallthrough
     case 1:
-        if (!WaitFlashWrite(writeMan->lockId, writeMan->waitingAsync, &sp0)) {
+        if (!WaitFlashWrite(writeMan->lockId, writeMan->waitingAsync, &result)) {
             break;
         }
         writeMan->waitingAsync = FALSE;
-        if (!sp0) {
-            return 3;
+        if (!result) {
+            return WRITE_STATUS_TOTAL_FAIL;
         }
         writeMan->state++;
         if (writeMan->curSector + 1 == writeMan->numSectors) {
-            return 1;
+            return WRITE_STATUS_NEXT;
         }
         // fallthrough
     case 2:
-        writeMan->lockId = sub_02027BAC(saveData, writeMan->curSector, saveData->lastGoodSector == 0);
+        writeMan->lockId = Save_WriteChunkFooterAsync(saveData, writeMan->curSector, saveData->lastGoodSector == 0);
         writeMan->waitingAsync = TRUE;
         writeMan->state++;
         // fallthrough
     case 3:
-        if (!WaitFlashWrite(writeMan->lockId, writeMan->waitingAsync, &sp0)) {
+        if (!WaitFlashWrite(writeMan->lockId, writeMan->waitingAsync, &result)) {
             break;
         }
         writeMan->waitingAsync = FALSE;
-        if (!sp0) {
-            return 3;
+        if (!result) {
+            return WRITE_STATUS_TOTAL_FAIL;
         }
         if (++writeMan->curSector == writeMan->numSectors) {
-            return 2;
+            return WRITE_STATUS_SUCCESS;
         }
         writeMan->state = 0;
         break;
     }
-    return 0;
+    return WRITE_STATUS_CONTINUE;
 }
 
-static void sub_02027CEC(SAVEDATA *saveData, struct AsyncWriteManager *writeMan, int a2) {
+static void Save_WriteManFinish(SAVEDATA *saveData, struct AsyncWriteManager *writeMan, int a2) {
     saveData->numModifiedBoxes = 0;
-    saveData->unk_23306 = 0;
+    saveData->nextBoxToWrite = 0;
     if (a2 == 3) {
-        if (writeMan->unk_0) {
+        if (writeMan->rollbackCounter) {
             saveData->saveCounter = writeMan->count;
         }
     } else {
@@ -754,14 +765,14 @@ static void sub_02027CEC(SAVEDATA *saveData, struct AsyncWriteManager *writeMan,
         Save_ResetPCBoxModifiedFlags(saveData);
         saveData->sectorCleanFlag[saveData->lastGoodSector == 0] = 0;
         saveData->lastGoodSector = saveData->lastGoodSector == 0;
-        saveData->unk_00004 = 1;
-        saveData->unk_00008 = 0;
+        saveData->saveFileExists = TRUE;
+        saveData->isNewGame = FALSE;
     }
     Sys_ClearSleepDisableFlag(1);
 }
 
 static void CancelAsyncSave(SAVEDATA *saveData, struct AsyncWriteManager *writeMan) {
-    if (writeMan->unk_0) {
+    if (writeMan->rollbackCounter) {
         saveData->saveCounter = writeMan->count;
     }
     if (!CARD_TryWaitBackupAsync()) {
@@ -775,19 +786,19 @@ static void CancelAsyncSave(SAVEDATA *saveData, struct AsyncWriteManager *writeM
     Sys_ClearSleepDisableFlag(1);
 }
 
-static int sub_02027DB4(SAVEDATA *saveData) {
-    struct AsyncWriteManager sp0;
+static int _NowWriteFlash(SAVEDATA *saveData) {
+    struct AsyncWriteManager writeManager;
     int ret;
 
-    sub_02027BDC(saveData, &sp0, 2);
+    Save_WriteManInit(saveData, &writeManager, 2);
     do {
-        if (sp0.curSector != 1) {
-            ret = sub_02027C18(saveData, &sp0);
+        if (writeManager.curSector != 1) {
+            ret = HandleWriteSaveAsync_NormalData(saveData, &writeManager);
         } else {
-            ret = sub_02028968(saveData, &sp0);
+            ret = HandleWriteSaveAsync_PCBoxes(saveData, &writeManager);
         }
     } while (ret == 0 || ret == 1);
-    sub_02027CEC(saveData, &sp0, ret);
+    Save_WriteManFinish(saveData, &writeManager, ret);
     return ret;
 }
 
@@ -882,14 +893,14 @@ static void Sav2_InitDynamicRegion_Internal(u8 *dynamic_region, struct SavArrayH
     }
 }
 
-void sub_02027FFC(SAVEDATA *saveData) {
+void Save_WipeExtraChunks(SAVEDATA *saveData) {
     const struct ExtraSaveChunkHeader *chunkHeaders;
     int i;
     void *data;
     int status;
 
     chunkHeaders = gExtraSaveChunkHeaders;
-    if (sub_020274E8(saveData) == 1) {
+    if (Save_CheckExtraChunksExist(saveData) == 1) {
         return;
     }
 
@@ -904,7 +915,7 @@ void sub_02027FFC(SAVEDATA *saveData) {
         }
     }
 
-    sub_020274F4(saveData);
+    Save_SetExtraChunksExist(saveData);
 }
 
 static void CreateChunkFooter(SAVEDATA *saveData, void *data, int idx, u32 size) {
@@ -1283,16 +1294,16 @@ void SaveSubstruct_UpdateCRC(int idx) {
     data_u16[size / 2] = crc;
 }
 
-static int sub_02028968(SAVEDATA *saveData, struct AsyncWriteManager *writeMan) {
+static int HandleWriteSaveAsync_PCBoxes(SAVEDATA *saveData, struct AsyncWriteManager *writeMan) {
     u32 r7;
     int r0;
     int sp0;
     void *data;
     switch (writeMan->state) {
     case 0:
-        saveData->newBoxModifiedFlags = sub_02028C70(saveData);
+        saveData->newBoxModifiedFlags = Save_CalcPCBoxModifiedFlags(saveData);
         saveData->numModifiedBoxes = PCModifiedFlags_CountModifiedBoxes(saveData->newBoxModifiedFlags);
-        saveData->unk_23306 = 0;
+        saveData->nextBoxToWrite = 0;
         r7 = PCStorage_GetSizeOfBox() * PCStorage_GetNumBoxes();
         saveData->pcStorageCRC = GF_CalcCRC16(SavArray_get(saveData, SAVE_PCSTORAGE), r7);
         if (saveData->numModifiedBoxes == 0) {
@@ -1311,19 +1322,19 @@ static int sub_02028968(SAVEDATA *saveData, struct AsyncWriteManager *writeMan) 
         writeMan->state++;
         // fallthrough
     case 1:
-        r0 = sub_02028AB4(saveData, writeMan);
+        r0 = Save_WritePCBoxes(saveData, writeMan);
         if (r0 == 0) {
-            return 3;
+            return WRITE_STATUS_TOTAL_FAIL;
         }
         if (r0 == 1) {
             writeMan->state++;
             if (writeMan->curSector + 1 == writeMan->numSectors) {
-                return 1;
+                return WRITE_STATUS_NEXT;
             }
         }
         break;
     case 2:
-        writeMan->lockId = sub_02027BAC(saveData, writeMan->curSector, saveData->lastGoodSector == 0);
+        writeMan->lockId = Save_WriteChunkFooterAsync(saveData, writeMan->curSector, saveData->lastGoodSector == 0);
         writeMan->waitingAsync = 1;
         writeMan->state++;
         // fallthrough
@@ -1331,55 +1342,55 @@ static int sub_02028968(SAVEDATA *saveData, struct AsyncWriteManager *writeMan) 
         if (WaitFlashWrite(writeMan->lockId, writeMan->waitingAsync, &sp0)) {
             writeMan->waitingAsync = 0;
             if (!sp0) {
-                return 3;
+                return WRITE_STATUS_TOTAL_FAIL;
             }
             writeMan->curSector++;
             if (writeMan->curSector == writeMan->numSectors) {
-                return 2;
+                return WRITE_STATUS_SUCCESS;
             }
             writeMan->state = 0;
         }
         break;
     }
-    return 0;
+    return WRITE_STATUS_CONTINUE;
 }
 
-static int sub_02028AB4(SAVEDATA *saveData, struct AsyncWriteManager *writeMan) {
-    int sp0;
+static int Save_WritePCBoxes(SAVEDATA *saveData, struct AsyncWriteManager *writeMan) {
+    int write_ok;
 
     switch (writeMan->state_sub) {
     case 0:
-        if (saveData->unk_23306 >= saveData->numModifiedBoxes) {
+        if (saveData->nextBoxToWrite >= saveData->numModifiedBoxes) {
             writeMan->state_sub = 3;
         } else {
             writeMan->state_sub++;
         }
         break;
     case 1:
-        writeMan->lockId = sub_02028BA8(saveData, &saveData->saveSlotSpecs[writeMan->curSector], saveData->lastGoodSector == 0);
+        writeMan->lockId = Save_WriteNextPCBox(saveData, &saveData->saveSlotSpecs[writeMan->curSector], saveData->lastGoodSector == 0);
         writeMan->waitingAsync = 1;
         writeMan->state_sub++;
         // fallthrough
     case 2:
-        if (WaitFlashWrite(writeMan->lockId, writeMan->waitingAsync, &sp0)) {
+        if (WaitFlashWrite(writeMan->lockId, writeMan->waitingAsync, &write_ok)) {
             writeMan->waitingAsync = 0;
-            if (!sp0) {
+            if (!write_ok) {
                 return 0;
             }
-            saveData->unk_23306++;
+            saveData->nextBoxToWrite++;
             writeMan->state_sub = 0;
         }
         break;
     case 3:
-        writeMan->lockId = sub_02028BF8(saveData, &saveData->saveSlotSpecs[writeMan->curSector], saveData->lastGoodSector == 0);
+        writeMan->lockId = Save_WritePCFooter(saveData, &saveData->saveSlotSpecs[writeMan->curSector], saveData->lastGoodSector == 0);
         writeMan->waitingAsync = 1;
         writeMan->state_sub++;
         // fallthrough
     case 4:
-        if (WaitFlashWrite(writeMan->lockId, writeMan->waitingAsync, &sp0)) {
+        if (WaitFlashWrite(writeMan->lockId, writeMan->waitingAsync, &write_ok)) {
             writeMan->waitingAsync = 0;
             writeMan->state_sub = 0;
-            if (!sp0) {
+            if (!write_ok) {
                 return 0;
             }
             return 1;
@@ -1389,42 +1400,42 @@ static int sub_02028AB4(SAVEDATA *saveData, struct AsyncWriteManager *writeMan) 
     return 2;
 }
 
-static int sub_02028BA8(SAVEDATA *saveData, struct SaveSlotSpec *spec, u8 a2) {
+static int Save_WriteNextPCBox(SAVEDATA *saveData, struct SaveSlotSpec *spec, u8 slot) {
     u32 boxno;
     u32 box_size;
     u32 offset;
 
     box_size = PCStorage_GetSizeOfBox();
-    offset = GetChunkOffsetFromCurrentSaveSlot(a2, spec);
-    boxno = PCModifiedFlags_GetIndexOfNthModifiedBox(saveData->newBoxModifiedFlags, saveData->unk_23306);
+    offset = GetChunkOffsetFromCurrentSaveSlot(slot, spec);
+    boxno = PCModifiedFlags_GetIndexOfNthModifiedBox(saveData->newBoxModifiedFlags, saveData->nextBoxToWrite);
     GF_ASSERT(boxno != 0xFF);
     return FlashWriteChunkInternal(offset + box_size * boxno, saveData->dynamic_region + spec->offset + box_size * boxno, box_size);
 }
 
-static int sub_02028BF8(SAVEDATA *saveData, struct SaveSlotSpec *spec, u8 a2) {
+static int Save_WritePCFooter(SAVEDATA *saveData, struct SaveSlotSpec *spec, u8 slot) {
     u32 sector_size;
     struct SaveChunkFooter *footer;
     u32 spec_offset;
-    void *sp8;
+    void *dynamic_region_ptr;
     u32 offset;
     void *data;
     u32 pc_size;
     u16 crc;
 
     pc_size = PCStorage_GetSizeOfBox() * PCStorage_GetNumBoxes();
-    offset = GetChunkOffsetFromCurrentSaveSlot(a2, spec);
+    offset = GetChunkOffsetFromCurrentSaveSlot(slot, spec);
     data = saveData->dynamic_region + spec->offset;
     sector_size = spec->size - sizeof(struct SaveChunkFooter);
     GF_ASSERT(sector_size != 0);
-    sp8 = saveData->dynamic_region;
+    dynamic_region_ptr = saveData->dynamic_region;
     spec_offset = spec->offset;
-    footer = GetSaveSectorFooterPtr(saveData, sp8, 1);
-    crc = SavArray_CalcCRC16MinusFooter(saveData, (u8 *)sp8 + spec_offset, spec->size);
+    footer = GetSaveSectorFooterPtr(saveData, dynamic_region_ptr, 1);
+    crc = SavArray_CalcCRC16MinusFooter(saveData, (u8 *)dynamic_region_ptr + spec_offset, spec->size);
     GF_ASSERT(crc == footer->crc);
     return FlashWriteChunkInternal(offset + pc_size, data + pc_size, sector_size - pc_size);
 }
 
-static u32 sub_02028C70(SAVEDATA *saveData) {
+static u32 Save_CalcPCBoxModifiedFlags(SAVEDATA *saveData) {
     u32 ret;
 
     ret = Save_GetPCBoxModifiedFlags(saveData);

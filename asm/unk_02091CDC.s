@@ -8,8 +8,8 @@
 
 	.text
 
-	thumb_func_start sub_02091CDC
-sub_02091CDC: ; 0x02091CDC
+	thumb_func_start App_DeleteSave_Init
+App_DeleteSave_Init: ; 0x02091CDC
 	push {r3, r4, r5, lr}
 	mov r2, #2
 	add r5, r0, #0
@@ -36,10 +36,10 @@ sub_02091CDC: ; 0x02091CDC
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02091CDC
+	thumb_func_end App_DeleteSave_Init
 
-	thumb_func_start sub_02091D18
-sub_02091D18: ; 0x02091D18
+	thumb_func_start App_DeleteSave_Exec
+App_DeleteSave_Exec: ; 0x02091D18
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r5, r1, #0
@@ -162,10 +162,10 @@ _02091E20:
 _02091E28: .word 0xFFFFE0FF
 _02091E2C: .word 0x04001000
 _02091E30: .word sub_02091E54
-	thumb_func_end sub_02091D18
+	thumb_func_end App_DeleteSave_Exec
 
-	thumb_func_start sub_02091E34
-sub_02091E34: ; 0x02091E34
+	thumb_func_start App_DeleteSave_Exit
+App_DeleteSave_Exit: ; 0x02091E34
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -178,7 +178,7 @@ sub_02091E34: ; 0x02091E34
 	bl OS_ResetSystem
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02091E34
+	thumb_func_end App_DeleteSave_Exit
 
 	thumb_func_start sub_02091E54
 sub_02091E54: ; 0x02091E54
@@ -475,7 +475,7 @@ _02092090:
 	b _020920CC
 _020920B0:
 	ldr r0, [r4, #0x30]
-	bl sub_020272F4
+	bl Save_DeleteAllData
 	ldr r0, [r4, #0x34]
 	bl sub_0200F450
 	mov r0, #6
@@ -617,4 +617,4 @@ _021081E4:
 
 	.public _0210820C
 _0210820C:
-	.word sub_02091CDC, sub_02091D18, sub_02091E34, 0xFFFFFFFF
+	.word App_DeleteSave_Init, App_DeleteSave_Exec, App_DeleteSave_Exit, 0xFFFFFFFF

@@ -298,7 +298,7 @@ _0202FDBA:
 	bne _0202FDE8
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_02027550
+	bl Save_PrepareForAsyncWrite
 	ldrh r0, [r4]
 	add r0, r0, #1
 	strh r0, [r4]
@@ -310,7 +310,7 @@ _0202FDE8:
 	add r0, r6, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _0202FDF2:
-	bl sub_02027564
+	bl Save_WriteFileAsync
 	add r5, r0, #0
 	sub r0, r5, #2
 	cmp r0, #1
@@ -780,7 +780,7 @@ sub_02030154: ; 0x02030154
 	add r5, r1, #0
 	add r4, #0xe8
 	add r5, #0x84
-	bl sub_020274E8
+	bl Save_CheckExtraChunksExist
 	cmp r0, #0
 	bne _0203016A
 	mov r0, #1

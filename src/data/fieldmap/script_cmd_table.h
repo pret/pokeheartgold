@@ -253,8 +253,8 @@ extern BOOL ScrCmd_249(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_250(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CatchingTutorial(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_252(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_253(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_254(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetSaveFileState(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_SaveGameNormal(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_255(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_256(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_257(SCRIPTCONTEXT *ctx);
@@ -512,8 +512,8 @@ extern BOOL ScrCmd_508(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_509(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_510(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_511(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_512(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_513(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PlayerMovementSavingSet(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PlayerMovementSavingClear(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_HallOfFameAnim(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_AddSpecialGameStat(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferFashionName(SCRIPTCONTEXT *ctx);
@@ -593,8 +593,8 @@ extern BOOL ScrCmd_WildBattle(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetTrcardStars(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_591(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_592(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_593(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_594(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_ShowSaveStats(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_HideSaveStats(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_595(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_596(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_597(SCRIPTCONTEXT *ctx);
@@ -641,7 +641,7 @@ extern BOOL ScrCmd_637(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_638(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_639(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_640(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_641(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_SaveWipeExtraChunks(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_642(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_643(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_644(SCRIPTCONTEXT *ctx);
@@ -1108,8 +1108,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_250,
     ScrCmd_CatchingTutorial,
     ScrCmd_252,
-    ScrCmd_253,
-    ScrCmd_254,
+    ScrCmd_GetSaveFileState,
+    ScrCmd_SaveGameNormal,
     ScrCmd_255,
     ScrCmd_256,
     ScrCmd_257,
@@ -1367,8 +1367,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_509,
     ScrCmd_510,
     ScrCmd_511,
-    ScrCmd_512,
-    ScrCmd_513,
+    ScrCmd_PlayerMovementSavingSet,
+    ScrCmd_PlayerMovementSavingClear,
     ScrCmd_HallOfFameAnim,
     ScrCmd_AddSpecialGameStat,
     ScrCmd_BufferFashionName,
@@ -1448,8 +1448,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_GetTrcardStars,
     ScrCmd_591,
     ScrCmd_592,
-    ScrCmd_593,
-    ScrCmd_594,
+    ScrCmd_ShowSaveStats,
+    ScrCmd_HideSaveStats,
     ScrCmd_595,
     ScrCmd_596,
     ScrCmd_597,
@@ -1496,7 +1496,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_638,
     ScrCmd_639,
     ScrCmd_640,
-    ScrCmd_641,
+    ScrCmd_SaveWipeExtraChunks,
     ScrCmd_642,
     ScrCmd_643,
     ScrCmd_644,

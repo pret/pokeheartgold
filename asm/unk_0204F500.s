@@ -112,7 +112,7 @@ ScrCmd_BufferBattleHallStreak: ; 0x0204F500
 	str r0, [sp, #0x2c]
 	ldr r0, [r7, #0xc]
 	mov r4, #0
-	bl sub_020274E8
+	bl Save_CheckExtraChunksExist
 	cmp r0, #0
 	bne _0204F580
 	ldr r1, [sp, #0x10]
@@ -305,7 +305,7 @@ ScrCmd_BattleHallCountUsedSpecies: ; 0x0204F6D0
 	mov r0, #1
 	str r0, [sp, #8]
 	ldr r0, [r5, #0xc]
-	bl sub_020274E8
+	bl Save_CheckExtraChunksExist
 	cmp r0, #0
 	bne _0204F708
 	ldr r1, [sp]
@@ -390,7 +390,7 @@ ScrCmd_BattleHallGetTotalStreak: ; 0x0204F778
 	str r0, [sp, #4]
 	ldr r0, [r6, #0xc]
 	mov r4, #0
-	bl sub_020274E8
+	bl Save_CheckExtraChunksExist
 	cmp r0, #0
 	bne _0204F7AE
 	ldr r1, [sp]
