@@ -10,16 +10,6 @@
 
 #define SAVE_CHUNK_MAGIC 0x20060623
 
-#define LOAD_STATUS_NOT_EXIST       0
-#define LOAD_STATUS_IS_GOOD         1
-#define LOAD_STATUS_SLOT_FAIL       2
-#define LOAD_STATUS_TOTAL_FAIL      3
-
-#define WRITE_STATUS_CONTINUE       0
-#define WRITE_STATUS_NEXT           1
-#define WRITE_STATUS_SUCCESS        2
-#define WRITE_STATUS_TOTAL_FAIL     3
-
 struct SavArrayHeader {
     int id;
     u32 size;
@@ -100,7 +90,7 @@ static void Save_SetExtraChunksExist(SAVEDATA *saveData);
 static u32 Save_CalcNumModifiedPCBoxes(SAVEDATA *saveData);
 static void SaveFooterDebugPrn(struct SaveChunkFooter *footer);
 static void DebugPrn_MirrorValid(BOOL unk);
-static void SaveSlotCheck_InitDummy(struct SaveSlotCheck *unk);
+static void SaveSlotCheck_InitDummy(struct SaveSlotCheck *check);
 static u16 SavArray_CalcCRC16MinusFooter(SAVEDATA *saveData, const void *data, u32 size);
 static u32 GetChunkOffsetFromCurrentSaveSlot(u32 slot, struct SaveSlotSpec *spec);
 static struct SaveChunkFooter *GetSaveSectorFooterPtr(SAVEDATA *saveData, void *data, int idx);
@@ -258,7 +248,7 @@ int SaveGameNormal(SAVEDATA *saveData) {
     int ret;
 
     if (!saveData->flashChipDetected) {
-        return 3;
+        return WRITE_STATUS_TOTAL_FAIL;
     }
     if (saveData->isNewGame) {
         Sys_SetSleepDisableFlag(1);
@@ -269,14 +259,14 @@ int SaveGameNormal(SAVEDATA *saveData) {
         Sys_ClearSleepDisableFlag(1);
     }
     ret = _NowWriteFlash(saveData);
-    if (ret == 2) {
+    if (ret == WRITE_STATUS_SUCCESS) {
         saveData->saveFileExists = TRUE;
         saveData->isNewGame = FALSE;
     }
     return ret;
 }
 
-int sub_0202746C(SAVEDATA *saveData, int a1) {
+int Save_NowWriteFile_AfterMGInit(SAVEDATA *saveData, int a1) {
     int ret;
 
     GF_ASSERT(a1 < 2);
@@ -285,7 +275,7 @@ int sub_0202746C(SAVEDATA *saveData, int a1) {
     Save_PrepareForAsyncWrite(saveData, a1);
     do {
         ret = Save_WriteFileAsync(saveData);
-    } while (ret == 0 || ret == 1);
+    } while (ret == WRITE_STATUS_CONTINUE || ret == WRITE_STATUS_NEXT);
     return ret;
 }
 
@@ -354,7 +344,7 @@ int Save_WriteFileAsync(SAVEDATA *saveData) {
     } else {
         ret = HandleWriteSaveAsync_NormalData(saveData, &saveData->async_write_man);
     }
-    if (!(ret == 0 || ret == 1)) {
+    if (!(ret == WRITE_STATUS_CONTINUE || ret == WRITE_STATUS_NEXT)) {
         Save_WriteManFinish(saveData, &saveData->async_write_man, ret);
     }
     return ret;
@@ -372,9 +362,9 @@ static void DebugPrn_MirrorValid(BOOL unk) {
 #pragma unused(unk)
 }
 
-static void SaveSlotCheck_InitDummy(struct SaveSlotCheck *unk) {
-    unk->valid = FALSE;
-    unk->count = 0;
+static void SaveSlotCheck_InitDummy(struct SaveSlotCheck *check) {
+    check->valid = FALSE;
+    check->count = 0;
 }
 
 u16 SavArray_CalcCRC16(SAVEDATA *saveData, const void *data, u32 size) {
@@ -797,7 +787,7 @@ static int _NowWriteFlash(SAVEDATA *saveData) {
         } else {
             ret = HandleWriteSaveAsync_PCBoxes(saveData, &writeManager);
         }
-    } while (ret == 0 || ret == 1);
+    } while (ret == WRITE_STATUS_CONTINUE || ret == WRITE_STATUS_NEXT);
     Save_WriteManFinish(saveData, &writeManager, ret);
     return ret;
 }

@@ -17577,7 +17577,7 @@ ov74_0222FD98: ; 0x0222FD98
 	bl Save_MysteryGift_init
 	add r0, r7, #0
 	mov r1, #0
-	bl sub_0202746C
+	bl Save_NowWriteFile_AfterMGInit
 	mov r0, #0
 	bl OS_ResetSystem
 _0222FDCC:

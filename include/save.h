@@ -4,6 +4,16 @@
 #include "heap.h"
 #include "constants/save_arrays.h"
 
+#define LOAD_STATUS_NOT_EXIST       0
+#define LOAD_STATUS_IS_GOOD         1
+#define LOAD_STATUS_SLOT_FAIL       2
+#define LOAD_STATUS_TOTAL_FAIL      3
+
+#define WRITE_STATUS_CONTINUE       0
+#define WRITE_STATUS_NEXT           1
+#define WRITE_STATUS_SUCCESS        2
+#define WRITE_STATUS_TOTAL_FAIL     3
+
 typedef struct SaveBlock2 SAVEDATA;
 
 SAVEDATA *SaveBlock2_new(void);
@@ -13,7 +23,7 @@ const void *SavArray_const_get(const SAVEDATA *saveData, int id);
 BOOL Save_DeleteAllData(SAVEDATA *saveData);
 BOOL sub_020273B0(SAVEDATA *saveData);
 int SaveGameNormal(SAVEDATA *saveData);
-int sub_0202746C(SAVEDATA *saveData, int a1);
+int Save_NowWriteFile_AfterMGInit(SAVEDATA *saveData, int a1);
 void Sav2_InitDynamicRegion(SAVEDATA *saveData);
 BOOL Save_FlashChipIsDetected(SAVEDATA *saveData);
 u32 Save_GetStatusFlags(SAVEDATA *saveData);

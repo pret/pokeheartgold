@@ -27205,7 +27205,7 @@
 .public Save_DeleteAllData
 .public sub_020273B0
 .public SaveGameNormal
-.public sub_0202746C
+.public Save_NowWriteFile_AfterMGInit
 .public Save_FlashChipIsDetected
 .public Save_GetStatusFlags
 .public Save_ClearStatusFlags
