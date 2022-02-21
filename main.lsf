@@ -156,6 +156,7 @@ Static main
 	Object asm/unk_0203E348.o
 	Object src/script.o
 	Object src/fieldmap.o
+	Object src/scrcmd_c.o
 	Object asm/scrcmd.o
 	Object asm/scrcmd_2.o
 	Object asm/scrcmd_3.o
@@ -169,7 +170,7 @@ Static main
 	Object asm/scrcmd_11.o
 	Object asm/scrcmd_12.o
 	Object src/scrcmd_money.o
-	Object asm/scrcmd_14.o
+	Object src/scrcmd_daycare.o
 	Object asm/scrcmd_15.o
 	Object asm/scrcmd_16.o
 	Object asm/scrcmd_17.o

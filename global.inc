@@ -2569,7 +2569,7 @@
 .public ScrCmd_RestartCurrentScript
 .public ScrCmd_Return
 .public ScrCmd_RunScript
-.public ScrCmd_RunScriptWait
+.public ScrCmd_CallStd
 .public ScrCmd_SetFlag
 .public ScrCmd_SetFlagVar
 .public ScrCmd_SetOrCopyVar
