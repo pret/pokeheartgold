@@ -216,23 +216,11 @@ _028E:
 	end
 
 scr_seq_T11R0601_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0535_T11R0601_00010
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0535_T11R0601_00010
 	end
 
 scr_seq_T11R0601_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0535_T11R0601_00011
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0535_T11R0601_00011
 	end
 
 scr_seq_T11R0601_008:

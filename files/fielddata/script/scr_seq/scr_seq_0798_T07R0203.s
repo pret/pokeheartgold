@@ -205,33 +205,15 @@ _02A7:
 	end
 
 scr_seq_T07R0203_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0503_T07R0203_00004
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0503_T07R0203_00004
 	end
 
 scr_seq_T07R0203_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0503_T07R0203_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0503_T07R0203_00005
 	end
 
 scr_seq_T07R0203_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0503_T07R0203_00006
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0503_T07R0203_00006
 	end
 
 scr_seq_T07R0203_004:
@@ -280,12 +262,6 @@ scr_seq_T07R0203_007:
 	end
 
 scr_seq_T07R0203_012:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0503_T07R0203_00021
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0503_T07R0203_00021
 	end
 	.balign 4, 0

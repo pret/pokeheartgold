@@ -293,48 +293,24 @@ _03D8:
 	step 3, 1
 	step_end
 scr_seq_T11R0802_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0541_T11R0802_00015
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0541_T11R0802_00015
 	end
 
 scr_seq_T11R0802_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0541_T11R0802_00014
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0541_T11R0802_00014
 	end
 
 scr_seq_T11R0802_006:
 	goto_if_set FLAG_UNK_2FB, _0431
 	compare VAR_UNK_40FF, 2
 	goto_if_eq _0433
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0541_T11R0802_00016
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0541_T11R0802_00016
 	end
 
 _0431:
 	end
 
 _0433:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0541_T11R0802_00017
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0541_T11R0802_00017
 	end
 	.balign 4, 0

@@ -56,12 +56,6 @@ _008C:
 	end
 
 scr_seq_T25R0201_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0584_T25R0201_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0584_T25R0201_00005
 	end
 	.balign 4, 0

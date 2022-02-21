@@ -136,13 +136,7 @@ _01A4:
 	step 0, 1
 	step_end
 scr_seq_R43R0201_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0403_R43R0201_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0403_R43R0201_00003
 	end
 
 scr_seq_R43R0201_003:

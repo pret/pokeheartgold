@@ -270,73 +270,31 @@ _03BE:
 	end
 
 scr_seq_T11_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0529_T11_00000
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0529_T11_00000
 	end
 
 scr_seq_T11_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0529_T11_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0529_T11_00001
 	end
 
 scr_seq_T11_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0529_T11_00004
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0529_T11_00004
 	end
 
 scr_seq_T11_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0529_T11_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0529_T11_00005
 	end
 
 scr_seq_T11_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0529_T11_00006
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0529_T11_00006
 	end
 
 scr_seq_T11_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0529_T11_00007
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0529_T11_00007
 	end
 
 scr_seq_T11_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0529_T11_00008
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0529_T11_00008
 	end
 
 scr_seq_T11_008:

@@ -113,13 +113,7 @@ scr_seq_T25R0601_000:
 	check_badge 2, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 1
 	goto_if_eq _0185
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0589_T25R0601_00000
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0589_T25R0601_00000
 	end
 
 _0185:

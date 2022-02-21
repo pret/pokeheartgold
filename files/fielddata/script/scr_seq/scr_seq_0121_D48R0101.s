@@ -188,23 +188,11 @@ _0215:
 	.byte 0x24, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 	.byte 0x0c, 0x00, 0x02, 0x00, 0xfe, 0x00, 0x00, 0x00
 scr_seq_D48R0101_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0136_D48R0101_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0136_D48R0101_00005
 	end
 
 scr_seq_D48R0101_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0136_D48R0101_00006
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0136_D48R0101_00006
 	end
 
 scr_seq_D48R0101_003:

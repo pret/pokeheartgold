@@ -160,13 +160,7 @@ _01F0:
 	step 34, 1
 	step_end
 scr_seq_T27_013:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0612_T27_00019
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0612_T27_00019
 	end
 
 scr_seq_T27_014:
@@ -395,22 +389,10 @@ _04A8:
 	end
 
 scr_seq_T27_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0612_T27_00010
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0612_T27_00010
 	end
 
 scr_seq_T27_011:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0612_T27_00004
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0612_T27_00004
 	end
 	.balign 4, 0

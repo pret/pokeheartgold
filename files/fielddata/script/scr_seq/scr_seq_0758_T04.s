@@ -58,23 +58,11 @@ _0093:
 	end
 
 scr_seq_T04_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0467_T04_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0467_T04_00002
 	end
 
 scr_seq_T04_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0467_T04_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0467_T04_00005
 	end
 
 scr_seq_T04_003:
@@ -131,13 +119,7 @@ scr_seq_T04_005:
 	end
 
 scr_seq_T04_013:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0467_T04_00012
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0467_T04_00012
 	end
 
 scr_seq_T04_006:

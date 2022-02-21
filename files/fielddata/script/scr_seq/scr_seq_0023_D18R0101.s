@@ -103,13 +103,7 @@ scr_seq_D18R0101_000:
 	end
 
 scr_seq_D18R0101_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0060_D18R0101_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0060_D18R0101_00003
 	end
 	.byte 0x00, 0x00, 0x00
 
@@ -119,12 +113,6 @@ _0158:
 	step 14, 3
 	step_end
 scr_seq_D18R0101_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0060_D18R0101_00004
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0060_D18R0101_00004
 	end
 	.balign 4, 0

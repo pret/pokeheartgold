@@ -25,43 +25,19 @@ scr_seq_T07R0103_000:
 	end
 
 scr_seq_T07R0103_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0496_T07R0103_00000
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0496_T07R0103_00000
 	end
 
 scr_seq_T07R0103_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0496_T07R0103_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0496_T07R0103_00001
 	end
 
 scr_seq_T07R0103_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0496_T07R0103_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0496_T07R0103_00002
 	end
 
 scr_seq_T07R0103_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0496_T07R0103_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0496_T07R0103_00003
 	end
 
 scr_seq_T07R0103_005:

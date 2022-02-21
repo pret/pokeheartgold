@@ -10,13 +10,7 @@
 	scrdef_end
 
 scr_seq_R05_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0329_R05_00000
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0329_R05_00000
 	end
 
 scr_seq_R05_001:

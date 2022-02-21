@@ -14,12 +14,6 @@ scr_seq_T07R0204_001:
 	end
 
 scr_seq_T07R0204_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0504_T07R0204_00000
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0504_T07R0204_00000
 	end
 	.balign 4, 0

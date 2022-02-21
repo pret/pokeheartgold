@@ -17,63 +17,27 @@
 	scrdef_end
 
 scr_seq_R10R0201_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0344_R10R0201_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0344_R10R0201_00003
 	end
 
 scr_seq_R10R0201_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0344_R10R0201_00004
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0344_R10R0201_00004
 	end
 
 scr_seq_R10R0201_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0344_R10R0201_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0344_R10R0201_00005
 	end
 
 scr_seq_R10R0201_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0344_R10R0201_00006
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0344_R10R0201_00006
 	end
 
 scr_seq_R10R0201_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0344_R10R0201_00007
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0344_R10R0201_00007
 	end
 
 scr_seq_R10R0201_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0344_R10R0201_00008
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0344_R10R0201_00008
 	end
 
 scr_seq_R10R0201_006:

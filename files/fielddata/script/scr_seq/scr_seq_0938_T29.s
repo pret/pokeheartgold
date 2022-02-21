@@ -530,63 +530,27 @@ scr_seq_T29_007:
 	.byte 0x49, 0x00, 0xdc, 0x05, 0x60, 0x00, 0x68, 0x00, 0x2d, 0x00, 0x09, 0x32, 0x00, 0x35, 0x00, 0x61
 	.byte 0x00, 0x02, 0x00
 scr_seq_T29_008:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0626_T29_00012
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0626_T29_00012
 	end
 
 scr_seq_T29_009:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0626_T29_00011
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0626_T29_00011
 	end
 	.byte 0x49, 0x00, 0xdc, 0x05, 0x60, 0x00, 0x68
 	.byte 0x00, 0x2d, 0x00, 0x00, 0x32, 0x00, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00
 scr_seq_T29_010:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0626_T29_00018
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0626_T29_00018
 	end
 
 scr_seq_T29_011:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0626_T29_00021
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0626_T29_00021
 	end
 
 scr_seq_T29_012:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0626_T29_00024
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0626_T29_00024
 	end
 
 scr_seq_T29_013:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0626_T29_00027
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0626_T29_00027
 	end
 	.balign 4, 0

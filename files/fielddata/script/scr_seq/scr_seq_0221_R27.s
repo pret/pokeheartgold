@@ -21,13 +21,7 @@ _0026:
 	end
 
 scr_seq_R27_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0369_R27_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0369_R27_00001
 	end
 
 scr_seq_R27_001:

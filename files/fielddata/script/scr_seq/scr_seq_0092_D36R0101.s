@@ -1149,23 +1149,11 @@ _1115:
 	goto _114C
 
 _1126:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0115_D36R0101_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0115_D36R0101_00002
 	end
 
 _1139:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0115_D36R0101_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0115_D36R0101_00001
 	end
 
 _114C:
@@ -1282,13 +1270,7 @@ _12C9:
 
 scr_seq_D36R0101_014:
 	play_cry SPECIES_FARFETCHD, 0
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0115_D36R0101_00004
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0115_D36R0101_00004
 	end
 
 
@@ -1657,13 +1639,7 @@ _17FD:
 	goto _1F48
 
 _1803:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0115_D36R0101_00028
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0115_D36R0101_00028
 	end
 
 _1816:

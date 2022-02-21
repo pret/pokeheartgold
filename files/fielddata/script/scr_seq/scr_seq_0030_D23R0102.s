@@ -45,33 +45,15 @@ _0083:
 	end
 
 scr_seq_D23R0102_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0066_D23R0102_00006
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0066_D23R0102_00006
 	end
 
 scr_seq_D23R0102_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0066_D23R0102_00007
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0066_D23R0102_00007
 	end
 
 scr_seq_D23R0102_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0066_D23R0102_00008
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0066_D23R0102_00008
 	end
 
 scr_seq_D23R0102_003:
@@ -104,13 +86,7 @@ _00FA:
 	end
 
 scr_seq_D23R0102_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0066_D23R0102_00000
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0066_D23R0102_00000
 	end
 
 scr_seq_D23R0102_006:

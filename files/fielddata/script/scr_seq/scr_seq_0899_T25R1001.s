@@ -13,13 +13,7 @@
 	scrdef_end
 
 scr_seq_T25R1001_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0592_T25R1001_00000
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0592_T25R1001_00000
 	end
 
 scr_seq_T25R1001_001:

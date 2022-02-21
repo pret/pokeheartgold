@@ -394,322 +394,142 @@ _0544:
 	step 14, 5
 	step_end
 scr_seq_0151_008:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00048
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00048
 	end
 
 scr_seq_0151_009:
 	goto_if_set FLAG_WON_THIS_BUG_CONTEST, _0581
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00049
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00049
 	goto _0592
 
 _0581:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00050
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00050
 _0592:
 	end
 
 scr_seq_0151_010:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00051
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00051
 	end
 
 scr_seq_0151_011:
 	goto_if_set FLAG_WON_THIS_BUG_CONTEST, _05C9
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00052
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00052
 	goto _05DA
 
 _05C9:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00053
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00053
 _05DA:
 	end
 
 scr_seq_0151_012:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00054
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00054
 	end
 
 scr_seq_0151_013:
 	goto_if_set FLAG_WON_THIS_BUG_CONTEST, _0611
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00055
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00055
 	goto _0622
 
 _0611:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00056
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00056
 _0622:
 	end
 
 scr_seq_0151_014:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00057
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00057
 	end
 
 scr_seq_0151_015:
 	goto_if_set FLAG_WON_THIS_BUG_CONTEST, _0659
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00058
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00058
 	goto _066A
 
 _0659:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00059
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00059
 _066A:
 	end
 
 scr_seq_0151_016:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00060
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00060
 	end
 
 scr_seq_0151_017:
 	goto_if_set FLAG_WON_THIS_BUG_CONTEST, _06A1
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00061
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00061
 	goto _06B2
 
 _06A1:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00062
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00062
 _06B2:
 	end
 
 scr_seq_0151_018:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00063
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00063
 	end
 
 scr_seq_0151_019:
 	goto_if_set FLAG_WON_THIS_BUG_CONTEST, _06E9
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00064
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00064
 	goto _06FA
 
 _06E9:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00065
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00065
 _06FA:
 	end
 
 scr_seq_0151_020:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00066
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00066
 	end
 
 scr_seq_0151_021:
 	goto_if_set FLAG_WON_THIS_BUG_CONTEST, _0731
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00067
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00067
 	goto _0742
 
 _0731:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00068
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00068
 _0742:
 	end
 
 scr_seq_0151_022:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00069
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00069
 	end
 
 scr_seq_0151_023:
 	goto_if_set FLAG_WON_THIS_BUG_CONTEST, _0779
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00070
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00070
 	goto _078A
 
 _0779:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00071
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00071
 _078A:
 	end
 
 scr_seq_0151_024:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00072
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00072
 	end
 
 scr_seq_0151_025:
 	goto_if_set FLAG_WON_THIS_BUG_CONTEST, _07C1
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00073
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00073
 	goto _07D2
 
 _07C1:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00074
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00074
 _07D2:
 	end
 
 scr_seq_0151_026:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00075
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00075
 	end
 
 scr_seq_0151_027:
 	goto_if_set FLAG_WON_THIS_BUG_CONTEST, _0809
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00076
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00076
 	goto _081A
 
 _0809:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0246_00077
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0246_00077
 _081A:
 	end
 

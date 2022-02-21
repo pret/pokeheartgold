@@ -1208,73 +1208,31 @@ _1404:
 	return
 
 scr_seq_D31R0201_013:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0096_D31R0201_00074
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0096_D31R0201_00074
 	end
 
 scr_seq_D31R0201_014:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0096_D31R0201_00075
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0096_D31R0201_00075
 	end
 
 scr_seq_D31R0201_015:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0096_D31R0201_00076
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0096_D31R0201_00076
 	end
 
 scr_seq_D31R0201_016:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0096_D31R0201_00077
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0096_D31R0201_00077
 	end
 
 scr_seq_D31R0201_017:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0096_D31R0201_00078
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0096_D31R0201_00078
 	end
 
 scr_seq_D31R0201_018:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0096_D31R0201_00079
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0096_D31R0201_00079
 	end
 
 scr_seq_D31R0201_019:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0096_D31R0201_00080
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0096_D31R0201_00080
 	end
 
 scr_seq_D31R0201_008:
@@ -1282,13 +1240,7 @@ scr_seq_D31R0201_008:
 
 scr_seq_D31R0201_020:
 	play_cry SPECIES_PIKACHU, 0
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0096_D31R0201_00081
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0096_D31R0201_00081
 	end
 
 _14C8:

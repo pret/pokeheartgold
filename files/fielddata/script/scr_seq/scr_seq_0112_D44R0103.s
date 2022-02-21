@@ -373,23 +373,11 @@ _0548:
 	end
 
 scr_seq_D44R0103_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0130_D44R0103_00024
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0130_D44R0103_00024
 	end
 
 scr_seq_D44R0103_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0130_D44R0103_00025
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0130_D44R0103_00025
 	end
 
 scr_seq_D44R0103_005:

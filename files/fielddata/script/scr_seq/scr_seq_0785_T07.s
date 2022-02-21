@@ -121,13 +121,7 @@ _0198:
 	end
 
 scr_seq_T07_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0491_T07_00000
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0491_T07_00000
 	end
 
 scr_seq_T07_001:
@@ -143,73 +137,31 @@ scr_seq_T07_001:
 	end
 
 scr_seq_T07_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0491_T07_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0491_T07_00002
 	end
 
 scr_seq_T07_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0491_T07_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0491_T07_00003
 	end
 
 scr_seq_T07_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0491_T07_00004
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0491_T07_00004
 	end
 
 scr_seq_T07_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0491_T07_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0491_T07_00005
 	end
 
 scr_seq_T07_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0491_T07_00006
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0491_T07_00006
 	end
 
 scr_seq_T07_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0491_T07_00007
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0491_T07_00007
 	end
 
 scr_seq_T07_008:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0491_T07_00008
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0491_T07_00008
 	end
 
 scr_seq_T07_009:
@@ -427,13 +379,7 @@ scr_seq_T07_017:
 	goto _0302
 	.byte 0x02, 0x00
 _0500:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0491_T07_00029
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0491_T07_00029
 	end
 
 scr_seq_T07_018:

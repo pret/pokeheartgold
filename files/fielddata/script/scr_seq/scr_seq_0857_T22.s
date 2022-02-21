@@ -104,13 +104,7 @@ _0104:
 	step 61, 1
 	step_end
 scr_seq_T22_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0556_T22_00026
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0556_T22_00026
 	end
 
 scr_seq_T22_001:
@@ -709,13 +703,7 @@ scr_seq_T22_002:
 	end
 
 scr_seq_T22_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0556_T22_00027
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0556_T22_00027
 	end
 
 scr_seq_T22_007:
@@ -751,42 +739,18 @@ scr_seq_T22_010:
 	end
 
 scr_seq_T22_011:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0556_T22_00005
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0556_T22_00005
 	end
 
 scr_seq_T22_012:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0556_T22_00006
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0556_T22_00006
 	end
 
 scr_seq_T22_013:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0556_T22_00007
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0556_T22_00007
 	end
 
 scr_seq_T22_014:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0556_T22_00008
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0556_T22_00008
 	end
 	.balign 4, 0

@@ -1058,23 +1058,11 @@ _1208:
 	end
 
 scr_seq_T25R1101_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0599_T25R1101_00018
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0599_T25R1101_00018
 	end
 
 scr_seq_T25R1101_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0599_T25R1101_00019
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0599_T25R1101_00019
 	end
 
 scr_seq_T25R1101_005:
@@ -1135,42 +1123,18 @@ _12DE:
 	end
 
 scr_seq_T25R1101_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0599_T25R1101_00021
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0599_T25R1101_00021
 	end
 
 scr_seq_T25R1101_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0599_T25R1101_00022
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0599_T25R1101_00022
 	end
 
 scr_seq_T25R1101_008:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0599_T25R1101_00023
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0599_T25R1101_00023
 	end
 
 scr_seq_T25R1101_009:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0599_T25R1101_00024
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0599_T25R1101_00024
 	end
 	.balign 4, 0

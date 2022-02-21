@@ -65,13 +65,7 @@ _00C3:
 	end
 
 scr_seq_T26R0701_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0611_T26R0701_00000
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0611_T26R0701_00000
 	end
 
 scr_seq_T26R0701_000:
@@ -84,23 +78,11 @@ scr_seq_T26R0701_000:
 	end
 
 scr_seq_T26R0701_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0611_T26R0701_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0611_T26R0701_00002
 	end
 
 scr_seq_T26R0701_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0611_T26R0701_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0611_T26R0701_00003
 	end
 
 scr_seq_T26R0701_003:

@@ -386,13 +386,7 @@ _0584:
 	step 63, 1
 	step_end
 scr_seq_T01R0301_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0451_T01R0301_00033
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0451_T01R0301_00033
 	end
 
 scr_seq_T01R0301_002:

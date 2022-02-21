@@ -97,12 +97,6 @@ _0118:
 	step 9, 1
 	step_end
 scr_seq_P01R0306_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0262_P01R0306_00008
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0262_P01R0306_00008
 	end
 	.balign 4, 0

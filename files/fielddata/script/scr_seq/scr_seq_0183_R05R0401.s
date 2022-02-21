@@ -32,12 +32,6 @@ _0054:
 	end
 
 scr_seq_R05R0401_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0333_R05R0401_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0333_R05R0401_00002
 	end
 	.balign 4, 0

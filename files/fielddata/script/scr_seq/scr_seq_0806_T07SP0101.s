@@ -147,12 +147,6 @@ _01D4:
 	goto _00E4
 
 scr_seq_T07SP0101_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0511_T07SP0101_00014
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0511_T07SP0101_00014
 	end
 	.balign 4, 0

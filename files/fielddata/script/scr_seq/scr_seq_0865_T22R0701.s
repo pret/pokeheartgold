@@ -26,12 +26,6 @@ _0029:
 	end
 
 scr_seq_T22R0701_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0563_T22R0701_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0563_T22R0701_00002
 	end
 	.balign 4, 0

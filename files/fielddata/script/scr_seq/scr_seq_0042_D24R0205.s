@@ -327,32 +327,14 @@ scr_seq_D24R0205_002:
 	end
 
 scr_seq_D24R0205_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0076_D24R0205_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0076_D24R0205_00002
 	end
 
 scr_seq_D24R0205_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0076_D24R0205_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0076_D24R0205_00003
 	end
 
 scr_seq_D24R0205_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0076_D24R0205_00004
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0076_D24R0205_00004
 	end
 	.balign 4, 0

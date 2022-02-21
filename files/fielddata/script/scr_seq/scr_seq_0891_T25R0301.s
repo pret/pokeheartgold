@@ -72,22 +72,10 @@ _00A3:
 	end
 
 scr_seq_T25R0301_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0585_T25R0301_00007
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0585_T25R0301_00007
 	end
 
 scr_seq_T25R0301_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0585_T25R0301_00008
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0585_T25R0301_00008
 	end
 	.balign 4, 0

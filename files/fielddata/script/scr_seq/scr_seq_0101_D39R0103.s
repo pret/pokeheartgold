@@ -33,12 +33,6 @@ _0050:
 	step 68, 1
 	step_end
 scr_seq_D39R0103_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0123_D39R0103_00000
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0123_D39R0103_00000
 	end
 	.balign 4, 0

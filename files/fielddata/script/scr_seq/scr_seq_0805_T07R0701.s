@@ -93,13 +93,7 @@ _00E0:
 	step 32, 1
 	step_end
 scr_seq_T07R0701_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0510_T07R0701_00000
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0510_T07R0701_00000
 	end
 
 scr_seq_T07R0701_006:

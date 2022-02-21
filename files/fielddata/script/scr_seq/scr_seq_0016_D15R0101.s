@@ -16,42 +16,18 @@ scr_seq_D15R0101_000:
 	end
 
 scr_seq_D15R0101_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0054_D15R0101_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0054_D15R0101_00002
 	end
 
 scr_seq_D15R0101_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0054_D15R0101_00003
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0054_D15R0101_00003
 	end
 
 scr_seq_D15R0101_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0054_D15R0101_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0054_D15R0101_00001
 	end
 
 scr_seq_D15R0101_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0054_D15R0101_00000
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0054_D15R0101_00000
 	end
 	.balign 4, 0

@@ -1701,12 +1701,6 @@ scr_seq_T20_014:
 
 scr_seq_T20_015:
 	buffer_players_name 0
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0542_T20_00012
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0542_T20_00012
 	end
 	.balign 4, 0

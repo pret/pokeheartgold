@@ -410,42 +410,18 @@ scr_seq_T24_004:
 	end
 
 scr_seq_T24_012:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0572_T24_00012
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0572_T24_00012
 	end
 
 scr_seq_T24_013:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0572_T24_00013
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0572_T24_00013
 	end
 
 scr_seq_T24_014:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0572_T24_00014
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0572_T24_00014
 	end
 
 scr_seq_T24_015:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0572_T24_00017
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0572_T24_00017
 	end
 	.balign 4, 0

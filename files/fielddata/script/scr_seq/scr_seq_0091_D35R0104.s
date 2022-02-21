@@ -135,13 +135,7 @@ _01A4:
 	step 33, 1
 	step_end
 scr_seq_D35R0104_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0114_D35R0104_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0114_D35R0104_00002
 	end
 
 scr_seq_D35R0104_002:
@@ -426,13 +420,7 @@ _056C:
 	step 14, 3
 	step_end
 scr_seq_D35R0104_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0114_D35R0104_00008
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0114_D35R0104_00008
 	setflag FLAG_UNK_0D3
 	end
 	.balign 4, 0

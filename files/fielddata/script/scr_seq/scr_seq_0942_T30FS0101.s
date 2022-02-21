@@ -34,22 +34,10 @@ scr_seq_T30FS0101_001:
 	end
 
 scr_seq_T30FS0101_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0630_T30FS0101_00000
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0630_T30FS0101_00000
 	end
 
 scr_seq_T30FS0101_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0630_T30FS0101_00001
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0630_T30FS0101_00001
 	end
 	.balign 4, 0

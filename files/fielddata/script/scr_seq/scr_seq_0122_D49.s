@@ -513,13 +513,7 @@ _06E4:
 	step 12, 1
 	step_end
 scr_seq_D49_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0137_D49_00007
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0137_D49_00007
 	end
 
 scr_seq_D49_007:
@@ -535,13 +529,7 @@ scr_seq_D49_007:
 	end
 
 scr_seq_D49_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0137_D49_00009
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0137_D49_00009
 	end
 
 scr_seq_D49_008:
@@ -613,13 +601,7 @@ scr_seq_D49_009:
 	end
 
 scr_seq_D49_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0137_D49_00017
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0137_D49_00017
 	end
 
 scr_seq_D49_010:
@@ -635,13 +617,7 @@ scr_seq_D49_010:
 	end
 
 scr_seq_D49_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0137_D49_00019
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0137_D49_00019
 	end
 
 scr_seq_D49_011:
@@ -657,13 +633,7 @@ scr_seq_D49_011:
 	end
 
 scr_seq_D49_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0137_D49_00021
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0137_D49_00021
 	end
 
 scr_seq_D49_012:
@@ -922,13 +892,7 @@ scr_seq_D49_021:
 	goto _0A1D
 	.byte 0x02, 0x00
 scr_seq_D49_022:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0137_D49_00048
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0137_D49_00048
 	end
 
 

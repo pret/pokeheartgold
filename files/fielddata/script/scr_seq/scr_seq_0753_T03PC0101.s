@@ -76,13 +76,7 @@ _00C9:
 	end
 
 scr_seq_T03PC0101_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0463_T03PC0101_00000
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0463_T03PC0101_00000
 	end
 
 scr_seq_T03PC0101_003:
@@ -98,12 +92,6 @@ scr_seq_T03PC0101_003:
 	end
 
 scr_seq_T03PC0101_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0463_T03PC0101_00002
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0463_T03PC0101_00002
 	end
 	.balign 4, 0

@@ -170,12 +170,6 @@ scr_seq_R35_004:
 	end
 
 scr_seq_R35_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0387_R35_00021
-	wait_button_or_walk_away
-	closemsg
-	releaseall
+	simple_npc_msg msg_0387_R35_00021
 	end
 	.balign 4, 0
