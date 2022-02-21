@@ -34,7 +34,7 @@ scr_seq_T25R1005_000:
 	lockall
 	faceplayer
 	callstd std_mart_intro
-	scrcmd_054
+	holdmsg
 	setvar VAR_SPECIAL_x8004, 7
 	callstd std_special_mart
 	releaseall
@@ -52,7 +52,7 @@ scr_seq_T25R1005_001:
 _0086:
 	npc_msg msg_0596_T25R1005_00017
 _0089:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -69,7 +69,7 @@ scr_seq_T25R1005_002:
 _00AF:
 	npc_msg msg_0596_T25R1005_00015
 _00B2:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -109,7 +109,7 @@ _00F6:
 	npc_trade_end
 	setflag FLAG_UNK_08D
 	npc_msg msg_0596_T25R1005_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -117,28 +117,28 @@ _00F6:
 _015A:
 	npc_trade_end
 	npc_msg msg_0596_T25R1005_00011
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0167:
 	npc_msg msg_0596_T25R1005_00012
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0172:
 	npc_msg msg_0596_T25R1005_00013
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _017D:
 	npc_msg msg_0596_T25R1005_00014
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -147,7 +147,7 @@ scr_seq_T25R1005_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0596_T25R1005_00019
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -166,7 +166,7 @@ scr_seq_T25R1005_006:
 	compare VAR_SPECIAL_RESULT, 50
 	goto_if_le _01FE
 	npc_msg msg_0596_T25R1005_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -190,7 +190,7 @@ _01FE:
 _0219:
 	npc_msg msg_0596_T25R1005_00006
 	setflag FLAG_UNK_08E
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

@@ -15,7 +15,7 @@ scr_seq_D02FS0101_001:
 	faceplayer
 	setflag FLAG_UNK_18A
 	npc_msg msg_0048_D02FS0101_00001
-	scrcmd_054
+	holdmsg
 	setvar VAR_SPECIAL_x8004, 27
 	callstd std_special_mart
 	clearflag FLAG_UNK_18A
@@ -23,6 +23,12 @@ scr_seq_D02FS0101_001:
 	end
 
 scr_seq_D02FS0101_000:
-	simple_npc_msg msg_0048_D02FS0101_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0048_D02FS0101_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

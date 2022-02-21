@@ -154,7 +154,7 @@ _01D1:
 _01DC:
 	npc_msg msg_0362_R24_00004
 _01DF:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -182,7 +182,7 @@ _0224:
 _022F:
 	npc_msg msg_0362_R24_00007
 _0232:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

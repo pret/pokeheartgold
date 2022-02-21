@@ -169,7 +169,13 @@ _0210:
 	step 14, 5
 	step_end
 scr_seq_R30_003:
-	simple_npc_msg msg_0375_R30_00013
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0375_R30_00013
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_R30_004:
@@ -218,14 +224,32 @@ scr_seq_R30_008:
 
 scr_seq_R30_009:
 	goto_if_set FLAG_GOT_POKEDEX, _02D5
-	simple_npc_msg msg_0375_R30_00002
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0375_R30_00002
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 _02D5:
-	simple_npc_msg msg_0375_R30_00003
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0375_R30_00003
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_R30_010:
-	simple_npc_msg msg_0375_R30_00004
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0375_R30_00004
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

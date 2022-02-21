@@ -45,7 +45,7 @@ _0063:
 _0097:
 	setflag FLAG_UNK_10C
 	npc_msg msg_0121_D38R0104_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -65,7 +65,7 @@ _00CC:
 	end
 
 _00D2:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

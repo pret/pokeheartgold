@@ -79,7 +79,7 @@ _010C:
 
 _0112:
 	npc_msg msg_0261_P01R0303_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -203,7 +203,7 @@ _0279:
 _02A6:
 	npc_msg msg_0261_P01R0303_00002
 _02A9:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 _02AD:
 	releaseall

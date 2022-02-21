@@ -136,7 +136,7 @@ scr_seq_D49R0107_000:
 	faceplayer
 	buffer_players_name 0
 	npc_msg msg_0143_D49R0107_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -157,14 +157,32 @@ scr_seq_D49R0107_001:
 	end
 
 scr_seq_D49R0107_002:
-	simple_npc_msg msg_0143_D49R0107_00008
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0143_D49R0107_00008
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D49R0107_003:
-	simple_npc_msg msg_0143_D49R0107_00008
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0143_D49R0107_00008
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D49R0107_004:
-	simple_npc_msg msg_0143_D49R0107_00008
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0143_D49R0107_00008
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

@@ -39,7 +39,13 @@ _0074:
 	end
 
 scr_seq_D49R0104_000:
-	simple_npc_msg msg_0140_D49R0104_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0140_D49R0104_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D49R0104_001:
@@ -48,20 +54,26 @@ scr_seq_D49R0104_001:
 	faceplayer
 	goto_if_set FLAG_UNK_0EF, _00A7
 	npc_msg msg_0140_D49R0104_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _00A7:
 	npc_msg msg_0140_D49R0104_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_D49R0104_002:
-	simple_npc_msg msg_0140_D49R0104_00003
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0140_D49R0104_00003
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D49R0104_003:
@@ -75,7 +87,7 @@ scr_seq_D49R0104_003:
 	play_cry SPECIES_RATTATA, 0
 	npc_msg msg_0140_D49R0104_00011
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -85,7 +97,13 @@ _00F0:
 	step 48, 2
 	step_end
 scr_seq_D49R0104_004:
-	simple_npc_msg msg_0140_D49R0104_00005
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0140_D49R0104_00005
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D49R0104_005:
@@ -95,7 +113,7 @@ scr_seq_D49R0104_005:
 	play_cry SPECIES_RATTATA, 0
 	npc_msg msg_0140_D49R0104_00010
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -107,7 +125,7 @@ scr_seq_D49R0104_006:
 	play_cry SPECIES_ZUBAT, 0
 	npc_msg msg_0140_D49R0104_00012
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -129,18 +147,42 @@ scr_seq_D49R0104_007:
 	end
 
 scr_seq_D49R0104_008:
-	simple_npc_msg msg_0140_D49R0104_00007
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0140_D49R0104_00007
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D49R0104_009:
-	simple_npc_msg msg_0140_D49R0104_00008
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0140_D49R0104_00008
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D49R0104_010:
-	simple_npc_msg msg_0140_D49R0104_00009
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0140_D49R0104_00009
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D49R0104_013:
-	simple_npc_msg msg_0140_D49R0104_00013
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0140_D49R0104_00013
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

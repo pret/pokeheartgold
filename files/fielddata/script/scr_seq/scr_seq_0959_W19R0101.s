@@ -16,14 +16,14 @@ scr_seq_W19R0101_000:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _002C
 	npc_msg msg_0741_W19R0101_00000
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _002C:
 	npc_msg msg_0741_W19R0101_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

@@ -133,7 +133,13 @@ scr_seq_D37R0103_000:
 	end
 
 _03C9:
-	simple_npc_msg msg_0118_D37R0103_00001
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0118_D37R0103_00001
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D37R0103_001:
@@ -206,7 +212,7 @@ scr_seq_D37R0103_002:
 	play_cry SPECIES_MACHOKE, 0
 	npc_msg msg_0118_D37R0103_00002
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

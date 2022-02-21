@@ -50,14 +50,14 @@ scr_seq_D32R0102_000:
 	compare VAR_UNK_40E5, 2
 	goto_if_eq _009E
 	npc_msg msg_0104_D32R0102_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _009E:
 	npc_msg msg_0104_D32R0102_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -109,7 +109,7 @@ _0173:
 _0183:
 	wait_movement
 	npc_msg msg_0104_D32R0102_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	setvar VAR_UNK_40E5, 1
@@ -236,7 +236,7 @@ _032A:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -244,7 +244,7 @@ _032A:
 _0364:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -252,7 +252,7 @@ _0364:
 _0378:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -328,11 +328,23 @@ _0444:
 	step 0, 1
 	step_end
 scr_seq_D32R0102_006:
-	simple_npc_msg msg_0104_D32R0102_00007
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0104_D32R0102_00007
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D32R0102_007:
-	simple_npc_msg msg_0104_D32R0102_00008
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0104_D32R0102_00008
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D32R0102_008:

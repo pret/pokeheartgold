@@ -9,6 +9,12 @@
 	scrdef_end
 
 scr_seq_T04R0101_000:
-	simple_npc_msg msg_0471_T04R0101_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0471_T04R0101_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

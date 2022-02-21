@@ -81,7 +81,7 @@ _0102:
 
 _0108:
 	npc_msg msg_0460_T03_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -143,7 +143,7 @@ _01DE:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -151,7 +151,7 @@ _01DE:
 _0218:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -159,7 +159,7 @@ _0218:
 _022C:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -195,11 +195,23 @@ _0280:
 	step 1, 1
 	step_end
 scr_seq_T03_001:
-	simple_npc_msg msg_0460_T03_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0460_T03_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T03_002:
-	simple_npc_msg msg_0460_T03_00001
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0460_T03_00001
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T03_003:
@@ -319,7 +331,7 @@ _03F4:
 _042C:
 	npc_msg msg_0460_T03_00009
 _042F:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setvar VAR_UNK_4083, 3
 	releaseall
@@ -478,6 +490,12 @@ _064D:
 	return
 
 scr_seq_T03_009:
-	simple_npc_msg msg_0460_T03_00019
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0460_T03_00019
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

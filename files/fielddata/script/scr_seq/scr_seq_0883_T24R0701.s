@@ -11,14 +11,32 @@
 	scrdef_end
 
 scr_seq_T24R0701_000:
-	simple_npc_msg msg_0579_T24R0701_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0579_T24R0701_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T24R0701_001:
-	simple_npc_msg msg_0579_T24R0701_00001
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0579_T24R0701_00001
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T24R0701_002:
-	simple_npc_msg msg_0579_T24R0701_00002
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0579_T24R0701_00002
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

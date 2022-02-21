@@ -17,7 +17,13 @@ scr_seq_T24PC0101_000:
 	end
 
 scr_seq_T24PC0101_001:
-	simple_npc_msg msg_0575_T24PC0101_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0575_T24PC0101_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T24PC0101_002:
@@ -71,7 +77,7 @@ _00E0:
 
 _00E4:
 	npc_msg msg_0575_T24PC0101_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -84,7 +90,7 @@ scr_seq_T24PC0101_003:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0115
 	npc_msg msg_0575_T24PC0101_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -92,7 +98,7 @@ scr_seq_T24PC0101_003:
 _0115:
 	buffer_players_name 0
 	npc_msg msg_0575_T24PC0101_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

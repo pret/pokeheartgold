@@ -15,7 +15,7 @@ scr_seq_R35R0101_001:
 	faceplayer
 	goto_if_set FLAG_GOT_RADIO_CARD, _0028
 	npc_msg msg_0388_R35R0101_00013
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -28,14 +28,14 @@ _0028:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _004B
 	npc_msg msg_0388_R35R0101_00015
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _004B:
 	npc_msg msg_0388_R35R0101_00016
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -70,28 +70,28 @@ _00BC:
 	goto_if_eq _0178
 	goto_if_set FLAG_UNK_0B5, _00E3
 	npc_msg msg_0388_R35R0101_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _00E3:
 	npc_msg msg_0388_R35R0101_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _00EE:
 	npc_msg msg_0388_R35R0101_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _00F9:
 	npc_msg msg_0388_R35R0101_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -111,7 +111,7 @@ _0152:
 	setvar VAR_UNK_4114, 4
 _0158:
 	npc_msg msg_0388_R35R0101_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -124,7 +124,7 @@ _0163:
 
 _016D:
 	npc_msg msg_0388_R35R0101_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -132,7 +132,7 @@ _016D:
 _0178:
 	setvar VAR_UNK_4114, 6
 	npc_msg msg_0388_R35R0101_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

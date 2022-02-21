@@ -116,29 +116,29 @@ _01F4:
 	play_fanfare SEQ_ME_TAMAGO_GET
 	npc_msg msg_0559_T22PC0101_00019
 	wait_fanfare
-	waitbutton
+	wait_button_or_walk_away
 	goto _0235
 
 _0207:
 	npc_msg msg_0559_T22PC0101_00020
-	waitbutton
+	wait_button_or_walk_away
 	goto _0235
 
 _0212:
 	npc_msg msg_0559_T22PC0101_00014
-	waitbutton
+	wait_button_or_walk_away
 	goto _0235
 
 _021D:
 	touchscreen_menu_show
 _021F:
 	npc_msg msg_0559_T22PC0101_00015
-	waitbutton
+	wait_button_or_walk_away
 	goto _0235
 
 _022A:
 	npc_msg msg_0559_T22PC0101_00016
-	waitbutton
+	wait_button_or_walk_away
 	goto _0235
 
 _0235:
@@ -210,20 +210,38 @@ _0331:
 	touchscreen_menu_show
 _0333:
 	npc_msg msg_0559_T22PC0101_00025
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_T22PC0101_001:
-	simple_npc_msg msg_0559_T22PC0101_00009
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0559_T22PC0101_00009
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T22PC0101_002:
-	simple_npc_msg msg_0559_T22PC0101_00010
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0559_T22PC0101_00010
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T22PC0101_003:
-	simple_npc_msg msg_0559_T22PC0101_00011
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0559_T22PC0101_00011
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

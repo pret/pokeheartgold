@@ -50,7 +50,7 @@ scr_seq_T11R0601_000:
 	faceplayer
 	goto_if_set FLAG_RESTORED_POWER, _00B9
 	npc_msg msg_0535_T11R0601_00000
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -60,7 +60,7 @@ _00B9:
 	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _00D7
 	npc_msg msg_0535_T11R0601_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _00E6
 
@@ -111,7 +111,7 @@ _0158:
 
 _0163:
 	npc_msg msg_0535_T11R0601_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setvar VAR_UNK_411D, 1
 	setvar VAR_UNK_411F, 1
@@ -176,14 +176,14 @@ _0234:
 _0242:
 	npc_trade_end
 	npc_msg msg_0535_T11R0601_00017
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _024F:
 	npc_msg msg_0535_T11R0601_00015
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -203,31 +203,43 @@ scr_seq_T11R0601_001:
 	faceplayer
 	goto_if_set FLAG_RESTORED_POWER, _028E
 	npc_msg msg_0535_T11R0601_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _028E:
 	npc_msg msg_0535_T11R0601_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_T11R0601_002:
-	simple_npc_msg msg_0535_T11R0601_00010
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0535_T11R0601_00010
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T11R0601_003:
-	simple_npc_msg msg_0535_T11R0601_00011
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0535_T11R0601_00011
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T11R0601_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0535_T11R0601_00018
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

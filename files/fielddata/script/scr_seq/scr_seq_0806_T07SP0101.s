@@ -74,7 +74,7 @@ _00C1:
 _00E1:
 	npc_msg msg_0511_T07SP0101_00011
 _00E4:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -116,7 +116,7 @@ _0163:
 _0179:
 	npc_msg msg_0511_T07SP0101_00008
 _017C:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -147,6 +147,12 @@ _01D4:
 	goto _00E4
 
 scr_seq_T07SP0101_001:
-	simple_npc_msg msg_0511_T07SP0101_00014
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0511_T07SP0101_00014
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

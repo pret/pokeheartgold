@@ -16,7 +16,7 @@ scr_seq_R34R0201_000:
 	faceplayer
 	goto_if_set FLAG_UNK_083, _0055
 	npc_msg msg_0386_R34R0201_00000
-	scrcmd_049
+	wait_button
 	goto_if_no_item_space ITEM_TM12, 1, _0060
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_083
@@ -24,7 +24,7 @@ scr_seq_R34R0201_000:
 
 _0055:
 	npc_msg msg_0386_R34R0201_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -42,12 +42,18 @@ scr_seq_R34R0201_001:
 	play_cry SPECIES_BUTTERFREE, 0
 	npc_msg msg_0386_R34R0201_00003
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_R34R0201_002:
-	simple_npc_msg msg_0386_R34R0201_00004
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0386_R34R0201_00004
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

@@ -58,7 +58,7 @@ _00B2:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 1
 _00F9:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -66,7 +66,7 @@ _00F9:
 _0101:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -94,7 +94,7 @@ _0142:
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
 	setflag FLAG_DAILY_GOT_SHOCK_RIBBON
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -102,7 +102,7 @@ _0142:
 _0171:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 29
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -110,7 +110,7 @@ _0171:
 _0185:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 31
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -254,7 +254,13 @@ _0358:
 	step 32, 1
 	step_end
 scr_seq_W40_007:
-	simple_npc_msg msg_0744_W40_00018
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0744_W40_00018
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_W40_002:
@@ -274,18 +280,42 @@ scr_seq_W40_009:
 	end
 
 scr_seq_W40_003:
-	simple_npc_msg msg_0744_W40_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0744_W40_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_W40_004:
-	simple_npc_msg msg_0744_W40_00006
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0744_W40_00006
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_W40_005:
-	simple_npc_msg msg_0744_W40_00003
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0744_W40_00003
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_W40_006:
-	simple_npc_msg msg_0744_W40_00009
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0744_W40_00009
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

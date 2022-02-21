@@ -160,14 +160,14 @@ _01ED:
 	wait_fade
 _023A:
 	npc_msg msg_0503_T07R0203_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0245:
 	npc_msg msg_0503_T07R0203_00000
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -180,7 +180,7 @@ scr_seq_T07R0203_009:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0276
 	npc_msg msg_0503_T07R0203_00007
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -192,35 +192,53 @@ _0276:
 	npc_msg msg_0503_T07R0203_00008
 	giveitem_no_check ITEM_GB_SOUNDS, 1
 	npc_msg msg_0503_T07R0203_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _02A7:
 	npc_msg msg_0503_T07R0203_00011
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_T07R0203_001:
-	simple_npc_msg msg_0503_T07R0203_00004
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0503_T07R0203_00004
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T07R0203_002:
-	simple_npc_msg msg_0503_T07R0203_00005
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0503_T07R0203_00005
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T07R0203_003:
-	simple_npc_msg msg_0503_T07R0203_00006
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0503_T07R0203_00006
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T07R0203_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0503_T07R0203_00016
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -229,7 +247,7 @@ scr_seq_T07R0203_013:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0503_T07R0203_00017
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -238,7 +256,7 @@ scr_seq_T07R0203_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0503_T07R0203_00018
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -247,7 +265,7 @@ scr_seq_T07R0203_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0503_T07R0203_00019
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -256,12 +274,18 @@ scr_seq_T07R0203_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0503_T07R0203_00020
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_T07R0203_012:
-	simple_npc_msg msg_0503_T07R0203_00021
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0503_T07R0203_00021
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

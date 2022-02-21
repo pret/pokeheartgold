@@ -118,7 +118,7 @@ _017C:
 _01A5:
 	goto_if_unset FLAG_UNK_124, _017C
 	npc_msg msg_0492_T07GYM0101_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -148,7 +148,7 @@ scr_seq_T07GYM0101_001:
 _01F2:
 	npc_msg msg_0492_T07GYM0101_00006
 _01F5:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

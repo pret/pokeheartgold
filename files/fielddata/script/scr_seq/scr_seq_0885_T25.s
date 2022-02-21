@@ -92,14 +92,14 @@ scr_seq_T25_000:
 	goto_if_eq _0149
 _013E:
 	npc_msg msg_0581_T25_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0149:
 	npc_msg msg_0581_T25_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -116,7 +116,7 @@ scr_seq_T25_001:
 _0172:
 	npc_msg msg_0581_T25_00005
 _0175:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -127,20 +127,26 @@ scr_seq_T25_002:
 	faceplayer
 	goto_if_set FLAG_GOT_RADIO_CARD, _019B
 	npc_msg msg_0581_T25_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _019B:
 	npc_msg msg_0581_T25_00007
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_T25_003:
-	simple_npc_msg msg_0581_T25_00008
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0581_T25_00008
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T25_004:
@@ -151,14 +157,14 @@ scr_seq_T25_004:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01DD
 	npc_msg msg_0581_T25_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _01DD:
 	npc_msg msg_0581_T25_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -173,14 +179,14 @@ scr_seq_T25_005:
 	goto_if_eq _0215
 _020A:
 	npc_msg msg_0581_T25_00000
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0215:
 	npc_msg msg_0581_T25_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -195,14 +201,14 @@ scr_seq_T25_006:
 	goto_if_eq _024D
 _0242:
 	npc_msg msg_0581_T25_00011
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _024D:
 	npc_msg msg_0581_T25_00012
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -277,7 +283,7 @@ scr_seq_T25_008:
 _032E:
 	npc_msg msg_0581_T25_00016
 _0331:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -294,7 +300,7 @@ scr_seq_T25_009:
 _0357:
 	npc_msg msg_0581_T25_00018
 _035A:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -311,7 +317,7 @@ scr_seq_T25_010:
 _0380:
 	npc_msg msg_0581_T25_00020
 _0383:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -328,7 +334,7 @@ scr_seq_T25_011:
 _03A9:
 	npc_msg msg_0581_T25_00022
 _03AC:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -345,7 +351,7 @@ scr_seq_T25_012:
 _03D2:
 	npc_msg msg_0581_T25_00024
 _03D5:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -362,7 +368,7 @@ scr_seq_T25_013:
 _03FB:
 	npc_msg msg_0581_T25_00029
 _03FE:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -371,30 +377,48 @@ scr_seq_T25_030:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0581_T25_00026
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_T25_032:
-	simple_npc_msg msg_0581_T25_00028
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0581_T25_00028
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T25_031:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0581_T25_00027
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_T25_014:
-	simple_npc_msg msg_0581_T25_00031
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0581_T25_00031
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T25_015:
-	simple_npc_msg msg_0581_T25_00032
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0581_T25_00032
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T25_016:
@@ -409,7 +433,7 @@ scr_seq_T25_016:
 _047F:
 	npc_msg msg_0581_T25_00033
 _0482:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

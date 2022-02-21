@@ -42,20 +42,26 @@ _0065:
 
 _0081:
 	npc_msg msg_0584_T25R0201_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _008C:
 	npc_msg msg_0584_T25R0201_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	touchscreen_menu_show
 	releaseall
 	end
 
 scr_seq_T25R0201_001:
-	simple_npc_msg msg_0584_T25R0201_00005
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0584_T25R0201_00005
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

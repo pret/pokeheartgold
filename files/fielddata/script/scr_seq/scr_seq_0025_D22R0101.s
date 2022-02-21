@@ -119,47 +119,113 @@ _01C9:
 	end
 
 scr_seq_D22R0101_012:
-	simple_npc_msg msg_0062_D22R0101_00045
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0062_D22R0101_00045
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D22R0101_013:
-	simple_npc_msg msg_0062_D22R0101_00048
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0062_D22R0101_00048
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D22R0101_014:
-	simple_npc_msg msg_0062_D22R0101_00051
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0062_D22R0101_00051
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D22R0101_015:
-	simple_npc_msg msg_0062_D22R0101_00054
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0062_D22R0101_00054
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D22R0101_016:
-	simple_npc_msg msg_0062_D22R0101_00057
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0062_D22R0101_00057
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D22R0101_017:
-	simple_npc_msg msg_0062_D22R0101_00060
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0062_D22R0101_00060
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D22R0101_018:
-	simple_npc_msg msg_0062_D22R0101_00063
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0062_D22R0101_00063
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D22R0101_019:
-	simple_npc_msg msg_0062_D22R0101_00066
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0062_D22R0101_00066
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D22R0101_020:
-	simple_npc_msg msg_0062_D22R0101_00069
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0062_D22R0101_00069
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D22R0101_021:
-	simple_npc_msg msg_0062_D22R0101_00072
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0062_D22R0101_00072
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D22R0101_022:
-	simple_npc_msg msg_0062_D22R0101_00042
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0062_D22R0101_00042
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D22R0101_026:
@@ -171,7 +237,7 @@ scr_seq_D22R0101_026:
 	goto_if_eq _02C7
 	buffer_players_name 0
 	npc_msg msg_0062_D22R0101_00084
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -199,21 +265,21 @@ _02C7:
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0062_D22R0101_00087
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _032B:
 	npc_msg msg_0062_D22R0101_00088
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0336:
 	npc_msg msg_0062_D22R0101_00089
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -229,7 +295,7 @@ scr_seq_D22R0101_000:
 	setflag FLAG_UNK_10E
 _0380:
 	npc_msg msg_0062_D22R0101_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -304,7 +370,7 @@ _0483:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -411,7 +477,7 @@ _0616:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -419,7 +485,7 @@ _0616:
 _0650:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -427,7 +493,7 @@ _0650:
 _0664:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -466,27 +532,63 @@ scr_seq_D22R0101_003:
 	end
 
 scr_seq_D22R0101_004:
-	simple_npc_msg msg_0062_D22R0101_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0062_D22R0101_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D22R0101_005:
-	simple_npc_msg msg_0062_D22R0101_00001
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0062_D22R0101_00001
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D22R0101_006:
-	simple_npc_msg msg_0062_D22R0101_00005
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0062_D22R0101_00005
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D22R0101_007:
-	simple_npc_msg msg_0062_D22R0101_00006
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0062_D22R0101_00006
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D22R0101_008:
-	simple_npc_msg msg_0062_D22R0101_00009
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0062_D22R0101_00009
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D22R0101_009:
-	simple_npc_msg msg_0062_D22R0101_00007
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0062_D22R0101_00007
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D22R0101_010:
@@ -496,7 +598,7 @@ scr_seq_D22R0101_010:
 	npc_msg msg_0062_D22R0101_00008
 	play_cry SPECIES_PERSIAN, 0
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

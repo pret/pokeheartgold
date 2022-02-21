@@ -66,7 +66,7 @@ _00C2:
 _00E2:
 	npc_msg msg_0071_D23R0107_00003
 _00E5:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setvar VAR_UNK_4125, 1
 	releaseall

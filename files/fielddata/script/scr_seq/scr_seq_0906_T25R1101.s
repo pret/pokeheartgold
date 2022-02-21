@@ -109,14 +109,14 @@ _013D:
 
 _0177:
 	npc_msg msg_0599_T25R1101_00025
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setvar VAR_TEMP_x4001, 1
 	return
 
 _0186:
 	npc_msg msg_0599_T25R1101_00026
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	script_overlay_cmd 3, 1
 	setvar VAR_TEMP_x4001, 1
@@ -467,7 +467,7 @@ scr_seq_T25R1101_000:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _069B
 	npc_msg msg_0599_T25R1101_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -532,7 +532,7 @@ _0796:
 _07A1:
 	npc_msg msg_0599_T25R1101_00004
 _07A4:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	touchscreen_menu_show
 	scrcmd_117
@@ -908,7 +908,7 @@ _0FB7:
 	compare VAR_SPECIAL_x8005, 6
 	goto_if_ne _0FD5
 	npc_msg msg_0599_T25R1101_00013
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _1208
 
@@ -1046,7 +1046,7 @@ _11F3:
 
 _11F9:
 	npc_msg msg_0599_T25R1101_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _1208
 	.byte 0x02, 0x00
@@ -1058,11 +1058,23 @@ _1208:
 	end
 
 scr_seq_T25R1101_003:
-	simple_npc_msg msg_0599_T25R1101_00018
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0599_T25R1101_00018
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T25R1101_004:
-	simple_npc_msg msg_0599_T25R1101_00019
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0599_T25R1101_00019
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T25R1101_005:
@@ -1076,7 +1088,7 @@ scr_seq_T25R1101_005:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _12DE
 	npc_msg msg_0599_T25R1101_00031
-	waitbutton
+	wait_button_or_walk_away
 	npc_msg msg_0599_T25R1101_00028
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -1084,7 +1096,7 @@ scr_seq_T25R1101_005:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _12DE
 	npc_msg msg_0599_T25R1101_00032
-	waitbutton
+	wait_button_or_walk_away
 	npc_msg msg_0599_T25R1101_00028
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -1092,7 +1104,7 @@ scr_seq_T25R1101_005:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _12DE
 	npc_msg msg_0599_T25R1101_00033
-	waitbutton
+	wait_button_or_walk_away
 	npc_msg msg_0599_T25R1101_00028
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -1100,7 +1112,7 @@ scr_seq_T25R1101_005:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _12DE
 	npc_msg msg_0599_T25R1101_00034
-	waitbutton
+	wait_button_or_walk_away
 	npc_msg msg_0599_T25R1101_00028
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -1108,33 +1120,57 @@ scr_seq_T25R1101_005:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _12DE
 	npc_msg msg_0599_T25R1101_00035
-	waitbutton
+	wait_button_or_walk_away
 	npc_msg msg_0599_T25R1101_00030
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _12DE:
 	npc_msg msg_0599_T25R1101_00029
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_T25R1101_006:
-	simple_npc_msg msg_0599_T25R1101_00021
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0599_T25R1101_00021
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T25R1101_007:
-	simple_npc_msg msg_0599_T25R1101_00022
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0599_T25R1101_00022
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T25R1101_008:
-	simple_npc_msg msg_0599_T25R1101_00023
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0599_T25R1101_00023
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T25R1101_009:
-	simple_npc_msg msg_0599_T25R1101_00024
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0599_T25R1101_00024
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

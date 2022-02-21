@@ -11,11 +11,23 @@
 	scrdef_end
 
 scr_seq_T26R0501_000:
-	simple_npc_msg msg_0609_T26R0501_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0609_T26R0501_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T26R0501_001:
-	simple_npc_msg msg_0609_T26R0501_00001
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0609_T26R0501_00001
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T26R0501_002:
@@ -64,7 +76,7 @@ _008F:
 	wait_fanfare
 	npc_msg msg_0609_T26R0501_00009
 _00E3:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

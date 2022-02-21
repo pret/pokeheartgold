@@ -36,14 +36,14 @@ _0058:
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_075
 	npc_msg msg_0381_R32PC0101_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _008C:
 	npc_msg msg_0381_R32PC0101_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -56,7 +56,7 @@ _0097:
 
 _00A1:
 	npc_msg msg_0381_R32PC0101_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -81,7 +81,7 @@ _00E3:
 	goto_if_no_item_space ITEM_LURE_BALL, 2, _0117
 	callstd std_give_item_verbose
 	npc_msg msg_0381_R32PC0101_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	setflag FLAG_UNK_174
@@ -95,12 +95,18 @@ _0117:
 
 _0121:
 	npc_msg msg_0381_R32PC0101_00011
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_R32PC0101_003:
-	simple_npc_msg msg_0381_R32PC0101_00006
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0381_R32PC0101_00006
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

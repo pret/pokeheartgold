@@ -21,46 +21,100 @@
 	scrdef_end
 
 scr_seq_T25R1202_000:
-	simple_npc_msg msg_0601_T25R1202_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0601_T25R1202_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T25R1202_001:
-	simple_npc_msg msg_0601_T25R1202_00001
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0601_T25R1202_00001
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T25R1202_002:
-	simple_npc_msg msg_0601_T25R1202_00002
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0601_T25R1202_00002
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T25R1202_003:
-	simple_npc_msg msg_0601_T25R1202_00003
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0601_T25R1202_00003
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T25R1202_004:
-	simple_npc_msg msg_0601_T25R1202_00004
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0601_T25R1202_00004
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T25R1202_005:
-	simple_npc_msg msg_0601_T25R1202_00005
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0601_T25R1202_00005
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T25R1202_006:
-	simple_npc_msg msg_0601_T25R1202_00006
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0601_T25R1202_00006
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T25R1202_007:
-	simple_npc_msg msg_0601_T25R1202_00007
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0601_T25R1202_00007
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T25R1202_008:
-	simple_npc_msg msg_0601_T25R1202_00008
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0601_T25R1202_00008
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T25R1202_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0601_T25R1202_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -69,7 +123,7 @@ scr_seq_T25R1202_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0601_T25R1202_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

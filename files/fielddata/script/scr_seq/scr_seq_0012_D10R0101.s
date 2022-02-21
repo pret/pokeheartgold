@@ -138,14 +138,14 @@ _0180:
 	goto_if_eq _01B9
 	buffer_players_name 0
 	npc_msg msg_0052_D10R0101_00002
-	waitbutton
+	wait_button_or_walk_away
 	setvar VAR_SPECIAL_RESULT, 0
 	return
 
 _01B9:
 	buffer_players_name 0
 	npc_msg msg_0052_D10R0101_00003
-	waitbutton
+	wait_button_or_walk_away
 	setvar VAR_SPECIAL_RESULT, 0
 	return
 

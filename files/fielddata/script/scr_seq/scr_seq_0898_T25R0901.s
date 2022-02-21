@@ -22,7 +22,7 @@ scr_seq_T25R0901_000:
 	.byte 0x02, 0x00
 _002E:
 	npc_msg msg_0591_T25R0901_00001
-	scrcmd_049
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -51,14 +51,14 @@ _002E:
 	.byte 0x02, 0x00
 _00B3:
 	npc_msg msg_0591_T25R0901_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _00BE:
 	npc_msg msg_0591_T25R0901_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -66,7 +66,7 @@ _00BE:
 _00C9:
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0591_T25R0901_00007
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -84,7 +84,7 @@ _00D9:
 	goto_if_eq _011F
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0591_T25R0901_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -92,7 +92,7 @@ _00D9:
 _011F:
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0591_T25R0901_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

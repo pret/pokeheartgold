@@ -343,16 +343,16 @@
 	.byte \arg0
 	.endm
 
-	; These are both waitbutton commands
-	.macro scrcmd_049
+	; These are both wait_button_or_walk_away commands
+	.macro wait_button
 	.short 49
 	.endm
 
-	.macro waitbutton
+	.macro wait_button_or_walk_away
 	.short 50
 	.endm
 
-	.macro scrcmd_051
+	.macro wait_button_or_dpad
 	.short 51
 	.endm
 
@@ -364,7 +364,7 @@
 	.short 53
 	.endm
 
-	.macro scrcmd_054
+	.macro holdmsg
 	.short 54
 	.endm
 
@@ -1970,7 +1970,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_348 arg0
+	.macro wait_button_or_delay arg0
 	.short 348
 	.short \arg0
 	.endm
@@ -4920,7 +4920,7 @@
 	lockall
 	faceplayer
 	npc_msg \msgid
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	.endm

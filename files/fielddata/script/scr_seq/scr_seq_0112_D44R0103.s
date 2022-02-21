@@ -177,7 +177,7 @@ _019C:
 _02D3:
 	npc_msg msg_0130_D44R0103_00021
 _02D6:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	setflag FLAG_UNK_998
@@ -200,7 +200,7 @@ _0310:
 	apply_movement obj_D44R0103_chourou, _0388
 	wait_movement
 	npc_msg msg_0130_D44R0103_00008
-	scrcmd_049
+	wait_button
 	switch VAR_SPECIAL_x8004
 	case 0, _00A0
 	case 1, _00DF
@@ -314,7 +314,7 @@ scr_seq_D44R0103_000:
 _049B:
 	npc_msg msg_0130_D44R0103_00022
 _049E:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -354,30 +354,42 @@ _050E:
 _052E:
 	setflag FLAG_UNK_0DC
 	npc_msg msg_0130_D44R0103_00029
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _053D:
 	npc_msg msg_0130_D44R0103_00030
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0548:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_D44R0103_001:
-	simple_npc_msg msg_0130_D44R0103_00024
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0130_D44R0103_00024
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D44R0103_002:
-	simple_npc_msg msg_0130_D44R0103_00025
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0130_D44R0103_00025
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D44R0103_005:
@@ -444,7 +456,7 @@ _0664:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -452,7 +464,7 @@ _0664:
 _069E:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -460,7 +472,7 @@ _069E:
 _06B2:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

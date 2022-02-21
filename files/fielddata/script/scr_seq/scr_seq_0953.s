@@ -1559,7 +1559,7 @@ _0CE0:
 	openmsg
 	get_trainer_msg_params VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
 	trainer_message VAR_SPECIAL_x8004, VAR_SPECIAL_x8001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1651,7 +1651,7 @@ _0E28:
 	get_phone_contact_msg_ids 2, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 _0E2F:
 	msgbox_extern VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	return
 
@@ -1660,7 +1660,7 @@ _0E3B:
 	openmsg
 	get_trainer_msg_params VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
 	trainer_message VAR_SPECIAL_x8004, VAR_SPECIAL_x8002
-	scrcmd_049
+	wait_button
 	closemsg
 	releaseall
 	end

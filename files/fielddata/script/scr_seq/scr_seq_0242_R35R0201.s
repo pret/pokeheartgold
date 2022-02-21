@@ -246,7 +246,13 @@ _0320:
 	step 35, 1
 	step_end
 scr_seq_R35R0201_000:
-	simple_npc_msg msg_0389_R35R0201_00009
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0389_R35R0201_00009
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_R35R0201_001:
@@ -336,7 +342,13 @@ _0460:
 	step 12, 2
 	step_end
 scr_seq_R35R0201_002:
-	simple_npc_msg msg_0389_R35R0201_00003
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0389_R35R0201_00003
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_R35R0201_011:
@@ -403,7 +415,7 @@ _056D:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -411,7 +423,7 @@ _056D:
 _05A7:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -419,7 +431,7 @@ _05A7:
 _05BB:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -463,22 +475,52 @@ _0628:
 	step 1, 1
 	step_end
 scr_seq_R35R0201_003:
-	simple_npc_msg msg_0389_R35R0201_00005
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0389_R35R0201_00005
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_R35R0201_004:
-	simple_npc_msg msg_0389_R35R0201_00006
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0389_R35R0201_00006
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_R35R0201_005:
-	simple_npc_msg msg_0389_R35R0201_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0389_R35R0201_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_R35R0201_006:
-	simple_npc_msg msg_0389_R35R0201_00007
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0389_R35R0201_00007
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_R35R0201_007:
-	simple_npc_msg msg_0389_R35R0201_00008
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0389_R35R0201_00008
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

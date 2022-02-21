@@ -20,7 +20,7 @@ scr_seq_R05R0401_000:
 	setflag FLAG_UNK_131
 _0049:
 	npc_msg msg_0333_R05R0401_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -32,6 +32,12 @@ _0054:
 	end
 
 scr_seq_R05R0401_001:
-	simple_npc_msg msg_0333_R05R0401_00002
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0333_R05R0401_00002
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

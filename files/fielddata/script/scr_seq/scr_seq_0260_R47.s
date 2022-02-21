@@ -97,7 +97,7 @@ scr_seq_R47_001:
 	faceplayer
 	goto_if_set FLAG_UNK_151, _019E
 	npc_msg msg_0407_R47_00000
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setflag FLAG_UNK_151
 	releaseall
@@ -105,7 +105,7 @@ scr_seq_R47_001:
 
 _019E:
 	npc_msg msg_0407_R47_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -186,21 +186,21 @@ scr_seq_R47_004:
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0407_R47_00007
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _02B5:
 	npc_msg msg_0407_R47_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _02C0:
 	npc_msg msg_0407_R47_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

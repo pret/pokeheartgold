@@ -12,18 +12,30 @@
 	scrdef_end
 
 scr_seq_T07R0106_000:
-	simple_npc_msg msg_0499_T07R0106_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0499_T07R0106_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T07R0106_001:
-	simple_npc_msg msg_0499_T07R0106_00001
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0499_T07R0106_00001
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T07R0106_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0499_T07R0106_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -137,7 +149,7 @@ _01F9:
 	end
 
 _0205:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_114
 	releaseall

@@ -16,7 +16,7 @@ scr_seq_T21FS0101_000:
 	lockall
 	faceplayer
 	callstd std_mart_intro
-	scrcmd_054
+	holdmsg
 	setvar VAR_SPECIAL_x8004, 0
 	callstd std_pokemart
 	releaseall
@@ -27,7 +27,7 @@ scr_seq_T21FS0101_003:
 	lockall
 	faceplayer
 	callstd std_mart_intro
-	scrcmd_054
+	holdmsg
 	setvar VAR_SPECIAL_x8004, 0
 	callstd std_special_mart
 	releaseall
@@ -45,12 +45,18 @@ scr_seq_T21FS0101_002:
 _0068:
 	npc_msg msg_0551_T21FS0101_00000
 _006B:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_T21FS0101_001:
-	simple_npc_msg msg_0551_T21FS0101_00002
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0551_T21FS0101_00002
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

@@ -47,7 +47,7 @@ scr_seq_0146_000:
 	.byte 0x02, 0x00
 _009E:
 	npc_msg msg_0211_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _093D
 	.byte 0x02, 0x00
@@ -194,7 +194,7 @@ scr_seq_0146_001:
 	.byte 0x02, 0x00
 _02D7:
 	npc_msg msg_0211_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _093D
 	.byte 0x02, 0x00
@@ -356,7 +356,7 @@ _051C:
 	.byte 0x02, 0x00
 _0564:
 	npc_msg msg_0211_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _093D
 	.byte 0x02, 0x00
@@ -402,13 +402,13 @@ _05F4:
 	scrcmd_731
 _060E:
 	npc_msg msg_0211_00012
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _093D
 	.byte 0x02, 0x00
 _061D:
 	npc_msg msg_0211_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	return
 
@@ -461,7 +461,7 @@ _06BD:
 	scrcmd_731
 _06D7:
 	npc_msg msg_0211_00012
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _0945
 	.byte 0x02, 0x00
@@ -473,7 +473,7 @@ scr_seq_0146_015:
 	scrcmd_561 0, 2, 1, 8
 	wait_se SEQ_SE_GS_IWAOTOSHI02
 	npc_msg msg_0211_00013
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	end
 
@@ -513,13 +513,13 @@ scr_seq_0146_003:
 	.byte 0x02, 0x00
 _0797:
 	npc_msg msg_0211_00022
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _0941
 	.byte 0x02, 0x00
 _07A6:
 	npc_msg msg_0211_00023
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _0941
 	.byte 0x02, 0x00
@@ -559,7 +559,7 @@ scr_seq_0146_004:
 	.byte 0x02, 0x00
 _0826:
 	npc_msg msg_0211_00016
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _0941
 
@@ -674,7 +674,7 @@ scr_seq_0146_005:
 	.byte 0x02, 0x00
 _0997:
 	npc_msg msg_0211_00026
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _0941
 	.byte 0x02, 0x00
@@ -719,7 +719,7 @@ scr_seq_0146_016:
 	.byte 0x02, 0x00
 _0A34:
 	npc_msg msg_0211_00031
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _0941
 	.byte 0x02, 0x00
@@ -765,7 +765,7 @@ scr_seq_0146_014:
 	.byte 0x02, 0x00
 _0AC2:
 	npc_msg msg_0211_00034
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _093D
 	.byte 0x02

@@ -10,14 +10,20 @@
 	scrdef_end
 
 scr_seq_T01R0101_000:
-	simple_npc_msg msg_0447_T01R0101_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0447_T01R0101_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T01R0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0447_T01R0101_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

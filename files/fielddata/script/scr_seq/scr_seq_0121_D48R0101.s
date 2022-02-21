@@ -154,7 +154,7 @@ scr_seq_D48R0101_000:
 	goto_if_eq _0215
 	goto_if_set FLAG_UNK_0F5, _01E7
 	npc_msg msg_0136_D48R0101_00000
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -167,32 +167,44 @@ _01E7:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _020A
 	npc_msg msg_0136_D48R0101_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _020A:
 	npc_msg msg_0136_D48R0101_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0215:
 	npc_msg msg_0136_D48R0101_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 	.byte 0x24, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 	.byte 0x0c, 0x00, 0x02, 0x00, 0xfe, 0x00, 0x00, 0x00
 scr_seq_D48R0101_001:
-	simple_npc_msg msg_0136_D48R0101_00005
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0136_D48R0101_00005
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D48R0101_002:
-	simple_npc_msg msg_0136_D48R0101_00006
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0136_D48R0101_00006
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D48R0101_003:
@@ -201,14 +213,14 @@ scr_seq_D48R0101_003:
 	faceplayer
 	goto_if_set FLAG_UNK_0F5, _027C
 	npc_msg msg_0136_D48R0101_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _027C:
 	npc_msg msg_0136_D48R0101_00011
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

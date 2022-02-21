@@ -108,7 +108,7 @@ _0157:
 	wait_fanfare
 	register_gear_number PHONE_CONTACT_BROCK
 	npc_msg msg_0047_D01R0101_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -124,7 +124,7 @@ _0157:
 _019A:
 	setvar VAR_TEMP_x4003, 1
 	npc_msg msg_0047_D01R0101_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -174,21 +174,21 @@ _020E:
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0047_D01R0101_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _027C:
 	npc_msg msg_0047_D01R0101_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0287:
 	npc_msg msg_0047_D01R0101_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -231,7 +231,7 @@ _02AF:
 	setflag FLAG_UNK_165
 	setvar VAR_TEMP_x4000, 55
 	npc_msg msg_0047_D01R0101_00016
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -239,14 +239,14 @@ _02AF:
 _0339:
 	npc_trade_end
 	npc_msg msg_0047_D01R0101_00018
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0346:
 	npc_msg msg_0047_D01R0101_00014
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	setvar VAR_TEMP_x4000, 111
@@ -254,12 +254,18 @@ _0346:
 
 _0357:
 	npc_msg msg_0047_D01R0101_00017
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_D01R0101_002:
-	simple_npc_msg msg_0047_D01R0101_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0047_D01R0101_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

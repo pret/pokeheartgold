@@ -70,17 +70,29 @@ scr_seq_T02_000:
 _00D7:
 	npc_msg msg_0452_T02_00002
 _00DA:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_T02_001:
-	simple_npc_msg msg_0452_T02_00003
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0452_T02_00003
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T02_010:
-	simple_npc_msg msg_0452_T02_00004
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0452_T02_00004
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T02_002:
@@ -94,7 +106,7 @@ scr_seq_T02_002:
 	setflag FLAG_UNK_12E
 _0147:
 	npc_msg msg_0452_T02_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -169,7 +181,7 @@ _024A:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -177,7 +189,7 @@ _024A:
 _0284:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -185,7 +197,7 @@ _0284:
 _0298:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -229,7 +241,13 @@ _0304:
 	step 1, 1
 	step_end
 scr_seq_T02_003:
-	simple_npc_msg msg_0452_T02_00007
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0452_T02_00007
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T02_004:

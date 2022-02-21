@@ -38,7 +38,7 @@ scr_seq_T25R0501_000:
 	faceplayer
 	goto_if_set FLAG_RESTORED_POWER, _0078
 	npc_msg msg_0587_T25R0501_00000
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -48,7 +48,7 @@ _0078:
 	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _0096
 	npc_msg msg_0587_T25R0501_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _00A5
 
@@ -99,7 +99,7 @@ _0118:
 
 _0123:
 	npc_msg msg_0587_T25R0501_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setvar VAR_UNK_410B, 1
 	setvar VAR_UNK_411E, 1
@@ -118,7 +118,7 @@ scr_seq_T25R0501_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0587_T25R0501_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

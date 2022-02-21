@@ -97,14 +97,14 @@ _0125:
 
 _014C:
 	npc_msg msg_0560_T22R0301_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0157:
 	npc_msg msg_0560_T22R0301_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -209,7 +209,13 @@ _02D4:
 	end
 
 scr_seq_T22R0301_003:
-	simple_npc_msg msg_0560_T22R0301_00011
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0560_T22R0301_00011
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T22R0301_002:
@@ -237,7 +243,7 @@ scr_seq_T22R0301_002:
 	apply_movement obj_T22R0301_gsboy1, _035C
 	wait_movement
 	npc_msg msg_0560_T22R0301_00023
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -253,18 +259,42 @@ _035C:
 	step 32, 1
 	step_end
 scr_seq_T22R0301_004:
-	simple_npc_msg msg_0560_T22R0301_00007
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0560_T22R0301_00007
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T22R0301_005:
-	simple_npc_msg msg_0560_T22R0301_00010
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0560_T22R0301_00010
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T22R0301_006:
-	simple_npc_msg msg_0560_T22R0301_00009
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0560_T22R0301_00009
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T22R0301_007:
-	simple_npc_msg msg_0560_T22R0301_00008
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0560_T22R0301_00008
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

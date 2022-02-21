@@ -28,7 +28,7 @@ scr_seq_T25PC0101_003:
 _003C:
 	npc_msg msg_0583_T25PC0101_00002
 _003F:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -45,7 +45,7 @@ scr_seq_T25PC0101_002:
 _0065:
 	npc_msg msg_0583_T25PC0101_00004
 _0068:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -62,7 +62,7 @@ scr_seq_T25PC0101_001:
 _008E:
 	npc_msg msg_0583_T25PC0101_00000
 _0091:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

@@ -35,7 +35,13 @@ _005F:
 
 scr_seq_T23_000:
 scr_seq_T23_005:
-	simple_npc_msg msg_0564_T23_00003
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0564_T23_00003
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T23_001:
@@ -46,7 +52,7 @@ scr_seq_T23_001:
 	play_cry SPECIES_SLOWPOKE, 0
 	npc_msg msg_0564_T23_00010
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -256,7 +262,7 @@ scr_seq_T23_006:
 _039C:
 	npc_msg msg_0564_T23_00019
 _039F:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -322,14 +328,32 @@ scr_seq_T23_013:
 	end
 
 scr_seq_T23_014:
-	simple_npc_msg msg_0564_T23_00004
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0564_T23_00004
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T23_015:
-	simple_npc_msg msg_0564_T23_00007
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0564_T23_00007
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T23_016:
-	simple_npc_msg msg_0564_T23_00008
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0564_T23_00008
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

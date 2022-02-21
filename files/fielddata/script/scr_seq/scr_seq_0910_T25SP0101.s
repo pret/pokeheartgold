@@ -75,7 +75,7 @@ _00C5:
 _00E5:
 	npc_msg msg_0603_T25SP0101_00039
 _00E8:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -114,7 +114,7 @@ _0154:
 _016A:
 	npc_msg msg_0603_T25SP0101_00036
 _016D:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -511,7 +511,7 @@ _09D5:
 	compare VAR_SPECIAL_x8005, 6
 	goto_if_ne _09F3
 	npc_msg msg_0603_T25SP0101_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _0C26
 
@@ -650,7 +650,7 @@ _0C11:
 
 _0C17:
 	npc_msg msg_0603_T25SP0101_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _0C26
 	.byte 0x02, 0x00

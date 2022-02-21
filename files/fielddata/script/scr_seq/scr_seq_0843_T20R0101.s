@@ -199,7 +199,7 @@ scr_seq_T20R0101_012:
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox msg_0543_T20R0101_00012, msg_0543_T20R0101_00013
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setvar VAR_SCENE_ELMS_LAB, 1
 	setvar VAR_SCENE_NEW_BARK_TOWN_OW, 1
@@ -227,21 +227,21 @@ _0331:
 	goto_if_set FLAG_GOT_TM51_FROM_FALKNER, _035D
 	goto_if_set FLAG_MET_PASSERBY_BOY, _0352
 	npc_msg msg_0543_T20R0101_00015
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0352:
 	npc_msg msg_0543_T20R0101_00016
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _035D:
 	npc_msg msg_0543_T20R0101_00017
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -294,7 +294,7 @@ _03F5:
 	compare VAR_SCENE_ELMS_LAB, 0
 	goto_if_ne _043C
 	npc_msg msg_0543_T20R0101_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	apply_movement obj_T20R0101_doctor, _0368
 	wait_movement
@@ -305,7 +305,7 @@ _043C:
 	goto_if_gt _045A
 	buffer_players_name 0
 	gender_msgbox msg_0543_T20R0101_00012, msg_0543_T20R0101_00013
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _049D
 
@@ -313,7 +313,7 @@ _045A:
 	compare VAR_SCENE_ELMS_LAB, 5
 	goto_if_gt _0474
 	npc_msg msg_0543_T20R0101_00040
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _049D
 
@@ -322,14 +322,14 @@ _0474:
 	goto_if_ne _0492
 	buffer_players_name 0
 	gender_msgbox msg_0543_T20R0101_00042, msg_0543_T20R0101_00043
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _049D
 
 _0492:
 	buffer_players_name 0
 	gender_msgbox msg_0543_T20R0101_00044, msg_0543_T20R0101_00045
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 _049D:
 	releaseall
@@ -349,28 +349,28 @@ _04A1:
 	goto_if_eq _0504
 	buffer_players_name 0
 	gender_msgbox msg_0543_T20R0101_00098, msg_0543_T20R0101_00099
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0504:
 	gender_msgbox msg_0543_T20R0101_00100, msg_0543_T20R0101_00101
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0510:
 	npc_msg msg_0543_T20R0101_00069
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _051B:
 	npc_msg msg_0543_T20R0101_00070
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -385,7 +385,7 @@ _0526:
 _0541:
 	buffer_players_name 0
 	gender_msgbox msg_0543_T20R0101_00073, msg_0543_T20R0101_00074
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -393,7 +393,7 @@ _0541:
 _0550:
 	buffer_players_name 0
 	gender_msgbox msg_0543_T20R0101_00102, msg_0543_T20R0101_00103
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -443,7 +443,7 @@ _05F2:
 	npc_msg msg_0543_T20R0101_00049
 	buffer_players_name 0
 	gender_msgbox msg_0543_T20R0101_00050, msg_0543_T20R0101_00051
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -561,7 +561,7 @@ _07E4:
 _07FA:
 	npc_msg msg_0543_T20R0101_00055
 _07FD:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -574,7 +574,7 @@ _0805:
 
 _080F:
 	npc_msg msg_0543_T20R0101_00057
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -888,7 +888,7 @@ _0BF3:
 	apply_movement obj_player, _0CD4
 	wait_movement
 	npc_msg msg_0543_T20R0101_00069
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	setvar VAR_SCENE_ELMS_LAB, 9
@@ -994,7 +994,7 @@ _0DAD:
 _0DB7:
 	buffer_players_name 0
 	gender_msgbox msg_0543_T20R0101_00081, msg_0543_T20R0101_00082
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setvar VAR_UNK_412F, 1
 	addvar VAR_TEMP_x4006, 1
@@ -1003,7 +1003,7 @@ _0DB7:
 
 _0DD2:
 	npc_msg msg_0543_T20R0101_00083
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	addvar VAR_TEMP_x4006, 1
 	releaseall
@@ -1190,7 +1190,7 @@ _0FFF:
 	apply_movement obj_T20R0101_doctor, _0FBC
 	wait_movement
 	npc_msg msg_0543_T20R0101_00090
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setvar VAR_UNK_412F, 2
 	releaseall
@@ -1198,7 +1198,7 @@ _0FFF:
 
 _1044:
 	npc_msg msg_0543_T20R0101_00091
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1211,7 +1211,7 @@ scr_seq_T20R0101_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0543_T20R0101_00093
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1221,7 +1221,7 @@ scr_seq_T20R0101_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0543_T20R0101_00094
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1231,7 +1231,7 @@ scr_seq_T20R0101_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0543_T20R0101_00095
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1241,7 +1241,7 @@ scr_seq_T20R0101_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0543_T20R0101_00096
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1250,7 +1250,7 @@ scr_seq_T20R0101_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0543_T20R0101_00097
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1282,7 +1282,7 @@ _1103:
 
 _1107:
 	npc_msg msg_0543_T20R0101_00014
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

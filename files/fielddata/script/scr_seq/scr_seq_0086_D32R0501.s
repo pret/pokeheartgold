@@ -80,7 +80,7 @@ _0126:
 _012E:
 	setvar VAR_UNK_4147, 0
 	npc_msg msg_0109_D32R0501_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -326,7 +326,7 @@ _055F:
 
 _0563:
 	npc_msg msg_0109_D32R0501_00032
-	scrcmd_049
+	wait_button
 	closemsg
 	apply_movement obj_player, _060C
 	apply_movement VAR_SPECIAL_LAST_TALKED, _062C
@@ -335,7 +335,7 @@ _0563:
 
 _057E:
 	npc_msg msg_0109_D32R0501_00032
-	scrcmd_049
+	wait_button
 	closemsg
 	apply_movement obj_player, _060C
 	apply_movement VAR_SPECIAL_LAST_TALKED, _062C
@@ -532,30 +532,72 @@ scr_seq_D32R0501_004:
 	.byte 0x0c, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x02, 0x00, 0x3f, 0x00, 0x01, 0x00
 	.byte 0x0c, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 scr_seq_D32R0501_006:
-	simple_npc_msg msg_0109_D32R0501_00046
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0109_D32R0501_00046
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D32R0501_007:
-	simple_npc_msg msg_0109_D32R0501_00047
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0109_D32R0501_00047
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D32R0501_008:
-	simple_npc_msg msg_0109_D32R0501_00048
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0109_D32R0501_00048
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D32R0501_009:
-	simple_npc_msg msg_0109_D32R0501_00049
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0109_D32R0501_00049
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D32R0501_010:
-	simple_npc_msg msg_0109_D32R0501_00050
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0109_D32R0501_00050
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D32R0501_011:
-	simple_npc_msg msg_0109_D32R0501_00051
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0109_D32R0501_00051
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D32R0501_012:
-	simple_npc_msg msg_0109_D32R0501_00052
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0109_D32R0501_00052
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

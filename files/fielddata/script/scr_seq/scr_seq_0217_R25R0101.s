@@ -303,7 +303,7 @@ _0484:
 _048D:
 	npc_msg msg_0364_R25R0101_00013
 _0490:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

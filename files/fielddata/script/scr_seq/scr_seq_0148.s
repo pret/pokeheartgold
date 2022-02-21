@@ -57,7 +57,7 @@ _00AF:
 	goto_if_eq _0142
 _00DA:
 	npc_msg msg_0666_00021
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setvar VAR_SPECIAL_RESULT, 0
 	endstd
@@ -83,7 +83,7 @@ _00EB:
 _012F:
 	npc_msg msg_0666_00021
 _0132:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setvar VAR_SPECIAL_RESULT, 1
 	goto _0189
@@ -103,7 +103,7 @@ _0142:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0183
 	npc_msg msg_0666_00021
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 _0183:
 	setvar VAR_SPECIAL_RESULT, 2

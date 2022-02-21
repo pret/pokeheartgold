@@ -151,7 +151,7 @@ _0234:
 	npc_msg msg_0527_T10R0601_00011
 	apply_movement obj_T10R0601_kurumi, _03BC
 	wait_movement
-	scrcmd_049
+	wait_button
 	closemsg
 	goto_if_set FLAG_GAME_CLEAR, _0268
 	clearflag FLAG_HIDE_OLIVINE_PORT_OAK

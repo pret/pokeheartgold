@@ -116,7 +116,7 @@ _0195:
 	goto_if_unset FLAG_UNK_17F, _016C
 	buffer_players_name 0
 	npc_msg msg_0462_T03GYM0101_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -140,14 +140,14 @@ scr_seq_T03GYM0101_001:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01E4
 	npc_msg msg_0462_T03GYM0101_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _01E4:
 	npc_msg msg_0462_T03GYM0101_00007
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -166,7 +166,7 @@ scr_seq_T03GYM0101_002:
 _0216:
 	npc_msg msg_0462_T03GYM0101_00009
 _0219:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

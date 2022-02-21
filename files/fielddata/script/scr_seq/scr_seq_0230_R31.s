@@ -42,7 +42,7 @@ _006F:
 	goto_if_eq _02AE
 _008D:
 	npc_msg msg_0378_R31_00000
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -118,7 +118,7 @@ _01EB:
 	setvar VAR_UNK_4114, 5
 _01F1:
 	npc_msg msg_0378_R31_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -134,7 +134,7 @@ _0206:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0378_R31_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -144,7 +144,7 @@ _021F:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0378_R31_00015
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -154,7 +154,7 @@ _0238:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0378_R31_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -164,7 +164,7 @@ _0251:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0378_R31_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -187,7 +187,7 @@ _0295:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0378_R31_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -229,11 +229,23 @@ scr_seq_R31_003:
 	end
 
 scr_seq_R31_004:
-	simple_npc_msg msg_0378_R31_00012
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0378_R31_00012
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.byte 0x49, 0x00, 0xdc, 0x05, 0x60
 	.byte 0x00, 0x68, 0x00, 0x2d, 0x00, 0x01, 0x32, 0x00, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00
 scr_seq_R31_005:
-	simple_npc_msg msg_0378_R31_00011
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0378_R31_00011
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

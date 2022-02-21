@@ -93,7 +93,7 @@ _0178:
 	goto _0048
 	.byte 0x02, 0x00
 _0183:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_117
 	script_overlay_cmd 3, 1
@@ -101,7 +101,7 @@ _0183:
 	end
 
 _0191:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	script_overlay_cmd 3, 1
 	releaseall
@@ -141,7 +141,7 @@ _01F6:
 	npc_msg msg_0433_00013
 	giveitem VAR_TEMP_x4000, VAR_TEMP_x4001, VAR_SPECIAL_RESULT
 	wait_fanfare
-	scrcmd_049
+	wait_button
 	return
 
 _0225:
@@ -161,7 +161,7 @@ _0242:
 	npc_msg msg_0433_00013
 	giveitem VAR_TEMP_x4002, VAR_TEMP_x4003, VAR_SPECIAL_RESULT
 	wait_fanfare
-	scrcmd_049
+	wait_button
 	return
 
 _0271:
@@ -181,7 +181,7 @@ _028E:
 	npc_msg msg_0433_00013
 	giveitem VAR_TEMP_x4004, VAR_TEMP_x4005, VAR_SPECIAL_RESULT
 	wait_fanfare
-	scrcmd_049
+	wait_button
 	return
 
 _02BD:

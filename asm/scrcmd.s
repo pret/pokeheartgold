@@ -82,12 +82,12 @@ gScriptCmdTable:
 	.word ScrCmd_NonNpcMsgVar                                    ; 046
 	.word ScrCmd_NpcMsgVar                                    ; 047
 	.word ScrCmd_048                                    ; 048
-	.word ScrCmd_049                                    ; 049
-	.word ScrCmd_WaitButton                             ; 050
-	.word ScrCmd_051                                    ; 051
+	.word ScrCmd_WaitButton                                    ; 049
+	.word ScrCmd_WaitButtonOrWalkAway                             ; 050
+	.word ScrCmd_WaitButtonOrDpad                                    ; 051
 	.word ScrCmd_OpenMsg                                    ; 052
 	.word ScrCmd_CloseMsg                               ; 053
-	.word ScrCmd_054                                    ; 054
+	.word ScrCmd_HoldMsg                                    ; 054
 	.word ScrCmd_DirectionSignpost                                    ; 055
 	.word ScrCmd_055                                    ; 056
 	.word ScrCmd_057                                    ; 057
@@ -381,7 +381,7 @@ gScriptCmdTable:
 	.word ScrCmd_345                                    ; 345
 	.word ScrCmd_346                                    ; 346
 	.word ScrCmd_347                                    ; 347
-	.word ScrCmd_348                                    ; 348
+	.word ScrCmd_WaitButtonOrDelay                                    ; 348
 	.word ScrCmd_PartySelectUI                                    ; 349
 	.word ScrCmd_350                                    ; 350
 	.word ScrCmd_PartySelect                                    ; 351
@@ -952,8 +952,8 @@ _02040FDC:
 _02040FEC: .word ov01_021EF348
 	thumb_func_end ScrCmd_048
 
-	thumb_func_start ScrCmd_049
-ScrCmd_049: ; 0x02040FF0
+	thumb_func_start ScrCmd_WaitButton
+ScrCmd_WaitButton: ; 0x02040FF0
 	push {r3, lr}
 	ldr r1, _02040FFC ; =sub_02041000
 	bl SetupNativeScript
@@ -961,7 +961,7 @@ ScrCmd_049: ; 0x02040FF0
 	pop {r3, pc}
 	.balign 4, 0
 _02040FFC: .word sub_02041000
-	thumb_func_end ScrCmd_049
+	thumb_func_end ScrCmd_WaitButton
 
 	thumb_func_start sub_02041000
 sub_02041000: ; 0x02041000
@@ -979,8 +979,8 @@ _0204100E:
 _02041014: .word gSystem
 	thumb_func_end sub_02041000
 
-	thumb_func_start ScrCmd_348
-ScrCmd_348: ; 0x02041018
+	thumb_func_start ScrCmd_WaitButtonOrDelay
+ScrCmd_WaitButtonOrDelay: ; 0x02041018
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -997,7 +997,7 @@ ScrCmd_348: ; 0x02041018
 	pop {r4, pc}
 	nop
 _0204103C: .word sub_02041040
-	thumb_func_end ScrCmd_348
+	thumb_func_end ScrCmd_WaitButtonOrDelay
 
 	thumb_func_start sub_02041040
 sub_02041040: ; 0x02041040
@@ -1022,8 +1022,8 @@ _0204105A:
 _02041060: .word gSystem
 	thumb_func_end sub_02041040
 
-	thumb_func_start ScrCmd_WaitButton
-ScrCmd_WaitButton: ; 0x02041064
+	thumb_func_start ScrCmd_WaitButtonOrWalkAway
+ScrCmd_WaitButtonOrWalkAway: ; 0x02041064
 	push {r3, lr}
 	ldr r1, _02041070 ; =sub_02041074
 	bl SetupNativeScript
@@ -1031,7 +1031,7 @@ ScrCmd_WaitButton: ; 0x02041064
 	pop {r3, pc}
 	.balign 4, 0
 _02041070: .word sub_02041074
-	thumb_func_end ScrCmd_WaitButton
+	thumb_func_end ScrCmd_WaitButtonOrWalkAway
 
 	thumb_func_start sub_02041074
 sub_02041074: ; 0x02041074
@@ -1093,8 +1093,8 @@ _020410D8:
 _020410DC: .word gSystem
 	thumb_func_end sub_02041074
 
-	thumb_func_start ScrCmd_051
-ScrCmd_051: ; 0x020410E0
+	thumb_func_start ScrCmd_WaitButtonOrDpad
+ScrCmd_WaitButtonOrDpad: ; 0x020410E0
 	push {r3, lr}
 	ldr r1, _020410EC ; =sub_020410F0
 	bl SetupNativeScript
@@ -1102,7 +1102,7 @@ ScrCmd_051: ; 0x020410E0
 	pop {r3, pc}
 	.balign 4, 0
 _020410EC: .word sub_020410F0
-	thumb_func_end ScrCmd_051
+	thumb_func_end ScrCmd_WaitButtonOrDpad
 
 	thumb_func_start sub_020410F0
 sub_020410F0: ; 0x020410F0
@@ -1198,8 +1198,8 @@ ScrCmd_CloseMsg: ; 0x02041168
 	pop {r4, r5, r6, pc}
 	thumb_func_end ScrCmd_CloseMsg
 
-	thumb_func_start ScrCmd_054
-ScrCmd_054: ; 0x020411A4
+	thumb_func_start ScrCmd_HoldMsg
+ScrCmd_HoldMsg: ; 0x020411A4
 	push {r4, r5, r6, lr}
 	add r0, #0x80
 	ldr r5, [r0]
@@ -1223,7 +1223,7 @@ ScrCmd_054: ; 0x020411A4
 	mov r0, #0
 	strb r0, [r4]
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_054
+	thumb_func_end ScrCmd_HoldMsg
 
 	thumb_func_start ScrCmd_062
 ScrCmd_062: ; 0x020411D8

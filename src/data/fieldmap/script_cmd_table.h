@@ -49,12 +49,12 @@ extern BOOL ScrCmd_NPCMsg(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_NonNpcMsgVar(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_NpcMsgVar(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_048(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_049(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_049(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_051(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_WaitButton(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_WaitButton(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_WaitButtonOrDpad(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_OpenMsg(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CloseMsg(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_054(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_HoldMsg(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_DirectionSignpost(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_055(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_057(SCRIPTCONTEXT *ctx);
@@ -348,7 +348,7 @@ extern BOOL ScrCmd_344(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_345(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_346(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_347(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_348(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_WaitButtonOrDelay(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PartySelectUI(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_350(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PartySelect(SCRIPTCONTEXT *ctx);
@@ -904,12 +904,12 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_NonNpcMsgVar,
     ScrCmd_NpcMsgVar,
     ScrCmd_048,
-    ScrCmd_049,
-    ScrCmd_049,
-    ScrCmd_051,
+    ScrCmd_WaitButton,
+    ScrCmd_WaitButton,
+    ScrCmd_WaitButtonOrDpad,
     ScrCmd_OpenMsg,
     ScrCmd_CloseMsg,
-    ScrCmd_054,
+    ScrCmd_HoldMsg,
     ScrCmd_DirectionSignpost,
     ScrCmd_055,
     ScrCmd_057,
@@ -1203,7 +1203,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_345,
     ScrCmd_346,
     ScrCmd_347,
-    ScrCmd_348,
+    ScrCmd_WaitButtonOrDelay,
     ScrCmd_PartySelectUI,
     ScrCmd_350,
     ScrCmd_PartySelect,

@@ -17,27 +17,63 @@
 	scrdef_end
 
 scr_seq_R10R0201_000:
-	simple_npc_msg msg_0344_R10R0201_00003
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0344_R10R0201_00003
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_R10R0201_001:
-	simple_npc_msg msg_0344_R10R0201_00004
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0344_R10R0201_00004
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_R10R0201_002:
-	simple_npc_msg msg_0344_R10R0201_00005
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0344_R10R0201_00005
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_R10R0201_003:
-	simple_npc_msg msg_0344_R10R0201_00006
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0344_R10R0201_00006
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_R10R0201_004:
-	simple_npc_msg msg_0344_R10R0201_00007
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0344_R10R0201_00007
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_R10R0201_005:
-	simple_npc_msg msg_0344_R10R0201_00008
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0344_R10R0201_00008
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_R10R0201_006:
@@ -71,7 +107,7 @@ scr_seq_R10R0201_006:
 	npc_trade_end
 	setflag FLAG_TRADE_POWER_PLANT_DUGTRIO_MAGNETON
 	npc_msg msg_0344_R10R0201_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -79,21 +115,21 @@ scr_seq_R10R0201_006:
 _0127:
 	npc_trade_end
 	npc_msg msg_0344_R10R0201_00011
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0134:
 	npc_msg msg_0344_R10R0201_00012
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _013F:
 	npc_msg msg_0344_R10R0201_00013
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -102,7 +138,7 @@ scr_seq_R10R0201_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0344_R10R0201_00014
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -111,7 +147,7 @@ scr_seq_R10R0201_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0344_R10R0201_00015
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

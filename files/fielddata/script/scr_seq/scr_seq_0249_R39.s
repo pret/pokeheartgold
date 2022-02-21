@@ -76,7 +76,7 @@ scr_seq_R39_000:
 	play_cry SPECIES_MILTANK, 0
 	npc_msg msg_0396_R39_00003
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -251,7 +251,7 @@ _0352:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -259,7 +259,7 @@ _0352:
 _038C:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -267,7 +267,7 @@ _038C:
 _03A0:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -335,21 +335,21 @@ scr_seq_R39_007:
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0396_R39_00012
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0485:
 	npc_msg msg_0396_R39_00013
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0490:
 	npc_msg msg_0396_R39_00014
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

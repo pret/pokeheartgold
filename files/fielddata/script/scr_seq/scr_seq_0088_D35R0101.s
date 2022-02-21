@@ -220,7 +220,7 @@ scr_seq_D35R0101_002:
 	compare VAR_UNK_40A8, 2
 	goto_if_ge _031C
 	npc_msg msg_0111_D35R0101_00000
-	scrcmd_054
+	holdmsg
 	setvar VAR_SPECIAL_x8004, 28
 	callstd std_special_mart
 	releaseall
@@ -228,7 +228,7 @@ scr_seq_D35R0101_002:
 
 _031C:
 	npc_msg msg_0111_D35R0101_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -236,11 +236,23 @@ _031C:
 scr_seq_D35R0101_003:
 	compare VAR_UNK_40A8, 2
 	goto_if_ge _0347
-	simple_npc_msg msg_0111_D35R0101_00002
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0111_D35R0101_00002
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 _0347:
-	simple_npc_msg msg_0111_D35R0101_00003
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0111_D35R0101_00003
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D35R0101_005:
@@ -252,7 +264,7 @@ scr_seq_D35R0101_004:
 	faceplayer
 	setflag FLAG_UNK_171
 	npc_msg msg_0111_D35R0101_00010
-	scrcmd_054
+	holdmsg
 	setvar VAR_SPECIAL_x8004, 29
 	callstd std_special_mart
 	clearflag FLAG_UNK_171
@@ -392,7 +404,7 @@ _0539:
 _054F:
 	npc_msg msg_0111_D35R0101_00013
 _0552:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

@@ -43,19 +43,43 @@ _007B:
 	end
 
 scr_seq_D47_000:
-	simple_npc_msg msg_0133_D47_00002
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0133_D47_00002
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D47_001:
-	simple_npc_msg msg_0133_D47_00003
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0133_D47_00003
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D47_002:
-	simple_npc_msg msg_0133_D47_00004
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0133_D47_00004
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D47_003:
-	simple_npc_msg msg_0133_D47_00005
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0133_D47_00005
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D47_004:
@@ -65,7 +89,7 @@ scr_seq_D47_004:
 	play_cry SPECIES_JIGGLYPUFF, 0
 	npc_msg msg_0133_D47_00006
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -82,7 +106,7 @@ scr_seq_D47_005:
 _0106:
 	npc_msg msg_0133_D47_00008
 _0109:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	compare VAR_TEMP_x400B, 0
@@ -101,7 +125,7 @@ scr_seq_D47_006:
 	faceplayer
 	npc_msg msg_0133_D47_00009
 	callstd std_mart_intro
-	scrcmd_054
+	holdmsg
 	setvar VAR_SPECIAL_x8004, 6
 	callstd std_special_mart
 	releaseall
@@ -113,7 +137,7 @@ scr_seq_D47_007:
 	faceplayer
 	npc_msg msg_0133_D47_00010
 	callstd std_mart_intro
-	scrcmd_054
+	holdmsg
 	setvar VAR_SPECIAL_x8004, 14
 	callstd std_special_mart
 	releaseall
@@ -126,13 +150,19 @@ scr_seq_D47_008:
 	play_cry SPECIES_BUTTERFREE, 0
 	npc_msg msg_0133_D47_00011
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_D47_009:
-	simple_npc_msg msg_0133_D47_00012
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0133_D47_00012
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D47_010:
@@ -142,7 +172,7 @@ scr_seq_D47_010:
 	play_cry SPECIES_SLOWPOKE, 0
 	npc_msg msg_0133_D47_00013
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -156,7 +186,13 @@ scr_seq_D47_011:
 	end
 
 scr_seq_D47_012:
-	simple_npc_msg msg_0133_D47_00014
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0133_D47_00014
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D47_013:
@@ -223,7 +259,7 @@ _02CD:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -231,7 +267,7 @@ _02CD:
 _0307:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -239,7 +275,7 @@ _0307:
 _031B:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -283,10 +319,22 @@ _0388:
 	step 1, 1
 	step_end
 scr_seq_D47_015:
-	simple_npc_msg msg_0133_D47_00015
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0133_D47_00015
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D47_016:
-	simple_npc_msg msg_0133_D47_00016
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0133_D47_00016
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

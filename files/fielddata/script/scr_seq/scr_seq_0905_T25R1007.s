@@ -471,7 +471,7 @@ _086E:
 	goto _0879
 	.byte 0x02, 0x00
 _0879:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -480,7 +480,7 @@ _0881:
 	setvar VAR_ELEVATOR_LAST_FLOOR, 65535
 	wait 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0598_T25R1007_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -489,7 +489,7 @@ _0898:
 	setvar VAR_ELEVATOR_LAST_FLOOR, 65535
 	wait 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0598_T25R1007_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

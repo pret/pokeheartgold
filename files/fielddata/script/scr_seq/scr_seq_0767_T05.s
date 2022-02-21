@@ -16,19 +16,43 @@
 	scrdef_end
 
 scr_seq_T05_000:
-	simple_npc_msg msg_0475_T05_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0475_T05_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T05_001:
-	simple_npc_msg msg_0475_T05_00001
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0475_T05_00001
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T05_002:
-	simple_npc_msg msg_0475_T05_00002
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0475_T05_00002
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T05_003:
-	simple_npc_msg msg_0475_T05_00003
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0475_T05_00003
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T05_004:

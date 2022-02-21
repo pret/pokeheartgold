@@ -109,7 +109,7 @@ _016F:
 	goto_if_ge _018C
 	buffer_int 0, VAR_UNK_4135
 	npc_msg msg_0519_T09_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -247,21 +247,21 @@ _0304:
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0519_T09_00007
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0365:
 	npc_msg msg_0519_T09_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0370:
 	npc_msg msg_0519_T09_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -293,7 +293,7 @@ _03CA:
 	wait_fanfare
 	register_gear_number PHONE_CONTACT_BLAINE
 	npc_msg msg_0519_T09_00012
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -309,7 +309,7 @@ _03CA:
 _040D:
 	setvar VAR_TEMP_x4004, 1
 	npc_msg msg_0519_T09_00013
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -340,21 +340,21 @@ _0429:
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0519_T09_00017
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _048A:
 	npc_msg msg_0519_T09_00018
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0495:
 	npc_msg msg_0519_T09_00019
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

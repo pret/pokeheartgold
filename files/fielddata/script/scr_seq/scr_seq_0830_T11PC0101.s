@@ -17,7 +17,13 @@ scr_seq_T11PC0101_000:
 	end
 
 scr_seq_T11PC0101_001:
-	simple_npc_msg msg_0532_T11PC0101_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0532_T11PC0101_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T11PC0101_002:
@@ -26,19 +32,25 @@ scr_seq_T11PC0101_002:
 	faceplayer
 	goto_if_set FLAG_RESTORED_POWER, _004F
 	npc_msg msg_0532_T11PC0101_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _004F:
 	npc_msg msg_0532_T11PC0101_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_T11PC0101_003:
-	simple_npc_msg msg_0532_T11PC0101_00003
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0532_T11PC0101_00003
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

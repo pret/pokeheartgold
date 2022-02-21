@@ -10,12 +10,24 @@
 	scrdef_end
 
 scr_seq_T30R0201_000:
-	simple_npc_msg msg_0633_T30R0201_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0633_T30R0201_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T30R0201_001:
 	play_cry SPECIES_DRATINI, 0
-	simple_npc_msg msg_0633_T30R0201_00002
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0633_T30R0201_00002
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	wait_cry
 	end
 	.balign 4, 0

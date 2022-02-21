@@ -88,14 +88,14 @@ _00EF:
 
 _0142:
 	npc_msg msg_0257_P01R0103_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _014D:
 	npc_msg msg_0257_P01R0103_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -153,6 +153,12 @@ _01E4:
 	step 32, 1
 	step_end
 scr_seq_P01R0103_002:
-	simple_npc_msg msg_0257_P01R0103_00003
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0257_P01R0103_00003
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

@@ -98,19 +98,19 @@ _0121:
 	msgbox_extern VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
 	wait_fanfare
 	npc_msg msg_0209_00020
-	waitbutton
+	wait_button_or_walk_away
 	mystery_gift 4
 	goto _0182
 
 _0157:
 	mystery_gift 6, VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
 	msgbox_extern VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
-	waitbutton
+	wait_button_or_walk_away
 	goto _0178
 
 _016D:
 	npc_msg msg_0209_00003
-	waitbutton
+	wait_button_or_walk_away
 	goto _0178
 
 _0178:
@@ -162,7 +162,7 @@ _01F3:
 	scrcmd_812
 	scrcmd_149 12
 	npc_msg msg_0209_00020
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -170,14 +170,14 @@ _01F3:
 _0222:
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0209_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0232:
 	npc_msg msg_0209_00030
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

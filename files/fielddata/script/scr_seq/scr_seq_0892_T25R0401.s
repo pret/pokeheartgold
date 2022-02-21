@@ -54,7 +54,7 @@ _00A0:
 	wait_fade
 _00C6:
 	npc_msg msg_0586_T25R0401_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -62,21 +62,21 @@ _00C6:
 
 _00D3:
 	npc_msg msg_0586_T25R0401_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _00DE:
 	npc_msg msg_0586_T25R0401_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _00E9:
 	npc_msg msg_0586_T25R0401_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -88,14 +88,14 @@ scr_seq_T25R0401_001:
 	compare VAR_UNK_410D, 1
 	goto_if_eq _0114
 	npc_msg msg_0586_T25R0401_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0114:
 	npc_msg msg_0586_T25R0401_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -110,7 +110,7 @@ scr_seq_T25R0401_002:
 	compare VAR_UNK_410D, 1
 	goto_if_eq _0152
 	npc_msg msg_0586_T25R0401_00011
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -132,21 +132,21 @@ _0179:
 	register_gear_number PHONE_CONTACT_BILL
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0191:
 	npc_msg msg_0586_T25R0401_00015
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _019C:
 	npc_msg msg_0586_T25R0401_00015
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

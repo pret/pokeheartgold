@@ -729,7 +729,7 @@ _0C2B:
 _0C47:
 	npc_msg msg_0112_D35R0102_00004
 _0C4A:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -862,7 +862,7 @@ _0E30:
 	wait_movement
 _0E4D:
 	npc_msg msg_0112_D35R0102_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -908,7 +908,7 @@ _0EF6:
 	wait_movement
 _0F13:
 	npc_msg msg_0112_D35R0102_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -920,7 +920,7 @@ _0F1E:
 
 _0F24:
 	npc_msg msg_0112_D35R0102_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

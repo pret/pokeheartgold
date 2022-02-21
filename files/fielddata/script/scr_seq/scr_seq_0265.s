@@ -24,7 +24,7 @@ scr_seq_0265_000:
 	compare VAR_UNK_408E, 4
 	goto_if_eq _0057
 	npc_msg msg_0439_00000
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -39,7 +39,7 @@ _0057:
 	goto_if_eq _0082
 	setflag FLAG_UNK_99E
 	npc_msg msg_0439_00015
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -48,7 +48,7 @@ _0082:
 	clearflag FLAG_UNK_99E
 	scrcmd_149 5
 	npc_msg msg_0439_00016
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -77,7 +77,7 @@ _0094:
 
 _00EB:
 	npc_msg msg_0439_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -88,7 +88,7 @@ _00F6:
 	compare VAR_SPECIAL_RESULT, 6
 	goto_if_ne _0114
 	npc_msg msg_0439_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -109,7 +109,7 @@ _0114:
 
 _0146:
 	npc_msg msg_0439_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -117,7 +117,7 @@ _0146:
 _0151:
 	buffer_day_care_mon_nicks
 	npc_msg msg_0439_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -143,7 +143,7 @@ _0196:
 	.byte 0x00, 0x00
 _01B2:
 	npc_msg msg_0439_00017
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -156,7 +156,7 @@ _01BD:
 	.byte 0x16, 0x00, 0x03, 0x00, 0x00, 0x00
 _01D9:
 	npc_msg msg_0439_00018
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -169,7 +169,7 @@ _01E4:
 	.byte 0x16, 0x00, 0x03, 0x00, 0x00, 0x00
 _0200:
 	npc_msg msg_0439_00019
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -182,7 +182,7 @@ _020B:
 	.byte 0x16, 0x00, 0x03, 0x00, 0x00, 0x00
 _0227:
 	npc_msg msg_0439_00020
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -206,7 +206,7 @@ scr_seq_0265_001:
 	goto_if_eq _0290
 	touchscreen_menu_show
 	npc_msg msg_0439_00026
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_114
 	releaseall
@@ -265,7 +265,7 @@ _0374:
 	touchscreen_menu_show
 	play_cry VAR_SPECIAL_x8001, 0
 	npc_msg msg_0439_00041
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	wait_cry
 	scrcmd_114
@@ -290,7 +290,7 @@ _03B1:
 	call _038B
 	touchscreen_menu_show
 	npc_msg msg_0439_00040
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_114
 	releaseall
@@ -301,7 +301,7 @@ _03C6:
 	touchscreen_menu_show
 _03CE:
 	npc_msg msg_0439_00029
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_114
 	releaseall
@@ -319,7 +319,7 @@ _03DB:
 _03FB:
 	touchscreen_menu_show
 	npc_msg msg_0439_00036
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_114
 	releaseall
@@ -329,7 +329,7 @@ _040A:
 	call _038B
 	touchscreen_menu_show
 	npc_msg msg_0439_00038
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_114
 	releaseall
@@ -338,7 +338,7 @@ _040A:
 _041F:
 	touchscreen_menu_show
 	npc_msg msg_0439_00039
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_114
 	releaseall
@@ -346,7 +346,7 @@ _041F:
 
 _042E:
 	npc_msg msg_0439_00025
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_114
 	releaseall
@@ -417,7 +417,7 @@ _0544:
 	goto_if_eq _0566
 	touchscreen_menu_show
 	npc_msg msg_0439_00027
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_114
 	releaseall
@@ -457,7 +457,7 @@ _05BE:
 _05DC:
 	touchscreen_menu_show
 	npc_msg msg_0439_00032
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_114
 	releaseall
@@ -479,7 +479,7 @@ _0620:
 	goto_if_eq _0498
 	touchscreen_menu_show
 	npc_msg msg_0439_00029
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_114
 	releaseall

@@ -16,7 +16,7 @@ scr_seq_R39R0101_000:
 	goto_if_set FLAG_UNK_0AA, _002C
 	setflag FLAG_UNK_0A8
 	npc_msg msg_0397_R39R0101_00000
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -28,7 +28,7 @@ _002C:
 	compare VAR_SPECIAL_RESULT, 999
 	goto_if_ne _0058
 	npc_msg msg_0397_R39R0101_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -64,7 +64,7 @@ _0058:
 
 _00F7:
 	npc_msg msg_0397_R39R0101_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_114
 	releaseall
@@ -72,7 +72,7 @@ _00F7:
 
 _0104:
 	npc_msg msg_0397_R39R0101_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_114
 	releaseall
@@ -80,7 +80,7 @@ _0104:
 
 _0111:
 	npc_msg msg_0397_R39R0101_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_114
 	releaseall
@@ -102,7 +102,7 @@ scr_seq_R39R0101_001:
 	faceplayer
 	goto_if_set FLAG_UNK_0AA, _0158
 	npc_msg msg_0397_R39R0101_00007
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -110,7 +110,7 @@ scr_seq_R39R0101_001:
 _0158:
 	goto_if_set FLAG_UNK_0AB, _0197
 	npc_msg msg_0397_R39R0101_00008
-	scrcmd_049
+	wait_button
 	goto_if_no_item_space ITEM_TM83, 1, _01A2
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0AB
@@ -118,14 +118,14 @@ _0158:
 
 _0197:
 	npc_msg msg_0397_R39R0101_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _01A2:
 	npc_msg msg_0397_R39R0101_00011
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

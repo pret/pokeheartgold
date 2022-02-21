@@ -160,7 +160,13 @@ _01F0:
 	step 34, 1
 	step_end
 scr_seq_T27_013:
-	simple_npc_msg msg_0612_T27_00019
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0612_T27_00019
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T27_014:
@@ -220,7 +226,7 @@ _02DA:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -228,7 +234,7 @@ _02DA:
 _0314:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -236,7 +242,7 @@ _0314:
 _0328:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -323,7 +329,7 @@ scr_seq_T27_008:
 _0417:
 	npc_msg msg_0612_T27_00009
 _041A:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -334,14 +340,14 @@ scr_seq_T27_009:
 	faceplayer
 	goto_if_set FLAG_GAME_CLEAR, _0440
 	npc_msg msg_0612_T27_00000
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0440:
 	npc_msg msg_0612_T27_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -358,7 +364,7 @@ scr_seq_T27_010:
 _0469:
 	npc_msg msg_0612_T27_00003
 _046C:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -376,23 +382,35 @@ scr_seq_T27_006:
 _049D:
 	npc_msg msg_0612_T27_00006
 _04A0:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _04A8:
 	npc_msg msg_0612_T27_00007
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_T27_007:
-	simple_npc_msg msg_0612_T27_00010
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0612_T27_00010
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T27_011:
-	simple_npc_msg msg_0612_T27_00004
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0612_T27_00004
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

@@ -14,14 +14,14 @@ scr_seq_R43R0101_000:
 	faceplayer
 	goto_if_set FLAG_RED_GYARADOS_MEET, _0024
 	npc_msg msg_0402_R43R0101_00000
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0024:
 	npc_msg msg_0402_R43R0101_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

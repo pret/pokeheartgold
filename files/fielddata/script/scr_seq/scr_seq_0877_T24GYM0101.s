@@ -56,14 +56,14 @@ _00AF:
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0BA
 	npc_msg msg_0574_T24GYM0101_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _00E3:
 	npc_msg msg_0574_T24GYM0101_00007
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -71,7 +71,7 @@ _00E3:
 _00EE:
 	goto_if_unset FLAG_UNK_0BA, _00AF
 	npc_msg msg_0574_T24GYM0101_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -83,7 +83,7 @@ _0104:
 
 _010A:
 	npc_msg msg_0574_T24GYM0101_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -95,7 +95,7 @@ scr_seq_T24GYM0101_002:
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _0135
 	npc_msg msg_0574_T24GYM0101_00012
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -137,7 +137,7 @@ scr_seq_T24GYM0101_003:
 _019A:
 	npc_msg msg_0574_T24GYM0101_00014
 _019D:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

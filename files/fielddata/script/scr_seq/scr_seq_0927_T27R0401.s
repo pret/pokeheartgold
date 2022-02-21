@@ -11,10 +11,22 @@
 
 	.byte 0x02, 0x00
 scr_seq_T27R0401_000:
-	simple_npc_msg msg_0617_T27R0401_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0617_T27R0401_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T27R0401_001:
-	simple_npc_msg msg_0617_T27R0401_00001
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0617_T27R0401_00001
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

@@ -136,7 +136,13 @@ _01A4:
 	step 0, 1
 	step_end
 scr_seq_R43R0201_000:
-	simple_npc_msg msg_0403_R43R0201_00003
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0403_R43R0201_00003
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_R43R0201_003:
@@ -147,11 +153,11 @@ scr_seq_R43R0201_003:
 	npc_msg msg_0403_R43R0201_00004
 	goto_if_no_item_space ITEM_TM36, 1, _0213
 	callstd std_obtain_item_verbose
-	waitbutton
+	wait_button_or_walk_away
 	setflag FLAG_UNK_0CE
 _0208:
 	npc_msg msg_0403_R43R0201_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

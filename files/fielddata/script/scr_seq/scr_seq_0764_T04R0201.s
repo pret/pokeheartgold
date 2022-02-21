@@ -11,11 +11,23 @@
 	scrdef_end
 
 scr_seq_T04R0201_000:
-	simple_npc_msg msg_0472_T04R0201_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0472_T04R0201_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T04R0201_001:
-	simple_npc_msg msg_0472_T04R0201_00001
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0472_T04R0201_00001
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T04R0201_002:
@@ -25,7 +37,7 @@ scr_seq_T04R0201_002:
 	play_cry SPECIES_DIGLETT, 0
 	npc_msg msg_0472_T04R0201_00002
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

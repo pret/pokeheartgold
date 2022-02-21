@@ -196,7 +196,7 @@ _0353:
 	goto_if_eq _06C6
 	scrcmd_267 1, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
-	scrcmd_348 30
+	wait_button_or_delay 30
 	scrcmd_257 4
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -218,7 +218,7 @@ _03B3:
 	goto_if_eq _0726
 	scrcmd_267 1, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
-	scrcmd_348 30
+	wait_button_or_delay 30
 	scrcmd_257 5
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -246,7 +246,7 @@ _0435:
 	goto_if_eq _076C
 	scrcmd_267 1, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
-	scrcmd_348 30
+	wait_button_or_delay 30
 	scrcmd_257 6
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -273,7 +273,7 @@ _0499:
 	scrcmd_262
 	scrcmd_267 0, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
-	scrcmd_049
+	wait_button
 	closemsg
 	scrcmd_263
 	releaseall
@@ -492,7 +492,7 @@ _07CC:
 	play_se SEQ_SE_DP_BUTTON9
 	scrcmd_264 1
 	scrcmd_592 7
-	scrcmd_348 30
+	wait_button_or_delay 30
 	goto _07E4
 	.byte 0x02, 0x00
 _07E4:
@@ -746,7 +746,13 @@ _0BDA:
 	return
 
 scr_seq_UNION_005:
-	simple_npc_msg msg_0738_UNION_00207
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0738_UNION_00207
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_UNION_006:

@@ -108,7 +108,7 @@ _0175:
 
 _019B:
 	npc_msg msg_0040_00003
-	waitbutton
+	wait_button_or_walk_away
 	touchscreen_menu_show
 	closemsg
 	releaseall
@@ -190,7 +190,7 @@ _02B2:
 	apply_movement VAR_SPECIAL_x8007, _0454
 	wait_movement
 	npc_msg msg_0040_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -228,7 +228,7 @@ _0336:
 	apply_movement VAR_SPECIAL_x8007, _0454
 	wait_movement
 	npc_msg msg_0040_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	endstd
@@ -270,7 +270,7 @@ _0395:
 	npc_msg msg_0040_00102
 _03D4:
 	npc_msg msg_0040_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -289,7 +289,7 @@ _03E3:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0445
 	npc_msg msg_0040_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	endstd
@@ -304,7 +304,7 @@ _041D:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0445
 	npc_msg msg_0040_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	endstd
@@ -422,7 +422,7 @@ _05AD:
 scr_seq_0003_004:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	scrcmd_049
+	wait_button
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	end
@@ -430,7 +430,7 @@ scr_seq_0003_004:
 _05F5:
 	buffer_players_name 0
 	npc_msg msg_0040_00011
-	scrcmd_049
+	wait_button
 	closemsg
 	fade_out_bgm 0, 10
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -448,7 +448,7 @@ scr_seq_0003_005:
 
 scr_seq_0003_024:
 	npc_msg msg_0040_00020
-	scrcmd_049
+	wait_button
 	closemsg
 	end
 
@@ -481,7 +481,7 @@ _0698:
 	hide_save_stats
 	touchscreen_menu_show
 	npc_msg msg_0040_00020
-	scrcmd_049
+	wait_button
 	setvar VAR_SPECIAL_RESULT, 0
 	return
 
@@ -524,7 +524,7 @@ _071D:
 	npc_msg msg_0040_00016
 	play_se SEQ_SE_DP_SAVE
 	wait_se SEQ_SE_DP_SAVE
-	scrcmd_348 30
+	wait_button_or_delay 30
 	hide_save_stats
 	return
 
@@ -536,7 +536,7 @@ _0740:
 
 _074C:
 	npc_msg msg_0040_00018
-	scrcmd_049
+	wait_button
 	hide_save_stats
 	touchscreen_menu_show
 	return
@@ -563,7 +563,7 @@ _0775:
 scr_seq_0003_007:
 	call _07AA
 	npc_msg msg_0040_00032
-	scrcmd_049
+	wait_button
 	endstd
 	end
 
@@ -586,7 +586,7 @@ _07AA:
 scr_seq_0003_026:
 	call _07E4
 	npc_msg msg_0040_00032
-	scrcmd_049
+	wait_button
 	endstd
 	end
 
@@ -627,7 +627,7 @@ _080A:
 _084E:
 	npc_msg msg_0040_00031
 _0851:
-	waitbutton
+	wait_button_or_walk_away
 	return
 
 scr_seq_0003_033:
@@ -737,7 +737,7 @@ scr_seq_0003_009:
 
 _09F5:
 	npc_msg msg_0040_00027
-	waitbutton
+	wait_button_or_walk_away
 	return
 
 scr_seq_0003_010:
@@ -1036,7 +1036,7 @@ scr_seq_0003_012:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0040_00042
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1081,7 +1081,7 @@ _0F32:
 	apply_movement VAR_SPECIAL_x8007, _0454
 	wait_movement
 	npc_msg msg_0040_00046
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1102,7 +1102,7 @@ _0F72:
 	apply_movement VAR_SPECIAL_x8007, _0454
 	wait_movement
 	npc_msg msg_0040_00040
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1201,21 +1201,39 @@ scr_seq_0003_016:
 	lockall
 	faceplayer
 	scrcmd_455
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_0003_017:
-	simple_npc_msg msg_0040_00054
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0040_00054
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_0003_018:
-	simple_npc_msg msg_0040_00057
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0040_00057
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_0003_019:
-	simple_npc_msg msg_0040_00058
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0040_00058
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_0003_020:
@@ -1259,7 +1277,7 @@ scr_seq_0003_021:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0040_00062
-	scrcmd_049
+	wait_button
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	closemsg
@@ -1273,7 +1291,7 @@ scr_seq_0003_022:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0040_00065
-	scrcmd_049
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -1321,7 +1339,7 @@ _11AE:
 _126A:
 	npc_msg msg_0040_00110
 _126D:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -1332,7 +1350,13 @@ _1277:
 	goto _126D
 	.byte 0x02, 0x00
 scr_seq_0003_025:
-	simple_npc_msg msg_0040_00068
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0040_00068
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_0003_027:
@@ -1470,7 +1494,7 @@ _13F6:
 
 scr_seq_0003_041:
 	npc_msg msg_0040_00093
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	endstd
@@ -1525,7 +1549,7 @@ scr_seq_0003_051:
 	touchscreen_menu_show
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 1
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	endstd
 	end
@@ -1533,7 +1557,7 @@ scr_seq_0003_051:
 _14DD:
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 6
-	scrcmd_054
+	holdmsg
 	goto _145E
 	.byte 0x02, 0x00
 scr_seq_0003_052:
@@ -1569,7 +1593,7 @@ scr_seq_0003_055:
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 1
 _159E:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	endstd
 	end
@@ -1582,7 +1606,7 @@ _15A6:
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 6
 _15DE:
-	scrcmd_054
+	holdmsg
 	goto _14FB
 	.byte 0x02, 0x00
 _15E8:
@@ -1692,7 +1716,7 @@ scr_seq_0003_064:
 	scrcmd_727 VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0040_00100
-	scrcmd_049
+	wait_button
 	closemsg
 	releaseall
 	end

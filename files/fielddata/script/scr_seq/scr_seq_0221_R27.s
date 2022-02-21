@@ -21,7 +21,13 @@ _0026:
 	end
 
 scr_seq_R27_000:
-	simple_npc_msg msg_0369_R27_00001
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0369_R27_00001
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_R27_001:
@@ -48,7 +54,7 @@ _008A:
 _0092:
 	wait_movement
 	npc_msg msg_0369_R27_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	setvar VAR_UNK_408A, 1

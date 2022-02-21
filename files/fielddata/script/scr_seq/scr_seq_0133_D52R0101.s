@@ -72,7 +72,7 @@ scr_seq_D52R0101_000:
 	goto_if_eq _00FB
 _00EC:
 	npc_msg msg_0148_D52R0101_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setflag FLAG_UNK_18B
 	releaseall

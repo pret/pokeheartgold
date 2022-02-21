@@ -14,10 +14,22 @@ scr_seq_T21R0501_000:
 	end
 
 scr_seq_T21R0501_001:
-	simple_npc_msg msg_0555_T21R0501_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0555_T21R0501_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T21R0501_002:
-	simple_npc_msg msg_0555_T21R0501_00001
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0555_T21R0501_00001
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

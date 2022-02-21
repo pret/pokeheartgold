@@ -19,11 +19,23 @@ scr_seq_T21PC0101_000:
 	end
 
 scr_seq_T21PC0101_004:
-	simple_npc_msg msg_0552_T21PC0101_00004
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0552_T21PC0101_00004
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T21PC0101_005:
-	simple_npc_msg msg_0552_T21PC0101_00005
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0552_T21PC0101_00005
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T21PC0101_003:
@@ -38,16 +50,28 @@ scr_seq_T21PC0101_003:
 _006A:
 	npc_msg msg_0552_T21PC0101_00002
 _006D:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_T21PC0101_001:
-	simple_npc_msg msg_0552_T21PC0101_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0552_T21PC0101_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T21PC0101_002:
-	simple_npc_msg msg_0552_T21PC0101_00001
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0552_T21PC0101_00001
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

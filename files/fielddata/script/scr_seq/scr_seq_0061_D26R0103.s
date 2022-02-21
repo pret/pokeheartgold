@@ -14,7 +14,7 @@ scr_seq_D26R0103_000:
 	faceplayer
 	goto_if_set FLAG_UNK_07A, _004F
 	npc_msg msg_0092_D26R0103_00000
-	scrcmd_049
+	wait_button
 	closemsg
 	goto_if_no_item_space ITEM_KINGS_ROCK, 1, _005A
 	callstd std_give_item_verbose
@@ -23,7 +23,7 @@ scr_seq_D26R0103_000:
 
 _004F:
 	npc_msg msg_0092_D26R0103_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

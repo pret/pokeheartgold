@@ -243,7 +243,7 @@ _0340:
 	buffer_players_name 0
 	gender_msgbox msg_0542_T20_00006, msg_0542_T20_00007
 _0347:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -355,7 +355,7 @@ _0524:
 _0541:
 	wait_movement
 	npc_msg msg_0542_T20_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -467,7 +467,7 @@ _0743:
 	scrcmd_602 1
 	scrcmd_604 48
 	npc_msg msg_0542_T20_00011
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1277,7 +1277,7 @@ _11C2:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1285,7 +1285,7 @@ _11C2:
 _11FC:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1294,7 +1294,7 @@ _11FC:
 _1224:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1651,7 +1651,7 @@ scr_seq_T20_004:
 	lockall
 	faceplayer
 	gender_msgbox msg_0542_T20_00025, msg_0542_T20_00026
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1669,7 +1669,7 @@ scr_seq_T20_005:
 	apply_movement obj_T20_var_1_2, _1700
 	wait_movement
 	gender_msgbox msg_0542_T20_00031, msg_0542_T20_00032
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1701,6 +1701,12 @@ scr_seq_T20_014:
 
 scr_seq_T20_015:
 	buffer_players_name 0
-	simple_npc_msg msg_0542_T20_00012
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0542_T20_00012
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

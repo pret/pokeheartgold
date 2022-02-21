@@ -317,15 +317,15 @@
       ]
     },
     {
-      "name": "scrcmd_049",
+      "name": "wait_button",
       "args": []
     },
     {
-      "name": "waitbutton",
+      "name": "wait_button_or_walk_away",
       "args": []
     },
     {
-      "name": "scrcmd_051",
+      "name": "wait_button_or_dpad",
       "args": []
     },
     {
@@ -337,7 +337,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_054",
+      "name": "holdmsg",
       "args": []
     },
     {
@@ -2114,7 +2114,7 @@
       ]
     },
     {
-      "name": "scrcmd_348",
+      "name": "wait_button_or_delay",
       "args": [
         2
       ]

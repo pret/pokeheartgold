@@ -121,7 +121,13 @@ _0198:
 	end
 
 scr_seq_T07_000:
-	simple_npc_msg msg_0491_T07_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0491_T07_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T07_001:
@@ -131,37 +137,79 @@ scr_seq_T07_001:
 	play_cry SPECIES_POLIWRATH, 0
 	npc_msg msg_0491_T07_00001
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_T07_002:
-	simple_npc_msg msg_0491_T07_00002
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0491_T07_00002
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T07_003:
-	simple_npc_msg msg_0491_T07_00003
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0491_T07_00003
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T07_004:
-	simple_npc_msg msg_0491_T07_00004
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0491_T07_00004
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T07_005:
-	simple_npc_msg msg_0491_T07_00005
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0491_T07_00005
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T07_006:
-	simple_npc_msg msg_0491_T07_00006
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0491_T07_00006
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T07_007:
-	simple_npc_msg msg_0491_T07_00007
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0491_T07_00007
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T07_008:
-	simple_npc_msg msg_0491_T07_00008
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0491_T07_00008
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T07_009:
@@ -263,7 +311,7 @@ _0302:
 	apply_movement obj_T07_gsleader6, _0464
 	wait_movement
 	npc_msg msg_0491_T07_00018
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -292,7 +340,7 @@ _03E2:
 	wait_fanfare
 	register_gear_number PHONE_CONTACT_ERIKA
 	npc_msg msg_0491_T07_00021
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -308,7 +356,7 @@ _03E2:
 
 _0429:
 	npc_msg msg_0491_T07_00022
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -354,21 +402,21 @@ _046C:
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0491_T07_00026
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _04D5:
 	npc_msg msg_0491_T07_00027
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _04E0:
 	npc_msg msg_0491_T07_00028
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -379,7 +427,13 @@ scr_seq_T07_017:
 	goto _0302
 	.byte 0x02, 0x00
 _0500:
-	simple_npc_msg msg_0491_T07_00029
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0491_T07_00029
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T07_018:
@@ -446,7 +500,7 @@ _0601:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -454,7 +508,7 @@ _0601:
 _063B:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -462,7 +516,7 @@ _063B:
 _064F:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

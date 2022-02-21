@@ -25,12 +25,18 @@ scr_seq_R26R0101_000:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0366_R26R0101_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_R26R0101_001:
-	simple_npc_msg msg_0366_R26R0101_00002
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0366_R26R0101_00002
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

@@ -52,7 +52,7 @@ _0082:
 	goto_if_eq _00E0
 	settrainerflag TRAINER_BEAUTY_CHARLOTTE
 	npc_msg msg_0607_T26PC0101_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -66,7 +66,7 @@ _00C4:
 
 _00D5:
 	npc_msg msg_0607_T26PC0101_00007
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -77,7 +77,13 @@ _00E0:
 	end
 
 _00E6:
-	simple_npc_msg msg_0607_T26PC0101_00006
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0607_T26PC0101_00006
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.byte 0x00, 0x00, 0x00
 
@@ -89,14 +95,32 @@ _0104:
 	step 33, 1
 	step_end
 scr_seq_T26PC0101_001:
-	simple_npc_msg msg_0607_T26PC0101_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0607_T26PC0101_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T26PC0101_002:
-	simple_npc_msg msg_0607_T26PC0101_00001
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0607_T26PC0101_00001
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T26PC0101_003:
-	simple_npc_msg msg_0607_T26PC0101_00002
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0607_T26PC0101_00002
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

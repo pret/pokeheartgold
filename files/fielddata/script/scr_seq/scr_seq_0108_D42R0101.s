@@ -19,14 +19,14 @@ scr_seq_D42R0101_000:
 	setflag FLAG_UNK_0DF
 _0045:
 	npc_msg msg_0127_D42R0101_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0050:
 	npc_msg msg_0127_D42R0101_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

@@ -53,11 +53,23 @@ _00AC:
 	end
 
 scr_seq_T10R0101_001:
-	simple_npc_msg msg_0522_T10R0101_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0522_T10R0101_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T10R0101_002:
-	simple_npc_msg msg_0522_T10R0101_00001
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0522_T10R0101_00001
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T10R0101_003:
@@ -67,7 +79,7 @@ scr_seq_T10R0101_003:
 	play_cry SPECIES_ABRA, 0
 	npc_msg msg_0522_T10R0101_00002
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -164,7 +176,7 @@ scr_seq_T10R0101_004:
 	lockall
 	faceplayer
 	callstd std_mart_intro
-	scrcmd_054
+	holdmsg
 	setvar VAR_SPECIAL_x8004, 13
 	callstd std_special_mart
 	releaseall
@@ -195,7 +207,7 @@ _0287:
 
 _0293:
 	npc_msg msg_0522_T10R0101_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

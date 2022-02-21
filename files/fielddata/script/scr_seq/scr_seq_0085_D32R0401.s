@@ -209,7 +209,7 @@ _02F5:
 _02FD:
 	setvar VAR_UNK_4145, 0
 	npc_msg msg_0108_D32R0401_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -452,7 +452,7 @@ _071D:
 
 _0721:
 	npc_msg msg_0108_D32R0401_00009
-	scrcmd_049
+	wait_button
 	closemsg
 	apply_movement obj_player, _07C8
 	apply_movement VAR_SPECIAL_LAST_TALKED, _07F0
@@ -461,7 +461,7 @@ _0721:
 
 _073C:
 	npc_msg msg_0108_D32R0401_00009
-	scrcmd_049
+	wait_button
 	closemsg
 	apply_movement obj_player, _07C8
 	apply_movement VAR_SPECIAL_LAST_TALKED, _07F0
@@ -664,15 +664,33 @@ scr_seq_D32R0401_004:
 	.byte 0x0c, 0x00, 0x02, 0x00, 0x3f, 0x00, 0x01, 0x00, 0x0c, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 	.byte 0x0c, 0x00, 0x02, 0x00, 0x3f, 0x00, 0x01, 0x00, 0x0c, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 scr_seq_D32R0401_006:
-	simple_npc_msg msg_0108_D32R0401_00059
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0108_D32R0401_00059
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D32R0401_007:
-	simple_npc_msg msg_0108_D32R0401_00060
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0108_D32R0401_00060
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D32R0401_008:
-	simple_npc_msg msg_0108_D32R0401_00061
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0108_D32R0401_00061
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D32R0401_009:
@@ -683,29 +701,59 @@ scr_seq_D32R0401_009:
 	play_cry SPECIES_SLOWBRO, 0
 	npc_msg msg_0108_D32R0401_00062
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_D32R0401_010:
-	simple_npc_msg msg_0108_D32R0401_00063
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0108_D32R0401_00063
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D32R0401_011:
-	simple_npc_msg msg_0108_D32R0401_00064
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0108_D32R0401_00064
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D32R0401_012:
-	simple_npc_msg msg_0108_D32R0401_00065
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0108_D32R0401_00065
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D32R0401_013:
-	simple_npc_msg msg_0108_D32R0401_00066
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0108_D32R0401_00066
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D32R0401_014:
-	simple_npc_msg msg_0108_D32R0401_00067
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0108_D32R0401_00067
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D32R0401_016:
@@ -750,7 +798,7 @@ _0AFF:
 	goto _0B0E
 	.byte 0x02, 0x00
 _0B0E:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -826,7 +874,7 @@ _0C16:
 	.byte 0x02
 	.byte 0x00
 _0C21:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -902,7 +950,7 @@ _0D29:
 	goto _0D34
 	.byte 0x02, 0x00
 _0D34:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -947,7 +995,7 @@ _0DBC:
 	goto _0DC7
 	.byte 0x02, 0x00
 _0DC7:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

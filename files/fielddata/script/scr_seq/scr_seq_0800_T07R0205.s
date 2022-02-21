@@ -20,7 +20,7 @@ scr_seq_T07R0205_000:
 	compare VAR_TEMP_x4000, 4
 	goto_if_eq _0045
 	npc_msg msg_0505_T07R0205_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -32,7 +32,7 @@ _0045:
 	setflag FLAG_UNK_158
 _0071:
 	npc_msg msg_0505_T07R0205_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

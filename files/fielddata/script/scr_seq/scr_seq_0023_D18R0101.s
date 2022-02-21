@@ -95,7 +95,7 @@ scr_seq_D18R0101_000:
 	wait_movement
 	buffer_players_name 0
 	npc_msg msg_0060_D18R0101_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	callstd std_fade_end_eusine_music
 	setvar VAR_UNK_40A2, 1
@@ -103,7 +103,13 @@ scr_seq_D18R0101_000:
 	end
 
 scr_seq_D18R0101_001:
-	simple_npc_msg msg_0060_D18R0101_00003
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0060_D18R0101_00003
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.byte 0x00, 0x00, 0x00
 
@@ -113,6 +119,12 @@ _0158:
 	step 14, 3
 	step_end
 scr_seq_D18R0101_002:
-	simple_npc_msg msg_0060_D18R0101_00004
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0060_D18R0101_00004
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

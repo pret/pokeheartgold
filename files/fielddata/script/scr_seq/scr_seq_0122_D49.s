@@ -513,7 +513,13 @@ _06E4:
 	step 12, 1
 	step_end
 scr_seq_D49_001:
-	simple_npc_msg msg_0137_D49_00007
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0137_D49_00007
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D49_007:
@@ -523,13 +529,19 @@ scr_seq_D49_007:
 	play_cry SPECIES_ODDISH, 0
 	npc_msg msg_0137_D49_00008
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_D49_002:
-	simple_npc_msg msg_0137_D49_00009
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0137_D49_00009
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D49_008:
@@ -539,7 +551,7 @@ scr_seq_D49_008:
 	play_cry SPECIES_MEOWTH, 0
 	npc_msg msg_0137_D49_00010
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -552,7 +564,7 @@ scr_seq_D49_003:
 	compare VAR_TEMP_x4000, 1
 	goto_if_ge _076E
 	npc_msg msg_0137_D49_00011
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -564,7 +576,7 @@ _076E:
 	compare VAR_TEMP_x4000, 1000
 	goto_if_ge _079A
 	npc_msg msg_0137_D49_00013
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -577,7 +589,7 @@ _079A:
 	setflag FLAG_UNK_154
 _07CB:
 	npc_msg msg_0137_D49_00015
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -595,13 +607,19 @@ scr_seq_D49_009:
 	play_cry SPECIES_PIDGEY, 0
 	npc_msg msg_0137_D49_00016
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_D49_004:
-	simple_npc_msg msg_0137_D49_00017
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0137_D49_00017
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D49_010:
@@ -611,13 +629,19 @@ scr_seq_D49_010:
 	play_cry SPECIES_SLOWBRO, 0
 	npc_msg msg_0137_D49_00018
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_D49_005:
-	simple_npc_msg msg_0137_D49_00019
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0137_D49_00019
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D49_011:
@@ -627,13 +651,19 @@ scr_seq_D49_011:
 	play_cry SPECIES_MACHOP, 0
 	npc_msg msg_0137_D49_00020
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_D49_006:
-	simple_npc_msg msg_0137_D49_00021
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0137_D49_00021
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D49_012:
@@ -643,7 +673,7 @@ scr_seq_D49_012:
 	play_cry SPECIES_SLOWPOKE, 0
 	npc_msg msg_0137_D49_00022
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -655,7 +685,7 @@ scr_seq_D49_013:
 	play_cry SPECIES_FARFETCHD, 0
 	npc_msg msg_0137_D49_00023
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -667,7 +697,7 @@ scr_seq_D49_014:
 	play_cry SPECIES_PSYDUCK, 0
 	npc_msg msg_0137_D49_00024
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -702,7 +732,7 @@ _0928:
 	.byte 0x02, 0x00
 _0933:
 	npc_msg msg_0137_D49_00032
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -892,7 +922,13 @@ scr_seq_D49_021:
 	goto _0A1D
 	.byte 0x02, 0x00
 scr_seq_D49_022:
-	simple_npc_msg msg_0137_D49_00048
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0137_D49_00048
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 
@@ -967,7 +1003,7 @@ _0CEA:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1034,7 +1070,7 @@ _0E12:
 	wait_fade
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1042,7 +1078,7 @@ _0E12:
 _0E44:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1050,7 +1086,7 @@ _0E44:
 _0E58:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

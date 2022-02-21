@@ -295,7 +295,7 @@ _03F7:
 	wait_fanfare
 	register_gear_number PHONE_CONTACT_MISTY
 	npc_msg msg_0363_R25_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -311,7 +311,7 @@ _03F7:
 _043A:
 	setvar VAR_TEMP_x4002, 1
 	npc_msg msg_0363_R25_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -348,28 +348,28 @@ _0456:
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0363_R25_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _04DA:
 	npc_msg msg_0363_R25_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _04E5:
 	npc_msg msg_0363_R25_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _04F0:
 	npc_msg msg_0363_R25_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -391,7 +391,7 @@ scr_seq_R25_001:
 	goto_if_eq _056D
 _0558:
 	npc_msg msg_0363_R25_00014
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -452,7 +452,7 @@ _05F7:
 	apply_movement obj_player, _0684
 	wait_movement
 	npc_msg msg_0363_R25_00017
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	callstd std_fade_end_eusine_music
 	setvar VAR_SCENE_ROUTE_25, 2
@@ -508,7 +508,7 @@ scr_seq_R25_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0363_R25_00017
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -517,7 +517,7 @@ scr_seq_R25_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0363_R25_00017
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

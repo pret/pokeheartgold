@@ -20,7 +20,7 @@ _0024:
 	faceplayer
 	setflag FLAG_UNK_16F
 	npc_msg msg_0577_T24R0501_00003
-	scrcmd_054
+	holdmsg
 	setvar VAR_SPECIAL_x8004, 11
 	callstd std_special_mart
 	apply_movement obj_T24R0501_sunglasses, _00A8
@@ -34,12 +34,12 @@ _0051:
 	lockall
 	faceplayer
 	npc_msg msg_0577_T24R0501_00000
-	scrcmd_049
+	wait_button
 	goto_if_no_item_space ITEM_SECRETPOTION, 1, _009C
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0B9
 	npc_msg msg_0577_T24R0501_00002
-	scrcmd_049
+	wait_button
 	closemsg
 	apply_movement obj_T24R0501_sunglasses, _00A8
 	wait_movement

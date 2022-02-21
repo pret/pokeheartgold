@@ -77,7 +77,7 @@ _00FC:
 	setflag FLAG_UNK_137
 _012A:
 	npc_msg msg_0372_R28R0101_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -110,7 +110,13 @@ _0164:
 	step_end
 scr_seq_R28R0101_001:
 	play_cry SPECIES_FEAROW, 0
-	simple_npc_msg msg_0372_R28R0101_00003
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0372_R28R0101_00003
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	wait_cry
 	end
 	.balign 4, 0

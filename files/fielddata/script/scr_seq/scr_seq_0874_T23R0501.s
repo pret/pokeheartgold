@@ -45,7 +45,7 @@ scr_seq_T23R0501_001:
 	faceplayer
 	buffer_players_name 0
 	npc_msg msg_0571_T23R0501_00000
-	scrcmd_049
+	wait_button
 	closemsg
 	get_player_facing VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
@@ -115,7 +115,7 @@ _0189:
 	setflag FLAG_UNK_AA2
 	npc_msg msg_0571_T23R0501_00005
 _0190:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	compare VAR_UNK_4080, 3
 	goto_if_eq _022D
@@ -150,7 +150,7 @@ _020F:
 	compare VAR_UNK_4080, 3
 	goto_if_eq _022D
 _021F:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -183,14 +183,14 @@ _026E:
 	wait_fanfare
 	register_gear_number PHONE_CONTACT_KURT
 	npc_msg msg_0571_T23R0501_00017
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0289:
 	npc_msg msg_0571_T23R0501_00018
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -243,7 +243,7 @@ scr_seq_T23R0501_002:
 	faceplayer
 	goto_if_set FLAG_UNK_077, _0332
 	npc_msg msg_0571_T23R0501_00011
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -251,7 +251,7 @@ scr_seq_T23R0501_002:
 _0332:
 	goto_if_set FLAG_BEAT_AZALEA_ROCKETS, _0348
 	npc_msg msg_0571_T23R0501_00012
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -262,14 +262,14 @@ _0348:
 	goto_if_eq _02A2
 	goto_if_set FLAG_GAME_CLEAR, _0371
 	npc_msg msg_0571_T23R0501_00013
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0371:
 	npc_msg msg_0571_T23R0501_00014
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -281,13 +281,19 @@ scr_seq_T23R0501_003:
 	play_cry SPECIES_SLOWPOKE, 0
 	npc_msg msg_0571_T23R0501_00020
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_T23R0501_004:
-	simple_npc_msg msg_0571_T23R0501_00021
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0571_T23R0501_00021
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T23R0501_006:
@@ -314,7 +320,7 @@ _03DE:
 _03F4:
 	npc_msg msg_0571_T23R0501_00023
 _03F7:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

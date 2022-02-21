@@ -197,7 +197,7 @@ _0266:
 	wait_cry
 	npc_msg msg_0094_D27R0107_00011
 _0274:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

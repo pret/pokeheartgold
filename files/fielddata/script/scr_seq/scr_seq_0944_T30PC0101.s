@@ -17,14 +17,32 @@ scr_seq_T30PC0101_000:
 	end
 
 scr_seq_T30PC0101_001:
-	simple_npc_msg msg_0632_T30PC0101_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0632_T30PC0101_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T30PC0101_002:
-	simple_npc_msg msg_0632_T30PC0101_00001
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0632_T30PC0101_00001
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T30PC0101_003:
-	simple_npc_msg msg_0632_T30PC0101_00002
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0632_T30PC0101_00002
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

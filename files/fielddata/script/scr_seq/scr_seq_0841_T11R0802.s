@@ -78,7 +78,7 @@ _00E9:
 	show_person obj_T11R0802_mono_pip
 	giveitem_no_check ITEM_PASS, 1
 	npc_msg msg_0541_T11R0802_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	setflag FLAG_UNK_087
@@ -236,7 +236,7 @@ scr_seq_T11R0802_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0541_T11R0802_00012
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
@@ -271,7 +271,7 @@ _03A3:
 	play_cry SPECIES_BANETTE, 0
 	npc_msg msg_0541_T11R0802_00013
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -293,24 +293,48 @@ _03D8:
 	step 3, 1
 	step_end
 scr_seq_T11R0802_001:
-	simple_npc_msg msg_0541_T11R0802_00015
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0541_T11R0802_00015
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T11R0802_002:
-	simple_npc_msg msg_0541_T11R0802_00014
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0541_T11R0802_00014
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T11R0802_006:
 	goto_if_set FLAG_UNK_2FB, _0431
 	compare VAR_UNK_40FF, 2
 	goto_if_eq _0433
-	simple_npc_msg msg_0541_T11R0802_00016
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0541_T11R0802_00016
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 _0431:
 	end
 
 _0433:
-	simple_npc_msg msg_0541_T11R0802_00017
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0541_T11R0802_00017
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

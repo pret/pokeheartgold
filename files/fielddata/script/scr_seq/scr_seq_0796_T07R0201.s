@@ -18,7 +18,13 @@ scr_seq_T07R0201_005:
 	end
 
 scr_seq_T07R0201_000:
-	simple_npc_msg msg_0501_T07R0201_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0501_T07R0201_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T07R0201_001:
@@ -28,7 +34,7 @@ scr_seq_T07R0201_001:
 	play_cry SPECIES_MEOWTH, 0
 	npc_msg msg_0501_T07R0201_00001
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -40,7 +46,7 @@ scr_seq_T07R0201_002:
 	play_cry SPECIES_CLEFAIRY, 0
 	npc_msg msg_0501_T07R0201_00002
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -52,7 +58,7 @@ scr_seq_T07R0201_003:
 	play_cry SPECIES_NIDORAN_F, 0
 	npc_msg msg_0501_T07R0201_00003
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -61,7 +67,7 @@ scr_seq_T07R0201_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0501_T07R0201_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

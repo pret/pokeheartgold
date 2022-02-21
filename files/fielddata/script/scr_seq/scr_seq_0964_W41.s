@@ -22,42 +22,102 @@ scr_seq_W41_000:
 	end
 
 scr_seq_W41_001:
-	simple_npc_msg msg_0746_W41_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0746_W41_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_W41_002:
-	simple_npc_msg msg_0746_W41_00003
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0746_W41_00003
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_W41_003:
-	simple_npc_msg msg_0746_W41_00006
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0746_W41_00006
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_W41_004:
-	simple_npc_msg msg_0746_W41_00012
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0746_W41_00012
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_W41_005:
-	simple_npc_msg msg_0746_W41_00009
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0746_W41_00009
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_W41_006:
-	simple_npc_msg msg_0746_W41_00015
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0746_W41_00015
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_W41_007:
-	simple_npc_msg msg_0746_W41_00018
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0746_W41_00018
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_W41_008:
-	simple_npc_msg msg_0746_W41_00021
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0746_W41_00021
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_W41_009:
-	simple_npc_msg msg_0746_W41_00024
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0746_W41_00024
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_W41_010:
-	simple_npc_msg msg_0746_W41_00027
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0746_W41_00027
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.balign 4, 0

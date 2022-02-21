@@ -1732,12 +1732,12 @@
 .public ScrCmd_NonNpcMsgVar
 .public ScrCmd_NpcMsgVar
 .public ScrCmd_048
-.public ScrCmd_049
-.public ScrCmd_049
-.public ScrCmd_051
+.public ScrCmd_WaitButton
+.public ScrCmd_WaitButton
+.public ScrCmd_WaitButtonOrDpad
 .public ScrCmd_OpenMsg
 .public ScrCmd_CloseMsg
-.public ScrCmd_054
+.public ScrCmd_HoldMsg
 .public ScrCmd_DirectionSignpost
 .public ScrCmd_055
 .public ScrCmd_057
@@ -2031,7 +2031,7 @@
 .public ScrCmd_345
 .public ScrCmd_346
 .public ScrCmd_347
-.public ScrCmd_348
+.public ScrCmd_WaitButtonOrDelay
 .public ScrCmd_PartySelectUI
 .public ScrCmd_350
 .public ScrCmd_PartySelect

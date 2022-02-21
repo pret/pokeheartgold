@@ -21,17 +21,35 @@ _002D:
 	end
 
 scr_seq_D23R0105_001:
-	simple_npc_msg msg_0069_D23R0105_00007
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0069_D23R0105_00007
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D23R0105_003:
-	simple_npc_msg msg_0069_D23R0105_00008
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0069_D23R0105_00008
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D23R0105_002:
 	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_eq _0075
-	simple_npc_msg msg_0069_D23R0105_00006
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0069_D23R0105_00006
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 _0075:
@@ -143,7 +161,13 @@ _021D:
 	end
 
 _022B:
-	simple_npc_msg msg_0069_D23R0105_00005
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0069_D23R0105_00005
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 	.byte 0x00, 0x00
 

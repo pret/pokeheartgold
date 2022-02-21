@@ -175,7 +175,7 @@ _02CC:
 	play_cry SPECIES_DEOXYS, 0
 	npc_msg msg_0326_R03_00005
 _02D5:
-	waitbutton
+	wait_button_or_walk_away
 	wait_cry
 	closemsg
 	releaseall
@@ -183,7 +183,7 @@ _02D5:
 
 _02DF:
 	npc_msg msg_0326_R03_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

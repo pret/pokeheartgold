@@ -11,7 +11,13 @@
 	scrdef_end
 
 scr_seq_D26R0102_000:
-	simple_npc_msg msg_0091_D26R0102_00005
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0091_D26R0102_00005
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_D26R0102_001:
@@ -31,7 +37,7 @@ scr_seq_D26R0102_001:
 _0047:
 	buffer_players_name 0
 	npc_msg msg_0091_D26R0102_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

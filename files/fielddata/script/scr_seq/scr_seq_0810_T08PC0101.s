@@ -17,11 +17,23 @@ scr_seq_T08PC0101_000:
 	end
 
 scr_seq_T08PC0101_001:
-	simple_npc_msg msg_0515_T08PC0101_00000
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0515_T08PC0101_00000
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T08PC0101_002:
-	simple_npc_msg msg_0515_T08PC0101_00001
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0515_T08PC0101_00001
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T08PC0101_003:
@@ -45,7 +57,7 @@ _0089:
 	apply_movement obj_T08PC0101_gsgirl1, _00E4
 _0091:
 	npc_msg msg_0515_T08PC0101_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

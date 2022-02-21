@@ -96,7 +96,7 @@ _0126:
 	setflag FLAG_GOT_TM51_FROM_FALKNER
 	clearflag FLAG_HIDE_NEW_BARK_FRIENDS_ROOM_FRIEND
 	npc_msg msg_0558_T22GYM0101_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -110,7 +110,7 @@ _015E:
 _0168:
 	goto_if_unset FLAG_GOT_TM51_FROM_FALKNER, _0126
 	npc_msg msg_0558_T22GYM0101_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -128,20 +128,26 @@ scr_seq_T22GYM0101_002:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01AA
 	npc_msg msg_0558_T22GYM0101_00007
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _01AA:
 	npc_msg msg_0558_T22GYM0101_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 scr_seq_T22GYM0101_005:
-	simple_npc_msg msg_0558_T22GYM0101_00006
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0558_T22GYM0101_00006
+	wait_button_or_walk_away
+	closemsg
+	releaseall
 	end
 
 scr_seq_T22GYM0101_003:
@@ -158,7 +164,7 @@ scr_seq_T22GYM0101_003:
 _01EF:
 	npc_msg msg_0558_T22GYM0101_00010
 _01F2:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
