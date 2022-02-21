@@ -6,7 +6,7 @@ void InitScriptContext(SCRIPTCONTEXT* ctx, const ScrCmdFunc* cmd_table, u32 cmd_
     ctx->mode = SCRIPT_MODE_STOPPED;
     ctx->script_ptr = NULL;
     ctx->stack_depth = 0;
-    ctx->unk3 = 0;
+    ctx->id = 0;
     ctx->native_ptr = NULL;
     ctx->cmd_table = cmd_table;
     ctx->cmd_count = cmd_count;

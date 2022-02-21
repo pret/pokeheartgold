@@ -20,7 +20,7 @@ extern BOOL ScrCmd_CompareAddrToAddr(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CompareVarToValue(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CompareVarToVar(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_RunScript(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_RunScriptWait(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CallStd(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_RestartCurrentScript(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GoTo(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_ObjectGoTo(SCRIPTCONTEXT *ctx);
@@ -875,7 +875,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_CompareVarToValue,
     ScrCmd_CompareVarToVar,
     ScrCmd_RunScript,
-    ScrCmd_RunScriptWait,
+    ScrCmd_CallStd,
     ScrCmd_RestartCurrentScript,
     ScrCmd_GoTo,
     ScrCmd_ObjectGoTo,

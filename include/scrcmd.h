@@ -1,11 +1,20 @@
 #ifndef POKEHEARTGOLD_SCRCMD_H
 #define POKEHEARTGOLD_SCRCMD_H
 
+#include "constants/scrcmd.h"
 #include "fieldmap.h"
 #include "script.h"
 
 // unk_0203DE74.s
 extern SAVEDATA* ScriptEnvironment_GetSav2Ptr(FieldSystem*);
+
+static inline u16 ScriptGetVar(SCRIPTCONTEXT* ctx) {
+    return VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+}
+
+static inline u16* ScriptGetVarPointer(SCRIPTCONTEXT* ctx) {
+    return GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+}
 
 // Basic commands
 BOOL ScrCmd_Nop(SCRIPTCONTEXT* ctx);
@@ -28,7 +37,7 @@ BOOL ScrCmd_CompareAddrToAddr(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_CompareVarToValue(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_CompareVarToVar(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_RunScript(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_RunScriptWait(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_CallStd(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_RestartCurrentScript(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GoTo(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_ObjectGoTo(SCRIPTCONTEXT* ctx);

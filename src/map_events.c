@@ -7,7 +7,7 @@ void MapEvents_ComputeRamHeader(MAP_EVENTS *events);
 void WildEncounters_ReadFromNarc(ENC_DATA *encounters, u32 mapno);
 void MapScriptHeader_ReadFromNarc(MAP_EVENTS *events, u32 mapno);
 
-extern void InitMapObjectsFromEventTemplates(LocalMapObject*, int, u32, OBJECT_EVENT*);
+extern void InitMapObjectsFromEventTemplates(MapObjectMan*, int, u32, OBJECT_EVENT*);
 
 void Field_AllocateMapEvents(FieldSystem *work, HeapID heapId) {
     GF_ASSERT(work->map_events == NULL);
