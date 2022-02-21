@@ -1562,10 +1562,10 @@ scr_seq_0003_054:
 	.byte 0x02, 0x00
 scr_seq_0003_055:
 	touchscreen_menu_show
-	goto_if_set FLAG_UNK_16F, _15E8
-	goto_if_set FLAG_UNK_170, _160C
-	goto_if_set FLAG_UNK_171, _1630
-	goto_if_set FLAG_UNK_18A, _1654
+	goto_if_set FLAG_SPECIAL_MART_PHARMACY, _15E8
+	goto_if_set FLAG_SPECIAL_MART_BITTER, _160C
+	goto_if_set FLAG_SPECIAL_MART_MAHOGANY_GOOD, _1630
+	goto_if_set FLAG_SPECIAL_MART_MT_MOON, _1654
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 1
 _159E:
@@ -1575,10 +1575,10 @@ _159E:
 	end
 
 _15A6:
-	goto_if_set FLAG_UNK_16F, _15FA
-	goto_if_set FLAG_UNK_170, _161E
-	goto_if_set FLAG_UNK_171, _1642
-	goto_if_set FLAG_UNK_18A, _1666
+	goto_if_set FLAG_SPECIAL_MART_PHARMACY, _15FA
+	goto_if_set FLAG_SPECIAL_MART_BITTER, _161E
+	goto_if_set FLAG_SPECIAL_MART_MAHOGANY_GOOD, _1642
+	goto_if_set FLAG_SPECIAL_MART_MT_MOON, _1666
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 6
 _15DE:

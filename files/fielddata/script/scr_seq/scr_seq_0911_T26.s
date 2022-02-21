@@ -43,7 +43,7 @@ scr_seq_T26_003:
 	setvar VAR_SPECIAL_x8006, 0
 	callstd std_phone_call
 	setflag FLAG_UNK_249
-	setvar VAR_UNK_40A5, 3
+	setvar VAR_SCENE_LIGHTHOUSE_JASMINE, 3
 	end
 
 scr_seq_T26_012:

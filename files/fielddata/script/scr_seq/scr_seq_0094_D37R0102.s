@@ -119,12 +119,12 @@ scr_seq_D37R0102_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	setflag FLAG_UNK_170
+	setflag FLAG_SPECIAL_MART_BITTER
 	npc_msg msg_0117_D37R0102_00000
 	holdmsg
 	setvar VAR_SPECIAL_x8004, 8
 	callstd std_special_mart
-	clearflag FLAG_UNK_170
+	clearflag FLAG_SPECIAL_MART_BITTER
 	releaseall
 	end
 

@@ -250,12 +250,12 @@ scr_seq_D35R0101_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	setflag FLAG_UNK_171
+	setflag FLAG_SPECIAL_MART_MAHOGANY_GOOD
 	npc_msg msg_0111_D35R0101_00010
 	holdmsg
 	setvar VAR_SPECIAL_x8004, 29
 	callstd std_special_mart
-	clearflag FLAG_UNK_171
+	clearflag FLAG_SPECIAL_MART_MAHOGANY_GOOD
 	releaseall
 	end
 

@@ -177,7 +177,7 @@
 #define VAR_UNK_40A2                 0x40A2
 #define VAR_UNK_40A3                 0x40A3
 #define VAR_UNK_40A4                 0x40A4
-#define VAR_UNK_40A5                 0x40A5
+#define VAR_SCENE_LIGHTHOUSE_JASMINE                 0x40A5
 #define VAR_UNK_40A6                 0x40A6
 #define VAR_UNK_40A7                 0x40A7
 #define VAR_UNK_40A8                 0x40A8

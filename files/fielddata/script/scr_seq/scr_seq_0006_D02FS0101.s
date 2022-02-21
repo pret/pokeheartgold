@@ -13,12 +13,12 @@ scr_seq_D02FS0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	setflag FLAG_UNK_18A
+	setflag FLAG_SPECIAL_MART_MT_MOON
 	npc_msg msg_0048_D02FS0101_00001
 	holdmsg
 	setvar VAR_SPECIAL_x8004, 27
 	callstd std_special_mart
-	clearflag FLAG_UNK_18A
+	clearflag FLAG_SPECIAL_MART_MT_MOON
 	releaseall
 	end
 
