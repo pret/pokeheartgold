@@ -65,8 +65,8 @@ struct SaveBlock2 {
     struct SavArrayHeader arrayHeaders[SAVE_BLOCK_NUM]; // 23014
     struct SaveSlotSpec saveSlotSpecs[2]; // 232B4
     struct AsyncWriteManager async_write_man;
-    u32 unk_232F0;
-    u32 unk_232F4;
+    u32 lastGoodSaveSlot;
+    u32 lastGoodSaveNo;
     int boxModifiedFlags;
     u32 newBoxModifiedFlags;
     u16 pcStorageLastCRC;
@@ -914,7 +914,7 @@ static void CreateChunkFooter(SAVEDATA *saveData, void *data, int idx, u32 size)
     footer = (struct SavArrayFooter *)((u8 *)data + size);
 
     footer->magic = SAVE_CHUNK_MAGIC;
-    footer->saveno = saveData->unk_232F4 + 1;
+    footer->saveno = saveData->lastGoodSaveNo + 1;
     footer->size = size;
     footer->idx = idx;
     footer->crc = GF_CalcCRC16(data, size + offsetof(struct SavArrayFooter, crc));
@@ -956,7 +956,7 @@ int WriteExtraSaveChunk(SAVEDATA *saveData, int idx, void *data) {
     hdr = &gExtraSaveChunkHeaders[idx];
     GF_ASSERT(hdr->id == idx);
     size = hdr->sizeFunc() + sizeof(struct SavArrayFooter);
-    if (saveData->unk_232F0 == 1) {
+    if (saveData->lastGoodSaveSlot == 1) {
         CreateChunkFooter(saveData, data, idx, hdr->sizeFunc());
         ret = FlashWriteChunk(hdr->sector * SAVE_SECTOR_SIZE, data, size);
         GF_ASSERT(ValidateChunk(saveData, data, idx, hdr->sizeFunc()) == TRUE);
@@ -1012,10 +1012,10 @@ int sub_02028230(SAVEDATA *saveData, int idx, void *data) {
     }
     if (ret == 1) {
         Sys_ClearSleepDisableFlag(1);
-        return 2;
+        return WRITE_STATUS_SUCCESS;
     }
     Sys_ClearSleepDisableFlag(1);
-    return 3;
+    return WRITE_STATUS_TOTAL_FAIL;
 }
 
 void *ReadExtraSaveChunk(SAVEDATA *saveData, HeapID heapId, int idx, int *ret_p) {
@@ -1042,33 +1042,33 @@ void *ReadExtraSaveChunk(SAVEDATA *saveData, HeapID heapId, int idx, int *ret_p)
 
     *ret_p = 1;
     if (valid1 == TRUE && valid2 == FALSE) {
-        saveData->unk_232F0 = 0;
-        saveData->unk_232F4 = saveno1;
+        saveData->lastGoodSaveSlot = 0;
+        saveData->lastGoodSaveNo = saveno1;
         FlashLoadChunk(hdr->sector * SAVE_SECTOR_SIZE, ret, size);
         return ret;
     }
     if (valid1 == FALSE && valid2 == TRUE) {
-        saveData->unk_232F0 = 1;
-        saveData->unk_232F4 = saveno2;
+        saveData->lastGoodSaveSlot = 1;
+        saveData->lastGoodSaveNo = saveno2;
         FlashLoadChunk((hdr->sector + 64) * SAVE_SECTOR_SIZE, ret, size);
         return ret;
     }
     if (valid1 == TRUE && valid2 == TRUE) {
         if (SaveCounterCompare(saveno1, saveno2) != -1) {
-            saveData->unk_232F0 = 0;
-            saveData->unk_232F4 = saveno1;
+            saveData->lastGoodSaveSlot = 0;
+            saveData->lastGoodSaveNo = saveno1;
             FlashLoadChunk(hdr->sector * SAVE_SECTOR_SIZE, ret, size);
             return ret;
         } else {
-            saveData->unk_232F0 = 1;
-            saveData->unk_232F4 = saveno2;
+            saveData->lastGoodSaveSlot = 1;
+            saveData->lastGoodSaveNo = saveno2;
             FlashLoadChunk((hdr->sector + 64) * SAVE_SECTOR_SIZE, ret, size);
             return ret;
         }
     }
     *ret_p = 2;
-    saveData->unk_232F0 = 0;
-    saveData->unk_232F4 = 0;
+    saveData->lastGoodSaveSlot = 0;
+    saveData->lastGoodSaveNo = 0;
     return ret;
 }
 
