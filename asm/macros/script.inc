@@ -343,15 +343,17 @@
 	.byte \arg0
 	.endm
 
-	; These are both wait_button_or_walk_away commands
+	; Waits for A or B button
 	.macro wait_button
 	.short 49
 	.endm
 
+	; Waits for A, B, or dpad. On pressing dpad, does a turn frame.
 	.macro wait_button_or_walk_away
 	.short 50
 	.endm
 
+	; Waits for A, B, or dpad. No turn frame.
 	.macro wait_button_or_dpad
 	.short 51
 	.endm
@@ -364,6 +366,7 @@
 	.short 53
 	.endm
 
+	; Like closemsg but does not clear the graphics.
 	.macro holdmsg
 	.short 54
 	.endm
