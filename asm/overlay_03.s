@@ -5870,8 +5870,8 @@ ov03_02256D18: ; 0x02256D18
 	pop {r4, pc}
 	thumb_func_end ov03_02256D18
 
-	thumb_func_start ov03_02256D34
-ov03_02256D34: ; 0x02256D34
+	thumb_func_start InitMartUI
+InitMartUI: ; 0x02256D34
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r7, r0, #0
@@ -5985,7 +5985,7 @@ _02256E04:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02256E28: .word ov03_02256E2C
-	thumb_func_end ov03_02256D34
+	thumb_func_end InitMartUI
 
 	thumb_func_start ov03_02256E2C
 ov03_02256E2C: ; 0x02256E2C

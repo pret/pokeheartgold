@@ -159,7 +159,6 @@ Static main
 	Object src/scrcmd_c.o
 	Object asm/scrcmd.o
 	Object src/scrcmd_mart.o
-	Object asm/scrcmd_2.o
 	Object asm/scrcmd_3.o
 	Object asm/scrcmd_4.o
 	Object asm/scrcmd_5.o

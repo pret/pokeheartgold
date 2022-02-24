@@ -6290,7 +6290,7 @@
 .public ov03_02256C84
 .public ov03_02256CB4
 .public ov03_02256D18
-.public ov03_02256D34
+.public InitMartUI
 .public ov03_02256E2C
 .public ov03_0225706C
 .public ov03_02257074
