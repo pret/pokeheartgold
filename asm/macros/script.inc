@@ -3222,7 +3222,7 @@
 	.short 566
 	.endm
 
-	.macro scrcmd_567 arg0, arg1, arg2
+	.macro getdpplprizeitemidandcost arg0, arg1, arg2
 	.short 567
 	.short \arg0
 	.short \arg1

@@ -600,7 +600,7 @@ gScriptCmdTable:
 	.word ScrCmd_564                                    ; 564
 	.word ScrCmd_565                                    ; 565
 	.word ScrCmd_566                                    ; 566
-	.word ScrCmd_567                                    ; 567
+	.word ScrCmd_GetDPPlPrizeItemIdAndCost              ; 567
 	.word ScrCmd_568                                    ; 568
 	.word ScrCmd_569                                    ; 569
 	.word ScrCmd_CheckCoinsVar                                    ; 570

@@ -2247,7 +2247,7 @@
 .public ScrCmd_564
 .public ScrCmd_565
 .public ScrCmd_566
-.public ScrCmd_567
+.public ScrCmd_GetDPPlPrizeItemIdAndCost
 .public ScrCmd_568
 .public ScrCmd_569
 .public ScrCmd_CheckCoinsVar
