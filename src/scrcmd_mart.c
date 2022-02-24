@@ -481,3 +481,59 @@ BOOL ScrCmd_772(SCRIPTCONTEXT *ctx) {
     InitMartUI(ctx->taskman, ctx->fsys, _0210F9CC[0], 4, 0, 0, _0210F9D4[i / 6]);
     return TRUE;
 }
+
+BOOL ScrCmd_834(SCRIPTCONTEXT *ctx) {
+    u16 *sp0;
+    POKEATHLON_SAV *pokeathlon;
+    SCRIPT_STATE *scriptState;
+    int r6;
+    int r4;
+    RTCDate date;
+    const struct MartItem *r3;
+    int i;
+
+    sp0 = ScriptGetVarPointer(ctx);
+    pokeathlon = Save_Pokeathlon_get(ctx->fsys->savedata);
+    r6 = 0;
+    r4 = 0;
+    scriptState = SavArray_Flags_get(ctx->fsys->savedata);
+    GF_RTC_CopyDate(&date);
+    if (Pokedex_GetNatDexFlag(Sav2_Pokedex_get(ctx->fsys->savedata))) {
+        r3 = _0210FA04[date.week + 7];
+    } else {
+        r3 = _0210FA04[date.week];
+    }
+    for (i = 0; i < 12; i++) {
+        if (r3[i].item_id == 0xFFFF) {
+            break;
+        }
+        r6++;
+    }
+    for (i = 0; i < 12; i++) {
+        if (sub_02031AB8(pokeathlon, i)) {
+            r4++;
+        }
+    }
+    if (r6 <= r4) {
+        *sp0 = FALSE;
+    } else {
+        *sp0 = TRUE;
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_835(SCRIPTCONTEXT *ctx) {
+    u16 *ret_ptr;
+    int i;
+    POKEATHLON_SAV *pokeathlon;
+
+    ret_ptr = ScriptGetVarPointer(ctx);
+    pokeathlon = Save_Pokeathlon_get(ctx->fsys->savedata);
+    for (i = 0; i < 27; i++) {
+        if (!sub_02031A78(pokeathlon, i)) {
+            break;
+        }
+    }
+    *ret_ptr = i;
+    return FALSE;
+}
