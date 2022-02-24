@@ -52,7 +52,7 @@ _0082:
 	goto_if_eq _00E0
 	settrainerflag TRAINER_BEAUTY_CHARLOTTE
 	npc_msg msg_0607_T26PC0101_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -66,7 +66,7 @@ _00C4:
 
 _00D5:
 	npc_msg msg_0607_T26PC0101_00007
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

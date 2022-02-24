@@ -49,7 +49,7 @@ _006E:
 _0084:
 	npc_msg msg_0262_P01R0306_00007
 _0087:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -78,7 +78,7 @@ _00E2:
 	wait_se SEQ_SE_DP_PINPON
 	setflag FLAG_BOAT_ARRIVED
 	npc_msg msg_0262_P01R0306_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

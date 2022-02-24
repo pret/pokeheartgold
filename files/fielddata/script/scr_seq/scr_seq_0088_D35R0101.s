@@ -220,7 +220,7 @@ scr_seq_D35R0101_002:
 	compare VAR_UNK_40A8, 2
 	goto_if_ge _031C
 	npc_msg msg_0111_D35R0101_00000
-	scrcmd_054
+	holdmsg
 	setvar VAR_SPECIAL_x8004, 28
 	callstd std_special_mart
 	releaseall
@@ -228,7 +228,7 @@ scr_seq_D35R0101_002:
 
 _031C:
 	npc_msg msg_0111_D35R0101_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -250,12 +250,12 @@ scr_seq_D35R0101_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	setflag FLAG_UNK_171
+	setflag FLAG_SPECIAL_MART_MAHOGANY_GOOD
 	npc_msg msg_0111_D35R0101_00010
-	scrcmd_054
+	holdmsg
 	setvar VAR_SPECIAL_x8004, 29
 	callstd std_special_mart
-	clearflag FLAG_UNK_171
+	clearflag FLAG_SPECIAL_MART_MAHOGANY_GOOD
 	releaseall
 	end
 
@@ -392,7 +392,7 @@ _0539:
 _054F:
 	npc_msg msg_0111_D35R0101_00013
 _0552:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

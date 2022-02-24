@@ -25,7 +25,7 @@ scr_seq_R26R0101_000:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0366_R26R0101_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

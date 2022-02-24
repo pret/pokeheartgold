@@ -42,7 +42,7 @@ _0037:
 	npc_trade_end
 	setflag FLAG_UNK_0BE
 	npc_msg msg_0608_T26R0301_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -50,21 +50,21 @@ _0037:
 _009B:
 	npc_trade_end
 	npc_msg msg_0608_T26R0301_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _00A8:
 	npc_msg msg_0608_T26R0301_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _00B3:
 	npc_msg msg_0608_T26R0301_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

@@ -96,7 +96,7 @@ scr_seq_R22R0101_000:
 	apply_movement obj_player, _0164
 	wait_movement
 	npc_msg msg_0361_R22R0101_00000
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setvar VAR_UNK_4110, 1
 	releaseall
@@ -231,14 +231,14 @@ scr_seq_R22R0101_004:
 	faceplayer
 	goto_if_set FLAG_UNK_12C, _0306
 	npc_msg msg_0361_R22R0101_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0306:
 	npc_msg msg_0361_R22R0101_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -360,14 +360,14 @@ scr_seq_R22R0101_005:
 	faceplayer
 	goto_if_set FLAG_UNK_12B, _049A
 	npc_msg msg_0361_R22R0101_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _049A:
 	npc_msg msg_0361_R22R0101_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -399,7 +399,7 @@ _04F4:
 	wait_fanfare
 	register_gear_number PHONE_CONTACT_JANINE
 	npc_msg msg_0361_R22R0101_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -415,7 +415,7 @@ _04F4:
 _0537:
 	setvar VAR_TEMP_x4005, 1
 	npc_msg msg_0361_R22R0101_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -446,21 +446,21 @@ _0553:
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0361_R22R0101_00014
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _05B4:
 	npc_msg msg_0361_R22R0101_00015
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _05BF:
 	npc_msg msg_0361_R22R0101_00016
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

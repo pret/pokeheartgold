@@ -18,7 +18,7 @@ scr_seq_T29R0101_000:
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0C7
 	npc_msg msg_0627_T29R0101_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	apply_movement obj_T29R0101_gsbigman, _0078
 	wait_movement
@@ -29,7 +29,7 @@ _005A:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0627_T29R0101_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

@@ -59,7 +59,7 @@ _00A5:
 _00EE:
 	setvar VAR_SCENE_POKECENTER_WIFI_BASEMENT, 1
 	npc_msg msg_0267_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -87,7 +87,7 @@ scr_seq_0164_001:
 	.byte 0x02, 0x00
 _0144:
 	npc_msg msg_0267_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -191,21 +191,21 @@ _02F0:
 	.byte 0x02, 0x00
 _0310:
 	npc_msg msg_0267_00012
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _031B:
 	npc_msg msg_0267_00017
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0326:
 	npc_msg msg_0267_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -342,7 +342,7 @@ _04E0:
 	step_end
 _04EC:
 	callstd std_party_illegal
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -358,7 +358,7 @@ _04F8:
 _0516:
 	npc_msg msg_0267_00028
 _0519:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -400,7 +400,7 @@ _05B9:
 	goto _05C4
 	.byte 0x02, 0x00
 _05C4:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -454,7 +454,7 @@ _05D7:
 	.byte 0x00, 0xe3, 0xfc, 0xff, 0xff, 0x61, 0x00, 0x02, 0x00
 _0709:
 	npc_msg msg_0267_00027
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

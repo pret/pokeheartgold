@@ -209,7 +209,7 @@ _02F5:
 _02FD:
 	setvar VAR_UNK_4145, 0
 	npc_msg msg_0108_D32R0401_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -452,7 +452,7 @@ _071D:
 
 _0721:
 	npc_msg msg_0108_D32R0401_00009
-	scrcmd_049
+	wait_button
 	closemsg
 	apply_movement obj_player, _07C8
 	apply_movement VAR_SPECIAL_LAST_TALKED, _07F0
@@ -461,7 +461,7 @@ _0721:
 
 _073C:
 	npc_msg msg_0108_D32R0401_00009
-	scrcmd_049
+	wait_button
 	closemsg
 	apply_movement obj_player, _07C8
 	apply_movement VAR_SPECIAL_LAST_TALKED, _07F0
@@ -601,7 +601,7 @@ scr_seq_D32R0401_001:
 	.byte 0x02, 0x00
 _08D9:
 	scrcmd_345
-	scrcmd_254 VAR_SPECIAL_RESULT
+	save_game_normal VAR_SPECIAL_RESULT
 	scrcmd_346
 	play_se SEQ_SE_DP_SAVE
 	wait_se SEQ_SE_DP_SAVE
@@ -683,7 +683,7 @@ scr_seq_D32R0401_009:
 	play_cry SPECIES_SLOWBRO, 0
 	npc_msg msg_0108_D32R0401_00062
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -750,7 +750,7 @@ _0AFF:
 	goto _0B0E
 	.byte 0x02, 0x00
 _0B0E:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -826,7 +826,7 @@ _0C16:
 	.byte 0x02
 	.byte 0x00
 _0C21:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -902,7 +902,7 @@ _0D29:
 	goto _0D34
 	.byte 0x02, 0x00
 _0D34:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -947,7 +947,7 @@ _0DBC:
 	goto _0DC7
 	.byte 0x02, 0x00
 _0DC7:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

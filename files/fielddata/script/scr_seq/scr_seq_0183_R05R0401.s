@@ -20,7 +20,7 @@ scr_seq_R05R0401_000:
 	setflag FLAG_UNK_131
 _0049:
 	npc_msg msg_0333_R05R0401_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

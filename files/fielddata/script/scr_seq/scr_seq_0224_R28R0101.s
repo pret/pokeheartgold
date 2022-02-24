@@ -77,7 +77,7 @@ _00FC:
 	setflag FLAG_UNK_137
 _012A:
 	npc_msg msg_0372_R28R0101_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

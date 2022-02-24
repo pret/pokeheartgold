@@ -22,7 +22,7 @@ scr_seq_T08R0601_001:
 	play_cry SPECIES_AIPOM, 0
 	npc_msg msg_0518_T08R0601_00001
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -34,7 +34,7 @@ scr_seq_T08R0601_002:
 	play_cry SPECIES_AIPOM, 0
 	npc_msg msg_0518_T08R0601_00002
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -46,7 +46,7 @@ scr_seq_T08R0601_003:
 	play_cry SPECIES_AIPOM, 0
 	npc_msg msg_0518_T08R0601_00003
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

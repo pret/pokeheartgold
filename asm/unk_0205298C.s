@@ -247,7 +247,7 @@ _02052B5A:
 	cmp r0, #0
 	beq _02052B8C
 	ldr r0, [r6, #0xc]
-	bl sub_02027500
+	bl Save_FileDoesNotBelongToPlayer
 	cmp r0, #0
 	bne _02052B7C
 	add r0, r6, #0
@@ -278,7 +278,7 @@ _02052B96:
 	bl SavArray_PlayerParty_get
 	bl HealParty
 	ldr r0, [r6, #0xc]
-	bl sub_020273F0
+	bl SaveGameNormal
 	add r7, r0, #0
 	ldr r0, [r5, #0x3c]
 	cmp r0, #0

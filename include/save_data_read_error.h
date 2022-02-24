@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_SAVE_DATA_READ_ERROR_H
 #define POKEHEARTGOLD_SAVE_DATA_READ_ERROR_H
 
-void ShowSaveDataReadError(int a0);
+#include "heap.h"
+
+void ShowSaveDataReadError(HeapID heapId);
 
 #endif //POKEHEARTGOLD_SAVE_DATA_READ_ERROR_H

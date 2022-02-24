@@ -4116,7 +4116,7 @@ _0222BEFC:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02027550
+	bl Save_PrepareForAsyncWrite
 	mov r0, #0xd2
 	mov r1, #0x47
 	lsl r0, r0, #2
@@ -4174,7 +4174,7 @@ ov44_0222BF6C: ; 0x0222BF6C
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_02027564
+	bl Save_WriteFileAsync
 	cmp r0, #0
 	beq _0222BF9C
 	cmp r0, #1
@@ -4183,7 +4183,7 @@ ov44_0222BF6C: ; 0x0222BF6C
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_020274D8
+	bl Save_ClearStatusFlags
 	b _0222BFA0
 _0222BF9C:
 	add r0, r4, #0

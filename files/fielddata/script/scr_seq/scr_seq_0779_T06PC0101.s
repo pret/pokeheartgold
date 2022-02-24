@@ -22,14 +22,14 @@ scr_seq_T06PC0101_001:
 	faceplayer
 	goto_if_set FLAG_UNK_173, _003C
 	npc_msg msg_0486_T06PC0101_00000
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _003C:
 	npc_msg msg_0486_T06PC0101_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

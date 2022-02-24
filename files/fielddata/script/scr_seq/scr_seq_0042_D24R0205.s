@@ -89,7 +89,7 @@ scr_seq_D24R0205_000:
 	setflag FLAG_HIDE_RUINS_OF_ALPH_TOURISTS
 	setflag FLAG_GOT_UNOWN_REPORT
 	npc_msg msg_0076_D24R0205_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 _016F:
 	setvar VAR_UNK_40CE, 0
@@ -321,7 +321,7 @@ scr_seq_D24R0205_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0076_D24R0205_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

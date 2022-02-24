@@ -97,14 +97,14 @@ _0125:
 
 _014C:
 	npc_msg msg_0560_T22R0301_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0157:
 	npc_msg msg_0560_T22R0301_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -237,7 +237,7 @@ scr_seq_T22R0301_002:
 	apply_movement obj_T22R0301_gsboy1, _035C
 	wait_movement
 	npc_msg msg_0560_T22R0301_00023
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

@@ -4020,7 +4020,7 @@ _02039A36:
 	ldr r0, _02039A9C ; =_021D4150
 	ldr r0, [r0]
 	ldr r0, [r0, #0x28]
-	bl sub_020275A4
+	bl Save_Cancel
 	ldr r1, _02039AA0 ; =gSystem + 0x60
 	mov r0, #1
 	strb r0, [r1, #8]
@@ -4638,12 +4638,12 @@ _02039EE8:
 	beq _02039F64
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_02027550
+	bl Save_PrepareForAsyncWrite
 	mov r0, #2
 	str r0, [r4]
 	b _02039F64
 _02039F00:
-	bl sub_02027564
+	bl Save_WriteFileAsync
 	add r5, r0, #0
 	cmp r5, #2
 	bne _02039F0E
@@ -4671,7 +4671,7 @@ _02039F28:
 	str r0, [r4]
 	b _02039F64
 _02039F38:
-	bl sub_02027564
+	bl Save_WriteFileAsync
 	add r5, r0, #0
 	cmp r5, #1
 	bne _02039F46

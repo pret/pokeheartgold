@@ -26,7 +26,7 @@ scr_seq_T02R0201_002:
 	play_cry SPECIES_SPEAROW, 0
 	npc_msg msg_0456_T02R0201_00002
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -38,7 +38,7 @@ scr_seq_T02R0201_003:
 	play_cry SPECIES_RATTATA, 0
 	npc_msg msg_0456_T02R0201_00003
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

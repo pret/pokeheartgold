@@ -26,7 +26,7 @@ scr_seq_T04R0301_002:
 	play_cry SPECIES_KANGASKHAN, 0
 	npc_msg msg_0473_T04R0301_00002
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -38,7 +38,7 @@ scr_seq_T04R0301_003:
 	play_cry SPECIES_ZUBAT, 0
 	npc_msg msg_0473_T04R0301_00003
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

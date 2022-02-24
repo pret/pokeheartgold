@@ -145,7 +145,7 @@ _01C0:
 
 _01E9:
 	npc_msg msg_0556_T22_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

@@ -53,7 +53,7 @@ _00C1:
 	.byte 0x02, 0x00
 _00DB:
 	npc_msg msg_0212_HIROBA_00000
-	scrcmd_049
+	wait_button
 	closemsg
 	apply_movement obj_player, _0188
 	apply_movement obj_HIROBA_wifisf, _0244

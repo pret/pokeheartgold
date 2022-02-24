@@ -77,7 +77,7 @@ _0108:
 	goto _0118
 	.byte 0x02, 0x00
 _0118:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -424,7 +424,7 @@ _0895:
 	compare VAR_SPECIAL_x8005, 6
 	goto_if_ne _08B3
 	npc_msg msg_0509_T07R0501_00015
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _0A52
 
@@ -528,7 +528,7 @@ _0A3A:
 
 _0A43:
 	npc_msg msg_0509_T07R0501_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _0A52
 	.byte 0x02, 0x00

@@ -474,7 +474,7 @@ ov30_0225D8F8: ; 0x0225D8F8
 	add r4, r0, #0
 	ldr r0, [r4, #0x1c]
 	ldr r0, [r0, #0xc]
-	bl sub_02027500
+	bl Save_FileDoesNotBelongToPlayer
 	cmp r0, #0
 	bne _0225D948
 	add r0, r4, #0
@@ -567,7 +567,7 @@ _0225D998:
 	bl sub_02016624
 	ldr r0, [r4, #0x1c]
 	ldr r0, [r0, #0xc]
-	bl sub_020274E0
+	bl Save_FileExists
 	cmp r0, #1
 	bne _0225D9C4
 	mov r0, #5
@@ -737,7 +737,7 @@ ov30_0225DAEC: ; 0x0225DAEC
 	mov r1, #0xff
 	bl FillWindowPixelBuffer
 	ldr r0, [r4, #0x1c]
-	bl ov01_021F2F70
+	bl Field_PlayerMovementSavingSet
 	str r0, [r4, #0x68]
 	add r0, r4, #0
 	bl ov30_0225DBF4
@@ -792,7 +792,7 @@ ov30_0225DB60: ; 0x0225DB60
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x1c]
-	bl ov01_021F43E8
+	bl Field_SaveGameNormal
 	mov r0, #0xd
 	str r0, [r4, #0xc]
 	mov r0, #0
@@ -806,7 +806,7 @@ ov30_0225DB74: ; 0x0225DB74
 	sub sp, #0xc
 	add r4, r0, #0
 	ldr r0, [r4, #0x68]
-	bl ov01_021F2FF0
+	bl Field_PlayerMovementSavingClear
 	ldr r0, [r4, #0x64]
 	bl sub_0200F450
 	add r0, r4, #0
@@ -872,11 +872,11 @@ _0225DBEE:
 	thumb_func_start ov30_0225DBF4
 ov30_0225DBF4: ; 0x0225DBF4
 	ldr r0, [r0, #0x1c]
-	ldr r3, _0225DBFC ; =sub_02027520
+	ldr r3, _0225DBFC ; =Save_NumModifiedPCBoxesIsMany
 	ldr r0, [r0, #0xc]
 	bx r3
 	.balign 4, 0
-_0225DBFC: .word sub_02027520
+_0225DBFC: .word Save_NumModifiedPCBoxesIsMany
 	thumb_func_end ov30_0225DBF4
 
 	thumb_func_start ov30_0225DC00

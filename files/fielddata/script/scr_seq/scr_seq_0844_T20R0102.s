@@ -15,7 +15,7 @@ scr_seq_T20R0102_000:
 	faceplayer
 	buffer_players_name 0
 	gender_msgbox msg_0544_T20R0102_00000, msg_0544_T20R0102_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

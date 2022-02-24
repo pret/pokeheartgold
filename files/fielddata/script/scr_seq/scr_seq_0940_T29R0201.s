@@ -15,14 +15,14 @@ scr_seq_T29R0201_000:
 	goto_if_set FLAG_RED_GYARADOS_MEET, _003A
 	goto_if_set FLAG_UNK_0C8, _002F
 	npc_msg msg_0628_T29R0201_00000
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _002F:
 	npc_msg msg_0628_T29R0201_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -91,7 +91,7 @@ _0137:
 	setflag FLAG_UNK_139
 	npc_msg msg_0628_T29R0201_00005
 _0146:
-	waitbutton
+	wait_button_or_walk_away
 _0148:
 	closemsg
 	script_overlay_cmd 0, 1

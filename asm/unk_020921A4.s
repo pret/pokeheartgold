@@ -333,7 +333,7 @@ _02092444: ; jump table
 	.short _02092560 - _02092444 - 2 ; case 6
 _02092452:
 	ldr r0, [r4, #0x34]
-	bl sub_020274D4
+	bl Save_GetStatusFlags
 	str r0, [r4, #0x3c]
 	cmp r0, #0
 	bne _02092464

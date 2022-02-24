@@ -20,7 +20,7 @@ scr_seq_0001_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0020_00000
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -29,7 +29,7 @@ scr_seq_0001_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0020_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -38,7 +38,7 @@ scr_seq_0001_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0020_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -47,7 +47,7 @@ scr_seq_0001_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0020_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -56,7 +56,7 @@ scr_seq_0001_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0020_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -65,7 +65,7 @@ scr_seq_0001_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0020_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -74,7 +74,7 @@ scr_seq_0001_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0020_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -83,7 +83,7 @@ scr_seq_0001_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0020_00007
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

@@ -18,14 +18,14 @@ scr_seq_R30R0101_000:
 	setflag FLAG_GOT_APRICORN_BOX
 	setvar VAR_SCENE_ROUTE_30_OW, 1
 	npc_msg msg_0376_R30R0101_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0041:
 	npc_msg msg_0376_R30R0101_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

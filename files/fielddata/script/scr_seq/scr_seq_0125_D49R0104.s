@@ -48,14 +48,14 @@ scr_seq_D49R0104_001:
 	faceplayer
 	goto_if_set FLAG_UNK_0EF, _00A7
 	npc_msg msg_0140_D49R0104_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _00A7:
 	npc_msg msg_0140_D49R0104_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -75,7 +75,7 @@ scr_seq_D49R0104_003:
 	play_cry SPECIES_RATTATA, 0
 	npc_msg msg_0140_D49R0104_00011
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -95,7 +95,7 @@ scr_seq_D49R0104_005:
 	play_cry SPECIES_RATTATA, 0
 	npc_msg msg_0140_D49R0104_00010
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -107,7 +107,7 @@ scr_seq_D49R0104_006:
 	play_cry SPECIES_ZUBAT, 0
 	npc_msg msg_0140_D49R0104_00012
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

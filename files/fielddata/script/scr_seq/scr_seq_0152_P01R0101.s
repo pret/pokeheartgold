@@ -213,7 +213,7 @@ _029B:
 
 _02EE:
 	npc_msg msg_0255_P01R0101_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -227,7 +227,7 @@ _02F9:
 	apply_movement obj_P01R0101_seaman_2, _03F4
 	wait_movement
 	npc_msg msg_0255_P01R0101_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -250,14 +250,14 @@ _0320:
 
 _0356:
 	npc_msg msg_0255_P01R0101_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0361:
 	npc_msg msg_0255_P01R0101_00000
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

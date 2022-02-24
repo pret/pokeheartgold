@@ -76,7 +76,7 @@ _00EE:
 	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 0
 	npc_msg msg_0135_D47R0101_00008
 	npc_msg msg_0135_D47R0101_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_606
 	releaseall
@@ -105,7 +105,7 @@ _017E:
 	call _08B7
 	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 0
 	npc_msg msg_0135_D47R0101_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_606
 	releaseall
@@ -164,7 +164,7 @@ scr_seq_D47R0101_008:
 	goto_if_eq _025B
 _024A:
 	npc_msg msg_0135_D47R0101_00030
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setvar VAR_UNK_4057, 2
 	releaseall
@@ -214,7 +214,7 @@ scr_seq_D47R0101_009:
 	scrcmd_602 1
 	scrcmd_604 48
 	npc_msg msg_0135_D47R0101_00036
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setvar VAR_UNK_4057, 5
 	clearflag FLAG_HIDE_SAFARI_ZONE_WORKERS
@@ -394,7 +394,7 @@ _057E:
 	goto _0587
 
 _0587:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -455,7 +455,7 @@ _067A:
 _0683:
 	touchscreen_menu_show
 	npc_msg msg_0135_D47R0101_00053
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -482,14 +482,14 @@ _06B1:
 	setvar VAR_SPECIAL_x8005, 1000
 	buffer_int 2, VAR_SPECIAL_x8005
 	npc_msg msg_0135_D47R0101_00016
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _06E7:
 	npc_msg msg_0135_D47R0101_00017
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -573,7 +573,7 @@ _0773:
 _0846:
 	scrcmd_114
 	npc_msg msg_0135_D47R0101_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -588,7 +588,7 @@ _0853:
 _086B:
 	npc_msg msg_0135_D47R0101_00012
 _086E:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -603,7 +603,7 @@ _0876:
 _088E:
 	npc_msg msg_0135_D47R0101_00010
 _0891:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -611,7 +611,7 @@ _0891:
 _0899:
 	goto_if_set FLAG_UNK_183, _0707
 	npc_msg msg_0135_D47R0101_00018
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -690,14 +690,14 @@ _09C6:
 _09CF:
 	touchscreen_menu_show
 	npc_msg msg_0135_D47R0101_00026
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _09DC:
 	npc_msg msg_0135_D47R0101_00025
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -771,7 +771,7 @@ _0B11:
 	scrcmd_283
 	touchscreen_menu_show
 	npc_msg msg_0135_D47R0101_00087
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -779,7 +779,7 @@ _0B11:
 _0B20:
 	scrcmd_283
 	npc_msg msg_0135_D47R0101_00085
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -809,7 +809,7 @@ _0B88:
 _0B94:
 	scrcmd_283
 	npc_msg msg_0135_D47R0101_00087
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -818,7 +818,7 @@ _0B94:
 _0BA3:
 	scrcmd_283
 	npc_msg msg_0135_D47R0101_00085
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -836,7 +836,7 @@ _0BB2:
 	npc_msg msg_0135_D47R0101_00082
 	npc_msg msg_0135_D47R0101_00088
 	scrcmd_345
-	scrcmd_254 VAR_SPECIAL_RESULT
+	save_game_normal VAR_SPECIAL_RESULT
 	scrcmd_346
 	buffer_players_name 0
 	npc_msg msg_0135_D47R0101_00089
@@ -851,7 +851,7 @@ _0BB2:
 
 _0BFC:
 	npc_msg msg_0135_D47R0101_00085
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -860,7 +860,7 @@ _0BFC:
 	.byte 0xeb, 0x02, 0x61, 0x00, 0x02, 0x00
 _0C16:
 	npc_msg msg_0135_D47R0101_00085
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -868,7 +868,7 @@ _0C16:
 _0C21:
 	goto_if_set FLAG_UNK_183, _09FC
 	npc_msg msg_0135_D47R0101_00018
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -894,7 +894,7 @@ _0C4C:
 
 _0C84:
 	npc_msg msg_0135_D47R0101_00060
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -960,7 +960,7 @@ _0CCC:
 _0D9F:
 	scrcmd_114
 	npc_msg msg_0135_D47R0101_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -975,7 +975,7 @@ _0DAC:
 _0DC4:
 	npc_msg msg_0135_D47R0101_00012
 _0DC7:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -990,14 +990,14 @@ _0DCF:
 _0DE7:
 	npc_msg msg_0135_D47R0101_00010
 _0DEA:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0DF2:
 	npc_msg msg_0135_D47R0101_00084
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1005,7 +1005,7 @@ _0DF2:
 _0DFD:
 	goto_if_set FLAG_UNK_183, _0C4C
 	npc_msg msg_0135_D47R0101_00018
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1032,21 +1032,21 @@ _0E48:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0E68
 	npc_msg msg_0135_D47R0101_00095
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0E68:
 	npc_msg msg_0135_D47R0101_00096
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0E73:
 	npc_msg msg_0135_D47R0101_00092
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1079,7 +1079,7 @@ scr_seq_D47R0101_005:
 
 _0EF1:
 	npc_msg msg_0135_D47R0101_00028
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1088,7 +1088,7 @@ _0EFC:
 	scrcmd_561 0, 2, 10, 6
 	play_se SEQ_SE_DP_KI_GASYAN
 	npc_msg msg_0135_D47R0101_00091
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

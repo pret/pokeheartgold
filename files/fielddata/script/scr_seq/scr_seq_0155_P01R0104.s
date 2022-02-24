@@ -99,7 +99,7 @@ _0126:
 
 _0144:
 	npc_msg msg_0258_P01R0104_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

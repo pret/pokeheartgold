@@ -51,7 +51,7 @@ _0089:
 	wait_fanfare
 	register_gear_number PHONE_CONTACT_BUGSY
 	npc_msg msg_0132_D46R0101_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -67,7 +67,7 @@ _0089:
 _00CC:
 	setvar VAR_TEMP_x4002, 1
 	npc_msg msg_0132_D46R0101_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

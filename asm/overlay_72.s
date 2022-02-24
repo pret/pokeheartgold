@@ -2028,7 +2028,7 @@ ov72_0223886C: ; 0x0223886C
 	b _0223893A
 _02238922:
 	mov r0, #4
-	bl sub_0201A4CC
+	bl Sys_ClearSleepDisableFlag
 	mov r0, #0
 	str r0, [r4, #0x1c]
 	b _0223893A
@@ -3097,7 +3097,7 @@ ov72_022391E8: ; 0x022391E8
 	ldr r0, [r0, #0xc]
 	bl sub_02039418
 	mov r0, #4
-	bl sub_0201A4BC
+	bl Sys_SetSleepDisableFlag
 	add r0, r4, #0
 	bl ov72_0223A414
 	add r0, r4, #0
@@ -4764,7 +4764,7 @@ ov72_02239E9C: ; 0x02239E9C
 	ldr r0, [r4]
 	mov r1, #2
 	ldr r0, [r0, #0xc]
-	bl sub_02027550
+	bl Save_PrepareForAsyncWrite
 	mov r0, #0x28
 	str r0, [r4, #0x1c]
 	mov r0, #3
@@ -4778,7 +4778,7 @@ ov72_02239EB4: ; 0x02239EB4
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_02027564
+	bl Save_WriteFileAsync
 	cmp r0, #2
 	bne _02239ECE
 	ldr r0, [r4, #0x20]

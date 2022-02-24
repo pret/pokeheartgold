@@ -23,7 +23,7 @@ scr_seq_T07R0106_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0499_T07R0106_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -137,7 +137,7 @@ _01F9:
 	end
 
 _0205:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_114
 	releaseall

@@ -107,7 +107,7 @@ scr_seq_T25GYM0101_000:
 	move_person obj_T25GYM0101_gsgirl1, 13, 0, 15, 0
 _017D:
 	npc_msg msg_0582_T25GYM0101_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	setvar VAR_UNK_410A, 1
@@ -132,7 +132,7 @@ _01C4:
 	goto_if_no_item_space ITEM_TM45, 1, _01F8
 	callstd std_give_item_verbose
 	npc_msg msg_0582_T25GYM0101_00007
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setflag FLAG_UNK_085
 	releaseall
@@ -147,7 +147,7 @@ _01F8:
 _0202:
 	goto_if_unset FLAG_UNK_085, _01C4
 	npc_msg msg_0582_T25GYM0101_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -200,14 +200,14 @@ scr_seq_T25GYM0101_002:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _02AA
 	npc_msg msg_0582_T25GYM0101_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _02AA:
 	npc_msg msg_0582_T25GYM0101_00011
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -226,7 +226,7 @@ scr_seq_T25GYM0101_003:
 _02DC:
 	npc_msg msg_0582_T25GYM0101_00013
 _02DF:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

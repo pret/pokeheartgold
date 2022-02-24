@@ -46,7 +46,7 @@ _003B:
 	npc_trade_end
 	setflag FLAG_UNK_0D0
 	npc_msg msg_0634_T30R0301_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -54,21 +54,21 @@ _003B:
 _00B2:
 	npc_trade_end
 	npc_msg msg_0634_T30R0301_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _00BF:
 	npc_msg msg_0634_T30R0301_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _00CA:
 	npc_msg msg_0634_T30R0301_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -94,7 +94,7 @@ scr_seq_T30R0301_001:
 	wait_fanfare
 	buffer_mon_species_name 0, VAR_SPECIAL_x8000
 	npc_msg msg_0634_T30R0301_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -126,7 +126,7 @@ _0178:
 _018E:
 	npc_msg msg_0634_T30R0301_00009
 _0191:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -134,7 +134,7 @@ _0191:
 _0199:
 	buffer_mon_species_name 0, VAR_SPECIAL_x8000
 	npc_msg msg_0634_T30R0301_00014
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

@@ -92,7 +92,7 @@ _0136:
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_TM89_FROM_BUGSY
 	npc_msg msg_0567_T23GYM0102_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -111,7 +111,7 @@ _0174:
 _017A:
 	goto_if_unset FLAG_GOT_TM89_FROM_BUGSY, _0136
 	npc_msg msg_0567_T23GYM0102_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

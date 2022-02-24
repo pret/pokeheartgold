@@ -1110,7 +1110,7 @@ ov62_021E61AC: ; 0x021E61AC
 	add r4, r1, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_0201A4BC
+	bl Sys_SetSleepDisableFlag
 	mov r1, #0x12
 	add r0, r4, #0
 	lsl r1, r1, #4
@@ -1148,7 +1148,7 @@ ov62_021E61FC: ; 0x021E61FC
 	ldr r0, [r0, #0x1c]
 	bl FreeToHeap
 	mov r0, #8
-	bl sub_0201A4CC
+	bl Sys_ClearSleepDisableFlag
 	pop {r3, pc}
 	thumb_func_end ov62_021E61FC
 

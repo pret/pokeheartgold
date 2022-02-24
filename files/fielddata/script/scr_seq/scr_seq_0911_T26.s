@@ -43,7 +43,7 @@ scr_seq_T26_003:
 	setvar VAR_SPECIAL_x8006, 0
 	callstd std_phone_call
 	setflag FLAG_UNK_249
-	setvar VAR_UNK_40A5, 3
+	setvar VAR_SCENE_LIGHTHOUSE_JASMINE, 3
 	end
 
 scr_seq_T26_012:
@@ -345,7 +345,7 @@ _04E2:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -353,7 +353,7 @@ _04E2:
 _051C:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -361,7 +361,7 @@ _051C:
 _0530:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

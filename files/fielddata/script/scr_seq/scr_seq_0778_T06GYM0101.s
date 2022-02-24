@@ -190,7 +190,7 @@ _027D:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0485_T06GYM0101_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -199,11 +199,11 @@ _028E:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0485_T06GYM0101_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	vermilion_gym_lock_action 0, 0
 	npc_msg msg_0485_T06GYM0101_00011
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -212,13 +212,13 @@ _02AA:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0485_T06GYM0101_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	vermilion_gym_lock_action 1, 0
 	setflag FLAG_SYS_SOLVED_LT_SURGE_GYM
 	stop_se SEQ_SE_GS_DENGEKIBARIA
 	npc_msg msg_0485_T06GYM0101_00012
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -227,7 +227,7 @@ _02CE:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0485_T06GYM0101_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	vermilion_gym_lock_action 0, 1
 	resample_vermilion_gym_cans
@@ -238,7 +238,7 @@ _02E5:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0485_T06GYM0101_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -300,7 +300,7 @@ _0389:
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_181
 	npc_msg msg_0485_T06GYM0101_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -314,7 +314,7 @@ _03BD:
 _03C7:
 	goto_if_unset FLAG_UNK_181, _0389
 	npc_msg msg_0485_T06GYM0101_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -332,14 +332,14 @@ scr_seq_T06GYM0101_024:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0409
 	npc_msg msg_0485_T06GYM0101_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0409:
 	npc_msg msg_0485_T06GYM0101_00007
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -358,7 +358,7 @@ scr_seq_T06GYM0101_025:
 _043B:
 	npc_msg msg_0485_T06GYM0101_00014
 _043E:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

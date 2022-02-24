@@ -105,7 +105,7 @@ _013F:
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
 	npc_msg msg_0497_T07R0104_00007
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -122,7 +122,7 @@ _013F:
 _0189:
 	setvar VAR_TEMP_x4004, 1
 	npc_msg msg_0497_T07R0104_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -164,21 +164,21 @@ _01CD:
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0497_T07R0104_00012
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0236:
 	npc_msg msg_0497_T07R0104_00013
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0241:
 	npc_msg msg_0497_T07R0104_00014
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -206,7 +206,7 @@ scr_seq_T07R0104_000:
 	lockall
 	faceplayer
 	callstd std_mart_intro
-	scrcmd_054
+	holdmsg
 	setvar VAR_SPECIAL_x8004, 21
 	callstd std_special_mart
 	releaseall
@@ -224,7 +224,7 @@ scr_seq_T07R0104_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0497_T07R0104_00018
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

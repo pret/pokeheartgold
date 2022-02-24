@@ -59,7 +59,7 @@ scr_seq_T25R1203_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0602_T25R1203_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -68,7 +68,7 @@ scr_seq_T25R1203_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0602_T25R1203_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

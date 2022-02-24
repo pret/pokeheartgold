@@ -101,7 +101,7 @@ _0118:
 	goto_if_eq _0186
 	script_overlay_cmd 4, 0
 	scrcmd_809 VAR_TEMP_x4000
-	scrcmd_049
+	wait_button
 	closemsg
 	script_overlay_cmd 4, 1
 	scrcmd_808 VAR_TEMP_x4000
@@ -114,7 +114,7 @@ _0118:
 
 _0186:
 	npc_msg msg_0726_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

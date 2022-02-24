@@ -50,7 +50,7 @@ scr_seq_D23R0103_003:
 _0098:
 	npc_msg msg_0067_D23R0103_00002
 _009B:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -75,14 +75,14 @@ _00E7:
 	goto _0100
 
 _00ED:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _00F5:
 	npc_msg msg_0067_D23R0103_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -93,7 +93,7 @@ _0100:
 	goto_if_no_item_space ITEM_TM11, 1, _0142
 	callstd std_give_item_verbose
 	npc_msg msg_0067_D23R0103_00007
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	setflag FLAG_UNK_08F
@@ -101,14 +101,14 @@ _0100:
 
 _0142:
 	npc_msg msg_0067_D23R0103_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _014D:
 	npc_msg msg_0067_D23R0103_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -121,7 +121,7 @@ scr_seq_D23R0103_006:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _01B4
 	npc_msg msg_0067_D23R0103_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -137,7 +137,7 @@ scr_seq_D23R0103_007:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _01B4
 	npc_msg msg_0067_D23R0103_00013
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -158,7 +158,7 @@ _01B4:
 
 _01E2:
 	npc_msg msg_0067_D23R0103_00014
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

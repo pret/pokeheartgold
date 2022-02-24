@@ -20,7 +20,7 @@ scr_seq_T22R0701_000:
 _0026:
 	npc_msg msg_0563_T22R0701_00001
 _0029:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

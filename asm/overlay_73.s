@@ -8446,7 +8446,7 @@ ov73_021E9B9C: ; 0x021E9B9C
 	ldr r0, [r4]
 	mov r1, #2
 	ldr r0, [r0, #0xc]
-	bl sub_02027550
+	bl Save_PrepareForAsyncWrite
 	mov r0, #0x28
 	str r0, [r4, #0x1c]
 	mov r0, #3
@@ -8460,7 +8460,7 @@ ov73_021E9BB4: ; 0x021E9BB4
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_02027564
+	bl Save_WriteFileAsync
 	cmp r0, #2
 	bne _021E9BCE
 	ldr r0, [r4, #0x20]

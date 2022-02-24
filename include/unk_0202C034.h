@@ -1,0 +1,9 @@
+#ifndef POKEHEARTGOLD_UNK_0202C034_H
+#define POKEHEARTGOLD_UNK_0202C034_H
+
+#include "save.h"
+
+void sub_0202C6FC(SAVEDATA *saveData);
+void sub_0202C714(SAVEDATA *saveData);
+
+#endif //POKEHEARTGOLD_UNK_0202C034_H

@@ -48,7 +48,7 @@ _008A:
 _0092:
 	wait_movement
 	npc_msg msg_0369_R27_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	setvar VAR_UNK_408A, 1

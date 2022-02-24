@@ -27,7 +27,7 @@ scr_seq_R26R0201_000:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0049
 	npc_msg msg_0367_R26R0201_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 _0049:
 	releaseall

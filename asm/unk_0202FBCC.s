@@ -298,7 +298,7 @@ _0202FDBA:
 	bne _0202FDE8
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_02027550
+	bl Save_PrepareForAsyncWrite
 	ldrh r0, [r4]
 	add r0, r0, #1
 	strh r0, [r4]
@@ -310,7 +310,7 @@ _0202FDE8:
 	add r0, r6, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _0202FDF2:
-	bl sub_02027564
+	bl Save_WriteFileAsync
 	add r5, r0, #0
 	sub r0, r5, #2
 	cmp r0, #1
@@ -364,7 +364,7 @@ _0202FE36:
 	add r0, r7, #0
 	add r1, r5, #0
 	mov r2, #0x58
-	bl sub_020275C4
+	bl SavArray_CalcCRC16
 	add r5, #0x60
 	strh r0, [r5]
 	ldr r0, _0202FEA8 ; =0x0000E281
@@ -373,7 +373,7 @@ _0202FE36:
 	strh r0, [r4, r2]
 	add r0, r7, #0
 	add r2, r2, #2
-	bl sub_020275C4
+	bl SavArray_CalcCRC16
 	ldr r1, _0202FEB0 ; =0x00001C64
 	ldr r3, _0202FEB4 ; =0x0000FFFF
 	strh r0, [r4, r1]
@@ -780,7 +780,7 @@ sub_02030154: ; 0x02030154
 	add r5, r1, #0
 	add r4, #0xe8
 	add r5, #0x84
-	bl sub_020274E8
+	bl Save_CheckExtraChunksExist
 	cmp r0, #0
 	bne _0203016A
 	mov r0, #1
@@ -830,7 +830,7 @@ _020301AC:
 _020301B0:
 	add r1, r5, #0
 	mov r2, #0x58
-	bl sub_020275C4
+	bl SavArray_CalcCRC16
 	add r5, #0x60
 	ldrh r1, [r5]
 	cmp r0, r1
@@ -841,7 +841,7 @@ _020301C4:
 	ldr r2, _02030244 ; =0x00001C64
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_020275C4
+	bl SavArray_CalcCRC16
 	ldr r1, _02030244 ; =0x00001C64
 	ldrh r1, [r4, r1]
 	cmp r0, r1

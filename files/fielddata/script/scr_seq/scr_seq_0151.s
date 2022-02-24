@@ -182,7 +182,7 @@ _0224:
 	goto _0262
 	.byte 0x02, 0x00
 _0260:
-	waitbutton
+	wait_button_or_walk_away
 _0262:
 	closemsg
 	endstd
@@ -226,7 +226,7 @@ _02BC:
 
 _02F3:
 	npc_msg msg_0246_00021
-	waitbutton
+	wait_button_or_walk_away
 _02F8:
 	closemsg
 	return
@@ -544,7 +544,7 @@ scr_seq_0151_028:
 
 _083D:
 	npc_msg msg_0246_00022
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 _0844:
 	releaseall

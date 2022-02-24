@@ -45,14 +45,14 @@ _0062:
 
 _009C:
 	npc_msg msg_0508_T07R0401_00021
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setvar VAR_TEMP_x4001, 1
 	return
 
 _00AB:
 	npc_msg msg_0508_T07R0401_00022
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	script_overlay_cmd 3, 1
 	setvar VAR_TEMP_x4001, 1
@@ -293,7 +293,7 @@ scr_seq_T07R0401_000:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0428
 	npc_msg msg_0508_T07R0401_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -357,7 +357,7 @@ _0523:
 _052E:
 	npc_msg msg_0508_T07R0401_00004
 _0531:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	touchscreen_menu_show
 	scrcmd_117
@@ -388,7 +388,7 @@ scr_seq_T07R0401_005:
 	setflag FLAG_UNK_17C
 _059B:
 	npc_msg msg_0508_T07R0401_00013
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	script_overlay_cmd 3, 1
@@ -396,7 +396,7 @@ _059B:
 
 _05AA:
 	npc_msg msg_0508_T07R0401_00014
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	script_overlay_cmd 3, 1
@@ -404,7 +404,7 @@ _05AA:
 
 _05B9:
 	npc_msg msg_0508_T07R0401_00015
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	script_overlay_cmd 3, 1
@@ -438,7 +438,7 @@ scr_seq_T07R0401_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0508_T07R0401_00018
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -447,7 +447,7 @@ scr_seq_T07R0401_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0508_T07R0401_00019
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

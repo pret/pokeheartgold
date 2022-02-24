@@ -373,7 +373,7 @@ _05E8:
 	end
 
 _05FC:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 _0600:
 	script_overlay_cmd 2, 1
@@ -437,7 +437,7 @@ _06D3:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -445,7 +445,7 @@ _06D3:
 _070D:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -453,7 +453,7 @@ _070D:
 _0721:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -493,7 +493,7 @@ scr_seq_T03R0101_019:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0464_T03R0101_00013
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setvar VAR_UNK_4130, 5
 	releaseall
@@ -683,7 +683,7 @@ scr_seq_T03R0101_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0464_T03R0101_00022
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -692,7 +692,7 @@ scr_seq_T03R0101_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0464_T03R0101_00023
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -701,7 +701,7 @@ scr_seq_T03R0101_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0464_T03R0101_00024
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -710,7 +710,7 @@ scr_seq_T03R0101_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0464_T03R0101_00025
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -719,7 +719,7 @@ scr_seq_T03R0101_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0464_T03R0101_00026
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -728,7 +728,7 @@ scr_seq_T03R0101_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0464_T03R0101_00027
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -737,7 +737,7 @@ scr_seq_T03R0101_011:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0464_T03R0101_00028
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -746,7 +746,7 @@ scr_seq_T03R0101_012:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0464_T03R0101_00029
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

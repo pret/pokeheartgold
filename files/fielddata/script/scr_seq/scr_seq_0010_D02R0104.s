@@ -599,7 +599,7 @@ _0825:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	buffer_pocket_name 2, VAR_SPECIAL_RESULT
 	npc_msg msg_0051_D02R0104_00003
-	waitbutton
+	wait_button_or_walk_away
 	setvar VAR_SPECIAL_RESULT, 1
 _0860:
 	closemsg
@@ -609,7 +609,7 @@ _0860:
 _0866:
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0051_D02R0104_00004
-	waitbutton
+	wait_button_or_walk_away
 	setvar VAR_SPECIAL_RESULT, 0
 	goto _0860
 	.byte 0x02, 0x00
@@ -617,7 +617,7 @@ scr_seq_D02R0104_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0051_D02R0104_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

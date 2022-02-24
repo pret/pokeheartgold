@@ -13,7 +13,7 @@ scr_seq_T03R0201_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0465_T03R0201_00000
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -24,7 +24,7 @@ scr_seq_T03R0201_001:
 	play_cry SPECIES_NIDORAN_M, 0
 	npc_msg msg_0465_T03R0201_00001
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

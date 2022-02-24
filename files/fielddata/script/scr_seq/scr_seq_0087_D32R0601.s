@@ -83,7 +83,7 @@ _0132:
 _013A:
 	setvar VAR_UNK_414A, 0
 	npc_msg msg_0110_D32R0601_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -330,7 +330,7 @@ _056B:
 
 _056F:
 	npc_msg msg_0110_D32R0601_00032
-	scrcmd_049
+	wait_button
 	closemsg
 	apply_movement obj_player, _0618
 	apply_movement VAR_SPECIAL_LAST_TALKED, _0638
@@ -339,7 +339,7 @@ _056F:
 
 _058A:
 	npc_msg msg_0110_D32R0601_00032
-	scrcmd_049
+	wait_button
 	closemsg
 	apply_movement obj_player, _0618
 	apply_movement VAR_SPECIAL_LAST_TALKED, _0638
@@ -474,7 +474,7 @@ scr_seq_D32R0601_001:
 	.byte 0x00
 _0711:
 	scrcmd_345
-	scrcmd_254 VAR_SPECIAL_RESULT
+	save_game_normal VAR_SPECIAL_RESULT
 	scrcmd_346
 	play_se SEQ_SE_DP_SAVE
 	wait_se SEQ_SE_DP_SAVE
@@ -572,7 +572,7 @@ scr_seq_D32R0601_015:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0110_D32R0601_00054
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -581,7 +581,7 @@ scr_seq_D32R0601_016:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0110_D32R0601_00055
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

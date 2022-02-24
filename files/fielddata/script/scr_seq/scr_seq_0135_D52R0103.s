@@ -89,7 +89,7 @@ scr_seq_D52R0103_000:
 	goto_if_eq _0134
 _0123:
 	npc_msg msg_0150_D52R0103_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setvar VAR_UNK_40F9, 9
 	releaseall

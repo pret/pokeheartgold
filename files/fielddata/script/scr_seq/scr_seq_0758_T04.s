@@ -45,14 +45,14 @@ scr_seq_T04_000:
 	faceplayer
 	goto_if_set FLAG_RESTORED_POWER, _0093
 	npc_msg msg_0467_T04_00000
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0093:
 	npc_msg msg_0467_T04_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -73,7 +73,7 @@ scr_seq_T04_003:
 	play_cry SPECIES_SLOWBRO, 0
 	wait_cry
 	npc_msg msg_0467_T04_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -102,7 +102,7 @@ _0123:
 _012C:
 	npc_msg msg_0467_T04_00009
 _012F:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -113,7 +113,7 @@ scr_seq_T04_005:
 	faceplayer
 	npc_msg msg_0467_T04_00010
 	npc_msg msg_0467_T04_00011
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -226,7 +226,7 @@ _02BB:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -234,7 +234,7 @@ _02BB:
 _02F5:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -242,7 +242,7 @@ _02F5:
 _0309:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

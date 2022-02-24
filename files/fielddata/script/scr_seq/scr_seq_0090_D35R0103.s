@@ -270,7 +270,7 @@ _03A0:
 
 _03A2:
 	npc_msg msg_0113_D35R0103_00020
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

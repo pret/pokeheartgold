@@ -22,7 +22,7 @@ scr_seq_T06R0301_000:
 	goto_if_unset FLAG_UNK_0F8, _0044
 	buffer_players_name 0
 	gender_msgbox msg_0488_T06R0301_00004, msg_0488_T06R0301_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -39,21 +39,21 @@ _0044:
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0F8
 	npc_msg msg_0488_T06R0301_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0093:
 	npc_msg msg_0488_T06R0301_00007
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _009E:
 	npc_msg msg_0488_T06R0301_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -75,14 +75,14 @@ scr_seq_T06R0301_002:
 	goto_if_set FLAG_UNK_119, _0116
 	goto_if_set FLAG_RESTORED_POWER, _010B
 	npc_msg msg_0488_T06R0301_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _010B:
 	npc_msg msg_0488_T06R0301_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -100,7 +100,7 @@ _0116:
 
 _0141:
 	npc_msg msg_0488_T06R0301_00013
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -116,7 +116,7 @@ scr_seq_T06R0301_004:
 	play_cry SPECIES_BAYLEEF, 0
 	npc_msg msg_0488_T06R0301_00016
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

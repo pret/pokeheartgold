@@ -16,7 +16,7 @@ scr_seq_T23R0201_000:
 	faceplayer
 	goto_if_set FLAG_BEAT_AZALEA_ROCKETS, _002C
 	npc_msg msg_0570_T23R0201_00000
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -24,14 +24,14 @@ scr_seq_T23R0201_000:
 _002C:
 	goto_if_set FLAG_UNK_080, _0042
 	npc_msg msg_0570_T23R0201_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0042:
 	npc_msg msg_0570_T23R0201_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -42,7 +42,7 @@ scr_seq_T23R0201_001:
 	faceplayer
 	goto_if_set FLAG_UNK_080, _006B
 	npc_msg msg_0570_T23R0201_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -50,7 +50,7 @@ scr_seq_T23R0201_001:
 _006B:
 	goto_if_set FLAG_UNK_081, _00AA
 	npc_msg msg_0570_T23R0201_00004
-	scrcmd_049
+	wait_button
 	goto_if_no_item_space ITEM_CHARCOAL, 1, _00B5
 	callstd std_obtain_item_verbose
 	setflag FLAG_UNK_081
@@ -60,7 +60,7 @@ _006B:
 
 _00AA:
 	npc_msg msg_0570_T23R0201_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -78,7 +78,7 @@ scr_seq_T23R0201_002:
 	play_cry SPECIES_FARFETCHD, 0
 	npc_msg msg_0570_T23R0201_00008
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

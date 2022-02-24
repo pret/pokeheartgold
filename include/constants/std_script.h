@@ -43,7 +43,13 @@
 #define std_fade_end_clair_music        2045
 #define std_enter_global_terminal       2046
 #define std_pokemart                    2048
+#define std_pokemart_buy                2049
+#define std_pokemart_sell               2050
+#define std_pokemart_cancel             2051
 #define std_special_mart                2052
+#define std_special_mart_buy            2053
+#define std_special_mart_sell           2054
+#define std_special_mart_cancel         2055
 #define std_play_pichu_music            2065
 #define std_fade_end_pichu_music        2066
 #define std_play_kimono_girl_music      2067

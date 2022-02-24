@@ -81,7 +81,7 @@ _0102:
 
 _0108:
 	npc_msg msg_0460_T03_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -143,7 +143,7 @@ _01DE:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -151,7 +151,7 @@ _01DE:
 _0218:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -159,7 +159,7 @@ _0218:
 _022C:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -319,7 +319,7 @@ _03F4:
 _042C:
 	npc_msg msg_0460_T03_00009
 _042F:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setvar VAR_UNK_4083, 3
 	releaseall

@@ -21,7 +21,7 @@ scr_seq_T05R0701_003:
 	goto_if_set FLAG_GOT_EXPN_CARD, _0069
 	goto_if_set FLAG_RESTORED_POWER, _0047
 	npc_msg msg_0482_T05R0701_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -37,7 +37,7 @@ _0047:
 	register_pokegear_card 2
 _0069:
 	npc_msg msg_0482_T05R0701_00007
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -48,14 +48,14 @@ scr_seq_T05R0701_004:
 	faceplayer
 	goto_if_set FLAG_GOT_EXPN_CARD, _0092
 	npc_msg msg_0482_T05R0701_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0092:
 	npc_msg msg_0482_T05R0701_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -76,7 +76,7 @@ scr_seq_T05R0701_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0482_T05R0701_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -85,7 +85,7 @@ scr_seq_T05R0701_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0482_T05R0701_00011
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

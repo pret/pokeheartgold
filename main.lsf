@@ -87,8 +87,8 @@ Static main
 	Object asm/unk_02026E84.o
 	Object asm/unk_02026EB4.o
 	Object asm/unk_02027010.o
-	Object asm/unk_020270C4.o
-	Object asm/save.o
+	Object src/save_arrays.o
+	Object src/save.o
 	Object asm/sav_system_info.o
 	Object src/player_data.o
 	Object asm/unk_020290B4.o
@@ -302,7 +302,7 @@ Static main
 	Object asm/unk_020957B0.o
 	Object asm/unk_02095DF4.o
 	Object asm/error_message_reset.o
-	Object asm/sin_vcount.o
+	Object src/sin_vcount.o
 	Object asm/unk_020965A4.o
 	Object asm/unk_020968B0.o
 	Object asm/unk_02096910.o

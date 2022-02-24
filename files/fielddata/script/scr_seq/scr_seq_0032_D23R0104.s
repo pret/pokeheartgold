@@ -65,7 +65,7 @@ _00E2:
 	goto _00F0
 
 _00E8:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -76,7 +76,7 @@ _00F0:
 	goto_if_no_item_space ITEM_BRIGHTPOWDER, 1, _0132
 	callstd std_give_item_verbose
 	npc_msg msg_0068_D23R0104_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	setflag FLAG_UNK_091
@@ -84,14 +84,14 @@ _00F0:
 
 _0132:
 	npc_msg msg_0068_D23R0104_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _013D:
 	npc_msg msg_0068_D23R0104_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -103,7 +103,7 @@ scr_seq_D23R0104_005:
 	play_cry SPECIES_MEOWTH, 0
 	npc_msg msg_0068_D23R0104_00007
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -120,7 +120,7 @@ scr_seq_D23R0104_006:
 _0181:
 	npc_msg msg_0068_D23R0104_00011
 _0184:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -148,7 +148,7 @@ _01C7:
 	goto_if_eq _0209
 	settrainerflag TRAINER_TEAM_ROCKET_F_GRUNT_4
 	npc_msg msg_0068_D23R0104_00014
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

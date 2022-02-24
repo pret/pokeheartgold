@@ -147,11 +147,11 @@ scr_seq_R43R0201_003:
 	npc_msg msg_0403_R43R0201_00004
 	goto_if_no_item_space ITEM_TM36, 1, _0213
 	callstd std_obtain_item_verbose
-	waitbutton
+	wait_button_or_walk_away
 	setflag FLAG_UNK_0CE
 _0208:
 	npc_msg msg_0403_R43R0201_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

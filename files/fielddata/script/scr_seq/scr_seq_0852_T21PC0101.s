@@ -38,7 +38,7 @@ scr_seq_T21PC0101_003:
 _006A:
 	npc_msg msg_0552_T21PC0101_00002
 _006D:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

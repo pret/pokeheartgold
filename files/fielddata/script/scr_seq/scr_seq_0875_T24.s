@@ -40,7 +40,7 @@ scr_seq_T24_006:
 	setflag FLAG_UNK_0BB
 	setvar VAR_UNK_4116, 2
 	npc_msg msg_0572_T24_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	apply_movement obj_T24_middlewoman1_2, _00D8
 	wait_movement
@@ -127,7 +127,7 @@ scr_seq_T24_002:
 	wait_movement
 	buffer_players_name 0
 	npc_msg msg_0572_T24_00015
-	scrcmd_049
+	wait_button
 	closemsg
 	trainer_battle TRAINER_MYSTERY_MAN_EUSINE, 0, 0, 0
 	check_battle_won VAR_SPECIAL_RESULT
@@ -163,14 +163,14 @@ scr_seq_T24_000:
 	goto_if_set FLAG_UNK_0BB, _026B
 	npc_msg msg_0572_T24_00000
 	npc_msg msg_0572_T24_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _026B:
 	npc_msg msg_0572_T24_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -200,7 +200,7 @@ _02BD:
 	register_gear_number PHONE_CONTACT_CHUCK
 _02CD:
 	npc_msg msg_0572_T24_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -208,7 +208,7 @@ _02CD:
 _02D8:
 	setvar VAR_TEMP_x4002, 1
 	npc_msg msg_0572_T24_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -325,7 +325,7 @@ _0449:
 	wait_fade
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 8
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -338,7 +338,7 @@ _047B:
 _0481:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 9
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

@@ -22,28 +22,28 @@ scr_seq_D17R0101_000:
 	goto_if_set FLAG_UNK_105, _0069
 _0048:
 	npc_msg msg_0057_D17R0101_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0053:
 	npc_msg msg_0057_D17R0101_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _005E:
 	npc_msg msg_0057_D17R0101_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0069:
 	npc_msg msg_0057_D17R0101_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -205,7 +205,7 @@ _02C2:
 _02CA:
 	wait_movement
 	npc_msg msg_0057_D17R0101_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	end
 	.byte 0x00, 0x00, 0x00

@@ -81,12 +81,12 @@ void Sav2_Misc_RivalName_set(SAVE_MISC_DATA *saveMiscData, const STRING *name) {
     CopyStringToU16Array(name, saveMiscData->rivalName, OT_NAME_LENGTH + 1);
 }
 
-void sub_0202A9C4(SAVE_MISC_DATA *saveMiscData) {
-    saveMiscData->unk_029B_0 = TRUE;
+void SaveMisc_SetExtraChunksExist(SAVE_MISC_DATA *saveMiscData) {
+    saveMiscData->extraChunksExist = TRUE;
 }
 
-BOOL sub_0202A9D8(SAVE_MISC_DATA *saveMiscData) {
-    return saveMiscData->unk_029B_0;
+BOOL SaveMisc_CheckExtraChunksExist(SAVE_MISC_DATA *saveMiscData) {
+    return saveMiscData->extraChunksExist;
 }
 
 void sub_0202A9E8(SAVE_MISC_DATA *saveMiscData, int a1, int a2, int a3) {
@@ -198,13 +198,13 @@ void sub_0202AC1C(SAVE_MISC_DATA *saveMiscData, u8 a1) {
     saveMiscData->unk_029B_1 = a1;
 }
 
-void sub_0202AC38(SAVE_MISC_DATA *saveMiscData, int a1, int *a2, int *a3, u8 *a4) {
+void sub_0202AC38(SAVE_MISC_DATA *saveMiscData, int a1, u32 *a2, u32 *a3, u8 *a4) {
     *a2 = saveMiscData->unk_02A8[0][a1 - 1];
     *a3 = saveMiscData->unk_02A8[1][a1 - 1];
     *a4 = saveMiscData->unk_02D0[a1 - 1];
 }
 
-void sub_0202AC60(SAVE_MISC_DATA *saveMiscData, int a1, int a2, int a3, u8 a4) {
+void sub_0202AC60(SAVE_MISC_DATA *saveMiscData, int a1, u32 a2, u32 a3, u8 a4) {
     saveMiscData->unk_02A8[0][a1 - 1] = a2;
     saveMiscData->unk_02A8[1][a1 - 1] = a3;
     saveMiscData->unk_02D0[a1 - 1] = a4;

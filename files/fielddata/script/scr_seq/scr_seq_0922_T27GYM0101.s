@@ -126,7 +126,7 @@ _019B:
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0A6
 	npc_msg msg_0614_T27GYM0101_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -140,7 +140,7 @@ _01CF:
 _01D9:
 	goto_if_unset FLAG_UNK_0A6, _019B
 	npc_msg msg_0614_T27GYM0101_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -192,7 +192,7 @@ scr_seq_T27GYM0101_003:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _029E
 	npc_msg msg_0614_T27GYM0101_00007
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -200,7 +200,7 @@ scr_seq_T27GYM0101_003:
 _029E:
 	buffer_players_name 0
 	npc_msg msg_0614_T27GYM0101_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -219,7 +219,7 @@ scr_seq_T27GYM0101_005:
 _02D3:
 	npc_msg msg_0614_T27GYM0101_00011
 _02D6:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

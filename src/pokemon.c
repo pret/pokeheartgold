@@ -6,6 +6,7 @@
 #include "item.h"
 #include "msgdata.h"
 #include "party.h"
+#include "mail.h"
 #include "trainer_data.h"
 #include "map_section.h"
 #include "unk_0200CF18.h"

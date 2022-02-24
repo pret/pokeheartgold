@@ -343,16 +343,18 @@
 	.byte \arg0
 	.endm
 
-	; These are both waitbutton commands
-	.macro scrcmd_049
+	; Waits for A or B button
+	.macro wait_button
 	.short 49
 	.endm
 
-	.macro waitbutton
+	; Waits for A, B, or dpad. On pressing dpad, does a turn frame.
+	.macro wait_button_or_walk_away
 	.short 50
 	.endm
 
-	.macro scrcmd_051
+	; Waits for A, B, or dpad. No turn frame.
+	.macro wait_button_or_dpad
 	.short 51
 	.endm
 
@@ -364,7 +366,8 @@
 	.short 53
 	.endm
 
-	.macro scrcmd_054
+	; Like closemsg but does not clear the graphics.
+	.macro holdmsg
 	.short 54
 	.endm
 
@@ -1492,12 +1495,12 @@
 	.short 252
 	.endm
 
-	.macro scrcmd_253 arg0
+	.macro get_save_file_state arg0
 	.short 253
 	.short \arg0
 	.endm
 
-	.macro scrcmd_254 arg0
+	.macro save_game_normal arg0
 	.short 254
 	.short \arg0
 	.endm
@@ -1970,7 +1973,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_348 arg0
+	.macro wait_button_or_delay arg0
 	.short 348
 	.short \arg0
 	.endm
@@ -2913,11 +2916,11 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_512
+	.macro player_movement_saving_set
 	.short 512
 	.endm
 
-	.macro scrcmd_513
+	.macro player_movement_saving_clear
 	.short 513
 	.endm
 
@@ -3357,11 +3360,11 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_593
+	.macro show_save_stats
 	.short 593
 	.endm
 
-	.macro scrcmd_594
+	.macro hide_save_stats
 	.short 594
 	.endm
 
@@ -3608,7 +3611,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_641
+	.macro save_wipe_extra_chunks
 	.short 641
 	.endm
 
@@ -4920,7 +4923,7 @@
 	lockall
 	faceplayer
 	npc_msg \msgid
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	.endm

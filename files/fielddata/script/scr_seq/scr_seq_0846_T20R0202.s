@@ -30,7 +30,7 @@ scr_seq_T20R0202_000:
 
 _004B:
 	npc_msg msg_0546_T20R0202_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -39,7 +39,7 @@ scr_seq_T20R0202_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0546_T20R0202_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

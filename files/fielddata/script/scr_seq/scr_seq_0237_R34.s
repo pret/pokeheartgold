@@ -502,7 +502,7 @@ _06ED:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -510,7 +510,7 @@ _06ED:
 _0727:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -518,7 +518,7 @@ _0727:
 _073B:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -604,7 +604,7 @@ _07E1:
 	apply_movement obj_R34_gswoman3_2, _0954
 	wait_movement
 	npc_msg msg_0384_R34_00026
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _0908
 	.byte 0x02, 0x00
@@ -639,7 +639,7 @@ _087D:
 	apply_movement obj_player, _093C
 	wait_movement
 	npc_msg msg_0384_R34_00026
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 _0908:
 	setvar VAR_UNK_4097, 1
@@ -704,7 +704,7 @@ _09A0:
 	callstd std_give_item_verbose
 	setvar VAR_UNK_4097, 3
 	npc_msg msg_0384_R34_00032
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 _09D5:
 	compare VAR_TEMP_x4004, 777
@@ -734,7 +734,7 @@ scr_seq_R34_006:
 _0A1A:
 	npc_msg msg_0384_R34_00023
 _0A1D:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -751,7 +751,7 @@ scr_seq_R34_007:
 _0A43:
 	npc_msg msg_0384_R34_00027
 _0A46:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -764,7 +764,7 @@ scr_seq_R34_008:
 	compare VAR_UNK_4097, 2
 	goto_if_eq _09A0
 	npc_msg msg_0384_R34_00032
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

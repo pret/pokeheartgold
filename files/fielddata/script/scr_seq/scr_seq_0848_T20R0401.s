@@ -17,7 +17,7 @@ scr_seq_T20R0401_000:
 	goto_if_ge _0044
 	buffer_players_name 0
 	gender_msgbox msg_0548_T20R0401_00000, msg_0548_T20R0401_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -25,7 +25,7 @@ scr_seq_T20R0401_000:
 _0035:
 	buffer_players_name 0
 	gender_msgbox msg_0548_T20R0401_00002, msg_0548_T20R0401_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -33,7 +33,7 @@ _0035:
 _0044:
 	buffer_players_name 0
 	gender_msgbox msg_0548_T20R0401_00004, msg_0548_T20R0401_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

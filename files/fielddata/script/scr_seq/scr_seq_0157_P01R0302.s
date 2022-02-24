@@ -28,14 +28,14 @@ scr_seq_P01R0302_000:
 	compare VAR_UNK_40CB, 4
 	goto_if_eq _0050
 	npc_msg msg_0260_P01R0302_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0050:
 	npc_msg msg_0260_P01R0302_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -48,7 +48,7 @@ _005B:
 	goto_if_eq _008F
 _0084:
 	npc_msg msg_0260_P01R0302_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -188,7 +188,7 @@ _029C:
 _02C3:
 	buffer_item_name 1, VAR_SPECIAL_x8004
 	npc_msg msg_0260_P01R0302_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

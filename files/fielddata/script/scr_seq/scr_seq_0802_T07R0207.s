@@ -98,7 +98,7 @@ _0150:
 	setvar VAR_ELEVATOR_LAST_FLOOR, 65535
 	wait 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0507_T07R0207_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setvar VAR_UNK_4125, 1
 	releaseall

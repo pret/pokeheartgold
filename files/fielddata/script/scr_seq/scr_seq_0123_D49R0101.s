@@ -269,7 +269,7 @@ _0377:
 	goto _03E4
 	.byte 0x35, 0x00, 0x61, 0x00, 0x02, 0x00
 _03C7:
-	scrcmd_054
+	holdmsg
 	scrcmd_815 0
 	scrcmd_771
 	goto _03E4
@@ -282,7 +282,7 @@ _03D7:
 _03E4:
 	touchscreen_menu_show
 	npc_msg msg_0138_D49R0101_00051
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -294,7 +294,7 @@ _03F1:
 	.byte 0x02, 0x00
 _0400:
 	npc_msg msg_0138_D49R0101_00050
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -325,7 +325,7 @@ _0443:
 	.byte 0x35, 0x00, 0x61
 	.byte 0x00, 0x02, 0x00
 _0493:
-	scrcmd_054
+	holdmsg
 	scrcmd_815 0
 	scrcmd_772
 	scrcmd_835 VAR_SPECIAL_x8005
@@ -360,7 +360,7 @@ _0511:
 _051C:
 	touchscreen_menu_show
 	npc_msg msg_0138_D49R0101_00051
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -392,7 +392,7 @@ _0571:
 
 _0584:
 	npc_msg msg_0138_D49R0101_00061
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	addvar VAR_UNK_4139, 1
@@ -401,7 +401,7 @@ _0584:
 _0595:
 	buffer_players_name 0
 	npc_msg msg_0138_D49R0101_00062
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	addvar VAR_UNK_4139, 1
@@ -410,7 +410,7 @@ _0595:
 _05A9:
 	buffer_players_name 0
 	npc_msg msg_0138_D49R0101_00060
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -507,7 +507,7 @@ _072E:
 _0748:
 	touchscreen_menu_show
 	npc_msg msg_0138_D49R0101_00091
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	script_overlay_cmd 3, 1
@@ -702,7 +702,7 @@ _0A54:
 	end
 
 _0A5C:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	compare VAR_TEMP_x4005, 0
 	goto_if_ne _0A75
@@ -779,7 +779,7 @@ _0B81:
 _0BA5:
 	touchscreen_menu_show
 	npc_msg msg_0138_D49R0101_00101
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -800,14 +800,14 @@ scr_seq_D49R0101_021:
 	compare VAR_TEMP_x4000, 1000
 	goto_if_ge _0C09
 	npc_msg msg_0138_D49R0101_00106
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0BFE:
 	npc_msg msg_0138_D49R0101_00104
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -828,7 +828,7 @@ _0C42:
 
 _0C4C:
 	npc_msg msg_0138_D49R0101_00108
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -856,7 +856,7 @@ _0C9F:
 	compare VAR_TEMP_x4000, 2001
 	goto_if_ge _0CB7
 	npc_msg msg_0138_D49R0101_00110
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -871,7 +871,7 @@ _0CB7:
 	.byte 0x02, 0x00
 _0CF0:
 	npc_msg msg_0138_D49R0101_00114
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

@@ -317,15 +317,15 @@
       ]
     },
     {
-      "name": "scrcmd_049",
+      "name": "wait_button",
       "args": []
     },
     {
-      "name": "waitbutton",
+      "name": "wait_button_or_walk_away",
       "args": []
     },
     {
-      "name": "scrcmd_051",
+      "name": "wait_button_or_dpad",
       "args": []
     },
     {
@@ -337,7 +337,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_054",
+      "name": "holdmsg",
       "args": []
     },
     {
@@ -1585,13 +1585,13 @@
       "args": []
     },
     {
-      "name": "scrcmd_253",
+      "name": "get_save_file_state",
       "args": [
         "var"
       ]
     },
     {
-      "name": "scrcmd_254",
+      "name": "save_game_normal",
       "args": [
         "var"
       ]
@@ -2114,7 +2114,7 @@
       ]
     },
     {
-      "name": "scrcmd_348",
+      "name": "wait_button_or_delay",
       "args": [
         2
       ]
@@ -3232,11 +3232,11 @@
       ]
     },
     {
-      "name": "scrcmd_512",
+      "name": "player_movement_saving_set",
       "args": []
     },
     {
-      "name": "scrcmd_513",
+      "name": "player_movement_saving_clear",
       "args": []
     },
     {
@@ -3740,11 +3740,11 @@
       ]
     },
     {
-      "name": "scrcmd_593",
+      "name": "show_save_stats",
       "args": []
     },
     {
-      "name": "scrcmd_594",
+      "name": "hide_save_stats",
       "args": []
     },
     {
@@ -4025,7 +4025,7 @@
       ]
     },
     {
-      "name": "scrcmd_641",
+      "name": "save_wipe_extra_chunks",
       "args": []
     },
     {

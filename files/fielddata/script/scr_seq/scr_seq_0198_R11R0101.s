@@ -20,7 +20,7 @@ scr_seq_R11R0101_001:
 	goto_if_set FLAG_SNORLAX_MEET, _0030
 	npc_msg msg_0347_R11R0101_00000
 _0028:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

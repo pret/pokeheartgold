@@ -67,7 +67,7 @@ scr_seq_T10R0101_003:
 	play_cry SPECIES_ABRA, 0
 	npc_msg msg_0522_T10R0101_00002
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -164,7 +164,7 @@ scr_seq_T10R0101_004:
 	lockall
 	faceplayer
 	callstd std_mart_intro
-	scrcmd_054
+	holdmsg
 	setvar VAR_SPECIAL_x8004, 13
 	callstd std_special_mart
 	releaseall
@@ -195,7 +195,7 @@ _0287:
 
 _0293:
 	npc_msg msg_0522_T10R0101_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

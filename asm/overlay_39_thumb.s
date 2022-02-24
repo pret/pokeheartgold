@@ -14,7 +14,7 @@ ov39_02227060: ; 0x02227060
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #0x5c
-	bl sub_020275C4
+	bl SavArray_CalcCRC16
 	add r4, #0x5c
 	strh r0, [r4]
 	pop {r3, r4, r5, pc}
@@ -139,7 +139,7 @@ _02227130:
 	ldr r0, [sp, #4]
 	add r1, r7, #0
 	add r2, #0x22
-	bl sub_020275C4
+	bl SavArray_CalcCRC16
 	mov r1, #0x66
 	lsl r1, r1, #2
 	strh r0, [r7, r1]
@@ -158,7 +158,7 @@ ov39_02227188: ; 0x02227188
 	strb r2, [r4, r3]
 	add r3, #0x21
 	add r2, r3, #0
-	bl sub_020275C4
+	bl SavArray_CalcCRC16
 	mov r1, #0x66
 	lsl r1, r1, #2
 	strh r0, [r4, r1]
@@ -2243,7 +2243,7 @@ _02228048:
 	ldr r0, [r0]
 	add r1, #0x80
 	mov r2, #0x58
-	bl sub_020275C4
+	bl SavArray_CalcCRC16
 	ldr r1, [r4]
 	add r1, #0xe0
 	strh r0, [r1]
@@ -2329,7 +2329,7 @@ ov39_022280D4: ; 0x022280D4
 	ldr r0, [r6]
 	add r1, #0x80
 	mov r2, #0x58
-	bl sub_020275C4
+	bl SavArray_CalcCRC16
 	ldr r1, [r5]
 	add r1, #0xe0
 	strh r0, [r1]
@@ -3768,7 +3768,7 @@ _02228C90:
 	ldr r0, [r0, #4]
 	bl sub_02039418
 	mov r0, #4
-	bl sub_0201A4BC
+	bl Sys_SetSleepDisableFlag
 	bl sub_0203A880
 	ldr r0, _02228D08 ; =0x00000F0F
 	add r3, r4, #0

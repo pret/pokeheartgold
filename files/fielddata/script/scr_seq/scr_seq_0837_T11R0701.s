@@ -86,7 +86,7 @@ scr_seq_T11R0701_001:
 	setflag FLAG_UNK_130
 _015A:
 	npc_msg msg_0537_T11R0701_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -205,14 +205,14 @@ _031F:
 
 _033B:
 	npc_msg msg_0537_T11R0701_00023
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0346:
 	npc_msg msg_0537_T11R0701_00028
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -336,7 +336,7 @@ _04CE:
 
 _04EA:
 	npc_msg msg_0537_T11R0701_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -344,7 +344,7 @@ _04EA:
 _04F5:
 	npc_trade_end
 	npc_msg msg_0537_T11R0701_00011
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -368,7 +368,7 @@ scr_seq_T11R0701_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0537_T11R0701_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

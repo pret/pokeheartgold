@@ -302,7 +302,7 @@ _0482:
 
 _04A3:
 	npc_msg msg_0597_T25R1006_00014
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_114
 	releaseall
@@ -316,7 +316,7 @@ _04B0:
 	play_se SEQ_SE_DP_REGI
 	wait_se SEQ_SE_DP_REGI
 	npc_msg msg_0597_T25R1006_00017
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_114
 	releaseall
@@ -324,7 +324,7 @@ _04B0:
 
 _04D2:
 	npc_msg msg_0597_T25R1006_00016
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_114
 	releaseall
@@ -373,7 +373,7 @@ _0559:
 _056F:
 	npc_msg msg_0597_T25R1006_00024
 _0572:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -390,7 +390,7 @@ scr_seq_T25R1006_000:
 _0598:
 	npc_msg msg_0597_T25R1006_00002
 _059B:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -407,7 +407,7 @@ scr_seq_T25R1006_001:
 _05C1:
 	npc_msg msg_0597_T25R1006_00000
 _05C4:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -439,7 +439,7 @@ _061B:
 	wait_fanfare
 	register_gear_number PHONE_CONTACT_WHITNEY
 	npc_msg msg_0597_T25R1006_00027
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -455,7 +455,7 @@ _061B:
 _065E:
 	setvar VAR_TEMP_x4002, 1
 	npc_msg msg_0597_T25R1006_00028
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -486,21 +486,21 @@ _067A:
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0597_T25R1006_00032
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _06DB:
 	npc_msg msg_0597_T25R1006_00033
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _06E6:
 	npc_msg msg_0597_T25R1006_00034
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -509,7 +509,7 @@ scr_seq_T25R1006_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0597_T25R1006_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -623,7 +623,7 @@ _08B2:
 	end
 
 _08BE:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_114
 	releaseall

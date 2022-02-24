@@ -26,8 +26,8 @@ scr_seq_D27R0107_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_0B9, _00B5
-	compare VAR_UNK_40A5, 0
+	goto_if_set FLAG_GOT_SECRETPOTION, _00B5
+	compare VAR_SCENE_LIGHTHOUSE_JASMINE, 0
 	goto_if_eq _0062
 	npc_msg msg_0094_D27R0107_00001
 	closemsg
@@ -55,7 +55,7 @@ _0062:
 	apply_movement obj_D27R0107_gsleader6, _01F0
 	wait_movement
 	releaseall
-	setvar VAR_UNK_40A5, 1
+	setvar VAR_SCENE_LIGHTHOUSE_JASMINE, 1
 	setflag FLAG_UNK_1D8
 	end
 
@@ -102,7 +102,7 @@ _00B5:
 	hide_person obj_D27R0107_gsleader6
 	releaseall
 	setflag FLAG_UNK_96A
-	setvar VAR_UNK_40A5, 2
+	setvar VAR_SCENE_LIGHTHOUSE_JASMINE, 2
 	setvar VAR_UNK_410E, 1
 	setflag FLAG_UNK_1D7
 	clearflag FLAG_HIDE_JASMINE_IN_GYM
@@ -184,7 +184,7 @@ scr_seq_D27R0107_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_40A5, 2
+	compare VAR_SCENE_LIGHTHOUSE_JASMINE, 2
 	goto_if_lt _0266
 	play_cry SPECIES_AMPHAROS, 0
 	npc_msg msg_0094_D27R0107_00012
@@ -197,7 +197,7 @@ _0266:
 	wait_cry
 	npc_msg msg_0094_D27R0107_00011
 _0274:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

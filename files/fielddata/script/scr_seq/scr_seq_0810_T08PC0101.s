@@ -45,7 +45,7 @@ _0089:
 	apply_movement obj_T08PC0101_gsgirl1, _00E4
 _0091:
 	npc_msg msg_0515_T08PC0101_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

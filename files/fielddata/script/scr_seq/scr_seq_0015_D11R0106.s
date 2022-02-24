@@ -112,7 +112,7 @@ _0175:
 	setflag FLAG_UNK_17D
 	buffer_players_name 0
 	npc_msg msg_0053_D11R0106_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -126,7 +126,7 @@ _01AC:
 _01B6:
 	goto_if_unset FLAG_UNK_17D, _0175
 	npc_msg msg_0053_D11R0106_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -157,7 +157,7 @@ scr_seq_D11R0106_002:
 
 _021A:
 	npc_msg msg_0053_D11R0106_00007
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -191,7 +191,7 @@ _0282:
 
 _028C:
 	npc_msg msg_0053_D11R0106_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -217,7 +217,7 @@ scr_seq_D11R0106_004:
 
 _02DF:
 	npc_msg msg_0053_D11R0106_00013
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -243,7 +243,7 @@ scr_seq_D11R0106_005:
 
 _0332:
 	npc_msg msg_0053_D11R0106_00016
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -277,7 +277,7 @@ _039A:
 
 _03A4:
 	npc_msg msg_0053_D11R0106_00019
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -311,7 +311,7 @@ _040C:
 
 _0416:
 	npc_msg msg_0053_D11R0106_00022
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -369,14 +369,14 @@ scr_seq_D11R0106_001:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _04B6
 	npc_msg msg_0053_D11R0106_00024
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _04B6:
 	npc_msg msg_0053_D11R0106_00025
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

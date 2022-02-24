@@ -111,7 +111,7 @@ _0167:
 	goto _01AC
 	.byte 0x02, 0x00
 _01AC:
-	waitbutton
+	wait_button_or_walk_away
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _01C1
 	closemsg
@@ -295,7 +295,7 @@ _04F6:
 	scrcmd_412 57, 0, VAR_SPECIAL_RESULT
 	scrcmd_412 52, 0, 0
 	npc_msg msg_0096_D31R0201_00011
-	scrcmd_049
+	wait_button
 	goto _06CD
 	.byte 0x02, 0x00
 _053A:
@@ -344,7 +344,7 @@ scr_seq_D31R0201_004:
 	scrcmd_412 5, 0, 0
 	call _0817
 	npc_msg msg_0096_D31R0201_00011
-	scrcmd_049
+	wait_button
 	goto _06CD
 	.byte 0x02, 0x00
 _05FD:
@@ -354,7 +354,7 @@ _05FD:
 	scrcmd_412 51, 0, VAR_SPECIAL_RESULT
 	copyvar VAR_TEMP_x4009, VAR_SPECIAL_RESULT
 	npc_msg msg_0096_D31R0201_00032
-	scrcmd_049
+	wait_button
 	goto _06CD
 	.byte 0x02, 0x00
 _062C:
@@ -471,7 +471,7 @@ _0807:
 
 _0817:
 	scrcmd_345
-	scrcmd_254 VAR_SPECIAL_RESULT
+	save_game_normal VAR_SPECIAL_RESULT
 	scrcmd_346
 	play_se SEQ_SE_DP_SAVE
 	wait_se SEQ_SE_DP_SAVE
@@ -492,7 +492,7 @@ _0855:
 _085B:
 	npc_msg msg_0096_D31R0201_00002
 _085E:
-	waitbutton
+	wait_button_or_walk_away
 _0860:
 	closemsg
 	call _088C
@@ -654,7 +654,7 @@ _0ADF:
 	scrcmd_411
 	npc_msg msg_0096_D31R0201_00056
 	call _0817
-	scrcmd_348 30
+	wait_button_or_delay 30
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	closemsg
@@ -676,7 +676,7 @@ _0B46:
 	buffer_int 0, VAR_SPECIAL_x8004
 	buffer_int_ex 1, VAR_SPECIAL_x8005, 2, 3
 	npc_msg msg_0096_D31R0201_00052
-	scrcmd_049
+	wait_button
 	goto _0860
 	.byte 0x02, 0x00
 _0B97:
@@ -1192,7 +1192,7 @@ scr_seq_D31R0201_012:
 
 _13F9:
 	npc_msg msg_0096_D31R0201_00111
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1346,14 +1346,14 @@ _1632:
 	goto _163D
 	.byte 0x02, 0x00
 _163D:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _1645:
 	npc_msg msg_0096_D31R0201_00116
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

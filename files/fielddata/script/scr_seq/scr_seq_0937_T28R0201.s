@@ -21,14 +21,14 @@ scr_seq_T28R0201_001:
 	goto_if_set FLAG_UNK_0C5, _0046
 _003B:
 	npc_msg msg_0625_T28R0201_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0046:
 	npc_msg msg_0625_T28R0201_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

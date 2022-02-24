@@ -203,7 +203,7 @@
 #define FLAG_UNK_0B6                                                0xB6
 #define FLAG_UNK_0B7                                                0xB7
 #define FLAG_UNK_0B8                                                0xB8
-#define FLAG_UNK_0B9                                                0xB9
+#define FLAG_GOT_SECRETPOTION                                                0xB9
 #define FLAG_UNK_0BA                                                0xBA
 #define FLAG_UNK_0BB                                                0xBB
 #define FLAG_UNK_0BC                                                0xBC
@@ -385,9 +385,9 @@
 #define FLAG_UNK_16C                                               0x16C
 #define FLAG_UNK_16D                                               0x16D
 #define FLAG_UNK_16E                                               0x16E
-#define FLAG_UNK_16F                                               0x16F
-#define FLAG_UNK_170                                               0x170
-#define FLAG_UNK_171                                               0x171
+#define FLAG_SPECIAL_MART_PHARMACY                                               0x16F
+#define FLAG_SPECIAL_MART_BITTER                                               0x170
+#define FLAG_SPECIAL_MART_MAHOGANY_GOOD                                               0x171
 #define FLAG_UNK_172                                               0x172
 #define FLAG_UNK_173                                               0x173
 #define FLAG_UNK_174                                               0x174
@@ -412,7 +412,7 @@
 #define FLAG_UNK_187                                               0x187
 #define FLAG_UNK_188                                               0x188
 #define FLAG_UNK_189                                               0x189
-#define FLAG_UNK_18A                                               0x18A
+#define FLAG_SPECIAL_MART_MT_MOON                                               0x18A
 #define FLAG_UNK_18B                                               0x18B
 #define FLAG_UNK_18C                                               0x18C
 #define FLAG_UNK_18D                                               0x18D

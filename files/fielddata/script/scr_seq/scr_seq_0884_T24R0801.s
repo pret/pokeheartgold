@@ -57,7 +57,7 @@ _00AC:
 _00B5:
 	npc_msg msg_0580_T24R0801_00000
 _00B8:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

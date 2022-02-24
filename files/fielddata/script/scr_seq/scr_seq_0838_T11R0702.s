@@ -225,7 +225,7 @@ _0332:
 	.byte 0x02, 0x00
 _039F:
 	npc_msg msg_0538_T11R0702_00017
-	waitbutton
+	wait_button_or_walk_away
 	goto _089C
 	.byte 0x02, 0x00
 _03AC:
@@ -258,12 +258,12 @@ _03C0:
 	.byte 0x02, 0x00
 _041A:
 	npc_msg msg_0538_T11R0702_00008
-	waitbutton
+	wait_button_or_walk_away
 	goto _089C
 	.byte 0x02, 0x00
 _0427:
 	npc_msg msg_0538_T11R0702_00009
-	waitbutton
+	wait_button_or_walk_away
 	goto _089C
 	.byte 0x02, 0x00
 _0434:
@@ -381,7 +381,7 @@ _0649:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	buffer_move_name 1, VAR_SPECIAL_x8001
 	npc_msg msg_0538_T11R0702_00002
-	waitbutton
+	wait_button_or_walk_away
 	compare VAR_TEMP_x400A, 1
 	call_if_eq _07BA
 	nop_var_490 VAR_TEMP_x400D
@@ -488,27 +488,27 @@ _073D:
 	.byte 0x02, 0x00
 _0797:
 	npc_msg msg_0538_T11R0702_00022
-	waitbutton
+	wait_button_or_walk_away
 	return
 
 _079E:
 	npc_msg msg_0538_T11R0702_00025
-	waitbutton
+	wait_button_or_walk_away
 	return
 
 _07A5:
 	npc_msg msg_0538_T11R0702_00028
-	waitbutton
+	wait_button_or_walk_away
 	return
 
 _07AC:
 	npc_msg msg_0538_T11R0702_00031
-	waitbutton
+	wait_button_or_walk_away
 	return
 
 _07B3:
 	npc_msg msg_0538_T11R0702_00034
-	waitbutton
+	wait_button_or_walk_away
 	return
 
 _07BA:
@@ -574,7 +574,7 @@ scr_seq_T11R0702_007:
 	.byte 0x02, 0x00
 _088D:
 	npc_msg msg_0538_T11R0702_00018
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _08A4
 	.byte 0x02, 0x00

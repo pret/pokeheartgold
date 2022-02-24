@@ -154,14 +154,14 @@ scr_seq_R39R0201_002:
 	wait_cry
 	goto_if_set FLAG_UNK_0A8, _0260
 	npc_msg msg_0398_R39R0201_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0260:
 	npc_msg msg_0398_R39R0201_00010
-	scrcmd_049
+	wait_button
 	npc_msg msg_0398_R39R0201_00013
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -181,7 +181,7 @@ _028C:
 	takeitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	buffer_players_name 0
 	npc_msg msg_0398_R39R0201_00014
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto_if_set FLAG_UNK_0B0, _033F
 	goto_if_set FLAG_UNK_0AF, _0337
@@ -201,7 +201,7 @@ _0309:
 _0311:
 	setflag FLAG_UNK_0AD
 	npc_msg msg_0398_R39R0201_00015
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -214,7 +214,7 @@ _0320:
 _0328:
 	setflag FLAG_UNK_0AF
 	npc_msg msg_0398_R39R0201_00016
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -228,7 +228,7 @@ _033F:
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
 	npc_msg msg_0398_R39R0201_00017
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setflag FLAG_UNK_0AA
 	releaseall
@@ -239,7 +239,7 @@ _0354:
 	npc_msg msg_0398_R39R0201_00011
 	wait_cry
 	npc_msg msg_0398_R39R0201_00012
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -247,7 +247,7 @@ _0354:
 _036A:
 	buffer_players_name 0
 	npc_msg msg_0398_R39R0201_00018
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -255,7 +255,7 @@ _036A:
 _0378:
 	buffer_players_name 0
 	npc_msg msg_0398_R39R0201_00019
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -268,7 +268,7 @@ scr_seq_R39R0201_003:
 	npc_msg msg_0398_R39R0201_00011
 	wait_cry
 	npc_msg msg_0398_R39R0201_00012
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

@@ -136,7 +136,7 @@ scr_seq_D49R0107_000:
 	faceplayer
 	buffer_players_name 0
 	npc_msg msg_0143_D49R0107_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

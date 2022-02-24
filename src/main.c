@@ -64,7 +64,7 @@ void NitroMain(void) {
     if (sub_02039FFC(3) == 3) {
         ShowWFCUserInfoWarning(3, 0);
     }
-    if (!sub_020274D0(_02111868.unk_10.savedata)) {
+    if (!Save_FlashChipIsDetected(_02111868.unk_10.savedata)) {
         ShowSaveDataReadError(0);
     } else {
         switch (OS_GetResetParameter()) {
@@ -202,7 +202,7 @@ void DoSoftReset(u32 param) {
     sub_0200FBF4(0, RGB_WHITE);
     sub_0200FBF4(1, RGB_WHITE);
     if (sub_02038D90()) {
-        sub_020275A4(sub_020272B0());
+        Save_Cancel(SaveBlock2_get());
     }
     while (1) {
         HandleDSLidAction();

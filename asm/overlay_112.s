@@ -13149,9 +13149,9 @@ ov112_021EC3F0: ; 0x021EC3F0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x20]
-	bl sub_020273F0
+	bl SaveGameNormal
 	ldr r0, [r4, #0x20]
-	bl sub_020274D8
+	bl Save_ClearStatusFlags
 	mov r0, #0x20
 	pop {r4, pc}
 	thumb_func_end ov112_021EC3F0
@@ -17569,9 +17569,9 @@ ov112_021EE6F8: ; 0x021EE6F8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x20]
-	bl sub_020273F0
+	bl SaveGameNormal
 	ldr r0, [r4, #0x20]
-	bl sub_020274D8
+	bl Save_ClearStatusFlags
 	mov r0, #3
 	pop {r4, pc}
 	thumb_func_end ov112_021EE6F8
@@ -18497,9 +18497,9 @@ ov112_021EEE8C: ; 0x021EEE8C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x20]
-	bl sub_020273F0
+	bl SaveGameNormal
 	ldr r0, [r4, #0x20]
-	bl sub_020274D8
+	bl Save_ClearStatusFlags
 	mov r0, #3
 	pop {r4, pc}
 	thumb_func_end ov112_021EEE8C
@@ -18574,9 +18574,9 @@ ov112_021EEF08: ; 0x021EEF08
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x20]
-	bl sub_020273F0
+	bl SaveGameNormal
 	ldr r0, [r4, #0x20]
-	bl sub_020274D8
+	bl Save_ClearStatusFlags
 	mov r0, #8
 	pop {r4, pc}
 	thumb_func_end ov112_021EEF08

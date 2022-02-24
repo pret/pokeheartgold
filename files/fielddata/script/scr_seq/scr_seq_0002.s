@@ -218,7 +218,7 @@ _0368:
 _037E:
 	npc_msg msg_0748_00039
 _0381:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	touchscreen_menu_show
 	scrcmd_117
@@ -228,7 +228,7 @@ _0381:
 
 _0391:
 	npc_msg msg_0748_00040
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	touchscreen_menu_show
 	scrcmd_117

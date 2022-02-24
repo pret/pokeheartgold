@@ -348,7 +348,7 @@ scr_seq_D17R0110_001:
 	faceplayer
 	goto_if_set FLAG_UNK_108, _0704
 	npc_msg msg_0058_D17R0110_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -374,7 +374,7 @@ _0730:
 _0746:
 	npc_msg msg_0058_D17R0110_00007
 _0749:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -549,14 +549,14 @@ scr_seq_D17R0110_004:
 	faceplayer
 	goto_if_set FLAG_UNK_108, _095E
 	npc_msg msg_0058_D17R0110_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _095E:
 	npc_msg msg_0058_D17R0110_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

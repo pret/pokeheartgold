@@ -279,7 +279,7 @@ class NormalScriptParser(ScriptParserBase):
                 r'\tlockall\n'
                 r'\tfaceplayer\n'
                 r'\tnpc_msg (\w+)\n'
-                r'\twaitbutton\n'
+                r'\twait_button_or_walk_away\n'
                 r'\tclosemsg\n'
                 r'\treleaseall\n'
             ), r'\tsimple_npc_msg \1\n'),

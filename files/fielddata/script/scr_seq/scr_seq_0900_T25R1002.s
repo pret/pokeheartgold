@@ -18,7 +18,7 @@ scr_seq_T25R1002_000:
 	lockall
 	faceplayer
 	callstd std_mart_intro
-	scrcmd_054
+	holdmsg
 	setvar VAR_SPECIAL_x8004, 3
 	callstd std_special_mart
 	releaseall
@@ -29,7 +29,7 @@ scr_seq_T25R1002_001:
 	lockall
 	faceplayer
 	callstd std_mart_intro
-	scrcmd_054
+	holdmsg
 	setvar VAR_SPECIAL_x8004, 4
 	callstd std_special_mart
 	releaseall
@@ -47,7 +47,7 @@ scr_seq_T25R1002_002:
 _0070:
 	npc_msg msg_0593_T25R1002_00000
 _0073:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -64,7 +64,7 @@ scr_seq_T25R1002_003:
 _0099:
 	npc_msg msg_0593_T25R1002_00004
 _009C:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -81,7 +81,7 @@ scr_seq_T25R1002_004:
 _00C2:
 	npc_msg msg_0593_T25R1002_00002
 _00C5:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -90,7 +90,7 @@ scr_seq_T25R1002_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0593_T25R1002_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

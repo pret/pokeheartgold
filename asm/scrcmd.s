@@ -82,12 +82,12 @@ gScriptCmdTable:
 	.word ScrCmd_NonNpcMsgVar                                    ; 046
 	.word ScrCmd_NpcMsgVar                                    ; 047
 	.word ScrCmd_048                                    ; 048
-	.word ScrCmd_049                                    ; 049
-	.word ScrCmd_WaitButton                             ; 050
-	.word ScrCmd_051                                    ; 051
+	.word ScrCmd_WaitButton                                    ; 049
+	.word ScrCmd_WaitButtonOrWalkAway                             ; 050
+	.word ScrCmd_WaitButtonOrDpad                                    ; 051
 	.word ScrCmd_OpenMsg                                    ; 052
 	.word ScrCmd_CloseMsg                               ; 053
-	.word ScrCmd_054                                    ; 054
+	.word ScrCmd_HoldMsg                                    ; 054
 	.word ScrCmd_DirectionSignpost                                    ; 055
 	.word ScrCmd_055                                    ; 056
 	.word ScrCmd_057                                    ; 057
@@ -286,8 +286,8 @@ gScriptCmdTable:
 	.word ScrCmd_250                                    ; 250
 	.word ScrCmd_CatchingTutorial                                    ; 251
 	.word ScrCmd_252                                    ; 252
-	.word ScrCmd_253                                    ; 253
-	.word ScrCmd_254                                    ; 254
+	.word ScrCmd_GetSaveFileState                                    ; 253
+	.word ScrCmd_SaveGameNormal                                    ; 254
 	.word ScrCmd_255                                    ; 255
 	.word ScrCmd_256                                    ; 256
 	.word ScrCmd_257                                    ; 257
@@ -381,7 +381,7 @@ gScriptCmdTable:
 	.word ScrCmd_345                                    ; 345
 	.word ScrCmd_346                                    ; 346
 	.word ScrCmd_347                                    ; 347
-	.word ScrCmd_348                                    ; 348
+	.word ScrCmd_WaitButtonOrDelay                                    ; 348
 	.word ScrCmd_PartySelectUI                                    ; 349
 	.word ScrCmd_350                                    ; 350
 	.word ScrCmd_PartySelect                                    ; 351
@@ -545,8 +545,8 @@ gScriptCmdTable:
 	.word ScrCmd_509                                    ; 509
 	.word ScrCmd_510                                    ; 510
 	.word ScrCmd_511                                    ; 511
-	.word ScrCmd_512                                    ; 512
-	.word ScrCmd_513                                    ; 513
+	.word ScrCmd_PlayerMovementSavingSet                                    ; 512
+	.word ScrCmd_PlayerMovementSavingClear                                    ; 513
 	.word ScrCmd_HallOfFameAnim                                    ; 514
 	.word ScrCmd_AddSpecialGameStat                     ; 515
 	.word ScrCmd_BufferFashionName                                    ; 516
@@ -626,8 +626,8 @@ gScriptCmdTable:
 	.word ScrCmd_GetTrcardStars                                    ; 590
 	.word ScrCmd_591                                    ; 591
 	.word ScrCmd_592                                    ; 592
-	.word ScrCmd_593                                    ; 593
-	.word ScrCmd_594                                    ; 594
+	.word ScrCmd_ShowSaveStats                                    ; 593
+	.word ScrCmd_HideSaveStats                                    ; 594
 	.word ScrCmd_595                                    ; 595
 	.word ScrCmd_596                                    ; 596
 	.word ScrCmd_597                                    ; 597
@@ -674,7 +674,7 @@ gScriptCmdTable:
 	.word ScrCmd_638                                    ; 638
 	.word ScrCmd_639                                    ; 639
 	.word ScrCmd_640                                    ; 640
-	.word ScrCmd_641                                    ; 641
+	.word ScrCmd_SaveWipeExtraChunks                                    ; 641
 	.word ScrCmd_642                                    ; 642
 	.word ScrCmd_643                                    ; 643
 	.word ScrCmd_644                                    ; 644
@@ -952,8 +952,8 @@ _02040FDC:
 _02040FEC: .word ov01_021EF348
 	thumb_func_end ScrCmd_048
 
-	thumb_func_start ScrCmd_049
-ScrCmd_049: ; 0x02040FF0
+	thumb_func_start ScrCmd_WaitButton
+ScrCmd_WaitButton: ; 0x02040FF0
 	push {r3, lr}
 	ldr r1, _02040FFC ; =sub_02041000
 	bl SetupNativeScript
@@ -961,7 +961,7 @@ ScrCmd_049: ; 0x02040FF0
 	pop {r3, pc}
 	.balign 4, 0
 _02040FFC: .word sub_02041000
-	thumb_func_end ScrCmd_049
+	thumb_func_end ScrCmd_WaitButton
 
 	thumb_func_start sub_02041000
 sub_02041000: ; 0x02041000
@@ -979,8 +979,8 @@ _0204100E:
 _02041014: .word gSystem
 	thumb_func_end sub_02041000
 
-	thumb_func_start ScrCmd_348
-ScrCmd_348: ; 0x02041018
+	thumb_func_start ScrCmd_WaitButtonOrDelay
+ScrCmd_WaitButtonOrDelay: ; 0x02041018
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -997,7 +997,7 @@ ScrCmd_348: ; 0x02041018
 	pop {r4, pc}
 	nop
 _0204103C: .word sub_02041040
-	thumb_func_end ScrCmd_348
+	thumb_func_end ScrCmd_WaitButtonOrDelay
 
 	thumb_func_start sub_02041040
 sub_02041040: ; 0x02041040
@@ -1022,8 +1022,8 @@ _0204105A:
 _02041060: .word gSystem
 	thumb_func_end sub_02041040
 
-	thumb_func_start ScrCmd_WaitButton
-ScrCmd_WaitButton: ; 0x02041064
+	thumb_func_start ScrCmd_WaitButtonOrWalkAway
+ScrCmd_WaitButtonOrWalkAway: ; 0x02041064
 	push {r3, lr}
 	ldr r1, _02041070 ; =sub_02041074
 	bl SetupNativeScript
@@ -1031,7 +1031,7 @@ ScrCmd_WaitButton: ; 0x02041064
 	pop {r3, pc}
 	.balign 4, 0
 _02041070: .word sub_02041074
-	thumb_func_end ScrCmd_WaitButton
+	thumb_func_end ScrCmd_WaitButtonOrWalkAway
 
 	thumb_func_start sub_02041074
 sub_02041074: ; 0x02041074
@@ -1093,8 +1093,8 @@ _020410D8:
 _020410DC: .word gSystem
 	thumb_func_end sub_02041074
 
-	thumb_func_start ScrCmd_051
-ScrCmd_051: ; 0x020410E0
+	thumb_func_start ScrCmd_WaitButtonOrDpad
+ScrCmd_WaitButtonOrDpad: ; 0x020410E0
 	push {r3, lr}
 	ldr r1, _020410EC ; =sub_020410F0
 	bl SetupNativeScript
@@ -1102,7 +1102,7 @@ ScrCmd_051: ; 0x020410E0
 	pop {r3, pc}
 	.balign 4, 0
 _020410EC: .word sub_020410F0
-	thumb_func_end ScrCmd_051
+	thumb_func_end ScrCmd_WaitButtonOrDpad
 
 	thumb_func_start sub_020410F0
 sub_020410F0: ; 0x020410F0
@@ -1198,8 +1198,8 @@ ScrCmd_CloseMsg: ; 0x02041168
 	pop {r4, r5, r6, pc}
 	thumb_func_end ScrCmd_CloseMsg
 
-	thumb_func_start ScrCmd_054
-ScrCmd_054: ; 0x020411A4
+	thumb_func_start ScrCmd_HoldMsg
+ScrCmd_HoldMsg: ; 0x020411A4
 	push {r4, r5, r6, lr}
 	add r0, #0x80
 	ldr r5, [r0]
@@ -1223,7 +1223,7 @@ ScrCmd_054: ; 0x020411A4
 	mov r0, #0
 	strb r0, [r4]
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_054
+	thumb_func_end ScrCmd_HoldMsg
 
 	thumb_func_start ScrCmd_062
 ScrCmd_062: ; 0x020411D8
@@ -7031,8 +7031,8 @@ ScrCmd_252: ; 0x02043F54
 _02043F6C: .word ScrNative_WaitApplication
 	thumb_func_end ScrCmd_252
 
-	thumb_func_start ScrCmd_253
-ScrCmd_253: ; 0x02043F70
+	thumb_func_start ScrCmd_GetSaveFileState
+ScrCmd_GetSaveFileState: ; 0x02043F70
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -7046,7 +7046,7 @@ ScrCmd_253: ; 0x02043F70
 	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02027500
+	bl Save_FileDoesNotBelongToPlayer
 	cmp r0, #0
 	beq _02043F9C
 	mov r0, #0
@@ -7054,7 +7054,7 @@ ScrCmd_253: ; 0x02043F70
 	b _02043FC0
 _02043F9C:
 	add r0, r5, #0
-	bl sub_020274E0
+	bl Save_FileExists
 	cmp r0, #0
 	bne _02043FAC
 	mov r0, #1
@@ -7062,7 +7062,7 @@ _02043F9C:
 	b _02043FC0
 _02043FAC:
 	add r0, r5, #0
-	bl sub_02027520
+	bl Save_NumModifiedPCBoxesIsMany
 	cmp r0, #0
 	beq _02043FBC
 	mov r0, #2
@@ -7074,10 +7074,10 @@ _02043FBC:
 _02043FC0:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_253
+	thumb_func_end ScrCmd_GetSaveFileState
 
-	thumb_func_start ScrCmd_254
-ScrCmd_254: ; 0x02043FC4
+	thumb_func_start ScrCmd_SaveGameNormal
+ScrCmd_SaveGameNormal: ; 0x02043FC4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -7090,23 +7090,23 @@ ScrCmd_254: ; 0x02043FC4
 	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
-	bl ov01_021F43E8
+	bl Field_SaveGameNormal
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_254
+	thumb_func_end ScrCmd_SaveGameNormal
 
-	thumb_func_start ScrCmd_641
-ScrCmd_641: ; 0x02043FEC
+	thumb_func_start ScrCmd_SaveWipeExtraChunks
+ScrCmd_SaveWipeExtraChunks: ; 0x02043FEC
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_02027FFC
+	bl Save_WipeExtraChunks
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ScrCmd_641
+	thumb_func_end ScrCmd_SaveWipeExtraChunks
 
 	thumb_func_start ScrCmd_642
 ScrCmd_642: ; 0x02043FFC
@@ -7122,7 +7122,7 @@ ScrCmd_642: ; 0x02043FFC
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_020274E8
+	bl Save_CheckExtraChunksExist
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -10266,8 +10266,8 @@ ScrCmd_CountPCEmptySpace: ; 0x0204583C
 	.balign 4, 0
 	thumb_func_end ScrCmd_CountPCEmptySpace
 
-	thumb_func_start ScrCmd_512
-ScrCmd_512: ; 0x02045868
+	thumb_func_start ScrCmd_PlayerMovementSavingSet
+ScrCmd_PlayerMovementSavingSet: ; 0x02045868
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -10279,26 +10279,26 @@ ScrCmd_512: ; 0x02045868
 	add r5, #0x80
 	str r0, [r4]
 	ldr r0, [r5]
-	bl ov01_021F2F70
+	bl Field_PlayerMovementSavingSet
 	str r0, [r4]
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_512
+	thumb_func_end ScrCmd_PlayerMovementSavingSet
 
-	thumb_func_start ScrCmd_513
-ScrCmd_513: ; 0x0204588C
+	thumb_func_start ScrCmd_PlayerMovementSavingClear
+ScrCmd_PlayerMovementSavingClear: ; 0x0204588C
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x17
 	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
-	bl ov01_021F2FF0
+	bl Field_PlayerMovementSavingClear
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_513
+	thumb_func_end ScrCmd_PlayerMovementSavingClear
 
 	thumb_func_start ScrCmd_HallOfFameAnim
 ScrCmd_HallOfFameAnim: ; 0x020458A4
@@ -11716,8 +11716,8 @@ ScrCmd_GetTrcardStars: ; 0x0204639C
 	.balign 4, 0
 	thumb_func_end ScrCmd_GetTrcardStars
 
-	thumb_func_start ScrCmd_593
-ScrCmd_593: ; 0x020463C4
+	thumb_func_start ScrCmd_ShowSaveStats
+ScrCmd_ShowSaveStats: ; 0x020463C4
 	push {r3, r4, r5, lr}
 	add r0, #0x80
 	ldr r5, [r0]
@@ -11726,23 +11726,23 @@ ScrCmd_593: ; 0x020463C4
 	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_02027500
+	bl Save_FileDoesNotBelongToPlayer
 	cmp r0, #0
 	bne _020463EE
 	add r0, r5, #0
 	mov r1, #4
 	mov r2, #3
-	bl ov01_021F41C0
+	bl Field_CreateSaveStatsPrinter
 	str r0, [r4]
-	bl ov01_021F412C
+	bl SaveStatsPrinter_Print
 _020463EE:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_593
+	thumb_func_end ScrCmd_ShowSaveStats
 
-	thumb_func_start ScrCmd_594
-ScrCmd_594: ; 0x020463F4
+	thumb_func_start ScrCmd_HideSaveStats
+ScrCmd_HideSaveStats: ; 0x020463F4
 	push {r3, r4, r5, lr}
 	add r0, #0x80
 	ldr r5, [r0]
@@ -11751,18 +11751,18 @@ ScrCmd_594: ; 0x020463F4
 	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_02027500
+	bl Save_FileDoesNotBelongToPlayer
 	cmp r0, #0
 	bne _0204641A
 	ldr r0, [r4]
-	bl ov01_021F41A4
+	bl SaveStatsPrinter_RemoveFromScreen
 	ldr r0, [r4]
-	bl ov01_021F421C
+	bl SaveStatsPrinter_Delete
 _0204641A:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_594
+	thumb_func_end ScrCmd_HideSaveStats
 
 	thumb_func_start ScrCmd_595
 ScrCmd_595: ; 0x02046420

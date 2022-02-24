@@ -133,14 +133,14 @@ _01C6:
 	npc_msg msg_0545_T20R0201_00012
 _01C9:
 	npc_msg msg_0545_T20R0201_00013
-	scrcmd_051
+	wait_button_or_dpad
 	closemsg
 	releaseall
 	end
 
 _01D4:
 	npc_msg msg_0545_T20R0201_00014
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -181,7 +181,7 @@ _0266:
 	npc_msg msg_0545_T20R0201_00018
 	clearflag FLAG_UNK_986
 _026D:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -238,7 +238,7 @@ _0389:
 	touchscreen_menu_show
 	scrcmd_796
 	npc_msg msg_0545_T20R0201_00026
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -260,7 +260,7 @@ _03C2:
 	npc_msg msg_0545_T20R0201_00018
 	clearflag FLAG_UNK_986
 _03C9:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -269,7 +269,7 @@ _03D1:
 	scrcmd_796
 	touchscreen_menu_show
 	npc_msg msg_0545_T20R0201_00021
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -280,7 +280,7 @@ _03E0:
 	play_se SEQ_SE_GS_OKOZUKAI
 	buffer_players_name 0
 	npc_msg msg_0545_T20R0201_00024
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -290,14 +290,14 @@ _03FA:
 	wait 8, VAR_SPECIAL_RESULT
 	play_se SEQ_SE_GS_OKOZUKAI
 	npc_msg msg_0545_T20R0201_00023
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0411:
 	npc_msg msg_0545_T20R0201_00021
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -306,7 +306,7 @@ _041C:
 	touchscreen_menu_show
 	scrcmd_796
 	npc_msg msg_0545_T20R0201_00022
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -315,7 +315,7 @@ _042B:
 	touchscreen_menu_show
 	scrcmd_796
 	npc_msg msg_0545_T20R0201_00027
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -324,7 +324,7 @@ _043A:
 	touchscreen_menu_show
 	scrcmd_796
 	npc_msg msg_0545_T20R0201_00028
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -333,7 +333,7 @@ scr_seq_T20R0201_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0545_T20R0201_00035
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -342,7 +342,7 @@ scr_seq_T20R0201_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0545_T20R0201_00036
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -351,7 +351,7 @@ scr_seq_T20R0201_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0545_T20R0201_00037
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -360,7 +360,7 @@ scr_seq_T20R0201_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0545_T20R0201_00038
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

@@ -65,7 +65,7 @@ scr_seq_D47_004:
 	play_cry SPECIES_JIGGLYPUFF, 0
 	npc_msg msg_0133_D47_00006
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -82,7 +82,7 @@ scr_seq_D47_005:
 _0106:
 	npc_msg msg_0133_D47_00008
 _0109:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	compare VAR_TEMP_x400B, 0
@@ -101,7 +101,7 @@ scr_seq_D47_006:
 	faceplayer
 	npc_msg msg_0133_D47_00009
 	callstd std_mart_intro
-	scrcmd_054
+	holdmsg
 	setvar VAR_SPECIAL_x8004, 6
 	callstd std_special_mart
 	releaseall
@@ -113,7 +113,7 @@ scr_seq_D47_007:
 	faceplayer
 	npc_msg msg_0133_D47_00010
 	callstd std_mart_intro
-	scrcmd_054
+	holdmsg
 	setvar VAR_SPECIAL_x8004, 14
 	callstd std_special_mart
 	releaseall
@@ -126,7 +126,7 @@ scr_seq_D47_008:
 	play_cry SPECIES_BUTTERFREE, 0
 	npc_msg msg_0133_D47_00011
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -142,7 +142,7 @@ scr_seq_D47_010:
 	play_cry SPECIES_SLOWPOKE, 0
 	npc_msg msg_0133_D47_00013
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -223,7 +223,7 @@ _02CD:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -231,7 +231,7 @@ _02CD:
 _0307:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -239,7 +239,7 @@ _0307:
 _031B:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

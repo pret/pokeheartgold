@@ -142,28 +142,28 @@ scr_seq_T06_000:
 	compare VAR_UNK_4135, 1
 	goto_if_ge _01E9
 	npc_msg msg_0483_T06_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _01E9:
 	npc_msg msg_0483_T06_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _01F4:
 	npc_msg msg_0483_T06_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _01FF:
 	npc_msg msg_0483_T06_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -174,7 +174,7 @@ _020A:
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0F7
 	npc_msg msg_0483_T06_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -528,7 +528,7 @@ scr_seq_T06_004:
 	play_cry SPECIES_MACHOP, 0
 	npc_msg msg_0483_T06_00002
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -622,7 +622,7 @@ _0835:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -630,7 +630,7 @@ _0835:
 _086F:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -638,7 +638,7 @@ _086F:
 _0883:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

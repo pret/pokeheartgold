@@ -80,7 +80,7 @@ _0126:
 _012E:
 	setvar VAR_UNK_4147, 0
 	npc_msg msg_0109_D32R0501_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -326,7 +326,7 @@ _055F:
 
 _0563:
 	npc_msg msg_0109_D32R0501_00032
-	scrcmd_049
+	wait_button
 	closemsg
 	apply_movement obj_player, _060C
 	apply_movement VAR_SPECIAL_LAST_TALKED, _062C
@@ -335,7 +335,7 @@ _0563:
 
 _057E:
 	npc_msg msg_0109_D32R0501_00032
-	scrcmd_049
+	wait_button
 	closemsg
 	apply_movement obj_player, _060C
 	apply_movement VAR_SPECIAL_LAST_TALKED, _062C
@@ -467,7 +467,7 @@ scr_seq_D32R0501_001:
 	.byte 0x02, 0x00
 _06FD:
 	scrcmd_345
-	scrcmd_254 VAR_SPECIAL_RESULT
+	save_game_normal VAR_SPECIAL_RESULT
 	scrcmd_346
 	play_se SEQ_SE_DP_SAVE
 	wait_se SEQ_SE_DP_SAVE

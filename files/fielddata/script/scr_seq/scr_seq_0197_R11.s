@@ -35,7 +35,7 @@ scr_seq_R11_000:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _006A
 	npc_msg msg_0346_R11_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

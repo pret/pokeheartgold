@@ -102,7 +102,7 @@ scr_seq_P01R0307_000:
 	compare VAR_UNK_40CB, 3
 	goto_if_ge _0148
 	npc_msg msg_0263_P01R0307_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setflag FLAG_UNK_0ED
 	releaseall
@@ -110,7 +110,7 @@ scr_seq_P01R0307_000:
 
 _0148:
 	npc_msg msg_0263_P01R0307_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

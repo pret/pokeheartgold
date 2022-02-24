@@ -61,5 +61,7 @@ void InitGraphicMemory(void);
 void InitKeypadAndTouchpad(void);
 void sub_0201A4B0(int a0);
 void ReadKeypadAndTouchpad(void);
+void Sys_SetSleepDisableFlag(int);
+void Sys_ClearSleepDisableFlag(int);
 
 #endif //POKEHEARTGOLD_SYSTEM_H

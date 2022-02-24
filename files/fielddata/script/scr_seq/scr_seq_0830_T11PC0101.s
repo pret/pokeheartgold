@@ -26,14 +26,14 @@ scr_seq_T11PC0101_002:
 	faceplayer
 	goto_if_set FLAG_RESTORED_POWER, _004F
 	npc_msg msg_0532_T11PC0101_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _004F:
 	npc_msg msg_0532_T11PC0101_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

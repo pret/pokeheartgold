@@ -28,28 +28,28 @@ scr_seq_R16R0101_001:
 	goto_if_eq _007E
 	setflag FLAG_UNK_ABA
 	npc_msg msg_0355_R16R0101_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0068:
 	npc_msg msg_0355_R16R0101_00004
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0073:
 	npc_msg msg_0355_R16R0101_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _007E:
 	npc_msg msg_0355_R16R0101_00005
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

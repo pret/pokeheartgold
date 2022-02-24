@@ -18,7 +18,7 @@ scr_seq_T07R0105_001:
 	lockall
 	faceplayer
 	callstd std_mart_intro
-	scrcmd_054
+	holdmsg
 	setvar VAR_SPECIAL_x8004, 22
 	callstd std_special_mart
 	releaseall
@@ -29,7 +29,7 @@ scr_seq_T07R0105_000:
 	lockall
 	faceplayer
 	callstd std_mart_intro
-	scrcmd_054
+	holdmsg
 	setvar VAR_SPECIAL_x8004, 23
 	callstd std_special_mart
 	releaseall
@@ -51,7 +51,7 @@ scr_seq_T07R0105_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0498_T07R0105_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

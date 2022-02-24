@@ -46,7 +46,7 @@ scr_seq_T23_001:
 	play_cry SPECIES_SLOWPOKE, 0
 	npc_msg msg_0564_T23_00010
 	wait_cry
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -256,7 +256,7 @@ scr_seq_T23_006:
 _039C:
 	npc_msg msg_0564_T23_00019
 _039F:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

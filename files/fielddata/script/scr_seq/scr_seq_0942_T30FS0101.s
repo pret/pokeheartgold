@@ -16,7 +16,7 @@ scr_seq_T30FS0101_000:
 	lockall
 	faceplayer
 	callstd std_mart_intro
-	scrcmd_054
+	holdmsg
 	setvar VAR_SPECIAL_x8004, 1
 	callstd std_pokemart
 	releaseall
@@ -27,7 +27,7 @@ scr_seq_T30FS0101_001:
 	lockall
 	faceplayer
 	callstd std_mart_intro
-	scrcmd_054
+	holdmsg
 	setvar VAR_SPECIAL_x8004, 12
 	callstd std_special_mart
 	releaseall

@@ -72,7 +72,7 @@ scr_seq_T26R0701_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0611_T26R0701_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -142,7 +142,7 @@ _01DE:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -154,7 +154,7 @@ _01DE:
 _025E:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -162,7 +162,7 @@ _025E:
 _0272:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -225,7 +225,7 @@ _032B:
 	wait_fanfare
 	register_gear_number PHONE_CONTACT_JASMINE
 	npc_msg msg_0611_T26R0701_00006
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -241,7 +241,7 @@ _032B:
 _036E:
 	setvar VAR_TEMP_x4004, 1
 	npc_msg msg_0611_T26R0701_00007
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -272,21 +272,21 @@ _038A:
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0611_T26R0701_00011
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _03EB:
 	npc_msg msg_0611_T26R0701_00012
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _03F6:
 	npc_msg msg_0611_T26R0701_00013
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end

@@ -11,7 +11,7 @@ void PCStorage_init(PC_STORAGE *storage) {
     PCStorage_InitializeBoxes(storage);
 }
 
-int PCStorage_sizeof(void) {
+u32 PCStorage_sizeof(void) {
     return sizeof(PC_STORAGE);
 }
 

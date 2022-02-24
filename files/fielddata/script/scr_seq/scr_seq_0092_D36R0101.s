@@ -183,7 +183,7 @@ _02C9:
 	wait_movement
 	goto_if_set FLAG_UNK_126, _02FD
 	npc_msg msg_0115_D36R0101_00036
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setflag FLAG_UNK_126
 _02FD:
@@ -202,7 +202,7 @@ _0301:
 	wait_movement
 	goto_if_set FLAG_UNK_126, _0342
 	npc_msg msg_0115_D36R0101_00036
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setflag FLAG_UNK_126
 _0342:
@@ -219,7 +219,7 @@ _0346:
 	wait_movement
 	hide_person obj_D36R0101_tsure_poke_static_farfetchd
 	npc_msg msg_0115_D36R0101_00037
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setvar VAR_UNK_4099, 2
 	setvar VAR_UNK_409B, 2
@@ -235,7 +235,7 @@ _0346:
 	wait_fade
 	wait 5, VAR_SPECIAL_x8004
 	npc_msg msg_0115_D36R0101_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -340,7 +340,7 @@ _0557:
 	wait_movement
 	goto_if_set FLAG_UNK_125, _0577
 	npc_msg msg_0115_D36R0101_00035
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setflag FLAG_UNK_125
 _0577:
@@ -494,7 +494,7 @@ _078B:
 _07BA:
 	goto_if_set FLAG_UNK_126, _07D0
 	npc_msg msg_0115_D36R0101_00036
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setflag FLAG_UNK_126
 _07D0:
@@ -578,7 +578,7 @@ _08DF:
 	wait_movement
 	hide_person obj_D36R0101_tsure_poke_static_farfetchd_2
 	npc_msg msg_0115_D36R0101_00037
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	call_if_unset FLAG_FOUND_FIRST_FARFETCHD, _097A
 	setvar VAR_UNK_409A, 2
@@ -597,7 +597,7 @@ _08DF:
 	wait_fade
 	wait 5, VAR_SPECIAL_x8004
 	npc_msg msg_0115_D36R0101_00001
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1080,7 +1080,7 @@ _1041:
 	wait 32, VAR_SPECIAL_RESULT
 	play_cry VAR_SPECIAL_x8005, 0
 	npc_msg msg_0115_D36R0101_00022
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -1088,7 +1088,7 @@ _1041:
 
 _1079:
 	npc_msg msg_0115_D36R0101_00022
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -1096,7 +1096,7 @@ _1079:
 
 _1086:
 	npc_msg msg_0115_D36R0101_00013
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -1104,7 +1104,7 @@ _1086:
 
 _1093:
 	npc_msg msg_0115_D36R0101_00013
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -1161,7 +1161,7 @@ _114C:
 	lockall
 	faceplayer
 	npc_msg msg_0115_D36R0101_00000
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setvar VAR_UNK_40F4, 0
 	releaseall
@@ -1174,7 +1174,7 @@ scr_seq_D36R0101_017:
 	apply_movement obj_player, _1194
 	wait_movement
 	npc_msg msg_0115_D36R0101_00000
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	setvar VAR_UNK_40F4, 0
 	releaseall
@@ -1201,14 +1201,14 @@ scr_seq_D36R0101_011:
 	clearflag FLAG_UNK_1AE
 	clearflag FLAG_UNK_1AC
 	npc_msg msg_0115_D36R0101_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _11F2:
 	npc_msg msg_0115_D36R0101_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1231,7 +1231,7 @@ _1207:
 	wait_fade
 	wait 5, VAR_SPECIAL_x8004
 	npc_msg msg_0115_D36R0101_00002
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	apply_movement obj_D36R0101_gsfighter, _12EC
 	apply_movement obj_player, _12F8
@@ -1250,14 +1250,14 @@ _1207:
 	clearflag FLAG_UNK_1AE
 	clearflag FLAG_UNK_1AC
 	npc_msg msg_0115_D36R0101_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _12BE:
 	npc_msg msg_0115_D36R0101_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1548,7 +1548,7 @@ _169E:
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1556,7 +1556,7 @@ _169E:
 _16D8:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1564,7 +1564,7 @@ _16D8:
 _16EC:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1829,7 +1829,7 @@ _1AEF:
 
 _1AFB:
 	npc_msg msg_0115_D36R0101_00050
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	compare VAR_TEMP_x4008, 0
 	goto_if_ne _1B13
@@ -1910,7 +1910,7 @@ _1C1E:
 
 _1C36:
 	npc_msg msg_0115_D36R0101_00042
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 _1C3D:
 	releaseall
@@ -2184,7 +2184,7 @@ _1F3B:
 
 _1F3F:
 	npc_msg msg_0115_D36R0101_00055
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	return
 

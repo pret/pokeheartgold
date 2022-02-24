@@ -108,7 +108,7 @@ _0175:
 
 _019B:
 	npc_msg msg_0040_00003
-	waitbutton
+	wait_button_or_walk_away
 	touchscreen_menu_show
 	closemsg
 	releaseall
@@ -190,7 +190,7 @@ _02B2:
 	apply_movement VAR_SPECIAL_x8007, _0454
 	wait_movement
 	npc_msg msg_0040_00003
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -228,7 +228,7 @@ _0336:
 	apply_movement VAR_SPECIAL_x8007, _0454
 	wait_movement
 	npc_msg msg_0040_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	endstd
@@ -270,7 +270,7 @@ _0395:
 	npc_msg msg_0040_00102
 _03D4:
 	npc_msg msg_0040_00010
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -289,7 +289,7 @@ _03E3:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0445
 	npc_msg msg_0040_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	endstd
@@ -304,7 +304,7 @@ _041D:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0445
 	npc_msg msg_0040_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	endstd
@@ -422,7 +422,7 @@ _05AD:
 scr_seq_0003_004:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	scrcmd_049
+	wait_button
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	end
@@ -430,7 +430,7 @@ scr_seq_0003_004:
 _05F5:
 	buffer_players_name 0
 	npc_msg msg_0040_00011
-	scrcmd_049
+	wait_button
 	closemsg
 	fade_out_bgm 0, 10
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -448,7 +448,7 @@ scr_seq_0003_005:
 
 scr_seq_0003_024:
 	npc_msg msg_0040_00020
-	scrcmd_049
+	wait_button
 	closemsg
 	end
 
@@ -460,13 +460,13 @@ scr_seq_0003_006:
 	end
 
 _0646:
-	scrcmd_593
+	show_save_stats
 	npc_msg msg_0040_00013
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0740
-	scrcmd_253 VAR_SPECIAL_RESULT
+	get_save_file_state VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0698
 	compare VAR_SPECIAL_RESULT, 1
@@ -478,10 +478,10 @@ _0646:
 	end
 
 _0698:
-	scrcmd_594
+	hide_save_stats
 	touchscreen_menu_show
 	npc_msg msg_0040_00020
-	scrcmd_049
+	wait_button
 	setvar VAR_SPECIAL_RESULT, 0
 	return
 
@@ -504,16 +504,16 @@ _06C6:
 	end
 
 _06F2:
-	scrcmd_512
+	player_movement_saving_set
 	wait 2, VAR_SPECIAL_RESULT
 	call _0708
-	scrcmd_513
+	player_movement_saving_clear
 	goto _071D
 
 _0708:
 	scrcmd_345
 	call_if_set FLAG_MAPTEMP_020, _0762
-	scrcmd_254 VAR_SPECIAL_RESULT
+	save_game_normal VAR_SPECIAL_RESULT
 	scrcmd_346
 	return
 
@@ -524,20 +524,20 @@ _071D:
 	npc_msg msg_0040_00016
 	play_se SEQ_SE_DP_SAVE
 	wait_se SEQ_SE_DP_SAVE
-	scrcmd_348 30
-	scrcmd_594
+	wait_button_or_delay 30
+	hide_save_stats
 	return
 
 _0740:
-	scrcmd_594
+	hide_save_stats
 	touchscreen_menu_show
 	setvar VAR_SPECIAL_RESULT, 0
 	return
 
 _074C:
 	npc_msg msg_0040_00018
-	scrcmd_049
-	scrcmd_594
+	wait_button
+	hide_save_stats
 	touchscreen_menu_show
 	return
 
@@ -546,7 +546,7 @@ _0757:
 	goto _06F2
 	.byte 0x02, 0x00
 _0762:
-	scrcmd_641
+	save_wipe_extra_chunks
 	clearflag FLAG_MAPTEMP_020
 	return
 
@@ -563,7 +563,7 @@ _0775:
 scr_seq_0003_007:
 	call _07AA
 	npc_msg msg_0040_00032
-	scrcmd_049
+	wait_button
 	endstd
 	end
 
@@ -586,7 +586,7 @@ _07AA:
 scr_seq_0003_026:
 	call _07E4
 	npc_msg msg_0040_00032
-	scrcmd_049
+	wait_button
 	endstd
 	end
 
@@ -627,7 +627,7 @@ _080A:
 _084E:
 	npc_msg msg_0040_00031
 _0851:
-	waitbutton
+	wait_button_or_walk_away
 	return
 
 scr_seq_0003_033:
@@ -737,7 +737,7 @@ scr_seq_0003_009:
 
 _09F5:
 	npc_msg msg_0040_00027
-	waitbutton
+	wait_button_or_walk_away
 	return
 
 scr_seq_0003_010:
@@ -1036,7 +1036,7 @@ scr_seq_0003_012:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0040_00042
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1081,7 +1081,7 @@ _0F32:
 	apply_movement VAR_SPECIAL_x8007, _0454
 	wait_movement
 	npc_msg msg_0040_00046
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1102,7 +1102,7 @@ _0F72:
 	apply_movement VAR_SPECIAL_x8007, _0454
 	wait_movement
 	npc_msg msg_0040_00040
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1201,7 +1201,7 @@ scr_seq_0003_016:
 	lockall
 	faceplayer
 	scrcmd_455
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1259,7 +1259,7 @@ scr_seq_0003_021:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0040_00062
-	scrcmd_049
+	wait_button
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	closemsg
@@ -1273,7 +1273,7 @@ scr_seq_0003_022:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0040_00065
-	scrcmd_049
+	wait_button
 	closemsg
 	releaseall
 	end
@@ -1321,7 +1321,7 @@ _11AE:
 _126A:
 	npc_msg msg_0040_00110
 _126D:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	touchscreen_menu_show
 	releaseall
@@ -1470,7 +1470,7 @@ _13F6:
 
 scr_seq_0003_041:
 	npc_msg msg_0040_00093
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	endstd
@@ -1525,7 +1525,7 @@ scr_seq_0003_051:
 	touchscreen_menu_show
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 1
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	endstd
 	end
@@ -1533,7 +1533,7 @@ scr_seq_0003_051:
 _14DD:
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 6
-	scrcmd_054
+	holdmsg
 	goto _145E
 	.byte 0x02, 0x00
 scr_seq_0003_052:
@@ -1562,27 +1562,27 @@ scr_seq_0003_054:
 	.byte 0x02, 0x00
 scr_seq_0003_055:
 	touchscreen_menu_show
-	goto_if_set FLAG_UNK_16F, _15E8
-	goto_if_set FLAG_UNK_170, _160C
-	goto_if_set FLAG_UNK_171, _1630
-	goto_if_set FLAG_UNK_18A, _1654
+	goto_if_set FLAG_SPECIAL_MART_PHARMACY, _15E8
+	goto_if_set FLAG_SPECIAL_MART_BITTER, _160C
+	goto_if_set FLAG_SPECIAL_MART_MAHOGANY_GOOD, _1630
+	goto_if_set FLAG_SPECIAL_MART_MT_MOON, _1654
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 1
 _159E:
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	endstd
 	end
 
 _15A6:
-	goto_if_set FLAG_UNK_16F, _15FA
-	goto_if_set FLAG_UNK_170, _161E
-	goto_if_set FLAG_UNK_171, _1642
-	goto_if_set FLAG_UNK_18A, _1666
+	goto_if_set FLAG_SPECIAL_MART_PHARMACY, _15FA
+	goto_if_set FLAG_SPECIAL_MART_BITTER, _161E
+	goto_if_set FLAG_SPECIAL_MART_MAHOGANY_GOOD, _1642
+	goto_if_set FLAG_SPECIAL_MART_MT_MOON, _1666
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 6
 _15DE:
-	scrcmd_054
+	holdmsg
 	goto _14FB
 	.byte 0x02, 0x00
 _15E8:
@@ -1692,7 +1692,7 @@ scr_seq_0003_064:
 	scrcmd_727 VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0040_00100
-	scrcmd_049
+	wait_button
 	closemsg
 	releaseall
 	end

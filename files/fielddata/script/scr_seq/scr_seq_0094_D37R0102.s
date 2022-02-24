@@ -119,12 +119,12 @@ scr_seq_D37R0102_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	setflag FLAG_UNK_170
+	setflag FLAG_SPECIAL_MART_BITTER
 	npc_msg msg_0117_D37R0102_00000
-	scrcmd_054
+	holdmsg
 	setvar VAR_SPECIAL_x8004, 8
 	callstd std_special_mart
-	clearflag FLAG_UNK_170
+	clearflag FLAG_SPECIAL_MART_BITTER
 	releaseall
 	end
 
@@ -147,7 +147,7 @@ _01F5:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0324
 	npc_msg msg_0117_D37R0102_00011
-	scrcmd_049
+	wait_button
 	closemsg
 	scrcmd_114
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -167,7 +167,7 @@ _01F5:
 	submoneyimmediate 500
 	scrcmd_115
 	npc_msg msg_0117_D37R0102_00012
-	scrcmd_049
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_WHITE
 	wait_fade
@@ -177,7 +177,7 @@ _01F5:
 	fade_screen 6, 1, 1, RGB_WHITE
 	wait_fade
 	npc_msg msg_0117_D37R0102_00013
-	scrcmd_049
+	wait_button
 	setflag FLAG_DAILY_GOT_HAIRCUT
 	call _04C8
 	random VAR_SPECIAL_RESULT, 100
@@ -191,7 +191,7 @@ _02CA:
 	scrcmd_383 1, VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0117_D37R0102_00024
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -200,7 +200,7 @@ _02E0:
 	scrcmd_383 5, VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0117_D37R0102_00025
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -209,14 +209,14 @@ _02F6:
 	scrcmd_383 10, VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0117_D37R0102_00026
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _030C:
 	npc_msg msg_0117_D37R0102_00014
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_114
 	releaseall
@@ -224,14 +224,14 @@ _030C:
 
 _0319:
 	npc_msg msg_0117_D37R0102_00014
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0324:
 	npc_msg msg_0117_D37R0102_00015
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_114
 	releaseall
@@ -239,7 +239,7 @@ _0324:
 
 _0331:
 	npc_msg msg_0117_D37R0102_00016
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -263,7 +263,7 @@ _0375:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _04B0
 	npc_msg msg_0117_D37R0102_00018
-	scrcmd_049
+	wait_button
 	closemsg
 	scrcmd_114
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -283,7 +283,7 @@ _0375:
 	submoneyimmediate 300
 	scrcmd_115
 	npc_msg msg_0117_D37R0102_00019
-	scrcmd_049
+	wait_button
 	closemsg
 	fade_screen 6, 1, 0, RGB_WHITE
 	wait_fade
@@ -293,7 +293,7 @@ _0375:
 	fade_screen 6, 1, 1, RGB_WHITE
 	wait_fade
 	npc_msg msg_0117_D37R0102_00020
-	scrcmd_049
+	wait_button
 	setflag FLAG_DAILY_GOT_HAIRCUT
 	random VAR_SPECIAL_RESULT, 100
 	compare VAR_SPECIAL_RESULT, 40
@@ -307,7 +307,7 @@ _0444:
 	scrcmd_383 1, VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0117_D37R0102_00024
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -317,7 +317,7 @@ _0460:
 	scrcmd_383 5, VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0117_D37R0102_00025
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -327,14 +327,14 @@ _047C:
 	scrcmd_383 10, VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0117_D37R0102_00026
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0498:
 	npc_msg msg_0117_D37R0102_00021
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_114
 	releaseall
@@ -342,14 +342,14 @@ _0498:
 
 _04A5:
 	npc_msg msg_0117_D37R0102_00021
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _04B0:
 	npc_msg msg_0117_D37R0102_00022
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	scrcmd_114
 	releaseall
@@ -357,7 +357,7 @@ _04B0:
 
 _04BD:
 	npc_msg msg_0117_D37R0102_00023
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -564,14 +564,14 @@ _0886:
 	touchscreen_menu_show
 	scrcmd_114
 	npc_msg msg_0117_D37R0102_00009
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0895:
 	npc_msg msg_0117_D37R0102_00008
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -693,7 +693,7 @@ _0A71:
 	wait_fade
 	setvar VAR_SCENE_ROCKET_TAKEOVER, 3
 	npc_msg msg_0117_D37R0102_00037
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -955,7 +955,7 @@ _0DBC:
 
 _0DDA:
 	npc_msg msg_0117_D37R0102_00040
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -977,7 +977,7 @@ _0DEE:
 	scrcmd_494 0, VAR_SPECIAL_x8004
 	npc_msg msg_0117_D37R0102_00046
 	npc_msg msg_0117_D37R0102_00052
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -989,7 +989,7 @@ _0E35:
 
 _0E40:
 	npc_msg msg_0117_D37R0102_00048
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1014,7 +1014,7 @@ scr_seq_D37R0102_006:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0F05
 	npc_msg msg_0117_D37R0102_00034
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1069,14 +1069,14 @@ _0F79:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0117_D37R0102_00032
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
 
 _0FDA:
 	npc_msg msg_0117_D37R0102_00035
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1202,7 +1202,7 @@ scr_seq_D37R0102_010:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _1189
 	npc_msg msg_0117_D37R0102_00027
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1388,7 +1388,7 @@ scr_seq_D37R0102_022:
 
 _144B:
 	npc_msg msg_0117_D37R0102_00053
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	releaseall
 	end
@@ -1439,19 +1439,19 @@ _14EB:
 	.byte 0x00
 _1521:
 	npc_msg msg_0117_D37R0102_00058
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _1568
 	.byte 0x02, 0x00
 _1530:
 	npc_msg msg_0117_D37R0102_00059
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _1568
 	.byte 0x02, 0x00
 _153F:
 	npc_msg msg_0117_D37R0102_00060
-	waitbutton
+	wait_button_or_walk_away
 	closemsg
 	goto _1568
 	.byte 0x02, 0x00
