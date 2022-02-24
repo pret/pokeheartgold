@@ -27223,12 +27223,12 @@
 .public sub_020284A4
 .public SaveSubstruct_AssertCRC
 .public SaveSubstruct_UpdateCRC
-.public sub_02028DC8
-.public sub_02028DD0
-.public sub_02028DD8
-.public sub_02028DDC
+.public Sav2_SysInfo_GetField48
+.public Sav2_SysInfo_SetField48
+.public Sav2_SysInfo_GetField4C
+.public Sav2_SysInfo_SetField4C
 .public sub_02028E1C
-.public sub_02028E2C
+.public Sav2_SysInfo_RTC_SubField34
 .public sub_02028E4C
 .public sub_02029084
 .public sub_020290B4

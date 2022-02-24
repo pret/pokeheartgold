@@ -108,7 +108,7 @@ _020554D0:
 	ble _02055504
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_02028E2C
+	bl Sav2_SysInfo_RTC_SubField34
 	ldr r0, [sp]
 	add r1, r7, #0
 	add r2, r6, #0

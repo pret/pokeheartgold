@@ -6755,17 +6755,17 @@ ov73_021E8E7C: ; 0x021E8E7C
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
-	bl sub_02028DD8
+	bl Sav2_SysInfo_GetField4C
 	cmp r0, #0
 	bne _021E8E96
 	ldr r1, [r5]
 	ldr r0, [r1, #8]
 	ldr r1, [r1, #0x1c]
-	bl sub_02028DDC
+	bl Sav2_SysInfo_SetField4C
 _021E8E96:
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
-	bl sub_02028DD8
+	bl Sav2_SysInfo_GetField4C
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0x14]

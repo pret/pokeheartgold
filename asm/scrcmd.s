@@ -11562,7 +11562,7 @@ ScrCmd_573: ; 0x02046290
 	ldr r0, [r0, #0xc]
 	bl Sav2_SysInfo_get
 	mov r1, #1
-	bl sub_02028DD0
+	bl Sav2_SysInfo_SetField48
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
