@@ -234,7 +234,7 @@ Static main
 	Object asm/unk_0206A360.o
 	Object asm/field_take_photo.o
 	Object asm/unk_0206B910.o
-	Object asm/field_alph_checks.o
+	Object src/field_alph_checks.o
 	Object asm/get_egg.o
 	Object asm/unk_0206D494.o
 	Object src/pokemon.o
