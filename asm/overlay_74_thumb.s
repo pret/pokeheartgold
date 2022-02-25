@@ -2126,7 +2126,7 @@ ov74_022280B4: ; 0x022280B4
 _022280D4:
 	ldr r0, [r5, #4]
 	bl Sav2_SysInfo_get
-	bl sub_02028DC8
+	bl Sav2_SysInfo_GetField48
 	cmp r0, #1
 	bne _022280E6
 	mov r0, #1

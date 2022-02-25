@@ -567,7 +567,7 @@ extern BOOL ScrCmd_563(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_564(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_565(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_566(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_567(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetDPPlPrizeItemIdAndCost(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_568(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_569(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CheckCoinsVar(SCRIPTCONTEXT *ctx);
@@ -1422,7 +1422,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_564,
     ScrCmd_565,
     ScrCmd_566,
-    ScrCmd_567,
+    ScrCmd_GetDPPlPrizeItemIdAndCost,
     ScrCmd_568,
     ScrCmd_569,
     ScrCmd_CheckCoinsVar,
