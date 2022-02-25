@@ -10529,7 +10529,7 @@ ScrCmd_520: ; 0x02045A60
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066820
+	bl SetFlag975
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ScrCmd_520
@@ -10541,7 +10541,7 @@ ScrCmd_521: ; 0x02045A74
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066830
+	bl ClearFlag975
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ScrCmd_521
@@ -15210,7 +15210,7 @@ ScrCmd_814: ; 0x02047E40
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066A1C
+	bl SetFlag99A
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ScrCmd_814

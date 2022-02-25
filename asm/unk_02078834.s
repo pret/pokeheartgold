@@ -97,7 +97,7 @@ _020788CA:
 	beq _020788DE
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066950
+	bl SetFlag970
 _020788DE:
 	ldr r0, [r4]
 	ldr r0, [r0, #4]

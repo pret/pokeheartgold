@@ -354,7 +354,7 @@ ov36_021E5BC8: ; 0x021E5BC8
 	bl ScriptState_SetFishingCompetitionLengthRecord
 	add r0, r4, #0
 	bl SavArray_Flags_get
-	bl sub_020665EC
+	bl SetFlag960
 	pop {r4, pc}
 	.balign 4, 0
 _021E5BFC: .word 3000

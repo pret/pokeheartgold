@@ -218,7 +218,7 @@ Static main
 	Object asm/unk_020648EC.o
 	Object asm/field_use_item.o
 	Object asm/unk_020658D4.o
-	Object asm/sys_flags.o
+	Object src/sys_flags.o
 	Object asm/sys_vars.o
 	Object asm/unk_02066EDC.o
 	Object asm/field_roamer.o

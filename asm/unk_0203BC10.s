@@ -70,7 +70,7 @@ sub_0203BC28: ; 0x0203BC28
 _0203BC4E:
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066870
+	bl CheckFlag996
 	cmp r0, #1
 	bne _0203BC6A
 	add r0, r5, #0
@@ -224,7 +224,7 @@ sub_0203BD64: ; 0x0203BD64
 _0203BD98:
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066870
+	bl CheckFlag996
 	cmp r0, #1
 	bne _0203BDB4
 	add r0, r5, #0
@@ -3132,7 +3132,7 @@ sub_0203D488: ; 0x0203D488
 _0203D4CA:
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066870
+	bl CheckFlag996
 	cmp r0, #1
 	bne _0203D4E4
 	ldr r1, _0203D4FC ; =0x000028A4
