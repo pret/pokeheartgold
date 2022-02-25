@@ -3,14 +3,14 @@
 #include "dex_mon_measures.h"
 #include "gf_gfx_loader.h"
 
-u32 *ZknNarc_LoadHeight(NARC *narc, HeapID heapId);
-u32 *ZknNarc_LoadWeight(NARC *narc, HeapID heapId);
-void sub_02091470(NARC *narc, u32 **a1, u32 **a2, HeapID heapId);
-void sub_02091498(NARC *narc, u32 **a1, u32 **a2, HeapID heapId);
-void sub_020914C0(NARC *narc, u32 **a1, u32 **a2, HeapID heapId);
-void sub_020914E8(NARC *narc, u32 **a1, u32 **a2, HeapID heapId);
+static u32 *ZknNarc_LoadHeight(NARC *narc, HeapID heapId);
+static u32 *ZknNarc_LoadWeight(NARC *narc, HeapID heapId);
+static void sub_02091470(NARC *narc, u32 **a1, u32 **a2, HeapID heapId);
+static void sub_02091498(NARC *narc, u32 **a1, u32 **a2, HeapID heapId);
+static void sub_020914C0(NARC *narc, u32 **a1, u32 **a2, HeapID heapId);
+static void sub_020914E8(NARC *narc, u32 **a1, u32 **a2, HeapID heapId);
 
-static int sDataNarcId = NARC_application_zukanlist_zukan_data_zukan_data;
+static NarcId sDataNarcId = NARC_application_zukanlist_zukan_data_zukan_data;
 static int sWeightMsgBank = NARC_msg_msg_0812_bin;
 static int sHeightMsgBank = NARC_msg_msg_0814_bin;
 
@@ -78,30 +78,30 @@ u32 ZknData_GetWeight(struct ZknHeightWeight *zkn, int species) {
     return zkn->weight[species];
 }
 
-u32 *ZknNarc_LoadHeight(NARC *narc, HeapID heapId) {
+static u32 *ZknNarc_LoadHeight(NARC *narc, HeapID heapId) {
     return GfGfxLoader_LoadFromOpenNarc(narc, 0, FALSE, heapId, FALSE);
 }
 
-u32 *ZknNarc_LoadWeight(NARC *narc, HeapID heapId) {
+static u32 *ZknNarc_LoadWeight(NARC *narc, HeapID heapId) {
     return GfGfxLoader_LoadFromOpenNarc(narc, 1, FALSE, heapId, FALSE);
 }
 
-void sub_02091470(NARC *narc, u32 **a1, u32 **a2, HeapID heapId) {
+static void sub_02091470(NARC *narc, u32 **a1, u32 **a2, HeapID heapId) {
     *a1 = GfGfxLoader_LoadFromOpenNarc(narc, 9, FALSE, heapId, FALSE);
     *a2 = GfGfxLoader_LoadFromOpenNarc(narc, 10, FALSE, heapId, FALSE);
 }
 
-void sub_02091498(NARC *narc, u32 **a1, u32 **a2, HeapID heapId) {
+static void sub_02091498(NARC *narc, u32 **a1, u32 **a2, HeapID heapId) {
     *a1 = GfGfxLoader_LoadFromOpenNarc(narc, 7, FALSE, heapId, FALSE);
     *a2 = GfGfxLoader_LoadFromOpenNarc(narc, 8, FALSE, heapId, FALSE);
 }
 
-void sub_020914C0(NARC *narc, u32 **a1, u32 **a2, HeapID heapId) {
+static void sub_020914C0(NARC *narc, u32 **a1, u32 **a2, HeapID heapId) {
     *a1 = GfGfxLoader_LoadFromOpenNarc(narc, 5, FALSE, heapId, FALSE);
     *a2 = GfGfxLoader_LoadFromOpenNarc(narc, 6, FALSE, heapId, FALSE);
 }
 
-void sub_020914E8(NARC *narc, u32 **a1, u32 **a2, HeapID heapId) {
+static void sub_020914E8(NARC *narc, u32 **a1, u32 **a2, HeapID heapId) {
     *a1 = GfGfxLoader_LoadFromOpenNarc(narc, 3, FALSE, heapId, FALSE);
     *a2 = GfGfxLoader_LoadFromOpenNarc(narc, 4, FALSE, heapId, FALSE);
 }
