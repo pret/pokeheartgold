@@ -89,7 +89,7 @@ Static main
 	Object asm/unk_02027010.o
 	Object src/save_arrays.o
 	Object src/save.o
-	Object asm/sav_system_info.o
+	Object src/sav_system_info.o
 	Object src/player_data.o
 	Object asm/unk_020290B4.o
 	Object src/daycare.o
@@ -159,7 +159,7 @@ Static main
 	Object src/scrcmd_c.o
 	Object asm/scrcmd.o
 	Object src/scrcmd_mart.o
-	Object asm/scrcmd_4.o
+	Object src/scrcmd_strbuf.o
 	Object asm/scrcmd_5.o
 	Object asm/scrcmd_6.o
 	Object asm/scrcmd_7.o
@@ -171,7 +171,7 @@ Static main
 	Object src/scrcmd_money.o
 	Object src/scrcmd_daycare.o
 	Object asm/scrcmd_15.o
-	Object asm/scrcmd_16.o
+	Object src/scrcmd_dppl_prizes.o
 	Object asm/scrcmd_17.o
 	Object src/scrcmd_items.o
 	Object asm/scrcmd_19.o
@@ -234,7 +234,7 @@ Static main
 	Object asm/unk_0206A360.o
 	Object asm/field_take_photo.o
 	Object asm/unk_0206B910.o
-	Object asm/field_alph_checks.o
+	Object src/field_alph_checks.o
 	Object asm/get_egg.o
 	Object asm/unk_0206D494.o
 	Object src/pokemon.o
