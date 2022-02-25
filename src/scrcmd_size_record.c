@@ -1,6 +1,6 @@
 #include "pokemon.h"
 #include "scrcmd.h"
-#include "unk_02090C94.h"
+#include "dex_mon_measures.h"
 #include "event_data.h"
 #include "script_state_misc.h"
 
@@ -60,7 +60,7 @@ static u32 GetMonSize(int species, int rand) {
     u32 r6;
     int r4;
 
-    r6 = SpeciesGetDexHeight(species);
+    r6 = SpeciesGetDexHeight(species, 4);
     r4 = TranslateBigMonSizeTableIndex(rand);
     return r6 * ((u64)sBigMonSizeTable[r4][0] + ((u64)rand - (u64)sBigMonSizeTable[r4][2]) / (u64)sBigMonSizeTable[r4][1]) / 10;
 }

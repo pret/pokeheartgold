@@ -29534,7 +29534,7 @@
 .public ZknData_LoadAll
 .public ZknData_UnloadAll
 .public ZknData_GetHeight
-.public sub_02091430
+.public ZknData_GetWeight
 .public sub_02091570
 .public sub_02091574
 .public sub_02091590

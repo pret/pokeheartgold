@@ -110,7 +110,7 @@ _020749FC:
 	beq _02074A2A
 	ldr r0, [sp]
 	add r1, r6, #0
-	bl sub_02091430
+	bl ZknData_GetWeight
 	cmp r5, #0
 	ble _02074A20
 	cmp r0, r5

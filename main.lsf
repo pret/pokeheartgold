@@ -282,7 +282,7 @@ Static main
 	Object asm/unk_020910D8.o
 	Object asm/unk_02091278.o
 	Object asm/unk_020912AC.o
-	Object asm/dex_mon_measures.o
+	Object src/dex_mon_measures.o
 	Object asm/unk_02091564.o
 	Object asm/unk_020915B0.o
 	Object asm/unk_02091664.o
