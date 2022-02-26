@@ -1,9 +1,9 @@
-#include "global.h"
+#include "heap.h"
 #include "unk_0202055C.h"
 
 static Unk0202055C *sUnknown;
 
-void sub_0202055C(u32 a0, u32 a1) {
+void sub_0202055C(u32 a0, HeapID a1) {
     void *ptr;
 
     GF_ASSERT(sUnknown == NULL);
@@ -11,7 +11,7 @@ void sub_0202055C(u32 a0, u32 a1) {
     sUnknown = ptr;
     GF_ASSERT(ptr != NULL);
 
-    ptr = AllocFromHeap(a1, a0 << 4);
+    ptr = AllocFromHeap(a1, a0 * 16);
     sUnknown->unk8 = ptr;
 
     sUnknown->unk0 = a0;
@@ -31,7 +31,7 @@ u32 sub_020205D8(u32 a0, u32 a1, u32 a2, u32 a3) {
     sUnknown->unk4++;
 
     if (sUnknown->unk4 >= sUnknown->unk0) {
-        GF_AssertFail();
+        GF_ASSERT(FALSE);
         return 0;
     }
 
