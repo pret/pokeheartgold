@@ -11,7 +11,7 @@
 #define SAVE_FLYPOINTS            5
 #define SAVE_POKEDEX              6
 #define SAVE_DAYCARE              7
-#define SAVE_PALPAD                8
+#define SAVE_PALPAD               8
 #define SAVE_MISC                 9
 #define SAVE_UNK_10              10
 #define SAVE_UNK_11              11
