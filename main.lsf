@@ -98,7 +98,7 @@ Static main
 	Object src/options.o
 	Object src/apricorn_tree_sys.o
 	Object src/save_gymmick.o
-	Object asm/unk_0202AEC0.o
+	Object src/save_palpad.o
 	Object src/mail.o
 	Object asm/unk_0202B614.o
 	Object asm/unk_0202C034.o

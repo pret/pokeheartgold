@@ -762,7 +762,7 @@ _02051EB0:
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl sub_0202AEC8
+	bl Save_PalPad_get
 	mov r1, #0x52
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -951,7 +951,7 @@ _02052004:
 	str r0, [r5, r1]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl sub_0202AEC8
+	bl Save_PalPad_get
 	mov r1, #0x52
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -1184,7 +1184,7 @@ _020521F6:
 	str r0, [r5, r1]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl sub_0202AEC8
+	bl Save_PalPad_get
 	mov r1, #0x52
 	lsl r1, r1, #2
 	str r0, [r5, r1]

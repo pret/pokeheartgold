@@ -6,70 +6,67 @@
 #include "unk_0202EB30.h"
 #include "unk_02030A98.h"
 #include "hall_of_fame.h"
+#include "save_palpad.h"
+#include "daycare.h"
+#include "sav_system_info.h"
+#include "bag.h"
+#include "event_data.h"
+#include "save_misc_data.h"
+#include "pokedex.h"
+#include "sav_chatot.h"
+#include "roamer.h"
+#include "friend_group.h"
+#include "easy_chat.h"
+#include "safari_zone.h"
+#include "pokewalker.h"
+#include "photo_album.h"
 
 #define DECL_CHUNK(prefix) extern u32 prefix##_sizeof(void); extern void prefix##_init(void *);
 #define DECL_CHUNK_EX(sizefn, initfn) extern u32 sizefn(void); extern void initfn(void *);
 
-DECL_CHUNK(Sav2_SysInfo)
-DECL_CHUNK(Sav2_PlayerData)
-DECL_CHUNK(Sav2_Bag)
-DECL_CHUNK(SavArray_Flags)
 DECL_CHUNK(Save_FlyPoints)
-DECL_CHUNK(Save_Pokedex)
-DECL_CHUNK(Sav2_Daycare)
-DECL_CHUNK_EX(sub_0202AEC0, sub_0202AED4)
-DECL_CHUNK(Sav2_Misc)
 DECL_CHUNK_EX(sub_0203B920, sub_0203B928)
 DECL_CHUNK_EX(sub_020290B8, sub_020290C8)
 DECL_CHUNK(Sav2_DressupData)
-DECL_CHUNK(Sav2_Mailbox)
-DECL_CHUNK(Sav2_FriendGroup)
 DECL_CHUNK_EX(sub_0202C9A0, sub_0202C9A8)
 DECL_CHUNK(GameStats)
-DECL_CHUNK(Sav2_Chatot)
 DECL_CHUNK_EX(sub_02031000, sub_02031008)
 DECL_CHUNK_EX(sub_0202D938, sub_0202D93C)
-DECL_CHUNK(Save_Roamers)
 DECL_CHUNK_EX(sub_0202DB40, sub_0202DB44)
 DECL_CHUNK_EX(sub_0202E41C, sub_0202E424)
 DECL_CHUNK_EX(sub_0202E4F4, sub_0202E4FC)
 DECL_CHUNK_EX(sub_0202C034, sub_0202C03C)
 DECL_CHUNK_EX(sub_0202CA24, sub_0202CA2C)
-DECL_CHUNK(Save_MysteryGift)
 DECL_CHUNK_EX(sub_0202EB30, sub_0202EB38)
 DECL_CHUNK_EX(sub_02031AF0, sub_02031AF4)
-DECL_CHUNK(Sav2_EasyChat)
 DECL_CHUNK_EX(sub_0203170C, sub_02031710)
 DECL_CHUNK_EX(sub_020318C8, sub_020318CC)
 DECL_CHUNK(Sav2_FollowPoke)
 DECL_CHUNK(SaveData_GSPlayerMisc)
-DECL_CHUNK(Save_SafariZone)
-DECL_CHUNK(Save_PhotoAlbum)
 DECL_CHUNK_EX(sub_02031904, sub_0203190C)
 DECL_CHUNK(Save_ApricornBox)
-DECL_CHUNK(Pokewalker)
 DECL_CHUNK_EX(sub_02032774, sub_02032788)
 
 const struct SaveChunkHeader gSaveChunkHeaders[] = {
-    { SAVE_SYSINFO,      0, (SAVESIZEFN)Sav2_SysInfo_sizeof, (SAVEINITFN)Sav2_SysInfo_init},
-    { SAVE_PLAYERDATA,   0, (SAVESIZEFN)Sav2_PlayerData_sizeof, (SAVEINITFN)Sav2_PlayerData_init},
-    { SAVE_PARTY,        0, (SAVESIZEFN)SavArray_Party_sizeof, (SAVEINITFN)SavArray_Party_init},
-    { SAVE_BAG,          0, (SAVESIZEFN)Sav2_Bag_sizeof, (SAVEINITFN)Sav2_Bag_init},
-    { SAVE_FLAGS,        0, (SAVESIZEFN)SavArray_Flags_sizeof, (SAVEINITFN)SavArray_Flags_init},
-    { SAVE_FLYPOINTS,    0, (SAVESIZEFN)Save_FlyPoints_sizeof, (SAVEINITFN)Save_FlyPoints_init},
-    { SAVE_POKEDEX,      0, (SAVESIZEFN)Save_Pokedex_sizeof, (SAVEINITFN)Save_Pokedex_init},
-    { SAVE_DAYCARE,      0, (SAVESIZEFN)Sav2_Daycare_sizeof, (SAVEINITFN)Sav2_Daycare_init},
-    { SAVE_UNK_8,        0, (SAVESIZEFN)sub_0202AEC0, (SAVEINITFN)sub_0202AED4},
-    { SAVE_MISC,         0, (SAVESIZEFN)Sav2_Misc_sizeof, (SAVEINITFN)Sav2_Misc_init},
-    { SAVE_UNK_10,       0, (SAVESIZEFN)sub_0203B920, (SAVEINITFN)sub_0203B928},
-    { SAVE_UNK_11,       0, (SAVESIZEFN)sub_020290B8, (SAVEINITFN)sub_020290C8},
-    { SAVE_DRESSUP_DATA, 0, (SAVESIZEFN)Sav2_DressupData_sizeof, (SAVEINITFN)Sav2_DressupData_init},
-    { SAVE_MAILBOX,      0, (SAVESIZEFN)Sav2_Mailbox_sizeof, (SAVEINITFN)Sav2_Mailbox_init},
-    { SAVE_FRIEND_GROUP, 0, (SAVESIZEFN)Sav2_FriendGroup_sizeof, (SAVEINITFN)Sav2_FriendGroup_init},
-    { SAVE_UNK_15,       0, (SAVESIZEFN)sub_0202C9A0, (SAVEINITFN)sub_0202C9A8},
-    { SAVE_GAMESTATS,    0, (SAVESIZEFN)GameStats_sizeof, (SAVEINITFN)GameStats_init},
-    { SAVE_SEAL_CASE,    0, (SAVESIZEFN)Sav2_SealCase_sizeof, (SAVEINITFN)Sav2_SealCase_init},
-    { SAVE_CHATOT,       0, (SAVESIZEFN)Sav2_Chatot_sizeof, (SAVEINITFN)Sav2_Chatot_init},
+    {SAVE_SYSINFO,      0, (SAVESIZEFN)Sav2_SysInfo_sizeof,     (SAVEINITFN)Sav2_SysInfo_init},
+    {SAVE_PLAYERDATA,   0, (SAVESIZEFN)Sav2_PlayerData_sizeof,  (SAVEINITFN)Sav2_PlayerData_init},
+    {SAVE_PARTY,        0, (SAVESIZEFN)SavArray_Party_sizeof,   (SAVEINITFN)SavArray_Party_init},
+    {SAVE_BAG,          0, (SAVESIZEFN)Sav2_Bag_sizeof,         (SAVEINITFN)Sav2_Bag_init},
+    {SAVE_FLAGS,        0, (SAVESIZEFN)SavArray_Flags_sizeof,   (SAVEINITFN)SavArray_Flags_init},
+    {SAVE_FLYPOINTS,    0, (SAVESIZEFN)Save_FlyPoints_sizeof,   (SAVEINITFN)Save_FlyPoints_init},
+    {SAVE_POKEDEX,      0, (SAVESIZEFN)Save_Pokedex_sizeof,     (SAVEINITFN)Save_Pokedex_init},
+    {SAVE_DAYCARE,      0, (SAVESIZEFN)Sav2_Daycare_sizeof,     (SAVEINITFN)Sav2_Daycare_init},
+    {SAVE_PALPAD,       0, (SAVESIZEFN)Save_PalPad_sizeof,      (SAVEINITFN)Save_PalPad_init},
+    {SAVE_MISC,         0, (SAVESIZEFN)Sav2_Misc_sizeof,        (SAVEINITFN)Sav2_Misc_init},
+    {SAVE_UNK_10,       0, (SAVESIZEFN)sub_0203B920,            (SAVEINITFN)sub_0203B928},
+    {SAVE_UNK_11,       0, (SAVESIZEFN)sub_020290B8,            (SAVEINITFN)sub_020290C8},
+    {SAVE_DRESSUP_DATA, 0, (SAVESIZEFN)Sav2_DressupData_sizeof, (SAVEINITFN)Sav2_DressupData_init},
+    {SAVE_MAILBOX,      0, (SAVESIZEFN)Sav2_Mailbox_sizeof,     (SAVEINITFN)Sav2_Mailbox_init},
+    {SAVE_FRIEND_GROUP, 0, (SAVESIZEFN)Sav2_FriendGroup_sizeof, (SAVEINITFN)Sav2_FriendGroup_init},
+    {SAVE_UNK_15,       0, (SAVESIZEFN)sub_0202C9A0,            (SAVEINITFN)sub_0202C9A8},
+    {SAVE_GAMESTATS,    0, (SAVESIZEFN)GameStats_sizeof,        (SAVEINITFN)GameStats_init},
+    {SAVE_SEAL_CASE,    0, (SAVESIZEFN)Sav2_SealCase_sizeof,    (SAVEINITFN)Sav2_SealCase_init},
+    {SAVE_CHATOT,       0, (SAVESIZEFN)Sav2_Chatot_sizeof,      (SAVEINITFN)Sav2_Chatot_init},
     { SAVE_UNK_19,       0, (SAVESIZEFN)sub_02031000, (SAVEINITFN)sub_02031008},
     { SAVE_UNK_20,       0, (SAVESIZEFN)sub_0202D938, (SAVEINITFN)sub_0202D93C},
     { SAVE_ROAMER,       0, (SAVESIZEFN)Save_Roamers_sizeof, (SAVEINITFN)Save_Roamers_init},
@@ -115,9 +112,6 @@ struct UnkStruct_0202EB30 *sub_020270F8(SAVEDATA *saveData) {
 }
 
 DECL_CHUNK_EX(sub_020312A4, sub_020312AC)
-DECL_CHUNK_EX(sub_0202FBCC, sub_0202FBD4)
-DECL_CHUNK_EX(sub_0202FBCC, sub_0202FBD4)
-DECL_CHUNK_EX(sub_0202FBCC, sub_0202FBD4)
 DECL_CHUNK_EX(sub_0202FBCC, sub_0202FBD4)
 
 const struct ExtraSaveChunkHeader gExtraSaveChunkHeaders[] = {
