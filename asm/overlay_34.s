@@ -1726,7 +1726,7 @@ ov34_0225E2BC: ; 0x0225E2BC
 	beq _0225E2E0
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0202B01C
+	bl PalPad_PlayerIdIsFriendOrMutual
 	add r4, r0, #0
 _0225E2E0:
 	cmp r4, #0
@@ -1748,13 +1748,13 @@ _0225E2F4:
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0202AEF8
+	bl PalPad_GetNthEntry
 	add r1, r0, #0
 	add r0, r4, #0
 	bl CopyU16ArrayToString
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0202AF00
+	bl PalPadEntry_GetFromUnk68Array
 	mov r1, #0
 	str r1, [sp]
 	str r0, [sp, #4]

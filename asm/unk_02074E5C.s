@@ -1131,7 +1131,7 @@ sub_020755B4: ; 0x020755B4
 	add r1, r6, #0
 	mov r2, #1
 	mov r3, #5
-	bl sub_0202AF28
+	bl SavePalPad_Merge
 _020755D6:
 	ldr r0, _020755E0 ; =0x00001020
 	ldrb r1, [r4, r0]

@@ -212,7 +212,7 @@ sub_0208F77C: ; 0x0208F77C
 	ldr r0, [r4, r0]
 	mov r2, #1
 	mov r3, #0x1a
-	bl sub_0202AF28
+	bl SavePalPad_Merge
 	mov r0, #3
 	str r0, [r4, #0x60]
 _0208F7A0:

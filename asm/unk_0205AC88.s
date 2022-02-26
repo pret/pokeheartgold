@@ -250,7 +250,7 @@ _0205AE42:
 	ldr r1, [sp, #8]
 	ldr r0, [sp, #4]
 	ldr r1, [r1]
-	bl sub_0202B01C
+	bl PalPad_PlayerIdIsFriendOrMutual
 	strb r0, [r4, #0xe]
 	mov r5, #1
 	b _0205AE86
@@ -342,7 +342,7 @@ _0205AEEC:
 	bl PlayerProfile_GetTrainerID
 	add r1, r0, #0
 	ldr r0, [sp, #8]
-	bl sub_0202B01C
+	bl PalPad_PlayerIdIsFriendOrMutual
 	strb r0, [r5, #0xe]
 	ldr r0, [r7]
 	ldr r3, [sp, #8]

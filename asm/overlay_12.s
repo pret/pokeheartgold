@@ -47268,7 +47268,7 @@ _0224E93C:
 	ldr r1, [sp, #0x18]
 	ldr r0, [sp, #0x24]
 	ldrh r1, [r1, r5]
-	bl sub_02091430
+	bl ZknData_GetWeight
 	ldr r1, _0224E9F8 ; =0x00002D60
 	add r2, r7, r6
 	str r0, [r2, r1]
