@@ -3,17 +3,13 @@
 
 static Unk0202055C *sUnknown;
 
-void sub_0202055C(u32 a0, HeapID a1) {
-    void *ptr;
-
+void sub_0202055C(u32 a0, HeapID heap_id) {
     GF_ASSERT(sUnknown == NULL);
-    ptr = AllocFromHeap(a1, sizeof(Unk0202055C));
-    sUnknown = ptr;
-    GF_ASSERT(ptr != NULL);
 
-    ptr = AllocFromHeap(a1, a0 * 16);
-    sUnknown->unk8 = ptr;
+    sUnknown = AllocFromHeap(heap_id, sizeof(Unk0202055C));
+    GF_ASSERT(sUnknown != NULL);
 
+    sUnknown->unk8 = AllocFromHeap(heap_id, a0 * 16);
     sUnknown->unk0 = a0;
     sUnknown->unk4 = 0;
     NNS_GfdInitVramTransferManager(sUnknown->unk8, sUnknown->unk0);
@@ -23,7 +19,7 @@ void sub_020205AC(void) {
     GF_ASSERT(sUnknown != NULL);
     FreeToHeap(sUnknown->unk8);
     FreeToHeap(sUnknown);
-    sUnknown = 0;
+    sUnknown = NULL;
 }
 
 u32 sub_020205D8(u32 a0, u32 a1, u32 a2, u32 a3) {
