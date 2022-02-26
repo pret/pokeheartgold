@@ -51,4 +51,7 @@ typedef struct PHOTO_ALBUM {
     PHOTO photos[PHOTO_ALBUM_MAX];
 } PHOTO_ALBUM;
 
+u32 Save_PhotoAlbum_sizeof(void);
+void Save_PhotoAlbum_init(PHOTO_ALBUM *album);
+
 #endif //POKEHEARTGOLD_PHOTO_ALBUM_H

@@ -505,6 +505,7 @@
 #define SPECIES_SHAYMIN         492
 #define SPECIES_ARCEUS          493
 
+#define MAX_SPECIES                 SPECIES_ARCEUS
 #define NATIONAL_DEX_COUNT          SPECIES_ARCEUS
 
 #define SPECIES_EGG             494

@@ -21,6 +21,8 @@ typedef struct SaveFriendGroup {
     FRIEND_GROUP groups[FGRP_MAX];
 } SAV_FRIEND_GRP;
 
+u32 Sav2_FriendGroup_sizeof(void);
+void Sav2_FriendGroup_init(SAV_FRIEND_GRP *savFriendGrp);
 SAV_FRIEND_GRP *sub_0202C854(SAVEDATA *saveData);
 u8 sub_0202C830(SAV_FRIEND_GRP *savFriendGrp, int grpno);
 u8 sub_0202C83C(SAV_FRIEND_GRP *savFriendGrp, int grpno);

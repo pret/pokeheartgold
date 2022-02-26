@@ -795,12 +795,12 @@ ov74_0222763C: ; 0x0222763C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r0, #0
-	bl ov74_02233938
+	bl PmAgbCartridgeGetOffsets
 	mov r4, #0
 	str r4, [r5, #0x24]
 	cmp r0, #0
 	bne _022276A6
-	bl ov74_022339BC
+	bl PmAgbCartridge_GetVersionInternal
 	cmp r0, #4
 	bhi _0222767E
 	add r0, r0, r0
@@ -816,19 +816,19 @@ _02227662: ; jump table
 	.short _02227678 - _02227662 - 2 ; case 3
 	.short _0222767C - _02227662 - 2 ; case 4
 _0222766C:
-	mov r4, #2
+	mov r4, #VERSION_RUBY
 	b _0222767E
 _02227670:
-	mov r4, #1
+	mov r4, #VERSION_SAPPHIRE
 	b _0222767E
 _02227674:
-	mov r4, #5
+	mov r4, #VERSION_LEAF_GREEN
 	b _0222767E
 _02227678:
-	mov r4, #4
+	mov r4, #VERSION_FIRE_RED
 	b _0222767E
 _0222767C:
-	mov r4, #3
+	mov r4, #VERSION_EMERALD
 _0222767E:
 	add r0, r4, #0
 	bl sub_0201A4B0
@@ -836,12 +836,12 @@ _0222767E:
 	bl Pokedex_GetNatDexFlag
 	cmp r0, #0
 	beq _022276A6
-	bl ov74_022339C8
+	bl PmAgbCartridge_GetLanguage
 	ldr r1, _022276A8 ; =gGameLanguage
 	ldrb r1, [r1]
 	cmp r1, r0
 	bne _022276A6
-	bl ov74_022339BC
+	bl PmAgbCartridge_GetVersionInternal
 	add r0, r0, #1
 	str r0, [r5, #0x24]
 	bl ov74_02236074
@@ -21155,7 +21155,7 @@ _0223178C: .word 0x00000115
 ov74_02231790: ; 0x02231790
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov74_022339BC
+	bl PmAgbCartridge_GetVersionInternal
 	cmp r0, #4
 	bhi _022317D0
 	add r0, r0, r0
@@ -21171,23 +21171,23 @@ _022317A8: ; jump table
 	.short _022317C4 - _022317A8 - 2 ; case 3
 	.short _022317CA - _022317A8 - 2 ; case 4
 _022317B2:
-	mov r0, #2
+	mov r0, #VERSION_RUBY
 	str r0, [r4]
 	pop {r4, pc}
 _022317B8:
-	mov r0, #1
+	mov r0, #VERSION_SAPPHIRE
 	str r0, [r4]
 	pop {r4, pc}
 _022317BE:
-	mov r0, #5
+	mov r0, #VERSION_LEAF_GREEN
 	str r0, [r4]
 	pop {r4, pc}
 _022317C4:
-	mov r0, #4
+	mov r0, #VERSION_FIRE_RED
 	str r0, [r4]
 	pop {r4, pc}
 _022317CA:
-	mov r0, #3
+	mov r0, #VERSION_EMERALD
 	str r0, [r4]
 	pop {r4, pc}
 _022317D0:
@@ -21420,7 +21420,7 @@ _02231976:
 	mul r1, r2
 	add r0, r0, r1
 	add r1, r6, #0
-	bl ov74_02234A9C
+	bl MigrateBoxMon
 	ldr r0, [sp]
 	add r1, r6, #0
 	add r2, r4, #0
@@ -21918,13 +21918,13 @@ ov74_02231D70: ; 0x02231D70
 	mov r0, #0x50
 	mul r0, r2
 	add r0, r1, r0
-	ldr r3, _02231D90 ; =ov74_02234530
+	ldr r3, _02231D90 ; =AGB_GetBoxMonData
 	mov r1, #0xb
 	mov r2, #0
 	bx r3
 	.balign 4, 0
 _02231D8C: .word 0x0000E880
-_02231D90: .word ov74_02234530
+_02231D90: .word AGB_GetBoxMonData
 	thumb_func_end ov74_02231D70
 
 	thumb_func_start ov74_02231D94
@@ -21939,13 +21939,13 @@ ov74_02231D94: ; 0x02231D94
 	mov r0, #0x50
 	mul r0, r2
 	add r0, r1, r0
-	ldr r3, _02231DB4 ; =ov74_02234530
+	ldr r3, _02231DB4 ; =AGB_GetBoxMonData
 	mov r1, #0x2d
 	mov r2, #0
 	bx r3
 	.balign 4, 0
 _02231DB0: .word 0x0000E880
-_02231DB4: .word ov74_02234530
+_02231DB4: .word AGB_GetBoxMonData
 	thumb_func_end ov74_02231D94
 
 	thumb_func_start ov74_02231DB8
@@ -21961,12 +21961,12 @@ ov74_02231DB8: ; 0x02231DB8
 	mul r0, r2
 	add r0, r1, r0
 	mov r1, #0
-	ldr r3, _02231DD8 ; =ov74_02234530
+	ldr r3, _02231DD8 ; =AGB_GetBoxMonData
 	add r2, r1, #0
 	bx r3
 	.balign 4, 0
 _02231DD4: .word 0x0000E880
-_02231DD8: .word ov74_02234530
+_02231DD8: .word AGB_GetBoxMonData
 	thumb_func_end ov74_02231DB8
 
 	thumb_func_start ov74_02231DDC
@@ -22108,7 +22108,7 @@ ov74_02231EC4: ; 0x02231EC4
 	add r6, r2, #0
 	add r7, r3, #0
 	add r5, r1, #0
-	bl ov74_022349DC
+	bl TranslateAgbSpecies
 	add r1, r6, #0
 	add r2, r7, #0
 	add r4, r0, #0
@@ -22172,7 +22172,7 @@ ov74_02231F30: ; 0x02231F30
 	cmp r0, #0
 	bne _02231F60
 	add r0, r6, #0
-	bl ov74_022349DC
+	bl TranslateAgbSpecies
 	add r6, r0, #0
 	b _02231F62
 _02231F60:
@@ -22283,7 +22283,7 @@ _02232016:
 	mov r2, #0
 	add r0, r1, r0
 	mov r1, #5
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	cmp r0, #0
 	beq _022320DA
 	ldr r1, _02232144 ; =0x0000E884
@@ -22305,7 +22305,7 @@ _02232016:
 	bl ov74_02231DB8
 	add r4, r0, #0
 	ldr r0, [sp, #0x1c]
-	bl ov74_022349DC
+	bl TranslateAgbSpecies
 	ldr r2, _02232148 ; =gSystem + 0x60
 	add r1, r4, #0
 	ldrb r2, [r2, #0xa]
@@ -22342,7 +22342,7 @@ _02232016:
 	mov r2, #0
 	add r0, r1, r0
 	mov r1, #0xc
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	cmp r0, #0
 	beq _022320CC
 	mov r0, #0x6b
@@ -22711,7 +22711,7 @@ ov74_02232398: ; 0x02232398
 	add r0, r2, r0
 	mov r1, #0x41
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	mov r1, #0x67
 	lsl r1, r1, #2
 	cmp r0, r1
@@ -22747,7 +22747,7 @@ _022323EE:
 	add r0, r4, r6
 	add r1, #0xd
 	add r2, r7, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	ldr r3, _02232420 ; =ov74_0223C998
 	add r2, r0, #0
 	mov r1, #0
@@ -22789,7 +22789,7 @@ ov74_02232424: ; 0x02232424
 	add r0, r2, r0
 	mov r1, #0xc
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	ldr r1, _0223246C ; =ov74_0223C9A8
 	ldrh r1, [r1, #0x30]
 	cmp r1, #0
@@ -22832,7 +22832,7 @@ ov74_02232474: ; 0x02232474
 	add r0, r2, r0
 	mov r1, #0xb
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	bl ov74_02231764
 	pop {r3, pc}
 	.balign 4, 0
@@ -23126,7 +23126,7 @@ _02232688:
 	str r0, [sp, #0x40]
 	mov r0, #0xa0
 	str r0, [sp, #0x34]
-	bl ov74_022339C8
+	bl PmAgbCartridge_GetLanguage
 	add r3, r0, #0
 	ldr r0, _022326F8 ; =0x0000E880
 	mov r2, #9
@@ -23137,7 +23137,7 @@ _02232688:
 	add r0, r4, r0
 	add r0, r1, r0
 	add r1, sp, #0
-	bl ov74_02236FB8
+	bl ConvertRSStringToDPStringInternational
 	add r0, sp, #0
 	str r0, [sp, #0x4c]
 	add r0, r5, #0
@@ -23167,7 +23167,7 @@ ov74_02232700: ; 0x02232700
 	add r0, r6, #0
 	mov r1, #8
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
 	b _02232726
@@ -23270,17 +23270,17 @@ _022327D6:
 	add r0, r4, #0
 	mov r1, #2
 	add r2, #2
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	add r0, r4, #0
 	mov r1, #3
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	add r3, r0, #0
 	add r0, sp, #0x1c
 	add r0, #2
 	add r1, sp, #8
 	mov r2, #0xb
-	bl ov74_02236FB8
+	bl ConvertRSStringToDPStringInternational
 	add r0, sp, #8
 	str r0, [sp, #0x64]
 	mov r0, #0
@@ -23307,8 +23307,8 @@ _022327D6:
 	add r0, r4, #0
 	mov r1, #0xb
 	mov r2, #0
-	bl ov74_02234530
-	bl ov74_022349DC
+	bl AGB_GetBoxMonData
+	bl TranslateAgbSpecies
 	str r0, [sp, #4]
 	ldr r1, [sp, #4]
 	add r0, r7, #0
@@ -23332,7 +23332,7 @@ _022327D6:
 	add r0, r4, #0
 	mov r1, #0xc
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	cmp r0, #0
 	beq _022328B8
 	lsl r0, r0, #0x10
@@ -24201,12 +24201,12 @@ ov74_02232F9C: ; 0x02232F9C
 	add r5, r0, #0
 	bl ov74_02233F84
 	add r4, r0, #0
-	bl ov74_022339C8
+	bl PmAgbCartridge_GetLanguage
 	add r3, r0, #0
 	add r0, r4, #0
 	add r1, sp, #8
 	mov r2, #8
-	bl ov74_02236FB8
+	bl ConvertRSStringToDPStringInternational
 	mov r0, #0x4c
 	bl ScrStrBufs_new
 	add r4, r0, #0
@@ -24306,7 +24306,7 @@ _02233078:
 	add r0, r0, #4
 	add r0, r0, r7
 	add r0, r0, r5
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	cmp r0, #0
 	beq _02233092
 	add r6, r6, #1
@@ -24659,11 +24659,11 @@ _02233340: ; jump table
 	.short _0223387E - _02233340 - 2 ; case 23
 	.short _0223388C - _02233340 - 2 ; case 24
 _02233372:
-	bl ov74_022339B0
+	bl PmAgbCartridgeUnlinkSpec
 	mov r0, #0x4b
 	lsl r0, r0, #4
 	add r0, r4, r0
-	bl ov74_02233938
+	bl PmAgbCartridgeGetOffsets
 	ldr r1, _02233620 ; =0x000004A8
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
@@ -25345,8 +25345,8 @@ _0223391C: .word SDK_OVERLAY_OVY_60_ID
 _02233920: .word ov60_021EAFE0
 	thumb_func_end ov74_022338D4
 
-	thumb_func_start ov74_02233924
-ov74_02233924: ; 0x02233924
+	thumb_func_start PmAgbCartridgeHasFlash
+PmAgbCartridgeHasFlash: ; 0x02233924
 	push {r3, lr}
 	mov r0, #1
 	bl CTRDG_IdentifyAgbBackup
@@ -25357,32 +25357,32 @@ ov74_02233924: ; 0x02233924
 _02233934:
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ov74_02233924
+	thumb_func_end PmAgbCartridgeHasFlash
 
-	thumb_func_start ov74_02233938
-ov74_02233938: ; 0x02233938
+	thumb_func_start PmAgbCartridgeGetOffsets
+PmAgbCartridgeGetOffsets: ; 0x02233938
 	push {r3, lr}
 	ldr r1, _02233994 ; =ov74_0223D33C
 	str r0, [r1, #8]
-	ldr r0, _02233998 ; =ov74_0223CAFC
+	ldr r0, _02233998 ; =sPmAgbCartridgeSpec
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0223394A
 	mov r0, #0xc
 	pop {r3, pc}
 _0223394A:
-	ldr r0, _0223399C ; =_0223B5A0
+	ldr r0, _0223399C ; =sPmAgbRomCodeMappings
 	mov r1, #0x1e
-	bl ov74_022339D4
+	bl IdentifyPmAgbCartridge
 	cmp r0, #0
 	bne _02233992
-	ldr r0, _02233998 ; =ov74_0223CAFC
+	ldr r0, _02233998 ; =sPmAgbCartridgeSpec
 	ldr r0, [r0]
 	ldrb r0, [r0, #4]
 	cmp r0, #0
 	bne _0223397A
 	mov r0, #0x89
-	ldr r1, _022339A0 ; =ov74_0223D3BC
+	ldr r1, _022339A0 ; =sPmAgbRomHeader + 0x68
 	lsl r0, r0, #4
 	str r0, [r1, #0x20]
 	mov r0, #0xeb
@@ -25396,11 +25396,11 @@ _0223394A:
 	b _02233984
 _0223397A:
 	ldr r0, _022339A8 ; =0x08000100
-	ldr r1, _022339AC ; =ov74_0223D354
+	ldr r1, _022339AC ; =sPmAgbRomHeader
 	mov r2, #0xfc
 	bl CTRDG_CpuCopy32
 _02233984:
-	bl ov74_02233924
+	bl PmAgbCartridgeHasFlash
 	cmp r0, #0
 	bne _02233990
 	mov r0, #3
@@ -25411,51 +25411,51 @@ _02233992:
 	pop {r3, pc}
 	.balign 4, 0
 _02233994: .word ov74_0223D33C
-_02233998: .word ov74_0223CAFC
-_0223399C: .word _0223B5A0
-_022339A0: .word ov74_0223D3BC
+_02233998: .word sPmAgbCartridgeSpec
+_0223399C: .word sPmAgbRomCodeMappings
+_022339A0: .word sPmAgbRomHeader + 0x68
 _022339A4: .word 0x00001220
 _022339A8: .word 0x08000100
-_022339AC: .word ov74_0223D354
-	thumb_func_end ov74_02233938
+_022339AC: .word sPmAgbRomHeader
+	thumb_func_end PmAgbCartridgeGetOffsets
 
-	thumb_func_start ov74_022339B0
-ov74_022339B0: ; 0x022339B0
-	ldr r0, _022339B8 ; =ov74_0223CAFC
+	thumb_func_start PmAgbCartridgeUnlinkSpec
+PmAgbCartridgeUnlinkSpec: ; 0x022339B0
+	ldr r0, _022339B8 ; =sPmAgbCartridgeSpec
 	mov r1, #0
 	str r1, [r0]
 	bx lr
 	.balign 4, 0
-_022339B8: .word ov74_0223CAFC
-	thumb_func_end ov74_022339B0
+_022339B8: .word sPmAgbCartridgeSpec
+	thumb_func_end PmAgbCartridgeUnlinkSpec
 
-	thumb_func_start ov74_022339BC
-ov74_022339BC: ; 0x022339BC
-	ldr r0, _022339C4 ; =ov74_0223CAFC
+	thumb_func_start PmAgbCartridge_GetVersionInternal
+PmAgbCartridge_GetVersionInternal: ; 0x022339BC
+	ldr r0, _022339C4 ; =sPmAgbCartridgeSpec
 	ldr r0, [r0]
 	ldrb r0, [r0, #5]
 	bx lr
 	.balign 4, 0
-_022339C4: .word ov74_0223CAFC
-	thumb_func_end ov74_022339BC
+_022339C4: .word sPmAgbCartridgeSpec
+	thumb_func_end PmAgbCartridge_GetVersionInternal
 
-	thumb_func_start ov74_022339C8
-ov74_022339C8: ; 0x022339C8
-	ldr r0, _022339D0 ; =ov74_0223CAFC
+	thumb_func_start PmAgbCartridge_GetLanguage
+PmAgbCartridge_GetLanguage: ; 0x022339C8
+	ldr r0, _022339D0 ; =sPmAgbCartridgeSpec
 	ldr r0, [r0]
 	ldrh r0, [r0, #6]
 	bx lr
 	.balign 4, 0
-_022339D0: .word ov74_0223CAFC
-	thumb_func_end ov74_022339C8
+_022339D0: .word sPmAgbCartridgeSpec
+	thumb_func_end PmAgbCartridge_GetLanguage
 
-	thumb_func_start ov74_022339D4
-ov74_022339D4: ; 0x022339D4
+	thumb_func_start IdentifyPmAgbCartridge
+IdentifyPmAgbCartridge: ; 0x022339D4
 	push {r3, r4, r5, lr}
 	sub sp, #0xc0
 	add r5, r0, #0
 	add r4, r1, #0
-	ldr r0, _02233A80 ; =ov74_0223CAFC
+	ldr r0, _02233A80 ; =sPmAgbCartridgeSpec
 	mov r1, #0
 	str r1, [r0]
 	bl CTRDG_IsAgbCartridge
@@ -25476,7 +25476,7 @@ _022339FC:
 	bne _02233A0C
 	lsl r0, r2, #3
 	add r1, r5, r0
-	ldr r0, _02233A80 ; =ov74_0223CAFC
+	ldr r0, _02233A80 ; =sPmAgbCartridgeSpec
 	str r1, [r0]
 	b _02233A14
 _02233A0C:
@@ -25485,7 +25485,7 @@ _02233A0C:
 	cmp r2, r4
 	blt _022339FC
 _02233A14:
-	ldr r0, _02233A80 ; =ov74_0223CAFC
+	ldr r0, _02233A80 ; =sPmAgbCartridgeSpec
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _02233A22
@@ -25501,7 +25501,7 @@ _02233A22:
 	add r1, r4, #0
 	mov r2, #0xc0
 	bl CTRDG_CpuCopy32
-	ldr r3, _02233A84 ; =ov74_0223CB04
+	ldr r3, _02233A84 ; =sAgbCartNintendoLogo
 	mov r2, #0
 _02233A3A:
 	add r0, r4, r2
@@ -25543,9 +25543,9 @@ _02233A7A:
 	add sp, #0xc0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02233A80: .word ov74_0223CAFC
-_02233A84: .word ov74_0223CB04
-	thumb_func_end ov74_022339D4
+_02233A80: .word sPmAgbCartridgeSpec
+_02233A84: .word sAgbCartNintendoLogo
+	thumb_func_end IdentifyPmAgbCartridge
 
 	thumb_func_start ov74_02233A88
 ov74_02233A88: ; 0x02233A88
@@ -25594,7 +25594,7 @@ ov74_02233AB8: ; 0x02233AB8
 ov74_02233ACC: ; 0x02233ACC
 	cmp r0, #0
 	bne _02233ADA
-	ldr r0, _02233B00 ; =ov74_0223D3BC
+	ldr r0, _02233B00 ; =sPmAgbRomHeader + 0x68
 	ldr r0, [r0, #0x20]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
@@ -25602,7 +25602,7 @@ ov74_02233ACC: ; 0x02233ACC
 _02233ADA:
 	cmp r0, #4
 	bne _02233AEE
-	ldr r0, _02233B00 ; =ov74_0223D3BC
+	ldr r0, _02233B00 ; =sPmAgbRomHeader + 0x68
 	ldr r1, [r0, #0x24]
 	mov r0, #0xba
 	lsl r0, r0, #6
@@ -25621,7 +25621,7 @@ _02233AF8:
 	lsl r0, r0, #6
 	bx lr
 	nop
-_02233B00: .word ov74_0223D3BC
+_02233B00: .word sPmAgbRomHeader + 0x68
 	thumb_func_end ov74_02233ACC
 
 	thumb_func_start ov74_02233B04
@@ -26027,7 +26027,7 @@ ov74_02233DBC: ; 0x02233DBC
 	add r0, r6, r0
 	add r0, r0, #1
 	bl _s32_div_f
-	ldr r0, _02233E48 ; =ov74_0223CAFC
+	ldr r0, _02233E48 ; =sPmAgbCartridgeSpec
 	ldr r3, _02233E4C ; =ov74_02233E50
 	ldr r2, [r0, #4]
 	mov r0, #0xe
@@ -26044,7 +26044,7 @@ _02233E38: .word ov74_0223D33C
 _02233E3C: .word 0x00000FFC
 _02233E40: .word 0x08012025
 _02233E44: .word 0x00000FF6
-_02233E48: .word ov74_0223CAFC
+_02233E48: .word sPmAgbCartridgeSpec
 _02233E4C: .word ov74_02233E50
 	thumb_func_end ov74_02233DBC
 
@@ -26096,10 +26096,10 @@ ov74_02233E8C: ; 0x02233E8C
 	cmp r1, #1
 	bne _02233EA2
 	mov r2, #0
-	ldr r1, _02233ED0 ; =ov74_0223CAFC
+	ldr r1, _02233ED0 ; =sPmAgbCartridgeSpec
 	b _02233EA6
 _02233EA2:
-	ldr r1, _02233ED0 ; =ov74_0223CAFC
+	ldr r1, _02233ED0 ; =sPmAgbCartridgeSpec
 	mov r2, #1
 _02233EA6:
 	str r2, [r1, #4]
@@ -26112,7 +26112,7 @@ _02233EB2:
 	mov r0, #0
 	pop {r3, pc}
 _02233EB6:
-	ldr r1, _02233ED0 ; =ov74_0223CAFC
+	ldr r1, _02233ED0 ; =sPmAgbCartridgeSpec
 	ldr r1, [r1, #4]
 	cmp r1, #0
 	bge _02233EC2
@@ -26124,7 +26124,7 @@ _02233EC2:
 	pop {r3, pc}
 	nop
 _02233ECC: .word ov74_0223D33C
-_02233ED0: .word ov74_0223CAFC
+_02233ED0: .word sPmAgbCartridgeSpec
 	thumb_func_end ov74_02233E8C
 
 	thumb_func_start ov74_02233ED4
@@ -27143,8 +27143,8 @@ _0223451A:
 	.balign 4, 0
 	thumb_func_end ov74_022344A8
 
-	thumb_func_start ov74_02234530
-ov74_02234530: ; 0x02234530
+	thumb_func_start AGB_GetBoxMonData
+AGB_GetBoxMonData: ; 0x02234530
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	mov r4, #0
@@ -27662,7 +27662,7 @@ _022348A8:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov74_02234530
+	thumb_func_end AGB_GetBoxMonData
 
 	thumb_func_start ov74_022348B0
 ov74_022348B0: ; 0x022348B0
@@ -27823,8 +27823,8 @@ _022349DA:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov74_022348B0
 
-	thumb_func_start ov74_022349DC
-ov74_022349DC: ; 0x022349DC
+	thumb_func_start TranslateAgbSpecies
+TranslateAgbSpecies: ; 0x022349DC
 	ldr r1, _02234A00 ; =0x00000115
 	cmp r0, r1
 	blt _022349FC
@@ -27849,7 +27849,7 @@ _022349FC:
 _02234A00: .word 0x00000115
 _02234A04: .word ov74_0223CC5C
 _02234A08: .word ov74_0223CC5E
-	thumb_func_end ov74_022349DC
+	thumb_func_end TranslateAgbSpecies
 
 	thumb_func_start ov74_02234A0C
 ov74_02234A0C: ; 0x02234A0C
@@ -27857,13 +27857,13 @@ ov74_02234A0C: ; 0x02234A0C
 	add r5, r0, #0
 	mov r1, #0xb
 	mov r2, #0
-	bl ov74_02234530
-	bl ov74_022349DC
+	bl AGB_GetBoxMonData
+	bl TranslateAgbSpecies
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0x19
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	add r1, r0, #0
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10
@@ -27871,8 +27871,8 @@ ov74_02234A0C: ; 0x02234A0C
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov74_02234A0C
 
-	thumb_func_start ov74_02234A34
-ov74_02234A34: ; 0x02234A34
+	thumb_func_start AGB_GetBoxMonAbility
+AGB_GetBoxMonAbility: ; 0x02234A34
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r0, r1, #0
@@ -27884,7 +27884,7 @@ ov74_02234A34: ; 0x02234A34
 	add r0, r4, #0
 	mov r1, #0x2e
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #0x19
@@ -27924,10 +27924,10 @@ _02234A96:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02234A98: .word ov74_0223CBA0
-	thumb_func_end ov74_02234A34
+	thumb_func_end AGB_GetBoxMonAbility
 
-	thumb_func_start ov74_02234A9C
-ov74_02234A9C: ; 0x02234A9C
+	thumb_func_start MigrateBoxMon
+MigrateBoxMon: ; 0x02234A9C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x30
 	add r4, r1, #0
@@ -27940,7 +27940,7 @@ ov74_02234A9C: ; 0x02234A9C
 	str r0, [sp]
 	add r0, r6, #0
 	add r2, r1, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0
@@ -27949,9 +27949,9 @@ ov74_02234A9C: ; 0x02234A9C
 	add r0, r6, #0
 	mov r1, #0xb
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
-	bl ov74_022349DC
+	bl TranslateAgbSpecies
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #5
@@ -27960,7 +27960,7 @@ ov74_02234A9C: ; 0x02234A9C
 	add r0, r6, #0
 	mov r1, #0xc
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	cmp r0, #0
 	beq _02234AFE
@@ -27976,7 +27976,7 @@ _02234AFE:
 	add r0, r6, #0
 	mov r1, #1
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #7
@@ -27985,7 +27985,7 @@ _02234AFE:
 	add r0, r6, #0
 	mov r1, #0x19
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #8
@@ -27999,7 +27999,7 @@ _02234AFE:
 	bl SetBoxMonData
 	add r0, r6, #0
 	add r1, r4, #0
-	bl ov74_02234A34
+	bl AGB_GetBoxMonAbility
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0xa
@@ -28008,7 +28008,7 @@ _02234AFE:
 	add r0, r6, #0
 	mov r1, #8
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0xb
@@ -28017,7 +28017,7 @@ _02234AFE:
 	add r0, r6, #0
 	mov r1, #3
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #4]
 	add r0, r4, #0
 	mov r1, #0xc
@@ -28026,7 +28026,7 @@ _02234AFE:
 	add r0, r6, #0
 	mov r1, #0x1a
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0xd
@@ -28035,7 +28035,7 @@ _02234AFE:
 	add r0, r6, #0
 	mov r1, #0x1b
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0xe
@@ -28044,7 +28044,7 @@ _02234AFE:
 	add r0, r6, #0
 	mov r1, #0x1c
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0xf
@@ -28053,7 +28053,7 @@ _02234AFE:
 	add r0, r6, #0
 	mov r1, #0x1d
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x10
@@ -28062,7 +28062,7 @@ _02234AFE:
 	add r0, r6, #0
 	mov r1, #0x1e
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x11
@@ -28071,7 +28071,7 @@ _02234AFE:
 	add r0, r6, #0
 	mov r1, #0x1f
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x12
@@ -28080,7 +28080,7 @@ _02234AFE:
 	add r0, r6, #0
 	mov r1, #0x16
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x13
@@ -28089,7 +28089,7 @@ _02234AFE:
 	add r0, r6, #0
 	mov r1, #0x17
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x14
@@ -28098,7 +28098,7 @@ _02234AFE:
 	add r0, r6, #0
 	mov r1, #0x18
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x15
@@ -28107,7 +28107,7 @@ _02234AFE:
 	add r0, r6, #0
 	mov r1, #0x21
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x16
@@ -28116,7 +28116,7 @@ _02234AFE:
 	add r0, r6, #0
 	mov r1, #0x2f
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x17
@@ -28125,7 +28125,7 @@ _02234AFE:
 	add r0, r6, #0
 	mov r1, #0x30
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x18
@@ -28138,7 +28138,7 @@ _02234C8E:
 	add r0, r6, #0
 	add r1, #0xd
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	add r1, r5, #0
 	str r0, [sp, #8]
 	add r0, r4, #0
@@ -28148,7 +28148,7 @@ _02234C8E:
 	add r0, r6, #0
 	mov r1, #0x15
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	mov r1, #3
 	lsl r1, r7
 	str r0, [sp, #8]
@@ -28178,7 +28178,7 @@ _02234C8E:
 	add r0, r6, #0
 	mov r1, #0x27
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x46
@@ -28187,7 +28187,7 @@ _02234C8E:
 	add r0, r6, #0
 	mov r1, #0x28
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x47
@@ -28196,7 +28196,7 @@ _02234C8E:
 	add r0, r6, #0
 	mov r1, #0x29
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x48
@@ -28205,7 +28205,7 @@ _02234C8E:
 	add r0, r6, #0
 	mov r1, #0x2a
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x49
@@ -28214,7 +28214,7 @@ _02234C8E:
 	add r0, r6, #0
 	mov r1, #0x2b
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x4a
@@ -28223,7 +28223,7 @@ _02234C8E:
 	add r0, r6, #0
 	mov r1, #0x2c
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x4b
@@ -28232,7 +28232,7 @@ _02234C8E:
 	add r0, r6, #0
 	mov r1, #0x2d
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x4c
@@ -28241,7 +28241,7 @@ _02234C8E:
 	add r0, r6, #0
 	mov r1, #0x32
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	add r7, r0, #0
 	cmp r7, #4
 	bgt _02234DB2
@@ -28263,7 +28263,7 @@ _02234DB2:
 	add r0, r6, #0
 	mov r1, #0x33
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	add r7, r0, #0
 	cmp r7, #4
 	bgt _02234DDE
@@ -28285,7 +28285,7 @@ _02234DDE:
 	add r0, r6, #0
 	mov r1, #0x34
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	add r7, r0, #0
 	cmp r7, #4
 	bgt _02234E0A
@@ -28307,7 +28307,7 @@ _02234E0A:
 	add r0, r6, #0
 	mov r1, #0x35
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	add r7, r0, #0
 	cmp r7, #4
 	bgt _02234E36
@@ -28329,7 +28329,7 @@ _02234E36:
 	add r0, r6, #0
 	mov r1, #0x36
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	add r7, r0, #0
 	cmp r7, #4
 	bgt _02234E62
@@ -28351,7 +28351,7 @@ _02234E62:
 	add r0, r6, #0
 	mov r1, #0x43
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x62
@@ -28360,7 +28360,7 @@ _02234E62:
 	add r0, r6, #0
 	mov r1, #0x44
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x63
@@ -28369,7 +28369,7 @@ _02234E62:
 	add r0, r6, #0
 	mov r1, #0x45
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x64
@@ -28378,7 +28378,7 @@ _02234E62:
 	add r0, r6, #0
 	mov r1, #0x46
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x65
@@ -28387,7 +28387,7 @@ _02234E62:
 	add r0, r6, #0
 	mov r1, #0x47
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x66
@@ -28396,7 +28396,7 @@ _02234E62:
 	add r0, r6, #0
 	mov r1, #0x48
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x67
@@ -28405,7 +28405,7 @@ _02234E62:
 	add r0, r6, #0
 	mov r1, #0x49
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x68
@@ -28414,7 +28414,7 @@ _02234E62:
 	add r0, r6, #0
 	mov r1, #0x4a
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x69
@@ -28423,7 +28423,7 @@ _02234E62:
 	add r0, r6, #0
 	mov r1, #0x4b
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x6a
@@ -28432,7 +28432,7 @@ _02234E62:
 	add r0, r6, #0
 	mov r1, #0x4c
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x6b
@@ -28441,7 +28441,7 @@ _02234E62:
 	add r0, r6, #0
 	mov r1, #0x4d
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x6c
@@ -28450,7 +28450,7 @@ _02234E62:
 	add r0, r6, #0
 	mov r1, #0x4e
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x6d
@@ -28459,7 +28459,7 @@ _02234E62:
 	add r0, r6, #0
 	mov r1, #0x50
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x6e
@@ -28481,7 +28481,7 @@ _02234E62:
 	mov r1, #0
 	add r0, r6, #0
 	add r2, r1, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	add r3, r0, #0
 	mov r7, #3
 	lsl r0, r7, #8
@@ -28555,12 +28555,12 @@ _0223502E:
 	add r0, r6, #0
 	mov r1, #2
 	add r2, sp, #0x24
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	ldr r3, [sp, #4]
 	add r0, sp, #0x24
 	add r1, sp, #0xc
 	mov r2, #0xc
-	bl ov74_02236FB8
+	bl ConvertRSStringToDPStringInternational
 	add r0, r4, #0
 	mov r1, #0x76
 	add r2, sp, #0xc
@@ -28568,7 +28568,7 @@ _0223502E:
 	add r0, r6, #0
 	mov r1, #3
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	ldr r1, _02235128 ; =gGameLanguage
 	ldrb r1, [r1]
 	cmp r1, r0
@@ -28583,7 +28583,7 @@ _0223506E:
 	add r0, r6, #0
 	mov r1, #0x25
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x7a
@@ -28592,12 +28592,12 @@ _0223506E:
 	add r0, r6, #0
 	mov r1, #7
 	add r2, sp, #0x24
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	ldr r3, [sp, #4]
 	add r0, sp, #0x24
 	add r1, sp, #0xc
 	mov r2, #8
-	bl ov74_02236FB8
+	bl ConvertRSStringToDPStringInternational
 	add r0, r4, #0
 	mov r1, #0x90
 	add r2, sp, #0xc
@@ -28605,7 +28605,7 @@ _0223506E:
 	add r0, r6, #0
 	mov r1, #0x23
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x99
@@ -28614,7 +28614,7 @@ _0223506E:
 	add r0, r6, #0
 	mov r1, #0x22
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x9a
@@ -28623,7 +28623,7 @@ _0223506E:
 	add r0, r6, #0
 	mov r1, #0x26
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x9b
@@ -28632,7 +28632,7 @@ _0223506E:
 	add r0, r6, #0
 	mov r1, #0x24
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x9c
@@ -28641,7 +28641,7 @@ _0223506E:
 	add r0, r6, #0
 	mov r1, #0x31
 	mov r2, #0
-	bl ov74_02234530
+	bl AGB_GetBoxMonData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x9d
@@ -28656,7 +28656,7 @@ _0223506E:
 _02235120: .word 0x00000182
 _02235124: .word gSystem + 0x60
 _02235128: .word gGameLanguage
-	thumb_func_end ov74_02234A9C
+	thumb_func_end MigrateBoxMon
 
 	thumb_func_start ov74_0223512C
 ov74_0223512C: ; 0x0223512C
@@ -32675,8 +32675,8 @@ _02236FAE:
 _02236FB4: .word 0x000001B5
 	thumb_func_end ov74_02236F80
 
-	thumb_func_start ov74_02236FB8
-ov74_02236FB8: ; 0x02236FB8
+	thumb_func_start ConvertRSStringToDPStringInternational
+ConvertRSStringToDPStringInternational: ; 0x02236FB8
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r3, #0
@@ -32776,7 +32776,7 @@ _02237056:
 	.balign 4, 0
 _02237064: .word _0223B760
 _02237068: .word 0x0000FFFF
-	thumb_func_end ov74_02236FB8
+	thumb_func_end ConvertRSStringToDPStringInternational
 
 	.rodata
 
@@ -32875,22 +32875,137 @@ _0223B578:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x60, 0x00, 0x00, 0x00
-_0223B5A0:
-	.byte 0x41, 0x58, 0x56, 0x4A, 0x00, 0x00, 0x01, 0x00, 0x41, 0x58, 0x56, 0x45, 0x00, 0x00, 0x02, 0x00
-	.byte 0x41, 0x58, 0x56, 0x46, 0x00, 0x00, 0x03, 0x00, 0x41, 0x58, 0x56, 0x44, 0x00, 0x00, 0x05, 0x00
-	.byte 0x41, 0x58, 0x56, 0x53, 0x00, 0x00, 0x07, 0x00, 0x41, 0x58, 0x56, 0x49, 0x00, 0x00, 0x04, 0x00
-	.byte 0x41, 0x58, 0x50, 0x4A, 0x00, 0x01, 0x01, 0x00, 0x41, 0x58, 0x50, 0x45, 0x00, 0x01, 0x02, 0x00
-	.byte 0x41, 0x58, 0x50, 0x46, 0x00, 0x01, 0x03, 0x00, 0x41, 0x58, 0x50, 0x44, 0x00, 0x01, 0x05, 0x00
-	.byte 0x41, 0x58, 0x50, 0x53, 0x00, 0x01, 0x07, 0x00, 0x41, 0x58, 0x50, 0x49, 0x00, 0x01, 0x04, 0x00
-	.byte 0x42, 0x50, 0x52, 0x4A, 0x01, 0x03, 0x01, 0x00, 0x42, 0x50, 0x52, 0x45, 0x01, 0x03, 0x02, 0x00
-	.byte 0x42, 0x50, 0x52, 0x46, 0x01, 0x03, 0x03, 0x00, 0x42, 0x50, 0x52, 0x44, 0x01, 0x03, 0x05, 0x00
-	.byte 0x42, 0x50, 0x52, 0x53, 0x01, 0x03, 0x07, 0x00, 0x42, 0x50, 0x52, 0x49, 0x01, 0x03, 0x04, 0x00
-	.byte 0x42, 0x50, 0x47, 0x4A, 0x01, 0x02, 0x01, 0x00, 0x42, 0x50, 0x47, 0x45, 0x01, 0x02, 0x02, 0x00
-	.byte 0x42, 0x50, 0x47, 0x46, 0x01, 0x02, 0x03, 0x00, 0x42, 0x50, 0x47, 0x44, 0x01, 0x02, 0x05, 0x00
-	.byte 0x42, 0x50, 0x47, 0x53, 0x01, 0x02, 0x07, 0x00, 0x42, 0x50, 0x47, 0x49, 0x01, 0x02, 0x04, 0x00
-	.byte 0x42, 0x50, 0x45, 0x4A, 0x02, 0x04, 0x01, 0x00, 0x42, 0x50, 0x45, 0x45, 0x02, 0x04, 0x02, 0x00
-	.byte 0x42, 0x50, 0x45, 0x46, 0x02, 0x04, 0x03, 0x00, 0x42, 0x50, 0x45, 0x44, 0x02, 0x04, 0x05, 0x00
-	.byte 0x42, 0x50, 0x45, 0x53, 0x02, 0x04, 0x07, 0x00, 0x42, 0x50, 0x45, 0x49, 0x02, 0x04, 0x04, 0x00
+sPmAgbRomCodeMappings:
+	; Ruby
+	.balign 4, 0
+	.ascii "AXVJ"
+	.byte 0x00, 0x00
+	.short LANGUAGE_JAPANESE
+	.balign 4, 0
+	.ascii "AXVE"
+	.byte 0x00, 0x00
+	.short LANGUAGE_ENGLISH
+	.balign 4, 0
+	.ascii "AXVF"
+	.byte 0x00, 0x00
+	.short LANGUAGE_FRENCH
+	.balign 4, 0
+	.ascii "AXVD"
+	.byte 0x00, 0x00
+	.short LANGUAGE_GERMAN
+	.balign 4, 0
+	.ascii "AXVS"
+	.byte 0x00, 0x00
+	.short LANGUAGE_SPANISH
+	.balign 4, 0
+	.ascii "AXVI"
+	.byte 0x00, 0x00
+	.short LANGUAGE_ITALIAN
+
+	; Sapphire
+	.balign 4, 0
+	.ascii "AXPJ"
+	.byte 0x00, 0x01
+	.short LANGUAGE_JAPANESE
+	.balign 4, 0
+	.ascii "AXPE"
+	.byte 0x00, 0x01
+	.short LANGUAGE_ENGLISH
+	.balign 4, 0
+	.ascii "AXPF"
+	.byte 0x00, 0x01
+	.short LANGUAGE_FRENCH
+	.balign 4, 0
+	.ascii "AXPD"
+	.byte 0x00, 0x01
+	.short LANGUAGE_GERMAN
+	.balign 4, 0
+	.ascii "AXPS"
+	.byte 0x00, 0x01
+	.short LANGUAGE_SPANISH
+	.balign 4, 0
+	.ascii "AXPI"
+	.byte 0x00, 0x01
+	.short LANGUAGE_ITALIAN
+
+	; FireRed
+	.balign 4, 0
+	.ascii "BPRJ"
+	.byte 0x01, 0x03
+	.short LANGUAGE_JAPANESE
+	.balign 4, 0
+	.ascii "BPRE"
+	.byte 0x01, 0x03
+	.short LANGUAGE_ENGLISH
+	.balign 4, 0
+	.ascii "BPRF"
+	.byte 0x01, 0x03
+	.short LANGUAGE_FRENCH
+	.balign 4, 0
+	.ascii "BPRD"
+	.byte 0x01, 0x03
+	.short LANGUAGE_GERMAN
+	.balign 4, 0
+	.ascii "BPRS"
+	.byte 0x01, 0x03
+	.short LANGUAGE_SPANISH
+	.balign 4, 0
+	.ascii "BPRI"
+	.byte 0x01, 0x03
+	.short LANGUAGE_ITALIAN
+
+	; LeafGreen
+	.balign 4, 0
+	.ascii "BPGJ"
+	.byte 0x01, 0x02
+	.short LANGUAGE_JAPANESE
+	.balign 4, 0
+	.ascii "BPGE"
+	.byte 0x01, 0x02
+	.short LANGUAGE_ENGLISH
+	.balign 4, 0
+	.ascii "BPGF"
+	.byte 0x01, 0x02
+	.short LANGUAGE_FRENCH
+	.balign 4, 0
+	.ascii "BPGD"
+	.byte 0x01, 0x02
+	.short LANGUAGE_GERMAN
+	.balign 4, 0
+	.ascii "BPGS"
+	.byte 0x01, 0x02
+	.short LANGUAGE_SPANISH
+	.balign 4, 0
+	.ascii "BPGI"
+	.byte 0x01, 0x02
+	.short LANGUAGE_ITALIAN
+
+	; Emerald
+	.balign 4, 0
+	.ascii "BPEJ"
+	.byte 0x02, 0x04
+	.short LANGUAGE_JAPANESE
+	.balign 4, 0
+	.ascii "BPEE"
+	.byte 0x02, 0x04
+	.short LANGUAGE_ENGLISH
+	.balign 4, 0
+	.ascii "BPEF"
+	.byte 0x02, 0x04
+	.short LANGUAGE_FRENCH
+	.balign 4, 0
+	.ascii "BPED"
+	.byte 0x02, 0x04
+	.short LANGUAGE_GERMAN
+	.balign 4, 0
+	.ascii "BPES"
+	.byte 0x02, 0x04
+	.short LANGUAGE_SPANISH
+	.balign 4, 0
+	.ascii "BPEI"
+	.byte 0x02, 0x04
+	.short LANGUAGE_ITALIAN
+	.balign 4, 0
 _0223B690:
 	.byte 0xC8, 0x7E, 0x66, 0x71, 0x46, 0x0B, 0xE6, 0x6F, 0x17, 0x8A, 0x5C, 0x7D, 0xEA, 0xE1, 0x93, 0xFD
 	.byte 0xEE, 0xFA, 0x99, 0x84, 0xFE, 0x35, 0x02, 0xB9, 0x7F, 0x4F, 0xF1, 0x19, 0x74, 0xA2, 0x0F, 0x65
@@ -33393,11 +33508,11 @@ ov74_0223C9D8: ; 0x0223C9D8
 	.byte 0x6C, 0x01, 0x6D, 0x01, 0x6E, 0x01, 0x6F, 0x01, 0x70, 0x01, 0x71, 0x01, 0x72, 0x01, 0x73, 0x01
 	.byte 0x74, 0x01, 0x75, 0x01, 0x76, 0x01, 0x77, 0x01, 0x78, 0x01, 0x00, 0x00
 
-ov74_0223CAFC: ; 0x0223CAFC
+sPmAgbCartridgeSpec: ; 0x0223CAFC
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
 
-ov74_0223CB04: ; 0x0223CB04
+sAgbCartNintendoLogo: ; 0x0223CB04
 	.byte 0x24, 0xFF, 0xAE, 0x51, 0x69, 0x9A, 0xA2, 0x21, 0x3D, 0x84, 0x82, 0x0A
 	.byte 0x84, 0xE4, 0x09, 0xAD, 0x11, 0x24, 0x8B, 0x98, 0xC0, 0x81, 0x7F, 0x21, 0xA3, 0x52, 0xBE, 0x19
 	.byte 0x93, 0x09, 0xCE, 0x20, 0x10, 0x46, 0x4A, 0x4A, 0xF8, 0x27, 0x31, 0xEC, 0x58, 0xC7, 0xE8, 0x33
@@ -33585,11 +33700,8 @@ ov74_0223D33C: ; 0x0223D33C
 ov74_0223D34C: ; 0x0223D34C
 	.space 0x8
 
-ov74_0223D354: ; 0x0223D354
-	.space 0x68
-
-ov74_0223D3BC: ; 0x0223D3BC
-	.space 0x94
+sPmAgbRomHeader: ; 0x0223D354
+	.space 0xFC
 
 ov74_0223D450: ; 0x0223D450
 	.space 0x4
