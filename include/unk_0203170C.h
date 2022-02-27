@@ -11,12 +11,12 @@ typedef struct {
 } Unk0203170C;
 
 typedef struct {
-    u8 unk0;
-    u8 unk1;
+    u8 version;
+    u8 language;
     u8 unk2;
     u8 unk3;
-    u32 unk4;
-    u16 unk8[OT_NAME_LENGTH + 1];
+    u32 otId;
+    u16 name[OT_NAME_LENGTH + 1];
     u32 unk18;
     u8 unk1c[0x8];
     char unk24[0x33];

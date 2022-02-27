@@ -80,12 +80,12 @@ static void sub_020317F4(SAVEDATA *saveData, Unk020317F4 *a1) {
     ptr2 = sub_02031774(saveData);
 
     MI_CpuFill8(a1, 0, sizeof(Unk020317F4));
-    a1->unk0 = GAME_VERSION;
-    a1->unk1 = 2;
+    a1->version = GAME_VERSION;
+    a1->language = GAME_LANGUAGE;
     a1->unk2 = sub_0202CA8C(ptr);
     a1->unk3 = sub_0202CA90(ptr);
-    a1->unk4 = PlayerProfile_GetTrainerID(profile);
-    CopyU16StringArray(a1->unk8, PlayerProfile_GetNamePtr(profile));
+    a1->otId = PlayerProfile_GetTrainerID(profile);
+    CopyU16StringArray(a1->name, PlayerProfile_GetNamePtr(profile));
     a1->unk18 = 0;
     strcpy(a1->unk24, ptr2->unk0);
     a1->unk5c = sub_020317BC(saveData, 0);
