@@ -1918,7 +1918,7 @@ ov65_0221CE1C: ; 0x0221CE1C
 	mov r1, #0
 	str r1, [r5, r0]
 _0221CE6C:
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200B224
 	ldr r3, _0221CE90 ; =0x027E0000
 	ldr r1, _0221CE94 ; =0x00003FF8

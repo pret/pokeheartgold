@@ -785,7 +785,7 @@ ov43_0222A50C: ; 0x0222A50C
 	push {r3, lr}
 	ldr r0, [r0]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200B224
 	pop {r3, pc}
 	.balign 4, 0
@@ -980,7 +980,7 @@ ov43_0222A690: ; 0x0222A690
 	bl NNS_G2dInitOamManagerModule
 	mov r0, #0x10
 	add r1, r7, #0
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x7e
@@ -1195,7 +1195,7 @@ _0222A856:
 	bl sub_0202168C
 	bl sub_02022608
 	bl sub_0200B244
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov43_0222A81C
 

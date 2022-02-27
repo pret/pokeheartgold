@@ -1766,7 +1766,7 @@ ov110_021E6678: ; 0x021E6678
 	add r4, r0, #0
 	ldr r1, [r4]
 	mov r0, #0x20
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	ldr r0, [r4]
 	bl sub_0200CF18
 	add r1, r4, #0
@@ -1838,7 +1838,7 @@ ov110_021E66F8: ; 0x021E66F8
 	mov r1, #0
 	add r0, #0x84
 	str r1, [r0]
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	ldr r0, [r4]
 	bl sub_0200B2E0
 	pop {r4, pc}

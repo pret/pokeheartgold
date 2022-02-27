@@ -1942,7 +1942,7 @@ _022387C0:
 _022387CC:
 	ldr r0, [r4, #4]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200B224
 	ldr r3, _022387F0 ; =0x027E0000
 	ldr r1, _022387F4 ; =0x00003FF8

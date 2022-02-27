@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_PHOTO_ALBUM_H
 #define POKEHEARTGOLD_PHOTO_ALBUM_H
 
+#include "save.h"
+
 #define PHOTO_ALBUM_MAX       36
 
 typedef struct PHOTO_MON {
@@ -47,11 +49,19 @@ typedef struct PHOTO_DAT {
 } PHOTO_DAT;
 
 typedef struct PHOTO_ALBUM {
-    u8 filler_00[0x04];
+    int unk_00;
     PHOTO photos[PHOTO_ALBUM_MAX];
 } PHOTO_ALBUM;
 
 u32 Save_PhotoAlbum_sizeof(void);
-void Save_PhotoAlbum_init(PHOTO_ALBUM *album);
+PHOTO_ALBUM *Save_PhotoAlbum_get(SAVEDATA *saveData);
+void Save_PhotoAlbum_init(PHOTO_ALBUM *photoAlbum);
+u8 PhotoAlbum_GetIndexOfFirstEmptySlot(const PHOTO_ALBUM *photoAlbum);
+u8 PhotoAlbum_GetNumSaved(const PHOTO_ALBUM *photoAlbum);
+void PhotoAlbum_DeletePhotoByIndex(PHOTO_ALBUM *photoAlbum, u8 idx);
+BOOL PhotoAlbum_SetPhotoAtIndex(PHOTO_ALBUM *photoAlbum, const PHOTO *photo, u8 idx);
+BOOL PhotoAlbum_GetPhotoByIndex(const PHOTO_ALBUM *photoAlbum, PHOTO *photo, u8 idx);
+PHOTO *PhotoAlbum_LoadAllInUsePhotos(const PHOTO_ALBUM *photoAlbum, HeapID heapId);
+void Photo_init(PHOTO *photo);
 
 #endif //POKEHEARTGOLD_PHOTO_ALBUM_H

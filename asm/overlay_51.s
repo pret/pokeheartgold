@@ -2052,7 +2052,7 @@ ov51_021E6B88: ; 0x021E6B88
 _021E6BD2:
 	ldr r0, [r4]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200B224
 	ldr r3, _021E6BF8 ; =0x027E0000
 	ldr r1, _021E6BFC ; =0x00003FF8

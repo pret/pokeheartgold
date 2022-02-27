@@ -398,7 +398,7 @@ ov93_0225C768: ; 0x0225C768
 	str r0, [r5, #0x2c]
 	mov r0, #0x40
 	mov r1, #0x75
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	mov r0, #4
 	mov r1, #8
 	bl SetKeyRepeatTimers
@@ -1010,7 +1010,7 @@ _0225CD72:
 	bl sub_0200D998
 	ldr r0, [r4, #0x24]
 	bl sub_0200D108
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
@@ -1094,7 +1094,7 @@ ov93_0225CEA0: ; 0x0225CEA0
 	add r1, #0xd4
 	ldr r1, [r1]
 	bl ov93_0225EA50
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200D034
 	add r0, r4, #0
 	add r0, #0x8c

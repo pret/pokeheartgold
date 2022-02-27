@@ -1809,7 +1809,7 @@ ov82_0223EC0C: ; 0x0223EC0C
 _0223EC24:
 	ldr r0, [r4, #0x48]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200B224
 	ldr r3, _0223EC40 ; =0x027E0000
 	ldr r1, _0223EC44 ; =0x00003FF8

@@ -3147,7 +3147,7 @@ _022288F4: .word 0x0500006C
 ov74_022288F8: ; 0x022288F8
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200B224
 	add r0, r4, #0
 	bl BgConfig_HandleScheduledScrollAndTransferOps
@@ -24266,7 +24266,7 @@ ov74_02233024: ; 0x02233024
 	mov r1, #0
 	str r1, [r4, r0]
 _02233038:
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200B224
 	ldr r0, [r4, #0x20]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
@@ -29920,7 +29920,7 @@ ov74_02235A74: ; 0x02235A74
 	mov r1, #0
 	str r1, [r4, r0]
 _02235A8E:
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200B224
 	ldr r0, [r4]
 	cmp r0, #0

@@ -4032,7 +4032,7 @@ ov112_021E77E4: ; 0x021E77E4
 	ldr r0, [r4, #0x18]
 	bl ov112_021E7AC8
 	bl sub_02021238
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	add r0, r4, #0
 	bl ov112_021E9E30
 	add r0, r4, #0
@@ -4231,7 +4231,7 @@ ov112_021E79A8: ; 0x021E79A8
 	push {r3, lr}
 	ldr r0, [r0, #0x18]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200D034
 	ldr r3, _021E79C8 ; =0x027E0000
 	ldr r1, _021E79CC ; =0x00003FF8
@@ -8774,7 +8774,7 @@ ov112_021EA1AC: ; 0x021EA1AC
 	bl GX_EngineBToggleLayers
 	mov r0, #0x40
 	mov r1, #0x9a
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	add r0, r4, #0
 	bl ov112_021EA230
 	add r0, r4, #0

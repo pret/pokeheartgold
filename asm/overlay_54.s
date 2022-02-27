@@ -537,7 +537,7 @@ _021E5D62:
 	bl ov54_021E6238
 	ldr r1, [r4]
 	mov r0, #0x20
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -578,7 +578,7 @@ ov54_021E5DBC: ; 0x021E5DBC
 	beq _021E5E24
 	b _021E5E56
 _021E5DCC:
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	ldr r0, [sp]
 	bl ov54_021E6164
 	ldr r6, [sp]

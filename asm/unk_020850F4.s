@@ -570,7 +570,7 @@ _020855C8: .word gSystem + 0x60
 sub_020855CC: ; 0x020855CC
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200D034
 	mov r0, #0xbf
 	lsl r0, r0, #2

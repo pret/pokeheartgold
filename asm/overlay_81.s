@@ -4439,7 +4439,7 @@ ov81_022401C8: ; 0x022401C8
 _022401EA:
 	ldr r0, [r4, #0x4c]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200B224
 	ldr r3, _02240208 ; =0x027E0000
 	ldr r1, _0224020C ; =0x00003FF8

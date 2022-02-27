@@ -26922,11 +26922,11 @@
 .public sub_020200A0
 .public sub_0202036C
 .public sub_020204FC
-.public sub_0202055C
-.public sub_020205AC
-.public sub_020205D8
-.public sub_0202061C
-.public sub_02020638
+.public GF_CreateVramTransferManager
+.public GF_DestroyVramTransferManager
+.public GF_CreateNewVramTransferTask
+.public GF_RunVramTransferTasks
+.public GF_GetNumPendingVramTransferTasks
 .public sub_02020654
 .public sub_02020674
 .public sub_0202067C

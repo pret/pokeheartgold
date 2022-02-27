@@ -30561,7 +30561,7 @@ _022386D4:
 	str r0, [r4]
 	mov r0, #0x40
 	mov r1, #0x65
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	mov r0, #4
 	mov r1, #8
 	bl SetKeyRepeatTimers
@@ -30708,7 +30708,7 @@ ov80_0223885C: ; 0x0223885C
 	bl ov80_022393E8
 	ldr r0, [r4, #0x10]
 	bl ov80_02239980
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	ldr r0, [r4, #4]
 	mov r1, #0
 	bl PaletteData_FreeBuffers
@@ -30903,7 +30903,7 @@ _02238A78: .word 0x0000FFFF
 ov80_02238A7C: ; 0x02238A7C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200D034
 	ldr r0, [r4, #4]
 	bl sub_0200398C

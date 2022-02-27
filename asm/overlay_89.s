@@ -114,7 +114,7 @@ ov89_02258800: ; 0x02258800
 	str r0, [r5, #8]
 	mov r0, #0x40
 	mov r1, #0x7d
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	mov r0, #4
 	mov r1, #8
 	bl SetKeyRepeatTimers
@@ -865,7 +865,7 @@ ov89_02258F00: ; 0x02258F00
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	bl sub_02021238
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
@@ -911,7 +911,7 @@ ov89_0225901C: ; 0x0225901C
 	ldr r1, [r4, r1]
 	add r0, r4, r0
 	bl ov89_0225A760
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200D034
 	ldr r0, [r4, #0xc]
 	bl sub_0200398C

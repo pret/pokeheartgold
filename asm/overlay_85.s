@@ -54,7 +54,7 @@ ov85_021E5900: ; 0x021E5900
 	str r0, [r6, r1]
 	mov r0, #8
 	mov r1, #0x66
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	bl sub_020210BC
 	mov r0, #4
 	bl sub_02021148
@@ -167,7 +167,7 @@ _021E5A4A:
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	mov r0, #0x36
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
@@ -1997,7 +1997,7 @@ ov85_021E6760: ; 0x021E6760
 ov85_021E6764: ; 0x021E6764
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200D034
 	ldr r0, _021E6784 ; =0x00000D9C
 	ldr r0, [r4, r0]
@@ -6847,7 +6847,7 @@ _021E8C10: .word ov85_021EA8EB
 ov85_021E8C14: ; 0x021E8C14
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200B224
 	add r0, r4, #0
 	bl BgConfig_HandleScheduledScrollAndTransferOps

@@ -19,7 +19,7 @@ ov01_021E5900: ; 0x021E5900
 	add r4, r0, #0
 	ldr r0, [r4, #8]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200B224
 	ldr r0, [r4, #0x3c]
 	bl sub_0205F1A0
@@ -171,7 +171,7 @@ _021E5A50:
 	bl ov01_021E6028
 	mov r0, #0x80
 	mov r1, #4
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	mov r0, #4
 	add r1, r0, #0
 	bl sub_02023738
@@ -576,7 +576,7 @@ _021E5E12:
 	beq _021E5E76
 	bl ov01_021E6214
 	bl sub_02023778
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	bl sub_0201F63C
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #4]
@@ -11498,7 +11498,7 @@ _021EB160:
 	ldr r1, [r5]
 	ldr r3, [r5, #4]
 	mov r0, #0
-	bl sub_020205D8
+	bl GF_CreateNewVramTransferTask
 	b _021EB182
 _021EB17E:
 	add r0, r0, #1
@@ -63512,7 +63512,7 @@ _022036C4:
 	mov r0, #1
 	lsr r1, r1, #0xd
 	lsl r3, r3, #3
-	bl sub_020205D8
+	bl GF_CreateNewVramTransferTask
 	add r0, r6, #0
 	bl ov01_022055DC
 	cmp r0, #0
@@ -64194,7 +64194,7 @@ ov01_02203BB4: ; 0x02203BB4
 	ldr r1, [r4, #0x5c]
 	ldr r3, [r4, #0x60]
 	mov r0, #0
-	bl sub_020205D8
+	bl GF_CreateNewVramTransferTask
 	ldr r0, [r5, #0x2c]
 	mov r1, #0
 	lsl r0, r0, #0x10
@@ -64205,7 +64205,7 @@ ov01_02203BB4: ; 0x02203BB4
 	mov r0, #1
 	add r1, r5, #0
 	mov r3, #0x20
-	bl sub_020205D8
+	bl GF_CreateNewVramTransferTask
 	add r0, r6, #0
 	add r1, sp, #0
 	bl sub_02068DB8
@@ -64437,7 +64437,7 @@ _02203E24:
 	ldr r1, [r4, #0x1c]
 	ldr r3, [r4, #0x20]
 	mov r0, #0
-	bl sub_020205D8
+	bl GF_CreateNewVramTransferTask
 _02203E3A:
 	mov r0, #0
 	pop {r4, pc}
@@ -68186,7 +68186,7 @@ ov01_0220589C: ; 0x0220589C
 	lsr r1, r1, #0xd
 	add r2, #8
 	mov r3, #0x20
-	bl sub_020205D8
+	bl GF_CreateNewVramTransferTask
 	add r0, r5, #0
 	bl sub_02023FA0
 	add r6, r0, #0
@@ -68201,7 +68201,7 @@ ov01_0220589C: ; 0x0220589C
 	mov r0, #0
 	lsr r1, r1, #0xd
 	lsl r3, r3, #4
-	bl sub_020205D8
+	bl GF_CreateNewVramTransferTask
 	ldr r0, _02205968 ; =ov01_0220596C
 	add r1, r4, #0
 	mov r2, #0
@@ -68217,7 +68217,7 @@ ov01_0220596C: ; 0x0220596C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_02020638
+	bl GF_GetNumPendingVramTransferTasks
 	cmp r0, #0
 	bne _0220598C
 	add r0, r5, #0
@@ -68863,7 +68863,7 @@ _02205E5A:
 	lsr r3, r3, #0x10
 	lsr r1, r1, #0xd
 	lsl r3, r3, #3
-	bl sub_020205D8
+	bl GF_CreateNewVramTransferTask
 	add r0, r5, #0
 	bl sub_0206A054
 	add r0, r5, #0
@@ -69266,7 +69266,7 @@ _022061A6:
 	lsr r1, r1, #0xd
 	add r2, #0x44
 	lsl r3, r3, #3
-	bl sub_020205D8
+	bl GF_CreateNewVramTransferTask
 	ldrb r0, [r4, #3]
 	strb r0, [r4, #2]
 	b _0220625A
@@ -69315,7 +69315,7 @@ _0220620C:
 	lsr r1, r1, #0xd
 	add r2, #0x44
 	lsl r3, r3, #3
-	bl sub_020205D8
+	bl GF_CreateNewVramTransferTask
 	ldrb r0, [r4, #3]
 	strb r0, [r4, #2]
 	b _0220625A
@@ -72013,4 +72013,4 @@ ov01_02209B64: ; 0x02209B64
 	.space 0xC
 
 ov01_02209B70: ; 0x02209B70
-	.space 0x3c010
+	.space 4 * 0xF000

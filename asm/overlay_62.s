@@ -455,7 +455,7 @@ ov62_021E5C34: ; 0x021E5C34
 	bl sub_0200FBDC
 	mov r0, #0x20
 	add r1, r4, #0
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	pop {r4, pc}
 	nop
 _021E5C78: .word 0xFFFFE0FF
@@ -465,7 +465,7 @@ _021E5C7C: .word 0x04001000
 	thumb_func_start ov62_021E5C80
 ov62_021E5C80: ; 0x021E5C80
 	push {r3, lr}
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB

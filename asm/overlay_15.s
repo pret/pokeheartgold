@@ -588,7 +588,7 @@ ov15_BagApp_exit: ; 0x021F982C
 	ldr r0, [r4]
 	bl ov15_021F9A8C
 	bl sub_02021238
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	add r0, r4, #0
 	bl ov15_021FEB64
 	add r0, r4, #0
@@ -705,7 +705,7 @@ ov15_021F995C: ; 0x021F995C
 	push {r3, lr}
 	ldr r0, [r0]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200D034
 	ldr r3, _021F997C ; =0x027E0000
 	ldr r1, _021F9980 ; =0x00003FF8
@@ -12648,7 +12648,7 @@ ov15_021FF850: ; 0x021FF850
 	bl GX_EngineBToggleLayers
 	mov r0, #0x20
 	mov r1, #6
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	add r0, r4, #0
 	bl ov15_021FFA40
 	add r0, r4, #0

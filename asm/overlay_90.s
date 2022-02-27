@@ -369,7 +369,7 @@ _02258A40:
 	strh r1, [r0]
 	ldr r0, _02258A9C ; =0x04001050
 	strh r1, [r0]
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	add r0, r5, #0
 	bl FreeToHeap
 	pop {r4, r5, r6, pc}
@@ -4160,7 +4160,7 @@ _0225A6EA:
 	bl ov90_0225A204
 	mov r0, #0x10
 	add r1, r5, #0
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	add r0, r4, #0
 	ldr r1, _0225A834 ; =ov90_0225C264
 	ldr r2, _0225A838 ; =ov90_0225C43C
@@ -5576,7 +5576,7 @@ _0225B204:
 ov90_0225B230: ; 0x0225B230
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	add r0, r4, #0
 	add r0, #0x4c
 	bl ov90_022590C0
@@ -5683,7 +5683,7 @@ _0225B2EC:
 	add r2, r2, r0
 	mov r0, #0xf
 	mov r3, #0x20
-	bl sub_020205D8
+	bl GF_CreateNewVramTransferTask
 	cmp r0, #0
 	bne _0225B300
 	bl GF_AssertFail

@@ -301,7 +301,7 @@ _021E8378: .word 0x04000304
 ov52_021E837C: ; 0x021E837C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200B224
 	add r0, r4, #0
 	bl BgConfig_HandleScheduledScrollAndTransferOps

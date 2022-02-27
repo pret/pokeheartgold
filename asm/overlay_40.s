@@ -26,7 +26,7 @@ ov40_0222B6E0: ; 0x0222B6E0
 	str r0, [r2]
 	mov r0, #4
 	mov r1, #0x6d
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	mov r0, #0xbf
 	mov r1, #0x6d
 	bl NARC_ctor
@@ -381,7 +381,7 @@ _0222BA4A:
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0222BA84: .word 0x0000416C
@@ -666,7 +666,7 @@ _0222BD00: .word ov40_02244C68
 ov40_0222BD04: ; 0x0222BD04
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	ldr r0, [r4, #0x28]
 	bl sub_0200398C
 	ldr r0, [r4, #0x24]
@@ -20107,7 +20107,7 @@ ov40_02235900: ; 0x02235900
 	beq _02235918
 	bl ov41_0224B5C8
 _02235918:
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	ldr r0, [r4, #0x28]
 	bl sub_0200398C
 	ldr r0, [r4, #0x24]

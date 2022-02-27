@@ -1291,7 +1291,7 @@ ov113_021E62B0: ; 0x021E62B0
 	beq _021E62C0
 	bl sub_0200D034
 _021E62C0:
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	ldr r0, [r4, #0x40]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E62D8 ; =0x027E0000
@@ -1861,7 +1861,7 @@ ov113_021E677C: ; 0x021E677C
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0x20
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	ldr r0, [r5]
 	bl sub_0200CF18
 	add r1, r5, #0
@@ -2087,7 +2087,7 @@ ov113_021E6930: ; 0x021E6930
 	mov r1, #0
 	add r0, #0xac
 	str r1, [r0]
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	ldr r0, [r4]
 	bl sub_0200B2E0
 	pop {r4, pc}
