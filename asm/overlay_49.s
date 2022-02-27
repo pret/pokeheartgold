@@ -4216,7 +4216,7 @@ ov49_0225A5EC: ; 0x0225A5EC
 	strh r1, [r0]
 	mov r0, #0x20
 	add r1, r6, #0
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	ldr r0, _0225A7A0 ; =ov49_022697CC
 	bl GX_SetBanks
 	ldr r0, _0225A7A4 ; =gSystem + 0x60
@@ -4413,7 +4413,7 @@ ov49_0225A7C0: ; 0x0225A7C0
 ov49_0225A7D0: ; 0x0225A7D0
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	ldr r5, _0225A83C ; =ov49_02269734
 	mov r4, #0
 _0225A7DC:
@@ -4466,7 +4466,7 @@ ov49_0225A840: ; 0x0225A840
 	ldr r0, [r0]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200B224
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov49_0225A840

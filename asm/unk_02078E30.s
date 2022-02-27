@@ -1015,7 +1015,7 @@ sub_020795E0: ; 0x020795E0
 	ldr r0, [r6]
 	bl sub_020798C4
 	bl sub_02021238
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	ldr r7, _0207969C ; =0x00000828
 	mov r4, #0
 	add r5, r6, #0
@@ -1104,7 +1104,7 @@ sub_020796B8: ; 0x020796B8
 	bl BgSetPosTextAndCommit
 	ldr r0, [r4]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200D034
 	ldr r3, _020796F8 ; =OS_IRQTable
 	ldr r1, _020796FC ; =0x00003FF8

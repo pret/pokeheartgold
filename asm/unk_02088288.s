@@ -364,7 +364,7 @@ sub_0208856C: ; 0x0208856C
 	ldr r0, [r4]
 	bl sub_0208877C
 	bl sub_02021238
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	add r0, r4, #0
 	bl sub_02088AF8
 	add r0, r4, #0
@@ -400,7 +400,7 @@ sub_020885DC: ; 0x020885DC
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	bl sub_02009418
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200D034
 	ldr r3, _02088608 ; =OS_IRQTable
 	ldr r1, _0208860C ; =0x00003FF8

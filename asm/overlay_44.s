@@ -914,7 +914,7 @@ _0222A542:
 	bl MI_CpuFill8
 	mov r0, #0x20
 	mov r1, #0x35
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	mov r1, #6
 	mov r0, #8
 	lsl r1, r1, #6
@@ -1181,7 +1181,7 @@ _0222A792:
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	bl sub_02021238
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	mov r0, #0x35
 	bl DestroyHeap
 	mov r0, #0xd3
@@ -1233,7 +1233,7 @@ ov44_0222A7F8: ; 0x0222A7F8
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200B224
 	ldr r0, _0222A82C ; =0x000010BC
 	ldrh r0, [r4, r0]
@@ -18064,7 +18064,7 @@ _02232D72:
 	mov r0, #0xf
 	add r1, #0xe0
 	mov r3, #2
-	bl sub_020205D8
+	bl GF_CreateNewVramTransferTask
 _02232D94:
 	add r4, r4, #1
 	cmp r4, #4
@@ -18138,7 +18138,7 @@ _02232DFE:
 	lsl r1, r1, #1
 	add r1, #0xe0
 	mov r3, #2
-	bl sub_020205D8
+	bl GF_CreateNewVramTransferTask
 _02232E1A:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -18282,7 +18282,7 @@ _02232EC6:
 	bl MI_CpuFill8
 	mov r0, #0x10
 	mov r1, #0x67
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	bl sub_020398C8
 	add r1, r0, #0
 	str r0, [r4]
@@ -18495,7 +18495,7 @@ ov44_022330A8: ; 0x022330A8
 	add r0, r4, #0
 	mov r1, #0x67
 	bl ov44_02233214
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x68
@@ -18610,7 +18610,7 @@ ov44_0223319C: ; 0x0223319C
 	push {r3, lr}
 	ldr r0, [r0, #0x30]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200B224
 	pop {r3, pc}
 	.balign 4, 0
@@ -20017,7 +20017,7 @@ ov44_02233D08: ; 0x02233D08
 	lsl r2, r2, #5
 	add r2, r3, r2
 	mov r3, #0x20
-	bl sub_020205D8
+	bl GF_CreateNewVramTransferTask
 	cmp r0, #0
 	bne _02233D30
 	bl GF_AssertFail

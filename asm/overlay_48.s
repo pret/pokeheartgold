@@ -1618,7 +1618,7 @@ ov48_02259464: ; 0x02259464
 	str r0, [r5, r1]
 	mov r0, #0x40
 	add r1, r4, #0
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	ldr r0, _022594A4 ; =ov48_0225B210
 	bl GX_SetBanks
 	add r0, r5, #0
@@ -1644,7 +1644,7 @@ ov48_022594A8: ; 0x022594A8
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	bl NARC_dtor
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	add r0, r4, #0
 	bl ov48_02259650
 	add r0, r4, #0
@@ -1670,7 +1670,7 @@ ov48_022594DC: ; 0x022594DC
 	ldr r0, [r0]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200B224
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov48_022594DC
@@ -4329,7 +4329,7 @@ ov48_0225A868: ; 0x0225A868
 	lsr r1, r1, #0xb
 	add r2, r4, #0
 	lsl r3, r3, #5
-	bl sub_020205D8
+	bl GF_CreateNewVramTransferTask
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov48_0225A868
 
@@ -4544,7 +4544,7 @@ _0225A9F4:
 	lsl r2, r2, #5
 	add r2, r3, r2
 	mov r3, #0x20
-	bl sub_020205D8
+	bl GF_CreateNewVramTransferTask
 	cmp r0, #0
 	bne _0225AA34
 	bl GF_AssertFail

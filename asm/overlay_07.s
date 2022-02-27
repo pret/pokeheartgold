@@ -3841,7 +3841,7 @@ _0221D9A0:
 	ldr r2, [sp, #0x20]
 	mov r0, #0x13
 	lsl r3, r3, #6
-	bl sub_020205D8
+	bl GF_CreateNewVramTransferTask
 _0221D9C2:
 	ldr r1, [sp, #0x1c]
 	add r0, r4, #0
@@ -8741,7 +8741,7 @@ _0221FD98:
 	ldr r2, [sp, #0x20]
 	mov r0, #0x13
 	lsl r3, r3, #6
-	bl sub_020205D8
+	bl GF_CreateNewVramTransferTask
 _0221FDB2:
 	cmp r5, #0
 	beq _0221FDDC

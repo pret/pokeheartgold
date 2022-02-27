@@ -440,7 +440,7 @@ _021E5CD4: .word ov73_021EA52B
 ov73_021E5CD8: ; 0x021E5CD8
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200B224
 	ldr r0, [r4]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
@@ -5073,7 +5073,7 @@ _021E80FC: .word 0x00000BD4
 ov73_021E8100: ; 0x021E8100
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	ldr r0, [r4, #4]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200B224

@@ -66,7 +66,7 @@ Static main
 	Object src/string_control_code.o
 	Object src/math_util.o
 	Object asm/text.o
-	Object src/unk_0202055C.o
+	Object src/vram_transfer_manager.o
 	Object asm/unk_02020654.o
 	Object asm/unk_020210A0.o
 	Object asm/unk_020215A0.o
@@ -123,7 +123,7 @@ Static main
 	Object asm/unk_0202ED18.o
 	Object asm/unk_0202ED74.o
 	Object src/safari_zone.o
-	Object asm/photo_album.o
+	Object src/photo_album.o
 	Object asm/unk_0202FBCC.o
 	Object asm/unk_02030A98.o
 	Object src/unk_0203170C.o

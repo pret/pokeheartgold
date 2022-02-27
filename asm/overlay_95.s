@@ -271,7 +271,7 @@ ov95_021E5B24: ; 0x021E5B24
 	add r4, r0, #0
 	ldr r0, [r4, #0x3c]
 	bl sub_02009418
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200D034
 	ldr r0, [r4, #8]
 	bl sub_0200398C
@@ -2632,7 +2632,7 @@ ov95_021E6D70: ; 0x021E6D70
 	str r0, [r4, #4]
 	mov r0, #0x40
 	mov r1, #0x46
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	mov r0, #0x46
 	mov r1, #1
 	mov r2, #0
@@ -2816,7 +2816,7 @@ ov95_021E6F0C: ; 0x021E6F0C
 	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
 	bl FreeToHeap
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	ldr r0, [r4, #0x3c]
 	bl sub_02008524
 	ldr r0, [r4, #0x58]

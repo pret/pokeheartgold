@@ -3475,7 +3475,7 @@ _020772C0:
 	bl sub_0200D020
 	bl sub_0200D034
 _020772CE:
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	ldr r0, [r4, #0x14]
 	bl sub_0200398C
 	ldr r0, [r4]

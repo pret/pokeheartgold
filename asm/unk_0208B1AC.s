@@ -25,7 +25,7 @@ sub_0208B1AC: ; 0x0208B1AC
 	bl GX_EngineBToggleLayers
 	mov r0, #0x20
 	mov r1, #0x13
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	mov r0, #0x13
 	bl sub_0200CF18
 	mov r1, #0xff

@@ -3580,7 +3580,7 @@ ov59_02239938: ; 0x02239938
 	add r4, r0, #0
 	ldr r1, [r4]
 	mov r0, #0x20
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	ldr r0, [r4]
 	bl sub_0200CF18
 	mov r1, #0x93
@@ -3651,7 +3651,7 @@ ov59_022399B4: ; 0x022399B4
 	mov r1, #0
 	lsl r0, r0, #2
 	str r1, [r4, r0]
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	ldr r0, [r4]
 	bl sub_0200B2E0
 	pop {r4, pc}
@@ -7120,7 +7120,7 @@ ov59_0223B3DC: ; 0x0223B3DC
 _0223B3EE:
 	ldr r0, [r4, #0x78]
 	bl ov59_0223C374
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	ldr r0, [r4, #0x54]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _0223B40C ; =0x027E0000
@@ -7620,7 +7620,7 @@ ov59_0223B804: ; 0x0223B804
 	add r4, r0, #0
 	ldr r1, [r4]
 	mov r0, #0x20
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	ldr r0, [r4]
 	bl sub_0200CF18
 	mov r1, #0x96
@@ -7685,7 +7685,7 @@ ov59_0223B878: ; 0x0223B878
 	mov r1, #0
 	lsl r0, r0, #2
 	str r1, [r4, r0]
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	ldr r0, [r4]
 	bl sub_0200B2E0
 	pop {r4, pc}

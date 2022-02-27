@@ -1050,7 +1050,7 @@ _022380F8: .word 0x00000BD4
 ov72_022380FC: ; 0x022380FC
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	ldr r0, [r4, #4]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200B224

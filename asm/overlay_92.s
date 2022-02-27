@@ -131,7 +131,7 @@ ov92_0225C5C4: ; 0x0225C5C4
 	bl HBlankInterruptDisable
 	mov r0, #0x20
 	mov r1, #0x71
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	ldr r1, _0225C938 ; =0x00200010
 	mov r0, #1
 	bl sub_02009FE8
@@ -1565,7 +1565,7 @@ ov92_0225D1FC: ; 0x0225D1FC
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	bl sub_02021238
 	add r0, r5, #0
 	add r0, #0x80
@@ -2298,7 +2298,7 @@ _0225D892:
 ov92_0225D894: ; 0x0225D894
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200D034
 	ldr r0, [r4, #0x5c]
 	bl sub_0200398C

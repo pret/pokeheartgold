@@ -749,7 +749,7 @@ ov121_021E5F30: ; 0x021E5F30
 	bl sub_0200B224
 	add r0, r4, #0
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	ldr r3, _021E5F50 ; =0x027E0000
 	ldr r1, _021E5F54 ; =0x00003FF8
 	mov r0, #1

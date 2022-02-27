@@ -3896,7 +3896,7 @@ ov96_021E75BC: ; 0x021E75BC
 	bl sub_0200B224
 	add r0, r4, #0
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	ldr r3, _021E75DC ; =0x027E0000
 	ldr r1, _021E75E0 ; =0x00003FF8
 	mov r0, #1
@@ -32344,7 +32344,7 @@ _021F504A:
 	bl GX_SwapDisplay
 	ldr r1, [r4, #0x54]
 	mov r0, #0xc
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	ldr r1, [r4, #0x54]
 	mov r0, #0xc
 	bl sub_02020654
@@ -32900,7 +32900,7 @@ _021F5598:
 	lsl r0, r0, #0xc
 	ldr r0, [r4, r0]
 	bl sub_0202067C
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	add r0, r7, #0
 	bl ov96_021E5DAC
 	ldr r0, _021F562C ; =0x04000050

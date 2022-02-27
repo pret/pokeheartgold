@@ -321,7 +321,7 @@ sub_02093594: ; 0x02093594
 	add r0, r4, #0
 	bl sub_020956B8
 _020935B2:
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200B224
 	ldr r0, [r4]
 	bl BgConfig_HandleScheduledScrollAndTransferOps

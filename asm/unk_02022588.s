@@ -224,7 +224,7 @@ _020226FE:
 	ldr r2, [r5, #0xc]
 	mov r0, #0xe
 	lsl r3, r3, #5
-	bl sub_020205D8
+	bl GF_CreateNewVramTransferTask
 _02022716:
 	ldr r1, [r4, #4]
 	mov r0, #2
@@ -235,7 +235,7 @@ _02022716:
 	ldr r2, [r5, #0xc]
 	mov r0, #0x1e
 	lsl r3, r3, #5
-	bl sub_020205D8
+	bl GF_CreateNewVramTransferTask
 _0202272C:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

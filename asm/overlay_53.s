@@ -4710,7 +4710,7 @@ ov53_021E7F24: ; 0x021E7F24
 	bl GX_EngineBToggleLayers
 	mov r0, #0x20
 	mov r1, #0x50
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	mov r0, #0x50
 	bl sub_0200CF18
 	add r1, r4, #0
@@ -4804,7 +4804,7 @@ ov53_021E7FEC: ; 0x021E7FEC
 	add r0, #0xd0
 	ldr r0, [r0]
 	bl sub_0200D108
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	mov r0, #0
 	add r4, #0xd4
 	str r0, [r4]
