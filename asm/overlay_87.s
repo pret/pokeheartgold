@@ -226,7 +226,7 @@ ov87_021E5AC0: ; 0x021E5AC0
 	ldrb r1, [r4, #0xc]
 	ldr r0, [r4, r0]
 	strh r1, [r0]
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	add r0, r4, #0
 	bl ov87_021E6780
 	add r0, r5, #0
@@ -2365,7 +2365,7 @@ ov87_021E6C04: ; 0x021E6C04
 _021E6C1C:
 	ldr r0, [r4, #0x58]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200B224
 	ldr r3, _021E6C38 ; =0x027E0000
 	ldr r1, _021E6C3C ; =0x00003FF8
@@ -4388,7 +4388,7 @@ ov87_021E7AF8: ; 0x021E7AF8
 	add r5, r0, #0
 	mov r0, #0x20
 	mov r1, #0x7a
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	bl ov87_021E7EF0
 	bl NNS_G2dInitOamManagerModule
 	mov r0, #0

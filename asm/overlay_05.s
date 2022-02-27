@@ -2325,7 +2325,7 @@ _0221CCBE:
 _0221CCCA:
 	add r0, r4, #0
 	bl ov05_0221CE0C
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	ldr r0, [r4, #8]
 	mov r1, #0
 	bl PaletteData_FreeBuffers
@@ -2381,7 +2381,7 @@ ov05_0221CD24: ; 0x0221CD24
 	mov r0, #0x40
 	ldr r1, [r1, #0x24]
 	add r4, r2, #0
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	ldr r0, [r5]
 	ldr r0, [r0, #0x24]
 	bl sub_0200CF18
@@ -2563,7 +2563,7 @@ ov05_0221CE88: ; 0x0221CE88
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r0, [r4, #8]
 	bl sub_0200398C
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200D034
 	ldr r3, _0221CEB0 ; =0x027E0000
 	ldr r1, _0221CEB4 ; =0x00003FF8

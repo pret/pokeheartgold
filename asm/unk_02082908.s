@@ -1009,7 +1009,7 @@ _02083132:
 	thumb_func_start sub_02083140
 sub_02083140: ; 0x02083140
 	push {r3, lr}
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200B224
 	ldr r3, _02083158 ; =OS_IRQTable
 	ldr r1, _0208315C ; =0x00003FF8

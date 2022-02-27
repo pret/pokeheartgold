@@ -25,7 +25,7 @@ sub_0207EB24: ; 0x0207EB24
 	bl GX_EngineBToggleLayers
 	mov r0, #0x20
 	mov r1, #0xc
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	mov r0, #0xc
 	bl sub_0200CF18
 	ldr r1, _0207EBD0 ; =0x00000658

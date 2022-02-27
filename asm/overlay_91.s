@@ -181,7 +181,7 @@ _0225C680:
 	strb r2, [r1, #3]
 	mov r0, #0x20
 	mov r1, #0x6a
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	add r0, r4, #0
 	bl ov91_02261B2C
 	add r0, r4, #0
@@ -534,7 +534,7 @@ _0225C97C:
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -955,7 +955,7 @@ _0225CC6C:
 _0225CC82:
 	ldr r0, [r5, #0x34]
 	bl ov91_0225CE80
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 _0225CC8C:
 	add r4, #0x38
 	ldrb r0, [r4]
@@ -1778,7 +1778,7 @@ ov91_0225D2D0: ; 0x0225D2D0
 	ldr r1, _0225D2E4 ; =0x00001AB4
 	ldr r0, [r0, r1]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200B224
 	pop {r3, pc}
 	.balign 4, 0

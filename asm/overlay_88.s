@@ -350,7 +350,7 @@ ov88_02258ABC: ; 0x02258ABC
 	str r0, [r5, r1]
 	mov r0, #0x30
 	add r1, r4, #0
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	ldr r0, _02258AF0 ; =ov88_02259958
 	bl GX_SetBanks
 	add r0, r5, #0
@@ -372,7 +372,7 @@ ov88_02258AF4: ; 0x02258AF4
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
 	bl NARC_dtor
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	add r0, r4, #0
 	bl ov88_02258C60
 	add r0, r4, #0
@@ -395,7 +395,7 @@ ov88_02258B20: ; 0x02258B20
 	ldr r0, [r0]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200B224
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov88_02258B20
@@ -1430,7 +1430,7 @@ _022592C6:
 	lsl r2, r2, #1
 	add r2, #0xe0
 	add r2, r7, r2
-	bl sub_020205D8
+	bl GF_CreateNewVramTransferTask
 	cmp r0, #0
 	bne _022592E2
 	bl GF_AssertFail

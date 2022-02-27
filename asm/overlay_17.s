@@ -2706,7 +2706,7 @@ ov17_022030A8: ; 0x022030A8
 	add r4, r0, #0
 	ldr r1, [r4]
 	mov r0, #0x20
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	ldr r0, [r4]
 	bl sub_0200CF18
 	mov r1, #0x13
@@ -2900,7 +2900,7 @@ ov17_0220321C: ; 0x0220321C
 	mov r1, #0
 	lsl r0, r0, #4
 	str r1, [r4, r0]
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	ldr r0, [r4]
 	bl sub_0200B2E0
 	pop {r4, pc}

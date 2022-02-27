@@ -40,7 +40,7 @@ _02020680: .word FreeToHeap
 	thumb_func_start sub_02020684
 sub_02020684: ; 0x02020684
 	push {r3, lr}
-	bl sub_020205D8
+	bl GF_CreateNewVramTransferTask
 	pop {r3, pc}
 	thumb_func_end sub_02020684
 
@@ -248,7 +248,7 @@ sub_020207C8: ; 0x020207C8
 	lsr r3, r3, #0x10
 	lsr r1, r1, #0xd
 	lsl r3, r3, #4
-	bl sub_020205D8
+	bl GF_CreateNewVramTransferTask
 	ldrb r0, [r4]
 	strb r0, [r5, #0x10]
 	pop {r4, r5, r6, pc}
@@ -271,7 +271,7 @@ sub_020207F4: ; 0x020207F4
 	lsr r3, r3, #0x10
 	lsr r1, r1, #0xd
 	lsl r3, r3, #3
-	bl sub_020205D8
+	bl GF_CreateNewVramTransferTask
 	ldrb r0, [r4, #1]
 	strb r0, [r5, #0x11]
 	pop {r4, r5, r6, pc}

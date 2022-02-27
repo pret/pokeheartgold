@@ -277,7 +277,7 @@ ov68_021E5B14: ; 0x021E5B14
 	bl sub_02018410
 	mov r0, #0
 	bl sub_02002B8C
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -294,7 +294,7 @@ ov68_021E5B6C: ; 0x021E5B6C
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	bl sub_02009418
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	bl sub_0200D034
 	ldr r3, _021E5B98 ; =0x027E0000
 	ldr r1, _021E5B9C ; =0x00003FF8
@@ -2627,7 +2627,7 @@ ov68_021E6DDC: ; 0x021E6DDC
 	stmia r2!, {r0, r1}
 	mov r0, #0x40
 	mov r1, #0x42
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	mov r0, #0x42
 	bl sub_0200CF18
 	mov r1, #0x47

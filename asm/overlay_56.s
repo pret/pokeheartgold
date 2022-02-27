@@ -1968,7 +1968,7 @@ ov56_021E6BB4: ; 0x021E6BB4
 _021E6BC6:
 	ldr r1, [r5]
 	mov r0, #0x20
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	ldr r0, [r5]
 	bl sub_0200CF18
 	add r1, r5, #0
@@ -2211,7 +2211,7 @@ _021E6DAC:
 	add r6, #0xb0
 	ldr r0, [r6]
 	bl sub_0200D108
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 _021E6DD0:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

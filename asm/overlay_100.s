@@ -1692,7 +1692,7 @@ _021E6632:
 	bl ov100_021E69E8
 	bl sub_0200D034
 _021E663C:
-	bl sub_0202061C
+	bl GF_RunVramTransferTasks
 	ldr r0, [r4, #0x74]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E6654 ; =0x027E0000
@@ -2110,7 +2110,7 @@ ov100_021E6914: ; 0x021E6914
 	add r4, r0, #0
 	ldr r1, [r4]
 	mov r0, #0x20
-	bl sub_0202055C
+	bl GF_CreateVramTransferManager
 	ldr r0, [r4]
 	bl sub_0200CF18
 	add r1, r4, #0
@@ -2144,7 +2144,7 @@ ov100_021E6950: ; 0x021E6950
 	mov r1, #0
 	add r0, #0x8c
 	str r1, [r0]
-	bl sub_020205AC
+	bl GF_DestroyVramTransferManager
 	ldr r0, [r4]
 	bl sub_0200B2E0
 	ldr r0, [r4]
