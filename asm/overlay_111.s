@@ -1202,7 +1202,7 @@ ov111_021E6268: ; 0x021E6268
 	bl NARC_ctor
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_020741B0
+	bl Pokemon_GetIconNaix
 	add r1, r0, #0
 	ldr r0, [sp, #4]
 	mov r2, #0

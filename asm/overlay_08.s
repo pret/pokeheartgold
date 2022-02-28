@@ -8844,7 +8844,7 @@ _022206E4:
 	cmp r0, #0
 	beq _0222070E
 	ldr r0, [r5, #4]
-	bl sub_020741B0
+	bl Pokemon_GetIconNaix
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -9315,7 +9315,7 @@ _02220AB8:
 	ldrb r1, [r1]
 	lsl r2, r2, #0x18
 	lsr r2, r2, #0x1f
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	add r1, r0, #0
 	ldr r0, _02220AE8 ; =0x00001FD4
 	ldr r0, [r6, r0]

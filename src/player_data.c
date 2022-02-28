@@ -76,7 +76,7 @@ void PlayerName_StringToFlat(PLAYERPROFILE* profile, STRING* str) {
     CopyStringToU16Array(str, profile->name, OT_NAME_LENGTH + 1);
 }
 
-u16* PlayerProfile_GetNamePtr(PLAYERPROFILE* profile) {
+const u16 * PlayerProfile_GetNamePtr(const PLAYERPROFILE *profile) {
     return profile->name;
 }
 
@@ -107,7 +107,7 @@ void PlayerProfile_SetTrainerGender(PLAYERPROFILE* profile, int gender) {
     profile->gender = gender;
 }
 
-u8 PlayerProfile_GetTrainerGender(PLAYERPROFILE* profile) {
+u32 PlayerProfile_GetTrainerGender(PLAYERPROFILE* profile) {
     return profile->gender;
 }
 
@@ -121,7 +121,7 @@ BOOL PlayerProfile_TestBadgeFlag(PLAYERPROFILE* profile, s32 badge_no) {
             return TRUE;
         }
     } else {
-        if ((profile->kantoBadges & (1 << badge_no - 8)) != FALSE) {
+        if ((profile->kantoBadges & (1 << (badge_no - 8))) != FALSE) {
             return TRUE;
         }
     }

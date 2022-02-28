@@ -12956,7 +12956,7 @@ ov70_0223E0BC: ; 0x0223E0BC
 	str r0, [r4, #8]
 	ldr r0, [sp]
 	add r2, r6, #0
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	add r0, r0, #3
 	str r0, [r4, #4]
 	ldr r0, [sp, #4]

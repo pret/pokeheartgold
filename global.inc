@@ -29345,10 +29345,10 @@
 .public sub_02074120
 .public sub_02074128
 .public sub_02074170
-.public sub_020741B0
+.public Pokemon_GetIconNaix
 .public sub_020741BC
 .public sub_02074274
-.public sub_02074364
+.public GetMonIconPaletteEx
 .public sub_0207440C
 .public sub_02074444
 .public sub_02074484

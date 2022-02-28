@@ -19719,7 +19719,7 @@ _021EECE6:
 	ldrh r0, [r4]
 	ldrh r1, [r4, #2]
 	mov r2, #0
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	add r1, r0, #0
 	add r0, r5, #0
 	add r1, r6, r1
@@ -46925,7 +46925,7 @@ _021FC52A:
 	ldr r1, [sp, #0xc]
 	add r0, r6, #0
 	mov r2, #0
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	add r0, r0, #3
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
@@ -54678,7 +54678,7 @@ _0220032E:
 	ldr r0, [sp, #8]
 	ldr r1, [sp, #0xc]
 	mov r2, #0
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	add r2, r0, #1
 	mov r0, #0x47
 	add r1, r6, r7
@@ -70369,7 +70369,7 @@ _0220812A:
 	ldr r0, [sp, #0x10]
 	ldr r1, [sp, #0x14]
 	mov r2, #0
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	add r1, r0, #6
 	ldr r0, [sp, #8]
 	add r4, r4, #4

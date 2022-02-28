@@ -1591,7 +1591,7 @@ sub_0208BE00: ; 0x0208BE00
 	b _0208BE36
 _0208BE30:
 	add r0, r4, #0
-	bl sub_020741B0
+	bl Pokemon_GetIconNaix
 _0208BE36:
 	add r1, r0, #0
 	mov r0, #0x13
@@ -1639,7 +1639,7 @@ sub_0208BE70: ; 0x0208BE70
 	ldrh r1, [r4, r1]
 	lsl r2, r2, #3
 	lsr r2, r2, #0x1f
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	add r1, r0, #0
 	mov r0, #0x45
 	lsl r0, r0, #4

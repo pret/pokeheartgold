@@ -2772,7 +2772,7 @@ _02238E5C:
 	add r0, r1, r0
 	ldr r7, [r0, #4]
 	add r0, r7, #0
-	bl sub_020741B0
+	bl Pokemon_GetIconNaix
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -2847,7 +2847,7 @@ _02238E5C:
 	add r1, r0, #0
 	ldr r0, [sp, #0x10]
 	ldr r2, [sp, #0x14]
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	add r1, r0, #0
 	mov r0, #0xc9
 	lsl r0, r0, #2

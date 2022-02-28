@@ -1939,7 +1939,7 @@ _0225AEFA:
 	str r0, [sp, #0x20]
 	ldr r0, [sp, #0x14]
 	ldr r0, [r0, #0x10]
-	bl sub_020741B0
+	bl Pokemon_GetIconNaix
 	add r2, r0, #0
 	b _0225AF22
 _0225AF20:

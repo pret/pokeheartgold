@@ -10058,7 +10058,7 @@ ov112_021EABE8: ; 0x021EABE8
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	add r1, r0, #0
 	ldr r0, [sp, #0x14]
 	add r1, r1, #5

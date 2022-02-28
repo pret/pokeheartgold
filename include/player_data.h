@@ -44,14 +44,14 @@ void PlayerProfile_init(PLAYERPROFILE *profile);
 BOOL PlayerProfile_IsNameEmpty(PLAYERPROFILE *profile);
 void Sav2_Profile_PlayerName_set(PLAYERPROFILE* profile, u16 *name);
 void PlayerName_StringToFlat(PLAYERPROFILE *profile, STRING *str);
-u16 *PlayerProfile_GetNamePtr(PLAYERPROFILE *profile);
+const u16 * PlayerProfile_GetNamePtr(const PLAYERPROFILE *profile);
 void PlayerName_FlatToString(PLAYERPROFILE *profile, STRING *str);
 STRING *PlayerProfile_GetPlayerName_NewString(PLAYERPROFILE *profile, HeapID heapId);
 void PlayerProfile_SetTrainerID(PLAYERPROFILE *profile, u32 id);
 u32 PlayerProfile_GetTrainerID(PLAYERPROFILE *profile);
 u16 PlayerProfile_GetTrainerID_VisibleHalf(PLAYERPROFILE *profile);
 void PlayerProfile_SetTrainerGender(PLAYERPROFILE *profile, int gender);
-u8 PlayerProfile_GetTrainerGender(PLAYERPROFILE *profile);
+u32 PlayerProfile_GetTrainerGender(PLAYERPROFILE *profile);
 BOOL PlayerProfile_TestBadgeFlag(PLAYERPROFILE *profile, s32 badgeNo);
 void PlayerProfile_SetBadgeFlag(PLAYERPROFILE *profile, s32 badgeNo);
 u32 PlayerProfile_CountBadges(PLAYERPROFILE *profile);
@@ -74,7 +74,7 @@ OPTIONS* Sav2_PlayerData_GetOptionsAddr(SAVEDATA* savedata);
 u16* Sav2_PlayerData_GetCoinsAddr(SAVEDATA* savedata);
 IGT* Sav2_PlayerData_GetIGTAddr(SAVEDATA* savedata);
 PLAYERPROFILE* PlayerProfile_new(HeapID heap_id);
-u16* PlayerProfile_GetNamePtr(PLAYERPROFILE* profile);
+const u16 * PlayerProfile_GetNamePtr(const PLAYERPROFILE *profile);
 STRING* PlayerProfile_GetPlayerName_NewString(PLAYERPROFILE* profile, HeapID heap_id);
 
 #endif //POKEHEARTGOLD_PLAYER_DATA_H

@@ -239,7 +239,7 @@ sub_02082AEC: ; 0x02082AEC
 	add r0, r5, #0
 	add r1, r6, #0
 	mov r2, #0
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	lsl r0, r0, #5
 	add r0, r4, r0
 	mov r1, #0xc0

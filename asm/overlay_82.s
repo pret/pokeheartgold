@@ -3692,7 +3692,7 @@ _0223F996:
 	bl NARC_ctor
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x14]
-	bl sub_020741B0
+	bl Pokemon_GetIconNaix
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]

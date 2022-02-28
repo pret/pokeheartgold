@@ -34060,7 +34060,7 @@ ov12_02248228: ; 0x02248228
 	str r0, [r5, #0xc]
 	bl sub_0200DC18
 	ldr r0, [sp, #0x18]
-	bl sub_020741B0
+	bl Pokemon_GetIconNaix
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -100202,7 +100202,7 @@ _02268324:
 	bl ov12_0223A8EC
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0xc]
-	bl sub_020741B0
+	bl Pokemon_GetIconNaix
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -100345,7 +100345,7 @@ _02268454:
 	bl ov12_0223A8EC
 	add r4, r0, #0
 	ldr r0, [sp, #0xc]
-	bl sub_020741B0
+	bl Pokemon_GetIconNaix
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]

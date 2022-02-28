@@ -3163,7 +3163,7 @@ sub_02094C08: ; 0x02094C08
 	ldrh r1, [r6, #0xa]
 	ldrh r2, [r6, #8]
 	ldr r0, [r6]
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	add r0, #8
 	str r0, [r4, #4]
 	ldr r1, [r4, #4]

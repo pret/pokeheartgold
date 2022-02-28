@@ -5797,7 +5797,7 @@ ov40_0222E510: ; 0x0222E510
 	ldr r1, [sp, #0x20]
 	ldr r2, [sp, #0x24]
 	add r0, r7, #0
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	add r2, r0, #0
 	ldr r1, [sp, #0x1c]
 	ldr r0, [r5, #4]
@@ -9043,7 +9043,7 @@ _0222FEB6:
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0x14]
 	add r0, r4, #0
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	add r1, r0, #0
 	add r0, r5, #0
 	add r1, r1, #4
@@ -9859,7 +9859,7 @@ _02230558:
 	ldr r0, [sp, #0x20]
 	ldr r1, [sp, #0x24]
 	mov r2, #0
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	add r1, r0, #0
 	ldr r0, [r5, #0xc]
 	add r1, r1, #4
@@ -23418,7 +23418,7 @@ _022372F6:
 	ldr r1, [sp, #0x18]
 	ldr r2, [sp, #0x28]
 	add r0, r6, #0
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	add r1, r0, #0
 	mov r0, #0xad
 	lsl r0, r0, #2

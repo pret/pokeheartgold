@@ -8604,7 +8604,7 @@ ov81_02242218: ; 0x02242218
 	ldr r1, [sp, #0x18]
 	add r0, r7, #0
 	mov r2, #0
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	add r1, r0, #0
 	mov r0, #0x12
 	lsl r0, r0, #6

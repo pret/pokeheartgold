@@ -11326,7 +11326,7 @@ ov80_0222F29C: ; 0x0222F29C
 	bl GF_AssertFail
 _0222F2B0:
 	add r0, r7, #0
-	bl sub_020741B0
+	bl Pokemon_GetIconNaix
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
