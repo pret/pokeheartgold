@@ -6766,12 +6766,12 @@ _0221F614:
 	ldr r0, [r5, #0x10]
 	bl SavArray_Flags_get
 	str r0, [sp, #0x10]
-	bl sub_02066E28
+	bl ScriptState_GetVar404C
 	cmp r0, #0
 	bne _0221F62C
 	ldr r0, [sp, #0x10]
 	mov r1, #1
-	bl sub_02066E38
+	bl ScriptState_SetVar404C
 _0221F62C:
 	add r0, r4, #0
 	mov r1, #0x6f

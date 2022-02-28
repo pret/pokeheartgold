@@ -1765,7 +1765,7 @@ _0204A972:
 	bne _0204A9A6
 	add r0, r6, #0
 	bl SavArray_Flags_get
-	bl sub_02066E48
+	bl ScriptState_GetVar4052
 	b _0204A9B8
 _0204A9A6:
 	add r1, #8

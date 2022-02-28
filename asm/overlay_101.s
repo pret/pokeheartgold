@@ -26215,7 +26215,7 @@ _021F4154:
 _021F415C:
 	ldr r0, [r5, #0x28]
 	mov r1, #4
-	bl sub_02066E84
+	bl ScriptState_SetVar4057
 	ldrh r0, [r4, #0x1c]
 	pop {r4, r5, r6, pc}
 _021F4168:
@@ -26239,7 +26239,7 @@ _021F4186:
 _021F418E:
 	ldr r0, [r5, #0x28]
 	mov r1, #7
-	bl sub_02066E84
+	bl ScriptState_SetVar4057
 	ldrh r0, [r4, #0x1c]
 	pop {r4, r5, r6, pc}
 _021F419A:
@@ -26252,7 +26252,7 @@ _021F419A:
 	pop {r4, r5, r6, pc}
 _021F41A8:
 	ldr r0, [r5, #0x28]
-	bl sub_02066E74
+	bl ScriptState_GetVar4057
 	add r0, #0x93
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10

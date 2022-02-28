@@ -97,7 +97,7 @@ void ScriptState_SetFishingCompetitionLengthRecord(SCRIPT_STATE* state, u16 reco
     SetScriptVar(state, VAR_MAGIKARP_SIZE_RECORD, record);
 }
 
-u16 sub_02066B70(SCRIPT_STATE* state) {
+u16 ScriptState_GetUnownReportLevel(SCRIPT_STATE* state) {
     return GetScriptVar(state, VAR_UNOWN_REPORT_LEVEL);
 }
 
@@ -144,7 +144,7 @@ BOOL sub_02066C74(SCRIPT_STATE* state, s32 a1) {
     return var1 == var2;
 }
 
-void sub_02066CAC(SCRIPT_STATE* state, u32 id) {
+void ScriptState_SetLotoId(SCRIPT_STATE* state, u32 id) {
     SetScriptVar(state, VAR_LOTO_NUMBER_LO, id & 0xFFFF);
 #ifdef BUGFIX_LOTO_NUMBER_HI
     SetScriptVar(state, VAR_LOTO_NUMBER_HI, id >> 16);
@@ -164,7 +164,7 @@ void ScriptState_RollLotoId(SCRIPT_STATE* state) {
     u16 lo = LCRandom();
     u16 hi = LCRandom();
 
-    sub_02066CAC(state, hi << 16 | lo);
+    ScriptState_SetLotoId(state, hi << 16 | lo);
 }
 
 void Save_LCRNGAdvanceLotoID(SAVEDATA* savedata) {
@@ -172,14 +172,14 @@ void Save_LCRNGAdvanceLotoID(SAVEDATA* savedata) {
     SAV_FRIEND_GRP* friend_groups = sub_0202C854(savedata);
     u32 rand_id = sub_0202C7DC(friend_groups) * 0x41C64E6D + 12345;
 
-    sub_02066CAC(state, rand_id);
+    ScriptState_SetLotoId(state, rand_id);
 }
 
-u16 sub_02066D40(SCRIPT_STATE* state) {
+u16 ScriptState_GetVar4041(SCRIPT_STATE* state) {
     return GetScriptVar(state, VAR_UNK_4041);
 }
 
-void sub_02066D50(SCRIPT_STATE* state, u16 value) {
+void ScriptState_SetVar4041(SCRIPT_STATE* state, u16 value) {
     SetScriptVar(state, VAR_UNK_4041, value);
 }
 
@@ -187,7 +187,7 @@ void sub_02066D60(SAVEDATA* savedata) {
     SCRIPT_STATE* state = SavArray_Flags_get(savedata);
     u32 rand = LCRandom() % 98;
 
-    sub_02066D50(state, rand + 2);
+    ScriptState_SetVar4041(state, rand + 2);
 }
 
 void sub_02066D80(SCRIPT_STATE* state) {
@@ -200,47 +200,47 @@ void sub_02066D80(SCRIPT_STATE* state) {
     SetScriptVar(state, VAR_UNK_4042, unk_value);
 }
 
-u16 sub_02066DA8(SCRIPT_STATE* state) {
+u16 ScriptState_GetVar4042(SCRIPT_STATE* state) {
     return GetScriptVar(state, VAR_UNK_4042);
 }
 
-u16 sub_02066DB8(SCRIPT_STATE* state) {
+u16 ScriptState_GetVar404B(SCRIPT_STATE* state) {
     return GetScriptVar(state, VAR_UNK_404B);
 }
 
-void sub_02066DC8(SCRIPT_STATE* state, u16 value) {
+void ScriptState_SetVar404B(SCRIPT_STATE* state, u16 value) {
     SetScriptVar(state, VAR_UNK_404B, value);
 }
 
-u16 sub_02066DD8(SCRIPT_STATE* state) {
+u16 ScriptState_GetBattleFactoryPrintProgress(SCRIPT_STATE* state) {
     return GetScriptVar(state, VAR_BATTLE_FACTORY_PRINT_PROGRESS);
 }
 
-u16 sub_02066DE8(SCRIPT_STATE* state) {
+u16 ScriptState_GetBattleHallPrintProgress(SCRIPT_STATE* state) {
     return GetScriptVar(state, VAR_BATTLE_HALL_PRINT_PROGRESS);
 }
 
-u16 sub_02066DF8(SCRIPT_STATE* state) {
+u16 ScriptState_GetBattleCastlePrintProgress(SCRIPT_STATE* state) {
     return GetScriptVar(state, VAR_BATTLE_CASTLE_PRINT_PROGRESS);
 }
 
-u16 sub_02066E08(SCRIPT_STATE* state) {
+u16 ScriptState_GetBattleArcadePrintProgress(SCRIPT_STATE* state) {
     return GetScriptVar(state, VAR_BATTLE_ARCADE_PRINT_PROGRESS);
 }
 
-u16 sub_02066E18(SCRIPT_STATE* state) {
+u16 ScriptState_GetBattleTowerPrintProgress(SCRIPT_STATE* state) {
     return GetScriptVar(state, VAR_BATTLE_TOWER_PRINT_PROGRESS);
 }
 
-u16 sub_02066E28(SCRIPT_STATE* state) {
+u16 ScriptState_GetVar404C(SCRIPT_STATE* state) {
     return GetScriptVar(state, VAR_UNK_404C);
 }
 
-void sub_02066E38(SCRIPT_STATE* state, u16 value) {
+void ScriptState_SetVar404C(SCRIPT_STATE* state, u16 value) {
     SetScriptVar(state, VAR_UNK_404C, value);
 }
 
-u16 sub_02066E48(SCRIPT_STATE* state) {
+u16 ScriptState_GetVar4052(SCRIPT_STATE* state) {
     return GetScriptVar(state, VAR_UNK_4052);
 }
 
@@ -253,11 +253,11 @@ BOOL sub_02066E58(SCRIPT_STATE* state) {
     return TRUE;
 }
 
-u16 sub_02066E74(SCRIPT_STATE* state) {
+u16 ScriptState_GetVar4057(SCRIPT_STATE* state) {
     return GetScriptVar(state, VAR_UNK_4057);
 }
 
-void sub_02066E84(SCRIPT_STATE* state, u16 value) {
+void ScriptState_SetVar4057(SCRIPT_STATE* state, u16 value) {
     SetScriptVar(state, VAR_UNK_4057, value);
 }
 

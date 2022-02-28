@@ -10870,7 +10870,7 @@ ScrCmd_534: ; 0x02045CFC
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066D40
+	bl ScriptState_GetVar4041
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -11013,7 +11013,7 @@ ScrCmd_539: ; 0x02045E1C
 	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02066DA8
+	bl ScriptState_GetVar4042
 	cmp r0, #5
 	blo _02045E4C
 	mov r0, #1

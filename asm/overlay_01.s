@@ -3932,7 +3932,7 @@ ov01_021E78E4: ; 0x021E78E4
 	mov r5, #0
 	bl SavArray_Flags_get
 	add r4, r0, #0
-	bl sub_02066DB8
+	bl ScriptState_GetVar404B
 	add r0, r0, #1
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
@@ -3942,7 +3942,7 @@ ov01_021E78E4: ; 0x021E78E4
 	mov r5, #1
 _021E7902:
 	add r0, r4, #0
-	bl sub_02066DC8
+	bl ScriptState_SetVar404B
 	add r0, r5, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021E78E4
