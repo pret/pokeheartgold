@@ -7113,7 +7113,7 @@ _021E945C:
 	thumb_func_start ov112_021E9464
 ov112_021E9464: ; 0x021E9464
 	push {r3, lr}
-	bl sub_02074170
+	bl Boxmon_GetIconNaix
 	sub r0, r0, #7
 	pop {r3, pc}
 	.balign 4, 0
@@ -7124,7 +7124,7 @@ ov112_021E9470: ; 0x021E9470
 	push {r3, lr}
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_020741BC
+	bl GetMonIconNaixEx
 	sub r0, r0, #7
 	pop {r3, pc}
 	.balign 4, 0
@@ -10000,7 +10000,7 @@ ov112_021EAB78: ; 0x021EAB78
 	add r0, r6, #0
 	mov r1, #0
 	add r2, r7, #0
-	bl sub_020741BC
+	bl GetMonIconNaixEx
 	ldr r3, _021EABDC ; =0x0001EA64
 	add r1, r0, #0
 	mov r0, #0x9a

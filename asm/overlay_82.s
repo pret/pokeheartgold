@@ -4065,7 +4065,7 @@ ov82_0223FD18: ; 0x0223FD18
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl sub_02074484
+	bl Pokemon_GetIconPalette
 	add r1, r0, #0
 	ldr r0, [r4, #0x10]
 	bl sub_02024AA8

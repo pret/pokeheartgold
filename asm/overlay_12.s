@@ -34115,7 +34115,7 @@ ov12_02248228: ; 0x02248228
 	bl sub_0200D734
 	str r0, [r5, #0x10]
 	ldr r0, [sp, #0x18]
-	bl sub_02074484
+	bl Pokemon_GetIconPalette
 	add r1, r0, #0
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0]
@@ -100246,7 +100246,7 @@ _02268356:
 	add r6, r0, #0
 	bl sub_0200DDF4
 	ldr r0, [sp, #0xc]
-	bl sub_02074484
+	bl Pokemon_GetIconPalette
 	add r1, r0, #0
 	ldr r0, [r6]
 	bl sub_02024AA8
@@ -100388,7 +100388,7 @@ _02268488:
 	add r4, r0, #0
 	bl sub_0200DDF4
 	ldr r0, [sp, #0xc]
-	bl sub_02074484
+	bl Pokemon_GetIconPalette
 	add r1, r0, #0
 	ldr r0, [r4]
 	bl sub_02024AA8

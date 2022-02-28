@@ -1220,7 +1220,7 @@ ov111_021E6268: ; 0x021E6268
 	ldr r0, [sp, #8]
 	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_02074484
+	bl Pokemon_GetIconPalette
 	add r0, r6, r0
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18

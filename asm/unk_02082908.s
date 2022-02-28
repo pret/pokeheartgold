@@ -1915,7 +1915,7 @@ _02083812:
 	ldr r0, [r5, #4]
 	ldr r2, [r5, #8]
 	mov r1, #0
-	bl sub_020741BC
+	bl GetMonIconNaixEx
 	ldr r3, _020839AC ; =0x000004B8
 	add r1, r0, #0
 	mov r0, #0x12

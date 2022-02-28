@@ -1587,7 +1587,7 @@ sub_0208BE00: ; 0x0208BE00
 	cmp r0, #2
 	bne _0208BE30
 	add r0, r4, #0
-	bl sub_02074170
+	bl Boxmon_GetIconNaix
 	b _0208BE36
 _0208BE30:
 	add r0, r4, #0
@@ -1714,7 +1714,7 @@ _0208BF1C:
 	add r0, r6, #0
 	bl sub_0208A520
 	add r7, r0, #0
-	bl sub_02074484
+	bl Pokemon_GetIconPalette
 	add r1, r0, #0
 	ldr r0, _0208BF98 ; =0x00000528
 	add r1, #0xc
@@ -1723,7 +1723,7 @@ _0208BF1C:
 	b _0208BF64
 _0208BF36:
 	add r0, r7, #0
-	bl sub_02074444
+	bl Boxmon_GetIconPalette
 	add r1, r0, #0
 	ldr r0, _0208BF98 ; =0x00000528
 	add r1, #0xc
@@ -1735,7 +1735,7 @@ _0208BF4A:
 	add r1, r4, #0
 	bl GetPartyMonByIndex
 	add r7, r0, #0
-	bl sub_02074484
+	bl Pokemon_GetIconPalette
 	add r1, r0, #0
 	ldr r0, _0208BF98 ; =0x00000528
 	add r1, #0xc
@@ -1829,7 +1829,7 @@ sub_0208BFD0: ; 0x0208BFD0
 	mov r2, #0x49
 	bl sub_0208BE00
 	add r0, r4, #0
-	bl sub_02074444
+	bl Boxmon_GetIconPalette
 	add r1, r0, #0
 	ldr r0, _0208C060 ; =0x00000528
 	add r1, #0xc
@@ -1849,7 +1849,7 @@ _0208C020:
 	mov r2, #0x4a
 	bl sub_0208BE00
 	add r0, r4, #0
-	bl sub_02074444
+	bl Boxmon_GetIconPalette
 	add r1, r0, #0
 	ldr r0, _0208C064 ; =0x0000052C
 	add r1, #0xc

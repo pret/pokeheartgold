@@ -754,7 +754,7 @@ _0221C48A:
 	ldr r1, _0221C5D0 ; =0x000006A1
 	ldrh r0, [r4, r0]
 	ldrb r1, [r4, r1]
-	bl sub_020741BC
+	bl GetMonIconNaixEx
 	add r1, r0, #0
 	mov r0, #0x1a
 	str r0, [sp]

@@ -8863,7 +8863,7 @@ _0222070E:
 	mov r0, #0
 	add r1, r0, #0
 	add r2, r0, #0
-	bl sub_020741BC
+	bl GetMonIconNaixEx
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]

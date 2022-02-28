@@ -13649,7 +13649,7 @@ _0222DD6A:
 	mov r1, #0
 	ldr r0, [sp, #8]
 	add r2, r1, #0
-	bl sub_020741BC
+	bl GetMonIconNaixEx
 	add r1, r0, #0
 	ldr r0, [r6]
 	mov r2, #0
@@ -16550,7 +16550,7 @@ _0222F504:
 	mov r1, #0
 	ldr r0, [sp, #8]
 	add r2, r1, #0
-	bl sub_020741BC
+	bl GetMonIconNaixEx
 	add r1, r0, #0
 	ldr r0, [r7]
 	mov r2, #0
@@ -22117,7 +22117,7 @@ ov74_02231EC4: ; 0x02231EC4
 	add r0, r4, #0
 	add r1, r5, #0
 	add r2, r7, #0
-	bl sub_020741BC
+	bl GetMonIconNaixEx
 	add r1, r0, #0
 	mov r0, #0x14
 	add r2, sp, #0
@@ -22181,7 +22181,7 @@ _02231F62:
 	ldr r2, [sp]
 	add r0, r6, #0
 	add r1, r7, #0
-	bl sub_020741BC
+	bl GetMonIconNaixEx
 	ldr r2, [sp, #0x24]
 	ldr r3, [sp, #0x28]
 	add r1, sp, #4

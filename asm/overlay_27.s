@@ -2364,7 +2364,7 @@ _0225B298:
 	lsl r3, r3, #0x14
 	bl sub_0200DDC4
 	ldr r0, [r4, #0x10]
-	bl sub_02074484
+	bl Pokemon_GetIconPalette
 	add r1, r0, #0
 	mov r0, #0xea
 	lsl r0, r0, #2

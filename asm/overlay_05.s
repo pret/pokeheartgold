@@ -4643,7 +4643,7 @@ _0221DF58:
 	mov r0, #0
 	add r1, r0, #0
 	add r2, r0, #0
-	bl sub_020741BC
+	bl GetMonIconNaixEx
 	mov r1, #0x18
 	add r2, r6, #0
 	mul r2, r1

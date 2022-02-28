@@ -11366,7 +11366,7 @@ _0222F2D8:
 	bl sub_0200D734
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_02074484
+	bl Pokemon_GetIconPalette
 	add r1, r0, #0
 	ldr r0, [r4]
 	bl sub_02024AA8
