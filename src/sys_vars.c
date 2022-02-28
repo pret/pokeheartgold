@@ -246,18 +246,10 @@ u16 sub_02066E48(SCRIPT_STATE* state) {
 
 BOOL sub_02066E58(SCRIPT_STATE* state) {
     u16 var = GetScriptVar(state, VAR_SCENE_ROCKET_TAKEOVER);
-    if (var < 2) {
-        goto fals;
+    if (var < 2 || var > 4) {
+        return FALSE;
     }
 
-    if (var <= 4) {
-        goto tru;
-    }
-
-fals:
-    return FALSE;
-
-tru:
     return TRUE;
 }
 
