@@ -6139,8 +6139,8 @@ ov75_02249904: ; 0x02249904
 	.word ov75_02246E3C, ov75_02246E78, _02102620, 0
 	.word ov75_02246EAC, ov75_02246EDC, ov75_022498E4, 1
 
-	.public ov75_02249964
-ov75_02249964:
+	.public ov75_App_MainMenu_SelectOption_WiiMessageSettings
+ov75_App_MainMenu_SelectOption_WiiMessageSettings:
 	.word ov75_02246960, ov75_022469D8, ov75_02246B00, 0xFFFFFFFF
 ov75_02249974:
 	.byte 0x0B, 0x07, 0x14, 0x08

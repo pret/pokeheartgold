@@ -7430,7 +7430,7 @@ _0223B474:
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	beq _0223B4FA
-	ble _0223B4D8
+	ble gApp_MainMenu_SelectOption_MigrateFromAgb
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0x18]
 	bl ov12_0223AA88
@@ -7465,14 +7465,14 @@ _0223B4AE:
 	mov r2, #5
 	bl GetItemAttr
 	cmp r0, #0x35
-	bne _0223B4D8
+	bne gApp_MainMenu_SelectOption_MigrateFromAgb
 	ldr r1, [sp, #8]
 	mov r0, #0x96
 	mul r0, r1
 	mov r1, #0x64
 	bl _s32_div_f
 	str r0, [sp, #8]
-_0223B4D8:
+gApp_MainMenu_SelectOption_MigrateFromAgb:
 	ldr r0, [sp, #0x18]
 	ldr r2, [sp, #8]
 	mov r1, #9

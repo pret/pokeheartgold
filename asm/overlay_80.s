@@ -36387,7 +36387,7 @@ _0223B4B2:
 	str r2, [r5, #0xc]
 	str r4, [r5, #0x18]
 	str r6, [r5, #0x10]
-	ldr r0, _0223B4D8 ; =ov80_0223B468
+	ldr r0, gApp_MainMenu_SelectOption_MigrateFromAgb ; =ov80_0223B468
 	str r7, [r5, #0x14]
 	add r1, r5, #0
 	bl sub_0200E374
@@ -36399,7 +36399,7 @@ _0223B4B2:
 	str r0, [r5]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0223B4D8: .word ov80_0223B468
+gApp_MainMenu_SelectOption_MigrateFromAgb: .word ov80_0223B468
 _0223B4DC: .word ov80_0223B484
 	thumb_func_end ov80_0223B4A0
 

@@ -2038,8 +2038,8 @@ _02228038: .word ov74_0223BBC4
 _0222803C: .word ov74_0223BCBC
 	thumb_func_end ov74_MainMenu_PrintContinueButton
 
-	thumb_func_start ov74_02228040
-ov74_02228040: ; 0x02228040
+	thumb_func_start ov74_MainMenu_PrintMigrateFromAgbButton
+ov74_MainMenu_PrintMigrateFromAgbButton: ; 0x02228040
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -2069,19 +2069,19 @@ _0222806A: ; jump table
 	.short _02228080 - _0222806A - 2 ; case 3
 	.short _02228084 - _0222806A - 2 ; case 4
 _02228074:
-	mov r0, #4
+	mov r0, #msg_0442_00004
 	b _02228086
 _02228078:
-	mov r0, #5
+	mov r0, #msg_0442_00005
 	b _02228086
 _0222807C:
-	mov r0, #6
+	mov r0, #msg_0442_00006
 	b _02228086
 _02228080:
-	mov r0, #7
+	mov r0, #msg_0442_00007
 	b _02228086
 _02228084:
-	mov r0, #8
+	mov r0, #msg_0442_00008
 _02228086:
 	str r0, [sp]
 	ldr r0, [r4]
@@ -2104,10 +2104,10 @@ _02228086:
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
 _022280B0: .word ov74_0223BCBC
-	thumb_func_end ov74_02228040
+	thumb_func_end ov74_MainMenu_PrintMigrateFromAgbButton
 
-	thumb_func_start ov74_022280B4
-ov74_022280B4: ; 0x022280B4
+	thumb_func_start ov74_MainMenu_PrintMysteryGiftButton
+ov74_MainMenu_PrintMysteryGiftButton: ; 0x022280B4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -2188,10 +2188,10 @@ _02228150:
 	nop
 _02228158: .word ov74_0223BCBC + 8
 _0222815C: .word ov74_0223BCBC
-	thumb_func_end ov74_022280B4
+	thumb_func_end ov74_MainMenu_PrintMysteryGiftButton
 
-	thumb_func_start ov74_02228160
-ov74_02228160: ; 0x02228160
+	thumb_func_start ov74_MainMenu_PrintConnectToRangerButton
+ov74_MainMenu_PrintConnectToRangerButton: ; 0x02228160
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x2c]
@@ -2236,10 +2236,10 @@ _022281B0:
 	.balign 4, 0
 _022281B4: .word ov74_0223BCBC + 8
 _022281B8: .word ov74_0223BCBC
-	thumb_func_end ov74_02228160
+	thumb_func_end ov74_MainMenu_PrintConnectToRangerButton
 
-	thumb_func_start ov74_022281BC
-ov74_022281BC: ; 0x022281BC
+	thumb_func_start ov74_MainMenu_PrintConnectToWiiButton
+ov74_MainMenu_PrintConnectToWiiButton: ; 0x022281BC
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x30]
@@ -2278,10 +2278,10 @@ _02228200:
 	.balign 4, 0
 _02228204: .word ov74_0223BCBC + 8
 _02228208: .word ov74_0223BCBC
-	thumb_func_end ov74_022281BC
+	thumb_func_end ov74_MainMenu_PrintConnectToWiiButton
 
-	thumb_func_start ov74_0222820C
-ov74_0222820C: ; 0x0222820C
+	thumb_func_start ov74_MainMenu_PrintNintendoWFCSetupButton
+ov74_MainMenu_PrintNintendoWFCSetupButton: ; 0x0222820C
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -2314,10 +2314,10 @@ ov74_0222820C: ; 0x0222820C
 	nop
 _0222824C: .word ov74_0223BCBC + 8
 _02228250: .word ov74_0223BCBC
-	thumb_func_end ov74_0222820C
+	thumb_func_end ov74_MainMenu_PrintNintendoWFCSetupButton
 
-	thumb_func_start ov74_02228254
-ov74_02228254: ; 0x02228254
+	thumb_func_start ov74_MainMenu_PrintConnectToPokewalkerButton
+ov74_MainMenu_PrintConnectToPokewalkerButton: ; 0x02228254
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r1, #0
 	add r5, r0, #0
@@ -2345,10 +2345,10 @@ ov74_02228254: ; 0x02228254
 	.balign 4, 0
 _02228288: .word ov74_0223BCBC + 8
 _0222828C: .word ov74_0223BCBC
-	thumb_func_end ov74_02228254
+	thumb_func_end ov74_MainMenu_PrintConnectToPokewalkerButton
 
-	thumb_func_start ov74_02228290
-ov74_02228290: ; 0x02228290
+	thumb_func_start ov74_MainMenu_PrintWiiMessageSettingsButton
+ov74_MainMenu_PrintWiiMessageSettingsButton: ; 0x02228290
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r1, #0
 	add r5, r0, #0
@@ -2376,7 +2376,7 @@ ov74_02228290: ; 0x02228290
 	.balign 4, 0
 _022282C4: .word ov74_0223BCBC + 8
 _022282C8: .word ov74_0223BCBC
-	thumb_func_end ov74_02228290
+	thumb_func_end ov74_MainMenu_PrintWiiMessageSettingsButton
 
 	thumb_func_start ov74_022282CC
 ov74_022282CC: ; 0x022282CC
@@ -3163,8 +3163,8 @@ _02228918: .word 0x027E0000
 _0222891C: .word 0x00003FF8
 	thumb_func_end ov74_022288F8
 
-	thumb_func_start ov74_02228920
-ov74_02228920: ; 0x02228920
+	thumb_func_start ov74_MainMenu_AppInit
+ov74_MainMenu_AppInit: ; 0x02228920
 	push {r3, r4, r5, lr}
 	mov r2, #1
 	add r5, r0, #0
@@ -3239,10 +3239,10 @@ _022289C4:
 	bl sub_02004AD8
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov74_02228920
+	thumb_func_end ov74_MainMenu_AppInit
 
-	thumb_func_start ov74_022289D4
-ov74_022289D4: ; 0x022289D4
+	thumb_func_start ov74_MainMenu_AppExec
+ov74_MainMenu_AppExec: ; 0x022289D4
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	add r5, r1, #0
@@ -3454,17 +3454,17 @@ _02228B70:
 	.balign 4, 0
 _02228B84: .word 0x00007D8C
 _02228B88: .word ov74_022288F8
-	thumb_func_end ov74_022289D4
+	thumb_func_end ov74_MainMenu_AppExec
 
-	.public ov36_021E5C04
-	.public ov36_021E5C24
-	.public _021065C4
-	.public ov112_021F5728
-	.public _021065C4
-	.public ov75_02249964
+	.public ov36_App_MainMenu_SelectOption_Continue
+	.public ov36_App_MainMenu_SelectOption_NewGame
+	.public gApp_MainMenu_SelectOption_NintendoWFCSetup
+	.public ov112_App_MainMenu_SelectOption_ConnectToPokewalker
+	.public gApp_MainMenu_SelectOption_NintendoWFCSetup
+	.public ov75_App_MainMenu_SelectOption_WiiMessageSettings
 
-	thumb_func_start ov74_02228B8C
-ov74_02228B8C: ; 0x02228B8C
+	thumb_func_start ov74_MainMenu_QueueSelectedApp
+ov74_MainMenu_QueueSelectedApp: ; 0x02228B8C
 	push {r3, lr}
 	ldr r0, [r0, #0x58]
 	cmp r0, #9
@@ -3488,50 +3488,50 @@ _02228BA0: ; jump table
 	.short _02228C0C - _02228BA0 - 2 ; case 9
 _02228BB4:
 	ldr r0, _02228C24 ; =SDK_OVERLAY_OVY_36_ID
-	ldr r1, _02228C28 ; =ov36_021E5C04
+	ldr r1, _02228C28 ; =ov36_App_MainMenu_SelectOption_Continue
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BBE:
 	ldr r0, _02228C24 ; =SDK_OVERLAY_OVY_36_ID
-	ldr r1, _02228C2C ; =ov36_021E5C24
+	ldr r1, _02228C2C ; =ov36_App_MainMenu_SelectOption_NewGame
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BC8:
 	ldr r0, _02228C30 ; =SDK_OVERLAY_OVY_74_ID
-	ldr r1, _02228C34 ; =_0223B380
+	ldr r1, _02228C34 ; =gApp_MainMenu_SelectOption_MysteryGift
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BD2:
 	ldr r0, _02228C30 ; =SDK_OVERLAY_OVY_74_ID
-	ldr r1, _02228C38 ; =_0223B4D8
+	ldr r1, _02228C38 ; =gApp_MainMenu_SelectOption_MigrateFromAgb
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BDC:
 	ldr r0, _02228C30 ; =SDK_OVERLAY_OVY_74_ID
-	ldr r1, _02228C3C ; =_0223B320
+	ldr r1, _02228C3C ; =gApp_MainMenu_SelectOption_ConnectToRanger
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BE6:
-	ldr r0, _02228C40 ; =ov74_0223BD4C
+	ldr r0, _02228C40 ; =ov74_0223BD4C ; "data/eoo.dat"
 	bl sub_02027098
 	pop {r3, pc}
 _02228BEE:
 	bl sub_02005FA0
 	mov r0, #0
-	ldr r1, _02228C44 ; =_021065C4
+	ldr r1, _02228C44 ; =gApp_MainMenu_SelectOption_NintendoWFCSetup
 	mvn r0, r0
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BFE:
 	bl sub_02005FA0
 	ldr r0, _02228C48 ; =SDK_OVERLAY_OVY_112_ID
-	ldr r1, _02228C4C ; =ov112_021F5728
+	ldr r1, _02228C4C ; =ov112_App_MainMenu_SelectOption_ConnectToPokewalker
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228C0C:
 	bl sub_02005FA0
 	ldr r0, _02228C50 ; =SDK_OVERLAY_OVY_75_ID
-	ldr r1, _02228C54 ; =ov75_02249964
+	ldr r1, _02228C54 ; =ov75_App_MainMenu_SelectOption_WiiMessageSettings
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228C1A:
@@ -3542,28 +3542,28 @@ _02228C22:
 	pop {r3, pc}
 	.balign 4, 0
 _02228C24: .word SDK_OVERLAY_OVY_36_ID
-_02228C28: .word ov36_021E5C04
-_02228C2C: .word ov36_021E5C24
+_02228C28: .word ov36_App_MainMenu_SelectOption_Continue
+_02228C2C: .word ov36_App_MainMenu_SelectOption_NewGame
 _02228C30: .word SDK_OVERLAY_OVY_74_ID
-_02228C34: .word _0223B380
-_02228C38: .word _0223B4D8
-_02228C3C: .word _0223B320
+_02228C34: .word gApp_MainMenu_SelectOption_MysteryGift
+_02228C38: .word gApp_MainMenu_SelectOption_MigrateFromAgb
+_02228C3C: .word gApp_MainMenu_SelectOption_ConnectToRanger
 _02228C40: .word ov74_0223BD4C
-_02228C44: .word _021065C4
+_02228C44: .word gApp_MainMenu_SelectOption_NintendoWFCSetup
 _02228C48: .word SDK_OVERLAY_OVY_112_ID
-_02228C4C: .word ov112_021F5728
+_02228C4C: .word ov112_App_MainMenu_SelectOption_ConnectToPokewalker
 _02228C50: .word SDK_OVERLAY_OVY_75_ID
-_02228C54: .word ov75_02249964
+_02228C54: .word ov75_App_MainMenu_SelectOption_WiiMessageSettings
 _02228C58: .word SDK_OVERLAY_OVY_60_ID
 _02228C5C: .word ov60_021EAFE0
-	thumb_func_end ov74_02228B8C
+	thumb_func_end ov74_MainMenu_QueueSelectedApp
 
-	thumb_func_start ov74_02228C60
-ov74_02228C60: ; 0x02228C60
+	thumb_func_start ov74_MainMenu_AppExit
+ov74_MainMenu_AppExit: ; 0x02228C60
 	push {r4, lr}
 	add r4, r0, #0
 	bl OverlayManager_GetData
-	bl ov74_02228B8C
+	bl ov74_MainMenu_QueueSelectedApp
 	add r0, r4, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x4f
@@ -3573,7 +3573,7 @@ ov74_02228C60: ; 0x02228C60
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov74_02228C60
+	thumb_func_end ov74_MainMenu_AppExit
 
 	thumb_func_start ov74_02228C84
 ov74_02228C84: ; 0x02228C84
@@ -3659,7 +3659,7 @@ ov74_02228D20: ; 0x02228D20
 	add r7, r0, #0
 	ldr r0, [r7, #0x10]
 	bl PlayerProfile_GetNamePtr
-	ldr r5, _02228D58 ; =_0223D080
+	ldr r5, _02228D58 ; =ov74_0223D080
 	add r4, r0, #0
 	mov r6, #0
 _02228D30:
@@ -3676,14 +3676,14 @@ _02228D30:
 	add r1, r0, #0
 	ldr r0, _02228D5C ; =ov74_0223D090
 	bl ov74_IntToWstring5
-	ldr r0, _02228D60 ; =_0223D080
+	ldr r0, _02228D60 ; =ov74_0223D080
 	mov r1, #0
 	strh r1, [r0, #0x1a]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02228D58: .word _0223D080
+_02228D58: .word ov74_0223D080
 _02228D5C: .word ov74_0223D090
-_02228D60: .word _0223D080
+_02228D60: .word ov74_0223D080
 	thumb_func_end ov74_02228D20
 
 	thumb_func_start ov74_02228D64
@@ -15381,7 +15381,7 @@ _0222EBA0:
 	ldr r0, [r7, r0]
 	bl FreeToHeap
 	ldr r0, _0222EC00 ; =SDK_OVERLAY_OVY_74_ID
-	ldr r1, _0222EC04 ; =_0223B380
+	ldr r1, _0222EC04 ; =gApp_MainMenu_SelectOption_MysteryGift
 	bl RegisterMainOverlay
 	mov r0, #0x59
 	bl DestroyHeap
@@ -15397,7 +15397,7 @@ _0222EBF4: .word 0x00002BD0
 _0222EBF8: .word 0x00002BE0
 _0222EBFC: .word 0x000029FC
 _0222EC00: .word SDK_OVERLAY_OVY_74_ID
-_0222EC04: .word _0223B380
+_0222EC04: .word gApp_MainMenu_SelectOption_MysteryGift
 	thumb_func_end ov74_0222EB44
 
 	thumb_func_start ov74_0222EC08
@@ -17384,7 +17384,7 @@ _0222FBE8:
 	ldr r0, [r7, r0]
 	bl FreeToHeap
 	ldr r0, _0222FC48 ; =SDK_OVERLAY_OVY_74_ID
-	ldr r1, _0222FC4C ; =_0223B380
+	ldr r1, _0222FC4C ; =gApp_MainMenu_SelectOption_MysteryGift
 	bl RegisterMainOverlay
 	mov r0, #0x59
 	bl DestroyHeap
@@ -17400,7 +17400,7 @@ _0222FC3C: .word 0x00002BC4
 _0222FC40: .word 0x00002BD4
 _0222FC44: .word 0x000029FC
 _0222FC48: .word SDK_OVERLAY_OVY_74_ID
-_0222FC4C: .word _0223B380
+_0222FC4C: .word gApp_MainMenu_SelectOption_MysteryGift
 	thumb_func_end ov74_0222FB8C
 
 	thumb_func_start ov74_0222FC50
@@ -32793,10 +32793,10 @@ _0223B2E8:
 	.byte 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x60, 0x00, 0x00, 0x00
 
-	.public ov74_0223B310
-ov74_0223B310:
-	.word ov74_02228920, ov74_022289D4, ov74_02228C60, 0xFFFFFFFF
-_0223B320:
+	.public gApp_MainMenu
+gApp_MainMenu:
+	.word ov74_MainMenu_AppInit, ov74_MainMenu_AppExec, ov74_MainMenu_AppExit, 0xFFFFFFFF
+gApp_MainMenu_SelectOption_ConnectToRanger:
 	.word ov74_02229200, ov74_02229294, ov74_02229450, 0xFFFFFFFF
 _0223B330:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -32811,7 +32811,7 @@ _0223B368:
 	.word ov74_02229DE0
 	.word sub_020342C0
 	.word 0
-_0223B380:
+gApp_MainMenu_SelectOption_MysteryGift:
 	.word ov74_0222AE6C, ov74_0222C2EC, ov74_0222CD94, 0xFFFFFFFF
 _0223B390:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -32849,7 +32849,7 @@ _0223B4B0:
 	.byte 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00, 0x60, 0x00, 0x00, 0x00
-_0223B4D8:
+gApp_MainMenu_SelectOption_MigrateFromAgb:
 	.word ov74_02233230, ov74_022332F4, ov74_022338D4, 0xFFFFFFFF
 _0223B4E8:
 	.byte 0x14, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00
@@ -33132,23 +33132,25 @@ ov74_0223BC80: ; 0x0223BC80
 	.byte 0x18, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00
 
 ov74_0223BCBC: ; 0x0223BCBC
-	.word 0x00000001, 0x0000000A, 0x00000000, ov74_MainMenu_PrintContinueButton
-	.word 0x00000002, 0x00000004, 0x00000001, 0
-	.word 0x00000003, 0x00000004, 0x00000009, ov74_02228254
-	.word 0x00000004, 0x00000004, 0x00000002, ov74_022280B4
-	.word 0x00000005, 0x00000004, 0x00000003, ov74_02228160
-	.word 0x00000006, 0x00000004, 0x00000000, ov74_02228040
-	.word 0x00000007, 0x00000004, 0x0000000B, ov74_022281BC
-	.word 0x00000008, 0x00000004, 0x0000000C, ov74_0222820C
-	.word 0x00000009, 0x00000004, 0x0000000A, ov74_02228290
+	; internal code, button height, button text, print function
+	.word 1, 10, msg_0442_00000, ov74_MainMenu_PrintContinueButton
+	.word 2,  4, msg_0442_00001, 0 ; New Game
+	.word 3,  4, msg_0442_00009, ov74_MainMenu_PrintConnectToPokewalkerButton
+	.word 4,  4, msg_0442_00002, ov74_MainMenu_PrintMysteryGiftButton
+	.word 5,  4, msg_0442_00003, ov74_MainMenu_PrintConnectToRangerButton
+	.word 6,  4, msg_0442_00000, ov74_MainMenu_PrintMigrateFromAgbButton ; 4, 5, 6, 7, or 8 depending on crtdg
+	.word 7,  4, msg_0442_00011, ov74_MainMenu_PrintConnectToWiiButton
+	.word 8,  4, msg_0442_00012, ov74_MainMenu_PrintNintendoWFCSetupButton
+	.word 9,  4, msg_0442_00010, ov74_MainMenu_PrintWiiMessageSettingsButton
 
 ov74_0223BD4C: ; 0x0223BD4C
 	.asciz "data/eoo.dat"
 	.balign 4, 0
 
 ov74_0223BD5C: ; 0x0223BD5C
-	.byte 0x16, 0x01, 0x15, 0x00
-	.byte 0x90, 0xD0, 0x23, 0x02, 0x80, 0xD0, 0x23, 0x02
+	.word 0x00150116 ; bitfield
+	.word ov74_0223D090
+	.word ov74_0223D080
 
 ov74_0223BD68: ; 0x0223BD68
 	.byte 0x00, 0x00, 0xFF, 0xFF, 0x21, 0x00, 0xE1, 0x00
@@ -33670,7 +33672,7 @@ ov74_0223D054: ; 0x0223D054
 
 	.bss
 
-_0223D080:
+ov74_0223D080:
 	.space 0x10
 
 ov74_0223D090: ; 0x0223D090

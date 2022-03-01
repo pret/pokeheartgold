@@ -7295,11 +7295,11 @@ ov57_0223B308: ; 0x0223B308
 	ldr r0, _0223B328 ; =0x0000040C
 	ldr r0, [r4, r0]
 	cmp r0, #0
-	bne _0223B320
+	bne gApp_MainMenu_SelectOption_ConnectToRanger
 	add r0, r4, #0
 	bl ov57_0223B3F8
 	pop {r4, pc}
-_0223B320:
+gApp_MainMenu_SelectOption_ConnectToRanger:
 	add r0, r4, #0
 	bl ov57_0223B45C
 	pop {r4, pc}
