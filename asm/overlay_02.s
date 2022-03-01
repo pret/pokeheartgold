@@ -26027,7 +26027,7 @@ _022520FC:
 	cmp r0, #0
 	bne _0225215A
 	ldr r0, [sp, #0x1c]
-	bl sub_02066E58
+	bl ScriptState_IsInRocketTakeover
 	cmp r0, #0
 	bne _0225215A
 _02252134:

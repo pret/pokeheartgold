@@ -29166,7 +29166,7 @@
 .public ScriptState_GetVar404C
 .public ScriptState_SetVar404C
 .public ScriptState_GetVar4052
-.public sub_02066E58
+.public ScriptState_IsInRocketTakeover
 .public ScriptState_GetVar4057
 .public ScriptState_SetVar4057
 .public ScriptState_UpdateBuenasPasswordSet
