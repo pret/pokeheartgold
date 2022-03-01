@@ -12738,7 +12738,7 @@ ov80_0222FD08: ; 0x0222FD08
 	ldr r0, _0222FEE8 ; =0x000004F8
 	ldr r0, [r2, r0]
 	bl SavArray_Flags_get
-	bl sub_02066E48
+	bl ScriptState_GetVar4052
 	b _0222FDA2
 _0222FD8E:
 	ldrb r2, [r2, #5]
@@ -15205,7 +15205,7 @@ ov80_022310C4: ; 0x022310C4
 	ldr r0, _022313B0 ; =0x000006FC
 	ldr r0, [r1, r0]
 	bl SavArray_Flags_get
-	bl sub_02066E48
+	bl ScriptState_GetVar4052
 	b _02231164
 _02231158:
 	ldr r0, [sp, #0xc]
@@ -17711,7 +17711,7 @@ _02232520:
 	bne _02232546
 	ldr r0, [r0, #4]
 	bl SavArray_Flags_get
-	bl sub_02066E48
+	bl ScriptState_GetVar4052
 	b _02232552
 _02232546:
 	mov r3, #0
@@ -21203,7 +21203,7 @@ ov80_022340E8: ; 0x022340E8
 	bne _02234174
 	ldr r0, [r0, #4]
 	bl SavArray_Flags_get
-	bl sub_02066E48
+	bl ScriptState_GetVar4052
 	b _02234180
 _02234174:
 	mov r3, #0

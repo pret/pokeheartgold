@@ -1,12 +1,11 @@
 #ifndef POKEHEARTGOLD_CONSTANTS_FLAGS_H
-
 #define POKEHEARTGOLD_CONSTANTS_FLAGS_H
-
-
 
 #include "constants/trainers.h"
 
-
+#define FLAG_ACTION_CLEAR 0
+#define FLAG_ACTION_SET   1
+#define FLAG_ACTION_CHECK 2
 
 #define FLAG_NOTHING                                                   0
 
@@ -2307,4 +2306,3 @@
 
 
 #endif //POKEHEARTGOLD_CONSTANTS_FLAGS_H
-

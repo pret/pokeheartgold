@@ -241,7 +241,7 @@ sub_02067AE4: ; 0x02067AE4
 	beq _02067B84
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_020668B0
+	bl ClearFlag972
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
 	mov r1, #0
@@ -274,9 +274,9 @@ sub_02067AE4: ; 0x02067AE4
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
 	add r4, r0, #0
-	bl sub_020668E0
+	bl ClearFlag973
 	add r0, r4, #0
-	bl sub_02066910
+	bl ClearFlag974
 _02067B56:
 	ldr r0, [r5, #0xc]
 	bl Save_FlyPoints_get
@@ -935,7 +935,7 @@ _02068054:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_020666B4
+	bl CheckFlag969
 	cmp r0, #1
 	bne _02068068
 	mov r0, #PARTY_MENU_RESPONSE_NOT_NOW
@@ -1050,7 +1050,7 @@ _02068136:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_020666B4
+	bl CheckFlag969
 	cmp r0, #1
 	bne _0206814A
 	mov r0, #PARTY_MENU_RESPONSE_NOT_NOW
@@ -1437,7 +1437,7 @@ _02068416:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_020666B4
+	bl CheckFlag969
 	cmp r0, #1
 	bne _0206842A
 	mov r0, #PARTY_MENU_RESPONSE_NOT_NOW
@@ -1631,7 +1631,7 @@ _02068588:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_020666B4
+	bl CheckFlag969
 	cmp r0, #1
 	bne _0206859C
 	mov r0, #PARTY_MENU_RESPONSE_NOT_NOW
@@ -1771,7 +1771,7 @@ _020686A2:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_020666B4
+	bl CheckFlag969
 	cmp r0, #1
 	bne _020686B6
 	mov r0, #PARTY_MENU_RESPONSE_NOT_NOW

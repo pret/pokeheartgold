@@ -468,7 +468,7 @@ _02052D3A:
 	ldr r0, [sp, #8]
 	bl LocationData_Restore
 	add r0, r6, #0
-	bl sub_020667E0
+	bl SetFlag966
 	add r0, r6, #0
 	bl SetGameClearFlag
 	ldr r0, [sp, #4]

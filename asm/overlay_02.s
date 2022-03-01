@@ -2357,7 +2357,7 @@ _02246DE0:
 	bl ScriptState_CheckSafariSysFlag
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x14]
-	bl sub_02066870
+	bl CheckFlag996
 	str r0, [sp, #8]
 	cmp r6, #0
 	bne _02246E18
@@ -2866,7 +2866,7 @@ _0224721A:
 	bl ScriptState_CheckSafariSysFlag
 	add r6, r0, #0
 	add r0, r7, #0
-	bl sub_02066870
+	bl CheckFlag996
 	add r7, r0, #0
 	ldr r0, [sp, #0xc]
 	cmp r0, #0
@@ -22333,7 +22333,7 @@ _022503BA:
 	bne _02250404
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066654
+	bl SetFlag99C
 	mov r1, #1
 	add r0, sp, #0
 	strb r1, [r0]
@@ -25986,7 +25986,7 @@ _022520B8:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0x1c]
-	bl sub_02066870
+	bl CheckFlag996
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x10]

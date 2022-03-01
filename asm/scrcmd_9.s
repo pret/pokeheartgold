@@ -1422,7 +1422,7 @@ sub_0204A6A8: ; 0x0204A6A8
 	str r0, [r4, #0x10]
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_020667E0
+	bl SetFlag966
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end sub_0204A6A8
@@ -1432,7 +1432,7 @@ sub_0204A6E8: ; 0x0204A6E8
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_020667F0
+	bl ClearFlag966
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end sub_0204A6E8
@@ -1765,7 +1765,7 @@ _0204A972:
 	bne _0204A9A6
 	add r0, r6, #0
 	bl SavArray_Flags_get
-	bl sub_02066E48
+	bl ScriptState_GetVar4052
 	b _0204A9B8
 _0204A9A6:
 	add r1, #8

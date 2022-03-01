@@ -353,7 +353,7 @@ sub_02092E54: ; 0x02092E54
 	bl Sav2_PlayerData_GetIGTAddr
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_02066E74
+	bl ScriptState_GetVar4057
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	mov r5, #0

@@ -5972,7 +5972,7 @@ _02256E04:
 	mov r0, #0x26
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02066A00
+	bl CheckFlag09A
 	add r2, r0, #0
 	ldr r1, [sp]
 	ldr r3, [sp, #0x20]

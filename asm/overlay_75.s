@@ -764,7 +764,7 @@ ov75_02246EDC: ; 0x02246EDC
 	beq _02246EF4
 	ldr r0, [r4, #4]
 	bl SavArray_Flags_get
-	bl sub_02066950
+	bl SetFlag970
 _02246EF4:
 	add r0, r4, #0
 	add r0, #0x94

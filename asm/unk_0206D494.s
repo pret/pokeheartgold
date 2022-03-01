@@ -858,7 +858,7 @@ FieldSys_IncrementBugContestTimer: ; 0x0206DB34
 	beq _0206DB56
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066870
+	bl CheckFlag996
 	cmp r0, #0
 	beq _0206DB56
 	ldr r0, [r4, #0x1c]

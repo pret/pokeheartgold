@@ -178,7 +178,7 @@ ov108_021E5A48: ; 0x021E5A48
 	bl SavArray_Flags_get
 	ldr r1, _021E5A74 ; =0x000184E8
 	ldr r1, [r4, r1]
-	bl sub_02066A64
+	bl ChangeFlag99D
 	ldr r0, [r4, #0x14]
 	ldr r1, [r4, #0x10]
 	ldr r0, [r0, #4]

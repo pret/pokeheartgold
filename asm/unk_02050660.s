@@ -651,7 +651,7 @@ sub_02050B08: ; 0x02050B08
 	pop {r3, r4, r5, r6, r7, pc}
 _02050B48:
 	ldr r0, [sp]
-	bl sub_02066870
+	bl CheckFlag996
 	cmp r0, #0
 	beq _02050B6A
 	add r0, r4, #0
@@ -711,7 +711,7 @@ sub_02050B90: ; 0x02050B90
 	pop {r3, r4, r5, r6, r7, pc}
 _02050BD0:
 	ldr r0, [sp]
-	bl sub_02066870
+	bl CheckFlag996
 	cmp r0, #0
 	beq _02050BF2
 	add r0, r4, #0
