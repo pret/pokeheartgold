@@ -971,7 +971,7 @@ Overlay OVY_49
 Overlay OVY_50
 {
     After main
-    Object asm/overlay_50.o
+    Object src/overlay_50.o
     ### Size 0x1c0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x21e5aac ###
