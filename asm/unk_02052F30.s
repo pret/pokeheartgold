@@ -229,7 +229,7 @@ _020530CC:
 	cmp r5, #9
 	bne _020530DC
 	ldr r0, [sp]
-	bl sub_02066920
+	bl CheckFlag974
 	cmp r0, #1
 	bne _020530DC
 	mov r5, #0
@@ -237,7 +237,7 @@ _020530DC:
 	cmp r5, #0xb
 	bne _020530EC
 	ldr r0, [sp]
-	bl sub_020668F0
+	bl CheckFlag973
 	cmp r0, #1
 	bne _020530EC
 	mov r5, #0xc
@@ -292,7 +292,7 @@ _02053134:
 	bl SavFollowPoke_SetInhibitFlagState
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066A2C
+	bl ClearFlag99A
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -715,7 +715,7 @@ sub_0205348C: ; 0x0205348C
 	b _02053538
 _020534B6:
 	add r0, r7, #0
-	bl sub_02066800
+	bl CheckFlag966
 	cmp r0, #0
 	beq _02053502
 	ldr r0, [r4, #0xc]
@@ -729,7 +729,7 @@ _020534B6:
 	bl sub_020533C0
 _020534D8:
 	add r0, r7, #0
-	bl sub_020667F0
+	bl ClearFlag966
 	add r0, r6, #0
 	bl FlyPoints_GetDynamicWarp
 	add r1, r0, #0
@@ -905,7 +905,7 @@ sub_02053620: ; 0x02053620
 	add r0, r4, #0
 	bl sub_020533C0
 	add r0, r5, #0
-	bl sub_020667E0
+	bl SetFlag966
 	b _02053658
 _02053650:
 	add r0, r4, #0

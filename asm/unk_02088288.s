@@ -22,7 +22,7 @@ sub_02088288: ; 0x02088288
 sub_0208828C: ; 0x0208828C
 	push {r3, lr}
 	bl SavArray_Flags_get
-	bl sub_020669F0
+	bl CheckFlag982
 	pop {r3, pc}
 	thumb_func_end sub_0208828C
 

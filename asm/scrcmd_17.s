@@ -152,7 +152,7 @@ ScrCmd_297: ; 0x0204E71C
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_020665F8
+	bl CheckFlag960
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -188,7 +188,7 @@ ScrCmd_298: ; 0x0204E774
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_020665EC
+	bl SetFlag960
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ScrCmd_298
@@ -254,7 +254,7 @@ ScrCmd_619: ; 0x0204E7DC
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_020666B4
+	bl CheckFlag969
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -274,14 +274,14 @@ ScrCmd_620: ; 0x0204E808
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066694
+	bl SetFlag969
 	b _0204E834
 _0204E826:
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_020666A4
+	bl ClearFlag969
 _0204E834:
 	mov r0, #0
 	pop {r3, pc}
@@ -302,7 +302,7 @@ ScrCmd_302: ; 0x0204E838
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066684
+	bl CheckFlag965
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -316,7 +316,7 @@ ScrCmd_303: ; 0x0204E864
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066664
+	bl SetFlag965
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ScrCmd_303
@@ -328,7 +328,7 @@ ScrCmd_304: ; 0x0204E878
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066674
+	bl ClearFlag965
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ScrCmd_304
@@ -436,10 +436,10 @@ ScrCmd_401: ; 0x0204E928
 	beq _0204E95A
 	b _0204E976
 _0204E94E:
-	bl sub_020668D0
+	bl SetFlag973
 	b _0204E97A
 _0204E954:
-	bl sub_020668E0
+	bl ClearFlag973
 	b _0204E97A
 _0204E95A:
 	add r0, r5, #0
@@ -450,7 +450,7 @@ _0204E95A:
 	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_020668F0
+	bl CheckFlag973
 	strh r0, [r5]
 	b _0204E97A
 _0204E976:
@@ -482,10 +482,10 @@ ScrCmd_402: ; 0x0204E980
 	beq _0204E9B2
 	b _0204E9CE
 _0204E9A6:
-	bl sub_02066900
+	bl SetFlag974
 	b _0204E9D2
 _0204E9AC:
-	bl sub_02066910
+	bl ClearFlag974
 	b _0204E9D2
 _0204E9B2:
 	add r0, r5, #0
@@ -496,7 +496,7 @@ _0204E9B2:
 	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02066920
+	bl CheckFlag974
 	strh r0, [r5]
 	b _0204E9D2
 _0204E9CE:

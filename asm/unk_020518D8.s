@@ -714,7 +714,7 @@ _02051E14:
 	str r0, [r5, r1]
 	add r0, r4, #0
 	bl SavArray_Flags_get
-	bl sub_02066810
+	bl CheckMetBill
 	mov r1, #0x5a
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -728,7 +728,7 @@ _02051E14:
 	bhs _02051EA8
 	add r0, r4, #0
 	bl SavArray_Flags_get
-	bl sub_02066794
+	bl CheckFlag986
 	mov r1, #0x5b
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -1266,7 +1266,7 @@ sub_0205230C: ; 0x0205230C
 	bl SaveData_GetPhoneRematches
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_02066794
+	bl CheckFlag986
 	cmp r0, #0
 	beq _02052394
 	ldr r0, [sp]
@@ -1377,7 +1377,7 @@ sub_0205239C: ; 0x0205239C
 	b _02052434
 _0205241E:
 	add r0, r7, #0
-	bl sub_02066870
+	bl CheckFlag996
 	cmp r0, #0
 	beq _02052434
 	add r0, r4, #0

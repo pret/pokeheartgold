@@ -22903,7 +22903,7 @@ _021F2870:
 	mov r3, #6
 	bl BufferIntegerAsString
 	ldr r0, [r5, #0x28]
-	bl sub_02066794
+	bl CheckFlag986
 	add r1, r4, #0
 	add r1, #0x4d
 	ldrb r1, [r1]
@@ -23044,7 +23044,7 @@ _021F29AC:
 	ldr r0, [r5, #0x28]
 	lsl r1, r1, #0x1e
 	lsr r1, r1, #0x1f
-	bl sub_0206677C
+	bl ChangeFlag986
 	b _021F29DA
 _021F29BE:
 	add r0, r5, #0
@@ -23562,7 +23562,7 @@ _021F2D62:
 	cmp r0, #0x60
 	bne _021F2D78
 	ldr r0, [r5, #0x28]
-	bl sub_02066870
+	bl CheckFlag996
 	cmp r0, #0
 	beq _021F2D78
 	mov r0, #0
@@ -23593,7 +23593,7 @@ ov101_021F2D90: ; 0x021F2D90
 	cmp r0, #0x60
 	bne _021F2DB0
 	ldr r0, [r5, #0x28]
-	bl sub_02066870
+	bl CheckFlag996
 	cmp r0, #0
 	beq _021F2DB0
 	mov r0, #0
@@ -26215,7 +26215,7 @@ _021F4154:
 _021F415C:
 	ldr r0, [r5, #0x28]
 	mov r1, #4
-	bl sub_02066E84
+	bl ScriptState_SetVar4057
 	ldrh r0, [r4, #0x1c]
 	pop {r4, r5, r6, pc}
 _021F4168:
@@ -26239,7 +26239,7 @@ _021F4186:
 _021F418E:
 	ldr r0, [r5, #0x28]
 	mov r1, #7
-	bl sub_02066E84
+	bl ScriptState_SetVar4057
 	ldrh r0, [r4, #0x1c]
 	pop {r4, r5, r6, pc}
 _021F419A:
@@ -26252,7 +26252,7 @@ _021F419A:
 	pop {r4, r5, r6, pc}
 _021F41A8:
 	ldr r0, [r5, #0x28]
-	bl sub_02066E74
+	bl ScriptState_GetVar4057
 	add r0, #0x93
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10

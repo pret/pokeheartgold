@@ -220,7 +220,7 @@ ov113_021E5A7C: ; 0x021E5A7C
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
 	bl SavArray_Flags_get
-	bl sub_02066B70
+	bl ScriptState_GetUnownReportLevel
 	add r1, r5, #0
 	add r1, #0x3c
 	strb r0, [r1]

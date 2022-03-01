@@ -218,7 +218,7 @@ sub_02054F60: ; 0x02054F60
 	bne _02054F82
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066A3C
+	bl CheckFlag99A
 	cmp r0, #0
 	bne _02054F82
 	ldr r0, _02054FA4 ; =0x000003F6

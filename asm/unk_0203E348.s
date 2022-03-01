@@ -1464,7 +1464,7 @@ sub_0203ED24: ; 0x0203ED24
 	bne _0203ED72
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066A0C
+	bl CheckFlag997
 	cmp r0, #0
 	bne _0203ED72
 	mov r0, #0

@@ -81,7 +81,7 @@ sub_020649B8: ; 0x020649B8
 	strh r0, [r5, #8]
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
-	bl sub_020666B4
+	bl CheckFlag969
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	lsl r0, r0, #0x1f
@@ -1737,7 +1737,7 @@ _020656B0:
 _020656C2:
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066870
+	bl CheckFlag996
 	cmp r0, #1
 	bne _020656D4
 	mov r0, #0

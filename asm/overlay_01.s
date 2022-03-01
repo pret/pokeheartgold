@@ -1508,7 +1508,7 @@ ov01_021E6580: ; 0x021E6580
 	bne _021E65D8
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
-	bl sub_020669A4
+	bl CheckFlag96A
 	cmp r0, #0
 	beq _021E65D8
 	mov r5, #4
@@ -2298,7 +2298,7 @@ _021E6B66:
 	beq _021E6B86
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066674
+	bl ClearFlag965
 	add r0, r4, #0
 	bl ov01_021E7628
 	cmp r0, #1
@@ -3932,7 +3932,7 @@ ov01_021E78E4: ; 0x021E78E4
 	mov r5, #0
 	bl SavArray_Flags_get
 	add r4, r0, #0
-	bl sub_02066DB8
+	bl ScriptState_GetVar404B
 	add r0, r0, #1
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
@@ -3942,7 +3942,7 @@ ov01_021E78E4: ; 0x021E78E4
 	mov r5, #1
 _021E7902:
 	add r0, r4, #0
-	bl sub_02066DC8
+	bl ScriptState_SetVar404B
 	add r0, r5, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021E78E4
@@ -4123,7 +4123,7 @@ BugContestTimeoutCheck: ; 0x021E7A60
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066870
+	bl CheckFlag996
 	cmp r0, #0
 	bne _021E7A7C
 	mov r0, #0
@@ -4544,7 +4544,7 @@ ov01_021E7D58: ; 0x021E7D58
 	cmp r0, #0x8b
 	bne _021E7D9A
 	add r0, r6, #0
-	bl sub_020669D0
+	bl CheckDisabledCianwoodWaterfall
 	cmp r0, #0
 	beq _021E7D9A
 	ldr r0, _021E7DE8 ; =0x0000085F
@@ -4558,7 +4558,7 @@ _021E7D9A:
 	cmp r1, r0
 	bne _021E7DB6
 	add r0, r6, #0
-	bl sub_020669E0
+	bl CheckSolvedLtSurgeGym
 	cmp r0, #0
 	beq _021E7DB6
 	ldr r0, _021E7DF0 ; =0x00000866
@@ -4568,7 +4568,7 @@ _021E7D9A:
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7DB6:
 	add r0, r6, #0
-	bl sub_02066A4C
+	bl CheckBattledSnorlax
 	cmp r0, #1
 	bne _021E7DCA
 	ldr r0, _021E7DF4 ; =0x00000865
@@ -4578,7 +4578,7 @@ _021E7DB6:
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7DCA:
 	add r0, r6, #0
-	bl sub_02066A58
+	bl CheckBattledRedGyarados
 	cmp r0, #0
 	beq _021E7DDE
 	ldr r0, _021E7DF8 ; =0x0000085D
@@ -26423,7 +26423,7 @@ _021F2148:
 	ldr r0, [r4, #0x1c]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066A3C
+	bl CheckFlag99A
 	cmp r0, #0
 	bne _021F2172
 	bl SndRadio_GetSeqNo
@@ -26796,7 +26796,7 @@ _021F2476:
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066A3C
+	bl CheckFlag99A
 	cmp r0, #0
 	bne _021F249A
 	ldr r0, [r4, #8]

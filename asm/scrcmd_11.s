@@ -689,12 +689,12 @@ _0204C2B6:
 	cmp r0, #1
 	bne _0204C2FE
 	ldr r0, [sp, #0xc]
-	bl sub_02066E28
+	bl ScriptState_GetVar404C
 	cmp r0, #0
 	bne _0204C2FE
 	ldr r0, [sp, #0xc]
 	mov r1, #1
-	bl sub_02066E38
+	bl ScriptState_SetVar404C
 _0204C2FE:
 	add r0, r4, #0
 	bl CalcMonLevelAndStats
