@@ -1,4 +1,4 @@
-#include "msgfmt.h"
+#include "unk_0205B3DC.h"
 #include "gf_gfx_loader.h"
 
 const u8 _020FCA24[][4] = {

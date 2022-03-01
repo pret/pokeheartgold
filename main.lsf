@@ -224,7 +224,7 @@ Static main
 	Object asm/field_roamer.o
 	Object asm/unk_0206793C.o
 	Object asm/unk_02068DE0.o
-	Object asm/unk_02068F84.o
+	Object src/unk_02068F84.o
 	Object asm/unk_02068FC8.o
 	Object asm/unk_02069528.o
 	Object asm/unk_02069660.o
