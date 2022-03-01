@@ -4,8 +4,9 @@
 
 static void ReadFromNarcMemberByPathAndId(void * dest, const char * path, s32 file_idx, u32 offset, u32 size) {
     FSFile file;
-    register u32 chunk_starts[3];
-    u32 btnf_size = 0;
+    u32 btaf_start = 0;
+    u32 btnf_start = 0;
+    u32 gmif_start = 0;
     u32 chunk_size = 0;
     u32 file_start = 0;
     u32 file_end = 0;
@@ -16,20 +17,19 @@ static void ReadFromNarcMemberByPathAndId(void * dest, const char * path, s32 fi
 
     FS_SeekFile(&file, 12, FS_SEEK_SET);
     FS_ReadFile(&file, &chunk_size, 2);
-    chunk_starts[0] = chunk_size;
-    FS_SeekFile(&file, (s32)(chunk_starts[0] + 4), FS_SEEK_SET);
+    btaf_start = chunk_size;
+    FS_SeekFile(&file, (s32)(btaf_start + 4), FS_SEEK_SET);
     FS_ReadFile(&file, &chunk_size, 4);
     FS_ReadFile(&file, &num_files, 2);
     GF_ASSERT(num_files > file_idx);
-    chunk_starts[1] = chunk_starts[0] + chunk_size;
-    FS_SeekFile(&file, (s32)(chunk_starts[1] + 4), FS_SEEK_SET);
+    btnf_start = btaf_start + chunk_size;
+    FS_SeekFile(&file, (s32)(btnf_start + 4), FS_SEEK_SET);
     FS_ReadFile(&file, &chunk_size, 4);
-    btnf_size = chunk_size;
-    FS_SeekFile(&file, (s32)(chunk_starts[0] + 12 + 8 * file_idx), FS_SEEK_SET);
+    gmif_start = btnf_start + chunk_size;
+    FS_SeekFile(&file, (s32)(btaf_start + 12 + 8 * file_idx), FS_SEEK_SET);
     FS_ReadFile(&file, &file_start, 4);
     FS_ReadFile(&file, &file_end, 4);
-    chunk_starts[2] = chunk_starts[1] + btnf_size;
-    FS_SeekFile(&file, (s32)(chunk_starts[2] + 8 + file_start + offset), FS_SEEK_SET);
+    FS_SeekFile(&file, (s32)(gmif_start + 8 + file_start + offset), FS_SEEK_SET);
     if (size == 0)
         chunk_size = file_end - file_start;
     else
@@ -41,8 +41,9 @@ static void ReadFromNarcMemberByPathAndId(void * dest, const char * path, s32 fi
 
 static void * AllocAndReadFromNarcMemberByPathAndId(const char * path, s32 file_idx, HeapID heap_id, u32 offset, u32 size, BOOL allocMode) {
     FSFile file;
-    register u32 chunk_starts[3];
-    u32 btnf_size = 0;
+    u32 btaf_start = 0;
+    u32 btnf_start = 0;
+    u32 gmif_start = 0;
     u32 chunk_size = 0;
     u32 file_start = 0;
     u32 file_end = 0;
@@ -54,20 +55,19 @@ static void * AllocAndReadFromNarcMemberByPathAndId(const char * path, s32 file_
 
     FS_SeekFile(&file, 12, FS_SEEK_SET);
     FS_ReadFile(&file, &chunk_size, 2);
-    chunk_starts[0] = chunk_size;
-    FS_SeekFile(&file, (s32)(chunk_starts[0] + 4), FS_SEEK_SET);
+    btaf_start = chunk_size;
+    FS_SeekFile(&file, (s32)(btaf_start + 4), FS_SEEK_SET);
     FS_ReadFile(&file, &chunk_size, 4);
     FS_ReadFile(&file, &num_files, 2);
     GF_ASSERT(num_files > file_idx);
-    chunk_starts[1] = chunk_starts[0] + chunk_size;
-    FS_SeekFile(&file, (s32)(chunk_starts[1] + 4), FS_SEEK_SET);
+    btnf_start = btaf_start + chunk_size;
+    FS_SeekFile(&file, (s32)(btnf_start + 4), FS_SEEK_SET);
     FS_ReadFile(&file, &chunk_size, 4);
-    btnf_size = chunk_size;
-    FS_SeekFile(&file, (s32)(chunk_starts[0] + 12 + 8 * file_idx), FS_SEEK_SET);
+    gmif_start = btnf_start + chunk_size;
+    FS_SeekFile(&file, (s32)(btaf_start + 12 + 8 * file_idx), FS_SEEK_SET);
     FS_ReadFile(&file, &file_start, 4);
     FS_ReadFile(&file, &file_end, 4);
-    chunk_starts[2] = chunk_starts[1] + btnf_size;
-    FS_SeekFile(&file, (s32)(chunk_starts[2] + 8 + file_start + offset), FS_SEEK_SET);
+    FS_SeekFile(&file, (s32)(gmif_start + 8 + file_start + offset), FS_SEEK_SET);
     if (size == 0)
         chunk_size = file_end - file_start;
     else
@@ -112,11 +112,13 @@ void * AllocAtEndAndReadFromNarcMemberByIdPair(NarcId narc_id, s32 file_id, Heap
 
 u32 GetNarcMemberSizeByIdPair(NarcId narc_id, s32 file_idx) {
     FSFile file;
-    register u32 chunk_starts[3];
-    u32 btnf_size = 0;
     u32 chunk_size = 0;
+    u32 btaf_start = 0;
+    u32 btnf_start = 0;
+    u32 gmif_start = 0;
     u32 file_start = 0;
     u32 file_end = 0;
+    void *data;
     u16 num_files = 0;
 
     FS_InitFile(&file);
@@ -124,20 +126,19 @@ u32 GetNarcMemberSizeByIdPair(NarcId narc_id, s32 file_idx) {
 
     FS_SeekFile(&file, 12, FS_SEEK_SET);
     FS_ReadFile(&file, &chunk_size, 2);
-    chunk_starts[0] = chunk_size;
-    FS_SeekFile(&file, (s32)(chunk_starts[0] + 4), FS_SEEK_SET);
+    btaf_start = chunk_size;
+    FS_SeekFile(&file, (s32)(btaf_start + 4), FS_SEEK_SET);
     FS_ReadFile(&file, &chunk_size, 4);
     FS_ReadFile(&file, &num_files, 2);
     GF_ASSERT(num_files > file_idx);
-    chunk_starts[1] = chunk_starts[0] + chunk_size;
-    FS_SeekFile(&file, (s32)(chunk_starts[1] + 4), FS_SEEK_SET);
+    btnf_start = btaf_start + chunk_size;
+    FS_SeekFile(&file, (s32)(btnf_start + 4), FS_SEEK_SET);
     FS_ReadFile(&file, &chunk_size, 4);
-    btnf_size = chunk_size;
-    FS_SeekFile(&file, (s32)(chunk_starts[0] + 12 + 8 * file_idx), FS_SEEK_SET);
+    gmif_start = btnf_start + chunk_size;
+    FS_SeekFile(&file, (s32)(btaf_start + 12 + 8 * file_idx), FS_SEEK_SET);
     FS_ReadFile(&file, &file_start, 4);
     FS_ReadFile(&file, &file_end, 4);
-    chunk_starts[2] = chunk_starts[1] + btnf_size;
-    FS_SeekFile(&file, (s32)(chunk_starts[2] + 8 + file_start + 0), FS_SEEK_SET);
+    FS_SeekFile(&file, (s32)(gmif_start + 8 + file_start + 0), FS_SEEK_SET);
     chunk_size = file_end - file_start;
     GF_ASSERT(chunk_size != 0);
     // Bug: File is never closed
