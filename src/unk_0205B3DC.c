@@ -1,7 +1,7 @@
 #include "unk_0205B3DC.h"
 #include "gf_gfx_loader.h"
 
-const u8 _020FCA24[][4] = {
+static const u8 _020FCA24[][4] = {
     { 0, 1, 2, 3 },
     { 1, 6, 7, 0 },
     { 2, 3, 4, 5 },
@@ -12,7 +12,7 @@ const u8 _020FCA24[][4] = {
     { 7, 4, 5, 6 },
 };
 
-const u8 _020FCA44[][3] = {
+static const u8 _020FCA44[][3] = {
     // Male
     { 0x03, TRAINERCLASS_SCHOOL_KID_M, TRAINERCLASS_SCHOOL_KID_M },
     { 0x05, TRAINERCLASS_BUG_CATCHER, TRAINERCLASS_BUG_CATCHER },
@@ -46,7 +46,7 @@ void sub_0205B3DC(u32 trainerId, u32 playerGender, MSGFMT *msgFmt) {
     }
 }
 
-u8 sub_0205B418(u32 trainerId, u32 playerGender, u32 choice) {
+int sub_0205B418(u32 trainerId, u32 playerGender, u32 choice) {
     int idx;
     int sprite;
 
@@ -55,7 +55,7 @@ u8 sub_0205B418(u32 trainerId, u32 playerGender, u32 choice) {
     return _020FCA44[sprite + playerGender * 8][0];
 }
 
-int sub_0205B438(int playerGender, int trclass) {
+static int sub_0205B438(int playerGender, int trclass) {
     int i;
 
     for (i = 0; i < 8; i++) {
