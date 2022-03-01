@@ -126,7 +126,7 @@ Static main
 	Object src/photo_album.o
 	Object asm/unk_0202FBCC.o
 	Object asm/unk_02030A98.o
-	Object asm/unk_0203170C.o
+	Object src/unk_0203170C.o
 	Object asm/unk_020318C8.o
 	Object asm/unk_02031904.o
 	Object asm/unk_02031AF0.o
