@@ -12,15 +12,15 @@ typedef struct {
     u8 unk668[6];
     SAVEDATA *saveData;
     u32 unk674;
-} Unk021E5A3C;
+} Ov50_021E5A3C;
 
 typedef struct {
     HeapID heap_id;
     u8 unk4[4];
     OVY_MANAGER *ov_mgr;
-    Unk021E5A3C *unkC;
+    Ov50_021E5A3C *unkC;
     void *unk10;
-} Unk021E5924;
+} Ov50_021E5924;
 
 BOOL ov50_021E5924(OVY_MANAGER *man);
 BOOL ov50_021E595C(OVY_MANAGER *man, int *state);
