@@ -2,12 +2,13 @@
 #include "save.h"
 
 u16 sub_02031AF0() { 
-    return SAVE_UNK_40;
-}
-void sub_02031AF4(u16* unk) {
-    MI_CpuFill8(unk, 0, SAVE_UNK_40);
+    return sizeof(UnkSaveStruct29);
 }
 
-u16* sub_02031B00(SAVEDATA* savedata) {
+void sub_02031AF4(u16* unk) {
+    MI_CpuFill8(unk, 0, sizeof(UnkSaveStruct29));
+}
+
+UnkSaveStruct29* sub_02031B00(SAVEDATA* savedata) {
     return SavArray_get(savedata, SAVE_UNK_29);
 }

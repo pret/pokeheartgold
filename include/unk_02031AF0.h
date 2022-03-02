@@ -3,8 +3,12 @@
 
 #include "save.h"
 
-u16 sub_02031AF0(); //02031AF0
+typedef struct {
+	u8 unk[0x24]; 
+} UnkSaveStruct29;
+
+u16 sub_02031AF0(void); 
 void sub_02031AF4(u16* unk);
-u16* sub_02031B00(SAVEDATA* savedata);
+UnkSaveStruct29* sub_02031B00(SAVEDATA* savedata);
 
 #endif //POKEHEARTGOLD_UNK_02031AF0_H
