@@ -38,20 +38,20 @@ BOOL ov50_021E5924(OVY_MANAGER *man) {
     return TRUE;
 }
 
-BOOL ov50_021E595C(OVY_MANAGER *man, u32 *a1) {
+BOOL ov50_021E595C(OVY_MANAGER *man, int *state) {
     Unk021E5924 *data = OverlayManager_GetData(man);
-    switch (*a1) {
+    switch (*state) {
     case 0:
-        *a1 = ov50_021E59CC(data);
+        *state = ov50_021E59CC(data);
         break;
     case 1:
-        *a1 = ov50_021E59E4(data);
+        *state = ov50_021E59E4(data);
         break;
     case 2:
-        *a1 = ov50_021E5A0C(data);
+        *state = ov50_021E5A0C(data);
         break;
     case 3:
-        *a1 = ov50_021E5A3C(data);
+        *state = ov50_021E5A3C(data);
         break;
     case 4:
     default:
@@ -98,7 +98,7 @@ static int ov50_021E5A3C(Unk021E5924 *a0) {
     ptr = sub_0202C9D8(a0->unkC->saveData);
     a0->unkC->unk4b = sub_0202C9E8(ptr);
     MI_CpuCopy8(sub_0202C9E4(ptr), a0->unkC->unk68, sizeof(a0->unkC->unk68));
-    return FALSE;
+    return 0;
 }
 
 static const OVY_MGR_TEMPLATE _021E5A8C[] = {

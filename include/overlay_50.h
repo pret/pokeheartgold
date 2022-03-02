@@ -15,7 +15,7 @@ typedef struct {
 } Unk021E5A3C;
 
 typedef struct {
-    u32 heap_id;
+    HeapID heap_id;
     u8 unk4[4];
     OVY_MANAGER *ov_mgr;
     Unk021E5A3C *unkC;
@@ -23,7 +23,7 @@ typedef struct {
 } Unk021E5924;
 
 BOOL ov50_021E5924(OVY_MANAGER *man);
-BOOL ov50_021E595C(OVY_MANAGER *man, u32 *a1);
+BOOL ov50_021E595C(OVY_MANAGER *man, int *state);
 BOOL ov50_021E59A8(OVY_MANAGER *man);
 
 #endif //POKEHEARTGOLD_OVERLAY_50_H
