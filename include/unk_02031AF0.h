@@ -4,7 +4,7 @@
 #include "save.h"
 
 typedef struct {
-	u8 unk[0x24]; 
+	u8 unk[0x28]; 
 } UnkSaveStruct29;
 
 u16 sub_02031AF0(void); 
