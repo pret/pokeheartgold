@@ -3315,7 +3315,7 @@ _0223F6A0:
 	str r0, [sp, #0x1c]
 _0223F6B4:
 	ldr r0, [sp, #0x20]
-	bl sub_020741B0
+	bl Pokemon_GetIconNaix
 	add r2, r0, #0
 	add r0, r4, #3
 	str r0, [sp]
@@ -3332,7 +3332,7 @@ _0223F6B4:
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [sp, #0x1c]
-	bl sub_020741B0
+	bl Pokemon_GetIconNaix
 	add r2, r0, #0
 	add r0, r4, #7
 	str r0, [sp]
@@ -3569,7 +3569,7 @@ ov84_0223F894: ; 0x0223F894
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl sub_02074484
+	bl Pokemon_GetIconPalette
 	add r1, r0, #0
 	ldr r0, [r4, #0x10]
 	bl sub_02024AA8

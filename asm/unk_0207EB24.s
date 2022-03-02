@@ -127,7 +127,7 @@ sub_0207EBE4: ; 0x0207EBE4
 	str r0, [sp, #0x10]
 	strh r1, [r3, r2]
 	add r7, r7, #4
-	bl sub_020741B0
+	bl Pokemon_GetIconNaix
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -160,7 +160,7 @@ sub_0207EBE4: ; 0x0207EBE4
 	str r0, [sp, #0x18]
 	ldrh r0, [r0, r4]
 	ldrb r1, [r7, r4]
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	add r0, r0, #3
 	str r0, [sp, #0x2c]
 	mov r0, #1
@@ -185,7 +185,7 @@ sub_0207EBE4: ; 0x0207EBE4
 	ldrb r1, [r7, r4]
 	ldrh r0, [r0, r4]
 	ldr r2, [sp, #0x14]
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	add r0, r0, #1
 	str r0, [sp, #0x2c]
 	add r2, sp, #0x1c
@@ -250,7 +250,7 @@ sub_0207ECE0: ; 0x0207ECE0
 	bl NNS_G2dGetImageLocation
 	str r0, [sp, #0x14]
 	add r0, r7, #0
-	bl sub_020741B0
+	bl Pokemon_GetIconNaix
 	add r1, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -295,7 +295,7 @@ _0207ED8E:
 	ldr r0, [sp, #0xc]
 	ldr r1, [sp, #8]
 	mov r2, #0
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	add r1, r0, #0
 	ldr r0, [r6, r4]
 	add r1, r1, #3
@@ -303,7 +303,7 @@ _0207ED8E:
 	ldr r0, [sp, #0xc]
 	ldr r1, [sp, #8]
 	mov r2, #0
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	add r2, r0, #0
 	mov r0, #0x85
 	add r1, r5, r4

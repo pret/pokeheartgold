@@ -239,7 +239,7 @@ sub_02082AEC: ; 0x02082AEC
 	add r0, r5, #0
 	add r1, r6, #0
 	mov r2, #0
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	lsl r0, r0, #5
 	add r0, r4, r0
 	mov r1, #0xc0
@@ -1915,7 +1915,7 @@ _02083812:
 	ldr r0, [r5, #4]
 	ldr r2, [r5, #8]
 	mov r1, #0
-	bl sub_020741BC
+	bl GetMonIconNaixEx
 	ldr r3, _020839AC ; =0x000004B8
 	add r1, r0, #0
 	mov r0, #0x12

@@ -2,6 +2,7 @@
 #include "save.h"
 #include "unk_0202CA24.h"
 #include "unk_0203170C.h"
+#include "math_util.h"
 
 u32 sub_0203170C(void) {
     return sizeof(Unk0203170C);

@@ -1997,7 +1997,7 @@ _021E68B4:
 	mov r0, #0xc9
 	mov r1, #0
 	add r2, r4, #0
-	bl sub_020741BC
+	bl GetMonIconNaixEx
 	str r6, [sp]
 	add r3, r0, #0
 	add r1, r5, #0
@@ -2023,7 +2023,7 @@ _021E68EA:
 	mov r0, #0xc9
 	mov r1, #0
 	add r2, r4, #0
-	bl sub_020741BC
+	bl GetMonIconNaixEx
 	str r6, [sp]
 	add r3, r0, #0
 	add r1, r5, #0
@@ -2176,7 +2176,7 @@ _021E69D8:
 	str r0, [sp, #0x30]
 	mov r0, #0xc9
 	add r2, r1, #0
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	mov r4, #0
 	str r0, [sp, #0x10]
 	str r4, [sp, #0x34]
@@ -2282,7 +2282,7 @@ ov113_021E6AE8: ; 0x021E6AE8
 	add r4, r1, #0
 	mov r0, #0xc9
 	mov r1, #0
-	bl sub_020741BC
+	bl GetMonIconNaixEx
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]

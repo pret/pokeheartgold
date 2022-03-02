@@ -42,7 +42,7 @@ u16 ScriptState_GetBattleTowerPrintProgress(SCRIPT_STATE* state);
 u16 ScriptState_GetVar404C(SCRIPT_STATE* state);
 void ScriptState_SetVar404C(SCRIPT_STATE* state, u16 value);
 u16 ScriptState_GetVar4052(SCRIPT_STATE* state);
-BOOL sub_02066E58(SCRIPT_STATE* state);
+BOOL ScriptState_IsInRocketTakeover(SCRIPT_STATE* state);
 u16 ScriptState_GetVar4057(SCRIPT_STATE* state);
 void ScriptState_SetVar4057(SCRIPT_STATE* state, u16 value);
 void ScriptState_UpdateBuenasPasswordSet(SCRIPT_STATE* state);

@@ -129,8 +129,8 @@ union MailPatternData
 {
     u16 raw;
     struct {
-        u16 unk_0_0:12;
-        u16 unk_0_C:4;
+        u16 icon:12;
+        u16 pal:4;
     };
 };
 
@@ -151,8 +151,8 @@ typedef struct Mail
     u8 author_version;
     u8 mail_type;
     u16 author_name[OT_NAME_LENGTH + 1];
-    union MailPatternData unk_18[3];
-    u16 unk_1E;
+    union MailPatternData mon_icons[3];
+    u16 forme_flags; // bitfield of three 5-bit values
     MAIL_MESSAGE unk_20[3];
 } MAIL;
 

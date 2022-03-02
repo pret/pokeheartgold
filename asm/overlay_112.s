@@ -7113,7 +7113,7 @@ _021E945C:
 	thumb_func_start ov112_021E9464
 ov112_021E9464: ; 0x021E9464
 	push {r3, lr}
-	bl sub_02074170
+	bl Boxmon_GetIconNaix
 	sub r0, r0, #7
 	pop {r3, pc}
 	.balign 4, 0
@@ -7124,7 +7124,7 @@ ov112_021E9470: ; 0x021E9470
 	push {r3, lr}
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_020741BC
+	bl GetMonIconNaixEx
 	sub r0, r0, #7
 	pop {r3, pc}
 	.balign 4, 0
@@ -10000,7 +10000,7 @@ ov112_021EAB78: ; 0x021EAB78
 	add r0, r6, #0
 	mov r1, #0
 	add r2, r7, #0
-	bl sub_020741BC
+	bl GetMonIconNaixEx
 	ldr r3, _021EABDC ; =0x0001EA64
 	add r1, r0, #0
 	mov r0, #0x9a
@@ -10058,7 +10058,7 @@ ov112_021EABE8: ; 0x021EABE8
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	add r1, r0, #0
 	ldr r0, [sp, #0x14]
 	add r1, r1, #5
@@ -28425,8 +28425,8 @@ ov112_021F5718: ; 0x021F5718
 	.byte 0x60, 0x60, 0x70, 0x70, 0x78, 0x78, 0x7C, 0x7C
 	.byte 0x7C, 0x7C, 0x78, 0x78, 0x70, 0x70, 0x60, 0x60
 
-	.public ov112_021F5728
-ov112_021F5728:
+	.public ov112_App_MainMenu_SelectOption_ConnectToPokewalker
+ov112_App_MainMenu_SelectOption_ConnectToPokewalker:
 	.word ov112_021E76CC, ov112_021E7830, ov112_021E7910, 0xFFFFFFFF
 ov112_021F5738:
 	.byte 0x00, 0x1C, 0x1C, 0x1C, 0x1C, 0x1C, 0x1C, 0x1C
