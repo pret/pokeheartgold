@@ -12933,7 +12933,7 @@ ov70_0223E0BC: ; 0x0223E0BC
 	str r0, [sp]
 	add r7, r3, #0
 	ldr r4, [sp, #0x28]
-	bl sub_020741BC
+	bl GetMonIconNaixEx
 	add r1, r0, #0
 	ldr r0, [sp, #0x24]
 	add r2, sp, #8
@@ -12956,7 +12956,7 @@ ov70_0223E0BC: ; 0x0223E0BC
 	str r0, [r4, #8]
 	ldr r0, [sp]
 	add r2, r6, #0
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	add r0, r0, #3
 	str r0, [r4, #4]
 	ldr r0, [sp, #4]

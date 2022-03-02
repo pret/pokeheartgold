@@ -363,14 +363,14 @@ _021E5C00: .word 56150
 
 	.rodata
 
-	.public ov36_021E5C04
-ov36_021E5C04:
+	.public ov36_App_MainMenu_SelectOption_Continue
+ov36_App_MainMenu_SelectOption_Continue:
 	.word ov36_021E599C, ov36_021E59B4, ov36_021E5A1C, 0xFFFFFFFF
 	.public ov36_021E5C14
 ov36_021E5C14:
 	.word ov36_021E5948, ov36_021E5960, ov36_021E5980, 0xFFFFFFFF
-	.public ov36_021E5C24
-ov36_021E5C24:
+	.public ov36_App_MainMenu_SelectOption_NewGame
+ov36_App_MainMenu_SelectOption_NewGame:
 	.word ov36_021E5900, ov36_021E5918, ov36_TitleScreen_SwitchToNewGame, 0xFFFFFFFF
 ov36_021E5C34:
 	.byte 0x02, 0x04, 0x07, 0x08, 0x52, 0x00, 0x18, 0x00, 0x03, 0x01, 0x0A, 0xFF, 0x07, 0x00, 0x00, 0x00

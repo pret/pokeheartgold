@@ -113,7 +113,7 @@ _02092280: .word 0xFFFFE0FF
 _02092284: .word 0x04001000
 	thumb_func_end sub_020921E4
 
-	.public ov74_0223B310
+	.public gApp_MainMenu
 
 	thumb_func_start sub_02092288
 sub_02092288: ; 0x02092288
@@ -128,13 +128,13 @@ sub_02092288: ; 0x02092288
 	add r0, r4, #0
 	bl DestroyHeap
 	ldr r0, _020922B0 ; =SDK_OVERLAY_OVY_74_ID
-	ldr r1, _020922B4 ; =ov74_0223B310
+	ldr r1, _020922B4 ; =gApp_MainMenu
 	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _020922B0: .word SDK_OVERLAY_OVY_74_ID
-_020922B4: .word ov74_0223B310
+_020922B4: .word gApp_MainMenu
 	thumb_func_end sub_02092288
 
 	thumb_func_start sub_020922B8

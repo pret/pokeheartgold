@@ -112,6 +112,6 @@ sub_02091634: ; 0x02091634
 
 	.rodata
 
-	.public _021065C4
-_021065C4:
+	.public gApp_MainMenu_SelectOption_NintendoWFCSetup
+gApp_MainMenu_SelectOption_NintendoWFCSetup:
 	.word sub_02091634, 0, 0, 0xFFFFFFFF

@@ -84,7 +84,7 @@
       "ovid": "SPRITE_GSWOMAN1",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_1BE",
+      "flag": "FLAG_HIDE_GOLDENROD_DEPT_STORE_5F_RETURN_FRUSTRATION_LADY",
       "scr": "_EV_scr_seq_T25R1005_006 + 1",
       "dirn": 2,
       "eye": 0,

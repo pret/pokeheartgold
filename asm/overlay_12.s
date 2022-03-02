@@ -7430,7 +7430,7 @@ _0223B474:
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	beq _0223B4FA
-	ble _0223B4D8
+	ble gApp_MainMenu_SelectOption_MigrateFromAgb
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0x18]
 	bl ov12_0223AA88
@@ -7465,14 +7465,14 @@ _0223B4AE:
 	mov r2, #5
 	bl GetItemAttr
 	cmp r0, #0x35
-	bne _0223B4D8
+	bne gApp_MainMenu_SelectOption_MigrateFromAgb
 	ldr r1, [sp, #8]
 	mov r0, #0x96
 	mul r0, r1
 	mov r1, #0x64
 	bl _s32_div_f
 	str r0, [sp, #8]
-_0223B4D8:
+gApp_MainMenu_SelectOption_MigrateFromAgb:
 	ldr r0, [sp, #0x18]
 	ldr r2, [sp, #8]
 	mov r1, #9
@@ -34060,7 +34060,7 @@ ov12_02248228: ; 0x02248228
 	str r0, [r5, #0xc]
 	bl sub_0200DC18
 	ldr r0, [sp, #0x18]
-	bl sub_020741B0
+	bl Pokemon_GetIconNaix
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -34115,7 +34115,7 @@ ov12_02248228: ; 0x02248228
 	bl sub_0200D734
 	str r0, [r5, #0x10]
 	ldr r0, [sp, #0x18]
-	bl sub_02074484
+	bl Pokemon_GetIconPalette
 	add r1, r0, #0
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0]
@@ -100202,7 +100202,7 @@ _02268324:
 	bl ov12_0223A8EC
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0xc]
-	bl sub_020741B0
+	bl Pokemon_GetIconNaix
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -100246,7 +100246,7 @@ _02268356:
 	add r6, r0, #0
 	bl sub_0200DDF4
 	ldr r0, [sp, #0xc]
-	bl sub_02074484
+	bl Pokemon_GetIconPalette
 	add r1, r0, #0
 	ldr r0, [r6]
 	bl sub_02024AA8
@@ -100345,7 +100345,7 @@ _02268454:
 	bl ov12_0223A8EC
 	add r4, r0, #0
 	ldr r0, [sp, #0xc]
-	bl sub_020741B0
+	bl Pokemon_GetIconNaix
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -100388,7 +100388,7 @@ _02268488:
 	add r4, r0, #0
 	bl sub_0200DDF4
 	ldr r0, [sp, #0xc]
-	bl sub_02074484
+	bl Pokemon_GetIconPalette
 	add r1, r0, #0
 	ldr r0, [r4]
 	bl sub_02024AA8

@@ -200,7 +200,7 @@ Static main
 	Object asm/unk_02058AEC.o
 	Object asm/unk_0205A44C.o
 	Object asm/unk_0205AC88.o
-	Object asm/unk_0205B3DC.o
+	Object src/unk_0205B3DC.o
 	Object asm/text_0205B4EC.o
 	Object asm/unk_0205B6E8.o
 	Object asm/unk_0205BB1C.o
@@ -224,7 +224,7 @@ Static main
 	Object asm/field_roamer.o
 	Object asm/unk_0206793C.o
 	Object asm/unk_02068DE0.o
-	Object asm/unk_02068F84.o
+	Object src/unk_02068F84.o
 	Object asm/unk_02068FC8.o
 	Object asm/unk_02069528.o
 	Object asm/unk_02069660.o
@@ -241,7 +241,7 @@ Static main
 	Object src/waza.o
 	Object src/trainer_data.o
 	Object src/pokemon_storage_system.o
-	Object asm/unk_02074120.o
+	Object src/pokemon_icon_idx.o
 	Object src/party.o
 	Object asm/unk_02074910.o
 	Object asm/unk_02074944.o
@@ -286,7 +286,7 @@ Static main
 	Object asm/unk_02091564.o
 	Object asm/unk_020915B0.o
 	Object asm/unk_02091664.o
-	Object asm/field_blackthorn_tutors.o
+	Object src/field_blackthorn_tutors.o
 	Object asm/unk_02091880.o
 	Object asm/unk_02091CDC.o
 	Object asm/unk_020921A4.o

@@ -4643,7 +4643,7 @@ _0221DF58:
 	mov r0, #0
 	add r1, r0, #0
 	add r2, r0, #0
-	bl sub_020741BC
+	bl GetMonIconNaixEx
 	mov r1, #0x18
 	add r2, r6, #0
 	mul r2, r1
@@ -4663,7 +4663,7 @@ _0221DF7A:
 	ldr r1, [sp, #4]
 	add r4, r0, #0
 	add r7, r1, r2
-	bl sub_020741B0
+	bl Pokemon_GetIconNaix
 	mov r1, #0x85
 	lsl r1, r1, #2
 	str r0, [r7, r1]
@@ -4940,7 +4940,7 @@ _0221E19C:
 	add r2, #0xb
 	ldrb r1, [r3, r1]
 	ldrb r2, [r3, r2]
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	add r1, r0, #0
 	ldr r0, [r7, r4]
 	bl sub_0200DD10

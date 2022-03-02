@@ -17889,7 +17889,7 @@ _022470CC:
 	add r1, r4, #0
 	bl GetPartyMonByIndex
 _022470D4:
-	bl sub_020741B0
+	bl Pokemon_GetIconNaix
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xa
@@ -18548,7 +18548,7 @@ ov83_022475EC: ; 0x022475EC
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl sub_02074484
+	bl Pokemon_GetIconPalette
 	add r1, r0, #0
 	ldr r0, [r4, #4]
 	bl sub_02024AA8

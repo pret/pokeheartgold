@@ -23221,7 +23221,7 @@ _021F2AF2:
 	pop {r3, r4, r5, r6, r7, pc}
 _021F2AF6:
 	ldr r0, [r5, #0x28]
-	bl sub_02066E58
+	bl ScriptState_IsInRocketTakeover
 	cmp r0, #0
 	beq _021F2B04
 	mov r0, #0x10
@@ -23638,7 +23638,7 @@ ov101_021F2DE8: ; 0x021F2DE8
 	push {r4, lr}
 	ldr r0, [r0, #0x28]
 	add r4, r1, #0
-	bl sub_02066E58
+	bl ScriptState_IsInRocketTakeover
 	cmp r0, #0
 	beq _021F2DFE
 	ldrb r0, [r4, #1]
@@ -25332,7 +25332,7 @@ ov101_021F3AA4: ; 0x021F3AA4
 	add r1, #0x4a
 	strb r0, [r1]
 	ldr r0, [r5, #0x28]
-	bl sub_02066E58
+	bl ScriptState_IsInRocketTakeover
 	cmp r0, #0
 	beq _021F3AEC
 	mov r0, #0x63
@@ -26368,7 +26368,7 @@ ov101_021F4274: ; 0x021F4274
 	cmp r0, #0
 	bne _021F42A4
 	ldr r0, [r5, #0x28]
-	bl sub_02066E58
+	bl ScriptState_IsInRocketTakeover
 	cmp r0, #0
 	beq _021F4292
 	mov r0, #0x9c
@@ -26906,7 +26906,7 @@ _021F4690:
 _021F46AE:
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0x2c]
-	bl sub_02066E58
+	bl ScriptState_IsInRocketTakeover
 	cmp r0, #0
 	beq _021F46BE
 	mov r0, #5

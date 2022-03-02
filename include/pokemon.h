@@ -12,6 +12,14 @@
 #include "sound_chatot.h"
 #include "filesystem.h"
 
+#define WOTBL_END             0xFFFF
+#define WOTBL_MAX                 21
+
+#define WOTBL_MOVEID_MASK     0x01FF
+#define WOTBL_MOVEID_SHIFT         0
+#define WOTBL_LEVEL_MASK      0xFE00
+#define WOTBL_LEVEL_SHIFT          9
+
 extern const s8 gNatureStatMods[NATURE_NUM][NUM_EV_STATS];
 
 void ZeroMonData(POKEMON * pokemon);
