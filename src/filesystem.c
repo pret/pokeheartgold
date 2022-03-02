@@ -118,7 +118,6 @@ u32 GetNarcMemberSizeByIdPair(NarcId narc_id, s32 file_idx) {
     u32 gmif_start = 0;
     u32 file_start = 0;
     u32 file_end = 0;
-    void *data;
     u16 num_files = 0;
 
     FS_InitFile(&file);

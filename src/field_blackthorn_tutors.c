@@ -66,9 +66,5 @@ u16 *GetEligibleLevelUpMoves(POKEMON *pokemon, HeapID heapId) {
 }
 
 BOOL sub_0209186C(const u16 *ptr) {
-    if (*ptr != WOTBL_END) {
-        return TRUE;
-    } else {
-        return FALSE;
-    }
+    return *ptr != WOTBL_END;
 }

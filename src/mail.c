@@ -134,7 +134,6 @@ void Mail_SetNewMessageDetails(MAIL *mail, u8 mailType, u8 mon_no, SAVEDATA *sav
             break;
         }
     }
-    //SaveSubstruct_UpdateCRC(SAVE_MAILBOX);
 }
 
 MAIL *CreateKenyaMail(POKEMON *pokemon, u8 mailType, u8 gender, STRING *name, u8 otId) {
