@@ -6,85 +6,11 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
-	.bss
-
-_021D4218:
-	.space 4
-
 	.text
 
-	thumb_func_start Daycare_GetBoxMonI
-Daycare_GetBoxMonI: ; 0x0206BDB0
-	push {r3, lr}
-	bl Sav2_DayCare_GetMonX
-	bl DayCareMon_GetBoxMon
-	pop {r3, pc}
-	thumb_func_end Daycare_GetBoxMonI
-
-	thumb_func_start Sav2_DayCare_CountMonsInDayCare
-Sav2_DayCare_CountMonsInDayCare: ; 0x0206BDBC
-	push {r3, r4, r5, r6, r7, lr}
-	mov r4, #0
-	add r6, r0, #0
-	add r5, r4, #0
-	mov r7, #5
-_0206BDC6:
-	add r0, r6, #0
-	add r1, r5, #0
-	bl Sav2_DayCare_GetMonX
-	bl DayCareMon_GetBoxMon
-	add r1, r7, #0
-	mov r2, #0
-	bl GetBoxMonData
-	cmp r0, #0
-	beq _0206BDE4
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-_0206BDE4:
-	add r0, r5, #1
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-	cmp r5, #2
-	blo _0206BDC6
-	add r0, r4, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end Sav2_DayCare_CountMonsInDayCare
-
-	thumb_func_start Sav2_DayCare_GetAvailableSlot
-Sav2_DayCare_GetAvailableSlot: ; 0x0206BDF4
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	ldr r0, _0206BE30 ; =_021D4218
-	mov r4, #0
-	str r5, [r0]
-	mov r6, #5
-	add r7, r4, #0
-_0206BE02:
-	add r0, r5, #0
-	add r1, r4, #0
-	bl Sav2_DayCare_GetMonX
-	bl DayCareMon_GetBoxMon
-	add r1, r6, #0
-	add r2, r7, #0
-	bl GetBoxMonData
-	cmp r0, #0
-	bne _0206BE1E
-	add r0, r4, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_0206BE1E:
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, #2
-	blo _0206BE02
-	mov r0, #0
-	mvn r0, r0
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_0206BE30: .word _021D4218
-	thumb_func_end Sav2_DayCare_GetAvailableSlot
+	.public Daycare_GetBoxMonI
+	.public Sav2_DayCare_CountMonsInDayCare
+	.public Sav2_DayCare_GetAvailableSlot
 
 	thumb_func_start DayCareMon_CopyFromPartySlot
 DayCareMon_CopyFromPartySlot: ; 0x0206BE34

@@ -4,7 +4,6 @@
 #include "daycare.h"
 #include "msgfmt.h"
 
-void sub_0205F89C(LocalMapObject* map_object, BOOL enable_bit);
 void Sav2_DayCare_PutMonIn(PARTY* party, u8 slot, DAYCARE* daycare, SAVEDATA* savedata);
 u16 Sav2_DayCare_RetrieveMon(PARTY* party, MSGFMT* msg_fmt, DAYCARE* daycare, u8 idx);
 u16 Sav2_DayCare_BufferMonNickAndRetrievalPrice(DAYCARE* daycare, u8 dc_mon_idx, MSGFMT* msg_fmt);
