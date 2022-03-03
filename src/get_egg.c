@@ -1,7 +1,10 @@
 #include "get_egg.h"
 #include "party.h"
 #include "game_stats.h"
-#include "constants/moves.h"
+#include "math_util.h"
+#include "constants/items.h"
+
+BOOL _IVList_Sample(DAYCARE *dayCare, u8 *a1, u8 *a2);
 
 BOXMON *Daycare_GetBoxMonI(DAYCARE *daycare, int idx) {
     return DayCareMon_GetBoxMon(Sav2_DayCare_GetMonX(daycare, idx));
@@ -216,4 +219,148 @@ u8 Sav2_DayCare_BufferGrowthAndNick(DAYCARE *dayCare, u32 slot, MSGFMT *msgFmt) 
 void Daycare_GetBothBoxMonsPtr(DAYCARE *dayCare, BOXMON **boxmons) {
     boxmons[0] = Daycare_GetBoxMonI(dayCare, 0);
     boxmons[1] = Daycare_GetBoxMonI(dayCare, 1);
+}
+
+int sub_0206C1E4(DAYCARE *dayCare) {
+    BOXMON *boxmons[2];
+    int i;
+    u8 everstone_idx;
+    u8 num_everstones;
+
+    Daycare_GetBothBoxMonsPtr(dayCare, boxmons);
+
+    num_everstones = 0;
+    everstone_idx = 0;
+    for (i = 0; i < 2; i++) {
+        if (GetBoxMonData(boxmons[i], MON_DATA_HELD_ITEM, NULL) == ITEM_EVERSTONE) {
+            everstone_idx = i;
+            num_everstones++;
+        }
+    }
+    if (num_everstones == 2) {
+        if ((LCRandom() % 2) == 0) {
+            everstone_idx = 1;
+        } else {
+            everstone_idx = 0;
+        }
+        if (LCRandom() >= 0x7FFF) {
+            return -1;
+        } else {
+            return everstone_idx;
+        }
+    } else if (num_everstones == 1) {
+        if (LCRandom() >= 0x7FFF) {
+            return -1;
+        } else {
+            return everstone_idx;
+        }
+    } else {
+        return -1;
+    }
+}
+
+void sub_0206C274(DAYCARE *dayCare) {
+    u32 pid;
+    int everstone_num;
+    int nature;
+    int i = 0;
+
+    everstone_num = sub_0206C1E4(dayCare);
+    if (everstone_num < 0) {
+        Sav2_DayCare_SetEggPID(dayCare, MTRandom());
+    } else {
+        nature = GetNatureFromPersonality(GetBoxMonData(Daycare_GetBoxMonI(dayCare, everstone_num), MON_DATA_PERSONALITY, NULL));
+        for (;;) {
+            pid = MTRandom();
+            if (nature == GetNatureFromPersonality(pid) && pid != 0) {
+                break;
+            }
+            if (++i > 2400) {
+                break;
+            }
+        }
+        Sav2_DayCare_SetEggPID(dayCare, pid);
+    }
+}
+
+void _IVList_Remove(u8 *ptr, int idx) {
+    u8 sp0[6];
+    int i, j;
+
+    ptr[idx] = 0xFF;
+    for (i = 0; i < 6; i++) {
+        sp0[i] = ptr[i];
+    }
+    j = 0;
+    for (i = 0; i < 6; i ++) {
+        if (sp0[i] != 0xFF) {
+            ptr[j] = sp0[i];
+            j++;
+        }
+    }
+}
+
+void InheritIVs(POKEMON *egg, DAYCARE *dayCare) {
+    u8 sp10[3];
+    u8 spA[6];
+    u8 sp7[3];
+    u8 sp6;
+    u8 sp5;
+    u8 sp4;
+    u8 i;
+    u8 r6;
+    u8 j;
+    BOXMON *boxmon;
+
+    for (i = 0; i < 6; i++) {
+        spA[i] = i;
+    }
+    if (_IVList_Sample(dayCare, &sp5, &sp4)) {
+        sp10[0] = sp5;
+        r6 = 1;
+        _IVList_Remove(spA, sp5);
+        sp7[0] = sp4;
+    } else {
+        r6 = 0;
+    }
+    for (i = r6; i < 3; i++) {
+        j = (LCRandom() % (6 - i));
+        sp10[i] = spA[j];
+        _IVList_Remove(spA, j);
+    }
+    GF_ASSERT(sp10[0] != sp10[1]);
+    GF_ASSERT(sp10[1] != sp10[2]);
+    GF_ASSERT(sp10[2] != sp10[0]);
+    for (i = r6; i < 3; i++) {
+        sp7[i] = LCRandom() % 2;
+    }
+    for (i = 0; i < 3; i++) {
+        boxmon = Daycare_GetBoxMonI(dayCare, sp7[i]);
+        switch (sp10[i]) {
+        case 0:
+            sp6 = GetBoxMonData(boxmon, MON_DATA_HP_IV, NULL);
+            SetMonData(egg, MON_DATA_HP_IV, &sp6);
+            break;
+        case 1:
+            sp6 = GetBoxMonData(boxmon, MON_DATA_ATK_IV, NULL);
+            SetMonData(egg, MON_DATA_ATK_IV, &sp6);
+            break;
+        case 2:
+            sp6 = GetBoxMonData(boxmon, MON_DATA_DEF_IV, NULL);
+            SetMonData(egg, MON_DATA_DEF_IV, &sp6);
+            break;
+        case 3:
+            sp6 = GetBoxMonData(boxmon, MON_DATA_SPEED_IV, NULL);
+            SetMonData(egg, MON_DATA_SPEED_IV, &sp6);
+            break;
+        case 4:
+            sp6 = GetBoxMonData(boxmon, MON_DATA_SPATK_IV, NULL);
+            SetMonData(egg, MON_DATA_SPATK_IV, &sp6);
+            break;
+        case 5:
+            sp6 = GetBoxMonData(boxmon, MON_DATA_SPDEF_IV, NULL);
+            SetMonData(egg, MON_DATA_SPDEF_IV, &sp6);
+            break;
+        }
+    }
 }
