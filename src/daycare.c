@@ -28,8 +28,8 @@ u32 DayCareMon_GetSteps(DAYCAREMON* dcmon) {
     return dcmon->steps;
 }
 
-MAIL* DayCareMail_GetCapsule(DAYCAREMAIL* dcmail) {
-    return &dcmail->seal;
+MAIL* DayCareMail_GetMailPtr(DAYCAREMAIL* dcmail) {
+    return &dcmail->mail;
 }
 
 BOOL Sav2_DayCare_HasEgg(DAYCARE* daycare) {

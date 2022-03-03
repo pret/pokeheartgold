@@ -258,10 +258,10 @@
 .public ClearTempFieldEventData
 .public ClearWindowTilemapAndCopyToVram
 .public ConvertUIntToDecimalString
-.public CopyBoxPokemonToBoxPokemon
+.public CopyPokemonToBoxPokemon
 .public CopyBoxPokemonToPokemon
 .public CopyCapsule
-.public CopyPokemonToBoxPokemon
+.public CopyBoxPokemonToBoxPokemon
 .public CopyPokemonToPokemon
 .public CopyStringToU16Array
 .public CopyU16ArrayToString
@@ -288,7 +288,7 @@
 .public DGT_Hash1GetDigest_R
 .public DGT_Hash1Reset
 .public DGT_Hash1SetSource
-.public DayCareMail_GetCapsule
+.public DayCareMail_GetMailPtr
 .public DayCareMon_AddSteps
 .public DayCareMon_Copy
 .public DayCareMon_GetBoxMon

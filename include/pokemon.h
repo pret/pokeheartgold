@@ -20,6 +20,12 @@
 #define WOTBL_LEVEL_MASK      0xFE00
 #define WOTBL_LEVEL_SHIFT          9
 
+#define WOTBL_MOVE(x) ((u16)(((x) & WOTBL_MOVEID_MASK) >> WOTBL_MOVEID_SHIFT))
+#define WOTBL_LVL(x) ((u8)(((x) & WOTBL_LEVEL_MASK) >> WOTBL_LEVEL_SHIFT))
+
+#define WAZA_APPEND_FULL    0xFFFFu
+#define WAZA_APPEND_KNOWN   0xFFFEu
+
 extern const s8 gNatureStatMods[NATURE_NUM][NUM_EV_STATS];
 
 void ZeroMonData(POKEMON * pokemon);
@@ -94,8 +100,8 @@ u8 Party_GetMaxLevel(PARTY * party);
 u16 SpeciesToSinnohDexNo(u16 species);
 u16 SinnohDexNoToSpecies(u16 sinnoh_dex);
 void CopyPokemonToPokemon(const POKEMON * src, POKEMON * dest);
-void CopyPokemonToBoxPokemon(const POKEMON * src, BOXMON * dest);
 void CopyBoxPokemonToBoxPokemon(const BOXMON * src, BOXMON * dest);
+void CopyPokemonToBoxPokemon(const POKEMON * src, BOXMON * dest);
 s8 MonGetFlavorPreference(POKEMON * pokemon, int flavor);
 s8 BoxMonGetFlavorPreference(BOXMON * boxmon, int flavor);
 s8 GetFlavorPreferenceFromPID(u32 personality, int flavor);
