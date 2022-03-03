@@ -146,3 +146,74 @@ u16 Sav2_DayCare_RetrieveMon(PARTY *party, MSGFMT *msgFmt, DAYCARE *daycare, u8 
     Sav2_DayCare_Compaction(daycare);
     return ret;
 }
+
+u32 GetDayCareUpdatedLevel(BOXMON *boxmon, u32 steps) {
+    POKEMON *pokemon_tmp;
+    BOXMON *boxmon_tmp;
+    u32 exp;
+    u32 level;
+
+    pokemon_tmp = AllocMonZeroed(11);
+    boxmon_tmp = Mon_GetBoxMon(pokemon_tmp);
+    CopyBoxPokemonToBoxPokemon(boxmon, boxmon_tmp);
+    exp = GetBoxMonData(boxmon_tmp, MON_DATA_EXPERIENCE, NULL);
+    exp += steps;
+    SetBoxMonData(boxmon_tmp, MON_DATA_EXPERIENCE, &exp);
+    level = CalcBoxMonLevel(boxmon_tmp);
+    FreeToHeap(pokemon_tmp);
+    return level;
+}
+
+int DayCareMon_CalcLevelGrowth(DAYCAREMON *daycareMon) {
+    BOXMON *boxmon;
+    u8 cur_level;
+    u8 new_level;
+
+    boxmon = DayCareMon_GetBoxMon(daycareMon);
+    cur_level = CalcBoxMonLevel(boxmon);
+    new_level = GetDayCareUpdatedLevel(boxmon, DayCareMon_GetSteps(daycareMon));
+    return new_level - cur_level;
+}
+
+u8 DayCareMon_BufferLevelGrowthAndNick(DAYCAREMON *daycareMon, MSGFMT *msgFmt) {
+    BOXMON *boxmon;
+    int levelGrowth;
+
+    boxmon = DayCareMon_GetBoxMon(daycareMon);
+    levelGrowth = DayCareMon_CalcLevelGrowth(daycareMon);
+    BufferIntegerAsString(msgFmt, 1, levelGrowth, 3, STRCONVMODE_LEFT_ALIGN, TRUE);
+    BufferBoxMonNickname(msgFmt, 0, boxmon);
+    return levelGrowth;
+}
+
+u16 DayCareMon_BufferNickAndRetrievalPrice(DAYCAREMON *daycareMon, MSGFMT *msgFmt) {
+    BOXMON *boxmon;
+    u16 levelGrowth;
+    u16 price;
+    boxmon = DayCareMon_GetBoxMon(daycareMon);
+    levelGrowth = DayCareMon_CalcLevelGrowth(daycareMon);
+    BufferBoxMonNickname(msgFmt, 0, boxmon);
+    price = (levelGrowth + 1) * 100;
+    BufferIntegerAsString(msgFmt, 1, price, 5, STRCONVMODE_LEFT_ALIGN, TRUE);
+    return price;
+}
+
+u16 Sav2_DayCare_BufferMonNickAndRetrievalPrice(DAYCARE *dayCare, u8 slot, MSGFMT *msgFmt) {
+    return DayCareMon_BufferNickAndRetrievalPrice(Sav2_DayCare_GetMonX(dayCare, slot), msgFmt);
+}
+
+u8 Sav2_DayCare_BufferGrowthAndNick(DAYCARE *dayCare, u32 slot, MSGFMT *msgFmt) {
+    DAYCAREMON *daycareMon;
+
+    daycareMon = Sav2_DayCare_GetMonX(dayCare, slot);
+    if (GetBoxMonData(DayCareMon_GetBoxMon(daycareMon), MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
+        return DayCareMon_BufferLevelGrowthAndNick(daycareMon, msgFmt);
+    } else {
+        return 0;
+    }
+}
+
+void Daycare_GetBothBoxMonsPtr(DAYCARE *dayCare, BOXMON **boxmons) {
+    boxmons[0] = Daycare_GetBoxMonI(dayCare, 0);
+    boxmons[1] = Daycare_GetBoxMonI(dayCare, 1);
+}
