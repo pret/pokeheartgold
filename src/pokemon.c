@@ -3764,14 +3764,11 @@ void WildMonSetRandomHeldItem(struct Pokemon * pokemon, u32 a1, u32 a2) {
     }
 }
 
-BOOL GetBoxMonTMHMCompat(BOXMON *boxmon, u32 tmhm);
-BOOL GetTMHMCompatBySpeciesAndForme(u16 species, u32 forme, u32 tmhm);
-
-BOOL GetMonTMHMCompat(POKEMON *pokemon, u32 tmhm) {
+BOOL GetMonTMHMCompat(POKEMON *pokemon, u8 tmhm) {
     return GetBoxMonTMHMCompat(&pokemon->box, tmhm);
 }
 
-BOOL GetBoxMonTMHMCompat(BOXMON *boxmon, u32 tmhm) {
+BOOL GetBoxMonTMHMCompat(BOXMON *boxmon, u8 tmhm) {
     u16 species;
     u32 forme;
 
@@ -3780,7 +3777,7 @@ BOOL GetBoxMonTMHMCompat(BOXMON *boxmon, u32 tmhm) {
     return GetTMHMCompatBySpeciesAndForme(species, forme, tmhm);
 }
 
-BOOL GetTMHMCompatBySpeciesAndForme(u16 species, u32 forme, u32 tmhm) {
+BOOL GetTMHMCompatBySpeciesAndForme(u16 species, u32 forme, u8 tmhm) {
     u32 mask;
     enum BaseStat baseStat;
     if (species == SPECIES_EGG) {
