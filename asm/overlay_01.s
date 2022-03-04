@@ -3891,7 +3891,7 @@ ov01_021E788C: ; 0x021E788C
 	bl Sav2_DayCare_get
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_0206CD1C
+	bl HandleDayCareStep
 	cmp r0, #1
 	bne _021E78CE
 	ldr r0, [r4, #0xc]

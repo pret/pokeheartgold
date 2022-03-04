@@ -29298,7 +29298,7 @@
 .public Sav2_DayCare_BufferMonNickAndRetrievalPrice
 .public Sav2_DayCare_BufferGrowthAndNick
 .public Sav2_DayCare_ResetEggStats
-.public sub_0206CD1C
+.public HandleDayCareStep
 .public sub_0206CE44
 .public Sav2_DayCare_BufferStoredMonNicks
 .public Sav2_DayCare_BufferMonStats

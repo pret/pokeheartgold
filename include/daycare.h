@@ -26,17 +26,17 @@ typedef struct DAYCARE {
 
 u32 Sav2_Daycare_sizeof(void);
 void Sav2_Daycare_init(DAYCARE* daycare);
-DAYCAREMON* Sav2_DayCare_GetMonX(DAYCARE* daycare, s32 i);
+DAYCAREMON* Sav2_DayCare_GetMonX(DAYCARE* daycare, int i);
 BOXMON* DayCareMon_GetBoxMon(DAYCAREMON* dcmon);
 DAYCAREMAIL* DayCareMon_GetExtras(DAYCAREMON* dcmon);
-u32 DayCareMon_GetSteps(DAYCAREMON* dcmon);
+int DayCareMon_GetSteps(DAYCAREMON* dcmon);
 MAIL* DayCareMail_GetMailPtr(DAYCAREMAIL* dcmail);
 u32 Sav2_DayCare_GetEggPID(DAYCARE* daycare);
 u8 Sav2_DayCare_GetEggCycleCounter(DAYCARE* daycare);
 void DayCareMon_SetSteps(DAYCAREMON* dcmon, u32 steps);
 void DayCareMon_AddSteps(DAYCAREMON* dcmon, u32 steps);
 void Sav2_DayCare_SetEggPID(DAYCARE* daycare, u32 pid);
-void Sav2_DayCare_SetEggCycleCounter(DAYCARE* daycare, u8 count);
+void Sav2_DayCare_SetEggCycleCounter(DAYCARE* daycare, int count);
 BOOL Sav2_DayCare_MasudaCheck(DAYCARE* daycare);
 void DayCareMon_Copy(DAYCAREMON* dest, const DAYCAREMON* src);
 void DayCareMon_Extras_init(DAYCAREMAIL* mail);

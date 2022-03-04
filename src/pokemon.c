@@ -1801,7 +1801,7 @@ int GetPersonalAttr(const BASE_STATS *baseStats, BaseStat attr) {
     case BASE_EGG_GROUP_1:
         ret = baseStats->eggGroups[0];
         break;
-    case GASE_EGG_GROUP_2:
+    case BASE_EGG_GROUP_2:
         ret = baseStats->eggGroups[1];
         break;
     case BASE_ABILITY_1:
