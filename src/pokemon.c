@@ -2764,7 +2764,7 @@ BOXMON * Mon_GetBoxMon(POKEMON * pokemon) {
     return &pokemon->box;
 }
 
-BOOL sub_02070DB4(POKEMON * pokemon) {
+BOOL Pokemon_TryLevelUp(POKEMON * pokemon) {
     u16 species = (u16)GetMonData(pokemon, MON_DATA_SPECIES, NULL);
     u8 level = (u8)(GetMonData(pokemon, MON_DATA_LEVEL, NULL) + 1);
     u32 exp = GetMonData(pokemon, MON_DATA_EXPERIENCE, NULL);

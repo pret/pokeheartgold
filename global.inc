@@ -29327,7 +29327,7 @@
 .public sub_02070D84
 .public sub_02070D90
 .public sub_02070D94
-.public sub_02070DB4
+.public Pokemon_TryLevelUp
 .public sub_02071FDC
 .public sub_0207204C
 .public sub_020720D4

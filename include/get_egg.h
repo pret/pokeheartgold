@@ -2,18 +2,23 @@
 #define POKEHEARTGOLD_GET_EGG_H
 
 #include "daycare.h"
-#include "msgfmt.h"
+#include "script.h"
 
-void Sav2_DayCare_PutMonIn(PARTY* party, u8 slot, DAYCARE* daycare, SAVEDATA* savedata);
-u16 Sav2_DayCare_RetrieveMon(PARTY* party, MSGFMT* msg_fmt, DAYCARE* daycare, u8 idx);
-u16 Sav2_DayCare_BufferMonNickAndRetrievalPrice(DAYCARE* daycare, u8 dc_mon_idx, MSGFMT* msg_fmt);
-u8 Sav2_DayCare_BufferGrowthAndNick(DAYCARE* daycare, u32 dc_mon_idx, MSGFMT* msg_fmt);
-void Sav2_DayCare_ResetEggStats(DAYCARE* daycare);
-void GiveEggToPlayer(DAYCARE* daycare, PARTY* party, PLAYERPROFILE* profile);
-void Sav2_DayCare_BufferStoredMonNicks(DAYCARE* daycare, MSGFMT* msg_fmt);
-void Sav2_DayCare_BufferMonStats(DAYCARE* dayCare, u32 nickname_idx, u32 level_idx, u32 gender_idx, u8 slot, MSGFMT* msgFmt);
-u16 Sav2_DayCare_BufferTailMonNick(DAYCARE* daycare, MSGFMT* msg_fmt);
-u8 Sav2_DayCare_GetState(DAYCARE* daycare);
-u8 Sav2_DayCare_CalcCompatibility(DAYCARE* dayCare);
+void Sav2_DayCare_PutMonIn(PARTY *party, u8 partyIdx, DAYCARE *dayCare, SAVEDATA *saveData);
+u16 Sav2_DayCare_RetrieveMon(PARTY *party, MSGFMT *msgFmt, DAYCARE *daycare, u8 whomst);
+int DayCareMon_CalcLevelGrowth(DAYCAREMON *daycareMon);
+u16 Sav2_DayCare_BufferMonNickAndRetrievalPrice(DAYCARE *dayCare, u8 slot, MSGFMT *msgFmt);
+u8 Sav2_DayCare_BufferGrowthAndNick(DAYCARE *dayCare, u32 slot, MSGFMT *msgFmt);
+void Sav2_DayCare_ResetEggStats(DAYCARE *dayCare);
+void SetEggStats(POKEMON *pokemon, int species, u8 metLocation, PLAYERPROFILE *profile, int a4, int a5);
+void GiveEggToPlayer(DAYCARE *dayCare, PARTY *party, PLAYERPROFILE* profile);
+BOOL HandleDayCareStep(DAYCARE *dayCare, PARTY *party, FieldSystem *fsys);
+POKEMON *sub_0206CE44(PARTY *party);
+void Sav2_DayCare_BufferStoredMonNicks(DAYCARE *dayCare, MSGFMT *msgFmt);
+void Sav2_DayCare_BufferMonStats(DAYCARE *dayCare, u32 nickname_idx, u32 level_idx, u32 gender_idx, u8 slot, MSGFMT *msgFmt);
+u16 Sav2_DayCare_BufferTailMonNick(DAYCARE *dayCare, MSGFMT *msgFmt);
+u8 Sav2_DayCare_GetState(DAYCARE *dayCare);
+u8 Sav2_DayCare_CalcCompatibility(DAYCARE *dayCare);
+void sub_0206D328(POKEMON *pokemon, HeapID heapId);
 
 #endif

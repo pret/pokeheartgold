@@ -150,7 +150,7 @@ void sub_02070D84(s32 trainer_class, s32 a1, struct UnkStruct_02070D3C *a2);
 u32 sub_02070D90(void);
 u32 sub_02070D94(void);
 BOXMON * Mon_GetBoxMon(POKEMON * pokemon);
-BOOL sub_02070DB4(POKEMON * pokemon);
+BOOL Pokemon_TryLevelUp(POKEMON * pokemon);
 void InitBoxMonMoveset(BOXMON * boxmon);
 void MonSetMoveInSlot_ResetPpUp(POKEMON* pokemon, u16 move, u8 slot);
 u32 MonTryLearnMoveOnLevelUp(POKEMON * pokemon, int * last_i, u16 * sp0);
