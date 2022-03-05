@@ -62,7 +62,7 @@ void BufferTrainerName(MSGFMT *msgFmt, u32 fieldno, u32 trainerId);
 void BufferFrontierOpponentName(MSGFMT *msgFmt, u32 fieldno, u32 opponentId);
 void BufferTrainerNameFromDataStruct(MSGFMT *msgFmt, u32 fieldno, TRAINER *trainer);
 void BufferDecorationName(MSGFMT *msgFmt, u32 fieldno, u32 decorationId);
-void BufferGenderSymbol(MSGFMT *msgFmt, u32 fieldno, u32 gender);
+void BufferGenderSymbol(MSGFMT *msgFmt, u32 fieldno, u8 gender);
 void BufferPCBoxName(MSGFMT *msgFmt, u32 fieldno, PC_STORAGE *pcStorage, u32 boxno);
 void BufferCountryName(MSGFMT *msgFmt, u32 fieldno, u32 countryId);
 void BufferCityName(MSGFMT *msgFmt, u32 fieldno, u32 countryId, u32 cityId);

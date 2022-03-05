@@ -258,10 +258,10 @@
 .public ClearTempFieldEventData
 .public ClearWindowTilemapAndCopyToVram
 .public ConvertUIntToDecimalString
-.public CopyBoxPokemonToBoxPokemon
+.public CopyPokemonToBoxPokemon
 .public CopyBoxPokemonToPokemon
 .public CopyCapsule
-.public CopyPokemonToBoxPokemon
+.public CopyBoxPokemonToBoxPokemon
 .public CopyPokemonToPokemon
 .public CopyStringToU16Array
 .public CopyU16ArrayToString
@@ -288,7 +288,7 @@
 .public DGT_Hash1GetDigest_R
 .public DGT_Hash1Reset
 .public DGT_Hash1SetSource
-.public DayCareMail_GetCapsule
+.public DayCareMail_GetMailPtr
 .public DayCareMon_AddSteps
 .public DayCareMon_Copy
 .public DayCareMon_GetBoxMon
@@ -29298,7 +29298,7 @@
 .public Sav2_DayCare_BufferMonNickAndRetrievalPrice
 .public Sav2_DayCare_BufferGrowthAndNick
 .public Sav2_DayCare_ResetEggStats
-.public sub_0206CD1C
+.public HandleDayCareStep
 .public sub_0206CE44
 .public Sav2_DayCare_BufferStoredMonNicks
 .public Sav2_DayCare_BufferMonStats
@@ -29327,7 +29327,7 @@
 .public sub_02070D84
 .public sub_02070D90
 .public sub_02070D94
-.public sub_02070DB4
+.public Pokemon_TryLevelUp
 .public sub_02071FDC
 .public sub_0207204C
 .public sub_020720D4

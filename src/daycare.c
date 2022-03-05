@@ -12,7 +12,7 @@ void Sav2_Daycare_init(DAYCARE* daycare) {
     daycare->egg_cycles = 0;
 }
 
-DAYCAREMON* Sav2_DayCare_GetMonX(DAYCARE* daycare, s32 i) {
+DAYCAREMON* Sav2_DayCare_GetMonX(DAYCARE* daycare, int i) {
     return &daycare->mons[i];
 }
 
@@ -24,12 +24,12 @@ DAYCAREMAIL* DayCareMon_GetExtras(DAYCAREMON* dcmon) {
     return &dcmon->mail;
 }
 
-u32 DayCareMon_GetSteps(DAYCAREMON* dcmon) {
+int DayCareMon_GetSteps(DAYCAREMON* dcmon) {
     return dcmon->steps;
 }
 
-MAIL* DayCareMail_GetCapsule(DAYCAREMAIL* dcmail) {
-    return &dcmail->seal;
+MAIL* DayCareMail_GetMailPtr(DAYCAREMAIL* dcmail) {
+    return &dcmail->mail;
 }
 
 BOOL Sav2_DayCare_HasEgg(DAYCARE* daycare) {
@@ -56,7 +56,7 @@ void Sav2_DayCare_SetEggPID(DAYCARE* daycare, u32 pid) {
     daycare->egg_pid = pid;
 }
 
-void Sav2_DayCare_SetEggCycleCounter(DAYCARE* daycare, u8 count) {
+void Sav2_DayCare_SetEggCycleCounter(DAYCARE* daycare, int count) {
     daycare->egg_cycles = count;
 }
 

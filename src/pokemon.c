@@ -1801,7 +1801,7 @@ int GetPersonalAttr(const BASE_STATS *baseStats, BaseStat attr) {
     case BASE_EGG_GROUP_1:
         ret = baseStats->eggGroups[0];
         break;
-    case GASE_EGG_GROUP_2:
+    case BASE_EGG_GROUP_2:
         ret = baseStats->eggGroups[1];
         break;
     case BASE_ABILITY_1:
@@ -2764,7 +2764,7 @@ BOXMON * Mon_GetBoxMon(POKEMON * pokemon) {
     return &pokemon->box;
 }
 
-BOOL sub_02070DB4(POKEMON * pokemon) {
+BOOL Pokemon_TryLevelUp(POKEMON * pokemon) {
     u16 species = (u16)GetMonData(pokemon, MON_DATA_SPECIES, NULL);
     u8 level = (u8)(GetMonData(pokemon, MON_DATA_LEVEL, NULL) + 1);
     u32 exp = GetMonData(pokemon, MON_DATA_EXPERIENCE, NULL);
@@ -3036,17 +3036,6 @@ u16 GetEggSpecies(u16 species) {
     }
 }
 
-#define WOTBL_END           0xFFFF
-#define WOTBL_MOVE_MASK     0x01FF
-#define WOTBL_MOVE_SHIFT         0
-#define WOTBL_LVL_MASK      0xFE00
-#define WOTBL_LVL_SHIFT          9
-#define WOTBL_MOVE(x) ((u16)(((x) & WOTBL_MOVE_MASK) >> WOTBL_MOVE_SHIFT))
-#define WOTBL_LVL(x) ((u8)(((x) & WOTBL_LVL_MASK) >> WOTBL_LVL_SHIFT))
-
-#define WAZA_APPEND_FULL    0xFFFFu
-#define WAZA_APPEND_KNOWN   0xFFFEu
-
 void InitBoxMonMoveset(BOXMON * boxmon) {
     BOOL decry;
     u16 * wotbl;
@@ -3062,7 +3051,7 @@ void InitBoxMonMoveset(BOXMON * boxmon) {
     level = (u8)CalcBoxMonLevel(boxmon);
     LoadWotbl_HandleAlternateForme(species, (int)forme, wotbl);
     for (i = 0; wotbl[i] != WOTBL_END; i++) {
-        if ((wotbl[i] & WOTBL_LVL_MASK) > (level << WOTBL_LVL_SHIFT))
+        if ((wotbl[i] & WOTBL_LEVEL_MASK) > (level << WOTBL_LEVEL_SHIFT))
             break;
         move = WOTBL_MOVE(wotbl[i]);
         if (TryAppendBoxMonMove(boxmon, move) == WAZA_APPEND_FULL)
@@ -3164,14 +3153,14 @@ u32 MonTryLearnMoveOnLevelUp(POKEMON * pokemon, int * last_i, u16 * sp0) {
         FreeToHeap(wotbl);
         return 0;
     }
-    while ((wotbl[*last_i] & WOTBL_LVL_MASK) != (level << WOTBL_LVL_SHIFT)) {
+    while ((wotbl[*last_i] & WOTBL_LEVEL_MASK) != (level << WOTBL_LEVEL_SHIFT)) {
         (*last_i)++;
         if (wotbl[*last_i] == WOTBL_END) {
             FreeToHeap(wotbl);
             return 0;
         }
     }
-    if ((wotbl[*last_i] & WOTBL_LVL_MASK) == (level << WOTBL_LVL_SHIFT)) {
+    if ((wotbl[*last_i] & WOTBL_LEVEL_MASK) == (level << WOTBL_LEVEL_SHIFT)) {
         *sp0 = WOTBL_MOVE(wotbl[*last_i]);
         (*last_i)++;
         ret = TryAppendMonMove(pokemon, *sp0);
@@ -3288,12 +3277,12 @@ void CopyPokemonToPokemon(const POKEMON *src, POKEMON *dest) {
     *dest = *src;
 }
 
-void CopyPokemonToBoxPokemon(const POKEMON *src, BOXMON *dest) {
-    *dest = src->box;
-}
-
 void CopyBoxPokemonToBoxPokemon(const BOXMON *src, BOXMON *dest) {
     *dest = *src;
+}
+
+void CopyPokemonToBoxPokemon(const POKEMON *src, BOXMON *dest) {
+    *dest = src->box;
 }
 
 s8 MonGetFlavorPreference(POKEMON * pokemon, int flavor) {
@@ -3775,14 +3764,11 @@ void WildMonSetRandomHeldItem(struct Pokemon * pokemon, u32 a1, u32 a2) {
     }
 }
 
-BOOL GetBoxMonTMHMCompat(BOXMON *boxmon, u32 tmhm);
-BOOL GetTMHMCompatBySpeciesAndForme(u16 species, u32 forme, u32 tmhm);
-
-BOOL GetMonTMHMCompat(POKEMON *pokemon, u32 tmhm) {
+BOOL GetMonTMHMCompat(POKEMON *pokemon, u8 tmhm) {
     return GetBoxMonTMHMCompat(&pokemon->box, tmhm);
 }
 
-BOOL GetBoxMonTMHMCompat(BOXMON *boxmon, u32 tmhm) {
+BOOL GetBoxMonTMHMCompat(BOXMON *boxmon, u8 tmhm) {
     u16 species;
     u32 forme;
 
@@ -3791,7 +3777,7 @@ BOOL GetBoxMonTMHMCompat(BOXMON *boxmon, u32 tmhm) {
     return GetTMHMCompatBySpeciesAndForme(species, forme, tmhm);
 }
 
-BOOL GetTMHMCompatBySpeciesAndForme(u16 species, u32 forme, u32 tmhm) {
+BOOL GetTMHMCompatBySpeciesAndForme(u16 species, u32 forme, u8 tmhm) {
     u32 mask;
     enum BaseStat baseStat;
     if (species == SPECIES_EGG) {

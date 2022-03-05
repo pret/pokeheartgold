@@ -332,7 +332,7 @@ void BufferDecorationName(MSGFMT *msgFmt, u32 fieldno, u32 decorationId) {
     }
 }
 
-void BufferGenderSymbol(MSGFMT *msgFmt, u32 fieldno, u32 gender) {
+void BufferGenderSymbol(MSGFMT *msgFmt, u32 fieldno, u8 gender) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0040_bin, msgFmt->heapId);
     switch (gender) {
     case PLAYER_GENDER_MALE:

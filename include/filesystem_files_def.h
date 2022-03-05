@@ -236,7 +236,7 @@ typedef enum NarcId
     NARC_a_2_2_6                                            = 228,
     NARC_a_2_2_7                                            = 229,
     NARC_a_2_2_8                                            = 230,
-    NARC_a_2_2_9                                            = 231,
+    NARC_fielddata_sodateya_kowaza_list                     = 231,
     NARC_a_2_3_0                                            = 232,
     NARC_a_2_3_1                                            = 233,
     NARC_a_2_3_2                                            = 234,

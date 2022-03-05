@@ -29249,7 +29249,7 @@ _02245BD4:
 	pop {r3, r4, r5, r6, r7, pc}
 _02245BE8:
 	add r0, r6, #0
-	bl sub_02070DB4
+	bl Pokemon_TryLevelUp
 	cmp r0, #0
 	beq _02245C18
 	ldr r1, [r4, #4]
