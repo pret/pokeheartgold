@@ -1213,11 +1213,11 @@ ov41_022466F0: ; 0x022466F0
 	str r0, [r2]
 	str r1, [r2, #0x40]
 	mov r1, #1
-	bl sub_02027000
+	bl GF_3DVramMan_InitFrameTexVramManager
 	mov r0, #1
 	lsl r0, r0, #0xe
 	mov r1, #1
-	bl sub_02027008
+	bl GF_3DVramMan_InitFramePlttVramManager
 	pop {r3, pc}
 	.balign 4, 0
 _02246764: .word 0x04000008

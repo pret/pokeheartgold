@@ -402,7 +402,7 @@ ov57_02237B20: ; 0x02237B20
 	mov r0, #0x96
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026F54
+	bl GF_3DVramMan_Delete
 	mov r0, #0x34
 	bl ov57_02237CDC
 	ldr r0, _02237C98 ; =0x0000045C
@@ -2364,7 +2364,7 @@ ov57_02238B28: ; 0x02238B28
 	str r0, [sp, #4]
 	mov r0, #0x34
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	add sp, #8
 	pop {r3, pc}
 	nop

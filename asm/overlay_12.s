@@ -3495,7 +3495,7 @@ ov12_02239644: ; 0x02239644
 	str r0, [sp, #4]
 	mov r0, #5
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	add sp, #8
 	pop {r3, pc}
 	nop
@@ -3566,10 +3566,10 @@ _022396E4: .word 0x04000580
 
 	thumb_func_start ov12_022396E8
 ov12_022396E8: ; 0x022396E8
-	ldr r3, _022396EC ; =sub_02026F54
+	ldr r3, _022396EC ; =GF_3DVramMan_Delete
 	bx r3
 	.balign 4, 0
-_022396EC: .word sub_02026F54
+_022396EC: .word GF_3DVramMan_Delete
 	thumb_func_end ov12_022396E8
 
 	thumb_func_start ov12_022396F0

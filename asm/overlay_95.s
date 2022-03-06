@@ -58,7 +58,7 @@ ov95_021E5954: ; 0x021E5954
 	str r0, [sp, #4]
 	mov r0, #0x46
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	add sp, #8
 	pop {r3, pc}
 	nop
@@ -2779,7 +2779,7 @@ ov95_021E6F0C: ; 0x021E6F0C
 	ldr r0, [r0]
 	bl ov95_021E7078
 	ldr r0, [r4, #0x38]
-	bl sub_02026F54
+	bl GF_3DVramMan_Delete
 	mov r0, #1
 	mov r1, #0
 	bl GX_EngineAToggleLayers

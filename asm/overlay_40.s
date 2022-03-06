@@ -44,7 +44,7 @@ ov40_0222B6E0: ; 0x0222B6E0
 	mov r0, #0x6d
 	mov r2, #1
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	str r0, [r4, #0x60]
 	mov r0, #0x6d
 	bl sub_02007FD4
@@ -373,7 +373,7 @@ _0222BA4A:
 	ldr r0, [r5, #0x4c]
 	bl DestroyMsgData
 	ldr r0, [r5, #0x60]
-	bl sub_02026F54
+	bl GF_3DVramMan_Delete
 	ldr r0, [r5, #0x64]
 	bl sub_02008524
 	add r0, r5, #0

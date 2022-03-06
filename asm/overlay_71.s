@@ -2840,11 +2840,11 @@ ov71_02247ED0: ; 0x02247ED0
 	str r0, [r1, #0x40]
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02027000
+	bl GF_3DVramMan_InitFrameTexVramManager
 	mov r0, #1
 	lsl r0, r0, #0xe
 	mov r1, #1
-	bl sub_02027008
+	bl GF_3DVramMan_InitFramePlttVramManager
 	ldr r3, _02247F8C ; =NNS_GfdDefaultFuncAllocTexVram
 	mov r0, #1
 	mov r1, #0
@@ -4122,11 +4122,11 @@ ov71_022488E4: ; 0x022488E4
 	str r0, [r1, #0x40]
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02027000
+	bl GF_3DVramMan_InitFrameTexVramManager
 	mov r0, #1
 	lsl r0, r0, #0xe
 	mov r1, #1
-	bl sub_02027008
+	bl GF_3DVramMan_InitFramePlttVramManager
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
@@ -6037,11 +6037,11 @@ ov71_022497E0: ; 0x022497E0
 	str r0, [r1, #0x40]
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02027000
+	bl GF_3DVramMan_InitFrameTexVramManager
 	mov r0, #1
 	lsl r0, r0, #0xe
 	mov r1, #1
-	bl sub_02027008
+	bl GF_3DVramMan_InitFramePlttVramManager
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
@@ -7548,11 +7548,11 @@ ov71_0224A3F0: ; 0x0224A3F0
 	str r0, [r1, #0x40]
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02027000
+	bl GF_3DVramMan_InitFrameTexVramManager
 	mov r0, #1
 	lsl r0, r0, #0xe
 	mov r1, #1
-	bl sub_02027008
+	bl GF_3DVramMan_InitFramePlttVramManager
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
@@ -8799,11 +8799,11 @@ ov71_0224ADE4: ; 0x0224ADE4
 	str r0, [r1, #0x40]
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02027000
+	bl GF_3DVramMan_InitFrameTexVramManager
 	mov r0, #1
 	lsl r0, r0, #0xe
 	mov r1, #1
-	bl sub_02027008
+	bl GF_3DVramMan_InitFramePlttVramManager
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
@@ -9931,11 +9931,11 @@ ov71_0224B720: ; 0x0224B720
 	str r0, [r1, #0x40]
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02027000
+	bl GF_3DVramMan_InitFrameTexVramManager
 	mov r0, #1
 	lsl r0, r0, #0xe
 	mov r1, #1
-	bl sub_02027008
+	bl GF_3DVramMan_InitFramePlttVramManager
 	ldr r3, _0224B7DC ; =NNS_GfdDefaultFuncAllocTexVram
 	mov r0, #1
 	mov r1, #0

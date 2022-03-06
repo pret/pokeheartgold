@@ -998,7 +998,7 @@ sub_02075D4C: ; 0x02075D4C
 	ldr r0, [r4, #0x44]
 	bl sub_02016F2C
 	ldr r0, [r4, #0x34]
-	bl sub_02026F54
+	bl GF_3DVramMan_Delete
 	ldr r0, [r4]
 	bl sub_020771A0
 	ldr r0, [r4, #8]

@@ -1791,7 +1791,7 @@ ov92_0225D3CC: ; 0x0225D3CC
 	mov r0, #0x71
 	mov r2, #1
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	str r0, [r4, #0x60]
 	mov r0, #0x71
 	bl sub_02023114
@@ -1928,7 +1928,7 @@ ov92_0225D49C: ; 0x0225D49C
 	ldr r0, [r4, #0x4c]
 	bl NARC_dtor
 	ldr r0, [r4, #0x60]
-	bl sub_02026F54
+	bl GF_3DVramMan_Delete
 	ldr r0, [r4, #0x64]
 	bl sub_02023120
 	ldr r0, [r4, #0x50]
