@@ -85,7 +85,8 @@ Static main
 	Object asm/unk_02026DE0.o
 	Object asm/unk_02026E30.o
 	Object asm/unk_02026E84.o
-	Object asm/unk_02026EB4.o
+	Object src/unk_02026EB4.o
+	Object asm/unk_02026EB4_s.o
 	Object asm/unk_02027010.o
 	Object src/save_arrays.o
 	Object src/save.o

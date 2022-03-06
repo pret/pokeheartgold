@@ -96,4 +96,26 @@
     ((u32)(send_emp) << REG_PXI_FIFO_CNT_SEND_EMP_SHIFT))
 #endif
 
+#define REG_G3_SWAP_BUFFERS_DP_SHIFT                       1
+#define REG_G3_SWAP_BUFFERS_DP_SIZE                        1
+#define REG_G3_SWAP_BUFFERS_DP_MASK                        0x00000002
+
+#define REG_G3_SWAP_BUFFERS_XS_SHIFT                       0
+#define REG_G3_SWAP_BUFFERS_XS_SIZE                        1
+#define REG_G3_SWAP_BUFFERS_XS_MASK                        0x00000001
+#define REG_G3_SWAP_BUFFERS_DP_SHIFT                       1
+#define REG_G3_SWAP_BUFFERS_DP_SIZE                        1
+#define REG_G3_SWAP_BUFFERS_DP_MASK                        0x00000002
+
+#define REG_G3_SWAP_BUFFERS_XS_SHIFT                       0
+#define REG_G3_SWAP_BUFFERS_XS_SIZE                        1
+#define REG_G3_SWAP_BUFFERS_XS_MASK                        0x00000001
+
+#ifndef SDK_ASM
+#define REG_G3_SWAP_BUFFERS_FIELD( dp, xs ) \
+    (u32)( \
+    ((u32)(dp) << REG_G3_SWAP_BUFFERS_DP_SHIFT) | \
+    ((u32)(xs) << REG_G3_SWAP_BUFFERS_XS_SHIFT))
+#endif
+
 #endif //NITRO_IO_REG_H_
