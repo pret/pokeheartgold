@@ -1137,4 +1137,69 @@
 #define REG_OS_TM3CNT_H_PS_SIZE                            2
 #define REG_OS_TM3CNT_H_PS_MASK                            0x0003
 
+#define REG_G3X_DISP3DCNT_PRI_SHIFT                        14
+#define REG_G3X_DISP3DCNT_PRI_SIZE                         1
+#define REG_G3X_DISP3DCNT_PRI_MASK                         0x4000
+
+#define REG_G3X_DISP3DCNT_GO_SHIFT                         13
+#define REG_G3X_DISP3DCNT_GO_SIZE                          1
+#define REG_G3X_DISP3DCNT_GO_MASK                          0x2000
+
+#define REG_G3X_DISP3DCNT_RO_SHIFT                         12
+#define REG_G3X_DISP3DCNT_RO_SIZE                          1
+#define REG_G3X_DISP3DCNT_RO_MASK                          0x1000
+
+#define REG_G3X_DISP3DCNT_FOG_SHIFT_SHIFT                  8
+#define REG_G3X_DISP3DCNT_FOG_SHIFT_SIZE                   4
+#define REG_G3X_DISP3DCNT_FOG_SHIFT_MASK                   0x0f00
+
+#define REG_G3X_DISP3DCNT_FME_SHIFT                        7
+#define REG_G3X_DISP3DCNT_FME_SIZE                         1
+#define REG_G3X_DISP3DCNT_FME_MASK                         0x0080
+
+#define REG_G3X_DISP3DCNT_FMOD_SHIFT                       6
+#define REG_G3X_DISP3DCNT_FMOD_SIZE                        1
+#define REG_G3X_DISP3DCNT_FMOD_MASK                        0x0040
+
+#define REG_G3X_DISP3DCNT_EME_SHIFT                        5
+#define REG_G3X_DISP3DCNT_EME_SIZE                         1
+#define REG_G3X_DISP3DCNT_EME_MASK                         0x0020
+
+#define REG_G3X_DISP3DCNT_AAE_SHIFT                        4
+#define REG_G3X_DISP3DCNT_AAE_SIZE                         1
+#define REG_G3X_DISP3DCNT_AAE_MASK                         0x0010
+
+#define REG_G3X_DISP3DCNT_ABE_SHIFT                        3
+#define REG_G3X_DISP3DCNT_ABE_SIZE                         1
+#define REG_G3X_DISP3DCNT_ABE_MASK                         0x0008
+
+#define REG_G3X_DISP3DCNT_ATE_SHIFT                        2
+#define REG_G3X_DISP3DCNT_ATE_SIZE                         1
+#define REG_G3X_DISP3DCNT_ATE_MASK                         0x0004
+
+#define REG_G3X_DISP3DCNT_THS_SHIFT                        1
+#define REG_G3X_DISP3DCNT_THS_SIZE                         1
+#define REG_G3X_DISP3DCNT_THS_MASK                         0x0002
+
+#define REG_G3X_DISP3DCNT_TME_SHIFT                        0
+#define REG_G3X_DISP3DCNT_TME_SIZE                         1
+#define REG_G3X_DISP3DCNT_TME_MASK                         0x0001
+
+#ifndef SDK_ASM
+#define REG_G3X_DISP3DCNT_FIELD( pri, go, ro, fog_shift, fme, fmod, eme, aae, abe, ate, ths, tme ) \
+    (u16)( \
+    ((u32)(pri) << REG_G3X_DISP3DCNT_PRI_SHIFT) | \
+    ((u32)(go) << REG_G3X_DISP3DCNT_GO_SHIFT) | \
+    ((u32)(ro) << REG_G3X_DISP3DCNT_RO_SHIFT) | \
+    ((u32)(fog_shift) << REG_G3X_DISP3DCNT_FOG_SHIFT_SHIFT) | \
+    ((u32)(fme) << REG_G3X_DISP3DCNT_FME_SHIFT) | \
+    ((u32)(fmod) << REG_G3X_DISP3DCNT_FMOD_SHIFT) | \
+    ((u32)(eme) << REG_G3X_DISP3DCNT_EME_SHIFT) | \
+    ((u32)(aae) << REG_G3X_DISP3DCNT_AAE_SHIFT) | \
+    ((u32)(abe) << REG_G3X_DISP3DCNT_ABE_SHIFT) | \
+    ((u32)(ate) << REG_G3X_DISP3DCNT_ATE_SHIFT) | \
+    ((u32)(ths) << REG_G3X_DISP3DCNT_THS_SHIFT) | \
+    ((u32)(tme) << REG_G3X_DISP3DCNT_TME_SHIFT))
+#endif
+
 #endif //NITRO_HW_IO_REG_SHARED_H_

@@ -19,4 +19,8 @@ static inline void G3_SwapBuffers(GXSortMode am, GXBufferMode zw) {
     reg_G3_SWAP_BUFFERS = GX_PACK_SWAPBUFFERS_PARAM(am, zw);
 }
 
+static inline void G3_ViewPort(int x1, int y1, int x2, int y2) {
+    reg_G3_VIEWPORT = GX_PACK_VIEWPORT_PARAM(x1, y1, x2, y2);
+}
+
 #endif //NITRO_GX_G3IMM_H_

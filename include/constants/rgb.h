@@ -1,7 +1,9 @@
 #ifndef POKEHEARTGOLD_CONSTANTS_RGB_H
 #define POKEHEARTGOLD_CONSTANTS_RGB_H
 
-#define RGB(r,g,b)       (((r) & 0x1F) | (((g) & 0x1F) << 5) | (((b) & 0x1F) << 10))
+#include <nitro/gx/gxcommon.h>
+
+#define RGB(r,g,b) (GX_RGB(r,g,b))
 
 #define RGB_BLACK        RGB(0,0,0)
 #define RGB_WHITE        RGB(31,31,31)
