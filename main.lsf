@@ -143,7 +143,7 @@ Static main
 	Object asm/unk_0203A3B0.o
 	Object asm/communication_error.o
 	Object asm/unk_0203AC88.o
-	Object asm/wfc_user_info_warning.o
+	Object src/wfc_user_info_warning.o
 	Object src/map_matrix.o
 	Object src/map_header.o
 	Object src/map_events.o
