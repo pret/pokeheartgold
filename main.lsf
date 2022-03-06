@@ -243,7 +243,7 @@ Static main
 	Object src/pokemon_storage_system.o
 	Object src/pokemon_icon_idx.o
 	Object src/party.o
-	Object asm/unk_02074910.o
+	Object src/unk_02074910.o
 	Object asm/unk_02074944.o
 	Object asm/unk_02074E5C.o
 	Object asm/unk_020755E8.o
