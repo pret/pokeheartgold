@@ -291,7 +291,7 @@ Static main
 	Object asm/unk_02091CDC.o
 	Object asm/unk_020921A4.o
 	Object src/save_data_read_error.o
-	Object asm/save_data_write_error.o
+	Object src/save_data_write_error.o
 	Object asm/unk_02092B04.o
 	Object asm/unk_02092BB8.o
 	Object asm/unk_02092BE8.o
