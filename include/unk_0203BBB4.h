@@ -1,8 +1,9 @@
-#ifndef UNK_0203BBB4_H
-#define UNK_0203BBB4_H
+#ifndef POKEHEARTGOLD_UNK_0203BBB4_H
+#define POKEHEARTGOLD_UNK_0203BBB4_H
 
 #include "save.h"
 #include "sav_system_info.h"
+#include "script.h"
 
 #define JANUARY 1
 #define FEBRUARY 2
@@ -17,8 +18,6 @@
 #define NOVEMBER 11
 #define DECEMBER 12
 
-#define MT_SILVER 0x000001D1
-
 #define MAP_WEATHER_DIAMOND_DUST 8
 
 typedef struct MonthDay {
@@ -26,12 +25,6 @@ typedef struct MonthDay {
     u8 day;
 };
 
-typedef struct UnkStruct0203BBB4
-{
-    u8 unk0[0xc];
-    SAVEDATA* savedata;
-};
+u32 sub_0203BBB4(FieldSystem* fsys, u32 mapId);
 
-u32 sub_0203BBB4(struct UnkStruct0203BBB4* unkStruct, u32 mapId);
-
-#endif //UNK_0203BBB4_H
+#endif //POKEHEARTGOLD_UNK_0203BBB4_H
