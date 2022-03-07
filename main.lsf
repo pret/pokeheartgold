@@ -141,9 +141,9 @@ Static main
 	Object asm/unk_020379A0.o
 	Object asm/unk_02037C94.o
 	Object asm/unk_0203A3B0.o
-	Object asm/communication_error.o
+	Object src/communication_error.o
 	Object asm/unk_0203AC88.o
-	Object asm/wfc_user_info_warning.o
+	Object src/wfc_user_info_warning.o
 	Object src/map_matrix.o
 	Object src/map_header.o
 	Object src/map_events.o
@@ -290,8 +290,8 @@ Static main
 	Object asm/unk_02091880.o
 	Object asm/unk_02091CDC.o
 	Object asm/unk_020921A4.o
-	Object asm/save_data_read_error.o
-	Object asm/save_data_write_error.o
+	Object src/save_data_read_error.o
+	Object src/save_data_write_error.o
 	Object asm/unk_02092B04.o
 	Object asm/unk_02092BB8.o
 	Object asm/unk_02092BE8.o
@@ -300,7 +300,7 @@ Static main
 	Object asm/unk_020932E0.o
 	Object asm/unk_020957B0.o
 	Object asm/unk_02095DF4.o
-	Object asm/error_message_reset.o
+	Object src/error_message_reset.o
 	Object src/sin_vcount.o
 	Object asm/unk_020965A4.o
 	Object asm/unk_020968B0.o
