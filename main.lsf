@@ -300,7 +300,7 @@ Static main
 	Object asm/unk_020932E0.o
 	Object asm/unk_020957B0.o
 	Object asm/unk_02095DF4.o
-	Object asm/error_message_reset.o
+	Object src/error_message_reset.o
 	Object src/sin_vcount.o
 	Object asm/unk_020965A4.o
 	Object asm/unk_020968B0.o
