@@ -131,6 +131,6 @@ void ShowSaveDataWriteError(HeapID heap_id, int code) {
 
     while (TRUE) {
         HandleDSLidAction();
-        OS_WaitIrq(TRUE, OS_IE_V_BLANK);
+        OS_WaitIrq(TRUE, OS_IE_VBLANK);
     }
 }

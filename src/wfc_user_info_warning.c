@@ -130,7 +130,7 @@ void ShowWFCUserInfoWarning(HeapID heap_id, int a1) {
             break;
         }
 
-        OS_WaitIrq(TRUE, OS_IE_V_BLANK);
+        OS_WaitIrq(TRUE, OS_IE_VBLANK);
     }
 
     RemoveWindow(&window);

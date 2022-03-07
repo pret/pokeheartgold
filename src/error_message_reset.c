@@ -158,7 +158,7 @@ void PrintErrorMessageAndReset(void) {
             break;
         }
 
-        OS_WaitIrq(TRUE, OS_IE_V_BLANK);
+        OS_WaitIrq(TRUE, OS_IE_VBLANK);
     }
 
     while (TRUE) {
@@ -168,7 +168,7 @@ void PrintErrorMessageAndReset(void) {
             break;
         }
 
-        OS_WaitIrq(TRUE, OS_IE_V_BLANK);
+        OS_WaitIrq(TRUE, OS_IE_VBLANK);
     }
 
     sub_0200FBF4(0, 0x7FFF);

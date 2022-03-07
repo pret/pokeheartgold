@@ -121,7 +121,7 @@ void ShowSaveDataReadError(HeapID heap_id) {
 
     while (TRUE) {
         HandleDSLidAction();
-        OS_WaitIrq(TRUE, OS_IE_V_BLANK);
+        OS_WaitIrq(TRUE, OS_IE_VBLANK);
     }
 }
 
@@ -181,6 +181,6 @@ void ShowGBACartRemovedError(HeapID heap_id) {
 
     while (TRUE) {
         HandleDSLidAction();
-        OS_WaitIrq(TRUE, OS_IE_V_BLANK);
+        OS_WaitIrq(TRUE, OS_IE_VBLANK);
     }
 }
