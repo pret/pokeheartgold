@@ -6,7 +6,7 @@
 
 BOOL Pokedex_IsNatDexEnabled(const POKEDEX* pokedex);
 BOOL SavArray_IsNatDexEnabled(SAVEDATA* savedata);
-u32 sub_02074930(BOOL natDexFlag, u32 unkB);
+u32 sub_02074930(BOOL natDexFlag, u32 species);
 
 #endif //POKEHEARTGOLD_UNK_02074910_H
 

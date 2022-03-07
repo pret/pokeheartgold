@@ -8,10 +8,10 @@ BOOL Pokedex_IsNatDexEnabled(const POKEDEX* pokedex) {
     return (Pokedex_GetNatDexFlag(pokedex) == 1);
 }
 
-u32 sub_02074930(BOOL natDexFlag, u32 monData) {
+u32 sub_02074930(BOOL natDexFlag, u32 species) {
     if(natDexFlag == 0)  {
-        return SpeciesToJohtoDexNo((u16) monData);
+        return SpeciesToJohtoDexNo((u16) species);
     }
-    return monData;
+    return species;
 }
 
