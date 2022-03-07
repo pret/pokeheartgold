@@ -6887,7 +6887,7 @@ ScrCmd_249: ; 0x02043E08
 	add r1, r6, #0
 	lsr r2, r2, #0x18
 	add r3, r4, #0
-	bl sub_02051020
+	bl SetupAndStartWildBattle
 	mov r0, #1
 	add sp, #8
 	pop {r4, r5, r6, pc}
@@ -6931,7 +6931,7 @@ ScrCmd_WildBattle: ; 0x02043E5C
 	str r0, [sp, #4]
 	ldr r0, [r5, #0x74]
 	add r3, r4, #0
-	bl sub_02051020
+	bl SetupAndStartWildBattle
 	mov r0, #1
 	add sp, #8
 	pop {r4, r5, r6, pc}
@@ -7010,7 +7010,7 @@ ScrCmd_250: ; 0x02043F0C
 ScrCmd_CatchingTutorial: ; 0x02043F48
 	push {r3, lr}
 	ldr r0, [r0, #0x74]
-	bl sub_02051334
+	bl SetupAndStartTutorialBattle
 	mov r0, #1
 	pop {r3, pc}
 	thumb_func_end ScrCmd_CatchingTutorial

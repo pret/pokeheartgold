@@ -28369,11 +28369,11 @@
 .public sub_02050AAC
 .public sub_02050B08
 .public sub_02050B90
-.public sub_02051020
+.public SetupAndStartWildBattle
 .public sub_02051090
 .public sub_020511F8
 .public sub_02051228
-.public sub_02051334
+.public SetupAndStartTutorialBattle
 .public SetupAndStartTrainerBattle
 .public sub_02051428
 .public sub_020514A4
