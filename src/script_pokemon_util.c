@@ -41,7 +41,7 @@ BOOL GiveMon(HeapID heapId, SAVEDATA *saveData, int species, int level, int form
     return result;
 }
 
-BOOL GiveEgg(HeapID heapId, SAVEDATA *saveData, int a2, int a3, MapsecType sp20, int sp24) {
+BOOL GiveEgg(HeapID heapId, SAVEDATA *saveData, int species, u8 metLocation, MapsecType sp20, int sp24) {
 #pragma unused(heapId)
     PLAYERPROFILE *profile;
     PARTY *party;
@@ -52,7 +52,7 @@ BOOL GiveEgg(HeapID heapId, SAVEDATA *saveData, int a2, int a3, MapsecType sp20,
     party = SavArray_PlayerParty_get(saveData);
     pokemon = AllocMonZeroed(32);
     ZeroMonData(pokemon);
-    SetEggStats(pokemon, a2, a3, profile, 4, sub_02017FE4(sp20, sp24));
+    SetEggStats(pokemon, species, metLocation, profile, 4, sub_02017FE4(sp20, sp24));
     result = AddMonToParty(party, pokemon);
     FreeToHeap(pokemon);
     return result;

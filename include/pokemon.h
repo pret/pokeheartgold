@@ -20,6 +20,12 @@
 #define WOTBL_LEVEL_MASK      0xFE00
 #define WOTBL_LEVEL_SHIFT          9
 
+#define WOTBL_MOVE(x) ((u16)(((x) & WOTBL_MOVEID_MASK) >> WOTBL_MOVEID_SHIFT))
+#define WOTBL_LVL(x) ((u8)(((x) & WOTBL_LEVEL_MASK) >> WOTBL_LEVEL_SHIFT))
+
+#define WAZA_APPEND_FULL    0xFFFFu
+#define WAZA_APPEND_KNOWN   0xFFFEu
+
 extern const s8 gNatureStatMods[NATURE_NUM][NUM_EV_STATS];
 
 void ZeroMonData(POKEMON * pokemon);
@@ -94,8 +100,8 @@ u8 Party_GetMaxLevel(PARTY * party);
 u16 SpeciesToSinnohDexNo(u16 species);
 u16 SinnohDexNoToSpecies(u16 sinnoh_dex);
 void CopyPokemonToPokemon(const POKEMON * src, POKEMON * dest);
-void CopyPokemonToBoxPokemon(const POKEMON * src, BOXMON * dest);
 void CopyBoxPokemonToBoxPokemon(const BOXMON * src, BOXMON * dest);
+void CopyPokemonToBoxPokemon(const POKEMON * src, BOXMON * dest);
 s8 MonGetFlavorPreference(POKEMON * pokemon, int flavor);
 s8 BoxMonGetFlavorPreference(BOXMON * boxmon, int flavor);
 s8 GetFlavorPreferenceFromPID(u32 personality, int flavor);
@@ -144,7 +150,7 @@ void sub_02070D84(s32 trainer_class, s32 a1, struct UnkStruct_02070D3C *a2);
 u32 sub_02070D90(void);
 u32 sub_02070D94(void);
 BOXMON * Mon_GetBoxMon(POKEMON * pokemon);
-BOOL sub_02070DB4(POKEMON * pokemon);
+BOOL Pokemon_TryLevelUp(POKEMON * pokemon);
 void InitBoxMonMoveset(BOXMON * boxmon);
 void MonSetMoveInSlot_ResetPpUp(POKEMON* pokemon, u16 move, u8 slot);
 u32 MonTryLearnMoveOnLevelUp(POKEMON * pokemon, int * last_i, u16 * sp0);
@@ -165,9 +171,9 @@ void sub_0207213C(BOXMON * boxmon, PLAYERPROFILE *playerProfile, u32 pokeball, u
 void sub_0207217C(POKEMON *pokemon, PLAYERPROFILE *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id);
 void sub_02072190(BOXMON *boxmon, PLAYERPROFILE *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id);
 void WildMonSetRandomHeldItem(struct Pokemon * pokemon, u32 a1, u32 a2);
-BOOL GetMonTMHMCompat(POKEMON *pokemon, u32 tmhm);
-BOOL GetBoxMonTMHMCompat(BOXMON *boxmon, u32 tmhm);
-BOOL GetTMHMCompatBySpeciesAndForme(u16 species, u32 forme, u32 tmhm);
+BOOL GetMonTMHMCompat(POKEMON *pokemon, u8 tmhm);
+BOOL GetBoxMonTMHMCompat(BOXMON *boxmon, u8 tmhm);
+BOOL GetTMHMCompatBySpeciesAndForme(u16 species, u32 forme, u8 tmhm);
 void SetMonPersonality(struct Pokemon * r5, u32 personality);
 u32 sub_02072490(u32 pid, u16 species, u8 nature, u8 gender, u8 ability, BOOL gen_mode);
 void LoadMonPersonal(int species, BASE_STATS *personal);
