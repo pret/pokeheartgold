@@ -10268,7 +10268,7 @@
 .public ov12_0223CEE4
 .public ov12_0223CEF4
 .public ov12_0223CF14
-.public ov12_0223CF68
+.public RunBattleScript
 .public ov12_0223CFB8
 .public ov12_0223CFD0
 .public ov12_0223D04C
@@ -10606,7 +10606,7 @@
 .public ov12_0224E414
 .public ov12_0224E4FC
 .public ov12_0224EA14
-.public ov12_0224EB9C
+.public ReadBattleScriptFromNarc
 .public ov12_0224EBDC
 .public ov12_0224EC74
 .public ov12_0224ECC4
