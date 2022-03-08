@@ -72,6 +72,7 @@ void MapObject_SetParam(LocalMapObject *mapObject, int value, int which);
 int MapObject_GetParam(LocalMapObject *mapObject, int which);
 void MapObject_SetXRange(LocalMapObject *mapObject, u32 xRange);
 void MapObject_SetYRange(LocalMapObject *mapObject, u32 yRange);
-void sub_0205F89C(LocalMapObject* map_object, BOOL enable_bit);
+void sub_0205F89C(LocalMapObject *mapObject, BOOL enable_bit);
+BOOL sub_0205F684(LocalMapObject *mapObject);
 
 #endif //POKEHEARTGOLD_FIELD_MAP_OBJECT_H

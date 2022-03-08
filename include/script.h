@@ -194,7 +194,7 @@ struct FieldSystem {
     u8 unkB0[0x4];
     s64 unkB4;
     u8 unkBC[0x28];
-    FollowMon unkE4;
+    FollowMon followMon;
     u8 unk104[4];
     struct FieldSystemUnk108 *unk108;
     u8 filler_10C[8];
