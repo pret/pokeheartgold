@@ -28887,7 +28887,7 @@
 .public MapObject_GetPositionVec
 .public MapObject_SetPositionVec
 .public MapObject_GetPositionVecPtr
-.public sub_0205F968
+.public MapObject_GetPosVecYCoord
 .public MapObject_GetFacingVec
 .public MapObject_SetFacingVec
 .public MapObject_GetFacingVecPtr

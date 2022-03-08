@@ -52808,7 +52808,7 @@ ov01_021FE3F8: ; 0x021FE3F8
 	bl MapObject_GetPrevY
 	str r0, [sp, #0x10]
 	add r0, r5, #0
-	bl sub_0205F968
+	bl MapObject_GetPosVecYCoord
 	add r6, r0, #0
 	add r0, r5, #0
 	bl MapObject_GetFacingDirection
@@ -54651,7 +54651,7 @@ _021FF188:
 	lsl r0, r0, #0x10
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F968
+	bl MapObject_GetPosVecYCoord
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x24]
 	add r1, sp, #0
@@ -55747,7 +55747,7 @@ _021FFA08:
 	lsl r0, r0, #0x10
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F968
+	bl MapObject_GetPosVecYCoord
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x24]
 	add r1, sp, #0
@@ -56091,7 +56091,7 @@ _021FFCBC:
 	lsl r0, r0, #0x10
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F968
+	bl MapObject_GetPosVecYCoord
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x24]
 	add r1, sp, #0

@@ -203,3 +203,49 @@ void sub_02069DEC(LocalMapObject *mapObject, int a1) {
 u8 sub_02069E14(LocalMapObject *mapObject) {
     return (MapObject_GetParam(mapObject, 2) >> 1) & 1;
 }
+
+void sub_02069E28(LocalMapObject *mapObject, u32 a1) {
+    int param;
+    u8 r1;
+    u16 r2;
+    u16 b;
+
+    param = MapObject_GetParam(mapObject, 2);
+
+    r2 = param >> 10;
+    b = r2 << 10;
+    param = (u8) param;
+    param |= b | (a1 << 8);
+
+    MapObject_SetParam(mapObject, param, 2);
+}
+
+void sub_02069E50(LocalMapObject *mapObject, u8 a1) {
+    int param;
+    u32 b;
+
+    GF_ASSERT(a1 <= 23);
+
+    param = MapObject_GetParam(mapObject, 2);
+
+    b = param & 0x3FF;
+    param = (a1 << 10) | (u8)b;
+
+    MapObject_SetParam(mapObject, param, 2);
+}
+
+void sub_02069E84(LocalMapObject *mapObject, u8 a1) {
+    int param;
+    u8 a;
+    u32 b;
+
+    param = MapObject_GetParam(mapObject, 2);
+
+    a = param & 3;
+    b = param >> 3;
+
+    param = (b << 3) | (a1 << 2);
+    param |= a;
+
+    MapObject_SetParam(mapObject, param, 2);
+}
