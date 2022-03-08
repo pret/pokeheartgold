@@ -17,14 +17,14 @@ struct GF3DVramMan *GF_3DVramMan_Create(HeapID heapId, int texMode, int numTex, 
     NNS_G3dInit();
     G3X_InitMtxStack();
     G3_SwapBuffers(GX_SORTMODE_AUTO, GX_BUFFERMODE_W);
-    if (texMode == 0) {
+    if (texMode == GF_3D_TEXALLOC_LNK) {
         texWorkSz = NNS_GfdGetLnkTexVramManagerWorkSize(numTex * GF_3D_MEM_BLOCK_PER_TEX);
         ret->texWork = AllocFromHeap(ret->heapId, texWorkSz);
         GF_3DVramMan_InitLinkedListTexVramManager(numTex * GF_3D_TEX_SLOT_SIZE, 0, ret->texWork, texWorkSz, TRUE);
     } else {
         GF_3DVramMan_InitFrameTexVramManager(numTex, TRUE);
     }
-    if (plttMode == 0) {
+    if (plttMode == GF_3D_PLTTALLOC_LNK) {
         pltWorkSz = NNS_GfdGetLnkPlttVramManagerWorkSize(numPltt * GF_3D_MEM_BLOCK_PER_PLTT);
         ret->plttWork = AllocFromHeap(ret->heapId, pltWorkSz);
         GF_3DVramMan_InitLinkedListPlttVramManager(numPltt * GF_3D_PLTT_SLOT_SIZE, ret->plttWork, pltWorkSz, TRUE);

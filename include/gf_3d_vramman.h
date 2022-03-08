@@ -3,6 +3,11 @@
 
 #include "heap.h"
 
+#define GF_3D_TEXALLOC_LNK        0
+#define GF_3D_TEXALLOC_FRM        1
+#define GF_3D_PLTTALLOC_LNK       0
+#define GF_3D_PLTTALLOC_FRM       1
+
 struct GF3DVramMan {
     HeapID heapId;
     void *plttWork;

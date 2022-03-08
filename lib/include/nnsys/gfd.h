@@ -2,6 +2,7 @@
 #define NNSYS_GFD_H
 
 #include <nnsys/gfd/VramManager/gfd_TexVramMan_Types.h>
+#include <nnsys/gfd/VramManager/gfd_PlttVramMan_Types.h>
 #include <nnsys/gfd/VramManager/gfd_LinkedListTexVramMan.h>
 #include <nnsys/gfd/VramManager/gfd_FrameTexVramMan.h>
 #include <nnsys/gfd/VramManager/gfd_LinkedListPlttVramMan.h>
