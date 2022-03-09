@@ -12989,13 +12989,13 @@ ScrCmd_606: ; 0x02046DA8
 	ldr r0, [r0]
 	bl FollowingPokemon_GetMapObject
 	add r4, r0, #0
-	bl sub_02069F7C
+	bl FollowPokeObj_GetSpecies
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r1, [r1]
 	ldr r1, [r1, #0x20]
 	ldr r1, [r1]
-	bl sub_02069FF4
+	bl GetFollowPokePermissionBySpeciesAndMap
 	cmp r0, #0
 	beq _02046DF4
 	add r0, r4, #0
@@ -13026,13 +13026,13 @@ ScrCmd_607: ; 0x02046DF8
 	add r0, #0x80
 	ldr r0, [r0]
 	bl FollowingPokemon_GetMapObject
-	bl sub_02069F7C
+	bl FollowPokeObj_GetSpecies
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r1, [r1]
 	ldr r1, [r1, #0x20]
 	ldr r1, [r1]
-	bl sub_02069FF4
+	bl GetFollowPokePermissionBySpeciesAndMap
 	cmp r0, #0
 	beq _02046E32
 	add r4, #0x80
@@ -14115,7 +14115,7 @@ ScrCmd_732: ; 0x02047644
 	ldr r0, [r1, r0]
 	mov r1, #0
 	ldrsb r1, [r2, r1]
-	bl sub_0206A1F4
+	bl FsysUnkSub108_AddMonMood
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0

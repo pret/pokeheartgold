@@ -331,9 +331,9 @@ _02055E20:
 	add r0, r5, #0
 	bl FollowingPokemon_GetMapObject
 	add r5, r0, #0
-	bl sub_02069F7C
+	bl FollowPokeObj_GetSpecies
 	ldr r1, [r4, #4]
-	bl sub_02069FF4
+	bl GetFollowPokePermissionBySpeciesAndMap
 	cmp r0, #0
 	bne _02055E5E
 	add r0, r5, #0

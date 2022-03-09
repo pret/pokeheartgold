@@ -1889,9 +1889,9 @@ _02053DAA:
 	add r0, r5, #0
 	bl FollowingPokemon_GetMapObject
 	add r7, r0, #0
-	bl sub_02069F7C
+	bl FollowPokeObj_GetSpecies
 	ldr r1, [r6]
-	bl sub_02069FF4
+	bl GetFollowPokePermissionBySpeciesAndMap
 	cmp r0, #0
 	beq _02053DE6
 	add r0, r7, #0
