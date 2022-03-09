@@ -15,7 +15,7 @@ Static main
 	Object asm/unk_02001AF4.o
 	Object src/string_util.o
 	Object asm/render_text.o
-	Object asm/font.o
+	Object src/font.o
 	Object asm/palette.o
 	Object src/sound.o
 	Object src/sound_radio_sys.o
