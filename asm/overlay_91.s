@@ -6358,7 +6358,7 @@ ov91_0225F4C0: ; 0x0225F4C0
 	add r0, r4, #0
 	mov r2, #1
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	str r0, [r5, #0x18]
 	add r0, r5, #0
 	add r1, r6, #0
@@ -6377,7 +6377,7 @@ ov91_0225F4F8: ; 0x0225F4F8
 	add r4, r0, #0
 	bl ov91_0225FDC8
 	ldr r0, [r4, #0x18]
-	bl sub_02026F54
+	bl GF_3DVramMan_Delete
 	pop {r4, pc}
 	thumb_func_end ov91_0225F4F8
 

@@ -8972,7 +8972,7 @@ ov59_0223C298: ; 0x0223C298
 	str r0, [sp, #4]
 	add r0, r5, #0
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	str r0, [r4, #4]
 	bl ov59_0223C474
 	add r0, r4, #0
@@ -9044,7 +9044,7 @@ ov59_0223C350: ; 0x0223C350
 	add r0, r4, #0
 	bl ov59_0223C5B0
 	ldr r0, [r4, #4]
-	bl sub_02026F54
+	bl GF_3DVramMan_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}

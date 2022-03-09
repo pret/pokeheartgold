@@ -1227,8 +1227,8 @@ _02051018: .word sub_0205298C
 _0205101C: .word std_bug_contest_balls_up
 	thumb_func_end sub_02050EB8
 
-	thumb_func_start sub_02051020
-sub_02051020: ; 0x02051020
+	thumb_func_start SetupAndStartWildBattle
+SetupAndStartWildBattle: ; 0x02051020
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	str r0, [sp, #4]
@@ -1277,7 +1277,7 @@ _02051062:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02051020
+	thumb_func_end SetupAndStartWildBattle
 
 	thumb_func_start sub_02051090
 sub_02051090: ; 0x02051090
@@ -1604,8 +1604,8 @@ _0205132E:
 	.balign 4, 0
 	thumb_func_end sub_0205128C
 
-	thumb_func_start sub_02051334
-sub_02051334: ; 0x02051334
+	thumb_func_start SetupAndStartTutorialBattle
+SetupAndStartTutorialBattle: ; 0x02051334
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl TaskManager_GetSys
@@ -1629,7 +1629,7 @@ sub_02051334: ; 0x02051334
 	pop {r4, r5, r6, pc}
 	nop
 _0205136C: .word sub_0205128C
-	thumb_func_end sub_02051334
+	thumb_func_end SetupAndStartTutorialBattle
 
 	thumb_func_start SetupAndStartTrainerBattle
 SetupAndStartTrainerBattle: ; 0x02051370

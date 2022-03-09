@@ -84,6 +84,18 @@ extern void SDK_SECTION_ARENA_EX_START(void);
 #define HW_DB_PLTT              HW_DB_BG_PLTT
 #define HW_DB_PLTT_END          HW_DB_OBJ_PLTT_END
 #define HW_DB_PLTT_SIZE         (HW_DB_PLTT_END-HW_DB_PLTT)
+#define HW_BG_VRAM              0x06000000
+#define HW_BG_VRAM_END          0x06080000
+#define HW_BG_VRAM_SIZE         (HW_BG_VRAM_END-HW_BG_VRAM)
+#define HW_DB_BG_VRAM           0x06200000
+#define HW_DB_BG_VRAM_END       0x06220000
+#define HW_DB_BG_VRAM_SIZE      (HW_DB_BG_VRAM_END-HW_DB_BG_VRAM)
+#define HW_OBJ_VRAM             0x06400000
+#define HW_OBJ_VRAM_END         0x06440000
+#define HW_OBJ_VRAM_SIZE        (HW_OBJ_VRAM_END-HW_OBJ_VRAM)
+#define HW_DB_OBJ_VRAM          0x06600000
+#define HW_DB_OBJ_VRAM_END      0x06620000
+#define HW_DB_OBJ_VRAM_SIZE     (HW_DB_OBJ_VRAM_END-HW_DB_OBJ_VRAM)
 #define HW_LCDC_VRAM            0x6800000
 #define HW_LCDC_VRAM_END        0x68a4000
 #define HW_LCDC_VRAM_SIZE       (HW_LCDC_VRAM_END - HW_LCDC_VRAM)

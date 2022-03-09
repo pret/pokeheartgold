@@ -3714,7 +3714,7 @@ _021E7732:
 	mov r0, #0x42
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0206A2C0
+	bl FsysUnkSub108_MoveMoodTowardsNeutral
 _021E7746:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -26475,7 +26475,7 @@ _021F21A8:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_0206A1F4
+	bl FsysUnkSub108_AddMonMood
 	mov r1, #2
 	b _021F21C6
 _021F21C4:
@@ -27121,7 +27121,7 @@ ov01_021F26CC: ; 0x021F26CC
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_0206A1F4
+	bl FsysUnkSub108_AddMonMood
 	mov r1, #2
 	b _021F26F0
 _021F26EE:
@@ -37794,7 +37794,7 @@ _021F7636:
 	ldr r0, [r0, r1]
 	ldr r1, [sp, #0xc]
 	lsr r2, r2, #0x10
-	bl sub_0206A288
+	bl FsysUnkSub108_Set
 _021F7654:
 	add r0, r5, #0
 	bl ov01_021FA2D4
@@ -49675,7 +49675,7 @@ ov01_021FCCB0: ; 0x021FCCB0
 	ldr r1, [r4, #0x20]
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_0206A268
+	bl FsysUnkSub108_GetMonMood
 	mov r1, #9
 	mvn r1, r1
 	cmp r0, r1
@@ -50072,7 +50072,7 @@ _021FCF80:
 	ldr r0, [r6, r0]
 	mov r1, #1
 	mov r5, #2
-	bl sub_0206A1F4
+	bl FsysUnkSub108_AddMonMood
 	b _021FCF9E
 _021FCF9C:
 	mov r5, #1
@@ -52808,7 +52808,7 @@ ov01_021FE3F8: ; 0x021FE3F8
 	bl MapObject_GetPrevY
 	str r0, [sp, #0x10]
 	add r0, r5, #0
-	bl sub_0205F968
+	bl MapObject_GetPosVecYCoord
 	add r6, r0, #0
 	add r0, r5, #0
 	bl MapObject_GetFacingDirection
@@ -54651,7 +54651,7 @@ _021FF188:
 	lsl r0, r0, #0x10
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F968
+	bl MapObject_GetPosVecYCoord
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x24]
 	add r1, sp, #0
@@ -55747,7 +55747,7 @@ _021FFA08:
 	lsl r0, r0, #0x10
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F968
+	bl MapObject_GetPosVecYCoord
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x24]
 	add r1, sp, #0
@@ -56091,7 +56091,7 @@ _021FFCBC:
 	lsl r0, r0, #0x10
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F968
+	bl MapObject_GetPosVecYCoord
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x24]
 	add r1, sp, #0
@@ -60597,7 +60597,7 @@ ov01_02201F98: ; 0x02201F98
 	bl FollowingPokemon_GetSpriteID
 	lsl r5, r0, #1
 	add r0, r7, #0
-	bl sub_02069F64
+	bl GetFollowPokeSizeParamBySpecies
 	lsl r1, r0, #1
 	add r0, r0, r1
 	add r1, r6, r0
@@ -68295,10 +68295,10 @@ _02205A02:
 	add r0, r5, #0
 	add r0, #0xe4
 	ldr r0, [r0]
-	bl sub_02069F7C
+	bl FollowPokeObj_GetSpecies
 	ldr r1, [r5, #0x20]
 	ldr r1, [r1]
-	bl sub_02069FF4
+	bl GetFollowPokePermissionBySpeciesAndMap
 	cmp r0, #0
 	bne _02205A2A
 	add r0, r5, #0

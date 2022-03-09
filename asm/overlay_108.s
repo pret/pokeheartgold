@@ -6620,7 +6620,7 @@ ov108_021E8CD4: ; 0x021E8CD4
 	lsl r0, r0, #0x11
 	mov r1, #0
 	add r3, r6, #0
-	bl sub_02026FE8
+	bl GF_3DVramMan_InitLinkedListTexVramManager
 	mov r0, #1
 	lsl r0, r0, #8
 	bl NNS_GfdGetLnkPlttVramManagerWorkSize
@@ -6638,7 +6638,7 @@ ov108_021E8CD4: ; 0x021E8CD4
 	lsl r0, r0, #0xe
 	add r2, r6, #0
 	mov r3, #1
-	bl sub_02026FF8
+	bl GF_3DVramMan_InitLinkedListPlttVramManager
 	add r0, r5, #4
 	add r1, r4, #0
 	mov r2, #0x20

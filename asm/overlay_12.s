@@ -1,3 +1,4 @@
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -3495,7 +3496,7 @@ ov12_02239644: ; 0x02239644
 	str r0, [sp, #4]
 	mov r0, #5
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	add sp, #8
 	pop {r3, pc}
 	nop
@@ -3566,10 +3567,10 @@ _022396E4: .word 0x04000580
 
 	thumb_func_start ov12_022396E8
 ov12_022396E8: ; 0x022396E8
-	ldr r3, _022396EC ; =sub_02026F54
+	ldr r3, _022396EC ; =GF_3DVramMan_Delete
 	bx r3
 	.balign 4, 0
-_022396EC: .word sub_02026F54
+_022396EC: .word GF_3DVramMan_Delete
 	thumb_func_end ov12_022396E8
 
 	thumb_func_start ov12_022396F0
@@ -11148,10 +11149,10 @@ _0223CF60: .word 0x000004A3
 _0223CF64: .word 0x000005E6
 	thumb_func_end ov12_0223CF14
 
-	thumb_func_start ov12_0223CF68
-ov12_0223CF68: ; 0x0223CF68
+	thumb_func_start RunBattleScript
+RunBattleScript: ; 0x0223CF68
 	push {r3, r4, r5, r6, r7, lr}
-	ldr r7, _0223CFB0 ; =ov12_0226C6C8
+	ldr r7, _0223CFB0 ; =sBattleScriptCommandTable
 	add r5, r0, #0
 	add r4, r1, #0
 _0223CF70:
@@ -11188,9 +11189,9 @@ _0223CFA2:
 	add r0, r6, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0223CFB0: .word ov12_0226C6C8
+_0223CFB0: .word sBattleScriptCommandTable
 _0223CFB4: .word 0x00003154
-	thumb_func_end ov12_0223CF68
+	thumb_func_end RunBattleScript
 
 	thumb_func_start ov12_0223CFB8
 ov12_0223CFB8: ; 0x0223CFB8
@@ -28326,10 +28327,10 @@ ov12_02245508: ; 0x02245508
 
 	thumb_func_start ov12_02245518
 ov12_02245518: ; 0x02245518
-	ldr r3, _0224551C ; =ov12_0224EB9C
+	ldr r3, _0224551C ; =ReadBattleScriptFromNarc
 	bx r3
 	.balign 4, 0
-_0224551C: .word ov12_0224EB9C
+_0224551C: .word ReadBattleScriptFromNarc
 	thumb_func_end ov12_02245518
 
 	thumb_func_start ov12_02245520
@@ -29000,7 +29001,7 @@ _022459AC:
 	ldr r0, [r1, r0]
 	cmp r0, #0
 	bne _02245A0A
-	ldr r0, _02245C40 ; =0x00000469
+	ldr r0, _02245C40 ; =SEQ_GS_WIN2
 	bl PlayBGM
 	ldr r1, [r4, #4]
 	ldr r0, _02245C3C ; =0x00003144
@@ -29290,7 +29291,7 @@ _02245C30: .word 0x0000219E
 _02245C34: .word 0x00002E4C
 _02245C38: .word 0x00002FCC
 _02245C3C: .word 0x00003144
-_02245C40: .word 0x00000469
+_02245C40: .word SEQ_GS_WIN2
 _02245C44: .word gGameLanguage
 _02245C48: .word 0x0000219C
 _02245C4C: .word 0x00002DA4
@@ -30773,7 +30774,7 @@ _02246826:
 	str r0, [r4, #0x34]
 	mov r0, #9
 	str r0, [r4, #0x28]
-	ldr r0, _02246920 ; =0x00000469
+	ldr r0, _02246920 ; =SEQ_GS_WIN2
 	bl PlayBGM
 	ldr r0, [r4]
 	mov r1, #2
@@ -30855,7 +30856,7 @@ _02246910: .word 0x000005E6
 _02246914: .word 0x00000708
 _02246918: .word 0x00000709
 _0224691C: .word 0x00000363
-_02246920: .word 0x00000469
+_02246920: .word SEQ_GS_WIN2
 _02246924: .word 0x0000219C
 _02246928: .word 0x0000FFFF
 _0224692C:
@@ -34608,7 +34609,7 @@ ov12_02248780: ; 0x02248780
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #2
@@ -34627,7 +34628,7 @@ ov12_02248798: ; 0x02248798
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x29
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #3
@@ -34653,7 +34654,7 @@ ov12_022487C8: ; 0x022487C8
 	beq _022487E8
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -36201,7 +36202,7 @@ _02249360:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xe8
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	add sp, #8
 	str r0, [r4, #0xc]
@@ -36476,7 +36477,7 @@ _02249564:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x32
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	add r1, r4, #0
 	str r0, [r4, #0xc]
@@ -36566,7 +36567,7 @@ _02249618:
 	str r1, [r4, r0]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	add r1, r4, #0
 	str r0, [r4, #0xc]
@@ -36653,7 +36654,7 @@ _022496C2:
 	str r1, [r4, r0]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	add r1, r4, #0
 	str r0, [r4, #0xc]
@@ -36745,7 +36746,7 @@ _0224976E:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x6e
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	add r1, r4, #0
 	str r0, [r4, #0xc]
@@ -36810,7 +36811,7 @@ _0224980E:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xe9
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	add r1, r4, #0
 	str r0, [r4, #0xc]
@@ -36877,7 +36878,7 @@ _0224988A:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xfa
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	add r1, r4, #0
 	str r0, [r4, #0xc]
@@ -36977,7 +36978,7 @@ _0224994C:
 	str r0, [r4, r1]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	mov r5, #1
 	str r0, [r4, #0xc]
@@ -37026,7 +37027,7 @@ _022499BC:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x68
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -37045,7 +37046,7 @@ _022499F2:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xea
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -37063,7 +37064,7 @@ _02249A18:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x68
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -37100,7 +37101,7 @@ _02249A4C:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x68
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -37119,7 +37120,7 @@ _02249A82:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xeb
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -37137,7 +37138,7 @@ _02249AA8:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x68
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -37175,7 +37176,7 @@ _02249ADC:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x68
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -37194,7 +37195,7 @@ _02249B14:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xec
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -37213,7 +37214,7 @@ _02249B3A:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x68
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -37251,7 +37252,7 @@ _02249B70:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x68
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -37272,7 +37273,7 @@ _02249BA8:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xed
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -37290,7 +37291,7 @@ _02249BD2:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x68
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -37325,7 +37326,7 @@ _02249C06:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x68
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	mov r1, #0x12
 	str r0, [r4, #0xc]
@@ -37359,7 +37360,7 @@ _02249C48:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xee
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	mov r5, #1
 	str r0, [r4, #0xc]
@@ -37524,7 +37525,7 @@ _02249D7A:
 	mov r1, #1
 	mov r2, #0xef
 	str r5, [r4, r6]
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	b _02249DCC
 _02249DBE:
 	add r6, #0x58
@@ -37532,7 +37533,7 @@ _02249DBE:
 	mov r1, #1
 	mov r2, #0x89
 	str r5, [r4, r6]
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 _02249DCC:
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
@@ -37578,7 +37579,7 @@ _02249DE2:
 	mov r1, #1
 	mov r2, #0xef
 	str r5, [r4, r6]
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	b _02249E4E
 _02249E28:
 	add r1, r6, #0
@@ -37597,7 +37598,7 @@ _02249E28:
 	str r0, [r4, r1]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 _02249E4E:
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
@@ -37693,7 +37694,7 @@ _02249EB8:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x45
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -37734,7 +37735,7 @@ _02249F22:
 	str r0, [r4, r1]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -37799,7 +37800,7 @@ _02249FB8:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x17
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -37830,7 +37831,7 @@ _02249FF4:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x1a
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -37877,7 +37878,7 @@ _0224A058:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x5e
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -37914,7 +37915,7 @@ _0224A09E:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x62
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -37961,13 +37962,13 @@ _0224A0DC:
 	str r0, [r4, r1]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	b _0224A132
 _0224A128:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x3c
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 _0224A132:
 	ldr r0, _0224A3A4 ; =0x00002DEA
 	ldrh r1, [r6, r0]
@@ -38032,7 +38033,7 @@ _0224A154:
 	str r0, [r4, r1]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, _0224A3B4 ; =0x0000213C
 	mov r1, #0x40
 	ldr r2, [r4, r0]
@@ -38088,7 +38089,7 @@ _0224A1F0:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x13
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -38166,7 +38167,7 @@ _0224A2AC:
 	add r0, r4, #0
 	mov r1, #1
 	add r2, r6, #0
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -38224,7 +38225,7 @@ _0224A30A:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x33
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -38307,7 +38308,7 @@ _0224A3C8:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x48
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -38385,7 +38386,7 @@ _0224A458:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x4a
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -38478,7 +38479,7 @@ _0224A4E8:
 	add r0, r4, #0
 	mov r1, #1
 	add r2, #0x60
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -38516,7 +38517,7 @@ _0224A534:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xf2
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -38554,7 +38555,7 @@ _0224A57E:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xf3
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -38592,7 +38593,7 @@ _0224A5C8:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xf4
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -38633,7 +38634,7 @@ _0224A612:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x12
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -38659,7 +38660,7 @@ _0224A662:
 	ldr r2, [sp, #0x14]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -38860,7 +38861,7 @@ _0224A76A:
 	str r1, [r4, r0]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	add sp, #8
 	str r0, [r4, #0xc]
@@ -38964,7 +38965,7 @@ _0224A8C8:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x66
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	add sp, #8
 	str r0, [r4, #0xc]
@@ -39000,7 +39001,7 @@ _0224A8F4:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xfb
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	add sp, #8
 	str r0, [r4, #0xc]
@@ -39390,7 +39391,7 @@ _0224AC0A:
 	add r0, r4, #0
 	mov r1, #1
 	add r2, r5, #0
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x28
@@ -39421,7 +39422,7 @@ ov12_0224AC50: ; 0x0224AC50
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #9
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	add r0, r4, #0
 	add r0, #0xec
 	ldr r0, [r0]
@@ -39483,7 +39484,7 @@ ov12_0224AC94: ; 0x0224AC94
 	add r0, r4, #0
 	mov r1, #1
 	add r2, #0x5e
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0xb4
@@ -39497,7 +39498,7 @@ _0224ACEA:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xe6
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0xb4
@@ -39517,7 +39518,7 @@ _0224AD06:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #3
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0xb4
@@ -39531,7 +39532,7 @@ _0224AD30:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #8
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0xb4
@@ -39555,7 +39556,7 @@ ov12_0224AD58: ; 0x0224AD58
 	ldr r2, _0224AD9C ; =0x00000113
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0
 	str r0, [r4, #0x64]
 	mov r0, #1
@@ -39590,7 +39591,7 @@ ov12_0224ADA0: ; 0x0224ADA0
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xe3
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0
 	str r0, [r4, #0x64]
 	mov r0, #1
@@ -39642,7 +39643,7 @@ ov12_0224AE04: ; 0x0224AE04
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xe4
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0
 	str r0, [r4, #0x64]
 	mov r0, #1
@@ -39690,7 +39691,7 @@ ov12_0224AE64: ; 0x0224AE64
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xe5
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0
 	str r0, [r4, #0x64]
 	mov r0, #1
@@ -39710,7 +39711,7 @@ ov12_0224AE84: ; 0x0224AE84
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xb
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0
 	str r0, [r4, #0x64]
 	mov r0, #1
@@ -40393,7 +40394,7 @@ _0224B3E8:
 	ldr r2, _0224B490 ; =0x00000119
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x27
 	str r0, [r5, #0xc]
 	mov r0, #0x16
@@ -40659,7 +40660,7 @@ _0224B5C0:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x13
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	mov r7, #2
 	str r0, [r4, #0xc]
@@ -40735,7 +40736,7 @@ _0224B65A:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x14
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x27
@@ -40749,7 +40750,7 @@ _0224B698:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x13
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	mov r7, #2
 	str r0, [r4, #0xc]
@@ -40784,7 +40785,7 @@ _0224B6BA:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x1c
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x27
@@ -40799,7 +40800,7 @@ _0224B6FC:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x1d
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	mov r7, #2
 	str r0, [r4, #0xc]
@@ -40819,7 +40820,7 @@ _0224B720:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xbf
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x27
@@ -40850,7 +40851,7 @@ _0224B748:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x41
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x27
@@ -40886,7 +40887,7 @@ _0224B784:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xf
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x27
@@ -40917,7 +40918,7 @@ _0224B7CA:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x47
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x27
@@ -40954,7 +40955,7 @@ _0224B806:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x85
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x27
@@ -40996,7 +40997,7 @@ _0224B87C:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x90
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x27
@@ -41026,7 +41027,7 @@ _0224B8B4:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x9d
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x27
@@ -41056,7 +41057,7 @@ _0224B8F0:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xae
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x27
@@ -41103,7 +41104,7 @@ _0224B946:
 	beq _0224B982
 	add r0, r4, #0
 	mov r2, #0x26
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	mov r7, #2
 	str r0, [r4, #0xc]
@@ -41160,7 +41161,7 @@ _0224B982:
 	str r2, [r4, r0]
 	add r0, r4, #0
 	mov r2, #0x27
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x22
@@ -41171,7 +41172,7 @@ _0224B9F8:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x28
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	mov r7, #2
 	str r0, [r4, #0xc]
@@ -41213,7 +41214,7 @@ _0224BA0E:
 	add r1, r2, #0
 	add r0, r4, #0
 	mov r2, #0x20
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x27
@@ -41247,7 +41248,7 @@ _0224BA6C:
 	beq _0224BAAC
 	add r0, r4, #0
 	mov r2, #0x6b
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	mov r7, #2
 	str r0, [r4, #0xc]
@@ -41264,7 +41265,7 @@ _0224BAAC:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x6c
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x27
@@ -41345,7 +41346,7 @@ _0224BB3E:
 	ldr r2, _0224BBFC ; =0x0000011A
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x27
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -41356,7 +41357,7 @@ _0224BB6E:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x24
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	mov r7, #2
 	str r0, [r4, #0xc]
@@ -41382,7 +41383,7 @@ _0224BBA0:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x1e
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	mov r7, #2
 	str r0, [r4, #0xc]
@@ -41479,7 +41480,7 @@ _0224BC5C:
 _0224BC60:
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r5, #8]
 	mov r4, #1
 	str r0, [r5, #0xc]
@@ -41521,7 +41522,7 @@ ov12_0224BCA4: ; 0x0224BCA4
 	ldr r2, _0224BCC0 ; =0x00000116
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -42269,7 +42270,7 @@ _0224C218:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x8b
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -42350,7 +42351,7 @@ _0224C32A:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x92
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	add r1, r5, #0
 	str r0, [r4, #0xc]
@@ -42382,7 +42383,7 @@ _0224C36C: .word 0x0000305C
 ov12_0224C370: ; 0x0224C370
 	push {r4, lr}
 	add r4, r1, #0
-	bl ov12_0223CF68
+	bl RunBattleScript
 	cmp r0, #1
 	bne _0224C388
 	add r0, r4, #0
@@ -42473,7 +42474,7 @@ _0224C40C:
 	ldr r2, [sp]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	pop {r3, r4, r5, pc}
 _0224C41C:
 	ldr r0, [r4, #0x48]
@@ -42550,7 +42551,7 @@ _0224C492:
 	add r0, r4, #0
 	ldr r2, [r4, r2]
 	mov r1, #0
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x18
@@ -42713,7 +42714,7 @@ ov12_0224C5C8: ; 0x0224C5C8
 	ldr r2, [sp]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x1a
@@ -42749,7 +42750,7 @@ _0224C610:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x2a
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x27
@@ -42782,7 +42783,7 @@ _0224C650:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #7
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x22
@@ -42804,7 +42805,7 @@ ov12_0224C678: ; 0x0224C678
 	mov r1, #1
 	add r0, r4, #0
 	add r2, r1, #0
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x1c
@@ -42974,7 +42975,7 @@ _0224C7AE:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x5a
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x1d
@@ -43309,7 +43310,7 @@ _0224CA46:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #2
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x1d
@@ -43398,7 +43399,7 @@ _0224CAF8:
 	ldr r2, [sp, #0xc]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	add sp, #0x10
 	str r0, [r4, #0xc]
@@ -43412,7 +43413,7 @@ _0224CB2C:
 	str r0, [r4, #0x3c]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	add sp, #0x10
 	str r0, [r4, #0xc]
@@ -43440,7 +43441,7 @@ _0224CB56:
 	ldr r2, [sp, #8]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	add sp, #0x10
 	str r0, [r4, #0xc]
@@ -43500,7 +43501,7 @@ _0224CBC2:
 	ldr r2, [sp, #4]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	add sp, #0x10
 	str r0, [r4, #0xc]
@@ -43514,7 +43515,7 @@ _0224CBF6:
 	str r0, [r4, #0x3c]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	add sp, #0x10
 	str r0, [r4, #0xc]
@@ -43540,7 +43541,7 @@ _0224CC1E:
 	ldr r2, [sp]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	add sp, #0x10
 	str r0, [r4, #0xc]
@@ -43644,7 +43645,7 @@ _0224CCC6:
 	ldr r2, _0224CEEC ; =0x0000011F
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x46
 	ldr r1, [r4, #0x44]
 	lsl r0, r0, #2
@@ -43691,7 +43692,7 @@ _0224CD42:
 	beq _0224CD62
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	add sp, #0x10
 	str r0, [r4, #0xc]
@@ -43739,7 +43740,7 @@ _0224CD96:
 	ldr r2, [sp, #0xc]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	add sp, #0x10
 	str r0, [r4, #0xc]
@@ -43815,7 +43816,7 @@ _0224CE2A:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x1d
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	add sp, #0x10
 	str r0, [r4, #0xc]
@@ -43862,7 +43863,7 @@ _0224CE84:
 	ldr r2, [sp, #8]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -43972,7 +43973,7 @@ ov12_0224CF14: ; 0x0224CF14
 	add r0, r4, #0
 	ldr r2, [r4, r2]
 	mov r1, #0
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x18
@@ -43985,7 +43986,7 @@ _0224CF92:
 	str r0, [r4, r7]
 	add r0, r4, #0
 	mov r2, #0x11
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x22
@@ -44024,7 +44025,7 @@ _0224CFE0:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x11
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x22
@@ -44288,7 +44289,7 @@ ov12_0224D1DC: ; 0x0224D1DC
 	ldr r2, _0224D220 ; =0x00000115
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x25
@@ -44526,7 +44527,7 @@ _0224D39E:
 	beq _0224D3D6
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -44633,7 +44634,7 @@ _0224D48E:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #5
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x2c
@@ -44647,7 +44648,7 @@ _0224D4A2:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #4
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r4, #8]
 	mov r0, #0x2c
@@ -45048,13 +45049,13 @@ _0224D7B8:
 	ldr r0, [sp, #4]
 	mov r1, #1
 	mov r2, #0xe7
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	b _0224D7D0
 _0224D7C6:
 	ldr r0, [sp, #4]
 	mov r1, #1
 	mov r2, #0xa
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 _0224D7D0:
 	mov r0, #1
 	str r0, [sp, #0x30]
@@ -45460,22 +45461,22 @@ _0224DAB2: ; jump table
 	.short _0224DB20 - _0224DAB2 - 2 ; case 45
 	.short _0224DB10 - _0224DAB2 - 2 ; case 46
 _0224DB10:
-	ldr r0, _0224DB2C ; =0x0000046B
+	ldr r0, _0224DB2C ; =SEQ_GS_WIN3
 	bl PlayBGM
 	b _0224DB3C
 _0224DB18:
-	ldr r0, _0224DB30 ; =0x0000047C
+	ldr r0, _0224DB30 ; =SEQ_GS_WINBRAIN
 	bl PlayBGM
 	b _0224DB3C
 _0224DB20:
-	ldr r0, _0224DB34 ; =0x00000468
+	ldr r0, _0224DB34 ; =SEQ_GS_WIN1
 	b _0224DB38
 	.balign 4, 0
 _0224DB24: .word 0x00002D8C
 _0224DB28: .word 0x000001EE
-_0224DB2C: .word 0x0000046B
-_0224DB30: .word 0x0000047C
-_0224DB34: .word 0x00000468
+_0224DB2C: .word SEQ_GS_WIN3
+_0224DB30: .word SEQ_GS_WINBRAIN
+_0224DB34: .word SEQ_GS_WIN1
 _0224DB38:
 	bl PlayBGM
 _0224DB3C:
@@ -45696,13 +45697,13 @@ _0224DCB6:
 	add r0, r5, #0
 	mov r1, #1
 	mov r2, #6
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	b _0224DCE8
 _0224DCDE:
 	add r0, r5, #0
 	mov r1, #1
 	mov r2, #0x53
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 _0224DCE8:
 	mov r0, #0x16
 	str r0, [r5, #8]
@@ -45766,7 +45767,7 @@ _0224DD3E:
 	add r0, r5, #0
 	mov r1, #1
 	lsl r2, r2, #2
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x16
 	str r0, [r5, #8]
 	str r4, [r5, #0xc]
@@ -46055,7 +46056,7 @@ ov12_0224DF7C: ; 0x0224DF7C
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x10
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -46101,7 +46102,7 @@ _0224DFCC:
 	add r0, r5, #0
 	mov r1, #1
 	mov r2, #0x15
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r5, #8]
 	str r0, [r5, #0xc]
 	mov r0, #0x16
@@ -46171,7 +46172,7 @@ _0224E044:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xf5
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	mov r3, #1
 	str r0, [r4, #0xc]
@@ -46257,7 +46258,7 @@ _0224E0C2:
 	add r0, r5, #0
 	mov r1, #1
 	mov r2, #0xe
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r5, #8]
 	mov r4, #1
 	str r0, [r5, #0xc]
@@ -46310,7 +46311,7 @@ _0224E146:
 	ldr r2, _0224E1B8 ; =0x0000011F
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	mov r0, #0x46
 	ldr r1, [r5, #0x5c]
 	lsl r0, r0, #2
@@ -46471,7 +46472,7 @@ _0224E244:
 	str r1, [r4, r0]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	mov r6, #1
 	str r0, [r4, #0xc]
@@ -46536,7 +46537,7 @@ _0224E2C4:
 	str r1, [r4, r0]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	mov r6, #1
 	str r0, [r4, #0xc]
@@ -47524,8 +47525,8 @@ _0224EB94: .word 0x00002D70
 _0224EB98: .word 0x00002DA4
 	thumb_func_end ov12_0224EA14
 
-	thumb_func_start ov12_0224EB9C
-ov12_0224EB9C: ; 0x0224EB9C
+	thumb_func_start ReadBattleScriptFromNarc
+ReadBattleScriptFromNarc: ; 0x0224EB9C
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r6, r2, #0
@@ -47556,7 +47557,7 @@ _0224EBB8:
 	add r2, r6, #0
 	bl ReadWholeNarcMemberByIdPair
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov12_0224EB9C
+	thumb_func_end ReadBattleScriptFromNarc
 
 	thumb_func_start ov12_0224EBDC
 ov12_0224EBDC: ; 0x0224EBDC
@@ -47662,7 +47663,7 @@ ov12_0224EC74: ; 0x0224EC74
 	add r2, #0xcc
 	ldr r1, [r1]
 	ldr r2, [r2]
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	add r0, r4, #0
 	add r0, #0xb8
 	ldr r0, [r0]
@@ -51916,7 +51917,7 @@ ov12_02250BBC: ; 0x02250BBC
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xb4
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	mov r2, #1
 	str r0, [r4, #0xc]
@@ -51944,7 +51945,7 @@ _02250BFA:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xb4
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	mov r2, #1
 	str r0, [r4, #0xc]
@@ -56860,7 +56861,7 @@ _0225314E:
 	ldr r2, [sp, #4]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r5, #8]
 	str r0, [r5, #0xc]
 	mov r0, #0x16
@@ -59457,7 +59458,7 @@ _022544D8:
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xdd
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -59634,7 +59635,7 @@ _02254628:
 	ldr r2, [sp]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	str r6, [r4, #0xc]
 	mov r0, #0x16
 	str r0, [r4, #8]
@@ -59651,7 +59652,7 @@ _0225464A:
 	ldr r2, [sp]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	str r6, [r4, #0xc]
 	mov r0, #0x16
 	str r0, [r4, #8]
@@ -59730,7 +59731,7 @@ _022546E8:
 	ldr r2, [sp]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	str r6, [r4, #0xc]
 	mov r0, #0x16
 	str r0, [r4, #8]
@@ -60563,7 +60564,7 @@ _02254D1E:
 	add r0, r4, #0
 	mov r1, #1
 	add r2, r7, #0
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r4, #8]
 	str r0, [r4, #0xc]
 	mov r0, #0x16
@@ -60695,7 +60696,7 @@ _02254E40:
 	ldr r2, [sp]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r5, #8]
 	str r0, [r5, #0xc]
 	mov r0, #0x16
@@ -61672,7 +61673,7 @@ _022555AE:
 	ldr r2, [sp, #4]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0224EB9C
+	bl ReadBattleScriptFromNarc
 	ldr r0, [r5, #8]
 	str r0, [r5, #0xc]
 	mov r0, #0x16
@@ -108419,7 +108420,7 @@ ov12_0226C4C6: ; 0x0226C4C6
 	.byte 0x7C, 0x00, 0x2D, 0x00, 0x7D, 0x00, 0x00, 0x00, 0x7E, 0x00, 0x00, 0x00, 0x7F, 0x00, 0x00, 0x00
 	.byte 0x80, 0x00, 0x00, 0x00, 0x1E, 0x00, 0x08, 0x00
 
-ov12_0226C6C8: ; 0x0226C6C8
+sBattleScriptCommandTable: ; 0x0226C6C8
 	.word ov12_0223CFB8
 	.word ov12_0223CFD0
 	.word ov12_0223D04C

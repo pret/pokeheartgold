@@ -1965,7 +1965,7 @@ ov48_02259750: ; 0x02259750
 	add r0, r1, #0
 	mov r1, #0
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	mov r1, #5
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -1985,11 +1985,11 @@ _02259784: .word 0xFFFFF001
 ov48_02259788: ; 0x02259788
 	mov r1, #5
 	lsl r1, r1, #6
-	ldr r3, _02259794 ; =sub_02026F54
+	ldr r3, _02259794 ; =GF_3DVramMan_Delete
 	ldr r0, [r0, r1]
 	bx r3
 	nop
-_02259794: .word sub_02026F54
+_02259794: .word GF_3DVramMan_Delete
 	thumb_func_end ov48_02259788
 
 	thumb_func_start ov48_02259798

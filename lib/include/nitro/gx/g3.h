@@ -39,4 +39,6 @@ typedef enum {
     GX_TEXPLTTCOLOR0_TRNS = 1
 } GXTexPlttColor0;
 
+#define GX_PACK_VIEWPORT_PARAM(x1, y1, x2, y2)  ((u32)((x1) | ((y1) << 8) | ((x2) << 16) | ((y2) << 24)))
+
 #endif //NITRO_GX_G3_H_

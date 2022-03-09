@@ -475,7 +475,7 @@ _02067CAE:
 	ldr r0, [r5, r0]
 	mov r1, #1
 	mov r6, #2
-	bl sub_0206A1F4
+	bl FsysUnkSub108_AddMonMood
 	b _02067CD6
 _02067CD4:
 	mov r6, #1

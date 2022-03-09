@@ -811,7 +811,7 @@ sub_0205E680: ; 0x0205E680
 	add r2, sp, #0
 	bl sub_020611C8
 	add r0, r5, #0
-	bl sub_0205F968
+	bl MapObject_GetPosVecYCoord
 	str r0, [sp, #4]
 	add r0, r5, #0
 	bl sub_0205F8B8
@@ -822,7 +822,7 @@ sub_0205E680: ; 0x0205E680
 	cmp r0, #0
 	bne _0205E77C
 	add r0, r5, #0
-	bl sub_0205F968
+	bl MapObject_GetPosVecYCoord
 	str r0, [r4, #0x2c]
 	b _0205E792
 _0205E77C:
@@ -831,7 +831,7 @@ _0205E77C:
 	cmp r0, #1
 	bne _0205E78E
 	add r0, r5, #0
-	bl sub_0205F968
+	bl MapObject_GetPosVecYCoord
 	str r0, [sp, #4]
 _0205E78E:
 	ldr r0, [sp, #4]
@@ -3727,11 +3727,11 @@ MapObject_GetPositionVecPtr: ; 0x0205F964
 	bx lr
 	thumb_func_end MapObject_GetPositionVecPtr
 
-	thumb_func_start sub_0205F968
-sub_0205F968: ; 0x0205F968
+	thumb_func_start MapObject_GetPosVecYCoord
+MapObject_GetPosVecYCoord: ; 0x0205F968
 	ldr r0, [r0, #0x74]
 	bx lr
-	thumb_func_end sub_0205F968
+	thumb_func_end MapObject_GetPosVecYCoord
 
 	thumb_func_start MapObject_GetFacingVec
 MapObject_GetFacingVec: ; 0x0205F96C
@@ -3814,7 +3814,7 @@ sub_0205F9C0: ; 0x0205F9C0
 	thumb_func_start sub_0205F9D0
 sub_0205F9D0: ; 0x0205F9D0
 	push {r3, lr}
-	bl sub_0205F968
+	bl MapObject_GetPosVecYCoord
 	asr r1, r0, #3
 	asr r0, r1, #0xb
 	lsr r0, r0, #0x14

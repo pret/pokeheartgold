@@ -2516,7 +2516,7 @@ ov89_02259D70: ; 0x02259D70
 	str r1, [sp, #4]
 	mov r1, #0
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -2587,10 +2587,10 @@ _02259E0C: .word 0x04000580
 
 	thumb_func_start ov89_02259E10
 ov89_02259E10: ; 0x02259E10
-	ldr r3, _02259E14 ; =sub_02026F54
+	ldr r3, _02259E14 ; =GF_3DVramMan_Delete
 	bx r3
 	.balign 4, 0
-_02259E14: .word sub_02026F54
+_02259E14: .word GF_3DVramMan_Delete
 	thumb_func_end ov89_02259E10
 
 	thumb_func_start ov89_02259E18

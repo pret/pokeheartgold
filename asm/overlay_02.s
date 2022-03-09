@@ -13833,7 +13833,7 @@ _0224C3F8:
 	ldr r0, [r6, r0]
 	mov r1, #1
 	mov r4, #2
-	bl sub_0206A1F4
+	bl FsysUnkSub108_AddMonMood
 	b _0224C420
 _0224C41E:
 	mov r4, #1
@@ -14056,7 +14056,7 @@ _0224C5A4:
 	ldr r0, [r6, r0]
 	mov r1, #1
 	mov r4, #2
-	bl sub_0206A1F4
+	bl FsysUnkSub108_AddMonMood
 	b _0224C5CC
 _0224C5CA:
 	mov r4, #1
@@ -20572,7 +20572,7 @@ ov02_0224F698: ; 0x0224F698
 	mov r1, #0x42
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl sub_0206A268
+	bl FsysUnkSub108_GetMonMood
 	strb r0, [r4, #0x15]
 	pop {r4, pc}
 	.balign 4, 0
@@ -21544,7 +21544,7 @@ _0224FDBC:
 	cmp r0, #0
 	beq _0224FDDC
 	add r0, r4, #0
-	bl sub_02069F7C
+	bl FollowPokeObj_GetSpecies
 	cmp r0, #0x32
 	beq _0224FDDC
 	cmp r0, #0x33
@@ -22474,7 +22474,7 @@ ov02_02250504: ; 0x02250504
 	mov r0, #0x42
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0206A268
+	bl FsysUnkSub108_GetMonMood
 	mov r1, #0x12
 	str r0, [sp]
 	lsl r1, r1, #4
@@ -22501,7 +22501,7 @@ _02250542:
 	lsl r1, r1, #0x18
 	ldr r0, [r5, r0]
 	asr r1, r1, #0x18
-	bl sub_0206A240
+	bl FsysUnkSub108_SetMonMood
 	add r0, r4, #0
 	mov r1, #9
 	mov r2, #0
@@ -22865,7 +22865,7 @@ ov02_022507B4: ; 0x022507B4
 	add r0, #0xe4
 	ldr r0, [r0]
 	add r4, r1, #0
-	bl sub_02069F7C
+	bl FollowPokeObj_GetSpecies
 	sub r0, #0x32
 	cmp r0, #1
 	bls _022507E0
