@@ -230,7 +230,6 @@ Static main
 	Object asm/unk_02069660.o
 	Object asm/unk_0206979C.o
 	Object src/field_follow_poke.o
-	Object asm/field_follow_poke_s.o
 	Object asm/unk_0206A360.o
 	Object asm/field_take_photo.o
 	Object asm/unk_0206B910.o

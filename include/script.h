@@ -168,10 +168,10 @@ typedef struct FollowMon {
 } FollowMon;
 
 struct FieldSystemUnk108 {
-    u32 unk0;
-    u16 unk4;
-    u16 unk6;
-    u32 unk8;
+    u32 personality;
+    u16 species;
+    u16 isRegistered;
+    POKEMON *pokemon;
 };
 
 typedef struct MapObjectMan MapObjectMan;
