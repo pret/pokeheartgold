@@ -1,7 +1,7 @@
 #include "font.h"
 #include "text.h"
 #include "gf_gfx_loader.h"
-#include "unk_02025E88.h"
+#include "font_data.h"
 #include "render_text.h"
 
 struct FontWork {
@@ -14,12 +14,12 @@ struct FontWork {
 static struct FontWork *_0211188C = NULL;
 
 static const u16 _020F56C0[][2] = {
-    {0x0000, 0x0000},
-    {0x0001, 0x0000},
-    {0x0002, 0x0000},
-    {0x0003, 0x0000},
-    {0x0004, 0x0000},
-    {0x000A, 0x0000},
+    {0x0000, FALSE},
+    {0x0001, FALSE},
+    {0x0002, FALSE},
+    {0x0003, FALSE},
+    {0x0004, FALSE},
+    {0x000A, FALSE},
 };
 
 static const struct FontInfo _020F56D8[] = {

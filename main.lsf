@@ -79,6 +79,7 @@ Static main
 	Object src/error_handling.o
 	Object asm/unk_02025534.o
 	Object asm/unk_02025C44.o
+	Object src/font_data.o
 	Object asm/unk_02025E88.o
 	Object src/pm_string.o
 	Object asm/unk_02026C44.o
