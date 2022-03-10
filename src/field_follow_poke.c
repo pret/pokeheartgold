@@ -6,6 +6,7 @@
 #include "map_header.h"
 #include "field_follow_poke.h"
 #include "constants/scrcmd.h"
+#include "constants/follow_poke_idx.h"
 
 static void FsysFollowMonClear(FollowMon *followMon);
 static void FollowingPoke_SetObjectShinyFlag(LocalMapObject *mapObject, BOOL enable);
@@ -14,500 +15,500 @@ static void FollowingPoke_SetObjectFormeParam(LocalMapObject *mapObject, int spe
 static LocalMapObject *CreateFollowingSpriteFieldObject(MapObjectMan *mapObjectMan, int species, u16 forme, int gender, int direction, int x, int y, int shiny);
 
 static const u16 sModelIndexLUT[] = {
-    0x0000,                // SPECIES_NONE
-    0x0000,                // SPECIES_BULBASAUR
-    0x0001,                // SPECIES_IVYSAUR
-    0x0002,                // SPECIES_VENUSAUR
-    0x0004,                // SPECIES_CHARMANDER
-    0x0005,                // SPECIES_CHARMELEON
-    0x0006,                // SPECIES_CHARIZARD
-    0x0007,                // SPECIES_SQUIRTLE
-    0x0008,                // SPECIES_WARTORTLE
-    0x0009,                // SPECIES_BLASTOISE
-    0x000A,                // SPECIES_CATERPIE
-    0x000B,                // SPECIES_METAPOD
-    0x000C,                // SPECIES_BUTTERFREE
-    0x000D,                // SPECIES_WEEDLE
-    0x000E,                // SPECIES_KAKUNA
-    0x000F,                // SPECIES_BEEDRILL
-    0x0010,                // SPECIES_PIDGEY
-    0x0011,                // SPECIES_PIDGEOTTO
-    0x0012,                // SPECIES_PIDGEOT
-    0x0013,                // SPECIES_RATTATA
-    0x0014,                // SPECIES_RATICATE
-    0x0015,                // SPECIES_SPEAROW
-    0x0016,                // SPECIES_FEAROW
-    0x0017,                // SPECIES_EKANS
-    0x0018,                // SPECIES_ARBOK
-    0x0019,                // SPECIES_PIKACHU
-    0x001B,                // SPECIES_RAICHU
-    0x001C,                // SPECIES_SANDSHREW
-    0x001D,                // SPECIES_SANDSLASH
-    0x001E,                // SPECIES_NIDORAN_F
-    0x001F,                // SPECIES_NIDORINA
-    0x0020,                // SPECIES_NIDOQUEEN
-    0x0021,                // SPECIES_NIDORAN_M
-    0x0022,                // SPECIES_NIDORINO
-    0x0023,                // SPECIES_NIDOKING
-    0x0024,                // SPECIES_CLEFAIRY
-    0x0025,                // SPECIES_CLEFABLE
-    0x0026,                // SPECIES_VULPIX
-    0x0027,                // SPECIES_NINETALES
-    0x0028,                // SPECIES_JIGGLYPUFF
-    0x0029,                // SPECIES_WIGGLYTUFF
-    0x002A,                // SPECIES_ZUBAT
-    0x002B,                // SPECIES_GOLBAT
-    0x002C,                // SPECIES_ODDISH
-    0x002D,                // SPECIES_GLOOM
-    0x002E,                // SPECIES_VILEPLUME
-    0x002F,                // SPECIES_PARAS
-    0x0030,                // SPECIES_PARASECT
-    0x0031,                // SPECIES_VENONAT
-    0x0032,                // SPECIES_VENOMOTH
-    0x0033,                // SPECIES_DIGLETT
-    0x0034,                // SPECIES_DUGTRIO
-    0x0035,                // SPECIES_MEOWTH
-    0x0036,                // SPECIES_PERSIAN
-    0x0037,                // SPECIES_PSYDUCK
-    0x0038,                // SPECIES_GOLDUCK
-    0x0039,                // SPECIES_MANKEY
-    0x003A,                // SPECIES_PRIMEAPE
-    0x003B,                // SPECIES_GROWLITHE
-    0x003C,                // SPECIES_ARCANINE
-    0x003D,                // SPECIES_POLIWAG
-    0x003E,                // SPECIES_POLIWHIRL
-    0x003F,                // SPECIES_POLIWRATH
-    0x0040,                // SPECIES_ABRA
-    0x0041,                // SPECIES_KADABRA
-    0x0042,                // SPECIES_ALAKAZAM
-    0x0043,                // SPECIES_MACHOP
-    0x0044,                // SPECIES_MACHOKE
-    0x0045,                // SPECIES_MACHAMP
-    0x0046,                // SPECIES_BELLSPROUT
-    0x0047,                // SPECIES_WEEPINBELL
-    0x0048,                // SPECIES_VICTREEBEL
-    0x0049,                // SPECIES_TENTACOOL
-    0x004A,                // SPECIES_TENTACRUEL
-    0x004B,                // SPECIES_GEODUDE
-    0x004C,                // SPECIES_GRAVELER
-    0x004D,                // SPECIES_GOLEM
-    0x004E,                // SPECIES_PONYTA
-    0x004F,                // SPECIES_RAPIDASH
-    0x0050,                // SPECIES_SLOWPOKE
-    0x0051,                // SPECIES_SLOWBRO
-    0x0052,                // SPECIES_MAGNEMITE
-    0x0053,                // SPECIES_MAGNETON
-    0x0054,                // SPECIES_FARFETCHD
-    0x0055,                // SPECIES_DODUO
-    0x0056,                // SPECIES_DODRIO
-    0x0057,                // SPECIES_SEEL
-    0x0058,                // SPECIES_DEWGONG
-    0x0059,                // SPECIES_GRIMER
-    0x005A,                // SPECIES_MUK
-    0x005B,                // SPECIES_SHELLDER
-    0x005C,                // SPECIES_CLOYSTER
-    0x005D,                // SPECIES_GASTLY
-    0x005E,                // SPECIES_HAUNTER
-    0x005F,                // SPECIES_GENGAR
-    0x0060,                // SPECIES_ONIX
-    0x0061,                // SPECIES_DROWZEE
-    0x0062,                // SPECIES_HYPNO
-    0x0063,                // SPECIES_KRABBY
-    0x0064,                // SPECIES_KINGLER
-    0x0065,                // SPECIES_VOLTORB
-    0x0066,                // SPECIES_ELECTRODE
-    0x0067,                // SPECIES_EXEGGCUTE
-    0x0068,                // SPECIES_EXEGGUTOR
-    0x0069,                // SPECIES_CUBONE
-    0x006A,                // SPECIES_MAROWAK
-    0x006B,                // SPECIES_HITMONLEE
-    0x006C,                // SPECIES_HITMONCHAN
-    0x006D,                // SPECIES_LICKITUNG
-    0x006E,                // SPECIES_KOFFING
-    0x006F,                // SPECIES_WEEZING
-    0x0070,                // SPECIES_RHYHORN
-    0x0071,                // SPECIES_RHYDON
-    0x0072,                // SPECIES_CHANSEY
-    0x0073,                // SPECIES_TANGELA
-    0x0074,                // SPECIES_KANGASKHAN
-    0x0075,                // SPECIES_HORSEA
-    0x0076,                // SPECIES_SEADRA
-    0x0077,                // SPECIES_GOLDEEN
-    0x0078,                // SPECIES_SEAKING
-    0x0079,                // SPECIES_STARYU
-    0x007A,                // SPECIES_STARMIE
-    0x007B,                // SPECIES_MR_MIME
-    0x007C,                // SPECIES_SCYTHER
-    0x007D,                // SPECIES_JYNX
-    0x007E,                // SPECIES_ELECTABUZZ
-    0x007F,                // SPECIES_MAGMAR
-    0x0080,                // SPECIES_PINSIR
-    0x0081,                // SPECIES_TAUROS
-    0x0082,                // SPECIES_MAGIKARP
-    0x0083,                // SPECIES_GYARADOS
-    0x0084,                // SPECIES_LAPRAS
-    0x0085,                // SPECIES_DITTO
-    0x0086,                // SPECIES_EEVEE
-    0x0087,                // SPECIES_VAPOREON
-    0x0088,                // SPECIES_JOLTEON
-    0x0089,                // SPECIES_FLAREON
-    0x008A,                // SPECIES_PORYGON
-    0x008B,                // SPECIES_OMANYTE
-    0x008C,                // SPECIES_OMASTAR
-    0x008D,                // SPECIES_KABUTO
-    0x008E,                // SPECIES_KABUTOPS
-    0x008F,                // SPECIES_AERODACTYL
-    0x0090,                // SPECIES_SNORLAX
-    0x0091,                // SPECIES_ARTICUNO
-    0x0092,                // SPECIES_ZAPDOS
-    0x0093,                // SPECIES_MOLTRES
-    0x0094,                // SPECIES_DRATINI
-    0x0095,                // SPECIES_DRAGONAIR
-    0x0096,                // SPECIES_DRAGONITE
-    0x0097,                // SPECIES_MEWTWO
-    0x0098,                // SPECIES_MEW
-    0x0099,                // SPECIES_CHIKORITA
-    0x009A,                // SPECIES_BAYLEEF
-    0x009B,                // SPECIES_MEGANIUM
-    0x009D,                // SPECIES_CYNDAQUIL
-    0x009E,                // SPECIES_QUILAVA
-    0x009F,                // SPECIES_TYPHLOSION
-    0x00A0,                // SPECIES_TOTODILE
-    0x00A1,                // SPECIES_CROCONAW
-    0x00A2,                // SPECIES_FERALIGATR
-    0x00A3,                // SPECIES_SENTRET
-    0x00A4,                // SPECIES_FURRET
-    0x00A5,                // SPECIES_HOOTHOOT
-    0x00A6,                // SPECIES_NOCTOWL
-    0x00A7,                // SPECIES_LEDYBA
-    0x00A8,                // SPECIES_LEDIAN
-    0x00A9,                // SPECIES_SPINARAK
-    0x00AA,                // SPECIES_ARIADOS
-    0x00AB,                // SPECIES_CROBAT
-    0x00AC,                // SPECIES_CHINCHOU
-    0x00AD,                // SPECIES_LANTURN
-    0x00AE,                // SPECIES_PICHU
-    0x00B0,                // SPECIES_CLEFFA
-    0x00B1,                // SPECIES_IGGLYBUFF
-    0x00B2,                // SPECIES_TOGEPI
-    0x00B3,                // SPECIES_TOGETIC
-    0x00B4,                // SPECIES_NATU
-    0x00B5,                // SPECIES_XATU
-    0x00B6,                // SPECIES_MAREEP
-    0x00B7,                // SPECIES_FLAAFFY
-    0x00B8,                // SPECIES_AMPHAROS
-    0x00B9,                // SPECIES_BELLOSSOM
-    0x00BA,                // SPECIES_MARILL
-    0x00BB,                // SPECIES_AZUMARILL
-    0x00BC,                // SPECIES_SUDOWOODO
-    0x00BD,                // SPECIES_POLITOED
-    0x00BE,                // SPECIES_HOPPIP
-    0x00BF,                // SPECIES_SKIPLOOM
-    0x00C0,                // SPECIES_JUMPLUFF
-    0x00C1,                // SPECIES_AIPOM
-    0x00C2,                // SPECIES_SUNKERN
-    0x00C3,                // SPECIES_SUNFLORA
-    0x00C4,                // SPECIES_YANMA
-    0x00C5,                // SPECIES_WOOPER
-    0x00C6,                // SPECIES_QUAGSIRE
-    0x00C7,                // SPECIES_ESPEON
-    0x00C8,                // SPECIES_UMBREON
-    0x00C9,                // SPECIES_MURKROW
-    0x00CA,                // SPECIES_SLOWKING
-    0x00CB,                // SPECIES_MISDREAVUS
-    0x00CC,                // SPECIES_UNOWN
-    0x00E8,                // SPECIES_WOBBUFFET
-    0x00EA,                // SPECIES_GIRAFARIG
-    0x00EB,                // SPECIES_PINECO
-    0x00EC,                // SPECIES_FORRETRESS
-    0x00ED,                // SPECIES_DUNSPARCE
-    0x00EE,                // SPECIES_GLIGAR
-    0x00EF,                // SPECIES_STEELIX
-    0x00F1,                // SPECIES_SNUBBULL
-    0x00F2,                // SPECIES_GRANBULL
-    0x00F3,                // SPECIES_QWILFISH
-    0x00F4,                // SPECIES_SCIZOR
-    0x00F5,                // SPECIES_SHUCKLE
-    0x00F6,                // SPECIES_HERACROSS
-    0x00F8,                // SPECIES_SNEASEL
-    0x00F9,                // SPECIES_TEDDIURSA
-    0x00FA,                // SPECIES_URSARING
-    0x00FB,                // SPECIES_SLUGMA
-    0x00FC,                // SPECIES_MAGCARGO
-    0x00FD,                // SPECIES_SWINUB
-    0x00FE,                // SPECIES_PILOSWINE
-    0x00FF,                // SPECIES_CORSOLA
-    0x0100,                // SPECIES_REMORAID
-    0x0101,                // SPECIES_OCTILLERY
-    0x0102,                // SPECIES_DELIBIRD
-    0x0103,                // SPECIES_MANTINE
-    0x0104,                // SPECIES_SKARMORY
-    0x0105,                // SPECIES_HOUNDOUR
-    0x0106,                // SPECIES_HOUNDOOM
-    0x0107,                // SPECIES_KINGDRA
-    0x0108,                // SPECIES_PHANPY
-    0x0109,                // SPECIES_DONPHAN
-    0x010A,                // SPECIES_PORYGON2
-    0x010B,                // SPECIES_STANTLER
-    0x010C,                // SPECIES_SMEARGLE
-    0x010D,                // SPECIES_TYROGUE
-    0x010E,                // SPECIES_HITMONTOP
-    0x010F,                // SPECIES_SMOOCHUM
-    0x0110,                // SPECIES_ELEKID
-    0x0111,                // SPECIES_MAGBY
-    0x0112,                // SPECIES_MILTANK
-    0x0113,                // SPECIES_BLISSEY
-    0x0114,                // SPECIES_RAIKOU
-    0x0115,                // SPECIES_ENTEI
-    0x0116,                // SPECIES_SUICUNE
-    0x0117,                // SPECIES_LARVITAR
-    0x0118,                // SPECIES_PUPITAR
-    0x0119,                // SPECIES_TYRANITAR
-    0x011A,                // SPECIES_LUGIA
-    0x011B,                // SPECIES_HO_OH
-    0x011C,                // SPECIES_CELEBI
-    0x011D,                // SPECIES_TREECKO
-    0x011E,                // SPECIES_GROVYLE
-    0x011F,                // SPECIES_SCEPTILE
-    0x0120,                // SPECIES_TORCHIC
-    0x0121,                // SPECIES_COMBUSKEN
-    0x0122,                // SPECIES_BLAZIKEN
-    0x0123,                // SPECIES_MUDKIP
-    0x0124,                // SPECIES_MARSHTOMP
-    0x0125,                // SPECIES_SWAMPERT
-    0x0126,                // SPECIES_POOCHYENA
-    0x0127,                // SPECIES_MIGHTYENA
-    0x0128,                // SPECIES_ZIGZAGOON
-    0x0129,                // SPECIES_LINOONE
-    0x012A,                // SPECIES_WURMPLE
-    0x012B,                // SPECIES_SILCOON
-    0x012C,                // SPECIES_BEAUTIFLY
-    0x012D,                // SPECIES_CASCOON
-    0x012E,                // SPECIES_DUSTOX
-    0x012F,                // SPECIES_LOTAD
-    0x0130,                // SPECIES_LOMBRE
-    0x0131,                // SPECIES_LUDICOLO
-    0x0132,                // SPECIES_SEEDOT
-    0x0133,                // SPECIES_NUZLEAF
-    0x0134,                // SPECIES_SHIFTRY
-    0x0135,                // SPECIES_TAILLOW
-    0x0136,                // SPECIES_SWELLOW
-    0x0137,                // SPECIES_WINGULL
-    0x0138,                // SPECIES_PELIPPER
-    0x0139,                // SPECIES_RALTS
-    0x013A,                // SPECIES_KIRLIA
-    0x013B,                // SPECIES_GARDEVOIR
-    0x013C,                // SPECIES_SURSKIT
-    0x013D,                // SPECIES_MASQUERAIN
-    0x013E,                // SPECIES_SHROOMISH
-    0x013F,                // SPECIES_BRELOOM
-    0x0140,                // SPECIES_SLAKOTH
-    0x0141,                // SPECIES_VIGOROTH
-    0x0142,                // SPECIES_SLAKING
-    0x0143,                // SPECIES_NINCADA
-    0x0144,                // SPECIES_NINJASK
-    0x0145,                // SPECIES_SHEDINJA
-    0x0146,                // SPECIES_WHISMUR
-    0x0147,                // SPECIES_LOUDRED
-    0x0148,                // SPECIES_EXPLOUD
-    0x0149,                // SPECIES_MAKUHITA
-    0x014A,                // SPECIES_HARIYAMA
-    0x014B,                // SPECIES_AZURILL
-    0x014C,                // SPECIES_NOSEPASS
-    0x014D,                // SPECIES_SKITTY
-    0x014E,                // SPECIES_DELCATTY
-    0x014F,                // SPECIES_SABLEYE
-    0x0150,                // SPECIES_MAWILE
-    0x0151,                // SPECIES_ARON
-    0x0152,                // SPECIES_LAIRON
-    0x0153,                // SPECIES_AGGRON
-    0x0154,                // SPECIES_MEDITITE
-    0x0155,                // SPECIES_MEDICHAM
-    0x0156,                // SPECIES_ELECTRIKE
-    0x0157,                // SPECIES_MANECTRIC
-    0x0158,                // SPECIES_PLUSLE
-    0x0159,                // SPECIES_MINUN
-    0x015A,                // SPECIES_VOLBEAT
-    0x015B,                // SPECIES_ILLUMISE
-    0x015C,                // SPECIES_ROSELIA
-    0x015D,                // SPECIES_GULPIN
-    0x015E,                // SPECIES_SWALOT
-    0x015F,                // SPECIES_CARVANHA
-    0x0160,                // SPECIES_SHARPEDO
-    0x0161,                // SPECIES_WAILMER
-    0x0162,                // SPECIES_WAILORD
-    0x0163,                // SPECIES_NUMEL
-    0x0164,                // SPECIES_CAMERUPT
-    0x0165,                // SPECIES_TORKOAL
-    0x0166,                // SPECIES_SPOINK
-    0x0167,                // SPECIES_GRUMPIG
-    0x0168,                // SPECIES_SPINDA
-    0x0169,                // SPECIES_TRAPINCH
-    0x016A,                // SPECIES_VIBRAVA
-    0x016B,                // SPECIES_FLYGON
-    0x016C,                // SPECIES_CACNEA
-    0x016D,                // SPECIES_CACTURNE
-    0x016E,                // SPECIES_SWABLU
-    0x016F,                // SPECIES_ALTARIA
-    0x0170,                // SPECIES_ZANGOOSE
-    0x0171,                // SPECIES_SEVIPER
-    0x0172,                // SPECIES_LUNATONE
-    0x0173,                // SPECIES_SOLROCK
-    0x0174,                // SPECIES_BARBOACH
-    0x0175,                // SPECIES_WHISCASH
-    0x0176,                // SPECIES_CORPHISH
-    0x0177,                // SPECIES_CRAWDAUNT
-    0x0178,                // SPECIES_BALTOY
-    0x0179,                // SPECIES_CLAYDOL
-    0x017A,                // SPECIES_LILEEP
-    0x017B,                // SPECIES_CRADILY
-    0x017C,                // SPECIES_ANORITH
-    0x017D,                // SPECIES_ARMALDO
-    0x017E,                // SPECIES_FEEBAS
-    0x017F,                // SPECIES_MILOTIC
-    0x0180,                // SPECIES_CASTFORM
-    0x0181,                // SPECIES_KECLEON
-    0x0182,                // SPECIES_SHUPPET
-    0x0183,                // SPECIES_BANETTE
-    0x0184,                // SPECIES_DUSKULL
-    0x0185,                // SPECIES_DUSCLOPS
-    0x0186,                // SPECIES_TROPIUS
-    0x0187,                // SPECIES_CHIMECHO
-    0x0188,                // SPECIES_ABSOL
-    0x0189,                // SPECIES_WYNAUT
-    0x018A,                // SPECIES_SNORUNT
-    0x018B,                // SPECIES_GLALIE
-    0x018C,                // SPECIES_SPHEAL
-    0x018D,                // SPECIES_SEALEO
-    0x018E,                // SPECIES_WALREIN
-    0x018F,                // SPECIES_CLAMPERL
-    0x0190,                // SPECIES_HUNTAIL
-    0x0191,                // SPECIES_GOREBYSS
-    0x0192,                // SPECIES_RELICANTH
-    0x0193,                // SPECIES_LUVDISC
-    0x0194,                // SPECIES_BAGON
-    0x0195,                // SPECIES_SHELGON
-    0x0196,                // SPECIES_SALAMENCE
-    0x0197,                // SPECIES_BELDUM
-    0x0198,                // SPECIES_METANG
-    0x0199,                // SPECIES_METAGROSS
-    0x019A,                // SPECIES_REGIROCK
-    0x019B,                // SPECIES_REGICE
-    0x019C,                // SPECIES_REGISTEEL
-    0x019D,                // SPECIES_LATIAS
-    0x019E,                // SPECIES_LATIOS
-    0x019F,                // SPECIES_KYOGRE
-    0x01A0,                // SPECIES_GROUDON
-    0x01A1,                // SPECIES_RAYQUAZA
-    0x01A2,                // SPECIES_JIRACHI
-    0x01A3,                // SPECIES_DEOXYS
-    0x01A7,                // SPECIES_TURTWIG
-    0x01A8,                // SPECIES_GROTLE
-    0x01A9,                // SPECIES_TORTERRA
-    0x01AA,                // SPECIES_CHIMCHAR
-    0x01AB,                // SPECIES_MONFERNO
-    0x01AC,                // SPECIES_INFERNAPE
-    0x01AD,                // SPECIES_PIPLUP
-    0x01AE,                // SPECIES_PRINPLUP
-    0x01AF,                // SPECIES_EMPOLEON
-    0x01B0,                // SPECIES_STARLY
-    0x01B1,                // SPECIES_STARAVIA
-    0x01B2,                // SPECIES_STARAPTOR
-    0x01B3,                // SPECIES_BIDOOF
-    0x01B4,                // SPECIES_BIBAREL
-    0x01B5,                // SPECIES_KRICKETOT
-    0x01B6,                // SPECIES_KRICKETUNE
-    0x01B7,                // SPECIES_SHINX
-    0x01B8,                // SPECIES_LUXIO
-    0x01B9,                // SPECIES_LUXRAY
-    0x01BA,                // SPECIES_BUDEW
-    0x01BB,                // SPECIES_ROSERADE
-    0x01BC,                // SPECIES_CRANIDOS
-    0x01BD,                // SPECIES_RAMPARDOS
-    0x01BE,                // SPECIES_SHIELDON
-    0x01BF,                // SPECIES_BASTIODON
-    0x01C0,                // SPECIES_BURMY
-    0x01C3,                // SPECIES_WORMADAM
-    0x01C6,                // SPECIES_MOTHIM
-    0x01C7,                // SPECIES_COMBEE
-    0x01C9,                // SPECIES_VESPIQUEN
-    0x01CA,                // SPECIES_PACHIRISU
-    0x01CB,                // SPECIES_BUIZEL
-    0x01CC,                // SPECIES_FLOATZEL
-    0x01CD,                // SPECIES_CHERUBI
-    0x01CE,                // SPECIES_CHERRIM
-    0x01CF,                // SPECIES_SHELLOS
-    0x01D1,                // SPECIES_GASTRODON
-    0x01D3,                // SPECIES_AMBIPOM
-    0x01D4,                // SPECIES_DRIFLOON
-    0x01D5,                // SPECIES_DRIFBLIM
-    0x01D6,                // SPECIES_BUNEARY
-    0x01D7,                // SPECIES_LOPUNNY
-    0x01D8,                // SPECIES_MISMAGIUS
-    0x01D9,                // SPECIES_HONCHKROW
-    0x01DA,                // SPECIES_GLAMEOW
-    0x01DB,                // SPECIES_PURUGLY
-    0x01DC,                // SPECIES_CHINGLING
-    0x01DD,                // SPECIES_STUNKY
-    0x01DE,                // SPECIES_SKUNTANK
-    0x01DF,                // SPECIES_BRONZOR
-    0x01E0,                // SPECIES_BRONZONG
-    0x01E1,                // SPECIES_BONSLY
-    0x01E2,                // SPECIES_MIME_JR
-    0x01E3,                // SPECIES_HAPPINY
-    0x01E4,                // SPECIES_CHATOT
-    0x01E5,                // SPECIES_SPIRITOMB
-    0x01E6,                // SPECIES_GIBLE
-    0x01E8,                // SPECIES_GABITE
-    0x01EA,                // SPECIES_GARCHOMP
-    0x01EC,                // SPECIES_MUNCHLAX
-    0x01ED,                // SPECIES_RIOLU
-    0x01EE,                // SPECIES_LUCARIO
-    0x01EF,                // SPECIES_HIPPOPOTAS
-    0x01F1,                // SPECIES_HIPPOWDON
-    0x01F3,                // SPECIES_SKORUPI
-    0x01F4,                // SPECIES_DRAPION
-    0x01F5,                // SPECIES_CROAGUNK
-    0x01F6,                // SPECIES_TOXICROAK
-    0x01F7,                // SPECIES_CARNIVINE
-    0x01F8,                // SPECIES_FINNEON
-    0x01F9,                // SPECIES_LUMINEON
-    0x01FA,                // SPECIES_MANTYKE
-    0x01FB,                // SPECIES_SNOVER
-    0x01FC,                // SPECIES_ABOMASNOW
-    0x01FD,                // SPECIES_WEAVILE
-    0x01FE,                // SPECIES_MAGNEZONE
-    0x01FF,                // SPECIES_LICKILICKY
-    0x0200,                // SPECIES_RHYPERIOR
-    0x0201,                // SPECIES_TANGROWTH
-    0x0202,                // SPECIES_ELECTIVIRE
-    0x0203,                // SPECIES_MAGMORTAR
-    0x0204,                // SPECIES_TOGEKISS
-    0x0205,                // SPECIES_YANMEGA
-    0x0206,                // SPECIES_LEAFEON
-    0x0207,                // SPECIES_GLACEON
-    0x0208,                // SPECIES_GLISCOR
-    0x0209,                // SPECIES_MAMOSWINE
-    0x020A,                // SPECIES_PORYGON_Z
-    0x020B,                // SPECIES_GALLADE
-    0x020C,                // SPECIES_PROBOPASS
-    0x020D,                // SPECIES_DUSKNOIR
-    0x020E,                // SPECIES_FROSLASS
-    0x020F,                // SPECIES_ROTOM
-    0x0215,                // SPECIES_UXIE
-    0x0216,                // SPECIES_MESPRIT
-    0x0217,                // SPECIES_AZELF
-    0x0218,                // SPECIES_DIALGA
-    0x0219,                // SPECIES_PALKIA
-    0x021A,                // SPECIES_HEATRAN
-    0x021B,                // SPECIES_REGIGIGAS
-    0x021C,                // SPECIES_GIRATINA
-    0x021E,                // SPECIES_CRESSELIA
-    0x021F,                // SPECIES_PHIONE
-    0x0220,                // SPECIES_MANAPHY
-    0x0221,                // SPECIES_DARKRAI
-    0x0222,                // SPECIES_SHAYMIN
-    0x0224,                // SPECIES_ARCEUS
+    TSURE_POKE_NONE,
+    TSURE_POKE_BULBASAUR,
+    TSURE_POKE_IVYSAUR,
+    TSURE_POKE_VENUSAUR,
+    TSURE_POKE_CHARMANDER,
+    TSURE_POKE_CHARMELEON,
+    TSURE_POKE_CHARIZARD,
+    TSURE_POKE_SQUIRTLE,
+    TSURE_POKE_WARTORTLE,
+    TSURE_POKE_BLASTOISE,
+    TSURE_POKE_CATERPIE,
+    TSURE_POKE_METAPOD,
+    TSURE_POKE_BUTTERFREE,
+    TSURE_POKE_WEEDLE,
+    TSURE_POKE_KAKUNA,
+    TSURE_POKE_BEEDRILL,
+    TSURE_POKE_PIDGEY,
+    TSURE_POKE_PIDGEOTTO,
+    TSURE_POKE_PIDGEOT,
+    TSURE_POKE_RATTATA,
+    TSURE_POKE_RATICATE,
+    TSURE_POKE_SPEAROW,
+    TSURE_POKE_FEAROW,
+    TSURE_POKE_EKANS,
+    TSURE_POKE_ARBOK,
+    TSURE_POKE_PIKACHU,
+    TSURE_POKE_RAICHU,
+    TSURE_POKE_SANDSHREW,
+    TSURE_POKE_SANDSLASH,
+    TSURE_POKE_NIDORAN_F,
+    TSURE_POKE_NIDORINA,
+    TSURE_POKE_NIDOQUEEN,
+    TSURE_POKE_NIDORAN_M,
+    TSURE_POKE_NIDORINO,
+    TSURE_POKE_NIDOKING,
+    TSURE_POKE_CLEFAIRY,
+    TSURE_POKE_CLEFABLE,
+    TSURE_POKE_VULPIX,
+    TSURE_POKE_NINETALES,
+    TSURE_POKE_JIGGLYPUFF,
+    TSURE_POKE_WIGGLYTUFF,
+    TSURE_POKE_ZUBAT,
+    TSURE_POKE_GOLBAT,
+    TSURE_POKE_ODDISH,
+    TSURE_POKE_GLOOM,
+    TSURE_POKE_VILEPLUME,
+    TSURE_POKE_PARAS,
+    TSURE_POKE_PARASECT,
+    TSURE_POKE_VENONAT,
+    TSURE_POKE_VENOMOTH,
+    TSURE_POKE_DIGLETT,
+    TSURE_POKE_DUGTRIO,
+    TSURE_POKE_MEOWTH,
+    TSURE_POKE_PERSIAN,
+    TSURE_POKE_PSYDUCK,
+    TSURE_POKE_GOLDUCK,
+    TSURE_POKE_MANKEY,
+    TSURE_POKE_PRIMEAPE,
+    TSURE_POKE_GROWLITHE,
+    TSURE_POKE_ARCANINE,
+    TSURE_POKE_POLIWAG,
+    TSURE_POKE_POLIWHIRL,
+    TSURE_POKE_POLIWRATH,
+    TSURE_POKE_ABRA,
+    TSURE_POKE_KADABRA,
+    TSURE_POKE_ALAKAZAM,
+    TSURE_POKE_MACHOP,
+    TSURE_POKE_MACHOKE,
+    TSURE_POKE_MACHAMP,
+    TSURE_POKE_BELLSPROUT,
+    TSURE_POKE_WEEPINBELL,
+    TSURE_POKE_VICTREEBEL,
+    TSURE_POKE_TENTACOOL,
+    TSURE_POKE_TENTACRUEL,
+    TSURE_POKE_GEODUDE,
+    TSURE_POKE_GRAVELER,
+    TSURE_POKE_GOLEM,
+    TSURE_POKE_PONYTA,
+    TSURE_POKE_RAPIDASH,
+    TSURE_POKE_SLOWPOKE,
+    TSURE_POKE_SLOWBRO,
+    TSURE_POKE_MAGNEMITE,
+    TSURE_POKE_MAGNETON,
+    TSURE_POKE_FARFETCHD,
+    TSURE_POKE_DODUO,
+    TSURE_POKE_DODRIO,
+    TSURE_POKE_SEEL,
+    TSURE_POKE_DEWGONG,
+    TSURE_POKE_GRIMER,
+    TSURE_POKE_MUK,
+    TSURE_POKE_SHELLDER,
+    TSURE_POKE_CLOYSTER,
+    TSURE_POKE_GASTLY,
+    TSURE_POKE_HAUNTER,
+    TSURE_POKE_GENGAR,
+    TSURE_POKE_ONIX,
+    TSURE_POKE_DROWZEE,
+    TSURE_POKE_HYPNO,
+    TSURE_POKE_KRABBY,
+    TSURE_POKE_KINGLER,
+    TSURE_POKE_VOLTORB,
+    TSURE_POKE_ELECTRODE,
+    TSURE_POKE_EXEGGCUTE,
+    TSURE_POKE_EXEGGUTOR,
+    TSURE_POKE_CUBONE,
+    TSURE_POKE_MAROWAK,
+    TSURE_POKE_HITMONLEE,
+    TSURE_POKE_HITMONCHAN,
+    TSURE_POKE_LICKITUNG,
+    TSURE_POKE_KOFFING,
+    TSURE_POKE_WEEZING,
+    TSURE_POKE_RHYHORN,
+    TSURE_POKE_RHYDON,
+    TSURE_POKE_CHANSEY,
+    TSURE_POKE_TANGELA,
+    TSURE_POKE_KANGASKHAN,
+    TSURE_POKE_HORSEA,
+    TSURE_POKE_SEADRA,
+    TSURE_POKE_GOLDEEN,
+    TSURE_POKE_SEAKING,
+    TSURE_POKE_STARYU,
+    TSURE_POKE_STARMIE,
+    TSURE_POKE_MR_MIME,
+    TSURE_POKE_SCYTHER,
+    TSURE_POKE_JYNX,
+    TSURE_POKE_ELECTABUZZ,
+    TSURE_POKE_MAGMAR,
+    TSURE_POKE_PINSIR,
+    TSURE_POKE_TAUROS,
+    TSURE_POKE_MAGIKARP,
+    TSURE_POKE_GYARADOS,
+    TSURE_POKE_LAPRAS,
+    TSURE_POKE_DITTO,
+    TSURE_POKE_EEVEE,
+    TSURE_POKE_VAPOREON,
+    TSURE_POKE_JOLTEON,
+    TSURE_POKE_FLAREON,
+    TSURE_POKE_PORYGON,
+    TSURE_POKE_OMANYTE,
+    TSURE_POKE_OMASTAR,
+    TSURE_POKE_KABUTO,
+    TSURE_POKE_KABUTOPS,
+    TSURE_POKE_AERODACTYL,
+    TSURE_POKE_SNORLAX,
+    TSURE_POKE_ARTICUNO,
+    TSURE_POKE_ZAPDOS,
+    TSURE_POKE_MOLTRES,
+    TSURE_POKE_DRATINI,
+    TSURE_POKE_DRAGONAIR,
+    TSURE_POKE_DRAGONITE,
+    TSURE_POKE_MEWTWO,
+    TSURE_POKE_MEW,
+    TSURE_POKE_CHIKORITA,
+    TSURE_POKE_BAYLEEF,
+    TSURE_POKE_MEGANIUM,
+    TSURE_POKE_CYNDAQUIL,
+    TSURE_POKE_QUILAVA,
+    TSURE_POKE_TYPHLOSION,
+    TSURE_POKE_TOTODILE,
+    TSURE_POKE_CROCONAW,
+    TSURE_POKE_FERALIGATR,
+    TSURE_POKE_SENTRET,
+    TSURE_POKE_FURRET,
+    TSURE_POKE_HOOTHOOT,
+    TSURE_POKE_NOCTOWL,
+    TSURE_POKE_LEDYBA,
+    TSURE_POKE_LEDIAN,
+    TSURE_POKE_SPINARAK,
+    TSURE_POKE_ARIADOS,
+    TSURE_POKE_CROBAT,
+    TSURE_POKE_CHINCHOU,
+    TSURE_POKE_LANTURN,
+    TSURE_POKE_PICHU,
+    TSURE_POKE_CLEFFA,
+    TSURE_POKE_IGGLYBUFF,
+    TSURE_POKE_TOGEPI,
+    TSURE_POKE_TOGETIC,
+    TSURE_POKE_NATU,
+    TSURE_POKE_XATU,
+    TSURE_POKE_MAREEP,
+    TSURE_POKE_FLAAFFY,
+    TSURE_POKE_AMPHAROS,
+    TSURE_POKE_BELLOSSOM,
+    TSURE_POKE_MARILL,
+    TSURE_POKE_AZUMARILL,
+    TSURE_POKE_SUDOWOODO,
+    TSURE_POKE_POLITOED,
+    TSURE_POKE_HOPPIP,
+    TSURE_POKE_SKIPLOOM,
+    TSURE_POKE_JUMPLUFF,
+    TSURE_POKE_AIPOM,
+    TSURE_POKE_SUNKERN,
+    TSURE_POKE_SUNFLORA,
+    TSURE_POKE_YANMA,
+    TSURE_POKE_WOOPER,
+    TSURE_POKE_QUAGSIRE,
+    TSURE_POKE_ESPEON,
+    TSURE_POKE_UMBREON,
+    TSURE_POKE_MURKROW,
+    TSURE_POKE_SLOWKING,
+    TSURE_POKE_MISDREAVUS,
+    TSURE_POKE_UNOWN_A,
+    TSURE_POKE_WOBBUFFET,
+    TSURE_POKE_GIRAFARIG,
+    TSURE_POKE_PINECO,
+    TSURE_POKE_FORRETRESS,
+    TSURE_POKE_DUNSPARCE,
+    TSURE_POKE_GLIGAR,
+    TSURE_POKE_STEELIX,
+    TSURE_POKE_SNUBBULL,
+    TSURE_POKE_GRANBULL,
+    TSURE_POKE_QWILFISH,
+    TSURE_POKE_SCIZOR,
+    TSURE_POKE_SHUCKLE,
+    TSURE_POKE_HERACROSS,
+    TSURE_POKE_SNEASEL,
+    TSURE_POKE_TEDDIURSA,
+    TSURE_POKE_URSARING,
+    TSURE_POKE_SLUGMA,
+    TSURE_POKE_MAGCARGO,
+    TSURE_POKE_SWINUB,
+    TSURE_POKE_PILOSWINE,
+    TSURE_POKE_CORSOLA,
+    TSURE_POKE_REMORAID,
+    TSURE_POKE_OCTILLERY,
+    TSURE_POKE_DELIBIRD,
+    TSURE_POKE_MANTINE,
+    TSURE_POKE_SKARMORY,
+    TSURE_POKE_HOUNDOUR,
+    TSURE_POKE_HOUNDOOM,
+    TSURE_POKE_KINGDRA,
+    TSURE_POKE_PHANPY,
+    TSURE_POKE_DONPHAN,
+    TSURE_POKE_PORYGON2,
+    TSURE_POKE_STANTLER,
+    TSURE_POKE_SMEARGLE,
+    TSURE_POKE_TYROGUE,
+    TSURE_POKE_HITMONTOP,
+    TSURE_POKE_SMOOCHUM,
+    TSURE_POKE_ELEKID,
+    TSURE_POKE_MAGBY,
+    TSURE_POKE_MILTANK,
+    TSURE_POKE_BLISSEY,
+    TSURE_POKE_RAIKOU,
+    TSURE_POKE_ENTEI,
+    TSURE_POKE_SUICUNE,
+    TSURE_POKE_LARVITAR,
+    TSURE_POKE_PUPITAR,
+    TSURE_POKE_TYRANITAR,
+    TSURE_POKE_LUGIA,
+    TSURE_POKE_HO_OH,
+    TSURE_POKE_CELEBI,
+    TSURE_POKE_TREECKO,
+    TSURE_POKE_GROVYLE,
+    TSURE_POKE_SCEPTILE,
+    TSURE_POKE_TORCHIC,
+    TSURE_POKE_COMBUSKEN,
+    TSURE_POKE_BLAZIKEN,
+    TSURE_POKE_MUDKIP,
+    TSURE_POKE_MARSHTOMP,
+    TSURE_POKE_SWAMPERT,
+    TSURE_POKE_POOCHYENA,
+    TSURE_POKE_MIGHTYENA,
+    TSURE_POKE_ZIGZAGOON,
+    TSURE_POKE_LINOONE,
+    TSURE_POKE_WURMPLE,
+    TSURE_POKE_SILCOON,
+    TSURE_POKE_BEAUTIFLY,
+    TSURE_POKE_CASCOON,
+    TSURE_POKE_DUSTOX,
+    TSURE_POKE_LOTAD,
+    TSURE_POKE_LOMBRE,
+    TSURE_POKE_LUDICOLO,
+    TSURE_POKE_SEEDOT,
+    TSURE_POKE_NUZLEAF,
+    TSURE_POKE_SHIFTRY,
+    TSURE_POKE_TAILLOW,
+    TSURE_POKE_SWELLOW,
+    TSURE_POKE_WINGULL,
+    TSURE_POKE_PELIPPER,
+    TSURE_POKE_RALTS,
+    TSURE_POKE_KIRLIA,
+    TSURE_POKE_GARDEVOIR,
+    TSURE_POKE_SURSKIT,
+    TSURE_POKE_MASQUERAIN,
+    TSURE_POKE_SHROOMISH,
+    TSURE_POKE_BRELOOM,
+    TSURE_POKE_SLAKOTH,
+    TSURE_POKE_VIGOROTH,
+    TSURE_POKE_SLAKING,
+    TSURE_POKE_NINCADA,
+    TSURE_POKE_NINJASK,
+    TSURE_POKE_SHEDINJA,
+    TSURE_POKE_WHISMUR,
+    TSURE_POKE_LOUDRED,
+    TSURE_POKE_EXPLOUD,
+    TSURE_POKE_MAKUHITA,
+    TSURE_POKE_HARIYAMA,
+    TSURE_POKE_AZURILL,
+    TSURE_POKE_NOSEPASS,
+    TSURE_POKE_SKITTY,
+    TSURE_POKE_DELCATTY,
+    TSURE_POKE_SABLEYE,
+    TSURE_POKE_MAWILE,
+    TSURE_POKE_ARON,
+    TSURE_POKE_LAIRON,
+    TSURE_POKE_AGGRON,
+    TSURE_POKE_MEDITITE,
+    TSURE_POKE_MEDICHAM,
+    TSURE_POKE_ELECTRIKE,
+    TSURE_POKE_MANECTRIC,
+    TSURE_POKE_PLUSLE,
+    TSURE_POKE_MINUN,
+    TSURE_POKE_VOLBEAT,
+    TSURE_POKE_ILLUMISE,
+    TSURE_POKE_ROSELIA,
+    TSURE_POKE_GULPIN,
+    TSURE_POKE_SWALOT,
+    TSURE_POKE_CARVANHA,
+    TSURE_POKE_SHARPEDO,
+    TSURE_POKE_WAILMER,
+    TSURE_POKE_WAILORD,
+    TSURE_POKE_NUMEL,
+    TSURE_POKE_CAMERUPT,
+    TSURE_POKE_TORKOAL,
+    TSURE_POKE_SPOINK,
+    TSURE_POKE_GRUMPIG,
+    TSURE_POKE_SPINDA,
+    TSURE_POKE_TRAPINCH,
+    TSURE_POKE_VIBRAVA,
+    TSURE_POKE_FLYGON,
+    TSURE_POKE_CACNEA,
+    TSURE_POKE_CACTURNE,
+    TSURE_POKE_SWABLU,
+    TSURE_POKE_ALTARIA,
+    TSURE_POKE_ZANGOOSE,
+    TSURE_POKE_SEVIPER,
+    TSURE_POKE_LUNATONE,
+    TSURE_POKE_SOLROCK,
+    TSURE_POKE_BARBOACH,
+    TSURE_POKE_WHISCASH,
+    TSURE_POKE_CORPHISH,
+    TSURE_POKE_CRAWDAUNT,
+    TSURE_POKE_BALTOY,
+    TSURE_POKE_CLAYDOL,
+    TSURE_POKE_LILEEP,
+    TSURE_POKE_CRADILY,
+    TSURE_POKE_ANORITH,
+    TSURE_POKE_ARMALDO,
+    TSURE_POKE_FEEBAS,
+    TSURE_POKE_MILOTIC,
+    TSURE_POKE_CASTFORM,
+    TSURE_POKE_KECLEON,
+    TSURE_POKE_SHUPPET,
+    TSURE_POKE_BANETTE,
+    TSURE_POKE_DUSKULL,
+    TSURE_POKE_DUSCLOPS,
+    TSURE_POKE_TROPIUS,
+    TSURE_POKE_CHIMECHO,
+    TSURE_POKE_ABSOL,
+    TSURE_POKE_WYNAUT,
+    TSURE_POKE_SNORUNT,
+    TSURE_POKE_GLALIE,
+    TSURE_POKE_SPHEAL,
+    TSURE_POKE_SEALEO,
+    TSURE_POKE_WALREIN,
+    TSURE_POKE_CLAMPERL,
+    TSURE_POKE_HUNTAIL,
+    TSURE_POKE_GOREBYSS,
+    TSURE_POKE_RELICANTH,
+    TSURE_POKE_LUVDISC,
+    TSURE_POKE_BAGON,
+    TSURE_POKE_SHELGON,
+    TSURE_POKE_SALAMENCE,
+    TSURE_POKE_BELDUM,
+    TSURE_POKE_METANG,
+    TSURE_POKE_METAGROSS,
+    TSURE_POKE_REGIROCK,
+    TSURE_POKE_REGICE,
+    TSURE_POKE_REGISTEEL,
+    TSURE_POKE_LATIAS,
+    TSURE_POKE_LATIOS,
+    TSURE_POKE_KYOGRE,
+    TSURE_POKE_GROUDON,
+    TSURE_POKE_RAYQUAZA,
+    TSURE_POKE_JIRACHI,
+    TSURE_POKE_DEOXYS,
+    TSURE_POKE_TURTWIG,
+    TSURE_POKE_GROTLE,
+    TSURE_POKE_TORTERRA,
+    TSURE_POKE_CHIMCHAR,
+    TSURE_POKE_MONFERNO,
+    TSURE_POKE_INFERNAPE,
+    TSURE_POKE_PIPLUP,
+    TSURE_POKE_PRINPLUP,
+    TSURE_POKE_EMPOLEON,
+    TSURE_POKE_STARLY,
+    TSURE_POKE_STARAVIA,
+    TSURE_POKE_STARAPTOR,
+    TSURE_POKE_BIDOOF,
+    TSURE_POKE_BIBAREL,
+    TSURE_POKE_KRICKETOT,
+    TSURE_POKE_KRICKETUNE,
+    TSURE_POKE_SHINX,
+    TSURE_POKE_LUXIO,
+    TSURE_POKE_LUXRAY,
+    TSURE_POKE_BUDEW,
+    TSURE_POKE_ROSERADE,
+    TSURE_POKE_CRANIDOS,
+    TSURE_POKE_RAMPARDOS,
+    TSURE_POKE_SHIELDON,
+    TSURE_POKE_BASTIODON,
+    TSURE_POKE_BURMY,
+    TSURE_POKE_WORMADAM,
+    TSURE_POKE_MOTHIM,
+    TSURE_POKE_COMBEE,
+    TSURE_POKE_VESPIQUEN,
+    TSURE_POKE_PACHIRISU,
+    TSURE_POKE_BUIZEL,
+    TSURE_POKE_FLOATZEL,
+    TSURE_POKE_CHERUBI,
+    TSURE_POKE_CHERRIM,
+    TSURE_POKE_SHELLOS_WEST,
+    TSURE_POKE_GASTRODON_WEST,
+    TSURE_POKE_AMBIPOM,
+    TSURE_POKE_DRIFLOON,
+    TSURE_POKE_DRIFBLIM,
+    TSURE_POKE_BUNEARY,
+    TSURE_POKE_LOPUNNY,
+    TSURE_POKE_MISMAGIUS,
+    TSURE_POKE_HONCHKROW,
+    TSURE_POKE_GLAMEOW,
+    TSURE_POKE_PURUGLY,
+    TSURE_POKE_CHINGLING,
+    TSURE_POKE_STUNKY,
+    TSURE_POKE_SKUNTANK,
+    TSURE_POKE_BRONZOR,
+    TSURE_POKE_BRONZONG,
+    TSURE_POKE_BONSLY,
+    TSURE_POKE_MIME_JR,
+    TSURE_POKE_HAPPINY,
+    TSURE_POKE_CHATOT,
+    TSURE_POKE_SPIRITOMB,
+    TSURE_POKE_GIBLE,
+    TSURE_POKE_GABITE,
+    TSURE_POKE_GARCHOMP,
+    TSURE_POKE_MUNCHLAX,
+    TSURE_POKE_RIOLU,
+    TSURE_POKE_LUCARIO,
+    TSURE_POKE_HIPPOPOTAS,
+    TSURE_POKE_HIPPOWDON,
+    TSURE_POKE_SKORUPI,
+    TSURE_POKE_DRAPION,
+    TSURE_POKE_CROAGUNK,
+    TSURE_POKE_TOXICROAK,
+    TSURE_POKE_CARNIVINE,
+    TSURE_POKE_FINNEON,
+    TSURE_POKE_LUMINEON,
+    TSURE_POKE_MANTYKE,
+    TSURE_POKE_SNOVER,
+    TSURE_POKE_ABOMASNOW,
+    TSURE_POKE_WEAVILE,
+    TSURE_POKE_MAGNEZONE,
+    TSURE_POKE_LICKILICKY,
+    TSURE_POKE_RHYPERIOR,
+    TSURE_POKE_TANGROWTH,
+    TSURE_POKE_ELECTIVIRE,
+    TSURE_POKE_MAGMORTAR,
+    TSURE_POKE_TOGEKISS,
+    TSURE_POKE_YANMEGA,
+    TSURE_POKE_LEAFEON,
+    TSURE_POKE_GLACEON,
+    TSURE_POKE_GLISCOR,
+    TSURE_POKE_MAMOSWINE,
+    TSURE_POKE_PORYGON_Z,
+    TSURE_POKE_GALLADE,
+    TSURE_POKE_PROBOPASS,
+    TSURE_POKE_DUSKNOIR,
+    TSURE_POKE_FROSLASS,
+    TSURE_POKE_ROTOM,
+    TSURE_POKE_UXIE,
+    TSURE_POKE_MESPRIT,
+    TSURE_POKE_AZELF,
+    TSURE_POKE_DIALGA,
+    TSURE_POKE_PALKIA,
+    TSURE_POKE_HEATRAN,
+    TSURE_POKE_REGIGIGAS,
+    TSURE_POKE_GIRATINA,
+    TSURE_POKE_CRESSELIA,
+    TSURE_POKE_PHIONE,
+    TSURE_POKE_MANAPHY,
+    TSURE_POKE_DARKRAI,
+    TSURE_POKE_SHAYMIN,
+    TSURE_POKE_ARCEUS_NORMAL,
 };
 
 static const u16 sFormeMaxLUT[] = {
