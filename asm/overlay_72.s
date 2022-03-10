@@ -861,7 +861,7 @@ _02237F4A:
 	bl sub_02034D8C
 	mov r0, #4
 	mov r1, #0x43
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #0
 	str r0, [r5]
 	add sp, #0x10
@@ -1006,7 +1006,7 @@ _02238086:
 	mov r0, #0
 	bl sub_02002B8C
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, [r4, #0x24]
 	bl FreeToHeap
 	bl UnloadOVY38
@@ -2392,12 +2392,12 @@ ov72_02238BEC: ; 0x02238BEC
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x43
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #0x1a
 	mov r0, #4
 	lsl r1, r1, #4
 	mov r2, #0x43
-	bl sub_0200304C
+	bl LoadFontPal1
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0]
 	ldr r0, [r0, #0x10]
@@ -5457,7 +5457,7 @@ ov72_0223A3A8: ; 0x0223A3A8
 _0223A3B6:
 	ldr r0, [sp, #0xc]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	ldrb r1, [r4, #7]
 	lsl r1, r1, #3
 	sub r1, r1, r0
@@ -5468,7 +5468,7 @@ _0223A3B6:
 _0223A3CC:
 	ldr r0, [sp, #0xc]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	ldrb r1, [r4, #7]
 	lsl r1, r1, #3
 	sub r2, r1, r0
@@ -7216,7 +7216,7 @@ ov72_0223B0C4: ; 0x0223B0C4
 	ldr r2, [r4, #0x28]
 	mov r0, #0
 	lsl r1, r1, #5
-	bl sub_02003030
+	bl LoadFontPal0
 	b _0223B130
 _0223B108:
 	mov r1, #0x20
@@ -7236,7 +7236,7 @@ _0223B108:
 	ldr r2, [r4, #0x28]
 	mov r0, #4
 	lsl r1, r1, #5
-	bl sub_02003030
+	bl LoadFontPal0
 _0223B130:
 	mov r0, #0
 	str r0, [sp]

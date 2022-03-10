@@ -1215,7 +1215,7 @@ ov43_0222A87C: ; 0x0222A87C
 	str r0, [r5, #0x54]
 	mov r0, #4
 	add r1, r4, #0
-	bl sub_02002CEC
+	bl FontID_Alloc
 	pop {r3, r4, r5, pc}
 	nop
 _0222A8A4: .word 0x0000030B
@@ -1226,7 +1226,7 @@ ov43_0222A8A8: ; 0x0222A8A8
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, [r4, #0x54]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x50]
@@ -1244,12 +1244,12 @@ ov43_0222A8C0: ; 0x0222A8C0
 	mov r0, #0
 	lsl r1, r1, #4
 	add r4, r2, #0
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #7
 	mov r0, #4
 	lsl r1, r1, #6
 	add r2, r4, #0
-	bl sub_0200304C
+	bl LoadFontPal1
 	ldrb r0, [r6, #0xd]
 	mov r1, #1
 	mov r2, #0x46
@@ -2347,7 +2347,7 @@ _0222B160:
 	mov r0, #4
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov ip, r0
 	str r5, [sp]
 	mov r0, #0xff
@@ -6185,7 +6185,7 @@ ov43_0222CE48: ; 0x0222CE48
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r0, #0
-	bl sub_02003068
+	bl FontID_String_GetWidthMultiline
 	mov r1, #0xc0
 	sub r0, r1, r0
 	mov r1, #0
@@ -6231,7 +6231,7 @@ _0222CF86:
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r0, #0
-	bl sub_02003068
+	bl FontID_String_GetWidthMultiline
 	mov r1, #0xc0
 	sub r0, r1, r0
 	mov r1, #0
@@ -9878,7 +9878,7 @@ _0222EC88:
 	mov r0, #1
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r0, r0, #1
 	lsr r0, r0, #1
 	sub r5, r5, r0
@@ -9887,7 +9887,7 @@ _0222EC9A:
 	mov r0, #1
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	sub r5, r5, r0
 _0222ECA6:
 	ldr r0, [sp, #0x3c]

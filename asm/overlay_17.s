@@ -1653,7 +1653,7 @@ ov17_02202850: ; 0x02202850
 	ldr r1, [r1]
 	mov r0, #4
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0
 	add r3, r0, #0
 	add r2, r4, #0
@@ -2467,7 +2467,7 @@ ov17_02202E28: ; 0x02202E28
 	ldr r2, [r5]
 	mov r0, #0
 	lsl r1, r1, #6
-	bl sub_0200304C
+	bl LoadFontPal1
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov17_02202E28
@@ -2489,7 +2489,7 @@ ov17_02202F0C: ; 0x02202F0C
 	add r6, r0, #0
 	ldr r1, [r6]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r3, [r6]
 	mov r0, #0
 	mov r1, #0x1b
@@ -2569,7 +2569,7 @@ _02202F84:
 	ldr r0, [r6]
 	bl DestroyMsgData
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov17_02202F7C
 

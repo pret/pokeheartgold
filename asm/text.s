@@ -506,7 +506,7 @@ sub_02020358: ; 0x02020358
 _0202035C:
 	ldrb r0, [r4, #9]
 	add r1, r4, #0
-	bl sub_02002E98
+	bl FontID_RenderText
 	cmp r0, #2
 	beq _0202035C
 	pop {r4, pc}

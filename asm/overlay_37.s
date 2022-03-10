@@ -794,12 +794,12 @@ ov37_021E5F98: ; 0x021E5F98
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x27
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #0x1a
 	mov r0, #4
 	lsl r1, r1, #4
 	mov r2, #0x27
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2
@@ -1386,7 +1386,7 @@ ov37_021E6418: ; 0x021E6418
 	mov r0, #1
 	mov r2, #0
 	mov r3, #0x30
-	bl sub_020030A0
+	bl FontID_String_GetCenterAlignmentX
 	add r3, r0, #0
 	mov r1, #0
 	str r1, [sp]

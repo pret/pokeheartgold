@@ -1117,7 +1117,7 @@ _0222787A:
 	ldr r0, [sp, #0x5c]
 	ldr r1, [sp, #0x10]
 	mov r2, #0
-	bl sub_02003068
+	bl FontID_String_GetWidthMultiline
 	ldr r1, [r5, #8]
 	lsl r1, r1, #3
 	sub r0, r1, r0
@@ -1559,11 +1559,11 @@ _02227B88:
 	mov r0, #0
 	mov r1, #0x20
 	mov r2, #0x4f
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #0
 	add r1, r0, #0
 	mov r2, #0x4f
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r2, #5
 	mov r1, #0
 	lsl r2, r2, #0x18
@@ -1788,7 +1788,7 @@ ov74_02227E10: ; 0x02227E10
 	add r2, r0, #0
 	mov r0, #0
 	add r1, r5, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r4, r0, #0
 	add r0, r6, #0
 	bl GetWindowWidth
@@ -3746,7 +3746,7 @@ _02228D70:
 	mov r0, #0
 	ldr r2, [r4]
 	add r1, r0, #0
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #0
 	str r1, [sp]
 	ldr r0, [r4]
@@ -7480,11 +7480,11 @@ ov74_0222AB70: ; 0x0222AB70
 	mov r0, #0
 	add r1, r0, #0
 	mov r2, #0x54
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #0
 	mov r1, #0x20
 	mov r2, #0x54
-	bl sub_02003030
+	bl LoadFontPal0
 	ldr r0, [r4, #8]
 	bl Options_GetFrame
 	lsl r0, r0, #0x18
@@ -13122,7 +13122,7 @@ _0222D8FA:
 	add r1, r7, #0
 	mov r2, #0
 	lsl r3, r3, #3
-	bl sub_020030A0
+	bl FontID_String_GetCenterAlignmentX
 	add r3, r0, #0
 _0222D956:
 	ldr r0, [r4, #0x2c]
@@ -14330,7 +14330,7 @@ _0222E2D4:
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x55
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x55
@@ -14731,7 +14731,7 @@ _0222E652:
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x55
-	bl sub_02003030
+	bl LoadFontPal0
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #4
@@ -15421,7 +15421,7 @@ ov74_0222EC08: ; 0x0222EC08
 	lsl r1, r1, #4
 	add r2, r5, #0
 	str r5, [r4]
-	bl sub_02003030
+	bl LoadFontPal0
 	ldr r0, _0222EC5C ; =0x00002BB4
 	mov r2, #0
 	str r7, [r4, r0]
@@ -16985,7 +16985,7 @@ _0222F886:
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x55
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x55
@@ -17227,7 +17227,7 @@ _0222FA8A:
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x55
-	bl sub_02003030
+	bl LoadFontPal0
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #4
@@ -17424,7 +17424,7 @@ ov74_0222FC50: ; 0x0222FC50
 	lsl r1, r1, #4
 	add r2, r5, #0
 	str r5, [r4]
-	bl sub_02003030
+	bl LoadFontPal0
 	ldr r0, _0222FCA0 ; =0x00002BB4
 	mov r1, #1
 	str r7, [r4, r0]
@@ -21476,7 +21476,7 @@ ov74_022319F8: ; 0x022319F8
 	tst r2, r0
 	beq _02231A16
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	ldr r1, [r4, #0x10]
 	lsl r1, r1, #3
 	sub r1, r1, r0
@@ -23579,7 +23579,7 @@ _02232A54:
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x4c
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #0xc0
 	str r0, [sp]
 	mov r0, #0x4c
@@ -23605,7 +23605,7 @@ _02232A54:
 	bl GfGfxLoader_LoadCharData
 	mov r0, #2
 	mov r1, #0x4c
-	bl sub_02002CEC
+	bl FontID_Alloc
 	add sp, #0x38
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -23663,7 +23663,7 @@ ov74_02232B18: ; 0x02232B18
 	mov r0, #0
 	lsl r1, r1, #6
 	mov r2, #0x4c
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #0
 	mov r2, #0x3f
 	str r1, [sp]
@@ -23913,7 +23913,7 @@ _02232C54:
 	mov r0, #0
 	lsl r1, r1, #6
 	mov r2, #0x4c
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #0
 	mov r2, #0x3f
 	str r1, [sp]
@@ -24104,7 +24104,7 @@ _02232EB4:
 	add r0, r6, r0
 	bl ov74_02232DA4
 	mov r0, #2
-	bl sub_02002DB4
+	bl FontID_Release
 	mov r0, #0x5b
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
@@ -29193,7 +29193,7 @@ _02235500:
 	add r2, r0, #0
 	ldr r0, [r5, #0x40]
 	add r1, r4, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r7, r0, #0
 	ldr r0, [r5, #0x10]
 	bl GetWindowWidth

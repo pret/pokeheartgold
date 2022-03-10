@@ -295,7 +295,7 @@ _print_message: ; 0x020527D0
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
-	bl sub_02003068
+	bl FontID_String_GetWidthMultiline
 	add r3, r0, #0
 	str r7, [sp]
 	mov r0, #0xff

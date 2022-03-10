@@ -2919,7 +2919,7 @@ _021E7042:
 	str r0, [r4, #0x14]
 	ldr r1, [r4]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	add r0, r4, #0
 	bl ov95_021E72B8
 	add r0, r4, #0
@@ -2939,7 +2939,7 @@ _021E7082:
 	add r0, r4, #0
 	bl ov95_021E7404
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, [r4, #0x14]
 	bl ScrStrBufs_delete
 	ldr r0, [r4, #0xc]

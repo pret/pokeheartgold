@@ -98,7 +98,7 @@ ov63_0221BE20: ; 0x0221BE20
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x3e
-	bl sub_02003030
+	bl LoadFontPal0
 	ldr r0, _0221BF24 ; =0x0001304C
 	mov r1, #2
 	str r1, [r5, r0]
@@ -2001,7 +2001,7 @@ _0221CE06:
 	mov r0, #0
 	ldr r1, [r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, r0, #0
 	mov r1, #0
 	add r2, r7, #0
@@ -5486,7 +5486,7 @@ _0221EAB6:
 	mov r0, #0
 	ldr r1, [r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, r0, #0
 	mov r1, #0
 	add r2, r5, #0
@@ -5581,7 +5581,7 @@ _0221EAB6:
 	mov r0, #0
 	ldr r1, [r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, r0, #0
 	mov r1, #0
 	add r2, r5, #0

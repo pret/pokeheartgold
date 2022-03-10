@@ -113,7 +113,7 @@ _021E80D6:
 	bl Main_SetVBlankIntrCB
 	mov r0, #2
 	mov r1, #0x27
-	bl sub_02002CEC
+	bl FontID_Alloc
 	add r0, r4, #0
 	bl ov52_021E84CC
 	bl ov52_021E86DC
@@ -264,7 +264,7 @@ _021E82FC:
 	add r0, r6, #0
 	bl ov52_021E8B94
 	mov r0, #2
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, [r6]
 	bl ov52_021E85A0
 	bl sub_02021238
@@ -610,12 +610,12 @@ ov52_021E85DC: ; 0x021E85DC
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x27
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #0x1a
 	mov r0, #4
 	lsl r1, r1, #4
 	mov r2, #0x27
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #1
 	mov r1, #0x20
 	mov r2, #0
@@ -1042,7 +1042,7 @@ ov52_021E8994: ; 0x021E8994
 	mov r2, #0
 	add r6, r1, #0
 	add r7, r3, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, r0, #0
 	str r4, [sp]
 	mov r0, #0xff
@@ -1198,7 +1198,7 @@ _021E8A8A:
 	ldr r1, [r5, #0x30]
 	mov r0, #1
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r4, r0, #0
 	mov r0, #0xbd
 	lsl r0, r0, #2

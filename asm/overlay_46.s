@@ -965,12 +965,12 @@ _02258FAE:
 	mov r0, #0
 	lsl r1, r1, #6
 	add r2, r6, #0
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #0x12
 	mov r0, #0
 	lsl r1, r1, #4
 	add r2, r6, #0
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [sp, #0x10]
@@ -1602,7 +1602,7 @@ ov46_022594E0: ; 0x022594E0
 	ldr r1, [r4, #0x18]
 	add r2, r0, #0
 	mov r3, #0xb0
-	bl sub_020030A0
+	bl FontID_String_GetCenterAlignmentX
 	mov r1, #0
 	add r3, r0, #0
 	str r1, [sp]

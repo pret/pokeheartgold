@@ -253,7 +253,7 @@ _02091E6C:
 	ldr r2, [r4]
 	mov r0, #0
 	mov r1, #0x20
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #0
 	ldr r3, [r4]
 	mov r1, #0x20

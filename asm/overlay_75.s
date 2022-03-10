@@ -1390,12 +1390,12 @@ ov75_02247450: ; 0x02247450
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x74
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #0x1a
 	mov r0, #4
 	lsl r1, r1, #4
 	mov r2, #0x74
-	bl sub_0200304C
+	bl LoadFontPal1
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
@@ -5775,7 +5775,7 @@ ov75_0224964C: ; 0x0224964C
 _0224965A:
 	ldr r0, [sp, #0xc]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	ldrb r1, [r4, #7]
 	lsl r1, r1, #3
 	sub r1, r1, r0
@@ -5786,7 +5786,7 @@ _0224965A:
 _02249670:
 	ldr r0, [sp, #0xc]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	ldrb r1, [r4, #7]
 	lsl r1, r1, #3
 	sub r2, r1, r0

@@ -117,7 +117,7 @@ _0208291E:
 	bl sub_02083654
 	mov r0, #2
 	mov r1, #0x12
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r0, _02082AD4 ; =sub_02083140
 	mov r1, #0
 	bl Main_SetVBlankIntrCB
@@ -126,7 +126,7 @@ _0208291E:
 	bl sub_02083334
 	mov r0, #0
 	mov r1, #0x12
-	bl sub_02002D40
+	bl FontID_SetAccessDirect
 	bl sub_0208377C
 	add r0, r4, #0
 	add r1, r7, #0
@@ -887,7 +887,7 @@ _02083016:
 	add r1, r4, r1
 	bl sub_02083614
 	mov r0, #0
-	bl sub_02002D7C
+	bl FontID_SetAccessLazy
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -895,7 +895,7 @@ _02083016:
 	and r0, r1
 	str r0, [r2]
 	mov r0, #2
-	bl sub_02002DB4
+	bl FontID_Release
 	mov r0, #6
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
@@ -1727,7 +1727,7 @@ sub_02083654: ; 0x02083654
 	mov r0, #0
 	lsl r1, r1, #6
 	mov r2, #0x12
-	bl sub_0200304C
+	bl LoadFontPal1
 	ldr r0, [r5, #0x18]
 	bl Options_GetFrame
 	lsl r0, r0, #0x18
@@ -1747,7 +1747,7 @@ sub_02083654: ; 0x02083654
 	mov r0, #4
 	lsl r1, r1, #6
 	mov r2, #0x12
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r3, #0x4b
 	mov r0, #0x12
 	lsl r3, r3, #4
@@ -2747,7 +2747,7 @@ sub_02083F48: ; 0x02083F48
 	add r1, r7, #0
 	add r2, r0, #0
 	mov r4, #0x10
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r6, r0, #0
 	add r0, r5, #0
 	bl GetWindowWidth
@@ -3570,7 +3570,7 @@ _020845CE:
 	mov r0, #0
 	add r1, sp, #0x38
 	add r2, r0, #0
-	bl sub_02002EC8
+	bl FontID_FlatArray_GetWidth
 	add r5, r0, #0
 	ldr r0, [sp, #0x28]
 	add r1, sp, #0x38

@@ -1356,7 +1356,7 @@ ov45_0222A844: ; 0x0222A844
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r6, #0
-	bl sub_02002F68
+	bl FontID_String_AllCharsValid
 	cmp r0, #0
 	bne _0222A892
 	mov r6, #1

@@ -2517,7 +2517,7 @@ ov109_021E6B5C: ; 0x021E6B5C
 	ldr r2, [r5]
 	mov r0, #0
 	lsl r1, r1, #6
-	bl sub_0200304C
+	bl LoadFontPal1
 	add r0, r5, #0
 	add r0, #0x23
 	ldrb r0, [r0]
@@ -2556,7 +2556,7 @@ ov109_021E6C9C: ; 0x021E6C9C
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #0
 	ldr r3, [r5]
 	mov r1, #0x1b
@@ -2657,7 +2657,7 @@ _021E6D54:
 	ldr r0, [r6, #0x24]
 	bl DestroyMsgData
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov109_021E6D2C
@@ -3456,7 +3456,7 @@ _021E73B2:
 	ldr r1, [r4, #0x30]
 	mov r0, #4
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0
 	add r3, r0, #0
 	mov r5, #0x40

@@ -1160,12 +1160,12 @@ _0223E65C:
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x6e
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #6
 	mov r0, #0
 	lsl r1, r1, #6
 	mov r2, #0x6e
-	bl sub_0200304C
+	bl LoadFontPal1
 	ldr r0, [sp, #0x18]
 	ldr r1, [sp, #0x18]
 	add r0, #0x90

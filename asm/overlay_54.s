@@ -953,22 +953,22 @@ ov54_021E6004: ; 0x021E6004
 	ldr r2, [r4]
 	mov r0, #0
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #0x1a
 	ldr r2, [r4]
 	mov r0, #4
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #6
 	ldr r2, [r4]
 	mov r0, #0
 	lsl r1, r1, #6
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #6
 	ldr r2, [r4]
 	mov r0, #4
 	lsl r1, r1, #6
-	bl sub_0200304C
+	bl LoadFontPal1
 	add r0, r4, #0
 	add r0, #0x34
 	mov r1, #0
@@ -1395,7 +1395,7 @@ _021E6466:
 	mov r0, #0
 	ldr r1, [r5, r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #6
 	add r2, r6, #0
 	mul r2, r1
@@ -1516,7 +1516,7 @@ _021E6568:
 	mov r0, #0
 	ldr r1, [r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	ldr r1, [sp, #0x18]
 	lsl r2, r4, #1
 	ldrh r1, [r1, r2]

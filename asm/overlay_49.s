@@ -4270,11 +4270,11 @@ _0225A636:
 	mov r0, #0
 	mov r1, #0xa0
 	add r2, r6, #0
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #0
 	mov r1, #0x80
 	add r2, r6, #0
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #0
 	str r0, [sp]
 	str r6, [sp, #4]
@@ -6951,7 +6951,7 @@ ov49_0225BA5C: ; 0x0225BA5C
 	add r2, #0xb6
 	ldrh r2, [r4, r2]
 	mov r0, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	bl sub_020776B4
 	add r6, r0, #0
 	bl sub_02077690
@@ -7013,7 +7013,7 @@ _0225BAEC:
 	mov r0, #4
 	mov r1, #0xa0
 	add r2, r4, #0
-	bl sub_02003030
+	bl LoadFontPal0
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov49_0225BABC
@@ -8162,7 +8162,7 @@ ov49_0225C414: ; 0x0225C414
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r1, sp, #0x10
 	ldrb r1, [r1, #0x10]
 	sub r3, r1, r0
@@ -21777,7 +21777,7 @@ _02262EC8:
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0x68
 	sub r0, r1, r0
 	lsl r0, r0, #0x18

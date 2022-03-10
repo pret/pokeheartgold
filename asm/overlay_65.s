@@ -30,7 +30,7 @@ ov65_0221BE20: ; 0x0221BE20
 	bl CreateHeap
 	mov r0, #4
 	mov r1, #0x1a
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #0x34
 	mov r1, #0x1a
 	bl NARC_ctor
@@ -1868,7 +1868,7 @@ ov65_0221CD74: ; 0x0221CD74
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	mov r0, #0x1a
 	bl DestroyHeap
 	mov r0, #1
@@ -2437,7 +2437,7 @@ ov65_0221D280: ; 0x0221D280
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x1a
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #9
@@ -2482,11 +2482,11 @@ ov65_0221D280: ; 0x0221D280
 	mov r0, #0
 	mov r1, #0x40
 	mov r2, #0x1a
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #0
 	mov r1, #0x60
 	mov r2, #0x1a
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2
@@ -2532,11 +2532,11 @@ ov65_0221D280: ; 0x0221D280
 	mov r0, #4
 	mov r1, #0x40
 	mov r2, #0x1a
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #4
 	mov r1, #0x60
 	mov r2, #0x1a
-	bl sub_02003030
+	bl LoadFontPal0
 	add r0, r4, #0
 	mov r1, #4
 	bl BgClearTilemapBufferAndCommit
@@ -7424,7 +7424,7 @@ ov65_0221FB4C: ; 0x0221FB4C
 	bne _0221FB70
 	mov r0, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	ldrb r1, [r5, #7]
 	lsl r1, r1, #3
 	sub r1, r1, r0

@@ -459,7 +459,7 @@ _02258B5C:
 	mov r0, #0
 	lsl r1, r1, #6
 	add r2, r7, #0
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1774,7 +1774,7 @@ ov88_02259560: ; 0x02259560
 	strh r2, [r5, #2]
 	strh r6, [r5, #4]
 	add r1, r7, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	strh r0, [r5, #6]
 	mov r0, #1
 	ldrh r1, [r5, #6]
@@ -2006,7 +2006,7 @@ _02259740:
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
-	bl sub_02003068
+	bl FontID_String_GetWidthMultiline
 	add r0, r0, #1
 	ldrb r1, [r5, #7]
 	lsr r0, r0, #1
@@ -2017,7 +2017,7 @@ _02259756:
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
-	bl sub_02003068
+	bl FontID_String_GetWidthMultiline
 	ldrb r1, [r5, #7]
 	sub r0, r1, r0
 	str r0, [sp, #0x2c]

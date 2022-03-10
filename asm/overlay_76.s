@@ -2022,7 +2022,7 @@ ov76_021E6904: ; 0x021E6904
 	mov r0, #4
 	lsl r1, r1, #4
 	mov r2, #0x49
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #2
 	mov r1, #1
 	bl GX_EngineBToggleLayers

@@ -3848,7 +3848,7 @@ ov41_02247BB8: ; 0x02247BB8
 	mov r0, #0
 	mov r1, #0xe0
 	mov r2, #0xe
-	bl sub_0200304C
+	bl LoadFontPal1
 	str r4, [sp]
 	add r0, sp, #0x20
 	ldrb r1, [r0, #0x10]
@@ -9362,7 +9362,7 @@ ov41_0224A27C: ; 0x0224A27C
 	bl ov41_0224A7E0
 	mov r0, #2
 	mov r1, #0xe
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #9
 	str r0, [sp]
 	mov r0, #5
@@ -9401,7 +9401,7 @@ ov41_0224A27C: ; 0x0224A27C
 	add r0, r6, #0
 	bl ov41_0224A9B0
 	mov r0, #2
-	bl sub_02002DB4
+	bl FontID_Release
 	mov r0, #1
 	str r0, [r5, #0x60]
 	add r0, r4, #0
@@ -10171,7 +10171,7 @@ _0224A940:
 	add r1, r5, #0
 	mov r2, #0
 	lsl r3, r3, #3
-	bl sub_020030A0
+	bl FontID_String_GetCenterAlignmentX
 	mov r1, #0
 	add r3, r0, #0
 	str r1, [sp]
@@ -10646,7 +10646,7 @@ ov41_0224ACDC: ; 0x0224ACDC
 	mov r0, #4
 	mov r1, #0x40
 	mov r2, #0xe
-	bl sub_0200304C
+	bl LoadFontPal1
 	add sp, #8
 	pop {r4, pc}
 	thumb_func_end ov41_0224ACDC
@@ -12851,7 +12851,7 @@ ov41_0224BDCC: ; 0x0224BDCC
 	mov r0, #0
 	mov r1, #0xa0
 	mov r2, #0xe
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #3
 	mov r1, #0
 	bl SetBgPriority
@@ -12957,7 +12957,7 @@ _0224BE9C:
 	mov r0, #0
 	add r1, r7, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r4, r0, #0
 	mov r0, #7
 	str r0, [sp]
@@ -12999,7 +12999,7 @@ _0224BE9C:
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, r0, #0
 	mov r0, #0x1b
 	str r0, [sp]

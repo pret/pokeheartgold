@@ -1735,7 +1735,7 @@ ov02_0224686C: ; 0x0224686C
 	mov r0, #3
 	add r1, r7, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x18
 	mov r1, #0
 	lsr r6, r0, #0x18

@@ -1899,7 +1899,7 @@ _021E6B26:
 	mov r0, #1
 	add r1, r5, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0x40
 	sub r7, r1, r0
 	add r0, r6, #3

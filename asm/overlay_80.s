@@ -9836,7 +9836,7 @@ _0222E726:
 	beq _0222E74C
 	mov r0, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	cmp r6, r0
 	bhs _0222E73E
 	add r6, r0, #0
@@ -10370,7 +10370,7 @@ _0222EB26:
 	beq _0222EB4C
 	mov r0, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	cmp r6, r0
 	bhs _0222EB3E
 	add r6, r0, #0
@@ -34568,7 +34568,7 @@ ov80_0223A75C: ; 0x0223A75C
 	add r1, r4, #0
 	mov r2, #0
 	add r7, r3, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r4, r0, #0
 	asr r1, r4, #2
 	lsr r1, r1, #0x1d

@@ -2821,7 +2821,7 @@ _0225DA60:
 	mov r0, #0
 	ldr r1, [sp, #0x24]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -6932,7 +6932,7 @@ ov91_0225F878: ; 0x0225F878
 	mov r0, #0
 	mov r1, #0xa0
 	add r2, r4, #0
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #0
 	str r0, [sp]
 	str r4, [sp, #4]

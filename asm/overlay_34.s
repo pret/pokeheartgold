@@ -380,7 +380,7 @@ ov34_0225D7A8: ; 0x0225D7A8
 	bl ov34_0225DB20
 	mov r0, #1
 	mov r1, #4
-	bl sub_02002D40
+	bl FontID_SetAccessDirect
 	mov r2, #0x72
 	lsl r2, r2, #2
 	add r1, r4, r2
@@ -427,7 +427,7 @@ ov34_0225D87C: ; 0x0225D87C
 	mov r0, #5
 	str r0, [r6]
 	mov r0, #1
-	bl sub_02002D7C
+	bl FontID_SetAccessLazy
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]

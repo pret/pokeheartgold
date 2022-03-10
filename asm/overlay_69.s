@@ -1529,7 +1529,7 @@ ov69_021E64CC: ; 0x021E64CC
 	ldr r2, [r4]
 	mov r0, #4
 	mov r1, #0x80
-	bl sub_02003030
+	bl LoadFontPal0
 	ldr r3, [r4]
 	mov r0, #6
 	mov r1, #0x20
@@ -1624,12 +1624,12 @@ ov69_021E64CC: ; 0x021E64CC
 	ldr r2, [r4]
 	mov r0, #0
 	mov r1, #0x80
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #0x1e
 	ldr r2, [r4]
 	mov r0, #0
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	ldr r3, [r4]
 	mov r0, #2
 	mov r1, #0x20
@@ -1644,7 +1644,7 @@ ov69_021E64CC: ; 0x021E64CC
 	add r5, r0, #0
 	ldr r1, [r4]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r2, _021E6790 ; =0x00007FFF
 	add r0, sp, #0x10
 	ldr r1, _021E6794 ; =0x00001CE7
@@ -1741,7 +1741,7 @@ ov69_021E64CC: ; 0x021E64CC
 	add r0, r5, #0
 	bl String_dtor
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

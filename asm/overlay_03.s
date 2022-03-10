@@ -4612,7 +4612,7 @@ _02256348:
 	mov r0, #0
 	ldr r1, [sp, #0x28]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r4, r0, #0
 	ldr r0, [sp, #0x1c]
 	mov r3, #0xbf
@@ -5390,7 +5390,7 @@ _02256994:
 	mov r0, #0
 	ldr r1, [sp, #0x2c]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r4, r0, #0
 	ldr r0, [sp, #0x1c]
 	mov r3, #0xbf
@@ -10348,7 +10348,7 @@ _02259036:
 	mov r0, #0
 	ldr r1, [r5, #0x34]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0xe0
 	sub r3, r1, r0
 	str r4, [sp]

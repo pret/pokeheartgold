@@ -1734,7 +1734,7 @@ _021E667C:
 	mov r0, #0
 	add r1, r5, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r0, #2
 	lsl r0, r0, #8
 	ldr r1, [r4, r0]

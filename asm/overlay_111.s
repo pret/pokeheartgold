@@ -1965,7 +1965,7 @@ ov111_021E67EC: ; 0x021E67EC
 	ldr r2, [r4, #0x18]
 	mov r0, #0
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r2, #0
 	str r2, [sp]
 	ldr r1, [r4, #0x30]
@@ -2253,7 +2253,7 @@ ov111_021E6A44: ; 0x021E6A44
 	mov r0, #0
 	lsl r1, r1, #6
 	add r4, r2, #0
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #0
 	str r0, [sp]
 	ldr r2, _021E6A70 ; =0x000003D2

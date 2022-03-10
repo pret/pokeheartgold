@@ -1863,7 +1863,7 @@ _0225D544:
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsr r1, r0, #0x1f
 	add r1, r0, r1
 	asr r2, r1, #1
@@ -2188,7 +2188,7 @@ ov93_0225D78C: ; 0x0225D78C
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0x1e
 	sub r0, r1, r0
 	lsr r0, r0, #1

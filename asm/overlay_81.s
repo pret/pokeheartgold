@@ -5780,7 +5780,7 @@ _02240C9A:
 	cmp r6, #4
 	blt _02240C9A
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	add r0, r5, #0
 	add r0, #0x50
 	bl ov81_0224300C
@@ -5882,7 +5882,7 @@ ov81_02240D64: ; 0x02240D64
 	bl ov81_02240448
 	mov r0, #4
 	mov r1, #0x64
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xc2
@@ -5918,22 +5918,22 @@ _02240DBE:
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x64
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #0x1a
 	mov r0, #4
 	lsl r1, r1, #4
 	mov r2, #0x64
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #6
 	mov r0, #0
 	lsl r1, r1, #6
 	mov r2, #0x64
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #6
 	mov r0, #4
 	lsl r1, r1, #6
 	mov r2, #0x64
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #0x64
 	bl sub_02007FD4
 	mov r1, #0x6a
@@ -10499,7 +10499,7 @@ ov81_02243068: ; 0x02243068
 	bne _02243086
 	ldr r0, [sp, #0x28]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	sub r5, r5, r0
 	b _02243096
 _02243086:
@@ -10507,7 +10507,7 @@ _02243086:
 	bne _02243096
 	ldr r0, [sp, #0x28]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsr r0, r0, #1
 	sub r5, r5, r0
 _02243096:

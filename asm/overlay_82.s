@@ -1602,16 +1602,16 @@ _0223EA3C:
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x69
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #6
 	mov r0, #0
 	lsl r1, r1, #6
 	mov r2, #0x69
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #4
 	mov r1, #0x40
 	mov r2, #0x69
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #0xf
 	mov r1, #0xe
 	mov r2, #0

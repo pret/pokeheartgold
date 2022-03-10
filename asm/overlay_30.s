@@ -318,7 +318,7 @@ ov30_0225D784: ; 0x0225D784
 	mov r0, #4
 	mov r1, #0x80
 	mov r2, #8
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #0x13
 	str r0, [sp]
 	mov r0, #0x1b

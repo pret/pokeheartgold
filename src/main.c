@@ -52,10 +52,10 @@ void NitroMain(void) {
     sub_02026E30();
     GF_InitRTCWork();
     Main_ResetOverlayManager();
-    sub_02002CA8();
-    sub_02002CEC(0, 3);
-    sub_02002CEC(1, 3);
-    sub_02002CEC(3, 3);
+    FontWork_Init();
+    FontID_Alloc(0, 3);
+    FontID_Alloc(1, 3);
+    FontID_Alloc(3, 3);
     _02111868.unk_10.unk_00 = -1;
     _02111868.unk_10.savedata = SaveBlock2_new();
     sub_02005D00();

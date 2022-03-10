@@ -1782,12 +1782,12 @@ _0225951A:
 	mov r0, #0
 	mov r1, #0x20
 	add r2, r7, #0
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #0x16
 	mov r0, #4
 	lsl r1, r1, #4
 	add r2, r7, #0
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r3, #0
 	str r3, [sp]
 	str r7, [sp, #4]
@@ -2786,12 +2786,12 @@ ov48_02259D00: ; 0x02259D00
 	add r4, r0, #0
 	mov r0, #2
 	add r1, r7, #0
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #2
 	add r1, r4, #0
 	mov r2, #0
 	mov r3, #0x30
-	bl sub_020030A0
+	bl FontID_String_GetCenterAlignmentX
 	mov r1, #0
 	add r3, r0, #0
 	str r1, [sp]
@@ -2806,7 +2806,7 @@ ov48_02259D00: ; 0x02259D00
 	mov r1, #2
 	bl AddTextPrinterParameterized2
 	mov r0, #2
-	bl sub_02002DB4
+	bl FontID_Release
 	add r5, #0x1c
 	mov r1, #0
 	add r0, r5, #0

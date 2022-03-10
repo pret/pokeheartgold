@@ -3447,7 +3447,7 @@ ov92_0225E188: ; 0x0225E188
 	add r5, r0, #0
 	mov r0, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r4, r0, #0
 	add r0, r5, #0
 	bl GetWindowWidth

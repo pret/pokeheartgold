@@ -125,7 +125,7 @@ ov89_02258800: ; 0x02258800
 	bl sub_02021148
 	mov r0, #2
 	mov r1, #0x7d
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #0x7d
 	bl ScrStrBufs_new
 	str r0, [r5, #0x2c]
@@ -815,7 +815,7 @@ ov89_02258F00: ; 0x02258F00
 	ldr r0, [r0]
 	bl String_dtor
 	mov r0, #2
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, [r4, #0x10]
 	bl sub_020135AC
 	ldr r0, [r4, #0x30]
@@ -3294,7 +3294,7 @@ ov89_0225A368: ; 0x0225A368
 	add r1, r4, #0
 	mov r2, #0
 	add r7, r3, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r4, r0, #0
 	asr r1, r4, #2
 	lsr r1, r1, #0x1d

@@ -1773,7 +1773,7 @@ ov57_0223866C: ; 0x0223866C
 	mov r0, #4
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0x40
 	sub r3, r1, r0
 	mov r2, #0
@@ -1822,10 +1822,10 @@ ov57_022386F0: ; 0x022386F0
 	str r0, [r4, r1]
 	mov r0, #2
 	mov r1, #0x34
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #4
 	mov r1, #0x34
-	bl sub_02002CEC
+	bl FontID_Alloc
 	pop {r4, pc}
 	thumb_func_end ov57_022386F0
 
@@ -1834,9 +1834,9 @@ ov57_02238714: ; 0x02238714
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	mov r0, #2
-	bl sub_02002DB4
+	bl FontID_Release
 	mov r0, #0x26
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -2014,7 +2014,7 @@ ov57_022387E0: ; 0x022387E0
 	str r0, [sp, #0x40]
 	ldr r1, [sp, #0x18]
 	mov r0, #2
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsr r1, r0, #1
 	ldr r0, [sp, #0x10]
 	add r7, #0xc0

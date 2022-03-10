@@ -308,7 +308,7 @@ ov12_02237B0C: ; 0x02237B0C
 	ldrb r2, [r4, r1]
 	orr r2, r0
 	strb r2, [r4, r1]
-	bl sub_02002DB4
+	bl FontID_Release
 	add r0, r4, #0
 	mov r1, #3
 	bl ov12_0223BBF0
@@ -364,7 +364,7 @@ ov12_02237B6C: ; 0x02237B6C
 	bl sub_0200D108
 	bl GF_DestroyVramTransferManager
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	pop {r4, pc}
 	thumb_func_end ov12_02237B6C
 
@@ -425,7 +425,7 @@ _02237BDE:
 	str r0, [r5, r1]
 	mov r0, #4
 	mov r1, #5
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r1, _02237CC0 ; =0x000023FF
 	mov r0, #2
 	ldrb r2, [r5, r1]
@@ -776,7 +776,7 @@ ov12_02237F18: ; 0x02237F18
 	bl HBlankInterruptDisable
 	mov r0, #4
 	mov r1, #5
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #0xe
 	mov r1, #2
 	mov r2, #0xf
@@ -9863,7 +9863,7 @@ _0223C51C:
 	mov r0, #0
 	ldr r1, [r5, #0x18]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	ldr r1, [sp, #0x2c]
 	sub r3, r1, r0
 	b _0223C536
@@ -100453,7 +100453,7 @@ ov12_02268520: ; 0x02268520
 	add r1, r4, #0
 	mov r2, #0
 	add r7, r3, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r4, r0, #0
 	asr r1, r4, #2
 	lsr r1, r1, #0x1d

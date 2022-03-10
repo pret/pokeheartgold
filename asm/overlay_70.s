@@ -1604,7 +1604,7 @@ _02238446:
 	bl SetBothScreensModesAndDisable
 	mov r0, #4
 	mov r1, #0x3d
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #0xb
 	mov r1, #0x40
 	mov r2, #0x3d
@@ -1893,7 +1893,7 @@ ov70_022386F4: ; 0x022386F4
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -3411,7 +3411,7 @@ ov70_02239330: ; 0x02239330
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x3d
-	bl sub_0200304C
+	bl LoadFontPal1
 	ldr r0, [r5]
 	ldr r0, [r0, #0x24]
 	bl Options_GetFrame
@@ -4610,7 +4610,7 @@ ov70_02239C6C: ; 0x02239C6C
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0x3d
-	bl sub_0200304C
+	bl LoadFontPal1
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -4972,7 +4972,7 @@ ov70_02239FA4: ; 0x02239FA4
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x3d
-	bl sub_0200304C
+	bl LoadFontPal1
 	ldr r0, [r6]
 	ldr r0, [r0, #0x24]
 	bl Options_GetFrame
@@ -5023,7 +5023,7 @@ ov70_02239FA4: ; 0x02239FA4
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0x3d
-	bl sub_0200304C
+	bl LoadFontPal1
 	add r0, r6, #0
 	bl ov70_02239CF8
 	add r0, r4, #0
@@ -6425,7 +6425,7 @@ ov70_0223ABF4: ; 0x0223ABF4
 	lsl r1, r1, #4
 	mov r2, #0x3d
 	ldr r4, [r5, #4]
-	bl sub_0200304C
+	bl LoadFontPal1
 	ldr r0, [r5]
 	ldr r0, [r0, #0x24]
 	bl Options_GetFrame
@@ -6488,7 +6488,7 @@ ov70_0223ABF4: ; 0x0223ABF4
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0x3d
-	bl sub_0200304C
+	bl LoadFontPal1
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov70_0223ABF4
@@ -8021,7 +8021,7 @@ ov70_0223B8E0: ; 0x0223B8E0
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x3d
-	bl sub_0200304C
+	bl LoadFontPal1
 	ldr r0, [r6]
 	ldr r0, [r0, #0x24]
 	bl Options_GetFrame
@@ -8086,7 +8086,7 @@ ov70_0223B8E0: ; 0x0223B8E0
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0x3d
-	bl sub_0200304C
+	bl LoadFontPal1
 	add r0, r6, #0
 	bl ov70_02239CF8
 	add r0, r4, #0
@@ -10821,7 +10821,7 @@ ov70_0223CF74: ; 0x0223CF74
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x3d
-	bl sub_0200304C
+	bl LoadFontPal1
 	ldr r0, [r6]
 	ldr r0, [r0, #0x24]
 	bl Options_GetFrame
@@ -14171,7 +14171,7 @@ ov70_0223EA6C: ; 0x0223EA6C
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x3d
-	bl sub_0200304C
+	bl LoadFontPal1
 	ldr r0, [r5]
 	ldr r0, [r0, #0x24]
 	bl Options_GetFrame
@@ -16356,7 +16356,7 @@ ov70_0223FB60: ; 0x0223FB60
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x3d
-	bl sub_0200304C
+	bl LoadFontPal1
 	ldr r0, [r5]
 	ldr r0, [r0, #0x24]
 	bl Options_GetFrame
@@ -25548,12 +25548,12 @@ ov70_022442B4: ; 0x022442B4
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x3d
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #0x1a
 	mov r0, #4
 	lsl r1, r1, #4
 	mov r2, #0x3d
-	bl sub_0200304C
+	bl LoadFontPal1
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0]
 	ldr r0, [r0, #0x24]
@@ -27265,7 +27265,7 @@ ov70_02245018: ; 0x02245018
 _02245026:
 	ldr r0, [sp, #0xc]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	ldrb r1, [r4, #7]
 	lsl r1, r1, #3
 	sub r1, r1, r0
@@ -27276,7 +27276,7 @@ _02245026:
 _0224503C:
 	ldr r0, [sp, #0xc]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	ldrb r1, [r4, #7]
 	lsl r1, r1, #3
 	sub r2, r1, r0

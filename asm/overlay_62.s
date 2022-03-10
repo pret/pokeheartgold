@@ -35,7 +35,7 @@ ov62_021E5900: ; 0x021E5900
 	bl Main_SetVBlankIntrCB
 	mov r0, #4
 	mov r1, #0x62
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r1, #0x4e
 	lsl r1, r1, #2
 	add r0, r4, #0
@@ -106,7 +106,7 @@ ov62_021E59C0: ; 0x021E59C0
 	bl ov62_021E6024
 	bl ov62_021E5C80
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x4e

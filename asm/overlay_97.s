@@ -133,7 +133,7 @@ ov97_0221E69C: ; 0x0221E69C
 	ldr r0, [r4, #8]
 	bl sub_02093354
 	mov r0, #2
-	bl sub_02002DB4
+	bl FontID_Release
 	bl sub_0200B244
 	bl sub_0202168C
 	bl sub_02022608
@@ -259,10 +259,10 @@ _0221E76A:
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x5c
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #2
 	mov r1, #0x5c
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #1
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
@@ -1499,7 +1499,7 @@ ov97_0221F14C: ; 0x0221F14C
 	mov r0, #4
 	lsl r1, r1, #4
 	add r2, r4, #0
-	bl sub_02003030
+	bl LoadFontPal0
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

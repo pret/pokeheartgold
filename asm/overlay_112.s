@@ -3978,7 +3978,7 @@ ov112_021E7768: ; 0x021E7768
 	str r0, [r4, #0x18]
 	mov r0, #4
 	mov r1, #0x9a
-	bl sub_02002CEC
+	bl FontID_Alloc
 	add r0, r4, #0
 	bl ov112_021E7C18
 	bl ov112_021E79D0
@@ -4038,7 +4038,7 @@ ov112_021E77E4: ; 0x021E77E4
 	add r0, r4, #0
 	bl ov112_021E7C6C
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -4433,7 +4433,7 @@ ov112_021E7B18: ; 0x021E7B18
 	mov r0, #0
 	lsl r1, r1, #6
 	mov r2, #0x9a
-	bl sub_0200304C
+	bl LoadFontPal1
 	ldr r0, _021E7C10 ; =0x0001E43C
 	ldr r0, [r5, r0]
 	bl Options_GetFrame
@@ -4459,7 +4459,7 @@ ov112_021E7B18: ; 0x021E7B18
 	mov r0, #4
 	lsl r1, r1, #6
 	mov r2, #0x9a
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -6691,7 +6691,7 @@ ov112_021E90FC: ; 0x021E90FC
 	add r4, r0, #0
 	mov r0, #5
 	mov r1, #0x9a
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -6705,7 +6705,7 @@ ov112_021E90FC: ; 0x021E90FC
 	mov r3, #2
 	bl AddTextPrinterParameterized2
 	mov r0, #5
-	bl sub_02002DB4
+	bl FontID_Release
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #0x10
@@ -6730,7 +6730,7 @@ ov112_021E9148: ; 0x021E9148
 	str r0, [sp, #0x20]
 	mov r0, #5
 	mov r1, #0x9a
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r4, [sp, #0x18]
 	ldr r5, [sp, #0x10]
 	mov r7, #0
@@ -6850,7 +6850,7 @@ _021E91B4:
 	add r0, r4, #0
 	bl String_dtor
 	mov r0, #5
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, [sp, #0x20]
 	bl DestroyMsgData
 	add sp, #0x24
@@ -21555,7 +21555,7 @@ ov112_021F05FC: ; 0x021F05FC
 	mov r0, #4
 	lsl r1, r1, #4
 	add r2, r4, #0
-	bl sub_02003030
+	bl LoadFontPal0
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -21709,7 +21709,7 @@ ov112_021F06CC: ; 0x021F06CC
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r1, r7, #3
 	sub r3, r1, r0
 	mov r1, #0
@@ -23182,15 +23182,15 @@ _021F12DC:
 	ldr r2, [r5, #4]
 	mov r0, #0
 	lsl r1, r1, #6
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #7
 	ldr r2, [r5, #4]
 	mov r0, #4
 	lsl r1, r1, #6
-	bl sub_0200304C
+	bl LoadFontPal1
 	ldr r1, [r5, #4]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021F1320: .word ov112_021FF350
@@ -23219,7 +23219,7 @@ _021F132E:
 	ldr r0, [r6, #0x64]
 	bl DestroyMsgData
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov112_021F1324
 
@@ -23730,7 +23730,7 @@ _021F1664:
 	add r1, r4, #0
 	mov r2, #0
 	lsl r3, r3, #3
-	bl sub_020030A0
+	bl FontID_String_GetCenterAlignmentX
 	add r6, r0, #0
 	add r0, r4, #0
 	bl String_dtor

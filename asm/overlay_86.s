@@ -75,7 +75,7 @@ ov86_021E5900: ; 0x021E5900
 	str r0, [r5, r1]
 	mov r0, #4
 	mov r1, #0x79
-	bl sub_02002CEC
+	bl FontID_Alloc
 	add r0, r5, #0
 	bl ov86_021E5E0C
 	mov r0, #1
@@ -101,12 +101,12 @@ ov86_021E5900: ; 0x021E5900
 	mov r0, #0
 	sub r1, #0x78
 	mov r2, #0x79
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #6
 	mov r0, #0
 	lsl r1, r1, #6
 	mov r2, #0x79
-	bl sub_0200304C
+	bl LoadFontPal1
 	ldrb r0, [r5, #7]
 	bl ov86_021E5E98
 	add r2, r0, #0
@@ -237,7 +237,7 @@ ov86_021E5AA4: ; 0x021E5AA4
 	ldr r0, [r4, #0xc]
 	bl ov86_021E5E54
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0
@@ -869,7 +869,7 @@ ov86_021E5FD8: ; 0x021E5FD8
 	bne _021E5FF6
 	ldr r0, [sp, #0x28]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	sub r5, r5, r0
 	b _021E6006
 _021E5FF6:
@@ -877,7 +877,7 @@ _021E5FF6:
 	bne _021E6006
 	ldr r0, [sp, #0x28]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsr r0, r0, #1
 	sub r5, r5, r0
 _021E6006:
@@ -3450,7 +3450,7 @@ ov86_021E74F0: ; 0x021E74F0
 	mov r0, #4
 	lsl r1, r1, #4
 	mov r2, #0x79
-	bl sub_0200304C
+	bl LoadFontPal1
 	add sp, #8
 	pop {r4, pc}
 	nop

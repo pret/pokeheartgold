@@ -483,17 +483,17 @@ ov103_021ECD18: ; 0x021ECD18
 	mov r0, #0
 	lsl r1, r1, #6
 	mov r2, #0x9d
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #0x1e
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x9d
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #0x1e
 	mov r0, #4
 	lsl r1, r1, #4
 	mov r2, #0x9d
-	bl sub_02003030
+	bl LoadFontPal0
 	add sp, #8
 	pop {r4, pc}
 	nop
@@ -3431,7 +3431,7 @@ ov103_021EE390: ; 0x021EE390
 	add r7, r0, #0
 	mov r0, #4
 	mov r1, #0x9d
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r6, #0
 	ldr r4, _021EE3BC ; =ov103_021EEEC4
 	add r5, r6, #0
@@ -3468,7 +3468,7 @@ _021EE3C8:
 	cmp r4, #0x1e
 	blo _021EE3C8
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov103_021EE3C0
@@ -3486,7 +3486,7 @@ ov103_021EE3E4: ; 0x021EE3E4
 	bne _021EE402
 	ldr r0, [sp, #0x28]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	sub r5, r5, r0
 	b _021EE412
 _021EE402:
@@ -3494,7 +3494,7 @@ _021EE402:
 	bne _021EE412
 	ldr r0, [sp, #0x28]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsr r0, r0, #1
 	sub r5, r5, r0
 _021EE412:
@@ -3814,7 +3814,7 @@ ov103_021EE644: ; 0x021EE644
 	mov r0, #0
 	ldr r1, [r2, r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0
 	lsl r4, r0, #0x10
 	mov r0, #0x8b
@@ -3850,7 +3850,7 @@ ov103_021EE644: ; 0x021EE644
 	mov r0, #0
 	ldr r1, [r2, r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x10
 	lsr r2, r0, #0x10
 	mov r6, #0x6e

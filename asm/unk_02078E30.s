@@ -223,7 +223,7 @@ _02078FE4:
 	bl sub_0203A994
 	mov r0, #4
 	mov r1, #0xc
-	bl sub_02002CEC
+	bl FontID_Alloc
 	add r0, r4, #0
 	bl NARC_dtor
 	mov r0, #1
@@ -1068,7 +1068,7 @@ _02079672:
 	bl sub_02004B10
 _02079682:
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, [sp]
 	bl OverlayManager_FreeData
 	mov r0, #0xc
@@ -1559,11 +1559,11 @@ sub_02079A14: ; 0x02079A14
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0xc
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #4
 	mov r1, #0x40
 	mov r2, #0xc
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xc

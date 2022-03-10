@@ -4505,7 +4505,7 @@ ov93_02261EB8: ; 0x02261EB8
 	mov r2, #0
 	add r5, r3, #0
 	ldr r4, [sp, #0x9c]
-	bl sub_02003068
+	bl FontID_String_GetWidthMultiline
 	add r7, r0, #0
 	asr r1, r7, #2
 	lsr r1, r1, #0x1d

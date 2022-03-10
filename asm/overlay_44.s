@@ -2159,12 +2159,12 @@ ov44_0222AEC0: ; 0x0222AEC0
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x35
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #6
 	mov r0, #0
 	lsl r1, r1, #6
 	mov r2, #0x35
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -2403,7 +2403,7 @@ _0222B0DA:
 	ldr r1, [r4, r1]
 	add r2, r0, #0
 	mov r3, #0xb0
-	bl sub_020030A0
+	bl FontID_String_GetCenterAlignmentX
 	mov r1, #0
 	add r3, r0, #0
 	mov r2, #0x2f
@@ -11939,7 +11939,7 @@ _0222FD7A:
 	ldr r2, [sp, #0x18]
 	mov r0, #4
 	lsl r1, r1, #4
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #0
 	ldr r1, _0222FF28 ; =0x00000B98
 	str r0, [sp, #0x1c]
@@ -12753,7 +12753,7 @@ _02230322:
 	mov r0, #0
 	ldr r1, [r5, r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0xe8
 	sub r3, r1, r0
 	mov r0, #0x20
@@ -12865,7 +12865,7 @@ _02230322:
 	mov r0, #0
 	ldr r1, [r5, r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0xe8
 	sub r3, r1, r0
 	mov r0, #0x38
@@ -12935,7 +12935,7 @@ _02230322:
 	mov r0, #0
 	ldr r1, [r5, r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0xe8
 	sub r3, r1, r0
 	mov r0, #0x50
@@ -13009,7 +13009,7 @@ _02230322:
 	mov r0, #0
 	ldr r1, [r5, r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0xe8
 	sub r3, r1, r0
 	mov r0, #0x68
@@ -13112,7 +13112,7 @@ _022306B4:
 	mov r0, #0
 	ldr r1, [r5, r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0xe8
 	sub r3, r1, r0
 	mov r0, #0x80
@@ -13330,7 +13330,7 @@ ov44_022308B0: ; 0x022308B0
 	mov r0, #0
 	ldr r1, [r5, r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0xe8
 	sub r3, r1, r0
 	mov r0, #0x18
@@ -13457,7 +13457,7 @@ ov44_022308B0: ; 0x022308B0
 	mov r0, #0
 	ldr r1, [r5, r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0xe8
 	sub r3, r1, r0
 	mov r0, #0x58
@@ -13600,7 +13600,7 @@ ov44_02230B2C: ; 0x02230B2C
 	mov r0, #0
 	ldr r1, [r5, r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r0, r0, #1
 	lsr r1, r0, #1
 	mov r0, #0xb4
@@ -13749,7 +13749,7 @@ ov44_02230C68: ; 0x02230C68
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r0, r0, #1
 	lsr r1, r0, #1
 	mov r0, #0x21
@@ -14265,7 +14265,7 @@ ov44_022310C8: ; 0x022310C8
 	mov r0, #0
 	ldr r1, [r5, r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r0, r0, #1
 	lsr r0, r0, #1
 	sub r3, r4, r0
@@ -14847,7 +14847,7 @@ _0223153E:
 	blt _0223153E
 	ldr r1, [sp, #0x2c]
 	mov r0, #2
-	bl sub_02002CEC
+	bl FontID_Alloc
 	add r0, sp, #0x68
 	bl InitWindow
 	mov r0, #0
@@ -14874,7 +14874,7 @@ _0223153E:
 	add r1, r4, #0
 	mov r2, #0
 	mov r3, #0x40
-	bl sub_020030A0
+	bl FontID_String_GetCenterAlignmentX
 	mov r1, #0
 	add r3, r0, #0
 	str r1, [sp]
@@ -14948,7 +14948,7 @@ _02231604:
 	add r0, sp, #0x68
 	bl RemoveWindow
 	mov r0, #2
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, [sp, #0x2c]
 	ldr r2, _022316A8 ; =ov44_022317F0
 	str r0, [sp]
@@ -18932,7 +18932,7 @@ ov44_02233444: ; 0x02233444
 	mov r0, #0
 	mov r1, #0x20
 	add r4, r2, #0
-	bl sub_0200304C
+	bl LoadFontPal1
 	ldr r0, [r6, #8]
 	bl Sav2_PlayerData_GetOptionsAddr
 	bl Options_GetFrame

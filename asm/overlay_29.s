@@ -262,7 +262,7 @@ ov29_0225D714: ; 0x0225D714
 	str r0, [sp, #0x18]
 	mov r0, #4
 	mov r1, #8
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r1, #0x1a
 	ldr r0, [sp, #0x10]
 	lsl r1, r1, #4
@@ -296,7 +296,7 @@ _0225D73A:
 	mov r0, #4
 	add r1, r7, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsr r1, r0, #1
 	ldr r0, [sp, #0x14]
 	add r2, r7, #0
@@ -326,7 +326,7 @@ _0225D73A:
 	cmp r6, #3
 	blo _0225D73A
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, [sp, #0x18]
 	bl DestroyMsgData
 	add sp, #0x1c

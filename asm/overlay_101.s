@@ -13642,7 +13642,7 @@ ov101_021EDFF8: ; 0x021EDFF8
 	bl ScheduleBgTilemapBufferTransfer
 	ldr r1, [r5]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	add sp, #0x14
 	pop {r4, r5, pc}
 	thumb_func_end ov101_021EDFF8
@@ -13652,7 +13652,7 @@ ov101_021EE190: ; 0x021EE190
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -14458,7 +14458,7 @@ _021EE82A:
 	ldr r1, [r1]
 	mov r0, #4
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x10
 	asr r1, r0, #0x10
 	mov r0, #0x30
@@ -15465,7 +15465,7 @@ ov101_021EEFE8: ; 0x021EEFE8
 	add r4, r0, #0
 	ldr r1, [r4]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	add r0, r4, #0
 	bl ov101_021EF1D8
 	pop {r4, pc}
@@ -15476,7 +15476,7 @@ ov101_021EEFFC: ; 0x021EEFFC
 	push {r3, lr}
 	bl ov101_021EF260
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov101_021EEFFC
@@ -17889,7 +17889,7 @@ ov101_021F0284: ; 0x021F0284
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r1, [r5]
 	mov r0, #0x92
 	bl NARC_ctor
@@ -18000,7 +18000,7 @@ ov101_021F0370: ; 0x021F0370
 	ldr r0, [r0, r1]
 	bl FreeToHeap
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	pop {r3, pc}
 	nop
 _021F0384: .word 0x00000508
@@ -18978,7 +18978,7 @@ ov101_021F0ACC: ; 0x021F0ACC
 	lsl r6, r6, #2
 	ldr r1, [r4, r6]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #1
 	lsl r1, r1, #8
 	sub r0, r1, r0
@@ -27574,7 +27574,7 @@ ov101_021F4BC8: ; 0x021F4BC8
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r1, [r5]
 	mov r0, #0x93
 	bl NARC_ctor
@@ -27702,7 +27702,7 @@ ov101_021F4CD8: ; 0x021F4CD8
 	ldr r0, [r0, #0x64]
 	bl FreeToHeap
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	pop {r3, pc}
 	thumb_func_end ov101_021F4CD8
 

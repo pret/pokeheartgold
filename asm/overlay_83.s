@@ -2317,7 +2317,7 @@ _0223F0F0:
 	ldr r0, [r5, r0]
 	bl MessagePrinter_delete
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	mov r6, #0
 	add r4, r5, #0
 _0223F164:
@@ -2398,7 +2398,7 @@ ov83_0223F200: ; 0x0223F200
 	bl ov83_0223F70C
 	mov r0, #4
 	mov r1, #0x6b
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0x1f
@@ -2440,12 +2440,12 @@ _0223F268:
 	mov r0, #0
 	lsl r1, r1, #6
 	mov r2, #0x6b
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #0x1a
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x6b
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #1
 	mov r1, #2
 	mov r2, #0
@@ -8725,7 +8725,7 @@ _022425F2:
 	mov r0, #0
 	ldr r1, [sp, #0x28]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0xf
 	lsr r0, r0, #0x10
 	str r0, [sp, #0x24]
@@ -8793,7 +8793,7 @@ _02242664:
 	mov r0, #0
 	ldr r1, [r4, #0x28]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov ip, r0
 	mov r0, #0
 	str r0, [sp]
@@ -11789,7 +11789,7 @@ _02243EDC:
 	ldr r0, [r0, r1]
 	bl MessagePrinter_delete
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r4, [sp]
 	mov r5, #0
 _02243F50:
@@ -11867,7 +11867,7 @@ ov83_02243FD4: ; 0x02243FD4
 	bl ov83_02244408
 	mov r0, #4
 	mov r1, #0x6b
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0x21
@@ -11903,12 +11903,12 @@ _02244030:
 	mov r0, #0
 	lsl r1, r1, #6
 	mov r2, #0x6b
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #0x1a
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x6b
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #1
 	mov r1, #2
 	mov r2, #0
@@ -16628,7 +16628,7 @@ _0224665A:
 	mov r0, #0
 	add r1, r7, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x17
 	lsr r6, r0, #0x18
 	mov r0, #0
@@ -16653,7 +16653,7 @@ _0224665A:
 	mov r0, #0
 	add r1, r7, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -16751,7 +16751,7 @@ _02246784:
 	mov r0, #0
 	add r1, r7, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x17
 	lsr r6, r0, #0x18
 	lsl r0, r4, #4
@@ -16793,7 +16793,7 @@ _02246784:
 	mov r0, #0
 	ldr r1, [r5, #0x28]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -19079,7 +19079,7 @@ ov83_02247998: ; 0x02247998
 	bne _022479B6
 	ldr r0, [sp, #0x28]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	sub r5, r5, r0
 	b _022479C6
 _022479B6:
@@ -19087,7 +19087,7 @@ _022479B6:
 	bne _022479C6
 	ldr r0, [sp, #0x28]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsr r0, r0, #1
 	sub r5, r5, r0
 _022479C6:

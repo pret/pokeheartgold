@@ -380,7 +380,7 @@ _02258ACA:
 	mov r0, #0
 	mov r1, #0x80
 	add r2, r7, #0
-	bl sub_0200304C
+	bl LoadFontPal1
 	ldr r0, [sp, #0x10]
 	bl Options_GetFrame
 	lsl r0, r0, #0x18
@@ -2262,7 +2262,7 @@ ov47_0225999C: ; 0x0225999C
 	mov r0, #1
 	add r1, r6, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, r0, #0
 	mov r0, #4
 	str r0, [sp]
@@ -2377,7 +2377,7 @@ _02259A98:
 	ldr r1, [sp, #0x18]
 	mov r0, #1
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	str r0, [sp, #0x1c]
 	mov r1, #0
 	ldr r3, [sp, #0x1c]
@@ -2405,7 +2405,7 @@ _02259A98:
 	mov r0, #1
 	add r1, r5, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0
 	add r3, r0, #0
 	str r1, [sp]

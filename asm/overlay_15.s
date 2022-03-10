@@ -957,7 +957,7 @@ _021F9B62:
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #6
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -993,7 +993,7 @@ _021F9B62:
 	mov r0, #4
 	lsl r1, r1, #4
 	mov r2, #6
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -10695,7 +10695,7 @@ ov15_021FE8C4: ; 0x021FE8C4
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #8
@@ -11673,7 +11673,7 @@ ov15_021FF068: ; 0x021FF068
 	mov r0, #0
 	ldr r1, [r5, r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r0, #4
 	str r0, [sp]
 	mov r0, #0xff
@@ -11776,7 +11776,7 @@ _021FF160:
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r7, r0, #0
 	mov r0, #0x10
 	str r0, [sp]
@@ -11865,7 +11865,7 @@ ov15_021FF1E0: ; 0x021FF1E0
 	mov r0, #0
 	ldr r1, [r5, r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, r0, #0
 	mov r0, #0x10
 	str r0, [sp]
@@ -11909,7 +11909,7 @@ ov15_021FF29C: ; 0x021FF29C
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0
 	add r3, r0, #0
 	mov r6, #0x30
@@ -12518,7 +12518,7 @@ ov15_021FF758: ; 0x021FF758
 	mov r0, #0
 	ldr r1, [r4, r5]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0
 	add r3, r0, #0
 	str r1, [sp]

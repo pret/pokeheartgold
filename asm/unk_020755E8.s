@@ -652,7 +652,7 @@ sub_02075A7C: ; 0x02075A7C
 	bl GX_SwapDisplay
 	mov r0, #4
 	add r1, r5, #0
-	bl sub_02002CEC
+	bl FontID_Alloc
 	add r0, r5, #0
 	mov r1, #0xbc
 	bl AllocFromHeap
@@ -970,7 +970,7 @@ sub_02075D4C: ; 0x02075D4C
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	add r0, r4, #0
 	bl sub_02075770
 	ldr r0, [r4, #4]

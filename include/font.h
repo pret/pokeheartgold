@@ -5,22 +5,22 @@
 
 #define FONT_NUM    6
 
-void sub_02002CA8(void);
-void sub_02002CEC(FontID fontId, HeapID heapId);
-void sub_02002D40(FontID fontId, HeapID heapId);
-void sub_02002D7C(FontID fontId);
-void sub_02002DB4(FontID fontId);
-struct GlyphInfo *sub_02002E7C(FontID fontId, u16 glyphId);
-BOOL sub_02002E98(u16 glyphId, struct TextPrinter *printer);
-u32 sub_02002EC8(FontID fontId, const u16 *string, u32 letterSpacing);
-u32 sub_02002EFC(FontID fontId, const u16 *string, u32 letterSpacing);
-u32 sub_02002F30(FontID fontId, STRING *string, u32 letterSpacing);
-BOOL sub_02002F68(FontID fontId, STRING *str0, STRING *str1);
+void FontWork_Init(void);
+void FontID_Alloc(FontID fontId, HeapID heapId);
+void FontID_SetAccessDirect(FontID fontId, HeapID heapId);
+void FontID_SetAccessLazy(FontID fontId);
+void FontID_Release(FontID fontId);
+struct GlyphInfo *FontID_TryLoadGlyph(FontID fontId, u16 glyphId);
+BOOL FontID_RenderText(int fontId, struct TextPrinter *printer);
+u32 FontID_FlatArray_GetWidth(FontID fontId, const u16 *string, u32 letterSpacing);
+u32 FontID_FlatArray_GetWidthFirstLine(FontID fontId, const u16 *string, u32 letterSpacing);
+u32 FontID_String_GetWidth(FontID fontId, STRING *string, u32 letterSpacing);
+BOOL FontID_String_AllCharsValid(FontID fontId, STRING *str0, STRING *str1);
 u8 GetFontAttribute(FontID fontId, int attr);
-void sub_02003030(int layer, u32 baseAddr, HeapID heapId);
-void sub_0200304C(int layer, u32 baseAddr, HeapID heapId);
-u32 sub_02003068(FontID fontId, STRING *string, u32 letterSpacing);
-u32 sub_020030A0(FontID fontId, STRING *string, u32 letterSpacing, u32 windowWidth);
-u32 FontI_GetGlyphWidth(FontID fontId, u16 glyph);
+void LoadFontPal0(int layer, u32 baseAddr, HeapID heapId);
+void LoadFontPal1(int layer, u32 baseAddr, HeapID heapId);
+u32 FontID_String_GetWidthMultiline(FontID fontId, STRING *string, u32 letterSpacing);
+u32 FontID_String_GetCenterAlignmentX(FontID fontId, STRING *string, u32 letterSpacing, u32 windowWidth);
+u32 FontID_GetGlyphWidth(FontID fontId, u16 glyph);
 
 #endif //POKEHEARTGOLD_FONT_H

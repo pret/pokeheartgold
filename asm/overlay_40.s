@@ -6435,7 +6435,7 @@ _0222EAC0:
 	mov r0, #0
 	ldr r1, [sp, #0x2c]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov ip, r0
 	str r5, [sp]
 	mov r0, #0xff
@@ -7724,7 +7724,7 @@ _0222F500:
 	mov r0, #0
 	add r1, r7, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov ip, r0
 	str r4, [sp]
 	mov r0, #0xff
@@ -9976,7 +9976,7 @@ ov40_022306C0: ; 0x022306C0
 	add r5, r0, #0
 	mov r0, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r4, r0, #0
 	add r0, r5, #0
 	bl GetWindowWidth
@@ -11004,7 +11004,7 @@ ov40_02230DCC: ; 0x02230DCC
 	mov r0, #0
 	add r1, r5, #0
 	add r2, r6, #0
-	bl sub_02002F68
+	bl FontID_String_AllCharsValid
 	cmp r0, #0
 	bne _02230DFE
 	mov r1, #0x51
@@ -20473,7 +20473,7 @@ _02235C18:
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0x80
 	sub r0, r1, r0
 	lsr r3, r0, #1
@@ -20609,7 +20609,7 @@ _02235D48:
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0x80
 	sub r0, r1, r0
 	lsr r3, r0, #1
@@ -24465,7 +24465,7 @@ ov40_02237BD4: ; 0x02237BD4
 	mov r0, #0
 	add r1, r5, #0
 	add r2, r0, #0
-	bl sub_02003068
+	bl FontID_String_GetWidthMultiline
 	mov r1, #0x40
 	sub r0, r1, r0
 	mov r1, #0
@@ -31995,7 +31995,7 @@ ov40_0223BA70: ; 0x0223BA70
 	mov r0, #0
 	add r1, r5, #0
 	add r2, r0, #0
-	bl sub_02003068
+	bl FontID_String_GetWidthMultiline
 	mov r1, #0x50
 	sub r0, r1, r0
 	mov r1, #0
@@ -36709,7 +36709,7 @@ ov40_0223E0A4: ; 0x0223E0A4
 	mov r0, #0
 	add r1, r5, #0
 	add r2, r0, #0
-	bl sub_02003068
+	bl FontID_String_GetWidthMultiline
 	mov r1, #0x50
 	sub r0, r1, r0
 	mov r1, #0
@@ -49471,7 +49471,7 @@ _0224499E:
 	ldr r2, [sp, #0x1c]
 	mov r0, #0
 	add r1, r4, #0
-	bl sub_02002F68
+	bl FontID_String_AllCharsValid
 	cmp r0, #0
 	bne _022449CC
 	ldr r0, [sp, #0x1c]
@@ -49537,7 +49537,7 @@ _02244A02:
 	ldr r2, [sp, #0x1c]
 	mov r0, #0
 	add r1, r4, #0
-	bl sub_02002F68
+	bl FontID_String_AllCharsValid
 	cmp r0, #0
 	bne _02244A54
 	add r0, r7, #0
