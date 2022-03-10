@@ -3974,7 +3974,7 @@ ov05_0221D9F0: ; 0x0221D9F0
 	mov r2, #4
 	ldr r0, [r0, #0x24]
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	ldr r1, _0221DAC8 ; =0x00000B58
 	ldr r2, _0221DACC ; =0x04000060
 	str r0, [r4, r1]
@@ -4113,7 +4113,7 @@ ov05_0221DB18: ; 0x0221DB18
 	bl FreeToHeap
 	ldr r0, _0221DB48 ; =0x00000B58
 	ldr r0, [r4, r0]
-	bl sub_02026F54
+	bl GF_3DVramMan_Delete
 _0221DB40:
 	pop {r4, pc}
 	nop
@@ -4643,7 +4643,7 @@ _0221DF58:
 	mov r0, #0
 	add r1, r0, #0
 	add r2, r0, #0
-	bl sub_020741BC
+	bl GetMonIconNaixEx
 	mov r1, #0x18
 	add r2, r6, #0
 	mul r2, r1
@@ -4663,7 +4663,7 @@ _0221DF7A:
 	ldr r1, [sp, #4]
 	add r4, r0, #0
 	add r7, r1, r2
-	bl sub_020741B0
+	bl Pokemon_GetIconNaix
 	mov r1, #0x85
 	lsl r1, r1, #2
 	str r0, [r7, r1]
@@ -4940,7 +4940,7 @@ _0221E19C:
 	add r2, #0xb
 	ldrb r1, [r3, r1]
 	ldrb r2, [r3, r2]
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	add r1, r0, #0
 	ldr r0, [r7, r4]
 	bl sub_0200DD10

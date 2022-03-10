@@ -4380,7 +4380,7 @@ _0225A742:
 	add r0, r6, #0
 	mov r2, #2
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	mov r1, #0x51
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -4454,7 +4454,7 @@ _0225A80E:
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_02026F54
+	bl GF_3DVramMan_Delete
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0225A83C: .word ov49_02269734

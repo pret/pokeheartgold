@@ -170,7 +170,7 @@ void ScriptState_RollLotoId(SCRIPT_STATE* state) {
 void Save_LCRNGAdvanceLotoID(SAVEDATA* savedata) {
     SCRIPT_STATE* state = SavArray_Flags_get(savedata);
     SAV_FRIEND_GRP* friend_groups = sub_0202C854(savedata);
-    u32 rand_id = sub_0202C7DC(friend_groups) * 0x41C64E6D + 12345;
+    u32 rand_id = sub_0202C7DC(friend_groups) * 1103515245 + 12345;
 
     ScriptState_SetLotoId(state, rand_id);
 }
@@ -244,7 +244,7 @@ u16 ScriptState_GetVar4052(SCRIPT_STATE* state) {
     return GetScriptVar(state, VAR_UNK_4052);
 }
 
-BOOL sub_02066E58(SCRIPT_STATE* state) {
+BOOL ScriptState_IsInRocketTakeover(SCRIPT_STATE* state) {
     u16 var = GetScriptVar(state, VAR_SCENE_ROCKET_TAKEOVER);
     if (var < 2 || var > 4) {
         return FALSE;

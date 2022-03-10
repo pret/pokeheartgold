@@ -1,8 +1,11 @@
 #ifndef POKEHEARTGOLD_MAP_HEADER_H
 #define POKEHEARTGOLD_MAP_HEADER_H
 
-typedef struct MapHeader
-{
+#define MAP_FOLLOWMODE_PREVENT          0
+#define MAP_FOLLOWMODE_HEIGHT_RESTRICT  1
+#define MAP_FOLLOWMODE_ALLOW            2
+
+typedef struct MapHeader {
     u8 wild_encounter_bank;     // fielddata/encountdata/[gs]_enc_data.naix
     u8 area_data_bank;          // fielddata/areadata/area_data.naix
     u16 move_model_bank:4;      // fielddata/mm_list/move_model_list.naix

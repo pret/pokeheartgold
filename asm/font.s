@@ -4,31 +4,20 @@
 	.rodata
 
 _020F56C0:
-	.byte 0x00, 0x00
-_020F56C2:
-	.byte 0x00, 0x00
-_020F56C4:
-	.byte 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
-	.byte 0x04, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00
+	.short 0x0000, 0x0000
+	.short 0x0001, 0x0000
+	.short 0x0002, 0x0000
+	.short 0x0003, 0x0000
+	.short 0x0004, 0x0000
+	.short 0x000A, 0x0000
 _020F56D8:
-	.byte 0x0B
-_020F56D9:
-	.byte 0x10
-_020F56DA:
-	.byte 0x00
-_020F56DB:
-	.byte 0x00
-_020F56DC:
-	.byte 0x00
-_020F56DD:
-	.byte 0x01
-_020F56DE:
-	.byte 0x0F
-_020F56DF:
-	.byte 0x02
-	.byte 0x0B, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02, 0x0B, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02
-	.byte 0x0B, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02, 0x0B, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02
-	.byte 0x0A, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x0B, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02
+	.byte 0x0B, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02
+	.byte 0x0B, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02
+	.byte 0x0B, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02
+	.byte 0x0B, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02
+	.byte 0x0A, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
 	.bss
 
@@ -89,7 +78,7 @@ sub_02002CEC: ; 0x02002CEC
 	bne _02002D28
 	str r1, [sp]
 	ldr r1, _02002D38 ; =_020F56C0
-	ldr r3, _02002D3C ; =_020F56C2
+	ldr r3, _02002D3C ; =_020F56C0 + 2
 	ldrh r1, [r1, r4]
 	ldrh r3, [r3, r4]
 	mov r0, #0x10  ; graphic/font.narc
@@ -115,7 +104,7 @@ _02002D28:
 	nop
 _02002D34: .word _0211188C
 _02002D38: .word _020F56C0
-_02002D3C: .word _020F56C2
+_02002D3C: .word _020F56C0 + 2
 	thumb_func_end sub_02002CEC
 
 	thumb_func_start sub_02002D40
@@ -479,50 +468,50 @@ _02002FCE:
 	b _0200300C
 _02002FD6:
 	lsl r1, r0, #3
-	ldr r0, _02003014 ; =_020F56D9
+	ldr r0, _02003014 ; =_020F56D8 + 1
 	ldrb r2, [r0, r1]
 	b _0200300C
 _02002FDE:
 	lsl r1, r0, #3
-	ldr r0, _02003018 ; =_020F56DA
+	ldr r0, _02003018 ; =_020F56D8 + 2
 	ldrb r2, [r0, r1]
 	b _0200300C
 _02002FE6:
 	lsl r1, r0, #3
-	ldr r0, _0200301C ; =_020F56DB
+	ldr r0, _0200301C ; =_020F56D8 + 3
 	ldrb r2, [r0, r1]
 	b _0200300C
 _02002FEE:
 	lsl r1, r0, #3
-	ldr r0, _02003020 ; =_020F56DC
+	ldr r0, _02003020 ; =_020F56D8 + 4
 	ldrb r2, [r0, r1]
 	b _0200300C
 _02002FF6:
 	lsl r1, r0, #3
-	ldr r0, _02003024 ; =_020F56DD
+	ldr r0, _02003024 ; =_020F56D8 + 5
 	ldrb r2, [r0, r1]
 	b _0200300C
 _02002FFE:
 	lsl r1, r0, #3
-	ldr r0, _02003028 ; =_020F56DE
+	ldr r0, _02003028 ; =_020F56D8 + 6
 	ldrb r2, [r0, r1]
 	b _0200300C
 _02003006:
 	lsl r1, r0, #3
-	ldr r0, _0200302C ; =_020F56DF
+	ldr r0, _0200302C ; =_020F56D8 + 7
 	ldrb r2, [r0, r1]
 _0200300C:
 	add r0, r2, #0
 	bx lr
 	.balign 4, 0
 _02003010: .word _020F56D8
-_02003014: .word _020F56D9
-_02003018: .word _020F56DA
-_0200301C: .word _020F56DB
-_02003020: .word _020F56DC
-_02003024: .word _020F56DD
-_02003028: .word _020F56DE
-_0200302C: .word _020F56DF
+_02003014: .word _020F56D8 + 1
+_02003018: .word _020F56D8 + 2
+_0200301C: .word _020F56D8 + 3
+_02003020: .word _020F56D8 + 4
+_02003024: .word _020F56D8 + 5
+_02003028: .word _020F56D8 + 6
+_0200302C: .word _020F56D8 + 7
 	thumb_func_end GetFontAttribute
 
 	thumb_func_start sub_02003030

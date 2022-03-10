@@ -27,5 +27,6 @@ SAV_FRIEND_GRP *sub_0202C854(SAVEDATA *saveData);
 u8 sub_0202C830(SAV_FRIEND_GRP *savFriendGrp, int grpno);
 u8 sub_0202C83C(SAV_FRIEND_GRP *savFriendGrp, int grpno);
 u16 *sub_0202C7E0(SAV_FRIEND_GRP *savFriendGrp, int grpno, int nameType);
+u32 sub_0202C7DC(SAV_FRIEND_GRP *savFriendGrp);
 
 #endif //POKEHEARTGOLD_FRIEND_GROUP_H

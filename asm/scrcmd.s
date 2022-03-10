@@ -6887,7 +6887,7 @@ ScrCmd_249: ; 0x02043E08
 	add r1, r6, #0
 	lsr r2, r2, #0x18
 	add r3, r4, #0
-	bl sub_02051020
+	bl SetupAndStartWildBattle
 	mov r0, #1
 	add sp, #8
 	pop {r4, r5, r6, pc}
@@ -6931,7 +6931,7 @@ ScrCmd_WildBattle: ; 0x02043E5C
 	str r0, [sp, #4]
 	ldr r0, [r5, #0x74]
 	add r3, r4, #0
-	bl sub_02051020
+	bl SetupAndStartWildBattle
 	mov r0, #1
 	add sp, #8
 	pop {r4, r5, r6, pc}
@@ -7010,7 +7010,7 @@ ScrCmd_250: ; 0x02043F0C
 ScrCmd_CatchingTutorial: ; 0x02043F48
 	push {r3, lr}
 	ldr r0, [r0, #0x74]
-	bl sub_02051334
+	bl SetupAndStartTutorialBattle
 	mov r0, #1
 	pop {r3, pc}
 	thumb_func_end ScrCmd_CatchingTutorial
@@ -12989,13 +12989,13 @@ ScrCmd_606: ; 0x02046DA8
 	ldr r0, [r0]
 	bl FollowingPokemon_GetMapObject
 	add r4, r0, #0
-	bl sub_02069F7C
+	bl FollowPokeObj_GetSpecies
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r1, [r1]
 	ldr r1, [r1, #0x20]
 	ldr r1, [r1]
-	bl sub_02069FF4
+	bl GetFollowPokePermissionBySpeciesAndMap
 	cmp r0, #0
 	beq _02046DF4
 	add r0, r4, #0
@@ -13026,13 +13026,13 @@ ScrCmd_607: ; 0x02046DF8
 	add r0, #0x80
 	ldr r0, [r0]
 	bl FollowingPokemon_GetMapObject
-	bl sub_02069F7C
+	bl FollowPokeObj_GetSpecies
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r1, [r1]
 	ldr r1, [r1, #0x20]
 	ldr r1, [r1]
-	bl sub_02069FF4
+	bl GetFollowPokePermissionBySpeciesAndMap
 	cmp r0, #0
 	beq _02046E32
 	add r4, #0x80
@@ -14115,7 +14115,7 @@ ScrCmd_732: ; 0x02047644
 	ldr r0, [r1, r0]
 	mov r1, #0
 	ldrsb r1, [r2, r1]
-	bl sub_0206A1F4
+	bl FsysUnkSub108_AddMonMood
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0

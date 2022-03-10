@@ -79,7 +79,7 @@ _02260CB8:
 	add r1, #0xa8
 	str r0, [r1]
 	mov r0, #0xb
-	bl sub_0206A1D4
+	bl FsysUnkSub108_Alloc
 	mov r1, #0x42
 	lsl r1, r1, #2
 	str r0, [r5, r1]

@@ -23161,7 +23161,7 @@ ov18_021F148C: ; 0x021F148C
 	add r0, r1, #0
 	mov r1, #0
 	add r4, r3, #0
-	bl sub_02074274
+	bl GetBattleMonIconNaixEx
 	add r1, r0, #0
 	mov r0, #0x25
 	str r0, [sp]
@@ -23224,7 +23224,7 @@ ov18_021F14FC: ; 0x021F14FC
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0
-	bl sub_0207440C
+	bl GetBattleMonIconPaletteEx
 	ldr r1, [sp, #4]
 	add r3, r0, #0
 	ldr r1, [r1, #0x14]
@@ -23266,7 +23266,7 @@ ov18_021F1534: ; 0x021F1534
 	ldr r1, [sp, #4]
 	add r0, r7, #0
 	mov r2, #0
-	bl sub_0207440C
+	bl GetBattleMonIconPaletteEx
 	add r1, r0, #0
 	lsl r0, r4, #2
 	add r2, r5, r0

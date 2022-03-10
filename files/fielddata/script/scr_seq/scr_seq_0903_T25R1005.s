@@ -15,18 +15,18 @@
 	scrdef_end
 
 scr_seq_T25R1005_005:
-	setflag FLAG_UNK_1BE
+	setflag FLAG_HIDE_GOLDENROD_DEPT_STORE_5F_RETURN_FRUSTRATION_LADY
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _0046
 	compare VAR_TEMP_x4000, 0
 	goto_if_ne _0044
-	clearflag FLAG_UNK_1BE
+	clearflag FLAG_HIDE_GOLDENROD_DEPT_STORE_5F_RETURN_FRUSTRATION_LADY
 _0044:
 	end
 
 _0046:
-	clearflag FLAG_UNK_1BE
+	clearflag FLAG_HIDE_GOLDENROD_DEPT_STORE_5F_RETURN_FRUSTRATION_LADY
 	end
 
 scr_seq_T25R1005_000:

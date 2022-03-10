@@ -11326,7 +11326,7 @@ ov80_0222F29C: ; 0x0222F29C
 	bl GF_AssertFail
 _0222F2B0:
 	add r0, r7, #0
-	bl sub_020741B0
+	bl Pokemon_GetIconNaix
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -11366,7 +11366,7 @@ _0222F2D8:
 	bl sub_0200D734
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_02074484
+	bl Pokemon_GetIconPalette
 	add r1, r0, #0
 	ldr r0, [r4]
 	bl sub_02024AA8
@@ -31895,7 +31895,7 @@ ov80_022392DC: ; 0x022392DC
 	str r1, [sp, #4]
 	mov r1, #0
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -31966,10 +31966,10 @@ _02239378: .word 0x04000580
 
 	thumb_func_start ov80_0223937C
 ov80_0223937C: ; 0x0223937C
-	ldr r3, _02239380 ; =sub_02026F54
+	ldr r3, _02239380 ; =GF_3DVramMan_Delete
 	bx r3
 	.balign 4, 0
-_02239380: .word sub_02026F54
+_02239380: .word GF_3DVramMan_Delete
 	thumb_func_end ov80_0223937C
 
 	thumb_func_start ov80_02239384
@@ -36387,7 +36387,7 @@ _0223B4B2:
 	str r2, [r5, #0xc]
 	str r4, [r5, #0x18]
 	str r6, [r5, #0x10]
-	ldr r0, _0223B4D8 ; =ov80_0223B468
+	ldr r0, gApp_MainMenu_SelectOption_MigrateFromAgb ; =ov80_0223B468
 	str r7, [r5, #0x14]
 	add r1, r5, #0
 	bl sub_0200E374
@@ -36399,7 +36399,7 @@ _0223B4B2:
 	str r0, [r5]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0223B4D8: .word ov80_0223B468
+gApp_MainMenu_SelectOption_MigrateFromAgb: .word ov80_0223B468
 _0223B4DC: .word ov80_0223B484
 	thumb_func_end ov80_0223B4A0
 

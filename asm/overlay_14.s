@@ -26818,7 +26818,7 @@ ov14_021F2DC4: ; 0x021F2DC4
 	add r5, r0, #0
 	add r0, r1, #0
 	add r4, r2, #0
-	bl sub_02074170
+	bl Boxmon_GetIconNaix
 	add r1, r0, #0
 	mov r0, #0xa
 	str r0, [sp]
@@ -26877,7 +26877,7 @@ _021F2E10:
 	ldr r0, [sp, #8]
 	bl FreeToHeap
 	add r0, r7, #0
-	bl sub_02074444
+	bl Boxmon_GetIconPalette
 	ldr r1, [r5, #0x34]
 	add r2, r1, r4
 	ldr r1, _021F2E70 ; =0x00004076
@@ -26935,7 +26935,7 @@ ov14_021F2EA0: ; 0x021F2EA0
 	bl ov14_021F2DC4
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_02074444
+	bl Boxmon_GetIconPalette
 	ldr r1, [sp]
 	add r3, r0, #0
 	ldr r0, [r5, #0x34]

@@ -7,12 +7,15 @@
 #include "player_data.h"
 #include "pokemon_storage_system.h"
 #include "save_arrays.h"
+#include "unk_0205B3DC.h"
+#include "unk_02068F84.h"
 
 static STRING* _get_species_name(u16 species, HeapID heap_id);
 extern u16 GetStarterFromScriptState(SCRIPT_STATE*);
 extern u16 DPPtLeftover_GetRivalSpecies(SCRIPT_STATE*);
 extern u16 DPPtLeftover_GetFriendStarterSpecies(SCRIPT_STATE*);
 extern u32 sub_0208E55C(u8, u32);
+extern u32 sub_0205BB1C(u32 num);
 
 BOOL ScrCmd_BufferStatName(SCRIPTCONTEXT* ctx) {
     MSGFMT** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, UNK80_10_C_MSGFMT);
@@ -204,7 +207,7 @@ BOOL ScrCmd_BufferPlayerUnionAvatarClassName(SCRIPTCONTEXT* ctx) {
     PLAYERPROFILE* profile = Sav2_PlayerData_GetProfileAddr(savedata);
     MSGFMT** msg_fmt = FieldSysGetAttrAddr(fsys, UNK80_10_C_MSGFMT);
     u8 idx = ScriptReadByte(ctx);
-    u8 gender = PlayerProfile_GetTrainerGender(profile);
+    u32 gender = PlayerProfile_GetTrainerGender(profile);
     u8 avatar = PlayerProfile_GetAvatar(profile);
 
     BufferTrainerClassNameWithArticle(*msg_fmt, idx, sub_0205B46C(gender, avatar, 2));
@@ -301,9 +304,9 @@ BOOL ScrCmd_BufferMapSecName(SCRIPTCONTEXT* ctx) {
     STRING* str = String_ctor(22, 4);
     MSGFMT** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, UNK80_10_C_MSGFMT);
     u8 idx = ScriptReadByte(ctx);
-    u16 map_sec = ScriptGetVar(ctx);
+    u16 mapno = ScriptGetVar(ctx);
 
-    sub_02068F98(map_sec, 4, str);
+    sub_02068F98(mapno, 4, str);
     BufferString(*msg_fmt, idx, str, 0, 1, 2);
     String_dtor(str);
 

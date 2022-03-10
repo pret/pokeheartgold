@@ -510,7 +510,7 @@ _0221E984:
 	ldr r2, [sp]
 	add r0, r7, #0
 	mov r1, #0
-	bl sub_020741BC
+	bl GetMonIconNaixEx
 	add r1, r0, #0
 	add r0, r6, #0
 	add r2, sp, #8
@@ -529,7 +529,7 @@ _0221E984:
 	ldr r1, [sp]
 	add r0, r7, #0
 	mov r2, #0
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	mov r1, #0x14
 	add r2, r0, #0
 	ldrsb r1, [r6, r1]

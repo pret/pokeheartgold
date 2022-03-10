@@ -2296,11 +2296,11 @@ _021E69CE:
 	str r0, [r1, #0x40]
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02027000
+	bl GF_3DVramMan_InitFrameTexVramManager
 	mov r0, #1
 	lsl r0, r0, #0xe
 	mov r1, #1
-	bl sub_02027008
+	bl GF_3DVramMan_InitFramePlttVramManager
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0

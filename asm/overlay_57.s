@@ -402,7 +402,7 @@ ov57_02237B20: ; 0x02237B20
 	mov r0, #0x96
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026F54
+	bl GF_3DVramMan_Delete
 	mov r0, #0x34
 	bl ov57_02237CDC
 	ldr r0, _02237C98 ; =0x0000045C
@@ -2364,7 +2364,7 @@ ov57_02238B28: ; 0x02238B28
 	str r0, [sp, #4]
 	mov r0, #0x34
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	add sp, #8
 	pop {r3, pc}
 	nop
@@ -2772,7 +2772,7 @@ _02238E5C:
 	add r0, r1, r0
 	ldr r7, [r0, #4]
 	add r0, r7, #0
-	bl sub_020741B0
+	bl Pokemon_GetIconNaix
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -2847,7 +2847,7 @@ _02238E5C:
 	add r1, r0, #0
 	ldr r0, [sp, #0x10]
 	ldr r2, [sp, #0x14]
-	bl sub_02074364
+	bl GetMonIconPaletteEx
 	add r1, r0, #0
 	mov r0, #0xc9
 	lsl r0, r0, #2
@@ -7295,11 +7295,11 @@ ov57_0223B308: ; 0x0223B308
 	ldr r0, _0223B328 ; =0x0000040C
 	ldr r0, [r4, r0]
 	cmp r0, #0
-	bne _0223B320
+	bne gApp_MainMenu_SelectOption_ConnectToRanger
 	add r0, r4, #0
 	bl ov57_0223B3F8
 	pop {r4, pc}
-_0223B320:
+gApp_MainMenu_SelectOption_ConnectToRanger:
 	add r0, r4, #0
 	bl ov57_0223B45C
 	pop {r4, pc}
