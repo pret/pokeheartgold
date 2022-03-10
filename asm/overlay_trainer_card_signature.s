@@ -1,10 +1,11 @@
+#include "msgdata/msg/msg_0252.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
 	.text
 
-	thumb_func_start ov52_021E80C0
-ov52_021E80C0: ; 0x021E80C0
+	thumb_func_start SignBackOfTrainerCardApp_OvyInit
+SignBackOfTrainerCardApp_OvyInit: ; 0x021E80C0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r1, #0
@@ -159,10 +160,10 @@ _021E8238: .word 0x00005B98
 _021E823C: .word ov52_021E837C
 _021E8240: .word 0x04000304
 _021E8244: .word 0xFFFF7FFF
-	thumb_func_end ov52_021E80C0
+	thumb_func_end SignBackOfTrainerCardApp_OvyInit
 
-	thumb_func_start ov52_021E8248
-ov52_021E8248: ; 0x021E8248
+	thumb_func_start SignBackOfTrainerCardApp_OvyExec
+SignBackOfTrainerCardApp_OvyExec: ; 0x021E8248
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	bl OverlayManager_GetData
@@ -212,10 +213,10 @@ _021E829A:
 	.balign 4, 0
 _021E82A4: .word ov52_021E96C0
 _021E82A8: .word 0x00004318
-	thumb_func_end ov52_021E8248
+	thumb_func_end SignBackOfTrainerCardApp_OvyExec
 
-	thumb_func_start ov52_021E82AC
-ov52_021E82AC: ; 0x021E82AC
+	thumb_func_start SignBackOfTrainerCardApp_OvyExit
+SignBackOfTrainerCardApp_OvyExit: ; 0x021E82AC
 	push {r3, r4, r5, r6, r7, lr}
 	str r0, [sp]
 	bl OverlayManager_GetData
@@ -295,7 +296,7 @@ _021E82FC:
 	nop
 _021E8374: .word 0x00005B98
 _021E8378: .word 0x04000304
-	thumb_func_end ov52_021E82AC
+	thumb_func_end SignBackOfTrainerCardApp_OvyExit
 
 	thumb_func_start ov52_021E837C
 ov52_021E837C: ; 0x021E837C
@@ -504,11 +505,11 @@ _021E84DC:
 	str r1, [r7, r0]
 	ldr r0, [r7, #0x14]
 	ldr r2, [r7, #0x2c]
-	mov r1, #0xc
+	mov r1, #msg_0252_00012 ; DONE
 	bl ReadMsgDataIntoString
 	ldr r0, [r7, #0x14]
 	ldr r2, [r7, #0x30]
-	mov r1, #9
+	mov r1, #msg_0252_00009 ; Sign your autograph!
 	bl ReadMsgDataIntoString
 	mov r0, #0x27
 	bl sub_0201660C
@@ -1334,7 +1335,7 @@ ov52_021E8BDC: ; 0x021E8BDC
 	cmp r0, #1
 	bne _021E8C30
 	add r0, r4, #0
-	mov r1, #0xa
+	mov r1, #msg_0252_00010 ; Is this OK?
 	bl ov52_021E927C
 	mov r0, #0xc3
 	mov r1, #2
@@ -1701,7 +1702,7 @@ _021E8ED8: .word 0x00005C9C
 ov52_021E8EDC: ; 0x021E8EDC
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
-	mov r1, #0xb
+	mov r1, #msg_0252_00011 ; Would you like to erase your autograph?
 	add r5, r0, #0
 	bl ov52_021E927C
 	mov r0, #0xc3

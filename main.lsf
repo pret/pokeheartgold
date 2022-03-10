@@ -669,17 +669,17 @@ Overlay OVY_49
 Overlay OVY_50
 {
     After main
-    Object src/overlay_50.o
+    Object src/overlay_trainer_card.o
 }
 Overlay OVY_51
 {
     After OVY_50
-    Object asm/overlay_51.o
+    Object asm/overlay_trainer_card_main.o
 }
 Overlay OVY_52
 {
     After OVY_51
-    Object asm/overlay_52.o
+    Object asm/overlay_trainer_card_signature.o
 }
 Overlay OVY_53
 {

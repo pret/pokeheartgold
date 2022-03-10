@@ -40,7 +40,7 @@ _020FA234:
 _020FA244:
 	.word PokeathlonCourseApplication_OvyInit, PokeathlonCourseApplication_OvyExec, PokeathlonCourseApplication_OvyExit, SDK_OVERLAY_OVY_96_ID
 _020FA254:
-	.word ov52_021E80C0, ov52_021E8248, ov52_021E82AC, SDK_OVERLAY_OVY_52_ID
+	.word SignBackOfTrainerCardApp_OvyInit, SignBackOfTrainerCardApp_OvyExec, SignBackOfTrainerCardApp_OvyExit, SDK_OVERLAY_OVY_52_ID
 _020FA264:
 	.word ov70_02238430, ov70_022385C0, ov70_022386F4, SDK_OVERLAY_OVY_70_ID
 _020FA274:
@@ -48,7 +48,7 @@ _020FA274:
 _020FA284:
 	.word ov18_021E5AA0, ov18_021E5B64, ov18_021E5B80, SDK_OVERLAY_OVY_18_ID
 _020FA294:
-	.word ov50_021E5924, ov50_021E595C, ov50_021E59A8, SDK_OVERLAY_OVY_50_ID
+	.word TrainerCardApp_OvyInit, TrainerCardApp_OvyExec, TrainerCardApp_OvyExit, SDK_OVERLAY_OVY_50_ID
 _020FA2A4:
 	.word ov43_02229EE0, ov43_02229FB4, ov43_0222A0AC, SDK_OVERLAY_OVY_43_ID
 _020FA2B4:
