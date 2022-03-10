@@ -22,8 +22,8 @@ typedef struct {
     void *unk10;
 } Ov50_021E5924;
 
-BOOL ov50_021E5924(OVY_MANAGER *man);
+BOOL ov50_021E5924(OVY_MANAGER *man, int *state);
 BOOL ov50_021E595C(OVY_MANAGER *man, int *state);
-BOOL ov50_021E59A8(OVY_MANAGER *man);
+BOOL ov50_021E59A8(OVY_MANAGER *man, int *state);
 
 #endif //POKEHEARTGOLD_OVERLAY_50_H

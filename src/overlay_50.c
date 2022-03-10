@@ -25,7 +25,7 @@ static BOOL ov50_021E5900(OVY_MANAGER **man) {
     return FALSE;
 }
 
-BOOL ov50_021E5924(OVY_MANAGER *man) {
+BOOL ov50_021E5924(OVY_MANAGER *man, int *state) {
     void *ptr = OverlayManager_GetField18(man);
     CreateHeap(3, 94, 4096);
 
@@ -60,7 +60,7 @@ BOOL ov50_021E595C(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL ov50_021E59A8(OVY_MANAGER *man) {
+BOOL ov50_021E59A8(OVY_MANAGER *man, int *state) {
     Ov50_021E5924 *data = OverlayManager_GetData(man);
     MI_CpuFill8(data, 0, sizeof(Ov50_021E5924));
     OverlayManager_FreeData(man);
