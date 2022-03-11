@@ -9,7 +9,7 @@ BOOL Pokedex_IsNatDexEnabled(const POKEDEX* pokedex) {
 }
 
 u32 sub_02074930(BOOL natDexFlag, u32 species) {
-    if(natDexFlag == 0)  {
+    if(natDexFlag == 0) {
         return SpeciesToJohtoDexNo((u16) species);
     }
     return species;
