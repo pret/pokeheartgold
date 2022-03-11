@@ -105,7 +105,7 @@ _0203DF00:
 	beq _0203DF0C
 	bl GF_AssertFail
 _0203DF0C:
-	ldr r0, _0203DF2C ; =FS_OVERLAY_ID(OVY_1)
+	ldr r0, _0203DF2C ; =FS_OVERLAY_ID(field)
 	mov r1, #2
 	bl HandleLoadOverlay
 	mov r1, #0
@@ -120,7 +120,7 @@ _0203DF0C:
 	str r0, [r1]
 	pop {r4, pc}
 	.balign 4, 0
-_0203DF2C: .word FS_OVERLAY_ID(OVY_1)
+_0203DF2C: .word FS_OVERLAY_ID(field)
 _0203DF30: .word ov01_02206378
 	thumb_func_end sub_0203DEF0
 
@@ -375,7 +375,7 @@ _0203E0EE:
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _0203E116
-	ldr r0, _0203E138 ; =FS_OVERLAY_ID(OVY_1)
+	ldr r0, _0203E138 ; =FS_OVERLAY_ID(field)
 	bl UnloadOverlayByID
 	b _0203E116
 _0203E10A:
@@ -404,7 +404,7 @@ _0203E134:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-_0203E138: .word FS_OVERLAY_ID(OVY_1)
+_0203E138: .word FS_OVERLAY_ID(field)
 	thumb_func_end sub_0203E0CC
 
 	thumb_func_start sub_0203E13C

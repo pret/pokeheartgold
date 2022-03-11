@@ -417,14 +417,14 @@ Overlay OVY_0
     Object asm/overlay_00_thumb.o
     Object lib/NitroDWC/asm/overlay_00_arm.o
 }
-Overlay OVY_1
+Overlay field
 {
     After main
     Object asm/overlay_01.o
 }
 Overlay OVY_2
 {
-    After OVY_1
+    After field
     Object asm/overlay_02.o
 }
 Overlay OVY_3
@@ -528,12 +528,12 @@ Overlay OVY_22
     After OVY_3
     Object asm/overlay_22.o
 }
-Overlay OVY_23
+Overlay npc_trade
 {
     After OVY_3
     Object src/npc_trade.o
 }
-Overlay OVY_24
+Overlay bug_contest
 {
     After OVY_3
     Object src/overlay_bug_contest.o
@@ -550,7 +550,7 @@ Overlay OVY_26
 }
 Overlay OVY_27
 {
-    After OVY_24
+    After bug_contest
     Object asm/overlay_27.o
 }
 Overlay OVY_28
@@ -590,7 +590,7 @@ Overlay OVY_34
 }
 Overlay OVY_35
 {
-    After OVY_23
+    After npc_trade
     Object asm/overlay_35.o
 }
 Overlay OVY_36
@@ -666,19 +666,19 @@ Overlay OVY_49
     After OVY_45
     Object asm/overlay_49.o
 }
-Overlay OVY_50
+Overlay trainer_card
 {
     After main
     Object src/overlay_trainer_card.o
 }
-Overlay OVY_51
+Overlay trainer_card_main
 {
-    After OVY_50
+    After trainer_card
     Object asm/overlay_trainer_card_main.o
 }
-Overlay OVY_52
+Overlay trainer_card_signature
 {
-    After OVY_51
+    After trainer_card_main
     Object asm/overlay_trainer_card_signature.o
 }
 Overlay OVY_53

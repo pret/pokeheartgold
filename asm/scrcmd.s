@@ -14,7 +14,7 @@
 	.balign 4, 0
 _020FACB0:
 	.word FS_OVERLAY_ID(OVY_20)
-	.word FS_OVERLAY_ID(OVY_24)
+	.word FS_OVERLAY_ID(bug_contest)
 	.word FS_OVERLAY_ID(OVY_21)
 	.word FS_OVERLAY_ID(OVY_22)
 	.word FS_OVERLAY_ID(OVY_25)
@@ -9532,7 +9532,7 @@ ScrCmd_LoadNPCTrade: ; 0x0204527C
 	add r0, r1, #1
 	str r0, [r5, #8]
 	ldrb r5, [r1]
-	ldr r0, _020452AC ; =FS_OVERLAY_ID(OVY_23)
+	ldr r0, _020452AC ; =FS_OVERLAY_ID(npc_trade)
 	mov r1, #2
 	bl HandleLoadOverlay
 	mov r0, #0xb
@@ -9542,7 +9542,7 @@ ScrCmd_LoadNPCTrade: ; 0x0204527C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_020452AC: .word FS_OVERLAY_ID(OVY_23)
+_020452AC: .word FS_OVERLAY_ID(npc_trade)
 	thumb_func_end ScrCmd_LoadNPCTrade
 
 	thumb_func_start ScrCmd_471
@@ -9652,12 +9652,12 @@ ScrCmd_NPCTradeEnd: ; 0x02045374
 	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
 	bl NPCTrade_DeleteWork
-	ldr r0, _02045390 ; =FS_OVERLAY_ID(OVY_23)
+	ldr r0, _02045390 ; =FS_OVERLAY_ID(npc_trade)
 	bl UnloadOverlayByID
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-_02045390: .word FS_OVERLAY_ID(OVY_23)
+_02045390: .word FS_OVERLAY_ID(npc_trade)
 	thumb_func_end ScrCmd_NPCTradeEnd
 
 	thumb_func_start ScrCmd_GiveLoanMon
@@ -9673,7 +9673,7 @@ ScrCmd_GiveLoanMon: ; 0x02045394
 	ldrb r4, [r2]
 	bl ScriptReadHalfword
 	add r7, r0, #0
-	ldr r0, _020453CC ; =FS_OVERLAY_ID(OVY_23)
+	ldr r0, _020453CC ; =FS_OVERLAY_ID(npc_trade)
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r5, #0x80
@@ -9682,12 +9682,12 @@ ScrCmd_GiveLoanMon: ; 0x02045394
 	add r2, r4, #0
 	add r3, r7, #0
 	bl NPCTrade_MakeAndGiveLoanMon
-	ldr r0, _020453CC ; =FS_OVERLAY_ID(OVY_23)
+	ldr r0, _020453CC ; =FS_OVERLAY_ID(npc_trade)
 	bl UnloadOverlayByID
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_020453CC: .word FS_OVERLAY_ID(OVY_23)
+_020453CC: .word FS_OVERLAY_ID(npc_trade)
 	thumb_func_end ScrCmd_GiveLoanMon
 
 	thumb_func_start ScrCmd_CheckReturnLoanMon
@@ -9713,7 +9713,7 @@ ScrCmd_CheckReturnLoanMon: ; 0x020453D0
 	ldr r0, [r0]
 	bl GetVarPointer
 	add r7, r0, #0
-	ldr r0, _02045424 ; =FS_OVERLAY_ID(OVY_23)
+	ldr r0, _02045424 ; =FS_OVERLAY_ID(npc_trade)
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r5, #0x80
@@ -9723,12 +9723,12 @@ ScrCmd_CheckReturnLoanMon: ; 0x020453D0
 	lsr r2, r2, #0x18
 	bl NPCTrade_CanGiveUpLoanMon
 	strh r0, [r7]
-	ldr r0, _02045424 ; =FS_OVERLAY_ID(OVY_23)
+	ldr r0, _02045424 ; =FS_OVERLAY_ID(npc_trade)
 	bl UnloadOverlayByID
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02045424: .word FS_OVERLAY_ID(OVY_23)
+_02045424: .word FS_OVERLAY_ID(npc_trade)
 	thumb_func_end ScrCmd_CheckReturnLoanMon
 
 	thumb_func_start ScrCmd_475

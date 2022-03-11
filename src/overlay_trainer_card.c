@@ -5,8 +5,8 @@
 #include "unk_02004A44.h"
 #include "save_trainer_card.h"
 
-FS_EXTERN_OVERLAY(OVY_51);
-FS_EXTERN_OVERLAY(OVY_52);
+FS_EXTERN_OVERLAY(trainer_card_main);
+FS_EXTERN_OVERLAY(trainer_card_signature);
 
 enum {
     TRAINERCARD_RUN_INIT,
@@ -80,7 +80,7 @@ static int TCardAppRunStep_Init(TrainerCardAppState *work) {
         TrainerCardMainApp_OvyInit,
         TrainerCardMainApp_OvyExec,
         TrainerCardMainApp_OvyExit,
-        FS_OVERLAY_ID(OVY_51) 
+        FS_OVERLAY_ID(trainer_card_main) 
     };
 
     work->ov_mgr = OverlayManager_new(&template, work->parentData, work->heap_id);
@@ -102,7 +102,7 @@ static int TCardAppRunStep_SignatureInit(TrainerCardAppState *work) {
         SignBackOfTrainerCardApp_OvyInit, 
         SignBackOfTrainerCardApp_OvyExec, 
         SignBackOfTrainerCardApp_OvyExit,
-        FS_OVERLAY_ID(OVY_52) 
+        FS_OVERLAY_ID(trainer_card_signature) 
     };
     work->ov_mgr = OverlayManager_new(&template, work->parentData->saveData, work->heap_id);
     return TRAINERCARD_RUN_SIGNATURE_EXEC;
