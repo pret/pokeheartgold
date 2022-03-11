@@ -41,7 +41,7 @@ ov81_0223DD60: ; 0x0223DD60
 	str r0, [r4, #0x4c]
 	str r5, [r4]
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	mov r3, #0x6f
 	mov r2, #0xf
 	ldr r1, [r0]

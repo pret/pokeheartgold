@@ -24,7 +24,7 @@ ov43_02229EE0: ; 0x02229EE0
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	mov r1, #0x9f
 	lsl r1, r1, #2
 	str r0, [r4, r1]

@@ -34,7 +34,7 @@ _021E5912:
 	mov r0, #0x60
 	str r0, [r4]
 	add r0, r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r4, #0x10]
 	add r0, r4, #0
 	bl ov109_021E5A70

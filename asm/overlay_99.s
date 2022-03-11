@@ -12,7 +12,7 @@ ov99_021E5900: ; 0x021E5900
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r0, r4, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	bne _021E591C
 	bl GF_AssertFail
@@ -1829,7 +1829,7 @@ ov99_021E677C: ; 0x021E677C
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r0, r4, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	bne _021E6798
 	bl GF_AssertFail
@@ -3993,7 +3993,7 @@ ov99_021E7818: ; 0x021E7818
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r0, r4, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	bl GX_DisableEngineBLayers
 	bl GX_DisableEngineALayers
@@ -5363,7 +5363,7 @@ ov99_021E8304: ; 0x021E8304
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r0, r4, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	bne _021E831E
 	bl GF_AssertFail

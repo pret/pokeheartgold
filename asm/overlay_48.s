@@ -8,7 +8,7 @@ ov48_02258800: ; 0x02258800
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r4, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	mov r2, #5
 	add r5, r0, #0
 	mov r0, #3
@@ -135,7 +135,7 @@ ov48_02258920: ; 0x02258920
 	bl OverlayManager_GetData
 	add r7, r0, #0
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	ldr r0, [r4]
 	cmp r0, #6
@@ -243,7 +243,7 @@ ov48_022589FC: ; 0x022589FC
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB

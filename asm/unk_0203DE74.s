@@ -21,7 +21,7 @@ _021D4158:
 sub_0203DE74: ; 0x0203DE74
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_0203DFE0

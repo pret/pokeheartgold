@@ -97,7 +97,7 @@ sub_02091634: ; 0x02091634
 	lsl r2, r2, #0xc
 	bl CreateHeap
 	add r0, r4, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r0, [r0, #8]
 	mov r1, #0x30
 	bl sub_020915F0

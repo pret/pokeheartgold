@@ -17,7 +17,7 @@
 	thumb_func_start sub_02087A78
 sub_02087A78: ; 0x02087A78
 	push {r3, lr}
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r0, [r0, #0x14]
 	pop {r3, pc}
 	.balign 4, 0
@@ -50,7 +50,7 @@ sub_02087A8C: ; 0x02087A8C
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r4, #0x28]
 	ldr r0, [r0, #0xc]
 	ldr r1, _02087B00 ; =0x00004170

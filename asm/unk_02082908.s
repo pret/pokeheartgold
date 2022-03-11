@@ -108,7 +108,7 @@ _0208291E:
 	ldr r0, [r4, r0]
 	bl sub_020831A4
 	add r0, r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_02083160
@@ -743,7 +743,7 @@ sub_02082EE8: ; 0x02082EE8
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, [sp, #0x10]
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	mov r0, #0x56
 	lsl r0, r0, #2
@@ -1253,7 +1253,7 @@ sub_02083334: ; 0x02083334
 	sub sp, #0x10
 	add r4, r0, #0
 	add r0, r1, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r7, r0, #0
 	ldr r0, _020834E4 ; =0x0000045C
 	mov r1, #4
@@ -1468,7 +1468,7 @@ sub_020834FC: ; 0x020834FC
 	sub sp, #0x14
 	add r5, r0, #0
 	add r0, r1, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r4, r0, #0
 	ldr r0, [r4, #0x44]
 	cmp r0, #0
@@ -2993,7 +2993,7 @@ _02084122:
 	add r0, r5, r0
 	bl sub_02083F18
 	add r0, r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	mov r1, #0x46
 	lsl r1, r1, #2
 	ldrh r2, [r5, r1]

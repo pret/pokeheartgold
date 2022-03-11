@@ -2083,7 +2083,7 @@ ov41_02246DE0: ; 0x02246DE0
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	ldr r1, _02246EF4 ; =0x000006DC
@@ -2188,7 +2188,7 @@ ov41_02246F08: ; 0x02246F08
 	add r4, r0, #0
 	add r0, r7, #0
 	mov r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r1, [r5]
 	cmp r1, #0xc
 	bhi _02246FD6
@@ -2470,7 +2470,7 @@ ov41_02247150: ; 0x02247150
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	mov r0, #0x1b
 	lsl r0, r0, #6
@@ -12399,7 +12399,7 @@ ov41_0224BA10: ; 0x0224BA10
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
 	add r0, r4, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r1, [r4, #4]

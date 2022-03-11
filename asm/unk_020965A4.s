@@ -26,7 +26,7 @@ sub_020965A4: ; 0x020965A4
 	add r0, r4, #0
 	bl sub_02096884
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r4]
 	cmp r0, #0
 	bne _020965DC

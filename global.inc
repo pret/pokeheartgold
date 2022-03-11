@@ -1284,7 +1284,7 @@
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetData
-.public OverlayManager_GetField18
+.public OverlayManager_GetParentWork
 .public OverlayManager_delete
 .public OverlayManager_new
 .public OverlayManager_run

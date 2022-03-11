@@ -7,7 +7,7 @@
 ov54_021E5900: ; 0x021E5900
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	mov r0, #3
 	mov r1, #0x26

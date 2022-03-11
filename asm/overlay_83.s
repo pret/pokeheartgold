@@ -28,7 +28,7 @@ ov83_0223DD60: ; 0x0223DD60
 	str r0, [r5, #0x4c]
 	add r0, r4, #0
 	str r4, [r5]
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r4, r0, #0
 	ldr r1, [r4]
 	ldr r0, _0223DE48 ; =0x0000050C
@@ -9985,7 +9985,7 @@ ov83_02242FE8: ; 0x02242FE8
 	str r0, [r5, #0x4c]
 	add r0, r4, #0
 	str r4, [r5]
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r4, r0, #0
 	mov r0, #0xaf
 	ldr r1, [r4]

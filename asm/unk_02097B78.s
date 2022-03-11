@@ -26,7 +26,7 @@ sub_02097B78: ; 0x02097B78
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r4]
 	mov r0, #1
 	pop {r3, r4, r5, pc}

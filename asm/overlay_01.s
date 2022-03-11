@@ -37,7 +37,7 @@ ov01_021E5924: ; 0x021E5924
 	mov r1, #0
 	ldr r5, _021E5B9C ; =0x00DCE6A1
 	str r1, [sp, #4]
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r1, [r6]
 	add r4, r0, #0
 	cmp r1, #3
@@ -331,7 +331,7 @@ _021E5BE0: .word 0x00000578
 	thumb_func_start ov01_021E5BE4
 ov01_021E5BE4: ; 0x021E5BE4
 	push {r4, lr}
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r4, r0, #0
 	bl ov01_021E5ED4
 	cmp r0, #0
@@ -366,7 +366,7 @@ ov01_021E5C24: ; 0x021E5C24
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r1, #0
 	ldr r5, _021E5E7C ; =0x002AAACF
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r4, r0, #0
 	ldr r0, [r4, #0x2c]
 	bl ov01_021F50F0

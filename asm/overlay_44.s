@@ -843,7 +843,7 @@ ov44_0222A4B4: ; 0x0222A4B4
 _0222A4C8:
 	b _0222A600
 _0222A4CA:
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r4, r0, #0
 	bl sub_02039998
 	cmp r0, #0
@@ -1156,7 +1156,7 @@ ov44_0222A758: ; 0x0222A758
 	add r4, r0, #0
 	bl ov44_0222A68C
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r6, r0, #0
 	mov r0, #0xd3
 	lsl r0, r0, #2
@@ -18241,7 +18241,7 @@ _02232EA4: .word ov44_0223688C
 ov44_02232EA8: ; 0x02232EA8
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	ldr r0, _02232F5C ; =SDK_OVERLAY_OVY_42_ID
 	mov r1, #2
@@ -18325,7 +18325,7 @@ ov44_02232F64: ; 0x02232F64
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r7, r0, #0
 	ldr r0, [r5]
 	cmp r0, #4
@@ -18482,7 +18482,7 @@ ov44_022330A8: ; 0x022330A8
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB

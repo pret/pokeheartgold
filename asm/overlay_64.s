@@ -44,7 +44,7 @@ ov64_021E5900: ; 0x021E5900
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r4]
 	bl Sav2_HOF_GetNumRecords
 	mov r1, #0x6e

@@ -1,3 +1,4 @@
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -53,7 +54,7 @@ TrainerCardMainApp_OvyInit: ; 0x021E5AC0
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r1, r4, #0
 	add r1, #0xe4
 	str r0, [r1]
@@ -203,7 +204,7 @@ _021E5C2C:
 	ldr r0, _021E5D6C ; =0x000033A0
 	add r0, r4, r0
 	bl ov51_021E7DA4
-	ldr r0, _021E5D70 ; =0x00000694
+	ldr r0, _021E5D70 ; =SEQ_SE_DP_CARD3
 	bl PlaySE
 	ldr r0, _021E5D74 ; =0x0000311C
 	add r0, r4, r0
@@ -308,7 +309,7 @@ _021E5D60: .word 0x0000343A
 _021E5D64: .word 0x00000678
 _021E5D68: .word 0x00003424
 _021E5D6C: .word 0x000033A0
-_021E5D70: .word 0x00000694
+_021E5D70: .word SEQ_SE_DP_CARD3
 _021E5D74: .word 0x0000311C
 _021E5D78: .word 0x000033CC
 _021E5D7C: .word 0x00000674
@@ -1671,7 +1672,7 @@ _021E68B0:
 	ldr r2, [r4, r0]
 	add r2, #0x80
 	str r2, [r4, r0]
-	ldr r0, _021E69DC ; =0x00000695
+	ldr r0, _021E69DC ; =SEQ_SE_DP_CARD5
 	bl PlaySE
 	ldr r0, _021E69D4 ; =0x00003436
 	ldrb r1, [r4, r0]
@@ -1807,7 +1808,7 @@ _021E69C4:
 	nop
 _021E69D4: .word 0x00003436
 _021E69D8: .word 0x000030FC
-_021E69DC: .word 0x00000695
+_021E69DC: .word SEQ_SE_DP_CARD5
 _021E69E0: .word 0x00003394
 _021E69E4: .word 0x000030F4
 _021E69E8: .word 0x0000343A
@@ -1878,7 +1879,7 @@ ov51_021E6A54: ; 0x021E6A54
 	lsl r0, r0, #0x1e
 	lsr r0, r0, #0x1f
 	bne _021E6A8E
-	ldr r0, _021E6AA8 ; =0x000005DC
+	ldr r0, _021E6AA8 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #4
 	pop {r3, pc}
@@ -1886,7 +1887,7 @@ _021E6A7C:
 	mov r0, #2
 	tst r0, r1
 	beq _021E6A8E
-	mov r0, #0x25
+	mov r0, #SEQ_SE_GS_GEARCANCEL>>6
 	lsl r0, r0, #6
 	bl PlaySE
 	mov r0, #5
@@ -1904,7 +1905,7 @@ _021E6A98:
 _021E6A9C: .word gSystem
 _021E6AA0: .word 0x000030F4
 _021E6AA4: .word 0x0000343A
-_021E6AA8: .word 0x000005DC
+_021E6AA8: .word SEQ_SE_DP_SELECT
 	thumb_func_end ov51_021E6A54
 
 	thumb_func_start ov51_021E6AAC
@@ -1924,7 +1925,7 @@ _021E6ABE:
 	beq _021E6AD8
 	mov r0, #1
 	str r0, [r4]
-	mov r0, #0x25
+	mov r0, #SEQ_SE_GS_GEARCANCEL>>6
 	lsl r0, r0, #6
 	bl PlaySE
 	mov r0, #5
@@ -1945,7 +1946,7 @@ _021E6AD8:
 	beq _021E6B02
 	mov r0, #1
 	str r0, [r4]
-	ldr r0, _021E6B38 ; =0x000005DC
+	ldr r0, _021E6B38 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #4
 	pop {r3, r4, r5, pc}
@@ -1974,7 +1975,7 @@ _021E6B28: .word _021E7DB8
 _021E6B2C: .word 0x000030F4
 _021E6B30: .word 0x0000343A
 _021E6B34: .word ov51_021E7DBC
-_021E6B38: .word 0x000005DC
+_021E6B38: .word SEQ_SE_DP_SELECT
 _021E6B3C: .word ov51_021E7DC0
 _021E6B40: .word gSystem + 0x40
 	thumb_func_end ov51_021E6AAC

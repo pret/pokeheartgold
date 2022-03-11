@@ -50,7 +50,7 @@ ov89_02258800: ; 0x02258800
 	add r5, r0, #0
 	bl MI_CpuFill8
 	add r0, r4, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r5]
 	ldr r0, [r0]
 	bl ov45_0222A2C8

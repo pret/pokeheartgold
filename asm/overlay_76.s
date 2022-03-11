@@ -54,7 +54,7 @@ _021E5936:
 	str r0, [r2]
 	bl ov76_021E5DA4
 	add r0, r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r4, #0x10]
 	mov r0, #0
 	str r0, [r4, #0x14]

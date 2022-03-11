@@ -103,7 +103,7 @@ _0221E66E:
 	cmp r0, #0
 	beq _0221E68A
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov97_0221E98C
@@ -150,7 +150,7 @@ ov97_0221E69C: ; 0x0221E69C
 ov97_0221E6DC: ; 0x0221E6DC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r4, r0, #0
 _0221E6E6:
 	add r0, r5, #0
@@ -173,7 +173,7 @@ ov97_0221E700: ; 0x0221E700
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x24
 	add r4, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #0x34

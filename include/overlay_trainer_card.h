@@ -8,9 +8,9 @@
 typedef struct {
     u8 unk0[4];
     u8 unk4a:4;
-    u8 unk4b:1;
+    u8 signatureExists:1;
     u8 unk5[0x63];
-    u8 unk68[0x600];
+    u8 signature[0x600];
     u8 unk668[6];
     SAVEDATA *saveData;
     u32 reqUpdateSignature;
@@ -20,7 +20,7 @@ typedef struct {
     HeapID heap_id;
     u8 unk4[4];
     OVY_MANAGER *ov_mgr;
-    Ov50_021E5A3C *unkC;
+    Ov50_021E5A3C *parentData;
     void *unk10;
 } TrainerCardAppState;
 

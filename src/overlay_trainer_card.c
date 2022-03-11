@@ -17,10 +17,10 @@ enum {
 };
 
 static BOOL isSubprocFinished(OVY_MANAGER **man);
-static int TCardAppRunStep_Init(TrainerCardAppState *a0);
-static int TCardAppRunStep_Exec(TrainerCardAppState *a0);
-static int TCardAppRunStep_SignatureInit(TrainerCardAppState *a0);
-static int TCardAppRunStep_SignatureExec(TrainerCardAppState *a0);
+static int TCardAppRunStep_Init(TrainerCardAppState *work);
+static int TCardAppRunStep_Exec(TrainerCardAppState *work);
+static int TCardAppRunStep_SignatureInit(TrainerCardAppState *work);
+static int TCardAppRunStep_SignatureExec(TrainerCardAppState *work);
 
 static BOOL isSubprocFinished(OVY_MANAGER **man) {
     if (*man && OverlayManager_run(*man)) {
@@ -32,14 +32,14 @@ static BOOL isSubprocFinished(OVY_MANAGER **man) {
 }
 
 BOOL TrainerCardApp_OvyInit(OVY_MANAGER *man, int *state) {
-    void *ptr = OverlayManager_GetField18(man);
+    void *ptr = OverlayManager_GetParentWork(man);
     CreateHeap(3, HEAP_ID_TRAINER_CARD, 0x1000);
 
     TrainerCardAppState *data = OverlayManager_CreateAndGetData(man, sizeof(TrainerCardAppState), HEAP_ID_TRAINER_CARD);
     MI_CpuFill8(data, 0, sizeof(TrainerCardAppState));
 
     data->heap_id = HEAP_ID_TRAINER_CARD;
-    data->unkC = ptr;
+    data->parentData = ptr;
     data->unk10 = ptr;
     return TRUE;
 }
@@ -75,7 +75,7 @@ BOOL TrainerCardApp_OvyExit(OVY_MANAGER *man, int *state) {
     return TRUE;
 }
 
-static int TCardAppRunStep_Init(TrainerCardAppState *a0) {
+static int TCardAppRunStep_Init(TrainerCardAppState *work) {
     static const OVY_MGR_TEMPLATE template = {
         TrainerCardMainApp_OvyInit,
         TrainerCardMainApp_OvyExec,
@@ -83,39 +83,39 @@ static int TCardAppRunStep_Init(TrainerCardAppState *a0) {
         FS_OVERLAY_ID(OVY_51) 
     };
 
-    a0->ov_mgr = OverlayManager_new(&template, a0->unkC, a0->heap_id);
+    work->ov_mgr = OverlayManager_new(&template, work->parentData, work->heap_id);
     return TRAINERCARD_RUN_EXEC;
 }
 
-static int TCardAppRunStep_Exec(TrainerCardAppState *a0) {
-    if (!isSubprocFinished(&a0->ov_mgr)) {
+static int TCardAppRunStep_Exec(TrainerCardAppState *work) {
+    if (!isSubprocFinished(&work->ov_mgr)) {
         return TRAINERCARD_RUN_EXEC;
-    } else if (a0->unkC->reqUpdateSignature != 0) {
+    } else if (work->parentData->reqUpdateSignature != 0) {
         return TRAINERCARD_RUN_SIGNATURE_INIT;
     } else {
         return TRAINERCARD_RUN_EXIT;
     }
 }
 
-static int TCardAppRunStep_SignatureInit(TrainerCardAppState *a0) {
+static int TCardAppRunStep_SignatureInit(TrainerCardAppState *work) {
     const OVY_MGR_TEMPLATE template = {
         SignBackOfTrainerCardApp_OvyInit, 
         SignBackOfTrainerCardApp_OvyExec, 
         SignBackOfTrainerCardApp_OvyExit,
         FS_OVERLAY_ID(OVY_52) 
     };
-    a0->ov_mgr = OverlayManager_new(&template, a0->unkC->saveData, a0->heap_id);
+    work->ov_mgr = OverlayManager_new(&template, work->parentData->saveData, work->heap_id);
     return TRAINERCARD_RUN_SIGNATURE_EXEC;
 }
 
-static int TCardAppRunStep_SignatureExec(TrainerCardAppState *a0) {
-    void *ptr;
-    if (!isSubprocFinished(&a0->ov_mgr)) {
+static int TCardAppRunStep_SignatureExec(TrainerCardAppState *work) {
+    struct SaveTrainerCard *ptr;
+    if (!isSubprocFinished(&work->ov_mgr)) {
         return TRAINERCARD_RUN_SIGNATURE_EXEC;
     }
 
-    ptr = Save_TranerCard_get(a0->unkC->saveData);
-    a0->unkC->unk4b = TrainerCard_SignatureExists(ptr);
-    MI_CpuCopy8(TrainerCard_GetSignature(ptr), a0->unkC->unk68, sizeof(a0->unkC->unk68));
+    ptr = Save_TranerCard_get(work->parentData->saveData);
+    work->parentData->signatureExists = TrainerCard_SignatureExists(ptr);
+    MI_CpuCopy8(TrainerCard_GetSignature(ptr), work->parentData->signature, sizeof(work->parentData->signature));
     return TRAINERCARD_RUN_INIT;
 }

@@ -21,7 +21,7 @@ ov78_021E5900: ; 0x021E5900
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	ldr r0, [r5]
 	bl Save_GetLeadMonIdxForBugContest

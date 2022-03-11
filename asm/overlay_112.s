@@ -3946,7 +3946,7 @@ ov112_021E76CC: ; 0x021E76CC
 	add r5, r0, #0
 	bl memset
 	add r0, r4, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r0, [r0, #8]
 	str r0, [r5, #0x20]
 	add r0, r5, #0
@@ -26674,7 +26674,7 @@ _021F2DE0: .word 0xFFFFFBFF
 ov112_021F2DE4: ; 0x021F2DE4
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	bne _021F2DF4
 	bl GF_AssertFail

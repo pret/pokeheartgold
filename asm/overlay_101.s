@@ -14,7 +14,7 @@
 ov101_021E7740: ; 0x021E7740
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	ldr r0, _021E7790 ; =SDK_OVERLAY_OVY_26_ID
 	mov r1, #2
@@ -12472,7 +12472,7 @@ _021ED7E4:
 ov101_TownMap_OvyInit: ; 0x021ED7F8
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	ldr r0, _021ED8A4 ; =SDK_OVERLAY_OVY_100_ID
 	mov r1, #2
@@ -14532,7 +14532,7 @@ _021EE8E4: .word 0x00030100
 ov101_021EE8E8: ; 0x021EE8E8
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	mov r2, #2
 	add r5, r0, #0
 	mov r0, #3
@@ -16531,7 +16531,7 @@ _021EF844: .word 0x00000941
 ov101_021EF848: ; 0x021EF848
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	mov r0, #3
 	mov r1, #0x5b
@@ -26616,7 +26616,7 @@ _021F447C: .word 0x0000099F
 ov101_021F4480: ; 0x021F4480
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	mov r2, #2
 	add r5, r0, #0
 	mov r0, #3

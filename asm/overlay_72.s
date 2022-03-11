@@ -1091,7 +1091,7 @@ ov72_02238144: ; 0x02238144
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	mov r1, #0
 	str r0, [r4]
 	add r0, r4, #0

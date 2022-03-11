@@ -2410,7 +2410,7 @@ ov39_02228140: ; 0x02228140
 	add r5, r0, #0
 	bl MI_CpuFill8
 	add r0, r4, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r5]
 	mov r0, #0x7c
 	bl BgConfig_Alloc

@@ -83,7 +83,7 @@ sub_02088298: ; 0x02088298
 	add r4, r0, #0
 	bl memset
 	add r0, r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	mov r1, #0x8b
 	lsl r1, r1, #2
 	str r0, [r4, r1]

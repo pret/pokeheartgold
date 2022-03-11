@@ -55,7 +55,7 @@ _021E5916:
 	bl BgConfig_Alloc
 	str r0, [r4]
 	add r0, r7, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r4, #8]
 	ldr r1, [r0]
 	ldr r0, _021E5AA0 ; =0x00004A0C
@@ -5114,7 +5114,7 @@ ov73_021E8148: ; 0x021E8148
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	mov r1, #0
 	str r0, [r4]
 	add r0, r4, #0

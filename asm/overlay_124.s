@@ -26,7 +26,7 @@ _02260C42:
 	mul r0, r1
 	add r4, r4, r0
 	add r0, r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r0, [r0, #8]
 	str r0, [r5, #0xc]
 	mov r0, #0

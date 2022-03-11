@@ -699,7 +699,7 @@ ov111_021E5E34: ; 0x021E5E34
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r4, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	bne _021E5E46
 	bl GF_AssertFail

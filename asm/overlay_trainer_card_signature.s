@@ -90,17 +90,17 @@ _021E80D6:
 	add r3, r0, #0
 	bl sub_0200FA24
 	add r0, r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	bl Save_TranerCard_get
 	bl TrainerCard_GetSignature
 	ldr r1, _021E8238 ; =0x00005B98
 	str r0, [r4, r1]
 	add r0, r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	bl Sav2_GameStats_get
 	str r0, [r4, #8]
 	add r0, r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [r4, #0xc]
 	add r0, r4, #0
