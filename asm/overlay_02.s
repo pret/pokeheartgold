@@ -3158,7 +3158,7 @@ ov02_02247444: ; 0x02247444
 ov02_02247460: ; 0x02247460
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
-	ldr r7, _02247498 ; =SDK_OVERLAY_OVY_24_ID
+	ldr r7, _02247498 ; =FS_OVERLAY_ID(OVY_24)
 	add r5, r0, #0
 	add r6, r1, #0
 	add r0, r7, #0
@@ -3182,7 +3182,7 @@ ov02_02247460: ; 0x02247460
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02247498: .word SDK_OVERLAY_OVY_24_ID
+_02247498: .word FS_OVERLAY_ID(OVY_24)
 	thumb_func_end ov02_02247460
 
 	thumb_func_start ov02_0224749C

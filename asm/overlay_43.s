@@ -7,7 +7,7 @@
 ov43_02229EE0: ; 0x02229EE0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	ldr r0, _02229FA4 ; =SDK_OVERLAY_OVY_42_ID
+	ldr r0, _02229FA4 ; =FS_OVERLAY_ID(OVY_42)
 	mov r1, #2
 	bl HandleLoadOverlay
 	mov r2, #7
@@ -89,7 +89,7 @@ ov43_02229EE0: ; 0x02229EE0
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_02229FA4: .word SDK_OVERLAY_OVY_42_ID
+_02229FA4: .word FS_OVERLAY_ID(OVY_42)
 _02229FA8: .word 0x000005A4
 _02229FAC: .word 0x00000408
 _02229FB0: .word ov43_0222A148
@@ -285,13 +285,13 @@ ov43_0222A0AC: ; 0x0222A0AC
 	bl OverlayManager_FreeData
 	mov r0, #0x33
 	bl DestroyHeap
-	ldr r0, _0222A144 ; =SDK_OVERLAY_OVY_42_ID
+	ldr r0, _0222A144 ; =FS_OVERLAY_ID(OVY_42)
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0222A140: .word 0x00000408
-_0222A144: .word SDK_OVERLAY_OVY_42_ID
+_0222A144: .word FS_OVERLAY_ID(OVY_42)
 	thumb_func_end ov43_0222A0AC
 
 	thumb_func_start ov43_0222A148

@@ -883,7 +883,7 @@ _0222A510:
 	lsl r2, r1, #9
 	bl CreateHeap
 _0222A51A:
-	ldr r0, _0222A608 ; =SDK_OVERLAY_OVY_42_ID
+	ldr r0, _0222A608 ; =FS_OVERLAY_ID(OVY_42)
 	mov r1, #2
 	bl HandleLoadOverlay
 	ldr r0, [r4, #4]
@@ -990,7 +990,7 @@ _0222A600:
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	nop
-_0222A608: .word SDK_OVERLAY_OVY_42_ID
+_0222A608: .word FS_OVERLAY_ID(OVY_42)
 	thumb_func_end ov44_0222A4B4
 
 	thumb_func_start ov44_0222A60C
@@ -1139,13 +1139,13 @@ _0222A6F0:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	bl ScrStrBufs_delete
-	ldr r0, _0222A754 ; =SDK_OVERLAY_OVY_42_ID
+	ldr r0, _0222A754 ; =FS_OVERLAY_ID(OVY_42)
 	bl UnloadOverlayByID
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0222A74C: .word 0x00000D68
 _0222A750: .word 0x00000B0C
-_0222A754: .word SDK_OVERLAY_OVY_42_ID
+_0222A754: .word FS_OVERLAY_ID(OVY_42)
 	thumb_func_end ov44_0222A68C
 
 	thumb_func_start ov44_0222A758
@@ -18243,7 +18243,7 @@ ov44_02232EA8: ; 0x02232EA8
 	add r4, r0, #0
 	bl OverlayManager_GetParentWork
 	add r5, r0, #0
-	ldr r0, _02232F5C ; =SDK_OVERLAY_OVY_42_ID
+	ldr r0, _02232F5C ; =FS_OVERLAY_ID(OVY_42)
 	mov r1, #2
 	bl HandleLoadOverlay
 	bl sub_02039998
@@ -18312,7 +18312,7 @@ _02232EC6:
 	strb r0, [r4]
 	pop {r3, r4, r5, pc}
 	nop
-_02232F5C: .word SDK_OVERLAY_OVY_42_ID
+_02232F5C: .word FS_OVERLAY_ID(OVY_42)
 _02232F60: .word ov44_0223319C
 	thumb_func_end ov44_02232EA8
 
@@ -18502,12 +18502,12 @@ ov44_022330A8: ; 0x022330A8
 	bl DestroyHeap
 	mov r0, #0x67
 	bl DestroyHeap
-	ldr r0, _022330FC ; =SDK_OVERLAY_OVY_42_ID
+	ldr r0, _022330FC ; =FS_OVERLAY_ID(OVY_42)
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_022330FC: .word SDK_OVERLAY_OVY_42_ID
+_022330FC: .word FS_OVERLAY_ID(OVY_42)
 	thumb_func_end ov44_022330A8
 
 	thumb_func_start ov44_02233100

@@ -355,7 +355,7 @@ ov18_021E5B80: ; 0x021E5B80
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
-	ldr r6, _021E5C08 ; =SDK_OVERLAY_OVY_123_ID
+	ldr r6, _021E5C08 ; =FS_OVERLAY_ID(OVY_123)
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r6, #0
@@ -409,7 +409,7 @@ _021E5BFC:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_021E5C08: .word SDK_OVERLAY_OVY_123_ID
+_021E5C08: .word FS_OVERLAY_ID(OVY_123)
 _021E5C0C: .word ov18_021E5C1C
 _021E5C10: .word 0x00001858
 _021E5C14: .word ov18_021E5C2C

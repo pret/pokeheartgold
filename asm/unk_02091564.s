@@ -94,7 +94,7 @@ sub_020915AC: ; 0x020915AC
 
 	.public _02106068
 _02106068:
-	.word ov53_OakSpeech_OvyInit, ov53_OakSpeech_OvyExec, ov53_OakSpeech_OvyExit, SDK_OVERLAY_OVY_53_ID
+	.word ov53_OakSpeech_OvyInit, ov53_OakSpeech_OvyExec, ov53_OakSpeech_OvyExit, FS_OVERLAY_ID(OVY_53)
 
 _02106078:
 	.word sub_020576C0, sub_02057798, 0

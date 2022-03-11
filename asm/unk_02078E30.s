@@ -7712,24 +7712,24 @@ _0207CB50: .word 0x00000654
 sub_0207CB54: ; 0x0207CB54
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _0207CB68 ; =SDK_OVERLAY_OVY_94_ID
+	ldr r0, _0207CB68 ; =FS_OVERLAY_ID(OVY_94)
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r0, r4, #0
 	bl ov94_021E5900
 	pop {r4, pc}
 	.balign 4, 0
-_0207CB68: .word SDK_OVERLAY_OVY_94_ID
+_0207CB68: .word FS_OVERLAY_ID(OVY_94)
 	thumb_func_end sub_0207CB54
 
 	thumb_func_start sub_0207CB6C
 sub_0207CB6C: ; 0x0207CB6C
 	ldr r3, _0207CB74 ; =UnloadOverlayByID
-	ldr r0, _0207CB78 ; =SDK_OVERLAY_OVY_94_ID
+	ldr r0, _0207CB78 ; =FS_OVERLAY_ID(OVY_94)
 	bx r3
 	nop
 _0207CB74: .word UnloadOverlayByID
-_0207CB78: .word SDK_OVERLAY_OVY_94_ID
+_0207CB78: .word FS_OVERLAY_ID(OVY_94)
 	thumb_func_end sub_0207CB6C
 
 	.rodata

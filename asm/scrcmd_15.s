@@ -1576,7 +1576,7 @@ _0204DD94:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _0204DDA0:
-	ldr r0, _0204DDE0 ; =SDK_OVERLAY_OVY_23_ID
+	ldr r0, _0204DDE0 ; =FS_OVERLAY_ID(OVY_23)
 	mov r1, #2
 	bl HandleLoadOverlay
 	bl NPCTrade_MakeKenyaMail
@@ -1596,12 +1596,12 @@ _0204DDA0:
 	bl FreeToHeap
 	add r0, r6, #0
 	bl FreeToHeap
-	ldr r0, _0204DDE0 ; =SDK_OVERLAY_OVY_23_ID
+	ldr r0, _0204DDE0 ; =FS_OVERLAY_ID(OVY_23)
 	bl UnloadOverlayByID
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0204DDE0: .word SDK_OVERLAY_OVY_23_ID
+_0204DDE0: .word FS_OVERLAY_ID(OVY_23)
 	thumb_func_end ScrCmd_KenyaCheck
 
 	thumb_func_start ScrCmd_781
@@ -1624,7 +1624,7 @@ ScrCmd_781: ; 0x0204DDE4
 	ldr r0, [sp, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_PlayerParty_get
-	ldr r4, _0204DEE0 ; =SDK_OVERLAY_OVY_23_ID
+	ldr r4, _0204DEE0 ; =FS_OVERLAY_ID(OVY_23)
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #2
@@ -1717,7 +1717,7 @@ _0204DECE:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0204DEE0: .word SDK_OVERLAY_OVY_23_ID
+_0204DEE0: .word FS_OVERLAY_ID(OVY_23)
 	thumb_func_end ScrCmd_781
 
 	thumb_func_start ScrCmd_428

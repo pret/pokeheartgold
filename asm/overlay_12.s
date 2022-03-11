@@ -142,7 +142,7 @@ _022379C6:
 	bl ov12_0223A3A8
 	cmp r0, #1
 	bne _022379EC
-	ldr r0, _02237B00 ; =SDK_OVERLAY_OVY_5_ID
+	ldr r0, _02237B00 ; =FS_OVERLAY_ID(OVY_5)
 	bl UnloadOverlayByID
 	mov r0, #7
 	str r0, [r4]
@@ -161,10 +161,10 @@ _022379EE:
 	str r0, [r4]
 	b _02237AFA
 _022379F4:
-	ldr r0, _02237B04 ; =SDK_OVERLAY_OVY_6_ID
+	ldr r0, _02237B04 ; =FS_OVERLAY_ID(OVY_6)
 	mov r1, #2
 	bl HandleLoadOverlay
-	ldr r0, _02237B08 ; =SDK_OVERLAY_OVY_7_ID
+	ldr r0, _02237B08 ; =FS_OVERLAY_ID(OVY_7)
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r0, r6, #0
@@ -203,7 +203,7 @@ _02237A48:
 	bl ov12_0223A5E4
 	cmp r0, #1
 	bne _02237AFA
-	ldr r0, _02237B00 ; =SDK_OVERLAY_OVY_5_ID
+	ldr r0, _02237B00 ; =FS_OVERLAY_ID(OVY_5)
 	bl UnloadOverlayByID
 	mov r0, #5
 	bl DestroyHeap
@@ -288,9 +288,9 @@ _02237AFA:
 	add sp, #0x24
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_02237B00: .word SDK_OVERLAY_OVY_5_ID
-_02237B04: .word SDK_OVERLAY_OVY_6_ID
-_02237B08: .word SDK_OVERLAY_OVY_7_ID
+_02237B00: .word FS_OVERLAY_ID(OVY_5)
+_02237B04: .word FS_OVERLAY_ID(OVY_6)
+_02237B08: .word FS_OVERLAY_ID(OVY_7)
 	thumb_func_end ov12_022378C0
 
 	thumb_func_start ov12_02237B0C
@@ -316,23 +316,23 @@ ov12_02237B0C: ; 0x02237B0C
 	ldrb r0, [r4, r0]
 	cmp r0, #0
 	bne _02237B46
-	ldr r0, _02237B60 ; =SDK_OVERLAY_OVY_7_ID
+	ldr r0, _02237B60 ; =FS_OVERLAY_ID(OVY_7)
 	bl UnloadOverlayByID
 	b _02237B4C
 _02237B46:
-	ldr r0, _02237B64 ; =SDK_OVERLAY_OVY_10_ID
+	ldr r0, _02237B64 ; =FS_OVERLAY_ID(OVY_10)
 	bl UnloadOverlayByID
 _02237B4C:
-	ldr r0, _02237B68 ; =SDK_OVERLAY_OVY_8_ID
+	ldr r0, _02237B68 ; =FS_OVERLAY_ID(OVY_8)
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r4, pc}
 	nop
 _02237B58: .word 0x000023FF
 _02237B5C: .word 0x00002445
-_02237B60: .word SDK_OVERLAY_OVY_7_ID
-_02237B64: .word SDK_OVERLAY_OVY_10_ID
-_02237B68: .word SDK_OVERLAY_OVY_8_ID
+_02237B60: .word FS_OVERLAY_ID(OVY_7)
+_02237B64: .word FS_OVERLAY_ID(OVY_10)
+_02237B68: .word FS_OVERLAY_ID(OVY_8)
 	thumb_func_end ov12_02237B0C
 
 	thumb_func_start ov12_02237B6C
@@ -373,18 +373,18 @@ ov12_02237BB8: ; 0x02237BB8
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r5, r0, #0
-	ldr r0, _02237CB0 ; =SDK_OVERLAY_OVY_8_ID
+	ldr r0, _02237CB0 ; =FS_OVERLAY_ID(OVY_8)
 	bl UnloadOverlayByID
 	ldr r0, _02237CB4 ; =0x00002445
 	ldrb r0, [r5, r0]
 	cmp r0, #0
 	bne _02237BD6
-	ldr r0, _02237CB8 ; =SDK_OVERLAY_OVY_7_ID
+	ldr r0, _02237CB8 ; =FS_OVERLAY_ID(OVY_7)
 	mov r1, #2
 	bl HandleLoadOverlay
 	b _02237BDE
 _02237BD6:
-	ldr r0, _02237CBC ; =SDK_OVERLAY_OVY_10_ID
+	ldr r0, _02237CBC ; =FS_OVERLAY_ID(OVY_10)
 	mov r1, #2
 	bl HandleLoadOverlay
 _02237BDE:
@@ -473,10 +473,10 @@ _02237BDE:
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_02237CB0: .word SDK_OVERLAY_OVY_8_ID
+_02237CB0: .word FS_OVERLAY_ID(OVY_8)
 _02237CB4: .word 0x00002445
-_02237CB8: .word SDK_OVERLAY_OVY_7_ID
-_02237CBC: .word SDK_OVERLAY_OVY_10_ID
+_02237CB8: .word FS_OVERLAY_ID(OVY_7)
+_02237CBC: .word FS_OVERLAY_ID(OVY_10)
 _02237CC0: .word 0x000023FF
 	thumb_func_end ov12_02237BB8
 
@@ -728,23 +728,23 @@ _02237EE2:
 	cmp r4, #0
 	strb r4, [r5, r0]
 	bne _02237EFA
-	ldr r0, _02237F10 ; =SDK_OVERLAY_OVY_10_ID
+	ldr r0, _02237F10 ; =FS_OVERLAY_ID(OVY_10)
 	bl UnloadOverlayByID
-	ldr r0, _02237F14 ; =SDK_OVERLAY_OVY_7_ID
+	ldr r0, _02237F14 ; =FS_OVERLAY_ID(OVY_7)
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, r4, r5, pc}
 _02237EFA:
-	ldr r0, _02237F14 ; =SDK_OVERLAY_OVY_7_ID
+	ldr r0, _02237F14 ; =FS_OVERLAY_ID(OVY_7)
 	bl UnloadOverlayByID
-	ldr r0, _02237F10 ; =SDK_OVERLAY_OVY_10_ID
+	ldr r0, _02237F10 ; =FS_OVERLAY_ID(OVY_10)
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, r4, r5, pc}
 	nop
 _02237F0C: .word 0x00002445
-_02237F10: .word SDK_OVERLAY_OVY_10_ID
-_02237F14: .word SDK_OVERLAY_OVY_7_ID
+_02237F10: .word FS_OVERLAY_ID(OVY_10)
+_02237F14: .word FS_OVERLAY_ID(OVY_7)
 	thumb_func_end ov12_02237ED0
 
 	thumb_func_start ov12_02237F18
@@ -1667,14 +1667,14 @@ _02238748:
 _02238756:
 	add r0, r4, #0
 	bl FreeToHeap
-	ldr r0, _022387A0 ; =SDK_OVERLAY_OVY_6_ID
+	ldr r0, _022387A0 ; =FS_OVERLAY_ID(OVY_6)
 	bl UnloadOverlayByID
-	ldr r0, _022387A4 ; =SDK_OVERLAY_OVY_7_ID
+	ldr r0, _022387A4 ; =FS_OVERLAY_ID(OVY_7)
 	bl UnloadOverlayByID
 	bl sub_02039998
 	cmp r0, #0
 	bne _02238776
-	ldr r0, _022387A8 ; =SDK_OVERLAY_OVY_18_ID
+	ldr r0, _022387A8 ; =FS_OVERLAY_ID(OVY_18)
 	bl UnloadOverlayByID
 _02238776:
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1689,9 +1689,9 @@ _02238790: .word 0x00002478
 _02238794: .word 0x000023FD
 _02238798: .word 0x00002434
 _0223879C: .word 0x00000704
-_022387A0: .word SDK_OVERLAY_OVY_6_ID
-_022387A4: .word SDK_OVERLAY_OVY_7_ID
-_022387A8: .word SDK_OVERLAY_OVY_18_ID
+_022387A0: .word FS_OVERLAY_ID(OVY_6)
+_022387A4: .word FS_OVERLAY_ID(OVY_7)
+_022387A8: .word FS_OVERLAY_ID(OVY_18)
 	thumb_func_end ov12_0223843C
 
 	thumb_func_start ov12_022387AC
@@ -3923,13 +3923,13 @@ ov12_022399BC: ; 0x022399BC
 	bl sub_02039998
 	cmp r0, #0
 	bne _022399CE
-	ldr r0, _022399D0 ; =SDK_OVERLAY_OVY_18_ID
+	ldr r0, _022399D0 ; =FS_OVERLAY_ID(OVY_18)
 	mov r1, #2
 	bl HandleLoadOverlay
 _022399CE:
 	pop {r3, pc}
 	.balign 4, 0
-_022399D0: .word SDK_OVERLAY_OVY_18_ID
+_022399D0: .word FS_OVERLAY_ID(OVY_18)
 	thumb_func_end ov12_022399BC
 
 	thumb_func_start ov12_022399D4
@@ -4797,7 +4797,7 @@ _0223A114:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 _0223A11C:
-	ldr r0, _0223A214 ; =SDK_OVERLAY_OVY_5_ID
+	ldr r0, _0223A214 ; =FS_OVERLAY_ID(OVY_5)
 	mov r1, #2
 	bl HandleLoadOverlay
 	ldr r1, [r4, #0x2c]
@@ -4920,7 +4920,7 @@ _0223A1FE:
 	.balign 4, 0
 _0223A20C: .word 0x00002490
 _0223A210: .word 0x0000240C
-_0223A214: .word SDK_OVERLAY_OVY_5_ID
+_0223A214: .word FS_OVERLAY_ID(OVY_5)
 	thumb_func_end ov12_0223A0D4
 
 	thumb_func_start ov12_0223A218
@@ -5186,7 +5186,7 @@ _0223A41A:
 	bl sub_0203769C
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
-	ldr r0, _0223A5DC ; =SDK_OVERLAY_OVY_5_ID
+	ldr r0, _0223A5DC ; =FS_OVERLAY_ID(OVY_5)
 	mov r1, #2
 	bl HandleLoadOverlay
 	mov r0, #5
@@ -5398,7 +5398,7 @@ _0223A5C4:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
-_0223A5DC: .word SDK_OVERLAY_OVY_5_ID
+_0223A5DC: .word FS_OVERLAY_ID(OVY_5)
 _0223A5E0: .word 0x000001B2
 	thumb_func_end ov12_0223A3F0
 

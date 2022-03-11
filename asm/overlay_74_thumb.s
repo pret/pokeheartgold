@@ -3487,27 +3487,27 @@ _02228BA0: ; jump table
 	.short _02228BEE - _02228BA0 - 2 ; case 8
 	.short _02228C0C - _02228BA0 - 2 ; case 9
 _02228BB4:
-	ldr r0, _02228C24 ; =SDK_OVERLAY_OVY_36_ID
+	ldr r0, _02228C24 ; =FS_OVERLAY_ID(OVY_36)
 	ldr r1, _02228C28 ; =ov36_App_MainMenu_SelectOption_Continue
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BBE:
-	ldr r0, _02228C24 ; =SDK_OVERLAY_OVY_36_ID
+	ldr r0, _02228C24 ; =FS_OVERLAY_ID(OVY_36)
 	ldr r1, _02228C2C ; =ov36_App_MainMenu_SelectOption_NewGame
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BC8:
-	ldr r0, _02228C30 ; =SDK_OVERLAY_OVY_74_ID
+	ldr r0, _02228C30 ; =FS_OVERLAY_ID(OVY_74)
 	ldr r1, _02228C34 ; =gApp_MainMenu_SelectOption_MysteryGift
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BD2:
-	ldr r0, _02228C30 ; =SDK_OVERLAY_OVY_74_ID
+	ldr r0, _02228C30 ; =FS_OVERLAY_ID(OVY_74)
 	ldr r1, _02228C38 ; =gApp_MainMenu_SelectOption_MigrateFromAgb
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BDC:
-	ldr r0, _02228C30 ; =SDK_OVERLAY_OVY_74_ID
+	ldr r0, _02228C30 ; =FS_OVERLAY_ID(OVY_74)
 	ldr r1, _02228C3C ; =gApp_MainMenu_SelectOption_ConnectToRanger
 	bl RegisterMainOverlay
 	pop {r3, pc}
@@ -3524,37 +3524,37 @@ _02228BEE:
 	pop {r3, pc}
 _02228BFE:
 	bl sub_02005FA0
-	ldr r0, _02228C48 ; =SDK_OVERLAY_OVY_112_ID
+	ldr r0, _02228C48 ; =FS_OVERLAY_ID(OVY_112)
 	ldr r1, _02228C4C ; =ov112_App_MainMenu_SelectOption_ConnectToPokewalker
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228C0C:
 	bl sub_02005FA0
-	ldr r0, _02228C50 ; =SDK_OVERLAY_OVY_75_ID
+	ldr r0, _02228C50 ; =FS_OVERLAY_ID(OVY_75)
 	ldr r1, _02228C54 ; =ov75_App_MainMenu_SelectOption_WiiMessageSettings
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228C1A:
-	ldr r0, _02228C58 ; =SDK_OVERLAY_OVY_60_ID
+	ldr r0, _02228C58 ; =FS_OVERLAY_ID(OVY_60)
 	ldr r1, _02228C5C ; =ov60_021EAFE0
 	bl RegisterMainOverlay
 _02228C22:
 	pop {r3, pc}
 	.balign 4, 0
-_02228C24: .word SDK_OVERLAY_OVY_36_ID
+_02228C24: .word FS_OVERLAY_ID(OVY_36)
 _02228C28: .word ov36_App_MainMenu_SelectOption_Continue
 _02228C2C: .word ov36_App_MainMenu_SelectOption_NewGame
-_02228C30: .word SDK_OVERLAY_OVY_74_ID
+_02228C30: .word FS_OVERLAY_ID(OVY_74)
 _02228C34: .word gApp_MainMenu_SelectOption_MysteryGift
 _02228C38: .word gApp_MainMenu_SelectOption_MigrateFromAgb
 _02228C3C: .word gApp_MainMenu_SelectOption_ConnectToRanger
 _02228C40: .word ov74_0223BD4C
 _02228C44: .word gApp_MainMenu_SelectOption_NintendoWFCSetup
-_02228C48: .word SDK_OVERLAY_OVY_112_ID
+_02228C48: .word FS_OVERLAY_ID(OVY_112)
 _02228C4C: .word ov112_App_MainMenu_SelectOption_ConnectToPokewalker
-_02228C50: .word SDK_OVERLAY_OVY_75_ID
+_02228C50: .word FS_OVERLAY_ID(OVY_75)
 _02228C54: .word ov75_App_MainMenu_SelectOption_WiiMessageSettings
-_02228C58: .word SDK_OVERLAY_OVY_60_ID
+_02228C58: .word FS_OVERLAY_ID(OVY_60)
 _02228C5C: .word ov60_021EAFE0
 	thumb_func_end ov74_MainMenu_QueueSelectedApp
 
@@ -4506,7 +4506,7 @@ ov74_02229450: ; 0x02229450
 	add r4, r0, #0
 	mov r0, #0x59
 	bl DestroyHeap
-	ldr r0, _02229474 ; =SDK_OVERLAY_OVY_60_ID
+	ldr r0, _02229474 ; =FS_OVERLAY_ID(OVY_60)
 	ldr r1, _02229478 ; =ov60_021EAFE0
 	bl RegisterMainOverlay
 	add r0, r4, #0
@@ -4516,7 +4516,7 @@ ov74_02229450: ; 0x02229450
 	mov r0, #1
 	pop {r4, pc}
 	nop
-_02229474: .word SDK_OVERLAY_OVY_60_ID
+_02229474: .word FS_OVERLAY_ID(OVY_60)
 _02229478: .word ov60_021EAFE0
 	thumb_func_end ov74_02229450
 
@@ -11630,21 +11630,21 @@ ov74_0222CD94: ; 0x0222CD94
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	bne _0222CDB2
-	ldr r0, _0222CDF8 ; =SDK_OVERLAY_OVY_60_ID
+	ldr r0, _0222CDF8 ; =FS_OVERLAY_ID(OVY_60)
 	ldr r1, _0222CDFC ; =ov60_021EAFE0
 	bl RegisterMainOverlay
 	b _0222CDCC
 _0222CDB2:
 	cmp r0, #1
 	bne _0222CDC0
-	ldr r0, _0222CE00 ; =SDK_OVERLAY_OVY_74_ID
+	ldr r0, _0222CE00 ; =FS_OVERLAY_ID(OVY_74)
 	ldr r1, _0222CE04 ; =_0223B410
 	bl RegisterMainOverlay
 	b _0222CDCC
 _0222CDC0:
 	cmp r0, #2
 	bne _0222CDCC
-	ldr r0, _0222CE00 ; =SDK_OVERLAY_OVY_74_ID
+	ldr r0, _0222CE00 ; =FS_OVERLAY_ID(OVY_74)
 	ldr r1, _0222CE08 ; =_0223B420
 	bl RegisterMainOverlay
 _0222CDCC:
@@ -11666,9 +11666,9 @@ _0222CDEC:
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_0222CDF8: .word SDK_OVERLAY_OVY_60_ID
+_0222CDF8: .word FS_OVERLAY_ID(OVY_60)
 _0222CDFC: .word ov60_021EAFE0
-_0222CE00: .word SDK_OVERLAY_OVY_74_ID
+_0222CE00: .word FS_OVERLAY_ID(OVY_74)
 _0222CE04: .word _0223B410
 _0222CE08: .word _0223B420
 _0222CE0C: .word 0x000015D4
@@ -15380,7 +15380,7 @@ _0222EBA0:
 	ldr r0, _0222EBFC ; =0x000029FC
 	ldr r0, [r7, r0]
 	bl FreeToHeap
-	ldr r0, _0222EC00 ; =SDK_OVERLAY_OVY_74_ID
+	ldr r0, _0222EC00 ; =FS_OVERLAY_ID(OVY_74)
 	ldr r1, _0222EC04 ; =gApp_MainMenu_SelectOption_MysteryGift
 	bl RegisterMainOverlay
 	mov r0, #0x59
@@ -15396,7 +15396,7 @@ _0222EBF0: .word 0x00002A08
 _0222EBF4: .word 0x00002BD0
 _0222EBF8: .word 0x00002BE0
 _0222EBFC: .word 0x000029FC
-_0222EC00: .word SDK_OVERLAY_OVY_74_ID
+_0222EC00: .word FS_OVERLAY_ID(OVY_74)
 _0222EC04: .word gApp_MainMenu_SelectOption_MysteryGift
 	thumb_func_end ov74_0222EB44
 
@@ -17383,7 +17383,7 @@ _0222FBE8:
 	ldr r0, _0222FC44 ; =0x000029FC
 	ldr r0, [r7, r0]
 	bl FreeToHeap
-	ldr r0, _0222FC48 ; =SDK_OVERLAY_OVY_74_ID
+	ldr r0, _0222FC48 ; =FS_OVERLAY_ID(OVY_74)
 	ldr r1, _0222FC4C ; =gApp_MainMenu_SelectOption_MysteryGift
 	bl RegisterMainOverlay
 	mov r0, #0x59
@@ -17399,7 +17399,7 @@ _0222FC38: .word 0x00002A08
 _0222FC3C: .word 0x00002BC4
 _0222FC40: .word 0x00002BD4
 _0222FC44: .word 0x000029FC
-_0222FC48: .word SDK_OVERLAY_OVY_74_ID
+_0222FC48: .word FS_OVERLAY_ID(OVY_74)
 _0222FC4C: .word gApp_MainMenu_SelectOption_MysteryGift
 	thumb_func_end ov74_0222FB8C
 
@@ -25327,7 +25327,7 @@ ov74_022338D4: ; 0x022338D4
 	bl String_dtor
 	ldr r0, [r4, #0x20]
 	bl FreeToHeap
-	ldr r0, _0223391C ; =SDK_OVERLAY_OVY_60_ID
+	ldr r0, _0223391C ; =FS_OVERLAY_ID(OVY_60)
 	ldr r1, _02233920 ; =ov60_021EAFE0
 	bl RegisterMainOverlay
 	add r0, r5, #0
@@ -25341,7 +25341,7 @@ ov74_022338D4: ; 0x022338D4
 	nop
 _02233914: .word 0x00012608
 _02233918: .word 0x0001260C
-_0223391C: .word SDK_OVERLAY_OVY_60_ID
+_0223391C: .word FS_OVERLAY_ID(OVY_60)
 _02233920: .word ov60_021EAFE0
 	thumb_func_end ov74_022338D4
 

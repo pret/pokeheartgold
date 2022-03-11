@@ -224,13 +224,13 @@ ov75_02246B00: ; 0x02246B00
 	bl DestroyHeap
 	mov r0, #0x59
 	bl DestroyHeap
-	ldr r0, _02246B40 ; =SDK_OVERLAY_OVY_60_ID
+	ldr r0, _02246B40 ; =FS_OVERLAY_ID(OVY_60)
 	ldr r1, _02246B44 ; =ov60_021EAFE0
 	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02246B40: .word SDK_OVERLAY_OVY_60_ID
+_02246B40: .word FS_OVERLAY_ID(OVY_60)
 _02246B44: .word ov60_021EAFE0
 	thumb_func_end ov75_02246B00
 
@@ -241,7 +241,7 @@ ov75_02246B48: ; 0x02246B48
 	ldr r0, [r4, #0x7c]
 	cmp r0, #0
 	bne _02246B8E
-	ldr r0, _02246B90 ; =SDK_OVERLAY_OVY_70_ID
+	ldr r0, _02246B90 ; =FS_OVERLAY_ID(OVY_70)
 	mov r1, #2
 	bl HandleLoadOverlay
 	bl LoadDwcOverlay
@@ -266,7 +266,7 @@ ov75_02246B48: ; 0x02246B48
 _02246B8E:
 	pop {r4, pc}
 	.balign 4, 0
-_02246B90: .word SDK_OVERLAY_OVY_70_ID
+_02246B90: .word FS_OVERLAY_ID(OVY_70)
 _02246B94: .word 0x00020020
 	thumb_func_end ov75_02246B48
 
@@ -284,14 +284,14 @@ ov75_02246B98: ; 0x02246B98
 	bl UnloadOVY38
 	bl UnloadDwcOverlay
 	bl sub_02034DE0
-	ldr r0, _02246BC8 ; =SDK_OVERLAY_OVY_70_ID
+	ldr r0, _02246BC8 ; =FS_OVERLAY_ID(OVY_70)
 	bl UnloadOverlayByID
 	mov r0, #0
 	str r0, [r4, #0x7c]
 _02246BC4:
 	pop {r4, pc}
 	nop
-_02246BC8: .word SDK_OVERLAY_OVY_70_ID
+_02246BC8: .word FS_OVERLAY_ID(OVY_70)
 	thumb_func_end ov75_02246B98
 
 	thumb_func_start ov75_02246BCC
@@ -6127,7 +6127,7 @@ _022498CC:
 	.rodata
 
 ov75_022498E4:
-	.word ov44_0222A4B4, ov44_0222A60C, ov44_0222A758, SDK_OVERLAY_OVY_44_ID
+	.word ov44_0222A4B4, ov44_0222A60C, ov44_0222A758, FS_OVERLAY_ID(OVY_44)
 ov75_022498F4:
 	.word ov75_02246F0C, ov75_02247118, ov75_02247180, 0xFFFFFFFF
 

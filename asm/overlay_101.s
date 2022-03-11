@@ -16,7 +16,7 @@ ov101_021E7740: ; 0x021E7740
 	add r4, r0, #0
 	bl OverlayManager_GetParentWork
 	add r5, r0, #0
-	ldr r0, _021E7790 ; =SDK_OVERLAY_OVY_26_ID
+	ldr r0, _021E7790 ; =FS_OVERLAY_ID(OVY_26)
 	mov r1, #2
 	bl HandleLoadOverlay
 	mov r0, #3
@@ -47,7 +47,7 @@ ov101_021E7740: ; 0x021E7740
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021E7790: .word SDK_OVERLAY_OVY_26_ID
+_021E7790: .word FS_OVERLAY_ID(OVY_26)
 _021E7794: .word 0x000009F4
 _021E7798: .word ov101_021F7372
 	thumb_func_end ov101_021E7740
@@ -157,12 +157,12 @@ _021E7858:
 	bl OverlayManager_FreeData
 	add r0, r4, #0
 	bl DestroyHeap
-	ldr r0, _021E7870 ; =SDK_OVERLAY_OVY_26_ID
+	ldr r0, _021E7870 ; =FS_OVERLAY_ID(OVY_26)
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021E7870: .word SDK_OVERLAY_OVY_26_ID
+_021E7870: .word FS_OVERLAY_ID(OVY_26)
 	thumb_func_end ov101_021E7834
 
 	thumb_func_start ov101_021E7874
@@ -12474,10 +12474,10 @@ ov101_TownMap_OvyInit: ; 0x021ED7F8
 	add r4, r0, #0
 	bl OverlayManager_GetParentWork
 	add r5, r0, #0
-	ldr r0, _021ED8A4 ; =SDK_OVERLAY_OVY_100_ID
+	ldr r0, _021ED8A4 ; =FS_OVERLAY_ID(OVY_100)
 	mov r1, #2
 	bl HandleLoadOverlay
-	ldr r0, _021ED8A8 ; =SDK_OVERLAY_OVY_26_ID
+	ldr r0, _021ED8A8 ; =FS_OVERLAY_ID(OVY_26)
 	mov r1, #2
 	bl HandleLoadOverlay
 	mov r2, #1
@@ -12543,8 +12543,8 @@ ov101_TownMap_OvyInit: ; 0x021ED7F8
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_021ED8A4: .word SDK_OVERLAY_OVY_100_ID
-_021ED8A8: .word SDK_OVERLAY_OVY_26_ID
+_021ED8A4: .word FS_OVERLAY_ID(OVY_100)
+_021ED8A8: .word FS_OVERLAY_ID(OVY_26)
 _021ED8AC: .word 0x000009F4
 _021ED8B0: .word ov101_021F7372
 	thumb_func_end ov101_TownMap_OvyInit
@@ -12640,15 +12640,15 @@ _021ED948:
 	bl OverlayManager_FreeData
 	add r0, r4, #0
 	bl DestroyHeap
-	ldr r0, _021ED978 ; =SDK_OVERLAY_OVY_26_ID
+	ldr r0, _021ED978 ; =FS_OVERLAY_ID(OVY_26)
 	bl UnloadOverlayByID
-	ldr r0, _021ED97C ; =SDK_OVERLAY_OVY_100_ID
+	ldr r0, _021ED97C ; =FS_OVERLAY_ID(OVY_100)
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_021ED978: .word SDK_OVERLAY_OVY_26_ID
-_021ED97C: .word SDK_OVERLAY_OVY_100_ID
+_021ED978: .word FS_OVERLAY_ID(OVY_26)
+_021ED97C: .word FS_OVERLAY_ID(OVY_100)
 	thumb_func_end ov101_TownMap_OvyExit
 
 	thumb_func_start ov101_021ED980

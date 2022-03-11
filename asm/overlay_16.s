@@ -783,7 +783,7 @@ _02201968:
 ov16_0220196C: ; 0x0220196C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	ldr r0, _022019B4 ; =SDK_OVERLAY_OVY_17_ID
+	ldr r0, _022019B4 ; =FS_OVERLAY_ID(OVY_17)
 	mov r1, #2
 	bl HandleLoadOverlay
 	bl ov17_02201BC0
@@ -810,7 +810,7 @@ ov16_0220196C: ; 0x0220196C
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_022019B4: .word SDK_OVERLAY_OVY_17_ID
+_022019B4: .word FS_OVERLAY_ID(OVY_17)
 	thumb_func_end ov16_0220196C
 
 	thumb_func_start ov16_022019B8
@@ -870,12 +870,12 @@ ov16_02201A04: ; 0x02201A04
 	bl OverlayManager_FreeData
 	mov r0, #0x82
 	bl DestroyHeap
-	ldr r0, _02201A30 ; =SDK_OVERLAY_OVY_17_ID
+	ldr r0, _02201A30 ; =FS_OVERLAY_ID(OVY_17)
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_02201A30: .word SDK_OVERLAY_OVY_17_ID
+_02201A30: .word FS_OVERLAY_ID(OVY_17)
 	thumb_func_end ov16_02201A04
 
 	thumb_func_start ov16_02201A34
@@ -1053,7 +1053,7 @@ ov16_02201B68: ; 0x02201B68
 	.word ov17_02201C10, ov17_02201C78, ov17_02201D04, 0xFFFFFFFF
 
 ov16_02201B78: ; 0x02201B78
-	.word ov15_BagApp_init, ov15_BagApp_exec, ov15_BagApp_exit, SDK_OVERLAY_OVY_15_ID
+	.word ov15_BagApp_init, ov15_BagApp_exec, ov15_BagApp_exit, FS_OVERLAY_ID(OVY_15)
 
 	.data
 

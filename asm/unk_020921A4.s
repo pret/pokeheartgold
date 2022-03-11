@@ -127,13 +127,13 @@ sub_02092288: ; 0x02092288
 	bl OverlayManager_FreeData
 	add r0, r4, #0
 	bl DestroyHeap
-	ldr r0, _020922B0 ; =SDK_OVERLAY_OVY_74_ID
+	ldr r0, _020922B0 ; =FS_OVERLAY_ID(OVY_74)
 	ldr r1, _020922B4 ; =gApp_MainMenu
 	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_020922B0: .word SDK_OVERLAY_OVY_74_ID
+_020922B0: .word FS_OVERLAY_ID(OVY_74)
 _020922B4: .word gApp_MainMenu
 	thumb_func_end sub_02092288
 

@@ -77,13 +77,13 @@ _0203DECE:
 sub_0203DED4: ; 0x0203DED4
 	push {r3, lr}
 	bl sub_0203E058
-	ldr r0, _0203DEE8 ; =SDK_OVERLAY_OVY_60_ID
+	ldr r0, _0203DEE8 ; =FS_OVERLAY_ID(OVY_60)
 	ldr r1, _0203DEEC ; =ov60_021EAFE0
 	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, pc}
 	nop
-_0203DEE8: .word SDK_OVERLAY_OVY_60_ID
+_0203DEE8: .word FS_OVERLAY_ID(OVY_60)
 _0203DEEC: .word ov60_021EAFE0
 	thumb_func_end sub_0203DED4
 
@@ -105,7 +105,7 @@ _0203DF00:
 	beq _0203DF0C
 	bl GF_AssertFail
 _0203DF0C:
-	ldr r0, _0203DF2C ; =SDK_OVERLAY_OVY_1_ID
+	ldr r0, _0203DF2C ; =FS_OVERLAY_ID(OVY_1)
 	mov r1, #2
 	bl HandleLoadOverlay
 	mov r1, #0
@@ -120,7 +120,7 @@ _0203DF0C:
 	str r0, [r1]
 	pop {r4, pc}
 	.balign 4, 0
-_0203DF2C: .word SDK_OVERLAY_OVY_1_ID
+_0203DF2C: .word FS_OVERLAY_ID(OVY_1)
 _0203DF30: .word ov01_02206378
 	thumb_func_end sub_0203DEF0
 
@@ -275,7 +275,7 @@ sub_0203DFE0: ; 0x0203DFE0
 	mov r1, #0
 	str r1, [r0]
 	ldr r0, [r4]
-	ldr r6, _0203E054 ; =SDK_OVERLAY_OVY_124_ID
+	ldr r6, _0203E054 ; =FS_OVERLAY_ID(OVY_124)
 	str r1, [r0, #4]
 	ldr r0, [r4]
 	str r1, [r0, #8]
@@ -292,7 +292,7 @@ sub_0203DFE0: ; 0x0203DFE0
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_0203E054: .word SDK_OVERLAY_OVY_124_ID
+_0203E054: .word FS_OVERLAY_ID(OVY_124)
 	thumb_func_end sub_0203DFE0
 
 	thumb_func_start sub_0203E058
@@ -375,7 +375,7 @@ _0203E0EE:
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _0203E116
-	ldr r0, _0203E138 ; =SDK_OVERLAY_OVY_1_ID
+	ldr r0, _0203E138 ; =FS_OVERLAY_ID(OVY_1)
 	bl UnloadOverlayByID
 	b _0203E116
 _0203E10A:
@@ -404,7 +404,7 @@ _0203E134:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-_0203E138: .word SDK_OVERLAY_OVY_1_ID
+_0203E138: .word FS_OVERLAY_ID(OVY_1)
 	thumb_func_end sub_0203E0CC
 
 	thumb_func_start sub_0203E13C
