@@ -104,7 +104,7 @@ Static main
 	Object asm/unk_0202C034.o
 	Object asm/unk_0202C730.o
 	Object src/coins.o
-	Object asm/unk_0202C9A0.o
+	Object src/save_trainer_card.o
 	Object asm/unk_0202CA24.o
 	Object src/seal_case.o
 	Object src/igt.o

@@ -3,7 +3,7 @@
 #include "overlay_trainer_card_main.h"
 #include "overlay_trainer_card_signature.h"
 #include "unk_02004A44.h"
-#include "unk_0202C9A0.h"
+#include "save_trainer_card.h"
 
 FS_EXTERN_OVERLAY(OVY_51);
 FS_EXTERN_OVERLAY(OVY_52);
@@ -114,8 +114,8 @@ static int TCardAppRunStep_SignatureExec(TrainerCardAppState *a0) {
         return TRAINERCARD_RUN_SIGNATURE_EXEC;
     }
 
-    ptr = sub_0202C9D8(a0->unkC->saveData);
-    a0->unkC->unk4b = sub_0202C9E8(ptr);
-    MI_CpuCopy8(sub_0202C9E4(ptr), a0->unkC->unk68, sizeof(a0->unkC->unk68));
+    ptr = Save_TranerCard_get(a0->unkC->saveData);
+    a0->unkC->unk4b = TrainerCard_SignatureExists(ptr);
+    MI_CpuCopy8(TrainerCard_GetSignature(ptr), a0->unkC->unk68, sizeof(a0->unkC->unk68));
     return TRAINERCARD_RUN_INIT;
 }

@@ -2845,7 +2845,7 @@ sub_0203F818: ; 0x0203F818
 	sub sp, #0x10
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_0202C9D8
+	bl Save_TranerCard_get
 	ldr r5, _0203F840 ; =_020FA254
 	add r3, sp, #0
 	add r2, r3, #0

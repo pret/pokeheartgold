@@ -91,8 +91,8 @@ _021E80D6:
 	bl sub_0200FA24
 	add r0, r6, #0
 	bl OverlayManager_GetField18
-	bl sub_0202C9D8
-	bl sub_0202C9E4
+	bl Save_TranerCard_get
+	bl TrainerCard_GetSignature
 	ldr r1, _021E8238 ; =0x00005B98
 	str r0, [r4, r1]
 	add r0, r6, #0

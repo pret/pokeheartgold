@@ -901,8 +901,8 @@ sub_0206759C: ; 0x0206759C
 	str r1, [sp]
 	cmp r1, #0
 	ble _02067606
-	bl sub_0202C9D8
-	bl sub_0202CA10
+	bl Save_TranerCard_get
+	bl TrainerCard_GetBadgeShininessArr
 	add r4, r0, #0
 	add r0, r5, #0
 	bl Sav2_PlayerData_GetProfileAddr
@@ -920,7 +920,7 @@ _020675C2:
 	beq _020675FC
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0202CA14
+	bl GetShininessOfBadgeI
 	add r1, r0, #0
 	cmp r1, #0
 	ble _020675E4
@@ -941,7 +941,7 @@ _020675EE:
 _020675F4:
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_0202CA1C
+	bl SetShininessOfBadgeI
 _020675FC:
 	add r0, r5, #1
 	lsl r0, r0, #0x18
