@@ -36,7 +36,7 @@ BOOL Fsys_TaskIsRunning(FieldSystem *fsys);
 BOOL FieldSys_ApplicationIsRunning(FieldSystem *fsys);
 void sub_020505C0(FieldSystem *fsys);
 BOOL sub_020505C8(FieldSystem *fsys);
-void sub_02050624(TaskManager *taskManager, const OVY_MGR_TEMPLATE *template, void *work);
+void CallApplicationAsTask(TaskManager *taskManager, const OVY_MGR_TEMPLATE *template, void *work);
 FieldSystem *TaskManager_GetSys(TaskManager *taskManager);
 void *TaskManager_GetEnv(TaskManager *taskManager);
 u32 *TaskManager_GetStatePtr(TaskManager *taskManager);

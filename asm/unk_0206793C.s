@@ -24,7 +24,7 @@ sub_0206793C: ; 0x0206793C
 	ldr r1, _02067958 ; =_020FE79C
 	add r0, r4, #0
 	add r2, #0xc
-	bl sub_02050624
+	bl CallApplicationAsTask
 	pop {r4, pc}
 	.balign 4, 0
 _02067958: .word _020FE79C

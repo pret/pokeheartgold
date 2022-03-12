@@ -2215,7 +2215,7 @@ _0203F324:
 	ldr r1, _0203F4A0 ; =_0210F98C
 	add r0, r6, #0
 	add r2, r4, #4
-	bl sub_02050624
+	bl CallApplicationAsTask
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -2287,7 +2287,7 @@ _0203F3B0:
 	ldr r1, _0203F4A4 ; =_020FA2D4
 	add r0, r6, #0
 	add r2, #0x44
-	bl sub_02050624
+	bl CallApplicationAsTask
 	mov r0, #5
 	str r0, [r4]
 	b _0203F49A
@@ -2542,7 +2542,7 @@ _0203F5BA:
 	ldr r1, _0203F64C ; =_02102610
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
-	bl sub_02050624
+	bl CallApplicationAsTask
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]

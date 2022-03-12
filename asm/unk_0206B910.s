@@ -148,7 +148,7 @@ _0206BA20:
 	ldr r0, [sp]
 	ldr r1, _0206BB24 ; =_020FF480
 	add r2, r6, #0
-	bl sub_02050624
+	bl CallApplicationAsTask
 	mov r0, #2
 	str r0, [r7, #0x10]
 	b _0206BB1C
@@ -199,7 +199,7 @@ _0206BA4E:
 	ldr r0, [sp]
 	ldr r1, _0206BB28 ; =_0210159C
 	add r2, r4, #0
-	bl sub_02050624
+	bl CallApplicationAsTask
 	mov r0, #4
 	str r0, [r7, #0x10]
 	b _0206BB1C

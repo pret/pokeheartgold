@@ -28362,7 +28362,7 @@ FS_EXTERN_OVERLAY(OV_101)
 .public FieldSys_ApplicationIsRunning
 .public sub_020505C0
 .public sub_020505C8
-.public sub_02050624
+.public CallApplicationAsTask
 .public TaskManager_GetSys
 .public TaskManager_GetEnv
 .public TaskManager_GetStatePtr

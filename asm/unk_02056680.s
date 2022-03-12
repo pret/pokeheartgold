@@ -824,7 +824,7 @@ _02056D4E:
 	str r0, [r4, #0xc]
 	str r5, [r4, #4]
 	add r0, r6, #0
-	bl sub_02050624
+	bl CallApplicationAsTask
 	ldrh r0, [r4]
 	add r0, r0, #1
 	strh r0, [r4]

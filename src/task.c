@@ -80,7 +80,7 @@ BOOL sub_020505C8(FieldSystem *fsys) {
     return sub_0203DF8C(fsys) != FALSE;
 }
 
-static BOOL sub_020505DC(TaskManager *taskManager) {
+static BOOL Task_RunApplicationUntilComplete(TaskManager *taskManager) {
     FieldSystem *fsys;
     struct UnkTaskEnv *env;
 
@@ -102,14 +102,14 @@ static BOOL sub_020505DC(TaskManager *taskManager) {
     return FALSE;
 }
 
-void sub_02050624(TaskManager *taskManager, const OVY_MGR_TEMPLATE *template, void *work) {
+void CallApplicationAsTask(TaskManager *taskManager, const OVY_MGR_TEMPLATE *template, void *work) {
     struct UnkTaskEnv *env;
 
     env = AllocFromHeapAtEnd((HeapID)32, sizeof(struct UnkTaskEnv));
     env->state = 0;
     env->template = template;
     env->work = work;
-    TaskManager_Call(taskManager, sub_020505DC, env);
+    TaskManager_Call(taskManager, Task_RunApplicationUntilComplete, env);
 }
 
 FieldSystem *TaskManager_GetSys(TaskManager *taskManager) {

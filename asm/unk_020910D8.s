@@ -50,7 +50,7 @@ _0209111C:
 	ldr r1, _02091238 ; =_02106048
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_02050624
+	bl CallApplicationAsTask
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -137,7 +137,7 @@ _0209119A:
 	ldr r1, _0209123C ; =_02102610
 	ldr r2, [r4, #8]
 	add r0, r5, #0
-	bl sub_02050624
+	bl CallApplicationAsTask
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]

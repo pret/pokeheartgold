@@ -11851,7 +11851,7 @@ _0204647E:
 	ldr r0, [r0]
 	str r0, [r4, #0x1c]
 	ldr r0, [r5, #0x74]
-	bl sub_02050624
+	bl CallApplicationAsTask
 	ldr r1, _020464DC ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript

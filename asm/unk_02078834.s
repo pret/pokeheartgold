@@ -85,7 +85,7 @@ _020788B8:
 	ldr r1, _02078B24 ; =_02101290
 	ldr r2, [r4]
 	add r0, r6, #0
-	bl sub_02050624
+	bl CallApplicationAsTask
 	ldr r0, [r4, #4]
 	add r0, r0, #1
 	str r0, [r4, #4]
