@@ -597,7 +597,7 @@ _0205BF4E:
 	ldr r0, [r0, #0x10]
 	ldr r1, _0205BF68 ; =sub_0205BE28
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0205BF68: .word sub_0205BE28
@@ -664,7 +664,7 @@ sub_0205BFB4: ; 0x0205BFB4
 	ldr r1, _0205BFEC ; =sub_0205BF6C
 	ldr r0, [r0, #0x10]
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0205BFEC: .word sub_0205BF6C

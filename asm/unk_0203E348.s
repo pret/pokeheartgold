@@ -199,12 +199,12 @@ sub_0203E3C0: ; 0x0203E3C0
 
 	thumb_func_start sub_0203E3C4
 sub_0203E3C4: ; 0x0203E3C4
-	ldr r3, _0203E3CC ; =ScrUnk80_AddOvyMan
+	ldr r3, _0203E3CC ; =Fsys_LaunchApplication
 	add r2, r1, #0
 	ldr r1, _0203E3D0 ; =_020FA484
 	bx r3
 	.balign 4, 0
-_0203E3CC: .word ScrUnk80_AddOvyMan
+_0203E3CC: .word Fsys_LaunchApplication
 _0203E3D0: .word _020FA484
 	thumb_func_end sub_0203E3C4
 
@@ -223,7 +223,7 @@ sub_0203E3D4: ; 0x0203E3D4
 	stmia r4!, {r0, r1}
 	add r0, r6, #0
 	add r1, r3, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -352,12 +352,12 @@ _0203E4E6:
 
 	thumb_func_start sub_0203E4EC
 sub_0203E4EC: ; 0x0203E4EC
-	ldr r3, _0203E4F4 ; =ScrUnk80_AddOvyMan
+	ldr r3, _0203E4F4 ; =Fsys_LaunchApplication
 	add r2, r1, #0
 	ldr r1, _0203E4F8 ; =_02103A1C
 	bx r3
 	.balign 4, 0
-_0203E4F4: .word ScrUnk80_AddOvyMan
+_0203E4F4: .word Fsys_LaunchApplication
 _0203E4F8: .word _02103A1C
 	thumb_func_end sub_0203E4EC
 
@@ -419,7 +419,7 @@ sub_0203E550: ; 0x0203E550
 	ldr r1, _0203E57C ; =_0210159C
 	add r0, r5, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -438,7 +438,7 @@ sub_0203E580: ; 0x0203E580
 	ldr r1, _0203E5A0 ; =_0210159C
 	add r0, r5, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	nop
@@ -457,7 +457,7 @@ sub_0203E5A4: ; 0x0203E5A4
 	ldr r1, _0203E5C4 ; =_0210159C
 	add r0, r5, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	nop
@@ -487,7 +487,7 @@ sub_0203E5D0: ; 0x0203E5D0
 	ldr r1, _0203E5F4 ; =_0210159C
 	add r0, r5, #0
 	add r2, r6, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add r0, r6, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -518,7 +518,7 @@ sub_0203E604: ; 0x0203E604
 	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #4
@@ -539,7 +539,7 @@ _0203E63A:
 	ldr r1, _0203E6D0 ; =_0210159C
 	ldr r2, [r4, #4]
 	add r0, r6, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	mov r0, #1
 	str r0, [r5]
 	b _0203E6CC
@@ -660,7 +660,7 @@ sub_0203E6D4: ; 0x0203E6D4
 	ldr r1, _0203E73C ; =sub_0203E604
 	add r0, r7, #0
 	str r5, [r4, #4]
-	bl QueueTask
+	bl TaskManager_Call
 	add r0, r5, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -683,7 +683,7 @@ sub_0203E740: ; 0x0203E740
 	ldr r1, _0203E768 ; =_0210159C
 	add r0, r5, #0
 	add r2, r6, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add r0, r6, #0
 	pop {r4, r5, r6, pc}
 	nop
@@ -808,12 +808,12 @@ sub_0203E864: ; 0x0203E864
 
 	thumb_func_start sub_0203E868
 sub_0203E868: ; 0x0203E868
-	ldr r3, _0203E870 ; =ScrUnk80_AddOvyMan
+	ldr r3, _0203E870 ; =Fsys_LaunchApplication
 	add r2, r1, #0
 	ldr r1, _0203E874 ; =_020FA414
 	bx r3
 	.balign 4, 0
-_0203E870: .word ScrUnk80_AddOvyMan
+_0203E870: .word Fsys_LaunchApplication
 _0203E874: .word _020FA414
 	thumb_func_end sub_0203E868
 
@@ -822,7 +822,7 @@ sub_0203E878: ; 0x0203E878
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r6, r0, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r5, r0, #0
 	add r0, r6, #0
 	bl TaskManager_GetEnv
@@ -1022,7 +1022,7 @@ _0203EA12:
 	ldr r0, [sp, #4]
 	ldr r1, _0203EA20 ; =sub_0203E878
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1031,12 +1031,12 @@ _0203EA20: .word sub_0203E878
 
 	thumb_func_start sub_0203EA24
 sub_0203EA24: ; 0x0203EA24
-	ldr r3, _0203EA2C ; =ScrUnk80_AddOvyMan
+	ldr r3, _0203EA2C ; =Fsys_LaunchApplication
 	add r2, r1, #0
 	ldr r1, _0203EA30 ; =_020FA404
 	bx r3
 	.balign 4, 0
-_0203EA2C: .word ScrUnk80_AddOvyMan
+_0203EA2C: .word Fsys_LaunchApplication
 _0203EA30: .word _020FA404
 	thumb_func_end sub_0203EA24
 
@@ -1055,7 +1055,7 @@ SwitchToPokegearApp_Phone: ; 0x0203EA34
 	stmia r4!, {r0, r1}
 	add r0, r6, #0
 	add r1, r3, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -1077,7 +1077,7 @@ SwitchToPokegearApp_TownMap: ; 0x0203EA5C
 	stmia r4!, {r0, r1}
 	add r0, r6, #0
 	add r1, r3, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -1145,7 +1145,7 @@ sub_0203EAE0: ; 0x0203EAE0
 	stmia r4!, {r0, r1}
 	add r0, r6, #0
 	add r1, r3, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -1193,7 +1193,7 @@ sub_0203EB3C: ; 0x0203EB3C
 	stmia r4!, {r0, r1}
 	add r0, r6, #0
 	add r1, r3, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -1229,7 +1229,7 @@ sub_0203EB7C: ; 0x0203EB7C
 	stmia r4!, {r0, r1}
 	add r0, r6, #0
 	add r1, r3, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -1279,7 +1279,7 @@ Fsys_LaunchApplication_AlphPuzzle: ; 0x0203EBDC
 	stmia r4!, {r0, r1}
 	add r0, r6, #0
 	add r1, r3, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -1329,7 +1329,7 @@ sub_0203EC3C: ; 0x0203EC3C
 	stmia r4!, {r0, r1}
 	add r0, r6, #0
 	add r1, r3, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -1377,7 +1377,7 @@ sub_0203EC98: ; 0x0203EC98
 	stmia r4!, {r0, r1}
 	add r0, r6, #0
 	add r1, r3, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -1429,7 +1429,7 @@ sub_0203ECFC: ; 0x0203ECFC
 	stmia r4!, {r0, r1}
 	add r0, r6, #0
 	add r1, r3, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -1518,12 +1518,12 @@ sub_0203ED80: ; 0x0203ED80
 
 	thumb_func_start sub_0203EDCC
 sub_0203EDCC: ; 0x0203EDCC
-	ldr r3, _0203EDD4 ; =ScrUnk80_AddOvyMan
+	ldr r3, _0203EDD4 ; =Fsys_LaunchApplication
 	add r2, r1, #0
 	ldr r1, _0203EDD8 ; =_020FA364
 	bx r3
 	.balign 4, 0
-_0203EDD4: .word ScrUnk80_AddOvyMan
+_0203EDD4: .word Fsys_LaunchApplication
 _0203EDD8: .word _020FA364
 	thumb_func_end sub_0203EDCC
 
@@ -1557,12 +1557,12 @@ sub_0203EDDC: ; 0x0203EDDC
 
 	thumb_func_start sub_0203EE14
 sub_0203EE14: ; 0x0203EE14
-	ldr r3, _0203EE1C ; =ScrUnk80_AddOvyMan
+	ldr r3, _0203EE1C ; =Fsys_LaunchApplication
 	add r2, r1, #0
 	ldr r1, _0203EE20 ; =_020FA354
 	bx r3
 	.balign 4, 0
-_0203EE1C: .word ScrUnk80_AddOvyMan
+_0203EE1C: .word Fsys_LaunchApplication
 _0203EE20: .word _020FA354
 	thumb_func_end sub_0203EE14
 
@@ -1621,12 +1621,12 @@ _0203EE8A:
 
 	thumb_func_start sub_0203EE90
 sub_0203EE90: ; 0x0203EE90
-	ldr r3, _0203EE98 ; =ScrUnk80_AddOvyMan
+	ldr r3, _0203EE98 ; =Fsys_LaunchApplication
 	add r2, r1, #0
 	ldr r1, _0203EE9C ; =_020FA344
 	bx r3
 	.balign 4, 0
-_0203EE98: .word ScrUnk80_AddOvyMan
+_0203EE98: .word Fsys_LaunchApplication
 _0203EE9C: .word _020FA344
 	thumb_func_end sub_0203EE90
 
@@ -1656,12 +1656,12 @@ sub_0203EEA0: ; 0x0203EEA0
 
 	thumb_func_start sub_0203EED4
 sub_0203EED4: ; 0x0203EED4
-	ldr r3, _0203EEDC ; =ScrUnk80_AddOvyMan
+	ldr r3, _0203EEDC ; =Fsys_LaunchApplication
 	add r2, r1, #0
 	ldr r1, _0203EEE0 ; =_020FA314
 	bx r3
 	.balign 4, 0
-_0203EEDC: .word ScrUnk80_AddOvyMan
+_0203EEDC: .word Fsys_LaunchApplication
 _0203EEE0: .word _020FA314
 	thumb_func_end sub_0203EED4
 
@@ -1701,12 +1701,12 @@ sub_0203EEE4: ; 0x0203EEE4
 
 	thumb_func_start sub_0203EF30
 sub_0203EF30: ; 0x0203EF30
-	ldr r3, _0203EF38 ; =ScrUnk80_AddOvyMan
+	ldr r3, _0203EF38 ; =Fsys_LaunchApplication
 	add r2, r1, #0
 	ldr r1, _0203EF3C ; =_020FA324
 	bx r3
 	.balign 4, 0
-_0203EF38: .word ScrUnk80_AddOvyMan
+_0203EF38: .word Fsys_LaunchApplication
 _0203EF3C: .word _020FA324
 	thumb_func_end sub_0203EF30
 
@@ -1747,12 +1747,12 @@ sub_0203EF40: ; 0x0203EF40
 
 	thumb_func_start sub_0203EF90
 sub_0203EF90: ; 0x0203EF90
-	ldr r3, _0203EF98 ; =ScrUnk80_AddOvyMan
+	ldr r3, _0203EF98 ; =Fsys_LaunchApplication
 	add r2, r1, #0
 	ldr r1, _0203EF9C ; =_020FA424
 	bx r3
 	.balign 4, 0
-_0203EF98: .word ScrUnk80_AddOvyMan
+_0203EF98: .word Fsys_LaunchApplication
 _0203EF9C: .word _020FA424
 	thumb_func_end sub_0203EF90
 
@@ -1788,11 +1788,11 @@ sub_0203EFD4: ; 0x0203EFD4
 	lsl r1, r1, #2
 	add r1, r0, r1
 	str r1, [r2, #0x1c]
-	ldr r3, _0203EFE4 ; =ScrUnk80_AddOvyMan
+	ldr r3, _0203EFE4 ; =Fsys_LaunchApplication
 	ldr r1, _0203EFE8 ; =_020FA434
 	bx r3
 	.balign 4, 0
-_0203EFE4: .word ScrUnk80_AddOvyMan
+_0203EFE4: .word Fsys_LaunchApplication
 _0203EFE8: .word _020FA434
 	thumb_func_end sub_0203EFD4
 
@@ -1886,7 +1886,7 @@ sub_0203F074: ; 0x0203F074
 	ldr r1, _0203F0A4 ; =_020FA2F4
 	add r0, r5, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	nop
@@ -1908,7 +1908,7 @@ sub_0203F0A8: ; 0x0203F0A8
 	stmia r4!, {r0, r1}
 	add r0, r6, #0
 	add r1, r3, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -2046,7 +2046,7 @@ _0203F1B4:
 	add r0, r6, #0
 	add r2, r4, #0
 	str r5, [r4, #4]
-	bl QueueTask
+	bl TaskManager_Call
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -2062,7 +2062,7 @@ sub_0203F1E8: ; 0x0203F1E8
 	add r1, r0, r1
 	str r1, [r2, #0x20]
 	ldr r1, _0203F200 ; =_0210F9AC
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	mov r0, #1
 	pop {r3, pc}
 	nop
@@ -2074,7 +2074,7 @@ sub_0203F204: ; 0x0203F204
 	push {r3, lr}
 	add r2, r1, #0
 	ldr r1, _0203F214 ; =_0210F99C
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	mov r0, #1
 	pop {r3, pc}
 	nop
@@ -2406,7 +2406,7 @@ sub_0203F4A8: ; 0x0203F4A8
 	str r0, [r2]
 	ldr r1, _0203F4C4 ; =sub_0203F2C8
 	add r0, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r4, pc}
 	.balign 4, 0
 _0203F4C4: .word sub_0203F2C8
@@ -2430,7 +2430,7 @@ sub_0203F4C8: ; 0x0203F4C8
 	ldr r1, _0203F4F4 ; =_020FA2C4
 	add r0, r5, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	pop {r3, r4, r5, pc}
 	nop
 _0203F4F4: .word _020FA2C4
@@ -2463,7 +2463,7 @@ sub_0203F4F8: ; 0x0203F4F8
 	ldr r1, _0203F538 ; =_020FA2B4
 	add r0, r5, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2490,7 +2490,7 @@ sub_0203F53C: ; 0x0203F53C
 	ldr r1, _0203F56C ; =_020FA2A4
 	add r0, r5, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -2499,12 +2499,12 @@ _0203F56C: .word _020FA2A4
 
 	thumb_func_start sub_0203F570
 sub_0203F570: ; 0x0203F570
-	ldr r3, _0203F578 ; =ScrUnk80_AddOvyMan
+	ldr r3, _0203F578 ; =Fsys_LaunchApplication
 	ldr r1, _0203F57C ; =_02102830
 	add r2, r0, #0
 	bx r3
 	.balign 4, 0
-_0203F578: .word ScrUnk80_AddOvyMan
+_0203F578: .word Fsys_LaunchApplication
 _0203F57C: .word _02102830
 	thumb_func_end sub_0203F570
 
@@ -2777,7 +2777,7 @@ _0203F79C:
 	ldr r0, [sp, #8]
 	ldr r1, _0203F7AC ; =sub_0203F580
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -2808,7 +2808,7 @@ sub_0203F7B0: ; 0x0203F7B0
 	ldr r1, _0203F7F0 ; =_020FA294
 	add r0, r5, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	pop {r3, r4, r5, pc}
 	nop
 _0203F7E8: .word 0x0000066C
@@ -2821,7 +2821,7 @@ sub_0203F7F4: ; 0x0203F7F4
 	push {r3, lr}
 	add r2, r1, #0
 	ldr r1, _0203F804 ; =_020FA284
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	mov r0, #1
 	pop {r3, pc}
 	nop
@@ -2830,12 +2830,12 @@ _0203F804: .word _020FA284
 
 	thumb_func_start FieldSys_LaunchChooseStarterApplication
 FieldSys_LaunchChooseStarterApplication: ; 0x0203F808
-	ldr r3, _0203F810 ; =ScrUnk80_AddOvyMan
+	ldr r3, _0203F810 ; =Fsys_LaunchApplication
 	add r2, r1, #0
 	ldr r1, _0203F814 ; =_020FA274
 	bx r3
 	.balign 4, 0
-_0203F810: .word ScrUnk80_AddOvyMan
+_0203F810: .word Fsys_LaunchApplication
 _0203F814: .word _020FA274
 	thumb_func_end FieldSys_LaunchChooseStarterApplication
 
@@ -2856,7 +2856,7 @@ sub_0203F818: ; 0x0203F818
 	add r1, r2, #0
 	ldr r2, [r4, #0xc]
 	add r0, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2928,7 +2928,7 @@ sub_0203F844: ; 0x0203F844
 	add r1, sp, #0
 	add r2, r4, #0
 	str r6, [r4, #0x3c]
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -2981,7 +2981,7 @@ sub_0203F8EC: ; 0x0203F8EC
 	add r0, r5, #0
 	add r1, sp, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add r0, r4, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2991,23 +2991,23 @@ _0203F960: .word _020FA334
 
 	thumb_func_start sub_0203F964
 sub_0203F964: ; 0x0203F964
-	ldr r3, _0203F96C ; =ScrUnk80_AddOvyMan
+	ldr r3, _0203F96C ; =Fsys_LaunchApplication
 	ldr r1, _0203F970 ; =_020FA224
 	ldr r2, [r0, #0xc]
 	bx r3
 	.balign 4, 0
-_0203F96C: .word ScrUnk80_AddOvyMan
+_0203F96C: .word Fsys_LaunchApplication
 _0203F970: .word _020FA224
 	thumb_func_end sub_0203F964
 
 	thumb_func_start sub_0203F974
 sub_0203F974: ; 0x0203F974
-	ldr r3, _0203F97C ; =ScrUnk80_AddOvyMan
+	ldr r3, _0203F97C ; =Fsys_LaunchApplication
 	add r2, r1, #0
 	ldr r1, _0203F980 ; =_020FA214
 	bx r3
 	.balign 4, 0
-_0203F97C: .word ScrUnk80_AddOvyMan
+_0203F97C: .word Fsys_LaunchApplication
 _0203F980: .word _020FA214
 	thumb_func_end sub_0203F974
 
@@ -3030,7 +3030,7 @@ _0203F9A2:
 	ldr r1, _0203F9B0 ; =_020FA204
 	add r0, r5, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -3039,12 +3039,12 @@ _0203F9B0: .word _020FA204
 
 	thumb_func_start sub_0203F9B4
 sub_0203F9B4: ; 0x0203F9B4
-	ldr r3, _0203F9BC ; =ScrUnk80_AddOvyMan
+	ldr r3, _0203F9BC ; =Fsys_LaunchApplication
 	add r2, r1, #0
 	ldr r1, _0203F9C0 ; =_020FA1F4
 	bx r3
 	.balign 4, 0
-_0203F9BC: .word ScrUnk80_AddOvyMan
+_0203F9BC: .word Fsys_LaunchApplication
 _0203F9C0: .word _020FA1F4
 	thumb_func_end sub_0203F9B4
 
@@ -3067,7 +3067,7 @@ sub_0203F9C4: ; 0x0203F9C4
 	str r0, [r2, #0xc]
 	add r0, r3, #0
 	add r1, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -3137,7 +3137,7 @@ sub_0203FA38: ; 0x0203FA38
 	str r0, [r4, #0x10]
 	add r0, r5, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	nop
@@ -3159,7 +3159,7 @@ sub_0203FA8C: ; 0x0203FA8C
 	str r0, [r4]
 	add r0, r5, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -3186,7 +3186,7 @@ sub_0203FAB4: ; 0x0203FAB4
 	add r2, r4, #0
 	str r0, [r4]
 	add r0, r5, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -3241,7 +3241,7 @@ sub_0203FAE8: ; 0x0203FAE8
 	ldr r1, _0203FB5C ; =_0210159C
 	add r0, r5, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	nop
@@ -3269,7 +3269,7 @@ _0203FB74:
 	str r0, [r4]
 	add r0, r5, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	nop
@@ -3323,7 +3323,7 @@ sub_0203FB94: ; 0x0203FB94
 	ldr r1, _0203FC10 ; =_02103A1C
 	add r0, r5, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	nop
@@ -3359,7 +3359,7 @@ sub_0203FC14: ; 0x0203FC14
 	add r0, r5, #0
 	add r2, r4, #0
 	strb r7, [r4, #0xc]
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3368,12 +3368,12 @@ _0203FC54: .word _020FA1C4
 
 	thumb_func_start Fsys_LaunchPokeathlonCourseApplication
 Fsys_LaunchPokeathlonCourseApplication: ; 0x0203FC58
-	ldr r3, _0203FC60 ; =ScrUnk80_AddOvyMan
+	ldr r3, _0203FC60 ; =Fsys_LaunchApplication
 	add r2, r1, #0
 	ldr r1, _0203FC64 ; =_020FA244
 	bx r3
 	.balign 4, 0
-_0203FC60: .word ScrUnk80_AddOvyMan
+_0203FC60: .word Fsys_LaunchApplication
 _0203FC64: .word _020FA244
 	thumb_func_end Fsys_LaunchPokeathlonCourseApplication
 
@@ -3392,7 +3392,7 @@ sub_0203FC68: ; 0x0203FC68
 	stmia r4!, {r0, r1}
 	add r0, r6, #0
 	add r1, r3, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -3414,7 +3414,7 @@ sub_0203FC90: ; 0x0203FC90
 	stmia r4!, {r0, r1}
 	add r0, r6, #0
 	add r1, r3, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -3455,7 +3455,7 @@ _0203FCE0:
 	ldr r1, _0203FD04 ; =_020FA474
 	add r0, r6, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3464,11 +3464,11 @@ _0203FD04: .word _020FA474
 
 	thumb_func_start sub_0203FD08
 sub_0203FD08: ; 0x0203FD08
-	ldr r3, _0203FD10 ; =ScrUnk80_AddOvyMan
+	ldr r3, _0203FD10 ; =Fsys_LaunchApplication
 	add r2, r1, #0
 	ldr r1, _0203FD14 ; =_020FA494
 	bx r3
 	.balign 4, 0
-_0203FD10: .word ScrUnk80_AddOvyMan
+_0203FD10: .word Fsys_LaunchApplication
 _0203FD14: .word _020FA494
 	thumb_func_end sub_0203FD08

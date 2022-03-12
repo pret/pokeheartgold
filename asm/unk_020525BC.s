@@ -134,7 +134,7 @@ _020526B4:
 	ldr r1, _020526D0 ; =sub_020526D4
 	add r0, r6, #0
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _020526C8: .word 0x00007FFF
@@ -334,7 +334,7 @@ sub_02052858: ; 0x02052858
 	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #6
@@ -464,11 +464,11 @@ _02052978: .word std_whited_out_to_pokecenter
 
 	thumb_func_start sub_0205297C
 sub_0205297C: ; 0x0205297C
-	ldr r3, _02052984 ; =QueueTask
+	ldr r3, _02052984 ; =TaskManager_Call
 	ldr r1, _02052988 ; =sub_02052858
 	mov r2, #0
 	bx r3
 	.balign 4, 0
-_02052984: .word QueueTask
+_02052984: .word TaskManager_Call
 _02052988: .word sub_02052858
 	thumb_func_end sub_0205297C

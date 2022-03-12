@@ -74,7 +74,7 @@ sub_02058AEC: ; 0x02058AEC
 	ldr r1, _02058B80 ; =_02103A1C
 	add r0, r6, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	str r4, [r7]
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -202,7 +202,7 @@ _02058C5C:
 	ldr r0, [r5, #0x24]
 	ldr r1, _02058C7C ; =_0210159C
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	str r4, [r5, #4]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2855,7 +2855,7 @@ sub_0205A114: ; 0x0205A114
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_02050590
+	bl Fsys_TaskIsRunning
 	cmp r0, #0
 	bne _0205A13C
 	bl sub_02037FF0

@@ -58,7 +58,7 @@ _0206B92C:
 	ldr r1, _0206B980 ; =sub_0206B984
 	add r0, r7, #0
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0206B980: .word sub_0206B984

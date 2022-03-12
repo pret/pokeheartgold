@@ -5026,7 +5026,7 @@ ov03_022566B0: ; 0x022566B0
 	ldr r1, _022566CC ; =ov03_022564A8
 	add r0, r5, #0
 	str r4, [r2, #0x70]
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _022566CC: .word ov03_022564A8
@@ -5981,7 +5981,7 @@ _02256E04:
 	ldr r1, _02256E28 ; =ov03_02256E2C
 	add r0, r7, #0
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02256E28: .word ov03_02256E2C
@@ -9256,7 +9256,7 @@ ov03_02258764: ; 0x02258764
 	ldr r1, _022587CC ; =sub_02092B04
 	add r0, r6, #0
 	add r2, r4, #0
-	bl NowRunTask
+	bl TaskManager_Jump
 	ldr r0, _022587D0 ; =0x00000272
 	mov r1, #0x18
 	strb r1, [r4, r0]
@@ -9478,7 +9478,7 @@ ov03_02258910: ; 0x02258910
 	ldr r0, [r5, #0x10]
 	ldr r1, _02258948 ; =ov03_02258894
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, pc}
 	nop
 _02258944: .word ov03_022588D4
@@ -9965,7 +9965,7 @@ ov03_02258CFC: ; 0x02258CFC
 	ldr r0, [r5, #0x10]
 	ldr r1, _02258D38 ; =ov03_02258D3C
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r4, r5, r6, pc}
 	nop
 _02258D38: .word ov03_02258D3C

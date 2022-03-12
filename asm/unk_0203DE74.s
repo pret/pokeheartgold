@@ -216,8 +216,8 @@ _0203DFB0:
 	bx lr
 	thumb_func_end sub_0203DFA4
 
-	thumb_func_start ScrUnk80_AddOvyMan
-ScrUnk80_AddOvyMan: ; 0x0203DFB4
+	thumb_func_start Fsys_LaunchApplication
+Fsys_LaunchApplication: ; 0x0203DFB4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -238,7 +238,7 @@ _0203DFC8:
 	str r0, [r1, #4]
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrUnk80_AddOvyMan
+	thumb_func_end Fsys_LaunchApplication
 
 	thumb_func_start sub_0203DFE0
 sub_0203DFE0: ; 0x0203DFE0
@@ -355,7 +355,7 @@ sub_0203E0CC: ; 0x0203E0CC
 	add r4, r0, #0
 	bl sub_0203E15C
 	add r0, r4, #0
-	bl sub_02050544
+	bl Fsys_RunTaskFrame
 	cmp r0, #1
 	bne _0203E0EE
 	ldr r0, [r4, #4]
@@ -417,7 +417,7 @@ sub_0203E13C: ; 0x0203E13C
 	ldr r1, [r0, #0x6c]
 	cmp r1, #0
 	beq _0203E158
-	bl sub_02050590
+	bl Fsys_TaskIsRunning
 	cmp r0, #0
 	bne _0203E158
 	mov r0, #1

@@ -35,7 +35,7 @@ sub_02097D3C: ; 0x02097D3C
 	ldr r0, [r4, #4]
 	strh r7, [r0, #2]
 	ldr r0, [r5, #0x10]
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02097D7C: .word sub_02097D80

@@ -596,7 +596,7 @@ sub_02069464: ; 0x02069464
 	ldr r0, [r5, #0x10]
 	ldr r1, _02069494 ; =sub_02069498
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, pc}
 	nop
 _02069490: .word 0x00000684

@@ -105,7 +105,7 @@ _0206A3F2:
 	ldr r0, [sp]
 	ldr r1, _0206A40C ; =sub_0206A410
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

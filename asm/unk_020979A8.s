@@ -36,7 +36,7 @@ sub_020979A8: ; 0x020979A8
 	ldr r0, [r5, #0x10]
 	ldr r1, _020979E8 ; =sub_02097AA0
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _020979E8: .word sub_02097AA0
@@ -86,7 +86,7 @@ _02097A36:
 	ldr r0, [r5, #0x10]
 	ldr r1, _02097A44 ; =sub_02097A48
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02097A44: .word sub_02097A48
@@ -102,7 +102,7 @@ sub_02097A48: ; 0x02097A48
 	bl TaskManager_GetEnv
 	add r6, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0

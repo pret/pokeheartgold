@@ -25,7 +25,7 @@ sub_0205298C: ; 0x0205298C
 	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #5
@@ -164,7 +164,7 @@ sub_02052AA0: ; 0x02052AA0
 	bl TaskManager_GetEnv
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0xb
@@ -484,7 +484,7 @@ _02052D70:
 	ldr r0, [sp]
 	ldr r1, _02052D80 ; =sub_02052AA0
 	add r2, r5, #0
-	bl QueueTask
+	bl TaskManager_Call
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

@@ -173,7 +173,7 @@ ov27_02259F80: ; 0x02259F80
 	b _0225A11A
 _0225A102:
 	add r0, r5, #0
-	bl sub_02050590
+	bl Fsys_TaskIsRunning
 	cmp r0, #0
 	bne _0225A11A
 	add r0, r5, #0
@@ -502,7 +502,7 @@ _0225A3AE:
 	str r2, [r5, r1]
 _0225A3C8:
 	ldr r0, [r5, #0x10]
-	bl sub_02050590
+	bl Fsys_TaskIsRunning
 	cmp r0, #0
 	beq _0225A3DA
 	add r0, r5, #0
@@ -4609,7 +4609,7 @@ ov27_0225C434: ; 0x0225C434
 	push {r4, lr}
 	add r4, r1, #0
 	ldr r0, [r4, #0x24]
-	bl sub_02050590
+	bl Fsys_TaskIsRunning
 	cmp r0, #0
 	bne _0225C46C
 	ldr r0, [r4, #0x24]

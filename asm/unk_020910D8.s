@@ -204,7 +204,7 @@ _02091256:
 	stmia r3!, {r0, r1}
 	ldr r1, _02091274 ; =sub_020910D8
 	add r0, r5, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02091274: .word sub_020910D8

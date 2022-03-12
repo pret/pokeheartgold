@@ -178,7 +178,7 @@ Static main
 	Object asm/scrcmd_20.o
 	Object asm/unk_0204F500.o
 	Object src/event_data.o
-	Object asm/unk_020504C0.o
+	Object src/task.o
 	Object asm/unk_02050660.o
 	Object asm/unk_020517A4.o
 	Object asm/unk_020518D8.o

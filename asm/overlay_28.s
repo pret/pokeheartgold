@@ -922,7 +922,7 @@ _0225DC56:
 	str r1, [r4, r0]
 _0225DC76:
 	ldr r0, [r4, #0x18]
-	bl sub_02050590
+	bl Fsys_TaskIsRunning
 	cmp r0, #1
 	beq _0225DC98
 	ldr r0, _0225DD1C ; =ov28_0225EA88
@@ -2739,7 +2739,7 @@ ov28_0225EA58: ; 0x0225EA58
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
-	bl sub_02050590
+	bl Fsys_TaskIsRunning
 	cmp r0, #1
 	bne _0225EA76
 	ldr r0, [r4, #0x18]
