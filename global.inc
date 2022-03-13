@@ -27392,7 +27392,7 @@ FS_EXTERN_OVERLAY(OV_101)
 .public sub_0202C8E4
 .public Save_TrainerCard_sizeof
 .public Save_TrainerCard_init
-.public Save_TranerCard_get
+.public Save_TrainerCard_get
 .public TrainerCard_GetSignature
 .public TrainerCard_SignatureExists
 .public TrainerCard_GetBadgeShininessArr

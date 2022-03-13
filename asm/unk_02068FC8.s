@@ -100,7 +100,7 @@ sub_02068FC8: ; 0x02068FC8
 	add r3, sp, #0x84
 	bl sub_02069308
 	ldr r0, [r6, #0xc]
-	bl Save_TranerCard_get
+	bl Save_TrainerCard_get
 	str r0, [sp, #0x44]
 	add r0, r4, #0
 	mov r1, #0x21
@@ -536,7 +536,7 @@ sub_0206940C: ; 0x0206940C
 	add r7, r0, #0
 	ldr r0, [r1, #0xc]
 	add r6, r2, #0
-	bl Save_TranerCard_get
+	bl Save_TrainerCard_get
 	bl TrainerCard_GetBadgeShininessArr
 	add r1, r6, #0
 	mov r2, #0

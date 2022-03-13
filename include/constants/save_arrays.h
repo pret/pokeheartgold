@@ -18,7 +18,7 @@
 #define SAVE_DRESSUP_DATA        12
 #define SAVE_MAILBOX             13
 #define SAVE_FRIEND_GROUP        14
-#define SAVE_TRAINER_CARD              15
+#define SAVE_TRAINER_CARD        15
 #define SAVE_GAMESTATS           16
 #define SAVE_SEAL_CASE           17
 #define SAVE_CHATOT              18

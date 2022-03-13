@@ -901,7 +901,7 @@ sub_0206759C: ; 0x0206759C
 	str r1, [sp]
 	cmp r1, #0
 	ble _02067606
-	bl Save_TranerCard_get
+	bl Save_TrainerCard_get
 	bl TrainerCard_GetBadgeShininessArr
 	add r4, r0, #0
 	add r0, r5, #0

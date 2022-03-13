@@ -114,7 +114,7 @@ static int TCardAppRunStep_SignatureExec(TrainerCardAppState *work) {
         return TRAINERCARD_RUN_SIGNATURE_EXEC;
     }
 
-    ptr = Save_TranerCard_get(work->parentData->saveData);
+    ptr = Save_TrainerCard_get(work->parentData->saveData);
     work->parentData->signatureExists = TrainerCard_SignatureExists(ptr);
     MI_CpuCopy8(TrainerCard_GetSignature(ptr), work->parentData->signature, sizeof(work->parentData->signature));
     return TRAINERCARD_RUN_INIT;
