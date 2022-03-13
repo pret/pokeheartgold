@@ -63,11 +63,6 @@ void* FieldSysGetAttrAddr(FieldSystem *fsys, enum ScriptEnvField field);
 BOOL sub_0203BC10(FieldSystem *);
 void sub_0203BD64(FieldSystem *);
 
-void FieldSys_CreateTask(FieldSystem *taskman, BOOL (*taskfunc)(TaskManager *), ScriptEnvironment *env);
-void NowRunTask(TaskManager *taskman, BOOL (*taskfunc)(TaskManager *), ScriptEnvironment *env);
-void QueueTask(TaskManager *taskman, BOOL (*taskfunc)(TaskManager *), ScriptEnvironment *env);
-FieldSystem *TaskManager_GetSys(TaskManager *taskman);
-ScriptEnvironment* TaskManager_GetEnv(TaskManager *taskman);
 void* PlayerAvatar_GetFacingDirection(FIELD_PLAYER_AVATAR *playerAvatar);
 u16 MapObject_GetID(struct LocalMapObject *obj);
 

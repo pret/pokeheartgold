@@ -190,7 +190,7 @@ sub_020659CC: ; 0x020659CC
 	add r0, r4, #0
 	add r0, #0xec ; ->followMon.unk8
 	str r1, [r0]
-	add r4, #0xf0 ; ->followMon.unkC
+	add r4, #0xf0 ; ->followMon.parentData
 	add r0, r5, #0
 	str r1, [r4]
 	bl MapObject_GetCurrentX

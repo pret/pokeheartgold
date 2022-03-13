@@ -4233,7 +4233,7 @@ _021E79AC:
 	cmp r4, #6
 	blt _021E79AC
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, [r6, #0x18]
 	bl FreeToHeap
 	pop {r4, r5, r6, pc}
@@ -4248,7 +4248,7 @@ ov122_021E79D0: ; 0x021E79D0
 	add r4, r0, #0
 	ldr r1, [r4]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r0, [r4, #0x14]
 	cmp r0, #0
 	bne _021E79E8
@@ -4276,12 +4276,12 @@ _021E79E8:
 	ldr r2, [r4]
 	mov r0, #0
 	lsl r1, r1, #6
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #6
 	ldr r2, [r4]
 	mov r0, #4
 	lsl r1, r1, #6
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #0x20
 	str r0, [sp]
 	ldr r0, [r4]
@@ -5106,7 +5106,7 @@ _021E8090: .word 0x04001000
 ov122_021E8094: ; 0x021E8094
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	bne _021E80A4
 	bl GF_AssertFail

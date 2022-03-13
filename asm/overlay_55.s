@@ -28,7 +28,7 @@ _021E5920:
 ov55_021E5924: ; 0x021E5924
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	mov r2, #1
 	add r5, r0, #0
 	mov r0, #3
@@ -85,7 +85,7 @@ ov55_021E598C: ; 0x021E598C
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	ldr r0, [r6]
 	cmp r0, #4
@@ -383,8 +383,8 @@ _021E5BD0:
 	.rodata
 
 ov55_021E5BF4:
-	.word ov56_021E5C20, ov56_021E5C9C, ov56_021E5CB4, SDK_OVERLAY_OVY_56_ID
+	.word ov56_021E5C20, ov56_021E5C9C, ov56_021E5CB4, FS_OVERLAY_ID(OVY_56)
 
 ov55_021E5C04: ; 0x021E5C04
-	.word ov102_021E7740, ov102_021E77B8, ov102_021E7868, SDK_OVERLAY_OVY_102_ID
+	.word ov102_021E7740, ov102_021E77B8, ov102_021E7868, FS_OVERLAY_ID(OVY_102)
 	; 0x021E5C14

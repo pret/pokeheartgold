@@ -699,7 +699,7 @@ ov111_021E5E34: ; 0x021E5E34
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r4, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	bne _021E5E46
 	bl GF_AssertFail
@@ -1965,7 +1965,7 @@ ov111_021E67EC: ; 0x021E67EC
 	ldr r2, [r4, #0x18]
 	mov r0, #0
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r2, #0
 	str r2, [sp]
 	ldr r1, [r4, #0x30]
@@ -2253,7 +2253,7 @@ ov111_021E6A44: ; 0x021E6A44
 	mov r0, #0
 	lsl r1, r1, #6
 	add r4, r2, #0
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #0
 	str r0, [sp]
 	ldr r2, _021E6A70 ; =0x000003D2

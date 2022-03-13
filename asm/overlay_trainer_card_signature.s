@@ -1,10 +1,11 @@
+#include "msgdata/msg/msg_0252.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
 	.text
 
-	thumb_func_start ov52_021E80C0
-ov52_021E80C0: ; 0x021E80C0
+	thumb_func_start SignBackOfTrainerCardApp_OvyInit
+SignBackOfTrainerCardApp_OvyInit: ; 0x021E80C0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r1, #0
@@ -89,17 +90,17 @@ _021E80D6:
 	add r3, r0, #0
 	bl sub_0200FA24
 	add r0, r6, #0
-	bl OverlayManager_GetField18
-	bl sub_0202C9D8
-	bl sub_0202C9E4
+	bl OverlayManager_GetParentWork
+	bl Save_TrainerCard_get
+	bl TrainerCard_GetSignature
 	ldr r1, _021E8238 ; =0x00005B98
 	str r0, [r4, r1]
 	add r0, r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	bl Sav2_GameStats_get
 	str r0, [r4, #8]
 	add r0, r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [r4, #0xc]
 	add r0, r4, #0
@@ -113,7 +114,7 @@ _021E80D6:
 	bl Main_SetVBlankIntrCB
 	mov r0, #2
 	mov r1, #0x27
-	bl sub_02002CEC
+	bl FontID_Alloc
 	add r0, r4, #0
 	bl ov52_021E84CC
 	bl ov52_021E86DC
@@ -159,10 +160,10 @@ _021E8238: .word 0x00005B98
 _021E823C: .word ov52_021E837C
 _021E8240: .word 0x04000304
 _021E8244: .word 0xFFFF7FFF
-	thumb_func_end ov52_021E80C0
+	thumb_func_end SignBackOfTrainerCardApp_OvyInit
 
-	thumb_func_start ov52_021E8248
-ov52_021E8248: ; 0x021E8248
+	thumb_func_start SignBackOfTrainerCardApp_OvyExec
+SignBackOfTrainerCardApp_OvyExec: ; 0x021E8248
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	bl OverlayManager_GetData
@@ -212,10 +213,10 @@ _021E829A:
 	.balign 4, 0
 _021E82A4: .word ov52_021E96C0
 _021E82A8: .word 0x00004318
-	thumb_func_end ov52_021E8248
+	thumb_func_end SignBackOfTrainerCardApp_OvyExec
 
-	thumb_func_start ov52_021E82AC
-ov52_021E82AC: ; 0x021E82AC
+	thumb_func_start SignBackOfTrainerCardApp_OvyExit
+SignBackOfTrainerCardApp_OvyExit: ; 0x021E82AC
 	push {r3, r4, r5, r6, r7, lr}
 	str r0, [sp]
 	bl OverlayManager_GetData
@@ -264,7 +265,7 @@ _021E82FC:
 	add r0, r6, #0
 	bl ov52_021E8B94
 	mov r0, #2
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, [r6]
 	bl ov52_021E85A0
 	bl sub_02021238
@@ -295,7 +296,7 @@ _021E82FC:
 	nop
 _021E8374: .word 0x00005B98
 _021E8378: .word 0x04000304
-	thumb_func_end ov52_021E82AC
+	thumb_func_end SignBackOfTrainerCardApp_OvyExit
 
 	thumb_func_start ov52_021E837C
 ov52_021E837C: ; 0x021E837C
@@ -504,11 +505,11 @@ _021E84DC:
 	str r1, [r7, r0]
 	ldr r0, [r7, #0x14]
 	ldr r2, [r7, #0x2c]
-	mov r1, #0xc
+	mov r1, #msg_0252_00012 ; DONE
 	bl ReadMsgDataIntoString
 	ldr r0, [r7, #0x14]
 	ldr r2, [r7, #0x30]
-	mov r1, #9
+	mov r1, #msg_0252_00009 ; Sign your autograph!
 	bl ReadMsgDataIntoString
 	mov r0, #0x27
 	bl sub_0201660C
@@ -610,12 +611,12 @@ ov52_021E85DC: ; 0x021E85DC
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x27
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #0x1a
 	mov r0, #4
 	lsl r1, r1, #4
 	mov r2, #0x27
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #1
 	mov r1, #0x20
 	mov r2, #0
@@ -1042,7 +1043,7 @@ ov52_021E8994: ; 0x021E8994
 	mov r2, #0
 	add r6, r1, #0
 	add r7, r3, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, r0, #0
 	str r4, [sp]
 	mov r0, #0xff
@@ -1198,7 +1199,7 @@ _021E8A8A:
 	ldr r1, [r5, #0x30]
 	mov r0, #1
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r4, r0, #0
 	mov r0, #0xbd
 	lsl r0, r0, #2
@@ -1334,7 +1335,7 @@ ov52_021E8BDC: ; 0x021E8BDC
 	cmp r0, #1
 	bne _021E8C30
 	add r0, r4, #0
-	mov r1, #0xa
+	mov r1, #msg_0252_00010 ; Is this OK?
 	bl ov52_021E927C
 	mov r0, #0xc3
 	mov r1, #2
@@ -1701,7 +1702,7 @@ _021E8ED8: .word 0x00005C9C
 ov52_021E8EDC: ; 0x021E8EDC
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
-	mov r1, #0xb
+	mov r1, #msg_0252_00011 ; Would you like to erase your autograph?
 	add r5, r0, #0
 	bl ov52_021E927C
 	mov r0, #0xc3

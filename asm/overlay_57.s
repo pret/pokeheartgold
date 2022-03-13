@@ -6,16 +6,16 @@
 	thumb_func_start ov57_022378C0
 ov57_022378C0: ; 0x022378C0
 	push {r3, lr}
-	ldr r0, _022378D4 ; =SDK_OVERLAY_OVY_6_ID
+	ldr r0, _022378D4 ; =FS_OVERLAY_ID(OVY_6)
 	mov r1, #2
 	bl HandleLoadOverlay
-	ldr r0, _022378D8 ; =SDK_OVERLAY_OVY_7_ID
+	ldr r0, _022378D8 ; =FS_OVERLAY_ID(OVY_7)
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, pc}
 	.balign 4, 0
-_022378D4: .word SDK_OVERLAY_OVY_6_ID
-_022378D8: .word SDK_OVERLAY_OVY_7_ID
+_022378D4: .word FS_OVERLAY_ID(OVY_6)
+_022378D8: .word FS_OVERLAY_ID(OVY_7)
 	thumb_func_end ov57_022378C0
 
 	thumb_func_start ov57_022378DC
@@ -38,7 +38,7 @@ ov57_022378DC: ; 0x022378DC
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r4]
 	mov r0, #0xb4
 	mov r1, #0x34
@@ -418,9 +418,9 @@ ov57_02237B20: ; 0x02237B20
 	bl sub_02021238
 	mov r0, #0x34
 	bl DestroyHeap
-	ldr r0, _02237CA0 ; =SDK_OVERLAY_OVY_6_ID
+	ldr r0, _02237CA0 ; =FS_OVERLAY_ID(OVY_6)
 	bl UnloadOverlayByID
-	ldr r0, _02237CA4 ; =SDK_OVERLAY_OVY_7_ID
+	ldr r0, _02237CA4 ; =FS_OVERLAY_ID(OVY_7)
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -428,8 +428,8 @@ ov57_02237B20: ; 0x02237B20
 _02237C94: .word 0x00000458
 _02237C98: .word 0x0000045C
 _02237C9C: .word 0x0000040C
-_02237CA0: .word SDK_OVERLAY_OVY_6_ID
-_02237CA4: .word SDK_OVERLAY_OVY_7_ID
+_02237CA0: .word FS_OVERLAY_ID(OVY_6)
+_02237CA4: .word FS_OVERLAY_ID(OVY_7)
 	thumb_func_end ov57_02237B20
 
 	thumb_func_start ov57_02237CA8
@@ -1773,7 +1773,7 @@ ov57_0223866C: ; 0x0223866C
 	mov r0, #4
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0x40
 	sub r3, r1, r0
 	mov r2, #0
@@ -1822,10 +1822,10 @@ ov57_022386F0: ; 0x022386F0
 	str r0, [r4, r1]
 	mov r0, #2
 	mov r1, #0x34
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #4
 	mov r1, #0x34
-	bl sub_02002CEC
+	bl FontID_Alloc
 	pop {r4, pc}
 	thumb_func_end ov57_022386F0
 
@@ -1834,9 +1834,9 @@ ov57_02238714: ; 0x02238714
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	mov r0, #2
-	bl sub_02002DB4
+	bl FontID_Release
 	mov r0, #0x26
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -2014,7 +2014,7 @@ ov57_022387E0: ; 0x022387E0
 	str r0, [sp, #0x40]
 	ldr r1, [sp, #0x18]
 	mov r0, #2
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsr r1, r0, #1
 	ldr r0, [sp, #0x10]
 	add r7, #0xc0

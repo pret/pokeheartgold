@@ -33,7 +33,7 @@ ChooseStarterApplication_OvyInit: ; 0x021E5900
 	str r1, [r4, #4]
 	bl GF_ExpHeap_FndInitAllocator
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	ldr r0, [r5, #4]
 	bl Options_GetFrame
@@ -767,7 +767,7 @@ ChooseStarterApplication_OvyExit: ; 0x021E5F74
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r6, r0, #0
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint

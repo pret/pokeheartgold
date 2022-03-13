@@ -1,5 +1,8 @@
 #ifndef POKEHEARTGOLD_CONSTANTS_MMODEL_H
 #define POKEHEARTGOLD_CONSTANTS_MMODEL_H
+
+#include "constants/follow_poke_idx.h"
+
 #define MMODEL_BABYBOY1                            0
 #define MMODEL_BABYGIRL1                           1
 #define MMODEL_BOY1                                2
@@ -280,6 +283,9 @@
 #define MMODEL_R09_O01                           277
 #define MMODEL_BONGURI_2                         278
 #define MMODEL_LEAG_DOOR2_2                      279
+
+#define MMODEL_TSURE_POKE_BASE                   297
+
 #define MMODEL_TSURE_POKE_BULBASAUR              297
 #define MMODEL_TSURE_POKE_IVYSAUR                298
 #define MMODEL_TSURE_POKE_VENUSAUR               299

@@ -20,7 +20,7 @@ ov36_021E5900: ; 0x021E5900
 	thumb_func_start ov36_021E5918
 ov36_021E5918: ; 0x021E5918
 	push {r3, lr}
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r1, [r0, #8]
 	mov r0, #0x4b
 	bl ov36_021E5BC8
@@ -63,7 +63,7 @@ ov36_021E5948: ; 0x021E5948
 	thumb_func_start ov36_021E5960
 ov36_021E5960: ; 0x021E5960
 	push {r4, lr}
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r4, [r0, #8]
 	mov r0, #0x4b
 	add r1, r4, #0
@@ -110,7 +110,7 @@ ov36_021E599C: ; 0x021E599C
 	thumb_func_start ov36_021E59B4
 ov36_021E59B4: ; 0x021E59B4
 	push {r3, r4, r5, lr}
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r4, [r0, #8]
 	add r0, r4, #0
 	bl Sav2_SysInfo_get

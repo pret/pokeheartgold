@@ -34,7 +34,7 @@ _02237D52:
 	mov r0, #0x86
 	str r0, [r4]
 	add r0, r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r4, #4]
 	add r0, r4, #0
 	bl ov59_02237E94
@@ -1288,7 +1288,7 @@ ov59_022386D0: ; 0x022386D0
 	mov r0, #0
 	ldr r1, [r4, #0x64]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x18
 	mov r1, #0
 	lsr r3, r0, #0x18
@@ -1417,7 +1417,7 @@ ov59_022387D0: ; 0x022387D0
 	ldr r1, [r4, #0x6c]
 	mov r0, #4
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r2, #0
 	add r3, r0, #0
 	mov r5, #0x30
@@ -1467,7 +1467,7 @@ ov59_02238834: ; 0x02238834
 	ldr r1, [r4, #0x68]
 	mov r0, #4
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	str r0, [sp, #0x14]
 	mov r0, #0
 	str r0, [sp]
@@ -1632,7 +1632,7 @@ _0223896C:
 	mov r0, #0
 	ldr r1, [r4, #0x64]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	mov ip, r0
@@ -3251,12 +3251,12 @@ ov59_02239604: ; 0x02239604
 	ldr r2, [r5]
 	mov r0, #0
 	lsl r1, r1, #6
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #6
 	ldr r2, [r5]
 	mov r0, #4
 	lsl r1, r1, #6
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #0x1a
 	str r0, [sp]
 	ldr r0, _022396E0 ; =0x04000050
@@ -3294,7 +3294,7 @@ ov59_02239704: ; 0x02239704
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r3, [r5]
 	mov r0, #0
 	mov r1, #0x1b
@@ -3390,7 +3390,7 @@ _022397AA:
 	ldr r0, [r6, #0x5c]
 	bl DestroyMsgData
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov59_0223978C
 
@@ -5682,7 +5682,7 @@ _0223A8F2:
 	mov r0, #0x86
 	str r0, [r4]
 	add r0, r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r4, #4]
 	add r0, r4, #0
 	bl ov59_0223A9E4
@@ -7400,7 +7400,7 @@ ov59_0223B590: ; 0x0223B590
 	ldr r2, [r5]
 	mov r0, #0
 	lsl r1, r1, #6
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #0x1a
 	str r0, [sp]
 	ldr r0, _0223B668 ; =0x04000050
@@ -7438,7 +7438,7 @@ ov59_0223B68C: ; 0x0223B68C
 	add r6, r0, #0
 	ldr r1, [r6]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #1
@@ -7507,7 +7507,7 @@ ov59_0223B6FC: ; 0x0223B6FC
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov59_0223B6FC

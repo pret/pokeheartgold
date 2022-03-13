@@ -21,7 +21,7 @@ ov14_021E5900: ; 0x021E5900
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r4]
 	ldr r0, [r0]
 	bl GetStoragePCPointer
@@ -664,12 +664,12 @@ ov14_021E5DE0: ; 0x021E5DE0
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0xa
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #0x1e
 	mov r0, #4
 	lsl r1, r1, #4
 	mov r2, #0xa
-	bl sub_02003030
+	bl LoadFontPal0
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -6658,7 +6658,7 @@ ov14_021E8ACC: ; 0x021E8ACC
 	ldr r0, [r4, #0x18]
 	ldr r1, [r1]
 	bl sub_0207789C
-	ldr r0, _021E8B14 ; =SDK_OVERLAY_OVY_15_ID
+	ldr r0, _021E8B14 ; =FS_OVERLAY_ID(OVY_15)
 	mov r1, #2
 	bl HandleLoadOverlay
 	ldr r0, _021E8B18 ; =ov15_022008B8
@@ -6671,7 +6671,7 @@ ov14_021E8ACC: ; 0x021E8ACC
 	pop {r3, r4, pc}
 	.balign 4, 0
 _021E8B10: .word ov14_021F7D14
-_021E8B14: .word SDK_OVERLAY_OVY_15_ID
+_021E8B14: .word FS_OVERLAY_ID(OVY_15)
 _021E8B18: .word ov15_022008B8
 	thumb_func_end ov14_021E8ACC
 
@@ -6679,7 +6679,7 @@ _021E8B18: .word ov15_022008B8
 ov14_021E8B1C: ; 0x021E8B1C
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _021E8B38 ; =SDK_OVERLAY_OVY_15_ID
+	ldr r0, _021E8B38 ; =FS_OVERLAY_ID(OVY_15)
 	bl UnloadOverlayByID
 	ldr r0, [r4, #0x18]
 	bl sub_02077904
@@ -6689,7 +6689,7 @@ ov14_021E8B1C: ; 0x021E8B1C
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-_021E8B38: .word SDK_OVERLAY_OVY_15_ID
+_021E8B38: .word FS_OVERLAY_ID(OVY_15)
 	thumb_func_end ov14_021E8B1C
 
 	thumb_func_start ov14_021E8B3C
@@ -31010,7 +31010,7 @@ ov14_021F4ED0: ; 0x021F4ED0
 	add r7, r0, #0
 	mov r0, #4
 	mov r1, #0xa
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r6, #0
 	ldr r4, _021F4EFC ; =ov14_021F84B4
 	add r5, r6, #0
@@ -31048,7 +31048,7 @@ _021F4F06:
 	cmp r4, #0x2c
 	blo _021F4F06
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov14_021F4F00
 
@@ -31066,7 +31066,7 @@ ov14_021F4F24: ; 0x021F4F24
 	bne _021F4F44
 	add r0, r4, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	sub r5, r5, r0
 	b _021F4F66
 _021F4F44:
@@ -31074,7 +31074,7 @@ _021F4F44:
 	bne _021F4F56
 	add r0, r4, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsr r0, r0, #1
 	sub r5, r5, r0
 	b _021F4F66
@@ -31083,7 +31083,7 @@ _021F4F56:
 	bne _021F4F66
 	add r0, r4, #0
 	mov r2, #0
-	bl sub_02003068
+	bl FontID_String_GetWidthMultiline
 	lsr r0, r0, #1
 	sub r5, r5, r0
 _021F4F66:

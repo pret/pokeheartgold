@@ -15,12 +15,12 @@ _0205B4F8:
 	add r0, r4, #0
 	lsl r1, r1, #4
 	mov r2, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #6
 	add r0, r4, #0
 	lsl r1, r1, #6
 	mov r2, #4
-	bl sub_0200304C
+	bl LoadFontPal1
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_0205B4EC

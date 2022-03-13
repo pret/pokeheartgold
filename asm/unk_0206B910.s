@@ -58,7 +58,7 @@ _0206B92C:
 	ldr r1, _0206B980 ; =sub_0206B984
 	add r0, r7, #0
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0206B980: .word sub_0206B984
@@ -148,7 +148,7 @@ _0206BA20:
 	ldr r0, [sp]
 	ldr r1, _0206BB24 ; =_020FF480
 	add r2, r6, #0
-	bl sub_02050624
+	bl CallApplicationAsTask
 	mov r0, #2
 	str r0, [r7, #0x10]
 	b _0206BB1C
@@ -199,7 +199,7 @@ _0206BA4E:
 	ldr r0, [sp]
 	ldr r1, _0206BB28 ; =_0210159C
 	add r2, r4, #0
-	bl sub_02050624
+	bl CallApplicationAsTask
 	mov r0, #4
 	str r0, [r7, #0x10]
 	b _0206BB1C
@@ -528,4 +528,4 @@ sub_0206BD00: ; 0x0206BD00
 	.rodata
 
 _020FF480:
-	.word ov57_022378DC, ov57_02237AF8, ov57_02237B20, SDK_OVERLAY_OVY_57_ID
+	.word ov57_022378DC, ov57_02237AF8, ov57_02237B20, FS_OVERLAY_ID(OVY_57)

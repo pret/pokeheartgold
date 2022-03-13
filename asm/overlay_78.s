@@ -21,7 +21,7 @@ ov78_021E5900: ; 0x021E5900
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	ldr r0, [r5]
 	bl Save_GetLeadMonIdxForBugContest
@@ -876,11 +876,11 @@ _021E5EEE:
 	ldr r2, [r5]
 	mov r0, #0
 	mov r1, #0x40
-	bl sub_02003030
+	bl LoadFontPal0
 	ldr r2, [r5]
 	mov r0, #4
 	mov r1, #0x40
-	bl sub_02003030
+	bl LoadFontPal0
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov78_021E5EA4

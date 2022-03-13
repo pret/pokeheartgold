@@ -497,14 +497,14 @@ _021E5CFE:
 _021E5D0A:
 	mov r0, #0
 	bl sub_02004AD8
-	ldr r0, _021E5D34 ; =SDK_OVERLAY_OVY_60_ID
+	ldr r0, _021E5D34 ; =FS_OVERLAY_ID(OVY_60)
 	ldr r1, _021E5D38 ; =ov60_021EB030
 	bl RegisterMainOverlay
 	b _021E5D28
 _021E5D1A:
 	mov r0, #0
 	bl sub_02004AD8
-	ldr r0, _021E5D3C ; =SDK_OVERLAY_OVY_62_ID
+	ldr r0, _021E5D3C ; =FS_OVERLAY_ID(OVY_62)
 	ldr r1, _021E5D40 ; =ov62_021E68CC
 	bl RegisterMainOverlay
 _021E5D28:
@@ -513,9 +513,9 @@ _021E5D28:
 	.balign 4, 0
 _021E5D2C: .word _02108278
 _021E5D30: .word _0210820C
-_021E5D34: .word SDK_OVERLAY_OVY_60_ID
+_021E5D34: .word FS_OVERLAY_ID(OVY_60)
 _021E5D38: .word ov60_021EB030
-_021E5D3C: .word SDK_OVERLAY_OVY_62_ID
+_021E5D3C: .word FS_OVERLAY_ID(OVY_62)
 _021E5D40: .word ov62_021E68CC
 	thumb_func_end ov60_021E5CA4
 
@@ -1734,7 +1734,7 @@ _021E667C:
 	mov r0, #0
 	add r1, r5, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r0, #2
 	lsl r0, r0, #8
 	ldr r1, [r4, r0]
@@ -2566,7 +2566,7 @@ _021E6D98:
 	bl OverlayManager_FreeData
 	mov r0, #0x4a
 	bl DestroyHeap
-	ldr r0, _021E6E0C ; =SDK_OVERLAY_OVY_60_ID
+	ldr r0, _021E6E0C ; =FS_OVERLAY_ID(OVY_60)
 	ldr r1, _021E6E10 ; =ov60_021EAFE0
 	bl RegisterMainOverlay
 	mov r0, #1
@@ -2580,7 +2580,7 @@ _021E6DFC: .word 0x0000061C
 _021E6E00: .word 0x04000050
 _021E6E04: .word 0x04001050
 _021E6E08: .word 0xFFFF1FFF
-_021E6E0C: .word SDK_OVERLAY_OVY_60_ID
+_021E6E0C: .word FS_OVERLAY_ID(OVY_60)
 _021E6E10: .word ov60_021EAFE0
 	thumb_func_end ov60_021E6CFC
 

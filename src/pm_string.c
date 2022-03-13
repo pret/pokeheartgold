@@ -295,9 +295,9 @@ void StringGetLineN(STRING * dest, volatile STRING * src, u32 n) {
 }
 
 void String_RadioAddStatic(STRING *string, u8 level) {
-    u32 width_3dots = FontI_GetGlyphWidth(0, CHAR_ELLIPSIS);
-    u32 width_1dot = FontI_GetGlyphWidth(0, CHAR_ONE_DOT);
-    u32 width_2dots = FontI_GetGlyphWidth(0, CHAR_TWO_DOTS);
+    u32 width_3dots = FontID_GetGlyphWidth(0, CHAR_ELLIPSIS);
+    u32 width_1dot = FontID_GetGlyphWidth(0, CHAR_ONE_DOT);
+    u32 width_2dots = FontID_GetGlyphWidth(0, CHAR_TWO_DOTS);
     u32 cur_width;
     int str_len;
     int i;
@@ -306,7 +306,7 @@ void String_RadioAddStatic(STRING *string, u8 level) {
     str_len = StringGetLength(string); // the result is never used
     for (i = 0; i < string->size - 1; i++) {
         if (string->data[i] != CHAR_SPACE && ((MTRandom() / 256u) % 101) < level) {
-            cur_width = FontI_GetGlyphWidth(0, string->data[i]);
+            cur_width = FontID_GetGlyphWidth(0, string->data[i]);
             if (cur_width >= width_3dots) {
                 string->data[i] = CHAR_ELLIPSIS;
             } else if (cur_width >= width_2dots) {

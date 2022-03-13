@@ -83,7 +83,7 @@ ov27_02259F80: ; 0x02259F80
 	bl ov27_0225AC00
 	mov r0, #4
 	mov r1, #8
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #8
 	bl ScrStrBufs_new
 	ldr r1, _0225A18C ; =0x000004AC
@@ -173,7 +173,7 @@ ov27_02259F80: ; 0x02259F80
 	b _0225A11A
 _0225A102:
 	add r0, r5, #0
-	bl sub_02050590
+	bl Fsys_TaskIsRunning
 	cmp r0, #0
 	bne _0225A11A
 	add r0, r5, #0
@@ -242,7 +242,7 @@ ov27_0225A19C: ; 0x0225A19C
 	str r1, [sp, #4]
 	bl sub_0201F988
 	add r6, r0, #0
-	ldr r1, _0225A2B0 ; =SDK_OVERLAY_OVY_123_ID
+	ldr r1, _0225A2B0 ; =FS_OVERLAY_ID(OVY_123)
 	mov r0, #0
 	bl FS_LoadOverlay
 	ldr r0, _0225A2B4 ; =ov27_0225C238
@@ -330,7 +330,7 @@ _0225A246:
 	add r0, r6, #0
 	bl ov27_0225BC34
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, [sp, #4]
 	bl sub_02007234
 	ldr r0, [sp]
@@ -350,13 +350,13 @@ _0225A246:
 	lsl r1, r1, #2
 	bl AllocFromHeapAtEnd
 _0225A2A4:
-	ldr r1, _0225A2B0 ; =SDK_OVERLAY_OVY_123_ID
+	ldr r1, _0225A2B0 ; =FS_OVERLAY_ID(OVY_123)
 	mov r0, #0
 	bl FS_UnloadOverlay
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0225A2B0: .word SDK_OVERLAY_OVY_123_ID
+_0225A2B0: .word FS_OVERLAY_ID(OVY_123)
 _0225A2B4: .word ov27_0225C238
 _0225A2B8: .word 0x000004A8
 _0225A2BC: .word 0x000004AC
@@ -502,7 +502,7 @@ _0225A3AE:
 	str r2, [r5, r1]
 _0225A3C8:
 	ldr r0, [r5, #0x10]
-	bl sub_02050590
+	bl Fsys_TaskIsRunning
 	cmp r0, #0
 	beq _0225A3DA
 	add r0, r5, #0
@@ -3653,7 +3653,7 @@ _0225BCF6:
 	beq _0225BD2C
 	mov r0, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0x48
 	sub r3, r1, r0
 	mov r0, #0
@@ -3815,7 +3815,7 @@ ov27_0225BDFC: ; 0x0225BDFC
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	asr r1, r0, #2
 	lsr r1, r1, #0x1d
 	add r1, r0, r1
@@ -3946,7 +3946,7 @@ ov27_0225BED8: ; 0x0225BED8
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r1, sp, #0x28
 	ldrb r1, [r1, #0x10]
 	lsl r1, r1, #3
@@ -4480,7 +4480,7 @@ ov27_0225C250: ; 0x0225C250
 	str r0, [r4, #0x44]
 	mov r0, #4
 	mov r1, #8
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r1, [r4, #0x24]
 	add r0, r4, #0
 	add r1, #0xd2
@@ -4564,7 +4564,7 @@ _0225C3C4:
 	add r0, r7, #0
 	bl ov27_0225C930
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, [sp, #4]
 	bl sub_02007234
 	ldr r0, [sp]
@@ -4609,7 +4609,7 @@ ov27_0225C434: ; 0x0225C434
 	push {r4, lr}
 	add r4, r1, #0
 	ldr r0, [r4, #0x24]
-	bl sub_02050590
+	bl Fsys_TaskIsRunning
 	cmp r0, #0
 	bne _0225C46C
 	ldr r0, [r4, #0x24]

@@ -28,7 +28,7 @@ PokeathlonCourseApplication_OvyInit: ; 0x021E5900
 	lsl r0, r0, #2
 	str r1, [r4, r0]
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	mov r2, #0x7e
 	lsl r2, r2, #2
 	add r5, sp, #4
@@ -16177,7 +16177,7 @@ _021ED1FC:
 	mov r1, #0x87
 	lsl r2, r2, #0x10
 	bl CreateHeap
-	ldr r0, _021ED46C ; =SDK_OVERLAY_OVY_98_ID
+	ldr r0, _021ED46C ; =FS_OVERLAY_ID(OVY_98)
 	mov r1, #2
 	bl HandleLoadOverlay
 	mov r0, #0
@@ -16438,7 +16438,7 @@ _021ED466:
 	add sp, #0x118
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_021ED46C: .word SDK_OVERLAY_OVY_98_ID
+_021ED46C: .word FS_OVERLAY_ID(OVY_98)
 _021ED470: .word 0xFFFFE0FF
 _021ED474: .word 0x04001000
 _021ED478: .word gSystem + 0x60
@@ -16503,7 +16503,7 @@ ov96_021ED48C: ; 0x021ED48C
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
-	ldr r0, _021ED520 ; =SDK_OVERLAY_OVY_98_ID
+	ldr r0, _021ED520 ; =FS_OVERLAY_ID(OVY_98)
 	bl UnloadOverlayByID
 	mov r0, #0x87
 	bl DestroyHeap
@@ -16511,7 +16511,7 @@ ov96_021ED48C: ; 0x021ED48C
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021ED51C: .word gSystem + 0x60
-_021ED520: .word SDK_OVERLAY_OVY_98_ID
+_021ED520: .word FS_OVERLAY_ID(OVY_98)
 	thumb_func_end ov96_021ED48C
 
 	thumb_func_start ov96_021ED524
@@ -19033,7 +19033,7 @@ _021EE774:
 	ldr r2, [r5, #0x14]
 	mov r0, #4
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r2, #0
 	str r2, [sp]
 	ldr r1, [r5, #0x34]
@@ -19318,7 +19318,7 @@ ov96_021EE9D8: ; 0x021EE9D8
 	mov r0, #4
 	lsl r1, r1, #6
 	add r4, r2, #0
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #0
 	str r0, [sp]
 	ldr r2, _021EEA04 ; =0x000003D2
@@ -20352,7 +20352,7 @@ _021EF1EA:
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
-	ldr r0, _021EF238 ; =SDK_OVERLAY_OVY_98_ID
+	ldr r0, _021EF238 ; =FS_OVERLAY_ID(OVY_98)
 	bl UnloadOverlayByID
 	mov r0, #0x88
 	bl DestroyHeap
@@ -20361,7 +20361,7 @@ _021EF1EA:
 	.balign 4, 0
 _021EF230: .word ov96_0221BA18
 _021EF234: .word gSystem + 0x60
-_021EF238: .word SDK_OVERLAY_OVY_98_ID
+_021EF238: .word FS_OVERLAY_ID(OVY_98)
 	thumb_func_end ov96_021EF19C
 
 	thumb_func_start ov96_021EF23C
@@ -20452,7 +20452,7 @@ ov96_021EF2C0: ; 0x021EF2C0
 	mov r1, #0x88
 	lsl r2, r2, #0x12
 	bl CreateHeap
-	ldr r0, _021EF390 ; =SDK_OVERLAY_OVY_98_ID
+	ldr r0, _021EF390 ; =FS_OVERLAY_ID(OVY_98)
 	mov r1, #2
 	mov r6, #0x88
 	bl HandleLoadOverlay
@@ -20533,7 +20533,7 @@ _021EF386:
 	str r0, [r4, #0x28]
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_021EF390: .word SDK_OVERLAY_OVY_98_ID
+_021EF390: .word FS_OVERLAY_ID(OVY_98)
 _021EF394: .word 0xFFFFE0FF
 _021EF398: .word 0x04001000
 _021EF39C: .word ov96_021EF23C
@@ -20550,7 +20550,7 @@ ov96_021EF3A8: ; 0x021EF3A8
 	ldr r2, [r4, #0xc]
 	mov r0, #6
 	lsl r1, r1, #0xe
-	bl sub_02003030
+	bl LoadFontPal0
 	ldr r0, [r4, #0x34]
 	bl ov96_021EE644
 	mov r3, #0
@@ -22309,7 +22309,7 @@ _021F013C:
 	mov r1, #0x8c
 	str r1, [r4, #0x14]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r0, [r4]
 	bl ov96_021F0BD4
 	add r0, r4, #0
@@ -23211,7 +23211,7 @@ ov96_021F095C: ; 0x021F095C
 	ldr r0, [r4, r0]
 	bl ov96_021F3C38
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -27915,7 +27915,7 @@ ov96_021F2EC8: ; 0x021F2EC8
 	ldr r2, [r4, #0x14]
 	mov r0, #0
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	add sp, #4
 	pop {r3, r4, pc}
 	nop
@@ -30891,7 +30891,7 @@ _021F4564:
 	ldr r2, [r5]
 	mov r0, #4
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021F4598: .word ov96_0221C028
@@ -32333,7 +32333,7 @@ _021F504A:
 	str r0, [r4, #0x54]
 	ldr r1, [r4, #0x54]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r0, [r4]
 	bl ov96_021F584C
 	add r0, r4, #0
@@ -32882,7 +32882,7 @@ _021F5598:
 	ldr r0, [r4, r0]
 	bl ov96_021F7738
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	bl sub_0200B244
 	bl sub_0202168C
 	bl sub_02022608
@@ -36233,7 +36233,7 @@ _021F705A:
 	ldr r2, [r5, #0x54]
 	mov r0, #4
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r2, #0
 	str r2, [sp]
 	ldr r0, [r5]
@@ -36244,7 +36244,7 @@ _021F705A:
 	ldr r2, [r5, #0x54]
 	mov r0, #0
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021F70A8: .word ov96_0221C1CC
@@ -37315,12 +37315,12 @@ _021F788A:
 	mov r0, #0
 	lsl r1, r1, #4
 	add r2, r4, #0
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #1
 	mov r0, #6
 	lsl r1, r1, #0xe
 	add r2, r4, #0
-	bl sub_02003030
+	bl LoadFontPal0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	nop
@@ -37437,7 +37437,7 @@ _021F7964:
 	mov r1, #0x89
 	mov r0, #4
 	str r1, [r4]
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #0x89
 	bl BgConfig_Alloc
 	str r0, [r4, #0xc]
@@ -37742,7 +37742,7 @@ ov96_021F7C70: ; 0x021F7C70
 	add r1, r0, #0
 	bl Main_SetHBlankIntrCB
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, _021F7D04 ; =0x04000050
 	mov r1, #0x3f
 	mov r2, #0
@@ -40961,7 +40961,7 @@ _021F94DE:
 	mov r1, #0x8a
 	str r1, [r4]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r0, [r4, #4]
 	bl ov96_021F9E5C
 	add r0, r4, #0
@@ -41903,7 +41903,7 @@ ov96_021F9D58: ; 0x021F9D58
 	bl ov96_021EB21C
 	bl ov96_021E92D0
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -45181,7 +45181,7 @@ ov96_021FB7C8: ; 0x021FB7C8
 	ldr r2, [r4]
 	mov r0, #0
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	add r4, #8
 	add r0, r4, #0
 	mov r1, #0
@@ -47286,7 +47286,7 @@ _021FC79C:
 	mov r1, #0x90
 	str r1, [r5, #0x14]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r0, [r5]
 	bl ov96_021FCF00
 	add r0, r5, #0
@@ -48008,7 +48008,7 @@ ov96_021FCE10: ; 0x021FCE10
 	ldr r0, [r4, r0]
 	bl ov96_021FFFE8
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -53939,7 +53939,7 @@ ov96_021FFD4C: ; 0x021FFD4C
 	ldr r2, [r4, #0x14]
 	mov r0, #0
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	add sp, #4
 	pop {r3, r4, pc}
 	nop
@@ -56024,7 +56024,7 @@ ov96_02200DF8: ; 0x02200DF8
 	ldr r2, [r4]
 	mov r0, #4
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -57104,7 +57104,7 @@ _02201588:
 	mov r1, #0x92
 	str r1, [r4, #0x44]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r0, [r4]
 	bl ov96_02201CB0
 	add r0, r4, #0
@@ -57773,7 +57773,7 @@ _02201BF0:
 	ldr r0, [r4, r0]
 	bl ov96_02203A30
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -60576,7 +60576,7 @@ _0220333C:
 	ldr r2, [r6, #0x44]
 	mov r0, #0
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02203374: .word ov96_0221C7B0
@@ -62196,7 +62196,7 @@ ov96_02203FBC: ; 0x02203FBC
 	ldr r2, [r4]
 	mov r0, #4
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	add r4, #0xc
 	add r0, r4, #0
 	mov r1, #0
@@ -63250,7 +63250,7 @@ _02204820:
 	mov r1, #0x8b
 	str r1, [r5, #0x14]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r0, [r5]
 	bl ov96_02204F40
 	add r0, r5, #0
@@ -63941,7 +63941,7 @@ ov96_02204E58: ; 0x02204E58
 	ldr r0, [r4, r0]
 	bl ov96_02207D64
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	add r0, r5, #0
 	bl ov96_021E5DAC
 	ldr r0, _02204F18 ; =gSystem + 0x60
@@ -69072,7 +69072,7 @@ ov96_02207740: ; 0x02207740
 	ldr r2, [r4, #0x14]
 	mov r0, #0
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	add sp, #4
 	pop {r3, r4, pc}
 	nop
@@ -71518,7 +71518,7 @@ ov96_02208A4C: ; 0x02208A4C
 	ldr r2, [r4]
 	mov r0, #4
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -73815,7 +73815,7 @@ _02209C44:
 	blt _02209C44
 	ldr r1, [sp]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -73877,7 +73877,7 @@ _02209CEC:
 	cmp r5, #6
 	blt _02209CEC
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, [r6, #4]
 	bl FreeToHeap
 	pop {r4, r5, r6, pc}
@@ -73923,7 +73923,7 @@ ov96_02209D14: ; 0x02209D14
 	ldr r2, [r4]
 	mov r0, #0
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -84355,7 +84355,7 @@ _0220EDD4:
 	str r0, [r1, #0x14]
 	ldr r1, [r1]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -84391,7 +84391,7 @@ _0220EE66:
 	cmp r4, #7
 	blt _0220EE66
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, [r6, #8]
 	bl FreeToHeap
 	pop {r4, r5, r6, pc}
@@ -84465,7 +84465,7 @@ ov96_0220EE8C: ; 0x0220EE8C
 	ldr r2, [r4]
 	mov r0, #0
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -87374,7 +87374,7 @@ _02210554:
 	ldr r2, [r5, #4]
 	mov r0, #4
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02210588: .word ov96_0221D15C
@@ -88421,7 +88421,7 @@ _02210CCC:
 	mov r1, #0x93
 	str r1, [r5, #0x58]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r0, [r5, #4]
 	bl ov96_022118C4
 	add r0, r5, #0
@@ -89548,7 +89548,7 @@ _0221172E:
 	ldr r0, [r4, r0]
 	bl ov96_02214690
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -93528,7 +93528,7 @@ _02213646:
 	ldr r2, [r7, #0x58]
 	mov r0, #0
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #0x20
 	str r0, [sp]
 	ldr r0, [r7, #0x58]
@@ -95964,7 +95964,7 @@ ov96_022148A4: ; 0x022148A4
 	ldr r2, [r4]
 	mov r0, #4
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -99792,7 +99792,7 @@ _02216584:
 	str r0, [r1, #0x10]
 	ldr r1, [r1]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #8
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -99828,7 +99828,7 @@ _02216616:
 	cmp r4, #7
 	blt _02216616
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, [r6, #4]
 	bl FreeToHeap
 	pop {r4, r5, r6, pc}
@@ -99920,7 +99920,7 @@ ov96_0221663C: ; 0x0221663C
 	ldr r2, [r4]
 	mov r0, #0
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -106599,7 +106599,7 @@ _02219A24:
 	ldr r2, [r5, #4]
 	mov r0, #4
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02219A58: .word ov96_0221D8F8
@@ -108364,7 +108364,7 @@ ov96_0221A7E4: ; 0x0221A7E4
 	.word ov97_0221E5C0
 	.word ov97_0221E5D4
 	.word ov97_0221E69C
-	.word SDK_OVERLAY_OVY_97_ID
+	.word FS_OVERLAY_ID(OVY_97)
 
 ov96_0221A7F4:
 	.word ov96_021F010C

@@ -2950,7 +2950,7 @@ _0221D168:
 	ldr r2, [r2, #0x24]
 	mov r0, #0
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	ldr r0, [r4, #8]
 	mov r1, #0
 	mov r2, #0xd0

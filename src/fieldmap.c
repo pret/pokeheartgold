@@ -4,6 +4,7 @@
 #include "map_header.h"
 #include "event_data.h"
 #include "map_events.h"
+#include "task.h"
 #include "constants/std_script.h"
 #include "fielddata/script/scr_seq.naix"
 #include "msgdata/msg.naix"
@@ -80,14 +81,14 @@ void QueueScript(TaskManager *taskman, u16 script, LocalMapObject *lastTalked, v
     FieldSystem *fsys = TaskManager_GetSys(taskman);
     ScriptEnvironment *env = ScriptEnvironment_new();
     SetupScriptEngine(fsys, env, script, lastTalked, a3);
-    QueueTask(taskman, Task_RunScripts, env);
+    TaskManager_Call(taskman, Task_RunScripts, env);
 }
 
 void StartScriptFromMenu(TaskManager *taskman, u16 script, LocalMapObject *lastTalked) {
     FieldSystem *fsys = TaskManager_GetSys(taskman);
     ScriptEnvironment *env = ScriptEnvironment_new();
     SetupScriptEngine(fsys, env, script, lastTalked, NULL);
-    NowRunTask(taskman, Task_RunScripts, env);
+    TaskManager_Jump(taskman, Task_RunScripts, env);
 }
 
 BOOL Task_RunScripts(TaskManager *taskman) {

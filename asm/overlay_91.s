@@ -7,7 +7,7 @@
 ov91_0225C540: ; 0x0225C540
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	mov r0, #3
 	mov r1, #0x6a
@@ -48,7 +48,7 @@ ov91_0225C58C: ; 0x0225C58C
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r6, r0, #0
 	add r0, r4, #0
 	add r0, #8
@@ -588,7 +588,7 @@ ov91_0225C9EC: ; 0x0225C9EC
 	bl OverlayManager_GetData
 	add r6, r0, #0
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _0225CA0A
@@ -2821,7 +2821,7 @@ _0225DA60:
 	mov r0, #0
 	ldr r1, [sp, #0x24]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -6932,7 +6932,7 @@ ov91_0225F878: ; 0x0225F878
 	mov r0, #0
 	mov r1, #0xa0
 	add r2, r4, #0
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #0
 	str r0, [sp]
 	str r4, [sp, #4]

@@ -348,7 +348,7 @@ ov28_0225D7E0: ; 0x0225D7E0
 	add r7, r0, #0
 	mov r0, #4
 	mov r1, #8
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #0
 	str r0, [sp, #0x10]
 	mov r0, #0x6d
@@ -427,7 +427,7 @@ _0225D882:
 	cmp r4, #5
 	blo _0225D882
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov28_0225D878
 
@@ -922,7 +922,7 @@ _0225DC56:
 	str r1, [r4, r0]
 _0225DC76:
 	ldr r0, [r4, #0x18]
-	bl sub_02050590
+	bl Fsys_TaskIsRunning
 	cmp r0, #1
 	beq _0225DC98
 	ldr r0, _0225DD1C ; =ov28_0225EA88
@@ -2739,7 +2739,7 @@ ov28_0225EA58: ; 0x0225EA58
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
-	bl sub_02050590
+	bl Fsys_TaskIsRunning
 	cmp r0, #1
 	bne _0225EA76
 	ldr r0, [r4, #0x18]

@@ -94,7 +94,7 @@ _0206A7FE:
 	ldr r0, [r5, #0x10]
 	ldr r1, _0206A85C ; =sub_0206B270
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 _0206A858:
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
@@ -141,7 +141,7 @@ sub_0206A860: ; 0x0206A860
 	ldr r0, [r5, #0x10]
 	ldr r1, _0206A8BC ; =sub_0206A8E4
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0206A8BC: .word sub_0206A8E4
@@ -357,7 +357,7 @@ _0206AA20:
 	str r4, [r0]
 	ldr r0, [r5, #0x10]
 	add r2, r6, #0
-	bl QueueTask
+	bl TaskManager_Call
 	mov r0, #3
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

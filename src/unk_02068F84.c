@@ -3,7 +3,7 @@
 
 u32 sub_02068F84(MSGDATA *msgData, u32 map_sec, STRING *dest) {
     ReadMsgDataIntoString(msgData, map_sec, dest);
-    return sub_02002F30(0, dest, 0);
+    return FontID_String_GetWidth(0, dest, 0);
 }
 
 void sub_02068F98(u32 mapno, HeapID heapId, STRING *dest) {

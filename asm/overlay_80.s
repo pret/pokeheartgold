@@ -9836,7 +9836,7 @@ _0222E726:
 	beq _0222E74C
 	mov r0, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	cmp r6, r0
 	bhs _0222E73E
 	add r6, r0, #0
@@ -10370,7 +10370,7 @@ _0222EB26:
 	beq _0222EB4C
 	mov r0, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	cmp r6, r0
 	bhs _0222EB3E
 	add r6, r0, #0
@@ -34568,7 +34568,7 @@ ov80_0223A75C: ; 0x0223A75C
 	add r1, r4, #0
 	mov r2, #0
 	add r7, r3, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r4, r0, #0
 	asr r1, r4, #2
 	lsr r1, r1, #0x1d
@@ -36951,13 +36951,13 @@ ov80_0223BDB4: ; 0x0223BDB4
 	.word ov81_0223DD60
 	.word ov81_0223DEA8
 	.word ov81_0223E234
-	.word SDK_OVERLAY_OVY_81_ID
+	.word FS_OVERLAY_ID(OVY_81)
 
 ov80_0223BDC4: ; 0x0223BDC4
 	.word ov81_0223DD60
 	.word ov81_0223DEA8
 	.word ov81_0223E234
-	.word SDK_OVERLAY_OVY_81_ID
+	.word FS_OVERLAY_ID(OVY_81)
 
 ov80_0223BDD4: ; 0x0223BDD4
 	.byte 0x00, 0x05, 0x05, 0x05, 0x05, 0x07, 0x07, 0x08, 0x09, 0x00, 0x00, 0x00
@@ -36969,7 +36969,7 @@ ov80_0223BDEC: ; 0x0223BDEC
 	.word ov82_0223DD60
 	.word ov82_0223DE20
 	.word ov82_0223DF74
-	.word SDK_OVERLAY_OVY_82_ID
+	.word FS_OVERLAY_ID(OVY_82)
 
 ov80_0223BDFC: ; 0x0223BDFC
 	.byte 0x00, 0x01, 0x01, 0x01
@@ -36987,13 +36987,13 @@ ov80_0223BE34: ; 0x0223BE34
 	.word ov83_0223DD60
 	.word ov83_0223DE60
 	.word ov83_0223DFBC
-	.word SDK_OVERLAY_OVY_83_ID
+	.word FS_OVERLAY_ID(OVY_83)
 
 ov80_0223BE44: ; 0x0223BE44
 	.word ov83_02242FE8
 	.word ov83_02243108
 	.word ov83_02243268
-	.word SDK_OVERLAY_OVY_83_ID
+	.word FS_OVERLAY_ID(OVY_83)
 
 ov80_0223BE54: ; 0x0223BE54
 	.byte 0x00, 0x03, 0x03, 0x04, 0x04, 0x05, 0x05, 0x07, 0x07, 0x00, 0x00, 0x00
@@ -37009,7 +37009,7 @@ ov80_0223BE78: ; 0x0223BE78
 	.word ov84_0223DD60
 	.word ov84_0223DEB8
 	.word ov84_0223DFF0
-	.word SDK_OVERLAY_OVY_84_ID
+	.word FS_OVERLAY_ID(OVY_84)
 
 ov80_0223BE88: ; 0x0223BE88
 	.byte 0x06, 0x04, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00

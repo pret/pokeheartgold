@@ -514,7 +514,7 @@ _02002542: ; 0x0205
 	ldrb r0, [r4, #9]
 	ldrh r2, [r4, #0x10]
 	ldr r1, [r4]
-	bl sub_02002EFC
+	bl FontID_FlatArray_GetWidthFirstLine
 	cmp r0, r5
 	bge _02002568
 	sub r1, r5, r0
@@ -536,7 +536,7 @@ _0200256E:
 	ldrb r0, [r4, #9]
 	ldrh r2, [r4, #0x10]
 	ldr r1, [r4]
-	bl sub_02002EFC
+	bl FontID_FlatArray_GetWidthFirstLine
 	cmp r0, r5
 	bge _0200258A
 	sub r0, r5, r0
@@ -645,7 +645,7 @@ _02002658:
 	add r1, r5, #0
 	lsl r0, r0, #0x1c
 	lsr r0, r0, #0x1c
-	bl sub_02002E7C
+	bl FontID_TryLoadGlyph
 	add r5, r0, #0
 	ldrh r0, [r4, #0xc]
 	add r2, r5, #0

@@ -46,7 +46,7 @@ ov32_0225D520: ; 0x0225D520
 	str r1, [r0]
 	mov r0, #4
 	mov r1, #8
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r0, _0225D5C8 ; =0x00000105
 	mov r1, #8
 	bl NARC_ctor
@@ -94,7 +94,7 @@ ov32_0225D5CC: ; 0x0225D5CC
 	ldr r0, [r4]
 	bl ov32_0225D6C4
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	add r0, r5, #0
 	bl sub_02007234
 	mov r0, #8
@@ -342,7 +342,7 @@ _0225D796:
 	mov r0, #4
 	add r1, r6, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsr r0, r0, #1
 	sub r0, r4, r0
 	lsl r0, r0, #0x10
@@ -411,7 +411,7 @@ ov32_0225D84C: ; 0x0225D84C
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x10
 	lsr r7, r0, #0x10
 	add r0, r5, #0
@@ -502,7 +502,7 @@ ov32_0225D84C: ; 0x0225D84C
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	sub r0, r4, r0
 	lsl r0, r0, #0x10
 	mov r1, #0
@@ -602,7 +602,7 @@ _0225D9D4:
 	mov r0, #0
 	ldr r1, [sp, #0x14]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]

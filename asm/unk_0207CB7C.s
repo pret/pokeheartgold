@@ -1774,7 +1774,7 @@ sub_0207D988: ; 0x0207D988
 	push {r4, lr}
 	add r4, r2, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	sub r0, r4, r0
 	lsr r0, r0, #1
 	pop {r4, pc}
@@ -2576,7 +2576,7 @@ _0207DFCC:
 	mov r0, #0
 	ldr r1, [r5, r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r7, r0, #0
 	mov r3, #0x68
 	str r4, [sp]
@@ -2945,7 +2945,7 @@ _0207E2C2:
 	ldr r1, [r2, r1]
 	mov r2, #0
 	lsl r3, r3, #3
-	bl sub_020030A0
+	bl FontID_String_GetCenterAlignmentX
 	str r0, [sp, #0x14]
 	b _0207E30C
 _0207E2EC:

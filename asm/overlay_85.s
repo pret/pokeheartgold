@@ -8,7 +8,7 @@ ov85_021E5900: ; 0x021E5900
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r4, r0, #0
 	mov r0, #1
 	add r1, r0, #0
@@ -3437,7 +3437,7 @@ ov85_021E7380: ; 0x021E7380
 	add r1, r6, #0
 	add r2, r0, #0
 	mov r3, #0x40
-	bl sub_020030A0
+	bl FontID_String_GetCenterAlignmentX
 	mov r1, #0
 	add r3, r0, #0
 	str r1, [sp]
@@ -6453,7 +6453,7 @@ ov85_021E88AC: ; 0x021E88AC
 	sub sp, #0xc
 	add r5, r1, #0
 	add r4, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r6, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0
@@ -7159,12 +7159,12 @@ ov85_021E8E6C: ; 0x021E8E6C
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x66
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #0x1a
 	mov r0, #4
 	lsl r1, r1, #4
 	mov r2, #0x66
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -7609,7 +7609,7 @@ ov85_021E9244: ; 0x021E9244
 	mov r0, #1
 	mov r2, #0
 	add r7, r1, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #0

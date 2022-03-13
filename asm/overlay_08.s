@@ -317,7 +317,7 @@ _0221C06C:
 	ldr r1, [r5]
 	mov r0, #4
 	ldr r1, [r1, #0xc]
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r1, _0221C140 ; =0x0000207A
 	add r0, r5, #0
 	ldrb r1, [r5, r1]
@@ -2024,7 +2024,7 @@ _0221CDA8:
 	ldr r0, [r4, r0]
 	bl ov08_02224B7C
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, [r4]
 	mov r1, #1
 	add r0, #0x36
@@ -4160,7 +4160,7 @@ _0221DE6A:
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	ldr r1, [sp, #0x28]
 	str r7, [sp]
 	lsl r1, r1, #3
@@ -4206,7 +4206,7 @@ _0221DEEE:
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	ldr r1, [sp, #0x2c]
 	str r7, [sp]
 	lsl r1, r1, #3
@@ -4640,7 +4640,7 @@ ov08_0221E244: ; 0x0221E244
 	ldrh r0, [r0, #0x10]
 	add r1, r7, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r1, r5, #3
 	sub r0, r1, r0
 	lsr r3, r0, #1
@@ -4777,7 +4777,7 @@ ov08_0221E3A4: ; 0x0221E3A4
 	mov r0, #4
 	add r1, r7, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r6, r0, #0
 	add r0, r5, r4
 	bl GetWindowWidth
@@ -4964,7 +4964,7 @@ _0221E53C:
 	mov r0, #0
 	ldr r1, [sp, #0x10]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r1, r6, #3
 	sub r0, r1, r0
 	lsl r0, r0, #0x10
@@ -5078,7 +5078,7 @@ ov08_0221E5DC: ; 0x0221E5DC
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x18
 	lsr r7, r0, #0x18
 	add r0, r4, #5
@@ -5188,7 +5188,7 @@ ov08_0221E6D8: ; 0x0221E6D8
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x18
 	lsr r7, r0, #0x18
 	add r0, r4, #6
@@ -5299,7 +5299,7 @@ ov08_0221E7D4: ; 0x0221E7D4
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x18
 	lsr r7, r0, #0x18
 	add r0, r4, #7
@@ -5412,7 +5412,7 @@ ov08_0221E8D4: ; 0x0221E8D4
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x18
 	lsr r7, r0, #0x18
 	ldr r0, _0221E9C4 ; =0x00002070
@@ -5525,7 +5525,7 @@ ov08_0221E9D4: ; 0x0221E9D4
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x18
 	lsr r7, r0, #0x18
 	ldr r0, _0221EAC4 ; =0x00002070
@@ -5618,7 +5618,7 @@ ov08_0221EAD4: ; 0x0221EAD4
 	mov r0, #0
 	ldr r1, [sp, #0x10]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	str r0, [sp, #0x14]
 	ldr r0, _0221EC5C ; =0x00002070
 	ldr r0, [r5, r0]
@@ -5673,7 +5673,7 @@ ov08_0221EAD4: ; 0x0221EAD4
 	mov r0, #0
 	ldr r1, [sp, #0x1c]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, r0, #0
 	mov r1, #0
 	str r1, [sp]
@@ -5863,7 +5863,7 @@ ov08_0221ED30: ; 0x0221ED30
 	mov r0, #0
 	add r1, r7, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	add r0, r4, r6
@@ -5913,7 +5913,7 @@ _0221ED8A:
 	mov r0, #0
 	add r1, r7, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	add r0, r4, r6
@@ -6001,7 +6001,7 @@ ov08_0221EE60: ; 0x0221EE60
 	mov r0, #0
 	add r1, r7, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	add r0, r4, r6
@@ -6051,7 +6051,7 @@ _0221EEBA:
 	mov r0, #0
 	add r1, r7, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	add r0, r4, r6
@@ -6144,7 +6144,7 @@ ov08_0221EFA8: ; 0x0221EFA8
 	mov r0, #0
 	add r1, r7, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x10
 	lsr r6, r0, #0x10
 	add r0, r5, r4
@@ -6251,7 +6251,7 @@ ov08_0221F07C: ; 0x0221F07C
 	mov r0, #0
 	ldr r1, [sp, #0x18]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	str r0, [sp, #0x1c]
 	add r0, r4, r6
 	bl GetWindowWidth
@@ -6299,7 +6299,7 @@ ov08_0221F07C: ; 0x0221F07C
 	mov r0, #0
 	ldr r1, [sp, #0x24]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, r0, #0
 	mov r1, #0
 	str r1, [sp]
@@ -6394,7 +6394,7 @@ _0221F1DA:
 	mov r0, #4
 	add r1, r6, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r7, r0, #0
 	mov r0, #5
 	str r0, [sp]
@@ -6512,7 +6512,7 @@ ov08_0221F284: ; 0x0221F284
 	mov r0, #0
 	ldr r1, [sp, #0x18]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	str r0, [sp, #0x1c]
 	mov r0, #0x18
 	str r0, [sp]
@@ -6587,7 +6587,7 @@ ov08_0221F284: ; 0x0221F284
 	mov r0, #0
 	add r1, r7, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r5, r0, #0
 	mov r0, #0x18
 	str r0, [sp]
@@ -6639,7 +6639,7 @@ ov08_0221F3D0: ; 0x0221F3D0
 	mov r0, #0
 	ldr r1, [sp, #0x18]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r7, r0, #0
 	ldr r0, [sp, #0x18]
 	bl String_dtor
@@ -6680,7 +6680,7 @@ ov08_0221F3D0: ; 0x0221F3D0
 	mov r0, #0
 	ldr r1, [sp, #0x14]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r5, r0, #0
 	mov r0, #0x18
 	str r0, [sp]
@@ -7000,7 +7000,7 @@ _0221F6EC:
 	ldr r1, [sp, #0x10]
 	mov r0, #4
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	cmp r5, #0
@@ -7012,7 +7012,7 @@ _0221F704:
 	mov r0, #0
 	add r1, r5, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x18
 	lsr r7, r0, #0x18
 	mov r4, #8
@@ -12934,7 +12934,7 @@ ov08_0222276C: ; 0x0222276C
 	ldr r1, [r4]
 	mov r0, #4
 	ldr r1, [r1, #0xc]
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r0, [r4]
 	ldr r0, [r0]
 	bl ov12_0223AA84
@@ -13787,7 +13787,7 @@ _02222E40:
 	ldr r0, [r5, #0x34]
 	bl ov08_02224B7C
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r1, [r5]
 	ldrh r0, [r1, #0x1c]
 	cmp r0, #0
@@ -14590,7 +14590,7 @@ ov08_022234A4: ; 0x022234A4
 	ldr r1, [sp, #0x10]
 	add r0, r6, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r7, r0, #0
 	add r0, r5, r4
 	bl GetWindowWidth
@@ -14767,7 +14767,7 @@ ov08_022235D4: ; 0x022235D4
 	ldr r0, [sp, #0x30]
 	ldr r1, [r5, #0x18]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r7, r0, #0
 	add r0, r4, r6
 	bl GetWindowWidth
@@ -14984,7 +14984,7 @@ ov08_022237C4: ; 0x022237C4
 	mov r0, #0
 	ldr r1, [sp, #0x10]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r7, r0, #0
 	mov r0, #0x19
 	lsl r0, r0, #4
@@ -15072,7 +15072,7 @@ ov08_022237C4: ; 0x022237C4
 	mov r0, #0
 	ldr r1, [r5, #0x18]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, r0, #0
 	mov r0, #4
 	str r0, [sp]

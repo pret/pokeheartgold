@@ -22,7 +22,7 @@ ov46_02258800: ; 0x02258800
 	add r5, r0, #0
 	bl memset
 	add r0, r4, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r1, _0225891C ; =0x0000047D
@@ -148,7 +148,7 @@ ov46_0225892C: ; 0x0225892C
 	bl OverlayManager_GetData
 	add r5, r0, #0
 	add r0, r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r6, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0xf
@@ -581,7 +581,7 @@ ov46_02258CB4: ; 0x02258CB4
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r0, [r0]
 	mov r1, #0x77
 	str r0, [r4]
@@ -680,7 +680,7 @@ ov46_02258DA8: ; 0x02258DA8
 	bl OverlayManager_GetData
 	add r5, r0, #0
 	add r0, r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r6, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0xa
@@ -965,12 +965,12 @@ _02258FAE:
 	mov r0, #0
 	lsl r1, r1, #6
 	add r2, r6, #0
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #0x12
 	mov r0, #0
 	lsl r1, r1, #4
 	add r2, r6, #0
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [sp, #0x10]
@@ -1602,7 +1602,7 @@ ov46_022594E0: ; 0x022594E0
 	ldr r1, [r4, #0x18]
 	add r2, r0, #0
 	mov r3, #0xb0
-	bl sub_020030A0
+	bl FontID_String_GetCenterAlignmentX
 	mov r1, #0
 	add r3, r0, #0
 	str r1, [sp]

@@ -1,8 +1,0 @@
-#ifndef POKEHEARTGOLD_UNK_0202C9A0_H
-#define POKEHEARTGOLD_UNK_0202C9A0_H
-
-void *sub_0202C9D8(SAVEDATA *saveData);
-void *sub_0202C9E4(void *);
-BOOL sub_0202C9E8(void *);
-
-#endif //POKEHEARTGOLD_UNK_0202C9A0_H

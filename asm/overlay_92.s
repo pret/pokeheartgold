@@ -689,7 +689,7 @@ ov92_0225CAB4: ; 0x0225CAB4
 	str r0, [sp, #4]
 	bl memset
 	add r0, r4, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r1, [sp, #4]
 	ldr r6, [sp, #4]
 	add r1, #0x88
@@ -3447,7 +3447,7 @@ ov92_0225E188: ; 0x0225E188
 	add r5, r0, #0
 	mov r0, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r4, r0, #0
 	add r0, r5, #0
 	bl GetWindowWidth
