@@ -12,7 +12,7 @@ typedef struct POKEWALKER {
     u8 filler_08C[0x6C];
     u16 unk_0F8;
     u16 unk_0FA;
-    u8 unk_0FC[0x28];
+    u32 unk_0FC[10];
     u16 unk_124;
     u8 filler_126[2];
     u32 unk_128;

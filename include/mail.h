@@ -27,7 +27,7 @@ u8 Mail_GetLanguage(const MAIL *mail);
 u8 Mail_GetVersion(const MAIL *mail);
 u16 sub_0202B404(MAIL *mail, u8 r1, u8 r4, u16 r3);
 u16 sub_0202B4E4(const MAIL *mail);
-void Mail_CopyToUnk20Array(MAIL *mail, const MAIL_MESSAGE *src, int i);
+void Mail_SetMessage(MAIL *mail, const MAIL_MESSAGE *src, int i);
 MAILBOX *Sav2_Mailbox_get(SAVEDATA *saveData);
 u32 Sav2_Mailbox_sizeof(void);
 void Sav2_Mailbox_init(MAILBOX *mailbox);

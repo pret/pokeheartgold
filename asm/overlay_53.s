@@ -312,7 +312,7 @@ ov53_OakSpeech_OvyExit: ; 0x021E5B48
 	add r0, r5, #0
 	bl DestroyHeap
 	ldr r0, _021E5BC4 ; =FS_OVERLAY_ID(OVY_36)
-	ldr r1, _021E5BC8 ; =ov36_021E5C14
+	ldr r1, _021E5BC8 ; =ov36_App_InitGameState_AfterOakSpeech
 	bl RegisterMainOverlay
 	mov r0, #0
 	bl sub_02002B8C
@@ -320,7 +320,7 @@ ov53_OakSpeech_OvyExit: ; 0x021E5B48
 	pop {r4, r5, r6, pc}
 	nop
 _021E5BC4: .word FS_OVERLAY_ID(OVY_36)
-_021E5BC8: .word ov36_021E5C14
+_021E5BC8: .word ov36_App_InitGameState_AfterOakSpeech
 	thumb_func_end ov53_OakSpeech_OvyExit
 
 	thumb_func_start ov53_021E5BCC
