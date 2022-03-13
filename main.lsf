@@ -596,7 +596,7 @@ Overlay OVY_35
 Overlay OVY_36
 {
     After main
-    Object asm/overlay_36.o
+    Object src/overlay_36.o
 }
 Overlay OVY_37
 {
