@@ -182,6 +182,7 @@ Static main
 	Object asm/unk_02050660.o
 	Object asm/unk_020517A4.o
 	Object asm/unk_020518D8.o
+	Object src/field_black_out.o
 	Object asm/unk_020525BC.o
 	Object asm/unk_0205298C.o
 	Object asm/unk_02052F30.o

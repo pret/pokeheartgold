@@ -12,7 +12,7 @@ enum RoamerDataParam {
     ROAMER_DATA_HP           = 5,
     ROAMER_DATA_LEVEL        = 6,
     ROAMER_DATA_STATUS       = 7,
-    ROAMER_DATA_ACTIVE         = 8,
+    ROAMER_DATA_ACTIVE       = 8,
 };
 
 typedef struct ROAMER {

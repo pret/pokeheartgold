@@ -7861,7 +7861,7 @@ ScrCmd_289: ; 0x0204458C
 ScrCmd_OverworldWhiteOut: ; 0x020445C0
 	push {r3, lr}
 	ldr r0, [r0, #0x74]
-	bl sub_0205297C
+	bl FieldTask_CallBlackOut
 	mov r0, #1
 	pop {r3, pc}
 	thumb_func_end ScrCmd_OverworldWhiteOut

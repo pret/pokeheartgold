@@ -2317,7 +2317,7 @@ _02246D8A:
 	bne _02246DE0
 	add r0, r5, #0
 	add r1, sp, #0x1c
-	bl ov02_02248360
+	bl ov02_GetRandomActiveRoamerInCurrMap
 	cmp r0, #0
 	beq _02246DE0
 	ldr r0, [sp, #0x1c]
@@ -2840,7 +2840,7 @@ _022471AC:
 	bne _0224721A
 	add r0, r5, #0
 	add r1, sp, #0x18
-	bl ov02_02248360
+	bl ov02_GetRandomActiveRoamerInCurrMap
 	cmp r0, #0
 	beq _0224721A
 	mov r0, #0xb
@@ -5186,8 +5186,9 @@ _02248350:
 	bx r3
 	thumb_func_end ov02_022482BC
 
-	thumb_func_start ov02_02248360
-ov02_02248360: ; 0x02248360
+; BOOL ov02_GetRandomActiveRoamerInCurrMap(FieldSystem *fsys, ROAMER **out);
+	thumb_func_start ov02_GetRandomActiveRoamerInCurrMap
+ov02_GetRandomActiveRoamerInCurrMap: ; 0x02248360
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	str r0, [sp]
@@ -5280,7 +5281,7 @@ _02248410:
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov02_02248360
+	thumb_func_end ov02_GetRandomActiveRoamerInCurrMap
 
 	thumb_func_start ov02_02248418
 ov02_02248418: ; 0x02248418
@@ -12485,8 +12486,8 @@ _0224B992:
 	.balign 4, 0
 	thumb_func_end ov02_0224B964
 
-	thumb_func_start ov02_0224B998
-ov02_0224B998: ; 0x0224B998
+	thumb_func_start ov02_BattleExit_HandleRoamerAction
+ov02_BattleExit_HandleRoamerAction: ; 0x0224B998
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -12563,7 +12564,7 @@ _0224BA42:
 	ldr r1, [r5, #0x20]
 	add r0, r6, #0
 	ldr r1, [r1]
-	bl ov02_0224BA70
+	bl ov02_RepelActiveRoamersFromMapNo
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 _0224BA50:
@@ -12577,14 +12578,14 @@ _0224BA50:
 	ldr r1, [r5, #0x20]
 	add r0, r6, #0
 	ldr r1, [r1]
-	bl ov02_0224BA70
+	bl ov02_RepelActiveRoamersFromMapNo
 _0224BA6C:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end ov02_0224B998
+	thumb_func_end ov02_BattleExit_HandleRoamerAction
 
-	thumb_func_start ov02_0224BA70
-ov02_0224BA70: ; 0x0224BA70
+	thumb_func_start ov02_RepelActiveRoamersFromMapNo
+ov02_RepelActiveRoamersFromMapNo: ; 0x0224BA70
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -12611,7 +12612,7 @@ _0224BA9C:
 	cmp r4, #4
 	blo _0224BA78
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov02_0224BA70
+	thumb_func_end ov02_RepelActiveRoamersFromMapNo
 
 	thumb_func_start ov02_0224BAA8
 ov02_0224BAA8: ; 0x0224BAA8

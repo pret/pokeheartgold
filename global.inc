@@ -5746,7 +5746,7 @@ FS_EXTERN_OVERLAY(OV_101)
 .public ov02_02248290
 .public ov02_022482A4
 .public ov02_022482BC
-.public ov02_02248360
+.public ov02_GetRandomActiveRoamerInCurrMap
 .public ov02_02248418
 .public ov02_02248444
 .public ov02_0224855C
@@ -5923,8 +5923,8 @@ FS_EXTERN_OVERLAY(OV_101)
 .public ov02_0224B90C
 .public ov02_0224B938
 .public ov02_0224B964
-.public ov02_0224B998
-.public ov02_0224BA70
+.public ov02_BattleExit_HandleRoamerAction
+.public ov02_RepelActiveRoamersFromMapNo
 .public ov02_0224BAA8
 .public PlayerStepEvent_RepelCounterDecrement
 .public PokecenterAnimCreate
@@ -28404,8 +28404,8 @@ FS_EXTERN_OVERLAY(OV_101)
 .public sub_02052564
 .public sub_02052574
 .public sub_02052580
-.public sub_02052858
-.public sub_0205297C
+.public Task_BlackOut
+.public FieldTask_CallBlackOut
 .public sub_0205298C
 .public sub_02053018
 .public sub_02053038
