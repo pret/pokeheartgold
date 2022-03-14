@@ -221,7 +221,7 @@ Static main
 	Object src/sys_flags.o
 	Object src/sys_vars.o
 	Object asm/unk_02066EDC.o
-	Object asm/field_roamer.o
+	Object src/field_roamer.o
 	Object asm/unk_0206793C.o
 	Object asm/unk_02068DE0.o
 	Object src/unk_02068F84.o
