@@ -144,6 +144,3 @@ void sub_0203B9F4(FieldSystem *fsys) {
     }
     sub_0205E648(fsys->unk3C, unk->subs, 64);
 }
-
-
-
