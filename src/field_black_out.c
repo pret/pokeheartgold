@@ -6,6 +6,7 @@
 #include "unk_0200E398.h"
 #include "font.h"
 #include "text.h"
+#include "save_flypoints.h"
 #include "msgdata/msg/msg_0203.h"
 
 struct BlackoutScreenWork {
@@ -152,4 +153,3 @@ void _print_message(struct BlackoutScreenWork *work, int msgno, u8 x, u8 y) {
     String_dtor(str0);
     String_dtor(str1);
 }
-

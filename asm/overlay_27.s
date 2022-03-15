@@ -4092,7 +4092,7 @@ ov27_0225C044: ; 0x0225C044
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B9B8
+	bl FlyPoints_GetSafariBallsCounter
 	add r3, r0, #0
 	ldrh r3, [r3]
 	add r0, r4, #0

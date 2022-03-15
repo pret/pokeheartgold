@@ -28163,9 +28163,9 @@ FS_EXTERN_OVERLAY(OV_101)
 .public sub_0203B9A4
 .public sub_0203B9AC
 .public sub_0203B9B4
-.public sub_0203B9B8
-.public sub_0203B9BC
-.public sub_0203B9C0
+.public FlyPoints_GetSafariBallsCounter
+.public FlyPoints_GetSafariStepsCounter
+.public FlyPoints_GetPoisonStepCounter
 .public Save_FlyPoints_get
 .public sub_0203B9DC
 .public sub_0203B9F4

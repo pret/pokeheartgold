@@ -5054,7 +5054,7 @@ ov02_02248244: ; 0x02248244
 _02248252:
 	ldr r0, [r0, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B9B8
+	bl FlyPoints_GetSafariBallsCounter
 	add r1, r0, #0
 	ldrh r1, [r1]
 	mov r0, #0xb

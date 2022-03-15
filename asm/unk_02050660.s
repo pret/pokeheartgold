@@ -874,7 +874,7 @@ sub_02050D1C: ; 0x02050D1C
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B9B8
+	bl FlyPoints_GetSafariBallsCounter
 	str r0, [sp]
 	ldr r0, [r4]
 	cmp r0, #8

@@ -147,7 +147,7 @@ Static main
 	Object src/map_matrix.o
 	Object src/map_header.o
 	Object src/map_events.o
-	Object asm/unk_0203B91C.o
+	Object src/save_flypoints.o
 	Object asm/unk_0203BA5C.o
 	Object asm/unk_0203BBB4.o
 	Object asm/unk_0203BC10.o

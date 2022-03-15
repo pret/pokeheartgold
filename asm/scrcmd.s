@@ -9420,10 +9420,10 @@ ScrCmd_SafariZoneAction: ; 0x02045188
 	ldrb r0, [r1]
 	str r0, [sp]
 	add r0, r6, #0
-	bl sub_0203B9B8
+	bl FlyPoints_GetSafariBallsCounter
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_0203B9BC
+	bl FlyPoints_GetSafariStepsCounter
 	add r6, r0, #0
 	cmp r4, #0
 	beq _020451E0

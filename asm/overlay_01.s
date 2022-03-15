@@ -3989,7 +3989,7 @@ ov01_021E794C: ; 0x021E794C
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B9C0
+	bl FlyPoints_GetPoisonStepCounter
 	ldrh r1, [r0]
 	add r1, r1, #1
 	strh r1, [r0]
@@ -4058,7 +4058,7 @@ ov01_021E79CC: ; 0x021E79CC
 _021E79E2:
 	ldr r0, [r4, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B9B8
+	bl FlyPoints_GetSafariBallsCounter
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne _021E7A00
