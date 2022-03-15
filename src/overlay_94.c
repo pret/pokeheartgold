@@ -16,9 +16,9 @@ void ov94_021E5900(struct UnkStruct_Overlay_94_A* unkPtr) {
     unkPtr->unkc80->partyMonIndex = unkPtr->partyMonIndex;
 }
 
-BOOL ov94_021E593C(struct UnkStruct_Overlay_94_A* unkPtr) { //r5
-    struct UnkStruct_Overlay_94_C* unkA = unkPtr->unkc80; //r4
-    POKEMON* pokemon = GetPartyMonByIndex(unkPtr->unk654->party, unkPtr->partyMonIndex); //r6
+BOOL ov94_021E593C(struct UnkStruct_Overlay_94_A* unkPtr) { 
+    struct UnkStruct_Overlay_94_C* unkA = unkPtr->unkc80; 
+    POKEMON* pokemon = GetPartyMonByIndex(unkPtr->unk654->party, unkPtr->partyMonIndex);
 
     switch (unkA->unk0) {
         case 0:
@@ -144,36 +144,22 @@ void ov94_021E5BA0(struct UnkStruct_Overlay_94_C* unkPtr) {
     }
 }
 
-/*
-static u32 _021E5CE8[] = {
-	0x8C, 0xBF, 0xFF, 0xFF
+static const int PartyMonSpritePositions[][2] = {
+  { -16500, 12000 },
+  { 5000, 11500 },
+  { -16500, 5000 },
+  { 5000, 3500 },
+  { -16500, -3000 },
+  { 5000, -4500 }
 };
 
-static u32 ov94_021E5CEC[] = {
-	0xE0, 0x2E, 0x00, 0x00,
-	0x88, 0x13, 0x00, 0x00, 
-	0xEC, 0x2C, 0x00, 0x00, 
-	0x8C, 0xBF, 0xFF, 0xFF, 
-	0x88, 0x13, 0x00, 0x00,
-	0x88, 0x13, 0x00, 0x00, 
-	0xAC, 0x0D, 0x00, 0x00, 
-	0x8C, 0xBF, 0xFF, 0xFF, 
-	0x48, 0xF4, 0xFF, 0xFF,
-	0x88, 0x13, 0x00, 0x00, 
-	0x6C, 0xEE, 0xFF, 0xFF
-};*/
-
-extern u32 _021E5CE8[];
-extern u32 ov94_021E5CEC[];
 
 void ov94_021E5C28(struct UnkStruct_Overlay_94_C* unkPtr) {
     u32* unkA = (u32*) sub_02015504();
-    u32 unkB = _021E5CE8[unkA[0x5] << 1];
-	u32 unkC = unkPtr->unk20[0][0x1];
-	unkPtr->unk28 = unkB + unkC;
-	u32 unkD = ov94_021E5CEC[unkA[0x5] << 1];
-	u32 unkE = unkPtr->unk20[0][0x2];
-	unkPtr->unk2c = unkD + unkE;
+    int x_pos = PartyMonSpritePositions[unkA[5]][0];
+	unkPtr->unk28 = x_pos + unkPtr->unk20[0][1];
+	int y_pos = PartyMonSpritePositions[unkA[5]][1];
+	unkPtr->unk2c = y_pos + unkPtr->unk20[0][2];
 }
 
 s32 ov94_021E5C60(void) {
@@ -226,3 +212,4 @@ u32 ov94_021E5CC4(u32 unkA, u32 unkB) {
 
     return unkC;
 }
+
