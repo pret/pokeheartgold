@@ -26,7 +26,7 @@
 
 extern const OVY_MGR_TEMPLATE gApplication_NewGameFieldsys;
 extern const OVY_MGR_TEMPLATE gApplication_ContinueFieldsys;
-extern const OVY_MGR_TEMPLATE _02106068;
+extern const OVY_MGR_TEMPLATE gApplication_OakSpeech;
 
 extern void sub_0201838C(IGT* igt);
 extern u32 sub_020674BC(SAVEDATA* savedata);
@@ -103,7 +103,7 @@ BOOL ov36_TitleScreen_NewGame_AppExec(OVY_MANAGER* man, int* state) {
 BOOL ov36_TitleScreen_NewGame_AppExit(OVY_MANAGER* man, int* state) {
 #pragma unused(man, state)
     DestroyHeap(HEAPID_OV36);
-    RegisterMainOverlay(FS_OVERLAY_ID_NONE, &_02106068);
+    RegisterMainOverlay(FS_OVERLAY_ID_NONE, &gApplication_OakSpeech);
 
     return TRUE;
 }
