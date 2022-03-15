@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_UNK_0203BBB4_H
-#define POKEHEARTGOLD_UNK_0203BBB4_H
+#ifndef POKEHEARTGOLD_DIAMOND_DUST_H
+#define POKEHEARTGOLD_DIAMOND_DUST_H
 
 #include "save.h"
 #include "sav_system_info.h"
@@ -27,4 +27,4 @@ typedef struct MonthDay {
 
 u32 sub_0203BBB4(FieldSystem* fsys, u32 mapId);
 
-#endif //POKEHEARTGOLD_UNK_0203BBB4_H
+#endif //POKEHEARTGOLD_DIAMOND_DUST_H

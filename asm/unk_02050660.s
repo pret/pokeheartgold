@@ -2032,7 +2032,7 @@ _02051696:
 	bl GetMonData
 	add r1, r0, #0
 	mov r0, #0
-	bl sub_02074930
+	bl Pokedex_ConvertToCurrentDexNo
 	cmp r0, #0
 	ldr r0, [r4, #0xc]
 	beq _020516C4
@@ -2079,7 +2079,7 @@ _020516FC:
 	bl GetMonData
 	add r1, r0, #0
 	mov r0, #0
-	bl sub_02074930
+	bl Pokedex_ConvertToCurrentDexNo
 	cmp r0, #0
 	ldr r0, [r4, #0xc]
 	beq _0205172A

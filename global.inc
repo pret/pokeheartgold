@@ -29367,7 +29367,7 @@ FS_EXTERN_OVERLAY(OV_101)
 .public Party_SafeCopyMonToSlot_ResetUnkSub
 .public Party_SwapSlots
 .public Party_copy
-.public sub_02074930
+.public Pokedex_ConvertToCurrentDexNo
 .public sub_02074944
 .public sub_0207495C
 .public sub_0207496C

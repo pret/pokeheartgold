@@ -2386,7 +2386,7 @@ _021E6C04:
 	beq _021E6C60
 	ldr r0, _021E6C84 ; =0x00001858
 	ldrb r0, [r7, r0]
-	bl sub_02074930
+	bl Pokedex_ConvertToCurrentDexNo
 	add r1, r0, #0
 	ldr r2, [sp, #4]
 	ldr r0, _021E6C88 ; =0x00001032
@@ -16327,7 +16327,7 @@ ov18_021EDDB4: ; 0x021EDDB4
 	add r1, r0, #0
 	ldr r0, _021EDDF8 ; =0x00001858
 	ldrb r0, [r5, r0]
-	bl sub_02074930
+	bl Pokedex_ConvertToCurrentDexNo
 	sub r4, r0, #1
 	add r0, r4, #0
 	mov r1, #0xf
@@ -17615,7 +17615,7 @@ ov18_021EE75C: ; 0x021EE75C
 	ldr r0, _021EE7D0 ; =0x00001858
 	add r1, r7, #0
 	ldrb r0, [r5, r0]
-	bl sub_02074930
+	bl Pokedex_ConvertToCurrentDexNo
 	add r2, r0, #0
 	mov r0, #2
 	str r0, [sp]
@@ -18210,7 +18210,7 @@ _021EEC5A:
 	ldr r0, _021EECA4 ; =0x00001858
 	ldr r1, [sp, #0x14]
 	ldrb r0, [r5, r0]
-	bl sub_02074930
+	bl Pokedex_ConvertToCurrentDexNo
 	add r2, r0, #0
 	mov r0, #2
 	str r0, [sp]
@@ -37851,7 +37851,7 @@ _021F88A8:
 	ldr r1, _021F890C ; =0x00000878
 	ldrb r0, [r5, r0]
 	ldrh r1, [r4, r1]
-	bl sub_02074930
+	bl Pokedex_ConvertToCurrentDexNo
 	ldr r1, _021F890C ; =0x00000878
 	sub r0, r0, #1
 	ldrh r2, [r4, r1]
@@ -37922,7 +37922,7 @@ _021F892A:
 	add r2, r2, r1
 	ldr r1, _021F894C ; =0x00000878
 	ldrh r1, [r2, r1]
-	bl sub_02074930
+	bl Pokedex_ConvertToCurrentDexNo
 	pop {r3, pc}
 	nop
 _021F8944: .word 0x0000102C
@@ -38432,7 +38432,7 @@ _021F8CDA:
 	lsl r1, r1, #2
 	ldr r0, [r5, #0x10]
 	ldr r1, [r5, r1]
-	bl sub_02074930
+	bl Pokedex_ConvertToCurrentDexNo
 	add r2, r0, #0
 	mov r0, #2
 	str r0, [sp]

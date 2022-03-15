@@ -31388,7 +31388,7 @@ ov14_021F5190: ; 0x021F5190
 	ldr r0, [r0]
 	bl SavArray_IsNatDexEnabled
 	ldrh r1, [r6, #4]
-	bl sub_02074930
+	bl Pokedex_ConvertToCurrentDexNo
 	add r6, r0, #0
 	beq _021F5208
 	ldr r2, [r5, #0x34]
