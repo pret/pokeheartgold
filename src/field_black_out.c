@@ -59,7 +59,7 @@ static void _InitDisplays(BGCONFIG *bgConfig) {
     {
         static const BGTEMPLATE _020FC534 = {
             0, 0, 0x800, 0,
-            GF_BG_SCR_SIZE_256x256, GF_BG_CLR_4BPP, 31, 0, 0, 1, 0, 0
+            GF_BG_SCR_SIZE_256x256, GF_BG_CLR_4BPP, 31, 0, 0, 1, 0, 0, 0
         };
         InitBgFromTemplate(bgConfig, 3, &_020FC534, GF_BG_TYPE_TEXT);
     }
@@ -157,7 +157,7 @@ static void _PrintMessage(struct BlackoutScreenWork *work, int msgno, u8 x, u8 y
         x = (work->window.width * 8 - width);
         x /= 2;
         x -= 4;
-        AddTextPrinterParameterized2(&work->window, 0, str1, x, y, 0xFF, MakeTextColor(1, 2, 0), NULL);
+        AddTextPrinterParameterized2(&work->window, 0, str1, x, y, TEXT_SPEED_NOTRANSFER, MakeTextColor(1, 2, 0), NULL);
     }
 
     String_dtor(str0);

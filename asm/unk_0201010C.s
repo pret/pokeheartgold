@@ -134,8 +134,8 @@ _0210F6B4:
 
 	.text
 
-	thumb_func_start sub_0201010C
-sub_0201010C: ; 0x0201010C
+	thumb_func_start FadeFunc_00
+FadeFunc_00: ; 0x0201010C
 	push {r3, lr}
 	ldr r1, [r0, #0xc]
 	cmp r1, #0
@@ -149,10 +149,10 @@ sub_0201010C: ; 0x0201010C
 _02010122:
 	bl sub_02010BB4
 	pop {r3, pc}
-	thumb_func_end sub_0201010C
+	thumb_func_end FadeFunc_00
 
-	thumb_func_start sub_02010128
-sub_02010128: ; 0x02010128
+	thumb_func_start FadeFunc_01
+FadeFunc_01: ; 0x02010128
 	push {r3, lr}
 	ldr r1, [r0, #0xc]
 	cmp r1, #0
@@ -168,10 +168,10 @@ _02010140:
 	bl sub_02010BB4
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02010128
+	thumb_func_end FadeFunc_01
 
-	thumb_func_start sub_02010148
-sub_02010148: ; 0x02010148
+	thumb_func_start FadeFunc_02
+FadeFunc_02: ; 0x02010148
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -197,10 +197,10 @@ _02010170:
 _02010178: .word _020F5D60
 _0201017C: .word _0210F64C
 _02010180: .word _0210F64C
-	thumb_func_end sub_02010148
+	thumb_func_end FadeFunc_02
 
-	thumb_func_start sub_02010184
-sub_02010184: ; 0x02010184
+	thumb_func_start FadeFunc_03
+FadeFunc_03: ; 0x02010184
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -225,10 +225,10 @@ _020101AA:
 _020101B0: .word _020F5D5C
 _020101B4: .word _0210F64C
 _020101B8: .word _0210F65C
-	thumb_func_end sub_02010184
+	thumb_func_end FadeFunc_03
 
-	thumb_func_start sub_020101BC
-sub_020101BC: ; 0x020101BC
+	thumb_func_start FadeFunc_04
+FadeFunc_04: ; 0x020101BC
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -254,10 +254,10 @@ _020101E4:
 _020101EC: .word _020F5D64
 _020101F0: .word _0210F64C
 _020101F4: .word _0210F66C
-	thumb_func_end sub_020101BC
+	thumb_func_end FadeFunc_04
 
-	thumb_func_start sub_020101F8
-sub_020101F8: ; 0x020101F8
+	thumb_func_start FadeFunc_05
+FadeFunc_05: ; 0x020101F8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -282,10 +282,10 @@ _0201021E:
 _02010224: .word _020F5D58
 _02010228: .word _0210F64C
 _0201022C: .word _0210F674
-	thumb_func_end sub_020101F8
+	thumb_func_end FadeFunc_05
 
-	thumb_func_start sub_02010230
-sub_02010230: ; 0x02010230
+	thumb_func_start FadeFunc_06
+FadeFunc_06: ; 0x02010230
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -306,10 +306,10 @@ _02010252:
 	pop {r4, pc}
 	.balign 4, 0
 _02010258: .word _020F5E2C
-	thumb_func_end sub_02010230
+	thumb_func_end FadeFunc_06
 
-	thumb_func_start sub_0201025C
-sub_0201025C: ; 0x0201025C
+	thumb_func_start FadeFunc_07
+FadeFunc_07: ; 0x0201025C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -329,10 +329,10 @@ _0201027C:
 	pop {r4, pc}
 	nop
 _02010284: .word _020F5E38
-	thumb_func_end sub_0201025C
+	thumb_func_end FadeFunc_07
 
-	thumb_func_start sub_02010288
-sub_02010288: ; 0x02010288
+	thumb_func_start FadeFunc_08
+FadeFunc_08: ; 0x02010288
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -358,10 +358,10 @@ _020102B0:
 _020102B8: .word _020F5D90
 _020102BC: .word _0210F64C
 _020102C0: .word _0210F654
-	thumb_func_end sub_02010288
+	thumb_func_end FadeFunc_08
 
-	thumb_func_start sub_020102C4
-sub_020102C4: ; 0x020102C4
+	thumb_func_start FadeFunc_09
+FadeFunc_09: ; 0x020102C4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -386,10 +386,10 @@ _020102EA:
 _020102F0: .word _020F5D68
 _020102F4: .word _0210F64C
 _020102F8: .word _0210F684
-	thumb_func_end sub_020102C4
+	thumb_func_end FadeFunc_09
 
-	thumb_func_start sub_020102FC
-sub_020102FC: ; 0x020102FC
+	thumb_func_start FadeFunc_10
+FadeFunc_10: ; 0x020102FC
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -415,10 +415,10 @@ _02010324:
 _0201032C: .word _020F5D80
 _02010330: .word _0210F64C
 _02010334: .word _0210F694
-	thumb_func_end sub_020102FC
+	thumb_func_end FadeFunc_10
 
-	thumb_func_start sub_02010338
-sub_02010338: ; 0x02010338
+	thumb_func_start FadeFunc_11
+FadeFunc_11: ; 0x02010338
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -443,10 +443,10 @@ _0201035E:
 _02010364: .word _020F5DB8
 _02010368: .word _0210F64C
 _0201036C: .word _0210F68C
-	thumb_func_end sub_02010338
+	thumb_func_end FadeFunc_11
 
-	thumb_func_start sub_02010370
-sub_02010370: ; 0x02010370
+	thumb_func_start FadeFunc_12
+FadeFunc_12: ; 0x02010370
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -467,10 +467,10 @@ _02010392:
 	pop {r4, pc}
 	.balign 4, 0
 _02010398: .word _020F5E5C
-	thumb_func_end sub_02010370
+	thumb_func_end FadeFunc_12
 
-	thumb_func_start sub_0201039C
-sub_0201039C: ; 0x0201039C
+	thumb_func_start FadeFunc_13
+FadeFunc_13: ; 0x0201039C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -490,10 +490,10 @@ _020103BC:
 	pop {r4, pc}
 	nop
 _020103C4: .word _020F5E68
-	thumb_func_end sub_0201039C
+	thumb_func_end FadeFunc_13
 
-	thumb_func_start sub_020103C8
-sub_020103C8: ; 0x020103C8
+	thumb_func_start FadeFunc_14
+FadeFunc_14: ; 0x020103C8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -516,10 +516,10 @@ _020103EC:
 	nop
 _020103F4: .word _020F5E80
 _020103F8: .word _020F5E8C
-	thumb_func_end sub_020103C8
+	thumb_func_end FadeFunc_14
 
-	thumb_func_start sub_020103FC
-sub_020103FC: ; 0x020103FC
+	thumb_func_start FadeFunc_15
+FadeFunc_15: ; 0x020103FC
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -541,10 +541,10 @@ _0201041E:
 	.balign 4, 0
 _02010424: .word _020F5EA4
 _02010428: .word _020F5EB0
-	thumb_func_end sub_020103FC
+	thumb_func_end FadeFunc_15
 
-	thumb_func_start sub_0201042C
-sub_0201042C: ; 0x0201042C
+	thumb_func_start FadeFunc_16
+FadeFunc_16: ; 0x0201042C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -565,10 +565,10 @@ _0201044E:
 	pop {r4, pc}
 	.balign 4, 0
 _02010454: .word _020F5EC8
-	thumb_func_end sub_0201042C
+	thumb_func_end FadeFunc_16
 
-	thumb_func_start sub_02010458
-sub_02010458: ; 0x02010458
+	thumb_func_start FadeFunc_17
+FadeFunc_17: ; 0x02010458
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -588,10 +588,10 @@ _02010478:
 	pop {r4, pc}
 	nop
 _02010480: .word _020F5ED4
-	thumb_func_end sub_02010458
+	thumb_func_end FadeFunc_17
 
-	thumb_func_start sub_02010484
-sub_02010484: ; 0x02010484
+	thumb_func_start FadeFunc_18
+FadeFunc_18: ; 0x02010484
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -612,10 +612,10 @@ _020104A6:
 	pop {r4, pc}
 	.balign 4, 0
 _020104AC: .word _020F5DD8
-	thumb_func_end sub_02010484
+	thumb_func_end FadeFunc_18
 
-	thumb_func_start sub_020104B0
-sub_020104B0: ; 0x020104B0
+	thumb_func_start FadeFunc_19
+FadeFunc_19: ; 0x020104B0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -635,10 +635,10 @@ _020104D0:
 	pop {r4, pc}
 	nop
 _020104D8: .word _020F5DE4
-	thumb_func_end sub_020104B0
+	thumb_func_end FadeFunc_19
 
-	thumb_func_start sub_020104DC
-sub_020104DC: ; 0x020104DC
+	thumb_func_start FadeFunc_20
+FadeFunc_20: ; 0x020104DC
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -659,10 +659,10 @@ _020104FE:
 	pop {r4, pc}
 	.balign 4, 0
 _02010504: .word _020F5DD0
-	thumb_func_end sub_020104DC
+	thumb_func_end FadeFunc_20
 
-	thumb_func_start sub_02010508
-sub_02010508: ; 0x02010508
+	thumb_func_start FadeFunc_21
+FadeFunc_21: ; 0x02010508
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -682,10 +682,10 @@ _02010528:
 	pop {r4, pc}
 	nop
 _02010530: .word _020F5DC8
-	thumb_func_end sub_02010508
+	thumb_func_end FadeFunc_21
 
-	thumb_func_start sub_02010534
-sub_02010534: ; 0x02010534
+	thumb_func_start FadeFunc_22
+FadeFunc_22: ; 0x02010534
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -706,10 +706,10 @@ _02010556:
 	pop {r4, pc}
 	.balign 4, 0
 _0201055C: .word _020F5E08
-	thumb_func_end sub_02010534
+	thumb_func_end FadeFunc_22
 
-	thumb_func_start sub_02010560
-sub_02010560: ; 0x02010560
+	thumb_func_start FadeFunc_23
+FadeFunc_23: ; 0x02010560
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -729,10 +729,10 @@ _02010580:
 	pop {r4, pc}
 	nop
 _02010588: .word _020F5E14
-	thumb_func_end sub_02010560
+	thumb_func_end FadeFunc_23
 
-	thumb_func_start sub_0201058C
-sub_0201058C: ; 0x0201058C
+	thumb_func_start FadeFunc_24
+FadeFunc_24: ; 0x0201058C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -753,10 +753,10 @@ _020105AE:
 	pop {r4, pc}
 	.balign 4, 0
 _020105B4: .word _020F5E20
-	thumb_func_end sub_0201058C
+	thumb_func_end FadeFunc_24
 
-	thumb_func_start sub_020105B8
-sub_020105B8: ; 0x020105B8
+	thumb_func_start FadeFunc_25
+FadeFunc_25: ; 0x020105B8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -776,10 +776,10 @@ _020105D8:
 	pop {r4, pc}
 	nop
 _020105E0: .word _020F5E44
-	thumb_func_end sub_020105B8
+	thumb_func_end FadeFunc_25
 
-	thumb_func_start sub_020105E4
-sub_020105E4: ; 0x020105E4
+	thumb_func_start FadeFunc_26
+FadeFunc_26: ; 0x020105E4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -800,10 +800,10 @@ _02010606:
 	pop {r4, pc}
 	.balign 4, 0
 _0201060C: .word _020F5DA8
-	thumb_func_end sub_020105E4
+	thumb_func_end FadeFunc_26
 
-	thumb_func_start sub_02010610
-sub_02010610: ; 0x02010610
+	thumb_func_start FadeFunc_27
+FadeFunc_27: ; 0x02010610
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -823,10 +823,10 @@ _02010630:
 	pop {r4, pc}
 	nop
 _02010638: .word _020F5DA0
-	thumb_func_end sub_02010610
+	thumb_func_end FadeFunc_27
 
-	thumb_func_start sub_0201063C
-sub_0201063C: ; 0x0201063C
+	thumb_func_start FadeFunc_28
+FadeFunc_28: ; 0x0201063C
 	push {r4, lr}
 	sub sp, #0x10
 	add r4, r0, #0
@@ -866,10 +866,10 @@ _02010680:
 	.balign 4, 0
 _02010688: .word _020F5EEC
 _0201068C: .word _020F5EFC
-	thumb_func_end sub_0201063C
+	thumb_func_end FadeFunc_28
 
-	thumb_func_start sub_02010690
-sub_02010690: ; 0x02010690
+	thumb_func_start FadeFunc_29
+FadeFunc_29: ; 0x02010690
 	push {r4, lr}
 	sub sp, #0x10
 	add r4, r0, #0
@@ -907,10 +907,10 @@ _020106D0:
 	.balign 4, 0
 _020106D8: .word _020F5F0C
 _020106DC: .word _020F5F1C
-	thumb_func_end sub_02010690
+	thumb_func_end FadeFunc_29
 
-	thumb_func_start sub_020106E0
-sub_020106E0: ; 0x020106E0
+	thumb_func_start FadeFunc_30
+FadeFunc_30: ; 0x020106E0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -936,10 +936,10 @@ _02010708:
 _02010710: .word _020F5EBC
 _02010714: .word _0210F64C
 _02010718: .word _0210F67C
-	thumb_func_end sub_020106E0
+	thumb_func_end FadeFunc_30
 
-	thumb_func_start sub_0201071C
-sub_0201071C: ; 0x0201071C
+	thumb_func_start FadeFunc_31
+FadeFunc_31: ; 0x0201071C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -964,10 +964,10 @@ _02010742:
 _02010748: .word _020F5DF0
 _0201074C: .word _0210F64C
 _02010750: .word _0210F664
-	thumb_func_end sub_0201071C
+	thumb_func_end FadeFunc_31
 
-	thumb_func_start sub_02010754
-sub_02010754: ; 0x02010754
+	thumb_func_start FadeFunc_32
+FadeFunc_32: ; 0x02010754
 	push {r4, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -1001,10 +1001,10 @@ _0201078E:
 	pop {r4, pc}
 	nop
 _02010798: .word _020F5D58
-	thumb_func_end sub_02010754
+	thumb_func_end FadeFunc_32
 
-	thumb_func_start sub_0201079C
-sub_0201079C: ; 0x0201079C
+	thumb_func_start FadeFunc_33
+FadeFunc_33: ; 0x0201079C
 	push {r4, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -1037,10 +1037,10 @@ _020107D4:
 	pop {r4, pc}
 	.balign 4, 0
 _020107DC: .word _020F5D98
-	thumb_func_end sub_0201079C
+	thumb_func_end FadeFunc_33
 
-	thumb_func_start sub_020107E0
-sub_020107E0: ; 0x020107E0
+	thumb_func_start FadeFunc_34
+FadeFunc_34: ; 0x020107E0
 	push {r4, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -1074,10 +1074,10 @@ _0201081A:
 	pop {r4, pc}
 	nop
 _02010824: .word _020F5D58
-	thumb_func_end sub_020107E0
+	thumb_func_end FadeFunc_34
 
-	thumb_func_start sub_02010828
-sub_02010828: ; 0x02010828
+	thumb_func_start FadeFunc_35
+FadeFunc_35: ; 0x02010828
 	push {r4, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -1110,10 +1110,10 @@ _02010860:
 	pop {r4, pc}
 	.balign 4, 0
 _02010868: .word _020F5D58
-	thumb_func_end sub_02010828
+	thumb_func_end FadeFunc_35
 
-	thumb_func_start sub_0201086C
-sub_0201086C: ; 0x0201086C
+	thumb_func_start FadeFunc_36
+FadeFunc_36: ; 0x0201086C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -1134,10 +1134,10 @@ _0201088E:
 	pop {r4, pc}
 	.balign 4, 0
 _02010894: .word _020F5E98
-	thumb_func_end sub_0201086C
+	thumb_func_end FadeFunc_36
 
-	thumb_func_start sub_02010898
-sub_02010898: ; 0x02010898
+	thumb_func_start FadeFunc_37
+FadeFunc_37: ; 0x02010898
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -1157,10 +1157,10 @@ _020108B8:
 	pop {r4, pc}
 	nop
 _020108C0: .word _020F5EE0
-	thumb_func_end sub_02010898
+	thumb_func_end FadeFunc_37
 
-	thumb_func_start sub_020108C4
-sub_020108C4: ; 0x020108C4
+	thumb_func_start FadeFunc_38
+FadeFunc_38: ; 0x020108C4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -1181,10 +1181,10 @@ _020108E6:
 	pop {r4, pc}
 	.balign 4, 0
 _020108EC: .word _020F5DFC
-	thumb_func_end sub_020108C4
+	thumb_func_end FadeFunc_38
 
-	thumb_func_start sub_020108F0
-sub_020108F0: ; 0x020108F0
+	thumb_func_start FadeFunc_39
+FadeFunc_39: ; 0x020108F0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -1204,10 +1204,10 @@ _02010910:
 	pop {r4, pc}
 	nop
 _02010918: .word _020F5E50
-	thumb_func_end sub_020108F0
+	thumb_func_end FadeFunc_39
 
-	thumb_func_start sub_0201091C
-sub_0201091C: ; 0x0201091C
+	thumb_func_start FadeFunc_40
+FadeFunc_40: ; 0x0201091C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -1233,10 +1233,10 @@ _02010944:
 _0201094C: .word _020F5D98
 _02010950: .word _0210F64C
 _02010954: .word _0210F69C
-	thumb_func_end sub_0201091C
+	thumb_func_end FadeFunc_40
 
-	thumb_func_start sub_02010958
-sub_02010958: ; 0x02010958
+	thumb_func_start FadeFunc_41
+FadeFunc_41: ; 0x02010958
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -1261,10 +1261,10 @@ _0201097E:
 _02010984: .word _020F5DB0
 _02010988: .word _0210F64C
 _0201098C: .word _0210F6B4
-	thumb_func_end sub_02010958
+	thumb_func_end FadeFunc_41
 
-	thumb_func_start sub_02010990
-sub_02010990: ; 0x02010990
+	thumb_func_start FadeFunc_42
+FadeFunc_42: ; 0x02010990
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
@@ -1285,7 +1285,7 @@ _020109B2:
 	pop {r4, pc}
 	.balign 4, 0
 _020109B8: .word _020F5E74
-	thumb_func_end sub_02010990
+	thumb_func_end FadeFunc_42
 
 	thumb_func_start sub_020109BC
 sub_020109BC: ; 0x020109BC
