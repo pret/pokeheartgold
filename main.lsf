@@ -149,7 +149,7 @@ Static main
 	Object src/map_events.o
 	Object asm/unk_0203B91C.o
 	Object asm/unk_0203BA5C.o
-	Object asm/unk_0203BBB4.o
+	Object src/unk_0203BBB4.o
 	Object asm/unk_0203BC10.o
 	Object asm/unk_0203DB6C.o
 	Object asm/unk_0203DE74.o
