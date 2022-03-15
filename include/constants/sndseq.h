@@ -374,8 +374,8 @@
 #define SEQ_SE_PL_CALL                       1377
 #define SEQ_SE_PL_UG_020                     1378
 #define SEQ_SE_PL_W100                       1379
-#define SEQ_SE_PL_W467109                    1380
-#define SEQ_SE_PL_W363                       1381
+#define SEQ_SE_PARTY_GIRATINA_FORME_CHANGE   1380
+#define SEQ_SE_PARTY_SHAYMIN_FORME_CHANGE    1381
 #define SEQ_SE_PL_BAG3                       1382
 #define SEQ_SE_PL_FW089                      1383
 #define SEQ_SE_PL_COIN                       1384
