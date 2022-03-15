@@ -537,7 +537,7 @@ _020583FC:
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #0
 	bl sub_0200FBDC
 	mov r0, #1
@@ -691,7 +691,7 @@ _02058528:
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #0
 	bl sub_0200FBDC
 	mov r0, #1

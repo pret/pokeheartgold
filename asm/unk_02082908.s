@@ -167,7 +167,7 @@ _0208291E:
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #1
 	bl sub_020832E4
 	ldr r0, _02082ADC ; =gSystem + 0x60
@@ -273,7 +273,7 @@ _02082B40: ; jump table
 	.short _02082B90 - _02082B40 - 2 ; case 2
 	.short _02082CBE - _02082B40 - 2 ; case 3
 _02082B48:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _02082B84
 	mov r0, #1
@@ -412,7 +412,7 @@ _02082C40:
 	mov r0, #2
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #3
 	str r0, [r5]
 _02082C6A:
@@ -456,7 +456,7 @@ _02082C6A:
 	bl sub_02084500
 	b _02082CCC
 _02082CBE:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _02082CCC
 	add sp, #0x10
@@ -4245,7 +4245,7 @@ _02084AE4:
 	mov r0, #2
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	add r0, r4, #0
 	add r1, r6, #0
 	bl sub_02084C58

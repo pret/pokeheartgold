@@ -144,7 +144,7 @@ _02056792:
 	strh r0, [r4, #2]
 	b _020567AE
 _0205679A:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _020567AE
 	ldrh r0, [r4, #2]
@@ -307,7 +307,7 @@ _020568DE:
 	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _02056932
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _02056932
 	add r0, r5, #0
@@ -439,7 +439,7 @@ _020569FA:
 	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _02056A4E
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _02056A4E
 	add r0, r5, #0

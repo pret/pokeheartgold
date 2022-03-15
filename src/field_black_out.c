@@ -1,12 +1,20 @@
 #include "scrcmd.h"
 #include "gf_gfx_loader.h"
 #include "unk_0200FA24.h"
-#include "task.h"
+#include "field_black_out.h"
 #include "system.h"
 #include "unk_0200E398.h"
 #include "font.h"
 #include "text.h"
 #include "save_flypoints.h"
+#include "unk_0203BA5C.h"
+#include "unk_02052F30.h"
+#include "unk_0206793C.h"
+#include "unk_0200B150.h"
+#include "unk_02054E00.h"
+#include "unk_020552A4.h"
+#include "use_item_on_mon.h"
+#include "sound.h"
 #include "msgdata/msg/msg_0203.h"
 
 struct BlackoutScreenWork {
@@ -18,10 +26,12 @@ struct BlackoutScreenWork {
     MSGFMT *msgFmt;
 };
 
-void _print_message(struct BlackoutScreenWork *work, int msgno, u8 x, u8 y);
-BOOL sub_020526D4(TaskManager *taskManager);
+void _InitDisplays(BGCONFIG *bgConfig);
+void _DrawScurryMessageScreen(FieldSystem *fsys, TaskManager *taskManager);
+BOOL _Task_ShowPrintedMessage(TaskManager *taskManager);
+void _PrintMessage(struct BlackoutScreenWork *work, int msgno, u8 x, u8 y);
 
-void sub_020525BC(BGCONFIG *bgConfig) {
+static void _InitDisplays(BGCONFIG *bgConfig) {
     {
         static const struct GXBanksConfig _020FC550 = {
             GX_VRAM_BG_128_B,
@@ -57,7 +67,7 @@ void sub_020525BC(BGCONFIG *bgConfig) {
     BG_SetMaskColor(3, RGB_WHITE);
 }
 
-void _draw_scurry_message_screen(FieldSystem *fsys, TaskManager *taskManager) {
+static void _DrawScurryMessageScreen(FieldSystem *fsys, TaskManager *taskManager) {
     struct BlackoutScreenWork *env;
 
     env = AllocFromHeap((HeapID)11, sizeof(struct BlackoutScreenWork));
@@ -70,7 +80,7 @@ void _draw_scurry_message_screen(FieldSystem *fsys, TaskManager *taskManager) {
     sub_0200FBF4(1, RGB_WHITE);
     sub_0200FBDC(0);
     sub_0200FBDC(1);
-    sub_020525BC(env->bgConfig);
+    _InitDisplays(env->bgConfig);
     env->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0203_bin, (HeapID)11);
     env->msgFmt = ScrStrBufs_new((HeapID)11);
     {
@@ -88,35 +98,35 @@ void _draw_scurry_message_screen(FieldSystem *fsys, TaskManager *taskManager) {
     }
     BufferPlayersName(env->msgFmt, 0, Sav2_PlayerData_GetProfileAddr(ScriptEnvironment_GetSav2Ptr(fsys)));
     if (fsys->location->mapId == MAP_T20R0201) {
-        _print_message(env, msg_0203_00004, 0, 0);
+        _PrintMessage(env, msg_0203_00004, 0, 0);
     } else {
-        _print_message(env, msg_0203_00003, 0, 0);
+        _PrintMessage(env, msg_0203_00003, 0, 0);
     }
     CopyWindowToVram(&env->window);
-    TaskManager_Call(taskManager, sub_020526D4, env);
+    TaskManager_Call(taskManager, _Task_ShowPrintedMessage, env);
 }
 
-BOOL sub_020526D4(TaskManager *taskManager) {
+static BOOL _Task_ShowPrintedMessage(TaskManager *taskManager) {
     struct BlackoutScreenWork *work = TaskManager_GetEnv(taskManager);
     switch (work->state) {
     case 0:
-        sub_0200FA24(3, 1, 0x2B, 0x7FFF, 8, 1, 32);
+        BeginNormalPaletteFade(3, 1, 43, RGB_WHITE, 8, 1, (HeapID)32);
         G2_BlendNone();
         work->state++;
         break;
     case 1:
-        if (sub_0200FB5C()) {
+        if (IsPaletteFadeActive()) {
             work->state++;
         }
         break;
     case 2:
         if (gSystem.newKeys & PAD_BUTTON_A || gSystem.newKeys & PAD_BUTTON_B || gSystem.touchNew != 0) {
-            sub_0200FA24(0, 0, 0, 0, 8, 1, 32);
+            BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 8, 1, (HeapID)32);
             work->state++;
         }
         break;
     case 3:
-        if (sub_0200FB5C()) {
+        if (IsPaletteFadeActive()) {
             FillWindowPixelBuffer(&work->window, 0);
             work->state++;
         }
@@ -135,7 +145,7 @@ BOOL sub_020526D4(TaskManager *taskManager) {
     return FALSE;
 }
 
-void _print_message(struct BlackoutScreenWork *work, int msgno, u8 x, u8 y) {
+static void _PrintMessage(struct BlackoutScreenWork *work, int msgno, u8 x, u8 y) {
     STRING *str0 = String_ctor(1024, (HeapID)11);
     STRING *str1 = String_ctor(1024, (HeapID)11);
 
@@ -147,9 +157,67 @@ void _print_message(struct BlackoutScreenWork *work, int msgno, u8 x, u8 y) {
         x = (work->window.width * 8 - width);
         x /= 2;
         x -= 4;
-        AddTextPrinterParameterized2(&work->window, 0, str1, x, y, 0xFF, 0x010200, 0);
+        AddTextPrinterParameterized2(&work->window, 0, str1, x, y, 0xFF, MakeTextColor(1, 2, 0), NULL);
     }
 
     String_dtor(str0);
     String_dtor(str1);
+}
+
+BOOL Task_BlackOut(TaskManager *taskManager) {
+    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    u32 *state = TaskManager_GetStatePtr(taskManager);
+    FLYPOINTS_SAVE *flypointsSave;
+    Location deathWarp;
+    u16 deathSpawn;
+
+    switch (*state) {
+    case 0:
+        flypointsSave = Save_FlyPoints_get(fsys->savedata);
+        deathSpawn = FlyPoints_GetDeathSpawn(flypointsSave);
+        GetDeathWarpData(deathSpawn, &deathWarp);
+        GetSpecialSpawnWarpData(deathSpawn, FlyPoints_GetSpecialSpawnWarpPtr(flypointsSave));
+        sub_020537A8(taskManager, &deathWarp);
+        Fsys_ClearFollowingTrainer(fsys);
+        HealParty(SavArray_PlayerParty_get(fsys->savedata));
+        (*state)++;
+        break;
+    case 1:
+        GF_SndStartFadeOutBGM(0, 20);
+        (*state)++;
+        break;
+    case 2:
+        if (GF_SndGetFadeTimer() == 0) {
+            sub_02054F14();
+            (*state)++;
+        }
+        break;
+    case 3:
+        SetBlendBrightness(-16, 0x37, 1);
+        SetBlendBrightness(-16, 0x3F, 2);
+        _DrawScurryMessageScreen(fsys, taskManager);
+        (*state)++;
+        break;
+    case 4:
+        sub_020552A4(taskManager);
+        (*state)++;
+        break;
+    case 5:
+        SetBlendBrightness(0, 0x3F, 3);
+        if (GetMomSpawnId() == FlyPoints_GetDeathSpawn(Save_FlyPoints_get(fsys->savedata))) {
+            QueueScript(taskManager, std_whited_out_to_mom, NULL, NULL);
+        } else {
+            QueueScript(taskManager, std_whited_out_to_pokecenter, NULL, NULL);
+        }
+        (*state)++;
+        break;
+    case 6:
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+void FieldTask_CallBlackOut(TaskManager *taskManager) {
+    TaskManager_Call(taskManager, Task_BlackOut, NULL);
 }

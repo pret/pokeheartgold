@@ -1238,12 +1238,12 @@ _0225F922:
 	mov r0, #3
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #1
 	str r0, [r4]
 	b _0225F968
 _0225F946:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0225F968
 	mov r0, #2
@@ -1292,12 +1292,12 @@ _0225F986:
 	mov r0, #3
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #1
 	str r0, [r4]
 	b _0225F9CC
 _0225F9AA:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0225F9CC
 	mov r0, #2

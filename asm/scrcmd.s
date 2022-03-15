@@ -5607,7 +5607,7 @@ ScrCmd_FadeScreen: ; 0x02043400
 	mov r0, #0
 	add r1, r7, #0
 	add r2, r7, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #0
 	bl sub_0200FBDC
 	mov r0, #1
@@ -5631,7 +5631,7 @@ _02043454: .word sub_02043458
 	thumb_func_start sub_02043458
 sub_02043458: ; 0x02043458
 	push {r3, lr}
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _02043466
 	mov r0, #1

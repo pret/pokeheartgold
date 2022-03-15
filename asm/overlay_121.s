@@ -45,14 +45,14 @@ _021E5936:
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #0x23
 	mov r1, #1
 	lsl r0, r0, #4
 	strb r1, [r4, r0]
 	b _021E59B0
 _021E5956:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _021E59B0
 	mov r0, #0x23
@@ -80,14 +80,14 @@ _021E597A:
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #0x23
 	mov r1, #4
 	lsl r0, r0, #4
 	strb r1, [r4, r0]
 	b _021E59B0
 _021E599C:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _021E59B0
 	add r0, r4, #0

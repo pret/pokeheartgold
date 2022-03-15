@@ -542,7 +542,7 @@ ov93_0225C768: ; 0x0225C768
 	mov r1, #0x1b
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, _0225CA7C ; =ov93_0225D07C
 	ldr r2, _0225CA80 ; =0x0000EA60
 	add r1, r5, #0
@@ -634,7 +634,7 @@ ov93_0225CA8C: ; 0x0225CA8C
 	cmp r0, #1
 	b _0225CAE0
 _0225CAB2:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _0225CABE
 	bl sub_0200FB70
@@ -686,7 +686,7 @@ _0225CB08: ; jump table
 	.short _0225CB6E - _0225CB08 - 2 ; case 5
 	.short _0225CCBA - _0225CB08 - 2 ; case 6
 _0225CB16:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _0225CB60
 	ldr r0, [r5]
@@ -748,7 +748,7 @@ _0225CB6E:
 	mov r1, #0x1a
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -895,7 +895,7 @@ _0225CC9C:
 	str r2, [r4, r0]
 	b _0225CCC8
 _0225CCBA:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _0225CCC8
 	add sp, #0xc

@@ -1062,7 +1062,7 @@ _02059334:
 	str r0, [r4, #0x34]
 	b _02059472
 _02059340:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	bne _0205934A
 _02059348:
@@ -2289,7 +2289,7 @@ _02059C6C:
 	str r0, [r4, #0x28]
 	b _02059D36
 _02059CBC:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _02059D36
 	ldr r0, [r4, #0x28]

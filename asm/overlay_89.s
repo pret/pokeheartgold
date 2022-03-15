@@ -235,7 +235,7 @@ ov89_02258800: ; 0x02258800
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r5]
 	ldr r0, [r0]
 	cmp r0, #0
@@ -364,7 +364,7 @@ _02258B52:
 	str r0, [r5]
 	b _02258E4A
 _02258B70:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	beq _02258B7A
 	b _02258E4A
@@ -676,7 +676,7 @@ _02258DE6:
 	str r0, [r5]
 	b _02258E4A
 _02258E04:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	bne _02258E10
 	bl sub_0200FB70
@@ -691,13 +691,13 @@ _02258E10:
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
 	b _02258E4A
 _02258E30:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _02258E4A
 	ldr r0, [r5]

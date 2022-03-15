@@ -54,12 +54,12 @@ _0221E604:
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #2
 	str r0, [r4, #4]
 	b _0221E68A
 _0221E620:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0221E68A
 	mov r0, #3
@@ -94,12 +94,12 @@ _0221E650:
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #5
 	str r0, [r4, #4]
 	b _0221E68A
 _0221E66E:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0221E68A
 	add r0, r5, #0

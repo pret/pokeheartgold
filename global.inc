@@ -26543,9 +26543,9 @@ FS_EXTERN_OVERLAY(OV_101)
 .public sub_0200F478
 .public sub_0200F4A0
 .public sub_0200F4F8
-.public sub_0200FA24
+.public BeginNormalPaletteFade
 .public sub_0200FB2C
-.public sub_0200FB5C
+.public IsPaletteFadeActive
 .public sub_0200FB70
 .public sub_0200FBDC
 .public SetMasterBrightnessNeutral

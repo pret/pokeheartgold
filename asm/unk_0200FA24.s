@@ -76,8 +76,8 @@ _021D1034:
 
 	.text
 
-	thumb_func_start sub_0200FA24
-sub_0200FA24: ; 0x0200FA24
+	thumb_func_start BeginNormalPaletteFade
+BeginNormalPaletteFade: ; 0x0200FA24
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1c
 	add r5, r0, #0
@@ -191,7 +191,7 @@ _0200FB1C: .word _021D0EFC
 _0200FB20: .word _021D0EF4
 _0200FB24: .word 0x0000014E
 _0200FB28: .word 0x0000014F
-	thumb_func_end sub_0200FA24
+	thumb_func_end BeginNormalPaletteFade
 
 	thumb_func_start sub_0200FB2C
 sub_0200FB2C: ; 0x0200FB2C
@@ -218,8 +218,8 @@ _0200FB54: .word _021D1034
 _0200FB58: .word _021D0EF4
 	thumb_func_end sub_0200FB2C
 
-	thumb_func_start sub_0200FB5C
-sub_0200FB5C: ; 0x0200FB5C
+	thumb_func_start IsPaletteFadeActive
+IsPaletteFadeActive: ; 0x0200FB5C
 	ldr r0, _0200FB6C ; =_021D1034
 	ldrh r0, [r0, #0xc]
 	cmp r0, #0
@@ -231,7 +231,7 @@ _0200FB68:
 	bx lr
 	.balign 4, 0
 _0200FB6C: .word _021D1034
-	thumb_func_end sub_0200FB5C
+	thumb_func_end IsPaletteFadeActive
 
 	thumb_func_start sub_0200FB70
 sub_0200FB70: ; 0x0200FB70

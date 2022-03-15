@@ -8,7 +8,7 @@ ov71_02246960: ; 0x02246960
 	push {r4, r5, lr}
 	sub sp, #0x14
 	add r5, r0, #0
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	bne _02246970
 	b _02246B0C
@@ -2457,7 +2457,7 @@ ov71_02247A10: ; 0x02247A10
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #1
 	add sp, #0x1c
 	pop {r3, r4, pc}
@@ -2481,7 +2481,7 @@ ov71_02247C34: ; 0x02247C34
 	ldr r0, [r1]
 	cmp r0, #0
 	bne _02247C5A
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _02247C5A
 	ldr r0, [r4, #0x3c]
@@ -2775,13 +2775,13 @@ _02247E8E:
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _02247EC6
 _02247EAE:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _02247EC6
 	add r0, r5, #0
@@ -3496,7 +3496,7 @@ ov71_02248408: ; 0x02248408
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #1
 	add sp, #0xc
 	pop {r3, r4, pc}
@@ -3514,7 +3514,7 @@ ov71_0224843C: ; 0x0224843C
 	beq _02248462
 	b _0224847A
 _0224844C:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0224847A
 	ldr r0, _02248480 ; =ov71_0224C0C4
@@ -3723,13 +3723,13 @@ _022485B8:
 	ldr r3, _02248600 ; =0x00007FFF
 	add r1, r0, #0
 	add r2, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
 	b _022485F4
 _022485E6:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _022485F4
 	add sp, #0xc
@@ -5700,7 +5700,7 @@ ov71_02249558: ; 0x02249558
 	ldr r3, _0224959C ; =0x00007FFF
 	mov r0, #0
 	add r2, r1, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #1
 	add sp, #0xc
 	pop {r3, r4, pc}
@@ -5789,13 +5789,13 @@ _02249624:
 	ldr r3, _0224966C ; =0x00007FFF
 	add r1, r0, #0
 	add r2, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _0224965C
 _0224964E:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0224965C
 	add sp, #0xc
@@ -6707,7 +6707,7 @@ ov71_02249D58: ; 0x02249D58
 	ldr r3, _02249D7C ; =0x00007FFF
 	mov r0, #0
 	add r2, r1, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
@@ -6730,7 +6730,7 @@ ov71_02249D80: ; 0x02249D80
 	beq _02249DF6
 	b _02249E04
 _02249D98:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _02249E04
 	ldr r0, _02249E0C ; =0xFFE80000
@@ -6769,13 +6769,13 @@ _02249DCA:
 	ldr r3, _02249E20 ; =0x00007FFF
 	add r1, r0, #0
 	add r2, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _02249E04
 _02249DF6:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _02249E04
 	add sp, #0xc
@@ -7222,7 +7222,7 @@ ov71_0224A18C: ; 0x0224A18C
 	ldr r3, _0224A1C0 ; =0x00007FFF
 	mov r0, #0
 	add r2, r1, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #1
 	add sp, #0xc
 	pop {r3, r4, pc}
@@ -7251,7 +7251,7 @@ _0224A1DE: ; jump table
 	.short _0224A230 - _0224A1DE - 2 ; case 2
 	.short _0224A25C - _0224A1DE - 2 ; case 3
 _0224A1E6:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0224A26A
 	ldr r0, [r5, #0x20]
@@ -7298,13 +7298,13 @@ _0224A230:
 	ldr r3, _0224A274 ; =0x00007FFF
 	add r1, r0, #0
 	add r2, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _0224A26A
 _0224A25C:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0224A26A
 	add sp, #0xc
@@ -8290,7 +8290,7 @@ ov71_0224A9F8: ; 0x0224A9F8
 	ldr r3, _0224AA24 ; =0x00007FFF
 	mov r0, #0
 	add r2, r1, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #1
 	add sp, #0xc
 	pop {r3, r4, pc}
@@ -8321,7 +8321,7 @@ _0224AA40: ; jump table
 	.short _0224AAD4 - _0224AA40 - 2 ; case 5
 	.short _0224AAE8 - _0224AA40 - 2 ; case 6
 _0224AA4E:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0224AAF2
 	mov r0, #0
@@ -8459,13 +8459,13 @@ _0224AB38:
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _0224AB76
 _0224AB62:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0224AB76
 	ldr r0, [r5, #0x1c]
@@ -9515,7 +9515,7 @@ ov71_0224B280: ; 0x0224B280
 	mov r0, #3
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #1
 	add sp, #0x1c
 	pop {r3, r4, pc}
@@ -9537,7 +9537,7 @@ ov71_0224B450: ; 0x0224B450
 	ldr r0, [r1]
 	cmp r0, #0
 	bne _0224B476
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0224B476
 	ldr r0, [r4, #0x40]
@@ -9840,13 +9840,13 @@ _0224B6AE:
 	mov r0, #3
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
 	b _0224B6E6
 _0224B6D8:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0224B6E6
 	add sp, #0x10

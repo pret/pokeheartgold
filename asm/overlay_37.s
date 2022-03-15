@@ -80,7 +80,7 @@ _021E5916:
 	mov r1, #0x11
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	add r0, r6, #0
 	bl OverlayManager_GetParentWork
 	str r0, [r4, #8]
@@ -204,7 +204,7 @@ _021E5ACC: ; jump table
 	.short _021E5B48 - _021E5ACC - 2 ; case 2
 	.short _021E5B68 - _021E5ACC - 2 ; case 3
 _021E5AD4:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _021E5B74
 	bl sub_0203769C
@@ -276,7 +276,7 @@ _021E5B48:
 	str r0, [r5]
 	b _021E5B74
 _021E5B68:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _021E5B74
 	mov r0, #1
@@ -2365,7 +2365,7 @@ ov37_021E6C84: ; 0x021E6C84
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r4, #3
 _021E6CB4:
 	add r0, r5, #0
@@ -2571,7 +2571,7 @@ _021E6E46:
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r5, #3
 _021E6E5E:
 	add r0, r4, #0

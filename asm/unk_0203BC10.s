@@ -598,7 +598,7 @@ _0203C054:
 	strh r0, [r5, #0x26]
 	b _0203C136
 _0203C06A:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0203C136
 	add r0, r5, #0
@@ -623,7 +623,7 @@ _0203C08A:
 	strh r0, [r5, #0x26]
 	b _0203C136
 _0203C0A6:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0203C136
 	mov r2, #0xd5
@@ -675,7 +675,7 @@ _0203C0E0:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _0203C11A:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0203C136
 	mov r0, #3
@@ -1626,7 +1626,7 @@ _0203C84E:
 sub_0203C870: ; 0x0203C870
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0203C8AE
 	add r0, r5, #0

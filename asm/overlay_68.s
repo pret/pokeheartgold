@@ -764,7 +764,7 @@ ov68_021E5F18: ; 0x021E5F18
 ov68_021E5F50: ; 0x021E5F50
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _021E5F64
 	mov r0, #0x1b

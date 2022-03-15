@@ -434,7 +434,7 @@ ov27_0225A320: ; 0x0225A320
 	beq _0225A366
 	cmp r6, #0
 	beq _0225A35E
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0225A35E
 	ldr r2, [r5, #0x10]
@@ -1088,7 +1088,7 @@ _0225A846:
 	ldr r0, [r1, #0x6c]
 	cmp r0, #0
 	beq _0225A86A
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0225A86A
 	add r0, r4, #0
@@ -1131,7 +1131,7 @@ ov27_0225A86C: ; 0x0225A86C
 ov27_0225A89C: ; 0x0225A89C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0225A8E0
 	ldr r0, [r4, #0x6c]
@@ -2691,7 +2691,7 @@ _0225B53A:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _0225B53E:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	bne _0225B54A
 	mov r0, #1

@@ -382,7 +382,7 @@ _020858B8:
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #0
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
@@ -412,7 +412,7 @@ _020858F2:
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #0xb2
 	lsl r0, r0, #2
 	ldr r1, [r4, r0]
@@ -420,7 +420,7 @@ _020858F2:
 	str r1, [r4, r0]
 	b _02085930
 _02085916:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _02085930
 	mov r0, #0xb2
@@ -449,7 +449,7 @@ sub_02085938: ; 0x02085938
 	ldr r1, [r4, r1]
 	cmp r1, #0
 	bne _0208595A
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _0208596E
 	mov r0, #0xb2

@@ -131,7 +131,7 @@ _022588F8:
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r6, #8]
 	mov r1, #1
 	bl ov45_0222A520
@@ -140,7 +140,7 @@ _022588F8:
 	str r0, [r5]
 	b _022589EA
 _0225891E:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _022589EA
 	ldr r0, [r5]
@@ -225,13 +225,13 @@ _022589BC:
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
 	b _022589EA
 _022589DC:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _022589EA
 	add sp, #0xc

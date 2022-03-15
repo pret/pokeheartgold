@@ -351,7 +351,7 @@ _02201E64:
 	str r0, [sp, #8]
 	mov r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	add r0, r4, #0
 	add r0, #0x70
 	ldrh r0, [r0]
@@ -360,7 +360,7 @@ _02201E64:
 	strh r0, [r4]
 	b _02201EA2
 _02201E88:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _02201EA2
 	add r0, r4, #0
@@ -400,7 +400,7 @@ _02201EBC:
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	add r0, r4, #0
 	add r0, #0x70
 	ldrh r0, [r0]
@@ -409,7 +409,7 @@ _02201EBC:
 	strh r0, [r4]
 	b _02201EF6
 _02201EE2:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _02201EF6
 	mov r0, #0

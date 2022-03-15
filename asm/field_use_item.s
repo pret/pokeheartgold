@@ -1915,7 +1915,7 @@ _0206581E:
 	strb r0, [r4]
 	b _020658B4
 _02065832:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _020658B4
 	ldr r1, [r4, #0x1c]
@@ -1967,7 +1967,7 @@ _0206587E:
 	strb r0, [r4]
 	b _020658B4
 _0206589C:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _020658B4
 	ldr r0, [r5, #0x3c]

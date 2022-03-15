@@ -211,7 +211,7 @@ _021E5A9A:
 	ldr r2, [r4]
 	str r2, [sp, #8]
 	add r2, r1, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -228,7 +228,7 @@ _021E5A9A:
 	str r0, [r5]
 	b _021E6028
 _021E5B0A:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _021E5BEC
 	mov r0, #2
@@ -828,12 +828,12 @@ _021E5FDC:
 	str r1, [sp, #8]
 	add r1, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #0x12
 	str r0, [r5]
 	b _021E6028
 _021E5FFE:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _021E6028
 	ldr r0, _021E6078 ; =0x0000C2F8

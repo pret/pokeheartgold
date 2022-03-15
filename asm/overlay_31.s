@@ -318,7 +318,7 @@ ov31_0225D7A0: ; 0x0225D7A0
 	beq _0225D7BE
 	pop {r3, r4, r5, pc}
 _0225D7B0:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _0225D836
 	mov r0, #1

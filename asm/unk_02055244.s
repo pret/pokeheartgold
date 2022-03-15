@@ -82,7 +82,7 @@ _020552D0: .word sub_0205528C
 	thumb_func_start sub_020552D4
 sub_020552D4: ; 0x020552D4
 	push {r3, lr}
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _020552E2
 	mov r0, #1
@@ -116,7 +116,7 @@ _02055302:
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r1, _02055328 ; =sub_020552D4
 	add r0, r4, #0
 	mov r2, #0
@@ -149,7 +149,7 @@ _02055346:
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r1, _0205536C ; =sub_020552D4
 	add r0, r4, #0
 	mov r2, #0
