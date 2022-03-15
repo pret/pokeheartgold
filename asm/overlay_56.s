@@ -23,7 +23,7 @@ ov56_021E5C20: ; 0x021E5C20
 	mov r0, #0x29
 	str r0, [r4]
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r4, #0x1c]
 	ldrh r0, [r0]
 	ldr r1, _021E5C98 ; =0x0000FFFF
@@ -1899,7 +1899,7 @@ _021E6B26:
 	mov r0, #1
 	add r1, r5, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0x40
 	sub r7, r1, r0
 	add r0, r6, #3

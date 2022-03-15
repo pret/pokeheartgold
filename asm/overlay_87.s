@@ -27,7 +27,7 @@ ov87_021E5900: ; 0x021E5900
 	str r0, [r4, #0x58]
 	add r0, r5, #0
 	str r5, [r4]
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	mov r1, #0x5a
 	add r2, r5, #0
@@ -1893,7 +1893,7 @@ _021E6800:
 	bl ov87_021E7FC0
 _021E6816:
 	mov r0, #2
-	bl sub_02002DB4
+	bl FontID_Release
 	mov r0, #0x57
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
@@ -2014,25 +2014,25 @@ ov87_021E68DC: ; 0x021E68DC
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x7a
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #0x1a
 	mov r0, #4
 	lsl r1, r1, #4
 	mov r2, #0x7a
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #6
 	mov r0, #0
 	lsl r1, r1, #6
 	mov r2, #0x7a
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #6
 	mov r0, #4
 	lsl r1, r1, #6
 	mov r2, #0x7a
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #2
 	mov r1, #0x7a
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #0xf
 	mov r1, #0xe
 	mov r2, #0
@@ -2823,7 +2823,7 @@ ov87_021E6F98: ; 0x021E6F98
 	ldrb r0, [r0]
 	ldr r1, [r5, #0x40]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r0, r0, #1
 	lsr r0, r0, #1
 	sub r3, r6, r0

@@ -849,7 +849,7 @@ _0204FB3A:
 	ldr r0, [sp]
 	ldr r1, _0204FB5C ; =sub_0204FB60
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0204FB5C: .word sub_0204FB60
@@ -945,7 +945,7 @@ sub_0204FBDC: ; 0x0204FBDC
 	ldr r0, [r7, #0x10]
 	ldr r1, _0204FC0C ; =sub_0204FC10
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0204FC0C: .word sub_0204FC10
@@ -1105,7 +1105,7 @@ _0204FD3A:
 	ldr r1, _0204FD4C ; =_0210159C
 	add r0, r6, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	ldr r0, [r5, #0xc]
 	str r4, [r0]
 	mov r0, #1
@@ -1210,7 +1210,7 @@ sub_0204FDA0: ; 0x0204FDA0
 	ldr r1, _0204FE2C ; =_02103A1C
 	add r0, r7, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	ldr r0, [r6, #0xc]
 	str r4, [r0]
 	mov r0, #3
@@ -1526,7 +1526,7 @@ _0205007A:
 	ldr r0, [sp]
 	ldr r1, _0205009C ; =sub_020500A0
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0205009C: .word sub_020500A0
@@ -1622,7 +1622,7 @@ sub_0205011C: ; 0x0205011C
 	ldr r0, [r7, #0x10]
 	ldr r1, _0205014C ; =sub_02050150
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0205014C: .word sub_02050150
@@ -1782,7 +1782,7 @@ _0205027A:
 	ldr r1, _0205028C ; =_0210159C
 	add r0, r6, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	ldr r0, [r5, #0xc]
 	str r4, [r0]
 	mov r0, #1
@@ -1887,7 +1887,7 @@ sub_020502E0: ; 0x020502E0
 	ldr r1, _0205036C ; =_02103A1C
 	add r0, r7, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	ldr r0, [r6, #0xc]
 	str r4, [r0]
 	mov r0, #3

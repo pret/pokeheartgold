@@ -50,7 +50,7 @@ ov89_02258800: ; 0x02258800
 	add r5, r0, #0
 	bl MI_CpuFill8
 	add r0, r4, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r5]
 	ldr r0, [r0]
 	bl ov45_0222A2C8
@@ -125,7 +125,7 @@ ov89_02258800: ; 0x02258800
 	bl sub_02021148
 	mov r0, #2
 	mov r1, #0x7d
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #0x7d
 	bl ScrStrBufs_new
 	str r0, [r5, #0x2c]
@@ -815,7 +815,7 @@ ov89_02258F00: ; 0x02258F00
 	ldr r0, [r0]
 	bl String_dtor
 	mov r0, #2
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, [r4, #0x10]
 	bl sub_020135AC
 	ldr r0, [r4, #0x30]
@@ -2516,7 +2516,7 @@ ov89_02259D70: ; 0x02259D70
 	str r1, [sp, #4]
 	mov r1, #0
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
@@ -2587,10 +2587,10 @@ _02259E0C: .word 0x04000580
 
 	thumb_func_start ov89_02259E10
 ov89_02259E10: ; 0x02259E10
-	ldr r3, _02259E14 ; =sub_02026F54
+	ldr r3, _02259E14 ; =GF_3DVramMan_Delete
 	bx r3
 	.balign 4, 0
-_02259E14: .word sub_02026F54
+_02259E14: .word GF_3DVramMan_Delete
 	thumb_func_end ov89_02259E10
 
 	thumb_func_start ov89_02259E18
@@ -3294,7 +3294,7 @@ ov89_0225A368: ; 0x0225A368
 	add r1, r4, #0
 	mov r2, #0
 	add r7, r3, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r4, r0, #0
 	asr r1, r4, #2
 	lsr r1, r1, #0x1d

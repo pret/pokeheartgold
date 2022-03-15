@@ -1,6 +1,6 @@
 d3ad83e68e91bf8d7b6d20cabb569780c003e6d3 *build/heartgold.us/main.sbin
 89b86d065a2b5b3523ba1cb9e05284ffb792b228 *build/heartgold.us/OVY_0.sbin
-c6e9e0b570385e4e0bb794cc3389d1cdb7d49413 *build/heartgold.us/OVY_1.sbin
+c6e9e0b570385e4e0bb794cc3389d1cdb7d49413 *build/heartgold.us/field.sbin
 572830dabaaeed54d8259caf6175762eb657f32d *build/heartgold.us/OVY_2.sbin
 e97f98cbb5f33ee8217d1f67a19e5010940ab2c2 *build/heartgold.us/OVY_3.sbin
 b8df5a75938349a9a9e2b4f8fcaf2c83bf6058ab *build/heartgold.us/OVY_4.sbin
@@ -51,8 +51,8 @@ f720c7bb09961bafdf953956c19f0266ba7b68bf *build/heartgold.us/OVY_19.sbin
 4ea3b1698cf500e5cc5c145765b59f29adb557d4 *build/heartgold.us/OVY_20.sbin
 27c2a903545f0cf2bb645bda897fa52fadc7adbf *build/heartgold.us/OVY_21.sbin
 158ce100b69a8de3fcd1f2f0fe9000fca7367dab *build/heartgold.us/OVY_22.sbin
-2f0bd9000c63d29d0d1d6450d9bb8a716803df60 *build/heartgold.us/OVY_23.sbin
-644cfb67fc9410919b5e3c21db4d47dc69436e20 *build/heartgold.us/OVY_24.sbin
+2f0bd9000c63d29d0d1d6450d9bb8a716803df60 *build/heartgold.us/npc_trade.sbin
+644cfb67fc9410919b5e3c21db4d47dc69436e20 *build/heartgold.us/bug_contest.sbin
 58960dd33c05fee0d652e935dd94842b4c31e940 *build/heartgold.us/OVY_25.sbin
 b618bef9a876fd5139134ba270370819c0869070 *build/heartgold.us/OVY_26.sbin
 da2964cd26678a1763f1d9dd10e115bd128a8947 *build/heartgold.us/OVY_27.sbin
@@ -78,9 +78,9 @@ c706ac75eba3dec5f59954cebcfdc38190bc2bd7 *build/heartgold.us/OVY_46.sbin
 17a01d53063a9e51265ca804794673be21c74384 *build/heartgold.us/OVY_47.sbin
 a808dce341dbd1dfb00e1bb5559abb8acee49966 *build/heartgold.us/OVY_48.sbin
 f9744c1f8791d3d11f83ee8e71096f224e910ff5 *build/heartgold.us/OVY_49.sbin
-3541eb8d52712a14134441284917f1c60ec26fca *build/heartgold.us/OVY_50.sbin
-1745104f347e987d72f6eee807bc594d70d0b79a *build/heartgold.us/OVY_51.sbin
-ec5322fc86adb5e49b1718fa213c1e4955720aed *build/heartgold.us/OVY_52.sbin
+3541eb8d52712a14134441284917f1c60ec26fca *build/heartgold.us/trainer_card.sbin
+1745104f347e987d72f6eee807bc594d70d0b79a *build/heartgold.us/trainer_card_main.sbin
+ec5322fc86adb5e49b1718fa213c1e4955720aed *build/heartgold.us/trainer_card_signature.sbin
 4ae0c56965636eb6e5ef168602ddf5f695dc2c83 *build/heartgold.us/OVY_53.sbin
 582e5070cb3ea5c7ba004576ee988ffd9d5d273e *build/heartgold.us/OVY_54.sbin
 93428cd143fa3d5cfe728076b4c2b5ea142f3284 *build/heartgold.us/OVY_55.sbin

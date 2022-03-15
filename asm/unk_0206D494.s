@@ -56,7 +56,7 @@ sub_0206D4E4: ; 0x0206D4E4
 	bl TaskManager_GetEnv
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #3
@@ -914,7 +914,7 @@ sub_0206DB94: ; 0x0206DB94
 	add r0, r6, #0
 	add r2, r4, #0
 	str r5, [r4, #4]
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r4, r5, r6, pc}
 	nop
 _0206DBBC: .word sub_0206DBC0
@@ -933,7 +933,7 @@ sub_0206DBC0: ; 0x0206DBC0
 	bl FieldSys_BugContest_get
 	add r5, r0, #0
 	add r0, r6, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r6, r0, #0
 	ldr r0, [r6]
 	cmp r0, #0

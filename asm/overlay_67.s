@@ -7,7 +7,7 @@
 ov67_021E5900: ; 0x021E5900
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	mov r2, #2
 	add r5, r0, #0
 	mov r0, #3
@@ -904,17 +904,17 @@ _021E6038:
 _021E6054:
 	ldr r1, [r6]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r1, #0x1e
 	ldr r2, [r6]
 	mov r0, #0
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #0x1e
 	ldr r2, [r6]
 	mov r0, #4
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E6078: .word ov67_021E6E98
@@ -926,7 +926,7 @@ ov67_021E6080: ; 0x021E6080
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	ldrh r0, [r5, #8]
 	cmp r0, #0
 	bne _021E6094
@@ -1013,7 +1013,7 @@ ov67_021E6118: ; 0x021E6118
 	bne _021E6136
 	ldr r0, [sp, #0x28]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	sub r5, r5, r0
 	b _021E6146
 _021E6136:
@@ -1021,7 +1021,7 @@ _021E6136:
 	bne _021E6146
 	ldr r0, [sp, #0x28]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsr r0, r0, #1
 	sub r5, r5, r0
 _021E6146:

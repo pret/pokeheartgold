@@ -9,7 +9,7 @@ ov81_0223DD60: ; 0x0223DD60
 	sub sp, #8
 	add r5, r0, #0
 	add r6, r1, #0
-	ldr r0, _0223DE90 ; =SDK_OVERLAY_OVY_80_ID
+	ldr r0, _0223DE90 ; =FS_OVERLAY_ID(OVY_80)
 	mov r1, #2
 	bl HandleLoadOverlay
 	bl ov81_02240D2C
@@ -32,7 +32,7 @@ ov81_0223DD60: ; 0x0223DD60
 	str r0, [sp, #4]
 	mov r0, #0x64
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	mov r1, #0x69
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -41,7 +41,7 @@ ov81_0223DD60: ; 0x0223DD60
 	str r0, [r4, #0x4c]
 	str r5, [r4]
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	mov r3, #0x6f
 	mov r2, #0xf
 	ldr r1, [r0]
@@ -143,7 +143,7 @@ _0223DE84:
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	nop
-_0223DE90: .word SDK_OVERLAY_OVY_80_ID
+_0223DE90: .word FS_OVERLAY_ID(OVY_80)
 _0223DE94: .word 0x0000048C
 _0223DE98: .word ov81_02242BC8
 _0223DE9C: .word 0x00000464
@@ -675,7 +675,7 @@ _0223E2CE:
 	bl Main_SetVBlankIntrCB
 	mov r0, #0x64
 	bl DestroyHeap
-	ldr r0, _0223E314 ; =SDK_OVERLAY_OVY_80_ID
+	ldr r0, _0223E314 ; =FS_OVERLAY_ID(OVY_80)
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -683,7 +683,7 @@ _0223E2CE:
 _0223E308: .word 0x00000478
 _0223E30C: .word 0x0000046C
 _0223E310: .word 0x00000464
-_0223E314: .word SDK_OVERLAY_OVY_80_ID
+_0223E314: .word FS_OVERLAY_ID(OVY_80)
 	thumb_func_end ov81_0223E234
 
 	thumb_func_start ov81_0223E318
@@ -5780,7 +5780,7 @@ _02240C9A:
 	cmp r6, #4
 	blt _02240C9A
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	add r0, r5, #0
 	add r0, #0x50
 	bl ov81_0224300C
@@ -5793,7 +5793,7 @@ _02240C9A:
 	mov r0, #0x69
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02026F54
+	bl GF_3DVramMan_Delete
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov81_02240BB0
@@ -5811,7 +5811,7 @@ ov81_02240CD4: ; 0x02240CD4
 	str r0, [sp, #4]
 	mov r0, #0x64
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	mov r1, #0x69
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -5882,7 +5882,7 @@ ov81_02240D64: ; 0x02240D64
 	bl ov81_02240448
 	mov r0, #4
 	mov r1, #0x64
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xc2
@@ -5918,22 +5918,22 @@ _02240DBE:
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x64
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #0x1a
 	mov r0, #4
 	lsl r1, r1, #4
 	mov r2, #0x64
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #6
 	mov r0, #0
 	lsl r1, r1, #6
 	mov r2, #0x64
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #6
 	mov r0, #4
 	lsl r1, r1, #6
 	mov r2, #0x64
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #0x64
 	bl sub_02007FD4
 	mov r1, #0x6a
@@ -10499,7 +10499,7 @@ ov81_02243068: ; 0x02243068
 	bne _02243086
 	ldr r0, [sp, #0x28]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	sub r5, r5, r0
 	b _02243096
 _02243086:
@@ -10507,7 +10507,7 @@ _02243086:
 	bne _02243096
 	ldr r0, [sp, #0x28]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsr r0, r0, #1
 	sub r5, r5, r0
 _02243096:

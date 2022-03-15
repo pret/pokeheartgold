@@ -91,7 +91,7 @@ sub_02092B7C: ; 0x02092B7C
 	ldr r1, _02092BB0 ; =ov03_02256E2C
 	add r0, r5, #0
 	add r2, r4, #0
-	bl NowRunTask
+	bl TaskManager_Jump
 	ldr r0, _02092BB4 ; =0x00000272
 	mov r1, #0x1a
 	strb r1, [r4, r0]

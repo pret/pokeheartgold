@@ -422,6 +422,7 @@ $(eval $(call arc_strip_name,files/poketool/trmsg/trtblofs.narc,files/a/1/3/1))
 $(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_enc_$(shortname).narc,files/a/1/3/3))
 $(eval $(call arc_strip_name,files/fielddata/encountdata/s_enc_data.narc,files/a/1/3/6))
 $(eval $(call arc_strip_name,files/poketool/johtozukan.narc,files/a/1/3/8))
+$(eval $(call arc_strip_name,files/fielddata/tsurepoke/tp_param.narc,files/a/1/4/1))
 $(eval $(call arc_strip_name,files/data/gs_areawindow.narc,files/a/1/6/3))
 $(eval $(call arc_strip_name,files/poketool/personal/performance.narc,files/a/1/6/9))
 $(eval $(call arc_strip_name,files/application/annon/puzzle_gra.narc,files/a/1/7/2))
@@ -466,6 +467,7 @@ include files/resource/eng/pms_aikotoba/pms_aikotoba.mk
 include files/data/mmodel/mmodel.mk
 include files/fielddata/wazaoshie/waza_oshie.mk
 include files/data/mushi/mushi.mk
+include files/fielddata/tsurepoke/tp_param.mk
 
 $(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;
 

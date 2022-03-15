@@ -83,7 +83,7 @@ sub_02088298: ; 0x02088298
 	add r4, r0, #0
 	bl memset
 	add r0, r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	mov r1, #0x8b
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -109,7 +109,7 @@ sub_02088298: ; 0x02088298
 	str r0, [r4, r1]
 	mov r0, #0
 	mov r1, #0x13
-	bl sub_02002D40
+	bl FontID_SetAccessDirect
 	bl sub_020210BC
 	mov r0, #4
 	bl sub_02021148
@@ -125,7 +125,7 @@ sub_02088298: ; 0x02088298
 	bl sub_0208DE40
 	mov r0, #4
 	mov r1, #0x13
-	bl sub_02002CEC
+	bl FontID_Alloc
 	add r0, r4, #0
 	bl sub_02088894
 	add r0, r4, #0
@@ -370,12 +370,12 @@ sub_0208856C: ; 0x0208856C
 	add r0, r4, #0
 	bl sub_0208895C
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, _020885D4 ; =0x000007B8
 	ldr r0, [r4, r0]
 	bl NARC_dtor
 	mov r0, #0
-	bl sub_02002D7C
+	bl FontID_SetAccessLazy
 	ldr r0, _020885D8 ; =0x04000050
 	mov r1, #0
 	strh r1, [r0]
@@ -2304,7 +2304,7 @@ _02089584:
 	mov r0, #0
 	lsl r1, r1, #6
 	mov r2, #0x13
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #0x8b
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]

@@ -632,7 +632,7 @@ sub_02095BF0: ; 0x02095BF0
 	add r2, r2, r3
 	lsl r2, r2, #0x18
 	asr r5, r2, #0x18
-	ldr r2, _02095C8C ; =SDK_OVERLAY_OVY_1_ID
+	ldr r2, _02095C8C ; =FS_OVERLAY_ID(field)
 	ldrsb r6, [r4, r2]
 	bpl _02095C14
 	add r0, r2, #0
@@ -706,7 +706,7 @@ _02095C86:
 	pop {r4, r5, r6, r7}
 	bx lr
 	nop
-_02095C8C: .word SDK_OVERLAY_OVY_1_ID
+_02095C8C: .word FS_OVERLAY_ID(field)
 	thumb_func_end sub_02095BF0
 
 	thumb_func_start sub_02095C90

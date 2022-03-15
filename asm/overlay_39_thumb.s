@@ -2410,7 +2410,7 @@ ov39_02228140: ; 0x02228140
 	add r5, r0, #0
 	bl MI_CpuFill8
 	add r0, r4, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r5]
 	mov r0, #0x7c
 	bl BgConfig_Alloc
@@ -2899,12 +2899,12 @@ ov39_022285CC: ; 0x022285CC
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x7c
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #0x1a
 	mov r0, #4
 	lsl r1, r1, #4
 	mov r2, #0x7c
-	bl sub_0200304C
+	bl LoadFontPal1
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0]
 	ldr r0, [r0]
@@ -3328,7 +3328,7 @@ ov39_02228964: ; 0x02228964
 _02228972:
 	ldr r0, [sp, #0xc]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	ldrb r1, [r4, #7]
 	lsl r1, r1, #3
 	sub r1, r1, r0
@@ -3339,7 +3339,7 @@ _02228972:
 _02228988:
 	ldr r0, [sp, #0xc]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	ldrb r1, [r4, #7]
 	lsl r1, r1, #3
 	sub r2, r1, r0

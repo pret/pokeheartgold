@@ -45,7 +45,7 @@ ov58_022378E4: ; 0x022378E4
 	mov r0, #0x85
 	str r0, [r4]
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r4, #4]
 	add r0, r4, #0
 	bl ov58_02237B40
@@ -589,8 +589,8 @@ _02237D18: .word 0x04001000
 	.rodata
 
 _02237D1C:
-	.word ov59_02237D40, ov59_02237DA8, ov59_02237E68, SDK_OVERLAY_OVY_59_ID
+	.word ov59_02237D40, ov59_02237DA8, ov59_02237E68, FS_OVERLAY_ID(OVY_59)
 
 ov58_02237D2C: ; 0x02237D2C
-	.word ov59_0223A8E0, ov59_0223A948, ov59_0223A9B8, SDK_OVERLAY_OVY_59_ID
+	.word ov59_0223A8E0, ov59_0223A948, ov59_0223A9B8, FS_OVERLAY_ID(OVY_59)
 	; 0x02237D3C

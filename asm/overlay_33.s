@@ -475,7 +475,7 @@ ov33_0225D8D4: ; 0x0225D8D4
 	add r7, r0, #0
 	mov r0, #4
 	mov r1, #8
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #0
 	mov r1, #0x1b
 	mov r2, #0xbf
@@ -540,7 +540,7 @@ _0225D912:
 	ldr r1, [sp, #0x20]
 	mov r0, #4
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsr r1, r0, #1
 	ldr r0, [sp, #0x10]
 	ldr r2, [sp, #0x20]
@@ -575,7 +575,7 @@ _0225D9B0:
 	ldr r0, [sp, #0x14]
 	bl DestroyMsgData
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, [r7]
 	mov r1, #5
 	bl ScheduleBgTilemapBufferTransfer

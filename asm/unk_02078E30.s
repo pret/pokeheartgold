@@ -223,7 +223,7 @@ _02078FE4:
 	bl sub_0203A994
 	mov r0, #4
 	mov r1, #0xc
-	bl sub_02002CEC
+	bl FontID_Alloc
 	add r0, r4, #0
 	bl NARC_dtor
 	mov r0, #1
@@ -1068,7 +1068,7 @@ _02079672:
 	bl sub_02004B10
 _02079682:
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, [sp]
 	bl OverlayManager_FreeData
 	mov r0, #0xc
@@ -1423,7 +1423,7 @@ sub_0207997C: ; 0x0207997C
 	str r1, [sp, #4]
 	mov r1, #0
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	add sp, #8
 	pop {r3, pc}
 	nop
@@ -1484,10 +1484,10 @@ _02079A08: .word 0x04000580
 
 	thumb_func_start sub_02079A0C
 sub_02079A0C: ; 0x02079A0C
-	ldr r3, _02079A10 ; =sub_02026F54
+	ldr r3, _02079A10 ; =GF_3DVramMan_Delete
 	bx r3
 	.balign 4, 0
-_02079A10: .word sub_02026F54
+_02079A10: .word GF_3DVramMan_Delete
 	thumb_func_end sub_02079A0C
 
 	thumb_func_start sub_02079A14
@@ -1559,11 +1559,11 @@ sub_02079A14: ; 0x02079A14
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0xc
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #4
 	mov r1, #0x40
 	mov r2, #0xc
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xc
@@ -1703,7 +1703,7 @@ sub_02079BD8: ; 0x02079BD8
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r1, _02079CC8 ; =0x00000654
 	str r0, [r4, r1]
 	mov r0, #0xc
@@ -7712,24 +7712,24 @@ _0207CB50: .word 0x00000654
 sub_0207CB54: ; 0x0207CB54
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _0207CB68 ; =SDK_OVERLAY_OVY_94_ID
+	ldr r0, _0207CB68 ; =FS_OVERLAY_ID(OVY_94)
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r0, r4, #0
 	bl ov94_021E5900
 	pop {r4, pc}
 	.balign 4, 0
-_0207CB68: .word SDK_OVERLAY_OVY_94_ID
+_0207CB68: .word FS_OVERLAY_ID(OVY_94)
 	thumb_func_end sub_0207CB54
 
 	thumb_func_start sub_0207CB6C
 sub_0207CB6C: ; 0x0207CB6C
 	ldr r3, _0207CB74 ; =UnloadOverlayByID
-	ldr r0, _0207CB78 ; =SDK_OVERLAY_OVY_94_ID
+	ldr r0, _0207CB78 ; =FS_OVERLAY_ID(OVY_94)
 	bx r3
 	nop
 _0207CB74: .word UnloadOverlayByID
-_0207CB78: .word SDK_OVERLAY_OVY_94_ID
+_0207CB78: .word FS_OVERLAY_ID(OVY_94)
 	thumb_func_end sub_0207CB6C
 
 	.rodata

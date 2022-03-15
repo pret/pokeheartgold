@@ -500,7 +500,7 @@ _0208C794:
 	mov r0, #0
 	ldr r1, [r4, r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
 	add r0, r6, #0
@@ -516,7 +516,7 @@ _0208C7B6:
 	mov r0, #0
 	ldr r1, [r4, r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
 	add r0, r6, #0
@@ -671,7 +671,7 @@ sub_0208C8C8: ; 0x0208C8C8
 	mov r0, #0
 	ldr r1, [r4, r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r1, sp, #0x48
 	ldrb r2, [r1]
 	lsr r1, r0, #1
@@ -710,7 +710,7 @@ sub_0208C8C8: ; 0x0208C8C8
 	mov r0, #0
 	ldr r1, [r4, r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov ip, r0
 	ldr r0, [sp, #0x1c]
 	mov r1, #0
@@ -1282,7 +1282,7 @@ _0208CE2A:
 	ldr r1, [r4, r1]
 	add r2, r0, #0
 	mov r3, #0x48
-	bl sub_020030A0
+	bl FontID_String_GetCenterAlignmentX
 	mov r1, #0
 	add r3, r0, #0
 	mov r2, #0x89
@@ -1308,7 +1308,7 @@ _0208CE2A:
 	ldr r1, [r4, r1]
 	add r2, r0, #0
 	mov r3, #0x48
-	bl sub_020030A0
+	bl FontID_String_GetCenterAlignmentX
 	mov r1, #0
 	add r3, r0, #0
 	mov r2, #0x89
@@ -1332,7 +1332,7 @@ _0208CE96:
 	ldr r1, [r4, r1]
 	add r2, r0, #0
 	mov r3, #0x48
-	bl sub_020030A0
+	bl FontID_String_GetCenterAlignmentX
 	mov r1, #0
 	add r3, r0, #0
 	mov r2, #0x89
@@ -2596,7 +2596,7 @@ _0208D952:
 	mov r0, #0
 	ldr r1, [r5, r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, r0, #0
 	mov r0, #0x10
 	str r0, [sp]

@@ -288,7 +288,7 @@ _0203BE20:
 	ldr r0, [r5, #0x10]
 	ldr r1, _0203BE30 ; =sub_0203BEF0
 	add r2, r4, #0
-	bl NowRunTask
+	bl TaskManager_Jump
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0203BE2C: .word 0x000005FC
@@ -632,7 +632,7 @@ _0203C0A6:
 	add r2, #0x2c
 	ldr r2, [r5, r2]
 	add r0, r6, #0
-	bl NowRunTask
+	bl TaskManager_Jump
 	add r0, r5, #0
 	bl FreeToHeap
 	b _0203C136
@@ -2602,7 +2602,7 @@ _0203D066:
 	ldr r0, [sp, #8]
 	ldr r1, _0203D19C ; =_0210159C
 	add r2, r5, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	mov r0, #0xe
 	lsl r0, r0, #6
 	str r5, [r4, r0]
@@ -2699,7 +2699,7 @@ _0203D166:
 	ldr r0, [sp, #8]
 	ldr r1, _0203D19C ; =_0210159C
 	add r2, r5, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	mov r0, #0xe
 	lsl r0, r0, #6
 	str r5, [r4, r0]
@@ -3294,7 +3294,7 @@ _0203D604:
 	ldr r0, [sp]
 	ldr r1, _0203D65C ; =_0210159C
 	add r2, r5, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	mov r0, #0xe1
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -3718,7 +3718,7 @@ sub_0203D940: ; 0x0203D940
 	ldr r1, _0203D9AC ; =_0210159C
 	add r0, r7, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	mov r0, #0xe
 	lsl r0, r0, #6
 	str r4, [r5, r0]

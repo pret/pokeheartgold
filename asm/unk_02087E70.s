@@ -173,7 +173,7 @@ _02087F9E:
 	bl ov40_0222B934
 	mov r0, #0x6d
 	bl DestroyHeap
-	ldr r0, _02087FCC ; =SDK_OVERLAY_OVY_40_ID
+	ldr r0, _02087FCC ; =FS_OVERLAY_ID(OVY_40)
 	bl UnloadOverlayByID
 	ldr r0, _02087FD0 ; =gSystem + 0x60
 	mov r1, #0
@@ -187,7 +187,7 @@ _02087FC2:
 	pop {r3, r4, r5, pc}
 	nop
 _02087FC8: .word 0x000006F4
-_02087FCC: .word SDK_OVERLAY_OVY_40_ID
+_02087FCC: .word FS_OVERLAY_ID(OVY_40)
 _02087FD0: .word gSystem + 0x60
 	thumb_func_end sub_02087F2C
 
@@ -195,7 +195,7 @@ _02087FD0: .word gSystem + 0x60
 
 	.public _021028B4
 _021028B4:
-	.word sub_02087EF8, sub_02087F10, sub_02087F2C, SDK_OVERLAY_OVY_40_ID
+	.word sub_02087EF8, sub_02087F10, sub_02087F2C, FS_OVERLAY_ID(OVY_40)
 	.public _021028C4
 _021028C4:
-	.word sub_02087F04, sub_02087F10, sub_02087F2C, SDK_OVERLAY_OVY_40_ID
+	.word sub_02087F04, sub_02087F10, sub_02087F2C, FS_OVERLAY_ID(OVY_40)

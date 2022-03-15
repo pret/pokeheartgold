@@ -133,7 +133,7 @@ sub_0201F590: ; 0x0201F590
 	str r1, [sp, #4]
 	mov r1, #0
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	ldr r1, _0201F5B4 ; =_021D15A0
 	str r0, [r1]
 	add sp, #8
@@ -208,12 +208,12 @@ _0201F638: .word 0x04000580
 	thumb_func_start sub_0201F63C
 sub_0201F63C: ; 0x0201F63C
 	ldr r0, _0201F644 ; =_021D15A0
-	ldr r3, _0201F648 ; =sub_02026F54
+	ldr r3, _0201F648 ; =GF_3DVramMan_Delete
 	ldr r0, [r0]
 	bx r3
 	.balign 4, 0
 _0201F644: .word _021D15A0
-_0201F648: .word sub_02026F54
+_0201F648: .word GF_3DVramMan_Delete
 	thumb_func_end sub_0201F63C
 
 	thumb_func_start sub_0201F64C

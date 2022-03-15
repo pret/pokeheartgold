@@ -24,7 +24,7 @@ sub_0206793C: ; 0x0206793C
 	ldr r1, _02067958 ; =_020FE79C
 	add r0, r4, #0
 	add r2, #0xc
-	bl sub_02050624
+	bl CallApplicationAsTask
 	pop {r4, pc}
 	.balign 4, 0
 _02067958: .word _020FE79C
@@ -154,7 +154,7 @@ Field_CreateTask_TradeAnim: ; 0x02067A1C
 	ldr r1, _02067A5C ; =Task_FieldTradeAnim
 	add r0, r7, #0
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02067A5C: .word Task_FieldTradeAnim
@@ -430,7 +430,7 @@ _02067C66:
 	ldr r1, _02067DEC ; =ov01_02205A60
 	add r0, r6, #0
 	mov r2, #0
-	bl QueueTask
+	bl TaskManager_Call
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
 	strh r0, [r4, #4]
@@ -475,7 +475,7 @@ _02067CAE:
 	ldr r0, [r5, r0]
 	mov r1, #1
 	mov r6, #2
-	bl sub_0206A1F4
+	bl FsysUnkSub108_AddMonMood
 	b _02067CD6
 _02067CD4:
 	mov r6, #1
@@ -1728,7 +1728,7 @@ sub_02068620: ; 0x02068620
 	ldr r1, _02068660 ; =ov02_0224C558
 	add r0, r5, #0
 	add r2, r6, #0
-	bl NowRunTask
+	bl TaskManager_Jump
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -1845,7 +1845,7 @@ sub_0206870C: ; 0x0206870C
 	ldr r1, _0206874C ; =ov02_0224C3AC
 	add r0, r5, #0
 	add r2, r6, #0
-	bl NowRunTask
+	bl TaskManager_Jump
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -2853,7 +2853,7 @@ sub_02068DDC: ; 0x02068DDC
 
 	.balign 4, 0
 _020FE79C:
-	.word ov71_02246960, ov71_02246BB8, ov71_02246B58, SDK_OVERLAY_OVY_71_ID
+	.word ov71_02246960, ov71_02246BB8, ov71_02246B58, FS_OVERLAY_ID(OVY_71)
 	; Movement data
 _020FE7AC:
 	.short 73, 1

@@ -146,7 +146,7 @@ typedef enum NarcId
     NARC_poketool_johtozukan                                = 138,
     NARC_a_1_3_9                                            = 139,
     NARC_a_1_4_0                                            = 140,
-    NARC_a_1_4_1                                            = 141,
+    NARC_fielddata_tsurepoke_tp_param                                            = 141,
     NARC_a_1_4_2                                            = 142,
     NARC_a_1_4_3                                            = 143,
     NARC_a_1_4_4                                            = 144,

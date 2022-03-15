@@ -593,7 +593,7 @@ _02018848:
 	ldr r0, [sp]
 	ldr r1, [r5]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	cmp r0, r4
@@ -1178,7 +1178,7 @@ _02018CB6:
 	mov r0, #4
 	ldr r1, [r1, r6]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	ldr r1, [sp, #0x10]
 	sub r0, r1, r0
 	lsr r3, r0, #1
@@ -1250,7 +1250,7 @@ _02018D3C:
 	ldr r1, [r2, r1]
 	mov r0, #4
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	sub r0, r6, r0
 	lsr r0, r0, #1
 	str r0, [sp, #0x10]

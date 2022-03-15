@@ -8,7 +8,7 @@ ov47_02258800: ; 0x02258800
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r4, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	mov r2, #5
 	add r5, r0, #0
 	mov r0, #3
@@ -82,7 +82,7 @@ ov47_02258898: ; 0x02258898
 	bl OverlayManager_GetData
 	add r7, r0, #0
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	ldr r0, [r4]
 	cmp r0, #4
@@ -215,7 +215,7 @@ ov47_022589A8: ; 0x022589A8
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r6, r0, #0
 	mov r0, #0
 	add r1, r0, #0
@@ -380,7 +380,7 @@ _02258ACA:
 	mov r0, #0
 	mov r1, #0x80
 	add r2, r7, #0
-	bl sub_0200304C
+	bl LoadFontPal1
 	ldr r0, [sp, #0x10]
 	bl Options_GetFrame
 	lsl r0, r0, #0x18
@@ -2262,7 +2262,7 @@ ov47_0225999C: ; 0x0225999C
 	mov r0, #1
 	add r1, r6, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, r0, #0
 	mov r0, #4
 	str r0, [sp]
@@ -2377,7 +2377,7 @@ _02259A98:
 	ldr r1, [sp, #0x18]
 	mov r0, #1
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	str r0, [sp, #0x1c]
 	mov r1, #0
 	ldr r3, [sp, #0x1c]
@@ -2405,7 +2405,7 @@ _02259A98:
 	mov r0, #1
 	add r1, r5, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0
 	add r3, r0, #0
 	str r1, [sp]

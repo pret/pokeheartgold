@@ -667,7 +667,7 @@ ov98_0221EABC: ; 0x0221EABC
 	mov r0, #4
 	str r2, [sp, #8]
 	add r6, r3, #0
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r0, [sp]
 	mov r1, #0x1c
 	bl AllocFromHeap
@@ -688,12 +688,12 @@ ov98_0221EABC: ; 0x0221EABC
 	ldr r2, [sp]
 	mov r0, #0
 	lsl r1, r1, #6
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #6
 	ldr r2, [sp]
 	mov r0, #4
 	lsl r1, r1, #6
-	bl sub_02003030
+	bl LoadFontPal0
 	ldr r0, [sp, #8]
 	mov r7, #0
 	cmp r0, #0
@@ -755,7 +755,7 @@ ov98_0221EB84: ; 0x0221EB84
 	add r5, r0, #0
 	mov r0, #4
 	add r7, r1, #0
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, [r5, #0x14]
 	bl String_dtor
 	ldr r0, [r5, #0x10]
@@ -882,7 +882,7 @@ _0221EC54:
 	ldr r0, [sp, #0x30]
 	add r1, r7, #0
 	mov r2, #0
-	bl sub_02003068
+	bl FontID_String_GetWidthMultiline
 	sub r0, r4, r0
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18

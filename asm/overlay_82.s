@@ -8,7 +8,7 @@ ov82_0223DD60: ; 0x0223DD60
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r6, r1, #0
-	ldr r0, _0223DE1C ; =SDK_OVERLAY_OVY_80_ID
+	ldr r0, _0223DE1C ; =FS_OVERLAY_ID(OVY_80)
 	mov r1, #2
 	bl HandleLoadOverlay
 	bl ov82_0223E9B0
@@ -32,7 +32,7 @@ ov82_0223DD60: ; 0x0223DD60
 	str r0, [r5, #0x48]
 	add r0, r4, #0
 	str r4, [r5]
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r4, r0, #0
 	add r0, r5, #0
 	ldr r1, [r4]
@@ -89,7 +89,7 @@ _0223DE0E:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_0223DE1C: .word SDK_OVERLAY_OVY_80_ID
+_0223DE1C: .word FS_OVERLAY_ID(OVY_80)
 	thumb_func_end ov82_0223DD60
 
 	thumb_func_start ov82_0223DE20
@@ -282,13 +282,13 @@ ov82_0223DF74: ; 0x0223DF74
 	bl Main_SetVBlankIntrCB
 	mov r0, #0x69
 	bl DestroyHeap
-	ldr r0, _0223DFB8 ; =SDK_OVERLAY_OVY_80_ID
+	ldr r0, _0223DFB8 ; =FS_OVERLAY_ID(OVY_80)
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r4, pc}
 	nop
 _0223DFB4: .word 0x04000304
-_0223DFB8: .word SDK_OVERLAY_OVY_80_ID
+_0223DFB8: .word FS_OVERLAY_ID(OVY_80)
 	thumb_func_end ov82_0223DF74
 
 	thumb_func_start ov82_0223DFBC
@@ -1602,16 +1602,16 @@ _0223EA3C:
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x69
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #6
 	mov r0, #0
 	lsl r1, r1, #6
 	mov r2, #0x69
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #4
 	mov r1, #0x40
 	mov r2, #0x69
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #0xf
 	mov r1, #0xe
 	mov r2, #0

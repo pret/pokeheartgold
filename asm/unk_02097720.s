@@ -27,7 +27,7 @@ sub_02097720: ; 0x02097720
 	add r0, r6, #0
 	add r2, r4, #0
 	str r5, [r4, #4]
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r4, r5, r6, pc}
 	nop
 _02097750: .word sub_02097754

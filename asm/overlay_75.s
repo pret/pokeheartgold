@@ -29,7 +29,7 @@ ov75_02246960: ; 0x02246960
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r0, [r0, #8]
 	str r0, [r4, #4]
 	bl Sav2_PlayerData_GetOptionsAddr
@@ -224,13 +224,13 @@ ov75_02246B00: ; 0x02246B00
 	bl DestroyHeap
 	mov r0, #0x59
 	bl DestroyHeap
-	ldr r0, _02246B40 ; =SDK_OVERLAY_OVY_60_ID
+	ldr r0, _02246B40 ; =FS_OVERLAY_ID(OVY_60)
 	ldr r1, _02246B44 ; =ov60_021EAFE0
 	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02246B40: .word SDK_OVERLAY_OVY_60_ID
+_02246B40: .word FS_OVERLAY_ID(OVY_60)
 _02246B44: .word ov60_021EAFE0
 	thumb_func_end ov75_02246B00
 
@@ -241,7 +241,7 @@ ov75_02246B48: ; 0x02246B48
 	ldr r0, [r4, #0x7c]
 	cmp r0, #0
 	bne _02246B8E
-	ldr r0, _02246B90 ; =SDK_OVERLAY_OVY_70_ID
+	ldr r0, _02246B90 ; =FS_OVERLAY_ID(OVY_70)
 	mov r1, #2
 	bl HandleLoadOverlay
 	bl LoadDwcOverlay
@@ -266,7 +266,7 @@ ov75_02246B48: ; 0x02246B48
 _02246B8E:
 	pop {r4, pc}
 	.balign 4, 0
-_02246B90: .word SDK_OVERLAY_OVY_70_ID
+_02246B90: .word FS_OVERLAY_ID(OVY_70)
 _02246B94: .word 0x00020020
 	thumb_func_end ov75_02246B48
 
@@ -284,14 +284,14 @@ ov75_02246B98: ; 0x02246B98
 	bl UnloadOVY38
 	bl UnloadDwcOverlay
 	bl sub_02034DE0
-	ldr r0, _02246BC8 ; =SDK_OVERLAY_OVY_70_ID
+	ldr r0, _02246BC8 ; =FS_OVERLAY_ID(OVY_70)
 	bl UnloadOverlayByID
 	mov r0, #0
 	str r0, [r4, #0x7c]
 _02246BC4:
 	pop {r4, pc}
 	nop
-_02246BC8: .word SDK_OVERLAY_OVY_70_ID
+_02246BC8: .word FS_OVERLAY_ID(OVY_70)
 	thumb_func_end ov75_02246B98
 
 	thumb_func_start ov75_02246BCC
@@ -825,7 +825,7 @@ ov75_02246F0C: ; 0x02246F0C
 	add r5, r0, #0
 	bl MI_CpuFill8
 	add r0, r4, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r5]
 	mov r0, #0x74
 	bl BgConfig_Alloc
@@ -1390,12 +1390,12 @@ ov75_02247450: ; 0x02247450
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x74
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #0x1a
 	mov r0, #4
 	lsl r1, r1, #4
 	mov r2, #0x74
-	bl sub_0200304C
+	bl LoadFontPal1
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
@@ -5775,7 +5775,7 @@ ov75_0224964C: ; 0x0224964C
 _0224965A:
 	ldr r0, [sp, #0xc]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	ldrb r1, [r4, #7]
 	lsl r1, r1, #3
 	sub r1, r1, r0
@@ -5786,7 +5786,7 @@ _0224965A:
 _02249670:
 	ldr r0, [sp, #0xc]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	ldrb r1, [r4, #7]
 	lsl r1, r1, #3
 	sub r2, r1, r0
@@ -6127,7 +6127,7 @@ _022498CC:
 	.rodata
 
 ov75_022498E4:
-	.word ov44_0222A4B4, ov44_0222A60C, ov44_0222A758, SDK_OVERLAY_OVY_44_ID
+	.word ov44_0222A4B4, ov44_0222A60C, ov44_0222A758, FS_OVERLAY_ID(OVY_44)
 ov75_022498F4:
 	.word ov75_02246F0C, ov75_02247118, ov75_02247180, 0xFFFFFFFF
 

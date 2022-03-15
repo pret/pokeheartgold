@@ -262,7 +262,7 @@ ov18_021E5AA0: ; 0x021E5AA0
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r4]
 	ldr r0, _021E5B50 ; =0x0000085C
 	mov r1, #5
@@ -355,7 +355,7 @@ ov18_021E5B80: ; 0x021E5B80
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
-	ldr r6, _021E5C08 ; =SDK_OVERLAY_OVY_123_ID
+	ldr r6, _021E5C08 ; =FS_OVERLAY_ID(OVY_123)
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r6, #0
@@ -409,7 +409,7 @@ _021E5BFC:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_021E5C08: .word SDK_OVERLAY_OVY_123_ID
+_021E5C08: .word FS_OVERLAY_ID(OVY_123)
 _021E5C0C: .word ov18_021E5C1C
 _021E5C10: .word 0x00001858
 _021E5C14: .word ov18_021E5C2C
@@ -6428,7 +6428,7 @@ ov18_021E8C30: ; 0x021E8C30
 	bl sub_020880CC
 	mov r0, #4
 	mov r1, #0x25
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #0x44
 	mov r1, #0x25
 	bl NARC_ctor
@@ -6516,7 +6516,7 @@ ov18_021E8D38: ; 0x021E8D38
 	ldr r0, [r4, r0]
 	bl NARC_dtor
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	add r0, r4, #0
 	bl ov18_021E84EC
 	add r0, r4, #0
@@ -17884,7 +17884,7 @@ ov18_021EE984: ; 0x021EE984
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r0, #0
-	bl sub_02003068
+	bl FontID_String_GetWidthMultiline
 	lsl r1, r7, #3
 	sub r0, r1, r0
 	lsr r2, r0, #1
@@ -38523,7 +38523,7 @@ _021F8CDA:
 	mov r0, #0
 	add r1, r7, #0
 	add r2, r0, #0
-	bl sub_02003068
+	bl FontID_String_GetWidthMultiline
 	ldr r1, [sp, #0x14]
 	mov r3, #0
 	lsl r1, r1, #3
@@ -39543,7 +39543,7 @@ ov18_021F95FC: ; 0x021F95FC
 	bne _021F961A
 	ldr r0, [sp, #0x28]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	sub r5, r5, r0
 	b _021F962A
 _021F961A:
@@ -39551,7 +39551,7 @@ _021F961A:
 	bne _021F962A
 	ldr r0, [sp, #0x28]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsr r0, r0, #1
 	sub r5, r5, r0
 _021F962A:

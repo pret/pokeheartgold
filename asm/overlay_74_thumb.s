@@ -1117,7 +1117,7 @@ _0222787A:
 	ldr r0, [sp, #0x5c]
 	ldr r1, [sp, #0x10]
 	mov r2, #0
-	bl sub_02003068
+	bl FontID_String_GetWidthMultiline
 	ldr r1, [r5, #8]
 	lsl r1, r1, #3
 	sub r0, r1, r0
@@ -1559,11 +1559,11 @@ _02227B88:
 	mov r0, #0
 	mov r1, #0x20
 	mov r2, #0x4f
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #0
 	add r1, r0, #0
 	mov r2, #0x4f
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r2, #5
 	mov r1, #0
 	lsl r2, r2, #0x18
@@ -1788,7 +1788,7 @@ ov74_02227E10: ; 0x02227E10
 	add r2, r0, #0
 	mov r0, #0
 	add r1, r5, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r4, r0, #0
 	add r0, r6, #0
 	bl GetWindowWidth
@@ -3192,7 +3192,7 @@ ov74_MainMenu_AppInit: ; 0x02228920
 	mov r1, #0
 	bl sub_0200FBF4
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r0, [r0, #8]
 	str r0, [r4, #4]
 	bl Save_MysteryGift_get
@@ -3487,27 +3487,27 @@ _02228BA0: ; jump table
 	.short _02228BEE - _02228BA0 - 2 ; case 8
 	.short _02228C0C - _02228BA0 - 2 ; case 9
 _02228BB4:
-	ldr r0, _02228C24 ; =SDK_OVERLAY_OVY_36_ID
+	ldr r0, _02228C24 ; =FS_OVERLAY_ID(OVY_36)
 	ldr r1, _02228C28 ; =ov36_App_MainMenu_SelectOption_Continue
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BBE:
-	ldr r0, _02228C24 ; =SDK_OVERLAY_OVY_36_ID
+	ldr r0, _02228C24 ; =FS_OVERLAY_ID(OVY_36)
 	ldr r1, _02228C2C ; =ov36_App_MainMenu_SelectOption_NewGame
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BC8:
-	ldr r0, _02228C30 ; =SDK_OVERLAY_OVY_74_ID
+	ldr r0, _02228C30 ; =FS_OVERLAY_ID(OVY_74)
 	ldr r1, _02228C34 ; =gApp_MainMenu_SelectOption_MysteryGift
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BD2:
-	ldr r0, _02228C30 ; =SDK_OVERLAY_OVY_74_ID
+	ldr r0, _02228C30 ; =FS_OVERLAY_ID(OVY_74)
 	ldr r1, _02228C38 ; =gApp_MainMenu_SelectOption_MigrateFromAgb
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BDC:
-	ldr r0, _02228C30 ; =SDK_OVERLAY_OVY_74_ID
+	ldr r0, _02228C30 ; =FS_OVERLAY_ID(OVY_74)
 	ldr r1, _02228C3C ; =gApp_MainMenu_SelectOption_ConnectToRanger
 	bl RegisterMainOverlay
 	pop {r3, pc}
@@ -3524,37 +3524,37 @@ _02228BEE:
 	pop {r3, pc}
 _02228BFE:
 	bl sub_02005FA0
-	ldr r0, _02228C48 ; =SDK_OVERLAY_OVY_112_ID
+	ldr r0, _02228C48 ; =FS_OVERLAY_ID(OVY_112)
 	ldr r1, _02228C4C ; =ov112_App_MainMenu_SelectOption_ConnectToPokewalker
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228C0C:
 	bl sub_02005FA0
-	ldr r0, _02228C50 ; =SDK_OVERLAY_OVY_75_ID
+	ldr r0, _02228C50 ; =FS_OVERLAY_ID(OVY_75)
 	ldr r1, _02228C54 ; =ov75_App_MainMenu_SelectOption_WiiMessageSettings
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228C1A:
-	ldr r0, _02228C58 ; =SDK_OVERLAY_OVY_60_ID
+	ldr r0, _02228C58 ; =FS_OVERLAY_ID(OVY_60)
 	ldr r1, _02228C5C ; =ov60_021EAFE0
 	bl RegisterMainOverlay
 _02228C22:
 	pop {r3, pc}
 	.balign 4, 0
-_02228C24: .word SDK_OVERLAY_OVY_36_ID
+_02228C24: .word FS_OVERLAY_ID(OVY_36)
 _02228C28: .word ov36_App_MainMenu_SelectOption_Continue
 _02228C2C: .word ov36_App_MainMenu_SelectOption_NewGame
-_02228C30: .word SDK_OVERLAY_OVY_74_ID
+_02228C30: .word FS_OVERLAY_ID(OVY_74)
 _02228C34: .word gApp_MainMenu_SelectOption_MysteryGift
 _02228C38: .word gApp_MainMenu_SelectOption_MigrateFromAgb
 _02228C3C: .word gApp_MainMenu_SelectOption_ConnectToRanger
 _02228C40: .word ov74_0223BD4C
 _02228C44: .word gApp_MainMenu_SelectOption_NintendoWFCSetup
-_02228C48: .word SDK_OVERLAY_OVY_112_ID
+_02228C48: .word FS_OVERLAY_ID(OVY_112)
 _02228C4C: .word ov112_App_MainMenu_SelectOption_ConnectToPokewalker
-_02228C50: .word SDK_OVERLAY_OVY_75_ID
+_02228C50: .word FS_OVERLAY_ID(OVY_75)
 _02228C54: .word ov75_App_MainMenu_SelectOption_WiiMessageSettings
-_02228C58: .word SDK_OVERLAY_OVY_60_ID
+_02228C58: .word FS_OVERLAY_ID(OVY_60)
 _02228C5C: .word ov60_021EAFE0
 	thumb_func_end ov74_MainMenu_QueueSelectedApp
 
@@ -3746,7 +3746,7 @@ _02228D70:
 	mov r0, #0
 	ldr r2, [r4]
 	add r1, r0, #0
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #0
 	str r1, [sp]
 	ldr r0, [r4]
@@ -4241,7 +4241,7 @@ ov74_02229200: ; 0x02229200
 	bl BgConfig_Alloc
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r0, [r0, #8]
 	str r0, [r4, #8]
 	bl Sav2_PlayerData_GetProfileAddr
@@ -4506,7 +4506,7 @@ ov74_02229450: ; 0x02229450
 	add r4, r0, #0
 	mov r0, #0x59
 	bl DestroyHeap
-	ldr r0, _02229474 ; =SDK_OVERLAY_OVY_60_ID
+	ldr r0, _02229474 ; =FS_OVERLAY_ID(OVY_60)
 	ldr r1, _02229478 ; =ov60_021EAFE0
 	bl RegisterMainOverlay
 	add r0, r4, #0
@@ -4516,7 +4516,7 @@ ov74_02229450: ; 0x02229450
 	mov r0, #1
 	pop {r4, pc}
 	nop
-_02229474: .word SDK_OVERLAY_OVY_60_ID
+_02229474: .word FS_OVERLAY_ID(OVY_60)
 _02229478: .word ov60_021EAFE0
 	thumb_func_end ov74_02229450
 
@@ -5611,7 +5611,7 @@ ov74_02229D1C: ; 0x02229D1C
 	cmp r0, #0
 	bne _02229D48
 	bl ov74_0222CD7C
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r0, [r0, #8]
 	add r1, r4, #0
 	bl sub_02038148
@@ -6216,7 +6216,7 @@ ov74_0222A174: ; 0x0222A174
 	add r0, r6, #0
 	add r4, #0x8c
 	add r5, #0xdc
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r0, [r0, #8]
 	str r0, [sp]
 	add r0, r4, #0
@@ -7480,11 +7480,11 @@ ov74_0222AB70: ; 0x0222AB70
 	mov r0, #0
 	add r1, r0, #0
 	mov r2, #0x54
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #0
 	mov r1, #0x20
 	mov r2, #0x54
-	bl sub_02003030
+	bl LoadFontPal0
 	ldr r0, [r4, #8]
 	bl Options_GetFrame
 	lsl r0, r0, #0x18
@@ -7893,7 +7893,7 @@ _0222AEE8:
 	mov r1, #0x1d
 	str r1, [r4, r0]
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r0, [r0, #8]
 	str r0, [r4, #4]
 	bl Sav2_PlayerData_GetOptionsAddr
@@ -11630,21 +11630,21 @@ ov74_0222CD94: ; 0x0222CD94
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	bne _0222CDB2
-	ldr r0, _0222CDF8 ; =SDK_OVERLAY_OVY_60_ID
+	ldr r0, _0222CDF8 ; =FS_OVERLAY_ID(OVY_60)
 	ldr r1, _0222CDFC ; =ov60_021EAFE0
 	bl RegisterMainOverlay
 	b _0222CDCC
 _0222CDB2:
 	cmp r0, #1
 	bne _0222CDC0
-	ldr r0, _0222CE00 ; =SDK_OVERLAY_OVY_74_ID
+	ldr r0, _0222CE00 ; =FS_OVERLAY_ID(OVY_74)
 	ldr r1, _0222CE04 ; =_0223B410
 	bl RegisterMainOverlay
 	b _0222CDCC
 _0222CDC0:
 	cmp r0, #2
 	bne _0222CDCC
-	ldr r0, _0222CE00 ; =SDK_OVERLAY_OVY_74_ID
+	ldr r0, _0222CE00 ; =FS_OVERLAY_ID(OVY_74)
 	ldr r1, _0222CE08 ; =_0223B420
 	bl RegisterMainOverlay
 _0222CDCC:
@@ -11666,9 +11666,9 @@ _0222CDEC:
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_0222CDF8: .word SDK_OVERLAY_OVY_60_ID
+_0222CDF8: .word FS_OVERLAY_ID(OVY_60)
 _0222CDFC: .word ov60_021EAFE0
-_0222CE00: .word SDK_OVERLAY_OVY_74_ID
+_0222CE00: .word FS_OVERLAY_ID(OVY_74)
 _0222CE04: .word _0223B410
 _0222CE08: .word _0223B420
 _0222CE0C: .word 0x000015D4
@@ -13122,7 +13122,7 @@ _0222D8FA:
 	add r1, r7, #0
 	mov r2, #0
 	lsl r3, r3, #3
-	bl sub_020030A0
+	bl FontID_String_GetCenterAlignmentX
 	add r3, r0, #0
 _0222D956:
 	ldr r0, [r4, #0x2c]
@@ -14267,7 +14267,7 @@ _0222E216: ; jump table
 	.short _0222E79C - _0222E216 - 2 ; case 30
 _0222E254:
 	add r0, r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r1, [r0, #8]
 	ldr r0, _0222E5A4 ; =0x00002BA4
 	str r1, [r4, r0]
@@ -14330,7 +14330,7 @@ _0222E2D4:
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x55
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x55
@@ -14731,7 +14731,7 @@ _0222E652:
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x55
-	bl sub_02003030
+	bl LoadFontPal0
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #4
@@ -15380,7 +15380,7 @@ _0222EBA0:
 	ldr r0, _0222EBFC ; =0x000029FC
 	ldr r0, [r7, r0]
 	bl FreeToHeap
-	ldr r0, _0222EC00 ; =SDK_OVERLAY_OVY_74_ID
+	ldr r0, _0222EC00 ; =FS_OVERLAY_ID(OVY_74)
 	ldr r1, _0222EC04 ; =gApp_MainMenu_SelectOption_MysteryGift
 	bl RegisterMainOverlay
 	mov r0, #0x59
@@ -15396,7 +15396,7 @@ _0222EBF0: .word 0x00002A08
 _0222EBF4: .word 0x00002BD0
 _0222EBF8: .word 0x00002BE0
 _0222EBFC: .word 0x000029FC
-_0222EC00: .word SDK_OVERLAY_OVY_74_ID
+_0222EC00: .word FS_OVERLAY_ID(OVY_74)
 _0222EC04: .word gApp_MainMenu_SelectOption_MysteryGift
 	thumb_func_end ov74_0222EB44
 
@@ -15421,7 +15421,7 @@ ov74_0222EC08: ; 0x0222EC08
 	lsl r1, r1, #4
 	add r2, r5, #0
 	str r5, [r4]
-	bl sub_02003030
+	bl LoadFontPal0
 	ldr r0, _0222EC5C ; =0x00002BB4
 	mov r2, #0
 	str r7, [r4, r0]
@@ -16942,7 +16942,7 @@ _0222F7F6: ; jump table
 	.short _0222FB2C - _0222F7F6 - 2 ; case 30
 _0222F834:
 	add r0, r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r1, [r0, #8]
 	ldr r0, _0222FB50 ; =0x00002BA4
 	str r1, [r4, r0]
@@ -16985,7 +16985,7 @@ _0222F886:
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x55
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x55
@@ -17227,7 +17227,7 @@ _0222FA8A:
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x55
-	bl sub_02003030
+	bl LoadFontPal0
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #4
@@ -17383,7 +17383,7 @@ _0222FBE8:
 	ldr r0, _0222FC44 ; =0x000029FC
 	ldr r0, [r7, r0]
 	bl FreeToHeap
-	ldr r0, _0222FC48 ; =SDK_OVERLAY_OVY_74_ID
+	ldr r0, _0222FC48 ; =FS_OVERLAY_ID(OVY_74)
 	ldr r1, _0222FC4C ; =gApp_MainMenu_SelectOption_MysteryGift
 	bl RegisterMainOverlay
 	mov r0, #0x59
@@ -17399,7 +17399,7 @@ _0222FC38: .word 0x00002A08
 _0222FC3C: .word 0x00002BC4
 _0222FC40: .word 0x00002BD4
 _0222FC44: .word 0x000029FC
-_0222FC48: .word SDK_OVERLAY_OVY_74_ID
+_0222FC48: .word FS_OVERLAY_ID(OVY_74)
 _0222FC4C: .word gApp_MainMenu_SelectOption_MysteryGift
 	thumb_func_end ov74_0222FB8C
 
@@ -17424,7 +17424,7 @@ ov74_0222FC50: ; 0x0222FC50
 	lsl r1, r1, #4
 	add r2, r5, #0
 	str r5, [r4]
-	bl sub_02003030
+	bl LoadFontPal0
 	ldr r0, _0222FCA0 ; =0x00002BB4
 	mov r1, #1
 	str r7, [r4, r0]
@@ -21476,7 +21476,7 @@ ov74_022319F8: ; 0x022319F8
 	tst r2, r0
 	beq _02231A16
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	ldr r1, [r4, #0x10]
 	lsl r1, r1, #3
 	sub r1, r1, r0
@@ -23579,7 +23579,7 @@ _02232A54:
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x4c
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #0xc0
 	str r0, [sp]
 	mov r0, #0x4c
@@ -23605,7 +23605,7 @@ _02232A54:
 	bl GfGfxLoader_LoadCharData
 	mov r0, #2
 	mov r1, #0x4c
-	bl sub_02002CEC
+	bl FontID_Alloc
 	add sp, #0x38
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -23663,7 +23663,7 @@ ov74_02232B18: ; 0x02232B18
 	mov r0, #0
 	lsl r1, r1, #6
 	mov r2, #0x4c
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #0
 	mov r2, #0x3f
 	str r1, [sp]
@@ -23913,7 +23913,7 @@ _02232C54:
 	mov r0, #0
 	lsl r1, r1, #6
 	mov r2, #0x4c
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #0
 	mov r2, #0x3f
 	str r1, [sp]
@@ -24104,7 +24104,7 @@ _02232EB4:
 	add r0, r6, r0
 	bl ov74_02232DA4
 	mov r0, #2
-	bl sub_02002DB4
+	bl FontID_Release
 	mov r0, #0x5b
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
@@ -24546,7 +24546,7 @@ ov74_02233230: ; 0x02233230
 	mov r1, #0
 	bl sub_0200FBF4
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r0, [r0, #8]
 	str r0, [r4, #0x10]
 	bl Sav2_PlayerData_GetProfileAddr
@@ -25327,7 +25327,7 @@ ov74_022338D4: ; 0x022338D4
 	bl String_dtor
 	ldr r0, [r4, #0x20]
 	bl FreeToHeap
-	ldr r0, _0223391C ; =SDK_OVERLAY_OVY_60_ID
+	ldr r0, _0223391C ; =FS_OVERLAY_ID(OVY_60)
 	ldr r1, _02233920 ; =ov60_021EAFE0
 	bl RegisterMainOverlay
 	add r0, r5, #0
@@ -25341,7 +25341,7 @@ ov74_022338D4: ; 0x022338D4
 	nop
 _02233914: .word 0x00012608
 _02233918: .word 0x0001260C
-_0223391C: .word SDK_OVERLAY_OVY_60_ID
+_0223391C: .word FS_OVERLAY_ID(OVY_60)
 _02233920: .word ov60_021EAFE0
 	thumb_func_end ov74_022338D4
 
@@ -29193,7 +29193,7 @@ _02235500:
 	add r2, r0, #0
 	ldr r0, [r5, #0x40]
 	add r1, r4, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r7, r0, #0
 	ldr r0, [r5, #0x10]
 	bl GetWindowWidth

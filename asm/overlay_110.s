@@ -35,7 +35,7 @@ _021E5912:
 	mov r0, #0x61
 	str r0, [r4]
 	add r0, r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	mov r1, #0
 	str r0, [r4, #0x10]
 	mov r0, #0x4a
@@ -1642,7 +1642,7 @@ ov110_021E6580: ; 0x021E6580
 	add r6, r0, #0
 	ldr r1, [r6]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r3, [r6]
 	mov r0, #0
 	mov r1, #0x1b
@@ -1704,7 +1704,7 @@ _021E65EA:
 	ldr r0, [r6, #0x28]
 	bl DestroyMsgData
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov110_021E65DC
 
@@ -2116,7 +2116,7 @@ _021E6948:
 	ldr r1, [r5, #0x34]
 	mov r0, #4
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #4
 	add r3, r0, #0
 	lsl r2, r4, #2

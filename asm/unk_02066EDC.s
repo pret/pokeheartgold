@@ -92,7 +92,7 @@ _02066F64:
 	ldr r1, _02066F8C ; =_0210159C
 	add r0, r6, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	ldr r0, [r5, #0x14]
 	str r4, [r0]
 	mov r0, #1
@@ -208,7 +208,7 @@ sub_02066FEC: ; 0x02066FEC
 	ldr r1, _02067084 ; =_02103A1C
 	add r0, r7, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	ldr r0, [r6, #0x14]
 	str r4, [r0]
 	mov r0, #3
@@ -328,7 +328,7 @@ sub_02067118: ; 0x02067118
 	ldr r0, [sp]
 	str r5, [r4, #0x14]
 	ldr r0, [r0, #0x10]
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02067160: .word sub_020670B0
@@ -442,7 +442,7 @@ sub_02067200: ; 0x02067200
 	ldr r0, [r0, #0x10]
 	ldr r1, _02067234 ; =sub_020671B0
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02067234: .word sub_020671B0
@@ -521,7 +521,7 @@ sub_020672A4: ; 0x020672A4
 	ldr r0, [r7, #0x10]
 	ldr r1, _020672D4 ; =sub_02067238
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _020672D4: .word sub_02067238
@@ -901,8 +901,8 @@ sub_0206759C: ; 0x0206759C
 	str r1, [sp]
 	cmp r1, #0
 	ble _02067606
-	bl sub_0202C9D8
-	bl sub_0202CA10
+	bl Save_TrainerCard_get
+	bl TrainerCard_GetBadgeShininessArr
 	add r4, r0, #0
 	add r0, r5, #0
 	bl Sav2_PlayerData_GetProfileAddr
@@ -920,7 +920,7 @@ _020675C2:
 	beq _020675FC
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0202CA14
+	bl GetShininessOfBadgeI
 	add r1, r0, #0
 	cmp r1, #0
 	ble _020675E4
@@ -941,7 +941,7 @@ _020675EE:
 _020675F4:
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_0202CA1C
+	bl SetShininessOfBadgeI
 _020675FC:
 	add r0, r5, #1
 	lsl r0, r0, #0x18

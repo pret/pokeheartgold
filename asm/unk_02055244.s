@@ -35,7 +35,7 @@ _02055274:
 	ldr r1, _02055288 ; =sub_02055244
 	add r0, r5, #0
 	mov r2, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, pc}
 	nop
 _02055288: .word sub_02055244
@@ -73,7 +73,7 @@ _020552BC:
 	ldr r1, _020552D0 ; =sub_0205528C
 	add r0, r5, #0
 	mov r2, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, pc}
 	nop
 _020552D0: .word sub_0205528C
@@ -120,7 +120,7 @@ _02055302:
 	ldr r1, _02055328 ; =sub_020552D4
 	add r0, r4, #0
 	mov r2, #0
-	bl QueueTask
+	bl TaskManager_Call
 	add sp, #0xc
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -153,7 +153,7 @@ _02055346:
 	ldr r1, _0205536C ; =sub_020552D4
 	add r0, r4, #0
 	mov r2, #0
-	bl QueueTask
+	bl TaskManager_Call
 	add sp, #0xc
 	pop {r3, r4, pc}
 	nop
@@ -164,7 +164,7 @@ _0205536C: .word sub_020552D4
 sub_02055370: ; 0x02055370
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -199,12 +199,12 @@ _020553AA:
 
 	thumb_func_start sub_020553B0
 sub_020553B0: ; 0x020553B0
-	ldr r3, _020553B8 ; =QueueTask
+	ldr r3, _020553B8 ; =TaskManager_Call
 	ldr r1, _020553BC ; =sub_02055370
 	mov r2, #0
 	bx r3
 	.balign 4, 0
-_020553B8: .word QueueTask
+_020553B8: .word TaskManager_Call
 _020553BC: .word sub_02055370
 	thumb_func_end sub_020553B0
 
@@ -212,7 +212,7 @@ _020553BC: .word sub_02055370
 sub_020553C0: ; 0x020553C0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r4, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetSys
@@ -249,11 +249,11 @@ _02055404:
 
 	thumb_func_start sub_02055408
 sub_02055408: ; 0x02055408
-	ldr r3, _02055410 ; =QueueTask
+	ldr r3, _02055410 ; =TaskManager_Call
 	ldr r1, _02055414 ; =sub_020553C0
 	mov r2, #0
 	bx r3
 	.balign 4, 0
-_02055410: .word QueueTask
+_02055410: .word TaskManager_Call
 _02055414: .word sub_020553C0
 	thumb_func_end sub_02055408

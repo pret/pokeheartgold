@@ -5,6 +5,10 @@
 extern "C" {
 #endif
 
+#ifdef SDK_ASM
+#define FS_EXTERN_OVERLAY(name) .public SDK_OVERLAY_##name##_ID
+#define FS_OVERLAY_ID(name) SDK_OVERLAY_##name##_ID
+#else
 #include <nitro/mi/exMemory.h>
 #include <nitro/fs/file.h>
 #include <nitro/card/rom.h>
@@ -64,6 +68,7 @@ void FS_EndOverlay(FSOverlayInfo *p_ovi);
 BOOL FS_UnloadOverlayImage(FSOverlayInfo * p_ovi);
 BOOL FS_LoadOverlay(MIProcessor target, FSOverlayID id);
 BOOL FS_UnloadOverlay(MIProcessor target, FSOverlayID id);
+#endif
 
 #if defined(__cplusplus)
 }

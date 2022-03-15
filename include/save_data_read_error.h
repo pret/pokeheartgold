@@ -4,5 +4,6 @@
 #include "heap.h"
 
 void ShowSaveDataReadError(HeapID heapId);
+void ShowGBACartRemovedError(HeapID heapId);
 
 #endif //POKEHEARTGOLD_SAVE_DATA_READ_ERROR_H

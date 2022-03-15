@@ -637,7 +637,7 @@ sub_02053414: ; 0x02053414
 	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -703,7 +703,7 @@ sub_0205348C: ; 0x0205348C
 	bl SavArray_Flags_get
 	add r7, r0, #0
 	add r0, r6, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0
@@ -797,7 +797,7 @@ sub_02053550: ; 0x02053550
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
 	add r0, r7, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #5
@@ -1024,7 +1024,7 @@ sub_02053710: ; 0x02053710
 	ldr r1, _0205373C ; =sub_02053688
 	str r0, [r3]
 	add r0, r5, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0205373C: .word sub_02053688
@@ -1111,7 +1111,7 @@ _020537CE:
 	str r0, [r2]
 	add r0, r6, #0
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _020537EC: .word sub_02053740
@@ -1221,7 +1221,7 @@ sub_0205388C: ; 0x0205388C
 	ldr r1, _020538BC ; =sub_0205380C
 	str r0, [r2, #0x14]
 	add r0, r7, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _020538BC: .word sub_0205380C
@@ -1294,7 +1294,7 @@ sub_02053908: ; 0x02053908
 	ldr r1, _0205394C ; =sub_02053950
 	str r0, [r3]
 	add r0, r4, #0
-	bl NowRunTask
+	bl TaskManager_Jump
 	add sp, #0x14
 	pop {r4, r5, pc}
 	nop
@@ -1371,12 +1371,12 @@ _020539D4:
 
 	thumb_func_start sub_020539D8
 sub_020539D8: ; 0x020539D8
-	ldr r3, _020539E0 ; =QueueTask
+	ldr r3, _020539E0 ; =TaskManager_Call
 	ldr r1, _020539E4 ; =sub_020539E8
 	mov r2, #0
 	bx r3
 	.balign 4, 0
-_020539E0: .word QueueTask
+_020539E0: .word TaskManager_Call
 _020539E4: .word sub_020539E8
 	thumb_func_end sub_020539D8
 
@@ -1384,7 +1384,7 @@ _020539E4: .word sub_020539E8
 sub_020539E8: ; 0x020539E8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -1415,7 +1415,7 @@ sub_02053A14: ; 0x02053A14
 	add r2, r0, #0
 	ldr r1, _02053A28 ; =sub_02053A2C
 	add r0, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r4, pc}
 	.balign 4, 0
 _02053A28: .word sub_02053A2C
@@ -1425,7 +1425,7 @@ _02053A28: .word sub_02053A2C
 sub_02053A2C: ; 0x02053A2C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r4, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetSys
@@ -1504,7 +1504,7 @@ _02053AC2:
 	ldr r1, _02053AE0 ; =sub_02053AE4
 	add r0, r6, #0
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r4, r5, r6, pc}
 	nop
 _02053AE0: .word sub_02053AE4
@@ -1552,7 +1552,7 @@ sub_02053B04: ; 0x02053B04
 	ldr r1, _02053B38 ; =sub_02053B3C
 	str r0, [r3]
 	add r0, r6, #0
-	bl NowRunTask
+	bl TaskManager_Jump
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02053B38: .word sub_02053B3C
@@ -1646,12 +1646,12 @@ _02053BE2:
 
 	thumb_func_start sub_02053BE8
 sub_02053BE8: ; 0x02053BE8
-	ldr r3, _02053BF0 ; =QueueTask
+	ldr r3, _02053BF0 ; =TaskManager_Call
 	ldr r1, _02053BF4 ; =sub_02053BF8
 	mov r2, #0
 	bx r3
 	.balign 4, 0
-_02053BF0: .word QueueTask
+_02053BF0: .word TaskManager_Call
 _02053BF4: .word sub_02053BF8
 	thumb_func_end sub_02053BE8
 
@@ -1659,7 +1659,7 @@ _02053BF4: .word sub_02053BF8
 sub_02053BF8: ; 0x02053BF8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -1690,7 +1690,7 @@ sub_02053C24: ; 0x02053C24
 	add r2, r0, #0
 	ldr r1, _02053C38 ; =sub_02053C3C
 	add r0, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r4, pc}
 	.balign 4, 0
 _02053C38: .word sub_02053C3C
@@ -1700,7 +1700,7 @@ _02053C38: .word sub_02053C3C
 sub_02053C3C: ; 0x02053C3C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r4, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetSys
@@ -1763,7 +1763,7 @@ _02053CB2:
 	add r2, r0, #0
 	ldr r1, _02053CC8 ; =ov02_0224C1F8
 	add r0, r5, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02053CC8: .word ov02_0224C1F8
@@ -1889,9 +1889,9 @@ _02053DAA:
 	add r0, r5, #0
 	bl FollowingPokemon_GetMapObject
 	add r7, r0, #0
-	bl sub_02069F7C
+	bl FollowPokeObj_GetSpecies
 	ldr r1, [r6]
-	bl sub_02069FF4
+	bl GetFollowPokePermissionBySpeciesAndMap
 	cmp r0, #0
 	beq _02053DE6
 	add r0, r7, #0
@@ -1973,7 +1973,7 @@ sub_02053E5C: ; 0x02053E5C
 	bl TaskManager_GetEnv
 	add r7, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r4, r0, #0
 	add r6, r7, #0
 	ldr r0, [r4]
@@ -2108,7 +2108,7 @@ sub_02053F70: ; 0x02053F70
 	bl TaskManager_GetEnv
 	add r7, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r4, r0, #0
 	add r6, r7, #0
 	ldr r0, [r4]
@@ -2242,7 +2242,7 @@ sub_02054030: ; 0x02054030
 	ldr r1, _020540A0 ; =sub_02053F70
 	add r0, r6, #0
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _020540A0: .word sub_02053F70
@@ -2357,7 +2357,7 @@ sub_0205412C: ; 0x0205412C
 	ldr r1, _0205418C ; =sub_020540A4
 	str r0, [r3]
 	add r0, r7, #0
-	bl QueueTask
+	bl TaskManager_Call
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

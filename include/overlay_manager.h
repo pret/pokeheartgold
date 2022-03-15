@@ -21,18 +21,18 @@ struct OVY_MANAGER {
     OVY_MGR_TEMPLATE template;
     int exec_state;
     int proc_state;
-    void *unk_18;
+    void *parentWork;
     void *data;
     u32 unk_20;
     u32 unk_24;
 };
 
-OVY_MANAGER *OverlayManager_new(const OVY_MGR_TEMPLATE *template, void *a1, HeapID heapId);
+OVY_MANAGER *OverlayManager_new(const OVY_MGR_TEMPLATE *template, void *parentWork, HeapID heapId);
 void OverlayManager_delete(OVY_MANAGER *man);
 void *OverlayManager_CreateAndGetData(OVY_MANAGER *man, u32 size, HeapID heapId);
 void *OverlayManager_GetData(OVY_MANAGER *man);
 void OverlayManager_FreeData(OVY_MANAGER *man);
-void *OverlayManager_GetField18(OVY_MANAGER *man);
+void *OverlayManager_GetParentWork(OVY_MANAGER *man);
 BOOL OverlayManager_run(OVY_MANAGER *man);
 
 #endif //POKEHEARTGOLD_OVERLAY_MANAGER_H

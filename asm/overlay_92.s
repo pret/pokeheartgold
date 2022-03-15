@@ -689,7 +689,7 @@ ov92_0225CAB4: ; 0x0225CAB4
 	str r0, [sp, #4]
 	bl memset
 	add r0, r4, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r1, [sp, #4]
 	ldr r6, [sp, #4]
 	add r1, #0x88
@@ -1791,7 +1791,7 @@ ov92_0225D3CC: ; 0x0225D3CC
 	mov r0, #0x71
 	mov r2, #1
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	str r0, [r4, #0x60]
 	mov r0, #0x71
 	bl sub_02023114
@@ -1928,7 +1928,7 @@ ov92_0225D49C: ; 0x0225D49C
 	ldr r0, [r4, #0x4c]
 	bl NARC_dtor
 	ldr r0, [r4, #0x60]
-	bl sub_02026F54
+	bl GF_3DVramMan_Delete
 	ldr r0, [r4, #0x64]
 	bl sub_02023120
 	ldr r0, [r4, #0x50]
@@ -3447,7 +3447,7 @@ ov92_0225E188: ; 0x0225E188
 	add r5, r0, #0
 	mov r0, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r4, r0, #0
 	add r0, r5, #0
 	bl GetWindowWidth

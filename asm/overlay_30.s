@@ -134,7 +134,7 @@ ov30_0225D64C: ; 0x0225D64C
 	add r5, r0, #0
 	add r0, r6, #0
 	bl sub_0201F988
-	ldr r7, _0225D6EC ; =SDK_OVERLAY_OVY_123_ID
+	ldr r7, _0225D6EC ; =FS_OVERLAY_ID(OVY_123)
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r7, #0
@@ -194,7 +194,7 @@ _0225D6E2:
 	bl FS_UnloadOverlay
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0225D6EC: .word SDK_OVERLAY_OVY_123_ID
+_0225D6EC: .word FS_OVERLAY_ID(OVY_123)
 _0225D6F0: .word ov30_0225DC28
 _0225D6F4: .word ov30_0225DC08
 _0225D6F8: .word ov30_0225DC18
@@ -211,7 +211,7 @@ ov30_0225D700: ; 0x0225D700
 	push {r4, lr}
 	add r4, r1, #0
 	ldr r0, [r4, #0x1c]
-	bl sub_02050590
+	bl Fsys_TaskIsRunning
 	cmp r0, #0
 	ldr r0, [r4, #0x1c]
 	bne _0225D73E
@@ -318,7 +318,7 @@ ov30_0225D784: ; 0x0225D784
 	mov r0, #4
 	mov r1, #0x80
 	mov r2, #8
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #0x13
 	str r0, [sp]
 	mov r0, #0x1b

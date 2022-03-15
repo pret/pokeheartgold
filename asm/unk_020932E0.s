@@ -121,7 +121,7 @@ _020933AA:
 	ldr r0, [r5, r0]
 	bl FreeToHeap
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, _02093438 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
@@ -204,17 +204,17 @@ sub_02093440: ; 0x02093440
 	bl GX_EngineAToggleLayers
 	ldr r1, [r5, #4]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r1, #0x1a
 	ldr r2, [r5, #4]
 	mov r0, #0
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #6
 	ldr r2, [r5, #4]
 	mov r0, #0
 	lsl r1, r1, #6
-	bl sub_02003030
+	bl LoadFontPal0
 	ldr r0, [sp, #0x28]
 	ldr r1, [sp, #0x30]
 	strb r0, [r5, #0x11]
@@ -3233,7 +3233,7 @@ _02094CC8:
 	add r1, r4, #0
 	add r2, r0, #0
 	mov r3, #0x60
-	bl sub_020030A0
+	bl FontID_String_GetCenterAlignmentX
 	mov r1, #0
 	add r3, r0, #0
 	str r1, [sp]
@@ -3288,7 +3288,7 @@ sub_02094D1C: ; 0x02094D1C
 	mov r0, #4
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_020030A0
+	bl FontID_String_GetCenterAlignmentX
 	mov r1, #0
 	add r3, r0, #0
 	str r1, [sp]

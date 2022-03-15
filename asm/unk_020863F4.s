@@ -1553,7 +1553,7 @@ sub_02086FCC: ; 0x02086FCC
 	str r0, [r4, r1]
 	mov r0, #2
 	mov r1, #0x6c
-	bl sub_02002CEC
+	bl FontID_Alloc
 	pop {r4, pc}
 	thumb_func_end sub_02086FCC
 
@@ -1562,7 +1562,7 @@ sub_02086FE8: ; 0x02086FE8
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #2
-	bl sub_02002DB4
+	bl FontID_Release
 	mov r0, #0xdf
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1673,7 +1673,7 @@ sub_02087090: ; 0x02087090
 	mov r0, #2
 	mov r2, #0
 	mov r3, #0x50
-	bl sub_020030A0
+	bl FontID_String_GetCenterAlignmentX
 	mov r1, #0
 	add r3, r0, #0
 	str r1, [sp]

@@ -33,7 +33,7 @@ ChooseStarterApplication_OvyInit: ; 0x021E5900
 	str r1, [r4, #4]
 	bl GF_ExpHeap_FndInitAllocator
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	ldr r0, [r5, #4]
 	bl Options_GetFrame
@@ -767,7 +767,7 @@ ChooseStarterApplication_OvyExit: ; 0x021E5F74
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r6, r0, #0
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
@@ -843,7 +843,7 @@ ChooseStarterApplication_OvyExit: ; 0x021E5F74
 	ldr r0, [r4, #8]
 	bl FreeToHeap
 	ldr r0, [r4, #0xc]
-	bl sub_02026F54
+	bl GF_3DVramMan_Delete
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x2e
@@ -974,7 +974,7 @@ ov61_021E6140: ; 0x021E6140
 	ldr r0, [r4, #4]
 	mov r2, #2
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	str r0, [r4, #0xc]
 	ldr r0, _021E61DC ; =0x04000060
 	ldr r2, _021E61E0 ; =0xFFFFCFFF
