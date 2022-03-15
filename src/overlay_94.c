@@ -134,12 +134,12 @@ void ov94_021E5BA0(struct UnkStruct_Overlay_94_C* unkPtr) {
             sub_02015494(unkPtr->unk18, 0, ov94_021E5C28, unkPtr);
             sub_02015494(unkPtr->unk18, 1, ov94_021E5C28, unkPtr);
             sub_02015494(unkPtr->unk18, 2, ov94_021E5C28, unkPtr);
-            PlaySE(SEQ_SE_PARTY_GIRATINA_FORME_CHANGE);
+            PlaySE(SEQ_SE_PL_W467109);
             return;
         case SPECIES_SHAYMIN: 
             sub_02015494(unkPtr->unk18, 0, ov94_021E5C28, unkPtr);
             sub_02015494(unkPtr->unk18, 1, ov94_021E5C28, unkPtr);
-            PlaySE(SEQ_SE_PARTY_SHAYMIN_FORME_CHANGE);
+            PlaySE(SEQ_SE_PL_W363);
             return;
     }
 }
@@ -157,9 +157,9 @@ static const int PartyMonSpritePositions[][2] = {
 void ov94_021E5C28(struct UnkStruct_Overlay_94_C* unkPtr) {
     u32* unkA = (u32*) sub_02015504();
     int x_pos = PartyMonSpritePositions[unkA[5]][0];
-	unkPtr->unk28 = x_pos + unkPtr->unk20[0][1];
-	int y_pos = PartyMonSpritePositions[unkA[5]][1];
-	unkPtr->unk2c = y_pos + unkPtr->unk20[0][2];
+    unkPtr->unk28 = x_pos + unkPtr->unk20[0][1];
+    int y_pos = PartyMonSpritePositions[unkA[5]][1];
+    unkPtr->unk2c = y_pos + unkPtr->unk20[0][2];
 }
 
 s32 ov94_021E5C60(void) {
@@ -179,12 +179,10 @@ void ov94_021E5C84(struct UnkStruct_Overlay_94_C* unkPtr) {
     FreeToHeap(unkA);
 }
 
-extern u32 (*NNS_GfdDefaultFuncAllocTexVram)(u32 param0, int param1, u32 param2);
 u32 ov94_021E5CA0(u32 unkA, u32 unkB) {
     u32 unkC = NNS_GfdDefaultFuncAllocTexVram(unkA, unkB, 0);
 
-    if(unkC == 0)
-    {
+    if (unkC == 0) {
         GF_ASSERT(FALSE);
     }
     sub_02015354(unkC);
@@ -195,14 +193,11 @@ u32 ov94_021E5CA0(u32 unkA, u32 unkB) {
     return unkC;
 }
 
-extern u32 (*NNS_GfdDefaultFuncAllocPlttVram)(u32 param0, int param1, u32 param2);
 u32 ov94_021E5CC4(u32 unkA, u32 unkB) {
-    
     u32 unkC = NNS_GfdDefaultFuncAllocPlttVram(unkA, unkB, 1);
     
-    if(unkC == 0)
-    {
-        GF_AssertFail();
+    if (unkC == 0) {
+        GF_ASSERT(FALSE);
     }
 
     sub_02015394(unkC);
