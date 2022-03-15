@@ -82,7 +82,7 @@ _021E5916:
 	add r3, r0, #0
 	bl sub_0200FA24
 	add r0, r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r4, #8]
 	mov r0, #0x4e
 	mov r1, #0x27
@@ -302,7 +302,7 @@ ov37_021E5B94: ; 0x021E5B94
 	bl OverlayManager_GetData
 	add r6, r0, #0
 	add r0, r4, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	ldr r0, [r7]
 	cmp r0, #3
@@ -794,12 +794,12 @@ ov37_021E5F98: ; 0x021E5F98
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x27
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #0x1a
 	mov r0, #4
 	lsl r1, r1, #4
 	mov r2, #0x27
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2
@@ -1386,7 +1386,7 @@ ov37_021E6418: ; 0x021E6418
 	mov r0, #1
 	mov r2, #0
 	mov r3, #0x30
-	bl sub_020030A0
+	bl FontID_String_GetCenterAlignmentX
 	add r3, r0, #0
 	mov r1, #0
 	str r1, [sp]

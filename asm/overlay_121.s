@@ -178,7 +178,7 @@ _021E5A5A:
 	ldr r0, [r0]
 	bl sub_02024504
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	bl sub_0200B244
 	bl sub_0202168C
 	bl sub_02022608
@@ -232,7 +232,7 @@ _021E5AE8: .word 0x0000025E
 ov121_021E5AEC: ; 0x021E5AEC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	mov r2, #1
 	add r4, r0, #0
 	mov r0, #3
@@ -283,7 +283,7 @@ ov121_021E5AEC: ; 0x021E5AEC
 	bl sub_02020080
 	mov r0, #4
 	mov r1, #0x9e
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r0, [r5]
 	mov r1, #0x9e
 	bl ov121_021E5F58
@@ -291,7 +291,7 @@ ov121_021E5AEC: ; 0x021E5AEC
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x9e
-	bl sub_02003030
+	bl LoadFontPal0
 	add r0, r5, #0
 	bl ov121_021E66EC
 	add r0, r5, #0
@@ -1759,7 +1759,7 @@ ov121_021E66EC: ; 0x021E66EC
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x9e
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #7
 	str r0, [sp]
 	mov r0, #2
@@ -2359,7 +2359,7 @@ _021E6B0E:
 	mov r0, #0
 	ldr r1, [r4, #0x6c]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov ip, r0
 	str r7, [sp]
 	mov r0, #0xff

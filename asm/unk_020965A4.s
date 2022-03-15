@@ -26,7 +26,7 @@ sub_020965A4: ; 0x020965A4
 	add r0, r4, #0
 	bl sub_02096884
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r4]
 	cmp r0, #0
 	bne _020965DC
@@ -282,36 +282,36 @@ _020967B8: .word 0x0000FFFF
 	thumb_func_start sub_020967BC
 sub_020967BC: ; 0x020967BC
 	push {r3, lr}
-	ldr r0, _020967D8 ; =SDK_OVERLAY_OVY_80_ID
+	ldr r0, _020967D8 ; =FS_OVERLAY_ID(OVY_80)
 	mov r1, #2
 	bl HandleLoadOverlay
-	ldr r0, _020967DC ; =SDK_OVERLAY_OVY_81_ID
+	ldr r0, _020967DC ; =FS_OVERLAY_ID(OVY_81)
 	mov r1, #2
 	bl HandleLoadOverlay
-	ldr r0, _020967E0 ; =SDK_OVERLAY_OVY_42_ID
+	ldr r0, _020967E0 ; =FS_OVERLAY_ID(OVY_42)
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, pc}
 	.balign 4, 0
-_020967D8: .word SDK_OVERLAY_OVY_80_ID
-_020967DC: .word SDK_OVERLAY_OVY_81_ID
-_020967E0: .word SDK_OVERLAY_OVY_42_ID
+_020967D8: .word FS_OVERLAY_ID(OVY_80)
+_020967DC: .word FS_OVERLAY_ID(OVY_81)
+_020967E0: .word FS_OVERLAY_ID(OVY_42)
 	thumb_func_end sub_020967BC
 
 	thumb_func_start sub_020967E4
 sub_020967E4: ; 0x020967E4
 	push {r3, lr}
-	ldr r0, _020967FC ; =SDK_OVERLAY_OVY_80_ID
+	ldr r0, _020967FC ; =FS_OVERLAY_ID(OVY_80)
 	bl UnloadOverlayByID
-	ldr r0, _02096800 ; =SDK_OVERLAY_OVY_81_ID
+	ldr r0, _02096800 ; =FS_OVERLAY_ID(OVY_81)
 	bl UnloadOverlayByID
-	ldr r0, _02096804 ; =SDK_OVERLAY_OVY_42_ID
+	ldr r0, _02096804 ; =FS_OVERLAY_ID(OVY_42)
 	bl UnloadOverlayByID
 	pop {r3, pc}
 	nop
-_020967FC: .word SDK_OVERLAY_OVY_80_ID
-_02096800: .word SDK_OVERLAY_OVY_81_ID
-_02096804: .word SDK_OVERLAY_OVY_42_ID
+_020967FC: .word FS_OVERLAY_ID(OVY_80)
+_02096800: .word FS_OVERLAY_ID(OVY_81)
+_02096804: .word FS_OVERLAY_ID(OVY_42)
 	thumb_func_end sub_020967E4
 
 	thumb_func_start sub_02096808

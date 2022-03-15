@@ -2950,7 +2950,7 @@ _0221D168:
 	ldr r2, [r2, #0x24]
 	mov r0, #0
 	lsl r1, r1, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	ldr r0, [r4, #8]
 	mov r1, #0
 	mov r2, #0xd0
@@ -3974,7 +3974,7 @@ ov05_0221D9F0: ; 0x0221D9F0
 	mov r2, #4
 	ldr r0, [r0, #0x24]
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	ldr r1, _0221DAC8 ; =0x00000B58
 	ldr r2, _0221DACC ; =0x04000060
 	str r0, [r4, r1]
@@ -4113,7 +4113,7 @@ ov05_0221DB18: ; 0x0221DB18
 	bl FreeToHeap
 	ldr r0, _0221DB48 ; =0x00000B58
 	ldr r0, [r4, r0]
-	bl sub_02026F54
+	bl GF_3DVramMan_Delete
 _0221DB40:
 	pop {r4, pc}
 	nop

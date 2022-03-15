@@ -13,11 +13,11 @@
 	.public _020FACB0
 	.balign 4, 0
 _020FACB0:
-	.word SDK_OVERLAY_OVY_20_ID
-	.word SDK_OVERLAY_OVY_24_ID
-	.word SDK_OVERLAY_OVY_21_ID
-	.word SDK_OVERLAY_OVY_22_ID
-	.word SDK_OVERLAY_OVY_25_ID
+	.word FS_OVERLAY_ID(OVY_20)
+	.word FS_OVERLAY_ID(bug_contest)
+	.word FS_OVERLAY_ID(OVY_21)
+	.word FS_OVERLAY_ID(OVY_22)
+	.word FS_OVERLAY_ID(OVY_25)
 	.public _020FACC4
 _020FACC4:
 	.word 0x07FFFFFF
@@ -4143,7 +4143,7 @@ ScrCmd_GetPhoneBookRematch: ; 0x020428D8
 	mov r0, #0x20
 	bl AllocAndReadPhoneBook
 	add r7, r0, #0
-	ldr r0, _02042944 ; =SDK_OVERLAY_OVY_26_ID
+	ldr r0, _02042944 ; =FS_OVERLAY_ID(OVY_26)
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r0, r5, #0
@@ -4161,14 +4161,14 @@ ScrCmd_GetPhoneBookRematch: ; 0x020428D8
 	lsr r3, r3, #0x18
 	bl PhoneBookTrainerGetRematchInfo
 	strh r0, [r6]
-	ldr r0, _02042944 ; =SDK_OVERLAY_OVY_26_ID
+	ldr r0, _02042944 ; =FS_OVERLAY_ID(OVY_26)
 	bl UnloadOverlayByID
 	add r0, r7, #0
 	bl FreePhoneBook
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02042944: .word SDK_OVERLAY_OVY_26_ID
+_02042944: .word FS_OVERLAY_ID(OVY_26)
 	thumb_func_end ScrCmd_GetPhoneBookRematch
 
 	thumb_func_start ScrCmd_684
@@ -4641,7 +4641,7 @@ ScrCmd_454: ; 0x02042CA8
 	ldr r0, [r0]
 	mov r1, #0xa
 	bl FieldSysGetAttrAddr
-	ldr r6, _02042CDC ; =SDK_OVERLAY_OVY_26_ID
+	ldr r6, _02042CDC ; =FS_OVERLAY_ID(OVY_26)
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #2
@@ -4658,7 +4658,7 @@ _02042CD0:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	nop
-_02042CDC: .word SDK_OVERLAY_OVY_26_ID
+_02042CDC: .word FS_OVERLAY_ID(OVY_26)
 	thumb_func_end ScrCmd_454
 
 	thumb_func_start ScrCmd_681
@@ -6887,7 +6887,7 @@ ScrCmd_249: ; 0x02043E08
 	add r1, r6, #0
 	lsr r2, r2, #0x18
 	add r3, r4, #0
-	bl sub_02051020
+	bl SetupAndStartWildBattle
 	mov r0, #1
 	add sp, #8
 	pop {r4, r5, r6, pc}
@@ -6931,7 +6931,7 @@ ScrCmd_WildBattle: ; 0x02043E5C
 	str r0, [sp, #4]
 	ldr r0, [r5, #0x74]
 	add r3, r4, #0
-	bl sub_02051020
+	bl SetupAndStartWildBattle
 	mov r0, #1
 	add sp, #8
 	pop {r4, r5, r6, pc}
@@ -7010,7 +7010,7 @@ ScrCmd_250: ; 0x02043F0C
 ScrCmd_CatchingTutorial: ; 0x02043F48
 	push {r3, lr}
 	ldr r0, [r0, #0x74]
-	bl sub_02051334
+	bl SetupAndStartTutorialBattle
 	mov r0, #1
 	pop {r3, pc}
 	thumb_func_end ScrCmd_CatchingTutorial
@@ -9532,7 +9532,7 @@ ScrCmd_LoadNPCTrade: ; 0x0204527C
 	add r0, r1, #1
 	str r0, [r5, #8]
 	ldrb r5, [r1]
-	ldr r0, _020452AC ; =SDK_OVERLAY_OVY_23_ID
+	ldr r0, _020452AC ; =FS_OVERLAY_ID(npc_trade)
 	mov r1, #2
 	bl HandleLoadOverlay
 	mov r0, #0xb
@@ -9542,7 +9542,7 @@ ScrCmd_LoadNPCTrade: ; 0x0204527C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_020452AC: .word SDK_OVERLAY_OVY_23_ID
+_020452AC: .word FS_OVERLAY_ID(npc_trade)
 	thumb_func_end ScrCmd_LoadNPCTrade
 
 	thumb_func_start ScrCmd_471
@@ -9652,12 +9652,12 @@ ScrCmd_NPCTradeEnd: ; 0x02045374
 	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
 	bl NPCTrade_DeleteWork
-	ldr r0, _02045390 ; =SDK_OVERLAY_OVY_23_ID
+	ldr r0, _02045390 ; =FS_OVERLAY_ID(npc_trade)
 	bl UnloadOverlayByID
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-_02045390: .word SDK_OVERLAY_OVY_23_ID
+_02045390: .word FS_OVERLAY_ID(npc_trade)
 	thumb_func_end ScrCmd_NPCTradeEnd
 
 	thumb_func_start ScrCmd_GiveLoanMon
@@ -9673,7 +9673,7 @@ ScrCmd_GiveLoanMon: ; 0x02045394
 	ldrb r4, [r2]
 	bl ScriptReadHalfword
 	add r7, r0, #0
-	ldr r0, _020453CC ; =SDK_OVERLAY_OVY_23_ID
+	ldr r0, _020453CC ; =FS_OVERLAY_ID(npc_trade)
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r5, #0x80
@@ -9682,12 +9682,12 @@ ScrCmd_GiveLoanMon: ; 0x02045394
 	add r2, r4, #0
 	add r3, r7, #0
 	bl NPCTrade_MakeAndGiveLoanMon
-	ldr r0, _020453CC ; =SDK_OVERLAY_OVY_23_ID
+	ldr r0, _020453CC ; =FS_OVERLAY_ID(npc_trade)
 	bl UnloadOverlayByID
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_020453CC: .word SDK_OVERLAY_OVY_23_ID
+_020453CC: .word FS_OVERLAY_ID(npc_trade)
 	thumb_func_end ScrCmd_GiveLoanMon
 
 	thumb_func_start ScrCmd_CheckReturnLoanMon
@@ -9713,7 +9713,7 @@ ScrCmd_CheckReturnLoanMon: ; 0x020453D0
 	ldr r0, [r0]
 	bl GetVarPointer
 	add r7, r0, #0
-	ldr r0, _02045424 ; =SDK_OVERLAY_OVY_23_ID
+	ldr r0, _02045424 ; =FS_OVERLAY_ID(npc_trade)
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r5, #0x80
@@ -9723,12 +9723,12 @@ ScrCmd_CheckReturnLoanMon: ; 0x020453D0
 	lsr r2, r2, #0x18
 	bl NPCTrade_CanGiveUpLoanMon
 	strh r0, [r7]
-	ldr r0, _02045424 ; =SDK_OVERLAY_OVY_23_ID
+	ldr r0, _02045424 ; =FS_OVERLAY_ID(npc_trade)
 	bl UnloadOverlayByID
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02045424: .word SDK_OVERLAY_OVY_23_ID
+_02045424: .word FS_OVERLAY_ID(npc_trade)
 	thumb_func_end ScrCmd_CheckReturnLoanMon
 
 	thumb_func_start ScrCmd_475
@@ -11851,7 +11851,7 @@ _0204647E:
 	ldr r0, [r0]
 	str r0, [r4, #0x1c]
 	ldr r0, [r5, #0x74]
-	bl sub_02050624
+	bl CallApplicationAsTask
 	ldr r1, _020464DC ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
@@ -12989,13 +12989,13 @@ ScrCmd_606: ; 0x02046DA8
 	ldr r0, [r0]
 	bl FollowingPokemon_GetMapObject
 	add r4, r0, #0
-	bl sub_02069F7C
+	bl FollowPokeObj_GetSpecies
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r1, [r1]
 	ldr r1, [r1, #0x20]
 	ldr r1, [r1]
-	bl sub_02069FF4
+	bl GetFollowPokePermissionBySpeciesAndMap
 	cmp r0, #0
 	beq _02046DF4
 	add r0, r4, #0
@@ -13026,13 +13026,13 @@ ScrCmd_607: ; 0x02046DF8
 	add r0, #0x80
 	ldr r0, [r0]
 	bl FollowingPokemon_GetMapObject
-	bl sub_02069F7C
+	bl FollowPokeObj_GetSpecies
 	add r1, r4, #0
 	add r1, #0x80
 	ldr r1, [r1]
 	ldr r1, [r1, #0x20]
 	ldr r1, [r1]
-	bl sub_02069FF4
+	bl GetFollowPokePermissionBySpeciesAndMap
 	cmp r0, #0
 	beq _02046E32
 	add r4, #0x80
@@ -14115,7 +14115,7 @@ ScrCmd_732: ; 0x02047644
 	ldr r0, [r1, r0]
 	mov r1, #0
 	ldrsb r1, [r2, r1]
-	bl sub_0206A1F4
+	bl FsysUnkSub108_AddMonMood
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0

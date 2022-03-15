@@ -497,14 +497,14 @@ _021E5CFE:
 _021E5D0A:
 	mov r0, #0
 	bl sub_02004AD8
-	ldr r0, _021E5D34 ; =SDK_OVERLAY_OVY_60_ID
+	ldr r0, _021E5D34 ; =FS_OVERLAY_ID(OVY_60)
 	ldr r1, _021E5D38 ; =ov60_021EB030
 	bl RegisterMainOverlay
 	b _021E5D28
 _021E5D1A:
 	mov r0, #0
 	bl sub_02004AD8
-	ldr r0, _021E5D3C ; =SDK_OVERLAY_OVY_62_ID
+	ldr r0, _021E5D3C ; =FS_OVERLAY_ID(OVY_62)
 	ldr r1, _021E5D40 ; =ov62_021E68CC
 	bl RegisterMainOverlay
 _021E5D28:
@@ -513,9 +513,9 @@ _021E5D28:
 	.balign 4, 0
 _021E5D2C: .word _02108278
 _021E5D30: .word _0210820C
-_021E5D34: .word SDK_OVERLAY_OVY_60_ID
+_021E5D34: .word FS_OVERLAY_ID(OVY_60)
 _021E5D38: .word ov60_021EB030
-_021E5D3C: .word SDK_OVERLAY_OVY_62_ID
+_021E5D3C: .word FS_OVERLAY_ID(OVY_62)
 _021E5D40: .word ov62_021E68CC
 	thumb_func_end ov60_021E5CA4
 
@@ -581,7 +581,7 @@ ov60_021E5D9C: ; 0x021E5D9C
 	ldr r0, [r4]
 	mov r2, #1
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	str r0, [r4, #8]
 	ldr r1, _021E5DC8 ; =0x04000008
 	mov r0, #3
@@ -598,11 +598,11 @@ _021E5DC8: .word 0x04000008
 
 	thumb_func_start ov60_021E5DCC
 ov60_021E5DCC: ; 0x021E5DCC
-	ldr r3, _021E5DD4 ; =sub_02026F54
+	ldr r3, _021E5DD4 ; =GF_3DVramMan_Delete
 	ldr r0, [r0, #8]
 	bx r3
 	nop
-_021E5DD4: .word sub_02026F54
+_021E5DD4: .word GF_3DVramMan_Delete
 	thumb_func_end ov60_021E5DCC
 
 	thumb_func_start ov60_021E5DD8
@@ -1734,7 +1734,7 @@ _021E667C:
 	mov r0, #0
 	add r1, r5, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r0, #2
 	lsl r0, r0, #8
 	ldr r1, [r4, r0]
@@ -2566,7 +2566,7 @@ _021E6D98:
 	bl OverlayManager_FreeData
 	mov r0, #0x4a
 	bl DestroyHeap
-	ldr r0, _021E6E0C ; =SDK_OVERLAY_OVY_60_ID
+	ldr r0, _021E6E0C ; =FS_OVERLAY_ID(OVY_60)
 	ldr r1, _021E6E10 ; =ov60_021EAFE0
 	bl RegisterMainOverlay
 	mov r0, #1
@@ -2580,7 +2580,7 @@ _021E6DFC: .word 0x0000061C
 _021E6E00: .word 0x04000050
 _021E6E04: .word 0x04001050
 _021E6E08: .word 0xFFFF1FFF
-_021E6E0C: .word SDK_OVERLAY_OVY_60_ID
+_021E6E0C: .word FS_OVERLAY_ID(OVY_60)
 _021E6E10: .word ov60_021EAFE0
 	thumb_func_end ov60_021E6CFC
 
@@ -6512,7 +6512,7 @@ ov60_021E8C68: ; 0x021E8C68
 	mov r0, #0x4a
 	mov r2, #1
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	mov r1, #0x6f
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -7492,7 +7492,7 @@ _021E94D8:
 	mov r0, #0x6f
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	bl sub_02026F54
+	bl GF_3DVramMan_Delete
 	mov r4, #0
 _021E9520:
 	lsl r0, r4, #2
@@ -8551,7 +8551,7 @@ ov60_021E9D78: ; 0x021E9D78
 	mov r0, #0x4a
 	mov r2, #1
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	str r0, [r4, #0x5c]
 	bl sub_02014DA0
 	mov r1, #0x12
@@ -9052,7 +9052,7 @@ ov60_021EA21C: ; 0x021EA21C
 	ldr r0, [r5, #0x60]
 	bl FreeToHeap
 	ldr r0, [r5, #0x5c]
-	bl sub_02026F54
+	bl GF_3DVramMan_Delete
 	add r0, r6, #0
 	add r1, r5, #0
 	bl ov60_021EA6AC

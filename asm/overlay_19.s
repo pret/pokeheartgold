@@ -480,7 +480,7 @@ ov19_02259C68: ; 0x02259C68
 	add r6, r0, #0
 	ldr r1, [r6]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #0
 	ldr r3, [r6]
 	mov r1, #0x1b
@@ -537,7 +537,7 @@ _02259CC4:
 	ldr r0, [r6, #0x24]
 	bl DestroyMsgData
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov19_02259CBC
@@ -872,7 +872,7 @@ ov19_02259F64: ; 0x02259F64
 	ldr r1, [r4, #0x30]
 	mov r0, #4
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0
 	add r3, r0, #0
 	mov r5, #0x40

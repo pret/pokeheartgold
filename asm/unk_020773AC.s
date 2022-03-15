@@ -59,7 +59,7 @@ sub_02077400: ; 0x02077400
 	str r1, [sp, #4]
 	mov r1, #0
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0

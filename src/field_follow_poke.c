@@ -3,23 +3,1505 @@
 #include "save_follow_poke.h"
 #include "script_pokemon_util.h"
 #include "field_map_object.h"
+#include "map_header.h"
+#include "field_follow_poke.h"
 #include "constants/scrcmd.h"
+#include "constants/follow_poke_idx.h"
 
-LocalMapObject *FollowingPokemon_GetMapObject(FieldSystem *fsys);
-u32 FollowingPokemon_GetSpriteID(int species, u16 forme, u32 gender);
-void sub_02069DEC(LocalMapObject *mapObject, int a1);
-u8 sub_02069E14(LocalMapObject *mapObject);
-BOOL sub_02069FF4(int species, u32 mapno);
-void sub_0206A040(LocalMapObject *mapObject, int a1);
-void sub_0206A06C(FollowMon *followMon);
-void sub_0206A054(FieldSystem *fsys);
-LocalMapObject *CreateFollowingSpriteFieldObject(MapObjectMan *mapObjectMan, int species, u16 forme, int gender, int direction, int x, int y, int shiny);
-void FollowPokeFsysParamSet(FieldSystem *fsys, int species, u8 forme, BOOL shiny, u8 gender);
-void FollowPokeMapObjectSetParams(LocalMapObject *mapObject, int species, u8 forme, BOOL shiny);
-void sub_0206A288(struct FieldSystemUnk108 *a0, POKEMON *pokemon, u16 species, u32 personality);
-int SpeciesToOverworldModelIndexOffset(int species);
-int OverworldModelLookupHasFemaleForme(int species);
-int OverworldModelLookupFormeCount(int species);
+static void FsysFollowMonClear(FollowMon *followMon);
+static void FollowingPoke_SetObjectShinyFlag(LocalMapObject *mapObject, BOOL enable);
+static BOOL FollowPokePermissionDiglettCheck(int mapno);
+static void FollowingPoke_SetObjectFormeParam(LocalMapObject *mapObject, int species, u8 forme);
+static LocalMapObject *CreateFollowingSpriteFieldObject(MapObjectMan *mapObjectMan, int species, u16 forme, int gender, int direction, int x, int y, int shiny);
+
+static const u16 sModelIndexLUT[] = {
+    TSURE_POKE_NONE,
+    TSURE_POKE_BULBASAUR,
+    TSURE_POKE_IVYSAUR,
+    TSURE_POKE_VENUSAUR,
+    TSURE_POKE_CHARMANDER,
+    TSURE_POKE_CHARMELEON,
+    TSURE_POKE_CHARIZARD,
+    TSURE_POKE_SQUIRTLE,
+    TSURE_POKE_WARTORTLE,
+    TSURE_POKE_BLASTOISE,
+    TSURE_POKE_CATERPIE,
+    TSURE_POKE_METAPOD,
+    TSURE_POKE_BUTTERFREE,
+    TSURE_POKE_WEEDLE,
+    TSURE_POKE_KAKUNA,
+    TSURE_POKE_BEEDRILL,
+    TSURE_POKE_PIDGEY,
+    TSURE_POKE_PIDGEOTTO,
+    TSURE_POKE_PIDGEOT,
+    TSURE_POKE_RATTATA,
+    TSURE_POKE_RATICATE,
+    TSURE_POKE_SPEAROW,
+    TSURE_POKE_FEAROW,
+    TSURE_POKE_EKANS,
+    TSURE_POKE_ARBOK,
+    TSURE_POKE_PIKACHU,
+    TSURE_POKE_RAICHU,
+    TSURE_POKE_SANDSHREW,
+    TSURE_POKE_SANDSLASH,
+    TSURE_POKE_NIDORAN_F,
+    TSURE_POKE_NIDORINA,
+    TSURE_POKE_NIDOQUEEN,
+    TSURE_POKE_NIDORAN_M,
+    TSURE_POKE_NIDORINO,
+    TSURE_POKE_NIDOKING,
+    TSURE_POKE_CLEFAIRY,
+    TSURE_POKE_CLEFABLE,
+    TSURE_POKE_VULPIX,
+    TSURE_POKE_NINETALES,
+    TSURE_POKE_JIGGLYPUFF,
+    TSURE_POKE_WIGGLYTUFF,
+    TSURE_POKE_ZUBAT,
+    TSURE_POKE_GOLBAT,
+    TSURE_POKE_ODDISH,
+    TSURE_POKE_GLOOM,
+    TSURE_POKE_VILEPLUME,
+    TSURE_POKE_PARAS,
+    TSURE_POKE_PARASECT,
+    TSURE_POKE_VENONAT,
+    TSURE_POKE_VENOMOTH,
+    TSURE_POKE_DIGLETT,
+    TSURE_POKE_DUGTRIO,
+    TSURE_POKE_MEOWTH,
+    TSURE_POKE_PERSIAN,
+    TSURE_POKE_PSYDUCK,
+    TSURE_POKE_GOLDUCK,
+    TSURE_POKE_MANKEY,
+    TSURE_POKE_PRIMEAPE,
+    TSURE_POKE_GROWLITHE,
+    TSURE_POKE_ARCANINE,
+    TSURE_POKE_POLIWAG,
+    TSURE_POKE_POLIWHIRL,
+    TSURE_POKE_POLIWRATH,
+    TSURE_POKE_ABRA,
+    TSURE_POKE_KADABRA,
+    TSURE_POKE_ALAKAZAM,
+    TSURE_POKE_MACHOP,
+    TSURE_POKE_MACHOKE,
+    TSURE_POKE_MACHAMP,
+    TSURE_POKE_BELLSPROUT,
+    TSURE_POKE_WEEPINBELL,
+    TSURE_POKE_VICTREEBEL,
+    TSURE_POKE_TENTACOOL,
+    TSURE_POKE_TENTACRUEL,
+    TSURE_POKE_GEODUDE,
+    TSURE_POKE_GRAVELER,
+    TSURE_POKE_GOLEM,
+    TSURE_POKE_PONYTA,
+    TSURE_POKE_RAPIDASH,
+    TSURE_POKE_SLOWPOKE,
+    TSURE_POKE_SLOWBRO,
+    TSURE_POKE_MAGNEMITE,
+    TSURE_POKE_MAGNETON,
+    TSURE_POKE_FARFETCHD,
+    TSURE_POKE_DODUO,
+    TSURE_POKE_DODRIO,
+    TSURE_POKE_SEEL,
+    TSURE_POKE_DEWGONG,
+    TSURE_POKE_GRIMER,
+    TSURE_POKE_MUK,
+    TSURE_POKE_SHELLDER,
+    TSURE_POKE_CLOYSTER,
+    TSURE_POKE_GASTLY,
+    TSURE_POKE_HAUNTER,
+    TSURE_POKE_GENGAR,
+    TSURE_POKE_ONIX,
+    TSURE_POKE_DROWZEE,
+    TSURE_POKE_HYPNO,
+    TSURE_POKE_KRABBY,
+    TSURE_POKE_KINGLER,
+    TSURE_POKE_VOLTORB,
+    TSURE_POKE_ELECTRODE,
+    TSURE_POKE_EXEGGCUTE,
+    TSURE_POKE_EXEGGUTOR,
+    TSURE_POKE_CUBONE,
+    TSURE_POKE_MAROWAK,
+    TSURE_POKE_HITMONLEE,
+    TSURE_POKE_HITMONCHAN,
+    TSURE_POKE_LICKITUNG,
+    TSURE_POKE_KOFFING,
+    TSURE_POKE_WEEZING,
+    TSURE_POKE_RHYHORN,
+    TSURE_POKE_RHYDON,
+    TSURE_POKE_CHANSEY,
+    TSURE_POKE_TANGELA,
+    TSURE_POKE_KANGASKHAN,
+    TSURE_POKE_HORSEA,
+    TSURE_POKE_SEADRA,
+    TSURE_POKE_GOLDEEN,
+    TSURE_POKE_SEAKING,
+    TSURE_POKE_STARYU,
+    TSURE_POKE_STARMIE,
+    TSURE_POKE_MR_MIME,
+    TSURE_POKE_SCYTHER,
+    TSURE_POKE_JYNX,
+    TSURE_POKE_ELECTABUZZ,
+    TSURE_POKE_MAGMAR,
+    TSURE_POKE_PINSIR,
+    TSURE_POKE_TAUROS,
+    TSURE_POKE_MAGIKARP,
+    TSURE_POKE_GYARADOS,
+    TSURE_POKE_LAPRAS,
+    TSURE_POKE_DITTO,
+    TSURE_POKE_EEVEE,
+    TSURE_POKE_VAPOREON,
+    TSURE_POKE_JOLTEON,
+    TSURE_POKE_FLAREON,
+    TSURE_POKE_PORYGON,
+    TSURE_POKE_OMANYTE,
+    TSURE_POKE_OMASTAR,
+    TSURE_POKE_KABUTO,
+    TSURE_POKE_KABUTOPS,
+    TSURE_POKE_AERODACTYL,
+    TSURE_POKE_SNORLAX,
+    TSURE_POKE_ARTICUNO,
+    TSURE_POKE_ZAPDOS,
+    TSURE_POKE_MOLTRES,
+    TSURE_POKE_DRATINI,
+    TSURE_POKE_DRAGONAIR,
+    TSURE_POKE_DRAGONITE,
+    TSURE_POKE_MEWTWO,
+    TSURE_POKE_MEW,
+    TSURE_POKE_CHIKORITA,
+    TSURE_POKE_BAYLEEF,
+    TSURE_POKE_MEGANIUM,
+    TSURE_POKE_CYNDAQUIL,
+    TSURE_POKE_QUILAVA,
+    TSURE_POKE_TYPHLOSION,
+    TSURE_POKE_TOTODILE,
+    TSURE_POKE_CROCONAW,
+    TSURE_POKE_FERALIGATR,
+    TSURE_POKE_SENTRET,
+    TSURE_POKE_FURRET,
+    TSURE_POKE_HOOTHOOT,
+    TSURE_POKE_NOCTOWL,
+    TSURE_POKE_LEDYBA,
+    TSURE_POKE_LEDIAN,
+    TSURE_POKE_SPINARAK,
+    TSURE_POKE_ARIADOS,
+    TSURE_POKE_CROBAT,
+    TSURE_POKE_CHINCHOU,
+    TSURE_POKE_LANTURN,
+    TSURE_POKE_PICHU,
+    TSURE_POKE_CLEFFA,
+    TSURE_POKE_IGGLYBUFF,
+    TSURE_POKE_TOGEPI,
+    TSURE_POKE_TOGETIC,
+    TSURE_POKE_NATU,
+    TSURE_POKE_XATU,
+    TSURE_POKE_MAREEP,
+    TSURE_POKE_FLAAFFY,
+    TSURE_POKE_AMPHAROS,
+    TSURE_POKE_BELLOSSOM,
+    TSURE_POKE_MARILL,
+    TSURE_POKE_AZUMARILL,
+    TSURE_POKE_SUDOWOODO,
+    TSURE_POKE_POLITOED,
+    TSURE_POKE_HOPPIP,
+    TSURE_POKE_SKIPLOOM,
+    TSURE_POKE_JUMPLUFF,
+    TSURE_POKE_AIPOM,
+    TSURE_POKE_SUNKERN,
+    TSURE_POKE_SUNFLORA,
+    TSURE_POKE_YANMA,
+    TSURE_POKE_WOOPER,
+    TSURE_POKE_QUAGSIRE,
+    TSURE_POKE_ESPEON,
+    TSURE_POKE_UMBREON,
+    TSURE_POKE_MURKROW,
+    TSURE_POKE_SLOWKING,
+    TSURE_POKE_MISDREAVUS,
+    TSURE_POKE_UNOWN_A,
+    TSURE_POKE_WOBBUFFET,
+    TSURE_POKE_GIRAFARIG,
+    TSURE_POKE_PINECO,
+    TSURE_POKE_FORRETRESS,
+    TSURE_POKE_DUNSPARCE,
+    TSURE_POKE_GLIGAR,
+    TSURE_POKE_STEELIX,
+    TSURE_POKE_SNUBBULL,
+    TSURE_POKE_GRANBULL,
+    TSURE_POKE_QWILFISH,
+    TSURE_POKE_SCIZOR,
+    TSURE_POKE_SHUCKLE,
+    TSURE_POKE_HERACROSS,
+    TSURE_POKE_SNEASEL,
+    TSURE_POKE_TEDDIURSA,
+    TSURE_POKE_URSARING,
+    TSURE_POKE_SLUGMA,
+    TSURE_POKE_MAGCARGO,
+    TSURE_POKE_SWINUB,
+    TSURE_POKE_PILOSWINE,
+    TSURE_POKE_CORSOLA,
+    TSURE_POKE_REMORAID,
+    TSURE_POKE_OCTILLERY,
+    TSURE_POKE_DELIBIRD,
+    TSURE_POKE_MANTINE,
+    TSURE_POKE_SKARMORY,
+    TSURE_POKE_HOUNDOUR,
+    TSURE_POKE_HOUNDOOM,
+    TSURE_POKE_KINGDRA,
+    TSURE_POKE_PHANPY,
+    TSURE_POKE_DONPHAN,
+    TSURE_POKE_PORYGON2,
+    TSURE_POKE_STANTLER,
+    TSURE_POKE_SMEARGLE,
+    TSURE_POKE_TYROGUE,
+    TSURE_POKE_HITMONTOP,
+    TSURE_POKE_SMOOCHUM,
+    TSURE_POKE_ELEKID,
+    TSURE_POKE_MAGBY,
+    TSURE_POKE_MILTANK,
+    TSURE_POKE_BLISSEY,
+    TSURE_POKE_RAIKOU,
+    TSURE_POKE_ENTEI,
+    TSURE_POKE_SUICUNE,
+    TSURE_POKE_LARVITAR,
+    TSURE_POKE_PUPITAR,
+    TSURE_POKE_TYRANITAR,
+    TSURE_POKE_LUGIA,
+    TSURE_POKE_HO_OH,
+    TSURE_POKE_CELEBI,
+    TSURE_POKE_TREECKO,
+    TSURE_POKE_GROVYLE,
+    TSURE_POKE_SCEPTILE,
+    TSURE_POKE_TORCHIC,
+    TSURE_POKE_COMBUSKEN,
+    TSURE_POKE_BLAZIKEN,
+    TSURE_POKE_MUDKIP,
+    TSURE_POKE_MARSHTOMP,
+    TSURE_POKE_SWAMPERT,
+    TSURE_POKE_POOCHYENA,
+    TSURE_POKE_MIGHTYENA,
+    TSURE_POKE_ZIGZAGOON,
+    TSURE_POKE_LINOONE,
+    TSURE_POKE_WURMPLE,
+    TSURE_POKE_SILCOON,
+    TSURE_POKE_BEAUTIFLY,
+    TSURE_POKE_CASCOON,
+    TSURE_POKE_DUSTOX,
+    TSURE_POKE_LOTAD,
+    TSURE_POKE_LOMBRE,
+    TSURE_POKE_LUDICOLO,
+    TSURE_POKE_SEEDOT,
+    TSURE_POKE_NUZLEAF,
+    TSURE_POKE_SHIFTRY,
+    TSURE_POKE_TAILLOW,
+    TSURE_POKE_SWELLOW,
+    TSURE_POKE_WINGULL,
+    TSURE_POKE_PELIPPER,
+    TSURE_POKE_RALTS,
+    TSURE_POKE_KIRLIA,
+    TSURE_POKE_GARDEVOIR,
+    TSURE_POKE_SURSKIT,
+    TSURE_POKE_MASQUERAIN,
+    TSURE_POKE_SHROOMISH,
+    TSURE_POKE_BRELOOM,
+    TSURE_POKE_SLAKOTH,
+    TSURE_POKE_VIGOROTH,
+    TSURE_POKE_SLAKING,
+    TSURE_POKE_NINCADA,
+    TSURE_POKE_NINJASK,
+    TSURE_POKE_SHEDINJA,
+    TSURE_POKE_WHISMUR,
+    TSURE_POKE_LOUDRED,
+    TSURE_POKE_EXPLOUD,
+    TSURE_POKE_MAKUHITA,
+    TSURE_POKE_HARIYAMA,
+    TSURE_POKE_AZURILL,
+    TSURE_POKE_NOSEPASS,
+    TSURE_POKE_SKITTY,
+    TSURE_POKE_DELCATTY,
+    TSURE_POKE_SABLEYE,
+    TSURE_POKE_MAWILE,
+    TSURE_POKE_ARON,
+    TSURE_POKE_LAIRON,
+    TSURE_POKE_AGGRON,
+    TSURE_POKE_MEDITITE,
+    TSURE_POKE_MEDICHAM,
+    TSURE_POKE_ELECTRIKE,
+    TSURE_POKE_MANECTRIC,
+    TSURE_POKE_PLUSLE,
+    TSURE_POKE_MINUN,
+    TSURE_POKE_VOLBEAT,
+    TSURE_POKE_ILLUMISE,
+    TSURE_POKE_ROSELIA,
+    TSURE_POKE_GULPIN,
+    TSURE_POKE_SWALOT,
+    TSURE_POKE_CARVANHA,
+    TSURE_POKE_SHARPEDO,
+    TSURE_POKE_WAILMER,
+    TSURE_POKE_WAILORD,
+    TSURE_POKE_NUMEL,
+    TSURE_POKE_CAMERUPT,
+    TSURE_POKE_TORKOAL,
+    TSURE_POKE_SPOINK,
+    TSURE_POKE_GRUMPIG,
+    TSURE_POKE_SPINDA,
+    TSURE_POKE_TRAPINCH,
+    TSURE_POKE_VIBRAVA,
+    TSURE_POKE_FLYGON,
+    TSURE_POKE_CACNEA,
+    TSURE_POKE_CACTURNE,
+    TSURE_POKE_SWABLU,
+    TSURE_POKE_ALTARIA,
+    TSURE_POKE_ZANGOOSE,
+    TSURE_POKE_SEVIPER,
+    TSURE_POKE_LUNATONE,
+    TSURE_POKE_SOLROCK,
+    TSURE_POKE_BARBOACH,
+    TSURE_POKE_WHISCASH,
+    TSURE_POKE_CORPHISH,
+    TSURE_POKE_CRAWDAUNT,
+    TSURE_POKE_BALTOY,
+    TSURE_POKE_CLAYDOL,
+    TSURE_POKE_LILEEP,
+    TSURE_POKE_CRADILY,
+    TSURE_POKE_ANORITH,
+    TSURE_POKE_ARMALDO,
+    TSURE_POKE_FEEBAS,
+    TSURE_POKE_MILOTIC,
+    TSURE_POKE_CASTFORM,
+    TSURE_POKE_KECLEON,
+    TSURE_POKE_SHUPPET,
+    TSURE_POKE_BANETTE,
+    TSURE_POKE_DUSKULL,
+    TSURE_POKE_DUSCLOPS,
+    TSURE_POKE_TROPIUS,
+    TSURE_POKE_CHIMECHO,
+    TSURE_POKE_ABSOL,
+    TSURE_POKE_WYNAUT,
+    TSURE_POKE_SNORUNT,
+    TSURE_POKE_GLALIE,
+    TSURE_POKE_SPHEAL,
+    TSURE_POKE_SEALEO,
+    TSURE_POKE_WALREIN,
+    TSURE_POKE_CLAMPERL,
+    TSURE_POKE_HUNTAIL,
+    TSURE_POKE_GOREBYSS,
+    TSURE_POKE_RELICANTH,
+    TSURE_POKE_LUVDISC,
+    TSURE_POKE_BAGON,
+    TSURE_POKE_SHELGON,
+    TSURE_POKE_SALAMENCE,
+    TSURE_POKE_BELDUM,
+    TSURE_POKE_METANG,
+    TSURE_POKE_METAGROSS,
+    TSURE_POKE_REGIROCK,
+    TSURE_POKE_REGICE,
+    TSURE_POKE_REGISTEEL,
+    TSURE_POKE_LATIAS,
+    TSURE_POKE_LATIOS,
+    TSURE_POKE_KYOGRE,
+    TSURE_POKE_GROUDON,
+    TSURE_POKE_RAYQUAZA,
+    TSURE_POKE_JIRACHI,
+    TSURE_POKE_DEOXYS,
+    TSURE_POKE_TURTWIG,
+    TSURE_POKE_GROTLE,
+    TSURE_POKE_TORTERRA,
+    TSURE_POKE_CHIMCHAR,
+    TSURE_POKE_MONFERNO,
+    TSURE_POKE_INFERNAPE,
+    TSURE_POKE_PIPLUP,
+    TSURE_POKE_PRINPLUP,
+    TSURE_POKE_EMPOLEON,
+    TSURE_POKE_STARLY,
+    TSURE_POKE_STARAVIA,
+    TSURE_POKE_STARAPTOR,
+    TSURE_POKE_BIDOOF,
+    TSURE_POKE_BIBAREL,
+    TSURE_POKE_KRICKETOT,
+    TSURE_POKE_KRICKETUNE,
+    TSURE_POKE_SHINX,
+    TSURE_POKE_LUXIO,
+    TSURE_POKE_LUXRAY,
+    TSURE_POKE_BUDEW,
+    TSURE_POKE_ROSERADE,
+    TSURE_POKE_CRANIDOS,
+    TSURE_POKE_RAMPARDOS,
+    TSURE_POKE_SHIELDON,
+    TSURE_POKE_BASTIODON,
+    TSURE_POKE_BURMY,
+    TSURE_POKE_WORMADAM,
+    TSURE_POKE_MOTHIM,
+    TSURE_POKE_COMBEE,
+    TSURE_POKE_VESPIQUEN,
+    TSURE_POKE_PACHIRISU,
+    TSURE_POKE_BUIZEL,
+    TSURE_POKE_FLOATZEL,
+    TSURE_POKE_CHERUBI,
+    TSURE_POKE_CHERRIM,
+    TSURE_POKE_SHELLOS_WEST,
+    TSURE_POKE_GASTRODON_WEST,
+    TSURE_POKE_AMBIPOM,
+    TSURE_POKE_DRIFLOON,
+    TSURE_POKE_DRIFBLIM,
+    TSURE_POKE_BUNEARY,
+    TSURE_POKE_LOPUNNY,
+    TSURE_POKE_MISMAGIUS,
+    TSURE_POKE_HONCHKROW,
+    TSURE_POKE_GLAMEOW,
+    TSURE_POKE_PURUGLY,
+    TSURE_POKE_CHINGLING,
+    TSURE_POKE_STUNKY,
+    TSURE_POKE_SKUNTANK,
+    TSURE_POKE_BRONZOR,
+    TSURE_POKE_BRONZONG,
+    TSURE_POKE_BONSLY,
+    TSURE_POKE_MIME_JR,
+    TSURE_POKE_HAPPINY,
+    TSURE_POKE_CHATOT,
+    TSURE_POKE_SPIRITOMB,
+    TSURE_POKE_GIBLE,
+    TSURE_POKE_GABITE,
+    TSURE_POKE_GARCHOMP,
+    TSURE_POKE_MUNCHLAX,
+    TSURE_POKE_RIOLU,
+    TSURE_POKE_LUCARIO,
+    TSURE_POKE_HIPPOPOTAS,
+    TSURE_POKE_HIPPOWDON,
+    TSURE_POKE_SKORUPI,
+    TSURE_POKE_DRAPION,
+    TSURE_POKE_CROAGUNK,
+    TSURE_POKE_TOXICROAK,
+    TSURE_POKE_CARNIVINE,
+    TSURE_POKE_FINNEON,
+    TSURE_POKE_LUMINEON,
+    TSURE_POKE_MANTYKE,
+    TSURE_POKE_SNOVER,
+    TSURE_POKE_ABOMASNOW,
+    TSURE_POKE_WEAVILE,
+    TSURE_POKE_MAGNEZONE,
+    TSURE_POKE_LICKILICKY,
+    TSURE_POKE_RHYPERIOR,
+    TSURE_POKE_TANGROWTH,
+    TSURE_POKE_ELECTIVIRE,
+    TSURE_POKE_MAGMORTAR,
+    TSURE_POKE_TOGEKISS,
+    TSURE_POKE_YANMEGA,
+    TSURE_POKE_LEAFEON,
+    TSURE_POKE_GLACEON,
+    TSURE_POKE_GLISCOR,
+    TSURE_POKE_MAMOSWINE,
+    TSURE_POKE_PORYGON_Z,
+    TSURE_POKE_GALLADE,
+    TSURE_POKE_PROBOPASS,
+    TSURE_POKE_DUSKNOIR,
+    TSURE_POKE_FROSLASS,
+    TSURE_POKE_ROTOM,
+    TSURE_POKE_UXIE,
+    TSURE_POKE_MESPRIT,
+    TSURE_POKE_AZELF,
+    TSURE_POKE_DIALGA,
+    TSURE_POKE_PALKIA,
+    TSURE_POKE_HEATRAN,
+    TSURE_POKE_REGIGIGAS,
+    TSURE_POKE_GIRATINA,
+    TSURE_POKE_CRESSELIA,
+    TSURE_POKE_PHIONE,
+    TSURE_POKE_MANAPHY,
+    TSURE_POKE_DARKRAI,
+    TSURE_POKE_SHAYMIN,
+    TSURE_POKE_ARCEUS_NORMAL,
+};
+
+static const u16 sFormeMaxLUT[] = {
+    0,          // SPECIES_BULBASAUR
+    0,          // SPECIES_IVYSAUR
+    0,          // SPECIES_VENUSAUR
+    0,          // SPECIES_CHARMANDER
+    0,          // SPECIES_CHARMELEON
+    0,          // SPECIES_CHARIZARD
+    0,          // SPECIES_SQUIRTLE
+    0,          // SPECIES_WARTORTLE
+    0,          // SPECIES_BLASTOISE
+    0,          // SPECIES_CATERPIE
+    0,          // SPECIES_METAPOD
+    0,          // SPECIES_BUTTERFREE
+    0,          // SPECIES_WEEDLE
+    0,          // SPECIES_KAKUNA
+    0,          // SPECIES_BEEDRILL
+    0,          // SPECIES_PIDGEY
+    0,          // SPECIES_PIDGEOTTO
+    0,          // SPECIES_PIDGEOT
+    0,          // SPECIES_RATTATA
+    0,          // SPECIES_RATICATE
+    0,          // SPECIES_SPEAROW
+    0,          // SPECIES_FEAROW
+    0,          // SPECIES_EKANS
+    0,          // SPECIES_ARBOK
+    0,          // SPECIES_PIKACHU
+    0,          // SPECIES_RAICHU
+    0,          // SPECIES_SANDSHREW
+    0,          // SPECIES_SANDSLASH
+    0,          // SPECIES_NIDORAN_F
+    0,          // SPECIES_NIDORINA
+    0,          // SPECIES_NIDOQUEEN
+    0,          // SPECIES_NIDORAN_M
+    0,          // SPECIES_NIDORINO
+    0,          // SPECIES_NIDOKING
+    0,          // SPECIES_CLEFAIRY
+    0,          // SPECIES_CLEFABLE
+    0,          // SPECIES_VULPIX
+    0,          // SPECIES_NINETALES
+    0,          // SPECIES_JIGGLYPUFF
+    0,          // SPECIES_WIGGLYTUFF
+    0,          // SPECIES_ZUBAT
+    0,          // SPECIES_GOLBAT
+    0,          // SPECIES_ODDISH
+    0,          // SPECIES_GLOOM
+    0,          // SPECIES_VILEPLUME
+    0,          // SPECIES_PARAS
+    0,          // SPECIES_PARASECT
+    0,          // SPECIES_VENONAT
+    0,          // SPECIES_VENOMOTH
+    0,          // SPECIES_DIGLETT
+    0,          // SPECIES_DUGTRIO
+    0,          // SPECIES_MEOWTH
+    0,          // SPECIES_PERSIAN
+    0,          // SPECIES_PSYDUCK
+    0,          // SPECIES_GOLDUCK
+    0,          // SPECIES_MANKEY
+    0,          // SPECIES_PRIMEAPE
+    0,          // SPECIES_GROWLITHE
+    0,          // SPECIES_ARCANINE
+    0,          // SPECIES_POLIWAG
+    0,          // SPECIES_POLIWHIRL
+    0,          // SPECIES_POLIWRATH
+    0,          // SPECIES_ABRA
+    0,          // SPECIES_KADABRA
+    0,          // SPECIES_ALAKAZAM
+    0,          // SPECIES_MACHOP
+    0,          // SPECIES_MACHOKE
+    0,          // SPECIES_MACHAMP
+    0,          // SPECIES_BELLSPROUT
+    0,          // SPECIES_WEEPINBELL
+    0,          // SPECIES_VICTREEBEL
+    0,          // SPECIES_TENTACOOL
+    0,          // SPECIES_TENTACRUEL
+    0,          // SPECIES_GEODUDE
+    0,          // SPECIES_GRAVELER
+    0,          // SPECIES_GOLEM
+    0,          // SPECIES_PONYTA
+    0,          // SPECIES_RAPIDASH
+    0,          // SPECIES_SLOWPOKE
+    0,          // SPECIES_SLOWBRO
+    0,          // SPECIES_MAGNEMITE
+    0,          // SPECIES_MAGNETON
+    0,          // SPECIES_FARFETCHD
+    0,          // SPECIES_DODUO
+    0,          // SPECIES_DODRIO
+    0,          // SPECIES_SEEL
+    0,          // SPECIES_DEWGONG
+    0,          // SPECIES_GRIMER
+    0,          // SPECIES_MUK
+    0,          // SPECIES_SHELLDER
+    0,          // SPECIES_CLOYSTER
+    0,          // SPECIES_GASTLY
+    0,          // SPECIES_HAUNTER
+    0,          // SPECIES_GENGAR
+    0,          // SPECIES_ONIX
+    0,          // SPECIES_DROWZEE
+    0,          // SPECIES_HYPNO
+    0,          // SPECIES_KRABBY
+    0,          // SPECIES_KINGLER
+    0,          // SPECIES_VOLTORB
+    0,          // SPECIES_ELECTRODE
+    0,          // SPECIES_EXEGGCUTE
+    0,          // SPECIES_EXEGGUTOR
+    0,          // SPECIES_CUBONE
+    0,          // SPECIES_MAROWAK
+    0,          // SPECIES_HITMONLEE
+    0,          // SPECIES_HITMONCHAN
+    0,          // SPECIES_LICKITUNG
+    0,          // SPECIES_KOFFING
+    0,          // SPECIES_WEEZING
+    0,          // SPECIES_RHYHORN
+    0,          // SPECIES_RHYDON
+    0,          // SPECIES_CHANSEY
+    0,          // SPECIES_TANGELA
+    0,          // SPECIES_KANGASKHAN
+    0,          // SPECIES_HORSEA
+    0,          // SPECIES_SEADRA
+    0,          // SPECIES_GOLDEEN
+    0,          // SPECIES_SEAKING
+    0,          // SPECIES_STARYU
+    0,          // SPECIES_STARMIE
+    0,          // SPECIES_MR_MIME
+    0,          // SPECIES_SCYTHER
+    0,          // SPECIES_JYNX
+    0,          // SPECIES_ELECTABUZZ
+    0,          // SPECIES_MAGMAR
+    0,          // SPECIES_PINSIR
+    0,          // SPECIES_TAUROS
+    0,          // SPECIES_MAGIKARP
+    0,          // SPECIES_GYARADOS
+    0,          // SPECIES_LAPRAS
+    0,          // SPECIES_DITTO
+    0,          // SPECIES_EEVEE
+    0,          // SPECIES_VAPOREON
+    0,          // SPECIES_JOLTEON
+    0,          // SPECIES_FLAREON
+    0,          // SPECIES_PORYGON
+    0,          // SPECIES_OMANYTE
+    0,          // SPECIES_OMASTAR
+    0,          // SPECIES_KABUTO
+    0,          // SPECIES_KABUTOPS
+    0,          // SPECIES_AERODACTYL
+    0,          // SPECIES_SNORLAX
+    0,          // SPECIES_ARTICUNO
+    0,          // SPECIES_ZAPDOS
+    0,          // SPECIES_MOLTRES
+    0,          // SPECIES_DRATINI
+    0,          // SPECIES_DRAGONAIR
+    0,          // SPECIES_DRAGONITE
+    0,          // SPECIES_MEWTWO
+    0,          // SPECIES_MEW
+    0,          // SPECIES_CHIKORITA
+    0,          // SPECIES_BAYLEEF
+    0,          // SPECIES_MEGANIUM
+    0,          // SPECIES_CYNDAQUIL
+    0,          // SPECIES_QUILAVA
+    0,          // SPECIES_TYPHLOSION
+    0,          // SPECIES_TOTODILE
+    0,          // SPECIES_CROCONAW
+    0,          // SPECIES_FERALIGATR
+    0,          // SPECIES_SENTRET
+    0,          // SPECIES_FURRET
+    0,          // SPECIES_HOOTHOOT
+    0,          // SPECIES_NOCTOWL
+    0,          // SPECIES_LEDYBA
+    0,          // SPECIES_LEDIAN
+    0,          // SPECIES_SPINARAK
+    0,          // SPECIES_ARIADOS
+    0,          // SPECIES_CROBAT
+    0,          // SPECIES_CHINCHOU
+    0,          // SPECIES_LANTURN
+    1,          // SPECIES_PICHU
+    0,          // SPECIES_CLEFFA
+    0,          // SPECIES_IGGLYBUFF
+    0,          // SPECIES_TOGEPI
+    0,          // SPECIES_TOGETIC
+    0,          // SPECIES_NATU
+    0,          // SPECIES_XATU
+    0,          // SPECIES_MAREEP
+    0,          // SPECIES_FLAAFFY
+    0,          // SPECIES_AMPHAROS
+    0,          // SPECIES_BELLOSSOM
+    0,          // SPECIES_MARILL
+    0,          // SPECIES_AZUMARILL
+    0,          // SPECIES_SUDOWOODO
+    0,          // SPECIES_POLITOED
+    0,          // SPECIES_HOPPIP
+    0,          // SPECIES_SKIPLOOM
+    0,          // SPECIES_JUMPLUFF
+    0,          // SPECIES_AIPOM
+    0,          // SPECIES_SUNKERN
+    0,          // SPECIES_SUNFLORA
+    0,          // SPECIES_YANMA
+    0,          // SPECIES_WOOPER
+    0,          // SPECIES_QUAGSIRE
+    0,          // SPECIES_ESPEON
+    0,          // SPECIES_UMBREON
+    0,          // SPECIES_MURKROW
+    0,          // SPECIES_SLOWKING
+    0,          // SPECIES_MISDREAVUS
+    27,         // SPECIES_UNOWN
+    0,          // SPECIES_WOBBUFFET
+    0,          // SPECIES_GIRAFARIG
+    0,          // SPECIES_PINECO
+    0,          // SPECIES_FORRETRESS
+    0,          // SPECIES_DUNSPARCE
+    0,          // SPECIES_GLIGAR
+    0,          // SPECIES_STEELIX
+    0,          // SPECIES_SNUBBULL
+    0,          // SPECIES_GRANBULL
+    0,          // SPECIES_QWILFISH
+    0,          // SPECIES_SCIZOR
+    0,          // SPECIES_SHUCKLE
+    0,          // SPECIES_HERACROSS
+    0,          // SPECIES_SNEASEL
+    0,          // SPECIES_TEDDIURSA
+    0,          // SPECIES_URSARING
+    0,          // SPECIES_SLUGMA
+    0,          // SPECIES_MAGCARGO
+    0,          // SPECIES_SWINUB
+    0,          // SPECIES_PILOSWINE
+    0,          // SPECIES_CORSOLA
+    0,          // SPECIES_REMORAID
+    0,          // SPECIES_OCTILLERY
+    0,          // SPECIES_DELIBIRD
+    0,          // SPECIES_MANTINE
+    0,          // SPECIES_SKARMORY
+    0,          // SPECIES_HOUNDOUR
+    0,          // SPECIES_HOUNDOOM
+    0,          // SPECIES_KINGDRA
+    0,          // SPECIES_PHANPY
+    0,          // SPECIES_DONPHAN
+    0,          // SPECIES_PORYGON2
+    0,          // SPECIES_STANTLER
+    0,          // SPECIES_SMEARGLE
+    0,          // SPECIES_TYROGUE
+    0,          // SPECIES_HITMONTOP
+    0,          // SPECIES_SMOOCHUM
+    0,          // SPECIES_ELEKID
+    0,          // SPECIES_MAGBY
+    0,          // SPECIES_MILTANK
+    0,          // SPECIES_BLISSEY
+    0,          // SPECIES_RAIKOU
+    0,          // SPECIES_ENTEI
+    0,          // SPECIES_SUICUNE
+    0,          // SPECIES_LARVITAR
+    0,          // SPECIES_PUPITAR
+    0,          // SPECIES_TYRANITAR
+    0,          // SPECIES_LUGIA
+    0,          // SPECIES_HO_OH
+    0,          // SPECIES_CELEBI
+    0,          // SPECIES_TREECKO
+    0,          // SPECIES_GROVYLE
+    0,          // SPECIES_SCEPTILE
+    0,          // SPECIES_TORCHIC
+    0,          // SPECIES_COMBUSKEN
+    0,          // SPECIES_BLAZIKEN
+    0,          // SPECIES_MUDKIP
+    0,          // SPECIES_MARSHTOMP
+    0,          // SPECIES_SWAMPERT
+    0,          // SPECIES_POOCHYENA
+    0,          // SPECIES_MIGHTYENA
+    0,          // SPECIES_ZIGZAGOON
+    0,          // SPECIES_LINOONE
+    0,          // SPECIES_WURMPLE
+    0,          // SPECIES_SILCOON
+    0,          // SPECIES_BEAUTIFLY
+    0,          // SPECIES_CASCOON
+    0,          // SPECIES_DUSTOX
+    0,          // SPECIES_LOTAD
+    0,          // SPECIES_LOMBRE
+    0,          // SPECIES_LUDICOLO
+    0,          // SPECIES_SEEDOT
+    0,          // SPECIES_NUZLEAF
+    0,          // SPECIES_SHIFTRY
+    0,          // SPECIES_TAILLOW
+    0,          // SPECIES_SWELLOW
+    0,          // SPECIES_WINGULL
+    0,          // SPECIES_PELIPPER
+    0,          // SPECIES_RALTS
+    0,          // SPECIES_KIRLIA
+    0,          // SPECIES_GARDEVOIR
+    0,          // SPECIES_SURSKIT
+    0,          // SPECIES_MASQUERAIN
+    0,          // SPECIES_SHROOMISH
+    0,          // SPECIES_BRELOOM
+    0,          // SPECIES_SLAKOTH
+    0,          // SPECIES_VIGOROTH
+    0,          // SPECIES_SLAKING
+    0,          // SPECIES_NINCADA
+    0,          // SPECIES_NINJASK
+    0,          // SPECIES_SHEDINJA
+    0,          // SPECIES_WHISMUR
+    0,          // SPECIES_LOUDRED
+    0,          // SPECIES_EXPLOUD
+    0,          // SPECIES_MAKUHITA
+    0,          // SPECIES_HARIYAMA
+    0,          // SPECIES_AZURILL
+    0,          // SPECIES_NOSEPASS
+    0,          // SPECIES_SKITTY
+    0,          // SPECIES_DELCATTY
+    0,          // SPECIES_SABLEYE
+    0,          // SPECIES_MAWILE
+    0,          // SPECIES_ARON
+    0,          // SPECIES_LAIRON
+    0,          // SPECIES_AGGRON
+    0,          // SPECIES_MEDITITE
+    0,          // SPECIES_MEDICHAM
+    0,          // SPECIES_ELECTRIKE
+    0,          // SPECIES_MANECTRIC
+    0,          // SPECIES_PLUSLE
+    0,          // SPECIES_MINUN
+    0,          // SPECIES_VOLBEAT
+    0,          // SPECIES_ILLUMISE
+    0,          // SPECIES_ROSELIA
+    0,          // SPECIES_GULPIN
+    0,          // SPECIES_SWALOT
+    0,          // SPECIES_CARVANHA
+    0,          // SPECIES_SHARPEDO
+    0,          // SPECIES_WAILMER
+    0,          // SPECIES_WAILORD
+    0,          // SPECIES_NUMEL
+    0,          // SPECIES_CAMERUPT
+    0,          // SPECIES_TORKOAL
+    0,          // SPECIES_SPOINK
+    0,          // SPECIES_GRUMPIG
+    0,          // SPECIES_SPINDA
+    0,          // SPECIES_TRAPINCH
+    0,          // SPECIES_VIBRAVA
+    0,          // SPECIES_FLYGON
+    0,          // SPECIES_CACNEA
+    0,          // SPECIES_CACTURNE
+    0,          // SPECIES_SWABLU
+    0,          // SPECIES_ALTARIA
+    0,          // SPECIES_ZANGOOSE
+    0,          // SPECIES_SEVIPER
+    0,          // SPECIES_LUNATONE
+    0,          // SPECIES_SOLROCK
+    0,          // SPECIES_BARBOACH
+    0,          // SPECIES_WHISCASH
+    0,          // SPECIES_CORPHISH
+    0,          // SPECIES_CRAWDAUNT
+    0,          // SPECIES_BALTOY
+    0,          // SPECIES_CLAYDOL
+    0,          // SPECIES_LILEEP
+    0,          // SPECIES_CRADILY
+    0,          // SPECIES_ANORITH
+    0,          // SPECIES_ARMALDO
+    0,          // SPECIES_FEEBAS
+    0,          // SPECIES_MILOTIC
+    0,          // SPECIES_CASTFORM
+    0,          // SPECIES_KECLEON
+    0,          // SPECIES_SHUPPET
+    0,          // SPECIES_BANETTE
+    0,          // SPECIES_DUSKULL
+    0,          // SPECIES_DUSCLOPS
+    0,          // SPECIES_TROPIUS
+    0,          // SPECIES_CHIMECHO
+    0,          // SPECIES_ABSOL
+    0,          // SPECIES_WYNAUT
+    0,          // SPECIES_SNORUNT
+    0,          // SPECIES_GLALIE
+    0,          // SPECIES_SPHEAL
+    0,          // SPECIES_SEALEO
+    0,          // SPECIES_WALREIN
+    0,          // SPECIES_CLAMPERL
+    0,          // SPECIES_HUNTAIL
+    0,          // SPECIES_GOREBYSS
+    0,          // SPECIES_RELICANTH
+    0,          // SPECIES_LUVDISC
+    0,          // SPECIES_BAGON
+    0,          // SPECIES_SHELGON
+    0,          // SPECIES_SALAMENCE
+    0,          // SPECIES_BELDUM
+    0,          // SPECIES_METANG
+    0,          // SPECIES_METAGROSS
+    0,          // SPECIES_REGIROCK
+    0,          // SPECIES_REGICE
+    0,          // SPECIES_REGISTEEL
+    0,          // SPECIES_LATIAS
+    0,          // SPECIES_LATIOS
+    0,          // SPECIES_KYOGRE
+    0,          // SPECIES_GROUDON
+    0,          // SPECIES_RAYQUAZA
+    0,          // SPECIES_JIRACHI
+    3,          // SPECIES_DEOXYS
+    0,          // SPECIES_TURTWIG
+    0,          // SPECIES_GROTLE
+    0,          // SPECIES_TORTERRA
+    0,          // SPECIES_CHIMCHAR
+    0,          // SPECIES_MONFERNO
+    0,          // SPECIES_INFERNAPE
+    0,          // SPECIES_PIPLUP
+    0,          // SPECIES_PRINPLUP
+    0,          // SPECIES_EMPOLEON
+    0,          // SPECIES_STARLY
+    0,          // SPECIES_STARAVIA
+    0,          // SPECIES_STARAPTOR
+    0,          // SPECIES_BIDOOF
+    0,          // SPECIES_BIBAREL
+    0,          // SPECIES_KRICKETOT
+    0,          // SPECIES_KRICKETUNE
+    0,          // SPECIES_SHINX
+    0,          // SPECIES_LUXIO
+    0,          // SPECIES_LUXRAY
+    0,          // SPECIES_BUDEW
+    0,          // SPECIES_ROSERADE
+    0,          // SPECIES_CRANIDOS
+    0,          // SPECIES_RAMPARDOS
+    0,          // SPECIES_SHIELDON
+    0,          // SPECIES_BASTIODON
+    2,          // SPECIES_BURMY
+    2,          // SPECIES_WORMADAM
+    0,          // SPECIES_MOTHIM
+    0,          // SPECIES_COMBEE
+    0,          // SPECIES_VESPIQUEN
+    0,          // SPECIES_PACHIRISU
+    0,          // SPECIES_BUIZEL
+    0,          // SPECIES_FLOATZEL
+    0,          // SPECIES_CHERUBI
+    0,          // SPECIES_CHERRIM
+    1,          // SPECIES_SHELLOS
+    1,          // SPECIES_GASTRODON
+    0,          // SPECIES_AMBIPOM
+    0,          // SPECIES_DRIFLOON
+    0,          // SPECIES_DRIFBLIM
+    0,          // SPECIES_BUNEARY
+    0,          // SPECIES_LOPUNNY
+    0,          // SPECIES_MISMAGIUS
+    0,          // SPECIES_HONCHKROW
+    0,          // SPECIES_GLAMEOW
+    0,          // SPECIES_PURUGLY
+    0,          // SPECIES_CHINGLING
+    0,          // SPECIES_STUNKY
+    0,          // SPECIES_SKUNTANK
+    0,          // SPECIES_BRONZOR
+    0,          // SPECIES_BRONZONG
+    0,          // SPECIES_BONSLY
+    0,          // SPECIES_MIME_JR
+    0,          // SPECIES_HAPPINY
+    0,          // SPECIES_CHATOT
+    0,          // SPECIES_SPIRITOMB
+    0,          // SPECIES_GIBLE
+    0,          // SPECIES_GABITE
+    0,          // SPECIES_GARCHOMP
+    0,          // SPECIES_MUNCHLAX
+    0,          // SPECIES_RIOLU
+    0,          // SPECIES_LUCARIO
+    0,          // SPECIES_HIPPOPOTAS
+    0,          // SPECIES_HIPPOWDON
+    0,          // SPECIES_SKORUPI
+    0,          // SPECIES_DRAPION
+    0,          // SPECIES_CROAGUNK
+    0,          // SPECIES_TOXICROAK
+    0,          // SPECIES_CARNIVINE
+    0,          // SPECIES_FINNEON
+    0,          // SPECIES_LUMINEON
+    0,          // SPECIES_MANTYKE
+    0,          // SPECIES_SNOVER
+    0,          // SPECIES_ABOMASNOW
+    0,          // SPECIES_WEAVILE
+    0,          // SPECIES_MAGNEZONE
+    0,          // SPECIES_LICKILICKY
+    0,          // SPECIES_RHYPERIOR
+    0,          // SPECIES_TANGROWTH
+    0,          // SPECIES_ELECTIVIRE
+    0,          // SPECIES_MAGMORTAR
+    0,          // SPECIES_TOGEKISS
+    0,          // SPECIES_YANMEGA
+    0,          // SPECIES_LEAFEON
+    0,          // SPECIES_GLACEON
+    0,          // SPECIES_GLISCOR
+    0,          // SPECIES_MAMOSWINE
+    0,          // SPECIES_PORYGON_Z
+    0,          // SPECIES_GALLADE
+    0,          // SPECIES_PROBOPASS
+    0,          // SPECIES_DUSKNOIR
+    0,          // SPECIES_FROSLASS
+    5,          // SPECIES_ROTOM
+    0,          // SPECIES_UXIE
+    0,          // SPECIES_MESPRIT
+    0,          // SPECIES_AZELF
+    0,          // SPECIES_DIALGA
+    0,          // SPECIES_PALKIA
+    0,          // SPECIES_HEATRAN
+    0,          // SPECIES_REGIGIGAS
+    1,          // SPECIES_GIRATINA
+    0,          // SPECIES_CRESSELIA
+    0,          // SPECIES_PHIONE
+    0,          // SPECIES_MANAPHY
+    0,          // SPECIES_DARKRAI
+    1,          // SPECIES_SHAYMIN
+    17,         // SPECIES_ARCEUS
+};
+
+static const u16 sFemaleFlagLUT[] = {
+    FALSE,      // SPECIES_BULBASAUR
+    FALSE,      // SPECIES_IVYSAUR
+    TRUE,       // SPECIES_VENUSAUR
+    FALSE,      // SPECIES_CHARMANDER
+    FALSE,      // SPECIES_CHARMELEON
+    FALSE,      // SPECIES_CHARIZARD
+    FALSE,      // SPECIES_SQUIRTLE
+    FALSE,      // SPECIES_WARTORTLE
+    FALSE,      // SPECIES_BLASTOISE
+    FALSE,      // SPECIES_CATERPIE
+    FALSE,      // SPECIES_METAPOD
+    FALSE,      // SPECIES_BUTTERFREE
+    FALSE,      // SPECIES_WEEDLE
+    FALSE,      // SPECIES_KAKUNA
+    FALSE,      // SPECIES_BEEDRILL
+    FALSE,      // SPECIES_PIDGEY
+    FALSE,      // SPECIES_PIDGEOTTO
+    FALSE,      // SPECIES_PIDGEOT
+    FALSE,      // SPECIES_RATTATA
+    FALSE,      // SPECIES_RATICATE
+    FALSE,      // SPECIES_SPEAROW
+    FALSE,      // SPECIES_FEAROW
+    FALSE,      // SPECIES_EKANS
+    FALSE,      // SPECIES_ARBOK
+    TRUE,       // SPECIES_PIKACHU
+    FALSE,      // SPECIES_RAICHU
+    FALSE,      // SPECIES_SANDSHREW
+    FALSE,      // SPECIES_SANDSLASH
+    FALSE,      // SPECIES_NIDORAN_F
+    FALSE,      // SPECIES_NIDORINA
+    FALSE,      // SPECIES_NIDOQUEEN
+    FALSE,      // SPECIES_NIDORAN_M
+    FALSE,      // SPECIES_NIDORINO
+    FALSE,      // SPECIES_NIDOKING
+    FALSE,      // SPECIES_CLEFAIRY
+    FALSE,      // SPECIES_CLEFABLE
+    FALSE,      // SPECIES_VULPIX
+    FALSE,      // SPECIES_NINETALES
+    FALSE,      // SPECIES_JIGGLYPUFF
+    FALSE,      // SPECIES_WIGGLYTUFF
+    FALSE,      // SPECIES_ZUBAT
+    FALSE,      // SPECIES_GOLBAT
+    FALSE,      // SPECIES_ODDISH
+    FALSE,      // SPECIES_GLOOM
+    FALSE,      // SPECIES_VILEPLUME
+    FALSE,      // SPECIES_PARAS
+    FALSE,      // SPECIES_PARASECT
+    FALSE,      // SPECIES_VENONAT
+    FALSE,      // SPECIES_VENOMOTH
+    FALSE,      // SPECIES_DIGLETT
+    FALSE,      // SPECIES_DUGTRIO
+    FALSE,      // SPECIES_MEOWTH
+    FALSE,      // SPECIES_PERSIAN
+    FALSE,      // SPECIES_PSYDUCK
+    FALSE,      // SPECIES_GOLDUCK
+    FALSE,      // SPECIES_MANKEY
+    FALSE,      // SPECIES_PRIMEAPE
+    FALSE,      // SPECIES_GROWLITHE
+    FALSE,      // SPECIES_ARCANINE
+    FALSE,      // SPECIES_POLIWAG
+    FALSE,      // SPECIES_POLIWHIRL
+    FALSE,      // SPECIES_POLIWRATH
+    FALSE,      // SPECIES_ABRA
+    FALSE,      // SPECIES_KADABRA
+    FALSE,      // SPECIES_ALAKAZAM
+    FALSE,      // SPECIES_MACHOP
+    FALSE,      // SPECIES_MACHOKE
+    FALSE,      // SPECIES_MACHAMP
+    FALSE,      // SPECIES_BELLSPROUT
+    FALSE,      // SPECIES_WEEPINBELL
+    FALSE,      // SPECIES_VICTREEBEL
+    FALSE,      // SPECIES_TENTACOOL
+    FALSE,      // SPECIES_TENTACRUEL
+    FALSE,      // SPECIES_GEODUDE
+    FALSE,      // SPECIES_GRAVELER
+    FALSE,      // SPECIES_GOLEM
+    FALSE,      // SPECIES_PONYTA
+    FALSE,      // SPECIES_RAPIDASH
+    FALSE,      // SPECIES_SLOWPOKE
+    FALSE,      // SPECIES_SLOWBRO
+    FALSE,      // SPECIES_MAGNEMITE
+    FALSE,      // SPECIES_MAGNETON
+    FALSE,      // SPECIES_FARFETCHD
+    FALSE,      // SPECIES_DODUO
+    FALSE,      // SPECIES_DODRIO
+    FALSE,      // SPECIES_SEEL
+    FALSE,      // SPECIES_DEWGONG
+    FALSE,      // SPECIES_GRIMER
+    FALSE,      // SPECIES_MUK
+    FALSE,      // SPECIES_SHELLDER
+    FALSE,      // SPECIES_CLOYSTER
+    FALSE,      // SPECIES_GASTLY
+    FALSE,      // SPECIES_HAUNTER
+    FALSE,      // SPECIES_GENGAR
+    FALSE,      // SPECIES_ONIX
+    FALSE,      // SPECIES_DROWZEE
+    FALSE,      // SPECIES_HYPNO
+    FALSE,      // SPECIES_KRABBY
+    FALSE,      // SPECIES_KINGLER
+    FALSE,      // SPECIES_VOLTORB
+    FALSE,      // SPECIES_ELECTRODE
+    FALSE,      // SPECIES_EXEGGCUTE
+    FALSE,      // SPECIES_EXEGGUTOR
+    FALSE,      // SPECIES_CUBONE
+    FALSE,      // SPECIES_MAROWAK
+    FALSE,      // SPECIES_HITMONLEE
+    FALSE,      // SPECIES_HITMONCHAN
+    FALSE,      // SPECIES_LICKITUNG
+    FALSE,      // SPECIES_KOFFING
+    FALSE,      // SPECIES_WEEZING
+    FALSE,      // SPECIES_RHYHORN
+    FALSE,      // SPECIES_RHYDON
+    FALSE,      // SPECIES_CHANSEY
+    FALSE,      // SPECIES_TANGELA
+    FALSE,      // SPECIES_KANGASKHAN
+    FALSE,      // SPECIES_HORSEA
+    FALSE,      // SPECIES_SEADRA
+    FALSE,      // SPECIES_GOLDEEN
+    FALSE,      // SPECIES_SEAKING
+    FALSE,      // SPECIES_STARYU
+    FALSE,      // SPECIES_STARMIE
+    FALSE,      // SPECIES_MR_MIME
+    FALSE,      // SPECIES_SCYTHER
+    FALSE,      // SPECIES_JYNX
+    FALSE,      // SPECIES_ELECTABUZZ
+    FALSE,      // SPECIES_MAGMAR
+    FALSE,      // SPECIES_PINSIR
+    FALSE,      // SPECIES_TAUROS
+    FALSE,      // SPECIES_MAGIKARP
+    FALSE,      // SPECIES_GYARADOS
+    FALSE,      // SPECIES_LAPRAS
+    FALSE,      // SPECIES_DITTO
+    FALSE,      // SPECIES_EEVEE
+    FALSE,      // SPECIES_VAPOREON
+    FALSE,      // SPECIES_JOLTEON
+    FALSE,      // SPECIES_FLAREON
+    FALSE,      // SPECIES_PORYGON
+    FALSE,      // SPECIES_OMANYTE
+    FALSE,      // SPECIES_OMASTAR
+    FALSE,      // SPECIES_KABUTO
+    FALSE,      // SPECIES_KABUTOPS
+    FALSE,      // SPECIES_AERODACTYL
+    FALSE,      // SPECIES_SNORLAX
+    FALSE,      // SPECIES_ARTICUNO
+    FALSE,      // SPECIES_ZAPDOS
+    FALSE,      // SPECIES_MOLTRES
+    FALSE,      // SPECIES_DRATINI
+    FALSE,      // SPECIES_DRAGONAIR
+    FALSE,      // SPECIES_DRAGONITE
+    FALSE,      // SPECIES_MEWTWO
+    FALSE,      // SPECIES_MEW
+    FALSE,      // SPECIES_CHIKORITA
+    FALSE,      // SPECIES_BAYLEEF
+    TRUE,       // SPECIES_MEGANIUM
+    FALSE,      // SPECIES_CYNDAQUIL
+    FALSE,      // SPECIES_QUILAVA
+    FALSE,      // SPECIES_TYPHLOSION
+    FALSE,      // SPECIES_TOTODILE
+    FALSE,      // SPECIES_CROCONAW
+    FALSE,      // SPECIES_FERALIGATR
+    FALSE,      // SPECIES_SENTRET
+    FALSE,      // SPECIES_FURRET
+    FALSE,      // SPECIES_HOOTHOOT
+    FALSE,      // SPECIES_NOCTOWL
+    FALSE,      // SPECIES_LEDYBA
+    FALSE,      // SPECIES_LEDIAN
+    FALSE,      // SPECIES_SPINARAK
+    FALSE,      // SPECIES_ARIADOS
+    FALSE,      // SPECIES_CROBAT
+    FALSE,      // SPECIES_CHINCHOU
+    FALSE,      // SPECIES_LANTURN
+    FALSE,      // SPECIES_PICHU
+    FALSE,      // SPECIES_CLEFFA
+    FALSE,      // SPECIES_IGGLYBUFF
+    FALSE,      // SPECIES_TOGEPI
+    FALSE,      // SPECIES_TOGETIC
+    FALSE,      // SPECIES_NATU
+    FALSE,      // SPECIES_XATU
+    FALSE,      // SPECIES_MAREEP
+    FALSE,      // SPECIES_FLAAFFY
+    FALSE,      // SPECIES_AMPHAROS
+    FALSE,      // SPECIES_BELLOSSOM
+    FALSE,      // SPECIES_MARILL
+    FALSE,      // SPECIES_AZUMARILL
+    FALSE,      // SPECIES_SUDOWOODO
+    FALSE,      // SPECIES_POLITOED
+    FALSE,      // SPECIES_HOPPIP
+    FALSE,      // SPECIES_SKIPLOOM
+    FALSE,      // SPECIES_JUMPLUFF
+    FALSE,      // SPECIES_AIPOM
+    FALSE,      // SPECIES_SUNKERN
+    FALSE,      // SPECIES_SUNFLORA
+    FALSE,      // SPECIES_YANMA
+    FALSE,      // SPECIES_WOOPER
+    FALSE,      // SPECIES_QUAGSIRE
+    FALSE,      // SPECIES_ESPEON
+    FALSE,      // SPECIES_UMBREON
+    FALSE,      // SPECIES_MURKROW
+    FALSE,      // SPECIES_SLOWKING
+    FALSE,      // SPECIES_MISDREAVUS
+    FALSE,      // SPECIES_UNOWN
+    TRUE,       // SPECIES_WOBBUFFET
+    FALSE,      // SPECIES_GIRAFARIG
+    FALSE,      // SPECIES_PINECO
+    FALSE,      // SPECIES_FORRETRESS
+    FALSE,      // SPECIES_DUNSPARCE
+    FALSE,      // SPECIES_GLIGAR
+    TRUE,       // SPECIES_STEELIX
+    FALSE,      // SPECIES_SNUBBULL
+    FALSE,      // SPECIES_GRANBULL
+    FALSE,      // SPECIES_QWILFISH
+    FALSE,      // SPECIES_SCIZOR
+    FALSE,      // SPECIES_SHUCKLE
+    TRUE,       // SPECIES_HERACROSS
+    FALSE,      // SPECIES_SNEASEL
+    FALSE,      // SPECIES_TEDDIURSA
+    FALSE,      // SPECIES_URSARING
+    FALSE,      // SPECIES_SLUGMA
+    FALSE,      // SPECIES_MAGCARGO
+    FALSE,      // SPECIES_SWINUB
+    FALSE,      // SPECIES_PILOSWINE
+    FALSE,      // SPECIES_CORSOLA
+    FALSE,      // SPECIES_REMORAID
+    FALSE,      // SPECIES_OCTILLERY
+    FALSE,      // SPECIES_DELIBIRD
+    FALSE,      // SPECIES_MANTINE
+    FALSE,      // SPECIES_SKARMORY
+    FALSE,      // SPECIES_HOUNDOUR
+    FALSE,      // SPECIES_HOUNDOOM
+    FALSE,      // SPECIES_KINGDRA
+    FALSE,      // SPECIES_PHANPY
+    FALSE,      // SPECIES_DONPHAN
+    FALSE,      // SPECIES_PORYGON2
+    FALSE,      // SPECIES_STANTLER
+    FALSE,      // SPECIES_SMEARGLE
+    FALSE,      // SPECIES_TYROGUE
+    FALSE,      // SPECIES_HITMONTOP
+    FALSE,      // SPECIES_SMOOCHUM
+    FALSE,      // SPECIES_ELEKID
+    FALSE,      // SPECIES_MAGBY
+    FALSE,      // SPECIES_MILTANK
+    FALSE,      // SPECIES_BLISSEY
+    FALSE,      // SPECIES_RAIKOU
+    FALSE,      // SPECIES_ENTEI
+    FALSE,      // SPECIES_SUICUNE
+    FALSE,      // SPECIES_LARVITAR
+    FALSE,      // SPECIES_PUPITAR
+    FALSE,      // SPECIES_TYRANITAR
+    FALSE,      // SPECIES_LUGIA
+    FALSE,      // SPECIES_HO_OH
+    FALSE,      // SPECIES_CELEBI
+    FALSE,      // SPECIES_TREECKO
+    FALSE,      // SPECIES_GROVYLE
+    FALSE,      // SPECIES_SCEPTILE
+    FALSE,      // SPECIES_TORCHIC
+    FALSE,      // SPECIES_COMBUSKEN
+    FALSE,      // SPECIES_BLAZIKEN
+    FALSE,      // SPECIES_MUDKIP
+    FALSE,      // SPECIES_MARSHTOMP
+    FALSE,      // SPECIES_SWAMPERT
+    FALSE,      // SPECIES_POOCHYENA
+    FALSE,      // SPECIES_MIGHTYENA
+    FALSE,      // SPECIES_ZIGZAGOON
+    FALSE,      // SPECIES_LINOONE
+    FALSE,      // SPECIES_WURMPLE
+    FALSE,      // SPECIES_SILCOON
+    FALSE,      // SPECIES_BEAUTIFLY
+    FALSE,      // SPECIES_CASCOON
+    FALSE,      // SPECIES_DUSTOX
+    FALSE,      // SPECIES_LOTAD
+    FALSE,      // SPECIES_LOMBRE
+    FALSE,      // SPECIES_LUDICOLO
+    FALSE,      // SPECIES_SEEDOT
+    FALSE,      // SPECIES_NUZLEAF
+    FALSE,      // SPECIES_SHIFTRY
+    FALSE,      // SPECIES_TAILLOW
+    FALSE,      // SPECIES_SWELLOW
+    FALSE,      // SPECIES_WINGULL
+    FALSE,      // SPECIES_PELIPPER
+    FALSE,      // SPECIES_RALTS
+    FALSE,      // SPECIES_KIRLIA
+    FALSE,      // SPECIES_GARDEVOIR
+    FALSE,      // SPECIES_SURSKIT
+    FALSE,      // SPECIES_MASQUERAIN
+    FALSE,      // SPECIES_SHROOMISH
+    FALSE,      // SPECIES_BRELOOM
+    FALSE,      // SPECIES_SLAKOTH
+    FALSE,      // SPECIES_VIGOROTH
+    FALSE,      // SPECIES_SLAKING
+    FALSE,      // SPECIES_NINCADA
+    FALSE,      // SPECIES_NINJASK
+    FALSE,      // SPECIES_SHEDINJA
+    FALSE,      // SPECIES_WHISMUR
+    FALSE,      // SPECIES_LOUDRED
+    FALSE,      // SPECIES_EXPLOUD
+    FALSE,      // SPECIES_MAKUHITA
+    FALSE,      // SPECIES_HARIYAMA
+    FALSE,      // SPECIES_AZURILL
+    FALSE,      // SPECIES_NOSEPASS
+    FALSE,      // SPECIES_SKITTY
+    FALSE,      // SPECIES_DELCATTY
+    FALSE,      // SPECIES_SABLEYE
+    FALSE,      // SPECIES_MAWILE
+    FALSE,      // SPECIES_ARON
+    FALSE,      // SPECIES_LAIRON
+    FALSE,      // SPECIES_AGGRON
+    FALSE,      // SPECIES_MEDITITE
+    FALSE,      // SPECIES_MEDICHAM
+    FALSE,      // SPECIES_ELECTRIKE
+    FALSE,      // SPECIES_MANECTRIC
+    FALSE,      // SPECIES_PLUSLE
+    FALSE,      // SPECIES_MINUN
+    FALSE,      // SPECIES_VOLBEAT
+    FALSE,      // SPECIES_ILLUMISE
+    FALSE,      // SPECIES_ROSELIA
+    FALSE,      // SPECIES_GULPIN
+    FALSE,      // SPECIES_SWALOT
+    FALSE,      // SPECIES_CARVANHA
+    FALSE,      // SPECIES_SHARPEDO
+    FALSE,      // SPECIES_WAILMER
+    FALSE,      // SPECIES_WAILORD
+    FALSE,      // SPECIES_NUMEL
+    FALSE,      // SPECIES_CAMERUPT
+    FALSE,      // SPECIES_TORKOAL
+    FALSE,      // SPECIES_SPOINK
+    FALSE,      // SPECIES_GRUMPIG
+    FALSE,      // SPECIES_SPINDA
+    FALSE,      // SPECIES_TRAPINCH
+    FALSE,      // SPECIES_VIBRAVA
+    FALSE,      // SPECIES_FLYGON
+    FALSE,      // SPECIES_CACNEA
+    FALSE,      // SPECIES_CACTURNE
+    FALSE,      // SPECIES_SWABLU
+    FALSE,      // SPECIES_ALTARIA
+    FALSE,      // SPECIES_ZANGOOSE
+    FALSE,      // SPECIES_SEVIPER
+    FALSE,      // SPECIES_LUNATONE
+    FALSE,      // SPECIES_SOLROCK
+    FALSE,      // SPECIES_BARBOACH
+    FALSE,      // SPECIES_WHISCASH
+    FALSE,      // SPECIES_CORPHISH
+    FALSE,      // SPECIES_CRAWDAUNT
+    FALSE,      // SPECIES_BALTOY
+    FALSE,      // SPECIES_CLAYDOL
+    FALSE,      // SPECIES_LILEEP
+    FALSE,      // SPECIES_CRADILY
+    FALSE,      // SPECIES_ANORITH
+    FALSE,      // SPECIES_ARMALDO
+    FALSE,      // SPECIES_FEEBAS
+    FALSE,      // SPECIES_MILOTIC
+    FALSE,      // SPECIES_CASTFORM
+    FALSE,      // SPECIES_KECLEON
+    FALSE,      // SPECIES_SHUPPET
+    FALSE,      // SPECIES_BANETTE
+    FALSE,      // SPECIES_DUSKULL
+    FALSE,      // SPECIES_DUSCLOPS
+    FALSE,      // SPECIES_TROPIUS
+    FALSE,      // SPECIES_CHIMECHO
+    FALSE,      // SPECIES_ABSOL
+    FALSE,      // SPECIES_WYNAUT
+    FALSE,      // SPECIES_SNORUNT
+    FALSE,      // SPECIES_GLALIE
+    FALSE,      // SPECIES_SPHEAL
+    FALSE,      // SPECIES_SEALEO
+    FALSE,      // SPECIES_WALREIN
+    FALSE,      // SPECIES_CLAMPERL
+    FALSE,      // SPECIES_HUNTAIL
+    FALSE,      // SPECIES_GOREBYSS
+    FALSE,      // SPECIES_RELICANTH
+    FALSE,      // SPECIES_LUVDISC
+    FALSE,      // SPECIES_BAGON
+    FALSE,      // SPECIES_SHELGON
+    FALSE,      // SPECIES_SALAMENCE
+    FALSE,      // SPECIES_BELDUM
+    FALSE,      // SPECIES_METANG
+    FALSE,      // SPECIES_METAGROSS
+    FALSE,      // SPECIES_REGIROCK
+    FALSE,      // SPECIES_REGICE
+    FALSE,      // SPECIES_REGISTEEL
+    FALSE,      // SPECIES_LATIAS
+    FALSE,      // SPECIES_LATIOS
+    FALSE,      // SPECIES_KYOGRE
+    FALSE,      // SPECIES_GROUDON
+    FALSE,      // SPECIES_RAYQUAZA
+    FALSE,      // SPECIES_JIRACHI
+    FALSE,      // SPECIES_DEOXYS
+    FALSE,      // SPECIES_TURTWIG
+    FALSE,      // SPECIES_GROTLE
+    FALSE,      // SPECIES_TORTERRA
+    FALSE,      // SPECIES_CHIMCHAR
+    FALSE,      // SPECIES_MONFERNO
+    FALSE,      // SPECIES_INFERNAPE
+    FALSE,      // SPECIES_PIPLUP
+    FALSE,      // SPECIES_PRINPLUP
+    FALSE,      // SPECIES_EMPOLEON
+    FALSE,      // SPECIES_STARLY
+    FALSE,      // SPECIES_STARAVIA
+    FALSE,      // SPECIES_STARAPTOR
+    FALSE,      // SPECIES_BIDOOF
+    FALSE,      // SPECIES_BIBAREL
+    FALSE,      // SPECIES_KRICKETOT
+    FALSE,      // SPECIES_KRICKETUNE
+    FALSE,      // SPECIES_SHINX
+    FALSE,      // SPECIES_LUXIO
+    FALSE,      // SPECIES_LUXRAY
+    FALSE,      // SPECIES_BUDEW
+    FALSE,      // SPECIES_ROSERADE
+    FALSE,      // SPECIES_CRANIDOS
+    FALSE,      // SPECIES_RAMPARDOS
+    FALSE,      // SPECIES_SHIELDON
+    FALSE,      // SPECIES_BASTIODON
+    FALSE,      // SPECIES_BURMY
+    FALSE,      // SPECIES_WORMADAM
+    FALSE,      // SPECIES_MOTHIM
+    TRUE,       // SPECIES_COMBEE
+    FALSE,      // SPECIES_VESPIQUEN
+    FALSE,      // SPECIES_PACHIRISU
+    FALSE,      // SPECIES_BUIZEL
+    FALSE,      // SPECIES_FLOATZEL
+    FALSE,      // SPECIES_CHERUBI
+    FALSE,      // SPECIES_CHERRIM
+    FALSE,      // SPECIES_SHELLOS
+    FALSE,      // SPECIES_GASTRODON
+    FALSE,      // SPECIES_AMBIPOM
+    FALSE,      // SPECIES_DRIFLOON
+    FALSE,      // SPECIES_DRIFBLIM
+    FALSE,      // SPECIES_BUNEARY
+    FALSE,      // SPECIES_LOPUNNY
+    FALSE,      // SPECIES_MISMAGIUS
+    FALSE,      // SPECIES_HONCHKROW
+    FALSE,      // SPECIES_GLAMEOW
+    FALSE,      // SPECIES_PURUGLY
+    FALSE,      // SPECIES_CHINGLING
+    FALSE,      // SPECIES_STUNKY
+    FALSE,      // SPECIES_SKUNTANK
+    FALSE,      // SPECIES_BRONZOR
+    FALSE,      // SPECIES_BRONZONG
+    FALSE,      // SPECIES_BONSLY
+    FALSE,      // SPECIES_MIME_JR
+    FALSE,      // SPECIES_HAPPINY
+    FALSE,      // SPECIES_CHATOT
+    FALSE,      // SPECIES_SPIRITOMB
+    TRUE,       // SPECIES_GIBLE
+    TRUE,       // SPECIES_GABITE
+    TRUE,       // SPECIES_GARCHOMP
+    FALSE,      // SPECIES_MUNCHLAX
+    FALSE,      // SPECIES_RIOLU
+    FALSE,      // SPECIES_LUCARIO
+    TRUE,       // SPECIES_HIPPOPOTAS
+    TRUE,       // SPECIES_HIPPOWDON
+    FALSE,      // SPECIES_SKORUPI
+    FALSE,      // SPECIES_DRAPION
+    FALSE,      // SPECIES_CROAGUNK
+    FALSE,      // SPECIES_TOXICROAK
+    FALSE,      // SPECIES_CARNIVINE
+    FALSE,      // SPECIES_FINNEON
+    FALSE,      // SPECIES_LUMINEON
+    FALSE,      // SPECIES_MANTYKE
+    FALSE,      // SPECIES_SNOVER
+    FALSE,      // SPECIES_ABOMASNOW
+    FALSE,      // SPECIES_WEAVILE
+    FALSE,      // SPECIES_MAGNEZONE
+    FALSE,      // SPECIES_LICKILICKY
+    FALSE,      // SPECIES_RHYPERIOR
+    FALSE,      // SPECIES_TANGROWTH
+    FALSE,      // SPECIES_ELECTIVIRE
+    FALSE,      // SPECIES_MAGMORTAR
+    FALSE,      // SPECIES_TOGEKISS
+    FALSE,      // SPECIES_YANMEGA
+    FALSE,      // SPECIES_LEAFEON
+    FALSE,      // SPECIES_GLACEON
+    FALSE,      // SPECIES_GLISCOR
+    FALSE,      // SPECIES_MAMOSWINE
+    FALSE,      // SPECIES_PORYGON_Z
+    FALSE,      // SPECIES_GALLADE
+    FALSE,      // SPECIES_PROBOPASS
+    FALSE,      // SPECIES_DUSKNOIR
+    FALSE,      // SPECIES_FROSLASS
+    FALSE,      // SPECIES_ROTOM
+    FALSE,      // SPECIES_UXIE
+    FALSE,      // SPECIES_MESPRIT
+    FALSE,      // SPECIES_AZELF
+    FALSE,      // SPECIES_DIALGA
+    FALSE,      // SPECIES_PALKIA
+    FALSE,      // SPECIES_HEATRAN
+    FALSE,      // SPECIES_REGIGIGAS
+    FALSE,      // SPECIES_GIRATINA
+    FALSE,      // SPECIES_CRESSELIA
+    FALSE,      // SPECIES_PHIONE
+    FALSE,      // SPECIES_MANAPHY
+    FALSE,      // SPECIES_DARKRAI
+    FALSE,      // SPECIES_SHAYMIN
+    FALSE,      // SPECIES_ARCEUS
+};
 
 LocalMapObject *sub_020699F8(MapObjectMan *mapObjectMan, int x, int y, int direction, u32 mapno) {
     FieldSystem *fsys;
@@ -36,7 +1518,7 @@ LocalMapObject *sub_020699F8(MapObjectMan *mapObjectMan, int x, int y, int direc
     fsys = MapObjectMan_GetFieldSysPtr(mapObjectMan);
     party = SavArray_PlayerParty_get(fsys->savedata);
     partyCount = GetPartyCount(party);
-    sub_0206A06C(&fsys->unkE4);
+    FsysFollowMonClear(&fsys->followMon);
     SavFollowPoke_SetUnused2bitField(0, Sav2_FollowPoke_get(fsys->savedata));
     if (partyCount != 0) {
         if (CountAlivePokemon(party) == 0) {
@@ -45,15 +1527,15 @@ LocalMapObject *sub_020699F8(MapObjectMan *mapObjectMan, int x, int y, int direc
             pokemon = GetFirstAliveMonInParty_CrashIfNone(party);
         }
         species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
-        fsys->unkE4.mapObject = NULL;
-        if (sub_02069FF4(species, mapno)) {
+        fsys->followMon.mapObject = NULL;
+        if (GetFollowPokePermissionBySpeciesAndMap(species, mapno)) {
             forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
             gender = GetMonData(pokemon, MON_DATA_GENDER, NULL);
             shiny = MonIsShiny(pokemon);
-            fsys->unkE4.mapObject = CreateFollowingSpriteFieldObject(mapObjectMan, species, forme, gender, direction, x, y, shiny);
-            fsys->unkE4.active = TRUE;
+            fsys->followMon.mapObject = CreateFollowingSpriteFieldObject(mapObjectMan, species, forme, gender, direction, x, y, shiny);
+            fsys->followMon.active = TRUE;
             FollowPokeFsysParamSet(fsys, species, forme, shiny, gender);
-            sub_0206A288(fsys->unk108, pokemon, species, GetMonData(pokemon, MON_DATA_PERSONALITY, NULL));
+            FsysUnkSub108_Set(fsys->unk108, pokemon, species, GetMonData(pokemon, MON_DATA_PERSONALITY, NULL));
             player_unk = sub_0205C700(fsys->playerAvatar);
             if (player_unk == 0 || player_unk == 3) {
                 SavFollowPoke_SetUnused2bitField(1, Sav2_FollowPoke_get(fsys->savedata));
@@ -74,7 +1556,7 @@ LocalMapObject *sub_020699F8(MapObjectMan *mapObjectMan, int x, int y, int direc
         }
     }
 
-    return fsys->unkE4.mapObject;
+    return fsys->followMon.mapObject;
 }
 
 void sub_02069B74(MapObjectMan *mapObjectMan, u32 mapno) {
@@ -92,43 +1574,43 @@ void sub_02069B74(MapObjectMan *mapObjectMan, u32 mapno) {
     fsys = MapObjectMan_GetFieldSysPtr(mapObjectMan);
     party = SavArray_PlayerParty_get(fsys->savedata);
     partyCount = GetPartyCount(party);
-    sub_0206A06C(&fsys->unkE4);
+    FsysFollowMonClear(&fsys->followMon);
     if (partyCount != 0) {
         pokemon = GetFirstAliveMonInParty_CrashIfNone(party);
         species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
-        sub_0206A288(fsys->unk108, pokemon, species, GetMonData(pokemon, MON_DATA_PERSONALITY, NULL));
-        if (sub_02069FF4(species, mapno)) {
+        FsysUnkSub108_Set(fsys->unk108, pokemon, species, GetMonData(pokemon, MON_DATA_PERSONALITY, NULL));
+        if (GetFollowPokePermissionBySpeciesAndMap(species, mapno)) {
             followPokeObj = GetMapObjectByID(fsys->unk3C, obj_partner_poke);
             if (followPokeObj == NULL) {
-                fsys->unkE4.unk15 = 1;
+                fsys->followMon.unk15 = 1;
             } else {
                 forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
                 gender = GetMonGender(pokemon);
                 shiny = MonIsShiny(pokemon);
-                fsys->unkE4.mapObject = followPokeObj;
-                fsys->unkE4.active = TRUE;
+                fsys->followMon.mapObject = followPokeObj;
+                fsys->followMon.active = TRUE;
                 FollowPokeFsysParamSet(fsys, species, forme, shiny, gender);
                 FollowPokeMapObjectSetParams(followPokeObj, species, forme, shiny);
-                MapObject_SetGfxID(fsys->unkE4.mapObject, FollowingPokemon_GetSpriteID(species, forme, gender));
+                MapObject_SetGfxID(fsys->followMon.mapObject, FollowingPokemon_GetSpriteID(species, forme, gender));
                 player_unk = sub_0205C700(fsys->playerAvatar);
                 if (player_unk == 0 || player_unk == 3) {
                     SavFollowPoke_SetUnused2bitField(1, Sav2_FollowPoke_get(fsys->savedata));
                 } else if (player_unk == 1) {
                     SavFollowPoke_SetUnused2bitField(2, Sav2_FollowPoke_get(fsys->savedata));
-                    sub_0206A040(fsys->unkE4.mapObject, 1);
+                    sub_0206A040(fsys->followMon.mapObject, TRUE);
                 } else if (player_unk == 2) {
                     SavFollowPoke_SetUnused2bitField(2, Sav2_FollowPoke_get(fsys->savedata));
-                    sub_0206A040(fsys->unkE4.mapObject, 1);
+                    sub_0206A040(fsys->followMon.mapObject, TRUE);
                 } else {
                     GF_ASSERT(0);
                 }
-                if (sub_02069E14(fsys->unkE4.mapObject)) {
-                    sub_0206A040(fsys->unkE4.mapObject, 1);
+                if (sub_02069E14(fsys->followMon.mapObject)) {
+                    sub_0206A040(fsys->followMon.mapObject, TRUE);
                 }
                 if (SavFollowPoke_GetInhibitFlagState(Sav2_FollowPoke_get(fsys->savedata))) {
                     sub_0206A054(fsys);
                 }
-                sub_0205F6AC(fsys->unkE4.mapObject, 0);
+                sub_0205F6AC(fsys->followMon.mapObject, 0);
             }
         } else {
             followPokeObj = GetMapObjectByID(fsys->unk3C, obj_partner_poke);
@@ -139,16 +1621,16 @@ void sub_02069B74(MapObjectMan *mapObjectMan, u32 mapno) {
                 FollowPokeFsysParamSet(fsys, species, forme, shiny, gender);
                 FollowPokeMapObjectSetParams(followPokeObj, species, forme, shiny);
                 MapObject_SetGfxID(followPokeObj, FollowingPokemon_GetSpriteID(species, forme, gender));
-                fsys->unkE4.mapObject = followPokeObj;
-                fsys->unkE4.active = TRUE;
-                fsys->unkE4.unk15 = 1;
+                fsys->followMon.mapObject = followPokeObj;
+                fsys->followMon.active = TRUE;
+                fsys->followMon.unk15 = 1;
             }
         }
     }
 }
 
 LocalMapObject *FollowingPokemon_GetMapObject(FieldSystem *fsys) {
-    return fsys->unkE4.mapObject;
+    return fsys->followMon.mapObject;
 }
 
 u32 FollowingPokemon_GetSpriteID(int species, u16 forme, u32 gender) {
@@ -175,16 +1657,16 @@ u32 FollowingPokemon_GetSpriteID(int species, u16 forme, u32 gender) {
     return ret;
 }
 
-void sub_02069DC8(LocalMapObject *mapObject, int a1) {
-    sub_0206A040(mapObject, a1);
-    if (a1) {
-        sub_02069DEC(mapObject, 1);
+void sub_02069DC8(LocalMapObject *mapObject, BOOL enable_bit) {
+    sub_0206A040(mapObject, enable_bit);
+    if (enable_bit) {
+        sub_02069DEC(mapObject, TRUE);
     } else {
-        sub_02069DEC(mapObject, 0);
+        sub_02069DEC(mapObject, FALSE);
     }
 }
 
-void sub_02069DEC(LocalMapObject *mapObject, int a1) {
+void sub_02069DEC(LocalMapObject *mapObject, BOOL enable_bit) {
     int value;
     u8 flag0;
     u32 flag1;
@@ -192,7 +1674,7 @@ void sub_02069DEC(LocalMapObject *mapObject, int a1) {
 
     value = MapObject_GetParam(mapObject, 2);
     flag0 = value & 1;
-    flag1 = a1;
+    flag1 = enable_bit;
     flag2 = value >> 2;
     value = flag2 << 2;
     value |= flag1 << 1;
@@ -202,4 +1684,352 @@ void sub_02069DEC(LocalMapObject *mapObject, int a1) {
 
 u8 sub_02069E14(LocalMapObject *mapObject) {
     return (MapObject_GetParam(mapObject, 2) >> 1) & 1;
+}
+
+void sub_02069E28(LocalMapObject *mapObject, u32 a1) {
+    int param;
+    u8 r1;
+    u16 r2;
+    u16 b;
+
+    param = MapObject_GetParam(mapObject, 2);
+
+    r2 = param >> 10;
+    b = r2 << 10;
+    param = (u8) param;
+    param |= b | (a1 << 8);
+
+    MapObject_SetParam(mapObject, param, 2);
+}
+
+void sub_02069E50(LocalMapObject *mapObject, u8 a1) {
+    int param;
+    u32 b;
+
+    GF_ASSERT(a1 <= 23);
+
+    param = MapObject_GetParam(mapObject, 2);
+
+    b = param & 0x3FF;
+    param = (a1 << 10) | (u8)b;
+
+    MapObject_SetParam(mapObject, param, 2);
+}
+
+void sub_02069E84(LocalMapObject *mapObject, u8 a1) {
+    int param;
+    u8 a;
+    u32 b;
+
+    param = MapObject_GetParam(mapObject, 2);
+
+    a = param & 3;
+    b = param >> 3;
+
+    param = (b << 3) | (a1 << 2);
+    param |= a;
+
+    MapObject_SetParam(mapObject, param, 2);
+}
+
+u8 sub_02069EAC(LocalMapObject *mapObject) {
+    return (MapObject_GetParam(mapObject, 2) >> 2) & 1;
+}
+
+u8 sub_02069EC0(LocalMapObject *mapObject) {
+    return (MapObject_GetParam(mapObject, 2) >> 8) & 3;
+}
+
+u8 sub_02069ED4(LocalMapObject *mapObject) {
+    return (MapObject_GetParam(mapObject, 2) >> 10) & 0x3F;
+}
+
+void FollowPokeMapObjectSetParams(LocalMapObject *mapObject, int species, u8 forme, BOOL shiny) {
+    FollowingPoke_SetObjectShinyFlag(mapObject, shiny);
+    FollowingPoke_SetObjectFormeParam(mapObject, species, forme);
+    MapObject_SetParam(mapObject, species, 0);
+}
+
+void sub_02069F0C(LocalMapObject *mapObject, int species, u8 forme, BOOL shiny, int a4) {
+    MapObject_SetParam(mapObject, a4, 2);
+    FollowingPoke_SetObjectShinyFlag(mapObject, shiny);
+    FollowingPoke_SetObjectFormeParam(mapObject, species, forme);
+    MapObject_SetParam(mapObject, species, 0);
+}
+
+void FollowPokeFsysParamSet(FieldSystem *fsys, int species, u8 forme, BOOL shiny, u8 gender) {
+    fsys->followMon.species = species;
+    fsys->followMon.shiny = shiny;
+    fsys->followMon.forme = forme;
+    fsys->followMon.gender = gender;
+}
+
+u8 GetFollowPokeSizeParamBySpecies(int species) {
+    u8 data[4];
+
+    ReadWholeNarcMemberByIdPair(data, NARC_fielddata_tsurepoke_tp_param, SpeciesToOverworldModelIndexOffset(species));
+    return data[1];
+}
+
+int FollowPokeObj_GetSpecies(LocalMapObject *mapObject) {
+    return MapObject_GetParam(mapObject, 0);
+}
+
+BOOL FollowingPokemon_IsActive(FieldSystem *fsys) {
+    if (fsys->followMon.active == 0) {
+        return FALSE;
+    }
+
+    if (CountAlivePokemon(SavArray_PlayerParty_get(fsys->savedata)) != 0) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+BOOL sub_02069FB0(FieldSystem *fsys) {
+    if (FollowingPokemon_IsActive(fsys)) {
+        if (!sub_0205F684(fsys->followMon.mapObject)) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    } else {
+        return FALSE;
+    }
+}
+
+BOOL sub_02069FD4(FieldSystem *fsys) {
+    u32 mapno;
+
+    mapno = SavFollowPoke_GetMapId(Sav2_FollowPoke_get(fsys->savedata));
+    return GetFollowPokePermissionBySpeciesAndMap(FollowPokeObj_GetSpecies(fsys->followMon.mapObject), mapno);
+}
+
+BOOL GetFollowPokePermissionBySpeciesAndMap(int species, u32 mapno) {
+    BOOL ret;
+    if ((species == SPECIES_DIGLETT || species == SPECIES_DUGTRIO) && !FollowPokePermissionDiglettCheck(mapno)) {
+        return FALSE;
+    }
+
+    switch (MapHeader_GetFollowMode(mapno)) {
+    case MAP_FOLLOWMODE_PREVENT:
+        ret = FALSE;
+        break;
+    case MAP_FOLLOWMODE_HEIGHT_RESTRICT:
+        if (GetFollowPokeSizeParamBySpecies(species)) {
+            ret = FALSE;
+        } else {
+            ret = TRUE;
+        }
+        break;
+    case MAP_FOLLOWMODE_ALLOW:
+        ret = TRUE;
+        break;
+    }
+
+    return ret;
+}
+
+void sub_0206A040(LocalMapObject *mapObject, BOOL enable_bit) {
+    sub_0205F690(mapObject, enable_bit);
+    sub_0205F6E0(mapObject, enable_bit);
+}
+
+void sub_0206A054(FieldSystem *fsys) {
+    LocalMapObject *obj = fsys->followMon.mapObject;
+    sub_02069DC8(obj, TRUE);
+    sub_02069DEC(obj, FALSE);
+}
+
+static void FsysFollowMonClear(FollowMon *followMon) {
+    followMon->active = FALSE;
+    followMon->mapObject = NULL;
+    followMon->unk4 = 0;
+    followMon->unk1C = 0;
+    followMon->unk8 = 0;
+    followMon->unkC = 0;
+    followMon->unk15 = 0;
+}
+
+static void FollowingPoke_SetObjectShinyFlag(LocalMapObject *mapObject, BOOL enable) {
+    int param;
+    u32 val;
+
+    param = MapObject_GetParam(mapObject, 2);
+    val = param >> 1;
+
+    param = val << 1;
+    if (enable) {
+        param |= 1;
+    }
+
+    MapObject_SetParam(mapObject, param, 2);
+}
+
+static BOOL FollowPokePermissionDiglettCheck(int mapno) {
+    switch (mapno) {
+    case MAP_D17R0101:
+    case MAP_D17R0102:
+    case MAP_D17R0103:
+    case MAP_D17R0104:
+    case MAP_D17R0105:
+    case MAP_D17R0106:
+    case MAP_D17R0107:
+    case MAP_D17R0108:
+    case MAP_D17R0109:
+    case MAP_D17R0110:
+    case MAP_D17R0112:
+        return FALSE;
+    default:
+        return TRUE;
+    }
+}
+
+static void FollowingPoke_SetObjectFormeParam(LocalMapObject *mapObject, int species, u8 forme) {
+    u8 data[4];
+    int offset;
+    int formect;
+    u16 param;
+
+    offset = SpeciesToOverworldModelIndexOffset(species);
+    formect = OverworldModelLookupFormeCount(species);
+    if (formect > 0) {
+        if (forme <= formect) {
+            offset += forme;
+        } else {
+            GF_ASSERT(0);
+        }
+    }
+    ReadWholeNarcMemberByIdPair(data, NARC_fielddata_tsurepoke_tp_param, offset);
+    param = (data[1] << 8) | data[2];
+    MapObject_SetParam(mapObject, param, 1);
+}
+
+static LocalMapObject *CreateFollowingSpriteFieldObject(MapObjectMan *mapObjectMan, int species, u16 forme, int gender, int direction, int x, int y, int shiny) {
+    LocalMapObject *ret;
+
+    ret = CreateSpecialFieldObject(
+        mapObjectMan,
+        x,
+        y,
+        direction,
+        FollowingPokemon_GetSpriteID(species, forme, gender),
+        0x30,
+        MAP_NOTHING
+    );
+    GF_ASSERT(ret != NULL);
+    MapObject_SetID(ret, obj_partner_poke);
+    MapObject_SetType(ret, 0);
+    MapObject_SetFlagID(ret, 0);
+    MapObject_SetScript(ret, std_following_mon);
+    MapObject_SetParam(ret, 0, 2);
+    FollowPokeMapObjectSetParams(ret, species, forme, shiny);
+    MapObject_SetXRange(ret, -1);
+    MapObject_SetYRange(ret, -1);
+    MapObject_SetBits(ret, 0x2400);
+    MapObject_ClearBits(ret, 0x180);
+    sub_0205F89C(ret, TRUE);
+    sub_02069DC8(ret, TRUE);
+    return ret;
+}
+
+struct FieldSystemUnk108 *FsysUnkSub108_Alloc(HeapID heapId) {
+    struct FieldSystemUnk108 *ret;
+
+    ret = AllocFromHeap(heapId, sizeof(struct FieldSystemUnk108));
+    MI_CpuClear8(ret, sizeof(struct FieldSystemUnk108));
+    ret->species = 0;
+    ret->personality = 0;
+    ret->isRegistered = 0;
+    ret->pokemon = 0;
+    return ret;
+}
+
+void FsysUnkSub108_AddMonMood(struct FieldSystemUnk108 *unk, s8 by) {
+    s8 mood;
+
+    if (unk->pokemon == NULL) {
+        GF_ASSERT(0);
+        return;
+    }
+
+    mood = GetMonData(unk->pokemon, MON_DATA_MOOD, NULL);
+    if (mood + by > 127) {
+        mood = 127;
+    } else if (mood + by < -127) {
+        mood = -127;
+    } else {
+        mood += by;
+    }
+    SetMonData(unk->pokemon, MON_DATA_MOOD, &mood);
+}
+
+void FsysUnkSub108_SetMonMood(struct FieldSystemUnk108 *unk, s8 mood) {
+    if (unk->pokemon == NULL) {
+        GF_ASSERT(0);
+        return;
+    }
+
+    SetMonData(unk->pokemon, MON_DATA_MOOD, &mood);
+}
+
+s8 FsysUnkSub108_GetMonMood(struct FieldSystemUnk108 *unk) {
+    if (unk->pokemon == NULL) {
+        GF_ASSERT(0);
+        return 0;
+    }
+
+    return GetMonData(unk->pokemon, MON_DATA_MOOD, NULL);
+}
+
+void FsysUnkSub108_Set(struct FieldSystemUnk108 *a0, POKEMON *pokemon, u16 species, u32 personality) {
+    s8 mood;
+    if (species != SPECIES_NONE && (a0->isRegistered == 0 || a0->species != species || a0->personality != personality)) {
+        a0->species = species;
+        a0->personality = personality;
+        mood = 0;
+        a0->isRegistered = 1;
+        a0->pokemon = pokemon;
+        SetMonData(pokemon, MON_DATA_MOOD, &mood);
+    }
+}
+
+void FsysUnkSub108_MoveMoodTowardsNeutral(struct FieldSystemUnk108 *a0) {
+    s8 mood;
+    if (a0->pokemon == NULL) {
+        GF_ASSERT(0);
+        return;
+    }
+    mood = GetMonData(a0->pokemon, MON_DATA_MOOD, NULL);
+    if (mood < 0) {
+        mood++;
+    } else if (mood > 0) {
+        mood--;
+    }
+    SetMonData(a0->pokemon, MON_DATA_MOOD, &mood);
+}
+
+int SpeciesToOverworldModelIndexOffset(int species) {
+    return sModelIndexLUT[species];
+}
+
+int OverworldModelLookupFormeCount(int species) {
+    if (!(species > 0 && species <= NATIONAL_DEX_COUNT)) {
+        GF_ASSERT(0);
+        species = 0;
+    } else {
+        species--;
+    }
+    return sFormeMaxLUT[species];
+}
+
+BOOL OverworldModelLookupHasFemaleForme(int species) {
+    if (!(species > 0 && species <= NATIONAL_DEX_COUNT)) {
+        GF_ASSERT(0);
+        species = 0;
+    } else {
+        species--;
+    }
+    return sFemaleFlagLUT[species];
 }

@@ -1360,12 +1360,12 @@ ov90_02259184: ; 0x02259184
 	mov r0, #0
 	lsl r1, r1, #6
 	add r2, r4, #0
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #6
 	mov r0, #4
 	lsl r1, r1, #6
 	add r2, r4, #0
-	bl sub_0200304C
+	bl LoadFontPal1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov90_02259184
@@ -1535,7 +1535,7 @@ ov90_022592C4: ; 0x022592C4
 	mov r0, #0
 	ldr r1, [r5, #8]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	sub r3, r4, r0
 	bpl _022592F0
 	mov r3, #0
@@ -3694,11 +3694,11 @@ ov90_0225A350: ; 0x0225A350
 	bl ov90_0225A5BC
 	mov r0, #2
 	add r1, r7, #0
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r1, [r5, #0x14]
 	mov r0, #2
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r2, #0
 	str r2, [sp]
 	add r3, r0, #0
@@ -3717,7 +3717,7 @@ ov90_0225A350: ; 0x0225A350
 	sub r3, r3, r4
 	bl AddTextPrinterParameterized2
 	mov r0, #2
-	bl sub_02002DB4
+	bl FontID_Release
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers

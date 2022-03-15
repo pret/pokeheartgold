@@ -37,7 +37,7 @@ ov01_021E5924: ; 0x021E5924
 	mov r1, #0
 	ldr r5, _021E5B9C ; =0x00DCE6A1
 	str r1, [sp, #4]
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r1, [r6]
 	add r4, r0, #0
 	cmp r1, #3
@@ -56,7 +56,7 @@ _021E594A: ; jump table
 	.short _021E5B5C - _021E594A - 2 ; case 2
 	.short _021E5B62 - _021E594A - 2 ; case 3
 _021E5952:
-	ldr r1, _021E5BA0 ; =SDK_OVERLAY_OVY_123_ID
+	ldr r1, _021E5BA0 ; =FS_OVERLAY_ID(OVY_123)
 	mov r0, #0
 	bl FS_LoadOverlay
 	mov r0, #0
@@ -102,7 +102,7 @@ _021E599E:
 	lsl r0, r0, #8
 	lsr r0, r0, #0x1c
 	beq _021E59F0
-	ldr r0, _021E5BB8 ; =SDK_OVERLAY_OVY_2_ID
+	ldr r0, _021E5BB8 ; =FS_OVERLAY_ID(OVY_2)
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r0, r4, #0
@@ -113,17 +113,17 @@ _021E599E:
 	beq _021E59DE
 	b _021E59E8
 _021E59D4:
-	ldr r0, _021E5BBC ; =SDK_OVERLAY_OVY_4_ID
+	ldr r0, _021E5BBC ; =FS_OVERLAY_ID(OVY_4)
 	mov r1, #2
 	bl HandleLoadOverlay
 	b _021E59F0
 _021E59DE:
-	ldr r0, _021E5BC0 ; =SDK_OVERLAY_OVY_3_ID
+	ldr r0, _021E5BC0 ; =FS_OVERLAY_ID(OVY_3)
 	mov r1, #2
 	bl HandleLoadOverlay
 	b _021E59F0
 _021E59E8:
-	ldr r0, _021E5BC0 ; =SDK_OVERLAY_OVY_3_ID
+	ldr r0, _021E5BC0 ; =FS_OVERLAY_ID(OVY_3)
 	mov r1, #2
 	bl HandleLoadOverlay
 _021E59F0:
@@ -142,7 +142,7 @@ _021E59F0:
 	beq _021E5A12
 	bl GF_AssertFail
 _021E5A12:
-	ldr r1, _021E5BA0 ; =SDK_OVERLAY_OVY_123_ID
+	ldr r1, _021E5BA0 ; =FS_OVERLAY_ID(OVY_123)
 	mov r0, #0
 	bl FS_UnloadOverlay
 	mov r0, #4
@@ -309,15 +309,15 @@ _021E5B8E:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E5B9C: .word 0x00DCE6A1
-_021E5BA0: .word SDK_OVERLAY_OVY_123_ID
+_021E5BA0: .word FS_OVERLAY_ID(OVY_123)
 _021E5BA4: .word 0x04000050
 _021E5BA8: .word 0x04001050
 _021E5BAC: .word ov01_021E66A8
 _021E5BB0: .word 0x000004CF
 _021E5BB4: .word ov01_021E66D8
-_021E5BB8: .word SDK_OVERLAY_OVY_2_ID
-_021E5BBC: .word SDK_OVERLAY_OVY_4_ID
-_021E5BC0: .word SDK_OVERLAY_OVY_3_ID
+_021E5BB8: .word FS_OVERLAY_ID(OVY_2)
+_021E5BBC: .word FS_OVERLAY_ID(OVY_4)
+_021E5BC0: .word FS_OVERLAY_ID(OVY_3)
 _021E5BC4: .word ov01_021E66B8
 _021E5BC8: .word 0x000003A1
 _021E5BCC: .word 0x00000D69
@@ -331,7 +331,7 @@ _021E5BE0: .word 0x00000578
 	thumb_func_start ov01_021E5BE4
 ov01_021E5BE4: ; 0x021E5BE4
 	push {r4, lr}
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r4, r0, #0
 	bl ov01_021E5ED4
 	cmp r0, #0
@@ -366,7 +366,7 @@ ov01_021E5C24: ; 0x021E5C24
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r1, #0
 	ldr r5, _021E5E7C ; =0x002AAACF
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r4, r0, #0
 	ldr r0, [r4, #0x2c]
 	bl ov01_021F50F0
@@ -383,7 +383,7 @@ _021E5C42:
 _021E5C48:
 	b _021E5E76
 _021E5C4A:
-	ldr r1, _021E5E80 ; =SDK_OVERLAY_OVY_123_ID
+	ldr r1, _021E5E80 ; =FS_OVERLAY_ID(OVY_123)
 	mov r0, #0
 	bl FS_LoadOverlay
 	add r0, r4, #0
@@ -464,7 +464,7 @@ _021E5CFA:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x10]
 	bl ov01_021EB1BC
-	ldr r1, _021E5E80 ; =SDK_OVERLAY_OVY_123_ID
+	ldr r1, _021E5E80 ; =FS_OVERLAY_ID(OVY_123)
 	mov r0, #0
 	bl FS_UnloadOverlay
 	ldr r0, [r4, #4]
@@ -597,11 +597,11 @@ _021E5E12:
 	lsl r0, r0, #8
 	lsr r0, r0, #0x1c
 	beq _021E5E6E
-	ldr r0, _021E5EAC ; =SDK_OVERLAY_OVY_2_ID
+	ldr r0, _021E5EAC ; =FS_OVERLAY_ID(OVY_2)
 	bl UnloadOverlayByID
-	ldr r0, _021E5EB0 ; =SDK_OVERLAY_OVY_4_ID
+	ldr r0, _021E5EB0 ; =FS_OVERLAY_ID(OVY_4)
 	bl UnloadOverlayByID
-	ldr r0, _021E5EB4 ; =SDK_OVERLAY_OVY_3_ID
+	ldr r0, _021E5EB4 ; =FS_OVERLAY_ID(OVY_3)
 	bl UnloadOverlayByID
 _021E5E6E:
 	bl sub_02005D00
@@ -612,7 +612,7 @@ _021E5E76:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E5E7C: .word 0x002AAACF
-_021E5E80: .word SDK_OVERLAY_OVY_123_ID
+_021E5E80: .word FS_OVERLAY_ID(OVY_123)
 _021E5E84: .word ov01_021E66C8
 _021E5E88: .word 0x0000023B
 _021E5E8C: .word ov01_021E66DC
@@ -623,9 +623,9 @@ _021E5E9C: .word sub_0203E348
 _021E5EA0: .word 0x00001EA5
 _021E5EA4: .word 0x000004EB
 _021E5EA8: .word 0x000004DD
-_021E5EAC: .word SDK_OVERLAY_OVY_2_ID
-_021E5EB0: .word SDK_OVERLAY_OVY_4_ID
-_021E5EB4: .word SDK_OVERLAY_OVY_3_ID
+_021E5EAC: .word FS_OVERLAY_ID(OVY_2)
+_021E5EB0: .word FS_OVERLAY_ID(OVY_4)
+_021E5EB4: .word FS_OVERLAY_ID(OVY_3)
 	thumb_func_end ov01_021E5C24
 
 	thumb_func_start ov01_021E5EB8
@@ -760,7 +760,7 @@ ov01_021E5FC0: ; 0x021E5FC0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_02050590
+	bl Fsys_TaskIsRunning
 	cmp r0, #0
 	bne _021E5FD4
 	add r0, r5, #0
@@ -3714,7 +3714,7 @@ _021E7732:
 	mov r0, #0x42
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0206A2C0
+	bl FsysUnkSub108_MoveMoodTowardsNeutral
 _021E7746:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -8605,7 +8605,7 @@ ov01_021E9C00: ; 0x021E9C00
 	strb r4, [r2]
 	ldr r0, [r5, #0x10]
 	ldr r1, _021E9C1C ; =ov01_021E9ABC
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E9C1C: .word ov01_021E9ABC
@@ -11241,7 +11241,7 @@ ov01_021EAF94: ; 0x021EAF94
 ov01_021EAF98: ; 0x021EAF98
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _021EAFB0 ; =SDK_OVERLAY_OVY_19_ID
+	ldr r0, _021EAFB0 ; =FS_OVERLAY_ID(OVY_19)
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r0, r4, #0
@@ -11250,7 +11250,7 @@ ov01_021EAF98: ; 0x021EAF98
 	str r0, [r4]
 	pop {r4, pc}
 	.balign 4, 0
-_021EAFB0: .word SDK_OVERLAY_OVY_19_ID
+_021EAFB0: .word FS_OVERLAY_ID(OVY_19)
 	thumb_func_end ov01_021EAF98
 
 	thumb_func_start ov01_021EAFB4
@@ -11261,11 +11261,11 @@ ov01_021EAFB4: ; 0x021EAFB4
 	mov r0, #0
 	add r4, #0xd8
 	str r0, [r4]
-	ldr r0, _021EAFCC ; =SDK_OVERLAY_OVY_19_ID
+	ldr r0, _021EAFCC ; =FS_OVERLAY_ID(OVY_19)
 	bl UnloadOverlayByID
 	pop {r4, pc}
 	nop
-_021EAFCC: .word SDK_OVERLAY_OVY_19_ID
+_021EAFCC: .word FS_OVERLAY_ID(OVY_19)
 	thumb_func_end ov01_021EAFB4
 
 	thumb_func_start ov01_021EAFD0
@@ -17422,7 +17422,7 @@ _021EDDEA:
 	beq _021EDE10
 	mov r0, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	cmp r6, r0
 	bhs _021EDE02
 	add r6, r0, #0
@@ -18099,7 +18099,7 @@ _021EE2F6:
 	beq _021EE31C
 	mov r0, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	cmp r6, r0
 	bhs _021EE30E
 	add r6, r0, #0
@@ -19239,7 +19239,7 @@ ov01_021EEB4C: ; 0x021EEB4C
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0x50
 	sub r3, r1, r0
 	mov r0, #0x10
@@ -19405,7 +19405,7 @@ _021EED04:
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0x50
 	sub r3, r1, r0
 	mov r1, #0
@@ -19596,7 +19596,7 @@ ov01_021EEE44: ; 0x021EEE44
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0x80
 	sub r3, r1, r0
 	mov r0, #0x10
@@ -19626,7 +19626,7 @@ ov01_021EEE44: ; 0x021EEE44
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0x80
 	sub r3, r1, r0
 	mov r0, #0x30
@@ -21239,7 +21239,7 @@ ov01_021EFB64: ; 0x021EFB64
 	blt _021EFB78
 	cmp r0, #0x21
 	bgt _021EFB78
-	ldr r0, _021EFBE8 ; =SDK_OVERLAY_OVY_115_ID
+	ldr r0, _021EFBE8 ; =FS_OVERLAY_ID(OVY_115)
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, pc}
@@ -21248,7 +21248,7 @@ _021EFB78:
 	sub r1, #0x22
 	cmp r1, #2
 	bhi _021EFB8A
-	ldr r0, _021EFBEC ; =SDK_OVERLAY_OVY_116_ID
+	ldr r0, _021EFBEC ; =FS_OVERLAY_ID(OVY_116)
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, pc}
@@ -21257,14 +21257,14 @@ _021EFB8A:
 	blt _021EFB9C
 	cmp r0, #0x2c
 	bgt _021EFB9C
-	ldr r0, _021EFBF0 ; =SDK_OVERLAY_OVY_117_ID
+	ldr r0, _021EFBF0 ; =FS_OVERLAY_ID(OVY_117)
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, pc}
 _021EFB9C:
 	cmp r0, #0x2d
 	bne _021EFBAA
-	ldr r0, _021EFBF4 ; =SDK_OVERLAY_OVY_118_ID
+	ldr r0, _021EFBF4 ; =FS_OVERLAY_ID(OVY_118)
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, pc}
@@ -21273,7 +21273,7 @@ _021EFBAA:
 	blt _021EFBBC
 	cmp r0, #5
 	bgt _021EFBBC
-	ldr r0, _021EFBF8 ; =SDK_OVERLAY_OVY_120_ID
+	ldr r0, _021EFBF8 ; =FS_OVERLAY_ID(OVY_120)
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, pc}
@@ -21282,30 +21282,30 @@ _021EFBBC:
 	blt _021EFBCE
 	cmp r0, #0xb
 	bgt _021EFBCE
-	ldr r0, _021EFBFC ; =SDK_OVERLAY_OVY_119_ID
+	ldr r0, _021EFBFC ; =FS_OVERLAY_ID(OVY_119)
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, pc}
 _021EFBCE:
 	cmp r0, #0x2e
 	bne _021EFBDC
-	ldr r0, _021EFBF8 ; =SDK_OVERLAY_OVY_120_ID
+	ldr r0, _021EFBF8 ; =FS_OVERLAY_ID(OVY_120)
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, pc}
 _021EFBDC:
-	ldr r0, _021EFC00 ; =SDK_OVERLAY_OVY_114_ID
+	ldr r0, _021EFC00 ; =FS_OVERLAY_ID(OVY_114)
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, pc}
 	nop
-_021EFBE8: .word SDK_OVERLAY_OVY_115_ID
-_021EFBEC: .word SDK_OVERLAY_OVY_116_ID
-_021EFBF0: .word SDK_OVERLAY_OVY_117_ID
-_021EFBF4: .word SDK_OVERLAY_OVY_118_ID
-_021EFBF8: .word SDK_OVERLAY_OVY_120_ID
-_021EFBFC: .word SDK_OVERLAY_OVY_119_ID
-_021EFC00: .word SDK_OVERLAY_OVY_114_ID
+_021EFBE8: .word FS_OVERLAY_ID(OVY_115)
+_021EFBEC: .word FS_OVERLAY_ID(OVY_116)
+_021EFBF0: .word FS_OVERLAY_ID(OVY_117)
+_021EFBF4: .word FS_OVERLAY_ID(OVY_118)
+_021EFBF8: .word FS_OVERLAY_ID(OVY_120)
+_021EFBFC: .word FS_OVERLAY_ID(OVY_119)
+_021EFC00: .word FS_OVERLAY_ID(OVY_114)
 	thumb_func_end ov01_021EFB64
 
 	thumb_func_start ov01_021EFC04
@@ -21315,7 +21315,7 @@ ov01_021EFC04: ; 0x021EFC04
 	blt _021EFC16
 	cmp r0, #0x21
 	bgt _021EFC16
-	ldr r0, _021EFC78 ; =SDK_OVERLAY_OVY_115_ID
+	ldr r0, _021EFC78 ; =FS_OVERLAY_ID(OVY_115)
 	bl UnloadOverlayByID
 	pop {r3, pc}
 _021EFC16:
@@ -21323,7 +21323,7 @@ _021EFC16:
 	sub r1, #0x22
 	cmp r1, #2
 	bhi _021EFC26
-	ldr r0, _021EFC7C ; =SDK_OVERLAY_OVY_116_ID
+	ldr r0, _021EFC7C ; =FS_OVERLAY_ID(OVY_116)
 	bl UnloadOverlayByID
 	pop {r3, pc}
 _021EFC26:
@@ -21331,13 +21331,13 @@ _021EFC26:
 	blt _021EFC36
 	cmp r0, #0x2c
 	bgt _021EFC36
-	ldr r0, _021EFC80 ; =SDK_OVERLAY_OVY_117_ID
+	ldr r0, _021EFC80 ; =FS_OVERLAY_ID(OVY_117)
 	bl UnloadOverlayByID
 	pop {r3, pc}
 _021EFC36:
 	cmp r0, #0x2d
 	bne _021EFC42
-	ldr r0, _021EFC84 ; =SDK_OVERLAY_OVY_118_ID
+	ldr r0, _021EFC84 ; =FS_OVERLAY_ID(OVY_118)
 	bl UnloadOverlayByID
 	pop {r3, pc}
 _021EFC42:
@@ -21345,7 +21345,7 @@ _021EFC42:
 	blt _021EFC52
 	cmp r0, #5
 	bgt _021EFC52
-	ldr r0, _021EFC88 ; =SDK_OVERLAY_OVY_120_ID
+	ldr r0, _021EFC88 ; =FS_OVERLAY_ID(OVY_120)
 	bl UnloadOverlayByID
 	pop {r3, pc}
 _021EFC52:
@@ -21353,27 +21353,27 @@ _021EFC52:
 	blt _021EFC62
 	cmp r0, #0xb
 	bgt _021EFC62
-	ldr r0, _021EFC8C ; =SDK_OVERLAY_OVY_119_ID
+	ldr r0, _021EFC8C ; =FS_OVERLAY_ID(OVY_119)
 	bl UnloadOverlayByID
 	pop {r3, pc}
 _021EFC62:
 	cmp r0, #0x2e
 	bne _021EFC6E
-	ldr r0, _021EFC88 ; =SDK_OVERLAY_OVY_120_ID
+	ldr r0, _021EFC88 ; =FS_OVERLAY_ID(OVY_120)
 	bl UnloadOverlayByID
 	pop {r3, pc}
 _021EFC6E:
-	ldr r0, _021EFC90 ; =SDK_OVERLAY_OVY_114_ID
+	ldr r0, _021EFC90 ; =FS_OVERLAY_ID(OVY_114)
 	bl UnloadOverlayByID
 	pop {r3, pc}
 	nop
-_021EFC78: .word SDK_OVERLAY_OVY_115_ID
-_021EFC7C: .word SDK_OVERLAY_OVY_116_ID
-_021EFC80: .word SDK_OVERLAY_OVY_117_ID
-_021EFC84: .word SDK_OVERLAY_OVY_118_ID
-_021EFC88: .word SDK_OVERLAY_OVY_120_ID
-_021EFC8C: .word SDK_OVERLAY_OVY_119_ID
-_021EFC90: .word SDK_OVERLAY_OVY_114_ID
+_021EFC78: .word FS_OVERLAY_ID(OVY_115)
+_021EFC7C: .word FS_OVERLAY_ID(OVY_116)
+_021EFC80: .word FS_OVERLAY_ID(OVY_117)
+_021EFC84: .word FS_OVERLAY_ID(OVY_118)
+_021EFC88: .word FS_OVERLAY_ID(OVY_120)
+_021EFC8C: .word FS_OVERLAY_ID(OVY_119)
+_021EFC90: .word FS_OVERLAY_ID(OVY_114)
 	thumb_func_end ov01_021EFC04
 
 	thumb_func_start ov01_021EFC94
@@ -26298,7 +26298,7 @@ ov01_021F202C: ; 0x021F202C
 	ldr r0, [r6, #0x10]
 	ldr r1, _021F2064 ; =ov01_021F2118
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021F2064: .word ov01_021F2118
@@ -26475,7 +26475,7 @@ _021F21A8:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_0206A1F4
+	bl FsysUnkSub108_AddMonMood
 	mov r1, #2
 	b _021F21C6
 _021F21C4:
@@ -26932,7 +26932,7 @@ _021F257E:
 	ldr r0, [r6, #0x10]
 	ldr r1, _021F258C ; =ov01_021F2628
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021F258C: .word ov01_021F2628
@@ -27121,7 +27121,7 @@ ov01_021F26CC: ; 0x021F26CC
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_0206A1F4
+	bl FsysUnkSub108_AddMonMood
 	mov r1, #2
 	b _021F26F0
 _021F26EE:
@@ -27427,7 +27427,7 @@ ov01_021F2908: ; 0x021F2908
 	add r2, r0, #0
 	ldr r1, _021F2940 ; =ov01_021F2944
 	add r0, r6, #0
-	bl QueueTask
+	bl TaskManager_Call
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -28005,7 +28005,7 @@ ov01_021F2D68: ; 0x021F2D68
 	ldr r0, [r6, #0x10]
 	ldr r1, _021F2DA0 ; =ov01_021F2DD0
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021F2DA0: .word ov01_021F2DD0
@@ -30614,7 +30614,7 @@ _021F40A6:
 	add r2, r0, #0
 	mov r0, #0
 	add r1, r6, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0x68
 	sub r3, r1, r0
 	str r4, [sp]
@@ -30786,7 +30786,7 @@ ov01_021F4234: ; 0x021F4234
 _021F4244:
 	add r0, r3, #0
 	add r2, r4, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	ldrb r1, [r5, #7]
 	lsl r1, r1, #3
 	sub r4, r1, r0
@@ -30794,7 +30794,7 @@ _021F4244:
 _021F4254:
 	add r0, r3, #0
 	add r2, r4, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	ldrb r1, [r5, #7]
 	lsl r1, r1, #3
 	sub r1, r1, r0
@@ -35897,7 +35897,7 @@ _021F683E:
 ov01_021F6840: ; 0x021F6840
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _021F6860 ; =SDK_OVERLAY_OVY_27_ID
+	ldr r0, _021F6860 ; =FS_OVERLAY_ID(OVY_27)
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r1, r4, #0
@@ -35910,7 +35910,7 @@ ov01_021F6840: ; 0x021F6840
 	str r0, [r4]
 	pop {r4, pc}
 	.balign 4, 0
-_021F6860: .word SDK_OVERLAY_OVY_27_ID
+_021F6860: .word FS_OVERLAY_ID(OVY_27)
 	thumb_func_end ov01_021F6840
 
 	thumb_func_start ov01_021F6864
@@ -35932,7 +35932,7 @@ ov01_021F6874: ; 0x021F6874
 	bl ov30_0225D6FC
 	cmp r0, #0
 	beq _021F688A
-	ldr r0, _021F6890 ; =SDK_OVERLAY_OVY_27_ID
+	ldr r0, _021F6890 ; =FS_OVERLAY_ID(OVY_27)
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, pc}
@@ -35940,14 +35940,14 @@ _021F688A:
 	mov r0, #0
 	pop {r3, pc}
 	nop
-_021F6890: .word SDK_OVERLAY_OVY_27_ID
+_021F6890: .word FS_OVERLAY_ID(OVY_27)
 	thumb_func_end ov01_021F6874
 
 	thumb_func_start ov01_021F6894
 ov01_021F6894: ; 0x021F6894
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _021F68B4 ; =SDK_OVERLAY_OVY_27_ID
+	ldr r0, _021F68B4 ; =FS_OVERLAY_ID(OVY_27)
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r1, r4, #0
@@ -35959,7 +35959,7 @@ ov01_021F6894: ; 0x021F6894
 	str r0, [r4]
 	pop {r4, pc}
 	nop
-_021F68B4: .word SDK_OVERLAY_OVY_27_ID
+_021F68B4: .word FS_OVERLAY_ID(OVY_27)
 	thumb_func_end ov01_021F6894
 
 	thumb_func_start ov01_021F68B8
@@ -35976,7 +35976,7 @@ ov01_021F68C0: ; 0x021F68C0
 	bl ov01_021F6930
 	cmp r0, #0
 	beq _021F68D4
-	ldr r0, _021F68D8 ; =SDK_OVERLAY_OVY_27_ID
+	ldr r0, _021F68D8 ; =FS_OVERLAY_ID(OVY_27)
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, pc}
@@ -35984,7 +35984,7 @@ _021F68D4:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-_021F68D8: .word SDK_OVERLAY_OVY_27_ID
+_021F68D8: .word FS_OVERLAY_ID(OVY_27)
 	thumb_func_end ov01_021F68C0
 
 	thumb_func_start ov01_021F68DC
@@ -37348,7 +37348,7 @@ _021F72CA:
 	ldr r1, _021F72D8 ; =ov01_021F7100
 	add r0, r5, #0
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r4, r5, r6, pc}
 	nop
 _021F72D8: .word ov01_021F7100
@@ -37794,7 +37794,7 @@ _021F7636:
 	ldr r0, [r0, r1]
 	ldr r1, [sp, #0xc]
 	lsr r2, r2, #0x10
-	bl sub_0206A288
+	bl FsysUnkSub108_Set
 _021F7654:
 	add r0, r5, #0
 	bl ov01_021FA2D4
@@ -49675,7 +49675,7 @@ ov01_021FCCB0: ; 0x021FCCB0
 	ldr r1, [r4, #0x20]
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_0206A268
+	bl FsysUnkSub108_GetMonMood
 	mov r1, #9
 	mvn r1, r1
 	cmp r0, r1
@@ -49961,7 +49961,7 @@ ov01_021FCE98: ; 0x021FCE98
 	bl TaskManager_GetEnv
 	add r7, r0, #0
 	ldr r0, [sp]
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r5, [r7, #4]
@@ -50029,7 +50029,7 @@ _021FCF20:
 	ldr r0, [sp]
 	ldr r1, _021FCFE4 ; =ov01_02205A60
 	mov r2, #0
-	bl QueueTask
+	bl TaskManager_Call
 	mov r0, #4
 	str r0, [r4]
 	b _021FCFDE
@@ -50072,7 +50072,7 @@ _021FCF80:
 	ldr r0, [r6, r0]
 	mov r1, #1
 	mov r5, #2
-	bl sub_0206A1F4
+	bl FsysUnkSub108_AddMonMood
 	b _021FCF9E
 _021FCF9C:
 	mov r5, #1
@@ -50095,7 +50095,7 @@ _021FCFBC:
 	ldr r0, [sp]
 	ldr r1, _021FCFE8 ; =ov01_021FC310
 	ldr r2, [r5, #4]
-	bl QueueTask
+	bl TaskManager_Call
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -50130,7 +50130,7 @@ ov01_021FCFEC: ; 0x021FCFEC
 	ldr r0, [r5, #0x10]
 	ldr r1, _021FD010 ; =ov01_021FD014
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021FD010: .word ov01_021FD014
@@ -50143,7 +50143,7 @@ ov01_021FD014: ; 0x021FD014
 	bl TaskManager_GetEnv
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -52808,7 +52808,7 @@ ov01_021FE3F8: ; 0x021FE3F8
 	bl MapObject_GetPrevY
 	str r0, [sp, #0x10]
 	add r0, r5, #0
-	bl sub_0205F968
+	bl MapObject_GetPosVecYCoord
 	add r6, r0, #0
 	add r0, r5, #0
 	bl MapObject_GetFacingDirection
@@ -54651,7 +54651,7 @@ _021FF188:
 	lsl r0, r0, #0x10
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F968
+	bl MapObject_GetPosVecYCoord
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x24]
 	add r1, sp, #0
@@ -55747,7 +55747,7 @@ _021FFA08:
 	lsl r0, r0, #0x10
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F968
+	bl MapObject_GetPosVecYCoord
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x24]
 	add r1, sp, #0
@@ -56091,7 +56091,7 @@ _021FFCBC:
 	lsl r0, r0, #0x10
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F968
+	bl MapObject_GetPosVecYCoord
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x24]
 	add r1, sp, #0
@@ -60597,7 +60597,7 @@ ov01_02201F98: ; 0x02201F98
 	bl FollowingPokemon_GetSpriteID
 	lsl r5, r0, #1
 	add r0, r7, #0
-	bl sub_02069F64
+	bl GetFollowPokeSizeParamBySpecies
 	lsl r1, r0, #1
 	add r0, r0, r1
 	add r1, r6, r0
@@ -64008,7 +64008,7 @@ ov01_02203AB4: ; 0x02203AB4
 	str r4, [r2, #4]
 	ldr r0, [r5, #0x10]
 	ldr r1, _02203AD4 ; =ov01_02203AD8
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02203AD4: .word ov01_02203AD8
@@ -64018,7 +64018,7 @@ _02203AD4: .word ov01_02203AD8
 ov01_02203AD8: ; 0x02203AD8
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r5, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetEnv
@@ -65957,7 +65957,7 @@ FieldSys_AnimApricornTree: ; 0x02204840
 	ldr r0, [r5, #0x10]
 	ldr r1, _02204870 ; =Task_AnimApricornTree
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02204870: .word Task_AnimApricornTree
@@ -66013,7 +66013,7 @@ _022048C8:
 	add r2, r0, #0
 	ldr r1, _02204A94 ; =ov01_02204B78
 	add r0, r6, #0
-	bl QueueTask
+	bl TaskManager_Call
 	mov r0, #1
 	str r0, [r4]
 	b _02204A8E
@@ -66348,7 +66348,7 @@ ov01_02204B78: ; 0x02204B78
 	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
 	add r0, r7, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r4, r0, #0
 	add r0, r7, #0
 	bl TaskManager_GetEnv
@@ -66460,7 +66460,7 @@ _02204C62:
 	strh r1, [r0]
 	ldr r0, [r5, #0x10]
 	ldr r1, _02204C7C ; =ov01_02204C80
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02204C7C: .word ov01_02204C80
@@ -66504,7 +66504,7 @@ _02204CC0:
 	ldr r1, _02204CF4 ; =ov01_02204DA0
 	add r0, r5, #0
 	add r2, r4, #0
-	bl NowRunTask
+	bl TaskManager_Jump
 	add sp, #4
 	mov r0, #0
 	pop {r3, r4, r5, r6, pc}
@@ -66618,7 +66618,7 @@ _02204D98:
 ov01_02204DA0: ; 0x02204DA0
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r4, r0, #0
 	add r0, r6, #0
 	bl TaskManager_GetEnv
@@ -66795,7 +66795,7 @@ ov01_02204ED8: ; 0x02204ED8
 	strh r0, [r4]
 	ldr r0, [r5, #0x10]
 	ldr r1, _02204EF8 ; =ov01_02204EFC
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02204EF8: .word ov01_02204EFC
@@ -67470,7 +67470,7 @@ ScrCmd_808: ; 0x022053EC
 	add r0, #0x80
 	ldr r0, [r0]
 	bl VarGet
-	ldr r6, _02205420 ; =SDK_OVERLAY_OVY_25_ID
+	ldr r6, _02205420 ; =FS_OVERLAY_ID(OVY_25)
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #2
@@ -67484,7 +67484,7 @@ ScrCmd_808: ; 0x022053EC
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_02205420: .word SDK_OVERLAY_OVY_25_ID
+_02205420: .word FS_OVERLAY_ID(OVY_25)
 	thumb_func_end ScrCmd_808
 
 	thumb_func_start ov01_02205424
@@ -68295,10 +68295,10 @@ _02205A02:
 	add r0, r5, #0
 	add r0, #0xe4
 	ldr r0, [r0]
-	bl sub_02069F7C
+	bl FollowPokeObj_GetSpecies
 	ldr r1, [r5, #0x20]
 	ldr r1, [r1]
-	bl sub_02069FF4
+	bl GetFollowPokePermissionBySpeciesAndMap
 	cmp r0, #0
 	bne _02205A2A
 	add r0, r5, #0
@@ -68347,7 +68347,7 @@ ov01_02205A60: ; 0x02205A60
 	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r4, r0, #0
 	add r0, r5, #0
 	bl FollowingPokemon_IsActive
@@ -68425,7 +68425,7 @@ ov01_02205AEC: ; 0x02205AEC
 	strb r0, [r2, #3]
 	ldr r0, [r4, #0x10]
 	ldr r1, _02205B10 ; =ov01_02205B14
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r4, pc}
 	nop
 _02205B10: .word ov01_02205B14
@@ -68748,7 +68748,7 @@ _02205D94:
 	str r0, [r2]
 	ldr r0, [r4, #0x10]
 	ldr r1, _02205DB0 ; =ov01_02205DB4
-	bl QueueTask
+	bl TaskManager_Call
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -68766,7 +68766,7 @@ ov01_02205DB4: ; 0x02205DB4
 	bl TaskManager_GetEnv
 	add r6, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #4
@@ -68901,7 +68901,7 @@ ov01_02205EE0: ; 0x02205EE0
 	str r0, [r2]
 	ldr r1, _02205EFC ; =ov01_02205F00
 	add r0, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r4, pc}
 	.balign 4, 0
 _02205EFC: .word ov01_02205F00
@@ -68917,7 +68917,7 @@ ov01_02205F00: ; 0x02205F00
 	bl TaskManager_GetEnv
 	add r6, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #6
@@ -69160,7 +69160,7 @@ _022060E2:
 	ldr r0, [r6, #0x10]
 	ldr r1, _02206108 ; =ov01_0220610C
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -69177,7 +69177,7 @@ ov01_0220610C: ; 0x0220610C
 	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #3
@@ -69764,14 +69764,14 @@ ov01_02206C08: ; 0x02206C08
 
 ov01_02206C60: ; 0x02206C60
 	.word ov27_02259F80, ov27_0225A19C, ov27_0225A2C8, 0xFFFFFFFF
-	.word ov30_0225D520, ov30_0225D64C, ov30_0225D6FC, SDK_OVERLAY_OVY_30_ID
-	.word ov31_0225D520, ov31_0225D710, ov31_0225D758, SDK_OVERLAY_OVY_31_ID
+	.word ov30_0225D520, ov30_0225D64C, ov30_0225D6FC, FS_OVERLAY_ID(OVY_30)
+	.word ov31_0225D520, ov31_0225D710, ov31_0225D758, FS_OVERLAY_ID(OVY_31)
 	.word ov27_0225C250, ov27_0225C398, ov27_0225C418, 0xFFFFFFFF
-	.word ov28_0225D520, ov28_0225D5EC, ov28_0225D624, SDK_OVERLAY_OVY_28_ID
-	.word ov29_0225D520, ov29_0225D5EC, ov29_0225D61C, SDK_OVERLAY_OVY_29_ID
-	.word ov32_0225D520, ov32_0225D5CC, ov32_0225D608, SDK_OVERLAY_OVY_32_ID
-	.word ov33_0225D520, ov33_0225D5A8, ov33_0225D5CC, SDK_OVERLAY_OVY_33_ID
-	.word ov01_021F6B88, ov01_021F6BA0, ov01_021F6BAC, SDK_OVERLAY_OVY_34_ID
+	.word ov28_0225D520, ov28_0225D5EC, ov28_0225D624, FS_OVERLAY_ID(OVY_28)
+	.word ov29_0225D520, ov29_0225D5EC, ov29_0225D61C, FS_OVERLAY_ID(OVY_29)
+	.word ov32_0225D520, ov32_0225D5CC, ov32_0225D608, FS_OVERLAY_ID(OVY_32)
+	.word ov33_0225D520, ov33_0225D5A8, ov33_0225D5CC, FS_OVERLAY_ID(OVY_33)
+	.word ov01_021F6B88, ov01_021F6BA0, ov01_021F6BAC, FS_OVERLAY_ID(OVY_34)
 
 ov01_02206CF0: ; 0x02206CF0
 	.byte 0x00, 0x00, 0x00, 0x00, 0x15, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00

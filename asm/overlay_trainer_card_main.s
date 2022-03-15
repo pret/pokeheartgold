@@ -1,10 +1,11 @@
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
 	.text
 
-	thumb_func_start ov51_021E5AC0
-ov51_021E5AC0: ; 0x021E5AC0
+	thumb_func_start TrainerCardMainApp_OvyInit
+TrainerCardMainApp_OvyInit: ; 0x021E5AC0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -53,7 +54,7 @@ ov51_021E5AC0: ; 0x021E5AC0
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r1, r4, #0
 	add r1, #0xe4
 	str r0, [r1]
@@ -203,7 +204,7 @@ _021E5C2C:
 	ldr r0, _021E5D6C ; =0x000033A0
 	add r0, r4, r0
 	bl ov51_021E7DA4
-	ldr r0, _021E5D70 ; =0x00000694
+	ldr r0, _021E5D70 ; =SEQ_SE_DP_CARD3
 	bl PlaySE
 	ldr r0, _021E5D74 ; =0x0000311C
 	add r0, r4, r0
@@ -308,7 +309,7 @@ _021E5D60: .word 0x0000343A
 _021E5D64: .word 0x00000678
 _021E5D68: .word 0x00003424
 _021E5D6C: .word 0x000033A0
-_021E5D70: .word 0x00000694
+_021E5D70: .word SEQ_SE_DP_CARD3
 _021E5D74: .word 0x0000311C
 _021E5D78: .word 0x000033CC
 _021E5D7C: .word 0x00000674
@@ -316,10 +317,10 @@ _021E5D80: .word 0x000030F4
 _021E5D84: .word 0x00003434
 _021E5D88: .word 0x00003108
 _021E5D8C: .word ov51_021E6B88
-	thumb_func_end ov51_021E5AC0
+	thumb_func_end TrainerCardMainApp_OvyInit
 
-	thumb_func_start ov51_021E5D90
-ov51_021E5D90: ; 0x021E5D90
+	thumb_func_start TrainerCardMainApp_OvyExec
+TrainerCardMainApp_OvyExec: ; 0x021E5D90
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r1, #0
@@ -474,10 +475,10 @@ _021E5EB8: .word 0x00003436
 _021E5EBC: .word 0x0000311C
 _021E5EC0: .word 0x00000674
 _021E5EC4: .word 0x0000343F
-	thumb_func_end ov51_021E5D90
+	thumb_func_end TrainerCardMainApp_OvyExec
 
-	thumb_func_start ov51_021E5EC8
-ov51_021E5EC8: ; 0x021E5EC8
+	thumb_func_start TrainerCardMainApp_OvyExit
+TrainerCardMainApp_OvyExit: ; 0x021E5EC8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -533,7 +534,7 @@ _021E5F54: .word 0x000033B8
 _021E5F58: .word 0x000033B0
 _021E5F5C: .word 0x0000066C
 _021E5F60: .word 0x0000310C
-	thumb_func_end ov51_021E5EC8
+	thumb_func_end TrainerCardMainApp_OvyExit
 
 	thumb_func_start ov51_021E5F64
 ov51_021E5F64: ; 0x021E5F64
@@ -541,7 +542,7 @@ ov51_021E5F64: ; 0x021E5F64
 	add r5, r0, #0
 	mov r0, #4
 	mov r1, #0x19
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r2, _021E6014 ; =0x000002D7
 	mov r0, #0
 	mov r1, #0x1b
@@ -674,7 +675,7 @@ _021E6042:
 	ldr r0, [r6, r0]
 	bl DestroyMsgData
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021E60A8: .word 0x000033EC
@@ -1671,7 +1672,7 @@ _021E68B0:
 	ldr r2, [r4, r0]
 	add r2, #0x80
 	str r2, [r4, r0]
-	ldr r0, _021E69DC ; =0x00000695
+	ldr r0, _021E69DC ; =SEQ_SE_DP_CARD5
 	bl PlaySE
 	ldr r0, _021E69D4 ; =0x00003436
 	ldrb r1, [r4, r0]
@@ -1807,7 +1808,7 @@ _021E69C4:
 	nop
 _021E69D4: .word 0x00003436
 _021E69D8: .word 0x000030FC
-_021E69DC: .word 0x00000695
+_021E69DC: .word SEQ_SE_DP_CARD5
 _021E69E0: .word 0x00003394
 _021E69E4: .word 0x000030F4
 _021E69E8: .word 0x0000343A
@@ -1878,7 +1879,7 @@ ov51_021E6A54: ; 0x021E6A54
 	lsl r0, r0, #0x1e
 	lsr r0, r0, #0x1f
 	bne _021E6A8E
-	ldr r0, _021E6AA8 ; =0x000005DC
+	ldr r0, _021E6AA8 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #4
 	pop {r3, pc}
@@ -1886,7 +1887,7 @@ _021E6A7C:
 	mov r0, #2
 	tst r0, r1
 	beq _021E6A8E
-	mov r0, #0x25
+	mov r0, #SEQ_SE_GS_GEARCANCEL>>6
 	lsl r0, r0, #6
 	bl PlaySE
 	mov r0, #5
@@ -1904,7 +1905,7 @@ _021E6A98:
 _021E6A9C: .word gSystem
 _021E6AA0: .word 0x000030F4
 _021E6AA4: .word 0x0000343A
-_021E6AA8: .word 0x000005DC
+_021E6AA8: .word SEQ_SE_DP_SELECT
 	thumb_func_end ov51_021E6A54
 
 	thumb_func_start ov51_021E6AAC
@@ -1924,7 +1925,7 @@ _021E6ABE:
 	beq _021E6AD8
 	mov r0, #1
 	str r0, [r4]
-	mov r0, #0x25
+	mov r0, #SEQ_SE_GS_GEARCANCEL>>6
 	lsl r0, r0, #6
 	bl PlaySE
 	mov r0, #5
@@ -1945,7 +1946,7 @@ _021E6AD8:
 	beq _021E6B02
 	mov r0, #1
 	str r0, [r4]
-	ldr r0, _021E6B38 ; =0x000005DC
+	ldr r0, _021E6B38 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #4
 	pop {r3, r4, r5, pc}
@@ -1974,7 +1975,7 @@ _021E6B28: .word _021E7DB8
 _021E6B2C: .word 0x000030F4
 _021E6B30: .word 0x0000343A
 _021E6B34: .word ov51_021E7DBC
-_021E6B38: .word 0x000005DC
+_021E6B38: .word SEQ_SE_DP_SELECT
 _021E6B3C: .word ov51_021E7DC0
 _021E6B40: .word gSystem + 0x40
 	thumb_func_end ov51_021E6AAC
@@ -2426,7 +2427,7 @@ _021E6E6C:
 	mov r0, #4
 	lsl r1, r1, #6
 	mov r2, #0x19
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #0x19
 	bl sub_0201660C
 	mov r1, #0xcf
@@ -2580,7 +2581,7 @@ _021E6F68:
 	mov r0, #0
 	ldr r1, [sp, #0x18]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0x88
 	sub r3, r1, r0
 	mov r1, #0
@@ -2618,7 +2619,7 @@ _021E6F68:
 	mov r0, #0
 	ldr r1, [sp, #0x18]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0x88
 	sub r3, r1, r0
 	mov r1, #0
@@ -2707,7 +2708,7 @@ _021E710A:
 	mov r0, #0
 	ldr r1, [sp, #0x18]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0xe0
 	sub r3, r1, r0
 	mov r1, #0
@@ -2757,7 +2758,7 @@ _021E710A:
 	mov r0, #0
 	ldr r1, [sp, #0x18]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0xe0
 	sub r3, r1, r0
 	mov r1, #0
@@ -2952,7 +2953,7 @@ _021E7324:
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0xe0
 	sub r3, r1, r0
 	mov r1, #0
@@ -2977,7 +2978,7 @@ _021E7324:
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0xe0
 	sub r3, r1, r0
 	mov r0, #0x10
@@ -3013,7 +3014,7 @@ _021E7324:
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0xe0
 	sub r3, r1, r0
 	mov r1, #0
@@ -3112,7 +3113,7 @@ _021E7324:
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0xe0
 	sub r3, r1, r0
 	mov r1, #0
@@ -3179,7 +3180,7 @@ ov51_021E74F4: ; 0x021E74F4
 	mov r0, #0
 	ldr r1, [sp, #0x28]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, r0, #0
 	add r3, r3, r4
 	str r6, [sp]
@@ -3210,7 +3211,7 @@ ov51_021E7540: ; 0x021E7540
 	ldr r1, [sp, #0x28]
 	add r6, r3, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, r0, #0
 	add r3, r3, r4
 	str r6, [sp]
@@ -3302,7 +3303,7 @@ _021E758E:
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0xe0
 	sub r3, r1, r0
 	mov r1, #0
@@ -3373,7 +3374,7 @@ ov51_021E76A4: ; 0x021E76A4
 	ldr r1, [r5, r1]
 	mov r0, #4
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0x30
 	sub r4, r1, r0
 	add r0, r5, #0
@@ -3430,7 +3431,7 @@ _021E7712:
 	mov r0, #4
 	ldr r1, [r5, r1]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0x60
 	sub r3, r1, r0
 	mov r1, #4

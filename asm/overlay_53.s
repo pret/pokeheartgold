@@ -28,7 +28,7 @@ ov53_OakSpeech_OvyInit: ; 0x021E5900
 	mov r0, #0x50
 	str r0, [r4]
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r0, [r0, #8]
 	str r0, [r4, #4]
 	bl Sav2_PlayerData_GetOptionsAddr
@@ -67,7 +67,7 @@ ov53_OakSpeech_OvyInit: ; 0x021E5900
 	bl sub_02002B8C
 	ldr r1, [r4]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -277,7 +277,7 @@ ov53_OakSpeech_OvyExit: ; 0x021E5B48
 	add r4, r0, #0
 	mov r0, #4
 	ldr r5, [r4]
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, [r4, #4]
 	bl Sav2_PlayerData_GetProfileAddr
 	mov r1, #0x12
@@ -311,7 +311,7 @@ ov53_OakSpeech_OvyExit: ; 0x021E5B48
 	bl OverlayManager_FreeData
 	add r0, r5, #0
 	bl DestroyHeap
-	ldr r0, _021E5BC4 ; =SDK_OVERLAY_OVY_36_ID
+	ldr r0, _021E5BC4 ; =FS_OVERLAY_ID(OVY_36)
 	ldr r1, _021E5BC8 ; =ov36_021E5C14
 	bl RegisterMainOverlay
 	mov r0, #0
@@ -319,7 +319,7 @@ ov53_OakSpeech_OvyExit: ; 0x021E5B48
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	nop
-_021E5BC4: .word SDK_OVERLAY_OVY_36_ID
+_021E5BC4: .word FS_OVERLAY_ID(OVY_36)
 _021E5BC8: .word ov36_021E5C14
 	thumb_func_end ov53_OakSpeech_OvyExit
 
@@ -436,11 +436,11 @@ _021E5BE8:
 	ldr r2, [r4]
 	mov r0, #0
 	mov r1, #0xa0
-	bl sub_02003030
+	bl LoadFontPal0
 	ldr r2, [r4]
 	mov r0, #0
 	mov r1, #0xc0
-	bl sub_0200304C
+	bl LoadFontPal1
 	ldr r5, _021E5DDC ; =ov53_021E85E8
 	add r3, sp, #8
 	ldmia r5!, {r0, r1}
@@ -509,7 +509,7 @@ _021E5BE8:
 	ldr r2, [r4]
 	mov r0, #4
 	lsl r1, r1, #6
-	bl sub_02003030
+	bl LoadFontPal0
 	ldr r3, [r4]
 	mov r0, #4
 	mov r1, #0x20
@@ -1498,7 +1498,7 @@ _021E650C:
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	str r0, [sp, #0x20]
 	ldr r0, [r7, #0x18]
 	ldr r2, [sp, #0x18]

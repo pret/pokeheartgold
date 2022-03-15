@@ -23,7 +23,7 @@ ov68_021E5900: ; 0x021E5900
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r4]
 	add r0, r4, #0
 	bl ov68_021E5A58
@@ -590,17 +590,17 @@ ov68_021E5D24: ; 0x021E5D24
 	str r0, [r5, r1]
 	mov r0, #4
 	mov r2, #0x42
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #0x1e
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x42
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #0x1e
 	mov r0, #4
 	lsl r1, r1, #4
 	mov r2, #0x42
-	bl sub_02003030
+	bl LoadFontPal0
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
 	bl Options_GetFrame
@@ -635,7 +635,7 @@ ov68_021E5E48: ; 0x021E5E48
 	add r7, r0, #0
 	mov r0, #4
 	mov r1, #0x42
-	bl sub_02002CEC
+	bl FontID_Alloc
 	add r5, r7, #0
 	ldr r4, _021E5E90 ; =ov68_021E7DFC
 	mov r6, #0
@@ -684,7 +684,7 @@ _021E5EA6:
 	cmp r5, #0xf
 	blo _021E5EA6
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov68_021E5E94
 
@@ -1171,7 +1171,7 @@ _021E6254:
 	ldr r1, [r5, r1]
 	add r0, r7, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x18
 	add r1, r5, #0
 	lsr r6, r0, #0x18
@@ -1191,7 +1191,7 @@ _021E627E:
 	ldr r1, [r5, r1]
 	add r0, r7, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x18
 	add r1, r5, #0
 	lsr r6, r0, #0x18

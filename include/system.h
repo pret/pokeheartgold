@@ -56,6 +56,8 @@ struct System {
 
 extern struct System gSystem;
 
+void Main_SetVBlankIntrCB(GFIntrCB cb, void *arg);
+BOOL Main_SetHBlankIntrCB(GFIntrCB cb, void *arg);
 void InitSystemForTheGame(void);
 void InitGraphicMemory(void);
 void InitKeypadAndTouchpad(void);
@@ -63,5 +65,6 @@ void sub_0201A4B0(int a0);
 void ReadKeypadAndTouchpad(void);
 void Sys_SetSleepDisableFlag(int);
 void Sys_ClearSleepDisableFlag(int);
+void SetKeyRepeatTimers(int cont, int start);
 
 #endif //POKEHEARTGOLD_SYSTEM_H

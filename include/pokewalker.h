@@ -21,6 +21,7 @@ typedef struct POKEWALKER {
 } POKEWALKER; // size=0x134
 
 void Pokewalker_UnlockCourse(POKEWALKER *pokeWalker, int courseNo);
+POKEWALKER *Sav2_Pokewalker_get(SAVEDATA *saveData);
 u32 Pokewalker_sizeof(void);
 void Pokewalker_init(POKEWALKER *pokeWalker);
 void sub_02032624(POKEWALKER *pokeWalker);
@@ -35,6 +36,7 @@ void sub_020326CC(POKEWALKER *pokeWalker);
 BOOL sub_020326DC(POKEWALKER *pokeWalker, BOXMON *boxmon);
 u16 sub_02032718(POKEWALKER *pokeWalker);
 void sub_02032720(POKEWALKER *pokeWalker, u16 a1);
+void *sub_02032728(POKEWALKER *pokeWalker);
 BOOL Pokewalker_CourseIsUnlocked(POKEWALKER *pokeWalker, int courseNo);
 u16 sub_02032764(POKEWALKER *pokeWalker);
 void sub_0203276C(POKEWALKER *pokeWalker);

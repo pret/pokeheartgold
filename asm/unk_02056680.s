@@ -4,7 +4,7 @@
 	.rodata
 
 _020FC790:
-	.word ov45_02229EE0, ov45_02229F70, ov45_02229F94, SDK_OVERLAY_OVY_45_ID
+	.word ov45_02229EE0, ov45_02229F70, ov45_02229F94, FS_OVERLAY_ID(OVY_45)
 
 	.text
 
@@ -193,7 +193,7 @@ _020567D8:
 	ldr r1, _02056818 ; =ov01_021E9C40
 	add r0, r6, #0
 	add r2, r7, #0
-	bl QueueTask
+	bl TaskManager_Call
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]
@@ -793,7 +793,7 @@ _02056D16:
 	ldr r1, _02056D2C ; =sub_02056D30
 	add r0, r5, #0
 	strh r4, [r2, #2]
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, pc}
 	nop
 _02056D2C: .word sub_02056D30
@@ -824,7 +824,7 @@ _02056D4E:
 	str r0, [r4, #0xc]
 	str r5, [r4, #4]
 	add r0, r6, #0
-	bl sub_02050624
+	bl CallApplicationAsTask
 	ldrh r0, [r4]
 	add r0, r0, #1
 	strh r0, [r4]

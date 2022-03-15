@@ -126,7 +126,7 @@ sub_020970E4: ; 0x020970E4
 	ldr r0, [r4, #0x28]
 	ldr r1, _02097104 ; =_02108EA0
 	ldr r2, [r4, #0x24]
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -205,7 +205,7 @@ _0209718C:
 	str r4, [r0, #4]
 	ldr r0, [r5, #0x28]
 	ldr r2, [r5, #0x24]
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	ldr r0, [r5, #0x24]
 	mov r1, #3
 	str r1, [r0]
@@ -268,9 +268,9 @@ sub_020971EC: ; 0x020971EC
 	.rodata
 
 _02108EA0:
-	.word ov85_021E88AC, ov85_021E8A08, ov85_021E8B08, SDK_OVERLAY_OVY_85_ID
+	.word ov85_021E88AC, ov85_021E8A08, ov85_021E8B08, FS_OVERLAY_ID(OVY_85)
 _02108EB0:
-	.word ov85_021E5900, ov85_021E5AAC, ov85_021E5A34, SDK_OVERLAY_OVY_85_ID
+	.word ov85_021E5900, ov85_021E5AAC, ov85_021E5A34, FS_OVERLAY_ID(OVY_85)
 _02108EC0:
 	.word sub_020970E4
 	.word sub_02097108

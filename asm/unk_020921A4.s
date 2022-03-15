@@ -30,7 +30,7 @@ sub_020921A4: ; 0x020921A4
 	mov r0, #0
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r0, [r0, #8]
 	str r0, [r4, #0x34]
 	mov r0, #1
@@ -127,13 +127,13 @@ sub_02092288: ; 0x02092288
 	bl OverlayManager_FreeData
 	add r0, r4, #0
 	bl DestroyHeap
-	ldr r0, _020922B0 ; =SDK_OVERLAY_OVY_74_ID
+	ldr r0, _020922B0 ; =FS_OVERLAY_ID(OVY_74)
 	ldr r1, _020922B4 ; =gApp_MainMenu
 	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_020922B0: .word SDK_OVERLAY_OVY_74_ID
+_020922B0: .word FS_OVERLAY_ID(OVY_74)
 _020922B4: .word gApp_MainMenu
 	thumb_func_end sub_02092288
 
@@ -201,7 +201,7 @@ _020922C4:
 	ldr r2, [r4]
 	mov r0, #0
 	mov r1, #0x20
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #0
 	ldr r3, [r4]
 	mov r1, #0x20

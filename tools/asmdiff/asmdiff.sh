@@ -172,9 +172,11 @@ case "$mode" in
     fi
     if [ -n "${overlay##*[!0-9]*}" 2>/dev/null ] ; then
       ovyfile=$(tail -c+16 "${builddir}/${defsfile}" | ${CUT} -d '' -f$((overlay+1)) )
+      [[ -n $ovyfile ]] || { echo "Overlay num out of range"; exit 1; }
     else
       ovyfile=${overlay%.*}.sbin
       overlay=$(($(tail -c+16 "${builddir}/${defsfile}" | tr '\0' '\n' | grep -n $ovyfile | ${CUT} -d: -f1)-1))
+      [[ $overlay -eq -1 ]] && { echo "Invalid overlay name"; exit 1; }
     fi
     ovtoff=$(getword "$baserom" "$ovt")
     vma=$(getword "$baserom" "$((ovtoff+32*overlay+4))")

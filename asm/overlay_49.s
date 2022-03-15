@@ -2587,7 +2587,7 @@ ov49_02259AA4: ; 0x02259AA4
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r4, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	mov r2, #0x3a
 	add r5, r0, #0
 	mov r0, #3
@@ -2806,7 +2806,7 @@ ov49_02259C90: ; 0x02259C90
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r6, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldr r0, [r5]
 	cmp r0, #8
 	bhi _02259D58
@@ -3106,7 +3106,7 @@ ov49_02259EF8: ; 0x02259EF8
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	ldrb r1, [r4, #1]
 	str r1, [r0, #0x18]
 	mov r0, #0
@@ -4270,11 +4270,11 @@ _0225A636:
 	mov r0, #0
 	mov r1, #0xa0
 	add r2, r6, #0
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r0, #0
 	mov r1, #0x80
 	add r2, r6, #0
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r0, #0
 	str r0, [sp]
 	str r6, [sp, #4]
@@ -4380,7 +4380,7 @@ _0225A742:
 	add r0, r6, #0
 	mov r2, #2
 	add r3, r1, #0
-	bl sub_02026EB4
+	bl GF_3DVramMan_Create
 	mov r1, #0x51
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -4454,7 +4454,7 @@ _0225A80E:
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_02026F54
+	bl GF_3DVramMan_Delete
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0225A83C: .word ov49_02269734
@@ -6951,7 +6951,7 @@ ov49_0225BA5C: ; 0x0225BA5C
 	add r2, #0xb6
 	ldrh r2, [r4, r2]
 	mov r0, #4
-	bl sub_02003030
+	bl LoadFontPal0
 	bl sub_020776B4
 	add r6, r0, #0
 	bl sub_02077690
@@ -7013,7 +7013,7 @@ _0225BAEC:
 	mov r0, #4
 	mov r1, #0xa0
 	add r2, r4, #0
-	bl sub_02003030
+	bl LoadFontPal0
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov49_0225BABC
@@ -8162,7 +8162,7 @@ ov49_0225C414: ; 0x0225C414
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r1, sp, #0x10
 	ldrb r1, [r1, #0x10]
 	sub r3, r1, r0
@@ -21777,7 +21777,7 @@ _02262EC8:
 	mov r0, #0
 	add r1, r6, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0x68
 	sub r0, r1, r0
 	lsl r0, r0, #0x18

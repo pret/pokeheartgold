@@ -14,9 +14,9 @@
 ov101_021E7740: ; 0x021E7740
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
-	ldr r0, _021E7790 ; =SDK_OVERLAY_OVY_26_ID
+	ldr r0, _021E7790 ; =FS_OVERLAY_ID(OVY_26)
 	mov r1, #2
 	bl HandleLoadOverlay
 	mov r0, #3
@@ -47,7 +47,7 @@ ov101_021E7740: ; 0x021E7740
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021E7790: .word SDK_OVERLAY_OVY_26_ID
+_021E7790: .word FS_OVERLAY_ID(OVY_26)
 _021E7794: .word 0x000009F4
 _021E7798: .word ov101_021F7372
 	thumb_func_end ov101_021E7740
@@ -157,12 +157,12 @@ _021E7858:
 	bl OverlayManager_FreeData
 	add r0, r4, #0
 	bl DestroyHeap
-	ldr r0, _021E7870 ; =SDK_OVERLAY_OVY_26_ID
+	ldr r0, _021E7870 ; =FS_OVERLAY_ID(OVY_26)
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021E7870: .word SDK_OVERLAY_OVY_26_ID
+_021E7870: .word FS_OVERLAY_ID(OVY_26)
 	thumb_func_end ov101_021E7834
 
 	thumb_func_start ov101_021E7874
@@ -12472,12 +12472,12 @@ _021ED7E4:
 ov101_TownMap_OvyInit: ; 0x021ED7F8
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
-	ldr r0, _021ED8A4 ; =SDK_OVERLAY_OVY_100_ID
+	ldr r0, _021ED8A4 ; =FS_OVERLAY_ID(OVY_100)
 	mov r1, #2
 	bl HandleLoadOverlay
-	ldr r0, _021ED8A8 ; =SDK_OVERLAY_OVY_26_ID
+	ldr r0, _021ED8A8 ; =FS_OVERLAY_ID(OVY_26)
 	mov r1, #2
 	bl HandleLoadOverlay
 	mov r2, #1
@@ -12543,8 +12543,8 @@ ov101_TownMap_OvyInit: ; 0x021ED7F8
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_021ED8A4: .word SDK_OVERLAY_OVY_100_ID
-_021ED8A8: .word SDK_OVERLAY_OVY_26_ID
+_021ED8A4: .word FS_OVERLAY_ID(OVY_100)
+_021ED8A8: .word FS_OVERLAY_ID(OVY_26)
 _021ED8AC: .word 0x000009F4
 _021ED8B0: .word ov101_021F7372
 	thumb_func_end ov101_TownMap_OvyInit
@@ -12640,15 +12640,15 @@ _021ED948:
 	bl OverlayManager_FreeData
 	add r0, r4, #0
 	bl DestroyHeap
-	ldr r0, _021ED978 ; =SDK_OVERLAY_OVY_26_ID
+	ldr r0, _021ED978 ; =FS_OVERLAY_ID(OVY_26)
 	bl UnloadOverlayByID
-	ldr r0, _021ED97C ; =SDK_OVERLAY_OVY_100_ID
+	ldr r0, _021ED97C ; =FS_OVERLAY_ID(OVY_100)
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_021ED978: .word SDK_OVERLAY_OVY_26_ID
-_021ED97C: .word SDK_OVERLAY_OVY_100_ID
+_021ED978: .word FS_OVERLAY_ID(OVY_26)
+_021ED97C: .word FS_OVERLAY_ID(OVY_100)
 	thumb_func_end ov101_TownMap_OvyExit
 
 	thumb_func_start ov101_021ED980
@@ -13642,7 +13642,7 @@ ov101_021EDFF8: ; 0x021EDFF8
 	bl ScheduleBgTilemapBufferTransfer
 	ldr r1, [r5]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	add sp, #0x14
 	pop {r4, r5, pc}
 	thumb_func_end ov101_021EDFF8
@@ -13652,7 +13652,7 @@ ov101_021EE190: ; 0x021EE190
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -14458,7 +14458,7 @@ _021EE82A:
 	ldr r1, [r1]
 	mov r0, #4
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x10
 	asr r1, r0, #0x10
 	mov r0, #0x30
@@ -14532,7 +14532,7 @@ _021EE8E4: .word 0x00030100
 ov101_021EE8E8: ; 0x021EE8E8
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	mov r2, #2
 	add r5, r0, #0
 	mov r0, #3
@@ -15465,7 +15465,7 @@ ov101_021EEFE8: ; 0x021EEFE8
 	add r4, r0, #0
 	ldr r1, [r4]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	add r0, r4, #0
 	bl ov101_021EF1D8
 	pop {r4, pc}
@@ -15476,7 +15476,7 @@ ov101_021EEFFC: ; 0x021EEFFC
 	push {r3, lr}
 	bl ov101_021EF260
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov101_021EEFFC
@@ -16531,7 +16531,7 @@ _021EF844: .word 0x00000941
 ov101_021EF848: ; 0x021EF848
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	mov r0, #3
 	mov r1, #0x5b
@@ -17889,7 +17889,7 @@ ov101_021F0284: ; 0x021F0284
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r1, [r5]
 	mov r0, #0x92
 	bl NARC_ctor
@@ -18000,7 +18000,7 @@ ov101_021F0370: ; 0x021F0370
 	ldr r0, [r0, r1]
 	bl FreeToHeap
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	pop {r3, pc}
 	nop
 _021F0384: .word 0x00000508
@@ -18978,7 +18978,7 @@ ov101_021F0ACC: ; 0x021F0ACC
 	lsl r6, r6, #2
 	ldr r1, [r4, r6]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #1
 	lsl r1, r1, #8
 	sub r0, r1, r0
@@ -26616,7 +26616,7 @@ _021F447C: .word 0x0000099F
 ov101_021F4480: ; 0x021F4480
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	mov r2, #2
 	add r5, r0, #0
 	mov r0, #3
@@ -27574,7 +27574,7 @@ ov101_021F4BC8: ; 0x021F4BC8
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #4
-	bl sub_02002CEC
+	bl FontID_Alloc
 	ldr r1, [r5]
 	mov r0, #0x93
 	bl NARC_ctor
@@ -27702,7 +27702,7 @@ ov101_021F4CD8: ; 0x021F4CD8
 	ldr r0, [r0, #0x64]
 	bl FreeToHeap
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	pop {r3, pc}
 	thumb_func_end ov101_021F4CD8
 

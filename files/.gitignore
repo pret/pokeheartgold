@@ -25,6 +25,7 @@ a/1/3/1
 a/1/3/3
 a/1/3/6
 a/1/3/8
+a/1/4/1
 a/1/6/3
 a/1/6/9
 a/1/7/2
@@ -46,3 +47,4 @@ poketool/personal/growtbl.narc
 resource/eng/pms_aikotoba/pms_aikotoba.narc
 data/mmodel/mmodel.narc
 data/mushi/mushi_*.bin
+fielddata/tsurepoke/tp_param.narc

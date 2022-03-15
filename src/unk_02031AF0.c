@@ -6,7 +6,7 @@ u32 sub_02031AF0(void) {
 }
 
 void sub_02031AF4(UnkSaveStruct29* unk) {
-    MI_CpuFill8(unk, 0, sizeof(UnkSaveStruct29));
+    MI_CpuClear8(unk, sizeof(UnkSaveStruct29));
 }
 
 UnkSaveStruct29* sub_02031B00(SAVEDATA* savedata) {

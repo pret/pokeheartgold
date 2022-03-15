@@ -209,7 +209,7 @@ sub_02064AD0: ; 0x02064AD0
 	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r7, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r6, r0, #0
 	ldr r0, [r6]
 	cmp r0, #0
@@ -320,7 +320,7 @@ ItemMenuUseFunc_HealingItem: ; 0x02064B54
 	str r0, [r4, #0x20]
 	ldr r1, _02064BEC ; =_0210159C
 	add r0, r5, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	mov r0, #0xe
 	lsl r0, r0, #6
 	str r4, [r7, r0]
@@ -396,7 +396,7 @@ sub_02064C58: ; 0x02064C58
 	bl TaskManager_GetSys
 	add r4, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0
@@ -658,7 +658,7 @@ ItemMenuUseFunc_TMHM: ; 0x02064E18
 	ldr r1, _02064EB0 ; =_0210159C
 	add r0, r5, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	mov r0, #0xe
 	lsl r0, r0, #6
 	str r4, [r7, r0]
@@ -1217,7 +1217,7 @@ _02065280:
 	ldr r1, _02065308 ; =_0210159C
 	add r0, r5, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	mov r0, #0xe
 	lsl r0, r0, #6
 	str r4, [r7, r0]
@@ -1326,7 +1326,7 @@ sub_020653B8: ; 0x020653B8
 	add r2, r0, #0
 	ldr r1, _020653D4 ; =ov02_0224C020
 	add r0, r4, #0
-	bl NowRunTask
+	bl TaskManager_Jump
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -1510,7 +1510,7 @@ sub_02065508: ; 0x02065508
 	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetData
+	bl TaskManager_GetStatePtr
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0

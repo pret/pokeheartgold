@@ -38,7 +38,7 @@ ov63_0221BE20: ; 0x0221BE20
 	add r5, r0, #0
 	bl MI_CpuFill8
 	add r0, r4, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r5]
 	mov r0, #0
 	mov r1, #0x1b
@@ -98,7 +98,7 @@ ov63_0221BE20: ; 0x0221BE20
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x3e
-	bl sub_02003030
+	bl LoadFontPal0
 	ldr r0, _0221BF24 ; =0x0001304C
 	mov r1, #2
 	str r1, [r5, r0]
@@ -2001,7 +2001,7 @@ _0221CE06:
 	mov r0, #0
 	ldr r1, [r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, r0, #0
 	mov r1, #0
 	add r2, r7, #0
@@ -5486,7 +5486,7 @@ _0221EAB6:
 	mov r0, #0
 	ldr r1, [r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, r0, #0
 	mov r1, #0
 	add r2, r5, #0
@@ -5581,7 +5581,7 @@ _0221EAB6:
 	mov r0, #0
 	ldr r1, [r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, r0, #0
 	mov r1, #0
 	add r2, r5, #0
@@ -6173,11 +6173,11 @@ ov63_0221F088: ; 0x0221F088
 	str r0, [r1, #0x40]
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02027000
+	bl GF_3DVramMan_InitFrameTexVramManager
 	mov r0, #1
 	lsl r0, r0, #0xe
 	mov r1, #1
-	bl sub_02027008
+	bl GF_3DVramMan_InitFramePlttVramManager
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers

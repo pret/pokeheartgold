@@ -429,7 +429,7 @@ _02001DFC:
 	ldr r1, [r2, r1]
 	ldrb r0, [r5, #8]
 	add r2, r7, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	cmp r6, r0

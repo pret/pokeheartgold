@@ -515,7 +515,7 @@ sub_0204F1E4: ; 0x0204F1E4
 	ldr r1, _0204F224 ; =sub_0204F228
 	add r0, r7, #0
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0204F224: .word sub_0204F228
@@ -593,7 +593,7 @@ sub_0204F284: ; 0x0204F284
 	ldr r0, [r7, #0x10]
 	ldr r1, _0204F2B4 ; =sub_0204F2B8
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0204F2B4: .word sub_0204F2B8
@@ -753,7 +753,7 @@ _0204F3E2:
 	ldr r1, _0204F3F4 ; =_0210159C
 	add r0, r6, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	ldr r0, [r5, #8]
 	str r4, [r0]
 	mov r0, #1
@@ -858,7 +858,7 @@ sub_0204F448: ; 0x0204F448
 	ldr r1, _0204F4D4 ; =_02103A1C
 	add r0, r7, #0
 	add r2, r4, #0
-	bl ScrUnk80_AddOvyMan
+	bl Fsys_LaunchApplication
 	ldr r0, [r6, #8]
 	str r4, [r0]
 	mov r0, #3

@@ -44,7 +44,7 @@ ov64_021E5900: ; 0x021E5900
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r4]
 	bl Sav2_HOF_GetNumRecords
 	mov r1, #0x6e
@@ -416,12 +416,12 @@ ov64_021E5B10: ; 0x021E5B10
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x3b
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #0x1e
 	mov r0, #4
 	lsl r1, r1, #4
 	mov r2, #0x3b
-	bl sub_02003030
+	bl LoadFontPal0
 	add sp, #0x90
 	pop {r3, r4, r5, pc}
 	nop
@@ -1009,7 +1009,7 @@ ov64_021E6170: ; 0x021E6170
 	add r6, r0, #0
 	mov r0, #4
 	mov r1, #0x3b
-	bl sub_02002CEC
+	bl FontID_Alloc
 	add r5, r6, #0
 	ldr r4, _021E6204 ; =ov64_021E7040
 	mov r7, #0
@@ -1041,7 +1041,7 @@ _021E6186:
 	ldr r1, [r6, r1]
 	mov r0, #4
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, r0, #0
 	mov r1, #0
 	lsr r4, r3, #1
@@ -1089,7 +1089,7 @@ _021E6214:
 	cmp r4, #0x11
 	blo _021E6214
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov64_021E620C
@@ -2058,7 +2058,7 @@ _021E6920:
 	mov r0, #0
 	ldr r1, [r5, r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, r0, #0
 	mov r1, #0
 	str r1, [sp]
@@ -2088,7 +2088,7 @@ _021E69DA:
 	mov r0, #0
 	ldr r1, [r5, r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, r0, #0
 	mov r1, #0
 	str r1, [sp]
@@ -2171,7 +2171,7 @@ _021E6A18:
 	mov r0, #0
 	ldr r1, [r5, r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0
 	add r3, r0, #0
 	str r1, [sp]
@@ -2217,7 +2217,7 @@ _021E6AEA:
 	mov r0, #0
 	ldr r1, [r5, r1]
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]

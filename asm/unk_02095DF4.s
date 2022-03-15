@@ -34,7 +34,7 @@ sub_02095DF4: ; 0x02095DF4
 	ldr r0, [sp, #0x24]
 	str r0, [r2, #0x1c]
 	ldr r0, [r5, #0x10]
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02095E2C: .word sub_02095E30
@@ -297,7 +297,7 @@ LaunchStarterChoiceScene: ; 0x0209600C
 	str r0, [r2]
 	ldr r0, [r4, #0x10]
 	ldr r1, _02096028 ; =CreateStarter
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r4, pc}
 	.balign 4, 0
 _02096028: .word CreateStarter
@@ -550,7 +550,7 @@ sub_020961D8: ; 0x020961D8
 	ldr r1, _02096244 ; =sub_02096260
 	add r0, r7, #0
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02096244: .word sub_02096260

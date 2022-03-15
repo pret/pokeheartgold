@@ -94,7 +94,7 @@ _0225D5C4: ; jump table
 	.short _0225D5F4 - _0225D5C4 - 2 ; case 4
 	.short _0225D5F4 - _0225D5C4 - 2 ; case 5
 _0225D5D0:
-	bl sub_02050590
+	bl Fsys_TaskIsRunning
 	cmp r0, #0
 	bne _0225D5E0
 	add r0, r4, #0
@@ -380,7 +380,7 @@ ov34_0225D7A8: ; 0x0225D7A8
 	bl ov34_0225DB20
 	mov r0, #1
 	mov r1, #4
-	bl sub_02002D40
+	bl FontID_SetAccessDirect
 	mov r2, #0x72
 	lsl r2, r2, #2
 	add r1, r4, r2
@@ -427,7 +427,7 @@ ov34_0225D87C: ; 0x0225D87C
 	mov r0, #5
 	str r0, [r6]
 	mov r0, #1
-	bl sub_02002D7C
+	bl FontID_SetAccessLazy
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
@@ -1541,7 +1541,7 @@ ov34_0225E164: ; 0x0225E164
 	ldr r0, [r5, #0xc]
 	mov r4, #0
 	mvn r4, r4
-	bl sub_02050590
+	bl Fsys_TaskIsRunning
 	cmp r0, #0
 	bne _0225E19A
 	add r0, r5, #0
@@ -2011,7 +2011,7 @@ ov34_0225E4F8: ; 0x0225E4F8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_02050590
+	bl Fsys_TaskIsRunning
 	cmp r0, #0
 	bne _0225E55C
 	mov r4, #0

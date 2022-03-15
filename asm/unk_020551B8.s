@@ -68,7 +68,7 @@ sub_02055218: ; 0x02055218
 	ldr r1, _02055240 ; =sub_020551B8
 	add r0, r6, #0
 	str r4, [r2, #0xc]
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r4, r5, r6, pc}
 	nop
 _02055240: .word sub_020551B8

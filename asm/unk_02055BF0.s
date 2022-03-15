@@ -63,7 +63,7 @@ sub_02055BF0: ; 0x02055BF0
 	mov r0, #0
 	str r0, [r2]
 	add r0, r7, #0
-	bl QueueTask
+	bl TaskManager_Call
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02055C2C: .word sub_02055C30
@@ -331,9 +331,9 @@ _02055E20:
 	add r0, r5, #0
 	bl FollowingPokemon_GetMapObject
 	add r5, r0, #0
-	bl sub_02069F7C
+	bl FollowPokeObj_GetSpecies
 	ldr r1, [r4, #4]
-	bl sub_02069FF4
+	bl GetFollowPokePermissionBySpeciesAndMap
 	cmp r0, #0
 	bne _02055E5E
 	add r0, r5, #0
@@ -364,7 +364,7 @@ _02055E76:
 	ldr r1, _02055FF8 ; =_020FC748
 	ldr r1, [r1, r2]
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	add r0, r5, #0
 	bl FollowingPokemon_IsActive
 	cmp r0, #0
@@ -484,7 +484,7 @@ _02055F78:
 	ldr r1, _02056000 ; =_020FC724
 	ldr r1, [r1, r2]
 	add r2, r4, #0
-	bl QueueTask
+	bl TaskManager_Call
 	add r0, r5, #0
 	bl FollowingPokemon_GetMapObject
 	add r6, r0, #0
@@ -828,7 +828,7 @@ _02056244:
 	add r2, r0, #0
 	ldr r1, _02056264 ; =ov01_021E9F78
 	add r0, r5, #0
-	bl QueueTask
+	bl TaskManager_Call
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]
@@ -865,7 +865,7 @@ _0205628C:
 	add r2, r0, #0
 	ldr r1, _020562AC ; =ov01_021E9EEC
 	add r0, r5, #0
-	bl QueueTask
+	bl TaskManager_Call
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]
@@ -1233,7 +1233,7 @@ _02056592:
 	add r2, r0, #0
 	ldr r1, _020565F8 ; =ov01_021E9FF8
 	add r0, r6, #0
-	bl QueueTask
+	bl TaskManager_Call
 	mov r0, #3
 	strh r0, [r5, #2]
 	b _020565F4
@@ -1317,14 +1317,14 @@ _0205661A:
 	ldr r1, _02056678 ; =sub_02056530
 	add r0, r6, #0
 	add r2, r4, #0
-	bl NowRunTask
+	bl TaskManager_Jump
 	b _02056674
 _0205665A:
 	bl ov01_021E9C30
 	add r2, r0, #0
 	ldr r1, _0205667C ; =ov01_021EA128
 	add r0, r6, #0
-	bl QueueTask
+	bl TaskManager_Call
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]

@@ -193,7 +193,7 @@ ov102_021E7888: ; 0x021E7888
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r4]
 	bl sub_02090D70
 	str r0, [r4, #4]
@@ -3598,7 +3598,7 @@ _021E9122:
 	blt _021E9122
 	mov r0, #4
 	mov r1, #0x23
-	bl sub_02002CEC
+	bl FontID_Alloc
 	add r0, r4, #0
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
@@ -3616,7 +3616,7 @@ ov102_021E9144: ; 0x021E9144
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	mov r4, #0
 	add r5, r6, #0
 _021E915C:
@@ -3804,7 +3804,7 @@ _021E92CA:
 	add r1, r4, #0
 	mov r2, #0
 	mov r3, #0x48
-	bl sub_020030A0
+	bl FontID_String_GetCenterAlignmentX
 	add r3, r0, #0
 	str r5, [sp]
 	mov r0, #0xff
@@ -4359,7 +4359,7 @@ _021E9736:
 	cmp r4, #2
 	blt _021E971A
 	mov r0, #2
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, [r7, #0x20]
 	mov r1, #0
 	bl FreeBgTilemapBuffer
@@ -4450,7 +4450,7 @@ _021E97FA:
 	blt _021E97FA
 	mov r0, #2
 	mov r1, #0x23
-	bl sub_02002CEC
+	bl FontID_Alloc
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E9814: .word 0x04000304
@@ -6935,7 +6935,7 @@ _021EAB84:
 	ldr r1, [sp, #0x20]
 	mov r0, #1
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r5, r5, r0
 	b _021EABFC
 _021EABAC:
@@ -7241,7 +7241,7 @@ ov102_021EAD98: ; 0x021EAD98
 	ldr r1, [r5, #0x7c]
 	mov r0, #1
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r3, sp, #0x10
 	mov r0, #2
 	ldrsh r0, [r3, r0]
@@ -7977,7 +7977,7 @@ _021EB366:
 	ldr r1, [r5, #0x18]
 	mov r0, #4
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0x38
 	sub r3, r1, r0
 	mov r0, #0
@@ -8070,7 +8070,7 @@ _021EB3F6:
 	ldr r1, [r5, #0x20]
 	mov r0, #4
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0x30
 	sub r3, r1, r0
 	mov r1, #0
@@ -8595,7 +8595,7 @@ _021EB7EC:
 	mov r0, #0
 	add r1, r5, #0
 	add r2, r0, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0x48
 	sub r0, r1, r0
 	lsr r3, r0, #1

@@ -55,7 +55,7 @@ _021E5916:
 	bl BgConfig_Alloc
 	str r0, [r4]
 	add r0, r7, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	str r0, [r4, #8]
 	ldr r1, [r0]
 	ldr r0, _021E5AA0 ; =0x00004A0C
@@ -77,7 +77,7 @@ _021E5916:
 	str r0, [r4, #0x28]
 	mov r0, #4
 	mov r1, #0x32
-	bl sub_02002CEC
+	bl FontID_Alloc
 	mov r0, #4
 	mov r1, #8
 	bl SetKeyRepeatTimers
@@ -348,7 +348,7 @@ _021E5BD8:
 	bl sub_0205AD24
 	bl sub_02021238
 	mov r0, #4
-	bl sub_02002DB4
+	bl FontID_Release
 	ldr r0, [r6, #0x28]
 	bl DestroyMsgData
 	ldr r0, [r6, #0x24]
@@ -811,22 +811,22 @@ ov73_021E5F38: ; 0x021E5F38
 	mov r0, #0
 	lsl r1, r1, #6
 	mov r2, #0x32
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #0x1a
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x32
-	bl sub_02003030
+	bl LoadFontPal0
 	mov r1, #6
 	mov r0, #4
 	lsl r1, r1, #6
 	mov r2, #0x32
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #0x1a
 	mov r0, #4
 	lsl r1, r1, #4
 	mov r2, #0x32
-	bl sub_02003030
+	bl LoadFontPal0
 	ldr r0, [r5, #8]
 	ldr r0, [r0, #8]
 	bl Options_GetFrame
@@ -1283,7 +1283,7 @@ ov73_021E63BC: ; 0x021E63BC
 	mov r0, #1
 	mov r2, #0
 	add r7, r1, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #0
@@ -3132,7 +3132,7 @@ ov73_021E7230: ; 0x021E7230
 	mov r0, #4
 	add r1, r5, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0x40
 	sub r3, r1, r0
 	mov r1, #0
@@ -3168,7 +3168,7 @@ _021E7286:
 	mov r0, #4
 	add r1, r5, #0
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	mov r1, #0x40
 	sub r3, r1, r0
 	mov r1, #0
@@ -5114,7 +5114,7 @@ ov73_021E8148: ; 0x021E8148
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl OverlayManager_GetField18
+	bl OverlayManager_GetParentWork
 	mov r1, #0
 	str r0, [r4]
 	add r0, r4, #0
@@ -5874,12 +5874,12 @@ ov73_021E8730: ; 0x021E8730
 	mov r0, #0
 	lsl r1, r1, #4
 	mov r2, #0x96
-	bl sub_0200304C
+	bl LoadFontPal1
 	mov r1, #0x1a
 	mov r0, #4
 	lsl r1, r1, #4
 	mov r2, #0x96
-	bl sub_0200304C
+	bl LoadFontPal1
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0]
 	ldr r0, [r0, #0x10]
@@ -9098,7 +9098,7 @@ ov73_021EA050: ; 0x021EA050
 _021EA05E:
 	ldr r0, [sp, #0xc]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	ldrb r1, [r4, #7]
 	lsl r1, r1, #3
 	sub r1, r1, r0
@@ -9109,7 +9109,7 @@ _021EA05E:
 _021EA074:
 	ldr r0, [sp, #0xc]
 	mov r2, #0
-	bl sub_02002F30
+	bl FontID_String_GetWidth
 	ldrb r1, [r4, #7]
 	lsl r1, r1, #3
 	sub r2, r1, r0
