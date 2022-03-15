@@ -14,7 +14,7 @@ struct FLYPOINTS_SAVE {
     u16 unk64;
     u16 unk66;
     u16 lastSpawn;
-    u8 unk6A;
+    u8 cameraType;
     struct FlypointsPlayerSub unk6C;
     u16 poisonStepCounter;
     u16 safariStepCounter;
@@ -88,12 +88,12 @@ void FlyPoints_SetDeathSpawn(FLYPOINTS_SAVE *flypointsSave, const u16 spawn) {
     flypointsSave->lastSpawn = spawn;
 }
 
-u8 sub_0203B9A4(FLYPOINTS_SAVE *flypointsSave) {
-    return flypointsSave->unk6A;
+u8 FlyPoints_GetCameraType(FLYPOINTS_SAVE *flypointsSave) {
+    return flypointsSave->cameraType;
 }
 
-void sub_0203B9AC(FLYPOINTS_SAVE *flypointsSave, const u8 a1) {
-    flypointsSave->unk6A = a1;
+void FlyPoints_SetCameraType(FLYPOINTS_SAVE *flypointsSave, const u8 cameraType) {
+    flypointsSave->cameraType = cameraType;
 }
 
 struct FlypointsPlayerSub *sub_0203B9B4(FLYPOINTS_SAVE *flypointsSave) {

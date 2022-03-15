@@ -2587,7 +2587,7 @@ FS_EXTERN_OVERLAY(OV_101)
 .public ScrStrBufs_new_custom
 .public Fsys_LaunchApplication
 .public ScriptCall
-.public ScriptEnvironment_GetSav2Ptr
+.public Fsys_GetSav2Ptr
 .public ScriptJump
 .public ScriptReadHalfword
 .public ScriptReadWord
@@ -10067,7 +10067,7 @@ FS_EXTERN_OVERLAY(OV_101)
 .public ov123_02260ABC
 .public ov123_02260B14
 .public ov123_02260B6C
-.public ov124_02260C20
+.public FieldSystem_init
 .public ov124_02260D1C
 .public ov124_02260D58
 .public ov124_02260D68
@@ -28160,8 +28160,8 @@ FS_EXTERN_OVERLAY(OV_101)
 .public sub_0203B98C
 .public FlyPoints_GetDeathSpawn
 .public FlyPoints_SetDeathSpawn
-.public sub_0203B9A4
-.public sub_0203B9AC
+.public FlyPoints_GetCameraType
+.public FlyPoints_SetCameraType
 .public sub_0203B9B4
 .public FlyPoints_GetSafariBallsCounter
 .public FlyPoints_GetSafariStepsCounter
@@ -28198,10 +28198,10 @@ FS_EXTERN_OVERLAY(OV_101)
 .public GetInteractedBackgroundEventScript
 .public sub_0203DDA4
 .public sub_0203DE04
-.public sub_0203DE74
-.public sub_0203DEA4
-.public sub_0203DEBC
-.public sub_0203DED4
+.public Field_Continue_AppInit
+.public Field_NewGame_AppInit
+.public Field_AppExec
+.public Field_AppExit
 .public sub_0203DEF0
 .public sub_0203DF34
 .public sub_0203DF3C
@@ -28213,7 +28213,7 @@ FS_EXTERN_OVERLAY(OV_101)
 .public sub_0203E2F4
 .public sub_0203E30C
 .public sub_0203E33C
-.public sub_0203E340
+.public Fsys_GetBgConfigPtr
 .public sub_0203E348
 .public sub_0203E354
 .public LocationData_BackUp
@@ -28409,9 +28409,9 @@ FS_EXTERN_OVERLAY(OV_101)
 .public sub_0205298C
 .public sub_02053018
 .public sub_02053038
-.public sub_02053470
-.public sub_0205353C
-.public sub_02053620
+.public CallFieldTask_NewGame
+.public CallFieldTask_ContinueGame_Normal
+.public CallFieldTask_ContinueGame_CommError
 .public sub_020537A8
 .public sub_020537F0
 .public sub_0205388C

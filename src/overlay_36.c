@@ -24,8 +24,8 @@
 
 #define HEAPID_OV36   ((HeapID)75)
 
-extern const OVY_MGR_TEMPLATE _020FA15C;
-extern const OVY_MGR_TEMPLATE _020FA16C;
+extern const OVY_MGR_TEMPLATE gApplication_NewGameFieldsys;
+extern const OVY_MGR_TEMPLATE gApplication_ContinueFieldsys;
 extern const OVY_MGR_TEMPLATE _02106068;
 
 extern void sub_0201838C(IGT* igt);
@@ -129,7 +129,7 @@ BOOL ov36_App_InitGameState_AfterOakSpeech_AppExec(OVY_MANAGER* man, int* state)
 BOOL ov36_App_InitGameState_AfterOakSpeech_AppExit(OVY_MANAGER* man, int* state) {
 #pragma unused(man, state)
     DestroyHeap(HEAPID_OV36);
-    RegisterMainOverlay(FS_OVERLAY_ID_NONE, &_020FA15C);
+    RegisterMainOverlay(FS_OVERLAY_ID_NONE, &gApplication_NewGameFieldsys);
 
     return TRUE;
 }
@@ -167,7 +167,7 @@ BOOL ov36_App_MainMenu_SelectOption_Continue_AppExec(OVY_MANAGER* man, int* stat
 BOOL ov36_App_MainMenu_SelectOption_Continue_AppExit(OVY_MANAGER* man, int* state) {
 #pragma unused(man, state)
     DestroyHeap(HEAPID_OV36);
-    RegisterMainOverlay(FS_OVERLAY_ID_NONE, &_020FA16C);
+    RegisterMainOverlay(FS_OVERLAY_ID_NONE, &gApplication_ContinueFieldsys);
 
     return TRUE;
 }

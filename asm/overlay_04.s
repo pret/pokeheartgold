@@ -10,7 +10,7 @@ ov04_02253E20: ; 0x02253E20
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0x24
 	add r5, r0, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_GetGymmickPtr
 	mov r1, #4
 	bl SavGymmick_AssertMagic_GetData
@@ -103,7 +103,7 @@ ov04_02253ED4: ; 0x02253ED4
 	str r0, [r4]
 	add r0, r5, #0
 	str r5, [r4, #4]
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_GetGymmickPtr
 	mov r1, #4
 	bl SavGymmick_AssertMagic_GetData
@@ -432,7 +432,7 @@ ov04_02254190: ; 0x02254190
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r4, r0, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_GetGymmickPtr
 	mov r1, #5
 	bl SavGymmick_AssertMagic_GetData
@@ -719,7 +719,7 @@ Fsys_FlipAzaleaGymSwitch: ; 0x02254404
 	sub sp, #0xc
 	add r5, r0, #0
 	add r6, r1, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_GetGymmickPtr
 	mov r1, #5
 	bl SavGymmick_AssertMagic_GetData
@@ -897,7 +897,7 @@ Fsys_BeginAzaleaGymSpinarakRide: ; 0x02254568
 	strb r0, [r4, #0x16]
 	add r0, r6, #0
 	str r1, [r4, #0x1c]
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_GetGymmickPtr
 	mov r1, #5
 	bl SavGymmick_AssertMagic_GetData
@@ -1451,7 +1451,7 @@ _02254992:
 	cmp r0, r1
 	blt _022549FE
 	add r0, r5, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_GetGymmickPtr
 	mov r1, #5
 	bl SavGymmick_AssertMagic_GetData
@@ -1808,7 +1808,7 @@ ov04_02254CBC: ; 0x02254CBC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x34
 	add r5, r0, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_GetGymmickPtr
 	mov r1, #1
 	bl SavGymmick_AssertMagic_GetData
@@ -2049,7 +2049,7 @@ _02254E86:
 	mov r1, #1
 	bl ov01_021F3B2C
 	ldr r0, [r4, #0xc]
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_GetGymmickPtr
 	mov r1, #1
 	bl SavGymmick_AssertMagic_GetData
@@ -2175,7 +2175,7 @@ ov04_02254F8C: ; 0x02254F8C
 	ldr r0, [r3]
 	str r0, [r2]
 	ldr r0, [sp, #4]
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_GetGymmickPtr
 	mov r1, #6
 	bl SavGymmick_AssertMagic_GetData
@@ -2296,7 +2296,7 @@ ov04_0225507C: ; 0x0225507C
 ov04_02255090: ; 0x02255090
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_GetGymmickPtr
 	bl SavGymmick_GetType
 	cmp r0, #6
@@ -3650,7 +3650,7 @@ _02255A16:
 	mul r1, r2
 	add r5, r0, r1
 	add r0, r6, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_GetGymmickPtr
 	mov r1, #6
 	bl SavGymmick_AssertMagic_GetData
@@ -3824,7 +3824,7 @@ _02255BA6:
 	add r0, #0x4f
 	strb r1, [r0]
 	add r0, r5, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_GetGymmickPtr
 	mov r1, #6
 	bl SavGymmick_AssertMagic_GetData
@@ -4327,7 +4327,7 @@ _02255FBC: .word SEQ_SE_GS_GONDORA_KABEHIT
 ov04_02255FC0: ; 0x02255FC0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_GetGymmickPtr
 	mov r1, #2
 	bl SavGymmick_AssertMagic_GetData
@@ -4401,7 +4401,7 @@ ov04_02256044: ; 0x02256044
 ov04_02256058: ; 0x02256058
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_GetGymmickPtr
 	add r4, r0, #0
 	bl SavGymmick_GetType
@@ -4438,7 +4438,7 @@ ov04_0225609C: ; 0x0225609C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_GetGymmickPtr
 	mov r1, #2
 	bl SavGymmick_AssertMagic_GetData
@@ -4732,7 +4732,7 @@ _022562EC:
 ov04_02256304: ; 0x02256304
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_GetGymmickPtr
 	mov r1, #3
 	bl SavGymmick_AssertMagic_GetData
@@ -4828,7 +4828,7 @@ ov04_022563B0: ; 0x022563B0
 ov04_022563C4: ; 0x022563C4
 	push {r4, lr}
 	add r4, r1, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_GetGymmickPtr
 	mov r1, #3
 	bl SavGymmick_AssertMagic_GetData
@@ -4872,7 +4872,7 @@ ov04_0225640C: ; 0x0225640C
 	add r5, r0, #0
 	add r7, r1, #0
 	str r2, [sp]
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_GetGymmickPtr
 	mov r1, #3
 	bl SavGymmick_AssertMagic_GetData
@@ -5156,7 +5156,7 @@ _0225664C: .word SEQ_SE_DP_UG_020
 ov04_02256650: ; 0x02256650
 	push {r4, lr}
 	add r4, r0, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_GetGymmickPtr
 	mov r1, #7
 	bl SavGymmick_AssertMagic_GetData
@@ -5832,7 +5832,7 @@ ov04_02256B3C: ; 0x02256B3C
 ov04_02256B64: ; 0x02256B64
 	push {r4, lr}
 	add r4, r0, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_GetGymmickPtr
 	mov r1, #8
 	bl SavGymmick_AssertMagic_GetData
@@ -6227,7 +6227,7 @@ _02256E5A:
 ov04_02256E60: ; 0x02256E60
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_GetGymmickPtr
 	mov r1, #9
 	bl SavGymmick_AssertMagic_GetData
@@ -6325,7 +6325,7 @@ _02256F14:
 	bl GF_AssertFail
 _02256F24:
 	add r0, r5, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_GetGymmickPtr
 	mov r1, #9
 	bl SavGymmick_AssertMagic_GetData
@@ -6612,7 +6612,7 @@ ov04_02257148: ; 0x02257148
 	strb r0, [r1, #1]
 	strb r0, [r1, #2]
 	ldr r0, [r7]
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_GetGymmickPtr
 	mov r1, #9
 	bl SavGymmick_AssertMagic_GetData

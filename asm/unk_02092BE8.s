@@ -127,7 +127,7 @@ _02092CC8:
 	bl MapMatrix_Free
 _02092CE2:
 	add r0, r5, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
 	strb r0, [r4, #7]

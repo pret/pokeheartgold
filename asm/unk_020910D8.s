@@ -60,7 +60,7 @@ _0209112E:
 	bl TaskManager_GetSys
 	add r6, r0, #0
 	ldr r5, [r4, #0xc]
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_PlayerData_GetProfileAddr
 	add r7, r0, #0
 	ldr r0, [r6, #0x20]
@@ -88,7 +88,7 @@ _0209112E:
 	add r1, r5, #0
 	bl sub_02093134
 	add r0, r6, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	ldr r1, [r4, #0xc]
 	bl UpdatePokedexWithReceivedSpecies
 	ldr r0, [r4, #4]
@@ -111,7 +111,7 @@ _0209119A:
 	bl GetMonData
 	add r7, r0, #0
 	add r0, r6, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSav2Ptr
 	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [sp]
 	mov r0, #0

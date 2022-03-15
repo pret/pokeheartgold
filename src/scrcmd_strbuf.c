@@ -31,7 +31,7 @@ BOOL ScrCmd_BufferPlayersName(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     MSGFMT** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, UNK80_10_C_MSGFMT);
     u8 idx = ScriptReadByte(ctx);
-    PLAYERPROFILE* profile = Sav2_PlayerData_GetProfileAddr(ScriptEnvironment_GetSav2Ptr(fsys));
+    PLAYERPROFILE* profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSav2Ptr(fsys));
 
     BufferPlayersName(*msg_fmt, idx, profile);
 
@@ -203,7 +203,7 @@ BOOL ScrCmd_BufferTrainerClassName(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_BufferPlayerUnionAvatarClassName(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    SAVEDATA* savedata = ScriptEnvironment_GetSav2Ptr(fsys);
+    SAVEDATA* savedata = Fsys_GetSav2Ptr(fsys);
     PLAYERPROFILE* profile = Sav2_PlayerData_GetProfileAddr(savedata);
     MSGFMT** msg_fmt = FieldSysGetAttrAddr(fsys, UNK80_10_C_MSGFMT);
     u8 idx = ScriptReadByte(ctx);
