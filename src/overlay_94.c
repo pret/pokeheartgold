@@ -24,20 +24,20 @@ BOOL ov94_021E593C(struct UnkStruct_Overlay_94_A* unkPtr) {
     case 0:
         unkA->species = GetMonData(pokemon, MON_DATA_SPECIES, 0);
         switch (unkA->species) {
-            case SPECIES_GIRATINA:
-                Mon_UpdateGiratinaForme(pokemon);
-                unkA->unk8 = 0x41;
-                unkA->unk10 = 0;
-                break;
-            case SPECIES_SHAYMIN:
-                Mon_UpdateShayminForme(pokemon, SHAYMIN_SKY);
-                unkA->unk8 = 0x23;
-                unkA->unk10 = 1;
-                break;
-            case SPECIES_ROTOM:
-            default:
-                GF_ASSERT(FALSE);
-                break;
+        case SPECIES_GIRATINA:
+            Mon_UpdateGiratinaForme(pokemon);
+            unkA->unk8 = 0x41;
+            unkA->unk10 = 0;
+            break;
+        case SPECIES_SHAYMIN:
+            Mon_UpdateShayminForme(pokemon, SHAYMIN_SKY);
+            unkA->unk8 = 0x23;
+            unkA->unk10 = 1;
+            break;
+        case SPECIES_ROTOM:
+        default:
+            GF_ASSERT(FALSE);
+            break;
         } 
         Pokedex_SetMonCaughtFlag(Sav2_Pokedex_get(ScriptEnvironment_GetSav2Ptr(unkPtr->unk654->fsys)), pokemon);
         unkA->unk0++;
@@ -130,17 +130,17 @@ void ov94_021E5BA0(struct UnkStruct_Overlay_94_C* unkPtr) {
     sub_0201526C(unkPtr->unk18, sub_02015264(0xd0, unkPtr->unk10, 0xc), 0xa, 1);
 
     switch (unkPtr->species) {
-        case SPECIES_GIRATINA: 
-            sub_02015494(unkPtr->unk18, 0, ov94_021E5C28, unkPtr);
-            sub_02015494(unkPtr->unk18, 1, ov94_021E5C28, unkPtr);
-            sub_02015494(unkPtr->unk18, 2, ov94_021E5C28, unkPtr);
-            PlaySE(SEQ_SE_PL_W467109);
-            return;
-        case SPECIES_SHAYMIN: 
-            sub_02015494(unkPtr->unk18, 0, ov94_021E5C28, unkPtr);
-            sub_02015494(unkPtr->unk18, 1, ov94_021E5C28, unkPtr);
-            PlaySE(SEQ_SE_PL_W363);
-            return;
+    case SPECIES_GIRATINA: 
+        sub_02015494(unkPtr->unk18, 0, ov94_021E5C28, unkPtr);
+        sub_02015494(unkPtr->unk18, 1, ov94_021E5C28, unkPtr);
+        sub_02015494(unkPtr->unk18, 2, ov94_021E5C28, unkPtr);
+        PlaySE(SEQ_SE_PL_W467109);
+        return;
+    case SPECIES_SHAYMIN: 
+        sub_02015494(unkPtr->unk18, 0, ov94_021E5C28, unkPtr);
+        sub_02015494(unkPtr->unk18, 1, ov94_021E5C28, unkPtr);
+        PlaySE(SEQ_SE_PL_W363);
+        return;
     }
 }
 
