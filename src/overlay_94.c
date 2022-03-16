@@ -21,80 +21,80 @@ BOOL ov94_021E593C(struct UnkStruct_Overlay_94_A* unkPtr) {
     POKEMON* pokemon = GetPartyMonByIndex(unkPtr->unk654->party, unkPtr->partyMonIndex);
 
     switch (unkA->unk0) {
-        case 0:
-            unkA->species = GetMonData(pokemon, MON_DATA_SPECIES, 0);
-            switch (unkA->species) {
-                case SPECIES_GIRATINA:
-                    Mon_UpdateGiratinaForme(pokemon);
-                    unkA->unk8 = 0x41;
-                    unkA->unk10 = 0;
-                    break;
-                case SPECIES_SHAYMIN:
-                    Mon_UpdateShayminForme(pokemon, SHAYMIN_SKY);
-                    unkA->unk8 = 0x23;
-                    unkA->unk10 = 1;
-                    break;
-                case SPECIES_ROTOM:
-                default:
-                    GF_ASSERT(FALSE);
-                    break;
-            } 
-            Pokedex_SetMonCaughtFlag(Sav2_Pokedex_get(ScriptEnvironment_GetSav2Ptr(unkPtr->unk654->fsys)), pokemon);
-            unkA->unk0++;
-            break;
-        case 1:
-        case 2:
-            unkA->unk0++;
-            break;
-        case 3:
-            ov94_021E5B04(unkPtr);
-            unkA->unk0++;
-            break;
-        case 4:
-            GX_EngineAToggleLayers(1, 1);
-            ov94_021E5BA0(unkA);
-            unkA->unk0++;
-            break;
-        case 5:
-            unkA->unk4++;
-            if(unkA->unk4 == unkA->unk8) {
-                sub_0207ECE0(unkPtr, unkPtr->partyMonIndex);
-            }
-            ov94_021E5C60();
-            if(unkA->unk4 > unkA->unk8) {
-                if(sub_020154B0(unkA->unk18) == 0) {
-                    unkA->unk0++;
-                }
-            }
-            break;
-        case 6:
-            ov94_021E5B30(unkPtr);
-            unkA->unk0++;
-            break;
-        case 7:
-            sub_020720D4(pokemon);
-            unkA->unk0++;
-            break;
-        case 8:
-            if(IsCryFinished() == FALSE) {
+    case 0:
+        unkA->species = GetMonData(pokemon, MON_DATA_SPECIES, 0);
+        switch (unkA->species) {
+            case SPECIES_GIRATINA:
+                Mon_UpdateGiratinaForme(pokemon);
+                unkA->unk8 = 0x41;
+                unkA->unk10 = 0;
+                break;
+            case SPECIES_SHAYMIN:
+                Mon_UpdateShayminForme(pokemon, SHAYMIN_SKY);
+                unkA->unk8 = 0x23;
+                unkA->unk10 = 1;
+                break;
+            case SPECIES_ROTOM:
+            default:
+                GF_ASSERT(FALSE);
+                break;
+        } 
+        Pokedex_SetMonCaughtFlag(Sav2_Pokedex_get(ScriptEnvironment_GetSav2Ptr(unkPtr->unk654->fsys)), pokemon);
+        unkA->unk0++;
+        break;
+    case 1:
+    case 2:
+        unkA->unk0++;
+        break;
+    case 3:
+        ov94_021E5B04(unkPtr);
+        unkA->unk0++;
+        break;
+    case 4:
+        GX_EngineAToggleLayers(1, 1);
+        ov94_021E5BA0(unkA);
+        unkA->unk0++;
+        break;
+    case 5:
+        unkA->unk4++;
+        if(unkA->unk4 == unkA->unk8) {
+            sub_0207ECE0(unkPtr, unkPtr->partyMonIndex);
+        }
+        ov94_021E5C60();
+        if(unkA->unk4 > unkA->unk8) {
+            if(sub_020154B0(unkA->unk18) == 0) {
                 unkA->unk0++;
             }
-            break;
-        case 9:
-            STRING* str = NewString_ReadMsgData(unkPtr->msgData, 0xbc);
-            BufferBoxMonNickname(unkPtr->unk7c4, 0, Mon_GetBoxMon(pokemon));
-            StringExpandPlaceholders(unkPtr->unk7c4, unkPtr->unk7c8, str);
-            String_dtor(str);
-            sub_0207DAEC(unkPtr, ~0, 1);
+        }
+        break;
+    case 6:
+        ov94_021E5B30(unkPtr);
+        unkA->unk0++;
+        break;
+    case 7:
+        sub_020720D4(pokemon);
+        unkA->unk0++;
+        break;
+    case 8:
+        if(IsCryFinished() == FALSE) {
             unkA->unk0++;
-            break;
-        case 10:
-            if (sub_02020094(unkPtr->unkc64) == 0) {
-                ov94_021E5AEC(unkPtr);
-                unkPtr->unk654->unk27 = 0;
-                return TRUE;
-            }
-            break;
+        }
+        break;
+    case 9:
+        STRING* str = NewString_ReadMsgData(unkPtr->msgData, 0xbc);
+        BufferBoxMonNickname(unkPtr->unk7c4, 0, Mon_GetBoxMon(pokemon));
+        StringExpandPlaceholders(unkPtr->unk7c4, unkPtr->unk7c8, str);
+        String_dtor(str);
+        sub_0207DAEC(unkPtr, ~0, 1);
+        unkA->unk0++;
+        break;
+    case 10:
+        if (sub_02020094(unkPtr->unkc64) == 0) {
+            ov94_021E5AEC(unkPtr);
+            unkPtr->unk654->unk27 = 0;
+            return TRUE;
+        }
+        break;
     }
     return FALSE;
 }
@@ -155,11 +155,11 @@ static const int PartyMonSpritePositions[][2] = {
 
 
 void ov94_021E5C28(struct UnkStruct_Overlay_94_C* unkPtr) {
-    u32* unkA = (u32*) sub_02015504();
-    int x_pos = PartyMonSpritePositions[unkA[5]][0];
-    unkPtr->unk28 = x_pos + unkPtr->unk20[0][1];
-    int y_pos = PartyMonSpritePositions[unkA[5]][1];
-    unkPtr->unk2c = y_pos + unkPtr->unk20[0][2];
+    struct Dummy_Overlay_94* unkA = sub_02015504();
+    u32 unkB = PartyMonSpritePositions[unkA->unk10][0];
+    unkPtr->unk28 = unkB + unkPtr->unk20[0][1];
+    u32 unkD = PartyMonSpritePositions[unkA->unk10][1];
+    unkPtr->unk2c = unkD + unkPtr->unk20[0][2];
 }
 
 s32 ov94_021E5C60(void) {

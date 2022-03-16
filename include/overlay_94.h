@@ -5,6 +5,11 @@
 #include "pokemon_types_def.h"
 #include "script.h"
 
+typedef struct Dummy_Overlay_94 {
+	u8 unk0[0x10];
+	u32 unk10;
+};
+
 typedef struct UnkStruct_Overlay_94_B
 {
     PARTY* party;
@@ -56,5 +61,8 @@ s32 ov94_021E5C60(void);
 void ov94_021E5C84(struct UnkStruct_Overlay_94_C* unkPtr);
 u32 ov94_021E5CA0(u32 unkA, u32 unkB);
 u32 ov94_021E5CC4(u32 unkA, u32 unkB);
+
+Dummy_Overlay_94* sub_02015504();
+
 #endif //POKEHEARTGOLD_OVY_94_H
 
