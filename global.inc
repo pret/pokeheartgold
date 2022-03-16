@@ -28157,7 +28157,7 @@ FS_EXTERN_OVERLAY(OV_101)
 .public FlyPoints_SetDynamicWarp
 .public sub_0203B980
 .public sub_0203B984
-.public sub_0203B98C
+.public FlyPoints_SetWeatherType
 .public FlyPoints_GetDeathSpawn
 .public FlyPoints_SetDeathSpawn
 .public FlyPoints_GetCameraType
@@ -28176,7 +28176,7 @@ FS_EXTERN_OVERLAY(OV_101)
 .public MapHeader_GetSpawnIdForDeathWarp
 .public sub_0203BB50
 .public FlypointFlagAction
-.public sub_0203BBB4
+.public Fsys_GetWeather_HandleDiamondDust
 .public sub_0203BC10
 .public sub_0203BC28
 .public sub_0203BCDC

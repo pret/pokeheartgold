@@ -5945,7 +5945,7 @@ ScrCmd_181: ; 0x020436C4
 	bl Save_FlyPoints_get
 	add r5, r0, #0
 	mov r1, #0xc
-	bl sub_0203B98C
+	bl FlyPoints_SetWeatherType
 	add r0, r5, #0
 	bl sub_0203B984
 	add r4, #0x80

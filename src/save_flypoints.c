@@ -12,7 +12,7 @@ struct FLYPOINTS_SAVE {
     Location dynamicWarp;
     Location specialSpawn;
     u16 unk64;
-    u16 unk66;
+    u16 weather;
     u16 lastSpawn;
     u8 cameraType;
     struct FlypointsPlayerSub unk6C;
@@ -73,11 +73,11 @@ u16 *sub_0203B980(FLYPOINTS_SAVE *flypointsSave) {
 }
 
 u16 sub_0203B984(FLYPOINTS_SAVE *flypointsSave) {
-    return flypointsSave->unk66;
+    return flypointsSave->weather;
 }
 
-void sub_0203B98C(FLYPOINTS_SAVE *flypointsSave, const u16 a1) {
-    flypointsSave->unk66 = a1;
+void FlyPoints_SetWeatherType(FLYPOINTS_SAVE *flypointsSave, const u16 a1) {
+    flypointsSave->weather = a1;
 }
 
 u16 FlyPoints_GetDeathSpawn(FLYPOINTS_SAVE *flypointsSave) {
@@ -88,11 +88,11 @@ void FlyPoints_SetDeathSpawn(FLYPOINTS_SAVE *flypointsSave, const u16 spawn) {
     flypointsSave->lastSpawn = spawn;
 }
 
-u8 FlyPoints_GetCameraType(FLYPOINTS_SAVE *flypointsSave) {
+u32 FlyPoints_GetCameraType(FLYPOINTS_SAVE *flypointsSave) {
     return flypointsSave->cameraType;
 }
 
-void FlyPoints_SetCameraType(FLYPOINTS_SAVE *flypointsSave, const u8 cameraType) {
+void FlyPoints_SetCameraType(FLYPOINTS_SAVE *flypointsSave, const u32 cameraType) {
     flypointsSave->cameraType = cameraType;
 }
 

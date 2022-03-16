@@ -23,8 +23,8 @@
 typedef struct MonthDay {
     u8 month;
     u8 day;
-};
+} MonthDay;
 
-u32 sub_0203BBB4(FieldSystem* fsys, u32 mapId);
+u32 Fsys_GetWeather_HandleDiamondDust(FieldSystem* fsys, u32 mapId);
 
 #endif //POKEHEARTGOLD_DIAMOND_DUST_H
