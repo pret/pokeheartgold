@@ -186,11 +186,8 @@ u32 ov94_021E5CA0(u32 unkA, u32 unkB) {
         GF_ASSERT(FALSE);
     }
     sub_02015354(unkC);
-
-    unkC = unkC << 0x10;
-    unkC = unkC >> 0xd;
-
-    return unkC;
+	
+    return NNS_GfdGetTexKeyAddr(unkC);
 }
 
 u32 ov94_021E5CC4(u32 unkA, u32 unkB) {
@@ -202,9 +199,6 @@ u32 ov94_021E5CC4(u32 unkA, u32 unkB) {
 
     sub_02015394(unkC);
 
-    unkC = unkC << 0x10;
-    unkC = unkC >> 0xd;
-
-    return unkC;
+    return NNS_GfdGetPlttKeyAddr(unkC);
 }
 
