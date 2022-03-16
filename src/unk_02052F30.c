@@ -14,8 +14,15 @@
 #include "field_follow_poke.h"
 #include "unk_02056D7C.h"
 #include "diamond_dust.h"
+#include "task.h"
+#include "unk_02055244.h"
 #include "unk_02054514.h"
 #include "unk_02054648.h"
+#include "unk_0200FA24.h"
+#include "unk_020552A4.h"
+#include "unk_02058AEC.h"
+#include "unk_0205AC88.h"
+#include "overlay_01.h"
 #include "constants/maps.h"
 
 extern const struct UnkStruct_020FC5CC _020FC5CC[6];
@@ -245,4 +252,143 @@ void sub_020533C0(FieldSystem *fsys) {
         dynamicWarp->z = 2;
         dynamicWarp->direction = 1;
     }
+}
+
+BOOL sub_02053414(TaskManager *taskManager) {
+    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    u32 *state_p = TaskManager_GetStatePtr(taskManager);
+
+    switch (*state_p) {
+    case 0:
+        sub_02052F94(fsys, fsys->location);
+        sub_02053284(fsys);
+        sub_02053038(fsys, FALSE);
+        sub_0205316C(fsys);
+        (*state_p)++;
+        break;
+    case 1:
+        sub_02055408(taskManager);
+        (*state_p)++;
+        break;
+    case 2:
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+TaskManager *CallFieldTask_NewGame(FieldSystem *fsys) {
+    fsys->unk70 = 0;
+    RunInitScript(fsys);
+    return FieldSys_CreateTask(fsys, sub_02053414, NULL);
+}
+
+BOOL sub_0205348C(TaskManager *taskManager) {
+    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    SCRIPT_STATE *scriptState = SavArray_Flags_get(fsys->savedata);
+    FLYPOINTS_SAVE *flypointsSave;
+    u32 *state_p = TaskManager_GetStatePtr(taskManager);
+
+    switch (*state_p) {
+    case 0:
+        if (CheckFlag966(scriptState)) {
+            flypointsSave = Save_FlyPoints_get(fsys->savedata);
+            if (sub_0205337C(fsys)) {
+                sub_020533C0(fsys);
+            }
+            ClearFlag966(scriptState);
+            sub_02052F94(fsys, FlyPoints_GetDynamicWarp(flypointsSave));
+            sub_02053284(fsys);
+            sub_02053038(fsys, FALSE);
+            sub_0205316C(fsys);
+        } else {
+            sub_02052F94(fsys, NULL);
+            sub_02053284(fsys);
+            FieldSys_StartBugContestTimer(fsys);
+            sub_0205323C(fsys);
+        }
+        sub_02067BE8(fsys);
+        *state_p = 2;
+        break;
+    case 2:
+        sub_02055408(taskManager);
+        *state_p = 3;
+        break;
+    case 3:
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+TaskManager *CallFieldTask_ContinueGame_Normal(FieldSystem *fsys) {
+    fsys->unk70 = 0;
+    return FieldSys_CreateTask(fsys, sub_0205348C, NULL);
+}
+
+BOOL sub_02053550(TaskManager *taskManager) {
+    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    struct ErrorContinueEnv *env = TaskManager_GetEnv(taskManager);
+    SCRIPT_STATE *scriptState = SavArray_Flags_get(fsys->savedata);
+    FLYPOINTS_SAVE *flypointsSave;
+    u32 *state_p = TaskManager_GetStatePtr(taskManager);
+
+    switch (*state_p) {
+    case 0:
+        sub_0200FBF4(0, 0);
+        sub_0200FBF4(1, 0);
+        (*state_p)++;
+        break;
+    case 1:
+        sub_02052F94(fsys, &env->location);
+        sub_02053284(fsys);
+        sub_02053038(fsys, FALSE);
+        sub_0205316C(fsys);
+        (*state_p)++;
+        break;
+    case 2:
+        fsys->unk80 = sub_02059DB0(fsys);
+        fsys->unk84 = sub_0205AC88(fsys->unk80);
+        sub_020552A4(taskManager);
+        (*state_p)++;
+        break;
+    case 3:
+        env->unk0 = 0;
+        ov01_021F35C4(fsys, 0, env);
+        (*state_p)++;
+        break;
+    case 4:
+        if (env->unk0) {
+            (*state_p)++;
+        }
+        break;
+    case 5:
+        FreeToHeap(env);
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+TaskManager *CallFieldTask_ContinueGame_CommError(FieldSystem *fsys) {
+    SCRIPT_STATE *scriptState;
+    struct ErrorContinueEnv *env;
+    if (!MapHeader_MapIsUnionRoom(fsys->location->mapId)) {
+        if (sub_0205337C(fsys)) {
+            scriptState = SavArray_Flags_get(fsys->savedata);
+            sub_020533C0(fsys);
+            SetFlag966(scriptState);
+        } else {
+            return CallFieldTask_ContinueGame_Normal(fsys);
+        }
+    }
+    env = AllocFromHeapAtEnd(11, sizeof(struct ErrorContinueEnv));
+    env->unk0 = 00;
+    env->location.mapId = MAP_UNION;
+    env->location.warpId = -1;
+    env->location.x = 8;
+    env->location.z = 14;
+    env->location.direction = 0;
+    fsys->unk70 = 2;
+    return FieldSys_CreateTask(fsys, sub_02053550, env);
 }
