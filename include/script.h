@@ -182,8 +182,10 @@ struct UnkStruct_020FC5CC {
     u32 unk0_0C:4;
     u32 unk0_10:4;
     u32 unk0_14:4;
-    u32 unk0_18:4;
-    u32 unk0_1C:4;
+    u32 unk0_18:8;
+    u8 unk_4;
+    u8 unk_5;
+    u8 unk_6;
 };
 
 struct FieldSystem {
@@ -193,14 +195,18 @@ struct FieldSystem {
     SAVEDATA* savedata;
     TaskManager* taskman;
     MAP_EVENTS* map_events;
-    u8 unk18[0x8];
+    int unk18;
+    int unk1C;
     Location* location;
-    u8 unk24[0xC];
+    u8 filler24[0xC];
     MAPMATRIX* map_matrix;
-    u8 unk34[0x8];
+    u8 filler34[0x8];
     MapObjectMan* unk3C;
     FIELD_PLAYER_AVATAR *playerAvatar;
-    u8 unk44[0x28];
+    u8 filler44[0x1C];
+    u32 unk60;
+    int unk64;
+    int unk68;
     u32 unk6C;
     int unk70;
     const struct UnkStruct_020FC5CC *unk74;

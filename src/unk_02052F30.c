@@ -14,7 +14,11 @@
 #include "field_follow_poke.h"
 #include "unk_02056D7C.h"
 #include "diamond_dust.h"
+#include "unk_02054514.h"
+#include "unk_02054648.h"
 #include "constants/maps.h"
+
+extern const struct UnkStruct_020FC5CC _020FC5CC[6];
 
 void sub_02052F30(FieldSystem *fsys) {
     BOOL r2 = FALSE;
@@ -162,4 +166,83 @@ void sub_0205323C(FieldSystem *fsys) {
     fsys->playerAvatar = sub_0205C408(fsys->unk3C, avatar_sub, gender);
     sub_02069B74(fsys->unk3C, fsys->location->mapId);
     sub_0205F55C(fsys->unk3C);
+}
+
+void sub_02053284(FieldSystem *fsys) {
+    SCRIPT_STATE *scriptState;
+
+    sub_02052F30(fsys);
+    GF_ASSERT(fsys->unk60 == 0);
+    MapMatrix_Load(fsys->location->mapId, fsys->map_matrix);
+    scriptState = SavArray_Flags_get(fsys->savedata);
+    if (sub_02066C74(scriptState, 0)) {
+        RemoveMahoganyTownAntennaTree(fsys->map_matrix);
+    }
+    SetLakeOfRageWaterLevel(fsys->map_matrix, sub_02066C74(scriptState, 1));
+    PlaceSafariZoneAreas(fsys->map_matrix, fsys->savedata);
+    GF_ASSERT(fsys->unk70 < 6);
+    fsys->unk74 = &_020FC5CC[fsys->unk70];
+    fsys->unk64 = fsys->unk74->unk0_04;
+    fsys->unk18 = fsys->unk74->unk0_00;
+    sub_0205489C(&fsys->unk60, fsys->unk74->unk0_08);
+    if (fsys->unk74->unk0_10) {
+        sub_02054514(fsys, fsys->unk74->unk0_18);
+    }
+}
+
+void sub_02053324(FieldSystem *fsys) {
+    GF_ASSERT(fsys->unk60 != 0);
+    fsys->unk60 = 0;
+    fsys->unk18 = 7;
+    if (fsys->unk74->unk0_10) {
+        sub_0205453C(fsys);
+    }
+    fsys->unk74 = NULL;
+}
+
+void sub_02053350(Location *location, FieldSystem *fsys) {
+    int x, y;
+
+    y = GetPlayerYCoord(fsys->playerAvatar);
+    x = GetPlayerXCoord(fsys->playerAvatar);
+
+    location->mapId = fsys->location->mapId;
+    location->warpId = -1;
+    location->x = x;
+    location->z = y;
+    location->direction = 1;
+}
+
+// Is player standing in front of Union Room reception?
+BOOL sub_0205337C(FieldSystem *fsys) {
+    if (MapHeader_MapIsPokemonCenter(fsys->location->mapId)
+     && fsys->location->x == 6 && fsys->location->z == 6) {
+        return TRUE;
+    }
+
+    if (MapHeader_MapIsPokemonLeagueLobby(fsys->location->mapId)
+     && fsys->location->x == 3 && fsys->location->z == 15) {
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+// Set dynamic warp to union room exit
+void sub_020533C0(FieldSystem *fsys) {
+    Location *dynamicWarp = FlyPoints_GetDynamicWarp(Save_FlyPoints_get(fsys->savedata));
+    SCRIPT_STATE *scriptState = SavArray_Flags_get(fsys->savedata); // unused
+    if (MapHeader_MapIsPokemonLeagueLobby(fsys->location->mapId) == TRUE) {
+        dynamicWarp->mapId = fsys->location->mapId;
+        dynamicWarp->warpId = -1;
+        dynamicWarp->x = 4;
+        dynamicWarp->z = 11;
+        dynamicWarp->direction = 1;
+    } else {
+        dynamicWarp->mapId = fsys->location->mapId;
+        dynamicWarp->warpId = -1;
+        dynamicWarp->x = 7;
+        dynamicWarp->z = 2;
+        dynamicWarp->direction = 1;
+    }
 }
