@@ -175,6 +175,17 @@ struct FieldSystemUnkSub0 {
     BOOL unkC;
 };
 
+struct UnkStruct_020FC5CC {
+    u32 unk0_00:4;
+    u32 unk0_04:4;
+    u32 unk0_08:4;
+    u32 unk0_0C:4;
+    u32 unk0_10:4;
+    u32 unk0_14:4;
+    u32 unk0_18:4;
+    u32 unk0_1C:4;
+};
+
 struct FieldSystem {
     struct FieldSystemUnkSub0 *unk0;
     void *unk4;
@@ -191,7 +202,9 @@ struct FieldSystem {
     FIELD_PLAYER_AVATAR *playerAvatar;
     u8 unk44[0x28];
     u32 unk6C;
-    u8 filler_70[0x3C];
+    int unk70;
+    const struct UnkStruct_020FC5CC *unk74;
+    u8 filler_78[0x34];
     u32 unkAC;
     u8 unkB0[0x4];
     s64 unkB4;

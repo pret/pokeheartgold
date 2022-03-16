@@ -4,158 +4,23 @@
 	.rodata
 
 _020FC5CC:
-	.byte 0x01, 0x00, 0x10, 0x00
-	.byte 0x00, 0x40, 0x0C, 0x00, 0x21, 0x00, 0x10, 0x00, 0x00, 0x40, 0x0C, 0x00, 0x03, 0x00, 0x10, 0x00
-	.byte 0x00, 0x40, 0x0C, 0x00, 0x11, 0x01, 0x11, 0x01, 0x00, 0x40, 0x0C, 0x00, 0x11, 0x01, 0x11, 0x01
-	.byte 0x00, 0x00, 0x0A, 0x00, 0x06, 0x00, 0x10, 0x00, 0x00, 0x40, 0x0C, 0x00
+	.word 0x00100001
+	.byte 0x00, 0x40, 0x0C, 0x00
+	.word 0x00100021
+	.byte 0x00, 0x40, 0x0C, 0x00
+	.word 0x00100003
+	.byte 0x00, 0x40, 0x0C, 0x00
+	.word 0x01110111
+	.byte 0x00, 0x40, 0x0C, 0x00
+	.word 0x01110111
+	.byte 0x00, 0x00, 0x0A, 0x00
+	.word 0x00100006
+	.byte 0x00, 0x40, 0x0C, 0x00
 
 	.text
-
-	thumb_func_start sub_02052F30
-sub_02052F30: ; 0x02052F30
-	ldr r1, [r0, #0x20]
-	ldr r3, _02052F8C ; =0x0000010F
-	ldr r1, [r1]
-	mov r2, #0
-	cmp r1, r3
-	bgt _02052F5C
-	sub r3, r3, #6
-	sub r3, r1, r3
-	bmi _02052F6A
-	add r3, r3, r3
-	add r3, pc
-	ldrh r3, [r3, #6]
-	lsl r3, r3, #0x10
-	asr r3, r3, #0x10
-	add pc, r3
-_02052F4E: ; jump table
-	.short _02052F68 - _02052F4E - 2 ; case 0
-	.short _02052F68 - _02052F4E - 2 ; case 1
-	.short _02052F68 - _02052F4E - 2 ; case 2
-	.short _02052F68 - _02052F4E - 2 ; case 3
-	.short _02052F68 - _02052F4E - 2 ; case 4
-	.short _02052F68 - _02052F4E - 2 ; case 5
-	.short _02052F68 - _02052F4E - 2 ; case 6
-_02052F5C:
-	ldr r3, _02052F90 ; =0x00000165
-	cmp r1, r3
-	bne _02052F6A
-	mov r1, #1
-	str r1, [r0, #0x70]
-	bx lr
-_02052F68:
-	mov r2, #1
-_02052F6A:
-	ldr r1, [r0, #0x70]
-	cmp r1, #1
-	bne _02052F74
-	mov r1, #0
-	str r1, [r0, #0x70]
-_02052F74:
-	cmp r2, #0
-	bne _02052F82
-	ldr r1, [r0, #0x70]
-	cmp r1, #4
-	bne _02052F82
-	mov r1, #0
-	str r1, [r0, #0x70]
-_02052F82:
-	cmp r2, #0
-	beq _02052F8A
-	mov r1, #4
-	str r1, [r0, #0x70]
-_02052F8A:
-	bx lr
-	.balign 4, 0
-_02052F8C: .word 0x0000010F
-_02052F90: .word 0x00000165
-	thumb_func_end sub_02052F30
-
-	thumb_func_start sub_02052F94
-sub_02052F94: ; 0x02052F94
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	ldr r0, [r5, #0xc]
-	add r4, r1, #0
-	bl Save_FlyPoints_get
-	add r6, r0, #0
-	bl sub_0203B960
-	add r2, r0, #0
-	cmp r4, #0
-	beq _02052FC8
-	ldr r3, [r5, #0x20]
-	ldmia r3!, {r0, r1}
-	stmia r2!, {r0, r1}
-	ldmia r3!, {r0, r1}
-	stmia r2!, {r0, r1}
-	ldr r0, [r3]
-	str r0, [r2]
-	ldr r2, [r5, #0x20]
-	ldmia r4!, {r0, r1}
-	stmia r2!, {r0, r1}
-	ldmia r4!, {r0, r1}
-	stmia r2!, {r0, r1}
-	ldr r0, [r4]
-	str r0, [r2]
-_02052FC8:
-	ldr r1, [r5, #0x20]
-	add r0, r5, #0
-	ldr r1, [r1]
-	bl Field_InitMapEvents
-	ldr r0, [r5, #0x20]
-	ldr r1, [r0, #4]
-	mov r0, #0
-	mvn r0, r0
-	cmp r1, r0
-	beq _02053016
-	add r0, r5, #0
-	bl Field_GetWarpEventI
-	ldrh r2, [r0]
-	ldr r1, [r5, #0x20]
-	str r2, [r1, #8]
-	ldrh r2, [r0, #2]
-	ldr r1, [r5, #0x20]
-	str r2, [r1, #0xc]
-	ldrh r1, [r0, #6]
-	mov r0, #1
-	lsl r0, r0, #8
-	cmp r1, r0
-	bne _02053016
-	add r0, r6, #0
-	bl FlyPoints_GetDynamicWarp
-	add r4, r0, #0
-	add r0, r6, #0
-	bl sub_0203B95C
-	add r2, r0, #0
-	ldmia r2!, {r0, r1}
-	stmia r4!, {r0, r1}
-	ldmia r2!, {r0, r1}
-	stmia r4!, {r0, r1}
-	ldr r0, [r2]
-	str r0, [r4]
-_02053016:
-	pop {r4, r5, r6, pc}
-	thumb_func_end sub_02052F94
-
-	thumb_func_start sub_02053018
-sub_02053018: ; 0x02053018
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, [r4, #0x70]
-	cmp r0, #6
-	blt _02053026
-	bl GF_AssertFail
-_02053026:
-	ldr r0, [r4, #0x74]
-	ldr r0, [r0]
-	lsl r0, r0, #0x10
-	lsr r1, r0, #0x1c
-	ldr r0, _02053034 ; =gSystem + 0x60
-	strb r1, [r0, #9]
-	pop {r4, pc}
-	.balign 4, 0
-_02053034: .word gSystem + 0x60
-	thumb_func_end sub_02053018
+	.public sub_02052F30
+	.public sub_02052F94
+	.public sub_02053018
 
 	thumb_func_start sub_02053038
 sub_02053038: ; 0x02053038
