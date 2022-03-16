@@ -204,7 +204,11 @@ struct FieldSystem {
     u32 unk6C;
     int unk70;
     const struct UnkStruct_020FC5CC *unk74;
-    u8 filler_78[0x34];
+    u16 unk78;
+    u16 unk7A;
+    u16 unk7C;
+    u16 unk7E;
+    u8 filler_80[0x2C];
     u32 unkAC;
     u8 unkB0[0x4];
     s64 unkB4;
