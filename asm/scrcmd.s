@@ -7287,12 +7287,12 @@ ScrCmd_264: ; 0x02044124
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_PlayerData_GetProfileAddr
 	add r5, #0x80
 	str r0, [sp, #4]
 	ldr r0, [r5]
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl SaveData_EasyChat_get
 	add r5, r0, #0
 	cmp r4, #0
@@ -7726,7 +7726,7 @@ ScrCmd_287: ; 0x02044490
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_PlayerData_GetProfileAddr
 	add r4, #0x80
 	add r5, r0, #0
@@ -7754,7 +7754,7 @@ ScrCmd_288: ; 0x020444CC
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_PlayerData_GetProfileAddr
 	add r5, r0, #0
 	add r0, r4, #0
@@ -7799,7 +7799,7 @@ ScrCmd_558: ; 0x02044534
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_PlayerData_GetProfileAddr
 	add r5, r0, #0
 	add r0, r4, #0
@@ -7838,7 +7838,7 @@ ScrCmd_289: ; 0x0204458C
 	add r5, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_PlayerData_GetProfileAddr
 	add r4, r0, #0
 	add r0, r5, #0
@@ -7894,7 +7894,7 @@ ScrCmd_GetPlayerGender: ; 0x020445F8
 	add r5, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_PlayerData_GetProfileAddr
 	add r4, r0, #0
 	add r0, r5, #0
@@ -8426,7 +8426,7 @@ ScrCmd_315: ; 0x02044A1C
 	add r0, #0x80
 	ldr r4, [r0]
 	add r0, r4, #0
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_GetGymmickPtr
 	bl SavGymmick_GetType
 	cmp r0, #1
@@ -8447,7 +8447,7 @@ ScrCmd_316: ; 0x02044A44
 	add r0, #0x80
 	ldr r4, [r0]
 	add r0, r4, #0
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_GetGymmickPtr
 	bl SavGymmick_GetType
 	cmp r0, #1
@@ -8473,7 +8473,7 @@ ScrCmd_317: ; 0x02044A6C
 	str r1, [r0, #8]
 	add r0, r4, #0
 	ldrb r5, [r2]
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_GetGymmickPtr
 	bl SavGymmick_GetType
 	cmp r0, #1
@@ -9981,7 +9981,7 @@ ScrCmd_PrimoPasswordCheck1: ; 0x0204560C
 	add r0, #0x80
 	ldr r6, [r0]
 	add r0, r6, #0
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [sp, #8]
 	add r0, r5, #0
@@ -10075,7 +10075,7 @@ ScrCmd_PrimoPasswordCheck2: ; 0x020456D8
 	add r0, #0x80
 	ldr r6, [r0]
 	add r0, r6, #0
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [sp, #8]
 	add r0, r5, #0
@@ -13183,7 +13183,7 @@ ScrCmd_GetFriendSprite: ; 0x02046F34
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0 ; MALE
@@ -13205,7 +13205,7 @@ ScrCmd_RegisterPokegearCard: ; 0x02046F6C
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl SaveData_GSPlayerMisc_get
 	ldr r2, [r4, #8]
 	add r1, r2, #1
@@ -13256,7 +13256,7 @@ ScrCmd_RegisterGearNumber: ; 0x02046FC8
 	add r5, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl SaveData_GSPlayerMisc_get
 	add r4, r0, #0
 	add r0, r5, #0
@@ -13282,7 +13282,7 @@ ScrCmd_CheckRegisteredPhoneNumber: ; 0x02046FFC
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl SaveData_GSPlayerMisc_get
 	add r6, r0, #0
 	add r0, r4, #0

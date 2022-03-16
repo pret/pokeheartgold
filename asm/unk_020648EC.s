@@ -17,7 +17,7 @@
 sub_020648EC: ; 0x020648EC
 	push {r4, lr}
 	add r4, r0, #0
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_GetGymmickPtr
 	bl SavGymmick_GetType
 	add r1, r0, #0
@@ -37,7 +37,7 @@ _0206490C: .word _020FE214
 sub_02064910: ; 0x02064910
 	push {r4, lr}
 	add r4, r0, #0
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_GetGymmickPtr
 	bl SavGymmick_GetType
 	cmp r0, #0
@@ -63,7 +63,7 @@ sub_02064938: ; 0x02064938
 	add r4, r1, #0
 	add r7, r2, #0
 	str r3, [sp, #4]
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_GetGymmickPtr
 	bl SavGymmick_GetType
 	cmp r0, #0

@@ -110,7 +110,7 @@ _021E59C6:
 	ldr r0, _021E5AD8 ; =0x00000654
 	ldr r0, [r5, r0]
 	ldr r0, [r0, #0x1c]
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_Pokedex_get
 	add r1, r6, #0
 	bl Pokedex_SetMonCaughtFlag

@@ -40,7 +40,7 @@ sTrashCanData:
 	thumb_func_start Fsys_InitEcruteakGymSaveData
 Fsys_InitEcruteakGymSaveData: ; 0x02068DE0
 	push {r4, lr}
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_GetGymmickPtr
 	add r4, r0, #0
 	mov r1, #1
@@ -61,7 +61,7 @@ _02068DFE:
 	thumb_func_start Fsys_InitCianwoodGym
 Fsys_InitCianwoodGym: ; 0x02068E08
 	push {r4, lr}
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_GetGymmickPtr
 	add r4, r0, #0
 	mov r1, #2
@@ -76,7 +76,7 @@ Fsys_InitCianwoodGym: ; 0x02068E08
 Fsys_InitVermilionGym: ; 0x02068E24
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_GetGymmickPtr
 	add r4, r0, #0
 	mov r1, #3
@@ -111,7 +111,7 @@ _02068E60:
 	thumb_func_start PlaceVermilionGymSwitches
 PlaceVermilionGymSwitches: ; 0x02068E70
 	push {r3, r4, r5, r6, r7, lr}
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_GetGymmickPtr
 	mov r1, #3
 	bl SavGymmick_AssertMagic_GetData
@@ -140,7 +140,7 @@ _02068EAC: .word sTrashCanData
 	thumb_func_start Fsys_InitVioletGym
 Fsys_InitVioletGym: ; 0x02068EB0
 	push {r4, lr}
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_GetGymmickPtr
 	add r4, r0, #0
 	mov r1, #4
@@ -156,7 +156,7 @@ Fsys_InitVioletGym: ; 0x02068EB0
 	thumb_func_start Fsys_InitAzaleaGym
 Fsys_InitAzaleaGym: ; 0x02068ED0
 	push {r4, lr}
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_GetGymmickPtr
 	add r4, r0, #0
 	mov r1, #5
@@ -180,7 +180,7 @@ Fsys_InitAzaleaGym: ; 0x02068ED0
 	thumb_func_start Fsys_InitBlackthornGym
 Fsys_InitBlackthornGym: ; 0x02068F00
 	push {r4, lr}
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_GetGymmickPtr
 	add r4, r0, #0
 	mov r1, #6
@@ -212,7 +212,7 @@ Fsys_InitBlackthornGym: ; 0x02068F00
 	thumb_func_start Fsys_InitFuchsiaGym
 Fsys_InitFuchsiaGym: ; 0x02068F40
 	push {r3, lr}
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_GetGymmickPtr
 	mov r1, #7
 	bl SavGymmick_Init
@@ -223,7 +223,7 @@ Fsys_InitFuchsiaGym: ; 0x02068F40
 	thumb_func_start Fsys_InitViridianGym
 Fsys_InitViridianGym: ; 0x02068F54
 	push {r3, lr}
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_GetGymmickPtr
 	mov r1, #8
 	bl SavGymmick_Init
@@ -235,7 +235,7 @@ Fsys_InitViridianGym: ; 0x02068F54
 Fsys_IsSavGymmickTypeEqualTo: ; 0x02068F68
 	push {r4, lr}
 	add r4, r1, #0
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_GetGymmickPtr
 	bl SavGymmick_GetType
 	cmp r4, r0

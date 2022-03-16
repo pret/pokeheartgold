@@ -679,11 +679,11 @@ Fsys_GetBgConfigPtr: ; 0x0203E340
 	bx lr
 	thumb_func_end Fsys_GetBgConfigPtr
 
-	thumb_func_start Fsys_GetSav2Ptr
-Fsys_GetSav2Ptr: ; 0x0203E344
+	thumb_func_start Fsys_GetSaveDataPtr
+Fsys_GetSaveDataPtr: ; 0x0203E344
 	ldr r0, [r0, #0xc]
 	bx lr
-	thumb_func_end Fsys_GetSav2Ptr
+	thumb_func_end Fsys_GetSaveDataPtr
 
 	thumb_func_start sub_0203E348
 sub_0203E348: ; 0x0203E348

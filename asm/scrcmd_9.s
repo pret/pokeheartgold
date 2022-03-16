@@ -70,7 +70,7 @@ ScrCmd_410: ; 0x02049CA8
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	add r1, r4, #0
 	add r2, r6, #0
 	bl sub_0204A824

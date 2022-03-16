@@ -2587,7 +2587,7 @@ FS_EXTERN_OVERLAY(OV_101)
 .public ScrStrBufs_new_custom
 .public Fsys_LaunchApplication
 .public ScriptCall
-.public Fsys_GetSav2Ptr
+.public Fsys_GetSaveDataPtr
 .public ScriptJump
 .public ScriptReadHalfword
 .public ScriptReadWord

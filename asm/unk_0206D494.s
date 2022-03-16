@@ -1054,7 +1054,7 @@ _0206DCC0: .word 0x00004021
 	thumb_func_start Fsys_InitMystriStageGymmick
 Fsys_InitMystriStageGymmick: ; 0x0206DCC4
 	push {r4, lr}
-	bl Fsys_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_GetGymmickPtr
 	add r4, r0, #0
 	mov r1, #9
