@@ -125,7 +125,7 @@ _021E59CA:
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -241,7 +241,7 @@ ov85_021E5AF8: ; 0x021E5AF8
 ov85_021E5B0C: ; 0x021E5B0C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _021E5B2C
 	bl sub_0203769C
@@ -1954,7 +1954,7 @@ ov85_021E670C: ; 0x021E670C
 	mov r0, #2
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r5, [r4, #0x1c]
 	bl GF_GetCurrentPlayingBGM
 	cmp r5, r0
@@ -1975,7 +1975,7 @@ _021E673E:
 ov85_021E6748: ; 0x021E6748
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _021E675C
 	mov r0, #0x35
@@ -6531,7 +6531,7 @@ _021E890A:
 	mov r1, #0x11
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	add r0, r4, #0
 	add r1, r7, #0
 	bl ov85_021E8E6C
@@ -6634,7 +6634,7 @@ _021E8A4C: ; jump table
 	.short _021E8ACC - _021E8A4C - 2 ; case 2
 	.short _021E8AE4 - _021E8A4C - 2 ; case 3
 _021E8A54:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _021E8AF0
 	mov r0, #1
@@ -6703,7 +6703,7 @@ _021E8ACC:
 	str r0, [r4]
 	b _021E8AF0
 _021E8AE4:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _021E8AF0
 	mov r0, #1
@@ -8501,7 +8501,7 @@ ov85_021E9900: ; 0x021E9900
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r4, #3
 _021E9930:
 	add r0, r5, #0
@@ -8725,7 +8725,7 @@ ov85_021E9AB0: ; 0x021E9AB0
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r5, #3
 _021E9AE2:
 	add r0, r4, #0
@@ -8934,7 +8934,7 @@ ov85_021E9C50: ; 0x021E9C50
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #1
 	str r0, [r4, #8]
 	add r0, r4, #0

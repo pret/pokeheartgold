@@ -88,7 +88,7 @@ _021E80D6:
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	add r0, r6, #0
 	bl OverlayManager_GetParentWork
 	bl Save_TrainerCard_get
@@ -177,7 +177,7 @@ SignBackOfTrainerCardApp_OvyExec: ; 0x021E8248
 	beq _021E828E
 	b _021E829A
 _021E8262:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _021E829A
 	mov r0, #1
@@ -200,7 +200,7 @@ _021E8284:
 	bl ov52_021E921C
 	b _021E829A
 _021E828E:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _021E829A
 	mov r0, #1
@@ -1603,7 +1603,7 @@ _021E8DDE:
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	add sp, #0xc
 	mov r0, #2
 	pop {r4, r5, pc}

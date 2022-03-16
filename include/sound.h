@@ -57,5 +57,6 @@ BOOL GF_SndWorkMicCounterFull(void);
 void GF_SndWorkMicCounterReset(void);
 void GF_SndWorkSetGbSoundsVolume(u8 a0);
 u8 GF_SndWorkGetGbSoundsVolume(void);
+void GF_SndStartFadeOutBGM(u16 seqno, u8 length);
 
 #endif //POKEHEARTGOLD_SOUND_H

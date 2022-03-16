@@ -149,14 +149,14 @@ _02245C68:
 	ldr r3, _02245D14 ; =0x00007FFF
 	mov r0, #3
 	add r2, r1, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldrh r0, [r4, #8]
 	add r0, r0, #1
 	strh r0, [r4, #8]
 	b _02245D06
 _02245C98:
 	bl ov02_02245DE0
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _02245D06
 	mov r0, #0
@@ -190,13 +190,13 @@ _02245CB0:
 	add r2, r1, #0
 	str r0, [sp, #8]
 	mov r0, #3
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldrh r0, [r4, #8]
 	add r0, r0, #1
 	strh r0, [r4, #8]
 	b _02245D06
 _02245CF2:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _02245D06
 	add r0, r4, #0
@@ -2317,7 +2317,7 @@ _02246D8A:
 	bne _02246DE0
 	add r0, r5, #0
 	add r1, sp, #0x1c
-	bl ov02_02248360
+	bl ov02_GetRandomActiveRoamerInCurrMap
 	cmp r0, #0
 	beq _02246DE0
 	ldr r0, [sp, #0x1c]
@@ -2840,7 +2840,7 @@ _022471AC:
 	bne _0224721A
 	add r0, r5, #0
 	add r1, sp, #0x18
-	bl ov02_02248360
+	bl ov02_GetRandomActiveRoamerInCurrMap
 	cmp r0, #0
 	beq _0224721A
 	mov r0, #0xb
@@ -5054,7 +5054,7 @@ ov02_02248244: ; 0x02248244
 _02248252:
 	ldr r0, [r0, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B9B8
+	bl FlyPoints_GetSafariBallsCounter
 	add r1, r0, #0
 	ldrh r1, [r1]
 	mov r0, #0xb
@@ -5186,8 +5186,9 @@ _02248350:
 	bx r3
 	thumb_func_end ov02_022482BC
 
-	thumb_func_start ov02_02248360
-ov02_02248360: ; 0x02248360
+; BOOL ov02_GetRandomActiveRoamerInCurrMap(FieldSystem *fsys, ROAMER **out);
+	thumb_func_start ov02_GetRandomActiveRoamerInCurrMap
+ov02_GetRandomActiveRoamerInCurrMap: ; 0x02248360
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	str r0, [sp]
@@ -5280,7 +5281,7 @@ _02248410:
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov02_02248360
+	thumb_func_end ov02_GetRandomActiveRoamerInCurrMap
 
 	thumb_func_start ov02_02248418
 ov02_02248418: ; 0x02248418
@@ -7423,7 +7424,7 @@ ov02_022493FC: ; 0x022493FC
 	ldr r3, _0224941C ; =0x00007FFF
 	mov r0, #0
 	add r2, r1, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	add sp, #0xc
 	pop {pc}
 	nop
@@ -7444,7 +7445,7 @@ ov02_02249420: ; 0x02249420
 	ldr r3, _02249440 ; =0x00007FFF
 	add r1, r0, #0
 	add r2, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
@@ -8657,7 +8658,7 @@ _02249CC8:
 ov02_02249CD8: ; 0x02249CD8
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _02249CEA
 	ldr r0, [r4]
@@ -12485,8 +12486,8 @@ _0224B992:
 	.balign 4, 0
 	thumb_func_end ov02_0224B964
 
-	thumb_func_start ov02_0224B998
-ov02_0224B998: ; 0x0224B998
+	thumb_func_start ov02_BattleExit_HandleRoamerAction
+ov02_BattleExit_HandleRoamerAction: ; 0x0224B998
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -12563,7 +12564,7 @@ _0224BA42:
 	ldr r1, [r5, #0x20]
 	add r0, r6, #0
 	ldr r1, [r1]
-	bl ov02_0224BA70
+	bl ov02_RepelActiveRoamersFromMapNo
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 _0224BA50:
@@ -12577,14 +12578,14 @@ _0224BA50:
 	ldr r1, [r5, #0x20]
 	add r0, r6, #0
 	ldr r1, [r1]
-	bl ov02_0224BA70
+	bl ov02_RepelActiveRoamersFromMapNo
 _0224BA6C:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end ov02_0224B998
+	thumb_func_end ov02_BattleExit_HandleRoamerAction
 
-	thumb_func_start ov02_0224BA70
-ov02_0224BA70: ; 0x0224BA70
+	thumb_func_start ov02_RepelActiveRoamersFromMapNo
+ov02_RepelActiveRoamersFromMapNo: ; 0x0224BA70
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -12611,7 +12612,7 @@ _0224BA9C:
 	cmp r4, #4
 	blo _0224BA78
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov02_0224BA70
+	thumb_func_end ov02_RepelActiveRoamersFromMapNo
 
 	thumb_func_start ov02_0224BAA8
 ov02_0224BAA8: ; 0x0224BAA8
@@ -13442,7 +13443,7 @@ _0224C100:
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	b _0224C138
 _0224C120:
 	mov r0, #6
@@ -13455,7 +13456,7 @@ _0224C120:
 	ldr r3, _0224C148 ; =0x00007FFF
 	add r1, r0, #0
 	add r2, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 _0224C138:
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -13494,7 +13495,7 @@ ov02_0224C14C: ; 0x0224C14C
 	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x14]
 _0224C184:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	bne _0224C190
 	mov r0, #0
@@ -13605,7 +13606,7 @@ ov02_0224C234: ; 0x0224C234
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	b _0224C270
 _0224C25A:
 	mov r0, #6
@@ -13617,7 +13618,7 @@ _0224C25A:
 	ldr r3, _0224C29C ; =0x00007FFF
 	mov r0, #0
 	add r2, r1, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 _0224C270:
 	add r0, r5, #0
 	mov r1, #4
@@ -13658,7 +13659,7 @@ ov02_0224C2A8: ; 0x0224C2A8
 	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x10]
 _0224C2C6:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	bne _0224C2D2
 	mov r0, #0
@@ -14311,7 +14312,7 @@ _0224C7AC:
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -14348,7 +14349,7 @@ ov02_0224C7D4: ; 0x0224C7D4
 	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x14]
 _0224C80C:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	bne _0224C818
 	mov r0, #0
@@ -14544,7 +14545,7 @@ _0224C98C:
 	ldr r3, _0224C9B4 ; =0x00007FFF
 	add r1, r0, #0
 	add r2, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -14583,7 +14584,7 @@ ov02_0224C9B8: ; 0x0224C9B8
 	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x14]
 _0224C9F2:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	bne _0224C9FE
 	mov r0, #0
@@ -18286,7 +18287,7 @@ ov02_0224E4EC: ; 0x0224E4EC
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	str r0, [r4]
 	mov r0, #0x43
 	lsl r0, r0, #2
@@ -26612,13 +26613,13 @@ _02252596:
 	ldr r3, _022526C4 ; =0x00007FFF
 	mov r0, #3
 	add r2, r1, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
 	b _02252698
 _022525B4:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _02252698
 	add r0, r4, #0
@@ -26635,13 +26636,13 @@ _022525B4:
 	ldr r3, _022526C4 ; =0x00007FFF
 	mov r0, #3
 	mov r2, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
 	b _02252698
 _022525EA:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _02252698
 	ldr r0, [r4, #8]
@@ -26699,13 +26700,13 @@ _02252638:
 	ldr r3, _022526C4 ; =0x00007FFF
 	add r1, r0, #0
 	add r2, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
 	b _02252698
 _0225266E:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _02252698
 	add r0, r4, #0
@@ -27243,13 +27244,13 @@ _02252A60:
 	ldr r3, _02252B94 ; =0x00007FFF
 	mov r0, #3
 	add r2, r1, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
 	b _02252B3A
 _02252A80:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _02252B3A
 	add r0, r4, #0
@@ -27263,13 +27264,13 @@ _02252A80:
 	ldr r3, _02252B94 ; =0x00007FFF
 	mov r0, #3
 	mov r2, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
 	b _02252B3A
 _02252AAC:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _02252B3A
 	mov r2, #0x89
@@ -27321,13 +27322,13 @@ _02252AF2:
 	ldr r3, _02252B94 ; =0x00007FFF
 	mov r0, #3
 	add r2, r1, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
 	b _02252B3A
 _02252B20:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _02252B3A
 	add r0, r4, #0
@@ -27874,13 +27875,13 @@ _02252F4A:
 	ldr r3, _02253008 ; =0x00007FFF
 	mov r0, #3
 	add r2, r1, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _02252FD4
 _02252F6A:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _02252FD4
 	add r0, r5, #0
@@ -27894,13 +27895,13 @@ _02252F6A:
 	ldr r3, _02253008 ; =0x00007FFF
 	mov r0, #3
 	mov r2, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _02252FD4
 _02252F96:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _02252FD4
 	add r0, r5, #0

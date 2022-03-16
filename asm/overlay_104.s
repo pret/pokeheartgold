@@ -101,7 +101,7 @@ _021E596A:
 	mov r0, #3
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -144,7 +144,7 @@ _021E5A0C:
 	str r0, [r6]
 	b _021E5A64
 _021E5A2A:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _021E5A64
 	mov r0, #0x5a
@@ -721,7 +721,7 @@ ov104_021E5EB0: ; 0x021E5EB0
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	add sp, #0xc
 	pop {pc}
 _021E5ED4:
@@ -734,7 +734,7 @@ _021E5ED4:
 	mov r1, #8
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0

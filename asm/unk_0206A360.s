@@ -56,7 +56,7 @@ sub_0206A388: ; 0x0206A388
 	str r0, [r4]
 	str r0, [r4, #4]
 	ldr r0, [sp, #4]
-	bl sub_0203E340
+	bl Fsys_GetBgConfigPtr
 	str r0, [r4, #0xc]
 	mov r0, #0
 	strh r0, [r4, #0x18]
@@ -193,13 +193,13 @@ _0206A440:
 	str r0, [sp, #8]
 	mov r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _0206A5BC
 _0206A4D0:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0206A5BC
 	ldr r0, [r4]

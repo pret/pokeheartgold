@@ -44,9 +44,11 @@ struct TextPrinterTemplate {
     u8 unk1B;
 };
 
+typedef BOOL (*PrinterCallback_t)(struct TextPrinterTemplate *template, u16 glyphId);
+
 struct TextPrinter {
     struct TextPrinterTemplate template;
-    u8 (*callback)(struct TextPrinterTemplate *, u16);
+    PrinterCallback_t calback;
 
     u8 subStructFields[7]; // x20
     u8 active;

@@ -113,12 +113,12 @@ _02091D40:
 	str r0, [sp, #8]
 	add r0, r6, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #1
 	str r0, [r5]
 	b _02091E20
 _02091DCE:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _02091E20
 	mov r0, #2
@@ -138,12 +138,12 @@ _02091DDC:
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #3
 	str r0, [r5]
 	b _02091E20
 _02091E02:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _02091E20
 	add r0, r4, #0

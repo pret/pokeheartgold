@@ -282,7 +282,7 @@ _021E5CC4:
 	mov r0, #2
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	add r4, #0xe8
 	ldr r0, [r4]
 	ldrb r0, [r0]
@@ -343,7 +343,7 @@ _021E5DAE: ; jump table
 	.short _021E5E56 - _021E5DAE - 2 ; case 4
 	.short _021E5E70 - _021E5DAE - 2 ; case 5
 _021E5DBA:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _021E5E96
 	mov r0, #1
@@ -392,7 +392,7 @@ _021E5DFA:
 	mov r1, #4
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #2
 	str r0, [r5]
 _021E5E26:
@@ -406,7 +406,7 @@ _021E5E26:
 	bl ov51_021E6DA8
 	b _021E5E96
 _021E5E3A:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _021E5E96
 	add sp, #0xc
@@ -444,7 +444,7 @@ _021E5E70:
 	mov r1, #4
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r1, [r0]

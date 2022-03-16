@@ -147,9 +147,9 @@ Static main
 	Object src/map_matrix.o
 	Object src/map_header.o
 	Object src/map_events.o
-	Object asm/unk_0203B91C.o
+	Object src/save_flypoints.o
 	Object asm/unk_0203BA5C.o
-	Object src/unk_0203BBB4.o
+	Object src/diamond_dust.o
 	Object asm/unk_0203BC10.o
 	Object asm/unk_0203DB6C.o
 	Object asm/unk_0203DE74.o
@@ -182,7 +182,7 @@ Static main
 	Object asm/unk_02050660.o
 	Object asm/unk_020517A4.o
 	Object asm/unk_020518D8.o
-	Object asm/unk_020525BC.o
+	Object src/field_black_out.o
 	Object asm/unk_0205298C.o
 	Object asm/unk_02052F30.o
 	Object src/script_pokemon_util.o
@@ -221,7 +221,7 @@ Static main
 	Object src/sys_flags.o
 	Object src/sys_vars.o
 	Object asm/unk_02066EDC.o
-	Object asm/field_roamer.o
+	Object src/field_roamer.o
 	Object asm/unk_0206793C.o
 	Object asm/unk_02068DE0.o
 	Object src/unk_02068F84.o
@@ -242,7 +242,7 @@ Static main
 	Object src/pokemon_storage_system.o
 	Object src/pokemon_icon_idx.o
 	Object src/party.o
-	Object src/unk_02074910.o
+	Object src/pokedex_util.o
 	Object asm/unk_02074944.o
 	Object asm/unk_02074E5C.o
 	Object asm/unk_020755E8.o

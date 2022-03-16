@@ -25,4 +25,13 @@ u32 MTRandom(void);
 void _MonEncryptSegment(u16 *data, u32 size, u32 seed);
 void _MonDecryptSegment(u16 *data, u32 size, u32 seed);
 
+static inline u16 LCRandRange(const u16 maximum) {
+    GF_ASSERT(maximum != 0);
+    if (maximum <= 1) {
+        return 0;
+    } else {
+        return LCRandom() % maximum;
+    }
+}
+
 #endif //POKEHEARTGOLD_MATH_UTIL_H

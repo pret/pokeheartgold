@@ -4472,7 +4472,7 @@ ov57_02239BAC: ; 0x02239BAC
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
@@ -4492,7 +4492,7 @@ ov57_02239BCC: ; 0x02239BCC
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	add sp, #0xc
 	pop {pc}
 	thumb_func_end ov57_02239BCC
@@ -5267,7 +5267,7 @@ _0223A226:
 	str r1, [r4, r0]
 	b _0223A300
 _0223A236:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _0223A300
 	mov r0, #0xff
@@ -5343,7 +5343,7 @@ _0223A2C0:
 	str r1, [r4, r0]
 	b _0223A300
 _0223A2D0:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _0223A300
 	add r0, r4, #0
@@ -5857,7 +5857,7 @@ _0223A708:
 	bl ov57_0223B940
 	cmp r0, #1
 	beq _0223A7C0
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _0223A7C0
 	mov r0, #0x10
@@ -5918,7 +5918,7 @@ _0223A708:
 	str r1, [r4, r0]
 	b _0223A7C0
 _0223A7A6:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _0223A7C0
 	add r0, r4, #0
@@ -5979,7 +5979,7 @@ _0223A80C:
 	str r1, [r4, r0]
 	b _0223A8EC
 _0223A820:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _0223A8EC
 	mov r0, #0x10
@@ -6042,7 +6042,7 @@ _0223A8B4:
 	bl ov57_0223B940
 	cmp r0, #1
 	beq _0223A8EC
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _0223A8EC
 	mov r0, #0x32

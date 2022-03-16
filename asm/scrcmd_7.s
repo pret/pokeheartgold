@@ -545,7 +545,7 @@ ScrCmd_EncounterMusic: ; 0x02049894
 ScrCmd_WhiteOut: ; 0x020498C8
 	push {r3, lr}
 	ldr r0, [r0, #0x74]
-	bl sub_0205297C
+	bl FieldTask_CallBlackOut
 	mov r0, #1
 	pop {r3, pc}
 	thumb_func_end ScrCmd_WhiteOut

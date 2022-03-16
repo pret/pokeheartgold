@@ -57,7 +57,7 @@ FieldSys_TakePhoto: ; 0x0206A798
 	strb r0, [r1]
 _0206A7FE:
 	add r0, r5, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Save_PhotoAlbum_get
 	bl PhotoAlbum_GetIndexOfFirstEmptySlot
 	cmp r0, #0xff
@@ -476,13 +476,13 @@ _0206AAF6:
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r4, #4]
 	add r0, r0, #1
 	str r0, [r4, #4]
 	b _0206AB26
 _0206AB14:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0206AB26
 	mov r0, #0
@@ -518,13 +518,13 @@ _0206AB3E:
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r4, #4]
 	add r0, r0, #1
 	str r0, [r4, #4]
 	b _0206AB70
 _0206AB5E:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0206AB70
 	mov r0, #0
@@ -652,7 +652,7 @@ _0206AC36:
 	ldr r0, _0206AEAC ; =NNS_G3dGlb + 0x80
 	str r1, [r0, #0x20]
 	add r0, r6, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
 	add r5, #0x30
@@ -1123,7 +1123,7 @@ sub_0206B014: ; 0x0206B014
 	add r0, r4, #0
 	str r2, [sp]
 	str r3, [sp, #4]
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	add r7, r0, #0
 	bl Sav2_PlayerData_GetProfileAddr
 	add r6, r0, #0
@@ -1511,7 +1511,7 @@ _0206B332:
 	b _0206B824
 _0206B346:
 	add r0, r5, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
 	ldr r1, [r4, #0x40]
@@ -1884,7 +1884,7 @@ _0206B626:
 	mov r0, #3
 	mov r1, #8
 	add r3, r2, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	add r0, r4, #0
 	add r0, #0xca
 	ldrb r0, [r0]
@@ -1893,11 +1893,11 @@ _0206B626:
 	strb r0, [r4]
 	b _0206B824
 _0206B652:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0206B6EA
 	add r0, r5, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Save_PhotoAlbum_get
 	add r5, r0, #0
 	bl PhotoAlbum_GetIndexOfFirstEmptySlot
@@ -1950,7 +1950,7 @@ _0206B6BC:
 	mov r0, #3
 	mov r1, #9
 	add r3, r2, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	add r0, r4, #0
 	add r0, #0xca
 	ldrb r0, [r0]
@@ -1959,7 +1959,7 @@ _0206B6BC:
 	strb r0, [r4]
 	b _0206B824
 _0206B6E2:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	bne _0206B6EC
 _0206B6EA:

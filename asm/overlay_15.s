@@ -70,7 +70,7 @@ ov15_BagApp_init: ; 0x021F9380
 	mov r1, #3
 	mov r0, #2
 	add r2, r1, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #3
 	mov r1, #8
 	bl SetKeyRepeatTimers
@@ -333,7 +333,7 @@ _021F9624: ; jump table
 	.short _021F97F6 - _021F9624 - 2 ; case 36
 	.short _021F9804 - _021F9624 - 2 ; case 37
 _021F9670:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _021F96B8
 	mov r0, #0x8d
@@ -544,7 +544,7 @@ _021F97F6:
 	str r0, [r4]
 	b _021F9810
 _021F9804:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _021F9810
 	mov r0, #1

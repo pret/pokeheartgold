@@ -1372,7 +1372,7 @@ sub_0205239C: ; 0x0205239C
 	beq _0205241E
 	ldr r0, [r4, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B9B8
+	bl FlyPoints_GetSafariBallsCounter
 	add r6, r0, #0
 	b _02052434
 _0205241E:

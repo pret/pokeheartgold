@@ -227,7 +227,7 @@ BOOL Save_DeleteAllData(SAVEDATA *saveData) {
     return TRUE;
 }
 
-BOOL sub_020273B0(SAVEDATA *saveData) {
+BOOL SaveData_TryLoadOnContinue(SAVEDATA *saveData) {
     int sp4;
     int sp0;
 

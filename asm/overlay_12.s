@@ -9202,7 +9202,7 @@ ov12_0223BFFC: ; 0x0223BFFC
 	mov r0, #3
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	bl sub_02005FA0
 	mov r0, #0
 	bl sub_020059D0
@@ -44684,7 +44684,7 @@ _0224D4EC: .word 0x0000311F
 ov12_0224D4F0: ; 0x0224D4F0
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _0224D500
 	mov r0, #0x2c

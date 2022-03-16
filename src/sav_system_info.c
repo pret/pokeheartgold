@@ -101,7 +101,7 @@ void Sav2_SysInfo_RTC_SubField34(SYSINFO_RTC* rtc_info, u32 a1) {
     rtc_info->unk34 -= a1;
 }
 
-void sub_02028E4C(SYSINFO_RTC* rtc_info) {
+void SysInfoRTC_HandleContinueOnNewConsole(SYSINFO_RTC* rtc_info) {
     rtc_info->unk34 = 1440;
     GF_RTC_CopyDateTime(&rtc_info->date, &rtc_info->time);
     rtc_info->days_since_nitro_epoch = RTC_ConvertDateToDay(&rtc_info->date);

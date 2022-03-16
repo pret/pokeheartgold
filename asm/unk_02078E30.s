@@ -67,7 +67,7 @@ sub_02078E30: ; 0x02078E30
 	mov r0, #2
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	add r0, r5, #0
 	bl sub_02079CE4
 	bl sub_02079700
@@ -456,7 +456,7 @@ _020791C8:
 	str r0, [r4]
 	b _020791EE
 _020791D6:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _020791EE
 	ldr r0, _02079218 ; =0x00000C65
@@ -544,7 +544,7 @@ _0207927C: .word 0x00000C78
 sub_02079280: ; 0x02079280
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _020792FA
 	ldr r0, _02079300 ; =0x00000654

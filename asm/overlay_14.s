@@ -11563,7 +11563,7 @@ _021EB16C: .word 0x04001050
 ov14_021EB170: ; 0x021EB170
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _021EB186
 	mov r0, #0x11
@@ -21308,7 +21308,7 @@ ov14_021F01D8: ; 0x021F01D8
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #0x11
 	ldr r1, [r5, #0x34]
 	lsl r0, r0, #6
@@ -21334,7 +21334,7 @@ ov14_021F0204: ; 0x021F0204
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #0x11
 	ldr r1, [r5, #0x34]
 	lsl r0, r0, #6
@@ -31388,7 +31388,7 @@ ov14_021F5190: ; 0x021F5190
 	ldr r0, [r0]
 	bl SavArray_IsNatDexEnabled
 	ldrh r1, [r6, #4]
-	bl sub_02074930
+	bl Pokedex_ConvertToCurrentDexNo
 	add r6, r0, #0
 	beq _021F5208
 	ldr r2, [r5, #0x34]

@@ -757,7 +757,7 @@ _0221C014: .word 0x00000BB4
 ov05_0221C018: ; 0x0221C018
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	bne _0221C028
 	mov r0, #0
@@ -1265,13 +1265,13 @@ ov05_0221C430: ; 0x0221C430
 	mov r0, #0
 	add r1, r0, #0
 	add r2, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 _0221C458:
 	ldr r0, _0221C548 ; =0x00000B82
 	ldrb r0, [r4, r0]
 	cmp r0, #8
 	blo _0221C474
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _0221C474
 	ldr r0, _0221C550 ; =0x00000B7F
@@ -2290,7 +2290,7 @@ ov05_0221CC74: ; 0x0221CC74
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	bne _0221CC86
 	mov r0, #0

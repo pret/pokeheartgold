@@ -79,7 +79,7 @@ _02095E72:
 	ldr r0, [r4, #4]
 	str r1, [r0, #4]
 	add r0, r5, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	ldr r1, [r4, #4]
 	str r0, [r1]
 	ldrh r1, [r4, #0xc]
@@ -340,12 +340,12 @@ _0209605E:
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #1
 	str r0, [r7]
 	b _020961CE
 _0209607C:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	bne _02096086
 _02096084:
@@ -483,12 +483,12 @@ _0209618E:
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #5
 	str r0, [r7]
 	b _020961CE
 _020961B4:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _020961CE
 	ldr r0, [r7, #4]
@@ -623,7 +623,7 @@ _020962B8:
 	str r0, [r4, #0x18]
 	b _02096314
 _020962CE:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _02096314
 	ldr r0, [r4, #0x10]
