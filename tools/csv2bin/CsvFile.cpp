@@ -1,12 +1,20 @@
 #include <sstream>
 #include "CsvFile.h"
 
+static std::string linesep;
+
 void CsvFile::ParseRow(std::string &line, std::vector<std::string> &row, bool resize) {
     std::string entry, qbuf;
     bool isQuoted = false;
     int i = 0;
     if (resize) {
         row.clear();
+    }
+    while (line[0] == '\r') {
+        line = line.substr(1);
+    }
+    while (line[line.size() - 1] == '\r') {
+        line = line.substr(0, line.size() - 1);
     }
     std::stringstream line_s(line);
     while (std::getline(line_s, entry, ',')) {
