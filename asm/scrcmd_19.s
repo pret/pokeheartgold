@@ -136,7 +136,7 @@ _CreateMoveRelearner: ; 0x0204ECD0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [r4, #4]
 	add r0, r5, #0

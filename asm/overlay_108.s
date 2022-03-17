@@ -376,7 +376,7 @@ _021E5BAA:
 	str r0, [sp, #8]
 	mov r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -388,7 +388,7 @@ _021E5BAA:
 	str r0, [r4, #4]
 	b _021E5BF0
 _021E5BD8:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _021E5BF0
 	mov r0, #0
@@ -428,13 +428,13 @@ _021E5C0E:
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r4, #4]
 	add r0, r0, #1
 	str r0, [r4, #4]
 	b _021E5C46
 _021E5C2E:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _021E5C46
 	mov r0, #0
@@ -6416,7 +6416,7 @@ _021E8BD2:
 	str r0, [sp, #8]
 	mov r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -6428,7 +6428,7 @@ _021E8BD2:
 	str r0, [r4, #4]
 	b _021E8C12
 _021E8C00:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _021E8C12
 	mov r0, #0
@@ -6464,13 +6464,13 @@ _021E8C2A:
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r4, #4]
 	add r0, r0, #1
 	str r0, [r4, #4]
 	b _021E8C5C
 _021E8C4A:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _021E8C5C
 	mov r0, #0

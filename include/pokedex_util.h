@@ -1,0 +1,12 @@
+#ifndef POKEHEARTGOLD_POKEDEX_UTIL_H
+#define POKEHEARTGOLD_POKEDEX_UTIL_H
+
+#include "pokedex.h"
+#include "save.h"
+
+BOOL Pokedex_IsNatDexEnabled(const POKEDEX* pokedex);
+BOOL SavArray_IsNatDexEnabled(SAVEDATA* savedata);
+u32 Pokedex_ConvertToCurrentDexNo(BOOL natDexFlag, u32 species);
+
+#endif //POKEHEARTGOLD_POKEDEX_UTIL_H
+

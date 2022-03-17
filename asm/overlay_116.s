@@ -163,14 +163,14 @@ _0225F140:
 	ldr r3, _0225F1B4 ; =0x00007FFF
 	mov r0, #3
 	add r2, r1, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r4]
 	add sp, #0xc
 	add r0, r0, #1
 	str r0, [r4]
 	pop {r3, r4, r5, r6, pc}
 _0225F162:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0225F1A6
 	mov r0, #0
@@ -373,14 +373,14 @@ _0225F2F0:
 	str r0, [sp, #8]
 	mov r0, #3
 	add r2, r1, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldr r0, [r4]
 	add sp, #0xc
 	add r0, r0, #1
 	str r0, [r4]
 	pop {r4, r5, r6, r7, pc}
 _0225F312:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0225F356
 	mov r0, #0

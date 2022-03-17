@@ -119,7 +119,7 @@ void NitroMain(void) {
         gSystem.vblankCounter++;
         gSystem.unk30 = 0;
         sub_0200B594();
-        sub_0200FB2C();
+        HandleFadeUpdateFrame();
         if (gSystem.vBlankIntr != NULL) {
             gSystem.vBlankIntr(gSystem.vBlankIntrArg);
         }

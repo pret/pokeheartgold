@@ -811,7 +811,7 @@ _02050C8A:
 	bne _02050CBE
 	add r0, r4, #0
 	bl sub_02050AF4
-	ldr r1, _02050D18 ; =sub_02052858
+	ldr r1, _02050D18 ; =Task_BlackOut
 	add r0, r6, #0
 	mov r2, #0
 	bl TaskManager_Jump
@@ -839,7 +839,7 @@ _02050CD6:
 _02050CEC:
 	ldr r1, [r4, #0x10]
 	add r0, r5, #0
-	bl ov02_0224B998
+	bl ov02_BattleExit_HandleRoamerAction
 	add r0, r6, #0
 	bl sub_0205532C
 	ldr r0, [r4]
@@ -857,7 +857,7 @@ _02050D12:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	nop
-_02050D18: .word sub_02052858
+_02050D18: .word Task_BlackOut
 	thumb_func_end sub_02050C18
 
 	thumb_func_start sub_02050D1C
@@ -874,7 +874,7 @@ sub_02050D1C: ; 0x02050D1C
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B9B8
+	bl FlyPoints_GetSafariBallsCounter
 	str r0, [sp]
 	ldr r0, [r4]
 	cmp r0, #8
@@ -2032,7 +2032,7 @@ _02051696:
 	bl GetMonData
 	add r1, r0, #0
 	mov r0, #0
-	bl sub_02074930
+	bl Pokedex_ConvertToCurrentDexNo
 	cmp r0, #0
 	ldr r0, [r4, #0xc]
 	beq _020516C4
@@ -2079,7 +2079,7 @@ _020516FC:
 	bl GetMonData
 	add r1, r0, #0
 	mov r0, #0
-	bl sub_02074930
+	bl Pokedex_ConvertToCurrentDexNo
 	cmp r0, #0
 	ldr r0, [r4, #0xc]
 	beq _0205172A

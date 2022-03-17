@@ -10,6 +10,7 @@
 #include "gear_phone.h"
 #include "bug_contest_internal.h"
 #include "constants/vars.h"
+#include "overlay_manager.h"
 
 #define SCRIPT_MODE_STOPPED  0
 #define SCRIPT_MODE_BYTECODE 1
@@ -167,9 +168,17 @@ struct FieldSystemUnk108 {
 
 typedef struct MapObjectMan MapObjectMan;
 
+struct FieldSystemUnkSub0 {
+    OVY_MANAGER *unk0;
+    OVY_MANAGER *unk4;
+    BOOL unk8;
+    BOOL unkC;
+};
+
 struct FieldSystem {
-    u8 unk0[0x8];
-    void* bg_config;
+    struct FieldSystemUnkSub0 *unk0;
+    void *unk4;
+    BGCONFIG* bg_config;
     SAVEDATA* savedata;
     TaskManager* taskman;
     MAP_EVENTS* map_events;
@@ -180,7 +189,9 @@ struct FieldSystem {
     u8 unk34[0x8];
     MapObjectMan* unk3C;
     FIELD_PLAYER_AVATAR *playerAvatar;
-    u8 unk44[0x68];
+    u8 unk44[0x28];
+    u32 unk6C;
+    u8 filler_70[0x3C];
     u32 unkAC;
     u8 unkB0[0x4];
     s64 unkB4;

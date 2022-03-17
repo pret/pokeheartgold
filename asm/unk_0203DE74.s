@@ -3,64 +3,64 @@
 
 	.rodata
 
-	.public _020FA15C
-_020FA15C:
-	.word sub_0203DEA4, sub_0203DEBC, sub_0203DED4, 0xFFFFFFFF
-	.public _020FA16C
-_020FA16C:
-	.word sub_0203DE74, sub_0203DEBC, sub_0203DED4, 0xFFFFFFFF
+	.public gApplication_NewGameFieldsys
+gApplication_NewGameFieldsys:
+	.word Field_NewGame_AppInit, Field_AppExec, Field_AppExit, 0xFFFFFFFF
+	.public gApplication_ContinueFieldsys
+gApplication_ContinueFieldsys:
+	.word Field_Continue_AppInit, Field_AppExec, Field_AppExit, 0xFFFFFFFF
 
 	.bss
 
-_021D4158:
+sFieldSysPtr:
 	.space 0x4
 
 	.text
 
-	thumb_func_start sub_0203DE74
-sub_0203DE74: ; 0x0203DE74
+	thumb_func_start Field_Continue_AppInit
+Field_Continue_AppInit: ; 0x0203DE74
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetParentWork
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203DFE0
-	ldr r1, _0203DEA0 ; =_021D4158
+	bl FieldSystem_new
+	ldr r1, _0203DEA0 ; =sFieldSysPtr
 	str r0, [r1]
 	ldr r1, [r4, #4]
 	cmp r1, #0
 	beq _0203DE94
-	bl sub_02053620
+	bl CallFieldTask_ContinueGame_CommError
 	b _0203DE98
 _0203DE94:
-	bl sub_0205353C
+	bl CallFieldTask_ContinueGame_Normal
 _0203DE98:
 	mov r0, #0
 	str r0, [r4, #4]
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_0203DEA0: .word _021D4158
-	thumb_func_end sub_0203DE74
+_0203DEA0: .word sFieldSysPtr
+	thumb_func_end Field_Continue_AppInit
 
-	thumb_func_start sub_0203DEA4
-sub_0203DEA4: ; 0x0203DEA4
+	thumb_func_start Field_NewGame_AppInit
+Field_NewGame_AppInit: ; 0x0203DEA4
 	push {r3, lr}
-	bl sub_0203DFE0
-	ldr r1, _0203DEB8 ; =_021D4158
+	bl FieldSystem_new
+	ldr r1, _0203DEB8 ; =sFieldSysPtr
 	str r0, [r1]
-	bl sub_02053470
+	bl CallFieldTask_NewGame
 	mov r0, #1
 	pop {r3, pc}
 	nop
-_0203DEB8: .word _021D4158
-	thumb_func_end sub_0203DEA4
+_0203DEB8: .word sFieldSysPtr
+	thumb_func_end Field_NewGame_AppInit
 
-	thumb_func_start sub_0203DEBC
-sub_0203DEBC: ; 0x0203DEBC
+	thumb_func_start Field_AppExec
+Field_AppExec: ; 0x0203DEBC
 	push {r3, lr}
 	bl OverlayManager_GetData
-	bl sub_0203E0CC
+	bl FieldSys_Main
 	cmp r0, #0
 	beq _0203DECE
 	mov r0, #1
@@ -69,14 +69,14 @@ _0203DECE:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_0203DEBC
+	thumb_func_end Field_AppExec
 
 	.public ov60_021EAFE0
 
-	thumb_func_start sub_0203DED4
-sub_0203DED4: ; 0x0203DED4
+	thumb_func_start Field_AppExit
+Field_AppExit: ; 0x0203DED4
 	push {r3, lr}
-	bl sub_0203E058
+	bl FieldSystem_delete
 	ldr r0, _0203DEE8 ; =FS_OVERLAY_ID(OVY_60)
 	ldr r1, _0203DEEC ; =ov60_021EAFE0
 	bl RegisterMainOverlay
@@ -85,7 +85,7 @@ sub_0203DED4: ; 0x0203DED4
 	nop
 _0203DEE8: .word FS_OVERLAY_ID(OVY_60)
 _0203DEEC: .word ov60_021EAFE0
-	thumb_func_end sub_0203DED4
+	thumb_func_end Field_AppExit
 
 	.public ov01_02206378
 
@@ -240,8 +240,8 @@ _0203DFC8:
 	.balign 4, 0
 	thumb_func_end Fsys_LaunchApplication
 
-	thumb_func_start sub_0203DFE0
-sub_0203DFE0: ; 0x0203DFE0
+	thumb_func_start FieldSystem_new
+FieldSystem_new: ; 0x0203DFE0
 	push {r4, r5, r6, lr}
 	mov r2, #7
 	add r5, r0, #0
@@ -286,17 +286,17 @@ sub_0203DFE0: ; 0x0203DFE0
 	bl HandleLoadOverlay
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov124_02260C20
+	bl FieldSystem_init
 	add r0, r6, #0
 	bl UnloadOverlayByID
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0203E054: .word FS_OVERLAY_ID(OVY_124)
-	thumb_func_end sub_0203DFE0
+	thumb_func_end FieldSystem_new
 
-	thumb_func_start sub_0203E058
-sub_0203E058: ; 0x0203E058
+	thumb_func_start FieldSystem_delete
+FieldSystem_delete: ; 0x0203E058
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -328,10 +328,10 @@ sub_0203E058: ; 0x0203E058
 	mov r0, #0x20
 	bl DestroyHeap
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0203E058
+	thumb_func_end FieldSystem_delete
 
-	thumb_func_start sub_0203E0AC
-sub_0203E0AC: ; 0x0203E0AC
+	thumb_func_start ppOverlayManager_RunFrame_DeleteIfFinished
+ppOverlayManager_RunFrame_DeleteIfFinished: ; 0x0203E0AC
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -347,10 +347,10 @@ sub_0203E0AC: ; 0x0203E0AC
 _0203E0C8:
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0203E0AC
+	thumb_func_end ppOverlayManager_RunFrame_DeleteIfFinished
 
-	thumb_func_start sub_0203E0CC
-sub_0203E0CC: ; 0x0203E0CC
+	thumb_func_start FieldSys_Main
+FieldSys_Main: ; 0x0203E0CC
 	push {r4, lr}
 	add r4, r0, #0
 	bl sub_0203E15C
@@ -370,7 +370,7 @@ _0203E0EE:
 	ldr r1, [r0]
 	cmp r1, #0
 	beq _0203E10A
-	bl sub_0203E0AC
+	bl ppOverlayManager_RunFrame_DeleteIfFinished
 	ldr r0, [r4]
 	ldr r0, [r0]
 	cmp r0, #0
@@ -383,7 +383,7 @@ _0203E10A:
 	cmp r1, #0
 	beq _0203E116
 	add r0, r0, #4
-	bl sub_0203E0AC
+	bl ppOverlayManager_RunFrame_DeleteIfFinished
 _0203E116:
 	ldr r1, [r4]
 	ldr r0, [r1, #0xc]
@@ -405,7 +405,7 @@ _0203E134:
 	pop {r4, pc}
 	.balign 4, 0
 _0203E138: .word FS_OVERLAY_ID(field)
-	thumb_func_end sub_0203E0CC
+	thumb_func_end FieldSys_Main
 
 	thumb_func_start sub_0203E13C
 sub_0203E13C: ; 0x0203E13C
@@ -625,7 +625,7 @@ _0203E2F0: .word 0x00000109
 
 	thumb_func_start sub_0203E2F4
 sub_0203E2F4: ; 0x0203E2F4
-	ldr r0, _0203E304 ; =_021D4158
+	ldr r0, _0203E304 ; =sFieldSysPtr
 	ldr r3, _0203E308 ; =sub_02037504
 	ldr r0, [r0]
 	mov r1, #1
@@ -633,13 +633,13 @@ sub_0203E2F4: ; 0x0203E2F4
 	str r1, [r0, #8]
 	bx r3
 	nop
-_0203E304: .word _021D4158
+_0203E304: .word sFieldSysPtr
 _0203E308: .word sub_02037504
 	thumb_func_end sub_0203E2F4
 
 	thumb_func_start sub_0203E30C
 sub_0203E30C: ; 0x0203E30C
-	ldr r0, _0203E31C ; =_021D4158
+	ldr r0, _0203E31C ; =sFieldSysPtr
 	ldr r3, _0203E320 ; =sub_020374E4
 	ldr r0, [r0]
 	mov r1, #0
@@ -647,13 +647,13 @@ sub_0203E30C: ; 0x0203E30C
 	str r1, [r0, #8]
 	bx r3
 	nop
-_0203E31C: .word _021D4158
+_0203E31C: .word sFieldSysPtr
 _0203E320: .word sub_020374E4
 	thumb_func_end sub_0203E30C
 
 	thumb_func_start sub_0203E324
 sub_0203E324: ; 0x0203E324
-	ldr r0, _0203E338 ; =_021D4158
+	ldr r0, _0203E338 ; =sFieldSysPtr
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
 	cmp r0, #0
@@ -664,7 +664,7 @@ _0203E332:
 	ldr r0, [r0, #0x14]
 	bx lr
 	nop
-_0203E338: .word _021D4158
+_0203E338: .word sFieldSysPtr
 	thumb_func_end sub_0203E324
 
 	thumb_func_start sub_0203E33C
@@ -673,17 +673,17 @@ sub_0203E33C: ; 0x0203E33C
 	bx lr
 	thumb_func_end sub_0203E33C
 
-	thumb_func_start sub_0203E340
-sub_0203E340: ; 0x0203E340
+	thumb_func_start Fsys_GetBgConfigPtr
+Fsys_GetBgConfigPtr: ; 0x0203E340
 	ldr r0, [r0, #8]
 	bx lr
-	thumb_func_end sub_0203E340
+	thumb_func_end Fsys_GetBgConfigPtr
 
-	thumb_func_start ScriptEnvironment_GetSav2Ptr
-ScriptEnvironment_GetSav2Ptr: ; 0x0203E344
+	thumb_func_start Fsys_GetSaveDataPtr
+Fsys_GetSaveDataPtr: ; 0x0203E344
 	ldr r0, [r0, #0xc]
 	bx lr
-	thumb_func_end ScriptEnvironment_GetSav2Ptr
+	thumb_func_end Fsys_GetSaveDataPtr
 
 	thumb_func_start sub_0203E348
 sub_0203E348: ; 0x0203E348
@@ -695,7 +695,7 @@ sub_0203E348: ; 0x0203E348
 
 	thumb_func_start sub_0203E354
 sub_0203E354: ; 0x0203E354
-	ldr r0, _0203E364 ; =_021D4158
+	ldr r0, _0203E364 ; =sFieldSysPtr
 	mov r1, #1
 	ldr r0, [r0]
 	mvn r1, r1
@@ -703,5 +703,5 @@ sub_0203E354: ; 0x0203E354
 	str r1, [r0]
 	bx lr
 	nop
-_0203E364: .word _021D4158
+_0203E364: .word sFieldSysPtr
 	thumb_func_end sub_0203E354

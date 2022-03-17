@@ -96,7 +96,7 @@ ov65_0221BE20: ; 0x0221BE20
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	add r0, r4, #0
 	add r1, r5, #0
 	bl ov65_0221D280
@@ -470,7 +470,7 @@ ov65_0221C250: ; 0x0221C250
 _0221C26E:
 	b _0221C3B4
 _0221C270:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0221C28A
 	mov r0, #1
@@ -519,7 +519,7 @@ _0221C2B8:
 	add r1, r6, #0
 	add r2, r6, #0
 	add r3, r6, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #2
 	str r0, [r5]
 	b _0221C3B4
@@ -534,12 +534,12 @@ _0221C2D6:
 	add r1, r6, #0
 	add r2, r6, #0
 	add r3, r6, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #4
 	str r0, [r4, #0x54]
 	b _0221C3B4
 _0221C2F4:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0221C3B4
 	add r0, r4, #0
@@ -608,19 +608,19 @@ _0221C380:
 	add r0, r6, #0
 	add r2, r1, #0
 	add r3, r6, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #7
 	str r0, [r4, #0x54]
 	b _0221C3B4
 _0221C39C:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0221C3B4
 	mov r0, #1
 	str r0, [r4, #0x54]
 	b _0221C3B4
 _0221C3AA:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _0221C3B4
 	mov r6, #1

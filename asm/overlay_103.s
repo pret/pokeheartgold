@@ -1402,7 +1402,7 @@ _021ED45C: .word 0x04001050
 ov103_021ED460: ; 0x021ED460
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _021ED476
 	mov r0, #0xbb
@@ -2177,7 +2177,7 @@ ov103_021EDA14: ; 0x021EDA14
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #0xbb
 	ldr r1, [r5, #0xc]
 	lsl r0, r0, #2
@@ -2203,7 +2203,7 @@ ov103_021EDA40: ; 0x021EDA40
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #0xbb
 	ldr r1, [r5, #0xc]
 	lsl r0, r0, #2

@@ -112,7 +112,7 @@ sub_020580E4: ; 0x020580E4
 	cmp r0, #0
 	bne _0205811C
 	add r0, r5, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	mov r1, #0
 	add r3, r5, #0
 	str r1, [sp]
@@ -144,7 +144,7 @@ sub_02058124: ; 0x02058124
 	cmp r0, #0
 	bne _0205815C
 	add r0, r5, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	mov r1, #0
 	add r3, r5, #0
 	str r1, [sp]
@@ -537,7 +537,7 @@ _020583FC:
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #0
 	bl sub_0200FBDC
 	mov r0, #1
@@ -691,7 +691,7 @@ _02058528:
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #0
 	bl sub_0200FBDC
 	mov r0, #1

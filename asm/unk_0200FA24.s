@@ -3,50 +3,50 @@
 
 	.rodata
 
-_020F5CAC:
-	.word sub_0201010C
-	.word sub_02010128
-	.word sub_02010148
-	.word sub_02010184
-	.word sub_020101BC
-	.word sub_020101F8
-	.word sub_02010230
-	.word sub_0201025C
-	.word sub_02010288
-	.word sub_020102C4
-	.word sub_020102FC
-	.word sub_02010338
-	.word sub_02010370
-	.word sub_0201039C
-	.word sub_020103C8
-	.word sub_020103FC
-	.word sub_0201042C
-	.word sub_02010458
-	.word sub_02010484
-	.word sub_020104B0
-	.word sub_020104DC
-	.word sub_02010508
-	.word sub_02010534
-	.word sub_02010560
-	.word sub_0201058C
-	.word sub_020105B8
-	.word sub_020105E4
-	.word sub_02010610
-	.word sub_0201063C
-	.word sub_02010690
-	.word sub_020106E0
-	.word sub_0201071C
-	.word sub_02010754
-	.word sub_0201079C
-	.word sub_020107E0
-	.word sub_02010828
-	.word sub_0201086C
-	.word sub_02010898
-	.word sub_020108C4
-	.word sub_020108F0
-	.word sub_0201091C
-	.word sub_02010958
-	.word sub_02010990
+sFadeFuncPtrs:
+	.word FadeFunc_00
+	.word FadeFunc_01
+	.word FadeFunc_02
+	.word FadeFunc_03
+	.word FadeFunc_04
+	.word FadeFunc_05
+	.word FadeFunc_06
+	.word FadeFunc_07
+	.word FadeFunc_08
+	.word FadeFunc_09
+	.word FadeFunc_10
+	.word FadeFunc_11
+	.word FadeFunc_12
+	.word FadeFunc_13
+	.word FadeFunc_14
+	.word FadeFunc_15
+	.word FadeFunc_16
+	.word FadeFunc_17
+	.word FadeFunc_18
+	.word FadeFunc_19
+	.word FadeFunc_20
+	.word FadeFunc_21
+	.word FadeFunc_22
+	.word FadeFunc_23
+	.word FadeFunc_24
+	.word FadeFunc_25
+	.word FadeFunc_26
+	.word FadeFunc_27
+	.word FadeFunc_28
+	.word FadeFunc_29
+	.word FadeFunc_30
+	.word FadeFunc_31
+	.word FadeFunc_32
+	.word FadeFunc_33
+	.word FadeFunc_34
+	.word FadeFunc_35
+	.word FadeFunc_36
+	.word FadeFunc_37
+	.word FadeFunc_38
+	.word FadeFunc_39
+	.word FadeFunc_40
+	.word FadeFunc_41
+	.word FadeFunc_42
 
 	.bss
 
@@ -76,8 +76,8 @@ _021D1034:
 
 	.text
 
-	thumb_func_start sub_0200FA24
-sub_0200FA24: ; 0x0200FA24
+	thumb_func_start BeginNormalPaletteFade
+BeginNormalPaletteFade: ; 0x0200FA24
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1c
 	add r5, r0, #0
@@ -149,10 +149,10 @@ _0200FA50:
 	strh r1, [r0, #0xc]
 	ldr r0, _0200FB18 ; =_021D0EF8
 	ldr r1, _0200FB10 ; =_021D0F08
-	bl sub_0200FDE4
+	bl FadeWork_UpdateFrame
 	ldr r0, _0200FB1C ; =_021D0EFC
 	ldr r1, _0200FB14 ; =_021D0F38
-	bl sub_0200FDE4
+	bl FadeWork_UpdateFrame
 	ldr r0, _0200FB20 ; =_021D0EF4
 	ldr r0, [r0, #0xc]
 	cmp r0, #0
@@ -191,10 +191,10 @@ _0200FB1C: .word _021D0EFC
 _0200FB20: .word _021D0EF4
 _0200FB24: .word 0x0000014E
 _0200FB28: .word 0x0000014F
-	thumb_func_end sub_0200FA24
+	thumb_func_end BeginNormalPaletteFade
 
-	thumb_func_start sub_0200FB2C
-sub_0200FB2C: ; 0x0200FB2C
+	thumb_func_start HandleFadeUpdateFrame
+HandleFadeUpdateFrame: ; 0x0200FB2C
 	push {r4, lr}
 	ldr r0, _0200FB54 ; =_021D1034
 	ldr r4, _0200FB58 ; =_021D0EF4
@@ -206,20 +206,20 @@ sub_0200FB2C: ; 0x0200FB2C
 	add r0, r4, #0
 	add r1, #0x14
 	add r2, #0x44
-	bl sub_0200FD74
+	bl DoFadeUpdateFrame
 	cmp r0, #1
 	bne _0200FB50
 	add r0, r4, #0
-	bl sub_0200FD1C
+	bl HandleEndFade
 _0200FB50:
 	pop {r4, pc}
 	nop
 _0200FB54: .word _021D1034
 _0200FB58: .word _021D0EF4
-	thumb_func_end sub_0200FB2C
+	thumb_func_end HandleFadeUpdateFrame
 
-	thumb_func_start sub_0200FB5C
-sub_0200FB5C: ; 0x0200FB5C
+	thumb_func_start IsPaletteFadeActive
+IsPaletteFadeActive: ; 0x0200FB5C
 	ldr r0, _0200FB6C ; =_021D1034
 	ldrh r0, [r0, #0xc]
 	cmp r0, #0
@@ -231,7 +231,7 @@ _0200FB68:
 	bx lr
 	.balign 4, 0
 _0200FB6C: .word _021D1034
-	thumb_func_end sub_0200FB5C
+	thumb_func_end IsPaletteFadeActive
 
 	thumb_func_start sub_0200FB70
 sub_0200FB70: ; 0x0200FB70
@@ -258,10 +258,10 @@ _0200FB8E:
 _0200FB9A:
 	ldr r0, _0200FBC4 ; =_021D0EF8
 	ldr r1, _0200FBC8 ; =_021D0F08
-	bl sub_0200FDE4
+	bl FadeWork_UpdateFrame
 	ldr r0, _0200FBCC ; =_021D0EFC
 	ldr r1, _0200FBD0 ; =_021D0F38
-	bl sub_0200FDE4
+	bl FadeWork_UpdateFrame
 	ldr r0, _0200FBD4 ; =_021D1034
 	mov r1, #0
 	strh r1, [r0, #0xc]
@@ -458,8 +458,8 @@ _0200FD14: .word 0x0400006C
 _0200FD18: .word 0x0400106C
 	thumb_func_end SetMasterBrightness
 
-	thumb_func_start sub_0200FD1C
-sub_0200FD1C: ; 0x0200FD1C
+	thumb_func_start HandleEndFade
+HandleEndFade: ; 0x0200FD1C
 	push {r4, lr}
 	mov r1, #0x53
 	add r4, r0, #0
@@ -501,10 +501,10 @@ _0200FD66:
 	pop {r4, pc}
 	nop
 _0200FD70: .word _021D1034
-	thumb_func_end sub_0200FD1C
+	thumb_func_end HandleEndFade
 
-	thumb_func_start sub_0200FD74
-sub_0200FD74: ; 0x0200FD74
+	thumb_func_start DoFadeUpdateFrame
+DoFadeUpdateFrame: ; 0x0200FD74
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -518,24 +518,24 @@ sub_0200FD74: ; 0x0200FD74
 	b _0200FDCE
 _0200FD8A:
 	add r0, r5, #4
-	bl sub_0200FDE4
+	bl FadeWork_UpdateFrame
 	add r0, r5, #0
 	add r0, #8
 	add r1, r4, #0
-	bl sub_0200FDE4
+	bl FadeWork_UpdateFrame
 	b _0200FDCE
 _0200FD9C:
 	ldr r0, [r5, #4]
 	cmp r0, #0
 	beq _0200FDAA
 	add r0, r5, #4
-	bl sub_0200FDE4
+	bl FadeWork_UpdateFrame
 	b _0200FDCE
 _0200FDAA:
 	add r0, r5, #0
 	add r0, #8
 	add r1, r4, #0
-	bl sub_0200FDE4
+	bl FadeWork_UpdateFrame
 	b _0200FDCE
 _0200FDB6:
 	ldr r0, [r5, #8]
@@ -544,11 +544,11 @@ _0200FDB6:
 	add r0, r5, #0
 	add r0, #8
 	add r1, r4, #0
-	bl sub_0200FDE4
+	bl FadeWork_UpdateFrame
 	b _0200FDCE
 _0200FDC8:
 	add r0, r5, #4
-	bl sub_0200FDE4
+	bl FadeWork_UpdateFrame
 _0200FDCE:
 	ldr r0, [r5, #4]
 	cmp r0, #0
@@ -562,17 +562,17 @@ _0200FDDE:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200FD74
+	thumb_func_end DoFadeUpdateFrame
 
-	thumb_func_start sub_0200FDE4
-sub_0200FDE4: ; 0x0200FDE4
+	thumb_func_start FadeWork_UpdateFrame
+FadeWork_UpdateFrame: ; 0x0200FDE4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _0200FDFC
 	add r0, r1, #0
-	bl sub_0200FE00
+	bl CallFadeFunc
 	cmp r0, #1
 	bne _0200FDFC
 	mov r0, #0
@@ -580,20 +580,20 @@ sub_0200FDE4: ; 0x0200FDE4
 _0200FDFC:
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200FDE4
+	thumb_func_end FadeWork_UpdateFrame
 
-	thumb_func_start sub_0200FE00
-sub_0200FE00: ; 0x0200FE00
+	thumb_func_start CallFadeFunc
+CallFadeFunc: ; 0x0200FE00
 	push {r3, lr}
 	ldr r1, [r0]
 	lsl r2, r1, #2
-	ldr r1, _0200FE10 ; =_020F5CAC
+	ldr r1, _0200FE10 ; =sFadeFuncPtrs
 	ldr r1, [r1, r2]
 	blx r1
 	pop {r3, pc}
 	nop
-_0200FE10: .word _020F5CAC
-	thumb_func_end sub_0200FE00
+_0200FE10: .word sFadeFuncPtrs
+	thumb_func_end CallFadeFunc
 
 	thumb_func_start sub_0200FE14
 sub_0200FE14: ; 0x0200FE14

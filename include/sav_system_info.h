@@ -41,6 +41,6 @@ void Sav2_SysInfo_SetField4C(SYSINFO* sys_info, void*);
 void Sav2_SysInfo_RTC_init(SYSINFO_RTC* rtc_info);
 BOOL sub_02028E1C(SYSINFO_RTC* rtc_info);
 void Sav2_SysInfo_RTC_SubField34(SYSINFO_RTC* rtc_info, u32);
-void sub_02028E4C(SYSINFO_RTC* rtc_info);
+void SysInfoRTC_HandleContinueOnNewConsole(SYSINFO_RTC* rtc_info);
 
 #endif

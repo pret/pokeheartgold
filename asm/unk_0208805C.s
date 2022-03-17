@@ -100,7 +100,7 @@ sub_020880CC: ; 0x020880CC
 	str r1, [sp, #8]
 	add r1, r2, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	add sp, #0xc
 	pop {pc}
 _020880EC:
@@ -113,7 +113,7 @@ _020880EC:
 	mov r1, #8
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0

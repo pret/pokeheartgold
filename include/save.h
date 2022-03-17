@@ -21,7 +21,7 @@ SAVEDATA *SaveBlock2_get(void);
 void *SavArray_get(SAVEDATA *saveData, int id);
 const void *SavArray_const_get(const SAVEDATA *saveData, int id);
 BOOL Save_DeleteAllData(SAVEDATA *saveData);
-BOOL sub_020273B0(SAVEDATA *saveData);
+BOOL SaveData_TryLoadOnContinue(SAVEDATA *saveData);
 int SaveGameNormal(SAVEDATA *saveData);
 int Save_NowWriteFile_AfterMGInit(SAVEDATA *saveData, int a1);
 void Sav2_InitDynamicRegion(SAVEDATA *saveData);

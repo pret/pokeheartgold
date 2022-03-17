@@ -179,7 +179,7 @@ _02097902:
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #0
 	mov r1, #6
 	bl GF_SndStartFadeOutBGM
@@ -187,7 +187,7 @@ _02097902:
 	strb r0, [r4]
 	b _020979A2
 _02097928:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _02097938
 	bl GF_SndGetFadeTimer

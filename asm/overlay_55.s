@@ -367,7 +367,7 @@ _021E5BD0:
 	add r0, r6, #0
 	add r1, r4, r1
 	lsr r2, r2, #0x18
-	bl Mail_CopyToUnk20Array
+	bl Mail_SetMessage
 	add r0, r5, #1
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10

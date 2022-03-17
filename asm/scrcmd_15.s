@@ -166,7 +166,7 @@ ScrCmd_PartymonIsMine: ; 0x0204D1DC
 	add r0, #0x80
 	ldr r5, [r0]
 	add r0, r5, #0
-	bl ScriptEnvironment_GetSav2Ptr
+	bl Fsys_GetSaveDataPtr
 	bl Sav2_PlayerData_GetProfileAddr
 	add r7, r0, #0
 	add r0, r4, #0

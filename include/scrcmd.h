@@ -6,7 +6,7 @@
 #include "script.h"
 
 // unk_0203DE74.s
-extern SAVEDATA* ScriptEnvironment_GetSav2Ptr(FieldSystem*);
+extern SAVEDATA* Fsys_GetSaveDataPtr(FieldSystem*);
 
 static inline u16 ScriptGetVar(SCRIPTCONTEXT* ctx) {
     return VarGet(ctx->fsys, ScriptReadHalfword(ctx));

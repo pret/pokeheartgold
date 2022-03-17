@@ -92,8 +92,8 @@ sub_020915AC: ; 0x020915AC
 
 	.rodata
 
-	.public _02106068
-_02106068:
+	.public gApplication_OakSpeech
+gApplication_OakSpeech:
 	.word ov53_OakSpeech_OvyInit, ov53_OakSpeech_OvyExec, ov53_OakSpeech_OvyExit, FS_OVERLAY_ID(OVY_53)
 
 _02106078:

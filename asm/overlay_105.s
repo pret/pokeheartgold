@@ -98,7 +98,7 @@ _021E5964:
 	mov r0, #3
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -144,7 +144,7 @@ _021E5A04:
 	str r0, [r6]
 	b _021E5A6C
 _021E5A28:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #0
 	beq _021E5A6C
 	add r0, r5, #0

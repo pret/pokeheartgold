@@ -143,7 +143,7 @@ _021E5A3C:
 	str r0, [r4]
 	b _021E5A74
 _021E5A48:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _021E5A74
 	ldr r0, [r4]
@@ -159,7 +159,7 @@ _021E5A58:
 	str r0, [r4]
 	b _021E5A74
 _021E5A68:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _021E5A74
 	mov r0, #1
@@ -1173,7 +1173,7 @@ ov64_021E6288: ; 0x021E6288
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
@@ -1193,7 +1193,7 @@ ov64_021E62A8: ; 0x021E62A8
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	add sp, #0xc
 	pop {pc}
 	thumb_func_end ov64_021E62A8

@@ -364,13 +364,13 @@ _0223E030:
 	mov r1, #1
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldrb r0, [r4, #8]
 	add r0, r0, #1
 	strb r0, [r4, #8]
 	b _0223E068
 _0223E05A:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _0223E068
 	add sp, #0xc
@@ -754,7 +754,7 @@ _0223E33C:
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #1
 	strh r0, [r4, #0x10]
 	mov r0, #7
@@ -1007,7 +1007,7 @@ _0223E532:
 	strb r0, [r4, #8]
 	b _0223E5B6
 _0223E58A:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _0223E5B6
 	add r0, r4, #0
@@ -1365,13 +1365,13 @@ _0223E842:
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	ldrb r0, [r4, #8]
 	add r0, r0, #1
 	strb r0, [r4, #8]
 	b _0223E880
 _0223E872:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _0223E880
 	add sp, #0xc

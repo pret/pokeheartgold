@@ -2476,7 +2476,7 @@ ov39_02228140: ; 0x02228140
 	mov r0, #0
 	add r2, r1, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -2566,7 +2566,7 @@ ov39_02228308: ; 0x02228308
 	beq _0222835C
 	b _02228368
 _02228322:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _02228368
 	mov r0, #1
@@ -2597,7 +2597,7 @@ _02228352:
 	str r0, [r5]
 	b _02228368
 _0222835C:
-	bl sub_0200FB5C
+	bl IsPaletteFadeActive
 	cmp r0, #1
 	bne _02228368
 	mov r0, #1
@@ -4115,7 +4115,7 @@ _02228F28:
 	add r1, r0, #0
 	add r2, r0, #0
 	add r3, r0, #0
-	bl sub_0200FA24
+	bl BeginNormalPaletteFade
 	mov r0, #0
 	str r0, [r4, #8]
 	mov r0, #1

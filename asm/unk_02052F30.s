@@ -248,7 +248,7 @@ _020530EC:
 	cmp r6, #0
 	beq _02053110
 	ldr r0, [sp, #4]
-	bl sub_0203B9A4
+	bl FlyPoints_GetCameraType
 	add r5, r0, #0
 	add r0, r7, #0
 	bl MapHeader_GetCameraType
@@ -261,7 +261,7 @@ _02053110:
 	bl MapHeader_GetCameraType
 	add r1, r0, #0
 	ldr r0, [sp, #4]
-	bl sub_0203B9AC
+	bl FlyPoints_SetCameraType
 _0205311E:
 	cmp r6, #0
 	bne _02053134
@@ -677,8 +677,8 @@ _0205346C:
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_02053414
 
-	thumb_func_start sub_02053470
-sub_02053470: ; 0x02053470
+	thumb_func_start CallFieldTask_NewGame
+CallFieldTask_NewGame: ; 0x02053470
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #0
@@ -691,7 +691,7 @@ sub_02053470: ; 0x02053470
 	pop {r4, pc}
 	.balign 4, 0
 _02053488: .word sub_02053414
-	thumb_func_end sub_02053470
+	thumb_func_end CallFieldTask_NewGame
 
 	thumb_func_start sub_0205348C
 sub_0205348C: ; 0x0205348C
@@ -773,8 +773,8 @@ _02053538:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0205348C
 
-	thumb_func_start sub_0205353C
-sub_0205353C: ; 0x0205353C
+	thumb_func_start CallFieldTask_ContinueGame_Normal
+CallFieldTask_ContinueGame_Normal: ; 0x0205353C
 	ldr r3, _02053548 ; =FieldSys_CreateTask
 	mov r2, #0
 	str r2, [r0, #0x70]
@@ -783,7 +783,7 @@ sub_0205353C: ; 0x0205353C
 	nop
 _02053548: .word FieldSys_CreateTask
 _0205354C: .word sub_0205348C
-	thumb_func_end sub_0205353C
+	thumb_func_end CallFieldTask_ContinueGame_Normal
 
 	thumb_func_start sub_02053550
 sub_02053550: ; 0x02053550
@@ -886,8 +886,8 @@ _0205361C:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02053550
 
-	thumb_func_start sub_02053620
-sub_02053620: ; 0x02053620
+	thumb_func_start CallFieldTask_ContinueGame_CommError
+CallFieldTask_ContinueGame_CommError: ; 0x02053620
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x20]
@@ -909,7 +909,7 @@ sub_02053620: ; 0x02053620
 	b _02053658
 _02053650:
 	add r0, r4, #0
-	bl sub_0205353C
+	bl CallFieldTask_ContinueGame_Normal
 	pop {r3, r4, r5, pc}
 _02053658:
 	mov r0, #0xb
@@ -934,7 +934,7 @@ _02053658:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02053684: .word sub_02053550
-	thumb_func_end sub_02053620
+	thumb_func_end CallFieldTask_ContinueGame_CommError
 
 	thumb_func_start sub_02053688
 sub_02053688: ; 0x02053688
