@@ -40,7 +40,7 @@ struct UnkTaskEnv_02053688 {
 
 struct UnkTaskEnv_02053950 {
     int unk0;
-    void *unk4;
+    UNK_0201F79C_Sub *unk4;
     Location location;
     u8 padding[4];
 };
@@ -65,40 +65,40 @@ struct UnkTaskEnv_02053E5C {
     Location location;
 };
 
-void sub_02052F30(FieldSystem *fsys);
-void sub_02052F94(FieldSystem *fsys, Location *location);
-void sub_0205316C(FieldSystem *fsys);
-void sub_02053210(FieldSystem *fsys);
-void sub_0205323C(FieldSystem *fsys);
-void sub_02053284(FieldSystem *fsys);
-void sub_02053324(FieldSystem *fsys);
-void _CopyPlayerPosToLocationWorkFacingSouth(Location *location, FieldSystem *fsys);
-BOOL _IsPlayerStandingInFrontOfUnionRoomReception(FieldSystem *fsys);
-void _SetDynamicWarpToUnionRoomExit(FieldSystem *fsys);
-BOOL sub_02053414(TaskManager *taskManager);
-BOOL sub_0205348C(TaskManager *taskManager);
-BOOL sub_02053550(TaskManager *taskManager);
-BOOL sub_02053688(TaskManager *taskManager);
-void sub_02053710(TaskManager *taskManager, Location *location);
-BOOL sub_02053740(TaskManager *taskManager);
-BOOL sub_0205380C(TaskManager *taskManager);
-BOOL sub_02053950(TaskManager *taskManager);
-void sub_020539D8(TaskManager *taskManager);
-BOOL sub_020539E8(TaskManager *taskManager);
-void sub_02053A14(TaskManager *taskManager);
-BOOL sub_02053A2C(TaskManager *taskManager);
-void sub_02053AA0(TaskManager *taskManager);
-BOOL sub_02053AE4(TaskManager *taskManager);
-BOOL sub_02053B3C(TaskManager *taskManager);
-void sub_02053BE8(TaskManager *taskManager);
-BOOL sub_02053BF8(TaskManager *taskManager);
-void sub_02053C24(TaskManager *taskManager);
-BOOL sub_02053C3C(TaskManager *taskManager);
-void sub_02053C90(TaskManager *taskManager);
-BOOL sub_02053CCC(TaskManager *taskManager);
-BOOL sub_02053E5C(TaskManager *taskManager);
-BOOL sub_02053F70(TaskManager *taskManager);
-BOOL sub_020540A4(TaskManager *taskManager);
+static void sub_02052F30(FieldSystem *fsys);
+static void sub_02052F94(FieldSystem *fsys, Location *location);
+static void sub_0205316C(FieldSystem *fsys);
+static void sub_02053210(FieldSystem *fsys);
+static void sub_0205323C(FieldSystem *fsys);
+static void sub_02053284(FieldSystem *fsys);
+static void sub_02053324(FieldSystem *fsys);
+static void _CopyPlayerPosToLocationWorkFacingSouth(Location *location, FieldSystem *fsys);
+static BOOL _IsPlayerStandingInFrontOfUnionRoomReception(FieldSystem *fsys);
+static void _SetDynamicWarpToUnionRoomExit(FieldSystem *fsys);
+static BOOL sub_02053414(TaskManager *taskManager);
+static BOOL sub_0205348C(TaskManager *taskManager);
+static BOOL sub_02053550(TaskManager *taskManager);
+static BOOL sub_02053688(TaskManager *taskManager);
+static void sub_02053710(TaskManager *taskManager, Location *location);
+static BOOL sub_02053740(TaskManager *taskManager);
+static BOOL sub_0205380C(TaskManager *taskManager);
+static BOOL sub_02053950(TaskManager *taskManager);
+static void sub_020539D8(TaskManager *taskManager);
+static BOOL sub_020539E8(TaskManager *taskManager);
+static void sub_02053A14(TaskManager *taskManager);
+static BOOL sub_02053A2C(TaskManager *taskManager);
+static void sub_02053AA0(TaskManager *taskManager);
+static BOOL sub_02053AE4(TaskManager *taskManager);
+static BOOL sub_02053B3C(TaskManager *taskManager);
+static void sub_02053BE8(TaskManager *taskManager);
+static BOOL sub_02053BF8(TaskManager *taskManager);
+static void sub_02053C24(TaskManager *taskManager);
+static BOOL sub_02053C3C(TaskManager *taskManager);
+static void sub_02053C90(TaskManager *taskManager);
+static BOOL sub_02053CCC(TaskManager *taskManager);
+static BOOL sub_02053E5C(TaskManager *taskManager);
+static BOOL sub_02053F70(TaskManager *taskManager);
+static BOOL sub_020540A4(TaskManager *taskManager);
 
 static const struct UnkStruct_020FC5CC _020FC5CC[] = {
     {1, 0, 0, 0, 0, 1, 0, 0, 64, 12},
