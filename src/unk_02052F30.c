@@ -30,6 +30,7 @@
 #include "overlay_01.h"
 #include "overlay_02.h"
 #include "constants/maps.h"
+#include "unk_0201F79C.h"
 
 struct UnkTaskEnv_02053688 {
     int unk0;
@@ -44,6 +45,26 @@ struct UnkTaskEnv_02053950 {
     u8 padding[4];
 };
 
+struct UnkTaskEnv_02053B3C {
+    int unk0;
+    int unk4;
+    UNK_0201F79C_Sub *unk8;
+    Location location;
+};
+
+struct UnkTaskEnv_02053CCC {
+    int unk0;
+    int unk4;
+    Location location;
+    UnkStruct_0206793C *unk1C;
+};
+
+struct UnkTaskEnv_02053E5C {
+    int unk0;
+    int unk4;
+    Location location;
+};
+
 BOOL sub_02053950(TaskManager *taskManager);
 void sub_020539D8(TaskManager *taskManager);
 BOOL sub_020539E8(TaskManager *taskManager);
@@ -51,6 +72,12 @@ void sub_02053A14(TaskManager *taskManager);
 BOOL sub_02053A2C(TaskManager *taskManager);
 void sub_02053AA0(TaskManager *taskManager);
 BOOL sub_02053AE4(TaskManager *taskManager);
+BOOL sub_02053B3C(TaskManager *taskManager);
+void sub_02053BE8(TaskManager *taskManager);
+BOOL sub_02053BF8(TaskManager *taskManager);
+void sub_02053C24(TaskManager *taskManager);
+BOOL sub_02053C3C(TaskManager *taskManager);
+void sub_02053C90(TaskManager *taskManager);
 
 extern const struct UnkStruct_020FC5CC _020FC5CC[6];
 
@@ -381,7 +408,7 @@ BOOL sub_02053550(TaskManager *taskManager) {
         break;
     case 3:
         env->unk0 = 0;
-        ov01_021F35C4(fsys, 0, env);
+        ov01_021F35C4(fsys, 0, &env->unk0);
         (*state_p)++;
         break;
     case 4:
@@ -573,7 +600,7 @@ void sub_02053908(TaskManager *taskManager, u32 mapId, int warpId, int x, int y,
     };
     struct UnkTaskEnv_02053950 *env = AllocFromHeapAtEnd(11, sizeof(struct UnkTaskEnv_02053950));
     env->unk0 = 0;
-    env->unk4 = 0;
+    env->unk4 = NULL;
     env->location = location;
     TaskManager_Jump(taskManager, sub_02053950, env);
 }
@@ -665,4 +692,256 @@ void sub_02053AA0(TaskManager *taskManager) {
     }
     env->unk4 = ov02_0224B418(fsys, sub_0205C724(fsys->playerAvatar));
     TaskManager_Call(taskManager, sub_02053AE4, env);
+}
+
+BOOL sub_02053AE4(TaskManager *taskManager) {
+    struct UnkTaskEnv_02053950 *env = TaskManager_GetEnv(taskManager);
+    if (ov02_0224B43C(env->unk4) == TRUE) {
+        ov02_0224B448(env->unk4);
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+void sub_02053B04(TaskManager *taskManager, Location *location, int a2) {
+    struct UnkTaskEnv_02053B3C *env = AllocFromHeapAtEnd(11, sizeof(struct UnkTaskEnv_02053B3C));
+    env->unk0 = 0;
+    env->unk4 = a2;
+    env->unk8 = NULL;
+    env->location = *location;
+    TaskManager_Jump(taskManager, sub_02053B3C, env);
+}
+
+BOOL sub_02053B3C(TaskManager *taskManager) {
+    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    struct UnkTaskEnv_02053B3C *env = TaskManager_GetEnv(taskManager);
+    Location *location = &env->location;
+
+    switch (env->unk0) {
+    case 0:
+        sub_020550E4(fsys, location->mapId);
+        sub_02053BE8(taskManager);
+        env->unk0++;
+        break;
+    case 1:
+        sub_0205C6E4(fsys->playerAvatar, 0);
+        sub_020537A8(taskManager, &env->location);
+        env->unk0++;
+        break;
+    case 2:
+        if (GF_SndGetFadeTimer() != 0) {
+            break;
+        }
+        sub_02055110(fsys, location->mapId, 0);
+        if (env->unk4 == 2) {
+            sub_02067BA4(fsys);
+        } else if (env->unk4 == 0 || env->unk4 == 1) {
+            sub_02067BC0(fsys);
+        } else {
+            GF_ASSERT(0);
+        }
+        sub_02053C24(taskManager);
+        env->unk0++;
+        break;
+    case 3:
+        FreeToHeap(env);
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+void sub_02053BE8(TaskManager *taskManager) {
+    TaskManager_Call(taskManager, sub_02053BF8, NULL);
+}
+
+BOOL sub_02053BF8(TaskManager *taskManager) {
+    u32 *state_p = TaskManager_GetStatePtr(taskManager);
+
+    switch (*state_p) {
+    case 0:
+        sub_0205525C(taskManager);
+        (*state_p)++;
+        break;
+    case 1:
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+void sub_02053C24(TaskManager *taskManager) {
+    struct UnkTaskEnv_02053B3C *env = TaskManager_GetEnv(taskManager);
+    TaskManager_Call(taskManager, sub_02053C3C, env);
+}
+
+BOOL sub_02053C3C(TaskManager *taskManager) {
+    u32 *state_p = TaskManager_GetStatePtr(taskManager);
+    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    struct UnkTaskEnv_02053B3C *env = TaskManager_GetEnv(taskManager); // unused
+
+    switch (*state_p) {
+    case 0:
+        sub_020552A4(taskManager);
+        (*state_p)++;
+        break;
+    case 1:
+        ov01_021EFAF8(fsys);
+        sub_02053C90(taskManager);
+        (*state_p)++;
+        break;
+    case 2:
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+void sub_02053C90(TaskManager *taskManager) {
+    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    struct UnkTaskEnv_02053B3C *env = TaskManager_GetEnv(taskManager);
+
+    if (!sub_0203DF7C(fsys)) {
+        GF_ASSERT(0);
+        return;
+    }
+    TaskManager_Call(taskManager, ov02_0224C1F8, ov02_0224C1D8(fsys, 4, env->unk4));
+}
+
+BOOL sub_02053CCC(TaskManager *taskManager) {
+    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    struct UnkTaskEnv_02053CCC *env = TaskManager_GetEnv(taskManager);
+    Location *location = &env->location;
+    struct LocalMapObject *follow_poke_obj;
+
+    switch (env->unk0) {
+    case 0:
+        env->unk1C = 0;
+        if (FollowingPokemon_IsActive(fsys)
+         && !ov01_022057C4(fsys)
+         && sub_0205C700(fsys->playerAvatar) != 1) {
+            env->unk1C = ov01_0220329C(FollowingPokemon_GetMapObject(fsys), 1);
+        }
+        env->unk0++;
+        break;
+    case 1:
+        if (env->unk1C == 0 || !sub_02068CCC(env->unk1C)) {
+            ov01_021F35C4(fsys, 1, &env->unk4);
+            env->unk0++;
+        }
+        break;
+    case 2:
+        if (env->unk4) {
+            sub_020550E4(fsys, location->mapId);
+            sub_0205525C(taskManager);
+            env->unk0++;
+        }
+        break;
+    case 3:
+        sub_020537A8(taskManager, location);
+        env->unk0++;
+        break;
+    case 4:
+        if (GF_SndGetFadeTimer() != 0) {
+            break;
+        }
+        sub_02055110(fsys, location->mapId, 0);
+        sub_020552A4(taskManager);
+        env->unk0++;
+        break;
+    case 5:
+        env->unk4 = 0;
+        ov01_021F35C4(fsys, 0, &env->unk4);
+        if (FollowingPokemon_IsActive(fsys)) {
+            follow_poke_obj = FollowingPokemon_GetMapObject(fsys);
+            if (GetFollowPokePermissionBySpeciesAndMap(FollowPokeObj_GetSpecies(follow_poke_obj), location->mapId)) {
+                sub_02069E84(follow_poke_obj, 1);
+                ov01_02205790(fsys, 1);
+            }
+        }
+        env->unk0++;
+        break;
+    case 6:
+        if (env->unk4) {
+            env->unk0++;
+        }
+        break;
+    case 7:
+        FreeToHeap(env);
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+TaskManager *sub_02053E08(FieldSystem *fsys, u32 mapId, int warpId) {
+    struct UnkTaskEnv_02053CCC *env;
+    Location location;
+    int direction;
+
+    env = AllocFromHeapAtEnd(11, sizeof(struct UnkTaskEnv_02053CCC));
+    MI_CpuClear8(env, sizeof(struct UnkTaskEnv_02053CCC));
+    direction = PlayerAvatar_GetFacingDirection(fsys->playerAvatar);
+    location.mapId = mapId;
+    location.warpId = warpId;
+    location.x = 0;
+    location.z = 0;
+    location.direction = direction;
+    env->location = location;
+    return FieldSys_CreateTask(fsys, sub_02053CCC, env);
+}
+
+BOOL sub_02053E5C(TaskManager *taskManager) {
+    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    struct UnkTaskEnv_02053E5C *env = TaskManager_GetEnv(taskManager);
+    u32 *state_p = TaskManager_GetStatePtr(taskManager);
+    Location *location = &env->location;
+
+    switch (*state_p) {
+    case 0:
+        sub_020550E4(fsys, location->mapId);
+        ov01_021F35C4(fsys, 1, &env->unk4);
+        (*state_p)++;
+        break;
+    case 1:
+        if (env->unk4) {
+            sub_0205525C(taskManager);
+            (*state_p)++;
+        }
+        break;
+    case 2:
+        sub_020537A8(taskManager, location);
+        (*state_p)++;
+        break;
+    case 3:
+        if (GF_SndGetFadeTimer() != 0) {
+            break;
+        }
+        sub_02055110(fsys, location->mapId, 0);
+        sub_020552A4(taskManager);
+        (*state_p)++;
+        break;
+    case 4:
+        sub_0205532C(taskManager);
+        (*state_p)++;
+        break;
+    case 5:
+        FreeToHeap(env);
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+void sub_02053F14(FieldSystem *fsys) {
+    Location *location = FlyPoints_GetDynamicWarp(Save_FlyPoints_get(fsys->savedata));
+    struct UnkTaskEnv_02053E5C *env = AllocFromHeapAtEnd(11, sizeof(struct UnkTaskEnv_02053E5C));
+    MI_CpuClear8(env, sizeof(struct UnkTaskEnv_02053E5C));
+    env->location = *location;
+    sub_02059E04(fsys);
+    sub_0205AD3C(fsys->unk84);
+    fsys->unk70 = 0;
+    FieldSys_CreateTask(fsys, sub_02053E5C, env);
+    fsys->unk80 = NULL;
 }
