@@ -65,6 +65,23 @@ struct UnkTaskEnv_02053E5C {
     Location location;
 };
 
+void sub_02052F30(FieldSystem *fsys);
+void sub_02052F94(FieldSystem *fsys, Location *location);
+void sub_0205316C(FieldSystem *fsys);
+void sub_02053210(FieldSystem *fsys);
+void sub_0205323C(FieldSystem *fsys);
+void sub_02053284(FieldSystem *fsys);
+void sub_02053324(FieldSystem *fsys);
+void _CopyPlayerPosToLocationWorkFacingSouth(Location *location, FieldSystem *fsys);
+BOOL _IsPlayerStandingInFrontOfUnionRoomReception(FieldSystem *fsys);
+void _SetDynamicWarpToUnionRoomExit(FieldSystem *fsys);
+BOOL sub_02053414(TaskManager *taskManager);
+BOOL sub_0205348C(TaskManager *taskManager);
+BOOL sub_02053550(TaskManager *taskManager);
+BOOL sub_02053688(TaskManager *taskManager);
+void sub_02053710(TaskManager *taskManager, Location *location);
+BOOL sub_02053740(TaskManager *taskManager);
+BOOL sub_0205380C(TaskManager *taskManager);
 BOOL sub_02053950(TaskManager *taskManager);
 void sub_020539D8(TaskManager *taskManager);
 BOOL sub_020539E8(TaskManager *taskManager);
@@ -78,10 +95,21 @@ BOOL sub_02053BF8(TaskManager *taskManager);
 void sub_02053C24(TaskManager *taskManager);
 BOOL sub_02053C3C(TaskManager *taskManager);
 void sub_02053C90(TaskManager *taskManager);
+BOOL sub_02053CCC(TaskManager *taskManager);
+BOOL sub_02053E5C(TaskManager *taskManager);
+BOOL sub_02053F70(TaskManager *taskManager);
+BOOL sub_020540A4(TaskManager *taskManager);
 
-extern const struct UnkStruct_020FC5CC _020FC5CC[6];
+static const struct UnkStruct_020FC5CC _020FC5CC[] = {
+    {1, 0, 0, 0, 0, 1, 0, 0, 64, 12},
+    {1, 2, 0, 0, 0, 1,  0, 0, 64, 12},
+    {3, 0, 0, 0, 0, 1, 0, 0, 64, 12},
+    {1, 1, 1, 0, 1, 1, 1, 0, 64, 12},
+    {1, 1, 1, 0, 1, 1, 1, 0, 0, 10},
+    {6, 0, 0, 0, 0, 1, 0, 0, 64, 12},
+};
 
-void sub_02052F30(FieldSystem *fsys) {
+static void sub_02052F30(FieldSystem *fsys) {
     BOOL r2 = FALSE;
 
     switch (fsys->location->mapId) {
@@ -109,7 +137,7 @@ void sub_02052F30(FieldSystem *fsys) {
     }
 }
 
-void sub_02052F94(FieldSystem *fsys, Location *location) {
+static void sub_02052F94(FieldSystem *fsys, Location *location) {
     FLYPOINTS_SAVE *flypointsSave = Save_FlyPoints_get(fsys->savedata);
     Location *r2 = sub_0203B960(flypointsSave);
     const WARP_EVENT *warp;
@@ -187,7 +215,7 @@ void sub_02053038(FieldSystem *fsys, BOOL isConnection) {
     ClearFlag99A(SavArray_Flags_get(fsys->savedata));
 }
 
-void sub_0205316C(FieldSystem *fsys) {
+static void sub_0205316C(FieldSystem *fsys) {
     u32 gender;
     struct FlypointsPlayerSub *avatar_sub;
     if (fsys->unkAC) {
@@ -205,7 +233,7 @@ void sub_0205316C(FieldSystem *fsys) {
     }
 }
 
-void sub_02053210(FieldSystem *fsys) {
+static void sub_02053210(FieldSystem *fsys) {
     if (fsys->unkAC) {
         sub_0205C4CC(fsys->playerAvatar);
     } else {
@@ -216,20 +244,20 @@ void sub_02053210(FieldSystem *fsys) {
     }
 }
 
-void sub_0205323C(FieldSystem *fsys) {
+static void sub_0205323C(FieldSystem *fsys) {
     u32 gender;
     struct FlypointsPlayerSub *avatar_sub;
 
     fsys->unk3C = sub_0205E0BC(fsys, 64, 5);
     sub_0203B9F4(fsys);
-    avatar_sub = sub_0203B9B4(Save_FlyPoints_get(fsys->savedata));    
+    avatar_sub = sub_0203B9B4(Save_FlyPoints_get(fsys->savedata));
     gender = PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(fsys->savedata));
     fsys->playerAvatar = sub_0205C408(fsys->unk3C, avatar_sub, gender);
     sub_02069B74(fsys->unk3C, fsys->location->mapId);
     sub_0205F55C(fsys->unk3C);
 }
 
-void sub_02053284(FieldSystem *fsys) {
+static void sub_02053284(FieldSystem *fsys) {
     SCRIPT_STATE *scriptState;
 
     sub_02052F30(fsys);
@@ -251,7 +279,7 @@ void sub_02053284(FieldSystem *fsys) {
     }
 }
 
-void sub_02053324(FieldSystem *fsys) {
+static void sub_02053324(FieldSystem *fsys) {
     GF_ASSERT(fsys->unk60 != 0);
     fsys->unk60 = 0;
     fsys->unk18 = 7;
@@ -261,7 +289,7 @@ void sub_02053324(FieldSystem *fsys) {
     fsys->unk74 = NULL;
 }
 
-void sub_02053350(Location *location, FieldSystem *fsys) {
+static void _CopyPlayerPosToLocationWorkFacingSouth(Location *location, FieldSystem *fsys) {
     int x, y;
 
     y = GetPlayerYCoord(fsys->playerAvatar);
@@ -274,8 +302,7 @@ void sub_02053350(Location *location, FieldSystem *fsys) {
     location->direction = 1;
 }
 
-// Is player standing in front of Union Room reception?
-BOOL sub_0205337C(FieldSystem *fsys) {
+static BOOL _IsPlayerStandingInFrontOfUnionRoomReception(FieldSystem *fsys) {
     if (MapHeader_MapIsPokemonCenter(fsys->location->mapId)
      && fsys->location->x == 6 && fsys->location->z == 6) {
         return TRUE;
@@ -289,8 +316,7 @@ BOOL sub_0205337C(FieldSystem *fsys) {
     return FALSE;
 }
 
-// Set dynamic warp to union room exit
-void sub_020533C0(FieldSystem *fsys) {
+static void _SetDynamicWarpToUnionRoomExit(FieldSystem *fsys) {
     Location *dynamicWarp = FlyPoints_GetDynamicWarp(Save_FlyPoints_get(fsys->savedata));
     SCRIPT_STATE *scriptState = SavArray_Flags_get(fsys->savedata); // unused
     if (MapHeader_MapIsPokemonLeagueLobby(fsys->location->mapId) == TRUE) {
@@ -308,7 +334,7 @@ void sub_020533C0(FieldSystem *fsys) {
     }
 }
 
-BOOL sub_02053414(TaskManager *taskManager) {
+static BOOL sub_02053414(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
 
@@ -337,7 +363,7 @@ TaskManager *CallFieldTask_NewGame(FieldSystem *fsys) {
     return FieldSys_CreateTask(fsys, sub_02053414, NULL);
 }
 
-BOOL sub_0205348C(TaskManager *taskManager) {
+static BOOL sub_0205348C(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     SCRIPT_STATE *scriptState = SavArray_Flags_get(fsys->savedata);
     FLYPOINTS_SAVE *flypointsSave;
@@ -347,8 +373,8 @@ BOOL sub_0205348C(TaskManager *taskManager) {
     case 0:
         if (CheckFlag966(scriptState)) {
             flypointsSave = Save_FlyPoints_get(fsys->savedata);
-            if (sub_0205337C(fsys)) {
-                sub_020533C0(fsys);
+            if (_IsPlayerStandingInFrontOfUnionRoomReception(fsys)) {
+                _SetDynamicWarpToUnionRoomExit(fsys);
             }
             ClearFlag966(scriptState);
             sub_02052F94(fsys, FlyPoints_GetDynamicWarp(flypointsSave));
@@ -380,7 +406,7 @@ TaskManager *CallFieldTask_ContinueGame_Normal(FieldSystem *fsys) {
     return FieldSys_CreateTask(fsys, sub_0205348C, NULL);
 }
 
-BOOL sub_02053550(TaskManager *taskManager) {
+static BOOL sub_02053550(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     struct ErrorContinueEnv *env = TaskManager_GetEnv(taskManager);
     SCRIPT_STATE *scriptState = SavArray_Flags_get(fsys->savedata);
@@ -428,9 +454,9 @@ TaskManager *CallFieldTask_ContinueGame_CommError(FieldSystem *fsys) {
     SCRIPT_STATE *scriptState;
     struct ErrorContinueEnv *env;
     if (!MapHeader_MapIsUnionRoom(fsys->location->mapId)) {
-        if (sub_0205337C(fsys)) {
+        if (_IsPlayerStandingInFrontOfUnionRoomReception(fsys)) {
             scriptState = SavArray_Flags_get(fsys->savedata);
-            sub_020533C0(fsys);
+            _SetDynamicWarpToUnionRoomExit(fsys);
             SetFlag966(scriptState);
         } else {
             return CallFieldTask_ContinueGame_Normal(fsys);
@@ -447,7 +473,7 @@ TaskManager *CallFieldTask_ContinueGame_CommError(FieldSystem *fsys) {
     return FieldSys_CreateTask(fsys, sub_02053550, env);
 }
 
-BOOL sub_02053688(TaskManager *taskManager) {
+static BOOL sub_02053688(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     struct UnkTaskEnv_02053688 *env = TaskManager_GetEnv(taskManager);
 
@@ -478,14 +504,14 @@ BOOL sub_02053688(TaskManager *taskManager) {
     return FALSE;
 }
 
-void sub_02053710(TaskManager *taskManager, Location *location) {
+static void sub_02053710(TaskManager *taskManager, Location *location) {
     struct UnkTaskEnv_02053688 *env = AllocFromHeapAtEnd(11, sizeof(struct UnkTaskEnv_02053688));
     env->unk0 = 0;
     env->location = *location;
     TaskManager_Call(taskManager, sub_02053688, env);
 }
 
-BOOL sub_02053740(TaskManager *taskManager) {
+static BOOL sub_02053740(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     struct ErrorContinueEnv *env = TaskManager_GetEnv(taskManager);
 
@@ -534,7 +560,7 @@ void sub_020537F0(TaskManager *taskManager, u32 mapId, int warpId, int x, int y,
     sub_020537A8(taskManager, &location);
 }
 
-BOOL sub_0205380C(TaskManager *taskManager) {
+static BOOL sub_0205380C(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     struct ErrorContinueEnv *env = TaskManager_GetEnv(taskManager);
 
@@ -605,7 +631,7 @@ void sub_02053908(TaskManager *taskManager, u32 mapId, int warpId, int x, int y,
     TaskManager_Jump(taskManager, sub_02053950, env);
 }
 
-BOOL sub_02053950(TaskManager *taskManager) {
+static BOOL sub_02053950(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     struct UnkTaskEnv_02053950 *env = TaskManager_GetEnv(taskManager);
     Location *location = &env->location;
@@ -636,11 +662,11 @@ BOOL sub_02053950(TaskManager *taskManager) {
     return FALSE;
 }
 
-void sub_020539D8(TaskManager *taskManager) {
+static void sub_020539D8(TaskManager *taskManager) {
     TaskManager_Call(taskManager, sub_020539E8, NULL);
 }
 
-BOOL sub_020539E8(TaskManager *taskManager) {
+static BOOL sub_020539E8(TaskManager *taskManager) {
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
 
     switch (*state_p) {
@@ -655,11 +681,11 @@ BOOL sub_020539E8(TaskManager *taskManager) {
     return FALSE;
 }
 
-void sub_02053A14(TaskManager *taskManager) {
+static void sub_02053A14(TaskManager *taskManager) {
     TaskManager_Call(taskManager, sub_02053A2C, TaskManager_GetEnv(taskManager));
 }
 
-BOOL sub_02053A2C(TaskManager *taskManager) {
+static BOOL sub_02053A2C(TaskManager *taskManager) {
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     switch (*state_p) {
@@ -683,7 +709,7 @@ BOOL sub_02053A2C(TaskManager *taskManager) {
     return FALSE;
 }
 
-void sub_02053AA0(TaskManager *taskManager) {
+static void sub_02053AA0(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     struct UnkTaskEnv_02053950 *env = TaskManager_GetEnv(taskManager);
     if (!sub_0203DF7C(fsys)) {
@@ -694,7 +720,7 @@ void sub_02053AA0(TaskManager *taskManager) {
     TaskManager_Call(taskManager, sub_02053AE4, env);
 }
 
-BOOL sub_02053AE4(TaskManager *taskManager) {
+static BOOL sub_02053AE4(TaskManager *taskManager) {
     struct UnkTaskEnv_02053950 *env = TaskManager_GetEnv(taskManager);
     if (ov02_0224B43C(env->unk4) == TRUE) {
         ov02_0224B448(env->unk4);
@@ -713,7 +739,7 @@ void sub_02053B04(TaskManager *taskManager, Location *location, int a2) {
     TaskManager_Jump(taskManager, sub_02053B3C, env);
 }
 
-BOOL sub_02053B3C(TaskManager *taskManager) {
+static BOOL sub_02053B3C(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     struct UnkTaskEnv_02053B3C *env = TaskManager_GetEnv(taskManager);
     Location *location = &env->location;
@@ -752,11 +778,11 @@ BOOL sub_02053B3C(TaskManager *taskManager) {
     return FALSE;
 }
 
-void sub_02053BE8(TaskManager *taskManager) {
+static void sub_02053BE8(TaskManager *taskManager) {
     TaskManager_Call(taskManager, sub_02053BF8, NULL);
 }
 
-BOOL sub_02053BF8(TaskManager *taskManager) {
+static BOOL sub_02053BF8(TaskManager *taskManager) {
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
 
     switch (*state_p) {
@@ -771,12 +797,12 @@ BOOL sub_02053BF8(TaskManager *taskManager) {
     return FALSE;
 }
 
-void sub_02053C24(TaskManager *taskManager) {
+static void sub_02053C24(TaskManager *taskManager) {
     struct UnkTaskEnv_02053B3C *env = TaskManager_GetEnv(taskManager);
     TaskManager_Call(taskManager, sub_02053C3C, env);
 }
 
-BOOL sub_02053C3C(TaskManager *taskManager) {
+static BOOL sub_02053C3C(TaskManager *taskManager) {
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     struct UnkTaskEnv_02053B3C *env = TaskManager_GetEnv(taskManager); // unused
@@ -798,7 +824,7 @@ BOOL sub_02053C3C(TaskManager *taskManager) {
     return FALSE;
 }
 
-void sub_02053C90(TaskManager *taskManager) {
+static void sub_02053C90(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     struct UnkTaskEnv_02053B3C *env = TaskManager_GetEnv(taskManager);
 
@@ -809,7 +835,7 @@ void sub_02053C90(TaskManager *taskManager) {
     TaskManager_Call(taskManager, ov02_0224C1F8, ov02_0224C1D8(fsys, 4, env->unk4));
 }
 
-BOOL sub_02053CCC(TaskManager *taskManager) {
+static BOOL sub_02053CCC(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     struct UnkTaskEnv_02053CCC *env = TaskManager_GetEnv(taskManager);
     Location *location = &env->location;
@@ -892,7 +918,7 @@ TaskManager *sub_02053E08(FieldSystem *fsys, u32 mapId, int warpId) {
     return FieldSys_CreateTask(fsys, sub_02053CCC, env);
 }
 
-BOOL sub_02053E5C(TaskManager *taskManager) {
+static BOOL sub_02053E5C(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     struct UnkTaskEnv_02053E5C *env = TaskManager_GetEnv(taskManager);
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
@@ -944,4 +970,125 @@ void sub_02053F14(FieldSystem *fsys) {
     fsys->unk70 = 0;
     FieldSys_CreateTask(fsys, sub_02053E5C, env);
     fsys->unk80 = NULL;
+}
+
+static BOOL sub_02053F70(TaskManager *taskManager) {
+    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    struct UnkTaskEnv_02053E5C *env = TaskManager_GetEnv(taskManager);
+    u32 *state_p = TaskManager_GetStatePtr(taskManager);
+    Location *location = &env->location;
+
+    switch (*state_p) {
+    case 0:
+        sub_020550E4(fsys, location->mapId);
+        sub_020552E8(taskManager);
+        (*state_p)++;
+        break;
+    case 1:
+        sub_0205525C(taskManager);
+        (*state_p)++;
+        break;
+    case 2:
+        sub_020537A8(taskManager, location);
+        (*state_p)++;
+        break;
+    case 3:
+        if (GF_SndGetFadeTimer() != 0) {
+            break;
+        }
+        sub_02055110(fsys, location->mapId, 0);
+        sub_020552A4(taskManager);
+        (*state_p)++;
+        break;
+    case 4:
+        env->unk4 = 0;
+        ov01_021F35C4(fsys, 0, &env->unk4);
+        (*state_p)++;
+        break;
+    case 5:
+        if (env->unk4) {
+            (*state_p)++;
+        }
+        break;
+    case 6:
+        FreeToHeap(env);
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+void sub_02054030(TaskManager *taskManager) {
+    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    Location *location = FlyPoints_GetDynamicWarp(Save_FlyPoints_get(fsys->savedata));
+    struct UnkTaskEnv_02053E5C *env = AllocFromHeapAtEnd(11, sizeof(struct UnkTaskEnv_02053E5C));
+    MI_CpuClear8(env, sizeof(struct UnkTaskEnv_02053E5C));
+    _CopyPlayerPosToLocationWorkFacingSouth(location, fsys);
+    env->location.mapId = MAP_UNION;
+    env->location.warpId = -1;
+    env->location.x = 8;
+    env->location.z = 14;
+    env->location.direction = 0;
+    fsys->unk80 = sub_02059DB0(fsys);
+    fsys->unk84 = sub_0205AC88(fsys->unk80);
+    fsys->unk70 = 2;
+    TaskManager_Call(taskManager, sub_02053F70, env);
+}
+
+static BOOL sub_020540A4(TaskManager *taskManager) {
+    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    struct UnkTaskEnv_02053688 *env = TaskManager_GetEnv(taskManager);
+
+    switch (env->unk0) {
+    case 0:
+        PlaySE(SEQ_SE_DP_KAIDAN2);
+        sub_020550E4(fsys, env->location.mapId);
+        sub_020553B0(taskManager);
+        env->unk0++;
+        break;
+    case 1:
+        sub_020537A8(taskManager, &env->location);
+        env->unk0++;
+        break;
+    case 2:
+        if (GF_SndGetFadeTimer() != 0) {
+            break;
+        }
+        sub_02055110(fsys, env->location.mapId, 0);
+        sub_020552A4(taskManager);
+        env->unk0++;
+        break;
+    case 3:
+        FreeToHeap(env);
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+void sub_0205412C(TaskManager *taskManager, u32 mapId, int warpId, int x, int y, int direction) {
+    struct UnkTaskEnv_02053688 *env;
+    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    _CopyPlayerPosToLocationWorkFacingSouth(FlyPoints_GetDynamicWarp(Save_FlyPoints_get(fsys->savedata)), fsys);
+    fsys->unk70 = 3;
+    env = AllocFromHeapAtEnd(11, sizeof(struct UnkTaskEnv_02053688));
+    {
+        Location location = {
+            mapId,
+            warpId,
+            x,
+            y,
+            direction
+        };
+        env->unk0 = 0;
+        env->location = location;
+    }
+    TaskManager_Call(taskManager, sub_020540A4, env);
+}
+
+void sub_02054190(TaskManager *taskManager) {
+    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    Location *location = FlyPoints_GetDynamicWarp(Save_FlyPoints_get(fsys->savedata));
+    fsys->unk70 = 0;
+    sub_02053710(fsys->taskman, location);
 }

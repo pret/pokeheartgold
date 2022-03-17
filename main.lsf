@@ -185,7 +185,6 @@ Static main
 	Object src/field_black_out.o
 	Object asm/unk_0205298C.o
 	Object src/unk_02052F30.o
-	Object asm/unk_02052F30_s.o
 	Object src/script_pokemon_util.o
 	Object asm/unk_02054514.o
 	Object asm/unk_02054648.o
