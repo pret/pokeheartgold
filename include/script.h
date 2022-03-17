@@ -223,8 +223,10 @@ struct FieldSystem {
     u32 unkAC;
     u8 unkB0[0x4];
     s64 unkB4;
-    u8 unkBC[0x28];
-    FollowMon followMon;
+    u8 unkBC[8];
+    int unkC4;
+    u8 filler_C8[0x1C];
+    FollowMon followMon; // A4
     u8 unk104[4];
     struct FieldSystemUnk108 *unk108;
     u8 filler_10C[8];

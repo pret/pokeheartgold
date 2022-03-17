@@ -19,5 +19,7 @@ FIELD_PLAYER_AVATAR *sub_0205C390(MapObjectMan *man, int x, int y, int direction
 FIELD_PLAYER_AVATAR *sub_0205C408(MapObjectMan *man, struct FlypointsPlayerSub *a1, int gender);
 void sub_0205C4CC(FIELD_PLAYER_AVATAR *avatar);
 void sub_0205C4C4(FIELD_PLAYER_AVATAR *avatar);
+void sub_0205C6E4(FIELD_PLAYER_AVATAR *avatar, int a1);
+int sub_0205C724(FIELD_PLAYER_AVATAR *avatar);
 
 #endif //POKEHEARTGOLD_FIELD_PLAYER_AVATAR_H
