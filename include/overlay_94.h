@@ -6,8 +6,8 @@
 #include "script.h"
 
 typedef struct Dummy_Overlay_94 {
-	u8 unk0[0x10];
-	u32 unk10;
+	u8 unk0[0x14];
+	u32 unk14;
 };
 
 typedef struct UnkStruct_Overlay_94_B

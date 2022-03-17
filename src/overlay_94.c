@@ -156,9 +156,9 @@ static const int PartyMonSpritePositions[][2] = {
 
 void ov94_021E5C28(struct UnkStruct_Overlay_94_C* unkPtr) {
     struct Dummy_Overlay_94* unkA = sub_02015504();
-    u32 unkB = PartyMonSpritePositions[unkA->unk10][0];
+    u32 unkB = PartyMonSpritePositions[unkA->unk14][0];
     unkPtr->unk28 = unkB + unkPtr->unk20[0][1];
-    u32 unkD = PartyMonSpritePositions[unkA->unk10][1];
+    u32 unkD = PartyMonSpritePositions[unkA->unk14][1];
     unkPtr->unk2c = unkD + unkPtr->unk20[0][2];
 }
 
