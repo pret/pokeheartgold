@@ -39,7 +39,7 @@ BOOL ov94_021E593C(struct UnkStruct_Overlay_94_A* unkPtr) {
             GF_ASSERT(FALSE);
             break;
         } 
-        Pokedex_SetMonCaughtFlag(Sav2_Pokedex_get(ScriptEnvironment_GetSav2Ptr(unkPtr->unk654->fsys)), pokemon);
+        Pokedex_SetMonCaughtFlag(Sav2_Pokedex_get(Fsys_GetSaveDataPtr(unkPtr->unk654->fsys)), pokemon);
         unkA->unk0++;
         break;
     case 1:
