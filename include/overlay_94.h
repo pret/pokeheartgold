@@ -6,12 +6,15 @@
 #include "script.h"
 
 typedef struct Dummy_Overlay_94 {
-    u8 unk0[0x14];
-    u32 unk14;
+	u8 unk0[0x14];
+	u32 unk14;
 };
 
-typedef struct UnkStruct_Overlay_94_B
-{
+typedef struct Dummy_Overlay_94_B {
+    u8 unk0[0x4800];
+};
+
+typedef struct UnkStruct_Overlay_94_B {
     PARTY* party;
     u8 unk4[0x16];
     FieldSystem* fsys;
@@ -20,18 +23,21 @@ typedef struct UnkStruct_Overlay_94_B
 };
 
 typedef struct UnkStruct_Overlay_94_C  {
-    u32 unk0;
-    s32 unk4;
-    s32 unk8;
-    u32 species;
-    u32 unk10; 
+	u32 unk0;
+	s32 unk4;
+	s32 unk8;
+	u32 species;
+	u32 unk10; 
     u32 partyMonIndex; //same information as B's unkc65
-    u32* unk18; 
-    u8 unk1c;
+	u32* unk18;
+};
+
+typedef struct UnkStruct_Overlay_94_D  {
+    u8 unk0[0x20];
     u32** unk20;
-    u32 unk24;
-    u32 unk28;
-    u32 unk2c;
+	u32 unk24;
+	u32 unk28;
+	u32 unk2c;
 };
 
 typedef struct UnkStruct_Overlay_94_A {
@@ -56,7 +62,7 @@ void ov94_021E5B04(struct UnkStruct_Overlay_94_A* unkPtr);
 void ov94_021E5B30(struct UnkStruct_Overlay_94_A* unkPtr);
 void ov94_021E5B54(struct UnkStruct_Overlay_94_C* unkPtr);
 void ov94_021E5BA0(struct UnkStruct_Overlay_94_C* unkPtr);
-void ov94_021E5C28(struct UnkStruct_Overlay_94_C* unkPtr);
+void ov94_021E5C28(struct UnkStruct_Overlay_94_D* unkPtr);
 s32 ov94_021E5C60(void);
 void ov94_021E5C84(struct UnkStruct_Overlay_94_C* unkPtr);
 u32 ov94_021E5CA0(u32 unkA, u32 unkB);

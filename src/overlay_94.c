@@ -8,11 +8,11 @@
 #include "overlay_94.h"
 
 void ov94_021E5900(struct UnkStruct_Overlay_94_A* unkPtr) {
-    if ((u32) unkPtr->unkc80 != 0) {
+    if (unkPtr->unkc80 != NULL) {
         GF_ASSERT(FALSE);
     }
-    unkPtr->unkc80 = AllocFromHeap(0xc, 0x1c);
-    MI_CpuFill8(unkPtr->unkc80, 0, 0x1c);
+    unkPtr->unkc80 = AllocFromHeap(12, sizeof(struct UnkStruct_Overlay_94_C));
+    MI_CpuClear8(unkPtr->unkc80, sizeof(struct UnkStruct_Overlay_94_C));
     unkPtr->unkc80->partyMonIndex = unkPtr->partyMonIndex;
 }
 
@@ -26,12 +26,12 @@ BOOL ov94_021E593C(struct UnkStruct_Overlay_94_A* unkPtr) {
         switch (unkA->species) {
         case SPECIES_GIRATINA:
             Mon_UpdateGiratinaForme(pokemon);
-            unkA->unk8 = 0x41;
+            unkA->unk8 = 65;
             unkA->unk10 = 0;
             break;
         case SPECIES_SHAYMIN:
             Mon_UpdateShayminForme(pokemon, SHAYMIN_SKY);
-            unkA->unk8 = 0x23;
+            unkA->unk8 = 35;
             unkA->unk10 = 1;
             break;
         case SPECIES_ROTOM:
@@ -81,11 +81,11 @@ BOOL ov94_021E593C(struct UnkStruct_Overlay_94_A* unkPtr) {
         }
         break;
     case 9:
-        STRING* str = NewString_ReadMsgData(unkPtr->msgData, 0xbc);
+        STRING* str = NewString_ReadMsgData(unkPtr->msgData, 188);
         BufferBoxMonNickname(unkPtr->unk7c4, 0, Mon_GetBoxMon(pokemon));
         StringExpandPlaceholders(unkPtr->unk7c4, unkPtr->unk7c8, str);
         String_dtor(str);
-        sub_0207DAEC(unkPtr, ~0, 1);
+        sub_0207DAEC(unkPtr, -1, 1);
         unkA->unk0++;
         break;
     case 10:
@@ -107,27 +107,26 @@ void ov94_021E5AEC(struct UnkStruct_Overlay_94_A* unkPtr) {
 void ov94_021E5B04(struct UnkStruct_Overlay_94_A* unkPtr) {
     sub_0207991C(unkPtr, 0);
     ov94_021E5B54(unkPtr->unkc80);
-    G2x_SetBlendAlpha_(0x04000050, 0, 0x3f, 0x1f, 0);
+    G2_SetBlendAlpha(0, 63, 31, 0);
 }
 
 void ov94_021E5B30(struct UnkStruct_Overlay_94_A* unkPtr) {
     ov94_021E5C84(unkPtr->unkc80);
     sub_0207991C(unkPtr, 1);
-    u16* unkPtr2 = (u16*) 0x04000050;
-    unkPtr2[0] = 0;
+    G2_BlendNone();
 }
 
 void ov94_021E5B54(struct UnkStruct_Overlay_94_C* unkPtr) {
     sub_02014DA0();
-    void* unkPtrB = AllocFromHeap(0xc, 0x4800);
+    struct Dummy_Overlay_94_B* unkPtrB = AllocFromHeap(12, sizeof(struct Dummy_Overlay_94_B));
 
-    unkPtr->unk18 = sub_02014DB4(ov94_021E5CA0, ov94_021E5CC4, unkPtrB, 0x4800, 1, 0xc);
+    unkPtr->unk18 = sub_02014DB4(ov94_021E5CA0, ov94_021E5CC4, unkPtrB, 0x4800, 1, 12);
 
     sub_02023240(0x1000, 0x384000, sub_02015524());
 }
 
 void ov94_021E5BA0(struct UnkStruct_Overlay_94_C* unkPtr) { 
-    sub_0201526C(unkPtr->unk18, sub_02015264(0xd0, unkPtr->unk10, 0xc), 0xa, 1);
+    sub_0201526C(unkPtr->unk18, sub_02015264(208, unkPtr->unk10, 12), 10, 1);
 
     switch (unkPtr->species) {
     case SPECIES_GIRATINA: 
@@ -154,7 +153,7 @@ static const int PartyMonSpritePositions[][2] = {
 };
 
 
-void ov94_021E5C28(struct UnkStruct_Overlay_94_C* unkPtr) {
+void ov94_021E5C28(struct UnkStruct_Overlay_94_D* unkPtr) {
     struct Dummy_Overlay_94* unkA = sub_02015504();
     u32 unkB = PartyMonSpritePositions[unkA->unk14][0];
     unkPtr->unk28 = unkB + unkPtr->unk20[0][1];
@@ -186,7 +185,7 @@ u32 ov94_021E5CA0(u32 unkA, u32 unkB) {
         GF_ASSERT(FALSE);
     }
     sub_02015354(unkC);
-	
+    
     return NNS_GfdGetTexKeyAddr(unkC);
 }
 
