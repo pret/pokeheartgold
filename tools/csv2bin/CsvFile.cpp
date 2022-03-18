@@ -1,8 +1,6 @@
 #include <sstream>
 #include "CsvFile.h"
 
-static std::string linesep;
-
 void CsvFile::ParseRow(std::string &line, std::vector<std::string> &row, bool resize) {
     std::string entry, qbuf;
     bool isQuoted = false;
