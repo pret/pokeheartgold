@@ -889,7 +889,8 @@ Overlay OVY_93
 Overlay OVY_94
 {
     After main
-    Object asm/overlay_94.o
+    Object src/overlay_94.o
+	
 }
 Overlay OVY_95
 {
