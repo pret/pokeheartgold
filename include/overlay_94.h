@@ -11,26 +11,26 @@
 
 typedef struct UnkStruct_Overlay_94_B {
     PARTY* party;
-    u8 unk4[0x16];
+    u8 unk4[0x17];
     FieldSystem* fsys;
     u8 unk2[0x7];
     u8 unk27;
 } UnkStruct_Overlay_94_B;
 
-typedef struct UnkStruct_Overlay_94_C  {
-    u32 unk0;
-    s32 unk4;
-    s32 unk8;
-    u32 species;
-    u32 unk10; 
-    u32 partyMonIndex; //same information as B's unkc65
-    UnkStruct_02014DA0* unk18;
-} UnkStruct_Overlay_94_C;
+typedef struct IconFormeChangeWork  {
+    int state;
+    int effectTimer;
+    int duration;
+    int species;
+    int fileId;
+    int partyMonIndex; //same information as B's unkc65
+    ParticleSystem* particleSystem;
+} IconFormeChangeWork;
 
-typedef struct UnkStruct_Overlay_94_A {
+typedef struct PartyMenuStruct {
     BOOL unk0;
     u8 unk4[0x650];
-    struct UnkStruct_Overlay_94_B* unk654; //0x654
+    UnkStruct_Overlay_94_B* unk654; //0x654
     u8 unk658[0x167];
     MSGDATA* msgData; //0x7c0
     MSGFMT* unk7c4; 
@@ -39,11 +39,11 @@ typedef struct UnkStruct_Overlay_94_A {
     u8 unkc64;
     u8 partyMonIndex; //selected index..?
     u8 unkc66[0x1a];
-    struct UnkStruct_Overlay_94_C* unkc80;
-} UnkStruct_Overlay_94_A;
+    IconFormeChangeWork* iconFormeChange;
+} PartyMenuStruct;
 
-void ov94_021E5900(struct UnkStruct_Overlay_94_A* unkPtr);
-BOOL ov94_021E593C(struct UnkStruct_Overlay_94_A* unkPtr);
+void PartyMenu_InitIconFormeChangeWork(PartyMenuStruct* unkPtr);
+BOOL PartyMenu_AnimateIconFormeChange(PartyMenuStruct* unkPtr);
 
 #endif //POKEHEARTGOLD_OVY_94_H
 

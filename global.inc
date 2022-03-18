@@ -24295,8 +24295,8 @@ FS_EXTERN_OVERLAY(OV_101)
 .public ov93_022629B8
 .public ov93_022629E4
 .public ov93_022630D8
-.public ov94_021E5900
-.public ov94_021E593C
+.public PartyMenu_InitIconFormeChangeWork
+.public PartyMenu_AnimateIconFormeChange
 .public ov94_021E5AEC
 .public ov94_021E5B04
 .public ov94_021E5B30

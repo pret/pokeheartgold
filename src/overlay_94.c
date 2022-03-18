@@ -17,43 +17,47 @@
 #include "msgdata/msg/msg_0300.h"
 #include "overlay_94.h"
 
-static void ov94_021E5AEC(struct UnkStruct_Overlay_94_A* unkPtr);
-static void ov94_021E5B04(struct UnkStruct_Overlay_94_A* unkPtr);
-static void ov94_021E5B30(struct UnkStruct_Overlay_94_A* unkPtr);
-static void ov94_021E5B54(struct UnkStruct_Overlay_94_C* unkPtr);
-static void ov94_021E5BA0(struct UnkStruct_Overlay_94_C* unkPtr);
-static void ov94_021E5C28(struct SPLEmitter* unkPtr);
-static s32 ov94_021E5C60(void);
-static void ov94_021E5C84(struct UnkStruct_Overlay_94_C* unkPtr);
-static u32 ov94_021E5CA0(u32 unkA, BOOL unkB);
-static u32 ov94_021E5CC4(u32 unkA, BOOL unkB);
+static void _DestroyLocalWork(struct PartyMenuStruct* unkPtr);
+static void _InitEffects(struct PartyMenuStruct* unkPtr);
+static void _CleanupEffects(struct PartyMenuStruct* unkPtr);
+static void _CreateParticleSystem(struct IconFormeChangeWork* unkPtr);
+static void _EmitParticles(struct IconFormeChangeWork* unkPtr);
+static void particleEmitCallback(struct SPLEmitter* unkPtr);
+static s32 _RunParticleSystem(void);
+static void _DestroyParticleSystem(struct IconFormeChangeWork* unkPtr);
+static u32 texAlloc(u32 szByte, BOOL is4x4comp);
+static u32 plttAlloc(u32 szByte, BOOL is4pltt);
 
-void ov94_021E5900(UnkStruct_Overlay_94_A* unkPtr) {
-    if (unkPtr->unkc80 != NULL) {
+void PartyMenu_InitIconFormeChangeWork(PartyMenuStruct* unkPtr) {
+    if (unkPtr->iconFormeChange != NULL) {
         GF_ASSERT(FALSE);
     }
-    unkPtr->unkc80 = AllocFromHeap(HEAPID_PARTY_MENU, sizeof(UnkStruct_Overlay_94_C));
-    MI_CpuClear8(unkPtr->unkc80, sizeof(UnkStruct_Overlay_94_C));
-    unkPtr->unkc80->partyMonIndex = unkPtr->partyMonIndex;
+    unkPtr->iconFormeChange = AllocFromHeap(HEAPID_PARTY_MENU, sizeof(IconFormeChangeWork));
+    MI_CpuClear8(unkPtr->iconFormeChange, sizeof(IconFormeChangeWork));
+    unkPtr->iconFormeChange->partyMonIndex = unkPtr->partyMonIndex;
 }
 
-BOOL ov94_021E593C(UnkStruct_Overlay_94_A* unkPtr) {
-    UnkStruct_Overlay_94_C* unkA = unkPtr->unkc80;
+// TODO: Create NAIX
+#define NARC_particle_giratina 0
+#define NARC_particle_shaymin  1
+
+BOOL PartyMenu_AnimateIconFormeChange(PartyMenuStruct* unkPtr) {
+    IconFormeChangeWork* work = unkPtr->iconFormeChange;
     POKEMON* pokemon = GetPartyMonByIndex(unkPtr->unk654->party, unkPtr->partyMonIndex);
 
-    switch (unkA->unk0) {
+    switch (work->state) {
     case 0:
-        unkA->species = GetMonData(pokemon, MON_DATA_SPECIES, 0);
-        switch (unkA->species) {
+        work->species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+        switch (work->species) {
         case SPECIES_GIRATINA:
             Mon_UpdateGiratinaForme(pokemon);
-            unkA->unk8 = 65;
-            unkA->unk10 = 0;
+            work->duration = 65;
+            work->fileId = NARC_particle_giratina;
             break;
         case SPECIES_SHAYMIN:
             Mon_UpdateShayminForme(pokemon, SHAYMIN_SKY);
-            unkA->unk8 = 35;
-            unkA->unk10 = 1;
+            work->duration = 35;
+            work->fileId = NARC_particle_shaymin;
             break;
         case SPECIES_ROTOM:
         default:
@@ -61,44 +65,44 @@ BOOL ov94_021E593C(UnkStruct_Overlay_94_A* unkPtr) {
             break;
         } 
         Pokedex_SetMonCaughtFlag(Sav2_Pokedex_get(Fsys_GetSaveDataPtr(unkPtr->unk654->fsys)), pokemon);
-        unkA->unk0++;
+        work->state++;
         break;
     case 1:
     case 2:
-        unkA->unk0++;
+        work->state++;
         break;
     case 3:
-        ov94_021E5B04(unkPtr);
-        unkA->unk0++;
+        _InitEffects(unkPtr);
+        work->state++;
         break;
     case 4:
-        GX_EngineAToggleLayers(1, 1);
-        ov94_021E5BA0(unkA);
-        unkA->unk0++;
+        GX_EngineAToggleLayers(1, GX_LAYER_TOGGLE_ON);
+        _EmitParticles(work);
+        work->state++;
         break;
     case 5:
-        unkA->unk4++;
-        if (unkA->unk4 == unkA->unk8) {
+        work->effectTimer++;
+        if (work->effectTimer == work->duration) {
             sub_0207ECE0(unkPtr, unkPtr->partyMonIndex);
         }
-        ov94_021E5C60();
-        if (unkA->unk4 > unkA->unk8) {
-            if (sub_020154B0(unkA->unk18) == 0) {
-                unkA->unk0++;
+        _RunParticleSystem();
+        if (work->effectTimer > work->duration) {
+            if (sub_020154B0(work->particleSystem) == 0) {
+                work->state++;
             }
         }
         break;
     case 6:
-        ov94_021E5B30(unkPtr);
-        unkA->unk0++;
+        _CleanupEffects(unkPtr);
+        work->state++;
         break;
     case 7:
         sub_020720D4(pokemon);
-        unkA->unk0++;
+        work->state++;
         break;
     case 8:
         if (IsCryFinished() == FALSE) {
-            unkA->unk0++;
+            work->state++;
         }
         break;
     case 9:
@@ -107,11 +111,11 @@ BOOL ov94_021E593C(UnkStruct_Overlay_94_A* unkPtr) {
         StringExpandPlaceholders(unkPtr->unk7c4, unkPtr->unk7c8, str);
         String_dtor(str);
         sub_0207DAEC(unkPtr, -1, 1);
-        unkA->unk0++;
+        work->state++;
         break;
     case 10:
         if (sub_02020094(unkPtr->unkc64) == 0) {
-            ov94_021E5AEC(unkPtr);
+            _DestroyLocalWork(unkPtr);
             unkPtr->unk654->unk27 = 0;
             return TRUE;
         }
@@ -120,51 +124,51 @@ BOOL ov94_021E593C(UnkStruct_Overlay_94_A* unkPtr) {
     return FALSE;
 }
 
-static void ov94_021E5AEC(UnkStruct_Overlay_94_A* unkPtr) {
-    FreeToHeap(unkPtr->unkc80);
-    unkPtr->unkc80 = 0;
+static void _DestroyLocalWork(PartyMenuStruct* unkPtr) {
+    FreeToHeap(unkPtr->iconFormeChange);
+    unkPtr->iconFormeChange = 0;
 }
 
-static void ov94_021E5B04(UnkStruct_Overlay_94_A* unkPtr) {
+static void _InitEffects(PartyMenuStruct* unkPtr) {
     sub_0207991C(unkPtr, 0);
-    ov94_021E5B54(unkPtr->unkc80);
+    _CreateParticleSystem(unkPtr->iconFormeChange);
     G2_SetBlendAlpha(0, 63, 31, 0);
 }
 
-static void ov94_021E5B30(UnkStruct_Overlay_94_A* unkPtr) {
-    ov94_021E5C84(unkPtr->unkc80);
+static void _CleanupEffects(PartyMenuStruct* unkPtr) {
+    _DestroyParticleSystem(unkPtr->iconFormeChange);
     sub_0207991C(unkPtr, 1);
     G2_BlendNone();
 }
 
-static void ov94_021E5B54(UnkStruct_Overlay_94_C* unkPtr) {
+static void _CreateParticleSystem(IconFormeChangeWork* unkPtr) {
     sub_02014DA0();
-    void* unkPtrB = AllocFromHeap(HEAPID_PARTY_MENU, PARTICLE_HEAP_SIZE);
+    void* particleHeap = AllocFromHeap(HEAPID_PARTY_MENU, PARTICLE_HEAP_SIZE);
 
-    unkPtr->unk18 = sub_02014DB4(ov94_021E5CA0, ov94_021E5CC4, unkPtrB, PARTICLE_HEAP_SIZE, 1, HEAPID_PARTY_MENU);
+    unkPtr->particleSystem = sub_02014DB4(texAlloc, plttAlloc, particleHeap, PARTICLE_HEAP_SIZE, 1, HEAPID_PARTY_MENU);
 
     sub_02023240(1 * FX32_ONE, 900 * FX32_ONE, sub_02015524());
 }
 
-static void ov94_021E5BA0(UnkStruct_Overlay_94_C* unkPtr) {
-    sub_0201526C(unkPtr->unk18, sub_02015264(208, unkPtr->unk10, HEAPID_PARTY_MENU), 10, 1);
+static void _EmitParticles(IconFormeChangeWork* unkPtr) {
+    sub_0201526C(unkPtr->particleSystem, sub_02015264(NARC_a_2_0_6, unkPtr->fileId, HEAPID_PARTY_MENU), 0xA, 1);
 
     switch (unkPtr->species) {
     case SPECIES_GIRATINA: 
-        sub_02015494(unkPtr->unk18, 0, ov94_021E5C28, unkPtr);
-        sub_02015494(unkPtr->unk18, 1, ov94_021E5C28, unkPtr);
-        sub_02015494(unkPtr->unk18, 2, ov94_021E5C28, unkPtr);
+        sub_02015494(unkPtr->particleSystem, 0, particleEmitCallback, unkPtr);
+        sub_02015494(unkPtr->particleSystem, 1, particleEmitCallback, unkPtr);
+        sub_02015494(unkPtr->particleSystem, 2, particleEmitCallback, unkPtr);
         PlaySE(SEQ_SE_PL_W467109);
         break;
     case SPECIES_SHAYMIN: 
-        sub_02015494(unkPtr->unk18, 0, ov94_021E5C28, unkPtr);
-        sub_02015494(unkPtr->unk18, 1, ov94_021E5C28, unkPtr);
+        sub_02015494(unkPtr->particleSystem, 0, particleEmitCallback, unkPtr);
+        sub_02015494(unkPtr->particleSystem, 1, particleEmitCallback, unkPtr);
         PlaySE(SEQ_SE_PL_W363);
         break;
     }
 }
 
-static const fx32 PartyMonSpritePositions[][2] = {
+static const fx32 sPartyMonSpritePositions[][2] = {
   { -16500, 12000 },
   { 5000, 11500 },
   { -16500, 5000 },
@@ -173,13 +177,13 @@ static const fx32 PartyMonSpritePositions[][2] = {
   { 5000, -4500 }
 };
 
-static void ov94_021E5C28(struct SPLEmitter* emitter) {
-    struct UnkStruct_Overlay_94_C* unkA = sub_02015504();
-    SPL_SetEmitterPositionX(emitter, PartyMonSpritePositions[unkA->partyMonIndex][0]);
-    SPL_SetEmitterPositionY(emitter, PartyMonSpritePositions[unkA->partyMonIndex][1]);
+static void particleEmitCallback(struct SPLEmitter* emitter) {
+    struct IconFormeChangeWork* unkA = sub_02015504();
+    SPL_SetEmitterPositionX(emitter, sPartyMonSpritePositions[unkA->partyMonIndex][0]);
+    SPL_SetEmitterPositionY(emitter, sPartyMonSpritePositions[unkA->partyMonIndex][1]);
 }
 
-static s32 ov94_021E5C60(void) {
+static s32 _RunParticleSystem(void) {
     sub_02026E48();
     s32 val = sub_0201543C();
     if (val > 0) {
@@ -190,14 +194,14 @@ static s32 ov94_021E5C60(void) {
     return val;
 }
 
-static void ov94_021E5C84(UnkStruct_Overlay_94_C* unkPtr) {
-    void* unkA = sub_020154D0(unkPtr->unk18);
-    sub_02014EBC(unkPtr->unk18);
+static void _DestroyParticleSystem(IconFormeChangeWork* unkPtr) {
+    void* unkA = sub_020154D0(unkPtr->particleSystem);
+    sub_02014EBC(unkPtr->particleSystem);
     FreeToHeap(unkA);
 }
 
-static u32 ov94_021E5CA0(u32 unkA, BOOL unkB) {
-    NNSGfdTexKey unkC = NNS_GfdDefaultFuncAllocTexVram(unkA, unkB, 0);
+static u32 texAlloc(u32 szByte, BOOL is4x4comp) {
+    NNSGfdTexKey unkC = NNS_GfdDefaultFuncAllocTexVram(szByte, is4x4comp, 0);
 
     GF_ASSERT(unkC != NNS_GFD_ALLOC_ERROR_TEXKEY);
      
@@ -206,8 +210,8 @@ static u32 ov94_021E5CA0(u32 unkA, BOOL unkB) {
     return NNS_GfdGetTexKeyAddr(unkC);
 }
 
-static u32 ov94_021E5CC4(u32 unkA, BOOL unkB) {
-    NNSGfdPlttKey unkC = NNS_GfdDefaultFuncAllocPlttVram(unkA, unkB, 1);
+static u32 plttAlloc(u32 szByte, BOOL is4pltt) {
+    NNSGfdPlttKey unkC = NNS_GfdDefaultFuncAllocPlttVram(szByte, is4pltt, 1);
     
     GF_ASSERT(unkC != NNS_GFD_ALLOC_ERROR_PLTTKEY);
 

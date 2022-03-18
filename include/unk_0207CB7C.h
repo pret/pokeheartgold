@@ -3,6 +3,6 @@
 
 #include "overlay_94.h"
 
-void sub_0207DAEC(UnkStruct_Overlay_94_A *unkPtr, int a1, int a2);
+void sub_0207DAEC(PartyMenuStruct *unkPtr, int a1, int a2);
 
 #endif //POKEHEARTGOLD_UNK_0207CB7C_H

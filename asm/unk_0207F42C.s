@@ -376,7 +376,7 @@ _0207F71C: .word 0x00000C64
 sub_0207F720: ; 0x0207F720
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov94_021E593C
+	bl PartyMenu_AnimateIconFormeChange
 	cmp r0, #1
 	bne _0207F736
 	add r0, r4, #0
