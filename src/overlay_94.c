@@ -179,8 +179,8 @@ void ov94_021E5C84(struct UnkStruct_Overlay_94_C* unkPtr) {
     FreeToHeap(unkA);
 }
 
-NNSGfdTexKey ov94_021E5CA0(u32 unkA, u32 unkB) {
-    u32 unkC = NNS_GfdDefaultFuncAllocTexVram(unkA, unkB, 0);
+u32 ov94_021E5CA0(u32 unkA, u32 unkB) {
+    NNSGfdTexKey unkC = NNS_GfdDefaultFuncAllocTexVram(unkA, unkB, 0);
 
     GF_ASSERT(unkC != NNS_GFD_ALLOC_ERROR_TEXKEY);
      
@@ -189,8 +189,8 @@ NNSGfdTexKey ov94_021E5CA0(u32 unkA, u32 unkB) {
     return NNS_GfdGetTexKeyAddr(unkC);
 }
 
-NNSGfdPlttKey ov94_021E5CC4(u32 unkA, u32 unkB) {
-    u32 unkC = NNS_GfdDefaultFuncAllocPlttVram(unkA, unkB, 1);
+u32 ov94_021E5CC4(u32 unkA, u32 unkB) {
+    NNSGfdPlttKey unkC = NNS_GfdDefaultFuncAllocPlttVram(unkA, unkB, 1);
     
     GF_ASSERT(unkC != NNS_GFD_ALLOC_ERROR_PLTTKEY);
 
