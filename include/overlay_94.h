@@ -6,8 +6,8 @@
 #include "script.h"
 
 typedef struct Dummy_Overlay_94 {
-	u8 unk0[0x14];
-	u32 unk14;
+    u8 unk0[0x14];
+    u32 unk14;
 };
 
 typedef struct Dummy_Overlay_94_B {
@@ -23,21 +23,21 @@ typedef struct UnkStruct_Overlay_94_B {
 };
 
 typedef struct UnkStruct_Overlay_94_C  {
-	u32 unk0;
-	s32 unk4;
-	s32 unk8;
-	u32 species;
-	u32 unk10; 
+    u32 unk0;
+    s32 unk4;
+    s32 unk8;
+    u32 species;
+    u32 unk10; 
     u32 partyMonIndex; //same information as B's unkc65
-	u32* unk18;
+    u32* unk18;
 };
 
 typedef struct UnkStruct_Overlay_94_D  {
     u8 unk0[0x20];
     u32** unk20;
-	u32 unk24;
-	u32 unk28;
-	u32 unk2c;
+    u32 unk24;
+    u32 unk28;
+    u32 unk2c;
 };
 
 typedef struct UnkStruct_Overlay_94_A {

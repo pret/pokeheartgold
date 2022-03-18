@@ -5,6 +5,7 @@
 #include "constants/pokemon.h"
 #include "constants/species.h"
 #include "constants/sndseq.h"
+#include "msgdata/msg/msg_0300.h"
 #include "overlay_94.h"
 
 void ov94_021E5900(struct UnkStruct_Overlay_94_A* unkPtr) {
@@ -81,7 +82,7 @@ BOOL ov94_021E593C(struct UnkStruct_Overlay_94_A* unkPtr) {
         }
         break;
     case 9:
-        STRING* str = NewString_ReadMsgData(unkPtr->msgData, 188);
+        STRING* str = NewString_ReadMsgData(unkPtr->msgData, msg_0300_00188); //" changed Forme!"
         BufferBoxMonNickname(unkPtr->unk7c4, 0, Mon_GetBoxMon(pokemon));
         StringExpandPlaceholders(unkPtr->unk7c4, unkPtr->unk7c8, str);
         String_dtor(str);
