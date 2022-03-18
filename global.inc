@@ -28156,7 +28156,7 @@ FS_EXTERN_OVERLAY(OV_101)
 .public FlyPoints_GetDynamicWarp
 .public FlyPoints_SetDynamicWarp
 .public sub_0203B980
-.public sub_0203B984
+.public FlyPoints_GetWeatherType
 .public FlyPoints_SetWeatherType
 .public FlyPoints_GetDeathSpawn
 .public FlyPoints_SetDeathSpawn

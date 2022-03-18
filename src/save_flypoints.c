@@ -72,7 +72,7 @@ u16 *sub_0203B980(FLYPOINTS_SAVE *flypointsSave) {
     return &flypointsSave->unk64;
 }
 
-u16 sub_0203B984(FLYPOINTS_SAVE *flypointsSave) {
+u16 FlyPoints_GetWeatherType(FLYPOINTS_SAVE *flypointsSave) {
     return flypointsSave->weather;
 }
 

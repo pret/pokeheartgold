@@ -741,7 +741,7 @@ _02067ED8:
 _02067EEE:
 	ldr r0, [r5, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B984
+	bl FlyPoints_GetWeatherType
 	cmp r0, #0xb
 	bne _02067F04
 	ldrh r1, [r4, #0xc]

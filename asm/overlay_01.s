@@ -237,7 +237,7 @@ _021E5AB6:
 	bl ov01_021E6580
 	ldr r0, [r4, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B984
+	bl FlyPoints_GetWeatherType
 	add r1, r0, #0
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
@@ -734,7 +734,7 @@ _021E5F3E:
 	add r0, r5, #0
 	bl Field_InitMapObjectsFromZoneEventData
 	add r0, r7, #0
-	bl sub_0203B984
+	bl FlyPoints_GetWeatherType
 	add r1, r0, #0
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0xc]

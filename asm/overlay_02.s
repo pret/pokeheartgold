@@ -2268,7 +2268,7 @@ _02246CD6:
 _02246D26:
 	ldr r0, [r5, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B984
+	bl FlyPoints_GetWeatherType
 	add r3, r0, #0
 	ldr r0, [sp, #0x10]
 	add r1, sp, #0x18
@@ -2571,7 +2571,7 @@ _02246F88:
 	ldr r0, [sp, #0x20]
 	ldr r0, [r0, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B984
+	bl FlyPoints_GetWeatherType
 	add r3, r0, #0
 	ldr r0, [sp, #0x1c]
 	add r1, r4, #0
@@ -2718,7 +2718,7 @@ _022470B8:
 	ldr r0, [sp, #0xc]
 	ldr r0, [r0, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B984
+	bl FlyPoints_GetWeatherType
 	add r3, r0, #0
 	ldr r0, [sp, #8]
 	add r1, r4, #0
@@ -20455,7 +20455,7 @@ ov02_0224F5D0: ; 0x0224F5D0
 	ldr r0, [r0, #0xc]
 	add r4, r1, #0
 	bl Save_FlyPoints_get
-	bl sub_0203B984
+	bl FlyPoints_GetWeatherType
 	cmp r0, #0
 	beq _0224F5E8
 	cmp r0, #1

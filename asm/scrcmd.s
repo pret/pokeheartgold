@@ -4186,7 +4186,7 @@ ScrCmd_684: ; 0x02042948
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B984
+	bl FlyPoints_GetWeatherType
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -5947,7 +5947,7 @@ ScrCmd_181: ; 0x020436C4
 	mov r1, #0xc
 	bl FlyPoints_SetWeatherType
 	add r0, r5, #0
-	bl sub_0203B984
+	bl FlyPoints_GetWeatherType
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]

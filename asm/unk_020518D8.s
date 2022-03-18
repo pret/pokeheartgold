@@ -740,7 +740,7 @@ _02051EA8:
 	str r1, [r5, r0]
 _02051EB0:
 	ldr r0, [sp, #4]
-	bl sub_0203B984
+	bl FlyPoints_GetWeatherType
 	mov r1, #0x5d
 	lsl r1, r1, #2
 	str r0, [r5, r1]

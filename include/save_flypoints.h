@@ -18,7 +18,7 @@ Location *FlyPoints_GetSpecialSpawnWarpPtr(FLYPOINTS_SAVE *flypointsSave);
 Location *FlyPoints_GetDynamicWarp(FLYPOINTS_SAVE *flypointsSave);
 void FlyPoints_SetDynamicWarp(FLYPOINTS_SAVE *flypointsSave, const Location *location);
 u16 *sub_0203B980(FLYPOINTS_SAVE *flypointsSave);
-u16 sub_0203B984(FLYPOINTS_SAVE *flypointsSave);
+u16 FlyPoints_GetWeatherType(FLYPOINTS_SAVE *flypointsSave);
 void FlyPoints_SetWeatherType(FLYPOINTS_SAVE *flypointsSave, const u16 a1);
 u16 FlyPoints_GetDeathSpawn(FLYPOINTS_SAVE *flypointsSave);
 void FlyPoints_SetDeathSpawn(FLYPOINTS_SAVE *flypointsSave, const u16 spawn);
