@@ -65,8 +65,8 @@ void ov94_021E5BA0(struct UnkStruct_Overlay_94_C* unkPtr);
 void ov94_021E5C28(struct UnkStruct_Overlay_94_D* unkPtr);
 s32 ov94_021E5C60(void);
 void ov94_021E5C84(struct UnkStruct_Overlay_94_C* unkPtr);
-u32 ov94_021E5CA0(u32 unkA, u32 unkB);
-u32 ov94_021E5CC4(u32 unkA, u32 unkB);
+NNSGfdTexKey ov94_021E5CA0(u32 unkA, u32 unkB);
+NNSGfdPlttKey ov94_021E5CC4(u32 unkA, u32 unkB);
 
 struct Dummy_Overlay_94* sub_02015504(void);
 
