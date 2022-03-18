@@ -13,7 +13,7 @@ typedef int (*NNSGfdFuncFreeTexVram)(NNSGfdTexKey key);
 extern NNSGfdFuncAllocTexVram NNS_GfdDefaultFuncAllocTexVram;
 extern NNSGfdFuncFreeTexVram NNS_GfdDefaultFuncFreeTexVram;
 
-static inline NNS_GfdGetTexKeyAddr(NNSGfdTexKey memKey) {
+static inline u32 NNS_GfdGetTexKeyAddr(NNSGfdTexKey memKey) {
     return (u32)((0x0000FFFF & memKey) << NNS_GFD_TEXKEY_ADDR_SHIFT);
 }
 

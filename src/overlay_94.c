@@ -2,23 +2,43 @@
 #include "heap.h"
 #include "party.h"
 #include "pokemon.h"
+#include "pokedex.h"
+#include "scrcmd.h"
+#include "unk_02005D10.h"
+#include "unk_02014DA0.h"
+#include "unk_0207EB24.h"
+#include "unk_02078E30.h"
+#include "unk_0207CB7C.h"
+#include "unk_02026E30.h"
+#include "text.h"
 #include "constants/pokemon.h"
 #include "constants/species.h"
 #include "constants/sndseq.h"
 #include "msgdata/msg/msg_0300.h"
 #include "overlay_94.h"
 
-void ov94_021E5900(struct UnkStruct_Overlay_94_A* unkPtr) {
+static void ov94_021E5AEC(struct UnkStruct_Overlay_94_A* unkPtr);
+static void ov94_021E5B04(struct UnkStruct_Overlay_94_A* unkPtr);
+static void ov94_021E5B30(struct UnkStruct_Overlay_94_A* unkPtr);
+static void ov94_021E5B54(struct UnkStruct_Overlay_94_C* unkPtr);
+static void ov94_021E5BA0(struct UnkStruct_Overlay_94_C* unkPtr);
+static void ov94_021E5C28(struct SPLEmitter* unkPtr);
+static s32 ov94_021E5C60(void);
+static void ov94_021E5C84(struct UnkStruct_Overlay_94_C* unkPtr);
+static u32 ov94_021E5CA0(u32 unkA, BOOL unkB);
+static u32 ov94_021E5CC4(u32 unkA, BOOL unkB);
+
+void ov94_021E5900(UnkStruct_Overlay_94_A* unkPtr) {
     if (unkPtr->unkc80 != NULL) {
         GF_ASSERT(FALSE);
     }
-    unkPtr->unkc80 = AllocFromHeap(12, sizeof(struct UnkStruct_Overlay_94_C));
-    MI_CpuClear8(unkPtr->unkc80, sizeof(struct UnkStruct_Overlay_94_C));
+    unkPtr->unkc80 = AllocFromHeap(HEAPID_PARTY_MENU, sizeof(UnkStruct_Overlay_94_C));
+    MI_CpuClear8(unkPtr->unkc80, sizeof(UnkStruct_Overlay_94_C));
     unkPtr->unkc80->partyMonIndex = unkPtr->partyMonIndex;
 }
 
-BOOL ov94_021E593C(struct UnkStruct_Overlay_94_A* unkPtr) { 
-    struct UnkStruct_Overlay_94_C* unkA = unkPtr->unkc80; 
+BOOL ov94_021E593C(UnkStruct_Overlay_94_A* unkPtr) {
+    UnkStruct_Overlay_94_C* unkA = unkPtr->unkc80;
     POKEMON* pokemon = GetPartyMonByIndex(unkPtr->unk654->party, unkPtr->partyMonIndex);
 
     switch (unkA->unk0) {
@@ -58,12 +78,12 @@ BOOL ov94_021E593C(struct UnkStruct_Overlay_94_A* unkPtr) {
         break;
     case 5:
         unkA->unk4++;
-        if(unkA->unk4 == unkA->unk8) {
+        if (unkA->unk4 == unkA->unk8) {
             sub_0207ECE0(unkPtr, unkPtr->partyMonIndex);
         }
         ov94_021E5C60();
-        if(unkA->unk4 > unkA->unk8) {
-            if(sub_020154B0(unkA->unk18) == 0) {
+        if (unkA->unk4 > unkA->unk8) {
+            if (sub_020154B0(unkA->unk18) == 0) {
                 unkA->unk0++;
             }
         }
@@ -77,7 +97,7 @@ BOOL ov94_021E593C(struct UnkStruct_Overlay_94_A* unkPtr) {
         unkA->unk0++;
         break;
     case 8:
-        if(IsCryFinished() == FALSE) {
+        if (IsCryFinished() == FALSE) {
             unkA->unk0++;
         }
         break;
@@ -100,34 +120,34 @@ BOOL ov94_021E593C(struct UnkStruct_Overlay_94_A* unkPtr) {
     return FALSE;
 }
 
-void ov94_021E5AEC(struct UnkStruct_Overlay_94_A* unkPtr) {
+static void ov94_021E5AEC(UnkStruct_Overlay_94_A* unkPtr) {
     FreeToHeap(unkPtr->unkc80);
     unkPtr->unkc80 = 0;
 }
 
-void ov94_021E5B04(struct UnkStruct_Overlay_94_A* unkPtr) {
+static void ov94_021E5B04(UnkStruct_Overlay_94_A* unkPtr) {
     sub_0207991C(unkPtr, 0);
     ov94_021E5B54(unkPtr->unkc80);
     G2_SetBlendAlpha(0, 63, 31, 0);
 }
 
-void ov94_021E5B30(struct UnkStruct_Overlay_94_A* unkPtr) {
+static void ov94_021E5B30(UnkStruct_Overlay_94_A* unkPtr) {
     ov94_021E5C84(unkPtr->unkc80);
     sub_0207991C(unkPtr, 1);
     G2_BlendNone();
 }
 
-void ov94_021E5B54(struct UnkStruct_Overlay_94_C* unkPtr) {
+static void ov94_021E5B54(UnkStruct_Overlay_94_C* unkPtr) {
     sub_02014DA0();
-    struct Dummy_Overlay_94_B* unkPtrB = AllocFromHeap(12, sizeof(struct Dummy_Overlay_94_B));
+    void* unkPtrB = AllocFromHeap(HEAPID_PARTY_MENU, PARTICLE_HEAP_SIZE);
 
-    unkPtr->unk18 = sub_02014DB4(ov94_021E5CA0, ov94_021E5CC4, unkPtrB, 0x4800, 1, 12);
+    unkPtr->unk18 = sub_02014DB4(ov94_021E5CA0, ov94_021E5CC4, unkPtrB, PARTICLE_HEAP_SIZE, 1, HEAPID_PARTY_MENU);
 
-    sub_02023240(0x1000, 0x384000, sub_02015524());
+    sub_02023240(1 * FX32_ONE, 900 * FX32_ONE, sub_02015524());
 }
 
-void ov94_021E5BA0(struct UnkStruct_Overlay_94_C* unkPtr) { 
-    sub_0201526C(unkPtr->unk18, sub_02015264(208, unkPtr->unk10, 12), 10, 1);
+static void ov94_021E5BA0(UnkStruct_Overlay_94_C* unkPtr) {
+    sub_0201526C(unkPtr->unk18, sub_02015264(208, unkPtr->unk10, HEAPID_PARTY_MENU), 10, 1);
 
     switch (unkPtr->species) {
     case SPECIES_GIRATINA: 
@@ -135,16 +155,16 @@ void ov94_021E5BA0(struct UnkStruct_Overlay_94_C* unkPtr) {
         sub_02015494(unkPtr->unk18, 1, ov94_021E5C28, unkPtr);
         sub_02015494(unkPtr->unk18, 2, ov94_021E5C28, unkPtr);
         PlaySE(SEQ_SE_PL_W467109);
-        return;
+        break;
     case SPECIES_SHAYMIN: 
         sub_02015494(unkPtr->unk18, 0, ov94_021E5C28, unkPtr);
         sub_02015494(unkPtr->unk18, 1, ov94_021E5C28, unkPtr);
         PlaySE(SEQ_SE_PL_W363);
-        return;
+        break;
     }
 }
 
-static const int PartyMonSpritePositions[][2] = {
+static const fx32 PartyMonSpritePositions[][2] = {
   { -16500, 12000 },
   { 5000, 11500 },
   { -16500, 5000 },
@@ -153,16 +173,13 @@ static const int PartyMonSpritePositions[][2] = {
   { 5000, -4500 }
 };
 
-
-void ov94_021E5C28(struct UnkStruct_Overlay_94_D* unkPtr) {
-    struct Dummy_Overlay_94* unkA = sub_02015504();
-    u32 unkB = PartyMonSpritePositions[unkA->unk14][0];
-    unkPtr->unk28 = unkB + unkPtr->unk20[0][1];
-    u32 unkD = PartyMonSpritePositions[unkA->unk14][1];
-    unkPtr->unk2c = unkD + unkPtr->unk20[0][2];
+static void ov94_021E5C28(struct SPLEmitter* emitter) {
+    struct UnkStruct_Overlay_94_C* unkA = sub_02015504();
+    SPL_SetEmitterPositionX(emitter, PartyMonSpritePositions[unkA->partyMonIndex][0]);
+    SPL_SetEmitterPositionY(emitter, PartyMonSpritePositions[unkA->partyMonIndex][1]);
 }
 
-s32 ov94_021E5C60(void) {
+static s32 ov94_021E5C60(void) {
     sub_02026E48();
     s32 val = sub_0201543C();
     if (val > 0) {
@@ -173,13 +190,13 @@ s32 ov94_021E5C60(void) {
     return val;
 }
 
-void ov94_021E5C84(struct UnkStruct_Overlay_94_C* unkPtr) {
-    s32* unkA = (s32*) sub_020154D0(unkPtr->unk18);
+static void ov94_021E5C84(UnkStruct_Overlay_94_C* unkPtr) {
+    void* unkA = sub_020154D0(unkPtr->unk18);
     sub_02014EBC(unkPtr->unk18);
     FreeToHeap(unkA);
 }
 
-u32 ov94_021E5CA0(u32 unkA, u32 unkB) {
+static u32 ov94_021E5CA0(u32 unkA, BOOL unkB) {
     NNSGfdTexKey unkC = NNS_GfdDefaultFuncAllocTexVram(unkA, unkB, 0);
 
     GF_ASSERT(unkC != NNS_GFD_ALLOC_ERROR_TEXKEY);
@@ -189,7 +206,7 @@ u32 ov94_021E5CA0(u32 unkA, u32 unkB) {
     return NNS_GfdGetTexKeyAddr(unkC);
 }
 
-u32 ov94_021E5CC4(u32 unkA, u32 unkB) {
+static u32 ov94_021E5CC4(u32 unkA, BOOL unkB) {
     NNSGfdPlttKey unkC = NNS_GfdDefaultFuncAllocPlttVram(unkA, unkB, 1);
     
     GF_ASSERT(unkC != NNS_GFD_ALLOC_ERROR_PLTTKEY);

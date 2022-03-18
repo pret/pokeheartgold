@@ -5,5 +5,6 @@
 
 void PlaySE(u16 sndseq);
 void sub_0200615C(int, int);
+BOOL IsCryFinished(void);
 
 #endif //POKEHEARTGOLD_UNK_02005D10_H
