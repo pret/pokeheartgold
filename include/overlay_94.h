@@ -35,7 +35,7 @@ typedef struct UnkStruct_Overlay_94_A {
     MSGDATA* msgData; //0x7c0
     MSGFMT* unk7c4; 
     STRING* unk7c8;
-    u8 unk655[0x498];
+    u8 unk7cc[0x498];
     u8 unkc64;
     u8 partyMonIndex; //selected index..?
     u8 unkc66[0x1a];

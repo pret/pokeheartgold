@@ -215,4 +215,3 @@ static u32 ov94_021E5CC4(u32 unkA, BOOL unkB) {
 
     return NNS_GfdGetPlttKeyAddr(unkC);
 }
-
