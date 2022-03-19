@@ -28736,7 +28736,7 @@ FS_EXTERN_OVERLAY(OV_101)
 .public sub_0205C790
 .public sub_0205C7BC
 .public FlypointsPlayerSub_CheckRunningShoes
-.public FlypointsPlayerSub_SetRunnungShoesFlag
+.public FlypointsPlayerSub_SetRunningShoesFlag
 .public sub_0205C7EC
 .public sub_0205C810
 .public sub_0205C838

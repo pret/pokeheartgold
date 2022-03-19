@@ -24,11 +24,11 @@ typedef struct SPLManager {
         u32 fix:6;
         u32 drawOrder:1;
         u32 reserved:7;
-    } polygonID ;
-    s32 misc_flag ;
+    } polygonID;
+    s32 misc_flag;
     struct {
         SPLEmitter* p_emtr;
-        const MtxFx43*    p_cmr;
+        const MtxFx43* p_cmr;
     } current_state;
     u16 uCurrentCycle;
     u16 reserved;

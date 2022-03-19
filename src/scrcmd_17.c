@@ -27,7 +27,7 @@ BOOL ScrCmd_CheckRunningShoes(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_GiveRunningShoes(SCRIPTCONTEXT *ctx) {
     FLYPOINTS_SAVE *flypointsSave = Save_FlyPoints_get(ctx->fsys->savedata);
     struct FlypointsPlayerSub *sub = SaveFlyPoints_GetPlayerSub(flypointsSave);
-    FlypointsPlayerSub_SetRunnungShoesFlag(sub, TRUE);
+    FlypointsPlayerSub_SetRunningShoesFlag(sub, TRUE);
     return FALSE;
 }
 
@@ -135,15 +135,15 @@ BOOL ScrCmd_StrengthFlagAction(SCRIPTCONTEXT *ctx) {
     SCRIPT_STATE *state = SavArray_Flags_get(ctx->fsys->savedata);
     u8 mode = ScriptReadByte(ctx);
     switch (mode) {
-    case 1:
-        StrengthFlagAction(state, 1);
+    case FLAG_ACTION_SET:
+        StrengthFlagAction(state, FLAG_ACTION_SET);
         break;
-    case 0:
-        StrengthFlagAction(state, 0);
+    case FLAG_ACTION_CLEAR:
+        StrengthFlagAction(state, FLAG_ACTION_CLEAR);
         break;
-    case 2: {
+    case FLAG_ACTION_CHECK: {
         u16 *ret = ScriptGetVarPointer(ctx);
-        *ret = StrengthFlagAction(state, 2);
+        *ret = StrengthFlagAction(state, FLAG_ACTION_CHECK);
         break;
     }
     default:
@@ -156,13 +156,13 @@ BOOL ScrCmd_FlashAction(SCRIPTCONTEXT *ctx) {
     SCRIPT_STATE *state = SavArray_Flags_get(ctx->fsys->savedata);
     u8 mode = ScriptReadByte(ctx);
     switch (mode) {
-    case 1:
+    case FLAG_ACTION_SET:
         SysFlagFlashSet(state);
         break;
-    case 0:
+    case FLAG_ACTION_CLEAR:
         SysFlagFlashClear(state);
         break;
-    case 2: {
+    case FLAG_ACTION_CHECK: {
         u16 *ret = ScriptGetVarPointer(ctx);
         *ret = SysFlagFlashCheck(state);
         break;
@@ -178,13 +178,13 @@ BOOL ScrCmd_DefogAction(SCRIPTCONTEXT *ctx) {
     SCRIPT_STATE *state = SavArray_Flags_get(ctx->fsys->savedata);
     u8 mode = ScriptReadByte(ctx);
     switch (mode) {
-    case 1:
+    case FLAG_ACTION_SET:
         SysFlagDefogSet(state);
         break;
-    case 0:
+    case FLAG_ACTION_CLEAR:
         SysFlagDefogClear(state);
         break;
-    case 2: {
+    case FLAG_ACTION_CHECK: {
         u16 *ret = ScriptGetVarPointer(ctx);
         *ret = SysFlagDefogCheck(state);
         break;

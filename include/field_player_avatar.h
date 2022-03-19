@@ -12,7 +12,7 @@ struct FlypointsPlayerSub {
 
 void sub_0205C7BC(struct FlypointsPlayerSub *vec);
 BOOL FlypointsPlayerSub_CheckRunningShoes(struct FlypointsPlayerSub *vec);
-void FlypointsPlayerSub_SetRunnungShoesFlag(struct FlypointsPlayerSub *vec, BOOL enable);
+void FlypointsPlayerSub_SetRunningShoesFlag(struct FlypointsPlayerSub *vec, BOOL enable);
 
 int GetPlayerXCoord(FIELD_PLAYER_AVATAR *avatar);
 int GetPlayerYCoord(FIELD_PLAYER_AVATAR *avatar);

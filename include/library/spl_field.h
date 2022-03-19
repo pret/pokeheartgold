@@ -6,7 +6,7 @@
 struct SPLEmitter;
 
 typedef struct SPLField {
-    void (*p_exec)(const void*, SPLParticle*, VecFx32*, struct SPLEmitter* p_emtr );
+    void (*p_exec)(const void*, SPLParticle*, VecFx32*, struct SPLEmitter* p_emtr);
     const void* p_obj;
 } SPLField;
 
