@@ -323,9 +323,9 @@ gScriptCmdTable:
 	.word ScrCmd_287                                    ; 287
 	.word ScrCmd_288                                    ; 288
 	.word ScrCmd_289                                    ; 289
-	.word ScrCmd_290                                    ; 290
+	.word ScrCmd_CheckPokedex                                    ; 290
 	.word ScrCmd_GivePokedex                                    ; 291
-	.word ScrCmd_292                                    ; 292
+	.word ScrCmd_CheckRunningShoes                                    ; 292
 	.word ScrCmd_GiveRunningShoes                       ; 293
 	.word ScrCmd_CheckBadge                             ; 294
 	.word ScrCmd_GiveBadge                              ; 295
@@ -434,8 +434,8 @@ gScriptCmdTable:
 	.word ScrCmd_398                                    ; 398
 	.word ScrCmd_BufferPartyMonMoveName                                    ; 399
 	.word ScrCmd_StrengthFlagAction                                    ; 400
-	.word ScrCmd_401                                    ; 401
-	.word ScrCmd_402                                    ; 402
+	.word ScrCmd_FlashAction                                    ; 401
+	.word ScrCmd_DefogAction                                    ; 402
 	.word ScrCmd_403                                    ; 403
 	.word ScrCmd_404                                    ; 404
 	.word ScrCmd_405                                    ; 405
@@ -4186,7 +4186,7 @@ ScrCmd_684: ; 0x02042948
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B984
+	bl FlyPoints_GetWeatherType
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -5945,9 +5945,9 @@ ScrCmd_181: ; 0x020436C4
 	bl Save_FlyPoints_get
 	add r5, r0, #0
 	mov r1, #0xc
-	bl sub_0203B98C
+	bl FlyPoints_SetWeatherType
 	add r0, r5, #0
-	bl sub_0203B984
+	bl FlyPoints_GetWeatherType
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]

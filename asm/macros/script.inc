@@ -1677,7 +1677,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_290 arg0
+	.macro check_pokedex arg0
 	.short 290
 	.short \arg0
 	.endm
@@ -1686,7 +1686,7 @@
 	.short 291
 	.endm
 
-	.macro scrcmd_292 arg0
+	.macro check_running_shoes arg0
 	.short 292
 	.short \arg0
 	.endm
@@ -2276,16 +2276,20 @@
 	.endif
 	.endm
 
-	.macro scrcmd_401 arg0, arg1
+	.macro flash_action action, var=0
 	.short 401
-	.byte \arg0
-	.short \arg1
+	.byte \action
+	.if \action == 2
+	.short \var
+	.endif
 	.endm
 
-	.macro scrcmd_402 arg0, arg1
+	.macro defog_action action, var=0
 	.short 402
-	.byte \arg0
-	.short \arg1
+	.byte \action
+	.if \action == 2
+	.short \var
+	.endif
 	.endm
 
 	.macro scrcmd_403 arg0, arg1

@@ -8,6 +8,12 @@ void CsvFile::ParseRow(std::string &line, std::vector<std::string> &row, bool re
     if (resize) {
         row.clear();
     }
+    while (line[0] == '\r') {
+        line = line.substr(1);
+    }
+    while (line[line.size() - 1] == '\r') {
+        line = line.substr(0, line.size() - 1);
+    }
     std::stringstream line_s(line);
     while (std::getline(line_s, entry, ',')) {
         if (!isQuoted && entry[0] == '"') {
@@ -42,31 +48,71 @@ void CsvFile::ParseRow(std::string &line, std::vector<std::string> &row, bool re
 void CsvFile::FromFile(const fs::path &filename, bool has_header) {
     std::ifstream handle(filename);
     std::string line;
-    std::vector<std::string> firstRow;
-    for (_nrow = 0; std::getline(handle, line); _nrow++) {
-        if (firstRow.empty()) {
-            ParseRow(line, firstRow);
-            _ncol = firstRow.size();
-            _colnames.resize(_ncol);
+    std::stringstream filebuf;
+
+    // Read the whole file at once
+    filebuf << handle.rdbuf();
+
+    // Read the first row
+    line = filebuf.str().substr(0, filebuf.str().find_first_of("\r\n"));
+
+    // Calculate the number of rows
+    size_t pos = 0;
+    for (
+        _nrow = !has_header;
+        pos != std::string::npos &&
+          (pos = filebuf.str().find_first_of("\r\n", pos), pos != std::string::npos);
+        _nrow++
+    ) {
+        pos = filebuf.str().find_first_not_of("\r\n", pos);
+        if (pos == std::string::npos) {
+            break;
         }
     }
-    handle.clear();
-    handle.seekg(0);
+
+    // Calculate the number of columns
+    pos = 0;
+    for (
+        _ncol = 1;
+        pos = line.find(',', pos), pos++ != std::string::npos;
+        _ncol++
+    ) {}
+
+    // Preallocate the rows and colnames
+    _rows.resize(_nrow);
+    _colnames.resize(_ncol);
+
+    // Parse the header, or set a dummy header
     if (has_header) {
-        std::getline(handle, line);
         ParseRow(line, _colnames, false);
-        _nrow--;
+        pos = filebuf.str().find_first_of("\r\n", pos);
+        if (pos != std::string::npos) {
+            pos = filebuf.str().find_first_not_of("\r\n", pos);
+        }
     } else {
         int i = 1;
         for (std::string & name : _colnames) {
             name = "V" + std::to_string(i++);
         }
+        pos = 0;
     }
-    _rows.resize(_nrow);
-    for (auto & vec : _rows) {
-        vec.resize(_ncol);
-        std::getline(handle, line);
-        ParseRow(line, vec, false);
+
+    // Parse the rows
+    size_t last_pos = pos;
+    for (
+        auto row = _rows.begin();
+        row != _rows.end() &&
+          (last_pos = pos, last_pos != std::string::npos) &&
+          (pos = filebuf.str().find_first_of("\r\n", pos), pos != std::string::npos);
+        row++
+    ) {
+        line = filebuf.str().substr(last_pos, pos - last_pos);
+        row->resize(_ncol);
+        ParseRow(line, *row, false);
+        pos = filebuf.str().find_first_not_of("\r\n", pos);
+        if (pos == std::string::npos) {
+            break;
+        }
     }
 }
 

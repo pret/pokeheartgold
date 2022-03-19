@@ -29133,7 +29133,7 @@ ov101_021F57B8: ; 0x021F57B8
 	str r3, [sp]
 	bl Save_FlyPoints_get
 	add r4, r0, #0
-	bl sub_0203B9B4
+	bl SaveFlyPoints_GetPlayerSub
 	str r0, [sp, #4]
 	add r0, r4, #0
 	bl sub_0203B980

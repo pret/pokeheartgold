@@ -18,7 +18,7 @@ As with the compiler, the Nitro SDK is proprietary and cannot be distributed her
 
 #### Linux
 
-Building the ROM requires the following packages:
+Building the ROM requires the following packages. If you cannot find one or more of these using your package distribution, it may be under a different name.
 
 * make
 * git
@@ -28,7 +28,7 @@ Building the ROM requires the following packages:
 * python3 (for asm preprocessor)
 * libpng-devel (libpng-dev on Ubuntu)
 * pkg-config
-* pugixml
+* pugixml (libpugixml-dev on Ubuntu)
 
 NOTE: If you are using Arch/Manjaro or Void you will only need base-devel instead of build-essentials or make or git. You will still need wine.
 

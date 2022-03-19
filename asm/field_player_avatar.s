@@ -904,8 +904,8 @@ sub_0205C7BC: ; 0x0205C7BC
 	.balign 4, 0
 	thumb_func_end sub_0205C7BC
 
-	thumb_func_start sub_0205C7C8
-sub_0205C7C8: ; 0x0205C7C8
+	thumb_func_start FlypointsPlayerSub_CheckRunningShoes
+FlypointsPlayerSub_CheckRunningShoes: ; 0x0205C7C8
 	cmp r0, #0
 	beq _0205C7D6
 	ldrh r0, [r0]
@@ -917,10 +917,10 @@ _0205C7D6:
 	mov r0, #0
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0205C7C8
+	thumb_func_end FlypointsPlayerSub_CheckRunningShoes
 
-	thumb_func_start sub_0205C7DC
-sub_0205C7DC: ; 0x0205C7DC
+	thumb_func_start FlypointsPlayerSub_SetRunningShoesFlag
+FlypointsPlayerSub_SetRunningShoesFlag: ; 0x0205C7DC
 	cmp r1, #1
 	bne _0205C7E6
 	mov r1, #1
@@ -930,7 +930,7 @@ _0205C7E6:
 	mov r1, #0
 	strh r1, [r0]
 	bx lr
-	thumb_func_end sub_0205C7DC
+	thumb_func_end FlypointsPlayerSub_SetRunningShoesFlag
 
 	thumb_func_start sub_0205C7EC
 sub_0205C7EC: ; 0x0205C7EC

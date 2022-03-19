@@ -436,7 +436,7 @@ _020791A6:
 	str r0, [r4]
 	b _020791EE
 _020791AE:
-	bl ov94_021E593C
+	bl PartyMenu_AnimateIconFormeChange
 	cmp r0, #1
 	bne _020791C2
 	add r0, r5, #0
@@ -7167,7 +7167,7 @@ _0207C708: .word 0x00000C64
 sub_0207C70C: ; 0x0207C70C
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov94_021E593C
+	bl PartyMenu_AnimateIconFormeChange
 	cmp r0, #1
 	bne _0207C722
 	add r0, r4, #0
@@ -7716,7 +7716,7 @@ sub_0207CB54: ; 0x0207CB54
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r0, r4, #0
-	bl ov94_021E5900
+	bl PartyMenu_InitIconFormeChangeWork
 	pop {r4, pc}
 	.balign 4, 0
 _0207CB68: .word FS_OVERLAY_ID(OVY_94)

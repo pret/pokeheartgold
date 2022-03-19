@@ -182,13 +182,13 @@ sub_020659CC: ; 0x020659CC
 	mov r1, #0
 	add r0, r4, #0
 	strb r1, [r6]
-	add r0, #0xe8 ; ->followMon.unk4
+	add r0, #0xe8 ; ->followMon.effectTimer
 	str r1, [r0]
 	mov r0, #1
 	lsl r0, r0, #8 ; ->followMon.unk1C
 	str r1, [r4, r0]
 	add r0, r4, #0
-	add r0, #0xec ; ->followMon.unk8
+	add r0, #0xec ; ->followMon.duration
 	str r1, [r0]
 	add r4, #0xf0 ; ->followMon.parentData
 	add r0, r5, #0

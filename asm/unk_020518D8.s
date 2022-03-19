@@ -740,7 +740,7 @@ _02051EA8:
 	str r1, [r5, r0]
 _02051EB0:
 	ldr r0, [sp, #4]
-	bl sub_0203B984
+	bl FlyPoints_GetWeatherType
 	mov r1, #0x5d
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -1500,7 +1500,7 @@ sub_02052504: ; 0x02052504
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B9B4
+	bl SaveFlyPoints_GetPlayerSub
 	add r6, r0, #0
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0]

@@ -1731,8 +1731,8 @@
 #define FLAG_UNK_970                                               0x970
 #define FLAG_SYS_PAL_PARK                                          0x971
 #define FLAG_UNK_972                                               0x972
-#define FLAG_UNK_973                                               0x973
-#define FLAG_UNK_974                                               0x974
+#define FLAG_SYS_FLASH                                             0x973
+#define FLAG_SYS_DEFOG                                             0x974
 #define FLAG_UNK_975                                               0x975
 #define FLAG_SYS_MET_BILL                                          0x976
 #define FLAG_SYS_ALPH_PUZZLE_KABUTO                                0x977

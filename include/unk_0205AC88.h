@@ -1,0 +1,8 @@
+#ifndef POKEHEARTGOLD_UNK_0205AC88_H
+#define POKEHEARTGOLD_UNK_0205AC88_H
+
+#include "script.h"
+
+struct UnkStruct_0205AC88 *sub_0205AC88(struct UnkStruct_02059E1C *a0);
+
+#endif //POKEHEARTGOLD_UNK_0205AC88_H

@@ -274,13 +274,13 @@ sub_02067AE4: ; 0x02067AE4
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
 	add r4, r0, #0
-	bl ClearFlag973
+	bl SysFlagFlashClear
 	add r0, r4, #0
-	bl ClearFlag974
+	bl SysFlagDefogClear
 _02067B56:
 	ldr r0, [r5, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B9B4
+	bl SaveFlyPoints_GetPlayerSub
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	cmp r0, #1
@@ -741,7 +741,7 @@ _02067ED8:
 _02067EEE:
 	ldr r0, [r5, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B984
+	bl FlyPoints_GetWeatherType
 	cmp r0, #0xb
 	bne _02067F04
 	ldrh r1, [r4, #0xc]
