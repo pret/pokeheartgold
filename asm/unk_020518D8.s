@@ -1500,7 +1500,7 @@ sub_02052504: ; 0x02052504
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B9B4
+	bl SaveFlyPoints_GetPlayerSub
 	add r6, r0, #0
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0]

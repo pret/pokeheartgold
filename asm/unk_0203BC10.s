@@ -1093,8 +1093,8 @@ _0203C43C:
 _0203C44A:
 	ldr r0, [r0, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B9B4
-	bl sub_0205C7C8
+	bl SaveFlyPoints_GetPlayerSub
+	bl FlypointsPlayerSub_CheckRunningShoes
 	pop {r3, pc}
 _0203C45A:
 	mov r0, #1

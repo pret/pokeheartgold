@@ -323,9 +323,9 @@ gScriptCmdTable:
 	.word ScrCmd_287                                    ; 287
 	.word ScrCmd_288                                    ; 288
 	.word ScrCmd_289                                    ; 289
-	.word ScrCmd_290                                    ; 290
+	.word ScrCmd_CheckPokedex                                    ; 290
 	.word ScrCmd_GivePokedex                                    ; 291
-	.word ScrCmd_292                                    ; 292
+	.word ScrCmd_CheckRunningShoes                                    ; 292
 	.word ScrCmd_GiveRunningShoes                       ; 293
 	.word ScrCmd_CheckBadge                             ; 294
 	.word ScrCmd_GiveBadge                              ; 295
@@ -434,8 +434,8 @@ gScriptCmdTable:
 	.word ScrCmd_398                                    ; 398
 	.word ScrCmd_BufferPartyMonMoveName                                    ; 399
 	.word ScrCmd_StrengthFlagAction                                    ; 400
-	.word ScrCmd_401                                    ; 401
-	.word ScrCmd_402                                    ; 402
+	.word ScrCmd_FlashAction                                    ; 401
+	.word ScrCmd_DefogAction                                    ; 402
 	.word ScrCmd_403                                    ; 403
 	.word ScrCmd_404                                    ; 404
 	.word ScrCmd_405                                    ; 405

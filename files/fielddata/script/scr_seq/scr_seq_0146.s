@@ -625,7 +625,8 @@ _08E9:
 	scrcmd_728 16, 2
 	scrcmd_728 16, 2
 _0909:
-	scrcmd_401 1, 181
+	flash_action 1
+	scrcmd_181
 	wait 42, VAR_SPECIAL_RESULT
 	goto _0945
 

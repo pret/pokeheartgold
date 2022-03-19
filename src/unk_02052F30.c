@@ -189,10 +189,10 @@ void sub_02053038(FieldSystem *fsys, BOOL isConnection) {
     if (sub_02066C74(scriptState, 1) && mapId == MAP_T29) {
         weather = 0;
     }
-    if (weather == 9 && CheckFlag974(scriptState) == TRUE) {
+    if (weather == 9 && SysFlagDefogCheck(scriptState) == TRUE) {
         weather = 0;
     }
-    if (weather == 11 && CheckFlag973(scriptState) == TRUE) {
+    if (weather == 11 && SysFlagFlashCheck(scriptState) == TRUE) {
         weather = 12;
     }
     FlyPoints_SetWeatherType(flyPoints, weather);
@@ -220,12 +220,12 @@ static void sub_0205316C(FieldSystem *fsys) {
     struct FlypointsPlayerSub *avatar_sub;
     if (fsys->unkAC) {
         gender = PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(fsys->savedata));
-        avatar_sub = sub_0203B9B4(Save_FlyPoints_get(fsys->savedata));
+        avatar_sub = SaveFlyPoints_GetPlayerSub(Save_FlyPoints_get(fsys->savedata));
         fsys->playerAvatar = sub_0205C390(fsys->unk3C, fsys->location->x, fsys->location->z, fsys->location->direction, avatar_sub->unk4, gender, 2, avatar_sub);
     } else {
         fsys->unk3C = sub_0205E0BC(fsys, 64, 5);
         gender = PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(fsys->savedata));
-        avatar_sub = sub_0203B9B4(Save_FlyPoints_get(fsys->savedata));
+        avatar_sub = SaveFlyPoints_GetPlayerSub(Save_FlyPoints_get(fsys->savedata));
         fsys->playerAvatar = sub_0205C390(fsys->unk3C, fsys->location->x, fsys->location->z, fsys->location->direction, avatar_sub->unk4, gender, 2, avatar_sub);
         sub_020699F8(fsys->unk3C, fsys->location->x, fsys->location->z, fsys->location->direction, fsys->location->mapId);
         Field_InitMapObjectsFromZoneEventData(fsys);
@@ -250,7 +250,7 @@ static void sub_0205323C(FieldSystem *fsys) {
 
     fsys->unk3C = sub_0205E0BC(fsys, 64, 5);
     sub_0203B9F4(fsys);
-    avatar_sub = sub_0203B9B4(Save_FlyPoints_get(fsys->savedata));
+    avatar_sub = SaveFlyPoints_GetPlayerSub(Save_FlyPoints_get(fsys->savedata));
     gender = PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(fsys->savedata));
     fsys->playerAvatar = sub_0205C408(fsys->unk3C, avatar_sub, gender);
     sub_02069B74(fsys->unk3C, fsys->location->mapId);

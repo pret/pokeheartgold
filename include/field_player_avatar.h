@@ -5,12 +5,14 @@ typedef struct FIELD_PLAYER_AVATAR FIELD_PLAYER_AVATAR;
 typedef struct MapObjectMan MapObjectMan;
 
 struct FlypointsPlayerSub {
-    u16 unk0;
+    u16 hasRunningShoes;
     u16 unk2;
     u32 unk4;
 };
 
 void sub_0205C7BC(struct FlypointsPlayerSub *vec);
+BOOL FlypointsPlayerSub_CheckRunningShoes(struct FlypointsPlayerSub *vec);
+void FlypointsPlayerSub_SetRunnungShoesFlag(struct FlypointsPlayerSub *vec, BOOL enable);
 
 int GetPlayerXCoord(FIELD_PLAYER_AVATAR *avatar);
 int GetPlayerYCoord(FIELD_PLAYER_AVATAR *avatar);

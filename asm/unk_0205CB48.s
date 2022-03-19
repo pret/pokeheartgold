@@ -1286,7 +1286,7 @@ _0205D544:
 	add r0, r6, #0
 	mov r4, #0xc
 	bl sub_0205C798
-	bl sub_0205C7C8
+	bl FlypointsPlayerSub_CheckRunningShoes
 	cmp r0, #1
 	bne _0205D564
 	add r1, sp, #0x18

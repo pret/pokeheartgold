@@ -1788,7 +1788,7 @@
       ]
     },
     {
-      "name": "scrcmd_290",
+      "name": "check_pokedex",
       "args": [
         2
       ]
@@ -1798,7 +1798,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_292",
+      "name": "check_running_shoes",
       "args": [
         2
       ]
@@ -2461,18 +2461,28 @@
       "switch_arg": 0
     },
     {
-      "name": "scrcmd_401",
+      "name": "flash_action",
       "args": [
-        1,
-        2
-      ]
+        1
+      ],
+      "cases": {
+        "0": [],
+        "1": [],
+        "2": ["var"]
+      },
+      "switch_arg": 0
     },
     {
-      "name": "scrcmd_402",
+      "name": "defog_action",
       "args": [
-        1,
-        2
-      ]
+        1
+      ],
+      "cases": {
+        "0": [],
+        "1": [],
+        "2": ["var"]
+      },
+      "switch_arg": 0
     },
     {
       "name": "scrcmd_403",

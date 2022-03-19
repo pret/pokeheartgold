@@ -234,28 +234,28 @@ BOOL StrengthFlagAction(SCRIPT_STATE* state, u32 action) {
     return FlagAction(state, action, FLAG_STRENGTH_ACTIVE);
 }
 
-void SetFlag973(SCRIPT_STATE* state) {
-    SetScriptFlag(state, FLAG_UNK_973);
+void SysFlagFlashSet(SCRIPT_STATE* state) {
+    SetScriptFlag(state, FLAG_SYS_FLASH);
 }
 
-void ClearFlag973(SCRIPT_STATE* state) {
-    ClearScriptFlag(state, FLAG_UNK_973);
+void SysFlagFlashClear(SCRIPT_STATE* state) {
+    ClearScriptFlag(state, FLAG_SYS_FLASH);
 }
 
-BOOL CheckFlag973(SCRIPT_STATE* state) {
-    return CheckScriptFlag(state, FLAG_UNK_973);
+BOOL SysFlagFlashCheck(SCRIPT_STATE* state) {
+    return CheckScriptFlag(state, FLAG_SYS_FLASH);
 }
 
-void SetFlag974(SCRIPT_STATE* state) {
-    SetScriptFlag(state, FLAG_UNK_974);
+void SysFlagDefogSet(SCRIPT_STATE* state) {
+    SetScriptFlag(state, FLAG_SYS_DEFOG);
 }
 
-void ClearFlag974(SCRIPT_STATE* state) {
-    ClearScriptFlag(state, FLAG_UNK_974);
+void SysFlagDefogClear(SCRIPT_STATE* state) {
+    ClearScriptFlag(state, FLAG_SYS_DEFOG);
 }
 
-BOOL CheckFlag974(SCRIPT_STATE* state) {
-    return CheckScriptFlag(state, FLAG_UNK_974);
+BOOL SysFlagDefogCheck(SCRIPT_STATE* state) {
+    return CheckScriptFlag(state, FLAG_SYS_DEFOG);
 }
 
 BOOL ScriptState_FlypointFlagAction(SCRIPT_STATE* state, u32 action, u32 flypoint_flag_no) {

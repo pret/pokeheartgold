@@ -24,7 +24,7 @@ u16 FlyPoints_GetDeathSpawn(FLYPOINTS_SAVE *flypointsSave);
 void FlyPoints_SetDeathSpawn(FLYPOINTS_SAVE *flypointsSave, const u16 spawn);
 u32 FlyPoints_GetCameraType(FLYPOINTS_SAVE *flypointsSave);
 void FlyPoints_SetCameraType(FLYPOINTS_SAVE *flypointsSave, const u32 cameraType);
-struct FlypointsPlayerSub *sub_0203B9B4(FLYPOINTS_SAVE *flypointsSave);
+struct FlypointsPlayerSub *SaveFlyPoints_GetPlayerSub(FLYPOINTS_SAVE *flypointsSave);
 u16 *FlyPoints_GetSafariBallsCounter(FLYPOINTS_SAVE *flypointsSave);
 u16 *FlyPoints_GetSafariStepsCounter(FLYPOINTS_SAVE *flypointsSave);
 u16 *FlyPoints_GetPoisonStepCounter(FLYPOINTS_SAVE *flypointsSave);

@@ -96,7 +96,7 @@ void FlyPoints_SetCameraType(FLYPOINTS_SAVE *flypointsSave, const u32 cameraType
     flypointsSave->cameraType = cameraType;
 }
 
-struct FlypointsPlayerSub *sub_0203B9B4(FLYPOINTS_SAVE *flypointsSave) {
+struct FlypointsPlayerSub *SaveFlyPoints_GetPlayerSub(FLYPOINTS_SAVE *flypointsSave) {
     return &flypointsSave->unk6C;
 }
 
