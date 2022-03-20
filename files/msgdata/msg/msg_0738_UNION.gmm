@@ -680,7 +680,7 @@
 	</row>
 	<row id="msg_0738_UNION_00165" index="165">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">You can chat with other people\nby selecting “CHAT” in the menu.\rGo out and meet other players in\nthe Union Room!\rLet people know what you’re like\nand what you’d like to do.\rMingle, chat, and add to your\ncircle of friends!\r</language>
+		<language name="English">You can chat with other people\nby selecting “CHAT” in the field.\rGo out and meet other players in\nthe Union Room!\rLet people know what you’re like\nand what you’d like to do.\rMingle, chat, and add to your\ncircle of friends!\r</language>
 	</row>
 	<row id="msg_0738_UNION_00166" index="166">
 		<attribute name="window_context_name">used</attribute>

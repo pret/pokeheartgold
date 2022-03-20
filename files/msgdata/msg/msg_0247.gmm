@@ -115,7 +115,7 @@
 	</row>
 	<row id="msg_0247_00028" index="28">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">A gift has been found, but it cannot\nbe received using this version.\rPress the A Button to return to\nthe menu.</language>
+		<language name="English">A gift has been found, but it cannot\nbe received using this version.\rPress the A Button to return to\nthe field.</language>
 	</row>
 	<row id="msg_0247_00029" index="29">
 		<attribute name="window_context_name">used</attribute>

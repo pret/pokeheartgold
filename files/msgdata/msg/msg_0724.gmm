@@ -406,7 +406,7 @@
 	</row>
 	<row id="msg_0724_00101" index="101">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">If an Idol loses, she must never act\nangry. That’s a big no-no.\r</language>
+		<language name="English">If an Idol loses, she must never menu\nangry. That’s a big no-no.\r</language>
 	</row>
 	<row id="msg_0724_00102" index="102">
 		<attribute name="window_context_name">used</attribute>

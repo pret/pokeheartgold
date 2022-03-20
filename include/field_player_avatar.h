@@ -16,7 +16,7 @@ void FlypointsPlayerSub_SetRunningShoesFlag(struct FlypointsPlayerSub *vec, BOOL
 
 int GetPlayerXCoord(FIELD_PLAYER_AVATAR *avatar);
 int GetPlayerYCoord(FIELD_PLAYER_AVATAR *avatar);
-u32 sub_0205C700(FIELD_PLAYER_AVATAR *avatar);
+int sub_0205C700(FIELD_PLAYER_AVATAR *avatar);
 FIELD_PLAYER_AVATAR *sub_0205C390(MapObjectMan *man, int x, int y, int direction, int a4, int gender, int a6, struct FlypointsPlayerSub *a7);
 FIELD_PLAYER_AVATAR *sub_0205C408(MapObjectMan *man, struct FlypointsPlayerSub *a1, int gender);
 void sub_0205C4CC(FIELD_PLAYER_AVATAR *avatar);

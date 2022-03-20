@@ -4474,15 +4474,15 @@
 	</row>
 	<row id="msg_0197_01115" index="1115">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">{STRVAR_1 1, 0, 0} finally got\nits act together!</language>
+		<language name="English">{STRVAR_1 1, 0, 0} finally got\nits menu together!</language>
 	</row>
 	<row id="msg_0197_01116" index="1116">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">The wild {STRVAR_1 1, 0, 0} finally got\nits act together!</language>
+		<language name="English">The wild {STRVAR_1 1, 0, 0} finally got\nits menu together!</language>
 	</row>
 	<row id="msg_0197_01117" index="1117">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">The foe’s {STRVAR_1 1, 0, 0} finally got\nits act together!</language>
+		<language name="English">The foe’s {STRVAR_1 1, 0, 0} finally got\nits menu together!</language>
 	</row>
 	<row id="msg_0197_01118" index="1118">
 		<attribute name="window_context_name">used</attribute>

@@ -131,7 +131,7 @@
 	</row>
 	<row id="msg_0618_T27R0501_00032" index="32">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Oh... Ouch...!\rThis stomachache!\rI wouldn’t let this guy act like that\nwere it not for this pain...!</language>
+		<language name="English">Oh... Ouch...!\rThis stomachache!\rI wouldn’t let this guy menu like that\nwere it not for this pain...!</language>
 	</row>
 	<row id="msg_0618_T27R0501_00033" index="33">
 		<attribute name="window_context_name">used</attribute>
@@ -139,11 +139,11 @@
 	</row>
 	<row id="msg_0618_T27R0501_00034" index="34">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Oh... Ouch...!\rThis back pain!\rI wouldn’t let this guy act like that\nwere it not for this pain...!</language>
+		<language name="English">Oh... Ouch...!\rThis back pain!\rI wouldn’t let this guy menu like that\nwere it not for this pain...!</language>
 	</row>
 	<row id="msg_0618_T27R0501_00035" index="35">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Oh... Ouch...!\rThis toothache!\rI wouldn’t let this guy act like that\nwere it not for this pain...! </language>
+		<language name="English">Oh... Ouch...!\rThis toothache!\rI wouldn’t let this guy menu like that\nwere it not for this pain...! </language>
 	</row>
 	<row id="msg_0618_T27R0501_00036" index="36">
 		<attribute name="window_context_name">used</attribute>
