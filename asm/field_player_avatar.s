@@ -336,7 +336,7 @@ _0205C47C:
 	add r0, r5, #0
 	bl ov01_022008B4
 	add r0, r5, #0
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #2
 	bne _0205C4C0
 	add r0, r5, #0
@@ -693,8 +693,8 @@ _0205C6F2:
 	.balign 4, 0
 	thumb_func_end sub_0205C6E4
 
-	thumb_func_start sub_0205C700
-sub_0205C700: ; 0x0205C700
+	thumb_func_start PlayerAvatar_IsOnBike
+PlayerAvatar_IsOnBike: ; 0x0205C700
 	push {r4, lr}
 	add r4, r0, #0
 	bne _0205C70A
@@ -703,7 +703,7 @@ _0205C70A:
 	ldr r0, [r4, #0x18]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0205C700
+	thumb_func_end PlayerAvatar_IsOnBike
 
 	thumb_func_start sub_0205C710
 sub_0205C710: ; 0x0205C710

@@ -258,7 +258,7 @@ sub_0203E3FC: ; 0x0203E3FC
 	lsr r1, r1, #0x10
 	bl sub_020778E8
 	ldr r0, [r5, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #1
 	bne _0203E446
 	add r0, r4, #0

@@ -437,7 +437,7 @@ _02067C66:
 	b _02067DE4
 _02067C78:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	sub r0, r0, #1
 	cmp r0, #1
 	bhi _02067C8E
@@ -1025,7 +1025,7 @@ _020680F2:
 _02068106:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #2
 	bne _02068116
 	mov r0, #PARTY_MENU_RESPONSE_ALREADY_SURFING
@@ -1313,7 +1313,7 @@ FieldMoveMenuCheck_Waterfall: ; 0x02068318
 	pop {r4, pc}
 _0206832A:
 	ldr r0, [r1, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #2
 	beq _02068338
 	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
@@ -2007,7 +2007,7 @@ FieldMoveMenuCheck_Whirlpool: ; 0x0206885C
 	pop {r4, pc}
 _0206886E:
 	ldr r0, [r1, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #2
 	beq _0206887C
 	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE

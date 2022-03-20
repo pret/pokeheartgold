@@ -9,10 +9,13 @@ struct ErrorContinueEnv {
     Location location;
 };
 
-void ov01_021F35C4(FieldSystem *fsys, int a1, int *a2);
 void ov01_021EFAF8(FieldSystem *fsys);
-void ov01_02205790(FieldSystem *fsys, int a1);
-BOOL ov01_022057C4(FieldSystem *fsys);
+void ov01_021F1AFC(FIELD_PLAYER_AVATAR *avatar, int a1);
+void ov01_021F1B04(FIELD_PLAYER_AVATAR *avatar);
+void ov01_021F35C4(FieldSystem *fsys, int a1, int *a2);
 UnkStruct_0206793C *ov01_0220329C(LocalMapObject *obj, int a1);
+void ov01_02205790(FieldSystem *fsys, u8 a1);
+BOOL ov01_022057C4(FieldSystem *fsys);
+void ov01_02205D68(FieldSystem *fsys);
 
 #endif //POKEHEARTGOLD_OVERLAY_01_H

@@ -213,7 +213,7 @@ sub_02054F60: ; 0x02054F60
 	add r4, r0, #0
 	ldr r0, [r4, #0x40]
 	add r5, r1, #0
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #2
 	bne _02054F82
 	ldr r0, [r4, #0xc]
@@ -278,7 +278,7 @@ sub_02054FDC: ; 0x02054FDC
 	ldr r0, [r5, #0x40]
 	add r4, r1, #0
 	add r7, r2, #0
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	add r6, r0, #0
 	bl sub_02004A54
 	cmp r0, #1

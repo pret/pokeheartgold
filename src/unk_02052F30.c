@@ -846,7 +846,7 @@ static BOOL sub_02053CCC(TaskManager *taskManager) {
         env->unk1C = 0;
         if (FollowingPokemon_IsActive(fsys)
          && !ov01_022057C4(fsys)
-         && sub_0205C700(fsys->playerAvatar) != 1) {
+         && PlayerAvatar_IsOnBike(fsys->playerAvatar) != 1) {
             env->unk1C = ov01_0220329C(FollowingPokemon_GetMapObject(fsys), 1);
         }
         env->unk0++;

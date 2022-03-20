@@ -3476,7 +3476,7 @@ _021E7500:
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7510:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #2
 	beq _021E7570
 	ldr r0, [r5, #0xc]
@@ -26319,7 +26319,7 @@ ov01_021F2068: ; 0x021F2068
 	add r2, sp, #0
 	bl ov01_021F3040
 	ldr r0, [r4, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	sub r0, r0, #1
 	cmp r0, #1
 	bhi _021F2098
@@ -26649,7 +26649,7 @@ ov01_021F232C: ; 0x021F232C
 	cmp r3, #1
 	bne _021F2342
 	add r0, r5, #0
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #2
 	beq _021F2346
 _021F2342:
@@ -26863,7 +26863,7 @@ ov01_021F24F4: ; 0x021F24F4
 	cmp r3, #1
 	bne _021F250E
 	add r0, r5, #0
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #2
 	beq _021F2512
 _021F250E:
@@ -26953,7 +26953,7 @@ ov01_021F2590: ; 0x021F2590
 	add r2, sp, #0
 	bl ov01_021F3040
 	ldr r0, [r4, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	sub r0, r0, #1
 	cmp r0, #1
 	bhi _021F25C0
@@ -28189,7 +28189,7 @@ ov01_021F2EDC: ; 0x021F2EDC
 	cmp r0, #0
 	beq _021F2F22
 	add r0, r4, #0
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #0
 	bne _021F2F22
 	add r0, r5, #0
@@ -28222,7 +28222,7 @@ ov01_021F2F24: ; 0x021F2F24
 	cmp r0, #0
 	beq _021F2F6C
 	add r0, r4, #0
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #0
 	bne _021F2F6C
 	add r0, r5, #0
@@ -28254,7 +28254,7 @@ Field_PlayerMovementSavingSet: ; 0x021F2F70
 	add r7, r0, #0
 	ldr r6, [r7, #0x40]
 	add r0, r6, #0
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	add r4, r0, #0
 	beq _021F2F88
 	cmp r4, #3
@@ -49346,7 +49346,7 @@ _021FCA68:
 	add r0, r4, #0
 	bl ov01_021FCB4C
 	add r0, r5, #0
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	bl sub_0205C99C
 	add r1, r0, #0
 	add r0, r5, #0
@@ -49595,7 +49595,7 @@ ov01_021FCC2C: ; 0x021FCC2C
 	add r4, r0, #0
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #2
 	bne _021FCC40
 	mov r0, #0
@@ -50008,7 +50008,7 @@ _021FCEF4:
 	add r2, r7, #0
 	bl memset
 	ldr r0, [r6, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	sub r0, r0, #1
 	cmp r0, #1
 	bhi _021FCF20
@@ -66409,7 +66409,7 @@ _02204BF6:
 	add r0, r6, #0
 	bl MapObject_ClearHeldMovementIfActive
 	ldr r0, [r5, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	bl sub_0205C99C
 	add r1, r0, #0
 	ldr r0, [r5, #0x40]

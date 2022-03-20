@@ -225,11 +225,14 @@ struct FieldSystem {
     s64 unkB4;
     u8 unkBC[8];
     int unkC4;
-    u8 filler_C8[0x1C];
+    u8 filler_C8[0xA];
+    u8 unkD2_0:7;
+    u8 unkD2_7:1;
+    u8 filler_D3[0x11];
     FollowMon followMon; // A4
     u8 unk104[4];
     struct FieldSystemUnk108 *unk108;
-    u8 filler_10C[8];
+    u32 unk_10C[2];
     struct UnkFsysSub_114* unk114;
     BUGCONTEST* bugContest;
     u8 unk11C[0xC];

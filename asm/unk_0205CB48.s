@@ -53,7 +53,7 @@ _0205CB66:
 	pop {r3, r4, r5, r6, r7, pc}
 _0205CB9A:
 	add r0, r5, #0
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #0
 	bne _0205CBC4
 	add r0, r5, #0
@@ -132,7 +132,7 @@ _0205CC30:
 	cmp r0, #0x20
 	bne _0205CC42
 	add r0, r5, #0
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #2
 	bne _0205CC42
 	mov r0, #1
@@ -241,7 +241,7 @@ _0205CD0A:
 	bl MapObject_GetMovementCommand
 	str r0, [sp]
 	add r0, r6, #0
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	ldr r0, [sp]
 	bl sub_0205DE64
 	cmp r0, #0
@@ -351,7 +351,7 @@ _0205CDFE:
 	cmp r0, #0
 	bne _0205CE58
 	add r0, r5, #0
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #1
 	beq _0205CE58
 	cmp r0, #2
@@ -1018,7 +1018,7 @@ sub_0205D340: ; 0x0205D340
 	add r7, r1, #0
 	str r2, [sp, #8]
 	add r4, r3, #0
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	add r5, r0, #0
 	add r0, r6, #0
 	bl PlayerAvatar_GetMapObject
@@ -1228,7 +1228,7 @@ sub_0205D4B4: ; 0x0205D4B4
 	bl sub_0205DA34
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #2
 	beq _0205D588
 	mov r0, #4
@@ -2280,7 +2280,7 @@ sub_0205DCFC: ; 0x0205DCFC
 	mvn r1, r1
 	cmp r4, r1
 	beq _0205DD8E
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #1
 	bne _0205DD8E
 	add r0, r5, #0
@@ -2540,7 +2540,7 @@ sub_0205DEC0: ; 0x0205DEC0
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r5, r1, #0
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #3
 	bhi _0205DF02
 	add r0, r0, r0
@@ -2762,7 +2762,7 @@ sub_0205E048: ; 0x0205E048
 	add r4, r0, #0
 	bl GameStats_Inc
 	ldr r0, [r5, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #1
 	bne _0205E074
 	add r0, r4, #0
@@ -2785,7 +2785,7 @@ sub_0205E078: ; 0x0205E078
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 _0205E08A:
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #1
 	beq _0205E096
 	mov r0, #0

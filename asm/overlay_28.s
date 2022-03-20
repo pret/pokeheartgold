@@ -2604,7 +2604,7 @@ ov28_0225E938: ; 0x0225E938
 	add r5, r0, #0
 	ldr r0, [r5, #0x18]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #1
 	beq _0225E952
 	add r0, r5, #0

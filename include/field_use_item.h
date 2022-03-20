@@ -2,9 +2,14 @@
 #define POKEHEARTGOLD_FIELD_USE_ITEM_H
 
 #include "task.h"
+#include "party.h"
+#include "bag.h"
+#include "mail.h"
+#include "bag_view.h"
+#include "unk_0203BC10.h"
 
-#define USE_ITEM_TASK_MENU              0
-#define USE_ITEM_TASK_FIELD               1
+#define USE_ITEM_TASK_MENU               0
+#define USE_ITEM_TASK_FIELD              1
 #define USE_ITEM_TASK_CHECK              2
 
 struct ItemUseData {
@@ -36,20 +41,29 @@ struct ItemUseTaskData {
 struct ItemUseTaskData2 {
     TaskManager *taskManager;
     u16 itemId;
+    u8 unk6;
 };
 
-struct UnkStruct_BagViewApplicationMaybe {
-    int unk_0000;
-    u8 filler_0004[0x22];
-    u16 unk_0026;
-    u8 filler_0028[0x32C];
-    TaskFunc unk_0354;
-    u8 filler_0358[0x28];
-    struct AlphItemUseData *unk_0380;
-};
-
-typedef BOOL (*ItemMenuUseFunc)(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2);
+typedef void (*ItemMenuUseFunc)(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2);
 typedef BOOL (*ItemFieldUseFunc)(struct ItemUseTaskData *data);
-typedef int (*ItemCheckUseFunc)(const struct ItemUseData *data);
+typedef u32 (*ItemCheckUseFunc)(const struct ItemUseData *data);
+
+struct UseItemInPartyTaskEnv {
+    PARTY *party;
+    BAG_DATA *bag;
+    MAILBOX *mailbox;
+    OPTIONS *options;
+    struct UnkStruct_0202E474 *unk10;
+    u32 unk14;
+    void *unk18;
+    FieldSystem *unk1C;
+    void *unk20;
+    u8 unk24;
+    u8 unk25;
+    u8 unk26;
+    u16 unk28;
+    u16 unk2A;
+    u8 padding_2C[0x18];
+};
 
 #endif //POKEHEARTGOLD_FIELD_USE_ITEM_H

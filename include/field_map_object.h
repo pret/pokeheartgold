@@ -91,5 +91,8 @@ MapObjectMan *sub_0205E0BC(FieldSystem *fsys, int num, HeapID heapId);
 void sub_0205F55C(MapObjectMan *man);
 void sub_0205E494(MapObjectMan *man);
 void sub_0205E0E8(MapObjectMan *man);
+BOOL MapObject_IsMovementPaused(LocalMapObject *obj);
+void MapObject_UnpauseMovement(LocalMapObject *obj);
+void MapObjectMan_UnpauseAllMovement(MapObjectMan *man);
 
 #endif //POKEHEARTGOLD_FIELD_MAP_OBJECT_H

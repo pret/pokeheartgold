@@ -6066,7 +6066,7 @@ ScrCmd_184: ; 0x020437B4
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #1
 	bne _020437DC
 	mov r0, #1
@@ -6188,7 +6188,7 @@ ScrCmd_GetPlayerState: ; 0x0204389C
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}

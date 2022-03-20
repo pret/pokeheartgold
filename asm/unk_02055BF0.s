@@ -309,7 +309,7 @@ _02055DF4:
 	cmp r0, #0
 	beq _02055E20
 	ldr r0, [r5, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #1
 	beq _02055E20
 	mov r0, #9
@@ -325,7 +325,7 @@ _02055E20:
 	cmp r0, #0
 	bne _02055E5E
 	ldr r0, [r5, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #1
 	beq _02055E5E
 	add r0, r5, #0

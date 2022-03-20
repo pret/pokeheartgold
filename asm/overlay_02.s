@@ -3310,7 +3310,7 @@ ov02_02247568: ; 0x02247568
 	mov r6, #0x64
 _02247576:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	add r7, r0, #0
 	mov r4, #0x28
 	cmp r7, #1
@@ -13295,7 +13295,7 @@ ov02_0224BFD8: ; 0x0224BFD8
 	bl PlayerAvatar_GetMapObject
 	str r0, [r4, #0x20]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	sub r0, r0, #1
 	cmp r0, #1
 	bhi _0224C006
@@ -13974,7 +13974,7 @@ ov02_0224C500: ; 0x0224C500
 	str r0, [r4, #0x20]
 	str r6, [r4, #0x28]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	sub r0, r0, #1
 	cmp r0, #1
 	bhi _0224C534
@@ -14472,7 +14472,7 @@ _0224C8E4:
 	str r0, [r4, #0x14]
 _0224C90E:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #2
 	beq _0224C92E
 	ldr r0, [r4, #8]
@@ -14593,7 +14593,7 @@ _0224C9FE:
 	ldr r0, [r4, #0x10]
 	bl sub_0206226C
 	ldr r0, [r5, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #2
 	beq _0224CA18
 	ldr r0, [r4, #0x2c]
@@ -18297,7 +18297,7 @@ ov02_0224E4EC: ; 0x0224E4EC
 	add r0, r5, r0
 	str r0, [r4, #0x20]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #2
 	bne _0224E528
 	mov r0, #1
@@ -18537,7 +18537,7 @@ ov02_0224E698: ; 0x0224E698
 	pop {r3, r4, r5, r6, r7, pc}
 _0224E706:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #2
 	beq _0224E716
 	add sp, #0x20

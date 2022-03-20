@@ -1168,7 +1168,7 @@ sub_0206B014: ; 0x0206B014
 	orr r0, r1
 	strb r0, [r5, #4]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	add r1, r5, #0
 	add r1, #0x30
 	strb r0, [r1]
@@ -2052,7 +2052,7 @@ _0206B7A0:
 	cmp r0, #0
 	beq _0206B814
 	ldr r0, [r5, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_IsOnBike
 	cmp r0, #1
 	beq _0206B814
 	add r0, r5, #0
