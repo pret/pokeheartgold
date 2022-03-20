@@ -112,6 +112,7 @@ Static main
 	Object asm/unk_0202CF1C.o
 	Object asm/unk_0202D230.o
 	Object asm/unk_0202D938.o
+	Object src/unk_0202D938.o
 	Object src/roamer.o
 	Object asm/unk_0202DB34.o
 	Object asm/unk_0202DBA8.o
