@@ -1,7 +1,6 @@
 #include "unk_0202D938.h"
 #include "save.h"
-
-#define SAVE_UNK_20 0x14
+#include "constants/save_arrays.h
 
 u32 sub_0202D938(void) {
     return sizeof(UnkSavStruct20);
