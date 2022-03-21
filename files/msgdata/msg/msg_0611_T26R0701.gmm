@@ -10,11 +10,11 @@
 	</row>
 	<row id="msg_0611_T26R0701_00002" index="2">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Whenever I roll into Olivine, I always\nvisit the Olivine Café.\rEverything on the field makes me feel\nstronger. I can’t stop eating!</language>
+		<language name="English">Whenever I roll into Olivine, I always\nvisit the Olivine Café.\rEverything on the menu makes me feel\nstronger. I can’t stop eating!</language>
 	</row>
 	<row id="msg_0611_T26R0701_00003" index="3">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Olivine Café’s field is chock-full\nof hearty fare for beefy Sailors!</language>
+		<language name="English">Olivine Café’s menu is chock-full\nof hearty fare for beefy Sailors!</language>
 	</row>
 	<row id="msg_0611_T26R0701_00004" index="4">
 		<attribute name="window_context_name">used</attribute>

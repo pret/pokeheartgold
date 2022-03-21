@@ -142,7 +142,7 @@
 	</row>
 	<row id="msg_0031_00033" index="33">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">You are too low in healing rank to use\nthis field item.</language>
+		<language name="English">You are too low in healing rank to use\nthis menu item.</language>
 	</row>
 	<row id="msg_0031_00034" index="34">
 		<attribute name="window_context_name">used</attribute>

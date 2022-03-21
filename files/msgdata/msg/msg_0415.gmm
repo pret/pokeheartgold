@@ -38,7 +38,7 @@
 	</row>
 	<row id="msg_0415_00009" index="9">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Announcing the top 3 in Olivine City!\nNumber three is... Ta-da!\nThe Olivine Café!\nThis café on the beach is very famous\naround the city for having great food.\nEverything on the field is delicious!\nMoving on, number two is... Ta-da!\nThe Fast Ship S.S. Aqua!\nThe S.S. Aqua moves using a jet of water\nand is a great resource to travelers\ngoing between Johto and Kanto!\nAnd the number one thing is... Ta-da!\nThe Lighthouse!\nThis Lighthouse is a shining symbol of\nOlivine and lights the way for ships on\nthe sea, and that’s why it’s our splendid\nnumber one!</language>
+		<language name="English">Announcing the top 3 in Olivine City!\nNumber three is... Ta-da!\nThe Olivine Café!\nThis café on the beach is very famous\naround the city for having great food.\nEverything on the menu is delicious!\nMoving on, number two is... Ta-da!\nThe Fast Ship S.S. Aqua!\nThe S.S. Aqua moves using a jet of water\nand is a great resource to travelers\ngoing between Johto and Kanto!\nAnd the number one thing is... Ta-da!\nThe Lighthouse!\nThis Lighthouse is a shining symbol of\nOlivine and lights the way for ships on\nthe sea, and that’s why it’s our splendid\nnumber one!</language>
 	</row>
 	<row id="msg_0415_00010" index="10">
 		<attribute name="window_context_name">used</attribute>
