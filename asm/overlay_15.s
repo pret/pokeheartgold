@@ -3943,7 +3943,7 @@ _021FB244:
 	cmp r3, #4
 	bne _021FB25A
 	ldr r0, [r1, #0x70]
-	bl sub_02064F24
+	bl Leftover_CanPlantBerry
 	cmp r0, #1
 	bne _021FB25A
 	mov r1, #3

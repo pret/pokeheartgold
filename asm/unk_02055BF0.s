@@ -309,7 +309,7 @@ _02055DF4:
 	cmp r0, #0
 	beq _02055E20
 	ldr r0, [r5, #0x40]
-	bl PlayerAvatar_IsOnBike
+	bl PlayerAvatar_GetState
 	cmp r0, #1
 	beq _02055E20
 	mov r0, #9
@@ -325,7 +325,7 @@ _02055E20:
 	cmp r0, #0
 	bne _02055E5E
 	ldr r0, [r5, #0x40]
-	bl PlayerAvatar_IsOnBike
+	bl PlayerAvatar_GetState
 	cmp r0, #1
 	beq _02055E5E
 	add r0, r5, #0
@@ -1218,7 +1218,7 @@ _0205655C:
 	add r2, r0, #0
 	ldr r1, [sp]
 	add r0, r4, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	bl sub_0205B70C
 	cmp r0, #0
 	beq _02056592
@@ -1305,7 +1305,7 @@ _0205661A:
 	add r2, r0, #0
 	ldr r1, [sp]
 	add r0, r5, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	bl sub_0205B70C
 	cmp r0, #0
 	beq _0205665A

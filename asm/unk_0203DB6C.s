@@ -108,7 +108,7 @@ Fsys_GetFacingObject: ; 0x0203DBF8
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r5, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	bl sub_0205B700
 	cmp r0, #1
 	bne _0203DC52

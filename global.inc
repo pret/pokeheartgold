@@ -5165,7 +5165,7 @@ FS_EXTERN_OVERLAY(OV_101)
 .public ov01_021FC644
 .public ov01_021FC65C
 .public ov01_021FC664
-.public FishingRodTaskEnv
+.public CreateFishingRodTaskEnv
 .public Task_OverworldFish
 .public ov01_021FC748
 .public ov01_021FC76C
@@ -28245,8 +28245,8 @@ FS_EXTERN_OVERLAY(OV_101)
 .public sub_0203EB64
 .public sub_0203EBA4
 .public Fsys_CreateApplication_AlphPuzzle
-.public sub_0203EC64
-.public sub_0203ECC0
+.public CreateUnownReportWork
+.public CreateBerryPotsWork
 .public CreateApricornBoxWork
 .public sub_0203ED80
 .public sub_0203EDDC
@@ -28432,7 +28432,7 @@ FS_EXTERN_OVERLAY(OV_101)
 .public sub_0205489C
 .public sub_020548C0
 .public sub_020548EC
-.public sub_02054918
+.public GetMetatileBehaviorAt
 .public sub_02054940
 .public sub_020549A8
 .public sub_020549F4
@@ -28726,7 +28726,7 @@ FS_EXTERN_OVERLAY(OV_101)
 .public sub_0205C6D4
 .public PlayerAvatar_GetMapObject
 .public sub_0205C6E4
-.public PlayerAvatar_IsOnBike
+.public PlayerAvatar_GetState
 .public sub_0205C710
 .public sub_0205C718
 .public sub_0205C71C
@@ -29069,8 +29069,8 @@ FS_EXTERN_OVERLAY(OV_101)
 .public sub_02064910
 .public sub_02064938
 .public GetItemFieldUseFunc
-.public sub_020649B8
-.public sub_02064F24
+.public ItemCheckUseData_Init
+.public Leftover_CanPlantBerry
 .public UseRegisteredItemButtonInField
 .public sub_0206599C
 .public sub_020659A8
@@ -29822,7 +29822,7 @@ FS_EXTERN_OVERLAY(OV_101)
 .public _020FD800
 .public _020FD838
 .public _0210FACC
-.public _0210FAD8
+.public sStayInFieldItemIds
 .public GetPlayerLastXCoord
 .public GetPlayerLastYCoord
 .public sub_0205CABC

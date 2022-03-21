@@ -12,9 +12,9 @@
 #define USE_ITEM_TASK_FIELD              1
 #define USE_ITEM_TASK_CHECK              2
 
-struct ItemUseData {
+struct ItemCheckUseData {
     u32 mapId;
-    int unk04;
+    int playerState;
     u16 haveFollower:1;
     u16 flag969set:1;
     u16 facingTile;
@@ -31,22 +31,27 @@ struct AlphItemUseData {
     u16 var_8003;
 };
 
-struct ItemUseTaskData {
-    FieldSystem *fsys;        // 00
-    struct ItemUseData dat;   // 04
-    u8 padding_1C[0x8];       // 1C
-    u16 itemId;               // 24
+typedef void *(*FieldApplicationWorkCtor)(FieldSystem *fsys);
+
+struct ItemFieldUseData {
+    FieldSystem *fsys;             // 00
+    struct ItemCheckUseData dat;        // 04
+    FieldApplicationWorkCtor ctor; // 1C
+    void *work;                    // 20
+    u16 itemId;                    // 24
+    u8 state;                      // 26
+    u8 no_app;                      // 27
 };
 
-struct ItemUseTaskData2 {
+struct ItemMenuUseData {
     TaskManager *taskManager;
     u16 itemId;
     u8 unk6;
 };
 
-typedef void (*ItemMenuUseFunc)(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2);
-typedef BOOL (*ItemFieldUseFunc)(struct ItemUseTaskData *data);
-typedef u32 (*ItemCheckUseFunc)(const struct ItemUseData *data);
+typedef void (*ItemMenuUseFunc)(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
+typedef BOOL (*ItemFieldUseFunc)(struct ItemFieldUseData *data);
+typedef u32 (*ItemCheckUseFunc)(const struct ItemCheckUseData *data);
 
 struct UseItemInPartyTaskEnv {
     PARTY *party;
@@ -56,21 +61,26 @@ struct UseItemInPartyTaskEnv {
     struct UnkStruct_0202E474 *unk10;
     u32 unk14;
     void *unk18;
-    FieldSystem *unk1C;
+    FieldSystem *fsys;
     void *unk20;
     u8 unk24;
     u8 unk25;
     u8 unk26;
-    u16 unk28;
+    u16 itemId;
     u16 unk2A;
     u8 padding_2C[0x18];
 };
 
 struct RegisteredKeyItemUseMessagePrintTaskData {
-    WINDOW unk0;
-    STRING *unk10;
-    u16 unk14;
-    u16 unk16;
+    WINDOW window;
+    STRING *strbuf;
+    u16 printerId;
+    u16 state;
 };
+
+void *GetItemFieldUseFunc(int funcType, int itemType);
+void ItemCheckUseData_Init(FieldSystem *fsys, struct ItemCheckUseData *dat);
+BOOL Leftover_CanPlantBerry(const struct ItemCheckUseData *data);
+int UseRegisteredItemButtonInField(FieldSystem *fsys, u8 slot);
 
 #endif //POKEHEARTGOLD_FIELD_USE_ITEM_H

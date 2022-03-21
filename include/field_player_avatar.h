@@ -5,6 +5,10 @@ typedef struct FIELD_PLAYER_AVATAR FIELD_PLAYER_AVATAR;
 typedef struct MapObjectMan MapObjectMan;
 typedef struct LocalMapObject LocalMapObject;
 
+#define PLAYER_STATE_WALKING          0
+#define PLAYER_STATE_CYCLING          1
+#define PLAYER_STATE_SURFING          2
+
 struct FlypointsPlayerSub {
     u16 hasRunningShoes;
     u16 unk2;
@@ -17,7 +21,7 @@ void FlypointsPlayerSub_SetRunningShoesFlag(struct FlypointsPlayerSub *vec, BOOL
 
 int GetPlayerXCoord(FIELD_PLAYER_AVATAR *avatar);
 int GetPlayerYCoord(FIELD_PLAYER_AVATAR *avatar);
-int PlayerAvatar_IsOnBike(FIELD_PLAYER_AVATAR *avatar);
+int PlayerAvatar_GetState(FIELD_PLAYER_AVATAR *avatar);
 FIELD_PLAYER_AVATAR *sub_0205C390(MapObjectMan *man, int x, int y, int direction, int a4, int gender, int a6, struct FlypointsPlayerSub *a7);
 FIELD_PLAYER_AVATAR *sub_0205C408(MapObjectMan *man, struct FlypointsPlayerSub *a1, int gender);
 void sub_0205C4CC(FIELD_PLAYER_AVATAR *avatar);

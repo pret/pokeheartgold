@@ -22,9 +22,10 @@ struct UnkStruct_0203D818 {
 };
 
 void sub_0203C8F0(struct BagViewAppWork *env, TaskFunc func);
+BOOL sub_0203CA9C(TaskManager *taskManager);
 BOOL sub_0203D718(TaskManager *taskManager);
 struct UnkStruct_0203D818 *sub_0203D818(u16 itemId, u8 a1, u8 a2);
 BOOL sub_0203D830(TaskManager *taskManager);
-BOOL sub_0203CA9C(TaskManager *taskManager);
+BOOL sub_0203D9B4(TaskManager *taskManager);
 
 #endif //POKEHEARTGOLD_UNK_0203BC10_H

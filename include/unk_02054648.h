@@ -4,6 +4,6 @@
 #include "script.h"
 
 void sub_0205489C(u32 *a0, int a1);
-u8 sub_02054918(FieldSystem *fsys, int x, int y);
+u8 GetMetatileBehaviorAt(FieldSystem *fsys, int x, int y);
 
 #endif //POKEHEARTGOLD_UNK_02054648_H

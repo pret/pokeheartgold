@@ -3064,7 +3064,7 @@ _021E71B0:
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0xc]
 	add r0, r6, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	add r4, r0, #0
 	bl sub_0205BAA0
 	cmp r0, #0
@@ -3162,7 +3162,7 @@ _021E726C:
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0xc]
 	add r0, r6, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	bl sub_0205B70C
 	cmp r0, #0
 	beq _021E72B6
@@ -3188,7 +3188,7 @@ _021E72B6:
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0xc]
 	add r0, r6, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	add r4, r0, #0
 	bl sub_0205B718
 	cmp r0, #0
@@ -3369,7 +3369,7 @@ GetInteractedMetatileScript: ; 0x021E7418
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	add r7, r0, #0
 	lsl r0, r7, #0x18
 	lsr r0, r0, #0x18
@@ -3476,7 +3476,7 @@ _021E7500:
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7510:
 	ldr r0, [r5, #0x40]
-	bl PlayerAvatar_IsOnBike
+	bl PlayerAvatar_GetState
 	cmp r0, #2
 	beq _021E7570
 	ldr r0, [r5, #0xc]
@@ -3631,7 +3631,7 @@ _021E7672:
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	add r7, r0, #0
 	add r0, r5, #0
 	bl ov01_021E774C
@@ -4249,7 +4249,7 @@ ov01_021E7B38: ; 0x021E7B38
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r4, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	add sp, #8
 	pop {r4, pc}
 	thumb_func_end ov01_021E7B38
@@ -4265,7 +4265,7 @@ ov01_021E7B54: ; 0x021E7B54
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r4, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	add sp, #8
 	pop {r4, pc}
 	thumb_func_end ov01_021E7B54
@@ -26319,7 +26319,7 @@ ov01_021F2068: ; 0x021F2068
 	add r2, sp, #0
 	bl ov01_021F3040
 	ldr r0, [r4, #0x40]
-	bl PlayerAvatar_IsOnBike
+	bl PlayerAvatar_GetState
 	sub r0, r0, #1
 	cmp r0, #1
 	bhi _021F2098
@@ -26649,7 +26649,7 @@ ov01_021F232C: ; 0x021F232C
 	cmp r3, #1
 	bne _021F2342
 	add r0, r5, #0
-	bl PlayerAvatar_IsOnBike
+	bl PlayerAvatar_GetState
 	cmp r0, #2
 	beq _021F2346
 _021F2342:
@@ -26863,7 +26863,7 @@ ov01_021F24F4: ; 0x021F24F4
 	cmp r3, #1
 	bne _021F250E
 	add r0, r5, #0
-	bl PlayerAvatar_IsOnBike
+	bl PlayerAvatar_GetState
 	cmp r0, #2
 	beq _021F2512
 _021F250E:
@@ -26953,7 +26953,7 @@ ov01_021F2590: ; 0x021F2590
 	add r2, sp, #0
 	bl ov01_021F3040
 	ldr r0, [r4, #0x40]
-	bl PlayerAvatar_IsOnBike
+	bl PlayerAvatar_GetState
 	sub r0, r0, #1
 	cmp r0, #1
 	bhi _021F25C0
@@ -28189,7 +28189,7 @@ ov01_021F2EDC: ; 0x021F2EDC
 	cmp r0, #0
 	beq _021F2F22
 	add r0, r4, #0
-	bl PlayerAvatar_IsOnBike
+	bl PlayerAvatar_GetState
 	cmp r0, #0
 	bne _021F2F22
 	add r0, r5, #0
@@ -28222,7 +28222,7 @@ ov01_021F2F24: ; 0x021F2F24
 	cmp r0, #0
 	beq _021F2F6C
 	add r0, r4, #0
-	bl PlayerAvatar_IsOnBike
+	bl PlayerAvatar_GetState
 	cmp r0, #0
 	bne _021F2F6C
 	add r0, r5, #0
@@ -28254,7 +28254,7 @@ Field_PlayerMovementSavingSet: ; 0x021F2F70
 	add r7, r0, #0
 	ldr r6, [r7, #0x40]
 	add r0, r6, #0
-	bl PlayerAvatar_IsOnBike
+	bl PlayerAvatar_GetState
 	add r4, r0, #0
 	beq _021F2F88
 	cmp r4, #3
@@ -48410,7 +48410,7 @@ _021FC3A8:
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	add r1, r0, #0
 	add r0, r5, #0
 	bl ov02_02247F9C
@@ -48779,8 +48779,8 @@ ov01_021FC664: ; 0x021FC664
 	bx lr
 	thumb_func_end ov01_021FC664
 
-	thumb_func_start FishingRodTaskEnv
-FishingRodTaskEnv: ; 0x021FC66C
+	thumb_func_start CreateFishingRodTaskEnv
+CreateFishingRodTaskEnv: ; 0x021FC66C
 	push {r3, r4, r5, lr}
 	add r0, r1, #0
 	mov r1, #0x18
@@ -48802,7 +48802,7 @@ _021FC680:
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end FishingRodTaskEnv
+	thumb_func_end CreateFishingRodTaskEnv
 
 	thumb_func_start Task_OverworldFish
 Task_OverworldFish: ; 0x021FC698
@@ -49346,7 +49346,7 @@ _021FCA68:
 	add r0, r4, #0
 	bl ov01_021FCB4C
 	add r0, r5, #0
-	bl PlayerAvatar_IsOnBike
+	bl PlayerAvatar_GetState
 	bl sub_0205C99C
 	add r1, r0, #0
 	add r0, r5, #0
@@ -49595,7 +49595,7 @@ ov01_021FCC2C: ; 0x021FCC2C
 	add r4, r0, #0
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0x40]
-	bl PlayerAvatar_IsOnBike
+	bl PlayerAvatar_GetState
 	cmp r0, #2
 	bne _021FCC40
 	mov r0, #0
@@ -50008,7 +50008,7 @@ _021FCEF4:
 	add r2, r7, #0
 	bl memset
 	ldr r0, [r6, #0x40]
-	bl PlayerAvatar_IsOnBike
+	bl PlayerAvatar_GetState
 	sub r0, r0, #1
 	cmp r0, #1
 	bhi _021FCF20
@@ -66409,7 +66409,7 @@ _02204BF6:
 	add r0, r6, #0
 	bl MapObject_ClearHeldMovementIfActive
 	ldr r0, [r5, #0x40]
-	bl PlayerAvatar_IsOnBike
+	bl PlayerAvatar_GetState
 	bl sub_0205C99C
 	add r1, r0, #0
 	ldr r0, [r5, #0x40]
@@ -67913,7 +67913,7 @@ _02205712:
 _02205716:
 	add r0, r7, #0
 	add r1, r4, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov01_022056C4
 

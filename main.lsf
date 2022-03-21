@@ -217,7 +217,6 @@ Static main
 	Object asm/unk_020632B0.o
 	Object asm/unk_020648EC.o
 	Object src/field_use_item.o
-	Object asm/field_use_item_s.o
 	Object asm/unk_020658D4.o
 	Object src/sys_flags.o
 	Object src/sys_vars.o

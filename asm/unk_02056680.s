@@ -580,7 +580,7 @@ sub_02056AEC: ; 0x02056AEC
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	add r6, r0, #0
 	bl sub_0205B810
 	cmp r0, #0

@@ -258,7 +258,7 @@ sub_0203E3FC: ; 0x0203E3FC
 	lsr r1, r1, #0x10
 	bl sub_020778E8
 	ldr r0, [r5, #0x40]
-	bl PlayerAvatar_IsOnBike
+	bl PlayerAvatar_GetState
 	cmp r0, #1
 	bne _0203E446
 	add r0, r4, #0
@@ -1336,8 +1336,8 @@ sub_0203EC3C: ; 0x0203EC3C
 _0203EC60: .word _020FA394
 	thumb_func_end sub_0203EC3C
 
-	thumb_func_start sub_0203EC64
-sub_0203EC64: ; 0x0203EC64
+	thumb_func_start CreateUnownReportWork
+CreateUnownReportWork: ; 0x0203EC64
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r0, #0xb
@@ -1360,7 +1360,7 @@ sub_0203EC64: ; 0x0203EC64
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0203EC64
+	thumb_func_end CreateUnownReportWork
 
 	thumb_func_start sub_0203EC98
 sub_0203EC98: ; 0x0203EC98
@@ -1384,8 +1384,8 @@ sub_0203EC98: ; 0x0203EC98
 _0203ECBC: .word _020FA384
 	thumb_func_end sub_0203EC98
 
-	thumb_func_start sub_0203ECC0
-sub_0203ECC0: ; 0x0203ECC0
+	thumb_func_start CreateBerryPotsWork
+CreateBerryPotsWork: ; 0x0203ECC0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r0, #0xb
@@ -1412,7 +1412,7 @@ sub_0203ECC0: ; 0x0203ECC0
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0203ECC0
+	thumb_func_end CreateBerryPotsWork
 
 	thumb_func_start sub_0203ECFC
 sub_0203ECFC: ; 0x0203ECFC

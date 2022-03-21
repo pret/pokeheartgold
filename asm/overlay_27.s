@@ -638,7 +638,7 @@ ov27_0225A4D0: ; 0x0225A4D0
 	add r4, r0, #0
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x40]
-	bl PlayerAvatar_IsOnBike
+	bl PlayerAvatar_GetState
 	cmp r0, #1
 	beq _0225A4F2
 	ldr r0, [r5, #0x10]
