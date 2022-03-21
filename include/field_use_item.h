@@ -35,12 +35,12 @@ typedef void *(*FieldApplicationWorkCtor)(FieldSystem *fsys);
 
 struct ItemFieldUseData {
     FieldSystem *fsys;             // 00
-    struct ItemCheckUseData dat;        // 04
+    struct ItemCheckUseData dat;   // 04
     FieldApplicationWorkCtor ctor; // 1C
     void *work;                    // 20
     u16 itemId;                    // 24
     u8 state;                      // 26
-    u8 no_app;                      // 27
+    u8 no_app;                     // 27
 };
 
 struct ItemMenuUseData {
