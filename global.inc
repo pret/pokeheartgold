@@ -28467,9 +28467,9 @@ FS_EXTERN_OVERLAY(OV_101)
 .public FieldSys_StartBugContestTimer
 .public Field_GetTimeOfDay
 .public Field_GetTimeOfDayWildParam
-.public sub_02055600
-.public sub_0205560C
-.public sub_02055618
+.public Field_GetMonth
+.public Field_GetDay
+.public Field_GetHour
 .public sub_02055624
 .public sub_02055640
 .public sub_0205565C

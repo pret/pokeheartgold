@@ -15,6 +15,7 @@
 #include "constants/balls.h"
 #include "constants/map_sections.h"
 #include "constants/abilities.h"
+#include "unk_02055418.h"
 
 static u8 Sav2_DayCare_CountMonsInDayCare(DAYCARE *daycare);
 static int Sav2_DayCare_GetAvailableSlot(DAYCARE *daycare);
@@ -836,7 +837,7 @@ static const u16 _020FF490[] = {
 static u8 sub_0206CCD8(FieldSystem *fsys) {
     int day, i;
 
-    day = sub_0205560C(fsys) + sub_02055600(fsys) * 100;
+    day = Field_GetDay(fsys) + Field_GetMonth(fsys) * 100;
     if (sub_02055670(fsys)) {
         return 255;
     }

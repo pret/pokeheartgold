@@ -31,6 +31,7 @@
 #include "overlay_02.h"
 #include "constants/maps.h"
 #include "unk_0201F79C.h"
+#include "unk_02055418.h"
 
 struct UnkTaskEnv_02053688 {
     int unk0;
