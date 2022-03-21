@@ -1436,8 +1436,8 @@ sub_0203ECFC: ; 0x0203ECFC
 _0203ED20: .word _020FA374
 	thumb_func_end sub_0203ECFC
 
-	thumb_func_start sub_0203ED24
-sub_0203ED24: ; 0x0203ED24
+	thumb_func_start CreateApricornBoxWork
+CreateApricornBoxWork: ; 0x0203ED24
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -1478,7 +1478,7 @@ _0203ED74:
 	bl sub_0203ECFC
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_0203ED24
+	thumb_func_end CreateApricornBoxWork
 
 	thumb_func_start sub_0203ED80
 sub_0203ED80: ; 0x0203ED80
@@ -1819,8 +1819,8 @@ sub_0203EFEC: ; 0x0203EFEC
 	.balign 4, 0
 	thumb_func_end sub_0203EFEC
 
-	thumb_func_start sub_0203F018
-sub_0203F018: ; 0x0203F018
+	thumb_func_start CreateUseMailWork
+CreateUseMailWork: ; 0x0203F018
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r7, r0, #0
@@ -1846,7 +1846,7 @@ _0203F042:
 	bl sub_0203EFD4
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0203F018
+	thumb_func_end CreateUseMailWork
 
 	thumb_func_start sub_0203F050
 sub_0203F050: ; 0x0203F050
@@ -2470,8 +2470,8 @@ sub_0203F4F8: ; 0x0203F4F8
 _0203F538: .word _020FA2B4
 	thumb_func_end sub_0203F4F8
 
-	thumb_func_start sub_0203F53C
-sub_0203F53C: ; 0x0203F53C
+	thumb_func_start CreatePalPadWork
+CreatePalPadWork: ; 0x0203F53C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -2495,7 +2495,7 @@ sub_0203F53C: ; 0x0203F53C
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0203F56C: .word _020FA2A4
-	thumb_func_end sub_0203F53C
+	thumb_func_end CreatePalPadWork
 
 	thumb_func_start sub_0203F570
 sub_0203F570: ; 0x0203F570

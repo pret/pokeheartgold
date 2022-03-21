@@ -5150,8 +5150,8 @@ FS_EXTERN_OVERLAY(OV_101)
 .public ov01_021FC2C4
 .public ov01_021FC2C8
 .public ov01_021FC2F0
-.public ov01_021FC30C
-.public ov01_021FC310
+.public GetHoneySweetScentWorkSize
+.public Task_HoneyOrSweetScent
 .public ov01_021FC4C4
 .public ov01_021FC520
 .public ov01_021FC554
@@ -5165,8 +5165,8 @@ FS_EXTERN_OVERLAY(OV_101)
 .public ov01_021FC644
 .public ov01_021FC65C
 .public ov01_021FC664
-.public ov01_021FC66C
-.public ov01_021FC698
+.public FishingRodTaskEnv
+.public Task_OverworldFish
 .public ov01_021FC748
 .public ov01_021FC76C
 .public ov01_021FC778
@@ -5934,8 +5934,8 @@ FS_EXTERN_OVERLAY(OV_101)
 .public ov02_0224BF58
 .public ov02_0224BFC0
 .public ov02_0224BFCC
-.public ov02_0224BFD8
-.public ov02_0224C020
+.public CreateFieldEscapeRopeTaskEnv
+.public Task_FieldEscapeRope
 .public ov02_0224C05C
 .public ov02_0224C0B0
 .public ov02_0224C14C
@@ -28193,7 +28193,7 @@ FS_EXTERN_OVERLAY(OV_101)
 .public sub_0203DB6C
 .public sub_0203DB70
 .public sub_0203DB74
-.public sub_0203DBF8
+.public Fsys_GetFacingObject
 .public sub_0203DC64
 .public GetInteractedBackgroundEventScript
 .public sub_0203DDA4
@@ -28247,7 +28247,7 @@ FS_EXTERN_OVERLAY(OV_101)
 .public Fsys_CreateApplication_AlphPuzzle
 .public sub_0203EC64
 .public sub_0203ECC0
-.public sub_0203ED24
+.public CreateApricornBoxWork
 .public sub_0203ED80
 .public sub_0203EDDC
 .public sub_0203EE24
@@ -28256,7 +28256,7 @@ FS_EXTERN_OVERLAY(OV_101)
 .public sub_0203EF40
 .public sub_0203EFA0
 .public sub_0203EFEC
-.public sub_0203F018
+.public CreateUseMailWork
 .public sub_0203F050
 .public sub_0203F074
 .public sub_0203F0A8
@@ -28265,7 +28265,7 @@ FS_EXTERN_OVERLAY(OV_101)
 .public sub_0203F4A8
 .public sub_0203F4C8
 .public sub_0203F4F8
-.public sub_0203F53C
+.public CreatePalPadWork
 .public sub_0203F570
 .public CreateNamingScreen
 .public sub_0203F7B0

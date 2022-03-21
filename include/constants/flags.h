@@ -560,13 +560,13 @@
 #define FLAG_UNK_218                                               0x218
 #define FLAG_UNK_219                                               0x219
 #define FLAG_UNK_21A                                               0x21A
-#define FLAG_UNK_21B                                               0x21B
+#define FLAG_OPENED_ALPH_ESCAPE_ROPE_SECRET_ROOM                                               0x21B
 #define FLAG_UNK_21C                                               0x21C
-#define FLAG_UNK_21D                                               0x21D
+#define FLAG_OPENED_ALPH_FLASH_SECRET_ROOM                                               0x21D
 #define FLAG_UNK_21E                                               0x21E
-#define FLAG_UNK_21F                                               0x21F
+#define FLAG_OPENED_ALPH_WATER_STONE_SECRET_ROOM                                               0x21F
 #define FLAG_UNK_220                                               0x220
-#define FLAG_UNK_221                                               0x221
+#define FLAG_OPENED_ALPH_HO_OH_SECRET_ROOM                                               0x221
 #define FLAG_UNK_222                                               0x222
 #define FLAG_HIDE_PARK_SOUTH_GATE_POKEATHLON_ENTHUSIASTS_UNLOCKED  0x223
 #define FLAG_HIDE_PARK_SOUTH_GATE_POKEATHLON_ENTHUSIASTS_LOCKED    0x224

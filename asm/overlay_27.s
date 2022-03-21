@@ -779,7 +779,7 @@ _0225A5E6:
 	bne _0225A618
 	add r0, r4, #0
 	add r1, sp, #0
-	bl sub_0203DBF8
+	bl Fsys_GetFacingObject
 	ldr r0, [sp]
 	bl MapObject_GetScript
 	bl ov01_021F6BD0

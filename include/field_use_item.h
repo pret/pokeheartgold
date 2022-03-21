@@ -25,10 +25,10 @@ struct ItemUseData {
 
 struct AlphItemUseData {
     int scriptNo;
-    u16 unk4;
-    u16 unk6;
-    u16 unk8;
-    u16 unkA;
+    u16 var_8000;
+    u16 var_8001;
+    u16 var_8002;
+    u16 var_8003;
 };
 
 struct ItemUseTaskData {
@@ -64,6 +64,13 @@ struct UseItemInPartyTaskEnv {
     u16 unk28;
     u16 unk2A;
     u8 padding_2C[0x18];
+};
+
+struct RegisteredKeyItemUseMessagePrintTaskData {
+    WINDOW unk0;
+    STRING *unk10;
+    u16 unk14;
+    u16 unk16;
 };
 
 #endif //POKEHEARTGOLD_FIELD_USE_ITEM_H

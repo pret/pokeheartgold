@@ -643,7 +643,7 @@ sub_02067E10: ; 0x02067E10
 	mov r1, #0
 	strh r1, [r4, #0xc]
 	add r1, sp, #8
-	bl sub_0203DBF8
+	bl Fsys_GetFacingObject
 	ldr r0, [sp, #8]
 	str r0, [r4, #8]
 	ldr r0, [sp, #8]

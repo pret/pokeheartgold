@@ -48305,14 +48305,14 @@ _021FC302:
 	.balign 4, 0
 	thumb_func_end ov01_021FC2F0
 
-	thumb_func_start ov01_021FC30C
-ov01_021FC30C: ; 0x021FC30C
+	thumb_func_start GetHoneySweetScentWorkSize
+GetHoneySweetScentWorkSize: ; 0x021FC30C
 	mov r0, #0xc
 	bx lr
-	thumb_func_end ov01_021FC30C
+	thumb_func_end GetHoneySweetScentWorkSize
 
-	thumb_func_start ov01_021FC310
-ov01_021FC310: ; 0x021FC310
+	thumb_func_start Task_HoneyOrSweetScent
+Task_HoneyOrSweetScent: ; 0x021FC310
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	bl TaskManager_GetSys
@@ -48519,7 +48519,7 @@ _021FC4B2:
 _021FC4B8: .word 0x04000050
 _021FC4BC: .word 0x000007E3
 _021FC4C0: .word 0x000007E2
-	thumb_func_end ov01_021FC310
+	thumb_func_end Task_HoneyOrSweetScent
 
 	thumb_func_start ov01_021FC4C4
 ov01_021FC4C4: ; 0x021FC4C4
@@ -48779,8 +48779,8 @@ ov01_021FC664: ; 0x021FC664
 	bx lr
 	thumb_func_end ov01_021FC664
 
-	thumb_func_start ov01_021FC66C
-ov01_021FC66C: ; 0x021FC66C
+	thumb_func_start FishingRodTaskEnv
+FishingRodTaskEnv: ; 0x021FC66C
 	push {r3, r4, r5, lr}
 	add r0, r1, #0
 	mov r1, #0x18
@@ -48802,10 +48802,10 @@ _021FC680:
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021FC66C
+	thumb_func_end FishingRodTaskEnv
 
-	thumb_func_start ov01_021FC698
-ov01_021FC698: ; 0x021FC698
+	thumb_func_start Task_OverworldFish
+Task_OverworldFish: ; 0x021FC698
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	bl TaskManager_GetSys
@@ -48882,7 +48882,7 @@ _021FC742:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021FC698
+	thumb_func_end Task_OverworldFish
 
 	thumb_func_start ov01_021FC748
 ov01_021FC748: ; 0x021FC748
@@ -49998,7 +49998,7 @@ _021FCED8:
 	str r0, [r4]
 	b _021FCFDE
 _021FCEF4:
-	bl ov01_021FC30C
+	bl GetHoneySweetScentWorkSize
 	add r7, r0, #0
 	mov r0, #0xb
 	add r1, r7, #0
@@ -50093,7 +50093,7 @@ _021FCFAE:
 	b _021FCFDE
 _021FCFBC:
 	ldr r0, [sp]
-	ldr r1, _021FCFE8 ; =ov01_021FC310
+	ldr r1, _021FCFE8 ; =Task_HoneyOrSweetScent
 	ldr r2, [r5, #4]
 	bl TaskManager_Call
 	ldr r0, [r4]
@@ -50112,7 +50112,7 @@ _021FCFDE:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021FCFE4: .word ov01_02205A60
-_021FCFE8: .word ov01_021FC310
+_021FCFE8: .word Task_HoneyOrSweetScent
 	thumb_func_end ov01_021FCE98
 
 	thumb_func_start ov01_021FCFEC
@@ -60298,7 +60298,7 @@ ScrCmd_739: ; 0x02201D1C
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #2
-	bl sub_0203ED24
+	bl CreateApricornBoxWork
 	str r0, [r4]
 	ldr r1, _02201D48 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0

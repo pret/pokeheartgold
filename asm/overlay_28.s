@@ -48,7 +48,7 @@ ov28_0225D520: ; 0x0225D520
 	bne _0225D5A6
 	ldr r0, [r4, #0x18]
 	add r1, sp, #8
-	bl sub_0203DBF8
+	bl Fsys_GetFacingObject
 	ldr r0, [sp, #8]
 	bl MapObject_GetScript
 	bl ov01_021F6BD0
@@ -2496,7 +2496,7 @@ _0225E860:
 	bne _0225E890
 	ldr r0, [r5, #0x18]
 	add r1, sp, #0
-	bl sub_0203DBF8
+	bl Fsys_GetFacingObject
 	ldr r0, [sp]
 	bl MapObject_GetScript
 	bl ov01_021F6BD0

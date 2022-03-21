@@ -13280,8 +13280,8 @@ ov02_0224BFCC: ; 0x0224BFCC
 _0224BFD4: .word ov01_021E8E70
 	thumb_func_end ov02_0224BFCC
 
-	thumb_func_start ov02_0224BFD8
-ov02_0224BFD8: ; 0x0224BFD8
+	thumb_func_start CreateFieldEscapeRopeTaskEnv
+CreateFieldEscapeRopeTaskEnv: ; 0x0224BFD8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, r1, #0
@@ -13317,10 +13317,10 @@ _0224C01A:
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov02_0224BFD8
+	thumb_func_end CreateFieldEscapeRopeTaskEnv
 
-	thumb_func_start ov02_0224C020
-ov02_0224C020: ; 0x0224C020
+	thumb_func_start Task_FieldEscapeRope
+Task_FieldEscapeRope: ; 0x0224C020
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	bl TaskManager_GetSys
@@ -13349,7 +13349,7 @@ _0224C04E:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0224C058: .word ov02_02253700
-	thumb_func_end ov02_0224C020
+	thumb_func_end Task_FieldEscapeRope
 
 	thumb_func_start ov02_0224C05C
 ov02_0224C05C: ; 0x0224C05C

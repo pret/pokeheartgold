@@ -226,7 +226,8 @@ struct FieldSystem {
     u8 unkBC[8];
     int unkC4;
     u8 filler_C8[0xA];
-    u8 unkD2_0:7;
+    u8 unkD2_0:6;
+    u8 unkD2_6:1;
     u8 unkD2_7:1;
     u8 filler_D3[0x11];
     FollowMon followMon; // A4

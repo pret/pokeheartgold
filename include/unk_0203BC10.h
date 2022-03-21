@@ -6,12 +6,12 @@
 struct BagViewAppWork {
     int unk_0000;
     u8 filler_0004[0x22];
-    u16 unk_0026;
+    u16 state; // 26
     u8 filler_0028[0x32C];
-    TaskFunc unk_0354;
+    TaskFunc atexit_TaskFunc; // 354
     u8 filler_0358[0x18];
     u32 unk_0370[4];
-    void *unk_0380;
+    void *atexit_TaskEnv; // 380
     void *unk_0384;
 };
 
