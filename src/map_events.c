@@ -2,10 +2,9 @@
 #include "filesystem.h"
 #include "encounter_tables_narc.h"
 
-void MapEvents_ReadFromNarc(MAP_EVENTS *events, u32 mapno);
-void MapEvents_ComputeRamHeader(MAP_EVENTS *events);
-void WildEncounters_ReadFromNarc(ENC_DATA *encounters, u32 mapno);
-void MapScriptHeader_ReadFromNarc(MAP_EVENTS *events, u32 mapno);
+static void MapEvents_ReadFromNarc(MAP_EVENTS *events, u32 mapno);
+static void MapEvents_ComputeRamHeader(MAP_EVENTS *events);
+static void MapScriptHeader_ReadFromNarc(MAP_EVENTS *events, u32 mapno);
 
 extern void InitMapObjectsFromEventTemplates(MapObjectMan*, int, u32, OBJECT_EVENT*);
 
@@ -27,7 +26,7 @@ void Field_InitMapEvents(FieldSystem *work, u32 mapno) {
     MapScriptHeader_ReadFromNarc(work->map_events, mapno);
 }
 
-void MapEvents_ReadFromNarc(MAP_EVENTS *events, u32 mapno) {
+static void MapEvents_ReadFromNarc(MAP_EVENTS *events, u32 mapno) {
     int bank = MapHeader_GetEventsBank(mapno);
     GF_ASSERT(GetNarcMemberSizeByIdPair(NARC_fielddata_eventdata_zone_event, bank) < sizeof(events->event_data));
     ReadWholeNarcMemberByIdPair(events->event_data, NARC_fielddata_eventdata_zone_event, bank);
@@ -149,7 +148,7 @@ BOOL Field_SetBgEventXYPos(FieldSystem *fsys, int bgno, u32 x, u32 y) {
     return TRUE;
 }
 
-void MapEvents_ComputeRamHeader(MAP_EVENTS *events) {
+static void MapEvents_ComputeRamHeader(MAP_EVENTS *events) {
     u8 *ptr = events->event_data;
 
     events->num_bg_events = *(u32 *)ptr;
@@ -200,7 +199,7 @@ ENC_DATA *MapEvents_GetLoadedEncTable(FieldSystem *fsys) {
     return &fsys->map_events->wildEncounters;
 }
 
-void MapScriptHeader_ReadFromNarc(MAP_EVENTS *events, u32 mapno) {
+static void MapScriptHeader_ReadFromNarc(MAP_EVENTS *events, u32 mapno) {
     int bank = MapHeader_GetScriptHeaderBank(mapno);
     MI_CpuClearFast(events->script_header, sizeof(events->script_header));
     GF_ASSERT(GetNarcMemberSizeByIdPair(NARC_fielddata_script_scr_seq, bank) < sizeof(events->script_header));

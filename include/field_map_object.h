@@ -3,6 +3,14 @@
 
 typedef struct LocalMapObject LocalMapObject;
 
+struct SavStructUnk10Sub {
+    u8 filler_00[8];
+    u8 unk_8;
+    u8 filler_9[9];
+    u16 unk_12;
+    u8 filler_14[0x3C];
+};
+
 struct LocalMapObject {
     /*0x000*/ u32 flags;
     /*0x004*/ u32 flags2;
@@ -76,5 +84,12 @@ void sub_0205F89C(LocalMapObject *mapObject, BOOL enable_bit);
 BOOL sub_0205F684(LocalMapObject *mapObject);
 void sub_0205F690(LocalMapObject *mapObject, BOOL enable_bit);
 void sub_0205F6E0(LocalMapObject *mapObject, BOOL enable_bit);
+void sub_0205E5EC(FieldSystem *fsys, MapObjectMan *mapObjectMan, struct SavStructUnk10Sub *a2, int a3);
+void sub_0205E648(MapObjectMan *mapObjectMan, struct SavStructUnk10Sub *a2, int a3);
+struct SavStructUnk10Sub *sub_0205FD00(struct SavStructUnk10Sub *a0, int a1, u16 a2);
+MapObjectMan *sub_0205E0BC(FieldSystem *fsys, int num, HeapID heapId);
+void sub_0205F55C(MapObjectMan *man);
+void sub_0205E494(MapObjectMan *man);
+void sub_0205E0E8(MapObjectMan *man);
 
 #endif //POKEHEARTGOLD_FIELD_MAP_OBJECT_H

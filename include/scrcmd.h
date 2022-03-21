@@ -6,7 +6,7 @@
 #include "script.h"
 
 // unk_0203DE74.s
-extern SAVEDATA* ScriptEnvironment_GetSav2Ptr(FieldSystem*);
+extern SAVEDATA* Fsys_GetSaveDataPtr(FieldSystem*);
 
 static inline u16 ScriptGetVar(SCRIPTCONTEXT* ctx) {
     return VarGet(ctx->fsys, ScriptReadHalfword(ctx));
@@ -324,9 +324,9 @@ BOOL ScrCmd_286(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_287(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_288(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_289(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_290(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_CheckPokedex(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GivePokedex(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_292(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_CheckRunningShoes(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GiveRunningShoes(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_CheckBadge(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GiveBadge(SCRIPTCONTEXT* ctx);
@@ -437,8 +437,8 @@ BOOL ScrCmd_397(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_398(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_BufferPartyMonMoveName(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_StrengthFlagAction(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_401(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_402(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_FlashAction(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_DefogAction(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_403(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_404(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_405(SCRIPTCONTEXT* ctx);

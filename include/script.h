@@ -10,6 +10,7 @@
 #include "gear_phone.h"
 #include "bug_contest_internal.h"
 #include "constants/vars.h"
+#include "overlay_manager.h"
 
 #define SCRIPT_MODE_STOPPED  0
 #define SCRIPT_MODE_BYTECODE 1
@@ -167,25 +168,65 @@ struct FieldSystemUnk108 {
 
 typedef struct MapObjectMan MapObjectMan;
 
+struct FieldSystemUnkSub0 {
+    OVY_MANAGER *unk0;
+    OVY_MANAGER *unk4;
+    BOOL unk8;
+    BOOL unkC;
+};
+
+struct UnkStruct_020FC5CC {
+    u32 unk0_00:4;
+    u32 unk0_04:4;
+    u32 unk0_08:4;
+    u32 unk0_0C:4;
+    u32 unk0_10:4;
+    u32 unk0_14:4;
+    u32 unk0_18:8;
+    u8 unk_4;
+    u8 unk_5;
+    u8 unk_6;
+};
+
+struct UnkStruct_02059E1C;
+struct UnkStruct_0205AC88;
+
 struct FieldSystem {
-    u8 unk0[0x8];
-    void* bg_config;
+    struct FieldSystemUnkSub0 *unk0;
+    void *unk4;
+    BGCONFIG* bg_config;
     SAVEDATA* savedata;
     TaskManager* taskman;
     MAP_EVENTS* map_events;
-    u8 unk18[0x8];
+    int unk18;
+    int unk1C;
     Location* location;
-    u8 unk24[0xC];
+    u8 filler24[0xC];
     MAPMATRIX* map_matrix;
-    u8 unk34[0x8];
+    u8 filler34[0x8];
     MapObjectMan* unk3C;
     FIELD_PLAYER_AVATAR *playerAvatar;
-    u8 unk44[0x68];
+    u8 filler44[0x1C];
+    u32 unk60;
+    int unk64;
+    int unk68;
+    u32 unk6C;
+    int unk70;
+    const struct UnkStruct_020FC5CC *unk74;
+    u16 unk78;
+    u16 unk7A;
+    u16 unk7C;
+    u16 unk7E;
+    struct UnkStruct_02059E1C *unk80;
+    struct UnkStruct_0205AC88 *unk84;
+    u8 filler_88[0x24];
     u32 unkAC;
     u8 unkB0[0x4];
     s64 unkB4;
-    u8 unkBC[0x28];
-    FollowMon followMon;
+    u8 unkBC[8];
+    int unkC4;
+    u8 filler_C8[0x1C];
+    FollowMon followMon; // A4
     u8 unk104[4];
     struct FieldSystemUnk108 *unk108;
     u8 filler_10C[8];

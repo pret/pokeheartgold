@@ -1,7 +1,9 @@
-#include "unk_0203BBB4.h"
+#include "diamond_dust.h"
+#include "map_header.h"
+#include "unk_02055418.h"
 #include "constants/maps.h"
 
-const struct MonthDay DiamondDustDates[] = {
+const MonthDay DiamondDustDates[] = {
     { JANUARY, 1 },
     { JANUARY, 31 },
     { FEBRUARY, 1 },
@@ -12,15 +14,15 @@ const struct MonthDay DiamondDustDates[] = {
     { DECEMBER, 31 },
 }; //_020FA09C
 
-u32 sub_0203BBB4(FieldSystem* fsys, u32 mapId) {
+u32 Fsys_GetWeather_HandleDiamondDust(FieldSystem* fsys, u32 mapId) {
     u8 c;
     
     u32 weatherType = MapHeader_GetWeatherType(mapId);
-    if (MAP_D41R0108 != mapId) {
+    if (mapId != MAP_D41R0108) {
         return weatherType;
     }
     SYSINFO_RTC* sysinfo_rtc = Sav2_SysInfo_RTC_get(fsys->savedata);
-    for (c = 0; c < 8; c++) {
+    for (c = 0; c < NELEMS(DiamondDustDates); c++) {
        u8 month = DiamondDustDates[c].month;
        u8 day = DiamondDustDates[c].day;
        if ((sysinfo_rtc->date.month == month) && (sysinfo_rtc->date.day == day)) { 

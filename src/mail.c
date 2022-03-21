@@ -248,7 +248,7 @@ MAIL_MESSAGE *Mail_GetUnk20Array(MAIL *mail, int i) {
     }
 }
 
-void Mail_CopyToUnk20Array(MAIL *mail, const MAIL_MESSAGE *src, int i) {
+void Mail_SetMessage(MAIL *mail, const MAIL_MESSAGE *src, int i) {
     if (i < NELEMS(mail->unk_20)) {
         MailMsg_copy(&mail->unk_20[i], src);
     }

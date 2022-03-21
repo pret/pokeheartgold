@@ -290,9 +290,9 @@ extern BOOL ScrCmd_286(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_287(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_288(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_289(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_290(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CheckPokedex(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GivePokedex(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_292(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CheckRunningShoes(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GiveRunningShoes(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CheckBadge(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GiveBadge(SCRIPTCONTEXT *ctx);
@@ -401,8 +401,8 @@ extern BOOL ScrCmd_397(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_398(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferPartyMonMoveName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_StrengthFlagAction(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_401(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_402(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_FlashAction(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_DefogAction(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_403(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_404(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_405(SCRIPTCONTEXT *ctx);
@@ -1145,9 +1145,9 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_287,
     ScrCmd_288,
     ScrCmd_289,
-    ScrCmd_290,
+    ScrCmd_CheckPokedex,
     ScrCmd_GivePokedex,
-    ScrCmd_292,
+    ScrCmd_CheckRunningShoes,
     ScrCmd_GiveRunningShoes,
     ScrCmd_CheckBadge,
     ScrCmd_GiveBadge,
@@ -1256,8 +1256,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_398,
     ScrCmd_BufferPartyMonMoveName,
     ScrCmd_StrengthFlagAction,
-    ScrCmd_401,
-    ScrCmd_402,
+    ScrCmd_FlashAction,
+    ScrCmd_DefogAction,
     ScrCmd_403,
     ScrCmd_404,
     ScrCmd_405,

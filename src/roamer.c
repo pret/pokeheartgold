@@ -83,8 +83,8 @@ ROAMER *Roamers_GetRoamMonStats(ROAMER_SAVE *roamerSave, int a1) {
 
 int GetRoamerData(ROAMER *roamer, int a1) {
     switch (a1) {
-    case ROAMER_DATA_UNK1:
-        return roamer->unk_0;
+    case ROAMER_DATA_MET_LOCATION:
+        return roamer->met_location;
     case ROAMER_DATA_IVS:
         return roamer->ivs;
     case ROAMER_DATA_PERSONALITY:
@@ -97,7 +97,7 @@ int GetRoamerData(ROAMER *roamer, int a1) {
         return roamer->level;
     case ROAMER_DATA_STATUS:
         return roamer->status;
-    case ROAMER_DATA_UNK8:
+    case ROAMER_DATA_ACTIVE:
         return roamer->active;
     default:
         GF_ASSERT(0);
@@ -107,8 +107,8 @@ int GetRoamerData(ROAMER *roamer, int a1) {
 
 void SetRoamerData(ROAMER *roamer, int a1, int val) {
     switch (a1) {
-    case ROAMER_DATA_UNK1:
-        roamer->unk_0 = val;
+    case ROAMER_DATA_MET_LOCATION:
+        roamer->met_location = val;
         break;
     case ROAMER_DATA_IVS:
         roamer->ivs = val;
@@ -128,7 +128,7 @@ void SetRoamerData(ROAMER *roamer, int a1, int val) {
     case ROAMER_DATA_STATUS:
         roamer->status = val;
         break;
-    case ROAMER_DATA_UNK8:
+    case ROAMER_DATA_ACTIVE:
         roamer->active = val;
         break;
     default:

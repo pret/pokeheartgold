@@ -10559,7 +10559,7 @@ ScrCmd_522: ; 0x02045A88
 	add r4, #0x80
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl sub_02055618
+	bl Field_GetHour
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -11045,14 +11045,14 @@ ScrCmd_543: ; 0x02045E54
 	bl Sav2_SysInfo_GetBirthMonth
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_02055600
+	bl Field_GetMonth
 	cmp r4, r0
 	bne _02045E9E
 	add r0, r7, #0
 	bl Sav2_SysInfo_GetBirthDay
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_0205560C
+	bl Field_GetDay
 	cmp r4, r0
 	bne _02045E9E
 	mov r0, #1

@@ -5,18 +5,18 @@
 #include "save.h"
 
 enum RoamerDataParam {
-    ROAMER_DATA_UNK1        = 1,
-    ROAMER_DATA_IVS         = 2,
-    ROAMER_DATA_PERSONALITY = 3,
-    ROAMER_DATA_SPECIES     = 4,
-    ROAMER_DATA_HP          = 5,
-    ROAMER_DATA_LEVEL       = 6,
-    ROAMER_DATA_STATUS      = 7,
-    ROAMER_DATA_UNK8        = 8,
+    ROAMER_DATA_MET_LOCATION = 1,
+    ROAMER_DATA_IVS          = 2,
+    ROAMER_DATA_PERSONALITY  = 3,
+    ROAMER_DATA_SPECIES      = 4,
+    ROAMER_DATA_HP           = 5,
+    ROAMER_DATA_LEVEL        = 6,
+    ROAMER_DATA_STATUS       = 7,
+    ROAMER_DATA_ACTIVE       = 8,
 };
 
 typedef struct ROAMER {
-    u32 unk_0;
+    u32 met_location;
     u32 ivs;
     u32 personality;
     u16 species;
@@ -42,16 +42,19 @@ u32 Save_Roamers_sizeof(void);
 void Save_Roamers_init(ROAMER_SAVE *roamer);
 void Roamers_SetRand(ROAMER_SAVE *roamer, u32 param);
 u32 Roamers_GetRand(ROAMER_SAVE *roamer, u32 which);
+ROAMER_SAVE *Save_Roamers_get(SAVEDATA *saveData);
 void RoamerSave_SetOutbreakActive(SAVEDATA *saveData);
 u8 RoamerSave_OutbreakActive(ROAMER_SAVE *roamerSave);
-void PlayerLocationHistoryPush(ROAMER_SAVE *roamerSave, u32 a1);
+void PlayerLocationHistoryPush(ROAMER_SAVE *roamerSave, u32 mapsec);
 u32 PlayerLocationHistoryGetBack(ROAMER_SAVE *roamerSave);
 u8 Roamer_GetLocation(ROAMER_SAVE *roamerSave, int a1);
 void Roamer_SetLocation(ROAMER_SAVE *roamerSave, int a1, u8 a2);
 u8 GetRoamerIsActiveByIndex(ROAMER_SAVE *roamerSave, int a1);
 void RoamerMon_init(ROAMER ** roamer_p);
+ROAMER *Roamers_GetRoamMonStats(ROAMER_SAVE *roamerSave, int a1);
 int GetRoamerData(ROAMER *roamer, int a1);
 void SetRoamerData(ROAMER *roamer, int a1, int val);
+u8 *RoamerSave_GetRepelAddr(ROAMER_SAVE *roamerSave);
 BOOL RoamerSave_RepelNotInUse(ROAMER_SAVE *roamerSave);
 void RoamerSave_SetFlute(ROAMER_SAVE *roamerSave, u8 a1);
 u8 RoamerSave_GetFlute(ROAMER_SAVE *roamerSave);
