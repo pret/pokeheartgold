@@ -6,7 +6,7 @@
 #include "heap.h"
 
 typedef struct UnkStruct_020556FC {
-    u32 heapID;
+    HeapID heapID;
     u32 unk4;
     u8 unk8[0x3c];
     u32* unk44;

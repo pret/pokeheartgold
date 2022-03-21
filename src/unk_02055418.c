@@ -17,7 +17,7 @@ void FieldSys_StartBugContestTimer(FieldSystem* fsys) {
     sub_02055478(fsys, sysinfo, &date, &time);
 }
 
-void sub_02055450(FieldSystem* fsys, SYSINFO_RTC* sysinfo,  RTCDate* date) {
+void sub_02055450(FieldSystem* fsys, SYSINFO_RTC* sysinfo, RTCDate* date) {
     u32 day = RTC_ConvertDateToDay(date);
     if (day < (u32)(sysinfo->days_since_nitro_epoch)) {
         sysinfo->days_since_nitro_epoch = day;
@@ -42,7 +42,7 @@ void sub_02055478(FieldSystem* fsys, SYSINFO_RTC* sysinfo, RTCDate* date, RTCTim
     if (delta_seconds > 0) {
         sub_02092F30(sub_02092DEC(fsys), seconds);
     }    
-    s32 minutes = _s32_div_f(delta_seconds, 60);
+    s32 minutes = delta_seconds / 60;
     if (minutes <= 0) return;
     Sav2_SysInfo_RTC_SubField34(sysinfo, minutes);
     sub_020555B4(fsys, minutes, time);
