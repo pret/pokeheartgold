@@ -108,7 +108,7 @@ Static main
 	Object asm/unk_0202CA24.o
 	Object src/seal_case.o
 	Object src/igt.o
-	Object asm/sav_chatot.o
+	Object src/sav_chatot.o
 	Object asm/unk_0202CF1C.o
 	Object asm/unk_0202D230.o
 	Object asm/unk_0202D938.o
