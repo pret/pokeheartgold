@@ -12,6 +12,7 @@
 #include "overlay_01.h"
 #include "unk_02054E00.h"
 #include "unk_0205B6E8.h"
+#include "unk_0203E348.h"
 #include "map_header.h"
 #include "constants/items.h"
 #include "constants/sndseq.h"
@@ -22,33 +23,39 @@ struct ItemUseFuncDat {
     ItemCheckUseFunc check;
 };
 
+typedef void *(*ReturnToFieldWorkCtor)(FieldSystem *fsys);
+
 BOOL sub_02064AD0(TaskManager *taskManager);
 void ItemMenuUseFunc_HealingItem(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2);
 u32 ItemCheckUseFunc_Dummy(const struct ItemUseData *dat);
 void ItemMenuUseFunc_Bicycle(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2);
 BOOL Task_MountOrDismountBicycle(TaskManager *taskManager);
-
-u32 ItemCheckUseFunc_Berry(const struct ItemUseData *dat);
+BOOL ItemFieldUseFunc_Bicycle(struct ItemUseTaskData *data);
 u32 ItemCheckUseFunc_Bicycle(const struct ItemUseData *dat);
+void ItemMenuUseFunc_Berry(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2);
+void ItemMenuUseFunc_TMHM(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2);
+void ItemMenuUseFunc_Mail(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2);
+u32 ItemCheckUseFunc_Berry(const struct ItemUseData *dat);
+void ItemMenuUseFunc_PalPad(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2);
+BOOL ItemFieldUseFunc_PalPad(struct ItemUseTaskData *data);
+struct UnkStruct_0203F53C *sub_02064F70(FieldSystem *fsys);
+
 u32 ItemCheckUseFunc_EscapeRope(const struct ItemUseData *dat);
 u32 ItemCheckUseFunc_FishingRod(const struct ItemUseData *dat);
 
 BOOL ItemFieldUseFunc_ApricornBox(struct ItemUseTaskData *data);
 BOOL ItemFieldUseFunc_BerryPots(struct ItemUseTaskData *data);
-BOOL ItemFieldUseFunc_Bicycle(struct ItemUseTaskData *data);
 BOOL ItemFieldUseFunc_DowsingMchn(struct ItemUseTaskData *data);
 BOOL ItemFieldUseFunc_GbSounds(struct ItemUseTaskData *data);
 BOOL ItemFieldUseFunc_Generic(struct ItemUseTaskData *data);
 BOOL ItemFieldUseFunc_GoodRod(struct ItemUseTaskData *data);
 BOOL ItemFieldUseFunc_Gracidea(struct ItemUseTaskData *data);
 BOOL ItemFieldUseFunc_OldRod(struct ItemUseTaskData *data);
-BOOL ItemFieldUseFunc_PalPad(struct ItemUseTaskData *data);
 BOOL ItemFieldUseFunc_SuperRod(struct ItemUseTaskData *data);
 BOOL ItemFieldUseFunc_UnownReport(struct ItemUseTaskData *data);
 BOOL ItemFieldUseFunc_VSRecorder(struct ItemUseTaskData *data);
 
 void ItemMenuUseFunc_ApricornBox(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2);
-void ItemMenuUseFunc_Berry(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2);
 void ItemMenuUseFunc_BerryPots(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2);
 void ItemMenuUseFunc_DowsingMchn(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2);
 void ItemMenuUseFunc_EscapeRope(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2);
@@ -56,13 +63,12 @@ void ItemMenuUseFunc_EvoStone(struct ItemUseTaskData2 *data, const struct ItemUs
 void ItemMenuUseFunc_GoodRod(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2);
 void ItemMenuUseFunc_Gracidea(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2);
 void ItemMenuUseFunc_Honey(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2);
-void ItemMenuUseFunc_Mail(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2);
 void ItemMenuUseFunc_OldRod(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2);
-void ItemMenuUseFunc_PalPad(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2);
 void ItemMenuUseFunc_SuperRod(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2);
-void ItemMenuUseFunc_TMHM(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2);
 void ItemMenuUseFunc_UnownReport(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2);
 void ItemMenuUseFunc_VSRecorder(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2);
+
+void sub_020658B8(struct ItemUseTaskData *data, ReturnToFieldWorkCtor ctor, u8 a2);
 
 u16 _0210FAD8[] = {
     ITEM_BICYCLE,
@@ -198,6 +204,7 @@ BOOL sub_02064AD0(TaskManager *taskManager) {
 }
 
 void ItemMenuUseFunc_HealingItem(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2) {
+#pragma unused(dat2)
     FieldSystem *fsys = TaskManager_GetSys(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     struct UseItemInPartyTaskEnv *usedat = AllocFromHeap(11, sizeof(struct UseItemInPartyTaskEnv));
@@ -224,6 +231,7 @@ u32 ItemCheckUseFunc_Dummy(const struct ItemUseData *data) {
 }
 
 void ItemMenuUseFunc_Bicycle(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2) {
+#pragma unused(dat2)
     FieldSystem *fsys = TaskManager_GetSys(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     sub_020505C0(fsys);
@@ -319,6 +327,7 @@ u32 ItemCheckUseFunc_Bicycle(const struct ItemUseData *data) {
 }
 
 void ItemMenuUseFunc_TMHM(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2) {
+#pragma unused(dat2)
     FieldSystem *fsys = TaskManager_GetSys(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     struct UseItemInPartyTaskEnv *usedat = AllocFromHeap(11, sizeof(struct UseItemInPartyTaskEnv));
@@ -338,4 +347,59 @@ void ItemMenuUseFunc_TMHM(struct ItemUseTaskData2 *data, const struct ItemUseDat
     Fsys_LaunchApplication(fsys, &_0210159C, usedat);
     env->unk_0380 = usedat;
     sub_0203C8F0(env, sub_0203CA9C);
+}
+
+void ItemMenuUseFunc_Mail(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2) {
+#pragma unused(dat2)
+    FieldSystem *fsys = TaskManager_GetSys(data->taskManager);
+    struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
+    struct UnkStruct_0203E348 *r6 = sub_0203F018(fsys, 3, ItemToMailId(data->itemId), 11);
+    env->unk_0384 = sub_0203D818(data->itemId, 3, 0);
+    env->unk_0380 = r6;
+    sub_0203C8F0(env, sub_0203D830);
+}
+
+u32 ItemCheckUseFunc_Berry(const struct ItemUseData *data) {
+    return ITEMUSEERROR_OKAY; // It is always okay to use a Berry
+}
+
+void ItemMenuUseFunc_Berry(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2) {
+    FieldSystem *fsys = TaskManager_GetSys(data->taskManager);
+    struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
+    ItemMenuUseFunc_HealingItem(data, dat2);
+}
+
+BOOL sub_02064F24(const struct ItemUseData *data) {
+    return FALSE;
+}
+
+void ItemMenuUseFunc_PalPad(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2) {
+    FieldSystem *fsys = TaskManager_GetSys(data->taskManager);
+    struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
+    env->unk_0380 = sub_0203F53C(fsys, fsys->savedata, 11);
+    sub_0203C8F0(env, sub_0203D718);
+}
+
+BOOL ItemFieldUseFunc_PalPad(struct ItemUseTaskData *data) {
+    sub_020658B8(data, (ReturnToFieldWorkCtor)sub_02064F70, 0);
+    return TRUE;
+}
+
+struct UnkStruct_0203F53C *sub_02064F70(FieldSystem *fsys) {
+    return sub_0203F53C(fsys, fsys->savedata, 11);
+}
+
+void ItemMenuUseFunc_Honey(struct ItemUseTaskData2 *data, const struct ItemUseData *dat2) {
+    size_t sp0;
+    void *r7;
+    FieldSystem *fsys = TaskManager_GetSys(data->taskManager);
+    struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
+    sub_020505C0(fsys);
+    sp0 = ov01_021FC30C();
+    r7 = AllocFromHeapAtEnd(11, sp0);
+    memset(r7, 0, sp0);
+    env->unk_0354 = ov01_021FC310;
+    env->unk_0380 = r7;
+    env->unk_0026 = 12;
+    Bag_TakeItem(Sav2_Bag_get(fsys->savedata), data->itemId, 1, 11);
 }
