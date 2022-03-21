@@ -3,9 +3,10 @@
 
 #include "sav_system_info.h"
 #include "script.h"
+#include "heap.h"
 
 typedef struct UnkStruct_020556FC {
-    u32 unk0;
+    u32 heapID;
     u32 unk4;
     u8 unk8[0x3c];
     u32* unk44;
@@ -28,7 +29,7 @@ void sub_02055624(FieldSystem* fsys, RTCDate* date, RTCTime* time);
 void sub_02055640(FieldSystem* fsys, RTCDate* date, RTCTime* time);
 void sub_0205565C(FieldSystem* fsys);
 BOOL sub_02055670(FieldSystem *fsys);
-UnkStruct_020556FC* sub_02055680(UnkStruct_020556FC* unkA, u32 unkB);
+UnkStruct_020556FC* sub_02055680(UnkStruct_020556FC* unkA, HeapID heapID);
 void sub_020556A8(UnkStruct_020556FC* unkPtr);
 void sub_020556B8(FieldSystem* fsys);
 void sub_020556C8(UnkStruct_020556FC* unkPtrA, UnkStruct_020556FC* unkPtrB);

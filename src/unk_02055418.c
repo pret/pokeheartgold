@@ -117,10 +117,10 @@ BOOL sub_02055670(FieldSystem* fsys) {
     return sub_02028E1C(sysinfo);
 }
 
-UnkStruct_020556FC* sub_02055680(UnkStruct_020556FC* unkA, u32 unkB) {
-    UnkStruct_020556FC* unkPtr = AllocFromHeap(unkB, sizeof(UnkStruct_020556FC));
+UnkStruct_020556FC* sub_02055680(UnkStruct_020556FC* unkA, HeapID heapID) {
+    UnkStruct_020556FC* unkPtr = AllocFromHeap(heapID, sizeof(UnkStruct_020556FC));
     MI_CpuClear8(unkPtr, sizeof(UnkStruct_020556FC));
-    unkPtr->unk0 = unkB;
+    unkPtr->heapID = heapID;
     sub_020556C8(unkA, unkPtr);
     return unkPtr;
 }
@@ -137,7 +137,7 @@ void sub_020556B8(FieldSystem* fsys) {
 
 void sub_020556C8(UnkStruct_020556FC* unkPtrA, UnkStruct_020556FC* unkPtrB) { 
     u32* unkB = unkPtrA->unk44;
-    unkPtrB->unk5c = AllocFromHeap(unkPtrB->unk0, ov01_021F149C(unkB, 31));
+    unkPtrB->unk5c = AllocFromHeap(unkPtrB->heapID, ov01_021F149C(unkB, 31));
     ov01_021F14A8(unkB, 31, unkPtrB->unk5c);
     sub_0201F51C(&unkPtrB->unk4, &unkPtrB->unk58, &unkPtrB->unk5c);
 }
