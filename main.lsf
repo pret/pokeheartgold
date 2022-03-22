@@ -68,6 +68,8 @@ Static main
 	Object asm/text.o
 	Object src/vram_transfer_manager.o
 	Object asm/unk_02020654.o
+	Object src/ascii_util.o
+	Object asm/unk_02020B8C.o
 	Object asm/unk_020210A0.o
 	Object asm/unk_020215A0.o
 	Object asm/unk_02022588.o
@@ -421,7 +423,12 @@ Overlay field
 {
     After main
     Object asm/overlay_01_021E5900.o
-    Object asm/overlay_01.o
+    Object asm/overlay_01_021E66E4.o
+    Object asm/overlay_01_021E6880.o
+    Object asm/overlay_01_021E7FDC.o
+    Object asm/overlay_01_021E8744.o
+    Object asm/overlay_01_021E90C0.o
+    Object asm/overlay_01_021EA6C4.o
 }
 Overlay OVY_2
 {

@@ -74,6 +74,14 @@ typedef struct NNSG3dResDict_ {
     NNSG3dResDictTreeNode node[1];
 } NNSG3dResDict;
 
+
+#define NNS_G3D_RESNAME_SIZE    (16)
+#define NNS_G3D_RESNAME_VALSIZE (NNS_G3D_RESNAME_SIZE / sizeof(u32))
+typedef union NNSG3dResName_ {
+    char name[NNS_G3D_RESNAME_SIZE];
+    u32 val[NNS_G3D_RESNAME_VALSIZE];
+} NNSG3dResName;
+
 typedef struct NNSG3dResNodeInfo_ {
     NNSG3dResDict dict;
 } NNSG3dResNodeInfo;

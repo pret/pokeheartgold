@@ -12,6 +12,7 @@
 #define std_signpost                    2000
 #define std_hidden_item_fanfare         2001
 #define std_nurse_joy                   2002
+#define std_survive_poisoning           2003
 #define std_prompt_save                 2006
 #define std_receive_accessory           2007
 #define std_obtain_item_verbose         2008
