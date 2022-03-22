@@ -8,10 +8,12 @@
 
 // Enum for argument "code" to GetItemUseErrorMessage
 enum ItemUseError {
-    ITEMUSEERROR_OAKSWORDS  = 0,
-    ITEMUSEERROR_NODISMOUNT = 1,
-    ITEMUSEERROR_NOFOLLOWER = 2,
-    ITEMUSEERROR_NOTNOW     = 3,
+    ITEMUSEERROR_OKAY       = 0, // no error
+    ITEMUSEERROR_NODISMOUNT = 1, // can't get off bike
+    ITEMUSEERROR_NOFOLLOWER = 2, // have a companion
+    ITEMUSEERROR_NOTNOW     = 3, // unknown
+
+    ITEMUSEERROR_OAKSWORDS  = -1u,
 };
 
 /*

@@ -152,14 +152,14 @@ scr_seq_D24R0206_001:
 scr_seq_D24R0206_002:
 	scrcmd_609
 	lockall
-	goto_if_set FLAG_UNK_21F, _0292
+	goto_if_set FLAG_OPENED_ALPH_WATER_STONE_SECRET_ROOM, _0292
 	wait 2, VAR_SPECIAL_x8004
 	scrcmd_561 0, 2, 10, 6
 	wait 10, VAR_SPECIAL_x8004
 	apply_movement obj_player, _02A4
 	wait_movement
 	hide_person obj_D24R0206_babyboy1_12
-	setflag FLAG_UNK_21F
+	setflag FLAG_OPENED_ALPH_WATER_STONE_SECRET_ROOM
 	play_se SEQ_SE_DP_UG_008
 	releaseall
 	end

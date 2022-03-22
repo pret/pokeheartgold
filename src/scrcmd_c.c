@@ -1,5 +1,6 @@
 #include "scrcmd.h"
 #include "window.h"
+#include "task.h"
 
 // TODO: NELEMS(gScriptCmdTable);
 const u32 sNumScriptCmds = 853;

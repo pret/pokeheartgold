@@ -1424,7 +1424,7 @@ sub_02052470: ; 0x02052470
 	add r4, r1, #0
 	ldr r1, [r2, #8]
 	ldr r2, [r2, #0xc]
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	add r5, r0, #0
 	bl sub_0205B828
 	cmp r0, #0

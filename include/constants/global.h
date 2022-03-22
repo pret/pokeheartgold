@@ -3,6 +3,7 @@
 
 #include "constants/rgb.h"
 #include "constants/charcode.h"
+#include "constants/global.fieldmap.h"
 
 #define OT_NAME_LENGTH           7
 #define POKEMON_NAME_LENGTH     10
