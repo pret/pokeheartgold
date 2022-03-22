@@ -28725,7 +28725,7 @@ FS_EXTERN_OVERLAY(OV_101)
 .public sub_0205C6CC
 .public sub_0205C6D4
 .public PlayerAvatar_GetMapObject
-.public sub_0205C6E4
+.public PlayerAvatar_SetState
 .public PlayerAvatar_GetState
 .public sub_0205C710
 .public sub_0205C718

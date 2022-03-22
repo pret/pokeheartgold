@@ -415,7 +415,7 @@ sub_0205C500: ; 0x0205C500
 	bl sub_0205C6D0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0205C6E4
+	bl PlayerAvatar_SetState
 	add r0, r5, #0
 	add r1, r6, #0
 	bl sub_0205C720
@@ -676,8 +676,8 @@ PlayerAvatar_GetMapObjectConst: ; 0x0205C6E0
 	bx lr
 	thumb_func_end PlayerAvatar_GetMapObjectConst
 
-	thumb_func_start sub_0205C6E4
-sub_0205C6E4: ; 0x0205C6E4
+	thumb_func_start PlayerAvatar_SetState
+PlayerAvatar_SetState: ; 0x0205C6E4
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -691,7 +691,7 @@ _0205C6F2:
 	bl sub_0205C800
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0205C6E4
+	thumb_func_end PlayerAvatar_SetState
 
 	thumb_func_start PlayerAvatar_GetState
 PlayerAvatar_GetState: ; 0x0205C700

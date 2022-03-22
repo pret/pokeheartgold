@@ -642,7 +642,7 @@ static BOOL sub_02053950(TaskManager *taskManager) {
         env->unk0++;
         break;
     case 1:
-        sub_0205C6E4(fsys->playerAvatar, 0);
+        PlayerAvatar_SetState(fsys->playerAvatar, 0);
         sub_020537A8(taskManager, &env->location);
         env->unk0++;
         break;
@@ -751,7 +751,7 @@ static BOOL sub_02053B3C(TaskManager *taskManager) {
         env->unk0++;
         break;
     case 1:
-        sub_0205C6E4(fsys->playerAvatar, 0);
+        PlayerAvatar_SetState(fsys->playerAvatar, 0);
         sub_020537A8(taskManager, &env->location);
         env->unk0++;
         break;

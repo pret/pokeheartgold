@@ -3129,6 +3129,125 @@ _021F126A:
 _021F1278: .word ov01_02209B64
 	thumb_func_end ov01_021F1250
 
+	thumb_func_start ov01_021F127C
+ov01_021F127C: ; 0x021F127C
+	ldr r3, _021F1288 ; =sub_0200E33C
+	mov r2, #1
+	add r1, r0, #0
+	ldr r0, _021F128C ; =ov01_021F1290
+	lsl r2, r2, #0xa
+	bx r3
+	.balign 4, 0
+_021F1288: .word sub_0200E33C
+_021F128C: .word ov01_021F1290
+	thumb_func_end ov01_021F127C
+
+	thumb_func_start ov01_021F1290
+ov01_021F1290: ; 0x021F1290
+	push {r4, lr}
+	add r4, r1, #0
+	ldr r0, [r4, #8]
+	cmp r0, #2
+	blo _021F12A4
+	ldr r0, [r4]
+	bl sub_02014C08
+	mov r0, #0
+	str r0, [r4, #8]
+_021F12A4:
+	ldr r0, [r4]
+	bl sub_02014C40
+	ldr r0, [r4, #8]
+	add r0, r0, #1
+	str r0, [r4, #8]
+	pop {r4, pc}
+	.balign 4, 0
+	thumb_func_end ov01_021F1290
+
+	thumb_func_start ov01_021F12B4
+ov01_021F12B4: ; 0x021F12B4
+	push {r4, lr}
+	add r4, r0, #0
+	add r0, r1, #0
+	bl sub_02014AD8
+	str r0, [r4]
+	mov r0, #0
+	str r0, [r4, #8]
+	add r0, r4, #0
+	bl ov01_021F127C
+	str r0, [r4, #4]
+	pop {r4, pc}
+	.balign 4, 0
+	thumb_func_end ov01_021F12B4
+
+	thumb_func_start ov01_021F12D0
+ov01_021F12D0: ; 0x021F12D0
+	push {r4, lr}
+	add r4, r0, #0
+	ldr r0, [r4, #4]
+	bl sub_0200E390
+	ldr r0, [r4]
+	bl sub_02014B9C
+	ldr r0, [r4]
+	bl sub_02014BD8
+	pop {r4, pc}
+	thumb_func_end ov01_021F12D0
+
+	thumb_func_start ov01_021F12E8
+ov01_021F12E8: ; 0x021F12E8
+	push {r4, r5, lr}
+	sub sp, #0x14
+	ldr r4, [sp, #0x20]
+	add r5, sp, #0x10
+	str r4, [sp]
+	mov r4, #0x14
+	ldrsh r4, [r5, r4]
+	str r4, [sp, #4]
+	ldr r4, [sp, #0x28]
+	str r4, [sp, #8]
+	ldr r4, [sp, #0x2c]
+	str r4, [sp, #0xc]
+	ldr r4, [sp, #0x30]
+	str r4, [sp, #0x10]
+	ldr r0, [r0]
+	bl sub_02014B08
+	add sp, #0x14
+	pop {r4, r5, pc}
+	.balign 4, 0
+	thumb_func_end ov01_021F12E8
+
+	thumb_func_start ov01_021F1310
+ov01_021F1310: ; 0x021F1310
+	push {r3, r4, r5, r6, r7, lr}
+	ldr r0, [r0]
+	add r7, r1, #0
+	bl sub_02014BF8
+	add r5, r0, #0
+	mov r6, #0
+_021F131E:
+	ldr r0, [r5]
+	add r1, r7, #0
+	lsl r0, r0, #0x10
+	asr r4, r0, #0x10
+	add r0, r6, #0
+	bl _u32_div_f
+	mov r1, #1
+	tst r0, r1
+	bne _021F1336
+	lsl r0, r4, #0x10
+	b _021F133A
+_021F1336:
+	neg r0, r4
+	lsl r0, r0, #0x10
+_021F133A:
+	lsr r0, r0, #0x10
+	str r0, [r5]
+	add r6, r6, #1
+	add r5, r5, #4
+	cmp r6, #0xc0
+	blt _021F131E
+	pop {r3, r4, r5, r6, r7, pc}
+	thumb_func_end ov01_021F1310
+
 	.rodata
 
 ov01_022067D0:
