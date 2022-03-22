@@ -2,7 +2,7 @@
 #define POKEHEARTGOLD_UNK_02014DA0_H
 
 #include "unk_02022D74.h"
-#include "library/spl.h"
+#include "spl.h"
 
 typedef struct ParticleSystem ParticleSystem;
 

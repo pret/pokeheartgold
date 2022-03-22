@@ -11,7 +11,9 @@ void FieldSys_StartBugContestTimer(FieldSystem* fsys) {
     RTCDate date;
     RTCTime time;
     SYSINFO_RTC* sysinfo = Sav2_SysInfo_RTC_get(fsys->savedata); 
-    if (!sysinfo->initialized) return;
+    if (!sysinfo->initialized) {
+        return;
+    }
     GF_RTC_CopyDateTime(&date, &time);
     sub_02055450(fsys, sysinfo, &date);
     sub_02055478(fsys, sysinfo, &date, &time);
@@ -43,7 +45,9 @@ void sub_02055478(FieldSystem* fsys, SYSINFO_RTC* sysinfo, RTCDate* date, RTCTim
         sub_02092F30(sub_02092DEC(fsys), seconds);
     }    
     s32 minutes = delta_seconds / 60;
-    if (minutes <= 0) return;
+    if (minutes <= 0) {
+        return;
+    }
     Sav2_SysInfo_RTC_SubField34(sysinfo, minutes);
     sub_020555B4(fsys, minutes, time);
     sysinfo->date = *date;
@@ -147,7 +151,9 @@ void sub_020556FC(struct UnkStruct_020556FC* unkPtr) {
 }
 
 BOOL sub_02055708(FieldSystem* fsys, LocalMapObject* mapObject) {
-    if (mapObject == NULL) return FALSE;
+    if (mapObject == NULL) {
+        return FALSE;
+    }
     u32 id = MapObject_GetGfxID(mapObject);
     if (id != SPRITE_BONGURI_R && 
         id != SPRITE_BONGURI_Y && 
@@ -158,7 +164,9 @@ BOOL sub_02055708(FieldSystem* fsys, LocalMapObject* mapObject) {
         id != SPRITE_BONGURI_BK) {
         return FALSE;
     }
-    if (sub_02055780(fsys, mapObject) != TRUE) return FALSE;
+    if (sub_02055780(fsys, mapObject) != TRUE) {
+        return FALSE;
+    }
     return TRUE;
 }
 
