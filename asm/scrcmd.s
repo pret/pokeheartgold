@@ -3283,7 +3283,7 @@ _020421C6:
 	ldr r1, [sp, #8]
 	ldr r2, [sp, #4]
 	add r0, r5, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	add r5, r0, #0
 	sub r0, r6, #2
 	cmp r0, #1
@@ -6066,7 +6066,7 @@ ScrCmd_184: ; 0x020437B4
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_GetState
 	cmp r0, #1
 	bne _020437DC
 	mov r0, #1
@@ -6188,7 +6188,7 @@ ScrCmd_GetPlayerState: ; 0x0204389C
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_GetState
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -12800,7 +12800,7 @@ ScrCmd_FollowPokeFacePlayer: ; 0x02046BDC
 	add r0, #0x80
 	ldr r0, [r0]
 	add r2, r7, r4
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0xc]
 	add r1, sp, #0x18

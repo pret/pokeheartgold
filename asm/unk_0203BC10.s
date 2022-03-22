@@ -476,7 +476,7 @@ _0203BF60:
 	lsl r1, r1, #2
 	add r0, r4, #0
 	add r1, r5, r1
-	bl sub_020649B8
+	bl ItemCheckUseData_Init
 	mov r1, #0x37
 	lsl r1, r1, #4
 	add r0, r4, #0
@@ -522,7 +522,7 @@ _0203BFBA:
 	lsl r1, r1, #2
 	add r0, r4, #0
 	add r1, r5, r1
-	bl sub_020649B8
+	bl ItemCheckUseData_Init
 	mov r1, #0x37
 	lsl r1, r1, #4
 	add r0, r4, #0

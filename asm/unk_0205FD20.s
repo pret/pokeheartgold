@@ -627,7 +627,7 @@ _020601EE:
 	ldr r1, [sp, #8]
 	ldr r2, [sp, #4]
 	add r0, r6, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	add r4, r0, #0
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
@@ -713,7 +713,7 @@ _020602A6:
 	ldr r1, [sp, #8]
 	ldr r2, [sp, #4]
 	add r0, r6, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	add r4, r0, #0
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
@@ -2118,7 +2118,7 @@ sub_02060DEC: ; 0x02060DEC
 	ldr r0, [sp]
 	add r1, r6, #0
 	add r2, r7, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	add r6, r0, #0
 	bl sub_0205BA6C
 	cmp r6, r0
@@ -2357,7 +2357,7 @@ sub_02060FA8: ; 0x02060FA8
 	ldr r2, [sp]
 	add r1, r6, r7
 	add r2, r2, r5
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end sub_02060FA8
@@ -2533,7 +2533,7 @@ sub_02061108: ; 0x02061108
 	add r1, r4, #0
 	add r2, r6, #0
 	add r7, r0, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	add r6, r0, #0
 	add r0, r5, #0
 	bl MapObject_GetCurrentX
@@ -2543,7 +2543,7 @@ sub_02061108: ; 0x02061108
 	add r2, r0, #0
 	add r0, r7, #0
 	add r1, r4, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	add r4, r0, #0
 _0206115A:
 	add r0, r5, #0

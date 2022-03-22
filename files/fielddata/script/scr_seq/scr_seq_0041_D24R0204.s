@@ -158,13 +158,13 @@ scr_seq_D24R0204_002:
 	closemsg
 	scrcmd_183 VAR_SPECIAL_x8000
 	wait 2, VAR_SPECIAL_x8004
-	goto_if_set FLAG_UNK_21D, _02A9
+	goto_if_set FLAG_OPENED_ALPH_FLASH_SECRET_ROOM, _02A9
 	scrcmd_561 0, 2, 10, 6
 	wait 10, VAR_SPECIAL_x8004
 	apply_movement obj_player, _02BC
 	wait_movement
 	hide_person obj_D24R0204_babyboy1_12
-	setflag FLAG_UNK_21D
+	setflag FLAG_OPENED_ALPH_FLASH_SECRET_ROOM
 	play_se SEQ_SE_DP_UG_008
 	releaseall
 	end

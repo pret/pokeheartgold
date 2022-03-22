@@ -1536,7 +1536,7 @@ LocalMapObject *sub_020699F8(MapObjectMan *mapObjectMan, int x, int y, int direc
             fsys->followMon.active = TRUE;
             FollowPokeFsysParamSet(fsys, species, forme, shiny, gender);
             FsysUnkSub108_Set(fsys->unk108, pokemon, species, GetMonData(pokemon, MON_DATA_PERSONALITY, NULL));
-            player_unk = sub_0205C700(fsys->playerAvatar);
+            player_unk = PlayerAvatar_GetState(fsys->playerAvatar);
             if (player_unk == 0 || player_unk == 3) {
                 SavFollowPoke_SetUnused2bitField(1, Sav2_FollowPoke_get(fsys->savedata));
             } else if (player_unk == 1) {
@@ -1592,7 +1592,7 @@ void sub_02069B74(MapObjectMan *mapObjectMan, u32 mapno) {
                 FollowPokeFsysParamSet(fsys, species, forme, shiny, gender);
                 FollowPokeMapObjectSetParams(followPokeObj, species, forme, shiny);
                 MapObject_SetGfxID(fsys->followMon.mapObject, FollowingPokemon_GetSpriteID(species, forme, gender));
-                player_unk = sub_0205C700(fsys->playerAvatar);
+                player_unk = PlayerAvatar_GetState(fsys->playerAvatar);
                 if (player_unk == 0 || player_unk == 3) {
                     SavFollowPoke_SetUnused2bitField(1, Sav2_FollowPoke_get(fsys->savedata));
                 } else if (player_unk == 1) {

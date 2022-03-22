@@ -3,6 +3,7 @@
 
 #include "font_types_def.h"
 #include "window.h"
+#include "options.h"
 
 #define MakeTextColor(fg, sh, bg) ((((fg) & 0xFF) << 16) | (((sh) & 0xFF) << 8) | (((bg) & 0xFF) << 0))
 
@@ -13,5 +14,11 @@ void sub_0201FFE0(const struct FontInfo *fontData);
 void DecompressGlyphTile(const u8 *src, u8 *dest);
 void AddTextPrinterParameterized2(WINDOW *window, FontID fontId, STRING *string, u8 x, u8 y, u8 textSpeed, u32 color, PrinterCallback_t callback);
 BOOL sub_02020094(u8 a0);
+
+// text_0205B4EC
+void sub_0205B514(BGCONFIG *bgConfig, WINDOW *window, int a2);
+void sub_0205B564(WINDOW *window, OPTIONS *options);
+u8 sub_0205B5B4(WINDOW *window, STRING *string, OPTIONS *options, BOOL speedupFlag);
+BOOL sub_0205B624(u8 printerId);
 
 #endif //POKEHEARTGOLD_TEXT_H

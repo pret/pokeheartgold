@@ -1,9 +1,6 @@
 #include "constants/maps.h"
-#include "script.h"
-
-typedef struct FlyPoints FlyPoints;
-extern FlyPoints* Save_FlyPoints_get(SAVEDATA*);
-extern Location* FlyPoints_GetPosition(FlyPoints*);
+#include "field_alph_checks.h"
+#include "save_flypoints.h"
 
 BOOL CheckUseEscapeRopeInAlphChamber(FieldSystem* fsys) {
     Location* position = FlyPoints_GetPosition(Save_FlyPoints_get(fsys->savedata));

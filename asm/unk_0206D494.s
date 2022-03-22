@@ -422,7 +422,7 @@ _0206D7E8:
 	bl MapObject_GetFieldSysPtr
 	add r1, r6, #0
 	add r2, r7, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	bl sub_0205B828
 	cmp r0, #0
 	bne _0206D802

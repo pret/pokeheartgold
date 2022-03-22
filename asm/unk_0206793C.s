@@ -437,7 +437,7 @@ _02067C66:
 	b _02067DE4
 _02067C78:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_GetState
 	sub r0, r0, #1
 	cmp r0, #1
 	bhi _02067C8E
@@ -643,7 +643,7 @@ sub_02067E10: ; 0x02067E10
 	mov r1, #0
 	strh r1, [r4, #0xc]
 	add r1, sp, #8
-	bl sub_0203DBF8
+	bl Fsys_GetFacingObject
 	ldr r0, [sp, #8]
 	str r0, [r4, #8]
 	ldr r0, [sp, #8]
@@ -684,7 +684,7 @@ _02067E62:
 	ldr r1, [sp, #4]
 	str r2, [sp]
 	add r0, r5, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	add r7, r0, #0
 	ldr r0, [r5, #0x40]
 	add r1, sp, #4
@@ -693,7 +693,7 @@ _02067E62:
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r5, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
 	add r1, r7, #0
@@ -1025,7 +1025,7 @@ _020680F2:
 _02068106:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_GetState
 	cmp r0, #2
 	bne _02068116
 	mov r0, #PARTY_MENU_RESPONSE_ALREADY_SURFING
@@ -1313,7 +1313,7 @@ FieldMoveMenuCheck_Waterfall: ; 0x02068318
 	pop {r4, pc}
 _0206832A:
 	ldr r0, [r1, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_GetState
 	cmp r0, #2
 	beq _02068338
 	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
@@ -2007,7 +2007,7 @@ FieldMoveMenuCheck_Whirlpool: ; 0x0206885C
 	pop {r4, pc}
 _0206886E:
 	ldr r0, [r1, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_GetState
 	cmp r0, #2
 	beq _0206887C
 	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE

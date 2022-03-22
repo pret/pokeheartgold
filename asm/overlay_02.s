@@ -2218,7 +2218,7 @@ _02246CA0:
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	add r7, r0, #0
 	add r2, sp, #0x18
 	add r0, r5, #0
@@ -2805,7 +2805,7 @@ ov02_02247170: ; 0x02247170
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	add r1, r0, #0
 	add r0, r5, #0
 	add r2, sp, #0x14
@@ -3310,7 +3310,7 @@ ov02_02247568: ; 0x02247568
 	mov r6, #0x64
 _02247576:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_GetState
 	add r7, r0, #0
 	mov r4, #0x28
 	cmp r7, #1
@@ -13280,8 +13280,8 @@ ov02_0224BFCC: ; 0x0224BFCC
 _0224BFD4: .word ov01_021E8E70
 	thumb_func_end ov02_0224BFCC
 
-	thumb_func_start ov02_0224BFD8
-ov02_0224BFD8: ; 0x0224BFD8
+	thumb_func_start CreateFieldEscapeRopeTaskEnv
+CreateFieldEscapeRopeTaskEnv: ; 0x0224BFD8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, r1, #0
@@ -13295,7 +13295,7 @@ ov02_0224BFD8: ; 0x0224BFD8
 	bl PlayerAvatar_GetMapObject
 	str r0, [r4, #0x20]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_GetState
 	sub r0, r0, #1
 	cmp r0, #1
 	bhi _0224C006
@@ -13317,10 +13317,10 @@ _0224C01A:
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov02_0224BFD8
+	thumb_func_end CreateFieldEscapeRopeTaskEnv
 
-	thumb_func_start ov02_0224C020
-ov02_0224C020: ; 0x0224C020
+	thumb_func_start Task_FieldEscapeRope
+Task_FieldEscapeRope: ; 0x0224C020
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	bl TaskManager_GetSys
@@ -13349,7 +13349,7 @@ _0224C04E:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0224C058: .word ov02_02253700
-	thumb_func_end ov02_0224C020
+	thumb_func_end Task_FieldEscapeRope
 
 	thumb_func_start ov02_0224C05C
 ov02_0224C05C: ; 0x0224C05C
@@ -13974,7 +13974,7 @@ ov02_0224C500: ; 0x0224C500
 	str r0, [r4, #0x20]
 	str r6, [r4, #0x28]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_GetState
 	sub r0, r0, #1
 	cmp r0, #1
 	bhi _0224C534
@@ -14472,7 +14472,7 @@ _0224C8E4:
 	str r0, [r4, #0x14]
 _0224C90E:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_GetState
 	cmp r0, #2
 	beq _0224C92E
 	ldr r0, [r4, #8]
@@ -14593,7 +14593,7 @@ _0224C9FE:
 	ldr r0, [r4, #0x10]
 	bl sub_0206226C
 	ldr r0, [r5, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_GetState
 	cmp r0, #2
 	beq _0224CA18
 	ldr r0, [r4, #0x2c]
@@ -18297,7 +18297,7 @@ ov02_0224E4EC: ; 0x0224E4EC
 	add r0, r5, r0
 	str r0, [r4, #0x20]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_GetState
 	cmp r0, #2
 	bne _0224E528
 	mov r0, #1
@@ -18537,7 +18537,7 @@ ov02_0224E698: ; 0x0224E698
 	pop {r3, r4, r5, r6, r7, pc}
 _0224E706:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_GetState
 	cmp r0, #2
 	beq _0224E716
 	add sp, #0x20
@@ -18760,7 +18760,7 @@ _0224E8A4:
 	ldr r2, [sp, #0x3c]
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	str r0, [sp, #0x58]
 	ldr r2, [sp, #0x3c]
 	add r0, r4, #0
@@ -18879,7 +18879,7 @@ _0224E99E:
 	asr r5, r0, #0x10
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	str r0, [sp, #0x20]
 	ldr r2, [sp, #4]
 	add r0, r4, #0
@@ -18977,7 +18977,7 @@ _0224EA6A:
 	ldr r2, [sp, #0x30]
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	str r0, [sp, #0x24]
 	ldr r2, [sp, #0x30]
 	add r0, r4, #0
@@ -19126,7 +19126,7 @@ _0224EB98:
 	asr r5, r0, #0x10
 	add r0, r4, #0
 	add r2, r5, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	str r0, [sp, #0x50]
 	ldr r1, [sp, #4]
 	add r0, r4, #0
@@ -19224,7 +19224,7 @@ _0224EC64:
 	str r0, [sp, #0x2c]
 	ldr r1, [sp, #0x2c]
 	add r0, r4, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	str r0, [sp, #0x20]
 	ldr r1, [sp, #0x2c]
 	add r0, r4, #0
@@ -19349,7 +19349,7 @@ _0224ED70:
 	ldr r1, [sp, #0x28]
 	add r0, r4, #0
 	add r2, r5, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	str r0, [sp, #0x5c]
 	ldr r1, [sp, #0x28]
 	add r0, r4, #0
@@ -20490,7 +20490,7 @@ ov02_0224F5FC: ; 0x0224F5FC
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	mov r1, #0x12
 	strb r0, [r4, #0x12]
 	lsl r1, r1, #4
@@ -21673,7 +21673,7 @@ _0224FE9E:
 	ldr r1, [sp, #8]
 	ldr r2, [sp, #4]
 	add r0, r6, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	add r5, r0, #0
 	lsl r0, r5, #0x18
 	lsr r0, r0, #0x18
