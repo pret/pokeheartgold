@@ -420,6 +420,7 @@ Overlay OVY_0
 Overlay field
 {
     After main
+    Object asm/overlay_01_021E5900.o
     Object asm/overlay_01.o
 }
 Overlay OVY_2
