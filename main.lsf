@@ -436,6 +436,10 @@ Overlay field
     Object asm/overlay_01_021EAFD4.o
     Object asm/overlay_01_021EB1E8.o
     Object asm/overlay_01_021EDAFC.o
+    Object asm/scrcmd_message.o
+    Object asm/overlay_01_021EF7A0.o
+    Object asm/overlay_01_021EFB38.o
+    Object asm/overlay_01_021F127C.o
 }
 Overlay OVY_2
 {
