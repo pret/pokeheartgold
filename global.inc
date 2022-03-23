@@ -627,6 +627,9 @@
 .public Field_FreeMapEvents
 .public Field_GetBgEvents
 .public Field_GetCoordEvents
+.public Field_GetDay
+.public Field_GetHour
+.public Field_GetMonth
 .public Field_GetNumBgEvents
 .public Field_GetNumCoordEvents
 .public Field_GetNumObjectEvents

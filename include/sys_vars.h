@@ -26,7 +26,7 @@ BOOL sub_02066C74(SCRIPT_STATE* state, s32 a1);
 void ScriptState_SetLotoId(SCRIPT_STATE* state, u32 id);
 u32 ScriptState_GetLotoId(SCRIPT_STATE* state);
 void ScriptState_RollLotoId(SCRIPT_STATE* state);
-void Save_LCRNGAdvanceLotoID(SAVEDATA* savedata);
+void Save_LCRNGAdvanceLotoID(SAVEDATA* savedata, u16 var);
 u16 ScriptState_GetVar4041(SCRIPT_STATE* state);
 void ScriptState_SetVar4041(SCRIPT_STATE* state, u16 value);
 void sub_02066D60(SAVEDATA* savedata);
