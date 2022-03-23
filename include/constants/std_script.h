@@ -22,6 +22,7 @@
 #define std_whited_out_to_mom           2012
 #define std_whited_out_to_pokecenter    2013
 #define std_global_terminal_globe       2015
+#define std_bike_rack                   2020
 #define std_hatch_egg                   2021
 #define std_repel_wore_off              2022
 #define std_set_battle_phrase           2023

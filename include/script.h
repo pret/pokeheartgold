@@ -54,7 +54,7 @@ typedef struct ScriptEnvironment {
     u32 unk_1C;
     u32 unk_20;
     u32 unk_24;
-    void* facingDirection;
+    int facingDirection;
     LocalMapObject* lastTalked;
     u32 unk_30;
     void* unk_34;

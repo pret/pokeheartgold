@@ -184,8 +184,8 @@ extern BOOL ScrCmd_180(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_181(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_182(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_183(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_184(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_185(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PlayerOnBikeCheck(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PlayerOnBikeSet(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_186(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPlayerState(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SetAvatarBits(SCRIPTCONTEXT *ctx);
@@ -1039,8 +1039,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_181,
     ScrCmd_182,
     ScrCmd_183,
-    ScrCmd_184,
-    ScrCmd_185,
+    ScrCmd_PlayerOnBikeCheck,
+    ScrCmd_PlayerOnBikeSet,
     ScrCmd_186,
     ScrCmd_GetPlayerState,
     ScrCmd_SetAvatarBits,

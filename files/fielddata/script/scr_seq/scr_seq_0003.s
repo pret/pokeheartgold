@@ -1225,14 +1225,14 @@ scr_seq_0003_020:
 	scrcmd_609
 	lockall
 	play_se SEQ_SE_DP_SELECT
-	scrcmd_184 VAR_SPECIAL_RESULT
+	player_on_bike_check VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _1140
 	npc_msg msg_0040_00059
 	scrcmd_063 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _115D
-	scrcmd_185 1
+	player_on_bike_set 1
 	closemsg
 	releaseall
 	end
@@ -1242,7 +1242,7 @@ _1140:
 	scrcmd_063 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _115D
-	scrcmd_185 0
+	player_on_bike_set 0
 	closemsg
 	releaseall
 	end

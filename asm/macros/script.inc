@@ -1080,12 +1080,12 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_184 arg0
+	.macro player_on_bike_check arg0
 	.short 184
 	.short \arg0
 	.endm
 
-	.macro scrcmd_185 arg0
+	.macro player_on_bike_set arg0
 	.short 185
 	.byte \arg0
 	.endm

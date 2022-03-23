@@ -13,21 +13,21 @@
 
 	.text
 
-	thumb_func_start ov01_021F1AFC
-ov01_021F1AFC: ; 0x021F1AFC
-	ldr r3, _021F1B00 ; =sub_0205C710
+	thumb_func_start ov01_PlayerAvatar_OrrTransitionFlags
+ov01_PlayerAvatar_OrrTransitionFlags: ; 0x021F1AFC
+	ldr r3, _021F1B00 ; =PlayerAvatar_OrrTransitionFlags
 	bx r3
 	.balign 4, 0
-_021F1B00: .word sub_0205C710
-	thumb_func_end ov01_021F1AFC
+_021F1B00: .word PlayerAvatar_OrrTransitionFlags
+	thumb_func_end ov01_PlayerAvatar_OrrTransitionFlags
 
-	thumb_func_start ov01_021F1B04
-ov01_021F1B04: ; 0x021F1B04
+	thumb_func_start ov01_PlayerAvatar_ApplyTransitionFlags
+ov01_PlayerAvatar_ApplyTransitionFlags: ; 0x021F1B04
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	mov r6, #0
-	bl sub_0205C71C
-	ldr r5, _021F1B34 ; =ov01_02206A3C
+	bl PlayerAvatar_GetTransitionFlags
+	ldr r5, _021F1B34 ; =sPlayerAvatarBitUpdateFuncs
 	add r4, r0, #0
 _021F1B12:
 	mov r0, #1
@@ -44,11 +44,11 @@ _021F1B1E:
 	blo _021F1B12
 	add r0, r7, #0
 	mov r1, #0
-	bl sub_0205C718
+	bl PlayerAvatar_SetTransitionFlags
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_021F1B34: .word ov01_02206A3C
-	thumb_func_end ov01_021F1B04
+_021F1B34: .word sPlayerAvatarBitUpdateFuncs
+	thumb_func_end ov01_PlayerAvatar_ApplyTransitionFlags
 
 	thumb_func_start ov01_021F1B38
 ov01_021F1B38: ; 0x021F1B38
@@ -843,11 +843,11 @@ _021F2148:
 	bne _021F2172
 	ldr r0, [r4, #0x1c]
 	mov r1, #0
-	bl sub_02054F28
+	bl Fsys_SetSavedMusicId
 	ldr r0, [r4, #0x1c]
 	ldr r1, _021F2328 ; =0x000003F6
 	mov r2, #1
-	bl sub_02054FDC
+	bl Fsys_PlayOrFadeToNewMusicId
 _021F2172:
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -1218,7 +1218,7 @@ _021F2476:
 	add r1, r0, #0
 	ldr r0, [r4, #8]
 	mov r2, #4
-	bl sub_02054FDC
+	bl Fsys_PlayOrFadeToNewMusicId
 _021F249A:
 	bl SndRadio_GetSeqNo
 	cmp r0, #0
@@ -2610,16 +2610,16 @@ ov01_021F2EDC: ; 0x021F2EDC
 	cmp r0, #1
 	bls _021F2F22
 	add r0, r4, #0
-	bl sub_0205C71C
+	bl PlayerAvatar_GetTransitionFlags
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #0x40
-	bl ov01_021F1AFC
+	bl ov01_PlayerAvatar_OrrTransitionFlags
 	add r0, r4, #0
-	bl ov01_021F1B04
+	bl ov01_PlayerAvatar_ApplyTransitionFlags
 	add r0, r4, #0
 	add r1, r5, #0
-	bl ov01_021F1AFC
+	bl ov01_PlayerAvatar_OrrTransitionFlags
 _021F2F22:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021F2EDC
@@ -2645,16 +2645,16 @@ ov01_021F2F24: ; 0x021F2F24
 	bne _021F2F6C
 _021F2F4E:
 	add r0, r4, #0
-	bl sub_0205C71C
+	bl PlayerAvatar_GetTransitionFlags
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov01_021F1AFC
+	bl ov01_PlayerAvatar_OrrTransitionFlags
 	add r0, r4, #0
-	bl ov01_021F1B04
+	bl ov01_PlayerAvatar_ApplyTransitionFlags
 	add r0, r4, #0
 	add r1, r5, #0
-	bl ov01_021F1AFC
+	bl ov01_PlayerAvatar_OrrTransitionFlags
 _021F2F6C:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2704,9 +2704,9 @@ _021F2FBC:
 	bl MapObject_UnpauseMovement
 	add r0, r6, #0
 	add r1, r4, #0
-	bl ov01_021F1AFC
+	bl ov01_PlayerAvatar_OrrTransitionFlags
 	add r0, r6, #0
-	bl ov01_021F1B04
+	bl ov01_PlayerAvatar_ApplyTransitionFlags
 	ldr r0, _021F2FE8 ; =ov01_021F3030
 	ldr r2, _021F2FEC ; =0x0000FFFF
 	add r1, r5, #0
@@ -2936,7 +2936,7 @@ ov01_02206A14: ; 0x02206A14
 	.byte 0x0A, 0x00, 0x12, 0x00, 0x01, 0x00, 0xEF, 0x01, 0xED, 0x00, 0x12, 0x00, 0x07, 0x00, 0x02, 0x00
 	.byte 0xF0, 0x01, 0xED, 0x00, 0x13, 0x00, 0x13, 0x00, 0x03, 0x00, 0xF1, 0x01
 
-ov01_02206A3C: ; 0x02206A3C
+sPlayerAvatarBitUpdateFuncs: ; 0x02206A3C
 	.word ov01_021F1B38
 	.word ov01_021F1B78
 	.word ov01_021F1BC0

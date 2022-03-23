@@ -140,7 +140,7 @@ _02092CE2:
 	strb r0, [r4, #1]
 	ldrh r1, [r4, #0x10]
 	add r0, r5, #0
-	bl sub_02054F60
+	bl Fsys_GetSurfOverriddenMusicId
 	strh r0, [r4, #2]
 	ldr r0, [sp]
 	cmp r0, #0

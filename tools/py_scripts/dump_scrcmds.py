@@ -181,6 +181,7 @@ class NormalScriptParser(ScriptParserBase):
             'maps': parse_c_header(os.path.join(project_root, 'include/constants/maps.h'), 'MAP_'),
             'phone_contact': parse_c_header(os.path.join(project_root, 'include/constants/phone_contacts.h'), 'PHONE_CONTACT_'),
             'spawn': parse_c_header(os.path.join(project_root, 'include/constants/spawns.h'), 'SPAWN_'),
+            'player_transition': parse_c_header(os.path.join(project_root, 'include/constants/global.fieldmap.h'), 'PLAYER_TRANSITION_'),
         }
         self.constants['stdscr'] |= {
             x + 2999: f'std_trainer({y})' for x, y in self.constants['trainer'].items()
@@ -473,6 +474,14 @@ class NormalScriptParser(ScriptParserBase):
                     ret = f'RGB({r}, {g}, {b})'
                     if value & 0x8000:
                         ret += ' | 0x8000'
+                return ret, pc
+            case 'player_transition':
+                value = int.from_bytes(self.raw[pc:pc + 2], 'little')
+                pc += 2
+                if value == 0:
+                    ret = '0'
+                else:
+                    ret = ' | '.join(key for mask, key in self.constants['player_transition'].items() if value & mask)
                 return ret, pc
             case _:
                 raise ValueError('unknown arg type: ' + size)

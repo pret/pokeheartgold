@@ -421,7 +421,7 @@ sub_0205C500: ; 0x0205C500
 	bl sub_0205C720
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205C718
+	bl PlayerAvatar_SetTransitionFlags
 	add r0, r5, #0
 	bl sub_0205C74C
 	mov r1, #0
@@ -705,25 +705,25 @@ _0205C70A:
 	.balign 4, 0
 	thumb_func_end PlayerAvatar_GetState
 
-	thumb_func_start sub_0205C710
-sub_0205C710: ; 0x0205C710
+	thumb_func_start PlayerAvatar_OrrTransitionFlags
+PlayerAvatar_OrrTransitionFlags: ; 0x0205C710
 	ldr r2, [r0, #4]
 	orr r1, r2
 	str r1, [r0, #4]
 	bx lr
-	thumb_func_end sub_0205C710
+	thumb_func_end PlayerAvatar_OrrTransitionFlags
 
-	thumb_func_start sub_0205C718
-sub_0205C718: ; 0x0205C718
+	thumb_func_start PlayerAvatar_SetTransitionFlags
+PlayerAvatar_SetTransitionFlags: ; 0x0205C718
 	str r1, [r0, #4]
 	bx lr
-	thumb_func_end sub_0205C718
+	thumb_func_end PlayerAvatar_SetTransitionFlags
 
-	thumb_func_start sub_0205C71C
-sub_0205C71C: ; 0x0205C71C
+	thumb_func_start PlayerAvatar_GetTransitionFlags
+PlayerAvatar_GetTransitionFlags: ; 0x0205C71C
 	ldr r0, [r0, #4]
 	bx lr
-	thumb_func_end sub_0205C71C
+	thumb_func_end PlayerAvatar_GetTransitionFlags
 
 	thumb_func_start sub_0205C720
 sub_0205C720: ; 0x0205C720

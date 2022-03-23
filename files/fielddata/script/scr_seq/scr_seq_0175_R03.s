@@ -32,7 +32,7 @@ _0050:
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	get_player_facing VAR_SPECIAL_RESULT
 	warp MAP_R03, 0, VAR_SPECIAL_x8006, VAR_SPECIAL_x8007, VAR_SPECIAL_RESULT
-	scrcmd_184 VAR_SPECIAL_RESULT
+	player_on_bike_check VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _00B2
 	compare VAR_SPECIAL_RESULT, 1
@@ -75,7 +75,7 @@ _0107:
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	get_player_facing VAR_SPECIAL_RESULT
 	warp MAP_R03, 0, VAR_SPECIAL_x8006, VAR_SPECIAL_x8007, VAR_SPECIAL_RESULT
-	scrcmd_184 VAR_SPECIAL_RESULT
+	player_on_bike_check VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0180
 	compare VAR_SPECIAL_RESULT, 1
@@ -124,7 +124,7 @@ _01D5:
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	get_player_facing VAR_SPECIAL_RESULT
 	warp MAP_R03, 0, VAR_SPECIAL_x8006, VAR_SPECIAL_x8007, VAR_SPECIAL_RESULT
-	scrcmd_184 VAR_SPECIAL_RESULT
+	player_on_bike_check VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0220
 	scrcmd_605 2, 3
@@ -160,7 +160,7 @@ _0275:
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	get_player_facing VAR_SPECIAL_RESULT
 	warp MAP_R03, 0, VAR_SPECIAL_x8006, VAR_SPECIAL_x8007, VAR_SPECIAL_RESULT
-	scrcmd_184 VAR_SPECIAL_RESULT
+	player_on_bike_check VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _02C0
 	scrcmd_605 3, 2

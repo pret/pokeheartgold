@@ -21,4 +21,27 @@
 #define BG_DIR_EASTWEST      5
 #define BG_DIR_NORTHSOUTH    6
 
+// Player avatar state
+#define PLAYER_STATE_WALKING 0
+#define PLAYER_STATE_CYCLING 1
+#define PLAYER_STATE_SURFING 2
+#define PLAYER_STATE_ROCKET  3
+
+// Player transition bits
+#define PLAYER_TRANSITION_WALKING               1
+#define PLAYER_TRANSITION_CYCLING               2
+#define PLAYER_TRANSITION_SURFING               4
+#define PLAYER_TRANSITION_x0008                 8
+#define PLAYER_TRANSITION_x0010                16
+#define PLAYER_TRANSITION_x0020                32
+#define PLAYER_TRANSITION_x0040                64
+#define PLAYER_TRANSITION_x0080               128
+#define PLAYER_TRANSITION_HEAL                256
+#define PLAYER_TRANSITION_x0200               512
+#define PLAYER_TRANSITION_ROCKET             1024
+#define PLAYER_TRANSITION_ROCKET_HEAL        2048
+#define PLAYER_TRANSITION_POKEATHLON         4096
+#define PLAYER_TRANSITION_x2000              8192
+#define PLAYER_TRANSITION_x4000             16384
+
 #endif //POKEHEARTGOLD_GLOBAL_FIELDMAP_H

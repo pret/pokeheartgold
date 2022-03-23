@@ -1608,7 +1608,7 @@ _1758:
 	step 1, 1
 	step_end
 scr_seq_D36R0101_012:
-	scrcmd_184 VAR_SPECIAL_RESULT
+	player_on_bike_check VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _1803
 	compare VAR_UNK_412B, 2

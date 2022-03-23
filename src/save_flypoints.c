@@ -11,7 +11,7 @@ struct FLYPOINTS_SAVE {
     Location unk28;
     Location dynamicWarp;
     Location specialSpawn;
-    u16 unk64;
+    u16 musicId;
     u16 weather;
     u16 lastSpawn;
     u8 cameraType;
@@ -68,8 +68,8 @@ void FlyPoints_SetDynamicWarp(FLYPOINTS_SAVE *flypointsSave, const Location *loc
     flypointsSave->dynamicWarp = *location;
 }
 
-u16 *sub_0203B980(FLYPOINTS_SAVE *flypointsSave) {
-    return &flypointsSave->unk64;
+u16 *FlyPoints_GetMusicIdAddr(FLYPOINTS_SAVE *flypointsSave) {
+    return &flypointsSave->musicId;
 }
 
 u16 FlyPoints_GetWeatherType(FLYPOINTS_SAVE *flypointsSave) {

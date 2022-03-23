@@ -321,7 +321,7 @@ _044B:
 	goto _03D3
 	.byte 0x02, 0x00
 _0456:
-	scrcmd_184 VAR_SPECIAL_RESULT
+	player_on_bike_check VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _04DA
 	scrcmd_733 11, VAR_SPECIAL_RESULT

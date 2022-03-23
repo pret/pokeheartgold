@@ -440,7 +440,7 @@ _02087D88:
 	ldr r0, [r5, #0x28]
 	ldr r1, [r0, #0x20]
 	ldr r1, [r1]
-	bl sub_02054F60
+	bl Fsys_GetSurfOverriddenMusicId
 	add r4, r0, #0
 	ldr r0, [r5, #0x28]
 	ldr r1, [r0, #0x20]

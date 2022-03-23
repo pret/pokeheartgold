@@ -365,7 +365,7 @@
 #define FLAG_UNK_159                                               0x159
 #define FLAG_UNK_15A                                               0x15A
 #define FLAG_UNK_15B                                               0x15B
-#define FLAG_UNK_15C                                               0x15C
+#define FLAG_GOT_LUCKY_PUNCH                                               0x15C
 #define FLAG_UNK_15D                                               0x15D
 #define FLAG_MET_MOVE_MANIAC                                       0x15E
 #define FLAG_BUG_CONTEST_OTHER_POKES_HELD                          0x15F

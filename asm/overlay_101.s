@@ -29136,7 +29136,7 @@ ov101_021F57B8: ; 0x021F57B8
 	bl SaveFlyPoints_GetPlayerSub
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_0203B980
+	bl FlyPoints_GetMusicIdAddr
 	str r0, [sp, #8]
 	ldr r0, [sp, #0x30]
 	mov r1, #0x74

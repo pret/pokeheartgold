@@ -123,7 +123,7 @@ _01D9:
 	apply_movement obj_D49_thlonowner, _0424
 	apply_movement obj_D49_tsure_poke_static_poliwrath, _0424
 	wait_movement
-	scrcmd_184 VAR_SPECIAL_RESULT
+	player_on_bike_check VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _020C
 	npc_msg msg_0137_D49_00005

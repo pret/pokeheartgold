@@ -13,8 +13,8 @@ struct FishingRodWork;
 
 void ov01_021E636C(int a0);
 void ov01_021EFAF8(FieldSystem *fsys);
-void ov01_021F1AFC(FIELD_PLAYER_AVATAR *avatar, int a1);
-void ov01_021F1B04(FIELD_PLAYER_AVATAR *avatar);
+void ov01_PlayerAvatar_OrrTransitionFlags(FIELD_PLAYER_AVATAR *avatar, int a1);
+void ov01_PlayerAvatar_ApplyTransitionFlags(FIELD_PLAYER_AVATAR *avatar);
 void ov01_021F35C4(FieldSystem *fsys, int a1, int *a2);
 u32 GetHoneySweetScentWorkSize(void);
 BOOL Task_HoneyOrSweetScent(TaskManager *taskManager);

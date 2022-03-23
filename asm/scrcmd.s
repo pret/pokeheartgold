@@ -1,5 +1,6 @@
 #include "constants/sprites.h"
 #include "constants/species.h"
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -217,8 +218,8 @@ gScriptCmdTable:
 	.word ScrCmd_181                                    ; 181
 	.word ScrCmd_182                                    ; 182
 	.word ScrCmd_183                                    ; 183
-	.word ScrCmd_184                                    ; 184
-	.word ScrCmd_185                                    ; 185
+	.word ScrCmd_PlayerOnBikeCheck                                    ; 184
+	.word ScrCmd_PlayerOnBikeSet                                    ; 185
 	.word ScrCmd_186                                    ; 186
 	.word ScrCmd_GetPlayerState                         ; 187
 	.word ScrCmd_SetAvatarBits                                    ; 188
@@ -6052,8 +6053,8 @@ _020437AE:
 	.balign 4, 0
 	thumb_func_end sub_0204378C
 
-	thumb_func_start ScrCmd_184
-ScrCmd_184: ; 0x020437B4
+	thumb_func_start ScrCmd_PlayerOnBikeCheck
+ScrCmd_PlayerOnBikeCheck: ; 0x020437B4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -6077,10 +6078,10 @@ _020437DE:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_184
+	thumb_func_end ScrCmd_PlayerOnBikeCheck
 
-	thumb_func_start ScrCmd_185
-ScrCmd_185: ; 0x020437E4
+	thumb_func_start ScrCmd_PlayerOnBikeSet
+ScrCmd_PlayerOnBikeSet: ; 0x020437E4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #8]
@@ -6092,24 +6093,24 @@ ScrCmd_185: ; 0x020437E4
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	ldr r1, _0204386C ; =0x000003F5
-	bl sub_02054F28
+	ldr r1, _0204386C ; =SEQ_GS_BICYCLE
+	bl Fsys_SetSavedMusicId
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	ldr r1, _0204386C ; =0x000003F5
+	ldr r1, _0204386C ; =SEQ_GS_BICYCLE
 	mov r2, #1
-	bl sub_02054FDC
+	bl Fsys_PlayOrFadeToNewMusicId
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #2
 	ldr r0, [r0, #0x40]
-	bl ov01_021F1AFC
+	bl ov01_PlayerAvatar_OrrTransitionFlags
 	add r4, #0x80
 	ldr r0, [r4]
 	ldr r0, [r0, #0x40]
-	bl ov01_021F1B04
+	bl ov01_PlayerAvatar_ApplyTransitionFlags
 	b _02043868
 _02043828:
 	add r0, r4, #0
@@ -6117,43 +6118,43 @@ _02043828:
 	ldr r0, [r0]
 	mov r1, #1
 	ldr r0, [r0, #0x40]
-	bl ov01_021F1AFC
+	bl ov01_PlayerAvatar_OrrTransitionFlags
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x40]
-	bl ov01_021F1B04
+	bl ov01_PlayerAvatar_ApplyTransitionFlags
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02054F28
+	bl Fsys_SetSavedMusicId
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r1, [r0, #0x20]
 	ldr r1, [r1]
-	bl sub_02054F60
+	bl Fsys_GetSurfOverriddenMusicId
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
 	mov r2, #1
-	bl sub_02054FDC
+	bl Fsys_PlayOrFadeToNewMusicId
 _02043868:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-_0204386C: .word 0x000003F5
-	thumb_func_end ScrCmd_185
+_0204386C: .word SEQ_GS_BICYCLE
+	thumb_func_end ScrCmd_PlayerOnBikeSet
 
 	thumb_func_start ScrCmd_591
 ScrCmd_591: ; 0x02043870
 	push {r3, lr}
 	add r0, #0x80
-	mov r1, #0x13
+	mov r1, #SEQ_PL_BICYCLE>>6
 	ldr r0, [r0]
 	lsl r1, r1, #6
-	bl sub_02054F28
+	bl Fsys_SetSavedMusicId
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -6204,7 +6205,7 @@ ScrCmd_SetAvatarBits: ; 0x020438C4
 	add r1, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C710
+	bl PlayerAvatar_OrrTransitionFlags
 	mov r0, #1
 	pop {r4, pc}
 	thumb_func_end ScrCmd_SetAvatarBits
@@ -6215,7 +6216,7 @@ ScrCmd_UpdateAvatarState: ; 0x020438DC
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x40]
-	bl ov01_021F1B04
+	bl ov01_PlayerAvatar_ApplyTransitionFlags
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ScrCmd_UpdateAvatarState

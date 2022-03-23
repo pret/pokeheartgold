@@ -197,7 +197,7 @@ _02DA:
 	compare VAR_TEMP_x4007, 0
 	goto_if_eq _0530
 _02EE:
-	scrcmd_184 VAR_SPECIAL_RESULT
+	player_on_bike_check VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0530
 	scrcmd_307 13, 8, 25, 29, 77
