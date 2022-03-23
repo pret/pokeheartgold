@@ -10,6 +10,7 @@
 #include "map_header.h"
 #include "constants/maps.h"
 #include "constants/items.h"
+#include "unk_02055418.h"
 
 struct _NPC_TRADE_WORK {
     NPC_TRADE *trade_dat;
