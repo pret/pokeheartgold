@@ -682,7 +682,7 @@ _0A71:
 	scrcmd_604 48
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	set_avatar_bits 1024
+	set_avatar_bits PLAYER_TRANSITION_ROCKET
 	update_avatar_state
 	scrcmd_620 1
 	play_se SEQ_SE_DP_CARD2
@@ -1027,7 +1027,7 @@ _0F05:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	set_avatar_bits 1024
+	set_avatar_bits PLAYER_TRANSITION_ROCKET
 	update_avatar_state
 	scrcmd_620 1
 	scrcmd_602 0
@@ -1055,7 +1055,7 @@ _0F79:
 	wait_fade
 	cameron_photo 10
 	lockall
-	set_avatar_bits 1
+	set_avatar_bits PLAYER_TRANSITION_WALKING
 	update_avatar_state
 	scrcmd_620 0
 	scrcmd_602 0

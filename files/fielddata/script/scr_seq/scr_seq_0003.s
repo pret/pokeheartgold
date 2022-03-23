@@ -119,11 +119,11 @@ _01AA:
 	get_player_state VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _01C5
-	set_avatar_bits 2048
+	set_avatar_bits PLAYER_TRANSITION_ROCKET_HEAL
 	goto _01C9
 
 _01C5:
-	set_avatar_bits 256
+	set_avatar_bits PLAYER_TRANSITION_HEAL
 _01C9:
 	update_avatar_state
 	apply_movement obj_player, _0460
@@ -166,11 +166,11 @@ _023A:
 	get_player_state VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _026F
-	set_avatar_bits 1024
+	set_avatar_bits PLAYER_TRANSITION_ROCKET
 	goto _0273
 
 _026F:
-	set_avatar_bits 1
+	set_avatar_bits PLAYER_TRANSITION_WALKING
 _0273:
 	update_avatar_state
 	get_lead_mon_index VAR_SPECIAL_x8009
@@ -204,11 +204,11 @@ _02CB:
 	get_player_state VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _02F3
-	set_avatar_bits 1024
+	set_avatar_bits PLAYER_TRANSITION_ROCKET
 	goto _02F7
 
 _02F3:
-	set_avatar_bits 1
+	set_avatar_bits PLAYER_TRANSITION_WALKING
 _02F7:
 	update_avatar_state
 	get_lead_mon_index VAR_SPECIAL_x8009
@@ -248,11 +248,11 @@ _0364:
 	get_player_state VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _0391
-	set_avatar_bits 1024
+	set_avatar_bits PLAYER_TRANSITION_ROCKET
 	goto _0395
 
 _0391:
-	set_avatar_bits 1
+	set_avatar_bits PLAYER_TRANSITION_WALKING
 _0395:
 	update_avatar_state
 	get_lead_mon_index VAR_SPECIAL_x8009
@@ -1050,11 +1050,11 @@ scr_seq_0003_013:
 	get_player_state VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _0ED4
-	set_avatar_bits 2048
+	set_avatar_bits PLAYER_TRANSITION_ROCKET_HEAL
 	goto _0ED8
 
 _0ED4:
-	set_avatar_bits 256
+	set_avatar_bits PLAYER_TRANSITION_HEAL
 _0ED8:
 	update_avatar_state
 	apply_movement obj_player, _0460
@@ -1071,11 +1071,11 @@ _0ED8:
 	get_player_state VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _0F2E
-	set_avatar_bits 1024
+	set_avatar_bits PLAYER_TRANSITION_ROCKET
 	goto _0F32
 
 _0F2E:
-	set_avatar_bits 1
+	set_avatar_bits PLAYER_TRANSITION_WALKING
 _0F32:
 	update_avatar_state
 	apply_movement VAR_SPECIAL_x8007, _0454
@@ -1092,11 +1092,11 @@ _0F49:
 	get_player_state VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _0F6E
-	set_avatar_bits 1024
+	set_avatar_bits PLAYER_TRANSITION_ROCKET
 	goto _0F72
 
 _0F6E:
-	set_avatar_bits 1
+	set_avatar_bits PLAYER_TRANSITION_WALKING
 _0F72:
 	update_avatar_state
 	apply_movement VAR_SPECIAL_x8007, _0454

@@ -166,7 +166,7 @@ _028F:
 	call _04DE
 	apply_movement obj_player, _0848
 	wait 40, VAR_SPECIAL_RESULT
-	set_avatar_bits 4096
+	set_avatar_bits PLAYER_TRANSITION_POKEATHLON
 	update_avatar_state
 	wait_movement
 	play_fanfare SEQ_ME_PT_NEW
@@ -188,7 +188,7 @@ _028F:
 	wait_fade
 	scrcmd_309 77
 	call _0766
-	set_avatar_bits 1
+	set_avatar_bits PLAYER_TRANSITION_WALKING
 	update_avatar_state
 	apply_movement obj_player, _0934
 	wait_movement
@@ -819,7 +819,7 @@ _0CE3:
 	apply_movement 2, _0914
 	apply_movement obj_player, _0848
 	wait 40, VAR_SPECIAL_RESULT
-	set_avatar_bits 4096
+	set_avatar_bits PLAYER_TRANSITION_POKEATHLON
 	update_avatar_state
 	wait_movement
 	play_fanfare SEQ_ME_PT_NEW
@@ -868,7 +868,7 @@ _0DD7:
 	scrcmd_257 239
 	call _0766
 	scrcmd_283
-	set_avatar_bits 1
+	set_avatar_bits PLAYER_TRANSITION_WALKING
 	update_avatar_state
 	apply_movement obj_player, _0934
 	wait_movement

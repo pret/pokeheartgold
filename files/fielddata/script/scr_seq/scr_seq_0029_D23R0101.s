@@ -351,7 +351,7 @@ _04A8:
 	apply_movement obj_player, _07BC
 _04BD:
 	wait 50, VAR_SPECIAL_RESULT
-	set_avatar_bits 1
+	set_avatar_bits PLAYER_TRANSITION_WALKING
 	update_avatar_state
 	scrcmd_620 0
 	wait_movement

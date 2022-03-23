@@ -1171,7 +1171,7 @@
     {
       "name": "set_avatar_bits",
       "args": [
-        2
+        "player_transition"
       ]
     },
     {
