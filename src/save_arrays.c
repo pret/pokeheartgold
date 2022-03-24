@@ -45,7 +45,7 @@ DECL_CHUNK_EX(sub_020318C8, sub_020318CC)
 DECL_CHUNK(SaveData_GSPlayerMisc)
 DECL_CHUNK_EX(sub_02031904, sub_0203190C)
 DECL_CHUNK(Save_ApricornBox)
-DECL_CHUNK_EX(sub_02032774, sub_02032788)
+DECL_CHUNK_EX(Save_TrainerHall_sizeof, Save_TrainerHall_init)
 
 const struct SaveChunkHeader gSaveChunkHeaders[] = {
     { SAVE_SYSINFO,      0, (SAVESIZEFN)Sav2_SysInfo_sizeof,          (SAVEINITFN)Sav2_SysInfo_init },
@@ -88,7 +88,7 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
     { SAVE_UNK_37,       0, (SAVESIZEFN)sub_02031904,                (SAVEINITFN)sub_0203190C },
     { SAVE_APRICORN_BOX, 0, (SAVESIZEFN)Save_ApricornBox_sizeof,     (SAVEINITFN)Save_ApricornBox_init },
     { SAVE_POKEWALKER,   0, (SAVESIZEFN)Pokewalker_sizeof,           (SAVEINITFN)Pokewalker_init },
-    { SAVE_UNK_40,       0, (SAVESIZEFN)sub_02032774,                (SAVEINITFN)sub_02032788 },
+    { SAVE_TRAINER_HALL,       0, (SAVESIZEFN)Save_TrainerHall_sizeof,                (SAVEINITFN)Save_TrainerHall_init },
     { SAVE_PCSTORAGE,    1, (SAVESIZEFN)PCStorage_sizeof,            (SAVEINITFN)PCStorage_init },
 };
 const int gNumSaveChunkHeaders = NELEMS(gSaveChunkHeaders);

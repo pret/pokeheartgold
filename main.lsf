@@ -134,7 +134,7 @@ Static main
 	Object src/unk_02031AF0.o
 	Object asm/unk_02031B0C.o
 	Object src/pokewalker.o
-	Object asm/unk_02032774.o
+	Object src/save_trainer_hall.o
 	Object asm/unk_02032844.o
 	Object asm/unk_02033AE0.o
 	Object asm/unk_02034354.o
