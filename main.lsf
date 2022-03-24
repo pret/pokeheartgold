@@ -459,6 +459,14 @@ Overlay field
     Object asm/overlay_01_021FAD1C.o
     Object asm/overlay_01_021FB04C.o
     Object asm/overlay_01_021FB368.o
+    Object asm/overlay_01_021FB4C0.o
+    Object asm/overlay_01_021FB5D4.o
+    Object asm/overlay_01_021FB878.o
+    Object asm/overlay_01_021FC05C.o
+    Object asm/overlay_01_021FC4C4.o
+    Object asm/overlay_01_data_02208BFC.o
+    Object asm/overlay_01_021FC66C.o
+    Object asm/overlay_01_021FCD2C.o
 }
 Overlay OVY_2
 {
