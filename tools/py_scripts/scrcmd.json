@@ -4236,7 +4236,7 @@
       ]
     },
     {
-      "name": "scrcmd_670",
+      "name": "get_hidden_power_type",
       "args": [
         "var",
         "var"

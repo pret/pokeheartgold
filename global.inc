@@ -3073,7 +3073,7 @@
 .public ScrCmd_665
 .public ScrCmd_666
 .public ScrCmd_667
-.public ScrCmd_670
+.public ScrCmd_GetHiddenPowerType
 .public ScrCmd_671
 .public ScrCmd_672
 .public ScrCmd_677

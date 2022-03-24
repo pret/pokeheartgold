@@ -49,7 +49,7 @@ _006D:
 	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	compare VAR_SPECIAL_x8001, 0
 	goto_if_eq _00FD
-	scrcmd_670 VAR_SPECIAL_x8000, VAR_SPECIAL_x8004
+	get_hidden_power_type VAR_SPECIAL_x8000, VAR_SPECIAL_x8004
 	compare VAR_SPECIAL_x8004, 65535
 	goto_if_eq _00E7
 	mon_has_move VAR_SPECIAL_RESULT, MOVE_HIDDEN_POWER, VAR_SPECIAL_x8000

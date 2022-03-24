@@ -704,7 +704,7 @@ gScriptCmdTable:
 	.word ScrCmd_667                                    ; 667
 	.word ScrCmd_BufferTypeName                         ; 668
 	.word ScrCmd_GetItemQuantity                        ; 669
-	.word ScrCmd_670                                    ; 670
+	.word ScrCmd_GetHiddenPowerType                                    ; 670
 	.word ScrCmd_671                                    ; 671
 	.word ScrCmd_672                                    ; 672
 	.word ScrCmd_GetOwnedRotomFormes                                    ; 673

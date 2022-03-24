@@ -670,7 +670,7 @@ extern BOOL ScrCmd_666(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_667(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferTypeName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetItemQuantity(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_670(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetHiddenPowerType(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_671(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_672(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetOwnedRotomFormes(SCRIPTCONTEXT *ctx);
@@ -1525,7 +1525,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_667,
     ScrCmd_BufferTypeName,
     ScrCmd_GetItemQuantity,
-    ScrCmd_670,
+    ScrCmd_GetHiddenPowerType,
     ScrCmd_671,
     ScrCmd_672,
     ScrCmd_GetOwnedRotomFormes,

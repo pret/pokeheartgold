@@ -3791,7 +3791,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_670 arg0, arg1
+	.macro get_hidden_power_type arg0, arg1
 	.short 670
 	.short \arg0
 	.short \arg1

@@ -468,10 +468,36 @@ Overlay field
     Object asm/overlay_01_021FC66C.o
     Object asm/overlay_01_021FCD2C.o
     Object asm/overlay_01_021FCE98.o
-    Object asm/overlay_01_021FD1B8.o ### still needs split ###
+    Object asm/overlay_01_021FD1B8.o
+    Object asm/overlay_01_021FD41C.o
+    Object asm/overlay_01_021FDA14.o
+    Object asm/overlay_01_021FE200.o
+    Object asm/overlay_01_021FE590.o
+    Object asm/overlay_01_021FE780.o
+    Object asm/overlay_01_021FEA0C.o
+    Object asm/overlay_01_021FEC38.o
+    Object asm/overlay_01_021FED9C.o
+    Object asm/overlay_01_021FEEEC.o
+    Object asm/overlay_01_021FF464.o
+    Object asm/overlay_01_021FF6B0.o
+    Object asm/overlay_01_021FF854.o
+    Object asm/overlay_01_021FFC0C.o
+    Object asm/overlay_01_021FFECC.o
+    Object asm/overlay_01_02200040.o
+    Object asm/overlay_01_022001E4.o
+    Object asm/overlay_01_022006A8.o
+    Object asm/overlay_01_02200858.o
+    Object asm/scrcmd_pokemon_misc.o
     Object asm/scrcmd_move_tutor.o
     Object asm/scrcmd_moneybox.o
-    Object asm/overlay_01_022031C0.o ### still needs split ###
+    Object asm/overlay_01_022031C0.o
+    Object asm/overlay_01_02203A18.o
+    Object asm/overlay_01_02203E40.o
+    Object asm/overlay_01_02204004.o
+    Object asm/overlay_01_02204840.o
+    Object asm/overlay_01_02204ED8.o
+    Object asm/overlay_01_022051EC.o
+    Object asm/overlay_01_022053EC.o
 }
 Overlay OVY_2
 {
