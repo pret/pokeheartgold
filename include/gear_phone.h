@@ -35,6 +35,7 @@ struct UnkFsysSub_114 {
 	int Unk_var14;
 	int Unk_var18;
     struct PhoneBookEntry entry; //0x1c
+	int Unk_var30;
 	int Unk_var34;
 	SAVEDATA* data;
 	u32 Unk_filler3c;

@@ -68,55 +68,54 @@ void sub_02092BE8(FieldSystem* sys, UnkSTRUCT_2C* ptr, BOOL arg3) { //r5, r4, SP
     ptr->Unk_Bool00 = 0;
     return;
 }
-
+//function below matches
 void sub_02092D80(FieldSystem* sys, UnkSTRUCT_2C* ptr){
     sub_02092BE8(sys, ptr, 0);
 }
-
+//function below matches
 void sub_02092D8C(FieldSystem* sys, UnkSTRUCT_2C* ptr){
     sub_02092BE8(sys, ptr, 1);
 }
-
+//function below matches
 void sub_02092D98(HeapID id, FieldSystem* sys){ 
     void * ptr = AllocFromHeap(id, 0x48);
     MI_CpuFill8(ptr, 0, 0x48);
     sub_02092F64(ptr);
 }
-
+//function below matches
 void sub_02092DD8(void* UnkPtr){
 	MI_CpuFill8(UnkPtr, 0, 0x48);
 	FreeToHeap(UnkPtr);
 }
-
+//function below matches
 struct UnkFsysSub_114* sub_02092DEC(FieldSystem* sys){
     return sys->unk114;
 }
-
+//function below matches
 void sub_02092DF4(struct UnkFsysSub_114* ptr){
 	ptr->Unk_var0 = (ptr->Unk_var0 & 1) | 1;
 	ptr->Unk_var14 = 0;
 	ptr->Unk_var18 = 0;
 }
-
+//function below matches
 u8 sub_02092E08(struct UnkFsysSub_114* ptr){
     return ptr->Unk_var0;
 }
-
+//function below matches
 u8 sub_02092E10(struct UnkFsysSub_114* ptr){
 	return 0x1c;
 }
-
+//function below matches
 void sub_02092E14(struct UnkFsysSub_114* ptr, u32 Unkarg1, u32 Unkarg2){
     sub_0202F01C(ptr->Unk_var34, Unkarg1, Unkarg2);
     if(Unkarg2 != 0){
-        if( ((ptr->Unk_varC) -1) < ptr->Unk_var8){
+        if( ptr->Unk_var8 < (ptr->Unk_varC) - 1){
             ptr->Unk_var8 = (ptr->Unk_varC) -1;
         }
     }
 }
-
+//function below matches
 void sub_02092E34(struct UnkFsysSub_114* ptr, u32 Unkarg1, u32 Unkarg2){
-    
     int var0 = ptr->Unk_var0;
     int UnkBitfield = (var0 << 0x1d) >> 0x1f;
     if(UnkBitfield == 0){
@@ -130,14 +129,14 @@ void sub_02092E34(struct UnkFsysSub_114* ptr, u32 Unkarg1, u32 Unkarg2){
         }
     }
 }
-
+//function below matches
 void sub_02092E54(struct UnkFsysSub_114* ptr){
     SCRIPT_STATE* state = SavArray_Flags_get(ptr->data);
     SAFARIZONE* zone = Save_SafariZone_get(ptr->data);
     IGT* igt = Sav2_PlayerData_GetIGTAddr(ptr->data);
     u8 var4057 = (u8) ScriptState_GetVar4057(state);
     for(int i = 0; i < 5; i++){
-        if(sub_0202F08C(ptr->Unk_var34, (u8) state->vars[i + 7]) == 0)
+        if(sub_0202F08C(ptr->Unk_var34, (u8) (i + 7)) == 0)
             return;
 	}
     u8 var = sub_0202F720(zone);
@@ -178,7 +177,7 @@ void sub_02092E54(struct UnkFsysSub_114* ptr){
         sub_02092E14(ptr, 7, 1);
     }
 }
-
+//function below matches
 void sub_02092F30(struct UnkFsysSub_114* ptr, s64 seconds){
     if((u8) ptr->Unk_var0 == 0)
         return;
@@ -190,7 +189,7 @@ void sub_02092F30(struct UnkFsysSub_114* ptr, s64 seconds){
         }
     }
 }
-
+//function below matches
 void sub_02092F64(struct UnkFsysSub_114* ptr){
     sub_02093010(ptr, 0); 
     ptr->Unk_var8 = 0;
@@ -206,13 +205,13 @@ void sub_02092F64(struct UnkFsysSub_114* ptr){
     ptr->entry.unk0 = 0xff;
     ptr->Unk_var12 = 0x32;
 }
-
+//function below matches??
 void sub_02092FA0(struct UnkFsysSub_114* ptr){
     sub_02092F64(ptr);
 }
-
+//function below matches
 void sub_02092FA8(struct UnkFsysSub_114* ptr){
-    if(ptr->Unk_var0 & 1) sub_02092F64(ptr);
+    if( (ptr->Unk_var0 << 31) >> 31 == 1) sub_02092F64(ptr);
 }
 
 void sub_02092FB8(u32 uselessArg, struct UnkFsysSub_114* ptr){
