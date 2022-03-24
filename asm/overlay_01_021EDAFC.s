@@ -2090,8 +2090,8 @@ ov01_021EEA44: ; 0x021EEA44
 	bx lr
 	thumb_func_end ov01_021EEA44
 
-	thumb_func_start ov01_021EEA90
-ov01_021EEA90: ; 0x021EEA90
+	thumb_func_start Fsys_ShowMoneyBox
+Fsys_ShowMoneyBox: ; 0x021EEA90
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r5, r0, #0
@@ -2156,17 +2156,17 @@ ov01_021EEA90: ; 0x021EEA90
 	bl String_dtor
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov01_021EEB4C
+	bl MoneyBoxSys_Update
 	add r0, r4, #0
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
 _021EEB30: .word 0x000003D9
 _021EEB34: .word 0x000001B3
-	thumb_func_end ov01_021EEA90
+	thumb_func_end Fsys_ShowMoneyBox
 
-	thumb_func_start ov01_021EEB38
-ov01_021EEB38: ; 0x021EEB38
+	thumb_func_start MoneyBoxSys_Delete
+MoneyBoxSys_Delete: ; 0x021EEB38
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #0
@@ -2175,10 +2175,10 @@ ov01_021EEB38: ; 0x021EEB38
 	mov r1, #1
 	bl WindowArray_dtor
 	pop {r4, pc}
-	thumb_func_end ov01_021EEB38
+	thumb_func_end MoneyBoxSys_Delete
 
-	thumb_func_start ov01_021EEB4C
-ov01_021EEB4C: ; 0x021EEB4C
+	thumb_func_start MoneyBoxSys_Update
+MoneyBoxSys_Update: ; 0x021EEB4C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r7, r0, #0
@@ -2252,7 +2252,7 @@ ov01_021EEB4C: ; 0x021EEB4C
 	pop {r4, r5, r6, r7, pc}
 	nop
 _021EEBFC: .word 0x000001B3
-	thumb_func_end ov01_021EEB4C
+	thumb_func_end MoneyBoxSys_Update
 
 	thumb_func_start ov01_021EEC00
 ov01_021EEC00: ; 0x021EEC00

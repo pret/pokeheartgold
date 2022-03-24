@@ -690,17 +690,17 @@
 	.word \arg1
 	.endm
 
-	.macro scrcmd_113 arg0, arg1
+	.macro show_money_box arg0, arg1
 	.short 113
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_114
+	.macro hide_money_box
 	.short 114
 	.endm
 
-	.macro scrcmd_115
+	.macro update_money_box
 	.short 115
 	.endm
 

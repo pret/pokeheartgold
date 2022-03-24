@@ -544,7 +544,7 @@ _02067D44:
 	ldr r0, [r4]
 	bne _02067D70
 	ldr r0, [r0, #0x40]
-	bl sub_0205C724
+	bl PlayerAvatar_GetGender
 	add r3, r0, #0
 	ldr r0, [r4]
 	ldr r2, [r4, #0x10]
@@ -553,7 +553,7 @@ _02067D44:
 	b _02067D82
 _02067D70:
 	ldr r0, [r0, #0x40]
-	bl sub_0205C724
+	bl PlayerAvatar_GetGender
 	add r3, r0, #0
 	ldr r0, [r4]
 	ldr r2, [r4, #0x10]

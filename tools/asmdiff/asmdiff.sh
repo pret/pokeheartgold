@@ -2,7 +2,7 @@
 
 case $OSTYPE in
   darwin*)
-    echo "" | gcut -f1 || { echo "This script requires GNU coreutils, install it via homebrew (brew install coreutils)"; exit 1; }
+    echo "" | gcut -f1 &>/dev/null || { echo "This script requires GNU coreutils, install it via homebrew (brew install coreutils)"; exit 1; }
     CUT=gcut
     ;;
   *)
@@ -181,7 +181,7 @@ case "$mode" in
     ovtoff=$(getword "$baserom" "$ovt")
     vma=$(getword "$baserom" "$((ovtoff+32*overlay+4))")
     size=$(getword "$baserom" "$((ovtoff+32*overlay+8))")
-    [[ -f $basefile ]] || {
+    [[ $basefile -nt $baserom ]] || {
       fileid=$(getword "$baserom" "$((ovtoff+32*overlay+24))")
       param=$(getword "$baserom" "$((ovtoff+32*overlay+28))")
       fatoff=$(getword "$baserom" 72)
@@ -209,7 +209,7 @@ case "$mode" in
     vma=$(getword "$baserom" "$((romtab+8))")
     size=$(getword "$baserom" "$((romtab+12))")
 
-    [[ -f $basefile ]] || {
+    [[ $basefile -nt "$baserom" ]] || {
       dd if="$baserom" of="$basefile" bs=1 skip="$fileoff" count="$size" 2>/dev/null
       [[ $proc == armv5te ]] && {
         _start_ModuleParams=$(getword "$baserom" $((fileoff+size+4)))
@@ -241,7 +241,7 @@ case "$mode" in
     buildfile=${fsdir}/${filepath}
     [[ -f "${buildfile}" ]] || { echo file not found: "${buildfile}"; exit 1; }
     basefile=${MYDIR}/.files/${filepath}
-    [[ -f "${basefile}" ]] || {
+    [[ "${basefile}" -nt "$baserom" ]] || {
       mkdir -p $(dirname $basefile)
       "${MYDIR}"/ntrextractfile "${baserom}" "${filepath}" >"${basefile}"
     }

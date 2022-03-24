@@ -513,7 +513,7 @@ _0728:
 	buffer_int 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0135_D47R0101_00000
 _0736:
-	scrcmd_113 20, 2
+	show_money_box 20, 2
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
@@ -534,7 +534,7 @@ _0773:
 	npc_msg msg_0135_D47R0101_00002
 	play_se SEQ_SE_DP_REGI
 	submoneyimmediate 500
-	scrcmd_115
+	update_money_box
 	npc_msg msg_0135_D47R0101_00004
 	buffer_players_name 0
 	setvar VAR_SPECIAL_RESULT, 30
@@ -544,7 +544,7 @@ _0773:
 	wait_fanfare
 	npc_msg msg_0135_D47R0101_00006
 	closemsg
-	scrcmd_114
+	hide_money_box
 	scrcmd_600
 	apply_movement obj_player, _08C4
 	wait_movement
@@ -571,7 +571,7 @@ _0773:
 	end
 
 _0846:
-	scrcmd_114
+	hide_money_box
 	npc_msg msg_0135_D47R0101_00003
 	wait_button_or_walk_away
 	closemsg
@@ -579,7 +579,7 @@ _0846:
 	end
 
 _0853:
-	scrcmd_114
+	hide_money_box
 	compare VAR_UNK_4057, 6
 	goto_if_lt _086B
 	npc_msg msg_0135_D47R0101_00013
@@ -594,7 +594,7 @@ _086E:
 	end
 
 _0876:
-	scrcmd_114
+	hide_money_box
 	compare VAR_UNK_4057, 6
 	goto_if_lt _088E
 	npc_msg msg_0135_D47R0101_00011
@@ -900,7 +900,7 @@ _0C84:
 	end
 
 _0C8F:
-	scrcmd_113 20, 2
+	show_money_box 20, 2
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
@@ -921,7 +921,7 @@ _0CCC:
 	npc_msg msg_0135_D47R0101_00055
 	play_se SEQ_SE_DP_REGI
 	submoneyimmediate 500
-	scrcmd_115
+	update_money_box
 	npc_msg msg_0135_D47R0101_00057
 	buffer_players_name 0
 	setvar VAR_SPECIAL_RESULT, 30
@@ -931,7 +931,7 @@ _0CCC:
 	wait_fanfare
 	npc_msg msg_0135_D47R0101_00059
 	closemsg
-	scrcmd_114
+	hide_money_box
 	scrcmd_600
 	apply_movement obj_player, _08C4
 	wait_movement
@@ -958,7 +958,7 @@ _0CCC:
 	end
 
 _0D9F:
-	scrcmd_114
+	hide_money_box
 	npc_msg msg_0135_D47R0101_00003
 	wait_button_or_walk_away
 	closemsg
@@ -966,7 +966,7 @@ _0D9F:
 	end
 
 _0DAC:
-	scrcmd_114
+	hide_money_box
 	compare VAR_UNK_4057, 6
 	goto_if_lt _0DC4
 	npc_msg msg_0135_D47R0101_00013
@@ -981,7 +981,7 @@ _0DC7:
 	end
 
 _0DCF:
-	scrcmd_114
+	hide_money_box
 	compare VAR_UNK_4057, 6
 	goto_if_lt _0DE7
 	npc_msg msg_0135_D47R0101_00011

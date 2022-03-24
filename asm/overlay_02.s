@@ -13920,7 +13920,7 @@ ov02_0224C4B4: ; 0x0224C4B4
 	add r5, r1, #0
 	ldr r0, [r5, #0x40]
 	add r4, r2, #0
-	bl sub_0205C724
+	bl PlayerAvatar_GetGender
 	add r3, r0, #0
 	ldr r2, [r4, #0x28]
 	add r0, r5, #0

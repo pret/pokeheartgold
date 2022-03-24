@@ -467,6 +467,11 @@ Overlay field
     Object asm/overlay_01_data_02208BFC.o
     Object asm/overlay_01_021FC66C.o
     Object asm/overlay_01_021FCD2C.o
+    Object asm/overlay_01_021FCE98.o
+    Object asm/overlay_01_021FD1B8.o ### still needs split ###
+    Object asm/scrcmd_move_tutor.o
+    Object asm/scrcmd_moneybox.o
+    Object asm/overlay_01_022031C0.o ### still needs split ###
 }
 Overlay OVY_2
 {

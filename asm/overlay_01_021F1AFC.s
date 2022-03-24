@@ -54,7 +54,7 @@ _021F1B34: .word sPlayerAvatarBitUpdateFuncs
 ov01_021F1B38: ; 0x021F1B38
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205C724
+	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #0
 	bl sub_0205C898
@@ -83,7 +83,7 @@ _021F1B6C:
 ov01_021F1B78: ; 0x021F1B78
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205C724
+	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #1
 	bl sub_0205C898
@@ -116,7 +116,7 @@ ov01_021F1BC0: ; 0x021F1BC0
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl sub_0205C724
+	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #2
 	bl sub_0205C898
@@ -163,7 +163,7 @@ _021F1BF6:
 ov01_021F1C30: ; 0x021F1C30
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205C724
+	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #3
 	bl sub_0205C898
@@ -201,7 +201,7 @@ _021F1C78: .word sub_0205CA4C
 ov01_021F1C7C: ; 0x021F1C7C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205C724
+	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #5
 	bl sub_0205C898
@@ -216,7 +216,7 @@ ov01_021F1C7C: ; 0x021F1C7C
 ov01_021F1C98: ; 0x021F1C98
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205C724
+	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #7
 	bl sub_0205C898
@@ -231,7 +231,7 @@ ov01_021F1C98: ; 0x021F1C98
 ov01_021F1CB4: ; 0x021F1CB4
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205C724
+	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #8
 	bl sub_0205C898
@@ -246,7 +246,7 @@ ov01_021F1CB4: ; 0x021F1CB4
 ov01_021F1CD0: ; 0x021F1CD0
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205C724
+	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #9
 	bl sub_0205C898
@@ -261,7 +261,7 @@ ov01_021F1CD0: ; 0x021F1CD0
 ov01_021F1CEC: ; 0x021F1CEC
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205C724
+	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #0xa
 	bl sub_0205C898
@@ -276,7 +276,7 @@ ov01_021F1CEC: ; 0x021F1CEC
 ov01_021F1D08: ; 0x021F1D08
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205C724
+	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #0xb
 	bl sub_0205C898
@@ -291,7 +291,7 @@ ov01_021F1D08: ; 0x021F1D08
 ov01_021F1D24: ; 0x021F1D24
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205C724
+	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #0xc
 	bl sub_0205C898
@@ -306,7 +306,7 @@ ov01_021F1D24: ; 0x021F1D24
 ov01_021F1D40: ; 0x021F1D40
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205C724
+	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #6
 	bl sub_0205C898
@@ -321,7 +321,7 @@ ov01_021F1D40: ; 0x021F1D40
 ov01_021F1D5C: ; 0x021F1D5C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205C724
+	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #0xd
 	bl sub_0205C898
@@ -336,7 +336,7 @@ ov01_021F1D5C: ; 0x021F1D5C
 ov01_021F1D78: ; 0x021F1D78
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205C724
+	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #0xe
 	bl sub_0205C898
@@ -978,7 +978,7 @@ _021F2274:
 	cmp r0, #0xa
 	ble _021F2324
 	ldr r0, [r4, #0x20]
-	bl sub_0205C724
+	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #0
 	bl sub_0205C898
@@ -1017,7 +1017,7 @@ _021F22C2:
 	mov r1, #1
 	bl ov01_021FE9F4
 	ldr r0, [r4, #0x20]
-	bl sub_0205C724
+	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #2
 	bl sub_0205C898
@@ -1146,7 +1146,7 @@ _021F23D0:
 	b _021F24F0
 _021F23DC:
 	ldr r0, [r4, #0xc]
-	bl sub_0205C724
+	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #0
 	bl sub_0205C898
@@ -2773,7 +2773,7 @@ ov01_021F3040: ; 0x021F3040
 	str r2, [r4]
 	str r1, [r4, #8]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C724
+	bl PlayerAvatar_GetGender
 	str r0, [r4, #4]
 	pop {r4, pc}
 	thumb_func_end ov01_021F3040

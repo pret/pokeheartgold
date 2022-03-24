@@ -418,7 +418,7 @@ sub_0205C500: ; 0x0205C500
 	bl PlayerAvatar_SetState
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_0205C720
+	bl PlayerAvatar_SetGender
 	add r0, r5, #0
 	mov r1, #0
 	bl PlayerAvatar_SetTransitionFlags
@@ -725,17 +725,17 @@ PlayerAvatar_GetTransitionFlags: ; 0x0205C71C
 	bx lr
 	thumb_func_end PlayerAvatar_GetTransitionFlags
 
-	thumb_func_start sub_0205C720
-sub_0205C720: ; 0x0205C720
+	thumb_func_start PlayerAvatar_SetGender
+PlayerAvatar_SetGender: ; 0x0205C720
 	str r1, [r0, #0x1c]
 	bx lr
-	thumb_func_end sub_0205C720
+	thumb_func_end PlayerAvatar_SetGender
 
-	thumb_func_start sub_0205C724
-sub_0205C724: ; 0x0205C724
+	thumb_func_start PlayerAvatar_GetGender
+PlayerAvatar_GetGender: ; 0x0205C724
 	ldr r0, [r0, #0x1c]
 	bx lr
-	thumb_func_end sub_0205C724
+	thumb_func_end PlayerAvatar_GetGender
 
 	thumb_func_start sub_0205C728
 sub_0205C728: ; 0x0205C728

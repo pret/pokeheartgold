@@ -2768,9 +2768,9 @@
 .public ScrCmd_107
 .public ScrCmd_108
 .public ScrCmd_109
-.public ScrCmd_113
-.public ScrCmd_114
-.public ScrCmd_115
+.public ScrCmd_ShowMoneyBox
+.public ScrCmd_HideMoneyBox
+.public ScrCmd_UpdateMoneyBox
 .public ScrCmd_116
 .public ScrCmd_117
 .public ScrCmd_118
@@ -5669,9 +5669,9 @@
 .public ov01_021EE934
 .public ov01_021EE974
 .public ov01_021EEA44
-.public ov01_021EEA90
-.public ov01_021EEB38
-.public ov01_021EEB4C
+.public Fsys_ShowMoneyBox
+.public MoneyBoxSys_Delete
+.public MoneyBoxSys_Update
 .public ov01_021EEC00
 .public ov01_021EEC68
 .public ov01_021EEC7C
@@ -29322,7 +29322,7 @@
 .public PlayerAvatar_OrrTransitionFlags
 .public PlayerAvatar_SetTransitionFlags
 .public PlayerAvatar_GetTransitionFlags
-.public sub_0205C724
+.public PlayerAvatar_GetGender
 .public sub_0205C744
 .public sub_0205C748
 .public sub_0205C74C

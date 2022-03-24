@@ -32,7 +32,7 @@ scr_seq_T07R0106_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0499_T07R0106_00003
-	scrcmd_113 20, 2
+	show_money_box 20, 2
 	goto _005E
 
 _005E:
@@ -105,7 +105,7 @@ _011C:
 	call_if_eq _010C
 	compare VAR_SPECIAL_x8000, 2
 	call_if_eq _0114
-	scrcmd_115
+	update_money_box
 	buffer_item_name 0, VAR_SPECIAL_x8001
 	play_se SEQ_SE_DP_JIHANKI
 	buffer_item_name 0, VAR_SPECIAL_x8001
@@ -132,14 +132,14 @@ _01F0:
 _01F9:
 	callstd std_bag_is_full
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 
 _0205:
 	wait_button_or_walk_away
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 	.balign 4, 0

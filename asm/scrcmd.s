@@ -147,9 +147,9 @@ gScriptCmdTable:
 	.word ScrCmd_AddMoney                               ; 110
 	.word ScrCmd_SubMoneyImmediate                      ; 111
 	.word ScrCmd_HasEnoughMoneyImmediate                ; 112
-	.word ScrCmd_113                                    ; 113
-	.word ScrCmd_114                                    ; 114
-	.word ScrCmd_115                                    ; 115
+	.word ScrCmd_ShowMoneyBox                                    ; 113
+	.word ScrCmd_HideMoneyBox                                    ; 114
+	.word ScrCmd_UpdateMoneyBox                                    ; 115
 	.word ScrCmd_116                                    ; 116
 	.word ScrCmd_117                                    ; 117
 	.word ScrCmd_118                                    ; 118
@@ -6013,7 +6013,7 @@ ScrCmd_183: ; 0x02043724
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C724
+	bl PlayerAvatar_GetGender
 	add r3, r0, #0
 	add r0, r5, #0
 	add r0, #0x80

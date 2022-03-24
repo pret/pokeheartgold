@@ -717,7 +717,7 @@ static void sub_02053AA0(TaskManager *taskManager) {
         GF_ASSERT(0);
         return;
     }
-    env->unk4 = ov02_0224B418(fsys, sub_0205C724(fsys->playerAvatar));
+    env->unk4 = ov02_0224B418(fsys, PlayerAvatar_GetGender(fsys->playerAvatar));
     TaskManager_Call(taskManager, sub_02053AE4, env);
 }
 

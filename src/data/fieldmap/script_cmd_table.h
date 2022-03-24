@@ -113,9 +113,9 @@ extern BOOL ScrCmd_109(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_AddMoney(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SubMoneyImmediate(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_HasEnoughMoneyImmediate(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_113(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_114(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_115(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_ShowMoneyBox(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_HideMoneyBox(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_UpdateMoneyBox(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_116(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_117(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_118(SCRIPTCONTEXT *ctx);
@@ -968,9 +968,9 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_AddMoney,
     ScrCmd_SubMoneyImmediate,
     ScrCmd_HasEnoughMoneyImmediate,
-    ScrCmd_113,
-    ScrCmd_114,
-    ScrCmd_115,
+    ScrCmd_ShowMoneyBox,
+    ScrCmd_HideMoneyBox,
+    ScrCmd_UpdateMoneyBox,
     ScrCmd_116,
     ScrCmd_117,
     ScrCmd_118,

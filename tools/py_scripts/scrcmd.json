@@ -701,18 +701,18 @@
       ]
     },
     {
-      "name": "scrcmd_113",
+      "name": "show_money_box",
       "args": [
         2,
         2
       ]
     },
     {
-      "name": "scrcmd_114",
+      "name": "hide_money_box",
       "args": []
     },
     {
-      "name": "scrcmd_115",
+      "name": "update_money_box",
       "args": []
     },
     {

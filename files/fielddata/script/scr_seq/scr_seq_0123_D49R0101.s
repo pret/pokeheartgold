@@ -495,7 +495,7 @@ scr_seq_D49R0101_014:
 	copyvar VAR_TEMP_x4005, VAR_SPECIAL_x8000
 	compare VAR_TEMP_x4005, 0
 	goto_if_ne _072E
-	scrcmd_113 20, 2
+	show_money_box 20, 2
 	goto _0759
 	.byte 0x16, 0x00, 0x1a, 0x00, 0x00, 0x00
 _072E:
@@ -640,7 +640,7 @@ _08F8:
 	call_if_eq _08CC
 	compare VAR_TEMP_x4005, 0
 	goto_if_ne _097D
-	scrcmd_115
+	update_money_box
 	goto _098D
 
 _097D:
@@ -691,7 +691,7 @@ _0A35:
 	closemsg
 	compare VAR_TEMP_x4005, 0
 	goto_if_ne _0A52
-	scrcmd_114
+	hide_money_box
 	goto _0A54
 
 _0A52:
@@ -706,7 +706,7 @@ _0A5C:
 	closemsg
 	compare VAR_TEMP_x4005, 0
 	goto_if_ne _0A75
-	scrcmd_114
+	hide_money_box
 	goto _0A77
 
 _0A75:
