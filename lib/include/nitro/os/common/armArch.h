@@ -31,4 +31,7 @@
 #define HW_C7_CACHE_INDEX_SHIFT    5
 #define HW_C7_CACHE_SET_NO_SHIFT   30
 
+#define HW_CPU_CLOCK_ARM7           33513982
+#define HW_CPU_CLOCK_ARM9           67027964
+
 #endif //NITRO_OS_COMMON_ARMARCH_H_

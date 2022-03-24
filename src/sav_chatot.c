@@ -6,7 +6,7 @@ u32 Sav2_Chatot_sizeof(void) {
 }
 
 void Sav2_Chatot_init(SOUND_CHATOT *chatot) {
-    MI_CpuFill32(chatot, 0, sizeof(SOUND_CHATOT));
+    MI_CpuClear32(chatot, sizeof(SOUND_CHATOT));
     chatot->exists = FALSE;
 }
 
@@ -17,7 +17,7 @@ SOUND_CHATOT *Chatot_new(HeapID heapID) {
 }
 
 SOUND_CHATOT *Sav2_Chatot_get(SAVEDATA *saveData) {
-    return SavArray_get(saveData, 0x12);
+    return SavArray_get(saveData, SAVE_CHATOT);
 }
 
 BOOL Chatot_exists(SOUND_CHATOT *chatot) {

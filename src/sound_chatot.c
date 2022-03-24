@@ -93,18 +93,18 @@ void sub_02006DB8() {
 }
 
 u32 Chatot_startRecording(void) {
-    MIC_SamplingData st0;
+    MICAutoParam st0;
     
-    st0.unk00 = 2;
-    st0.unk04 = sub_020059D8();
-    st0.unk08 = 2000;
-    if ((st0.unk08 & 0x1f) != 0) {
-        st0.unk08 &= ~0x1f;
+    st0.type = MIC_SAMPLING_TYPE_SIGNED_8BIT;
+    st0.buffer = sub_020059D8();
+    st0.size = 2000;
+    if ((st0.size & 0x1f) != 0) {
+        st0.size &= ~0x1f;
     }
-    st0.unk0c = 0x4174;
-    st0.unk10 = 0;
-    st0.unk14 = 0;
-    st0.unk18 = 0;
+    st0.rate = 0x4174;
+    st0.loop_enable = 0;
+    st0.full_callback = 0;
+    st0.full_arg = 0;
 
     return GF_MIC_StartAutoSampling(&st0);
 }
