@@ -73,8 +73,12 @@ typedef struct Unkstruct_14{
 void sub_02092BE8(FieldSystem* sys, UnkSTRUCT_2C* ptr, BOOL arg3);
 void sub_02092D80(FieldSystem* sys, UnkSTRUCT_2C* ptr);
 void sub_02092D8C(FieldSystem* sys, UnkSTRUCT_2C* ptr);
+void sub_02092D98(HeapID id, FieldSystem* sys);
+void sub_02092DD8(void* UnkPtr);
 struct UnkFsysSub_114* sub_02092DEC(FieldSystem* sys);
+void sub_02092DF4(struct UnkFsysSub_114* ptr);
 u8 sub_02092E08(struct UnkFsysSub_114* ptr);
+u8 sub_02092E10(struct UnkFsysSub_114* ptr);
 void sub_02092E14(struct UnkFsysSub_114* ptr, u32 Unkarg1, u32 Unkarg2);
 void sub_02092E34(struct UnkFsysSub_114* ptr, u32 Unkarg1, u32 Unkarg2);
 void sub_02092E54(struct UnkFsysSub_114* ptr);

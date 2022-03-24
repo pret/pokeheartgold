@@ -83,12 +83,27 @@ void sub_02092D98(HeapID id, FieldSystem* sys){
     sub_02092F64(ptr);
 }
 
+void sub_02092DD8(void* UnkPtr){
+	MI_CpuFill8(UnkPtr, 0, 0x48);
+	FreeToHeap(UnkPtr);
+}
+
 struct UnkFsysSub_114* sub_02092DEC(FieldSystem* sys){
     return sys->unk114;
 }
 
+void sub_02092DF4(struct UnkFsysSub_114* ptr){
+	ptr->Unk_var0 = (ptr->Unk_var0 & 1) | 1;
+	ptr->Unk_var14 = 0;
+	ptr->Unk_var18 = 0;
+}
+
 u8 sub_02092E08(struct UnkFsysSub_114* ptr){
     return ptr->Unk_var0;
+}
+
+u8 sub_02092E10(struct UnkFsysSub_114* ptr){
+	return 0x1c;
 }
 
 void sub_02092E14(struct UnkFsysSub_114* ptr, u32 Unkarg1, u32 Unkarg2){
