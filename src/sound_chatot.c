@@ -101,7 +101,7 @@ u32 Chatot_startRecording(void) {
     if ((st0.size & 0x1f) != 0) {
         st0.size &= ~0x1f;
     }
-    st0.rate = 0x4174;
+    st0.rate = HW_CPU_CLOCK_ARM7 / 2000;
     st0.loop_enable = 0;
     st0.full_callback = 0;
     st0.full_arg = 0;
@@ -175,13 +175,13 @@ u32 sub_02006EFC(SOUND_CHATOT *chatot) {
 
 BOOL sub_02006F30(int a0) {
     switch (a0) {
-        case 0:
-        case 1:
-        case 5:
-        case 11:
-        case 12:
-            return TRUE;
-        default:
-            return FALSE;
+    case 0:
+    case 1:
+    case 5:
+    case 11:
+    case 12:
+        return TRUE;
+    default:
+        return FALSE;
     }
 }
