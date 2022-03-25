@@ -20,7 +20,7 @@ ov25_022598C0: ; 0x022598C0
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	add r4, r1, #0
-	bl Save_TrainerHall_get
+	bl Save_TrainerHouse_get
 	add r2, r0, #0
 	cmp r4, #0xa
 	bne _022598FE
@@ -200,7 +200,7 @@ ScrCmd_809: ; 0x02259A30
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl Save_TrainerHall_get
+	bl Save_TrainerHouse_get
 	cmp r4, #0xa
 	bne _02259A6C
 	ldr r1, _02259AA4 ; =ov25_02259D84
