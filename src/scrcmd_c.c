@@ -213,8 +213,8 @@ BOOL ScrCmd_CompareVarToVar(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_RunScript(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    u8* num_active_script_contexts = FieldSysGetAttrAddr(fsys, UNK80_10_C_NUM_ACTIVE_SCRCTX);
-    SCRIPTCONTEXT** new_context_ptr = FieldSysGetAttrAddr(fsys, UNK80_10_C_SCRCTX_1);
+    u8* num_active_script_contexts = FieldSysGetAttrAddr(fsys, SCRIPTENV_NUM_ACTIVE_SCRCTX);
+    SCRIPTCONTEXT** new_context_ptr = FieldSysGetAttrAddr(fsys, SCRIPTENV_SCRCTX_1);
 
     u16 script_to_run = ScriptReadHalfword(ctx);
     *new_context_ptr = CreateScriptContext(fsys, script_to_run);
@@ -227,9 +227,9 @@ static BOOL ScrNative_WaitStd(SCRIPTCONTEXT* ctx);
 
 BOOL ScrCmd_CallStd(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    u8* unk = FieldSysGetAttrAddr(fsys, UNK80_10_C_07);
-    u8* num_active_script_contexts = FieldSysGetAttrAddr(fsys, UNK80_10_C_NUM_ACTIVE_SCRCTX);
-    SCRIPTCONTEXT** new_context_ptr = (SCRIPTCONTEXT**)FieldSysGetAttrAddr(fsys, UNK80_10_C_SCRCTX_0 + *num_active_script_contexts);
+    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_07);
+    u8* num_active_script_contexts = FieldSysGetAttrAddr(fsys, SCRIPTENV_NUM_ACTIVE_SCRCTX);
+    SCRIPTCONTEXT** new_context_ptr = (SCRIPTCONTEXT**)FieldSysGetAttrAddr(fsys, SCRIPTENV_SCRCTX_0 + *num_active_script_contexts);
 
     u16 script_to_run = ScriptReadHalfword(ctx);
     SCRIPTCONTEXT* new_context = CreateScriptContext(fsys, script_to_run);
@@ -246,16 +246,16 @@ BOOL ScrCmd_CallStd(SCRIPTCONTEXT* ctx) {
 
 static BOOL ScrNative_WaitStd(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    u8* unk = FieldSysGetAttrAddr(fsys, UNK80_10_C_07);
-    u8* unused = FieldSysGetAttrAddr(fsys, UNK80_10_C_NUM_ACTIVE_SCRCTX);
+    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_07);
+    u8* unused = FieldSysGetAttrAddr(fsys, SCRIPTENV_NUM_ACTIVE_SCRCTX);
 
     return (*unk & (1 << ctx->id)) == 0;
 }
 
 BOOL ScrCmd_RestartCurrentScript(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    u8* unk = FieldSysGetAttrAddr(fsys, UNK80_10_C_07);
-    u8* unused = FieldSysGetAttrAddr(fsys, UNK80_10_C_NUM_ACTIVE_SCRCTX);
+    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_07);
+    u8* unused = FieldSysGetAttrAddr(fsys, SCRIPTENV_NUM_ACTIVE_SCRCTX);
 
     *unk ^= (1 << (ctx->id - 1));
     return FALSE;
@@ -269,7 +269,7 @@ BOOL ScrCmd_GoTo(SCRIPTCONTEXT* ctx) {
 }
 
 BOOL ScrCmd_ObjectGoTo(SCRIPTCONTEXT* ctx) {
-    LocalMapObject** lmo = FieldSysGetAttrAddr(ctx->fsys, UNK80_10_C_LAST_TALKED);
+    LocalMapObject** lmo = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_TALKED);
     u8 id = ScriptReadByte(ctx);
 
     u32 offset_in_script = ScriptReadWord(ctx);
@@ -293,7 +293,7 @@ BOOL ScrCmd_BgGoTo(SCRIPTCONTEXT* ctx) {
 }
 
 BOOL ScrCmd_DirectionGoTo(SCRIPTCONTEXT* ctx) {
-    u32* direction = FieldSysGetAttrAddr(ctx->fsys, UNK80_10_C_FACING_DIRECTION);
+    u32* direction = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_FACING_DIRECTION);
     u8 required_direction = ScriptReadByte(ctx);
 
     u32 offset_in_script = ScriptReadWord(ctx);

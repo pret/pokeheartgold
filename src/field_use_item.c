@@ -196,10 +196,10 @@ static BOOL Task_UseItemInAlphChamber(TaskManager *taskManager) {
     case 0:
         Fsys_GetFacingObject(fsys, &sp0);
         QueueScript(taskManager, env->scriptNo, sp0, NULL);
-        *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8000) = env->var_8000;
-        *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8001) = env->var_8001;
-        *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8002) = env->var_8002;
-        *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8003) = env->var_8003;
+        *(u16 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_SPECIAL_VAR_8000) = env->var_8000;
+        *(u16 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_SPECIAL_VAR_8001) = env->var_8001;
+        *(u16 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_SPECIAL_VAR_8002) = env->var_8002;
+        *(u16 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_SPECIAL_VAR_8003) = env->var_8003;
         (*state_p)++;
         break;
     case 1:
@@ -304,7 +304,7 @@ static BOOL Task_MountOrDismountBicycle(TaskManager *taskManager) {
         (*state_p)++;
         break;
     case 2:
-        MapObjectMan_UnpauseAllMovement(fsys->unk3C);
+        MapObjectMan_UnpauseAllMovement(fsys->mapObjectMan);
         return TRUE;
     }
 
@@ -489,7 +489,7 @@ static BOOL Task_PrintRegisteredKeyItemUseMessage(TaskManager *taskManager) {
     switch (env->state) {
     case 0:
         fsys->unkD2_6 = TRUE;
-        MapObjectMan_PauseAllMovement(fsys->unk3C);
+        MapObjectMan_PauseAllMovement(fsys->mapObjectMan);
         sub_0205B514(fsys->bg_config, &env->window, 3);
         options = Sav2_PlayerData_GetOptionsAddr(fsys->savedata);
         sub_0205B564(&env->window, options);
@@ -506,7 +506,7 @@ static BOOL Task_PrintRegisteredKeyItemUseMessage(TaskManager *taskManager) {
         }
         break;
     case 2:
-        MapObjectMan_UnpauseAllMovement(fsys->unk3C);
+        MapObjectMan_UnpauseAllMovement(fsys->mapObjectMan);
         RemoveWindow(&env->window);
         String_dtor(env->strbuf);
         FreeToHeap(env);
@@ -659,7 +659,7 @@ static BOOL Task_ActivateDowsingMchnUI(TaskManager *taskManager) {
         break;
     case 1:
         if (ov01_021F6B10(fsys) == TRUE) {
-            MapObjectMan_UnpauseAllMovement(fsys->unk3C);
+            MapObjectMan_UnpauseAllMovement(fsys->mapObjectMan);
             return TRUE;
         }
         break;
@@ -815,7 +815,7 @@ static BOOL Task_RegisteredItem_GoToApp(TaskManager *taskManager) {
 
     switch (env->state) {
     case 0:
-        MapObjectMan_PauseAllMovement(fsys->unk3C);
+        MapObjectMan_PauseAllMovement(fsys->mapObjectMan);
         ov01_021E636C(0);
         env->state = 1;
         break;
@@ -843,14 +843,14 @@ static BOOL Task_RegisteredItem_GoToApp(TaskManager *taskManager) {
         break;
     case 4:
         if (sub_020505C8(fsys)) {
-            MapObjectMan_PauseAllMovement(fsys->unk3C);
+            MapObjectMan_PauseAllMovement(fsys->mapObjectMan);
             ov01_021E636C(1);
             env->state = 5;
         }
         break;
     case 5:
         if (IsPaletteFadeActive()) {
-            MapObjectMan_UnpauseAllMovement(fsys->unk3C);
+            MapObjectMan_UnpauseAllMovement(fsys->mapObjectMan);
             FreeToHeap(env);
             return TRUE;
         }

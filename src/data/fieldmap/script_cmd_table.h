@@ -463,7 +463,7 @@ extern BOOL ScrCmd_459(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_LoadPhoneDat(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPhoneContactMsgIds(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_462(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_463(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_EnableMassOutbreaks(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CreateRoamer(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_465(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_466(SCRIPTCONTEXT *ctx);
@@ -471,7 +471,7 @@ extern BOOL ScrCmd_MoveRelearnerInit(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_MoveTutorInit(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_MoveRelearnerGetResult(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_LoadNPCTrade(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_471(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetOfferedSpecies(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_NPCTradeGetReqSpecies(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_NPCTradeExec(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_NPCTradeEnd(SCRIPTCONTEXT *ctx);
@@ -612,7 +612,7 @@ extern BOOL ScrCmd_608(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_609(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_610(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_Pokeathlon(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_612(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetNpcTradeUnusedFlag(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPhoneContactRandomGiftBerry(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPhoneContactGiftItem(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CameronPhoto(SCRIPTCONTEXT *ctx);
@@ -1318,7 +1318,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_LoadPhoneDat,
     ScrCmd_GetPhoneContactMsgIds,
     ScrCmd_462,
-    ScrCmd_463,
+    ScrCmd_EnableMassOutbreaks,
     ScrCmd_CreateRoamer,
     ScrCmd_465,
     ScrCmd_466,
@@ -1326,7 +1326,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_MoveTutorInit,
     ScrCmd_MoveRelearnerGetResult,
     ScrCmd_LoadNPCTrade,
-    ScrCmd_471,
+    ScrCmd_GetOfferedSpecies,
     ScrCmd_NPCTradeGetReqSpecies,
     ScrCmd_NPCTradeExec,
     ScrCmd_NPCTradeEnd,
@@ -1467,7 +1467,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_609,
     ScrCmd_610,
     ScrCmd_Pokeathlon,
-    ScrCmd_612,
+    ScrCmd_GetNpcTradeUnusedFlag,
     ScrCmd_GetPhoneContactRandomGiftBerry,
     ScrCmd_GetPhoneContactGiftItem,
     ScrCmd_CameronPhoto,

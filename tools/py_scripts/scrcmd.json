@@ -2879,7 +2879,7 @@
       ]
     },
     {
-      "name": "scrcmd_463",
+      "name": "enable_mass_outbreaks",
       "args": []
     },
     {
@@ -2956,7 +2956,7 @@
       ]
     },
     {
-      "name": "scrcmd_471",
+      "name": "get_offered_species",
       "args": [
         2
       ]
@@ -3849,7 +3849,7 @@
       ]
     },
     {
-      "name": "scrcmd_612",
+      "name": "get_npc_trade_unused_flag",
       "args": [
         2
       ]

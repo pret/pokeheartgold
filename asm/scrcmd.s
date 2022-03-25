@@ -497,7 +497,7 @@ gScriptCmdTable:
 	.word ScrCmd_LoadPhoneDat                                    ; 460
 	.word ScrCmd_GetPhoneContactMsgIds                                    ; 461
 	.word ScrCmd_462                                    ; 462
-	.word ScrCmd_463                                    ; 463
+	.word ScrCmd_EnableMassOutbreaks                                    ; 463
 	.word ScrCmd_CreateRoamer                                    ; 464
 	.word ScrCmd_465                                    ; 465
 	.word ScrCmd_466                                    ; 466
@@ -505,7 +505,7 @@ gScriptCmdTable:
 	.word ScrCmd_MoveTutorInit                                    ; 468
 	.word ScrCmd_MoveRelearnerGetResult                                    ; 469
 	.word ScrCmd_LoadNPCTrade                                    ; 470
-	.word ScrCmd_471                                    ; 471
+	.word ScrCmd_GetOfferedSpecies                                    ; 471
 	.word ScrCmd_NPCTradeGetReqSpecies                                    ; 472
 	.word ScrCmd_NPCTradeExec                                    ; 473
 	.word ScrCmd_NPCTradeEnd                                    ; 474
@@ -646,7 +646,7 @@ gScriptCmdTable:
 	.word ScrCmd_609                                    ; 609
 	.word ScrCmd_610                                    ; 610
 	.word ScrCmd_Pokeathlon                                    ; 611
-	.word ScrCmd_612                                    ; 612
+	.word ScrCmd_GetNpcTradeUnusedFlag                                    ; 612
 	.word ScrCmd_GetPhoneContactRandomGiftBerry         ; 613
 	.word ScrCmd_GetPhoneContactGiftItem                ; 614
 	.word ScrCmd_CameronPhoto                           ; 615
@@ -9494,8 +9494,8 @@ ScrCmd_456: ; 0x0204523C
 	pop {r3, pc}
 	thumb_func_end ScrCmd_456
 
-	thumb_func_start ScrCmd_463
-ScrCmd_463: ; 0x02045254
+	thumb_func_start ScrCmd_EnableMassOutbreaks
+ScrCmd_EnableMassOutbreaks: ; 0x02045254
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -9503,7 +9503,7 @@ ScrCmd_463: ; 0x02045254
 	bl RoamerSave_SetOutbreakActive
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ScrCmd_463
+	thumb_func_end ScrCmd_EnableMassOutbreaks
 
 	thumb_func_start ScrCmd_CreateRoamer
 ScrCmd_CreateRoamer: ; 0x02045264
@@ -9546,8 +9546,8 @@ ScrCmd_LoadNPCTrade: ; 0x0204527C
 _020452AC: .word FS_OVERLAY_ID(npc_trade)
 	thumb_func_end ScrCmd_LoadNPCTrade
 
-	thumb_func_start ScrCmd_471
-ScrCmd_471: ; 0x020452B0
+	thumb_func_start ScrCmd_GetOfferedSpecies
+ScrCmd_GetOfferedSpecies: ; 0x020452B0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -9568,7 +9568,7 @@ ScrCmd_471: ; 0x020452B0
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_471
+	thumb_func_end ScrCmd_GetOfferedSpecies
 
 	thumb_func_start ScrCmd_NPCTradeGetReqSpecies
 ScrCmd_NPCTradeGetReqSpecies: ; 0x020452E0
@@ -9594,8 +9594,8 @@ ScrCmd_NPCTradeGetReqSpecies: ; 0x020452E0
 	.balign 4, 0
 	thumb_func_end ScrCmd_NPCTradeGetReqSpecies
 
-	thumb_func_start ScrCmd_612
-ScrCmd_612: ; 0x02045310
+	thumb_func_start ScrCmd_GetNpcTradeUnusedFlag
+ScrCmd_GetNpcTradeUnusedFlag: ; 0x02045310
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -9616,7 +9616,7 @@ ScrCmd_612: ; 0x02045310
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_612
+	thumb_func_end ScrCmd_GetNpcTradeUnusedFlag
 
 	thumb_func_start ScrCmd_NPCTradeExec
 ScrCmd_NPCTradeExec: ; 0x02045340

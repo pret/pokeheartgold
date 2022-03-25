@@ -48,7 +48,7 @@ scr_seq_P01R0101_002:
 	play_fanfare SEQ_ME_ITEM
 	npc_msg msg_0255_P01R0101_00011
 	wait_fanfare
-	scrcmd_463
+	enable_mass_outbreaks
 	npc_msg msg_0255_P01R0101_00012
 	closemsg
 	apply_movement obj_P01R0101_ookido, _0120
@@ -66,7 +66,7 @@ scr_seq_P01R0101_002:
 	releaseall
 	compare VAR_UNK_40D3, 1
 	call_if_eq _00DE
-	scrcmd_463
+	enable_mass_outbreaks
 	end
 
 _00DE:

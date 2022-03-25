@@ -31,8 +31,6 @@ typedef struct NPC_TRADE {
     int unk_50;
 } NPC_TRADE; // size=0x54
 
-typedef struct _NPC_TRADE_WORK NPC_TRADE_WORK;
-
 NPC_TRADE_WORK *NPCTrade_AllocWork(HeapID heapId, u32 tradeno);
 void NPCTrade_DeleteWork(NPC_TRADE_WORK *work);
 void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fsys, u8 tradeno, u8 level, u16 mapno);

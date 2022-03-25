@@ -2940,10 +2940,10 @@
 .public ScrCmd_458
 .public ScrCmd_459
 .public ScrCmd_462
-.public ScrCmd_463
+.public ScrCmd_EnableMassOutbreaks
 .public ScrCmd_465
 .public ScrCmd_466
-.public ScrCmd_471
+.public ScrCmd_GetOfferedSpecies
 .public ScrCmd_475
 .public ScrCmd_476
 .public ScrCmd_478
@@ -3037,7 +3037,7 @@
 .public ScrCmd_608
 .public ScrCmd_609
 .public ScrCmd_610
-.public ScrCmd_612
+.public ScrCmd_GetNpcTradeUnusedFlag
 .public ScrCmd_616
 .public ScrCmd_617
 .public ScrCmd_619

@@ -2636,7 +2636,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_463
+	.macro enable_mass_outbreaks
 	.short 463
 	.endm
 
@@ -2685,7 +2685,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_471 arg0
+	.macro get_offered_species arg0
 	.short 471
 	.short \arg0
 	.endm
@@ -3455,7 +3455,7 @@
 	.short \arg6
 	.endm
 
-	.macro scrcmd_612 arg0
+	.macro get_npc_trade_unused_flag arg0
 	.short 612
 	.short \arg0
 	.endm

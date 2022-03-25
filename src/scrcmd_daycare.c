@@ -14,7 +14,7 @@ static LocalMapObject* CreateDayCareMonSpriteInternal(MapObjectMan* object_man, 
 
 BOOL ScrCmd_BufferDayCareMonNicks(SCRIPTCONTEXT* ctx) {
     SAVEDATA* savedata = ctx->fsys->savedata;
-    MSGFMT** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, UNK80_10_C_MSGFMT);
+    MSGFMT** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
     DAYCARE* daycare = Sav2_DayCare_get(savedata);
 
     Sav2_DayCare_BufferStoredMonNicks(daycare, *msg_fmt);
@@ -54,7 +54,7 @@ BOOL ScrCmd_GiveDayCareEgg(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_RetrieveDayCareMon(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    MSGFMT** msg_fmt = FieldSysGetAttrAddr(fsys, UNK80_10_C_MSGFMT);
+    MSGFMT** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MSGFMT);
     SAVEDATA* savedata = fsys->savedata;
     u16* ret_ptr = ScriptGetVarPointer(ctx);
     u16 daycare_mon_idx = ScriptGetVar(ctx);
@@ -68,7 +68,7 @@ BOOL ScrCmd_RetrieveDayCareMon(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_BufferDayCareWithdrawCost(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    MSGFMT** msg_fmt = FieldSysGetAttrAddr(fsys, UNK80_10_C_MSGFMT);
+    MSGFMT** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MSGFMT);
     SAVEDATA* savedata = fsys->savedata;
     u16* ret_ptr = ScriptGetVarPointer(ctx);
     u16 daycare_mon_idx = ScriptGetVar(ctx);
@@ -81,7 +81,7 @@ BOOL ScrCmd_BufferDayCareWithdrawCost(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_BufferDayCareMonGrowth(SCRIPTCONTEXT* ctx) {
     SAVEDATA* savedata = ctx->fsys->savedata;
-    MSGFMT** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, UNK80_10_C_MSGFMT);
+    MSGFMT** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
     u16 daycare_mon_idx = ScriptGetVar(ctx);
     DAYCARE* daycare = SavArray_get(savedata, SAVE_DAYCARE);
@@ -93,7 +93,7 @@ BOOL ScrCmd_BufferDayCareMonGrowth(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_GetTailDayCareMonSpeciesAndNick(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    MSGFMT** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, UNK80_10_C_MSGFMT);
+    MSGFMT** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
     DAYCARE* daycare = Sav2_DayCare_get(fsys->savedata);
 
@@ -116,7 +116,7 @@ BOOL ScrCmd_PutMonInDayCare(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_BufferDayCareMonStats(SCRIPTCONTEXT* ctx) {
     SAVEDATA* savedata = ctx->fsys->savedata;
-    MSGFMT** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, UNK80_10_C_MSGFMT);
+    MSGFMT** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
     u16 nickname_idx = ScriptGetVar(ctx);
     u16 level_idx = ScriptGetVar(ctx);
     u16 gender_idx = ScriptGetVar(ctx);
@@ -157,7 +157,7 @@ BOOL ScrCmd_UpdateDayCareMonObjects(SCRIPTCONTEXT* ctx) {
     daycare = Sav2_DayCare_get(fsys->savedata);
 
     for (s32 dc_mon_idx = 0, y = 5, x = 8; dc_mon_idx < 2; dc_mon_idx++, y += 4, x += 2) {
-        LocalMapObject* mon_map_object = GetMapObjectByID(fsys->unk3C, obj_daycare_poke_1 + dc_mon_idx);
+        LocalMapObject* mon_map_object = GetMapObjectByID(fsys->mapObjectMan, obj_daycare_poke_1 + dc_mon_idx);
         if (mon_map_object) {
             DeleteMapObject(mon_map_object);
         }
@@ -172,7 +172,7 @@ BOOL ScrCmd_UpdateDayCareMonObjects(SCRIPTCONTEXT* ctx) {
         u32 gender = GetBoxMonData(dc_box_mon, MON_DATA_GENDER, NULL);
         BOOL shiny = BoxMonIsShiny(dc_box_mon);
 
-        CreateDayCareMonSpriteInternal(fsys->unk3C, (u8)dc_mon_idx, species, forme, gender, 1, x, y, fsys->location->mapId, shiny);
+        CreateDayCareMonSpriteInternal(fsys->mapObjectMan, (u8)dc_mon_idx, species, forme, gender, 1, x, y, fsys->location->mapId, shiny);
     }
 
     return FALSE;

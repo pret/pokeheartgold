@@ -156,7 +156,7 @@ void DestroyScriptContext(SCRIPTCONTEXT *ctx) {
 }
 
 void SetupScriptEngine(FieldSystem *fsys, ScriptEnvironment *env, u16 script, LocalMapObject *lastTalked, void* a4) {
-    u16 *varLastTalked = FieldSysGetAttrAddrInternal(env, UNK80_10_C_SPECIAL_VAR_LAST_TALKED);
+    u16 *varLastTalked = FieldSysGetAttrAddrInternal(env, SCRIPTENV_SPECIAL_VAR_LAST_TALKED);
     env->facingDirection = PlayerAvatar_GetFacingDirection(fsys->playerAvatar);
     env->lastTalked = lastTalked;
     env->script = script;
@@ -218,103 +218,103 @@ void LoadScriptsAndMessagesForCurrentMap(FieldSystem *fsys, SCRIPTCONTEXT *ctx) 
 
 void *FieldSysGetAttrAddrInternal(ScriptEnvironment *unk, enum ScriptEnvField field) {
     switch (field) {
-    case UNK80_10_C_10:
+    case SCRIPTENV_10:
         return &unk->unk_10;
-    case UNK80_10_C_14:
+    case SCRIPTENV_14:
         return &unk->unk_14;
-    case UNK80_10_C_24:
+    case SCRIPTENV_24:
         return &unk->unk_24;
-    case UNK80_10_C_05:
+    case SCRIPTENV_05:
         return &unk->unk_5;
-    case UNK80_10_C_NUM_ACTIVE_MOVEMENT:
+    case SCRIPTENV_NUM_ACTIVE_MOVEMENT:
         return &unk->numActiveMovement;
-    case UNK80_10_C_07:
+    case SCRIPTENV_07:
         return &unk->unk_7;
-    case UNK80_10_C_08:
+    case SCRIPTENV_08:
         return &unk->unk_8;
-    case UNK80_10_C_NUM_ACTIVE_SCRCTX:
+    case SCRIPTENV_NUM_ACTIVE_SCRCTX:
         return &unk->numActiveScrCtx;
-    case UNK80_10_C_SCRIPT:
+    case SCRIPTENV_SCRIPT:
         return &unk->script;
-    case UNK80_10_C_FACING_DIRECTION:
+    case SCRIPTENV_FACING_DIRECTION:
         return &unk->facingDirection;
-    case UNK80_10_C_LAST_TALKED:
+    case SCRIPTENV_LAST_TALKED:
         return &unk->lastTalked;
-    case UNK80_10_C_30:
+    case SCRIPTENV_30:
         return &unk->unk_30;
-    case UNK80_10_C_34:
+    case SCRIPTENV_34:
         return &unk->unk_34;
-    case UNK80_10_C_SCRCTX_0:
-    case UNK80_10_C_SCRCTX_1:
-    case UNK80_10_C_SCRCTX_2:
-        return &unk->scriptContexts[field - UNK80_10_C_SCRCTX_0];
-    case UNK80_10_C_MSGFMT:
+    case SCRIPTENV_SCRCTX_0:
+    case SCRIPTENV_SCRCTX_1:
+    case SCRIPTENV_SCRCTX_2:
+        return &unk->scriptContexts[field - SCRIPTENV_SCRCTX_0];
+    case SCRIPTENV_MSGFMT:
         return &unk->msgfmt;
-    case UNK80_10_C_STRBUF1:
+    case SCRIPTENV_STRBUF1:
         return &unk->strbuf1;
-    case UNK80_10_C_STRBUF2:
+    case SCRIPTENV_STRBUF2:
         return &unk->strbuf2;
-    case UNK80_10_C_50:
+    case SCRIPTENV_50:
         return &unk->unk_50;
-    case UNK80_10_C_AC:
+    case SCRIPTENV_AC:
         return &unk->unk_AC;
-    case UNK80_10_C_B0:
-        return &unk->unk_B0;
-    case UNK80_10_C_B4:
+    case SCRIPTENV_GENERIC_WORK_PTR:
+        return &unk->genericWorkPtr;
+    case SCRIPTENV_B4:
         return &unk->unk_B4;
-    case UNK80_10_C_B8:
+    case SCRIPTENV_B8:
         return &unk->unk_B8;
-    case UNK80_10_C_0C:
+    case SCRIPTENV_0C:
         return &unk->unk_C;
-    case UNK80_10_C_54_0_00:
+    case SCRIPTENV_54_0_00:
         return &unk->engagedTrainers[0].unk0;
-    case UNK80_10_C_54_0_04:
+    case SCRIPTENV_54_0_04:
         return &unk->engagedTrainers[0].unk4;
-    case UNK80_10_C_54_0_08:
+    case SCRIPTENV_54_0_08:
         return &unk->engagedTrainers[0].unk8;
     case SCRIPTENV_EYE_TRAINER_1_NUM:
         return &unk->engagedTrainers[0].trainerNum;
-    case UNK80_10_C_54_0_10:
+    case SCRIPTENV_EYE_TRAINER_1_ENCTYPE:
         return &unk->engagedTrainers[0].encounterType;
-    case UNK80_10_C_54_0_14:
+    case SCRIPTENV_EYE_TRAINER_1_OBJPTR:
         return &unk->engagedTrainers[0].objectEvent;
-    case UNK80_10_C_54_0_18:
+    case SCRIPTENV_54_0_18:
         return &unk->engagedTrainers[0].unk18;
-    case UNK80_10_C_54_1_00:
+    case SCRIPTENV_54_1_00:
         return &unk->engagedTrainers[1].unk0;
-    case UNK80_10_C_54_1_04:
+    case SCRIPTENV_54_1_04:
         return &unk->engagedTrainers[1].unk4;
-    case UNK80_10_C_54_1_08:
+    case SCRIPTENV_54_1_08:
         return &unk->engagedTrainers[1].unk8;
     case SCRIPTENV_EYE_TRAINER_2_NUM:
         return &unk->engagedTrainers[1].trainerNum;
-    case UNK80_10_C_54_1_10:
+    case SCRIPTENV_EYE_TRAINER_2_ENCTYPE:
         return &unk->engagedTrainers[1].encounterType;
-    case UNK80_10_C_54_1_14:
+    case SCRIPTENV_EYE_TRAINER_2_OBJPTR:
         return &unk->engagedTrainers[1].objectEvent;
-    case UNK80_10_C_54_1_18:
+    case SCRIPTENV_54_1_18:
         return &unk->engagedTrainers[1].unk18;
-    case UNK80_10_C_BC:
+    case SCRIPTENV_BC:
         return &unk->unk_BC;
-    case UNK80_10_C_CC:
+    case SCRIPTENV_CC:
         return &unk->unk_CC;
-    case UNK80_10_C_DC:
+    case SCRIPTENV_DC:
         return &unk->unk_DC;
-    case UNK80_10_C_SPECIAL_VAR_8000:
-    case UNK80_10_C_SPECIAL_VAR_8001:
-    case UNK80_10_C_SPECIAL_VAR_8002:
-    case UNK80_10_C_SPECIAL_VAR_8003:
-    case UNK80_10_C_SPECIAL_VAR_8004:
-    case UNK80_10_C_SPECIAL_VAR_8005:
-    case UNK80_10_C_SPECIAL_VAR_8006:
-    case UNK80_10_C_SPECIAL_VAR_8007:
-    case UNK80_10_C_SPECIAL_VAR_8008:
-    case UNK80_10_C_SPECIAL_VAR_8009:
-    case UNK80_10_C_SPECIAL_VAR_800A:
-    case UNK80_10_C_SPECIAL_VAR_800B:
-    case UNK80_10_C_SPECIAL_VAR_RESULT:
-    case UNK80_10_C_SPECIAL_VAR_LAST_TALKED:
-        return &unk->specialVars[field - UNK80_10_C_SPECIAL_VAR_8000];
+    case SCRIPTENV_SPECIAL_VAR_8000:
+    case SCRIPTENV_SPECIAL_VAR_8001:
+    case SCRIPTENV_SPECIAL_VAR_8002:
+    case SCRIPTENV_SPECIAL_VAR_8003:
+    case SCRIPTENV_SPECIAL_VAR_8004:
+    case SCRIPTENV_SPECIAL_VAR_8005:
+    case SCRIPTENV_SPECIAL_VAR_8006:
+    case SCRIPTENV_SPECIAL_VAR_8007:
+    case SCRIPTENV_SPECIAL_VAR_8008:
+    case SCRIPTENV_SPECIAL_VAR_8009:
+    case SCRIPTENV_SPECIAL_VAR_800A:
+    case SCRIPTENV_SPECIAL_VAR_800B:
+    case SCRIPTENV_SPECIAL_VAR_RESULT:
+    case SCRIPTENV_SPECIAL_VAR_LAST_TALKED:
+        return &unk->specialVars[field - SCRIPTENV_SPECIAL_VAR_8000];
     default:
         GF_ASSERT(0);
         return NULL;
@@ -355,7 +355,7 @@ u16 *GetVarPointer(FieldSystem *fsys, u16 varIdx) {
     } else if (varIdx < SPECIAL_VAR_BASE) {
         return GetVarAddr(state, varIdx);
     } else {
-        return FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8000 + varIdx - SPECIAL_VAR_BASE);
+        return FieldSysGetAttrAddr(fsys, SCRIPTENV_SPECIAL_VAR_8000 + varIdx - SPECIAL_VAR_BASE);
     }
 }
 
@@ -413,10 +413,10 @@ void ClearDailyFlags(FieldSystem *fsys) {
 }
 
 void FieldMoveArgsSet(FieldSystem *fsys, u16 v8000, u16 v8001, u16 v8002, u16 v8003) {
-    *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8000) = v8000;
-    *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8001) = v8001;
-    *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8002) = v8002;
-    *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8003) = v8003;
+    *(u16 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_SPECIAL_VAR_8000) = v8000;
+    *(u16 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_SPECIAL_VAR_8001) = v8001;
+    *(u16 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_SPECIAL_VAR_8002) = v8002;
+    *(u16 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_SPECIAL_VAR_8003) = v8003;
 }
 
 u16 ScriptNumToTrainerNum(u16 script) {
@@ -484,9 +484,9 @@ BOOL GetHiddenItemParams(ScriptEnvironment *env, u16 script) {
     u16 *var_8001;
     u16 *var_8002;
 
-    var_8000 = FieldSysGetAttrAddrInternal(env, UNK80_10_C_SPECIAL_VAR_8000);
-    var_8001 = FieldSysGetAttrAddrInternal(env, UNK80_10_C_SPECIAL_VAR_8001);
-    var_8002 = FieldSysGetAttrAddrInternal(env, UNK80_10_C_SPECIAL_VAR_8002);
+    var_8000 = FieldSysGetAttrAddrInternal(env, SCRIPTENV_SPECIAL_VAR_8000);
+    var_8001 = FieldSysGetAttrAddrInternal(env, SCRIPTENV_SPECIAL_VAR_8001);
+    var_8002 = FieldSysGetAttrAddrInternal(env, SCRIPTENV_SPECIAL_VAR_8002);
     table = sHiddenItemParam;
     idx = HiddenItemScriptNoToHiddenItemIdx(script);
 

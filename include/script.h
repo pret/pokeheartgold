@@ -38,6 +38,8 @@ typedef struct EngagedTrainer {
     int unk18;
 } EngagedTrainer;
 
+typedef struct _NPC_TRADE_WORK NPC_TRADE_WORK;
+
 typedef struct ScriptEnvironment {
     u32 check;
     u8 state;
@@ -67,71 +69,71 @@ typedef struct ScriptEnvironment {
     u16 specialVars[NUM_SPECIAL_VARS];
     void (*scrctx_end_cb)(FieldSystem* fsys);
     void *unk_AC;
-    u32 unk_B0;
-    u32 unk_B4;
-    u32 unk_B8;
+    void *genericWorkPtr;
+    void *unk_B4;
+    void *unk_B8;
     WINDOW unk_BC;
     WINDOW unk_CC;
-    u32 unk_DC;
+    void *unk_DC;
 } ScriptEnvironment;
 
 enum ScriptEnvField {
-    UNK80_10_C_10                              =  0,
-    UNK80_10_C_14                              =  1,
-    UNK80_10_C_24                              =  2,
-    UNK80_10_C_05                              =  3,
-    UNK80_10_C_NUM_ACTIVE_MOVEMENT             =  4,
-    UNK80_10_C_07                              =  5,
-    UNK80_10_C_08                              =  6,
-    UNK80_10_C_NUM_ACTIVE_SCRCTX               =  7,
-    UNK80_10_C_SCRIPT                          =  8,
-    UNK80_10_C_FACING_DIRECTION                =  9,
-    UNK80_10_C_LAST_TALKED                     = 10,
-    UNK80_10_C_30                              = 11,
-    UNK80_10_C_34                              = 12,
-    UNK80_10_C_SCRCTX_0                        = 13,
-    UNK80_10_C_SCRCTX_1                        = 14,
-    UNK80_10_C_SCRCTX_2                        = 15,
-    UNK80_10_C_MSGFMT                          = 16,
-    UNK80_10_C_STRBUF1                         = 17,
-    UNK80_10_C_STRBUF2                         = 18,
-    UNK80_10_C_50                              = 19,
-    UNK80_10_C_AC                              = 20,
-    UNK80_10_C_B0                              = 21,
-    UNK80_10_C_B4                              = 22,
-    UNK80_10_C_B8                              = 23,
-    UNK80_10_C_0C                              = 24,
-    UNK80_10_C_54_0_00                         = 25,
-    UNK80_10_C_54_0_04                         = 26,
-    UNK80_10_C_54_0_08                         = 27,
-    SCRIPTENV_EYE_TRAINER_1_NUM                = 28,
-    UNK80_10_C_54_0_10                         = 29,
-    UNK80_10_C_54_0_14                         = 30,
-    UNK80_10_C_54_0_18                         = 31,
-    UNK80_10_C_54_1_00                         = 32,
-    UNK80_10_C_54_1_04                         = 33,
-    UNK80_10_C_54_1_08                         = 34,
-    SCRIPTENV_EYE_TRAINER_2_NUM                = 35,
-    UNK80_10_C_54_1_10                         = 36,
-    UNK80_10_C_54_1_14                         = 37,
-    UNK80_10_C_54_1_18                         = 38,
-    UNK80_10_C_BC                              = 39,
-    UNK80_10_C_CC                              = 40,
-    UNK80_10_C_DC                              = 41,
-    UNK80_10_C_SPECIAL_VAR_8000                = 42,
-    UNK80_10_C_SPECIAL_VAR_8001                = 43,
-    UNK80_10_C_SPECIAL_VAR_8002                = 44,
-    UNK80_10_C_SPECIAL_VAR_8003                = 45,
-    UNK80_10_C_SPECIAL_VAR_8004                = 46,
-    UNK80_10_C_SPECIAL_VAR_8005                = 47,
-    UNK80_10_C_SPECIAL_VAR_8006                = 48,
-    UNK80_10_C_SPECIAL_VAR_8007                = 49,
-    UNK80_10_C_SPECIAL_VAR_8008                = 50,
-    UNK80_10_C_SPECIAL_VAR_8009                = 51,
-    UNK80_10_C_SPECIAL_VAR_800A                = 52,
-    UNK80_10_C_SPECIAL_VAR_800B                = 53,
-    UNK80_10_C_SPECIAL_VAR_RESULT              = 54,
-    UNK80_10_C_SPECIAL_VAR_LAST_TALKED         = 55,
+    SCRIPTENV_10                              =  0,
+    SCRIPTENV_14                              =  1,
+    SCRIPTENV_24                              =  2,
+    SCRIPTENV_05                              =  3,
+    SCRIPTENV_NUM_ACTIVE_MOVEMENT             =  4,
+    SCRIPTENV_07                              =  5,
+    SCRIPTENV_08                              =  6,
+    SCRIPTENV_NUM_ACTIVE_SCRCTX               =  7,
+    SCRIPTENV_SCRIPT                          =  8,
+    SCRIPTENV_FACING_DIRECTION                =  9,
+    SCRIPTENV_LAST_TALKED                     = 10,
+    SCRIPTENV_30                              = 11,
+    SCRIPTENV_34                              = 12,
+    SCRIPTENV_SCRCTX_0                        = 13,
+    SCRIPTENV_SCRCTX_1                        = 14,
+    SCRIPTENV_SCRCTX_2                        = 15,
+    SCRIPTENV_MSGFMT                          = 16,
+    SCRIPTENV_STRBUF1                         = 17,
+    SCRIPTENV_STRBUF2                         = 18,
+    SCRIPTENV_50                              = 19,
+    SCRIPTENV_AC                              = 20,
+    SCRIPTENV_GENERIC_WORK_PTR                = 21,
+    SCRIPTENV_B4                              = 22,
+    SCRIPTENV_B8                              = 23,
+    SCRIPTENV_0C                              = 24,
+    SCRIPTENV_54_0_00                         = 25,
+    SCRIPTENV_54_0_04                         = 26,
+    SCRIPTENV_54_0_08                         = 27,
+    SCRIPTENV_EYE_TRAINER_1_NUM               = 28,
+    SCRIPTENV_EYE_TRAINER_1_ENCTYPE           = 29,
+    SCRIPTENV_EYE_TRAINER_1_OBJPTR            = 30,
+    SCRIPTENV_54_0_18                         = 31,
+    SCRIPTENV_54_1_00                         = 32,
+    SCRIPTENV_54_1_04                         = 33,
+    SCRIPTENV_54_1_08                         = 34,
+    SCRIPTENV_EYE_TRAINER_2_NUM               = 35,
+    SCRIPTENV_EYE_TRAINER_2_ENCTYPE           = 36,
+    SCRIPTENV_EYE_TRAINER_2_OBJPTR            = 37,
+    SCRIPTENV_54_1_18                         = 38,
+    SCRIPTENV_BC                              = 39,
+    SCRIPTENV_CC                              = 40,
+    SCRIPTENV_DC                              = 41,
+    SCRIPTENV_SPECIAL_VAR_8000                = 42,
+    SCRIPTENV_SPECIAL_VAR_8001                = 43,
+    SCRIPTENV_SPECIAL_VAR_8002                = 44,
+    SCRIPTENV_SPECIAL_VAR_8003                = 45,
+    SCRIPTENV_SPECIAL_VAR_8004                = 46,
+    SCRIPTENV_SPECIAL_VAR_8005                = 47,
+    SCRIPTENV_SPECIAL_VAR_8006                = 48,
+    SCRIPTENV_SPECIAL_VAR_8007                = 49,
+    SCRIPTENV_SPECIAL_VAR_8008                = 50,
+    SCRIPTENV_SPECIAL_VAR_8009                = 51,
+    SCRIPTENV_SPECIAL_VAR_800A                = 52,
+    SCRIPTENV_SPECIAL_VAR_800B                = 53,
+    SCRIPTENV_SPECIAL_VAR_RESULT              = 54,
+    SCRIPTENV_SPECIAL_VAR_LAST_TALKED         = 55,
 };
 
 typedef struct TaskManager TaskManager;
@@ -204,7 +206,7 @@ struct FieldSystem {
     u8 filler24[0xC];
     MAPMATRIX* map_matrix;
     u8 filler34[0x8];
-    MapObjectMan* unk3C;
+    MapObjectMan* mapObjectMan;
     FIELD_PLAYER_AVATAR *playerAvatar;
     u8 filler44[0x1C];
     u32 unk60;
