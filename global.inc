@@ -327,7 +327,7 @@
 .public CanGiveCoins
 .public CanUseItemOnMonInParty
 .public CapsuleGetSealI
-.public ChangeFlag986
+.public ScriptState_MomsSavingsFlagAction
 .public ChangeFlag99D
 .public ChatotSoundMain
 .public Chatot_Decode
@@ -352,7 +352,7 @@
 .public CheckFlag969
 .public CheckFlag96A
 .public CheckFlag982
-.public CheckFlag986
+.public ScriptState_MomsSavingsFlagCheck
 .public CheckFlag996
 .public CheckFlag997
 .public CheckFlag99A
@@ -1454,7 +1454,7 @@
 .public MapHeader_GetCameraType
 .public MapHeader_GetDayMusicId
 .public MapHeader_GetEventsBank
-.public MapHeader_GetField12_C
+.public MapHeader_GetMomCallIntroParam
 .public MapHeader_GetField14_1D
 .public MapHeader_GetField14_1E
 .public MapHeader_GetField14_1F
@@ -9344,7 +9344,7 @@
 .public ov101_021F217C
 .public ov101_021F21A0
 .public ov101_021F21F0
-.public ov101_021F2208
+.public PhoneCallMessagePrint
 .public ov101_021F2220
 .public ov101_021F2248
 .public ov101_021F2308
@@ -9361,9 +9361,9 @@
 .public ov101_021F2680
 .public ov101_021F26F8
 .public ov101_021F27E4
-.public ov101_021F2848
-.public ov101_021F29E8
-.public ov101_021F29F8
+.public GearPhoneCall_Mom
+.public MomCallGetIntroMsgByLocation
+.public MomCallGetSaveMoneyPromptMsg
 .public ov101_021F2A28
 .public ov101_021F2B80
 .public ov101_021F2BC0
@@ -28989,7 +28989,7 @@
 .public sub_020515FC
 .public sub_020517E8
 .public sub_020517FC
-.public sub_020518D8
+.public BattleStruct_new
 .public sub_02051A60
 .public sub_02051A74
 .public sub_02051A98
@@ -28997,7 +28997,7 @@
 .public sub_02051BF8
 .public sub_02051C9C
 .public sub_02051D18
-.public sub_02051F00
+.public BattleStruct_InitFromFsys
 .public sub_02051F2C
 .public sub_020520B0
 .public sub_020522F0

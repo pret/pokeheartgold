@@ -174,12 +174,12 @@ _023A:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0266
 	npc_msg msg_0545_T20R0201_00017
-	setflag FLAG_UNK_986
+	setflag FLAG_SYS_MOMS_SAVINGS
 	goto _026D
 
 _0266:
 	npc_msg msg_0545_T20R0201_00018
-	clearflag FLAG_UNK_986
+	clearflag FLAG_SYS_MOMS_SAVINGS
 _026D:
 	wait_button_or_walk_away
 	closemsg
@@ -253,12 +253,12 @@ _0398:
 	goto_if_ne _03C2
 	buffer_players_name 0
 	npc_msg msg_0545_T20R0201_00017
-	setflag FLAG_UNK_986
+	setflag FLAG_SYS_MOMS_SAVINGS
 	goto _03C9
 
 _03C2:
 	npc_msg msg_0545_T20R0201_00018
-	clearflag FLAG_UNK_986
+	clearflag FLAG_SYS_MOMS_SAVINGS
 _03C9:
 	wait_button_or_walk_away
 	closemsg

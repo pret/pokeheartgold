@@ -496,7 +496,7 @@ sub_02055B1C: ; 0x02055B1C
 	bl sub_02051A98
 	add r1, r5, #0
 	add r7, r0, #0
-	bl sub_02051F00
+	bl BattleStruct_InitFromFsys
 	ldr r0, [sp]
 	ldr r1, [r6, #0x3c]
 	add r2, r4, #0

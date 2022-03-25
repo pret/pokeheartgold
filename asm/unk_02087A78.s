@@ -294,7 +294,7 @@ _02087C62:
 _02087C6A:
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_020518D8
+	bl BattleStruct_new
 	str r0, [r5, #0x10]
 	bl sub_0202FC48
 	cmp r0, #0

@@ -30,8 +30,8 @@ _020FC4C0:
 
 	.text
 
-	thumb_func_start sub_020518D8
-sub_020518D8: ; 0x020518D8
+	thumb_func_start BattleStruct_new
+BattleStruct_new: ; 0x020518D8
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	add r5, r1, #0
@@ -214,14 +214,14 @@ _02051A48:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02051A5C: .word gSystem
-	thumb_func_end sub_020518D8
+	thumb_func_end BattleStruct_new
 
 	thumb_func_start sub_02051A60
 sub_02051A60: ; 0x02051A60
 	push {r4, lr}
 	add r4, r1, #0
 	mov r1, #0x20
-	bl sub_020518D8
+	bl BattleStruct_new
 	mov r1, #0x19
 	lsl r1, r1, #4
 	str r4, [r0, r1]
@@ -236,7 +236,7 @@ sub_02051A74: ; 0x02051A74
 	mov r1, #1
 	lsl r1, r1, #0xc
 	add r6, r2, #0
-	bl sub_020518D8
+	bl BattleStruct_new
 	mov r1, #0x19
 	add r4, r0, #0
 	lsl r1, r1, #4
@@ -255,7 +255,7 @@ sub_02051A98: ; 0x02051A98
 	add r4, r1, #0
 	mov r1, #2
 	lsl r1, r1, #8
-	bl sub_020518D8
+	bl BattleStruct_new
 	mov r1, #0x19
 	lsl r1, r1, #4
 	str r4, [r0, r1]
@@ -277,7 +277,7 @@ sub_02051AAC: ; 0x02051AAC
 	str r0, [sp, #0x14]
 	add r0, r6, #0
 	lsl r1, r1, #0xa
-	bl sub_020518D8
+	bl BattleStruct_new
 	add r4, r0, #0
 	mov r2, #7
 	ldr r0, [r5, #0xc]
@@ -728,7 +728,7 @@ _02051E14:
 	bhs _02051EA8
 	add r0, r4, #0
 	bl SavArray_Flags_get
-	bl CheckFlag986
+	bl ScriptState_MomsSavingsFlagCheck
 	mov r1, #0x5b
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -777,8 +777,8 @@ _02051EB0:
 _02051EFC: .word 0x000F423F
 	thumb_func_end sub_02051D18
 
-	thumb_func_start sub_02051F00
-sub_02051F00: ; 0x02051F00
+	thumb_func_start BattleStruct_InitFromFsys
+BattleStruct_InitFromFsys: ; 0x02051F00
 	push {r4, lr}
 	sub sp, #8
 	add r2, r1, #0
@@ -799,7 +799,7 @@ sub_02051F00: ; 0x02051F00
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02051F00
+	thumb_func_end BattleStruct_InitFromFsys
 
 	thumb_func_start sub_02051F2C
 sub_02051F2C: ; 0x02051F2C
@@ -1266,7 +1266,7 @@ sub_0205230C: ; 0x0205230C
 	bl SaveData_GetPhoneRematches
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl CheckFlag986
+	bl ScriptState_MomsSavingsFlagCheck
 	cmp r0, #0
 	beq _02052394
 	ldr r0, [sp]

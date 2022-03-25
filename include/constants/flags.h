@@ -316,8 +316,8 @@
 #define FLAG_UNK_128                                               0x128
 #define FLAG_UNK_129                                               0x129
 #define FLAG_UNK_12A                                               0x12A
-#define FLAG_UNK_12B                                               0x12B
-#define FLAG_UNK_12C                                               0x12C
+#define FLAG_UNLOCKED_MT_SILVER                                               0x12B
+#define FLAG_UNLOCKED_WEST_KANTO                                               0x12C
 #define FLAG_UNK_12D                                               0x12D
 #define FLAG_UNK_12E                                               0x12E
 #define FLAG_UNK_12F                                               0x12F
@@ -406,7 +406,7 @@
 #define FLAG_UNK_182                                               0x182
 #define FLAG_UNK_183                                               0x183
 #define FLAG_UNK_184                                               0x184
-#define FLAG_UNK_185                                               0x185
+#define FLAG_GOT_HM08                                               0x185
 #define FLAG_UNK_186                                               0x186
 #define FLAG_UNK_187                                               0x187
 #define FLAG_UNK_188                                               0x188
@@ -1750,7 +1750,7 @@
 #define FLAG_UNK_983                                               0x983
 #define FLAG_UNK_984                                               0x984
 #define FLAG_UNK_985                                               0x985
-#define FLAG_UNK_986                                               0x986
+#define FLAG_SYS_MOMS_SAVINGS                                      0x986
 #define FLAG_OAK_ACKNOWLEDGED_JOHTO_DEX_COMPLETION                 0x987
 #define FLAG_UNK_988                                               0x988
 #define FLAG_UNK_989                                               0x989

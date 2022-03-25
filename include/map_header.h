@@ -49,7 +49,7 @@ u8 MapHeader_GetWildEncounterBank(u32 map_no);
 u16 MapHeader_GetEventsBank(u32 map_no);
 u16 MapHeader_GetMapSec(u32 map_no);
 u8 MapHeader_GetAreaIcon(u32 map_no);
-u8 MapHeader_GetField12_C(u32 map_no);
+u8 MapHeader_GetMomCallIntroParam(u32 map_no);
 BOOL MapHeader_IsKanto(u32 map_no);
 u32 MapHeader_GetWeatherType(u32 map_no);
 u32 MapHeader_GetCameraType(u32 map_no);
