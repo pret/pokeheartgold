@@ -110,7 +110,7 @@ _014C:
 	step_end
 scr_seq_T25R0601_000:
 	goto_if_set FLAG_UNK_0B5, _01E5
-	check_badge 2, VAR_TEMP_x4000
+	check_badge BADGE_PLAIN, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 1
 	goto_if_eq _0185
 	simple_npc_msg msg_0589_T25R0601_00000

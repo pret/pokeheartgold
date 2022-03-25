@@ -156,7 +156,7 @@ _0205:
 	lockall
 	faceplayer
 	goto_if_set FLAG_TALKED_TO_MOM_AFTER_NAMING_RIVAL, _0275
-	check_badge 0, VAR_TEMP_x4000
+	check_badge BADGE_ZEPHYR, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_ne _0234
 	npc_msg msg_0545_T20R0201_00015

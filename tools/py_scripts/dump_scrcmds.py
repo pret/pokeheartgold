@@ -181,6 +181,7 @@ class NormalScriptParser(ScriptParserBase):
             'maps': parse_c_header(os.path.join(project_root, 'include/constants/maps.h'), 'MAP_'),
             'phone_contact': parse_c_header(os.path.join(project_root, 'include/constants/phone_contacts.h'), 'PHONE_CONTACT_'),
             'spawn': parse_c_header(os.path.join(project_root, 'include/constants/spawns.h'), 'SPAWN_'),
+            'badge': parse_c_header(os.path.join(project_root, 'include/constants/badge.h'), 'BADGE_'),
             'player_transition': parse_c_header(os.path.join(project_root, 'include/constants/global.fieldmap.h'), 'PLAYER_TRANSITION_'),
         }
         self.constants['stdscr'] |= {
@@ -456,7 +457,7 @@ class NormalScriptParser(ScriptParserBase):
                 value = int.from_bytes(self.raw[pc:pc + 2], 'little')
                 pc += 2
                 return self.constants[size].get(value, value), pc
-            case 'species' | 'item' | 'move' | 'sound' | 'ribbon' | 'stdscr' | 'trainer' | 'phone_contact' | 'spawn' | 'maps':
+            case 'species' | 'item' | 'move' | 'sound' | 'ribbon' | 'stdscr' | 'trainer' | 'phone_contact' | 'spawn' | 'maps' | 'badge':
                 value = int.from_bytes(self.raw[pc:pc + 2], 'little')
                 pc += 2
                 return self.constants['var'].get(value, self.constants[size].get(value, value)), pc

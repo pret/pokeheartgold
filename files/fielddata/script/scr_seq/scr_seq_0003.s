@@ -1062,7 +1062,7 @@ _0ED8:
 	npc_msg msg_0040_00044
 	call _0F89
 	call _0216
-	check_badge 0, VAR_SPECIAL_RESULT
+	check_badge BADGE_ZEPHYR, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0F49
 	npc_msg msg_0040_00045

@@ -16,7 +16,7 @@ scr_seq_D26R0101_002:
 	end
 
 _001F:
-	check_badge 2, VAR_TEMP_x4000
+	check_badge BADGE_PLAIN, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _005D
 	get_weekday VAR_TEMP_x4000

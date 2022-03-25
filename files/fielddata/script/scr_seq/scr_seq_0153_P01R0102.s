@@ -33,7 +33,7 @@ _0054:
 	check_registered_phone_number PHONE_CONTACT_SABRINA, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0097
-	check_badge 13, VAR_TEMP_x4000
+	check_badge BADGE_MARSH, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 1
 	goto_if_eq _0080
 	goto _00C1

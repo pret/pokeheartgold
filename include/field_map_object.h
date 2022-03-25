@@ -68,6 +68,7 @@ LocalMapObject *CreateSpecialFieldObject(MapObjectMan *objectMan, u32 x, u32 y, 
 void DeleteMapObject(LocalMapObject *mapObject);
 LocalMapObject *GetMapObjectByID(MapObjectMan *arr, int id);
 void sub_0205FC94(LocalMapObject *mapObject, int movement);
+u32 MapObject_GetGfxID(LocalMapObject *mapObject);
 void MapObject_SetGfxID(LocalMapObject *mapObject, u32 spriteId);
 void sub_0205F6AC(LocalMapObject *mapObject, int a1);
 void MapObject_SetBits(LocalMapObject *mapObject, u32 bits);

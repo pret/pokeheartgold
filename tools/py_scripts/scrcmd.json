@@ -1810,20 +1810,20 @@
     {
       "name": "check_badge",
       "args": [
-        "var",
+        "badge",
         "var"
       ]
     },
     {
       "name": "give_badge",
       "args": [
-        "var"
+        "badge"
       ]
     },
     {
       "name": "count_badges",
       "args": [
-        "var"
+        "badge"
       ]
     },
     {

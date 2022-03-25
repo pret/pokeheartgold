@@ -23,7 +23,7 @@ scr_seq_R32_004:
 	end
 
 _003B:
-	check_badge 2, VAR_TEMP_x4000
+	check_badge BADGE_PLAIN, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _0079
 	get_weekday VAR_TEMP_x4000
@@ -165,7 +165,7 @@ scr_seq_R32_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 0, VAR_SPECIAL_RESULT
+	check_badge BADGE_ZEPHYR, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _028C
 	goto_if_unset FLAG_UNK_070, _0297
@@ -254,7 +254,7 @@ _0391:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	check_badge 0, VAR_SPECIAL_RESULT
+	check_badge BADGE_ZEPHYR, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _03B9
 	npc_msg msg_0380_R32_00004

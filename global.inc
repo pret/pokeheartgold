@@ -6525,7 +6525,7 @@
 .public ov01_021FCE44
 .public ov01_021FCE5C
 .public ov01_021FCE74
-.public ov01_021FCE98
+.public Task_UseSweetScentInField
 .public ov01_021FCFEC
 .public ov01_021FD014
 .public ov01_021FD064
@@ -28841,7 +28841,7 @@
 .public sub_0203C8F0
 .public sub_0203CA9C
 .public sub_0203D718
-.public sub_0203D758
+.public Task_UseFlyInField
 .public sub_0203D818
 .public sub_0203D830
 .public sub_0203D9B4

@@ -13,8 +13,8 @@
 
 	.text
 
-	thumb_func_start ov01_021FCE98
-ov01_021FCE98: ; 0x021FCE98
+	thumb_func_start Task_UseSweetScentInField
+Task_UseSweetScentInField: ; 0x021FCE98
 	push {r3, r4, r5, r6, r7, lr}
 	str r0, [sp]
 	bl TaskManager_GetSys
@@ -175,7 +175,7 @@ _021FCFDE:
 	nop
 _021FCFE4: .word ov01_02205A60
 _021FCFE8: .word Task_HoneyOrSweetScent
-	thumb_func_end ov01_021FCE98
+	thumb_func_end Task_UseSweetScentInField
 
 	thumb_func_start ov01_021FCFEC
 ov01_021FCFEC: ; 0x021FCFEC

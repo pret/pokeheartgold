@@ -25,7 +25,7 @@ _002B:
 	end
 
 scr_seq_R10_001:
-	check_badge 15, VAR_TEMP_x4004
+	check_badge BADGE_EARTH, VAR_TEMP_x4004
 	compare VAR_TEMP_x4004, 1
 	goto_if_eq _0052
 	goto _00BF

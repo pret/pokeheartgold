@@ -80,7 +80,7 @@ scr_seq_T24PC0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 4, VAR_SPECIAL_RESULT
+	check_badge BADGE_STORM, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0115
 	npc_msg msg_0575_T24PC0101_00002

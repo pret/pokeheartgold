@@ -4,7 +4,10 @@
 BOOL sub_0205B6F4(u8 tile);
 BOOL sub_0205B778(u8 tile);
 BOOL sub_0205B8AC(u8 tile);
-BOOL sub_0205BA30(u8 tile);
+BOOL sub_0205B8DC(u8 tile);
+BOOL sub_0205B8E8(u8 tile);
 BOOL sub_0205BA24(u8 tile);
+BOOL sub_0205BA30(u8 tile);
+BOOL sub_0205BAF8(u8 tile);
 
 #endif //POKEHEARTGOLD_UNK_0205B6E8_H

@@ -53,7 +53,7 @@ _009D:
 	check_registered_phone_number PHONE_CONTACT_ERIKA, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _015A
-	check_badge 15, VAR_TEMP_x4002
+	check_badge BADGE_EARTH, VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 1
 	goto_if_eq _00CB
 	goto _015A
@@ -109,7 +109,7 @@ scr_seq_T26GYM0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 5, VAR_SPECIAL_RESULT
+	check_badge BADGE_MINERAL, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _020C
 	npc_msg msg_0606_T26GYM0101_00000
@@ -123,7 +123,7 @@ scr_seq_T26GYM0101_000:
 	npc_msg msg_0606_T26GYM0101_00002
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
-	give_badge 5
+	give_badge BADGE_MINERAL
 	addvar VAR_UNK_4134, 1
 	add_special_game_stat 22
 	compare VAR_UNK_4134, 3
@@ -367,7 +367,7 @@ scr_seq_T26GYM0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 5, VAR_SPECIAL_RESULT
+	check_badge BADGE_MINERAL, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _04F4
 	npc_msg msg_0606_T26GYM0101_00020
@@ -389,7 +389,7 @@ scr_seq_T26GYM0101_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 5, VAR_SPECIAL_RESULT
+	check_badge BADGE_MINERAL, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0536
 	npc_msg msg_0606_T26GYM0101_00022
@@ -411,7 +411,7 @@ scr_seq_T26GYM0101_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 5, VAR_SPECIAL_RESULT
+	check_badge BADGE_MINERAL, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0590
 	compare VAR_UNK_410E, 0
@@ -438,7 +438,7 @@ scr_seq_T26GYM0101_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 5, VAR_SPECIAL_RESULT
+	check_badge BADGE_MINERAL, VAR_SPECIAL_RESULT
 	buffer_players_name 0
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _05C2

@@ -12,7 +12,7 @@ scr_seq_W19R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 14, VAR_SPECIAL_RESULT
+	check_badge BADGE_VOLCANO, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _002C
 	npc_msg msg_0741_W19R0101_00000

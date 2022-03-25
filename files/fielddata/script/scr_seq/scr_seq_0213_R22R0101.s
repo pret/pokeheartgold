@@ -35,7 +35,7 @@ _006B:
 	check_registered_phone_number PHONE_CONTACT_JANINE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _00DF
-	check_badge 12, VAR_TEMP_x4002
+	check_badge BADGE_SOUL, VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 0
 	goto_if_ne _009D
 	goto _012C

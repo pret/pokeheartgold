@@ -336,13 +336,13 @@ _049D:
 	end
 
 _04A1:
-	check_badge 15, VAR_TEMP_x4003
+	check_badge BADGE_EARTH, VAR_TEMP_x4003
 	compare VAR_TEMP_x4003, 1
 	goto_if_eq _0550
 	goto_if_set FLAG_UNK_0F2, _0541
 	goto_if_set FLAG_UNK_108, _051B
 	goto_if_set FLAG_UNK_109, _051B
-	check_badge 7, VAR_TEMP_x4002
+	check_badge BADGE_RISING, VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 1
 	goto_if_eq _0510
 	compare VAR_TEMP_x400F, 1

@@ -37,7 +37,7 @@ scr_seq_D36R0101_000:
 	goto _00C3
 
 _0077:
-	check_badge 2, VAR_TEMP_x4000
+	check_badge BADGE_PLAIN, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _00B5
 	get_weekday VAR_TEMP_x4000

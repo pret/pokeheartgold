@@ -28,7 +28,7 @@ _003B:
 	clearflag FLAG_HIDE_ROUTE_25_EUSINE_2
 	setflag FLAG_HIDE_ROUTE_25_EUSINE
 _0050:
-	check_badge 15, VAR_TEMP_x4000
+	check_badge BADGE_EARTH, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _011B
 	compare VAR_SCENE_ROUTE_25, 1

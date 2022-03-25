@@ -24,7 +24,7 @@ scr_seq_T08GYM0101_000:
 	check_registered_phone_number PHONE_CONTACT_JANINE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _00AF
-	check_badge 12, VAR_TEMP_x4002
+	check_badge BADGE_SOUL, VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 0
 	goto_if_ne _006D
 	goto _00E9
@@ -492,7 +492,7 @@ scr_seq_T08GYM0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 12, VAR_SPECIAL_RESULT
+	check_badge BADGE_SOUL, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0778
 	npc_msg msg_0514_T08GYM0101_00000
@@ -503,7 +503,7 @@ scr_seq_T08GYM0101_001:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _078E
 	setvar VAR_TEMP_x400B, 0
-	give_badge 12
+	give_badge BADGE_SOUL
 	addvar VAR_UNK_4135, 1
 	add_special_game_stat 22
 	settrainerflag TRAINER_PICNICKER_CINDY
@@ -545,7 +545,7 @@ scr_seq_T08GYM0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 12, VAR_SPECIAL_RESULT
+	check_badge BADGE_SOUL, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _07C4
 	npc_msg msg_0514_T08GYM0101_00005
@@ -565,7 +565,7 @@ scr_seq_T08GYM0101_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 12, VAR_SPECIAL_RESULT
+	check_badge BADGE_SOUL, VAR_SPECIAL_RESULT
 	buffer_players_name 0
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _07F6

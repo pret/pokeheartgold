@@ -287,7 +287,7 @@ _03D2:
 	clearflag FLAG_HIDE_ROUTE_14_EUSINE_2
 	setvar VAR_UNK_4086, 0
 	setflag FLAG_UNK_14D
-	check_badge 9, VAR_SPECIAL_RESULT
+	check_badge BADGE_CASCADE, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0449
 	clearflag FLAG_HIDE_ROUTE_25_SUICUNE
