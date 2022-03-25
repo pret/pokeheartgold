@@ -338,7 +338,7 @@ _02068054:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl CheckFlag969
+	bl ScriptState_CheckRocketCostumeFlag
 	cmp r0, #1
 	bne _02068068
 	mov r0, #PARTY_MENU_RESPONSE_NOT_NOW
@@ -453,7 +453,7 @@ _02068136:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl CheckFlag969
+	bl ScriptState_CheckRocketCostumeFlag
 	cmp r0, #1
 	bne _0206814A
 	mov r0, #PARTY_MENU_RESPONSE_NOT_NOW
@@ -840,7 +840,7 @@ _02068416:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl CheckFlag969
+	bl ScriptState_CheckRocketCostumeFlag
 	cmp r0, #1
 	bne _0206842A
 	mov r0, #PARTY_MENU_RESPONSE_NOT_NOW
@@ -1034,7 +1034,7 @@ _02068588:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl CheckFlag969
+	bl ScriptState_CheckRocketCostumeFlag
 	cmp r0, #1
 	bne _0206859C
 	mov r0, #PARTY_MENU_RESPONSE_NOT_NOW
@@ -1174,7 +1174,7 @@ _020686A2:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl CheckFlag969
+	bl ScriptState_CheckRocketCostumeFlag
 	cmp r0, #1
 	bne _020686B6
 	mov r0, #PARTY_MENU_RESPONSE_NOT_NOW

@@ -98,16 +98,16 @@ BOOL CheckFlag965(SCRIPT_STATE* state) {
     return CheckScriptFlag(state, FLAG_UNK_965);
 }
 
-void SetFlag969(SCRIPT_STATE* state) {
-    SetScriptFlag(state, FLAG_UNK_969);
+void ScriptState_SetRocketCostumeFlag(SCRIPT_STATE* state) {
+    SetScriptFlag(state, FLAG_SYS_ROCKET_COSTUME);
 }
 
-void ClearFlag969(SCRIPT_STATE* state) {
-    ClearScriptFlag(state, FLAG_UNK_969);
+void ScriptState_ClearRocketCostumeFlag(SCRIPT_STATE* state) {
+    ClearScriptFlag(state, FLAG_SYS_ROCKET_COSTUME);
 }
 
-BOOL CheckFlag969(SCRIPT_STATE* state) {
-    return CheckScriptFlag(state, FLAG_UNK_969);
+BOOL ScriptState_CheckRocketCostumeFlag(SCRIPT_STATE* state) {
+    return CheckScriptFlag(state, FLAG_SYS_ROCKET_COSTUME);
 }
 
 BOOL EventFlagCheck_RematchGroup(SCRIPT_STATE* state, u16 flag_id) {

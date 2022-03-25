@@ -684,7 +684,7 @@ _0A71:
 	wait_fade
 	set_avatar_bits PLAYER_TRANSITION_ROCKET
 	update_avatar_state
-	scrcmd_620 1
+	rocket_costume_flag_action 1
 	play_se SEQ_SE_DP_CARD2
 	wait 24, VAR_SPECIAL_RESULT
 	play_se SEQ_SE_DP_CARD2
@@ -1029,7 +1029,7 @@ _0F05:
 	wait_fade
 	set_avatar_bits PLAYER_TRANSITION_ROCKET
 	update_avatar_state
-	scrcmd_620 1
+	rocket_costume_flag_action 1
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -1057,7 +1057,7 @@ _0F79:
 	lockall
 	set_avatar_bits PLAYER_TRANSITION_WALKING
 	update_avatar_state
-	scrcmd_620 0
+	rocket_costume_flag_action 0
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55

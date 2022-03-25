@@ -3889,13 +3889,13 @@
       ]
     },
     {
-      "name": "scrcmd_619",
+      "name": "rocket_costume_flag_check",
       "args": [
         2
       ]
     },
     {
-      "name": "scrcmd_620",
+      "name": "rocket_costume_flag_action",
       "args": [
         1
       ]

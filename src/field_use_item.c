@@ -138,7 +138,7 @@ void ItemCheckUseData_Init(FieldSystem *fsys, struct ItemCheckUseData *dat) {
     dat->fsys = fsys;
     dat->mapId = fsys->location->mapId;
     dat->haveFollower = ScriptState_CheckHaveFollower(SavArray_Flags_get(fsys->savedata));
-    dat->flag969set = CheckFlag969(SavArray_Flags_get(fsys->savedata));
+    dat->haveRocketCostume = ScriptState_CheckRocketCostumeFlag(SavArray_Flags_get(fsys->savedata));
     dat->playerState = PlayerAvatar_GetState(fsys->playerAvatar);
 
     x = GetPlayerXCoord(fsys->playerAvatar);
@@ -315,7 +315,7 @@ static u32 ItemCheckUseFunc_Bicycle(const struct ItemCheckUseData *data) {
     if (data->haveFollower == TRUE) {
         return ITEMUSEERROR_NOFOLLOWER;
     }
-    if (data->flag969set == TRUE) {
+    if (data->haveRocketCostume == TRUE) {
         return ITEMUSEERROR_NOTNOW;
     }
     if (sub_0205CABC(data->playerAvatar) == TRUE) {
@@ -458,7 +458,7 @@ static u32 ItemCheckUseFunc_FishingRod(const struct ItemCheckUseData *data) {
     if (data->haveFollower == TRUE) {
         return ITEMUSEERROR_NOFOLLOWER;
     }
-    if (data->flag969set == TRUE) {
+    if (data->haveRocketCostume == TRUE) {
         return ITEMUSEERROR_NOTNOW;
     }
     if (sub_0205B778(data->facingTile) == TRUE) {
@@ -568,7 +568,7 @@ static u32 ItemCheckUseFunc_EscapeRope(const struct ItemCheckUseData *data) {
     if (data->haveFollower == TRUE) {
         return ITEMUSEERROR_NOFOLLOWER;
     }
-    if (data->flag969set == TRUE) {
+    if (data->haveRocketCostume == TRUE) {
         return ITEMUSEERROR_NOTNOW;
     }
     if (CheckUseEscapeRopeInAlphChamber(data->fsys)) {

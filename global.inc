@@ -349,7 +349,7 @@
 .public CheckFlag960
 .public CheckFlag965
 .public CheckFlag966
-.public CheckFlag969
+.public ScriptState_CheckRocketCostumeFlag
 .public CheckFlag96A
 .public CheckFlag982
 .public ScriptState_MomsSavingsFlagCheck
@@ -374,7 +374,7 @@
 .public ClearDailyFlags
 .public ClearFlag965
 .public ClearFlag966
-.public ClearFlag969
+.public ScriptState_ClearRocketCostumeFlag
 .public ClearFlag972
 .public ClearFlag975
 .public ClearFlag99A
@@ -3040,8 +3040,8 @@
 .public ScrCmd_GetNpcTradeUnusedFlag
 .public ScrCmd_616
 .public ScrCmd_617
-.public ScrCmd_619
-.public ScrCmd_620
+.public ScrCmd_RocketCostumeFlagCheck
+.public ScrCmd_RocketCostumeFlagAction
 .public ScrCmd_621
 .public ScrCmd_622
 .public ScrCmd_627
@@ -3667,7 +3667,7 @@
 .public SetFlag960
 .public SetFlag965
 .public SetFlag966
-.public SetFlag969
+.public ScriptState_SetRocketCostumeFlag
 .public SetFlag970
 .public SetFlag975
 .public SetFlag99A

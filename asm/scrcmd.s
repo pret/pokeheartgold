@@ -653,8 +653,8 @@ gScriptCmdTable:
 	.word ScrCmd_616                                    ; 616
 	.word ScrCmd_617                                    ; 617
 	.word ScrCmd_PhotoAlbumIsFull                       ; 618
-	.word ScrCmd_619                                    ; 619
-	.word ScrCmd_620                                    ; 620
+	.word ScrCmd_RocketCostumeFlagCheck                                    ; 619
+	.word ScrCmd_RocketCostumeFlagAction                                    ; 620
 	.word ScrCmd_621                                    ; 621
 	.word ScrCmd_622                                    ; 622
 	.word ScrCmd_AnimApricornTree                                    ; 623

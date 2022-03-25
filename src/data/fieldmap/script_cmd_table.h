@@ -619,8 +619,8 @@ extern BOOL ScrCmd_CameronPhoto(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_616(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_617(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PhotoAlbumIsFull(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_619(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_620(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_RocketCostumeFlagCheck(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_RocketCostumeFlagAction(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_621(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_622(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_AnimApricornTree(SCRIPTCONTEXT *ctx);
@@ -1474,8 +1474,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_616,
     ScrCmd_617,
     ScrCmd_PhotoAlbumIsFull,
-    ScrCmd_619,
-    ScrCmd_620,
+    ScrCmd_RocketCostumeFlagCheck,
+    ScrCmd_RocketCostumeFlagAction,
     ScrCmd_621,
     ScrCmd_622,
     ScrCmd_AnimApricornTree,

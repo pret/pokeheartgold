@@ -1721,7 +1721,7 @@
 #define FLAG_UNK_966                                               0x966
 #define FLAG_SYS_SAFARI                                            0x967
 #define FLAG_UNK_968                                               0x968
-#define FLAG_UNK_969                                               0x969
+#define FLAG_SYS_ROCKET_COSTUME                                    0x969
 #define FLAG_UNK_96A                                               0x96A
 #define FLAG_UNK_96B                                               0x96B
 #define FLAG_UNK_96C                                               0x96C

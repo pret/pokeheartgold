@@ -3489,12 +3489,12 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_619 arg0
+	.macro rocket_costume_flag_check arg0
 	.short 619
 	.short \arg0
 	.endm
 
-	.macro scrcmd_620 arg0
+	.macro rocket_costume_flag_action arg0
 	.short 620
 	.byte \arg0
 	.endm
