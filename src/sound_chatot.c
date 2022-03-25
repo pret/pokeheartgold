@@ -3,7 +3,6 @@
 #include "constants/species.h"
 #include "math_util.h"
 #include "unk_02004A44.h"
-#include <nitro/spi/ARM9/mic.h>
 
 BOOL ChatotSoundMain(void) {
     u8 *r4 = GF_SdatGetAttrPtr(16);
