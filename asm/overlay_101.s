@@ -21951,8 +21951,8 @@ _021F2198:
 _021F219C: .word ov101_021F8400
 	thumb_func_end ov101_021F217C
 
-	thumb_func_start ov101_021F21A0
-ov101_021F21A0: ; 0x021F21A0
+	thumb_func_start PhoneCallMessagePrint
+PhoneCallMessagePrint: ; 0x021F21A0
 	push {r4, lr}
 	sub sp, #0x10
 	add r4, r0, #0
@@ -21989,10 +21989,10 @@ ov101_021F21A0: ; 0x021F21A0
 	pop {r4, pc}
 	.balign 4, 0
 _021F21EC: .word 0x00010200
-	thumb_func_end ov101_021F21A0
+	thumb_func_end PhoneCallMessagePrint
 
-	thumb_func_start ov101_021F21F0
-ov101_021F21F0: ; 0x021F21F0
+	thumb_func_start PhoneCallMessagePrint2
+PhoneCallMessagePrint2: ; 0x021F21F0
 	push {r4, lr}
 	add r4, r0, #0
 	add r4, #0x37
@@ -22002,12 +22002,12 @@ ov101_021F21F0: ; 0x021F21F0
 	strb r3, [r2]
 	add r2, r0, #0
 	add r2, #0x37
-	bl ov101_021F21A0
+	bl PhoneCallMessagePrint
 	pop {r4, pc}
-	thumb_func_end ov101_021F21F0
+	thumb_func_end PhoneCallMessagePrint2
 
-	thumb_func_start PhoneCallMessagePrint
-PhoneCallMessagePrint: ; 0x021F2208
+	thumb_func_start PhoneCallMessagePrint3
+PhoneCallMessagePrint3: ; 0x021F2208
 	add r3, r0, #0
 	add r3, #0x37
 	strb r2, [r3]
@@ -22015,12 +22015,12 @@ PhoneCallMessagePrint: ; 0x021F2208
 	add r3, #0x38
 	strb r2, [r3]
 	add r2, r0, #0
-	ldr r3, _021F221C ; =ov101_021F21A0
+	ldr r3, _021F221C ; =PhoneCallMessagePrint
 	add r2, #0x37
 	bx r3
 	.balign 4, 0
-_021F221C: .word ov101_021F21A0
-	thumb_func_end PhoneCallMessagePrint
+_021F221C: .word PhoneCallMessagePrint
+	thumb_func_end PhoneCallMessagePrint3
 
 	thumb_func_start ov101_021F2220
 ov101_021F2220: ; 0x021F2220
@@ -22588,7 +22588,7 @@ _021F262C:
 	ldrb r3, [r6, r3]
 	ldr r1, [r5, #0x48]
 	add r0, r5, #0
-	bl ov101_021F21F0
+	bl PhoneCallMessagePrint2
 	b _021F2672
 _021F265C:
 	add r0, r5, #0
@@ -22655,7 +22655,7 @@ _021F26C0:
 _021F26CC:
 	ldr r1, [r5, #0x4c]
 	add r2, r6, #0
-	bl ov101_021F21A0
+	bl PhoneCallMessagePrint
 	b _021F26EC
 _021F26D6:
 	bl ov101_021F2220
@@ -22778,7 +22778,7 @@ _021F27A8:
 	ldr r1, [r5, #0x44]
 	add r0, r5, #0
 	mov r2, #0x25
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F27D4
 _021F27B4:
 	bl ov101_021F2220
@@ -22950,7 +22950,7 @@ _021F28E4:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	lsr r2, r2, #0x18
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F29DA
 _021F28FC:
 	bl ov101_021F2220
@@ -22969,7 +22969,7 @@ _021F290A:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #msg_0664_00021
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	mov r0, #0xff
 	str r0, [r4, #4]
 	add sp, #8
@@ -22983,7 +22983,7 @@ _021F292A:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	lsr r2, r2, #0x18
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F29DA
 _021F2940:
 	bl ov101_021F2220
@@ -23023,7 +23023,7 @@ _021F296C:
 	strb r1, [r0]
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F29AC
 _021F2992:
 	add r0, r4, #0
@@ -23037,7 +23037,7 @@ _021F2992:
 	strb r1, [r0]
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 _021F29AC:
 	add r1, r4, #0
 	add r1, #0x4d
@@ -23891,7 +23891,7 @@ _021F2FC4:
 	ldrb r3, [r3, #1]
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
-	bl ov101_021F21F0
+	bl PhoneCallMessagePrint2
 	b _021F2FF0
 _021F2FDA:
 	bl ov101_021F2220
@@ -23965,7 +23965,7 @@ _021F3042:
 	ldr r1, [r6, #0x4c]
 	add r0, r6, #0
 	lsr r2, r2, #0x18
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F30A0
 _021F306E:
 	lsl r0, r5, #0x19
@@ -23979,7 +23979,7 @@ _021F306E:
 	add r0, r6, #0
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl ov101_021F21F0
+	bl PhoneCallMessagePrint2
 	b _021F30A0
 _021F308A:
 	bl ov101_021F2220
@@ -24156,7 +24156,7 @@ _021F3166:
 	add r0, r5, #0
 	mov r2, #0xd
 	mov r3, #0xe
-	bl ov101_021F21F0
+	bl PhoneCallMessagePrint2
 	b _021F3418
 _021F31E0:
 	bl ov101_021F2220
@@ -24169,7 +24169,7 @@ _021F31EE:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #0xf
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F3418
 _021F31FA:
 	bl ov101_021F2220
@@ -24276,7 +24276,7 @@ _021F32BC:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #0x15
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	mov r0, #0xff
 	str r0, [r4, #4]
 	add sp, #0xc
@@ -24323,7 +24323,7 @@ _021F32F8:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #0x14
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F3418
 _021F332E:
 	bl ov101_021F2220
@@ -24385,7 +24385,7 @@ _021F339E:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	lsr r2, r2, #0x18
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	cmp r6, #0
 	beq _021F3418
 	mov r0, #0xff
@@ -24411,7 +24411,7 @@ _021F33DC:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #0x15
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F3418
 _021F33E8:
 	add r0, r5, #0
@@ -24491,13 +24491,13 @@ _021F345E:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #6
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F3502
 _021F347A:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #2
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F3502
 _021F3486:
 	bl ov101_021F2220
@@ -24543,7 +24543,7 @@ _021F34B8:
 _021F34DE:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F3502
 _021F34E8:
 	bl ov101_021F2220
@@ -24729,7 +24729,7 @@ _021F3626:
 	add r0, r4, #0
 	mov r2, #3
 	mov r3, #4
-	bl ov101_021F21F0
+	bl PhoneCallMessagePrint2
 	b _021F36E6
 _021F3634:
 	bl ov101_021F2220
@@ -24772,7 +24772,7 @@ _021F3642:
 	ldr r1, [r4, #0x4c]
 	add r0, r4, #0
 	mov r2, #9
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F36E6
 _021F3696:
 	bl LCRandom
@@ -24784,7 +24784,7 @@ _021F3696:
 	ldr r1, [r4, #0x4c]
 	add r0, r4, #0
 	lsr r2, r2, #0x18
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F36E6
 _021F36B2:
 	bl ov101_021F2220
@@ -24797,7 +24797,7 @@ _021F36C0:
 	ldr r1, [r4, #0x4c]
 	add r0, r4, #0
 	mov r2, #8
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F36E6
 _021F36CC:
 	bl ov101_021F2220
@@ -24929,7 +24929,7 @@ _021F37BA:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #2
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F3882
 _021F37CA:
 	bl ov101_021F2220
@@ -24945,7 +24945,7 @@ _021F37D6:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #3
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	mov r0, #0xff
 	str r0, [r4, #4]
 	b _021F382C
@@ -24958,7 +24958,7 @@ _021F37F0:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #4
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	mov r0, #3
 	str r0, [r4, #4]
 	b _021F382C
@@ -24970,7 +24970,7 @@ _021F380A:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #5
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F382C
 _021F381E:
 	mov r0, #2
@@ -24978,7 +24978,7 @@ _021F381E:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #6
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 _021F382C:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -24997,7 +24997,7 @@ _021F383C:
 	add r2, r2, #7
 	lsl r2, r2, #0x18
 	lsr r2, r2, #0x18
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F3882
 _021F3852:
 	bl ov101_021F2220
@@ -25009,7 +25009,7 @@ _021F385E:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #0xb
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F3882
 _021F386A:
 	add r0, r5, #0
@@ -25120,7 +25120,7 @@ _021F3924:
 	add r0, r5, #0
 	mov r2, #3
 	mov r3, #4
-	bl ov101_021F21F0
+	bl PhoneCallMessagePrint2
 	b _021F3A96
 _021F3936:
 	bl ov101_021F2220
@@ -25138,7 +25138,7 @@ _021F3944:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #0xa
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	mov r0, #0xff
 	str r0, [r4, #4]
 	add sp, #8
@@ -25148,7 +25148,7 @@ _021F3962:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #5
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F3A96
 _021F396E:
 	bl ov101_021F2220
@@ -25190,7 +25190,7 @@ _021F39B0:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #9
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	mov r0, #0xff
 	str r0, [r4, #4]
 	add sp, #8
@@ -25219,7 +25219,7 @@ _021F39C4:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #6
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	add sp, #8
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -25253,7 +25253,7 @@ _021F3A10:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #6
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F3A96
 _021F3A4A:
 	bl ov101_021F2220
@@ -25271,13 +25271,13 @@ _021F3A58:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #8
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F3A96
 _021F3A6E:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #9
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F3A96
 _021F3A7A:
 	add r0, r5, #0
@@ -25396,7 +25396,7 @@ _021F3B34:
 	add r0, r5, #0
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl ov101_021F21F0
+	bl PhoneCallMessagePrint2
 	b _021F3B94
 _021F3B56:
 	bl ov101_021F2220
@@ -25414,7 +25414,7 @@ _021F3B62:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	lsr r2, r2, #0x18
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F3B94
 _021F3B7E:
 	bl ov101_021F2220
@@ -25463,7 +25463,7 @@ _021F3BB4:
 	add r0, r6, #0
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl ov101_021F21F0
+	bl PhoneCallMessagePrint2
 	b _021F3C54
 _021F3BD8:
 	bl ov101_021F2220
@@ -25480,7 +25480,7 @@ _021F3BE4:
 	ldr r1, [r6, #0x4c]
 	add r0, r6, #0
 	mov r2, #0x24
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F3C54
 _021F3BFA:
 	add r0, r4, #0
@@ -25504,7 +25504,7 @@ _021F3BFA:
 	add r0, r6, #0
 	mov r2, #0x22
 	mov r3, #0x23
-	bl ov101_021F21F0
+	bl PhoneCallMessagePrint2
 	b _021F3C54
 _021F3C2E:
 	add r2, #0x15
@@ -25512,7 +25512,7 @@ _021F3C2E:
 	ldr r1, [r6, #0x4c]
 	add r0, r6, #0
 	lsr r2, r2, #0x18
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F3C54
 _021F3C3E:
 	bl ov101_021F2220
@@ -25619,7 +25619,7 @@ _021F3CDE:
 	add r2, r2, #4
 	lsl r2, r2, #0x18
 	lsr r2, r2, #0x18
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F3D2A
 _021F3CF2:
 	bl ov101_021F2220
@@ -25635,7 +25635,7 @@ _021F3CFE:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	lsr r2, r2, #0x18
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F3D2A
 _021F3D14:
 	bl ov101_021F2220
@@ -25756,7 +25756,7 @@ _021F3DE6:
 	add r2, r2, #7
 	lsl r2, r2, #0x18
 	lsr r2, r2, #0x18
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F3E6A
 _021F3DFA:
 	bl ov101_021F2220
@@ -25787,7 +25787,7 @@ _021F3E06:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	lsr r2, r2, #0x18
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F3E6A
 _021F3E42:
 	add r0, r5, #0
@@ -25795,7 +25795,7 @@ _021F3E42:
 	add r2, r0, #0
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F3E6A
 _021F3E54:
 	bl ov101_021F2220
@@ -25937,14 +25937,14 @@ _021F3F34:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #1
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 _021F3F54:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #2
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F405A
 _021F3F60:
 	bl ov101_021F2220
@@ -25962,7 +25962,7 @@ _021F3F6C:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #3
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	mov r0, #0xff
 	str r0, [r4, #4]
 	mov r0, #0
@@ -25974,7 +25974,7 @@ _021F3F8A:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #9
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	mov r0, #0xff
 	str r0, [r4, #4]
 	mov r0, #0
@@ -25995,7 +25995,7 @@ _021F3FB8:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #4
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	mov r0, #0xff
 	str r0, [r4, #4]
 	mov r0, #0
@@ -26004,7 +26004,7 @@ _021F3FCA:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #5
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F405A
 _021F3FD6:
 	bl ov101_021F2220
@@ -26034,7 +26034,7 @@ _021F3FFE:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #7
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F405A
 _021F4014:
 	ldrb r1, [r4, #0x18]
@@ -26045,7 +26045,7 @@ _021F4014:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #6
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	ldrb r1, [r4, #0x18]
 	ldr r0, [r5, #0x20]
 	mov r2, #1
@@ -26055,7 +26055,7 @@ _021F4036:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #8
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F405A
 _021F4042:
 	add r0, r5, #0
@@ -26094,7 +26094,7 @@ _021F4078:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #0xa
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F40DE
 _021F4088:
 	bl ov101_021F2220
@@ -26112,7 +26112,7 @@ _021F4094:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	mov r2, #0xb
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F40DE
 _021F40AC:
 	bl LCRandom
@@ -26124,7 +26124,7 @@ _021F40AC:
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
 	lsr r2, r2, #0x18
-	bl PhoneCallMessagePrint
+	bl PhoneCallMessagePrint3
 	b _021F40DE
 _021F40C8:
 	bl ov101_021F2220
@@ -26287,7 +26287,7 @@ ov101_021F41B8: ; 0x021F41B8
 	add r0, r5, #0
 	mov r2, #0x26
 	mov r3, #0x27
-	bl ov101_021F21F0
+	bl PhoneCallMessagePrint2
 	b _021F4242
 _021F41F2:
 	cmp r0, #6
@@ -26296,7 +26296,7 @@ _021F41F2:
 	add r0, r5, #0
 	mov r2, #0x18
 	mov r3, #0x19
-	bl ov101_021F21F0
+	bl PhoneCallMessagePrint2
 	b _021F4242
 _021F4204:
 	mov r4, #0
@@ -26329,7 +26329,7 @@ _021F4222:
 	lsl r3, r3, #0x18
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl ov101_021F21F0
+	bl PhoneCallMessagePrint2
 _021F4242:
 	add r0, r6, #0
 	bl FreeToHeap

@@ -9342,9 +9342,9 @@
 .public ov101_021F1FF4
 .public ov101_021F2110
 .public ov101_021F217C
-.public ov101_021F21A0
-.public ov101_021F21F0
 .public PhoneCallMessagePrint
+.public PhoneCallMessagePrint2
+.public PhoneCallMessagePrint3
 .public ov101_021F2220
 .public ov101_021F2248
 .public ov101_021F2308
