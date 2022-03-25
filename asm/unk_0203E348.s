@@ -258,7 +258,7 @@ sub_0203E3FC: ; 0x0203E3FC
 	lsr r1, r1, #0x10
 	bl sub_020778E8
 	ldr r0, [r5, #0x40]
-	bl sub_0205C700
+	bl PlayerAvatar_GetState
 	cmp r0, #1
 	bne _0203E446
 	add r0, r4, #0
@@ -1336,8 +1336,8 @@ sub_0203EC3C: ; 0x0203EC3C
 _0203EC60: .word _020FA394
 	thumb_func_end sub_0203EC3C
 
-	thumb_func_start sub_0203EC64
-sub_0203EC64: ; 0x0203EC64
+	thumb_func_start CreateUnownReportWork
+CreateUnownReportWork: ; 0x0203EC64
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r0, #0xb
@@ -1360,7 +1360,7 @@ sub_0203EC64: ; 0x0203EC64
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0203EC64
+	thumb_func_end CreateUnownReportWork
 
 	thumb_func_start sub_0203EC98
 sub_0203EC98: ; 0x0203EC98
@@ -1384,8 +1384,8 @@ sub_0203EC98: ; 0x0203EC98
 _0203ECBC: .word _020FA384
 	thumb_func_end sub_0203EC98
 
-	thumb_func_start sub_0203ECC0
-sub_0203ECC0: ; 0x0203ECC0
+	thumb_func_start CreateBerryPotsWork
+CreateBerryPotsWork: ; 0x0203ECC0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r0, #0xb
@@ -1412,7 +1412,7 @@ sub_0203ECC0: ; 0x0203ECC0
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0203ECC0
+	thumb_func_end CreateBerryPotsWork
 
 	thumb_func_start sub_0203ECFC
 sub_0203ECFC: ; 0x0203ECFC
@@ -1436,8 +1436,8 @@ sub_0203ECFC: ; 0x0203ECFC
 _0203ED20: .word _020FA374
 	thumb_func_end sub_0203ECFC
 
-	thumb_func_start sub_0203ED24
-sub_0203ED24: ; 0x0203ED24
+	thumb_func_start CreateApricornBoxWork
+CreateApricornBoxWork: ; 0x0203ED24
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -1478,7 +1478,7 @@ _0203ED74:
 	bl sub_0203ECFC
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_0203ED24
+	thumb_func_end CreateApricornBoxWork
 
 	thumb_func_start sub_0203ED80
 sub_0203ED80: ; 0x0203ED80
@@ -1819,8 +1819,8 @@ sub_0203EFEC: ; 0x0203EFEC
 	.balign 4, 0
 	thumb_func_end sub_0203EFEC
 
-	thumb_func_start sub_0203F018
-sub_0203F018: ; 0x0203F018
+	thumb_func_start CreateUseMailWork
+CreateUseMailWork: ; 0x0203F018
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r7, r0, #0
@@ -1846,7 +1846,7 @@ _0203F042:
 	bl sub_0203EFD4
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0203F018
+	thumb_func_end CreateUseMailWork
 
 	thumb_func_start sub_0203F050
 sub_0203F050: ; 0x0203F050
@@ -2470,8 +2470,8 @@ sub_0203F4F8: ; 0x0203F4F8
 _0203F538: .word _020FA2B4
 	thumb_func_end sub_0203F4F8
 
-	thumb_func_start sub_0203F53C
-sub_0203F53C: ; 0x0203F53C
+	thumb_func_start CreatePalPadWork
+CreatePalPadWork: ; 0x0203F53C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -2495,7 +2495,7 @@ sub_0203F53C: ; 0x0203F53C
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0203F56C: .word _020FA2A4
-	thumb_func_end sub_0203F53C
+	thumb_func_end CreatePalPadWork
 
 	thumb_func_start sub_0203F570
 sub_0203F570: ; 0x0203F570

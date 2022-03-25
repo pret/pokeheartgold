@@ -319,7 +319,7 @@ sub_02055A00: ; 0x02055A00
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	add r6, r2, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	add r4, r0, #0
 	cmp r5, #0x20
 	blt _02055A14

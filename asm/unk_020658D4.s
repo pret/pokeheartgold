@@ -185,7 +185,7 @@ sub_020659CC: ; 0x020659CC
 	add r0, #0xe8 ; ->followMon.effectTimer
 	str r1, [r0]
 	mov r0, #1
-	lsl r0, r0, #8 ; ->followMon.unk1C
+	lsl r0, r0, #8 ; ->followMon.fsys
 	str r1, [r4, r0]
 	add r0, r4, #0
 	add r0, #0xec ; ->followMon.duration
@@ -1614,7 +1614,7 @@ sub_020664D8: ; 0x020664D8
 	ldr r1, [sp, #8]
 	add r0, r4, #0
 	str r2, [sp, #4]
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	add r6, r0, #0
 	lsl r0, r6, #0x18
 	lsr r0, r0, #0x18
@@ -1655,7 +1655,7 @@ _0206652A:
 	ldr r1, [sp, #8]
 	ldr r2, [sp, #4]
 	add r0, r4, #0
-	bl sub_02054918
+	bl GetMetatileBehaviorAt
 	add r4, r0, #0
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18

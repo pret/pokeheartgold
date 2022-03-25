@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_APRICORN_TREE_H
 
 #include "save_misc_data.h"
+#include "script.h"
 
 void ApricornTrees_init(APRICORN_TREE *trees);
 void sub_0202AE0C(APRICORN_TREE *trees);

@@ -161,7 +161,7 @@ _0268:
 	apply_movement obj_player, _0298
 	wait_movement
 	hide_person obj_D24R0208_babyboy1_12
-	setflag FLAG_UNK_221
+	setflag FLAG_OPENED_ALPH_HO_OH_SECRET_ROOM
 	play_se SEQ_SE_DP_UG_008
 	releaseall
 	end

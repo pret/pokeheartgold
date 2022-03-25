@@ -7,6 +7,7 @@
 #include "constants/items.h"
 #include "constants/trainer_class.h"
 #include "msgdata/msg/msg_0246.h"
+#include "unk_02055418.h"
 
 #define HEAP_ID_BUG_CONTEST                                  3
 

@@ -82,6 +82,7 @@ void MapObject_SetXRange(LocalMapObject *mapObject, u32 xRange);
 void MapObject_SetYRange(LocalMapObject *mapObject, u32 yRange);
 void sub_0205F89C(LocalMapObject *mapObject, BOOL enable_bit);
 BOOL sub_0205F684(LocalMapObject *mapObject);
+BOOL sub_0205F83C(LocalMapObject *mapObject);
 void sub_0205F690(LocalMapObject *mapObject, BOOL enable_bit);
 void sub_0205F6E0(LocalMapObject *mapObject, BOOL enable_bit);
 void sub_0205E5EC(FieldSystem *fsys, MapObjectMan *mapObjectMan, struct SavStructUnk10Sub *a2, int a3);
@@ -91,5 +92,9 @@ MapObjectMan *sub_0205E0BC(FieldSystem *fsys, int num, HeapID heapId);
 void sub_0205F55C(MapObjectMan *man);
 void sub_0205E494(MapObjectMan *man);
 void sub_0205E0E8(MapObjectMan *man);
+BOOL MapObject_IsMovementPaused(LocalMapObject *obj);
+void MapObject_UnpauseMovement(LocalMapObject *obj);
+void MapObjectMan_PauseAllMovement(MapObjectMan *man);
+void MapObjectMan_UnpauseAllMovement(MapObjectMan *man);
 
 #endif //POKEHEARTGOLD_FIELD_MAP_OBJECT_H

@@ -31,6 +31,7 @@
 #include "overlay_02.h"
 #include "constants/maps.h"
 #include "unk_0201F79C.h"
+#include "unk_02055418.h"
 
 struct UnkTaskEnv_02053688 {
     int unk0;
@@ -846,7 +847,7 @@ static BOOL sub_02053CCC(TaskManager *taskManager) {
         env->unk1C = 0;
         if (FollowingPokemon_IsActive(fsys)
          && !ov01_022057C4(fsys)
-         && sub_0205C700(fsys->playerAvatar) != 1) {
+         && PlayerAvatar_GetState(fsys->playerAvatar) != 1) {
             env->unk1C = ov01_0220329C(FollowingPokemon_GetMapObject(fsys), 1);
         }
         env->unk0++;

@@ -154,14 +154,14 @@ scr_seq_D24R0202_001:
 scr_seq_D24R0202_002:
 	scrcmd_609
 	lockall
-	goto_if_set FLAG_UNK_21B, _029A
+	goto_if_set FLAG_OPENED_ALPH_ESCAPE_ROPE_SECRET_ROOM, _029A
 	wait 2, VAR_SPECIAL_x8004
 	scrcmd_561 0, 2, 10, 6
 	wait 10, VAR_SPECIAL_x8004
 	apply_movement obj_player, _02AC
 	wait_movement
 	hide_person obj_D24R0202_babyboy1_12
-	setflag FLAG_UNK_21B
+	setflag FLAG_OPENED_ALPH_ESCAPE_ROPE_SECRET_ROOM
 	play_se SEQ_SE_DP_UG_008
 	releaseall
 	end
