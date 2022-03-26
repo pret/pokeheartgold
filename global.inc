@@ -28096,8 +28096,8 @@
 .public sub_0202AB18
 .public sub_0202ABB0
 .public sub_0202ABBC
-.public sub_0202ABD0
-.public sub_0202ABEC
+.public SaveMisc_GetBattleGreeting
+.public SaveMisc_SetBattleGreeting
 .public sub_0202AC0C
 .public sub_0202AC1C
 .public sub_0202AC38

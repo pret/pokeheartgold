@@ -1659,7 +1659,7 @@ _02031566:
 	add r1, r5, #0
 	add r0, r7, #0
 	add r1, #0x20
-	bl sub_0202ABD0
+	bl SaveMisc_GetBattleGreeting
 	add r0, sp, #4
 	ldrb r0, [r0, #0xe]
 	strb r0, [r5, #0x15]
