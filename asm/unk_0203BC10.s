@@ -481,7 +481,7 @@ _0203BF60:
 	lsl r1, r1, #4
 	add r0, r4, #0
 	add r1, r5, r1
-	bl sub_02067E10
+	bl Fsys_MakeFieldMoveCheckData
 	add r0, r6, #0
 	bl sub_0203C14C
 	add r0, r4, #0
@@ -527,7 +527,7 @@ _0203BFBA:
 	lsl r1, r1, #4
 	add r0, r4, #0
 	add r1, r5, r1
-	bl sub_02067E10
+	bl Fsys_MakeFieldMoveCheckData
 	mov r0, #3
 	strh r0, [r5, #0x26]
 	b _0203C136

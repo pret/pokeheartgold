@@ -759,8 +759,8 @@ _021F20B0:
 	.balign 4, 0
 	thumb_func_end ov01_021F2068
 
-	thumb_func_start ov01_021F20C0
-ov01_021F20C0: ; 0x021F20C0
+	thumb_func_start Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors
+Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors: ; 0x021F20C0
 	push {r4, r5, r6, lr}
 	add r4, r2, #0
 	add r5, r1, #0
@@ -803,7 +803,7 @@ _021F2112:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021F20C0
+	thumb_func_end Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors
 
 	thumb_func_start ov01_021F2118
 ov01_021F2118: ; 0x021F2118
@@ -1287,7 +1287,7 @@ _021F2512:
 	bl sub_0205DFEC
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B8DC
+	bl MetatileBehavior_IsWaterfall
 	cmp r0, #0
 	bne _021F252A
 	mov r0, #0
@@ -1393,8 +1393,8 @@ _021F25D8:
 	.balign 4, 0
 	thumb_func_end ov01_021F2590
 
-	thumb_func_start ov01_021F25E8
-ov01_021F25E8: ; 0x021F25E8
+	thumb_func_start MetatileBehavior_IsRockClimbInDirection
+MetatileBehavior_IsRockClimbInDirection: ; 0x021F25E8
 	push {r3, lr}
 	cmp r1, #3
 	bhi _021F2622
@@ -1429,7 +1429,7 @@ _021F2622:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021F25E8
+	thumb_func_end MetatileBehavior_IsRockClimbInDirection
 
 	thumb_func_start ov01_021F2628
 ov01_021F2628: ; 0x021F2628
@@ -1725,7 +1725,7 @@ _021F2842:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r4, #0
-	bl ov01_021F25E8
+	bl MetatileBehavior_IsRockClimbInDirection
 	cmp r0, #1
 	bne _021F2868
 	ldrh r0, [r5, #2]
@@ -2572,7 +2572,7 @@ _021F2EA6:
 	bl sub_0205F504
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B8E8
+	bl MetatileBehavior_IsWhirlpool
 	cmp r0, #1
 	bne _021F2EC6
 	mov r0, #3

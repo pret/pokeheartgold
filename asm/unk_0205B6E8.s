@@ -476,8 +476,8 @@ _0205B8D8:
 	bx lr
 	thumb_func_end sub_0205B8D0
 
-	thumb_func_start sub_0205B8DC
-sub_0205B8DC: ; 0x0205B8DC
+	thumb_func_start MetatileBehavior_IsWaterfall
+MetatileBehavior_IsWaterfall: ; 0x0205B8DC
 	cmp r0, #0x13
 	bne _0205B8E4
 	mov r0, #1
@@ -485,10 +485,10 @@ sub_0205B8DC: ; 0x0205B8DC
 _0205B8E4:
 	mov r0, #0
 	bx lr
-	thumb_func_end sub_0205B8DC
+	thumb_func_end MetatileBehavior_IsWaterfall
 
-	thumb_func_start sub_0205B8E8
-sub_0205B8E8: ; 0x0205B8E8
+	thumb_func_start MetatileBehavior_IsWhirlpool
+MetatileBehavior_IsWhirlpool: ; 0x0205B8E8
 	cmp r0, #0x11
 	bne _0205B8F0
 	mov r0, #1
@@ -496,7 +496,7 @@ sub_0205B8E8: ; 0x0205B8E8
 _0205B8F0:
 	mov r0, #0
 	bx lr
-	thumb_func_end sub_0205B8E8
+	thumb_func_end MetatileBehavior_IsWhirlpool
 
 	thumb_func_start sub_0205B8F4
 sub_0205B8F4: ; 0x0205B8F4
@@ -895,8 +895,8 @@ _0205BAF4:
 	bx lr
 	thumb_func_end sub_0205BAEC
 
-	thumb_func_start sub_0205BAF8
-sub_0205BAF8: ; 0x0205BAF8
+	thumb_func_start MetatileBehavior_IsHeadbutt
+MetatileBehavior_IsHeadbutt: ; 0x0205BAF8
 	cmp r0, #6
 	bne _0205BB00
 	mov r0, #1
@@ -904,7 +904,7 @@ sub_0205BAF8: ; 0x0205BAF8
 _0205BB00:
 	mov r0, #0
 	bx lr
-	thumb_func_end sub_0205BAF8
+	thumb_func_end MetatileBehavior_IsHeadbutt
 
 	thumb_func_start sub_0205BB04
 sub_0205BB04: ; 0x0205BB04

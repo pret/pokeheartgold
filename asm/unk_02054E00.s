@@ -53,8 +53,8 @@ sTrainerEncounterMusicParam:
 
 	.text
 
-	thumb_func_start sub_02054E50
-sub_02054E50: ; 0x02054E50
+	thumb_func_start MapModel_IsHeadbuttTree
+MapModel_IsHeadbuttTree: ; 0x02054E50
 	cmp r0, #0xd0
 	bne _02054E58
 	mov r0, #1
@@ -62,10 +62,10 @@ sub_02054E50: ; 0x02054E50
 _02054E58:
 	mov r0, #0
 	bx lr
-	thumb_func_end sub_02054E50
+	thumb_func_end MapModel_IsHeadbuttTree
 
-	thumb_func_start sub_02054E5C
-sub_02054E5C: ; 0x02054E5C
+	thumb_func_start MapCoordToMatrixIndex
+MapCoordToMatrixIndex: ; 0x02054E5C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r0, #0
@@ -107,7 +107,7 @@ _02054EA2:
 	lsr r0, r0, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02054E5C
+	thumb_func_end MapCoordToMatrixIndex
 
 	thumb_func_start sub_02054EB0
 sub_02054EB0: ; 0x02054EB0

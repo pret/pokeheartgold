@@ -22,7 +22,7 @@ struct UnkStruct_0203D818 {
 };
 
 struct FlyTaskStruct {
-    u32 unk0;
+    u32 partySlot;
 };
 
 void sub_0203C8F0(struct BagViewAppWork *env, TaskFunc func);

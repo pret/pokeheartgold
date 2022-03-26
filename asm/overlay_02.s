@@ -13743,8 +13743,8 @@ _0224C358:
 	pop {r4, pc}
 	thumb_func_end ov02_0224C338
 
-	thumb_func_start ov02_0224C368
-ov02_0224C368: ; 0x0224C368
+	thumb_func_start CreateFieldDigTaskEnv
+CreateFieldDigTaskEnv: ; 0x0224C368
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -13777,10 +13777,10 @@ _0224C3A4:
 _0224C3A8:
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov02_0224C368
+	thumb_func_end CreateFieldDigTaskEnv
 
-	thumb_func_start ov02_0224C3AC
-ov02_0224C3AC: ; 0x0224C3AC
+	thumb_func_start Task_FieldDig
+Task_FieldDig: ; 0x0224C3AC
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	bl TaskManager_GetSys
@@ -13912,7 +13912,7 @@ _0224C4A2:
 _0224C4A8: .word ov01_02205A60
 _0224C4AC: .word ov02_02253710
 _0224C4B0: .word ov02_02253754
-	thumb_func_end ov02_0224C3AC
+	thumb_func_end Task_FieldDig
 
 	thumb_func_start ov02_0224C4B4
 ov02_0224C4B4: ; 0x0224C4B4
@@ -13956,8 +13956,8 @@ _0224C4EA:
 	pop {r4, pc}
 	thumb_func_end ov02_0224C4D8
 
-	thumb_func_start ov02_0224C500
-ov02_0224C500: ; 0x0224C500
+	thumb_func_start CreateFieldTeleportTaskEnv
+CreateFieldTeleportTaskEnv: ; 0x0224C500
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -14000,10 +14000,10 @@ _0224C552:
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov02_0224C500
+	thumb_func_end CreateFieldTeleportTaskEnv
 
-	thumb_func_start ov02_0224C558
-ov02_0224C558: ; 0x0224C558
+	thumb_func_start Task_FieldTeleport
+Task_FieldTeleport: ; 0x0224C558
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	bl TaskManager_GetSys
@@ -14135,7 +14135,7 @@ _0224C64E:
 _0224C654: .word ov01_02205A60
 _0224C658: .word ov02_0225373C
 _0224C65C: .word ov02_02253724
-	thumb_func_end ov02_0224C558
+	thumb_func_end Task_FieldTeleport
 
 	thumb_func_start ov02_0224C660
 ov02_0224C660: ; 0x0224C660

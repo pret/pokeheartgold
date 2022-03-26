@@ -1568,7 +1568,7 @@ _021E74E0:
 	pop {r3, r4, r5, r6, r7, pc}
 _021E74F2:
 	add r0, r4, #0
-	bl sub_0205BAF8
+	bl MetatileBehavior_IsHeadbutt
 	cmp r0, #0
 	beq _021E7500
 	ldr r0, _021E760C ; =std_field_headbutt
@@ -1576,7 +1576,7 @@ _021E74F2:
 _021E7500:
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov01_021F25E8
+	bl MetatileBehavior_IsRockClimbInDirection
 	cmp r0, #0
 	beq _021E7510
 	ldr r0, _021E7610 ; =std_field_rock_climb
@@ -1592,7 +1592,7 @@ _021E7510:
 	ldr r0, [r5, #0x40]
 	add r1, r7, #0
 	add r2, r4, #0
-	bl ov01_021F20C0
+	bl Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors
 	cmp r0, #0
 	beq _021E7550
 	add r0, r6, #0
@@ -1624,14 +1624,14 @@ _021E7550:
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7570:
 	add r0, r4, #0
-	bl sub_0205B8DC
+	bl MetatileBehavior_IsWaterfall
 	cmp r0, #0
 	beq _021E757E
 	ldr r0, _021E761C ; =std_field_waterfall
 	pop {r3, r4, r5, r6, r7, pc}
 _021E757E:
 	add r0, r4, #0
-	bl sub_0205B8E8
+	bl MetatileBehavior_IsWhirlpool
 	cmp r0, #0
 	beq _021E758C
 	ldr r0, _021E7620 ; =std_field_whirlpool
@@ -2866,7 +2866,7 @@ _021E7F34:
 	thumb_func_start ov01_021E7F38
 ov01_021E7F38: ; 0x021E7F38
 	push {r3, lr}
-	bl ov01_021E7FA8
+	bl FieldSys_FacingModelIsHeadbuttTree
 	cmp r0, #0
 	beq _021E7F46
 	ldr r0, _021E7F4C ; =std_field_headbutt
@@ -2923,8 +2923,8 @@ _021E7F9E:
 _021E7FA4: .word 0x0000FFFF
 	thumb_func_end ov01_021E7F54
 
-	thumb_func_start ov01_021E7FA8
-ov01_021E7FA8: ; 0x021E7FA8
+	thumb_func_start FieldSys_FacingModelIsHeadbuttTree
+FieldSys_FacingModelIsHeadbuttTree: ; 0x021E7FA8
 	push {r4, lr}
 	sub sp, #8
 	add r1, sp, #4
@@ -2934,10 +2934,10 @@ ov01_021E7FA8: ; 0x021E7FA8
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r4, #0
-	bl sub_02054E5C
+	bl MapCoordToMatrixIndex
 	ldr r1, [r4, #0x30]
 	bl GetMapModelNo
-	bl sub_02054E50
+	bl MapModel_IsHeadbuttTree
 	cmp r0, #0
 	beq _021E7FD4
 	add sp, #8
@@ -2948,7 +2948,7 @@ _021E7FD4:
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021E7FA8
+	thumb_func_end FieldSys_FacingModelIsHeadbuttTree
 
 	.rodata
 

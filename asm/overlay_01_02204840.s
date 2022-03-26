@@ -213,7 +213,7 @@ _022049BE:
 	ldr r0, [r5, #0x40]
 	add r1, sp, #4
 	add r2, sp, #0
-	bl sub_0205E02C
+	bl PlayerAvatar_GetCoordsInFront
 	ldr r1, [r4, #8]
 	add r0, r5, #0
 	bl sub_020557A0

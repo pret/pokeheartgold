@@ -5406,7 +5406,7 @@
 .public ov01_021E7F00
 .public ov01_021E7F38
 .public ov01_021E7F54
-.public ov01_021E7FA8
+.public FieldSys_FacingModelIsHeadbuttTree
 .public ov01_021E7FDC
 .public ov01_021E8194
 .public ov01_021E81F0
@@ -5878,7 +5878,7 @@
 .public ov01_021F2004
 .public ov01_021F202C
 .public ov01_021F2068
-.public ov01_021F20C0
+.public Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors
 .public ov01_021F2118
 .public ov01_021F232C
 .public ov01_021F2378
@@ -5887,7 +5887,7 @@
 .public ov01_021F2538
 .public ov01_021F2548
 .public ov01_021F2590
-.public ov01_021F25E8
+.public MetatileBehavior_IsRockClimbInDirection
 .public ov01_021F2628
 .public ov01_021F2694
 .public ov01_021F26AC
@@ -7286,12 +7286,12 @@
 .public ov02_0224C2A8
 .public ov02_0224C2EC
 .public ov02_0224C338
-.public ov02_0224C368
-.public ov02_0224C3AC
+.public CreateFieldDigTaskEnv
+.public Task_FieldDig
 .public ov02_0224C4B4
 .public ov02_0224C4D8
-.public ov02_0224C500
-.public ov02_0224C558
+.public CreateFieldTeleportTaskEnv
+.public Task_FieldTeleport
 .public ov02_0224C660
 .public ov02_0224C680
 .public ov02_0224C698
@@ -29041,8 +29041,8 @@
 .public sub_02054D10
 .public sub_02054DC8
 .public sub_02054E20
-.public sub_02054E50
-.public sub_02054E5C
+.public MapModel_IsHeadbuttTree
+.public MapCoordToMatrixIndex
 .public sub_02054EB0
 .public sub_02054F14
 .public Fsys_SetSavedMusicId
@@ -29248,8 +29248,8 @@
 .public sub_0205B8B8
 .public sub_0205B8C4
 .public sub_0205B8D0
-.public sub_0205B8DC
-.public sub_0205B8E8
+.public MetatileBehavior_IsWaterfall
+.public MetatileBehavior_IsWhirlpool
 .public sub_0205B8F4
 .public sub_0205B918
 .public sub_0205B93C
@@ -29279,7 +29279,7 @@
 .public sub_0205BAD0
 .public sub_0205BAE4
 .public sub_0205BAEC
-.public sub_0205BAF8
+.public MetatileBehavior_IsHeadbutt
 .public sub_0205BB04
 .public sub_0205BB1C
 .public sub_0205BBD0
@@ -29377,7 +29377,7 @@
 .public sub_0205DFC8
 .public sub_0205DFD4
 .public sub_0205DFEC
-.public sub_0205E02C
+.public PlayerAvatar_GetCoordsInFront
 .public sub_0205E0BC
 .public sub_0205E0E8
 .public sub_0205E104
@@ -29642,7 +29642,7 @@
 .public sub_02067BE8
 .public sub_02067BF8
 .public sub_02067C30
-.public sub_02067E10
+.public Fsys_MakeFieldMoveCheckData
 .public sub_020689C8
 .public sub_020689F8
 .public sub_02068B0C

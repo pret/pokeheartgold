@@ -2734,8 +2734,8 @@ sub_0205DFFC: ; 0x0205DFFC
 	.balign 4, 0
 	thumb_func_end sub_0205DFFC
 
-	thumb_func_start sub_0205E02C
-sub_0205E02C: ; 0x0205E02C
+	thumb_func_start PlayerAvatar_GetCoordsInFront
+PlayerAvatar_GetCoordsInFront: ; 0x0205E02C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -2748,7 +2748,7 @@ sub_0205E02C: ; 0x0205E02C
 	bl sub_0205DFFC
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0205E02C
+	thumb_func_end PlayerAvatar_GetCoordsInFront
 
 	thumb_func_start sub_0205E048
 sub_0205E048: ; 0x0205E048

@@ -301,7 +301,7 @@ ov01_022050F8: ; 0x022050F8
 	str r2, [sp]
 	add r1, sp, #8
 	add r2, sp, #4
-	bl sub_0205E02C
+	bl PlayerAvatar_GetCoordsInFront
 	add r0, r4, #0
 	bl FollowingPokemon_IsActive
 	cmp r0, #0

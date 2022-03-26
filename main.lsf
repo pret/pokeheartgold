@@ -227,7 +227,6 @@ Static main
 	Object asm/unk_0206793C.o
 	Object asm/unk_02067A60.o
 	Object src/field_move.o
-	Object asm/field_move_s.o
 	Object asm/unk_020689C8.o
 	Object asm/unk_02068DE0.o
 	Object src/unk_02068F84.o
