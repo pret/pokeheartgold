@@ -70,7 +70,7 @@ static void FormatSizeRecord(FieldSystem *fsys, u8 idx0, u8 idx1, u16 species, u
     u32 score;
     u32 r4;
 
-    msgFmt = FieldSysGetAttrAddr(fsys, UNK80_10_C_MSGFMT);
+    msgFmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MSGFMT);
     score = GetMonSize(species, rand);
     r4 = LengthConvertToImperial(score);
     BufferIntegerAsString(*msgFmt, idx0, r4 / 10, 3, STRCONVMODE_LEFT_ALIGN, TRUE);

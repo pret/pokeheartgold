@@ -66,7 +66,7 @@ ScrCmd_083: ; 0x02049170
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02054F28
+	bl Fsys_SetSavedMusicId
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -158,7 +158,7 @@ ScrCmd_088: ; 0x02049214
 	add r1, r2, #1
 	str r1, [r0, #8]
 	ldrb r0, [r2]
-	bl sub_02004A44
+	bl GF_SND_BGM_DisableSet
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0

@@ -33,7 +33,7 @@ scr_seq_0146_000:
 	get_party_slot_with_move VAR_SPECIAL_RESULT, MOVE_CUT
 	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _009E
-	check_badge 1, VAR_SPECIAL_RESULT
+	check_badge BADGE_HIVE, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _009E
 	npc_msg msg_0211_00000
@@ -180,7 +180,7 @@ scr_seq_0146_001:
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _02D7
-	check_badge 0, VAR_SPECIAL_RESULT
+	check_badge BADGE_ZEPHYR, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02D7
 	npc_msg msg_0211_00003
@@ -342,7 +342,7 @@ _051C:
 	get_party_slot_with_move VAR_SPECIAL_RESULT, MOVE_STRENGTH
 	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _0564
-	check_badge 2, VAR_SPECIAL_RESULT
+	check_badge BADGE_PLAIN, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0564
 	npc_msg msg_0211_00007
@@ -496,7 +496,7 @@ scr_seq_0146_003:
 	get_party_slot_with_move VAR_SPECIAL_RESULT, MOVE_ROCK_CLIMB
 	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _0797
-	check_badge 15, VAR_SPECIAL_RESULT
+	check_badge BADGE_EARTH, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0797
 	check_escort_mode VAR_SPECIAL_RESULT
@@ -661,7 +661,7 @@ scr_seq_0146_005:
 	get_party_slot_with_move VAR_SPECIAL_RESULT, MOVE_WATERFALL
 	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _0997
-	check_badge 7, VAR_SPECIAL_RESULT
+	check_badge BADGE_RISING, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0997
 	npc_msg msg_0211_00024
@@ -706,7 +706,7 @@ scr_seq_0146_016:
 	get_party_slot_with_move VAR_SPECIAL_RESULT, MOVE_WHIRLPOOL
 	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _0A34
-	check_badge 6, VAR_SPECIAL_RESULT
+	check_badge BADGE_GLACIER, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0A34
 	npc_msg msg_0211_00029

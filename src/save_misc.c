@@ -31,10 +31,10 @@ void Sav2_Misc_init(SAVE_MISC_DATA *saveMiscData) {
     SavGymmick_Clear(&saveMiscData->gymmick);
     MI_CpuFill16(saveMiscData->rivalName, EOS, OT_NAME_LENGTH + 1);
     MI_CpuFill8(saveMiscData->unk_0280, 0xFF, 8);
-    MailMsg_init_withBank(&saveMiscData->unk_02A0, MAILMSG_BANK_0295_GMM);
-    saveMiscData->unk_02A0.msg_no = msg_0295_00000;
-    saveMiscData->unk_02A0.fields[0] = GetECWordIndexByPair(NARC_msg_msg_0287_bin, msg_0287_regards);
-    saveMiscData->unk_02A0.fields[1] = EC_WORD_NULL;
+    MailMsg_init_withBank(&saveMiscData->battleGreetingEC, MAILMSG_BANK_0295_GMM);
+    saveMiscData->battleGreetingEC.msg_no = msg_0295_00000;
+    saveMiscData->battleGreetingEC.fields[0] = GetECWordIndexByPair(NARC_msg_msg_0287_bin, msg_0287_regards);
+    saveMiscData->battleGreetingEC.fields[1] = EC_WORD_NULL;
     for (i = 0; i < 5; i++) {
         saveMiscData->unk_02A8[0][i] = -1;
         saveMiscData->unk_02A8[1][i] = -1;
@@ -101,7 +101,7 @@ void sub_0202AA20(SAVE_MISC_DATA *saveMiscData, int *a1, int *a2, int *a3) {
     *a3 = saveMiscData->unk_029A_7;
 }
 
-const u8 _020F677C[3][2] = {
+static const u8 _020F677C[3][2] = {
     {0, 4},
     {4, 2},
     {6, 2},
@@ -182,12 +182,12 @@ void sub_0202ABBC(SAVE_MISC_DATA * saveMiscData, int *a1, u8 *a2) {
     *a2 = saveMiscData->unk_02DC;
 }
 
-void sub_0202ABD0(SAVE_MISC_DATA *saveMiscData, MAIL_MESSAGE *a1) {
-    *a1 = saveMiscData->unk_02A0;
+void SaveMisc_GetBattleGreeting(SAVE_MISC_DATA *saveMiscData, MAIL_MESSAGE *a1) {
+    *a1 = saveMiscData->battleGreetingEC;
 }
 
-void sub_0202ABEC(SAVE_MISC_DATA *saveMiscData, MAIL_MESSAGE *a1) {
-    saveMiscData->unk_02A0 = *a1;
+void SaveMisc_SetBattleGreeting(SAVE_MISC_DATA *saveMiscData, MAIL_MESSAGE *a1) {
+    saveMiscData->battleGreetingEC = *a1;
 }
 
 void sub_0202AC0C(SAVE_MISC_DATA *saveMiscData, u8 *a1) {

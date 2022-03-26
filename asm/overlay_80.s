@@ -26469,7 +26469,7 @@ ov80_0223690C: ; 0x0223690C
 	bl ov80_02236A88
 	add r1, r0, #0
 	ldr r0, [r5, #4]
-	bl sub_020518D8
+	bl BattleStruct_new
 	add r7, r0, #0
 	ldr r0, [r4, #8]
 	bl SavArray_PlayerParty_get
@@ -27344,7 +27344,7 @@ ov80_02236F24: ; 0x02236F24
 	bl ov80_022370F4
 	add r1, r0, #0
 	mov r0, #0xb
-	bl sub_020518D8
+	bl BattleStruct_new
 	ldr r1, [r6, #0xc]
 	add r4, r0, #0
 	str r1, [sp]
@@ -28224,7 +28224,7 @@ ov80_022375D0: ; 0x022375D0
 	bl ov80_02237850
 	add r1, r0, #0
 	mov r0, #0xb
-	bl sub_020518D8
+	bl BattleStruct_new
 	ldr r1, [r6, #0xc]
 	add r4, r0, #0
 	str r1, [sp]
@@ -29003,7 +29003,7 @@ ov80_02237B8C: ; 0x02237B8C
 	bl ov80_02237D5C
 	add r1, r0, #0
 	mov r0, #0xb
-	bl sub_020518D8
+	bl BattleStruct_new
 	ldr r1, [r6, #0xc]
 	add r4, r0, #0
 	str r1, [sp]
@@ -29778,7 +29778,7 @@ ov80_02238150: ; 0x02238150
 	bl ov80_02238344
 	add r1, r0, #0
 	mov r0, #0xb
-	bl sub_020518D8
+	bl BattleStruct_new
 	ldr r1, [r5, #0xc]
 	add r4, r0, #0
 	str r1, [sp]

@@ -21,7 +21,7 @@ scr_seq_T01_007:
 	end
 
 _0033:
-	goto_if_set FLAG_UNK_185, _0044
+	goto_if_set FLAG_GOT_HM08, _0044
 	goto _004A
 
 _0044:

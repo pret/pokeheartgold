@@ -43,7 +43,7 @@ scr_seq_T02GYM0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 15, VAR_SPECIAL_RESULT
+	check_badge BADGE_EARTH, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0131
 	npc_msg msg_0454_T02GYM0101_00000
@@ -52,7 +52,7 @@ scr_seq_T02GYM0101_000:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0147
-	give_badge 15
+	give_badge BADGE_EARTH
 	addvar VAR_UNK_4135, 1
 	setflag FLAG_UNK_998
 	add_special_game_stat 22
@@ -106,7 +106,7 @@ scr_seq_T02GYM0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 15, VAR_SPECIAL_RESULT
+	check_badge BADGE_EARTH, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0186
 	npc_msg msg_0454_T02GYM0101_00006
@@ -341,7 +341,7 @@ scr_seq_T02GYM0101_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 15, VAR_SPECIAL_RESULT
+	check_badge BADGE_EARTH, VAR_SPECIAL_RESULT
 	buffer_players_name 0
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _04A7

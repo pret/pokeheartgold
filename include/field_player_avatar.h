@@ -5,10 +5,6 @@ typedef struct FIELD_PLAYER_AVATAR FIELD_PLAYER_AVATAR;
 typedef struct MapObjectMan MapObjectMan;
 typedef struct LocalMapObject LocalMapObject;
 
-#define PLAYER_STATE_WALKING          0
-#define PLAYER_STATE_CYCLING          1
-#define PLAYER_STATE_SURFING          2
-
 struct FlypointsPlayerSub {
     u16 hasRunningShoes;
     u16 unk2;
@@ -26,9 +22,10 @@ FIELD_PLAYER_AVATAR *sub_0205C390(MapObjectMan *man, int x, int y, int direction
 FIELD_PLAYER_AVATAR *sub_0205C408(MapObjectMan *man, struct FlypointsPlayerSub *a1, int gender);
 void sub_0205C4CC(FIELD_PLAYER_AVATAR *avatar);
 void sub_0205C4C4(FIELD_PLAYER_AVATAR *avatar);
-void sub_0205C6E4(FIELD_PLAYER_AVATAR *avatar, int a1);
-int sub_0205C724(FIELD_PLAYER_AVATAR *avatar);
+void PlayerAvatar_SetState(FIELD_PLAYER_AVATAR *avatar, int state);
+int PlayerAvatar_GetGender(FIELD_PLAYER_AVATAR *avatar);
 LocalMapObject *PlayerAvatar_GetMapObject(FIELD_PLAYER_AVATAR *avatar);
 BOOL sub_0205CABC(FIELD_PLAYER_AVATAR *avatar);
+int PlayerAvatar_GetFacingDirection(FIELD_PLAYER_AVATAR *playerAvatar);
 
 #endif //POKEHEARTGOLD_FIELD_PLAYER_AVATAR_H

@@ -24,7 +24,7 @@ scr_seq_D11R0106_009:
 	check_registered_phone_number PHONE_CONTACT_BLAINE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _008A
-	check_badge 15, VAR_TEMP_x4002
+	check_badge BADGE_EARTH, VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 1
 	goto_if_eq _0069
 	clearflag FLAG_UNK_2F5
@@ -80,7 +80,7 @@ scr_seq_D11R0106_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 14, VAR_SPECIAL_RESULT
+	check_badge BADGE_VOLCANO, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01B6
 	npc_msg msg_0053_D11R0106_00000
@@ -89,7 +89,7 @@ scr_seq_D11R0106_000:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01CC
-	give_badge 14
+	give_badge BADGE_VOLCANO
 	addvar VAR_UNK_4135, 1
 	setflag FLAG_UNK_265
 	setflag FLAG_HIDE_ROUTE_19_WORKMEN_CLOSED
@@ -365,7 +365,7 @@ scr_seq_D11R0106_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 14, VAR_SPECIAL_RESULT
+	check_badge BADGE_VOLCANO, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _04B6
 	npc_msg msg_0053_D11R0106_00024

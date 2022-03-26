@@ -2332,10 +2332,10 @@ _02246D8A:
 	mov r0, #0xb
 	add r1, r0, #0
 	add r1, #0xf5
-	bl sub_020518D8
+	bl BattleStruct_new
 	str r0, [sp, #0x20]
 	add r1, r5, #0
-	bl sub_02051F00
+	bl BattleStruct_InitFromFsys
 	ldr r0, [sp, #0x24]
 	ldr r1, [sp, #0x1c]
 	ldr r2, [sp, #0x20]
@@ -2380,12 +2380,12 @@ _02246E0E:
 _02246E18:
 	mov r0, #0xb
 	mov r1, #0x4a
-	bl sub_020518D8
+	bl BattleStruct_new
 	str r0, [sp, #0x20]
 _02246E22:
 	ldr r0, [sp, #0x20]
 	add r1, r5, #0
-	bl sub_02051F00
+	bl BattleStruct_InitFromFsys
 	add r0, sp, #0x18
 	ldrb r0, [r0, #1]
 	cmp r0, #0
@@ -2612,7 +2612,7 @@ _02247002:
 	ldr r0, [sp, #0x10]
 	ldr r1, [sp, #0x20]
 	ldr r0, [r0]
-	bl sub_02051F00
+	bl BattleStruct_InitFromFsys
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0]
 	bl sub_02052544
@@ -2743,7 +2743,7 @@ _02247106:
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0xc]
 	ldr r0, [r0]
-	bl sub_02051F00
+	bl BattleStruct_InitFromFsys
 	ldr r0, [sp, #0xc]
 	bl MapEvents_GetLoadedEncTable
 	add r5, r0, #0
@@ -2846,10 +2846,10 @@ _022471AC:
 	mov r0, #0xb
 	add r1, r0, #0
 	add r1, #0xf5
-	bl sub_020518D8
+	bl BattleStruct_new
 	str r0, [sp, #0x1c]
 	add r1, r5, #0
-	bl sub_02051F00
+	bl BattleStruct_InitFromFsys
 	ldr r0, [sp, #0x20]
 	ldr r1, [sp, #0x18]
 	ldr r2, [sp, #0x1c]
@@ -2888,12 +2888,12 @@ _02247240:
 _0224724A:
 	mov r0, #0xb
 	mov r1, #0x4a
-	bl sub_020518D8
+	bl BattleStruct_new
 	str r0, [sp, #0x1c]
 _02247254:
 	ldr r0, [sp, #0x1c]
 	add r1, r5, #0
-	bl sub_02051F00
+	bl BattleStruct_InitFromFsys
 	add r0, sp, #0x14
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -3054,7 +3054,7 @@ ov02_02247374: ; 0x02247374
 	ldr r0, [sp, #0xc]
 	add r1, r5, #0
 	ldr r0, [r0]
-	bl sub_02051F00
+	bl BattleStruct_InitFromFsys
 	mov r5, #0
 	add r0, sp, #0x14
 _022473B0:
@@ -5075,7 +5075,7 @@ _0224826A:
 _02248284:
 	mov r0, #0xb
 	mov r1, #0
-	bl sub_020518D8
+	bl BattleStruct_new
 	str r0, [r5]
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov02_02248244
@@ -13743,8 +13743,8 @@ _0224C358:
 	pop {r4, pc}
 	thumb_func_end ov02_0224C338
 
-	thumb_func_start ov02_0224C368
-ov02_0224C368: ; 0x0224C368
+	thumb_func_start CreateFieldDigTaskEnv
+CreateFieldDigTaskEnv: ; 0x0224C368
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -13777,10 +13777,10 @@ _0224C3A4:
 _0224C3A8:
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov02_0224C368
+	thumb_func_end CreateFieldDigTaskEnv
 
-	thumb_func_start ov02_0224C3AC
-ov02_0224C3AC: ; 0x0224C3AC
+	thumb_func_start Task_FieldDig
+Task_FieldDig: ; 0x0224C3AC
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	bl TaskManager_GetSys
@@ -13912,7 +13912,7 @@ _0224C4A2:
 _0224C4A8: .word ov01_02205A60
 _0224C4AC: .word ov02_02253710
 _0224C4B0: .word ov02_02253754
-	thumb_func_end ov02_0224C3AC
+	thumb_func_end Task_FieldDig
 
 	thumb_func_start ov02_0224C4B4
 ov02_0224C4B4: ; 0x0224C4B4
@@ -13920,7 +13920,7 @@ ov02_0224C4B4: ; 0x0224C4B4
 	add r5, r1, #0
 	ldr r0, [r5, #0x40]
 	add r4, r2, #0
-	bl sub_0205C724
+	bl PlayerAvatar_GetGender
 	add r3, r0, #0
 	ldr r2, [r4, #0x28]
 	add r0, r5, #0
@@ -13956,8 +13956,8 @@ _0224C4EA:
 	pop {r4, pc}
 	thumb_func_end ov02_0224C4D8
 
-	thumb_func_start ov02_0224C500
-ov02_0224C500: ; 0x0224C500
+	thumb_func_start CreateFieldTeleportTaskEnv
+CreateFieldTeleportTaskEnv: ; 0x0224C500
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -14000,10 +14000,10 @@ _0224C552:
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov02_0224C500
+	thumb_func_end CreateFieldTeleportTaskEnv
 
-	thumb_func_start ov02_0224C558
-ov02_0224C558: ; 0x0224C558
+	thumb_func_start Task_FieldTeleport
+Task_FieldTeleport: ; 0x0224C558
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	bl TaskManager_GetSys
@@ -14135,7 +14135,7 @@ _0224C64E:
 _0224C654: .word ov01_02205A60
 _0224C658: .word ov02_0225373C
 _0224C65C: .word ov02_02253724
-	thumb_func_end ov02_0224C558
+	thumb_func_end Task_FieldTeleport
 
 	thumb_func_start ov02_0224C660
 ov02_0224C660: ; 0x0224C660

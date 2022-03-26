@@ -87,7 +87,7 @@ scr_seq_T25GYM0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 2, VAR_SPECIAL_RESULT
+	check_badge BADGE_PLAIN, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0202
 	goto_if_set FLAG_UNK_0B7, _01A0
@@ -123,7 +123,7 @@ _01A0:
 	npc_msg msg_0582_T25GYM0101_00004
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
-	give_badge 2
+	give_badge BADGE_PLAIN
 	setvar VAR_UNK_410A, 2
 	clearflag FLAG_UNK_084
 	setflag FLAG_UNK_998
@@ -196,7 +196,7 @@ scr_seq_T25GYM0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 2, VAR_SPECIAL_RESULT
+	check_badge BADGE_PLAIN, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _02AA
 	npc_msg msg_0582_T25GYM0101_00010
@@ -216,7 +216,7 @@ scr_seq_T25GYM0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 2, VAR_SPECIAL_RESULT
+	check_badge BADGE_PLAIN, VAR_SPECIAL_RESULT
 	buffer_players_name 0
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _02DC

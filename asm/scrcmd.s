@@ -1,5 +1,6 @@
 #include "constants/sprites.h"
 #include "constants/species.h"
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -146,9 +147,9 @@ gScriptCmdTable:
 	.word ScrCmd_AddMoney                               ; 110
 	.word ScrCmd_SubMoneyImmediate                      ; 111
 	.word ScrCmd_HasEnoughMoneyImmediate                ; 112
-	.word ScrCmd_113                                    ; 113
-	.word ScrCmd_114                                    ; 114
-	.word ScrCmd_115                                    ; 115
+	.word ScrCmd_ShowMoneyBox                                    ; 113
+	.word ScrCmd_HideMoneyBox                                    ; 114
+	.word ScrCmd_UpdateMoneyBox                                    ; 115
 	.word ScrCmd_116                                    ; 116
 	.word ScrCmd_117                                    ; 117
 	.word ScrCmd_118                                    ; 118
@@ -217,8 +218,8 @@ gScriptCmdTable:
 	.word ScrCmd_181                                    ; 181
 	.word ScrCmd_182                                    ; 182
 	.word ScrCmd_183                                    ; 183
-	.word ScrCmd_184                                    ; 184
-	.word ScrCmd_185                                    ; 185
+	.word ScrCmd_PlayerOnBikeCheck                                    ; 184
+	.word ScrCmd_PlayerOnBikeSet                                    ; 185
 	.word ScrCmd_186                                    ; 186
 	.word ScrCmd_GetPlayerState                         ; 187
 	.word ScrCmd_SetAvatarBits                                    ; 188
@@ -496,7 +497,7 @@ gScriptCmdTable:
 	.word ScrCmd_LoadPhoneDat                                    ; 460
 	.word ScrCmd_GetPhoneContactMsgIds                                    ; 461
 	.word ScrCmd_462                                    ; 462
-	.word ScrCmd_463                                    ; 463
+	.word ScrCmd_EnableMassOutbreaks                                    ; 463
 	.word ScrCmd_CreateRoamer                                    ; 464
 	.word ScrCmd_465                                    ; 465
 	.word ScrCmd_466                                    ; 466
@@ -504,7 +505,7 @@ gScriptCmdTable:
 	.word ScrCmd_MoveTutorInit                                    ; 468
 	.word ScrCmd_MoveRelearnerGetResult                                    ; 469
 	.word ScrCmd_LoadNPCTrade                                    ; 470
-	.word ScrCmd_471                                    ; 471
+	.word ScrCmd_GetOfferedSpecies                                    ; 471
 	.word ScrCmd_NPCTradeGetReqSpecies                                    ; 472
 	.word ScrCmd_NPCTradeExec                                    ; 473
 	.word ScrCmd_NPCTradeEnd                                    ; 474
@@ -645,15 +646,15 @@ gScriptCmdTable:
 	.word ScrCmd_609                                    ; 609
 	.word ScrCmd_610                                    ; 610
 	.word ScrCmd_Pokeathlon                                    ; 611
-	.word ScrCmd_612                                    ; 612
+	.word ScrCmd_GetNpcTradeUnusedFlag                                    ; 612
 	.word ScrCmd_GetPhoneContactRandomGiftBerry         ; 613
 	.word ScrCmd_GetPhoneContactGiftItem                ; 614
 	.word ScrCmd_CameronPhoto                           ; 615
 	.word ScrCmd_616                                    ; 616
 	.word ScrCmd_617                                    ; 617
 	.word ScrCmd_PhotoAlbumIsFull                       ; 618
-	.word ScrCmd_619                                    ; 619
-	.word ScrCmd_620                                    ; 620
+	.word ScrCmd_RocketCostumeFlagCheck                                    ; 619
+	.word ScrCmd_RocketCostumeFlagAction                                    ; 620
 	.word ScrCmd_621                                    ; 621
 	.word ScrCmd_622                                    ; 622
 	.word ScrCmd_AnimApricornTree                                    ; 623
@@ -703,7 +704,7 @@ gScriptCmdTable:
 	.word ScrCmd_667                                    ; 667
 	.word ScrCmd_BufferTypeName                         ; 668
 	.word ScrCmd_GetItemQuantity                        ; 669
-	.word ScrCmd_670                                    ; 670
+	.word ScrCmd_GetHiddenPowerType                                    ; 670
 	.word ScrCmd_671                                    ; 671
 	.word ScrCmd_672                                    ; 672
 	.word ScrCmd_GetOwnedRotomFormes                                    ; 673
@@ -6012,7 +6013,7 @@ ScrCmd_183: ; 0x02043724
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C724
+	bl PlayerAvatar_GetGender
 	add r3, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -6052,8 +6053,8 @@ _020437AE:
 	.balign 4, 0
 	thumb_func_end sub_0204378C
 
-	thumb_func_start ScrCmd_184
-ScrCmd_184: ; 0x020437B4
+	thumb_func_start ScrCmd_PlayerOnBikeCheck
+ScrCmd_PlayerOnBikeCheck: ; 0x020437B4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -6077,10 +6078,10 @@ _020437DE:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_184
+	thumb_func_end ScrCmd_PlayerOnBikeCheck
 
-	thumb_func_start ScrCmd_185
-ScrCmd_185: ; 0x020437E4
+	thumb_func_start ScrCmd_PlayerOnBikeSet
+ScrCmd_PlayerOnBikeSet: ; 0x020437E4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #8]
@@ -6092,24 +6093,24 @@ ScrCmd_185: ; 0x020437E4
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	ldr r1, _0204386C ; =0x000003F5
-	bl sub_02054F28
+	ldr r1, _0204386C ; =SEQ_GS_BICYCLE
+	bl Fsys_SetSavedMusicId
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	ldr r1, _0204386C ; =0x000003F5
+	ldr r1, _0204386C ; =SEQ_GS_BICYCLE
 	mov r2, #1
-	bl sub_02054FDC
+	bl Fsys_PlayOrFadeToNewMusicId
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #2
 	ldr r0, [r0, #0x40]
-	bl ov01_021F1AFC
+	bl ov01_PlayerAvatar_OrrTransitionFlags
 	add r4, #0x80
 	ldr r0, [r4]
 	ldr r0, [r0, #0x40]
-	bl ov01_021F1B04
+	bl ov01_PlayerAvatar_ApplyTransitionFlags
 	b _02043868
 _02043828:
 	add r0, r4, #0
@@ -6117,43 +6118,43 @@ _02043828:
 	ldr r0, [r0]
 	mov r1, #1
 	ldr r0, [r0, #0x40]
-	bl ov01_021F1AFC
+	bl ov01_PlayerAvatar_OrrTransitionFlags
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x40]
-	bl ov01_021F1B04
+	bl ov01_PlayerAvatar_ApplyTransitionFlags
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02054F28
+	bl Fsys_SetSavedMusicId
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r1, [r0, #0x20]
 	ldr r1, [r1]
-	bl sub_02054F60
+	bl Fsys_GetSurfOverriddenMusicId
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
 	mov r2, #1
-	bl sub_02054FDC
+	bl Fsys_PlayOrFadeToNewMusicId
 _02043868:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-_0204386C: .word 0x000003F5
-	thumb_func_end ScrCmd_185
+_0204386C: .word SEQ_GS_BICYCLE
+	thumb_func_end ScrCmd_PlayerOnBikeSet
 
 	thumb_func_start ScrCmd_591
 ScrCmd_591: ; 0x02043870
 	push {r3, lr}
 	add r0, #0x80
-	mov r1, #0x13
+	mov r1, #SEQ_PL_BICYCLE>>6
 	ldr r0, [r0]
 	lsl r1, r1, #6
-	bl sub_02054F28
+	bl Fsys_SetSavedMusicId
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -6204,7 +6205,7 @@ ScrCmd_SetAvatarBits: ; 0x020438C4
 	add r1, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C710
+	bl PlayerAvatar_OrrTransitionFlags
 	mov r0, #1
 	pop {r4, pc}
 	thumb_func_end ScrCmd_SetAvatarBits
@@ -6215,7 +6216,7 @@ ScrCmd_UpdateAvatarState: ; 0x020438DC
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x40]
-	bl ov01_021F1B04
+	bl ov01_PlayerAvatar_ApplyTransitionFlags
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ScrCmd_UpdateAvatarState
@@ -9493,8 +9494,8 @@ ScrCmd_456: ; 0x0204523C
 	pop {r3, pc}
 	thumb_func_end ScrCmd_456
 
-	thumb_func_start ScrCmd_463
-ScrCmd_463: ; 0x02045254
+	thumb_func_start ScrCmd_EnableMassOutbreaks
+ScrCmd_EnableMassOutbreaks: ; 0x02045254
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -9502,7 +9503,7 @@ ScrCmd_463: ; 0x02045254
 	bl RoamerSave_SetOutbreakActive
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ScrCmd_463
+	thumb_func_end ScrCmd_EnableMassOutbreaks
 
 	thumb_func_start ScrCmd_CreateRoamer
 ScrCmd_CreateRoamer: ; 0x02045264
@@ -9545,8 +9546,8 @@ ScrCmd_LoadNPCTrade: ; 0x0204527C
 _020452AC: .word FS_OVERLAY_ID(npc_trade)
 	thumb_func_end ScrCmd_LoadNPCTrade
 
-	thumb_func_start ScrCmd_471
-ScrCmd_471: ; 0x020452B0
+	thumb_func_start ScrCmd_GetOfferedSpecies
+ScrCmd_GetOfferedSpecies: ; 0x020452B0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -9567,7 +9568,7 @@ ScrCmd_471: ; 0x020452B0
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_471
+	thumb_func_end ScrCmd_GetOfferedSpecies
 
 	thumb_func_start ScrCmd_NPCTradeGetReqSpecies
 ScrCmd_NPCTradeGetReqSpecies: ; 0x020452E0
@@ -9593,8 +9594,8 @@ ScrCmd_NPCTradeGetReqSpecies: ; 0x020452E0
 	.balign 4, 0
 	thumb_func_end ScrCmd_NPCTradeGetReqSpecies
 
-	thumb_func_start ScrCmd_612
-ScrCmd_612: ; 0x02045310
+	thumb_func_start ScrCmd_GetNpcTradeUnusedFlag
+ScrCmd_GetNpcTradeUnusedFlag: ; 0x02045310
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -9615,7 +9616,7 @@ ScrCmd_612: ; 0x02045310
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_612
+	thumb_func_end ScrCmd_GetNpcTradeUnusedFlag
 
 	thumb_func_start ScrCmd_NPCTradeExec
 ScrCmd_NPCTradeExec: ; 0x02045340

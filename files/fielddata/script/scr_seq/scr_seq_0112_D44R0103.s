@@ -150,7 +150,7 @@ _019C:
 	npc_msg msg_0130_D44R0103_00016
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
-	give_badge 7
+	give_badge BADGE_RISING
 	npc_msg msg_0130_D44R0103_00017
 	apply_movement obj_D44R0103_chourou, _0408
 	apply_movement obj_player, _0418

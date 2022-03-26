@@ -176,7 +176,7 @@ scr_seq_T07R0203_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 15, VAR_SPECIAL_RESULT
+	check_badge BADGE_EARTH, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0276
 	npc_msg msg_0503_T07R0203_00007

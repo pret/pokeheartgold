@@ -78,7 +78,7 @@ scr_seq_T25R1005_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_969, _017D
+	goto_if_set FLAG_SYS_ROCKET_COSTUME, _017D
 	goto_if_set FLAG_UNK_08D, _0172
 	npc_msg msg_0596_T25R1005_00009
 	touchscreen_menu_hide

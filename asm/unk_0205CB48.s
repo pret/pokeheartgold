@@ -7,7 +7,7 @@
 #include "constants/items.h"
 #include "constants/std_script.h"
 #include "fielddata/script/scr_seq/event_D24R0204.h"
-#include "party_menu.h"
+#include "constants/party_menu.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -42,7 +42,7 @@ _0205CB66:
 	add r2, r6, #0
 	bl sub_0205CC4C
 	add r0, r5, #0
-	bl ov01_021F1B04
+	bl ov01_PlayerAvatar_ApplyTransitionFlags
 	add r0, r5, #0
 	add r1, r4, #0
 	bl sub_0205D004
@@ -2734,8 +2734,8 @@ sub_0205DFFC: ; 0x0205DFFC
 	.balign 4, 0
 	thumb_func_end sub_0205DFFC
 
-	thumb_func_start sub_0205E02C
-sub_0205E02C: ; 0x0205E02C
+	thumb_func_start PlayerAvatar_GetCoordsInFront
+PlayerAvatar_GetCoordsInFront: ; 0x0205E02C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -2748,7 +2748,7 @@ sub_0205E02C: ; 0x0205E02C
 	bl sub_0205DFFC
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0205E02C
+	thumb_func_end PlayerAvatar_GetCoordsInFront
 
 	thumb_func_start sub_0205E048
 sub_0205E048: ; 0x0205E048

@@ -18,7 +18,7 @@
 
 scr_seq_R29_000:
 	get_friend_sprite VAR_OBJ_1
-	check_badge 0, VAR_TEMP_x4000
+	check_badge BADGE_ZEPHYR, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 1
 	goto_if_eq _0043
 	setflag FLAG_UNK_207

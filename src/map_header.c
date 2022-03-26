@@ -654,7 +654,7 @@ u8 MapHeader_GetAreaIcon(u32 map_no) {
     return sMapHeaders[map_no].area_icon;
 }
 
-u8 MapHeader_GetField12_C(u32 map_no) {
+u8 MapHeader_GetMomCallIntroParam(u32 map_no) {
     map_no = MapNumberBoundsCheck(map_no);
     return sMapHeaders[map_no].unk_12_C;
 }

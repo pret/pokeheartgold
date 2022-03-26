@@ -265,7 +265,7 @@ scr_seq_T06GYM0101_023:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 10, VAR_SPECIAL_RESULT
+	check_badge BADGE_THUNDER, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _03C7
 	npc_msg msg_0485_T06GYM0101_00000
@@ -274,7 +274,7 @@ scr_seq_T06GYM0101_023:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _03DD
-	give_badge 10
+	give_badge BADGE_THUNDER
 	addvar VAR_UNK_4135, 1
 	add_special_game_stat 22
 	setflag FLAG_UNK_31A
@@ -328,7 +328,7 @@ scr_seq_T06GYM0101_024:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 10, VAR_SPECIAL_RESULT
+	check_badge BADGE_THUNDER, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0409
 	npc_msg msg_0485_T06GYM0101_00006
@@ -348,7 +348,7 @@ scr_seq_T06GYM0101_025:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 10, VAR_SPECIAL_RESULT
+	check_badge BADGE_THUNDER, VAR_SPECIAL_RESULT
 	buffer_players_name 0
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _043B

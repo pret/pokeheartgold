@@ -68,6 +68,8 @@ Static main
 	Object asm/text.o
 	Object src/vram_transfer_manager.o
 	Object asm/unk_02020654.o
+	Object src/ascii_util.o
+	Object asm/unk_02020B8C.o
 	Object asm/unk_020210A0.o
 	Object asm/unk_020215A0.o
 	Object asm/unk_02022588.o
@@ -132,7 +134,7 @@ Static main
 	Object src/unk_02031AF0.o
 	Object asm/unk_02031B0C.o
 	Object src/pokewalker.o
-	Object asm/unk_02032774.o
+	Object src/save_trainer_house.o
 	Object asm/unk_02032844.o
 	Object asm/unk_02033AE0.o
 	Object asm/unk_02034354.o
@@ -184,7 +186,7 @@ Static main
 	Object asm/unk_020518D8.o
 	Object src/field_black_out.o
 	Object asm/unk_0205298C.o
-	Object src/unk_02052F30.o
+	Object src/field_warp_tasks.o
 	Object src/script_pokemon_util.o
 	Object asm/unk_02054514.o
 	Object asm/unk_02054648.o
@@ -223,6 +225,9 @@ Static main
 	Object asm/unk_02066EDC.o
 	Object src/field_roamer.o
 	Object asm/unk_0206793C.o
+	Object asm/unk_02067A60.o
+	Object src/field_move.o
+	Object asm/unk_020689C8.o
 	Object asm/unk_02068DE0.o
 	Object src/unk_02068F84.o
 	Object asm/unk_02068FC8.o
@@ -299,6 +304,9 @@ Static main
 	Object asm/unk_020932E0.o
 	Object asm/unk_020957B0.o
 	Object asm/unk_02095DF4.o
+	Object asm/unk_02095EF8.o
+	Object asm/unk_0209600C.o
+	Object asm/unk_020961D8.o
 	Object src/error_message_reset.o
 	Object src/sin_vcount.o
 	Object asm/unk_020965A4.o
@@ -420,7 +428,82 @@ Overlay OVY_0
 Overlay field
 {
     After main
-    Object asm/overlay_01.o
+    Object asm/overlay_01_021E5900.o
+    Object asm/overlay_01_021E66E4.o
+    Object asm/overlay_01_021E6880.o
+    Object asm/overlay_01_021E7FDC.o
+    Object asm/overlay_01_021E8744.o
+    Object asm/overlay_01_021E90C0.o
+    Object asm/overlay_01_021EA6C4.o
+    Object asm/overlay_01_021EA824.o
+    Object asm/overlay_01_021EA8E0.o
+    Object asm/overlay_01_021EABA8.o
+    Object asm/overlay_01_021EAF00.o
+    Object asm/overlay_01_021EAFD4.o
+    Object asm/overlay_01_021EB1E8.o
+    Object asm/overlay_01_021EDAFC.o
+    Object asm/scrcmd_message.o
+    Object asm/overlay_01_021EF7A0.o
+    Object asm/overlay_01_021EFB38.o
+    Object asm/overlay_01_021F1348.o
+    Object asm/overlay_01_021F1AFC.o
+    Object asm/overlay_01_021F3114.o
+    Object asm/overlay_01_021F3378.o
+    Object asm/overlay_01_021F3610.o
+    Object asm/overlay_01_021F3D38.o
+    Object asm/overlay_01_021F3F50.o
+    Object asm/overlay_01_021F4464.o
+    Object asm/overlay_01_021F467C.o
+    Object asm/overlay_01_021F4704.o
+    Object asm/overlay_01_021F6830.o
+    Object asm/overlay_01_021F6CFC.o
+    Object asm/overlay_01_sprite_data.o
+    Object asm/overlay_01_021F72DC.o
+    Object asm/overlay_01_021F8D80.o
+    Object asm/overlay_01_021F944C.o
+    Object asm/overlay_01_021FAC44.o
+    Object asm/overlay_01_021FAD1C.o
+    Object asm/overlay_01_021FB04C.o
+    Object asm/overlay_01_021FB368.o
+    Object asm/overlay_01_021FB4C0.o
+    Object asm/overlay_01_021FB5D4.o
+    Object asm/overlay_01_021FB878.o
+    Object asm/overlay_01_021FC05C.o
+    Object asm/overlay_01_021FC4C4.o
+    Object asm/overlay_01_data_02208BFC.o
+    Object asm/overlay_01_021FC66C.o
+    Object asm/overlay_01_021FCD2C.o
+    Object asm/overlay_01_021FCE98.o
+    Object asm/overlay_01_021FD1B8.o
+    Object asm/overlay_01_021FD41C.o
+    Object asm/overlay_01_021FDA14.o
+    Object asm/overlay_01_021FE200.o
+    Object asm/overlay_01_021FE590.o
+    Object asm/overlay_01_021FE780.o
+    Object asm/overlay_01_021FEA0C.o
+    Object asm/overlay_01_021FEC38.o
+    Object asm/overlay_01_021FED9C.o
+    Object asm/overlay_01_021FEEEC.o
+    Object asm/overlay_01_021FF464.o
+    Object asm/overlay_01_021FF6B0.o
+    Object asm/overlay_01_021FF854.o
+    Object asm/overlay_01_021FFC0C.o
+    Object asm/overlay_01_021FFECC.o
+    Object asm/overlay_01_02200040.o
+    Object asm/overlay_01_022001E4.o
+    Object asm/overlay_01_022006A8.o
+    Object asm/overlay_01_02200858.o
+    Object asm/scrcmd_pokemon_misc.o
+    Object asm/scrcmd_move_tutor.o
+    Object asm/scrcmd_moneybox.o
+    Object asm/overlay_01_022031C0.o
+    Object asm/overlay_01_02203A18.o
+    Object asm/overlay_01_02203E40.o
+    Object asm/overlay_01_02204004.o
+    Object asm/overlay_01_02204840.o
+    Object asm/overlay_01_02204ED8.o
+    Object asm/overlay_01_022051EC.o
+    Object asm/overlay_01_022053EC.o
 }
 Overlay OVY_2
 {

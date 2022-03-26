@@ -481,7 +481,7 @@ _0203BF60:
 	lsl r1, r1, #4
 	add r0, r4, #0
 	add r1, r5, r1
-	bl sub_02067E10
+	bl Fsys_MakeFieldMoveCheckData
 	add r0, r6, #0
 	bl sub_0203C14C
 	add r0, r4, #0
@@ -527,7 +527,7 @@ _0203BFBA:
 	lsl r1, r1, #4
 	add r0, r4, #0
 	add r1, r5, r1
-	bl sub_02067E10
+	bl Fsys_MakeFieldMoveCheckData
 	mov r0, #3
 	strh r0, [r5, #0x26]
 	b _0203C136
@@ -3446,8 +3446,8 @@ sub_0203D718: ; 0x0203D718
 _0203D754: .word sub_0203CFC0
 	thumb_func_end sub_0203D718
 
-	thumb_func_start sub_0203D758
-sub_0203D758: ; 0x0203D758
+	thumb_func_start Task_UseFlyInField
+Task_UseFlyInField: ; 0x0203D758
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -3533,7 +3533,7 @@ _0203D808:
 	nop
 _0203D810: .word sub_0203CA9C
 _0203D814: .word sub_02067C30
-	thumb_func_end sub_0203D758
+	thumb_func_end Task_UseFlyInField
 
 	thumb_func_start sub_0203D818
 sub_0203D818: ; 0x0203D818

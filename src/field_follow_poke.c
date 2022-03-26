@@ -1580,7 +1580,7 @@ void sub_02069B74(MapObjectMan *mapObjectMan, u32 mapno) {
         species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
         FsysUnkSub108_Set(fsys->unk108, pokemon, species, GetMonData(pokemon, MON_DATA_PERSONALITY, NULL));
         if (GetFollowPokePermissionBySpeciesAndMap(species, mapno)) {
-            followPokeObj = GetMapObjectByID(fsys->unk3C, obj_partner_poke);
+            followPokeObj = GetMapObjectByID(fsys->mapObjectMan, obj_partner_poke);
             if (followPokeObj == NULL) {
                 fsys->followMon.unk15 = 1;
             } else {
@@ -1613,7 +1613,7 @@ void sub_02069B74(MapObjectMan *mapObjectMan, u32 mapno) {
                 sub_0205F6AC(fsys->followMon.mapObject, 0);
             }
         } else {
-            followPokeObj = GetMapObjectByID(fsys->unk3C, obj_partner_poke);
+            followPokeObj = GetMapObjectByID(fsys->mapObjectMan, obj_partner_poke);
             if (followPokeObj != NULL) {
                 forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
                 gender = GetMonGender(pokemon);

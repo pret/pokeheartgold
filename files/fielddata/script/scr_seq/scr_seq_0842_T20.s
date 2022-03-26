@@ -33,7 +33,7 @@ scr_seq_T20_006:
 
 _005F:
 	setvar VAR_TEMP_x4007, 0
-	check_badge 2, VAR_TEMP_x4002
+	check_badge BADGE_PLAIN, VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 0
 	goto_if_eq _0089
 	get_weekday VAR_TEMP_x4000

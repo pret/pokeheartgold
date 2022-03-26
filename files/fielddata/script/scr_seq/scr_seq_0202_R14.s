@@ -287,7 +287,7 @@ _03D2:
 	clearflag FLAG_HIDE_ROUTE_14_EUSINE_2
 	setvar VAR_UNK_4086, 0
 	setflag FLAG_UNK_14D
-	check_badge 9, VAR_SPECIAL_RESULT
+	check_badge BADGE_CASCADE, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0449
 	clearflag FLAG_HIDE_ROUTE_25_SUICUNE
@@ -416,9 +416,9 @@ scr_seq_R14_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_15C, _0658
+	goto_if_set FLAG_GOT_LUCKY_PUNCH, _0658
 	npc_msg msg_0351_R14_00000
-	scrcmd_184 VAR_SPECIAL_RESULT
+	player_on_bike_check VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0602
 	get_lead_mon_index VAR_TEMP_x4000
@@ -438,7 +438,7 @@ _060D:
 	npc_msg msg_0351_R14_00002
 	goto_if_no_item_space ITEM_LUCKY_PUNCH, 1, _064E
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_15C
+	setflag FLAG_GOT_LUCKY_PUNCH
 	npc_msg msg_0351_R14_00003
 	wait_button_or_walk_away
 	closemsg
@@ -452,7 +452,7 @@ _064E:
 	end
 
 _0658:
-	scrcmd_184 VAR_SPECIAL_RESULT
+	player_on_bike_check VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0680
 	get_lead_mon_index VAR_TEMP_x4000

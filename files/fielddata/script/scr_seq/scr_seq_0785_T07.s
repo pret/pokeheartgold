@@ -50,7 +50,7 @@ _0095:
 	check_registered_phone_number PHONE_CONTACT_ERIKA, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _015E
-	check_badge 15, VAR_TEMP_x4002
+	check_badge BADGE_EARTH, VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 1
 	goto_if_eq _00C3
 	goto _0198

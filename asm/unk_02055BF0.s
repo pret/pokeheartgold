@@ -914,9 +914,9 @@ _020562E0:
 	mov r1, #2
 	ldr r0, [r4, #0x40]
 	lsl r1, r1, #8
-	bl ov01_021F1AFC
+	bl ov01_PlayerAvatar_OrrTransitionFlags
 	ldr r0, [r4, #0x40]
-	bl ov01_021F1B04
+	bl ov01_PlayerAvatar_ApplyTransitionFlags
 	ldr r0, [sp]
 	mov r1, #0
 	bl sub_0205F328
@@ -1111,9 +1111,9 @@ _02056474:
 	mov r1, #2
 	ldr r0, [r5, #0x40]
 	lsl r1, r1, #8
-	bl ov01_021F1AFC
+	bl ov01_PlayerAvatar_OrrTransitionFlags
 	ldr r0, [r5, #0x40]
-	bl ov01_021F1B04
+	bl ov01_PlayerAvatar_ApplyTransitionFlags
 	add r0, r6, #0
 	mov r1, #0
 	bl sub_0205F328

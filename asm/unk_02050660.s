@@ -1239,10 +1239,10 @@ SetupAndStartWildBattle: ; 0x02051020
 	add r5, r0, #0
 	mov r0, #0xb
 	mov r1, #0
-	bl sub_020518D8
+	bl BattleStruct_new
 	add r4, r0, #0
 	add r1, r5, #0
-	bl sub_02051F00
+	bl BattleStruct_InitFromFsys
 	str r4, [sp]
 	ldr r2, [sp, #8]
 	ldr r3, [sp, #0x24]
@@ -1291,10 +1291,10 @@ sub_02051090: ; 0x02051090
 	add r5, r0, #0
 	mov r0, #0xb
 	mov r1, #0
-	bl sub_020518D8
+	bl BattleStruct_new
 	add r4, r0, #0
 	add r1, r5, #0
-	bl sub_02051F00
+	bl BattleStruct_InitFromFsys
 	str r4, [sp]
 	ldr r2, [sp, #8]
 	add r0, r5, #0
@@ -1484,10 +1484,10 @@ sub_02051228: ; 0x02051228
 	add r5, r0, #0
 	mov r0, #0xb
 	mov r1, #0
-	bl sub_020518D8
+	bl BattleStruct_new
 	add r1, r5, #0
 	add r4, r0, #0
-	bl sub_02051F00
+	bl BattleStruct_InitFromFsys
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r7, #0
@@ -1668,10 +1668,10 @@ _020513A0:
 _020513AC:
 	mov r0, #0xb
 	add r1, r4, #0
-	bl sub_020518D8
+	bl BattleStruct_new
 	ldr r1, [sp, #0xc]
 	add r5, r0, #0
-	bl sub_02051F00
+	bl BattleStruct_InitFromFsys
 	str r7, [r5, #0x1c]
 	ldr r0, [sp, #8]
 	str r6, [r5, #0x24]
@@ -1733,7 +1733,7 @@ sub_02051428: ; 0x02051428
 	add r6, r0, #0
 	mov r0, #0xb
 	add r1, r5, #0
-	bl sub_020518D8
+	bl BattleStruct_new
 	add r5, r0, #0
 	add r1, r6, #0
 	add r2, r4, #0
@@ -1801,7 +1801,7 @@ sub_020514A4: ; 0x020514A4
 	bne _020514C8
 	mov r0, #0xb
 	mov r1, #5
-	bl sub_020518D8
+	bl BattleStruct_new
 	add r4, r0, #0
 	mov r5, #0
 	b _020514F6
@@ -1810,14 +1810,14 @@ _020514C8:
 	bne _020514DA
 	mov r0, #0xb
 	mov r1, #7
-	bl sub_020518D8
+	bl BattleStruct_new
 	add r4, r0, #0
 	mov r5, #7
 	b _020514F6
 _020514DA:
 	mov r0, #0xb
 	mov r1, #0x8f
-	bl sub_020518D8
+	bl BattleStruct_new
 	add r4, r0, #0
 	mov r1, #1
 	str r1, [r4, #0x1c]
@@ -1912,7 +1912,7 @@ sub_02051598: ; 0x02051598
 	add r6, r1, #0
 	mov r0, #0xb
 	add r1, r7, #0
-	bl sub_020518D8
+	bl BattleStruct_new
 	add r1, r5, #0
 	add r2, r6, #0
 	add r4, r0, #0
@@ -1956,7 +1956,7 @@ sub_020515FC: ; 0x020515FC
 	add r6, r1, #0
 	mov r0, #0xb
 	add r1, r7, #0
-	bl sub_020518D8
+	bl BattleStruct_new
 	add r1, r5, #0
 	add r2, r6, #0
 	mov r3, #0

@@ -11,7 +11,7 @@ struct FLYPOINTS_SAVE {
     Location unk28;
     Location dynamicWarp;
     Location specialSpawn;
-    u16 unk64;
+    u16 musicId;
     u16 weather;
     u16 lastSpawn;
     u8 cameraType;
@@ -68,8 +68,8 @@ void FlyPoints_SetDynamicWarp(FLYPOINTS_SAVE *flypointsSave, const Location *loc
     flypointsSave->dynamicWarp = *location;
 }
 
-u16 *sub_0203B980(FLYPOINTS_SAVE *flypointsSave) {
-    return &flypointsSave->unk64;
+u16 *FlyPoints_GetMusicIdAddr(FLYPOINTS_SAVE *flypointsSave) {
+    return &flypointsSave->musicId;
 }
 
 u16 FlyPoints_GetWeatherType(FLYPOINTS_SAVE *flypointsSave) {
@@ -122,7 +122,7 @@ struct SavStructUnk10 *sub_0203B9D0(SAVEDATA *saveData) {
 
 void sub_0203B9DC(FieldSystem *fsys) {
     struct SavStructUnk10 *unk = sub_0203B9D0(fsys->savedata);
-    sub_0205E5EC(fsys, fsys->unk3C, unk->subs, 64);
+    sub_0205E5EC(fsys, fsys->mapObjectMan, unk->subs, 64);
 }
 
 void sub_0203B9F4(FieldSystem *fsys) {
@@ -142,5 +142,5 @@ void sub_0203B9F4(FieldSystem *fsys) {
             follower->unk_12 = SPRITE_TSURE_POKE_SHAYMIN;
         }
     }
-    sub_0205E648(fsys->unk3C, unk->subs, 64);
+    sub_0205E648(fsys->mapObjectMan, unk->subs, 64);
 }

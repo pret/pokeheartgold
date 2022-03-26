@@ -43,7 +43,7 @@
 #define SAVE_UNK_37              37
 #define SAVE_APRICORN_BOX        38
 #define SAVE_POKEWALKER          39
-#define SAVE_UNK_40              40
+#define SAVE_TRAINER_HOUSE       40
 #define SAVE_PCSTORAGE           41
 #define SAVE_BLOCK_NUM           42
 

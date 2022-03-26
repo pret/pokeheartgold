@@ -19,7 +19,7 @@
 #include "sound.h"
 #include "unk_02004A44.h"
 #include "unk_02005D10.h"
-#include "unk_02052F30.h"
+#include "field_warp_tasks.h"
 #include "unk_0203DFA4.h"
 #include "unk_02054514.h"
 #include "unk_02054648.h"
@@ -169,7 +169,7 @@ void sub_02053038(FieldSystem *fsys, BOOL isConnection) {
     u16 weather;
     u16 spawnId;
 
-    sub_02054F4C(fsys);
+    Fsys_ClearSavedMusicId(fsys);
     if (!fsys->unkAC) {
         ClearTempFieldEventData(fsys);
     }
@@ -222,15 +222,15 @@ static void sub_0205316C(FieldSystem *fsys) {
     if (fsys->unkAC) {
         gender = PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(fsys->savedata));
         avatar_sub = SaveFlyPoints_GetPlayerSub(Save_FlyPoints_get(fsys->savedata));
-        fsys->playerAvatar = sub_0205C390(fsys->unk3C, fsys->location->x, fsys->location->z, fsys->location->direction, avatar_sub->unk4, gender, 2, avatar_sub);
+        fsys->playerAvatar = sub_0205C390(fsys->mapObjectMan, fsys->location->x, fsys->location->z, fsys->location->direction, avatar_sub->unk4, gender, 2, avatar_sub);
     } else {
-        fsys->unk3C = sub_0205E0BC(fsys, 64, 5);
+        fsys->mapObjectMan = sub_0205E0BC(fsys, 64, 5);
         gender = PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(fsys->savedata));
         avatar_sub = SaveFlyPoints_GetPlayerSub(Save_FlyPoints_get(fsys->savedata));
-        fsys->playerAvatar = sub_0205C390(fsys->unk3C, fsys->location->x, fsys->location->z, fsys->location->direction, avatar_sub->unk4, gender, 2, avatar_sub);
-        sub_020699F8(fsys->unk3C, fsys->location->x, fsys->location->z, fsys->location->direction, fsys->location->mapId);
+        fsys->playerAvatar = sub_0205C390(fsys->mapObjectMan, fsys->location->x, fsys->location->z, fsys->location->direction, avatar_sub->unk4, gender, 2, avatar_sub);
+        sub_020699F8(fsys->mapObjectMan, fsys->location->x, fsys->location->z, fsys->location->direction, fsys->location->mapId);
         Field_InitMapObjectsFromZoneEventData(fsys);
-        sub_0205F55C(fsys->unk3C);
+        sub_0205F55C(fsys->mapObjectMan);
     }
 }
 
@@ -240,8 +240,8 @@ static void sub_02053210(FieldSystem *fsys) {
     } else {
         sub_02056E38();
         sub_0205C4C4(fsys->playerAvatar);
-        sub_0205E494(fsys->unk3C);
-        sub_0205E0E8(fsys->unk3C);
+        sub_0205E494(fsys->mapObjectMan);
+        sub_0205E0E8(fsys->mapObjectMan);
     }
 }
 
@@ -249,13 +249,13 @@ static void sub_0205323C(FieldSystem *fsys) {
     u32 gender;
     struct FlypointsPlayerSub *avatar_sub;
 
-    fsys->unk3C = sub_0205E0BC(fsys, 64, 5);
+    fsys->mapObjectMan = sub_0205E0BC(fsys, 64, 5);
     sub_0203B9F4(fsys);
     avatar_sub = SaveFlyPoints_GetPlayerSub(Save_FlyPoints_get(fsys->savedata));
     gender = PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(fsys->savedata));
-    fsys->playerAvatar = sub_0205C408(fsys->unk3C, avatar_sub, gender);
-    sub_02069B74(fsys->unk3C, fsys->location->mapId);
-    sub_0205F55C(fsys->unk3C);
+    fsys->playerAvatar = sub_0205C408(fsys->mapObjectMan, avatar_sub, gender);
+    sub_02069B74(fsys->mapObjectMan, fsys->location->mapId);
+    sub_0205F55C(fsys->mapObjectMan);
 }
 
 static void sub_02053284(FieldSystem *fsys) {
@@ -643,7 +643,7 @@ static BOOL sub_02053950(TaskManager *taskManager) {
         env->unk0++;
         break;
     case 1:
-        sub_0205C6E4(fsys->playerAvatar, 0);
+        PlayerAvatar_SetState(fsys->playerAvatar, PLAYER_STATE_WALKING);
         sub_020537A8(taskManager, &env->location);
         env->unk0++;
         break;
@@ -717,7 +717,7 @@ static void sub_02053AA0(TaskManager *taskManager) {
         GF_ASSERT(0);
         return;
     }
-    env->unk4 = ov02_0224B418(fsys, sub_0205C724(fsys->playerAvatar));
+    env->unk4 = ov02_0224B418(fsys, PlayerAvatar_GetGender(fsys->playerAvatar));
     TaskManager_Call(taskManager, sub_02053AE4, env);
 }
 
@@ -752,7 +752,7 @@ static BOOL sub_02053B3C(TaskManager *taskManager) {
         env->unk0++;
         break;
     case 1:
-        sub_0205C6E4(fsys->playerAvatar, 0);
+        PlayerAvatar_SetState(fsys->playerAvatar, PLAYER_STATE_WALKING);
         sub_020537A8(taskManager, &env->location);
         env->unk0++;
         break;

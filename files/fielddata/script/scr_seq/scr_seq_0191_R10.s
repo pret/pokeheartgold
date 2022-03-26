@@ -25,7 +25,7 @@ _002B:
 	end
 
 scr_seq_R10_001:
-	check_badge 15, VAR_TEMP_x4004
+	check_badge BADGE_EARTH, VAR_TEMP_x4004
 	compare VAR_TEMP_x4004, 1
 	goto_if_eq _0052
 	goto _00BF
@@ -68,7 +68,7 @@ scr_seq_R10_002:
 	check_registered_phone_number PHONE_CONTACT_LT__SURGE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0148
-	scrcmd_184 VAR_SPECIAL_RESULT
+	player_on_bike_check VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0197
 	get_lead_mon_index VAR_TEMP_x4000

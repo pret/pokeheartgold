@@ -20,7 +20,7 @@ ov25_022598C0: ; 0x022598C0
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	add r4, r1, #0
-	bl sub_0203277C
+	bl Save_TrainerHouse_get
 	add r2, r0, #0
 	cmp r4, #0xa
 	bne _022598FE
@@ -200,7 +200,7 @@ ScrCmd_809: ; 0x02259A30
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0203277C
+	bl Save_TrainerHouse_get
 	cmp r4, #0xa
 	bne _02259A6C
 	ldr r1, _02259AA4 ; =ov25_02259D84
@@ -251,7 +251,7 @@ ov25_02259AAC: ; 0x02259AAC
 	add r4, r0, #0
 	ldr r1, _02259B8C ; =0x00002081
 	mov r0, #0xb
-	bl sub_020518D8
+	bl BattleStruct_new
 	ldr r5, [r4, #0xc]
 	add r6, r0, #0
 	add r0, r5, #0
@@ -606,7 +606,7 @@ ov25_02259D94: ; 0x02259D94
 
 ov25_02259D9C: ; 0x02259D9C
 	.byte 0x00, 0x00, 0x00, 0x00
-	.byte 0x0B, 0x02, GAME_VERSION, 0x00
+	.byte 0x0B, GAME_LANGUAGE, GAME_VERSION, 0x00
 	; ひかる$$$$$
 	.short 0x0033, 0x000C, 0x004C, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

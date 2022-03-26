@@ -133,7 +133,7 @@ scr_seq_D37R0102_001:
 	lockall
 	faceplayer
 	goto_if_set FLAG_DAILY_GOT_HAIRCUT, _0331
-	scrcmd_113 20, 2
+	show_money_box 20, 2
 	npc_msg msg_0117_D37R0102_00010
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -149,7 +149,7 @@ _01F5:
 	npc_msg msg_0117_D37R0102_00011
 	wait_button
 	closemsg
-	scrcmd_114
+	hide_money_box
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	party_select_ui
@@ -163,9 +163,9 @@ _01F5:
 	get_partymon_species VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0319
-	scrcmd_113 20, 2
+	show_money_box 20, 2
 	submoneyimmediate 500
-	scrcmd_115
+	update_money_box
 	npc_msg msg_0117_D37R0102_00012
 	wait_button
 	closemsg
@@ -173,7 +173,7 @@ _01F5:
 	wait_fade
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
-	scrcmd_114
+	hide_money_box
 	fade_screen 6, 1, 1, RGB_WHITE
 	wait_fade
 	npc_msg msg_0117_D37R0102_00013
@@ -218,7 +218,7 @@ _030C:
 	npc_msg msg_0117_D37R0102_00014
 	wait_button_or_walk_away
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 
@@ -233,7 +233,7 @@ _0324:
 	npc_msg msg_0117_D37R0102_00015
 	wait_button_or_walk_away
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 
@@ -249,7 +249,7 @@ scr_seq_D37R0102_002:
 	lockall
 	faceplayer
 	goto_if_set FLAG_DAILY_GOT_HAIRCUT, _04BD
-	scrcmd_113 20, 2
+	show_money_box 20, 2
 	npc_msg msg_0117_D37R0102_00017
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -265,7 +265,7 @@ _0375:
 	npc_msg msg_0117_D37R0102_00018
 	wait_button
 	closemsg
-	scrcmd_114
+	hide_money_box
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	party_select_ui
@@ -279,9 +279,9 @@ _0375:
 	get_partymon_species VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _04A5
-	scrcmd_113 20, 2
+	show_money_box 20, 2
 	submoneyimmediate 300
-	scrcmd_115
+	update_money_box
 	npc_msg msg_0117_D37R0102_00019
 	wait_button
 	closemsg
@@ -289,7 +289,7 @@ _0375:
 	wait_fade
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
-	scrcmd_114
+	hide_money_box
 	fade_screen 6, 1, 1, RGB_WHITE
 	wait_fade
 	npc_msg msg_0117_D37R0102_00020
@@ -336,7 +336,7 @@ _0498:
 	npc_msg msg_0117_D37R0102_00021
 	wait_button_or_walk_away
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 
@@ -351,7 +351,7 @@ _04B0:
 	npc_msg msg_0117_D37R0102_00022
 	wait_button_or_walk_away
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 
@@ -377,7 +377,7 @@ scr_seq_D37R0102_003:
 	lockall
 	faceplayer
 	goto_if_set FLAG_UNK_AB7, _0895
-	scrcmd_113 20, 2
+	show_money_box 20, 2
 	npc_msg msg_0117_D37R0102_00001
 	setvar VAR_TEMP_x4003, 0
 	setvar VAR_TEMP_x4004, 0
@@ -509,7 +509,7 @@ _0796:
 	goto_if_eq _087D
 	submoneyimmediate 4600
 _07C6:
-	scrcmd_115
+	update_money_box
 	play_se SEQ_SE_DP_REGI
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
@@ -562,7 +562,7 @@ _087D:
 
 _0886:
 	touchscreen_menu_show
-	scrcmd_114
+	hide_money_box
 	npc_msg msg_0117_D37R0102_00009
 	wait_button_or_walk_away
 	closemsg
@@ -682,9 +682,9 @@ _0A71:
 	scrcmd_604 48
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	set_avatar_bits 1024
+	set_avatar_bits PLAYER_TRANSITION_ROCKET
 	update_avatar_state
-	scrcmd_620 1
+	rocket_costume_flag_action 1
 	play_se SEQ_SE_DP_CARD2
 	wait 24, VAR_SPECIAL_RESULT
 	play_se SEQ_SE_DP_CARD2
@@ -1027,9 +1027,9 @@ _0F05:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	set_avatar_bits 1024
+	set_avatar_bits PLAYER_TRANSITION_ROCKET
 	update_avatar_state
-	scrcmd_620 1
+	rocket_costume_flag_action 1
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -1055,9 +1055,9 @@ _0F79:
 	wait_fade
 	cameron_photo 10
 	lockall
-	set_avatar_bits 1
+	set_avatar_bits PLAYER_TRANSITION_WALKING
 	update_avatar_state
-	scrcmd_620 0
+	rocket_costume_flag_action 0
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55

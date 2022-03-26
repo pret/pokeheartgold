@@ -66,7 +66,7 @@ scr_seq_T23GYM0102_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 1, VAR_SPECIAL_RESULT
+	check_badge BADGE_HIVE, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _017A
 	npc_msg msg_0567_T23GYM0102_00000
@@ -80,7 +80,7 @@ scr_seq_T23GYM0102_001:
 	npc_msg msg_0567_T23GYM0102_00002
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
-	give_badge 1
+	give_badge BADGE_HIVE
 	settrainerflag TRAINER_BUG_CATCHER_AL
 	settrainerflag TRAINER_BUG_CATCHER_BENNY
 	settrainerflag TRAINER_BUG_CATCHER_JOSH

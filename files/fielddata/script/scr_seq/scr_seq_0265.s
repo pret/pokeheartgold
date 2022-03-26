@@ -191,7 +191,7 @@ scr_seq_0265_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_113 20, 2
+	show_money_box 20, 2
 	get_day_care_state VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _042E
@@ -208,7 +208,7 @@ scr_seq_0265_001:
 	npc_msg msg_0439_00026
 	wait_button_or_walk_away
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 
@@ -221,7 +221,7 @@ _0290:
 	goto_if_eq _041F
 	npc_msg msg_0439_00022
 	closemsg
-	scrcmd_114
+	hide_money_box
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	setvar VAR_SPECIAL_RESULT, 0
@@ -268,13 +268,13 @@ _0374:
 	wait_button_or_walk_away
 	closemsg
 	wait_cry
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 
 _038B:
 	scrcmd_150
-	scrcmd_113 20, 2
+	show_money_box 20, 2
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	return
@@ -282,7 +282,7 @@ _038B:
 _03A1:
 	call _038B
 	touchscreen_menu_show
-	scrcmd_114
+	hide_money_box
 	callstd std_bag_is_full_griseous_orb
 	end
 
@@ -292,7 +292,7 @@ _03B1:
 	npc_msg msg_0439_00040
 	wait_button_or_walk_away
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 
@@ -303,7 +303,7 @@ _03CE:
 	npc_msg msg_0439_00029
 	wait_button_or_walk_away
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 
@@ -321,7 +321,7 @@ _03FB:
 	npc_msg msg_0439_00036
 	wait_button_or_walk_away
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 
@@ -331,7 +331,7 @@ _040A:
 	npc_msg msg_0439_00038
 	wait_button_or_walk_away
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 
@@ -340,7 +340,7 @@ _041F:
 	npc_msg msg_0439_00039
 	wait_button_or_walk_away
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 
@@ -348,7 +348,7 @@ _042E:
 	npc_msg msg_0439_00025
 	wait_button_or_walk_away
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 
@@ -419,7 +419,7 @@ _0544:
 	npc_msg msg_0439_00027
 	wait_button_or_walk_away
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 
@@ -431,7 +431,7 @@ _0566:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	submoneyvar VAR_SPECIAL_x8004
-	scrcmd_115
+	update_money_box
 	play_se SEQ_SE_DP_REGI
 	wait_se SEQ_SE_DP_REGI
 	npc_msg msg_0439_00034
@@ -459,7 +459,7 @@ _05DC:
 	npc_msg msg_0439_00032
 	wait_button_or_walk_away
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 	.byte 0x00, 0x3e, 0x00, 0x03, 0x00
@@ -481,7 +481,7 @@ _0620:
 	npc_msg msg_0439_00029
 	wait_button_or_walk_away
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 	.byte 0x49, 0x00, 0xdc, 0x05, 0x60, 0x00, 0x2d, 0x00, 0x2a, 0x71, 0x01, 0x35, 0x00, 0x72, 0x00, 0x61

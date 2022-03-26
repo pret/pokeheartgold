@@ -41,7 +41,7 @@ _007B:
 	check_registered_phone_number PHONE_CONTACT_BLAINE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _00CC
-	check_badge 15, VAR_TEMP_x4002
+	check_badge BADGE_EARTH, VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 1
 	goto_if_eq _00A9
 	goto _0102

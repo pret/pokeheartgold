@@ -113,9 +113,9 @@ extern BOOL ScrCmd_109(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_AddMoney(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SubMoneyImmediate(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_HasEnoughMoneyImmediate(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_113(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_114(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_115(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_ShowMoneyBox(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_HideMoneyBox(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_UpdateMoneyBox(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_116(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_117(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_118(SCRIPTCONTEXT *ctx);
@@ -184,8 +184,8 @@ extern BOOL ScrCmd_180(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_181(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_182(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_183(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_184(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_185(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PlayerOnBikeCheck(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PlayerOnBikeSet(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_186(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPlayerState(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SetAvatarBits(SCRIPTCONTEXT *ctx);
@@ -463,7 +463,7 @@ extern BOOL ScrCmd_459(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_LoadPhoneDat(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPhoneContactMsgIds(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_462(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_463(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_EnableMassOutbreaks(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CreateRoamer(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_465(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_466(SCRIPTCONTEXT *ctx);
@@ -471,7 +471,7 @@ extern BOOL ScrCmd_MoveRelearnerInit(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_MoveTutorInit(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_MoveRelearnerGetResult(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_LoadNPCTrade(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_471(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetOfferedSpecies(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_NPCTradeGetReqSpecies(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_NPCTradeExec(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_NPCTradeEnd(SCRIPTCONTEXT *ctx);
@@ -612,15 +612,15 @@ extern BOOL ScrCmd_608(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_609(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_610(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_Pokeathlon(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_612(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetNpcTradeUnusedFlag(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPhoneContactRandomGiftBerry(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPhoneContactGiftItem(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CameronPhoto(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_616(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_617(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PhotoAlbumIsFull(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_619(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_620(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_RocketCostumeFlagCheck(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_RocketCostumeFlagAction(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_621(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_622(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_AnimApricornTree(SCRIPTCONTEXT *ctx);
@@ -670,7 +670,7 @@ extern BOOL ScrCmd_666(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_667(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferTypeName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetItemQuantity(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_670(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetHiddenPowerType(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_671(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_672(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetOwnedRotomFormes(SCRIPTCONTEXT *ctx);
@@ -968,9 +968,9 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_AddMoney,
     ScrCmd_SubMoneyImmediate,
     ScrCmd_HasEnoughMoneyImmediate,
-    ScrCmd_113,
-    ScrCmd_114,
-    ScrCmd_115,
+    ScrCmd_ShowMoneyBox,
+    ScrCmd_HideMoneyBox,
+    ScrCmd_UpdateMoneyBox,
     ScrCmd_116,
     ScrCmd_117,
     ScrCmd_118,
@@ -1039,8 +1039,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_181,
     ScrCmd_182,
     ScrCmd_183,
-    ScrCmd_184,
-    ScrCmd_185,
+    ScrCmd_PlayerOnBikeCheck,
+    ScrCmd_PlayerOnBikeSet,
     ScrCmd_186,
     ScrCmd_GetPlayerState,
     ScrCmd_SetAvatarBits,
@@ -1318,7 +1318,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_LoadPhoneDat,
     ScrCmd_GetPhoneContactMsgIds,
     ScrCmd_462,
-    ScrCmd_463,
+    ScrCmd_EnableMassOutbreaks,
     ScrCmd_CreateRoamer,
     ScrCmd_465,
     ScrCmd_466,
@@ -1326,7 +1326,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_MoveTutorInit,
     ScrCmd_MoveRelearnerGetResult,
     ScrCmd_LoadNPCTrade,
-    ScrCmd_471,
+    ScrCmd_GetOfferedSpecies,
     ScrCmd_NPCTradeGetReqSpecies,
     ScrCmd_NPCTradeExec,
     ScrCmd_NPCTradeEnd,
@@ -1467,15 +1467,15 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_609,
     ScrCmd_610,
     ScrCmd_Pokeathlon,
-    ScrCmd_612,
+    ScrCmd_GetNpcTradeUnusedFlag,
     ScrCmd_GetPhoneContactRandomGiftBerry,
     ScrCmd_GetPhoneContactGiftItem,
     ScrCmd_CameronPhoto,
     ScrCmd_616,
     ScrCmd_617,
     ScrCmd_PhotoAlbumIsFull,
-    ScrCmd_619,
-    ScrCmd_620,
+    ScrCmd_RocketCostumeFlagCheck,
+    ScrCmd_RocketCostumeFlagAction,
     ScrCmd_621,
     ScrCmd_622,
     ScrCmd_AnimApricornTree,
@@ -1525,7 +1525,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_667,
     ScrCmd_BufferTypeName,
     ScrCmd_GetItemQuantity,
-    ScrCmd_670,
+    ScrCmd_GetHiddenPowerType,
     ScrCmd_671,
     ScrCmd_672,
     ScrCmd_GetOwnedRotomFormes,

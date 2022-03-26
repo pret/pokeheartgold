@@ -84,20 +84,20 @@ BOOL ScrCmd_ClearEscortMode(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_619(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_RocketCostumeFlagCheck(SCRIPTCONTEXT *ctx) {
     u16 *ret = ScriptGetVarPointer(ctx);
 
-    *ret = CheckFlag969(SavArray_Flags_get(ctx->fsys->savedata));
+    *ret = ScriptState_CheckRocketCostumeFlag(SavArray_Flags_get(ctx->fsys->savedata));
     return FALSE;
 }
 
-BOOL ScrCmd_620(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_RocketCostumeFlagAction(SCRIPTCONTEXT *ctx) {
     u8 mode = ScriptReadByte(ctx);
 
     if (mode) {
-        SetFlag969(SavArray_Flags_get(ctx->fsys->savedata));
+        ScriptState_SetRocketCostumeFlag(SavArray_Flags_get(ctx->fsys->savedata));
     } else {
-        ClearFlag969(SavArray_Flags_get(ctx->fsys->savedata));
+        ScriptState_ClearRocketCostumeFlag(SavArray_Flags_get(ctx->fsys->savedata));
     }
     return FALSE;
 }

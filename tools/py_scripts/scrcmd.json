@@ -701,18 +701,18 @@
       ]
     },
     {
-      "name": "scrcmd_113",
+      "name": "show_money_box",
       "args": [
         2,
         2
       ]
     },
     {
-      "name": "scrcmd_114",
+      "name": "hide_money_box",
       "args": []
     },
     {
-      "name": "scrcmd_115",
+      "name": "update_money_box",
       "args": []
     },
     {
@@ -1145,13 +1145,13 @@
       ]
     },
     {
-      "name": "scrcmd_184",
+      "name": "player_on_bike_check",
       "args": [
         "var"
       ]
     },
     {
-      "name": "scrcmd_185",
+      "name": "player_on_bike_set",
       "args": [
         1
       ]
@@ -1171,7 +1171,7 @@
     {
       "name": "set_avatar_bits",
       "args": [
-        2
+        "player_transition"
       ]
     },
     {
@@ -1810,20 +1810,20 @@
     {
       "name": "check_badge",
       "args": [
-        "var",
+        "badge",
         "var"
       ]
     },
     {
       "name": "give_badge",
       "args": [
-        "var"
+        "badge"
       ]
     },
     {
       "name": "count_badges",
       "args": [
-        "var"
+        "badge"
       ]
     },
     {
@@ -2879,7 +2879,7 @@
       ]
     },
     {
-      "name": "scrcmd_463",
+      "name": "enable_mass_outbreaks",
       "args": []
     },
     {
@@ -2956,7 +2956,7 @@
       ]
     },
     {
-      "name": "scrcmd_471",
+      "name": "get_offered_species",
       "args": [
         2
       ]
@@ -3849,7 +3849,7 @@
       ]
     },
     {
-      "name": "scrcmd_612",
+      "name": "get_npc_trade_unused_flag",
       "args": [
         2
       ]
@@ -3889,13 +3889,13 @@
       ]
     },
     {
-      "name": "scrcmd_619",
+      "name": "rocket_costume_flag_check",
       "args": [
         2
       ]
     },
     {
-      "name": "scrcmd_620",
+      "name": "rocket_costume_flag_action",
       "args": [
         1
       ]
@@ -4236,7 +4236,7 @@
       ]
     },
     {
-      "name": "scrcmd_670",
+      "name": "get_hidden_power_type",
       "args": [
         "var",
         "var"

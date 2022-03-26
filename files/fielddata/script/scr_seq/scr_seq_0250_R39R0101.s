@@ -34,7 +34,7 @@ _002C:
 	end
 
 _0058:
-	scrcmd_113 20, 2
+	show_money_box 20, 2
 	npc_msg msg_0397_R39R0101_00001
 	touchscreen_menu_hide
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
@@ -54,11 +54,11 @@ _0058:
 	goto_if_eq _00F7
 	goto_if_no_item_space ITEM_MOOMOO_MILK, VAR_TEMP_x4000, _0104
 	submoneyvar VAR_TEMP_x4001
-	scrcmd_115
+	update_money_box
 	npc_msg msg_0397_R39R0101_00002
 	callstd std_give_item_verbose
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 
@@ -66,7 +66,7 @@ _00F7:
 	npc_msg msg_0397_R39R0101_00003
 	wait_button_or_walk_away
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 
@@ -74,7 +74,7 @@ _0104:
 	npc_msg msg_0397_R39R0101_00004
 	wait_button_or_walk_away
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 
@@ -82,7 +82,7 @@ _0111:
 	npc_msg msg_0397_R39R0101_00005
 	wait_button_or_walk_away
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 

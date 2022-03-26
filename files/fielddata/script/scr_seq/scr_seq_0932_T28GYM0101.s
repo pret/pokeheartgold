@@ -63,7 +63,7 @@ scr_seq_T28GYM0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 6, VAR_SPECIAL_RESULT
+	check_badge BADGE_GLACIER, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0178
 	npc_msg msg_0622_T28GYM0101_00000
@@ -78,7 +78,7 @@ scr_seq_T28GYM0101_000:
 	settrainerflag TRAINER_SKIER_DIANA
 	settrainerflag TRAINER_BOARDER_PATTON
 	npc_msg msg_0622_T28GYM0101_00001
-	give_badge 6
+	give_badge BADGE_GLACIER
 	addvar VAR_UNK_4134, 1
 	add_special_game_stat 22
 	compare VAR_UNK_4134, 3

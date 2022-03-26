@@ -27245,7 +27245,7 @@ ov112_021F3244: ; 0x021F3244
 	lsl r2, r2, #2
 	bl MIi_CpuClearFast
 	add r0, r4, #0
-	bl sub_020327DC
+	bl TrainerHouseSet_SetZero
 	add r0, r4, #0
 	add r1, r5, #0
 	bl ov112_021F336C
@@ -27273,10 +27273,10 @@ ov112_021F328C: ; 0x021F328C
 	str r1, [sp, #0x14]
 	str r0, [sp]
 	ldr r5, [sp, #0x10]
-	bl sub_0203277C
+	bl Save_TrainerHouse_get
 	str r0, [sp, #8]
 	ldr r0, [sp, #4]
-	bl sub_020327F8
+	bl TrainerHouseSet_CheckHasData
 	cmp r0, #0
 	bne _021F32B6
 	ldr r0, [sp, #8]
@@ -27656,7 +27656,7 @@ ov112_021F35A4: ; 0x021F35A4
 	lsl r7, r7, #6
 _021F35B0:
 	add r0, r5, #0
-	bl sub_020327F8
+	bl TrainerHouseSet_CheckHasData
 	cmp r0, #0
 	beq _021F35C4
 	add r4, r4, #1
@@ -27680,12 +27680,12 @@ ov112_021F35C8: ; 0x021F35C8
 	lsl r7, r7, #6
 _021F35D6:
 	add r0, r5, #0
-	bl sub_020327F8
+	bl TrainerHouseSet_CheckHasData
 	cmp r0, #0
 	beq _021F35F6
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_02032808
+	bl TrainerHouseTrainer_Compare
 	cmp r0, #0
 	beq _021F35F6
 	ldr r0, [sp]

@@ -23,7 +23,7 @@ _002F:
 	check_registered_phone_number PHONE_CONTACT_FALKNER, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0082
-	check_badge 12, VAR_TEMP_x4000
+	check_badge BADGE_SOUL, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 1
 	goto_if_eq _005B
 	goto _00C2
