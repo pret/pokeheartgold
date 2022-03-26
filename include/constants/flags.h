@@ -316,8 +316,8 @@
 #define FLAG_UNK_128                                               0x128
 #define FLAG_UNK_129                                               0x129
 #define FLAG_UNK_12A                                               0x12A
-#define FLAG_UNLOCKED_MT_SILVER                                               0x12B
-#define FLAG_UNLOCKED_WEST_KANTO                                               0x12C
+#define FLAG_UNLOCKED_MT_SILVER                                    0x12B
+#define FLAG_UNLOCKED_WEST_KANTO                                   0x12C
 #define FLAG_UNK_12D                                               0x12D
 #define FLAG_UNK_12E                                               0x12E
 #define FLAG_UNK_12F                                               0x12F
@@ -365,7 +365,7 @@
 #define FLAG_UNK_159                                               0x159
 #define FLAG_UNK_15A                                               0x15A
 #define FLAG_UNK_15B                                               0x15B
-#define FLAG_GOT_LUCKY_PUNCH                                               0x15C
+#define FLAG_GOT_LUCKY_PUNCH                                       0x15C
 #define FLAG_UNK_15D                                               0x15D
 #define FLAG_MET_MOVE_MANIAC                                       0x15E
 #define FLAG_BUG_CONTEST_OTHER_POKES_HELD                          0x15F
@@ -406,7 +406,7 @@
 #define FLAG_UNK_182                                               0x182
 #define FLAG_UNK_183                                               0x183
 #define FLAG_UNK_184                                               0x184
-#define FLAG_GOT_HM08                                               0x185
+#define FLAG_GOT_HM08                                              0x185
 #define FLAG_UNK_186                                               0x186
 #define FLAG_UNK_187                                               0x187
 #define FLAG_UNK_188                                               0x188
