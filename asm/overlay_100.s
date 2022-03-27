@@ -1475,7 +1475,7 @@ ov100_Phone_OvyInit: ; 0x021E642C
 	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [r4, #0x34]
 	ldr r0, [r4, #0x28]
-	bl sub_0202EE4C
+	bl Pokegear_GetRegisteredCardsArray
 	ldrb r2, [r4, #5]
 	mov r1, #0x7f
 	bic r2, r1

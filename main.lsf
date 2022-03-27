@@ -123,7 +123,7 @@ Static main
 	Object asm/unk_0202EB30.o
 	Object asm/unk_0202ECC0.o
 	Object asm/unk_0202ED18.o
-	Object asm/unk_0202ED74.o
+	Object src/save_pokegear.o
 	Object src/safari_zone.o
 	Object src/photo_album.o
 	Object asm/unk_0202FBCC.o

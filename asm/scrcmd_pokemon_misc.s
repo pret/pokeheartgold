@@ -3259,7 +3259,7 @@ ScrCmd_811: ; 0x022024B8
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl SaveData_GetPhoneRematches
+	bl SaveData_GetMomsSavingsAddr
 	mov r1, #0
 	add r2, r6, #0
 	bl sub_0202F224
@@ -3275,7 +3275,7 @@ ScrCmd_812: ; 0x022024FC
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl SaveData_GetPhoneRematches
+	bl SaveData_GetMomsSavingsAddr
 	bl sub_0202F1F4
 	mov r0, #0
 	pop {r3, pc}

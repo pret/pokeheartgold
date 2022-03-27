@@ -2658,7 +2658,7 @@
 .public SaveData_GSPlayerMisc_get
 .public SaveData_GSPlayerMisc_init
 .public SaveData_GSPlayerMisc_sizeof
-.public SaveData_GetPhoneRematches
+.public SaveData_GetMomsSavingsAddr
 .public SaveData_TryLoadOnContinue
 .public SaveDressupData_GetFashionCase
 .public SaveEasyChat_GetGreetingsFlag
@@ -28285,7 +28285,7 @@
 .public sub_0202EDF4
 .public sub_0202EDF8
 .public sub_0202EDFC
-.public sub_0202EE4C
+.public Pokegear_GetRegisteredCardsArray
 .public sub_0202EE58
 .public sub_0202EE70
 .public sub_0202EE7C

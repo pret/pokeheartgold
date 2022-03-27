@@ -354,7 +354,7 @@ _021E799A:
 	str r0, [r5, #0x38]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x24]
-	bl SaveData_GetPhoneRematches
+	bl SaveData_GetMomsSavingsAddr
 	mov r1, #0x49
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -12701,7 +12701,7 @@ ov101_021ED980: ; 0x021ED980
 	str r0, [r4, #0x38]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x24]
-	bl SaveData_GetPhoneRematches
+	bl SaveData_GetMomsSavingsAddr
 	mov r1, #0x49
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -18428,7 +18428,7 @@ ov101_021F0694: ; 0x021F0694
 	str r0, [sp, #0x20]
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0x24]
-	bl SaveData_GetPhoneRematches
+	bl SaveData_GetMomsSavingsAddr
 	str r0, [sp, #0x24]
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0x34]

@@ -719,7 +719,7 @@ _02051E14:
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl SaveData_GetPhoneRematches
+	bl SaveData_GetMomsSavingsAddr
 	mov r1, #0
 	add r2, r1, #0
 	bl MomSavingsBalanceAction
@@ -1263,7 +1263,7 @@ sub_0205230C: ; 0x0205230C
 	bl SavArray_Flags_get
 	add r4, r0, #0
 	ldr r0, [r6, #0xc]
-	bl SaveData_GetPhoneRematches
+	bl SaveData_GetMomsSavingsAddr
 	str r0, [sp, #4]
 	add r0, r4, #0
 	bl ScriptState_MomsSavingsFlagCheck

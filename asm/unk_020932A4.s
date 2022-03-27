@@ -16,7 +16,7 @@ PhoneBookTrainerGetRematchInfo: ; 0x020932A4
 	add r0, r4, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl SaveData_GetPhoneRematches
+	bl SaveData_GetMomsSavingsAddr
 	add r1, r5, #0
 	bl PhoneRematches_IsSeeking
 	cmp r0, #0
