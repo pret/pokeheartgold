@@ -5,11 +5,11 @@
 #include "script.h"
 
 typedef struct FLYPOINTS_SAVE FLYPOINTS_SAVE;
-struct SavStructUnk10;
+struct SavedMapObjectList;
 
 u32 Save_FlyPoints_sizeof(void);
-u32 sub_0203B920(void);
-void sub_0203B928(struct SavStructUnk10 *unk);
+u32 Save_MapObjects_sizeof(void);
+void Save_MapObjects_init(struct SavedMapObjectList *unk);
 void Save_FlyPoints_init(FLYPOINTS_SAVE *flypointsSave);
 Location *FlyPoints_GetPosition(FLYPOINTS_SAVE *flypointsSave);
 Location *sub_0203B95C(FLYPOINTS_SAVE *flypointsSave);
@@ -29,8 +29,8 @@ u16 *FlyPoints_GetSafariBallsCounter(FLYPOINTS_SAVE *flypointsSave);
 u16 *FlyPoints_GetSafariStepsCounter(FLYPOINTS_SAVE *flypointsSave);
 u16 *FlyPoints_GetPoisonStepCounter(FLYPOINTS_SAVE *flypointsSave);
 FLYPOINTS_SAVE *Save_FlyPoints_get(SAVEDATA *saveData);
-struct SavStructUnk10 *sub_0203B9D0(SAVEDATA *saveData);
-void sub_0203B9DC(FieldSystem *fsys);
-void sub_0203B9F4(FieldSystem *fsys);
+struct SavedMapObjectList *Save_MapObjects_get(SAVEDATA *saveData);
+void Fsys_SyncMapObjectsToSave(FieldSystem *fsys);
+void Fsys_RestoreMapObjectsFromSave(FieldSystem *fsys);
 
 #endif //POKEHEARTGOLD_SAVE_FLYPOINTS_H

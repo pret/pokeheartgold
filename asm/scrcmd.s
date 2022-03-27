@@ -11616,7 +11616,7 @@ ScrCmd_579: ; 0x020462F0
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0203B9DC
+	bl Fsys_SyncMapObjectsToSave
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0

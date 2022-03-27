@@ -13,7 +13,7 @@
 #define SAVE_DAYCARE              7
 #define SAVE_PALPAD               8
 #define SAVE_MISC                 9
-#define SAVE_UNK_10              10
+#define SAVE_MAP_OBJECTS         10
 #define SAVE_UNK_11              11
 #define SAVE_DRESSUP_DATA        12
 #define SAVE_MAILBOX             13

@@ -28824,13 +28824,13 @@
 .public sub_0203B58C
 .public sub_0203B5AC
 .public sub_0203B5D8
-.public sub_0203B920
-.public sub_0203B928
+.public Save_MapObjects_sizeof
+.public Save_MapObjects_init
 .public sub_0203B95C
 .public sub_0203B960
 .public FlyPoints_GetMusicIdAddr
-.public sub_0203B9DC
-.public sub_0203B9F4
+.public Fsys_SyncMapObjectsToSave
+.public Fsys_RestoreMapObjectsFromSave
 .public sub_0203BB50
 .public sub_0203BC10
 .public sub_0203BC28
@@ -29338,7 +29338,7 @@
 .public sub_0205C7A4
 .public sub_0205C7A8
 .public sub_0205C7B4
-.public sub_0205C7BC
+.public FlypointsPlayerSub_init
 .public sub_0205C7EC
 .public sub_0205C810
 .public sub_0205C838
@@ -29389,8 +29389,8 @@
 .public sub_0205E4C8
 .public sub_0205E520
 .public sub_0205E580
-.public sub_0205E5EC
-.public sub_0205E648
+.public Fsys_SyncMapObjectsToSaveEx
+.public MapObjectMan_RestoreFromSave
 .public sub_0205EEB4
 .public sub_0205EEF4
 .public sub_0205F09C
@@ -29473,7 +29473,7 @@
 .public sub_0205FCBC
 .public sub_0205FCC0
 .public sub_0205FCD4
-.public sub_0205FD00
+.public SaveMapObjects_SearchSpriteId
 .public sub_0205FD20
 .public sub_0205FD30
 .public sub_02060B90

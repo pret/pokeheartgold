@@ -250,7 +250,7 @@ static void sub_0205323C(FieldSystem *fsys) {
     struct FlypointsPlayerSub *avatar_sub;
 
     fsys->mapObjectMan = sub_0205E0BC(fsys, 64, 5);
-    sub_0203B9F4(fsys);
+    Fsys_RestoreMapObjectsFromSave(fsys);
     avatar_sub = SaveFlyPoints_GetPlayerSub(Save_FlyPoints_get(fsys->savedata));
     gender = PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(fsys->savedata));
     fsys->playerAvatar = sub_0205C408(fsys->mapObjectMan, avatar_sub, gender);
