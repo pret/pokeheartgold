@@ -204,7 +204,7 @@ _021E5ACC: ; jump table
 	.short _021E5B48 - _021E5ACC - 2 ; case 2
 	.short _021E5B68 - _021E5ACC - 2 ; case 3
 _021E5AD4:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E5B74
 	bl sub_0203769C
@@ -276,7 +276,7 @@ _021E5B48:
 	str r0, [r5]
 	b _021E5B74
 _021E5B68:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E5B74
 	mov r0, #1

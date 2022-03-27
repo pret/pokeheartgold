@@ -83,7 +83,7 @@ _02097DB0:
 	str r0, [r4]
 	b _02097E46
 _02097DD0:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02097E46
 	ldr r1, [r4, #4]
@@ -125,7 +125,7 @@ _02097E04:
 	str r0, [r4]
 	b _02097E46
 _02097E2C:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02097E46
 	ldr r0, [r4, #4]

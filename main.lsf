@@ -305,7 +305,7 @@ Static main
 	Object asm/unk_020957B0.o
 	Object asm/unk_02095DF4.o
 	Object src/phonebook_dat.o
-	Object asm/unk_0209600C.o
+	Object src/choose_starter.o
 	Object asm/unk_020961D8.o
 	Object src/error_message_reset.o
 	Object src/sin_vcount.o

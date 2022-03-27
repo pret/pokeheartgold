@@ -1186,7 +1186,7 @@
 .public IsFanfarePlaying
 .public IsGetAllRequestData
 .public IsNighttime
-.public IsPaletteFadeActive
+.public IsPaletteFadeFinished
 .public IsPokemonLegendaryOrMythical
 .public IsSEPlaying
 .public ItemCheckUseData_Init

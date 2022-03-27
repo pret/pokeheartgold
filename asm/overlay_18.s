@@ -6544,7 +6544,7 @@ _021E8DAC: .word 0x0000085C
 ov18_021E8DB0: ; 0x021E8DB0
 	push {r4, lr}
 	add r4, r0, #0
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _021E8DC4
 	mov r0, #0x86
@@ -9463,7 +9463,7 @@ _021EA5F0:
 	b _021EA620
 _021EA600:
 	bls _021EA620
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _021EA620
 	ldr r0, _021EA680 ; =0x00000868

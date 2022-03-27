@@ -634,7 +634,7 @@ ov93_0225CA8C: ; 0x0225CA8C
 	cmp r0, #1
 	b _0225CAE0
 _0225CAB2:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _0225CABE
 	bl sub_0200FB70
@@ -686,7 +686,7 @@ _0225CB08: ; jump table
 	.short _0225CB6E - _0225CB08 - 2 ; case 5
 	.short _0225CCBA - _0225CB08 - 2 ; case 6
 _0225CB16:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _0225CB60
 	ldr r0, [r5]
@@ -895,7 +895,7 @@ _0225CC9C:
 	str r2, [r4, r0]
 	b _0225CCC8
 _0225CCBA:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _0225CCC8
 	add sp, #0xc

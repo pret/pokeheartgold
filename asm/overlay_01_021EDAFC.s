@@ -508,7 +508,7 @@ ov01_021EDE8C: ; 0x021EDE8C
 	strb r0, [r4]
 	pop {r4, pc}
 _021EDEA8:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021EDEF8
 	add r0, r4, #0
@@ -1316,7 +1316,7 @@ ov01_021EE49C: ; 0x021EE49C
 	strb r0, [r5]
 	pop {r4, r5, r6, pc}
 _021EE4B8:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021EE55A
 	mov r0, #0x6f

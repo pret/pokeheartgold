@@ -774,7 +774,7 @@ ov01_022010CC: ; 0x022010CC
 	strb r1, [r5, r0]
 	pop {r4, r5, r6, pc}
 _022010E0:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0220115A
 	mov r0, #0x8f

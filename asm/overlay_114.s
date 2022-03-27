@@ -239,7 +239,7 @@ _0225F1D8:
 	bl sub_020247F4
 	cmp r6, #1
 	bne _0225F260
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _0225F260
 	ldr r0, [r4]
@@ -544,7 +544,7 @@ _0225F45C:
 	str r0, [r6]
 	b _0225F4E2
 _0225F486:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _0225F4E2
 	ldr r0, [r6]

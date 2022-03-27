@@ -820,7 +820,7 @@ static BOOL Task_RegisteredItem_GoToApp(TaskManager *taskManager) {
         env->state = 1;
         break;
     case 1:
-        if (IsPaletteFadeActive()) {
+        if (IsPaletteFadeFinished()) {
             env->work = env->ctor(fsys);
             if (env->no_app == FALSE) {
                 env->state = 2;
@@ -849,7 +849,7 @@ static BOOL Task_RegisteredItem_GoToApp(TaskManager *taskManager) {
         }
         break;
     case 5:
-        if (IsPaletteFadeActive()) {
+        if (IsPaletteFadeFinished()) {
             MapObjectMan_UnpauseAllMovement(fsys->mapObjectMan);
             FreeToHeap(env);
             return TRUE;

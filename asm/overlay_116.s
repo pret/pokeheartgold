@@ -170,7 +170,7 @@ _0225F140:
 	str r0, [r4]
 	pop {r3, r4, r5, r6, pc}
 _0225F162:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0225F1A6
 	mov r0, #0
@@ -380,7 +380,7 @@ _0225F2F0:
 	str r0, [r4]
 	pop {r4, r5, r6, r7, pc}
 _0225F312:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0225F356
 	mov r0, #0

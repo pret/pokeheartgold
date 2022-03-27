@@ -241,7 +241,7 @@ ov85_021E5AF8: ; 0x021E5AF8
 ov85_021E5B0C: ; 0x021E5B0C
 	push {r4, lr}
 	add r4, r0, #0
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E5B2C
 	bl sub_0203769C
@@ -1975,7 +1975,7 @@ _021E673E:
 ov85_021E6748: ; 0x021E6748
 	push {r4, lr}
 	add r4, r0, #0
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E675C
 	mov r0, #0x35
@@ -6634,7 +6634,7 @@ _021E8A4C: ; jump table
 	.short _021E8ACC - _021E8A4C - 2 ; case 2
 	.short _021E8AE4 - _021E8A4C - 2 ; case 3
 _021E8A54:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E8AF0
 	mov r0, #1
@@ -6703,7 +6703,7 @@ _021E8ACC:
 	str r0, [r4]
 	b _021E8AF0
 _021E8AE4:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E8AF0
 	mov r0, #1

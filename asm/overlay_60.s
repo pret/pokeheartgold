@@ -310,7 +310,7 @@ _021E5B62:
 	ldr r2, [r4]
 	add r0, #0xcc
 	bl ov60_021E641C
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E5BA0
 	mov r0, #0xc
@@ -419,7 +419,7 @@ _021E5C68:
 	add r0, r4, #0
 	add r0, #0xcc
 	bl ov60_021E6B08
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _021E5C8E
 	add r0, r4, #0
@@ -4481,7 +4481,7 @@ _021E7C1A:
 	bl ov60_021E7958
 	b _021E7C4C
 _021E7C3E:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E7C4C
 	add sp, #0x10
@@ -5392,7 +5392,7 @@ _021E8340:
 	bl ov60_021E8B58
 	cmp r0, #0
 	beq _021E837C
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	bne _021E837E
 _021E837C:
@@ -8672,7 +8672,7 @@ _021E9EE4:
 	bl ov60_021E7958
 	b _021EA1FA
 _021E9F04:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E9FD6
 	add r0, r6, #0
@@ -8966,7 +8966,7 @@ _021EA158:
 	bl ov60_021E7958
 	b _021EA1FA
 _021EA182:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021EA1FA
 	mov r0, #1
@@ -10151,7 +10151,7 @@ _021EAB40:
 	bl ov60_021E7958
 	b _021EAC08
 _021EAB5E:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021EAC08
 	add r0, r4, #0
@@ -10235,7 +10235,7 @@ _021EABD6:
 	bl ov60_021E7958
 	b _021EAC08
 _021EABFA:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021EAC08
 	add sp, #0xc

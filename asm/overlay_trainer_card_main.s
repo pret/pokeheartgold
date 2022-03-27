@@ -343,7 +343,7 @@ _021E5DAE: ; jump table
 	.short _021E5E56 - _021E5DAE - 2 ; case 4
 	.short _021E5E70 - _021E5DAE - 2 ; case 5
 _021E5DBA:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E5E96
 	mov r0, #1
@@ -406,7 +406,7 @@ _021E5E26:
 	bl ov51_021E6DA8
 	b _021E5E96
 _021E5E3A:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E5E96
 	add sp, #0xc

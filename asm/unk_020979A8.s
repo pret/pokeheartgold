@@ -183,7 +183,7 @@ _02097AD2:
 	strb r0, [r4]
 	b _02097B72
 _02097AF8:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02097B08
 	bl GF_SndGetFadeTimer

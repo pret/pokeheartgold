@@ -125,7 +125,7 @@ _020962B8:
 	str r0, [r4, #0x18]
 	b _02096314
 _020962CE:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02096314
 	ldr r0, [r4, #0x10]
