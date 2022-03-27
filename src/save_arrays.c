@@ -43,7 +43,7 @@ DECL_CHUNK_EX(sub_0202EB30, sub_0202EB38)
 DECL_CHUNK_EX(sub_02031AF0, sub_02031AF4)
 DECL_CHUNK_EX(sub_0203170C, sub_02031710)
 DECL_CHUNK_EX(sub_020318C8, sub_020318CC)
-DECL_CHUNK_EX(sub_02031904, sub_0203190C)
+DECL_CHUNK(Save_Pokeathlon)
 DECL_CHUNK(Save_ApricornBox)
 
 const struct SaveChunkHeader gSaveChunkHeaders[] = {
@@ -215,7 +215,7 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
     }, {
         SAVE_FOLLOW_POKE,
         0,
-        (SAVESIZEFN) Sav2_FollowPoke_sizeof,
+        (SAVESIZEFN)Sav2_FollowPoke_sizeof,
         (SAVEINITFN)Sav2_FollowPoke_init
     }, {
         SAVE_POKEGEAR,
@@ -233,10 +233,10 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
         (SAVESIZEFN)Save_PhotoAlbum_sizeof,
         (SAVEINITFN)Save_PhotoAlbum_init
     }, {
-        SAVE_UNK_37,
+        SAVE_POKEATHLON,
         0,
-        (SAVESIZEFN)sub_02031904,
-        (SAVEINITFN)sub_0203190C
+        (SAVESIZEFN)Save_Pokeathlon_sizeof,
+        (SAVEINITFN)Save_Pokeathlon_init
     }, {
         SAVE_APRICORN_BOX,
         0,

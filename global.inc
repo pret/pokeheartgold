@@ -28439,8 +28439,8 @@
 .public sub_020318F8
 .public sub_020318FC
 .public sub_02031900
-.public sub_02031904
-.public sub_0203190C
+.public Save_Pokeathlon_sizeof
+.public Save_Pokeathlon_init
 .public sub_02031974
 .public sub_02031978
 .public sub_0203197C

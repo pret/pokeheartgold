@@ -3,16 +3,16 @@
 
 	.text
 
-	thumb_func_start sub_02031904
-sub_02031904: ; 0x02031904
+	thumb_func_start Save_Pokeathlon_sizeof
+Save_Pokeathlon_sizeof: ; 0x02031904
 	mov r0, #0x2e
 	lsl r0, r0, #6
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_02031904
+	thumb_func_end Save_Pokeathlon_sizeof
 
-	thumb_func_start sub_0203190C
-sub_0203190C: ; 0x0203190C
+	thumb_func_start Save_Pokeathlon_init
+Save_Pokeathlon_init: ; 0x0203190C
 	push {r3, r4, r5, r6, r7, lr}
 	mov r2, #0x2e
 	mov r1, #0
@@ -59,7 +59,7 @@ _0203193C:
 	.balign 4, 0
 _02031960: .word 0x0000FFFF
 _02031964: .word 0x00000484
-	thumb_func_end sub_0203190C
+	thumb_func_end Save_Pokeathlon_init
 
 	thumb_func_start Save_Pokeathlon_get
 Save_Pokeathlon_get: ; 0x02031968
