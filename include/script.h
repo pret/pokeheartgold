@@ -175,6 +175,31 @@ struct FieldSystemUnkSub0 {
     BOOL unkC;
 };
 
+struct UnkFsysSub_114 {
+    u8 Unk_var0_0:1;
+    u8 Unk_var_1:7;
+	u8 Unk_var1;
+	u8 Unk_var2;
+	u8 Unk_var3;
+	u8 Unk_var4;
+	u8 Unk_arr5[2];
+	u8 Unk_var7;
+	int Unk_var8;
+	int Unk_varC;
+	s16 Unk_var10;
+	u16 Unk_var12;
+	int Unk_var14;
+	int Unk_var18;
+    struct PhoneBookEntry entry; //0x1c
+	SavePokegear* pokegearData;
+	struct PhoneRematches* rematchData;
+	SAVEDATA* data;
+	FieldSystem* sys;
+	void *Unk_ptr40;
+	u8 Unk_var44;
+    u8 filler_45[3];
+};
+
 struct UnkStruct_020FC5CC {
     u32 unk0_00:4;
     u32 unk0_04:4;
