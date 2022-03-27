@@ -74,3 +74,7 @@ cmake-build-*
 
 # Depfiles
 *.d
+
+diff.txt
+
+.vscode/
