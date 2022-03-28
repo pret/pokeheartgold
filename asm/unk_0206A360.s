@@ -199,7 +199,7 @@ _0206A440:
 	str r0, [r4]
 	b _0206A5BC
 _0206A4D0:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0206A5BC
 	ldr r0, [r4]

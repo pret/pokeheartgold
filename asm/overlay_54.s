@@ -318,7 +318,7 @@ _021E5B9E:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	bl sub_0200D020
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	bne _021E5C58
 	add sp, #0xc
@@ -385,7 +385,7 @@ _021E5C2C:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	bl sub_0200D020
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	bne _021E5C58
 	add sp, #0xc

@@ -188,7 +188,7 @@ _021E5A74:
 	str r0, [r5]
 	b _021E5E86
 _021E5AA6:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E5B94
 	mov r0, #2
@@ -621,7 +621,7 @@ _021E5E4C:
 	bl PlaySE
 	b _021E5E86
 _021E5E52:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E5E86
 	mov r0, #0x10
@@ -639,7 +639,7 @@ _021E5E52:
 	str r0, [r5]
 	b _021E5E86
 _021E5E78:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E5E86
 	add sp, #0x40

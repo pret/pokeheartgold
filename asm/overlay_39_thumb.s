@@ -2566,7 +2566,7 @@ ov39_02228308: ; 0x02228308
 	beq _0222835C
 	b _02228368
 _02228322:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _02228368
 	mov r0, #1
@@ -2597,7 +2597,7 @@ _02228352:
 	str r0, [r5]
 	b _02228368
 _0222835C:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _02228368
 	mov r0, #1

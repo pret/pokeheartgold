@@ -290,7 +290,7 @@ _021F69F6:
 	strb r0, [r4, #1]
 	pop {r3, r4, pc}
 _021F6A14:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021F6A8E
 	mov r0, #4
@@ -345,7 +345,7 @@ _021F6A60:
 	strb r0, [r4, #1]
 	pop {r3, r4, pc}
 _021F6A82:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021F6A8E
 	mov r0, #1

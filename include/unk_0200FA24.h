@@ -7,6 +7,6 @@ void BeginNormalPaletteFade(int pattern, int typeTop, int typeBottom, u16 color,
 void sub_0200FBDC(int a0);
 void sub_0200FBF4(int a0, int a1);
 void HandleFadeUpdateFrame(void);
-BOOL IsPaletteFadeActive(void);
+BOOL IsPaletteFadeFinished(void);
 
 #endif //POKEHEARTGOLD_UNK_0200FA24_H

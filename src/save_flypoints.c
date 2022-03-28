@@ -6,7 +6,7 @@
 #include "constants/scrcmd.h"
 
 struct FLYPOINTS_SAVE {
-    Location unk00;
+    Location position;
     Location unk14;
     Location unk28;
     Location dynamicWarp;
@@ -15,37 +15,37 @@ struct FLYPOINTS_SAVE {
     u16 weather;
     u16 lastSpawn;
     u8 cameraType;
-    struct FlypointsPlayerSub unk6C;
+    struct FlypointsPlayerSub player;
     u16 poisonStepCounter;
     u16 safariStepCounter;
     u16 safariBallCounter;
     u8 filler7A[6];
 };
 
-struct SavStructUnk10 {
-    struct SavStructUnk10Sub subs[64];
+struct SavedMapObjectList {
+    struct SavedMapObject subs[64];
 };
 
 u32 Save_FlyPoints_sizeof(void) {
     return sizeof(FLYPOINTS_SAVE);
 }
 
-u32 sub_0203B920(void) {
-    return sizeof(struct SavStructUnk10);
+u32 Save_MapObjects_sizeof(void) {
+    return sizeof(struct SavedMapObjectList);
 }
 
-void sub_0203B928(struct SavStructUnk10 *unk) {
-    MI_CpuClear32(unk, sizeof(struct SavStructUnk10));
+void Save_MapObjects_init(struct SavedMapObjectList *unk) {
+    MI_CpuClear32(unk, sizeof(struct SavedMapObjectList));
 }
 
 void Save_FlyPoints_init(FLYPOINTS_SAVE *flypointsSave) {
     memset(flypointsSave, 0, sizeof(FLYPOINTS_SAVE));
-    sub_0205C7BC(&flypointsSave->unk6C);
+    FlypointsPlayerSub_init(&flypointsSave->player);
     flypointsSave->lastSpawn = GetMomSpawnId();
 }
 
 Location *FlyPoints_GetPosition(FLYPOINTS_SAVE *flypointsSave) {
-    return &flypointsSave->unk00;
+    return &flypointsSave->position;
 }
 
 Location *sub_0203B95C(FLYPOINTS_SAVE *flypointsSave) {
@@ -97,7 +97,7 @@ void FlyPoints_SetCameraType(FLYPOINTS_SAVE *flypointsSave, const u32 cameraType
 }
 
 struct FlypointsPlayerSub *SaveFlyPoints_GetPlayerSub(FLYPOINTS_SAVE *flypointsSave) {
-    return &flypointsSave->unk6C;
+    return &flypointsSave->player;
 }
 
 u16 *FlyPoints_GetSafariBallsCounter(FLYPOINTS_SAVE *flypointsSave) {
@@ -116,23 +116,23 @@ FLYPOINTS_SAVE *Save_FlyPoints_get(SAVEDATA *saveData) {
     return SavArray_get(saveData, SAVE_FLYPOINTS);
 }
 
-struct SavStructUnk10 *sub_0203B9D0(SAVEDATA *saveData) {
-    return SavArray_get(saveData, SAVE_UNK_10);
+struct SavedMapObjectList *Save_MapObjects_get(SAVEDATA *saveData) {
+    return SavArray_get(saveData, SAVE_MAP_OBJECTS);
 }
 
-void sub_0203B9DC(FieldSystem *fsys) {
-    struct SavStructUnk10 *unk = sub_0203B9D0(fsys->savedata);
-    sub_0205E5EC(fsys, fsys->mapObjectMan, unk->subs, 64);
+void Fsys_SyncMapObjectsToSave(FieldSystem *fsys) {
+    struct SavedMapObjectList *unk = Save_MapObjects_get(fsys->savedata);
+    Fsys_SyncMapObjectsToSaveEx(fsys, fsys->mapObjectMan, unk->subs, 64);
 }
 
-void sub_0203B9F4(FieldSystem *fsys) {
-    struct SavStructUnk10 *unk = sub_0203B9D0(fsys->savedata);
-    struct SavStructUnk10Sub *follower = sub_0205FD00(unk->subs, 64, SPRITE_TSURE_POKE_SHAYMIN_SKY);
+void Fsys_RestoreMapObjectsFromSave(FieldSystem *fsys) {
+    struct SavedMapObjectList *unk = Save_MapObjects_get(fsys->savedata);
+    struct SavedMapObject *follower = SaveMapObjects_SearchSpriteId(unk->subs, 64, SPRITE_TSURE_POKE_SHAYMIN_SKY);
     POKEMON *pokemon;
     int species;
     int forme;
 
-    if (follower != NULL && follower->unk_8 == obj_partner_poke) {
+    if (follower != NULL && follower->objId == obj_partner_poke) {
         pokemon = GetFirstAliveMonInParty_CrashIfNone(SavArray_PlayerParty_get(fsys->savedata));
         species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
         forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
@@ -142,5 +142,5 @@ void sub_0203B9F4(FieldSystem *fsys) {
             follower->unk_12 = SPRITE_TSURE_POKE_SHAYMIN;
         }
     }
-    sub_0205E648(fsys->mapObjectMan, unk->subs, 64);
+    MapObjectMan_RestoreFromSave(fsys->mapObjectMan, unk->subs, 64);
 }

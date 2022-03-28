@@ -5464,7 +5464,7 @@ ov93_022625BC: ; 0x022625BC
 	cmp r1, #2
 	b _0226261E
 _022625E4:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _022625F0
 	bl sub_0200FB70

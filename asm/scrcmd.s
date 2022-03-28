@@ -5632,7 +5632,7 @@ _02043454: .word sub_02043458
 	thumb_func_start sub_02043458
 sub_02043458: ; 0x02043458
 	push {r3, lr}
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _02043466
 	mov r0, #1
@@ -11616,7 +11616,7 @@ ScrCmd_579: ; 0x020462F0
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0203B9DC
+	bl Fsys_SyncMapObjectsToSave
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -13543,7 +13543,7 @@ ScrCmd_462: ; 0x0204720C
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl SaveData_GetPhoneRematches
+	bl SaveData_GetMomsSavingsAddr
 	lsl r1, r4, #0x18
 	lsr r1, r1, #0x18
 	mov r2, #0
@@ -13605,7 +13605,7 @@ ScrCmd_GetPhoneContactGiftItem: ; 0x0204727C
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl SaveData_GetPhoneRematches
+	bl SaveData_GetMomsSavingsAddr
 	ldrb r1, [r4]
 	add r5, r0, #0
 	bl PhoneRematches_GiftItemIdGet
@@ -13647,7 +13647,7 @@ ScrCmd_149: ; 0x020472E8
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl SaveData_GetPhoneRematches
+	bl SaveData_GetMomsSavingsAddr
 	ldrb r1, [r4]
 	bl sub_0202F050
 	mov r0, #0
@@ -14494,7 +14494,7 @@ sub_02047914: ; 0x02047914
 	bl PlayerProfile_GetMoney
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl SaveData_GetPhoneRematches
+	bl SaveData_GetMomsSavingsAddr
 	mov r1, #0
 	add r2, r1, #0
 	bl MomSavingsBalanceAction
@@ -14627,7 +14627,7 @@ _02047A26:
 	add r1, r6, #0
 	bl PlayerProfile_SubMoney
 	add r0, r5, #0
-	bl SaveData_GetPhoneRematches
+	bl SaveData_GetMomsSavingsAddr
 	ldr r2, [r4]
 	mov r1, #2
 	ldr r2, [r2, #4]
@@ -14639,7 +14639,7 @@ _02047A44:
 	add r1, r6, #0
 	bl PlayerProfile_AddMoney
 	add r0, r5, #0
-	bl SaveData_GetPhoneRematches
+	bl SaveData_GetMomsSavingsAddr
 	ldr r2, [r4]
 	mov r1, #3
 	ldr r2, [r2, #4]
@@ -14679,7 +14679,7 @@ ScrCmd_BankOrWalletIsFull: ; 0x02047A7C
 	add r5, #0x80
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl SaveData_GetPhoneRematches
+	bl SaveData_GetMomsSavingsAddr
 	mov r1, #0
 	add r2, r1, #0
 	bl MomSavingsBalanceAction
@@ -15015,7 +15015,7 @@ ScrCmd_CheckBankBalance: ; 0x02047CBC
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl SaveData_GetPhoneRematches
+	bl SaveData_GetMomsSavingsAddr
 	mov r1, #0
 	add r2, r1, #0
 	bl MomSavingsBalanceAction

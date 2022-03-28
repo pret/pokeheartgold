@@ -9224,7 +9224,7 @@ ov03_02258764: ; 0x02258764
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r6, r0, #0
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _022587C2
 	add r0, r6, #0
@@ -9272,7 +9272,7 @@ _022587D0: .word 0x00000272
 	thumb_func_start ov03_022587D4
 ov03_022587D4: ; 0x022587D4
 	push {r3, lr}
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	bne _022587E2
 	mov r0, #0x1a

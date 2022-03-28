@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_CONSTANTS_PHONE_CONTACTS_H
 #define POKEHEARTGOLD_CONSTANTS_PHONE_CONTACTS_H
 
+#define PHONE_CONTACT_NONE               0xff
 #define PHONE_CONTACT_MOTHER                0
 #define PHONE_CONTACT_PROF__ELM             1
 #define PHONE_CONTACT_PROF__OAK             2

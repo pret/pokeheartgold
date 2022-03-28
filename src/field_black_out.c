@@ -115,7 +115,7 @@ static BOOL _Task_ShowPrintedMessage(TaskManager *taskManager) {
         work->state++;
         break;
     case 1:
-        if (IsPaletteFadeActive()) {
+        if (IsPaletteFadeFinished()) {
             work->state++;
         }
         break;
@@ -126,7 +126,7 @@ static BOOL _Task_ShowPrintedMessage(TaskManager *taskManager) {
         }
         break;
     case 3:
-        if (IsPaletteFadeActive()) {
+        if (IsPaletteFadeFinished()) {
             FillWindowPixelBuffer(&work->window, 0);
             work->state++;
         }

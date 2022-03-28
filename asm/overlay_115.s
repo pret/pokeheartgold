@@ -738,7 +738,7 @@ _0225F5F6:
 	str r0, [r5]
 	b _0225F6BC
 _0225F616:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0225F6BC
 	ldr r0, [r5]
@@ -2170,7 +2170,7 @@ _02260102:
 	ldr r0, [r4, r0]
 	add r1, sp, #0x38
 	bl sub_020247D4
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0226021C
 	ldr r0, [r6]

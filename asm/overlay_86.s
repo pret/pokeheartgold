@@ -295,7 +295,7 @@ _021E5B6C:
 	strb r0, [r4, #4]
 	b _021E5B9A
 _021E5B8C:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _021E5B9A
 	add sp, #0xc
@@ -460,7 +460,7 @@ _021E5CA6:
 	strb r0, [r4, #4]
 	b _021E5CD4
 _021E5CC6:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _021E5CD4
 	add sp, #0xc

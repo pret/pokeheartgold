@@ -8,7 +8,7 @@ ov71_02246960: ; 0x02246960
 	push {r4, r5, lr}
 	sub sp, #0x14
 	add r5, r0, #0
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	bne _02246970
 	b _02246B0C
@@ -2481,7 +2481,7 @@ ov71_02247C34: ; 0x02247C34
 	ldr r0, [r1]
 	cmp r0, #0
 	bne _02247C5A
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02247C5A
 	ldr r0, [r4, #0x3c]
@@ -2781,7 +2781,7 @@ _02247E8E:
 	str r0, [r4]
 	b _02247EC6
 _02247EAE:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02247EC6
 	add r0, r5, #0
@@ -3514,7 +3514,7 @@ ov71_0224843C: ; 0x0224843C
 	beq _02248462
 	b _0224847A
 _0224844C:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0224847A
 	ldr r0, _02248480 ; =ov71_0224C0C4
@@ -3729,7 +3729,7 @@ _022485B8:
 	str r0, [r5]
 	b _022485F4
 _022485E6:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _022485F4
 	add sp, #0xc
@@ -5795,7 +5795,7 @@ _02249624:
 	str r0, [r4]
 	b _0224965C
 _0224964E:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0224965C
 	add sp, #0xc
@@ -6730,7 +6730,7 @@ ov71_02249D80: ; 0x02249D80
 	beq _02249DF6
 	b _02249E04
 _02249D98:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02249E04
 	ldr r0, _02249E0C ; =0xFFE80000
@@ -6775,7 +6775,7 @@ _02249DCA:
 	str r0, [r4]
 	b _02249E04
 _02249DF6:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02249E04
 	add sp, #0xc
@@ -7251,7 +7251,7 @@ _0224A1DE: ; jump table
 	.short _0224A230 - _0224A1DE - 2 ; case 2
 	.short _0224A25C - _0224A1DE - 2 ; case 3
 _0224A1E6:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0224A26A
 	ldr r0, [r5, #0x20]
@@ -7304,7 +7304,7 @@ _0224A230:
 	str r0, [r4]
 	b _0224A26A
 _0224A25C:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0224A26A
 	add sp, #0xc
@@ -8321,7 +8321,7 @@ _0224AA40: ; jump table
 	.short _0224AAD4 - _0224AA40 - 2 ; case 5
 	.short _0224AAE8 - _0224AA40 - 2 ; case 6
 _0224AA4E:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0224AAF2
 	mov r0, #0
@@ -8465,7 +8465,7 @@ _0224AB38:
 	str r0, [r4]
 	b _0224AB76
 _0224AB62:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0224AB76
 	ldr r0, [r5, #0x1c]
@@ -9537,7 +9537,7 @@ ov71_0224B450: ; 0x0224B450
 	ldr r0, [r1]
 	cmp r0, #0
 	bne _0224B476
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0224B476
 	ldr r0, [r4, #0x40]
@@ -9846,7 +9846,7 @@ _0224B6AE:
 	str r0, [r5]
 	b _0224B6E6
 _0224B6D8:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0224B6E6
 	add sp, #0x10

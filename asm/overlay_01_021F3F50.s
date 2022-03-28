@@ -614,7 +614,7 @@ _021F43FE:
 ov01_021F4404: ; 0x021F4404
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203B9DC
+	bl Fsys_SyncMapObjectsToSave
 	add r0, r4, #0
 	mov r1, #4
 	mov r2, #0

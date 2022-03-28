@@ -321,7 +321,7 @@ _0225F274:
 	str r1, [r0]
 	b _0225F330
 _0225F2A4:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0225F330
 	ldr r0, [sp, #0x18]
@@ -1225,7 +1225,7 @@ _0225F9CC:
 	str r0, [r5]
 	b _0225FA98
 _0225FA16:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0225FA98
 	ldr r0, [r5]

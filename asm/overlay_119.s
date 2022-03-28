@@ -1147,7 +1147,7 @@ _0225F95A:
 	ldr r0, [sp, #0x18]
 	cmp r0, #1
 	bne _0225F9F0
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _0225F9F0
 	ldr r0, [r7]
@@ -2152,7 +2152,7 @@ _022601CC:
 	sub r1, r1, #4
 	ldr r1, [r4, r1]
 	bl sub_020235D4
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02260238
 	ldr r0, [r5]

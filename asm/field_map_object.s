@@ -644,8 +644,8 @@ _0205E5E0:
 	.balign 4, 0
 	thumb_func_end sub_0205E580
 
-	thumb_func_start sub_0205E5EC
-sub_0205E5EC: ; 0x0205E5EC
+	thumb_func_start Fsys_SyncMapObjectsToSaveEx
+Fsys_SyncMapObjectsToSaveEx: ; 0x0205E5EC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r7, r0, #0
@@ -691,10 +691,10 @@ _0205E642:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0205E5EC
+	thumb_func_end Fsys_SyncMapObjectsToSaveEx
 
-	thumb_func_start sub_0205E648
-sub_0205E648: ; 0x0205E648
+	thumb_func_start MapObjectMan_RestoreFromSave
+MapObjectMan_RestoreFromSave: ; 0x0205E648
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	add r5, r1, #0
@@ -723,7 +723,7 @@ _0205E678:
 	bne _0205E652
 _0205E67E:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0205E648
+	thumb_func_end MapObjectMan_RestoreFromSave
 
 	thumb_func_start sub_0205E680
 sub_0205E680: ; 0x0205E680
@@ -4405,8 +4405,8 @@ _0205FCEC:
 _0205FCFC: .word ov01_0220724C
 	thumb_func_end sub_0205FCD4
 
-	thumb_func_start sub_0205FD00
-sub_0205FD00: ; 0x0205FD00
+	thumb_func_start SaveMapObjects_SearchSpriteId
+SaveMapObjects_SearchSpriteId: ; 0x0205FD00
 	push {r3, r4}
 	cmp r1, #0
 	beq _0205FD1A
@@ -4427,4 +4427,4 @@ _0205FD1A:
 _0205FD1C:
 	pop {r3, r4}
 	bx lr
-	thumb_func_end sub_0205FD00
+	thumb_func_end SaveMapObjects_SearchSpriteId

@@ -144,7 +144,7 @@ _021E5A0C:
 	str r0, [r6]
 	b _021E5A64
 _021E5A2A:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E5A64
 	mov r0, #0x5a

@@ -112,7 +112,7 @@ _021E59C2:
 	str r0, [r4]
 	b _021E5A52
 _021E59DE:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E5A52
 	ldrh r0, [r5, #8]
@@ -157,7 +157,7 @@ _021E5A18:
 	str r0, [r4]
 	b _021E5A52
 _021E5A36:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E5A52
 	mov r0, #8

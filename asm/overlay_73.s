@@ -217,7 +217,7 @@ _021E5AF0: ; jump table
 	.short _021E5B6E - _021E5AF0 - 2 ; case 2
 	.short _021E5B86 - _021E5AF0 - 2 ; case 3
 _021E5AF8:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E5B92
 	mov r0, #1
@@ -285,7 +285,7 @@ _021E5B6E:
 	str r0, [r5]
 	b _021E5B92
 _021E5B86:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E5B92
 	mov r0, #1
@@ -4970,7 +4970,7 @@ _021E8008:
 	str r0, [r4]
 	b _021E8060
 _021E801C:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E8060
 	mov r0, #3
@@ -4988,7 +4988,7 @@ _021E802A:
 	str r0, [r4]
 	b _021E8060
 _021E803E:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E8060
 	ldr r3, [r5, #0x10]
