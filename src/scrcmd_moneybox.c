@@ -1,9 +1,11 @@
-#include "scrcmd_moneybox.h"
+#include "scrcmd.h"
+
+extern WINDOW *Fsys_ShowMoneyBox(FieldSystem *, u8, u8); 
 
 BOOL ScrCmd_ShowMoneyBox(SCRIPTCONTEXT *ctx) {
-    FieldSystem *fsys = ctx->fsys;    
-    u16 var0 = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
-    u16 var1 = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    FieldSystem *fsys = ctx->fsys;
+    u16 var0 = ScriptGetVar(ctx);
+    u16 var1 = ScriptGetVar(ctx);
 
     WINDOW **moneyBox = FieldSysGetAttrAddr(fsys, SCRIPTENV_MONEY_BOX);
     *moneyBox = Fsys_ShowMoneyBox(ctx->fsys, var0, var1);
