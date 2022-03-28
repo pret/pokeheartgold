@@ -11,7 +11,7 @@ struct FlypointsPlayerSub {
     u32 unk4;
 };
 
-void sub_0205C7BC(struct FlypointsPlayerSub *vec);
+void FlypointsPlayerSub_init(struct FlypointsPlayerSub *vec);
 BOOL FlypointsPlayerSub_CheckRunningShoes(struct FlypointsPlayerSub *vec);
 void FlypointsPlayerSub_SetRunningShoesFlag(struct FlypointsPlayerSub *vec, BOOL enable);
 

@@ -273,7 +273,7 @@ _02082B40: ; jump table
 	.short _02082B90 - _02082B40 - 2 ; case 2
 	.short _02082CBE - _02082B40 - 2 ; case 3
 _02082B48:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02082B84
 	mov r0, #1
@@ -456,7 +456,7 @@ _02082C6A:
 	bl sub_02084500
 	b _02082CCC
 _02082CBE:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02082CCC
 	add sp, #0x10

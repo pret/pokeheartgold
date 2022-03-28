@@ -11563,7 +11563,7 @@ _021EB16C: .word 0x04001050
 ov14_021EB170: ; 0x021EB170
 	push {r4, lr}
 	add r4, r0, #0
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _021EB186
 	mov r0, #0x11

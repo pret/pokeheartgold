@@ -894,15 +894,15 @@ sub_0205C7B4: ; 0x0205C7B4
 	.balign 4, 0
 	thumb_func_end sub_0205C7B4
 
-	thumb_func_start sub_0205C7BC
-sub_0205C7BC: ; 0x0205C7BC
+	thumb_func_start FlypointsPlayerSub_init
+FlypointsPlayerSub_init: ; 0x0205C7BC
 	mov r1, #0
 	strh r1, [r0]
 	strh r1, [r0, #2]
 	str r1, [r0, #4]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0205C7BC
+	thumb_func_end FlypointsPlayerSub_init
 
 	thumb_func_start FlypointsPlayerSub_CheckRunningShoes
 FlypointsPlayerSub_CheckRunningShoes: ; 0x0205C7C8

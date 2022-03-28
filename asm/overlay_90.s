@@ -2187,7 +2187,7 @@ _022597FE:
 	add r0, r4, r0
 	add r1, #0x30
 	bl ov90_0225A428
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _022598AA
 	ldrb r0, [r4]
@@ -2529,7 +2529,7 @@ _02259AAE:
 _02259AB6:
 	add r0, r4, #0
 	bl ov90_02259B68
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _02259AF2
 	mov r0, #0xb9
@@ -4521,7 +4521,7 @@ _0225AA1A:
 	strb r0, [r4, #4]
 	b _0225AE1C
 _0225AA38:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0225AA8A
 	ldrb r0, [r4, #4]
@@ -4966,7 +4966,7 @@ _0225AD60:
 	strb r0, [r4, #4]
 	b _0225AE1C
 _0225AD80:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0225AE1C
 	mov r0, #0x15
@@ -5146,7 +5146,7 @@ _0225AEC0:
 	strb r0, [r4, #4]
 	b _0225B204
 _0225AEDE:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0225AF36
 	ldrb r0, [r4, #4]
@@ -5507,7 +5507,7 @@ _0225B188:
 	strb r0, [r4, #4]
 	b _0225B204
 _0225B1A8:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0225B204
 	mov r0, #0x14
@@ -5822,7 +5822,7 @@ _0225B3EC:
 	strb r0, [r4]
 	b _0225B530
 _0225B3F4:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0225B42C
 	ldrb r0, [r4]
@@ -5963,7 +5963,7 @@ _0225B4EC:
 	strb r0, [r4]
 	b _0225B530
 _0225B50C:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0225B530
 	bl sub_0203A914

@@ -123,7 +123,7 @@ Static main
 	Object asm/unk_0202EB30.o
 	Object asm/unk_0202ECC0.o
 	Object asm/unk_0202ED18.o
-	Object asm/unk_0202ED74.o
+	Object src/save_pokegear.o
 	Object src/safari_zone.o
 	Object src/photo_album.o
 	Object asm/unk_0202FBCC.o
@@ -304,8 +304,8 @@ Static main
 	Object asm/unk_020932E0.o
 	Object asm/unk_020957B0.o
 	Object asm/unk_02095DF4.o
-	Object asm/unk_02095EF8.o
-	Object asm/unk_0209600C.o
+	Object src/phonebook_dat.o
+	Object src/choose_starter.o
 	Object asm/unk_020961D8.o
 	Object src/error_message_reset.o
 	Object src/sin_vcount.o

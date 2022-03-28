@@ -66,7 +66,7 @@ void sub_02055508(FieldSystem* fsys, int unkA) {
     sub_020674BC(fsys->savedata);
     sub_0202CB6C(sub_0202CA44(fsys->savedata));
     sub_020556B8(fsys);
-    sub_0202F294(SaveData_GetPhoneRematches(fsys->savedata), unkA);
+    sub_0202F294(SaveData_GetMomsSavingsAddr(fsys->savedata), unkA);
     if (!unkFlag) {
         sub_02031CCC(Save_ApricornBox_get(fsys->savedata), unkA);
         sub_0209730C(fsys->savedata, unkA);

@@ -1008,7 +1008,7 @@ ov44_0222A60C: ; 0x0222A60C
 	beq _0222A64E
 	b _0222A65A
 _0222A626:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0222A65A
 	mov r0, #1
@@ -1029,7 +1029,7 @@ _0222A634:
 	str r0, [r5]
 	b _0222A65A
 _0222A64E:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0222A65A
 	mov r0, #1
@@ -4660,7 +4660,7 @@ ov44_0222C35C: ; 0x0222C35C
 	sub sp, #0xc
 	add r5, r0, #0
 	add r7, r1, #0
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	bne _0222C372
 	add sp, #0xc
@@ -5053,7 +5053,7 @@ ov44_0222C684: ; 0x0222C684
 	add r4, r0, #0
 	add r5, r1, #0
 	mov r7, #0
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	bne _0222C698
 	add r0, r5, #0
@@ -18360,7 +18360,7 @@ _02232F98:
 	str r0, [r5]
 	b _0223308A
 _02232FB6:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0223308A
 	ldr r0, [r5]
@@ -18455,7 +18455,7 @@ _0223305C:
 	str r0, [r5]
 	b _0223308A
 _0223307C:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0223308A
 	add sp, #0xc
@@ -23013,7 +23013,7 @@ ov44_02235268: ; 0x02235268
 	add r5, r0, #0
 	add r6, r1, #0
 	add r4, r2, #0
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02235324
 	ldr r0, [r6, #8]
@@ -23102,7 +23102,7 @@ _02235324:
 ov44_0223532C: ; 0x0223532C
 	push {r4, lr}
 	add r4, r0, #0
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0223533C
 	mov r0, #0

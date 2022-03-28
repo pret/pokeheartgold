@@ -360,7 +360,7 @@ _02201E64:
 	strh r0, [r4]
 	b _02201EA2
 _02201E88:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02201EA2
 	add r0, r4, #0
@@ -409,7 +409,7 @@ _02201EBC:
 	strh r0, [r4]
 	b _02201EF6
 _02201EE2:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02201EF6
 	mov r0, #0

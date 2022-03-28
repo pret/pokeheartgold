@@ -39,7 +39,7 @@ _021E5922:
 	str r0, [r4]
 	b _021E595A
 _021E5944:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E595A
 	mov r0, #0
@@ -85,7 +85,7 @@ _021E5978:
 	str r0, [r4]
 	b _021E59B0
 _021E5998:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E59B0
 	add r0, r5, #0

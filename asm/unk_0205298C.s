@@ -99,7 +99,7 @@ _02052A10:
 	str r0, [r4]
 	b _02052A42
 _02052A34:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02052A42
 	add sp, #0xc
@@ -243,7 +243,7 @@ _02052B20:
 	str r0, [r4]
 	b _02052CA8
 _02052B5A:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02052B8C
 	ldr r0, [r6, #0xc]
@@ -370,7 +370,7 @@ _02052C58:
 	str r0, [r4]
 	b _02052CA8
 _02052C5E:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02052CA8
 	add r0, r6, #0

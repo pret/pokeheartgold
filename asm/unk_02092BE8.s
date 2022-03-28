@@ -169,7 +169,7 @@ _02092D34:
 	cmp r0, #3
 	bne _02092D52
 	ldr r0, [r5, #0xc]
-	bl SaveData_GetPhoneRematches
+	bl SaveData_GetMomsSavingsAddr
 	add r1, sp, #8
 	ldrb r1, [r1, #6]
 	bl sub_0202F050
@@ -241,7 +241,7 @@ sub_02092D98: ; 0x02092D98
 	bl SaveData_GSPlayerMisc_get
 	str r0, [r4, #0x30]
 	ldr r0, [r4, #0x38]
-	bl SaveData_GetPhoneRematches
+	bl SaveData_GetMomsSavingsAddr
 	str r0, [r4, #0x34]
 	str r5, [r4, #0x3c]
 	add r0, r4, #0

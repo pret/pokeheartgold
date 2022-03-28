@@ -44684,7 +44684,7 @@ _0224D4EC: .word 0x0000311F
 ov12_0224D4F0: ; 0x0224D4F0
 	push {r4, lr}
 	add r4, r1, #0
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _0224D500
 	mov r0, #0x2c

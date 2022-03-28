@@ -177,7 +177,7 @@ SignBackOfTrainerCardApp_OvyExec: ; 0x021E8248
 	beq _021E828E
 	b _021E829A
 _021E8262:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E829A
 	mov r0, #1
@@ -200,7 +200,7 @@ _021E8284:
 	bl ov52_021E921C
 	b _021E829A
 _021E828E:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E829A
 	mov r0, #1

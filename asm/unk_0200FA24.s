@@ -218,8 +218,8 @@ _0200FB54: .word _021D1034
 _0200FB58: .word _021D0EF4
 	thumb_func_end HandleFadeUpdateFrame
 
-	thumb_func_start IsPaletteFadeActive
-IsPaletteFadeActive: ; 0x0200FB5C
+	thumb_func_start IsPaletteFadeFinished
+IsPaletteFadeFinished: ; 0x0200FB5C
 	ldr r0, _0200FB6C ; =_021D1034
 	ldrh r0, [r0, #0xc]
 	cmp r0, #0
@@ -231,7 +231,7 @@ _0200FB68:
 	bx lr
 	.balign 4, 0
 _0200FB6C: .word _021D1034
-	thumb_func_end IsPaletteFadeActive
+	thumb_func_end IsPaletteFadeFinished
 
 	thumb_func_start sub_0200FB70
 sub_0200FB70: ; 0x0200FB70

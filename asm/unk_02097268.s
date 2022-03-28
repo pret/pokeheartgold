@@ -119,7 +119,7 @@ sub_0209730C: ; 0x0209730C
 	sub sp, #0xb0
 	add r4, r0, #0
 	str r1, [sp, #4]
-	bl SaveData_GetPhoneRematches
+	bl SaveData_GetMomsSavingsAddr
 	str r0, [sp, #0x2c]
 	add r0, r4, #0
 	bl Save_SafariZone_get

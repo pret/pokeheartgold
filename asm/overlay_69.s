@@ -228,7 +228,7 @@ _021E5A9A:
 	str r0, [r5]
 	b _021E6028
 _021E5B0A:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _021E5BEC
 	mov r0, #2
@@ -833,7 +833,7 @@ _021E5FDC:
 	str r0, [r5]
 	b _021E6028
 _021E5FFE:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _021E6028
 	ldr r0, _021E6078 ; =0x0000C2F8

@@ -5142,7 +5142,7 @@ _021ED836:
 	strh r1, [r4, r0]
 	pop {r3, r4, r5, r6, pc}
 _021ED85A:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021ED8FA
 	mov r0, #6
@@ -5162,7 +5162,7 @@ _021ED85A:
 	strh r1, [r4, r0]
 	pop {r3, r4, r5, r6, pc}
 _021ED884:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021ED8FA
 	ldr r0, _021ED90C ; =0x00000632

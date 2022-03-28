@@ -333,7 +333,7 @@ _021F9624: ; jump table
 	.short _021F97F6 - _021F9624 - 2 ; case 36
 	.short _021F9804 - _021F9624 - 2 ; case 37
 _021F9670:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _021F96B8
 	mov r0, #0x8d
@@ -544,7 +544,7 @@ _021F97F6:
 	str r0, [r4]
 	b _021F9810
 _021F9804:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _021F9810
 	mov r0, #1

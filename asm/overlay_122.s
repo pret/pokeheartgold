@@ -267,7 +267,7 @@ _021E5AFC:
 	bl ov122_021E84C8
 	b _021E5B56
 _021E5B1A:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E5B56
 	add r0, r4, #0
@@ -286,7 +286,7 @@ _021E5B1A:
 	bl ov122_021E84C8
 	b _021E5B56
 _021E5B44:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E5B56
 	add sp, #0xc
@@ -5353,7 +5353,7 @@ _021E82CA:
 	str r0, [r4]
 	b _021E8300
 _021E82EE:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E8300
 	add sp, #0xc
@@ -5398,7 +5398,7 @@ _021E8320:
 	str r0, [r4]
 	b _021E8358
 _021E8340:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E8358
 	add r0, r5, #0

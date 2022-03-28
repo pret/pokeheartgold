@@ -774,7 +774,7 @@ ov01_022010CC: ; 0x022010CC
 	strb r1, [r5, r0]
 	pop {r4, r5, r6, pc}
 _022010E0:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0220115A
 	mov r0, #0x8f
@@ -3259,7 +3259,7 @@ ScrCmd_811: ; 0x022024B8
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl SaveData_GetPhoneRematches
+	bl SaveData_GetMomsSavingsAddr
 	mov r1, #0
 	add r2, r6, #0
 	bl sub_0202F224
@@ -3275,7 +3275,7 @@ ScrCmd_812: ; 0x022024FC
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl SaveData_GetPhoneRematches
+	bl SaveData_GetMomsSavingsAddr
 	bl sub_0202F1F4
 	mov r0, #0
 	pop {r3, pc}

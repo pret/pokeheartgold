@@ -64,7 +64,7 @@ ov91_0225C58C: ; 0x0225C58C
 	beq _0225C5EC
 	b _0225C5FA
 _0225C5BE:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _0225C5CA
 	bl sub_0200FB70
@@ -307,7 +307,7 @@ _0225C7A8:
 	ldr r0, [r4, #0x34]
 	mov r1, #0
 	bl ov91_0225CEB4
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0225C7CE
 	add r4, #0x44
@@ -489,7 +489,7 @@ _0225C922:
 	ldr r0, [r4, #0x34]
 	mov r1, #1
 	bl ov91_0225D078
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0225C9E6
 	mov r0, #3
