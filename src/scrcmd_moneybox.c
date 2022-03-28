@@ -20,7 +20,6 @@ BOOL ScrCmd_HideMoneyBox(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-
 BOOL ScrCmd_UpdateMoneyBox(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     WINDOW **moneyBox = FieldSysGetAttrAddr(fsys, SCRIPTENV_MONEY_BOX);
