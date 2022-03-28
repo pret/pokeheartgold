@@ -40,8 +40,8 @@ _005E:
 _0075:
 	setflag FLAG_HIDE_CAMERON
 _0079:
-	goto_if_set FLAG_UNK_12C, _008E
-	setflag FLAG_UNK_12C
+	goto_if_set FLAG_UNLOCKED_WEST_KANTO, _008E
+	setflag FLAG_UNLOCKED_WEST_KANTO
 	setvar VAR_UNK_4121, 1
 _008E:
 	end

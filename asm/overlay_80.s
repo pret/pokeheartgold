@@ -4926,7 +4926,7 @@ _0222C1FC: .word ov80_0222C200
 	thumb_func_start ov80_0222C200
 ov80_0222C200: ; 0x0222C200
 	push {r3, lr}
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _0222C20E
 	mov r0, #1
@@ -7330,7 +7330,7 @@ _0222D3BE:
 	str r0, [r4, #4]
 	b _0222D3FE
 _0222D3F0:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _0222D3FE
 	add sp, #0xc
@@ -7440,7 +7440,7 @@ _0222D4B2:
 	str r0, [r4, #4]
 	b _0222D51A
 _0222D4CC:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _0222D51A
 	ldr r0, [r4, #0x2c]
@@ -7574,7 +7574,7 @@ _0222D5CE:
 	str r0, [r4, #4]
 	b _0222D636
 _0222D5E8:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _0222D636
 	ldr r0, [r4, #0x2c]
@@ -9935,7 +9935,7 @@ ov80_0222E7C8: ; 0x0222E7C8
 	strb r0, [r5]
 	pop {r3, r4, r5, pc}
 _0222E7E4:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0222E87E
 	add r0, r5, #0
@@ -10570,7 +10570,7 @@ ov80_0222EC90: ; 0x0222EC90
 	strb r0, [r5]
 	pop {r4, r5, r6, pc}
 _0222ECAC:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0222ED8C
 	mov r0, #0x6d
@@ -26469,7 +26469,7 @@ ov80_0223690C: ; 0x0223690C
 	bl ov80_02236A88
 	add r1, r0, #0
 	ldr r0, [r5, #4]
-	bl sub_020518D8
+	bl BattleStruct_new
 	add r7, r0, #0
 	ldr r0, [r4, #8]
 	bl SavArray_PlayerParty_get
@@ -27344,7 +27344,7 @@ ov80_02236F24: ; 0x02236F24
 	bl ov80_022370F4
 	add r1, r0, #0
 	mov r0, #0xb
-	bl sub_020518D8
+	bl BattleStruct_new
 	ldr r1, [r6, #0xc]
 	add r4, r0, #0
 	str r1, [sp]
@@ -28224,7 +28224,7 @@ ov80_022375D0: ; 0x022375D0
 	bl ov80_02237850
 	add r1, r0, #0
 	mov r0, #0xb
-	bl sub_020518D8
+	bl BattleStruct_new
 	ldr r1, [r6, #0xc]
 	add r4, r0, #0
 	str r1, [sp]
@@ -29003,7 +29003,7 @@ ov80_02237B8C: ; 0x02237B8C
 	bl ov80_02237D5C
 	add r1, r0, #0
 	mov r0, #0xb
-	bl sub_020518D8
+	bl BattleStruct_new
 	ldr r1, [r6, #0xc]
 	add r4, r0, #0
 	str r1, [sp]
@@ -29778,7 +29778,7 @@ ov80_02238150: ; 0x02238150
 	bl ov80_02238344
 	add r1, r0, #0
 	mov r0, #0xb
-	bl sub_020518D8
+	bl BattleStruct_new
 	ldr r1, [r5, #0xc]
 	add r4, r0, #0
 	str r1, [sp]
@@ -34160,7 +34160,7 @@ _0223A410:
 	str r0, [r4]
 	b _0223A620
 _0223A42E:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0223A4FC
 	ldr r0, [r4]
@@ -34181,7 +34181,7 @@ _0223A43E:
 	str r0, [r4]
 	b _0223A620
 _0223A458:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0223A4FC
 	ldr r0, [r4]
@@ -34262,7 +34262,7 @@ _0223A4D0:
 	str r0, [r4]
 	b _0223A620
 _0223A4F4:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	bne _0223A4FE
 _0223A4FC:
@@ -34332,7 +34332,7 @@ _0223A57A:
 	str r0, [r4]
 	b _0223A620
 _0223A594:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0223A620
 	mov r0, #0x1a
@@ -34367,7 +34367,7 @@ _0223A5B8:
 	str r0, [r4]
 	b _0223A620
 _0223A5D8:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0223A620
 	ldr r0, [r4]

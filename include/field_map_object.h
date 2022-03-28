@@ -3,9 +3,9 @@
 
 typedef struct LocalMapObject LocalMapObject;
 
-struct SavStructUnk10Sub {
+struct SavedMapObject {
     u8 filler_00[8];
-    u8 unk_8;
+    u8 objId;
     u8 filler_9[9];
     u16 unk_12;
     u8 filler_14[0x3C];
@@ -68,6 +68,7 @@ LocalMapObject *CreateSpecialFieldObject(MapObjectMan *objectMan, u32 x, u32 y, 
 void DeleteMapObject(LocalMapObject *mapObject);
 LocalMapObject *GetMapObjectByID(MapObjectMan *arr, int id);
 void sub_0205FC94(LocalMapObject *mapObject, int movement);
+u32 MapObject_GetGfxID(LocalMapObject *mapObject);
 void MapObject_SetGfxID(LocalMapObject *mapObject, u32 spriteId);
 void sub_0205F6AC(LocalMapObject *mapObject, int a1);
 void MapObject_SetBits(LocalMapObject *mapObject, u32 bits);
@@ -85,9 +86,9 @@ BOOL sub_0205F684(LocalMapObject *mapObject);
 BOOL sub_0205F83C(LocalMapObject *mapObject);
 void sub_0205F690(LocalMapObject *mapObject, BOOL enable_bit);
 void sub_0205F6E0(LocalMapObject *mapObject, BOOL enable_bit);
-void sub_0205E5EC(FieldSystem *fsys, MapObjectMan *mapObjectMan, struct SavStructUnk10Sub *a2, int a3);
-void sub_0205E648(MapObjectMan *mapObjectMan, struct SavStructUnk10Sub *a2, int a3);
-struct SavStructUnk10Sub *sub_0205FD00(struct SavStructUnk10Sub *a0, int a1, u16 a2);
+void Fsys_SyncMapObjectsToSaveEx(FieldSystem *fsys, MapObjectMan *mapObjectMan, struct SavedMapObject *saveObj, int objNum);
+void MapObjectMan_RestoreFromSave(MapObjectMan *mapObjectMan, struct SavedMapObject *saveObj, int objNum);
+struct SavedMapObject *SaveMapObjects_SearchSpriteId(struct SavedMapObject *saveObj, int objNum, u16 spriteId);
 MapObjectMan *sub_0205E0BC(FieldSystem *fsys, int num, HeapID heapId);
 void sub_0205F55C(MapObjectMan *man);
 void sub_0205E494(MapObjectMan *man);

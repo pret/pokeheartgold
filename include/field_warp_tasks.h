@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_UNK_02052F30_H
-#define POKEHEARTGOLD_UNK_02052F30_H
+#ifndef POKEHEARTGOLD_FIELD_WARP_TASKS_H
+#define POKEHEARTGOLD_FIELD_WARP_TASKS_H
 
 #include "task.h"
 
@@ -20,4 +20,4 @@ void sub_02054030(TaskManager *taskManager);
 void sub_0205412C(TaskManager *taskManager, u32 mapId, int warpId, int x, int y, int direction);
 void sub_02054190(TaskManager *taskManager);
 
-#endif //POKEHEARTGOLD_UNK_02052F30_H
+#endif //POKEHEARTGOLD_FIELD_WARP_TASKS_H

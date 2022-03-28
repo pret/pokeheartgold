@@ -52,7 +52,7 @@ _021E5936:
 	strb r1, [r4, r0]
 	b _021E59B0
 _021E5956:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E59B0
 	mov r0, #0x23
@@ -87,7 +87,7 @@ _021E597A:
 	strb r1, [r4, r0]
 	b _021E59B0
 _021E599C:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E59B0
 	add r0, r4, #0

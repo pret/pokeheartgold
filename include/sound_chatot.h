@@ -1,15 +1,23 @@
 #ifndef POKEHEARTGOLD_SOUND_CHATOT_H
 #define POKEHEARTGOLD_SOUND_CHATOT_H
 
+#include "global.h"
 #include "sav_chatot.h"
 
-void ChatotSoundMain(void);
-extern void PlayCryEx(u32, u16, u32, u32, u32, u8);
-BOOL sub_02006F30(int);
-void sub_02006E3C(int);
-void sub_02006E4C(SOUND_CHATOT *, int, int, int);
-void sub_02006920(int, u16, int, int, int, u8, u8);
-void sub_02006EA0(SOUND_CHATOT *, int, int, int, u8);
+BOOL ChatotSoundMain(void);
+BOOL Chatot_checkCry(SOUND_CHATOT *a0);
+BOOL sub_02006D04(SOUND_CHATOT *a0, u32 a1, s32 a2, s32 a3);
+void sub_02006DB8();
+u32 Chatot_startRecording(void);
+void Chatot_stopRecording();
+void Chatot_saveRecording(SOUND_CHATOT *a0);
+void sub_02006E3C(u8 a0);
+void sub_02006E4C(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3);
+BOOL sub_02006EA0(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3, u8 a4);
+u32 sub_02006EFC(SOUND_CHATOT *chatot);
+BOOL sub_02006F30(int a0);
+
 void PlayCry(u16 species, u8 forme);
+void sub_02006920(int, u16, int, int, int, u8, u8);
 
 #endif //POKEHEARTGOLD_SOUND_CHATOT_H

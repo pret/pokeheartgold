@@ -17,10 +17,10 @@
 	scrdef_end
 
 scr_seq_R22R0101_006:
-	goto_if_unset FLAG_UNK_12C, _003D
+	goto_if_unset FLAG_UNLOCKED_WEST_KANTO, _003D
 	move_person obj_R22R0101_policeman_3, 15, 0, 8, 1
 _003D:
-	goto_if_unset FLAG_UNK_12B, _0054
+	goto_if_unset FLAG_UNLOCKED_MT_SILVER, _0054
 	move_person obj_R22R0101_policeman_2, 7, 0, 8, 1
 _0054:
 	end
@@ -35,7 +35,7 @@ _006B:
 	check_registered_phone_number PHONE_CONTACT_JANINE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _00DF
-	check_badge 12, VAR_TEMP_x4002
+	check_badge BADGE_SOUL, VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 0
 	goto_if_ne _009D
 	goto _012C
@@ -229,7 +229,7 @@ scr_seq_R22R0101_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_12C, _0306
+	goto_if_set FLAG_UNLOCKED_WEST_KANTO, _0306
 	npc_msg msg_0361_R22R0101_00004
 	wait_button_or_walk_away
 	closemsg
@@ -358,7 +358,7 @@ scr_seq_R22R0101_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_12B, _049A
+	goto_if_set FLAG_UNLOCKED_MT_SILVER, _049A
 	npc_msg msg_0361_R22R0101_00001
 	wait_button_or_walk_away
 	closemsg

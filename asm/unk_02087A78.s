@@ -2,7 +2,7 @@
 #include "constants/moves.h"
 #include "constants/pokemon.h"
 #include "constants/ribbon.h"
-#include "party_menu.h"
+#include "constants/party_menu.h"
 #include "msgdata/msg/msg_0300.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
@@ -294,7 +294,7 @@ _02087C62:
 _02087C6A:
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_020518D8
+	bl BattleStruct_new
 	str r0, [r5, #0x10]
 	bl sub_0202FC48
 	cmp r0, #0
@@ -440,7 +440,7 @@ _02087D88:
 	ldr r0, [r5, #0x28]
 	ldr r1, [r0, #0x20]
 	ldr r1, [r1]
-	bl sub_02054F60
+	bl Fsys_GetSurfOverriddenMusicId
 	add r4, r0, #0
 	ldr r0, [r5, #0x28]
 	ldr r1, [r0, #0x20]

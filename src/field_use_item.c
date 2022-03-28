@@ -138,7 +138,7 @@ void ItemCheckUseData_Init(FieldSystem *fsys, struct ItemCheckUseData *dat) {
     dat->fsys = fsys;
     dat->mapId = fsys->location->mapId;
     dat->haveFollower = ScriptState_CheckHaveFollower(SavArray_Flags_get(fsys->savedata));
-    dat->flag969set = CheckFlag969(SavArray_Flags_get(fsys->savedata));
+    dat->haveRocketCostume = ScriptState_CheckRocketCostumeFlag(SavArray_Flags_get(fsys->savedata));
     dat->playerState = PlayerAvatar_GetState(fsys->playerAvatar);
 
     x = GetPlayerXCoord(fsys->playerAvatar);
@@ -196,10 +196,10 @@ static BOOL Task_UseItemInAlphChamber(TaskManager *taskManager) {
     case 0:
         Fsys_GetFacingObject(fsys, &sp0);
         QueueScript(taskManager, env->scriptNo, sp0, NULL);
-        *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8000) = env->var_8000;
-        *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8001) = env->var_8001;
-        *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8002) = env->var_8002;
-        *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8003) = env->var_8003;
+        *(u16 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_SPECIAL_VAR_8000) = env->var_8000;
+        *(u16 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_SPECIAL_VAR_8001) = env->var_8001;
+        *(u16 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_SPECIAL_VAR_8002) = env->var_8002;
+        *(u16 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_SPECIAL_VAR_8003) = env->var_8003;
         (*state_p)++;
         break;
     case 1:
@@ -277,11 +277,11 @@ static BOOL Task_MountOrDismountBicycle(TaskManager *taskManager) {
     case 1:
         if (PlayerAvatar_GetState(fsys->playerAvatar) == PLAYER_STATE_CYCLING) {
             MapObject_UnpauseMovement(PlayerAvatar_GetMapObject(fsys->playerAvatar));
-            ov01_021F1AFC(fsys->playerAvatar, 1);
-            ov01_021F1B04(fsys->playerAvatar);
-            sub_02054F28(fsys, 0);
+            ov01_PlayerAvatar_OrrTransitionFlags(fsys->playerAvatar, 1);
+            ov01_PlayerAvatar_ApplyTransitionFlags(fsys->playerAvatar);
+            Fsys_SetSavedMusicId(fsys, 0);
             if (SndRadio_GetSeqNo() == 0) {
-                sub_02054FDC(fsys, sub_02054F60(fsys, fsys->location->mapId), 1);
+                Fsys_PlayOrFadeToNewMusicId(fsys, Fsys_GetSurfOverriddenMusicId(fsys, fsys->location->mapId), 1);
             }
             ov01_02205790(fsys, PlayerAvatar_GetFacingDirection(fsys->playerAvatar));
             if (FollowingPokemon_IsActive(fsys)) {
@@ -290,12 +290,12 @@ static BOOL Task_MountOrDismountBicycle(TaskManager *taskManager) {
             }
         } else {
             if (SndRadio_GetSeqNo() == 0) {
-                sub_02054F28(fsys, SEQ_GS_BICYCLE);
-                sub_02054FDC(fsys, SEQ_GS_BICYCLE, 1);
+                Fsys_SetSavedMusicId(fsys, SEQ_GS_BICYCLE);
+                Fsys_PlayOrFadeToNewMusicId(fsys, SEQ_GS_BICYCLE, 1);
             }
             MapObject_UnpauseMovement(PlayerAvatar_GetMapObject(fsys->playerAvatar));
-            ov01_021F1AFC(fsys->playerAvatar, 2);
-            ov01_021F1B04(fsys->playerAvatar);
+            ov01_PlayerAvatar_OrrTransitionFlags(fsys->playerAvatar, 2);
+            ov01_PlayerAvatar_ApplyTransitionFlags(fsys->playerAvatar);
             ov01_02205D68(fsys);
             if (FollowingPokemon_IsActive(fsys)) {
                 sub_02069E84(FollowingPokemon_GetMapObject(fsys), FALSE);
@@ -304,7 +304,7 @@ static BOOL Task_MountOrDismountBicycle(TaskManager *taskManager) {
         (*state_p)++;
         break;
     case 2:
-        MapObjectMan_UnpauseAllMovement(fsys->unk3C);
+        MapObjectMan_UnpauseAllMovement(fsys->mapObjectMan);
         return TRUE;
     }
 
@@ -315,7 +315,7 @@ static u32 ItemCheckUseFunc_Bicycle(const struct ItemCheckUseData *data) {
     if (data->haveFollower == TRUE) {
         return ITEMUSEERROR_NOFOLLOWER;
     }
-    if (data->flag969set == TRUE) {
+    if (data->haveRocketCostume == TRUE) {
         return ITEMUSEERROR_NOTNOW;
     }
     if (sub_0205CABC(data->playerAvatar) == TRUE) {
@@ -458,7 +458,7 @@ static u32 ItemCheckUseFunc_FishingRod(const struct ItemCheckUseData *data) {
     if (data->haveFollower == TRUE) {
         return ITEMUSEERROR_NOFOLLOWER;
     }
-    if (data->flag969set == TRUE) {
+    if (data->haveRocketCostume == TRUE) {
         return ITEMUSEERROR_NOTNOW;
     }
     if (sub_0205B778(data->facingTile) == TRUE) {
@@ -489,7 +489,7 @@ static BOOL Task_PrintRegisteredKeyItemUseMessage(TaskManager *taskManager) {
     switch (env->state) {
     case 0:
         fsys->unkD2_6 = TRUE;
-        MapObjectMan_PauseAllMovement(fsys->unk3C);
+        MapObjectMan_PauseAllMovement(fsys->mapObjectMan);
         sub_0205B514(fsys->bg_config, &env->window, 3);
         options = Sav2_PlayerData_GetOptionsAddr(fsys->savedata);
         sub_0205B564(&env->window, options);
@@ -506,7 +506,7 @@ static BOOL Task_PrintRegisteredKeyItemUseMessage(TaskManager *taskManager) {
         }
         break;
     case 2:
-        MapObjectMan_UnpauseAllMovement(fsys->unk3C);
+        MapObjectMan_UnpauseAllMovement(fsys->mapObjectMan);
         RemoveWindow(&env->window);
         String_dtor(env->strbuf);
         FreeToHeap(env);
@@ -568,7 +568,7 @@ static u32 ItemCheckUseFunc_EscapeRope(const struct ItemCheckUseData *data) {
     if (data->haveFollower == TRUE) {
         return ITEMUSEERROR_NOFOLLOWER;
     }
-    if (data->flag969set == TRUE) {
+    if (data->haveRocketCostume == TRUE) {
         return ITEMUSEERROR_NOTNOW;
     }
     if (CheckUseEscapeRopeInAlphChamber(data->fsys)) {
@@ -659,7 +659,7 @@ static BOOL Task_ActivateDowsingMchnUI(TaskManager *taskManager) {
         break;
     case 1:
         if (ov01_021F6B10(fsys) == TRUE) {
-            MapObjectMan_UnpauseAllMovement(fsys->unk3C);
+            MapObjectMan_UnpauseAllMovement(fsys->mapObjectMan);
             return TRUE;
         }
         break;
@@ -815,12 +815,12 @@ static BOOL Task_RegisteredItem_GoToApp(TaskManager *taskManager) {
 
     switch (env->state) {
     case 0:
-        MapObjectMan_PauseAllMovement(fsys->unk3C);
+        MapObjectMan_PauseAllMovement(fsys->mapObjectMan);
         ov01_021E636C(0);
         env->state = 1;
         break;
     case 1:
-        if (IsPaletteFadeActive()) {
+        if (IsPaletteFadeFinished()) {
             env->work = env->ctor(fsys);
             if (env->no_app == FALSE) {
                 env->state = 2;
@@ -843,14 +843,14 @@ static BOOL Task_RegisteredItem_GoToApp(TaskManager *taskManager) {
         break;
     case 4:
         if (sub_020505C8(fsys)) {
-            MapObjectMan_PauseAllMovement(fsys->unk3C);
+            MapObjectMan_PauseAllMovement(fsys->mapObjectMan);
             ov01_021E636C(1);
             env->state = 5;
         }
         break;
     case 5:
-        if (IsPaletteFadeActive()) {
-            MapObjectMan_UnpauseAllMovement(fsys->unk3C);
+        if (IsPaletteFadeFinished()) {
+            MapObjectMan_UnpauseAllMovement(fsys->mapObjectMan);
             FreeToHeap(env);
             return TRUE;
         }

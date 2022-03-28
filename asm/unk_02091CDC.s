@@ -118,7 +118,7 @@ _02091D40:
 	str r0, [r5]
 	b _02091E20
 _02091DCE:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _02091E20
 	mov r0, #2
@@ -143,7 +143,7 @@ _02091DDC:
 	str r0, [r5]
 	b _02091E20
 _02091E02:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _02091E20
 	add r0, r4, #0

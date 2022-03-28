@@ -2,7 +2,7 @@
 #include "constants/moves.h"
 #include "constants/pokemon.h"
 #include "constants/ribbon.h"
-#include "party_menu.h"
+#include "constants/party_menu.h"
 #include "msgdata/msg/msg_0300.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
@@ -456,7 +456,7 @@ _020791C8:
 	str r0, [r4]
 	b _020791EE
 _020791D6:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _020791EE
 	ldr r0, _02079218 ; =0x00000C65
@@ -544,7 +544,7 @@ _0207927C: .word 0x00000C78
 sub_02079280: ; 0x02079280
 	push {r4, lr}
 	add r4, r0, #0
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _020792FA
 	ldr r0, _02079300 ; =0x00000654

@@ -303,7 +303,7 @@ _0428:
 	npc_msg msg_0508_T07R0401_00002
 	touchscreen_menu_hide
 	scrcmd_116 0, 20, 2
-	scrcmd_113 20, 7
+	show_money_box 20, 7
 _043E:
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 127, 255, 0
@@ -327,7 +327,7 @@ _048B:
 	submoneyimmediate 1000
 	give_coins 50
 	scrcmd_118 0
-	scrcmd_115
+	update_money_box
 	play_se SEQ_SE_DP_REGI
 	wait_se SEQ_SE_DP_REGI
 	npc_msg msg_0508_T07R0401_00003
@@ -344,7 +344,7 @@ _04D7:
 	submoneyimmediate 10000
 	give_coins 500
 	scrcmd_118 0
-	scrcmd_115
+	update_money_box
 	play_se SEQ_SE_DP_REGI
 	wait_se SEQ_SE_DP_REGI
 	npc_msg msg_0508_T07R0401_00003
@@ -361,7 +361,7 @@ _0531:
 	closemsg
 	touchscreen_menu_show
 	scrcmd_117
-	scrcmd_114
+	hide_money_box
 	script_overlay_cmd 3, 1
 	releaseall
 	end

@@ -1086,7 +1086,7 @@ ov106_021E6104: ; 0x021E6104
 ov106_021E6118: ; 0x021E6118
 	push {r4, lr}
 	add r4, r0, #0
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _021E612C
 	mov r0, #0x41
@@ -1105,7 +1105,7 @@ ov106_021E6130: ; 0x021E6130
 	bl ov106_021E5D08
 	cmp r0, #0
 	bne _021E614E
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _021E614E
 	ldr r0, _021E61A8 ; =0x00000414
@@ -1202,7 +1202,7 @@ ov106_021E61F8: ; 0x021E61F8
 	bl ov106_021E5D08
 	cmp r0, #0
 	bne _021E6216
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _021E6216
 	ldr r0, _021E6248 ; =0x00000414
@@ -1314,7 +1314,7 @@ ov106_021E62C8: ; 0x021E62C8
 ov106_021E62DC: ; 0x021E62DC
 	push {r4, lr}
 	add r4, r0, #0
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _021E62F0
 	mov r0, #0x41
@@ -1333,7 +1333,7 @@ ov106_021E62F4: ; 0x021E62F4
 	bl ov106_021E5D08
 	cmp r0, #0
 	bne _021E631E
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _021E631E
 	ldr r0, _021E6398 ; =0x00000414
@@ -2044,7 +2044,7 @@ _021E68D8: .word 0x00000418
 ov106_021E68DC: ; 0x021E68DC
 	push {r4, lr}
 	add r4, r0, #0
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _021E68F0
 	mov r0, #0x41

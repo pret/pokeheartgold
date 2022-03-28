@@ -13,7 +13,7 @@
 #define SAVE_DAYCARE              7
 #define SAVE_PALPAD               8
 #define SAVE_MISC                 9
-#define SAVE_UNK_10              10
+#define SAVE_MAP_OBJECTS         10
 #define SAVE_UNK_11              11
 #define SAVE_DRESSUP_DATA        12
 #define SAVE_MAILBOX             13
@@ -37,13 +37,13 @@
 #define SAVE_UNK_31              31
 #define SAVE_UNK_32              32
 #define SAVE_FOLLOW_POKE         33
-#define SAVE_GSPLAYERMISC        34
+#define SAVE_POKEGEAR            34
 #define SAVE_SAFARI_ZONE         35
 #define SAVE_PHOTO_ALBUM         36
-#define SAVE_UNK_37              37
+#define SAVE_POKEATHLON          37
 #define SAVE_APRICORN_BOX        38
 #define SAVE_POKEWALKER          39
-#define SAVE_UNK_40              40
+#define SAVE_TRAINER_HOUSE       40
 #define SAVE_PCSTORAGE           41
 #define SAVE_BLOCK_NUM           42
 

@@ -499,7 +499,7 @@ _0221C1F4: .word 0x00013050
 ov63_0221C1F8: ; 0x0221C1F8
 	push {r4, lr}
 	add r4, r0, #0
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _0221C20A
 	ldr r0, _0221C210 ; =0x00013050
@@ -5064,7 +5064,7 @@ _0221E77C:
 	strh r0, [r4, #0xc]
 	b _0221E874
 _0221E782:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _0221E874
 	ldr r0, _0221E898 ; =gSystem
@@ -5097,7 +5097,7 @@ _0221E7B6:
 	ldrh r0, [r4, #0xc]
 	cmp r0, #0x1e
 	bne _0221E7E8
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _0221E7EC
 	ldr r0, _0221E888 ; =0x00013064
@@ -5173,7 +5173,7 @@ _0221E834:
 	ldrh r0, [r4, #0xc]
 	cmp r0, #0x3c
 	bne _0221E870
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _0221E874
 	mov r0, #0

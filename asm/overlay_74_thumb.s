@@ -14848,7 +14848,7 @@ _0222E76E:
 	bl ov74_0222D7F0
 	b _0222E79C
 _0222E77A:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0222E79C
 	mov r0, #0xb1
@@ -17268,7 +17268,7 @@ _0222FB00:
 	bl ov74_0222EFF0
 	b _0222FB2C
 _0222FB0C:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0222FB2C
 	ldr r0, _0222FB84 ; =0x00002BF8
@@ -25279,7 +25279,7 @@ _0223386A:
 	bl PlaySE
 	b _02233896
 _0223387E:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02233896
 	ldr r0, [r4, #0x24]
@@ -29042,7 +29042,7 @@ ov74_022353FC: ; 0x022353FC
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r5, _02235410 ; =ov74_0223D454
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0223540E
 	ldr r0, [r5, #0xc]

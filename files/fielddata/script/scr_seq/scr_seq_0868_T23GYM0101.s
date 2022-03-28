@@ -13,7 +13,7 @@ scr_seq_T23GYM0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 1, VAR_SPECIAL_RESULT
+	check_badge BADGE_HIVE, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0030
 	npc_msg msg_0566_T23GYM0101_00000
@@ -33,7 +33,7 @@ scr_seq_T23GYM0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 1, VAR_SPECIAL_RESULT
+	check_badge BADGE_HIVE, VAR_SPECIAL_RESULT
 	buffer_players_name 0
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0062

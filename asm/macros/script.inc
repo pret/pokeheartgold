@@ -690,17 +690,17 @@
 	.word \arg1
 	.endm
 
-	.macro scrcmd_113 arg0, arg1
+	.macro show_money_box arg0, arg1
 	.short 113
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_114
+	.macro hide_money_box
 	.short 114
 	.endm
 
-	.macro scrcmd_115
+	.macro update_money_box
 	.short 115
 	.endm
 
@@ -1080,12 +1080,12 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_184 arg0
+	.macro player_on_bike_check arg0
 	.short 184
 	.short \arg0
 	.endm
 
-	.macro scrcmd_185 arg0
+	.macro player_on_bike_set arg0
 	.short 185
 	.byte \arg0
 	.endm
@@ -2636,7 +2636,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_463
+	.macro enable_mass_outbreaks
 	.short 463
 	.endm
 
@@ -2685,7 +2685,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_471 arg0
+	.macro get_offered_species arg0
 	.short 471
 	.short \arg0
 	.endm
@@ -3455,7 +3455,7 @@
 	.short \arg6
 	.endm
 
-	.macro scrcmd_612 arg0
+	.macro get_npc_trade_unused_flag arg0
 	.short 612
 	.short \arg0
 	.endm
@@ -3489,12 +3489,12 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_619 arg0
+	.macro rocket_costume_flag_check arg0
 	.short 619
 	.short \arg0
 	.endm
 
-	.macro scrcmd_620 arg0
+	.macro rocket_costume_flag_action arg0
 	.short 620
 	.byte \arg0
 	.endm
@@ -3791,7 +3791,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_670 arg0, arg1
+	.macro get_hidden_power_type arg0, arg1
 	.short 670
 	.short \arg0
 	.short \arg1

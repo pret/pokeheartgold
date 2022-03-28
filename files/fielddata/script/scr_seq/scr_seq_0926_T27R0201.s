@@ -29,7 +29,7 @@ scr_seq_T27R0201_000:
 	get_player_facing VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _00D4
-	check_badge 3, VAR_SPECIAL_RESULT
+	check_badge BADGE_FOG, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0096
 	get_game_version VAR_SPECIAL_RESULT

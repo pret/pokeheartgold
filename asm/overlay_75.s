@@ -1010,7 +1010,7 @@ ov75_02247118: ; 0x02247118
 	beq _0224716C
 	b _02247178
 _02247132:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _02247178
 	mov r0, #1
@@ -1041,7 +1041,7 @@ _02247162:
 	str r0, [r5]
 	b _02247178
 _0224716C:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _02247178
 	mov r0, #1

@@ -937,7 +937,7 @@ _02237FEC:
 	str r0, [r4]
 	b _02238044
 _02238000:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02238044
 	mov r0, #3
@@ -955,7 +955,7 @@ _0223800E:
 	str r0, [r4]
 	b _02238044
 _02238022:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02238044
 	ldr r3, [r5, #0x10]
@@ -997,7 +997,7 @@ ov72_02238070: ; 0x02238070
 	add r5, r0, #0
 	bl OverlayManager_GetData
 	add r4, r0, #0
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	bne _02238086
 	mov r0, #0
@@ -5760,7 +5760,7 @@ ov72_0223A5E0: ; 0x0223A5E0
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _0223A65E
 	add r0, r4, #0
@@ -5896,7 +5896,7 @@ _0223A718: .word 0x00000E0C
 ov72_0223A71C: ; 0x0223A71C
 	push {r4, lr}
 	add r4, r0, #0
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _0223A72E
 	ldr r0, _0223A734 ; =0x00001312
@@ -6584,7 +6584,7 @@ ov72_0223AC2C: ; 0x0223AC2C
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _0223AC62
 	add r0, r4, #0
@@ -6634,7 +6634,7 @@ _0223AC84: .word 0x00001313
 ov72_0223AC88: ; 0x0223AC88
 	push {r4, lr}
 	add r4, r0, #0
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _0223AC9A
 	ldr r0, _0223ACA0 ; =0x00001312

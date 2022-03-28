@@ -364,7 +364,7 @@ _02258B52:
 	str r0, [r5]
 	b _02258E4A
 _02258B70:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	beq _02258B7A
 	b _02258E4A
@@ -676,7 +676,7 @@ _02258DE6:
 	str r0, [r5]
 	b _02258E4A
 _02258E04:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	bne _02258E10
 	bl sub_0200FB70
@@ -697,7 +697,7 @@ _02258E10:
 	str r0, [r5]
 	b _02258E4A
 _02258E30:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _02258E4A
 	ldr r0, [r5]

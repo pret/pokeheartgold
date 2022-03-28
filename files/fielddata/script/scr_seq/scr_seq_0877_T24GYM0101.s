@@ -22,7 +22,7 @@ scr_seq_T24GYM0101_000:
 	faceplayer
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _010A
-	check_badge 4, VAR_SPECIAL_RESULT
+	check_badge BADGE_STORM, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _00EE
 	npc_msg msg_0574_T24GYM0101_00000
@@ -38,7 +38,7 @@ scr_seq_T24GYM0101_000:
 	settrainerflag TRAINER_BLACK_BELT_LUNG
 	buffer_players_name 0
 	npc_msg msg_0574_T24GYM0101_00004
-	give_badge 4
+	give_badge BADGE_STORM
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
 	addvar VAR_UNK_4134, 1
@@ -127,7 +127,7 @@ scr_seq_T24GYM0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 4, VAR_SPECIAL_RESULT
+	check_badge BADGE_STORM, VAR_SPECIAL_RESULT
 	buffer_players_name 0
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _019A

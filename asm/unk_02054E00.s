@@ -53,8 +53,8 @@ sTrainerEncounterMusicParam:
 
 	.text
 
-	thumb_func_start sub_02054E50
-sub_02054E50: ; 0x02054E50
+	thumb_func_start MapModel_IsHeadbuttTree
+MapModel_IsHeadbuttTree: ; 0x02054E50
 	cmp r0, #0xd0
 	bne _02054E58
 	mov r0, #1
@@ -62,10 +62,10 @@ sub_02054E50: ; 0x02054E50
 _02054E58:
 	mov r0, #0
 	bx lr
-	thumb_func_end sub_02054E50
+	thumb_func_end MapModel_IsHeadbuttTree
 
-	thumb_func_start sub_02054E5C
-sub_02054E5C: ; 0x02054E5C
+	thumb_func_start MapCoordToMatrixIndex
+MapCoordToMatrixIndex: ; 0x02054E5C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r0, #0
@@ -107,7 +107,7 @@ _02054EA2:
 	lsr r0, r0, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02054E5C
+	thumb_func_end MapCoordToMatrixIndex
 
 	thumb_func_start sub_02054EB0
 sub_02054EB0: ; 0x02054EB0
@@ -173,42 +173,42 @@ sub_02054F14: ; 0x02054F14
 	.balign 4, 0
 	thumb_func_end sub_02054F14
 
-	thumb_func_start sub_02054F28
-sub_02054F28: ; 0x02054F28
+	thumb_func_start Fsys_SetSavedMusicId
+Fsys_SetSavedMusicId: ; 0x02054F28
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	add r4, r1, #0
 	bl Save_FlyPoints_get
-	bl sub_0203B980
+	bl FlyPoints_GetMusicIdAddr
 	strh r4, [r0]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02054F28
+	thumb_func_end Fsys_SetSavedMusicId
 
-	thumb_func_start sub_02054F3C
-sub_02054F3C: ; 0x02054F3C
+	thumb_func_start Fsys_GetSavedMusicId
+Fsys_GetSavedMusicId: ; 0x02054F3C
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B980
+	bl FlyPoints_GetMusicIdAddr
 	ldrh r0, [r0]
 	pop {r3, pc}
-	thumb_func_end sub_02054F3C
+	thumb_func_end Fsys_GetSavedMusicId
 
-	thumb_func_start sub_02054F4C
-sub_02054F4C: ; 0x02054F4C
+	thumb_func_start Fsys_ClearSavedMusicId
+Fsys_ClearSavedMusicId: ; 0x02054F4C
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B980
+	bl FlyPoints_GetMusicIdAddr
 	mov r1, #0
 	strh r1, [r0]
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02054F4C
+	thumb_func_end Fsys_ClearSavedMusicId
 
-	thumb_func_start sub_02054F60
-sub_02054F60: ; 0x02054F60
+	thumb_func_start Fsys_GetSurfOverriddenMusicId
+Fsys_GetSurfOverriddenMusicId: ; 0x02054F60
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x40]
@@ -221,7 +221,7 @@ sub_02054F60: ; 0x02054F60
 	bl CheckFlag99A
 	cmp r0, #0
 	bne _02054F82
-	ldr r0, _02054FA4 ; =0x000003F6
+	ldr r0, _02054FA4 ; =SEQ_GS_NAMINORI
 	pop {r3, r4, r5, pc}
 _02054F82:
 	add r0, r4, #0
@@ -229,18 +229,18 @@ _02054F82:
 	bl GetMapMusic
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02054F3C
+	bl Fsys_GetSavedMusicId
 	cmp r0, #0
 	beq _02054F9E
 	add r0, r4, #0
-	bl sub_02054F3C
+	bl Fsys_GetSavedMusicId
 	add r5, r0, #0
 _02054F9E:
 	add r0, r5, #0
 	pop {r3, r4, r5, pc}
 	nop
-_02054FA4: .word 0x000003F6
-	thumb_func_end sub_02054F60
+_02054FA4: .word SEQ_GS_NAMINORI
+	thumb_func_end Fsys_GetSurfOverriddenMusicId
 
 	thumb_func_start GetMapMusic
 GetMapMusic: ; 0x02054FA8
@@ -270,8 +270,8 @@ _02054FD8:
 	pop {r4, r5, r6, pc}
 	thumb_func_end GetMapMusic
 
-	thumb_func_start sub_02054FDC
-sub_02054FDC: ; 0x02054FDC
+	thumb_func_start Fsys_PlayOrFadeToNewMusicId
+Fsys_PlayOrFadeToNewMusicId: ; 0x02054FDC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r0, #0
@@ -280,7 +280,7 @@ sub_02054FDC: ; 0x02054FDC
 	add r7, r2, #0
 	bl PlayerAvatar_GetState
 	add r6, r0, #0
-	bl sub_02004A54
+	bl GF_SND_BGM_DisableCheck
 	cmp r0, #1
 	bne _02054FFC
 	add sp, #0x10
@@ -312,7 +312,7 @@ _02055022:
 	ldr r2, [sp, #8]
 	add r0, r4, #0
 	mov r3, #0x1e
-	bl sub_02005A4C
+	bl GF_FadeStartMusicId
 	b _02055044
 _02055036:
 	mov r3, #0
@@ -320,13 +320,13 @@ _02055036:
 	ldr r1, [sp, #0xc]
 	ldr r2, [sp, #8]
 	add r0, r4, #0
-	bl sub_020059F0
+	bl GF_NowStartMusicId
 _02055044:
 	mov r0, #1
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02054FDC
+	thumb_func_end Fsys_PlayOrFadeToNewMusicId
 
 	thumb_func_start sub_0205504C
 sub_0205504C: ; 0x0205504C
@@ -422,7 +422,7 @@ sub_020550E4: ; 0x020550E4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
-	bl sub_02004A54
+	bl GF_SND_BGM_DisableCheck
 	cmp r0, #1
 	beq _0205510C
 	bl GF_GetCurrentPlayingBGM
@@ -446,7 +446,7 @@ sub_02055110: ; 0x02055110
 	add r5, r0, #0
 	add r6, r1, #0
 	add r4, r2, #0
-	bl sub_02004A54
+	bl GF_SND_BGM_DisableCheck
 	cmp r0, #1
 	beq _02055160
 	mov r0, #0
@@ -486,7 +486,7 @@ sub_02055164: ; 0x02055164
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_02054F60
+	bl Fsys_GetSurfOverriddenMusicId
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0

@@ -98,16 +98,16 @@ BOOL CheckFlag965(SCRIPT_STATE* state) {
     return CheckScriptFlag(state, FLAG_UNK_965);
 }
 
-void SetFlag969(SCRIPT_STATE* state) {
-    SetScriptFlag(state, FLAG_UNK_969);
+void ScriptState_SetRocketCostumeFlag(SCRIPT_STATE* state) {
+    SetScriptFlag(state, FLAG_SYS_ROCKET_COSTUME);
 }
 
-void ClearFlag969(SCRIPT_STATE* state) {
-    ClearScriptFlag(state, FLAG_UNK_969);
+void ScriptState_ClearRocketCostumeFlag(SCRIPT_STATE* state) {
+    ClearScriptFlag(state, FLAG_SYS_ROCKET_COSTUME);
 }
 
-BOOL CheckFlag969(SCRIPT_STATE* state) {
-    return CheckScriptFlag(state, FLAG_UNK_969);
+BOOL ScriptState_CheckRocketCostumeFlag(SCRIPT_STATE* state) {
+    return CheckScriptFlag(state, FLAG_SYS_ROCKET_COSTUME);
 }
 
 BOOL EventFlagCheck_RematchGroup(SCRIPT_STATE* state, u16 flag_id) {
@@ -152,16 +152,16 @@ BOOL ScriptState_CheckAlphPuzzleFlag(SCRIPT_STATE* state, u8 flag) {
     return ret;
 }
 
-void ChangeFlag986(SCRIPT_STATE* state, BOOL set) {
+void ScriptState_MomsSavingsFlagAction(SCRIPT_STATE* state, BOOL set) {
     if (set) {
-        SetScriptFlag(state, FLAG_UNK_986);
+        SetScriptFlag(state, FLAG_SYS_MOMS_SAVINGS);
     } else {
-        ClearScriptFlag(state, FLAG_UNK_986);
+        ClearScriptFlag(state, FLAG_SYS_MOMS_SAVINGS);
     }
 }
 
-BOOL CheckFlag986(SCRIPT_STATE* state) {
-    return CheckScriptFlag(state, FLAG_UNK_986);
+BOOL ScriptState_MomsSavingsFlagCheck(SCRIPT_STATE* state) {
+    return CheckScriptFlag(state, FLAG_SYS_MOMS_SAVINGS);
 }
 
 u16 GetOverriddenMapMusic(SCRIPT_STATE* state, u32 map_no) {

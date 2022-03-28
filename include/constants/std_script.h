@@ -12,6 +12,7 @@
 #define std_signpost                    2000
 #define std_hidden_item_fanfare         2001
 #define std_nurse_joy                   2002
+#define std_survive_poisoning           2003
 #define std_prompt_save                 2006
 #define std_receive_accessory           2007
 #define std_obtain_item_verbose         2008
@@ -21,6 +22,7 @@
 #define std_whited_out_to_mom           2012
 #define std_whited_out_to_pokecenter    2013
 #define std_global_terminal_globe       2015
+#define std_bike_rack                   2020
 #define std_hatch_egg                   2021
 #define std_repel_wore_off              2022
 #define std_set_battle_phrase           2023

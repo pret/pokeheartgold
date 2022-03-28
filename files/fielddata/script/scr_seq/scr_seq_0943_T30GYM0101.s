@@ -302,7 +302,7 @@ scr_seq_T30GYM0101_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 7, VAR_SPECIAL_RESULT
+	check_badge BADGE_RISING, VAR_SPECIAL_RESULT
 	buffer_players_name 0
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0407

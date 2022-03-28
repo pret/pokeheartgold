@@ -3096,7 +3096,7 @@ _0203FA0C:
 	ldr r1, [r4, #0x20]
 	add r0, r4, #0
 	ldr r1, [r1]
-	bl sub_02054F60
+	bl Fsys_GetSurfOverriddenMusicId
 	add r1, sp, #0
 	strh r0, [r1, #0xc]
 	ldr r0, [r4, #0x10]

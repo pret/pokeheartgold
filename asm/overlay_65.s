@@ -470,7 +470,7 @@ ov65_0221C250: ; 0x0221C250
 _0221C26E:
 	b _0221C3B4
 _0221C270:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0221C28A
 	mov r0, #1
@@ -539,7 +539,7 @@ _0221C2D6:
 	str r0, [r4, #0x54]
 	b _0221C3B4
 _0221C2F4:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0221C3B4
 	add r0, r4, #0
@@ -613,14 +613,14 @@ _0221C380:
 	str r0, [r4, #0x54]
 	b _0221C3B4
 _0221C39C:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0221C3B4
 	mov r0, #1
 	str r0, [r4, #0x54]
 	b _0221C3B4
 _0221C3AA:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0221C3B4
 	mov r6, #1

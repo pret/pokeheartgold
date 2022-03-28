@@ -140,7 +140,7 @@ _022588F8:
 	str r0, [r5]
 	b _022589EA
 _0225891E:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _022589EA
 	ldr r0, [r5]
@@ -231,7 +231,7 @@ _022589BC:
 	str r0, [r5]
 	b _022589EA
 _022589DC:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _022589EA
 	add sp, #0xc

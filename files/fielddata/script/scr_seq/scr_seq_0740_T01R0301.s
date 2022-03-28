@@ -105,7 +105,7 @@ scr_seq_T01R0301_000:
 	goto_if_eq _04A6
 	compare VAR_UNK_40F9, 4
 	goto_if_eq _02CB
-	goto_if_set FLAG_UNK_185, _01B2
+	goto_if_set FLAG_GOT_HM08, _01B2
 	goto_if_set FLAG_UNK_12A, _0195
 	buffer_players_name 0
 	gender_msgbox msg_0451_T01R0301_00000, msg_0451_T01R0301_00001
@@ -192,17 +192,17 @@ _0277:
 	end
 
 _0282:
-	goto_if_set FLAG_UNK_185, _02C0
+	goto_if_set FLAG_GOT_HM08, _02C0
 	npc_msg msg_0451_T01R0301_00055
 	giveitem_no_check ITEM_HM08, 1
 	npc_msg msg_0451_T01R0301_00056
 	buffer_players_name 0
 	gender_msgbox msg_0451_T01R0301_00006, msg_0451_T01R0301_00007
 	setvar VAR_UNK_4110, 2
-	setflag FLAG_UNK_12B
+	setflag FLAG_UNLOCKED_MT_SILVER
 	wait_button_or_walk_away
 	closemsg
-	setflag FLAG_UNK_185
+	setflag FLAG_GOT_HM08
 	releaseall
 	end
 

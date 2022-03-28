@@ -17,7 +17,7 @@ scr_seq_T07GYM0101_002:
 	check_registered_phone_number PHONE_CONTACT_ERIKA, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _00DE
-	check_badge 15, VAR_TEMP_x4002
+	check_badge BADGE_EARTH, VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 1
 	goto_if_eq _004F
 	goto _0101
@@ -87,7 +87,7 @@ scr_seq_T07GYM0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 11, VAR_SPECIAL_RESULT
+	check_badge BADGE_RAINBOW, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01A5
 	npc_msg msg_0492_T07GYM0101_00000
@@ -96,7 +96,7 @@ scr_seq_T07GYM0101_000:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01BB
-	give_badge 11
+	give_badge BADGE_RAINBOW
 	addvar VAR_UNK_4135, 1
 	add_special_game_stat 22
 	settrainerflag TRAINER_TWINS_JO_AND_ZOE
@@ -138,7 +138,7 @@ scr_seq_T07GYM0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 11, VAR_SPECIAL_RESULT
+	check_badge BADGE_RAINBOW, VAR_SPECIAL_RESULT
 	buffer_players_name 0
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _01F2

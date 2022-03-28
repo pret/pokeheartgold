@@ -1025,14 +1025,14 @@ ScrCmd_807: ; 0x0206DC50
 	add r7, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_0203277C
+	bl Save_TrainerHouse_get
 	add r4, r0, #0
 	mov r0, #6
 	lsl r0, r0, #6
 	mul r0, r5
 	str r0, [sp]
 	add r0, r4, r0
-	bl sub_020327F8
+	bl TrainerHouseSet_CheckHasData
 	strh r0, [r6]
 	ldrh r0, [r6]
 	cmp r0, #0

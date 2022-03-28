@@ -7,7 +7,7 @@
 #include "constants/items.h"
 #include "constants/std_script.h"
 #include "fielddata/script/scr_seq/event_D24R0204.h"
-#include "party_menu.h"
+#include "constants/party_menu.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -415,13 +415,13 @@ sub_0205C500: ; 0x0205C500
 	bl sub_0205C6D0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0205C6E4
+	bl PlayerAvatar_SetState
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_0205C720
+	bl PlayerAvatar_SetGender
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205C718
+	bl PlayerAvatar_SetTransitionFlags
 	add r0, r5, #0
 	bl sub_0205C74C
 	mov r1, #0
@@ -676,8 +676,8 @@ PlayerAvatar_GetMapObjectConst: ; 0x0205C6E0
 	bx lr
 	thumb_func_end PlayerAvatar_GetMapObjectConst
 
-	thumb_func_start sub_0205C6E4
-sub_0205C6E4: ; 0x0205C6E4
+	thumb_func_start PlayerAvatar_SetState
+PlayerAvatar_SetState: ; 0x0205C6E4
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -691,7 +691,7 @@ _0205C6F2:
 	bl sub_0205C800
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0205C6E4
+	thumb_func_end PlayerAvatar_SetState
 
 	thumb_func_start PlayerAvatar_GetState
 PlayerAvatar_GetState: ; 0x0205C700
@@ -705,37 +705,37 @@ _0205C70A:
 	.balign 4, 0
 	thumb_func_end PlayerAvatar_GetState
 
-	thumb_func_start sub_0205C710
-sub_0205C710: ; 0x0205C710
+	thumb_func_start PlayerAvatar_OrrTransitionFlags
+PlayerAvatar_OrrTransitionFlags: ; 0x0205C710
 	ldr r2, [r0, #4]
 	orr r1, r2
 	str r1, [r0, #4]
 	bx lr
-	thumb_func_end sub_0205C710
+	thumb_func_end PlayerAvatar_OrrTransitionFlags
 
-	thumb_func_start sub_0205C718
-sub_0205C718: ; 0x0205C718
+	thumb_func_start PlayerAvatar_SetTransitionFlags
+PlayerAvatar_SetTransitionFlags: ; 0x0205C718
 	str r1, [r0, #4]
 	bx lr
-	thumb_func_end sub_0205C718
+	thumb_func_end PlayerAvatar_SetTransitionFlags
 
-	thumb_func_start sub_0205C71C
-sub_0205C71C: ; 0x0205C71C
+	thumb_func_start PlayerAvatar_GetTransitionFlags
+PlayerAvatar_GetTransitionFlags: ; 0x0205C71C
 	ldr r0, [r0, #4]
 	bx lr
-	thumb_func_end sub_0205C71C
+	thumb_func_end PlayerAvatar_GetTransitionFlags
 
-	thumb_func_start sub_0205C720
-sub_0205C720: ; 0x0205C720
+	thumb_func_start PlayerAvatar_SetGender
+PlayerAvatar_SetGender: ; 0x0205C720
 	str r1, [r0, #0x1c]
 	bx lr
-	thumb_func_end sub_0205C720
+	thumb_func_end PlayerAvatar_SetGender
 
-	thumb_func_start sub_0205C724
-sub_0205C724: ; 0x0205C724
+	thumb_func_start PlayerAvatar_GetGender
+PlayerAvatar_GetGender: ; 0x0205C724
 	ldr r0, [r0, #0x1c]
 	bx lr
-	thumb_func_end sub_0205C724
+	thumb_func_end PlayerAvatar_GetGender
 
 	thumb_func_start sub_0205C728
 sub_0205C728: ; 0x0205C728
@@ -894,15 +894,15 @@ sub_0205C7B4: ; 0x0205C7B4
 	.balign 4, 0
 	thumb_func_end sub_0205C7B4
 
-	thumb_func_start sub_0205C7BC
-sub_0205C7BC: ; 0x0205C7BC
+	thumb_func_start FlypointsPlayerSub_init
+FlypointsPlayerSub_init: ; 0x0205C7BC
 	mov r1, #0
 	strh r1, [r0]
 	strh r1, [r0, #2]
 	str r1, [r0, #4]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0205C7BC
+	thumb_func_end FlypointsPlayerSub_init
 
 	thumb_func_start FlypointsPlayerSub_CheckRunningShoes
 FlypointsPlayerSub_CheckRunningShoes: ; 0x0205C7C8

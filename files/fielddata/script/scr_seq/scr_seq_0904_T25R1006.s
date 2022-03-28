@@ -91,7 +91,7 @@ scr_seq_T25R1006_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_113 20, 2
+	show_money_box 20, 2
 	npc_msg msg_0597_T25R1006_00010
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -105,7 +105,7 @@ _0156:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _04D2
 	submoneyimmediate 300
-	scrcmd_115
+	update_money_box
 	play_se SEQ_SE_DP_REGI
 	wait_se SEQ_SE_DP_REGI
 	npc_msg msg_0597_T25R1006_00011
@@ -178,7 +178,7 @@ _0294:
 	goto_if_eq _04B0
 	callstd std_obtain_item_verbose
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 
@@ -237,7 +237,7 @@ _038B:
 	goto_if_eq _04B0
 	callstd std_obtain_item_verbose
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 
@@ -296,7 +296,7 @@ _0482:
 	goto_if_eq _04B0
 	callstd std_obtain_item_verbose
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 
@@ -304,7 +304,7 @@ _04A3:
 	npc_msg msg_0597_T25R1006_00014
 	wait_button_or_walk_away
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 
@@ -312,13 +312,13 @@ _04B0:
 	npc_msg msg_0597_T25R1006_00015
 	closemsg
 	addmoney 300
-	scrcmd_115
+	update_money_box
 	play_se SEQ_SE_DP_REGI
 	wait_se SEQ_SE_DP_REGI
 	npc_msg msg_0597_T25R1006_00017
 	wait_button_or_walk_away
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 
@@ -326,7 +326,7 @@ _04D2:
 	npc_msg msg_0597_T25R1006_00016
 	wait_button_or_walk_away
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 
@@ -518,7 +518,7 @@ scr_seq_T25R1006_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0597_T25R1006_00005
-	scrcmd_113 20, 2
+	show_money_box 20, 2
 	goto _0717
 
 _0717:
@@ -591,7 +591,7 @@ _07D5:
 	call_if_eq _07C5
 	compare VAR_SPECIAL_x8000, 2
 	call_if_eq _07CD
-	scrcmd_115
+	update_money_box
 	buffer_item_name 0, VAR_SPECIAL_x8001
 	play_se SEQ_SE_DP_JIHANKI
 	buffer_item_name 0, VAR_SPECIAL_x8001
@@ -618,14 +618,14 @@ _08A9:
 _08B2:
 	callstd std_bag_is_full
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 
 _08BE:
 	wait_button_or_walk_away
 	closemsg
-	scrcmd_114
+	hide_money_box
 	releaseall
 	end
 	.balign 4, 0

@@ -8,7 +8,7 @@
 #include "text.h"
 #include "save_flypoints.h"
 #include "unk_0203BA5C.h"
-#include "unk_02052F30.h"
+#include "field_warp_tasks.h"
 #include "unk_0206793C.h"
 #include "unk_0200B150.h"
 #include "unk_02054E00.h"
@@ -115,7 +115,7 @@ static BOOL _Task_ShowPrintedMessage(TaskManager *taskManager) {
         work->state++;
         break;
     case 1:
-        if (IsPaletteFadeActive()) {
+        if (IsPaletteFadeFinished()) {
             work->state++;
         }
         break;
@@ -126,7 +126,7 @@ static BOOL _Task_ShowPrintedMessage(TaskManager *taskManager) {
         }
         break;
     case 3:
-        if (IsPaletteFadeActive()) {
+        if (IsPaletteFadeFinished()) {
             FillWindowPixelBuffer(&work->window, 0);
             work->state++;
         }

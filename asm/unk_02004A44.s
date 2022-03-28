@@ -164,8 +164,8 @@ _021D0620:
 
 	.text
 
-	thumb_func_start sub_02004A44
-sub_02004A44: ; 0x02004A44
+	thumb_func_start GF_SND_BGM_DisableSet
+GF_SND_BGM_DisableSet: ; 0x02004A44
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #5
@@ -173,16 +173,16 @@ sub_02004A44: ; 0x02004A44
 	strb r4, [r0]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02004A44
+	thumb_func_end GF_SND_BGM_DisableSet
 
-	thumb_func_start sub_02004A54
-sub_02004A54: ; 0x02004A54
+	thumb_func_start GF_SND_BGM_DisableCheck
+GF_SND_BGM_DisableCheck: ; 0x02004A54
 	push {r3, lr}
 	mov r0, #5
 	bl GF_SdatGetAttrPtr
 	ldrb r0, [r0]
 	pop {r3, pc}
-	thumb_func_end sub_02004A54
+	thumb_func_end GF_SND_BGM_DisableCheck
 
 	thumb_func_start sub_02004A60
 sub_02004A60: ; 0x02004A60
@@ -2227,8 +2227,8 @@ sub_020059E0: ; 0x020059E0
 	.balign 4, 0
 	thumb_func_end sub_020059E0
 
-	thumb_func_start sub_020059F0
-sub_020059F0: ; 0x020059F0
+	thumb_func_start GF_NowStartMusicId
+GF_NowStartMusicId: ; 0x020059F0
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r6, r0, #0
@@ -2244,7 +2244,7 @@ sub_020059F0: ; 0x020059F0
 	bl sub_02005A10
 	add sp, #8
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_020059F0
+	thumb_func_end GF_NowStartMusicId
 
 	thumb_func_start sub_02005A10
 sub_02005A10: ; 0x02005A10
@@ -2277,8 +2277,8 @@ sub_02005A10: ; 0x02005A10
 	.balign 4, 0
 	thumb_func_end sub_02005A10
 
-	thumb_func_start sub_02005A4C
-sub_02005A4C: ; 0x02005A4C
+	thumb_func_start GF_FadeStartMusicId
+GF_FadeStartMusicId: ; 0x02005A4C
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r6, r0, #0
@@ -2298,7 +2298,7 @@ sub_02005A4C: ; 0x02005A4C
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_02005A4C
+	thumb_func_end GF_FadeStartMusicId
 
 	thumb_func_start sub_02005A74
 sub_02005A74: ; 0x02005A74

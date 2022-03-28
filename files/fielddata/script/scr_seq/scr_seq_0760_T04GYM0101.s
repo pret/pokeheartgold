@@ -19,7 +19,7 @@ scr_seq_T04GYM0101_007:
 	get_phone_book_rematch PHONE_CONTACT_MISTY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00ED
-	check_badge 15, VAR_TEMP_x4000
+	check_badge BADGE_EARTH, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _00E5
 	compare VAR_SCENE_ROUTE_25, 1
@@ -198,7 +198,7 @@ scr_seq_T04GYM0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 9, VAR_SPECIAL_RESULT
+	check_badge BADGE_CASCADE, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0348
 	npc_msg msg_0469_T04GYM0101_00008
@@ -207,7 +207,7 @@ scr_seq_T04GYM0101_000:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _035E
-	give_badge 9
+	give_badge BADGE_CASCADE
 	addvar VAR_UNK_4135, 1
 	add_special_game_stat 22
 	settrainerflag TRAINER_SWIMMER_F_DIANA
@@ -266,7 +266,7 @@ scr_seq_T04GYM0101_002:
 	faceplayer
 	compare VAR_UNK_4088, 2
 	goto_if_ne _03AD
-	check_badge 9, VAR_SPECIAL_RESULT
+	check_badge BADGE_CASCADE, VAR_SPECIAL_RESULT
 	buffer_players_name 0
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _03A4
@@ -288,7 +288,7 @@ scr_seq_T04GYM0101_003:
 	faceplayer
 	compare VAR_UNK_4088, 2
 	goto_if_ne _03F3
-	check_badge 9, VAR_SPECIAL_RESULT
+	check_badge BADGE_CASCADE, VAR_SPECIAL_RESULT
 	buffer_players_name 0
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _03EA
@@ -312,7 +312,7 @@ scr_seq_T04GYM0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 9, VAR_SPECIAL_RESULT
+	check_badge BADGE_CASCADE, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0424
 	npc_msg msg_0469_T04GYM0101_00014

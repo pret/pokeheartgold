@@ -16,7 +16,7 @@ struct ItemCheckUseData {
     u32 mapId;
     int playerState;
     u16 haveFollower:1;
-    u16 flag969set:1;
+    u16 haveRocketCostume:1;
     u16 facingTile;
     u16 standingTile;
     FIELD_PLAYER_AVATAR *playerAvatar;

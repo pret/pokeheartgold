@@ -100,7 +100,7 @@ scr_seq_T27GYM0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 3, VAR_SPECIAL_RESULT
+	check_badge BADGE_FOG, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01D9
 	npc_msg msg_0614_T27GYM0101_00000
@@ -110,7 +110,7 @@ scr_seq_T27GYM0101_001:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01EF
 	npc_msg msg_0614_T27GYM0101_00001
-	give_badge 3
+	give_badge BADGE_FOG
 	addvar VAR_UNK_4134, 1
 	add_special_game_stat 22
 	setflag FLAG_UNK_998
@@ -188,7 +188,7 @@ scr_seq_T27GYM0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 3, VAR_SPECIAL_RESULT
+	check_badge BADGE_FOG, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _029E
 	npc_msg msg_0614_T27GYM0101_00007
@@ -209,7 +209,7 @@ scr_seq_T27GYM0101_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 3, VAR_SPECIAL_RESULT
+	check_badge BADGE_FOG, VAR_SPECIAL_RESULT
 	buffer_players_name 0
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _02D3

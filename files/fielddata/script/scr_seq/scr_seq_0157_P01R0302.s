@@ -43,7 +43,7 @@ _0050:
 _005B:
 	goto_if_set FLAG_UNK_ABB, _0084
 	goto_if_set FLAG_UNK_092, _0084
-	check_badge 15, VAR_TEMP_x4002
+	check_badge BADGE_EARTH, VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 1
 	goto_if_eq _008F
 _0084:

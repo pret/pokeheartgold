@@ -1181,7 +1181,7 @@ _0225CEBE:
 	bl ov92_0225D88C
 	b _0225D1CA
 _0225CEDC:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #5
@@ -1399,7 +1399,7 @@ _0225D096:
 	bl ov92_0225D88C
 	b _0225D1CA
 _0225D0AA:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	add r5, r0, #0
 	beq _0225D0B8
 	add r0, r4, #0
@@ -2358,7 +2358,7 @@ ov92_0225D8E4: ; 0x0225D8E4
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _0225D916
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _0225D908
 	bl sub_0200FB70
@@ -5155,7 +5155,7 @@ ov92_0225EF4C: ; 0x0225EF4C
 	ldr r0, [r4, #0x28]
 	lsl r0, r0, #4
 	asr r5, r0, #0x10
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0225EF6C
 	ldr r0, [r4, #0x78]
@@ -5538,7 +5538,7 @@ ov92_0225F254: ; 0x0225F254
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl sub_0200DCD4
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0225F274
 	ldr r0, [r4, #0x2c]
@@ -5651,7 +5651,7 @@ ov92_0225F338: ; 0x0225F338
 	sub sp, #8
 	add r5, r0, #0
 	add r4, r1, #0
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0225F352
 	ldr r0, [r4, #0x3c]
@@ -5892,7 +5892,7 @@ ov92_0225F530: ; 0x0225F530
 	add r7, r0, #0
 	ldr r6, [r4, #0x34]
 	ldr r5, [r4, #0x38]
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0225F550
 	ldr r2, [r4, #0x3c]
@@ -8311,7 +8311,7 @@ ov92_022608B8: ; 0x022608B8
 	stmia r2!, {r0, r1}
 	ldmia r3!, {r0, r1}
 	stmia r2!, {r0, r1}
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _022608FA
 	ldr r0, [sp, #4]
@@ -8572,7 +8572,7 @@ ov92_02260AE0: ; 0x02260AE0
 	ldr r0, [r1]
 	str r1, [sp]
 	ldr r5, [r0, #0x14]
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02260AFC
 	add r5, #0x34
@@ -9789,7 +9789,7 @@ ov92_02261448: ; 0x02261448
 	add r4, r1, #0
 	lsl r0, r0, #2
 	ldr r5, [r4, r0]
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02261464
 	add r5, #0x34
@@ -10551,7 +10551,7 @@ ov92_02261A18: ; 0x02261A18
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	ldr r4, [r0]
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02261A3C
 	mov r1, #0x5f
@@ -10742,7 +10742,7 @@ ov92_02261BA0: ; 0x02261BA0
 	sub sp, #8
 	add r5, r0, #0
 	add r4, r1, #0
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02261BBE
 	mov r1, #0x5f
@@ -11504,7 +11504,7 @@ ov92_022621A4: ; 0x022621A4
 	stmia r2!, {r0, r1}
 	ldmia r3!, {r0, r1}
 	stmia r2!, {r0, r1}
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _022621CE
 	mov r0, #0x5f
@@ -11943,7 +11943,7 @@ ov92_02262548: ; 0x02262548
 	stmia r2!, {r0, r1}
 	ldmia r3!, {r0, r1}
 	stmia r2!, {r0, r1}
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02262572
 	mov r0, #0x5f
@@ -12384,7 +12384,7 @@ ov92_022628F0: ; 0x022628F0
 	stmia r2!, {r0, r1}
 	ldmia r3!, {r0, r1}
 	stmia r2!, {r0, r1}
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0226291A
 	mov r0, #0x5f
@@ -12865,7 +12865,7 @@ ov92_02262CEC: ; 0x02262CEC
 	stmia r2!, {r0, r1}
 	ldmia r3!, {r0, r1}
 	stmia r2!, {r0, r1}
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02262D16
 	mov r0, #0x5f

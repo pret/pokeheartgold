@@ -123,7 +123,7 @@ _01D9:
 	apply_movement obj_D49_thlonowner, _0424
 	apply_movement obj_D49_tsure_poke_static_poliwrath, _0424
 	wait_movement
-	scrcmd_184 VAR_SPECIAL_RESULT
+	player_on_bike_check VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _020C
 	npc_msg msg_0137_D49_00005
@@ -775,7 +775,7 @@ scr_seq_D49_019:
 	setvar VAR_TEMP_x4007, 0
 	goto_if_unset FLAG_UNK_997, _095F
 _0A1D:
-	scrcmd_113 21, 1
+	show_money_box 21, 1
 	scrcmd_741 VAR_TEMP_x4007, VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
 	apply_movement obj_D49_shopm1_2, _0BEC
 	wait_movement
@@ -799,10 +799,10 @@ _0A3A:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_114
+	hide_money_box
 	scrcmd_740 VAR_SPECIAL_x8000, VAR_SPECIAL_x8003
 	scrcmd_150
-	scrcmd_113 21, 1
+	show_money_box 21, 1
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x8003, 0
@@ -812,12 +812,12 @@ _0A3A:
 
 _0AD0:
 	submoneyvar VAR_SPECIAL_x8001
-	scrcmd_115
+	update_money_box
 _0AD6:
 	npc_msg msg_0137_D49_00035
 _0AD9:
 	closemsg
-	scrcmd_114
+	hide_money_box
 	apply_movement obj_D49_shopm1_2, _0BF4
 	wait_movement
 	releaseall

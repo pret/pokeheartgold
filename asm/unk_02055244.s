@@ -82,7 +82,7 @@ _020552D0: .word sub_0205528C
 	thumb_func_start sub_020552D4
 sub_020552D4: ; 0x020552D4
 	push {r3, lr}
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _020552E2
 	mov r0, #1

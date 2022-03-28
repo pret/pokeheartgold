@@ -22,12 +22,13 @@
 #include "photo_album.h"
 #include "save_follow_poke.h"
 #include "save_trainer_card.h"
+#include "save_pokegear.h"
+#include "save_flypoints.h"
+#include "save_trainer_house.h"
 
 #define DECL_CHUNK(prefix) extern u32 prefix##_sizeof(void); extern void prefix##_init(void *);
 #define DECL_CHUNK_EX(sizefn, initfn) extern u32 sizefn(void); extern void initfn(void *);
 
-DECL_CHUNK(Save_FlyPoints)
-DECL_CHUNK_EX(sub_0203B920, sub_0203B928)
 DECL_CHUNK_EX(sub_020290B8, sub_020290C8)
 DECL_CHUNK(Sav2_DressupData)
 DECL_CHUNK(GameStats)
@@ -42,54 +43,221 @@ DECL_CHUNK_EX(sub_0202EB30, sub_0202EB38)
 DECL_CHUNK_EX(sub_02031AF0, sub_02031AF4)
 DECL_CHUNK_EX(sub_0203170C, sub_02031710)
 DECL_CHUNK_EX(sub_020318C8, sub_020318CC)
-DECL_CHUNK(SaveData_GSPlayerMisc)
-DECL_CHUNK_EX(sub_02031904, sub_0203190C)
+DECL_CHUNK(Save_Pokeathlon)
 DECL_CHUNK(Save_ApricornBox)
-DECL_CHUNK_EX(sub_02032774, sub_02032788)
 
 const struct SaveChunkHeader gSaveChunkHeaders[] = {
-    { SAVE_SYSINFO,      0, (SAVESIZEFN)Sav2_SysInfo_sizeof,          (SAVEINITFN)Sav2_SysInfo_init },
-    { SAVE_PLAYERDATA,   0, (SAVESIZEFN)Sav2_PlayerData_sizeof,       (SAVEINITFN)Sav2_PlayerData_init },
-    { SAVE_PARTY,        0, (SAVESIZEFN)SavArray_Party_sizeof,        (SAVEINITFN)SavArray_Party_init },
-    { SAVE_BAG,          0, (SAVESIZEFN)Sav2_Bag_sizeof,              (SAVEINITFN)Sav2_Bag_init },
-    { SAVE_FLAGS,        0, (SAVESIZEFN)SavArray_Flags_sizeof,        (SAVEINITFN)SavArray_Flags_init },
-    {SAVE_FLYPOINTS,    0, (SAVESIZEFN)Save_FlyPoints_sizeof,   (SAVEINITFN)Save_FlyPoints_init },
-    {SAVE_POKEDEX,      0, (SAVESIZEFN)Save_Pokedex_sizeof,     (SAVEINITFN)Save_Pokedex_init },
-    {SAVE_DAYCARE,      0, (SAVESIZEFN)Sav2_Daycare_sizeof,     (SAVEINITFN)Sav2_Daycare_init },
-    {SAVE_PALPAD,       0, (SAVESIZEFN)Save_PalPad_sizeof,      (SAVEINITFN)Save_PalPad_init },
-    {SAVE_MISC,         0, (SAVESIZEFN)Sav2_Misc_sizeof,        (SAVEINITFN)Sav2_Misc_init },
-    {SAVE_UNK_10,       0, (SAVESIZEFN)sub_0203B920,            (SAVEINITFN)sub_0203B928 },
-    {SAVE_UNK_11,       0, (SAVESIZEFN)sub_020290B8,            (SAVEINITFN)sub_020290C8 },
-    {SAVE_DRESSUP_DATA, 0, (SAVESIZEFN)Sav2_DressupData_sizeof, (SAVEINITFN)Sav2_DressupData_init },
-    {SAVE_MAILBOX,      0, (SAVESIZEFN)Sav2_Mailbox_sizeof,     (SAVEINITFN)Sav2_Mailbox_init },
-    {SAVE_FRIEND_GROUP, 0, (SAVESIZEFN)Sav2_FriendGroup_sizeof, (SAVEINITFN)Sav2_FriendGroup_init },
-    {SAVE_TRAINER_CARD, 0, (SAVESIZEFN)Save_TrainerCard_sizeof, (SAVEINITFN)Save_TrainerCard_init },
-    {SAVE_GAMESTATS,    0, (SAVESIZEFN)GameStats_sizeof,        (SAVEINITFN)GameStats_init },
-    {SAVE_SEAL_CASE,    0, (SAVESIZEFN)Sav2_SealCase_sizeof,    (SAVEINITFN)Sav2_SealCase_init },
-    {SAVE_CHATOT,       0, (SAVESIZEFN)Sav2_Chatot_sizeof,      (SAVEINITFN)Sav2_Chatot_init },
-    {SAVE_UNK_19,       0, (SAVESIZEFN)sub_02031000,            (SAVEINITFN)sub_02031008 },
-    {SAVE_UNK_20,       0, (SAVESIZEFN)sub_0202D938,            (SAVEINITFN)sub_0202D93C },
-    {SAVE_ROAMER,       0, (SAVESIZEFN)Save_Roamers_sizeof,     (SAVEINITFN)Save_Roamers_init },
-    {SAVE_UNK_22,       0, (SAVESIZEFN)sub_0202DB40,            (SAVEINITFN)sub_0202DB44 },
-    {SAVE_UNK_23,       0, (SAVESIZEFN)sub_0202E41C,            (SAVEINITFN)sub_0202E424 },
-    {SAVE_UNK_24,       0, (SAVESIZEFN)sub_0202E4F4,            (SAVEINITFN)sub_0202E4FC },
-    {SAVE_UNK_25,       0, (SAVESIZEFN)sub_0202C034,            (SAVEINITFN)sub_0202C03C },
-    { SAVE_UNK_26,       0, (SAVESIZEFN)sub_0202CA24,                 (SAVEINITFN)sub_0202CA2C },
-    { SAVE_MYSTERY_GIFT, 0, (SAVESIZEFN)Save_MysteryGift_sizeof,      (SAVEINITFN)Save_MysteryGift_init },
-    { SAVE_UNK_28,       0, (SAVESIZEFN)sub_0202EB30,                 (SAVEINITFN)sub_0202EB38 },
-    { SAVE_UNK_29,       0, (SAVESIZEFN)sub_02031AF0,                 (SAVEINITFN)sub_02031AF4 },
-    { SAVE_EASY_CHAT,    0, (SAVESIZEFN)Sav2_EasyChat_sizeof,         (SAVEINITFN)Sav2_EasyChat_init },
-    { SAVE_UNK_31,       0, (SAVESIZEFN)sub_0203170C,                 (SAVEINITFN)sub_02031710 },
-    { SAVE_UNK_32,       0, (SAVESIZEFN)sub_020318C8,                (SAVEINITFN)sub_020318CC },
-    { SAVE_FOLLOW_POKE,  0, (SAVESIZEFN) Sav2_FollowPoke_sizeof,      (SAVEINITFN)Sav2_FollowPoke_init },
-    { SAVE_GSPLAYERMISC, 0, (SAVESIZEFN)SaveData_GSPlayerMisc_sizeof, (SAVEINITFN)SaveData_GSPlayerMisc_init },
-    { SAVE_SAFARI_ZONE,  0, (SAVESIZEFN)Save_SafariZone_sizeof,       (SAVEINITFN)Save_SafariZone_init },
-    { SAVE_PHOTO_ALBUM,  0, (SAVESIZEFN)Save_PhotoAlbum_sizeof,       (SAVEINITFN)Save_PhotoAlbum_init },
-    { SAVE_UNK_37,       0, (SAVESIZEFN)sub_02031904,                (SAVEINITFN)sub_0203190C },
-    { SAVE_APRICORN_BOX, 0, (SAVESIZEFN)Save_ApricornBox_sizeof,     (SAVEINITFN)Save_ApricornBox_init },
-    { SAVE_POKEWALKER,   0, (SAVESIZEFN)Pokewalker_sizeof,           (SAVEINITFN)Pokewalker_init },
-    { SAVE_UNK_40,       0, (SAVESIZEFN)sub_02032774,                (SAVEINITFN)sub_02032788 },
-    { SAVE_PCSTORAGE,    1, (SAVESIZEFN)PCStorage_sizeof,            (SAVEINITFN)PCStorage_init },
+    {
+        SAVE_SYSINFO,
+        0,
+        (SAVESIZEFN)Sav2_SysInfo_sizeof,
+        (SAVEINITFN)Sav2_SysInfo_init
+    }, {
+        SAVE_PLAYERDATA,
+        0,
+        (SAVESIZEFN)Sav2_PlayerData_sizeof,
+        (SAVEINITFN)Sav2_PlayerData_init
+    }, {
+        SAVE_PARTY,
+        0,
+        (SAVESIZEFN)SavArray_Party_sizeof,
+        (SAVEINITFN)SavArray_Party_init
+    }, {
+        SAVE_BAG,
+        0,
+        (SAVESIZEFN)Sav2_Bag_sizeof,
+        (SAVEINITFN)Sav2_Bag_init
+    }, {
+        SAVE_FLAGS,
+        0,
+        (SAVESIZEFN)SavArray_Flags_sizeof,
+        (SAVEINITFN)SavArray_Flags_init
+    }, {
+        SAVE_FLYPOINTS,
+        0,
+        (SAVESIZEFN)Save_FlyPoints_sizeof,
+        (SAVEINITFN)Save_FlyPoints_init
+    }, {
+        SAVE_POKEDEX,
+        0,
+        (SAVESIZEFN)Save_Pokedex_sizeof,
+        (SAVEINITFN)Save_Pokedex_init
+    }, {
+        SAVE_DAYCARE,
+        0,
+        (SAVESIZEFN)Sav2_Daycare_sizeof,
+        (SAVEINITFN)Sav2_Daycare_init
+    }, {
+        SAVE_PALPAD,
+        0,
+        (SAVESIZEFN)Save_PalPad_sizeof,
+        (SAVEINITFN)Save_PalPad_init
+    }, {
+        SAVE_MISC,
+        0,
+        (SAVESIZEFN)Sav2_Misc_sizeof,
+        (SAVEINITFN)Sav2_Misc_init
+    }, {
+        SAVE_MAP_OBJECTS,
+        0,
+        (SAVESIZEFN)Save_MapObjects_sizeof,
+        (SAVEINITFN)Save_MapObjects_init
+    }, {
+        SAVE_UNK_11,
+        0,
+        (SAVESIZEFN)sub_020290B8,
+        (SAVEINITFN)sub_020290C8
+    }, {
+        SAVE_DRESSUP_DATA,
+        0,
+        (SAVESIZEFN)Sav2_DressupData_sizeof,
+        (SAVEINITFN)Sav2_DressupData_init
+    }, {
+        SAVE_MAILBOX,
+        0,
+        (SAVESIZEFN)Sav2_Mailbox_sizeof,
+        (SAVEINITFN)Sav2_Mailbox_init
+    }, {
+        SAVE_FRIEND_GROUP,
+        0,
+        (SAVESIZEFN)Sav2_FriendGroup_sizeof,
+        (SAVEINITFN)Sav2_FriendGroup_init
+    }, {
+        SAVE_TRAINER_CARD,
+        0,
+        (SAVESIZEFN)Save_TrainerCard_sizeof,
+        (SAVEINITFN)Save_TrainerCard_init
+    }, {
+        SAVE_GAMESTATS,
+        0,
+        (SAVESIZEFN)GameStats_sizeof,
+        (SAVEINITFN)GameStats_init
+    }, {
+        SAVE_SEAL_CASE,
+        0,
+        (SAVESIZEFN)Sav2_SealCase_sizeof,
+        (SAVEINITFN)Sav2_SealCase_init
+    }, {
+        SAVE_CHATOT,
+        0,
+        (SAVESIZEFN)Sav2_Chatot_sizeof,
+        (SAVEINITFN)Sav2_Chatot_init
+    }, {
+        SAVE_UNK_19,
+        0,
+        (SAVESIZEFN)sub_02031000,
+        (SAVEINITFN)sub_02031008
+    }, {
+        SAVE_UNK_20,
+        0,
+        (SAVESIZEFN)sub_0202D938,
+        (SAVEINITFN)sub_0202D93C
+    }, {
+        SAVE_ROAMER,
+        0,
+        (SAVESIZEFN)Save_Roamers_sizeof,
+        (SAVEINITFN)Save_Roamers_init
+    }, {
+        SAVE_UNK_22,
+        0,
+        (SAVESIZEFN)sub_0202DB40,
+        (SAVEINITFN)sub_0202DB44
+    }, {
+        SAVE_UNK_23,
+        0,
+        (SAVESIZEFN)sub_0202E41C,
+        (SAVEINITFN)sub_0202E424
+    }, {
+        SAVE_UNK_24,
+        0,
+        (SAVESIZEFN)sub_0202E4F4,
+        (SAVEINITFN)sub_0202E4FC
+    }, {
+        SAVE_UNK_25,
+        0,
+        (SAVESIZEFN)sub_0202C034,
+        (SAVEINITFN)sub_0202C03C
+    }, {
+        SAVE_UNK_26,
+        0,
+        (SAVESIZEFN)sub_0202CA24,
+        (SAVEINITFN)sub_0202CA2C
+    }, {
+        SAVE_MYSTERY_GIFT,
+        0,
+        (SAVESIZEFN)Save_MysteryGift_sizeof,
+        (SAVEINITFN)Save_MysteryGift_init
+    }, {
+        SAVE_UNK_28,
+        0,
+        (SAVESIZEFN)sub_0202EB30,
+        (SAVEINITFN)sub_0202EB38
+    }, {
+        SAVE_UNK_29,
+        0,
+        (SAVESIZEFN)sub_02031AF0,
+        (SAVEINITFN)sub_02031AF4
+    }, {
+        SAVE_EASY_CHAT,
+        0,
+        (SAVESIZEFN)Sav2_EasyChat_sizeof,
+        (SAVEINITFN)Sav2_EasyChat_init
+    }, {
+        SAVE_UNK_31,
+        0,
+        (SAVESIZEFN)sub_0203170C,
+        (SAVEINITFN)sub_02031710
+    }, {
+        SAVE_UNK_32,
+        0,
+        (SAVESIZEFN)sub_020318C8,
+        (SAVEINITFN)sub_020318CC
+    }, {
+        SAVE_FOLLOW_POKE,
+        0,
+        (SAVESIZEFN)Sav2_FollowPoke_sizeof,
+        (SAVEINITFN)Sav2_FollowPoke_init
+    }, {
+        SAVE_POKEGEAR,
+        0,
+        (SAVESIZEFN)SaveData_GSPlayerMisc_sizeof,
+        (SAVEINITFN)SaveData_GSPlayerMisc_init
+    }, {
+        SAVE_SAFARI_ZONE,
+        0,
+        (SAVESIZEFN)Save_SafariZone_sizeof,
+        (SAVEINITFN)Save_SafariZone_init
+    }, {
+        SAVE_PHOTO_ALBUM,
+        0,
+        (SAVESIZEFN)Save_PhotoAlbum_sizeof,
+        (SAVEINITFN)Save_PhotoAlbum_init
+    }, {
+        SAVE_POKEATHLON,
+        0,
+        (SAVESIZEFN)Save_Pokeathlon_sizeof,
+        (SAVEINITFN)Save_Pokeathlon_init
+    }, {
+        SAVE_APRICORN_BOX,
+        0,
+        (SAVESIZEFN)Save_ApricornBox_sizeof,
+        (SAVEINITFN)Save_ApricornBox_init
+    }, {
+        SAVE_POKEWALKER,
+        0,
+        (SAVESIZEFN)Pokewalker_sizeof,
+        (SAVEINITFN)Pokewalker_init
+    }, {
+        SAVE_TRAINER_HOUSE,
+        0,
+        (SAVESIZEFN)Save_TrainerHouse_sizeof,
+        (SAVEINITFN)Save_TrainerHouse_init
+    }, {
+        SAVE_PCSTORAGE,
+        1,
+        (SAVESIZEFN)PCStorage_sizeof,
+        (SAVEINITFN)PCStorage_init
+    },
 };
 const int gNumSaveChunkHeaders = NELEMS(gSaveChunkHeaders);
 

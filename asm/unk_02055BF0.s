@@ -105,7 +105,7 @@ _02055C50:
 	str r0, [r4]
 	b _02055C94
 _02055C78:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02055C94
 	ldr r0, [r5, #4]
@@ -794,7 +794,7 @@ _020561F8:
 	strh r0, [r4, #2]
 	b _02056218
 _0205620C:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02056218
 	mov r0, #1
@@ -914,9 +914,9 @@ _020562E0:
 	mov r1, #2
 	ldr r0, [r4, #0x40]
 	lsl r1, r1, #8
-	bl ov01_021F1AFC
+	bl ov01_PlayerAvatar_OrrTransitionFlags
 	ldr r0, [r4, #0x40]
-	bl ov01_021F1B04
+	bl ov01_PlayerAvatar_ApplyTransitionFlags
 	ldr r0, [sp]
 	mov r1, #0
 	bl sub_0205F328
@@ -1041,7 +1041,7 @@ _020563E8:
 	strh r0, [r5, #2]
 	b _02056418
 _020563FC:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02056418
 	ldr r0, [r4, #0x40]
@@ -1111,9 +1111,9 @@ _02056474:
 	mov r1, #2
 	ldr r0, [r5, #0x40]
 	lsl r1, r1, #8
-	bl ov01_021F1AFC
+	bl ov01_PlayerAvatar_OrrTransitionFlags
 	ldr r0, [r5, #0x40]
-	bl ov01_021F1B04
+	bl ov01_PlayerAvatar_ApplyTransitionFlags
 	add r0, r6, #0
 	mov r1, #0
 	bl sub_0205F328
@@ -1164,7 +1164,7 @@ _020564F4:
 	strh r0, [r4, #2]
 	b _02056524
 _02056508:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02056524
 	ldr r0, [r5, #0x40]

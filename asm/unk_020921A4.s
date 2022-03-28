@@ -429,7 +429,7 @@ _020924DC:
 	str r0, [r4, #4]
 	b _02092562
 _02092508:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _02092562
 	mov r0, #4
@@ -457,7 +457,7 @@ _02092516:
 	str r0, [r4, #4]
 	b _02092562
 _02092542:
-	bl IsPaletteFadeActive
+	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _02092562
 	add r0, r5, #0

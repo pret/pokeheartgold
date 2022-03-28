@@ -22,7 +22,7 @@ scr_seq_T20R0402_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 0, VAR_SPECIAL_RESULT
+	check_badge BADGE_ZEPHYR, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _006D
 	buffer_players_name 0

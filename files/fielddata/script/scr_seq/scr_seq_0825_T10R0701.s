@@ -134,7 +134,7 @@ _01E7:
 	return
 
 _01ED:
-	check_badge 15, VAR_SPECIAL_RESULT
+	check_badge BADGE_EARTH, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0204
 	clearflag FLAG_HIDE_ROUTE_10_ZAPDOS
