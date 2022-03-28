@@ -2,7 +2,8 @@
 #include "sound.h"
 #include "constants/species.h"
 #include "math_util.h"
-#include "unk_02004A44.h"
+#include "sound_02004A44.h"
+#include "unk_02005D10.h"
 
 BOOL ChatotSoundMain(void) {
     u8 *r4 = GF_SdatGetAttrPtr(16);
@@ -61,7 +62,7 @@ BOOL sub_02006D04(SOUND_CHATOT *a0, u32 a1, s32 a2, s32 a3) {
     UnkStruct_02004A44_0 sp8;
 
     sp8.unk00 = sub_020055AC(14);
-    sp8.unk04 = 0;
+    sp8.unk04 = NNS_SND_WAVE_FORMAT_PCM8;
     sp8.unk08 = sub_020059D8();
     sp8.unk0c = 0;
     sp8.unk10 = 0;

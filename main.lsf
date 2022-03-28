@@ -807,6 +807,7 @@ Overlay OVY_60
 Overlay OVY_61
 {
     After main
+    Object src/choose_starter_app.o
     Object asm/overlay_61.o
 }
 Overlay OVY_62

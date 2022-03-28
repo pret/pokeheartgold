@@ -8,5 +8,6 @@
 #include <nnsys/snd/sndarc_loader.h>
 #include <nnsys/snd/sndarc_player.h>
 #include <nnsys/snd/main.h>
+#include <nnsys/snd/waveout.h>
 
 #endif //NNSYS_SND_H_

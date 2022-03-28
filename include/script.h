@@ -24,7 +24,6 @@
 
 typedef struct FieldSystem FieldSystem;
 typedef struct SCRIPTCONTEXT SCRIPTCONTEXT;
-typedef struct LocalMapObject LocalMapObject;
 
 #define Unk80_10_C_MAGIC         (222271)
 
@@ -168,8 +167,6 @@ struct FieldSystemUnk108 {
     POKEMON *pokemon;
 };
 
-typedef struct MapObjectMan MapObjectMan;
-
 struct FieldSystemUnkSub0 {
     OVY_MANAGER *unk0;
     OVY_MANAGER *unk4;
@@ -241,7 +238,6 @@ struct FieldSystem {
     u8 unk11C[0xC];
 }; // size: 0x128
 
-typedef struct SCRIPTCONTEXT SCRIPTCONTEXT;
 typedef BOOL (*ScrCmdFunc)(SCRIPTCONTEXT* ctx);
 
 struct SCRIPTCONTEXT {

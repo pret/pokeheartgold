@@ -66,5 +66,6 @@ void ReadKeypadAndTouchpad(void);
 void Sys_SetSleepDisableFlag(int);
 void Sys_ClearSleepDisableFlag(int);
 void SetKeyRepeatTimers(int cont, int start);
+void HBlankInterruptDisable(void);
 
 #endif //POKEHEARTGOLD_SYSTEM_H

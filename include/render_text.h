@@ -14,5 +14,8 @@ struct TextPrinterSubStruct {
 };
 
 BOOL RenderText(struct TextPrinter *printer);
+void TextFlags_SetCanABSpeedUpPrint(BOOL enable);
+void sub_02002B50(BOOL enable);
+void sub_02002B8C(BOOL enable);
 
 #endif //POKEHEARTGOLD_RENDER_TEXT_H

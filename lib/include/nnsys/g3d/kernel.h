@@ -47,4 +47,7 @@ typedef struct NNSG3dRenderObj_ {
     u32 hintVisAnmExist[NNS_G3D_SIZE_JNT_MAX / 32];
 } NNSG3dRenderObj;
 
+void NNS_G3dRenderObjAddAnmObj(NNSG3dRenderObj* pRenderObj, NNSG3dAnmObj* pAnmObj);
+void NNS_G3dRenderObjRemoveAnmObj(NNSG3dRenderObj* pRenderObj, NNSG3dAnmObj* pAnmObj);
+
 #endif //NNSYS_G3D_KERNEL_H_

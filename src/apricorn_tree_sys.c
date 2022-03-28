@@ -1,6 +1,5 @@
 #include "constants/apricorns.h"
 #include "save_misc_data.h"
-#include "unk_02055418.h"
 #include "apricorn_tree.h"
 
 static const u8 sTreeApricorns[NUM_APRICORN_TREE] = {
