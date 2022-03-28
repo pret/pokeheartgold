@@ -4,11 +4,11 @@ extern WINDOW *Fsys_ShowMoneyBox(FieldSystem *, u8, u8);
 
 BOOL ScrCmd_ShowMoneyBox(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    u16 var0 = ScriptGetVar(ctx);
-    u16 var1 = ScriptGetVar(ctx);
+    u16 xPos = ScriptGetVar(ctx);
+    u16 yPos = ScriptGetVar(ctx);
 
     WINDOW **moneyBox = FieldSysGetAttrAddr(fsys, SCRIPTENV_MONEY_BOX);
-    *moneyBox = Fsys_ShowMoneyBox(ctx->fsys, var0, var1);
+    *moneyBox = Fsys_ShowMoneyBox(ctx->fsys, xPos, yPos);
 
     return FALSE;
 }
