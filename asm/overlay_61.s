@@ -8,198 +8,6 @@
 
 	.text
 
-	thumb_func_start ov61_021E6068
-ov61_021E6068: ; 0x021E6068
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	mov r7, #0
-	add r4, r5, #0
-	add r6, r5, #0
-_021E6072:
-	ldr r0, [r4, #0x18]
-	bl sub_0200AEB0
-	ldr r0, [r4, #0x1c]
-	bl sub_0200B0A8
-	ldr r0, [r5]
-	ldr r1, [r4, #0x18]
-	bl sub_0200A75C
-	ldr r0, [r5, #4]
-	ldr r1, [r4, #0x1c]
-	bl sub_0200A75C
-	ldr r0, [r5, #8]
-	ldr r1, [r4, #0x20]
-	bl sub_0200A75C
-	ldr r0, [r5, #0xc]
-	ldr r1, [r4, #0x24]
-	bl sub_0200A75C
-	ldr r0, [r6, #0x60]
-	bl FreeToHeap
-	ldr r0, [r6, #0x6c]
-	bl FreeToHeap
-	add r7, r7, #1
-	add r4, #0x18
-	add r6, r6, #4
-	cmp r7, #3
-	blt _021E6072
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ov61_021E6068
-
-	thumb_func_start ov61_021E60B8
-ov61_021E60B8: ; 0x021E60B8
-	push {r4, lr}
-	add r4, r0, #0
-	bl sub_0200B224
-	ldr r0, [r4, #8]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
-	pop {r4, pc}
-	thumb_func_end ov61_021E60B8
-
-	thumb_func_start ov61_021E60C8
-ov61_021E60C8: ; 0x021E60C8
-	push {r4, lr}
-	sub sp, #0x28
-	ldr r4, _021E60E4 ; =ov61_021E7494
-	add r3, sp, #0
-	mov r2, #5
-_021E60D2:
-	ldmia r4!, {r0, r1}
-	stmia r3!, {r0, r1}
-	sub r2, r2, #1
-	bne _021E60D2
-	add r0, sp, #0
-	bl GX_SetBanks
-	add sp, #0x28
-	pop {r4, pc}
-	.balign 4, 0
-_021E60E4: .word ov61_021E7494
-	thumb_func_end ov61_021E60C8
-
-	thumb_func_start ov61_021E60E8
-ov61_021E60E8: ; 0x021E60E8
-	push {r4, r5, lr}
-	sub sp, #0x24
-	add r4, r0, #0
-	bl NNS_G2dInitOamManagerModule
-	mov r0, #0
-	str r0, [sp]
-	mov r1, #0x80
-	str r1, [sp, #4]
-	str r0, [sp, #8]
-	mov r3, #0x20
-	str r3, [sp, #0xc]
-	add r2, r0, #0
-	str r4, [sp, #0x10]
-	bl sub_0200B150
-	ldr r5, _021E6138 ; =ov61_021E73F8
-	add r3, sp, #0x14
-	add r2, r3, #0
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	add r0, r2, #0
-	ldr r1, _021E613C ; =0x00200010
-	mov r2, #0x10
-	str r4, [sp, #0x20]
-	bl sub_020215C0
-	mov r0, #3
-	add r1, r4, #0
-	bl sub_02022588
-	bl sub_020216C8
-	bl sub_02022638
-	add sp, #0x24
-	pop {r4, r5, pc}
-	nop
-_021E6138: .word ov61_021E73F8
-_021E613C: .word 0x00200010
-	thumb_func_end ov61_021E60E8
-
-	thumb_func_start ov61_021E6140
-ov61_021E6140: ; 0x021E6140
-	push {r4, lr}
-	sub sp, #8
-	add r4, r0, #0
-	mov r0, #4
-	mov r1, #0
-	str r0, [sp]
-	str r1, [sp, #4]
-	ldr r0, [r4, #4]
-	mov r2, #2
-	add r3, r1, #0
-	bl GF_3DVramMan_Create
-	str r0, [r4, #0xc]
-	ldr r0, _021E61DC ; =0x04000060
-	ldr r2, _021E61E0 ; =0xFFFFCFFF
-	ldrh r1, [r0]
-	add r3, r1, #0
-	and r3, r2
-	mov r1, #0x10
-	orr r1, r3
-	strh r1, [r0]
-	ldrh r3, [r0]
-	ldr r1, _021E61E4 ; =0x0000CFFB
-	and r1, r3
-	strh r1, [r0]
-	ldrh r1, [r0]
-	add r3, r1, #0
-	and r3, r2
-	mov r1, #8
-	orr r1, r3
-	strh r1, [r0]
-	ldrh r1, [r0]
-	add r3, r4, #0
-	and r2, r1
-	mov r1, #0x20
-	orr r1, r2
-	strh r1, [r0]
-	ldr r1, _021E61E8 ; =0x00001084
-	ldr r0, _021E61EC ; =0x00000588
-	mov r2, #0
-_021E6190:
-	add r2, r2, #1
-	strh r1, [r3, r0]
-	add r3, r3, #2
-	cmp r2, #8
-	blt _021E6190
-	ldr r0, _021E61EC ; =0x00000588
-	add r0, r4, r0
-	bl G3X_SetEdgeColorTable
-	mov r1, #0
-	ldr r0, _021E61F0 ; =0x000043FF
-	ldr r2, _021E61F4 ; =0x00007FFF
-	mov r3, #0x3f
-	str r1, [sp]
-	bl G3X_SetClearColor
-	mov r0, #0
-	ldr r2, _021E61F8 ; =0xFFFFF000
-	add r1, r0, #0
-	add r3, r0, #0
-	bl NNS_G3dGlbLightVector
-	ldr r1, _021E61F4 ; =0x00007FFF
-	mov r0, #0
-	bl NNS_G3dGlbLightColor
-	ldr r0, _021E61F4 ; =0x00007FFF
-	mov r2, #0
-	add r1, r0, #0
-	bl NNS_G3dGlbMaterialColorDiffAmb
-	ldr r0, _021E61F4 ; =0x00007FFF
-	mov r2, #0
-	add r1, r0, #0
-	bl NNS_G3dGlbMaterialColorSpecEmi
-	add sp, #8
-	pop {r4, pc}
-	.balign 4, 0
-_021E61DC: .word 0x04000060
-_021E61E0: .word 0xFFFFCFFF
-_021E61E4: .word 0x0000CFFB
-_021E61E8: .word 0x00001084
-_021E61EC: .word 0x00000588
-_021E61F0: .word 0x000043FF
-_021E61F4: .word 0x00007FFF
-_021E61F8: .word 0xFFFFF000
-	thumb_func_end ov61_021E6140
-
 	thumb_func_start ov61_021E61FC
 ov61_021E61FC: ; 0x021E61FC
 	push {r3, r4, lr}
@@ -2473,6 +2281,7 @@ ov61_021E73EC: ; 0x021E73EC
 	.byte 0x00, 0x10, 0x00, 0x00
 	.byte 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00
 
+	.public ov61_021E73F8
 ov61_021E73F8: ; 0x021E73F8
 	.byte 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -2500,6 +2309,7 @@ ov61_021E7478: ; 0x021E7478
 	.byte 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x03, 0x00, 0x01, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
 
+	.public ov61_021E7494
 ov61_021E7494: ; 0x021E7494
 	.byte 0x30, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00

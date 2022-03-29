@@ -11,5 +11,6 @@
 #include <nnsys/g2d/load/g2d_NCE_load.h>
 #include <nnsys/g2d/load/g2d_NAN_load.h>
 #include <nnsys/g2d/g2d_Image.h>
+#include <nnsys/g2d/g2d_OAM.h>
 
 #endif //NNSYS_G2D_H_

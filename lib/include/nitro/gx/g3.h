@@ -39,6 +39,13 @@ typedef enum {
     GX_TEXPLTTCOLOR0_TRNS = 1
 } GXTexPlttColor0;
 
+typedef enum {
+    GX_LIGHTID_0 = 0,
+    GX_LIGHTID_1 = 1,
+    GX_LIGHTID_2 = 2,
+    GX_LIGHTID_3 = 3
+} GXLightId;
+
 #define GX_PACK_VIEWPORT_PARAM(x1, y1, x2, y2)  ((u32)((x1) | ((y1) << 8) | ((x2) << 16) | ((y2) << 24)))
 
 #endif //NITRO_GX_G3_H_

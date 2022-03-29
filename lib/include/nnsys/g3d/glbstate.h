@@ -59,5 +59,9 @@ static inline void NNS_G3dGlbSetBaseRot(const MtxFx33 *pRot) {
 void NNS_G3dGlbSetBaseScale(const VecFx32 *pScale);
 void NNS_G3dGlbFlush(void);
 void NNS_G3dDraw(NNSG3dRenderObj *pRenderObj);
+void NNS_G3dGlbLightVector(GXLightId lightID, fx16 x, fx16 y, fx16 z);
+void NNS_G3dGlbLightColor(GXLightId lightID, GXRgb rgb);
+void NNS_G3dGlbMaterialColorDiffAmb(GXRgb diffuse, GXRgb ambient, BOOL IsSetVtxColor);
+void NNS_G3dGlbMaterialColorSpecEmi(GXRgb specular, GXRgb emission, BOOL IsShininess);
 
 #endif //NNSYS_G3D_GLBSTATE_H_

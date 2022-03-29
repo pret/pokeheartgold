@@ -29,12 +29,24 @@ struct ChooseStarterAnm {
     NNSG3dAnmObj *obj;
 };
 
+struct UnkStarterChooseSub_3B4_18 {
+    void *unk_00;
+    void *unk_04;
+    void *unk_08;
+    void *unk_0C;
+    u8 filler_10[0x8];
+};
+
 struct UnkStarterChooseSub_3B4 {
     void *unk_000;
     void *unk_004;
     void *unk_008;
     void *unk_00C;
-    u8 filler_010[0x78];
+    u8 filler_010[0x8];
+    struct UnkStarterChooseSub_3B4_18 unk_018[3];
+    void *unk_060[3];
+    void *unk_06C[3];
+    u8 filler_078[0x10];
     void *unk_088;
     u8 filler_08C[0x128];
     int unk_1B4[3];
@@ -82,39 +94,39 @@ struct ChooseStarterAppWork {
     UnkStruct_02019014 *unk_574;
     POKEMON *choices[3]; // 578
     int unk_584;
-    u8 filler_588[0x10];
+    GXRgb unk_588[8];
 }; // size=0x598
 
+void ov61_021E6068(struct UnkStarterChooseSub_3B4 *a0);
 void ov61_021E60B8(struct ChooseStarterAppWork *work);
 void ov61_021E60C8(void);
 void ov61_021E60E8(HeapID heapId);
 void ov61_021E6140(struct ChooseStarterAppWork *work);
+void ov61_021E61FC(struct ChooseStarterAppWork *work);
 void ov61_021E6350(BGCONFIG *bgConfig, HeapID heapId);
 void ov61_021E6488(struct ChooseStarterAppWork *work);
 void ov61_021E6508(struct ChooseStarterAppWork *work);
 void ov61_021E6564(struct ChooseStarterAppWork *work);
-void ov61_021E6944(struct ChooseStarterAppWork *work);
-void ov61_021E6B6C(struct ChooseStarterAppWork *work);
-void ov61_021E6C3C(BGCONFIG *bgConfig, HeapID heapId);
-void ov61_021E6DFC(struct ChooseStarterAppWork *work, int msgId);
-void ov61_021E6FC4(struct ChooseStarterAppWork *work);
-u8 ov61_021E6D78(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, STRING **out);
-int ov61_021E6E40(struct ChooseStarterAppWork *work);
-BOOL ov61_021E68E4(struct ChooseStarterAppWork *work);
-void ov61_021E6B2C(struct ChooseStarterAppWork *work, int a1);
-void ov61_021E7220(struct ChooseStarterAppWork *work);
-void ov61_021E61FC(struct ChooseStarterAppWork *work);
-void ov61_021E6894(struct ChooseStarterAppWork *work);
-void ov61_021E6820(struct ChooseStarterRnd *render, struct ChooseStarterAnm *anim);
-void ov61_021E6814(struct ChooseStarterRnd *render, struct ChooseStarterAnm *anim);
-void ov61_021E7248(struct UnkStarterChooseSub_3B4 *a0);
-BOOL ov61_021E6AE0(struct ChooseStarterAppWork *work, s16 a1);
-BOOL ov61_021E7268(struct ChooseStarterAppWork *work, int a1, int a2);
-void ov61_021E682C(struct ChooseStarterAnm *anm);
 void ov61_021E6730(struct ChooseStarterAppWork *work);
 void ov61_021E6750(struct ChooseStarterAppWork *work);
-void ov61_021E6068(struct UnkStarterChooseSub_3B4 *a0);
+void ov61_021E6814(struct ChooseStarterRnd *render, struct ChooseStarterAnm *anim);
+void ov61_021E6820(struct ChooseStarterRnd *render, struct ChooseStarterAnm *anim);
+void ov61_021E682C(struct ChooseStarterAnm *anm);
+void ov61_021E6894(struct ChooseStarterAppWork *work);
+BOOL ov61_021E68E4(struct ChooseStarterAppWork *work);
+void ov61_021E6944(struct ChooseStarterAppWork *work);
+BOOL ov61_021E6AE0(struct ChooseStarterAppWork *work, s16 a1);
+void ov61_021E6B2C(struct ChooseStarterAppWork *work, int a1);
+void ov61_021E6B6C(struct ChooseStarterAppWork *work);
+void ov61_021E6C3C(BGCONFIG *bgConfig, HeapID heapId);
+u8 ov61_021E6D78(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, STRING **out);
+void ov61_021E6DFC(struct ChooseStarterAppWork *work, int msgId);
 void ov61_021E6E30(WINDOW *window);
+int ov61_021E6E40(struct ChooseStarterAppWork *work);
+void ov61_021E6FC4(struct ChooseStarterAppWork *work);
+void ov61_021E7248(struct UnkStarterChooseSub_3B4 *a0);
+BOOL ov61_021E7268(struct ChooseStarterAppWork *work, int a1, int a2);
+void ov61_021E7220(struct ChooseStarterAppWork *work);
 
 BOOL ChooseStarterApplication_OvyInit(OVY_MANAGER *ovy, int *state_p) {
     struct ChooseStarterAppWork *work;
@@ -430,4 +442,62 @@ BOOL ChooseStarterApplication_OvyExit(OVY_MANAGER *ovy, int *state) {
     OverlayManager_FreeData(ovy);
     DestroyHeap(HEAPID_STARTERCHOOSE);
     return TRUE;
+}
+
+void ov61_021E6068(struct UnkStarterChooseSub_3B4 *a0) {
+    int i;
+
+    for (i = 0; i < 3; i++) {
+        sub_0200AEB0(a0->unk_018[i].unk_00);
+        sub_0200B0A8(a0->unk_018[i].unk_04);
+        sub_0200A75C(a0->unk_000, a0->unk_018[i].unk_00);
+        sub_0200A75C(a0->unk_004, a0->unk_018[i].unk_04);
+        sub_0200A75C(a0->unk_008, a0->unk_018[i].unk_08);
+        sub_0200A75C(a0->unk_00C, a0->unk_018[i].unk_0C);
+        FreeToHeap(a0->unk_060[i]);
+        FreeToHeap(a0->unk_06C[i]);
+    }
+}
+
+void ov61_021E60B8(struct ChooseStarterAppWork *work) {
+    sub_0200B224();
+    BgConfig_HandleScheduledScrollAndTransferOps(work->bgConfig);
+}
+
+void ov61_021E60C8(void) {
+    extern const struct GXBanksConfig ov61_021E7494;
+    const struct GXBanksConfig cfg = ov61_021E7494;
+    GX_SetBanks(&cfg);
+}
+
+void ov61_021E60E8(HeapID heapId) {
+    NNS_G2dInitOamManagerModule();
+    sub_0200B150(0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20, heapId);
+    {
+        extern const struct UnkStruct_020215A0 ov61_021E73F8;
+        struct UnkStruct_020215A0 sp14 = ov61_021E73F8;
+        sp14.heapId = heapId;
+        sub_020215C0(&sp14, 0x200010, 0x10);
+    }
+    sub_02022588(3, heapId);
+    sub_020216C8();
+    sub_02022638();
+}
+
+void ov61_021E6140(struct ChooseStarterAppWork *work) {
+    int i;
+    work->_3dMan = GF_3DVramMan_Create(work->heapId, 0, 2, 0, 4, NULL);
+    G3X_AntiAlias(TRUE);
+    G3X_AlphaTest(FALSE, 0);
+    G3X_AlphaBlend(TRUE);
+    G3X_EdgeMarking(TRUE);
+    for (i = 0; i < 8; i++) {
+        work->unk_588[i] = GX_RGB(4, 4, 4);
+    }
+    G3X_SetEdgeColorTable(work->unk_588);
+    G3X_SetClearColor(GX_RGB(31, 31, 16), 0, 0x7FFF, 0x3F, FALSE);
+    NNS_G3dGlbLightVector(GX_LIGHTID_0, 0, -FX16_ONE, 0);
+    NNS_G3dGlbLightColor(GX_LIGHTID_0, RGB_WHITE);
+    NNS_G3dGlbMaterialColorDiffAmb(RGB_WHITE, RGB_WHITE, FALSE);
+    NNS_G3dGlbMaterialColorSpecEmi(RGB_WHITE, RGB_WHITE, FALSE);
 }
