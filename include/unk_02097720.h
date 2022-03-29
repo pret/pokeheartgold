@@ -5,8 +5,8 @@
 
 typedef struct Unknown_02097720 {
     u32 unknown_0;
-    u16* unknown_1;
-    u16* unknown_2;
+    u16* unknown_4;
+    u16* unknown_8; // most likely a struct pointer
 } Unknown_02097720;
 
 void sub_02097720(TaskManager* taskManager, u16* unknownPtr);
