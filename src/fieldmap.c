@@ -296,8 +296,8 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *unk, enum ScriptEnvField fi
         return &unk->engagedTrainers[1].unk18;
     case SCRIPTENV_BC:
         return &unk->unk_BC;
-    case SCRIPTENV_CC:
-        return &unk->unk_CC;
+    case SCRIPTENV_MONEY_BOX:
+        return &unk->moneyBox;
     case SCRIPTENV_DC:
         return &unk->unk_DC;
     case SCRIPTENV_SPECIAL_VAR_8000:

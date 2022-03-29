@@ -73,7 +73,7 @@ typedef struct ScriptEnvironment {
     void *unk_B4;
     void *unk_B8;
     WINDOW unk_BC;
-    WINDOW unk_CC;
+    WINDOW moneyBox;
     void *unk_DC;
 } ScriptEnvironment;
 
@@ -118,7 +118,7 @@ enum ScriptEnvField {
     SCRIPTENV_EYE_TRAINER_2_OBJPTR            = 37,
     SCRIPTENV_54_1_18                         = 38,
     SCRIPTENV_BC                              = 39,
-    SCRIPTENV_CC                              = 40,
+    SCRIPTENV_MONEY_BOX                       = 40,
     SCRIPTENV_DC                              = 41,
     SCRIPTENV_SPECIAL_VAR_8000                = 42,
     SCRIPTENV_SPECIAL_VAR_8001                = 43,
