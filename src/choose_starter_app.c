@@ -28,6 +28,7 @@ struct ChooseStarterRnd {
     VecFx32 unk_5C;
     VecFx32 unk_68;
     u16 unk_74;
+    u16 unk_76;
 }; // size=0x78
 
 struct ChooseStarterAnm {
@@ -87,10 +88,10 @@ struct ChooseStarterAppWork {
     struct ChooseStarter3dRes unk_030[4];
     struct ChooseStarterRnd unk_070[6];
     struct ChooseStarterAnm unk_340[6];
-    u8 filler_370[0x24];
+    VecFx32 unk_370[3];
     int unk_394;
-    u16 unk_398;
-    s16 unk_39A;
+    fx16 unk_398;
+    fx16 unk_39A;
     WINDOW *unk_39C;
     WINDOW *unk_3A0;
     u8 frame; // 3A4
@@ -130,11 +131,12 @@ void ov61_021E6894(struct ChooseStarterAppWork *work);
 BOOL ov61_021E68E4(struct ChooseStarterAppWork *work);
 void ov61_021E6908(struct ChooseStarter3dRes *a0);
 void ov61_021E6918(struct ChooseStarterAnm *anm, NNSFndAllocator *alloc);
-void ov61_021E6934(struct ChooseStarterRnd *, fx32, fx32, fx32);
-void ov61_021E693C(struct ChooseStarterRnd *, fx32, fx32, fx32);
+void ov61_021E6934(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z);
+void ov61_021E693C(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z);
 void ov61_021E6944(struct ChooseStarterAppWork *work);
 void ov61_021E6A28(struct ChooseStarterRnd *render);
-BOOL ov61_021E6AE0(struct ChooseStarterAppWork *work, s16 a1);
+void ov61_021E6A48(struct ChooseStarterRnd *render, MtxFx43 *mtx);
+BOOL ov61_021E6AE0(struct ChooseStarterAppWork *work, fx16 a1);
 void ov61_021E6B2C(struct ChooseStarterAppWork *work, int a1);
 void ov61_021E6B6C(struct ChooseStarterAppWork *work);
 void ov61_021E6C3C(BGCONFIG *bgConfig, HeapID heapId);
@@ -531,7 +533,7 @@ void ov61_021E61FC(struct ChooseStarterAppWork *work) {
     sub_02026E50(0, 0);
 }
 
-static inline void id_roty_mtx33(MtxFx33 *mtx, int index) {
+static inline void id_roty_mtx33(MtxFx33 *mtx, u16 index) {
     MTX_Identity33(mtx);
     MTX_RotY33(mtx, FX_SinIdx(index), FX_CosIdx(index));
 }
@@ -740,6 +742,130 @@ BOOL ov61_021E682C(struct ChooseStarterAnm *anm) {
         NNS_G3dAnmObjSetFrame(anm->obj, frame);
     } else {
         ret = TRUE;
+    }
+    return ret;
+}
+
+void ov61_021E684C(struct ChooseStarterAnm *anm, int a1) {
+    NNS_G3dAnmObjSetFrame(anm->obj, anm->obj->frame + FX32_ONE);
+    if (a1 == 2 && anm->obj->frame == (FX32_ONE * 40)) {
+        NNS_G3dAnmObjSetFrame(anm->obj, FX32_ONE * 80);
+    }
+    if (anm->obj->frame >= NNS_G3dAnmObjGetNumFrame(anm->obj)) {
+        if (a1 == 2) {
+            NNS_G3dAnmObjSetFrame(anm->obj, FX32_ONE * 80);
+        } else {
+            NNS_G3dAnmObjSetFrame(anm->obj, 0);
+        }
+    }
+}
+
+static inline struct ChooseStarterAnm *GetAnmByIdx(struct ChooseStarterAppWork *work, u8 idx) {
+    return &work->unk_340[idx];
+}
+
+void ov61_021E6894(struct ChooseStarterAppWork *work) {
+    u32 idx = work->unk_394;
+    ov61_021E684C(GetAnmByIdx(work, idx), work->unk_3AC);
+    NNS_G3dAnmObjSetFrame(GetAnmByIdx(work, (idx + 1) % 3)->obj, 0);
+    NNS_G3dAnmObjSetFrame(GetAnmByIdx(work, (idx + 2) % 3)->obj, 0);
+}
+
+BOOL ov61_021E68E4(struct ChooseStarterAppWork *work) {
+    u32 idx = work->unk_394;
+    return GetAnmByIdx(work, idx)->obj->frame >= 80 * FX32_ONE;
+}
+
+void ov61_021E6908(struct ChooseStarter3dRes *a0) {
+    if (a0->header != NULL) {
+        FreeToHeap(a0->header);
+    }
+}
+
+void ov61_021E6918(struct ChooseStarterAnm *anm, NNSFndAllocator *alloc) {
+    if (anm->hdr != NULL) {
+        NNS_G3dFreeAnmObj(alloc, anm->obj);
+        FreeToHeap(anm->hdr);
+    }
+}
+
+void ov61_021E6934(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z) {
+    rnd->unk_5C.x = x;
+    rnd->unk_5C.y = y;
+    rnd->unk_5C.z = z;
+}
+
+void ov61_021E693C(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z) {
+    rnd->unk_68.x = x;
+    rnd->unk_68.y = y;
+    rnd->unk_68.z = z;
+}
+
+void ov61_021E6944(struct ChooseStarterAppWork *work) {
+    extern const VecFx32 ov61_021E73B0;
+    VecFx32 sp40;
+    const VecFx32 sp34 = ov61_021E73B0;
+    MtxFx33 sp10;
+    int i;
+    u16 sp0;
+    u8 r4 = work->unk_394;
+    int angle = 0;
+
+    for (i = 0; i < 3; i++) {
+        sp0 = angle / 3;
+        MTX_RotY33(&sp10, FX_SinIdx(sp0), FX_CosIdx(sp0));
+        MTX_MultVec33(&sp34, &sp10, &sp40);
+        work->unk_370[r4] = sp40;
+        work->unk_370[r4].y += 13 * FX32_ONE;
+        ov61_021E6934(&work->unk_070[r4 + 3], sp40.x, sp40.y, sp40.z);
+        ov61_021E693C(&work->unk_070[r4 + 3], FX32_ONE, FX32_ONE, FX32_ONE);
+        work->unk_070[r4 + 3].unk_74 = sp0;
+        work->unk_070[r4 + 3].unk_76 = 0;
+        r4 = (r4 + 1) % 3;
+        angle += 16 * FX32_ONE;
+    }
+}
+
+void ov61_021E6A28(struct ChooseStarterRnd *render) {
+    MtxFx43 sp0;
+    ov61_021E6A48(render, &sp0);
+    NNS_G3dGeMultMtx43(&sp0);
+    NNS_G3dDraw(&render->obj);
+}
+
+void ov61_021E6A48(struct ChooseStarterRnd *render, MtxFx43 *mtx) {
+    MtxFx43 sp64;
+    MtxFx43 sp34;
+    MtxFx43 sp04;
+    MTX_Identity43(mtx);
+    MTX_TransApply43(mtx, mtx, render->unk_5C.x, render->unk_5C.y, render->unk_5C.z);
+    MTX_Identity43(&sp64);
+    MTX_RotX43(&sp04, FX_SinIdx(render->unk_76), FX_CosIdx(render->unk_76));
+    MTX_Concat43(&sp04, &sp64, &sp64);
+    MTX_RotY43(&sp04, FX_SinIdx(render->unk_74), FX_CosIdx(render->unk_74));
+    MTX_Concat43(&sp04, &sp64, &sp64);
+    MTX_Scale43(&sp34, render->unk_68.x, render->unk_68.y, render->unk_68.z);
+    MTX_Concat43(&sp64, mtx, mtx);
+    MTX_Concat43(&sp34, mtx, mtx);
+}
+
+BOOL ov61_021E6AE0(struct ChooseStarterAppWork *work, fx16 a1) {
+    BOOL ret = FALSE;
+    work->unk_398 += a1;
+    if (a1 >= 0) {
+        if (work->unk_398 >= 0x5555) {
+            work->unk_398 = 0;
+            work->unk_39A = 0;
+            ov61_021E6B2C(work, 1);
+            ret = TRUE;
+        }
+    } else {
+        if (work->unk_398 <= -0x5555) {
+            work->unk_398 = 0;
+            work->unk_39A = 0;
+            ov61_021E6B2C(work, 2);
+            ret = TRUE;
+        }
     }
     return ret;
 }
