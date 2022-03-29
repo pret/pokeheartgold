@@ -28,7 +28,7 @@ BOOL sub_02097754(TaskManager *taskManager) {
         break;
     case 2:
         sub_020552A4(taskManager);
-        env->unknown_0 += 1;
+        env->unknown_0++;
         break;
     case 3:
         FreeToHeap(env);
