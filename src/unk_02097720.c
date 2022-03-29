@@ -3,8 +3,8 @@
 
 void sub_02097720(TaskManager *taskManager, u16* unknownPtr) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
-    Unknown_02097720 *data = AllocFromHeapAtEnd(0xb, sizeof(Unknown_02097720));
-    MI_CpuClear8(data, sizeof(Unknown_02097720));
+    UnkStruct_02097720 *data = AllocFromHeapAtEnd(0xb, sizeof(UnkStruct_02097720));
+    MI_CpuClear8(data, sizeof(UnkStruct_02097720));
     data->unknown_0 = 0;
     data->unknown_4 = unknownPtr;
     TaskManager_Call(taskManager, sub_02097754, data);
@@ -12,7 +12,7 @@ void sub_02097720(TaskManager *taskManager, u16* unknownPtr) {
 
 BOOL sub_02097754(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
-    Unknown_02097720* env = TaskManager_GetEnv(taskManager);
+    UnkStruct_02097720* env = TaskManager_GetEnv(taskManager);
 
     switch (env->unknown_0) {
     case 0:
@@ -21,7 +21,7 @@ BOOL sub_02097754(TaskManager *taskManager) {
         break;
     case 1:
         if (FieldSys_ApplicationIsRunning(fsys) == FALSE) {
-            *env->unknown_4 = env->unknown_8[0xe]; // env->unknown_8 could be a struct
+            *env->unknown_4 = env->unknown_8->unk1C;
             FreeToHeap(env->unknown_8);
             env->unknown_0++;
         }
