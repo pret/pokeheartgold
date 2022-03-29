@@ -17,7 +17,7 @@ BOOL sub_02097754(TaskManager *taskManager) {
     switch (env->unknown_0) {
     case 0:
         env->unknown_2 = sub_0203EB64(fsys);
-        env->unknown_0 += 1;
+        env->unknown_0++;
         break;
     case 1:
         if(FieldSys_ApplicationIsRunning(fsys) == FALSE) {
