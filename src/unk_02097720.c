@@ -6,7 +6,7 @@ void sub_02097720(TaskManager *taskManager, u16* unknownPtr) {
     Unknown_02097720 *data = AllocFromHeapAtEnd(0xb, sizeof(Unknown_02097720));
     MI_CpuClear8(data, sizeof(Unknown_02097720));
     data->unknown_0 = 0;
-    data->unknown_1 = unknownPtr;
+    data->unknown_4 = unknownPtr;
     TaskManager_Call(taskManager, sub_02097754, data);
 }
 
@@ -16,13 +16,13 @@ BOOL sub_02097754(TaskManager *taskManager) {
 
     switch (env->unknown_0) {
     case 0:
-        env->unknown_2 = sub_0203EB64(fsys);
+        env->unknown_8 = sub_0203EB64(fsys);
         env->unknown_0++;
         break;
     case 1:
         if (FieldSys_ApplicationIsRunning(fsys) == FALSE) {
-            *env->unknown_1 = env->unknown_2[0xe]; // env->unknown_2 could be a struct
-            FreeToHeap(env->unknown_2);
+            *env->unknown_4 = env->unknown_8[0xe]; // env->unknown_8 could be a struct
+            FreeToHeap(env->unknown_8);
             env->unknown_0++;
         }
         break;
