@@ -1,6 +1,8 @@
 #include "unk_02097720.h"
 #include "unk_0203E348.h"
 
+static BOOL sub_02097754(TaskManager *taskManager);
+
 void sub_02097720(TaskManager *taskManager, u16* unknownPtr) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     UnkStruct_02097720 *data = AllocFromHeapAtEnd(0xb, sizeof(UnkStruct_02097720));
@@ -36,5 +38,4 @@ BOOL sub_02097754(TaskManager *taskManager) {
     }
 
     return FALSE;
-
 }

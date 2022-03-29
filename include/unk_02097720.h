@@ -11,6 +11,5 @@ typedef struct UnkStruct_02097720 {
 } UnkStruct_02097720;
 
 void sub_02097720(TaskManager* taskManager, u16* unknownPtr);
-BOOL sub_02097754(TaskManager *taskManager);
 
 #endif  // HEARTGOLD_UNK_02097720_HH
