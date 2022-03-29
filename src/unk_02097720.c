@@ -21,7 +21,7 @@ BOOL sub_02097754(TaskManager *taskManager) {
         break;
     case 1:
         if(FieldSys_ApplicationIsRunning(fsys) == FALSE) {
-            (*env->unknown_1) = env->unknown_2[0xe];
+            *env->unknown_1 = env->unknown_2[0xe]; // env->unknown_2 could be a struct
             FreeToHeap(env->unknown_2);
             env->unknown_0++;
         }
