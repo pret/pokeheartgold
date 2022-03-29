@@ -23,6 +23,7 @@ struct BerryPotsWork *CreateBerryPotsWork(FieldSystem *fsys);
 struct UnownReportWork *CreateUnownReportWork(FieldSystem *fsys);
 struct GracideaWork *sub_0203FAE8(FieldSystem *fsys, HeapID heapId, u16 itemId);
 void sub_0203F570(FieldSystem *fsys, SAVEDATA *saveData);
+u16* sub_0203EB64(FieldSystem *fsys);
 void FieldSys_LaunchChooseStarterApplication(FieldSystem *fsys, struct ChooseStarterAppData *data);
 
 #endif //POKEHEARTGOLD_UNK_0203E348_H
