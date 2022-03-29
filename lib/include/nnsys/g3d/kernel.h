@@ -49,5 +49,6 @@ typedef struct NNSG3dRenderObj_ {
 
 void NNS_G3dRenderObjAddAnmObj(NNSG3dRenderObj* pRenderObj, NNSG3dAnmObj* pAnmObj);
 void NNS_G3dRenderObjRemoveAnmObj(NNSG3dRenderObj* pRenderObj, NNSG3dAnmObj* pAnmObj);
-
+void NNS_G3dRenderObjInit(NNSG3dRenderObj* pRenderObj, NNSG3dResMdl* pResMdl);
+void NNS_G3dAnmObjInit(NNSG3dAnmObj* pAnmObj, void* pResAnm, const NNSG3dResMdl* pResMdl, const NNSG3dResTex* pResTex);
 #endif //NNSYS_G3D_KERNEL_H_

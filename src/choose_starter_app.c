@@ -17,6 +17,7 @@
 #include "unk_02026E30.h"
 #include "unk_0201F4C4.h"
 #include "unk_02009D48.h"
+#include "gf_gfx_loader.h"
 
 #define HEAPID_STARTERCHOOSE       46
 
@@ -30,7 +31,7 @@ struct ChooseStarterRnd {
 }; // size=0x78
 
 struct ChooseStarterAnm {
-    struct {int unk_0;} *unk_0; // todo? what is this?
+    void *hdr;
     NNSG3dAnmObj *obj;
 };
 
@@ -68,6 +69,13 @@ struct UnkStarterChooseSub_368 {
     struct UnkStarterChooseSub_368_4 *unk_4;
 };
 
+struct ChooseStarter3dRes {
+    NNSG3dResFileHeader *header;
+    NNSG3dResMdlSet *mdlSet;
+    NNSG3dResMdl *mdl;
+    NNSG3dResTex *tex;
+};
+
 struct ChooseStarterAppWork {
     u8 filler_000[0x4];
     HeapID heapId;
@@ -76,12 +84,9 @@ struct ChooseStarterAppWork {
     UnkStruct_02022D74 *unk_010;
     VecFx32 unk_014;
     NNSFndAllocator allocator; // 020
-    u8 unk_030[4][16];
+    struct ChooseStarter3dRes unk_030[4];
     struct ChooseStarterRnd unk_070[6];
-    struct ChooseStarterAnm unk_340[3];
-    struct ChooseStarterAnm unk_358;
-    struct ChooseStarterAnm unk_360;
-    struct ChooseStarterAnm unk_368;
+    struct ChooseStarterAnm unk_340[6];
     u8 filler_370[0x24];
     int unk_394;
     u16 unk_398;
@@ -115,14 +120,16 @@ void ov61_021E6508(struct ChooseStarterAppWork *work);
 void ov61_021E6564(struct ChooseStarterAppWork *work);
 void ov61_021E6730(struct ChooseStarterAppWork *work);
 void ov61_021E6750(struct ChooseStarterAppWork *work);
-void ov61_021E6768(void *, int, HeapID);
-void ov61_021E67BC(struct ChooseStarterRnd *, void *);
-void ov61_021E67D4(int, HeapID, NNSFndAllocator *, void *, struct ChooseStarterAnm *);
+void ov61_021E6768(struct ChooseStarter3dRes *a0, int fileId, HeapID heapId);
+void ov61_021E67BC(struct ChooseStarterRnd *rnd, struct ChooseStarter3dRes *res);
+void ov61_021E67D4(int fileId, HeapID heapId, NNSFndAllocator *allocator, struct ChooseStarter3dRes *res, struct ChooseStarterAnm *anm);
 void ov61_021E6814(struct ChooseStarterRnd *render, struct ChooseStarterAnm *anim);
 void ov61_021E6820(struct ChooseStarterRnd *render, struct ChooseStarterAnm *anim);
-void ov61_021E682C(struct ChooseStarterAnm *anm);
+BOOL ov61_021E682C(struct ChooseStarterAnm *anm);
 void ov61_021E6894(struct ChooseStarterAppWork *work);
 BOOL ov61_021E68E4(struct ChooseStarterAppWork *work);
+void ov61_021E6908(struct ChooseStarter3dRes *a0);
+void ov61_021E6918(struct ChooseStarterAnm *anm, NNSFndAllocator *alloc);
 void ov61_021E6934(struct ChooseStarterRnd *, fx32, fx32, fx32);
 void ov61_021E693C(struct ChooseStarterRnd *, fx32, fx32, fx32);
 void ov61_021E6944(struct ChooseStarterAppWork *work);
@@ -288,8 +295,8 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
             break;
         case 6:
             ov61_021E6820(&work->unk_070[work->unk_394 + 3], &work->unk_340[work->unk_394]);
-            ov61_021E6814(&work->unk_070[work->unk_394 + 3], &work->unk_358);
-            ov61_021E6814(&work->unk_070[0], &work->unk_360);
+            ov61_021E6814(&work->unk_070[work->unk_394 + 3], &work->unk_340[3]);
+            ov61_021E6814(&work->unk_070[0], &work->unk_340[4]);
             work->unk_070[0].unk_58 = 1;
             *state = 10;
             break;
@@ -400,8 +407,8 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         }
     }
     if (work->unk_584 == 1) {
-        ov61_021E682C(&work->unk_358);
-        ov61_021E682C(&work->unk_360);
+        ov61_021E682C(&work->unk_340[3]);
+        ov61_021E682C(&work->unk_340[4]);
     } else if (work->unk_584 == 2) {
         ov61_021E6894(work);
     } else {
@@ -410,10 +417,10 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         NNS_G3dAnmObjSetFrame(work->unk_340[2].obj, 0);
     }
     {
-        struct ChooseStarterAnm *r3 = &work->unk_368;
+        struct ChooseStarterAnm *r3 = &work->unk_340[5];
         r3->obj->frame += FX32_ONE;
-        if (r3->obj->frame >= (((u16 *)r3->obj->resAnm)[2] << FX32_SHIFT)) {
-            r3->obj->frame = 0;
+        if (r3->obj->frame >= NNS_G3dAnmObjGetNumFrame(r3->obj)) {
+            NNS_G3dAnmObjSetFrame(r3->obj, 0);
         }
     }
     ov61_021E61FC(work);
@@ -668,14 +675,71 @@ void ov61_021E6564(struct ChooseStarterAppWork *work) {
     work->unk_070[3].unk_58 = 1;
     work->unk_070[4].unk_58 = 1;
     work->unk_070[5].unk_58 = 1;
-    ov61_021E67D4(7, work->heapId, &work->allocator, &work->unk_030[2], &work->unk_368);
+    ov61_021E67D4(7, work->heapId, &work->allocator, &work->unk_030[2], &work->unk_340[5]);
     ov61_021E67D4(6, work->heapId, &work->allocator, &work->unk_030[3], &work->unk_340[0]);
     ov61_021E67D4(6, work->heapId, &work->allocator, &work->unk_030[3], &work->unk_340[1]);
     ov61_021E67D4(6, work->heapId, &work->allocator, &work->unk_030[3], &work->unk_340[2]);
-    ov61_021E67D4(5, work->heapId, &work->allocator, &work->unk_030[3], &work->unk_358);
-    ov61_021E67D4(4, work->heapId, &work->allocator, &work->unk_030[0], &work->unk_360);
-    ov61_021E6814(&work->unk_070[2], &work->unk_368);
+    ov61_021E67D4(5, work->heapId, &work->allocator, &work->unk_030[3], &work->unk_340[3]);
+    ov61_021E67D4(4, work->heapId, &work->allocator, &work->unk_030[0], &work->unk_340[4]);
+    ov61_021E6814(&work->unk_070[2], &work->unk_340[5]);
     ov61_021E6814(&work->unk_070[3], &work->unk_340[0]);
     ov61_021E6814(&work->unk_070[4], &work->unk_340[1]);
     ov61_021E6814(&work->unk_070[5], &work->unk_340[2]);
+}
+
+void ov61_021E6730(struct ChooseStarterAppWork *work) {
+    int i;
+
+    for (i = 0; i < 6; i++) {
+        ov61_021E6918(&work->unk_340[i], &work->allocator);
+    }
+}
+
+void ov61_021E6750(struct ChooseStarterAppWork *work) {
+    int i;
+
+    for (i = 0; i < 4; i++) {
+        ov61_021E6908(&work->unk_030[i]);
+    }
+}
+
+void ov61_021E6768(struct ChooseStarter3dRes *a0, int fileId, HeapID heapId) {
+    a0->header = GfGfxLoader_LoadFromNarc(NARC_a_0_8_2, fileId, FALSE, heapId, FALSE);
+    a0->mdlSet = NNS_G3dGetMdlSet(a0->header);
+    a0->mdl = NNS_G3dGetMdlByIdx(a0->mdlSet, 0);
+    a0->tex = NNS_G3dGetTex(a0->header);
+    sub_0201F668(a0->tex);
+}
+
+void ov61_021E67BC(struct ChooseStarterRnd *rnd, struct ChooseStarter3dRes *res) {
+    sub_0201F64C(res->header, res->tex);
+    NNS_G3dRenderObjInit(&rnd->obj, res->mdl);
+}
+
+void ov61_021E67D4(int fileId, HeapID heapId, NNSFndAllocator *allocator, struct ChooseStarter3dRes *res, struct ChooseStarterAnm *anm) {
+    void *pAnm;
+    anm->hdr = GfGfxLoader_LoadFromNarc(NARC_a_0_8_2, fileId, FALSE, heapId, FALSE);
+    pAnm = NNS_G3dGetAnmByIdx(anm->hdr, 0);
+    anm->obj = NNS_G3dAllocAnmObj(allocator, pAnm, res->mdl);
+    NNS_G3dAnmObjInit(anm->obj, pAnm, res->mdl, res->tex);
+}
+
+void ov61_021E6814(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm) {
+    NNS_G3dRenderObjAddAnmObj(&rnd->obj, anm->obj);
+}
+
+void ov61_021E6820(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm) {
+    NNS_G3dRenderObjRemoveAnmObj(&rnd->obj, anm->obj);
+}
+
+BOOL ov61_021E682C(struct ChooseStarterAnm *anm) {
+    BOOL ret = FALSE;
+    fx32 frame = anm->obj->frame + FX32_ONE;
+
+    if (frame != NNS_G3dAnmObjGetNumFrame(anm->obj)) {
+        NNS_G3dAnmObjSetFrame(anm->obj, frame);
+    } else {
+        ret = TRUE;
+    }
+    return ret;
 }
