@@ -7,7 +7,13 @@
 #include "render_text.h"
 #include "msgdata/msg/msg_0190.h"
 #include "sound.h"
+#include "gf_3d_vramman.h"
 #include "unk_02005D10.h"
+#include "unk_02023694.h"
+#include "unk_0200A090.h"
+#include "unk_0200B150.h"
+#include "unk_020215A0.h"
+#include "unk_02022588.h"
 
 #define HEAPID_STARTERCHOOSE       46
 
@@ -24,7 +30,13 @@ struct ChooseStarterAnm {
 };
 
 struct UnkStarterChooseSub_3B4 {
-    u8 filler_000[0x1B4];
+    void *unk_000;
+    void *unk_004;
+    void *unk_008;
+    void *unk_00C;
+    u8 filler_010[0x78];
+    void *unk_088;
+    u8 filler_08C[0x128];
     int unk_1B4[3];
 };
 
@@ -43,7 +55,7 @@ struct ChooseStarterAppWork {
     u8 filler_000[0x4];
     HeapID heapId;
     BGCONFIG *bgConfig;
-    u8 filler_00C[0x4];
+    struct GF3DVramMan *_3dMan;
     UnkStruct_02022D74 *unk_010;
     u8 filler_014[0xC];
     NNSFndAllocator allocator; // 020
@@ -58,7 +70,7 @@ struct ChooseStarterAppWork {
     u8 filler_398[0x2];
     s16 unk_39A;
     WINDOW *unk_39C;
-    u8 filler_3A0[0x4];
+    WINDOW *unk_3A0;
     u8 frame; // 3A4
     u8 unk_3A5;
     u8 unk_3A6;
@@ -99,6 +111,10 @@ void ov61_021E7248(struct UnkStarterChooseSub_3B4 *a0);
 BOOL ov61_021E6AE0(struct ChooseStarterAppWork *work, s16 a1);
 BOOL ov61_021E7268(struct ChooseStarterAppWork *work, int a1, int a2);
 void ov61_021E682C(struct ChooseStarterAnm *anm);
+void ov61_021E6730(struct ChooseStarterAppWork *work);
+void ov61_021E6750(struct ChooseStarterAppWork *work);
+void ov61_021E6068(struct UnkStarterChooseSub_3B4 *a0);
+void ov61_021E6E30(WINDOW *window);
 
 BOOL ChooseStarterApplication_OvyInit(OVY_MANAGER *ovy, int *state_p) {
     struct ChooseStarterAppWork *work;
@@ -378,4 +394,40 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
     }
     ov61_021E61FC(work);
     return FALSE;
+}
+
+BOOL ChooseStarterApplication_OvyExit(OVY_MANAGER *ovy, int *state) {
+    struct ChooseStarterAppWork *work = OverlayManager_GetData(ovy);
+    struct ChooseStarterAppData *data = OverlayManager_GetParentWork(ovy);
+
+    TextFlags_SetCanABSpeedUpPrint(FALSE);
+    sub_02002B50(FALSE);
+    sub_02002B8C(FALSE);
+    data->cursorPos = work->unk_394;
+    Main_SetVBlankIntrCB(NULL, NULL);
+    sub_02019030(work->unk_574);
+    sub_02023120(work->unk_010);
+    ov61_021E6730(work);
+    ov61_021E6750(work);
+    ov61_021E6068(&work->unk_3B4);
+    sub_02024504(work->unk_3B4.unk_088);
+    sub_0200A0D0(work->unk_3B4.unk_000);
+    sub_0200A0D0(work->unk_3B4.unk_004);
+    sub_0200A0D0(work->unk_3B4.unk_008);
+    sub_0200A0D0(work->unk_3B4.unk_00C);
+    sub_0200B244();
+    sub_0202168C();
+    sub_02022608();
+    ov61_021E6E30(work->unk_39C);
+    ov61_021E6E30(work->unk_3A0);
+    FreeBgTilemapBuffer(work->bgConfig, 1);
+    FreeBgTilemapBuffer(work->bgConfig, 2);
+    FreeBgTilemapBuffer(work->bgConfig, 4);
+    FreeBgTilemapBuffer(work->bgConfig, 5);
+    FreeBgTilemapBuffer(work->bgConfig, 6);
+    FreeToHeap(work->bgConfig);
+    GF_3DVramMan_Delete(work->_3dMan);
+    OverlayManager_FreeData(ovy);
+    DestroyHeap(HEAPID_STARTERCHOOSE);
+    return TRUE;
 }

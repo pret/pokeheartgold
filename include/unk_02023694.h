@@ -2,5 +2,6 @@
 #define POKEHEARTGOLD_UNK_02023694_H
 
 void sub_02024AA8(void *, s32);
+void sub_02024504(void *);
 
 #endif //POKEHEARTGOLD_UNK_02023694_H
