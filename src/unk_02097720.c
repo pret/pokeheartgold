@@ -4,7 +4,7 @@
 void sub_02097720(TaskManager *taskManager, u16* unknownPtr) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     Unknown_02097720 *data = AllocFromHeapAtEnd(0xb, sizeof(Unknown_02097720));
-    MI_CpuFill8(data, 0, 0xc);
+    MI_CpuClear8(data, sizeof(Unknown_02097720));
     data->unknown_0 = 0;
     data->unknown_1 = unknownPtr;
     TaskManager_Call(taskManager, sub_02097754, data);
