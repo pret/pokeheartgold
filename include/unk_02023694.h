@@ -3,5 +3,6 @@
 
 void sub_02024AA8(void *, s32);
 void sub_02024504(void *);
+void sub_0202457C(void *);
 
 #endif //POKEHEARTGOLD_UNK_02023694_H

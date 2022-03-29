@@ -7,5 +7,8 @@
 #include <nnsys/g3d/kernel_inline.h>
 #include <nnsys/g3d/util.h>
 #include <nnsys/g3d/glbstate.h>
+#include <nnsys/g3d/glbstate_inline.h>
+#include <nnsys/g3d/gecom.h>
+#include <nnsys/g3d/gecom_inline.h>
 
 #endif //NNSYS_G3D_H_

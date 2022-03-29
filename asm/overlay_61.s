@@ -8,161 +8,6 @@
 
 	.text
 
-	thumb_func_start ov61_021E61FC
-ov61_021E61FC: ; 0x021E61FC
-	push {r3, r4, lr}
-	sub sp, #4
-	add r4, r0, #0
-	ldr r0, _021E623C ; =0x0000043C
-	ldr r0, [r4, r0]
-	bl sub_0202457C
-	bl sub_02026E48
-	mov r1, #0
-	mov r0, #0x11
-	add r2, r1, #0
-	bl NNS_G3dGeBufferOP_N
-	bl sub_02023154
-	add r0, r4, #0
-	bl ov61_021E6240
-	mov r2, #1
-	mov r0, #0x12
-	add r1, sp, #0
-	str r2, [sp]
-	bl NNS_G3dGeBufferOP_N
-	mov r0, #0
-	add r1, r0, #0
-	bl sub_02026E50
-	add sp, #4
-	pop {r3, r4, pc}
-	nop
-_021E623C: .word 0x0000043C
-	thumb_func_end ov61_021E61FC
-
-	thumb_func_start ov61_021E6240
-ov61_021E6240: ; 0x021E6240
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x98
-	ldr r3, _021E633C ; =ov61_021E73EC
-	add r5, r0, #0
-	ldmia r3!, {r0, r1}
-	add r2, sp, #0x8c
-	str r2, [sp]
-	stmia r2!, {r0, r1}
-	ldr r0, [r3]
-	add r4, r5, #0
-	str r0, [r2]
-	mov r6, #0
-	add r4, #0x70
-	add r7, sp, #0x68
-_021E625C:
-	ldr r0, [r4, #0x58]
-	cmp r0, #0
-	beq _021E629C
-	add r0, r7, #0
-	bl MTX_Identity33_
-	add r0, r4, #0
-	add r0, #0x74
-	ldrh r0, [r0]
-	ldr r1, _021E6340 ; =FX_SinCosTable_
-	asr r0, r0, #4
-	lsl r3, r0, #2
-	ldr r0, _021E6340 ; =FX_SinCosTable_
-	ldrsh r1, [r1, r3]
-	add r2, r0, r3
-	mov r3, #2
-	ldrsh r2, [r2, r3]
-	add r0, sp, #0x44
-	bl MTX_RotY33_
-	add r0, sp, #0x44
-	add r1, r7, #0
-	add r2, r7, #0
-	bl MTX_Concat33
-	add r1, r4, #0
-	ldr r3, [sp]
-	add r0, r4, #0
-	add r1, #0x5c
-	add r2, r7, #0
-	bl sub_0201F554
-_021E629C:
-	add r6, r6, #1
-	add r4, #0x78
-	cmp r6, #2
-	blt _021E625C
-	add r2, sp, #0x14
-	mov r0, #0
-	str r0, [r2]
-	str r0, [r2, #4]
-	ldr r4, _021E6344 ; =ov61_021E73E0
-	str r0, [r2, #8]
-	ldmia r4!, {r0, r1}
-	add r3, sp, #8
-	stmia r3!, {r0, r1}
-	ldr r0, [r4]
-	str r0, [r3]
-	add r0, r2, #0
-	bl NNS_G3dGlbSetBaseTrans
-	mov r0, #0xe6
-	lsl r0, r0, #2
-	ldrh r4, [r5, r0]
-	add r0, sp, #0x20
-	bl MTX_Identity33_
-	asr r0, r4, #4
-	lsl r2, r0, #1
-	lsl r1, r2, #1
-	ldr r3, _021E6340 ; =FX_SinCosTable_
-	add r2, r2, #1
-	lsl r2, r2, #1
-	ldrsh r1, [r3, r1]
-	ldrsh r2, [r3, r2]
-	add r0, sp, #0x20
-	bl MTX_RotY33_
-	ldr r1, _021E6348 ; =NNS_G3dGlb + 0xBC
-	add r0, sp, #0x20
-	bl MI_Copy36B
-	ldr r1, _021E634C ; =NNS_G3dGlb + 0x80
-	mov r0, #0xa4
-	ldr r2, [r1, #0x7c]
-	bic r2, r0
-	add r0, sp, #8
-	str r2, [r1, #0x7c]
-	bl NNS_G3dGlbSetBaseScale
-	bl NNS_G3dGlbFlushP
-	add r5, #0x70
-	mov r4, #2
-	add r5, #0xf0
-	mov r6, #0x11
-	mov r7, #1
-_021E6308:
-	ldr r0, [r5, #0x58]
-	cmp r0, #0
-	beq _021E632E
-	mov r1, #0
-	add r0, r6, #0
-	add r2, r1, #0
-	bl NNS_G3dGeBufferOP_N
-	add r0, r5, #0
-	bl ov61_021E6A28
-	mov r0, #0x12
-	add r1, sp, #4
-	add r2, r7, #0
-	str r7, [sp, #4]
-	bl NNS_G3dGeBufferOP_N
-	bl NNS_G3dGlbFlushP
-_021E632E:
-	add r4, r4, #1
-	add r5, #0x78
-	cmp r4, #6
-	blt _021E6308
-	add sp, #0x98
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_021E633C: .word ov61_021E73EC
-_021E6340: .word FX_SinCosTable_
-_021E6344: .word ov61_021E73E0
-_021E6348: .word NNS_G3dGlb + 0xBC
-_021E634C: .word NNS_G3dGlb + 0x80
-	thumb_func_end ov61_021E6240
-
 	thumb_func_start ov61_021E6350
 ov61_021E6350: ; 0x021E6350
 	push {r3, r4, r5, r6, lr}
@@ -2274,9 +2119,11 @@ ov61_021E73C8: ; 0x021E73C8
 ov61_021E73D4: ; 0x021E73D4
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0xE0, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00
 
+	.public ov61_021E73E0
 ov61_021E73E0: ; 0x021E73E0
 	.byte 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00
 
+	.public ov61_021E73EC
 ov61_021E73EC: ; 0x021E73EC
 	.byte 0x00, 0x10, 0x00, 0x00
 	.byte 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00

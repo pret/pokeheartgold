@@ -14,6 +14,8 @@
 #include "unk_0200B150.h"
 #include "unk_020215A0.h"
 #include "unk_02022588.h"
+#include "unk_02026E30.h"
+#include "unk_0201F4C4.h"
 
 #define HEAPID_STARTERCHOOSE       46
 
@@ -21,7 +23,9 @@ struct ChooseStarterRnd {
     NNSG3dRenderObj obj;
     int unk_54;
     int unk_58;
-    u8 filler_5C[0x1C];
+    VecFx32 unk_5C;
+    u8 filler_unk_68[0xC];
+    u16 unk_74;
 }; // size=0x78
 
 struct ChooseStarterAnm {
@@ -79,7 +83,7 @@ struct ChooseStarterAppWork {
     struct UnkStarterChooseSub_368 unk_368;
     u8 filler_370[0x24];
     int unk_394;
-    u8 filler_398[0x2];
+    u16 unk_398;
     s16 unk_39A;
     WINDOW *unk_39C;
     WINDOW *unk_3A0;
@@ -103,6 +107,7 @@ void ov61_021E60C8(void);
 void ov61_021E60E8(HeapID heapId);
 void ov61_021E6140(struct ChooseStarterAppWork *work);
 void ov61_021E61FC(struct ChooseStarterAppWork *work);
+void ov61_021E6240(struct ChooseStarterAppWork *work);
 void ov61_021E6350(BGCONFIG *bgConfig, HeapID heapId);
 void ov61_021E6488(struct ChooseStarterAppWork *work);
 void ov61_021E6508(struct ChooseStarterAppWork *work);
@@ -115,6 +120,7 @@ void ov61_021E682C(struct ChooseStarterAnm *anm);
 void ov61_021E6894(struct ChooseStarterAppWork *work);
 BOOL ov61_021E68E4(struct ChooseStarterAppWork *work);
 void ov61_021E6944(struct ChooseStarterAppWork *work);
+void ov61_021E6A28(NNSG3dRenderObj *obj);
 BOOL ov61_021E6AE0(struct ChooseStarterAppWork *work, s16 a1);
 void ov61_021E6B2C(struct ChooseStarterAppWork *work, int a1);
 void ov61_021E6B6C(struct ChooseStarterAppWork *work);
@@ -500,4 +506,60 @@ void ov61_021E6140(struct ChooseStarterAppWork *work) {
     NNS_G3dGlbLightColor(GX_LIGHTID_0, RGB_WHITE);
     NNS_G3dGlbMaterialColorDiffAmb(RGB_WHITE, RGB_WHITE, FALSE);
     NNS_G3dGlbMaterialColorSpecEmi(RGB_WHITE, RGB_WHITE, FALSE);
+}
+
+void ov61_021E61FC(struct ChooseStarterAppWork *work) {
+    sub_0202457C(work->unk_3B4.unk_088);
+    sub_02026E48();
+    NNS_G3dGePushMtx();
+    sub_02023154();
+    ov61_021E6240(work);
+    NNS_G3dGePopMtx(1);
+    sub_02026E50(0, 0);
+}
+
+static inline void id_roty_mtx33(MtxFx33 *mtx, int index) {
+    MTX_Identity33(mtx);
+    MTX_RotY33(mtx, FX_SinIdx(index), FX_CosIdx(index));
+}
+
+void ov61_021E6240(struct ChooseStarterAppWork *work) {
+    extern const VecFx32 ov61_021E73EC;
+    const VecFx32 sp8C = ov61_021E73EC;
+    MtxFx33 sp68;
+    MtxFx33 sp44;
+    int i;
+
+    for (i = 0; i < 2; i++) {
+        struct ChooseStarterRnd *rnd = &work->unk_070[i];
+        if (rnd->unk_58) {
+            MTX_Identity33(&sp68);
+            MTX_RotY33(&sp44, FX_SinIdx(rnd->unk_74), FX_CosIdx(rnd->unk_74));
+            MTX_Concat33(&sp44, &sp68, &sp68);
+            sub_0201F554(&rnd->obj, &rnd->unk_5C, &sp68, &sp8C);
+        }
+    }
+
+    {
+        extern const VecFx32 ov61_021E73E0;
+        MtxFx33 sp20;
+        const VecFx32 sp14 = {0, 0, 0};
+        const VecFx32 sp08 = ov61_021E73E0;
+
+        NNS_G3dGlbSetBaseTrans(&sp14);
+        id_roty_mtx33(&sp20, work->unk_398);
+        NNS_G3dGlbSetBaseRot(&sp20);
+        NNS_G3dGlbSetBaseScale(&sp08);
+    }
+    NNS_G3dGlbFlush();
+
+    for (i = 2; i < 6; i++) {
+        struct ChooseStarterRnd *rnd = &work->unk_070[i];
+        if (rnd->unk_58) {
+            NNS_G3dGePushMtx();
+            ov61_021E6A28(&rnd->obj);
+            NNS_G3dGePopMtx(1);
+            NNS_G3dGlbFlush();
+        }
+    }
 }
