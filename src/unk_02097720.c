@@ -23,7 +23,7 @@ BOOL sub_02097754(TaskManager *taskManager) {
         if(FieldSys_ApplicationIsRunning(fsys) == FALSE) {
             (*env->unknown_1) = env->unknown_2[0xe];
             FreeToHeap(env->unknown_2);
-            env->unknown_0 += 1;
+            env->unknown_0++;
         }
         break;
     case 2:
