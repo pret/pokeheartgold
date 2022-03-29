@@ -16,6 +16,7 @@
 #include "unk_02022588.h"
 #include "unk_02026E30.h"
 #include "unk_0201F4C4.h"
+#include "unk_02009D48.h"
 
 #define HEAPID_STARTERCHOOSE       46
 
@@ -24,7 +25,7 @@ struct ChooseStarterRnd {
     int unk_54;
     int unk_58;
     VecFx32 unk_5C;
-    u8 filler_unk_68[0xC];
+    VecFx32 unk_68;
     u16 unk_74;
 }; // size=0x78
 
@@ -52,7 +53,7 @@ struct UnkStarterChooseSub_3B4 {
     void *unk_06C[3];
     u8 filler_078[0x10];
     void *unk_088;
-    u8 filler_08C[0x128];
+    u8 unk_08C[0x128];
     int unk_1B4[3];
 };
 
@@ -73,14 +74,14 @@ struct ChooseStarterAppWork {
     BGCONFIG *bgConfig;
     struct GF3DVramMan *_3dMan;
     UnkStruct_02022D74 *unk_010;
-    u8 filler_014[0xC];
+    VecFx32 unk_014;
     NNSFndAllocator allocator; // 020
-    u8 filler_030[0x40];
+    u8 unk_030[4][16];
     struct ChooseStarterRnd unk_070[6];
     struct ChooseStarterAnm unk_340[3];
     struct ChooseStarterAnm unk_358;
     struct ChooseStarterAnm unk_360;
-    struct UnkStarterChooseSub_368 unk_368;
+    struct ChooseStarterAnm unk_368;
     u8 filler_370[0x24];
     int unk_394;
     u16 unk_398;
@@ -114,13 +115,18 @@ void ov61_021E6508(struct ChooseStarterAppWork *work);
 void ov61_021E6564(struct ChooseStarterAppWork *work);
 void ov61_021E6730(struct ChooseStarterAppWork *work);
 void ov61_021E6750(struct ChooseStarterAppWork *work);
+void ov61_021E6768(void *, int, HeapID);
+void ov61_021E67BC(struct ChooseStarterRnd *, void *);
+void ov61_021E67D4(int, HeapID, NNSFndAllocator *, void *, struct ChooseStarterAnm *);
 void ov61_021E6814(struct ChooseStarterRnd *render, struct ChooseStarterAnm *anim);
 void ov61_021E6820(struct ChooseStarterRnd *render, struct ChooseStarterAnm *anim);
 void ov61_021E682C(struct ChooseStarterAnm *anm);
 void ov61_021E6894(struct ChooseStarterAppWork *work);
 BOOL ov61_021E68E4(struct ChooseStarterAppWork *work);
+void ov61_021E6934(struct ChooseStarterRnd *, fx32, fx32, fx32);
+void ov61_021E693C(struct ChooseStarterRnd *, fx32, fx32, fx32);
 void ov61_021E6944(struct ChooseStarterAppWork *work);
-void ov61_021E6A28(NNSG3dRenderObj *obj);
+void ov61_021E6A28(struct ChooseStarterRnd *render);
 BOOL ov61_021E6AE0(struct ChooseStarterAppWork *work, s16 a1);
 void ov61_021E6B2C(struct ChooseStarterAppWork *work, int a1);
 void ov61_021E6B6C(struct ChooseStarterAppWork *work);
@@ -404,10 +410,10 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         NNS_G3dAnmObjSetFrame(work->unk_340[2].obj, 0);
     }
     {
-        struct UnkStarterChooseSub_368 *r3 = &work->unk_368;
-        r3->unk_4->unk_00 += FX32_ONE;
-        if (r3->unk_4->unk_00 >= (r3->unk_4->unk_08[2] << FX32_SHIFT)) {
-            r3->unk_4->unk_00 = 0;
+        struct ChooseStarterAnm *r3 = &work->unk_368;
+        r3->obj->frame += FX32_ONE;
+        if (r3->obj->frame >= (((u16 *)r3->obj->resAnm)[2] << FX32_SHIFT)) {
+            r3->obj->frame = 0;
         }
     }
     ov61_021E61FC(work);
@@ -557,9 +563,119 @@ void ov61_021E6240(struct ChooseStarterAppWork *work) {
         struct ChooseStarterRnd *rnd = &work->unk_070[i];
         if (rnd->unk_58) {
             NNS_G3dGePushMtx();
-            ov61_021E6A28(&rnd->obj);
+            ov61_021E6A28(rnd);
             NNS_G3dGePopMtx(1);
             NNS_G3dGlbFlush();
         }
     }
+}
+
+void ov61_021E6350(BGCONFIG *bgConfig, HeapID heapId) {
+    G2_SetBG0Priority(2);
+    {
+        extern const BGTEMPLATE ov61_021E745C;
+        const BGTEMPLATE sp70 = ov61_021E745C;
+        InitBgFromTemplate(bgConfig, 1, &sp70, GF_BG_TYPE_TEXT);
+        BG_ClearCharDataRange(1, 0x20, 0, heapId);
+        BgClearTilemapBufferAndCommit(bgConfig, 1);
+    }
+    {
+        extern const BGTEMPLATE ov61_021E7478;
+        const BGTEMPLATE sp54 = ov61_021E7478;
+        InitBgFromTemplate(bgConfig, 2, &sp54, GF_BG_TYPE_TEXT);
+        BG_ClearCharDataRange(2, 0x20, 0, heapId);
+        BgClearTilemapBufferAndCommit(bgConfig, 2);
+    }
+    {
+        extern const BGTEMPLATE ov61_021E7408;
+        const BGTEMPLATE sp38 = ov61_021E7408;
+        InitBgFromTemplate(bgConfig, 4, &sp38, GF_BG_TYPE_TEXT);
+        BG_ClearCharDataRange(4, 0x20, 0, heapId);
+        BgClearTilemapBufferAndCommit(bgConfig, 4);
+    }
+    {
+        extern const BGTEMPLATE ov61_021E7424;
+        const BGTEMPLATE sp1C = ov61_021E7424;
+        InitBgFromTemplate(bgConfig, 5, &sp1C, GF_BG_TYPE_TEXT);
+        BG_ClearCharDataRange(5, 0x20, 0, heapId);
+        BgClearTilemapBufferAndCommit(bgConfig, 5);
+    }
+    {
+        extern const BGTEMPLATE ov61_021E7440;
+        const BGTEMPLATE sp00 = ov61_021E7440;
+        InitBgFromTemplate(bgConfig, 6, &sp00, GF_BG_TYPE_TEXT);
+        BG_ClearCharDataRange(6, 0x20, 0, heapId);
+        BgClearTilemapBufferAndCommit(bgConfig, 6);
+    }
+}
+
+void ov61_021E6488(struct ChooseStarterAppWork *work) {
+    extern const VecFx32 ov61_021E73C8;
+    VecFx32 sp20;
+    const VecFx32 sp14 = ov61_021E73C8;
+    u16 sp0C[4];
+
+    work->unk_014.x = 0;
+    work->unk_014.y = FX32_ONE * 15;
+    work->unk_014.z = 0;
+
+    sp0C[0] = 0xDCC0;
+    sp0C[1] = 0;
+    sp0C[2] = 0;
+    //sp0C[3] = 0;
+    sub_02023254(&work->unk_014, 0x64000, sp0C, 0x11A4, 0, 1, work->unk_010);
+    sub_02023514(&sp14, work->unk_010);
+    sub_02023240(FX32_ONE * 4, FX32_ONE * 256, work->unk_010);
+    sp20.x = 0;
+    sp20.y = FX32_ONE;
+    sp20.z = 0;
+    sub_02023204(&sp20, work->unk_010);
+    sub_0202313C(work->unk_010);
+}
+
+void ov61_021E6508(struct ChooseStarterAppWork *work) {
+    struct UnkStarterChooseSub_3B4 *r4 = &work->unk_3B4;
+    r4->unk_088 = sub_02009F40(3, &r4->unk_08C, work->heapId);
+    r4->unk_000 = sub_0200A090(3, 0, work->heapId);
+    r4->unk_004 = sub_0200A090(3, 1, work->heapId);
+    r4->unk_008 = sub_0200A090(3, 2, work->heapId);
+    r4->unk_00C = sub_0200A090(3, 3, work->heapId);
+    GX_EngineBToggleLayers(0x10, GX_LAYER_TOGGLE_ON);
+}
+
+void ov61_021E6564(struct ChooseStarterAppWork *work) {
+    int i;
+    ov61_021E6768(&work->unk_030[0], 3, work->heapId);
+    ov61_021E6934(&work->unk_070[0], 0, 14 * FX32_ONE, 32 * FX32_ONE);
+    ov61_021E693C(&work->unk_070[0], FX32_ONE, FX32_ONE, FX32_ONE);
+    ov61_021E6768(&work->unk_030[1], 0, work->heapId);
+    ov61_021E6934(&work->unk_070[1], 0, 0, 0);
+    ov61_021E693C(&work->unk_070[1], FX32_ONE, FX32_ONE, FX32_ONE);
+    ov61_021E6768(&work->unk_030[2], 1, work->heapId);
+    ov61_021E6934(&work->unk_070[2], 0, 0, 0);
+    ov61_021E693C(&work->unk_070[2], FX32_ONE, FX32_ONE, FX32_ONE);
+    ov61_021E6768(&work->unk_030[3], 2, work->heapId);
+    ov61_021E67BC(&work->unk_070[0], &work->unk_030[0]);
+    ov61_021E67BC(&work->unk_070[1], &work->unk_030[1]);
+    ov61_021E67BC(&work->unk_070[2], &work->unk_030[2]);
+
+    for (i = 0; i < 3; i++) {
+        ov61_021E67BC(&work->unk_070[i + 3], &work->unk_030[3]);
+    }
+    work->unk_070[0].unk_58 = 0;
+    work->unk_070[2].unk_58 = 1;
+    work->unk_070[1].unk_58 = 1;
+    work->unk_070[3].unk_58 = 1;
+    work->unk_070[4].unk_58 = 1;
+    work->unk_070[5].unk_58 = 1;
+    ov61_021E67D4(7, work->heapId, &work->allocator, &work->unk_030[2], &work->unk_368);
+    ov61_021E67D4(6, work->heapId, &work->allocator, &work->unk_030[3], &work->unk_340[0]);
+    ov61_021E67D4(6, work->heapId, &work->allocator, &work->unk_030[3], &work->unk_340[1]);
+    ov61_021E67D4(6, work->heapId, &work->allocator, &work->unk_030[3], &work->unk_340[2]);
+    ov61_021E67D4(5, work->heapId, &work->allocator, &work->unk_030[3], &work->unk_358);
+    ov61_021E67D4(4, work->heapId, &work->allocator, &work->unk_030[0], &work->unk_360);
+    ov61_021E6814(&work->unk_070[2], &work->unk_368);
+    ov61_021E6814(&work->unk_070[3], &work->unk_340[0]);
+    ov61_021E6814(&work->unk_070[4], &work->unk_340[1]);
+    ov61_021E6814(&work->unk_070[5], &work->unk_340[2]);
 }
