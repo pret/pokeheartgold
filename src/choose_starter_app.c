@@ -14,7 +14,8 @@
 struct ChooseStarterRnd {
     NNSG3dRenderObj obj;
     int unk_54;
-    u8 filler_58[0x20];
+    int unk_58;
+    u8 filler_5C[0x1C];
 }; // size=0x78
 
 struct ChooseStarterAnm {
@@ -25,6 +26,17 @@ struct ChooseStarterAnm {
 struct UnkStarterChooseSub_3B4 {
     u8 filler_000[0x1B4];
     int unk_1B4[3];
+};
+
+struct UnkStarterChooseSub_368_4 {
+    int unk_00;
+    u8 filler_04;
+    u16 *unk_08;
+};
+
+struct UnkStarterChooseSub_368 {
+    u8 filler_00[0x4];
+    struct UnkStarterChooseSub_368_4 *unk_4;
 };
 
 struct ChooseStarterAppWork {
@@ -40,8 +52,8 @@ struct ChooseStarterAppWork {
     struct ChooseStarterAnm unk_340[3];
     struct ChooseStarterAnm unk_358;
     struct ChooseStarterAnm unk_360;
-    VecFx32 unk_368; // probably wrong
-    u8 filler_374[0x20];
+    struct UnkStarterChooseSub_368 unk_368;
+    u8 filler_370[0x24];
     int unk_394;
     u8 filler_398[0x2];
     s16 unk_39A;
@@ -52,7 +64,7 @@ struct ChooseStarterAppWork {
     u8 unk_3A6;
     u8 filler_3A7[0x1];
     int unk_3A8;
-    u8 filler_3AC[0x4];
+    int unk_3AC;
     STRING *unk_3B0;
     struct UnkStarterChooseSub_3B4 unk_3B4;
     UnkStruct_02019014 *unk_574;
@@ -74,7 +86,19 @@ void ov61_021E6B6C(struct ChooseStarterAppWork *work);
 void ov61_021E6C3C(BGCONFIG *bgConfig, HeapID heapId);
 void ov61_021E6DFC(struct ChooseStarterAppWork *work, int msgId);
 void ov61_021E6FC4(struct ChooseStarterAppWork *work);
-u8 ov61_021E6D78(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgBank, u16 msgno, u32 color, u32 speed, STRING **out);
+u8 ov61_021E6D78(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, STRING **out);
+int ov61_021E6E40(struct ChooseStarterAppWork *work);
+BOOL ov61_021E68E4(struct ChooseStarterAppWork *work);
+void ov61_021E6B2C(struct ChooseStarterAppWork *work, int a1);
+void ov61_021E7220(struct ChooseStarterAppWork *work);
+void ov61_021E61FC(struct ChooseStarterAppWork *work);
+void ov61_021E6894(struct ChooseStarterAppWork *work);
+void ov61_021E6820(struct ChooseStarterRnd *render, struct ChooseStarterAnm *anim);
+void ov61_021E6814(struct ChooseStarterRnd *render, struct ChooseStarterAnm *anim);
+void ov61_021E7248(struct UnkStarterChooseSub_3B4 *a0);
+BOOL ov61_021E6AE0(struct ChooseStarterAppWork *work, s16 a1);
+BOOL ov61_021E7268(struct ChooseStarterAppWork *work, int a1, int a2);
+void ov61_021E682C(struct ChooseStarterAnm *anm);
 
 BOOL ChooseStarterApplication_OvyInit(OVY_MANAGER *ovy, int *state_p) {
     struct ChooseStarterAppWork *work;
@@ -134,7 +158,6 @@ BOOL ChooseStarterApplication_OvyInit(OVY_MANAGER *ovy, int *state_p) {
 
 extern const int ov61_021E7398[];
 
-/*
 BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
     struct ChooseStarterAppWork *work = OverlayManager_GetData(ovy);
     int r6 = 0;
@@ -227,7 +250,7 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
             ov61_021E6820(&work->unk_070[work->unk_394 + 3], &work->unk_340[work->unk_394]);
             ov61_021E6814(&work->unk_070[work->unk_394 + 3], &work->unk_358);
             ov61_021E6814(&work->unk_070[0], &work->unk_360);
-            work->unk_070[0].unk_54 = 1;
+            work->unk_070[0].unk_58 = 1;
             *state = 10;
             break;
         case 8:
@@ -247,9 +270,9 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         if (!ov61_021E6AE0(work, work->unk_39A)) {
             break;
         }
+        work->unk_584 = 2;
         {
             STRING *sp10 = NULL;
-            work->unk_584 = 2;
             ov61_021E6D78(work->unk_39C, work->heapId, FALSE, NARC_msg_msg_0190_bin, msg_0190_00004 + work->unk_394, MakeTextColor(1, 2, 15), 0, &sp10);
             String_dtor(sp10);
         }
@@ -277,7 +300,7 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         *state = 3;
         break;
     case 9:
-        if (!ov61_021E7268(work, 0, -0x15E0)) {
+        if (!ov61_021E7268(work, -0x15E0, 0)) {
             break;
         }
         ov61_021E6B2C(work, 0);
@@ -288,10 +311,11 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         work->unk_584 = 1;
         {
             struct UnkStruct_02019040 sp2C;
+            extern const VecFx32 ov61_021E73A4;
 
             sp2C.unk_0 = 0xDCC0;
             sp2C.unk_2 = 0x11A4;
-            sp2C.unk_4 = (VecFx32){0,0,14*FX32_ONE};
+            sp2C.unk_4 = ov61_021E73A4;//(VecFx32){0,0,14*FX32_ONE};
             sp2C.unk_10 = 0x64000;
 
             sub_02019040(work->unk_574, &sp2C, 8);
@@ -318,15 +342,19 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
 
         if (r6 != 0) {
             if (r6 == 1) {
+                extern const VecFx32 ov61_021E7380;
                 sp18.unk_0 = 0xDCC0;
                 sp18.unk_2 = 0x11A4;
-                sp18.unk_4 = (VecFx32){0, 0, 14 * FX32_ONE};
+                sp18.unk_4 = ov61_021E7380;//(VecFx32){0, 0, 14 * FX32_ONE};
                 sp18.unk_10 = 0x64000;
+                work->unk_3AC = 0;
             } else {
+                extern const VecFx32 ov61_021E73BC;
                 sp18.unk_0 = 0xEA20;
                 sp18.unk_2 = 0x1024;
-                sp18.unk_4 = (VecFx32){0, 0, 12 * FX32_ONE};
+                sp18.unk_4 = ov61_021E73BC;//(VecFx32){0, 0, 12 * FX32_ONE};
                 sp18.unk_10 = 0x3C000;
+                work->unk_3AC = 2;
             }
             sub_02019040(work->unk_574, &sp18, 8);
         }
@@ -337,10 +365,17 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
     } else if (work->unk_584 == 2) {
         ov61_021E6894(work);
     } else {
-        work->unk_340[0].unk_0->unk_0 = 0;
-        work->unk_340[1].unk_0->unk_0 = 0;
-        work->unk_340[2].unk_0->unk_0 = 0;
+        NNS_G3dAnmObjSetFrame(work->unk_340[0].obj, 0);
+        NNS_G3dAnmObjSetFrame(work->unk_340[1].obj, 0);
+        NNS_G3dAnmObjSetFrame(work->unk_340[2].obj, 0);
     }
-    work->unk_368.y += FX32_ONE;
+    {
+        struct UnkStarterChooseSub_368 *r3 = &work->unk_368;
+        r3->unk_4->unk_00 += FX32_ONE;
+        if (r3->unk_4->unk_00 >= (r3->unk_4->unk_08[2] << FX32_SHIFT)) {
+            r3->unk_4->unk_00 = 0;
+        }
+    }
+    ov61_021E61FC(work);
+    return FALSE;
 }
-*/

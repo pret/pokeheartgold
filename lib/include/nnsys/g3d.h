@@ -4,6 +4,7 @@
 #include <nnsys/g3d/binres/res_struct.h>
 #include <nnsys/g3d/config.h>
 #include <nnsys/g3d/kernel.h>
+#include <nnsys/g3d/kernel_inline.h>
 #include <nnsys/g3d/util.h>
 #include <nnsys/g3d/glbstate.h>
 
