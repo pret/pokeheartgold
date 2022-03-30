@@ -20,9 +20,4 @@ struct PhoneBook {
     struct PhoneBookEntry * entries;
 };
 
-struct UnkFsysSub_114 {
-    u8 filler_00[0x1C];
-    struct PhoneBookEntry entry;
-};
-
 #endif //POKEHEARTGOLD_GEAR_PHONE_H
