@@ -30,7 +30,7 @@ Static main
 	Object asm/unk_02007FD8.o
 	Object asm/unk_02009D48.o
 	Object src/unk_0200A090.o
-	Object asm/unk_0200A090_s.o
+	Object asm/unk_0200ACF0.o
 	Object asm/unk_0200B150.o
 	Object src/msgdata.o
 	Object src/msgfmt.o
