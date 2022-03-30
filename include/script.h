@@ -178,7 +178,7 @@ struct FieldSystemUnkSub0 {
     BOOL unkC;
 };
 
-struct UnkFsysSub_114 {
+typedef struct UnkFsysSub_114 {
     u8 Unk_var0_0:1;
     u8 Unk_var0_1:1;
     u8 Unk_var0_2:1;
@@ -195,7 +195,7 @@ struct UnkFsysSub_114 {
     u16 Unk_var10;
     u16 Unk_var12;
     s64 Unk_var14; //Seconds?
-    struct PhoneBookEntry entry; //0x1c
+    PhoneBookEntry entry; //0x1c
     SavePokegear* pokegearData; //0x30
     MomsSavings* savingsData;//0x34
     SAVEDATA* data; //0x38
@@ -203,7 +203,7 @@ struct UnkFsysSub_114 {
     void *Unk_ptr40;
     u8 Unk_var44;
     u8 filler_45[3];
-};
+}UnkFsysSub_114;//size: 0x48
 
 struct UnkStruct_020FC5CC {
     u32 unk0_00:4;

@@ -2,13 +2,13 @@
 #include "safari_zone.h"
 #include "constants/sndseq.h"
 
-void sub_02092BE8(FieldSystem* sys, UnkSTRUCT_2C* ptr, BOOL arg3) { //r5, r4, SP
-    UnkSTRUCT_14 s;
+void sub_02092BE8(FieldSystem* sys, UnkSTRUCT_2C* ptr, BOOL Unkbool) { //r5, r4, SP
+    UnkSTRUCT_14 Unk_struct;
     SCRIPT_STATE *state = SavArray_Flags_get(sys->savedata);
     FLYPOINTS_SAVE *points = Save_FlyPoints_get(sys->savedata); 
     Location *warpPtr = FlyPoints_GetSpecialSpawnWarpPtr(points); //r6
     Location *PosPtr = FlyPoints_GetPosition(points); //SP + 4
-    struct UnkFsysSub_114* Unk_V1 = sub_02092DEC(sys); //r7
+    UnkFsysSub_114* Unk_V1 = sub_02092DEC(sys); //r7
     ptr->data = sys->savedata;
     ptr->mapID = PosPtr->mapId;
     if(MapHeader_MapIsOnMainMatrix(ptr->mapID) != 0){ 
@@ -20,15 +20,15 @@ void sub_02092BE8(FieldSystem* sys, UnkSTRUCT_2C* ptr, BOOL arg3) { //r5, r4, SP
     }else{
         ptr->x = warpPtr->x;
         ptr->y = warpPtr->z;
-        MapHeader_GetWorldMapCoords(ptr->mapID, &(s.x), &(s.y));
+        MapHeader_GetWorldMapCoords(ptr->mapID, &(Unk_struct.x), &(Unk_struct.y));
         MAPMATRIX* matrix = MapMatrix_New();
         MapMatrix_Load(0x3c, matrix);
-        if(s.x == 0 && s.y == 0){
+        if(Unk_struct.x == 0 && Unk_struct.y == 0){
             ptr->MatrixXCoord = ptr->x / 32;
             ptr->MatrixYCoord = ptr->y /32;
         }else{
-            ptr->MatrixXCoord = s.x;
-            ptr->MatrixYCoord = s.y;
+            ptr->MatrixXCoord = Unk_struct.x;
+            ptr->MatrixYCoord = Unk_struct.y;
         }
         ptr->mapHeader = MapMatrix_GetMapHeader(matrix, ptr->MatrixXCoord, ptr->MatrixYCoord);
         MapMatrix_Free(matrix);
@@ -39,21 +39,21 @@ void sub_02092BE8(FieldSystem* sys, UnkSTRUCT_2C* ptr, BOOL arg3) { //r5, r4, SP
     ptr->Unk_FsysVar01 = sub_0203DF3C(sys);
     ptr->Map_MusicID = Fsys_GetSurfOverriddenMusicId(sys, ptr->mapID);
     
-    if(arg3 != 0)
+    if(Unkbool != 0)
         return;
     if(sub_02092E08(Unk_V1) != 0){
-        ptr->UnkFsysSub_114ptr = ov02_02251EE8(Unk_V1, &(s.Unk_Var0c));
+        ptr->UnkFsysSub_114ptr = ov02_02251EE8(Unk_V1, &(Unk_struct.Unk_Var0c));
         if(ptr->UnkFsysSub_114ptr >= 0x4b){
             ptr->Unk_Bool00 = 0;
             return;
         }else{
-            ptr->Unk_Var06 = s.Unk_Var10;
-            ptr->Unk_Var05 = s.Unk_Var0f;
+            ptr->Unk_Var06 = Unk_struct.Unk_Var10;
+            ptr->Unk_Var05 = Unk_struct.Unk_Var0f;
             if(ptr->Unk_Var05 == 3){
-                sub_0202F050(SaveData_GetMomsSavingsAddr(sys->savedata), s.Unk_Var0e);
+                sub_0202F050(SaveData_GetMomsSavingsAddr(sys->savedata), Unk_struct.Unk_Var0e);
             }
             else if(ptr->Unk_Var05 == 0){
-                sub_0202AB18(Sav2_Misc_get(sys->savedata), s.Unk_Var0c, s.Unk_Var0d, ptr->UnkFsysSub_114ptr);
+                sub_0202AB18(Sav2_Misc_get(sys->savedata), Unk_struct.Unk_Var0c, Unk_struct.Unk_Var0d, ptr->UnkFsysSub_114ptr);
             }
             sub_02092F64(Unk_V1);
             ptr->Unk_Bool00 = 1;
@@ -73,9 +73,9 @@ void sub_02092D8C(FieldSystem* sys, UnkSTRUCT_2C* ptr){
     sub_02092BE8(sys, ptr, 1);
 }
 
-struct UnkFsysSub_114* sub_02092D98(HeapID id, FieldSystem* sys){ 
-    struct UnkFsysSub_114 * ptr = AllocFromHeap(id, sizeof(struct UnkFsysSub_114));
-    MI_CpuFill8(ptr, 0, sizeof(struct UnkFsysSub_114));
+UnkFsysSub_114* sub_02092D98(HeapID id, FieldSystem* sys){ 
+    UnkFsysSub_114 * ptr = AllocFromHeap(id, sizeof(UnkFsysSub_114));
+    MI_CpuFill8(ptr, 0, sizeof(UnkFsysSub_114));
     sub_02092F64(ptr);
     ptr->Unk_varC = 0xa;
     ptr->Unk_var10 = 0x1e;
@@ -87,38 +87,38 @@ struct UnkFsysSub_114* sub_02092D98(HeapID id, FieldSystem* sys){
     return ptr;
 }
 
-void sub_02092DD8(struct UnkFsysSub_114 * ptr){
-    MI_CpuFill8(ptr, 0, sizeof(struct UnkFsysSub_114));
+void sub_02092DD8(UnkFsysSub_114 * ptr){
+    MI_CpuFill8(ptr, 0, sizeof(UnkFsysSub_114));
     FreeToHeap(ptr);
 }
 
-struct UnkFsysSub_114* sub_02092DEC(FieldSystem* sys){
+UnkFsysSub_114* sub_02092DEC(FieldSystem* sys){
     return sys->unk114;
 }
 
-void sub_02092DF4(struct UnkFsysSub_114* ptr){
+void sub_02092DF4(UnkFsysSub_114* ptr){
     ptr->Unk_var0_0 = 1;
     ptr->Unk_var14 = 0;
 }
 
-u8 sub_02092E08(struct UnkFsysSub_114* ptr){
+u8 sub_02092E08(UnkFsysSub_114* ptr){
     return ptr->Unk_var0_0;
 }
 
-struct PhoneBookEntry* sub_02092E10(struct UnkFsysSub_114* ptr){
+PhoneBookEntry* sub_02092E10(UnkFsysSub_114* ptr){
     return &ptr->entry;
 }
 
-void sub_02092E14(struct UnkFsysSub_114* ptr, u8 Unkarg1, u32 Unkarg2){
-    sub_0202F01C(ptr->savingsData, Unkarg1);
-    if(Unkarg2 != 0){
+void sub_02092E14(UnkFsysSub_114* ptr, u8 Unkflag, BOOL Unkbool){
+    sub_0202F01C(ptr->savingsData, Unkflag);
+    if(Unkbool != FALSE){
         if(ptr->Unk_var8 < (ptr->Unk_varC -1)){
-            ptr->Unk_var8 = (ptr->Unk_varC) -1;
+            ptr->Unk_var8 = ptr->Unk_varC -1;
         }
     }
 }
 
-void sub_02092E34(struct UnkFsysSub_114* ptr, s32 Unkarg1, BOOL uselessArg){
+void sub_02092E34(UnkFsysSub_114* ptr, s32 Unkarg1, BOOL uselessArg){
     if(!ptr->Unk_var0_2){
         ptr->Unk_var0_2 = 1;
         if(Unkarg1 >= 0xa){
@@ -129,7 +129,7 @@ void sub_02092E34(struct UnkFsysSub_114* ptr, s32 Unkarg1, BOOL uselessArg){
     sub_02092E54(ptr);
 }
 
-void sub_02092E54(struct UnkFsysSub_114* ptr){ //r4
+void sub_02092E54(UnkFsysSub_114* ptr){ //r4
     SCRIPT_STATE* state = SavArray_Flags_get(ptr->data); //r5
     SAFARIZONE* zone = Save_SafariZone_get(ptr->data); //r7
     IGT* igt = Sav2_PlayerData_GetIGTAddr(ptr->data); //sp
@@ -144,7 +144,7 @@ void sub_02092E54(struct UnkFsysSub_114* ptr){ //r4
     if(var4057 == 3){
         if(sub_0202F798(zone, igt, 3) == 0)
             return;
-        sub_02092E14(ptr, 7, 1);
+        sub_02092E14(ptr, 7, TRUE);
     }else{
         if(var4057 < 6)
             return;
@@ -173,7 +173,7 @@ void sub_02092E54(struct UnkFsysSub_114* ptr){ //r4
     }
 }
 
-void sub_02092F30(struct UnkFsysSub_114* ptr, s64 seconds){
+void sub_02092F30(UnkFsysSub_114* ptr, s64 seconds){
     if(ptr->Unk_var0_0 == 0)
         return;
     if(ptr->Unk_var14 == 0){
@@ -185,7 +185,7 @@ void sub_02092F30(struct UnkFsysSub_114* ptr, s64 seconds){
     }
 }
 
-void sub_02092F64(struct UnkFsysSub_114* ptr){
+void sub_02092F64(UnkFsysSub_114* ptr){
     sub_02093010(ptr, 0); 
     ptr->Unk_var8 = 0;
     ptr->Unk_var14 = 0;
@@ -200,16 +200,16 @@ void sub_02092F64(struct UnkFsysSub_114* ptr){
     ptr->Unk_var12 = 50;
 }
 
-void sub_02092FA0(struct UnkFsysSub_114* ptr){
+void sub_02092FA0(UnkFsysSub_114* ptr){
     sub_02092F64(ptr);
 }
 
-void sub_02092FA8(struct UnkFsysSub_114* ptr){
+void sub_02092FA8(UnkFsysSub_114* ptr){
     if(ptr->Unk_var0_0) 
         sub_02092F64(ptr);
 }
 
-void sub_02092FB8(u32 uselessArg, struct UnkFsysSub_114* ptr){
+void sub_02092FB8(u32 uselessArg, UnkFsysSub_114* ptr){
     u8 arg1 = ptr->Unk_var44;
     ptr->Unk_var44 += 1;
     if(arg1 == 0){
@@ -224,7 +224,7 @@ void sub_02092FB8(u32 uselessArg, struct UnkFsysSub_114* ptr){
         ptr->Unk_var44 = 0;
 }
 
-void sub_02093010(struct UnkFsysSub_114* ptr, BOOL Unkarg0){
+void sub_02093010(UnkFsysSub_114* ptr, BOOL Unkarg0){
     if(Unkarg0){
         if(ptr->Unk_var0_3)
             return;
@@ -248,7 +248,7 @@ BOOL sub_02093070(FieldSystem* sys){
         return FALSE;
     if(PCStorage_CountEmptySpotsInAllBoxes(GetStoragePCPointer(sys->savedata)) != 0)
         return FALSE;
-    sub_02092E14(sub_02092DEC(sys), 3, 1);
+    sub_02092E14(sub_02092DEC(sys), 3, TRUE);
     return TRUE;
 }
 
@@ -263,7 +263,7 @@ BOOL sub_020930C4(FieldSystem* sys){
     if(var > 9)
         var = 9;
     if(CheckFlagInArray(state, var + 0x988) == 0){
-        sub_02092E14(sub_02092DEC(sys), 4, 0);
+        sub_02092E14(sub_02092DEC(sys), 4, FALSE);
         return TRUE;
     }
     return FALSE;

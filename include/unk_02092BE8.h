@@ -7,12 +7,12 @@
 #include "gear_phone.h"
 
 typedef struct Unkstruct_2c{
-    u8 Unk_Bool00; //0x00
+    u8 Unk_Bool00; 
     u8 Unk_FsysVar01; //0x01 One of the variables inside FieldSystem with offset 0x110 (currently u8 filler_10C[1];)
     u16 Map_MusicID; //0x02 (surf-overriden)
     u8 UnkFsysSub_114ptr; //0x04 (u8?????) UnkFsysSub_114*
-    u8 Unk_Var05; //0x05
-    u8 Unk_Var06; //0x06
+    u8 Unk_Var05; 
+    u8 Unk_Var06; 
     u8 Player_Gender; //0x07
     int x; //0x08
     int y; //0x0c
@@ -36,24 +36,24 @@ typedef struct Unkstruct_14{
     u8 Unk_Arr11[3];
 }UnkSTRUCT_14;
 
-void sub_02092BE8(FieldSystem* sys, UnkSTRUCT_2C* ptr, BOOL arg3);
+void sub_02092BE8(FieldSystem* sys, UnkSTRUCT_2C* ptr, BOOL Unkbool);
 void sub_02092D80(FieldSystem* sys, UnkSTRUCT_2C* ptr);
 void sub_02092D8C(FieldSystem* sys, UnkSTRUCT_2C* ptr);
-struct UnkFsysSub_114* sub_02092D98(HeapID id, FieldSystem* sys);
-void sub_02092DD8(struct UnkFsysSub_114 * ptr);
-struct UnkFsysSub_114* sub_02092DEC(FieldSystem* sys);
-void sub_02092DF4(struct UnkFsysSub_114* ptr);
-u8 sub_02092E08(struct UnkFsysSub_114* ptr);
-struct PhoneBookEntry* sub_02092E10(struct UnkFsysSub_114* ptr);
-void sub_02092E14(struct UnkFsysSub_114* ptr, u8 Unkarg1, u32 Unkarg2);
-void sub_02092E34(struct UnkFsysSub_114* ptr, s32 Unkarg1,  BOOL uselessArg);
-void sub_02092E54(struct UnkFsysSub_114* ptr);
-void sub_02092F30(struct UnkFsysSub_114* ptr, s64 seconds);
-void sub_02092F64(struct UnkFsysSub_114* ptr);
-void sub_02092FA0(struct UnkFsysSub_114* ptr);
-void sub_02092FA8(struct UnkFsysSub_114* ptr);
-void sub_02092FB8(u32 uselessArg, struct UnkFsysSub_114* ptr);
-void sub_02093010(struct UnkFsysSub_114* ptr, BOOL Unkarg0);
+UnkFsysSub_114* sub_02092D98(HeapID id, FieldSystem* sys);
+void sub_02092DD8(UnkFsysSub_114 * ptr);
+UnkFsysSub_114* sub_02092DEC(FieldSystem* sys);
+void sub_02092DF4(UnkFsysSub_114* ptr);
+u8 sub_02092E08(UnkFsysSub_114* ptr);
+PhoneBookEntry* sub_02092E10(UnkFsysSub_114* ptr);
+void sub_02092E14(UnkFsysSub_114* ptr, u8 Unkflag, BOOL Unkbool);
+void sub_02092E34(UnkFsysSub_114* ptr, s32 Unkarg1,  BOOL uselessArg);
+void sub_02092E54(UnkFsysSub_114* ptr);
+void sub_02092F30(UnkFsysSub_114* ptr, s64 seconds);
+void sub_02092F64(UnkFsysSub_114* ptr);
+void sub_02092FA0(UnkFsysSub_114* ptr);
+void sub_02092FA8(UnkFsysSub_114* ptr);
+void sub_02092FB8(u32 uselessArg, UnkFsysSub_114* ptr);
+void sub_02093010(UnkFsysSub_114* ptr, BOOL Unkarg0);
 BOOL sub_02093070(FieldSystem* sys);
 BOOL sub_020930C4(FieldSystem* sys);
 BOOL sub_02093134(FieldSystem* sys, POKEMON *);

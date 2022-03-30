@@ -3,7 +3,7 @@
 
 #include "heap.h"
 
-struct PhoneBookEntry {
+typedef struct PhoneBookEntry {
     u8 unk0;
     u8 unk1;
     u8 unk2;
@@ -13,7 +13,7 @@ struct PhoneBookEntry {
     u8 unk8[7];
     u8 unkF;
     u8 unk10[4];
-};
+}PhoneBookEntry;
 
 struct PhoneBook {
     int count;
