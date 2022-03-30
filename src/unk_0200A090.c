@@ -1,4 +1,5 @@
 #include "unk_0200A090.h"
+#include "gf_gfx_loader.h"
 
 void sub_0200A6A8(struct UnkStruct_0200A090 *mgr, const struct UnkStruct_0200A110 *header, int first, int count, struct UnkStruct_0200A674 *a4, HeapID heapId);
 BOOL sub_0200A728(struct UnkStruct_0200A090 *mgr, int a1);
@@ -7,11 +8,18 @@ int sub_0200A7FC(struct UnkStruct_0200A090_sub4 *obj);
 int sub_0200A8B0(struct UnkStruct_0200A090_sub4 *obj);
 int sub_0200A8DC(struct UnkStruct_0200A090_sub4 *obj);
 struct UnkStruct_0200A090_sub4 *sub_0200AA70(struct UnkStruct_0200A090 *mgr);
-int sub_0200ABC0(struct UnkStruct_0200A090_sub4 *obj);
+struct CharResource_0200A090 *sub_0200AB0C(void *resource, int vram, HeapID heapId);
+struct PlttResource_0200A090 *sub_0200AB2C(void *resource, int vram, int pltt_num, HeapID heapId);
+struct CellDataBankResource_0200A090 *sub_0200AB50(void *resource, HeapID heapId);
+struct AnimBankDataResource_0200A090 *sub_0200AB6C(void *resource, HeapID heapId);
+struct MultiCellDataBankResource_0200A090 *sub_0200AB88(void *resource, HeapID heapId);
+struct MultiAnimBankDataResource_0200A090 *sub_0200ABA4(void *resource, HeapID heapId);
+void sub_0200ABC0(struct UnkStruct_0200A090_sub4 *obj);
 void *sub_0200ABD4(struct UnkStruct_0200A090_sub4 *obj);
 void sub_0200ABEC(struct UnkStruct_0200A090 *mgr, struct UnkStruct_0200A090_sub4 *obj, char *name, int id, int vram, int pltt_num, GfGfxResType type, HeapID heapId);
 void sub_0200AC18(struct UnkStruct_0200A090 *mgr, struct UnkStruct_0200A090_sub4 *obj, NarcId narcId, int fileId, BOOL compressed, int id, int vram, int pltt_num, GfGfxResType type, HeapID heapId, BOOL atEnd);
-void sub_0200AC50(struct UnkStruct_0200A090 *mgr, struct UnkStruct_0200A090_sub4 *obj, NARC *narc, int fileId, BOOL compressed, int tag, int vram, int pltt_num, GfGfxResType type, HeapID heapId, BOOL atEnd);
+void sub_0200AC50(struct UnkStruct_0200A090 *mgr, struct UnkStruct_0200A090_sub4 *obj, NARC *narc, int fileId, BOOL compressed, int id, int vram, int pltt_num, GfGfxResType type, HeapID heapId, BOOL atEnd);
+void *sub_0200ACA4(NARC *narc, int fileId, BOOL compressed, HeapID heapId, BOOL atEnd);
 int sub_0200AC88(const struct UnkStruct_0200A110_sub2 *a0);
 
 struct UnkStruct_0200A090 *sub_0200A090(int num, GfGfxResType type, HeapID heapId) {
@@ -123,57 +131,57 @@ void sub_0200A350(struct UnkStruct_0200A090 *mgr, struct UnkStruct_0200A090_sub4
     sub_0200AC18(mgr, obj, narcId, fileId, compressed, id, vram, pltt_num, GF_GFX_RES_TYPE_PLTT, heapId, FALSE);
 }
 
-struct UnkStruct_0200A090_sub4 *sub_0200A3C8(struct UnkStruct_0200A090 *mgr, NARC *narc, int fileId, BOOL compressed, int tag, int vram, HeapID heapId) {
+struct UnkStruct_0200A090_sub4 *sub_0200A3C8(struct UnkStruct_0200A090 *mgr, NARC *narc, int fileId, BOOL compressed, int id, int vram, HeapID heapId) {
     struct UnkStruct_0200A090_sub4 *ret;
     GF_ASSERT(mgr != NULL);
     GF_ASSERT(mgr->type == GF_GFX_RES_TYPE_CHAR);
     ret = sub_0200AA70(mgr);
     GF_ASSERT(ret != NULL);
-    sub_0200AC50(mgr, ret, narc, fileId, compressed, tag, vram, 0, GF_GFX_RES_TYPE_CHAR, heapId, FALSE);
+    sub_0200AC50(mgr, ret, narc, fileId, compressed, id, vram, 0, GF_GFX_RES_TYPE_CHAR, heapId, FALSE);
     mgr->num++;
     return ret;
 }
 
-struct UnkStruct_0200A090_sub4 *sub_0200A424(struct UnkStruct_0200A090 *mgr, NARC *narc, int fileId, BOOL compressed, int tag, int vram, HeapID heapId, BOOL atEnd) {
+struct UnkStruct_0200A090_sub4 *sub_0200A424(struct UnkStruct_0200A090 *mgr, NARC *narc, int fileId, BOOL compressed, int id, int vram, HeapID heapId, BOOL atEnd) {
     struct UnkStruct_0200A090_sub4 *ret;
     GF_ASSERT(mgr != NULL);
     GF_ASSERT(mgr->type == GF_GFX_RES_TYPE_CHAR);
     ret = sub_0200AA70(mgr);
     GF_ASSERT(ret != NULL);
-    sub_0200AC50(mgr, ret, narc, fileId, compressed, tag, vram, 0, GF_GFX_RES_TYPE_CHAR, heapId, atEnd);
+    sub_0200AC50(mgr, ret, narc, fileId, compressed, id, vram, 0, GF_GFX_RES_TYPE_CHAR, heapId, atEnd);
     mgr->num++;
     return ret;
 }
 
-struct UnkStruct_0200A090_sub4 *sub_0200A480(struct UnkStruct_0200A090 *mgr, NARC *narc, int fileId, BOOL compressed, int tag, int vram, int pltt_num, HeapID heapId) {
+struct UnkStruct_0200A090_sub4 *sub_0200A480(struct UnkStruct_0200A090 *mgr, NARC *narc, int fileId, BOOL compressed, int id, int vram, int pltt_num, HeapID heapId) {
     struct UnkStruct_0200A090_sub4 *ret;
     GF_ASSERT(mgr != NULL);
     GF_ASSERT(mgr->type == 1);
     ret = sub_0200AA70(mgr);
     GF_ASSERT(ret != NULL);
-    sub_0200AC50(mgr, ret, narc, fileId, compressed, tag, vram, pltt_num, 1, heapId, FALSE);
+    sub_0200AC50(mgr, ret, narc, fileId, compressed, id, vram, pltt_num, 1, heapId, FALSE);
     mgr->num++;
     return ret;
 }
 
-struct UnkStruct_0200A090_sub4 *sub_0200A4E0(struct UnkStruct_0200A090 *mgr, NARC *narc, int fileId, BOOL compressed, int tag, int vram, int pltt_num, HeapID heapId, BOOL atEnd) {
+struct UnkStruct_0200A090_sub4 *sub_0200A4E0(struct UnkStruct_0200A090 *mgr, NARC *narc, int fileId, BOOL compressed, int id, int vram, int pltt_num, HeapID heapId, BOOL atEnd) {
     struct UnkStruct_0200A090_sub4 *ret;
     GF_ASSERT(mgr != NULL);
     GF_ASSERT(mgr->type == GF_GFX_RES_TYPE_PLTT);
     ret = sub_0200AA70(mgr);
     GF_ASSERT(ret != NULL);
-    sub_0200AC50(mgr, ret, narc, fileId, compressed, tag, vram, pltt_num, GF_GFX_RES_TYPE_PLTT, heapId, atEnd);
+    sub_0200AC50(mgr, ret, narc, fileId, compressed, id, vram, pltt_num, GF_GFX_RES_TYPE_PLTT, heapId, atEnd);
     mgr->num++;
     return ret;
 }
 
-struct UnkStruct_0200A090_sub4 *sub_0200A540(struct UnkStruct_0200A090 *a0, NARC *narc, int fileId, BOOL compressed, int tag, GfGfxResType type, HeapID heapId) {
+struct UnkStruct_0200A090_sub4 *sub_0200A540(struct UnkStruct_0200A090 *a0, NARC *narc, int fileId, BOOL compressed, int id, GfGfxResType type, HeapID heapId) {
     struct UnkStruct_0200A090_sub4 *ret;
     GF_ASSERT(a0 != NULL);
     //GF_ASSERT(mgr->type == type);
     ret = sub_0200AA70(a0);
     GF_ASSERT(ret != NULL);
-    sub_0200AC50(a0, ret, narc, fileId, compressed, tag, 0, 0, type, heapId, FALSE);
+    sub_0200AC50(a0, ret, narc, fileId, compressed, id, 0, 0, type, heapId, FALSE);
     a0->num++;
     return ret;
 }
@@ -466,4 +474,128 @@ struct UnkStruct_0200A090_sub4 *sub_0200AA70(struct UnkStruct_0200A090 *mgr) {
     }
 
     return NULL;
+}
+
+void sub_0200AA9C(struct UnkStruct_0200A090_sub4 *obj, GfGfxResType type, int vram, int pltt_num, HeapID heapId) {
+    void *resource = sub_020256FC(obj->unk0);
+    switch (type) {
+    case GF_GFX_RES_TYPE_CHAR:
+        obj->unk8 = sub_0200AB0C(resource, vram, heapId);
+        break;
+    case GF_GFX_RES_TYPE_PLTT:
+        obj->unk8 = sub_0200AB2C(resource, vram, pltt_num, heapId);
+        break;
+    case GF_GFX_RES_TYPE_CELL:
+        obj->unk8 = sub_0200AB50(resource, heapId);
+        break;
+    case GF_GFX_RES_TYPE_ANIM:
+        obj->unk8 = sub_0200AB6C(resource, heapId);
+        break;
+    case GF_GFX_RES_TYPE_MCEL:
+        obj->unk8 = sub_0200AB88(resource, heapId);
+        break;
+    case GF_GFX_RES_TYPE_MANM:
+        obj->unk8 = sub_0200ABA4(resource, heapId);
+        break;
+    }
+}
+
+struct CharResource_0200A090 *sub_0200AB0C(void *resource, int vram, HeapID heapId) {
+    struct CharResource_0200A090 *ret = AllocFromHeap(heapId, sizeof(struct CharResource_0200A090));
+    NNS_G2dGetUnpackedCharacterData(resource, &ret->charData);
+    ret->vram = vram;
+    return ret;
+}
+
+struct PlttResource_0200A090 *sub_0200AB2C(void *resource, int vram, int pltt_num, HeapID heapId) {
+    struct PlttResource_0200A090 *ret = AllocFromHeap(heapId, sizeof(struct PlttResource_0200A090));
+    NNS_G2dGetUnpackedPaletteData(resource, &ret->plttData);
+    ret->vram = vram;
+    ret->pltt_num = pltt_num;
+    return ret;
+}
+
+struct CellDataBankResource_0200A090 *sub_0200AB50(void *resource, HeapID heapId) {
+    struct CellDataBankResource_0200A090 *ret = AllocFromHeap(heapId, sizeof(struct CellDataBankResource_0200A090));
+    NNS_G2dGetUnpackedCellBank(resource, &ret->cellDataBank);
+    return ret;
+}
+
+struct AnimBankDataResource_0200A090 *sub_0200AB6C(void *resource, HeapID heapId) {
+    struct AnimBankDataResource_0200A090 *ret = AllocFromHeap(heapId, sizeof(struct AnimBankDataResource_0200A090));
+    NNS_G2dGetUnpackedAnimBank(resource, &ret->animBankData);
+    return ret;
+}
+
+struct MultiCellDataBankResource_0200A090 *sub_0200AB88(void *resource, HeapID heapId) {
+    struct MultiCellDataBankResource_0200A090 *ret = AllocFromHeap(heapId, sizeof(struct MultiCellDataBankResource_0200A090));
+    NNS_G2dGetUnpackedMultiCellBank(resource, &ret->multiCellDataBank);
+    return ret;
+}
+
+struct MultiAnimBankDataResource_0200A090 *sub_0200ABA4(void *resource, HeapID heapId) {
+    struct MultiAnimBankDataResource_0200A090 *ret = AllocFromHeap(heapId, sizeof(struct MultiAnimBankDataResource_0200A090));
+    NNS_G2dGetUnpackedMCAnimBank(resource, &ret->animBankData);
+    return ret;
+}
+
+void sub_0200ABC0(struct UnkStruct_0200A090_sub4 *obj) {
+    if (obj->unk8 != NULL) {
+        FreeToHeap(obj->unk8);
+    }
+    obj->unk8 = NULL;
+}
+
+void *sub_0200ABD4(struct UnkStruct_0200A090_sub4 *obj) {
+    GF_ASSERT(obj != NULL);
+    GF_ASSERT(obj->unk8 != NULL);
+    return obj->unk8;
+}
+
+void sub_0200ABEC(struct UnkStruct_0200A090 *mgr, struct UnkStruct_0200A090_sub4 *obj, char *name, int id, int vram, int pltt_num, GfGfxResType type, HeapID heapId) {
+    obj->unk0 = sub_02025600(mgr->resourceMgr, name, id, heapId);
+    obj->type = type;
+    sub_0200AA9C(obj, type, vram, pltt_num, heapId);
+}
+
+void sub_0200AC18(struct UnkStruct_0200A090 *mgr, struct UnkStruct_0200A090_sub4 *obj, NarcId narcId, int fileId, BOOL compressed, int id, int vram, int pltt_num, GfGfxResType type, HeapID heapId, BOOL atEnd) {
+    void *res = GfGfxLoader_LoadFromNarc(narcId, fileId, compressed, heapId, atEnd);
+    obj->unk0 = sub_020255C4(mgr->resourceMgr, res, id);
+    obj->type = type;
+    sub_0200AA9C(obj, type, vram, pltt_num, heapId);
+}
+
+void sub_0200AC50(struct UnkStruct_0200A090 *mgr, struct UnkStruct_0200A090_sub4 *obj, NARC *narc, int fileId, BOOL compressed, int id, int vram, int pltt_num, GfGfxResType type, HeapID heapId, BOOL atEnd) {
+    void *res = sub_0200ACA4(narc, fileId, compressed, heapId, atEnd);
+    obj->unk0 = sub_020255C4(mgr->resourceMgr, res, id);
+    obj->type = type;
+    sub_0200AA9C(obj, type, vram, pltt_num, heapId);
+}
+
+int sub_0200AC88(const struct UnkStruct_0200A110_sub2 *a0) {
+    int n = 0;
+    while (a0[n].narcId != -2) {
+        n++;
+    }
+    return n;
+}
+
+void *sub_0200ACA4(NARC *narc, int fileId, BOOL compressed, HeapID heapId, BOOL atEnd) {
+    void *data = NARC_AllocAndReadWholeMember(narc, fileId, heapId);
+    if (data != NULL) {
+        if (compressed) {
+            void *uncompData;
+            if (atEnd == 0) { // explicit comparison to 0 is required to match
+                uncompData = AllocFromHeap(heapId, MI_GetUncompressedSize(data));
+            } else {
+                uncompData = AllocFromHeapAtEnd(heapId, MI_GetUncompressedSize(data));
+            }
+            if (uncompData != NULL) {
+                MI_UncompressLZ8(data, uncompData);
+                FreeToHeap(data);
+            }
+            data = uncompData;
+        }
+    }
+    return data;
 }

@@ -86,8 +86,8 @@ void sub_0200A0D0(struct UnkStruct_0200A090 *mgr);
 void sub_0200AEB0(void *a0);
 void sub_0200B0A8(void *a0);
 void sub_0200A75C(struct UnkStruct_0200A090 *a0, struct UnkStruct_0200A090_sub4 *a1);
-struct UnkStruct_0200A090_sub4 *sub_0200A3C8(struct UnkStruct_0200A090 *mgr, NARC *narc, int fileId, BOOL compressed, int tag, int vram, HeapID heapId);
-struct UnkStruct_0200A090_sub4 *sub_0200A480(struct UnkStruct_0200A090 *mgr, NARC *narc, int fileId, BOOL compressed, int tag, int vram, int pltt_num, HeapID heapId);
-struct UnkStruct_0200A090_sub4 *sub_0200A540(struct UnkStruct_0200A090 *a0, NARC *narc, int fileId, BOOL compressed, int tag, GfGfxResType type, HeapID heapId);
+struct UnkStruct_0200A090_sub4 *sub_0200A3C8(struct UnkStruct_0200A090 *mgr, NARC *narc, int fileId, BOOL compressed, int id, int vram, HeapID heapId);
+struct UnkStruct_0200A090_sub4 *sub_0200A480(struct UnkStruct_0200A090 *mgr, NARC *narc, int fileId, BOOL compressed, int id, int vram, int pltt_num, HeapID heapId);
+struct UnkStruct_0200A090_sub4 *sub_0200A540(struct UnkStruct_0200A090 *a0, NARC *narc, int fileId, BOOL compressed, int id, GfGfxResType type, HeapID heapId);
 
 #endif //POKEHEARTGOLD_UNK_0200A090_H
