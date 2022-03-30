@@ -17,6 +17,9 @@
 #include "unk_02026E30.h"
 #include "unk_0201F4C4.h"
 #include "unk_02009D48.h"
+#include "unk_0200E398.h"
+#include "unk_02025154.h"
+#include "unk_02020B8C.h"
 #include "gf_gfx_loader.h"
 
 #define HEAPID_STARTERCHOOSE       46
@@ -89,7 +92,7 @@ struct ChooseStarterAppWork {
     struct ChooseStarterRnd unk_070[6];
     struct ChooseStarterAnm unk_340[6];
     VecFx32 unk_370[3];
-    int unk_394;
+    u32 unk_394;
     fx16 unk_398;
     fx16 unk_39A;
     WINDOW *unk_39C;
@@ -144,6 +147,8 @@ u8 ov61_021E6D78(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int
 void ov61_021E6DFC(struct ChooseStarterAppWork *work, int msgId);
 void ov61_021E6E30(WINDOW *window);
 int ov61_021E6E40(struct ChooseStarterAppWork *work);
+int ov61_021E6F80(int a0, u8 a1, int a2);
+int ov61_021E6F98(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 a3);
 void ov61_021E6FC4(struct ChooseStarterAppWork *work);
 void ov61_021E7248(struct UnkStarterChooseSub_3B4 *a0);
 BOOL ov61_021E7268(struct ChooseStarterAppWork *work, int a1, int a2);
@@ -868,4 +873,165 @@ BOOL ov61_021E6AE0(struct ChooseStarterAppWork *work, fx16 a1) {
         }
     }
     return ret;
+}
+
+void ov61_021E6B2C(struct ChooseStarterAppWork *work, int a1) {
+    if (a1 == 2) {
+        work->unk_394 = (work->unk_394 + 1) % 3;
+    } else if (a1 == 1) {
+        s8 r0 = work->unk_394 - 1;
+        if (r0 < 0) {
+            r0 = 2;
+        }
+        work->unk_394 = r0;
+    }
+    ov61_021E6944(work);
+}
+
+void ov61_021E6B6C(struct ChooseStarterAppWork *work) {
+    work->unk_39C = AllocWindows(work->heapId, 1);
+    work->unk_3A0 = AllocWindows(work->heapId, 1);
+    AddWindowParameterized(work->bgConfig, work->unk_39C, 4, 2, 19, 27, 4, 2, 0x01F);
+    AddWindowParameterized(work->bgConfig, work->unk_3A0, 1, 1, 19, 29, 4, 2, 0x01F);
+    FillWindowPixelBuffer(work->unk_39C, 15);
+    FillWindowPixelBuffer(work->unk_3A0, 0);
+    sub_0200E644(work->bgConfig, 4, 0x200, 0, work->frame, work->heapId);
+    GfGfxLoader_GXLoadPal(NARC_a_0_8_2, 8, 4, 0x040, 0x20, work->heapId);
+    GfGfxLoader_GXLoadPal(NARC_a_0_8_2, 8, 0, 0x040, 0x20, work->heapId);
+    DrawFrameAndWindow2(work->unk_39C, 0, 0x200, 0);
+}
+
+void ov61_021E6C3C(BGCONFIG *bgConfig, HeapID heapId) {
+    GfGfxLoader_LoadCharData(NARC_a_0_8_2, 13, bgConfig, 2, 0, 0, FALSE, heapId);
+    GfGfxLoader_LoadCharData(NARC_a_0_8_2, 10, bgConfig, 5, 0, 0, FALSE, heapId);
+    GfGfxLoader_LoadCharData(NARC_a_0_8_2, 16, bgConfig, 6, 0, 0, FALSE, heapId);
+    GfGfxLoader_LoadScrnData(NARC_a_0_8_2, 14, bgConfig, 2, 0, 0, FALSE, heapId);
+    GfGfxLoader_LoadScrnData(NARC_a_0_8_2, 11, bgConfig, 5, 0, 0, FALSE, heapId);
+    GfGfxLoader_LoadScrnData(NARC_a_0_8_2, 17, bgConfig, 6, 0, 0, FALSE, heapId);
+    GfGfxLoader_GXLoadPal(NARC_a_0_8_2, 12, 0, 0x60, 0x20, heapId);
+    GfGfxLoader_GXLoadPal(NARC_a_0_8_2, 9, 4, 0x60, 0x20, heapId);
+    GfGfxLoader_GXLoadPal(NARC_a_0_8_2, 15, 4, 0x80, 0x20, heapId);
+    BgTilemapRectChangePalette(bgConfig, 2, 0, 0, 0x20, 0x18, 3);
+    BgTilemapRectChangePalette(bgConfig, 5, 0, 0, 0x20, 0x18, 3);
+    BgTilemapRectChangePalette(bgConfig, 6, 0, 0, 0x20, 0x18, 4);
+    BgCommitTilemapBufferToVram(bgConfig, 2);
+    BgCommitTilemapBufferToVram(bgConfig, 5);
+    BgCommitTilemapBufferToVram(bgConfig, 6);
+    G2S_SetBlendAlpha(4, 34, 5, 11);
+
+}
+
+u8 ov61_021E6D78(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, STRING **out) {
+    MSGDATA *msgData;
+    u8 ret;
+    GF_ASSERT(*out == NULL);
+    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msgBank, heapId);
+    GF_ASSERT(msgData != NULL);
+    *out = NewString_ReadMsgData(msgData, msgno);
+    FillWindowPixelBuffer(window, color);
+    ret = AddTextPrinterParameterized2(window, 1, *out, 0, 0, speed, color, NULL);
+    if (makeFrame) {
+        DrawFrameAndWindow2(window, 0, 0x200, 0);
+    } else {
+        CopyWindowToVram(window);
+    }
+    DestroyMsgData(msgData);
+    return ret;
+}
+
+void ov61_021E6DFC(struct ChooseStarterAppWork *work, int msgId) {
+    STRING *string = NULL;
+    ov61_021E6D78(work->unk_3A0, work->heapId, FALSE, NARC_msg_msg_0190_bin, msgId, MakeTextColor(1, 2, 0), 0, &string);
+    String_dtor(string);
+}
+
+void ov61_021E6E30(WINDOW *window) {
+    RemoveWindow(window);
+    FreeToHeap(window);
+}
+
+int ov61_021E6E40(struct ChooseStarterAppWork *work) {
+    int ret = 0;
+    if (!sub_0202534C()) {
+        if (gSystem.newKeys & PAD_BUTTON_A) {
+            if (work->unk_3A8 == 2) {
+                ret = 6;
+            } else if (work->unk_3A8 == 1) {
+                ret = 7;
+            } else {
+                work->unk_3A8 = 1;
+                ret = 5;
+            }
+        } else if (gSystem.newKeys & PAD_BUTTON_B) {
+            if (work->unk_3A8 == 2) {
+                ret = 8;
+            }
+        } else if (gSystem.newKeys & PAD_KEY_LEFT) {
+            if (work->unk_3A8 != 2) {
+                ret = 1;
+            }
+        } else if (gSystem.newKeys & PAD_KEY_RIGHT) {
+            if (work->unk_3A8 != 2) {
+                ret = 2;
+            }
+        }
+    } else if (gSystem.heldKeys == 0 && sub_02025358()) {
+        VecFx32 near, far;
+        int num;
+        fx32 r3;
+        NNS_G3dScrPosToWorldLine(gSystem.touchX, gSystem.touchY, &near, &far);
+        if (work->unk_3A8 == 2) {
+            r3 = 6 * FX32_ONE;
+        } else {
+            r3 = 13 * FX32_ONE;
+        }
+        num = ov61_021E6F98(work->unk_370, &near, &far, r3);
+        if (num != 3) {
+            if (work->unk_3A8 == 2) {
+                if (num == work->unk_394) {
+                    ret = 6;
+                } else {
+                    ret = 8;
+                }
+            } else if (work->unk_3A8 == 1) {
+                if (num == work->unk_394) {
+                    ret = 7;
+                } else {
+                    ret = ov61_021E6F80(num, work->unk_394, work->unk_3AC);
+                }
+            } else {
+                if (num == work->unk_394) {
+                    work->unk_3A8 = 1;
+                    ret = 5;
+                } else {
+                    ret = ov61_021E6F80(num, work->unk_394, work->unk_3AC);
+                }
+            }
+        } else if (work->unk_3A8 == 2) {
+            ret = 8;
+        }
+    }
+    if (ret == 6) {
+        PlaySE(SEQ_SE_DP_BOX01);
+    }
+    return ret;
+}
+
+int ov61_021E6F80(int a0, u8 a1, int a2) {
+#pragma unused(a2)
+    if (((a1 + 1) % 3) == a0) {
+        return 1;
+    } else {
+        return 2;
+    }
+}
+
+int ov61_021E6F98(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 a3) {
+    u8 i;
+    for (i = 0; i < 3; i++) {
+        if (sub_02020B9C(&vecs[i], near, far) <= a3) {
+            break;
+        }
+    }
+    return i;
 }

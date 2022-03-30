@@ -41,7 +41,7 @@ struct System {
     int keyRepeatStartDelay;
     int simulatedInputs;
 
-    u16 touchX;
+    u16 touchX; // 60
     u16 touchY;
     u16 touchNew;
     u16 touchHeld;
