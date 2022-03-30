@@ -5,6 +5,7 @@
 #include <nnsys/g2d/fmt/g2d_Screen_data.h>
 #include <nnsys/g2d/fmt/g2d_Cell_data.h>
 #include <nnsys/g2d/fmt/g2d_Anim_data.h>
+#include <nnsys/g2d/fmt/g2d_MultiCell_data.h>
 #include <nnsys/g2d/load/g2d_NCG_load.h>
 #include <nnsys/g2d/load/g2d_NSC_load.h>
 #include <nnsys/g2d/load/g2d_NCL_load.h>
