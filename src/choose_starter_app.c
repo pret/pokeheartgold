@@ -41,18 +41,18 @@ struct ChooseStarterAnm {
 };
 
 struct UnkStarterChooseSub_3B4_18 {
-    void *unk_00;
-    void *unk_04;
-    void *unk_08;
-    void *unk_0C;
+    struct UnkStruct_0200A090_sub4 *unk_00;
+    struct UnkStruct_0200A090_sub4 *unk_04;
+    struct UnkStruct_0200A090_sub4 *unk_08;
+    struct UnkStruct_0200A090_sub4 *unk_0C;
     u8 filler_10[0x8];
 };
 
 struct UnkStarterChooseSub_3B4 {
-    void *unk_000;
-    void *unk_004;
-    void *unk_008;
-    void *unk_00C;
+    struct UnkStruct_0200A090 *unk_000;
+    struct UnkStruct_0200A090 *unk_004;
+    struct UnkStruct_0200A090 *unk_008;
+    struct UnkStruct_0200A090 *unk_00C;
     u8 filler_010[0x8];
     struct UnkStarterChooseSub_3B4_18 unk_018[3];
     void *unk_060[3];
@@ -1048,10 +1048,10 @@ void ov61_021E6FC4(struct ChooseStarterAppWork *work) {
         // r7=sp14=r5=work->unk_3B4
         // sp10=r6=work
         // sp24=r5->unk_078
-        r5->unk_018[i].unk_00 = sub_0200A3C8(r5->unk_000, narc, 9, 0, i, 2, work->heapId);
-        r5->unk_018[i].unk_04 = sub_0200A480(r5->unk_004, narc, 6, 0, i, 2, 1, work->heapId);
-        r5->unk_018[i].unk_08 = sub_0200A540(r5->unk_008, narc, 10, 0, i, 2, work->heapId);
-        r5->unk_018[i].unk_0C = sub_0200A540(r5->unk_00C, narc, 16, 0, i, 3, work->heapId);
+        r5->unk_018[i].unk_00 = sub_0200A3C8(r5->unk_000, narc, 9, FALSE, i, 2, work->heapId);
+        r5->unk_018[i].unk_04 = sub_0200A480(r5->unk_004, narc, 6, FALSE, i, 2, 1, work->heapId);
+        r5->unk_018[i].unk_08 = sub_0200A540(r5->unk_008, narc, 10, FALSE, i, 2, work->heapId);
+        r5->unk_018[i].unk_0C = sub_0200A540(r5->unk_00C, narc, 16, FALSE, i, 3, work->heapId);
         sub_020701E4(
             &r5->unk_078,
             GetMonData(work->choices[i], MON_DATA_SPECIES, NULL),
