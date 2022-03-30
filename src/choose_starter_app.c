@@ -20,6 +20,7 @@
 #include "unk_0200E398.h"
 #include "unk_02025154.h"
 #include "unk_02020B8C.h"
+#include "unk_02013FDC.h"
 #include "gf_gfx_loader.h"
 
 #define HEAPID_STARTERCHOOSE       46
@@ -56,7 +57,7 @@ struct UnkStarterChooseSub_3B4 {
     struct UnkStarterChooseSub_3B4_18 unk_018[3];
     void *unk_060[3];
     void *unk_06C[3];
-    u8 filler_078[0x10];
+    struct SomeDrawPokemonStruct unk_078;
     void *unk_088;
     u8 unk_08C[0x128];
     int unk_1B4[3];
@@ -150,6 +151,8 @@ int ov61_021E6E40(struct ChooseStarterAppWork *work);
 int ov61_021E6F80(int a0, u8 a1, int a2);
 int ov61_021E6F98(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 a3);
 void ov61_021E6FC4(struct ChooseStarterAppWork *work);
+void ov61_021E7108(void *a0, void *a1, void *charData, void *plttData, u8 idx);
+void ov61_021E7188(struct UnkStarterChooseSub_3B4 *a0, u8 idx, HeapID heapId);
 void ov61_021E7248(struct UnkStarterChooseSub_3B4 *a0);
 BOOL ov61_021E7268(struct ChooseStarterAppWork *work, int a1, int a2);
 void ov61_021E7220(struct ChooseStarterAppWork *work);
@@ -1034,4 +1037,35 @@ int ov61_021E6F98(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 a3) {
         }
     }
     return i;
+}
+
+void ov61_021E6FC4(struct ChooseStarterAppWork *work) {
+    NARC *narc = NARC_ctor(NARC_a_0_9_3, work->heapId);
+    int i; //r4
+    struct UnkStarterChooseSub_3B4 *r5 = &work->unk_3B4;
+
+    for (i = 0; i < 3; i++) {
+        // r7=sp14=r5=work->unk_3B4
+        // sp10=r6=work
+        // sp24=r5->unk_078
+        r5->unk_018[i].unk_00 = sub_0200A3C8(r5->unk_000, narc, 9, 0, i, 2, work->heapId);
+        r5->unk_018[i].unk_04 = sub_0200A480(r5->unk_004, narc, 6, 0, i, 2, 1, work->heapId);
+        r5->unk_018[i].unk_08 = sub_0200A540(r5->unk_008, narc, 10, 0, i, 2, work->heapId);
+        r5->unk_018[i].unk_0C = sub_0200A540(r5->unk_00C, narc, 16, 0, i, 3, work->heapId);
+        sub_020701E4(
+            &r5->unk_078,
+            GetMonData(work->choices[i], MON_DATA_SPECIES, NULL),
+            GetMonData(work->choices[i], MON_DATA_GENDER, NULL),
+            2,
+            MonIsShiny(work->choices[i]),
+            0,
+            0
+        );
+        r5->unk_060[i] = sub_0201442C(r5->unk_078.narcID, r5->unk_078.charDataID, work->heapId);
+        r5->unk_06C[i] = sub_02014450(r5->unk_078.narcID, r5->unk_078.palDataID, work->heapId);
+        ov61_021E7108(r5->unk_000, r5->unk_004, r5->unk_060[i], r5->unk_06C[i], i);
+        ov61_021E7188(r5, i, work->heapId);
+    }
+
+    NARC_dtor(narc);
 }

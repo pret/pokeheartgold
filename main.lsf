@@ -29,7 +29,8 @@ Static main
 	Object src/gf_gfx_loader.o
 	Object asm/unk_02007FD8.o
 	Object asm/unk_02009D48.o
-	Object asm/unk_0200A090.o
+	Object src/unk_0200A090.o
+	Object asm/unk_0200A090_s.o
 	Object asm/unk_0200B150.o
 	Object src/msgdata.o
 	Object src/msgfmt.o
@@ -79,7 +80,8 @@ Static main
 	Object asm/unk_02025154.o
 	Object src/timer3.o
 	Object src/error_handling.o
-	Object asm/unk_02025534.o
+	Object src/unk_02025534.o
+	Object asm/unk_02025534_s.o
 	Object asm/unk_02025C44.o
 	Object src/font_data.o
 	Object src/pm_string.o
