@@ -16,7 +16,7 @@ typedef struct UnkStruct_02004A44_0 {
     s32 unk24;
 } UnkStruct_02004A44_0;
 
-void sub_02004B10(void);
+void GF_ClearHeapAndSndSubScene(void);
 void GF_SndHandleMoveVolume(int, int, int);
 
 #endif //POKEHEARTGOLD_UNK_02004A44_H

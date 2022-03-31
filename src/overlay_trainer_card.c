@@ -70,7 +70,7 @@ BOOL TrainerCardApp_OvyExit(OVY_MANAGER *man, int *state) {
     TrainerCardAppState *data = OverlayManager_GetData(man);
     MI_CpuFill8(data, 0, sizeof(TrainerCardAppState));
     OverlayManager_FreeData(man);
-    sub_02004B10();
+    GF_ClearHeapAndSndSubScene();
     DestroyHeap(HEAP_ID_TRAINER_CARD);
     return TRUE;
 }

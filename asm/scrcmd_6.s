@@ -135,7 +135,7 @@ ScrCmd_086: ; 0x020491E8
 	str r1, [r0, #8]
 	ldrb r1, [r3]
 	add r0, r2, #0
-	bl sub_020053A8
+	bl GF_SndPause
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -158,7 +158,7 @@ ScrCmd_088: ; 0x02049214
 	add r1, r2, #1
 	str r1, [r0, #8]
 	ldrb r0, [r2]
-	bl GF_SND_BGM_DisableSet
+	bl GF_SetCtrlBgmFlag
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -365,7 +365,7 @@ ScrCmd_ChatotStartRecording: ; 0x0204937C
 	ldr r0, [r4]
 	bl GetVarPointer
 	add r4, r0, #0
-	bl sub_02005518
+	bl SndWorkMicCounterFull
 	cmp r0, #0
 	bne _0204939C
 	bl GF_AssertFail
@@ -411,7 +411,7 @@ ScrCmd_093: ; 0x020493D4
 	mov r1, #0
 	mov r0, #0x3f
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	mov r0, #1
 	pop {r3, pc}
 	thumb_func_end ScrCmd_093

@@ -62,7 +62,7 @@ _02005D7C:
 	pop {r4, r5, r6, pc}
 _02005D84:
 	mov r0, #0
-	bl sub_020059E0
+	bl GF_SetSndBankFlag
 	cmp r5, #0
 	bne _02005D94
 	add r0, r4, #0
@@ -80,10 +80,10 @@ sub_02005DA0: ; 0x02005DA0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_02004A60
+	bl GF_SetCurrentPlayingBGM
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02005464
+	bl GF_SndSetVChatVol
 	mov r0, #1
 	bl GF_SndSetState
 	cmp r4, #0
@@ -101,7 +101,7 @@ sub_02005DC4: ; 0x02005DC4
 	add r5, r0, #0
 	mov r0, #3
 	add r4, r2, #0
-	bl sub_02005328
+	bl GF_GetHeapSaveLv
 	bl GF_Snd_LoadState
 	add r0, r5, #0
 	bl GF_Snd_LoadSeq
@@ -135,7 +135,7 @@ sub_02005DF4: ; 0x02005DF4
 	bl GF_GetBankBySeqNo
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_020051A4
+	bl GF_SetFieldDataSub
 	mov r0, #0
 	bl SndRadio_StopSeq
 	ldrh r0, [r4]
@@ -197,7 +197,7 @@ _02005E9A:
 	mov r0, #0
 	bl SndRadio_StopSeq
 	add r0, r4, #0
-	bl sub_02004A60
+	bl GF_SetCurrentPlayingBGM
 	mov r0, #1
 	bl GF_SndSetState
 	add r0, r5, #0
@@ -238,11 +238,11 @@ sub_02005EEC: ; 0x02005EEC
 	mov r0, #0
 	bl SndRadio_StopSeq
 	mov r0, #0
-	bl sub_02004A60
-	mov r0, #0
 	bl GF_SetCurrentPlayingBGM
 	mov r0, #0
-	bl sub_02004AB8
+	bl GF_SetNextBGM
+	mov r0, #0
+	bl GF_SetUNK_58
 	mov r0, #0
 	bl GF_SndSetState
 	pop {r3, pc}
@@ -272,7 +272,7 @@ _02005F36:
 	add r2, r5, #0
 	bl GF_SndHandleMoveVolume
 	add r0, r5, #0
-	bl sub_02005990
+	bl GF_SetFadeCount
 	mov r0, #3
 	bl GF_SndSetState
 _02005F4C:
@@ -299,7 +299,7 @@ GF_SndStartFadeOutBGM: ; 0x02005F50
 	add r2, r4, #0
 	bl GF_SndHandleMoveVolume
 	add r0, r4, #0
-	bl sub_02005990
+	bl GF_SetFadeCount
 _02005F80:
 	mov r0, #4
 	bl GF_SndSetState
@@ -320,7 +320,7 @@ GF_SndGetFadeTimer: ; 0x02005F88
 sub_02005F94: ; 0x02005F94
 	push {r3, lr}
 	bl GF_GetPlayerNoBySeq
-	bl GF_SndPlayerCountPlayingSeqByPlayerNo
+	bl GF_SndPlayerCountPlayingSeqByPlayerNo       
 	pop {r3, pc}
 	thumb_func_end sub_02005F94
 
@@ -339,13 +339,13 @@ sub_02005FA0: ; 0x02005FA0
 	cmp r0, #1
 	bne _02005FC4
 	mov r0, #0xe
-	bl sub_02005728
+	bl GF_WaveOutStop
 _02005FC4:
 	ldrb r0, [r4]
 	cmp r0, #1
 	bne _02005FD0
 	mov r0, #0xf
-	bl sub_02005728
+	bl GF_WaveOutStop
 _02005FD0:
 	mov r0, #0
 	bl GF_SndSetState
@@ -381,13 +381,13 @@ _02005FFE:
 	cmp r0, #1
 	bne _0200601E
 	mov r0, #0xe
-	bl sub_02005728
+	bl GF_WaveOutStop
 _0200601E:
 	ldrb r0, [r6]
 	cmp r0, #1
 	bne _0200602A
 	mov r0, #0xf
-	bl sub_02005728
+	bl GF_WaveOutStop
 _0200602A:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02005FD8
@@ -476,7 +476,7 @@ sub_020060BC: ; 0x020060BC
 	add r7, r2, #0
 	str r3, [sp, #8]
 	ldr r5, [sp, #0x20]
-	bl sub_02005BFC
+	bl Snd_GetUNK_56
 	cmp r0, #1
 	bne _020060E0
 	ldr r0, _02006114 ; =0x000005DC
@@ -500,7 +500,7 @@ _020060E0:
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_02005464
+	bl GF_SndSetVChatVol
 	cmp r4, #0
 	bne _0200610C
 	lsl r0, r5, #0x10
@@ -542,7 +542,7 @@ sub_02006134: ; 0x02006134
 	ldr r1, _02006150 ; =0x0000FFFF
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_0200592C
+	bl GF_SetHandleTrackBySeqNo
 _0200614C:
 	add r0, r6, #0
 	pop {r4, r5, r6, pc}
@@ -588,16 +588,16 @@ _02006172:
 IsSEPlaying: ; 0x02006184
 	push {r3, lr}
 	bl GF_GetPlayerNoBySeq
-	bl GF_SndPlayerCountPlayingSeqByPlayerNo
+	bl GF_SndPlayerCountPlayingSeqByPlayerNo       
 	pop {r3, pc}
 	thumb_func_end IsSEPlaying
 
 	thumb_func_start sub_02006190
 sub_02006190: ; 0x02006190
-	ldr r3, _02006194 ; =GF_SndPlayerCountPlayingSeqByPlayerNo
+	ldr r3, _02006194 ; =GF_SndPlayerCountPlayingSeqByPlayerNo       
 	bx r3
 	.balign 4, 0
-_02006194: .word GF_SndPlayerCountPlayingSeqByPlayerNo
+_02006194: .word GF_SndPlayerCountPlayingSeqByPlayerNo       
 	thumb_func_end sub_02006190
 
 	thumb_func_start GF_IsAnySEPlaying
@@ -606,7 +606,7 @@ GF_IsAnySEPlaying: ; 0x02006198
 	mov r4, #0
 _0200619C:
 	add r0, r4, #3
-	bl GF_SndPlayerCountPlayingSeqByPlayerNo
+	bl GF_SndPlayerCountPlayingSeqByPlayerNo       
 	cmp r0, #1
 	bne _020061AA
 	mov r0, #1
@@ -740,7 +740,7 @@ _0200628C:
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_02005464
+	bl GF_SndSetVChatVol
 	b _020062CC
 _020062AC:
 	mov r0, #2
@@ -756,7 +756,7 @@ _020062AC:
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #8
-	bl sub_02005464
+	bl GF_SndSetVChatVol
 _020062CC:
 	mov r0, #0
 	bl sub_02006E3C
@@ -811,17 +811,17 @@ sub_02006300: ; 0x02006300
 	cmp r0, #1
 	bne _02006344
 	mov r0, #0xe
-	bl sub_020058B8
+	bl GF_WaveOutStopReverse
 	mov r0, #0xe
-	bl sub_02005680
+	bl GF_FreeWaveOutChannel
 _02006344:
 	ldrb r0, [r4]
 	cmp r0, #1
 	bne _02006356
 	mov r0, #0xf
-	bl sub_020058B8
+	bl GF_WaveOutStopReverse
 	mov r0, #0xf
-	bl sub_02005680
+	bl GF_FreeWaveOutChannel
 _02006356:
 	bl sub_02006DB8
 	bl sub_02006A30
@@ -845,18 +845,18 @@ IsCryFinished: ; 0x02006360
 	cmp r0, #1
 	bne _0200638C
 	mov r0, #0xe
-	bl sub_02005738
+	bl GF_WaveOutIsPlaying
 	pop {r3, r4, r5, pc}
 _0200638C:
 	ldrb r0, [r4]
 	cmp r0, #1
 	bne _0200639A
 	mov r0, #0xf
-	bl sub_02005738
+	bl GF_WaveOutIsPlaying
 	pop {r3, r4, r5, pc}
 _0200639A:
 	mov r0, #0
-	bl GF_SndPlayerCountPlayingSeqByPlayerNo
+	bl GF_SndPlayerCountPlayingSeqByPlayerNo       
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end IsCryFinished
@@ -927,18 +927,18 @@ _02006418:
 	cmp r0, #1
 	bne _02006432
 	mov r0, #0xe
-	bl sub_020058B8
+	bl GF_WaveOutStopReverse
 	mov r0, #0xe
-	bl sub_02005680
+	bl GF_FreeWaveOutChannel
 _02006432:
 	ldr r0, [sp, #0x10]
 	ldrb r0, [r0]
 	cmp r0, #1
 	bne _02006446
 	mov r0, #0xf
-	bl sub_020058B8
+	bl GF_WaveOutStopReverse
 	mov r0, #0xf
-	bl sub_02005680
+	bl GF_FreeWaveOutChannel
 _02006446:
 	ldr r0, _02006744 ; =0x000001B9
 	cmp r4, r0
@@ -991,10 +991,10 @@ _0200649C:
 	mov r0, #0xe
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_02005748
+	bl GF_SetWaveOutPan
 	mov r0, #0xe
 	add r1, r7, #0
-	bl sub_02005774
+	bl GF_SetWaveOutVolume
 	b _020064CE
 _020064BA:
 	ldr r1, _02006748 ; =0x0000FFFF
@@ -1132,26 +1132,26 @@ _02006596:
 	b _02006814
 _020065E4:
 	mov r0, #0xe
-	bl sub_02005600
+	bl GF_AllocWaveOutChannel
 	ldr r0, [sp, #0x38]
 	ldr r2, [sp, #0x1c]
 	str r0, [sp]
 	add r0, r4, #0
 	add r1, r7, #0
 	mov r3, #0xe
-	bl sub_020057AC
+	bl GF_WaveOutStartReverse
 	ldr r1, [sp, #0x1c]
 	mov r0, #0xe
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_02005748
+	bl GF_SetWaveOutPan
 	ldr r1, [sp, #0x38]
 	mov r0, #0xf
 	bl sub_02006838
 	mov r1, #0x86
 	mov r0, #0xe
 	lsl r1, r1, #8
-	bl sub_02005760
+	bl GF_SetWaveOutSpeed
 	ldr r0, [sp, #0x38]
 	mov r1, #0x3f
 	str r0, [sp]
@@ -1163,7 +1163,7 @@ _020065E4:
 	mov r1, #0x86
 	mov r0, #0xf
 	lsl r1, r1, #8
-	bl sub_02005760
+	bl GF_SetWaveOutSpeed
 	b _02006814
 _02006636:
 	add r0, r4, #0
@@ -1256,26 +1256,26 @@ _020066DA:
 	b _02006814
 _0200670A:
 	mov r0, #0xe
-	bl sub_02005600
+	bl GF_AllocWaveOutChannel
 	ldr r0, [sp, #0x38]
 	ldr r2, [sp, #0x1c]
 	str r0, [sp]
 	add r0, r4, #0
 	add r1, r7, #0
 	mov r3, #0xe
-	bl sub_020057AC
+	bl GF_WaveOutStartReverse
 	ldr r1, [sp, #0x1c]
 	mov r0, #0xe
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_02005748
+	bl GF_SetWaveOutPan
 	ldr r1, [sp, #0x38]
 	mov r0, #0xd
 	bl sub_02006838
 	mov r1, #0x1a
 	mov r0, #0xe
 	lsl r1, r1, #0xa
-	bl sub_02005760
+	bl GF_SetWaveOutSpeed
 	b _02006814
 	.balign 4, 0
 _02006740: .word 0x000001EE
@@ -1384,7 +1384,7 @@ sub_02006820: ; 0x02006820
 	bl GF_SndHandleSetInitialVolume
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02005464
+	bl GF_SndSetVChatVol
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02006820
 
@@ -1464,17 +1464,17 @@ _020068C2:
 	cmp r0, #1
 	bne _020068E0
 	mov r0, #0xe
-	bl sub_020058B8
+	bl GF_WaveOutStopReverse
 	mov r0, #0xe
-	bl sub_02005680
+	bl GF_FreeWaveOutChannel
 _020068E0:
 	ldrb r0, [r4]
 	cmp r0, #1
 	bne _020068F2
 	mov r0, #0xf
-	bl sub_020058B8
+	bl GF_WaveOutStopReverse
 	mov r0, #0xf
-	bl sub_02005680
+	bl GF_FreeWaveOutChannel
 _020068F2:
 	bl sub_020068F8
 _020068F6:
@@ -1739,14 +1739,14 @@ sub_02006AF4: ; 0x02006AF4
 	mov r1, #1
 	strb r1, [r0]
 	mov r0, #0xf
-	bl sub_02005600
+	bl GF_AllocWaveOutChannel
 	ldr r0, [sp, #0x18]
 	add r1, r4, #0
 	str r0, [sp]
 	add r0, r5, #0
 	add r2, r6, #0
 	mov r3, #0xf
-	bl sub_020057AC
+	bl GF_WaveOutStartReverse
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -1765,7 +1765,7 @@ PlayFanfare: ; 0x02006B24
 	cmp r0, #0xff
 	beq _02006B48
 	mov r1, #1
-	bl sub_020053A8
+	bl GF_SndPause
 	b _02006B4E
 _02006B48:
 	mov r0, #1
@@ -1788,7 +1788,7 @@ _02006B4E:
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_02005464
+	bl GF_SndSetVChatVol
 	add r0, r5, #0
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -1802,7 +1802,7 @@ sub_02006B84: ; 0x02006B84
 	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	mov r0, #2
-	bl GF_SndPlayerCountPlayingSeqByPlayerNo
+	bl GF_SndPlayerCountPlayingSeqByPlayerNo       
 	cmp r0, #0
 	beq _02006B9C
 	mov r0, #1
@@ -1830,7 +1830,7 @@ sub_02006BB0: ; 0x02006BB0
 	add r1, r4, #0
 	bl NNS_SndPlayerStopSeq
 	mov r0, #6
-	bl sub_02005328
+	bl GF_GetHeapSaveLv
 	bl GF_Snd_LoadState
 	pop {r4, pc}
 	thumb_func_end sub_02006BB0
@@ -1853,7 +1853,7 @@ _02006BE0:
 	cmp r0, #0xff
 	beq _02006BF8
 	mov r1, #0
-	bl sub_020053A8
+	bl GF_SndPause
 _02006BF8:
 	mov r0, #0
 	bl SndRadio_PausePlayer
@@ -1899,7 +1899,7 @@ sub_02006C14: ; 0x02006C14
 	beq _02006C6A
 	add r6, r4, #0
 	ldr r7, _02006C88 ; =0x000002BD
-	bl sub_02004AB8
+	bl GF_SetUNK_58
 	add r0, r4, #0
 	bl GF_GetPlayerNoBySeq
 	mov r1, #0

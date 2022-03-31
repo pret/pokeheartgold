@@ -83,7 +83,7 @@ _0223792E:
 	cmp r0, #0x8f
 	beq _0223796E
 	mov r0, #1
-	bl sub_02005BEC
+	bl Snd_SetUNK_56
 	b _0223796E
 _02237962:
 	mov r0, #0x51
@@ -180,7 +180,7 @@ _02237A10:
 	add r0, r6, #0
 	bl ov12_0223843C
 	mov r0, #0
-	bl sub_02005BEC
+	bl Snd_SetUNK_56
 	mov r0, #0xa
 	str r0, [r4]
 	b _02237AFA
@@ -1656,7 +1656,7 @@ _0223872E:
 	cmp r0, #0
 	beq _02238748
 	mov r0, #0x7f
-	bl sub_020059D0
+	bl GF_SetMasterVolume
 _02238748:
 	mov r0, #0x92
 	lsl r0, r0, #6
@@ -9205,7 +9205,7 @@ ov12_0223BFFC: ; 0x0223BFFC
 	bl BeginNormalPaletteFade
 	bl sub_02005FA0
 	mov r0, #0
-	bl sub_020059D0
+	bl GF_SetMasterVolume
 	ldr r1, _0223C07C ; =0x00002478
 	mov r0, #1
 	ldr r2, [r5, r1]
@@ -70932,7 +70932,7 @@ _02259B78:
 	bl sub_0200E320
 _02259B82:
 	mov r0, #1
-	bl sub_02005B58
+	bl Snd_SetPVDoubleFlag
 	add sp, #0x6c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -71098,7 +71098,7 @@ _02259BE4:
 	add r0, #0x94
 	strh r1, [r0]
 	mov r0, #1
-	bl sub_02005B58
+	bl Snd_SetPVDoubleFlag
 	add r0, r7, #0
 	bl ov12_0223A7E0
 	mov r1, #0x65
@@ -74515,7 +74515,7 @@ _0225B77C:
 	pop {r4, r5, r6, pc}
 _0225B798:
 	mov r0, #0
-	bl sub_02005B58
+	bl Snd_SetPVDoubleFlag
 	ldrb r1, [r4, #0x11]
 	ldrb r2, [r4, #0x10]
 	ldr r0, [r4]
@@ -74720,7 +74720,7 @@ _0225B924:
 	pop {r4, r5, r6, pc}
 _0225B940:
 	mov r0, #0
-	bl sub_02005B58
+	bl Snd_SetPVDoubleFlag
 	ldrb r1, [r4, #0x11]
 	ldrb r2, [r4, #0x10]
 	ldr r0, [r4]
@@ -75298,7 +75298,7 @@ _0225BDD6:
 	pop {r3, r4, r5, pc}
 _0225BDFC:
 	mov r0, #0
-	bl sub_02005B58
+	bl Snd_SetPVDoubleFlag
 	add r1, r4, #0
 	add r2, r4, #0
 	add r1, #0x81
@@ -75708,7 +75708,7 @@ _0225C130:
 	pop {r4, r5, pc}
 _0225C156:
 	mov r0, #0
-	bl sub_02005B58
+	bl Snd_SetPVDoubleFlag
 	add r1, r4, #0
 	add r2, r4, #0
 	add r1, #0x81

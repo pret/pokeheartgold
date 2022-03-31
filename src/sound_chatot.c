@@ -10,7 +10,7 @@ BOOL ChatotSoundMain(void) {
 
     if (*r0 == 1) {
         if (*r4 == 1) {
-            if (sub_02005738(14) == 0) {
+            if (GF_WaveOutIsPlaying(14) == 0) {
                 sub_02006DB8();
                 return TRUE;
             }
@@ -44,7 +44,7 @@ BOOL Chatot_checkCry(SOUND_CHATOT *a0) {
 }
 
 BOOL sub_02006D04(SOUND_CHATOT *a0, u32 a1, s32 a2, s32 a3) {
-    s8 *sp0 = sub_020059D8();
+    s8 *sp0 = GF_GetWaveBufAdrs();
     s8 *sp4 = GF_SdatGetAttrPtr(30);
 
     if (!Chatot_checkCry(a0)) {
@@ -53,16 +53,16 @@ BOOL sub_02006D04(SOUND_CHATOT *a0, u32 a1, s32 a2, s32 a3) {
 
     sub_02006300(0);
     sub_02006DB8();
-    sub_02005600(14);
+    GF_AllocWaveOutChannel(14);
     u16 r4 = (LCRandom() % 8192);
 
     Chatot_Decode(sp0, Chatot_GetData(a0));
 
     UnkStruct_02004A44_0 sp8;
 
-    sp8.unk00 = sub_020055AC(14);
+    sp8.unk00 = Snd_WaveOutHandleGet(14);
     sp8.unk04 = 0;
-    sp8.unk08 = sub_020059D8();
+    sp8.unk08 = GF_GetWaveBufAdrs();
     sp8.unk0c = 0;
     sp8.unk10 = 0;
     sp8.unk14 = 2000;
@@ -71,8 +71,8 @@ BOOL sub_02006D04(SOUND_CHATOT *a0, u32 a1, s32 a2, s32 a3) {
     sp8.unk24 = a3 / 2 + 64;
     sp8.unk1c = a2;
 
-    BOOL ret = sub_020056E8(&sp8, 14);
-    sub_02005774(14, a2);
+    BOOL ret = GF_WaveOutStart(&sp8, 14);
+    GF_SetWaveOutVolume(14, a2);
     *sp4 = 1;
     sub_02006E3C(0);
 
@@ -84,8 +84,8 @@ void sub_02006DB8() {
     u8 *r4 = GF_SdatGetAttrPtr(30);
 
     if (*r5 == 1) {
-        sub_020058B8(14);
-        sub_02005680(14);
+        GF_WaveOutStopReverse(14);
+        GF_FreeWaveOutChannel(14);
     }
 
     *r4 = 0;
@@ -95,7 +95,7 @@ u32 Chatot_startRecording(void) {
     MICAutoParam st0;
     
     st0.type = MIC_SAMPLING_TYPE_SIGNED_8BIT;
-    st0.buffer = sub_020059D8();
+    st0.buffer = GF_GetWaveBufAdrs();
     st0.size = 2000;
     if ((st0.size & 0x1f) != 0) {
         st0.size &= ~0x1f;
@@ -113,7 +113,7 @@ void Chatot_stopRecording() {
 }
 
 void Chatot_saveRecording(SOUND_CHATOT *a0) {
-    Chatot_Encode(a0, sub_020059D8());
+    Chatot_Encode(a0, GF_GetWaveBufAdrs());
 }
 
 void sub_02006E3C(u8 a0) {

@@ -166,9 +166,9 @@ _02054F00:
 sub_02054F14: ; 0x02054F14
 	push {r3, lr}
 	bl sub_02005FA0
-	bl sub_020053F0
+	bl GF_ClearPauseFlags
 	mov r0, #0
-	bl sub_02004AD8
+	bl GF_SetSndScene
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end sub_02054F14
@@ -280,7 +280,7 @@ Fsys_PlayOrFadeToNewMusicId: ; 0x02054FDC
 	add r7, r2, #0
 	bl PlayerAvatar_GetState
 	add r6, r0, #0
-	bl GF_SND_BGM_DisableCheck
+	bl GF_GetCntrlBgmFlag
 	cmp r0, #1
 	bne _02054FFC
 	add sp, #0x10
@@ -295,7 +295,7 @@ _02054FFC:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _0205500C:
-	bl sub_020053F0
+	bl GF_ClearPauseFlags
 	add r0, r5, #0
 	add r1, r7, #0
 	add r2, sp, #0xc
@@ -422,7 +422,7 @@ sub_020550E4: ; 0x020550E4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
-	bl GF_SND_BGM_DisableCheck
+	bl GF_GetCntrlBgmFlag
 	cmp r0, #1
 	beq _0205510C
 	bl GF_GetCurrentPlayingBGM
@@ -446,16 +446,16 @@ sub_02055110: ; 0x02055110
 	add r5, r0, #0
 	add r6, r1, #0
 	add r4, r2, #0
-	bl GF_SND_BGM_DisableCheck
+	bl GF_GetCntrlBgmFlag
 	cmp r0, #1
 	beq _02055160
 	mov r0, #0
-	bl sub_02004AD8
+	bl GF_SetSndScene
 	add r0, r5, #0
 	add r1, r6, #0
 	bl GetMapMusic
 	add r6, r0, #0
-	bl sub_02004AC8
+	bl GF_SetZoneBGM
 	mov r0, #1
 	bl sub_02005CF4
 	mov r1, #2
@@ -491,7 +491,7 @@ sub_02055164: ; 0x02055164
 	add r0, r5, #0
 	add r1, r4, #0
 	bl GetMapMusic
-	bl sub_02004AC8
+	bl GF_SetZoneBGM
 	mov r0, #1
 	bl sub_02005CF4
 	mov r0, #0

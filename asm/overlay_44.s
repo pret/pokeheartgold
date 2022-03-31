@@ -2602,7 +2602,7 @@ _0222B2CA:
 	ldr r1, _0222B364 ; =0x0000047D
 	mov r0, #0xb
 	mov r2, #1
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	add r0, r5, #0
 	bl ov44_0222B0B0
 	ldr r0, [r5]
@@ -8202,11 +8202,11 @@ ov44_0222E030: ; 0x0222E030
 	bne _0222E056
 	bl IsNighttime
 	mov r0, #0
-	bl sub_02004AD8
+	bl GF_SetSndScene
 	ldr r1, _0222E070 ; =0x00000427
 	mov r0, #0xb
 	mov r2, #1
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	pop {r4, pc}
 _0222E056:
 	bl GF_GetCurrentPlayingBGM
@@ -20323,7 +20323,7 @@ ov44_02233F3C: ; 0x02233F3C
 	cmp r0, #0
 	beq _02233F4E
 	bl GF_GetCurrentPlayingBGM
-	bl sub_02005448
+	bl GF_SndSetVChatVolBySeqNo
 _02233F4E:
 	pop {r3, pc}
 	thumb_func_end ov44_02233F3C

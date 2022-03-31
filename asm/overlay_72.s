@@ -830,7 +830,7 @@ _02237E36:
 	mov r1, #0
 	mov r0, #0x34
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	ldr r1, _02237F90 ; =0x00020020
 	mov r0, #0x43
 	bl AllocFromHeap
@@ -846,7 +846,7 @@ _02237E36:
 	ldr r1, _02237F94 ; =0x0000047D
 	mov r0, #0xb
 	mov r2, #1
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	mov r0, #1
 	bl sub_02002B8C
 	ldr r2, _02237F98 ; =0x04000304

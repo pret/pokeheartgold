@@ -18,7 +18,7 @@ _021E7752:
 	mov r1, #0
 	mov r0, #0x3e
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	mov r2, #2
 	mov r0, #3
 	mov r1, #0x22

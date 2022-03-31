@@ -343,7 +343,7 @@ _02052C20:
 	ldr r0, [r5, #0x40]
 	sub r0, r0, #1
 	str r0, [r5, #0x40]
-	bl sub_020059D0
+	bl GF_SetMasterVolume
 	ldr r0, [r5, #0x40]
 	cmp r0, #0
 	bne _02052CA8
@@ -377,7 +377,7 @@ _02052C5E:
 	add r1, r5, #0
 	bl sub_02052EFC
 	mov r0, #0x7f
-	bl sub_020059D0
+	bl GF_SetMasterVolume
 	add r5, #0x10
 	add r0, r6, #0
 	add r1, r5, #0

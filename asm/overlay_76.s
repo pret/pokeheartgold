@@ -151,7 +151,7 @@ _021E59B6:
 	strb r2, [r4, r0]
 	mov r0, #0xe
 	lsl r1, r1, #2
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	ldr r0, _021E5A9C ; =ov76_021E5D94
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB

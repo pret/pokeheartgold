@@ -191,7 +191,7 @@ BOOL GF_SndIsFanfarePlaying(void) {
     SND_WORK *work;
 
     work = GetSoundDataPointer();
-    if (GF_SndPlayerCountPlayingSeqByPlayerNo(PLAYER_ME) != 0) {
+    if (GF_SndPlayerCountPlayingSeqByPlayerNo (PLAYER_ME) != 0) {
         return TRUE;
     }
     if (work->afterFanfareWaitTimer != 0) {

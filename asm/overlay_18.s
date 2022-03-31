@@ -393,7 +393,7 @@ _021E5BD0:
 	mov r0, #1
 	mov r1, #0x7f
 	bl GF_SndHandleSetPlayerVolume
-	bl sub_02004B10
+	bl GF_ClearHeapAndSndSubScene
 	ldr r0, _021E5C18 ; =ov18_021E5C3C
 	blx ov123_0225F688
 	cmp r0, #0
@@ -6474,7 +6474,7 @@ ov18_021E8C30: ; 0x021E8C30
 	mov r1, #0
 	mov r0, #0x36
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	ldr r0, _021E8D30 ; =ov18_021E5C40
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB

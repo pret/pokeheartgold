@@ -30,7 +30,7 @@ ov108_021E5900: ; 0x021E5900
 	mov r1, #0
 	mov r0, #0x43
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -5999,7 +5999,7 @@ _021E8862:
 	mov r1, #0
 	mov r0, #0x43
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]

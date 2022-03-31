@@ -306,7 +306,7 @@ _02201E16:
 	mov r1, #0
 	mov r0, #0x45
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	mov r0, #0
 	add r4, #0x70
 	strh r0, [r4]

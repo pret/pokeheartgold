@@ -40,7 +40,7 @@ _021E5912:
 	str r0, [r4, #0x10]
 	mov r0, #0x4a
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	add r0, r4, #0
 	bl ov110_021E5A74
 	ldr r0, [r5]

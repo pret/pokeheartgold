@@ -78,7 +78,7 @@ _021E5980:
 	mov r0, #0x42
 	add r2, r1, #0
 	str r1, [r7]
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

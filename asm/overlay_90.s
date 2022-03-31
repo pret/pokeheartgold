@@ -1896,7 +1896,7 @@ ov90_02259588: ; 0x02259588
 	mov r0, #0x13
 	lsl r1, r1, #6
 	mov r2, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	ldr r1, _022596A0 ; =0x000005F4
 	add r0, r5, #0
 	bl AllocFromHeap

@@ -36,7 +36,6 @@ void GF_SndStopPlayerBgm(void);
 void GF_SndStopPlayerField(void);
 void PlayBGM(u16 seqno);
 void GF_SndStartFadeInBGM(u32, u32, u32);
-u32 GF_SndPlayerCountPlayingSeqByPlayerNo(u32 playerno);
 void InitSoundData(SOUND_CHATOT *chatot, OPTIONS *options);
 void GF_SndCallback(void);
 BOOL GF_SndIsFanfarePlaying(void);
@@ -57,6 +56,6 @@ BOOL GF_SndWorkMicCounterFull(void);
 void GF_SndWorkMicCounterReset(void);
 void GF_SndWorkSetGbSoundsVolume(u8 a0);
 u8 GF_SndWorkGetGbSoundsVolume(void);
-void GF_SndStartFadeOutBGM(u16 seqno, u8 length);
+void GF_SndStartFadeOutBGM(u16 seqno, int length);
 
 #endif //POKEHEARTGOLD_SOUND_H

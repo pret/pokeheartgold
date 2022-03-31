@@ -342,7 +342,7 @@ _021E5B8C:
 	mov r1, #0
 	mov r0, #0x45
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	mov r0, #0
 	strh r0, [r4, #0x10]
 	mov r0, #1

@@ -1556,7 +1556,7 @@ _021E63AA:
 	strb r1, [r5, r0]
 	mov r0, #7
 	add r1, r4, #0
-	bl sub_020053A8
+	bl GF_SndPause
 	b _021E6438
 _021E63C4:
 	sub r1, #0x1d
@@ -2490,11 +2490,11 @@ ov96_021E6A94: ; 0x021E6A94
 	mov r1, #9
 	bl ov96_021E5FC8
 	mov r0, #0
-	bl sub_02004AD8
+	bl GF_SetSndScene
 	ldr r1, _021E6AE4 ; =0x0000046F
 	mov r0, #0x19
 	mov r2, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 _021E6AE0:
 	mov r0, #0
 	pop {r4, pc}
@@ -2851,23 +2851,23 @@ ov96_021E6D54: ; 0x021E6D54
 	cmp r1, r0
 	bne _021E6DAA
 	mov r0, #0
-	bl sub_02004AD8
+	bl GF_SetSndScene
 	ldr r1, _021E6DE0 ; =0x00000472
 	mov r0, #0x18
 	mov r2, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	b _021E6DBA
 _021E6DAA:
 	mov r0, #0
-	bl sub_02004AD8
+	bl GF_SetSndScene
 	ldr r1, _021E6DE4 ; =0x00000471
 	mov r0, #0x18
 	mov r2, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 _021E6DBA:
 	mov r0, #7
 	mov r1, #1
-	bl sub_020053A8
+	bl GF_SndPause
 	add r0, r4, #0
 	mov r1, #0x11
 	bl ov96_021E5FC8
@@ -3546,11 +3546,11 @@ ov96_021E72CC: ; 0x021E72CC
 	mov r1, #0x21
 	bl ov96_021E5FC8
 	mov r0, #0
-	bl sub_02004AD8
+	bl GF_SetSndScene
 	ldr r1, _021E731C ; =0x00000474
 	mov r0, #0x19
 	mov r2, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 _021E7318:
 	mov r0, #0
 	pop {r4, pc}
@@ -20411,7 +20411,7 @@ ov96_021EF280: ; 0x021EF280
 	bl GF_GetCurrentPlayingBGM
 	add r1, r5, #0
 	add r2, sp, #0
-	bl sub_02005B78
+	bl GF_SndPlayerReadVariableBySeq
 	add r1, sp, #0
 	mov r0, #0
 	ldrsh r1, [r1, r0]
@@ -35027,7 +35027,7 @@ _021F6692:
 	ldrb r0, [r7]
 	ldr r1, _021F6794 ; =0x0000FFFF
 	ldr r2, [r2]
-	bl sub_02005944
+	bl GF_SetHandleTrackByPlayerNo
 	mov r0, #1
 	str r0, [sp]
 	ldr r0, [sp, #8]
@@ -75878,7 +75878,7 @@ _0220ACCC:
 	add r3, r4, r3
 	mov r2, #0x40
 	sub r2, r2, r3
-	bl sub_0200592C
+	bl GF_SetHandleTrackBySeqNo
 _0220ACFC:
 	ldr r0, [sp, #8]
 	cmp r0, #0

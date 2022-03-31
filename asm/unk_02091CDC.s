@@ -66,9 +66,9 @@ _02091D40:
 	add r1, r6, #0
 	bl StopBGM
 	add r0, r6, #0
-	bl sub_02005AF8
+	bl GF_SndSetBgmChannelAndReverb
 	add r0, r6, #0
-	bl sub_02004AD8
+	bl GF_SetSndScene
 	add r0, r6, #0
 	add r1, r0, #0
 	bl sub_0200FBF4

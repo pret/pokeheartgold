@@ -427,13 +427,13 @@ sub_02050960: ; 0x02050960
 	b _020509EA
 _0205098A:
 	mov r0, #0
-	bl sub_02004AD8
+	bl GF_SetSndScene
 	ldr r1, [r5, #8]
 	mov r0, #5
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	mov r2, #1
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	ldr r1, [r5, #0x10]
 	add r0, r7, #0
 	bl sub_020506AC

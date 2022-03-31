@@ -3234,9 +3234,9 @@ ov74_MainMenu_AppInit: ; 0x02228920
 	str r1, [r4, r0]
 _022289C4:
 	mov r0, #0
-	bl sub_02005AF8
+	bl GF_SndSetBgmChannelAndReverb
 	mov r0, #0
-	bl sub_02004AD8
+	bl GF_SetSndScene
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov74_MainMenu_AppInit
@@ -4282,7 +4282,7 @@ ov74_02229200: ; 0x02229200
 	ldr r1, _02229290 ; =0x0000047E
 	mov r0, #9
 	mov r2, #1
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -7874,7 +7874,7 @@ ov74_0222AE6C: ; 0x0222AE6C
 	ldr r1, _0222AF18 ; =0x0000047E
 	mov r0, #0xa
 	mov r2, #1
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	mov r0, #0x54
 	bl ov74_0223512C
 	bl ov74_02235230
@@ -24571,7 +24571,7 @@ ov74_02233230: ; 0x02233230
 	str r0, [r4, r1]
 	ldr r1, _022332E8 ; =0x0000047E
 	mov r0, #9
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	bl OS_IsTickAvailable
 	cmp r0, #0
 	bne _022332C6

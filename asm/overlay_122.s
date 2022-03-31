@@ -431,7 +431,7 @@ _021E5C22:
 	mov r1, #0
 	mov r0, #0x40
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	cmp r4, #0
 	beq _021E5C98
 	ble _021E5C7E
@@ -561,7 +561,7 @@ _021E5D5A:
 	mov r1, #0
 	mov r0, #0x46
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021E5D68:
@@ -1475,7 +1475,7 @@ _021E6432:
 	mov r1, #0
 	mov r0, #0x40
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	ldr r0, _021E64E4 ; =0x0000092A
 	bl PlaySE
 	add r0, r5, #0
@@ -1499,7 +1499,7 @@ _021E649C:
 	mov r1, #0
 	mov r0, #0x46
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	ldr r0, [r4, #0x18]
 	mov r1, #3
 	bl BgClearTilemapBufferAndCommit
@@ -5231,7 +5231,7 @@ _021E80A4:
 	mov r1, #0
 	mov r0, #0x46
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers

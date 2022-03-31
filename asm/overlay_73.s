@@ -125,7 +125,7 @@ _021E5916:
 	mov r1, #0
 	mov r0, #0x34
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	ldr r2, _021E5AAC ; =0x04000304
 	ldr r0, _021E5AB0 ; =0xFFFF7FFF
 	ldrh r1, [r2]
@@ -4865,7 +4865,7 @@ _021E7E62:
 	mov r1, #0
 	mov r0, #0x34
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	ldr r1, _021E7FA8 ; =0x00020020
 	mov r0, #0x96
 	bl AllocFromHeap
@@ -4881,7 +4881,7 @@ _021E7E62:
 	ldr r1, _021E7FAC ; =0x0000047D
 	mov r0, #0xb
 	mov r2, #1
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	ldr r2, _021E7FB0 ; =0x04000304
 	ldr r0, _021E7FB4 ; =0xFFFF7FFF
 	ldrh r1, [r2]

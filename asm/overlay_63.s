@@ -89,11 +89,11 @@ ov63_0221BE20: ; 0x0221BE20
 	ldr r1, _0221BF20 ; =0x000003F7
 	mov r0, #8
 	mov r2, #1
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	mov r1, #0
 	mov r0, #0x47
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	mov r1, #0x1e
 	mov r0, #0
 	lsl r1, r1, #4

@@ -157,7 +157,7 @@ _0208291E:
 	mov r1, #0
 	mov r0, #0x34
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	mov r0, #0x10
 	str r0, [sp]
 	mov r1, #1

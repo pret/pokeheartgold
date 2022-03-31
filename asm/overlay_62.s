@@ -1137,7 +1137,7 @@ ov62_021E61AC: ; 0x021E61AC
 	str r0, [r5, #0x10]
 	str r6, [r5, #0x14]
 	str r7, [r5, #0x18]
-	bl sub_02005518
+	bl SndWorkMicCounterFull
 	str r0, [r5, #0x34]
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov62_021E61AC
@@ -1156,7 +1156,7 @@ ov62_021E61FC: ; 0x021E61FC
 ov62_021E620C: ; 0x021E620C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02005518
+	bl SndWorkMicCounterFull
 	add r4, r0, #0
 	beq _021E621E
 	ldr r0, [r5, #0x34]

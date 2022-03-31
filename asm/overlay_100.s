@@ -1539,7 +1539,7 @@ _021E64FC:
 	strb r0, [r4, #6]
 	mov r0, #0x37
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1646,7 +1646,7 @@ ov100_Phone_OvyExit: ; 0x021E65BC
 	ldr r4, [r4]
 	add r0, r5, #0
 	bl OverlayManager_FreeData
-	bl sub_02004B10
+	bl GF_ClearHeapAndSndSubScene
 	bl sub_0203E354
 	add r0, r4, #0
 	bl DestroyHeap

@@ -16554,7 +16554,7 @@ ov101_021EF848: ; 0x021EF848
 	str r0, [r4]
 	mov r0, #0x37
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl GF_SetDataByScene
 	add r0, r4, #0
 	bl ov101_021EF96C
 	mov r0, #1

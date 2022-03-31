@@ -15177,7 +15177,7 @@ ScrCmd_803: ; 0x02047DC8
 ScrCmd_805: ; 0x02047E14
 	push {r3, lr}
 	mov r0, #0x4b
-	bl sub_02004B24
+	bl GF_Snd_LoadGroupByScene
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ScrCmd_805
