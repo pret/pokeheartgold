@@ -3,7 +3,9 @@
 
 #include "unk_02009D48.h"
 
-struct UnkStruct_02024624 {
+struct UnkStruct_02024624;
+
+struct UnkStruct_02024624Header {
     void *unk0;
     const struct UnkStruct_02009D48 *unk4;
     VecFx32 unk8;
@@ -15,11 +17,11 @@ struct UnkStruct_02024624 {
 };
 
 void sub_02024AA8(void *, s32);
-void sub_02024504(void *);
-void sub_0202457C(void *);
-void *sub_02024624(const struct UnkStruct_02024624 *template);
-void sub_0202484C(void *, int);
-void sub_020248F0(void *, int);
-void sub_02024830(void *, int);
+void sub_02024504(UnkStruct_02009F40 *);
+void sub_0202457C(UnkStruct_02009F40 *);
+struct UnkStruct_02024624 *sub_02024624(const struct UnkStruct_02024624Header *template);
+void sub_0202484C(struct UnkStruct_02024624 *, int);
+void sub_020248F0(struct UnkStruct_02024624 *, int);
+void sub_02024830(struct UnkStruct_02024624 *, int);
 
 #endif //POKEHEARTGOLD_UNK_02023694_H

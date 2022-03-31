@@ -22,7 +22,6 @@
 #include "unk_02020B8C.h"
 #include "unk_02013FDC.h"
 #include "gf_gfx_loader.h"
-#include "math_util.h"
 
 #define HEAPID_STARTERCHOOSE       46
 
@@ -59,9 +58,9 @@ struct UnkStarterChooseSub_3B4 {
     void *unk_060[3];
     void *unk_06C[3];
     struct SomeDrawPokemonStruct unk_078;
-    void *unk_088;
+    UnkStruct_02009F40 *unk_088;
     u8 unk_08C[0x128];
-    void *unk_1B4[3];
+    struct UnkStruct_02024624 *unk_1B4[3];
 };
 
 struct UnkStarterChooseSub_368_4 {
@@ -102,7 +101,7 @@ struct ChooseStarterAppWork {
     u8 frame; // 3A4
     u8 unk_3A5;
     u8 unk_3A6;
-    u8 filler_3A7[0x1];
+    u8 unk_3A7;
     int unk_3A8;
     int unk_3AC;
     STRING *unk_3B0;
@@ -154,9 +153,10 @@ int ov61_021E6F98(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 a3);
 void ov61_021E6FC4(struct ChooseStarterAppWork *work);
 void ov61_021E7108(struct _2DGfxResMan *charResMan, struct _2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx);
 void ov61_021E7188(struct UnkStarterChooseSub_3B4 *a0, u8 idx, HeapID heapId);
+void ov61_021E7220(struct ChooseStarterAppWork *work);
 void ov61_021E7248(struct UnkStarterChooseSub_3B4 *a0);
 BOOL ov61_021E7268(struct ChooseStarterAppWork *work, int a1, int a2);
-void ov61_021E7220(struct ChooseStarterAppWork *work);
+u16 ov61_021E7348(const int *a0, const int *a1, int a2, int a3);
 
 BOOL ChooseStarterApplication_OvyInit(OVY_MANAGER *ovy, int *state_p) {
     struct ChooseStarterAppWork *work;
@@ -1095,7 +1095,7 @@ void ov61_021E7108(struct _2DGfxResMan *charResMan, struct _2DGfxResMan *plttRes
 
 void ov61_021E7188(struct UnkStarterChooseSub_3B4 *a0, u8 idx, HeapID heapId) {
     UnkStruct_02009D48 header;
-    struct UnkStruct_02024624 sp2C;
+    struct UnkStruct_02024624Header sp2C;
 
     sub_02009D48(&header, idx, idx, idx, idx, -1, -1, FALSE, 0, a0->charResMan, a0->plttResMan, a0->cellResMan, a0->animResMan, NULL, NULL);
     sp2C.unk0 = a0->unk_088;
@@ -1116,4 +1116,57 @@ void ov61_021E7188(struct UnkStarterChooseSub_3B4 *a0, u8 idx, HeapID heapId) {
     sub_0202484C(a0->unk_1B4[idx], 0);
     sub_020248F0(a0->unk_1B4[idx], 0);
     sub_02024830(a0->unk_1B4[idx], 0);
+}
+
+void ov61_021E7220(struct ChooseStarterAppWork *work) {
+    ov61_021E7248(&work->unk_3B4);
+    sub_02024830(work->unk_3B4.unk_1B4[work->unk_394], 1);
+}
+
+void ov61_021E7248(struct UnkStarterChooseSub_3B4 *a0) {
+    int i;
+
+    for (i = 0; i < 3; i++) {
+        sub_02024830(a0->unk_1B4[i], 0);
+    }
+}
+
+BOOL ov61_021E7268(struct ChooseStarterAppWork *work, int a1, int a2) {
+    MtxFx33 sp18;
+    u16 r6;
+    u32 r5 = work->unk_394;
+    work->unk_3A7++;
+    r6 = ov61_021E7348(&a1, &a2, work->unk_3A7, 8);
+    {
+        extern const VecFx32 ov61_021E73D4;
+        VecFx32 sp0C = ov61_021E73D4;
+        extern const VecFx32 ov61_021E738C;
+        VecFx32 sp00 = ov61_021E738C;
+        sp00.y += FX32_CONST(13.453);
+        VEC_Subtract(&sp0C, &sp00, &sp0C);
+        MTX_RotX33(&sp18, FX_SinIdx(r6), FX_CosIdx(r6));
+        MTX_MultVec33(&sp0C, &sp18, &sp0C);
+        VEC_Add(&sp0C, &sp00, &sp0C);
+        ov61_021E6934(&work->unk_070[r5 + 3], sp0C.x, sp0C.y, sp0C.z);
+        work->unk_070[r5 + 3].unk_76 = r6;
+        if (work->unk_3A7 >= 8) {
+            work->unk_3A7 = 0;
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+}
+
+u16 ov61_021E7348(const int *a0, const int *a1, int a2, int a3) {
+    u16 ret;
+    int addend;
+    if (*a1 >= *a0) {
+        ret = *a1 - *a0;
+        addend = (ret * a2) / a3;
+    } else {
+        ret = *a0 - *a1;
+        addend = -((ret * a2) / a3);
+    }
+    return *a0 + addend;
 }
