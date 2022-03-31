@@ -10,7 +10,7 @@
 #include "gf_3d_vramman.h"
 #include "unk_02005D10.h"
 #include "unk_02023694.h"
-#include "unk_0200A090.h"
+#include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_020215A0.h"
 #include "unk_02022588.h"
@@ -41,18 +41,18 @@ struct ChooseStarterAnm {
 };
 
 struct UnkStarterChooseSub_3B4_18 {
-    struct UnkStruct_0200A090_sub4 *unk_00;
-    struct UnkStruct_0200A090_sub4 *unk_04;
-    struct UnkStruct_0200A090_sub4 *unk_08;
-    struct UnkStruct_0200A090_sub4 *unk_0C;
+    struct _2DGfxResObj *charResObj;
+    struct _2DGfxResObj *plttResObj;
+    struct _2DGfxResObj *cellResObj;
+    struct _2DGfxResObj *animResObj;
     u8 filler_10[0x8];
 };
 
 struct UnkStarterChooseSub_3B4 {
-    struct UnkStruct_0200A090 *unk_000;
-    struct UnkStruct_0200A090 *unk_004;
-    struct UnkStruct_0200A090 *unk_008;
-    struct UnkStruct_0200A090 *unk_00C;
+    struct _2DGfxResMan *charResMan;
+    struct _2DGfxResMan *plttResMan;
+    struct _2DGfxResMan *cellResMan;
+    struct _2DGfxResMan *animResMan;
     u8 filler_010[0x8];
     struct UnkStarterChooseSub_3B4_18 unk_018[3];
     void *unk_060[3];
@@ -151,7 +151,7 @@ int ov61_021E6E40(struct ChooseStarterAppWork *work);
 int ov61_021E6F80(int a0, u8 a1, int a2);
 int ov61_021E6F98(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 a3);
 void ov61_021E6FC4(struct ChooseStarterAppWork *work);
-void ov61_021E7108(void *a0, void *a1, void *charData, void *plttData, u8 idx);
+void ov61_021E7108(struct _2DGfxResMan *charResMan, struct _2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx);
 void ov61_021E7188(struct UnkStarterChooseSub_3B4 *a0, u8 idx, HeapID heapId);
 void ov61_021E7248(struct UnkStarterChooseSub_3B4 *a0);
 BOOL ov61_021E7268(struct ChooseStarterAppWork *work, int a1, int a2);
@@ -452,10 +452,10 @@ BOOL ChooseStarterApplication_OvyExit(OVY_MANAGER *ovy, int *state) {
     ov61_021E6750(work);
     ov61_021E6068(&work->unk_3B4);
     sub_02024504(work->unk_3B4.unk_088);
-    sub_0200A0D0(work->unk_3B4.unk_000);
-    sub_0200A0D0(work->unk_3B4.unk_004);
-    sub_0200A0D0(work->unk_3B4.unk_008);
-    sub_0200A0D0(work->unk_3B4.unk_00C);
+    Destroy2DGfxResObjMan(work->unk_3B4.charResMan);
+    Destroy2DGfxResObjMan(work->unk_3B4.plttResMan);
+    Destroy2DGfxResObjMan(work->unk_3B4.cellResMan);
+    Destroy2DGfxResObjMan(work->unk_3B4.animResMan);
     sub_0200B244();
     sub_0202168C();
     sub_02022608();
@@ -477,12 +477,12 @@ void ov61_021E6068(struct UnkStarterChooseSub_3B4 *a0) {
     int i;
 
     for (i = 0; i < 3; i++) {
-        sub_0200AEB0(a0->unk_018[i].unk_00);
-        sub_0200B0A8(a0->unk_018[i].unk_04);
-        sub_0200A75C(a0->unk_000, a0->unk_018[i].unk_00);
-        sub_0200A75C(a0->unk_004, a0->unk_018[i].unk_04);
-        sub_0200A75C(a0->unk_008, a0->unk_018[i].unk_08);
-        sub_0200A75C(a0->unk_00C, a0->unk_018[i].unk_0C);
+        sub_0200AEB0(a0->unk_018[i].charResObj);
+        sub_0200B0A8(a0->unk_018[i].plttResObj);
+        DestroySingle2DGfxResObj(a0->charResMan, a0->unk_018[i].charResObj);
+        DestroySingle2DGfxResObj(a0->plttResMan, a0->unk_018[i].plttResObj);
+        DestroySingle2DGfxResObj(a0->cellResMan, a0->unk_018[i].cellResObj);
+        DestroySingle2DGfxResObj(a0->animResMan, a0->unk_018[i].animResObj);
         FreeToHeap(a0->unk_060[i]);
         FreeToHeap(a0->unk_06C[i]);
     }
@@ -653,10 +653,10 @@ void ov61_021E6488(struct ChooseStarterAppWork *work) {
 void ov61_021E6508(struct ChooseStarterAppWork *work) {
     struct UnkStarterChooseSub_3B4 *r4 = &work->unk_3B4;
     r4->unk_088 = sub_02009F40(3, &r4->unk_08C, work->heapId);
-    r4->unk_000 = sub_0200A090(3, 0, work->heapId);
-    r4->unk_004 = sub_0200A090(3, 1, work->heapId);
-    r4->unk_008 = sub_0200A090(3, 2, work->heapId);
-    r4->unk_00C = sub_0200A090(3, 3, work->heapId);
+    r4->charResMan = Create2DGfxResObjMan(3, 0, work->heapId);
+    r4->plttResMan = Create2DGfxResObjMan(3, 1, work->heapId);
+    r4->cellResMan = Create2DGfxResObjMan(3, 2, work->heapId);
+    r4->animResMan = Create2DGfxResObjMan(3, 3, work->heapId);
     GX_EngineBToggleLayers(0x10, GX_LAYER_TOGGLE_ON);
 }
 
@@ -1048,10 +1048,12 @@ void ov61_021E6FC4(struct ChooseStarterAppWork *work) {
         // r7=sp14=r5=work->unk_3B4
         // sp10=r6=work
         // sp24=r5->unk_078
-        r5->unk_018[i].unk_00 = sub_0200A3C8(r5->unk_000, narc, 9, FALSE, i, 2, work->heapId);
-        r5->unk_018[i].unk_04 = sub_0200A480(r5->unk_004, narc, 6, FALSE, i, 2, 1, work->heapId);
-        r5->unk_018[i].unk_08 = sub_0200A540(r5->unk_008, narc, 10, FALSE, i, 2, work->heapId);
-        r5->unk_018[i].unk_0C = sub_0200A540(r5->unk_00C, narc, 16, FALSE, i, 3, work->heapId);
+        r5->unk_018[i].charResObj = AddCharResObjFromOpenNarc(r5->charResMan, narc, 9, FALSE, i, 2, work->heapId);
+        r5->unk_018[i].plttResObj = AddPlttResObjFromOpenNarc(r5->plttResMan, narc, 6, FALSE, i, 2, 1, work->heapId);
+        r5->unk_018[i].cellResObj = AddCellOrAnimResObjFromOpenNarc(r5->cellResMan, narc, 10, FALSE, i,
+                                                                    GF_GFX_RES_TYPE_CELL, work->heapId);
+        r5->unk_018[i].animResObj = AddCellOrAnimResObjFromOpenNarc(r5->animResMan, narc, 16, FALSE, i,
+                                                                    GF_GFX_RES_TYPE_ANIM, work->heapId);
         sub_020701E4(
             &r5->unk_078,
             GetMonData(work->choices[i], MON_DATA_SPECIES, NULL),
@@ -1063,9 +1065,29 @@ void ov61_021E6FC4(struct ChooseStarterAppWork *work) {
         );
         r5->unk_060[i] = sub_0201442C(r5->unk_078.narcID, r5->unk_078.charDataID, work->heapId);
         r5->unk_06C[i] = sub_02014450(r5->unk_078.narcID, r5->unk_078.palDataID, work->heapId);
-        ov61_021E7108(r5->unk_000, r5->unk_004, r5->unk_060[i], r5->unk_06C[i], i);
+        ov61_021E7108(r5->charResMan, r5->plttResMan, r5->unk_060[i], r5->unk_06C[i], i);
         ov61_021E7188(r5, i, work->heapId);
     }
 
     NARC_dtor(narc);
+}
+
+void ov61_021E7108(struct _2DGfxResMan *charResMan, struct _2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx) {
+    struct _2DGfxResObj *r5 = sub_0200A7BC(charResMan, idx);
+    struct _2DGfxResObj *r7 = sub_0200A7BC(plttResMan, idx);
+    NNSG2dImageProxy *r5_2;
+    const NNSG2dImagePaletteProxy *r7_2;
+    u32 imageloc;
+    u32 plttloc;
+
+    sub_0200ADA4(r5);
+    sub_0200B00C(r7);
+    r5_2 = sub_0200AF00(r5);
+    r7_2 = sub_0200B0F8(r7, r5_2);
+    imageloc = NNS_G2dGetImageLocation(r5_2, NNS_G2D_VRAM_TYPE_2DSUB);
+    plttloc = NNS_G2dGetImagePaletteLocation(r7_2, NNS_G2D_VRAM_TYPE_2DSUB);
+    DC_FlushRange(charData, 0xC80);
+    GXS_LoadOBJ(charData, imageloc, 0xC80);
+    DC_FlushRange(plttData, 0x20);
+    GXS_LoadOBJPltt(plttData, plttloc, 0x20);
 }

@@ -3,7 +3,7 @@
 
 	.text
 
-	.public sub_0200A110
+	.public Add2DGfxResObjFromHeader
 	.public sub_0200A8A0
 	.public sub_0200A8B0
 	.public sub_0200A8DC

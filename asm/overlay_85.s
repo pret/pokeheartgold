@@ -6741,7 +6741,7 @@ ov85_021E8B08: ; 0x021E8B08
 	lsl r7, r7, #2
 _021E8B34:
 	ldr r0, [r5, r7]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -7306,7 +7306,7 @@ _021E8FD8:
 	mov r0, #3
 	add r1, r4, #0
 	mov r2, #0x66
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	str r0, [r5, r7]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -7323,7 +7323,7 @@ _021E8FD8:
 	ldr r0, [r6, r0]
 	ldr r1, [sp, #0x14]
 	mov r2, #0xc
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	mov r1, #0x6f
 	lsl r1, r1, #2
 	str r0, [r6, r1]
@@ -7339,7 +7339,7 @@ _021E8FD8:
 	ldr r0, [r6, r1]
 	ldr r1, [sp, #0x14]
 	mov r3, #0
-	bl sub_0200A480
+	bl AddPlttResObjFromOpenNarc
 	mov r1, #7
 	lsl r1, r1, #6
 	str r0, [r6, r1]
@@ -7353,7 +7353,7 @@ _021E8FD8:
 	ldr r1, [sp, #0x14]
 	mov r2, #0xd
 	mov r3, #1
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	mov r1, #0x71
 	lsl r1, r1, #2
 	str r0, [r6, r1]
@@ -7368,7 +7368,7 @@ _021E8FD8:
 	ldr r1, [sp, #0x14]
 	mov r2, #0xe
 	mov r3, #1
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	mov r1, #0x72
 	lsl r1, r1, #2
 	str r0, [r6, r1]

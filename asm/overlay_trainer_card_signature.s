@@ -252,7 +252,7 @@ SignBackOfTrainerCardApp_OvyExit: ; 0x021E82AC
 	lsl r7, r7, #2
 _021E82FC:
 	ldr r0, [r5, r7]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -762,7 +762,7 @@ _021E8750:
 	mov r0, #2
 	add r1, r6, #0
 	mov r2, #0x27
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	mov r1, #0x5a
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -780,7 +780,7 @@ _021E8750:
 	ldr r0, [r5, r0]
 	add r1, r7, #0
 	mov r2, #7
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	mov r1, #0x5e
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -795,7 +795,7 @@ _021E8750:
 	str r0, [sp, #0xc]
 	ldr r0, [r5, r1]
 	add r1, r7, #0
-	bl sub_0200A480
+	bl AddPlttResObjFromOpenNarc
 	mov r1, #0x5f
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -810,7 +810,7 @@ _021E8750:
 	add r1, r7, #0
 	mov r2, #8
 	mov r3, #1
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	mov r1, #6
 	lsl r1, r1, #6
 	str r0, [r5, r1]
@@ -825,7 +825,7 @@ _021E8750:
 	add r1, r7, #0
 	mov r2, #9
 	mov r3, #1
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	mov r1, #0x61
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -839,7 +839,7 @@ _021E8750:
 	ldr r0, [r5, r1]
 	add r1, r7, #0
 	mov r2, #7
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	mov r1, #0x62
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -855,7 +855,7 @@ _021E8750:
 	ldr r0, [r5, r1]
 	add r1, r7, #0
 	mov r3, #0
-	bl sub_0200A480
+	bl AddPlttResObjFromOpenNarc
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -869,7 +869,7 @@ _021E8750:
 	ldr r0, [r5, r1]
 	add r1, r7, #0
 	mov r2, #8
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	mov r1, #0x19
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -883,7 +883,7 @@ _021E8750:
 	ldr r0, [r5, r1]
 	add r1, r7, #0
 	mov r2, #9
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	mov r1, #0x65
 	lsl r1, r1, #2
 	str r0, [r5, r1]

@@ -38695,7 +38695,7 @@ _021F8F6C:
 	ldr r2, [r6, #0x14]
 	mov r0, #8
 	add r1, r4, #0
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	str r0, [r5, r7]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -38714,7 +38714,7 @@ ov18_021F8F84: ; 0x021F8F84
 	lsl r6, r6, #4
 _021F8F8E:
 	ldr r0, [r5, r6]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -38916,19 +38916,19 @@ ov18_021F9108: ; 0x021F9108
 	ldr r0, [r4, r1]
 	add r1, #0x3c
 	ldr r1, [r4, r1]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	mov r1, #0x7a
 	lsl r1, r1, #2
 	ldr r0, [r4, r1]
 	add r1, #0x3c
 	ldr r1, [r4, r1]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	mov r1, #0x7b
 	lsl r1, r1, #2
 	ldr r0, [r4, r1]
 	add r1, #0x3c
 	ldr r1, [r4, r1]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	pop {r4, pc}
 	thumb_func_end ov18_021F9108
 
@@ -39052,7 +39052,7 @@ ov18_021F922C: ; 0x021F922C
 	ldr r0, [r4]
 	ldr r2, [sp, #0x20]
 	add r1, r7, #0
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	str r0, [r5]
 	bl sub_0200ADA4
 	ldr r0, [r5]
@@ -39081,7 +39081,7 @@ _021F9276:
 	ldr r0, [r4, #8]
 	add r1, r7, #0
 	mov r3, #1
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	str r0, [r5, #8]
 	ldr r0, [sp, #0x40]
 	ldr r2, [sp, #0x2c]
@@ -39092,7 +39092,7 @@ _021F9276:
 	ldr r0, [r4, #0xc]
 	add r1, r7, #0
 	mov r3, #1
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	str r0, [r5, #0xc]
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -39113,7 +39113,7 @@ ov18_021F92AC: ; 0x021F92AC
 	add r1, r2, #0
 	add r2, r3, #0
 	mov r3, #0
-	bl sub_0200A480
+	bl AddPlttResObjFromOpenNarc
 	add r4, r0, #0
 	bl sub_0200B00C
 	add r0, r4, #0
@@ -39135,16 +39135,16 @@ ov18_021F92DC: ; 0x021F92DC
 	bl sub_0200B0A8
 	ldr r0, [r4]
 	ldr r1, [r5]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	ldr r0, [r4, #4]
 	ldr r1, [r5, #4]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	ldr r0, [r4, #8]
 	ldr r1, [r5, #8]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	ldr r0, [r4, #0xc]
 	ldr r1, [r5, #0xc]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov18_021F92DC
 

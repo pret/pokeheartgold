@@ -237,9 +237,9 @@ _0200D080:
 	add r4, r5, #0
 _0200D09C:
 	ldr r0, [r4, #0x24]
-	bl sub_0200A714
+	bl Delete2DGfxResObjList
 	ldr r0, [r4, #0xc]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	ldr r0, [r5, #0x54]
 	add r6, r6, #1
 	add r4, r4, #4
@@ -390,7 +390,7 @@ _0200D1B2:
 	bl sub_0200A96C
 	ldr r2, [r5]
 	add r1, r6, #0
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	ldr r1, [sp, #0x1c]
 	add r6, r6, #1
 	str r0, [r1, #0xc]
@@ -412,13 +412,13 @@ _0200D1E0:
 	str r0, [sp, #0x30]
 	bl sub_0200A96C
 	ldr r1, [r5]
-	bl sub_0200A6F0
+	bl Create2DGfxResObjList
 	add r2, r0, #0
 	str r2, [r6, #0x24]
 	ldr r0, [r6, #0xc]
 	ldr r1, [sp, #0x30]
 	ldr r3, [r5]
-	bl sub_0200A674
+	bl LoadAll2DGfxResObjsFromHeader
 	str r0, [r6, #0x3c]
 	ldr r0, [sp, #0x18]
 	add r6, r6, #4
@@ -717,7 +717,7 @@ _0200D438:
 	ldr r0, [r7]
 	ldr r1, [sp, #8]
 	ldr r2, [r2]
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	str r0, [r4, #0xc]
 	ldr r0, [sp, #8]
 	add r7, r7, #4
@@ -739,7 +739,7 @@ _0200D460:
 	beq _0200D490
 	ldr r1, [sp]
 	ldr r1, [r1]
-	bl sub_0200A6F0
+	bl Create2DGfxResObjList
 	str r0, [r5, #0x24]
 	mov r0, #0
 	str r0, [r5, #0x3c]
@@ -782,7 +782,7 @@ sub_0200D4A4: ; 0x0200D4A4
 	ldr r1, [sp, #0x28]
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_0200A728
+	bl _2DGfxResObjExistsById
 	cmp r0, #0
 	bne _0200D4C2
 	add sp, #0xc
@@ -799,7 +799,7 @@ _0200D4C2:
 	add r2, r7, #0
 	str r0, [sp, #8]
 	ldr r0, [r4, #0xc]
-	bl sub_0200A1D8
+	bl AddCharResObjFromNarc
 	add r5, r0, #0
 	beq _0200D4F0
 	bl sub_0200ADA4
@@ -832,7 +832,7 @@ sub_0200D504: ; 0x0200D504
 	ldr r1, [sp, #0x28]
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_0200A728
+	bl _2DGfxResObjExistsById
 	cmp r0, #0
 	bne _0200D522
 	add sp, #0xc
@@ -849,7 +849,7 @@ _0200D522:
 	add r2, r7, #0
 	str r0, [sp, #8]
 	ldr r0, [r4, #0xc]
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	add r5, r0, #0
 	beq _0200D550
 	bl sub_0200ADA4
@@ -882,7 +882,7 @@ sub_0200D564: ; 0x0200D564
 	ldr r1, [sp, #0x34]
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_0200A728
+	bl _2DGfxResObjExistsById
 	cmp r0, #0
 	bne _0200D584
 	mov r0, #0
@@ -902,7 +902,7 @@ _0200D584:
 	ldr r0, [r5]
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x10]
-	bl sub_0200A234
+	bl AddPlttResObjFromNarc
 	add r5, r0, #0
 	beq _0200D5C8
 	bl sub_0200B00C
@@ -938,7 +938,7 @@ sub_0200D5D4: ; 0x0200D5D4
 	ldr r1, [sp, #0x34]
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_0200A728
+	bl _2DGfxResObjExistsById
 	cmp r0, #0
 	bne _0200D5F4
 	mov r0, #0
@@ -958,7 +958,7 @@ _0200D5F4:
 	ldr r0, [r5]
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x10]
-	bl sub_0200A480
+	bl AddPlttResObjFromOpenNarc
 	add r5, r0, #0
 	beq _0200D638
 	bl sub_0200B00C
@@ -1213,7 +1213,7 @@ _0200D7CA:
 	mvn r2, r2
 	cmp r1, r2
 	beq _0200D7E2
-	bl sub_0200A728
+	bl _2DGfxResObjExistsById
 	cmp r0, #0
 	bne _0200D7E2
 	mov r0, #0
@@ -1226,7 +1226,7 @@ _0200D7E2:
 	cmp r1, r0
 	beq _0200D7FC
 	ldr r0, [r6, #0x20]
-	bl sub_0200A728
+	bl _2DGfxResObjExistsById
 	cmp r0, #0
 	bne _0200D7FC
 	mov r0, #0
@@ -1466,9 +1466,9 @@ sub_0200D998: ; 0x0200D998
 	add r5, r6, #0
 _0200D9BA:
 	ldr r0, [r5, #0x24]
-	bl sub_0200A714
+	bl Delete2DGfxResObjList
 	ldr r0, [r5, #0xc]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	ldr r0, [r6, #0x54]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -1517,7 +1517,7 @@ sub_0200DA04: ; 0x0200DA04
 	ldr r1, [sp, #0x30]
 	str r2, [sp, #0xc]
 	str r3, [sp, #0x10]
-	bl sub_0200A728
+	bl _2DGfxResObjExistsById
 	cmp r0, #0
 	bne _0200DA2A
 	add sp, #0x14
@@ -1534,7 +1534,7 @@ _0200DA2A:
 	ldr r3, [sp, #0x28]
 	str r0, [sp, #8]
 	ldr r0, [r5, r4]
-	bl sub_0200A294
+	bl AddCellOrAnimResObjFromNarc
 	add r5, r0, #0
 	beq _0200DA60
 	add r0, r6, r4
@@ -1576,7 +1576,7 @@ sub_0200DA74: ; 0x0200DA74
 	ldr r1, [sp, #0x30]
 	str r2, [sp, #0xc]
 	str r3, [sp, #0x10]
-	bl sub_0200A728
+	bl _2DGfxResObjExistsById
 	cmp r0, #0
 	bne _0200DA9A
 	add sp, #0x14
@@ -1593,7 +1593,7 @@ _0200DA9A:
 	ldr r3, [sp, #0x28]
 	str r0, [sp, #8]
 	ldr r0, [r5, r4]
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	add r5, r0, #0
 	beq _0200DAD0
 	add r0, r6, r4
@@ -1677,7 +1677,7 @@ _0200DB2A:
 	lsl r4, r6, #2
 	ldr r0, [sp]
 	ldr r1, [r1, r4]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	ldr r0, [r5]
 	mov r1, #0
 	str r1, [r0, r4]
@@ -1722,7 +1722,7 @@ _0200DB76:
 	lsl r4, r6, #2
 	ldr r0, [sp]
 	ldr r1, [r1, r4]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	ldr r0, [r5]
 	mov r1, #0
 	str r1, [r0, r4]
@@ -1768,7 +1768,7 @@ _0200DBCA:
 	lsl r4, r6, #2
 	ldr r0, [sp]
 	ldr r1, [r1, r4]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	ldr r0, [r5]
 	mov r1, #0
 	str r1, [r0, r4]
@@ -2666,7 +2666,7 @@ sub_0200E128: ; 0x0200E128
 	ldr r1, [sp, #0x28]
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_0200A728
+	bl _2DGfxResObjExistsById
 	cmp r0, #0
 	bne _0200E146
 	add sp, #0xc
@@ -2683,7 +2683,7 @@ _0200E146:
 	add r2, r7, #0
 	str r0, [sp, #8]
 	ldr r0, [r4, #0xc]
-	bl sub_0200A1D8
+	bl AddCharResObjFromNarc
 	add r5, r0, #0
 	beq _0200E174
 	bl sub_0200AD64
@@ -2716,7 +2716,7 @@ sub_0200E188: ; 0x0200E188
 	ldr r1, [sp, #0x28]
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_0200A728
+	bl _2DGfxResObjExistsById
 	cmp r0, #0
 	bne _0200E1A6
 	add sp, #0xc
@@ -2733,7 +2733,7 @@ _0200E1A6:
 	add r2, r7, #0
 	str r0, [sp, #8]
 	ldr r0, [r4, #0xc]
-	bl sub_0200A1D8
+	bl AddCharResObjFromNarc
 	add r5, r0, #0
 	beq _0200E1D4
 	bl sub_0200AE18
@@ -2766,7 +2766,7 @@ sub_0200E1E8: ; 0x0200E1E8
 	ldr r1, [sp, #0x28]
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_0200A728
+	bl _2DGfxResObjExistsById
 	cmp r0, #0
 	bne _0200E206
 	add sp, #0xc
@@ -2783,7 +2783,7 @@ _0200E206:
 	add r2, r7, #0
 	str r0, [sp, #8]
 	ldr r0, [r4, #0xc]
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	add r5, r0, #0
 	beq _0200E234
 	bl sub_0200AE18
@@ -2826,7 +2826,7 @@ sub_0200E248: ; 0x0200E248
 	str r0, [sp, #4]
 	ldr r0, [r4, #0xc]
 	add r2, r7, #0
-	bl sub_0200A2E4
+	bl ReplaceCharResObjFromNarc
 	add r0, r6, #0
 	bl sub_0200AE8C
 	add sp, #0xc
@@ -2853,7 +2853,7 @@ sub_0200E27C: ; 0x0200E27C
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x10]
 	add r2, r7, #0
-	bl sub_0200A350
+	bl ReplacePlttResObjFromNarc
 	add r0, r6, #0
 	bl sub_0200B084
 	add sp, #0xc
@@ -2892,7 +2892,7 @@ sub_0200E2B8: ; 0x0200E2B8
 	str r0, [sp, #4]
 	ldr r0, [r4, #0xc]
 	add r2, r7, #0
-	bl sub_0200A590
+	bl ReplaceCharResObjFromOpenNarc
 	add r0, r6, #0
 	bl sub_0200AE8C
 	add sp, #0xc
@@ -2919,7 +2919,7 @@ sub_0200E2EC: ; 0x0200E2EC
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x10]
 	add r2, r7, #0
-	bl sub_0200A5FC
+	bl ReplacePlttResObjFromOpenNarc
 	add r0, r6, #0
 	bl sub_0200B084
 	add sp, #0xc

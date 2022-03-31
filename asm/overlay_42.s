@@ -35,7 +35,7 @@ _0222709C:
 	mov r0, #0x9a
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	ldr r1, _0222710C ; =0x000022F0
 	add r4, r4, #1
 	str r0, [r5, r1]
@@ -48,7 +48,7 @@ _022270B6:
 	mov r0, #0x17
 	add r1, r5, #2
 	add r2, r6, #0
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	ldr r1, _02227110 ; =0x000022F8
 	add r5, r5, #1
 	str r0, [r4, r1]
@@ -133,7 +133,7 @@ _02227142:
 	add r4, r5, #0
 _0222716C:
 	ldr r0, [r4, r7]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #4
@@ -770,7 +770,7 @@ _022275A6:
 	ldr r1, _02227600 ; =0x00002304
 	ldr r1, [r2, r1]
 	ldr r2, [r4]
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	ldr r1, _022275F0 ; =0x00002188
 	add r7, r7, #1
 	str r0, [r5, r1]
@@ -818,7 +818,7 @@ _0222761E:
 	ldr r0, [r1, r0]
 	ldr r1, _0222764C ; =0x00002188
 	ldr r1, [r5, r1]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	ldr r0, _0222764C ; =0x00002188
 	add r4, r4, #1
 	str r7, [r5, r0]
@@ -985,7 +985,7 @@ ov42_02227720: ; 0x02227720
 	add r6, #0x14
 	add r2, #0xe
 	mov r3, #0
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	str r0, [r6, r4]
 	ldr r0, [sp, #0x38]
 	ldr r2, [sp, #0x3c]
@@ -1005,7 +1005,7 @@ ov42_02227720: ; 0x02227720
 	add r7, #0x18
 	mov r3, #0
 	str r2, [sp, #0x3c]
-	bl sub_0200A480
+	bl AddPlttResObjFromOpenNarc
 	str r0, [r7, r4]
 	ldr r0, [r6, r4]
 	bl sub_0200A810
@@ -1150,7 +1150,7 @@ ov42_02227874: ; 0x02227874
 	add r6, #0x14
 	sub r2, r7, #1
 	mov r3, #0
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	str r0, [r6, r4]
 	ldr r0, [sp, #0x30]
 	cmp r0, #2
@@ -1271,11 +1271,11 @@ ov42_0222797C: ; 0x0222797C
 	ldr r0, _022279B8 ; =0x000022F0
 	ldr r1, [r6, r4]
 	ldr r0, [r5, r0]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	ldr r0, _022279BC ; =0x000022F4
 	ldr r1, [r7, r4]
 	ldr r0, [r5, r0]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	mov r0, #0
 	str r0, [r6, r4]
 	str r0, [r7, r4]
@@ -1299,7 +1299,7 @@ ov42_022279C0: ; 0x022279C0
 	ldr r0, _022279E4 ; =0x000022F0
 	ldr r1, [r5, r4]
 	ldr r0, [r6, r0]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	mov r0, #0
 	str r0, [r5, r4]
 	pop {r4, r5, r6, pc}
@@ -1376,7 +1376,7 @@ _02227A46:
 	ldr r1, [r6, r1]
 	add r2, r5, #0
 	mov r3, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	mov r1, #0x8b
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -1396,7 +1396,7 @@ _02227A46:
 	ldr r1, [r6, r1]
 	mov r2, #2
 	mov r3, #0
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	ldr r1, _02227AF0 ; =0x000022B8
 	str r0, [r6, r1]
 	ldr r0, [r6, r1]
@@ -1468,7 +1468,7 @@ ov42_02227B04: ; 0x02227B04
 	ldr r0, [r5, r1]
 	sub r1, #0x38
 	ldr r1, [r5, r1]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	ldr r0, _02227B50 ; =0x000022B8
 	mov r4, #0
 	add r7, r0, #0
@@ -1481,7 +1481,7 @@ _02227B34:
 	lsl r1, r1, #6
 	ldr r0, [r5, r0]
 	ldr r1, [r5, r1]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	str r6, [r5, r7]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -1534,7 +1534,7 @@ _02227B84:
 	add r1, #0x14
 	ldr r1, [r5, r1]
 	add r3, r2, #0
-	bl sub_0200A480
+	bl AddPlttResObjFromOpenNarc
 	mov r1, #0x23
 	lsl r1, r1, #8
 	str r0, [r5, r1]
@@ -1584,7 +1584,7 @@ _02227BF2:
 	ldr r0, [r4, r1]
 	add r1, #0xc
 	ldr r1, [r4, r1]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	mov r0, #0x23
 	mov r1, #0
 	lsl r0, r0, #8
@@ -1626,7 +1626,7 @@ _02227C36:
 	ldr r0, [r5, r0]
 	ldr r2, [sp, #0x10]
 	mov r3, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	ldr r1, _02227C94 ; =0x000021B8
 	add r2, r7, #0
 	str r0, [r6, r1]
@@ -1643,7 +1643,7 @@ _02227C36:
 	ldr r1, [r5, r1]
 	ldr r0, [r5, r0]
 	mov r3, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	ldr r1, _02227CA4 ; =0x000021BC
 	add r4, r4, #1
 	str r0, [r6, r1]
@@ -1682,12 +1682,12 @@ _02227CBE:
 	ldr r1, _02227CE8 ; =0x000021B8
 	ldr r0, [r5, r0]
 	ldr r1, [r4, r1]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	ldr r0, _02227CF0 ; =0x000022FC
 	ldr r1, _02227CF4 ; =0x000021BC
 	ldr r0, [r5, r0]
 	ldr r1, [r4, r1]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	ldr r0, _02227CE8 ; =0x000021B8
 	add r6, r6, #1
 	str r7, [r4, r0]

@@ -14469,11 +14469,11 @@ _022304D0:
 _022304E2:
 	mov r0, #1
 	add r1, r7, #0
-	bl sub_02025534
+	bl Create2DGfxResMan
 	str r0, [r4]
 	mov r0, #2
 	add r1, r7, #0
-	bl sub_02025534
+	bl Create2DGfxResMan
 	str r0, [r4, #4]
 	mov r0, #0x14
 	add r1, r7, #0
@@ -14646,9 +14646,9 @@ ov45_02230638: ; 0x02230638
 	ldr r0, [r4, #8]
 	bl sub_020257C4
 	ldr r0, [r4]
-	bl sub_02025580
+	bl Destroy2DGfxResMan
 	ldr r0, [r4, #4]
-	bl sub_02025580
+	bl Destroy2DGfxResMan
 	ldr r0, [r4, #0x10]
 	bl FreeToHeap
 	add r0, r4, #0

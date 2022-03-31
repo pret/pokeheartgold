@@ -1027,7 +1027,7 @@ _0222A706:
 	mov r0, #0x40
 	add r1, r4, #0
 	add r2, r7, #0
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	mov r1, #0x79
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -1044,7 +1044,7 @@ _0222A706:
 	ldr r0, [r6, r0]
 	ldr r1, [r6, #0x58]
 	add r3, r2, #0
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	add r1, r6, #0
 	add r1, #0xac
 	str r0, [r1]
@@ -1061,7 +1061,7 @@ _0222A706:
 	ldr r0, [r6, r0]
 	ldr r1, [r6, #0x58]
 	add r3, r2, #0
-	bl sub_0200A480
+	bl AddPlttResObjFromOpenNarc
 	add r1, r6, #0
 	add r1, #0xb0
 	str r0, [r1]
@@ -1075,7 +1075,7 @@ _0222A706:
 	ldr r0, [r6, r0]
 	ldr r1, [r6, #0x58]
 	mov r3, #1
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	add r1, r6, #0
 	add r1, #0xb4
 	str r0, [r1]
@@ -1089,7 +1089,7 @@ _0222A706:
 	ldr r0, [r6, r0]
 	ldr r1, [r6, #0x58]
 	mov r3, #1
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	add r1, r6, #0
 	add r1, #0xb8
 	str r0, [r1]
@@ -1174,7 +1174,7 @@ _0222A83A:
 	add r1, #0xac
 	ldr r0, [r5, r6]
 	ldr r1, [r1]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -1185,7 +1185,7 @@ _0222A83A:
 	lsl r6, r6, #2
 _0222A856:
 	ldr r0, [r4, r6]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #4

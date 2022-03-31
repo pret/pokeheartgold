@@ -279,7 +279,7 @@ sub_02025780: ; 0x02025780
 	add r7, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_02025534
+	bl Create2DGfxResMan
 	mov r1, #0x18
 	str r0, [r7]
 	add r0, r4, #0
@@ -314,7 +314,7 @@ _020257CE:
 	add r0, r4, #0
 	bl sub_02025900
 	ldr r0, [r4]
-	bl sub_02025580
+	bl Destroy2DGfxResMan
 	ldr r0, [r4, #4]
 	bl FreeToHeap
 	add r0, r4, #0

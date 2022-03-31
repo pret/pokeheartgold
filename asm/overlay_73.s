@@ -324,7 +324,7 @@ ov73_021E5BAC: ; 0x021E5BAC
 	lsl r7, r7, #2
 _021E5BD8:
 	ldr r0, [r5, r7]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -929,7 +929,7 @@ _021E60D8:
 	mov r0, #3
 	add r1, r4, #0
 	mov r2, #0x32
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	str r0, [r5, r7]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -946,7 +946,7 @@ _021E60D8:
 	ldr r0, [r6, r0]
 	ldr r1, [sp, #0x14]
 	mov r2, #8
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	mov r1, #0x6b
 	lsl r1, r1, #2
 	str r0, [r6, r1]
@@ -963,7 +963,7 @@ _021E60D8:
 	ldr r1, [sp, #0x14]
 	mov r2, #7
 	mov r3, #0
-	bl sub_0200A480
+	bl AddPlttResObjFromOpenNarc
 	mov r1, #0x1b
 	lsl r1, r1, #4
 	str r0, [r6, r1]
@@ -977,7 +977,7 @@ _021E60D8:
 	ldr r1, [sp, #0x14]
 	mov r2, #9
 	mov r3, #1
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	mov r1, #0x6d
 	lsl r1, r1, #2
 	str r0, [r6, r1]
@@ -992,7 +992,7 @@ _021E60D8:
 	ldr r1, [sp, #0x14]
 	mov r2, #0xa
 	mov r3, #1
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	mov r1, #0x6e
 	lsl r1, r1, #2
 	str r0, [r6, r1]
@@ -5196,7 +5196,7 @@ _021E81E8:
 	mov r0, #2
 	add r1, r4, #0
 	mov r2, #0x96
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	str r0, [r5, r7]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -5212,7 +5212,7 @@ _021E81E8:
 	ldr r1, [sp, #0x14]
 	ldr r0, [r6, r0]
 	mov r2, #0x2e
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	ldr r1, _021E829C ; =0x00000D34
 	mov r3, #0
 	str r0, [r6, r1]
@@ -5227,7 +5227,7 @@ _021E81E8:
 	ldr r0, [r6, r1]
 	ldr r1, [sp, #0x14]
 	mov r2, #0xa
-	bl sub_0200A480
+	bl AddPlttResObjFromOpenNarc
 	ldr r1, _021E82A0 ; =0x00000D38
 	mov r2, #0x2f
 	str r0, [r6, r1]
@@ -5241,7 +5241,7 @@ _021E81E8:
 	ldr r0, [r6, r1]
 	ldr r1, [sp, #0x14]
 	mov r3, #1
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	ldr r1, _021E82A4 ; =0x00000D3C
 	mov r2, #0x30
 	str r0, [r6, r1]
@@ -5255,7 +5255,7 @@ _021E81E8:
 	ldr r0, [r6, r1]
 	ldr r1, [sp, #0x14]
 	mov r3, #1
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	mov r1, #0x35
 	lsl r1, r1, #6
 	str r0, [r6, r1]
@@ -5540,7 +5540,7 @@ ov73_021E847C: ; 0x021E847C
 	add r5, r6, #0
 _021E8496:
 	ldr r0, [r5, r7]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4

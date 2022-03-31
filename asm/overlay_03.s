@@ -9030,7 +9030,7 @@ _022585CA:
 	ldr r0, [r4, r0]
 	add r1, r5, #0
 	mov r2, #0x12
-	bl sub_0200A2E4
+	bl ReplaceCharResObjFromNarc
 	add r0, r5, #0
 	bl sub_0200AE8C
 	mov r0, #0x72
@@ -9052,7 +9052,7 @@ _022585CA:
 	ldr r0, [r4, r0]
 	add r1, r5, #0
 	mov r2, #0x12
-	bl sub_0200A350
+	bl ReplacePlttResObjFromNarc
 	add r0, r5, #0
 	bl sub_0200B084
 	mov r0, #0x81
@@ -9091,7 +9091,7 @@ ov03_02258648: ; 0x02258648
 	ldr r0, [r4, r0]
 	add r1, r5, #0
 	mov r2, #0x12
-	bl sub_0200A2E4
+	bl ReplaceCharResObjFromNarc
 	add r0, r5, #0
 	bl sub_0200AE8C
 	mov r0, #0x72
@@ -9113,7 +9113,7 @@ ov03_02258648: ; 0x02258648
 	ldr r0, [r4, r0]
 	add r1, r5, #0
 	mov r2, #0x12
-	bl sub_0200A350
+	bl ReplacePlttResObjFromNarc
 	add r0, r5, #0
 	bl sub_0200B084
 	add sp, #8

@@ -616,7 +616,7 @@ _02258D04:
 	mov r0, #0x20
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	str r0, [r5, r7]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -647,7 +647,7 @@ ov88_02258D38: ; 0x02258D38
 	lsl r6, r6, #4
 _02258D48:
 	ldr r0, [r5, r6]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4

@@ -1369,7 +1369,7 @@ _0221F0BC:
 	lsl r0, r4, #2
 	add r0, r5, r0
 	ldr r0, [r0, r6]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -2259,7 +2259,7 @@ _0221F80E:
 	ldr r2, [r5]
 	mov r0, #3
 	add r1, r6, #0
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	str r0, [r4, r7]
 	add r6, r6, #1
 	add r4, r4, #4
@@ -2276,7 +2276,7 @@ _0221F80E:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r2, #7
-	bl sub_0200A1D8
+	bl AddCharResObjFromNarc
 	mov r1, #0x52
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -2292,7 +2292,7 @@ _0221F80E:
 	ldr r0, [r5, r1]
 	mov r1, #0xf3
 	mov r3, #0
-	bl sub_0200A234
+	bl AddPlttResObjFromNarc
 	mov r1, #0x53
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -2306,7 +2306,7 @@ _0221F80E:
 	ldr r0, [r5, r1]
 	mov r1, #0xf3
 	mov r2, #6
-	bl sub_0200A294
+	bl AddCellOrAnimResObjFromNarc
 	mov r1, #0x15
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -2320,7 +2320,7 @@ _0221F80E:
 	ldr r0, [r5, r1]
 	mov r1, #0xf3
 	mov r2, #5
-	bl sub_0200A294
+	bl AddCellOrAnimResObjFromNarc
 	mov r1, #0x55
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -2342,7 +2342,7 @@ _0221F80E:
 	ldr r0, [r5, r0]
 	mov r2, #0x42
 	mov r3, #0
-	bl sub_0200A1D8
+	bl AddCharResObjFromNarc
 	mov r1, #0x16
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -2358,7 +2358,7 @@ _0221F80E:
 	mov r1, #0xa2
 	mov r2, #0x41
 	mov r3, #0
-	bl sub_0200A234
+	bl AddPlttResObjFromNarc
 	mov r1, #0x59
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -2372,7 +2372,7 @@ _0221F80E:
 	mov r1, #0xa2
 	mov r2, #0x43
 	mov r3, #0
-	bl sub_0200A294
+	bl AddCellOrAnimResObjFromNarc
 	mov r1, #0x5a
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -2387,7 +2387,7 @@ _0221F80E:
 	mov r1, #0xa2
 	mov r2, #0x44
 	mov r3, #0
-	bl sub_0200A294
+	bl AddCellOrAnimResObjFromNarc
 	mov r1, #0x5b
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -2410,7 +2410,7 @@ _0221F80E:
 	ldr r0, [r5, r0]
 	mov r2, #9
 	mov r3, #0
-	bl sub_0200A1D8
+	bl AddCharResObjFromNarc
 	mov r1, #0x5e
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -2427,7 +2427,7 @@ _0221F80E:
 	mov r1, #0x5d
 	mov r2, #6
 	mov r3, #0
-	bl sub_0200A234
+	bl AddPlttResObjFromNarc
 	mov r1, #0x5f
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -2442,7 +2442,7 @@ _0221F80E:
 	mov r1, #0x5d
 	mov r2, #0xa
 	mov r3, #0
-	bl sub_0200A294
+	bl AddCellOrAnimResObjFromNarc
 	mov r1, #6
 	lsl r1, r1, #6
 	str r0, [r5, r1]
@@ -2456,7 +2456,7 @@ _0221F80E:
 	mov r1, #0x5d
 	mov r2, #0xa
 	mov r3, #0
-	bl sub_0200A294
+	bl AddCellOrAnimResObjFromNarc
 	mov r1, #0x61
 	lsl r1, r1, #2
 	str r0, [r5, r1]

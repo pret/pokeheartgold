@@ -5840,7 +5840,7 @@ ov91_0225F0C0: ; 0x0225F0C0
 	add r1, r7, #0
 	mov r2, #0x15
 	mov r3, #0
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	str r0, [r5]
 	mov r1, #0x78
 	str r1, [sp]
@@ -5853,7 +5853,7 @@ ov91_0225F0C0: ; 0x0225F0C0
 	add r1, r7, #0
 	mov r2, #0x14
 	mov r3, #0
-	bl sub_0200A480
+	bl AddPlttResObjFromOpenNarc
 	str r0, [r5, #4]
 	mov r1, #0x78
 	str r1, [sp]
@@ -5865,7 +5865,7 @@ ov91_0225F0C0: ; 0x0225F0C0
 	add r1, r7, #0
 	mov r2, #0x16
 	mov r3, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	str r0, [r5, #8]
 	mov r1, #0x78
 	str r1, [sp]
@@ -5877,7 +5877,7 @@ ov91_0225F0C0: ; 0x0225F0C0
 	add r1, r7, #0
 	mov r2, #0x17
 	mov r3, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	str r0, [r5, #0xc]
 	ldr r0, [r5]
 	bl sub_0200AE18
@@ -5969,22 +5969,22 @@ ov91_0225F1E8: ; 0x0225F1E8
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	ldr r1, [r5]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	mov r0, #0x53
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	ldr r1, [r5, #4]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	mov r0, #0x15
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	ldr r1, [r5, #8]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	mov r0, #0x55
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	ldr r1, [r5, #0xc]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	add r0, r5, #0
 	mov r1, #0
 	mov r2, #0x40
@@ -7037,7 +7037,7 @@ _0225FB16:
 	mov r0, #0x10
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	mov r1, #0x52
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -7073,7 +7073,7 @@ ov91_0225FB48: ; 0x0225FB48
 	lsl r6, r6, #2
 _0225FB62:
 	ldr r0, [r5, r6]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -7101,7 +7101,7 @@ ov91_0225FB80: ; 0x0225FB80
 	mov r2, #2
 	mov r3, #0
 	add r6, r1, #0
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	mov r1, #0x5f
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -7117,7 +7117,7 @@ ov91_0225FB80: ; 0x0225FB80
 	add r1, r6, #0
 	mov r2, #3
 	mov r3, #0
-	bl sub_0200A480
+	bl AddPlttResObjFromOpenNarc
 	mov r1, #6
 	lsl r1, r1, #6
 	str r0, [r5, r1]
@@ -7131,7 +7131,7 @@ ov91_0225FB80: ; 0x0225FB80
 	add r1, r6, #0
 	mov r2, #1
 	mov r3, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	mov r1, #0x61
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -7145,7 +7145,7 @@ ov91_0225FB80: ; 0x0225FB80
 	ldr r0, [r5, r1]
 	add r1, r6, #0
 	add r3, r2, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	mov r1, #0x62
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -7227,25 +7227,25 @@ ov91_0225FC84: ; 0x0225FC84
 	ldr r0, [r4, r1]
 	add r1, #0x34
 	ldr r1, [r4, r1]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	mov r1, #0x53
 	lsl r1, r1, #2
 	ldr r0, [r4, r1]
 	add r1, #0x34
 	ldr r1, [r4, r1]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	mov r1, #0x15
 	lsl r1, r1, #4
 	ldr r0, [r4, r1]
 	add r1, #0x34
 	ldr r1, [r4, r1]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	mov r1, #0x55
 	lsl r1, r1, #2
 	ldr r0, [r4, r1]
 	add r1, #0x34
 	ldr r1, [r4, r1]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov91_0225FC84
@@ -8368,7 +8368,7 @@ _02260508:
 	ldr r1, [sp, #0x2c]
 	mov r2, #7
 	mov r3, #0
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	ldr r1, _0226065C ; =0x0000075C
 	mov r2, #4
 	str r0, [r5, r1]
@@ -8382,7 +8382,7 @@ _02260508:
 	ldr r0, [r5, r1]
 	ldr r1, [sp, #0x2c]
 	mov r3, #0
-	bl sub_0200A480
+	bl AddPlttResObjFromOpenNarc
 	mov r1, #0x76
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -8396,7 +8396,7 @@ _02260508:
 	ldr r1, [sp, #0x2c]
 	mov r2, #6
 	mov r3, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	ldr r1, _02260660 ; =0x00000764
 	mov r2, #5
 	str r0, [r5, r1]
@@ -8409,7 +8409,7 @@ _02260508:
 	ldr r0, [r5, r1]
 	ldr r1, [sp, #0x2c]
 	mov r3, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	ldr r1, _02260664 ; =0x00000768
 	str r0, [r5, r1]
 	sub r1, #0xc
@@ -8524,26 +8524,26 @@ _0226067C:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r1, [r5, r1]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	mov r0, #0x53
 	mov r1, #0x76
 	lsl r0, r0, #2
 	lsl r1, r1, #4
 	ldr r0, [r5, r0]
 	ldr r1, [r5, r1]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	mov r0, #0x15
 	ldr r1, _02260718 ; =0x00000764
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	ldr r1, [r5, r1]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	mov r0, #0x55
 	ldr r1, _0226071C ; =0x00000768
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r1, [r5, r1]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	ldr r0, _02260720 ; =0x000006FC
 	mov r6, #0
 	add r4, r5, r0
@@ -10522,7 +10522,7 @@ ov91_02261580: ; 0x02261580
 	add r1, r7, #0
 	mov r2, #0xa
 	mov r3, #0
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	str r0, [r5]
 	mov r1, #0x8c
 	str r1, [sp]
@@ -10535,7 +10535,7 @@ ov91_02261580: ; 0x02261580
 	add r1, r7, #0
 	mov r2, #0xb
 	mov r3, #0
-	bl sub_0200A480
+	bl AddPlttResObjFromOpenNarc
 	str r0, [r5, #4]
 	mov r1, #0x8c
 	str r1, [sp]
@@ -10547,7 +10547,7 @@ ov91_02261580: ; 0x02261580
 	add r1, r7, #0
 	mov r2, #9
 	mov r3, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	str r0, [r5, #8]
 	mov r1, #0x8c
 	str r1, [sp]
@@ -10559,7 +10559,7 @@ ov91_02261580: ; 0x02261580
 	add r1, r7, #0
 	mov r2, #8
 	mov r3, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	str r0, [r5, #0xc]
 	ldr r0, [r5]
 	bl sub_0200AE18
@@ -10668,7 +10668,7 @@ _022616D2:
 	mov r1, #0x10
 	mov r2, #7
 	mov r3, #0
-	bl sub_0200A234
+	bl AddPlttResObjFromNarc
 	str r0, [r5, #0x60]
 	bl sub_0200B00C
 	cmp r0, #0
@@ -10758,7 +10758,7 @@ ov91_02261790: ; 0x02261790
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	ldr r1, [r5, #0x60]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	add r0, r5, #0
 	add r0, #0x50
 	bl sub_02021B5C
@@ -10776,22 +10776,22 @@ ov91_02261790: ; 0x02261790
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	ldr r1, [r5]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	mov r0, #0x53
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	ldr r1, [r5, #4]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	mov r0, #0x15
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	ldr r1, [r5, #8]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	mov r0, #0x55
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	ldr r1, [r5, #0xc]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov91_02261790

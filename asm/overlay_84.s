@@ -2857,7 +2857,7 @@ _0223F2FA:
 	ldrb r0, [r4]
 	add r1, r7, #0
 	mov r2, #0x6e
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	mov r1, #0x4b
 	lsl r1, r1, #2
 	str r0, [r6, r1]
@@ -3030,7 +3030,7 @@ _0223F456:
 	lsl r0, r4, #2
 	add r0, r5, r0
 	ldr r0, [r0, r6]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -3085,7 +3085,7 @@ ov84_0223F4B4: ; 0x0223F4B4
 	ldr r0, [r4, r0]
 	mov r1, #0xb8
 	mov r2, #0x12
-	bl sub_0200A1D8
+	bl AddCharResObjFromNarc
 	mov r1, #0x53
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -3101,7 +3101,7 @@ ov84_0223F4B4: ; 0x0223F4B4
 	mov r1, #0xb8
 	mov r2, #0x38
 	mov r3, #0
-	bl sub_0200A234
+	bl AddPlttResObjFromNarc
 	mov r1, #0x15
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -3115,7 +3115,7 @@ ov84_0223F4B4: ; 0x0223F4B4
 	ldr r0, [r4, r0]
 	mov r1, #0xb8
 	mov r2, #0x14
-	bl sub_0200A294
+	bl AddCellOrAnimResObjFromNarc
 	mov r1, #0x55
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -3129,7 +3129,7 @@ ov84_0223F4B4: ; 0x0223F4B4
 	ldr r0, [r4, r0]
 	mov r1, #0xb8
 	mov r2, #0x13
-	bl sub_0200A294
+	bl AddCellOrAnimResObjFromNarc
 	mov r1, #0x56
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -3158,7 +3158,7 @@ ov84_0223F538: ; 0x0223F538
 	ldr r0, [r5, r0]
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	mov r1, #0x57
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3176,7 +3176,7 @@ ov84_0223F538: ; 0x0223F538
 	ldr r0, [r5, r0]
 	mov r1, #0x15
 	mov r3, #0
-	bl sub_0200A234
+	bl AddPlttResObjFromNarc
 	mov r1, #0x16
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -3191,7 +3191,7 @@ ov84_0223F538: ; 0x0223F538
 	ldr r0, [r5, r0]
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	mov r1, #0x59
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3207,7 +3207,7 @@ ov84_0223F538: ; 0x0223F538
 	ldr r0, [r5, r0]
 	add r1, r4, #0
 	mov r3, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	mov r1, #0x5a
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3242,7 +3242,7 @@ ov84_0223F5E4: ; 0x0223F5E4
 	ldr r0, [r6, r0]
 	mov r1, #0x14
 	mov r3, #0
-	bl sub_0200A234
+	bl AddPlttResObjFromNarc
 	mov r1, #0x17
 	lsl r1, r1, #4
 	str r0, [r6, r1]
@@ -3258,7 +3258,7 @@ ov84_0223F5E4: ; 0x0223F5E4
 	ldr r0, [r6, r0]
 	ldr r1, [sp, #0x18]
 	mov r3, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	mov r1, #0x5d
 	lsl r1, r1, #2
 	str r0, [r6, r1]
@@ -3273,7 +3273,7 @@ ov84_0223F5E4: ; 0x0223F5E4
 	ldr r0, [r6, r0]
 	ldr r1, [sp, #0x18]
 	mov r3, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	mov r1, #0x5e
 	lsl r1, r1, #2
 	str r0, [r6, r1]
@@ -3327,7 +3327,7 @@ _0223F6B4:
 	ldr r0, [r6, r0]
 	ldr r1, [sp, #0x18]
 	mov r3, #0
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	mov r1, #0x5b
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3344,7 +3344,7 @@ _0223F6B4:
 	ldr r0, [r6, r0]
 	ldr r1, [sp, #0x18]
 	mov r3, #0
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	mov r1, #0x6b
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3375,7 +3375,7 @@ ov84_0223F714: ; 0x0223F714
 	mov r1, #0xb8
 	mov r2, #0x15
 	mov r3, #1
-	bl sub_0200A1D8
+	bl AddCharResObjFromNarc
 	mov r1, #0x4f
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -3390,7 +3390,7 @@ ov84_0223F714: ; 0x0223F714
 	ldr r0, [r4, r0]
 	mov r1, #0xb8
 	mov r2, #0x39
-	bl sub_0200A234
+	bl AddPlttResObjFromNarc
 	mov r1, #5
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -3405,7 +3405,7 @@ ov84_0223F714: ; 0x0223F714
 	mov r1, #0xb8
 	mov r2, #0x17
 	mov r3, #1
-	bl sub_0200A294
+	bl AddCellOrAnimResObjFromNarc
 	mov r1, #0x51
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -3420,7 +3420,7 @@ ov84_0223F714: ; 0x0223F714
 	mov r1, #0xb8
 	mov r2, #0x16
 	mov r3, #1
-	bl sub_0200A294
+	bl AddCellOrAnimResObjFromNarc
 	mov r1, #0x52
 	lsl r1, r1, #2
 	str r0, [r4, r1]

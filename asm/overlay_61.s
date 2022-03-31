@@ -8,62 +8,6 @@
 
 	.text
 
-	thumb_func_start ov61_021E7108
-ov61_021E7108: ; 0x021E7108
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #8
-	add r7, r1, #0
-	add r1, sp, #0x10
-	ldrb r1, [r1, #0x10]
-	add r4, r2, #0
-	add r6, r3, #0
-	str r1, [sp]
-	bl sub_0200A7BC
-	add r5, r0, #0
-	ldr r1, [sp]
-	add r0, r7, #0
-	bl sub_0200A7BC
-	add r7, r0, #0
-	add r0, r5, #0
-	bl sub_0200ADA4
-	add r0, r7, #0
-	bl sub_0200B00C
-	add r0, r5, #0
-	bl sub_0200AF00
-	add r5, r0, #0
-	add r0, r7, #0
-	add r1, r5, #0
-	bl sub_0200B0F8
-	add r7, r0, #0
-	add r0, r5, #0
-	mov r1, #2
-	bl NNS_G2dGetImageLocation
-	str r0, [sp, #4]
-	add r0, r7, #0
-	mov r1, #2
-	bl NNS_G2dGetImagePaletteLocation
-	mov r1, #0x32
-	add r5, r0, #0
-	add r0, r4, #0
-	lsl r1, r1, #6
-	bl DC_FlushRange
-	mov r2, #0x32
-	ldr r1, [sp, #4]
-	add r0, r4, #0
-	lsl r2, r2, #6
-	bl GXS_LoadOBJ
-	add r0, r6, #0
-	mov r1, #0x20
-	bl DC_FlushRange
-	add r0, r6, #0
-	add r1, r5, #0
-	mov r2, #0x20
-	bl GXS_LoadOBJPltt
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ov61_021E7108
-
 	thumb_func_start ov61_021E7188
 ov61_021E7188: ; 0x021E7188
 	push {r4, r5, r6, lr}
