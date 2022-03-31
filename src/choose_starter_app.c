@@ -22,6 +22,7 @@
 #include "unk_02020B8C.h"
 #include "unk_02013FDC.h"
 #include "gf_gfx_loader.h"
+#include "choose_starter_app.h"
 
 #define HEAPID_STARTERCHOOSE       46
 
@@ -45,7 +46,8 @@ struct UnkStarterChooseSub_3B4_18 {
     struct _2DGfxResObj *plttResObj;
     struct _2DGfxResObj *cellResObj;
     struct _2DGfxResObj *animResObj;
-    u8 filler_10[0x8];
+    struct _2DGfxResObj *multiCellResObj;
+    struct _2DGfxResObj *multiCellAnmResObj;
 };
 
 struct UnkStarterChooseSub_3B4 {
@@ -53,7 +55,8 @@ struct UnkStarterChooseSub_3B4 {
     struct _2DGfxResMan *plttResMan;
     struct _2DGfxResMan *cellResMan;
     struct _2DGfxResMan *animResMan;
-    u8 filler_010[0x8];
+    struct _2DGfxResMan *multiCellResMan; //unused
+    struct _2DGfxResMan *multiCellAnmResMan; //unused
     struct UnkStarterChooseSub_3B4_18 unk_018[3];
     void *unk_060[3];
     void *unk_06C[3];
@@ -112,51 +115,54 @@ struct ChooseStarterAppWork {
     GXRgb unk_588[8];
 }; // size=0x598
 
-void ov61_021E6068(struct UnkStarterChooseSub_3B4 *a0);
-void ov61_021E60B8(struct ChooseStarterAppWork *work);
-void ov61_021E60C8(void);
-void ov61_021E60E8(HeapID heapId);
-void ov61_021E6140(struct ChooseStarterAppWork *work);
-void ov61_021E61FC(struct ChooseStarterAppWork *work);
-void ov61_021E6240(struct ChooseStarterAppWork *work);
-void ov61_021E6350(BGCONFIG *bgConfig, HeapID heapId);
-void ov61_021E6488(struct ChooseStarterAppWork *work);
-void ov61_021E6508(struct ChooseStarterAppWork *work);
-void ov61_021E6564(struct ChooseStarterAppWork *work);
-void ov61_021E6730(struct ChooseStarterAppWork *work);
-void ov61_021E6750(struct ChooseStarterAppWork *work);
-void ov61_021E6768(struct ChooseStarter3dRes *a0, int fileId, HeapID heapId);
-void ov61_021E67BC(struct ChooseStarterRnd *rnd, struct ChooseStarter3dRes *res);
-void ov61_021E67D4(int fileId, HeapID heapId, NNSFndAllocator *allocator, struct ChooseStarter3dRes *res, struct ChooseStarterAnm *anm);
-void ov61_021E6814(struct ChooseStarterRnd *render, struct ChooseStarterAnm *anim);
-void ov61_021E6820(struct ChooseStarterRnd *render, struct ChooseStarterAnm *anim);
-BOOL ov61_021E682C(struct ChooseStarterAnm *anm);
-void ov61_021E6894(struct ChooseStarterAppWork *work);
-BOOL ov61_021E68E4(struct ChooseStarterAppWork *work);
-void ov61_021E6908(struct ChooseStarter3dRes *a0);
-void ov61_021E6918(struct ChooseStarterAnm *anm, NNSFndAllocator *alloc);
-void ov61_021E6934(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z);
-void ov61_021E693C(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z);
-void ov61_021E6944(struct ChooseStarterAppWork *work);
-void ov61_021E6A28(struct ChooseStarterRnd *render);
-void ov61_021E6A48(struct ChooseStarterRnd *render, MtxFx43 *mtx);
-BOOL ov61_021E6AE0(struct ChooseStarterAppWork *work, fx16 a1);
-void ov61_021E6B2C(struct ChooseStarterAppWork *work, int a1);
-void ov61_021E6B6C(struct ChooseStarterAppWork *work);
-void ov61_021E6C3C(BGCONFIG *bgConfig, HeapID heapId);
-u8 ov61_021E6D78(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, STRING **out);
-void ov61_021E6DFC(struct ChooseStarterAppWork *work, int msgId);
-void ov61_021E6E30(WINDOW *window);
-int ov61_021E6E40(struct ChooseStarterAppWork *work);
-int ov61_021E6F80(int a0, u8 a1, int a2);
-int ov61_021E6F98(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 a3);
-void ov61_021E6FC4(struct ChooseStarterAppWork *work);
-void ov61_021E7108(struct _2DGfxResMan *charResMan, struct _2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx);
-void ov61_021E7188(struct UnkStarterChooseSub_3B4 *a0, u8 idx, HeapID heapId);
-void ov61_021E7220(struct ChooseStarterAppWork *work);
-void ov61_021E7248(struct UnkStarterChooseSub_3B4 *a0);
-BOOL ov61_021E7268(struct ChooseStarterAppWork *work, int a1, int a2);
-u16 ov61_021E7348(const int *a0, const int *a1, int a2, int a3);
+static void ov61_021E6068(struct UnkStarterChooseSub_3B4 *a0);
+static void ov61_021E60B8(struct ChooseStarterAppWork *work);
+static void ov61_021E60C8(void);
+static void ov61_021E60E8(HeapID heapId);
+static void ov61_021E6140(struct ChooseStarterAppWork *work);
+static void ov61_021E61FC(struct ChooseStarterAppWork *work);
+static inline void id_roty_mtx33(MtxFx33 *mtx, u16 index);
+static void ov61_021E6240(struct ChooseStarterAppWork *work);
+static void ov61_021E6350(BGCONFIG *bgConfig, HeapID heapId);
+static void ov61_021E6488(struct ChooseStarterAppWork *work);
+static void ov61_021E6508(struct ChooseStarterAppWork *work);
+static void ov61_021E6564(struct ChooseStarterAppWork *work);
+static void ov61_021E6730(struct ChooseStarterAppWork *work);
+static void ov61_021E6750(struct ChooseStarterAppWork *work);
+static void ov61_021E6768(struct ChooseStarter3dRes *a0, int fileId, HeapID heapId);
+static void ov61_021E67BC(struct ChooseStarterRnd *rnd, struct ChooseStarter3dRes *res);
+static void ov61_021E67D4(int fileId, HeapID heapId, NNSFndAllocator *allocator, struct ChooseStarter3dRes *res, struct ChooseStarterAnm *anm);
+static void ov61_021E6814(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm);
+static void ov61_021E6820(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm);
+static BOOL ov61_021E682C(struct ChooseStarterAnm *anm);
+static void ov61_021E684C(struct ChooseStarterAnm *anm, int a1);
+static inline struct ChooseStarterAnm *GetAnmByIdx(struct ChooseStarterAppWork *work, u8 idx);
+static void ov61_021E6894(struct ChooseStarterAppWork *work);
+static BOOL ov61_021E68E4(struct ChooseStarterAppWork *work);
+static void ov61_021E6908(struct ChooseStarter3dRes *a0);
+static void ov61_021E6918(struct ChooseStarterAnm *anm, NNSFndAllocator *alloc);
+static void ov61_021E6934(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z);
+static void ov61_021E693C(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z);
+static void ov61_021E6944(struct ChooseStarterAppWork *work);
+static void ov61_021E6A28(struct ChooseStarterRnd *render);
+static void ov61_021E6A48(struct ChooseStarterRnd *render, MtxFx43 *mtx);
+static BOOL ov61_021E6AE0(struct ChooseStarterAppWork *work, fx16 a1);
+static void ov61_021E6B2C(struct ChooseStarterAppWork *work, int a1);
+static void ov61_021E6B6C(struct ChooseStarterAppWork *work);
+static void ov61_021E6C3C(BGCONFIG *bgConfig, HeapID heapId);
+static u8 ov61_021E6D78(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, STRING **out);
+static void ov61_021E6DFC(struct ChooseStarterAppWork *work, int msgId);
+static void ov61_021E6E30(WINDOW *window);
+static int ov61_021E6E40(struct ChooseStarterAppWork *work);
+static int ov61_021E6F80(int a0, u8 a1, int a2);
+static int ov61_021E6F98(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 a3);
+static void ov61_021E6FC4(struct ChooseStarterAppWork *work);
+static void ov61_021E7108(struct _2DGfxResMan *charResMan, struct _2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx);
+static void ov61_021E7188(struct UnkStarterChooseSub_3B4 *a0, u8 idx, HeapID heapId);
+static void ov61_021E7220(struct ChooseStarterAppWork *work);
+static void ov61_021E7248(struct UnkStarterChooseSub_3B4 *a0);
+static BOOL ov61_021E7268(struct ChooseStarterAppWork *work, int a1, int a2);
+static u16 ov61_021E7348(const int *a0, const int *a1, int a2, int a3);
 
 BOOL ChooseStarterApplication_OvyInit(OVY_MANAGER *ovy, int *state_p) {
     struct ChooseStarterAppWork *work;
@@ -214,7 +220,11 @@ BOOL ChooseStarterApplication_OvyInit(OVY_MANAGER *ovy, int *state_p) {
     return TRUE;
 }
 
-extern const int ov61_021E7398[];
+static const int ov61_021E7398[] = {
+    SPECIES_CHIKORITA,
+    SPECIES_CYNDAQUIL,
+    SPECIES_TOTODILE,
+};
 
 BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
     struct ChooseStarterAppWork *work = OverlayManager_GetData(ovy);
@@ -369,11 +379,10 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         work->unk_584 = 1;
         {
             struct UnkStruct_02019040 sp2C;
-            extern const VecFx32 ov61_021E73A4;
 
             sp2C.unk_0 = 0xDCC0;
             sp2C.unk_2 = 0x11A4;
-            sp2C.unk_4 = ov61_021E73A4;//(VecFx32){0,0,14*FX32_ONE};
+            sp2C.unk_4 = (VecFx32){0, 0, 14 * FX32_ONE};
             sp2C.unk_10 = 0x64000;
 
             sub_02019040(work->unk_574, &sp2C, 8);
@@ -400,17 +409,15 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
 
         if (r6 != 0) {
             if (r6 == 1) {
-                extern const VecFx32 ov61_021E7380;
                 sp18.unk_0 = 0xDCC0;
                 sp18.unk_2 = 0x11A4;
-                sp18.unk_4 = ov61_021E7380;//(VecFx32){0, 0, 14 * FX32_ONE};
+                sp18.unk_4 = (VecFx32){0, 0, 14 * FX32_ONE};
                 sp18.unk_10 = 0x64000;
                 work->unk_3AC = 0;
             } else {
-                extern const VecFx32 ov61_021E73BC;
                 sp18.unk_0 = 0xEA20;
                 sp18.unk_2 = 0x1024;
-                sp18.unk_4 = ov61_021E73BC;//(VecFx32){0, 0, 12 * FX32_ONE};
+                sp18.unk_4 = (VecFx32){0, 0, 12 * FX32_ONE};
                 sp18.unk_10 = 0x3C000;
                 work->unk_3AC = 2;
             }
@@ -474,7 +481,7 @@ BOOL ChooseStarterApplication_OvyExit(OVY_MANAGER *ovy, int *state) {
     return TRUE;
 }
 
-void ov61_021E6068(struct UnkStarterChooseSub_3B4 *a0) {
+static void ov61_021E6068(struct UnkStarterChooseSub_3B4 *a0) {
     int i;
 
     for (i = 0; i < 3; i++) {
@@ -489,23 +496,37 @@ void ov61_021E6068(struct UnkStarterChooseSub_3B4 *a0) {
     }
 }
 
-void ov61_021E60B8(struct ChooseStarterAppWork *work) {
+static void ov61_021E60B8(struct ChooseStarterAppWork *work) {
     sub_0200B224();
     BgConfig_HandleScheduledScrollAndTransferOps(work->bgConfig);
 }
 
-void ov61_021E60C8(void) {
-    extern const struct GXBanksConfig ov61_021E7494;
-    const struct GXBanksConfig cfg = ov61_021E7494;
+static void ov61_021E60C8(void) {
+    const struct GXBanksConfig cfg = {
+        GX_VRAM_BG_80_EF,
+        GX_VRAM_BGEXTPLTT_NONE,
+        GX_VRAM_SUB_BG_128_C,
+        GX_VRAM_SUB_BGEXTPLTT_NONE,
+        GX_VRAM_OBJ_NONE,
+        GX_VRAM_OBJEXTPLTT_NONE,
+        GX_VRAM_SUB_OBJ_16_I,
+        GX_VRAM_SUB_OBJEXTPLTT_NONE,
+        GX_VRAM_TEX_01_AB,
+        GX_VRAM_TEXPLTT_0_G,
+    };
     GX_SetBanks(&cfg);
 }
 
-void ov61_021E60E8(HeapID heapId) {
+static void ov61_021E60E8(HeapID heapId) {
     NNS_G2dInitOamManagerModule();
     sub_0200B150(0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20, heapId);
     {
-        extern const struct UnkStruct_020215A0 ov61_021E73F8;
-        struct UnkStruct_020215A0 sp14 = ov61_021E73F8;
+        struct UnkStruct_020215A0 sp14 = {
+            3,
+            0,
+            0x2800,
+            0
+        };
         sp14.heapId = heapId;
         sub_020215C0(&sp14, 0x200010, 0x10);
     }
@@ -514,7 +535,7 @@ void ov61_021E60E8(HeapID heapId) {
     sub_02022638();
 }
 
-void ov61_021E6140(struct ChooseStarterAppWork *work) {
+static void ov61_021E6140(struct ChooseStarterAppWork *work) {
     int i;
     work->_3dMan = GF_3DVramMan_Create(work->heapId, 0, 2, 0, 4, NULL);
     G3X_AntiAlias(TRUE);
@@ -532,7 +553,7 @@ void ov61_021E6140(struct ChooseStarterAppWork *work) {
     NNS_G3dGlbMaterialColorSpecEmi(RGB_WHITE, RGB_WHITE, FALSE);
 }
 
-void ov61_021E61FC(struct ChooseStarterAppWork *work) {
+static void ov61_021E61FC(struct ChooseStarterAppWork *work) {
     sub_0202457C(work->unk_3B4.unk_088);
     sub_02026E48();
     NNS_G3dGePushMtx();
@@ -547,9 +568,8 @@ static inline void id_roty_mtx33(MtxFx33 *mtx, u16 index) {
     MTX_RotY33(mtx, FX_SinIdx(index), FX_CosIdx(index));
 }
 
-void ov61_021E6240(struct ChooseStarterAppWork *work) {
-    extern const VecFx32 ov61_021E73EC;
-    const VecFx32 sp8C = ov61_021E73EC;
+static void ov61_021E6240(struct ChooseStarterAppWork *work) {
+    const VecFx32 sp8C = {FX32_ONE, FX32_ONE, FX32_ONE};
     MtxFx33 sp68;
     MtxFx33 sp44;
     int i;
@@ -565,10 +585,9 @@ void ov61_021E6240(struct ChooseStarterAppWork *work) {
     }
 
     {
-        extern const VecFx32 ov61_021E73E0;
         MtxFx33 sp20;
         const VecFx32 sp14 = {0, 0, 0};
-        const VecFx32 sp08 = ov61_021E73E0;
+        const VecFx32 sp08 = {FX32_ONE, FX32_ONE, FX32_ONE};
 
         NNS_G3dGlbSetBaseTrans(&sp14);
         id_roty_mtx33(&sp20, work->unk_398);
@@ -588,49 +607,63 @@ void ov61_021E6240(struct ChooseStarterAppWork *work) {
     }
 }
 
-void ov61_021E6350(BGCONFIG *bgConfig, HeapID heapId) {
+static void ov61_021E6350(BGCONFIG *bgConfig, HeapID heapId) {
     G2_SetBG0Priority(2);
     {
-        extern const BGTEMPLATE ov61_021E745C;
-        const BGTEMPLATE sp70 = ov61_021E745C;
+        const BGTEMPLATE sp70 = {
+            0, 0, 0x800, 0,
+            GF_BG_SCR_SIZE_256x256, GF_BG_CLR_4BPP, 0, 1, 0, 0, 0, 0,
+            0
+        };
         InitBgFromTemplate(bgConfig, 1, &sp70, GF_BG_TYPE_TEXT);
         BG_ClearCharDataRange(1, 0x20, 0, heapId);
         BgClearTilemapBufferAndCommit(bgConfig, 1);
     }
     {
-        extern const BGTEMPLATE ov61_021E7478;
-        const BGTEMPLATE sp54 = ov61_021E7478;
+        const BGTEMPLATE sp54 = {
+            0, 0, 0x800, 0,
+            GF_BG_SCR_SIZE_256x256, GF_BG_CLR_4BPP, 1, 3, 0, 1, 0, 0,
+            0
+        };
         InitBgFromTemplate(bgConfig, 2, &sp54, GF_BG_TYPE_TEXT);
         BG_ClearCharDataRange(2, 0x20, 0, heapId);
         BgClearTilemapBufferAndCommit(bgConfig, 2);
     }
     {
-        extern const BGTEMPLATE ov61_021E7408;
-        const BGTEMPLATE sp38 = ov61_021E7408;
+        const BGTEMPLATE sp38 = {
+            0, 0, 0x800, 0,
+            GF_BG_SCR_SIZE_256x256, GF_BG_CLR_4BPP, 2, 5, 0, 0, 0, 0,
+            0
+        };
         InitBgFromTemplate(bgConfig, 4, &sp38, GF_BG_TYPE_TEXT);
         BG_ClearCharDataRange(4, 0x20, 0, heapId);
         BgClearTilemapBufferAndCommit(bgConfig, 4);
     }
     {
-        extern const BGTEMPLATE ov61_021E7424;
-        const BGTEMPLATE sp1C = ov61_021E7424;
+        const BGTEMPLATE sp1C = {
+            0, 0, 0x800, 0,
+            GF_BG_SCR_SIZE_256x256, GF_BG_CLR_4BPP, 0, 4, 0, 2, 0, 0,
+            0
+        };
         InitBgFromTemplate(bgConfig, 5, &sp1C, GF_BG_TYPE_TEXT);
         BG_ClearCharDataRange(5, 0x20, 0, heapId);
         BgClearTilemapBufferAndCommit(bgConfig, 5);
     }
     {
-        extern const BGTEMPLATE ov61_021E7440;
-        const BGTEMPLATE sp00 = ov61_021E7440;
+        const BGTEMPLATE sp00 = {
+            0, 0, 0x800, 0,
+            GF_BG_SCR_SIZE_256x256, GF_BG_CLR_4BPP, 1, 3, 0, 1, 0 ,0,
+            0
+        };
         InitBgFromTemplate(bgConfig, 6, &sp00, GF_BG_TYPE_TEXT);
         BG_ClearCharDataRange(6, 0x20, 0, heapId);
         BgClearTilemapBufferAndCommit(bgConfig, 6);
     }
 }
 
-void ov61_021E6488(struct ChooseStarterAppWork *work) {
-    extern const VecFx32 ov61_021E73C8;
+static void ov61_021E6488(struct ChooseStarterAppWork *work) {
     VecFx32 sp20;
-    const VecFx32 sp14 = ov61_021E73C8;
+    const VecFx32 sp14 = {0, 0, 14 * FX32_ONE};
     u16 sp0C[4];
 
     work->unk_014.x = 0;
@@ -651,7 +684,7 @@ void ov61_021E6488(struct ChooseStarterAppWork *work) {
     sub_0202313C(work->unk_010);
 }
 
-void ov61_021E6508(struct ChooseStarterAppWork *work) {
+static void ov61_021E6508(struct ChooseStarterAppWork *work) {
     struct UnkStarterChooseSub_3B4 *r4 = &work->unk_3B4;
     r4->unk_088 = sub_02009F40(3, &r4->unk_08C, work->heapId);
     r4->charResMan = Create2DGfxResObjMan(3, 0, work->heapId);
@@ -661,7 +694,7 @@ void ov61_021E6508(struct ChooseStarterAppWork *work) {
     GX_EngineBToggleLayers(0x10, GX_LAYER_TOGGLE_ON);
 }
 
-void ov61_021E6564(struct ChooseStarterAppWork *work) {
+static void ov61_021E6564(struct ChooseStarterAppWork *work) {
     int i;
     ov61_021E6768(&work->unk_030[0], 3, work->heapId);
     ov61_021E6934(&work->unk_070[0], 0, 14 * FX32_ONE, 32 * FX32_ONE);
@@ -698,7 +731,7 @@ void ov61_021E6564(struct ChooseStarterAppWork *work) {
     ov61_021E6814(&work->unk_070[5], &work->unk_340[2]);
 }
 
-void ov61_021E6730(struct ChooseStarterAppWork *work) {
+static void ov61_021E6730(struct ChooseStarterAppWork *work) {
     int i;
 
     for (i = 0; i < 6; i++) {
@@ -706,7 +739,7 @@ void ov61_021E6730(struct ChooseStarterAppWork *work) {
     }
 }
 
-void ov61_021E6750(struct ChooseStarterAppWork *work) {
+static void ov61_021E6750(struct ChooseStarterAppWork *work) {
     int i;
 
     for (i = 0; i < 4; i++) {
@@ -714,7 +747,7 @@ void ov61_021E6750(struct ChooseStarterAppWork *work) {
     }
 }
 
-void ov61_021E6768(struct ChooseStarter3dRes *a0, int fileId, HeapID heapId) {
+static void ov61_021E6768(struct ChooseStarter3dRes *a0, int fileId, HeapID heapId) {
     a0->header = GfGfxLoader_LoadFromNarc(NARC_a_0_8_2, fileId, FALSE, heapId, FALSE);
     a0->mdlSet = NNS_G3dGetMdlSet(a0->header);
     a0->mdl = NNS_G3dGetMdlByIdx(a0->mdlSet, 0);
@@ -722,12 +755,12 @@ void ov61_021E6768(struct ChooseStarter3dRes *a0, int fileId, HeapID heapId) {
     sub_0201F668(a0->tex);
 }
 
-void ov61_021E67BC(struct ChooseStarterRnd *rnd, struct ChooseStarter3dRes *res) {
+static void ov61_021E67BC(struct ChooseStarterRnd *rnd, struct ChooseStarter3dRes *res) {
     sub_0201F64C(res->header, res->tex);
     NNS_G3dRenderObjInit(&rnd->obj, res->mdl);
 }
 
-void ov61_021E67D4(int fileId, HeapID heapId, NNSFndAllocator *allocator, struct ChooseStarter3dRes *res, struct ChooseStarterAnm *anm) {
+static void ov61_021E67D4(int fileId, HeapID heapId, NNSFndAllocator *allocator, struct ChooseStarter3dRes *res, struct ChooseStarterAnm *anm) {
     void *pAnm;
     anm->hdr = GfGfxLoader_LoadFromNarc(NARC_a_0_8_2, fileId, FALSE, heapId, FALSE);
     pAnm = NNS_G3dGetAnmByIdx(anm->hdr, 0);
@@ -735,15 +768,15 @@ void ov61_021E67D4(int fileId, HeapID heapId, NNSFndAllocator *allocator, struct
     NNS_G3dAnmObjInit(anm->obj, pAnm, res->mdl, res->tex);
 }
 
-void ov61_021E6814(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm) {
+static void ov61_021E6814(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm) {
     NNS_G3dRenderObjAddAnmObj(&rnd->obj, anm->obj);
 }
 
-void ov61_021E6820(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm) {
+static void ov61_021E6820(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm) {
     NNS_G3dRenderObjRemoveAnmObj(&rnd->obj, anm->obj);
 }
 
-BOOL ov61_021E682C(struct ChooseStarterAnm *anm) {
+static BOOL ov61_021E682C(struct ChooseStarterAnm *anm) {
     BOOL ret = FALSE;
     fx32 frame = anm->obj->frame + FX32_ONE;
 
@@ -755,7 +788,7 @@ BOOL ov61_021E682C(struct ChooseStarterAnm *anm) {
     return ret;
 }
 
-void ov61_021E684C(struct ChooseStarterAnm *anm, int a1) {
+static void ov61_021E684C(struct ChooseStarterAnm *anm, int a1) {
     NNS_G3dAnmObjSetFrame(anm->obj, anm->obj->frame + FX32_ONE);
     if (a1 == 2 && anm->obj->frame == (FX32_ONE * 40)) {
         NNS_G3dAnmObjSetFrame(anm->obj, FX32_ONE * 80);
@@ -773,47 +806,46 @@ static inline struct ChooseStarterAnm *GetAnmByIdx(struct ChooseStarterAppWork *
     return &work->unk_340[idx];
 }
 
-void ov61_021E6894(struct ChooseStarterAppWork *work) {
+static void ov61_021E6894(struct ChooseStarterAppWork *work) {
     u32 idx = work->unk_394;
     ov61_021E684C(GetAnmByIdx(work, idx), work->unk_3AC);
     NNS_G3dAnmObjSetFrame(GetAnmByIdx(work, (idx + 1) % 3)->obj, 0);
     NNS_G3dAnmObjSetFrame(GetAnmByIdx(work, (idx + 2) % 3)->obj, 0);
 }
 
-BOOL ov61_021E68E4(struct ChooseStarterAppWork *work) {
+static BOOL ov61_021E68E4(struct ChooseStarterAppWork *work) {
     u32 idx = work->unk_394;
     return GetAnmByIdx(work, idx)->obj->frame >= 80 * FX32_ONE;
 }
 
-void ov61_021E6908(struct ChooseStarter3dRes *a0) {
+static void ov61_021E6908(struct ChooseStarter3dRes *a0) {
     if (a0->header != NULL) {
         FreeToHeap(a0->header);
     }
 }
 
-void ov61_021E6918(struct ChooseStarterAnm *anm, NNSFndAllocator *alloc) {
+static void ov61_021E6918(struct ChooseStarterAnm *anm, NNSFndAllocator *alloc) {
     if (anm->hdr != NULL) {
         NNS_G3dFreeAnmObj(alloc, anm->obj);
         FreeToHeap(anm->hdr);
     }
 }
 
-void ov61_021E6934(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z) {
+static void ov61_021E6934(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z) {
     rnd->unk_5C.x = x;
     rnd->unk_5C.y = y;
     rnd->unk_5C.z = z;
 }
 
-void ov61_021E693C(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z) {
+static void ov61_021E693C(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z) {
     rnd->unk_68.x = x;
     rnd->unk_68.y = y;
     rnd->unk_68.z = z;
 }
 
-void ov61_021E6944(struct ChooseStarterAppWork *work) {
-    extern const VecFx32 ov61_021E73B0;
+static void ov61_021E6944(struct ChooseStarterAppWork *work) {
     VecFx32 sp40;
-    const VecFx32 sp34 = ov61_021E73B0;
+    const VecFx32 sp34 = {0, 14 * FX32_ONE, 32 * FX32_ONE};
     MtxFx33 sp10;
     int i;
     u16 sp0;
@@ -835,14 +867,14 @@ void ov61_021E6944(struct ChooseStarterAppWork *work) {
     }
 }
 
-void ov61_021E6A28(struct ChooseStarterRnd *render) {
+static void ov61_021E6A28(struct ChooseStarterRnd *render) {
     MtxFx43 sp0;
     ov61_021E6A48(render, &sp0);
     NNS_G3dGeMultMtx43(&sp0);
     NNS_G3dDraw(&render->obj);
 }
 
-void ov61_021E6A48(struct ChooseStarterRnd *render, MtxFx43 *mtx) {
+static void ov61_021E6A48(struct ChooseStarterRnd *render, MtxFx43 *mtx) {
     MtxFx43 sp64;
     MtxFx43 sp34;
     MtxFx43 sp04;
@@ -858,7 +890,7 @@ void ov61_021E6A48(struct ChooseStarterRnd *render, MtxFx43 *mtx) {
     MTX_Concat43(&sp34, mtx, mtx);
 }
 
-BOOL ov61_021E6AE0(struct ChooseStarterAppWork *work, fx16 a1) {
+static BOOL ov61_021E6AE0(struct ChooseStarterAppWork *work, fx16 a1) {
     BOOL ret = FALSE;
     work->unk_398 += a1;
     if (a1 >= 0) {
@@ -879,7 +911,7 @@ BOOL ov61_021E6AE0(struct ChooseStarterAppWork *work, fx16 a1) {
     return ret;
 }
 
-void ov61_021E6B2C(struct ChooseStarterAppWork *work, int a1) {
+static void ov61_021E6B2C(struct ChooseStarterAppWork *work, int a1) {
     if (a1 == 2) {
         work->unk_394 = (work->unk_394 + 1) % 3;
     } else if (a1 == 1) {
@@ -892,7 +924,7 @@ void ov61_021E6B2C(struct ChooseStarterAppWork *work, int a1) {
     ov61_021E6944(work);
 }
 
-void ov61_021E6B6C(struct ChooseStarterAppWork *work) {
+static void ov61_021E6B6C(struct ChooseStarterAppWork *work) {
     work->unk_39C = AllocWindows(work->heapId, 1);
     work->unk_3A0 = AllocWindows(work->heapId, 1);
     AddWindowParameterized(work->bgConfig, work->unk_39C, 4, 2, 19, 27, 4, 2, 0x01F);
@@ -905,7 +937,7 @@ void ov61_021E6B6C(struct ChooseStarterAppWork *work) {
     DrawFrameAndWindow2(work->unk_39C, 0, 0x200, 0);
 }
 
-void ov61_021E6C3C(BGCONFIG *bgConfig, HeapID heapId) {
+static void ov61_021E6C3C(BGCONFIG *bgConfig, HeapID heapId) {
     GfGfxLoader_LoadCharData(NARC_a_0_8_2, 13, bgConfig, 2, 0, 0, FALSE, heapId);
     GfGfxLoader_LoadCharData(NARC_a_0_8_2, 10, bgConfig, 5, 0, 0, FALSE, heapId);
     GfGfxLoader_LoadCharData(NARC_a_0_8_2, 16, bgConfig, 6, 0, 0, FALSE, heapId);
@@ -925,7 +957,7 @@ void ov61_021E6C3C(BGCONFIG *bgConfig, HeapID heapId) {
 
 }
 
-u8 ov61_021E6D78(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, STRING **out) {
+static u8 ov61_021E6D78(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, STRING **out) {
     MSGDATA *msgData;
     u8 ret;
     GF_ASSERT(*out == NULL);
@@ -943,18 +975,18 @@ u8 ov61_021E6D78(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int
     return ret;
 }
 
-void ov61_021E6DFC(struct ChooseStarterAppWork *work, int msgId) {
+static void ov61_021E6DFC(struct ChooseStarterAppWork *work, int msgId) {
     STRING *string = NULL;
     ov61_021E6D78(work->unk_3A0, work->heapId, FALSE, NARC_msg_msg_0190_bin, msgId, MakeTextColor(1, 2, 0), 0, &string);
     String_dtor(string);
 }
 
-void ov61_021E6E30(WINDOW *window) {
+static void ov61_021E6E30(WINDOW *window) {
     RemoveWindow(window);
     FreeToHeap(window);
 }
 
-int ov61_021E6E40(struct ChooseStarterAppWork *work) {
+static int ov61_021E6E40(struct ChooseStarterAppWork *work) {
     int ret = 0;
     if (!sub_0202534C()) {
         if (gSystem.newKeys & PAD_BUTTON_A) {
@@ -1021,7 +1053,7 @@ int ov61_021E6E40(struct ChooseStarterAppWork *work) {
     return ret;
 }
 
-int ov61_021E6F80(int a0, u8 a1, int a2) {
+static int ov61_021E6F80(int a0, u8 a1, int a2) {
 #pragma unused(a2)
     if (((a1 + 1) % 3) == a0) {
         return 1;
@@ -1030,7 +1062,7 @@ int ov61_021E6F80(int a0, u8 a1, int a2) {
     }
 }
 
-int ov61_021E6F98(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 a3) {
+static int ov61_021E6F98(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 a3) {
     u8 i;
     for (i = 0; i < 3; i++) {
         if (sub_02020B9C(&vecs[i], near, far) <= a3) {
@@ -1040,7 +1072,7 @@ int ov61_021E6F98(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 a3) {
     return i;
 }
 
-void ov61_021E6FC4(struct ChooseStarterAppWork *work) {
+static void ov61_021E6FC4(struct ChooseStarterAppWork *work) {
     NARC *narc = NARC_ctor(NARC_a_0_9_3, work->heapId);
     int i; //r4
     struct UnkStarterChooseSub_3B4 *r5 = &work->unk_3B4;
@@ -1073,7 +1105,7 @@ void ov61_021E6FC4(struct ChooseStarterAppWork *work) {
     NARC_dtor(narc);
 }
 
-void ov61_021E7108(struct _2DGfxResMan *charResMan, struct _2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx) {
+static void ov61_021E7108(struct _2DGfxResMan *charResMan, struct _2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx) {
     struct _2DGfxResObj *r5 = Get2DGfxResObjById(charResMan, idx);
     struct _2DGfxResObj *r7 = Get2DGfxResObjById(plttResMan, idx);
     NNSG2dImageProxy *r5_2;
@@ -1093,7 +1125,7 @@ void ov61_021E7108(struct _2DGfxResMan *charResMan, struct _2DGfxResMan *plttRes
     GXS_LoadOBJPltt(plttData, plttloc, 0x20);
 }
 
-void ov61_021E7188(struct UnkStarterChooseSub_3B4 *a0, u8 idx, HeapID heapId) {
+static void ov61_021E7188(struct UnkStarterChooseSub_3B4 *a0, u8 idx, HeapID heapId) {
     UnkStruct_02009D48 header;
     struct UnkStruct_02024624Header sp2C;
 
@@ -1118,12 +1150,12 @@ void ov61_021E7188(struct UnkStarterChooseSub_3B4 *a0, u8 idx, HeapID heapId) {
     sub_02024830(a0->unk_1B4[idx], 0);
 }
 
-void ov61_021E7220(struct ChooseStarterAppWork *work) {
+static void ov61_021E7220(struct ChooseStarterAppWork *work) {
     ov61_021E7248(&work->unk_3B4);
     sub_02024830(work->unk_3B4.unk_1B4[work->unk_394], 1);
 }
 
-void ov61_021E7248(struct UnkStarterChooseSub_3B4 *a0) {
+static void ov61_021E7248(struct UnkStarterChooseSub_3B4 *a0) {
     int i;
 
     for (i = 0; i < 3; i++) {
@@ -1131,17 +1163,15 @@ void ov61_021E7248(struct UnkStarterChooseSub_3B4 *a0) {
     }
 }
 
-BOOL ov61_021E7268(struct ChooseStarterAppWork *work, int a1, int a2) {
+static BOOL ov61_021E7268(struct ChooseStarterAppWork *work, int a1, int a2) {
     MtxFx33 sp18;
     u16 r6;
     u32 r5 = work->unk_394;
     work->unk_3A7++;
     r6 = ov61_021E7348(&a1, &a2, work->unk_3A7, 8);
     {
-        extern const VecFx32 ov61_021E73D4;
-        VecFx32 sp0C = ov61_021E73D4;
-        extern const VecFx32 ov61_021E738C;
-        VecFx32 sp00 = ov61_021E738C;
+        VecFx32 sp0C = {0, 14 * FX32_ONE, 32 * FX32_ONE};
+        VecFx32 sp00 = {0, 14 * FX32_ONE, 32 * FX32_ONE};
         sp00.y += FX32_CONST(13.453);
         VEC_Subtract(&sp0C, &sp00, &sp0C);
         MTX_RotX33(&sp18, FX_SinIdx(r6), FX_CosIdx(r6));
@@ -1158,7 +1188,7 @@ BOOL ov61_021E7268(struct ChooseStarterAppWork *work, int a1, int a2) {
     }
 }
 
-u16 ov61_021E7348(const int *a0, const int *a1, int a2, int a3) {
+static u16 ov61_021E7348(const int *a0, const int *a1, int a2, int a3) {
     u16 ret;
     int addend;
     if (*a1 >= *a0) {
