@@ -2542,7 +2542,7 @@ sub_0200F748: ; 0x0200F748
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	ldr r1, _0200F828 ; =0x00015CD5
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	bl sub_0200AF00
 	mov r1, #1
 	str r0, [sp, #4]
@@ -2569,7 +2569,7 @@ sub_0200F748: ; 0x0200F748
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r1, _0200F828 ; =0x00015CD5
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	ldr r1, [sp, #4]
 	bl sub_0200B0F8
 	mov r1, #1

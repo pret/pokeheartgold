@@ -280,12 +280,12 @@ static void destroyAllObjects(struct _2DGfxResMan *mgr) {
     }
 }
 
-struct _2DGfxResObj *sub_0200A7BC(struct _2DGfxResMan *mgr, int id) {
+struct _2DGfxResObj *Get2DGfxResObjById(struct _2DGfxResMan *mgr, int id) {
     int i, tmp;
     GF_ASSERT(mgr != NULL);
     for (i = 0; i < mgr->max; i++) {
         if (mgr->objects[i].resource != NULL) {
-            tmp = sub_02025728(mgr->objects[i].resource);
+            tmp = Get2DGfxRawResObjId(mgr->objects[i].resource);
             if (tmp == id) {
                 return &mgr->objects[i];
             }
@@ -296,7 +296,7 @@ struct _2DGfxResObj *sub_0200A7BC(struct _2DGfxResMan *mgr, int id) {
 
 int sub_0200A7FC(struct _2DGfxResObj *obj) {
     GF_ASSERT(obj != NULL);
-    return sub_02025728(obj->resource);
+    return Get2DGfxRawResObjId(obj->resource);
 }
 
 NNSG2dCharacterData *sub_0200A810(struct _2DGfxResObj *obj) {

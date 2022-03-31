@@ -1382,7 +1382,7 @@ _0200D930: .word 0x0000FFFF
 sub_0200D934: ; 0x0200D934
 	push {r3, lr}
 	ldr r0, [r0, #0x10]
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	mov r1, #0
 	bl sub_0200B0F8
 	pop {r3, pc}
@@ -1393,7 +1393,7 @@ sub_0200D944: ; 0x0200D944
 	push {r4, lr}
 	ldr r0, [r0, #0x10]
 	add r4, r2, #0
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	add r1, r4, #0
 	bl sub_0200B12C
 	pop {r4, pc}
@@ -2816,7 +2816,7 @@ sub_0200E248: ; 0x0200E248
 	ldr r1, [sp, #0x24]
 	add r7, r2, #0
 	str r3, [sp, #8]
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	add r6, r0, #0
 	ldr r0, [sp, #0x20]
 	ldr r3, [sp, #8]
@@ -2843,7 +2843,7 @@ sub_0200E27C: ; 0x0200E27C
 	ldr r1, [sp, #0x24]
 	add r7, r2, #0
 	str r3, [sp, #8]
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	add r6, r0, #0
 	ldr r0, [sp, #0x20]
 	ldr r3, [sp, #8]
@@ -2882,7 +2882,7 @@ sub_0200E2B8: ; 0x0200E2B8
 	ldr r1, [sp, #0x24]
 	add r7, r2, #0
 	str r3, [sp, #8]
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	add r6, r0, #0
 	ldr r0, [sp, #0x20]
 	ldr r3, [sp, #8]
@@ -2909,7 +2909,7 @@ sub_0200E2EC: ; 0x0200E2EC
 	ldr r1, [sp, #0x24]
 	add r7, r2, #0
 	str r3, [sp, #8]
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	add r6, r0, #0
 	ldr r0, [sp, #0x20]
 	ldr r3, [sp, #8]

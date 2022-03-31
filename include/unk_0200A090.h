@@ -102,7 +102,7 @@ void Delete2DGfxResObjList(struct _2DGfxResObjList *list);
 BOOL _2DGfxResObjExistsById(struct _2DGfxResMan *mgr, int a1);
 void sub_0200A740(struct _2DGfxResObj *obj);
 void DestroySingle2DGfxResObj(struct _2DGfxResMan *a0, struct _2DGfxResObj *a1);
-struct _2DGfxResObj *sub_0200A7BC(struct _2DGfxResMan *mgr, int id);
+struct _2DGfxResObj *Get2DGfxResObjById(struct _2DGfxResMan *mgr, int id);
 int sub_0200A7FC(struct _2DGfxResObj *obj);
 NNSG2dCharacterData *sub_0200A810(struct _2DGfxResObj *obj);
 NNSG2dPaletteData *sub_0200A828(struct _2DGfxResObj *obj);

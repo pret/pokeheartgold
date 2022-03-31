@@ -27377,7 +27377,7 @@
 .public _2DGfxResObjExistsById
 .public sub_0200A740
 .public DestroySingle2DGfxResObj
-.public sub_0200A7BC
+.public Get2DGfxResObjById
 .public sub_0200A7FC
 .public sub_0200A810
 .public sub_0200A828
@@ -28024,7 +28024,7 @@
 .public sub_020256C8
 .public sub_020256FC
 .public sub_0202570C
-.public sub_02025728
+.public Get2DGfxRawResObjId
 .public sub_02025780
 .public sub_020257C4
 .public sub_020257E8

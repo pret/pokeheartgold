@@ -9015,7 +9015,7 @@ _022585CA:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #2
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #1
@@ -9037,7 +9037,7 @@ _022585CA:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #2
@@ -9076,7 +9076,7 @@ ov03_02258648: ; 0x02258648
 	ldr r0, [r4, r0]
 	add r6, r3, #0
 	add r7, r2, #0
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #1
@@ -9098,7 +9098,7 @@ ov03_02258648: ; 0x02258648
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, r7, #0
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #2

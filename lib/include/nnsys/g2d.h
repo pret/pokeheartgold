@@ -14,5 +14,7 @@
 #include <nnsys/g2d/load/g2d_NMC_load.h>
 #include <nnsys/g2d/g2d_Image.h>
 #include <nnsys/g2d/g2d_OAM.h>
+#include <nnsys/g2d/g2d_CellAnimation.h>
+#include <nnsys/g2d/g2d_MultiCellAnimation.h>
 
 #endif //NNSYS_G2D_H_

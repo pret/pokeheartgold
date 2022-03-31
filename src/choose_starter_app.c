@@ -22,6 +22,7 @@
 #include "unk_02020B8C.h"
 #include "unk_02013FDC.h"
 #include "gf_gfx_loader.h"
+#include "math_util.h"
 
 #define HEAPID_STARTERCHOOSE       46
 
@@ -60,7 +61,7 @@ struct UnkStarterChooseSub_3B4 {
     struct SomeDrawPokemonStruct unk_078;
     void *unk_088;
     u8 unk_08C[0x128];
-    int unk_1B4[3];
+    void *unk_1B4[3];
 };
 
 struct UnkStarterChooseSub_368_4 {
@@ -1073,8 +1074,8 @@ void ov61_021E6FC4(struct ChooseStarterAppWork *work) {
 }
 
 void ov61_021E7108(struct _2DGfxResMan *charResMan, struct _2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx) {
-    struct _2DGfxResObj *r5 = sub_0200A7BC(charResMan, idx);
-    struct _2DGfxResObj *r7 = sub_0200A7BC(plttResMan, idx);
+    struct _2DGfxResObj *r5 = Get2DGfxResObjById(charResMan, idx);
+    struct _2DGfxResObj *r7 = Get2DGfxResObjById(plttResMan, idx);
     NNSG2dImageProxy *r5_2;
     const NNSG2dImagePaletteProxy *r7_2;
     u32 imageloc;
@@ -1090,4 +1091,29 @@ void ov61_021E7108(struct _2DGfxResMan *charResMan, struct _2DGfxResMan *plttRes
     GXS_LoadOBJ(charData, imageloc, 0xC80);
     DC_FlushRange(plttData, 0x20);
     GXS_LoadOBJPltt(plttData, plttloc, 0x20);
+}
+
+void ov61_021E7188(struct UnkStarterChooseSub_3B4 *a0, u8 idx, HeapID heapId) {
+    UnkStruct_02009D48 header;
+    struct UnkStruct_02024624 sp2C;
+
+    sub_02009D48(&header, idx, idx, idx, idx, -1, -1, FALSE, 0, a0->charResMan, a0->plttResMan, a0->cellResMan, a0->animResMan, NULL, NULL);
+    sp2C.unk0 = a0->unk_088;
+    sp2C.unk4 = &header;
+    sp2C.unk8.x = 0;
+    sp2C.unk8.y = 0;
+    sp2C.unk8.z = 0;
+    sp2C.unk14.x = FX32_ONE;
+    sp2C.unk14.y = FX32_ONE;
+    sp2C.unk14.z = FX32_ONE;
+    sp2C.unk20 = 0;
+    sp2C.unk28 = 2;
+    sp2C.unk24 = 0;
+    sp2C.heapId = heapId;
+    sp2C.unk8.x = 128 * FX32_ONE;
+    sp2C.unk8.y = 288 * FX32_ONE;
+    a0->unk_1B4[idx] = sub_02024624(&sp2C);
+    sub_0202484C(a0->unk_1B4[idx], 0);
+    sub_020248F0(a0->unk_1B4[idx], 0);
+    sub_02024830(a0->unk_1B4[idx], 0);
 }

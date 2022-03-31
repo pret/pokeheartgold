@@ -671,7 +671,7 @@ ov41_02246360: ; 0x02246360
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x48]
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	add r1, r0, #0
 	ldr r0, [r4, #0x48]
 	bl DestroySingle2DGfxResObj
@@ -683,7 +683,7 @@ ov41_02246374: ; 0x02246374
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x4c]
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	add r1, r0, #0
 	ldr r0, [r4, #0x4c]
 	bl DestroySingle2DGfxResObj
@@ -695,7 +695,7 @@ ov41_02246388: ; 0x02246388
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x50]
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	add r1, r0, #0
 	ldr r0, [r4, #0x50]
 	bl DestroySingle2DGfxResObj
@@ -707,7 +707,7 @@ ov41_0224639C: ; 0x0224639C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x54]
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	add r1, r0, #0
 	ldr r0, [r4, #0x54]
 	bl DestroySingle2DGfxResObj
@@ -9925,7 +9925,7 @@ ov41_0224A734: ; 0x0224A734
 	str r2, [sp, #0x90]
 	str r0, [sp, #0xa0]
 	ldr r0, [r4, #0x4c]
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	mov r1, #0
 	bl sub_0200B0F8
 	str r0, [sp, #0x98]

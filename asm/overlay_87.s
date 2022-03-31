@@ -4919,7 +4919,7 @@ _021E7F38:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #3
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	add r6, r0, #0
 	mov r0, #0
 	str r0, [sp]

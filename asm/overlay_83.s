@@ -18096,7 +18096,7 @@ ov83_02247264: ; 0x02247264
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r6, r2, #0
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #1
@@ -18126,7 +18126,7 @@ ov83_022472A0: ; 0x022472A0
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	add r6, r2, #0
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #2

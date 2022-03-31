@@ -655,7 +655,7 @@ ov90_02258C74: ; 0x02258C74
 	push {r3, lr}
 	ldr r0, [r0, #0x14]
 	ldr r1, _02258C88 ; =0x00001388
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	mov r1, #1
 	bl sub_0200B12C
 	pop {r3, pc}

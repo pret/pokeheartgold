@@ -209,8 +209,8 @@ _02025724:
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0202570C
 
-	thumb_func_start sub_02025728
-sub_02025728: ; 0x02025728
+	thumb_func_start Get2DGfxRawResObjId
+Get2DGfxRawResObjId: ; 0x02025728
 	push {r4, lr}
 	add r4, r0, #0
 	bne _02025732
@@ -219,7 +219,7 @@ _02025732:
 	ldr r0, [r4]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02025728
+	thumb_func_end Get2DGfxRawResObjId
 
 	thumb_func_start sub_02025738
 sub_02025738: ; 0x02025738
@@ -562,7 +562,7 @@ sub_02025988: ; 0x02025988
 	bl GF_AssertFail
 _02025992:
 	ldr r0, [r4]
-	bl sub_02025728
+	bl Get2DGfxRawResObjId
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_02025988

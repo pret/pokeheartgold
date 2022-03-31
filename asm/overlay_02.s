@@ -8878,7 +8878,7 @@ ov02_02249E58: ; 0x02249E58
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	mov r1, #0x21
 	lsl r1, r1, #4
 	ldr r1, [r4, r1]
@@ -8909,7 +8909,7 @@ ov02_02249E90: ; 0x02249E90
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	mov r1, #0x21
 	lsl r1, r1, #4
 	ldr r1, [r4, r1]
@@ -10181,7 +10181,7 @@ ov02_0224A834: ; 0x0224A834
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
 	mov r1, #3
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	bl sub_0200AF00
 	mov r1, #1
 	bl NNS_G2dGetImageLocation
@@ -10228,14 +10228,14 @@ ov02_0224A88C: ; 0x0224A88C
 	add r4, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #3
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	bl sub_0200AF00
 	add r6, r0, #0
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #3
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	add r1, r6, #0
 	bl sub_0200B0F8
 	mov r1, #1
@@ -10260,7 +10260,7 @@ ov02_0224A8D4: ; 0x0224A8D4
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #3
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	add r4, r0, #0
 	bl sub_0200AEB0
 	mov r0, #0x67
@@ -10297,7 +10297,7 @@ _0224A922:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #3
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	add r4, r0, #0
 	bl sub_0200B0A8
 	mov r0, #0x1a
@@ -10334,7 +10334,7 @@ _0224A96C:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #3
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	add r4, r0, #0
 	bl sub_0200A740
 	mov r0, #0x69
