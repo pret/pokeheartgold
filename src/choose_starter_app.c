@@ -61,8 +61,8 @@ struct UnkStarterChooseSub_3B4 {
     void *unk_060[3];
     void *unk_06C[3];
     struct SomeDrawPokemonStruct unk_078;
-    UnkStruct_02009F40 *unk_088;
-    u8 unk_08C[0x128];
+    UnkStruct_0202445C *unk_088;
+    UnkStruct_02009F40 unk_08C;
     struct UnkStruct_02024624 *unk_1B4[3];
 };
 

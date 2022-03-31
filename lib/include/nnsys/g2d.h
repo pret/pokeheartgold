@@ -16,5 +16,9 @@
 #include <nnsys/g2d/g2d_OAM.h>
 #include <nnsys/g2d/g2d_CellAnimation.h>
 #include <nnsys/g2d/g2d_MultiCellAnimation.h>
+#include <nnsys/g2d/g2d_Vec_data.h>
+#include <nnsys/g2d/g2d_PaletteTable.h>
+#include <nnsys/g2d/g2d_RendererCore.h>
+#include <nnsys/g2d/g2d_Renderer.h>
 
 #endif //NNSYS_G2D_H_
