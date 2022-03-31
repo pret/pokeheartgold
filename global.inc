@@ -3578,6 +3578,7 @@
 .public ScrCmd_WaitButton
 .public ScrCmd_WaitButtonOrDelay
 .public ScrCmd_WaitButtonOrDpad
+.public ScrCmd_WaitButtonOrWalkAway
 .public ScrCmd_WaitCry
 .public ScrCmd_WaitFade
 .public ScrCmd_WaitFanfare
