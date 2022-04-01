@@ -1,6 +1,3 @@
-#include <nitro/gx/g2.h>
-#include <nitro/gx/gx_bgcnt.h>
-#include <nitro/pad/common/pad.h>
 #include "communication_error.h"
 #include "gx_layers.h"
 #include "msgdata.h"
@@ -10,18 +7,12 @@
 #include "system.h"
 #include "unk_0200FA24.h"
 #include "window.h"
-
-extern void sub_0200E3DC(BGCONFIG* bg_config, enum GFBgLayer layer, u32 a2, u32 a3, u32 a4, HeapID heap_id);
-extern void LoadFontPal0(enum GFBgLayer layer, u32 base_addr, HeapID heap_id);
-extern void sub_02020080(void);
-extern void DrawFrameAndWindow1(WINDOW* window, BOOL dont_copy_to_vram, u16 a2, u8 palette_num);
-extern u16 AddTextPrinterParameterized(WINDOW* window, u8 font_id, STRING* text, u32 x, u32 y, u32 speed, void* callback);
-extern void SetMasterBrightnessNeutral(u32 a0);
-extern void SetBlendBrightness(fx32 brightness, fx32 surface_mask, u32 screen_mask);
-extern BOOL sub_02037D78(void);
-extern u32* sub_020392D8(void);
-extern BOOL sub_020393C8(void);
-extern s32 ov00_021E6A70(u32, u32);
+#include "font.h"
+#include "text.h"
+#include "unk_0200E398.h"
+#include "unk_0200B380.h"
+#include "unk_02037C94.h"
+#include "overlay_00_thumb.h"
 
 static const GF_GXBanksConfig sCommunicationErrorBanksConfig = {
     .bg = GX_VRAM_BG_256_AB,

@@ -1,5 +1,10 @@
 #include "unk_02009D48.h"
 #include "unk_0200ACF0.h"
+#include "unk_02023694.h"
+#include "unk_02025C44.h"
+#include "unk_0200B150.h"
+#include "unk_020215A0.h"
+#include "unk_02022588.h"
 
 void sub_02009D48(struct UnkStruct_02009D48 *hdr, int charId, int plttId, int cellId, int cellAnmId, int multiCellId, int multiCellAnmId, int transfer, int priority, struct _2DGfxResMan *charMan, struct _2DGfxResMan *plttMan, struct _2DGfxResMan *cellMan, struct _2DGfxResMan *cellAnmMan, struct _2DGfxResMan *multiCellMan, struct _2DGfxResMan *multiCellAnmMan) {
     struct _2DGfxResObj *charObj;
@@ -90,8 +95,73 @@ void sub_02009F24(ListOfUnkStruct_02009D48 *list) {
     FreeToHeap(list);
 }
 
-/*
 UnkStruct_0202445C *sub_02009F40(int a0, UnkStruct_02009F40 *a1, HeapID heapId) {
+    struct UnkStruct_0202445C *ret;
+    struct UnkLocal_02009F40 sp10;
+    NNSG2dViewRect sp0;
 
+    sub_02025C44(&a1->rendererInstance, -FX32_ONE);
+    sp0.posTopLeft.x = 0;
+    sp0.posTopLeft.y = 0;
+    sp0.sizeView.x = 255 * FX32_ONE;
+    sp0.sizeView.y = 192 * FX32_ONE;
+    sub_0200B27C(&a1->renderSurface[0], &sp0, 1, &a1->rendererInstance);
+    sp0.posTopLeft.x = 0;
+    sp0.posTopLeft.y = 192 * FX32_ONE;
+    sp0.sizeView.x = 255 * FX32_ONE;
+    sp0.sizeView.y = 192 * FX32_ONE;
+    sub_0200B27C(&a1->renderSurface[1], &sp0, 2, &a1->rendererInstance);
+    sp10.unk_0 = a0;
+    sp10.rendererInstance = &a1->rendererInstance;
+    sp10.heapId = heapId;
+    return sub_0202445C(&sp10);
 }
-*/
+
+void sub_02009FA8(struct UnkStruct_02009F40 *a0, fx32 x, fx32 y) {
+    struct NNSG2dViewRect sp0;
+
+    sp0.posTopLeft.x = x;
+    sp0.posTopLeft.y = y;
+    sp0.sizeView.x = 255 * FX32_ONE;
+    sp0.sizeView.y = 192 * FX32_ONE;
+    sub_02025C88(&a0->renderSurface[0], &sp0);
+}
+
+void sub_02009FC8(struct UnkStruct_02009F40 *a0, fx32 x, fx32 y) {
+    struct NNSG2dViewRect sp0;
+
+    sp0.posTopLeft.x = x;
+    sp0.posTopLeft.y = y;
+    sp0.sizeView.x = 255 * FX32_ONE;
+    sp0.sizeView.y = 192 * FX32_ONE;
+    sub_02025C88(&a0->renderSurface[1], &sp0);
+}
+
+void sub_02009FE8(u32 a0, GXOBJVRamModeChar mode) {
+    switch (mode) {
+    case GX_OBJVRAMMODE_CHAR_1D_32K:
+        if (GX_GetBankForOBJ() == GX_VRAM_OBJ_16_G || GX_GetBankForOBJ() == GX_VRAM_OBJ_16_F) {
+            sub_020216F4(0x3E00, 0x200, a0);
+        } else {
+            sub_020216F4(0x7E00, 0x200, a0);
+        }
+        break;
+    case GX_OBJVRAMMODE_CHAR_1D_64K:
+        sub_020216F4(0xFE00, 0x200, a0);
+        break;
+    case GX_OBJVRAMMODE_CHAR_1D_128K:
+        if (GX_GetBankForOBJ() == GX_VRAM_OBJ_80_EF || GX_GetBankForOBJ() == GX_VRAM_OBJ_80_EG) {
+            sub_020216F4(0x13E00, 0x200, a0);
+        } else {
+            sub_020216F4(0x1FE00, 0x200, a0);
+        }
+        break;
+    default:
+        GF_ASSERT(0);
+        break;
+    }
+}
+
+void sub_0200A080(u32 a0) {
+    sub_020225E4(0xC000, a0);
+}

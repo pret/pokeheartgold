@@ -8,5 +8,6 @@ void sub_0200FBDC(int a0);
 void sub_0200FBF4(int a0, int a1);
 void HandleFadeUpdateFrame(void);
 BOOL IsPaletteFadeFinished(void);
+void SetMasterBrightnessNeutral(u32 a0);
 
 #endif //POKEHEARTGOLD_UNK_0200FA24_H

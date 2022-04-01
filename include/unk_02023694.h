@@ -25,5 +25,6 @@ struct Sprite *sub_02024624(const struct UnkStruct_02024624Header *template);
 void sub_0202484C(struct Sprite *, int);
 void sub_020248F0(struct Sprite *, int);
 void Set2dSpriteVisibleFlag(struct Sprite *, int);
+UnkStruct_0202445C *sub_0202445C(struct UnkLocal_02009F40 *a0);
 
 #endif //POKEHEARTGOLD_UNK_02023694_H
