@@ -1128,7 +1128,7 @@ ov75_02247234: ; 0x02247234
 	push {r4, lr}
 	add r4, r0, #0
 	bl GF_RunVramTransferTasks
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #4]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _02247254 ; =0x027E0000
@@ -5615,7 +5615,7 @@ ov75_02249534: ; 0x02249534
 	beq _02249546
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0224954A
 _02249546:

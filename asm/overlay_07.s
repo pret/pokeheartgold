@@ -50909,7 +50909,7 @@ _022347D4:
 	lsr r1, r1, #0x10
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_020701E4
+	bl GetMonSpriteCharAndPlttNarcIdsEx
 	ldr r0, [r5]
 	lsl r0, r0, #2
 	add r0, r5, r0

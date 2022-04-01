@@ -2584,8 +2584,8 @@ sub_0202481C: ; 0x0202481C
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0202481C
 
-	thumb_func_start sub_02024830
-sub_02024830: ; 0x02024830
+	thumb_func_start Set2dSpriteVisibleFlag
+Set2dSpriteVisibleFlag: ; 0x02024830
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -2600,7 +2600,7 @@ _02024846:
 	add r5, #0x34
 	strb r4, [r5]
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02024830
+	thumb_func_end Set2dSpriteVisibleFlag
 
 	thumb_func_start sub_0202484C
 sub_0202484C: ; 0x0202484C

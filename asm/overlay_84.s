@@ -1546,7 +1546,7 @@ _0223E99C:
 	ldr r0, [r4]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl GF_RunVramTransferTasks
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	ldr r3, _0223E9BC ; =0x027E0000
 	ldr r1, _0223E9C0 ; =0x00003FF8
 	mov r0, #1
@@ -2844,7 +2844,7 @@ ov84_0223F2B4: ; 0x0223F2B4
 	mov r2, #0x6e
 	str r2, [sp, #0x10]
 	add r2, r0, #0
-	bl sub_0200B150
+	bl OamManager_Create
 	mov r0, #0x22
 	add r1, r5, #4
 	mov r2, #0x6e
@@ -3038,7 +3038,7 @@ _0223F456:
 	blo _0223F456
 	ldr r0, [r5]
 	bl sub_02024504
-	bl sub_0200B244
+	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
 	pop {r4, r5, r6, pc}
@@ -3506,11 +3506,11 @@ ov84_0223F818: ; 0x0223F818
 
 	thumb_func_start ov84_0223F82C
 ov84_0223F82C: ; 0x0223F82C
-	ldr r3, _0223F834 ; =sub_02024830
+	ldr r3, _0223F834 ; =Set2dSpriteVisibleFlag
 	ldr r0, [r0, #0x10]
 	bx r3
 	nop
-_0223F834: .word sub_02024830
+_0223F834: .word Set2dSpriteVisibleFlag
 	thumb_func_end ov84_0223F82C
 
 	thumb_func_start ov84_0223F838

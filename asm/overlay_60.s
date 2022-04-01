@@ -2657,7 +2657,7 @@ ov60_021E6E40: ; 0x021E6E40
 	mov r2, #0x4a
 	str r2, [sp, #0x10]
 	add r2, r0, #0
-	bl sub_0200B150
+	bl OamManager_Create
 	add r1, r4, #0
 	mov r0, #0x14
 	add r1, #0x14
@@ -2677,7 +2677,7 @@ ov60_021E6EC0: ; 0x021E6EC0
 	push {r3, lr}
 	ldr r0, [r0, #0x10]
 	bl sub_02024504
-	bl sub_0200B244
+	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
 	pop {r3, pc}
@@ -2744,7 +2744,7 @@ ov60_021E6F28: ; 0x021E6F28
 	bl sub_0202484C
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov60_021E6F28
 
@@ -4211,7 +4211,7 @@ ov60_021E79E4: ; 0x021E79E4
 	push {r3, lr}
 	bl ov60_021E7688
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	pop {r3, pc}
 	thumb_func_end ov60_021E79E4
 
@@ -4380,7 +4380,7 @@ _021E7B4C:
 	bl GX_EngineBToggleLayers
 	ldr r0, [r7, #0x18]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r5, #0
 	bl ov60_021E7958
 	b _021E7C4C
@@ -5042,7 +5042,7 @@ ov60_021E8050: ; 0x021E8050
 	bl sub_0202484C
 	ldr r0, [r4, #0x18]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4, #0x18]
 	mov r1, #0
 	bl sub_020248F0
@@ -5068,7 +5068,7 @@ ov60_021E8050: ; 0x021E8050
 	bl sub_0202484C
 	ldr r0, [r4, #0x1c]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4, #0x1c]
 	mov r1, #1
 	bl sub_020248F0
@@ -5136,7 +5136,7 @@ ov60_021E8140: ; 0x021E8140
 	push {r3, lr}
 	bl ov60_021E7688
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	pop {r3, pc}
 	thumb_func_end ov60_021E8140
 
@@ -6144,7 +6144,7 @@ _021E89B6:
 	bl sub_0202484C
 	ldr r0, [r6, #0x3c]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldrb r1, [r7, r4]
 	ldr r0, [r6, #0x3c]
 	bl sub_020248F0
@@ -6174,7 +6174,7 @@ _021E89B6:
 	bl sub_0202484C
 	ldr r0, [r5, #0x24]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x24]
 	mov r1, #0
 	bl sub_020248F0
@@ -6185,7 +6185,7 @@ _021E89B6:
 	bl sub_0202484C
 	ldr r0, [r5, #0x2c]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x2c]
 	mov r1, #1
 	bl sub_020248F0
@@ -6196,7 +6196,7 @@ _021E89B6:
 	bl sub_0202484C
 	ldr r0, [r5, #0x34]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x34]
 	mov r1, #2
 	bl sub_020248F0
@@ -6222,7 +6222,7 @@ _021E89B6:
 	bl sub_0202484C
 	ldr r0, [r5, #0x28]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x28]
 	mov r1, #3
 	bl sub_020248F0
@@ -6233,7 +6233,7 @@ _021E89B6:
 	bl sub_0202484C
 	ldr r0, [r5, #0x30]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x30]
 	mov r1, #4
 	bl sub_020248F0
@@ -6244,7 +6244,7 @@ _021E89B6:
 	bl sub_0202484C
 	ldr r0, [r5, #0x38]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x38]
 	mov r1, #5
 	bl sub_020248F0
@@ -6462,7 +6462,7 @@ ov60_021E8C58: ; 0x021E8C58
 	push {r3, lr}
 	bl ov60_021E7688
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	pop {r3, pc}
 	thumb_func_end ov60_021E8C58
 
@@ -7970,7 +7970,7 @@ ov60_021E98C0: ; 0x021E98C0
 	bl sub_0202484C
 	ldr r0, [r5, #0x64]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x64]
 	mov r1, #0
 	bl sub_020248F0
@@ -7996,7 +7996,7 @@ ov60_021E98C0: ; 0x021E98C0
 	bl sub_0202484C
 	ldr r0, [r5, #0x68]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x68]
 	mov r1, #0
 	bl sub_020248F0
@@ -8026,7 +8026,7 @@ _021E9962:
 	bl sub_0202484C
 	ldr r0, [r5, #0x6c]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x6c]
 	ldr r1, [r4]
 	bl sub_020248F0
@@ -8495,7 +8495,7 @@ ov60_021E9D68: ; 0x021E9D68
 	push {r3, lr}
 	bl ov60_021E7688
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	pop {r3, pc}
 	thumb_func_end ov60_021E9D68
 
@@ -9647,7 +9647,7 @@ ov60_021EA700: ; 0x021EA700
 	bl sub_0202484C
 	ldr r0, [r6, #0x44]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r6, #0x44]
 	mov r1, #0
 	bl sub_020248F0
@@ -9673,7 +9673,7 @@ ov60_021EA700: ; 0x021EA700
 	bl sub_0202484C
 	ldr r0, [r6, #0x48]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r6, #0x48]
 	mov r1, #1
 	bl sub_020248F0
@@ -9699,7 +9699,7 @@ ov60_021EA700: ; 0x021EA700
 	bl sub_0202484C
 	ldr r0, [r6, #0x4c]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r6, #0x4c]
 	mov r1, #2
 	bl sub_020248F0
@@ -9730,7 +9730,7 @@ _021EA7D0:
 	bl sub_0202484C
 	ldr r0, [r5, #0x50]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x50]
 	mov r1, #0
 	bl sub_020248F0
@@ -10049,7 +10049,7 @@ ov60_021EAA74: ; 0x021EAA74
 	push {r3, lr}
 	bl ov60_021E7688
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	pop {r3, pc}
 	thumb_func_end ov60_021EAA74
 

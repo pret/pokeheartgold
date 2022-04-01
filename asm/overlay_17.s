@@ -1133,7 +1133,7 @@ _0220245C:
 ov17_02202460: ; 0x02202460
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _02202478
 	ldr r0, _022024C0 ; =0x000005DC
@@ -1356,7 +1356,7 @@ _022025DC:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0x7f
@@ -1513,7 +1513,7 @@ _0220274E:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x5a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1723,11 +1723,11 @@ _022028F2:
 ov17_02202900: ; 0x02202900
 	mov r2, #0x5a
 	lsl r2, r2, #2
-	ldr r3, _0220290C ; =sub_02024830
+	ldr r3, _0220290C ; =Set2dSpriteVisibleFlag
 	ldr r0, [r0, r2]
 	bx r3
 	nop
-_0220290C: .word sub_02024830
+_0220290C: .word Set2dSpriteVisibleFlag
 	thumb_func_end ov17_02202900
 
 	thumb_func_start ov17_02202910
@@ -1999,7 +1999,7 @@ _02202AFE:
 	bl sub_0200D2B4
 	str r0, [r4, #0x10]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldrb r0, [r4, #1]
 	cmp r0, #1
 	ldr r0, [r4, #0x10]
@@ -2957,7 +2957,7 @@ _022032B6:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -2980,7 +2980,7 @@ _022032B6:
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x5b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -3024,7 +3024,7 @@ _0220331E:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -3057,7 +3057,7 @@ _0220331E:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -3841,7 +3841,7 @@ _022039B4:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, _02203A30 ; =0x00000569
 	bl PlaySE
 	ldrb r0, [r5, #6]
@@ -3877,7 +3877,7 @@ _022039FA:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	add r0, #0x7d
 	ldrb r0, [r0]

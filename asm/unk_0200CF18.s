@@ -111,7 +111,7 @@ _0200CF8E:
 	ldr r1, [r4, #4]
 	ldr r2, [r4, #8]
 	ldr r3, [r4, #0xc]
-	bl sub_0200B150
+	bl OamManager_Create
 _0200CFDA:
 	ldr r1, [r5]
 	mov r0, #0x20
@@ -171,10 +171,10 @@ _0200D02A:
 
 	thumb_func_start sub_0200D034
 sub_0200D034: ; 0x0200D034
-	ldr r3, _0200D038 ; =sub_0200B224
+	ldr r3, _0200D038 ; =OamManager_ApplyAndResetBuffers
 	bx r3
 	.balign 4, 0
-_0200D038: .word sub_0200B224
+_0200D038: .word OamManager_ApplyAndResetBuffers
 	thumb_func_end sub_0200D034
 
 	thumb_func_start sub_0200D03C
@@ -260,7 +260,7 @@ sub_0200D0B4: ; 0x0200D0B4
 	ldr r0, [r4, #8]
 	cmp r0, #1
 	bne _0200D0D0
-	bl sub_0200B244
+	bl OamManager_Free
 _0200D0D0:
 	pop {r4, pc}
 	.balign 4, 0
@@ -1960,10 +1960,10 @@ _0200DCDC: .word sub_0200DCCC
 
 	thumb_func_start sub_0200DCE0
 sub_0200DCE0: ; 0x0200DCE0
-	ldr r3, _0200DCE4 ; =sub_02024830
+	ldr r3, _0200DCE4 ; =Set2dSpriteVisibleFlag
 	bx r3
 	.balign 4, 0
-_0200DCE4: .word sub_02024830
+_0200DCE4: .word Set2dSpriteVisibleFlag
 	thumb_func_end sub_0200DCE0
 
 	thumb_func_start sub_0200DCE8

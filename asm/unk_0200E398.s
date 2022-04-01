@@ -2458,7 +2458,7 @@ sub_0200F6D4: ; 0x0200F6D4
 	add r1, r4, #0
 	add r2, r6, #0
 	mov r3, #2
-	bl sub_020701E4
+	bl GetMonSpriteCharAndPlttNarcIdsEx
 	add r0, r5, #0
 	add r1, sp, #0xc
 	bl sub_0200F748
@@ -2483,7 +2483,7 @@ sub_0200F714: ; 0x0200F714
 	add r0, sp, #0
 	add r1, r4, #0
 	mov r2, #2
-	bl sub_02070124
+	bl GetPokemonSpriteCharAndPlttNarcIds
 	add r0, r5, #0
 	add r1, sp, #0
 	bl sub_0200F748

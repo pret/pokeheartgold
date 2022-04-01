@@ -1108,7 +1108,7 @@ _021E621C:
 	ldr r0, [r5, r1]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021E6274
 	mov r0, #0x11
@@ -3678,7 +3678,7 @@ _021E76A8:
 	add r0, #0xec
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x34
 	str r0, [r4, #0xc]
 	b _021E7CF8
@@ -4584,7 +4584,7 @@ _021E7E40:
 	add r4, #0xe4
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, pc}
 _021E7E52:
 	add r0, r4, #0
@@ -4600,7 +4600,7 @@ _021E7E64:
 	add r4, #0xe4
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, pc}
 _021E7E76:
 	add r4, #0xe4
@@ -4666,7 +4666,7 @@ ov53_021E7ECC: ; 0x021E7ECC
 	bl sub_02025204
 	add r5, r0, #0
 	bne _021E7EFA
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _021E7EFA
 	ldr r0, _021E7F20 ; =gSystem
@@ -4843,27 +4843,27 @@ _021E801E:
 	add r0, #0xd8
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r5, #0
 	add r0, #0xdc
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r5, #0
 	add r0, #0xe0
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r5, #0
 	add r0, #0xe4
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r5, #0
 	add r0, #0xe8
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r5, #0
 	add r0, #0xe4
 	ldr r0, [r0]
@@ -4882,7 +4882,7 @@ _021E801E:
 	add r5, #0xec
 	ldr r0, [r5]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E80B4: .word ov53_021E8784
@@ -4916,11 +4916,11 @@ _021E80DC:
 	add r0, #0xdc
 	ldr r0, [r0]
 	add r1, r2, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r5, #0xe0
 	ldr r0, [r5]
 	add r1, r4, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov53_021E80B8
 
@@ -5084,7 +5084,7 @@ ov53_021E81F4: ; 0x021E81F4
 	bl ToggleBgLayer
 	ldr r0, [r5, #0x10]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov53_021E81F4
 
@@ -5135,7 +5135,7 @@ _021E8292:
 	bl ToggleBgLayer
 	ldr r0, [r4, #0x10]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldrb r0, [r4, #0x1b]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x1c

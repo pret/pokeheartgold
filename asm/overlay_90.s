@@ -1261,7 +1261,7 @@ ov90_022590CC: ; 0x022590CC
 	str r3, [sp, #0xc]
 	add r2, r0, #0
 	str r4, [sp, #0x10]
-	bl sub_0200B150
+	bl OamManager_Create
 	ldr r3, _02259154 ; =ov90_0225C294
 	add r2, sp, #0x1c
 	add r7, r2, #0
@@ -1310,7 +1310,7 @@ ov90_02259158: ; 0x02259158
 	bl sub_02024504
 	bl sub_0202168C
 	bl sub_02022608
-	bl sub_0200B244
+	bl OamManager_Free
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov90_02259158
@@ -1326,10 +1326,10 @@ _02259178: .word sub_0202457C
 
 	thumb_func_start ov90_0225917C
 ov90_0225917C: ; 0x0225917C
-	ldr r3, _02259180 ; =sub_0200B224
+	ldr r3, _02259180 ; =OamManager_ApplyAndResetBuffers
 	bx r3
 	.balign 4, 0
-_02259180: .word sub_0200B224
+_02259180: .word OamManager_ApplyAndResetBuffers
 	thumb_func_end ov90_0225917C
 
 	thumb_func_start ov90_02259184
@@ -1762,7 +1762,7 @@ _0225948A:
 	ldrh r0, [r1, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _022594B4
 	ldr r1, [sp, #8]
@@ -1816,7 +1816,7 @@ ov90_022594FC: ; 0x022594FC
 	ldrh r0, [r6, r7]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _02259524
 	ldrh r0, [r6, r7]
@@ -1842,7 +1842,7 @@ ov90_02259538: ; 0x02259538
 	ldrh r0, [r0, #0x20]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02259550
 	mov r0, #1
@@ -2817,7 +2817,7 @@ _02259C12:
 	bl sub_02024A74
 	ldr r0, [r5, #0x10]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x10]
 	mov r1, #1
 	bl sub_0202484C
@@ -2840,7 +2840,7 @@ _02259C12:
 	bl sub_020248F0
 	ldr r0, [r5, #0x14]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	strb r4, [r5, #0x1a]
 	ldr r0, [sp, #0x1c]
 	strb r7, [r5, #0x1b]
@@ -2964,7 +2964,7 @@ ov90_02259E18: ; 0x02259E18
 	ldr r0, [r5, #0x14]
 	add r4, r1, #0
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x14]
 	add r1, r4, #4
 	bl sub_020248F0
@@ -3032,12 +3032,12 @@ ov90_02259E8C: ; 0x02259E8C
 
 	thumb_func_start ov90_02259EA0
 ov90_02259EA0: ; 0x02259EA0
-	ldr r3, _02259EA8 ; =sub_02024830
+	ldr r3, _02259EA8 ; =Set2dSpriteVisibleFlag
 	ldr r0, [r0, #0x10]
 	mov r1, #1
 	bx r3
 	.balign 4, 0
-_02259EA8: .word sub_02024830
+_02259EA8: .word Set2dSpriteVisibleFlag
 	thumb_func_end ov90_02259EA0
 
 	thumb_func_start ov90_02259EAC
@@ -6143,7 +6143,7 @@ _0225B630:
 	bl ov90_02258EB4
 	str r0, [r5, #8]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #8]
 	ldr r1, [sp, #0x18]
 	bl sub_020248F0
@@ -6288,7 +6288,7 @@ _0225B750:
 	add r0, r4, r0
 	ldr r0, [r0, #8]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	mov r1, #8
 	add r0, #0x49
@@ -6339,7 +6339,7 @@ _0225B784:
 _0225B7CC:
 	ldr r0, [r5, #8]
 	add r1, r7, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #8]
 	mov r1, #2
 	bl sub_020248F0
@@ -6916,10 +6916,10 @@ ov90_0225BBF0: ; 0x0225BBF0
 	mov r4, #1
 	strh r4, [r5, #8]
 	ldr r0, [r5]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #4]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _0225BC18:
 	mov r1, #0
 	add r0, r5, #0

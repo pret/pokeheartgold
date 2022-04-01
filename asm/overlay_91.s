@@ -1779,7 +1779,7 @@ ov91_0225D2D0: ; 0x0225D2D0
 	ldr r0, [r0, r1]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl GF_RunVramTransferTasks
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	pop {r3, pc}
 	.balign 4, 0
 _0225D2E4: .word 0x00001AB4
@@ -2359,7 +2359,7 @@ _0225D6D0:
 	bl sub_020248F0
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4]
 	mov r1, #1
 	bl sub_0202484C
@@ -2511,7 +2511,7 @@ _0225D80A:
 	ldr r0, [sp]
 	mov r1, #1
 	ldr r0, [r0, r5]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [sp]
 	ldr r1, [sp, #0x14]
 	bl ov91_0225D884
@@ -2609,13 +2609,13 @@ _0225D8DC: .word 0xFFFF0000
 
 	thumb_func_start ov91_0225D8E0
 ov91_0225D8E0: ; 0x0225D8E0
-	ldr r3, _0225D8EC ; =sub_02024830
+	ldr r3, _0225D8EC ; =Set2dSpriteVisibleFlag
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
 	mov r1, #0
 	bx r3
 	nop
-_0225D8EC: .word sub_02024830
+_0225D8EC: .word Set2dSpriteVisibleFlag
 	thumb_func_end ov91_0225D8E0
 
 	thumb_func_start ov91_0225D8F0
@@ -5947,7 +5947,7 @@ _0225F162:
 	bl sub_02024714
 	mov r1, #0
 	str r0, [r5, #0x34]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r7, #0
 	bl NARC_dtor
 	add sp, #0x4c
@@ -6005,11 +6005,11 @@ ov91_0225F23C: ; 0x0225F23C
 	add r2, r0, #0
 	add r2, #0x39
 	strb r3, [r2]
-	ldr r3, _0225F258 ; =sub_02024830
+	ldr r3, _0225F258 ; =Set2dSpriteVisibleFlag
 	ldr r0, [r0, #0x34]
 	bx r3
 	.balign 4, 0
-_0225F258: .word sub_02024830
+_0225F258: .word Set2dSpriteVisibleFlag
 	thumb_func_end ov91_0225F23C
 
 	thumb_func_start ov91_0225F25C
@@ -6144,7 +6144,7 @@ _0225F352:
 	bne _0225F36A
 	ldr r0, [r4, #0x34]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add sp, #8
 	mov r0, #1
 	pop {r4, r5, r6, pc}
@@ -6996,7 +6996,7 @@ ov91_0225FA9C: ; 0x0225FA9C
 	str r3, [sp, #0xc]
 	add r2, r0, #0
 	str r6, [sp, #0x10]
-	bl sub_0200B150
+	bl OamManager_Create
 	ldr r4, _0225FB40 ; =ov91_02261C64
 	add r3, sp, #0x14
 	add r2, r3, #0
@@ -7080,7 +7080,7 @@ _0225FB62:
 	blt _0225FB62
 	bl sub_0202168C
 	bl sub_02022608
-	bl sub_0200B244
+	bl OamManager_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov91_0225FB48
@@ -8701,7 +8701,7 @@ ov91_022607C4: ; 0x022607C4
 	bl sub_02024624
 	mov r1, #0
 	str r0, [r4]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r1, _0226082C ; =0x0000074C
 	add r0, r4, #0
 	add r0, #0x7c
@@ -8758,7 +8758,7 @@ ov91_02260848: ; 0x02260848
 	bl ov91_02260A88
 	ldr r0, [r5]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov91_02260848
@@ -8776,7 +8776,7 @@ ov91_02260884: ; 0x02260884
 	lsl r0, r0, #2
 	strh r1, [r4, r0]
 	ldr r0, [r4]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	add r1, r5, #0
 	bl ov91_02260AF8
@@ -8982,7 +8982,7 @@ ov91_02260A2C: ; 0x02260A2C
 	add r0, #0xf4
 	str r1, [r0]
 	ldr r0, [r4]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r4, #0x7c
 	add r0, r4, #0
 	mov r1, #0
@@ -9089,7 +9089,7 @@ ov91_02260AF8: ; 0x02260AF8
 	ldr r0, [r5]
 	add r4, r1, #0
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r5, #0
 	mov r1, #0
 	add r0, #0xf4
@@ -9288,7 +9288,7 @@ ov91_02260C48: ; 0x02260C48
 	bl sub_02024624
 	str r0, [r5, #4]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #4]
 	add r1, r4, #0
 	bl sub_02024A14
@@ -9315,7 +9315,7 @@ ov91_02260CB4: ; 0x02260CB4
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #1
 	str r0, [r4]
 	pop {r4, pc}
@@ -9363,7 +9363,7 @@ ov91_02260D00: ; 0x02260D00
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0
 	str r0, [r4]
 	pop {r4, pc}
@@ -9407,7 +9407,7 @@ _02260D50:
 	bl sub_02024624
 	str r0, [r5, #4]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #4]
 	mov r1, #1
 	bl sub_0202487C
@@ -9554,7 +9554,7 @@ _02260E6C:
 	str r0, [r5]
 	ldr r0, [r5, #4]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _02260E78:
 	add r4, r4, #1
 	add r5, #0x1c
@@ -9610,7 +9610,7 @@ _02260EB4:
 	mov r1, #1
 	str r1, [r4]
 	ldr r0, [r4, #4]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0
 	str r0, [r4, #0x14]
 _02260EDC:
@@ -10627,7 +10627,7 @@ _02261616:
 	bl sub_02024714
 	mov r1, #0
 	str r0, [r5, #0x34]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x10
 	add r1, r6, #0
 	bl String_ctor
@@ -10846,7 +10846,7 @@ ov91_02261808: ; 0x02261808
 	bl sub_020137C0
 	ldr r0, [r5, #0x34]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r5, #0
 	mov r1, #1
 	add r0, #0x98
@@ -11006,7 +11006,7 @@ _0226198A:
 	bl sub_020137C0
 	ldr r0, [r4, #0x34]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _022619A0:
 	mov r1, #0x96
 	ldrsh r0, [r4, r1]

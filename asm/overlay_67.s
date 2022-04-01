@@ -475,7 +475,7 @@ _021E5CA8:
 	mov r0, #5
 	pop {r4, pc}
 _021E5CBE:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _021E5CCC
 	ldr r0, _021E5D94 ; =0x000005DC

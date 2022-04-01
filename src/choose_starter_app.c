@@ -26,6 +26,34 @@
 
 #define HEAPID_STARTERCHOOSE       46
 
+enum ChooseStarterInput {
+    CHOOSE_STARTER_INPUT_NONE             = 0,
+    CHOOSE_STARTER_INPUT_CYCLE_LEFT       = 1,
+    CHOOSE_STARTER_INPUT_CYCLE_RIGHT      = 2,
+    CHOOSE_STARTER_INPUT_CONTINUE_LEFT    = 3,
+    CHOOSE_STARTER_INPUT_CONTINUE_RIGHT   = 4,
+    CHOOSE_STARTER_INPUT_SELECT_BALL_INIT = 5,
+    CHOOSE_STARTER_INPUT_CHOSE_STARTER    = 6,
+    CHOOSE_STARTER_INPUT_CONFIRM_CHOICE   = 7,
+    CHOOSE_STARTER_INPUT_BACKED_OUT       = 8,
+};
+
+enum ChooseStarterAppState {
+    CHOOSE_STARTER_STATE_INIT              =  0,
+    CHOOSE_STARTER_STATE_WAIT_FADE_IN      =  1,
+    CHOOSE_STARTER_STATE_START_INIT_MSG    =  2,
+    CHOOSE_STARTER_STATE_RETURN_INIT_MSG   =  3,
+    CHOOSE_STARTER_STATE_WAIT_INIT_MSG     =  4,
+    CHOOSE_STARTER_STATE_HANDLE_INPUT      =  5,
+    CHOOSE_STARTER_STATE_ROTATE_MACHINE    =  6,
+    CHOOSE_STARTER_STATE_ZOOM_IN           =  7,
+    CHOOSE_STARTER_STATE_WAIT_ZOOM_IN      =  8,
+    CHOOSE_STARTER_STATE_BACK_OUT          =  9,
+    CHOOSE_STARTER_STATE_ZOOM_AND_FADE_OUT = 10,
+    CHOOSE_STARTER_STATE_WAIT_FADE_OUT     = 11,
+    CHOOSE_STARTER_STATE_WAIT_AND_EXIT     = 12,
+};
+
 struct ChooseStarterRnd {
     NNSG3dRenderObj obj;
     int unk_54;
@@ -41,7 +69,7 @@ struct ChooseStarterAnm {
     NNSG3dAnmObj *obj;
 };
 
-struct UnkStarterChooseSub_3B4_18 {
+struct StarterChooseMonObjResPtrs {
     struct _2DGfxResObj *charResObj;
     struct _2DGfxResObj *plttResObj;
     struct _2DGfxResObj *cellResObj;
@@ -50,20 +78,20 @@ struct UnkStarterChooseSub_3B4_18 {
     struct _2DGfxResObj *multiCellAnmResObj;
 };
 
-struct UnkStarterChooseSub_3B4 {
+struct StarterChooseMonSpriteData {
     struct _2DGfxResMan *charResMan;
     struct _2DGfxResMan *plttResMan;
     struct _2DGfxResMan *cellResMan;
     struct _2DGfxResMan *animResMan;
     struct _2DGfxResMan *multiCellResMan; //unused
     struct _2DGfxResMan *multiCellAnmResMan; //unused
-    struct UnkStarterChooseSub_3B4_18 unk_018[3];
-    void *unk_060[3];
-    void *unk_06C[3];
-    struct SomeDrawPokemonStruct unk_078;
+    struct StarterChooseMonObjResPtrs objs[3];
+    void *charDatas[3];
+    void *plttDatas[3];
+    struct SomeDrawPokemonStruct param;
     UnkStruct_0202445C *unk_088;
     UnkStruct_02009F40 unk_08C;
-    struct UnkStruct_02024624 *unk_1B4[3];
+    struct Sprite *sprites[3];
 };
 
 struct UnkStarterChooseSub_368_4 {
@@ -92,43 +120,43 @@ struct ChooseStarterAppWork {
     UnkStruct_02022D74 *unk_010;
     VecFx32 unk_014;
     NNSFndAllocator allocator; // 020
-    struct ChooseStarter3dRes unk_030[4];
-    struct ChooseStarterRnd unk_070[6];
-    struct ChooseStarterAnm unk_340[6];
-    VecFx32 unk_370[3];
-    u32 unk_394;
-    fx16 unk_398;
-    fx16 unk_39A;
-    WINDOW *unk_39C;
-    WINDOW *unk_3A0;
+    struct ChooseStarter3dRes _3dObjRes[4];
+    struct ChooseStarterRnd _3dObjRender[6];
+    struct ChooseStarterAnm _3dObjAnm[6];
+    VecFx32 positions[3];
+    u32 curSelection;
+    fx16 rotationAngle;
+    fx16 rotationSpeed;
+    WINDOW *winTop;
+    WINDOW *winBottom;
     u8 frame; // 3A4
-    u8 unk_3A5;
-    u8 unk_3A6;
+    u8 textSpeed;
+    u8 subPrinterId;
     u8 unk_3A7;
-    int unk_3A8;
+    int state;
     int unk_3AC;
-    STRING *unk_3B0;
-    struct UnkStarterChooseSub_3B4 unk_3B4;
-    UnkStruct_02019014 *unk_574;
+    STRING *strbuf;
+    struct StarterChooseMonSpriteData monSpriteData;
+    GF_3dCamera *camera;
     POKEMON *choices[3]; // 578
     int unk_584;
-    GXRgb unk_588[8];
+    GXRgb edgeColorTable[8];
 }; // size=0x598
 
-static void ov61_021E6068(struct UnkStarterChooseSub_3B4 *a0);
-static void ov61_021E60B8(struct ChooseStarterAppWork *work);
-static void ov61_021E60C8(void);
-static void ov61_021E60E8(HeapID heapId);
-static void ov61_021E6140(struct ChooseStarterAppWork *work);
-static void ov61_021E61FC(struct ChooseStarterAppWork *work);
+static void freeAllMonSprite2dResObj(struct StarterChooseMonSpriteData *a0);
+static void vBlankCB(struct ChooseStarterAppWork *work);
+static void setGxBanks(void);
+static void createOamManager(HeapID heapId);
+static void init3dEngine(struct ChooseStarterAppWork *work);
+static void update3dObjectsMain(struct ChooseStarterAppWork *work);
 static inline void id_roty_mtx33(MtxFx33 *mtx, u16 index);
-static void ov61_021E6240(struct ChooseStarterAppWork *work);
-static void ov61_021E6350(BGCONFIG *bgConfig, HeapID heapId);
+static void updateBaseAndBallsRotation(struct ChooseStarterAppWork *work);
+static void initBgLayers(BGCONFIG *bgConfig, HeapID heapId);
 static void ov61_021E6488(struct ChooseStarterAppWork *work);
-static void ov61_021E6508(struct ChooseStarterAppWork *work);
-static void ov61_021E6564(struct ChooseStarterAppWork *work);
-static void ov61_021E6730(struct ChooseStarterAppWork *work);
-static void ov61_021E6750(struct ChooseStarterAppWork *work);
+static void createObjResMans(struct ChooseStarterAppWork *work);
+static void initObjRenderers(struct ChooseStarterAppWork *work);
+static void freeAll3dAnmObj(struct ChooseStarterAppWork *work);
+static void freeAll3dResHeader(struct ChooseStarterAppWork *work);
 static void ov61_021E6768(struct ChooseStarter3dRes *a0, int fileId, HeapID heapId);
 static void ov61_021E67BC(struct ChooseStarterRnd *rnd, struct ChooseStarter3dRes *res);
 static void ov61_021E67D4(int fileId, HeapID heapId, NNSFndAllocator *allocator, struct ChooseStarter3dRes *res, struct ChooseStarterAnm *anm);
@@ -139,28 +167,28 @@ static void ov61_021E684C(struct ChooseStarterAnm *anm, int a1);
 static inline struct ChooseStarterAnm *GetAnmByIdx(struct ChooseStarterAppWork *work, u8 idx);
 static void ov61_021E6894(struct ChooseStarterAppWork *work);
 static BOOL ov61_021E68E4(struct ChooseStarterAppWork *work);
-static void ov61_021E6908(struct ChooseStarter3dRes *a0);
-static void ov61_021E6918(struct ChooseStarterAnm *anm, NNSFndAllocator *alloc);
+static void free3dResHeader(struct ChooseStarter3dRes *a0);
+static void free3dAnmObj(struct ChooseStarterAnm *anm, NNSFndAllocator *alloc);
 static void ov61_021E6934(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z);
 static void ov61_021E693C(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z);
 static void ov61_021E6944(struct ChooseStarterAppWork *work);
 static void ov61_021E6A28(struct ChooseStarterRnd *render);
 static void ov61_021E6A48(struct ChooseStarterRnd *render, MtxFx43 *mtx);
-static BOOL ov61_021E6AE0(struct ChooseStarterAppWork *work, fx16 a1);
+static BOOL selectedBallIsCentered(struct ChooseStarterAppWork *work, fx16 speed);
 static void ov61_021E6B2C(struct ChooseStarterAppWork *work, int a1);
-static void ov61_021E6B6C(struct ChooseStarterAppWork *work);
-static void ov61_021E6C3C(BGCONFIG *bgConfig, HeapID heapId);
-static u8 ov61_021E6D78(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, STRING **out);
-static void ov61_021E6DFC(struct ChooseStarterAppWork *work, int msgId);
-static void ov61_021E6E30(WINDOW *window);
-static int ov61_021E6E40(struct ChooseStarterAppWork *work);
-static int ov61_021E6F80(int a0, u8 a1, int a2);
-static int ov61_021E6F98(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 a3);
-static void ov61_021E6FC4(struct ChooseStarterAppWork *work);
-static void ov61_021E7108(struct _2DGfxResMan *charResMan, struct _2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx);
-static void ov61_021E7188(struct UnkStarterChooseSub_3B4 *a0, u8 idx, HeapID heapId);
-static void ov61_021E7220(struct ChooseStarterAppWork *work);
-static void ov61_021E7248(struct UnkStarterChooseSub_3B4 *a0);
+static void makeAndDrawWindows(struct ChooseStarterAppWork *work);
+static void loadBgGraphics(BGCONFIG *bgConfig, HeapID heapId);
+static u8 printMsgOnWinEx(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, STRING **out);
+static void printMsgOnBottom(struct ChooseStarterAppWork *work, int msgId);
+static void freeWindow(WINDOW *window);
+static int getInput(struct ChooseStarterAppWork *work);
+static int getRotateDirection(int a0, u8 a1, int a2);
+static int getTappedBallId(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 radius);
+static void createMonSprites(struct ChooseStarterAppWork *work);
+static void loadOneMonObj(struct _2DGfxResMan *charResMan, struct _2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx);
+static void createOneMonRender(struct StarterChooseMonSpriteData *a0, u8 idx, HeapID heapId);
+static void setAllButSelectedMonSpritesInvisible(struct ChooseStarterAppWork *work);
+static void setAllMonSpritesInvisible(struct StarterChooseMonSpriteData *a0);
 static BOOL ov61_021E7268(struct ChooseStarterAppWork *work, int a1, int a2);
 static u16 ov61_021E7348(const int *a0, const int *a1, int a2, int a3);
 
@@ -179,12 +207,12 @@ BOOL ChooseStarterApplication_OvyInit(OVY_MANAGER *ovy, int *state_p) {
     for (i = 0; i < 3; i++) {
         work->choices[i] = &parent->starters[i];
     }
-    work->unk_3A5 = 1;
-    Main_SetVBlankIntrCB((GFIntrCB)ov61_021E60B8, work);
+    work->textSpeed = 1;
+    Main_SetVBlankIntrCB((GFIntrCB)vBlankCB, work);
     HBlankInterruptDisable();
-    ov61_021E60C8();
-    ov61_021E60E8(work->heapId);
-    ov61_021E6140(work);
+    setGxBanks();
+    createOamManager(work->heapId);
+    init3dEngine(work);
     work->bgConfig = BgConfig_Alloc(work->heapId);
 
     {
@@ -198,29 +226,29 @@ BOOL ChooseStarterApplication_OvyInit(OVY_MANAGER *ovy, int *state_p) {
         SetBothScreensModesAndDisable(&bgModeSet);
     }
 
-    ov61_021E6350(work->bgConfig, work->heapId);
+    initBgLayers(work->bgConfig, work->heapId);
     GX_EngineAToggleLayers(1, GX_LAYER_TOGGLE_ON);
     GX_EngineAToggleLayers(2, GX_LAYER_TOGGLE_OFF);
     GX_EngineAToggleLayers(4, GX_LAYER_TOGGLE_OFF);
     gSystem.screensFlipped = TRUE;
     GX_SwapDisplay();
     sub_02020080();
-    ov61_021E6B6C(work);
-    ov61_021E6C3C(work->bgConfig, work->heapId);
-    ov61_021E6508(work);
-    ov61_021E6564(work);
+    makeAndDrawWindows(work);
+    loadBgGraphics(work->bgConfig, work->heapId);
+    createObjResMans(work);
+    initObjRenderers(work);
     work->unk_010 = sub_02023114(work->heapId);
-    work->unk_574 = sub_02019014(work->heapId, work->unk_010);
+    work->camera = GF_3dCamera_Create(work->heapId, work->unk_010);
     ov61_021E6488(work);
     ov61_021E6944(work);
-    ov61_021E6FC4(work);
+    createMonSprites(work);
     TextFlags_SetCanABSpeedUpPrint(FALSE);
     sub_02002B50(TRUE);
     sub_02002B8C(FALSE);
     return TRUE;
 }
 
-static const int ov61_021E7398[] = {
+static const int sSpecies[] = {
     SPECIES_CHIKORITA,
     SPECIES_CYNDAQUIL,
     SPECIES_TOTODILE,
@@ -229,152 +257,152 @@ static const int ov61_021E7398[] = {
 BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
     struct ChooseStarterAppWork *work = OverlayManager_GetData(ovy);
     int r6 = 0;
-    int r0;
+    int input;
     switch (*state) {
-    case 0:
-        ov61_021E6DFC(work, msg_0190_00007);
+    case CHOOSE_STARTER_STATE_INIT:
+        printMsgOnBottom(work, msg_0190_00007);
         GX_EngineAToggleLayers(2, GX_LAYER_TOGGLE_OFF);
         GX_EngineAToggleLayers(4, GX_LAYER_TOGGLE_OFF);
         BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, work->heapId);
-        *state = 1;
+        *state = CHOOSE_STARTER_STATE_WAIT_FADE_IN;
         break;
-    case 1:
+    case CHOOSE_STARTER_STATE_WAIT_FADE_IN:
         if (!IsPaletteFadeFinished()) {
             break;
         }
-        *state = 2;
+        *state = CHOOSE_STARTER_STATE_START_INIT_MSG;
         break;
-    case 2:
-        if (!sub_020190E8(work->unk_574)) {
+    case CHOOSE_STARTER_STATE_START_INIT_MSG:
+        if (!GF_3dCamera_MovementActive(work->camera)) {
             break;
         }
-        work->unk_3A6 = ov61_021E6D78(work->unk_39C, work->heapId, TRUE, NARC_msg_msg_0190_bin, msg_0190_00000, MakeTextColor(1, 2, 15), work->unk_3A5, &work->unk_3B0);
+        work->subPrinterId = printMsgOnWinEx(work->winTop, work->heapId, TRUE, NARC_msg_msg_0190_bin, msg_0190_00000, MakeTextColor(1, 2, 15), work->textSpeed, &work->strbuf);
         GX_EngineAToggleLayers(2, GX_LAYER_TOGGLE_OFF);
         GX_EngineAToggleLayers(4, GX_LAYER_TOGGLE_OFF);
-        *state = 4;
+        *state = CHOOSE_STARTER_STATE_WAIT_INIT_MSG;
         break;
-    case 3:
-        work->unk_3A6 = ov61_021E6D78(work->unk_39C, work->heapId, TRUE, NARC_msg_msg_0190_bin, msg_0190_00001 + work->unk_394, MakeTextColor(1, 2, 15), work->unk_3A5, &work->unk_3B0);
-        ov61_021E6DFC(work, msg_0190_00008);
+    case CHOOSE_STARTER_STATE_RETURN_INIT_MSG:
+        work->subPrinterId = printMsgOnWinEx(work->winTop, work->heapId, TRUE, NARC_msg_msg_0190_bin, msg_0190_00001 + work->curSelection, MakeTextColor(1, 2, 15), work->textSpeed, &work->strbuf);
+        printMsgOnBottom(work, msg_0190_00008);
         GX_EngineAToggleLayers(2, GX_LAYER_TOGGLE_ON);
         GX_EngineAToggleLayers(4, GX_LAYER_TOGGLE_ON);
-        *state = 4;
+        *state = CHOOSE_STARTER_STATE_WAIT_INIT_MSG;
         break;
-    case 4:
-        if (sub_02020094(work->unk_3A6)) {
+    case CHOOSE_STARTER_STATE_WAIT_INIT_MSG:
+        if (TextPrinterCheckActive(work->subPrinterId)) {
             break;
         }
-        String_dtor(work->unk_3B0);
-        work->unk_3B0 = NULL;
-        *state = 5;
+        String_dtor(work->strbuf);
+        work->strbuf = NULL;
+        *state = CHOOSE_STARTER_STATE_HANDLE_INPUT;
         break;
-    case 5:
-        if (!sub_020190E8(work->unk_574)) {
+    case CHOOSE_STARTER_STATE_HANDLE_INPUT:
+        if (!GF_3dCamera_MovementActive(work->camera)) {
             break;
         }
-        r0 = ov61_021E6E40(work);
-        switch (r0) {
-        case 8:
+        input = getInput(work);
+        switch (input) {
+        case CHOOSE_STARTER_INPUT_BACKED_OUT:
             r6 = 1;
             break;
-        case 7:
+        case CHOOSE_STARTER_INPUT_CONFIRM_CHOICE:
             r6 = 2;
             break;
         }
-        switch (r0) {
-        case 5:
+        switch (input) {
+        case CHOOSE_STARTER_INPUT_SELECT_BALL_INIT:
             work->unk_584 = 2;
             {
                 STRING *sp14 = NULL;
-                ov61_021E6D78(work->unk_39C, work->heapId, FALSE, NARC_msg_msg_0190_bin, msg_0190_00004 + work->unk_394,
+                printMsgOnWinEx(work->winTop, work->heapId, FALSE, NARC_msg_msg_0190_bin, msg_0190_00004 + work->curSelection,
                               MakeTextColor(1, 2, 15), 0, &sp14);
                 String_dtor(sp14);
             }
-            PlayCry(ov61_021E7398[work->unk_394], FALSE);
-            ov61_021E6DFC(work, msg_0190_00007);
+            PlayCry(sSpecies[work->curSelection], FALSE);
+            printMsgOnBottom(work, msg_0190_00007);
             GX_EngineAToggleLayers(2, GX_LAYER_TOGGLE_ON);
             GX_EngineAToggleLayers(4, GX_LAYER_TOGGLE_ON);
-            ov61_021E7220(work);
-            *state = 5;
+            setAllButSelectedMonSpritesInvisible(work);
+            *state = CHOOSE_STARTER_STATE_HANDLE_INPUT;
             break;
-        case 1:
-        case 3:
-            work->unk_39A = -0x800;
-            *state = 6;
+        case CHOOSE_STARTER_INPUT_CYCLE_LEFT:
+        case CHOOSE_STARTER_INPUT_CONTINUE_LEFT:
+            work->rotationSpeed = FX16_CONST(-0.5);
+            *state = CHOOSE_STARTER_STATE_ROTATE_MACHINE;
             sub_02006134(0x607, -0x200);
             break;
-        case 2:
-        case 4:
-            work->unk_39A = 0x800;
-            *state = 6;
+        case CHOOSE_STARTER_INPUT_CYCLE_RIGHT:
+        case CHOOSE_STARTER_INPUT_CONTINUE_RIGHT:
+            work->rotationSpeed = FX16_CONST(0.5);
+            *state = CHOOSE_STARTER_STATE_ROTATE_MACHINE;
             sub_02006134(0x607, -0x200);
             break;
-        case 7:
+        case CHOOSE_STARTER_INPUT_CONFIRM_CHOICE:
             GX_EngineAToggleLayers(2, GX_LAYER_TOGGLE_OFF);
             GX_EngineAToggleLayers(4, GX_LAYER_TOGGLE_OFF);
-            *state = 7;
+            *state = CHOOSE_STARTER_STATE_ZOOM_IN;
             break;
-        case 6:
-            ov61_021E6820(&work->unk_070[work->unk_394 + 3], &work->unk_340[work->unk_394]);
-            ov61_021E6814(&work->unk_070[work->unk_394 + 3], &work->unk_340[3]);
-            ov61_021E6814(&work->unk_070[0], &work->unk_340[4]);
-            work->unk_070[0].unk_58 = 1;
-            *state = 10;
+        case CHOOSE_STARTER_INPUT_CHOSE_STARTER:
+            ov61_021E6820(&work->_3dObjRender[work->curSelection + 3], &work->_3dObjAnm[work->curSelection]);
+            ov61_021E6814(&work->_3dObjRender[work->curSelection + 3], &work->_3dObjAnm[3]);
+            ov61_021E6814(&work->_3dObjRender[0], &work->_3dObjAnm[4]);
+            work->_3dObjRender[0].unk_58 = 1;
+            *state = CHOOSE_STARTER_STATE_ZOOM_AND_FADE_OUT;
             break;
-        case 8:
-            if (work->unk_3A8 == 2) {
+        case CHOOSE_STARTER_INPUT_BACKED_OUT:
+            if (work->state == 2) {
                 work->unk_584 = 0;
-                ov61_021E6DFC(work, msg_0190_00007);
+                printMsgOnBottom(work, msg_0190_00007);
                 GX_EngineAToggleLayers(2, 0);
                 GX_EngineAToggleLayers(4, 0);
-                ov61_021E7248(&work->unk_3B4);
-                work->unk_3A8 = 0;
-                *state = 9;
+                setAllMonSpritesInvisible(&work->monSpriteData);
+                work->state = 0;
+                *state = CHOOSE_STARTER_STATE_BACK_OUT;
             }
             break;
         }
         break;
-    case 6:
-        if (!ov61_021E6AE0(work, work->unk_39A)) {
+    case CHOOSE_STARTER_STATE_ROTATE_MACHINE:
+        if (!selectedBallIsCentered(work, work->rotationSpeed)) {
             break;
         }
         work->unk_584 = 2;
         {
             STRING *sp10 = NULL;
-            ov61_021E6D78(work->unk_39C, work->heapId, FALSE, NARC_msg_msg_0190_bin, msg_0190_00004 + work->unk_394, MakeTextColor(1, 2, 15), 0, &sp10);
+            printMsgOnWinEx(work->winTop, work->heapId, FALSE, NARC_msg_msg_0190_bin, msg_0190_00004 + work->curSelection, MakeTextColor(1, 2, 15), 0, &sp10);
             String_dtor(sp10);
         }
-        PlayCry(ov61_021E7398[work->unk_394], 0);
-        if (work->unk_3A8 != 1) {
+        PlayCry(sSpecies[work->curSelection], 0);
+        if (work->state != 1) {
             GX_EngineAToggleLayers(2, GX_LAYER_TOGGLE_ON);
             GX_EngineAToggleLayers(4, GX_LAYER_TOGGLE_ON);
         }
-        ov61_021E7220(work);
-        work->unk_3A8 = 1;
-        *state = 5;
+        setAllButSelectedMonSpritesInvisible(work);
+        work->state = 1;
+        *state = CHOOSE_STARTER_STATE_HANDLE_INPUT;
         break;
-    case 7:
+    case CHOOSE_STARTER_STATE_ZOOM_IN:
         if (!ov61_021E7268(work, 0, -0x15E0)) {
             break;
         }
-        ov61_021E7220(work);
-        *state = 8;
+        setAllButSelectedMonSpritesInvisible(work);
+        *state = CHOOSE_STARTER_STATE_WAIT_ZOOM_IN;
         break;
-    case 8:
+    case CHOOSE_STARTER_STATE_WAIT_ZOOM_IN:
         if (!ov61_021E68E4(work)) {
             break;
         }
-        work->unk_3A8 = 2;
-        *state = 3;
+        work->state = 2;
+        *state = CHOOSE_STARTER_STATE_RETURN_INIT_MSG;
         break;
-    case 9:
+    case CHOOSE_STARTER_STATE_BACK_OUT:
         if (!ov61_021E7268(work, -0x15E0, 0)) {
             break;
         }
         ov61_021E6B2C(work, 0);
         *state = 2;
         break;
-    case 10:
+    case CHOOSE_STARTER_STATE_ZOOM_AND_FADE_OUT:
         BeginNormalPaletteFade(4, 0, 0, RGB_WHITE, 10, 1, work->heapId);
         work->unk_584 = 1;
         {
@@ -385,19 +413,19 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
             sp2C.unk_4 = (VecFx32){0, 0, 14 * FX32_ONE};
             sp2C.unk_10 = 0x64000;
 
-            sub_02019040(work->unk_574, &sp2C, 8);
+            GF_3dCamera_BeginMovement(work->camera, &sp2C, 8);
         }
-        *state = 11;
+        *state = CHOOSE_STARTER_STATE_WAIT_FADE_OUT;
         PlaySE(SEQ_SE_DP_W025);
         break;
-    case 11:
+    case CHOOSE_STARTER_STATE_WAIT_FADE_OUT:
         if (!IsPaletteFadeFinished()) {
             break;
         }
         BeginNormalPaletteFade(3, 0, 0, RGB_WHITE, 16, 1, work->heapId);
-        *state = 12;
+        *state = CHOOSE_STARTER_STATE_WAIT_AND_EXIT;
         break;
-    case 12:
+    case CHOOSE_STARTER_STATE_WAIT_AND_EXIT:
         if (!IsPaletteFadeFinished()) {
             break;
         }
@@ -412,36 +440,36 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
                 sp18.unk_0 = 0xDCC0;
                 sp18.unk_2 = 0x11A4;
                 sp18.unk_4 = (VecFx32){0, 0, 14 * FX32_ONE};
-                sp18.unk_10 = 0x64000;
+                sp18.unk_10 = 100 * FX32_ONE;
                 work->unk_3AC = 0;
             } else {
                 sp18.unk_0 = 0xEA20;
                 sp18.unk_2 = 0x1024;
                 sp18.unk_4 = (VecFx32){0, 0, 12 * FX32_ONE};
-                sp18.unk_10 = 0x3C000;
+                sp18.unk_10 = 60 * FX32_ONE;
                 work->unk_3AC = 2;
             }
-            sub_02019040(work->unk_574, &sp18, 8);
+            GF_3dCamera_BeginMovement(work->camera, &sp18, 8);
         }
     }
     if (work->unk_584 == 1) {
-        ov61_021E682C(&work->unk_340[3]);
-        ov61_021E682C(&work->unk_340[4]);
+        ov61_021E682C(&work->_3dObjAnm[3]);
+        ov61_021E682C(&work->_3dObjAnm[4]);
     } else if (work->unk_584 == 2) {
         ov61_021E6894(work);
     } else {
-        NNS_G3dAnmObjSetFrame(work->unk_340[0].obj, 0);
-        NNS_G3dAnmObjSetFrame(work->unk_340[1].obj, 0);
-        NNS_G3dAnmObjSetFrame(work->unk_340[2].obj, 0);
+        NNS_G3dAnmObjSetFrame(work->_3dObjAnm[0].obj, 0);
+        NNS_G3dAnmObjSetFrame(work->_3dObjAnm[1].obj, 0);
+        NNS_G3dAnmObjSetFrame(work->_3dObjAnm[2].obj, 0);
     }
     {
-        struct ChooseStarterAnm *r3 = &work->unk_340[5];
+        struct ChooseStarterAnm *r3 = &work->_3dObjAnm[5];
         r3->obj->frame += FX32_ONE;
         if (r3->obj->frame >= NNS_G3dAnmObjGetNumFrame(r3->obj)) {
             NNS_G3dAnmObjSetFrame(r3->obj, 0);
         }
     }
-    ov61_021E61FC(work);
+    update3dObjectsMain(work);
     return FALSE;
 }
 
@@ -452,23 +480,23 @@ BOOL ChooseStarterApplication_OvyExit(OVY_MANAGER *ovy, int *state) {
     TextFlags_SetCanABSpeedUpPrint(FALSE);
     sub_02002B50(FALSE);
     sub_02002B8C(FALSE);
-    data->cursorPos = work->unk_394;
+    data->cursorPos = work->curSelection;
     Main_SetVBlankIntrCB(NULL, NULL);
-    sub_02019030(work->unk_574);
+    GF_3dCamera_Delete(work->camera);
     sub_02023120(work->unk_010);
-    ov61_021E6730(work);
-    ov61_021E6750(work);
-    ov61_021E6068(&work->unk_3B4);
-    sub_02024504(work->unk_3B4.unk_088);
-    Destroy2DGfxResObjMan(work->unk_3B4.charResMan);
-    Destroy2DGfxResObjMan(work->unk_3B4.plttResMan);
-    Destroy2DGfxResObjMan(work->unk_3B4.cellResMan);
-    Destroy2DGfxResObjMan(work->unk_3B4.animResMan);
-    sub_0200B244();
+    freeAll3dAnmObj(work);
+    freeAll3dResHeader(work);
+    freeAllMonSprite2dResObj(&work->monSpriteData);
+    sub_02024504(work->monSpriteData.unk_088);
+    Destroy2DGfxResObjMan(work->monSpriteData.charResMan);
+    Destroy2DGfxResObjMan(work->monSpriteData.plttResMan);
+    Destroy2DGfxResObjMan(work->monSpriteData.cellResMan);
+    Destroy2DGfxResObjMan(work->monSpriteData.animResMan);
+    OamManager_Free();
     sub_0202168C();
     sub_02022608();
-    ov61_021E6E30(work->unk_39C);
-    ov61_021E6E30(work->unk_3A0);
+    freeWindow(work->winTop);
+    freeWindow(work->winBottom);
     FreeBgTilemapBuffer(work->bgConfig, 1);
     FreeBgTilemapBuffer(work->bgConfig, 2);
     FreeBgTilemapBuffer(work->bgConfig, 4);
@@ -481,27 +509,27 @@ BOOL ChooseStarterApplication_OvyExit(OVY_MANAGER *ovy, int *state) {
     return TRUE;
 }
 
-static void ov61_021E6068(struct UnkStarterChooseSub_3B4 *a0) {
+static void freeAllMonSprite2dResObj(struct StarterChooseMonSpriteData *a0) {
     int i;
 
     for (i = 0; i < 3; i++) {
-        sub_0200AEB0(a0->unk_018[i].charResObj);
-        sub_0200B0A8(a0->unk_018[i].plttResObj);
-        DestroySingle2DGfxResObj(a0->charResMan, a0->unk_018[i].charResObj);
-        DestroySingle2DGfxResObj(a0->plttResMan, a0->unk_018[i].plttResObj);
-        DestroySingle2DGfxResObj(a0->cellResMan, a0->unk_018[i].cellResObj);
-        DestroySingle2DGfxResObj(a0->animResMan, a0->unk_018[i].animResObj);
-        FreeToHeap(a0->unk_060[i]);
-        FreeToHeap(a0->unk_06C[i]);
+        sub_0200AEB0(a0->objs[i].charResObj);
+        sub_0200B0A8(a0->objs[i].plttResObj);
+        DestroySingle2DGfxResObj(a0->charResMan, a0->objs[i].charResObj);
+        DestroySingle2DGfxResObj(a0->plttResMan, a0->objs[i].plttResObj);
+        DestroySingle2DGfxResObj(a0->cellResMan, a0->objs[i].cellResObj);
+        DestroySingle2DGfxResObj(a0->animResMan, a0->objs[i].animResObj);
+        FreeToHeap(a0->charDatas[i]);
+        FreeToHeap(a0->plttDatas[i]);
     }
 }
 
-static void ov61_021E60B8(struct ChooseStarterAppWork *work) {
-    sub_0200B224();
+static void vBlankCB(struct ChooseStarterAppWork *work) {
+    OamManager_ApplyAndResetBuffers();
     BgConfig_HandleScheduledScrollAndTransferOps(work->bgConfig);
 }
 
-static void ov61_021E60C8(void) {
+static void setGxBanks(void) {
     const struct GXBanksConfig cfg = {
         GX_VRAM_BG_80_EF,
         GX_VRAM_BGEXTPLTT_NONE,
@@ -517,9 +545,9 @@ static void ov61_021E60C8(void) {
     GX_SetBanks(&cfg);
 }
 
-static void ov61_021E60E8(HeapID heapId) {
+static void createOamManager(HeapID heapId) {
     NNS_G2dInitOamManagerModule();
-    sub_0200B150(0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20, heapId);
+    OamManager_Create(0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20, heapId);
     {
         struct UnkStruct_020215A0 sp14 = {
             3,
@@ -535,7 +563,7 @@ static void ov61_021E60E8(HeapID heapId) {
     sub_02022638();
 }
 
-static void ov61_021E6140(struct ChooseStarterAppWork *work) {
+static void init3dEngine(struct ChooseStarterAppWork *work) {
     int i;
     work->_3dMan = GF_3DVramMan_Create(work->heapId, 0, 2, 0, 4, NULL);
     G3X_AntiAlias(TRUE);
@@ -543,9 +571,9 @@ static void ov61_021E6140(struct ChooseStarterAppWork *work) {
     G3X_AlphaBlend(TRUE);
     G3X_EdgeMarking(TRUE);
     for (i = 0; i < 8; i++) {
-        work->unk_588[i] = GX_RGB(4, 4, 4);
+        work->edgeColorTable[i] = GX_RGB(4, 4, 4);
     }
-    G3X_SetEdgeColorTable(work->unk_588);
+    G3X_SetEdgeColorTable(work->edgeColorTable);
     G3X_SetClearColor(GX_RGB(31, 31, 16), 0, 0x7FFF, 0x3F, FALSE);
     NNS_G3dGlbLightVector(GX_LIGHTID_0, 0, -FX16_ONE, 0);
     NNS_G3dGlbLightColor(GX_LIGHTID_0, RGB_WHITE);
@@ -553,12 +581,12 @@ static void ov61_021E6140(struct ChooseStarterAppWork *work) {
     NNS_G3dGlbMaterialColorSpecEmi(RGB_WHITE, RGB_WHITE, FALSE);
 }
 
-static void ov61_021E61FC(struct ChooseStarterAppWork *work) {
-    sub_0202457C(work->unk_3B4.unk_088);
+static void update3dObjectsMain(struct ChooseStarterAppWork *work) {
+    sub_0202457C(work->monSpriteData.unk_088);
     sub_02026E48();
     NNS_G3dGePushMtx();
     sub_02023154();
-    ov61_021E6240(work);
+    updateBaseAndBallsRotation(work);
     NNS_G3dGePopMtx(1);
     sub_02026E50(0, 0);
 }
@@ -568,14 +596,14 @@ static inline void id_roty_mtx33(MtxFx33 *mtx, u16 index) {
     MTX_RotY33(mtx, FX_SinIdx(index), FX_CosIdx(index));
 }
 
-static void ov61_021E6240(struct ChooseStarterAppWork *work) {
+static void updateBaseAndBallsRotation(struct ChooseStarterAppWork *work) {
     const VecFx32 sp8C = {FX32_ONE, FX32_ONE, FX32_ONE};
     MtxFx33 sp68;
     MtxFx33 sp44;
     int i;
 
     for (i = 0; i < 2; i++) {
-        struct ChooseStarterRnd *rnd = &work->unk_070[i];
+        struct ChooseStarterRnd *rnd = &work->_3dObjRender[i];
         if (rnd->unk_58) {
             MTX_Identity33(&sp68);
             MTX_RotY33(&sp44, FX_SinIdx(rnd->unk_74), FX_CosIdx(rnd->unk_74));
@@ -590,14 +618,14 @@ static void ov61_021E6240(struct ChooseStarterAppWork *work) {
         const VecFx32 sp08 = {FX32_ONE, FX32_ONE, FX32_ONE};
 
         NNS_G3dGlbSetBaseTrans(&sp14);
-        id_roty_mtx33(&sp20, work->unk_398);
+        id_roty_mtx33(&sp20, work->rotationAngle);
         NNS_G3dGlbSetBaseRot(&sp20);
         NNS_G3dGlbSetBaseScale(&sp08);
     }
     NNS_G3dGlbFlush();
 
     for (i = 2; i < 6; i++) {
-        struct ChooseStarterRnd *rnd = &work->unk_070[i];
+        struct ChooseStarterRnd *rnd = &work->_3dObjRender[i];
         if (rnd->unk_58) {
             NNS_G3dGePushMtx();
             ov61_021E6A28(rnd);
@@ -607,7 +635,7 @@ static void ov61_021E6240(struct ChooseStarterAppWork *work) {
     }
 }
 
-static void ov61_021E6350(BGCONFIG *bgConfig, HeapID heapId) {
+static void initBgLayers(BGCONFIG *bgConfig, HeapID heapId) {
     G2_SetBG0Priority(2);
     {
         const BGTEMPLATE sp70 = {
@@ -684,8 +712,8 @@ static void ov61_021E6488(struct ChooseStarterAppWork *work) {
     sub_0202313C(work->unk_010);
 }
 
-static void ov61_021E6508(struct ChooseStarterAppWork *work) {
-    struct UnkStarterChooseSub_3B4 *r4 = &work->unk_3B4;
+static void createObjResMans(struct ChooseStarterAppWork *work) {
+    struct StarterChooseMonSpriteData *r4 = &work->monSpriteData;
     r4->unk_088 = sub_02009F40(3, &r4->unk_08C, work->heapId);
     r4->charResMan = Create2DGfxResObjMan(3, 0, work->heapId);
     r4->plttResMan = Create2DGfxResObjMan(3, 1, work->heapId);
@@ -694,56 +722,56 @@ static void ov61_021E6508(struct ChooseStarterAppWork *work) {
     GX_EngineBToggleLayers(0x10, GX_LAYER_TOGGLE_ON);
 }
 
-static void ov61_021E6564(struct ChooseStarterAppWork *work) {
+static void initObjRenderers(struct ChooseStarterAppWork *work) {
     int i;
-    ov61_021E6768(&work->unk_030[0], 3, work->heapId);
-    ov61_021E6934(&work->unk_070[0], 0, 14 * FX32_ONE, 32 * FX32_ONE);
-    ov61_021E693C(&work->unk_070[0], FX32_ONE, FX32_ONE, FX32_ONE);
-    ov61_021E6768(&work->unk_030[1], 0, work->heapId);
-    ov61_021E6934(&work->unk_070[1], 0, 0, 0);
-    ov61_021E693C(&work->unk_070[1], FX32_ONE, FX32_ONE, FX32_ONE);
-    ov61_021E6768(&work->unk_030[2], 1, work->heapId);
-    ov61_021E6934(&work->unk_070[2], 0, 0, 0);
-    ov61_021E693C(&work->unk_070[2], FX32_ONE, FX32_ONE, FX32_ONE);
-    ov61_021E6768(&work->unk_030[3], 2, work->heapId);
-    ov61_021E67BC(&work->unk_070[0], &work->unk_030[0]);
-    ov61_021E67BC(&work->unk_070[1], &work->unk_030[1]);
-    ov61_021E67BC(&work->unk_070[2], &work->unk_030[2]);
+    ov61_021E6768(&work->_3dObjRes[0], 3, work->heapId);
+    ov61_021E6934(&work->_3dObjRender[0], 0, 14 * FX32_ONE, 32 * FX32_ONE);
+    ov61_021E693C(&work->_3dObjRender[0], FX32_ONE, FX32_ONE, FX32_ONE);
+    ov61_021E6768(&work->_3dObjRes[1], 0, work->heapId);
+    ov61_021E6934(&work->_3dObjRender[1], 0, 0, 0);
+    ov61_021E693C(&work->_3dObjRender[1], FX32_ONE, FX32_ONE, FX32_ONE);
+    ov61_021E6768(&work->_3dObjRes[2], 1, work->heapId);
+    ov61_021E6934(&work->_3dObjRender[2], 0, 0, 0);
+    ov61_021E693C(&work->_3dObjRender[2], FX32_ONE, FX32_ONE, FX32_ONE);
+    ov61_021E6768(&work->_3dObjRes[3], 2, work->heapId);
+    ov61_021E67BC(&work->_3dObjRender[0], &work->_3dObjRes[0]);
+    ov61_021E67BC(&work->_3dObjRender[1], &work->_3dObjRes[1]);
+    ov61_021E67BC(&work->_3dObjRender[2], &work->_3dObjRes[2]);
 
     for (i = 0; i < 3; i++) {
-        ov61_021E67BC(&work->unk_070[i + 3], &work->unk_030[3]);
+        ov61_021E67BC(&work->_3dObjRender[i + 3], &work->_3dObjRes[3]);
     }
-    work->unk_070[0].unk_58 = 0;
-    work->unk_070[2].unk_58 = 1;
-    work->unk_070[1].unk_58 = 1;
-    work->unk_070[3].unk_58 = 1;
-    work->unk_070[4].unk_58 = 1;
-    work->unk_070[5].unk_58 = 1;
-    ov61_021E67D4(7, work->heapId, &work->allocator, &work->unk_030[2], &work->unk_340[5]);
-    ov61_021E67D4(6, work->heapId, &work->allocator, &work->unk_030[3], &work->unk_340[0]);
-    ov61_021E67D4(6, work->heapId, &work->allocator, &work->unk_030[3], &work->unk_340[1]);
-    ov61_021E67D4(6, work->heapId, &work->allocator, &work->unk_030[3], &work->unk_340[2]);
-    ov61_021E67D4(5, work->heapId, &work->allocator, &work->unk_030[3], &work->unk_340[3]);
-    ov61_021E67D4(4, work->heapId, &work->allocator, &work->unk_030[0], &work->unk_340[4]);
-    ov61_021E6814(&work->unk_070[2], &work->unk_340[5]);
-    ov61_021E6814(&work->unk_070[3], &work->unk_340[0]);
-    ov61_021E6814(&work->unk_070[4], &work->unk_340[1]);
-    ov61_021E6814(&work->unk_070[5], &work->unk_340[2]);
+    work->_3dObjRender[0].unk_58 = 0;
+    work->_3dObjRender[2].unk_58 = 1;
+    work->_3dObjRender[1].unk_58 = 1;
+    work->_3dObjRender[3].unk_58 = 1;
+    work->_3dObjRender[4].unk_58 = 1;
+    work->_3dObjRender[5].unk_58 = 1;
+    ov61_021E67D4(7, work->heapId, &work->allocator, &work->_3dObjRes[2], &work->_3dObjAnm[5]);
+    ov61_021E67D4(6, work->heapId, &work->allocator, &work->_3dObjRes[3], &work->_3dObjAnm[0]);
+    ov61_021E67D4(6, work->heapId, &work->allocator, &work->_3dObjRes[3], &work->_3dObjAnm[1]);
+    ov61_021E67D4(6, work->heapId, &work->allocator, &work->_3dObjRes[3], &work->_3dObjAnm[2]);
+    ov61_021E67D4(5, work->heapId, &work->allocator, &work->_3dObjRes[3], &work->_3dObjAnm[3]);
+    ov61_021E67D4(4, work->heapId, &work->allocator, &work->_3dObjRes[0], &work->_3dObjAnm[4]);
+    ov61_021E6814(&work->_3dObjRender[2], &work->_3dObjAnm[5]);
+    ov61_021E6814(&work->_3dObjRender[3], &work->_3dObjAnm[0]);
+    ov61_021E6814(&work->_3dObjRender[4], &work->_3dObjAnm[1]);
+    ov61_021E6814(&work->_3dObjRender[5], &work->_3dObjAnm[2]);
 }
 
-static void ov61_021E6730(struct ChooseStarterAppWork *work) {
+static void freeAll3dAnmObj(struct ChooseStarterAppWork *work) {
     int i;
 
     for (i = 0; i < 6; i++) {
-        ov61_021E6918(&work->unk_340[i], &work->allocator);
+        free3dAnmObj(&work->_3dObjAnm[i], &work->allocator);
     }
 }
 
-static void ov61_021E6750(struct ChooseStarterAppWork *work) {
+static void freeAll3dResHeader(struct ChooseStarterAppWork *work) {
     int i;
 
     for (i = 0; i < 4; i++) {
-        ov61_021E6908(&work->unk_030[i]);
+        free3dResHeader(&work->_3dObjRes[i]);
     }
 }
 
@@ -803,28 +831,28 @@ static void ov61_021E684C(struct ChooseStarterAnm *anm, int a1) {
 }
 
 static inline struct ChooseStarterAnm *GetAnmByIdx(struct ChooseStarterAppWork *work, u8 idx) {
-    return &work->unk_340[idx];
+    return &work->_3dObjAnm[idx];
 }
 
 static void ov61_021E6894(struct ChooseStarterAppWork *work) {
-    u32 idx = work->unk_394;
+    u32 idx = work->curSelection;
     ov61_021E684C(GetAnmByIdx(work, idx), work->unk_3AC);
     NNS_G3dAnmObjSetFrame(GetAnmByIdx(work, (idx + 1) % 3)->obj, 0);
     NNS_G3dAnmObjSetFrame(GetAnmByIdx(work, (idx + 2) % 3)->obj, 0);
 }
 
 static BOOL ov61_021E68E4(struct ChooseStarterAppWork *work) {
-    u32 idx = work->unk_394;
+    u32 idx = work->curSelection;
     return GetAnmByIdx(work, idx)->obj->frame >= 80 * FX32_ONE;
 }
 
-static void ov61_021E6908(struct ChooseStarter3dRes *a0) {
+static void free3dResHeader(struct ChooseStarter3dRes *a0) {
     if (a0->header != NULL) {
         FreeToHeap(a0->header);
     }
 }
 
-static void ov61_021E6918(struct ChooseStarterAnm *anm, NNSFndAllocator *alloc) {
+static void free3dAnmObj(struct ChooseStarterAnm *anm, NNSFndAllocator *alloc) {
     if (anm->hdr != NULL) {
         NNS_G3dFreeAnmObj(alloc, anm->obj);
         FreeToHeap(anm->hdr);
@@ -849,19 +877,19 @@ static void ov61_021E6944(struct ChooseStarterAppWork *work) {
     MtxFx33 sp10;
     int i;
     u16 sp0;
-    u8 r4 = work->unk_394;
+    u8 r4 = work->curSelection;
     int angle = 0;
 
     for (i = 0; i < 3; i++) {
         sp0 = angle / 3;
         MTX_RotY33(&sp10, FX_SinIdx(sp0), FX_CosIdx(sp0));
         MTX_MultVec33(&sp34, &sp10, &sp40);
-        work->unk_370[r4] = sp40;
-        work->unk_370[r4].y += 13 * FX32_ONE;
-        ov61_021E6934(&work->unk_070[r4 + 3], sp40.x, sp40.y, sp40.z);
-        ov61_021E693C(&work->unk_070[r4 + 3], FX32_ONE, FX32_ONE, FX32_ONE);
-        work->unk_070[r4 + 3].unk_74 = sp0;
-        work->unk_070[r4 + 3].unk_76 = 0;
+        work->positions[r4] = sp40;
+        work->positions[r4].y += 13 * FX32_ONE;
+        ov61_021E6934(&work->_3dObjRender[r4 + 3], sp40.x, sp40.y, sp40.z);
+        ov61_021E693C(&work->_3dObjRender[r4 + 3], FX32_ONE, FX32_ONE, FX32_ONE);
+        work->_3dObjRender[r4 + 3].unk_74 = sp0;
+        work->_3dObjRender[r4 + 3].unk_76 = 0;
         r4 = (r4 + 1) % 3;
         angle += 16 * FX32_ONE;
     }
@@ -890,20 +918,20 @@ static void ov61_021E6A48(struct ChooseStarterRnd *render, MtxFx43 *mtx) {
     MTX_Concat43(&sp34, mtx, mtx);
 }
 
-static BOOL ov61_021E6AE0(struct ChooseStarterAppWork *work, fx16 a1) {
+static BOOL selectedBallIsCentered(struct ChooseStarterAppWork *work, fx16 speed) {
     BOOL ret = FALSE;
-    work->unk_398 += a1;
-    if (a1 >= 0) {
-        if (work->unk_398 >= 0x5555) {
-            work->unk_398 = 0;
-            work->unk_39A = 0;
+    work->rotationAngle += speed;
+    if (speed >= 0) {
+        if (work->rotationAngle >= FX16_CONST(5.3333)) {
+            work->rotationAngle = 0;
+            work->rotationSpeed = 0;
             ov61_021E6B2C(work, 1);
             ret = TRUE;
         }
     } else {
-        if (work->unk_398 <= -0x5555) {
-            work->unk_398 = 0;
-            work->unk_39A = 0;
+        if (work->rotationAngle <= FX16_CONST(-5.3333)) {
+            work->rotationAngle = 0;
+            work->rotationSpeed = 0;
             ov61_021E6B2C(work, 2);
             ret = TRUE;
         }
@@ -913,31 +941,31 @@ static BOOL ov61_021E6AE0(struct ChooseStarterAppWork *work, fx16 a1) {
 
 static void ov61_021E6B2C(struct ChooseStarterAppWork *work, int a1) {
     if (a1 == 2) {
-        work->unk_394 = (work->unk_394 + 1) % 3;
+        work->curSelection = (work->curSelection + 1) % 3;
     } else if (a1 == 1) {
-        s8 r0 = work->unk_394 - 1;
+        s8 r0 = work->curSelection - 1;
         if (r0 < 0) {
             r0 = 2;
         }
-        work->unk_394 = r0;
+        work->curSelection = r0;
     }
     ov61_021E6944(work);
 }
 
-static void ov61_021E6B6C(struct ChooseStarterAppWork *work) {
-    work->unk_39C = AllocWindows(work->heapId, 1);
-    work->unk_3A0 = AllocWindows(work->heapId, 1);
-    AddWindowParameterized(work->bgConfig, work->unk_39C, 4, 2, 19, 27, 4, 2, 0x01F);
-    AddWindowParameterized(work->bgConfig, work->unk_3A0, 1, 1, 19, 29, 4, 2, 0x01F);
-    FillWindowPixelBuffer(work->unk_39C, 15);
-    FillWindowPixelBuffer(work->unk_3A0, 0);
+static void makeAndDrawWindows(struct ChooseStarterAppWork *work) {
+    work->winTop = AllocWindows(work->heapId, 1);
+    work->winBottom = AllocWindows(work->heapId, 1);
+    AddWindowParameterized(work->bgConfig, work->winTop, 4, 2, 19, 27, 4, 2, 0x01F);
+    AddWindowParameterized(work->bgConfig, work->winBottom, 1, 1, 19, 29, 4, 2, 0x01F);
+    FillWindowPixelBuffer(work->winTop, 15);
+    FillWindowPixelBuffer(work->winBottom, 0);
     sub_0200E644(work->bgConfig, 4, 0x200, 0, work->frame, work->heapId);
     GfGfxLoader_GXLoadPal(NARC_a_0_8_2, 8, 4, 0x040, 0x20, work->heapId);
     GfGfxLoader_GXLoadPal(NARC_a_0_8_2, 8, 0, 0x040, 0x20, work->heapId);
-    DrawFrameAndWindow2(work->unk_39C, 0, 0x200, 0);
+    DrawFrameAndWindow2(work->winTop, 0, 0x200, 0);
 }
 
-static void ov61_021E6C3C(BGCONFIG *bgConfig, HeapID heapId) {
+static void loadBgGraphics(BGCONFIG *bgConfig, HeapID heapId) {
     GfGfxLoader_LoadCharData(NARC_a_0_8_2, 13, bgConfig, 2, 0, 0, FALSE, heapId);
     GfGfxLoader_LoadCharData(NARC_a_0_8_2, 10, bgConfig, 5, 0, 0, FALSE, heapId);
     GfGfxLoader_LoadCharData(NARC_a_0_8_2, 16, bgConfig, 6, 0, 0, FALSE, heapId);
@@ -957,7 +985,7 @@ static void ov61_021E6C3C(BGCONFIG *bgConfig, HeapID heapId) {
 
 }
 
-static u8 ov61_021E6D78(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, STRING **out) {
+static u8 printMsgOnWinEx(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, STRING **out) {
     MSGDATA *msgData;
     u8 ret;
     GF_ASSERT(*out == NULL);
@@ -975,120 +1003,117 @@ static u8 ov61_021E6D78(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgBa
     return ret;
 }
 
-static void ov61_021E6DFC(struct ChooseStarterAppWork *work, int msgId) {
+static void printMsgOnBottom(struct ChooseStarterAppWork *work, int msgId) {
     STRING *string = NULL;
-    ov61_021E6D78(work->unk_3A0, work->heapId, FALSE, NARC_msg_msg_0190_bin, msgId, MakeTextColor(1, 2, 0), 0, &string);
+    printMsgOnWinEx(work->winBottom, work->heapId, FALSE, NARC_msg_msg_0190_bin, msgId, MakeTextColor(1, 2, 0), 0, &string);
     String_dtor(string);
 }
 
-static void ov61_021E6E30(WINDOW *window) {
+static void freeWindow(WINDOW *window) {
     RemoveWindow(window);
     FreeToHeap(window);
 }
 
-static int ov61_021E6E40(struct ChooseStarterAppWork *work) {
+static int getInput(struct ChooseStarterAppWork *work) {
     int ret = 0;
-    if (!sub_0202534C()) {
+    if (System_GetTouchHeld() == 0) {
         if (gSystem.newKeys & PAD_BUTTON_A) {
-            if (work->unk_3A8 == 2) {
-                ret = 6;
-            } else if (work->unk_3A8 == 1) {
-                ret = 7;
+            if (work->state == 2) {
+                ret = CHOOSE_STARTER_INPUT_CHOSE_STARTER;
+            } else if (work->state == 1) {
+                ret = CHOOSE_STARTER_INPUT_CONFIRM_CHOICE;
             } else {
-                work->unk_3A8 = 1;
-                ret = 5;
+                work->state = 1;
+                ret = CHOOSE_STARTER_INPUT_SELECT_BALL_INIT;
             }
         } else if (gSystem.newKeys & PAD_BUTTON_B) {
-            if (work->unk_3A8 == 2) {
-                ret = 8;
+            if (work->state == 2) {
+                ret = CHOOSE_STARTER_INPUT_BACKED_OUT;
             }
         } else if (gSystem.newKeys & PAD_KEY_LEFT) {
-            if (work->unk_3A8 != 2) {
-                ret = 1;
+            if (work->state != 2) {
+                ret = CHOOSE_STARTER_INPUT_CYCLE_LEFT;
             }
         } else if (gSystem.newKeys & PAD_KEY_RIGHT) {
-            if (work->unk_3A8 != 2) {
-                ret = 2;
+            if (work->state != 2) {
+                ret = CHOOSE_STARTER_INPUT_CYCLE_RIGHT;
             }
         }
-    } else if (gSystem.heldKeys == 0 && sub_02025358()) {
-        VecFx32 near, far;
+    } else if (gSystem.heldKeys == 0 && System_GetTouchNew() != 0) {
+        VecFx32 near, far; // wherever you are
         int num;
-        fx32 r3;
+        fx32 radius;
         NNS_G3dScrPosToWorldLine(gSystem.touchX, gSystem.touchY, &near, &far);
-        if (work->unk_3A8 == 2) {
-            r3 = 6 * FX32_ONE;
+        if (work->state == 2) {
+            radius = 6 * FX32_ONE;
         } else {
-            r3 = 13 * FX32_ONE;
+            radius = 13 * FX32_ONE;
         }
-        num = ov61_021E6F98(work->unk_370, &near, &far, r3);
+        num = getTappedBallId(work->positions, &near, &far, radius);
         if (num != 3) {
-            if (work->unk_3A8 == 2) {
-                if (num == work->unk_394) {
-                    ret = 6;
+            if (work->state == 2) {
+                if (num == work->curSelection) {
+                    ret = CHOOSE_STARTER_INPUT_CHOSE_STARTER;
                 } else {
-                    ret = 8;
+                    ret = CHOOSE_STARTER_INPUT_BACKED_OUT;
                 }
-            } else if (work->unk_3A8 == 1) {
-                if (num == work->unk_394) {
-                    ret = 7;
+            } else if (work->state == 1) {
+                if (num == work->curSelection) {
+                    ret = CHOOSE_STARTER_INPUT_CONFIRM_CHOICE;
                 } else {
-                    ret = ov61_021E6F80(num, work->unk_394, work->unk_3AC);
+                    ret = getRotateDirection(num, work->curSelection, work->unk_3AC);
                 }
             } else {
-                if (num == work->unk_394) {
-                    work->unk_3A8 = 1;
-                    ret = 5;
+                if (num == work->curSelection) {
+                    work->state = 1;
+                    ret = CHOOSE_STARTER_INPUT_SELECT_BALL_INIT;
                 } else {
-                    ret = ov61_021E6F80(num, work->unk_394, work->unk_3AC);
+                    ret = getRotateDirection(num, work->curSelection, work->unk_3AC);
                 }
             }
-        } else if (work->unk_3A8 == 2) {
-            ret = 8;
+        } else if (work->state == 2) {
+            ret = CHOOSE_STARTER_INPUT_BACKED_OUT;
         }
     }
-    if (ret == 6) {
+    if (ret == CHOOSE_STARTER_INPUT_CHOSE_STARTER) {
         PlaySE(SEQ_SE_DP_BOX01);
     }
     return ret;
 }
 
-static int ov61_021E6F80(int a0, u8 a1, int a2) {
+static int getRotateDirection(int a0, u8 a1, int a2) {
 #pragma unused(a2)
     if (((a1 + 1) % 3) == a0) {
-        return 1;
+        return CHOOSE_STARTER_INPUT_CYCLE_LEFT;
     } else {
-        return 2;
+        return CHOOSE_STARTER_INPUT_CYCLE_RIGHT;
     }
 }
 
-static int ov61_021E6F98(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 a3) {
+static int getTappedBallId(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 radius) {
     u8 i;
     for (i = 0; i < 3; i++) {
-        if (sub_02020B9C(&vecs[i], near, far) <= a3) {
+        if (GetDistanceFromPointToLine(&vecs[i], near, far) <= radius) {
             break;
         }
     }
     return i;
 }
 
-static void ov61_021E6FC4(struct ChooseStarterAppWork *work) {
+static void createMonSprites(struct ChooseStarterAppWork *work) {
     NARC *narc = NARC_ctor(NARC_a_0_9_3, work->heapId);
-    int i; //r4
-    struct UnkStarterChooseSub_3B4 *r5 = &work->unk_3B4;
+    int i;
+    struct StarterChooseMonSpriteData *r5 = &work->monSpriteData;
 
     for (i = 0; i < 3; i++) {
-        // r7=sp14=r5=work->unk_3B4
-        // sp10=r6=work
-        // sp24=r5->unk_078
-        r5->unk_018[i].charResObj = AddCharResObjFromOpenNarc(r5->charResMan, narc, 9, FALSE, i, 2, work->heapId);
-        r5->unk_018[i].plttResObj = AddPlttResObjFromOpenNarc(r5->plttResMan, narc, 6, FALSE, i, 2, 1, work->heapId);
-        r5->unk_018[i].cellResObj = AddCellOrAnimResObjFromOpenNarc(r5->cellResMan, narc, 10, FALSE, i,
-                                                                    GF_GFX_RES_TYPE_CELL, work->heapId);
-        r5->unk_018[i].animResObj = AddCellOrAnimResObjFromOpenNarc(r5->animResMan, narc, 16, FALSE, i,
-                                                                    GF_GFX_RES_TYPE_ANIM, work->heapId);
-        sub_020701E4(
-            &r5->unk_078,
+        r5->objs[i].charResObj = AddCharResObjFromOpenNarc(r5->charResMan, narc, 9, FALSE, i, 2, work->heapId);
+        r5->objs[i].plttResObj = AddPlttResObjFromOpenNarc(r5->plttResMan, narc, 6, FALSE, i, 2, 1, work->heapId);
+        r5->objs[i].cellResObj = AddCellOrAnimResObjFromOpenNarc(r5->cellResMan, narc, 10, FALSE, i,
+                                                                 GF_GFX_RES_TYPE_CELL, work->heapId);
+        r5->objs[i].animResObj = AddCellOrAnimResObjFromOpenNarc(r5->animResMan, narc, 16, FALSE, i,
+                                                                 GF_GFX_RES_TYPE_ANIM, work->heapId);
+        GetMonSpriteCharAndPlttNarcIdsEx(
+            &r5->param,
             GetMonData(work->choices[i], MON_DATA_SPECIES, NULL),
             GetMonData(work->choices[i], MON_DATA_GENDER, NULL),
             2,
@@ -1096,16 +1121,16 @@ static void ov61_021E6FC4(struct ChooseStarterAppWork *work) {
             0,
             0
         );
-        r5->unk_060[i] = sub_0201442C(r5->unk_078.narcID, r5->unk_078.charDataID, work->heapId);
-        r5->unk_06C[i] = sub_02014450(r5->unk_078.narcID, r5->unk_078.palDataID, work->heapId);
-        ov61_021E7108(r5->charResMan, r5->plttResMan, r5->unk_060[i], r5->unk_06C[i], i);
-        ov61_021E7188(r5, i, work->heapId);
+        r5->charDatas[i] = sub_0201442C(r5->param.narcID, r5->param.charDataID, work->heapId);
+        r5->plttDatas[i] = sub_02014450(r5->param.narcID, r5->param.palDataID, work->heapId);
+        loadOneMonObj(r5->charResMan, r5->plttResMan, r5->charDatas[i], r5->plttDatas[i], i);
+        createOneMonRender(r5, i, work->heapId);
     }
 
     NARC_dtor(narc);
 }
 
-static void ov61_021E7108(struct _2DGfxResMan *charResMan, struct _2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx) {
+static void loadOneMonObj(struct _2DGfxResMan *charResMan, struct _2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx) {
     struct _2DGfxResObj *r5 = Get2DGfxResObjById(charResMan, idx);
     struct _2DGfxResObj *r7 = Get2DGfxResObjById(plttResMan, idx);
     NNSG2dImageProxy *r5_2;
@@ -1125,7 +1150,7 @@ static void ov61_021E7108(struct _2DGfxResMan *charResMan, struct _2DGfxResMan *
     GXS_LoadOBJPltt(plttData, plttloc, 0x20);
 }
 
-static void ov61_021E7188(struct UnkStarterChooseSub_3B4 *a0, u8 idx, HeapID heapId) {
+static void createOneMonRender(struct StarterChooseMonSpriteData *a0, u8 idx, HeapID heapId) {
     UnkStruct_02009D48 header;
     struct UnkStruct_02024624Header sp2C;
 
@@ -1144,29 +1169,29 @@ static void ov61_021E7188(struct UnkStarterChooseSub_3B4 *a0, u8 idx, HeapID hea
     sp2C.heapId = heapId;
     sp2C.unk8.x = 128 * FX32_ONE;
     sp2C.unk8.y = 288 * FX32_ONE;
-    a0->unk_1B4[idx] = sub_02024624(&sp2C);
-    sub_0202484C(a0->unk_1B4[idx], 0);
-    sub_020248F0(a0->unk_1B4[idx], 0);
-    sub_02024830(a0->unk_1B4[idx], 0);
+    a0->sprites[idx] = sub_02024624(&sp2C);
+    sub_0202484C(a0->sprites[idx], 0);
+    sub_020248F0(a0->sprites[idx], 0);
+    Set2dSpriteVisibleFlag(a0->sprites[idx], 0);
 }
 
-static void ov61_021E7220(struct ChooseStarterAppWork *work) {
-    ov61_021E7248(&work->unk_3B4);
-    sub_02024830(work->unk_3B4.unk_1B4[work->unk_394], 1);
+static void setAllButSelectedMonSpritesInvisible(struct ChooseStarterAppWork *work) {
+    setAllMonSpritesInvisible(&work->monSpriteData);
+    Set2dSpriteVisibleFlag(work->monSpriteData.sprites[work->curSelection], 1);
 }
 
-static void ov61_021E7248(struct UnkStarterChooseSub_3B4 *a0) {
+static void setAllMonSpritesInvisible(struct StarterChooseMonSpriteData *a0) {
     int i;
 
     for (i = 0; i < 3; i++) {
-        sub_02024830(a0->unk_1B4[i], 0);
+        Set2dSpriteVisibleFlag(a0->sprites[i], 0);
     }
 }
 
 static BOOL ov61_021E7268(struct ChooseStarterAppWork *work, int a1, int a2) {
     MtxFx33 sp18;
     u16 r6;
-    u32 r5 = work->unk_394;
+    u32 r5 = work->curSelection;
     work->unk_3A7++;
     r6 = ov61_021E7348(&a1, &a2, work->unk_3A7, 8);
     {
@@ -1177,8 +1202,8 @@ static BOOL ov61_021E7268(struct ChooseStarterAppWork *work, int a1, int a2) {
         MTX_RotX33(&sp18, FX_SinIdx(r6), FX_CosIdx(r6));
         MTX_MultVec33(&sp0C, &sp18, &sp0C);
         VEC_Add(&sp0C, &sp00, &sp0C);
-        ov61_021E6934(&work->unk_070[r5 + 3], sp0C.x, sp0C.y, sp0C.z);
-        work->unk_070[r5 + 3].unk_76 = r6;
+        ov61_021E6934(&work->_3dObjRender[r5 + 3], sp0C.x, sp0C.y, sp0C.z);
+        work->_3dObjRender[r5 + 3].unk_76 = r6;
         if (work->unk_3A7 >= 8) {
             work->unk_3A7 = 0;
             return TRUE;

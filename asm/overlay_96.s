@@ -1568,7 +1568,7 @@ _021E63C4:
 	ldr r0, _021E6448 ; =0x00000708
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, _021E6448 ; =0x00000708
 	add r1, r4, #0
 	ldr r0, [r5, r0]
@@ -1606,7 +1606,7 @@ _021E6412:
 	ldr r0, _021E6448 ; =0x00000708
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, _021E644C ; =0x0000070C
 	mov r1, #0
 	strb r1, [r5, r0]
@@ -1637,7 +1637,7 @@ ov96_021E6454: ; 0x021E6454
 	ldr r0, _021E64AC ; =0x00000714
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, pc}
 _021E6474:
 	cmp r4, #3
@@ -1654,7 +1654,7 @@ _021E648A:
 	ldr r0, _021E64AC ; =0x00000714
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, _021E64AC ; =0x00000714
 	add r1, r4, #1
 	ldr r0, [r5, r0]
@@ -1664,7 +1664,7 @@ _021E64A0:
 	ldr r0, _021E64AC ; =0x00000714
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E64AC: .word 0x00000714
@@ -1848,7 +1848,7 @@ _021E65EC:
 	ldr r0, _021E6618 ; =0x0000071C
 	mov r1, #1
 	ldr r0, [r6, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, _021E6618 ; =0x0000071C
 	mov r1, #0
 	ldr r0, [r6, r0]
@@ -1895,7 +1895,7 @@ _021E6648:
 	add r0, r5, r0
 	ldr r0, [r0, r7]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -1947,7 +1947,7 @@ _021E66A0:
 	add r0, r1, #7
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, _021E6784 ; =0x00000899
 	bl PlaySE
 	mov r0, #0
@@ -1971,7 +1971,7 @@ _021E66A0:
 	ldr r0, _021E678C ; =0x00000708
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, _021E6780 ; =0x0000070D
 	mov r1, #1
 	strb r1, [r4, r0]
@@ -2013,7 +2013,7 @@ _021E6710:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _021E6738:
 	ldr r0, _021E6798 ; =0x00000718
 	mov r1, #1
@@ -3893,7 +3893,7 @@ ov96_021E75B8: ; 0x021E75B8
 ov96_021E75BC: ; 0x021E75BC
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	add r0, r4, #0
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl GF_RunVramTransferTasks
@@ -5497,7 +5497,7 @@ ov96_021E81D8: ; 0x021E81D8
 	bl ov96_021EAEC8
 	ldr r0, [r4, #8]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0
 	str r0, [sp, #0x10]
 	ldr r0, [sp, #4]
@@ -5515,12 +5515,12 @@ ov96_021E81D8: ; 0x021E81D8
 	ldr r0, [r4, #8]
 	beq _021E821E
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add sp, #0x14
 	pop {r3, r4, pc}
 _021E821E:
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add sp, #0x14
 	pop {r3, r4, pc}
 	thumb_func_end ov96_021E81D8
@@ -7368,7 +7368,7 @@ _021E8F7E:
 	mov r1, #0
 	add r0, r0, r5
 	ldr r0, [r0, #0x10]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add sp, #0x80
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -7812,7 +7812,7 @@ ov96_021E92B0: ; 0x021E92B0
 	thumb_func_start ov96_021E92D0
 ov96_021E92D0: ; 0x021E92D0
 	push {r3, lr}
-	bl sub_0200B244
+	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
 	pop {r3, pc}
@@ -9933,7 +9933,7 @@ _021EA2A4:
 	bl sub_020248F0
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	add sp, #0x8c
 	pop {r4, r5, r6, r7, pc}
@@ -10016,7 +10016,7 @@ _021EA354:
 	bl sub_020248F0
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	add sp, #0x8c
 	pop {r4, r5, r6, r7, pc}
@@ -10099,7 +10099,7 @@ _021EA404:
 	bl sub_020248F0
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	add sp, #0x8c
 	pop {r4, r5, r6, r7, pc}
@@ -10182,7 +10182,7 @@ _021EA4B4:
 	bl sub_020248F0
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	add sp, #0x8c
 	pop {r4, r5, r6, r7, pc}
@@ -10265,7 +10265,7 @@ _021EA564:
 	bl sub_020248F0
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	add sp, #0x8c
 	pop {r4, r5, r6, r7, pc}
@@ -10348,7 +10348,7 @@ _021EA614:
 	bl sub_020248F0
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	add sp, #0x8c
 	pop {r4, r5, r6, r7, pc}
@@ -10431,7 +10431,7 @@ _021EA6C4:
 	bl sub_020248F0
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	add sp, #0x8c
 	pop {r4, r5, r6, r7, pc}
@@ -10524,7 +10524,7 @@ _021EA784:
 	bl sub_020248F0
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	add sp, #0x90
 	pop {r3, r4, r5, r6, r7, pc}
@@ -10608,7 +10608,7 @@ _021EA836:
 	bl sub_020248F0
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	add sp, #0x8c
 	pop {r4, r5, r6, r7, pc}
@@ -10748,7 +10748,7 @@ _021EA936:
 	str r0, [r5, #0x5c]
 	ldr r0, [r5, #0x20]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	b _021EA956
 _021EA952:
 	mov r0, #0
@@ -11000,7 +11000,7 @@ _021EAAEE:
 	bl sub_020248F0
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	add sp, #0x8c
 	pop {r4, r5, r6, r7, pc}
@@ -11014,7 +11014,7 @@ ov96_021EAB38: ; 0x021EAB38
 	add r4, r1, #0
 	bl ov96_021E8BAC
 	add r1, r4, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #4]
 	cmp r0, #0
 	beq _021EAB64
@@ -11022,17 +11022,17 @@ ov96_021EAB38: ; 0x021EAB38
 	cmp r1, #0
 	beq _021EAB5E
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	b _021EAB64
 _021EAB5E:
 	add r1, r4, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _021EAB64:
 	ldr r0, [r5, #8]
 	cmp r0, #0
 	beq _021EAB70
 	add r1, r4, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _021EAB70:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -11049,11 +11049,11 @@ ov96_021EAB74: ; 0x021EAB74
 	beq _021EAB8C
 	add r0, r2, #0
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, pc}
 _021EAB8C:
 	add r0, r2, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _021EAB92:
 	pop {r3, pc}
 	thumb_func_end ov96_021EAB74
@@ -11065,7 +11065,7 @@ ov96_021EAB94: ; 0x021EAB94
 	add r4, r1, #0
 	bl ov96_021E8BAC
 	add r1, r4, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov96_021EAB94
@@ -12347,7 +12347,7 @@ _021EB420:
 	bl sub_020248F0
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r7, #0x55
 	ldr r1, [r5, #4]
 	lsl r7, r7, #2
@@ -12438,17 +12438,17 @@ ov96_021EB52C: ; 0x021EB52C
 	cmp r2, #0
 	ldr r0, [r0, #4]
 	beq _021EB548
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, pc}
 _021EB548:
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, pc}
 _021EB550:
 	mov r1, #0
 	strh r1, [r0, #2]
 	ldr r0, [r0, #4]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, pc}
 _021EB55C:
 	bl GF_AssertFail
@@ -14869,7 +14869,7 @@ _021EC7B8:
 	ldrh r1, [r7, #0x14]
 	ldrb r2, [r7, #0x1b]
 	add r0, sp, #0x20
-	bl sub_020701E4
+	bl GetMonSpriteCharAndPlttNarcIdsEx
 	ldrh r0, [r7, #4]
 	ldrh r1, [r7, #8]
 	ldr r3, [r4]
@@ -19082,7 +19082,7 @@ ov96_021EE830: ; 0x021EE830
 	beq _021EE870
 	lsl r0, r1, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EE864
 	ldr r1, [r4, #0x34]
@@ -19628,7 +19628,7 @@ _021EEC28:
 	str r0, [sp, #8]
 	ldrb r2, [r4, #7]
 	add r0, sp, #0x28
-	bl sub_020701E4
+	bl GetMonSpriteCharAndPlttNarcIdsEx
 	ldr r3, _021EECB4 ; =ov96_0221B1AC
 	add r2, sp, #0x18
 	ldmia r3!, {r0, r1}
@@ -22305,7 +22305,7 @@ _021F013C:
 	mov r2, #0x8c
 	str r2, [sp, #0x10]
 	add r2, r0, #0
-	bl sub_0200B150
+	bl OamManager_Create
 	mov r1, #0x8c
 	str r1, [r4, #0x14]
 	mov r0, #4
@@ -23200,7 +23200,7 @@ ov96_021F095C: ; 0x021F095C
 	ldr r0, _021F0A4C ; =0x00000768
 	ldr r0, [r4, r0]
 	bl ov96_021E9C0C
-	bl sub_0200B244
+	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
 	mov r0, #0x77
@@ -24082,7 +24082,7 @@ _021F1104:
 	sub r1, #8
 	strb r0, [r4, r1]
 _021F111A:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _021F113C
 	add r0, r5, #0
@@ -24097,7 +24097,7 @@ _021F111A:
 	mov r3, #0
 	bl ov96_021E8228
 _021F113C:
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	beq _021F1152
 	ldr r0, _021F116C ; =gSystem + 0x40
@@ -30789,7 +30789,7 @@ _021F4490:
 	ldrh r1, [r7]
 	ldrb r2, [r7, #7]
 	add r0, sp, #0x20
-	bl sub_020701E4
+	bl GetMonSpriteCharAndPlttNarcIdsEx
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2
@@ -32328,7 +32328,7 @@ _021F504A:
 	mov r2, #0x8f
 	str r2, [sp, #0x10]
 	add r2, r0, #0
-	bl sub_0200B150
+	bl OamManager_Create
 	mov r0, #0x8f
 	str r0, [r4, #0x54]
 	ldr r1, [r4, #0x54]
@@ -32883,7 +32883,7 @@ _021F5598:
 	bl ov96_021F7738
 	mov r0, #4
 	bl FontID_Release
-	bl sub_0200B244
+	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
 	mov r0, #0
@@ -33588,7 +33588,7 @@ ov96_021F5BA0: ; 0x021F5BA0
 	ldr r0, [sp, #8]
 	bl ov96_021E5DC4
 	add r5, r0, #0
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _021F5C10
 	ldr r0, [sp, #8]
@@ -33631,7 +33631,7 @@ ov96_021F5BA0: ; 0x021F5BA0
 	str r0, [r5, r1]
 	b _021F5CC2
 _021F5C10:
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	beq _021F5C74
 	mov r2, #5
@@ -35835,7 +35835,7 @@ _021F6D32:
 	add r0, #0x84
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldrb r0, [r7]
 	add r1, sp, #0xc
 	lsl r0, r0, #0xc
@@ -39626,7 +39626,7 @@ ov96_021F8ACC: ; 0x021F8ACC
 	bl sub_020248F0
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	add r1, r6, #0
 	bl sub_02024ADC
@@ -39805,15 +39805,15 @@ ov96_021F8C54: ; 0x021F8C54
 	add r6, r0, #0
 	ldr r0, [r4]
 	add r5, r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4, #4]
 	add r1, r5, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	cmp r6, #0
 	beq _021F8C76
 	ldr r0, [r4, #8]
 	add r1, r5, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _021F8C76:
 	ldr r0, [r4, #0x10]
 	add r1, r5, #0
@@ -40957,7 +40957,7 @@ _021F94DE:
 	mov r2, #0x8a
 	str r2, [sp, #0x10]
 	add r2, r0, #0
-	bl sub_0200B150
+	bl OamManager_Create
 	mov r1, #0x8a
 	str r1, [r4]
 	mov r0, #4
@@ -41388,7 +41388,7 @@ _021F9968:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [sp, #0x18]
 	add r1, sp, #0xb8
 	ldrb r0, [r0]
@@ -42615,7 +42615,7 @@ _021FA3FA:
 	bl ov96_021EB5B8
 	mov r1, #1
 	add r6, r0, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	beq _021FA418
@@ -42969,7 +42969,7 @@ ov96_021FA6D0: ; 0x021FA6D0
 	ldr r0, [sp, #0xc]
 	add r6, r1, #0
 	str r0, [sp, #0x14]
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _021FA71C
 	ldr r0, [sp, #4]
@@ -46589,10 +46589,10 @@ _021FC2C0:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, r7]
 	add r1, r4, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r6, r6, #1
 	add r5, #0x10
 	cmp r6, #0xc
@@ -46612,19 +46612,19 @@ ov96_021FC2E0: ; 0x021FC2E0
 	add r6, r2, #0
 	ldr r0, [r1, r0]
 	add r1, r6, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x62
 	add r1, r5, r4
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	add r1, r6, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x63
 	add r1, r5, r4
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	add r1, r6, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov96_021FC2E0
 
@@ -46875,17 +46875,17 @@ _021FC4F8:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x63
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _021FC52A:
 	mov r0, #0x61
 	lsl r0, r0, #2
@@ -46910,7 +46910,7 @@ _021FC52A:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r2, [sp, #0xc]
 	add r0, r6, #0
 	mov r1, #0
@@ -47282,7 +47282,7 @@ _021FC79C:
 	mov r2, #0x90
 	str r2, [sp, #0x10]
 	add r2, r0, #0
-	bl sub_0200B150
+	bl OamManager_Create
 	mov r1, #0x90
 	str r1, [r5, #0x14]
 	mov r0, #4
@@ -47996,7 +47996,7 @@ ov96_021FCE10: ; 0x021FCE10
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	bl ov96_021E9C0C
-	bl sub_0200B244
+	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
 	mov r0, #0xf7
@@ -49629,11 +49629,11 @@ ov96_021FDB64: ; 0x021FDB64
 	ldr r0, [sp, #4]
 	mov r1, #0
 	ldr r0, [r0, #0x20]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [sp, #4]
 	mov r1, #0
 	ldr r0, [r0, #0x24]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [sp, #4]
 	mov r1, #1
 	ldr r0, [r0, #0x18]
@@ -49694,7 +49694,7 @@ _021FDC2A:
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _021FDC30:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _021FDC52
 	add r0, r7, #0
@@ -49709,7 +49709,7 @@ _021FDC30:
 	mov r3, #0
 	bl ov96_021E8228
 _021FDC52:
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	beq _021FDC68
 	ldr r0, _021FDC78 ; =gSystem + 0x40
@@ -53882,10 +53882,10 @@ _021FFCCE:
 	bl ov96_021EB52C
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4, #4]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x3c
 	strh r0, [r4, #0xc]
 	ldr r0, _021FFD48 ; =0x0000088F
@@ -53906,10 +53906,10 @@ _021FFD0E:
 	bl ov96_021EB52C
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4, #4]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _021FFD36:
 	add sp, #0x24
 	pop {r3, r4, r5, r6, pc}
@@ -54587,7 +54587,7 @@ _0220028E:
 	add r0, r1, #0
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldrb r0, [r7]
 	add r1, sp, #0x1c
 	lsl r0, r0, #0xc
@@ -54756,7 +54756,7 @@ _022003F8:
 	ldrh r1, [r5]
 	ldrb r2, [r5, #7]
 	add r0, sp, #0x10
-	bl sub_020701E4
+	bl GetMonSpriteCharAndPlttNarcIdsEx
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2
@@ -57100,7 +57100,7 @@ _02201588:
 	mov r2, #0x92
 	str r2, [sp, #0x10]
 	add r2, r0, #0
-	bl sub_0200B150
+	bl OamManager_Create
 	mov r1, #0x92
 	str r1, [r4, #0x44]
 	mov r0, #4
@@ -57762,7 +57762,7 @@ _02201BF0:
 	ldr r0, _02201C7C ; =0x000005D4
 	ldr r0, [r4, r0]
 	bl ov96_021E9C0C
-	bl sub_0200B244
+	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
 	ldr r0, _02201C80 ; =0x000005DC
@@ -58111,7 +58111,7 @@ _02201F02:
 	bl ov96_021EA374
 	mov r1, #1
 	str r0, [r5, #0x50]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #6
 	lsl r1, r7, #0xc
 	lsl r0, r0, #0xe
@@ -59330,7 +59330,7 @@ ov96_022028BC: ; 0x022028BC
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _0220290A:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _0220292C
 	add r0, r5, #0
@@ -59345,7 +59345,7 @@ _0220290A:
 	mov r3, #0
 	bl ov96_021E8228
 _0220292C:
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	beq _02202942
 	ldr r0, _02202954 ; =gSystem + 0x40
@@ -61957,7 +61957,7 @@ _02203DDC:
 	ldrh r1, [r5]
 	ldrb r2, [r5, #7]
 	add r0, sp, #0x10
-	bl sub_020701E4
+	bl GetMonSpriteCharAndPlttNarcIdsEx
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -63246,7 +63246,7 @@ _02204820:
 	mov r2, #0x8b
 	str r2, [sp, #0x10]
 	add r2, r0, #0
-	bl sub_0200B150
+	bl OamManager_Create
 	mov r1, #0x8b
 	str r1, [r5, #0x14]
 	mov r0, #4
@@ -63929,7 +63929,7 @@ ov96_02204E58: ; 0x02204E58
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	bl ov96_021E9C0C
-	bl sub_0200B244
+	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
 	mov r0, #0xdb
@@ -65672,7 +65672,7 @@ ov96_02205C94: ; 0x02205C94
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _02205CE4:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _02205D06
 	add r0, r5, #0
@@ -65687,7 +65687,7 @@ _02205CE4:
 	mov r3, #0
 	bl ov96_021E8228
 _02205D06:
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	beq _02205D1C
 	ldr r0, _02205D2C ; =gSystem + 0x40
@@ -70276,7 +70276,7 @@ _02208086:
 	add r0, r1, #0
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldrb r0, [r7]
 	add r1, sp, #0x28
 	lsl r0, r0, #0xc
@@ -70496,7 +70496,7 @@ _02208260:
 	ldrh r1, [r5]
 	ldrb r2, [r5, #7]
 	add r0, sp, #0x10
-	bl sub_020701E4
+	bl GetMonSpriteCharAndPlttNarcIdsEx
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2
@@ -72562,7 +72562,7 @@ ov96_022091B4: ; 0x022091B4
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _0220920C:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _0220922E
 	add r0, r5, #0
@@ -73420,7 +73420,7 @@ _02209926:
 	bl sub_020248F0
 	ldr r0, [r4, #0x2c]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #1
 	lsl r0, r0, #0x10
 	add r7, r7, #1
@@ -73467,7 +73467,7 @@ _0220998A:
 	bl sub_020247D4
 	ldr r0, [r4, #0x38]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r7, r7, #1
 	add r4, r4, #4
 	add r6, #0x10
@@ -74590,7 +74590,7 @@ ov96_0220A298: ; 0x0220A298
 	bl ov96_0220B730
 	mov r4, #0x99
 	lsl r4, r4, #2
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _0220A322
 	add r0, sp, #0xc
@@ -74657,7 +74657,7 @@ _0220A322:
 	lsl r0, r0, #7
 	lsr r0, r0, #0x1f
 	beq _0220A35C
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	bne _0220A35C
 	ldr r0, [r5, r4]
@@ -74716,10 +74716,10 @@ _0220A35C:
 	and r0, r1
 	str r0, [r5, r4]
 _0220A3A2:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	bne _0220A3B2
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	bgt _0220A408
 _0220A3B2:
@@ -84829,7 +84829,7 @@ ov96_0220F1CC: ; 0x0220F1CC
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _0220F20C:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _0220F22E
 	add r0, r5, #0
@@ -84844,7 +84844,7 @@ _0220F20C:
 	mov r3, #0
 	bl ov96_021E8228
 _0220F22E:
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	ldr r1, [r4]
 	beq _0220F25C
@@ -88417,7 +88417,7 @@ _02210CCC:
 	mov r2, #0x93
 	str r2, [sp, #0x10]
 	add r2, r0, #0
-	bl sub_0200B150
+	bl OamManager_Create
 	mov r1, #0x93
 	str r1, [r5, #0x58]
 	mov r0, #4
@@ -89537,7 +89537,7 @@ _0221172E:
 	ldr r0, _022117B8 ; =0x00000744
 	ldr r0, [r4, r0]
 	bl ov96_021E9C0C
-	bl sub_0200B244
+	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
 	ldr r0, _022117BC ; =0x0000074C
@@ -90001,7 +90001,7 @@ ov96_02211AF0: ; 0x02211AF0
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _02211B44:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _02211B66
 	add r0, r5, #0
@@ -90016,7 +90016,7 @@ _02211B44:
 	mov r3, #0
 	bl ov96_021E8228
 _02211B66:
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	beq _02211B7C
 	ldr r0, _02211B90 ; =gSystem + 0x40
@@ -95830,7 +95830,7 @@ _0221479A:
 	bl ov96_021EA2C4
 	mov r1, #1
 	str r0, [r5, #8]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, _022147F4 ; =ov96_0221D648
 	add r1, sp, #8
 	ldrb r0, [r0, r4]
@@ -96008,10 +96008,10 @@ ov96_0221490C: ; 0x0221490C
 	bgt _02214944
 	ldr r0, [r5, #8]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0xc]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x4c]
 	mov r1, #1
 	mov r2, #0
@@ -99380,7 +99380,7 @@ ov96_02216234: ; 0x02216234
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _02216282:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _022162A4
 	add r0, r6, #0
@@ -99395,7 +99395,7 @@ _02216282:
 	mov r3, #0
 	bl ov96_021E8228
 _022162A4:
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	beq _022162D4
 	ldr r2, [r5]
@@ -107161,7 +107161,7 @@ _02219E88:
 	add r0, #0xa8
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r7, r7, #1
 	add r4, r4, #4
 	add r5, #0x10

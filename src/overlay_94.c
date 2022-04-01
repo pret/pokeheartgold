@@ -114,7 +114,7 @@ BOOL PartyMenu_AnimateIconFormeChange(PartyMenuStruct* unkPtr) {
         work->state++;
         break;
     case 10:
-        if (sub_02020094(unkPtr->unkc64) == 0) {
+        if (TextPrinterCheckActive(unkPtr->unkc64) == 0) {
             _DestroyLocalWork(unkPtr);
             unkPtr->unk654->unk27 = 0;
             return TRUE;

@@ -187,7 +187,7 @@ _021E5A4A:
 	str r0, [r4, #0x30]
 	b _021E5A82
 _021E5A5A:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	bne _021E5A6C
 	ldr r0, _021E5A98 ; =gSystem
@@ -345,7 +345,7 @@ _021E5B88:
 	str r0, [r4, #0x30]
 	b _021E5BC6
 _021E5BA0:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	bne _021E5BB2
 	ldr r0, _021E5BDC ; =gSystem
@@ -2012,7 +2012,7 @@ ov111_021E6888: ; 0x021E6888
 	beq _021E68BC
 	lsl r0, r1, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021E68B8
 	ldr r1, [r4, #0x30]

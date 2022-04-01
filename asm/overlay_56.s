@@ -169,7 +169,7 @@ ov56_021E5D44: ; 0x021E5D44
 	ldrb r0, [r4, #0xa]
 	cmp r0, #1
 	bne _021E5D74
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	beq _021E5D5A
 	mov r0, #0
@@ -197,7 +197,7 @@ _021E5D74:
 	mov r0, #0
 	pop {r4, pc}
 _021E5D80:
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	beq _021E5D9A
 	ldr r1, [r4, #0x38]
@@ -229,7 +229,7 @@ ov56_021E5DA4: ; 0x021E5DA4
 	strb r0, [r4, #0xa]
 	b _021E5DC8
 _021E5DB6:
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	beq _021E5DC4
 	mov r0, #1
@@ -567,7 +567,7 @@ _021E603E:
 	strb r0, [r5, #0xa]
 	b _021E6060
 _021E604E:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _021E6060
 	mov r4, #1
@@ -758,7 +758,7 @@ _021E6162:
 	b _021E6212
 _021E61BC:
 	ldrb r0, [r5, #0xf]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _021E61CC
 	add sp, #0x10

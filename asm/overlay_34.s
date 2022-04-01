@@ -1136,7 +1136,7 @@ _0225DE42:
 	ldr r0, [r4, r1]
 	add r1, #0xea
 	ldrh r1, [r4, r1]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, _0225DE90 ; =0x0000028A
 	ldrh r0, [r4, r0]
 	cmp r0, #0

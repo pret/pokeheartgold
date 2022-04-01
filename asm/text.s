@@ -128,14 +128,14 @@ _02020086:
 _02020090: .word _021D1F74
 	thumb_func_end sub_02020080
 
-	thumb_func_start sub_02020094
-sub_02020094: ; 0x02020094
+	thumb_func_start TextPrinterCheckActive
+TextPrinterCheckActive: ; 0x02020094
 	push {r3, lr}
 	bl sub_02020068
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	pop {r3, pc}
-	thumb_func_end sub_02020094
+	thumb_func_end TextPrinterCheckActive
 
 	thumb_func_start sub_020200A0
 sub_020200A0: ; 0x020200A0

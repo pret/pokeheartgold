@@ -848,7 +848,7 @@ ov41_02246494: ; 0x02246494
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r0, [r4, #0x20]
 	bl sub_02009418
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov41_02246494
@@ -1132,7 +1132,7 @@ ov41_022466B8: ; 0x022466B8
 	push {r3, lr}
 	ldr r0, [r0, #0x40]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov41_022466B8
@@ -1664,7 +1664,7 @@ ov41_02246A94: ; 0x02246A94
 	mov r2, #0xe
 	str r2, [sp, #0x10]
 	add r2, r0, #0
-	bl sub_0200B150
+	bl OamManager_Create
 	add r1, r4, #0
 	mov r0, #0x30
 	add r1, #0x58
@@ -1719,7 +1719,7 @@ _02246B40:
 	blt _02246B40
 	bl sub_0202168C
 	bl sub_02022608
-	bl sub_0200B244
+	bl OamManager_Free
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov41_02246B34
 
@@ -2263,7 +2263,7 @@ _02246FA4:
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02246FD6
 	ldr r0, _02247138 ; =0x00000568
@@ -9577,7 +9577,7 @@ _0224A4FC:
 	ldr r0, [r0]
 	cmp r0, #1
 	bne _0224A526
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	beq _0224A514
 	mov r0, #0
@@ -9600,7 +9600,7 @@ _0224A526:
 	mov r0, #0
 	pop {r4, pc}
 _0224A532:
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	beq _0224A542
 	add r4, #0x80
@@ -10958,7 +10958,7 @@ _0224AF48:
 	blt _0224AF6C
 	ldr r0, [r5, #0x10]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _0224AF6C:
 	add r6, r6, #1
 	add r4, #0x12
@@ -12514,7 +12514,7 @@ _0224BB48:
 	mov r0, #3
 	tst r0, r1
 	bne _0224BB5A
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _0224BB96
 _0224BB5A:

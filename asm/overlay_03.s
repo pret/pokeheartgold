@@ -2499,7 +2499,7 @@ ov03_02255280: ; 0x02255280
 	mov r0, #3
 	tst r0, r1
 	bne _022552A8
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _022552BE
 _022552A8:
@@ -2536,7 +2536,7 @@ ov03_022552C8: ; 0x022552C8
 	mov r0, #3
 	tst r0, r1
 	bne _022552F2
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _022552FC
 _022552F2:
@@ -2843,7 +2843,7 @@ ov03_0225554C: ; 0x0225554C
 	mov r0, #3
 	tst r0, r1
 	bne _02255572
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _02255582
 _02255572:
@@ -3432,7 +3432,7 @@ ov03_02255A2C: ; 0x02255A2C
 	mov r0, #3
 	tst r0, r1
 	bne _02255A52
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _02255A66
 _02255A52:
@@ -3542,7 +3542,7 @@ ov03_02255B04: ; 0x02255B04
 	mov r0, #3
 	tst r0, r1
 	bne _02255B2C
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _02255B38
 _02255B2C:
@@ -6651,7 +6651,7 @@ _02257344:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #3
 	pop {r4, pc}
 	nop
@@ -6831,7 +6831,7 @@ _022574D4:
 	sub r2, #0x8c
 	ldr r0, [r4, r2]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _022574DE:
 	add r4, #0x18
 	add r0, r4, #0
@@ -7187,14 +7187,14 @@ _0225777C:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	b _022577B4
 _022577A8:
 	mov r0, #0x82
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _022577B4:
 	ldr r0, [sp, #8]
 	add r4, r4, #1
@@ -7224,7 +7224,7 @@ ov03_022577D0: ; 0x022577D0
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x11
 	pop {r4, pc}
 	.balign 4, 0
@@ -7322,12 +7322,12 @@ ov03_02257874: ; 0x02257874
 	sub r1, #0x4e
 	ldr r0, [r5, r1]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x7f
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r5, #0
 	mov r1, #1
 	bl ov03_022586BC
@@ -7419,12 +7419,12 @@ _0225795A:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x7f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #7
 	pop {r4, pc}
 	.balign 4, 0
@@ -7494,12 +7494,12 @@ ov03_022579E0: ; 0x022579E0
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x7f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	add r0, #0x48
 	mov r1, #1
@@ -7519,32 +7519,32 @@ ov03_022579E0: ; 0x022579E0
 	sub r0, #0x58
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x8b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x23
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x8d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x8e
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x8f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	bl ov03_02257CA0
 	pop {r4, pc}
@@ -7573,13 +7573,13 @@ ov03_02257A70: ; 0x02257A70
 	ldr r0, [r4, r1]
 	add r1, #0x4c
 	ldrh r1, [r4, r1]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r1, #0x7f
 	lsl r1, r1, #2
 	ldr r0, [r4, r1]
 	add r1, #0x4a
 	ldrh r1, [r4, r1]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	mov r1, #0
 	bl ov03_022586BC
@@ -7593,7 +7593,7 @@ ov03_02257A70: ; 0x02257A70
 	sub r0, #0x6c
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #3
 	pop {r4, pc}
 	.balign 4, 0
@@ -7972,13 +7972,13 @@ _02257DAA:
 	ldr r0, [r4, r1]
 	add r1, #0x4c
 	ldrh r1, [r4, r1]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r1, #0x7f
 	lsl r1, r1, #2
 	ldr r0, [r4, r1]
 	add r1, #0x4a
 	ldrh r1, [r4, r1]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	mov r1, #0
 	bl ov03_022586BC
@@ -8228,13 +8228,13 @@ _02257F9E:
 	ldr r0, [r4, r1]
 	add r1, #0x4c
 	ldrh r1, [r4, r1]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r1, #0x7f
 	lsl r1, r1, #2
 	ldr r0, [r4, r1]
 	add r1, #0x4a
 	ldrh r1, [r4, r1]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	mov r1, #0
 	bl ov03_022586BC
@@ -8290,13 +8290,13 @@ _02258020:
 	ldr r0, [r4, r1]
 	add r1, #0x4c
 	ldrh r1, [r4, r1]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r1, #0x7f
 	lsl r1, r1, #2
 	ldr r0, [r4, r1]
 	add r1, #0x4a
 	ldrh r1, [r4, r1]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	mov r1, #0
 	bl ov03_022586BC
@@ -8352,13 +8352,13 @@ _022580A0:
 	ldr r0, [r4, r1]
 	add r1, #0x4c
 	ldrh r1, [r4, r1]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r1, #0x7f
 	lsl r1, r1, #2
 	ldr r0, [r4, r1]
 	add r1, #0x4a
 	ldrh r1, [r4, r1]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	mov r1, #0
 	bl ov03_022586BC
@@ -8538,22 +8538,22 @@ _022581DA:
 	lsl r0, r0, #8
 	ldr r0, [r7, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x7e
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x7f
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x81
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -8681,7 +8681,7 @@ _0225831C:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	b _022583D0
 _02258342:
 	lsl r0, r0, #2
@@ -8690,7 +8690,7 @@ _02258342:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	b _022583D0
 _02258354:
 	cmp r1, #3
@@ -8706,7 +8706,7 @@ _02258354:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	b _022583D0
 _02258374:
 	lsl r0, r0, #2
@@ -8715,7 +8715,7 @@ _02258374:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	b _022583D0
 _02258386:
 	cmp r1, #5
@@ -8735,7 +8735,7 @@ _02258386:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	b _022583D0
 _022583AE:
 	lsl r0, r0, #2
@@ -8744,7 +8744,7 @@ _022583AE:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	b _022583D0
 _022583C0:
 	ldrb r0, [r4]
@@ -8753,7 +8753,7 @@ _022583C0:
 	mov r0, #0x7e
 	lsl r0, r0, #2
 	ldr r0, [r2, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _022583D0:
 	add r6, r6, #1
 	add r4, r4, #3
@@ -8806,7 +8806,7 @@ _022583FC:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	b _022584CE
 _0225843E:
 	ldrb r0, [r4]
@@ -8816,7 +8816,7 @@ _0225843E:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	b _022584CE
 _02258452:
 	ldrb r0, [r4]
@@ -8836,7 +8836,7 @@ _0225845C:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	b _022584CE
 _02258478:
 	lsl r0, r0, #2
@@ -8845,7 +8845,7 @@ _02258478:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	b _022584CE
 _0225848A:
 	cmp r0, #0xf
@@ -8864,7 +8864,7 @@ _02258492:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	b _022584CE
 _022584AE:
 	lsl r0, r0, #2
@@ -8873,7 +8873,7 @@ _022584AE:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	b _022584CE
 _022584C0:
 	lsl r0, r0, #2
@@ -8881,7 +8881,7 @@ _022584C0:
 	mov r0, #0x7e
 	lsl r0, r0, #2
 	ldr r0, [r2, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _022584CE:
 	add r6, r6, #1
 	add r4, r4, #3
@@ -8931,7 +8931,7 @@ _022584FA:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	b _02258548
 _02258536:
 	ldrb r0, [r4]
@@ -8941,7 +8941,7 @@ _02258536:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _02258548:
 	add r6, r6, #1
 	add r4, r4, #3
@@ -9007,7 +9007,7 @@ ov03_022585A4: ; 0x022585A4
 	sub r0, #0x7f
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add sp, #8
 	pop {r4, r5, r6, pc}
 _022585CA:
@@ -9059,7 +9059,7 @@ _022585CA:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	nop
@@ -10013,7 +10013,7 @@ _02258D84:
 ov03_02258D88: ; 0x02258D88
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _02258DAC
 	ldr r0, _02258DDC ; =0x000005DD

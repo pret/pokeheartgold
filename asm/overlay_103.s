@@ -1424,7 +1424,7 @@ ov103_021ED47C: ; 0x021ED47C
 	ldr r1, [r4, #0xc]
 	lsl r0, r0, #2
 	ldrb r0, [r1, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021ED4C4
 	ldr r1, [r4, #0xc]
@@ -1435,7 +1435,7 @@ ov103_021ED47C: ; 0x021ED47C
 	ldr r0, [r4, #0x28]
 	pop {r4, pc}
 _021ED49E:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _021ED4B0
 	ldr r0, _021ED4CC ; =0x000005DC

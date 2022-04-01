@@ -1943,7 +1943,7 @@ _022387CC:
 	ldr r0, [r4, #4]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl GF_RunVramTransferTasks
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	ldr r3, _022387F0 ; =0x027E0000
 	ldr r1, _022387F4 ; =0x00003FF8
 	mov r0, #1
@@ -2135,7 +2135,7 @@ ov70_02238900: ; 0x02238900
 	str r1, [sp, #0x10]
 	mov r1, #0x7a
 	add r2, r0, #0
-	bl sub_0200B150
+	bl OamManager_Create
 	ldr r1, _02238B34 ; =0x00000BF8
 	mov r0, #0x54
 	add r1, r5, r1
@@ -2850,7 +2850,7 @@ _02238ECC:
 	ldr r0, _02238F00 ; =0x00000BF4
 	mov r1, #0
 	str r1, [r6, r0]
-	bl sub_0200B244
+	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
 	pop {r3, r4, r5, r6, r7, pc}
@@ -3141,7 +3141,7 @@ ov70_022390FC: ; 0x022390FC
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	bl ov70_02238E58
 	mov r0, #1
@@ -3383,7 +3383,7 @@ ov70_02239304: ; 0x02239304
 	ldr r0, _0223932C ; =0x00000DCC
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r4, pc}
 	.balign 4, 0
 _0223932C: .word 0x00000DCC
@@ -4245,7 +4245,7 @@ ov70_022399D8: ; 0x022399D8
 	ldr r0, _02239A0C ; =0x00000DCC
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #3
 	add sp, #4
 	pop {r3, r4, pc}
@@ -4281,7 +4281,7 @@ ov70_02239A10: ; 0x02239A10
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r1, #0
 	add r0, r4, #0
 	add r2, r1, #0
@@ -4311,7 +4311,7 @@ _02239A62:
 	ldr r0, _02239AA8 ; =0x00000DCC
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _02239A98:
 	mov r0, #3
 	pop {r4, pc}
@@ -4331,7 +4331,7 @@ ov70_02239AAC: ; 0x02239AAC
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02239AC6
 	ldr r0, [r4, #0x30]
@@ -4351,7 +4351,7 @@ ov70_02239ACC: ; 0x02239ACC
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02239AFA
 	mov r0, #0x47
@@ -4649,7 +4649,7 @@ ov70_02239CF8: ; 0x02239CF8
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -4818,7 +4818,7 @@ ov70_02239E7C: ; 0x02239E7C
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	bl ov70_02238E58
 	mov r0, #1
@@ -5565,7 +5565,7 @@ ov70_0223A4A0: ; 0x0223A4A0
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0223A4BA
 	ldr r0, [r4, #0x30]
@@ -5585,7 +5585,7 @@ ov70_0223A4C0: ; 0x0223A4C0
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0223A4EE
 	mov r0, #0x47
@@ -5949,7 +5949,7 @@ ov70_0223A7E4: ; 0x0223A7E4
 	add r0, sp, #0x20
 	add r1, r5, #0
 	mov r2, #2
-	bl sub_02070124
+	bl GetPokemonSpriteCharAndPlttNarcIds
 	mov r1, #0
 	add r0, r5, #0
 	add r2, r1, #0
@@ -6318,7 +6318,7 @@ ov70_0223AB00: ; 0x0223AB00
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	bl ov70_02238E58
 	mov r0, #1
@@ -6838,7 +6838,7 @@ ov70_0223AF5C: ; 0x0223AF5C
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4, #0x24]
 	cmp r0, #0x10
 	bne _0223AF90
@@ -6860,7 +6860,7 @@ _0223AF90:
 	ldr r0, _0223AFA4 ; =0x00000F0C
 	str r1, [r4, #0x2c]
 	ldr r0, [r4, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _0223AF9C:
 	mov r0, #3
 	add sp, #0xc
@@ -7061,7 +7061,7 @@ ov70_0223B12C: ; 0x0223B12C
 	ldr r0, _0223B184 ; =0x00000F0C
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4, #0x24]
 	cmp r0, #0xf
 	beq _0223B178
@@ -7277,7 +7277,7 @@ ov70_0223B2D0: ; 0x0223B2D0
 	str r1, [r4, #0x2c]
 	sub r0, #8
 	ldr r0, [r4, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _0223B2F6:
 	mov r0, #3
 	pop {r4, pc}
@@ -7328,7 +7328,7 @@ ov70_0223B344: ; 0x0223B344
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0223B35E
 	ldr r0, [r4, #0x30]
@@ -7854,7 +7854,7 @@ ov70_0223B788: ; 0x0223B788
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	bl ov70_02238E58
 	mov r0, #1
@@ -8152,7 +8152,7 @@ ov70_0223B9C8: ; 0x0223B9C8
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x39
 	lsl r0, r0, #0xe
 	str r0, [sp, #8]
@@ -8169,7 +8169,7 @@ ov70_0223B9C8: ; 0x0223B9C8
 	ldr r0, _0223BAA4 ; =0x00000F04
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x23
 	lsl r0, r0, #0xe
 	str r0, [sp, #8]
@@ -8183,7 +8183,7 @@ ov70_0223B9C8: ; 0x0223B9C8
 	ldr r0, _0223BAA8 ; =0x00000F08
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	bl sub_0203A880
 	add sp, #0x30
 	pop {r4, pc}
@@ -8528,7 +8528,7 @@ _0223BD64:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #3
 	add sp, #0xc
 	pop {r3, r4, pc}
@@ -10051,7 +10051,7 @@ ov70_0223C958: ; 0x0223C958
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0223C972
 	ldr r0, [r4, #0x30]
@@ -10071,7 +10071,7 @@ ov70_0223C978: ; 0x0223C978
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0223C9A6
 	mov r0, #0x47
@@ -10135,7 +10135,7 @@ _0223C9FA:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _0223CA06:
 	mov r0, #3
 	pop {r4, pc}
@@ -10643,7 +10643,7 @@ _0223CE10:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	bl ov70_02238E58
 	mov r0, #1
@@ -11072,7 +11072,7 @@ _0223D190:
 	lsl r0, r0, #4
 	ldr r0, [r7, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0xf1
 	lsl r0, r0, #4
 	mov r2, #0x6a
@@ -12807,7 +12807,7 @@ ov70_0223DFD0: ; 0x0223DFD0
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0223DFEA
 	ldr r0, [r4, #0x30]
@@ -12827,7 +12827,7 @@ ov70_0223DFF0: ; 0x0223DFF0
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0223E014
 	ldr r0, _0223E018 ; =0x00001158
@@ -13084,13 +13084,13 @@ _0223E1DA:
 	bl ov70_0223E0BC
 	ldr r0, [sp, #0xc]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [sp, #0x18]
 	cmp r0, #0
 	beq _0223E23C
 	add r0, r7, #0
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [sp, #0x18]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
@@ -13111,16 +13111,16 @@ _0223E230:
 _0223E23C:
 	add r0, r7, #0
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 _0223E248:
 	ldr r0, [sp, #0xc]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r7, #0
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [sp, #0x44]
 	mov r1, #0
 	str r1, [r0, #8]
@@ -13210,7 +13210,7 @@ _0223E2BA:
 	ldr r0, _0223E478 ; =0x00000EC8
 	mov r1, #0
 	ldr r0, [r7, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _0223E30E:
 	add r0, r4, #1
 	lsl r0, r0, #0x10
@@ -13278,12 +13278,12 @@ _0223E336:
 	beq _0223E3A2
 	ldr r0, [r7, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	b _0223E3AA
 _0223E3A2:
 	ldr r0, [r7, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _0223E3AA:
 	add r0, r4, #1
 	lsl r0, r0, #0x10
@@ -13304,12 +13304,12 @@ _0223E3BC:
 	ldr r0, _0223E474 ; =0x00000DD8
 	add r1, r7, #0
 	ldr r0, [r6, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0xe5
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x83
 	lsl r0, r0, #2
 	add r1, r4, #0
@@ -13323,7 +13323,7 @@ _0223E3BC:
 	ldr r0, _0223E478 ; =0x00000EC8
 	mov r1, #0
 	ldr r0, [r6, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _0223E3FA:
 	add r0, r4, #1
 	lsl r0, r0, #0x10
@@ -13960,7 +13960,7 @@ ov70_0223E8A4: ; 0x0223E8A4
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	bl ov70_02238E58
 	mov r0, #1
@@ -14375,7 +14375,7 @@ ov70_0223EC0C: ; 0x0223EC0C
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x39
 	lsl r0, r0, #0xe
 	str r0, [sp, #8]
@@ -14392,7 +14392,7 @@ ov70_0223EC0C: ; 0x0223EC0C
 	ldr r0, _0223EC9C ; =0x00000F04
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x23
 	lsl r0, r0, #0xe
 	str r0, [sp, #8]
@@ -14406,7 +14406,7 @@ ov70_0223EC0C: ; 0x0223EC0C
 	ldr r0, _0223ECA0 ; =0x00000F08
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add sp, #0x30
 	pop {r4, pc}
 	.balign 4, 0
@@ -15094,7 +15094,7 @@ ov70_0223F1B8: ; 0x0223F1B8
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0223F1D2
 	ldr r0, [r4, #0x30]
@@ -18264,7 +18264,7 @@ ov70_022409A0: ; 0x022409A0
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _022409BA
 	ldr r0, [r4, #0x30]
@@ -18775,7 +18775,7 @@ ov70_02240D74: ; 0x02240D74
 	ldr r0, _02240EE0 ; =0x00000EE4
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0
 	ldr r6, _02240EE4 ; =ov70_02245D0A
 	str r0, [sp]
@@ -18797,7 +18797,7 @@ _02240DD8:
 	ldr r0, _02240EE8 ; =0x00000EE8
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, _02240EE8 ; =0x00000EE8
 	ldrh r1, [r6]
 	ldrh r2, [r6, #2]
@@ -18829,7 +18829,7 @@ _02240DD8:
 	ldr r0, _02240EEC ; =0x00000F0C
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, _02240EEC ; =0x00000F0C
 	mov r1, #0x80
 	ldr r0, [r5, r0]
@@ -18866,7 +18866,7 @@ _02240DD8:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r7, _02240EF0 ; =0x0000120C
 	mov r4, #0
 	add r6, r7, #2
@@ -19287,13 +19287,13 @@ _022411E8:
 	ldr r0, _02241228 ; =0x00000EE8
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	b _022411FE
 _022411F4:
 	ldr r0, _02241228 ; =0x00000EE8
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _022411FE:
 	mov r0, #0x49
 	lsl r0, r0, #2
@@ -23148,7 +23148,7 @@ ov70_02242FFC: ; 0x02242FFC
 	bne _02243044
 	ldr r0, [r4, #0xc]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x58
 	ldrsh r0, [r4, r0]
 	cmp r0, #2
@@ -23163,10 +23163,10 @@ ov70_02242FFC: ; 0x02242FFC
 	bl ov70_02238F9C
 	ldr r0, [r4, #0x10]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4, #0x14]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _02243040:
 	ldr r0, [r4, #0x50]
 	str r0, [r4, #0x4c]
@@ -23264,7 +23264,7 @@ ov70_022430CC: ; 0x022430CC
 	bhi _02243118
 	ldr r0, [r5, #0xc]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #6
 	str r0, [r5, #0x4c]
 	strh r4, [r5, #0x3c]
@@ -23272,7 +23272,7 @@ ov70_022430CC: ; 0x022430CC
 _022430F6:
 	ldr r0, [r5, #0xc]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r2, #4
 	str r2, [sp]
 	mov r1, #0
@@ -23300,7 +23300,7 @@ ov70_02243120: ; 0x02243120
 	bl ov70_02241DB4
 	ldr r0, [r4, #0xc]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x3c
 	ldrsh r1, [r4, r0]
 	cmp r1, #0
@@ -23429,7 +23429,7 @@ _022431CA:
 	mov r1, #1
 	str r0, [r5, #0x48]
 	ldr r0, [r5, #0xc]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #5
 	str r0, [r5, #0x4c]
 	sub r0, r0, #6
@@ -23583,7 +23583,7 @@ _0224335A:
 	bl ov70_02238F9C
 	ldr r0, [r5, #0xc]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #9
 	str r0, [r5, #0x4c]
 	sub r0, #0xa
@@ -23631,7 +23631,7 @@ _022433D0:
 _022433DA:
 	ldr r0, [r4, #0xc]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0xa
 	str r0, [r4, #0x4c]
 	strh r5, [r4, #0x3e]
@@ -23639,7 +23639,7 @@ _022433DA:
 _022433EA:
 	ldr r0, [r4, #0xc]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0xa
 	str r0, [r4, #0x4c]
 	sub r0, #0xb
@@ -23962,13 +23962,13 @@ ov70_02243598: ; 0x02243598
 	bl ov70_02238F9C
 	ldr r0, [r4, #0xc]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4, #0x10]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4, #0x14]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0xd
 	str r0, [r4, #0x4c]
 	sub r0, #0xe
@@ -23997,10 +23997,10 @@ ov70_02243688: ; 0x02243688
 _022436A2:
 	ldr r0, [r5, #0x10]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x14]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, _022436FC ; =0x000005DC
 	bl PlaySE
 	mov r0, #0xe
@@ -24018,13 +24018,13 @@ _022436C4:
 	bl sub_020198FC
 	ldr r0, [r5, #0xc]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x10]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x14]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #3
 	str r0, [r5, #0x4c]
 	mov r0, #0xf
@@ -24045,10 +24045,10 @@ ov70_02243700: ; 0x02243700
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4, #0x14]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	mov r1, #0
 	bl ov70_02241DB4
@@ -24167,7 +24167,7 @@ _022437EA:
 	bl sub_020198FC
 	ldr r0, [r5, #0xc]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #3
 	str r0, [r5, #0x4c]
 	mov r0, #0x12
@@ -24184,7 +24184,7 @@ _0224380E:
 	bl sub_020198FC
 	ldr r0, [r5, #0xc]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #3
 	str r0, [r5, #0x4c]
 	mov r0, #0x12
@@ -24216,7 +24216,7 @@ ov70_02243848: ; 0x02243848
 	bl ov70_02241DB4
 	ldr r0, [r4, #0xc]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x3c
 	ldrsh r2, [r4, r0]
 	cmp r2, #0
@@ -24259,7 +24259,7 @@ _02243886:
 	cmp r0, #0
 	beq _022438B2
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _022438B2:
 	ldr r0, [r4, #0xc]
 	mov r1, #0x32
@@ -24293,7 +24293,7 @@ ov70_022438D4: ; 0x022438D4
 	bl sub_020248F0
 	ldr r0, [r4, #0xc]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x3c
 	ldrsh r0, [r4, r0]
 	ldr r1, _02243920 ; =ov70_02245DF8
@@ -24311,7 +24311,7 @@ ov70_022438D4: ; 0x022438D4
 	cmp r0, #0
 	beq _02243918
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _02243918:
 	mov r0, #0x11
 	str r0, [r4, #0x4c]
@@ -24452,12 +24452,12 @@ _02243A18:
 	bl ov70_02238F9C
 	ldr r0, [r5, #0xc]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x18]
 	cmp r0, #0
 	beq _02243A46
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _02243A46:
 	mov r0, #0x15
 	str r0, [r5, #0x4c]
@@ -24505,7 +24505,7 @@ _02243A94:
 _02243A9E:
 	ldr r0, [r4, #0xc]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x16
 	str r0, [r4, #0x4c]
 	strh r5, [r4, #0x3e]
@@ -24513,7 +24513,7 @@ _02243A9E:
 _02243AAE:
 	ldr r0, [r4, #0xc]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x16
 	str r0, [r4, #0x4c]
 	sub r0, #0x17
@@ -24533,7 +24533,7 @@ ov70_02243AC4: ; 0x02243AC4
 	bl ov70_02241DB4
 	ldr r0, [r4, #0xc]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x3e
 	ldrsh r0, [r4, r0]
 	cmp r0, #0
@@ -24553,7 +24553,7 @@ _02243AE6:
 	cmp r0, #0
 	beq _02243B02
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _02243B02:
 	ldr r0, [r4, #0xc]
 	mov r1, #0x32
@@ -24661,13 +24661,13 @@ ov70_02243B2C: ; 0x02243B2C
 	bl ov70_02238F9C
 	ldr r0, [r4, #0xc]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4, #0x10]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4, #0x14]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x19
 	str r0, [r4, #0x4c]
 	sub r0, #0x1a
@@ -24701,13 +24701,13 @@ _02243C22:
 	bl sub_020198FC
 	ldr r0, [r5, #0xc]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x10]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x14]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #2
 	str r0, [r5, #0x4c]
 	mov r0, #0x1a
@@ -24722,13 +24722,13 @@ _02243C52:
 	bl sub_020198FC
 	ldr r0, [r5, #0xc]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x10]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x14]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #3
 	str r0, [r5, #0x4c]
 	mov r0, #0x1b
@@ -24786,7 +24786,7 @@ ov70_02243CC8: ; 0x02243CC8
 	cmp r0, #0
 	beq _02243CDE
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _02243CDE:
 	ldr r0, [r4, #0x34]
 	bl ListMenuItems_dtor
@@ -24848,7 +24848,7 @@ _02243D42:
 	bl sub_020198FC
 	ldr r0, [r5, #0xc]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #3
 	str r0, [r5, #0x4c]
 	mov r0, #0x1e
@@ -24866,7 +24866,7 @@ _02243D68:
 	bl sub_020198FC
 	ldr r0, [r5, #0xc]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #3
 	str r0, [r5, #0x4c]
 	mov r0, #0x1e
@@ -24942,13 +24942,13 @@ _02243DF6:
 	bl sub_020198FC
 	ldr r0, [r5, #0xc]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x10]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x14]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #3
 	str r0, [r5, #0x4c]
 	mov r0, #0x21
@@ -24966,13 +24966,13 @@ _02243E2C:
 	bl sub_020198FC
 	ldr r0, [r5, #0xc]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x10]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x14]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #3
 	str r0, [r5, #0x4c]
 	mov r0, #0x21
@@ -27052,7 +27052,7 @@ _02244E86:
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02244F04
 	bl sub_0203946C
@@ -27084,7 +27084,7 @@ _02244ECA:
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02244F04
 	mov r0, #0x16
@@ -27125,7 +27125,7 @@ ov70_02244F14: ; 0x02244F14
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02244F2E
 	ldr r0, [r4, #0x30]
@@ -27145,7 +27145,7 @@ ov70_02244F34: ; 0x02244F34
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02244F62
 	mov r0, #0x47
@@ -27177,7 +27177,7 @@ ov70_02244F68: ; 0x02244F68
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02244F9A
 	mov r0, #0

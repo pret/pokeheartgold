@@ -120,7 +120,7 @@ _02246A44:
 	str r1, [sp, #0x10]
 	mov r1, #0x80
 	add r2, r0, #0
-	bl sub_0200B150
+	bl OamManager_Create
 	add r1, r4, #0
 	mov r0, #0x40
 	add r1, #0x1c
@@ -257,7 +257,7 @@ ov71_02246B58: ; 0x02246B58
 	bl FreeToHeap
 	ldr r0, [r4, #0x18]
 	bl sub_02024504
-	bl sub_0200B244
+	bl OamManager_Free
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x38
@@ -351,7 +351,7 @@ ov71_02246C48: ; 0x02246C48
 	push {r3, lr}
 	ldr r0, [r1, #0x18]
 	bl sub_0202457C
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	ldr r3, _02246C64 ; =0x027E0000
 	ldr r1, _02246C68 ; =0x00003FF8
 	mov r0, #1
@@ -1030,7 +1030,7 @@ _02247166:
 	add r1, r4, #0
 	mov r2, #2
 	mov r3, #0
-	bl sub_0207013C
+	bl GetBoxmonSpriteCharAndPlttNarcIds
 	mov r1, #0
 	add r0, r4, #0
 	add r2, r1, #0
@@ -2489,7 +2489,7 @@ ov71_02247C34: ; 0x02247C34
 	bl sub_020248F0
 	ldr r0, [r4, #0x3c]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #1
 	pop {r4, pc}
 _02247C5A:
@@ -2732,7 +2732,7 @@ _02247E2A:
 	bl sub_020248F0
 	ldr r0, [r5, #0x40]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -2902,7 +2902,7 @@ ov71_02247F9C: ; 0x02247F9C
 	add r1, r4, #0
 	mov r2, #2
 	mov r3, #0
-	bl sub_0207013C
+	bl GetBoxmonSpriteCharAndPlttNarcIds
 	ldr r0, [r5]
 	bl ov71_022473A8
 	add r2, r0, #0
@@ -3001,10 +3001,10 @@ ov71_02247FF8: ; 0x02247FF8
 	bl sub_02024A04
 	ldr r0, [r4, #0x3c]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4, #0x40]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add sp, #0x70
 	pop {r4, pc}
 	thumb_func_end ov71_02247FF8
@@ -4315,10 +4315,10 @@ _02248AA2:
 	bl sub_020248F0
 	ldr r0, [r4, #0x1c]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4, #0x20]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [sp, #0x14]
 	add r4, #8
 	add r0, r0, #1
@@ -4529,12 +4529,12 @@ _02248C66:
 	mov r1, #1
 	add r0, r0, r4
 	ldr r0, [r0, #0x1c]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #4]
 	mov r1, #1
 	add r0, r0, r4
 	ldr r0, [r0, #0x20]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _02248CA6:
 	ldr r0, [r5, #4]
 	add r1, r7, #0
@@ -5769,7 +5769,7 @@ _022495FA:
 	bl sub_020248F0
 	ldr r0, [r5, #0x20]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -6163,7 +6163,7 @@ ov71_022498F0: ; 0x022498F0
 	bl ov71_02247340
 	mov r1, #0
 	str r0, [r4, #0x20]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add sp, #0x70
 	pop {r4, pc}
 	.balign 4, 0
@@ -7259,7 +7259,7 @@ _0224A1E6:
 	bl sub_020248F0
 	ldr r0, [r5, #0x20]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -7681,7 +7681,7 @@ ov71_0224A510: ; 0x0224A510
 	bl ov71_02247340
 	mov r1, #0
 	str r0, [r4, #0x20]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add sp, #0x70
 	pop {r4, pc}
 	.balign 4, 0
@@ -9545,7 +9545,7 @@ ov71_0224B450: ; 0x0224B450
 	bl sub_020248F0
 	ldr r0, [r4, #0x40]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #1
 	pop {r4, pc}
 _0224B476:
@@ -9593,7 +9593,7 @@ _0224B4AE:
 	bl sub_020248F0
 	ldr r0, [r4, #0x44]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4, #0x78]
 	mov r1, #0
 	bl ov71_02247704
@@ -9993,7 +9993,7 @@ ov71_0224B7EC: ; 0x0224B7EC
 	add r1, r4, #0
 	mov r2, #2
 	mov r3, #0
-	bl sub_0207013C
+	bl GetBoxmonSpriteCharAndPlttNarcIds
 	ldr r0, [r5]
 	bl ov71_022473BC
 	add r2, r0, #0
@@ -10092,10 +10092,10 @@ ov71_0224B848: ; 0x0224B848
 	bl sub_02024A04
 	ldr r0, [r4, #0x40]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4, #0x44]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add sp, #0x70
 	pop {r4, pc}
 	thumb_func_end ov71_0224B848

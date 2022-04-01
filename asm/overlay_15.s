@@ -2786,7 +2786,7 @@ ov15_021FA93C: ; 0x021FA93C
 	add r5, r0, #0
 	ldr r0, _021FAA10 ; =0x00000619
 	add r4, r5, r0
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	bne _021FA958
 	ldrb r1, [r4, #7]
@@ -4535,7 +4535,7 @@ ov15_021FB700: ; 0x021FB700
 	add r4, r0, #0
 	ldr r0, _021FB778 ; =0x00000616
 	ldrb r0, [r4, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021FB772
 	ldr r0, _021FB77C ; =gSystem
@@ -4746,7 +4746,7 @@ _021FB898:
 _021FB8AC:
 	sub r1, #0x65
 	ldrb r0, [r4, r1]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021FB936
 	ldr r0, _021FB9CC ; =gSystem
@@ -4790,7 +4790,7 @@ _021FB8CA:
 _021FB90C:
 	sub r1, #0x65
 	ldrb r0, [r4, r1]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021FB9BA
 	add r0, r4, #0
@@ -5131,7 +5131,7 @@ _021FBBC2:
 _021FBBD4:
 	sub r1, #0x65
 	ldrb r0, [r5, r1]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021FBC56
 	ldr r0, _021FBC64 ; =gSystem
@@ -5657,7 +5657,7 @@ ov15_021FBFF8: ; 0x021FBFF8
 	add r4, r0, #0
 	ldr r0, _021FC018 ; =0x00000616
 	ldrb r0, [r4, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021FC012
 	add r0, r4, #0
@@ -5810,7 +5810,7 @@ ov15_021FC140: ; 0x021FC140
 	add r4, r0, #0
 	ldr r0, _021FC160 ; =0x00000616
 	ldrb r0, [r4, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _021FC154
 	mov r0, #0xa
@@ -5831,7 +5831,7 @@ ov15_021FC164: ; 0x021FC164
 	add r5, r0, #0
 	ldr r0, _021FC218 ; =0x00000616
 	ldrb r0, [r5, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021FC214
 	ldr r0, _021FC21C ; =gSystem
@@ -5999,7 +5999,7 @@ ov15_021FC2E0: ; 0x021FC2E0
 	add r5, r0, #0
 	ldr r0, _021FC370 ; =0x00000616
 	ldrb r0, [r5, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021FC36A
 	ldr r0, _021FC374 ; =gSystem
@@ -6573,7 +6573,7 @@ ov15_021FC784: ; 0x021FC784
 	add r4, r0, #0
 	ldr r0, _021FC7E0 ; =0x00000616
 	ldrb r0, [r4, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021FC7DC
 	ldr r0, _021FC7E4 ; =gSystem
@@ -7305,7 +7305,7 @@ ov15_021FCD80: ; 0x021FCD80
 	add r4, r0, #0
 	ldr r0, _021FCDDC ; =0x00000616
 	ldrb r0, [r4, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021FCDD6
 	ldr r0, _021FCDE0 ; =0x00000682
@@ -7716,7 +7716,7 @@ ov15_021FD0E8: ; 0x021FD0E8
 	add r4, r0, #0
 	ldr r0, _021FD108 ; =0x00000616
 	ldrb r0, [r4, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021FD102
 	add r0, r4, #0
@@ -7881,7 +7881,7 @@ ov15_021FD24C: ; 0x021FD24C
 	add r4, r0, #0
 	ldr r0, _021FD2F4 ; =0x00000616
 	ldrb r0, [r4, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _021FD264
 	add sp, #4
@@ -7967,7 +7967,7 @@ ov15_021FD2FC: ; 0x021FD2FC
 	add r5, r0, #0
 	ldr r0, _021FD39C ; =0x00000616
 	ldrb r0, [r5, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021FD396
 	ldr r0, _021FD3A0 ; =gSystem

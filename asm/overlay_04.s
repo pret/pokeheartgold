@@ -4522,22 +4522,22 @@ _02256110:
 	str r0, [sp, #0x54]
 	ldr r1, [r6, #0x24]
 	mov r0, #4
-	bl sub_02019014
+	bl GF_3dCamera_Create
 	str r0, [r4, #8]
 	add r1, sp, #0x44
 	mov r2, #0x18
-	bl sub_02019040
+	bl GF_3dCamera_BeginMovement
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _0225626C
 _02256168:
 	ldr r0, [r4, #8]
-	bl sub_020190E8
+	bl GF_3dCamera_MovementActive
 	cmp r0, #0
 	beq _0225626C
 	ldr r0, [r4, #8]
-	bl sub_02019030
+	bl GF_3dCamera_Delete
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -4624,22 +4624,22 @@ _022561E8:
 	str r0, [sp, #0x40]
 	ldr r1, [r6, #0x24]
 	mov r0, #4
-	bl sub_02019014
+	bl GF_3dCamera_Create
 	str r0, [r4, #8]
 	add r1, sp, #0x30
 	mov r2, #0x18
-	bl sub_02019040
+	bl GF_3dCamera_BeginMovement
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _0225626C
 _02256248:
 	ldr r0, [r4, #8]
-	bl sub_020190E8
+	bl GF_3dCamera_MovementActive
 	cmp r0, #0
 	beq _0225626C
 	ldr r0, [r4, #8]
-	bl sub_02019030
+	bl GF_3dCamera_Delete
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]

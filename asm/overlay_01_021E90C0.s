@@ -311,7 +311,7 @@ _021E9308:
 	bl sub_02023240
 	ldr r1, [r6, #0x24]
 	mov r0, #4
-	bl sub_02019014
+	bl GF_3dCamera_Create
 	str r0, [r4, #0x18]
 	ldrh r2, [r4, #0x1e]
 	mov r1, #0x14
@@ -319,18 +319,18 @@ _021E9308:
 	mul r1, r2
 	add r1, r3, r1
 	mov r2, #0x18
-	bl sub_02019040
+	bl GF_3dCamera_BeginMovement
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _021E934C
 _021E9336:
 	ldr r0, [r4, #0x18]
-	bl sub_020190E8
+	bl GF_3dCamera_MovementActive
 	cmp r0, #0
 	beq _021E934C
 	ldr r0, [r4, #0x18]
-	bl sub_02019030
+	bl GF_3dCamera_Delete
 	mov r0, #1
 	strh r0, [r4, #0x1c]
 	str r0, [r4]

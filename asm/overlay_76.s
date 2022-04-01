@@ -557,7 +557,7 @@ ov76_021E5D94: ; 0x021E5D94
 	push {r3, lr}
 	ldr r0, [r0, #4]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov76_021E5D94
@@ -944,7 +944,7 @@ ov76_021E607C: ; 0x021E607C
 	mov r2, #0x49
 	str r2, [sp, #0x10]
 	add r2, r0, #0
-	bl sub_0200B150
+	bl OamManager_Create
 	add r1, r5, #0
 	mov r0, #0x28
 	add r1, #0x1c
@@ -1007,7 +1007,7 @@ _021E6146:
 	blo _021E6146
 	ldr r0, [r5, #0x18]
 	bl sub_02024504
-	bl sub_0200B244
+	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
 	pop {r4, r5, r6, pc}
@@ -1258,7 +1258,7 @@ _021E6354:
 	bl sub_0202484C
 	ldr r0, [r5]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5]
 	mov r1, #6
 	bl sub_020248F0
@@ -1276,7 +1276,7 @@ _021E6380:
 	bl sub_0202484C
 	ldr r0, [r5, #0x30]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x30]
 	mov r1, #7
 	bl sub_020248F0
@@ -1323,7 +1323,7 @@ _021E63BE:
 	bl sub_0202484C
 	ldr r0, [r4, r7]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4, r7]
 	mov r1, #6
 	bl sub_020248F0
@@ -1336,7 +1336,7 @@ _021E63BE:
 	bl sub_0202484C
 	ldr r0, [r6, #0x30]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r6, #0x30]
 	mov r1, #7
 	bl sub_020248F0
@@ -1693,7 +1693,7 @@ _021E66AC:
 	add r6, r4, r0
 	ldr r0, [r6, #0x30]
 	add r1, r7, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r6, #0x30]
 	mov r1, #7
 	bl sub_020248F0
@@ -1832,7 +1832,7 @@ _021E67CE:
 	add r0, r4, r0
 	ldr r0, [r0, #0x30]
 	add r1, r6, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r5, #1
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
@@ -1958,7 +1958,7 @@ ov76_021E68B4: ; 0x021E68B4
 	bl sub_0202484C
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r4, pc}
 	thumb_func_end ov76_021E68B4
 
@@ -2564,7 +2564,7 @@ _021E6D52:
 	bl sub_0202484C
 	ldr r0, [r4, #8]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldrb r1, [r5, #3]
 	ldr r0, [r4, #8]
 	bl sub_020248F0

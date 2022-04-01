@@ -642,11 +642,11 @@ sub_0208E3AC: ; 0x0208E3AC
 	bne _0208E3DE
 	mov r2, #2
 	mov r3, #0
-	bl sub_0207013C
+	bl GetBoxmonSpriteCharAndPlttNarcIds
 	b _0208E3E4
 _0208E3DE:
 	mov r2, #2
-	bl sub_02070124
+	bl GetPokemonSpriteCharAndPlttNarcIds
 _0208E3E4:
 	mov r2, #0xa9
 	lsl r2, r2, #2

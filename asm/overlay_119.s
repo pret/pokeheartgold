@@ -98,7 +98,7 @@ _0225F0B8:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x6e
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -159,7 +159,7 @@ _0225F154:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x6e
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -498,7 +498,7 @@ _0225F40E:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -549,12 +549,12 @@ _0225F482:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r2, #2
 	ldr r1, [r4]
 	lsl r2, r2, #0x12
@@ -862,7 +862,7 @@ _0225F710:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #7
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
@@ -950,7 +950,7 @@ _0225F7E2:
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #7
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
@@ -1315,7 +1315,7 @@ _0225FACC:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x17
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -1514,7 +1514,7 @@ _0225FC00:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r1, #1
 	lsl r0, r1, #9
 	str r1, [r4, r0]
@@ -1588,7 +1588,7 @@ _0225FCAE:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r1, #0x81
 	mov r0, #1
 	lsl r1, r1, #2
@@ -1665,7 +1665,7 @@ _0225FD5E:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x82
 	mov r1, #1
 	lsl r0, r0, #2
@@ -1960,7 +1960,7 @@ _0225FFC8:
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -2004,7 +2004,7 @@ _0226007C:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0xc
 	str r0, [sp]
 	add r0, r4, #0
@@ -2100,7 +2100,7 @@ _022600F2:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -2295,7 +2295,7 @@ _022602EA:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #3
@@ -2413,7 +2413,7 @@ _022603D2:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x6e
 	lsl r0, r0, #2
 	ldr r2, _022605FC ; =0x0000FFFF
@@ -2469,7 +2469,7 @@ _0226043C:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x73
 	lsl r0, r0, #2
 	ldr r2, _02260600 ; =0xFFFF0001
@@ -2526,7 +2526,7 @@ _022604B8:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x1e
 	lsl r0, r0, #4
 	ldr r2, _022605FC ; =0x0000FFFF
@@ -2573,7 +2573,7 @@ _0226054A:
 _02260552:
 	ldr r0, [r5, r7]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #3

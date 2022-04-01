@@ -6599,7 +6599,7 @@ ov85_021E8A08: ; 0x021E8A08
 	push {r4, lr}
 	bl OverlayManager_GetData
 	add r4, r0, #0
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _021E8A1E
 	ldr r0, _021E8AFC ; =gSystem
@@ -6748,7 +6748,7 @@ _021E8B34:
 	blt _021E8B34
 	ldr r0, [r6, #0x60]
 	bl sub_02024504
-	bl sub_0200B244
+	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
 	add r0, r6, #0
@@ -6848,7 +6848,7 @@ ov85_021E8C14: ; 0x021E8C14
 	push {r4, lr}
 	add r4, r0, #0
 	bl GF_RunVramTransferTasks
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	add r0, r4, #0
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E8C34 ; =0x027E0000
@@ -7281,7 +7281,7 @@ ov85_021E8F88: ; 0x021E8F88
 	mov r2, #0x66
 	str r2, [sp, #0x10]
 	add r2, r0, #0
-	bl sub_0200B150
+	bl OamManager_Create
 	add r1, r6, #0
 	mov r0, #0x1e
 	add r1, #0x64
@@ -7468,7 +7468,7 @@ _021E90F8:
 	bl sub_020248F0
 	ldr r0, [r5, r7]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r6, r6, #1
 	add r4, r4, #4
 	add r5, r5, #4
@@ -9612,7 +9612,7 @@ ov85_021EA17C: ; 0x021EA17C
 _021EA186:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EA196
 	mov r0, #1
@@ -9718,7 +9718,7 @@ _021EA248:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0xe7
 	mov r1, #2
 	lsl r0, r0, #2

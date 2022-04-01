@@ -1349,7 +1349,7 @@ ov63_0221C8E8: ; 0x0221C8E8
 	add r0, sp, #8
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_02070124
+	bl GetPokemonSpriteCharAndPlttNarcIds
 	cmp r6, #2
 	bne _0221C904
 	add r4, #0x6c
@@ -4364,7 +4364,7 @@ _0221E1F2:
 	add r0, sp, #0x40
 	add r1, r4, #0
 	mov r2, #2
-	bl sub_02070124
+	bl GetPokemonSpriteCharAndPlttNarcIds
 	add r0, r5, #0
 	add r0, #0x6c
 	str r0, [sp]
@@ -4404,7 +4404,7 @@ _0221E1F2:
 	add r0, sp, #0x40
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_02070124
+	bl GetPokemonSpriteCharAndPlttNarcIds
 	ldr r0, _0221E308 ; =0x0000196C
 	add r1, sp, #0x20
 	add r0, r5, r0
@@ -5072,7 +5072,7 @@ _0221E782:
 	mov r0, #3
 	tst r0, r1
 	bne _0221E79C
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _0221E874
 _0221E79C:

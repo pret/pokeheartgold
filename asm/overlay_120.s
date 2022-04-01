@@ -1366,7 +1366,7 @@ _0225F9EA:
 	bl ov01_021F0718
 	str r0, [r5]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5]
 	mov r1, #0x10
 	bl sub_02024ADC

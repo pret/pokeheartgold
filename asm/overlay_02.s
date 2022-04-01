@@ -6530,7 +6530,7 @@ _02248D2C:
 	bl ov02_02248C10
 	add r4, r0, #0
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	mov r1, #6
 	bl sub_020248F0
@@ -6654,7 +6654,7 @@ ov02_02248E10: ; 0x02248E10
 	mov r1, #0
 	strb r1, [r0, #2]
 	ldr r0, [r0, #0x68]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ov02_02248E10
@@ -6766,7 +6766,7 @@ ov02_02248E20: ; 0x02248E20
 	bl sub_02024ADC
 	ldr r0, [r4, #0x68]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4, #0x58]
 	ldr r1, [r4, #0x60]
 	bl ov02_0224B298
@@ -7108,7 +7108,7 @@ ov02_022491A8: ; 0x022491A8
 	add r4, r0, #0
 	ldr r0, [r4, #0x68]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4, #0x60]
 	mov r1, #1
 	bl sub_020248F0
@@ -7196,7 +7196,7 @@ _022491E2:
 	bl sub_02024818
 	ldr r0, [r4, #0x68]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4, #0x60]
 	mov r1, #6
 	bl sub_020248F0
@@ -7340,7 +7340,7 @@ _0224934C:
 	bgt _02249390
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldrb r0, [r5, #1]
 	add r0, r0, #1
 	strb r0, [r5, #1]
@@ -7373,7 +7373,7 @@ _022493BA:
 	bne _022493C8
 	ldr r0, [r4, #0x60]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _022493C8:
 	ldr r0, [r4, #4]
 	cmp r0, #0xf
@@ -9621,7 +9621,7 @@ _0224A426:
 	bl ov02_0224A33C
 	add r4, r0, #0
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	mov r1, #6
 	bl sub_020248F0
@@ -10093,14 +10093,14 @@ _0224A7A4: .word 0x0400004A
 
 	thumb_func_start ov02_0224A7A8
 ov02_0224A7A8: ; 0x0224A7A8
-	ldr r3, _0224A7B4 ; =sub_02070124
+	ldr r3, _0224A7B4 ; =GetPokemonSpriteCharAndPlttNarcIds
 	add r2, r0, #0
 	add r0, r1, #0
 	ldr r1, [r2, #0x5c]
 	mov r2, #2
 	bx r3
 	.balign 4, 0
-_0224A7B4: .word sub_02070124
+_0224A7B4: .word GetPokemonSpriteCharAndPlttNarcIds
 	thumb_func_end ov02_0224A7A8
 
 	thumb_func_start ov02_0224A7B8
@@ -10506,7 +10506,7 @@ ov02_0224AA80: ; 0x0224AA80
 	bl ov02_0224A3F0
 	mov r1, #0
 	str r0, [r4, #8]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, pc}
@@ -10572,7 +10572,7 @@ ov02_0224AAD4: ; 0x0224AAD4
 	mov r1, #1
 _0224AB38:
 	ldr r0, [r4, #8]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 _0224AB42:
@@ -10580,7 +10580,7 @@ _0224AB42:
 	bne _0224AB4E
 	ldr r0, [r4, #8]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _0224AB4E:
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
@@ -10724,7 +10724,7 @@ ov02_0224AC28: ; 0x0224AC28
 	mov r1, #0
 	strb r1, [r0, #2]
 	ldr r0, [r0, #0x58]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ov02_0224AC28
@@ -10802,7 +10802,7 @@ ov02_0224AC38: ; 0x0224AC38
 	bl sub_02024818
 	ldr r0, [r4, #0x58]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add sp, #0x18
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -10929,7 +10929,7 @@ _0224AD90:
 	bge _0224ADDA
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #2
 	strb r0, [r5, #2]
 	ldrb r0, [r5, #1]
@@ -11070,7 +11070,7 @@ ov02_0224ADF0: ; 0x0224ADF0
 	bl sub_02024818
 	ldr r0, [r4, #0x58]
 	add r1, r7, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r1, #0x1e
 	lsl r1, r1, #4
 	ldr r0, [r5, r1]
@@ -11329,7 +11329,7 @@ ov02_0224B0E0: ; 0x0224B0E0
 	bl sub_020248F0
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4, #0x5c]
 	mov r1, #1
 	bl ov02_0224B6B0
@@ -11994,7 +11994,7 @@ ov02_0224B5F0: ; 0x0224B5F0
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r3, #0x17
 	lsl r3, r3, #4
 	ldr r1, [r4, r3]
@@ -12143,17 +12143,17 @@ ov02_0224B6E4: ; 0x0224B6E4
 	bgt _0224B716
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, pc}
 _0224B716:
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, pc}
 _0224B720:
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov02_0224B6E4
@@ -23197,7 +23197,7 @@ ov02_02250A60: ; 0x02250A60
 	ldr r1, [r5, #0x24]
 	ldr r4, [r0, #0x24]
 	mov r0, #4
-	bl sub_02019014
+	bl GF_3dCamera_Create
 	str r0, [r4, #8]
 	ldr r0, _02250AC4 ; =gGameVersion
 	ldrb r0, [r0]
@@ -23240,7 +23240,7 @@ ov02_02250AC8: ; 0x02250AC8
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x24]
 	ldr r0, [r0, #8]
-	bl sub_02019030
+	bl GF_3dCamera_Delete
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x24]
 	bl FreeToHeap
@@ -24552,7 +24552,7 @@ _02251542:
 	add r1, sp, #4
 	ldr r0, [r0, #8]
 	add r2, r5, #0
-	bl sub_02019040
+	bl GF_3dCamera_BeginMovement
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -24579,7 +24579,7 @@ ov02_02251568: ; 0x02251568
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x24]
 	ldr r0, [r0, #8]
-	bl sub_020190E8
+	bl GF_3dCamera_MovementActive
 	cmp r0, #0
 	beq _0225159C
 	ldr r1, [r4, #0x24]
@@ -25624,7 +25624,7 @@ ov02_02251DE8: ; 0x02251DE8
 _02251E00:
 	ldr r1, [r5, #0x24]
 	mov r0, #4
-	bl sub_02019014
+	bl GF_3dCamera_Create
 	str r0, [r4, #0x24]
 	add r3, r4, #0
 	ldrh r1, [r4, #4]
@@ -25643,7 +25643,7 @@ _02251E00:
 	mov r2, #0x1e
 	str r0, [sp, #0x10]
 	ldr r0, [r4, #0x24]
-	bl sub_02019040
+	bl GF_3dCamera_BeginMovement
 	ldr r0, [r5, #0x10]
 	ldr r1, _02251E40 ; =ov02_02251E44
 	add r2, r5, #0
@@ -25663,11 +25663,11 @@ ov02_02251E44: ; 0x02251E44
 	ldr r5, [r0, #0x24]
 	ldr r6, [r5, #0x24]
 	add r0, r6, #0
-	bl sub_020190E8
+	bl GF_3dCamera_MovementActive
 	cmp r0, #0
 	beq _02251E70
 	add r0, r6, #0
-	bl sub_02019030
+	bl GF_3dCamera_Delete
 	ldr r0, [r5, #0x1c]
 	ldr r1, [r5, #0x20]
 	ldr r2, [r4, #0x24]

@@ -371,7 +371,7 @@ _02258B0E:
 	mov r0, #3
 	tst r0, r1
 	bne _02258B22
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	beq _02258B22
 _02258B20:
@@ -1404,7 +1404,7 @@ ov46_02259374: ; 0x02259374
 	add r4, r1, #0
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _02259394
 	ldr r0, [r5, #0x2c]
@@ -1466,7 +1466,7 @@ ov46_022593F8: ; 0x022593F8
 	ldr r0, [r4, #0x2c]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _02259414
 	ldr r0, [r4, #0x2c]
@@ -1552,7 +1552,7 @@ ov46_02259494: ; 0x02259494
 	ldr r0, [r4, #0x2c]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _022594B0
 	ldr r0, [r4, #0x2c]

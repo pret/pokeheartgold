@@ -394,7 +394,7 @@ ov88_02258B20: ; 0x02258B20
 	push {r3, lr}
 	ldr r0, [r0]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	bl GF_RunVramTransferTasks
 	pop {r3, pc}
 	.balign 4, 0
@@ -582,7 +582,7 @@ ov88_02258C98: ; 0x02258C98
 	str r3, [sp, #0xc]
 	add r2, r0, #0
 	str r6, [sp, #0x10]
-	bl sub_0200B150
+	bl OamManager_Create
 	ldr r0, _02258D30 ; =ov88_02259914
 	ldr r1, _02258D34 ; =0x00200010
 	mov r2, #0x10
@@ -654,7 +654,7 @@ _02258D48:
 	blt _02258D48
 	bl sub_0202168C
 	bl sub_02022608
-	bl sub_0200B244
+	bl OamManager_Free
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov88_02258D38
 

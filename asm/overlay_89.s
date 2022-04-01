@@ -516,7 +516,7 @@ _02258CAC:
 	add r0, r4, #0
 	add r0, #0xc8
 	ldrb r0, [r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02258D0A
 	ldr r0, [r4, #8]
@@ -652,7 +652,7 @@ _02258DD0:
 	add r0, r4, #0
 	add r0, #0xc8
 	ldrb r0, [r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02258E4A
 	ldr r0, [r5]

@@ -547,7 +547,7 @@ _020925F0:
 	ldr r0, [r5, #0x10]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02092628
 	ldr r0, [r5, #0x14]

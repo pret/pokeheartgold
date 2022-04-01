@@ -3037,7 +3037,7 @@ _0223F7B2:
 	add r0, r4, r0
 	bl ov83_0224780C
 	bl GF_RunVramTransferTasks
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	ldr r3, _0223F7DC ; =0x027E0000
 	ldr r1, _0223F7E0 ; =0x00003FF8
 	mov r0, #1
@@ -12408,7 +12408,7 @@ _0224449A:
 	ldr r0, [r4, #0x4c]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl GF_RunVramTransferTasks
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	ldr r3, _022444B8 ; =0x027E0000
 	ldr r1, _022444BC ; =0x00003FF8
 	mov r0, #1
@@ -17582,7 +17582,7 @@ ov83_02246E08: ; 0x02246E08
 	mov r2, #0x6b
 	str r2, [sp, #0x10]
 	add r2, r0, #0
-	bl sub_0200B150
+	bl OamManager_Create
 	mov r0, #0x28
 	add r1, r5, #4
 	mov r2, #0x6b
@@ -18080,7 +18080,7 @@ _0224723A:
 	blo _0224723A
 	ldr r0, [r5]
 	bl sub_02024504
-	bl sub_0200B244
+	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
 	pop {r4, r5, r6, pc}
@@ -18464,11 +18464,11 @@ _0224754A:
 
 	thumb_func_start ov83_0224755C
 ov83_0224755C: ; 0x0224755C
-	ldr r3, _02247564 ; =sub_02024830
+	ldr r3, _02247564 ; =Set2dSpriteVisibleFlag
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_02247564: .word sub_02024830
+_02247564: .word Set2dSpriteVisibleFlag
 	thumb_func_end ov83_0224755C
 
 	thumb_func_start ov83_02247568
@@ -18638,7 +18638,7 @@ ov83_02247668: ; 0x02247668
 	add r0, sp, #0x30
 	mov r2, #2
 	mov r3, #0
-	bl sub_0207013C
+	bl GetBoxmonSpriteCharAndPlttNarcIds
 	str r4, [sp]
 	str r7, [sp, #4]
 	mov r0, #0
@@ -19548,7 +19548,7 @@ ov83_02247CF0: ; 0x02247CF0
 	mov r0, #1
 	pop {r3, pc}
 _02247D00:
-	bl sub_02025358
+	bl System_GetTouchNew
 	pop {r3, pc}
 	nop
 _02247D08: .word gSystem

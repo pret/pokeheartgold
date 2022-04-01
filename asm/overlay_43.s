@@ -786,7 +786,7 @@ ov43_0222A50C: ; 0x0222A50C
 	ldr r0, [r0]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl GF_RunVramTransferTasks
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov43_0222A50C
@@ -990,7 +990,7 @@ ov43_0222A690: ; 0x0222A690
 	str r3, [sp, #0xc]
 	add r2, r0, #0
 	str r7, [sp, #0x10]
-	bl sub_0200B150
+	bl OamManager_Create
 	ldr r4, _0222A814 ; =ov43_0222EDD8
 	add r3, sp, #0x2c
 	add r2, r3, #0
@@ -1194,7 +1194,7 @@ _0222A856:
 	bl sub_02024504
 	bl sub_0202168C
 	bl sub_02022608
-	bl sub_0200B244
+	bl OamManager_Free
 	bl GF_DestroyVramTransferManager
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov43_0222A81C
@@ -1397,7 +1397,7 @@ ov43_0222A9F4: ; 0x0222A9F4
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r6, r2, #0
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #1
 	bne _0222AA22
 	mov r0, #0
@@ -1452,7 +1452,7 @@ ov43_0222AA70: ; 0x0222AA70
 	ldr r0, [r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #1
 	bne _0222AA98
 	mov r0, #0
@@ -1697,7 +1697,7 @@ _0222AC44:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x7d
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -1730,7 +1730,7 @@ _0222AC44:
 	add r0, r1, #0
 	ldr r0, [r0, r2]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r1, #0x7f
 	ldr r0, [sp]
 	lsl r1, r1, #2
@@ -1777,7 +1777,7 @@ ov43_0222AD00: ; 0x0222AD00
 _0222AD0C:
 	ldr r0, [r5, r7]
 	add r1, r6, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #2
@@ -1851,7 +1851,7 @@ _0222AD8A:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov43_0222AD74
 
@@ -2220,7 +2220,7 @@ _0222B058:
 	mov r0, #2
 	tst r0, r1
 	bne _0222B078
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _0222B08A
 _0222B078:
@@ -2831,7 +2831,7 @@ ov43_0222B534: ; 0x0222B534
 	add r4, r1, #0
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0222B556
 	mov r0, #0
@@ -3304,7 +3304,7 @@ _0222B8E2:
 	ldr r0, [r0, #0x48]
 	cmp r0, #0
 	bne _0222B8FA
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _0222B932
 _0222B8FA:
@@ -3510,7 +3510,7 @@ _0222BA6A:
 	add r0, #0xf8
 	str r0, [sp, #0x18]
 	ldr r0, [r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add sp, #0x5c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4967,7 +4967,7 @@ ov43_0222C5D8: ; 0x0222C5D8
 	add r4, r1, #0
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0222C5FC
 	mov r0, #0
@@ -5044,7 +5044,7 @@ ov43_0222C65C: ; 0x0222C65C
 	add r4, r1, #0
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0xff
@@ -5168,7 +5168,7 @@ ov43_0222C750: ; 0x0222C750
 	add r0, #0xf8
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r5, #0xf8
 	ldr r0, [r5]
 	mov r1, #0

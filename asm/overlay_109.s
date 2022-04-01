@@ -1248,7 +1248,7 @@ _021E622E:
 	add r0, r4, #0
 	add r0, #0x21
 	ldrb r0, [r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _021E6240
 	mov r0, #0
@@ -2858,7 +2858,7 @@ _021E6EEE:
 	add r0, #0x98
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r5, #0
 	add r0, #0x98
 	mov r1, #1
@@ -2879,7 +2879,7 @@ _021E6EEE:
 	add r0, #0x9c
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r6, #0
 	add r0, #0xa8
 	ldr r0, [r0]
@@ -3557,7 +3557,7 @@ ov109_021E7474: ; 0x021E7474
 	ldr r0, [r0]
 	add r1, r3, #0
 	add r6, r2, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	cmp r6, #3
 	bne _021E749C
 	add r0, r5, #0
@@ -3636,7 +3636,7 @@ _021E74EE:
 	add r5, #0x9c
 	ldr r0, [r5]
 	add r1, r4, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov109_021E74D4
 

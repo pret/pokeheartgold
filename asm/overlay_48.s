@@ -1669,7 +1669,7 @@ ov48_022594DC: ; 0x022594DC
 	push {r3, lr}
 	ldr r0, [r0]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	bl GF_RunVramTransferTasks
 	pop {r3, pc}
 	.balign 4, 0
@@ -1877,7 +1877,7 @@ ov48_02259688: ; 0x02259688
 	str r3, [sp, #0xc]
 	add r2, r0, #0
 	str r6, [sp, #0x10]
-	bl sub_0200B150
+	bl OamManager_Create
 	mov r1, #0x10
 	ldr r0, _02259720 ; =ov48_0225B1A0
 	add r2, r1, #0
@@ -1948,7 +1948,7 @@ _02259734:
 	blt _02259734
 	bl sub_0202168C
 	bl sub_02022608
-	bl sub_0200B244
+	bl OamManager_Free
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov48_02259724
 
@@ -3038,7 +3038,7 @@ ov48_02259F14: ; 0x02259F14
 	ldr r0, [r4, #4]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _02259F30
 	ldr r0, [r4, #4]
@@ -3107,7 +3107,7 @@ _02259F9E:
 	mov r4, #0
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02259FE0
 	ldr r3, _02259FE8 ; =ov48_0225B1C4
@@ -4952,7 +4952,7 @@ ov48_0225AD38: ; 0x0225AD38
 _0225AD40:
 	ldr r0, [r5, #0x3c]
 	add r1, r6, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0xc
@@ -5039,7 +5039,7 @@ _0225ADD0:
 	lsl r0, r0, #2
 	add r0, r5, r0
 	ldr r0, [r0, #0x3c]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov48_0225B010
@@ -5077,7 +5077,7 @@ _0225AE0C:
 	lsl r0, r0, #2
 	add r0, r5, r0
 	ldr r0, [r0, #0x3c]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _0225AE36:
 	add r0, r6, #0
 	pop {r4, r5, r6, pc}

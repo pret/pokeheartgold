@@ -13682,7 +13682,7 @@ ov12_0223E2F0: ; 0x0223E2F0
 	ldr r0, _0223E380 ; =0x00000C03
 	tst r0, r1
 	bne _0223E324
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _0223E32A
 _0223E324:
@@ -29197,7 +29197,7 @@ _02245B7E:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02245C2A
 	ldr r0, [r4, #0x28]
@@ -29397,7 +29397,7 @@ _02245D28:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _02245D38
 	b _022463B6
@@ -29659,7 +29659,7 @@ _02245F4A:
 	ldr r0, _02246034 ; =0x00000C03
 	tst r0, r1
 	bne _02245F5C
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _02245FEA
 _02245F5C:
@@ -29845,7 +29845,7 @@ _022460E2:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02246126
 	ldr r0, [r4, #0x28]
@@ -29909,7 +29909,7 @@ _02246162:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02246268
 	ldr r0, [r4]
@@ -30029,7 +30029,7 @@ _0224625A:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _0224626A
 _02246268:
@@ -30157,7 +30157,7 @@ _02246364:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _022463B6
 	mov r0, #0xf
@@ -30785,7 +30785,7 @@ _0224686C:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0224689E
 	mov r0, #0xa
@@ -30969,7 +30969,7 @@ _02246A18:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02246A70
 	ldr r0, [r4, #0x34]
@@ -31074,7 +31074,7 @@ _02246AFA:
 	str r0, [r4, #0x28]
 	b _02246B26
 _02246B14:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _02246B26
 	ldr r0, _02246CC8 ; =0x000005DC
@@ -31207,7 +31207,7 @@ _02246C00:
 	add r0, sp, #0xc0
 	add r1, r6, #0
 	mov r2, #2
-	bl sub_02070124
+	bl GetPokemonSpriteCharAndPlttNarcIds
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -31662,7 +31662,7 @@ _0224702E:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _022470E6
 	ldr r0, [r4, #0x34]
@@ -31732,7 +31732,7 @@ _022470D0:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _022470E6
 	ldr r0, [r4, #0x34]
@@ -31767,7 +31767,7 @@ _02247116:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02247216
 	ldr r0, [r4, #0x34]
@@ -31838,7 +31838,7 @@ _022471AC:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02247216
 	ldr r0, [r4, #0x34]
@@ -70005,7 +70005,7 @@ _02259418:
 	ldrh r1, [r4, #2]
 	ldrb r2, [r4, #4]
 	add r0, sp, #0x14
-	bl sub_020701E4
+	bl GetMonSpriteCharAndPlttNarcIdsEx
 	ldr r0, [r5, #0x20]
 	bl sub_02009414
 	add r7, r0, #0
@@ -70758,7 +70758,7 @@ _022599F2:
 	lsl r2, r2, #0x1e
 	add r0, sp, #0x5c
 	lsr r2, r2, #0x1e
-	bl sub_020701E4
+	bl GetMonSpriteCharAndPlttNarcIdsEx
 	ldr r0, [r5, #4]
 	str r0, [sp]
 	ldrb r3, [r5, #1]
@@ -70997,7 +70997,7 @@ _02259BE4:
 	ldrb r3, [r3]
 	add r0, #0x14
 	lsr r2, r2, #0x1e
-	bl sub_020701E4
+	bl GetMonSpriteCharAndPlttNarcIdsEx
 	ldr r0, [r5, #4]
 	add r2, r4, #0
 	str r0, [sp]
@@ -71204,7 +71204,7 @@ _02259D92:
 	ldrb r3, [r3]
 	add r0, #0x14
 	lsr r2, r2, #0x1e
-	bl sub_020701E4
+	bl GetMonSpriteCharAndPlttNarcIdsEx
 	ldr r0, [r4, #4]
 	add r2, r5, #0
 	str r0, [sp]
@@ -79050,7 +79050,7 @@ _0225DC6A:
 	add r0, r4, #0
 	add r0, #0x35
 	ldrb r0, [r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0225DC9C
 	mov r0, #3
@@ -81225,7 +81225,7 @@ _0225EDE0:
 	pop {r3, r4, r5, r6, r7, pc}
 _0225EE1C:
 	ldrb r0, [r4, #0x11]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0225EE32
 	ldrb r0, [r4, #0x17]
@@ -81875,7 +81875,7 @@ _0225F326:
 	pop {r3, r4, r5, r6, r7, pc}
 _0225F354:
 	ldrb r0, [r4, #0x11]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0225F376
 	ldrb r0, [r4, #0x17]
@@ -82796,7 +82796,7 @@ _0225FAEC:
 	ldrh r0, [r4, #0x1a]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _0225FB02
 	ldr r0, [r4, #0x10]
@@ -84187,7 +84187,7 @@ ov12_022605D0: ; 0x022605D0
 	bl ov12_0223BB80
 _022605F2:
 	ldrb r0, [r4, #6]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02260612
 	ldrb r1, [r4, #5]
@@ -84215,7 +84215,7 @@ ov12_02260614: ; 0x02260614
 	pop {r3, r4, r5, pc}
 _02260626:
 	ldrb r0, [r4, #6]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02260666
 	ldrb r0, [r4, #7]

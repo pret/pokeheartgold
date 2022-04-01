@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_UNK_02025154_H
 #define POKEHEARTGOLD_UNK_02025154_H
 
-BOOL sub_0202534C(void);
-BOOL sub_02025358(void);
+BOOL System_GetTouchHeld(void);
+BOOL System_GetTouchNew(void);
 
 #endif //POKEHEARTGOLD_UNK_02025154_H

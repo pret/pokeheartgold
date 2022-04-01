@@ -1944,7 +1944,7 @@ _021EC032:
 	bl sub_02024624
 	str r0, [r5, #0x4c]
 	add r1, r7, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x4c]
 	cmp r0, #0
 	bne _021EC04C
@@ -2212,7 +2212,7 @@ _021EC22A:
 _021EC234:
 	ldr r0, [r4, #4]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021EC1F4
@@ -2278,7 +2278,7 @@ ov01_021EC29C: ; 0x021EC29C
 	str r1, [r0, #0x38]
 	ldr r0, [r4, #4]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	bl ov01_021EC1E4
 	add r0, r4, #0

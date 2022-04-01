@@ -3329,7 +3329,7 @@ sub_0207E590: ; 0x0207E590
 	ldr r0, _0207E610 ; =0x00000684
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, _0207E614 ; =0x00000654
 	ldr r0, [r5, r0]
 	add r0, #0x24
@@ -3348,7 +3348,7 @@ _0207E5FE:
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _0207E60A:
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -3379,13 +3379,13 @@ _0207E63C:
 	ldr r0, _0207E680 ; =0x00000684
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	b _0207E652
 _0207E648:
 	add r0, #0x30
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _0207E652:
 	ldr r0, _0207E67C ; =0x00000654
 	ldr r0, [r4, r0]
@@ -3405,7 +3405,7 @@ _0207E66C:
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _0207E678:
 	pop {r3, r4, r5, pc}
 	nop

@@ -1207,7 +1207,7 @@ ov108_021E6240: ; 0x021E6240
 	ldr r0, [r4, #0x10]
 	cmp r0, #1
 	bne _021E6276
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	beq _021E6256
 	mov r0, #0
@@ -1237,7 +1237,7 @@ _021E6276:
 	mov r0, #0
 	pop {r4, pc}
 _021E6282:
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	beq _021E62A4
 	ldr r0, _021E62B0 ; =0x000004C8
@@ -3971,7 +3971,7 @@ ov108_021E78C0: ; 0x021E78C0
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r4, r5, r6, pc}
 _021E78DA:
 	mov r2, #0xd5
@@ -3980,7 +3980,7 @@ _021E78DA:
 	add r5, r0, r2
 	ldr r0, [r5, r4]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, r4]
 	add r1, r6, #0
 	bl sub_020248F0
@@ -7395,7 +7395,7 @@ ov108_021E93A8: ; 0x021E93A8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r4, #0
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _021E93BC
 	mov r4, #1
@@ -7477,16 +7477,16 @@ _021E945A:
 	ldr r0, _021E9480 ; =0x0000044C
 	add r1, r4, #0
 	ldr r0, [r5, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x45
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, _021E9484 ; =0x00000444
 	add r1, r4, #0
 	ldr r0, [r5, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E947C: .word 0x00000494
@@ -8775,7 +8775,7 @@ _021E9EC2:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r7, r7, #1
 	add r4, #0x28
 	add r5, r5, #4

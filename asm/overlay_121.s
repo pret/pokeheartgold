@@ -179,7 +179,7 @@ _021E5A5A:
 	bl sub_02024504
 	mov r0, #4
 	bl FontID_Release
-	bl sub_0200B244
+	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
 	add r0, r4, #0
@@ -525,7 +525,7 @@ ov121_021E5D5C: ; 0x021E5D5C
 	ldr r0, [r0, #0x48]
 	cmp r0, #0
 	bne _021E5D70
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _021E5D7A
 _021E5D70:
@@ -737,7 +737,7 @@ ov121_021E5F0C: ; 0x021E5F0C
 	mov r2, #0x9e
 	str r2, [sp, #0x10]
 	add r2, r0, #0
-	bl sub_0200B150
+	bl OamManager_Create
 	add sp, #0x14
 	pop {pc}
 	thumb_func_end ov121_021E5F0C
@@ -746,7 +746,7 @@ ov121_021E5F0C: ; 0x021E5F0C
 ov121_021E5F30: ; 0x021E5F30
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	add r0, r4, #0
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl GF_RunVramTransferTasks
@@ -1079,7 +1079,7 @@ ov121_021E6194: ; 0x021E6194
 	bl sub_02024A04
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x86
 	lsl r0, r0, #2
 	str r5, [r4, r0]
@@ -1099,7 +1099,7 @@ ov121_021E6194: ; 0x021E6194
 	bl sub_020248F0
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x22
 	lsl r0, r0, #4
 	str r5, [r4, r0]
@@ -1119,7 +1119,7 @@ ov121_021E6194: ; 0x021E6194
 	bl sub_020248F0
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x87
 	lsl r0, r0, #2
 	str r5, [r4, r0]
@@ -1139,7 +1139,7 @@ ov121_021E6194: ; 0x021E6194
 	bl sub_020248F0
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x89
 	lsl r0, r0, #2
 	str r5, [r4, r0]
@@ -1159,7 +1159,7 @@ ov121_021E6194: ; 0x021E6194
 	bl sub_020248F0
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x8a
 	lsl r0, r0, #2
 	str r5, [r4, r0]
@@ -1256,7 +1256,7 @@ ov121_021E633C: ; 0x021E633C
 	add r6, r0, #0
 	add r5, r1, #0
 	mov r4, #0
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	bne _021E63A2
 	ldr r0, _021E6400 ; =gSystem
@@ -1315,7 +1315,7 @@ _021E639E:
 _021E63A2:
 	cmp r4, #0
 	bne _021E63FC
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _021E63FC
 	mov r0, #0x8b
@@ -1719,12 +1719,12 @@ ov121_021E6690: ; 0x021E6690
 	sub r2, #0x15
 	ldr r0, [r4, r2]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x22
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	bl ov121_021E67E4
 	b _021E66E0
@@ -1734,12 +1734,12 @@ _021E66C0:
 	sub r2, #0x15
 	strb r1, [r4, r0]
 	ldr r0, [r4, r2]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x22
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	bl ov121_021E6E68
 _021E66E0:

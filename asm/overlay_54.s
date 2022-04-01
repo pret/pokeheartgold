@@ -373,7 +373,7 @@ _021E5C14:
 	mov r0, #0xca
 	lsl r0, r0, #2
 	ldrb r0, [r4, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _021E5C2C
 	mov r0, #0xca
@@ -1057,7 +1057,7 @@ ov54_021E61A8: ; 0x021E61A8
 	mov r0, #0xca
 	lsl r0, r0, #2
 	ldrb r0, [r5, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _021E61D2
 	mov r0, #0xca
@@ -2282,7 +2282,7 @@ _021E6B64:
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E6BB4: .word ov54_021E6EAC

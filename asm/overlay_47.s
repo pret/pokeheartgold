@@ -324,7 +324,7 @@ ov47_02258A8C: ; 0x02258A8C
 	push {r3, lr}
 	ldr r0, [r0]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	bl GF_RunVramTransferTasks
 	pop {r3, pc}
 	.balign 4, 0
@@ -475,7 +475,7 @@ ov47_02258BB4: ; 0x02258BB4
 	str r3, [sp, #0xc]
 	add r2, r0, #0
 	str r6, [sp, #0x10]
-	bl sub_0200B150
+	bl OamManager_Create
 	mov r1, #0x10
 	ldr r0, _02258C40 ; =ov47_02259E58
 	add r2, r1, #0
@@ -540,7 +540,7 @@ _02258C54:
 	blt _02258C54
 	bl sub_0202168C
 	bl sub_02022608
-	bl sub_0200B244
+	bl OamManager_Free
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov47_02258C44
 
@@ -901,7 +901,7 @@ _02258E7A:
 	bl sub_02024714
 	mov r1, #0
 	str r0, [r5, #0x14]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4]
 	ldr r2, _02258F44 ; =ov47_02259E40
 	add r1, r5, #0
@@ -1256,7 +1256,7 @@ ov47_022591F8: ; 0x022591F8
 	add r4, r0, #0
 	ldr r0, [r4, #0x14]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r2, [r4, #0x10]
 	mov r1, #0xc
 	ldr r3, _02259218 ; =ov47_02259E78
@@ -1326,7 +1326,7 @@ ov47_02259278: ; 0x02259278
 	add r4, r1, #0
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _02259296
 	ldr r0, [r5]
@@ -1356,7 +1356,7 @@ ov47_022592B4: ; 0x022592B4
 	add r4, r1, #0
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _022592D4
 	ldr r0, [r5]
@@ -1405,7 +1405,7 @@ ov47_02259318: ; 0x02259318
 	add r4, r1, #0
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _02259338
 	ldr r0, [r5]
@@ -1484,7 +1484,7 @@ ov47_022593B4: ; 0x022593B4
 	ldr r0, [r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _022593C8
 	mov r0, #1
@@ -1501,7 +1501,7 @@ ov47_022593CC: ; 0x022593CC
 	ldr r0, [r4]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _022593E8
 	ldr r0, [r4]

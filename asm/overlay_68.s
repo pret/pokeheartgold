@@ -829,7 +829,7 @@ _021E5FC2:
 	cmp r5, r0
 	b _021E604E
 _021E5FC8:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	ldr r0, [r4]
 	bne _021E5FF6
@@ -900,7 +900,7 @@ ov68_021E6058: ; 0x021E6058
 	add r4, r0, #0
 	ldr r0, _021E6074 ; =0x000001B9
 	ldrb r0, [r4, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021E6070
 	mov r0, #0x1b
@@ -3151,7 +3151,7 @@ ov68_021E7224: ; 0x021E7224
 	add r0, sp, #0x10
 	add r1, r4, #0
 	mov r2, #2
-	bl sub_02070124
+	bl GetPokemonSpriteCharAndPlttNarcIds
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]

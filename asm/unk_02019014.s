@@ -15,8 +15,8 @@ _021D1108:
 
 	.text
 
-	thumb_func_start sub_02019014
-sub_02019014: ; 0x02019014
+	thumb_func_start GF_3dCamera_Create
+GF_3dCamera_Create: ; 0x02019014
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	mov r1, #0x34
@@ -29,20 +29,20 @@ sub_02019014: ; 0x02019014
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02019014
+	thumb_func_end GF_3dCamera_Create
 
-	thumb_func_start sub_02019030
-sub_02019030: ; 0x02019030
+	thumb_func_start GF_3dCamera_Delete
+GF_3dCamera_Delete: ; 0x02019030
 	push {r4, lr}
 	add r4, r0, #0
 	bl sub_0201915C
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
-	thumb_func_end sub_02019030
+	thumb_func_end GF_3dCamera_Delete
 
-	thumb_func_start sub_02019040
-sub_02019040: ; 0x02019040
+	thumb_func_start GF_3dCamera_BeginMovement
+GF_3dCamera_BeginMovement: ; 0x02019040
 	push {r4, r5, r6, lr}
 	sub sp, #0x28
 	add r5, r0, #0
@@ -122,10 +122,10 @@ _020190DE:
 	pop {r4, r5, r6, pc}
 	nop
 _020190E4: .word sub_020190FC
-	thumb_func_end sub_02019040
+	thumb_func_end GF_3dCamera_BeginMovement
 
-	thumb_func_start sub_020190E8
-sub_020190E8: ; 0x020190E8
+	thumb_func_start GF_3dCamera_MovementActive
+GF_3dCamera_MovementActive: ; 0x020190E8
 	ldrb r0, [r0, #7]
 	cmp r0, #0
 	bne _020190F2
@@ -138,7 +138,7 @@ _020190F4:
 	lsr r0, r0, #0x18
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_020190E8
+	thumb_func_end GF_3dCamera_MovementActive
 
 	thumb_func_start sub_020190FC
 sub_020190FC: ; 0x020190FC

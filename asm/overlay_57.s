@@ -5642,7 +5642,7 @@ _0223A53E:
 	ldr r0, _0223A5A8 ; =0x00000CF3
 	tst r0, r1
 	bne _0223A554
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _0223A594
 _0223A554:
@@ -5752,7 +5752,7 @@ _0223A624:
 	ldr r0, _0223A6B0 ; =0x00000CF3
 	tst r0, r1
 	bne _0223A63A
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _0223A69C
 _0223A63A:
@@ -7053,7 +7053,7 @@ ov57_0223B12C: ; 0x0223B12C
 	ldr r0, [r4, r0]
 	cmp r0, #1
 	bne _0223B156
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	beq _0223B144
 	mov r0, #0
@@ -7076,7 +7076,7 @@ _0223B156:
 	mov r0, #0
 	pop {r4, pc}
 _0223B162:
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	beq _0223B174
 	ldr r0, _0223B178 ; =0x0000040C
@@ -7622,7 +7622,7 @@ ov57_0223B578: ; 0x0223B578
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	str r0, [sp, #4]
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	bne _0223B58E
 	mov r0, #0
@@ -8171,7 +8171,7 @@ ov57_0223B950: ; 0x0223B950
 	ldr r1, [r5, r1]
 	add r0, sp, #0x38
 	mov r2, #2
-	bl sub_02070124
+	bl GetPokemonSpriteCharAndPlttNarcIds
 	ldr r0, _0223B9BC ; =0x00000458
 	mov r1, #5
 	ldr r0, [r5, r0]

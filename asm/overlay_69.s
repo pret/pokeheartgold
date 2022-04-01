@@ -142,7 +142,7 @@ ov69_021E5A34: ; 0x021E5A34
 	beq _021E5A60
 	cmp r0, #0x10
 	beq _021E5A60
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _021E5A60
 	ldr r0, _021E5D7C ; =gSystem
@@ -1865,7 +1865,7 @@ _021E6886:
 	ldr r0, [r5, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021E68BC
 	ldr r0, _021E68C8 ; =0x0000C07C

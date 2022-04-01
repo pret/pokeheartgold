@@ -4404,7 +4404,7 @@ _02240114:
 	b _022401C0
 _022401AC:
 	ldrb r0, [r4, #0x10]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _022401C0
 	mov r0, #0
@@ -4440,7 +4440,7 @@ _022401EA:
 	ldr r0, [r4, #0x4c]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl GF_RunVramTransferTasks
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	ldr r3, _02240208 ; =0x027E0000
 	ldr r1, _0224020C ; =0x00003FF8
 	mov r0, #1
@@ -9295,7 +9295,7 @@ ov81_0224276C: ; 0x0224276C
 	mov r2, #0x64
 	str r2, [sp, #0x10]
 	add r2, r0, #0
-	bl sub_0200B150
+	bl OamManager_Create
 	mov r0, #0x20
 	add r1, r5, #4
 	mov r2, #0x64
@@ -9779,7 +9779,7 @@ _02242B66:
 	blo _02242B66
 	ldr r0, [r5]
 	bl sub_02024504
-	bl sub_0200B244
+	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
 	pop {r3, r4, r5, r6, r7, pc}
@@ -9910,7 +9910,7 @@ ov81_02242C80: ; 0x02242C80
 	add r0, sp, #0x10
 	mov r2, #2
 	add r6, r3, #0
-	bl sub_02070124
+	bl GetPokemonSpriteCharAndPlttNarcIds
 	ldr r0, [sp, #0x34]
 	ldr r3, [sp, #0x30]
 	str r0, [sp]
@@ -10044,11 +10044,11 @@ ov81_02242D74: ; 0x02242D74
 
 	thumb_func_start ov81_02242D88
 ov81_02242D88: ; 0x02242D88
-	ldr r3, _02242D90 ; =sub_02024830
+	ldr r3, _02242D90 ; =Set2dSpriteVisibleFlag
 	ldr r0, [r0, #8]
 	bx r3
 	nop
-_02242D90: .word sub_02024830
+_02242D90: .word Set2dSpriteVisibleFlag
 	thumb_func_end ov81_02242D88
 
 	thumb_func_start ov81_02242D94
@@ -10222,11 +10222,11 @@ ov81_02242EA4: ; 0x02242EA4
 
 	thumb_func_start ov81_02242EB8
 ov81_02242EB8: ; 0x02242EB8
-	ldr r3, _02242EC0 ; =sub_02024830
+	ldr r3, _02242EC0 ; =Set2dSpriteVisibleFlag
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_02242EC0: .word sub_02024830
+_02242EC0: .word Set2dSpriteVisibleFlag
 	thumb_func_end ov81_02242EB8
 
 	thumb_func_start ov81_02242EC4

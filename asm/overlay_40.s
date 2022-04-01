@@ -10925,7 +10925,7 @@ _02230D46:
 	str r1, [r4, r0]
 	pop {r4, pc}
 _02230D58:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _02230D8C
 	add r0, r4, #0
@@ -11335,7 +11335,7 @@ _022310A0:
 	str r0, [r4, #8]
 	b _022310E2
 _022310A6:
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #1
 	bne _022310E2
 	add r0, r4, #0
@@ -12071,7 +12071,7 @@ _02231698: .word 0x000006E4
 ov40_0223169C: ; 0x0223169C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _022316B6
 	ldr r0, _022316F8 ; =0x0000089C
@@ -19130,7 +19130,7 @@ _022350F4:
 	str r0, [r4, #0xc]
 	cmp r0, #0x3c
 	bge _02235106
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _02235118
 _02235106:
@@ -23605,7 +23605,7 @@ _022374D0:
 	add r1, r5, #0
 	mov r3, #2
 	str r6, [sp, #8]
-	bl sub_020701E4
+	bl GetMonSpriteCharAndPlttNarcIdsEx
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -24935,7 +24935,7 @@ _02237FEC:
 	str r0, [r4, #0xc]
 	cmp r0, #0x3c
 	bge _02237FFE
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _02238082
 _02237FFE:
@@ -30009,7 +30009,7 @@ _0223AA82:
 	bl ov40_0223A510
 	b _0223ABFC
 _0223AA94:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	bne _0223AA9E
 _0223AA9C:
@@ -33633,7 +33633,7 @@ _0223C91C:
 	str r0, [r4, #8]
 	b _0223CC98
 _0223C92C:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	bne _0223C936
 	b _0223CC98
@@ -39746,7 +39746,7 @@ _0223FA82:
 	str r0, [r4, #8]
 	b _0223FC8C
 _0223FA92:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	bne _0223FA9C
 	b _0223FC8C
@@ -42593,7 +42593,7 @@ _02241240:
 	str r0, [r4, #8]
 	b _022413DC
 _02241250:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	bne _0224125A
 	b _022413DC
@@ -43386,7 +43386,7 @@ _022418D4:
 	str r0, [r4, #8]
 	b _0224193A
 _022418FA:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _0224193A
 	add r0, r4, #0
@@ -45153,7 +45153,7 @@ _02242748:
 	bl ov40_02240F24
 	b _022428AE
 _0224275A:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	bne _02242764
 _02242762:
@@ -49271,7 +49271,7 @@ _022447FE:
 	bl ov40_0222BF80
 	b _0224481E
 _02244808:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _0224481E
 	add r0, r4, #0

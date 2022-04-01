@@ -2680,7 +2680,7 @@ ov39_02228418: ; 0x02228418
 	push {r4, lr}
 	add r4, r0, #0
 	bl GF_RunVramTransferTasks
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #4]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _02228438 ; =0x027E0000
@@ -3463,7 +3463,7 @@ ov39_02228A70: ; 0x02228A70
 	beq _02228A82
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02228A86
 _02228A82:
@@ -4061,7 +4061,7 @@ ov39_02228EC8: ; 0x02228EC8
 	mov r0, #2
 	tst r0, r1
 	bne _02228EE4
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _02228F0E
 _02228EE4:

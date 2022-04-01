@@ -12,8 +12,8 @@ _021D0ED4:
 
 	.text
 
-	thumb_func_start sub_0200B150
-sub_0200B150: ; 0x0200B150
+	thumb_func_start OamManager_Create
+OamManager_Create: ; 0x0200B150
 	push {r3, r4, lr}
 	sub sp, #0x14
 	add r4, r0, #0
@@ -50,7 +50,7 @@ _0200B176:
 	bl sub_0200B194
 	add sp, #0x14
 	pop {r3, r4, pc}
-	thumb_func_end sub_0200B150
+	thumb_func_end OamManager_Create
 
 	thumb_func_start sub_0200B194
 sub_0200B194: ; 0x0200B194
@@ -125,8 +125,8 @@ _0200B21C:
 _0200B220: .word _021D0EB0
 	thumb_func_end sub_0200B194
 
-	thumb_func_start sub_0200B224
-sub_0200B224: ; 0x0200B224
+	thumb_func_start OamManager_ApplyAndResetBuffers
+OamManager_ApplyAndResetBuffers: ; 0x0200B224
 	push {r3, lr}
 	ldr r0, _0200B240 ; =_021D0EB0
 	ldr r0, [r0]
@@ -141,10 +141,10 @@ _0200B23C:
 	pop {r3, pc}
 	nop
 _0200B240: .word _021D0EB0
-	thumb_func_end sub_0200B224
+	thumb_func_end OamManager_ApplyAndResetBuffers
 
-	thumb_func_start sub_0200B244
-sub_0200B244: ; 0x0200B244
+	thumb_func_start OamManager_Free
+OamManager_Free: ; 0x0200B244
 	push {r3, lr}
 	ldr r0, _0200B278 ; =_021D0EB0
 	ldr r0, [r0]
@@ -169,7 +169,7 @@ _0200B252:
 	pop {r3, pc}
 	nop
 _0200B278: .word _021D0EB0
-	thumb_func_end sub_0200B244
+	thumb_func_end OamManager_Free
 
 	thumb_func_start sub_0200B27C
 sub_0200B27C: ; 0x0200B27C

@@ -22,7 +22,7 @@ ov01_021E5900: ; 0x021E5900
 	ldr r0, [r4, #8]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl GF_RunVramTransferTasks
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #0x3c]
 	bl sub_0205F1A0
 	bl ov01_021FA1D0
@@ -989,17 +989,17 @@ ov01_021E6178: ; 0x021E6178
 	mov r2, #4
 	str r2, [sp, #0x10]
 	add r2, r0, #0
-	bl sub_0200B150
+	bl OamManager_Create
 	add sp, #0x14
 	pop {pc}
 	thumb_func_end ov01_021E6178
 
 	thumb_func_start ov01_021E619C
 ov01_021E619C: ; 0x021E619C
-	ldr r3, _021E61A0 ; =sub_0200B244
+	ldr r3, _021E61A0 ; =OamManager_Free
 	bx r3
 	.balign 4, 0
-_021E61A0: .word sub_0200B244
+_021E61A0: .word OamManager_Free
 	thumb_func_end ov01_021E619C
 
 	thumb_func_start ov01_021E61A4

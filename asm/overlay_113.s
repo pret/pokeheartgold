@@ -2151,7 +2151,7 @@ _021E69D8:
 	add r0, #0xb8
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	add r0, #0xb8
 	ldr r0, [r0]

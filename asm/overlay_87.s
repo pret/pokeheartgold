@@ -1460,7 +1460,7 @@ _021E64BA:
 	strb r0, [r4, #8]
 	b _021E64F4
 _021E64E8:
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	bne _021E64F4
 	mov r0, #3
@@ -2366,7 +2366,7 @@ _021E6C1C:
 	ldr r0, [r4, #0x58]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl GF_RunVramTransferTasks
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	ldr r3, _021E6C38 ; =0x027E0000
 	ldr r1, _021E6C3C ; =0x00003FF8
 	mov r0, #1
@@ -4401,7 +4401,7 @@ ov87_021E7AF8: ; 0x021E7AF8
 	mov r2, #0x7a
 	str r2, [sp, #0x10]
 	add r2, r0, #0
-	bl sub_0200B150
+	bl OamManager_Create
 	mov r0, #0x28
 	add r1, r5, #4
 	mov r2, #0x7a
@@ -4871,7 +4871,7 @@ _021E7EC6:
 	blo _021E7EC6
 	ldr r0, [r5]
 	bl sub_02024504
-	bl sub_0200B244
+	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
 	pop {r3, r4, r5, r6, r7, pc}
@@ -4998,11 +4998,11 @@ ov87_021E7FC0: ; 0x021E7FC0
 
 	thumb_func_start ov87_021E7FD4
 ov87_021E7FD4: ; 0x021E7FD4
-	ldr r3, _021E7FDC ; =sub_02024830
+	ldr r3, _021E7FDC ; =Set2dSpriteVisibleFlag
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_021E7FDC: .word sub_02024830
+_021E7FDC: .word Set2dSpriteVisibleFlag
 	thumb_func_end ov87_021E7FD4
 
 	thumb_func_start ov87_021E7FE0

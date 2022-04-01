@@ -575,12 +575,12 @@ ov42_02227490: ; 0x02227490
 	add r5, r0, #0
 	ldr r0, [r5, #4]
 	add r4, r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #8]
 	cmp r0, #0
 	beq _022274A8
 	add r1, r4, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _022274A8:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
