@@ -20,7 +20,7 @@ void Options_init(OPTIONS* options);
 void Options_SetButtonModeOnMain(SAVEDATA* savedata, u32 buttonMode);
 u16 Options_GetTextSpeed(OPTIONS* options);
 void Options_SetTextSpeed(OPTIONS* options, u32 textSpeed);
-u32 Options_GetTextFrameDelay(OPTIONS* options);
+u8 Options_GetTextFrameDelay(OPTIONS* options);
 u16 Options_GetSoundMethod(OPTIONS* options);
 void Options_SetSoundMethod(OPTIONS* options, u32 soundMethod);
 u16 Options_GetBattleScene(OPTIONS* options);
