@@ -179,31 +179,31 @@ struct FieldSystemUnkSub0 {
 };
 
 typedef struct UnkFsysSub_114 {
-    u8 Unk_var0_0:1;
-    u8 Unk_var0_1:1;
-    u8 Unk_var0_2:1;
-    u8 Unk_var0_3:1;
-    u8 Unk_var0_4:4;
-    u8 Unk_var1;
-    u8 Unk_var2;
-    u8 Unk_var3;
-    u8 Unk_var4;
-    u8 Unk_arr5[2];
-    u8 Unk_var7;
-    s32 Unk_var8;
-    s32 Unk_varC;
-    u16 Unk_var10;
-    u16 Unk_var12;
-    s64 Unk_var14; //Seconds?
+    u8 unk_var0_0:1;
+    u8 unk_var0_1:1;
+    u8 unk_var0_2:1;
+    u8 unk_var0_3:1;
+    u8 unk_var0_4:4;
+    u8 unk_var1;
+    u8 unk_var2;
+    u8 unk_var3;
+    u8 unk_var4;
+    u8 unk_arr5[2];
+    u8 unk_var7;
+    s32 unk_var8;
+    s32 unk_varC;
+    u16 unk_var10;
+    u16 unk_var12;
+    s64 unk_var14; //Seconds? see sub_02092F30
     PhoneBookEntry entry; //0x1c
-    SavePokegear* pokegearData; //0x30
-    MomsSavings* savingsData;//0x34
+    SavePokegear* pokegear_data; //0x30
+    MomsSavings* savings_data;//0x34
     SAVEDATA* data; //0x38
     FieldSystem* sys; //0x3c
-    void *Unk_ptr40;
-    u8 Unk_var44;
+    void *unk_ptr40;
+    u8 unk_var44;
     u8 filler_45[3];
-} UnkFsysSub_114;//size: 0x48
+} UnkFsysSub_114; //size: 0x48
 
 struct UnkStruct_020FC5CC {
     u32 unk0_00:4;

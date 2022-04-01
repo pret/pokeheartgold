@@ -7,33 +7,33 @@
 #include "gear_phone.h"
 
 typedef struct UnkPokegearstruct_2c{
-    u8 Unk_Bool00; 
-    u8 Unk_FsysVar01; //0x01 One of the variables inside FieldSystem with offset 0x110 (currently u8 filler_10C[1];)
-    u16 Map_MusicID; //0x02 (surf-overriden)
-    u8 UnkFsysSub_114ptr; //0x04 (u8?????) UnkFsysSub_114*
-    u8 Unk_Var05; 
-    u8 Unk_Var06; 
-    u8 Player_Gender; //0x07
+    u8 unkBool00; 
+    u8 unkFsysVar01; //One of the variables inside FieldSystem with offset 0x110 (currently unk_10C[1];)
+    u16 mapMusicID; //0x02 (surf-overriden)
+    u8 unkVar04; //related to unk_var2 from UnkFsysSub_114
+    u8 unkVar05; 
+    u8 unkVar06; 
+    u8 playerGender; //0x07
     int x; //0x08
     int y; //0x0c
     u16 mapID; //0x10
     u16 mapHeader; //0x12
-    u8 filler_01[0xe];//0x14
-    u8 MatrixXCoord; //0x22
-    u8 MatrixYCoord; //0x23
+    u8 filler_14[0xe];
+    u8 matrixXCoord; //0x22
+    u8 matrixYCoord; //0x23
     SAVEDATA* data; //0x24
-    int Unk_ptr28; //0x28 pointer to a Field System variable at offset 0x10C (currently u8 filler_10C[0];)
+    int unkPtr28; //Pointer to a Field System variable at offset 0x10C (currently unk_10C[0];)
 } Unk_PokegearSTRUCT_2C;
 
 typedef struct UnkPokegearstruct_14{
     s16 y;
     s16 x;
-    u8 Unk_Var0c;
-    u8 Unk_Var0d;
-    u8 Unk_Var0e;
-    u8 Unk_Var0f;
-    u8 Unk_Var10;
-    u8 Unk_Arr11[3];
+    u8 unkVar0c;
+    u8 unkVar0d;
+    u8 unkVar0e;
+    u8 unkVar0f;
+    u8 unkVar10;
+    u8 unkArr11[3];
 } Unk_PokegearSTRUCT_14;
 
 void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL Unkbool);
