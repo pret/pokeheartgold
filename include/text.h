@@ -15,6 +15,7 @@ void DecompressGlyphTile(const u8 *src, u8 *dest);
 u8 AddTextPrinterParameterized2(WINDOW *window, FontID fontId, STRING *string, u8 x, u8 y, u32 textSpeed, u32 color, PrinterCallback_t callback);
 BOOL TextPrinterCheckActive(u8 printerId);
 void sub_02020080(void);
+BOOL sub_02020094(u8 a0);
 
 // text_0205B4EC
 void sub_0205B514(BGCONFIG *bgConfig, WINDOW *window, int a2);
