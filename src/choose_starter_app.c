@@ -157,11 +157,11 @@ static void createObjResMans(struct ChooseStarterAppWork *work);
 static void initObjRenderers(struct ChooseStarterAppWork *work);
 static void freeAll3dAnmObj(struct ChooseStarterAppWork *work);
 static void freeAll3dResHeader(struct ChooseStarterAppWork *work);
-static void ov61_021E6768(struct ChooseStarter3dRes *a0, int fileId, HeapID heapId);
-static void ov61_021E67BC(struct ChooseStarterRnd *rnd, struct ChooseStarter3dRes *res);
-static void ov61_021E67D4(int fileId, HeapID heapId, NNSFndAllocator *allocator, struct ChooseStarter3dRes *res, struct ChooseStarterAnm *anm);
-static void ov61_021E6814(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm);
-static void ov61_021E6820(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm);
+static void load3dModelResourceFromNarc(struct ChooseStarter3dRes *a0, int fileId, HeapID heapId);
+static void init3dModelRender(struct ChooseStarterRnd *rnd, struct ChooseStarter3dRes *res);
+static void loadAnmFromNarc(int fileId, HeapID heapId, NNSFndAllocator *allocator, struct ChooseStarter3dRes *res, struct ChooseStarterAnm *anm);
+static void addAnmObjToRenderObj(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm);
+static void removeAnmObjFromRenderObj(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm);
 static BOOL ov61_021E682C(struct ChooseStarterAnm *anm);
 static void ov61_021E684C(struct ChooseStarterAnm *anm, int a1);
 static inline struct ChooseStarterAnm *GetAnmByIdx(struct ChooseStarterAppWork *work, u8 idx);
@@ -343,9 +343,9 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
             *state = CHOOSE_STARTER_STATE_ZOOM_IN;
             break;
         case CHOOSE_STARTER_INPUT_CHOSE_STARTER:
-            ov61_021E6820(&work->_3dObjRender[work->curSelection + 3], &work->_3dObjAnm[work->curSelection]);
-            ov61_021E6814(&work->_3dObjRender[work->curSelection + 3], &work->_3dObjAnm[3]);
-            ov61_021E6814(&work->_3dObjRender[0], &work->_3dObjAnm[4]);
+            removeAnmObjFromRenderObj(&work->_3dObjRender[work->curSelection + 3], &work->_3dObjAnm[work->curSelection]);
+            addAnmObjToRenderObj(&work->_3dObjRender[work->curSelection + 3], &work->_3dObjAnm[3]);
+            addAnmObjToRenderObj(&work->_3dObjRender[0], &work->_3dObjAnm[4]);
             work->_3dObjRender[0].unk_58 = 1;
             *state = CHOOSE_STARTER_STATE_ZOOM_AND_FADE_OUT;
             break;
@@ -724,22 +724,22 @@ static void createObjResMans(struct ChooseStarterAppWork *work) {
 
 static void initObjRenderers(struct ChooseStarterAppWork *work) {
     int i;
-    ov61_021E6768(&work->_3dObjRes[0], 3, work->heapId);
+    load3dModelResourceFromNarc(&work->_3dObjRes[0], 3, work->heapId);
     ov61_021E6934(&work->_3dObjRender[0], 0, 14 * FX32_ONE, 32 * FX32_ONE);
     ov61_021E693C(&work->_3dObjRender[0], FX32_ONE, FX32_ONE, FX32_ONE);
-    ov61_021E6768(&work->_3dObjRes[1], 0, work->heapId);
+    load3dModelResourceFromNarc(&work->_3dObjRes[1], 0, work->heapId);
     ov61_021E6934(&work->_3dObjRender[1], 0, 0, 0);
     ov61_021E693C(&work->_3dObjRender[1], FX32_ONE, FX32_ONE, FX32_ONE);
-    ov61_021E6768(&work->_3dObjRes[2], 1, work->heapId);
+    load3dModelResourceFromNarc(&work->_3dObjRes[2], 1, work->heapId);
     ov61_021E6934(&work->_3dObjRender[2], 0, 0, 0);
     ov61_021E693C(&work->_3dObjRender[2], FX32_ONE, FX32_ONE, FX32_ONE);
-    ov61_021E6768(&work->_3dObjRes[3], 2, work->heapId);
-    ov61_021E67BC(&work->_3dObjRender[0], &work->_3dObjRes[0]);
-    ov61_021E67BC(&work->_3dObjRender[1], &work->_3dObjRes[1]);
-    ov61_021E67BC(&work->_3dObjRender[2], &work->_3dObjRes[2]);
+    load3dModelResourceFromNarc(&work->_3dObjRes[3], 2, work->heapId);
+    init3dModelRender(&work->_3dObjRender[0], &work->_3dObjRes[0]);
+    init3dModelRender(&work->_3dObjRender[1], &work->_3dObjRes[1]);
+    init3dModelRender(&work->_3dObjRender[2], &work->_3dObjRes[2]);
 
     for (i = 0; i < 3; i++) {
-        ov61_021E67BC(&work->_3dObjRender[i + 3], &work->_3dObjRes[3]);
+        init3dModelRender(&work->_3dObjRender[i + 3], &work->_3dObjRes[3]);
     }
     work->_3dObjRender[0].unk_58 = 0;
     work->_3dObjRender[2].unk_58 = 1;
@@ -747,16 +747,16 @@ static void initObjRenderers(struct ChooseStarterAppWork *work) {
     work->_3dObjRender[3].unk_58 = 1;
     work->_3dObjRender[4].unk_58 = 1;
     work->_3dObjRender[5].unk_58 = 1;
-    ov61_021E67D4(7, work->heapId, &work->allocator, &work->_3dObjRes[2], &work->_3dObjAnm[5]);
-    ov61_021E67D4(6, work->heapId, &work->allocator, &work->_3dObjRes[3], &work->_3dObjAnm[0]);
-    ov61_021E67D4(6, work->heapId, &work->allocator, &work->_3dObjRes[3], &work->_3dObjAnm[1]);
-    ov61_021E67D4(6, work->heapId, &work->allocator, &work->_3dObjRes[3], &work->_3dObjAnm[2]);
-    ov61_021E67D4(5, work->heapId, &work->allocator, &work->_3dObjRes[3], &work->_3dObjAnm[3]);
-    ov61_021E67D4(4, work->heapId, &work->allocator, &work->_3dObjRes[0], &work->_3dObjAnm[4]);
-    ov61_021E6814(&work->_3dObjRender[2], &work->_3dObjAnm[5]);
-    ov61_021E6814(&work->_3dObjRender[3], &work->_3dObjAnm[0]);
-    ov61_021E6814(&work->_3dObjRender[4], &work->_3dObjAnm[1]);
-    ov61_021E6814(&work->_3dObjRender[5], &work->_3dObjAnm[2]);
+    loadAnmFromNarc(7, work->heapId, &work->allocator, &work->_3dObjRes[2], &work->_3dObjAnm[5]);
+    loadAnmFromNarc(6, work->heapId, &work->allocator, &work->_3dObjRes[3], &work->_3dObjAnm[0]);
+    loadAnmFromNarc(6, work->heapId, &work->allocator, &work->_3dObjRes[3], &work->_3dObjAnm[1]);
+    loadAnmFromNarc(6, work->heapId, &work->allocator, &work->_3dObjRes[3], &work->_3dObjAnm[2]);
+    loadAnmFromNarc(5, work->heapId, &work->allocator, &work->_3dObjRes[3], &work->_3dObjAnm[3]);
+    loadAnmFromNarc(4, work->heapId, &work->allocator, &work->_3dObjRes[0], &work->_3dObjAnm[4]);
+    addAnmObjToRenderObj(&work->_3dObjRender[2], &work->_3dObjAnm[5]);
+    addAnmObjToRenderObj(&work->_3dObjRender[3], &work->_3dObjAnm[0]);
+    addAnmObjToRenderObj(&work->_3dObjRender[4], &work->_3dObjAnm[1]);
+    addAnmObjToRenderObj(&work->_3dObjRender[5], &work->_3dObjAnm[2]);
 }
 
 static void freeAll3dAnmObj(struct ChooseStarterAppWork *work) {
@@ -775,7 +775,7 @@ static void freeAll3dResHeader(struct ChooseStarterAppWork *work) {
     }
 }
 
-static void ov61_021E6768(struct ChooseStarter3dRes *a0, int fileId, HeapID heapId) {
+static void load3dModelResourceFromNarc(struct ChooseStarter3dRes *a0, int fileId, HeapID heapId) {
     a0->header = GfGfxLoader_LoadFromNarc(NARC_a_0_8_2, fileId, FALSE, heapId, FALSE);
     a0->mdlSet = NNS_G3dGetMdlSet(a0->header);
     a0->mdl = NNS_G3dGetMdlByIdx(a0->mdlSet, 0);
@@ -783,12 +783,12 @@ static void ov61_021E6768(struct ChooseStarter3dRes *a0, int fileId, HeapID heap
     sub_0201F668(a0->tex);
 }
 
-static void ov61_021E67BC(struct ChooseStarterRnd *rnd, struct ChooseStarter3dRes *res) {
+static void init3dModelRender(struct ChooseStarterRnd *rnd, struct ChooseStarter3dRes *res) {
     sub_0201F64C(res->header, res->tex);
     NNS_G3dRenderObjInit(&rnd->obj, res->mdl);
 }
 
-static void ov61_021E67D4(int fileId, HeapID heapId, NNSFndAllocator *allocator, struct ChooseStarter3dRes *res, struct ChooseStarterAnm *anm) {
+static void loadAnmFromNarc(int fileId, HeapID heapId, NNSFndAllocator *allocator, struct ChooseStarter3dRes *res, struct ChooseStarterAnm *anm) {
     void *pAnm;
     anm->hdr = GfGfxLoader_LoadFromNarc(NARC_a_0_8_2, fileId, FALSE, heapId, FALSE);
     pAnm = NNS_G3dGetAnmByIdx(anm->hdr, 0);
@@ -796,11 +796,11 @@ static void ov61_021E67D4(int fileId, HeapID heapId, NNSFndAllocator *allocator,
     NNS_G3dAnmObjInit(anm->obj, pAnm, res->mdl, res->tex);
 }
 
-static void ov61_021E6814(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm) {
+static void addAnmObjToRenderObj(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm) {
     NNS_G3dRenderObjAddAnmObj(&rnd->obj, anm->obj);
 }
 
-static void ov61_021E6820(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm) {
+static void removeAnmObjFromRenderObj(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm) {
     NNS_G3dRenderObjRemoveAnmObj(&rnd->obj, anm->obj);
 }
 
