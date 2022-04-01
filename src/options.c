@@ -47,7 +47,7 @@ void Options_SetTextSpeed(OPTIONS* options, u32 textSpeed) {
     options->textSpeed = textSpeed;
 }
 
-u32 Options_GetTextFrameDelay(OPTIONS* options) {
+u8 Options_GetTextFrameDelay(OPTIONS* options) {
     u16 textSpeed = Options_GetTextSpeed(options);
 
     if (textSpeed == 0) {
