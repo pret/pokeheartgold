@@ -146,10 +146,10 @@ void ItemCheckUseData_Init(FieldSystem *fsys, struct ItemCheckUseData *dat) {
     dat->standingTile = GetMetatileBehaviorAt(fsys, x, y);
 
     switch (PlayerAvatar_GetFacingDirection(fsys->playerAvatar)) {
-    case DIR_SOUTH:
+    case DIR_NORTH:
         y--;
         break;
-    case DIR_NORTH:
+    case DIR_SOUTH:
         y++;
         break;
     case DIR_EAST:
