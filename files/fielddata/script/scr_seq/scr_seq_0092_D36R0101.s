@@ -1316,7 +1316,7 @@ _1371:
 	npc_msg msg_0115_D36R0101_00032
 _1374:
 	closemsg
-	get_lead_mon_index VAR_TEMP_x4000
+	get_party_lead_alive VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 50
 	goto_if_eq _13D5
@@ -1615,7 +1615,7 @@ scr_seq_D36R0101_012:
 	goto_if_ge _17C1
 	compare VAR_UNK_412B, 1
 	goto_if_eq _1803
-	get_lead_mon_index VAR_TEMP_x4000
+	get_party_lead_alive VAR_TEMP_x4000
 	follower_poke_is_event_trigger 0, VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _17B7
@@ -1629,7 +1629,7 @@ _17C1:
 	compare VAR_UNK_40FE, 4
 	goto_if_ge _1803
 	goto_if_unset FLAG_BEAT_RADIO_TOWER_ROCKETS, _1803
-	get_lead_mon_index VAR_TEMP_x4006
+	get_party_lead_alive VAR_TEMP_x4006
 	follower_poke_is_event_trigger 3, VAR_TEMP_x4006, VAR_TEMP_x4007
 	compare VAR_TEMP_x4007, 0
 	goto_if_ne _17FD

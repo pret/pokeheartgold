@@ -75,7 +75,7 @@ scr_seq_D51R0201_001:
 	faceplayer
 	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 8
 	goto_if_eq _0165
-	get_lead_mon_index VAR_TEMP_x4005
+	get_party_lead_alive VAR_TEMP_x4005
 	follower_poke_is_event_trigger 2, VAR_TEMP_x4005, VAR_TEMP_x4006
 	compare VAR_TEMP_x4006, 1
 	goto_if_eq _011A
@@ -409,7 +409,7 @@ _0550:
 	return
 
 _056D:
-	get_lead_mon_index VAR_TEMP_x4000
+	get_party_lead_alive VAR_TEMP_x4000
 	compare VAR_UNK_4102, 1
 	goto_if_ne _05B2
 	follower_poke_is_event_trigger 1, VAR_TEMP_x4000, VAR_SPECIAL_RESULT
@@ -710,7 +710,7 @@ _0A4D:
 	wait_fade
 	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 14
 	goto_if_eq _0AAA
-	get_lead_mon_index VAR_TEMP_x4005
+	get_party_lead_alive VAR_TEMP_x4005
 	follower_poke_is_event_trigger 2, VAR_TEMP_x4005, VAR_TEMP_x4006
 	compare VAR_TEMP_x4006, 1
 	goto_if_ne _0AA0

@@ -157,10 +157,10 @@ scr_seq_T25R1005_006:
 	lockall
 	faceplayer
 	goto_if_set FLAG_UNK_08E, _0219
-	get_lead_mon_index VAR_SPECIAL_x8000
+	get_party_lead_alive VAR_SPECIAL_x8000
 	buffer_mon_species_name 0, VAR_SPECIAL_x8000
 	npc_msg msg_0596_T25R1005_00000
-	scrcmd_382 VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000
+	mon_get_friendship VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000
 	compare VAR_SPECIAL_RESULT, 149
 	goto_if_ge _01E3
 	compare VAR_SPECIAL_RESULT, 50
