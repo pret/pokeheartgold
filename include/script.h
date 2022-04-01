@@ -203,7 +203,7 @@ typedef struct UnkFsysSub_114 {
     void *Unk_ptr40;
     u8 Unk_var44;
     u8 filler_45[3];
-}UnkFsysSub_114;//size: 0x48
+} UnkFsysSub_114;//size: 0x48
 
 struct UnkStruct_020FC5CC {
     u32 unk0_00:4;

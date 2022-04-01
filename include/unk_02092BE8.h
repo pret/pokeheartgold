@@ -6,7 +6,7 @@
 #include "script.h"
 #include "gear_phone.h"
 
-typedef struct Unkstruct_2c{
+typedef struct UnkPokegearstruct_2c{
     u8 Unk_Bool00; 
     u8 Unk_FsysVar01; //0x01 One of the variables inside FieldSystem with offset 0x110 (currently u8 filler_10C[1];)
     u16 Map_MusicID; //0x02 (surf-overriden)
@@ -23,9 +23,9 @@ typedef struct Unkstruct_2c{
     u8 MatrixYCoord; //0x23
     SAVEDATA* data; //0x24
     int Unk_ptr28; //0x28 pointer to a Field System variable at offset 0x10C (currently u8 filler_10C[0];)
-}UnkSTRUCT_2C;
+} Unk_PokegearSTRUCT_2C;
 
-typedef struct Unkstruct_14{
+typedef struct UnkPokegearstruct_14{
     s16 y;
     s16 x;
     u8 Unk_Var0c;
@@ -34,11 +34,11 @@ typedef struct Unkstruct_14{
     u8 Unk_Var0f;
     u8 Unk_Var10;
     u8 Unk_Arr11[3];
-}UnkSTRUCT_14;
+} Unk_PokegearSTRUCT_14;
 
-void sub_02092BE8(FieldSystem* sys, UnkSTRUCT_2C* ptr, BOOL Unkbool);
-void sub_02092D80(FieldSystem* sys, UnkSTRUCT_2C* ptr);
-void sub_02092D8C(FieldSystem* sys, UnkSTRUCT_2C* ptr);
+void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL Unkbool);
+void sub_02092D80(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr);
+void sub_02092D8C(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr);
 UnkFsysSub_114* sub_02092D98(HeapID id, FieldSystem* sys);
 void sub_02092DD8(UnkFsysSub_114 * ptr);
 UnkFsysSub_114* sub_02092DEC(FieldSystem* sys);
