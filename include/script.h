@@ -193,6 +193,14 @@ struct UnkStruct_020FC5CC {
 struct UnkStruct_02059E1C;
 struct UnkStruct_0205AC88;
 
+struct FieldSystemUnkSub68 {
+    WINDOW unk0;
+    u16 unk10;
+    u8 unk12;
+    u8 unk13_0:7;
+    u8 unk13_7:1;
+};
+
 struct FieldSystem {
     struct FieldSystemUnkSub0 *unk0;
     void *unk4;
@@ -211,7 +219,7 @@ struct FieldSystem {
     u8 filler44[0x1C];
     u32 unk60;
     int unk64;
-    int unk68;
+    struct FieldSystemUnkSub68* unk68;
     u32 unk6C;
     int unk70;
     const struct UnkStruct_020FC5CC *unk74;
