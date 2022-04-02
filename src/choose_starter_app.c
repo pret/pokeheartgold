@@ -99,6 +99,16 @@ enum ChooseStarterAnim {
 #define BALL_ROCK_AMPLITUDE_BIG       1
 #define BALL_ROCK_AMPLITUDE_SMALL     2
 
+#define CAM_ANGLE_X_OUT            (FX_DEG_TO_IDX(FX32_CONST(-49.57)))
+#define CAM_PERSP_OUT              (FX_DEG_TO_IDX(FX32_CONST(24.805)))
+#define CAM_POSITION_OUT           ((VecFx32){0, 0, 14 * FX32_ONE})
+#define CAM_DISTANCE_OUT           (100 * FX32_ONE)
+
+#define CAM_ANGLE_X_IN             (FX_DEG_TO_IDX(FX32_CONST(-30.76)))
+#define CAM_PERSP_IN               (FX_DEG_TO_IDX(FX32_CONST(22.7)))
+#define CAM_POSITION_IN            ((VecFx32){0, 0, 12 * FX32_ONE})
+#define CAM_DISTANCE_IN            (60 * FX32_ONE)
+
 struct ChooseStarterRnd {
     NNSG3dRenderObj obj;
     u32 filler_54[4/sizeof(u32)];
@@ -455,10 +465,10 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         {
             struct CameraTranslationPathTemplate template;
 
-            template.angleX = 0xDCC0;
-            template.perspectiveAngle = 0x11A4;
-            template.position = (VecFx32){0, 0, 14 * FX32_ONE};
-            template.distance = 100 * FX32_ONE;
+            template.angleX = CAM_ANGLE_X_OUT;
+            template.perspectiveAngle = CAM_PERSP_OUT;
+            template.position = CAM_POSITION_OUT;
+            template.distance = CAM_DISTANCE_OUT;
 
             SetCameraTranslationPath(work->cameraTranslation, &template, 8);
         }
@@ -484,16 +494,16 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
 
         if (r6 != 0) {
             if (r6 == 1) {
-                template.angleX = 0xDCC0;
-                template.perspectiveAngle = 0x11A4;
-                template.position = (VecFx32){0, 0, 14 * FX32_ONE};
-                template.distance = 100 * FX32_ONE;
+                template.angleX = CAM_ANGLE_X_OUT;
+                template.perspectiveAngle = CAM_PERSP_OUT;
+                template.position = CAM_POSITION_OUT;
+                template.distance = CAM_DISTANCE_OUT;
                 work->ballWobbleState = BALL_ROCK_AMPLITUDE_BOTH;
             } else {
-                template.angleX = 0xEA20;
-                template.perspectiveAngle = 0x1024;
-                template.position = (VecFx32){0, 0, 12 * FX32_ONE};
-                template.distance = 60 * FX32_ONE;
+                template.angleX = CAM_ANGLE_X_IN;
+                template.perspectiveAngle = CAM_PERSP_IN;
+                template.position = CAM_POSITION_IN;
+                template.distance = CAM_DISTANCE_IN;
                 work->ballWobbleState = BALL_ROCK_AMPLITUDE_SMALL;
             }
             SetCameraTranslationPath(work->cameraTranslation, &template, 8);
