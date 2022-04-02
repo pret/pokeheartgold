@@ -25,5 +25,4 @@ As you continue decompiling, you may realize that you need to add imports to you
 ```
 
 You can use `m2ctx` to generate an updated context file which will include declarations from the new imports.
-First, comment out any function definitions in your source file.
-Then re-generate the context file: `./tools/m2ctx/m2ctx.py src/npc_trade.c`.
+Simply re-run the command to generate a new context file: `./tools/m2ctx/m2ctx.py src/npc_trade.c`.

@@ -3,6 +3,7 @@
 import os
 import sys
 import subprocess
+import tempfile
 import argparse
 from pathlib import Path
 
@@ -26,9 +27,22 @@ def get_c_file(directory):
             if file.endswith(".c") and "data" not in file:
                 return file
 
-
-def import_c_file(in_file):
+# Returns the name of a temporary file where #include statements have been
+# extracted.
+def extract_imports(in_file):
     in_file = os.path.relpath(in_file, root_dir)
+    tmp_file = tempfile.NamedTemporaryFile(
+        prefix="c-includes-", suffix=".c", delete=False)
+
+    cmd = ["grep", "^#include ", in_file]
+    output = subprocess.check_output(cmd, cwd=root_dir, encoding="utf-8")
+
+    outfile = open(tmp_file.name, 'wt')
+    outfile.write(output)
+    outfile.close()
+    return outfile.name
+
+def preprocess_imports(in_file):
     # Contains mwccarm.exe defines and include paths
     includes = [
         "-Iinclude", "-Iinclude/library", "-Ifiles", "-Ilib/include", "-include", "global.h"
@@ -77,8 +91,11 @@ def main():
         c_file_path = os.path.join(c_dir_path, c_file)
         print("Using file: {}".format(c_file_path))
 
-    output = import_c_file(c_file_path)
-    output = remove_predefined(output)
+    tmp_file = extract_imports(c_file_path)
+    preprocessed = preprocess_imports(tmp_file)
+    os.remove(tmp_file)
+
+    output = remove_predefined(preprocessed)
 
     with open(os.path.join(root_dir, "ctx.c"), "w", encoding="UTF-8") as f:
         f.write(output)
