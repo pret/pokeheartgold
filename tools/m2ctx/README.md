@@ -13,7 +13,7 @@ Your file may look like this:
 #include "pokemon.h"
 ```
 
-Run `./tools/m2ctx/m2ctx.py src/npc_trade.c` to generate a context file, which will be output as `ctx.c`. 
+Run `./tools/m2ctx/m2ctx.sh src/npc_trade.c` to generate a context file, which will be output as `ctx.c`.
 Copy the contents of `ctx.c` into the "Context" section of the scratch.
 
 ### Adding imports
@@ -25,4 +25,4 @@ As you continue decompiling, you may realize that you need to add imports to you
 ```
 
 You can use `m2ctx` to generate an updated context file which will include declarations from the new imports.
-Simply re-run the command to generate a new context file: `./tools/m2ctx/m2ctx.py src/npc_trade.c`.
+Simply re-run the command to generate a new context file: `./tools/m2ctx/m2ctx.sh src/npc_trade.c`.
