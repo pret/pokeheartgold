@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-TMP_IMPORTS=$(pwd)/tmp-imports.c
-TMP_DECLARES=$(pwd)/tmp-declares.c
 OUT_FILE=ctx.c
 
 GCC=gcc
@@ -11,15 +9,9 @@ DEFINES="-DHEARTGOLD -DGAME_REMASTER=0 -DENGLISH -DPM_KEEP_ASSERTS -DSDK_ARM9 -D
 
 
 generate-ctx () {
-    grep "^#include " "$1" > $TMP_IMPORTS
-    $GCC $FLAGS $INCLUDES $DEFINES $TMP_IMPORTS > $TMP_DECLARES
-
     # Remove any line containing a predefined macro. If not removed, mwccarm
     # generates compiler warnings.
-    sed '/__STDC__\|__STDC_VERSION__\|__STDC_VERSION__\|__STDC_HOSTED__/d' $TMP_DECLARES > $OUT_FILE
-
-    rm $TMP_IMPORTS
-    rm $TMP_DECLARES
+    grep "^#include " "$1" | $GCC $FLAGS $INCLUDES $DEFINES  -x c - | sed '/__STDC__\|__STDC_VERSION__\|__STDC_VERSION__\|__STDC_HOSTED__/d' > $OUT_FILE
 }
 
 usage () {
