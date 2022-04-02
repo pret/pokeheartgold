@@ -8,7 +8,7 @@ The goal is to take the assembly code and turn them into readable C code that ge
 * Basic knowledge of ARMv4 and ARMv4T assembly.
 * Basic knowledge of C programming language.
 * Be able to use Github version control
-* Have a clone of the repo set up on your computer per [INSTALL.md] (docs/INSTALL.md) instructions
+* Have a clone of the repo set up on your computer per [INSTALL.md] (INSTALL.md) instructions
 * An understanding of how compilers work (including common compiler flags)
 
 ## Important Repository files and directories when decompiling
@@ -25,11 +25,10 @@ Decompiling is the process of taking Assembly code and translating it into equiv
 "Matching" Decompiling means that the resulting C code should compile into the same Assembly instructions as the Assembly code.
 The general workflow is like this:
 
-1. Choose a .s file from `asm/` to decompile (You can look at [Known Asm files.md] (docs/Known Asm files.md) if you want to decompile a specific file)
+1. Choose a .s file from `asm/` to decompile (You can look at [Known Asm files.md] (Known Asm files.md) if you want to decompile a specific file)
 2. Make a .c file inside `src/`, and a header file for it inside `include/`
 3. Add the new .c file to main.lsf
-4. Match-decompile the .s file
-4.1. Make sure each function you decompile matches the original assembly code (by running `make compare` in the root directory) before moving on to the next function. Not doing this makes the process of matching harder than it should be.
+4. Match-decompile the .s file. Make sure each function you decompile matches the original assembly code (by running `make compare` in the root directory) before moving on to the next function. Not doing this makes the process of matching harder than it should be.
 5. Remove the .s file from main.lsf
 6. Remove the .s file 
 7. (Optional but recommended) Document the code, figure out what each function does, and rename them appropriately
