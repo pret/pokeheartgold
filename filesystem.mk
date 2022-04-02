@@ -470,13 +470,16 @@ include files/data/mmodel/mmodel.mk
 include files/fielddata/wazaoshie/waza_oshie.mk
 include files/data/mushi/mushi.mk
 include files/fielddata/tsurepoke/tp_param.mk
+include files/application/choose_starter/choose_starter.mk
 
 $(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;
 
 # This must come after the above includes
 include graphics_files_rules.mk
 
-%.narc: NARC_DEPS = $(wildcard $*/*.bin)
+NTR_FILE_EXT := bin NCGR NCLR NCER NSCR NSBMD NSBCA NSBTA
+
+%.narc: NARC_DEPS = $(foreach ext,$(NTR_FILE_EXT),$(wildcard $*/*.$ext))
 %.narc: $(NARC_DEPS)
 	$(KNARC) -d $* -p $@ -i
 
