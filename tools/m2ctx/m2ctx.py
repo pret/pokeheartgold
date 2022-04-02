@@ -7,9 +7,11 @@ import argparse
 from pathlib import Path
 
 script_dir = os.path.dirname(os.path.realpath(__file__))
-root_dir = script_dir + "/../"
+root_dir = script_dir + "/../../"
 src_dir = root_dir + "src/"
 
+PREDEFINED_MACROS = [
+    "__STDC__", "__STDC_VERSION__", "__STDC_VERSION__", "__STDC_HOSTED__"]
 
 def get_c_dir(dirname):
     for root, dirs, files in os.walk(src_dir):
@@ -27,8 +29,15 @@ def get_c_file(directory):
 
 def import_c_file(in_file):
     in_file = os.path.relpath(in_file, root_dir)
-    cpp_command = ["gcc", "-E", "-P", "-Iinclude", "-Iassets", "-Isrc", "-undef", "-D__sgi", "-D_LANGUAGE_C",
-                   "-DNON_MATCHING", "-D_Static_assert(x, y)=", "-D__attribute__(x)=", in_file]
+    # Contains mwccarm.exe defines and include paths
+    includes = [
+        "-Iinclude", "-Iinclude/library", "-Ifiles", "-Ilib/include", "-include", "global.h"
+        ]
+    defines = [
+        "-DHEARTGOLD", "-DGAME_REMASTER=0", "-DENGLISH", "-DPM_KEEP_ASSERTS", "-DSDK_ARM9",
+        "-DSDK_CODE_ARM", "-DSDK_FINALROM"
+        ]
+    cpp_command =["gcc", "-E", "-P", "-dD", "-undef"] + includes + defines + [in_file]
     try:
         return subprocess.check_output(cpp_command, cwd=root_dir, encoding="utf-8")
     except subprocess.CalledProcessError:
@@ -39,11 +48,19 @@ def import_c_file(in_file):
         )
         sys.exit(1)
 
+# Remove predefined macros from preprocessed output. If not removed, mwccarm
+# generates compiler warnings.
+def remove_predefined(preprocessed):
+    output = []
+    for line in preprocessed.splitlines():
+        if any(macro in line for macro in PREDEFINED_MACROS):
+            continue
+        output.append(line)
+    return "\n".join(output)
 
 def main():
-    parser = argparse.ArgumentParser(usage="./m2ctx.py path/to/file.c or ./m2ctx.py (from an actor or gamestate's asm dir)",
-                                     description="Creates a ctx.c file for mips2c. "
-                                     "Output will be saved as oot/ctx.c")
+    parser = argparse.ArgumentParser(usage="./m2ctx.py path/to/file.c",
+                                     description="Creates a ctx.c file for decomp.me.")
     parser.add_argument('filepath', help="path of c file to be processed")
     args = parser.parse_args()
 
@@ -61,6 +78,7 @@ def main():
         print("Using file: {}".format(c_file_path))
 
     output = import_c_file(c_file_path)
+    output = remove_predefined(output)
 
     with open(os.path.join(root_dir, "ctx.c"), "w", encoding="UTF-8") as f:
         f.write(output)
