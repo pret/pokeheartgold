@@ -6,6 +6,7 @@
 #include "msgdata/msg/msg_0416.h"
 #include "msgdata/msg/msg_0411.h"
 #include "msgdata/msg/msg_0664.h"
+#include "constants/snd_system.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -16552,7 +16553,7 @@ ov101_021EF848: ; 0x021EF848
 	str r5, [r4, #0xc]
 	mov r0, #0x5b
 	str r0, [r4]
-	mov r0, #0x37
+	mov r0, #SND_SCENE_SUB_TOWNMAP
 	add r2, r1, #0
 	bl GF_SetDataByScene
 	add r0, r4, #0

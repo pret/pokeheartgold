@@ -1,5 +1,6 @@
 #include "constants/std_script.h"
 #include "constants/vars.h"
+#include "constants/snd_system.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -426,10 +427,10 @@ sub_02050960: ; 0x02050960
 	beq _020509DC
 	b _020509EA
 _0205098A:
-	mov r0, #0
+	mov r0, #SND_SCENE_DUMMY
 	bl GF_SetSndScene
 	ldr r1, [r5, #8]
-	mov r0, #5
+	mov r0, #SND_SCENE_BATTLE
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	mov r2, #1

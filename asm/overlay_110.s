@@ -1,4 +1,5 @@
 #include "constants/sndseq.h"
+#include "constants/snd_system.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -38,7 +39,7 @@ _021E5912:
 	bl OverlayManager_GetParentWork
 	mov r1, #0
 	str r0, [r4, #0x10]
-	mov r0, #0x4a
+	mov r0, #SND_SCENE_SUB_SEKIBAN
 	add r2, r1, #0
 	bl GF_SetDataByScene
 	add r0, r4, #0

@@ -1,16 +1,18 @@
 #include "sound_chatot.h"
 #include "sound.h"
 #include "constants/species.h"
+#include "constants/snd_system.h"
 #include "math_util.h"
 #include "unk_02004A44.h"
 
 BOOL ChatotSoundMain(void) {
-    u8 *r4 = GF_SdatGetAttrPtr(16);
-    u8 *r0 = GF_SdatGetAttrPtr(30);
+    u8 *r4 = GF_SdatGetAttrPtr(SND_W_ID_WAVEOUT_CH_NORMAL_FLAG);
+    u8 *r0 = GF_SdatGetAttrPtr(SND_W_ID_PERAP_PLAY_FLAG);
 
-    if (*r0 == 1) {
-        if (*r4 == 1) {
-            if (GF_WaveOutIsPlaying(14) == 0) {
+
+    if (*r0 == TRUE) {
+        if (*r4 == TRUE) {
+            if (GF_WaveOutIsPlaying(SND_W_ID_ME_WAIT) == 0) {
                 sub_02006DB8();
                 return TRUE;
             }
@@ -25,18 +27,18 @@ BOOL ChatotSoundMain(void) {
 }
 
 BOOL Chatot_checkCry(SOUND_CHATOT *a0) {
-    u8 *r5 = GF_SdatGetAttrPtr(31);
-    u8 *r4 = GF_SdatGetAttrPtr(54);
+    u8 *r5 = GF_SdatGetAttrPtr(SND_W_ID_PERAP_DEFAULT_FLAG);
+    u8 *r4 = GF_SdatGetAttrPtr(SND_W_ID_BATTLE_REC_FLAG);
 
     if (!Chatot_exists(a0)) {
         return FALSE;
     }
 
-    if (*r4 == 1) {
+    if (*r4 == TRUE) {
         return FALSE;
     }
 
-    if (*r5 != 1) {
+    if (*r5 != TRUE) {
         return TRUE;
     }
 
@@ -45,7 +47,7 @@ BOOL Chatot_checkCry(SOUND_CHATOT *a0) {
 
 BOOL sub_02006D04(SOUND_CHATOT *a0, u32 a1, s32 a2, s32 a3) {
     s8 *sp0 = GF_GetWaveBufAdrs();
-    s8 *sp4 = GF_SdatGetAttrPtr(30);
+    s8 *sp4 = GF_SdatGetAttrPtr(SND_W_ID_PERAP_PLAY_FLAG);
 
     if (!Chatot_checkCry(a0)) {
         return FALSE;
@@ -80,8 +82,8 @@ BOOL sub_02006D04(SOUND_CHATOT *a0, u32 a1, s32 a2, s32 a3) {
 }
 
 void sub_02006DB8() {
-    u8 *r5 = GF_SdatGetAttrPtr(16);
-    u8 *r4 = GF_SdatGetAttrPtr(30);
+    u8 *r5 = GF_SdatGetAttrPtr(SND_W_ID_WAVEOUT_CH_NORMAL_FLAG);
+    u8 *r4 = GF_SdatGetAttrPtr(SND_W_ID_PERAP_PLAY_FLAG);
 
     if (*r5 == 1) {
         GF_WaveOutStopReverse(14);
@@ -117,12 +119,12 @@ void Chatot_saveRecording(SOUND_CHATOT *a0) {
 }
 
 void sub_02006E3C(u8 a0) {
-    u8 *r0 = GF_SdatGetAttrPtr(31);
+    u8 *r0 = GF_SdatGetAttrPtr(SND_W_ID_PERAP_DEFAULT_FLAG);
     *r0 = a0;
 }
 
 void sub_02006E4C(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3) {
-    SOUND_CHATOT **r0 = GF_SdatGetAttrPtr(36);
+    SOUND_CHATOT **r0 = GF_SdatGetAttrPtr(SND_W_ID_MY_PERAP_PTR);
     BOOL ret;
     if (a0 == 0) {
         ret = sub_02006D04(*r0, a1, a2, a3);
@@ -138,7 +140,7 @@ void sub_02006E4C(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3) {
 }
 
 BOOL sub_02006EA0(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3, u8 a4) {
-    SOUND_CHATOT **r0 = GF_SdatGetAttrPtr(36);
+    SOUND_CHATOT **r0 = GF_SdatGetAttrPtr(SND_W_ID_MY_PERAP_PTR);
     BOOL ret;
     if (a0 == 0) {
         ret = sub_02006D04(*r0, a1, a2, a3);

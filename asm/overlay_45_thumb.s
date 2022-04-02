@@ -1,3 +1,4 @@
+#include "constants/snd_system.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -871,7 +872,7 @@ ov45_0222A4D0: ; 0x0222A4D0
 	cmp r0, #0
 	bgt _0222A500
 	ldr r1, _0222A518 ; =0x00000481
-	mov r0, #0x15
+	mov r0, #SND_SCENE_WIFI_LOBBY_HIROBA
 	mov r2, #0
 	bl GF_SetDataByScene
 	mov r0, #0x7f
@@ -881,7 +882,7 @@ ov45_0222A4D0: ; 0x0222A4D0
 	pop {r4, pc}
 _0222A500:
 	ldr r1, _0222A51C ; =0x0000047F
-	mov r0, #0x15
+	mov r0, #SND_SCENE_WIFI_LOBBY_HIROBA
 	mov r2, #0
 	bl GF_SetDataByScene
 	mov r0, #0x7f

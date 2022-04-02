@@ -158,11 +158,6 @@ GS_SeqPairs:
 
 	.bss
 
-    .public _021D05E8
-
-_021D05E8:
-	.space 0x10
-
     .public _021D05F8
 
 _021D05F8:
@@ -173,12 +168,3 @@ _021D05F8:
 sWaveBuffer:
 	.space 0x7D0
 
-	.text
-    
-    .public GF_GetNextBGM
-    .public GF_SetSndSubScene
-    .public GF_SetDataSub
-    .public GF_SndCaptureIsActive
-    .public GF_SetNextWait
-    .public GF_SndCaptureStopReverb
-    .public Snd_SetGBSoundsState

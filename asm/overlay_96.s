@@ -1,3 +1,5 @@
+#include "constants/snd_system.h"
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -2489,10 +2491,10 @@ ov96_021E6A94: ; 0x021E6A94
 	add r0, r4, #0
 	mov r1, #9
 	bl ov96_021E5FC8
-	mov r0, #0
+	mov r0, #SND_SCENE_DUMMY
 	bl GF_SetSndScene
 	ldr r1, _021E6AE4 ; =0x0000046F
-	mov r0, #0x19
+	mov r0, #SND_SCENE_THLON_OPED
 	mov r2, #0
 	bl GF_SetDataByScene
 _021E6AE0:
@@ -2850,18 +2852,18 @@ ov96_021E6D54: ; 0x021E6D54
 	sub r0, r0, #1
 	cmp r1, r0
 	bne _021E6DAA
-	mov r0, #0
+	mov r0, #SND_SCENE_DUMMY
 	bl GF_SetSndScene
 	ldr r1, _021E6DE0 ; =0x00000472
-	mov r0, #0x18
+	mov r0, #SND_SCENE_THLON
 	mov r2, #0
 	bl GF_SetDataByScene
 	b _021E6DBA
 _021E6DAA:
-	mov r0, #0
+	mov r0, #SND_SCENE_DUMMY
 	bl GF_SetSndScene
 	ldr r1, _021E6DE4 ; =0x00000471
-	mov r0, #0x18
+	mov r0, #SND_SCENE_THLON
 	mov r2, #0
 	bl GF_SetDataByScene
 _021E6DBA:
@@ -3545,10 +3547,10 @@ ov96_021E72CC: ; 0x021E72CC
 	add r0, r4, #0
 	mov r1, #0x21
 	bl ov96_021E5FC8
-	mov r0, #0
+	mov r0, #SND_SCENE_DUMMY
 	bl GF_SetSndScene
 	ldr r1, _021E731C ; =0x00000474
-	mov r0, #0x19
+	mov r0, #SND_SCENE_THLON_OPED
 	mov r2, #0
 	bl GF_SetDataByScene
 _021E7318:
@@ -13836,7 +13838,7 @@ _021EBF44:
 	mov r0, #0x8e
 	lsl r0, r0, #4
 	bl PlaySE
-	ldr r0, _021EC004 ; =0x00000476
+	ldr r0, _021EC004 ; =SEQ_GS_PT_VICTORY
 	bl PlayBGM
 	add r0, r4, #0
 	add r0, #0xb1
@@ -13872,7 +13874,7 @@ _021EBFF4: .word ov96_021ED660
 _021EBFF8: .word ov96_021ED6A8
 _021EBFFC: .word 0x000006EE
 _021EC000: .word 0x000008E2
-_021EC004: .word 0x00000476
+_021EC004: .word SEQ_GS_PT_VICTORY
 _021EC008:
 	add r1, r4, #0
 	add r1, #0x9c

@@ -1,4 +1,5 @@
 #include "constants/items.h"
+#include "constants/snd_system.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -3893,7 +3894,7 @@ sub_0203DAE4: ; 0x0203DAE4
 	ldr r0, _0203DB64 ; =0x000003F3
 	mov r1, #0
 	bl StopBGM
-	mov r0, #0
+	mov r0, #SND_SCENE_DUMMY
 	bl GF_SetSndScene
 	ldr r1, [r5, #0x20]
 	add r0, r5, #0

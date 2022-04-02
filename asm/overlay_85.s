@@ -1,3 +1,4 @@
+#include "constants/snd_system.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -688,7 +689,7 @@ _021E5DFE:
 	mov r0, #0x11
 	str r0, [r6]
 	ldr r1, _021E5E2C ; =0x00000483
-	mov r0, #0xf
+	mov r0, #SND_SCENE_SPIN_TRADE
 	bl GF_SetDataByScene
 	add r0, r6, #0
 	bl ov85_021E72E8
@@ -6550,7 +6551,7 @@ _021E890A:
 	add r0, r4, #0
 	bl ov85_021E9160
 	mov r1, #0
-	mov r0, #0x34
+	mov r0, #SND_SCENE_SUB_NAMEIN
 	add r2, r1, #0
 	bl GF_SetDataByScene
 	ldr r0, [r6, #0x30]

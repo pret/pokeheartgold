@@ -3,6 +3,7 @@
 #include "constants/pokemon.h"
 #include "constants/ribbon.h"
 #include "constants/party_menu.h"
+#include "constants/snd_system.h"
 #include "msgdata/msg/msg_0300.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
@@ -155,7 +156,7 @@ _0208291E:
 	add r3, r4, r3
 	bl sub_02084740
 	mov r1, #0
-	mov r0, #0x34
+	mov r0, #SND_SCENE_SUB_NAMEIN
 	add r2, r1, #0
 	bl GF_SetDataByScene
 	mov r0, #0x10

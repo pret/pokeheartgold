@@ -1,5 +1,6 @@
 #include "constants/sndseq.h"
 #include "constants/species.h"
+#include "constants/snd_system.h"
 #include "msgdata/msg/msg_0219.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
@@ -2992,7 +2993,7 @@ _021E70B8:
 	add r1, r5, #0
 	bl ToggleBgLayer
 	mov r1, #SEQ_GS_POKEMON_THEME>>4
-	mov r0, #2
+	mov r0, #SND_SCENE_OPENING
 	lsl r1, r1, #4
 	mov r2, #1
 	bl GF_SetDataByScene

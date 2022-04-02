@@ -1,3 +1,4 @@
+#include "constants/snd_system.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -123,10 +124,10 @@ sub_02005DF4: ; 0x02005DF4
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r5, r0, #0
-	mov r0, #0x13
+	mov r0, #SND_W_ID_BANK_FLAG
 	add r6, r2, #0
 	bl GF_SdatGetAttrPtr
-	mov r0, #0x20
+	mov r0, #SND_W_ID_ZONE_BGM
 	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	mov r0, #0
@@ -158,7 +159,7 @@ sub_02005E44: ; 0x02005E44
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r4, r0, #0
-	mov r0, #0x15
+	mov r0, #SND_W_ID_SCENE_MAIN
 	bl GF_SdatGetAttrPtr
 	ldrb r0, [r0]
 	cmp r0, #4
@@ -310,7 +311,7 @@ _02005F86:
 	thumb_func_start GF_SndGetFadeTimer
 GF_SndGetFadeTimer: ; 0x02005F88
 	push {r3, lr}
-	mov r0, #7
+	mov r0, #SND_W_ID_FADE_COUNT
 	bl GF_SdatGetAttrPtr
 	ldrh r0, [r0]
 	pop {r3, pc}
@@ -327,10 +328,10 @@ sub_02005F94: ; 0x02005F94
 	thumb_func_start sub_02005FA0
 sub_02005FA0: ; 0x02005FA0
 	push {r3, r4, r5, lr}
-	mov r0, #0x10
+	mov r0, #SND_W_ID_WAVEOUT_CH_NORMAL_FLAG
 	bl GF_SdatGetAttrPtr
 	add r5, r0, #0
-	mov r0, #0x11
+	mov r0, #SND_W_ID_WAVEOUT_CH_CHORUS_FLAG
 	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	mov r0, #0
@@ -355,10 +356,10 @@ _02005FD0:
 	thumb_func_start sub_02005FD8
 sub_02005FD8: ; 0x02005FD8
 	push {r3, r4, r5, r6, r7, lr}
-	mov r0, #0x10
+	mov r0, #SND_W_ID_WAVEOUT_CH_NORMAL_FLAG
 	bl GF_SdatGetAttrPtr
 	add r7, r0, #0
-	mov r0, #0x11
+	mov r0, #SND_W_ID_WAVEOUT_CH_CHORUS_FLAG
 	bl GF_SdatGetAttrPtr
 	add r6, r0, #0
 	mov r0, #7
@@ -675,14 +676,14 @@ PlayCry: ; 0x02006218
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	mov r0, #0x12
+	mov r0, #SND_W_ID_CHORUS_FLAG
 	str r1, [sp, #8]
 	bl GF_SdatGetAttrPtr
 	add r7, r0, #0
-	mov r0, #0x24
+	mov r0, #SND_W_ID_MY_PERAP_PTR
 	bl GF_SdatGetAttrPtr
 	add r6, r0, #0
-	mov r0, #0x35
+	mov r0, #SND_W_ID_PV_DOUBLE_FLAG
 	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	ldr r1, [sp, #8]
@@ -791,13 +792,13 @@ sub_020062E0: ; 0x020062E0
 sub_02006300: ; 0x02006300
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	mov r0, #0x10
+	mov r0, #SND_W_ID_WAVEOUT_CH_NORMAL_FLAG
 	bl GF_SdatGetAttrPtr
 	add r6, r0, #0
-	mov r0, #0x11
+	mov r0, #SND_W_ID_WAVEOUT_CH_CHORUS_FLAG
 	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
-	mov r0, #0xf
+	mov r0, #SND_W_ID_REVERSE_FLAG
 	bl GF_SdatGetAttrPtr
 	mov r0, #1
 	bl GF_GetSoundHandle
@@ -831,15 +832,15 @@ _02006356:
 	thumb_func_start IsCryFinished
 IsCryFinished: ; 0x02006360
 	push {r3, r4, r5, lr}
-	mov r0, #0x10
+	mov r0, #SND_W_ID_WAVEOUT_CH_NORMAL_FLAG
 	bl GF_SdatGetAttrPtr
 	add r5, r0, #0
-	mov r0, #0x11
+	mov r0, #SND_W_ID_WAVEOUT_CH_CHORUS_FLAG
 	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
-	mov r0, #0xf
+	mov r0, #SND_W_ID_REVERSE_FLAG
 	bl GF_SdatGetAttrPtr
-	mov r0, #0x2e
+	mov r0, #SND_W_ID_PV_WAIT
 	bl GF_SdatGetAttrPtr
 	ldrb r0, [r5]
 	cmp r0, #1
@@ -869,7 +870,7 @@ PlayCryEx: ; 0x020063A4
 	ldr r0, [sp, #0x38]
 	add r4, r1, #0
 	str r0, [sp, #0x38]
-	mov r0, #0x10
+	mov r0, #SND_W_ID_WAVEOUT_CH_NORMAL_FLAG
 	add r6, r2, #0
 	add r7, r3, #0
 	ldr r5, [sp, #0x3c]
@@ -878,13 +879,13 @@ PlayCryEx: ; 0x020063A4
 	mov r0, #0x11
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x10]
-	mov r0, #0x12
+	mov r0, #SND_W_ID_CHORUS_FLAG
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0xc]
-	mov r0, #0x1e
+	mov r0, #SND_W_ID_PERAP_PLAY_FLAG
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #8]
-	mov r0, #0x24
+	mov r0, #SND_W_ID_MY_PERAP_PTR
 	bl GF_SdatGetAttrPtr
 	add r0, r4, #0
 	add r1, r5, #0
@@ -1393,7 +1394,7 @@ sub_02006838: ; 0x02006838
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	mov r0, #0x23
+	mov r0, #SND_W_ID_LENGTH_TCB
 	bl GF_SdatGetAttrPtr
 	add r6, r0, #0
 	bl sub_020068F8
@@ -1428,11 +1429,11 @@ _02006880: .word sub_02006884
 	thumb_func_start sub_02006884
 sub_02006884: ; 0x02006884
 	push {r4, r5, r6, lr}
-	mov r0, #0x10
+	mov r0, #SND_W_ID_WAVEOUT_CH_NORMAL_FLAG
 	add r5, r1, #0
 	bl GF_SdatGetAttrPtr
 	add r6, r0, #0
-	mov r0, #0x11
+	mov r0, #SND_W_ID_WAVEOUT_CH_CHORUS_FLAG
 	bl GF_SdatGetAttrPtr
 	ldr r2, [r5]
 	add r4, r0, #0
@@ -1484,7 +1485,7 @@ _020068F6:
 	thumb_func_start sub_020068F8
 sub_020068F8: ; 0x020068F8
 	push {r3, r4, r5, lr}
-	mov r0, #0x23
+	mov r0, #SND_W_ID_LENGTH_TCB
 	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -1507,54 +1508,54 @@ sub_02006920: ; 0x02006920
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x28
 	add r6, r0, #0
-	mov r0, #6
+	mov r0, #SND_W_ID_PV_WAIT_WORK
 	add r5, r1, #0
 	add r7, r2, #0
 	str r3, [sp, #8]
 	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
-	mov r0, #0x35
+	mov r0, #SND_W_ID_PV_DOUBLE_FLAG
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0xc]
 	ldrb r0, [r4]
 	cmp r0, #0
 	bne _02006974
-	mov r0, #0x29
+	mov r0, #SND_W_ID_PV_PTN
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x24]
-	mov r0, #0x2d
+	mov r0, #SND_W_ID_PV_NO
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x20]
-	mov r0, #0x2a
+	mov r0, #SND_W_ID_PV_PAN
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x1c]
-	mov r0, #0x2b
+	mov r0, #SND_W_ID_PV_VOL
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x18]
-	mov r0, #0x2c
+	mov r0, #SND_W_ID_PV_HEAP_ID
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x14]
-	mov r0, #0x2e
+	mov r0, #SND_W_ID_PV_WAIT
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x10]
 	b _020069A4
 _02006974:
-	mov r0, #0x2f
+	mov r0, #SND_W_ID_PV_PTN_2
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x24]
-	mov r0, #0x33
+	mov r0, #SND_W_ID_PV_NO_2
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x20]
-	mov r0, #0x30
+	mov r0, #SND_W_ID_PV_PAN_2
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x1c]
-	mov r0, #0x31
+	mov r0, #SND_W_ID_PV_VOL_2
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x18]
-	mov r0, #0x32
+	mov r0, #SND_W_ID_PV_HEAP_ID_2
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x14]
-	mov r0, #0x34
+	mov r0, #SND_W_ID_PV_WAIT_2
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x10]
 _020069A4:
@@ -1641,40 +1642,40 @@ _02006A2C: .word 0x000001EE
 sub_02006A30: ; 0x02006A30
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1c
-	mov r0, #0x29
+	mov r0, #SND_W_ID_PV_PTN
 	bl GF_SdatGetAttrPtr
 	add r5, r0, #0
-	mov r0, #0x2d
+	mov r0, #SND_W_ID_PV_NO
 	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
-	mov r0, #0x2a
+	mov r0, #SND_W_ID_PV_PAN
 	bl GF_SdatGetAttrPtr
 	add r6, r0, #0
-	mov r0, #0x2b
+	mov r0, #SND_W_ID_PV_VOL
 	bl GF_SdatGetAttrPtr
 	add r7, r0, #0
-	mov r0, #0x2c
+	mov r0, #SND_W_ID_PV_HEAP_ID
 	bl GF_SdatGetAttrPtr
 	str r0, [sp]
-	mov r0, #0x2e
+	mov r0, #SND_W_ID_PV_WAIT
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #4]
-	mov r0, #0x2f
+	mov r0, #SND_W_ID_PV_PTN_2
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #8]
-	mov r0, #0x33
+	mov r0, #SND_W_ID_PV_NO_2
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0xc]
-	mov r0, #0x30
+	mov r0, #SND_W_ID_PV_PAN_2
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x10]
-	mov r0, #0x31
+	mov r0, #SND_W_ID_PV_VOL_2
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x14]
-	mov r0, #0x32
+	mov r0, #SND_W_ID_PV_HEAP_ID_2
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x18]
-	mov r0, #0x34
+	mov r0, #SND_W_ID_PV_WAIT_2
 	bl GF_SdatGetAttrPtr
 	mov r1, #0
 	str r1, [r5]
@@ -1705,7 +1706,7 @@ sub_02006A30: ; 0x02006A30
 sub_02006AC0: ; 0x02006AC0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	mov r0, #0x12
+	mov r0, #SND_W_ID_CHORUS_FLAG
 	add r4, r1, #0
 	add r6, r2, #0
 	bl GF_SdatGetAttrPtr
@@ -1732,7 +1733,7 @@ sub_02006AF4: ; 0x02006AF4
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	mov r0, #0x12
+	mov r0, #SND_W_ID_CHORUS_FLAG
 	add r4, r2, #0
 	add r6, r3, #0
 	bl GF_SdatGetAttrPtr
@@ -1771,7 +1772,7 @@ _02006B48:
 	mov r0, #1
 	bl SndRadio_PausePlayer
 _02006B4E:
-	mov r0, #0x1d
+	mov r0, #SND_W_ID_HEAP_SAVE_ME
 	bl GF_SdatGetAttrPtr
 	bl GF_Snd_SaveState
 	add r0, r4, #0
@@ -1798,7 +1799,7 @@ _02006B4E:
 	thumb_func_start sub_02006B84
 sub_02006B84: ; 0x02006B84
 	push {r4, lr}
-	mov r0, #0xe
+	mov r0, #SND_W_ID_ME_WAIT
 	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	mov r0, #2
@@ -1838,7 +1839,7 @@ sub_02006BB0: ; 0x02006BB0
 	thumb_func_start IsFanfarePlaying
 IsFanfarePlaying: ; 0x02006BCC
 	push {r3, lr}
-	mov r0, #0xe
+	mov r0, #SND_W_ID_ME_WAIT
 	bl GF_SdatGetAttrPtr
 	bl sub_02006B84
 	cmp r0, #1
@@ -1865,7 +1866,7 @@ _02006BF8:
 	thumb_func_start sub_02006C04
 sub_02006C04: ; 0x02006C04
 	push {r3, lr}
-	mov r0, #0xe
+	mov r0, #SND_W_ID_ME_WAIT
 	bl GF_SdatGetAttrPtr
 	mov r1, #0xf
 	strh r1, [r0]

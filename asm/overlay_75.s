@@ -1,3 +1,4 @@
+#include "constants/snd_system.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 	.public ov60_021EAFE0
@@ -47,7 +48,7 @@ ov75_02246960: ; 0x02246960
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r1, _022469D4 ; =0x0000047D
-	mov r0, #0x11
+	mov r0, #SND_SCENE_EMAIL
 	mov r2, #1
 	bl GF_SetDataByScene
 	mov r0, #0

@@ -1,3 +1,4 @@
+#include "constants/snd_system.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -2600,7 +2601,7 @@ _0222B2A8:
 	b _0222B360
 _0222B2CA:
 	ldr r1, _0222B364 ; =0x0000047D
-	mov r0, #0xb
+	mov r0, #SND_SCENE_P2P
 	mov r2, #1
 	bl GF_SetDataByScene
 	add r0, r5, #0
@@ -8201,10 +8202,10 @@ ov44_0222E030: ; 0x0222E030
 	cmp r0, #0
 	bne _0222E056
 	bl IsNighttime
-	mov r0, #0
+	mov r0, #SND_SCENE_DUMMY
 	bl GF_SetSndScene
 	ldr r1, _0222E070 ; =0x00000427
-	mov r0, #0xb
+	mov r0, #SND_SCENE_P2P
 	mov r2, #1
 	bl GF_SetDataByScene
 	pop {r4, pc}

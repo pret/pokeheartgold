@@ -1,0 +1,10 @@
+#ifndef NNS_SND_CAPTURE_H_
+#define NNS_SND_CAPTURE_H_
+
+typedef enum {
+    NNS_SND_CAPTURE_TYPE_REVERB,
+    NNS_SND_CAPTURE_TYPE_EFFECT,
+    NNS_SND_CAPTURE_TYPE_SAMPLING
+} NNSSndCaptureType; 
+
+#endif /* NNS_SND_CAPTURE_H_ */

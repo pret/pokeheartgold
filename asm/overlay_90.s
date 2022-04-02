@@ -1,3 +1,4 @@
+#include "constants/snd_system.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -1893,7 +1894,7 @@ ov90_02259588: ; 0x02259588
 	mov r1, #0x12
 	add r6, r0, #0
 	add r5, r2, #0
-	mov r0, #0x13
+	mov r0, #SND_SCENE_WIFI_LOBBY_GAME
 	lsl r1, r1, #6
 	mov r2, #0
 	bl GF_SetDataByScene

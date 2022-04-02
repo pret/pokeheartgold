@@ -1,3 +1,4 @@
+#include "constants/snd_system.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -6472,7 +6473,7 @@ ov18_021E8C30: ; 0x021E8C30
 	bl ov18_021F0FC8
 	bl ov18_021E6174
 	mov r1, #0
-	mov r0, #0x36
+	mov r0, #SND_SCENE_SUB_ZUKAN
 	add r2, r1, #0
 	bl GF_SetDataByScene
 	ldr r0, _021E8D30 ; =ov18_021E5C40

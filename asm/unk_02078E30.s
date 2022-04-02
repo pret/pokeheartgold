@@ -3,6 +3,7 @@
 #include "constants/pokemon.h"
 #include "constants/ribbon.h"
 #include "constants/party_menu.h"
+#include "constants/snd_system.h"
 #include "msgdata/msg/msg_0300.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
@@ -80,7 +81,7 @@ sub_02078E30: ; 0x02078E30
 	mov r0, #4
 	bl sub_02021148
 	mov r1, #0
-	mov r0, #0x39
+	mov r0, #SND_SCENE_SUB_POKELIST
 	add r2, r1, #0
 	bl GF_SetDataByScene
 	add r0, r5, #0

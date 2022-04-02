@@ -1,3 +1,4 @@
+#include "constants/snd_system.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -109,7 +110,7 @@ _021E5916:
 	add r1, r6, #0
 	bl ov37_021E6418
 	mov r1, #0
-	mov r0, #0x34
+	mov r0, #SND_SCENE_SUB_NAMEIN
 	add r2, r1, #0
 	bl GF_SetDataByScene
 	ldr r2, _021E5A7C ; =0x04000304

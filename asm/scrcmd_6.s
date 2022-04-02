@@ -1,3 +1,4 @@
+#include "constants/snd_system.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -409,7 +410,7 @@ ScrCmd_ChatotSaveRecording: ; 0x020493C0
 ScrCmd_093: ; 0x020493D4
 	push {r3, lr}
 	mov r1, #0
-	mov r0, #0x3f
+	mov r0, #SND_SCENE_SUB_CLIMAX
 	add r2, r1, #0
 	bl GF_SetDataByScene
 	mov r0, #1

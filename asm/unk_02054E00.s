@@ -1,5 +1,6 @@
 #include "constants/sndseq.h"
 #include "constants/trainer_class.h"
+#include "constants/snd_system.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -167,7 +168,7 @@ sub_02054F14: ; 0x02054F14
 	push {r3, lr}
 	bl sub_02005FA0
 	bl GF_ClearPauseFlags
-	mov r0, #0
+	mov r0, #SND_SCENE_DUMMY
 	bl GF_SetSndScene
 	pop {r3, pc}
 	.balign 4, 0
@@ -449,7 +450,7 @@ sub_02055110: ; 0x02055110
 	bl GF_GetCntrlBgmFlag
 	cmp r0, #1
 	beq _02055160
-	mov r0, #0
+	mov r0, #SND_SCENE_DUMMY
 	bl GF_SetSndScene
 	add r0, r5, #0
 	add r1, r6, #0

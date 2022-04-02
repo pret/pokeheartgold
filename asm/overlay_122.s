@@ -1,3 +1,4 @@
+#include "constants/snd_system.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -429,7 +430,7 @@ _021E5C22:
 	mov r1, #5
 	bl BgCommitTilemapBufferToVram
 	mov r1, #0
-	mov r0, #0x40
+	mov r0, #SND_SCENE_SUB_SLOT
 	add r2, r1, #0
 	bl GF_SetDataByScene
 	cmp r4, #0
@@ -559,7 +560,7 @@ _021E5D46:
 	bne _021E5D6C
 _021E5D5A:
 	mov r1, #0
-	mov r0, #0x46
+	mov r0, #SND_SCENE_SUB_COIN
 	add r2, r1, #0
 	bl GF_SetDataByScene
 	mov r0, #1
@@ -1473,7 +1474,7 @@ _021E6432:
 	add r0, r4, r0
 	bl ov122_021E7888
 	mov r1, #0
-	mov r0, #0x40
+	mov r0, #SND_SCENE_SUB_SLOT
 	add r2, r1, #0
 	bl GF_SetDataByScene
 	ldr r0, _021E64E4 ; =0x0000092A
@@ -1497,7 +1498,7 @@ _021E649C:
 	cmp r0, #0
 	beq _021E64DC
 	mov r1, #0
-	mov r0, #0x46
+	mov r0, #SND_SCENE_SUB_COIN
 	add r2, r1, #0
 	bl GF_SetDataByScene
 	ldr r0, [r4, #0x18]
@@ -5229,7 +5230,7 @@ _021E80A4:
 	add r0, r4, #0
 	bl ov122_021E7094
 	mov r1, #0
-	mov r0, #0x46
+	mov r0, #SND_SCENE_SUB_COIN
 	add r2, r1, #0
 	bl GF_SetDataByScene
 	mov r0, #0x10

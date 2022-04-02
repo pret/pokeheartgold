@@ -1,3 +1,4 @@
+#include "constants/snd_system.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -26,7 +27,7 @@ _020551D6:
 	add r2, r4, #4
 	bl ov01_021EFC94
 	ldr r1, [r4, #0xc]
-	mov r0, #5
+	mov r0, #SND_SCENE_BATTLE
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	mov r2, #1

@@ -1,53 +1,49 @@
 #ifndef POKEHEARTGOLD_SND_TOOL_H
 #define POKEHEARTGOLD_SND_TOOL_H
 
-#define NNS_SND_ARC_BANK_TO_WAVEARC_NUM 4
+#include <nnsys/snd/waveout.h>
+#include <nnsys/snd/capture.h>
 
-typedef struct NNSSndArcBankInfo
-{
-    u32 fileId;
-    u16 waveArcNo[ NNS_SND_ARC_BANK_TO_WAVEARC_NUM ];
-} NNSSndArcBankInfo;
+#define BGM_FADEIN_START_VOL_MIN	0						
+#define BGM_FADEIN_START_VOL_NOW	1			
 
-typedef struct NNSSndWaveOut { //this should be defined in nnys/snd/waveout.h
-    int chNo;
-    int sampleRate;
-    BOOL activeFlag;
-    BOOL startFlag;
-    u32 startCommandTag;
-} NNSSndWaveOut;
-typedef struct NNSSndWaveOut* NNSSndWaveOutHandle;
+#define PV_PTN_PARAM_NONE	    0x1ff					
 
-typedef enum NNSSndWaveFormat //this should also be in waveout.h
-{
-    NNS_SND_WAVE_FORMAT_PCM8,
-    NNS_SND_WAVE_FORMAT_PCM16
-} NNSSndWaveFormat;
+#define SND_BANK_CONTINUE		    0						
+#define SND_BANK_CHANGE			    1						
 
-typedef struct NNSSndArcWaveArcInfo //sndarc.h
-{
-    u32 fileId : 24;
-    u32 flags  :  8;
-} NNSSndArcWaveArcInfo;
+#define SND_HALF_PITCH			   64					
 
-typedef enum {
-    NNS_SND_CAPTURE_TYPE_REVERB,
-    NNS_SND_CAPTURE_TYPE_EFFECT,
-    NNS_SND_CAPTURE_TYPE_SAMPLING
-} NNSSndCaptureType; //capture.h
+#define SND_VCHAT_VOL_LV		    5	
+
+#define	SND_HANDLE_FIELD            0									
+#define	SND_HANDLE_PMVOICE          1										
+#define	SND_HANDLE_ME		        2								
+#define	SND_HANDLE_SE_1		        3								
+#define	SND_HANDLE_SE_2		        4								
+#define	SND_HANDLE_SE_3		        5								
+#define	SND_HANDLE_SE_4		        6								
+#define	SND_HANDLE_BGM		        7									
+#define	SND_HANDLE_CHORUS	        8									
+#define	SND_HANDLE_MAX	            9
+
+#define WAVEOUT_CH_NORMAL          14
+#define WAVEOUT_CH_CHORUS          15
+
+#define PLAYER_BGM_NORMAL_CH   0xa7fe
 
 typedef struct{
-	NNSSndWaveOutHandle*	handle;					//波形再生ハンドル
-	NNSSndWaveFormat		format;					//波形データフォーマット
-	const void*				dataaddr;				//波形データの先頭アドレス
-	BOOL					loopFlag;				//ループフラグ
-	int						loopStartSample;		//ループ開始サンプル位置
-	int						samples;				//波形データのサンプル数
-	int						sampleRate;				//波形データのサンプリングレート
-	int						volume;					//音量
-	int						speed;					//再生スピード
-	int						pan;					//パン(0-127)
-}WAVEOUT_WORK;
+	NNSSndWaveOutHandle*	handle;	
+	NNSSndWaveFormat		format;				
+	const void*				dataaddr;			
+	BOOL					loopFlag;			
+	int						loopStartSample;	
+	int						samples;	
+	int						sampleRate;	
+	int						volume;	
+	int						speed;	
+	int						pan;				
+} WAVEOUT_WORK;
 
 void GF_SetCtrlBgmFlag(u8 flag);
 u8 GF_GetCntrlBgmFlag(void);
@@ -93,7 +89,7 @@ MICResult GF_MIC_StartAutoSampling(MICAutoParam* p);
 MICResult GF_MIC_StopAutoSampling(void);
 void GF_MicPauseOnLidClose(void);
 void GF_MicResumeOnLidOpen(void);
-NNSSndWaveOutHandle* Snd_WaveOutHandleGet( u32 no ); //note: return type should be NNSSndWaveOutHandle*, though that is throwing errors
+NNSSndWaveOutHandle* Snd_WaveOutHandleGet( u32 no ); 
 BOOL GF_AllocWaveOutChannel(u32 no);
 void GF_FreeWaveOutChannel(u32 no);
 BOOL GF_WaveOutStart(WAVEOUT_WORK* p, u32 ch);

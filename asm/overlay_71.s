@@ -1,3 +1,4 @@
+#include "constants/snd_system.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -23,7 +24,7 @@ _02246970:
 	bl CreateHeap
 	bl ov71_022473E4
 	mov r1, #0xfd
-	mov r0, #3
+	mov r0, #SND_SCENE_TRADE
 	lsl r1, r1, #2
 	mov r2, #1
 	bl GF_SetDataByScene

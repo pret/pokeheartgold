@@ -39,6 +39,12 @@ typedef struct NNSSndArcInfo
     u32 strmOffset;
 } NNSSndArcInfo;
 
+typedef struct NNSSndArcWaveArcInfo
+{
+    u32 fileId : 24;
+    u32 flags  :  8;
+} NNSSndArcWaveArcInfo;
+
 typedef struct NNSSndArcSymbol
 {
     struct SNDBinaryBlockHeader blockHeader;
@@ -79,6 +85,12 @@ typedef struct NNSSndArc
     struct NNSSndArcInfo* info;
     s32 loadBlockSize;
 } NNSSndArc;
+
+typedef struct NNSSndArcBankInfo
+{
+    u32 fileId;
+    u16 waveArcNo[ NNS_SND_ARC_BANK_TO_WAVEARC_NUM ];
+} NNSSndArcBankInfo;
 
 void NNS_SndArcInit(NNSSndArc *arc, const char *filePath, NNSSndHeapHandle heap, BOOL symbolLoadFlag);
 

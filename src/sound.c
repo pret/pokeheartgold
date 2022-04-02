@@ -3,6 +3,7 @@
 #include "options.h"
 #include "system.h"
 #include "constants/sndseq.h"
+#include "constants/snd_system.h"
 
 #define ASM_EXTERN extern
 
@@ -11,38 +12,38 @@ struct SND_WORK {
     /* 0x00094 */ NNSSndHeapHandle heap;
     /* 0x00098 */ u8 heap_buf[SND_HEAP_SIZE];
     /* 0xBEB78 */ NNSSndHandle unk_BEB78[SND_HANDLE_MAX];
-    /* 0xBEB9C */ u32 unk_BEB9C;
-    /* 0xBEBA0 */ u32 unk_BEBA0;
-    /* 0xBEBA4 */ u32 unk_BEBA4;
+    /* 0xBEB9C */ u32 waveoutHandleNormal;
+    /* 0xBEBA0 */ u32 waveoutHandleChorus;
+    /* 0xBEBA4 */ u32 bankinfo;
     /* 0xBEBA8 */ u8 unk_BEBA8[0x18];
-    /* 0xBEBC0 */ u8 unk_BEBC0[16];
-    /* 0xBEBD0 */ u8 unk_BEBD0[28];
+    /* 0xBEBC0 */ u8 captureBuffer[16];
+    /* 0xBEBD0 */ u8 callbackinfo[28];
     /* 0xBEBEC */ u16 unk_BEBEC;
-    /* 0xBEBEE */ u8 unk_BEBEE;
-    /* 0xBEBEF */ u8 unk_BEBEF;
+    /* 0xBEBEE */ u8 cntrlBGMFlag;
+    /* 0xBEBEF */ u8 pvWait;
     /* 0xBEBF0 */ int fadeTimer;
-    /* 0xBEBF4 */ int unk_BEBF4;
+    /* 0xBEBF4 */ int nextWait;
     /* 0xBEBF8 */ int queuedSeqFadeInDuration;
     /* 0xBEBFC */ u16 currentSeqNo;
     /* 0xBEBFE */ u16 queuedSeqNo;
-    /* 0xBEC00 */ u8 unk_BEC00;
-    /* 0xBEBC1 */ u8 unk_BEC01;
+    /* 0xBEC00 */ u8 fieldPauseFlag;
+    /* 0xBEBC1 */ u8 pauseBGMFlag;
     /* 0xBEC02 */ u16 afterFanfareWaitTimer;
-    /* 0xBEC04 */ u8 unk_BEC04;
-    /* 0xBEC05 */ u8 unk_BEC05;
-    /* 0xBEC06 */ u8 unk_BEC06;
-    /* 0xBEC07 */ u8 unk_BEC07;
-    /* 0xBEC08 */ u8 unk_BEC08;
-    /* 0xBEC09 */ u8 unk_BEC09;
-    /* 0xBEC0A */ u8 unk_BEC0A;
-    /* 0xBEC0B */ u8 unk_BEC0B;
+    /* 0xBEC04 */ u8 reverseFlag;
+    /* 0xBEC05 */ u8 waveoutNormalFlag;
+    /* 0xBEC06 */ u8 waveoutChorusFlag;
+    /* 0xBEC07 */ u8 chorusFlag;
+    /* 0xBEC08 */ u8 bankFlag;
+    /* 0xBEC09 */ u8 filterSize;
+    /* 0xBEC0A */ u8 sceneMain;
+    /* 0xBEC0B */ u8 sceneSub;
     /* 0xBEC0C */ int stateSaveDepth[7];
-    /* 0xBEC28 */ u8 unk_BEC28;
-    /* 0xBEC29 */ u8 unk_BEC29;
-    /* 0xBEC2A */ u16 unk_BEC2A;
-    /* 0xBEC2C */ u32 unk_BEC2C;
-    /* 0xBEC30 */ u8 unk_BEC30[8];
-    /* 0xBEC38 */ u32 unk_BEC38;
+    /* 0xBEC28 */ u8 preapPlayFlag;
+    /* 0xBEC29 */ u8 preapDefaultFlag;
+    /* 0xBEC2A */ u16 zoneBGM;
+    /* 0xBEC2C */ u32 wavedata;
+    /* 0xBEC30 */ u8 reverseBuffer[8];
+    /* 0xBEC38 */ u32 tcbLength;
     /* 0xBEC3C */ SOUND_CHATOT *myChatot;
     /* 0xBEC40 */ SOUND_CHATOT *otherChatots[4];
     /* 0xBEC50 */ u32 cryPattern[2];
@@ -51,8 +52,8 @@ struct SND_WORK {
     /* 0xBEC68 */ u32 cryHeapId[2];
     /* 0xBEC70 */ u16 cryNo[2];
     /* 0xBEC74 */ u8 cryDelayTimer[2];
-    /* 0xBEC76 */ u8 unk_BEC76;
-    /* 0xBEC77 */ u8 unk_BEC77;
+    /* 0xBEC76 */ u8 pvDoubleFlag;
+    /* 0xBEC77 */ u8 battleRecFlag;
     /* 0xBEC78 */ u8 unk_BEC78;
     /* 0xBEC79 */ u8 unk_BEC79;
     /* 0xBEC7A */ u16 unk_BEC7A;
@@ -100,8 +101,8 @@ void DoSoundUpdateFrame(void) {
     SND_WORK *work = GetSoundDataPointer();
 
     // debug stuff left in
-    void *stripped_0 = GF_SdatGetAttrPtr(18);
-    void *stripped_1 = GF_SdatGetAttrPtr(32);
+    void *stripped_0 = GF_SdatGetAttrPtr(SND_W_ID_CHORUS_FLAG);
+    void *stripped_1 = GF_SdatGetAttrPtr(SND_W_ID_ZONE_BGM);
 
     // Only handle fade transitions if fanfare not playing
     if (!GF_SndIsFanfarePlaying()) {
@@ -209,126 +210,126 @@ void *GF_SdatGetAttrPtr(u32 attr) {
 
     work = GetSoundDataPointer();
     switch (attr) {
-    case 5:
-        return &work->unk_BEBEE;
-    case 6:
-        return &work->unk_BEBEF;
-    case 0:
-        return &work->unk_BEB9C;
-    case 1:
-        return &work->unk_BEBA0;
-    case 2:
-        return &work->unk_BEBA4;
-    case 3:
-        return &work->unk_BEBC0;
-    case 4:
-        return &work->unk_BEBD0;
-    case 7:
+    case SND_W_ID_CTRL_BGM_FLAG:
+        return &work->cntrlBGMFlag;
+    case SND_W_ID_PV_WAIT_WORK:
+        return &work->pvWait;
+    case SND_W_ID_WAVEOUT_HANDLE_NORMAL:
+        return &work->waveoutHandleNormal;
+    case SND_W_ID_WAVEOUT_HANDLE_CHORUS:
+        return &work->waveoutHandleChorus;
+    case SND_W_ID_BANK_INFO:
+        return &work->bankinfo;
+    case SND_W_ID_CAPTURE_BUF:
+        return &work->captureBuffer;
+    case SND_W_ID_CALLBACK_INFO:
+        return &work->callbackinfo;
+    case SND_W_ID_FADE_COUNT:
         return &work->fadeTimer;
-    case 8:
-        return &work->unk_BEBF4;
-    case 9:
+    case SND_W_ID_NEXT_WAIT:
+        return &work->nextWait;
+    case SND_W_ID_NEXT_FRAME:
         return &work->queuedSeqFadeInDuration;
-    case 10:
+    case SND_W_ID_CUR_BGM_NO:
         return &work->currentSeqNo;
-    case 11:
+    case SND_W_ID_NEXT_BGM_NO:
         return &work->queuedSeqNo;
-    case 12:
-        return &work->unk_BEC00;
-    case 13:
-        return &work->unk_BEC01;
-    case 14:
+    case SND_W_ID_FIELD_PAUSE_FLAG:
+        return &work->fieldPauseFlag;
+    case SND_W_ID_BGM_PAUSE_FLAG:
+        return &work->pauseBGMFlag;
+    case SND_W_ID_ME_WAIT:
         return &work->afterFanfareWaitTimer;
-    case 15:
-        return &work->unk_BEC04;
-    case 16:
-        return &work->unk_BEC05;
-    case 17:
-        return &work->unk_BEC06;
-    case 18:
-        return &work->unk_BEC07;
-    case 19:
-        return &work->unk_BEC08;
-    case 20:
-        return &work->unk_BEC09;
-    case 21:
-        return &work->unk_BEC0A;
-    case 22:
-        return &work->unk_BEC0B;
-    case 23:
+    case SND_W_ID_REVERSE_FLAG:
+        return &work->reverseFlag;
+    case SND_W_ID_WAVEOUT_CH_NORMAL_FLAG:
+        return &work->waveoutNormalFlag;
+    case SND_W_ID_WAVEOUT_CH_CHORUS_FLAG:
+        return &work->waveoutChorusFlag;
+    case SND_W_ID_CHORUS_FLAG:
+        return &work->chorusFlag;
+    case SND_W_ID_BANK_FLAG:
+        return &work->bankFlag;
+    case SND_W_ID_FILTER_SIZE:
+        return &work->filterSize;
+    case SND_W_ID_SCENE_MAIN:
+        return &work->sceneMain;
+    case SND_W_ID_SCENE_SUB:
+        return &work->sceneSub;
+    case SND_W_ID_HEAP_SAVE_START:
         return &work->stateSaveDepth[0];
-    case 24:
+    case SND_W_ID_HEAP_SAVE_GLOBAL:
         return &work->stateSaveDepth[1];
-    case 25:
+    case SND_W_ID_HEAP_SAVE_BGM_BANK:
         return &work->stateSaveDepth[2];
-    case 26:
+    case SND_W_ID_HEAP_SAVE_SE:
         return &work->stateSaveDepth[3];
-    case 27:
+    case SND_W_ID_HEAP_SAVE_BGM:
         return &work->stateSaveDepth[4];
-    case 28:
+    case SND_W_ID_HEAP_SAVE_SUB_SE:
         return &work->stateSaveDepth[5];
-    case 29:
+    case SND_W_ID_HEAP_SAVE_ME:
         return &work->stateSaveDepth[6];
-    case 30:
-        return &work->unk_BEC28;
-    case 31:
-        return &work->unk_BEC29;
-    case 32:
-        return &work->unk_BEC2A;
-    case 33:
-        return &work->unk_BEC2C;
-    case 34:
-        return &work->unk_BEC30;
-    case 35:
-        return &work->unk_BEC38;
-    case 36:
+    case SND_W_ID_PERAP_PLAY_FLAG:
+        return &work->preapPlayFlag;
+    case SND_W_ID_PERAP_DEFAULT_FLAG:
+        return &work->preapDefaultFlag;
+    case SND_W_ID_ZONE_BGM:
+        return &work->zoneBGM;
+    case SND_W_ID_WAVE_DATA:
+        return &work->wavedata;
+    case SND_W_ID_REVERSE_BUF:
+        return &work->reverseBuffer;
+    case SND_W_ID_LENGTH_TCB:
+        return &work->tcbLength;
+    case SND_W_ID_MY_PERAP_PTR:
         return &work->myChatot;
-    case 37:
+    case SND_W_ID_PERAP_PTR1:
         return &work->otherChatots[0];
-    case 38:
+    case SND_W_ID_PERAP_PTR2:
         return &work->otherChatots[1];
-    case 39:
+    case SND_W_ID_PERAP_PTR3:
         return &work->otherChatots[2];
-    case 40:
+    case SND_W_ID_PERAP_PTR4:
         return &work->otherChatots[3];
-    case 41:
+    case SND_W_ID_PV_PTN:
         return &work->cryPattern[0];
-    case 42:
+    case SND_W_ID_PV_PAN:
         return &work->cryPan[0];
-    case 43:
+    case SND_W_ID_PV_VOL:
         return &work->cryVolume[0];
-    case 44:
+    case SND_W_ID_PV_HEAP_ID:
         return &work->cryHeapId[0];
-    case 45:
+    case SND_W_ID_PV_NO:
         return &work->cryNo[0];
-    case 46:
+    case SND_W_ID_PV_WAIT:
         return &work->cryDelayTimer[0];
-    case 47:
+    case SND_W_ID_PV_PTN_2:
         return &work->cryPattern[1];
-    case 48:
+    case SND_W_ID_PV_PAN_2:
         return &work->cryPan[1];
-    case 49:
+    case SND_W_ID_PV_VOL_2:
         return &work->cryVolume[1];
-    case 50:
+    case SND_W_ID_PV_HEAP_ID_2:
         return &work->cryHeapId[1];
-    case 51:
+    case SND_W_ID_PV_NO_2:
         return &work->cryNo[1];
-    case 52:
+    case SND_W_ID_PV_WAIT_2:
         return &work->cryDelayTimer[1];
-    case 53:
-        return &work->unk_BEC76;
-    case 54:
-        return &work->unk_BEC77;
-    case 55:
+    case SND_W_ID_PV_DOUBLE_FLAG:
+        return &work->pvDoubleFlag;
+    case SND_W_ID_BATTLE_REC_FLAG:
+        return &work->battleRecFlag;
+    case SND_W_ID_UNK_55:
         return &work->unk_BEC78;
-    case 56:
+    case SND_W_ID_UNK_56:
         return &work->unk_BEC79;
-    case 57:
+    case SND_W_ID_UNK_57:
         return &work->unk_BEC7A;
-    case 58:
+    case SND_W_ID_UNK_58:
         return &work->unk_BEC7C;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return NULL;
 }
 

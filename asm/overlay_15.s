@@ -1,6 +1,7 @@
 #include "constants/sndseq.h"
 #include "constants/items.h"
 #include "msgdata/msg/msg_0010.h"
+#include "constants/snd_system.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -253,7 +254,7 @@ _021F95B6:
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
 	mov r1, #0
-	mov r0, #0x33
+	mov r0, #SND_SCENE_SUB_BAG
 	add r2, r1, #0
 	bl GF_SetDataByScene
 	bl sub_0203A964

@@ -1,3 +1,4 @@
+#include "constants/snd_system.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -1537,7 +1538,7 @@ _021E64FC:
 	strh r2, [r0]
 	mov r0, #1
 	strb r0, [r4, #6]
-	mov r0, #0x37
+	mov r0, #SND_SCENE_SUB_TOWNMAP
 	add r2, r1, #0
 	bl GF_SetDataByScene
 	mov r0, #1
