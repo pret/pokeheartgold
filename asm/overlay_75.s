@@ -1063,7 +1063,7 @@ ov75_02247180: ; 0x02247180
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _022471A4
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0xec

@@ -8108,7 +8108,7 @@ _0223B8E4:
 	mov r1, #0
 	bl sub_0200DCC0
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r3, r4, r5, pc}
@@ -8140,7 +8140,7 @@ ov57_0223B90C: ; 0x0223B90C
 	ldr r0, _0223B93C ; =ov57_0223B8B8
 	add r1, r4, #0
 	lsl r2, r2, #2
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0223B93C: .word ov57_0223B8B8

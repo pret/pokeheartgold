@@ -104,7 +104,7 @@ sub_02069700: ; 0x02069700
 	add r0, r1, #0
 	bl sub_020696E8
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_02069700

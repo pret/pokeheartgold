@@ -10236,14 +10236,14 @@ ov91_02261384: ; 0x02261384
 	lsl r1, r1, #4
 	ldr r1, [r5, r1]
 	add r0, sp, #0
-	bl sub_02023618
+	bl GF_Camera_GetAngle
 	add r0, sp, #0
 	mov r1, #0x19
 	strh r4, [r0]
 	lsl r1, r1, #4
 	ldr r1, [r5, r1]
 	add r0, sp, #0
-	bl sub_02023558
+	bl GF_Camera_SetAngle
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov91_02261384

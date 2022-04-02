@@ -1,6 +1,6 @@
 #include "unk_0203E348.h"
 #include "unk_02022D74.h"
-#include "unk_02019014.h"
+#include "camera_translation.h"
 #include "unk_0200FA24.h"
 #include "system.h"
 #include "text.h"
@@ -455,10 +455,10 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         {
             struct CameraTranslationPathTemplate template;
 
-            template.unk_0 = 0xDCC0;
-            template.unk_2 = 0x11A4;
-            template.unk_4 = (VecFx32){0, 0, 14 * FX32_ONE};
-            template.unk_10 = 100 * FX32_ONE;
+            template.angleX = 0xDCC0;
+            template.perspectiveAngle = 0x11A4;
+            template.position = (VecFx32){0, 0, 14 * FX32_ONE};
+            template.distance = 100 * FX32_ONE;
 
             SetCameraTranslationPath(work->cameraTranslation, &template, 8);
         }
@@ -484,16 +484,16 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
 
         if (r6 != 0) {
             if (r6 == 1) {
-                template.unk_0 = 0xDCC0;
-                template.unk_2 = 0x11A4;
-                template.unk_4 = (VecFx32){0, 0, 14 * FX32_ONE};
-                template.unk_10 = 100 * FX32_ONE;
+                template.angleX = 0xDCC0;
+                template.perspectiveAngle = 0x11A4;
+                template.position = (VecFx32){0, 0, 14 * FX32_ONE};
+                template.distance = 100 * FX32_ONE;
                 work->ballWobbleState = BALL_ROCK_AMPLITUDE_BOTH;
             } else {
-                template.unk_0 = 0xEA20;
-                template.unk_2 = 0x1024;
-                template.unk_4 = (VecFx32){0, 0, 12 * FX32_ONE};
-                template.unk_10 = 60 * FX32_ONE;
+                template.angleX = 0xEA20;
+                template.perspectiveAngle = 0x1024;
+                template.position = (VecFx32){0, 0, 12 * FX32_ONE};
+                template.distance = 60 * FX32_ONE;
                 work->ballWobbleState = BALL_ROCK_AMPLITUDE_SMALL;
             }
             SetCameraTranslationPath(work->cameraTranslation, &template, 8);

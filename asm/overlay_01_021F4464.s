@@ -210,7 +210,7 @@ _021F45CE:
 	mov r0, #1
 	str r0, [r4, #0x30]
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021F4584
 

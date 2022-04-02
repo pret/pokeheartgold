@@ -93,7 +93,7 @@ ov45_02229F94: ; 0x02229F94
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB

@@ -4009,7 +4009,7 @@ ov109_021E77D4: ; 0x021E77D4
 	add r1, r5, #0
 	mov r2, #0
 	str r4, [r5]
-	bl sub_0200E320
+	bl CreateSysTask
 	add r0, r4, #0
 	mov r1, #1
 	bl ov109_021E7388
@@ -4050,7 +4050,7 @@ ov109_021E7810: ; 0x021E7810
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _021E784C:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

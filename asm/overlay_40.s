@@ -335,7 +335,7 @@ _0222B9FE:
 	bl NARC_dtor
 	ldr r0, _0222BA84 ; =0x0000416C
 	ldr r0, [r5, r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, [r5, #0x18]
 	ldr r1, [r5, #0x1c]
 	bl sub_0200D998
@@ -2428,7 +2428,7 @@ ov40_0222CABC: ; 0x0222CABC
 	lsl r6, r6, #8
 _0222CAC6:
 	ldr r0, [r5, r6]
-	bl sub_0200E390
+	bl DestroySysTask
 	add r4, r4, #1
 	add r5, #0x30
 	cmp r4, #6
@@ -8559,7 +8559,7 @@ ov40_0222FB74: ; 0x0222FB74
 	mov r0, #1
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov40_0222FB74
 
@@ -10150,7 +10150,7 @@ ov40_022307FC: ; 0x022307FC
 	ldr r1, [r4, r2]
 	cmp r1, #7
 	blt _02230846
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, _0223085C ; =0x00004160
 	mov r2, #0
 	str r2, [r4, r0]
@@ -10201,7 +10201,7 @@ ov40_02230864: ; 0x02230864
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0223087E
-	bl sub_0200E390
+	bl DestroySysTask
 _0223087E:
 	ldr r0, _02230930 ; =0x00004168
 	mov r1, #0
@@ -10262,7 +10262,7 @@ _02230894:
 	ldr r0, _02230940 ; =ov40_022307FC
 	add r1, r4, #0
 	lsl r2, r2, #0xc
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r2, _02230930 ; =0x00004168
 	str r0, [r4, r2]
 	ldr r0, [r4, r2]
@@ -12452,7 +12452,7 @@ _02231994:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov40_022318C8
@@ -12567,7 +12567,7 @@ _02231A72:
 	ldr r0, _02231C64 ; =ov40_022318C8
 	add r1, r5, #0
 	lsl r2, r2, #0xc
-	bl sub_0200E320
+	bl CreateSysTask
 	mov r0, #0x6e
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -12729,7 +12729,7 @@ _02231BB6:
 	ldr r0, _02231C64 ; =ov40_022318C8
 	add r1, r5, #0
 	lsl r2, r2, #0xc
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r0, _02231C70 ; =0x000006D8
 	add r7, r7, #1
 	ldr r0, [r4, r0]
@@ -12917,7 +12917,7 @@ _02231D2A:
 	ldr r0, _02231E9C ; =ov40_022318C8
 	add r1, r4, #0
 	lsl r2, r2, #0xc
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r0, _02231E98 ; =0x000006D8
 	add r6, r6, #1
 	ldr r0, [r5, r0]
@@ -13000,7 +13000,7 @@ _02231DD4:
 	ldr r0, _02231E9C ; =ov40_022318C8
 	add r1, r4, #0
 	lsl r2, r2, #0xc
-	bl sub_0200E320
+	bl CreateSysTask
 	mov r0, #0x6e
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]

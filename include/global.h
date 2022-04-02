@@ -14,5 +14,6 @@
 #include "assert.h"
 
 #define NELEMS(a) (sizeof(a) / sizeof(*(a)))
+#define Degree2Index(theta)  ((65535 / 360) * theta)
 
 #endif //POKEHEARTGOLD_GLOBAL_H

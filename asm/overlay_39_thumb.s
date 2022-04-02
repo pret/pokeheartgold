@@ -2619,7 +2619,7 @@ ov39_02228370: ; 0x02228370
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02228394
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0xa8

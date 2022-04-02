@@ -309,7 +309,7 @@ ov73_021E5BAC: ; 0x021E5BAC
 	bl OverlayManager_GetData
 	add r6, r0, #0
 	ldr r0, [r6, #0x20]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
@@ -5695,7 +5695,7 @@ ov73_021E85DC: ; 0x021E85DC
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E85F6
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, _021E8620 ; =0x00000F98
 	mov r1, #0
 	str r1, [r4, r0]

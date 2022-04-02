@@ -37987,7 +37987,7 @@ _021F8992:
 	str r2, [r4, r0]
 	ldr r0, _021F89C4 ; =ov18_021F89F8
 	add r1, r4, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4, #0x18]
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
@@ -38015,7 +38015,7 @@ ov18_021F89D0: ; 0x021F89D0
 	ldr r0, [r4, #0x1c]
 	bl NARC_dtor
 	ldr r0, [r4, #0x18]
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}

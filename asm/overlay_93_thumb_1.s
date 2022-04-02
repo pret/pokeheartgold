@@ -546,7 +546,7 @@ ov93_0225C768: ; 0x0225C768
 	ldr r0, _0225CA7C ; =ov93_0225D07C
 	ldr r2, _0225CA80 ; =0x0000EA60
 	add r1, r5, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	add r1, r5, #0
 	add r1, #0x94
 	str r0, [r1]
@@ -1054,7 +1054,7 @@ _0225CD72:
 	add r0, r4, #0
 	add r0, #0x94
 	ldr r0, [r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]

@@ -901,7 +901,7 @@ sub_02075A7C: ; 0x02075A7C
 	ldr r0, _02075D04 ; =sub_02075D08
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #1
@@ -938,7 +938,7 @@ _02075D2C:
 	cmp r0, #0
 	beq _02075D3A
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _02075D3A:
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02075D08

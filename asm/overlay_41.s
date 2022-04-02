@@ -8998,7 +8998,7 @@ ov41_0224A094: ; 0x0224A094
 	lsr r1, r1, #0x18
 	bl BG_LoadCharTilesData
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, [r4, #8]
 	bl FreeToHeap
 	add r0, r4, #0
@@ -9035,7 +9035,7 @@ _0224A0F4:
 	bl GXS_LoadBGPltt
 _0224A104:
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, [r4, #4]
 	bl FreeToHeap
 	add r0, r4, #0
@@ -11311,12 +11311,12 @@ ov41_0224B21C: ; 0x0224B21C
 	add r4, r1, #0
 	cmp r0, #0
 	beq _0224B22C
-	bl sub_0200E390
+	bl DestroySysTask
 _0224B22C:
 	ldr r0, [r5, #0x28]
 	cmp r0, #0
 	beq _0224B236
-	bl sub_0200E390
+	bl DestroySysTask
 _0224B236:
 	add r0, r5, #0
 	add r1, r4, #0

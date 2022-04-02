@@ -888,7 +888,7 @@ _0224623A:
 	ldr r0, _022462D4 ; =ov02_022462DC
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	mov r2, #0
 	str r0, [r4, #0xc]
 	add r0, r5, #0
@@ -901,7 +901,7 @@ _0224623A:
 	b _022462C0
 _02246276:
 	ldr r0, [r4, #0xc]
-	bl sub_0200E390
+	bl DestroySysTask
 	ldrh r0, [r4, #0x12]
 	add r0, r0, #1
 	strh r0, [r4, #0x12]
@@ -1341,7 +1341,7 @@ _022465D8:
 	bl sub_02023128
 	ldr r1, [r5, #0x18]
 	add r0, sp, #0
-	bl sub_02023630
+	bl GF_Camera_GetTarget
 	add r4, sp, #0
 	add r3, r5, #0
 	add r3, #0x20
@@ -7489,7 +7489,7 @@ ov02_02249458: ; 0x02249458
 	ldr r0, _022494B8 ; =ov02_02249584
 	add r1, r4, #0
 	mov r2, #0x86
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 _02249490:
 	cmp r5, #2
@@ -7502,13 +7502,13 @@ _02249490:
 	ldr r0, _022494BC ; =ov02_022499B8
 	add r1, r4, #0
 	mov r2, #0x86
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 _022494AC:
 	ldr r0, _022494C0 ; =ov02_02249984
 	add r1, r4, #0
 	mov r2, #0x86
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _022494B8: .word ov02_02249584
@@ -7566,7 +7566,7 @@ ov02_022494C4: ; 0x022494C4
 	ldr r0, _02249538 ; =ov02_022499B8
 	add r1, r4, #0
 	mov r2, #0x86
-	bl sub_0200E320
+	bl CreateSysTask
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -7589,7 +7589,7 @@ ov02_02249548: ; 0x02249548
 	bl sub_0201F988
 	bl ov02_0224957C
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r4, pc}
 	thumb_func_end ov02_02249548
 
@@ -8723,7 +8723,7 @@ ov02_02249D40: ; 0x02249D40
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _02249D5A
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0x22
 	mov r1, #0
 	lsl r0, r0, #4
@@ -8865,7 +8865,7 @@ _02249E48:
 	lsl r0, r0, #2
 	str r1, [r6, r0]
 	ldr r0, [sp]
-	bl sub_0200E390
+	bl DestroySysTask
 _02249E56:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov02_02249DD8
@@ -8921,7 +8921,7 @@ ov02_02249E90: ; 0x02249E90
 	lsl r0, r0, #2
 	str r1, [r4, r0]
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _02249EBE:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov02_02249E90
@@ -9991,7 +9991,7 @@ _0224A6E2:
 	mov r0, #0x89
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -11764,7 +11764,7 @@ ov02_0224B418: ; 0x0224B418
 	ldr r0, _0224B438 ; =ov02_0224B45C
 	mov r2, #0x86
 	str r5, [r1, #0x14]
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0224B438: .word ov02_0224B45C
@@ -11786,7 +11786,7 @@ ov02_0224B448: ; 0x0224B448
 	bl sub_0201F988
 	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r4, pc}
 	thumb_func_end ov02_0224B448
 
@@ -16781,7 +16781,7 @@ ov02_0224D9C0: ; 0x0224D9C0
 	bl ov02_0224D044
 	ldr r1, [r5, #0x24]
 	add r0, sp, #0x10
-	bl sub_02023630
+	bl GF_Camera_GetTarget
 	add r3, sp, #0x10
 	add r2, r4, #0
 	ldmia r3!, {r0, r1}
@@ -16897,7 +16897,7 @@ ov02_0224DAA4: ; 0x0224DAA4
 	bl ov02_0224CFD8
 	ldr r1, [r5, #0x24]
 	add r0, sp, #0x10
-	bl sub_02023630
+	bl GF_Camera_GetTarget
 	add r3, sp, #0x10
 	add r2, r4, #0
 	ldmia r3!, {r0, r1}
@@ -17658,7 +17658,7 @@ _0224E04A:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0224E068:
 	pop {r3, r4, r5, pc}
 	nop
@@ -17696,7 +17696,7 @@ _0224E08C:
 	mov r2, #0
 	add r1, r6, #0
 	strh r2, [r5]
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0224E0B4: .word ov02_02253A1C
@@ -23204,7 +23204,7 @@ ov02_02250A60: ; 0x02250A60
 	str r0, [r4, #0x24]
 	ldr r1, [r5, #0x24]
 	add r0, sp, #0xc
-	bl sub_02023630
+	bl GF_Camera_GetTarget
 	add r3, sp, #0xc
 	add r2, r4, #0
 	ldmia r3!, {r0, r1}
@@ -24439,21 +24439,21 @@ _02251440:
 	ldr r0, [r4, r0]
 	ldr r1, [r5, #0x24]
 	ldr r0, [r0, r6]
-	bl sub_020235D4
+	bl GF_Camera_SetDistance
 	mov r0, #0x4b
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	ldr r1, [r5, #0x24]
 	add r0, r0, r6
 	add r0, r0, #4
-	bl sub_02023558
+	bl GF_Camera_SetAngle
 	mov r0, #0x4b
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	ldr r1, [r5, #0x24]
 	add r0, r0, r6
 	ldrh r0, [r0, #0xe]
-	bl sub_02023494
+	bl GF_Camera_SetPerspectiveAngle
 	ldr r0, _022514C0 ; =0x000004B4
 	ldr r1, [r4, r0]
 	mov r0, #0xc
@@ -24468,12 +24468,12 @@ _02251440:
 	bl GF_Camera_SetClipBounds
 	ldr r1, [r5, #0x24]
 	add r0, sp, #8
-	bl sub_02023630
+	bl GF_Camera_GetTarget
 	ldr r0, [r5, #0x24]
-	bl sub_02023658
+	bl GF_Camera_GetBindTarget
 	ldr r1, [r5, #0x24]
 	add r0, sp, #0
-	bl sub_02023618
+	bl GF_Camera_GetAngle
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -24584,12 +24584,12 @@ ov02_02251568: ; 0x02251568
 	beq _0225159C
 	ldr r1, [r4, #0x24]
 	add r0, sp, #8
-	bl sub_02023630
+	bl GF_Camera_GetTarget
 	ldr r0, [r4, #0x24]
-	bl sub_02023658
+	bl GF_Camera_GetBindTarget
 	ldr r1, [r4, #0x24]
 	add r0, sp, #0
-	bl sub_02023618
+	bl GF_Camera_GetAngle
 	add sp, #0x14
 	mov r0, #1
 	pop {r3, r4, pc}
@@ -25088,7 +25088,7 @@ ov02_022518F8: ; 0x022518F8
 	ldr r0, _022519A8 ; =ov02_02251BA8
 	add r1, r5, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r1, _022519AC ; =0x000004A8
 	str r0, [r5, r1]
 	add sp, #0x14
@@ -25212,7 +25212,7 @@ _022519D4:
 	ldr r0, _02251B08 ; =ov02_02251BC4
 	ldr r1, [sp, #0x10]
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r2, _02251B0C ; =0x000004A8
 	ldr r1, [sp, #0x10]
 	str r0, [r1, r2]
@@ -25270,7 +25270,7 @@ ov02_02251B14: ; 0x02251B14
 	add r4, r0, #0
 	ldr r0, _02251B48 ; =0x000004A8
 	ldr r0, [r4, r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, _02251B48 ; =0x000004A8
 	mov r1, #0
 	str r1, [r4, r0]
@@ -25520,11 +25520,11 @@ ov02_02251CF0: ; 0x02251CF0
 	pop {r3, r4, r5, pc}
 _02251D1A:
 	ldr r0, [r5, #0x24]
-	bl sub_02023614
+	bl GF_Camera_GetDistance
 	str r0, [r4]
 	ldr r1, [r5, #0x24]
 	add r0, sp, #0
-	bl sub_02023618
+	bl GF_Camera_GetAngle
 	add r0, sp, #0
 	ldrh r1, [r0]
 	strh r1, [r4, #4]
@@ -25536,7 +25536,7 @@ _02251D1A:
 	strh r0, [r4, #0xa]
 	ldr r1, [r5, #0x24]
 	add r0, sp, #8
-	bl sub_02023630
+	bl GF_Camera_GetTarget
 	add r3, sp, #8
 	ldmia r3!, {r0, r1}
 	add r2, sp, #0x14
@@ -25544,14 +25544,14 @@ _02251D1A:
 	ldr r0, [r3]
 	str r0, [r2]
 	ldr r0, [r5, #0x24]
-	bl sub_02023658
+	bl GF_Camera_GetBindTarget
 	add r2, r4, #0
 	add r1, r0, #0
 	add r0, sp, #0x14
 	add r2, #0xc
 	bl VEC_Subtract
 	ldr r0, [r5, #0x24]
-	bl sub_0202360C
+	bl GF_Camera_GetPerspectiveAngle
 	strh r0, [r4, #0x18]
 	ldr r0, [r5, #0x24]
 	bl sub_02023654
@@ -25561,13 +25561,13 @@ _02251D1A:
 	str r0, [r4, #0x20]
 	ldr r0, _02251DB0 ; =0x0029AEC1
 	ldr r1, [r5, #0x24]
-	bl sub_020235D4
+	bl GF_Camera_SetDistance
 	ldr r0, _02251DB4 ; =ov02_02253C74
 	ldr r1, [r5, #0x24]
-	bl sub_02023558
+	bl GF_Camera_SetAngle
 	ldr r0, _02251DB8 ; =0x000005C1
 	ldr r1, [r5, #0x24]
-	bl sub_02023494
+	bl GF_Camera_SetPerspectiveAngle
 	ldr r0, _02251DBC ; =ov02_02253BC4
 	ldr r1, [r5, #0x24]
 	bl GF_Camera_ShiftBy
@@ -26759,7 +26759,7 @@ ov02_022526C8: ; 0x022526C8
 	ldr r0, _022526E8 ; =ov02_022526FC
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	mov r0, #0
 	strb r0, [r4, #2]
 	pop {r4, pc}
@@ -26804,7 +26804,7 @@ _02252716:
 	str r0, [r2]
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #0x24]
-	bl sub_0202360C
+	bl GF_Camera_GetPerspectiveAngle
 	add r1, sp, #0
 	strh r0, [r1, #8]
 	add r0, r4, #0
@@ -26826,7 +26826,7 @@ _02252746:
 	mov r0, #1
 	strb r0, [r4, #2]
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0225275A:
 	add sp, #0xc
 	pop {r4, r5, pc}
@@ -26853,7 +26853,7 @@ ov02_02252764: ; 0x02252764
 	strh r1, [r0]
 	ldr r0, [r5, #8]
 	ldr r0, [r0, #0x24]
-	bl sub_0202360C
+	bl GF_Camera_GetPerspectiveAngle
 	add r1, r5, #0
 	add r1, #0xea
 	strh r0, [r1]
@@ -26868,7 +26868,7 @@ ov02_02252764: ; 0x02252764
 	strh r1, [r0]
 	ldr r0, _022527AC ; =ov02_0225286C
 	add r1, r5, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _022527AC: .word ov02_0225286C
@@ -26946,7 +26946,7 @@ ov02_022527B0: ; 0x022527B0
 	lsl r0, r4, #0x10
 	ldr r1, [sp]
 	lsr r0, r0, #0x10
-	bl sub_02023494
+	bl GF_Camera_SetPerspectiveAngle
 	add r0, r5, #0
 	add r0, #0xe6
 	add r5, #0xe8
@@ -26978,7 +26978,7 @@ ov02_0225286C: ; 0x0225286C
 	mov r0, #1
 	strb r0, [r4, #3]
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _02252886:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov02_0225286C

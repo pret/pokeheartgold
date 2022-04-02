@@ -690,7 +690,7 @@ ov01_021FBD8C: ; 0x021FBD8C
 	ldr r1, [r4, #0xc]
 	bl Bind3dModelSet
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021FBD8C
 

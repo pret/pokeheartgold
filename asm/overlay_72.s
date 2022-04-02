@@ -2083,7 +2083,7 @@ ov72_0223897C: ; 0x0223897C
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _02238996
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, _022389C0 ; =0x00000FD8
 	mov r1, #0
 	str r1, [r4, r0]

@@ -2064,7 +2064,7 @@ sub_0200F3D0: ; 0x0200F3D0
 	bl sub_0200F1D4
 _0200F3EA:
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 _0200F3F2:
 	sub r2, r0, #2
@@ -2112,7 +2112,7 @@ sub_0200F43C: ; 0x0200F43C
 	add r0, r1, #0
 	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_0200F43C

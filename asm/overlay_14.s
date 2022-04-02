@@ -11512,7 +11512,7 @@ ov14_021EB0E4: ; 0x021EB0E4
 	bl ov14_021E6048
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r4, #0
 	bl ov14_021F6B10
 	add r0, r4, #0

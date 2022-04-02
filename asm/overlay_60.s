@@ -2481,7 +2481,7 @@ ov60_021E6CFC: ; 0x021E6CFC
 	ldr r0, [r6, r0]
 	cmp r0, #0
 	beq _021E6D38
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0x47
 	mov r1, #0
 	lsl r0, r0, #4
@@ -2491,7 +2491,7 @@ _021E6D38:
 	ldr r0, [r6, r0]
 	cmp r0, #0
 	beq _021E6D4A
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, _021E6DF0 ; =0x00000488
 	mov r1, #0
 	str r1, [r6, r0]
@@ -2504,7 +2504,7 @@ _021E6D50:
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _021E6D60
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, _021E6DF4 ; =0x000004AC
 	str r7, [r5, r0]
 _021E6D60:
@@ -2520,7 +2520,7 @@ _021E6D6E:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E6D7E
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, _021E6DF8 ; =0x00000588
 	str r7, [r4, r0]
 _021E6D7E:
@@ -2532,7 +2532,7 @@ _021E6D7E:
 	ldr r0, [r6, r0]
 	cmp r0, #0
 	beq _021E6D98
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, _021E6DFC ; =0x0000061C
 	mov r1, #0
 	str r1, [r6, r0]
@@ -2845,7 +2845,7 @@ ov60_021E6FD0: ; 0x021E6FD0
 	ldr r0, _021E6FF8 ; =ov60_021E6FFC
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r5, #4]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2872,7 +2872,7 @@ ov60_021E6FFC: ; 0x021E6FFC
 	mov r0, #0x1f
 	strb r0, [r4, #2]
 	ldr r0, [r4, #4]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	str r0, [r4, #4]
 	mov r0, #1
@@ -3073,7 +3073,7 @@ _021E718A:
 	mov r0, #1
 	str r0, [r4, #4]
 	ldr r0, _021E71C8 ; =ov60_021E7264
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4, #0x10]
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -3132,7 +3132,7 @@ _021E71F8:
 	cmp r4, r6
 	blt _021E7242
 	ldr r0, [r5, #0x10]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r1, #0
 	str r1, [r5, #0x10]
 	mov r0, #1
@@ -3207,7 +3207,7 @@ _021E7290:
 	cmp r4, r6
 	blt _021E72DA
 	ldr r0, [r5, #0x10]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r1, #0
 	str r1, [r5, #0x10]
 	mov r0, #1
@@ -3269,7 +3269,7 @@ ov60_021E7324: ; 0x021E7324
 	cmp r0, #0
 	beq _021E734A
 	ldr r0, [r4, #0x10]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r1, #0
 	str r1, [r4, #0x10]
 	mov r0, #1
@@ -3493,7 +3493,7 @@ ov60_021E7454: ; 0x021E7454
 	cmp r1, r0
 	blt _021E74DC
 	ldr r0, [r5, #0xc]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r1, #0
 	str r1, [r5, #0xc]
 	mov r0, #1
@@ -3867,7 +3867,7 @@ _021E7778:
 	ldr r0, _021E7798 ; =ov60_021E77C0
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4, #8]
 	ldr r0, _021E779C ; =ov60_021E7864
 	add r1, r4, #0
@@ -3931,7 +3931,7 @@ ov60_021E77C0: ; 0x021E77C0
 	cmp r1, r0
 	blo _021E7850
 	ldr r0, [r4, #8]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	str r0, [r4, #8]
 	mov r1, #1
@@ -5698,7 +5698,7 @@ _021E8608:
 	ldr r0, [r5, #0x6c]
 	cmp r0, #0
 	beq _021E861A
-	bl sub_0200E390
+	bl DestroySysTask
 	str r7, [r5, #0x6c]
 _021E861A:
 	add r0, r4, #1
@@ -6311,7 +6311,7 @@ _021E8B14:
 	ldr r0, _021E8B54 ; =ov60_021E8B7C
 	add r1, r4, #0
 	str r6, [r4, #0x10]
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4, #8]
 	pop {r4, r5, r6, pc}
 	nop
@@ -6379,7 +6379,7 @@ ov60_021E8B7C: ; 0x021E8B7C
 	cmp r4, r6
 	blt _021E8BD0
 	ldr r0, [r5, #8]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r1, #0
 	str r1, [r5, #8]
 	mov r0, #1
@@ -8206,7 +8206,7 @@ _021E9A6A:
 	ldr r0, _021E9B5C ; =0x00000981
 	add r1, #0x80
 	ldr r1, [r1]
-	bl sub_02023494
+	bl GF_Camera_SetPerspectiveAngle
 	ldr r0, [sp, #0xc]
 	add r0, #0x80
 	str r0, [sp, #0xc]
@@ -9080,7 +9080,7 @@ _021EA28A:
 	ldr r0, [r5, #0x6c]
 	cmp r0, #0
 	beq _021EA298
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	str r0, [r5, #0x6c]
 _021EA298:
@@ -9984,7 +9984,7 @@ _021EA9DA:
 _021EAA00:
 	bl GX_SwapDisplay
 	ldr r0, [r4, #0x6c]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	str r0, [r4, #0x6c]
 	pop {r4, pc}

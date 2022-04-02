@@ -521,7 +521,7 @@ ov46_02258C38: ; 0x02258C38
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02258C68
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0xd4
@@ -857,7 +857,7 @@ ov46_02258EFC: ; 0x02258EFC
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02258F2C
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0xd4

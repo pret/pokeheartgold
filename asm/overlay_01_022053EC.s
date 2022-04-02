@@ -774,7 +774,7 @@ ov01_0220596C: ; 0x0220596C
 	cmp r0, #0
 	bne _0220598C
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, [r4]
 	bl FreeToHeap
 	add r0, r4, #0

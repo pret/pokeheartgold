@@ -597,7 +597,7 @@ sub_02093010: ; 0x02093010
 	ldr r0, _0209306C ; =sub_02092FB8
 	add r1, r4, #0
 	mvn r2, r2
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4, #0x40]
 	ldrb r1, [r4]
 	mov r0, #8
@@ -611,7 +611,7 @@ _02093044:
 	ldr r0, [r4, #0x40]
 	cmp r0, #0
 	beq _02093054
-	bl sub_0200E390
+	bl DestroySysTask
 _02093054:
 	add r0, r4, #0
 	add r0, #0x40

@@ -6967,7 +6967,7 @@ ov49_0225BA5C: ; 0x0225BA5C
 	lsl r3, r3, #4
 	bl GfGfxLoader_GXLoadPal
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

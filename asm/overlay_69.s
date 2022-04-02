@@ -3238,7 +3238,7 @@ ov69_021E737C: ; 0x021E737C
 	add r5, r0, #0
 	ldr r0, _021E7400 ; =0x0000C2DC
 	ldr r0, [r5, r0]
-	bl sub_02023614
+	bl GF_Camera_GetDistance
 	ldr r1, _021E7404 ; =0x0000C2E8
 	mov r4, #0
 	ldrh r2, [r5, r1]
@@ -3299,7 +3299,7 @@ _021E73EE:
 _021E73F4:
 	ldr r1, _021E7400 ; =0x0000C2DC
 	ldr r1, [r5, r1]
-	bl sub_020235D4
+	bl GF_Camera_SetDistance
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

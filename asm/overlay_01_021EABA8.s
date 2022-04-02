@@ -142,7 +142,7 @@ ov01_021EAC6C: ; 0x021EAC6C
 	strh r3, [r1]
 	strb r2, [r4, #7]
 	ldr r1, [r4]
-	bl sub_02023558
+	bl GF_Camera_SetAngle
 	ldr r1, [r4]
 	add r0, r5, #4
 	bl GF_Camera_ShiftBy
@@ -402,7 +402,7 @@ _021EAE92:
 	strh r1, [r0]
 	add r0, sp, #0
 	add r1, r5, #0
-	bl sub_02023558
+	bl GF_Camera_SetAngle
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021EAE50

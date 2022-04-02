@@ -1071,7 +1071,7 @@ ov44_0222A68C: ; 0x0222A68C
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _0222A6AE
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, _0222A74C ; =0x00000D68
 	mov r1, #0
 	str r1, [r5, r0]

@@ -7010,7 +7010,7 @@ _021E90B0:
 	bl _ffix
 	ldr r1, [sp, #4]
 	ldr r1, [r1]
-	bl sub_020235D4
+	bl GF_Camera_SetDistance
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -9644,7 +9644,7 @@ _021EA5CC:
 	ldr r0, _021EA5E0 ; =ov108_021EA5E4
 	ldr r2, [sp]
 	add r1, r4, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021EA5D8: .word 0x00000444
@@ -9677,7 +9677,7 @@ ov108_021EA5E4: ; 0x021EA5E4
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _021EA61E:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

@@ -88,7 +88,7 @@ _0202003A:
 	bl FreeToHeap
 _02020056:
 	ldr r0, [r6, r4]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	str r0, [r6, r4]
 _02020060:

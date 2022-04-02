@@ -930,7 +930,7 @@ _0208799C:
 _020879B0:
 	add r0, #0xf4
 	ldr r0, [r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]

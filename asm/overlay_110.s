@@ -2629,7 +2629,7 @@ ov110_021E6D20: ; 0x021E6D20
 	add r1, r5, #0
 	mov r2, #0
 	str r4, [r5]
-	bl sub_0200E320
+	bl CreateSysTask
 	add r0, r4, #0
 	mov r1, #1
 	bl ov110_021E6904
@@ -2663,7 +2663,7 @@ ov110_021E6D54: ; 0x021E6D54
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _021E6D8A:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov110_021E6D54

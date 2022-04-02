@@ -25365,7 +25365,7 @@ ov70_02244154: ; 0x02244154
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0224416E
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, _0224419C ; =0x000012D0
 	mov r1, #0
 	str r1, [r4, r0]

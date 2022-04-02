@@ -1503,13 +1503,13 @@ ov76_021E6544: ; 0x021E6544
 	lsl r0, r0, #2
 	add r4, r5, r0
 	ldr r0, [r4, #0x24]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	str r0, [r4, #0x24]
 	mov r0, #0x97
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0x97
 	mov r1, #0
 	lsl r0, r0, #2

@@ -874,7 +874,7 @@ sub_02015340: ; 0x02015340
 	add r0, r1, #0
 	bl sub_02015300
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_02015340

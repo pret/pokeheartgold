@@ -281,7 +281,7 @@ _02258A4A:
 	ldr r0, _02258AF8 ; =ov89_02258FF4
 	ldr r2, _02258AFC ; =0x0000EA60
 	add r1, r5, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r5, #0x18]
 	ldr r0, _02258B00 ; =ov89_0225901C
 	add r1, r5, #0
@@ -799,7 +799,7 @@ ov89_02258F00: ; 0x02258F00
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r4, #0
 	bl ov89_022596DC
 	add r0, r4, #0
@@ -2249,12 +2249,12 @@ ov89_02259B00: ; 0x02259B00
 	add r0, r5, #0
 	add r0, #0xcc
 	ldr r0, [r0]
-	bl sub_0202360C
+	bl GF_Camera_GetPerspectiveAngle
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0xcc
 	ldr r0, [r0]
-	bl sub_02023614
+	bl GF_Camera_GetDistance
 	add r1, r0, #0
 	add r0, sp, #0xc
 	str r0, [sp]
@@ -7069,7 +7069,7 @@ _0225BF4C: ; jump table
 	.short _0225BFA4 - _0225BF4C - 2 ; case 3
 _0225BF54:
 	add r0, r5, #0
-	bl sub_02023614
+	bl GF_Camera_GetDistance
 	str r0, [r4]
 	ldrb r0, [r4, #6]
 	add r0, r0, #1
@@ -7119,14 +7119,14 @@ _0225BFA4:
 	cmp r0, #6
 	bge _0225BFC6
 	add r0, r5, #0
-	bl sub_02023614
+	bl GF_Camera_GetDistance
 	ldr r1, [r4]
 	cmp r0, r1
 	blt _0225BFD2
 _0225BFC6:
 	ldr r0, [r4]
 	add r1, r5, #0
-	bl sub_020235D4
+	bl GF_Camera_SetDistance
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _0225BFD2:
@@ -7266,7 +7266,7 @@ _0225C0B8: ; jump table
 _0225C0C0:
 	add r0, sp, #0
 	add r1, r5, #0
-	bl sub_02023618
+	bl GF_Camera_GetAngle
 	add r0, sp, #0
 	ldrh r1, [r0]
 	strh r1, [r4]
@@ -7337,7 +7337,7 @@ _0225C130:
 	blt _0225C15E
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_02023558
+	bl GF_Camera_SetAngle
 	add sp, #0x10
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -7379,7 +7379,7 @@ _0225C190: ; jump table
 _0225C198:
 	add r0, sp, #0
 	add r1, r5, #0
-	bl sub_02023618
+	bl GF_Camera_GetAngle
 	add r0, sp, #0
 	ldrh r1, [r0]
 	strh r1, [r4]
@@ -7450,7 +7450,7 @@ _0225C208:
 	bgt _0225C236
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_02023558
+	bl GF_Camera_SetAngle
 	add sp, #0x10
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -7492,7 +7492,7 @@ _0225C268: ; jump table
 _0225C270:
 	add r0, sp, #0
 	add r1, r5, #0
-	bl sub_02023618
+	bl GF_Camera_GetAngle
 	add r0, sp, #0
 	ldrh r1, [r0]
 	strh r1, [r4]
@@ -7562,7 +7562,7 @@ _0225C2DE:
 	bgt _0225C30C
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_02023558
+	bl GF_Camera_SetAngle
 	add sp, #0x10
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -7597,7 +7597,7 @@ ov89_0225C31C: ; 0x0225C31C
 _0225C33E:
 	add r0, sp, #0
 	add r1, r5, #0
-	bl sub_02023618
+	bl GF_Camera_GetAngle
 	add r0, sp, #0
 	ldrh r1, [r0]
 	strh r1, [r4]
@@ -7703,7 +7703,7 @@ _0225C402: ; jump table
 	.short _0225C45A - _0225C402 - 2 ; case 3
 _0225C40A:
 	add r0, r5, #0
-	bl sub_02023614
+	bl GF_Camera_GetDistance
 	str r0, [r4]
 	ldrb r0, [r4, #6]
 	add r0, r0, #1
@@ -7753,14 +7753,14 @@ _0225C45A:
 	cmp r0, #6
 	bge _0225C47C
 	add r0, r5, #0
-	bl sub_02023614
+	bl GF_Camera_GetDistance
 	ldr r1, [r4]
 	cmp r0, r1
 	bgt _0225C488
 _0225C47C:
 	ldr r0, [r4]
 	add r1, r5, #0
-	bl sub_020235D4
+	bl GF_Camera_SetDistance
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _0225C488:
@@ -7803,7 +7803,7 @@ _0225C4B8:
 	add r1, r5, #0
 	str r0, [r2]
 	add r0, sp, #0
-	bl sub_02023630
+	bl GF_Camera_GetTarget
 	add r3, sp, #0
 	ldmia r3!, {r0, r1}
 	add r2, r4, #0
@@ -7912,7 +7912,7 @@ _0225C590:
 	add r1, r5, #0
 	str r0, [r2]
 	add r0, sp, #0
-	bl sub_02023630
+	bl GF_Camera_GetTarget
 	add r3, sp, #0
 	ldmia r3!, {r0, r1}
 	add r2, r4, #0
@@ -8020,7 +8020,7 @@ _0225C670: ; jump table
 _0225C678:
 	add r0, sp, #0
 	add r1, r5, #0
-	bl sub_02023618
+	bl GF_Camera_GetAngle
 	add r0, sp, #0
 	ldrh r1, [r0]
 	strh r1, [r4]
@@ -8090,7 +8090,7 @@ _0225C6E6:
 	blt _0225C714
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_02023558
+	bl GF_Camera_SetAngle
 	add sp, #0x10
 	mov r0, #1
 	pop {r3, r4, r5, pc}

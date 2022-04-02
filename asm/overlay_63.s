@@ -692,7 +692,7 @@ ov63_0221C368: ; 0x0221C368
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r4, #0
 	bl ov63_0221CE7C
 	add r0, r4, #0
@@ -962,7 +962,7 @@ ov63_0221C5A0: ; 0x0221C5A0
 	b _0221C606
 _0221C5B6:
 	ldr r0, [r4, #4]
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r4, #0
 	add r0, #0xfc
 	ldr r0, [r0]
@@ -4711,7 +4711,7 @@ _0221E4C6:
 	ldr r0, _0221E4DC ; =ov63_0221E4E0
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0221E4D4: .word 0x0000328C
@@ -4775,7 +4775,7 @@ _0221E548:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -6407,7 +6407,7 @@ _0221F2C8:
 	ldr r2, [r1]
 	sub r2, r2, #1
 	str r2, [r1]
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r4, pc}
 	nop
 _0221F2D8: .word _022203C0
@@ -6438,7 +6438,7 @@ _0221F30A:
 	ldr r2, [r1]
 	sub r2, r2, #1
 	str r2, [r1]
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r4, pc}
 	.balign 4, 0
 _0221F318: .word _022203C0
@@ -6721,7 +6721,7 @@ _0221F552:
 	ldr r2, [r1]
 	sub r2, r2, #1
 	str r2, [r1]
-	bl sub_0200E390
+	bl DestroySysTask
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -7006,7 +7006,7 @@ _0221F784:
 	str r1, [r0]
 	ldr r0, _0221F7C0 ; =ov63_0221F7EC
 	ldr r1, [sp, #0x28]
-	bl sub_0200E320
+	bl CreateSysTask
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -7027,7 +7027,7 @@ ov63_0221F7C4: ; 0x0221F7C4
 	bl sub_0201F988
 	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0221F7D8:
 	pop {r4, pc}
 	.balign 4, 0

@@ -2617,7 +2617,7 @@ _02259C16:
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4]
-	bl sub_020235D4
+	bl GF_Camera_SetDistance
 	add sp, #8
 	pop {r4}
 	pop {r3}
@@ -2737,7 +2737,7 @@ _02259CE0:
 _02259CEA:
 	ldr r0, [r2, #0xc]
 	ldr r1, [r2]
-	bl sub_020235D4
+	bl GF_Camera_SetDistance
 	mov r0, #0
 	pop {r3, pc}
 	nop
@@ -4006,7 +4006,7 @@ _0225A630: .word ov48_0225A680
 ov48_0225A634: ; 0x0225A634
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r2, _0225A648 ; =0x04001000
 	ldr r0, _0225A64C ; =0xFFFF1FFF
 	ldr r1, [r2]
