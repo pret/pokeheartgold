@@ -1,5 +1,7 @@
 #List of currently known assembly files inside `asm/`
 
+This document should be updated as the decompilation progresses.
+
 - Overlay 2: a lot of Field related functions
 - Overlay 4: "Gymmick"s(?)
 - Overlay 60: Title screen
