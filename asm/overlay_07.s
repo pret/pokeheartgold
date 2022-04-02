@@ -3570,7 +3570,7 @@ ov07_0221D740: ; 0x0221D740
 	mov r2, #0x11
 	mov r1, #0
 	lsl r2, r2, #0x10
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	add r0, r4, #0
 	add r0, #0xc0
 	ldr r0, [r0]
@@ -7448,7 +7448,7 @@ _0221F472:
 	mov r2, #0x11
 	mov r1, #0
 	lsl r2, r2, #0x10
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	add r0, r5, #0
 	mov r1, #0
 	add r2, sp, #0
@@ -50216,7 +50216,7 @@ ov07_022342E4: ; 0x022342E4
 	mov r2, #0x11
 	mov r1, #0
 	lsl r2, r2, #0x10
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 _02234314:
 	mov r1, #0
 	add r2, sp, #0x20

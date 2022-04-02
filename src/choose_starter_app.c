@@ -6,6 +6,8 @@
 #include "text.h"
 #include "render_text.h"
 #include "msgdata/msg/msg_0190.h"
+#include "application/choose_starter/choose_starter_main_res.naix"
+#include "application/choose_starter/choose_starter_sub_res.naix"
 #include "sound.h"
 #include "gf_3d_vramman.h"
 #include "unk_02005D10.h"
@@ -54,14 +56,45 @@ enum ChooseStarterAppState {
     CHOOSE_STARTER_STATE_WAIT_AND_EXIT     = 12,
 };
 
+#define WOBBLE_STATE_NORMAL        0
+#define WOBBLE_STATE_PAUSE         2
+
+enum ChooseStarter3dResNum {
+    CS_3DRES_0                   = 0,
+    CS_3DRES_1                   = 1,
+    CS_3DRES_BASE                = 2,
+    CS_3DRES_BALLS               = 3,
+    CS_3DRES_MAX
+};
+
+enum ChooseStarterModel {
+    CS_MODEL_0                   = 0,
+    CS_MODEL_1                   = 1,
+    CS_MODEL_BASE                = 2,
+    CS_MODEL_BALL1               = 3,
+    CS_MODEL_BALL2               = 4,
+    CS_MODEL_BALL3               = 5,
+    CS_MODEL_MAX
+};
+
+enum ChooseStarterAnim {
+    CS_ANIM_BALL1                = 0,
+    CS_ANIM_BALL2                = 1,
+    CS_ANIM_BALL3                = 2,
+    CS_ANIM_3                    = 3,
+    CS_ANIM_4                    = 4,
+    CS_ANIM_BASE                 = 5,
+    CS_ANIM_MAX
+};
+
 struct ChooseStarterRnd {
     NNSG3dRenderObj obj;
-    int unk_54;
-    int unk_58;
-    VecFx32 unk_5C;
-    VecFx32 unk_68;
-    u16 unk_74;
-    u16 unk_76;
+    u32 filler_54[4/sizeof(u32)];
+    BOOL active;
+    VecFx32 translVec;
+    VecFx32 scaleVec;
+    u16 yRotAngle;
+    u16 xRotAngle;
 }; // size=0x78
 
 struct ChooseStarterAnm {
@@ -89,8 +122,8 @@ struct StarterChooseMonSpriteData {
     void *charDatas[3];
     void *plttDatas[3];
     struct SomeDrawPokemonStruct param;
-    UnkStruct_0202445C *unk_088;
-    UnkStruct_02009F40 unk_08C;
+    SpriteList *spriteList;
+    GF_G2dRenderer g2dRender;
     struct Sprite *sprites[3];
 };
 
@@ -117,8 +150,8 @@ struct ChooseStarterAppWork {
     HeapID heapId;
     BGCONFIG *bgConfig;
     struct GF3DVramMan *_3dMan;
-    UnkStruct_02022D74 *unk_010;
-    VecFx32 unk_014;
+    GF_Camera *camera;
+    VecFx32 cameraTarget;
     NNSFndAllocator allocator; // 020
     struct ChooseStarter3dRes _3dObjRes[4];
     struct ChooseStarterRnd _3dObjRender[6];
@@ -132,14 +165,14 @@ struct ChooseStarterAppWork {
     u8 frame; // 3A4
     u8 textSpeed;
     u8 subPrinterId;
-    u8 unk_3A7;
+    u8 ballTransStep;
     int state;
-    int unk_3AC;
+    int ballWobbleState;
     STRING *strbuf;
     struct StarterChooseMonSpriteData monSpriteData;
-    GF_3dCamera *camera;
+    GFCameraTranslationWrapper *cameraTranslation;
     POKEMON *choices[3]; // 578
-    int unk_584;
+    int modelAnimState;
     GXRgb edgeColorTable[8];
 }; // size=0x598
 
@@ -152,30 +185,30 @@ static void update3dObjectsMain(struct ChooseStarterAppWork *work);
 static inline void id_roty_mtx33(MtxFx33 *mtx, u16 index);
 static void updateBaseAndBallsRotation(struct ChooseStarterAppWork *work);
 static void initBgLayers(BGCONFIG *bgConfig, HeapID heapId);
-static void ov61_021E6488(struct ChooseStarterAppWork *work);
+static void initCameraPosition(struct ChooseStarterAppWork *work);
 static void createObjResMans(struct ChooseStarterAppWork *work);
 static void initObjRenderers(struct ChooseStarterAppWork *work);
 static void freeAll3dAnmObj(struct ChooseStarterAppWork *work);
 static void freeAll3dResHeader(struct ChooseStarterAppWork *work);
-static void load3dModelResourceFromNarc(struct ChooseStarter3dRes *a0, int fileId, HeapID heapId);
+static void load3dModelResourceFromNarc(struct ChooseStarter3dRes *res, int fileId, HeapID heapId);
 static void init3dModelRender(struct ChooseStarterRnd *rnd, struct ChooseStarter3dRes *res);
 static void loadAnmFromNarc(int fileId, HeapID heapId, NNSFndAllocator *allocator, struct ChooseStarter3dRes *res, struct ChooseStarterAnm *anm);
 static void addAnmObjToRenderObj(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm);
 static void removeAnmObjFromRenderObj(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm);
-static BOOL ov61_021E682C(struct ChooseStarterAnm *anm);
-static void ov61_021E684C(struct ChooseStarterAnm *anm, int a1);
+static BOOL advance3dAnmFrameAndCheckFinished(struct ChooseStarterAnm *anm);
+static void advance3dAnmFrameLooped(struct ChooseStarterAnm *anm, int a1);
 static inline struct ChooseStarterAnm *GetAnmByIdx(struct ChooseStarterAppWork *work, u8 idx);
-static void ov61_021E6894(struct ChooseStarterAppWork *work);
-static BOOL ov61_021E68E4(struct ChooseStarterAppWork *work);
+static void advanceSelectedBallShakingAnim(struct ChooseStarterAppWork *work);
+static BOOL selectedBallWobbleIsFinish(struct ChooseStarterAppWork *work);
 static void free3dResHeader(struct ChooseStarter3dRes *a0);
 static void free3dAnmObj(struct ChooseStarterAnm *anm, NNSFndAllocator *alloc);
-static void ov61_021E6934(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z);
-static void ov61_021E693C(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z);
-static void ov61_021E6944(struct ChooseStarterAppWork *work);
-static void ov61_021E6A28(struct ChooseStarterRnd *render);
-static void ov61_021E6A48(struct ChooseStarterRnd *render, MtxFx43 *mtx);
-static BOOL selectedBallIsCentered(struct ChooseStarterAppWork *work, fx16 speed);
-static void ov61_021E6B2C(struct ChooseStarterAppWork *work, int a1);
+static void rendererTranslVecSet(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z);
+static void rendererScaleVecSet(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z);
+static void initBallModelPositions(struct ChooseStarterAppWork *work);
+static void updateModelPositionAndRotation(struct ChooseStarterRnd *render);
+static void calculateModelPositionAndRotation(struct ChooseStarterRnd *render, MtxFx43 *mtx);
+static BOOL updateBaseRotation(struct ChooseStarterAppWork *work, fx16 speed);
+static void reinitBallModelPosInDirection(struct ChooseStarterAppWork *work, int a1);
 static void makeAndDrawWindows(struct ChooseStarterAppWork *work);
 static void loadBgGraphics(BGCONFIG *bgConfig, HeapID heapId);
 static u8 printMsgOnWinEx(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, STRING **out);
@@ -186,11 +219,11 @@ static int getRotateDirection(int a0, u8 a1, int a2);
 static int getTappedBallId(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 radius);
 static void createMonSprites(struct ChooseStarterAppWork *work);
 static void loadOneMonObj(struct _2DGfxResMan *charResMan, struct _2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx);
-static void createOneMonRender(struct StarterChooseMonSpriteData *a0, u8 idx, HeapID heapId);
+static void createOneMonRender(struct StarterChooseMonSpriteData *pMonSpriteData, u8 idx, HeapID heapId);
 static void setAllButSelectedMonSpritesInvisible(struct ChooseStarterAppWork *work);
 static void setAllMonSpritesInvisible(struct StarterChooseMonSpriteData *a0);
-static BOOL ov61_021E7268(struct ChooseStarterAppWork *work, int a1, int a2);
-static u16 ov61_021E7348(const int *a0, const int *a1, int a2, int a3);
+static BOOL translateSelectedBall(struct ChooseStarterAppWork *work, fx32 from, fx32 to);
+static u16 calcBallTranslationArcStep(const fx32 *from, const fx32 *to, int step, int max);
 
 BOOL ChooseStarterApplication_OvyInit(OVY_MANAGER *ovy, int *state_p) {
     struct ChooseStarterAppWork *work;
@@ -237,10 +270,10 @@ BOOL ChooseStarterApplication_OvyInit(OVY_MANAGER *ovy, int *state_p) {
     loadBgGraphics(work->bgConfig, work->heapId);
     createObjResMans(work);
     initObjRenderers(work);
-    work->unk_010 = sub_02023114(work->heapId);
-    work->camera = GF_3dCamera_Create(work->heapId, work->unk_010);
-    ov61_021E6488(work);
-    ov61_021E6944(work);
+    work->camera = GF_Camera_Create(work->heapId);
+    work->cameraTranslation = CreateCameraTranslationWrapper(work->heapId, work->camera);
+    initCameraPosition(work);
+    initBallModelPositions(work);
     createMonSprites(work);
     TextFlags_SetCanABSpeedUpPrint(FALSE);
     sub_02002B50(TRUE);
@@ -273,7 +306,7 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         *state = CHOOSE_STARTER_STATE_START_INIT_MSG;
         break;
     case CHOOSE_STARTER_STATE_START_INIT_MSG:
-        if (!GF_3dCamera_MovementActive(work->camera)) {
+        if (!IsCameraTranslationFinished(work->cameraTranslation)) {
             break;
         }
         work->subPrinterId = printMsgOnWinEx(work->winTop, work->heapId, TRUE, NARC_msg_msg_0190_bin, msg_0190_00000, MakeTextColor(1, 2, 15), work->textSpeed, &work->strbuf);
@@ -297,7 +330,7 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         *state = CHOOSE_STARTER_STATE_HANDLE_INPUT;
         break;
     case CHOOSE_STARTER_STATE_HANDLE_INPUT:
-        if (!GF_3dCamera_MovementActive(work->camera)) {
+        if (!IsCameraTranslationFinished(work->cameraTranslation)) {
             break;
         }
         input = getInput(work);
@@ -311,12 +344,12 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         }
         switch (input) {
         case CHOOSE_STARTER_INPUT_SELECT_BALL_INIT:
-            work->unk_584 = 2;
+            work->modelAnimState = 2;
             {
-                STRING *sp14 = NULL;
+                STRING *baseTrans = NULL;
                 printMsgOnWinEx(work->winTop, work->heapId, FALSE, NARC_msg_msg_0190_bin, msg_0190_00004 + work->curSelection,
-                              MakeTextColor(1, 2, 15), 0, &sp14);
-                String_dtor(sp14);
+                              MakeTextColor(1, 2, 15), 0, &baseTrans);
+                String_dtor(baseTrans);
             }
             PlayCry(sSpecies[work->curSelection], FALSE);
             printMsgOnBottom(work, msg_0190_00007);
@@ -344,14 +377,14 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
             break;
         case CHOOSE_STARTER_INPUT_CHOSE_STARTER:
             removeAnmObjFromRenderObj(&work->_3dObjRender[work->curSelection + 3], &work->_3dObjAnm[work->curSelection]);
-            addAnmObjToRenderObj(&work->_3dObjRender[work->curSelection + 3], &work->_3dObjAnm[3]);
-            addAnmObjToRenderObj(&work->_3dObjRender[0], &work->_3dObjAnm[4]);
-            work->_3dObjRender[0].unk_58 = 1;
+            addAnmObjToRenderObj(&work->_3dObjRender[work->curSelection + 3], &work->_3dObjAnm[CS_ANIM_3]);
+            addAnmObjToRenderObj(&work->_3dObjRender[CS_MODEL_0], &work->_3dObjAnm[CS_ANIM_4]);
+            work->_3dObjRender[CS_MODEL_0].active = TRUE;
             *state = CHOOSE_STARTER_STATE_ZOOM_AND_FADE_OUT;
             break;
         case CHOOSE_STARTER_INPUT_BACKED_OUT:
             if (work->state == 2) {
-                work->unk_584 = 0;
+                work->modelAnimState = 0;
                 printMsgOnBottom(work, msg_0190_00007);
                 GX_EngineAToggleLayers(2, 0);
                 GX_EngineAToggleLayers(4, 0);
@@ -363,10 +396,10 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         }
         break;
     case CHOOSE_STARTER_STATE_ROTATE_MACHINE:
-        if (!selectedBallIsCentered(work, work->rotationSpeed)) {
+        if (!updateBaseRotation(work, work->rotationSpeed)) {
             break;
         }
-        work->unk_584 = 2;
+        work->modelAnimState = 2;
         {
             STRING *sp10 = NULL;
             printMsgOnWinEx(work->winTop, work->heapId, FALSE, NARC_msg_msg_0190_bin, msg_0190_00004 + work->curSelection, MakeTextColor(1, 2, 15), 0, &sp10);
@@ -382,38 +415,38 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         *state = CHOOSE_STARTER_STATE_HANDLE_INPUT;
         break;
     case CHOOSE_STARTER_STATE_ZOOM_IN:
-        if (!ov61_021E7268(work, 0, -0x15E0)) {
+        if (!translateSelectedBall(work, 0, -0x15E0)) {
             break;
         }
         setAllButSelectedMonSpritesInvisible(work);
         *state = CHOOSE_STARTER_STATE_WAIT_ZOOM_IN;
         break;
     case CHOOSE_STARTER_STATE_WAIT_ZOOM_IN:
-        if (!ov61_021E68E4(work)) {
+        if (!selectedBallWobbleIsFinish(work)) {
             break;
         }
         work->state = 2;
         *state = CHOOSE_STARTER_STATE_RETURN_INIT_MSG;
         break;
     case CHOOSE_STARTER_STATE_BACK_OUT:
-        if (!ov61_021E7268(work, -0x15E0, 0)) {
+        if (!translateSelectedBall(work, -0x15E0, 0)) {
             break;
         }
-        ov61_021E6B2C(work, 0);
+        reinitBallModelPosInDirection(work, 0);
         *state = 2;
         break;
     case CHOOSE_STARTER_STATE_ZOOM_AND_FADE_OUT:
         BeginNormalPaletteFade(4, 0, 0, RGB_WHITE, 10, 1, work->heapId);
-        work->unk_584 = 1;
+        work->modelAnimState = 1;
         {
-            struct UnkStruct_02019040 sp2C;
+            struct CameraTranslationPathTemplate template;
 
-            sp2C.unk_0 = 0xDCC0;
-            sp2C.unk_2 = 0x11A4;
-            sp2C.unk_4 = (VecFx32){0, 0, 14 * FX32_ONE};
-            sp2C.unk_10 = 0x64000;
+            template.unk_0 = 0xDCC0;
+            template.unk_2 = 0x11A4;
+            template.unk_4 = (VecFx32){0, 0, 14 * FX32_ONE};
+            template.unk_10 = 100 * FX32_ONE;
 
-            GF_3dCamera_BeginMovement(work->camera, &sp2C, 8);
+            SetCameraTranslationPath(work->cameraTranslation, &template, 8);
         }
         *state = CHOOSE_STARTER_STATE_WAIT_FADE_OUT;
         PlaySE(SEQ_SE_DP_W025);
@@ -433,40 +466,40 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
     }
 
     {
-        struct UnkStruct_02019040 sp18;
+        struct CameraTranslationPathTemplate template;
 
         if (r6 != 0) {
             if (r6 == 1) {
-                sp18.unk_0 = 0xDCC0;
-                sp18.unk_2 = 0x11A4;
-                sp18.unk_4 = (VecFx32){0, 0, 14 * FX32_ONE};
-                sp18.unk_10 = 100 * FX32_ONE;
-                work->unk_3AC = 0;
+                template.unk_0 = 0xDCC0;
+                template.unk_2 = 0x11A4;
+                template.unk_4 = (VecFx32){0, 0, 14 * FX32_ONE};
+                template.unk_10 = 100 * FX32_ONE;
+                work->ballWobbleState = 0;
             } else {
-                sp18.unk_0 = 0xEA20;
-                sp18.unk_2 = 0x1024;
-                sp18.unk_4 = (VecFx32){0, 0, 12 * FX32_ONE};
-                sp18.unk_10 = 60 * FX32_ONE;
-                work->unk_3AC = 2;
+                template.unk_0 = 0xEA20;
+                template.unk_2 = 0x1024;
+                template.unk_4 = (VecFx32){0, 0, 12 * FX32_ONE};
+                template.unk_10 = 60 * FX32_ONE;
+                work->ballWobbleState = 2;
             }
-            GF_3dCamera_BeginMovement(work->camera, &sp18, 8);
+            SetCameraTranslationPath(work->cameraTranslation, &template, 8);
         }
     }
-    if (work->unk_584 == 1) {
-        ov61_021E682C(&work->_3dObjAnm[3]);
-        ov61_021E682C(&work->_3dObjAnm[4]);
-    } else if (work->unk_584 == 2) {
-        ov61_021E6894(work);
+    if (work->modelAnimState == 1) {
+        advance3dAnmFrameAndCheckFinished(&work->_3dObjAnm[CS_ANIM_3]);
+        advance3dAnmFrameAndCheckFinished(&work->_3dObjAnm[CS_ANIM_4]);
+    } else if (work->modelAnimState == 2) {
+        advanceSelectedBallShakingAnim(work);
     } else {
-        NNS_G3dAnmObjSetFrame(work->_3dObjAnm[0].obj, 0);
-        NNS_G3dAnmObjSetFrame(work->_3dObjAnm[1].obj, 0);
-        NNS_G3dAnmObjSetFrame(work->_3dObjAnm[2].obj, 0);
+        NNS_G3dAnmObjSetFrame(work->_3dObjAnm[CS_ANIM_BALL1].obj, 0);
+        NNS_G3dAnmObjSetFrame(work->_3dObjAnm[CS_ANIM_BALL2].obj, 0);
+        NNS_G3dAnmObjSetFrame(work->_3dObjAnm[CS_ANIM_BALL3].obj, 0);
     }
     {
-        struct ChooseStarterAnm *r3 = &work->_3dObjAnm[5];
-        r3->obj->frame += FX32_ONE;
-        if (r3->obj->frame >= NNS_G3dAnmObjGetNumFrame(r3->obj)) {
-            NNS_G3dAnmObjSetFrame(r3->obj, 0);
+        struct ChooseStarterAnm *anm = &work->_3dObjAnm[CS_ANIM_BASE];
+        anm->obj->frame += FX32_ONE;
+        if (anm->obj->frame >= NNS_G3dAnmObjGetNumFrame(anm->obj)) {
+            NNS_G3dAnmObjSetFrame(anm->obj, 0);
         }
     }
     update3dObjectsMain(work);
@@ -482,12 +515,12 @@ BOOL ChooseStarterApplication_OvyExit(OVY_MANAGER *ovy, int *state) {
     sub_02002B8C(FALSE);
     data->cursorPos = work->curSelection;
     Main_SetVBlankIntrCB(NULL, NULL);
-    GF_3dCamera_Delete(work->camera);
-    sub_02023120(work->unk_010);
+    DeleteCameraTranslationWrapper(work->cameraTranslation);
+    sub_02023120(work->camera);
     freeAll3dAnmObj(work);
     freeAll3dResHeader(work);
     freeAllMonSprite2dResObj(&work->monSpriteData);
-    sub_02024504(work->monSpriteData.unk_088);
+    sub_02024504(work->monSpriteData.spriteList);
     Destroy2DGfxResObjMan(work->monSpriteData.charResMan);
     Destroy2DGfxResObjMan(work->monSpriteData.plttResMan);
     Destroy2DGfxResObjMan(work->monSpriteData.cellResMan);
@@ -549,14 +582,14 @@ static void createOamManager(HeapID heapId) {
     NNS_G2dInitOamManagerModule();
     OamManager_Create(0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20, heapId);
     {
-        struct UnkStruct_020215A0 sp14 = {
+        struct UnkStruct_020215A0 baseTrans = {
             3,
             0,
             0x2800,
             0
         };
-        sp14.heapId = heapId;
-        sub_020215C0(&sp14, 0x200010, 0x10);
+        baseTrans.heapId = heapId;
+        sub_020215C0(&baseTrans, 0x200010, 0x10);
     }
     sub_02022588(3, heapId);
     sub_020216C8();
@@ -582,7 +615,7 @@ static void init3dEngine(struct ChooseStarterAppWork *work) {
 }
 
 static void update3dObjectsMain(struct ChooseStarterAppWork *work) {
-    sub_0202457C(work->monSpriteData.unk_088);
+    sub_0202457C(work->monSpriteData.spriteList);
     sub_02026E48();
     NNS_G3dGePushMtx();
     sub_02023154();
@@ -597,38 +630,38 @@ static inline void id_roty_mtx33(MtxFx33 *mtx, u16 index) {
 }
 
 static void updateBaseAndBallsRotation(struct ChooseStarterAppWork *work) {
-    const VecFx32 sp8C = {FX32_ONE, FX32_ONE, FX32_ONE};
-    MtxFx33 sp68;
-    MtxFx33 sp44;
+    const VecFx32 scaleVec = {FX32_ONE, FX32_ONE, FX32_ONE};
+    MtxFx33 rotMtx;
+    MtxFx33 tmpMtx;
     int i;
 
     for (i = 0; i < 2; i++) {
         struct ChooseStarterRnd *rnd = &work->_3dObjRender[i];
-        if (rnd->unk_58) {
-            MTX_Identity33(&sp68);
-            MTX_RotY33(&sp44, FX_SinIdx(rnd->unk_74), FX_CosIdx(rnd->unk_74));
-            MTX_Concat33(&sp44, &sp68, &sp68);
-            sub_0201F554(&rnd->obj, &rnd->unk_5C, &sp68, &sp8C);
+        if (rnd->active) {
+            MTX_Identity33(&rotMtx);
+            MTX_RotY33(&tmpMtx, FX_SinIdx(rnd->yRotAngle), FX_CosIdx(rnd->yRotAngle));
+            MTX_Concat33(&tmpMtx, &rotMtx, &rotMtx);
+            Draw3dModel(&rnd->obj, &rnd->translVec, &rotMtx, &scaleVec);
         }
     }
 
     {
-        MtxFx33 sp20;
-        const VecFx32 sp14 = {0, 0, 0};
-        const VecFx32 sp08 = {FX32_ONE, FX32_ONE, FX32_ONE};
+        MtxFx33 baseRot;
+        const VecFx32 baseTrans = {0, 0, 0};
+        const VecFx32 baseScale = {FX32_ONE, FX32_ONE, FX32_ONE};
 
-        NNS_G3dGlbSetBaseTrans(&sp14);
-        id_roty_mtx33(&sp20, work->rotationAngle);
-        NNS_G3dGlbSetBaseRot(&sp20);
-        NNS_G3dGlbSetBaseScale(&sp08);
+        NNS_G3dGlbSetBaseTrans(&baseTrans);
+        id_roty_mtx33(&baseRot, work->rotationAngle);
+        NNS_G3dGlbSetBaseRot(&baseRot);
+        NNS_G3dGlbSetBaseScale(&baseScale);
     }
     NNS_G3dGlbFlush();
 
     for (i = 2; i < 6; i++) {
         struct ChooseStarterRnd *rnd = &work->_3dObjRender[i];
-        if (rnd->unk_58) {
+        if (rnd->active) {
             NNS_G3dGePushMtx();
-            ov61_021E6A28(rnd);
+            updateModelPositionAndRotation(rnd);
             NNS_G3dGePopMtx(1);
             NNS_G3dGlbFlush();
         }
@@ -689,80 +722,79 @@ static void initBgLayers(BGCONFIG *bgConfig, HeapID heapId) {
     }
 }
 
-static void ov61_021E6488(struct ChooseStarterAppWork *work) {
-    VecFx32 sp20;
-    const VecFx32 sp14 = {0, 0, 14 * FX32_ONE};
-    u16 sp0C[4];
+static void initCameraPosition(struct ChooseStarterAppWork *work) {
+    VecFx32 bindTarget;
+    const VecFx32 shiftVec = {0, 0, 14 * FX32_ONE};
+    GF_CameraAngle cameraAngle;
 
-    work->unk_014.x = 0;
-    work->unk_014.y = FX32_ONE * 15;
-    work->unk_014.z = 0;
+    work->cameraTarget.x = 0;
+    work->cameraTarget.y = FX32_ONE * 15;
+    work->cameraTarget.z = 0;
 
-    sp0C[0] = 0xDCC0;
-    sp0C[1] = 0;
-    sp0C[2] = 0;
-    //sp0C[3] = 0;
-    sub_02023254(&work->unk_014, 0x64000, sp0C, 0x11A4, 0, 1, work->unk_010);
-    sub_02023514(&sp14, work->unk_010);
-    sub_02023240(FX32_ONE * 4, FX32_ONE * 256, work->unk_010);
-    sp20.x = 0;
-    sp20.y = FX32_ONE;
-    sp20.z = 0;
-    sub_02023204(&sp20, work->unk_010);
-    sub_0202313C(work->unk_010);
+    cameraAngle.x = 0xDCC0;
+    cameraAngle.y = 0;
+    cameraAngle.z = 0;
+    GF_Camera_InitFromTargetDistanceAndAngle(&work->cameraTarget, 100 * FX32_ONE, &cameraAngle, 0x11A4, 0, 1, work->camera);
+    GF_Camera_ShiftBy(&shiftVec, work->camera);
+    GF_Camera_SetClipBounds(FX32_ONE * 4, FX32_ONE * 256, work->camera);
+    bindTarget.x = 0;
+    bindTarget.y = FX32_ONE;
+    bindTarget.z = 0;
+    GF_Camera_SetBindTarget(&bindTarget, work->camera);
+    GF_Camera_RegisterToStaticPtr(work->camera);
 }
 
 static void createObjResMans(struct ChooseStarterAppWork *work) {
-    struct StarterChooseMonSpriteData *r4 = &work->monSpriteData;
-    r4->unk_088 = sub_02009F40(3, &r4->unk_08C, work->heapId);
-    r4->charResMan = Create2DGfxResObjMan(3, 0, work->heapId);
-    r4->plttResMan = Create2DGfxResObjMan(3, 1, work->heapId);
-    r4->cellResMan = Create2DGfxResObjMan(3, 2, work->heapId);
-    r4->animResMan = Create2DGfxResObjMan(3, 3, work->heapId);
+    struct StarterChooseMonSpriteData *pMonSpriteData = &work->monSpriteData;
+    pMonSpriteData->spriteList = G2dRenderer_Init(3, &pMonSpriteData->g2dRender, work->heapId);
+    pMonSpriteData->charResMan = Create2DGfxResObjMan(3, 0, work->heapId);
+    pMonSpriteData->plttResMan = Create2DGfxResObjMan(3, 1, work->heapId);
+    pMonSpriteData->cellResMan = Create2DGfxResObjMan(3, 2, work->heapId);
+    pMonSpriteData->animResMan = Create2DGfxResObjMan(3, 3, work->heapId);
     GX_EngineBToggleLayers(0x10, GX_LAYER_TOGGLE_ON);
 }
 
 static void initObjRenderers(struct ChooseStarterAppWork *work) {
     int i;
-    load3dModelResourceFromNarc(&work->_3dObjRes[0], 3, work->heapId);
-    ov61_021E6934(&work->_3dObjRender[0], 0, 14 * FX32_ONE, 32 * FX32_ONE);
-    ov61_021E693C(&work->_3dObjRender[0], FX32_ONE, FX32_ONE, FX32_ONE);
-    load3dModelResourceFromNarc(&work->_3dObjRes[1], 0, work->heapId);
-    ov61_021E6934(&work->_3dObjRender[1], 0, 0, 0);
-    ov61_021E693C(&work->_3dObjRender[1], FX32_ONE, FX32_ONE, FX32_ONE);
-    load3dModelResourceFromNarc(&work->_3dObjRes[2], 1, work->heapId);
-    ov61_021E6934(&work->_3dObjRender[2], 0, 0, 0);
-    ov61_021E693C(&work->_3dObjRender[2], FX32_ONE, FX32_ONE, FX32_ONE);
-    load3dModelResourceFromNarc(&work->_3dObjRes[3], 2, work->heapId);
-    init3dModelRender(&work->_3dObjRender[0], &work->_3dObjRes[0]);
-    init3dModelRender(&work->_3dObjRender[1], &work->_3dObjRes[1]);
-    init3dModelRender(&work->_3dObjRender[2], &work->_3dObjRes[2]);
+    load3dModelResourceFromNarc(&work->_3dObjRes[CS_3DRES_0], NARC_choose_starter_main_res_choose_starter_main_res_00000003_NSBMD, work->heapId);
+    rendererTranslVecSet(&work->_3dObjRender[CS_MODEL_0], 0, 14 * FX32_ONE, 32 * FX32_ONE);
+    rendererScaleVecSet(&work->_3dObjRender[CS_MODEL_0], FX32_ONE, FX32_ONE, FX32_ONE);
+    load3dModelResourceFromNarc(&work->_3dObjRes[CS_3DRES_1], NARC_choose_starter_main_res_choose_starter_main_res_00000000_NSBMD, work->heapId);
+    rendererTranslVecSet(&work->_3dObjRender[CS_MODEL_1], 0, 0, 0);
+    rendererScaleVecSet(&work->_3dObjRender[CS_MODEL_1], FX32_ONE, FX32_ONE, FX32_ONE);
+    load3dModelResourceFromNarc(&work->_3dObjRes[CS_3DRES_BASE], NARC_choose_starter_main_res_choose_starter_main_res_00000001_NSBMD, work->heapId);
+    rendererTranslVecSet(&work->_3dObjRender[CS_MODEL_BASE], 0, 0, 0);
+    rendererScaleVecSet(&work->_3dObjRender[CS_MODEL_BASE], FX32_ONE, FX32_ONE, FX32_ONE);
+    load3dModelResourceFromNarc(&work->_3dObjRes[CS_3DRES_BALLS], NARC_choose_starter_main_res_choose_starter_main_res_00000002_NSBMD, work->heapId);
+    init3dModelRender(&work->_3dObjRender[CS_MODEL_0], &work->_3dObjRes[CS_3DRES_0]);
+    init3dModelRender(&work->_3dObjRender[CS_MODEL_1], &work->_3dObjRes[CS_3DRES_1]);
+    init3dModelRender(&work->_3dObjRender[CS_MODEL_BASE], &work->_3dObjRes[CS_3DRES_BASE]);
 
     for (i = 0; i < 3; i++) {
-        init3dModelRender(&work->_3dObjRender[i + 3], &work->_3dObjRes[3]);
+        init3dModelRender(&work->_3dObjRender[i + CS_MODEL_BALL1], &work->_3dObjRes[CS_3DRES_BALLS]);
     }
-    work->_3dObjRender[0].unk_58 = 0;
-    work->_3dObjRender[2].unk_58 = 1;
-    work->_3dObjRender[1].unk_58 = 1;
-    work->_3dObjRender[3].unk_58 = 1;
-    work->_3dObjRender[4].unk_58 = 1;
-    work->_3dObjRender[5].unk_58 = 1;
-    loadAnmFromNarc(7, work->heapId, &work->allocator, &work->_3dObjRes[2], &work->_3dObjAnm[5]);
-    loadAnmFromNarc(6, work->heapId, &work->allocator, &work->_3dObjRes[3], &work->_3dObjAnm[0]);
-    loadAnmFromNarc(6, work->heapId, &work->allocator, &work->_3dObjRes[3], &work->_3dObjAnm[1]);
-    loadAnmFromNarc(6, work->heapId, &work->allocator, &work->_3dObjRes[3], &work->_3dObjAnm[2]);
-    loadAnmFromNarc(5, work->heapId, &work->allocator, &work->_3dObjRes[3], &work->_3dObjAnm[3]);
-    loadAnmFromNarc(4, work->heapId, &work->allocator, &work->_3dObjRes[0], &work->_3dObjAnm[4]);
-    addAnmObjToRenderObj(&work->_3dObjRender[2], &work->_3dObjAnm[5]);
-    addAnmObjToRenderObj(&work->_3dObjRender[3], &work->_3dObjAnm[0]);
-    addAnmObjToRenderObj(&work->_3dObjRender[4], &work->_3dObjAnm[1]);
-    addAnmObjToRenderObj(&work->_3dObjRender[5], &work->_3dObjAnm[2]);
+    work->_3dObjRender[CS_MODEL_0].active = FALSE;
+    work->_3dObjRender[CS_MODEL_BASE].active = TRUE;
+    work->_3dObjRender[CS_MODEL_1].active = TRUE;
+    work->_3dObjRender[CS_MODEL_BALL1].active = TRUE;
+    work->_3dObjRender[CS_MODEL_BALL2].active = TRUE;
+    work->_3dObjRender[CS_MODEL_BALL3].active = TRUE;
+    loadAnmFromNarc(NARC_choose_starter_main_res_choose_starter_main_res_00000007_NSBTA, work->heapId, &work->allocator, &work->_3dObjRes[CS_3DRES_BASE], &work->_3dObjAnm[CS_ANIM_BASE]);
+    loadAnmFromNarc(NARC_choose_starter_main_res_choose_starter_main_res_00000006_NSBCA, work->heapId, &work->allocator, &work->_3dObjRes[CS_3DRES_BALLS], &work->_3dObjAnm[CS_ANIM_BALL1]);
+    loadAnmFromNarc(NARC_choose_starter_main_res_choose_starter_main_res_00000006_NSBCA, work->heapId, &work->allocator, &work->_3dObjRes[CS_3DRES_BALLS], &work->_3dObjAnm[CS_ANIM_BALL2]);
+    loadAnmFromNarc(NARC_choose_starter_main_res_choose_starter_main_res_00000006_NSBCA, work->heapId, &work->allocator, &work->_3dObjRes[CS_3DRES_BALLS], &work->_3dObjAnm[CS_ANIM_BALL3]);
+    loadAnmFromNarc(NARC_choose_starter_main_res_choose_starter_main_res_00000005_NSBCA, work->heapId, &work->allocator, &work->_3dObjRes[CS_3DRES_BALLS], &work->_3dObjAnm[CS_ANIM_3]);
+    loadAnmFromNarc(NARC_choose_starter_main_res_choose_starter_main_res_00000004_NSBCA, work->heapId, &work->allocator, &work->_3dObjRes[CS_3DRES_0], &work->_3dObjAnm[CS_ANIM_4]);
+    addAnmObjToRenderObj(&work->_3dObjRender[CS_MODEL_BASE], &work->_3dObjAnm[CS_ANIM_BASE]);
+    addAnmObjToRenderObj(&work->_3dObjRender[CS_MODEL_BALL1], &work->_3dObjAnm[CS_ANIM_BALL1]);
+    addAnmObjToRenderObj(&work->_3dObjRender[CS_MODEL_BALL2], &work->_3dObjAnm[CS_ANIM_BALL2]);
+    addAnmObjToRenderObj(&work->_3dObjRender[CS_MODEL_BALL3], &work->_3dObjAnm[CS_ANIM_BALL3]);
 }
 
 static void freeAll3dAnmObj(struct ChooseStarterAppWork *work) {
     int i;
 
-    for (i = 0; i < 6; i++) {
+    for (i = 0; i < CS_ANIM_MAX; i++) {
         free3dAnmObj(&work->_3dObjAnm[i], &work->allocator);
     }
 }
@@ -770,27 +802,27 @@ static void freeAll3dAnmObj(struct ChooseStarterAppWork *work) {
 static void freeAll3dResHeader(struct ChooseStarterAppWork *work) {
     int i;
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < CS_3DRES_MAX; i++) {
         free3dResHeader(&work->_3dObjRes[i]);
     }
 }
 
-static void load3dModelResourceFromNarc(struct ChooseStarter3dRes *a0, int fileId, HeapID heapId) {
-    a0->header = GfGfxLoader_LoadFromNarc(NARC_a_0_8_2, fileId, FALSE, heapId, FALSE);
-    a0->mdlSet = NNS_G3dGetMdlSet(a0->header);
-    a0->mdl = NNS_G3dGetMdlByIdx(a0->mdlSet, 0);
-    a0->tex = NNS_G3dGetTex(a0->header);
-    sub_0201F668(a0->tex);
+static void load3dModelResourceFromNarc(struct ChooseStarter3dRes *res, int fileId, HeapID heapId) {
+    res->header = GfGfxLoader_LoadFromNarc(NARC_application_choose_starter_choose_starter_main_res, fileId, FALSE, heapId, FALSE);
+    res->mdlSet = NNS_G3dGetMdlSet(res->header);
+    res->mdl = NNS_G3dGetMdlByIdx(res->mdlSet, 0);
+    res->tex = NNS_G3dGetTex(res->header);
+    AllocAndLoad3dTexResources(res->tex);
 }
 
 static void init3dModelRender(struct ChooseStarterRnd *rnd, struct ChooseStarter3dRes *res) {
-    sub_0201F64C(res->header, res->tex);
+    Bind3dModelSet(res->header, res->tex);
     NNS_G3dRenderObjInit(&rnd->obj, res->mdl);
 }
 
 static void loadAnmFromNarc(int fileId, HeapID heapId, NNSFndAllocator *allocator, struct ChooseStarter3dRes *res, struct ChooseStarterAnm *anm) {
     void *pAnm;
-    anm->hdr = GfGfxLoader_LoadFromNarc(NARC_a_0_8_2, fileId, FALSE, heapId, FALSE);
+    anm->hdr = GfGfxLoader_LoadFromNarc(NARC_application_choose_starter_choose_starter_main_res, fileId, FALSE, heapId, FALSE);
     pAnm = NNS_G3dGetAnmByIdx(anm->hdr, 0);
     anm->obj = NNS_G3dAllocAnmObj(allocator, pAnm, res->mdl);
     NNS_G3dAnmObjInit(anm->obj, pAnm, res->mdl, res->tex);
@@ -804,7 +836,7 @@ static void removeAnmObjFromRenderObj(struct ChooseStarterRnd *rnd, struct Choos
     NNS_G3dRenderObjRemoveAnmObj(&rnd->obj, anm->obj);
 }
 
-static BOOL ov61_021E682C(struct ChooseStarterAnm *anm) {
+static BOOL advance3dAnmFrameAndCheckFinished(struct ChooseStarterAnm *anm) {
     BOOL ret = FALSE;
     fx32 frame = anm->obj->frame + FX32_ONE;
 
@@ -816,7 +848,7 @@ static BOOL ov61_021E682C(struct ChooseStarterAnm *anm) {
     return ret;
 }
 
-static void ov61_021E684C(struct ChooseStarterAnm *anm, int a1) {
+static void advance3dAnmFrameLooped(struct ChooseStarterAnm *anm, int a1) {
     NNS_G3dAnmObjSetFrame(anm->obj, anm->obj->frame + FX32_ONE);
     if (a1 == 2 && anm->obj->frame == (FX32_ONE * 40)) {
         NNS_G3dAnmObjSetFrame(anm->obj, FX32_ONE * 80);
@@ -834,14 +866,14 @@ static inline struct ChooseStarterAnm *GetAnmByIdx(struct ChooseStarterAppWork *
     return &work->_3dObjAnm[idx];
 }
 
-static void ov61_021E6894(struct ChooseStarterAppWork *work) {
+static void advanceSelectedBallShakingAnim(struct ChooseStarterAppWork *work) {
     u32 idx = work->curSelection;
-    ov61_021E684C(GetAnmByIdx(work, idx), work->unk_3AC);
+    advance3dAnmFrameLooped(GetAnmByIdx(work, idx), work->ballWobbleState);
     NNS_G3dAnmObjSetFrame(GetAnmByIdx(work, (idx + 1) % 3)->obj, 0);
     NNS_G3dAnmObjSetFrame(GetAnmByIdx(work, (idx + 2) % 3)->obj, 0);
 }
 
-static BOOL ov61_021E68E4(struct ChooseStarterAppWork *work) {
+static BOOL selectedBallWobbleIsFinish(struct ChooseStarterAppWork *work) {
     u32 idx = work->curSelection;
     return GetAnmByIdx(work, idx)->obj->frame >= 80 * FX32_ONE;
 }
@@ -859,19 +891,19 @@ static void free3dAnmObj(struct ChooseStarterAnm *anm, NNSFndAllocator *alloc) {
     }
 }
 
-static void ov61_021E6934(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z) {
-    rnd->unk_5C.x = x;
-    rnd->unk_5C.y = y;
-    rnd->unk_5C.z = z;
+static void rendererTranslVecSet(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z) {
+    rnd->translVec.x = x;
+    rnd->translVec.y = y;
+    rnd->translVec.z = z;
 }
 
-static void ov61_021E693C(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z) {
-    rnd->unk_68.x = x;
-    rnd->unk_68.y = y;
-    rnd->unk_68.z = z;
+static void rendererScaleVecSet(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z) {
+    rnd->scaleVec.x = x;
+    rnd->scaleVec.y = y;
+    rnd->scaleVec.z = z;
 }
 
-static void ov61_021E6944(struct ChooseStarterAppWork *work) {
+static void initBallModelPositions(struct ChooseStarterAppWork *work) {
     VecFx32 sp40;
     const VecFx32 sp34 = {0, 14 * FX32_ONE, 32 * FX32_ONE};
     MtxFx33 sp10;
@@ -886,60 +918,60 @@ static void ov61_021E6944(struct ChooseStarterAppWork *work) {
         MTX_MultVec33(&sp34, &sp10, &sp40);
         work->positions[r4] = sp40;
         work->positions[r4].y += 13 * FX32_ONE;
-        ov61_021E6934(&work->_3dObjRender[r4 + 3], sp40.x, sp40.y, sp40.z);
-        ov61_021E693C(&work->_3dObjRender[r4 + 3], FX32_ONE, FX32_ONE, FX32_ONE);
-        work->_3dObjRender[r4 + 3].unk_74 = sp0;
-        work->_3dObjRender[r4 + 3].unk_76 = 0;
+        rendererTranslVecSet(&work->_3dObjRender[r4 + 3], sp40.x, sp40.y, sp40.z);
+        rendererScaleVecSet(&work->_3dObjRender[r4 + 3], FX32_ONE, FX32_ONE, FX32_ONE);
+        work->_3dObjRender[r4 + CS_MODEL_BALL1].yRotAngle = sp0;
+        work->_3dObjRender[r4 + CS_MODEL_BALL1].xRotAngle = 0;
         r4 = (r4 + 1) % 3;
         angle += 16 * FX32_ONE;
     }
 }
 
-static void ov61_021E6A28(struct ChooseStarterRnd *render) {
+static void updateModelPositionAndRotation(struct ChooseStarterRnd *render) {
     MtxFx43 sp0;
-    ov61_021E6A48(render, &sp0);
+    calculateModelPositionAndRotation(render, &sp0);
     NNS_G3dGeMultMtx43(&sp0);
     NNS_G3dDraw(&render->obj);
 }
 
-static void ov61_021E6A48(struct ChooseStarterRnd *render, MtxFx43 *mtx) {
+static void calculateModelPositionAndRotation(struct ChooseStarterRnd *render, MtxFx43 *mtx) {
     MtxFx43 sp64;
     MtxFx43 sp34;
     MtxFx43 sp04;
     MTX_Identity43(mtx);
-    MTX_TransApply43(mtx, mtx, render->unk_5C.x, render->unk_5C.y, render->unk_5C.z);
+    MTX_TransApply43(mtx, mtx, render->translVec.x, render->translVec.y, render->translVec.z);
     MTX_Identity43(&sp64);
-    MTX_RotX43(&sp04, FX_SinIdx(render->unk_76), FX_CosIdx(render->unk_76));
+    MTX_RotX43(&sp04, FX_SinIdx(render->xRotAngle), FX_CosIdx(render->xRotAngle));
     MTX_Concat43(&sp04, &sp64, &sp64);
-    MTX_RotY43(&sp04, FX_SinIdx(render->unk_74), FX_CosIdx(render->unk_74));
+    MTX_RotY43(&sp04, FX_SinIdx(render->yRotAngle), FX_CosIdx(render->yRotAngle));
     MTX_Concat43(&sp04, &sp64, &sp64);
-    MTX_Scale43(&sp34, render->unk_68.x, render->unk_68.y, render->unk_68.z);
+    MTX_Scale43(&sp34, render->scaleVec.x, render->scaleVec.y, render->scaleVec.z);
     MTX_Concat43(&sp64, mtx, mtx);
     MTX_Concat43(&sp34, mtx, mtx);
 }
 
-static BOOL selectedBallIsCentered(struct ChooseStarterAppWork *work, fx16 speed) {
+static BOOL updateBaseRotation(struct ChooseStarterAppWork *work, fx16 speed) {
     BOOL ret = FALSE;
     work->rotationAngle += speed;
     if (speed >= 0) {
         if (work->rotationAngle >= FX16_CONST(5.3333)) {
             work->rotationAngle = 0;
             work->rotationSpeed = 0;
-            ov61_021E6B2C(work, 1);
+            reinitBallModelPosInDirection(work, 1);
             ret = TRUE;
         }
     } else {
         if (work->rotationAngle <= FX16_CONST(-5.3333)) {
             work->rotationAngle = 0;
             work->rotationSpeed = 0;
-            ov61_021E6B2C(work, 2);
+            reinitBallModelPosInDirection(work, 2);
             ret = TRUE;
         }
     }
     return ret;
 }
 
-static void ov61_021E6B2C(struct ChooseStarterAppWork *work, int a1) {
+static void reinitBallModelPosInDirection(struct ChooseStarterAppWork *work, int a1) {
     if (a1 == 2) {
         work->curSelection = (work->curSelection + 1) % 3;
     } else if (a1 == 1) {
@@ -949,7 +981,7 @@ static void ov61_021E6B2C(struct ChooseStarterAppWork *work, int a1) {
         }
         work->curSelection = r0;
     }
-    ov61_021E6944(work);
+    initBallModelPositions(work);
 }
 
 static void makeAndDrawWindows(struct ChooseStarterAppWork *work) {
@@ -960,21 +992,21 @@ static void makeAndDrawWindows(struct ChooseStarterAppWork *work) {
     FillWindowPixelBuffer(work->winTop, 15);
     FillWindowPixelBuffer(work->winBottom, 0);
     sub_0200E644(work->bgConfig, 4, 0x200, 0, work->frame, work->heapId);
-    GfGfxLoader_GXLoadPal(NARC_a_0_8_2, 8, 4, 0x040, 0x20, work->heapId);
-    GfGfxLoader_GXLoadPal(NARC_a_0_8_2, 8, 0, 0x040, 0x20, work->heapId);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_choose_starter_main_res_00000008_NCLR, 4, 0x040, 0x20, work->heapId);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_choose_starter_main_res_00000008_NCLR, 0, 0x040, 0x20, work->heapId);
     DrawFrameAndWindow2(work->winTop, 0, 0x200, 0);
 }
 
 static void loadBgGraphics(BGCONFIG *bgConfig, HeapID heapId) {
-    GfGfxLoader_LoadCharData(NARC_a_0_8_2, 13, bgConfig, 2, 0, 0, FALSE, heapId);
-    GfGfxLoader_LoadCharData(NARC_a_0_8_2, 10, bgConfig, 5, 0, 0, FALSE, heapId);
-    GfGfxLoader_LoadCharData(NARC_a_0_8_2, 16, bgConfig, 6, 0, 0, FALSE, heapId);
-    GfGfxLoader_LoadScrnData(NARC_a_0_8_2, 14, bgConfig, 2, 0, 0, FALSE, heapId);
-    GfGfxLoader_LoadScrnData(NARC_a_0_8_2, 11, bgConfig, 5, 0, 0, FALSE, heapId);
-    GfGfxLoader_LoadScrnData(NARC_a_0_8_2, 17, bgConfig, 6, 0, 0, FALSE, heapId);
-    GfGfxLoader_GXLoadPal(NARC_a_0_8_2, 12, 0, 0x60, 0x20, heapId);
-    GfGfxLoader_GXLoadPal(NARC_a_0_8_2, 9, 4, 0x60, 0x20, heapId);
-    GfGfxLoader_GXLoadPal(NARC_a_0_8_2, 15, 4, 0x80, 0x20, heapId);
+    GfGfxLoader_LoadCharData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_choose_starter_main_res_00000013_NCGR, bgConfig, 2, 0, 0, FALSE, heapId);
+    GfGfxLoader_LoadCharData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_choose_starter_main_res_00000010_NCGR, bgConfig, 5, 0, 0, FALSE, heapId);
+    GfGfxLoader_LoadCharData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_choose_starter_main_res_00000016_NCGR, bgConfig, 6, 0, 0, FALSE, heapId);
+    GfGfxLoader_LoadScrnData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_choose_starter_main_res_00000014_NSCR, bgConfig, 2, 0, 0, FALSE, heapId);
+    GfGfxLoader_LoadScrnData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_choose_starter_main_res_00000011_NSCR, bgConfig, 5, 0, 0, FALSE, heapId);
+    GfGfxLoader_LoadScrnData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_choose_starter_main_res_00000017_NSCR, bgConfig, 6, 0, 0, FALSE, heapId);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_choose_starter_main_res_00000012_NCLR, 0, 0x60, 0x20, heapId);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_choose_starter_main_res_00000009_NCLR, 4, 0x60, 0x20, heapId);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_choose_starter_main_res_00000015_NCLR, 4, 0x80, 0x20, heapId);
     BgTilemapRectChangePalette(bgConfig, 2, 0, 0, 0x20, 0x18, 3);
     BgTilemapRectChangePalette(bgConfig, 5, 0, 0, 0x20, 0x18, 3);
     BgTilemapRectChangePalette(bgConfig, 6, 0, 0, 0x20, 0x18, 4);
@@ -1061,14 +1093,14 @@ static int getInput(struct ChooseStarterAppWork *work) {
                 if (num == work->curSelection) {
                     ret = CHOOSE_STARTER_INPUT_CONFIRM_CHOICE;
                 } else {
-                    ret = getRotateDirection(num, work->curSelection, work->unk_3AC);
+                    ret = getRotateDirection(num, work->curSelection, work->ballWobbleState);
                 }
             } else {
                 if (num == work->curSelection) {
                     work->state = 1;
                     ret = CHOOSE_STARTER_INPUT_SELECT_BALL_INIT;
                 } else {
-                    ret = getRotateDirection(num, work->curSelection, work->unk_3AC);
+                    ret = getRotateDirection(num, work->curSelection, work->ballWobbleState);
                 }
             }
         } else if (work->state == 2) {
@@ -1101,19 +1133,19 @@ static int getTappedBallId(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 radi
 }
 
 static void createMonSprites(struct ChooseStarterAppWork *work) {
-    NARC *narc = NARC_ctor(NARC_a_0_9_3, work->heapId);
+    NARC *narc = NARC_ctor(NARC_application_choose_starter_choose_starter_sub_res, work->heapId);
     int i;
-    struct StarterChooseMonSpriteData *r5 = &work->monSpriteData;
+    struct StarterChooseMonSpriteData *spriteData = &work->monSpriteData;
 
     for (i = 0; i < 3; i++) {
-        r5->objs[i].charResObj = AddCharResObjFromOpenNarc(r5->charResMan, narc, 9, FALSE, i, 2, work->heapId);
-        r5->objs[i].plttResObj = AddPlttResObjFromOpenNarc(r5->plttResMan, narc, 6, FALSE, i, 2, 1, work->heapId);
-        r5->objs[i].cellResObj = AddCellOrAnimResObjFromOpenNarc(r5->cellResMan, narc, 10, FALSE, i,
-                                                                 GF_GFX_RES_TYPE_CELL, work->heapId);
-        r5->objs[i].animResObj = AddCellOrAnimResObjFromOpenNarc(r5->animResMan, narc, 16, FALSE, i,
-                                                                 GF_GFX_RES_TYPE_ANIM, work->heapId);
+        spriteData->objs[i].charResObj = AddCharResObjFromOpenNarc(spriteData->charResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000009_NCGR, FALSE, i, 2, work->heapId);
+        spriteData->objs[i].plttResObj = AddPlttResObjFromOpenNarc(spriteData->plttResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000006_NCLR, FALSE, i, 2, 1, work->heapId);
+        spriteData->objs[i].cellResObj = AddCellOrAnimResObjFromOpenNarc(spriteData->cellResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000010_NCER, FALSE, i,
+                                                                         GF_GFX_RES_TYPE_CELL, work->heapId);
+        spriteData->objs[i].animResObj = AddCellOrAnimResObjFromOpenNarc(spriteData->animResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000016_NANR, FALSE, i,
+                                                                         GF_GFX_RES_TYPE_ANIM, work->heapId);
         GetMonSpriteCharAndPlttNarcIdsEx(
-            &r5->param,
+            &spriteData->param,
             GetMonData(work->choices[i], MON_DATA_SPECIES, NULL),
             GetMonData(work->choices[i], MON_DATA_GENDER, NULL),
             2,
@@ -1121,91 +1153,93 @@ static void createMonSprites(struct ChooseStarterAppWork *work) {
             0,
             0
         );
-        r5->charDatas[i] = sub_0201442C(r5->param.narcID, r5->param.charDataID, work->heapId);
-        r5->plttDatas[i] = sub_02014450(r5->param.narcID, r5->param.palDataID, work->heapId);
-        loadOneMonObj(r5->charResMan, r5->plttResMan, r5->charDatas[i], r5->plttDatas[i], i);
-        createOneMonRender(r5, i, work->heapId);
+        spriteData->charDatas[i] = sub_0201442C(spriteData->param.narcID, spriteData->param.charDataID, work->heapId);
+        spriteData->plttDatas[i] = sub_02014450(spriteData->param.narcID, spriteData->param.palDataID, work->heapId);
+        loadOneMonObj(spriteData->charResMan, spriteData->plttResMan, spriteData->charDatas[i], spriteData->plttDatas[i], i);
+        createOneMonRender(spriteData, i, work->heapId);
     }
 
     NARC_dtor(narc);
 }
 
 static void loadOneMonObj(struct _2DGfxResMan *charResMan, struct _2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx) {
-    struct _2DGfxResObj *r5 = Get2DGfxResObjById(charResMan, idx);
-    struct _2DGfxResObj *r7 = Get2DGfxResObjById(plttResMan, idx);
-    NNSG2dImageProxy *r5_2;
-    const NNSG2dImagePaletteProxy *r7_2;
+    struct _2DGfxResObj *charResObj = Get2DGfxResObjById(charResMan, idx);
+    struct _2DGfxResObj *plttResObj = Get2DGfxResObjById(plttResMan, idx);
+    NNSG2dImageProxy *charProxy;
+    const NNSG2dImagePaletteProxy *plttProxy;
     u32 imageloc;
     u32 plttloc;
 
-    sub_0200ADA4(r5);
-    sub_0200B00C(r7);
-    r5_2 = sub_0200AF00(r5);
-    r7_2 = sub_0200B0F8(r7, r5_2);
-    imageloc = NNS_G2dGetImageLocation(r5_2, NNS_G2D_VRAM_TYPE_2DSUB);
-    plttloc = NNS_G2dGetImagePaletteLocation(r7_2, NNS_G2D_VRAM_TYPE_2DSUB);
+    sub_0200ADA4(charResObj);
+    sub_0200B00C(plttResObj);
+    charProxy = sub_0200AF00(charResObj);
+    plttProxy = sub_0200B0F8(plttResObj, charProxy);
+    imageloc = NNS_G2dGetImageLocation(charProxy, NNS_G2D_VRAM_TYPE_2DSUB);
+    plttloc = NNS_G2dGetImagePaletteLocation(plttProxy, NNS_G2D_VRAM_TYPE_2DSUB);
     DC_FlushRange(charData, 0xC80);
     GXS_LoadOBJ(charData, imageloc, 0xC80);
     DC_FlushRange(plttData, 0x20);
     GXS_LoadOBJPltt(plttData, plttloc, 0x20);
 }
 
-static void createOneMonRender(struct StarterChooseMonSpriteData *a0, u8 idx, HeapID heapId) {
-    UnkStruct_02009D48 header;
-    struct UnkStruct_02024624Header sp2C;
+static void createOneMonRender(struct StarterChooseMonSpriteData *pMonSpriteData, u8 idx, HeapID heapId) {
+    SpriteResourcesHeader header;
+    struct SpriteTemplate template;
 
-    sub_02009D48(&header, idx, idx, idx, idx, -1, -1, FALSE, 0, a0->charResMan, a0->plttResMan, a0->cellResMan, a0->animResMan, NULL, NULL);
-    sp2C.unk0 = a0->unk_088;
-    sp2C.unk4 = &header;
-    sp2C.unk8.x = 0;
-    sp2C.unk8.y = 0;
-    sp2C.unk8.z = 0;
-    sp2C.unk14.x = FX32_ONE;
-    sp2C.unk14.y = FX32_ONE;
-    sp2C.unk14.z = FX32_ONE;
-    sp2C.unk20 = 0;
-    sp2C.unk28 = 2;
-    sp2C.unk24 = 0;
-    sp2C.heapId = heapId;
-    sp2C.unk8.x = 128 * FX32_ONE;
-    sp2C.unk8.y = 288 * FX32_ONE;
-    a0->sprites[idx] = sub_02024624(&sp2C);
-    sub_0202484C(a0->sprites[idx], 0);
-    sub_020248F0(a0->sprites[idx], 0);
-    Set2dSpriteVisibleFlag(a0->sprites[idx], 0);
+    CreateSpriteResourcesHeader(&header, idx, idx, idx, idx, -1, -1, FALSE, 0, pMonSpriteData->charResMan,
+                                pMonSpriteData->plttResMan, pMonSpriteData->cellResMan, pMonSpriteData->animResMan,
+                                NULL, NULL);
+    template.spriteList = pMonSpriteData->spriteList;
+    template.header = &header;
+    template.position.x = 0;
+    template.position.y = 0;
+    template.position.z = 0;
+    template.scale.x = FX32_ONE;
+    template.scale.y = FX32_ONE;
+    template.scale.z = FX32_ONE;
+    template.rotation = 0;
+    template.whichScreen = NNS_G2D_VRAM_TYPE_2DSUB;
+    template.priority = 0;
+    template.heapId = heapId;
+    template.position.x = 128 * FX32_ONE;
+    template.position.y = 288 * FX32_ONE;
+    pMonSpriteData->sprites[idx] = CreateSprite(&template);
+    Set2dSpriteAnimActiveFlag(pMonSpriteData->sprites[idx], FALSE);
+    Set2dSpriteAnimSeqNo(pMonSpriteData->sprites[idx], 0);
+    Set2dSpriteVisibleFlag(pMonSpriteData->sprites[idx], FALSE);
 }
 
 static void setAllButSelectedMonSpritesInvisible(struct ChooseStarterAppWork *work) {
     setAllMonSpritesInvisible(&work->monSpriteData);
-    Set2dSpriteVisibleFlag(work->monSpriteData.sprites[work->curSelection], 1);
+    Set2dSpriteVisibleFlag(work->monSpriteData.sprites[work->curSelection], TRUE);
 }
 
 static void setAllMonSpritesInvisible(struct StarterChooseMonSpriteData *a0) {
     int i;
 
     for (i = 0; i < 3; i++) {
-        Set2dSpriteVisibleFlag(a0->sprites[i], 0);
+        Set2dSpriteVisibleFlag(a0->sprites[i], FALSE);
     }
 }
 
-static BOOL ov61_021E7268(struct ChooseStarterAppWork *work, int a1, int a2) {
-    MtxFx33 sp18;
-    u16 r6;
-    u32 r5 = work->curSelection;
-    work->unk_3A7++;
-    r6 = ov61_021E7348(&a1, &a2, work->unk_3A7, 8);
+static BOOL translateSelectedBall(struct ChooseStarterAppWork *work, fx32 from, fx32 to) {
+    MtxFx33 template;
+    u16 angle;
+    u32 selection = work->curSelection;
+    work->ballTransStep++;
+    angle = calcBallTranslationArcStep(&from, &to, work->ballTransStep, 8);
     {
-        VecFx32 sp0C = {0, 14 * FX32_ONE, 32 * FX32_ONE};
-        VecFx32 sp00 = {0, 14 * FX32_ONE, 32 * FX32_ONE};
-        sp00.y += FX32_CONST(13.453);
-        VEC_Subtract(&sp0C, &sp00, &sp0C);
-        MTX_RotX33(&sp18, FX_SinIdx(r6), FX_CosIdx(r6));
-        MTX_MultVec33(&sp0C, &sp18, &sp0C);
-        VEC_Add(&sp0C, &sp00, &sp0C);
-        ov61_021E6934(&work->_3dObjRender[r5 + 3], sp0C.x, sp0C.y, sp0C.z);
-        work->_3dObjRender[r5 + 3].unk_76 = r6;
-        if (work->unk_3A7 >= 8) {
-            work->unk_3A7 = 0;
+        VecFx32 translVec = {0, 14 * FX32_ONE, 32 * FX32_ONE};
+        VecFx32 subtrahend = {0, 14 * FX32_ONE, 32 * FX32_ONE};
+        subtrahend.y += FX32_CONST(13.453);
+        VEC_Subtract(&translVec, &subtrahend, &translVec);
+        MTX_RotX33(&template, FX_SinIdx(angle), FX_CosIdx(angle));
+        MTX_MultVec33(&translVec, &template, &translVec);
+        VEC_Add(&translVec, &subtrahend, &translVec);
+        rendererTranslVecSet(&work->_3dObjRender[selection + 3], translVec.x, translVec.y, translVec.z);
+        work->_3dObjRender[selection + CS_MODEL_BALL1].xRotAngle = angle;
+        if (work->ballTransStep >= 8) {
+            work->ballTransStep = 0;
             return TRUE;
         } else {
             return FALSE;
@@ -1213,15 +1247,15 @@ static BOOL ov61_021E7268(struct ChooseStarterAppWork *work, int a1, int a2) {
     }
 }
 
-static u16 ov61_021E7348(const int *a0, const int *a1, int a2, int a3) {
+static u16 calcBallTranslationArcStep(const fx32 *from, const fx32 *to, int step, int max) {
     u16 ret;
     int addend;
-    if (*a1 >= *a0) {
-        ret = *a1 - *a0;
-        addend = (ret * a2) / a3;
+    if (*to >= *from) {
+        ret = *to - *from;
+        addend = (ret * step) / max;
     } else {
-        ret = *a0 - *a1;
-        addend = -((ret * a2) / a3);
+        ret = *from - *to;
+        addend = -((ret * step) / max);
     }
-    return *a0 + addend;
+    return *from + addend;
 }

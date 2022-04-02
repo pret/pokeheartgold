@@ -3,16 +3,22 @@
 
 #include "heap.h"
 
-typedef struct UnkStruct_02022D74 UnkStruct_02022D74;
+typedef struct GF_Camera GF_Camera;
+typedef struct GF_CameraAngle {
+    u16 x;
+    u16 y;
+    u16 z;
+    u16 dummy;
+} GF_CameraAngle;
 
-UnkStruct_02022D74 *sub_02023114(HeapID heapId);
+GF_Camera *GF_Camera_Create(HeapID heapId);
 
-void sub_02023240(fx32, fx32, UnkStruct_02022D74 *);
-void sub_02023120(UnkStruct_02022D74 *unk);
+void GF_Camera_SetClipBounds(fx32, fx32, GF_Camera *);
+void sub_02023120(GF_Camera *unk);
 void sub_02023154(void);
-void sub_02023254(VecFx32 *, int, u16 *, int, int, int, UnkStruct_02022D74 *);
-void sub_02023514(const VecFx32 *, UnkStruct_02022D74 *);
-void sub_02023204(VecFx32 *, UnkStruct_02022D74 *);
-void sub_0202313C(UnkStruct_02022D74 *);
+void GF_Camera_InitFromTargetDistanceAndAngle(VecFx32 *target, int distance, GF_CameraAngle *angle, u16 a3, u8 a4, BOOL a5, GF_Camera *camera);
+void GF_Camera_ShiftBy(const VecFx32 *, GF_Camera *);
+void GF_Camera_SetBindTarget(VecFx32 *, GF_Camera *);
+void GF_Camera_RegisterToStaticPtr(GF_Camera *);
 
 #endif //POKEHEARTGOLD_UNK_02022D74_H

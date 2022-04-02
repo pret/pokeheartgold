@@ -8809,7 +8809,7 @@ ov15_021FD93C: ; 0x021FD93C
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
 	mov r0, #6
-	bl sub_02023114
+	bl GF_Camera_Create
 	ldr r2, _021FDAAC ; =0x00000818
 	ldr r4, _021FDAB0 ; =ov15_02200500
 	str r0, [r5, r2]
@@ -8847,7 +8847,7 @@ ov15_021FD93C: ; 0x021FD93C
 	ldr r1, [r5, r1]
 	add r0, r6, #0
 	add r2, r5, r2
-	bl sub_02023254
+	bl GF_Camera_InitFromTargetDistanceAndAngle
 	ldr r0, _021FDABC ; =0x00000934
 	ldr r3, _021FDAC0 ; =ov15_0220050C
 	add r2, r5, r0
@@ -8873,10 +8873,10 @@ ov15_021FD93C: ; 0x021FD93C
 	ldr r1, _021FDAC8 ; =0x006A4000
 	ldr r2, [r5, r2]
 	lsl r0, r0, #0xc
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	ldr r0, _021FDAAC ; =0x00000818
 	ldr r0, [r5, r0]
-	bl sub_0202313C
+	bl GF_Camera_RegisterToStaticPtr
 	mov r6, #1
 	ldr r7, _021FDA9C ; =0x00007FFF
 	mov r4, #0
@@ -9204,7 +9204,7 @@ _021FDC94:
 	ldr r1, [r5, r1]
 	add r0, r5, r0
 	add r2, r5, r2
-	bl sub_02023254
+	bl GF_Camera_InitFromTargetDistanceAndAngle
 	bl sub_02026E48
 	bl sub_02023154
 	ldr r0, _021FDD4C ; =0x0000081C
@@ -9234,7 +9234,7 @@ _021FDC94:
 	add r1, r5, r1
 	add r2, sp, #0x18
 	add r3, sp, #0xc
-	bl sub_0201F554
+	bl Draw3dModel
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_02026E50
@@ -12662,7 +12662,7 @@ ov15_021FF850: ; 0x021FF850
 	mov r2, #1
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	pop {r4, pc}
 	thumb_func_end ov15_021FF850
 

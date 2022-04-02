@@ -1896,14 +1896,14 @@ ov48_02259688: ; 0x02259688
 	mov r0, #0x20
 	add r1, #8
 	add r2, r6, #0
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	str r0, [r5, #4]
 	add r0, r5, #0
 	mov r2, #1
 	add r0, #8
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	mov r7, #0x13
 	mov r4, #0
 	lsl r7, r7, #4
@@ -2579,7 +2579,7 @@ ov48_02259BC0: ; 0x02259BC0
 	sub sp, #8
 	add r4, r0, #0
 	add r0, r3, #0
-	bl sub_02023114
+	bl GF_Camera_Create
 	str r0, [r4]
 	mov r3, #0
 	str r3, [sp]
@@ -2593,12 +2593,12 @@ ov48_02259BC0: ; 0x02259BC0
 	ldr r2, [r4]
 	mov r0, #0
 	lsl r1, r1, #0xe
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	ldr r1, [r4]
 	mov r0, #0
 	bl sub_020233D8
 	ldr r0, [r4]
-	bl sub_0202313C
+	bl GF_Camera_RegisterToStaticPtr
 	ldr r0, [sp, #0x14]
 	lsl r0, r0, #0x1f
 	lsr r0, r0, #0x1f
@@ -4773,12 +4773,12 @@ _0225ABA0:
 	str r0, [sp, #0x24]
 	str r0, [sp, #0x28]
 	add r0, sp, #0x64
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	add r0, sp, #0x44
 	bl sub_02024714
 	str r0, [r7, #0x3c]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	mov r1, #1
 	ldr r0, [r7, #0x3c]
 	lsl r1, r1, #0xc

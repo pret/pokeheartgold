@@ -617,7 +617,7 @@ _02259D60:
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	add r6, r6, #1
 	add r4, #0x28
 	add r5, r5, #4
@@ -633,14 +633,14 @@ _02259D60:
 	sub r1, #0x10
 	ldr r0, [r0, r1]
 	mov r1, #2
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	b _02259DB4
 _02259DA8:
 	ldr r0, [sp]
 	sub r1, #0x10
 	ldr r0, [r0, r1]
 	mov r1, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _02259DB4:
 	mov r1, #0x75
 	lsl r1, r1, #2
@@ -655,14 +655,14 @@ _02259DB4:
 	sub r1, #0xc
 	ldr r0, [r0, r1]
 	mov r1, #5
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	b _02259DE0
 _02259DD4:
 	ldr r0, [sp]
 	sub r1, #0xc
 	ldr r0, [r0, r1]
 	mov r1, #3
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _02259DE0:
 	mov r0, #0x10
 	mov r1, #1
@@ -709,7 +709,7 @@ ov19_02259E20: ; 0x02259E20
 	ldr r2, _02259E40 ; =_0225A03C
 	ldr r0, [r5, r4]
 	ldrb r1, [r2, r1]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5, r4]
 	bl sub_02024964
 	pop {r3, r4, r5, pc}

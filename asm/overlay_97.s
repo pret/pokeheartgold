@@ -2015,7 +2015,7 @@ _0221F604:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #4
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	b _0221F674
 _0221F638:
 	bge _0221F65E
@@ -2033,7 +2033,7 @@ _0221F638:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #5
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	b _0221F674
 _0221F65E:
 	ldr r0, [sp, #8]
@@ -2092,7 +2092,7 @@ _0221F6B2:
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
 	mov r1, #3
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	b _0221F72E
 _0221F6D0:
 	lsl r0, r4, #2
@@ -2106,7 +2106,7 @@ _0221F6D0:
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
 	mov r1, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	b _0221F72E
 _0221F6EE:
 	lsl r0, r4, #2
@@ -2120,7 +2120,7 @@ _0221F6EE:
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	b _0221F72E
 _0221F70C:
 	lsl r0, r4, #2
@@ -2134,7 +2134,7 @@ _0221F70C:
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
 	mov r1, #2
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	b _0221F72E
 _0221F72A:
 	bl GF_AssertFail
@@ -2240,14 +2240,14 @@ ov97_0221F7DC: ; 0x0221F7DC
 	ldr r2, [r5]
 	mov r0, #0x42
 	add r1, #8
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	str r0, [r5, #4]
 	add r0, r5, #0
 	mov r2, #1
 	add r0, #8
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineBToggleLayers
@@ -2638,7 +2638,7 @@ ov97_0221FAEC: ; 0x0221FAEC
 	str r2, [sp, #0x28]
 	add r0, sp, #0x2c
 	add r2, r1, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r4]
 	add r2, sp, #0x2c
 	str r0, [sp]
@@ -2657,13 +2657,13 @@ ov97_0221FAEC: ; 0x0221FAEC
 	add r0, r1, r0
 	str r0, [sp, #0x5c]
 	add r0, sp, #0x50
-	bl sub_02024624
+	bl CreateSprite
 	mov r1, #1
 	add r4, r0, #0
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	ldr r1, [sp, #0x98]
 	add r0, r4, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_02024A04

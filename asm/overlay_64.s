@@ -519,7 +519,7 @@ ov64_021E5CD0: ; 0x021E5CD0
 	mov r2, #2
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	mov r0, #8
 	mov r1, #0x3b
 	bl NARC_ctor

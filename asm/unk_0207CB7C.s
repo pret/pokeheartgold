@@ -100,7 +100,7 @@ sub_0207CBD0: ; 0x0207CBD0
 	bl sub_020249D4
 	ldrb r1, [r5, #7]
 	ldr r0, [r6, r4]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _0207CC1C:
 	str r7, [r5, #8]
 	mov r0, #1
@@ -166,7 +166,7 @@ _0207CC76:
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	ldrb r1, [r4, #7]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _0207CC9A:
 	ldrb r2, [r4, #6]
 	mov r1, #0xf0
@@ -239,7 +239,7 @@ _0207CD0A:
 	ldr r0, [r1, r0]
 	ldrb r1, [r4, #7]
 	add r1, r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _0207CD30:
 	ldrb r1, [r4, #6]
 	mov r0, #0xf

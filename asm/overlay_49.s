@@ -50,7 +50,7 @@ ov49_02258830: ; 0x02258830
 	add r4, r0, #0
 	bl NNS_G3dGetTex
 	add r6, r0, #0
-	bl sub_0201F668
+	bl AllocAndLoad3dTexResources
 	add r0, r6, #0
 	add r1, sp, #0xc
 	add r2, sp, #8
@@ -4338,14 +4338,14 @@ _0225A636:
 	mov r0, #0x18
 	add r1, #8
 	add r2, r6, #0
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	str r0, [r5, #4]
 	add r0, r5, #0
 	mov r2, #1
 	add r0, #8
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	mov r7, #0
 	add r4, r5, #0
 _0225A742:
@@ -5183,7 +5183,7 @@ ov49_0225AD20: ; 0x0225AD20
 	str r2, [sp, #0x28]
 	add r0, sp, #0x4c
 	add r2, r1, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r4, #4]
 	mov r6, #0
 	str r0, [sp, #0x2c]
@@ -5206,10 +5206,10 @@ _0225AE0E:
 	bl sub_02024714
 	str r0, [r5, #0x50]
 	add r1, r6, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5, #0x50]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	ldr r0, [r5, #0x50]
 	mov r1, #0
 	bl Set2dSpriteVisibleFlag
@@ -7762,7 +7762,7 @@ _0225C082:
 	str r0, [sp, #0x28]
 	add r0, sp, #0x58
 	add r2, r1, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r4, #4]
 	str r0, [sp, #0x38]
 	add r0, sp, #0x58
@@ -7782,7 +7782,7 @@ _0225C082:
 	bl sub_02024714
 	ldr r1, [sp, #0x30]
 	str r0, [r5, #0x54]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5, #0x54]
 	ldr r1, [sp, #0x94]
 	bl Set2dSpriteVisibleFlag
@@ -7959,7 +7959,7 @@ _0225C21A:
 	str r0, [sp, #0x28]
 	add r0, sp, #0x58
 	add r2, r1, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r5, #4]
 	str r0, [sp, #0x38]
 	add r0, sp, #0x58
@@ -8506,7 +8506,7 @@ _0225C67E:
 	str r0, [sp, #0x24]
 	str r0, [sp, #0x28]
 	add r0, sp, #0x54
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r5, #4]
 	ldr r2, [sp, #0x48]
 	str r0, [sp, #0x78]
@@ -9133,7 +9133,7 @@ _0225CB8C:
 	sub r1, r1, #1
 	bne _0225CB8C
 	add r0, r5, #0
-	bl sub_02023114
+	bl GF_Camera_Create
 	str r0, [r4]
 	mov r0, #0
 	str r0, [sp]
@@ -9146,15 +9146,15 @@ _0225CB8C:
 	ldr r2, _0225CBD4 ; =ov49_02269A6C
 	ldr r3, _0225CBD8 ; =0x000005C1
 	add r0, #8
-	bl sub_02023254
+	bl GF_Camera_InitFromTargetDistanceAndAngle
 	ldr r0, [r4]
-	bl sub_0202313C
+	bl GF_Camera_RegisterToStaticPtr
 	mov r0, #0x96
 	mov r1, #0xe1
 	ldr r2, [r4]
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	add r0, r4, #0
 	add sp, #0xc
 	pop {r4, r5, pc}
@@ -10532,7 +10532,7 @@ _0225D55E:
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
 	ldr r1, [r4, #0xc]
-	bl sub_0201F64C
+	bl Bind3dModelSet
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov49_0225D528

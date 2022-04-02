@@ -1953,7 +1953,7 @@ ov67_021E6820: ; 0x021E6820
 	mov r2, #2
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	ldr r1, [r5]
 	mov r0, #0x76
 	bl NARC_ctor

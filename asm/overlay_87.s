@@ -4405,13 +4405,13 @@ ov87_021E7AF8: ; 0x021E7AF8
 	mov r0, #0x28
 	add r1, r5, #4
 	mov r2, #0x7a
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	mov r2, #2
 	str r0, [r5]
 	add r0, r5, #4
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	ldr r4, _021E7BC0 ; =ov87_021E8394
 	mov r7, #0
 	add r6, r5, #0
@@ -4787,7 +4787,7 @@ ov87_021E7DF8: ; 0x021E7DF8
 	str r2, [sp, #0x28]
 	add r0, sp, #0x5c
 	add r2, r1, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r4]
 	mov r1, #0
 	str r0, [sp, #0x2c]
@@ -4819,17 +4819,17 @@ _021E7E6E:
 	str r0, [sp, #0x54]
 _021E7E72:
 	add r0, sp, #0x2c
-	bl sub_02024624
+	bl CreateSprite
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0xc
 	bl sub_02024868
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r0, r4, #0
 	add sp, #0x80
 	pop {r3, r4, r5, pc}
@@ -5113,7 +5113,7 @@ ov87_021E8084: ; 0x021E8084
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	mov r1, #1
 	ldr r0, [r4, #0xc]
 	lsl r1, r1, #0xc
@@ -5122,7 +5122,7 @@ ov87_021E8084: ; 0x021E8084
 	bl sub_020249A8
 	add r1, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	pop {r4, pc}
 	thumb_func_end ov87_021E8084
 

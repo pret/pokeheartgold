@@ -3610,7 +3610,7 @@ ov82_0223F95C: ; 0x0223F95C
 	mov r0, #2
 	add r1, r5, #4
 	mov r2, #0x69
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	ldr r4, _0223FB04 ; =ov82_0223FEEC
 	str r0, [r5]
 	mov r7, #0
@@ -3819,7 +3819,7 @@ ov82_0223FB08: ; 0x0223FB08
 	str r3, [sp, #0x28]
 	add r0, sp, #0x5c
 	add r3, r1, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r5]
 	mov r1, #0
 	str r0, [sp, #0x2c]
@@ -3860,17 +3860,17 @@ _0223FB80:
 	str r0, [sp, #0x38]
 _0223FB96:
 	add r0, sp, #0x2c
-	bl sub_02024624
+	bl CreateSprite
 	mov r1, #1
 	add r4, r0, #0
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0xc
 	bl sub_02024868
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r0, r4, #0
 	add sp, #0x80
 	pop {r4, r5, r6, pc}

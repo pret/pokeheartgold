@@ -901,7 +901,7 @@ sub_0207FB0C: ; 0x0207FB0C
 	ldr r0, _0207FBC0 ; =0x0000067C
 	add r1, r1, #2
 	ldr r0, [r5, r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, _0207FBC0 ; =0x0000067C
 	mov r1, #1
 	ldr r0, [r5, r0]
@@ -2891,7 +2891,7 @@ _02080AB8:
 	ldr r0, _02080B64 ; =0x0000067C
 	add r1, r1, #2
 	ldr r0, [r4, r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, _02080B64 ; =0x0000067C
 	mov r1, #1
 	ldr r0, [r4, r0]

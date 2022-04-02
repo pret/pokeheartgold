@@ -1245,7 +1245,7 @@ ov02_0224650C: ; 0x0224650C
 	str r6, [r4]
 	add r0, r6, #0
 	str r5, [r4, #4]
-	bl sub_02023114
+	bl GF_Camera_Create
 	str r0, [r4, #0x18]
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
@@ -1361,7 +1361,7 @@ _022465D8:
 	add r0, r2, #0
 	bl sub_02023214
 	ldr r0, [r5, #0x18]
-	bl sub_0202313C
+	bl GF_Camera_RegisterToStaticPtr
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -1376,7 +1376,7 @@ ov02_0224662C: ; 0x0224662C
 	ldr r0, [r0, #0x24]
 	bx r3
 	.balign 4, 0
-_02246638: .word sub_0202313C
+_02246638: .word GF_Camera_RegisterToStaticPtr
 	thumb_func_end ov02_0224662C
 
 	thumb_func_start ov02_0224663C
@@ -5723,14 +5723,14 @@ ov02_02248728: ; 0x02248728
 	add r0, r1, #0
 	add r1, r5, #0
 	add r1, #0xc
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	str r0, [r5, #8]
 	add r0, r5, #0
 	mov r2, #2
 	add r0, #0xc
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	add r0, r6, #0
 	mov r1, #0
 	mov r2, #4
@@ -6414,7 +6414,7 @@ _02248C2A:
 	str r3, [sp, #0x28]
 	ldr r3, [sp, #0x80]
 	add r0, sp, #0x4c
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r5, #8]
 	add r2, sp, #0x34
 	str r0, [sp, #0x2c]
@@ -6533,7 +6533,7 @@ _02248D2C:
 	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r0, r4, #0
 	add sp, #0x1c
 	pop {r3, r4, pc}
@@ -6807,7 +6807,7 @@ ov02_02248E20: ; 0x02248E20
 	bl sub_02024818
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	bl ov02_022493FC
 	add sp, #0x30
 	pop {r4, r5, r6, pc}
@@ -7111,7 +7111,7 @@ ov02_022491A8: ; 0x022491A8
 	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4, #0x60]
 	mov r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	mov r0, #0
 	str r0, [r4, #4]
 	ldrb r0, [r4, #1]
@@ -7199,10 +7199,10 @@ _022491E2:
 	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4, #0x60]
 	mov r1, #6
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r4, #0x60]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	ldrb r0, [r4, #1]
 	add r0, r0, #1
 	strb r0, [r4, #1]
@@ -7363,7 +7363,7 @@ ov02_0224939C: ; 0x0224939C
 	bne _022493BA
 	ldr r0, [r4, #0x60]
 	mov r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r4, #0x5c]
 	mov r1, #0
 	bl ov02_02249444
@@ -8345,7 +8345,7 @@ _02249A72:
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	mov r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r0, r4, #0
 	bl ov02_02249D40
 	mov r0, #1
@@ -8440,7 +8440,7 @@ _02249B48:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -9162,14 +9162,14 @@ ov02_0224A080: ; 0x0224A080
 	mov r0, #0x20
 	add r1, #0x74
 	mov r2, #4
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	str r0, [r5, #0x70]
 	add r0, r5, #0
 	mov r2, #2
 	add r0, #0x74
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	mov r0, #4
 	mov r1, #0
 	add r2, r0, #0
@@ -9520,7 +9520,7 @@ ov02_0224A33C: ; 0x0224A33C
 	str r0, [sp, #0x28]
 	ldr r3, [sp, #0x80]
 	add r0, sp, #0x4c
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	b _0224A3BE
 _0224A384:
 	str r0, [sp]
@@ -9550,7 +9550,7 @@ _0224A384:
 	str r3, [sp, #0x28]
 	ldr r3, [sp, #0x80]
 	add r0, sp, #0x4c
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 _0224A3BE:
 	ldr r0, [r5, #0x70]
 	add r2, sp, #0x34
@@ -9593,7 +9593,7 @@ ov02_0224A3F0: ; 0x0224A3F0
 	bl ov02_0224A33C
 	add r1, r4, #0
 	add r5, r0, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r0, r5, #0
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
@@ -9624,7 +9624,7 @@ _0224A426:
 	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r0, r4, #0
 	add sp, #0x10
 	pop {r4, pc}
@@ -9635,7 +9635,7 @@ ov02_0224A450: ; 0x0224A450
 	push {r4, lr}
 	mov r1, #1
 	add r4, r0, #0
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0xc
@@ -11326,7 +11326,7 @@ ov02_0224B0E0: ; 0x0224B0E0
 	ldr r5, [r1, r0]
 	mov r1, #3
 	add r0, r5, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r0, r5, #0
 	mov r1, #1
 	bl Set2dSpriteVisibleFlag
@@ -11601,7 +11601,7 @@ ov02_0224B2CC: ; 0x0224B2CC
 	bl sub_02068DA8
 	ldr r0, [r4, #0x20]
 	mov r1, #5
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -11631,7 +11631,7 @@ ov02_0224B314: ; 0x0224B314
 	bl sub_02068DA8
 	ldr r0, [r4, #0x20]
 	mov r1, #4
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -17038,7 +17038,7 @@ _0224DBB0:
 	add r0, #0xe5
 	ldr r1, [r5, #0x24]
 	add r0, r4, r0
-	bl sub_02023514
+	bl GF_Camera_ShiftBy
 	b _0224DC1C
 _0224DBF4:
 	add r0, r4, #0
@@ -23197,7 +23197,7 @@ ov02_02250A60: ; 0x02250A60
 	ldr r1, [r5, #0x24]
 	ldr r4, [r0, #0x24]
 	mov r0, #4
-	bl GF_3dCamera_Create
+	bl CreateCameraTranslationWrapper
 	str r0, [r4, #8]
 	ldr r0, _02250AC4 ; =gGameVersion
 	ldrb r0, [r0]
@@ -23240,7 +23240,7 @@ ov02_02250AC8: ; 0x02250AC8
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x24]
 	ldr r0, [r0, #8]
-	bl GF_3dCamera_Delete
+	bl DeleteCameraTranslationWrapper
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x24]
 	bl FreeToHeap
@@ -24460,12 +24460,12 @@ _02251440:
 	mul r0, r7
 	add r0, r1, r0
 	ldr r1, [r5, #0x24]
-	bl sub_02023514
+	bl GF_Camera_ShiftBy
 	mov r0, #0x96
 	ldr r1, _022514C4 ; =0x006A4000
 	ldr r2, [r5, #0x24]
 	lsl r0, r0, #0xc
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	ldr r1, [r5, #0x24]
 	add r0, sp, #8
 	bl sub_02023630
@@ -24552,7 +24552,7 @@ _02251542:
 	add r1, sp, #4
 	ldr r0, [r0, #8]
 	add r2, r5, #0
-	bl GF_3dCamera_BeginMovement
+	bl SetCameraTranslationPath
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -24579,7 +24579,7 @@ ov02_02251568: ; 0x02251568
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x24]
 	ldr r0, [r0, #8]
-	bl GF_3dCamera_MovementActive
+	bl IsCameraTranslationFinished
 	cmp r0, #0
 	beq _0225159C
 	ldr r1, [r4, #0x24]
@@ -25570,12 +25570,12 @@ _02251D1A:
 	bl sub_02023494
 	ldr r0, _02251DBC ; =ov02_02253BC4
 	ldr r1, [r5, #0x24]
-	bl sub_02023514
+	bl GF_Camera_ShiftBy
 	mov r0, #0x96
 	ldr r1, _02251DC0 ; =0x006A4000
 	ldr r2, [r5, #0x24]
 	lsl r0, r0, #0xc
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	add sp, #0x20
 	pop {r3, r4, r5, pc}
 	nop
@@ -25624,7 +25624,7 @@ ov02_02251DE8: ; 0x02251DE8
 _02251E00:
 	ldr r1, [r5, #0x24]
 	mov r0, #4
-	bl GF_3dCamera_Create
+	bl CreateCameraTranslationWrapper
 	str r0, [r4, #0x24]
 	add r3, r4, #0
 	ldrh r1, [r4, #4]
@@ -25643,7 +25643,7 @@ _02251E00:
 	mov r2, #0x1e
 	str r0, [sp, #0x10]
 	ldr r0, [r4, #0x24]
-	bl GF_3dCamera_BeginMovement
+	bl SetCameraTranslationPath
 	ldr r0, [r5, #0x10]
 	ldr r1, _02251E40 ; =ov02_02251E44
 	add r2, r5, #0
@@ -25663,15 +25663,15 @@ ov02_02251E44: ; 0x02251E44
 	ldr r5, [r0, #0x24]
 	ldr r6, [r5, #0x24]
 	add r0, r6, #0
-	bl GF_3dCamera_MovementActive
+	bl IsCameraTranslationFinished
 	cmp r0, #0
 	beq _02251E70
 	add r0, r6, #0
-	bl GF_3dCamera_Delete
+	bl DeleteCameraTranslationWrapper
 	ldr r0, [r5, #0x1c]
 	ldr r1, [r5, #0x20]
 	ldr r2, [r4, #0x24]
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _02251E70:
@@ -26942,7 +26942,7 @@ ov02_022527B0: ; 0x022527B0
 	bl MTX_MultVec33
 	ldr r1, [sp]
 	add r0, sp, #0x34
-	bl sub_02023204
+	bl GF_Camera_SetBindTarget
 	lsl r0, r4, #0x10
 	ldr r1, [sp]
 	lsr r0, r0, #0x10

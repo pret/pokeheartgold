@@ -22632,7 +22632,7 @@ ov18_021F1024: ; 0x021F1024
 	mov r2, #2
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	add sp, #0x4c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -38731,7 +38731,7 @@ ov18_021F8FA0: ; 0x021F8FA0
 	ldr r2, [r4, #0x14]
 	mov r0, #0x20
 	add r1, #0xb8
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	add r1, r4, #0
 	add r1, #0xb4
 	str r0, [r1]
@@ -39189,7 +39189,7 @@ ov18_021F9310: ; 0x021F9310
 	str r0, [sp, #0x28]
 	ldr r1, [sp, #0x2c]
 	add r0, r7, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -39287,7 +39287,7 @@ ov18_021F9370: ; 0x021F9370
 	str r1, [sp, #0x28]
 	add r0, sp, #0x2c
 	add r1, r4, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	add r0, r5, #0
 	add r0, #0xb4
 	ldr r0, [r0]

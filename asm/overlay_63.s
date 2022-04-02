@@ -352,7 +352,7 @@ ov63_0221C068: ; 0x0221C068
 	mov r2, #1
 	mov r1, #0
 	lsl r2, r2, #0x16
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	add sp, #0x4c
 	pop {r3, r4, r5, r6, pc}
 	nop
@@ -6213,7 +6213,7 @@ ov63_0221F130: ; 0x0221F130
 	sub sp, #0x18
 	add r4, r0, #0
 	mov r0, #0x3e
-	bl sub_02023114
+	bl GF_Camera_Create
 	add r1, r4, #0
 	add r1, #0xe0
 	str r0, [r1]
@@ -6250,7 +6250,7 @@ ov63_0221F130: ; 0x0221F130
 	add r0, #0xe4
 	lsl r1, r1, #0xc
 	add r2, #0xf0
-	bl sub_02023254
+	bl GF_Camera_InitFromTargetDistanceAndAngle
 	mov r1, #0
 	mov r0, #1
 	lsl r0, r0, #0xc
@@ -6261,18 +6261,18 @@ ov63_0221F130: ; 0x0221F130
 	add r1, #0xe0
 	ldr r1, [r1]
 	add r0, sp, #0xc
-	bl sub_02023204
+	bl GF_Camera_SetBindTarget
 	add r0, r4, #0
 	add r0, #0xe0
 	ldr r0, [r0]
-	bl sub_0202313C
+	bl GF_Camera_RegisterToStaticPtr
 	add r4, #0xe0
 	mov r0, #1
 	mov r1, #0x7d
 	ldr r2, [r4]
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	add sp, #0x18
 	pop {r4, pc}
 	nop

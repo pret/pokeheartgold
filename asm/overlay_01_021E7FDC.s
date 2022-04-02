@@ -23,7 +23,7 @@ ov01_021E7FDC: ; 0x021E7FDC
 	add r0, r2, #0
 	add r1, r5, #4
 	add r2, r4, #0
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	str r0, [r5]
 	ldr r1, _021E818C ; =0x00000162
 	ldr r0, [sp, #0x10]
@@ -333,14 +333,14 @@ _021E8228:
 	ldrh r0, [r2, r3]
 	str r0, [sp, #0x44]
 	add r0, sp, #0x18
-	bl sub_02024624
+	bl CreateSprite
 	add r5, r0, #0
 	bne _021E8278
 	bl GF_AssertFail
 _021E8278:
 	ldrh r1, [r4, #0xa]
 	add r0, r5, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r4, #0x18]
 	cmp r0, #1
 	beq _021E828E
@@ -365,7 +365,7 @@ ov01_021E8298: ; 0x021E8298
 	str r3, [sp, #4]
 	add r1, r7, #4
 	add r2, r3, #0
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	str r0, [r7]
 	ldr r1, _021E8374 ; =0x00000162
 	ldr r0, [sp, #4]
@@ -813,7 +813,7 @@ _021E85B4:
 	ldr r1, [sp, #0x2c]
 	ldr r2, [sp, #0x30]
 	ldr r3, [sp, #0x34]
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r5]
 	str r0, [sp, #0x44]
 	ldr r0, [r6, #4]
@@ -903,7 +903,7 @@ _021E86A2:
 	ldrh r0, [r5, r0]
 	str r0, [sp, #0x70]
 	add r0, sp, #0x44
-	bl sub_02024624
+	bl CreateSprite
 	str r0, [r6]
 	cmp r0, #0
 	beq _021E86E6
@@ -911,7 +911,7 @@ _021E86A2:
 	add r5, r0, #0
 	ldrh r1, [r4, #6]
 	ldr r0, [r6]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r1, [r4, #0xc]
 	ldr r0, [r6]
 	add r1, r5, r1

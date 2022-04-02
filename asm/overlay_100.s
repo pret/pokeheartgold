@@ -2400,7 +2400,7 @@ _021E6B06:
 	str r1, [sp, #0x28]
 	ldr r0, [r4, #4]
 	add r1, r3, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r5, #0x10]
 	cmp r7, #0
 	str r0, [sp, #0x34]
@@ -2484,7 +2484,7 @@ _021E6BE0:
 	ldr r0, [r5]
 	str r0, [sp, #0x60]
 	add r0, sp, #0x34
-	bl sub_02024624
+	bl CreateSprite
 	mov r1, #0x55
 	lsl r1, r1, #2
 	str r0, [r4]
@@ -2496,7 +2496,7 @@ _021E6BE0:
 	add r1, sp, #0x68
 	ldrb r5, [r1, #0x1c]
 	add r1, r5, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r0, r7, #0
 	add r1, r6, #0
 	bl sub_0200B12C
@@ -2547,7 +2547,7 @@ ov100_021E6C4C: ; 0x021E6C4C
 	ldrh r0, [r0, #0xc]
 	ldr r2, [r2]
 	add r1, #0x14
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	ldr r1, [sp]
 	mov r6, #0x15
 	str r0, [r1, #0x10]

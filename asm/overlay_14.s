@@ -26497,7 +26497,7 @@ ov14_021F2AC8: ; 0x021F2AC8
 	mov r2, #2
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	add sp, #0x4c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

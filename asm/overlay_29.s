@@ -363,14 +363,14 @@ ov29_0225D7F0: ; 0x0225D7F0
 	mov r0, #0xb
 	add r1, #0x1c
 	mov r2, #8
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	str r0, [r5, #0x18]
 	add r0, r5, #0
 	mov r2, #1
 	add r0, #0x1c
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	add r0, r5, #0
 	bl ov29_0225D840
 	add r0, r5, #0
@@ -543,7 +543,7 @@ ov29_0225D910: ; 0x0225D910
 	str r0, [sp, #0x28]
 	ldr r1, [sp, #0x2c]
 	add r0, r7, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -585,11 +585,11 @@ ov29_0225D970: ; 0x0225D970
 	lsl r2, r2, #2
 	add r4, r0, r2
 	add r0, sp, #0
-	bl sub_02024624
+	bl CreateSprite
 	str r0, [r4, r6]
 	ldrb r1, [r5, #3]
 	ldr r0, [r4, r6]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add sp, #0x30
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -840,7 +840,7 @@ ov29_0225DB9C: ; 0x0225DB9C
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add sp, #0xc
 	pop {r4, r5, pc}
 _0225DBE0:
@@ -848,7 +848,7 @@ _0225DBE0:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #2
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add sp, #0xc
 	pop {r4, r5, pc}
 	thumb_func_end ov29_0225DB9C
@@ -1265,7 +1265,7 @@ ov29_0225DEF4: ; 0x0225DEF4
 	add r0, r0, r2
 	ldr r0, [r0, r3]
 	add r1, r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	pop {r4, pc}
 	thumb_func_end ov29_0225DEF4
 
@@ -1286,7 +1286,7 @@ ov29_0225DF18: ; 0x0225DF18
 	add r0, r4, r0
 	sub r3, #0x60
 	ldr r0, [r0, r3]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add sp, #0xc
 	pop {r3, r4, pc}
 _0225DF3E:

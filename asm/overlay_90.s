@@ -1094,7 +1094,7 @@ _02258F7A:
 	str r0, [sp, #0x28]
 	add r0, r4, #0
 	add r1, r7, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov90_02258EE0
@@ -1288,7 +1288,7 @@ ov90_022590CC: ; 0x022590CC
 	ldr r0, [sp, #0x14]
 	add r1, r5, #4
 	add r2, r4, #0
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	str r0, [r5]
 	bl sub_0203A880
 	mov r0, #0x10
@@ -2811,7 +2811,7 @@ _02259C12:
 	bl ov90_02258EB4
 	ldr r1, [sp, #0x24]
 	str r0, [r5, #0x10]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
 	bl sub_02024A74
@@ -2820,7 +2820,7 @@ _02259C12:
 	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x10]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [sp, #0x5c]
@@ -2837,7 +2837,7 @@ _02259C12:
 	bl ov90_02258EB4
 	str r0, [r5, #0x14]
 	mov r1, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5, #0x14]
 	mov r1, #0
 	bl Set2dSpriteVisibleFlag
@@ -2967,10 +2967,10 @@ ov90_02259E18: ; 0x02259E18
 	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x14]
 	add r1, r4, #4
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5, #0x14]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov90_02259E18
 
@@ -6146,7 +6146,7 @@ _0225B630:
 	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #8]
 	ldr r1, [sp, #0x18]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5, #8]
 	mov r1, #0
 	bl sub_02024A04
@@ -6342,7 +6342,7 @@ _0225B7CC:
 	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #8]
 	mov r1, #2
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #0xf
@@ -6798,7 +6798,7 @@ _0225BB02:
 	bl ov90_02258EB4
 	str r0, [r5]
 	mov r1, #5
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5]
 	mov r1, #0
 	bl sub_02024A04
@@ -7532,7 +7532,7 @@ _0225C090:
 	bl ov90_02258EB4
 	str r0, [r4, #0x30]
 	mov r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r4, #0x30]
 	mov r1, #0
 	bl sub_02024A04
@@ -7549,7 +7549,7 @@ _0225C0CC:
 	bne _0225C14C
 	ldr r0, [r4, #0x30]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	ldrh r0, [r4, #4]
 	add sp, #8
 	add r0, r0, #1

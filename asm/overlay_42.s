@@ -388,7 +388,7 @@ _02227344:
 	str r0, [sp, #0x34]
 _02227346:
 	add r0, sp, #0xc
-	bl sub_02024624
+	bl CreateSprite
 	str r0, [r4, #4]
 	mov r1, #6
 	ldrsh r1, [r6, r1]
@@ -401,11 +401,11 @@ _02227346:
 	ldr r0, [r4, #4]
 	bne _0222736C
 	mov r1, #6
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	b _02227372
 _0222736C:
 	mov r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _02227372:
 	mov r0, #9
 	str r0, [r4, #0xc]
@@ -466,7 +466,7 @@ _022273E0:
 	str r0, [sp, #0x34]
 _022273E2:
 	add r0, sp, #0xc
-	bl sub_02024624
+	bl CreateSprite
 	str r0, [r4, #8]
 	mov r1, #6
 	ldrsh r1, [r6, r1]
@@ -1111,7 +1111,7 @@ _022277FA:
 	str r0, [sp, #0x28]
 	add r0, r5, r4
 	add r2, r1, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	add sp, #0x44
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -1216,7 +1216,7 @@ _022278E6:
 	ldr r1, [sp, #0x34]
 	ldr r2, _02227944 ; =0x00000402
 	add r0, r5, r4
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1441,7 +1441,7 @@ _02227A9E:
 	add r3, #0xe0
 	add r2, r2, r3
 	add r3, r1, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1890,7 +1890,7 @@ ov42_02227DF8: ; 0x02227DF8
 _02227E0E:
 	ldr r1, [r1, #0x10]
 	add r1, r1, #5
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	pop {r3, pc}
 	thumb_func_end ov42_02227DF8
 
@@ -5052,7 +5052,7 @@ _02229488:
 	add r2, r0, #0
 	ldr r0, [r6]
 	ldr r1, [sp]
-	bl sub_02009FA8
+	bl G2dRenderer_SetMainSurfaceCoords
 	b _02229506
 _022294A0:
 	cmp r5, #0
@@ -5098,7 +5098,7 @@ _022294EA:
 	ldr r0, [r6]
 	ldr r1, [sp, #4]
 	add r2, r3, r2
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 _02229506:
 	add r0, r6, #0
 	add r1, r4, #0

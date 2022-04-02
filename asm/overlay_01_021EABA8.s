@@ -30,7 +30,7 @@ ov01_021EABA8: ; 0x021EABA8
 	bl GF_AssertFail
 _021EABC4:
 	mov r0, #4
-	bl sub_02023114
+	bl GF_Camera_Create
 	str r0, [r5, #0x24]
 	ldrh r0, [r4, #0xc]
 	add r2, r4, #4
@@ -44,17 +44,17 @@ _021EABC4:
 	ldrh r3, [r4, #0xe]
 	ldr r0, [sp, #0xc]
 	ldr r1, [r4]
-	bl sub_02023254
+	bl GF_Camera_InitFromTargetDistanceAndAngle
 	ldr r0, [r5, #0x24]
-	bl sub_0202313C
+	bl GF_Camera_RegisterToStaticPtr
 	ldr r0, [r4, #0x10]
 	ldr r1, [r4, #0x14]
 	ldr r2, [r5, #0x24]
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	add r4, #0x18
 	ldr r1, [r5, #0x24]
 	add r0, r4, #0
-	bl sub_02023514
+	bl GF_Camera_ShiftBy
 	cmp r7, #0
 	beq _021EAC16
 	ldr r0, [r5, #0x24]
@@ -145,7 +145,7 @@ ov01_021EAC6C: ; 0x021EAC6C
 	bl sub_02023558
 	ldr r1, [r4]
 	add r0, r5, #4
-	bl sub_02023514
+	bl GF_Camera_ShiftBy
 _021EACAE:
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -432,7 +432,7 @@ ov01_021EAEA4: ; 0x021EAEA4
 	str r0, [sp, #8]
 	add r0, sp, #0
 	add r1, r7, #0
-	bl sub_02023514
+	bl GF_Camera_ShiftBy
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

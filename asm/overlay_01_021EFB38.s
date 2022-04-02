@@ -1423,7 +1423,7 @@ ov01_021F05C4: ; 0x021F05C4
 	add r0, r1, #0
 	add r1, r5, #4
 	mov r2, #4
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	mov r7, #0x4b
 	str r0, [r5]
 	mov r4, #0
@@ -1560,7 +1560,7 @@ ov01_021F0614: ; 0x021F0614
 	str r0, [sp, #0x28]
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021F0614
@@ -2746,7 +2746,7 @@ _021F0F64:
 	mov r1, #0xe1
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	mov r2, #0
 	add r0, r5, #0
 	add r1, r4, #0

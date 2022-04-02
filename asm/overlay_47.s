@@ -494,7 +494,7 @@ ov47_02258BB4: ; 0x02258BB4
 	mov r0, #0x20
 	add r1, #8
 	add r2, r6, #0
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	mov r7, #0x13
 	str r0, [r5, #4]
 	mov r4, #0
@@ -887,7 +887,7 @@ _02258E7A:
 	str r0, [sp, #0x28]
 	add r0, sp, #0x4c
 	add r2, r1, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r4, #4]
 	str r0, [sp, #0x2c]
 	add r0, sp, #0x4c
@@ -1276,7 +1276,7 @@ ov47_0225921C: ; 0x0225921C
 	mov r1, #1
 	bx r3
 	.balign 4, 0
-_02259224: .word sub_0202484C
+_02259224: .word Set2dSpriteAnimActiveFlag
 	thumb_func_end ov47_0225921C
 
 	thumb_func_start ov47_02259228

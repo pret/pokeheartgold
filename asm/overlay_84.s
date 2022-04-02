@@ -2848,7 +2848,7 @@ ov84_0223F2B4: ; 0x0223F2B4
 	mov r0, #0x22
 	add r1, r5, #4
 	mov r2, #0x6e
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	ldr r4, _0223F370 ; =ov84_0223F9E4
 	str r0, [r5]
 	mov r7, #0
@@ -2941,7 +2941,7 @@ ov84_0223F374: ; 0x0223F374
 	str r5, [sp, #0x24]
 	str r5, [sp, #0x28]
 	add r0, sp, #0x5c
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r4]
 	mov r1, #1
 	lsl r1, r1, #0xc
@@ -2977,17 +2977,17 @@ _0223F3E6:
 	str r0, [sp, #0x38]
 _0223F3F2:
 	add r0, sp, #0x2c
-	bl sub_02024624
+	bl CreateSprite
 	mov r1, #1
 	add r4, r0, #0
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0xc
 	bl sub_02024868
 	ldr r1, [sp, #0x90]
 	add r0, r4, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r0, r4, #0
 	add sp, #0x80
 	pop {r4, r5, r6, pc}
@@ -3582,7 +3582,7 @@ ov84_0223F8A8: ; 0x0223F8A8
 	ldr r0, [r0, #0x10]
 	bx r3
 	nop
-_0223F8B0: .word sub_0202484C
+_0223F8B0: .word Set2dSpriteAnimActiveFlag
 	thumb_func_end ov84_0223F8A8
 
 	thumb_func_start ov84_0223F8B4

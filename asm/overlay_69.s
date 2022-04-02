@@ -89,7 +89,7 @@ _021E5960:
 	ldr r1, _021E5A28 ; =0x0000C080
 	str r0, [r5, r1]
 	ldr r0, [r5]
-	bl sub_02023114
+	bl GF_Camera_Create
 	ldr r1, _021E5A2C ; =0x0000C2DC
 	str r0, [r5, r1]
 	mov r0, #0
@@ -2784,14 +2784,14 @@ ov69_021E6FE8: ; 0x021E6FE8
 	ldr r2, [r4, r2]
 	mov r0, #0
 	lsl r1, r1, #0xe
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	ldr r1, _021E7060 ; =0x0000C2DC
 	mov r0, #0
 	ldr r1, [r4, r1]
 	bl sub_020233D8
 	ldr r0, _021E7060 ; =0x0000C2DC
 	ldr r0, [r4, r0]
-	bl sub_0202313C
+	bl GF_Camera_RegisterToStaticPtr
 	ldr r0, _021E7068 ; =0x0000C304
 	ldrh r1, [r4, r0]
 	cmp r1, #0
@@ -3353,7 +3353,7 @@ _021E7446:
 	add r0, r5, r0
 	add r2, sp, #0x4c
 	add r3, r5, r3
-	bl sub_0201F554
+	bl Draw3dModel
 	ldr r4, _021E750C ; =ov69_021E7794
 	add r3, sp, #0x28
 	mov r2, #4
@@ -3372,7 +3372,7 @@ _021E7470:
 	add r3, #0xa0
 	add r1, r5, r1
 	add r3, r5, r3
-	bl sub_0201F554
+	bl Draw3dModel
 	ldr r4, _021E7514 ; =ov69_021E774C
 	add r3, sp, #4
 	mov r2, #4
@@ -3411,7 +3411,7 @@ _021E74B6:
 	add r2, sp, #4
 	add r1, r5, r1
 	add r3, r5, r3
-	bl sub_0201F554
+	bl Draw3dModel
 _021E74DE:
 	ldr r0, [r5, #0xc]
 	add r7, r7, #1

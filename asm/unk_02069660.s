@@ -88,7 +88,7 @@ sub_020696E8: ; 0x020696E8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
-	bl sub_0201F668
+	bl AllocAndLoad3dTexResources
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0x10]
 	bl NNS_G3dBindMdlSet

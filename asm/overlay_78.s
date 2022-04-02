@@ -1216,7 +1216,7 @@ ov78_021E628C: ; 0x021E628C
 	mov r2, #3
 	mov r1, #0
 	lsl r2, r2, #0x12
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	ldr r0, [r5, #0x10]
 	mov r1, #5
 	mov r2, #0

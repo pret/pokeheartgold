@@ -6,7 +6,7 @@
 #include "unk_020215A0.h"
 #include "unk_02022588.h"
 
-void sub_02009D48(struct UnkStruct_02009D48 *hdr, int charId, int plttId, int cellId, int cellAnmId, int multiCellId, int multiCellAnmId, int transfer, int priority, struct _2DGfxResMan *charMan, struct _2DGfxResMan *plttMan, struct _2DGfxResMan *cellMan, struct _2DGfxResMan *cellAnmMan, struct _2DGfxResMan *multiCellMan, struct _2DGfxResMan *multiCellAnmMan) {
+void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, int plttId, int cellId, int cellAnmId, int multiCellId, int multiCellAnmId, int transfer, int priority, struct _2DGfxResMan *charMan, struct _2DGfxResMan *plttMan, struct _2DGfxResMan *cellMan, struct _2DGfxResMan *cellAnmMan, struct _2DGfxResMan *multiCellMan, struct _2DGfxResMan *multiCellAnmMan) {
     struct _2DGfxResObj *charObj;
     struct _2DGfxResObj *plttObj;
     struct _2DGfxResObj *cellObj;
@@ -79,10 +79,12 @@ ListOfUnkStruct_02009D48 *sub_02009E84(const struct UnkStruct_02009E84 *a0, Heap
         num++;
     }
     ret = AllocFromHeap(heapId, sizeof(ListOfUnkStruct_02009D48));
-    ret->headers = AllocFromHeap(heapId, sizeof(UnkStruct_02009D48) * num);
+    ret->headers = AllocFromHeap(heapId, sizeof(SpriteResourcesHeader) * num);
     ret->num = num;
     for (i = 0; i < ret->num; i++) {
-        sub_02009D48(&ret->headers[i], a0[i].charId, a0[i].plttId, a0[i].cellId, a0[i].animId, a0[i].mcelId, a0[i].manmId, a0[i].xferFlag, a0[i].priority, charMan, plttMan, cellMan, animMan, mcelMan, manmMan);
+        CreateSpriteResourcesHeader(&ret->headers[i], a0[i].charId, a0[i].plttId, a0[i].cellId, a0[i].animId,
+                                    a0[i].mcelId, a0[i].manmId, a0[i].xferFlag, a0[i].priority, charMan, plttMan,
+                                    cellMan, animMan, mcelMan, manmMan);
     }
     return ret;
 }
@@ -95,46 +97,46 @@ void sub_02009F24(ListOfUnkStruct_02009D48 *list) {
     FreeToHeap(list);
 }
 
-UnkStruct_0202445C *sub_02009F40(int a0, UnkStruct_02009F40 *a1, HeapID heapId) {
-    struct UnkStruct_0202445C *ret;
-    struct UnkLocal_02009F40 sp10;
-    NNSG2dViewRect sp0;
+SpriteList *G2dRenderer_Init(int a0, GF_G2dRenderer *a1, HeapID heapId) {
+    struct SpriteList *ret;
+    struct SpriteListParam param;
+    NNSG2dViewRect rect;
 
     sub_02025C44(&a1->rendererInstance, -FX32_ONE);
-    sp0.posTopLeft.x = 0;
-    sp0.posTopLeft.y = 0;
-    sp0.sizeView.x = 255 * FX32_ONE;
-    sp0.sizeView.y = 192 * FX32_ONE;
-    sub_0200B27C(&a1->renderSurface[0], &sp0, 1, &a1->rendererInstance);
-    sp0.posTopLeft.x = 0;
-    sp0.posTopLeft.y = 192 * FX32_ONE;
-    sp0.sizeView.x = 255 * FX32_ONE;
-    sp0.sizeView.y = 192 * FX32_ONE;
-    sub_0200B27C(&a1->renderSurface[1], &sp0, 2, &a1->rendererInstance);
-    sp10.unk_0 = a0;
-    sp10.rendererInstance = &a1->rendererInstance;
-    sp10.heapId = heapId;
-    return sub_0202445C(&sp10);
+    rect.posTopLeft.x = 0;
+    rect.posTopLeft.y = 0;
+    rect.sizeView.x = 255 * FX32_ONE;
+    rect.sizeView.y = 192 * FX32_ONE;
+    sub_0200B27C(&a1->renderSurface[0], &rect, 1, &a1->rendererInstance);
+    rect.posTopLeft.x = 0;
+    rect.posTopLeft.y = 192 * FX32_ONE;
+    rect.sizeView.x = 255 * FX32_ONE;
+    rect.sizeView.y = 192 * FX32_ONE;
+    sub_0200B27C(&a1->renderSurface[1], &rect, 2, &a1->rendererInstance);
+    param.unk_0 = a0;
+    param.rendererInstance = &a1->rendererInstance;
+    param.heapId = heapId;
+    return SpriteList_Create(&param);
 }
 
-void sub_02009FA8(struct UnkStruct_02009F40 *a0, fx32 x, fx32 y) {
-    struct NNSG2dViewRect sp0;
+void G2dRenderer_SetMainSurfaceCoords(struct GF_G2dRenderer *a0, fx32 x, fx32 y) {
+    struct NNSG2dViewRect rect;
 
-    sp0.posTopLeft.x = x;
-    sp0.posTopLeft.y = y;
-    sp0.sizeView.x = 255 * FX32_ONE;
-    sp0.sizeView.y = 192 * FX32_ONE;
-    sub_02025C88(&a0->renderSurface[0], &sp0);
+    rect.posTopLeft.x = x;
+    rect.posTopLeft.y = y;
+    rect.sizeView.x = 255 * FX32_ONE;
+    rect.sizeView.y = 192 * FX32_ONE;
+    sub_02025C88(&a0->renderSurface[0], &rect);
 }
 
-void sub_02009FC8(struct UnkStruct_02009F40 *a0, fx32 x, fx32 y) {
-    struct NNSG2dViewRect sp0;
+void G2dRenderer_SetSubSurfaceCoords(struct GF_G2dRenderer *a0, fx32 x, fx32 y) {
+    struct NNSG2dViewRect rect;
 
-    sp0.posTopLeft.x = x;
-    sp0.posTopLeft.y = y;
-    sp0.sizeView.x = 255 * FX32_ONE;
-    sp0.sizeView.y = 192 * FX32_ONE;
-    sub_02025C88(&a0->renderSurface[1], &sp0);
+    rect.posTopLeft.x = x;
+    rect.posTopLeft.y = y;
+    rect.sizeView.x = 255 * FX32_ONE;
+    rect.sizeView.y = 192 * FX32_ONE;
+    sub_02025C88(&a0->renderSurface[1], &rect);
 }
 
 void sub_02009FE8(u32 a0, GXOBJVRamModeChar mode) {

@@ -629,7 +629,7 @@ ov80_0222A3D4: ; 0x0222A3D4
 	bl sub_020249D4
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	mov r1, #1
 	add r0, r5, #0
 	lsl r1, r1, #0xc
@@ -22383,7 +22383,7 @@ _02234AA2:
 	str r0, [r6, #0x30]
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	add r6, r6, #4
@@ -22414,7 +22414,7 @@ _02234AE2:
 	str r0, [r5, #0x40]
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	ldr r0, [sp, #0xc]
 	add r6, r6, #1
 	add r4, r4, #4
@@ -31106,7 +31106,7 @@ _02238BFE:
 	add r2, r0, #0
 	ldr r0, [sp, #8]
 	ldr r1, [sp, #0xc]
-	bl sub_02009FA8
+	bl G2dRenderer_SetMainSurfaceCoords
 	ldr r0, [r5]
 	mov r1, #3
 	mov r2, #0
@@ -32004,7 +32004,7 @@ ov80_02239384: ; 0x02239384
 	mov r2, #2
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	pop {r4, pc}
 	nop
 _022393D8: .word ov80_0223D5B8
@@ -32837,7 +32837,7 @@ _022399BA:
 	mov r1, #0xe1
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	ldr r1, [sp, #8]
 	add r0, r4, #0
 	bl sub_02015528
@@ -34632,7 +34632,7 @@ _0223A7C0:
 	ldr r0, [r4, #4]
 	mov r1, #1
 	ldr r0, [r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	mov r1, #2
 	lsl r1, r1, #0xc
 	add r0, r5, #0

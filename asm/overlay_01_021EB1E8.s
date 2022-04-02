@@ -468,7 +468,7 @@ _021EB4EE:
 	mov r0, #4
 	str r0, [sp, #8]
 	add r0, sp, #0
-	bl sub_0202445C
+	bl SpriteList_Create
 	add r1, r6, #0
 	add r1, #0xf4
 	str r0, [r1]
@@ -1941,7 +1941,7 @@ ov01_021EC028: ; 0x021EC028
 _021EC032:
 	ldr r0, [r6, #8]
 	add r0, #0x10
-	bl sub_02024624
+	bl CreateSprite
 	str r0, [r5, #0x4c]
 	add r1, r7, #0
 	bl Set2dSpriteVisibleFlag
@@ -2260,7 +2260,7 @@ _021EC250:
 	ldr r1, [sp, #0x34]
 	ldr r2, [sp, #0x38]
 	ldr r3, [sp, #0x3c]
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	add sp, #0x44
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

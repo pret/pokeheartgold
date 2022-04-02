@@ -1106,7 +1106,7 @@ sub_0206AFD0: ; 0x0206AFD0
 	bl sub_020233D8
 	ldr r0, _0206B010 ; =_021100C4 + 24
 	add r1, r4, #0
-	bl sub_02023514
+	bl GF_Camera_ShiftBy
 	pop {r4, pc}
 	.balign 4, 0
 _0206B008: .word _021100C4

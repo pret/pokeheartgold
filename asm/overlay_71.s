@@ -125,14 +125,14 @@ _02246A44:
 	mov r0, #0x40
 	add r1, #0x1c
 	mov r2, #0x38
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	str r0, [r4, #0x18]
 	add r0, r4, #0
 	mov r2, #0x3a
 	add r0, #0x1c
 	mov r1, #0
 	lsl r2, r2, #0xe
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	ldr r0, [r4]
 	mov r1, #5
 	ldr r0, [r0]
@@ -1292,7 +1292,7 @@ ov71_02247340: ; 0x02247340
 	add r4, r0, #0
 	beq _0224737C
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0xc
@@ -1645,7 +1645,7 @@ _022475AC:
 	add r1, #0x68
 	add r2, sp, #0x2c
 	add r3, r4, #0
-	bl sub_0201F554
+	bl Draw3dModel
 	add sp, #0x50
 	pop {r4, pc}
 	.balign 4, 0
@@ -1755,10 +1755,10 @@ _02247676:
 	ldr r0, [r5]
 	bl NNS_G3dGetTex
 	str r0, [r5, #0x60]
-	bl sub_0201F668
+	bl AllocAndLoad3dTexResources
 	ldr r0, [r5]
 	ldr r1, [r5, #0x60]
-	bl sub_0201F64C
+	bl Bind3dModelSet
 	ldr r1, [r5, #0x5c]
 	add r0, r5, #4
 	bl NNS_G3dRenderObjInit
@@ -2029,7 +2029,7 @@ ov71_0224784C: ; 0x0224784C
 	add r4, r1, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_02023114
+	bl GF_Camera_Create
 	str r0, [r5]
 	str r4, [r5, #4]
 	str r6, [r5, #8]
@@ -2049,7 +2049,7 @@ ov71_0224784C: ; 0x0224784C
 	add r0, r5, #4
 	lsl r1, r1, #0xe
 	add r2, #0x10
-	bl sub_02023254
+	bl GF_Camera_InitFromTargetDistanceAndAngle
 	mov r1, #0
 	mov r0, #1
 	lsl r0, r0, #0xc
@@ -2058,14 +2058,14 @@ ov71_0224784C: ; 0x0224784C
 	str r1, [sp, #0x14]
 	ldr r1, [r5]
 	add r0, sp, #0xc
-	bl sub_02023204
+	bl GF_Camera_SetBindTarget
 	ldr r0, [r5]
-	bl sub_0202313C
+	bl GF_Camera_RegisterToStaticPtr
 	mov r1, #0xfa
 	ldr r2, [r5]
 	mov r0, #0
 	lsl r1, r1, #0xe
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -2486,7 +2486,7 @@ ov71_02247C34: ; 0x02247C34
 	beq _02247C5A
 	ldr r0, [r4, #0x3c]
 	mov r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r4, #0x3c]
 	mov r1, #1
 	bl Set2dSpriteVisibleFlag
@@ -2729,7 +2729,7 @@ _02247E2A:
 	bl sub_02008780
 	ldr r0, [r5, #0x40]
 	mov r1, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5, #0x40]
 	mov r1, #1
 	bl Set2dSpriteVisibleFlag
@@ -4309,10 +4309,10 @@ _02248AA2:
 	str r0, [r4, #0x20]
 	ldr r0, [r4, #0x1c]
 	mov r1, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r4, #0x20]
 	mov r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r4, #0x1c]
 	mov r1, #0
 	bl Set2dSpriteVisibleFlag
@@ -5766,7 +5766,7 @@ _022495FA:
 	bl PlaySE
 	ldr r0, [r5, #0x20]
 	mov r1, #3
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5, #0x20]
 	mov r1, #1
 	bl Set2dSpriteVisibleFlag
@@ -7256,7 +7256,7 @@ _0224A1E6:
 	beq _0224A26A
 	ldr r0, [r5, #0x20]
 	mov r1, #3
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5, #0x20]
 	mov r1, #1
 	bl Set2dSpriteVisibleFlag
@@ -9542,7 +9542,7 @@ ov71_0224B450: ; 0x0224B450
 	beq _0224B476
 	ldr r0, [r4, #0x40]
 	mov r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r4, #0x40]
 	mov r1, #1
 	bl Set2dSpriteVisibleFlag
@@ -9590,7 +9590,7 @@ _0224B4AE:
 	bne _0224B576
 	ldr r0, [r4, #0x44]
 	mov r1, #2
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r4, #0x44]
 	mov r1, #1
 	bl Set2dSpriteVisibleFlag

@@ -3668,7 +3668,7 @@ _021E76A8:
 	add r0, #0xec
 	ldr r0, [r0]
 	mov r1, #3
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r0, r4, #0
 	add r0, #0xec
 	ldr r0, [r0]
@@ -3723,7 +3723,7 @@ _021E771C:
 	add r0, #0xec
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r0, r4, #0
 	add r0, #0xec
 	ldr r0, [r0]
@@ -3763,7 +3763,7 @@ _021E775E:
 	add r0, #0xec
 	ldr r0, [r0]
 	mov r1, #2
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	mov r0, #SPECIES_MARILL
 	add r1, r5, #0
 	bl PlayCry
@@ -4606,13 +4606,13 @@ _021E7E76:
 	add r4, #0xe4
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	pop {r3, r4, r5, pc}
 _021E7E82:
 	add r4, #0xe4
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	pop {r3, r4, r5, pc}
 _021E7E8E:
 	bl GF_AssertFail
@@ -4765,7 +4765,7 @@ ov53_021E7F24: ; 0x021E7F24
 	mov r2, #3
 	mov r1, #0
 	lsl r2, r2, #0x12
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	ldr r3, _021E7FE8 ; =ov53_021E8740
 	add r2, sp, #0
 	mov r1, #7
@@ -4873,7 +4873,7 @@ _021E801E:
 	add r0, #0xec
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	add r0, r5, #0
 	add r0, #0xec
 	ldr r0, [r0]
@@ -4958,7 +4958,7 @@ _021E8108:
 	str r0, [r4, #0x14]
 	add r0, r6, #0
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	add r0, r4, #0
 	bl ov53_021E82BC
 	add r0, r4, #0
@@ -5411,7 +5411,7 @@ _021E84AA:
 	bl ov53_021E8390
 	ldr r0, [r5, #0x10]
 	mov r1, #3
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, _021E84CC ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 _021E84C2:

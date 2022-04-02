@@ -570,7 +570,7 @@ ov41_02246280: ; 0x02246280
 	str r0, [sp, #0x28]
 	add r0, sp, #0x4c
 	add r2, r1, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r5, #0x44]
 	str r0, [sp, #0x2c]
 	add r0, sp, #0x4c
@@ -1669,14 +1669,14 @@ ov41_02246A94: ; 0x02246A94
 	mov r0, #0x30
 	add r1, #0x58
 	mov r2, #0xe
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	str r0, [r4, #0x44]
 	add r0, r4, #0
 	mov r2, #2
 	add r0, #0x58
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	mov r0, #8
 	mov r1, #0
 	mov r2, #0xe
@@ -9057,7 +9057,7 @@ _0224A126:
 	bl GF_AssertFail
 _0224A12E:
 	ldr r0, [r4]
-	bl sub_02024624
+	bl CreateSprite
 	str r0, [r5]
 	cmp r0, #0
 	bne _0224A13E
@@ -9836,7 +9836,7 @@ ov41_0224A6C4: ; 0x0224A6C4
 	str r2, [sp, #0x24]
 	str r2, [sp, #0x28]
 	add r0, sp, #0x5c
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r5, #0x44]
 	mov r2, #0
 	mov r1, #1
@@ -9894,7 +9894,7 @@ ov41_0224A734: ; 0x0224A734
 	str r2, [sp, #0x24]
 	str r2, [sp, #0x28]
 	add r0, sp, #0x5c
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r4, #0x44]
 	mov r2, #0xe
 	str r0, [sp, #0x2c]
@@ -10951,7 +10951,7 @@ _0224AF48:
 	bl sub_02024714
 	mov r1, #1
 	str r0, [r5, #0x10]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [sp, #0x1c]
 	add r1, r6, r7
 	cmp r1, r0
@@ -10993,7 +10993,7 @@ ov41_0224AF8C: ; 0x0224AF8C
 _0224AFA0:
 	ldr r0, [r4, #0x10]
 	mov r1, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, r5
@@ -11010,7 +11010,7 @@ _0224AFB2:
 _0224AFC0:
 	ldr r0, [r4, #0x10]
 	mov r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	sub r6, r6, #1
 	sub r4, r4, #4
 	cmp r6, r5
@@ -11172,7 +11172,7 @@ ov41_0224B0B8: ; 0x0224B0B8
 	str r0, [sp, #0x28]
 	ldr r1, [sp, #0x2c]
 	add r0, r7, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -11392,7 +11392,7 @@ _0224B2AE:
 _0224B2C0:
 	ldr r0, [r5, #0x10]
 	ldr r1, [sp, #4]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [sp, #4]
 	add r1, r0, #0
 	ldr r0, [sp]
@@ -12933,7 +12933,7 @@ _0224BE9C:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #5
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	mov r0, #3
 	lsl r0, r0, #0x10
 	str r0, [sp, #0x14]

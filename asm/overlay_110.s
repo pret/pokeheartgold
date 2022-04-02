@@ -1917,7 +1917,7 @@ _021E6770:
 	add r0, #0x8c
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	add r0, r5, #0
 	add r0, #0x90
 	ldr r0, [r0]
@@ -1973,7 +1973,7 @@ _021E680A:
 	add r0, #0x8c
 	ldr r0, [r0]
 	add r1, r7, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r0, r5, r4
 	add r0, #0x8c
 	ldr r0, [r0]
@@ -2093,7 +2093,7 @@ ov110_021E6904: ; 0x021E6904
 	add r0, #0x8c
 	ldr r0, [r0]
 	add r1, r4, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	cmp r4, #1
 	bne _021E693C
 	add r0, r5, #0
@@ -2104,14 +2104,14 @@ ov110_021E6904: ; 0x021E6904
 	add r0, #0x8c
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	b _021E6948
 _021E693C:
 	add r0, r5, #0
 	add r0, #0x8c
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 _021E6948:
 	ldr r1, [r5, #0x34]
 	mov r0, #4

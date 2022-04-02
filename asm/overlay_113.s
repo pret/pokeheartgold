@@ -725,7 +725,7 @@ ov113_021E5E64: ; 0x021E5E64
 	add r4, r0, #0
 	add r0, #0xb8
 	ldr r0, [r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r0, r4, #0
 	add r0, #0xb8
 	ldr r0, [r0]
@@ -804,7 +804,7 @@ _021E5EFE:
 	add r4, #0xbc
 	ldr r0, [r4]
 	mov r1, #3
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, _021E5F44 ; =0x000005DC
 	bl PlaySE
 	mov r0, #3
@@ -823,7 +823,7 @@ _021E5F24:
 	add r4, #0xc0
 	ldr r0, [r4]
 	mov r1, #6
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, _021E5F44 ; =0x000005DC
 	bl PlaySE
 	mov r0, #3
@@ -2156,7 +2156,7 @@ _021E69D8:
 	add r0, #0xb8
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	add r0, r4, #0
 	add r0, #0xb8
 	ldr r0, [r0]
@@ -2317,14 +2317,14 @@ _021E6B2C:
 	add r0, #0xbc
 	ldr r0, [r0]
 	mov r1, #4
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	b _021E6B46
 _021E6B3A:
 	add r0, r4, #0
 	add r0, #0xbc
 	ldr r0, [r0]
 	mov r1, #2
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _021E6B46:
 	ldrb r0, [r4, #0x1b]
 	cmp r0, #1
@@ -2337,13 +2337,13 @@ _021E6B54:
 	add r4, #0xc0
 	ldr r0, [r4]
 	mov r1, #7
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	pop {r4, pc}
 _021E6B60:
 	add r4, #0xc0
 	ldr r0, [r4]
 	mov r1, #5
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	pop {r4, pc}
 	thumb_func_end ov113_021E6B1C
 

@@ -1427,7 +1427,7 @@ sub_0203C6C8: ; 0x0203C6C8
 	mov r0, #1
 	add r1, r5, r1
 	mov r2, #0xb
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	mov r1, #0x75
 	lsl r1, r1, #2
 	mov r7, #3
@@ -1544,7 +1544,7 @@ _0203C6EA:
 	add r0, r5, r2
 	add r2, r1, #0
 	str r1, [sp, #0x28]
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	mov r0, #0x75
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -1574,13 +1574,13 @@ _0203C6EA:
 	add r0, sp, #0x2c
 	str r3, [sp, #0x50]
 	str r2, [sp, #0x58]
-	bl sub_02024624
+	bl CreateSprite
 	mov r1, #0xd1
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers

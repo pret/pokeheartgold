@@ -653,7 +653,7 @@ _0222BCE4:
 	mov r2, #1
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	add sp, #0x4c
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0

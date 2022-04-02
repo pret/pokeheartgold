@@ -1924,7 +1924,7 @@ _02079D84:
 	ldr r0, _02079E24 ; =0x00000684
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, _02079E24 ; =0x00000684
 	add r1, sp, #0
 	ldr r0, [r5, r0]
@@ -3301,7 +3301,7 @@ sub_0207A89C: ; 0x0207A89C
 	add r1, r0, #0
 	ldr r0, _0207A8F8 ; =0x00000678
 	ldr r0, [r4, r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, _0207A8F8 ; =0x00000678
 	add r2, sp, #0xc
 	ldrb r1, [r2, #1]
@@ -3357,7 +3357,7 @@ _0207A92C:
 	add r1, r0, #0
 	ldr r0, _0207A97C ; =0x00000678
 	ldr r0, [r5, r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, _0207A97C ; =0x00000678
 	mov r1, #1
 	ldr r0, [r5, r0]
@@ -3693,7 +3693,7 @@ _0207ABA4:
 	add r1, r0, #0
 	ldr r0, _0207AC10 ; =0x00000678
 	ldr r0, [r5, r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, _0207AC10 ; =0x00000678
 	mov r1, #1
 	ldr r0, [r5, r0]
@@ -4939,7 +4939,7 @@ _0207B546:
 	mov r0, #0x1a
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	pop {r4, r5, r6, pc}
 _0207B556:
 	cmp r4, #7
@@ -4963,7 +4963,7 @@ _0207B576:
 	lsr r1, r0, #0x18
 	ldr r0, _0207B5E4 ; =0x00000684
 	ldr r0, [r5, r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	pop {r4, r5, r6, pc}
 _0207B584:
 	cmp r6, #0
@@ -4986,7 +4986,7 @@ _0207B584:
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	b _0207B5D8
 _0207B5B2:
 	mov r0, #0x30
@@ -5006,7 +5006,7 @@ _0207B5B2:
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _0207B5D8:
 	add r0, r5, #0
 	add r1, r4, #0
@@ -5057,7 +5057,7 @@ sub_0207B600: ; 0x0207B600
 	ldr r0, _0207B7C8 ; =0x00000684
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _0207B634:
 	ldr r0, [r5, #8]
 	lsl r0, r0, #0x18
@@ -6021,7 +6021,7 @@ sub_0207BD78: ; 0x0207BD78
 	ldr r0, _0207BFB4 ; =0x00000684
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _0207BDAE:
 	add sp, #8
 	ldr r0, [r5, #8]

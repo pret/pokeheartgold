@@ -308,10 +308,10 @@ _021E9308:
 	ldr r1, _021E936C ; =0x00456000
 	ldr r2, [r6, #0x24]
 	lsl r0, r0, #0xc
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	ldr r1, [r6, #0x24]
 	mov r0, #4
-	bl GF_3dCamera_Create
+	bl CreateCameraTranslationWrapper
 	str r0, [r4, #0x18]
 	ldrh r2, [r4, #0x1e]
 	mov r1, #0x14
@@ -319,18 +319,18 @@ _021E9308:
 	mul r1, r2
 	add r1, r3, r1
 	mov r2, #0x18
-	bl GF_3dCamera_BeginMovement
+	bl SetCameraTranslationPath
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _021E934C
 _021E9336:
 	ldr r0, [r4, #0x18]
-	bl GF_3dCamera_MovementActive
+	bl IsCameraTranslationFinished
 	cmp r0, #0
 	beq _021E934C
 	ldr r0, [r4, #0x18]
-	bl GF_3dCamera_Delete
+	bl DeleteCameraTranslationWrapper
 	mov r0, #1
 	strh r0, [r4, #0x1c]
 	str r0, [r4]

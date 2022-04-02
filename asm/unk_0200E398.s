@@ -2272,7 +2272,7 @@ _0200F582:
 	ldr r0, [r4, r0]
 	mov r1, #1
 	ldr r0, [r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	b _0200F5A8
 _0200F594:
 	sub r0, #0xb

@@ -821,7 +821,7 @@ _0221C51A:
 	ldr r1, _0221C5D8 ; =0x0000069E
 	ldrh r1, [r4, r1]
 	add r1, r1, #2
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _0221C542:
 	ldr r0, _0221C5DC ; =0x000006A8
 	ldr r0, [r4, r0]
@@ -847,7 +847,7 @@ _0221C558:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0x15
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _0221C578:
 	ldr r0, [sp, #8]
 	add r7, r7, #1
@@ -1447,7 +1447,7 @@ ov65_0221CA64: ; 0x0221CA64
 	add r4, r2, #0
 	ldr r0, [r6, r7]
 	add r1, r4, #7
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	cmp r5, #2
 	bne _0221CAA6
 	mov r0, #0x20
@@ -2591,7 +2591,7 @@ ov65_0221D3E8: ; 0x0221D3E8
 	mov r0, #0x2d
 	add r1, r5, r1
 	mov r2, #0x1a
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	mov r1, #0x1a
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -3013,7 +3013,7 @@ _0221D76A:
 	ldr r0, [sp, #0x20]
 	ldr r0, [r1, r0]
 	mov r1, #7
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	b _0221D7B0
 _0221D78E:
 	ldr r0, _0221D8AC ; =0x0000040C
@@ -3030,7 +3030,7 @@ _0221D78E:
 	ldr r0, [sp, #0x28]
 	ldr r0, [r1, r0]
 	mov r1, #6
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _0221D7B0:
 	ldr r1, [sp, #0x18]
 	ldr r0, [sp, #0x34]
@@ -3235,7 +3235,7 @@ ov65_0221D930: ; 0x0221D930
 	add r0, r5, r2
 	add r2, r1, #0
 	str r1, [sp, #0x28]
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	mov r1, #1
 	mov r3, #0xb3
 	str r1, [sp]
@@ -3265,7 +3265,7 @@ ov65_0221D930: ; 0x0221D930
 	add r0, r5, r3
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -3303,14 +3303,14 @@ _0221D9EC:
 	lsl r0, r0, #0xc
 	str r0, [sp, #0x38]
 	add r0, sp, #0x2c
-	bl sub_02024624
+	bl CreateSprite
 	mov r1, #0xd1
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	add r0, r1, #0
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	add r0, r4, #0
 	mov r1, #0xd1
 	add r0, #0x94
@@ -3352,19 +3352,19 @@ _0221DA54:
 	lsl r0, r0, #0xc
 	str r0, [sp, #0x38]
 	add r0, sp, #0x2c
-	bl sub_02024624
+	bl CreateSprite
 	mov r1, #0xdf
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	add r0, r1, #0
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	mov r0, #0xdf
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, r7, #5
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	mov r0, #0xdf
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -3400,7 +3400,7 @@ _0221DABA:
 	mov r0, #0
 	str r0, [sp, #0x50]
 	add r0, sp, #0x2c
-	bl sub_02024624
+	bl CreateSprite
 	mov r1, #0xeb
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -3438,7 +3438,7 @@ _0221DB0C:
 	mov r0, #0
 	str r0, [sp, #0x50]
 	add r0, sp, #0x2c
-	bl sub_02024624
+	bl CreateSprite
 	mov r1, #0xf7
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -3468,16 +3468,16 @@ _0221DB0C:
 	lsl r0, r0, #0xc
 	str r0, [sp, #0x38]
 	add r0, sp, #0x2c
-	bl sub_02024624
+	bl CreateSprite
 	ldr r1, _0221DBE8 ; =0x00000424
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	ldr r0, _0221DBE8 ; =0x00000424
 	mov r1, #0x14
 	ldr r0, [r5, r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, _0221DBE8 ; =0x00000424
 	mov r1, #0
 	ldr r0, [r5, r0]
@@ -3501,7 +3501,7 @@ _0221DB94:
 	mov r0, #2
 	str r0, [sp, #0x54]
 	add r0, sp, #0x2c
-	bl sub_02024624
+	bl CreateSprite
 	ldr r1, _0221DBF0 ; =0x0000040C
 	str r0, [r5, r1]
 	add r0, r1, #0
@@ -3511,11 +3511,11 @@ _0221DB94:
 	ldr r0, _0221DBF0 ; =0x0000040C
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	ldr r0, _0221DBF0 ; =0x0000040C
 	ldr r1, [r4, #8]
 	ldr r0, [r5, r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r6, r6, #1
 	add r4, #0xc
 	add r5, r5, #4
@@ -3623,11 +3623,11 @@ _0221DC96:
 	ldr r0, _0221DCB8 ; =0x0000040C
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	ldr r0, _0221DCB8 ; =0x0000040C
 	mov r1, #4
 	ldr r0, [r4, r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _0221DCAA:
 	pop {r4, pc}
 	.balign 4, 0
@@ -3737,7 +3737,7 @@ _0221DD46:
 	ldr r1, _0221DDB4 ; =ov65_0221FD70
 	add r0, r6, #0
 	ldr r1, [r1, r2]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 _0221DD78:
@@ -3751,7 +3751,7 @@ _0221DD78:
 	ldr r1, _0221DDB8 ; =ov65_0221FD68
 	add r0, r6, #0
 	ldr r1, [r1, r2]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 _0221DD96:
@@ -3761,7 +3761,7 @@ _0221DD96:
 	ldr r1, _0221DDBC ; =ov65_0221FD6C
 	add r0, r6, #0
 	ldr r1, [r1, r2]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	nop

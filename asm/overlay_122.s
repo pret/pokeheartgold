@@ -4444,7 +4444,7 @@ ov122_021E7AEC: ; 0x021E7AEC
 	mov r2, #0x83
 	mov r1, #0
 	lsl r2, r2, #0xe
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	add sp, #0x4c
 	pop {r3, r4, pc}
 	.balign 4, 0

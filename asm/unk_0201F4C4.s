@@ -95,8 +95,8 @@ _0201F54E:
 	.balign 4, 0
 	thumb_func_end sub_0201F53C
 
-	thumb_func_start sub_0201F554
-sub_0201F554: ; 0x0201F554
+	thumb_func_start Draw3dModel
+Draw3dModel: ; 0x0201F554
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, r1, #0
@@ -120,7 +120,7 @@ sub_0201F554: ; 0x0201F554
 	nop
 _0201F588: .word NNS_G3dGlb + 0xBC
 _0201F58C: .word NNS_G3dGlb + 0x80
-	thumb_func_end sub_0201F554
+	thumb_func_end Draw3dModel
 
 	thumb_func_start sub_0201F590
 sub_0201F590: ; 0x0201F590
@@ -216,8 +216,8 @@ _0201F644: .word _021D15A0
 _0201F648: .word GF_3DVramMan_Delete
 	thumb_func_end sub_0201F63C
 
-	thumb_func_start sub_0201F64C
-sub_0201F64C: ; 0x0201F64C
+	thumb_func_start Bind3dModelSet
+Bind3dModelSet: ; 0x0201F64C
 	push {r4, lr}
 	add r4, r1, #0
 	bl NNS_G3dGetMdlSet
@@ -231,10 +231,10 @@ _0201F662:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201F64C
+	thumb_func_end Bind3dModelSet
 
-	thumb_func_start sub_0201F668
-sub_0201F668: ; 0x0201F668
+	thumb_func_start AllocAndLoad3dTexResources
+AllocAndLoad3dTexResources: ; 0x0201F668
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r0, #0
@@ -380,7 +380,7 @@ _0201F77C: .word NNS_GfdDefaultFuncAllocTexVram
 _0201F780: .word NNS_GfdDefaultFuncAllocPlttVram
 _0201F784: .word NNS_GfdDefaultFuncFreeTexVram
 _0201F788: .word NNS_GfdDefaultFuncFreePlttVram
-	thumb_func_end sub_0201F668
+	thumb_func_end AllocAndLoad3dTexResources
 
 	thumb_func_start Call_NNS_G3dTexLoad
 Call_NNS_G3dTexLoad: ; 0x0201F78C

@@ -1056,7 +1056,7 @@ ov111_021E60D4: ; 0x021E60D4
 	mov r2, #0x83
 	mov r1, #0
 	lsl r2, r2, #0xe
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers

@@ -539,7 +539,7 @@ _02056AAC:
 	bl sub_02023214
 	ldr r1, [r4, #0x24]
 	add r0, sp, #0x1c
-	bl sub_02023514
+	bl GF_Camera_ShiftBy
 	add sp, #0x34
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end sub_02056A54
@@ -626,7 +626,7 @@ _02056B70:
 	bl sub_02023214
 	ldr r1, [r5, #0x24]
 	add r0, sp, #0x1c
-	bl sub_02023514
+	bl GF_Camera_ShiftBy
 	add r0, r5, #0
 	bl FollowingPokemon_IsActive
 	cmp r0, #0
@@ -691,7 +691,7 @@ sub_02056BC8: ; 0x02056BC8
 	bl sub_02023214
 	ldr r1, [r4, #0x24]
 	add r0, sp, #0x18
-	bl sub_02023514
+	bl GF_Camera_ShiftBy
 	add r0, r5, #0
 	bl MapObject_ClearHeldMovementIfActive
 	mov r1, #2
@@ -757,7 +757,7 @@ sub_02056C64: ; 0x02056C64
 	bl sub_02023214
 	ldr r1, [r4, #0x24]
 	add r0, sp, #0x18
-	bl sub_02023514
+	bl GF_Camera_ShiftBy
 	add r0, r5, #0
 	bl MapObject_ClearHeldMovementIfActive
 	mov r1, #2

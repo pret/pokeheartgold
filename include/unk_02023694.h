@@ -5,26 +5,26 @@
 
 struct Sprite;
 
-typedef struct UnkStruct_0202445C UnkStruct_0202445C;
+typedef struct SpriteList SpriteList;
 
-struct UnkStruct_02024624Header {
-    void *unk0;
-    const struct UnkStruct_02009D48 *unk4;
-    VecFx32 unk8;
-    VecFx32 unk14;
-    u16 unk20;
-    u32 unk24;
-    int unk28;
+struct SpriteTemplate {
+    void *spriteList;
+    const struct SpriteResourcesHeader *header;
+    VecFx32 position;
+    VecFx32 scale;
+    u16 rotation;
+    u32 priority;
+    int whichScreen;
     HeapID heapId;
 };
 
 void sub_02024AA8(void *, s32);
-void sub_02024504(UnkStruct_0202445C *);
-void sub_0202457C(UnkStruct_0202445C *);
-struct Sprite *sub_02024624(const struct UnkStruct_02024624Header *template);
-void sub_0202484C(struct Sprite *, int);
-void sub_020248F0(struct Sprite *, int);
+void sub_02024504(SpriteList *);
+void sub_0202457C(SpriteList *);
+struct Sprite *CreateSprite(const struct SpriteTemplate *template);
+void Set2dSpriteAnimActiveFlag(struct Sprite *, int);
+void Set2dSpriteAnimSeqNo(struct Sprite *, int);
 void Set2dSpriteVisibleFlag(struct Sprite *, int);
-UnkStruct_0202445C *sub_0202445C(struct UnkLocal_02009F40 *a0);
+SpriteList *SpriteList_Create(struct SpriteListParam *param);
 
 #endif //POKEHEARTGOLD_UNK_02023694_H

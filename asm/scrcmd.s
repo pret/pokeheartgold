@@ -2651,7 +2651,7 @@ _0204244C:
 	ldr r1, [r5]
 	add r0, sp, #0
 	ldr r1, [r1, #0x24]
-	bl sub_02023514
+	bl GF_Camera_ShiftBy
 	mov r0, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}

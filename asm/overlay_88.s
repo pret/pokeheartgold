@@ -601,14 +601,14 @@ ov88_02258C98: ; 0x02258C98
 	mov r0, #0x20
 	add r1, #8
 	add r2, r6, #0
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	str r0, [r5, #4]
 	add r0, r5, #0
 	mov r2, #1
 	add r0, #8
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	mov r7, #0x13
 	mov r4, #0
 	lsl r7, r7, #4

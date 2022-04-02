@@ -199,7 +199,7 @@ ov89_02258800: ; 0x02258800
 	mov r2, #0x11
 	mov r1, #0
 	lsl r2, r2, #0x10
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	bl sub_0203A880
 	ldr r1, _02258AD4 ; =0x000019E0
 	mov r0, #0x65
@@ -2217,7 +2217,7 @@ ov89_02259B00: ; 0x02259B00
 	ldr r0, [r3]
 	str r0, [r2]
 	mov r0, #0x7d
-	bl sub_02023114
+	bl GF_Camera_Create
 	add r1, r5, #0
 	add r1, #0xcc
 	str r0, [r1]
@@ -2233,7 +2233,7 @@ ov89_02259B00: ; 0x02259B00
 	ldr r3, _02259B98 ; =0x00000FA4
 	add r0, sp, #0x14
 	lsl r1, r1, #0xe
-	bl sub_02023254
+	bl GF_Camera_InitFromTargetDistanceAndAngle
 	add r2, r5, #0
 	add r2, #0xcc
 	mov r0, #1
@@ -2241,11 +2241,11 @@ ov89_02259B00: ; 0x02259B00
 	ldr r2, [r2]
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	add r0, r5, #0
 	add r0, #0xcc
 	ldr r0, [r0]
-	bl sub_0202313C
+	bl GF_Camera_RegisterToStaticPtr
 	add r0, r5, #0
 	add r0, #0xcc
 	ldr r0, [r0]
@@ -2360,7 +2360,7 @@ ov89_02259C0C: ; 0x02259C0C
 	add r0, r4, #0
 	add r0, #0xcc
 	ldr r0, [r0]
-	bl sub_0202313C
+	bl GF_Camera_RegisterToStaticPtr
 	add r1, r4, #0
 	add r1, #0xcc
 	ldr r1, [r1]
@@ -4085,7 +4085,7 @@ _0225A934:
 _0225A942:
 	ldr r0, [r5]
 	ldr r1, [r5, #0xc]
-	bl sub_0201F64C
+	bl Bind3dModelSet
 _0225A94A:
 	mov r0, #1
 	add sp, #0xc
@@ -7224,7 +7224,7 @@ _0225C054:
 _0225C078:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02023204
+	bl GF_Camera_SetBindTarget
 	b _0225C086
 _0225C082:
 	mov r0, #1
@@ -7867,7 +7867,7 @@ _0225C520:
 	bl sub_0202366C
 	add r0, sp, #0x18
 	add r1, r5, #0
-	bl sub_02023514
+	bl GF_Camera_ShiftBy
 	b _0225C564
 _0225C55E:
 	add sp, #0x24
@@ -7976,7 +7976,7 @@ _0225C5F8:
 	bl sub_0202366C
 	add r0, sp, #0x18
 	add r1, r5, #0
-	bl sub_02023514
+	bl GF_Camera_ShiftBy
 	b _0225C63C
 _0225C636:
 	add sp, #0x24

@@ -15183,7 +15183,7 @@ _02230A24:
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
 	ldr r1, [r4, #0xc]
-	bl sub_0201F64C
+	bl Bind3dModelSet
 	ldr r0, [r4, #8]
 	mov r1, #0x14
 	bl NNS_G3dMdlSetMdlPolygonIDAll

@@ -3,7 +3,7 @@
 
 #include "unk_0200A090.h"
 
-typedef struct UnkStruct_02009D48 {
+typedef struct SpriteResourcesHeader {
     const NNSG2dImageProxy* imageProxy;
     const NNSG2dCharacterData* charData;
     const NNSG2dImagePaletteProxy* plttProxy;
@@ -13,10 +13,10 @@ typedef struct UnkStruct_02009D48 {
     const NNSG2dMultiCellAnimBankData* multiCellAnim;
     int flag;
     u8 priority;
-} UnkStruct_02009D48;
+} SpriteResourcesHeader;
 
 typedef struct ListOfUnkStruct_02009D48 {
-    UnkStruct_02009D48 *headers;
+    SpriteResourcesHeader *headers;
     int num;
 } ListOfUnkStruct_02009D48;
 
@@ -31,25 +31,25 @@ struct UnkStruct_02009E84 {
     u32 priority;
 };
 
-typedef struct UnkStruct_0202445C UnkStruct_0202445C;
+typedef struct SpriteList SpriteList;
 
-typedef struct UnkStruct_02009F40 {
+typedef struct GF_G2dRenderer {
     NNSG2dRendererInstance rendererInstance;
     NNSG2dRenderSurface renderSurface[2];
-} UnkStruct_02009F40;
+} GF_G2dRenderer;
 
-struct UnkLocal_02009F40 {
+struct SpriteListParam {
     int unk_0;
     NNSG2dRendererInstance *rendererInstance;
     HeapID heapId;
 };
 
-void sub_02009D48(struct UnkStruct_02009D48 *hdr, int charId, int plttId, int cellId, int cellAnmId, int multiCellId, int multiCellAnmId, int transfer, int priority, struct _2DGfxResMan *charMan, struct _2DGfxResMan *plttMan, struct _2DGfxResMan *cellMan, struct _2DGfxResMan *cellAnmMan, struct _2DGfxResMan *multiCellMan, struct _2DGfxResMan *multiCellAnmMan);
+void CreateSpriteResourcesHeader(SpriteResourcesHeader *hdr, int charId, int plttId, int cellId, int cellAnmId, int multiCellId, int multiCellAnmId, int transfer, int priority, struct _2DGfxResMan *charMan, struct _2DGfxResMan *plttMan, struct _2DGfxResMan *cellMan, struct _2DGfxResMan *cellAnmMan, struct _2DGfxResMan *multiCellMan, struct _2DGfxResMan *multiCellAnmMan);
 ListOfUnkStruct_02009D48 *sub_02009E84(const struct UnkStruct_02009E84 *a0, HeapID heapId, struct _2DGfxResMan *charMan, struct _2DGfxResMan *plttMan, struct _2DGfxResMan *cellMan, struct _2DGfxResMan *animMan, struct _2DGfxResMan *mcelMan, struct _2DGfxResMan *manmMan);
 void sub_02009F24(ListOfUnkStruct_02009D48 *list);
-UnkStruct_0202445C *sub_02009F40(int a0, UnkStruct_02009F40 *a1, HeapID heapId);
-void sub_02009FA8(struct UnkStruct_02009F40 *a0, fx32 x, fx32 y);
-void sub_02009FC8(struct UnkStruct_02009F40 *a0, fx32 x, fx32 y);
+SpriteList *G2dRenderer_Init(int a0, GF_G2dRenderer *a1, HeapID heapId);
+void G2dRenderer_SetMainSurfaceCoords(GF_G2dRenderer *a0, fx32 x, fx32 y);
+void G2dRenderer_SetSubSurfaceCoords(GF_G2dRenderer *a0, fx32 x, fx32 y);
 void sub_02009FE8(u32 a0, GXOBJVRamModeChar mode);
 void sub_0200A080(u32 a0);
 

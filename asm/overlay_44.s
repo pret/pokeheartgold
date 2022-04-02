@@ -2301,7 +2301,7 @@ ov44_0222B030: ; 0x0222B030
 	mov r0, #8
 	add r1, r6, r1
 	mov r2, #0x35
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	mov r1, #0x19
 	lsl r1, r1, #4
 	str r0, [r6, r1]
@@ -2310,7 +2310,7 @@ ov44_0222B030: ; 0x0222B030
 	add r0, r6, r0
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	mov r7, #0xaf
 	mov r4, #0
 	add r5, r6, #0
@@ -14810,7 +14810,7 @@ _022314E6:
 	str r0, [sp, #0x28]
 	add r0, sp, #0x78
 	add r2, r1, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	mov r0, #0
 	add r4, sp, #0x9c
 	ldr r7, _02231694 ; =_0223535C
@@ -14827,13 +14827,13 @@ _0223153E:
 	ldr r0, [sp, #0x2c]
 	str r0, [r4, #0x2c]
 	ldr r0, [sp, #0x30]
-	bl sub_02024624
+	bl CreateSprite
 	ldr r1, _02231698 ; =0x00000D38
 	str r0, [r6, r1]
 	add r0, r1, #0
 	ldrb r1, [r7]
 	ldr r0, [r6, r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [sp, #0x30]
 	add r4, #0x30
 	add r0, #0x30
@@ -15159,7 +15159,7 @@ ov44_02231800: ; 0x02231800
 	lsl r7, r4, #2
 	ldrb r1, [r1, r4]
 	ldr r0, [r6, r7]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r6, r7]
 	mov r1, #4
 	bl sub_020249D4
@@ -15208,7 +15208,7 @@ _02231868:
 	ldr r1, _0223190C ; =ov44_02235360
 	ldr r0, [r7, r4]
 	ldrb r1, [r1, r5]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _02231876:
 	ldr r0, [sp, #4]
 	cmp r0, #3
@@ -15264,7 +15264,7 @@ _022318BE:
 	ldr r1, _02231914 ; =_0223535C
 	ldr r0, [r6, r4]
 	ldrb r1, [r1, r5]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r1, [sp, #0xc]
 	mov r2, #4
 	sub r1, r2, r1
@@ -16568,13 +16568,13 @@ ov44_02232298: ; 0x02232298
 	mov r0, #0x60
 	add r1, r7, #4
 	add r2, r6, #0
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	mov r2, #0x32
 	str r0, [r7]
 	add r0, r7, #4
 	mov r1, #0
 	lsl r2, r2, #0x10
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	mov r4, #0
 	add r5, r7, #0
 _022322BC:
@@ -16817,7 +16817,7 @@ _02232422:
 	add r0, r5, r3
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	add sp, #0x2c
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov44_0223237C
@@ -16880,12 +16880,12 @@ ov44_022324B0: ; 0x022324B0
 	str r1, [sp, #0x14]
 	str r1, [sp, #0x18]
 	str r3, [sp, #0x2c]
-	bl sub_02024624
+	bl CreateSprite
 	mov r1, #0x17
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	add r0, sp, #0
-	bl sub_02024624
+	bl CreateSprite
 	mov r1, #0x5d
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -16902,12 +16902,12 @@ ov44_022324B0: ; 0x022324B0
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	mov r0, #0x5d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add sp, #0x30
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov44_022324B0
@@ -19341,7 +19341,7 @@ ov44_0223376C: ; 0x0223376C
 	mov r0, #4
 	add r1, #0x1c
 	add r2, r6, #0
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	str r0, [r7, #0x18]
 	mov r4, #0
 	add r5, r7, #0

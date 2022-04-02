@@ -3507,7 +3507,7 @@ ov85_021E7424: ; 0x021E7424
 	ldr r0, _021E748C ; =0x00000D0C
 	add r4, r5, r0
 	mov r0, #0x66
-	bl sub_02023114
+	bl GF_Camera_Create
 	str r0, [r4, #0x1c]
 	mov r2, #0
 	str r2, [r4, #8]
@@ -3535,7 +3535,7 @@ ov85_021E7424: ; 0x021E7424
 	add r0, #8
 	add r2, #0x14
 	lsr r3, r3, #0x10
-	bl sub_02023254
+	bl GF_Camera_InitFromTargetDistanceAndAngle
 	mov r1, #0
 	mov r0, #1
 	lsl r0, r0, #0xc
@@ -3544,9 +3544,9 @@ ov85_021E7424: ; 0x021E7424
 	str r1, [sp, #0x14]
 	ldr r1, [r4, #0x1c]
 	add r0, sp, #0xc
-	bl sub_02023204
+	bl GF_Camera_SetBindTarget
 	ldr r0, [r4, #0x1c]
-	bl sub_0202313C
+	bl GF_Camera_RegisterToStaticPtr
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -7286,7 +7286,7 @@ ov85_021E8F88: ; 0x021E8F88
 	mov r0, #0x1e
 	add r1, #0x64
 	mov r2, #0x66
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	str r0, [r6, #0x60]
 	cmp r0, #0
 	bne _021E8FC2
@@ -7297,7 +7297,7 @@ _021E8FC2:
 	add r0, #0x64
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	mov r7, #0x63
 	mov r4, #0
 	add r5, r6, #0
@@ -7419,7 +7419,7 @@ ov85_021E9084: ; 0x021E9084
 	add r0, r5, r3
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r5, #0x60]
 	mov r6, #0
 	str r0, [sp, #0x2c]
@@ -7451,21 +7451,21 @@ _021E90F8:
 	lsl r0, r0, #0xc
 	str r0, [sp, #0x38]
 	add r0, sp, #0x2c
-	bl sub_02024624
+	bl CreateSprite
 	mov r1, #0x8f
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	mov r0, #0x8f
 	lsl r0, r0, #2
 	sub r1, r6, #1
 	lsl r1, r1, #1
 	ldr r0, [r5, r0]
 	add r1, #0x1b
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5, r7]
 	mov r1, #0
 	bl Set2dSpriteVisibleFlag
@@ -9698,7 +9698,7 @@ _021EA1FA:
 	lsl r1, r1, #1
 	ldr r0, [r5, r0]
 	add r1, #0x26
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	b _021EA248
 _021EA22C:
 	ldr r0, [sp, #0xc]
@@ -9712,7 +9712,7 @@ _021EA22C:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r1, [sp, #4]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _021EA248:
 	mov r0, #0x8f
 	lsl r0, r0, #2
@@ -9740,14 +9740,14 @@ _021EA262:
 	lsl r1, r1, #1
 	ldr r0, [r5, r0]
 	add r1, #0x27
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	b _021EA292
 _021EA286:
 	mov r0, #0x8f
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, r7, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _021EA292:
 	mov r0, #0xe7
 	mov r1, #0

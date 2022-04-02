@@ -8787,7 +8787,7 @@ ov112_021EA1AC: ; 0x021EA1AC
 	mov r2, #1
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	bl ov112_021EAB58
 	pop {r4, pc}
 	nop
@@ -21895,7 +21895,7 @@ _021F092E:
 	lsl r1, r4, #1
 	ldr r0, [r6, r0]
 	add r1, r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	b _021F0974
 _021F0958:
 	lsl r0, r4, #2
@@ -21909,7 +21909,7 @@ _021F0958:
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	lsl r1, r4, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _021F0974:
 	add r0, r4, #1
 	lsl r0, r0, #0x18
@@ -21957,14 +21957,14 @@ ov112_021F09B4: ; 0x021F09B4
 	ldr r2, [r5]
 	mov r0, #7
 	add r1, #8
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	str r0, [r5, #4]
 	add r0, r5, #0
 	mov r2, #1
 	add r0, #8
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineBToggleLayers
@@ -22215,7 +22215,7 @@ ov112_021F0B9C: ; 0x021F0B9C
 	str r2, [sp, #0x28]
 	add r0, sp, #0x2c
 	add r2, r1, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r4]
 	add r2, sp, #0x2c
 	str r0, [sp]
@@ -22234,13 +22234,13 @@ ov112_021F0B9C: ; 0x021F0B9C
 	add r0, r1, r0
 	str r0, [sp, #0x5c]
 	add r0, sp, #0x50
-	bl sub_02024624
+	bl CreateSprite
 	mov r1, #1
 	add r4, r0, #0
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	ldr r1, [sp, #0x98]
 	add r0, r4, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_02024A04
@@ -24053,7 +24053,7 @@ ov112_021F196C: ; 0x021F196C
 	mov r2, #0x83
 	mov r1, #0
 	lsl r2, r2, #0xe
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
