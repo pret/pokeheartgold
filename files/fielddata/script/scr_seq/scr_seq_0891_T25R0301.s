@@ -14,9 +14,9 @@ scr_seq_T25R0301_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	get_lead_mon_index VAR_SPECIAL_x8000
+	get_party_lead_alive VAR_SPECIAL_x8000
 	npc_msg msg_0585_T25R0301_00000
-	scrcmd_382 VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000
+	mon_get_friendship VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000
 	compare VAR_SPECIAL_RESULT, 250
 	goto_if_ge _006C
 	compare VAR_SPECIAL_RESULT, 200

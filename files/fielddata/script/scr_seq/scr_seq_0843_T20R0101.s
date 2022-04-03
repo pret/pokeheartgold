@@ -279,7 +279,7 @@ _03BA:
 	get_party_count VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _03F5
-	get_lead_mon_index VAR_TEMP_x4000
+	get_party_lead_alive VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 172
 	goto_if_ne _03F5
@@ -399,7 +399,7 @@ _0550:
 	end
 
 _055F:
-	get_lead_mon_index VAR_TEMP_x4000
+	get_party_lead_alive VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	scrcmd_149 0
 	compare VAR_TEMP_x4001, 175
@@ -1170,7 +1170,7 @@ _0FDC:
 	step 13, 1
 	step_end
 _0FE4:
-	scrcmd_382 VAR_SPECIAL_RESULT, VAR_TEMP_x4000
+	mon_get_friendship VAR_SPECIAL_RESULT, VAR_TEMP_x4000
 	compare VAR_SPECIAL_RESULT, 220
 	goto_if_ge _0FFF
 	goto _03F5

@@ -37,7 +37,7 @@ _0056:
 _006F:
 	compare VAR_UNK_4114, 6
 	goto_if_ne _008D
-	scrcmd_781 VAR_SPECIAL_RESULT
+	kenya_check_party_or_mailbox VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _02AE
 _008D:
@@ -179,7 +179,7 @@ _026A:
 	npc_msg msg_0378_R31_00006
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
-	scrcmd_428 VAR_TEMP_x4000
+	mon_give_mail VAR_TEMP_x4000
 	goto _0195
 	.byte 0x02, 0x00
 _0295:

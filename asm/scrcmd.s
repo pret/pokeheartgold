@@ -272,8 +272,8 @@ gScriptCmdTable:
 	.word ScrCmd_235                                    ; 235
 	.word ScrCmd_236                                    ; 236
 	.word ScrCmd_237                                    ; 237
-	.word ScrCmd_238                                    ; 238
-	.word ScrCmd_239                                    ; 239
+	.word ScrCmd_PartyHasPokerus                        ; 238
+	.word ScrCmd_MonGetGender                           ; 239
 	.word ScrCmd_SetDynamicWarp                                    ; 240
 	.word ScrCmd_GetDynamicWarpFloorNo                                    ; 241
 	.word ScrCmd_ElevatorCurFloorBox                                    ; 242
@@ -392,8 +392,8 @@ gScriptCmdTable:
 	.word ScrCmd_PartymonIsMine                         ; 355
 	.word ScrCmd_PartyCountNotEgg                       ; 356
 	.word ScrCmd_CountAliveMons                                    ; 357
-	.word ScrCmd_PokeathlonPartyCount                                    ; 358
-	.word ScrCmd_359                                    ; 359
+	.word ScrCmd_CountAliveMonsAndPC                    ; 358
+	.word ScrCmd_PartyCountEgg                          ; 359
 	.word ScrCmd_SubMoneyVar                            ; 360
 	.word ScrCmd_RetrieveDayCareMon                                    ; 361
 	.word ScrCmd_GiveLoanMon                                    ; 362
@@ -416,9 +416,9 @@ gScriptCmdTable:
 	.word ScrCmd_379                                    ; 379
 	.word ScrCmd_Random                                    ; 380
 	.word ScrCmd_381                                    ; 381
-	.word ScrCmd_382                                    ; 382
-	.word ScrCmd_383                                    ; 383
-	.word ScrCmd_384                                    ; 384
+	.word ScrCmd_MonGetFriendship                       ; 382
+	.word ScrCmd_MonAddFriendship                       ; 383
+	.word ScrCmd_MonSubtractFriendship                  ; 384
 	.word ScrCmd_BufferDayCareMonStats                                    ; 385
 	.word ScrCmd_GetPlayerFacing                                    ; 386
 	.word ScrCmd_GetDayCareCompatibility                                    ; 387
@@ -431,8 +431,8 @@ gScriptCmdTable:
 	.word ScrCmd_394                                    ; 394
 	.word ScrCmd_395                                    ; 395
 	.word ScrCmd_CountMonMoves                                    ; 396
-	.word ScrCmd_397                                    ; 397
-	.word ScrCmd_398                                    ; 398
+	.word ScrCmd_MonForgetMove                          ; 397
+	.word ScrCmd_MonGetMove                             ; 398
 	.word ScrCmd_BufferPartyMonMoveName                                    ; 399
 	.word ScrCmd_StrengthFlagAction                                    ; 400
 	.word ScrCmd_FlashAction                                    ; 401
@@ -462,13 +462,13 @@ gScriptCmdTable:
 	.word ScrCmd_425                                    ; 425
 	.word ScrCmd_KenyaCheck                                    ; 426
 	.word ScrCmd_427                                    ; 427
-	.word ScrCmd_428                                    ; 428
+	.word ScrCmd_MonGiveMail                            ; 428
 	.word ScrCmd_CountFossils                           ; 429
 	.word ScrCmd_SetPhoneCall                           ; 430
 	.word ScrCmd_RunPhoneCall                           ; 431
 	.word ScrCmd_GetFossilPokemon                       ; 432
 	.word ScrCmd_GetFossilMinimumAmount                 ; 433
-	.word ScrCmd_434                                    ; 434
+	.word ScrCmd_PartyCountMonsAtOrBelowLevel           ; 434
 	.word ScrCmd_SurvivePoisoning                                    ; 435
 	.word ScrCmd_436                                    ; 436
 	.word ScrCmd_DebugWatch                             ; 437
@@ -491,8 +491,8 @@ gScriptCmdTable:
 	.word ScrCmd_454                                    ; 454
 	.word ScrCmd_455                                    ; 455
 	.word ScrCmd_456                                    ; 456
-	.word ScrCmd_457                                    ; 457
-	.word ScrCmd_458                                    ; 458
+	.word ScrCmd_MonGetNature                           ; 457
+	.word ScrCmd_GetPartySlotWithNature                 ; 458
 	.word ScrCmd_459                                    ; 459
 	.word ScrCmd_LoadPhoneDat                                    ; 460
 	.word ScrCmd_GetPhoneContactMsgIds                                    ; 461
@@ -512,8 +512,8 @@ gScriptCmdTable:
 	.word ScrCmd_475                                    ; 475
 	.word ScrCmd_476                                    ; 476
 	.word ScrCmd_NatDexFlagAction                                    ; 477
-	.word ScrCmd_478                                    ; 478
-	.word ScrCmd_479                                    ; 479
+	.word ScrCmd_MonGetRibbonCount                          ; 478
+	.word ScrCmd_GetPartyRibbonCount                    ; 479
 	.word ScrCmd_MonHasRibbon                           ; 480
 	.word ScrCmd_GiveRibbon                             ; 481
 	.word ScrCmd_BufferRibbonName                                    ; 482
@@ -530,7 +530,7 @@ gScriptCmdTable:
 	.word ScrCmd_PromptEasyChat                         ; 493
 	.word ScrCmd_494                                    ; 494
 	.word ScrCmd_GetGameVersion                                    ; 495
-	.word ScrCmd_496                                    ; 496
+	.word ScrCmd_GetPartyLead                           ; 496
 	.word ScrCmd_GetMonTypes                                    ; 497
 	.word ScrCmd_PrimoPasswordCheck1                    ; 498
 	.word ScrCmd_PrimoPasswordCheck2                    ; 499
@@ -563,20 +563,20 @@ gScriptCmdTable:
 	.word ScrCmd_526                                    ; 526
 	.word ScrCmd_527                                    ; 527
 	.word ScrCmd_528                                    ; 528
-	.word ScrCmd_PartySelectMon                         ; 529
+	.word ScrCmd_GetPartyLeadAlive                      ; 529
 	.word ScrCmd_530                                    ; 530
 	.word ScrCmd_BufferBackgroundName                                    ; 531
 	.word ScrCmd_CheckCoinsImmediate                                    ; 532
 	.word ScrCmd_CheckGiveCoins                         ; 533
 	.word ScrCmd_534                                    ; 534
-	.word ScrCmd_535                                    ; 535
+	.word ScrCmd_MonGetLevel                            ; 535
 	.word ScrCmd_536                                    ; 536
 	.word ScrCmd_537                                    ; 537
 	.word ScrCmd_538                                    ; 538
 	.word ScrCmd_539                                    ; 539
 	.word ScrCmd_540                                    ; 540
 	.word ScrCmd_BufferIntEx                                    ; 541
-	.word ScrCmd_542                                    ; 542
+	.word ScrCmd_MonGetContestValue                     ; 542
 	.word ScrCmd_543                                    ; 543
 	.word ScrCmd_544                                    ; 544
 	.word ScrCmd_545                                    ; 545
@@ -681,7 +681,7 @@ gScriptCmdTable:
 	.word ScrCmd_644                                    ; 644
 	.word ScrCmd_645                                    ; 645
 	.word ScrCmd_646                                    ; 646
-	.word ScrCmd_647                                    ; 647
+	.word ScrCmd_GetPartySlotWithSpecies                ; 647
 	.word ScrCmd_648                                    ; 648
 	.word ScrCmd_ScratchOffCard                                    ; 649
 	.word ScrCmd_ScratchOffCardEnd                                    ; 650
@@ -722,7 +722,7 @@ gScriptCmdTable:
 	.word ScrCmd_GetPlayerXYZ                                    ; 685
 	.word ScrCmd_686                                    ; 686
 	.word ScrCmd_687                                    ; 687
-	.word ScrCmd_688                                    ; 688
+	.word ScrCmd_GetPartySlotWithFatefulEncounter       ; 688
 	.word ScrCmd_CommSanitizeParty                                    ; 689
 	.word ScrCmd_DayCareSanitizeMon                                    ; 690
 	.word ScrCmd_691                                    ; 691
@@ -735,7 +735,7 @@ gScriptCmdTable:
 	.word ScrCmd_FollowerPokeIsEventTrigger                                    ; 698
 	.word ScrCmd_699                                    ; 699
 	.word ScrCmd_700                                    ; 700
-	.word ScrCmd_701                                    ; 701
+	.word ScrCmd_MonHasItem                             ; 701
 	.word ScrCmd_702                                    ; 702
 	.word ScrCmd_703                                    ; 703
 	.word ScrCmd_704                                    ; 704
@@ -815,7 +815,7 @@ gScriptCmdTable:
 	.word ScrCmd_GiveSpikyEarPichu                                    ; 778
 	.word ScrCmd_RadioMusicIsPlaying                                    ; 779
 	.word ScrCmd_CasinoGame                                    ; 780
-	.word ScrCmd_781                                    ; 781
+	.word ScrCmd_KenyaCheckPartyOrMailbox               ; 781
 	.word ScrCmd_MartSell                                    ; 782
 	.word ScrCmd_SetFollowPokeInhibitState                                    ; 783
 	.word ScrCmd_ScriptOverlayCmd                                    ; 784
@@ -862,7 +862,7 @@ gScriptCmdTable:
 	.word ScrCmd_825                                    ; 825
 	.word ScrCmd_826                                    ; 826
 	.word ScrCmd_GetPartymonForme                       ; 827
-	.word ScrCmd_828                                    ; 828
+	.word ScrCmd_MonAddContestValue                     ; 828
 	.word ScrCmd_829                                    ; 829
 	.word ScrCmd_830                                    ; 830
 	.word ScrCmd_831                                    ; 831

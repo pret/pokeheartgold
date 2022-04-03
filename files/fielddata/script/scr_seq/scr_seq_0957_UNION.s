@@ -143,7 +143,7 @@ _0264:
 	goto _00D2
 	.byte 0x02, 0x00
 _0276:
-	scrcmd_434 VAR_SPECIAL_RESULT, 30
+	party_count_mons_at_or_below_level VAR_SPECIAL_RESULT, 30
 	compare VAR_SPECIAL_RESULT, 2
 	goto_if_lt _0324
 	scrcmd_271 0, 2
@@ -229,7 +229,7 @@ _03B3:
 	goto _0478
 	.byte 0x02, 0x00
 _03F6:
-	scrcmd_359 VAR_SPECIAL_RESULT
+	party_count_egg VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _074F
 	scrcmd_630 VAR_SPECIAL_RESULT
@@ -314,7 +314,7 @@ _0528:
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _066C
-	scrcmd_359 VAR_SPECIAL_RESULT
+	party_count_egg VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0698
 	party_legal_check VAR_SPECIAL_RESULT
@@ -586,7 +586,7 @@ _0974:
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0A22
-	scrcmd_434 VAR_SPECIAL_RESULT, 30
+	party_count_mons_at_or_below_level VAR_SPECIAL_RESULT, 30
 	compare VAR_SPECIAL_RESULT, 2
 	goto_if_lt _0A33
 	scrcmd_271 1, 0
@@ -662,7 +662,7 @@ _0AA2:
 	goto_if_eq _0A22
 	scrcmd_271 1, 0
 	closemsg
-	scrcmd_359 VAR_SPECIAL_RESULT
+	party_count_egg VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _073E
 	scrcmd_272 VAR_SPECIAL_RESULT
