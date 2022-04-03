@@ -188,7 +188,7 @@ _01F5:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ge _02CA
 _02CA:
-	scrcmd_383 1, VAR_SPECIAL_x8005
+	mon_add_friendship 1, VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0117_D37R0102_00024
 	wait_button_or_walk_away
@@ -197,7 +197,7 @@ _02CA:
 	end
 
 _02E0:
-	scrcmd_383 5, VAR_SPECIAL_x8005
+	mon_add_friendship 5, VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0117_D37R0102_00025
 	wait_button_or_walk_away
@@ -206,7 +206,7 @@ _02E0:
 	end
 
 _02F6:
-	scrcmd_383 10, VAR_SPECIAL_x8005
+	mon_add_friendship 10, VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0117_D37R0102_00026
 	wait_button_or_walk_away
@@ -304,7 +304,7 @@ _0375:
 	goto_if_ge _047C
 _0444:
 	call _04C8
-	scrcmd_383 1, VAR_SPECIAL_x8005
+	mon_add_friendship 1, VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0117_D37R0102_00024
 	wait_button_or_walk_away
@@ -314,7 +314,7 @@ _0444:
 
 _0460:
 	call _04C8
-	scrcmd_383 5, VAR_SPECIAL_x8005
+	mon_add_friendship 5, VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0117_D37R0102_00025
 	wait_button_or_walk_away
@@ -324,7 +324,7 @@ _0460:
 
 _047C:
 	call _04D8
-	scrcmd_383 10, VAR_SPECIAL_x8005
+	mon_add_friendship 10, VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0117_D37R0102_00026
 	wait_button_or_walk_away
@@ -363,13 +363,13 @@ _04BD:
 	end
 
 _04C8:
-	scrcmd_828 VAR_SPECIAL_x8005, 1, 16
-	scrcmd_828 VAR_SPECIAL_x8005, 5, 11
+	mon_add_contest_value VAR_SPECIAL_x8005, 1, 16
+	mon_add_contest_value VAR_SPECIAL_x8005, 5, 11
 	return
 
 _04D8:
-	scrcmd_828 VAR_SPECIAL_x8005, 1, 24
-	scrcmd_828 VAR_SPECIAL_x8005, 5, 18
+	mon_add_contest_value VAR_SPECIAL_x8005, 1, 24
+	mon_add_contest_value VAR_SPECIAL_x8005, 5, 18
 	return
 
 scr_seq_D37R0102_003:

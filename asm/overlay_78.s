@@ -24,7 +24,7 @@ ov78_021E5900: ; 0x021E5900
 	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl Save_GetLeadMonIdxForBugContest
+	bl Save_GetPartyLeadAlive
 	add r6, r0, #0
 	cmp r5, #0
 	bne _021E593C

@@ -1406,12 +1406,12 @@
 	.short 237
 	.endm
 
-	.macro scrcmd_238 arg0
+	.macro party_has_pokerus arg0
 	.short 238
 	.short \arg0
 	.endm
 
-	.macro scrcmd_239 arg0, arg1
+	.macro mon_get_gender arg0, arg1
 	.short 239
 	.short \arg0
 	.short \arg1
@@ -2030,12 +2030,12 @@
 	.short \except
 	.endm
 
-	.macro pokeathlon_party_count arg0
+	.macro count_alive_mons_and_pc arg0
 	.short 358
 	.short \arg0
 	.endm
 
-	.macro scrcmd_359 arg0
+	.macro party_count_egg arg0
 	.short 359
 	.short \arg0
 	.endm
@@ -2157,19 +2157,19 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_382 arg0, arg1
+	.macro mon_get_friendship arg0, arg1
 	.short 382
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_383 arg0, arg1
+	.macro mon_add_friendship arg0, arg1
 	.short 383
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_384 arg0, arg1
+	.macro mon_subtract_friendship arg0, arg1
 	.short 384
 	.short \arg0
 	.short \arg1
@@ -2245,13 +2245,13 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_397 arg0, arg1
+	.macro mon_forget_move arg0, arg1
 	.short 397
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_398 arg0, arg1, arg2
+	.macro mon_get_move arg0, arg1, arg2
 	.short 398
 	.short \arg0
 	.short \arg1
@@ -2439,7 +2439,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_428 arg0
+	.macro mon_give_mail arg0
 	.short 428
 	.short \arg0
 	.endm
@@ -2473,7 +2473,7 @@
 	.short \arg2
 	.endm
 
-	.macro scrcmd_434 arg0, arg1
+	.macro party_count_mons_at_or_below_level arg0, arg1
 	.short 434
 	.short \arg0
 	.short \arg1
@@ -2602,13 +2602,13 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_457 arg0, arg1
+	.macro mon_get_nature arg0, arg1
 	.short 457
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_458 arg0, arg1
+	.macro get_party_slot_with_nature arg0, arg1
 	.short 458
 	.short \arg0
 	.short \arg1
@@ -2718,13 +2718,13 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_478 arg0, arg1
+	.macro mon_get_ribbon_count arg0, arg1
 	.short 478
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_479 arg0
+	.macro party_get_ribbon_count arg0
 	.short 479
 	.short \arg0
 	.endm
@@ -2827,7 +2827,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_496 arg0
+	.macro get_party_lead arg0
 	.short 496
 	.short \arg0
 	.endm
@@ -3011,7 +3011,7 @@
 	.short \arg0
 	.endm
 
-	.macro get_lead_mon_index arg0
+	.macro get_party_lead_alive arg0
 	.short 529
 	.short \arg0
 	.endm
@@ -3045,7 +3045,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_535 arg0, arg1
+	.macro mon_get_level arg0, arg1
 	.short 535
 	.short \arg0
 	.short \arg1
@@ -3085,7 +3085,7 @@
 	.byte \arg3
 	.endm
 
-	.macro scrcmd_542 arg0, arg1, arg2
+	.macro mon_get_contest_value arg0, arg1, arg2
 	.short 542
 	.short \arg0
 	.short \arg1
@@ -3650,7 +3650,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_647 arg0, arg1
+	.macro get_party_slot_with_species arg0, arg1
 	.short 647
 	.short \arg0
 	.short \arg1
@@ -3896,7 +3896,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_688 arg0, arg1
+	.macro get_party_slot_with_fateful_encounter arg0, arg1
 	.short 688
 	.short \arg0
 	.short \arg1
@@ -3971,7 +3971,7 @@
 	.short 700
 	.endm
 
-	.macro scrcmd_701 arg0, arg1
+	.macro mon_has_item arg0, arg1
 	.short 701
 	.short \arg0
 	.short \arg1
@@ -4382,7 +4382,7 @@
 	.byte \arg1
 	.endm
 
-	.macro scrcmd_781 arg0
+	.macro kenya_check_party_or_mailbox arg0
 	.short 781
 	.short \arg0
 	.endm
@@ -4619,7 +4619,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_828 arg0, arg1, arg2
+	.macro mon_add_contest_value arg0, arg1, arg2
 	.short 828
 	.short \arg0
 	.byte \arg1
