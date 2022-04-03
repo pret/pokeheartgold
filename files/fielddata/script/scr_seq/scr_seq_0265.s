@@ -216,7 +216,7 @@ _0290:
 	party_count_not_egg VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _03FB
-	pokeathlon_party_count VAR_SPECIAL_RESULT
+	count_alive_mons_and_pc VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 2
 	goto_if_eq _041F
 	npc_msg msg_0439_00022

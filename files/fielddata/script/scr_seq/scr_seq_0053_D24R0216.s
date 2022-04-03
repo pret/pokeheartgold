@@ -21,7 +21,7 @@ scr_seq_D24R0216_004:
 	goto _0095
 
 _0035:
-	get_lead_mon_index VAR_TEMP_x4005
+	get_party_lead_alive VAR_TEMP_x4005
 	compare VAR_UNK_4102, 1
 	goto_if_eq _0059
 	compare VAR_UNK_4102, 2

@@ -238,8 +238,8 @@ extern BOOL ScrCmd_234(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_235(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_236(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_237(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_238(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_239(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PartyHasPokerus(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MonGetGender(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SetDynamicWarp(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetDynamicWarpFloorNo(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_ElevatorCurFloorBox(SCRIPTCONTEXT *ctx);
@@ -358,8 +358,8 @@ extern BOOL ScrCmd_GetPartyMonSpecies(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PartymonIsMine(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PartyCountNotEgg(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CountAliveMons(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_PokeathlonPartyCount(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_359(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PokeathloScrCmd_CountAliveMonsAndPCnPartyCount(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PartyCountEgg(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SubMoneyVar(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_RetrieveDayCareMon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GiveLoanMon(SCRIPTCONTEXT *ctx);
@@ -382,9 +382,9 @@ extern BOOL ScrCmd_378(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_379(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_Random(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_381(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_382(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_383(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_384(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MonGetFriendship(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MonAddFriendship(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MonSubtractFriendship(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferDayCareMonStats(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPlayerFacing(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetDayCareCompatibility(SCRIPTCONTEXT *ctx);
@@ -397,8 +397,8 @@ extern BOOL ScrCmd_BufferRecordSize(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_394(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_395(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CountMonMoves(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_397(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_398(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MonForgetMove(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MonGetMove(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferPartyMonMoveName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_StrengthFlagAction(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_FlashAction(SCRIPTCONTEXT *ctx);
@@ -428,13 +428,13 @@ extern BOOL ScrCmd_CheckNationalDexComplete(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_425(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_KenyaCheck(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_427(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_428(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MonGiveMail(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CountFossils(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SetPhoneCall(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_RunPhoneCall(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetFossilPokemon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetFossilMinimumAmount(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_434(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PartyCountMonsAtOrBelowLevel(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SurvivePoisoning(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_436(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_DebugWatch(SCRIPTCONTEXT *ctx);
@@ -457,8 +457,8 @@ extern BOOL ScrCmd_453(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_454(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_455(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_456(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_457(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_458(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MonGetNature(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetPartySlotWithNature(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_459(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_LoadPhoneDat(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPhoneContactMsgIds(SCRIPTCONTEXT *ctx);
@@ -478,8 +478,8 @@ extern BOOL ScrCmd_NPCTradeEnd(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_475(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_476(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_NatDexFlagAction(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_478(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_479(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MonGetRibbonCount(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetPartyRibbonCount(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_MonHasRibbon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GiveRibbon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferRibbonName(SCRIPTCONTEXT *ctx);
@@ -496,7 +496,7 @@ extern BOOL ScrCmd_492(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PromptEasyChat(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_494(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetGameVersion(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_496(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetPartyLead(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetMonTypes(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PrimoPasswordCheck1(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PrimoPasswordCheck2(SCRIPTCONTEXT *ctx);
@@ -529,20 +529,20 @@ extern BOOL ScrCmd_525(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_526(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_527(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_528(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_PartySelectMon(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetPartyLeadAlive(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_530(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferBackgroundName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CheckCoinsImmediate(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CheckGiveCoins(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_534(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_535(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MonGetLevel(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_536(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_537(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_538(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_539(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_540(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferIntEx(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_542(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MonGetContestValue(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_543(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_544(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_545(SCRIPTCONTEXT *ctx);
@@ -647,7 +647,7 @@ extern BOOL ScrCmd_643(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_644(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_645(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_646(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_647(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetPartySlotWithSpecies(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_648(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_ScratchOffCard(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_ScratchOffCardEnd(SCRIPTCONTEXT *ctx);
@@ -688,7 +688,7 @@ extern BOOL ScrCmd_684(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPlayerXYZ(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_686(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_687(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_688(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetPartySlotWithFatefulEncounter(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CommSanitizeParty(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_DayCareSanitizeMon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_691(SCRIPTCONTEXT *ctx);
@@ -701,7 +701,7 @@ extern BOOL ScrCmd_697(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_FollowerPokeIsEventTrigger(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_699(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_700(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_701(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MonHasItem(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_702(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_703(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_704(SCRIPTCONTEXT *ctx);
@@ -781,7 +781,7 @@ extern BOOL ScrCmd_777(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GiveSpikyEarPichu(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_RadioMusicIsPlaying(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CasinoGame(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_781(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_KenyaCheckPartyOrMailbox(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_MartSell(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SetFollowPokeInhibitState(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_ScriptOverlayCmd(SCRIPTCONTEXT *ctx);
@@ -828,7 +828,7 @@ extern BOOL ScrCmd_824(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_825(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_826(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPartymonForme(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_828(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MonAddContestValue(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_829(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_830(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_831(SCRIPTCONTEXT *ctx);
@@ -1093,8 +1093,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_235,
     ScrCmd_236,
     ScrCmd_237,
-    ScrCmd_238,
-    ScrCmd_239,
+    ScrCmd_PartyHasPokerus,
+    ScrCmd_MonGetGender,
     ScrCmd_SetDynamicWarp,
     ScrCmd_GetDynamicWarpFloorNo,
     ScrCmd_ElevatorCurFloorBox,
@@ -1213,8 +1213,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_PartymonIsMine,
     ScrCmd_PartyCountNotEgg,
     ScrCmd_CountAliveMons,
-    ScrCmd_PokeathlonPartyCount,
-    ScrCmd_359,
+    ScrCmd_CountAliveMonsAndPC,
+    ScrCmd_PartyCountEgg,
     ScrCmd_SubMoneyVar,
     ScrCmd_RetrieveDayCareMon,
     ScrCmd_GiveLoanMon,
@@ -1237,9 +1237,9 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_379,
     ScrCmd_Random,
     ScrCmd_381,
-    ScrCmd_382,
-    ScrCmd_383,
-    ScrCmd_384,
+    ScrCmd_MonGetFriendship,
+    ScrCmd_MonAddFriendship,
+    ScrCmd_MonSubtractFriendship,
     ScrCmd_BufferDayCareMonStats,
     ScrCmd_GetPlayerFacing,
     ScrCmd_GetDayCareCompatibility,
@@ -1252,8 +1252,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_394,
     ScrCmd_395,
     ScrCmd_CountMonMoves,
-    ScrCmd_397,
-    ScrCmd_398,
+    ScrCmd_MonForgetMove,
+    ScrCmd_MonGetMove,
     ScrCmd_BufferPartyMonMoveName,
     ScrCmd_StrengthFlagAction,
     ScrCmd_FlashAction,
@@ -1283,13 +1283,13 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_425,
     ScrCmd_KenyaCheck,
     ScrCmd_427,
-    ScrCmd_428,
+    ScrCmd_MonGiveMail,
     ScrCmd_CountFossils,
     ScrCmd_SetPhoneCall,
     ScrCmd_RunPhoneCall,
     ScrCmd_GetFossilPokemon,
     ScrCmd_GetFossilMinimumAmount,
-    ScrCmd_434,
+    ScrCmd_PartyCountMonsAtOrBelowLevel,
     ScrCmd_SurvivePoisoning,
     ScrCmd_436,
     ScrCmd_DebugWatch,
@@ -1312,8 +1312,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_454,
     ScrCmd_455,
     ScrCmd_456,
-    ScrCmd_457,
-    ScrCmd_458,
+    ScrCmd_MonGetNature,
+    ScrCmd_GetPartySlotWithNature,
     ScrCmd_459,
     ScrCmd_LoadPhoneDat,
     ScrCmd_GetPhoneContactMsgIds,
@@ -1333,8 +1333,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_475,
     ScrCmd_476,
     ScrCmd_NatDexFlagAction,
-    ScrCmd_478,
-    ScrCmd_479,
+    ScrCmd_MonGetRibbonCount,
+    ScrCmd_GetPartyRibbonCount,
     ScrCmd_MonHasRibbon,
     ScrCmd_GiveRibbon,
     ScrCmd_BufferRibbonName,
@@ -1351,7 +1351,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_PromptEasyChat,
     ScrCmd_494,
     ScrCmd_GetGameVersion,
-    ScrCmd_496,
+    ScrCmd_GetPartyLead,
     ScrCmd_GetMonTypes,
     ScrCmd_PrimoPasswordCheck1,
     ScrCmd_PrimoPasswordCheck2,
@@ -1384,20 +1384,20 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_526,
     ScrCmd_527,
     ScrCmd_528,
-    ScrCmd_PartySelectMon,
+    ScrCmd_GetPartyLeadAlive,
     ScrCmd_530,
     ScrCmd_BufferBackgroundName,
     ScrCmd_CheckCoinsImmediate,
     ScrCmd_CheckGiveCoins,
     ScrCmd_534,
-    ScrCmd_535,
+    ScrCmd_MonGetLevel,
     ScrCmd_536,
     ScrCmd_537,
     ScrCmd_538,
     ScrCmd_539,
     ScrCmd_540,
     ScrCmd_BufferIntEx,
-    ScrCmd_542,
+    ScrCmd_MonGetContestValue,
     ScrCmd_543,
     ScrCmd_544,
     ScrCmd_545,
@@ -1502,7 +1502,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_644,
     ScrCmd_645,
     ScrCmd_646,
-    ScrCmd_647,
+    ScrCmd_GetPartySlotWithSpecies,
     ScrCmd_648,
     ScrCmd_ScratchOffCard,
     ScrCmd_ScratchOffCardEnd,
@@ -1543,7 +1543,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_GetPlayerXYZ,
     ScrCmd_686,
     ScrCmd_687,
-    ScrCmd_688,
+    ScrCmd_GetPartySlotWithFatefulEncounter,
     ScrCmd_CommSanitizeParty,
     ScrCmd_DayCareSanitizeMon,
     ScrCmd_691,
@@ -1556,7 +1556,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_FollowerPokeIsEventTrigger,
     ScrCmd_699,
     ScrCmd_700,
-    ScrCmd_701,
+    ScrCmd_MonHasItem,
     ScrCmd_702,
     ScrCmd_703,
     ScrCmd_704,
@@ -1636,7 +1636,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_GiveSpikyEarPichu,
     ScrCmd_RadioMusicIsPlaying,
     ScrCmd_CasinoGame,
-    ScrCmd_781,
+    ScrCmd_KenyaCheckPartyOrMailbox,
     ScrCmd_MartSell,
     ScrCmd_SetFollowPokeInhibitState,
     ScrCmd_ScriptOverlayCmd,
@@ -1683,7 +1683,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_825,
     ScrCmd_826,
     ScrCmd_GetPartymonForme,
-    ScrCmd_828,
+    ScrCmd_MonAddContestValue,
     ScrCmd_829,
     ScrCmd_830,
     ScrCmd_831,

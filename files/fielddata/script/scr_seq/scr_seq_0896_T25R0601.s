@@ -14,10 +14,10 @@
 scr_seq_T25R0601_002:
 	goto_if_set FLAG_UNK_15D, _0058
 	goto_if_unset FLAG_UNK_0B5, _0058
-	scrcmd_688 VAR_TEMP_x4000, 492
+	get_party_slot_with_fateful_encounter VAR_TEMP_x4000, 492
 	compare VAR_TEMP_x4000, 255
 	goto_if_eq _0058
-	get_lead_mon_index VAR_TEMP_x4000
+	get_party_lead_alive VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 492
 	goto_if_ne _0058
@@ -266,10 +266,10 @@ scr_seq_T25R0601_001:
 	lockall
 	faceplayer
 	goto_if_set FLAG_UNK_15D, _03FD
-	scrcmd_688 VAR_SPECIAL_RESULT, 492
+	get_party_slot_with_fateful_encounter VAR_SPECIAL_RESULT, 492
 	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _03F2
-	get_lead_mon_index VAR_TEMP_x4000
+	get_party_lead_alive VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 492
 	goto_if_eq _0432
@@ -281,10 +281,10 @@ _03F2:
 	end
 
 _03FD:
-	scrcmd_688 VAR_SPECIAL_RESULT, 492
+	get_party_slot_with_fateful_encounter VAR_SPECIAL_RESULT, 492
 	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _03F2
-	get_lead_mon_index VAR_TEMP_x4000
+	get_party_lead_alive VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 492
 	goto_if_ne _03F2

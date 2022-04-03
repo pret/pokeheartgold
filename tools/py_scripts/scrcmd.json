@@ -1489,13 +1489,13 @@
       "args": []
     },
     {
-      "name": "scrcmd_238",
+      "name": "party_has_pokerus",
       "args": [
         "var"
       ]
     },
     {
-      "name": "scrcmd_239",
+      "name": "mon_get_gender",
       "args": [
         "var",
         "var"
@@ -2176,13 +2176,13 @@
       ]
     },
     {
-      "name": "pokeathlon_party_count",
+      "name": "count_alive_mons_and_pc",
       "args": [
         "var"
       ]
     },
     {
-      "name": "scrcmd_359",
+      "name": "party_count_egg",
       "args": [
         "var"
       ]
@@ -2323,21 +2323,21 @@
       ]
     },
     {
-      "name": "scrcmd_382",
+      "name": "mon_get_friendship",
       "args": [
         "var",
         "var"
       ]
     },
     {
-      "name": "scrcmd_383",
+      "name": "mon_add_friendship",
       "args": [
         2,
         "var"
       ]
     },
     {
-      "name": "scrcmd_384",
+      "name": "mon_subtract_friendship",
       "args": [
         2,
         2
@@ -2426,14 +2426,14 @@
       ]
     },
     {
-      "name": "scrcmd_397",
+      "name": "mon_forget_move",
       "args": [
         "var",
         "var"
       ]
     },
     {
-      "name": "scrcmd_398",
+      "name": "mon_get_move",
       "args": [
         "var",
         "var",
@@ -2655,7 +2655,7 @@
       ]
     },
     {
-      "name": "scrcmd_428",
+      "name": "mon_give_mail",
       "args": [
         "var"
       ]
@@ -2694,7 +2694,7 @@
       ]
     },
     {
-      "name": "scrcmd_434",
+      "name": "party_count_mons_at_or_below_level",
       "args": [
         "var",
         2
@@ -2840,14 +2840,14 @@
       ]
     },
     {
-      "name": "scrcmd_457",
+      "name": "mon_get_nature",
       "args": [
         2,
         2
       ]
     },
     {
-      "name": "scrcmd_458",
+      "name": "get_party_slot_with_nature",
       "args": [
         2,
         2
@@ -2993,14 +2993,14 @@
       ]
     },
     {
-      "name": "scrcmd_478",
+      "name": "mon_get_ribbon_count",
       "args": [
         2,
         2
       ]
     },
     {
-      "name": "scrcmd_479",
+      "name": "party_get_ribbon_count",
       "args": [
         2
       ]
@@ -3135,7 +3135,7 @@
       ]
     },
     {
-      "name": "scrcmd_496",
+      "name": "get_party_lead",
       "args": [
         2
       ]
@@ -3344,7 +3344,7 @@
       ]
     },
     {
-      "name": "get_lead_mon_index",
+      "name": "get_party_lead_alive",
       "args": [
         "var"
       ]
@@ -3384,7 +3384,7 @@
       ]
     },
     {
-      "name": "scrcmd_535",
+      "name": "mon_get_level",
       "args": [
         2,
         2
@@ -3430,7 +3430,7 @@
       ]
     },
     {
-      "name": "scrcmd_542",
+      "name": "mon_get_contest_value",
       "args": [
         2,
         2,
@@ -4075,7 +4075,7 @@
       ]
     },
     {
-      "name": "scrcmd_647",
+      "name": "get_party_slot_with_species",
       "args": [
         "var",
         "species"
@@ -4357,7 +4357,7 @@
       ]
     },
     {
-      "name": "scrcmd_688",
+      "name": "get_party_slot_with_fateful_encounter",
       "args": [
         "var",
         2
@@ -4440,7 +4440,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_701",
+      "name": "mon_has_item",
       "args": [
         2,
         2
@@ -4901,7 +4901,7 @@
       ]
     },
     {
-      "name": "scrcmd_781",
+      "name": "kenya_check_party_or_mailbox",
       "args": [
         "var"
       ]
@@ -5171,7 +5171,7 @@
       ]
     },
     {
-      "name": "scrcmd_828",
+      "name": "mon_add_contest_value",
       "args": [
         "var",
         1,

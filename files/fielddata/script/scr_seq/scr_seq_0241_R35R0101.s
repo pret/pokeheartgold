@@ -65,7 +65,7 @@ scr_seq_R35R0101_000:
 	play_fanfare SEQ_ME_PT_SPECIAL
 	wait_fanfare
 _00BC:
-	scrcmd_781 VAR_SPECIAL_RESULT
+	kenya_check_party_or_mailbox VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0178
 	goto_if_set FLAG_UNK_0B5, _00E3
