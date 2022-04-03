@@ -658,7 +658,7 @@ BOOL ScrCmd_MonGetRibbonCount(SCRIPTCONTEXT *ctx) {
     POKEMON *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
 
     u16 i, count;
-    for (i = 0, count = 0; i < 80; i++) {
+    for (i = 0, count = 0; i < RIBBON_MAX; i++) {
         if (GetMonData(pokemon, sub_0208E55C(i, 0), NULL)) {
             count++;
         }
@@ -670,14 +670,14 @@ BOOL ScrCmd_MonGetRibbonCount(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_GetPartyRibbonCount(SCRIPTCONTEXT *ctx) {
     PARTY *party;
-    u16 i, count;
+    u16 i, j, count;
 
     u16 *ribbons = ScriptGetVarPointer(ctx);
     u16 partyCount = GetPartyCount(SavArray_PlayerParty_get(ctx->fsys->savedata));
     party = SavArray_PlayerParty_get(ctx->fsys->savedata);
 
-    for (i = 0, count = 0; i < 80; i++) {
-        for (u16 j = 0; j < partyCount; j++) {
+    for (i = 0, count = 0; i < RIBBON_MAX; i++) {
+        for (j = 0; j < partyCount; j++) {
             POKEMON *pokemon = GetPartyMonByIndex(party, j);
             if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL) && GetMonData(pokemon, sub_0208E55C(i, 0), NULL)) {
                 count++;
@@ -713,14 +713,14 @@ BOOL ScrCmd_GiveRibbon(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_PartyLegalCheck(SCRIPTCONTEXT *ctx) {
-    u16 i;
+    u16 i, j;
 
     u16 *legal = ScriptGetVarPointer(ctx);
     u16 partyCount = GetPartyCount(SavArray_PlayerParty_get(ctx->fsys->savedata));
     PARTY *party = SavArray_PlayerParty_get(ctx->fsys->savedata);
 
-    for (i = 0; i < 80; i++) {
-        for (u16 j = 0; j < partyCount; j++) {
+    for (i = 0; i < RIBBON_MAX; i++) {
+        for (j = 0; j < partyCount; j++) {
             POKEMON *pokemon = GetPartyMonByIndex(party, j);
             if (GetMonData(pokemon, MON_DATA_IS_EGG, NULL) && GetMonData(pokemon, MON_DATA_CHECKSUM_FAILED, NULL)) {
                 *legal = TRUE;

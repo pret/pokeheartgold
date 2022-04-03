@@ -2995,14 +2995,14 @@
     {
       "name": "mon_get_ribbon_count",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
       "name": "party_get_ribbon_count",
       "args": [
-        2
+        "var"
       ]
     },
     {
