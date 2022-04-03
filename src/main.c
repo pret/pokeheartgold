@@ -2,7 +2,7 @@
 #include "system.h"
 #include "gf_rtc.h"
 #include "sound.h"
-#include "sound_02004A44.h"
+#include "sound_tool.h"
 #include "player_data.h"
 #include "unk_02026E30.h"
 #include "font.h"

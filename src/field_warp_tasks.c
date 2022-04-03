@@ -17,7 +17,7 @@
 #include "task.h"
 #include "unk_02055244.h"
 #include "sound.h"
-#include "unk_02004A44.h"
+#include "sound_tool.h"
 #include "unk_02005D10.h"
 #include "field_warp_tasks.h"
 #include "unk_0203DFA4.h"

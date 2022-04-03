@@ -4,28 +4,28 @@
 #include <nnsys/snd/waveout.h>
 #include <nnsys/snd/capture.h>
 
-#define BGM_FADEIN_START_VOL_MIN	0						
-#define BGM_FADEIN_START_VOL_NOW	1			
+#define BGM_FADEIN_START_VOL_MIN    0                        
+#define BGM_FADEIN_START_VOL_NOW    1            
 
-#define PV_PTN_PARAM_NONE	    0x1ff					
+#define PV_PTN_PARAM_NONE       0x1ff                    
 
-#define SND_BANK_CONTINUE		    0						
-#define SND_BANK_CHANGE			    1						
+#define SND_BANK_CONTINUE           0                        
+#define SND_BANK_CHANGE             1                        
 
-#define SND_HALF_PITCH			   64					
+#define SND_HALF_PITCH             64                    
 
-#define SND_VCHAT_VOL_LV		    5	
+#define SND_VCHAT_VOL_LV            5    
 
-#define	SND_HANDLE_FIELD            0									
-#define	SND_HANDLE_PMVOICE          1										
-#define	SND_HANDLE_ME		        2								
-#define	SND_HANDLE_SE_1		        3								
-#define	SND_HANDLE_SE_2		        4								
-#define	SND_HANDLE_SE_3		        5								
-#define	SND_HANDLE_SE_4		        6								
-#define	SND_HANDLE_BGM		        7									
-#define	SND_HANDLE_CHORUS	        8									
-#define	SND_HANDLE_MAX	            9
+#define SND_HANDLE_FIELD            0                                    
+#define SND_HANDLE_PMVOICE          1                                        
+#define SND_HANDLE_ME               2                                
+#define SND_HANDLE_SE_1             3                                
+#define SND_HANDLE_SE_2             4                                
+#define SND_HANDLE_SE_3             5                                
+#define SND_HANDLE_SE_4             6                                
+#define SND_HANDLE_BGM              7                                    
+#define SND_HANDLE_CHORUS           8                                    
+#define SND_HANDLE_MAX              9
 
 #define WAVEOUT_CH_NORMAL          14
 #define WAVEOUT_CH_CHORUS          15
@@ -33,16 +33,16 @@
 #define PLAYER_BGM_NORMAL_CH   0xa7fe
 
 typedef struct{
-	NNSSndWaveOutHandle*	handle;	
-	NNSSndWaveFormat		format;				
-	const void*				dataaddr;			
-	BOOL					loopFlag;			
-	int						loopStartSample;	
-	int						samples;	
-	int						sampleRate;	
-	int						volume;	
-	int						speed;	
-	int						pan;				
+    NNSSndWaveOutHandle* handle;    
+    NNSSndWaveFormat format;                
+    const void* dataaddr;            
+    BOOL loopFlag;            
+    int loopStartSample;    
+    int samples;    
+    int sampleRate;    
+    int volume;    
+    int speed;    
+    int pan;                
 } WAVEOUT_WORK;
 
 void GF_SetCtrlBgmFlag(u8 flag);

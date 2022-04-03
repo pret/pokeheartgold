@@ -1,11 +1,11 @@
 #ifndef POKEHEARTGOLD_SND_MISC_H
 #define POKEHEARTGOLD_SND_MISC_H
 
-#define BANK_BASIC	        700
-#define BANK_BGM_FIELD	    701
-#define BANK_BGM_BATTLE	    702
-#define BANK_BGM_DUNGEON	703
-#define BANK_BGM_OPEND	    704
-#define BANK_BGM_DEMO01	    705
+#define BANK_BASIC            700
+#define BANK_BGM_FIELD        701
+#define BANK_BGM_BATTLE       702
+#define BANK_BGM_DUNGEON      703
+#define BANK_BGM_OPEND        704
+#define BANK_BGM_DEMO01       705
 
 #endif //POKEHEARTGOLD_SND_MISC_H

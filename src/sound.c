@@ -38,8 +38,8 @@ struct SND_WORK {
     /* 0xBEC0A */ u8 sceneMain;
     /* 0xBEC0B */ u8 sceneSub;
     /* 0xBEC0C */ int stateSaveDepth[7];
-    /* 0xBEC28 */ u8 preapPlayFlag;
-    /* 0xBEC29 */ u8 preapDefaultFlag;
+    /* 0xBEC28 */ u8 chatotPlayFlag;
+    /* 0xBEC29 */ u8 chatotDefaultFlag;
     /* 0xBEC2A */ u16 zoneBGM;
     /* 0xBEC2C */ u32 wavedata;
     /* 0xBEC30 */ u8 reverseBuffer[8];
@@ -270,10 +270,10 @@ void *GF_SdatGetAttrPtr(u32 attr) {
         return &work->stateSaveDepth[5];
     case SND_W_ID_HEAP_SAVE_ME:
         return &work->stateSaveDepth[6];
-    case SND_W_ID_PERAP_PLAY_FLAG:
-        return &work->preapPlayFlag;
-    case SND_W_ID_PERAP_DEFAULT_FLAG:
-        return &work->preapDefaultFlag;
+    case SND_W_ID_CHATOT_PLAY_FLAG:
+        return &work->chatotPlayFlag;
+    case SND_W_ID_CHATOT_DEFAULT_FLAG:
+        return &work->chatotDefaultFlag;
     case SND_W_ID_ZONE_BGM:
         return &work->zoneBGM;
     case SND_W_ID_WAVE_DATA:
@@ -282,15 +282,15 @@ void *GF_SdatGetAttrPtr(u32 attr) {
         return &work->reverseBuffer;
     case SND_W_ID_LENGTH_TCB:
         return &work->tcbLength;
-    case SND_W_ID_MY_PERAP_PTR:
+    case SND_W_ID_MY_CHATOT_PTR:
         return &work->myChatot;
-    case SND_W_ID_PERAP_PTR1:
+    case SND_W_ID_CHATOT_PTR1:
         return &work->otherChatots[0];
-    case SND_W_ID_PERAP_PTR2:
+    case SND_W_ID_CHATOT_PTR2:
         return &work->otherChatots[1];
-    case SND_W_ID_PERAP_PTR3:
+    case SND_W_ID_CHATOT_PTR3:
         return &work->otherChatots[2];
-    case SND_W_ID_PERAP_PTR4:
+    case SND_W_ID_CHATOT_PTR4:
         return &work->otherChatots[3];
     case SND_W_ID_PV_PTN:
         return &work->cryPattern[0];

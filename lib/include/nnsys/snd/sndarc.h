@@ -9,24 +9,21 @@
 
 #define NNS_SND_ARC_BANK_TO_WAVEARC_NUM 4
 
-typedef struct NNSSndArcFileInfo
-{
+typedef struct NNSSndArcFileInfo {
     u32 offset;
     u32 size;
     void* mem;
     u32 reserved;
 } NNSSndArcFileInfo;
 
-typedef struct NNSSndArcFat
-{
+typedef struct NNSSndArcFat {
     struct SNDBinaryBlockHeader blockHeader;
 
     u32 count;
     NNSSndArcFileInfo files[0];
 } NNSSndArcFat;
 
-typedef struct NNSSndArcInfo
-{
+typedef struct NNSSndArcInfo {
     struct SNDBinaryBlockHeader blockHeader;
 
     u32 seqOffset;
@@ -39,14 +36,12 @@ typedef struct NNSSndArcInfo
     u32 strmOffset;
 } NNSSndArcInfo;
 
-typedef struct NNSSndArcWaveArcInfo
-{
+typedef struct NNSSndArcWaveArcInfo {
     u32 fileId : 24;
     u32 flags  :  8;
 } NNSSndArcWaveArcInfo;
 
-typedef struct NNSSndArcSymbol
-{
+typedef struct NNSSndArcSymbol {
     struct SNDBinaryBlockHeader blockHeader;
 
     u32 seqOffset;
@@ -59,8 +54,7 @@ typedef struct NNSSndArcSymbol
     u32 strmOffset;
 } NNSSndArcSymbol;
 
-typedef struct NNSSndArcHeader
-{
+typedef struct NNSSndArcHeader {
     struct SNDBinaryFileHeader fileHeader;
     u32 symbolDataOffset;
     u32 symbolDataSize;
@@ -72,8 +66,7 @@ typedef struct NNSSndArcHeader
     u32 fileImageSize;
 } NNSSndArcHeader;
 
-typedef struct NNSSndArc
-{
+typedef struct NNSSndArc {
     NNSSndArcHeader header;
     BOOL file_open;
 #ifndef NNS_FROM_TOOL
@@ -86,8 +79,7 @@ typedef struct NNSSndArc
     s32 loadBlockSize;
 } NNSSndArc;
 
-typedef struct NNSSndArcBankInfo
-{
+typedef struct NNSSndArcBankInfo {
     u32 fileId;
     u16 waveArcNo[ NNS_SND_ARC_BANK_TO_WAVEARC_NUM ];
 } NNSSndArcBankInfo;

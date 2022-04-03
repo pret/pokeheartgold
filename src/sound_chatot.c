@@ -3,11 +3,11 @@
 #include "constants/species.h"
 #include "constants/snd_system.h"
 #include "math_util.h"
-#include "unk_02004A44.h"
+#include "sound_tool.h"
 
 BOOL ChatotSoundMain(void) {
     u8 *r4 = GF_SdatGetAttrPtr(SND_W_ID_WAVEOUT_CH_NORMAL_FLAG);
-    u8 *r0 = GF_SdatGetAttrPtr(SND_W_ID_PERAP_PLAY_FLAG);
+    u8 *r0 = GF_SdatGetAttrPtr(SND_W_ID_CHATOT_PLAY_FLAG);
 
 
     if (*r0 == TRUE) {
@@ -27,7 +27,7 @@ BOOL ChatotSoundMain(void) {
 }
 
 BOOL Chatot_checkCry(SOUND_CHATOT *a0) {
-    u8 *r5 = GF_SdatGetAttrPtr(SND_W_ID_PERAP_DEFAULT_FLAG);
+    u8 *r5 = GF_SdatGetAttrPtr(SND_W_ID_CHATOT_DEFAULT_FLAG);
     u8 *r4 = GF_SdatGetAttrPtr(SND_W_ID_BATTLE_REC_FLAG);
 
     if (!Chatot_exists(a0)) {
@@ -45,37 +45,37 @@ BOOL Chatot_checkCry(SOUND_CHATOT *a0) {
     return FALSE;
 }
 
-BOOL sub_02006D04(SOUND_CHATOT *a0, u32 a1, s32 a2, s32 a3) {
+BOOL sub_02006D04(SOUND_CHATOT *chatot, u32 unused, s32 vol, s32 pan) {
     s8 *sp0 = GF_GetWaveBufAdrs();
-    s8 *sp4 = GF_SdatGetAttrPtr(SND_W_ID_PERAP_PLAY_FLAG);
+    s8 *playFlag = GF_SdatGetAttrPtr(SND_W_ID_CHATOT_PLAY_FLAG);
 
-    if (!Chatot_checkCry(a0)) {
+    if (!Chatot_checkCry(chatot)) {
         return FALSE;
     }
 
     sub_02006300(0);
     sub_02006DB8();
-    GF_AllocWaveOutChannel(14);
+    GF_AllocWaveOutChannel(WAVEOUT_CH_NORMAL);
     u16 r4 = (LCRandom() % 8192);
 
-    Chatot_Decode(sp0, Chatot_GetData(a0));
+    Chatot_Decode(sp0, Chatot_GetData(chatot));
 
-    UnkStruct_02004A44_0 sp8;
+    WAVEOUT_WORK work;
 
-    sp8.unk00 = Snd_WaveOutHandleGet(14);
-    sp8.unk04 = 0;
-    sp8.unk08 = GF_GetWaveBufAdrs();
-    sp8.unk0c = 0;
-    sp8.unk10 = 0;
-    sp8.unk14 = 2000;
-    sp8.unk18 = 2000;
-    sp8.unk20 = (u32)(r4 + 0x8000);
-    sp8.unk24 = a3 / 2 + 64;
-    sp8.unk1c = a2;
+    work.handle = Snd_WaveOutHandleGet(WAVEOUT_CH_NORMAL);
+    work.format = 0;
+    work.dataaddr = GF_GetWaveBufAdrs();
+    work.loopFlag = FALSE;
+    work.loopStartSample = 0;
+    work.samples = 2000;
+    work.sampleRate = 2000;
+    work.speed = (u32)(r4 + 0x8000);
+    work.pan = pan / 2 + 64;
+    work.volume = vol;
 
-    BOOL ret = GF_WaveOutStart(&sp8, 14);
-    GF_SetWaveOutVolume(14, a2);
-    *sp4 = 1;
+    BOOL ret = GF_WaveOutStart(&work, WAVEOUT_CH_NORMAL);
+    GF_SetWaveOutVolume(WAVEOUT_CH_NORMAL, vol);
+    *playFlag = 1;
     sub_02006E3C(0);
 
     return ret;
@@ -83,11 +83,11 @@ BOOL sub_02006D04(SOUND_CHATOT *a0, u32 a1, s32 a2, s32 a3) {
 
 void sub_02006DB8() {
     u8 *r5 = GF_SdatGetAttrPtr(SND_W_ID_WAVEOUT_CH_NORMAL_FLAG);
-    u8 *r4 = GF_SdatGetAttrPtr(SND_W_ID_PERAP_PLAY_FLAG);
+    u8 *r4 = GF_SdatGetAttrPtr(SND_W_ID_CHATOT_PLAY_FLAG);
 
     if (*r5 == 1) {
-        GF_WaveOutStopReverse(14);
-        GF_FreeWaveOutChannel(14);
+        GF_WaveOutStopReverse(WAVEOUT_CH_NORMAL);
+        GF_FreeWaveOutChannel(WAVEOUT_CH_NORMAL);
     }
 
     *r4 = 0;
@@ -119,12 +119,12 @@ void Chatot_saveRecording(SOUND_CHATOT *a0) {
 }
 
 void sub_02006E3C(u8 a0) {
-    u8 *r0 = GF_SdatGetAttrPtr(SND_W_ID_PERAP_DEFAULT_FLAG);
+    u8 *r0 = GF_SdatGetAttrPtr(SND_W_ID_CHATOT_DEFAULT_FLAG);
     *r0 = a0;
 }
 
 void sub_02006E4C(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3) {
-    SOUND_CHATOT **r0 = GF_SdatGetAttrPtr(SND_W_ID_MY_PERAP_PTR);
+    SOUND_CHATOT **r0 = GF_SdatGetAttrPtr(SND_W_ID_MY_CHATOT_PTR);
     BOOL ret;
     if (a0 == 0) {
         ret = sub_02006D04(*r0, a1, a2, a3);
@@ -140,7 +140,7 @@ void sub_02006E4C(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3) {
 }
 
 BOOL sub_02006EA0(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3, u8 a4) {
-    SOUND_CHATOT **r0 = GF_SdatGetAttrPtr(SND_W_ID_MY_PERAP_PTR);
+    SOUND_CHATOT **r0 = GF_SdatGetAttrPtr(SND_W_ID_MY_CHATOT_PTR);
     BOOL ret;
     if (a0 == 0) {
         ret = sub_02006D04(*r0, a1, a2, a3);

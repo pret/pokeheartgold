@@ -9,7 +9,7 @@
 #include "field_map_object.h"
 #include "save_arrays.h"
 #include "sound_radio.h"
-#include "sound_02004A44.h"
+#include "sound_tool.h"
 #include "overlay_01.h"
 #include "overlay_02.h"
 #include "unk_02054E00.h"

@@ -680,7 +680,7 @@ PlayCry: ; 0x02006218
 	str r1, [sp, #8]
 	bl GF_SdatGetAttrPtr
 	add r7, r0, #0
-	mov r0, #SND_W_ID_MY_PERAP_PTR
+	mov r0, #SND_W_ID_MY_CHATOT_PTR
 	bl GF_SdatGetAttrPtr
 	add r6, r0, #0
 	mov r0, #SND_W_ID_PV_DOUBLE_FLAG
@@ -882,10 +882,10 @@ PlayCryEx: ; 0x020063A4
 	mov r0, #SND_W_ID_CHORUS_FLAG
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0xc]
-	mov r0, #SND_W_ID_PERAP_PLAY_FLAG
+	mov r0, #SND_W_ID_CHATOT_PLAY_FLAG
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #8]
-	mov r0, #SND_W_ID_MY_PERAP_PTR
+	mov r0, #SND_W_ID_MY_CHATOT_PTR
 	bl GF_SdatGetAttrPtr
 	add r0, r4, #0
 	add r1, r5, #0

@@ -17,8 +17,7 @@ typedef struct NNSSndWaveOut {
     u32 startCommandTag;
 } NNSSndWaveOut;
 
-typedef enum NNSSndWaveFormat
-{
+typedef enum NNSSndWaveFormat {
     NNS_SND_WAVE_FORMAT_PCM8,
     NNS_SND_WAVE_FORMAT_PCM16
 } NNSSndWaveFormat;
