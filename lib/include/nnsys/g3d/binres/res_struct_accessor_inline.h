@@ -1,16 +1,13 @@
 #ifndef NNSYS_G3D_BINRES_RES_STRUCT_ACCESSOR_INLINE_H_
 #define NNSYS_G3D_BINRES_RES_STRUCT_ACCESSOR_INLINE_H_
 
-static inline void*
-NNS_G3dGetResDataByIdx(const NNSG3dResDict* dict, u32 idx) {
+static inline void* NNS_G3dGetResDataByIdx(const NNSG3dResDict* dict, u32 idx) {
     NNSG3dResDictEntryHeader* hdr;
 
     if (dict != NULL && idx < dict->numEntry) {
         hdr = (NNSG3dResDictEntryHeader*)((u8*)dict + dict->ofsEntry);
         return (void*)(&hdr->data[0] + hdr->sizeUnit * idx);
-    }
-    else
-    {
+    } else {
         return NULL;
     }
 }
@@ -26,6 +23,5 @@ static inline NNSG3dResMdl* NNS_G3dGetMdlByIdx(const NNSG3dResMdlSet* mdlSet, u3
     }
     return NULL;
 }
-
 
 #endif //NNSYS_G3D_BINRES_RES_STRUCT_ACCESSOR_INLINE_H_

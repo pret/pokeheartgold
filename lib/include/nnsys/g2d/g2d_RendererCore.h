@@ -17,7 +17,7 @@ typedef struct NNSG2dRndCore2DMtxCache {
 typedef struct NNSG2dViewRect {
     NNSG2dFVec2 posTopLeft;
     NNSG2dFVec2 sizeView;
-}NNSG2dViewRect;
+} NNSG2dViewRect;
 
 typedef enum NNSG2dSurfaceType {
     NNS_G2D_SURFACETYPE_MAIN3D = 0x00,
@@ -30,7 +30,6 @@ typedef enum NNSG2dRendererAffineTypeOverwiteMode {
     NNS_G2D_RND_AFFINE_OVERWRITE_NONE,
     NNS_G2D_RND_AFFINE_OVERWRITE_NORMAL,
     NNS_G2D_RND_AFFINE_OVERWRITE_DOUBLE
-
 } NNSG2dRendererAffineTypeOverwiteMode;
 
 typedef void(*NNSG2dRndCoreDrawCellCallBack)(struct NNSG2dRndCoreInstance* pRend, const NNSG2dCellData* pCell);

@@ -11,6 +11,4 @@ static inline fx32 NNS_G3dAnmObjGetNumFrame(const NNSG3dAnmObj* pAnmObj) {
     return p->numFrame * FX32_ONE;
 }
 
-
-
 #endif //NNSYS_G3D_KERNEL_INLINE_H_
