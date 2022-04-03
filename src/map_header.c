@@ -719,7 +719,7 @@ u8 MapHeader_GetFollowMode(u32 map_no) {
     return sMapHeaders[map_no].follow_mode;
 }
 
-void MapHeader_GetWorldMapCoords(u32 map_no, u16* x, u16* y) {
+void MapHeader_GetWorldMapCoords(u32 map_no, s16 *x, s16 *y) {
     map_no = MapNumberBoundsCheck(map_no);
 
     *x = sMapHeaders[map_no].world_map_x;

@@ -709,8 +709,6 @@ BOOL ScrCmd_GiveRibbon(SCRIPTCONTEXT *ctx) {
     POKEMON *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
     SetMonData(pokemon, sub_0208E55C(ribbon, 0), &hasRibbon);
 
-    f();
-
     return FALSE;
 }
 
