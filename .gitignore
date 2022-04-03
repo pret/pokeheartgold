@@ -30,6 +30,9 @@ cmake-build-debug/
 */baserom.*
 *.dump
 
+# For decomp.me
+ctx.c
+
 *.lcf.template
 *.lcf
 *.response.template
