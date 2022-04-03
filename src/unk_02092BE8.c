@@ -2,6 +2,7 @@
 #include "safari_zone.h"
 #include "constants/sndseq.h"
 #include "constants/maps.h"
+#include "constants/phone_contacts.h"
 
 void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL Unkbool) { 
     Unk_PokegearSTRUCT_14 Unk_struct;
@@ -45,7 +46,7 @@ void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL Unkbool) {
     }
     if (sub_02092E08(Unk_V1) != 0) {
         ptr->unkVar04 = ov02_02251EE8(Unk_V1, &(Unk_struct.unkVar0c));
-        if (ptr->unkVar04 >= 0x4b) {
+        if (ptr->unkVar04 >= 75) {
             ptr->unkBool00 = 0;
             return;
         } else {
@@ -60,7 +61,7 @@ void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL Unkbool) {
             sub_02092F64(Unk_V1);
             ptr->unkBool00 = 1;
             return;
-    }
+        }
     } else {
         ptr->unkBool00 = 0;
         return;
@@ -79,9 +80,9 @@ UnkFsysSub_114* sub_02092D98(HeapID id, FieldSystem* sys){
     UnkFsysSub_114 * ptr = AllocFromHeap(id, sizeof(UnkFsysSub_114));
     MI_CpuFill8(ptr, 0, sizeof(UnkFsysSub_114));
     sub_02092F64(ptr);
-    ptr->unk_varC = 0xa;
-    ptr->unk_var10 = 0x1e;
-    ptr->unk_var12 = 0x32;
+    ptr->unk_varC = 10;
+    ptr->unk_var10 = 30;
+    ptr->unk_var12 = 50;
     ptr->data = sys->savedata;
     ptr->pokegear_data = SaveData_GSPlayerMisc_get(ptr->data);
     ptr->savings_data = SaveData_GetMomsSavingsAddr(ptr->data);
@@ -114,8 +115,8 @@ PhoneBookEntry* sub_02092E10(UnkFsysSub_114* ptr){
 void sub_02092E14(UnkFsysSub_114* ptr, u8 Unkflag, BOOL Unkbool){
     sub_0202F01C(ptr->savings_data, Unkflag);
     if (Unkbool) {
-        if (ptr->unk_var8 < (ptr->unk_varC -1)) {
-            ptr->unk_var8 = ptr->unk_varC -1;
+        if (ptr->unk_var8 < (ptr->unk_varC - 1)) {
+            ptr->unk_var8 = ptr->unk_varC - 1;
         }
     }
 }
@@ -135,12 +136,13 @@ void sub_02092E54(UnkFsysSub_114* ptr){
     SCRIPT_STATE* state = SavArray_Flags_get(ptr->data); 
     SAFARIZONE* zone = Save_SafariZone_get(ptr->data); 
     IGT* igt = Sav2_PlayerData_GetIGTAddr(ptr->data); 
-    u8 var4057 = (u8) ScriptState_GetVar4057(state); 
-    for (u8 i = 0; i < 5; i++) {
-        if(sub_0202F08C(ptr->savings_data,  i + 7)) {
+    u8 var4057 = (u8) ScriptState_GetVar4057(state);
+    u8 i;
+    for (i = 0; i < 5; i++) {
+        if(sub_0202F08C(ptr->savings_data, i + 7)) {
             return;
         }
-	}
+    }
     u8 var = sub_0202F720(zone);
     if (var4057 < 3 || var >= 4) {
         return;
@@ -227,12 +229,12 @@ void sub_02092FB8(u32 uselessArg, UnkFsysSub_114* ptr){
         if (!IsSEPlaying(SEQ_SE_GS_PHONE1)) {
             sub_02006134(SEQ_SE_GS_PHONE1, 0);
         } else {
-            if (ptr->unk_var44 < 0xf) {
-                ptr->unk_var44 = 0xf;
+            if (ptr->unk_var44 < 15) {
+                ptr->unk_var44 = 15;
             }
         }
     }
-    if (ptr->unk_var44 >= 0x1e) {
+    if (ptr->unk_var44 >= 30) {
         ptr->unk_var44 = 0;
     }
 }
@@ -258,7 +260,7 @@ void sub_02093010(UnkFsysSub_114* ptr, BOOL Unkarg0){
 }
 
 BOOL sub_02093070(FieldSystem* sys){
-    if (GSPlayerMisc_IsGearNumberRegistered(SaveData_GSPlayerMisc_get(sys->savedata), 9) == 0xff) {
+    if (GSPlayerMisc_IsGearNumberRegistered(SaveData_GSPlayerMisc_get(sys->savedata), PHONE_CONTACT_BILL) == 0xff) {
         return FALSE;
     }
     if (CheckFlagInArray(SavArray_Flags_get(sys->savedata), FLAG_UNK_985)) {
@@ -274,7 +276,7 @@ BOOL sub_02093070(FieldSystem* sys){
 BOOL sub_020930C4(FieldSystem* sys){
     int owned = Pokedex_CountNationalDexOwned(Sav2_Pokedex_get(sys->savedata));
     SCRIPT_STATE* state = SavArray_Flags_get(sys->savedata);
-    if (GSPlayerMisc_IsGearNumberRegistered(SaveData_GSPlayerMisc_get(sys->savedata), 2) == 0xff) {
+    if (GSPlayerMisc_IsGearNumberRegistered(SaveData_GSPlayerMisc_get(sys->savedata), PHONE_CONTACT_PROF__OAK) == 0xff) {
         return FALSE;
     }
     u16 var = (u16) (owned / 0x32);
@@ -302,7 +304,7 @@ BOOL sub_02093134(FieldSystem* sys, POKEMON * pkmn){
 
 BOOL sub_0209316C(FieldSystem* sys){
     SCRIPT_STATE* state = SavArray_Flags_get(sys->savedata);
-    if (GSPlayerMisc_IsGearNumberRegistered(SaveData_GSPlayerMisc_get(sys->savedata), 6) == 0xff) {
+    if (GSPlayerMisc_IsGearNumberRegistered(SaveData_GSPlayerMisc_get(sys->savedata), PHONE_CONTACT_DAY_C_MAN) == 0xff) {
         return FALSE;
     }
     if (CheckFlagInArray(state, FLAG_UNK_992) && !CheckFlagInArray(state, FLAG_UNK_99E)) {
