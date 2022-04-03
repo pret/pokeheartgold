@@ -1179,10 +1179,8 @@ static void createMonSprites(struct ChooseStarterAppWork *work) {
     for (i = 0; i < 3; i++) {
         spriteData->objs[i].charResObj = AddCharResObjFromOpenNarc(spriteData->charResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000009_NCGR, FALSE, i, 2, work->heapId);
         spriteData->objs[i].plttResObj = AddPlttResObjFromOpenNarc(spriteData->plttResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000006_NCLR, FALSE, i, 2, 1, work->heapId);
-        spriteData->objs[i].cellResObj = AddCellOrAnimResObjFromOpenNarc(spriteData->cellResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000010_NCER, FALSE, i,
-                                                                         GF_GFX_RES_TYPE_CELL, work->heapId);
-        spriteData->objs[i].animResObj = AddCellOrAnimResObjFromOpenNarc(spriteData->animResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000016_NANR, FALSE, i,
-                                                                         GF_GFX_RES_TYPE_ANIM, work->heapId);
+        spriteData->objs[i].cellResObj = AddCellOrAnimResObjFromOpenNarc(spriteData->cellResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000010_NCER, FALSE, i, GF_GFX_RES_TYPE_CELL, work->heapId);
+        spriteData->objs[i].animResObj = AddCellOrAnimResObjFromOpenNarc(spriteData->animResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000016_NANR, FALSE, i, GF_GFX_RES_TYPE_ANIM, work->heapId);
         GetMonSpriteCharAndPlttNarcIdsEx(
             &spriteData->param,
             GetMonData(work->choices[i], MON_DATA_SPECIES, NULL),
@@ -1225,9 +1223,7 @@ static void createOneMonRender(struct StarterChooseMonSpriteData *pMonSpriteData
     SpriteResourcesHeader header;
     struct SpriteTemplate template;
 
-    CreateSpriteResourcesHeader(&header, idx, idx, idx, idx, -1, -1, FALSE, 0, pMonSpriteData->charResMan,
-                                pMonSpriteData->plttResMan, pMonSpriteData->cellResMan, pMonSpriteData->animResMan,
-                                NULL, NULL);
+    CreateSpriteResourcesHeader(&header, idx, idx, idx, idx, -1, -1, FALSE, 0, pMonSpriteData->charResMan, pMonSpriteData->plttResMan, pMonSpriteData->cellResMan, pMonSpriteData->animResMan, NULL, NULL);
     template.spriteList = pMonSpriteData->spriteList;
     template.header = &header;
     template.position.x = 0;
