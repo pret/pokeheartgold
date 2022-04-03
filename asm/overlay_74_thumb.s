@@ -1555,7 +1555,7 @@ _02227B88:
 	ldr r0, [r4]
 	mov r1, #2
 	bl BgClearTilemapBufferAndCommit
-	bl sub_02020080
+	bl ResetAllTextPrinters
 	mov r0, #0
 	mov r1, #0x20
 	mov r2, #0x4f
@@ -3742,7 +3742,7 @@ _02228D70:
 	mov r2, #1
 	lsl r3, r3, #0xc
 	bl ov74_02235308
-	bl sub_02020080
+	bl ResetAllTextPrinters
 	mov r0, #0
 	ldr r2, [r4]
 	add r1, r0, #0
@@ -7476,7 +7476,7 @@ ov74_0222AB70: ; 0x0222AB70
 	sub sp, #0x14
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_02020080
+	bl ResetAllTextPrinters
 	mov r0, #0
 	add r1, r0, #0
 	mov r2, #0x54
@@ -14322,7 +14322,7 @@ _0222E2C2:
 	str r0, [r5]
 	b _0222E79C
 _0222E2D4:
-	bl sub_02020080
+	bl ResetAllTextPrinters
 	add r0, r4, #0
 	mov r1, #0
 	bl ov74_0222DB70
@@ -16977,7 +16977,7 @@ _0222F874:
 	str r0, [r5]
 	b _0222FB2C
 _0222F886:
-	bl sub_02020080
+	bl ResetAllTextPrinters
 	add r0, r4, #0
 	mov r1, #0
 	bl ov74_0222F314
@@ -23574,7 +23574,7 @@ _02232A54:
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
-	bl sub_02020080
+	bl ResetAllTextPrinters
 	mov r1, #0x1e
 	mov r0, #0
 	lsl r1, r1, #4

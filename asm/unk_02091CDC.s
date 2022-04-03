@@ -323,7 +323,7 @@ sub_02091F78: ; 0x02091F78
 	mov r2, #7
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0x18]
-	bl sub_02020080
+	bl ResetAllTextPrinters
 	mov r0, #0
 	str r0, [r4, #8]
 	add r1, r4, #0

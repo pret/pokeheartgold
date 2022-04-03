@@ -9,7 +9,7 @@ sub_0205B4EC: ; 0x0205B4EC
 	add r4, r0, #0
 	cmp r1, #1
 	bne _0205B4F8
-	bl sub_02020080
+	bl ResetAllTextPrinters
 _0205B4F8:
 	mov r1, #0x1a
 	add r0, r4, #0

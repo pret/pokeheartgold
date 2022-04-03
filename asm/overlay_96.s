@@ -19020,7 +19020,7 @@ _021EE774:
 	ldr r0, [r5, #0x14]
 	bl ScrStrBufs_new
 	str r0, [r5, #4]
-	bl sub_02020080
+	bl ResetAllTextPrinters
 	ldr r1, [r5, #0x34]
 	ldr r0, [r5]
 	lsl r1, r1, #5

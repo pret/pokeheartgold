@@ -81,7 +81,7 @@ _021E5960:
 	ldr r1, _021E5A24 ; =0x0000C010
 	str r0, [r5, r1]
 	bl GX_BothDispOn
-	bl sub_02020080
+	bl ResetAllTextPrinters
 	ldr r2, [r5]
 	mov r0, #8
 	mov r1, #0x40

@@ -160,7 +160,7 @@ void ShowCommunicationError(HeapID heap_id, u32 error, u32 error_code) {
     STRING* error_str = String_ctor(384, heap_id);
     STRING* tmp_str = String_ctor(384, heap_id);
 
-    sub_02020080();
+    ResetAllTextPrinters();
 
     MSGFMT* msg_fmt = ScrStrBufs_new(heap_id);
 

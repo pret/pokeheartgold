@@ -27812,7 +27812,7 @@
 .public sub_0201F990
 .public sub_0201FA34
 .public sub_0201FFE0
-.public sub_02020080
+.public ResetAllTextPrinters
 .public TextPrinterCheckActive
 .public sub_020200A0
 .public sub_0202036C

@@ -113,8 +113,8 @@ _02020076:
 _0202007C: .word _021D1F74
 	thumb_func_end sub_02020068
 
-	thumb_func_start sub_02020080
-sub_02020080: ; 0x02020080
+	thumb_func_start ResetAllTextPrinters
+ResetAllTextPrinters: ; 0x02020080
 	mov r1, #0
 	ldr r2, _02020090 ; =_021D1F74
 	add r0, r1, #0
@@ -126,7 +126,7 @@ _02020086:
 	bx lr
 	.balign 4, 0
 _02020090: .word _021D1F74
-	thumb_func_end sub_02020080
+	thumb_func_end ResetAllTextPrinters
 
 	thumb_func_start TextPrinterCheckActive
 TextPrinterCheckActive: ; 0x02020094

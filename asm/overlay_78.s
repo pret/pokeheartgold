@@ -550,7 +550,7 @@ ov78_021E5D94: ; 0x021E5D94
 	ldrh r1, [r1, #6]
 	strh r2, [r0, #4]
 	strh r1, [r0, #6]
-	bl sub_02020080
+	bl ResetAllTextPrinters
 	ldr r3, [r4]
 	mov r0, #1
 	mov r1, #0x1b

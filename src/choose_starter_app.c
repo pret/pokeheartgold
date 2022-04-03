@@ -99,6 +99,10 @@ enum ChooseStarterAnim {
 #define BALL_ROCK_AMPLITUDE_BIG       1
 #define BALL_ROCK_AMPLITUDE_SMALL     2
 
+#define CAMERA_PATH_NULL              0
+#define CAMERA_PATH_OUT               1
+#define CAMERA_PATH_IN                2
+
 #define CAM_ANGLE_X_OUT            (FX_DEG_TO_IDX(FX32_CONST(-49.57)))
 #define CAM_PERSP_OUT              (FX_DEG_TO_IDX(FX32_CONST(24.805)))
 #define CAM_POSITION_OUT           ((VecFx32){0, 0, 14 * FX32_ONE})
@@ -108,6 +112,11 @@ enum ChooseStarterAnim {
 #define CAM_PERSP_IN               (FX_DEG_TO_IDX(FX32_CONST(22.7)))
 #define CAM_POSITION_IN            ((VecFx32){0, 0, 12 * FX32_ONE})
 #define CAM_DISTANCE_IN            (60 * FX32_ONE)
+
+#define BALL_Y_ANGLE_OUT           (-FX_DEG_TO_IDX(FX32_CONST(0)))
+#define BALL_Y_ANGLE_IN            (-FX_DEG_TO_IDX(FX32_CONST(30.76)))
+
+#define CAM_MOVE_STEP_MAX          (8)
 
 struct ChooseStarterRnd {
     NNSG3dRenderObj obj;
@@ -149,17 +158,6 @@ struct StarterChooseMonSpriteData {
     struct Sprite *sprites[3];
 };
 
-struct UnkStarterChooseSub_368_4 {
-    int unk_00;
-    u8 filler_04;
-    u16 *unk_08;
-};
-
-struct UnkStarterChooseSub_368 {
-    u8 filler_00[0x4];
-    struct UnkStarterChooseSub_368_4 *unk_4;
-};
-
 struct ChooseStarter3dRes {
     NNSG3dResFileHeader *header;
     NNSG3dResMdlSet *mdlSet;
@@ -175,9 +173,9 @@ struct ChooseStarterAppWork {
     GF_Camera *camera;
     VecFx32 cameraTarget;
     NNSFndAllocator allocator; // 020
-    struct ChooseStarter3dRes _3dObjRes[4];
-    struct ChooseStarterRnd _3dObjRender[6];
-    struct ChooseStarterAnm _3dObjAnm[6];
+    struct ChooseStarter3dRes _3dObjRes[CS_3DRES_MAX];
+    struct ChooseStarterRnd _3dObjRender[CS_MODEL_MAX];
+    struct ChooseStarterAnm _3dObjAnm[CS_ANIM_MAX];
     VecFx32 positions[3];
     u32 curSelection;
     fx16 rotationAngle;
@@ -222,7 +220,7 @@ static void advance3dAnmFrameLooped(struct ChooseStarterAnm *anm, int selectStat
 static inline struct ChooseStarterAnm *GetAnmByIdx(struct ChooseStarterAppWork *work, u8 idx);
 static void advanceSelectedBallShakingAnim(struct ChooseStarterAppWork *work);
 static BOOL selectedBallIsInSmallWobbleState(struct ChooseStarterAppWork *work);
-static void free3dResHeader(struct ChooseStarter3dRes *a0);
+static void free3dResHeader(struct ChooseStarter3dRes *res);
 static void free3dAnmObj(struct ChooseStarterAnm *anm, NNSFndAllocator *alloc);
 static void rendererTranslVecSet(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z);
 static void rendererScaleVecSet(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z);
@@ -230,7 +228,7 @@ static void initBallModelPositions(struct ChooseStarterAppWork *work);
 static void updateModelPositionAndRotation(struct ChooseStarterRnd *render);
 static void calculateModelPositionAndRotation(struct ChooseStarterRnd *render, MtxFx43 *mtx);
 static BOOL updateBaseRotation(struct ChooseStarterAppWork *work, fx16 speed);
-static void reinitBallModelPosInDirection(struct ChooseStarterAppWork *work, int a1);
+static void reinitBallModelPosInDirection(struct ChooseStarterAppWork *work, int direction);
 static void makeAndDrawWindows(struct ChooseStarterAppWork *work);
 static void loadBgGraphics(BGCONFIG *bgConfig, HeapID heapId);
 static u8 printMsgOnWinEx(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, STRING **out);
@@ -244,7 +242,7 @@ static void loadOneMonObj(struct _2DGfxResMan *charResMan, struct _2DGfxResMan *
 static void createOneMonRender(struct StarterChooseMonSpriteData *pMonSpriteData, u8 idx, HeapID heapId);
 static void setAllButSelectedMonSpritesInvisible(struct ChooseStarterAppWork *work);
 static void setAllMonSpritesInvisible(struct StarterChooseMonSpriteData *a0);
-static BOOL translateSelectedBall(struct ChooseStarterAppWork *work, fx32 from, fx32 to);
+static BOOL yRotateSelectedBall(struct ChooseStarterAppWork *work, fx32 from, fx32 to);
 static u16 calcBallTranslationArcStep(const fx32 *from, const fx32 *to, int step, int max);
 
 BOOL ChooseStarterApplication_OvyInit(OVY_MANAGER *ovy, int *state_p) {
@@ -287,7 +285,7 @@ BOOL ChooseStarterApplication_OvyInit(OVY_MANAGER *ovy, int *state_p) {
     GX_EngineAToggleLayers(4, GX_LAYER_TOGGLE_OFF);
     gSystem.screensFlipped = TRUE;
     GX_SwapDisplay();
-    sub_02020080();
+    ResetAllTextPrinters();
     makeAndDrawWindows(work);
     loadBgGraphics(work->bgConfig, work->heapId);
     createObjResMans(work);
@@ -311,7 +309,7 @@ static const int sSpecies[] = {
 
 BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
     struct ChooseStarterAppWork *work = OverlayManager_GetData(ovy);
-    int r6 = 0;
+    int cameraPathSel = CAMERA_PATH_NULL;
     int input;
     switch (*state) {
     case CHOOSE_STARTER_STATE_INIT:
@@ -358,10 +356,10 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         input = getInput(work);
         switch (input) {
         case CHOOSE_STARTER_INPUT_BACKED_OUT:
-            r6 = 1;
+            cameraPathSel = CAMERA_PATH_OUT;
             break;
         case CHOOSE_STARTER_INPUT_CONFIRM_CHOICE:
-            r6 = 2;
+            cameraPathSel = CAMERA_PATH_IN;
             break;
         }
         switch (input) {
@@ -437,7 +435,7 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         *state = CHOOSE_STARTER_STATE_HANDLE_INPUT;
         break;
     case CHOOSE_STARTER_STATE_ZOOM_IN:
-        if (!translateSelectedBall(work, 0, -0x15E0)) {
+        if (!yRotateSelectedBall(work, BALL_Y_ANGLE_OUT, BALL_Y_ANGLE_IN)) {
             break;
         }
         setAllButSelectedMonSpritesInvisible(work);
@@ -453,7 +451,7 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         *state = CHOOSE_STARTER_STATE_CONFIRM_MSG;
         break;
     case CHOOSE_STARTER_STATE_BACK_OUT:
-        if (!translateSelectedBall(work, -0x15E0, 0)) {
+        if (!yRotateSelectedBall(work, BALL_Y_ANGLE_IN, BALL_Y_ANGLE_OUT)) {
             break;
         }
         reinitBallModelPosInDirection(work, 0);
@@ -492,8 +490,8 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
     {
         struct CameraTranslationPathTemplate template;
 
-        if (r6 != 0) {
-            if (r6 == 1) {
+        if (cameraPathSel != CAMERA_PATH_NULL) {
+            if (cameraPathSel == CAMERA_PATH_OUT) {
                 template.angleX = CAM_ANGLE_X_OUT;
                 template.perspectiveAngle = CAM_PERSP_OUT;
                 template.position = CAM_POSITION_OUT;
@@ -664,7 +662,7 @@ static void updateBaseAndBallsRotation(struct ChooseStarterAppWork *work) {
     MtxFx33 tmpMtx;
     int i;
 
-    for (i = 0; i < 2; i++) {
+    for (i = CS_MODEL_TT_BALL_EF; i < CS_MODEL_TABLETOP + 1; i++) {
         struct ChooseStarterRnd *rnd = &work->_3dObjRender[i];
         if (rnd->active) {
             MTX_Identity33(&rotMtx);
@@ -686,7 +684,7 @@ static void updateBaseAndBallsRotation(struct ChooseStarterAppWork *work) {
     }
     NNS_G3dGlbFlush();
 
-    for (i = 2; i < 6; i++) {
+    for (i = CS_MODEL_TURNTABLE; i < CS_MODEL_MAX; i++) {
         struct ChooseStarterRnd *rnd = &work->_3dObjRender[i];
         if (rnd->active) {
             NNS_G3dGePushMtx();
@@ -911,9 +909,9 @@ static BOOL selectedBallIsInSmallWobbleState(struct ChooseStarterAppWork *work) 
     return GetAnmByIdx(work, idx)->obj->frame >= 80 * FX32_ONE;
 }
 
-static void free3dResHeader(struct ChooseStarter3dRes *a0) {
-    if (a0->header != NULL) {
-        FreeToHeap(a0->header);
+static void free3dResHeader(struct ChooseStarter3dRes *res) {
+    if (res->header != NULL) {
+        FreeToHeap(res->header);
     }
 }
 
@@ -937,64 +935,64 @@ static void rendererScaleVecSet(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx
 }
 
 static void initBallModelPositions(struct ChooseStarterAppWork *work) {
-    VecFx32 sp40;
-    const VecFx32 sp34 = {0, 14 * FX32_ONE, 32 * FX32_ONE};
-    MtxFx33 sp10;
+    VecFx32 pos;
+    const VecFx32 posNoRot = {0, 14 * FX32_ONE, 32 * FX32_ONE};
+    MtxFx33 rotMtx;
     int i;
-    u16 sp0;
-    u8 r4 = work->curSelection;
+    u16 trigIdx;
+    u8 ballIdx = work->curSelection;
     int angle = 0;
 
     for (i = 0; i < 3; i++) {
-        sp0 = angle / 3;
-        MTX_RotY33(&sp10, FX_SinIdx(sp0), FX_CosIdx(sp0));
-        MTX_MultVec33(&sp34, &sp10, &sp40);
-        work->positions[r4] = sp40;
-        work->positions[r4].y += 13 * FX32_ONE;
-        rendererTranslVecSet(&work->_3dObjRender[r4 + 3], sp40.x, sp40.y, sp40.z);
-        rendererScaleVecSet(&work->_3dObjRender[r4 + 3], FX32_ONE, FX32_ONE, FX32_ONE);
-        work->_3dObjRender[r4 + CS_MODEL_BALL1].yRotAngle = sp0;
-        work->_3dObjRender[r4 + CS_MODEL_BALL1].xRotAngle = 0;
-        r4 = (r4 + 1) % 3;
-        angle += 16 * FX32_ONE;
+        trigIdx = angle / 3; // 0, 120, 240 degrees
+        MTX_RotY33(&rotMtx, FX_SinIdx(trigIdx), FX_CosIdx(trigIdx));
+        MTX_MultVec33(&posNoRot, &rotMtx, &pos);
+        work->positions[ballIdx] = pos;
+        work->positions[ballIdx].y += 13 * FX32_ONE; // translate upwards so that it rests on the turntable
+        rendererTranslVecSet(&work->_3dObjRender[ballIdx + 3], pos.x, pos.y, pos.z);
+        rendererScaleVecSet(&work->_3dObjRender[ballIdx + 3], FX32_ONE, FX32_ONE, FX32_ONE);
+        work->_3dObjRender[ballIdx + CS_MODEL_BALL1].yRotAngle = trigIdx;
+        work->_3dObjRender[ballIdx + CS_MODEL_BALL1].xRotAngle = 0;
+        ballIdx = (ballIdx + 1) % 3;
+        angle += 0x10000; // 360 degrees
     }
 }
 
 static void updateModelPositionAndRotation(struct ChooseStarterRnd *render) {
-    MtxFx43 sp0;
-    calculateModelPositionAndRotation(render, &sp0);
-    NNS_G3dGeMultMtx43(&sp0);
+    MtxFx43 mtx;
+    calculateModelPositionAndRotation(render, &mtx);
+    NNS_G3dGeMultMtx43(&mtx);
     NNS_G3dDraw(&render->obj);
 }
 
 static void calculateModelPositionAndRotation(struct ChooseStarterRnd *render, MtxFx43 *mtx) {
-    MtxFx43 sp64;
-    MtxFx43 sp34;
-    MtxFx43 sp04;
+    MtxFx43 rotxMtx;
+    MtxFx43 rotyMtx;
+    MtxFx43 tmpRotMtx;
     MTX_Identity43(mtx);
     MTX_TransApply43(mtx, mtx, render->translVec.x, render->translVec.y, render->translVec.z);
-    MTX_Identity43(&sp64);
-    MTX_RotX43(&sp04, FX_SinIdx(render->xRotAngle), FX_CosIdx(render->xRotAngle));
-    MTX_Concat43(&sp04, &sp64, &sp64);
-    MTX_RotY43(&sp04, FX_SinIdx(render->yRotAngle), FX_CosIdx(render->yRotAngle));
-    MTX_Concat43(&sp04, &sp64, &sp64);
-    MTX_Scale43(&sp34, render->scaleVec.x, render->scaleVec.y, render->scaleVec.z);
-    MTX_Concat43(&sp64, mtx, mtx);
-    MTX_Concat43(&sp34, mtx, mtx);
+    MTX_Identity43(&rotxMtx);
+    MTX_RotX43(&tmpRotMtx, FX_SinIdx(render->xRotAngle), FX_CosIdx(render->xRotAngle));
+    MTX_Concat43(&tmpRotMtx, &rotxMtx, &rotxMtx);
+    MTX_RotY43(&tmpRotMtx, FX_SinIdx(render->yRotAngle), FX_CosIdx(render->yRotAngle));
+    MTX_Concat43(&tmpRotMtx, &rotxMtx, &rotxMtx);
+    MTX_Scale43(&rotyMtx, render->scaleVec.x, render->scaleVec.y, render->scaleVec.z);
+    MTX_Concat43(&rotxMtx, mtx, mtx);
+    MTX_Concat43(&rotyMtx, mtx, mtx);
 }
 
 static BOOL updateBaseRotation(struct ChooseStarterAppWork *work, fx16 speed) {
     BOOL ret = FALSE;
     work->rotationAngle += speed;
     if (speed >= 0) {
-        if (work->rotationAngle >= FX16_CONST(5.3333)) {
+        if (work->rotationAngle >= FX_DEG_TO_IDX(FX32_CONST(120))) {
             work->rotationAngle = 0;
             work->rotationSpeed = 0;
             reinitBallModelPosInDirection(work, 1);
             ret = TRUE;
         }
     } else {
-        if (work->rotationAngle <= FX16_CONST(-5.3333)) {
+        if (work->rotationAngle <= -FX_DEG_TO_IDX(FX32_CONST(120))) {
             work->rotationAngle = 0;
             work->rotationSpeed = 0;
             reinitBallModelPosInDirection(work, 2);
@@ -1004,10 +1002,10 @@ static BOOL updateBaseRotation(struct ChooseStarterAppWork *work, fx16 speed) {
     return ret;
 }
 
-static void reinitBallModelPosInDirection(struct ChooseStarterAppWork *work, int a1) {
-    if (a1 == 2) {
+static void reinitBallModelPosInDirection(struct ChooseStarterAppWork *work, int direction) {
+    if (direction == 2) {
         work->curSelection = (work->curSelection + 1) % 3;
-    } else if (a1 == 1) {
+    } else if (direction == 1) {
         s8 r0 = work->curSelection - 1;
         if (r0 < 0) {
             r0 = 2;
@@ -1264,12 +1262,12 @@ static void setAllMonSpritesInvisible(struct StarterChooseMonSpriteData *a0) {
     }
 }
 
-static BOOL translateSelectedBall(struct ChooseStarterAppWork *work, fx32 from, fx32 to) {
+static BOOL yRotateSelectedBall(struct ChooseStarterAppWork *work, fx32 from, fx32 to) {
     MtxFx33 template;
     u16 angle;
     u32 selection = work->curSelection;
     work->ballTransStep++;
-    angle = calcBallTranslationArcStep(&from, &to, work->ballTransStep, 8);
+    angle = calcBallTranslationArcStep(&from, &to, work->ballTransStep, CAM_MOVE_STEP_MAX);
     {
         VecFx32 translVec = {0, 14 * FX32_ONE, 32 * FX32_ONE};
         VecFx32 subtrahend = {0, 14 * FX32_ONE, 32 * FX32_ONE};
@@ -1278,9 +1276,9 @@ static BOOL translateSelectedBall(struct ChooseStarterAppWork *work, fx32 from, 
         MTX_RotX33(&template, FX_SinIdx(angle), FX_CosIdx(angle));
         MTX_MultVec33(&translVec, &template, &translVec);
         VEC_Add(&translVec, &subtrahend, &translVec);
-        rendererTranslVecSet(&work->_3dObjRender[selection + 3], translVec.x, translVec.y, translVec.z);
+        rendererTranslVecSet(&work->_3dObjRender[selection + CS_MODEL_BALL1], translVec.x, translVec.y, translVec.z);
         work->_3dObjRender[selection + CS_MODEL_BALL1].xRotAngle = angle;
-        if (work->ballTransStep >= 8) {
+        if (work->ballTransStep >= CAM_MOVE_STEP_MAX) {
             work->ballTransStep = 0;
             return TRUE;
         } else {

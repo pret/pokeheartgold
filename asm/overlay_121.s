@@ -280,7 +280,7 @@ ov121_021E5AEC: ; 0x021E5AEC
 	mov r1, #0
 	lsl r0, r0, #4
 	strb r1, [r5, r0]
-	bl sub_02020080
+	bl ResetAllTextPrinters
 	mov r0, #4
 	mov r1, #0x9e
 	bl FontID_Alloc

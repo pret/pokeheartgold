@@ -16,7 +16,7 @@
 
 extern void sub_0200E3DC(BGCONFIG* bg_config, enum GFBgLayer layer, u32 a2, u32 a3, u32 a4, HeapID heap_id);
 extern void LoadFontPal0(enum GFBgLayer layer, u32 base_addr, HeapID heap_id);
-extern void sub_02020080(void);
+extern void ResetAllTextPrinters(void);
 extern void DrawFrameAndWindow1(WINDOW* window, BOOL dont_copy_to_vram, u16 a2, u8 palette_num);
 extern u16 AddTextPrinterParameterized(WINDOW* window, u8 font_id, STRING* text, u32 x, u32 y, u32 speed, void* callback);
 extern void SetMasterBrightnessNeutral(u32 a0);
@@ -133,7 +133,7 @@ void PrintErrorMessageAndReset(void) {
     MSGDATA* error_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0041_bin, 0);
     STRING* error_str = String_ctor(384, 0);
 
-    sub_02020080();
+    ResetAllTextPrinters();
 
     AddWindow(bg_config, &window, &sErrorMessageWindowTemplate);
     FillWindowPixelRect(&window, 0xF, 0, 0, 208, 144);

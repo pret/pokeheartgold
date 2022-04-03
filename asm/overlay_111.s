@@ -1952,7 +1952,7 @@ ov111_021E67EC: ; 0x021E67EC
 	ldr r0, [r4, #0x18]
 	bl ScrStrBufs_new
 	str r0, [r4, #8]
-	bl sub_02020080
+	bl ResetAllTextPrinters
 	ldr r1, [r4, #0x30]
 	ldr r0, [r4]
 	lsl r1, r1, #0xd

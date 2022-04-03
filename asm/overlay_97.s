@@ -254,7 +254,7 @@ _0221E76A:
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	str r0, [r4, #4]
-	bl sub_02020080
+	bl ResetAllTextPrinters
 	mov r1, #0x1e
 	mov r0, #0
 	lsl r1, r1, #4

@@ -7,7 +7,11 @@
 struct System gSystem;
 struct FSCacheEntry gFileCache[128];
 
+void sub_0201A08C(void);
+void sub_0201A0C0(void);
+void CallHBlankIntrCallback(void);
 void HBlankIntrRegsToggle(BOOL enable);
+void sub_0201A1B4(void);
 void sub_0201A5E8(void);
 
 void sub_0201A08C(void) {

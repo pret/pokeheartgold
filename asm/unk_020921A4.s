@@ -270,7 +270,7 @@ sub_020923CC: ; 0x020923CC
 	mov r2, #0xe5
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0x1c]
-	bl sub_02020080
+	bl ResetAllTextPrinters
 	mov r0, #0
 	str r0, [r4, #0xc]
 	add r1, r4, #0

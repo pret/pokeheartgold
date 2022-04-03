@@ -626,7 +626,7 @@ ov53_021E5E6C: ; 0x021E5E6C
 	mov r1, #1
 	lsl r1, r1, #8
 	str r0, [r4, r1]
-	bl sub_02020080
+	bl ResetAllTextPrinters
 	mov r0, #0
 	ldr r3, [r4]
 	add r1, r0, #0
