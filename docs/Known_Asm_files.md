@@ -4,6 +4,10 @@ This document should be updated as the decompilation progresses.
 
 - Overlay 2: a lot of Field related functions
 - Overlay 4: "Gymmick"s(?)
+- Overlay 7: Battle animations
+- Ovarlay 10: Trainer AI
+- Overlay 12: Battle code
+- Overlay 18: Pokedex
 - Overlay 60: Title screen
 - Overlay 70: GTS or some other Wifi related trade(?)
 - Overlay 71: Trading code
