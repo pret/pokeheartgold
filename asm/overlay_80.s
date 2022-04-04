@@ -25779,7 +25779,7 @@ ov80_02236330: ; 0x02236330
 	ldr r0, [r0]
 	strb r1, [r0, #0x12]
 	ldr r0, [r4]
-	bl sub_0202D95C
+	bl Save_SpecialRibbons_get
 	add r1, r4, #0
 	add r1, #0xac
 	ldr r1, [r1]

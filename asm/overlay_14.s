@@ -6565,7 +6565,7 @@ _021E8A06:
 	str r0, [r4, #0x1c]
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_0202D95C
+	bl Save_SpecialRibbons_get
 	str r0, [r4, #0x20]
 	mov r0, #0
 	str r0, [r4, #0x24]

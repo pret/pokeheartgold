@@ -28,7 +28,7 @@ nitrogfx: $(OBJS)
 
 %.o: %.c
 %.o: %.c $(DEPDIR)/%.d | $(DEPDIR)
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) $(DEPFLAGS) -c -o $@ $<
 
 clean:
 	$(RM) nitrogfx nitrogfx.exe $(OBJS) $(DEPDIR)

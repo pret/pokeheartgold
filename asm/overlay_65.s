@@ -3892,7 +3892,7 @@ _0221DE8A:
 	thumb_func_start ov65_0221DE8C
 ov65_0221DE8C: ; 0x0221DE8C
 	push {r3, lr}
-	bl sub_0202D95C
+	bl Save_SpecialRibbons_get
 	add r1, r0, #0
 	mov r0, #0x20
 	mov r2, #0xe
@@ -4205,7 +4205,7 @@ _0221E0D6:
 	str r0, [r5, #0x10]
 	ldr r0, [r5, #8]
 	ldr r0, [r0, #0x10]
-	bl sub_0202D95C
+	bl Save_SpecialRibbons_get
 	str r0, [r5, #0x2c]
 	add r0, r5, #0
 	ldr r1, _0221E13C ; =_0221FD34

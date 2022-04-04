@@ -1194,7 +1194,7 @@ sub_0204FDA0: ; 0x0204FDA0
 	strh r0, [r4, #0x18]
 	strb r0, [r4, #0x12]
 	add r0, r5, #0
-	bl sub_0202D95C
+	bl Save_SpecialRibbons_get
 	str r0, [r4, #0x20]
 	add r0, r5, #0
 	bl sub_0208828C
@@ -1871,7 +1871,7 @@ sub_020502E0: ; 0x020502E0
 	strh r0, [r4, #0x18]
 	strb r0, [r4, #0x12]
 	add r0, r5, #0
-	bl sub_0202D95C
+	bl Save_SpecialRibbons_get
 	str r0, [r4, #0x20]
 	add r0, r5, #0
 	bl sub_0208828C

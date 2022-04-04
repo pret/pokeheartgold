@@ -28232,9 +28232,9 @@
 .public sub_0202D8E4
 .public sub_0202D908
 .public sub_0202D928
-.public sub_0202D938
-.public sub_0202D93C
-.public sub_0202D95C
+.public Save_SpecialRibbons_sizeof
+.public Save_SpecialRibbons_init
+.public Save_SpecialRibbons_get
 .public sub_0202DB34
 .public sub_0202DB40
 .public sub_0202DB44

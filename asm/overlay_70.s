@@ -19570,7 +19570,7 @@ ov70_022413AC: ; 0x022413AC
 	str r1, [r0]
 	ldr r0, [r4]
 	ldr r0, [r0, #0x20]
-	bl sub_0202D95C
+	bl Save_SpecialRibbons_get
 	add r1, r4, #0
 	add r1, #0xdc
 	str r0, [r1]

@@ -117,7 +117,7 @@ Static main
 	Object src/sav_chatot.o
 	Object asm/unk_0202CF1C.o
 	Object asm/unk_0202D230.o
-	Object src/unk_0202D938.o
+	Object src/save_special_ribbons.o
 	Object src/roamer.o
 	Object asm/unk_0202DB34.o
 	Object asm/unk_0202DBA8.o

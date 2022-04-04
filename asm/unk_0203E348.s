@@ -726,7 +726,7 @@ sub_0203E76C: ; 0x0203E76C
 	bl sub_02088288
 	str r0, [r4, #0x2c]
 	add r0, r5, #0
-	bl sub_0202D95C
+	bl Save_SpecialRibbons_get
 	str r0, [r4, #0x20]
 	mov r0, #0x43
 	lsl r0, r0, #2
@@ -3301,7 +3301,7 @@ sub_0203FB94: ; 0x0203FB94
 	strh r0, [r4, #0x18]
 	strb r0, [r4, #0x12]
 	ldr r0, [r5, #0xc]
-	bl sub_0202D95C
+	bl Save_SpecialRibbons_get
 	str r0, [r4, #0x20]
 	ldr r0, [r5, #0xc]
 	bl SavArray_IsNatDexEnabled

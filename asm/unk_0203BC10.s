@@ -1988,7 +1988,7 @@ _0203CB1A:
 	strh r0, [r7, #0x18]
 	strb r0, [r7, #0x12]
 	ldr r0, [r5, #0xc]
-	bl sub_0202D95C
+	bl Save_SpecialRibbons_get
 	str r0, [r7, #0x20]
 	ldr r0, [r5, #0xc]
 	bl SavArray_IsNatDexEnabled
