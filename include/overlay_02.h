@@ -34,7 +34,7 @@ typedef struct UnkStruct_Ov02_0224E4EC {
     u8 *unk20; // points to fsys->unk_111
 } UnkStruct_Ov02_0224E4EC;
 
-NK_0201F79C_Sub *ov02_0224B418(FieldSystem *fsys, int gender);
+UNK_0201F79C_Sub *ov02_0224B418(FieldSystem *fsys, int gender);
 BOOL ov02_0224B43C(UNK_0201F79C_Sub *unk);
 void ov02_0224B448(UNK_0201F79C_Sub *unk);
 struct FieldLongWarpTaskData *CreateFieldEscapeRopeTaskEnv(FieldSystem *fsys, HeapID heapId);
