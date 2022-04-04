@@ -37,14 +37,14 @@ void Destroy2DGfxResObjMan(struct _2DGfxResMan *mgr) {
     Destroy2DGfxResMan(mgr->resourceMgr);
     mgr->resourceMgr = NULL;
     FreeToHeap(mgr->objects);
-    mgr->objects = 0;
+    mgr->objects = NULL;
     FreeToHeap(mgr);
 }
 
 struct _2DGfxResObj *Add2DGfxResObjFromHeader(struct _2DGfxResMan *mgr, const struct _2DGfxResHeader *header, int idx, HeapID heapId) {
     struct _2DGfxResObj *ret;
-    struct _2DGfxResHeaderFile *r6;
-    struct _2DGfxResHeaderNarc *r6_2;
+    struct _2DGfxResHeaderFile *headerFile;
+    struct _2DGfxResHeaderNarc *headerNarc;
     
     GF_ASSERT(mgr != NULL);
     GF_ASSERT(header != NULL);
@@ -54,14 +54,14 @@ struct _2DGfxResObj *Add2DGfxResObjFromHeader(struct _2DGfxResMan *mgr, const st
     ret = sub_0200AA70(mgr);
     GF_ASSERT(ret != NULL);
     if (!header->isNarc) {
-        r6 = &((struct _2DGfxResHeaderFile *)header->table)[idx];
-        GF_ASSERT(_2DGfxResObjExistsById(mgr, r6->id) == TRUE);
-        Add2DGfxResObjFromFile(mgr, ret, r6->filename, r6->id, r6->extra[0], r6->extra[1], header->type, heapId);
+        headerFile = &((struct _2DGfxResHeaderFile *)header->table)[idx];
+        GF_ASSERT(_2DGfxResObjExistsById(mgr, headerFile->id) == TRUE);
+        Add2DGfxResObjFromFile(mgr, ret, headerFile->filename, headerFile->id, headerFile->extra[0], headerFile->extra[1], header->type, heapId);
     } else {
-        r6_2 = &((struct _2DGfxResHeaderNarc *)header->table)[idx];
-        GF_ASSERT(_2DGfxResObjExistsById(mgr, r6_2->id) == TRUE);
-        Add2DGfxResObjFromNarc(mgr, ret, r6_2->narcId, r6_2->fileId, r6_2->compressed, r6_2->id, r6_2->extra[0],
-                               r6_2->extra[1], header->type, heapId, FALSE);
+        headerNarc = &((struct _2DGfxResHeaderNarc *)header->table)[idx];
+        GF_ASSERT(_2DGfxResObjExistsById(mgr, headerNarc->id) == TRUE);
+        Add2DGfxResObjFromNarc(mgr, ret, headerNarc->narcId, headerNarc->fileId, headerNarc->compressed, headerNarc->id, headerNarc->extra[0],
+                               headerNarc->extra[1], header->type, heapId, FALSE);
     }
     mgr->num++;
     return ret;
