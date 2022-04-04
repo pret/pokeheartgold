@@ -42,7 +42,7 @@ _005C:
 	end
 
 _006D:
-	get_lead_mon_index VAR_SPECIAL_x8006
+	get_party_lead_alive VAR_SPECIAL_x8006
 	scrcmd_825 VAR_SPECIAL_x8006, VAR_SPECIAL_RESULT
 	goto_if_set FLAG_UNK_161, _00B1
 	compare VAR_SPECIAL_RESULT, 1

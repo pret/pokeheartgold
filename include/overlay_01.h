@@ -13,6 +13,13 @@ struct ErrorContinueEnv {
 
 struct FishingRodWork;
 
+// TODO: does this struct have more members?
+struct UnkStruct_Ov01_021EF4C4 {
+    u8 textFrameDelay;
+    u8 unk1;
+    u8 unk2;
+};
+
 void ov01_021E636C(int a0);
 void ov01_021EFAF8(FieldSystem *fsys);
 void ov01_PlayerAvatar_OrrTransitionFlags(FIELD_PLAYER_AVATAR *avatar, int a1);

@@ -8,6 +8,7 @@
 #include "window.h"
 #include "field_player_avatar.h"
 #include "gear_phone.h"
+#include "save_pokegear.h"
 #include "bug_contest_internal.h"
 #include "constants/vars.h"
 #include "overlay_manager.h"
@@ -177,6 +178,33 @@ struct FieldSystemUnkSub0 {
     BOOL unkC;
 };
 
+typedef struct UnkFsysSub_114 {
+    u8 unk_var0_0:1;
+    u8 unk_var0_1:1;
+    u8 unk_var0_2:1;
+    u8 unk_var0_3:1;
+    u8 unk_var0_4:4;
+    u8 unk_var1;
+    u8 unk_var2;
+    u8 unk_var3;
+    u8 unk_var4;
+    u8 unk_arr5[2];
+    u8 unk_var7;
+    s32 unk_var8;
+    s32 unk_varC;
+    u16 unk_var10;
+    u16 unk_var12;
+    s64 unk_var14; //Seconds? see sub_02092F30
+    PhoneBookEntry entry; //0x1c
+    SavePokegear* pokegear_data; //0x30
+    MomsSavings* savings_data;//0x34
+    SAVEDATA* data; //0x38
+    FieldSystem* sys; //0x3c
+    void *unk_ptr40;
+    u8 unk_var44;
+    u8 filler_45[3];
+} UnkFsysSub_114; //size: 0x48
+
 struct UnkStruct_020FC5CC {
     u32 unk0_00:4;
     u32 unk0_04:4;
@@ -192,6 +220,14 @@ struct UnkStruct_020FC5CC {
 
 struct UnkStruct_02059E1C;
 struct UnkStruct_0205AC88;
+
+struct FieldSystemUnkSub68 {
+    WINDOW unk0;
+    u16 unk10;
+    u8 unk12;
+    u8 unk13_0:7;
+    u8 unk13_7:1;
+};
 
 struct FieldSystem {
     struct FieldSystemUnkSub0 *unk0;
@@ -211,7 +247,7 @@ struct FieldSystem {
     u8 filler44[0x1C];
     u32 unk60;
     int unk64;
-    int unk68;
+    struct FieldSystemUnkSub68* unk68;
     u32 unk6C;
     int unk70;
     const struct UnkStruct_020FC5CC *unk74;

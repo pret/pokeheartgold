@@ -309,8 +309,8 @@ _0205BD14:
 _0205BD1C: .word 0x000004AA
 	thumb_func_end sub_0205BC78
 
-	thumb_func_start sub_0205BD20
-sub_0205BD20: ; 0x0205BD20
+	thumb_func_start Save_GetPartyLead
+Save_GetPartyLead: ; 0x0205BD20
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	bl SavArray_PlayerParty_get
@@ -343,10 +343,10 @@ _0205BD5C:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0205BD60: .word 0x00000000
-	thumb_func_end sub_0205BD20
+	thumb_func_end Save_GetPartyLead
 
-	thumb_func_start Save_GetLeadMonIdxForBugContest
-Save_GetLeadMonIdxForBugContest: ; 0x0205BD64
+	thumb_func_start Save_GetPartyLeadAlive
+Save_GetPartyLeadAlive: ; 0x0205BD64
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	bl SavArray_PlayerParty_get
@@ -385,7 +385,7 @@ _0205BDAE:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0205BDB4: .word 0x00000000
-	thumb_func_end Save_GetLeadMonIdxForBugContest
+	thumb_func_end Save_GetPartyLeadAlive
 
 	thumb_func_start sub_0205BDB8
 sub_0205BDB8: ; 0x0205BDB8

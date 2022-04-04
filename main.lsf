@@ -172,7 +172,7 @@ Static main
 	Object asm/scrcmd_12.o
 	Object src/scrcmd_money.o
 	Object src/scrcmd_daycare.o
-	Object asm/scrcmd_15.o
+	Object src/scrcmd_party.o
 	Object src/scrcmd_dppl_prizes.o
 	Object src/scrcmd_17.o
 	Object src/scrcmd_items.o
@@ -217,7 +217,7 @@ Static main
 	Object asm/unk_02062108.o
 	Object asm/unk_data_020FDB44.o
 	Object asm/unk_020632B0.o
-	Object asm/unk_020648EC.o
+	Object src/unk_020648EC.o
 	Object src/field_use_item.o
 	Object asm/unk_020658D4.o
 	Object src/sys_flags.o
@@ -298,7 +298,7 @@ Static main
 	Object src/save_data_write_error.o
 	Object asm/unk_02092B04.o
 	Object asm/unk_02092BB8.o
-	Object asm/unk_02092BE8.o
+	Object src/unk_02092BE8.o
 	Object asm/unk_020931C4.o
 	Object asm/unk_020932A4.o
 	Object asm/unk_020932E0.o

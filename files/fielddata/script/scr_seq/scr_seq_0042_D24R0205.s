@@ -23,7 +23,7 @@ scr_seq_D24R0205_008:
 	goto _009D
 
 _003D:
-	get_lead_mon_index VAR_TEMP_x4005
+	get_party_lead_alive VAR_TEMP_x4005
 	compare VAR_UNK_4102, 1
 	goto_if_eq _0061
 	compare VAR_UNK_4102, 2
