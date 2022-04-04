@@ -248,7 +248,7 @@ ov01_021EFCF8: ; 0x021EFCF8
 	ldr r0, _021EFD38 ; =ov01_021EFD3C
 	add r1, r4, #0
 	mov r2, #5
-	bl sub_0200E320
+	bl CreateSysTask
 	str r5, [r4, #0x48]
 	cmp r5, #0
 	beq _021EFD28
@@ -381,7 +381,7 @@ _021EFE04:
 	mov r1, #1
 	str r1, [r2]
 _021EFE14:
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #4
@@ -644,7 +644,7 @@ ov01_021EFFD8: ; 0x021EFFD8
 	ldr r1, [r1]
 	bl ov01_021EFF90
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r4, pc}
 	thumb_func_end ov01_021EFFD8
 
@@ -789,7 +789,7 @@ ov01_021F00DC: ; 0x021F00DC
 	bl ov01_021FB530
 	str r0, [r4, #0x24]
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	nop
 _021F0104: .word ov01_021F010C
@@ -891,7 +891,7 @@ ov01_021F0174: ; 0x021F0174
 	mov r0, #0
 	str r0, [r4, #0x24]
 	ldr r0, [r4, #0x28]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	str r0, [r4, #0x28]
 	pop {r4, pc}
@@ -1096,7 +1096,7 @@ ov01_021F0330: ; 0x021F0330
 	bl ov01_021FB530
 	str r0, [r4, #0x3c]
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	nop
 _021F0358: .word ov01_021F0360
@@ -1224,7 +1224,7 @@ ov01_021F03F8: ; 0x021F03F8
 	mov r0, #0
 	str r0, [r4, #0x3c]
 	ldr r0, [r4, #0x40]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	str r0, [r4, #0x40]
 	pop {r4, pc}
@@ -1423,7 +1423,7 @@ ov01_021F05C4: ; 0x021F05C4
 	add r0, r1, #0
 	add r1, r5, #4
 	mov r2, #4
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	mov r7, #0x4b
 	str r0, [r5]
 	mov r4, #0
@@ -1432,7 +1432,7 @@ _021F05DC:
 	add r0, r6, #0
 	add r1, r4, #0
 	mov r2, #4
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	str r0, [r5, r7]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -1453,7 +1453,7 @@ ov01_021F05F4: ; 0x021F05F4
 	lsl r6, r6, #2
 _021F0604:
 	ldr r0, [r5, r6]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -1482,7 +1482,7 @@ ov01_021F0614: ; 0x021F0614
 	ldr r2, [sp, #0x4c]
 	add r1, r7, #0
 	mov r3, #0
-	bl sub_0200A424
+	bl AddCharResObjFromOpenNarcWithAtEndFlag
 	str r0, [r4]
 	str r6, [sp]
 	mov r0, #1
@@ -1497,7 +1497,7 @@ ov01_021F0614: ; 0x021F0614
 	ldr r0, [r5, r0]
 	add r1, r7, #0
 	mov r3, #0
-	bl sub_0200A480
+	bl AddPlttResObjFromOpenNarc
 	str r0, [r4, #4]
 	str r6, [sp]
 	mov r0, #2
@@ -1510,7 +1510,7 @@ ov01_021F0614: ; 0x021F0614
 	ldr r2, [sp, #0x50]
 	add r1, r7, #0
 	mov r3, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	str r0, [r4, #8]
 	str r6, [sp]
 	mov r0, #3
@@ -1523,7 +1523,7 @@ ov01_021F0614: ; 0x021F0614
 	ldr r2, [sp, #0x54]
 	add r1, r7, #0
 	mov r3, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
 	bl sub_0200ADA4
@@ -1560,7 +1560,7 @@ ov01_021F0614: ; 0x021F0614
 	str r0, [sp, #0x28]
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021F0614
@@ -1580,7 +1580,7 @@ ov01_021F06EC: ; 0x021F06EC
 _021F0704:
 	ldr r0, [r5, r7]
 	ldr r1, [r4]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	add r6, r6, #1
 	add r4, r4, #4
 	add r5, r5, #4
@@ -2325,7 +2325,7 @@ ov01_021F0C40: ; 0x021F0C40
 	add r4, #0xe0
 	str r0, [r4]
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	nop
 _021F0C74: .word ov01_021F0CA8
@@ -2415,7 +2415,7 @@ ov01_021F0CDC: ; 0x021F0CDC
 	add r0, r4, #0
 	add r0, #0xe0
 	ldr r0, [r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	add r4, #0xe0
 	str r0, [r4]
@@ -2515,7 +2515,7 @@ ov01_021F0DB0: ; 0x021F0DB0
 	ldr r1, [r1]
 	bl GXx_SetMasterBrightness_
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r4, pc}
 	.balign 4, 0
 _021F0DC4: .word 0x0400006C
@@ -2591,7 +2591,7 @@ _021F0DFC:
 	ldr r0, _021F0E70 ; =ov01_021F10C8
 	ldr r1, [r1]
 	lsl r2, r2, #0xa
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r4, pc}
 	.balign 4, 0
 _021F0E5C: .word ov01_02209B64
@@ -2746,7 +2746,7 @@ _021F0F64:
 	mov r1, #0xe1
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	mov r2, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -2913,7 +2913,7 @@ _021F10AC:
 	ldr r0, [r4, #4]
 	bl ov01_021F1148
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	ldrh r0, [r4]
 	add r0, r0, #1
 	strh r0, [r4]
@@ -2969,7 +2969,7 @@ ov01_021F10C8: ; 0x021F10C8
 	mov r0, #1
 	strb r0, [r4, #2]
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _021F1136:
 	add sp, #0x3c
 	pop {r4, r5, pc}
@@ -3184,7 +3184,7 @@ ov01_021F12D0: ; 0x021F12D0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, [r4]
 	bl sub_02014B9C
 	ldr r0, [r4]

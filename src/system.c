@@ -7,19 +7,23 @@
 struct System gSystem;
 struct FSCacheEntry gFileCache[128];
 
+void sub_0201A08C(void);
+void sub_0201A0C0(void);
+void CallHBlankIntrCallback(void);
 void HBlankIntrRegsToggle(BOOL enable);
+void sub_0201A1B4(void);
 void sub_0201A5E8(void);
 
 void sub_0201A08C(void) {
     OS_SetIrqCheckFlag(OS_IE_VBLANK);
-    MI_WaitDma(3);
+    MI_WaitDma(GX_DEFAULT_DMAID);
     sub_0201F880(gSystem.unk1C);
     gSystem.unk30++;
 }
 
 void sub_0201A0C0(void) {
     OS_SetIrqCheckFlag(OS_IE_VBLANK);
-    MI_WaitDma(3);
+    MI_WaitDma(GX_DEFAULT_DMAID);
 }
 
 void sub_0201A0E0(void) {
@@ -76,7 +80,7 @@ void HBlankIntrRegsToggle(BOOL enable) {
     OS_EnableIrq();
 }
 
-static const struct HeapParam _020F62A4[] = {
+static const struct HeapParam sDefaultHeapSpec[] = {
     {0xD200, OS_ARENA_MAIN},
     {0x23600, OS_ARENA_MAIN},
     {0x10, OS_ARENA_MAIN},
@@ -100,7 +104,7 @@ void sub_0201A1B4(void) {
     while (heap_size_pre & 3) {
         heap_size_pre++;
     }
-    InitHeapSystem(_020F62A4, NELEMS(_020F62A4), 161, heap_size_pre);
+    InitHeapSystem(sDefaultHeapSpec, NELEMS(sDefaultHeapSpec), 161, heap_size_pre);
 }
 
 void InitSystemForTheGame(void) {

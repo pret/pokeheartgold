@@ -43,7 +43,7 @@ _020FA254:
 	.word SignBackOfTrainerCardApp_OvyInit, SignBackOfTrainerCardApp_OvyExec, SignBackOfTrainerCardApp_OvyExit, FS_OVERLAY_ID(trainer_card_signature)
 _020FA264:
 	.word ov70_02238430, ov70_022385C0, ov70_022386F4, FS_OVERLAY_ID(OVY_70)
-_020FA274:
+sAppTemplate_ChooseStarter:
 	.word ChooseStarterApplication_OvyInit, ChooseStarterApplication_OvyExec, ChooseStarterApplication_OvyExit, FS_OVERLAY_ID(OVY_61)
 _020FA284:
 	.word ov18_021E5AA0, ov18_021E5B64, ov18_021E5B80, FS_OVERLAY_ID(OVY_18)
@@ -726,7 +726,7 @@ sub_0203E76C: ; 0x0203E76C
 	bl sub_02088288
 	str r0, [r4, #0x2c]
 	add r0, r5, #0
-	bl sub_0202D95C
+	bl Save_SpecialRibbons_get
 	str r0, [r4, #0x20]
 	mov r0, #0x43
 	lsl r0, r0, #2
@@ -2832,11 +2832,11 @@ _0203F804: .word _020FA284
 FieldSys_LaunchChooseStarterApplication: ; 0x0203F808
 	ldr r3, _0203F810 ; =Fsys_LaunchApplication
 	add r2, r1, #0
-	ldr r1, _0203F814 ; =_020FA274
+	ldr r1, _0203F814 ; =sAppTemplate_ChooseStarter
 	bx r3
 	.balign 4, 0
 _0203F810: .word Fsys_LaunchApplication
-_0203F814: .word _020FA274
+_0203F814: .word sAppTemplate_ChooseStarter
 	thumb_func_end FieldSys_LaunchChooseStarterApplication
 
 	thumb_func_start sub_0203F818
@@ -3301,7 +3301,7 @@ sub_0203FB94: ; 0x0203FB94
 	strh r0, [r4, #0x18]
 	strb r0, [r4, #0x12]
 	ldr r0, [r5, #0xc]
-	bl sub_0202D95C
+	bl Save_SpecialRibbons_get
 	str r0, [r4, #0x20]
 	ldr r0, [r5, #0xc]
 	bl SavArray_IsNatDexEnabled

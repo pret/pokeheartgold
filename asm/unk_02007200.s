@@ -28,7 +28,7 @@ _02007226:
 	add r0, r6, #0
 	add r1, r4, #0
 	add r2, r7, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end sub_02007200
@@ -43,6 +43,6 @@ sub_02007234: ; 0x02007234
 	bl FreeToHeap
 _02007244:
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r4, pc}
 	thumb_func_end sub_02007234

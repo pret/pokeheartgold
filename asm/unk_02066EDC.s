@@ -188,7 +188,7 @@ sub_02066FEC: ; 0x02066FEC
 	ldrb r0, [r6, #9]
 	strb r0, [r4, #0x12]
 	add r0, r5, #0
-	bl sub_0202D95C
+	bl Save_SpecialRibbons_get
 	str r0, [r4, #0x20]
 	mov r0, #0x43
 	lsl r0, r0, #2

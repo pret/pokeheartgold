@@ -347,7 +347,6 @@ BAG_VIEW *CreateBagView(BAG_DATA *bag, const u8 *pockets, HeapID heap_id) {
 ITEM_SLOT *Bag_GetPocketSlotN(BAG_DATA *bag, u8 pocket, int n) {
     ITEM_SLOT *slots;
     u32 count;
-    int i;
 
     switch (pocket) {
     case POCKET_KEY_ITEMS:

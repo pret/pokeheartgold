@@ -37,7 +37,7 @@ void InitPartyWithMaxSize(PARTY *party, int maxSize) {
     for (i = 0; i < PARTY_SIZE; i++) {
         ZeroMonData(&party->core.mons[i]);
     }
-    MI_CpuFill8(&party->extra, 0, 5 * party->core.maxCount);
+    MI_CpuClear8(&party->extra, 5 * party->core.maxCount);
 }
 
 BOOL AddMonToParty(PARTY *party, const POKEMON *pokemon) {
@@ -45,7 +45,7 @@ BOOL AddMonToParty(PARTY *party, const POKEMON *pokemon) {
         return FALSE;
     }
     party->core.mons[party->core.curCount] = *pokemon;
-    MI_CpuFill8(&party->extra.unk_00[party->core.curCount], 0, sizeof(PARTY_EXTRA_SUB));
+    MI_CpuClear8(&party->extra.unk_00[party->core.curCount], sizeof(PARTY_EXTRA_SUB));
     party->core.curCount++;
     return TRUE;
 }
@@ -58,7 +58,7 @@ BOOL RemoveMonFromParty(PARTY *party, int slot) {
         party->extra.unk_00[slot] = party->extra.unk_00[slot + 1];
     }
     ZeroMonData(&party->core.mons[slot]);
-    MI_CpuFill8(&party->extra.unk_00[slot], 0, sizeof(PARTY_EXTRA_SUB));
+    MI_CpuClear8(&party->extra.unk_00[slot], sizeof(PARTY_EXTRA_SUB));
     party->core.curCount--;
     return TRUE;
 }
@@ -88,7 +88,7 @@ void Party_SetUnkSubSlot(PARTY *party, const PARTY_EXTRA_SUB *src, int slot) {
 
 void Party_ResetUnkSubSlot(PARTY *party, int slot) {
     PARTY_ASSERT_SLOT(party, slot);
-    MI_CpuFill8(&party->extra.unk_00[slot], 0, sizeof(PARTY_EXTRA_SUB));
+    MI_CpuClear8(&party->extra.unk_00[slot], sizeof(PARTY_EXTRA_SUB));
 }
 
 void Party_SafeCopyMonToSlot_ResetUnkSub(PARTY *party, int slot, POKEMON *src) {
@@ -96,7 +96,7 @@ void Party_SafeCopyMonToSlot_ResetUnkSub(PARTY *party, int slot, POKEMON *src) {
     {
         BOOL valid = GetMonData(&party->core.mons[slot], MON_DATA_SPECIES_EXISTS, NULL) - GetMonData(src, MON_DATA_SPECIES_EXISTS, NULL);
         party->core.mons[slot] = *src;
-        MI_CpuFill8(&party->extra.unk_00[slot], 0, sizeof(PARTY_EXTRA_SUB));
+        MI_CpuClear8(&party->extra.unk_00[slot], sizeof(PARTY_EXTRA_SUB));
         party->core.curCount += valid;
     }
 }

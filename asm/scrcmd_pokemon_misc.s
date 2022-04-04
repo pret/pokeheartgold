@@ -486,7 +486,7 @@ _02200E62:
 	ldr r0, _02200EC4 ; =ov01_022010CC
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4, #4]
 	add sp, #0x14
 	pop {r3, r4, pc}
@@ -879,7 +879,7 @@ _0220119C:
 	bl DestroyMsgData
 _022011BE:
 	ldr r0, [r6, #4]
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r6, #0
 	bl FreeToHeap
 	pop {r4, r5, r6, pc}

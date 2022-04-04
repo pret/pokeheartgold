@@ -22,7 +22,7 @@ ov01_021E5900: ; 0x021E5900
 	ldr r0, [r4, #8]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl GF_RunVramTransferTasks
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #0x3c]
 	bl sub_0205F1A0
 	bl ov01_021FA1D0
@@ -168,7 +168,7 @@ _021E5A12:
 	ldr r0, _021E5BD0 ; =sub_0203E348
 	mov r1, #0
 	mov r2, #0x7b
-	bl sub_0200E320
+	bl CreateSysTask
 _021E5A50:
 	bl ov01_021E6028
 	mov r0, #0x80
@@ -200,7 +200,7 @@ _021E5A50:
 	ldr r0, _021E5BD0 ; =sub_0203E348
 	ldr r2, _021E5BD8 ; =0x00000315
 	mov r1, #0
-	bl sub_0200E320
+	bl CreateSysTask
 _021E5AA8:
 	mov r0, #4
 	bl ov02_0224F864
@@ -297,11 +297,11 @@ _021E5B70:
 	ldr r0, _021E5BDC ; =sub_02096594
 	mov r1, #0
 	lsl r2, r2, #2
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r0, _021E5BDC ; =sub_02096594
 	ldr r2, _021E5BE0 ; =0x00000578
 	mov r1, #0
-	bl sub_0200E320
+	bl CreateSysTask
 _021E5B8E:
 	ldr r0, [r6]
 	add r0, r0, #1
@@ -483,7 +483,7 @@ _021E5CFA:
 	ldr r0, _021E5E9C ; =sub_0203E348
 	ldr r2, _021E5EA0 ; =0x00001EA5
 	mov r1, #0
-	bl sub_0200E320
+	bl CreateSysTask
 _021E5D34:
 	ldr r0, [r4, #0x3c]
 	bl sub_0205E4C8
@@ -507,7 +507,7 @@ _021E5D34:
 	ldr r0, _021E5E9C ; =sub_0203E348
 	ldr r2, _021E5EA8 ; =0x000004DD
 	mov r1, #0
-	bl sub_0200E320
+	bl CreateSysTask
 _021E5D72:
 	add r4, #0x9c
 	ldr r0, [r4]
@@ -989,17 +989,17 @@ ov01_021E6178: ; 0x021E6178
 	mov r2, #4
 	str r2, [sp, #0x10]
 	add r2, r0, #0
-	bl sub_0200B150
+	bl OamManager_Create
 	add sp, #0x14
 	pop {pc}
 	thumb_func_end ov01_021E6178
 
 	thumb_func_start ov01_021E619C
 ov01_021E619C: ; 0x021E619C
-	ldr r3, _021E61A0 ; =sub_0200B244
+	ldr r3, _021E61A0 ; =OamManager_Free
 	bx r3
 	.balign 4, 0
-_021E61A0: .word sub_0200B244
+_021E61A0: .word OamManager_Free
 	thumb_func_end ov01_021E619C
 
 	thumb_func_start ov01_021E61A4
@@ -1082,7 +1082,7 @@ ov01_021E6220: ; 0x021E6220
 	bl ov01_021F3C9C
 	ldr r1, [r4, #0x24]
 	add r0, sp, #0
-	bl sub_02023618
+	bl GF_Camera_GetAngle
 	add r2, sp, #0
 	ldrh r2, [r2]
 	mov r0, #0x47

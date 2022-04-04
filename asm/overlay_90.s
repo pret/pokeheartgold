@@ -204,11 +204,11 @@ ov90_02258938: ; 0x02258938
 	add r5, r0, #0
 	ldr r0, _022589B8 ; =0x000005EC
 	ldr r0, [r5, r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0x5f
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0xb9
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -318,10 +318,10 @@ ov90_02258A04: ; 0x02258A04
 	add r5, r0, #0
 	ldr r0, _02258A90 ; =0x00000644
 	ldr r0, [r5, r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, _02258A94 ; =0x00000648
 	ldr r0, [r5, r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0xcf
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -627,7 +627,7 @@ ov90_02258C38: ; 0x02258C38
 	ldr r0, [r4, #0x2c]
 	cmp r0, #0
 	beq _02258C4A
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	str r0, [r4, #0x2c]
 _02258C4A:
@@ -655,7 +655,7 @@ ov90_02258C74: ; 0x02258C74
 	push {r3, lr}
 	ldr r0, [r0, #0x14]
 	ldr r1, _02258C88 ; =0x00001388
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	mov r1, #1
 	bl sub_0200B12C
 	pop {r3, pc}
@@ -675,7 +675,7 @@ _02258C9A:
 	ldr r0, _02258CAC ; =ov90_0225BEE0
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4, #0x2c]
 	mov r0, #1
 	strh r0, [r4, #4]
@@ -696,7 +696,7 @@ _02258CBE:
 	ldr r0, _02258CD8 ; =ov90_0225C06C
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4, #0x2c]
 	mov r0, #1
 	strh r0, [r4, #4]
@@ -856,7 +856,7 @@ _02258DDC:
 	add r0, r6, #0
 	add r1, r4, #0
 	add r2, r7, #0
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	add r4, r4, #1
 	stmia r5!, {r0}
 	cmp r4, #4
@@ -906,7 +906,7 @@ _02258E38:
 	add r4, r5, #0
 _02258E3C:
 	ldr r0, [r4]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #4
@@ -1020,7 +1020,7 @@ _02258EF6:
 	ldr r1, [sp, #0x2c]
 	ldr r2, [sp, #0x4c]
 	mov r3, #0
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	str r0, [r4, #4]
 	str r7, [sp]
 	mov r0, #1
@@ -1032,7 +1032,7 @@ _02258EF6:
 	ldr r0, [r5, #4]
 	ldr r2, [sp, #0x30]
 	mov r3, #0
-	bl sub_0200A480
+	bl AddPlttResObjFromOpenNarc
 	str r0, [r4, #8]
 	str r7, [sp]
 	mov r0, #2
@@ -1042,7 +1042,7 @@ _02258EF6:
 	ldr r1, [sp, #0x2c]
 	ldr r2, [sp, #0x50]
 	mov r3, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	str r0, [r4, #0xc]
 	str r7, [sp]
 	mov r0, #3
@@ -1052,7 +1052,7 @@ _02258EF6:
 	ldr r1, [sp, #0x2c]
 	ldr r2, [sp, #0x54]
 	mov r3, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #4]
 	bl sub_0200ADA4
@@ -1094,7 +1094,7 @@ _02258F7A:
 	str r0, [sp, #0x28]
 	add r0, r4, #0
 	add r1, r7, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov90_02258EE0
@@ -1119,7 +1119,7 @@ _02258FC8:
 _02258FDA:
 	ldr r0, [r5]
 	ldr r1, [r4, #4]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	add r6, r6, #1
 	add r4, r4, #4
 	add r5, r5, #4
@@ -1261,7 +1261,7 @@ ov90_022590CC: ; 0x022590CC
 	str r3, [sp, #0xc]
 	add r2, r0, #0
 	str r4, [sp, #0x10]
-	bl sub_0200B150
+	bl OamManager_Create
 	ldr r3, _02259154 ; =ov90_0225C294
 	add r2, sp, #0x1c
 	add r7, r2, #0
@@ -1288,7 +1288,7 @@ ov90_022590CC: ; 0x022590CC
 	ldr r0, [sp, #0x14]
 	add r1, r5, #4
 	add r2, r4, #0
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	str r0, [r5]
 	bl sub_0203A880
 	mov r0, #0x10
@@ -1310,7 +1310,7 @@ ov90_02259158: ; 0x02259158
 	bl sub_02024504
 	bl sub_0202168C
 	bl sub_02022608
-	bl sub_0200B244
+	bl OamManager_Free
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov90_02259158
@@ -1326,10 +1326,10 @@ _02259178: .word sub_0202457C
 
 	thumb_func_start ov90_0225917C
 ov90_0225917C: ; 0x0225917C
-	ldr r3, _02259180 ; =sub_0200B224
+	ldr r3, _02259180 ; =OamManager_ApplyAndResetBuffers
 	bx r3
 	.balign 4, 0
-_02259180: .word sub_0200B224
+_02259180: .word OamManager_ApplyAndResetBuffers
 	thumb_func_end ov90_0225917C
 
 	thumb_func_start ov90_02259184
@@ -1762,7 +1762,7 @@ _0225948A:
 	ldrh r0, [r1, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _022594B4
 	ldr r1, [sp, #8]
@@ -1816,7 +1816,7 @@ ov90_022594FC: ; 0x022594FC
 	ldrh r0, [r6, r7]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _02259524
 	ldrh r0, [r6, r7]
@@ -1842,7 +1842,7 @@ ov90_02259538: ; 0x02259538
 	ldrh r0, [r0, #0x20]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02259550
 	mov r0, #1
@@ -1985,7 +1985,7 @@ _022595B4:
 	ldr r0, _022596BC ; =ov90_02259794
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r1, _022596C0 ; =0x000005EC
 	mov r2, #0
 	str r0, [r4, r1]
@@ -2811,16 +2811,16 @@ _02259C12:
 	bl ov90_02258EB4
 	ldr r1, [sp, #0x24]
 	str r0, [r5, #0x10]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
 	bl sub_02024A74
 	ldr r0, [r5, #0x10]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x10]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [sp, #0x5c]
@@ -2837,10 +2837,10 @@ _02259C12:
 	bl ov90_02258EB4
 	str r0, [r5, #0x14]
 	mov r1, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5, #0x14]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	strb r4, [r5, #0x1a]
 	ldr r0, [sp, #0x1c]
 	strb r7, [r5, #0x1b]
@@ -2964,13 +2964,13 @@ ov90_02259E18: ; 0x02259E18
 	ldr r0, [r5, #0x14]
 	add r4, r1, #0
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x14]
 	add r1, r4, #4
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5, #0x14]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov90_02259E18
 
@@ -3032,12 +3032,12 @@ ov90_02259E8C: ; 0x02259E8C
 
 	thumb_func_start ov90_02259EA0
 ov90_02259EA0: ; 0x02259EA0
-	ldr r3, _02259EA8 ; =sub_02024830
+	ldr r3, _02259EA8 ; =Set2dSpriteVisibleFlag
 	ldr r0, [r0, #0x10]
 	mov r1, #1
 	bx r3
 	.balign 4, 0
-_02259EA8: .word sub_02024830
+_02259EA8: .word Set2dSpriteVisibleFlag
 	thumb_func_end ov90_02259EA0
 
 	thumb_func_start ov90_02259EAC
@@ -4230,7 +4230,7 @@ _0225A7CE:
 	ldr r0, _0225A83C ; =ov90_0225A980
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r1, _0225A840 ; =0x00000644
 	str r0, [r4, r1]
 	b _0225A800
@@ -4238,7 +4238,7 @@ _0225A7DE:
 	ldr r0, _0225A844 ; =ov90_0225AE4C
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r1, _0225A840 ; =0x00000644
 	str r0, [r4, r1]
 	b _0225A800
@@ -4247,7 +4247,7 @@ _0225A7EE:
 	ldr r0, _0225A83C ; =ov90_0225A980
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r1, _0225A840 ; =0x00000644
 	str r0, [r4, r1]
 _0225A800:
@@ -6143,10 +6143,10 @@ _0225B630:
 	bl ov90_02258EB4
 	str r0, [r5, #8]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #8]
 	ldr r1, [sp, #0x18]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5, #8]
 	mov r1, #0
 	bl sub_02024A04
@@ -6288,7 +6288,7 @@ _0225B750:
 	add r0, r4, r0
 	ldr r0, [r0, #8]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	mov r1, #8
 	add r0, #0x49
@@ -6339,10 +6339,10 @@ _0225B784:
 _0225B7CC:
 	ldr r0, [r5, #8]
 	add r1, r7, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #8]
 	mov r1, #2
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #0xf
@@ -6798,7 +6798,7 @@ _0225BB02:
 	bl ov90_02258EB4
 	str r0, [r5]
 	mov r1, #5
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5]
 	mov r1, #0
 	bl sub_02024A04
@@ -6916,10 +6916,10 @@ ov90_0225BBF0: ; 0x0225BBF0
 	mov r4, #1
 	strh r4, [r5, #8]
 	ldr r0, [r5]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #4]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _0225BC18:
 	mov r1, #0
 	add r0, r5, #0
@@ -7051,7 +7051,7 @@ ov90_0225BD08: ; 0x0225BD08
 	ldr r0, [r6, r0]
 	cmp r0, #0
 	beq _0225BD22
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0x63
 	mov r1, #0
 	lsl r0, r0, #2
@@ -7171,7 +7171,7 @@ ov90_0225BDE4: ; 0x0225BDE4
 	mov r0, #0x63
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0x63
 	mov r1, #0
 	lsl r0, r0, #2
@@ -7482,7 +7482,7 @@ _0225C03A:
 	add r0, #0x34
 	bl ov90_0225BD08
 	ldr r0, [r4, #0x2c]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	str r0, [r4, #0x2c]
 _0225C05E:
@@ -7532,7 +7532,7 @@ _0225C090:
 	bl ov90_02258EB4
 	str r0, [r4, #0x30]
 	mov r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r4, #0x30]
 	mov r1, #0
 	bl sub_02024A04
@@ -7549,7 +7549,7 @@ _0225C0CC:
 	bne _0225C14C
 	ldr r0, [r4, #0x30]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	ldrh r0, [r4, #4]
 	add sp, #8
 	add r0, r0, #1
@@ -7600,7 +7600,7 @@ _0225C128:
 	add r0, #0x34
 	bl ov90_0225BD08
 	ldr r0, [r4, #0x2c]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	str r0, [r4, #0x2c]
 _0225C14C:

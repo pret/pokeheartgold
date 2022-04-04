@@ -37,7 +37,7 @@ BUGCONTEST *BugContest_new(FieldSystem *fsys, u8 weekday) {
     BUGCONTEST *bugContest;
 
     bugContest = (BUGCONTEST *)AllocFromHeap(HEAP_ID_BUG_CONTEST, sizeof(BUGCONTEST));
-    MI_CpuFill8(bugContest, 0, sizeof(BUGCONTEST));
+    MI_CpuClear8(bugContest, sizeof(BUGCONTEST));
     bugContest->heapId = HEAP_ID_BUG_CONTEST;
     bugContest->saveData = fsys->savedata;
     bugContest->sport_balls = 20;

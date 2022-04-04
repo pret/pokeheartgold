@@ -302,23 +302,23 @@ _02025342:
 _02025348: .word gSystem + 0x40
 	thumb_func_end sub_02025320
 
-	thumb_func_start sub_0202534C
-sub_0202534C: ; 0x0202534C
+	thumb_func_start System_GetTouchHeld
+System_GetTouchHeld: ; 0x0202534C
 	ldr r0, _02025354 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x26]
 	bx lr
 	nop
 _02025354: .word gSystem + 0x40
-	thumb_func_end sub_0202534C
+	thumb_func_end System_GetTouchHeld
 
-	thumb_func_start sub_02025358
-sub_02025358: ; 0x02025358
+	thumb_func_start System_GetTouchNew
+System_GetTouchNew: ; 0x02025358
 	ldr r0, _02025360 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	bx lr
 	nop
 _02025360: .word gSystem + 0x40
-	thumb_func_end sub_02025358
+	thumb_func_end System_GetTouchNew
 
 	thumb_func_start sub_02025364
 sub_02025364: ; 0x02025364

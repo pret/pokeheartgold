@@ -45,5 +45,6 @@ BOOL Task_FieldTeleport(TaskManager *taskManager);
 BOOL Task_FieldDig(TaskManager *taskManager);
 BOOL ov02_0224C1F8(TaskManager *taskManager);
 void *ov02_0224C1D8(FieldSystem *fsys, int a1, int a2);
+u8 ov02_02251EE8(UnkFsysSub_114 *a0, u8 *a1);
 
 #endif //POKEHEARTGOLD_OVERLAY_02_H

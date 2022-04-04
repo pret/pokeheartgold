@@ -387,7 +387,7 @@ ov01_021EFA3C: ; 0x021EFA3C
 	ldr r0, _021EFAC8 ; =ov01_021EF8F8
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4, #8]
 	mov r0, #1
 	strb r0, [r4, #4]
@@ -447,7 +447,7 @@ ov01_021EFACC: ; 0x021EFACC
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	beq _021EFADA
-	bl sub_0200E390
+	bl DestroySysTask
 _021EFADA:
 	add r0, r4, #0
 	add r0, #0x20

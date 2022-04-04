@@ -133,13 +133,13 @@ int GetMonBaseStatEx_HandleAlternateForme(NARC *narc, int species, int forme, Ba
 u16 ModifyStatByNature(u8 nature, u16 n, u8 statIndex);
 u8 GetGenderBySpeciesAndPersonality_PreloadedPersonal(const BASE_STATS *personal, u16 species, u32 pid);
 BOOL BoxMonIsHoldingMail(BOXMON *boxmon);
-void sub_02070124(struct SomeDrawPokemonStruct *a0, BOXMON *boxmon, u8 whichFacing);
+void GetPokemonSpriteCharAndPlttNarcIds(struct SomeDrawPokemonStruct *a0, BOXMON *boxmon, u8 whichFacing);
 void sub_02070130(struct SomeDrawPokemonStruct *a0, BOXMON *boxmon, u8 whichFacing);
-void sub_0207013C(struct SomeDrawPokemonStruct *spC, BOXMON *boxmon, u8 whichFacing, BOOL sp14);
-void sub_020701E4(struct SomeDrawPokemonStruct * spC, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 forme, u32 personality);
+void GetBoxmonSpriteCharAndPlttNarcIds(struct SomeDrawPokemonStruct *spC, BOXMON *boxmon, u8 whichFacing, BOOL sp14);
+void GetMonSpriteCharAndPlttNarcIdsEx(struct SomeDrawPokemonStruct * spC, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 forme, u32 personality);
 u8 sub_02070438(u16 species, u8 forme);
 void sub_02070560(struct SomeDrawPokemonStruct * spC, u16 species, u8 whichFacing, u8 gender, u32 shiny);
-void sub_02070588(struct SomeDrawPokemonStruct * spC, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 forme, u32 personality);
+void DP_GetMonSpriteCharAndPlttNarcIdsEx(struct SomeDrawPokemonStruct * spC, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 forme, u32 personality);
 u8 sub_0207083C(BOXMON *boxmon, u8 whichFacing);
 u8 sub_02070848(BOXMON *boxmon, u8 whichFacing);
 u8 sub_02070854(BOXMON *boxmon, u8 whichFacing, BOOL a2);

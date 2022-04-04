@@ -416,6 +416,8 @@ $(eval $(call arc_strip_name,files/poketool/trmsg/trtbl.narc,files/a/0/5/7))
 $(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_data.narc,files/a/0/7/4))
 $(eval $(call arc_strip_name,files/a/0/7/5.$(buildname),files/a/0/7/5))
 $(eval $(call arc_strip_name,files/data/mmodel/mmodel.narc,files/a/0/8/1))
+$(eval $(call arc_strip_name,files/application/choose_starter/choose_starter_main_res.narc,files/a/0/8/2))
+$(eval $(call arc_strip_name,files/application/choose_starter/choose_starter_sub_res.narc,files/a/0/9/3))
 $(eval $(call arc_strip_name,files/poketool/pokegra/otherpoke.narc,files/a/1/1/4))
 $(eval $(call arc_strip_name,files/poketool/pokegra/height_o.narc,files/a/1/1/7))
 $(eval $(call arc_strip_name,files/poketool/trmsg/trtblofs.narc,files/a/1/3/1))
@@ -468,13 +470,16 @@ include files/data/mmodel/mmodel.mk
 include files/fielddata/wazaoshie/waza_oshie.mk
 include files/data/mushi/mushi.mk
 include files/fielddata/tsurepoke/tp_param.mk
+include files/application/choose_starter/choose_starter.mk
 
 $(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;
 
 # This must come after the above includes
 include graphics_files_rules.mk
 
-%.narc: NARC_DEPS = $(wildcard $*/*.bin)
+NTR_FILE_EXT := bin NCGR NCLR NCER NSCR NSBMD NSBCA NSBTA
+
+%.narc: NARC_DEPS = $(foreach ext,$(NTR_FILE_EXT),$(wildcard $*/*.$ext))
 %.narc: $(NARC_DEPS)
 	$(KNARC) -d $* -p $@ -i
 

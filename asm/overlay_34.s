@@ -442,7 +442,7 @@ ov34_0225D87C: ; 0x0225D87C
 	lsl r7, r7, #2
 _0225D8B2:
 	ldr r0, [r5, r7]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -635,7 +635,7 @@ ov34_0225DA50: ; 0x0225DA50
 	mov r0, #0xa
 	add r1, #0x2c
 	mov r2, #4
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	mov r7, #0x55
 	str r0, [r6, #0x28]
 	mov r4, #0
@@ -645,7 +645,7 @@ _0225DA6C:
 	mov r0, #1
 	add r1, r4, #0
 	mov r2, #4
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	str r0, [r5, r7]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -663,7 +663,7 @@ _0225DA6C:
 	ldr r0, [r6, r0]
 	mov r2, #5
 	mov r3, #1
-	bl sub_0200A1D8
+	bl AddCharResObjFromNarc
 	mov r1, #0x59
 	lsl r1, r1, #2
 	str r0, [r6, r1]
@@ -679,7 +679,7 @@ _0225DA6C:
 	ldr r0, [r6, r1]
 	mov r1, #0x49
 	mov r3, #0
-	bl sub_0200A234
+	bl AddPlttResObjFromNarc
 	mov r1, #0x5a
 	lsl r1, r1, #2
 	str r0, [r6, r1]
@@ -694,7 +694,7 @@ _0225DA6C:
 	mov r1, #0x49
 	mov r2, #6
 	mov r3, #1
-	bl sub_0200A294
+	bl AddCellOrAnimResObjFromNarc
 	mov r1, #0x5b
 	lsl r1, r1, #2
 	str r0, [r6, r1]
@@ -709,7 +709,7 @@ _0225DA6C:
 	mov r1, #0x49
 	mov r2, #7
 	mov r3, #1
-	bl sub_0200A294
+	bl AddCellOrAnimResObjFromNarc
 	mov r1, #0x17
 	lsl r1, r1, #4
 	str r0, [r6, r1]
@@ -761,7 +761,7 @@ ov34_0225DB20: ; 0x0225DB20
 	add r0, r5, r3
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r5, #0x28]
 	mov r4, #0
 	str r0, [sp, #0x2c]
@@ -810,19 +810,19 @@ _0225DBBC:
 	add r0, r0, r1
 	str r0, [sp, #0x38]
 	add r0, sp, #0x2c
-	bl sub_02024624
+	bl CreateSprite
 	mov r1, #0x66
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	mov r0, #0x66
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r4, r4, #1
 	add r6, r6, #4
 	add r5, r5, #4
@@ -1136,7 +1136,7 @@ _0225DE42:
 	ldr r0, [r4, r1]
 	add r1, #0xea
 	ldrh r1, [r4, r1]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, _0225DE90 ; =0x0000028A
 	ldrh r0, [r4, r0]
 	cmp r0, #0
@@ -2179,7 +2179,7 @@ ov34_0225E5EC: ; 0x0225E5EC
 _0225E618:
 	ldr r0, [r4, r6]
 	add r1, r5, #4
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _0225E620:
 	lsl r0, r5, #1
 	add r1, r7, r0
@@ -2212,7 +2212,7 @@ _0225E63A:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	mov r0, #0x2a
 	lsl r0, r0, #4
 	strh r7, [r4, r0]
@@ -2228,7 +2228,7 @@ _0225E662:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	mov r0, #0x66
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]

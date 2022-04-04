@@ -1669,7 +1669,7 @@ ov48_022594DC: ; 0x022594DC
 	push {r3, lr}
 	ldr r0, [r0]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	bl GF_RunVramTransferTasks
 	pop {r3, pc}
 	.balign 4, 0
@@ -1877,7 +1877,7 @@ ov48_02259688: ; 0x02259688
 	str r3, [sp, #0xc]
 	add r2, r0, #0
 	str r6, [sp, #0x10]
-	bl sub_0200B150
+	bl OamManager_Create
 	mov r1, #0x10
 	ldr r0, _02259720 ; =ov48_0225B1A0
 	add r2, r1, #0
@@ -1896,14 +1896,14 @@ ov48_02259688: ; 0x02259688
 	mov r0, #0x20
 	add r1, #8
 	add r2, r6, #0
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	str r0, [r5, #4]
 	add r0, r5, #0
 	mov r2, #1
 	add r0, #8
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	mov r7, #0x13
 	mov r4, #0
 	lsl r7, r7, #4
@@ -1911,7 +1911,7 @@ _022596F4:
 	mov r0, #0x20
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	str r0, [r5, r7]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -1941,14 +1941,14 @@ ov48_02259724: ; 0x02259724
 	lsl r6, r6, #4
 _02259734:
 	ldr r0, [r5, r6]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
 	blt _02259734
 	bl sub_0202168C
 	bl sub_02022608
-	bl sub_0200B244
+	bl OamManager_Free
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov48_02259724
 
@@ -2579,7 +2579,7 @@ ov48_02259BC0: ; 0x02259BC0
 	sub sp, #8
 	add r4, r0, #0
 	add r0, r3, #0
-	bl sub_02023114
+	bl GF_Camera_Create
 	str r0, [r4]
 	mov r3, #0
 	str r3, [sp]
@@ -2593,12 +2593,12 @@ ov48_02259BC0: ; 0x02259BC0
 	ldr r2, [r4]
 	mov r0, #0
 	lsl r1, r1, #0xe
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	ldr r1, [r4]
 	mov r0, #0
 	bl sub_020233D8
 	ldr r0, [r4]
-	bl sub_0202313C
+	bl GF_Camera_RegisterToStaticPtr
 	ldr r0, [sp, #0x14]
 	lsl r0, r0, #0x1f
 	lsr r0, r0, #0x1f
@@ -2617,7 +2617,7 @@ _02259C16:
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4]
-	bl sub_020235D4
+	bl GF_Camera_SetDistance
 	add sp, #8
 	pop {r4}
 	pop {r3}
@@ -2737,7 +2737,7 @@ _02259CE0:
 _02259CEA:
 	ldr r0, [r2, #0xc]
 	ldr r1, [r2]
-	bl sub_020235D4
+	bl GF_Camera_SetDistance
 	mov r0, #0
 	pop {r3, pc}
 	nop
@@ -3038,7 +3038,7 @@ ov48_02259F14: ; 0x02259F14
 	ldr r0, [r4, #4]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _02259F30
 	ldr r0, [r4, #4]
@@ -3107,7 +3107,7 @@ _02259F9E:
 	mov r4, #0
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02259FE0
 	ldr r3, _02259FE8 ; =ov48_0225B1C4
@@ -4006,7 +4006,7 @@ _0225A630: .word ov48_0225A680
 ov48_0225A634: ; 0x0225A634
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r2, _0225A648 ; =0x04001000
 	ldr r0, _0225A64C ; =0xFFFF1FFF
 	ldr r1, [r2]
@@ -4667,7 +4667,7 @@ ov48_0225AAAC: ; 0x0225AAAC
 	ldr r0, [r5, r0]
 	ldr r1, [r5, r1]
 	mov r2, #0x14
-	bl sub_0200A480
+	bl AddPlttResObjFromOpenNarc
 	ldr r1, [sp, #0x2c]
 	str r0, [r1, #0x70]
 	bl sub_0200B00C
@@ -4701,7 +4701,7 @@ _0225AB32:
 	ldr r1, [r5, r1]
 	ldr r2, [sp, #0x40]
 	mov r3, #0
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	str r0, [r4, #0x6c]
 	mov r1, #0x51
 	str r6, [sp]
@@ -4716,7 +4716,7 @@ _0225AB32:
 	ldr r1, [r5, r1]
 	ldr r2, [sp, #0x3c]
 	mov r3, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	str r0, [r4, #0x74]
 	mov r1, #0x51
 	str r6, [sp]
@@ -4731,7 +4731,7 @@ _0225AB32:
 	ldr r1, [r5, r1]
 	ldr r2, [sp, #0x38]
 	mov r3, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	str r0, [r4, #0x78]
 	ldr r0, [r4, #0x6c]
 	bl sub_0200ADA4
@@ -4773,12 +4773,12 @@ _0225ABA0:
 	str r0, [sp, #0x24]
 	str r0, [sp, #0x28]
 	add r0, sp, #0x64
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	add r0, sp, #0x44
 	bl sub_02024714
 	str r0, [r7, #0x3c]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	mov r1, #1
 	ldr r0, [r7, #0x3c]
 	lsl r1, r1, #0xc
@@ -4836,7 +4836,7 @@ _0225AC4A:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	ldr r1, [r7, #0x70]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 _0225AC72:
 	ldr r5, [sp, #4]
 	mov r4, #0
@@ -4848,7 +4848,7 @@ _0225AC78:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	ldr r1, [r6, #0x6c]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 _0225AC88:
 	add r4, r4, #1
 	add r6, r6, #4
@@ -4952,7 +4952,7 @@ ov48_0225AD38: ; 0x0225AD38
 _0225AD40:
 	ldr r0, [r5, #0x3c]
 	add r1, r6, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0xc
@@ -5039,7 +5039,7 @@ _0225ADD0:
 	lsl r0, r0, #2
 	add r0, r5, r0
 	ldr r0, [r0, #0x3c]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov48_0225B010
@@ -5077,7 +5077,7 @@ _0225AE0C:
 	lsl r0, r0, #2
 	add r0, r5, r0
 	ldr r0, [r0, #0x3c]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _0225AE36:
 	add r0, r6, #0
 	pop {r4, r5, r6, pc}

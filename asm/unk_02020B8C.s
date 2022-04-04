@@ -21,8 +21,8 @@ _02020B9A:
 	bx lr
 	thumb_func_end sub_02020B94
 
-	thumb_func_start sub_02020B9C
-sub_02020B9C: ; 0x02020B9C
+	thumb_func_start GetDistanceFromPointToLine
+GetDistanceFromPointToLine: ; 0x02020B9C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x50
 	add r5, r0, #0
@@ -113,7 +113,7 @@ sub_02020B9C: ; 0x02020B9C
 	add sp, #0x50
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02020B9C
+	thumb_func_end GetDistanceFromPointToLine
 
 	thumb_func_start sub_02020C64
 sub_02020C64: ; 0x02020C64

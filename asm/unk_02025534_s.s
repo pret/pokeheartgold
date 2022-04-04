@@ -3,86 +3,6 @@
 
 	.text
 
-	thumb_func_start sub_02025534
-sub_02025534: ; 0x02025534
-	push {r3, r4, r5, r6, r7, lr}
-	add r4, r1, #0
-	add r7, r0, #0
-	add r0, r4, #0
-	mov r1, #0xc
-	bl AllocFromHeap
-	add r6, r0, #0
-	bne _0202554A
-	bl GF_AssertFail
-_0202554A:
-	add r0, r4, #0
-	lsl r1, r7, #3
-	bl AllocFromHeap
-	str r0, [r6]
-	cmp r0, #0
-	bne _0202555C
-	bl GF_AssertFail
-_0202555C:
-	mov r4, #0
-	cmp r7, #0
-	ble _02025574
-	add r5, r4, #0
-_02025564:
-	ldr r0, [r6]
-	add r0, r0, r5
-	bl sub_02025768
-	add r4, r4, #1
-	add r5, #8
-	cmp r4, r7
-	blt _02025564
-_02025574:
-	str r7, [r6, #4]
-	mov r0, #0
-	str r0, [r6, #8]
-	add r0, r6, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end sub_02025534
-
-	thumb_func_start sub_02025580
-sub_02025580: ; 0x02025580
-	push {r4, lr}
-	add r4, r0, #0
-	bne _0202558A
-	bl GF_AssertFail
-_0202558A:
-	add r0, r4, #0
-	bl sub_0202568C
-	ldr r0, [r4]
-	bl FreeToHeap
-	add r0, r4, #0
-	bl FreeToHeap
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end sub_02025580
-
-	thumb_func_start sub_020255A0
-sub_020255A0: ; 0x020255A0
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	cmp r5, #0
-	bne _020255AE
-	bl GF_AssertFail
-_020255AE:
-	add r0, r5, #0
-	add r1, r4, #0
-	bl sub_020256C8
-	cmp r0, #0
-	bne _020255BE
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-_020255BE:
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end sub_020255A0
-
 	thumb_func_start sub_020255C4
 sub_020255C4: ; 0x020255C4
 	push {r3, r4, r5, r6, r7, lr}
@@ -289,8 +209,8 @@ _02025724:
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0202570C
 
-	thumb_func_start sub_02025728
-sub_02025728: ; 0x02025728
+	thumb_func_start Get2DGfxRawResObjId
+Get2DGfxRawResObjId: ; 0x02025728
 	push {r4, lr}
 	add r4, r0, #0
 	bne _02025732
@@ -299,7 +219,7 @@ _02025732:
 	ldr r0, [r4]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02025728
+	thumb_func_end Get2DGfxRawResObjId
 
 	thumb_func_start sub_02025738
 sub_02025738: ; 0x02025738
@@ -359,7 +279,7 @@ sub_02025780: ; 0x02025780
 	add r7, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_02025534
+	bl Create2DGfxResMan
 	mov r1, #0x18
 	str r0, [r7]
 	add r0, r4, #0
@@ -394,7 +314,7 @@ _020257CE:
 	add r0, r4, #0
 	bl sub_02025900
 	ldr r0, [r4]
-	bl sub_02025580
+	bl Destroy2DGfxResMan
 	ldr r0, [r4, #4]
 	bl FreeToHeap
 	add r0, r4, #0
@@ -642,7 +562,7 @@ sub_02025988: ; 0x02025988
 	bl GF_AssertFail
 _02025992:
 	ldr r0, [r4]
-	bl sub_02025728
+	bl Get2DGfxRawResObjId
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_02025988

@@ -901,7 +901,7 @@ sub_02075A7C: ; 0x02075A7C
 	ldr r0, _02075D04 ; =sub_02075D08
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #1
@@ -938,7 +938,7 @@ _02075D2C:
 	cmp r0, #0
 	beq _02075D3A
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _02075D3A:
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02075D08
@@ -1290,7 +1290,7 @@ _0207601C:
 	add r0, r4, #0
 	add r0, #0x65
 	ldrb r0, [r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _0207602E
 _0207602A:
@@ -1373,7 +1373,7 @@ _020760CE:
 	add r0, r4, #0
 	add r0, #0x65
 	ldrb r0, [r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02076132
 	bl IsCryFinished
@@ -1793,7 +1793,7 @@ _02076478:
 	add r0, r4, #0
 	add r0, #0x65
 	ldrb r0, [r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _020764F4
 	add r0, r4, #0
@@ -1989,7 +1989,7 @@ _02076620:
 	add r0, r4, #0
 	add r0, #0x65
 	ldrb r0, [r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02076646
 	add r0, r4, #0
@@ -2297,7 +2297,7 @@ _020768AE:
 	add r0, r4, #0
 	add r0, #0x65
 	ldrb r0, [r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _020768D4
 	add r0, r4, #0
@@ -2457,7 +2457,7 @@ _02076A06:
 	add r0, r4, #0
 	add r0, #0x65
 	ldrb r0, [r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02076A44
 	add r0, r4, #0
@@ -2698,7 +2698,7 @@ _02076C0C:
 	add r0, r4, #0
 	add r0, #0x65
 	ldrb r0, [r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02076C76
 	add r0, r4, #0
@@ -3375,7 +3375,7 @@ sub_020771E8: ; 0x020771E8
 	ldr r1, [r4, #0x28]
 	add r0, sp, #0x10
 	mov r2, #2
-	bl sub_02070124
+	bl GetPokemonSpriteCharAndPlttNarcIds
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3403,7 +3403,7 @@ sub_020771E8: ; 0x020771E8
 	add r0, sp, #0x10
 	add r1, r5, #0
 	mov r2, #2
-	bl sub_02070124
+	bl GetPokemonSpriteCharAndPlttNarcIds
 	add r0, r5, #0
 	bl FreeToHeap
 	mov r0, #0

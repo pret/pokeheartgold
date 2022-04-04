@@ -9,7 +9,7 @@ u32 sub_0203170C(void) {
 }
 
 void sub_02031710(Unk0203170C *a0) {
-    MI_CpuFill8(a0, 0, sizeof(Unk0203170C));
+    MI_CpuClear8(a0, sizeof(Unk0203170C));
     memset(a0, 0, sizeof(a0->unk0));
     a0->unk34 = 1;
     SaveSubstruct_UpdateCRC(SAVE_UNK_31);
@@ -80,7 +80,7 @@ static void sub_020317F4(SAVEDATA *saveData, Unk020317F4 *a1) {
     profile = Sav2_PlayerData_GetProfileAddr(saveData);
     ptr2 = sub_02031774(saveData);
 
-    MI_CpuFill8(a1, 0, sizeof(Unk020317F4));
+    MI_CpuClear8(a1, sizeof(Unk020317F4));
     a1->version = GAME_VERSION;
     a1->language = GAME_LANGUAGE;
     a1->unk2 = sub_0202CA8C(ptr);

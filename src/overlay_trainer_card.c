@@ -2,7 +2,7 @@
 #include "overlay_trainer_card.h"
 #include "overlay_trainer_card_main.h"
 #include "overlay_trainer_card_signature.h"
-#include "unk_02004A44.h"
+#include "sound_02004A44.h"
 #include "save_trainer_card.h"
 
 FS_EXTERN_OVERLAY(trainer_card_main);
@@ -36,7 +36,7 @@ BOOL TrainerCardApp_OvyInit(OVY_MANAGER *man, int *state) {
     CreateHeap(3, HEAP_ID_TRAINER_CARD, 0x1000);
 
     TrainerCardAppState *data = OverlayManager_CreateAndGetData(man, sizeof(TrainerCardAppState), HEAP_ID_TRAINER_CARD);
-    MI_CpuFill8(data, 0, sizeof(TrainerCardAppState));
+    MI_CpuClear8(data, sizeof(TrainerCardAppState));
 
     data->heap_id = HEAP_ID_TRAINER_CARD;
     data->parentData = ptr;
@@ -68,7 +68,7 @@ BOOL TrainerCardApp_OvyExec(OVY_MANAGER *man, int *state) {
 
 BOOL TrainerCardApp_OvyExit(OVY_MANAGER *man, int *state) {
     TrainerCardAppState *data = OverlayManager_GetData(man);
-    MI_CpuFill8(data, 0, sizeof(TrainerCardAppState));
+    MI_CpuClear8(data, sizeof(TrainerCardAppState));
     OverlayManager_FreeData(man);
     sub_02004B10();
     DestroyHeap(HEAP_ID_TRAINER_CARD);

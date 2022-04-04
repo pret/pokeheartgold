@@ -940,7 +940,7 @@ _0203604E:
 	ldr r1, [r0, #8]
 	ldr r0, _020360D4 ; =0x0000057C
 	ldr r0, [r1, r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r1, _020360D0 ; =_021D4140
 	ldr r0, _020360D4 ; =0x0000057C
 	ldr r2, [r1, #8]

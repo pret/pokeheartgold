@@ -82,4 +82,6 @@ static inline void G3X_EdgeMarking(BOOL enable) {
     }
 }
 
+void G3X_SetEdgeColorTable(const GXRgb *rgb_8);
+
 #endif //NITRO_GX_G3X_H_
