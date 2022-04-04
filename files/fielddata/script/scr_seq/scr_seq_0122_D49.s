@@ -130,7 +130,7 @@ _01D9:
 	goto _0218
 
 _020C:
-	get_lead_mon_index VAR_SPECIAL_x8000
+	get_party_lead_alive VAR_SPECIAL_x8000
 	buffer_mon_species_name 1, VAR_SPECIAL_x8000
 	npc_msg msg_0137_D49_00001
 _0218:

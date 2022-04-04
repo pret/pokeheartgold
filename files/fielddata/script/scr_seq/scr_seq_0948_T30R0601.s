@@ -76,7 +76,7 @@ _0068:
 	end
 
 _011D:
-	scrcmd_397 VAR_SPECIAL_x8002, VAR_SPECIAL_x8001
+	mon_forget_move VAR_SPECIAL_x8002, VAR_SPECIAL_x8001
 	play_fanfare SEQ_ME_WASURE
 	wait_fanfare
 	npc_msg msg_0635_T30R0601_00008
@@ -286,7 +286,7 @@ _0359:
 	mon_has_move VAR_SPECIAL_RESULT, MOVE_DRACO_METEOR, VAR_SPECIAL_x8000
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _02D1
-	scrcmd_382 VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000
+	mon_get_friendship VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000
 	compare VAR_SPECIAL_RESULT, 255
 	goto_if_lt _02E1
 	buffer_mon_species_name 0, VAR_SPECIAL_x8000
@@ -367,7 +367,7 @@ _04AC:
 	call _06B0
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0722
-	scrcmd_382 VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000
+	mon_get_friendship VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000
 	compare VAR_SPECIAL_RESULT, 255
 	goto_if_lt _0715
 	buffer_mon_species_name 0, VAR_SPECIAL_x8000

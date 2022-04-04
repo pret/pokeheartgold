@@ -186,7 +186,7 @@ _02A8:
 scr_seq_D24R0101_007:
 	scrcmd_609
 	lockall
-	get_lead_mon_index VAR_TEMP_x4005
+	get_party_lead_alive VAR_TEMP_x4005
 	follower_poke_is_event_trigger 2, VAR_TEMP_x4005, VAR_TEMP_x4006
 	compare VAR_TEMP_x4006, 0
 	goto_if_eq _02DA

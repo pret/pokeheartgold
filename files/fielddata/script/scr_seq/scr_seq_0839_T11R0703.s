@@ -11,7 +11,7 @@
 scr_seq_T11R0703_000:
 	scrcmd_609
 	lockall
-	get_lead_mon_index VAR_TEMP_x4000
+	get_party_lead_alive VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 479
 	goto_if_ne _018C
