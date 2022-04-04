@@ -5007,7 +5007,7 @@ void CalcBoxmonPokeathlonStars(struct PokeathlonPerformanceStars *dest, BOXMON *
     int i;
     struct PokeathlonTodayPerformance basePerf;
 
-    MI_CpuFill8(dest, 0, sizeof(struct PokeathlonPerformanceStars));
+    MI_CpuClear8(dest, sizeof(struct PokeathlonPerformanceStars));
     CalcBoxMonPokeathlonPerformance(boxmon, &basePerf);
     for (i = PERFORMANCE_MIN; i < PERFORMANCE_MAX; i++) {
         s16 stars = (

@@ -88,7 +88,7 @@ void sub_02092D8C(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr){
 
 UnkFsysSub_114* sub_02092D98(HeapID id, FieldSystem* sys){ 
     UnkFsysSub_114 * ptr = AllocFromHeap(id, sizeof(UnkFsysSub_114));
-    MI_CpuFill8(ptr, 0, sizeof(UnkFsysSub_114));
+    MI_CpuClear8(ptr, sizeof(UnkFsysSub_114));
     sub_02092F64(ptr);
     ptr->unk_varC = 10;
     ptr->unk_var10 = 30;
@@ -101,7 +101,7 @@ UnkFsysSub_114* sub_02092D98(HeapID id, FieldSystem* sys){
 }
 
 void sub_02092DD8(UnkFsysSub_114 * ptr){
-    MI_CpuFill8(ptr, 0, sizeof(UnkFsysSub_114));
+    MI_CpuClear8(ptr, sizeof(UnkFsysSub_114));
     FreeToHeap(ptr);
 }
 
@@ -254,7 +254,7 @@ void sub_02093010(UnkFsysSub_114* ptr, BOOL Unkarg0){
         if (ptr->unk_var0_3) {
             return;
         }
-        MI_CpuFill8(&ptr->unk_ptr40, 0, 8);
+        MI_CpuClear8(&ptr->unk_ptr40, 8);
         ptr->unk_ptr40 = CreateSysTask((SysTaskFunc)sub_02092FB8, ptr, -1);
         ptr->unk_var0_3 = 1;
     } else {
@@ -264,7 +264,7 @@ void sub_02093010(UnkFsysSub_114* ptr, BOOL Unkarg0){
         if (ptr->unk_ptr40 != 0) {
             DestroySysTask(ptr->unk_ptr40);
         }
-        MI_CpuFill8(&ptr->unk_ptr40, 0, 8);
+        MI_CpuClear8(&ptr->unk_ptr40, 8);
         ptr->unk_var0_3 = 0;
     }
 }

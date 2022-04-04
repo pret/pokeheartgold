@@ -62,7 +62,7 @@ static const WINDOWTEMPLATE sCommunicationErrorWindowTemplate = {
 
 static void VBlankIntr(void) {
     OS_SetIrqCheckFlag(OS_IE_VBLANK);
-    MI_WaitDma(3);
+    MI_WaitDma(GX_DEFAULT_DMAID);
 }
 
 static BOOL sub_0203A9FC(u32* error_code_ptr) {
@@ -141,9 +141,8 @@ void ShowCommunicationError(HeapID heap_id, u32 error, u32 error_code) {
     GX_SwapDisplay();
     G2_BlendNone();
     G2S_BlendNone();
-    // TODO: are there SDK functions for these?
-    reg_GX_DISPCNT &= ~(REG_GX_DISPCNT_OW_MASK | REG_GX_DISPCNT_W1_MASK | REG_GX_DISPCNT_W0_MASK);
-    reg_GXS_DB_DISPCNT &= ~(REG_GXS_DB_DISPCNT_OW_MASK | REG_GXS_DB_DISPCNT_W1_MASK | REG_GXS_DB_DISPCNT_W0_MASK);
+    GX_SetVisibleWnd(0);
+    GXS_SetVisibleWnd(0);
     GX_SetBanks(&sCommunicationErrorBanksConfig);
 
     BGCONFIG* bg_config = BgConfig_Alloc(heap_id);

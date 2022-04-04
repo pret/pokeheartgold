@@ -77,7 +77,7 @@ static BOOL sErrorMessagePrinterLock;
 
 static void VBlankIntr() {
     OS_SetIrqCheckFlag(OS_IE_VBLANK);
-    MI_WaitDma(3);
+    MI_WaitDma(GX_DEFAULT_DMAID);
 }
 
 void PrintErrorMessageAndReset(void) {
