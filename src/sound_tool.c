@@ -19,9 +19,9 @@ extern MICAutoParam _021D05F8;
 #define SWAVE_BUFFER_SIZE 2000
 extern s8 sWaveBuffer[SWAVE_BUFFER_SIZE];
 
-extern u8 _020F5710[8][4];
+extern const u8 _020F5710[8][4];
 
-extern volatile u16 GS_SeqPairs[136][2];
+extern const u16 GS_SeqPairs[136][2];
 
 void GF_SetCtrlBgmFlag(u8 flag) {
     *(u8*) GF_SdatGetAttrPtr(SND_W_ID_CTRL_BGM_FLAG) = flag;
@@ -657,7 +657,7 @@ void GF_SndSetVChatVol(int seq_no, int handle_no) {
     const NNSSndSeqParam* p = NNS_SndArcGetSeqParam(seq_no);
 
     switch (handle_no) {
-    case SND_HANDLE_PMVOICE:
+    case SND_HANDLE_PV:
     case SND_HANDLE_CHORUS:
         vol = PV_VOL_MAX;
         break;
@@ -670,7 +670,7 @@ void GF_SndSetVChatVol(int seq_no, int handle_no) {
     };
 
     if (sub_020378CC() == TRUE) {
-        GF_SndHandleSetInitialVolume(handle_no, (vol / SND_VCHAT_VOL_LV));    //音量半分(06.07.20)
+        GF_SndHandleSetInitialVolume(handle_no, (vol / SND_VCHAT_VOL_LV));
     }
 }
 
@@ -914,7 +914,7 @@ void GF_SetWaveOutSpeed(u32 no, u32 spd) {
 
 void GF_SetWaveOutVolume(u32 no, int vol) {
     if (sub_020378CC() == TRUE) {
-        NNS_SndWaveOutSetVolume(*Snd_WaveOutHandleGet(no), (vol/SND_VCHAT_VOL_LV));    //音量操作
+        NNS_SndWaveOutSetVolume(*Snd_WaveOutHandleGet(no), (vol/SND_VCHAT_VOL_LV)); 
     }
     else {
         NNS_SndWaveOutSetVolume(*Snd_WaveOutHandleGet(no), vol);
@@ -1143,7 +1143,7 @@ void GF_SndSetAllocatableChannelForBGMPlayer(int channel) {
 
 void GF_SndSetBgmChannelAndReverb(int flag) {
     if (flag == 0) {
-        GF_SndSetAllocatableChannelForBGMPlayer(PLAYER_BGM_NORMAL_CH);    //PLAYER_GMの使用チャンネルを元に戻す
+        GF_SndSetAllocatableChannelForBGMPlayer(PLAYER_BGM_NORMAL_CH);
         GF_SndCaptureStopReverb(0);
     } 
     else {
@@ -1234,7 +1234,8 @@ void SoundSys_ToggleGBSounds(void) {
 }
 
 u16 GBSounds_GetGBSeqNoByDSSeqNo(u16 seq_no) {
-    for (u16 c = 0; c < 136; c++) {
+    u16 c;
+    for (c = 0; c < 136; c++) {
         if (seq_no == GS_SeqPairs[c][0]) {
             return GS_SeqPairs[c][1];
         }
@@ -1243,7 +1244,8 @@ u16 GBSounds_GetGBSeqNoByDSSeqNo(u16 seq_no) {
 }
 
 u16 GBSounds_GetDSSeqNoByGBSeqNo(u16 seq_no) {
-    for (u16 c = 0; c < 136; c++) {
+    u16 c;
+    for (c = 0; c < 136; c++) {
         if (seq_no == GS_SeqPairs[c][1]) {
             return GS_SeqPairs[c][0];
         }

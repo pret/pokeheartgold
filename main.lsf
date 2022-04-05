@@ -7,1137 +7,1137 @@
 
 Static main
 {
-    Address 0x02000000
-    StackSize 0 2048
-    Object src/pm_version.o
-    Object src/main.o
-    Object asm/list_menu.o
-    Object asm/unk_02001AF4.o
-    Object src/string_util.o
-    Object asm/render_text.o
-    Object src/font.o
-    Object asm/palette.o
-    Object src/sound.o
-    Object src/sound_radio_sys.o
-    Object src/sound_tool.o
-    Object asm/unk_02004A44.o
-    Object asm/unk_02005D10.o
-    Object src/sound_chatot.o
-    Object src/poke_overlay.o
-    Object asm/unk_02007200.o
-    Object src/overlay_manager.o
-    Object src/filesystem.o
-    Object src/gf_gfx_loader.o
-    Object asm/unk_02007FD8.o
-    Object asm/unk_02009D48.o
-    Object asm/unk_0200A090.o
-    Object asm/unk_0200B150.o
-    Object src/msgdata.o
-    Object src/msgfmt.o
-    Object asm/message_printer.o
-    Object asm/unk_0200CE7C.o
-    Object asm/unk_0200CF18.o
-    Object asm/unk_0200E320.o
-    Object asm/unk_0200E398.o
-    Object asm/unk_0200FA24.o
-    Object asm/unk_0201010C.o
-    Object asm/unk_02012DD8.o
-    Object asm/unk_02013534.o
-    Object asm/unk_02013FDC.o
-    Object src/gf_rtc.o
-    Object src/list_menu_items.o
-    Object asm/unk_02014A08.o
-    Object asm/unk_02014DA0.o
-    Object src/mail_message.o
-    Object src/easy_chat.o
-    Object asm/unk_02015DD8.o
-    Object asm/unk_020163E0.o
-    Object asm/unk_0201660C.o
-    Object asm/unk_02016EDC.o
-    Object asm/unk_02017FAC.o
-    Object asm/unk_02018000.o
-    Object asm/unk_02018380.o
-    Object asm/unk_020183F0.o
-    Object asm/unk_02019014.o
-    Object src/system.o
-    Object src/heap.o
-    Object src/bg_window.o
-    Object asm/unk_0201F4C4.o
-    Object asm/unk_0201F79C.o
-    Object src/string_control_code.o
-    Object src/math_util.o
-    Object asm/text.o
-    Object src/vram_transfer_manager.o
-    Object asm/unk_02020654.o
-    Object src/ascii_util.o
-    Object asm/unk_02020B8C.o
-    Object asm/unk_020210A0.o
-    Object asm/unk_020215A0.o
-    Object asm/unk_02022588.o
-    Object src/gx_layers.o
-    Object asm/unk_02022D74.o
-    Object asm/unk_02023694.o
-    Object asm/unk_02025154.o
-    Object src/timer3.o
-    Object src/error_handling.o
-    Object asm/unk_02025534.o
-    Object asm/unk_02025C44.o
-    Object src/font_data.o
-    Object src/pm_string.o
-    Object asm/unk_02026C44.o
-    Object asm/unk_02026DE0.o
-    Object asm/unk_02026E30.o
-    Object asm/unk_02026E84.o
-    Object src/gf_3d_vramman.o
-    Object asm/unk_02027010.o
-    Object src/save_arrays.o
-    Object src/save.o
-    Object src/sav_system_info.o
-    Object src/player_data.o
-    Object asm/unk_020290B4.o
-    Object src/daycare.o
-    Object src/pokedex.o
-    Object src/save_misc.o
-    Object src/options.o
-    Object src/apricorn_tree_sys.o
-    Object src/save_gymmick.o
-    Object src/save_palpad.o
-    Object src/mail.o
-    Object asm/unk_0202B614.o
-    Object asm/unk_0202C034.o
-    Object asm/unk_0202C730.o
-    Object src/coins.o
-    Object src/save_trainer_card.o
-    Object asm/unk_0202CA24.o
-    Object src/seal_case.o
-    Object src/igt.o
-    Object src/sav_chatot.o
-    Object asm/unk_0202CF1C.o
-    Object asm/unk_0202D230.o
-    Object src/unk_0202D938.o
-    Object src/roamer.o
-    Object asm/unk_0202DB34.o
-    Object asm/unk_0202DBA8.o
-    Object src/hall_of_fame.o
-    Object asm/unk_0202E41C.o
-    Object asm/unk_0202E4B0.o
-    Object asm/unk_0202EB30.o
-    Object asm/unk_0202ECC0.o
-    Object asm/unk_0202ED18.o
-    Object src/save_pokegear.o
-    Object src/safari_zone.o
-    Object src/photo_album.o
-    Object asm/unk_0202FBCC.o
-    Object asm/unk_02030A98.o
-    Object src/unk_0203170C.o
-    Object asm/unk_020318C8.o
-    Object asm/unk_02031904.o
-    Object src/unk_02031AF0.o
-    Object asm/unk_02031B0C.o
-    Object src/pokewalker.o
-    Object src/save_trainer_house.o
-    Object asm/unk_02032844.o
-    Object asm/unk_02033AE0.o
-    Object asm/unk_02034354.o
-    Object asm/unk_02034B0C.o
-    Object asm/unk_02035900.o
-    Object asm/unk_020379A0.o
-    Object asm/unk_02037C94.o
-    Object asm/unk_0203A3B0.o
-    Object src/communication_error.o
-    Object asm/unk_0203AC88.o
-    Object src/wfc_user_info_warning.o
-    Object src/map_matrix.o
-    Object src/map_header.o
-    Object src/map_events.o
-    Object src/save_flypoints.o
-    Object asm/unk_0203BA5C.o
-    Object src/diamond_dust.o
-    Object asm/unk_0203BC10.o
-    Object asm/unk_0203DB6C.o
-    Object asm/unk_0203DE74.o
-    Object asm/unk_0203E348.o
-    Object src/script.o
-    Object src/fieldmap.o
-    Object src/scrcmd_c.o
-    Object asm/scrcmd.o
-    Object src/scrcmd_mart.o
-    Object src/scrcmd_strbuf.o
-    Object asm/scrcmd_5.o
-    Object asm/scrcmd_6.o
-    Object asm/scrcmd_7.o
-    Object asm/scrcmd_8.o
-    Object asm/scrcmd_9.o
-    Object asm/scrcmd_10.o
-    Object asm/scrcmd_11.o
-    Object asm/scrcmd_12.o
-    Object src/scrcmd_money.o
-    Object src/scrcmd_daycare.o
-    Object asm/scrcmd_15.o
-    Object src/scrcmd_dppl_prizes.o
-    Object src/scrcmd_17.o
-    Object src/scrcmd_items.o
-    Object asm/scrcmd_19.o
-    Object asm/scrcmd_20.o
-    Object asm/unk_0204F500.o
-    Object src/event_data.o
-    Object src/task.o
-    Object asm/unk_02050660.o
-    Object asm/unk_020517A4.o
-    Object asm/unk_020518D8.o
-    Object src/field_black_out.o
-    Object asm/unk_0205298C.o
-    Object src/field_warp_tasks.o
-    Object src/script_pokemon_util.o
-    Object asm/unk_02054514.o
-    Object asm/unk_02054648.o
-    Object asm/unk_02054E00.o
-    Object asm/unk_020551B8.o
-    Object asm/unk_02055244.o
-    Object src/unk_02055418.o
-    Object asm/unk_020557E0.o
-    Object asm/unk_02055BF0.o
-    Object asm/unk_02056680.o
-    Object asm/unk_02056D7C.o
-    Object asm/unk_02058034.o
-    Object asm/unk_02058AEC.o
-    Object asm/unk_0205A44C.o
-    Object asm/unk_0205AC88.o
-    Object src/unk_0205B3DC.o
-    Object asm/text_0205B4EC.o
-    Object asm/unk_0205B6E8.o
-    Object asm/unk_0205BB1C.o
-    Object asm/unk_0205BFF0.o
-    Object asm/field_player_avatar.o
-    Object asm/unk_0205CB48.o
-    Object asm/field_map_object.o
-    Object asm/unk_data_020FCBD8.o
-    Object asm/unk_0205FD20.o
-    Object asm/unk_02061284.o
-    Object asm/unk_data_020FD978.o
-    Object asm/unk_02062108.o
-    Object asm/unk_data_020FDB44.o
-    Object asm/unk_020632B0.o
-    Object src/unk_020648EC.o
-    Object src/field_use_item.o
-    Object asm/unk_020658D4.o
-    Object src/sys_flags.o
-    Object src/sys_vars.o
-    Object asm/unk_02066EDC.o
-    Object src/field_roamer.o
-    Object asm/unk_0206793C.o
-    Object asm/unk_02067A60.o
-    Object src/field_move.o
-    Object asm/unk_020689C8.o
-    Object asm/unk_02068DE0.o
-    Object src/unk_02068F84.o
-    Object asm/unk_02068FC8.o
-    Object asm/unk_02069528.o
-    Object asm/unk_02069660.o
-    Object asm/unk_0206979C.o
-    Object src/field_follow_poke.o
-    Object asm/unk_0206A360.o
-    Object asm/field_take_photo.o
-    Object asm/unk_0206B910.o
-    Object src/field_alph_checks.o
-    Object src/get_egg.o
-    Object asm/unk_0206D494.o
-    Object src/pokemon.o
-    Object src/waza.o
-    Object src/trainer_data.o
-    Object src/pokemon_storage_system.o
-    Object src/pokemon_icon_idx.o
-    Object src/party.o
-    Object src/pokedex_util.o
-    Object asm/unk_02074944.o
-    Object asm/unk_02074E5C.o
-    Object asm/unk_020755E8.o
-    Object asm/unk_020773AC.o
-    Object asm/unk_02077678.o
-    Object src/bag_view.o
-    Object src/item.o
-    Object src/bag.o
-    Object asm/unk_02078834.o
-    Object asm/unk_02078DD8.o
-    Object asm/unk_02078E30.o
-    Object asm/unk_0207CB7C.o
-    Object asm/unk_0207EB24.o
-    Object asm/unk_0207F42C.o
-    Object asm/unk_02080BB4.o
-    Object asm/unk_02082908.o
-    Object asm/unk_020850F4.o
-    Object asm/unk_02085604.o
-    Object asm/unk_020863F4.o
-    Object asm/unk_02087284.o
-    Object asm/unk_02087A78.o
-    Object asm/unk_02087E70.o
-    Object asm/unk_02087FD4.o
-    Object asm/unk_0208805C.o
-    Object asm/unk_02088288.o
-    Object asm/unk_0208B1AC.o
-    Object asm/unk_0208C3E4.o
-    Object asm/unk_0208DE40.o
-    Object asm/unk_0208E55C.o
-    Object asm/unk_0208E600.o
-    Object asm/unk_0208F658.o
-    Object asm/unk_0208F814.o
-    Object asm/unk_0208FB64.o
-    Object asm/use_item_on_mon.o
-    Object asm/unk_02090C94.o
-    Object asm/unk_020910D8.o
-    Object asm/unk_02091278.o
-    Object asm/unk_020912AC.o
-    Object src/dex_mon_measures.o
-    Object asm/unk_02091564.o
-    Object asm/unk_020915B0.o
-    Object asm/unk_02091664.o
-    Object src/field_blackthorn_tutors.o
-    Object asm/unk_02091880.o
-    Object asm/unk_02091CDC.o
-    Object asm/unk_020921A4.o
-    Object src/save_data_read_error.o
-    Object src/save_data_write_error.o
-    Object asm/unk_02092B04.o
-    Object asm/unk_02092BB8.o
-    Object asm/unk_02092BE8.o
-    Object asm/unk_020931C4.o
-    Object asm/unk_020932A4.o
-    Object asm/unk_020932E0.o
-    Object asm/unk_020957B0.o
-    Object asm/unk_02095DF4.o
-    Object src/phonebook_dat.o
-    Object src/choose_starter.o
-    Object asm/unk_020961D8.o
-    Object src/error_message_reset.o
-    Object src/sin_vcount.o
-    Object asm/unk_020965A4.o
-    Object asm/unk_020968B0.o
-    Object asm/unk_02096910.o
-    Object asm/unk_02096C88.o
-    Object asm/unk_02097024.o
-    Object asm/unk_020971F8.o
-    Object asm/unk_02097268.o
-    Object asm/unk_02097720.o
-    Object asm/unk_020977CC.o
-    Object asm/unk_020979A8.o
-    Object asm/unk_02097B78.o
-    Object asm/unk_02097BE0.o
-    Object asm/unk_02097D3C.o
-    Object asm/unk_02097E4C.o
-    Object asm/unk_02097F6C.o
+	Address 0x02000000
+	StackSize 0 2048
+	Object src/pm_version.o
+	Object src/main.o
+	Object asm/list_menu.o
+	Object asm/unk_02001AF4.o
+	Object src/string_util.o
+	Object asm/render_text.o
+	Object src/font.o
+	Object asm/palette.o
+	Object src/sound.o
+	Object src/sound_radio_sys.o
+	Object src/sound_tool.o
+	Object asm/unk_02004A44.o
+	Object asm/unk_02005D10.o
+	Object src/sound_chatot.o
+	Object src/poke_overlay.o
+	Object asm/unk_02007200.o
+	Object src/overlay_manager.o
+	Object src/filesystem.o
+	Object src/gf_gfx_loader.o
+	Object asm/unk_02007FD8.o
+	Object asm/unk_02009D48.o
+	Object asm/unk_0200A090.o
+	Object asm/unk_0200B150.o
+	Object src/msgdata.o
+	Object src/msgfmt.o
+	Object asm/message_printer.o
+	Object asm/unk_0200CE7C.o
+	Object asm/unk_0200CF18.o
+	Object asm/unk_0200E320.o
+	Object asm/unk_0200E398.o
+	Object asm/unk_0200FA24.o
+	Object asm/unk_0201010C.o
+	Object asm/unk_02012DD8.o
+	Object asm/unk_02013534.o
+	Object asm/unk_02013FDC.o
+	Object src/gf_rtc.o
+	Object src/list_menu_items.o
+	Object asm/unk_02014A08.o
+	Object asm/unk_02014DA0.o
+	Object src/mail_message.o
+	Object src/easy_chat.o
+	Object asm/unk_02015DD8.o
+	Object asm/unk_020163E0.o
+	Object asm/unk_0201660C.o
+	Object asm/unk_02016EDC.o
+	Object asm/unk_02017FAC.o
+	Object asm/unk_02018000.o
+	Object asm/unk_02018380.o
+	Object asm/unk_020183F0.o
+	Object asm/unk_02019014.o
+	Object src/system.o
+	Object src/heap.o
+	Object src/bg_window.o
+	Object asm/unk_0201F4C4.o
+	Object asm/unk_0201F79C.o
+	Object src/string_control_code.o
+	Object src/math_util.o
+	Object asm/text.o
+	Object src/vram_transfer_manager.o
+	Object asm/unk_02020654.o
+	Object src/ascii_util.o
+	Object asm/unk_02020B8C.o
+	Object asm/unk_020210A0.o
+	Object asm/unk_020215A0.o
+	Object asm/unk_02022588.o
+	Object src/gx_layers.o
+	Object asm/unk_02022D74.o
+	Object asm/unk_02023694.o
+	Object asm/unk_02025154.o
+	Object src/timer3.o
+	Object src/error_handling.o
+	Object asm/unk_02025534.o
+	Object asm/unk_02025C44.o
+	Object src/font_data.o
+	Object src/pm_string.o
+	Object asm/unk_02026C44.o
+	Object asm/unk_02026DE0.o
+	Object asm/unk_02026E30.o
+	Object asm/unk_02026E84.o
+	Object src/gf_3d_vramman.o
+	Object asm/unk_02027010.o
+	Object src/save_arrays.o
+	Object src/save.o
+	Object src/sav_system_info.o
+	Object src/player_data.o
+	Object asm/unk_020290B4.o
+	Object src/daycare.o
+	Object src/pokedex.o
+	Object src/save_misc.o
+	Object src/options.o
+	Object src/apricorn_tree_sys.o
+	Object src/save_gymmick.o
+	Object src/save_palpad.o
+	Object src/mail.o
+	Object asm/unk_0202B614.o
+	Object asm/unk_0202C034.o
+	Object asm/unk_0202C730.o
+	Object src/coins.o
+	Object src/save_trainer_card.o
+	Object asm/unk_0202CA24.o
+	Object src/seal_case.o
+	Object src/igt.o
+	Object src/sav_chatot.o
+	Object asm/unk_0202CF1C.o
+	Object asm/unk_0202D230.o
+	Object src/unk_0202D938.o
+	Object src/roamer.o
+	Object asm/unk_0202DB34.o
+	Object asm/unk_0202DBA8.o
+	Object src/hall_of_fame.o
+	Object asm/unk_0202E41C.o
+	Object asm/unk_0202E4B0.o
+	Object asm/unk_0202EB30.o
+	Object asm/unk_0202ECC0.o
+	Object asm/unk_0202ED18.o
+	Object src/save_pokegear.o
+	Object src/safari_zone.o
+	Object src/photo_album.o
+	Object asm/unk_0202FBCC.o
+	Object asm/unk_02030A98.o
+	Object src/unk_0203170C.o
+	Object asm/unk_020318C8.o
+	Object asm/unk_02031904.o
+	Object src/unk_02031AF0.o
+	Object asm/unk_02031B0C.o
+	Object src/pokewalker.o
+	Object src/save_trainer_house.o
+	Object asm/unk_02032844.o
+	Object asm/unk_02033AE0.o
+	Object asm/unk_02034354.o
+	Object asm/unk_02034B0C.o
+	Object asm/unk_02035900.o
+	Object asm/unk_020379A0.o
+	Object asm/unk_02037C94.o
+	Object asm/unk_0203A3B0.o
+	Object src/communication_error.o
+	Object asm/unk_0203AC88.o
+	Object src/wfc_user_info_warning.o
+	Object src/map_matrix.o
+	Object src/map_header.o
+	Object src/map_events.o
+	Object src/save_flypoints.o
+	Object asm/unk_0203BA5C.o
+	Object src/diamond_dust.o
+	Object asm/unk_0203BC10.o
+	Object asm/unk_0203DB6C.o
+	Object asm/unk_0203DE74.o
+	Object asm/unk_0203E348.o
+	Object src/script.o
+	Object src/fieldmap.o
+	Object src/scrcmd_c.o
+	Object asm/scrcmd.o
+	Object src/scrcmd_mart.o
+	Object src/scrcmd_strbuf.o
+	Object asm/scrcmd_5.o
+	Object asm/scrcmd_6.o
+	Object asm/scrcmd_7.o
+	Object asm/scrcmd_8.o
+	Object asm/scrcmd_9.o
+	Object asm/scrcmd_10.o
+	Object asm/scrcmd_11.o
+	Object asm/scrcmd_12.o
+	Object src/scrcmd_money.o
+	Object src/scrcmd_daycare.o
+	Object asm/scrcmd_15.o
+	Object src/scrcmd_dppl_prizes.o
+	Object src/scrcmd_17.o
+	Object src/scrcmd_items.o
+	Object asm/scrcmd_19.o
+	Object asm/scrcmd_20.o
+	Object asm/unk_0204F500.o
+	Object src/event_data.o
+	Object src/task.o
+	Object asm/unk_02050660.o
+	Object asm/unk_020517A4.o
+	Object asm/unk_020518D8.o
+	Object src/field_black_out.o
+	Object asm/unk_0205298C.o
+	Object src/field_warp_tasks.o
+	Object src/script_pokemon_util.o
+	Object asm/unk_02054514.o
+	Object asm/unk_02054648.o
+	Object asm/unk_02054E00.o
+	Object asm/unk_020551B8.o
+	Object asm/unk_02055244.o
+	Object src/unk_02055418.o
+	Object asm/unk_020557E0.o
+	Object asm/unk_02055BF0.o
+	Object asm/unk_02056680.o
+	Object asm/unk_02056D7C.o
+	Object asm/unk_02058034.o
+	Object asm/unk_02058AEC.o
+	Object asm/unk_0205A44C.o
+	Object asm/unk_0205AC88.o
+	Object src/unk_0205B3DC.o
+	Object asm/text_0205B4EC.o
+	Object asm/unk_0205B6E8.o
+	Object asm/unk_0205BB1C.o
+	Object asm/unk_0205BFF0.o
+	Object asm/field_player_avatar.o
+	Object asm/unk_0205CB48.o
+	Object asm/field_map_object.o
+	Object asm/unk_data_020FCBD8.o
+	Object asm/unk_0205FD20.o
+	Object asm/unk_02061284.o
+	Object asm/unk_data_020FD978.o
+	Object asm/unk_02062108.o
+	Object asm/unk_data_020FDB44.o
+	Object asm/unk_020632B0.o
+	Object src/unk_020648EC.o
+	Object src/field_use_item.o
+	Object asm/unk_020658D4.o
+	Object src/sys_flags.o
+	Object src/sys_vars.o
+	Object asm/unk_02066EDC.o
+	Object src/field_roamer.o
+	Object asm/unk_0206793C.o
+	Object asm/unk_02067A60.o
+	Object src/field_move.o
+	Object asm/unk_020689C8.o
+	Object asm/unk_02068DE0.o
+	Object src/unk_02068F84.o
+	Object asm/unk_02068FC8.o
+	Object asm/unk_02069528.o
+	Object asm/unk_02069660.o
+	Object asm/unk_0206979C.o
+	Object src/field_follow_poke.o
+	Object asm/unk_0206A360.o
+	Object asm/field_take_photo.o
+	Object asm/unk_0206B910.o
+	Object src/field_alph_checks.o
+	Object src/get_egg.o
+	Object asm/unk_0206D494.o
+	Object src/pokemon.o
+	Object src/waza.o
+	Object src/trainer_data.o
+	Object src/pokemon_storage_system.o
+	Object src/pokemon_icon_idx.o
+	Object src/party.o
+	Object src/pokedex_util.o
+	Object asm/unk_02074944.o
+	Object asm/unk_02074E5C.o
+	Object asm/unk_020755E8.o
+	Object asm/unk_020773AC.o
+	Object asm/unk_02077678.o
+	Object src/bag_view.o
+	Object src/item.o
+	Object src/bag.o
+	Object asm/unk_02078834.o
+	Object asm/unk_02078DD8.o
+	Object asm/unk_02078E30.o
+	Object asm/unk_0207CB7C.o
+	Object asm/unk_0207EB24.o
+	Object asm/unk_0207F42C.o
+	Object asm/unk_02080BB4.o
+	Object asm/unk_02082908.o
+	Object asm/unk_020850F4.o
+	Object asm/unk_02085604.o
+	Object asm/unk_020863F4.o
+	Object asm/unk_02087284.o
+	Object asm/unk_02087A78.o
+	Object asm/unk_02087E70.o
+	Object asm/unk_02087FD4.o
+	Object asm/unk_0208805C.o
+	Object asm/unk_02088288.o
+	Object asm/unk_0208B1AC.o
+	Object asm/unk_0208C3E4.o
+	Object asm/unk_0208DE40.o
+	Object asm/unk_0208E55C.o
+	Object asm/unk_0208E600.o
+	Object asm/unk_0208F658.o
+	Object asm/unk_0208F814.o
+	Object asm/unk_0208FB64.o
+	Object asm/use_item_on_mon.o
+	Object asm/unk_02090C94.o
+	Object asm/unk_020910D8.o
+	Object asm/unk_02091278.o
+	Object asm/unk_020912AC.o
+	Object src/dex_mon_measures.o
+	Object asm/unk_02091564.o
+	Object asm/unk_020915B0.o
+	Object asm/unk_02091664.o
+	Object src/field_blackthorn_tutors.o
+	Object asm/unk_02091880.o
+	Object asm/unk_02091CDC.o
+	Object asm/unk_020921A4.o
+	Object src/save_data_read_error.o
+	Object src/save_data_write_error.o
+	Object asm/unk_02092B04.o
+	Object asm/unk_02092BB8.o
+	Object asm/unk_02092BE8.o
+	Object asm/unk_020931C4.o
+	Object asm/unk_020932A4.o
+	Object asm/unk_020932E0.o
+	Object asm/unk_020957B0.o
+	Object asm/unk_02095DF4.o
+	Object src/phonebook_dat.o
+	Object src/choose_starter.o
+	Object asm/unk_020961D8.o
+	Object src/error_message_reset.o
+	Object src/sin_vcount.o
+	Object asm/unk_020965A4.o
+	Object asm/unk_020968B0.o
+	Object asm/unk_02096910.o
+	Object asm/unk_02096C88.o
+	Object asm/unk_02097024.o
+	Object asm/unk_020971F8.o
+	Object asm/unk_02097268.o
+	Object asm/unk_02097720.o
+	Object asm/unk_020977CC.o
+	Object asm/unk_020979A8.o
+	Object asm/unk_02097B78.o
+	Object asm/unk_02097BE0.o
+	Object asm/unk_02097D3C.o
+	Object asm/unk_02097E4C.o
+	Object asm/unk_02097F6C.o
 
-    ### Vendor libraries ###
-    Object asm/middleware.o
-    Object lib/asm/jn_spl.o
-    Object lib/NitroSDK/asm/wvr.o
-    Object lib/NitroDWC/asm/dwcbm.o
-    Object lib/NitroDWC/asm/dwcaccount.o
-    Object lib/asm/wifi.o
-    Object lib/asm/libVCT.o
-    Object lib/asm/nnsys.o
+	### Vendor libraries ###
+	Object asm/middleware.o
+	Object lib/asm/jn_spl.o
+	Object lib/NitroSDK/asm/wvr.o
+	Object lib/NitroDWC/asm/dwcbm.o
+	Object lib/NitroDWC/asm/dwcaccount.o
+	Object lib/asm/wifi.o
+	Object lib/asm/libVCT.o
+	Object lib/asm/nnsys.o
 
-    ### NitroSDK ###
-    Object lib/NitroSDK/asm/fx_sincos.o
-    Object lib/NitroSDK/asm/fx_mtx22.o
-    Object lib/NitroSDK/asm/fx_mtx33.o
-    Object lib/NitroSDK/asm/fx_mtx43.o
-    Object lib/NitroSDK/asm/fx_mtx44.o
-    Object lib/NitroSDK/asm/fx_cp.o
-    Object lib/NitroSDK/asm/fx_vec.o
-    Object lib/NitroSDK/asm/fx_trig.o
-    Object lib/NitroSDK/asm/fx_atanidx.o
-    Object lib/NitroSDK/asm/fx.o
-    Object lib/NitroSDK/asm/gx.o
-    Object lib/NitroSDK/asm/gxstate.o
-    Object lib/NitroSDK/asm/gx_vramcnt.o
-    Object lib/NitroSDK/asm/gx_bgcnt.o
-    Object lib/NitroSDK/asm/g2.o
-    Object lib/NitroSDK/asm/g3b.o
-    Object lib/NitroSDK/asm/g3imm.o
-    Object lib/NitroSDK/asm/g3x.o
-    Object lib/NitroSDK/asm/g3_util.o
-    Object lib/NitroSDK/asm/gx_load2d.o
-    Object lib/NitroSDK/asm/gx_load3d.o
-    Object lib/NitroSDK/asm/g3.o
-    Object lib/NitroSDK/asm/gxasm.o
-    Object lib/NitroSDK/src/os/os_irqHandler.o
-    Object lib/NitroSDK/src/os/os_irqTable.o
-    Object lib/NitroSDK/src/os/os_interrupt.o
-    Object lib/NitroSDK/src/os/os_spinLock.o
-    Object lib/NitroSDK/src/os/os_printf.o
-    Object lib/NitroSDK/src/os/os_thread.o
-    Object lib/NitroSDK/src/os/os_context.o
-    Object lib/NitroSDK/src/os/os_emulator.o
-    Object lib/NitroSDK/src/os/os_message.o
-    Object lib/NitroSDK/src/os/os_mutex.o
-    Object lib/NitroSDK/src/os/os_cache.o
-    Object lib/NitroSDK/src/os/os_init.o
-    Object lib/NitroSDK/src/os/os_arena.o
-    Object lib/NitroSDK/src/os/os_alloc.o
-    Object lib/NitroSDK/src/os/os_tcm.o
-    Object lib/NitroSDK/src/os/os_protectionUnit.o
-    Object lib/NitroSDK/src/os/os_protectionRegion.o
-    Object lib/NitroSDK/src/os/os_exception.o
-    Object lib/NitroSDK/src/os/os_timer.o
-    Object lib/NitroSDK/src/os/os_tick.o
-    Object lib/NitroSDK/src/os/os_alarm.o
-    Object lib/NitroSDK/src/os/os_valarm.o
-    Object lib/NitroSDK/src/os/os_system.o
-    Object lib/NitroSDK/src/os/os_reset.o
-    Object lib/NitroSDK/src/os/os_ownerInfo.o
-    Object lib/NitroSDK/src/os/os_vramExclusive.o
-    Object lib/NitroSDK/src/os/os_entropy.o
-    Object lib/NitroSDK/src/os/os_terminate_proc.o
-    Object lib/NitroSDK/asm/mi_wram.o
-    Object lib/NitroSDK/asm/mi_dma.o
-    Object lib/NitroSDK/asm/mi_dma_hblank.o
-    Object lib/NitroSDK/asm/mi_dma_gxcommand.o
-    Object lib/NitroSDK/asm/mi_memory.o
-    Object lib/NitroSDK/asm/mi_swap.o
-    Object lib/NitroSDK/asm/mi_uncompress.o
-    Object lib/NitroSDK/asm/mi_dma_card.o
-    Object lib/NitroSDK/asm/mi_compress.o
-    Object lib/NitroSDK/asm/mi_init.o
-    Object lib/asm/nitro.o
-    Object lib/asm/msl.o
+	### NitroSDK ###
+	Object lib/NitroSDK/asm/fx_sincos.o
+	Object lib/NitroSDK/asm/fx_mtx22.o
+	Object lib/NitroSDK/asm/fx_mtx33.o
+	Object lib/NitroSDK/asm/fx_mtx43.o
+	Object lib/NitroSDK/asm/fx_mtx44.o
+	Object lib/NitroSDK/asm/fx_cp.o
+	Object lib/NitroSDK/asm/fx_vec.o
+	Object lib/NitroSDK/asm/fx_trig.o
+	Object lib/NitroSDK/asm/fx_atanidx.o
+	Object lib/NitroSDK/asm/fx.o
+	Object lib/NitroSDK/asm/gx.o
+	Object lib/NitroSDK/asm/gxstate.o
+	Object lib/NitroSDK/asm/gx_vramcnt.o
+	Object lib/NitroSDK/asm/gx_bgcnt.o
+	Object lib/NitroSDK/asm/g2.o
+	Object lib/NitroSDK/asm/g3b.o
+	Object lib/NitroSDK/asm/g3imm.o
+	Object lib/NitroSDK/asm/g3x.o
+	Object lib/NitroSDK/asm/g3_util.o
+	Object lib/NitroSDK/asm/gx_load2d.o
+	Object lib/NitroSDK/asm/gx_load3d.o
+	Object lib/NitroSDK/asm/g3.o
+	Object lib/NitroSDK/asm/gxasm.o
+	Object lib/NitroSDK/src/os/os_irqHandler.o
+	Object lib/NitroSDK/src/os/os_irqTable.o
+	Object lib/NitroSDK/src/os/os_interrupt.o
+	Object lib/NitroSDK/src/os/os_spinLock.o
+	Object lib/NitroSDK/src/os/os_printf.o
+	Object lib/NitroSDK/src/os/os_thread.o
+	Object lib/NitroSDK/src/os/os_context.o
+	Object lib/NitroSDK/src/os/os_emulator.o
+	Object lib/NitroSDK/src/os/os_message.o
+	Object lib/NitroSDK/src/os/os_mutex.o
+	Object lib/NitroSDK/src/os/os_cache.o
+	Object lib/NitroSDK/src/os/os_init.o
+	Object lib/NitroSDK/src/os/os_arena.o
+	Object lib/NitroSDK/src/os/os_alloc.o
+	Object lib/NitroSDK/src/os/os_tcm.o
+	Object lib/NitroSDK/src/os/os_protectionUnit.o
+	Object lib/NitroSDK/src/os/os_protectionRegion.o
+	Object lib/NitroSDK/src/os/os_exception.o
+	Object lib/NitroSDK/src/os/os_timer.o
+	Object lib/NitroSDK/src/os/os_tick.o
+	Object lib/NitroSDK/src/os/os_alarm.o
+	Object lib/NitroSDK/src/os/os_valarm.o
+	Object lib/NitroSDK/src/os/os_system.o
+	Object lib/NitroSDK/src/os/os_reset.o
+	Object lib/NitroSDK/src/os/os_ownerInfo.o
+	Object lib/NitroSDK/src/os/os_vramExclusive.o
+	Object lib/NitroSDK/src/os/os_entropy.o
+	Object lib/NitroSDK/src/os/os_terminate_proc.o
+	Object lib/NitroSDK/asm/mi_wram.o
+	Object lib/NitroSDK/asm/mi_dma.o
+	Object lib/NitroSDK/asm/mi_dma_hblank.o
+	Object lib/NitroSDK/asm/mi_dma_gxcommand.o
+	Object lib/NitroSDK/asm/mi_memory.o
+	Object lib/NitroSDK/asm/mi_swap.o
+	Object lib/NitroSDK/asm/mi_uncompress.o
+	Object lib/NitroSDK/asm/mi_dma_card.o
+	Object lib/NitroSDK/asm/mi_compress.o
+	Object lib/NitroSDK/asm/mi_init.o
+	Object lib/asm/nitro.o
+	Object lib/asm/msl.o
 }
 
 Autoload ITCM
 {
-    Address 0x01FF8000
-    Object lib/NitroSDK/src/os/os_irqHandler.o (.itcm)
-    Object lib/NitroSDK/src/os/os_reset.o (.itcm)
-    Object lib/NitroSDK/asm/mi_dma.o (.itcm)
-    Object lib/NitroSDK/asm/mi_dma_gxcommand.o (.itcm)
-    Object lib/asm/nitro.o (.itcm)
+	Address 0x01FF8000
+	Object lib/NitroSDK/src/os/os_irqHandler.o (.itcm)
+	Object lib/NitroSDK/src/os/os_reset.o (.itcm)
+	Object lib/NitroSDK/asm/mi_dma.o (.itcm)
+	Object lib/NitroSDK/asm/mi_dma_gxcommand.o (.itcm)
+	Object lib/asm/nitro.o (.itcm)
 }
 
 Autoload DTCM
 {
-    Address 0x027E0000
-    Object lib/NitroSDK/src/os/os_irqHandler.o (.dtcm)
-    Object lib/NitroSDK/src/os/os_irqTable.o (.dtcm)
-    Object lib/NitroSDK/src/os/os_irqHandler.o (.dtcm.bss)
-    Object lib/NitroSDK/src/os/os_irqTable.o (.dtcm.bss)
+	Address 0x027E0000
+	Object lib/NitroSDK/src/os/os_irqHandler.o (.dtcm)
+	Object lib/NitroSDK/src/os/os_irqTable.o (.dtcm)
+	Object lib/NitroSDK/src/os/os_irqHandler.o (.dtcm.bss)
+	Object lib/NitroSDK/src/os/os_irqTable.o (.dtcm.bss)
 }
 Overlay OVY_0
 {
-    After main
-    Object asm/overlay_00_thumb.o
-    Object lib/NitroDWC/asm/overlay_00_arm.o
+	After main
+	Object asm/overlay_00_thumb.o
+	Object lib/NitroDWC/asm/overlay_00_arm.o
 }
 Overlay field
 {
-    After main
-    Object asm/overlay_01_021E5900.o
-    Object asm/overlay_01_021E66E4.o
-    Object asm/overlay_01_021E6880.o
-    Object asm/overlay_01_021E7FDC.o
-    Object asm/overlay_01_021E8744.o
-    Object asm/overlay_01_021E90C0.o
-    Object asm/overlay_01_021EA6C4.o
-    Object asm/overlay_01_021EA824.o
-    Object asm/overlay_01_021EA8E0.o
-    Object asm/overlay_01_021EABA8.o
-    Object asm/overlay_01_021EAF00.o
-    Object asm/overlay_01_021EAFD4.o
-    Object asm/overlay_01_021EB1E8.o
-    Object asm/overlay_01_021EDAFC.o
-    Object asm/scrcmd_message.o
-    Object asm/overlay_01_021EF7A0.o
-    Object asm/overlay_01_021EFB38.o
-    Object asm/overlay_01_021F1348.o
-    Object asm/overlay_01_021F1AFC.o
-    Object asm/overlay_01_021F3114.o
-    Object asm/overlay_01_021F3378.o
-    Object asm/overlay_01_021F3610.o
-    Object asm/overlay_01_021F3D38.o
-    Object asm/overlay_01_021F3F50.o
-    Object asm/overlay_01_021F4464.o
-    Object asm/overlay_01_021F467C.o
-    Object asm/overlay_01_021F4704.o
-    Object asm/overlay_01_021F6830.o
-    Object asm/overlay_01_021F6CFC.o
-    Object asm/overlay_01_sprite_data.o
-    Object asm/overlay_01_021F72DC.o
-    Object asm/overlay_01_021F8D80.o
-    Object asm/overlay_01_021F944C.o
-    Object asm/overlay_01_021FAC44.o
-    Object asm/overlay_01_021FAD1C.o
-    Object asm/overlay_01_021FB04C.o
-    Object asm/overlay_01_021FB368.o
-    Object asm/overlay_01_021FB4C0.o
-    Object asm/overlay_01_021FB5D4.o
-    Object asm/overlay_01_021FB878.o
-    Object asm/overlay_01_021FC05C.o
-    Object asm/overlay_01_021FC4C4.o
-    Object asm/overlay_01_data_02208BFC.o
-    Object asm/overlay_01_021FC66C.o
-    Object asm/overlay_01_021FCD2C.o
-    Object asm/overlay_01_021FCE98.o
-    Object asm/overlay_01_021FD1B8.o
-    Object asm/overlay_01_021FD41C.o
-    Object asm/overlay_01_021FDA14.o
-    Object asm/overlay_01_021FE200.o
-    Object asm/overlay_01_021FE590.o
-    Object asm/overlay_01_021FE780.o
-    Object asm/overlay_01_021FEA0C.o
-    Object asm/overlay_01_021FEC38.o
-    Object asm/overlay_01_021FED9C.o
-    Object asm/overlay_01_021FEEEC.o
-    Object asm/overlay_01_021FF464.o
-    Object asm/overlay_01_021FF6B0.o
-    Object asm/overlay_01_021FF854.o
-    Object asm/overlay_01_021FFC0C.o
-    Object asm/overlay_01_021FFECC.o
-    Object asm/overlay_01_02200040.o
-    Object asm/overlay_01_022001E4.o
-    Object asm/overlay_01_022006A8.o
-    Object asm/overlay_01_02200858.o
-    Object asm/scrcmd_pokemon_misc.o
-    Object asm/scrcmd_move_tutor.o
-    Object src/scrcmd_moneybox.o
-    Object asm/overlay_01_022031C0.o
-    Object asm/overlay_01_02203A18.o
-    Object asm/overlay_01_02203E40.o
-    Object asm/overlay_01_02204004.o
-    Object asm/overlay_01_02204840.o
-    Object asm/overlay_01_02204ED8.o
-    Object asm/overlay_01_022051EC.o
-    Object asm/overlay_01_022053EC.o
+	After main
+	Object asm/overlay_01_021E5900.o
+	Object asm/overlay_01_021E66E4.o
+	Object asm/overlay_01_021E6880.o
+	Object asm/overlay_01_021E7FDC.o
+	Object asm/overlay_01_021E8744.o
+	Object asm/overlay_01_021E90C0.o
+	Object asm/overlay_01_021EA6C4.o
+	Object asm/overlay_01_021EA824.o
+	Object asm/overlay_01_021EA8E0.o
+	Object asm/overlay_01_021EABA8.o
+	Object asm/overlay_01_021EAF00.o
+	Object asm/overlay_01_021EAFD4.o
+	Object asm/overlay_01_021EB1E8.o
+	Object asm/overlay_01_021EDAFC.o
+	Object asm/scrcmd_message.o
+	Object asm/overlay_01_021EF7A0.o
+	Object asm/overlay_01_021EFB38.o
+	Object asm/overlay_01_021F1348.o
+	Object asm/overlay_01_021F1AFC.o
+	Object asm/overlay_01_021F3114.o
+	Object asm/overlay_01_021F3378.o
+	Object asm/overlay_01_021F3610.o
+	Object asm/overlay_01_021F3D38.o
+	Object asm/overlay_01_021F3F50.o
+	Object asm/overlay_01_021F4464.o
+	Object asm/overlay_01_021F467C.o
+	Object asm/overlay_01_021F4704.o
+	Object asm/overlay_01_021F6830.o
+	Object asm/overlay_01_021F6CFC.o
+	Object asm/overlay_01_sprite_data.o
+	Object asm/overlay_01_021F72DC.o
+	Object asm/overlay_01_021F8D80.o
+	Object asm/overlay_01_021F944C.o
+	Object asm/overlay_01_021FAC44.o
+	Object asm/overlay_01_021FAD1C.o
+	Object asm/overlay_01_021FB04C.o
+	Object asm/overlay_01_021FB368.o
+	Object asm/overlay_01_021FB4C0.o
+	Object asm/overlay_01_021FB5D4.o
+	Object asm/overlay_01_021FB878.o
+	Object asm/overlay_01_021FC05C.o
+	Object asm/overlay_01_021FC4C4.o
+	Object asm/overlay_01_data_02208BFC.o
+	Object asm/overlay_01_021FC66C.o
+	Object asm/overlay_01_021FCD2C.o
+	Object asm/overlay_01_021FCE98.o
+	Object asm/overlay_01_021FD1B8.o
+	Object asm/overlay_01_021FD41C.o
+	Object asm/overlay_01_021FDA14.o
+	Object asm/overlay_01_021FE200.o
+	Object asm/overlay_01_021FE590.o
+	Object asm/overlay_01_021FE780.o
+	Object asm/overlay_01_021FEA0C.o
+	Object asm/overlay_01_021FEC38.o
+	Object asm/overlay_01_021FED9C.o
+	Object asm/overlay_01_021FEEEC.o
+	Object asm/overlay_01_021FF464.o
+	Object asm/overlay_01_021FF6B0.o
+	Object asm/overlay_01_021FF854.o
+	Object asm/overlay_01_021FFC0C.o
+	Object asm/overlay_01_021FFECC.o
+	Object asm/overlay_01_02200040.o
+	Object asm/overlay_01_022001E4.o
+	Object asm/overlay_01_022006A8.o
+	Object asm/overlay_01_02200858.o
+	Object asm/scrcmd_pokemon_misc.o
+	Object asm/scrcmd_move_tutor.o
+	Object src/scrcmd_moneybox.o
+	Object asm/overlay_01_022031C0.o
+	Object asm/overlay_01_02203A18.o
+	Object asm/overlay_01_02203E40.o
+	Object asm/overlay_01_02204004.o
+	Object asm/overlay_01_02204840.o
+	Object asm/overlay_01_02204ED8.o
+	Object asm/overlay_01_022051EC.o
+	Object asm/overlay_01_022053EC.o
 }
 Overlay OVY_2
 {
-    After field
-    Object asm/overlay_02.o
+	After field
+	Object asm/overlay_02.o
 }
 Overlay OVY_3
 {
-    After OVY_2
-    Object asm/overlay_03.o
+	After OVY_2
+	Object asm/overlay_03.o
 }
 Overlay OVY_4
 {
-    After OVY_2
-    Object asm/overlay_04.o
+	After OVY_2
+	Object asm/overlay_04.o
 }
 Overlay OVY_5
 {
-    After OVY_0
-    Object asm/overlay_05.o
+	After OVY_0
+	Object asm/overlay_05.o
 }
 Overlay OVY_6
 {
-    After OVY_0
-    Object asm/overlay_06.o
+	After OVY_0
+	Object asm/overlay_06.o
 }
 Overlay OVY_7
 {
-    After OVY_6
-    Object asm/overlay_07.o
+	After OVY_6
+	Object asm/overlay_07.o
 }
 Overlay OVY_8
 {
-    After OVY_6
-    Object asm/overlay_08.o
+	After OVY_6
+	Object asm/overlay_08.o
 }
 Overlay OVY_9
 {
-    After OVY_6
+	After OVY_6
 }
 Overlay OVY_10
 {
-    After OVY_6
-    Object asm/overlay_10.o
+	After OVY_6
+	Object asm/overlay_10.o
 }
 Overlay OVY_11
 {
-    After main
+	After main
 }
 Overlay OVY_12
 {
-    After OVY_7
-    Object asm/overlay_12.o
+	After OVY_7
+	Object asm/overlay_12.o
 }
 Overlay OVY_13
 {
-    After OVY_0
-    Object asm/overlay_13_thumb_1.o
-    Object lib/NitroSDK/asm/mb.o
-    Object asm/overlay_13_thumb_2.o
-    Object lib/NitroDWC/asm/overlay_13_arm_2.o
+	After OVY_0
+	Object asm/overlay_13_thumb_1.o
+	Object lib/NitroSDK/asm/mb.o
+	Object asm/overlay_13_thumb_2.o
+	Object lib/NitroDWC/asm/overlay_13_arm_2.o
 }
 Overlay OVY_14
 {
-    After main
-    Object asm/overlay_14.o
+	After main
+	Object asm/overlay_14.o
 }
 Overlay OVY_15
 {
-    After OVY_14
-    Object asm/overlay_15.o
+	After OVY_14
+	Object asm/overlay_15.o
 }
 Overlay OVY_16
 {
-    After OVY_15
-    Object asm/overlay_16.o
+	After OVY_15
+	Object asm/overlay_16.o
 }
 Overlay OVY_17
 {
-    After OVY_16
-    Object asm/overlay_17.o
+	After OVY_16
+	Object asm/overlay_17.o
 }
 Overlay OVY_18
 {
-    After main
-    Object asm/overlay_18.o
+	After main
+	Object asm/overlay_18.o
 }
 Overlay OVY_19
 {
-    After OVY_3
-    Object asm/overlay_19.o
+	After OVY_3
+	Object asm/overlay_19.o
 }
 Overlay OVY_20
 {
-    After OVY_3
-    Object src/scrcmd_size_record.o
+	After OVY_3
+	Object src/scrcmd_size_record.o
 }
 Overlay OVY_21
 {
-    After OVY_3
-    Object src/scrcmd_fossils.o
+	After OVY_3
+	Object src/scrcmd_fossils.o
 }
 Overlay OVY_22
 {
-    After OVY_3
-    Object asm/overlay_22.o
+	After OVY_3
+	Object asm/overlay_22.o
 }
 Overlay npc_trade
 {
-    After OVY_3
-    Object src/npc_trade.o
+	After OVY_3
+	Object src/npc_trade.o
 }
 Overlay bug_contest
 {
-    After OVY_3
-    Object src/overlay_bug_contest.o
+	After OVY_3
+	Object src/overlay_bug_contest.o
 }
 Overlay OVY_25
 {
-    After OVY_3
-    Object asm/overlay_25.o
+	After OVY_3
+	Object asm/overlay_25.o
 }
 Overlay OVY_26
 {
-    After OVY_3
-    Object asm/overlay_26.o
+	After OVY_3
+	Object asm/overlay_26.o
 }
 Overlay OVY_27
 {
-    After bug_contest
-    Object asm/overlay_27.o
+	After bug_contest
+	Object asm/overlay_27.o
 }
 Overlay OVY_28
 {
-    After OVY_27
-    Object asm/overlay_28.o
+	After OVY_27
+	Object asm/overlay_28.o
 }
 Overlay OVY_29
 {
-    After OVY_27
-    Object asm/overlay_29.o
+	After OVY_27
+	Object asm/overlay_29.o
 }
 Overlay OVY_30
 {
-    After OVY_27
-    Object asm/overlay_30.o
+	After OVY_27
+	Object asm/overlay_30.o
 }
 Overlay OVY_31
 {
-    After OVY_27
-    Object asm/overlay_31.o
+	After OVY_27
+	Object asm/overlay_31.o
 }
 Overlay OVY_32
 {
-    After OVY_27
-    Object asm/overlay_32.o
+	After OVY_27
+	Object asm/overlay_32.o
 }
 Overlay OVY_33
 {
-    After OVY_27
-    Object asm/overlay_33.o
+	After OVY_27
+	Object asm/overlay_33.o
 }
 Overlay OVY_34
 {
-    After OVY_27
-    Object asm/overlay_34.o
+	After OVY_27
+	Object asm/overlay_34.o
 }
 Overlay OVY_35
 {
-    After npc_trade
-    Object asm/overlay_35.o
+	After npc_trade
+	Object asm/overlay_35.o
 }
 Overlay OVY_36
 {
-    After main
-    Object src/overlay_36.o
+	After main
+	Object src/overlay_36.o
 }
 Overlay OVY_37
 {
-    After main
-    Object asm/overlay_37.o
+	After main
+	Object asm/overlay_37.o
 }
 Overlay OVY_38
 {
-    After OVY_0
-    Object asm/overlay_38_thumb.o
-    Object lib/NitroDWC/asm/overlay_38_arm.o
+	After OVY_0
+	Object asm/overlay_38_thumb.o
+	Object lib/NitroDWC/asm/overlay_38_arm.o
 }
 Overlay OVY_39
 {
-    After OVY_38
-    Object asm/overlay_39_thumb.o
-    Object lib/NitroDWC/asm/overlay_39_arm.o
+	After OVY_38
+	Object asm/overlay_39_thumb.o
+	Object lib/NitroDWC/asm/overlay_39_arm.o
 }
 Overlay OVY_40
 {
-    After OVY_39
-    Object asm/overlay_40.o
+	After OVY_39
+	Object asm/overlay_40.o
 }
 Overlay OVY_41
 {
-    After OVY_40
-    Object asm/overlay_41.o
+	After OVY_40
+	Object asm/overlay_41.o
 }
 Overlay OVY_42
 {
-    After OVY_38
-    Object asm/overlay_42.o
+	After OVY_38
+	Object asm/overlay_42.o
 }
 Overlay OVY_43
 {
-    After OVY_42
-    Object asm/overlay_43.o
+	After OVY_42
+	Object asm/overlay_43.o
 }
 Overlay OVY_44
 {
-    After OVY_42
-    Object asm/overlay_44.o
+	After OVY_42
+	Object asm/overlay_44.o
 }
 Overlay OVY_45
 {
-    After OVY_42
-    Object asm/overlay_45_thumb.o
-    Object lib/NitroDWC/asm/overlay_45_arm.o
+	After OVY_42
+	Object asm/overlay_45_thumb.o
+	Object lib/NitroDWC/asm/overlay_45_arm.o
 }
 Overlay OVY_46
 {
-    After OVY_45
-    Object asm/overlay_46.o
+	After OVY_45
+	Object asm/overlay_46.o
 }
 Overlay OVY_47
 {
-    After OVY_45
-    Object asm/overlay_47.o
+	After OVY_45
+	Object asm/overlay_47.o
 }
 Overlay OVY_48
 {
-    After OVY_45
-    Object asm/overlay_48.o
+	After OVY_45
+	Object asm/overlay_48.o
 }
 Overlay OVY_49
 {
-    After OVY_45
-    Object asm/overlay_49.o
+	After OVY_45
+	Object asm/overlay_49.o
 }
 Overlay trainer_card
 {
-    After main
-    Object src/overlay_trainer_card.o
+	After main
+	Object src/overlay_trainer_card.o
 }
 Overlay trainer_card_main
 {
-    After trainer_card
-    Object asm/overlay_trainer_card_main.o
+	After trainer_card
+	Object asm/overlay_trainer_card_main.o
 }
 Overlay trainer_card_signature
 {
-    After trainer_card_main
-    Object asm/overlay_trainer_card_signature.o
+	After trainer_card_main
+	Object asm/overlay_trainer_card_signature.o
 }
 Overlay OVY_53
 {
-    After main
-    Object asm/overlay_53.o
+	After main
+	Object asm/overlay_53.o
 }
 Overlay OVY_54
 {
-    After main
-    Object asm/overlay_54.o
+	After main
+	Object asm/overlay_54.o
 }
 Overlay OVY_55
 {
-    After main
-    Object asm/overlay_55.o
+	After main
+	Object asm/overlay_55.o
 }
 Overlay OVY_56
 {
-    After OVY_55
-    Object asm/overlay_56.o
+	After OVY_55
+	Object asm/overlay_56.o
 }
 Overlay OVY_57
 {
-    After OVY_7
-    Object asm/overlay_57.o
+	After OVY_7
+	Object asm/overlay_57.o
 }
 Overlay OVY_58
 {
-    After OVY_7
-    Object asm/overlay_58.o
+	After OVY_7
+	Object asm/overlay_58.o
 }
 Overlay OVY_59
 {
-    After OVY_58
-    Object asm/overlay_59.o
+	After OVY_58
+	Object asm/overlay_59.o
 }
 Overlay OVY_60
 {
-    After main
-    Object asm/overlay_60.o
+	After main
+	Object asm/overlay_60.o
 }
 Overlay OVY_61
 {
-    After main
-    Object asm/overlay_61.o
+	After main
+	Object asm/overlay_61.o
 }
 Overlay OVY_62
 {
-    After main
-    Object asm/overlay_62.o
+	After main
+	Object asm/overlay_62.o
 }
 Overlay OVY_63
 {
-    After OVY_6
-    Object asm/overlay_63.o
+	After OVY_6
+	Object asm/overlay_63.o
 }
 Overlay OVY_64
 {
-    After main
-    Object asm/overlay_64.o
+	After main
+	Object asm/overlay_64.o
 }
 Overlay OVY_65
 {
-    After OVY_6
-    Object asm/overlay_65.o
+	After OVY_6
+	Object asm/overlay_65.o
 }
 Overlay OVY_66
 {
-    After main
+	After main
 }
 Overlay OVY_67
 {
-    After main
-    Object asm/overlay_67.o
+	After main
+	Object asm/overlay_67.o
 }
 Overlay OVY_68
 {
-    After main
-    Object asm/overlay_68.o
+	After main
+	Object asm/overlay_68.o
 }
 Overlay OVY_69
 {
-    After main
-    Object asm/overlay_69.o
+	After main
+	Object asm/overlay_69.o
 }
 Overlay OVY_70
 {
-    After OVY_7
-    Object asm/overlay_70.o
+	After OVY_7
+	Object asm/overlay_70.o
 }
 Overlay OVY_71
 {
-    After OVY_70
-    Object asm/overlay_71.o
+	After OVY_70
+	Object asm/overlay_71.o
 }
 Overlay OVY_72
 {
-    After OVY_7
-    Object asm/overlay_72.o
+	After OVY_7
+	Object asm/overlay_72.o
 }
 Overlay OVY_73
 {
-    After main
-    Object asm/overlay_73.o
+	After main
+	Object asm/overlay_73.o
 }
 Overlay OVY_74
 {
-    After OVY_38
-    Object asm/overlay_74_thumb.o
-    Object asm/nitrocrypto.o
+	After OVY_38
+	Object asm/overlay_74_thumb.o
+	Object asm/nitrocrypto.o
 }
 Overlay OVY_75
 {
-    After OVY_70
-    Object asm/overlay_75.o
+	After OVY_70
+	Object asm/overlay_75.o
 }
 Overlay OVY_76
 {
-    After main
-    Object asm/overlay_76.o
+	After main
+	Object asm/overlay_76.o
 }
 Overlay OVY_77
 {
-    After main
+	After main
 }
 Overlay OVY_78
 {
-    After main
-    Object asm/overlay_78.o
+	After main
+	Object asm/overlay_78.o
 }
 Overlay OVY_79
 {
-    After OVY_42
+	After OVY_42
 }
 Overlay OVY_80
 {
-    After OVY_42
-    Object asm/overlay_80.o
+	After OVY_42
+	Object asm/overlay_80.o
 }
 Overlay OVY_81
 {
-    After OVY_80
-    Object asm/overlay_81.o
+	After OVY_80
+	Object asm/overlay_81.o
 }
 Overlay OVY_82
 {
-    After OVY_80
-    Object asm/overlay_82.o
+	After OVY_80
+	Object asm/overlay_82.o
 }
 Overlay OVY_83
 {
-    After OVY_80
-    Object asm/overlay_83.o
+	After OVY_80
+	Object asm/overlay_83.o
 }
 Overlay OVY_84
 {
-    After OVY_80
-    Object asm/overlay_84.o
+	After OVY_80
+	Object asm/overlay_84.o
 }
 Overlay OVY_85
 {
-    After main
-    Object asm/overlay_85.o
+	After main
+	Object asm/overlay_85.o
 }
 Overlay OVY_86
 {
-    After main
-    Object asm/overlay_86.o
+	After main
+	Object asm/overlay_86.o
 }
 Overlay OVY_87
 {
-    After main
-    Object asm/overlay_87.o
+	After main
+	Object asm/overlay_87.o
 }
 Overlay OVY_88
 {
-    After OVY_45
-    Object asm/overlay_88.o
+	After OVY_45
+	Object asm/overlay_88.o
 }
 Overlay OVY_89
 {
-    After OVY_45
-    Object asm/overlay_89.o
+	After OVY_45
+	Object asm/overlay_89.o
 }
 Overlay OVY_90
 {
-    After OVY_45
-    Object asm/overlay_90.o
+	After OVY_45
+	Object asm/overlay_90.o
 }
 Overlay OVY_91
 {
-    After OVY_90
-    Object asm/overlay_91.o
+	After OVY_90
+	Object asm/overlay_91.o
 }
 Overlay OVY_92
 {
-    After OVY_90
-    Object asm/overlay_92.o
+	After OVY_90
+	Object asm/overlay_92.o
 }
 Overlay OVY_93
 {
-    After OVY_90
-    Object asm/overlay_93_thumb_1.o
-    Object asm/overlay_93_arm.o
-    Object asm/overlay_93_thumb_2.o
+	After OVY_90
+	Object asm/overlay_93_thumb_1.o
+	Object asm/overlay_93_arm.o
+	Object asm/overlay_93_thumb_2.o
 }
 Overlay OVY_94
 {
-    After main
-    Object src/overlay_94.o
-    
+	After main
+	Object src/overlay_94.o
+	
 }
 Overlay OVY_95
 {
-    After main
-    Object asm/overlay_95.o
+	After main
+	Object asm/overlay_95.o
 }
 Overlay OVY_96
 {
-    After main
-    Object asm/overlay_96.o
+	After main
+	Object asm/overlay_96.o
 }
 Overlay OVY_97
 {
-    After OVY_96
-    Object asm/overlay_97.o
+	After OVY_96
+	Object asm/overlay_97.o
 }
 Overlay OVY_98
 {
-    After OVY_96
-    Object asm/overlay_98.o
+	After OVY_96
+	Object asm/overlay_98.o
 }
 Overlay OVY_99
 {
-    After main
-    Object asm/overlay_99.o
+	After main
+	Object asm/overlay_99.o
 }
 Overlay OVY_100
 {
-    After main
-    Object asm/overlay_100.o
+	After main
+	Object asm/overlay_100.o
 }
 Overlay OVY_101
 {
-    After OVY_100
-    Object asm/overlay_101.o
+	After OVY_100
+	Object asm/overlay_101.o
 }
 Overlay OVY_102
 {
-    After OVY_100
-    Object asm/overlay_102.o
+	After OVY_100
+	Object asm/overlay_102.o
 }
 Overlay OVY_103
 {
-    After OVY_102
-    Object asm/overlay_103.o
+	After OVY_102
+	Object asm/overlay_103.o
 }
 Overlay OVY_104
 {
-    After main
-    Object asm/overlay_104.o
+	After main
+	Object asm/overlay_104.o
 }
 Overlay OVY_105
 {
-    After main
-    Object asm/overlay_105.o
+	After main
+	Object asm/overlay_105.o
 }
 Overlay OVY_106
 {
-    After main
-    Object asm/overlay_106.o
+	After main
+	Object asm/overlay_106.o
 }
 Overlay OVY_107
 {
-    After main
+	After main
 }
 Overlay OVY_108
 {
-    After main
-    Object asm/overlay_108.o
+	After main
+	Object asm/overlay_108.o
 }
 Overlay OVY_109
 {
-    After main
-    Object asm/overlay_109.o
+	After main
+	Object asm/overlay_109.o
 }
 Overlay OVY_110
 {
-    After main
-    Object asm/overlay_110.o
+	After main
+	Object asm/overlay_110.o
 }
 Overlay OVY_111
 {
-    After main
-    Object asm/overlay_111.o
+	After main
+	Object asm/overlay_111.o
 }
 Overlay OVY_112
 {
-    After main
-    Object asm/overlay_112.o
+	After main
+	Object asm/overlay_112.o
 }
 Overlay OVY_113
 {
-    After main
-    Object asm/overlay_113.o
+	After main
+	Object asm/overlay_113.o
 }
 Overlay OVY_114
 {
-    After OVY_31
-    Object asm/overlay_114.o
+	After OVY_31
+	Object asm/overlay_114.o
 }
 Overlay OVY_115
 {
-    After OVY_31
-    Object asm/overlay_115.o
+	After OVY_31
+	Object asm/overlay_115.o
 }
 Overlay OVY_116
 {
-    After OVY_31
-    Object asm/overlay_116.o
+	After OVY_31
+	Object asm/overlay_116.o
 }
 Overlay OVY_117
 {
-    After OVY_31
-    Object asm/overlay_117.o
+	After OVY_31
+	Object asm/overlay_117.o
 }
 Overlay OVY_118
 {
-    After OVY_31
-    Object asm/overlay_118.o
+	After OVY_31
+	Object asm/overlay_118.o
 }
 Overlay OVY_119
 {
-    After OVY_31
-    Object asm/overlay_119.o
+	After OVY_31
+	Object asm/overlay_119.o
 }
 Overlay OVY_120
 {
-    After OVY_31
-    Object asm/overlay_120.o
+	After OVY_31
+	Object asm/overlay_120.o
 }
 Overlay OVY_121
 {
-    After main
-    Object asm/overlay_121.o
+	After main
+	Object asm/overlay_121.o
 }
 Overlay OVY_122
 {
-    After main
-    Object asm/overlay_122.o
+	After main
+	Object asm/overlay_122.o
 }
 Overlay OVY_123
 {
-    After OVY_31
-    Object lib/asm/overlay_123.o
+	After OVY_31
+	Object lib/asm/overlay_123.o
 }
 Overlay OVY_124
 {
-    After OVY_123
-    Object asm/overlay_124.o
+	After OVY_123
+	Object asm/overlay_124.o
 }
 Overlay OVY_125
 {
-    After OVY_123
+	After OVY_123
 }
 Overlay OVY_126
 {
-    After OVY_123
+	After OVY_123
 }
 Overlay OVY_127
 {
-    After OVY_123
+	After OVY_123
 }
 Overlay OVY_128
 {
-    After OVY_123
+	After OVY_123
 }
