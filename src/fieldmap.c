@@ -220,10 +220,10 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *unk, enum ScriptEnvField fi
     switch (field) {
     case SCRIPTENV_10:
         return &unk->unk_10;
-    case SCRIPTENV_14:
+    case SCRIPTENV_WINDOW:
         return &unk->unk_14;
-    case SCRIPTENV_24:
-        return &unk->unk_24;
+    case SCRIPTENV_MENU:
+        return &unk->listMenu;
     case SCRIPTENV_05:
         return &unk->unk_5;
     case SCRIPTENV_NUM_ACTIVE_MOVEMENT:
@@ -254,7 +254,7 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *unk, enum ScriptEnvField fi
         return &unk->strbuf1;
     case SCRIPTENV_STRBUF2:
         return &unk->strbuf2;
-    case SCRIPTENV_50:
+    case SCRIPTENV_WAITING_ICON:
         return &unk->unk_50;
     case SCRIPTENV_AC:
         return &unk->unk_AC;

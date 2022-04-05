@@ -13,6 +13,8 @@
 #include "constants/vars.h"
 #include "overlay_manager.h"
 #include "unk_0200E320.h"
+#include "list_menu_2.h"
+#include "unk_0200E398.h"
 
 #define SCRIPT_MODE_STOPPED  0
 #define SCRIPT_MODE_BYTECODE 1
@@ -52,11 +54,8 @@ typedef struct ScriptEnvironment {
     u16 script;
     u32 unk_C;
     u32 unk_10;
-    u32 unk_14;
-    u32 unk_18;
-    u32 unk_1C;
-    u32 unk_20;
-    u32 unk_24;
+    WINDOW unk_14;
+    struct ListMenu2 *listMenu;
     int facingDirection;
     LocalMapObject* lastTalked;
     u32 unk_30;
@@ -65,7 +64,7 @@ typedef struct ScriptEnvironment {
     MSGFMT* msgfmt;
     STRING* strbuf1;
     STRING* strbuf2;
-    u32 unk_50;
+    struct WaitingIconManager *unk_50;
     EngagedTrainer engagedTrainers[2];
     u16 specialVars[NUM_SPECIAL_VARS];
     void (*scrctx_end_cb)(FieldSystem* fsys);
@@ -80,8 +79,8 @@ typedef struct ScriptEnvironment {
 
 enum ScriptEnvField {
     SCRIPTENV_10                              =  0,
-    SCRIPTENV_14                              =  1,
-    SCRIPTENV_24                              =  2,
+    SCRIPTENV_WINDOW                          =  1,
+    SCRIPTENV_MENU                            =  2,
     SCRIPTENV_05                              =  3,
     SCRIPTENV_NUM_ACTIVE_MOVEMENT             =  4,
     SCRIPTENV_07                              =  5,
@@ -98,7 +97,7 @@ enum ScriptEnvField {
     SCRIPTENV_MSGFMT                          = 16,
     SCRIPTENV_STRBUF1                         = 17,
     SCRIPTENV_STRBUF2                         = 18,
-    SCRIPTENV_50                              = 19,
+    SCRIPTENV_WAITING_ICON                    = 19,
     SCRIPTENV_AC                              = 20,
     SCRIPTENV_GENERIC_WORK_PTR                = 21,
     SCRIPTENV_B4                              = 22,

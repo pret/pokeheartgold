@@ -419,7 +419,7 @@
 	.byte \arg5
 	.endm
 
-	.macro scrcmd_063 arg0
+	.macro yesno arg0
 	.short 63
 	.short \arg0
 	.endm
@@ -1960,11 +1960,11 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_345
+	.macro add_waiting_icon
 	.short 345
 	.endm
 
-	.macro scrcmd_346
+	.macro remove_waiting_icon
 	.short 346
 	.endm
 

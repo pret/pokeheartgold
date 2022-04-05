@@ -41,5 +41,14 @@ BOOL Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors(FIELD_PLAYER_AV
 BOOL MetatileBehavior_IsRockClimbInDirection(int facingTile, int facingDirection);
 BOOL FieldSys_FacingModelIsHeadbuttTree(FieldSystem *fsys);
 BOOL Task_UseSweetScentInField(TaskManager *taskManager);
+BOOL ov01_021EF348(SCRIPTCONTEXT* ctx);
+void ov01_021EF4C4(struct UnkStruct_Ov01_021EF4C4*, SCRIPTCONTEXT* ctx);
+void ov01_021EF4DC(SCRIPTCONTEXT* ctx, MSGDATA* msg_data, u8 msg_no, BOOL can_ab_speed_up, struct UnkStruct_Ov01_021EF4C4*);
+void ov01_021F3D68(struct FieldSystemUnkSub68*, u8, u16);
+void ov01_021F3D70(struct FieldSystemUnkSub68*, u8);
+WINDOW* ov01_021F3D80(struct FieldSystemUnkSub68*);
+u8 ov01_021F3D84(struct FieldSystemUnkSub68*);
+BOOL ov01_021F3D88(struct FieldSystemUnkSub68*);
+void ov01_021F3D98(FieldSystem* fsys);
 
 #endif //POKEHEARTGOLD_OVERLAY_01_H

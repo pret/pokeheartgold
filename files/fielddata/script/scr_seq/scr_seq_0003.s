@@ -511,10 +511,10 @@ _06F2:
 	goto _071D
 
 _0708:
-	scrcmd_345
+	add_waiting_icon
 	call_if_set FLAG_MAPTEMP_020, _0762
 	save_game_normal VAR_SPECIAL_RESULT
-	scrcmd_346
+	remove_waiting_icon
 	return
 
 _071D:
@@ -1229,7 +1229,7 @@ scr_seq_0003_020:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _1140
 	npc_msg msg_0040_00059
-	scrcmd_063 VAR_SPECIAL_RESULT
+	yesno VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _115D
 	player_on_bike_set 1
@@ -1239,7 +1239,7 @@ scr_seq_0003_020:
 
 _1140:
 	npc_msg msg_0040_00060
-	scrcmd_063 VAR_SPECIAL_RESULT
+	yesno VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _115D
 	player_on_bike_set 0

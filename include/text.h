@@ -18,6 +18,7 @@ u8 AddTextPrinterParameterized3(WINDOW *window, int fontId, STRING *string, u8 x
 BOOL TextPrinterCheckActive(u8 printerId);
 void ResetAllTextPrinters(void);
 BOOL sub_02020094(u8 a0);
+void sub_020200A0(u8 printer_id);
 
 // text_0205B4EC
 void sub_0205B514(BGCONFIG *bgConfig, WINDOW *window, int a2);

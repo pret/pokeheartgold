@@ -97,7 +97,7 @@ gScriptCmdTable:
 	.word ScrCmd_060                                     ; 060
 	.word ScrCmd_061                                     ; 061
 	.word ScrCmd_062                                     ; 062
-	.word ScrCmd_063                                     ; 063
+	.word ScrCmd_YesNo                                     ; 063
 	.word ScrCmd_064                                     ; 064
 	.word ScrCmd_065                                     ; 065
 	.word ScrCmd_066                                     ; 066
@@ -379,8 +379,8 @@ gScriptCmdTable:
 	.word ScrCmd_342                                     ; 342
 	.word ScrCmd_343                                     ; 343
 	.word ScrCmd_344                                     ; 344
-	.word ScrCmd_345                                     ; 345
-	.word ScrCmd_346                                     ; 346
+	.word ScrCmd_AddWaitingIcon                                     ; 345
+	.word ScrCmd_RemoveWaitingIcon                                     ; 346
 	.word ScrCmd_347                                     ; 347
 	.word ScrCmd_WaitButtonOrDelay                       ; 348
 	.word ScrCmd_PartySelectUI                           ; 349
@@ -906,126 +906,6 @@ _021D4168:
 	.space 0x4
 
 	.text
-
-	thumb_func_start ScrCmd_063
-ScrCmd_063: ; 0x02041684
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #8
-	add r5, r0, #0
-	add r0, #0x80
-	ldr r4, [r0]
-	mov r1, #2
-	add r0, r4, #0
-	bl FieldSysGetAttrAddr
-	add r6, r0, #0
-	add r0, r5, #0
-	bl ScriptReadHalfword
-	add r7, r0, #0
-	mov r0, #0
-	str r0, [sp]
-	mov r0, #4
-	str r0, [sp, #4]
-	ldr r0, [r4, #8]
-	ldr r2, _020416D8 ; =0x000003D9
-	mov r1, #3
-	mov r3, #0xb
-	bl LoadUserFrameGfx1
-	mov r0, #4
-	str r0, [sp]
-	ldr r0, [r4, #8]
-	ldr r1, _020416DC ; =_020FAC94
-	ldr r2, _020416D8 ; =0x000003D9
-	mov r3, #0xb
-	bl Std_CreateYesNoMenu
-	str r0, [r6]
-	ldr r1, _020416E0 ; =sub_020416E4
-	add r0, r5, #0
-	str r7, [r5, #0x64]
-	bl SetupNativeScript
-	mov r0, #1
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_020416D8: .word 0x000003D9
-_020416DC: .word _020FAC94
-_020416E0: .word sub_020416E4
-	thumb_func_end ScrCmd_063
-
-	thumb_func_start sub_020416E4
-sub_020416E4: ; 0x020416E4
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	add r0, #0x80
-	ldr r6, [r0]
-	mov r1, #2
-	add r0, r6, #0
-	bl FieldSysGetAttrAddr
-	ldr r1, [r5, #0x64]
-	add r4, r0, #0
-	lsl r1, r1, #0x10
-	add r0, r6, #0
-	lsr r1, r1, #0x10
-	bl GetVarPointer
-	add r5, r0, #0
-	ldr r0, [r4]
-	mov r1, #4
-	bl Handle2dMenuInput_DeleteOnFinish
-	mov r1, #0
-	mvn r1, r1
-	cmp r0, r1
-	bne _02041718
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_02041718:
-	cmp r0, #0
-	bne _02041720
-	mov r0, #0
-	b _02041722
-_02041720:
-	mov r0, #1
-_02041722:
-	strh r0, [r5]
-	mov r0, #1
-	pop {r4, r5, r6, pc}
-	thumb_func_end sub_020416E4
-
-	thumb_func_start ScrCmd_345
-ScrCmd_345: ; 0x02041728
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r0, #0x80
-	ldr r0, [r0]
-	mov r1, #1
-	bl FieldSysGetAttrAddr
-	add r5, #0x80
-	add r4, r0, #0
-	ldr r0, [r5]
-	mov r1, #0x13
-	bl FieldSysGetAttrAddr
-	add r5, r0, #0
-	ldr r1, _02041754 ; =0x000003E2
-	add r0, r4, #0
-	bl sub_0200F0AC
-	str r0, [r5]
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-	nop
-_02041754: .word 0x000003E2
-	thumb_func_end ScrCmd_345
-
-	thumb_func_start ScrCmd_346
-ScrCmd_346: ; 0x02041758
-	push {r3, lr}
-	add r0, #0x80
-	ldr r0, [r0]
-	mov r1, #0x13
-	bl FieldSysGetAttrAddr
-	ldr r0, [r0]
-	bl sub_0200F450
-	mov r0, #0
-	pop {r3, pc}
-	.balign 4, 0
-	thumb_func_end ScrCmd_346
 
 	thumb_func_start sub_02041770
 sub_02041770: ; 0x02041770

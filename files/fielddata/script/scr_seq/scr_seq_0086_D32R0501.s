@@ -466,9 +466,9 @@ scr_seq_D32R0501_001:
 	goto _04CB
 	.byte 0x02, 0x00
 _06FD:
-	scrcmd_345
+	add_waiting_icon
 	save_game_normal VAR_SPECIAL_RESULT
-	scrcmd_346
+	remove_waiting_icon
 	play_se SEQ_SE_DP_SAVE
 	wait_se SEQ_SE_DP_SAVE
 	return

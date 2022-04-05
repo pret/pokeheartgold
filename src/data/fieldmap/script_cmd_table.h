@@ -63,7 +63,7 @@ extern BOOL ScrCmd_TrainerTips(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_060(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_061(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_062(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_063(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_YesNo(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_064(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_065(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_066(SCRIPTCONTEXT *ctx);
@@ -345,8 +345,8 @@ extern BOOL ScrCmd_341(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_342(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_343(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_344(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_345(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_346(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_AddWaitingIcon(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_RemoveWaitingIcon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_347(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_WaitButtonOrDelay(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PartySelectUI(SCRIPTCONTEXT *ctx);
@@ -918,7 +918,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_060,
     ScrCmd_061,
     ScrCmd_062,
-    ScrCmd_063,
+    ScrCmd_YesNo,
     ScrCmd_064,
     ScrCmd_065,
     ScrCmd_066,
@@ -1200,8 +1200,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_342,
     ScrCmd_343,
     ScrCmd_344,
-    ScrCmd_345,
-    ScrCmd_346,
+    ScrCmd_AddWaitingIcon,
+    ScrCmd_RemoveWaitingIcon,
     ScrCmd_347,
     ScrCmd_WaitButtonOrDelay,
     ScrCmd_PartySelectUI,

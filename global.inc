@@ -2745,7 +2745,7 @@
 .public ScrCmd_060
 .public ScrCmd_061
 .public ScrCmd_062
-.public ScrCmd_063
+.public ScrCmd_YesNo
 .public ScrCmd_064
 .public ScrCmd_065
 .public ScrCmd_066
@@ -2876,8 +2876,8 @@
 .public ScrCmd_342
 .public ScrCmd_343
 .public ScrCmd_344
-.public ScrCmd_345
-.public ScrCmd_346
+.public ScrCmd_AddWaitingIcon
+.public ScrCmd_RemoveWaitingIcon
 .public ScrCmd_347
 .public ScrCmd_350
 .public ScrCmd_PartyCountEgg

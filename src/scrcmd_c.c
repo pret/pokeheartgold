@@ -5,22 +5,11 @@
 #include "task.h"
 #include "text.h"
 #include "unk_0200E398.h"
+#include "unk_02035900.h"
+#include "render_text.h"
+#include "field_player_avatar.h"
 
-extern BOOL sub_02037474(void);
-extern BOOL ov01_021EF348(SCRIPTCONTEXT* ctx);
-extern void ov01_021EF4C4(struct UnkStruct_Ov01_021EF4C4*, SCRIPTCONTEXT* ctx);
-extern void ov01_021EF4DC(SCRIPTCONTEXT* ctx, MSGDATA* msg_data, u8 msg_no, BOOL can_ab_speed_up, struct UnkStruct_Ov01_021EF4C4*);
-extern void ov01_021F3D68(struct FieldSystemUnkSub68*, u8, u16);
-extern void ov01_021F3D70(struct FieldSystemUnkSub68*, u8);
-extern WINDOW* ov01_021F3D80(struct FieldSystemUnkSub68*);
-extern u8 ov01_021F3D84(struct FieldSystemUnkSub68*);
-extern BOOL ov01_021F3D88(struct FieldSystemUnkSub68*);
-extern void ov01_021F3D98(FieldSystem* fsys);
-extern void TextFlags_SetCanABSpeedUpPrint(BOOL);
-extern void sub_02002B50(BOOL);
-extern void sub_02002B8C(BOOL);
-extern void sub_020200A0(u8 printer_id);
-extern void PlayerAvatar_SetFacingDirection(FIELD_PLAYER_AVATAR*, u32 direction);
+BOOL sub_020416E4(SCRIPTCONTEXT *ctx);
 
 // TODO: NELEMS(gScriptCmdTable);
 const u32 sNumScriptCmds = 853;
@@ -579,8 +568,8 @@ BOOL ScrCmd_OpenMsg(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_08);
 
-    sub_0205B514(fsys->bg_config, FieldSysGetAttrAddr(fsys, SCRIPTENV_14), 3);
-    sub_0205B564(FieldSysGetAttrAddr(fsys, SCRIPTENV_14), Sav2_PlayerData_GetOptionsAddr(ctx->fsys->savedata));
+    sub_0205B514(fsys->bg_config, FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW), 3);
+    sub_0205B564(FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW), Sav2_PlayerData_GetOptionsAddr(ctx->fsys->savedata));
 
     fsys->unkD2_6 = 1;
     *unk = 1;
@@ -590,7 +579,7 @@ BOOL ScrCmd_OpenMsg(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_CloseMsg(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    WINDOW* window = FieldSysGetAttrAddr(fsys, SCRIPTENV_14);
+    WINDOW* window = FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW);
     u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_08);
 
     ClearFrameAndWindow2(window, 0);
@@ -604,7 +593,7 @@ BOOL ScrCmd_CloseMsg(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_HoldMsg(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    WINDOW* window = FieldSysGetAttrAddr(fsys, SCRIPTENV_14);
+    WINDOW* window = FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW);
     u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_08);
 
     RemoveWindow(window);
@@ -841,5 +830,46 @@ static BOOL sub_020415E0(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_061(SCRIPTCONTEXT* ctx) {
     sub_0204031C(ctx->fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_YesNo(SCRIPTCONTEXT* ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    struct ListMenu2 **listMenu = FieldSysGetAttrAddr(fsys, SCRIPTENV_MENU);
+    u16 data = ScriptReadHalfword(ctx);
+    LoadUserFrameGfx1(fsys->bg_config, 3, 0x3D9, 11, 0, 4);
+    *listMenu = Std_CreateYesNoMenu(fsys->bg_config, &_020FAC94, 0x3D9, 11, 4);
+    ctx->data[0] = data;
+    SetupNativeScript(ctx, sub_020416E4);
+    return TRUE;
+}
+
+BOOL sub_020416E4(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    struct ListMenu2 **listMenu = FieldSysGetAttrAddr(fsys, SCRIPTENV_MENU);
+    u16 *ret_p = GetVarPointer(fsys, ctx->data[0]);
+    int selection = Handle2dMenuInput_DeleteOnFinish(*listMenu, 4);
+    if (selection == LIST_NOTHING_CHOSEN) {
+        return FALSE;
+    } else {
+        if (selection == 0) {
+            *ret_p = 0; // yes
+        } else {
+            *ret_p = 1; // no
+        }
+        return TRUE;
+    }
+}
+
+BOOL ScrCmd_AddWaitingIcon(SCRIPTCONTEXT *ctx) {
+    WINDOW *window = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WINDOW);
+    struct WaitingIconManager **mgr_p = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WAITING_ICON);
+    *mgr_p = sub_0200F0AC(window, 0x3E2);
+    return FALSE;
+}
+
+BOOL ScrCmd_RemoveWaitingIcon(SCRIPTCONTEXT *ctx) {
+    struct WaitingIconManager **mgr_p = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WAITING_ICON);
+    sub_0200F450(*mgr_p);
     return FALSE;
 }

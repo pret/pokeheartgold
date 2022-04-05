@@ -27,5 +27,6 @@ int PlayerAvatar_GetGender(FIELD_PLAYER_AVATAR *avatar);
 LocalMapObject *PlayerAvatar_GetMapObject(FIELD_PLAYER_AVATAR *avatar);
 BOOL sub_0205CABC(FIELD_PLAYER_AVATAR *avatar);
 int PlayerAvatar_GetFacingDirection(FIELD_PLAYER_AVATAR *playerAvatar);
+void PlayerAvatar_SetFacingDirection(FIELD_PLAYER_AVATAR*, u32 direction);
 
 #endif //POKEHEARTGOLD_FIELD_PLAYER_AVATAR_H

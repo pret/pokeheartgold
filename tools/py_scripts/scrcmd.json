@@ -395,7 +395,7 @@
       ]
     },
     {
-      "name": "scrcmd_063",
+      "name": "yesno",
       "args": [
         "var"
       ]
@@ -2100,11 +2100,11 @@
       ]
     },
     {
-      "name": "scrcmd_345",
+      "name": "add_waiting_icon",
       "args": []
     },
     {
-      "name": "scrcmd_346",
+      "name": "remove_waiting_icon",
       "args": []
     },
     {
