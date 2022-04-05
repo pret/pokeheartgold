@@ -14,7 +14,7 @@
 #include "constants/maps.h"
 #include "constants/phone_contacts.h"
 
-void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL Unkbool) { 
+void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL a2) {
     Unk_PokegearSTRUCT_14 Unk_struct;
     SCRIPT_STATE *state = SavArray_Flags_get(sys->savedata);
     FLYPOINTS_SAVE *points = Save_FlyPoints_get(sys->savedata); 
@@ -32,12 +32,12 @@ void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL Unkbool) {
     } else {
         ptr->x = warpPtr->x;
         ptr->y = warpPtr->z;
-        MapHeader_GetWorldMapCoords(ptr->mapID, &(Unk_struct.x), &(Unk_struct.y));
+        MapHeader_GetWorldMapCoords(ptr->mapID, &Unk_struct.x, &Unk_struct.y);
         MAPMATRIX* matrix = MapMatrix_New();
         MapMatrix_Load(MAP_T20, matrix);
         if (Unk_struct.x == 0 && Unk_struct.y == 0) {
             ptr->matrixXCoord = ptr->x / 32;
-            ptr->matrixYCoord = ptr->y /32;
+            ptr->matrixYCoord = ptr->y / 32;
         } else {
             ptr->matrixXCoord = Unk_struct.x;
             ptr->matrixYCoord = Unk_struct.y;
@@ -47,43 +47,40 @@ void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL Unkbool) {
     }
 
     ptr->playerGender = PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(sys)));
-    ptr->unkPtr28 = &sys->unk_10C;
-    ptr->unkFsysVar01 = sub_0203DF3C(sys);
+    ptr->unk28 = &sys->unk_10C;
+    ptr->unk01 = sub_0203DF3C(sys);
     ptr->mapMusicID = Fsys_GetSurfOverriddenMusicId(sys, ptr->mapID);
     
-    if (Unkbool != 0) {
+    if (a2) {
         return;
     }
-    if (sub_02092E08(Unk_V1) != 0) {
-        ptr->unkVar04 = ov02_02251EE8(Unk_V1, &(Unk_struct.unkVar0c));
-        if (ptr->unkVar04 >= 75) {
-            ptr->unkBool00 = 0;
-            return;
+    if (sub_02092E08(Unk_V1)) {
+        ptr->unk04 = ov02_02251EE8(Unk_V1, &Unk_struct.unk04);
+        if (ptr->unk04 >= 75) {
+            ptr->unk00 = 0;
         } else {
-            ptr->unkVar06 = Unk_struct.unkVar10;
-            ptr->unkVar05 = Unk_struct.unkVar0f;
-            if (ptr->unkVar05 == 3) {
-                sub_0202F050(SaveData_GetMomsSavingsAddr(sys->savedata), Unk_struct.unkVar0e);
+            ptr->unk06 = Unk_struct.unk08;
+            ptr->unk05 = Unk_struct.unk07;
+            if (ptr->unk05 == 3) {
+                sub_0202F050(SaveData_GetMomsSavingsAddr(sys->savedata), Unk_struct.unk06);
             }
-            else if (ptr->unkVar05 == 0) {
-                sub_0202AB18(Sav2_Misc_get(sys->savedata), Unk_struct.unkVar0c, Unk_struct.unkVar0d, ptr->unkVar04);
+            else if (ptr->unk05 == 0) {
+                sub_0202AB18(Sav2_Misc_get(sys->savedata), Unk_struct.unk04, Unk_struct.unk05, ptr->unk04);
             }
             sub_02092F64(Unk_V1);
-            ptr->unkBool00 = 1;
-            return;
+            ptr->unk00 = 1;
         }
     } else {
-        ptr->unkBool00 = 0;
-        return;
+        ptr->unk00 = 0;
     }
 }
 
 void sub_02092D80(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr){
-    sub_02092BE8(sys, ptr, 0);
+    sub_02092BE8(sys, ptr, FALSE);
 }
 
 void sub_02092D8C(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr){
-    sub_02092BE8(sys, ptr, 1);
+    sub_02092BE8(sys, ptr, TRUE);
 }
 
 UnkFsysSub_114* sub_02092D98(HeapID id, FieldSystem* sys){ 
@@ -110,7 +107,7 @@ UnkFsysSub_114* sub_02092DEC(FieldSystem* sys){
 }
 
 void sub_02092DF4(UnkFsysSub_114* ptr){
-    ptr->unk_var0_0 = 1;
+    ptr->unk_var0_0 = TRUE;
     ptr->unk_var14 = 0;
 }
 
@@ -122,23 +119,23 @@ PhoneBookEntry* sub_02092E10(UnkFsysSub_114* ptr){
     return &ptr->entry;
 }
 
-void sub_02092E14(UnkFsysSub_114* ptr, u8 Unkflag, BOOL Unkbool){
-    sub_0202F01C(ptr->savings_data, Unkflag);
-    if (Unkbool) {
-        if (ptr->unk_var8 < (ptr->unk_varC - 1)) {
+void sub_02092E14(UnkFsysSub_114* ptr, u8 a1, BOOL a2){
+    sub_0202F01C(ptr->savings_data, a1);
+    if (a2) {
+        if (ptr->unk_var8 < ptr->unk_varC - 1) {
             ptr->unk_var8 = ptr->unk_varC - 1;
         }
     }
 }
 
-void sub_02092E34(UnkFsysSub_114* ptr, s32 Unkarg1, BOOL uselessArg){
+void sub_02092E34(UnkFsysSub_114* ptr, s32 a1, BOOL a2){
     if (!ptr->unk_var0_2) {
-        ptr->unk_var0_2 = 1;
-        if (Unkarg1 >= 10) {
+        ptr->unk_var0_2 = TRUE;
+        if (a1 >= 10) {
             return;
         }
     }
-    ptr->unk_var8 += Unkarg1;
+    ptr->unk_var8 += a1;
     sub_02092E54(ptr);
 }
 
@@ -146,10 +143,10 @@ void sub_02092E54(UnkFsysSub_114* ptr){
     SCRIPT_STATE* state = SavArray_Flags_get(ptr->data); 
     SAFARIZONE* zone = Save_SafariZone_get(ptr->data); 
     IGT* igt = Sav2_PlayerData_GetIGTAddr(ptr->data); 
-    u8 var4057 = (u8) ScriptState_GetVar4057(state);
+    u8 var4057 = ScriptState_GetVar4057(state);
     u8 i;
     for (i = 0; i < 5; i++) {
-        if(sub_0202F08C(ptr->savings_data, i + 7)) {
+        if (sub_0202F08C(ptr->savings_data, i + 7)) {
             return;
         }
     }
@@ -233,39 +230,39 @@ void sub_02092FA8(UnkFsysSub_114* ptr){
 }
 
 void sub_02092FB8(SysTask *task, UnkFsysSub_114* ptr){
-    u8 arg1 = ptr->unk_var44;
-    ptr->unk_var44 += 1;
+    u8 arg1 = ptr->unk_40.unk4;
+    ptr->unk_40.unk4++;
     if (arg1 == 0) {
         if (!IsSEPlaying(SEQ_SE_GS_PHONE1)) {
             sub_02006134(SEQ_SE_GS_PHONE1, 0);
         } else {
-            if (ptr->unk_var44 < 15) {
-                ptr->unk_var44 = 15;
+            if (ptr->unk_40.unk4 < 15) {
+                ptr->unk_40.unk4 = 15;
             }
         }
     }
-    if (ptr->unk_var44 >= 30) {
-        ptr->unk_var44 = 0;
+    if (ptr->unk_40.unk4 >= 30) {
+        ptr->unk_40.unk4 = 0;
     }
 }
 
-void sub_02093010(UnkFsysSub_114* ptr, BOOL Unkarg0){
-    if (Unkarg0) {
+void sub_02093010(UnkFsysSub_114* ptr, BOOL a1){
+    if (a1) {
         if (ptr->unk_var0_3) {
             return;
         }
-        MI_CpuClear8(&ptr->unk_ptr40, 8);
-        ptr->unk_ptr40 = CreateSysTask((SysTaskFunc)sub_02092FB8, ptr, -1);
-        ptr->unk_var0_3 = 1;
+        MI_CpuClear8(&ptr->unk_40, sizeof(struct PokegearRingingTask));
+        ptr->unk_40.unk0 = CreateSysTask((SysTaskFunc)sub_02092FB8, ptr, -1);
+        ptr->unk_var0_3 = TRUE;
     } else {
         if (!ptr->unk_var0_3) {
             return;
         }
-        if (ptr->unk_ptr40 != 0) {
-            DestroySysTask(ptr->unk_ptr40);
+        if (ptr->unk_40.unk0 != NULL) {
+            DestroySysTask(ptr->unk_40.unk0);
         }
-        MI_CpuClear8(&ptr->unk_ptr40, 8);
-        ptr->unk_var0_3 = 0;
+        MI_CpuClear8(&ptr->unk_40, sizeof(struct PokegearRingingTask));
+        ptr->unk_var0_3 = FALSE;
     }
 }
 
@@ -289,14 +286,14 @@ BOOL sub_020930C4(FieldSystem* sys){
     if (GSPlayerMisc_IsGearNumberRegistered(SaveData_GSPlayerMisc_get(sys->savedata), PHONE_CONTACT_PROF__OAK) == 0xff) {
         return FALSE;
     }
-    u16 var = (u16) (owned / 0x32);
-    if (!var) {
+    u16 var = (owned / 50);
+    if (var == 0) {
         return FALSE;
     }
     if (var > 9) {
-        var = 9;
+        var = 9; // uncreachable
     }
-    if (!CheckFlagInArray(state, var + 0x988)) {
+    if (!CheckFlagInArray(state, var + FLAG_UNK_988)) {
         sub_02092E14(sub_02092DEC(sys), 4, FALSE);
         return TRUE;
     }

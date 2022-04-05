@@ -12,6 +12,7 @@
 #include "bug_contest_internal.h"
 #include "constants/vars.h"
 #include "overlay_manager.h"
+#include "unk_0200E320.h"
 
 #define SCRIPT_MODE_STOPPED  0
 #define SCRIPT_MODE_BYTECODE 1
@@ -197,9 +198,10 @@ typedef struct UnkFsysSub_114 {
     MomsSavings* savings_data;//0x34
     SAVEDATA* data; //0x38
     FieldSystem* sys; //0x3c
-    void *unk_ptr40;
-    u8 unk_var44;
-    u8 filler_45[3];
+    struct PokegearRingingTask {
+        SysTask *unk0;
+        u8 unk4;
+    } unk_40;
 } UnkFsysSub_114; //size: 0x48
 
 struct UnkStruct_020FC5CC {
