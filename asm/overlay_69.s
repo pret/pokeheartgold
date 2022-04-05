@@ -334,7 +334,7 @@ _021E5BD6:
 	ldr r0, _021E5DB0 ; =0x0000C06C
 	ldr r1, [r4]
 	ldr r0, [r4, r0]
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	cmp r0, #0
 	beq _021E5BEE
 	mov r1, #1
@@ -573,7 +573,7 @@ _021E5DE0:
 	ldr r0, _021E603C ; =0x0000C06C
 	ldr r1, [r4]
 	ldr r0, [r4, r0]
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	cmp r0, #0
 	beq _021E5DF8
 	mov r1, #1

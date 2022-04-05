@@ -969,7 +969,7 @@ sub_020416E4: ; 0x020416E4
 	add r5, r0, #0
 	ldr r0, [r4]
 	mov r1, #4
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1

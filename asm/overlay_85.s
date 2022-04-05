@@ -8007,7 +8007,7 @@ _021E955C:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0x66
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -8244,7 +8244,7 @@ _021E9736:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0x66
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -8570,7 +8570,7 @@ _021E99A2:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0x66
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -8987,7 +8987,7 @@ _021E9CC0:
 	cmp r0, #0
 	beq _021E9D8C
 	mov r1, #0x66
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 	mov r0, #0x33
 	mov r1, #0
 	lsl r0, r0, #4
@@ -9013,7 +9013,7 @@ _021E9CEE:
 	cmp r0, #0
 	beq _021E9D8C
 	mov r1, #0x66
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 	mov r0, #0x33
 	mov r1, #0
 	lsl r0, r0, #4
@@ -9039,7 +9039,7 @@ _021E9D12:
 	cmp r0, #0
 	beq _021E9D4A
 	mov r1, #0x66
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 	mov r0, #0x33
 	mov r1, #0
 	lsl r0, r0, #4
@@ -9071,7 +9071,7 @@ _021E9D74:
 	cmp r0, #0
 	beq _021E9D8C
 	mov r1, #0x66
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 	mov r0, #0x33
 	mov r1, #0
 	lsl r0, r0, #4
@@ -10010,7 +10010,7 @@ _021EA460:
 	cmp r0, #0
 	beq _021EA488
 	mov r1, #0x66
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 	mov r0, #0x33
 	mov r1, #0
 	lsl r0, r0, #4

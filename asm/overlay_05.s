@@ -311,7 +311,7 @@ _0221BC5C:
 	add r0, r2, #4
 	ldr r0, [r4, r0]
 	ldr r1, [r1, #0x24]
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	cmp r0, #0
 	beq _0221BC78
 	mov r1, #1
@@ -374,7 +374,7 @@ _0221BCD8:
 	beq _0221BCF0
 	ldr r1, [r4]
 	ldr r1, [r1, #0x24]
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 	mov r0, #0x2f
 	mov r1, #0
 	lsl r0, r0, #6

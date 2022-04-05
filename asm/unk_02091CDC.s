@@ -405,7 +405,7 @@ _02091FFC:
 _02092026:
 	ldr r0, [r4, #0x2c]
 	ldr r1, [r4]
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	cmp r0, #0
 	beq _0209203A
 	sub r1, r5, #2
@@ -443,7 +443,7 @@ _02092046:
 _02092070:
 	ldr r0, [r4, #0x2c]
 	ldr r1, [r4]
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	cmp r0, #0
 	beq _02092084
 	sub r1, r5, #2

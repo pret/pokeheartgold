@@ -318,7 +318,7 @@ _021EDCD8:
 	ldrb r1, [r1]
 	add r0, #0xac
 	mov r2, #4
-	bl sub_02001B9C
+	bl Create2dMenu
 	add r1, r4, #0
 	add r1, #0xb8
 	str r0, [r1]
@@ -514,7 +514,7 @@ _021EDEA8:
 	add r0, r4, #0
 	add r0, #0xb8
 	ldr r0, [r0]
-	bl sub_02001BE0
+	bl Handle2dMenuInput
 	mov r1, #1
 	mvn r1, r1
 	cmp r0, r1
@@ -593,7 +593,7 @@ ov01_021EDF38: ; 0x021EDF38
 	add r0, #0xb8
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02001BC4
+	bl Delete2dMenu
 	add r0, r4, #0
 	add r0, #0xb0
 	ldr r0, [r0]
@@ -2032,7 +2032,7 @@ _021EE9B2:
 	ldrb r1, [r1]
 	add r0, #0xac
 	mov r2, #4
-	bl sub_02001B9C
+	bl Create2dMenu
 	add r1, r5, #0
 	add r1, #0xb8
 	str r0, [r1]

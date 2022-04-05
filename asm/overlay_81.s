@@ -4325,7 +4325,7 @@ _022400E2:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02001BC4
+	bl Delete2dMenu
 	mov r0, #0x5d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]

@@ -26130,7 +26130,7 @@ ov70_022447A0: ; 0x022447A0
 	ldr r0, _02244800 ; =0x000011B0
 	mov r1, #0x3d
 	ldr r0, [r4, r0]
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
