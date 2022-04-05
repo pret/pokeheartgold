@@ -27293,7 +27293,7 @@
 .public sub_0200606C
 .public sub_02006088
 .public sub_02006118
-.public sub_02006134
+.public PlaySE_SetPitch
 .public sub_0200615C
 .public sub_0200616C
 .public sub_02006190
@@ -30111,9 +30111,9 @@
 .public sub_02092BE4
 .public sub_02092D80
 .public sub_02092D8C
-.public sub_02092D98
+.public GearPhoneRingManager_new
 .public sub_02092DD8
-.public sub_02092DEC
+.public Fsys_GetGearPhoneRingManager
 .public sub_02092DF4
 .public sub_02092E08
 .public sub_02092E10
@@ -30121,7 +30121,7 @@
 .public sub_02092E34
 .public sub_02092F30
 .public sub_02092FA8
-.public sub_02093010
+.public GearPhone_ToggleRinging
 .public sub_02093070
 .public sub_020930C4
 .public sub_02093134

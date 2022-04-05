@@ -23,7 +23,7 @@ typedef struct UnkPokegearstruct_2c{
     u8 filler_14[0xe];
     u8 matrixXCoord; //0x22
     u8 matrixYCoord; //0x23
-    SAVEDATA* data; //0x24
+    SAVEDATA* saveData; //0x24
     void *unk28; //Pointer to a Field System variable at offset 0x10C (currently unk_10C[0];)
 } Unk_PokegearSTRUCT_2C;
 
@@ -38,27 +38,22 @@ typedef struct UnkPokegearstruct_14{
     u8 padding_09[3];
 } Unk_PokegearSTRUCT_14;
 
-void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL a2);
 void sub_02092D80(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr);
 void sub_02092D8C(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr);
-UnkFsysSub_114* sub_02092D98(HeapID id, FieldSystem* sys);
-void sub_02092DD8(UnkFsysSub_114 * ptr);
-UnkFsysSub_114* sub_02092DEC(FieldSystem* sys);
-void sub_02092DF4(UnkFsysSub_114* ptr);
-u8 sub_02092E08(UnkFsysSub_114* ptr);
-PhoneBookEntry* sub_02092E10(UnkFsysSub_114* ptr);
-void sub_02092E14(UnkFsysSub_114* ptr, u8 a1, BOOL a2);
-void sub_02092E34(UnkFsysSub_114* ptr, s32 a1, BOOL a2);
-void sub_02092E54(UnkFsysSub_114* ptr);
-void sub_02092F30(UnkFsysSub_114* ptr, s64 seconds);
-void sub_02092F64(UnkFsysSub_114* ptr);
-void sub_02092FA0(UnkFsysSub_114* ptr);
-void sub_02092FA8(UnkFsysSub_114* ptr);
-void sub_02092FB8(SysTask *uselessArg, UnkFsysSub_114* ptr);
-void sub_02093010(UnkFsysSub_114* ptr, BOOL a1);
+GearPhoneRingManager* GearPhoneRingManager_new(HeapID heapId, FieldSystem* sys);
+void sub_02092DD8(GearPhoneRingManager * ptr);
+GearPhoneRingManager* Fsys_GetGearPhoneRingManager(FieldSystem* sys);
+void sub_02092DF4(GearPhoneRingManager* ptr);
+BOOL sub_02092E08(GearPhoneRingManager* ptr);
+PhoneBookEntry* sub_02092E10(GearPhoneRingManager* ptr);
+void sub_02092E14(GearPhoneRingManager* ptr, u8 a1, BOOL a2);
+void sub_02092E34(GearPhoneRingManager* ptr, s32 a1, BOOL a2);
+void sub_02092F30(GearPhoneRingManager* ptr, s64 seconds);
+void sub_02092FA8(GearPhoneRingManager* ptr);
+void GearPhone_ToggleRinging(GearPhoneRingManager* ptr, BOOL a1);
 BOOL sub_02093070(FieldSystem* sys);
 BOOL sub_020930C4(FieldSystem* sys);
-BOOL sub_02093134(FieldSystem* sys, POKEMON *pokemon);
+BOOL sub_02093134(FieldSystem* sys, POKEMON * pkmn);
 BOOL sub_0209316C(FieldSystem* sys);
 
 #endif //POKEHEARTGOLD_UNK_02092BE8_H

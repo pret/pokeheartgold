@@ -2388,7 +2388,7 @@ _0225E798:
 	bne _0225E7AA
 	ldr r0, _0225E7CC ; =0x0000093D
 	add r1, r4, #0
-	bl sub_02006134
+	bl PlaySE_SetPitch
 _0225E7AA:
 	mov r0, #0xce
 	lsl r0, r0, #2

@@ -382,13 +382,13 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         case CHOOSE_STARTER_INPUT_CONTINUE_LEFT:
             work->rotationSpeed = FX16_CONST(-0.5);
             *state = CHOOSE_STARTER_STATE_ROTATE_MACHINE;
-            sub_02006134(0x607, -0x200);
+            PlaySE_SetPitch(0x607, -0x200);
             break;
         case CHOOSE_STARTER_INPUT_CYCLE_COUNTERCLOCKWISE:
         case CHOOSE_STARTER_INPUT_CONTINUE_RIGHT:
             work->rotationSpeed = FX16_CONST(0.5);
             *state = CHOOSE_STARTER_STATE_ROTATE_MACHINE;
-            sub_02006134(0x607, -0x200);
+            PlaySE_SetPitch(0x607, -0x200);
             break;
         case CHOOSE_STARTER_INPUT_CONFIRM_CHOICE:
             GX_EngineAToggleLayers(2, GX_LAYER_TOGGLE_OFF);

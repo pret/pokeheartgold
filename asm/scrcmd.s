@@ -12447,7 +12447,7 @@ ScrCmd_SetPhoneCall: ; 0x02047060
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02092DEC
+	bl Fsys_GetGearPhoneRingManager
 	bl sub_02092DF4
 	add r0, r5, #0
 	add r0, #0x80
@@ -12461,7 +12461,7 @@ ScrCmd_SetPhoneCall: ; 0x02047060
 	orr r1, r2
 	strb r1, [r0]
 	ldr r0, [r5]
-	bl sub_02092DEC
+	bl Fsys_GetGearPhoneRingManager
 	lsl r1, r6, #0x18
 	lsr r1, r1, #0x18
 	str r1, [sp]
@@ -12522,7 +12522,7 @@ ScrCmd_LoadPhoneDat: ; 0x02047120
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
-	bl sub_02092DEC
+	bl Fsys_GetGearPhoneRingManager
 	bl sub_02092E10
 	add r1, r0, #0
 	add r0, r6, #0
@@ -12565,7 +12565,7 @@ ScrCmd_GetPhoneContactMsgIds: ; 0x02047168
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
-	bl sub_02092DEC
+	bl Fsys_GetGearPhoneRingManager
 	bl sub_02092E10
 	add r5, r0, #0
 	ldrb r0, [r5]
@@ -12650,7 +12650,7 @@ ScrCmd_GetPhoneContactRandomGiftBerry: ; 0x0204723C
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
-	bl sub_02092DEC
+	bl Fsys_GetGearPhoneRingManager
 	bl sub_02092E10
 	ldrh r0, [r0, #8]
 	cmp r0, #0x95
@@ -12683,7 +12683,7 @@ ScrCmd_GetPhoneContactGiftItem: ; 0x0204727C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02092DEC
+	bl Fsys_GetGearPhoneRingManager
 	bl sub_02092E10
 	add r5, #0x80
 	add r4, r0, #0
@@ -12713,7 +12713,7 @@ ScrCmd_148: ; 0x020472C4
 	str r1, [r0, #8]
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02092DEC
+	bl Fsys_GetGearPhoneRingManager
 	ldrb r2, [r5]
 	add r1, r4, #0
 	bl sub_02092E14

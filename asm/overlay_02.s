@@ -100,14 +100,14 @@ _02245C06:
 	cmp r0, #0x50
 	bne _02245C5A
 _02245C26:
-	ldr r0, _02245D0C ; =0x0000088B
+	ldr r0, _02245D0C ; =SEQ_SE_DP_FW411
 	bl PlaySE
 	add r0, r4, #0
 	add r0, #0xcc
 	ldr r0, [r0]
 	cmp r0, #0x32
 	bne _02245C3C
-	ldr r0, _02245D10 ; =0x0000088C
+	ldr r0, _02245D10 ; =SEQ_SE_DP_F207
 	bl PlaySE
 _02245C3C:
 	add r0, r4, #0
@@ -120,9 +120,9 @@ _02245C3C:
 	add r1, r0, #0
 	sub r1, r1, #5
 	lsl r1, r1, #0x16
-	ldr r0, _02245D0C ; =0x0000088B
+	ldr r0, _02245D0C ; =SEQ_SE_DP_FW411
 	asr r1, r1, #0x10
-	bl sub_02006134
+	bl PlaySE_SetPitch
 _02245C5A:
 	add r0, r4, #0
 	add r0, #0xcc
@@ -209,8 +209,8 @@ _02245D06:
 	add sp, #0xc
 	pop {r3, r4, pc}
 	.balign 4, 0
-_02245D0C: .word 0x0000088B
-_02245D10: .word 0x0000088C
+_02245D0C: .word SEQ_SE_DP_FW411
+_02245D10: .word SEQ_SE_DP_F207
 _02245D14: .word 0x00007FFF
 	thumb_func_end ov02_02245BC8
 
@@ -866,7 +866,7 @@ _02246204:
 	ldr r3, [sp, #8]
 	add r0, #0x10
 	bl ov01_021FC00C
-	ldr r0, _022462CC ; =0x0000090F
+	ldr r0, _022462CC ; =SEQ_SE_GS_STOPPERKAIJO
 	bl PlaySE
 	ldrh r0, [r4, #0x12]
 	add r0, r0, #1
@@ -939,7 +939,7 @@ _022462C0:
 	pop {r4, r5, pc}
 	nop
 _022462C8: .word ov02_02253254
-_022462CC: .word 0x0000090F
+_022462CC: .word SEQ_SE_GS_STOPPERKAIJO
 _022462D0: .word ov02_02253D80
 _022462D4: .word ov02_022462DC
 _022462D8: .word ov02_02253D84
@@ -1008,7 +1008,7 @@ ov02_02246330: ; 0x02246330
 	b _0224638E
 _02246348:
 	bl ov02_02246398
-	ldr r0, _02246394 ; =0x0000087D
+	ldr r0, _02246394 ; =SEQ_SE_GS_AJITO_SIREN
 	bl PlaySE
 	ldrb r0, [r4, #8]
 	add r0, r0, #1
@@ -1028,7 +1028,7 @@ _0224635A:
 	strb r0, [r4, #8]
 	b _0224638E
 _02246374:
-	ldr r0, _02246394 ; =0x0000087D
+	ldr r0, _02246394 ; =SEQ_SE_GS_AJITO_SIREN
 	bl IsSEPlaying
 	cmp r0, #0
 	bne _0224638E
@@ -1042,7 +1042,7 @@ _0224638E:
 	mov r0, #0
 	pop {r4, pc}
 	nop
-_02246394: .word 0x0000087D
+_02246394: .word SEQ_SE_GS_AJITO_SIREN
 	thumb_func_end ov02_02246330
 
 	thumb_func_start ov02_02246398
@@ -8502,7 +8502,7 @@ ov02_02249BA8: ; 0x02249BA8
 	mov r0, #0
 	pop {r4, pc}
 _02249BB8:
-	ldr r0, _02249BD4 ; =0x00000648
+	ldr r0, _02249BD4 ; =SEQ_SE_DP_FW019
 	bl PlaySE
 	mov r0, #2
 	lsl r0, r0, #0xa
@@ -8515,7 +8515,7 @@ _02249BB8:
 	mov r0, #1
 	pop {r4, pc}
 	nop
-_02249BD4: .word 0x00000648
+_02249BD4: .word SEQ_SE_DP_FW019
 	thumb_func_end ov02_02249BA8
 
 	thumb_func_start ov02_02249BD8
@@ -13161,7 +13161,7 @@ _0224BEE8:
 	ldr r0, [r6, #0x58]
 	mov r1, #1
 	bl ov01_021E8E70
-	ldr r0, _0224BF50 ; =0x00000611
+	ldr r0, _0224BF50 ; =SEQ_SE_DP_ELEBETA2
 	bl PlaySE
 	ldrb r0, [r4, #2]
 	add r0, r0, #1
@@ -13173,10 +13173,10 @@ _0224BF00:
 	bl ov01_021E8F10
 	cmp r0, #0
 	beq _0224BF48
-	ldr r0, _0224BF50 ; =0x00000611
+	ldr r0, _0224BF50 ; =SEQ_SE_DP_ELEBETA2
 	mov r1, #0
 	bl StopSE
-	ldr r0, _0224BF54 ; =0x000005F1
+	ldr r0, _0224BF54 ; =SEQ_SE_DP_PINPON
 	bl PlaySE
 	ldr r0, [r6, #0x54]
 	ldr r1, [r6, #0x58]
@@ -13187,7 +13187,7 @@ _0224BF00:
 	strb r0, [r4, #2]
 	b _0224BF48
 _0224BF2C:
-	ldr r0, _0224BF54 ; =0x000005F1
+	ldr r0, _0224BF54 ; =SEQ_SE_DP_PINPON
 	bl IsSEPlaying
 	cmp r0, #0
 	bne _0224BF48
@@ -13205,8 +13205,8 @@ _0224BF48:
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	nop
-_0224BF50: .word 0x00000611
-_0224BF54: .word 0x000005F1
+_0224BF50: .word SEQ_SE_DP_ELEBETA2
+_0224BF54: .word SEQ_SE_DP_PINPON
 	thumb_func_end ov02_0224BE24
 
 	thumb_func_start ov02_0224BF58
@@ -13380,14 +13380,14 @@ _0224C092:
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
-	ldr r0, _0224C0AC ; =0x00000602
+	ldr r0, _0224C0AC ; =SEQ_SE_DP_KAIDAN2
 	bl PlaySE
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
 _0224C0A4: .word 0xFFF6A000
 _0224C0A8: .word ov02_02253820
-_0224C0AC: .word 0x00000602
+_0224C0AC: .word SEQ_SE_DP_KAIDAN2
 	thumb_func_end ov02_0224C05C
 
 	thumb_func_start ov02_0224C0B0
@@ -14191,14 +14191,14 @@ ov02_0224C698: ; 0x0224C698
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
-	ldr r0, _0224C6D8 ; =0x0000064D
+	ldr r0, _0224C6D8 ; =SEQ_SE_DP_TELE
 	bl PlaySE
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
 _0224C6D0: .word 0xFFF6A000
 _0224C6D4: .word ov02_02253770
-_0224C6D8: .word 0x0000064D
+_0224C6D8: .word SEQ_SE_DP_TELE
 	thumb_func_end ov02_0224C698
 
 	thumb_func_start ov02_0224C6DC
@@ -14252,14 +14252,14 @@ ov02_0224C71C: ; 0x0224C71C
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
-	ldr r0, _0224C758 ; =0x0000064D
+	ldr r0, _0224C758 ; =SEQ_SE_DP_TELE
 	bl PlaySE
 	mov r0, #0
 	pop {r4, pc}
 	nop
 _0224C750: .word 0xFFF6A000
 _0224C754: .word ov02_02253820
-_0224C758: .word 0x0000064D
+_0224C758: .word SEQ_SE_DP_TELE
 	thumb_func_end ov02_0224C71C
 
 	thumb_func_start ov02_0224C75C
@@ -14431,14 +14431,14 @@ _0224C8B2:
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
-	ldr r0, _0224C8CC ; =0x00000602
+	ldr r0, _0224C8CC ; =SEQ_SE_DP_KAIDAN2
 	bl PlaySE
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
 _0224C8C4: .word 0xFFF6A000
 _0224C8C8: .word ov02_022537DC
-_0224C8CC: .word 0x00000602
+_0224C8CC: .word SEQ_SE_DP_KAIDAN2
 	thumb_func_end ov02_0224C87C
 
 	thumb_func_start ov02_0224C8D0
@@ -15681,14 +15681,14 @@ ov02_0224D1E4: ; 0x0224D1E4
 	ldr r0, [r5, #0x40]
 	add r1, r4, #0
 	bl ov02_0224D044
-	ldr r0, _0224D228 ; =0x0000064A
+	ldr r0, _0224D228 ; =SEQ_SE_DP_FW015
 	bl PlaySE
 	mov r0, #0
 	add r4, #0xec
 	str r0, [r4]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_0224D228: .word 0x0000064A
+_0224D228: .word SEQ_SE_DP_FW015
 	thumb_func_end ov02_0224D1E4
 
 	thumb_func_start ov02_0224D22C
@@ -15717,14 +15717,14 @@ ov02_0224D22C: ; 0x0224D22C
 	mov r1, #0xfd
 	add r2, r4, #0
 	bl ov02_0224CFD8
-	ldr r0, _0224D274 ; =0x0000064A
+	ldr r0, _0224D274 ; =SEQ_SE_DP_FW015
 	bl PlaySE
 	mov r0, #0
 	add r4, #0xec
 	str r0, [r4]
 	pop {r3, r4, r5, pc}
 	nop
-_0224D274: .word 0x0000064A
+_0224D274: .word SEQ_SE_DP_FW015
 	thumb_func_end ov02_0224D22C
 
 	thumb_func_start ov02_0224D278
@@ -15850,14 +15850,14 @@ ov02_0224D310: ; 0x0224D310
 	ldr r0, [r5, #0x40]
 	add r1, r4, #0
 	bl ov02_0224D044
-	ldr r0, _0224D354 ; =0x00000649
+	ldr r0, _0224D354 ; =SEQ_SE_DP_FW088
 	bl PlaySE
 	mov r0, #0
 	add r4, #0xec
 	str r0, [r4]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_0224D354: .word 0x00000649
+_0224D354: .word SEQ_SE_DP_FW088
 	thumb_func_end ov02_0224D310
 
 	thumb_func_start ov02_0224D358
@@ -15886,14 +15886,14 @@ ov02_0224D358: ; 0x0224D358
 	mov r1, #0xfd
 	add r2, r4, #0
 	bl ov02_0224CFD8
-	ldr r0, _0224D3A0 ; =0x00000649
+	ldr r0, _0224D3A0 ; =SEQ_SE_DP_FW088
 	bl PlaySE
 	mov r0, #0
 	add r4, #0xec
 	str r0, [r4]
 	pop {r3, r4, r5, pc}
 	nop
-_0224D3A0: .word 0x00000649
+_0224D3A0: .word SEQ_SE_DP_FW088
 	thumb_func_end ov02_0224D358
 
 	thumb_func_start ov02_0224D3A4
@@ -16109,7 +16109,7 @@ _0224D50A:
 	add r0, #0xdc
 	mov r1, #0
 	bl ov01_021FC004
-	ldr r0, _0224D57C ; =0x0000064C
+	ldr r0, _0224D57C ; =SEQ_SE_DP_FW463
 	bl PlaySE
 	add r0, r7, #0
 	ldrh r1, [r4, r0]
@@ -16155,7 +16155,7 @@ _0224D570:
 	.balign 4, 0
 _0224D574: .word 0x000001CA
 _0224D578: .word ov02_022538EC
-_0224D57C: .word 0x0000064C
+_0224D57C: .word SEQ_SE_DP_FW463
 	thumb_func_end ov02_0224D488
 
 	thumb_func_start ov02_0224D580
@@ -16249,7 +16249,7 @@ ov02_0224D5B4: ; 0x0224D5B4
 	add r0, r4, #0
 	mov r2, #1
 	bl ov01_021FC024
-	ldr r0, _0224D644 ; =0x0000064C
+	ldr r0, _0224D644 ; =SEQ_SE_DP_FW463
 	bl PlaySE
 	mov r0, #0
 	add r4, #0xec
@@ -16258,7 +16258,7 @@ ov02_0224D5B4: ; 0x0224D5B4
 	pop {r4, r5, r6, pc}
 	nop
 _0224D640: .word ov02_022538EC
-_0224D644: .word 0x0000064C
+_0224D644: .word SEQ_SE_DP_FW463
 	thumb_func_end ov02_0224D5B4
 
 	thumb_func_start ov02_0224D648
@@ -16358,12 +16358,12 @@ _0224D6D8:
 	add r0, r7, #0
 	mov r1, #1
 	bl ov01_021FC004
-	ldr r0, _0224D6FC ; =0x00000626
+	ldr r0, _0224D6FC ; =SEQ_SE_DP_UG_023
 	bl PlaySE
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
-_0224D6FC: .word 0x00000626
+_0224D6FC: .word SEQ_SE_DP_UG_023
 	thumb_func_end ov02_0224D698
 
 	thumb_func_start ov02_0224D700
@@ -16855,7 +16855,7 @@ _0224DA7C:
 	stmia r2!, {r0, r1}
 	ldr r0, [r3]
 	str r0, [r2]
-	ldr r0, _0224DA9C ; =0x000008FE
+	ldr r0, _0224DA9C ; =SEQ_SE_GS_ZUTUKI
 	bl PlaySE
 	ldr r0, _0224DAA0 ; =0x00000113
 	mov r1, #0
@@ -16863,7 +16863,7 @@ _0224DA7C:
 	add sp, #0x28
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_0224DA9C: .word 0x000008FE
+_0224DA9C: .word SEQ_SE_GS_ZUTUKI
 _0224DAA0: .word 0x00000113
 	thumb_func_end ov02_0224D9C0
 
@@ -16971,7 +16971,7 @@ _0224DB62:
 	stmia r2!, {r0, r1}
 	ldr r0, [r3]
 	str r0, [r2]
-	ldr r0, _0224DB84 ; =0x000008FE
+	ldr r0, _0224DB84 ; =SEQ_SE_GS_ZUTUKI
 	bl PlaySE
 	ldr r0, _0224DB88 ; =0x00000113
 	mov r1, #0
@@ -16979,7 +16979,7 @@ _0224DB62:
 	add sp, #0x28
 	pop {r3, r4, r5, pc}
 	nop
-_0224DB84: .word 0x000008FE
+_0224DB84: .word SEQ_SE_GS_ZUTUKI
 _0224DB88: .word 0x00000113
 	thumb_func_end ov02_0224DAA4
 
@@ -17380,11 +17380,11 @@ _0224DE46:
 	add r0, r7, #0
 	mov r1, #1
 	bl ov01_021FC004
-	ldr r0, _0224DE68 ; =0x00000626
+	ldr r0, _0224DE68 ; =SEQ_SE_DP_UG_023
 	bl PlaySE
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0224DE68: .word 0x00000626
+_0224DE68: .word SEQ_SE_DP_UG_023
 	thumb_func_end ov02_0224DE10
 
 	thumb_func_start ov02_0224DE6C
@@ -24249,7 +24249,7 @@ _022512CA:
 	ldr r0, [r0]
 	cmp r0, #2
 	bne _022512E8
-	ldr r0, _0225131C ; =0x0000090D
+	ldr r0, _0225131C ; =SEQ_SE_GS_RUGIA_MENOHIKARI
 	bl PlaySE
 _022512E8:
 	add r0, r4, #0
@@ -24277,7 +24277,7 @@ _02251316:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_0225131C: .word 0x0000090D
+_0225131C: .word SEQ_SE_GS_RUGIA_MENOHIKARI
 	thumb_func_end ov02_022512AC
 
 	thumb_func_start ov02_02251320
@@ -24640,18 +24640,18 @@ ov02_022515D0: ; 0x022515D0
 	ldrh r0, [r0]
 	cmp r0, #8
 	bne _02251604
-	mov r0, #0xf9
+	mov r0, #SPECIES_LUGIA
 	str r0, [sp, #0x10]
 	mov r0, #0x12
 	mov r1, #5
 	str r0, [sp, #0xc]
-	ldr r7, _022518D8 ; =0x0000090E
+	ldr r7, _022518D8 ; =SEQ_SE_GS_RUGIA_HABATAKI
 	b _02251610
 _02251604:
-	mov r0, #0xfa
+	mov r0, #SPECIES_HO_OH
 	str r0, [sp, #0x10]
 	mov r0, #0
-	ldr r7, _022518DC ; =0x0000090A
+	ldr r7, _022518DC ; =SEQ_SE_GS_HOUOU_HABATAKI
 	mov r1, #5
 	str r0, [sp, #0xc]
 _02251610:
@@ -24998,8 +24998,8 @@ _022518D0:
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_022518D8: .word 0x0000090E
-_022518DC: .word 0x0000090A
+_022518D8: .word SEQ_SE_GS_RUGIA_HABATAKI
+_022518DC: .word SEQ_SE_GS_HOUOU_HABATAKI
 	thumb_func_end ov02_022515D0
 
 	thumb_func_start ov02_022518E0
@@ -26219,10 +26219,10 @@ _022522A8: .word ov02_02253C84
 
 	thumb_func_start ov02_022522AC
 ov02_022522AC: ; 0x022522AC
-	ldr r3, _022522B0 ; =sub_02093010
+	ldr r3, _022522B0 ; =GearPhone_ToggleRinging
 	bx r3
 	.balign 4, 0
-_022522B0: .word sub_02093010
+_022522B0: .word GearPhone_ToggleRinging
 	thumb_func_end ov02_022522AC
 
 	thumb_func_start ov02_022522B4

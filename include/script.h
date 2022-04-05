@@ -176,7 +176,7 @@ struct FieldSystemUnkSub0 {
     BOOL unkC;
 };
 
-typedef struct UnkFsysSub_114 {
+typedef struct GearPhoneRingManager {
     u8 unk_var0_0:1;
     u8 unk_var0_1:1;
     u8 unk_var0_2:1;
@@ -196,13 +196,13 @@ typedef struct UnkFsysSub_114 {
     PhoneBookEntry entry; //0x1c
     SavePokegear* pokegear_data; //0x30
     MomsSavings* savings_data;//0x34
-    SAVEDATA* data; //0x38
+    SAVEDATA* saveData; //0x38
     FieldSystem* sys; //0x3c
     struct PokegearRingingTask {
-        SysTask *unk0;
-        u8 unk4;
-    } unk_40;
-} UnkFsysSub_114; //size: 0x48
+        SysTask *task;
+        u8 counter;
+    } gearRing;
+} GearPhoneRingManager; //size: 0x48
 
 struct UnkStruct_020FC5CC {
     u32 unk0_00:4;
@@ -271,7 +271,7 @@ struct FieldSystem {
     u8 unk104[4];
     struct FieldSystemUnk108 *unk108;
     u32 unk_10C[2];
-    struct UnkFsysSub_114* unk114;
+    GearPhoneRingManager* unk114;
     BUGCONTEST* bugContest;
     u8 unk11C[0xC];
 }; // size: 0x128
