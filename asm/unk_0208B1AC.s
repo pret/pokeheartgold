@@ -2102,7 +2102,7 @@ sub_0208C250: ; 0x0208C250
 	add r0, r6, #0
 	mov r1, #1
 	add r4, r2, #0
-	bl sub_0208E55C
+	bl GetRibbonAttr
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -2118,7 +2118,7 @@ sub_0208C250: ; 0x0208C250
 	bl sub_0200E248
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_0208E55C
+	bl GetRibbonAttr
 	add r4, #0x36
 	add r2, r0, #0
 	lsl r0, r4, #2

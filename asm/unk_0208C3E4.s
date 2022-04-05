@@ -2427,7 +2427,7 @@ sub_0208D7C4: ; 0x0208D7C4
 	add r0, r0, #3
 	ldrb r0, [r4, r0]
 	mov r1, #3
-	bl sub_0208E55C
+	bl GetRibbonAttr
 	ldr r2, _0208D874 ; =0x000007A4
 	add r1, r0, #0
 	ldr r0, [r4, r2]
@@ -2448,7 +2448,7 @@ sub_0208D7C4: ; 0x0208D7C4
 	ldr r0, [r4, r0]
 	ldrb r1, [r4, r1]
 	ldr r0, [r0, #0x20]
-	bl sub_0208E5C0
+	bl GetRibbonDescGmm
 	ldr r2, _0208D874 ; =0x000007A4
 	add r1, r0, #0
 	ldr r0, [r4, r2]

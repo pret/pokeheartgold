@@ -30035,9 +30035,9 @@
 .public sub_0208E444
 .public sub_0208E4B4
 .public sub_0208E544
-.public sub_0208E55C
-.public sub_0208E5C0
-.public sub_0208E5E0
+.public GetRibbonAttr
+.public GetRibbonDescGmm
+.public GetSpecialRibbonNo
 .public sub_0208E600
 .public sub_0208E994
 .public sub_0208E9E0

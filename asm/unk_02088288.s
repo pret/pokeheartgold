@@ -3087,7 +3087,7 @@ _02089BDC:
 	lsl r0, r6, #0x18
 	lsr r0, r0, #0x18
 	mov r1, #0
-	bl sub_0208E55C
+	bl GetRibbonAttr
 	add r1, r0, #0
 	add r0, r5, #0
 	mov r2, #0
