@@ -12,6 +12,7 @@ Static main
 	Object src/pm_version.o
 	Object src/main.o
 	Object src/list_menu.o
+	Object src/list_menu_2.o
 	Object asm/unk_02001AF4.o
 	Object src/string_util.o
 	Object asm/render_text.o
