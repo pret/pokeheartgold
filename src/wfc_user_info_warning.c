@@ -12,7 +12,7 @@
 #include "wfc_user_info_warning.h"
 #include "window.h"
 
-extern void sub_0200E3DC(BGCONFIG* bg_config, enum GFBgLayer layer, u32 a2, u32 a3, u32 a4, HeapID heap_id);
+extern void LoadUserFrameGfx1(BGCONFIG* bg_config, enum GFBgLayer layer, u32 a2, u32 a3, u32 a4, HeapID heap_id);
 extern void LoadFontPal0(enum GFBgLayer layer, u32 base_addr, HeapID heap_id);
 extern void ResetAllTextPrinters(void);
 extern void DrawFrameAndWindow1(WINDOW* window, BOOL dont_copy_to_vram, u16 a2, u8 palette_num);
@@ -97,7 +97,7 @@ void ShowWFCUserInfoWarning(HeapID heap_id, int a1) {
     SetBothScreensModesAndDisable(&sWFCWarningMsgBgModeSet);
     InitBgFromTemplate(bg_config, 0, &sWFCWarningBgTemplate, GX_BGMODE_0);
     BgClearTilemapBufferAndCommit(bg_config, GF_BG_LYR_MAIN_0);
-    sub_0200E3DC(bg_config, GF_BG_LYR_MAIN_0, 0x1F7, 2, 0, heap_id);
+    LoadUserFrameGfx1(bg_config, GF_BG_LYR_MAIN_0, 0x1F7, 2, 0, heap_id);
     LoadFontPal0(GF_BG_LYR_MAIN_0, 0x20, heap_id);
     BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 0x20, 0, heap_id);
     BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB(1, 1, 27));

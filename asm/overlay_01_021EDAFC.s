@@ -303,7 +303,7 @@ _021EDCD8:
 	ldr r0, [r0, #8]
 	mov r1, #3
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	add r0, r4, #0
 	ldr r2, _021EDD60 ; =0x000003D9
 	add r0, #8
@@ -777,7 +777,7 @@ _021EE08A:
 	ldr r0, [r0, #8]
 	mov r1, #3
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	add r0, r4, #0
 	ldr r2, _021EE0E4 ; =0x000003D9
 	add r0, #8
@@ -934,7 +934,7 @@ _021EE1C2:
 	ldr r0, [r0, #8]
 	mov r1, #3
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	add r0, r5, #0
 	ldr r2, _021EE23C ; =0x000003D9
 	add r0, #8
@@ -1583,7 +1583,7 @@ _021EE698:
 	ldr r0, [r0, #8]
 	mov r1, #3
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	add r0, r5, #0
 	ldr r2, _021EE74C ; =0x000003D9
 	add r0, #8
@@ -2015,7 +2015,7 @@ _021EE9B2:
 	ldr r0, [r0, #8]
 	mov r1, #3
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	add r0, r5, #0
 	ldr r2, _021EEA3C ; =0x000003D9
 	add r0, #8
@@ -2123,7 +2123,7 @@ Fsys_ShowMoneyBox: ; 0x021EEA90
 	ldr r2, _021EEB30 ; =0x000003D9
 	mov r1, #3
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	ldr r2, _021EEB30 ; =0x000003D9
 	add r0, r4, #0
 	mov r1, #1
@@ -2288,7 +2288,7 @@ ov01_021EEC00: ; 0x021EEC00
 	ldr r2, _021EEC64 ; =0x000003D9
 	mov r1, #3
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	ldr r2, _021EEC64 ; =0x000003D9
 	add r0, r4, #0
 	mov r1, #1
@@ -2450,7 +2450,7 @@ ov01_021EED60: ; 0x021EED60
 	ldr r2, _021EEE24 ; =0x000003D9
 	mov r1, #3
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	ldr r2, _021EEE24 ; =0x000003D9
 	add r0, r4, #0
 	mov r1, #1

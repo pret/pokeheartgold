@@ -2925,7 +2925,7 @@ _0221D168:
 	str r0, [sp, #4]
 	ldr r0, [r4, #0xc]
 	mov r3, #0xf
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	ldr r0, [r4, #8]
 	mov r1, #0
 	mov r2, #0xf0
@@ -2939,7 +2939,7 @@ _0221D168:
 	mov r3, #0xe
 	str r0, [sp, #4]
 	ldr r0, [r4, #0xc]
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	ldr r0, [r4, #8]
 	mov r1, #0
 	mov r2, #0xe0

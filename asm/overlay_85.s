@@ -3053,7 +3053,7 @@ ov85_021E705C: ; 0x021E705C
 	ldr r0, [r6, r0]
 	add r2, r1, #0
 	mov r3, #0xf
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	add r0, r6, #0
 	add r0, #0xcc
 	ldr r0, [r0]
@@ -3068,7 +3068,7 @@ ov85_021E705C: ; 0x021E705C
 	ldr r0, _021E713C ; =0x00000D84
 	mov r3, #0xe
 	ldr r0, [r6, r0]
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add r0, r6, #0
 	add r0, #0xcc
 	ldr r0, [r0]
@@ -7227,7 +7227,7 @@ ov85_021E8E6C: ; 0x021E8E6C
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xa
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x66
@@ -7235,7 +7235,7 @@ ov85_021E8E6C: ; 0x021E8E6C
 	add r0, r4, #0
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov85_021E8E6C

@@ -119,7 +119,7 @@ void PrintErrorMessageAndReset(void) {
     SetBothScreensModesAndDisable(&sErrorMessageBgModeSet);
     InitBgFromTemplate(bg_config, 0, &sErrorMessageBgTemplate, GX_BGMODE_0);
     BgClearTilemapBufferAndCommit(bg_config, GF_BG_LYR_MAIN_0);
-    sub_0200E3DC(bg_config, GF_BG_LYR_MAIN_0, 0x1F7, 2, 0, 0);
+    LoadUserFrameGfx1(bg_config, GF_BG_LYR_MAIN_0, 0x1F7, 2, 0, 0);
     LoadFontPal0(GF_BG_LYR_MAIN_0, 0x20, 0);
     BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 0x20, 0, 0);
     BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB(1, 1, 27));

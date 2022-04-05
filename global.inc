@@ -27542,11 +27542,11 @@
 .public DestroySysTask
 .public sub_0200E398
 .public sub_0200E3D8
-.public sub_0200E3DC
+.public LoadUserFrameGfx1
 .public sub_0200E5D4
 .public sub_0200E63C
 .public sub_0200E640
-.public sub_0200E644
+.public LoadUserFrameGfx2
 .public sub_0200E948
 .public sub_0200EB68
 .public sub_0200EB80

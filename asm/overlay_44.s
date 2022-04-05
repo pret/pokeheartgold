@@ -2221,7 +2221,7 @@ ov44_0222AEC0: ; 0x0222AEC0
 	add r0, r4, #0
 	mov r1, #2
 	mov r3, #0xa
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0x35
@@ -2230,7 +2230,7 @@ ov44_0222AEC0: ; 0x0222AEC0
 	add r0, r4, #0
 	mov r1, #2
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0x35
@@ -2239,7 +2239,7 @@ ov44_0222AEC0: ; 0x0222AEC0
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -18944,7 +18944,7 @@ ov44_02233444: ; 0x02233444
 	ldr r0, [r5]
 	add r2, r1, #0
 	mov r3, #2
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r0, #0
 	str r0, [sp]
 	str r4, [sp, #4]
@@ -18952,7 +18952,7 @@ ov44_02233444: ; 0x02233444
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #3
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0
 	str r0, [sp]
 	str r4, [sp, #4]
@@ -18960,7 +18960,7 @@ ov44_02233444: ; 0x02233444
 	mov r1, #2
 	mov r2, #0x30
 	mov r3, #4
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0x13
 	str r0, [sp]
 	mov r0, #0x1b
@@ -19487,7 +19487,7 @@ _02233890:
 	ldr r0, [r5]
 	add r2, r1, #0
 	mov r3, #2
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	strb r6, [r5, #0x15]
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
@@ -20877,7 +20877,7 @@ ov44_022342E0: ; 0x022342E0
 	ldr r0, [r5, #0x30]
 	add r2, r1, #0
 	mov r3, #2
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 _0223431E:
 	add sp, #8
 	pop {r4, r5, r6, pc}

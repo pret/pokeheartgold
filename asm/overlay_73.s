@@ -839,7 +839,7 @@ ov73_021E5F38: ; 0x021E5F38
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xb
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x32
@@ -847,7 +847,7 @@ ov73_021E5F38: ; 0x021E5F38
 	add r0, r6, #0
 	mov r2, #0x1f
 	mov r3, #0xa
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov73_021E5F38
@@ -5893,7 +5893,7 @@ ov73_021E8730: ; 0x021E8730
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xe
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x96
@@ -5901,7 +5901,7 @@ ov73_021E8730: ; 0x021E8730
 	add r0, r4, #0
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]

@@ -391,7 +391,7 @@ _02258ACA:
 	ldr r0, [r5]
 	add r2, r1, #0
 	mov r3, #5
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r0, #0
 	str r0, [sp]
 	str r7, [sp, #4]
@@ -399,7 +399,7 @@ _02258ACA:
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #6
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]

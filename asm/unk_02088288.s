@@ -2319,7 +2319,7 @@ _02089584:
 	ldr r2, _02089604 ; =0x000003E2
 	mov r1, #1
 	mov r3, #0xd
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	ldr r0, _020895EC ; =0x000007BE
 	ldrb r0, [r5, r0]
 	cmp r0, #0

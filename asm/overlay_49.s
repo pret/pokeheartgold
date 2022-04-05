@@ -4282,14 +4282,14 @@ _0225A636:
 	mov r1, #1
 	mov r2, #0x55
 	mov r3, #3
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r1, #1
 	str r4, [sp]
 	str r6, [sp, #4]
 	ldr r0, [r5]
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r0, #3
 	str r0, [sp]
 	mov r0, #0

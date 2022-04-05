@@ -10471,7 +10471,7 @@ ov81_02243028: ; 0x02243028
 	ldr r0, [r4]
 	ldr r2, _02243064 ; =0x000003E2
 	mov r3, #0xb
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add r0, r4, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer

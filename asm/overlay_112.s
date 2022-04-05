@@ -4446,7 +4446,7 @@ ov112_021E7B18: ; 0x021E7B18
 	ldr r2, _021E7C14 ; =0x000003E2
 	mov r1, #1
 	mov r3, #0xd
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0x9a
@@ -4496,7 +4496,7 @@ ov112_021E7B18: ; 0x021E7B18
 	ldr r2, _021E7C14 ; =0x000003E2
 	mov r1, #4
 	mov r3, #0xd
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add r0, r4, #0
 	bl NARC_dtor
 	add sp, #0x10

@@ -1257,7 +1257,7 @@ ov43_0222A8C0: ; 0x0222A8C0
 	str r4, [sp, #4]
 	ldr r0, [r5]
 	mov r3, #0xc
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add r0, r5, #0
 	add r0, #0x64
 	bl InitWindow

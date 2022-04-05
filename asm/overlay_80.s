@@ -31488,7 +31488,7 @@ ov80_02238F10: ; 0x02238F10
 	ldr r2, _02238F98 ; =0x000003E2
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	ldr r0, [r4, #4]
 	mov r1, #0
 	mov r2, #0xb0
@@ -31502,7 +31502,7 @@ ov80_02238F10: ; 0x02238F10
 	ldr r2, _02238F9C ; =0x000003D9
 	mov r1, #1
 	mov r3, #0xc
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	ldr r0, [r4, #4]
 	mov r1, #0
 	mov r2, #0xc0

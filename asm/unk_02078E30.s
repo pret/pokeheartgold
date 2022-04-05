@@ -1571,7 +1571,7 @@ sub_02079A14: ; 0x02079A14
 	ldr r0, [r5]
 	mov r2, #1
 	mov r3, #0xe
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0xa
 	str r0, [sp]
 	mov r3, #0
@@ -1596,7 +1596,7 @@ sub_02079A14: ; 0x02079A14
 	mov r1, #0
 	mov r2, #0x2a
 	mov r3, #0xf
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]

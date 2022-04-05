@@ -929,7 +929,7 @@ ScrCmd_063: ; 0x02041684
 	ldr r2, _020416D8 ; =0x000003D9
 	mov r1, #3
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #4
 	str r0, [sp]
 	ldr r0, [r4, #8]
@@ -3555,7 +3555,7 @@ ScrCmd_452: ; 0x02042B1C
 	ldr r0, [r0, #8]
 	mov r1, #3
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0xb
 	str r0, [sp]
 	ldr r0, _02042BA8 ; =0x000003D9
@@ -3623,7 +3623,7 @@ ScrCmd_547: ; 0x02042BAC
 	ldr r0, [r0, #8]
 	mov r1, #3
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0xb
 	str r0, [sp]
 	ldr r0, _02042C28 ; =0x000003D9

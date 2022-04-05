@@ -19326,7 +19326,7 @@ ov96_021EE9D8: ; 0x021EE9D8
 	add r1, r6, #0
 	mov r3, #0xd
 	str r4, [sp, #4]
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	nop

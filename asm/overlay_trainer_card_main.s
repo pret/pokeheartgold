@@ -2422,7 +2422,7 @@ _021E6E6C:
 	mov r0, #0x19
 	str r0, [sp, #4]
 	ldr r0, [r5]
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #7
 	mov r0, #4
 	lsl r1, r1, #6

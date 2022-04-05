@@ -3445,7 +3445,7 @@ ov86_021E74F0: ; 0x021E74F0
 	ldr r2, _021E7528 ; =0x000003E2
 	mov r1, #4
 	mov r3, #0xe
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0x1a
 	mov r0, #4
 	lsl r1, r1, #4

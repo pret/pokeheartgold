@@ -1686,7 +1686,7 @@ ov113_021E650C: ; 0x021E650C
 	mov r3, #0xd
 	str r0, [sp, #4]
 	ldr r0, [r5, #0x40]
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #6
 	ldr r2, [r5]
 	mov r0, #0

@@ -459,7 +459,7 @@ _02200E62:
 	ldr r0, [r0, #8]
 	mov r1, #3
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	add r0, r4, #0
 	ldr r2, _02200EC0 ; =0x000003D9
 	add r0, #8

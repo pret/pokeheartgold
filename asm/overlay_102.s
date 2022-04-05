@@ -6212,7 +6212,7 @@ ov102_021EA41C: ; 0x021EA41C
 	mov r1, #0
 	lsr r2, r2, #0x10
 	mov r3, #0xf
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add r0, r5, #0
 	add r4, #0xe7
 	add r0, #0x2c

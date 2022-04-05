@@ -1022,10 +1022,10 @@ static void makeAndDrawWindows(struct ChooseStarterAppWork *work) {
     AddWindowParameterized(work->bgConfig, work->winBottom, 1, 1, 19, 29, 4, 2, 0x01F);
     FillWindowPixelBuffer(work->winTop, 15);
     FillWindowPixelBuffer(work->winBottom, 0);
-    sub_0200E644(work->bgConfig, 4, 0x200, 0, work->frame, work->heapId);
+    LoadUserFrameGfx2(work->bgConfig, 4, 0x200, 0, work->frame, work->heapId);
     GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_08_window_NCLR, 4, 0x040, 0x20, work->heapId);
     GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_08_window_NCLR, 0, 0x040, 0x20, work->heapId);
-    DrawFrameAndWindow2(work->winTop, 0, 0x200, 0);
+    DrawFrameAndWindow2(work->winTop, FALSE, 0x200, 0);
 }
 
 static void loadBgGraphics(BGCONFIG *bgConfig, HeapID heapId) {
@@ -1057,7 +1057,7 @@ static u8 printMsgOnWinEx(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msg
     FillWindowPixelBuffer(window, color);
     ret = AddTextPrinterParameterized2(window, 1, *out, 0, 0, speed, color, NULL);
     if (makeFrame) {
-        DrawFrameAndWindow2(window, 0, 0x200, 0);
+        DrawFrameAndWindow2(window, FALSE, 0x200, 0);
     } else {
         CopyWindowToVram(window);
     }

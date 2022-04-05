@@ -241,7 +241,7 @@ _02091E6C:
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x14]
 	mov r3, #2
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0
 	str r1, [sp]
 	ldr r0, [r4]
@@ -249,7 +249,7 @@ _02091E6C:
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x14]
 	mov r3, #3
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	ldr r2, [r4]
 	mov r0, #0
 	mov r1, #0x20
