@@ -97,5 +97,6 @@ BOOL MapObject_IsMovementPaused(LocalMapObject *obj);
 void MapObject_UnpauseMovement(LocalMapObject *obj);
 void MapObjectMan_PauseAllMovement(MapObjectMan *man);
 void MapObjectMan_UnpauseAllMovement(MapObjectMan *man);
+void InitMapObjectsFromEventTemplates(MapObjectMan* man, int mapId, u32 nObjs, OBJECT_EVENT* dest);
 
 #endif //POKEHEARTGOLD_FIELD_MAP_OBJECT_H

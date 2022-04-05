@@ -82,9 +82,8 @@ void ShowSaveDataReadError(HeapID heap_id) {
     GX_SwapDisplay();
     G2_BlendNone();
     G2S_BlendNone();
-    // TODO: are there SDK functions for these?
-    reg_GX_DISPCNT &= ~(REG_GX_DISPCNT_OW_MASK | REG_GX_DISPCNT_W1_MASK | REG_GX_DISPCNT_W0_MASK);
-    reg_GXS_DB_DISPCNT &= ~(REG_GXS_DB_DISPCNT_OW_MASK | REG_GXS_DB_DISPCNT_W1_MASK | REG_GXS_DB_DISPCNT_W0_MASK);
+    GX_SetVisibleWnd(0);
+    GXS_SetVisibleWnd(0);
     GX_SetBanks(&sDataReadErrorBanksConfig);
 
     BGCONFIG* bg_config = BgConfig_Alloc(heap_id);
@@ -142,9 +141,8 @@ void ShowGBACartRemovedError(HeapID heap_id) {
     GX_SwapDisplay();
     G2_BlendNone();
     G2S_BlendNone();
-    // TODO: are there SDK functions for these?
-    reg_GX_DISPCNT &= ~(REG_GX_DISPCNT_OW_MASK | REG_GX_DISPCNT_W1_MASK | REG_GX_DISPCNT_W0_MASK);
-    reg_GXS_DB_DISPCNT &= ~(REG_GXS_DB_DISPCNT_OW_MASK | REG_GXS_DB_DISPCNT_W1_MASK | REG_GXS_DB_DISPCNT_W0_MASK);
+    GX_SetVisibleWnd(0);
+    GXS_SetVisibleWnd(0);
     GX_SetBanks(&sDataReadErrorBanksConfig);
 
     BGCONFIG* bg_config = BgConfig_Alloc(heap_id);

@@ -26,5 +26,6 @@ struct GracideaWork *sub_0203FAE8(FieldSystem *fsys, HeapID heapId, u16 itemId);
 void sub_0203F570(FieldSystem *fsys, SAVEDATA *saveData);
 UnkStruct_Ov02_0224E4EC* sub_0203EB64(FieldSystem *fsys);
 void FieldSys_LaunchChooseStarterApplication(FieldSystem *fsys, struct ChooseStarterAppData *data);
+void Save_CurrentLocation_BackUp(SAVEDATA *saveData);
 
 #endif //POKEHEARTGOLD_UNK_0203E348_H
