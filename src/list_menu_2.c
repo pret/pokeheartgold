@@ -53,29 +53,29 @@ int sub_02001BE0(struct ListMenu2 *menu) {
         return menu->template.items[menu->selectedIndex].value;
     } else if (gSystem.newKeys & menu->unk10) {
         PlaySE(SEQ_SE_DP_SELECT);
-        return -2;
+        return LIST_CANCEL;
     } else if (gSystem.newKeys & PAD_KEY_UP) {
         if (sub_02001C98(menu, 0, SEQ_SE_DP_SELECT) == TRUE) {
             menu->scheduledScroll = 1;
         }
-        return -1;
+        return LIST_NOTHING_CHOSEN;
     } else if (gSystem.newKeys & PAD_KEY_DOWN) {
         if (sub_02001C98(menu, 1, SEQ_SE_DP_SELECT) == TRUE) {
             menu->scheduledScroll = 2;
         }
-        return -1;
+        return LIST_NOTHING_CHOSEN;
     } else if (gSystem.newKeys & PAD_KEY_LEFT) {
         if (sub_02001C98(menu, 2, SEQ_SE_DP_SELECT) == TRUE) {
             menu->scheduledScroll = 3;
         }
-        return -1;
+        return LIST_NOTHING_CHOSEN;
     } else if (gSystem.newKeys & PAD_KEY_RIGHT) {
         if (sub_02001C98(menu, 3, SEQ_SE_DP_SELECT) == TRUE) {
             menu->scheduledScroll = 4;
         }
-        return -1;
+        return LIST_NOTHING_CHOSEN;
     } else {
-        return -1;
+        return LIST_NOTHING_CHOSEN;
     }
 }
 
@@ -95,5 +95,59 @@ BOOL sub_02001C98(struct ListMenu2 *menu, int direction, u16 seqno) {
     FillWindowPixelRect(menu->template.window, fillval, x, y, 8, menu->maxGlyphHeight);
     sub_02001EB4(menu);
     PlaySE(seqno);
+    return TRUE;
+}
+
+BOOL sub_02001CF0(struct ListMenu2 *menu, int direction) {
+    s8 newPos;
+    if (direction == 0) {
+        if (menu->template.itemsHigh <= 1) {
+            return FALSE;
+        } else if (menu->selectedIndex % menu->template.itemsHigh == 0) {
+            if (menu->template.enableWrap == 0) {
+                return FALSE;
+            }
+            newPos = menu->selectedIndex + (menu->template.itemsHigh - 1);
+        } else {
+            newPos = menu->selectedIndex - 1;
+        }
+    } else if (direction == 1) {
+        if (menu->template.itemsHigh <= 1) {
+            return FALSE;
+        } else if (menu->template.itemsHigh - 1 == menu->selectedIndex % menu->template.itemsHigh) {
+            if (menu->template.enableWrap == 0) {
+                return FALSE;
+            }
+            newPos = menu->selectedIndex - (menu->template.itemsHigh - 1);
+        } else {
+            newPos = menu->selectedIndex + 1;
+        }
+    } else if (direction == 2) {
+        if (menu->template.itemsWide <= 1) {
+            return FALSE;
+        } else if (menu->selectedIndex < menu->template.itemsHigh) {
+            if (menu->template.enableWrap == 0) {
+                return FALSE;
+            }
+            newPos = menu->selectedIndex + menu->template.itemsHigh * (menu->template.itemsWide - 1);
+        } else {
+            newPos = menu->selectedIndex - menu->template.itemsHigh;
+        }
+    } else {
+        if (menu->template.itemsWide <= 1) {
+            return FALSE;
+        } else if (menu->selectedIndex >= menu->template.itemsHigh * (menu->template.itemsWide - 1)) {
+            if (menu->template.enableWrap == 0) {
+                return FALSE;
+            }
+            newPos = menu->selectedIndex % menu->template.itemsHigh;
+        } else {
+            newPos = menu->selectedIndex + menu->template.itemsHigh;
+        }
+    }
+    if (menu->template.items[newPos].value == LIST_HEADER) {
+        return FALSE;
+    }
+    menu->selectedIndex = newPos;
     return TRUE;
 }

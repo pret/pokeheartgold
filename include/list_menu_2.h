@@ -8,11 +8,11 @@ struct ListMenu2Template {
     LISTMENUITEM *items;
     WINDOW *window;
     u8 fontId;
-    u8 unk9;
-    u8 unkA;
+    u8 itemsWide;
+    u8 itemsHigh;
     u8 unkB_0:4;
     u8 unkB_4:2;
-    u8 unkB_6:2;
+    u8 enableWrap:2;
 };
 
 struct ListMenu2 {
