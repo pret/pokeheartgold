@@ -285,7 +285,7 @@ Static main
 	Object asm/unk_0208F658.o
 	Object asm/unk_0208F814.o
 	Object asm/unk_0208FB64.o
-	Object asm/use_item_on_mon.o
+	Object src/use_item_on_mon.o
 	Object asm/unk_02090C94.o
 	Object asm/unk_020910D8.o
 	Object asm/unk_02091278.o
