@@ -42,7 +42,7 @@ void sub_02055478(FieldSystem* fsys, SYSINFO_RTC* sysinfo, RTCDate* date, RTCTim
     }
     s32 delta_seconds = seconds - sys_seconds;
     if (delta_seconds > 0) {
-        sub_02092F30(sub_02092DEC(fsys), seconds);
+        sub_02092F30(Fsys_GetGearPhoneRingManager(fsys), seconds);
     }    
     s32 minutes = delta_seconds / 60;
     if (minutes <= 0) {
@@ -76,7 +76,7 @@ void sub_02055508(FieldSystem* fsys, int unkA) {
 }
 
 void sub_020555B4(FieldSystem* fsys, u32 unkA, RTCTime* time) {
-    sub_02092E34(sub_02092DEC(), unkA, 0);
+    sub_02092E34(Fsys_GetGearPhoneRingManager(), unkA, 0);
     FieldSys_IncrementBugContestTimer(fsys, unkA);
     Party_TryResetShaymin(SavArray_PlayerParty_get(fsys->savedata), unkA, time);
 }

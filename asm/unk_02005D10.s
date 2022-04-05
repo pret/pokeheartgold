@@ -531,8 +531,8 @@ _0200612E:
 	.balign 4, 0
 	thumb_func_end sub_02006118
 
-	thumb_func_start sub_02006134
-sub_02006134: ; 0x02006134
+	thumb_func_start PlaySE_SetPitch
+PlaySE_SetPitch: ; 0x02006134
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -548,7 +548,7 @@ _0200614C:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02006150: .word 0x0000FFFF
-	thumb_func_end sub_02006134
+	thumb_func_end PlaySE_SetPitch
 
 	thumb_func_start StopSE
 StopSE: ; 0x02006154
