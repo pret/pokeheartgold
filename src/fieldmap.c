@@ -218,7 +218,7 @@ void LoadScriptsAndMessagesForCurrentMap(FieldSystem *fsys, SCRIPTCONTEXT *ctx) 
 
 void *FieldSysGetAttrAddrInternal(ScriptEnvironment *unk, enum ScriptEnvField field) {
     switch (field) {
-    case SCRIPTENV_10:
+    case SCRIPTENV_MENU_WINDOW:
         return &unk->unk_10;
     case SCRIPTENV_WINDOW:
         return &unk->unk_14;

@@ -888,17 +888,17 @@ void sub_02041770(SCRIPTCONTEXT *ctx, struct UnkStruct_ov01_021EDC28 **a1, MSGDA
 }
 
 BOOL ScrCmd_064(SCRIPTCONTEXT *ctx) {
-    sub_02041770(ctx, FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_10), NULL);
+    sub_02041770(ctx, FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MENU_WINDOW), NULL);
     return TRUE;
 }
 
 BOOL ScrCmd_065(SCRIPTCONTEXT *ctx) {
-    sub_02041770(ctx, FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_10), ctx->msg_data);
+    sub_02041770(ctx, FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MENU_WINDOW), ctx->msg_data);
     return TRUE;
 }
 
 BOOL ScrCmd_066(SCRIPTCONTEXT *ctx) {
-    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_10);
+    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MENU_WINDOW);
     u8 msgId = ScriptReadByte(ctx);
     u8 value = ScriptReadByte(ctx);
     ov01_021EDC7C(*pp_menu, msgId, value);
@@ -906,7 +906,7 @@ BOOL ScrCmd_066(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_559(SCRIPTCONTEXT *ctx) {
-    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_10);
+    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MENU_WINDOW);
     u16 msgId = ScriptGetVar(ctx);
     u16 value = ScriptGetVar(ctx);
     ov01_021EDC7C(*pp_menu, msgId, value);
@@ -916,7 +916,7 @@ BOOL ScrCmd_559(SCRIPTCONTEXT *ctx) {
 BOOL sub_020418B4(SCRIPTCONTEXT *ctx);
 
 BOOL ScrCmd_067(SCRIPTCONTEXT *ctx) {
-    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_10);
+    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MENU_WINDOW);
     ov01_021EDC84(*pp_menu);
     SetupNativeScript(ctx, sub_020418B4);
     return TRUE;
@@ -929,7 +929,7 @@ BOOL sub_020418B4(SCRIPTCONTEXT *ctx) {
 BOOL sub_02041900(SCRIPTCONTEXT *ctx);
 
 BOOL ScrCmd_585(SCRIPTCONTEXT *ctx) {
-    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_10);
+    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MENU_WINDOW);
     ov01_021EDC84(*pp_menu);
     SetupNativeScript(ctx, sub_02041900);
     return TRUE;
@@ -938,7 +938,7 @@ BOOL ScrCmd_585(SCRIPTCONTEXT *ctx) {
 BOOL sub_02041900(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 *p_var = GetVarPointer(fsys, ctx->data[0]);
-    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(fsys, SCRIPTENV_10);
+    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(fsys, SCRIPTENV_MENU_WINDOW);
     if (*p_var == 0xEEEE) {
         if (sub_0205A478(fsys->unk80)) {
             *p_var = 8;
@@ -950,4 +950,69 @@ BOOL sub_02041900(SCRIPTCONTEXT *ctx) {
     } else {
         return TRUE;
     }
+}
+
+BOOL ScrCmd_068(SCRIPTCONTEXT *ctx) {
+    sub_02041770(ctx, FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MENU_WINDOW), NULL);
+    return TRUE;
+}
+
+BOOL ScrCmd_069(SCRIPTCONTEXT *ctx) {
+    sub_02041770(ctx, FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MENU_WINDOW), ctx->msg_data);
+    return TRUE;
+}
+
+BOOL ScrCmd_070(SCRIPTCONTEXT *ctx) {
+    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MENU_WINDOW);
+    u16 r6 = ScriptGetVar(ctx);
+    u16 r7 = ScriptGetVar(ctx);
+    u16 r3 = ScriptGetVar(ctx);
+    MoveTutorMenu_SetListItem(*pp_menu, r6, r7, r3);
+    return FALSE;
+}
+
+BOOL ScrCmd_071(SCRIPTCONTEXT *ctx) {
+    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MENU_WINDOW);
+    ov01_021EDFA4(*pp_menu);
+    SetupNativeScript(ctx, sub_020418B4);
+    return TRUE;
+}
+
+BOOL ScrCmd_695(SCRIPTCONTEXT *ctx) {
+    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MENU_WINDOW);
+    u16 var = ScriptGetVar(ctx);
+    ov01_021EE014(*pp_menu, var);
+    SetupNativeScript(ctx, sub_020418B4);
+    return TRUE;
+}
+
+BOOL ScrCmd_677(SCRIPTCONTEXT *ctx) {
+    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MENU_WINDOW);
+    u16 *var1 = ScriptGetVarPointer(ctx);
+    u16 *var2 = ScriptGetVarPointer(ctx);
+    ov01_021EE0EC(*pp_menu, var1, var2);
+    SetupNativeScript(ctx, sub_020418B4);
+    return TRUE;
+}
+
+BOOL ScrCmd_072(SCRIPTCONTEXT *ctx) {
+    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MENU_WINDOW);
+    u8 val = ScriptReadByte(ctx);
+    ov01_021EE974(*pp_menu, val);
+    SetupNativeScript(ctx, sub_020418B4);
+    return TRUE;
+}
+
+BOOL ScrCmd_841(SCRIPTCONTEXT *ctx) {
+    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MENU_WINDOW);
+    u8 val = ScriptReadByte(ctx);
+    ov01_021EF018(*pp_menu, val);
+    return TRUE;
+}
+
+BOOL ScrCmd_842(SCRIPTCONTEXT *ctx) {
+    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MENU_WINDOW);
+    u8 val = ScriptReadByte(ctx);
+    ov01_021EF034(*pp_menu, val);
+    return TRUE;
 }

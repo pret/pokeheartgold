@@ -78,7 +78,7 @@ typedef struct ScriptEnvironment {
 } ScriptEnvironment;
 
 enum ScriptEnvField {
-    SCRIPTENV_10                              =  0,
+    SCRIPTENV_MENU_WINDOW                     =  0,
     SCRIPTENV_WINDOW                          =  1,
     SCRIPTENV_MENU                            =  2,
     SCRIPTENV_05                              =  3,

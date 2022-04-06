@@ -56,5 +56,12 @@ struct UnkStruct_ov01_021EDC28 *ov01_021EDF78(FieldSystem *fsys, u8 x, u8 y, u8 
 void ov01_021EDC7C(struct UnkStruct_ov01_021EDC28 *menu, u32 msgId, u32 value);
 void ov01_021EDC84(struct UnkStruct_ov01_021EDC28 *menu);
 void ov01_021EDF38(struct UnkStruct_ov01_021EDC28 *menu);
+void ov01_021EE014(struct UnkStruct_ov01_021EDC28 *menu, u16 a1);
+void ov01_021EE0EC(struct UnkStruct_ov01_021EDC28 *menu, u16 *a1, u16 *a2);
+void ov01_021EDFA4(struct UnkStruct_ov01_021EDC28 *menu);
+void ov01_021EE974(struct UnkStruct_ov01_021EDC28 *menu, u8 a1);
+void ov01_021EF018(struct UnkStruct_ov01_021EDC28 *menu, u8 a1);
+void ov01_021EF034(struct UnkStruct_ov01_021EDC28 *menu, u8 a1);
+void MoveTutorMenu_SetListItem(struct UnkStruct_ov01_021EDC28 *menu, u8 a1, u8 a2, u8 a3);
 
 #endif //POKEHEARTGOLD_OVERLAY_01_H
