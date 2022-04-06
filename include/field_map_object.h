@@ -95,6 +95,8 @@ void sub_0205F55C(MapObjectMan *man);
 void sub_0205E494(MapObjectMan *man);
 void sub_0205E0E8(MapObjectMan *man);
 BOOL MapObject_IsMovementPaused(LocalMapObject *obj);
+BOOL MapObject_IsSingleMovementActive(LocalMapObject *obj);
+void MapObject_PauseMovement(LocalMapObject *obj);
 void MapObject_UnpauseMovement(LocalMapObject *obj);
 void MapObjectMan_PauseAllMovement(MapObjectMan *man);
 void MapObjectMan_UnpauseAllMovement(MapObjectMan *man);

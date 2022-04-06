@@ -7,10 +7,12 @@
 #include "unk_0200E398.h"
 #include "unk_02035900.h"
 #include "unk_0205A44C.h"
+#include "unk_020658D4.h"
 #include "render_text.h"
 #include "field_player_avatar.h"
 #include "unk_02062108.h"
 #include "field_map_object.h"
+#include "field_follow_poke.h"
 
 BOOL sub_020416E4(SCRIPTCONTEXT *ctx);
 LocalMapObject *sub_02041C70(FieldSystem *fsys, u16 person);
@@ -39,6 +41,8 @@ static const u8 sConditionTable[6][3] = {
     { 0, 1, 1 }, // ge
     { 1, 0, 1 }, // ne
 };
+
+extern u8 _021D415C;
 
 BOOL ScrCmd_Nop(SCRIPTCONTEXT* ctx) {
 #pragma unused(ctx)
@@ -1145,4 +1149,131 @@ void _RunObjectEventMovement(SysTask *task, struct ObjectMovementTaskEnv *env) {
             (*mvtCnt)--;
         }
     }
+}
+
+BOOL _WaitFollowPokePaused(SCRIPTCONTEXT *ctx);
+
+BOOL ScrCmd_LockAll(SCRIPTCONTEXT *ctx) {
+    LocalMapObject **p_lastTalked;
+    LocalMapObject *tsurePoke;
+    FieldSystem *fsys = ctx->fsys;
+
+    p_lastTalked = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_TALKED);
+    if (*p_lastTalked == NULL) {
+        MapObjectMan_PauseAllMovement(fsys->mapObjectMan);
+        tsurePoke = FollowingPokemon_GetMapObject(fsys);
+        if (FollowingPokemon_IsActive(fsys) && MapObject_IsSingleMovementActive(tsurePoke)) {
+            MapObject_UnpauseMovement(tsurePoke);
+            SetupNativeScript(ctx, _WaitFollowPokePaused);
+            return TRUE;
+        }
+    } else {
+        ScrCmd_LockLastTalked(ctx);
+    }
+    return TRUE;
+}
+
+static inline BOOL _CheckMovementPauseWaitFlag(u8 mask) {
+    return _021D415C & mask;
+}
+
+static inline void _SetMovementPauseWaitFlag(u8 mask) {
+    _021D415C |= mask;
+}
+
+static inline void _ClearMovementPauseWaitFlag(u8 mask) {
+    _021D415C &= (u8)~mask; // explicit cast is required to match
+}
+
+static inline BOOL _AllMovementPauseWaitsFinish(void) {
+    return _021D415C == 0;
+}
+
+static inline void _ResetMovementPauseWaitFlags(void) {
+    _021D415C = 0;
+}
+
+BOOL _WaitMovementPauseBeforeMsg(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_TALKED);
+    LocalMapObject *playerObj = PlayerAvatar_GetMapObject(fsys->playerAvatar);
+    LocalMapObject *unk;
+
+    if (_CheckMovementPauseWaitFlag(1)) {
+        if (MapObject_IsMovementPaused(playerObj) == TRUE) {
+            MapObject_PauseMovement(playerObj);
+            _ClearMovementPauseWaitFlag(1);
+        }
+    }
+
+    if (_CheckMovementPauseWaitFlag(4)) {
+        if (MapObject_IsSingleMovementActive(*p_lastTalked) == FALSE) {
+            MapObject_PauseMovement(*p_lastTalked);
+            _ClearMovementPauseWaitFlag(4);
+        }
+    }
+
+    if (_CheckMovementPauseWaitFlag(2)) {
+        unk = sub_0205EEB4(fsys->mapObjectMan, 0x30);
+        if (MapObject_IsSingleMovementActive(unk) == FALSE) {
+            MapObject_PauseMovement(unk);
+            _ClearMovementPauseWaitFlag(2);
+        }
+    }
+
+    if (_CheckMovementPauseWaitFlag(8)) {
+        unk = sub_020660C0(*p_lastTalked);
+        if (MapObject_IsSingleMovementActive(unk) == FALSE) {
+            MapObject_PauseMovement(unk);
+            _ClearMovementPauseWaitFlag(8);
+        }
+    }
+
+    return _AllMovementPauseWaitsFinish();
+}
+
+BOOL _WaitFollowPokePaused(SCRIPTCONTEXT *ctx) {
+    LocalMapObject *tsurePoke = FollowingPokemon_GetMapObject(ctx->fsys);
+    if (MapObject_IsSingleMovementActive(tsurePoke) == FALSE) {
+        MapObject_PauseMovement(tsurePoke);
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+BOOL ScrCmd_LockLastTalked(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_TALKED);
+    LocalMapObject *playerObject = PlayerAvatar_GetMapObject(fsys->playerAvatar);
+    LocalMapObject *unk = sub_0205EEB4(fsys->mapObjectMan, 0x30);
+    LocalMapObject *unk2 = sub_020660C0(*p_lastTalked);
+    MapObjectMan *mapObjectMan = fsys->mapObjectMan;
+
+    _ResetMovementPauseWaitFlags();
+
+    MapObjectMan_PauseAllMovement(mapObjectMan);
+
+    if (MapObject_IsMovementPaused(playerObject) == FALSE) {
+        _SetMovementPauseWaitFlag(1);
+        MapObject_UnpauseMovement(playerObject);
+    }
+
+    if (MapObject_IsSingleMovementActive(*p_lastTalked) != FALSE) {
+        _SetMovementPauseWaitFlag(4);
+        MapObject_UnpauseMovement(*p_lastTalked);
+    }
+
+    if (unk != NULL && FollowingPokemon_IsActive(fsys) && MapObject_IsSingleMovementActive(unk) == FALSE) {
+        _SetMovementPauseWaitFlag(2);
+        MapObject_UnpauseMovement(unk);
+    }
+
+    if (unk2 != NULL && MapObject_IsSingleMovementActive(unk2) != FALSE) {
+        _SetMovementPauseWaitFlag(8);
+        MapObject_UnpauseMovement(unk2);
+    }
+
+    SetupNativeScript(ctx, _WaitMovementPauseBeforeMsg);
+    return TRUE;
 }
