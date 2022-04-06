@@ -29565,7 +29565,7 @@
 .public sub_02061DD0
 .public sub_02061DE0
 .public sub_02061DF0
-.public sub_0206226C
+.public EventObjectMovementMan_Delete
 .public sub_0206234C
 .public sub_02062390
 .public sub_020623C8

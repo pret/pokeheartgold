@@ -13405,7 +13405,7 @@ ov02_0224C0B0: ; 0x0224C0B0
 	pop {r4, r5, pc}
 _0224C0C8:
 	ldr r0, [r4, #0x10]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 	ldr r0, [r4, #0x20]
 	ldr r1, _0224C144 ; =ov02_02253794
 	bl EventObjectMovementMan_Create
@@ -13414,7 +13414,7 @@ _0224C0C8:
 	cmp r0, #0
 	beq _0224C0F0
 	ldr r0, [r4, #0x14]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 	add r5, #0xe4
 	ldr r0, [r5]
 	ldr r1, _0224C144 ; =ov02_02253794
@@ -13479,7 +13479,7 @@ ov02_0224C14C: ; 0x0224C14C
 	cmp r0, #1
 	bne _0224C184
 	ldr r0, [r4, #0x10]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 	ldr r0, [r4, #0x20]
 	ldr r1, _0224C1B4 ; =ov02_02253794
 	bl EventObjectMovementMan_Create
@@ -13488,7 +13488,7 @@ ov02_0224C14C: ; 0x0224C14C
 	cmp r0, #0
 	beq _0224C184
 	ldr r0, [r4, #0x14]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 	add r5, #0xe4
 	ldr r0, [r5]
 	ldr r1, _0224C1B4 ; =ov02_02253794
@@ -13502,12 +13502,12 @@ _0224C184:
 	pop {r3, r4, r5, pc}
 _0224C190:
 	ldr r0, [r4, #0x10]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	beq _0224C1A2
 	ldr r0, [r4, #0x14]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 _0224C1A2:
 	ldr r0, [r4, #0x1c]
 	bl ov01_021FCD78
@@ -13653,7 +13653,7 @@ ov02_0224C2A8: ; 0x0224C2A8
 	cmp r0, #1
 	bne _0224C2C6
 	ldr r0, [r4, #0x10]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 	ldr r0, [r4, #0x20]
 	ldr r1, _0224C2E8 ; =ov02_02253794
 	bl EventObjectMovementMan_Create
@@ -13691,7 +13691,7 @@ ov02_0224C2EC: ; 0x0224C2EC
 	pop {r4, pc}
 _0224C2FE:
 	ldr r0, [r4, #0x10]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 	ldr r0, [r4, #4]
 	add r0, r0, #1
 	str r0, [r4, #4]
@@ -13738,7 +13738,7 @@ _0224C358:
 	ldr r0, [r4, #0x1c]
 	bl ov01_021FCD78
 	ldr r0, [r4, #0x10]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 	mov r0, #2
 	pop {r4, pc}
 	thumb_func_end ov02_0224C338
@@ -14214,7 +14214,7 @@ ov02_0224C6DC: ; 0x0224C6DC
 	pop {r3, r4, r5, pc}
 _0224C6F0:
 	ldr r0, [r4, #0x14]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 	ldr r0, [r4, #0x20]
 	ldr r1, _0224C718 ; =ov02_02253820
 	bl EventObjectMovementMan_Create
@@ -14277,7 +14277,7 @@ ov02_0224C75C: ; 0x0224C75C
 	pop {r4, r5, pc}
 _0224C774:
 	ldr r0, [r4, #0x10]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 	ldr r0, [r4, #0x20]
 	ldr r1, _0224C7D0 ; =ov02_02253794
 	bl EventObjectMovementMan_Create
@@ -14286,7 +14286,7 @@ _0224C774:
 	cmp r0, #0
 	beq _0224C79C
 	ldr r0, [r4, #0x14]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 	add r5, #0xe4
 	ldr r0, [r5]
 	ldr r1, _0224C7D0 ; =ov02_02253794
@@ -14333,7 +14333,7 @@ ov02_0224C7D4: ; 0x0224C7D4
 	cmp r0, #1
 	bne _0224C80C
 	ldr r0, [r4, #0x10]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 	ldr r0, [r4, #0x20]
 	ldr r1, _0224C83C ; =ov02_02253794
 	bl EventObjectMovementMan_Create
@@ -14342,7 +14342,7 @@ ov02_0224C7D4: ; 0x0224C7D4
 	cmp r0, #0
 	beq _0224C80C
 	ldr r0, [r4, #0x14]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 	add r5, #0xe4
 	ldr r0, [r5]
 	ldr r1, _0224C83C ; =ov02_02253794
@@ -14356,12 +14356,12 @@ _0224C80C:
 	pop {r3, r4, r5, pc}
 _0224C818:
 	ldr r0, [r4, #0x10]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	beq _0224C82A
 	ldr r0, [r4, #0x14]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 _0224C82A:
 	ldr r0, [r4, #0x1c]
 	bl ov01_021FCD78
@@ -14454,7 +14454,7 @@ ov02_0224C8D0: ; 0x0224C8D0
 	pop {r3, r4, r5, pc}
 _0224C8E4:
 	ldr r0, [r4, #0x10]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 	ldr r0, [r4, #0x20]
 	ldr r1, _0224C938 ; =ov02_022537B8
 	bl EventObjectMovementMan_Create
@@ -14463,7 +14463,7 @@ _0224C8E4:
 	cmp r0, #0
 	beq _0224C90E
 	ldr r0, [r4, #0x14]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 	add r0, r5, #0
 	add r0, #0xe4
 	ldr r0, [r0]
@@ -14510,7 +14510,7 @@ ov02_0224C93C: ; 0x0224C93C
 	pop {r4, r5, pc}
 _0224C954:
 	ldr r0, [r4, #0x10]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 	ldr r0, [r4, #0x20]
 	ldr r1, _0224C9B0 ; =ov02_02253794
 	bl EventObjectMovementMan_Create
@@ -14519,7 +14519,7 @@ _0224C954:
 	cmp r0, #0
 	beq _0224C97C
 	ldr r0, [r4, #0x14]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 	add r5, #0xe4
 	ldr r0, [r5]
 	ldr r1, _0224C9B0 ; =ov02_02253794
@@ -14567,7 +14567,7 @@ ov02_0224C9B8: ; 0x0224C9B8
 	cmp r0, #1
 	bne _0224C9F2
 	ldr r0, [r4, #0x10]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 	ldr r0, [r4, #0x20]
 	ldr r1, _0224CA34 ; =ov02_02253794
 	bl EventObjectMovementMan_Create
@@ -14576,7 +14576,7 @@ ov02_0224C9B8: ; 0x0224C9B8
 	cmp r0, #0
 	beq _0224C9F2
 	ldr r0, [r4, #0x14]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 	add r0, r5, #0
 	add r0, #0xe4
 	ldr r0, [r0]
@@ -14591,7 +14591,7 @@ _0224C9F2:
 	pop {r3, r4, r5, pc}
 _0224C9FE:
 	ldr r0, [r4, #0x10]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetState
 	cmp r0, #2
@@ -14605,7 +14605,7 @@ _0224CA18:
 	cmp r0, #0
 	beq _0224CA24
 	ldr r0, [r4, #0x14]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 _0224CA24:
 	ldr r0, [r4, #0x1c]
 	bl ov01_021FCD78
@@ -22959,7 +22959,7 @@ _02250874:
 	cmp r0, #1
 	bne _022508AA
 	ldr r0, [r5, #4]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 	ldrh r0, [r5, #2]
 	add r0, r0, #1
 	strh r0, [r5, #2]

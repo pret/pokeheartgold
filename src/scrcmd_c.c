@@ -9,8 +9,12 @@
 #include "unk_0205A44C.h"
 #include "render_text.h"
 #include "field_player_avatar.h"
+#include "unk_02062108.h"
+#include "field_map_object.h"
 
 BOOL sub_020416E4(SCRIPTCONTEXT *ctx);
+LocalMapObject *sub_02041C70(FieldSystem *fsys, u16 person);
+void _ScheduleObjectEventMovement(FieldSystem *fsys, EventObjectMovementMan *mvtMan, MovementScriptCommand *a2);
 
 // TODO: NELEMS(gScriptCmdTable);
 const u32 sNumScriptCmds = 853;
@@ -1015,4 +1019,130 @@ BOOL ScrCmd_842(SCRIPTCONTEXT *ctx) {
     u8 val = ScriptReadByte(ctx);
     ov01_021EF034(*pp_menu, val);
     return TRUE;
+}
+
+BOOL ScrCmd_ApplyMovement(SCRIPTCONTEXT *ctx) {
+    u16 person = ScriptGetVar(ctx);
+    u32 offset = ScriptReadWord(ctx);
+    LocalMapObject *object = sub_02041C70(ctx->fsys, person);
+    EventObjectMovementMan *mvtMan;
+    u8 *mvtCounter;
+
+    if (object == NULL) {
+        GF_ASSERT(person == obj_partner_poke);
+        return FALSE;
+    }
+    if (person == obj_partner_poke) {
+        ov01_021F7704(object);
+    }
+    mvtMan = EventObjectMovementMan_Create(object, (const MovementScriptCommand *)(ctx->script_ptr + offset));
+    mvtCounter = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_NUM_ACTIVE_MOVEMENT);
+    (*mvtCounter)++;
+    _ScheduleObjectEventMovement(ctx->fsys, mvtMan, NULL);
+    return FALSE;
+}
+
+BOOL ScrCmd_563(SCRIPTCONTEXT *ctx) {
+    u16 person = ScriptGetVar(ctx);
+    u16 x = ScriptGetVar(ctx);
+    u16 y = ScriptGetVar(ctx);
+    u16 now_x, now_y;
+    int i;
+    LocalMapObject *object = sub_02041C70(ctx->fsys, person);
+    MovementScriptCommand *cmd;
+    EventObjectMovementMan *mvtMan;
+    u8 *mvtCounter;
+
+    GF_ASSERT(object != NULL);
+    cmd = AllocFromHeap(4, 64 * sizeof(MovementScriptCommand));
+    now_x = MapObject_GetCurrentX(object);
+    now_y = MapObject_GetCurrentY(object);
+    i = 0;
+    if (now_x < x) {
+        cmd[i].command = MV_step_right;
+        cmd[i].length = x - now_x;
+        i++;
+    } else if (now_x > x) {
+        cmd[i].command = MV_step_left;
+        cmd[i].length = now_x - x;
+        i++;
+    }
+    if (now_y < y) {
+        cmd[i].command = MV_step_down;
+        cmd[i].length = y - now_y;
+        i++;
+    } else if (now_y > y) {
+        cmd[i].command = MV_step_up;
+        cmd[i].length = now_y - y;
+        i++;
+    }
+    cmd[i].command = MV_step_end;
+    cmd[i].length = 0;
+
+    mvtMan = EventObjectMovementMan_Create(object, cmd);
+    mvtCounter = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_NUM_ACTIVE_MOVEMENT);
+    (*mvtCounter)++;
+    _ScheduleObjectEventMovement(ctx->fsys, mvtMan, cmd);
+    return FALSE;
+}
+
+LocalMapObject *sub_02041C70(FieldSystem *fsys, u16 person) {
+    if (person == 0xF2) {
+        return sub_0205EEB4(fsys->mapObjectMan, 0x30);
+    } else if (person == 0xF1) {
+        LocalMapObject **attr = FieldSysGetAttrAddr(fsys, SCRIPTENV_30);
+        return *attr;
+    } else {
+        return GetMapObjectByID(fsys->mapObjectMan, person);
+    }
+}
+
+BOOL _IsAllMovementFinish(SCRIPTCONTEXT *ctx);
+
+BOOL ScrCmd_WaitMovement(SCRIPTCONTEXT *ctx) {
+    SetupNativeScript(ctx, _IsAllMovementFinish);
+    return TRUE;
+}
+
+BOOL _IsAllMovementFinish(SCRIPTCONTEXT *ctx) {
+    u8 *ptr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_NUM_ACTIVE_MOVEMENT);
+    return *ptr == 0;
+}
+
+struct ObjectMovementTaskEnv {
+    SysTask *task;
+    EventObjectMovementMan *mvtMan;
+    struct MovementScriptCommand *cmd;
+    FieldSystem *fsys;
+};
+
+void _RunObjectEventMovement(SysTask *task, struct ObjectMovementTaskEnv *env);
+
+void _ScheduleObjectEventMovement(FieldSystem *fsys, EventObjectMovementMan *mvtMan, MovementScriptCommand *a2) {
+    struct ObjectMovementTaskEnv *env = AllocFromHeap(4, sizeof(struct ObjectMovementTaskEnv));
+    if (env == NULL) {
+        GF_ASSERT(0);
+        return;
+    }
+    env->fsys = fsys;
+    env->mvtMan = mvtMan;
+    env->cmd = a2;
+    env->task = CreateSysTask((SysTaskFunc)_RunObjectEventMovement, env, 0);
+}
+
+void _RunObjectEventMovement(SysTask *task, struct ObjectMovementTaskEnv *env) {
+    u8 *mvtCnt = FieldSysGetAttrAddr(env->fsys, SCRIPTENV_NUM_ACTIVE_MOVEMENT);
+    if (EventObjectMovementMan_IsFinish(env->mvtMan) == TRUE) {
+        EventObjectMovementMan_Delete(env->mvtMan);
+        DestroySysTask(env->task);
+        if (env->cmd != NULL) {
+            FreeToHeap(env->cmd);
+        }
+        FreeToHeap(env);
+        if (*mvtCnt == 0) {
+            GF_ASSERT(0);
+        } else {
+            (*mvtCnt)--;
+        }
+    }
 }

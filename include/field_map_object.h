@@ -66,6 +66,7 @@ struct LocalMapObject {
 
 LocalMapObject *CreateSpecialFieldObject(MapObjectMan *objectMan, u32 x, u32 y, u32 direction, u32 sprite, u32 movement, u32 mapNo);
 void DeleteMapObject(LocalMapObject *mapObject);
+LocalMapObject *sub_0205EEB4(MapObjectMan *arr, int a1);
 LocalMapObject *GetMapObjectByID(MapObjectMan *arr, int id);
 void sub_0205FC94(LocalMapObject *mapObject, int movement);
 u32 MapObject_GetGfxID(LocalMapObject *mapObject);
@@ -98,5 +99,7 @@ void MapObject_UnpauseMovement(LocalMapObject *obj);
 void MapObjectMan_PauseAllMovement(MapObjectMan *man);
 void MapObjectMan_UnpauseAllMovement(MapObjectMan *man);
 void InitMapObjectsFromEventTemplates(MapObjectMan* man, int mapId, u32 nObjs, OBJECT_EVENT* dest);
+int MapObject_GetCurrentX(LocalMapObject *object);
+int MapObject_GetCurrentY(LocalMapObject *object);
 
 #endif //POKEHEARTGOLD_FIELD_MAP_OBJECT_H
