@@ -20,6 +20,8 @@ struct UnkStruct_Ov01_021EF4C4 {
     u8 unk2;
 };
 
+struct UnkStruct_ov01_021EDC28;
+
 void ov01_021E636C(int a0);
 void ov01_021EFAF8(FieldSystem *fsys);
 void ov01_PlayerAvatar_OrrTransitionFlags(FIELD_PLAYER_AVATAR *avatar, int a1);
@@ -50,5 +52,9 @@ WINDOW* ov01_021F3D80(struct FieldSystemUnkSub68*);
 u8 ov01_021F3D84(struct FieldSystemUnkSub68*);
 BOOL ov01_021F3D88(struct FieldSystemUnkSub68*);
 void ov01_021F3D98(FieldSystem* fsys);
+struct UnkStruct_ov01_021EDC28 *ov01_021EDF78(FieldSystem *fsys, u8 x, u8 y, u8 initCursorPos, u8 cancellable, u16 *ret_p, MSGFMT *msgFmt, WINDOW *window, MSGDATA *msgData);
+void ov01_021EDC7C(struct UnkStruct_ov01_021EDC28 *menu, u32 msgId, u32 value);
+void ov01_021EDC84(struct UnkStruct_ov01_021EDC28 *menu);
+void ov01_021EDF38(struct UnkStruct_ov01_021EDC28 *menu);
 
 #endif //POKEHEARTGOLD_OVERLAY_01_H

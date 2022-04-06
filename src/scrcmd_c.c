@@ -6,6 +6,7 @@
 #include "text.h"
 #include "unk_0200E398.h"
 #include "unk_02035900.h"
+#include "unk_0205A44C.h"
 #include "render_text.h"
 #include "field_player_avatar.h"
 
@@ -872,4 +873,81 @@ BOOL ScrCmd_RemoveWaitingIcon(SCRIPTCONTEXT *ctx) {
     struct WaitingIconManager **mgr_p = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WAITING_ICON);
     sub_0200F450(*mgr_p);
     return FALSE;
+}
+
+void sub_02041770(SCRIPTCONTEXT *ctx, struct UnkStruct_ov01_021EDC28 **a1, MSGDATA *msgData) {
+    FieldSystem *fsys = ctx->fsys;
+    MSGFMT **msgFmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MSGFMT);
+    u8 x = ScriptReadByte(ctx);
+    u8 y = ScriptReadByte(ctx);
+    u8 initCursorPos = ScriptReadByte(ctx);
+    u8 cancellable = ScriptReadByte(ctx);
+    u16 var = ScriptReadHalfword(ctx);
+    *a1 = ov01_021EDF78(fsys, x, y, initCursorPos, cancellable, GetVarPointer(fsys, var), *msgFmt, FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WINDOW), msgData);
+    ctx->data[0] = var;
+}
+
+BOOL ScrCmd_064(SCRIPTCONTEXT *ctx) {
+    sub_02041770(ctx, FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_10), NULL);
+    return TRUE;
+}
+
+BOOL ScrCmd_065(SCRIPTCONTEXT *ctx) {
+    sub_02041770(ctx, FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_10), ctx->msg_data);
+    return TRUE;
+}
+
+BOOL ScrCmd_066(SCRIPTCONTEXT *ctx) {
+    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_10);
+    u8 msgId = ScriptReadByte(ctx);
+    u8 value = ScriptReadByte(ctx);
+    ov01_021EDC7C(*pp_menu, msgId, value);
+    return FALSE;
+}
+
+BOOL ScrCmd_559(SCRIPTCONTEXT *ctx) {
+    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_10);
+    u16 msgId = ScriptGetVar(ctx);
+    u16 value = ScriptGetVar(ctx);
+    ov01_021EDC7C(*pp_menu, msgId, value);
+    return FALSE;
+}
+
+BOOL sub_020418B4(SCRIPTCONTEXT *ctx);
+
+BOOL ScrCmd_067(SCRIPTCONTEXT *ctx) {
+    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_10);
+    ov01_021EDC84(*pp_menu);
+    SetupNativeScript(ctx, sub_020418B4);
+    return TRUE;
+}
+
+BOOL sub_020418B4(SCRIPTCONTEXT *ctx) {
+    return *GetVarPointer(ctx->fsys, ctx->data[0]) != 0xEEEE;
+}
+
+BOOL sub_02041900(SCRIPTCONTEXT *ctx);
+
+BOOL ScrCmd_585(SCRIPTCONTEXT *ctx) {
+    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_10);
+    ov01_021EDC84(*pp_menu);
+    SetupNativeScript(ctx, sub_02041900);
+    return TRUE;
+}
+
+BOOL sub_02041900(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 *p_var = GetVarPointer(fsys, ctx->data[0]);
+    struct UnkStruct_ov01_021EDC28 **pp_menu = FieldSysGetAttrAddr(fsys, SCRIPTENV_10);
+    if (*p_var == 0xEEEE) {
+        if (sub_0205A478(fsys->unk80)) {
+            *p_var = 8;
+            ov01_021EDF38(*pp_menu);
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    } else {
+        return TRUE;
+    }
 }

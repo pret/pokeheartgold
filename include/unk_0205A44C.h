@@ -1,0 +1,8 @@
+#ifndef POKEHEARTGOLD_UNK_0205A44C_H
+#define POKEHEARTGOLD_UNK_0205A44C_H
+
+#include "script.h"
+
+BOOL sub_0205A478(struct UnkStruct_02059E1C *fsys);
+
+#endif //POKEHEARTGOLD_UNK_0205A44C_H
