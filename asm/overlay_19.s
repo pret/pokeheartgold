@@ -40,7 +40,7 @@ ov19_022598C0: ; 0x022598C0
 	ldr r0, _02259914 ; =ov19_02259950
 	add r1, r4, #0
 	mov r2, #1
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02259914: .word ov19_02259950
@@ -66,7 +66,7 @@ ov19_02259918: ; 0x02259918
 	add r0, r5, #0
 	add r0, #0xd8
 	ldr r0, [r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	add r5, #0xd8
 	str r0, [r5]
@@ -612,12 +612,12 @@ _02259D60:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #7
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	add r6, r6, #1
 	add r4, #0x28
 	add r5, r5, #4
@@ -633,14 +633,14 @@ _02259D60:
 	sub r1, #0x10
 	ldr r0, [r0, r1]
 	mov r1, #2
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	b _02259DB4
 _02259DA8:
 	ldr r0, [sp]
 	sub r1, #0x10
 	ldr r0, [r0, r1]
 	mov r1, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _02259DB4:
 	mov r1, #0x75
 	lsl r1, r1, #2
@@ -655,14 +655,14 @@ _02259DB4:
 	sub r1, #0xc
 	ldr r0, [r0, r1]
 	mov r1, #5
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	b _02259DE0
 _02259DD4:
 	ldr r0, [sp]
 	sub r1, #0xc
 	ldr r0, [r0, r1]
 	mov r1, #3
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _02259DE0:
 	mov r0, #0x10
 	mov r1, #1
@@ -709,7 +709,7 @@ ov19_02259E20: ; 0x02259E20
 	ldr r2, _02259E40 ; =_0225A03C
 	ldr r0, [r5, r4]
 	ldrb r1, [r2, r1]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5, r4]
 	bl sub_02024964
 	pop {r3, r4, r5, pc}

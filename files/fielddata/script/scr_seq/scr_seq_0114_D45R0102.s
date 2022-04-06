@@ -115,7 +115,7 @@ scr_seq_D45R0102_001:
 	buffer_players_name 0
 	gender_msgbox msg_0131_D45R0102_00016, msg_0131_D45R0102_00015
 	closemsg
-	get_lead_mon_index VAR_TEMP_x4002
+	get_party_lead_alive VAR_TEMP_x4002
 	get_partymon_species VAR_TEMP_x4002, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 251
 	call_if_ne _02C0

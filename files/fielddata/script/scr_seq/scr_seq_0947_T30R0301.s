@@ -36,7 +36,7 @@ _003B:
 	load_npc_trade 3
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	scrcmd_239 VAR_SPECIAL_x8004, VAR_SPECIAL_x8006
+	mon_get_gender VAR_SPECIAL_x8004, VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 0
 	goto_if_eq _00B2
 	npc_trade_get_req_species VAR_SPECIAL_RESULT
@@ -77,7 +77,7 @@ scr_seq_T30R0301_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	get_lead_mon_index VAR_SPECIAL_x8000
+	get_party_lead_alive VAR_SPECIAL_x8000
 	mon_has_ribbon VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000, RIBBON_HOENN_EFFORT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0199

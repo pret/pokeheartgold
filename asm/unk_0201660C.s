@@ -1080,7 +1080,7 @@ sub_02016DBC: ; 0x02016DBC
 	lsr r1, r1, #0x18
 	bl BG_LoadCharTilesData
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, [r4, #8]
 	bl FreeToHeap
 	add r0, r4, #0
@@ -1117,7 +1117,7 @@ _02016E1C:
 	bl GXS_LoadBGPltt
 _02016E2C:
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, [r4, #4]
 	bl FreeToHeap
 	add r0, r4, #0

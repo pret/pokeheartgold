@@ -191,7 +191,7 @@ _02062230:
 	sub r2, r0, #1
 	ldr r0, _0206225C ; =MovementScriptMachine
 	add r1, r4, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	add r7, r0, #0
 	bne _02062254
 	bl GF_AssertFail
@@ -231,7 +231,7 @@ _02062284:
 	add r1, r4, #0
 	bl FreeToHeapExplicit
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end sub_0206226C

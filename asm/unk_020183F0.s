@@ -559,7 +559,7 @@ _02018802:
 	bl GXS_LoadBGPltt
 _0201880E:
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r3, r4, r5, pc}

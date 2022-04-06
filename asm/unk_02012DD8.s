@@ -966,7 +966,7 @@ sub_020134BC: ; 0x020134BC
 	ldmia r1!, {r0, r1}
 	bl sub_020131F4
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_020134BC
@@ -982,7 +982,7 @@ sub_020134D0: ; 0x020134D0
 	ldr r3, [r3, #0xc]
 	bl sub_02013220
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_020134D0
@@ -997,7 +997,7 @@ sub_020134EC: ; 0x020134EC
 	ldr r2, [r2, #8]
 	bl sub_020132A8
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r4, pc}
 	thumb_func_end sub_020134EC
 
@@ -1021,7 +1021,7 @@ sub_02013504: ; 0x02013504
 	ldrsh r3, [r3, r5]
 	bl sub_02013364
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

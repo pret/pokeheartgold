@@ -9,6 +9,7 @@
 #include <nitro/gx/g3x.h>
 #include <nitro/gx/g3imm.h>
 #include <nitro/gx/gx_load.h>
+#include <nitro/gx/g2_oam.h>
 
 #ifdef SDK_ARM9
 #include <nitro/gx/gx_vramcnt.h>

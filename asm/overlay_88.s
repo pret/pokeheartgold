@@ -394,7 +394,7 @@ ov88_02258B20: ; 0x02258B20
 	push {r3, lr}
 	ldr r0, [r0]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	bl GF_RunVramTransferTasks
 	pop {r3, pc}
 	.balign 4, 0
@@ -582,7 +582,7 @@ ov88_02258C98: ; 0x02258C98
 	str r3, [sp, #0xc]
 	add r2, r0, #0
 	str r6, [sp, #0x10]
-	bl sub_0200B150
+	bl OamManager_Create
 	ldr r0, _02258D30 ; =ov88_02259914
 	ldr r1, _02258D34 ; =0x00200010
 	mov r2, #0x10
@@ -601,14 +601,14 @@ ov88_02258C98: ; 0x02258C98
 	mov r0, #0x20
 	add r1, #8
 	add r2, r6, #0
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	str r0, [r5, #4]
 	add r0, r5, #0
 	mov r2, #1
 	add r0, #8
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	mov r7, #0x13
 	mov r4, #0
 	lsl r7, r7, #4
@@ -616,7 +616,7 @@ _02258D04:
 	mov r0, #0x20
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	str r0, [r5, r7]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -647,14 +647,14 @@ ov88_02258D38: ; 0x02258D38
 	lsl r6, r6, #4
 _02258D48:
 	ldr r0, [r5, r6]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
 	blt _02258D48
 	bl sub_0202168C
 	bl sub_02022608
-	bl sub_0200B244
+	bl OamManager_Free
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov88_02258D38
 

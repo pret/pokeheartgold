@@ -23,7 +23,7 @@ ov01_021E7FDC: ; 0x021E7FDC
 	add r0, r2, #0
 	add r1, r5, #4
 	add r2, r4, #0
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	str r0, [r5]
 	ldr r1, _021E818C ; =0x00000162
 	ldr r0, [sp, #0x10]
@@ -101,7 +101,7 @@ _021E8082:
 	bl sub_0200A96C
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	mov r1, #0x13
 	ldr r2, [sp, #0x18]
 	lsl r1, r1, #4
@@ -128,7 +128,7 @@ _021E80BA:
 	str r0, [sp, #0x2c]
 	bl sub_0200A96C
 	add r1, r4, #0
-	bl sub_0200A6F0
+	bl Create2DGfxResObjList
 	mov r1, #0x52
 	lsl r1, r1, #2
 	str r0, [r6, r1]
@@ -140,7 +140,7 @@ _021E80BA:
 	ldr r1, [sp, #0x2c]
 	ldr r2, [r6, r2]
 	add r3, r4, #0
-	bl sub_0200A674
+	bl LoadAll2DGfxResObjsFromHeader
 	ldr r0, [sp, #0x14]
 	add r6, r6, #4
 	add r0, r0, #1
@@ -253,11 +253,11 @@ _021E81CE:
 	mov r0, #0x52
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200A714
+	bl Delete2DGfxResObjList
 	mov r0, #0x13
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	ldrh r0, [r5, r7]
 	add r6, r6, #1
 	add r4, r4, #4
@@ -333,14 +333,14 @@ _021E8228:
 	ldrh r0, [r2, r3]
 	str r0, [sp, #0x44]
 	add r0, sp, #0x18
-	bl sub_02024624
+	bl CreateSprite
 	add r5, r0, #0
 	bne _021E8278
 	bl GF_AssertFail
 _021E8278:
 	ldrh r1, [r4, #0xa]
 	add r0, r5, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r4, #0x18]
 	cmp r0, #1
 	beq _021E828E
@@ -365,7 +365,7 @@ ov01_021E8298: ; 0x021E8298
 	str r3, [sp, #4]
 	add r1, r7, #4
 	add r2, r3, #0
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	str r0, [r7]
 	ldr r1, _021E8374 ; =0x00000162
 	ldr r0, [sp, #4]
@@ -407,7 +407,7 @@ _021E82F0:
 	ldr r0, [r5]
 	ldr r2, [sp, #4]
 	add r1, r4, #0
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	mov r1, #0x13
 	lsl r1, r1, #4
 	str r0, [r6, r1]
@@ -434,7 +434,7 @@ _021E8320:
 	cmp r0, #0
 	beq _021E8354
 	ldr r1, [sp, #4]
-	bl sub_0200A6F0
+	bl Create2DGfxResObjList
 	mov r1, #0x52
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -488,7 +488,7 @@ ov01_021E8378: ; 0x021E8378
 	ldr r1, [sp, #0x30]
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_0200A728
+	bl _2DGfxResObjExistsById
 	cmp r0, #0
 	bne _021E839C
 	bl GF_AssertFail
@@ -509,7 +509,7 @@ _021E839C:
 	str r1, [sp, #0xc]
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_0200A234
+	bl AddPlttResObjFromNarc
 	add r4, r0, #0
 	beq _021E83E4
 	bl sub_0200B00C
@@ -573,7 +573,7 @@ ov01_021E8418: ; 0x021E8418
 	ldr r1, [sp, #0x24]
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_0200A728
+	bl _2DGfxResObjExistsById
 	cmp r0, #0
 	bne _021E843C
 	bl GF_AssertFail
@@ -592,7 +592,7 @@ _021E843C:
 	str r1, [sp, #8]
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_0200A1D8
+	bl AddCharResObjFromNarc
 	add r4, r0, #0
 	beq _021E8470
 	bl sub_0200ADA4
@@ -659,7 +659,7 @@ ov01_021E84B0: ; 0x021E84B0
 	ldr r1, [sp, #0x2c]
 	str r2, [sp, #0xc]
 	str r3, [sp, #0x10]
-	bl sub_0200A728
+	bl _2DGfxResObjExistsById
 	cmp r0, #0
 	bne _021E84DA
 	bl GF_AssertFail
@@ -677,7 +677,7 @@ _021E84DA:
 	ldrh r0, [r5, r0]
 	str r0, [sp, #8]
 	ldr r0, [r6, r4]
-	bl sub_0200A294
+	bl AddCellOrAnimResObjFromNarc
 	add r1, r0, #0
 	beq _021E8510
 	mov r0, #0x52
@@ -755,7 +755,7 @@ _021E857E:
 	mvn r2, r2
 	cmp r1, r2
 	beq _021E8596
-	bl sub_0200A728
+	bl _2DGfxResObjExistsById
 	cmp r0, #0
 	bne _021E8596
 	mov r0, #0
@@ -770,7 +770,7 @@ _021E8596:
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200A728
+	bl _2DGfxResObjExistsById
 	cmp r0, #0
 	bne _021E85B4
 	mov r0, #0
@@ -813,7 +813,7 @@ _021E85B4:
 	ldr r1, [sp, #0x2c]
 	ldr r2, [sp, #0x30]
 	ldr r3, [sp, #0x34]
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r5]
 	str r0, [sp, #0x44]
 	ldr r0, [r6, #4]
@@ -903,7 +903,7 @@ _021E86A2:
 	ldrh r0, [r5, r0]
 	str r0, [sp, #0x70]
 	add r0, sp, #0x44
-	bl sub_02024624
+	bl CreateSprite
 	str r0, [r6]
 	cmp r0, #0
 	beq _021E86E6
@@ -911,7 +911,7 @@ _021E86A2:
 	add r5, r0, #0
 	ldrh r1, [r4, #6]
 	ldr r0, [r6]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r1, [r4, #0xc]
 	ldr r0, [r6]
 	add r1, r5, r1
@@ -954,11 +954,11 @@ _021E8724:
 	mov r0, #0x52
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200A714
+	bl Delete2DGfxResObjList
 	mov r0, #0x13
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	ldrh r0, [r6, r7]
 	add r4, r4, #1
 	add r5, r5, #4

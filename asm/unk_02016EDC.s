@@ -206,7 +206,7 @@ _02016FAE:
 	ldr r1, [r5]
 	ldr r0, _02017064 ; =sub_020170C4
 	add r1, r1, r4
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r1, [r5]
 	add r1, r1, r4
 	str r0, [r1, #4]
@@ -288,7 +288,7 @@ sub_02017088: ; 0x02017088
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _020170C2
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r1, [r5]
 	mov r0, #0
 	add r1, r1, r4
@@ -331,7 +331,7 @@ _020170DC:
 	mov r0, #0
 	str r0, [r4, #0x10]
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	str r0, [r4, #4]
 	ldr r0, [r4, #8]

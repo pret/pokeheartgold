@@ -2,7 +2,7 @@
 
 case $OSTYPE in
   darwin*)
-    echo "" | gcut -f1 &>/dev/null || { echo "This script requires GNU coreutils, install it via homebrew (brew install coreutils)"; exit 1; }
+    echo "" | gcut -f1 &>/dev/null || { echo "This script requires GNU coreutils, install it via homebrew (brew install coreutils)" >&2; exit 1; }
     CUT=gcut
     ;;
   *)
@@ -43,17 +43,17 @@ dump_autoload() {
       fi
     done
   fi
-  [[ $_start_ModuleParams == 0 ]] && { echo "Unable to find _start_ModuleParams"; exit 1; }
+  [[ $_start_ModuleParams == 0 ]] && { echo "Unable to find _start_ModuleParams" >&2; exit 1; }
   aload_list=$(($(getword "$1" $_start_ModuleParams)-$3))
   aload_list_end=$(($(getword "$1" $((_start_ModuleParams+4)))-$3))
   aload_start=$(($(getword "$1" $((_start_ModuleParams+8)))-$3))
-  [[ $aload_list == $aload_list_end ]] && { echo "error: autoload index exceeds list size"; exit 1; }
+  [[ $aload_list == $aload_list_end ]] && { echo "error: autoload index exceeds list size" >&2; exit 1; }
   for i in $(seq 1 "$5"); do
     avma=$(getword "$1" $aload_list)
     asize=$(getword "$1" $((aload_list+4)))
     ((aload_start+=asize))
     ((aload_list+=12))
-    [[ $aload_list == $aload_list_end ]] && { echo "error: autoload index exceeds list size"; exit 1; }
+    [[ $aload_list == $aload_list_end ]] && { echo "error: autoload index exceeds list size" >&2; exit 1; }
   done
   avma=$(getword "$1" $aload_list)
   asize=$(getword "$1" $((aload_list+4)))
@@ -97,13 +97,13 @@ while [[ $# -gt 0 ]]; do
     shift
     ;;
   -a)
-    [[ -n $autoload ]] && { echo "can only do one autoload at a time"; exit 1; }
+    [[ -n $autoload ]] && { echo "can only do one autoload at a time" >&2; exit 1; }
     mode=autoload
     autoload="$2"
     shift 2
     ;;
   -m)
-    [[ -n $overlay ]] && { echo "can only do one overlay at a time"; exit 1; }
+    [[ -n $overlay ]] && { echo "can only do one overlay at a time" >&2; exit 1; }
     mode=overlay
     overlay="$2"
     shift 2
@@ -149,6 +149,8 @@ builddir=${builddir:-$DEFAULT_ARM9BUILDDIR}
 baserom=${baserom:-$DEFAULT_BASEROM}
 fsdir=${fsdir:-$DEFAULT_FSDIR}
 
+[[ -f "$baserom" ]] || { echo $0: $baserom: no such file or directory >&2; exit 1; }
+
 basestem=
 [[ $proc == armv4t ]] && basestem=${basestem}.sub
 [[ $mode == overlay ]] && basestem=${basestem}.o${overlay}
@@ -172,11 +174,11 @@ case "$mode" in
     fi
     if [ -n "${overlay##*[!0-9]*}" 2>/dev/null ] ; then
       ovyfile=$(tail -c+16 "${builddir}/${defsfile}" | ${CUT} -d '' -f$((overlay+1)) )
-      [[ -n $ovyfile ]] || { echo "Overlay num out of range"; exit 1; }
+      [[ -n $ovyfile ]] || { echo "Overlay num out of range" >&2; exit 1; }
     else
       ovyfile=${overlay%.*}.sbin
       overlay=$(($(tail -c+16 "${builddir}/${defsfile}" | tr '\0' '\n' | grep -n $ovyfile | ${CUT} -d: -f1)-1))
-      [[ $overlay -eq -1 ]] && { echo "Invalid overlay name"; exit 1; }
+      [[ $overlay -eq -1 ]] && { echo "Invalid overlay name" >&2; exit 1; }
     fi
     ovtoff=$(getword "$baserom" "$ovt")
     vma=$(getword "$baserom" "$((ovtoff+32*overlay+4))")
@@ -239,7 +241,7 @@ case "$mode" in
     ;;
   file)
     buildfile=${fsdir}/${filepath}
-    [[ -f "${buildfile}" ]] || { echo file not found: "${buildfile}"; exit 1; }
+    [[ -f "${buildfile}" ]] || { echo file not found: "${buildfile}" >&2; exit 1; }
     basefile=${MYDIR}/.files/${filepath}
     [[ "${basefile}" -nt "$baserom" ]] || {
       mkdir -p $(dirname $basefile)

@@ -153,7 +153,7 @@ _0216:
 	pokecen_anim VAR_SPECIAL_x8006
 	apply_movement VAR_SPECIAL_x8007, _107C
 	wait_movement
-	get_lead_mon_index VAR_SPECIAL_x8008
+	get_party_lead_alive VAR_SPECIAL_x8008
 	heal_party
 	return
 
@@ -173,7 +173,7 @@ _026F:
 	set_avatar_bits PLAYER_TRANSITION_WALKING
 _0273:
 	update_avatar_state
-	get_lead_mon_index VAR_SPECIAL_x8009
+	get_party_lead_alive VAR_SPECIAL_x8009
 	compare VAR_SPECIAL_x8008, VAR_SPECIAL_x8009
 	goto_if_eq _02B2
 	wait 15, VAR_SPECIAL_x800A
@@ -211,7 +211,7 @@ _02F3:
 	set_avatar_bits PLAYER_TRANSITION_WALKING
 _02F7:
 	update_avatar_state
-	get_lead_mon_index VAR_SPECIAL_x8009
+	get_party_lead_alive VAR_SPECIAL_x8009
 	compare VAR_SPECIAL_x8008, VAR_SPECIAL_x8009
 	goto_if_eq _0336
 	wait 15, VAR_SPECIAL_x800A
@@ -235,7 +235,7 @@ _0336:
 	end
 
 _034D:
-	scrcmd_238 VAR_SPECIAL_x8006
+	party_has_pokerus VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 1
 	goto_if_eq _0364
 	goto _023A
@@ -255,7 +255,7 @@ _0391:
 	set_avatar_bits PLAYER_TRANSITION_WALKING
 _0395:
 	update_avatar_state
-	get_lead_mon_index VAR_SPECIAL_x8009
+	get_party_lead_alive VAR_SPECIAL_x8009
 	compare VAR_SPECIAL_x8008, VAR_SPECIAL_x8009
 	goto_if_eq _03D4
 	wait 15, VAR_SPECIAL_x800A

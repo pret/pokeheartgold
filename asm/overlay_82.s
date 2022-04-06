@@ -971,7 +971,7 @@ _0223E4E4:
 	b _0223E5B6
 _0223E532:
 	ldrb r0, [r4, #0xa]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0223E5B6
 	mov r0, #1
@@ -1810,7 +1810,7 @@ _0223EC24:
 	ldr r0, [r4, #0x48]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl GF_RunVramTransferTasks
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	ldr r3, _0223EC40 ; =0x027E0000
 	ldr r1, _0223EC44 ; =0x00003FF8
 	mov r0, #1
@@ -2641,7 +2641,7 @@ ov82_0223F224: ; 0x0223F224
 	add r0, r4, #0
 	add r0, #0xa0
 	ldr r0, [r0]
-	bl sub_0202D95C
+	bl Save_SpecialRibbons_get
 	add r1, r4, #0
 	add r1, #0xa4
 	ldr r1, [r1]
@@ -3606,11 +3606,11 @@ ov82_0223F95C: ; 0x0223F95C
 	mov r2, #0x69
 	str r2, [sp, #0x10]
 	add r2, r0, #0
-	bl sub_0200B150
+	bl OamManager_Create
 	mov r0, #2
 	add r1, r5, #4
 	mov r2, #0x69
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	ldr r4, _0223FB04 ; =ov82_0223FEEC
 	str r0, [r5]
 	mov r7, #0
@@ -3619,7 +3619,7 @@ _0223F996:
 	ldrb r0, [r4]
 	add r1, r7, #0
 	mov r2, #0x69
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	mov r1, #0x4b
 	lsl r1, r1, #2
 	str r0, [r6, r1]
@@ -3638,7 +3638,7 @@ _0223F996:
 	ldr r0, [r5, r0]
 	mov r1, #0xb8
 	mov r2, #0xc
-	bl sub_0200A1D8
+	bl AddCharResObjFromNarc
 	mov r1, #0x4f
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3653,7 +3653,7 @@ _0223F996:
 	ldr r0, [r5, r0]
 	mov r1, #0xb8
 	mov r2, #0x36
-	bl sub_0200A234
+	bl AddPlttResObjFromNarc
 	mov r1, #5
 	lsl r1, r1, #6
 	str r0, [r5, r1]
@@ -3668,7 +3668,7 @@ _0223F996:
 	mov r1, #0xb8
 	mov r2, #0xe
 	mov r3, #1
-	bl sub_0200A294
+	bl AddCellOrAnimResObjFromNarc
 	mov r1, #0x51
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3683,7 +3683,7 @@ _0223F996:
 	mov r1, #0xb8
 	mov r2, #0xd
 	mov r3, #1
-	bl sub_0200A294
+	bl AddCellOrAnimResObjFromNarc
 	mov r1, #0x52
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3703,7 +3703,7 @@ _0223F996:
 	ldr r0, [r5, r0]
 	ldr r1, [sp, #0x18]
 	mov r3, #0
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	mov r1, #0x53
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3720,7 +3720,7 @@ _0223F996:
 	ldr r0, [r5, r0]
 	mov r1, #0x14
 	mov r3, #0
-	bl sub_0200A234
+	bl AddPlttResObjFromNarc
 	mov r1, #0x15
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -3736,7 +3736,7 @@ _0223F996:
 	ldr r0, [r5, r0]
 	ldr r1, [sp, #0x18]
 	mov r3, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	mov r1, #0x55
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3752,7 +3752,7 @@ _0223F996:
 	ldr r0, [r5, r0]
 	ldr r1, [sp, #0x18]
 	mov r3, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	mov r1, #0x56
 	lsl r1, r1, #2
 	add r7, r1, #0
@@ -3819,7 +3819,7 @@ ov82_0223FB08: ; 0x0223FB08
 	str r3, [sp, #0x28]
 	add r0, sp, #0x5c
 	add r3, r1, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r5]
 	mov r1, #0
 	str r0, [sp, #0x2c]
@@ -3860,17 +3860,17 @@ _0223FB80:
 	str r0, [sp, #0x38]
 _0223FB96:
 	add r0, sp, #0x2c
-	bl sub_02024624
+	bl CreateSprite
 	mov r1, #1
 	add r4, r0, #0
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0xc
 	bl sub_02024868
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r0, r4, #0
 	add sp, #0x80
 	pop {r4, r5, r6, pc}
@@ -3904,7 +3904,7 @@ _0223FBEA:
 	lsl r0, r4, #2
 	add r0, r5, r0
 	ldr r0, [r0, r6]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -3912,7 +3912,7 @@ _0223FBEA:
 	blo _0223FBEA
 	ldr r0, [r5]
 	bl sub_02024504
-	bl sub_0200B244
+	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
 	pop {r3, r4, r5, r6, r7, pc}
@@ -4003,11 +4003,11 @@ ov82_0223FC9C: ; 0x0223FC9C
 
 	thumb_func_start ov82_0223FCB0
 ov82_0223FCB0: ; 0x0223FCB0
-	ldr r3, _0223FCB8 ; =sub_02024830
+	ldr r3, _0223FCB8 ; =Set2dSpriteVisibleFlag
 	ldr r0, [r0, #0x10]
 	bx r3
 	nop
-_0223FCB8: .word sub_02024830
+_0223FCB8: .word Set2dSpriteVisibleFlag
 	thumb_func_end ov82_0223FCB0
 
 	thumb_func_start ov82_0223FCBC

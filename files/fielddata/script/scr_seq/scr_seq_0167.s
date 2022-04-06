@@ -98,7 +98,7 @@ _019C:
 	goto _008C
 	.byte 0x02, 0x00
 _01A7:
-	pokeathlon_party_count VAR_SPECIAL_RESULT
+	count_alive_mons_and_pc VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_lt _07E6
 	npc_msg msg_0312_00003
@@ -679,7 +679,7 @@ _0AA6:
 	.byte 0x02
 	.byte 0x00
 _0AB1:
-	pokeathlon_party_count VAR_SPECIAL_RESULT
+	count_alive_mons_and_pc VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_lt _07E6
 	callstd std_prompt_save

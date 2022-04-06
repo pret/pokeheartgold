@@ -28,9 +28,11 @@ Static main
 	Object src/filesystem.o
 	Object src/gf_gfx_loader.o
 	Object asm/unk_02007FD8.o
-	Object asm/unk_02009D48.o
-	Object asm/unk_0200A090.o
+	Object src/unk_02009D48.o
+	Object src/unk_0200A090.o
+	Object asm/unk_0200ACF0.o
 	Object asm/unk_0200B150.o
+	Object asm/unk_0200B380.o
 	Object src/msgdata.o
 	Object src/msgfmt.o
 	Object asm/message_printer.o
@@ -57,7 +59,8 @@ Static main
 	Object asm/unk_02018000.o
 	Object asm/unk_02018380.o
 	Object asm/unk_020183F0.o
-	Object asm/unk_02019014.o
+	Object src/camera_translation.o
+	Object asm/unk_020192D0.o
 	Object src/system.o
 	Object src/heap.o
 	Object src/bg_window.o
@@ -79,7 +82,8 @@ Static main
 	Object asm/unk_02025154.o
 	Object src/timer3.o
 	Object src/error_handling.o
-	Object asm/unk_02025534.o
+	Object src/unk_02025534.o
+	Object asm/unk_02025534_s.o
 	Object asm/unk_02025C44.o
 	Object src/font_data.o
 	Object src/pm_string.o
@@ -113,7 +117,7 @@ Static main
 	Object src/sav_chatot.o
 	Object asm/unk_0202CF1C.o
 	Object asm/unk_0202D230.o
-	Object src/unk_0202D938.o
+	Object src/save_special_ribbons.o
 	Object src/roamer.o
 	Object asm/unk_0202DB34.o
 	Object asm/unk_0202DBA8.o
@@ -172,7 +176,7 @@ Static main
 	Object asm/scrcmd_12.o
 	Object src/scrcmd_money.o
 	Object src/scrcmd_daycare.o
-	Object asm/scrcmd_15.o
+	Object src/scrcmd_party.o
 	Object src/scrcmd_dppl_prizes.o
 	Object src/scrcmd_17.o
 	Object src/scrcmd_items.o
@@ -316,7 +320,7 @@ Static main
 	Object asm/unk_02097024.o
 	Object asm/unk_020971F8.o
 	Object asm/unk_02097268.o
-	Object asm/unk_02097720.o
+	Object src/unk_02097720.o
 	Object asm/unk_020977CC.o
 	Object asm/unk_020979A8.o
 	Object asm/unk_02097B78.o
@@ -807,7 +811,7 @@ Overlay OVY_60
 Overlay OVY_61
 {
     After main
-    Object asm/overlay_61.o
+    Object src/choose_starter_app.o
 }
 Overlay OVY_62
 {

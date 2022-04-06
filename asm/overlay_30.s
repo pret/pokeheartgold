@@ -520,7 +520,7 @@ ov30_0225D954: ; 0x0225D954
 	ldr r0, [r4, #0x60]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0225D970
 	ldr r0, [r4, #0x5c]

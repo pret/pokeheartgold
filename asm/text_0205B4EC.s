@@ -9,7 +9,7 @@ sub_0205B4EC: ; 0x0205B4EC
 	add r4, r0, #0
 	cmp r1, #1
 	bne _0205B4F8
-	bl sub_02020080
+	bl ResetAllTextPrinters
 _0205B4F8:
 	mov r1, #0x1a
 	add r0, r4, #0
@@ -167,7 +167,7 @@ sub_0205B5EC: ; 0x0205B5EC
 	thumb_func_start sub_0205B624
 sub_0205B624: ; 0x0205B624
 	push {r3, lr}
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0205B632
 	mov r0, #1

@@ -64,7 +64,7 @@ ov01_021EB234: ; 0x021EB234
 	ldr r0, [r4, #0x14]
 	cmp r0, #0
 	beq _021EB242
-	bl sub_0200E390
+	bl DestroySysTask
 _021EB242:
 	add r0, r4, #0
 	bl ov01_021EB68C
@@ -165,14 +165,14 @@ _021EB2E6:
 	mov r2, #0
 	add r1, r5, #0
 	str r2, [r5, #0xc]
-	bl sub_0200E320
+	bl CreateSysTask
 	b _021EB30E
 _021EB302:
 	ldr r0, _021EB318 ; =ov01_021EB3F0
 	mov r2, #0
 	add r1, r5, #0
 	str r2, [r5, #0xc]
-	bl sub_0200E320
+	bl CreateSysTask
 _021EB30E:
 	str r0, [r5, #0x14]
 	mov r0, #1
@@ -284,7 +284,7 @@ _021EB3D2:
 	str r1, [r4, #0xc]
 	mov r1, #0
 	str r1, [r4, #0x14]
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r1, [r4, #0x10]
 	cmp r1, #0xe
 	beq _021EB3EE
@@ -385,7 +385,7 @@ _021EB490:
 	mov r1, #6
 	str r1, [r4, #0xc]
 	str r2, [r4, #0x14]
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r1, [r4, #0x10]
 	cmp r1, #0xe
 	beq _021EB4B2
@@ -434,7 +434,7 @@ _021EB4EE:
 	add r0, r7, #0
 	add r1, r4, #0
 	mov r2, #4
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	add r4, r4, #1
 	stmia r5!, {r0}
 	cmp r4, #4
@@ -468,14 +468,14 @@ _021EB4EE:
 	mov r0, #4
 	str r0, [sp, #8]
 	add r0, sp, #0
-	bl sub_0202445C
+	bl SpriteList_Create
 	add r1, r6, #0
 	add r1, #0xf4
 	str r0, [r1]
 	ldr r0, _021EB568 ; =ov01_021EB56C
 	add r1, r6, #0
 	mov r2, #0xa
-	bl sub_0200E320
+	bl CreateSysTask
 	add r6, #0xf8
 	str r0, [r6]
 	add sp, #0x1c
@@ -529,7 +529,7 @@ _021EB5AC:
 	bl sub_0200A900
 	bl sub_0200A954
 	ldr r0, [r5]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -549,7 +549,7 @@ _021EB5AC:
 	add r0, r6, #0
 	add r0, #0xf8
 	ldr r0, [r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	add r6, #0xf8
 	str r0, [r6]
@@ -970,7 +970,7 @@ _021EB8F0:
 	str r0, [sp, #0xc]
 	add r0, r7, #0
 	add r1, r5, #0
-	bl sub_0200A424
+	bl AddCharResObjFromOpenNarcWithAtEndFlag
 	str r0, [sp, #0x14]
 	b _021EB962
 _021EB90E:
@@ -987,7 +987,7 @@ _021EB90E:
 	add r1, r5, #0
 	str r0, [sp, #0x10]
 	add r0, r7, #0
-	bl sub_0200A4E0
+	bl AddPlttResObjFromOpenNarcWithAtEndFlag
 	str r0, [sp, #0x14]
 	b _021EB962
 _021EB930:
@@ -1000,7 +1000,7 @@ _021EB930:
 	ldr r3, [sp, #0x20]
 	add r0, r7, #0
 	add r1, r5, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	str r0, [sp, #0x14]
 	b _021EB962
 _021EB94A:
@@ -1013,7 +1013,7 @@ _021EB94A:
 	ldr r3, [sp, #0x20]
 	add r0, r7, #0
 	add r1, r5, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	str r0, [sp, #0x14]
 _021EB962:
 	ldr r0, [sp, #0x14]
@@ -1045,7 +1045,7 @@ _021EB98A:
 	cmp r1, #0
 	beq _021EB996
 	ldr r0, [r5, #8]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 _021EB996:
 	add r6, r6, #1
 	add r4, r4, #4
@@ -1132,7 +1132,7 @@ _021EBA2A:
 	ldr r0, _021EBA40 ; =ov01_021EBD70
 	add r1, r4, #0
 	mov r2, #1
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4, #0x14]
 	mov r0, #1
 	strh r0, [r4, #0x10]
@@ -1176,7 +1176,7 @@ _021EBA6E:
 _021EBA78:
 	ldr r0, [r4, #0x18]
 	mov r2, #4
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r1, [r4, #8]
 	ldr r3, _021EBB30 ; =0x00000F48
 	str r0, [r1, r3]
@@ -1367,7 +1367,7 @@ _021EBBCE:
 	ldr r0, [r4, #0x14]
 	cmp r0, #0
 	beq _021EBBF6
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	str r0, [r4, #0x14]
 _021EBBF6:
@@ -1408,7 +1408,7 @@ _021EBC36:
 	ldr r0, [r4, #0x14]
 	cmp r0, #0
 	beq _021EBC56
-	bl sub_0200E390
+	bl DestroySysTask
 	b _021EBC56
 _021EBC48:
 	cmp r0, #3
@@ -1416,14 +1416,14 @@ _021EBC48:
 	ldr r1, [r4, #8]
 	ldr r0, _021EBC9C ; =0x00000F48
 	ldr r0, [r1, r0]
-	bl sub_0200E390
+	bl DestroySysTask
 _021EBC56:
 	ldr r1, [r4, #8]
 	ldr r0, _021EBCA0 ; =0x00000F6C
 	ldr r0, [r1, r0]
 	cmp r0, #0
 	beq _021EBC64
-	bl sub_0200E390
+	bl DestroySysTask
 _021EBC64:
 	ldr r1, [r4, #8]
 	mov r0, #4
@@ -1498,7 +1498,7 @@ _021EBCF2:
 	ldr r1, [r4, #8]
 	ldr r0, _021EBD14 ; =0x00000F48
 	ldr r0, [r1, r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #2
 	strh r0, [r4, #0x10]
 _021EBD06:
@@ -1666,7 +1666,7 @@ _021EBE36:
 	strh r0, [r4, #0x12]
 	str r0, [r4, #0x14]
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _021EBE46:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1941,10 +1941,10 @@ ov01_021EC028: ; 0x021EC028
 _021EC032:
 	ldr r0, [r6, #8]
 	add r0, #0x10
-	bl sub_02024624
+	bl CreateSprite
 	str r0, [r5, #0x4c]
 	add r1, r7, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #0x4c]
 	cmp r0, #0
 	bne _021EC04C
@@ -2212,7 +2212,7 @@ _021EC22A:
 _021EC234:
 	ldr r0, [r4, #4]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021EC1F4
@@ -2260,7 +2260,7 @@ _021EC250:
 	ldr r1, [sp, #0x34]
 	ldr r2, [sp, #0x38]
 	ldr r3, [sp, #0x3c]
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	add sp, #0x44
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2278,7 +2278,7 @@ ov01_021EC29C: ; 0x021EC29C
 	str r1, [r0, #0x38]
 	ldr r0, [r4, #4]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	bl ov01_021EC1E4
 	add r0, r4, #0
@@ -2381,14 +2381,14 @@ ov01_021EC31C: ; 0x021EC31C
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	ldr r0, [r0, #0x24]
-	bl sub_0202360C
+	bl GF_Camera_GetPerspectiveAngle
 	str r0, [sp, #0xc]
 	mov r0, #0x41
 	ldr r1, [r5]
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	ldr r0, [r0, #0x24]
-	bl sub_02023614
+	bl GF_Camera_GetDistance
 	add r1, r0, #0
 	add r0, sp, #0x10
 	str r0, [sp]
@@ -3292,7 +3292,7 @@ _021EC978:
 	ldr r0, _021ECBA0 ; =ov01_021EDA7C
 	add r1, r4, #0
 	mov r2, #0x64
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r1, _021ECBA4 ; =0x00000F6C
 	mov r2, #0x1e
 	str r0, [r4, r1]
@@ -3381,7 +3381,7 @@ _021ECA66:
 	ldr r0, _021ECBA0 ; =ov01_021EDA7C
 	add r1, r4, #0
 	mov r2, #0x64
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r1, _021ECBA4 ; =0x00000F6C
 	mov r2, #0x1e
 	str r0, [r4, r1]
@@ -5414,7 +5414,7 @@ ov01_021EDA7C: ; 0x021EDA7C
 	add r0, r4, #0
 	bl ov01_021EDAB4
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, _021EDAB0 ; =0x00000F6C
 	mov r1, #0
 	str r1, [r4, r0]

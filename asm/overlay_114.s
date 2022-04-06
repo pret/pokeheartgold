@@ -82,7 +82,7 @@ _0225F04E:
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -133,7 +133,7 @@ _0225F104:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -370,7 +370,7 @@ _0225F2F6:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r7, r7, #1
 	add r5, r5, #4
 	cmp r7, #4
@@ -432,7 +432,7 @@ _0225F38E:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r7, r7, #1
 	add r5, r5, #4
 	cmp r7, #4

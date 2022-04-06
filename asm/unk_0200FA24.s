@@ -867,7 +867,7 @@ sub_0200FFD8: ; 0x0200FFD8
 	ldr r3, [r4, #0xc]
 	bl sub_0200FEE4
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r3, r4, r5, pc}
@@ -882,7 +882,7 @@ sub_0200FFF8: ; 0x0200FFF8
 	ldr r1, [r4, #4]
 	bl sub_0200FF5C
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r3, r4, r5, pc}
@@ -942,7 +942,7 @@ sub_02010050: ; 0x02010050
 	mov r1, #0
 	bl SetMasterBrightness
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r4, pc}
 	thumb_func_end sub_02010050
 

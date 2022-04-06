@@ -467,7 +467,7 @@ _020239B0:
 	add r0, #0x30
 	add r1, r4, #0
 	add r3, #0xc
-	bl sub_0201F554
+	bl Draw3dModel
 	add r0, r4, #0
 	bl sub_0202441C
 _020239C4:
@@ -2059,8 +2059,8 @@ sub_02024454: ; 0x02024454
 	bx lr
 	thumb_func_end sub_02024454
 
-	thumb_func_start sub_0202445C
-sub_0202445C: ; 0x0202445C
+	thumb_func_start SpriteList_Create
+SpriteList_Create: ; 0x0202445C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bne _02024466
@@ -2136,7 +2136,7 @@ _020244B8:
 	pop {r3, r4, r5, pc}
 	nop
 _02024500: .word _0210F6E0
-	thumb_func_end sub_0202445C
+	thumb_func_end SpriteList_Create
 
 	thumb_func_start sub_02024504
 sub_02024504: ; 0x02024504
@@ -2297,8 +2297,8 @@ sub_020245FC: ; 0x020245FC
 	.balign 4, 0
 	thumb_func_end sub_020245FC
 
-	thumb_func_start sub_02024624
-sub_02024624: ; 0x02024624
+	thumb_func_start CreateSprite
+CreateSprite: ; 0x02024624
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -2414,7 +2414,7 @@ _020246E6:
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_02024624
+	thumb_func_end CreateSprite
 
 	thumb_func_start sub_02024714
 sub_02024714: ; 0x02024714
@@ -2447,7 +2447,7 @@ sub_02024714: ; 0x02024714
 	ldr r0, [r2, #0x1c]
 	str r0, [sp, #0x2c]
 	add r0, sp, #0
-	bl sub_02024624
+	bl CreateSprite
 	add sp, #0x30
 	pop {r4, pc}
 	.balign 4, 0
@@ -2584,8 +2584,8 @@ sub_0202481C: ; 0x0202481C
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0202481C
 
-	thumb_func_start sub_02024830
-sub_02024830: ; 0x02024830
+	thumb_func_start Set2dSpriteVisibleFlag
+Set2dSpriteVisibleFlag: ; 0x02024830
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -2600,10 +2600,10 @@ _02024846:
 	add r5, #0x34
 	strb r4, [r5]
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02024830
+	thumb_func_end Set2dSpriteVisibleFlag
 
-	thumb_func_start sub_0202484C
-sub_0202484C: ; 0x0202484C
+	thumb_func_start Set2dSpriteAnimActiveFlag
+Set2dSpriteAnimActiveFlag: ; 0x0202484C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -2618,7 +2618,7 @@ _02024862:
 	add r5, #0x35
 	strb r4, [r5]
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0202484C
+	thumb_func_end Set2dSpriteAnimActiveFlag
 
 	thumb_func_start sub_02024868
 sub_02024868: ; 0x02024868
@@ -2726,8 +2726,8 @@ _020248E6:
 	.balign 4, 0
 	thumb_func_end sub_020248C8
 
-	thumb_func_start sub_020248F0
-sub_020248F0: ; 0x020248F0
+	thumb_func_start Set2dSpriteAnimSeqNo
+Set2dSpriteAnimSeqNo: ; 0x020248F0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -2773,7 +2773,7 @@ _02024936:
 	str r0, [r5, #0x14]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_020248F0
+	thumb_func_end Set2dSpriteAnimSeqNo
 
 	thumb_func_start sub_02024950
 sub_02024950: ; 0x02024950
@@ -2783,7 +2783,7 @@ sub_02024950: ; 0x02024950
 	ldrh r2, [r2]
 	cmp r2, r1
 	beq _02024960
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _02024960:
 	pop {r3, pc}
 	.balign 4, 0

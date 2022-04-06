@@ -181,7 +181,7 @@ ov01_021F6E44: ; 0x021F6E44
 	ldr r0, [r4, #0x40]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021F6E62
 	add r0, r4, #0
@@ -263,7 +263,7 @@ ov01_021F6ED8: ; 0x021F6ED8
 	ldr r0, [r4, #0x40]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021F6EF6
 	add r0, r4, #0
@@ -323,7 +323,7 @@ ov01_021F6F44: ; 0x021F6F44
 	ldr r0, [r4, #0x40]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021F6F62
 	add r0, r4, #0
@@ -475,7 +475,7 @@ ov01_021F7060: ; 0x021F7060
 	ldr r0, [r4, #0x40]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021F707E
 	add r0, r4, #0

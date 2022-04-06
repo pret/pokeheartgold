@@ -1090,14 +1090,14 @@ sub_0206AFD0: ; 0x0206AFD0
 	ldr r0, _0206B008 ; =_021100C4
 	add r1, r4, #0
 	ldr r0, [r0]
-	bl sub_020235D4
+	bl GF_Camera_SetDistance
 	ldr r0, _0206B00C ; =_021100C4 + 4
 	add r1, r4, #0
-	bl sub_02023558
+	bl GF_Camera_SetAngle
 	ldr r0, _0206B008 ; =_021100C4
 	add r1, r4, #0
 	ldrh r0, [r0, #0xe]
-	bl sub_02023494
+	bl GF_Camera_SetPerspectiveAngle
 	ldr r0, _0206B008 ; =_021100C4
 	add r1, r4, #0
 	ldrh r0, [r0, #0xc]
@@ -1106,7 +1106,7 @@ sub_0206AFD0: ; 0x0206AFD0
 	bl sub_020233D8
 	ldr r0, _0206B010 ; =_021100C4 + 24
 	add r1, r4, #0
-	bl sub_02023514
+	bl GF_Camera_ShiftBy
 	pop {r4, pc}
 	.balign 4, 0
 _0206B008: .word _021100C4

@@ -1546,7 +1546,7 @@ ov08_0221CA34: ; 0x0221CA34
 	push {r3, lr}
 	ldr r1, _0221CA4C ; =0x0000207B
 	ldrb r0, [r0, r1]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0221CA46
 	mov r0, #0x12
@@ -1567,7 +1567,7 @@ ov08_0221CA50: ; 0x0221CA50
 	mov r0, #3
 	tst r0, r1
 	bne _0221CA66
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _0221CA6C
 _0221CA66:
@@ -13686,7 +13686,7 @@ ov08_02222DAC: ; 0x02222DAC
 	push {r3, lr}
 	add r0, #0x32
 	ldrb r0, [r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02222DBE
 	mov r0, #0xa
@@ -13706,7 +13706,7 @@ ov08_02222DC4: ; 0x02222DC4
 	mov r0, #3
 	tst r0, r1
 	bne _02222DDA
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _02222DE0
 _02222DDA:

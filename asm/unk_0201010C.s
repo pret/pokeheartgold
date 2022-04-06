@@ -2052,7 +2052,7 @@ _02010F14:
 	blt _02010F14
 _02010F2C:
 	ldr r0, [sp]
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02010F00
 
@@ -2319,7 +2319,7 @@ _02011112:
 	cmp r4, #2
 	blt _02011112
 	ldr r0, [sp]
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end sub_02011104

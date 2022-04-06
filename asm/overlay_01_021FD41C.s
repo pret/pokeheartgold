@@ -56,7 +56,7 @@ ov01_021FD458: ; 0x021FD458
 	sub r2, r0, #1
 	ldr r0, _021FD478 ; =ov01_021FD4F4
 	add r1, r4, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4, #0x24]
 	pop {r4, pc}
 	nop
@@ -69,7 +69,7 @@ ov01_021FD47C: ; 0x021FD47C
 	ldr r0, [r0, #0x24]
 	bx r3
 	nop
-_021FD484: .word sub_0200E390
+_021FD484: .word DestroySysTask
 	thumb_func_end ov01_021FD47C
 
 	thumb_func_start ov01_021FD488

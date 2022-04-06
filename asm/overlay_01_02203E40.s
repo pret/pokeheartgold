@@ -240,7 +240,7 @@ _02203FA6:
 	add r0, r0, #4
 	add r2, sp, #0
 	add r3, sp, #0x24
-	bl sub_0201F554
+	bl Draw3dModel
 	add sp, #0x3c
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0

@@ -1000,7 +1000,7 @@ ov01_021F19B4: ; 0x021F19B4
 	mov r0, #1
 	str r0, [r4]
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021F19B4
@@ -1019,7 +1019,7 @@ ov01_021F19D0: ; 0x021F19D0
 	add r0, r4, #0
 	bl ov01_021F1448
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _021F19F0:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

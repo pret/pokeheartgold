@@ -437,7 +437,7 @@ ov93_0225C768: ; 0x0225C768
 	mov r2, #0x16
 	mov r1, #0
 	lsl r2, r2, #0x10
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	add r0, r5, #0
 	bl ov93_0225D674
 	mov r0, #0
@@ -546,7 +546,7 @@ ov93_0225C768: ; 0x0225C768
 	ldr r0, _0225CA7C ; =ov93_0225D07C
 	ldr r2, _0225CA80 ; =0x0000EA60
 	add r1, r5, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	add r1, r5, #0
 	add r1, #0x94
 	str r0, [r1]
@@ -1054,7 +1054,7 @@ _0225CD72:
 	add r0, r4, #0
 	add r0, #0x94
 	ldr r0, [r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -1239,7 +1239,7 @@ ov93_0225CFC0: ; 0x0225CFC0
 	ldr r0, [r3]
 	str r0, [r2]
 	mov r0, #0x75
-	bl sub_02023114
+	bl GF_Camera_Create
 	add r1, r4, #0
 	add r1, #0x9c
 	str r0, [r1]
@@ -1256,7 +1256,7 @@ ov93_0225CFC0: ; 0x0225CFC0
 	ldr r3, _0225D060 ; =0x00000FA4
 	add r0, sp, #0xc
 	lsl r1, r1, #0xc
-	bl sub_02023254
+	bl GF_Camera_InitFromTargetDistanceAndAngle
 	add r2, r4, #0
 	add r2, #0x9c
 	mov r0, #1
@@ -1264,13 +1264,13 @@ ov93_0225CFC0: ; 0x0225CFC0
 	ldr r2, [r2]
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	add r0, r4, #0
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_0202313C
+	bl GF_Camera_RegisterToStaticPtr
 	mov r0, #0x75
-	bl sub_02023114
+	bl GF_Camera_Create
 	add r1, r4, #0
 	add r1, #0xa0
 	str r0, [r1]
@@ -1287,14 +1287,14 @@ ov93_0225CFC0: ; 0x0225CFC0
 	ldr r3, _0225D060 ; =0x00000FA4
 	add r0, sp, #0xc
 	lsl r1, r1, #0x10
-	bl sub_02023254
+	bl GF_Camera_InitFromTargetDistanceAndAngle
 	add r4, #0xa0
 	mov r0, #1
 	mov r1, #0xe1
 	ldr r2, [r4]
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	add sp, #0x18
 	pop {r4, pc}
 	nop
@@ -1362,7 +1362,7 @@ ov93_0225D07C: ; 0x0225D07C
 	add r0, r4, #0
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_0202313C
+	bl GF_Camera_RegisterToStaticPtr
 	add r1, r4, #0
 	add r1, #0x9c
 	ldr r1, [r1]
@@ -2043,7 +2043,7 @@ ov93_0225D674: ; 0x0225D674
 	mov r1, #0xe1
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	mov r0, #0xd5
 	mov r1, #0
 	mov r2, #0x75
@@ -4919,7 +4919,7 @@ ov93_0225EC98: ; 0x0225EC98
 	str r0, [r5]
 	bl NNS_G3dGetTex
 	str r0, [r5, #4]
-	bl sub_0201F668
+	bl AllocAndLoad3dTexResources
 	ldr r6, [r5, #4]
 	ldrh r0, [r6, #0x30]
 	ldr r7, [r6, #0x38]

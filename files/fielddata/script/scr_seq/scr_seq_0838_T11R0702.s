@@ -234,7 +234,7 @@ _03AC:
 	end
 
 _03B2:
-	scrcmd_647 VAR_SPECIAL_x8000, SPECIES_ROTOM
+	get_party_slot_with_species VAR_SPECIAL_x8000, SPECIES_ROTOM
 	goto _0434
 	.byte 0x02, 0x00
 _03C0:
@@ -294,7 +294,7 @@ _04BE:
 	.byte 0x02, 0x00
 _04CC:
 	nop_var_490 VAR_TEMP_x4005
-	get_lead_mon_index VAR_TEMP_x4000
+	get_party_lead_alive VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 479
 	goto_if_ne _050C
@@ -313,7 +313,7 @@ _050C:
 	.byte 0x02, 0x00
 _051C:
 	nop_var_490 VAR_TEMP_x4007
-	get_lead_mon_index VAR_TEMP_x4000
+	get_party_lead_alive VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 479
 	goto_if_ne _0564
@@ -347,14 +347,14 @@ _058A:
 	wait_fade
 	compare VAR_SPECIAL_x8002, 4
 	goto_if_eq _0628
-	scrcmd_398 VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000, VAR_SPECIAL_x8002
+	mon_get_move VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000, VAR_SPECIAL_x8002
 	buffer_move_name 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0538_T11R0702_00003
 	getmenuchoice VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0649
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
-	scrcmd_398 VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000, VAR_SPECIAL_x8002
+	mon_get_move VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000, VAR_SPECIAL_x8002
 	buffer_move_name 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0538_T11R0702_00004
 	play_se SEQ_SE_DP_KON

@@ -25,7 +25,7 @@ sub_0205AC88: ; 0x0205AC88
 	ldr r0, _0205ACF8 ; =sub_0205AD60
 	add r1, r4, #0
 	mov r2, #0xb
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4, #4]
 	add r0, r5, #0
 	bl sub_0205A1F0
@@ -102,7 +102,7 @@ sub_0205AD3C: ; 0x0205AD3C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, _0205AD5C ; =0x000004DC
 	ldr r0, [r4, r0]
 	bl sub_0205B3CC

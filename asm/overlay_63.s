@@ -352,7 +352,7 @@ ov63_0221C068: ; 0x0221C068
 	mov r2, #1
 	mov r1, #0
 	lsl r2, r2, #0x16
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	add sp, #0x4c
 	pop {r3, r4, r5, r6, pc}
 	nop
@@ -692,7 +692,7 @@ ov63_0221C368: ; 0x0221C368
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r4, #0
 	bl ov63_0221CE7C
 	add r0, r4, #0
@@ -962,7 +962,7 @@ ov63_0221C5A0: ; 0x0221C5A0
 	b _0221C606
 _0221C5B6:
 	ldr r0, [r4, #4]
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r4, #0
 	add r0, #0xfc
 	ldr r0, [r0]
@@ -1349,7 +1349,7 @@ ov63_0221C8E8: ; 0x0221C8E8
 	add r0, sp, #8
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_02070124
+	bl GetPokemonSpriteCharAndPlttNarcIds
 	cmp r6, #2
 	bne _0221C904
 	add r4, #0x6c
@@ -4364,7 +4364,7 @@ _0221E1F2:
 	add r0, sp, #0x40
 	add r1, r4, #0
 	mov r2, #2
-	bl sub_02070124
+	bl GetPokemonSpriteCharAndPlttNarcIds
 	add r0, r5, #0
 	add r0, #0x6c
 	str r0, [sp]
@@ -4404,7 +4404,7 @@ _0221E1F2:
 	add r0, sp, #0x40
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_02070124
+	bl GetPokemonSpriteCharAndPlttNarcIds
 	ldr r0, _0221E308 ; =0x0000196C
 	add r1, sp, #0x20
 	add r0, r5, r0
@@ -4711,7 +4711,7 @@ _0221E4C6:
 	ldr r0, _0221E4DC ; =ov63_0221E4E0
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0221E4D4: .word 0x0000328C
@@ -4775,7 +4775,7 @@ _0221E548:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -5072,7 +5072,7 @@ _0221E782:
 	mov r0, #3
 	tst r0, r1
 	bne _0221E79C
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _0221E874
 _0221E79C:
@@ -6213,7 +6213,7 @@ ov63_0221F130: ; 0x0221F130
 	sub sp, #0x18
 	add r4, r0, #0
 	mov r0, #0x3e
-	bl sub_02023114
+	bl GF_Camera_Create
 	add r1, r4, #0
 	add r1, #0xe0
 	str r0, [r1]
@@ -6250,7 +6250,7 @@ ov63_0221F130: ; 0x0221F130
 	add r0, #0xe4
 	lsl r1, r1, #0xc
 	add r2, #0xf0
-	bl sub_02023254
+	bl GF_Camera_InitFromTargetDistanceAndAngle
 	mov r1, #0
 	mov r0, #1
 	lsl r0, r0, #0xc
@@ -6261,18 +6261,18 @@ ov63_0221F130: ; 0x0221F130
 	add r1, #0xe0
 	ldr r1, [r1]
 	add r0, sp, #0xc
-	bl sub_02023204
+	bl GF_Camera_SetBindTarget
 	add r0, r4, #0
 	add r0, #0xe0
 	ldr r0, [r0]
-	bl sub_0202313C
+	bl GF_Camera_RegisterToStaticPtr
 	add r4, #0xe0
 	mov r0, #1
 	mov r1, #0x7d
 	ldr r2, [r4]
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	add sp, #0x18
 	pop {r4, pc}
 	nop
@@ -6407,7 +6407,7 @@ _0221F2C8:
 	ldr r2, [r1]
 	sub r2, r2, #1
 	str r2, [r1]
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r4, pc}
 	nop
 _0221F2D8: .word _022203C0
@@ -6438,7 +6438,7 @@ _0221F30A:
 	ldr r2, [r1]
 	sub r2, r2, #1
 	str r2, [r1]
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r4, pc}
 	.balign 4, 0
 _0221F318: .word _022203C0
@@ -6721,7 +6721,7 @@ _0221F552:
 	ldr r2, [r1]
 	sub r2, r2, #1
 	str r2, [r1]
-	bl sub_0200E390
+	bl DestroySysTask
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -7006,7 +7006,7 @@ _0221F784:
 	str r1, [r0]
 	ldr r0, _0221F7C0 ; =ov63_0221F7EC
 	ldr r1, [sp, #0x28]
-	bl sub_0200E320
+	bl CreateSysTask
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -7027,7 +7027,7 @@ ov63_0221F7C4: ; 0x0221F7C4
 	bl sub_0201F988
 	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0221F7D8:
 	pop {r4, pc}
 	.balign 4, 0

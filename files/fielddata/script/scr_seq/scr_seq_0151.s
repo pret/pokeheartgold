@@ -144,7 +144,7 @@ _01B0:
 	compare VAR_SPECIAL_x8004, 1
 	goto_if_eq _021A
 _01D4:
-	get_lead_mon_index VAR_SPECIAL_RESULT
+	get_party_lead_alive VAR_SPECIAL_RESULT
 	bufferpartymonnick 0, VAR_SPECIAL_RESULT
 	npc_msg msg_0246_00010
 	touchscreen_menu_hide

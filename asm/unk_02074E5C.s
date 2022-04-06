@@ -79,11 +79,11 @@ sub_02074E5C: ; 0x02074E5C
 	ldr r0, _02074EBC ; =sub_02075434
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r0, _02074EC0 ; =sub_020754C0
 	add r1, r6, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 _02074EB6:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -986,7 +986,7 @@ _020754B0:
 	add r0, r5, #0
 	bl FreeToHeap
 	ldr r0, [sp]
-	bl sub_0200E390
+	bl DestroySysTask
 _020754BC:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1046,7 +1046,7 @@ _02075526:
 	add r0, r5, #0
 	bl FreeToHeap
 	ldr r0, [sp]
-	bl sub_0200E390
+	bl DestroySysTask
 _02075532:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_020754C0

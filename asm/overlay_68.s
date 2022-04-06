@@ -829,7 +829,7 @@ _021E5FC2:
 	cmp r5, r0
 	b _021E604E
 _021E5FC8:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	ldr r0, [r4]
 	bne _021E5FF6
@@ -900,7 +900,7 @@ ov68_021E6058: ; 0x021E6058
 	add r4, r0, #0
 	ldr r0, _021E6074 ; =0x000001B9
 	ldrb r0, [r4, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021E6070
 	mov r0, #0x1b
@@ -3112,7 +3112,7 @@ ov68_021E71C4: ; 0x021E71C4
 	strh r0, [r1, #4]
 	strh r0, [r1, #6]
 	add r0, r2, #0
-	bl sub_02023114
+	bl GF_Camera_Create
 	str r0, [r4]
 	mov r1, #1
 	str r1, [sp]
@@ -3127,11 +3127,11 @@ ov68_021E71C4: ; 0x021E71C4
 	ldr r2, [r4]
 	mov r0, #0
 	lsl r1, r1, #0xe
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	ldr r0, [r4]
 	bl sub_02023234
 	ldr r0, [r4]
-	bl sub_0202313C
+	bl GF_Camera_RegisterToStaticPtr
 	add sp, #0x1c
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -3151,7 +3151,7 @@ ov68_021E7224: ; 0x021E7224
 	add r0, sp, #0x10
 	add r1, r4, #0
 	mov r2, #2
-	bl sub_02070124
+	bl GetPokemonSpriteCharAndPlttNarcIds
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]

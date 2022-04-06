@@ -5,7 +5,7 @@ u32 Sav2_SealCase_sizeof(void) {
 }
 
 void Sav2_SealCase_init(SEALCASE *sealCase) {
-    MI_CpuFill8(sealCase, 0, Sav2_SealCase_sizeof());
+    MI_CpuClear8(sealCase, Sav2_SealCase_sizeof());
 }
 
 void CopyCapsule(const CAPSULE *src, CAPSULE *dest) {

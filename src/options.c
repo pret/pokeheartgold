@@ -13,7 +13,7 @@ void Options_copy(OPTIONS* src, OPTIONS* dest) {
 }
 
 void Options_init(OPTIONS* options) {
-    MI_CpuFill8(options, 0, sizeof(OPTIONS));
+    MI_CpuClear8(options, sizeof(OPTIONS));
 
     options->textSpeed = 1;   // mid speed
     options->soundMethod = 0; // stereo

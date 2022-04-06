@@ -3,8 +3,8 @@
 
 	.text
 
-	thumb_func_start sub_0200E320
-sub_0200E320: ; 0x0200E320
+	thumb_func_start CreateSysTask
+CreateSysTask: ; 0x0200E320
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, _0200E338 ; =gSystem
@@ -17,7 +17,7 @@ sub_0200E320: ; 0x0200E320
 	pop {r3, r4, r5, pc}
 	nop
 _0200E338: .word gSystem
-	thumb_func_end sub_0200E320
+	thumb_func_end CreateSysTask
 
 	thumb_func_start sub_0200E33C
 sub_0200E33C: ; 0x0200E33C
@@ -67,10 +67,10 @@ sub_0200E374: ; 0x0200E374
 _0200E38C: .word gSystem
 	thumb_func_end sub_0200E374
 
-	thumb_func_start sub_0200E390
-sub_0200E390: ; 0x0200E390
+	thumb_func_start DestroySysTask
+DestroySysTask: ; 0x0200E390
 	ldr r3, _0200E394 ; =sub_0201F954
 	bx r3
 	.balign 4, 0
 _0200E394: .word sub_0201F954
-	thumb_func_end sub_0200E390
+	thumb_func_end DestroySysTask
