@@ -6,8 +6,7 @@
 #include "constants/items.h"
 #include "move.h"
 
-BOOL CanUseItemOnPokemon(POKEMON * pokemon, u16 itemID, s32 moveIdx, HeapID heapID)
-{
+BOOL CanUseItemOnPokemon(POKEMON *pokemon, u16 itemID, s32 moveIdx, HeapID heapID) {
     int atkEv;
     int defEv;
     int speedEv;
@@ -15,7 +14,7 @@ BOOL CanUseItemOnPokemon(POKEMON * pokemon, u16 itemID, s32 moveIdx, HeapID heap
     int spDefEv;
     int hpEv;
 
-    ITEMDATA * itemData = LoadItemDataOrGfx(itemID, ITEMNARC_PARAM, heapID);
+    ITEMDATA *itemData = LoadItemDataOrGfx(itemID, ITEMNARC_PARAM, heapID);
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PARTY_USE) != 1) {
         FreeToHeap(itemData);
         return FALSE;
@@ -108,13 +107,11 @@ BOOL CanUseItemOnPokemon(POKEMON * pokemon, u16 itemID, s32 moveIdx, HeapID heap
                 FreeToHeap(itemData);
                 return TRUE;
             }
-        }
-        else if (dHpEv < 0) {
+        } else if (dHpEv < 0) {
             if (hpEv > 0) {
                 FreeToHeap(itemData);
                 return TRUE;
-            }
-            else if (CanItemModFriendship(pokemon, itemData) == TRUE) {
+            } else if (CanItemModFriendship(pokemon, itemData) == TRUE) {
                 FreeToHeap(itemData);
                 return TRUE;
             }
@@ -128,13 +125,11 @@ BOOL CanUseItemOnPokemon(POKEMON * pokemon, u16 itemID, s32 moveIdx, HeapID heap
                 FreeToHeap(itemData);
                 return TRUE;
             }
-        }
-        else if (dAtkEv < 0) {
+        } else if (dAtkEv < 0) {
             if (atkEv > 0) {
                 FreeToHeap(itemData);
                 return TRUE;
-            }
-            else if (CanItemModFriendship(pokemon, itemData) == TRUE) {
+            } else if (CanItemModFriendship(pokemon, itemData) == TRUE) {
                 FreeToHeap(itemData);
                 return TRUE;
             }
@@ -148,13 +143,11 @@ BOOL CanUseItemOnPokemon(POKEMON * pokemon, u16 itemID, s32 moveIdx, HeapID heap
                 FreeToHeap(itemData);
                 return TRUE;
             }
-        }
-        else if (dDefEv < 0) {
+        } else if (dDefEv < 0) {
             if (defEv > 0) {
                 FreeToHeap(itemData);
                 return TRUE;
-            }
-            else if (CanItemModFriendship(pokemon, itemData) == TRUE) {
+            } else if (CanItemModFriendship(pokemon, itemData) == TRUE) {
                 FreeToHeap(itemData);
                 return TRUE;
             }
@@ -168,13 +161,11 @@ BOOL CanUseItemOnPokemon(POKEMON * pokemon, u16 itemID, s32 moveIdx, HeapID heap
                 FreeToHeap(itemData);
                 return TRUE;
             }
-        }
-        else if (dSpeedEv < 0) {
+        } else if (dSpeedEv < 0) {
             if (speedEv > 0) {
                 FreeToHeap(itemData);
                 return TRUE;
-            }
-            else if (CanItemModFriendship(pokemon, itemData) == TRUE) {
+            } else if (CanItemModFriendship(pokemon, itemData) == TRUE) {
                 FreeToHeap(itemData);
                 return TRUE;
             }
@@ -188,13 +179,11 @@ BOOL CanUseItemOnPokemon(POKEMON * pokemon, u16 itemID, s32 moveIdx, HeapID heap
                 FreeToHeap(itemData);
                 return TRUE;
             }
-        }
-        else if (dSpAtkEv < 0) {
+        } else if (dSpAtkEv < 0) {
             if (spAtkEv > 0) {
                 FreeToHeap(itemData);
                 return TRUE;
-            }
-            else if (CanItemModFriendship(pokemon, itemData) == TRUE) {
+            } else if (CanItemModFriendship(pokemon, itemData) == TRUE) {
                 FreeToHeap(itemData);
                 return TRUE;
             }
@@ -208,13 +197,11 @@ BOOL CanUseItemOnPokemon(POKEMON * pokemon, u16 itemID, s32 moveIdx, HeapID heap
                 FreeToHeap(itemData);
                 return TRUE;
             }
-        }
-        else if (dSpDefEv < 0) {
+        } else if (dSpDefEv < 0) {
             if (spDefEv > 0) {
                 FreeToHeap(itemData);
                 return TRUE;
-            }
-            else if (CanItemModFriendship(pokemon, itemData) == TRUE) {
+            } else if (CanItemModFriendship(pokemon, itemData) == TRUE) {
                 FreeToHeap(itemData);
                 return TRUE;
             }
@@ -291,8 +278,7 @@ BOOL UseItemOnPokemon(POKEMON *pokemon, u16 itemID, u16 moveIdx, u16 location, H
             hadEffect = TRUE;
         }
         effectFound = TRUE;
-    }
-    else if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_HP_RESTORE)) {
+    } else if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_HP_RESTORE)) {
         if (sp54 < sp58) {
             RestoreMonHPBy(pokemon, sp54, sp58, GetItemAttr_PreloadedItemData(itemData, ITEMATTR_HP_RESTORE_PARAM));
             hadEffect = TRUE;
@@ -323,8 +309,7 @@ BOOL UseItemOnPokemon(POKEMON *pokemon, u16 itemID, u16 moveIdx, u16 location, H
             hadEffect = TRUE;
         }
         effectFound = TRUE;
-    }
-    else if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PP_MAX)) {
+    } else if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PP_MAX)) {
         if (BoostMonMovePpUpBy(pokemon, moveIdx, 3) == TRUE) {
             hadEffect = TRUE;
         }
@@ -336,8 +321,7 @@ BOOL UseItemOnPokemon(POKEMON *pokemon, u16 itemID, u16 moveIdx, u16 location, H
             hadEffect = TRUE;
         }
         effectFound = TRUE;
-    }
-    else if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PP_RESTORE_ALL)) {
+    } else if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PP_RESTORE_ALL)) {
         sp54 = 0;
         for (; sp54 < MON_MOVES; sp54++) {
             if (MonMoveRestorePP(pokemon, sp54, GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PP_RESTORE_PARAM)) == 1) {
@@ -456,16 +440,14 @@ BOOL UseItemOnPokemon(POKEMON *pokemon, u16 itemID, u16 moveIdx, u16 location, H
             FreeToHeap(itemData);
             return hadEffect;
         }
-    }
-    else if (sp54 >= 100 && sp54 < 200) {
+    } else if (sp54 >= 100 && sp54 < 200) {
         if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_FRIENDSHIP_MOD_MED)) {
             ApplyItemEffectOnMonMood(pokemon, itemID);
             DoItemFriendshipMod(pokemon, sp54, GetItemAttr_PreloadedItemData(itemData, ITEMATTR_FRIENDSHIP_MOD_MED_PARAM), location, heapID);
             FreeToHeap(itemData);
             return hadEffect;
         }
-    }
-    else if (sp54 >= 200 && sp54 <= 255) {
+    } else if (sp54 >= 200 && sp54 <= 255) {
         if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_FRIENDSHIP_MOD_HI)) {
             ApplyItemEffectOnMonMood(pokemon, itemID);
             DoItemFriendshipMod(pokemon, sp54, GetItemAttr_PreloadedItemData(itemData, ITEMATTR_FRIENDSHIP_MOD_HI_PARAM), location, heapID);
@@ -515,8 +497,7 @@ BOOL MonMoveRestorePP(POKEMON *pokemon, int moveIdx, int ppRestore) {
     if (pp < maxPp) {
         if (ppRestore == PP_RESTORE_ALL) {
             pp = maxPp;
-        }
-        else {
+        } else {
             pp += ppRestore;
             if (pp > maxPp)
                 pp = maxPp;
@@ -547,8 +528,7 @@ BOOL BoostMonMovePpUpBy(POKEMON *pokemon, int moveIdx, int nPpUp) {
     u8 maxPp = WazaGetMaxPp(move, ppUp);
     if ((u32)(ppUp + nPpUp) > 3) {
         ppUp = 3;
-    }
-    else {
+    } else {
         ppUp = ppUp + nPpUp;
     }
     
@@ -564,21 +544,17 @@ void RestoreMonHPBy(POKEMON *pokemon, u32 hp, u32 maxHp, u32 restoration)
 {
     if (maxHp == 1) {
         restoration = 1;
-    }
-    else if (restoration == HP_RESTORE_ALL) {
+    } else if (restoration == HP_RESTORE_ALL) {
         restoration = maxHp;
-    }
-    else if (restoration == HP_RESTORE_HALF) {
+    } else if (restoration == HP_RESTORE_HALF) {
         restoration = maxHp / 2;
-    }
-    else if (restoration == HP_RESTORE_QTR) {
+    } else if (restoration == HP_RESTORE_QTR) {
         restoration = maxHp / 4;
     }
 
     if (hp + restoration > maxHp) {
         hp = maxHp;
-    }
-    else {
+    } else {
         hp = hp + restoration;
     }
 
@@ -602,8 +578,7 @@ s32 TryModEV(s32 ev, s32 evSum, s32 by)
     ev += by;
     if (ev > MAX_EV) {
         ev = MAX_EV;
-    }
-    else if (ev < 0) {
+    } else if (ev < 0) {
         ev = 0;
     }
 
