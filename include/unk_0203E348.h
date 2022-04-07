@@ -5,6 +5,7 @@
 #include "overlay_02.h"
 #include "bag.h"
 #include "mail.h"
+#include "fashion_case.h"
 
 struct UseMailWork;
 struct ApricornBoxWork;
@@ -36,6 +37,12 @@ struct ChooseStarterAppData {
     POKEMON starters[3];
 };
 
+struct DressupSomethingAppData {
+    SaveDressupData *dressupData;
+    int unk_4;
+    int unk_8;
+};
+
 struct UseMailWork *CreateUseMailWork(FieldSystem *fsys, int kind, int mailId, HeapID heapId);
 struct ApricornBoxWork *CreateApricornBoxWork(FieldSystem *fsys, int a1);
 struct PalPadWork *CreatePalPadWork(FieldSystem *fsys, SAVEDATA *saveData, HeapID heapId);
@@ -48,11 +55,14 @@ void *sub_0203E6D4(TaskManager *taskManager, HeapID heapId);
 int sub_0203E5C8(struct PartyMenuAppData *partyWork);
 void sub_0203F570(FieldSystem *fsys, SAVEDATA *saveData);
 UnkStruct_Ov02_0224E4EC* sub_0203EB64(FieldSystem *fsys);
+void sub_0203F964(FieldSystem *fsys);
 void FieldSys_LaunchChooseStarterApplication(FieldSystem *fsys, struct ChooseStarterAppData *data);
 void Save_CurrentLocation_BackUp(SAVEDATA *saveData);
 u16 sub_0203E864(void *a0);
 u16 sub_0203E600(void *a0);
 void *sub_0203E7F4(HeapID heapId, FieldSystem *fsys, u8 a2, u16 a3);
 void *sub_0203FB94(HeapID heapId, FieldSystem *fsys, u16 a2, u16 a3);
+void sub_0203F198(TaskManager *taskManager, u16 *ret_p, SAVEDATA *saveData, u16 a3, u16 a4);
+void sub_0203F204(FieldSystem *fsys, struct DressupSomethingAppData *data);
 
 #endif //POKEHEARTGOLD_UNK_0203E348_H

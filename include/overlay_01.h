@@ -70,5 +70,6 @@ BOOL ov01_022055DC(LocalMapObject *object);
 void ov01_02205604(LocalMapObject *object, int *p_x, int *p_y);
 void ov01_021FF0E4(LocalMapObject *object, int a1, int x, int y, int a4);
 void ov01_021FF964(LocalMapObject *object, int a1, int x, int y, int a4);
+void ov01_021F729C(FieldSystem *fsys);
 
 #endif //POKEHEARTGOLD_OVERLAY_01_H
