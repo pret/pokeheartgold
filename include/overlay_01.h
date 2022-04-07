@@ -64,5 +64,6 @@ void ov01_021EF018(struct UnkStruct_ov01_021EDC28 *menu, u8 a1);
 void ov01_021EF034(struct UnkStruct_ov01_021EDC28 *menu, u8 a1);
 void MoveTutorMenu_SetListItem(struct UnkStruct_ov01_021EDC28 *menu, u8 a1, u8 a2, u8 a3);
 void ov01_021F7704(LocalMapObject *object);
+void ov01_021F62E8(VecFx32 *vec, FsysUnkSub2C *a1);
 
 #endif //POKEHEARTGOLD_OVERLAY_01_H

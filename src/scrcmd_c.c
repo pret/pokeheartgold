@@ -13,6 +13,8 @@
 #include "unk_02062108.h"
 #include "field_map_object.h"
 #include "field_follow_poke.h"
+#include "map_events.h"
+#include "unk_0205FD20.h"
 
 BOOL sub_020416E4(SCRIPTCONTEXT *ctx);
 LocalMapObject *sub_02041C70(FieldSystem *fsys, u16 person);
@@ -1094,7 +1096,7 @@ LocalMapObject *sub_02041C70(FieldSystem *fsys, u16 person) {
     if (person == 0xF2) {
         return sub_0205EEB4(fsys->mapObjectMan, 0x30);
     } else if (person == 0xF1) {
-        LocalMapObject **attr = FieldSysGetAttrAddr(fsys, SCRIPTENV_30);
+        LocalMapObject **attr = FieldSysGetAttrAddr(fsys, SCRIPTENV_CAMERA_FOCUS_OBJ);
         return *attr;
     } else {
         return GetMapObjectByID(fsys->mapObjectMan, person);
@@ -1276,4 +1278,96 @@ BOOL ScrCmd_LockLastTalked(SCRIPTCONTEXT *ctx) {
 
     SetupNativeScript(ctx, _WaitMovementPauseBeforeMsg);
     return TRUE;
+}
+
+BOOL ScrCmd_ReleaseAll(SCRIPTCONTEXT *ctx) {
+    MapObjectMan_UnpauseAllMovement(ctx->fsys->mapObjectMan);
+    return TRUE;
+}
+
+BOOL ScrCmd_098(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 objectId = ScriptReadHalfword(ctx);
+    LocalMapObject *object = GetMapObjectByID(fsys->mapObjectMan, objectId);
+    if (object != NULL) {
+        MapObject_PauseMovement(object);
+    } else {
+        GF_ASSERT(objectId == obj_partner_poke);
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_099(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 objectId = ScriptReadHalfword(ctx);
+    LocalMapObject *object = GetMapObjectByID(fsys->mapObjectMan, objectId);
+    if (object != NULL) {
+        MapObject_UnpauseMovement(object);
+    } else {
+        GF_ASSERT(objectId == obj_partner_poke);
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_ShowPerson(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 objectId = ScriptGetVar(ctx);
+    u32 nobjs = Field_GetNumObjectEvents(fsys);
+    const OBJECT_EVENT *objectEvents = Field_GetObjectEvents(fsys);
+    GF_ASSERT(CreateMapObjectFromTemplate(fsys->mapObjectMan, objectId, nobjs, fsys->location->mapId, objectEvents));
+    return FALSE;
+}
+
+BOOL ScrCmd_HidePerson(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 objectId = ScriptGetVar(ctx);
+    LocalMapObject *object = GetMapObjectByID(fsys->mapObjectMan, objectId);
+    if (object == NULL) {
+        GF_ASSERT(0);
+    } else {
+        DeleteMapObject(object);
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_102(SCRIPTCONTEXT *ctx) {
+    u16 x = ScriptGetVar(ctx);
+    u16 y = ScriptGetVar(ctx);
+    LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_CAMERA_FOCUS_OBJ);
+    VecFx32 *pos;
+    *p_cameraObj = CreateSpecialFieldObject(ctx->fsys->mapObjectMan, x, y, 0, SPRITE_CAMERA_FOCUS, 0, ctx->fsys->location->mapId);
+    sub_02061070(*p_cameraObj);
+    sub_0205F690(*p_cameraObj, TRUE);
+    sub_0205F6AC(*p_cameraObj, FALSE);
+    pos = MapObject_GetPositionVecPtr(*p_cameraObj);
+    ov01_021F62E8(pos, ctx->fsys->unk2C);
+    sub_02023214(pos, ctx->fsys->camera);
+    return FALSE;
+}
+
+BOOL ScrCmd_103(SCRIPTCONTEXT *ctx) {
+    LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_CAMERA_FOCUS_OBJ);
+    VecFx32 *pos;
+    MapObject_Remove(*p_cameraObj);
+    pos = MapObject_GetPositionVecPtr(GetMapObjectByID(ctx->fsys->mapObjectMan, obj_player));
+    ov01_021F62E8(pos, ctx->fsys->unk2C);
+    sub_02023214(pos, ctx->fsys->camera);
+    return FALSE;
+}
+
+BOOL ScrCmd_678(SCRIPTCONTEXT *ctx) {
+    u16 x = ScriptGetVar(ctx);
+    u16 y = ScriptGetVar(ctx);
+    LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_CAMERA_FOCUS_OBJ);
+    *p_cameraObj = CreateSpecialFieldObject(ctx->fsys->mapObjectMan, x, y, 0, SPRITE_CAMERA_FOCUS, 0, ctx->fsys->location->mapId);
+    sub_02061070(*p_cameraObj);
+    sub_0205F690(*p_cameraObj, TRUE);
+    sub_0205F6AC(*p_cameraObj, FALSE);
+    return FALSE;
+}
+
+BOOL ScrCmd_679(SCRIPTCONTEXT *ctx) {
+    LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_CAMERA_FOCUS_OBJ);
+    MapObject_Remove(*p_cameraObj);
+    return FALSE;
 }

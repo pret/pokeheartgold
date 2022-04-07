@@ -320,8 +320,8 @@ CreateSpecialFieldObjectEx: ; 0x0205E2B4
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end CreateSpecialFieldObjectEx
 
-	thumb_func_start sub_0205E34C
-sub_0205E34C: ; 0x0205E34C
+	thumb_func_start CreateMapObjectFromTemplate
+CreateMapObjectFromTemplate: ; 0x0205E34C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, r1, #0
@@ -350,7 +350,7 @@ sub_0205E34C: ; 0x0205E34C
 _0205E388:
 	add r0, r6, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0205E34C
+	thumb_func_end CreateMapObjectFromTemplate
 
 	thumb_func_start sub_0205E38C
 sub_0205E38C: ; 0x0205E38C

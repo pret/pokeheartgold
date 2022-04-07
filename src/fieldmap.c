@@ -240,8 +240,8 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *unk, enum ScriptEnvField fi
         return &unk->facingDirection;
     case SCRIPTENV_LAST_TALKED:
         return &unk->lastTalked;
-    case SCRIPTENV_30:
-        return &unk->unk_30;
+    case SCRIPTENV_CAMERA_FOCUS_OBJ:
+        return &unk->cameraFocusObj;
     case SCRIPTENV_34:
         return &unk->unk_34;
     case SCRIPTENV_SCRCTX_0:

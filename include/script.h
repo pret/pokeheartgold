@@ -15,6 +15,7 @@
 #include "unk_0200E320.h"
 #include "list_menu_2.h"
 #include "unk_0200E398.h"
+#include "unk_02022D74.h"
 
 #define SCRIPT_MODE_STOPPED  0
 #define SCRIPT_MODE_BYTECODE 1
@@ -42,6 +43,7 @@ typedef struct EngagedTrainer {
 } EngagedTrainer;
 
 typedef struct _NPC_TRADE_WORK NPC_TRADE_WORK;
+typedef struct FsysUnkSub2C FsysUnkSub2C;
 
 typedef struct ScriptEnvironment {
     u32 check;
@@ -58,8 +60,8 @@ typedef struct ScriptEnvironment {
     struct ListMenu2 *listMenu;
     int facingDirection;
     LocalMapObject* lastTalked;
-    u32 unk_30;
-    void* unk_34;
+    u32 cameraFocusObj;
+    LocalMapObject* unk_34;
     SCRIPTCONTEXT* scriptContexts[3];
     MSGFMT* msgfmt;
     STRING* strbuf1;
@@ -89,7 +91,7 @@ enum ScriptEnvField {
     SCRIPTENV_SCRIPT                          =  8,
     SCRIPTENV_FACING_DIRECTION                =  9,
     SCRIPTENV_LAST_TALKED                     = 10,
-    SCRIPTENV_30                              = 11,
+    SCRIPTENV_CAMERA_FOCUS_OBJ                = 11,
     SCRIPTENV_34                              = 12,
     SCRIPTENV_SCRCTX_0                        = 13,
     SCRIPTENV_SCRCTX_1                        = 14,
@@ -237,7 +239,9 @@ struct FieldSystem {
     int unk18;
     int unk1C;
     Location* location;
-    u8 filler24[0xC];
+    GF_Camera *camera;
+    u8 filler28[0x4];
+    FsysUnkSub2C *unk2C;
     MAPMATRIX* map_matrix;
     u8 filler34[0x8];
     MapObjectMan* mapObjectMan;

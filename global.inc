@@ -29382,7 +29382,7 @@
 .public sub_0205E0BC
 .public sub_0205E0E8
 .public sub_0205E104
-.public sub_0205E34C
+.public CreateMapObjectFromTemplate
 .public sub_0205E38C
 .public sub_0205E3AC
 .public sub_0205E420
