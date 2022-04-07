@@ -106,5 +106,6 @@ int MapObject_GetCurrentY(LocalMapObject *object);
 BOOL CreateMapObjectFromTemplate(MapObjectMan *mapObjectMan, u16 objectId, u32 numObjects, u32 mapId, const OBJECT_EVENT *templates);
 VecFx32 *MapObject_GetPositionVecPtr(LocalMapObject *object);
 void MapObject_Remove(LocalMapObject *object);
+u32 MapObject_GetFacingDirection(LocalMapObject *object);
 
 #endif //POKEHEARTGOLD_FIELD_MAP_OBJECT_H

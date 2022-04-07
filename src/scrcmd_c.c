@@ -15,6 +15,8 @@
 #include "field_follow_poke.h"
 #include "map_events.h"
 #include "unk_0205FD20.h"
+#include "unk_02054648.h"
+#include "unk_0205B6E8.h"
 
 BOOL sub_020416E4(SCRIPTCONTEXT *ctx);
 LocalMapObject *sub_02041C70(FieldSystem *fsys, u16 person);
@@ -1369,5 +1371,45 @@ BOOL ScrCmd_678(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_679(SCRIPTCONTEXT *ctx) {
     LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_CAMERA_FOCUS_OBJ);
     MapObject_Remove(*p_cameraObj);
+    return FALSE;
+}
+
+BOOL ScrCmd_FacePlayer(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u32 rvsDir = sub_020611F4(PlayerAvatar_GetFacingDirection(fsys->playerAvatar));
+    LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_TALKED);
+    u32 oldDir;
+    int x, y;
+    int metatile;
+
+    if (*p_lastTalked == NULL) {
+        return FALSE;
+    }
+    oldDir = MapObject_GetFacingDirection(*p_lastTalked);
+    ov01_021F9408(*p_lastTalked, rvsDir);
+    if (MapObject_GetID(*p_lastTalked) == obj_partner_poke) {
+        if (ov01_022055DC(*p_lastTalked) && oldDir != rvsDir) {
+            ov01_02205604(*p_lastTalked, &x, &y);
+            metatile = GetMetatileBehaviorAt(fsys, x, y);
+            if (rvsDir == 2 || rvsDir == 3) {
+                if (sub_0205B6E8(metatile) == TRUE) {
+                    ov01_021FF0E4(*p_lastTalked, 0, x, y, 1);
+                } else if (sub_0205B6F4(metatile) == TRUE) {
+                    ov01_021FF964(*p_lastTalked, 0, x, y, 1);
+                }
+            }
+            if (sub_0205B6E8(metatile) == FALSE
+             && sub_0205B6F4(metatile) == FALSE
+             && sub_02060E54(*p_lastTalked, metatile) == FALSE
+             && sub_0205B984(metatile) == FALSE
+             && sub_0205B7A4(metatile) == FALSE
+             && sub_02060EBC(*p_lastTalked, metatile) == FALSE
+             && sub_0205B8AC(metatile) == FALSE
+             && sub_0205BA70(metatile) == FALSE
+            ) {
+                MapObject_ClearBits(*p_lastTalked, 0x100000);
+            }
+        }
+    }
     return FALSE;
 }
