@@ -26,7 +26,8 @@ struct PartyMenuAppData {
     u8 filler_26[0xA];
     u8 unk_30;
     u8 unk_31;
-    u8 filler_32[0x12];
+    u8 unk_32;
+    u8 filler_33[0x11];
 };
 
 struct ChooseStarterAppData {
@@ -49,5 +50,9 @@ void sub_0203F570(FieldSystem *fsys, SAVEDATA *saveData);
 UnkStruct_Ov02_0224E4EC* sub_0203EB64(FieldSystem *fsys);
 void FieldSys_LaunchChooseStarterApplication(FieldSystem *fsys, struct ChooseStarterAppData *data);
 void Save_CurrentLocation_BackUp(SAVEDATA *saveData);
+u16 sub_0203E864(void *a0);
+u16 sub_0203E600(void *a0);
+void *sub_0203E7F4(HeapID heapId, FieldSystem *fsys, u8 a2, u16 a3);
+void *sub_0203FB94(HeapID heapId, FieldSystem *fsys, u16 a2, u16 a3);
 
 #endif //POKEHEARTGOLD_UNK_0203E348_H

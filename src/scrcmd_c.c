@@ -18,6 +18,11 @@
 #include "unk_02054648.h"
 #include "unk_0205B6E8.h"
 #include "unk_0203E348.h"
+#include "unk_02055418.h"
+#include "unk_020932A4.h"
+#include "save_flypoints.h"
+
+FS_EXTERN_OVERLAY(OVY_26);
 
 BOOL sub_020416E4(SCRIPTCONTEXT *ctx);
 BOOL ScrNative_WaitApplication(SCRIPTCONTEXT *ctx);
@@ -1557,4 +1562,111 @@ BOOL ScrCmd_635(SCRIPTCONTEXT *ctx) {
     FreeToHeap(*p_work);
     *p_work = NULL;
     return FALSE;
+}
+
+BOOL ScrCmd_639(SCRIPTCONTEXT *ctx) {
+    u16 *r5 = ScriptGetVarPointer(ctx);
+    u16 *sp0 = ScriptGetVarPointer(ctx);
+    u16 *r7 = ScriptGetVarPointer(ctx);
+    struct PartyMenuAppData **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    struct PartyMenuAppData *r4 = *p_work;
+    GF_ASSERT(r4 != NULL);
+    int r0 = sub_0203E5C8(*p_work);
+    if (r0 == 7) {
+        *r5 = 255;
+    } else if (r0 == 6) {
+        *r5 = r4->unk_30;
+        (*r5)--;
+        *sp0 = r4->unk_31;
+        (*sp0)--;
+        *r7 = r4->unk_32;
+        if (*r7 != 0) {
+            (*r7)--;
+        }
+    }
+    FreeToHeap(*p_work);
+    *p_work = NULL;
+    return FALSE;
+}
+
+BOOL ScrCmd_645(SCRIPTCONTEXT *ctx) {
+    u16 *r5 = ScriptGetVarPointer(ctx);
+    u16 *sp0 = ScriptGetVarPointer(ctx);
+    u16 *r7 = ScriptGetVarPointer(ctx);
+    struct PartyMenuAppData **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    struct PartyMenuAppData *r4 = *p_work;
+    GF_ASSERT(r4 != NULL);
+    int r0 = sub_0203E5C8(*p_work);
+    if (r0 == 7) {
+        *r5 = 255;
+    } else if (r0 == 6) {
+        *r5 = r4->unk_30;
+        (*r5)--;
+        *sp0 = r4->unk_31;
+        (*sp0)--;
+        *r7 = r4->unk_32;
+        if (*r7 != 0) {
+            (*r7)--;
+        }
+    }
+    FreeToHeap(*p_work);
+    *p_work = NULL;
+    return FALSE;
+}
+
+BOOL ScrCmd_GetMoveSelection(SCRIPTCONTEXT *ctx) {
+    u8 r6 = ScriptReadByte(ctx);
+    u16 *r5 = ScriptGetVarPointer(ctx);
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    GF_ASSERT(*p_work != NULL);
+    if (r6 == 1) {
+        *r5 = sub_0203E864(*p_work);
+    } else {
+        *r5 = sub_0203E600(*p_work);
+    }
+    FreeToHeap(*p_work);
+    *p_work = NULL;
+    return FALSE;
+}
+
+BOOL ScrCmd_ChooseMoveUI(SCRIPTCONTEXT *ctx) {
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    u8 r6 = ScriptReadByte(ctx);
+    u16 r7 = ScriptGetVar(ctx);
+    u16 r3 = ScriptGetVar(ctx);
+    if (r6 == 1) {
+        *p_work = sub_0203E7F4(32, ctx->fsys, r7, r3);
+    } else {
+        *p_work = sub_0203FB94(32, ctx->fsys, r7, r3);
+    }
+    SetupNativeScript(ctx, ScrNative_WaitApplication);
+    return TRUE;
+}
+
+BOOL ScrCmd_GetPhoneBookRematch(SCRIPTCONTEXT *ctx) {
+    u16 r4 = ScriptGetVar(ctx);
+    u16 *r6 = ScriptGetVarPointer(ctx);
+    struct PhoneBook *phoneBook = AllocAndReadPhoneBook(32);
+    HandleLoadOverlay(FS_OVERLAY_ID(OVY_26), OVY_LOAD_ASYNC);
+    *r6 = PhoneBookTrainerGetRematchInfo(r4, ctx->fsys->savedata, phoneBook, Field_GetTimeOfDayWildParam(ctx->fsys));
+    UnloadOverlayByID(FS_OVERLAY_ID(OVY_26));
+    FreePhoneBook(phoneBook);
+    return FALSE;
+}
+
+BOOL ScrCmd_684(SCRIPTCONTEXT *ctx) {
+    u16 *p_dest = ScriptGetVarPointer(ctx);
+    *p_dest = FlyPoints_GetWeatherType(Save_FlyPoints_get(ctx->fsys->savedata));
+    return FALSE;
+}
+
+BOOL ScrNative_WaitApplication_DestroyTaskData(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    void **p_work = FieldSysGetAttrAddr(fsys, SCRIPTENV_AC);
+    if (FieldSys_ApplicationIsRunning(fsys)) {
+        return FALSE;
+    }
+    FreeToHeap(*p_work);
+    *p_work = NULL;
+    return TRUE;
 }
