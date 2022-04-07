@@ -17,8 +17,10 @@
 #include "unk_0205FD20.h"
 #include "unk_02054648.h"
 #include "unk_0205B6E8.h"
+#include "unk_0203E348.h"
 
 BOOL sub_020416E4(SCRIPTCONTEXT *ctx);
+BOOL ScrNative_WaitApplication(SCRIPTCONTEXT *ctx);
 LocalMapObject *sub_02041C70(FieldSystem *fsys, u16 person);
 void _ScheduleObjectEventMovement(FieldSystem *fsys, EventObjectMovementMan *mvtMan, MovementScriptCommand *a2);
 
@@ -1411,5 +1413,148 @@ BOOL ScrCmd_FacePlayer(SCRIPTCONTEXT *ctx) {
             }
         }
     }
+    return FALSE;
+}
+
+BOOL ScrCmd_GetPlayerCoords(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 *p_x = ScriptGetVarPointer(ctx);
+    u16 *p_y = ScriptGetVarPointer(ctx);
+
+    *p_x = GetPlayerXCoord(fsys->playerAvatar);
+    *p_y = GetPlayerYCoord(fsys->playerAvatar);
+    return FALSE;
+}
+
+BOOL ScrCmd_GetPersonCoords(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 personId = ScriptGetVar(ctx);
+    LocalMapObject *object = GetMapObjectByID(fsys->mapObjectMan, personId);
+    u16 *p_x = ScriptGetVarPointer(ctx);
+    u16 *p_y = ScriptGetVarPointer(ctx);
+
+    if (object != NULL) {
+        *p_x = MapObject_GetCurrentX(object);
+        *p_y = MapObject_GetCurrentY(object);
+    } else {
+        *p_x = 255;
+        *p_y = 255;
+        GF_ASSERT(personId == obj_partner_poke);
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_GetPlayerFacing(SCRIPTCONTEXT *ctx) {
+    u16 *p_direction = ScriptGetVarPointer(ctx);
+    *p_direction = PlayerAvatar_GetFacingDirection(ctx->fsys->playerAvatar);
+    return FALSE;
+}
+
+BOOL ScrCmd_107(SCRIPTCONTEXT *ctx) {
+    VecFx32 shift_v;
+
+    u16 x = ScriptGetVar(ctx);
+    u16 y = ScriptGetVar(ctx);
+    u16 z = ScriptGetVar(ctx);
+
+    shift_v.x = FX32_CONST(x);
+    shift_v.y = FX32_CONST(y);
+    shift_v.z = FX32_CONST(z);
+
+    sub_0205F9A0(PlayerAvatar_GetMapObject(ctx->fsys->playerAvatar), &shift_v);
+    GF_Camera_ShiftBy(&shift_v, ctx->fsys->camera);
+    return FALSE;
+}
+
+BOOL ScrCmd_108(SCRIPTCONTEXT *ctx) {
+    u16 objectId = ScriptGetVar(ctx);
+    LocalMapObject *object = GetMapObjectByID(ctx->fsys->mapObjectMan, objectId);
+    u8 arg = ScriptReadByte(ctx);
+    sub_0205F79C(object, arg);
+    return FALSE;
+}
+
+BOOL ScrCmd_109(SCRIPTCONTEXT *ctx) {
+    u16 objectId = ScriptGetVar(ctx);
+    LocalMapObject *object = GetMapObjectByID(ctx->fsys->mapObjectMan, objectId);
+    u16 arg = ScriptReadHalfword(ctx);
+    if (object != NULL) {
+        sub_0205FC94(object, arg);
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_574(SCRIPTCONTEXT *ctx) {
+    u16 *p_dest = ScriptGetVarPointer(ctx);
+    *p_dest = 0;
+    u16 objectId = ScriptGetVar(ctx);
+    LocalMapObject *object = GetMapObjectByID(ctx->fsys->mapObjectMan, objectId);
+    if (object != NULL) {
+        *p_dest = MapObject_GetMovement(object);
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_136(SCRIPTCONTEXT *ctx) {
+    u16 partyIdx = ScriptGetVar(ctx);
+    u16 *p_dest = ScriptGetVarPointer(ctx);
+    *p_dest = GetMonUnownLetter(GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), partyIdx));
+    return FALSE;
+}
+
+BOOL ScrCmd_PartySelectUI(SCRIPTCONTEXT *ctx) {
+    struct PartyMenuAppData **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    *p_work = sub_0203E580(32, ctx->fsys);
+    SetupNativeScript(ctx, ScrNative_WaitApplication);
+    return TRUE;
+}
+
+BOOL ScrCmd_566(SCRIPTCONTEXT *ctx) {
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    *p_work = sub_0203E5A4(32, ctx->fsys);
+    SetupNativeScript(ctx, ScrNative_WaitApplication);
+    return TRUE;
+}
+
+BOOL ScrCmd_350(SCRIPTCONTEXT *ctx) {
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    *p_work = sub_0203E6D4(ctx->fsys->taskman, 32);
+    return TRUE;
+}
+
+BOOL ScrCmd_PartySelect(SCRIPTCONTEXT *ctx) {
+    u16 *dest_p = ScriptGetVarPointer(ctx);
+    struct PartyMenuAppData **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    GF_ASSERT(*p_work != NULL);
+    *dest_p = sub_0203E5C8(*p_work);
+    if (*dest_p == 7) {
+        *dest_p = 255;
+    }
+    FreeToHeap(*p_work);
+    *p_work = NULL;
+    return FALSE;
+}
+
+BOOL ScrCmd_635(SCRIPTCONTEXT *ctx) {
+    u16 *r5 = ScriptGetVarPointer(ctx);
+    u16 *r6 = ScriptGetVarPointer(ctx);
+    struct PartyMenuAppData **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    struct PartyMenuAppData *r7;
+    int r0;
+    r7 = *p_work;
+    GF_ASSERT(*p_work != NULL);
+    r0 = sub_0203E5C8(*p_work);
+    if (r0 == 7) {
+        *r5 = 255;
+    } else if (r0 == 6) {
+        *r5 = r7->unk_30;
+        (*r5)--;
+        *r6 = r7->unk_31;
+        if (*r6 != 0) {
+            (*r6)--;
+        }
+    }
+    FreeToHeap(*p_work);
+    *p_work = NULL;
     return FALSE;
 }

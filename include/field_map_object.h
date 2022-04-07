@@ -69,6 +69,7 @@ void DeleteMapObject(LocalMapObject *mapObject);
 LocalMapObject *sub_0205EEB4(MapObjectMan *arr, int a1);
 LocalMapObject *GetMapObjectByID(MapObjectMan *arr, int id);
 void sub_0205FC94(LocalMapObject *mapObject, int movement);
+int MapObject_GetMovement(LocalMapObject *mapObject);
 u32 MapObject_GetGfxID(LocalMapObject *mapObject);
 void MapObject_SetGfxID(LocalMapObject *mapObject, u32 spriteId);
 void sub_0205F6AC(LocalMapObject *mapObject, int a1);
@@ -107,5 +108,7 @@ BOOL CreateMapObjectFromTemplate(MapObjectMan *mapObjectMan, u16 objectId, u32 n
 VecFx32 *MapObject_GetPositionVecPtr(LocalMapObject *object);
 void MapObject_Remove(LocalMapObject *object);
 u32 MapObject_GetFacingDirection(LocalMapObject *object);
+void sub_0205F9A0(LocalMapObject *object, const VecFx32 *vec);
+void sub_0205F79C(LocalMapObject *object, u8 a1);
 
 #endif //POKEHEARTGOLD_FIELD_MAP_OBJECT_H
