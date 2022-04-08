@@ -4,5 +4,6 @@
 #include "script.h"
 
 BOOL sub_0205A478(struct UnkStruct_02059E1C *fsys);
+u32 sub_0205A894(void);
 
 #endif //POKEHEARTGOLD_UNK_0205A44C_H

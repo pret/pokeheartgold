@@ -198,7 +198,7 @@ BOOL ScrCmd_GetTrainerPathToPlayer(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_TrainerStepTowardsPlayer(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GetTrainerEyeType(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GetEyeTrainerNum(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_172(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_NamePlayer(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_NicknameInput(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_FadeScreen(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_WaitFade(SCRIPTCONTEXT* ctx);

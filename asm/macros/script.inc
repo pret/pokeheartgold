@@ -1012,7 +1012,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_172 arg0
+	.macro name_player arg0
 	.short 172
 	.short \arg0
 	.endm

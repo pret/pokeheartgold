@@ -29,6 +29,15 @@
 #include "unk_02055244.h"
 #include "fashion_case.h"
 #include "save_flypoints.h"
+#include "unk_0206B910.h"
+#include "pokegear.h"
+#include "unk_02068FC8.h"
+#include "unk_0205298C.h"
+#include "save_arrays.h"
+#include "unk_02037C94.h"
+#include "choose_starter.h"
+#include "unk_0206D494.h"
+#include "unk_0200FA24.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
 
@@ -1878,4 +1887,246 @@ BOOL ScrCmd_450(SCRIPTCONTEXT *ctx) {
     sub_0203F964(ctx->fsys);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
+}
+
+BOOL ScrCmd_156(SCRIPTCONTEXT *ctx) {
+    sub_0206B910(ctx->taskman, ctx->fsys->savedata);
+    return TRUE;
+}
+
+BOOL ScrCmd_TownMap(SCRIPTCONTEXT *ctx) {
+    TownMap **p_townMap = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    *p_townMap = TownMap_new(ctx->fsys, 1);
+    SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
+    return TRUE;
+}
+
+BOOL ScrCmd_408(SCRIPTCONTEXT *ctx) {
+    u16 r7 = ScriptGetVar(ctx);
+    u16 sp0 = ScriptGetVar(ctx);
+    struct UnkStruct_ScrCmd408 **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    *p_work = AllocFromHeap(11, sizeof(struct UnkStruct_ScrCmd408));
+    InitUnkStructScrCmd408(*p_work, r7, sp0, ctx);
+    sub_0203F0A8(ctx->fsys, *p_work);
+    SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
+    return TRUE;
+}
+
+BOOL ScrCmd_158(SCRIPTCONTEXT *ctx) {
+    struct UnkStruct_ScrCmd158 **p_work;
+
+    p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    *p_work = NewUnkStructScrCmd158(ctx);
+    sub_0203E868(ctx->fsys, *p_work);
+    SetupNativeScript(ctx, sub_020429A0);
+    return TRUE;
+}
+
+BOOL ScrCmd_159(SCRIPTCONTEXT *ctx) {
+    sub_0203F4C8(ctx->fsys);
+    SetupNativeScript(ctx, ScrNative_WaitApplication);
+    return TRUE;
+}
+
+BOOL ScrCmd_160(SCRIPTCONTEXT *ctx) {
+    sub_02069464(ctx->fsys);
+    return TRUE;
+}
+
+BOOL ScrCmd_161(SCRIPTCONTEXT *ctx) {
+    sub_0203F4A8(ctx->fsys->taskman);
+    return TRUE;
+}
+
+BOOL ScrCmd_162(SCRIPTCONTEXT *ctx) {
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    *p_work = sub_0203F4F8(ctx->fsys);
+    SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
+    return TRUE;
+}
+
+BOOL ScrCmd_HOF_Credits(SCRIPTCONTEXT *ctx) {
+    u16 kind = ScriptReadHalfword(ctx);
+    Special_EnterHallOfFame(ctx->fsys->taskman, kind);
+    return TRUE;
+}
+
+BOOL ScrCmd_164(SCRIPTCONTEXT *ctx) {
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    *p_work = sub_0203F984(ctx->fsys);
+    SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
+    return TRUE;
+}
+
+BOOL ScrCmd_706(SCRIPTCONTEXT *ctx) {
+    int saveOk;
+    HALL_OF_FAME *hof = LoadHallOfFame(ctx->fsys->savedata, 4, &saveOk);
+    u16 *p_var = ScriptGetVarPointer(ctx);
+    *p_var = 0;
+    if (saveOk == 2) {
+        *p_var = 1;
+    }
+    FreeToHeap(hof);
+    return FALSE;
+}
+
+BOOL ScrCmd_165(SCRIPTCONTEXT *ctx) {
+    u16 r6 = ScriptGetVar(ctx);
+    u16 *r4 = ScriptGetVarPointer(ctx);
+    if (sub_0203A05C(ctx->fsys->savedata)) {
+        *r4 = 1;
+        sub_0203F844(ctx->fsys, r6);
+        SetupNativeScript(ctx, ScrNative_WaitApplication);
+    } else {
+        *r4 = 0;
+    }
+    return TRUE;
+}
+
+BOOL ScrCmd_166(SCRIPTCONTEXT *ctx) {
+    u16 *var_p = ScriptGetVarPointer(ctx);
+    sub_02078B78(ctx->taskman, var_p);
+    return TRUE;
+}
+
+BOOL ScrCmd_ChooseStarter(SCRIPTCONTEXT *ctx) {
+    LaunchStarterChoiceScene(ctx->fsys);
+    return TRUE;
+}
+
+BOOL ScrCmd_333(SCRIPTCONTEXT *ctx) {
+    void **p_work;
+    u8 r4 = ScriptReadByte(ctx) != 0 ? 1 : 0;
+    p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    GF_ASSERT(*p_work == NULL);
+    *p_work = sub_0203E460(ctx->fsys, r4);
+    SetupNativeScript(ctx, ScrNative_WaitApplication);
+    return TRUE;
+}
+
+BOOL ScrCmd_334(SCRIPTCONTEXT *ctx) {
+    u16 *r5 = ScriptGetVarPointer(ctx);
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    GF_ASSERT(*p_work != NULL);
+    *r5 = sub_0203E4CC(*p_work);
+    FreeToHeap(*p_work);
+    *p_work = NULL;
+    return FALSE;
+}
+
+BOOL ScrCmd_370(SCRIPTCONTEXT *ctx) {
+    void **p_work;
+    u8 r4 = ScriptReadByte(ctx) != 0 ? 1 : 0;
+    p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    GF_ASSERT(*p_work == NULL);
+    *p_work = sub_0203E460(ctx->fsys, r4);
+    SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
+    return TRUE;
+}
+
+BOOL ScrCmd_NamePlayer(SCRIPTCONTEXT *ctx) {
+    u16 *p_var = ScriptGetVarPointer(ctx);
+    CreateNamingScreen(ctx->taskman, NAMINGSCREEN_PLAYER, 0, OT_NAME_LENGTH, 0, NULL, p_var);
+    return TRUE;
+}
+
+BOOL ScrCmd_NameRival(SCRIPTCONTEXT *ctx) {
+    u16 *p_var = ScriptGetVarPointer(ctx);
+    CreateNamingScreen(ctx->taskman, NAMINGSCREEN_RIVAL, 0, OT_NAME_LENGTH, 0, NULL, p_var);
+    return TRUE;
+}
+
+BOOL ScrCmd_NicknameInput(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 partyPos = ScriptGetVar(ctx);
+    BUGCONTEST *contest;
+    POKEMON *pokemon;
+    u16 nickname[20];
+    u16 *var_ret;
+    int species;
+
+    if (partyPos == 255) {
+        contest = FieldSys_BugContest_get(fsys);
+        if (!contest->caught_poke) {
+            return TRUE;
+        }
+        pokemon = contest->pokemon;
+    } else {
+        pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), partyPos);
+    }
+    GetMonData(pokemon, MON_DATA_NICKNAME, nickname);
+    var_ret = ScriptGetVarPointer(ctx);
+    species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+    CreateNamingScreen(ctx->taskman, NAMINGSCREEN_POKEMON, species, POKEMON_NAME_LENGTH, partyPos, nickname, var_ret);
+    return TRUE;
+}
+
+BOOL ScrCmd_629(SCRIPTCONTEXT *ctx) {
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    *p_work = sub_0209707C(ctx->fsys);
+    SetupNativeScript(ctx, sub_020429D4);
+    return TRUE;
+}
+
+BOOL ScrCmd_630(SCRIPTCONTEXT *ctx) {
+    u16 *ret_p = ScriptGetVarPointer(ctx);
+    u32 r5 = sub_0205A894();
+    u32 r0 = sub_02029084();
+    if (r5 == r0) {
+        *ret_p = FALSE;
+    } else {
+        *ret_p = TRUE;
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_492(SCRIPTCONTEXT *ctx) {
+    u16 r4 = ScriptGetVar(ctx);
+    u16 *r6 = ScriptGetVarPointer(ctx);
+    u16 *r3 = ScriptGetVarPointer(ctx);
+
+    *r3 = 0xFFFF;
+    sub_0203E960(ctx->fsys->taskman, r4, r6, r3, NULL);
+    return TRUE;
+}
+
+BOOL ScrCmd_PromptEasyChat(SCRIPTCONTEXT *ctx) {
+    u16 *r6 = ScriptGetVarPointer(ctx);
+    u16 *r4 = ScriptGetVarPointer(ctx);
+    u16 *r0 = ScriptGetVarPointer(ctx);
+
+    *r4 = 0xFFFF;
+    *r0 = 0xFFFF;
+    sub_0203E960(ctx->fsys->taskman, 1, r6, r4, r0);
+    return TRUE;
+}
+
+BOOL ScrCmd_494(SCRIPTCONTEXT *ctx) {
+    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    u16 idx = ScriptGetVar(ctx);
+    u16 word = ScriptGetVar(ctx);
+    BufferECWord(*p_msgFmt, idx, word);
+    return FALSE;
+}
+
+BOOL ScrCmd_FadeScreen(SCRIPTCONTEXT *ctx) {
+    u16 duration = ScriptReadHalfword(ctx);
+    u16 speed = ScriptReadHalfword(ctx);
+    u16 type = ScriptReadHalfword(ctx);
+    u16 color = ScriptReadHalfword(ctx);
+    BeginNormalPaletteFade(0, type, type, color, duration, speed, 4);
+    sub_0200FBDC(0);
+    sub_0200FBDC(1);
+    return FALSE;
+}
+
+BOOL sub_02043458(SCRIPTCONTEXT *ctx);
+
+BOOL ScrCmd_WaitFade(SCRIPTCONTEXT *ctx) {
+    SetupNativeScript(ctx, sub_02043458);
+    return TRUE;
+}
+
+BOOL sub_02043458(SCRIPTCONTEXT *ctx) {
+    return IsPaletteFadeFinished() == TRUE;
 }

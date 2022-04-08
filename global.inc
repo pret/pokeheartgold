@@ -2792,7 +2792,7 @@
 .public ScrCmd_164
 .public ScrCmd_165
 .public ScrCmd_166
-.public ScrCmd_172
+.public ScrCmd_NamePlayer
 .public ScrCmd_180
 .public ScrCmd_181
 .public ScrCmd_182
