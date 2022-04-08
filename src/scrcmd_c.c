@@ -38,6 +38,7 @@
 #include "choose_starter.h"
 #include "unk_0206D494.h"
 #include "unk_0200FA24.h"
+#include "field_warp_tasks.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
 
@@ -2129,4 +2130,14 @@ BOOL ScrCmd_WaitFade(SCRIPTCONTEXT *ctx) {
 
 BOOL sub_02043458(SCRIPTCONTEXT *ctx) {
     return IsPaletteFadeFinished() == TRUE;
+}
+
+BOOL ScrCmd_Warp(SCRIPTCONTEXT *ctx) {
+    u16 mapId = ScriptGetVar(ctx);
+    u16 unused = ScriptReadHalfword(ctx);
+    u16 x = ScriptGetVar(ctx);
+    u16 y = ScriptGetVar(ctx);
+    u16 direction = ScriptGetVar(ctx);
+    CallTask_ScriptWarp(ctx->taskman, mapId, -1, x, y, direction);
+    return TRUE;
 }

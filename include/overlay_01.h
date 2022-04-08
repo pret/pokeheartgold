@@ -7,7 +7,7 @@
 //todo: split
 
 struct ErrorContinueEnv {
-    int unk0;
+    int state;
     Location location;
 };
 

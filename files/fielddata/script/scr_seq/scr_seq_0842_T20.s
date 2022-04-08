@@ -1196,7 +1196,7 @@ _1078:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_T20R0102, 0, 12, 6, 2
+	warp MAP_T20R0102, 0, 12, 6, DIR_WEST
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	wait_se SEQ_SE_DP_KAIDAN2

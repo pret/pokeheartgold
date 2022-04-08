@@ -1145,7 +1145,7 @@ scr_seq_D35R0102_029:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	wait 15, VAR_SPECIAL_RESULT
-	warp MAP_D35R0102, 0, 50, 4, 2
+	warp MAP_D35R0102, 0, 50, 4, DIR_WEST
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

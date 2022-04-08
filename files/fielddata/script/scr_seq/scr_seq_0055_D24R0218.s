@@ -94,7 +94,7 @@ scr_seq_D24R0218_001:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D51R0201, 0, 16, 24, 1
+	warp MAP_D51R0201, 0, 16, 24, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
@@ -216,7 +216,7 @@ scr_seq_D24R0218_003:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D51R0201, 0, 16, 24, 1
+	warp MAP_D51R0201, 0, 16, 24, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

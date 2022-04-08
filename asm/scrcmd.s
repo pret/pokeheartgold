@@ -916,56 +916,6 @@ _021D4168:
 	.public sub_02042A30
 	.public sub_02042A60
 
-	thumb_func_start ScrCmd_Warp
-ScrCmd_Warp: ; 0x0204346C
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #8
-	add r5, r0, #0
-	bl ScriptReadHalfword
-	add r1, r0, #0
-	add r0, r5, #0
-	add r0, #0x80
-	ldr r0, [r0]
-	bl VarGet
-	add r6, r0, #0
-	add r0, r5, #0
-	bl ScriptReadHalfword
-	add r0, r5, #0
-	bl ScriptReadHalfword
-	add r1, r0, #0
-	add r0, r5, #0
-	add r0, #0x80
-	ldr r0, [r0]
-	bl VarGet
-	add r7, r0, #0
-	add r0, r5, #0
-	bl ScriptReadHalfword
-	add r1, r0, #0
-	add r0, r5, #0
-	add r0, #0x80
-	ldr r0, [r0]
-	bl VarGet
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ScriptReadHalfword
-	add r1, r0, #0
-	add r0, r5, #0
-	add r0, #0x80
-	ldr r0, [r0]
-	bl VarGet
-	str r4, [sp]
-	str r0, [sp, #4]
-	mov r2, #0
-	ldr r0, [r5, #0x74]
-	add r1, r6, #0
-	mvn r2, r2
-	add r3, r7, #0
-	bl sub_0205388C
-	mov r0, #1
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_Warp
-
 	thumb_func_start ScrCmd_448
 ScrCmd_448: ; 0x020434DC
 	push {r3, r4, r5, r6, r7, lr}

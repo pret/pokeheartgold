@@ -277,7 +277,7 @@ _03EA:
 	goto_if_ne _0467
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0216, 0, 15, 24, 2
+	warp MAP_D24R0216, 0, 15, 24, DIR_WEST
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0530
@@ -287,7 +287,7 @@ _0467:
 	goto_if_ne _049E
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0218, 0, 15, 24, 2
+	warp MAP_D24R0218, 0, 15, 24, DIR_WEST
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0530
@@ -297,7 +297,7 @@ _049E:
 	goto_if_ne _04D5
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0218, 0, 15, 24, 2
+	warp MAP_D24R0218, 0, 15, 24, DIR_WEST
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0530
@@ -307,7 +307,7 @@ _04D5:
 	goto_if_ne _050C
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0218, 0, 15, 24, 2
+	warp MAP_D24R0218, 0, 15, 24, DIR_WEST
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0530
@@ -315,7 +315,7 @@ _04D5:
 _050C:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0205, 0, 15, 24, 2
+	warp MAP_D24R0205, 0, 15, 24, DIR_WEST
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _0530:

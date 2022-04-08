@@ -159,7 +159,7 @@ _0234:
 _0268:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_T10R0701, 0, 6, 22, 0
+	warp MAP_T10R0701, 0, 6, 22, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

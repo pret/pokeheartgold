@@ -1099,7 +1099,7 @@
         2,
         "var",
         "var",
-        "var"
+        "direction"
       ]
     },
     {
@@ -5334,5 +5334,71 @@
         1
       ]
     }
-  ]
+  ],
+  "argtypes": {
+    "var":  {
+      "header":"include/constants/vars.h",
+      "prefix":"VAR_"
+    },
+    "flag": {
+      "header": "include/constants/flags.h",
+      "prefix": "FLAG_"
+    },
+    "species":  {
+      "header": "include/constants/species.h",
+      "prefix": "SPECIES_"
+    },
+    "item": {
+      "header": "include/constants/items.h",
+      "prefix": "ITEM_"
+    },
+    "move":  {
+      "header": "include/constants/moves.h",
+      "prefix": "MOVE_"
+    },
+    "sound": {
+      "header": "include/constants/sndseq.h",
+      "prefix": "SEQ_"
+    },
+    "ribbon":  {
+      "header": "include/constants/ribbon.h",
+      "prefix": "RIBBON_"
+    },
+    "stdscr": {
+      "header": "include/constants/std_script.h",
+      "prefix": "std_"
+    },
+    "trainer":  {
+      "header": "include/constants/trainers.h",
+      "prefix": "TRAINER_"
+    },
+    "sprites": {
+      "header": "include/constants/sprites.h",
+      "prefix": "SPRITE_"
+    },
+    "maps":  {
+      "header": "include/constants/maps.h",
+      "prefix": "MAP_"
+    },
+    "phone_contact": {
+      "header": "include/constants/phone_contacts.h",
+      "prefix": "PHONE_CONTACT_"
+    },
+    "spawn":  {
+      "header": "include/constants/spawns.h",
+      "prefix": "SPAWN_"
+    },
+    "badge": {
+      "header": "include/constants/badge.h",
+      "prefix": "BADGE_"
+    },
+    "player_transition":  {
+      "header": "include/constants/global.fieldmap.h",
+      "prefix": "PLAYER_TRANSITION_"
+    },
+    "direction": {
+      "header": "include/constants/global.fieldmap.h",
+      "prefix": "DIR_"
+    }
+  }
 }

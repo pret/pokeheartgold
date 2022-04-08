@@ -82,7 +82,7 @@ static BOOL sub_02053550(TaskManager *taskManager);
 static BOOL sub_02053688(TaskManager *taskManager);
 static void sub_02053710(TaskManager *taskManager, Location *location);
 static BOOL sub_02053740(TaskManager *taskManager);
-static BOOL sub_0205380C(TaskManager *taskManager);
+static BOOL Task_ScriptWarp(TaskManager *taskManager);
 static BOOL sub_02053950(TaskManager *taskManager);
 static void sub_020539D8(TaskManager *taskManager);
 static BOOL sub_020539E8(TaskManager *taskManager);
@@ -434,12 +434,12 @@ static BOOL sub_02053550(TaskManager *taskManager) {
         (*state_p)++;
         break;
     case 3:
-        env->unk0 = 0;
-        ov01_021F35C4(fsys, 0, &env->unk0);
+        env->state = 0;
+        ov01_021F35C4(fsys, 0, &env->state);
         (*state_p)++;
         break;
     case 4:
-        if (env->unk0) {
+        if (env->state) {
             (*state_p)++;
         }
         break;
@@ -464,7 +464,7 @@ TaskManager *CallFieldTask_ContinueGame_CommError(FieldSystem *fsys) {
         }
     }
     env = AllocFromHeapAtEnd(11, sizeof(struct ErrorContinueEnv));
-    env->unk0 = 00;
+    env->state = 00;
     env->location.mapId = MAP_UNION;
     env->location.warpId = -1;
     env->location.x = 8;
@@ -516,17 +516,17 @@ static BOOL sub_02053740(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     struct ErrorContinueEnv *env = TaskManager_GetEnv(taskManager);
 
-    switch (env->unk0) {
+    switch (env->state) {
     case 0:
         sub_02053210(fsys);
         sub_02053324(fsys);
-        env->unk0++;
+        env->state++;
         break;
     case 1:
         sub_02052F94(fsys, &env->location);
         sub_02053284(fsys);
         sub_02053038(fsys, FALSE);
-        env->unk0++;
+        env->state++;
         break;
     case 2:
         sub_0205316C(fsys);
@@ -544,7 +544,7 @@ void sub_020537A8(TaskManager *taskManager, Location *location) {
         GF_ASSERT(0);
         return;
     }
-    env->unk0 = 0;
+    env->state = 0;
     env->location = *location;
     TaskManager_Call(taskManager, sub_02053740, env);
 }
@@ -561,19 +561,19 @@ void sub_020537F0(TaskManager *taskManager, u32 mapId, int warpId, int x, int y,
     sub_020537A8(taskManager, &location);
 }
 
-static BOOL sub_0205380C(TaskManager *taskManager) {
+static BOOL Task_ScriptWarp(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     struct ErrorContinueEnv *env = TaskManager_GetEnv(taskManager);
 
-    switch (env->unk0) {
+    switch (env->state) {
     case 0:
         sub_020550E4(fsys, env->location.mapId);
         sub_0205525C(taskManager);
-        env->unk0++;
+        env->state++;
         break;
     case 1:
         sub_020537A8(taskManager, &env->location);
-        env->unk0++;
+        env->state++;
         break;
     case 2:
         if (GF_SndGetFadeTimer() != 0) {
@@ -581,7 +581,7 @@ static BOOL sub_0205380C(TaskManager *taskManager) {
         }
         sub_02055110(fsys, env->location.mapId, 0);
         sub_020552A4(taskManager);
-        env->unk0++;
+        env->state++;
         break;
     case 3:
         FreeToHeap(env);
@@ -591,15 +591,15 @@ static BOOL sub_0205380C(TaskManager *taskManager) {
     return FALSE;
 }
 
-void sub_0205388C(TaskManager *taskManager, u32 mapId, int warpId, int x, int y, int direction) {
+void CallTask_ScriptWarp(TaskManager *taskManager, u32 mapId, int warpId, int x, int y, int direction) {
     struct ErrorContinueEnv *env = AllocFromHeapAtEnd(11, sizeof(struct ErrorContinueEnv));
-    env->unk0 = 0;
+    env->state = 0;
     env->location.mapId = mapId;
     env->location.warpId = warpId;
     env->location.x = x;
     env->location.z = y;
     env->location.direction = direction;
-    TaskManager_Call(taskManager, sub_0205380C, env);
+    TaskManager_Call(taskManager, Task_ScriptWarp, env);
 }
 
 TaskManager *sub_020538C0(FieldSystem *fsys, u32 mapId, int warpId, int x, int y, int direction) {

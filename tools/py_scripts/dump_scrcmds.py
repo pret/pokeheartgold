@@ -167,23 +167,7 @@ class NormalScriptParser(ScriptParserBase):
         super().__init__(header, raw, prefix)
         with open(os.path.join(os.path.dirname(__file__), 'scrcmd.json')) as jsonfp:
             scrcmds = json.load(jsonfp)
-        self.constants = {
-            'var': parse_c_header(os.path.join(project_root, 'include/constants/vars.h'), 'VAR_'),
-            'flag': parse_c_header(os.path.join(project_root, 'include/constants/flags.h'), 'FLAG_'),
-            'species': parse_c_header(os.path.join(project_root, 'include/constants/species.h'), 'SPECIES_'),
-            'item': parse_c_header(os.path.join(project_root, 'include/constants/items.h'), 'ITEM_'),
-            'move': parse_c_header(os.path.join(project_root, 'include/constants/moves.h'), 'MOVE_'),
-            'sound': parse_c_header(os.path.join(project_root, 'include/constants/sndseq.h'), 'SEQ_'),
-            'ribbon': parse_c_header(os.path.join(project_root, 'include/constants/ribbon.h'), 'RIBBON_'),
-            'stdscr': parse_c_header(os.path.join(project_root, 'include/constants/std_script.h'), 'std_'),
-            'trainer': parse_c_header(os.path.join(project_root, 'include/constants/trainers.h'), 'TRAINER_'),
-            'sprites': parse_c_header(os.path.join(project_root, 'include/constants/sprites.h'), 'SPRITE_'),
-            'maps': parse_c_header(os.path.join(project_root, 'include/constants/maps.h'), 'MAP_'),
-            'phone_contact': parse_c_header(os.path.join(project_root, 'include/constants/phone_contacts.h'), 'PHONE_CONTACT_'),
-            'spawn': parse_c_header(os.path.join(project_root, 'include/constants/spawns.h'), 'SPAWN_'),
-            'badge': parse_c_header(os.path.join(project_root, 'include/constants/badge.h'), 'BADGE_'),
-            'player_transition': parse_c_header(os.path.join(project_root, 'include/constants/global.fieldmap.h'), 'PLAYER_TRANSITION_'),
-        }
+        self.constants = {key: parse_c_header(os.path.join(project_root, value['header']), value['prefix']) for key, value in scrcmds['argtypes'].items()}
         self.constants['stdscr'] |= {
             x + 2999: f'std_trainer({y})' for x, y in self.constants['trainer'].items()
         } | {
@@ -457,7 +441,7 @@ class NormalScriptParser(ScriptParserBase):
                 value = int.from_bytes(self.raw[pc:pc + 2], 'little')
                 pc += 2
                 return self.constants[size].get(value, value), pc
-            case 'species' | 'item' | 'move' | 'sound' | 'ribbon' | 'stdscr' | 'trainer' | 'phone_contact' | 'spawn' | 'maps' | 'badge':
+            case 'species' | 'item' | 'move' | 'sound' | 'ribbon' | 'stdscr' | 'trainer' | 'phone_contact' | 'spawn' | 'maps' | 'badge' | 'direction':
                 value = int.from_bytes(self.raw[pc:pc + 2], 'little')
                 pc += 2
                 return self.constants['var'].get(value, self.constants[size].get(value, value)), pc

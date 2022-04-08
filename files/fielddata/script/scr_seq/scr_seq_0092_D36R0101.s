@@ -230,7 +230,7 @@ _0346:
 	wait 20, VAR_SPECIAL_x8004
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D36R0101, 0, 15, 65, 0
+	warp MAP_D36R0101, 0, 15, 65, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	wait 5, VAR_SPECIAL_x8004
@@ -592,7 +592,7 @@ _08DF:
 	wait 20, VAR_SPECIAL_x8004
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D36R0101, 0, 15, 65, 0
+	warp MAP_D36R0101, 0, 15, 65, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	wait 5, VAR_SPECIAL_x8004
@@ -1226,7 +1226,7 @@ _1207:
 	wait 20, VAR_SPECIAL_x8004
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D36R0101, 0, 15, 65, 0
+	warp MAP_D36R0101, 0, 15, 65, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	wait 5, VAR_SPECIAL_x8004
@@ -2226,7 +2226,7 @@ _1F48:
 	clearflag FLAG_HIDE_ROUTE_22_GIOVANNI_RIVAL
 	clearflag FLAG_HIDE_ROUTE_22_FRIEND
 	setflag FLAG_HIDE_ILEX_FOREST_FRIEND
-	warp MAP_R22, 0, 954, 280, 1
+	warp MAP_R22, 0, 954, 280, DIR_SOUTH
 	fade_screen 6, 15, 1, RGB_WHITE
 	wait_fade
 	releaseall

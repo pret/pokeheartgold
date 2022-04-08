@@ -94,7 +94,7 @@ _0107:
 	wait_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_T23R0501, 0, 4, 5, 0
+	warp MAP_T23R0501, 0, 4, 5, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	setflag FLAG_UNK_1AA

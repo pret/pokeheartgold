@@ -29013,7 +29013,7 @@
 .public sub_02053038
 .public sub_020537A8
 .public sub_020537F0
-.public sub_0205388C
+.public CallTask_ScriptWarp
 .public sub_020538C0
 .public sub_02053908
 .public sub_02053B04

@@ -41,7 +41,7 @@ _0062:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D47R0102, 0, 79, 100, 0
+	warp MAP_D47R0102, 0, 79, 100, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	lock obj_partner_poke
@@ -559,7 +559,7 @@ _0773:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D47R0102, 0, 79, 100, 0
+	warp MAP_D47R0102, 0, 79, 100, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	lock obj_partner_poke
@@ -946,7 +946,7 @@ _0CCC:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D47R0102, 0, 79, 100, 0
+	warp MAP_D47R0102, 0, 79, 100, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	lock obj_partner_poke

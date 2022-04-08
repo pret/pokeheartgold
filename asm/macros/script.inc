@@ -1035,7 +1035,7 @@
 	.short 175
 	.endm
 
-	.macro warp arg0, arg1, arg2, arg3, arg4
+	.macro warp arg0, arg1=0, arg2, arg3, arg4
 	.short 176
 	.short \arg0
 	.short \arg1
