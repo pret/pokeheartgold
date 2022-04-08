@@ -224,8 +224,8 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *unk, enum ScriptEnvField fi
         return &unk->unk_14;
     case SCRIPTENV_MENU:
         return &unk->listMenu;
-    case SCRIPTENV_05:
-        return &unk->unk_5;
+    case SCRIPTENV_PRINTER_NUM:
+        return &unk->textPrinterNum;
     case SCRIPTENV_NUM_ACTIVE_MOVEMENT:
         return &unk->numActiveMovement;
     case SCRIPTENV_07:

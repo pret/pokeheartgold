@@ -28,5 +28,7 @@ LocalMapObject *PlayerAvatar_GetMapObject(FIELD_PLAYER_AVATAR *avatar);
 BOOL sub_0205CABC(FIELD_PLAYER_AVATAR *avatar);
 int PlayerAvatar_GetFacingDirection(FIELD_PLAYER_AVATAR *playerAvatar);
 void PlayerAvatar_SetFacingDirection(FIELD_PLAYER_AVATAR*, u32 direction);
+void sub_0205CAA4(FIELD_PLAYER_AVATAR *, u8);
+void PlayerAvatar_OrrTransitionFlags(FIELD_PLAYER_AVATAR *playerAvatar, u32 flags);
 
 #endif //POKEHEARTGOLD_FIELD_PLAYER_AVATAR_H

@@ -48,7 +48,7 @@ typedef struct FsysUnkSub2C FsysUnkSub2C;
 typedef struct ScriptEnvironment {
     u32 check;
     u8 state;
-    u8 unk_5;
+    u8 textPrinterNum;
     u8 numActiveMovement;
     u8 unk_7;
     u8 unk_8;
@@ -83,7 +83,7 @@ enum ScriptEnvField {
     SCRIPTENV_MENU_WINDOW                     =  0,
     SCRIPTENV_WINDOW                          =  1,
     SCRIPTENV_MENU                            =  2,
-    SCRIPTENV_05                              =  3,
+    SCRIPTENV_PRINTER_NUM                     =  3,
     SCRIPTENV_NUM_ACTIVE_MOVEMENT             =  4,
     SCRIPTENV_07                              =  5,
     SCRIPTENV_08                              =  6,

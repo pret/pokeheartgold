@@ -2,6 +2,7 @@
 #include "window.h"
 #include "overlay_01.h"
 #include "overlay_26.h"
+#include "overlay_03.h"
 #include "system.h"
 #include "task.h"
 #include "text.h"
@@ -39,6 +40,13 @@
 #include "unk_0206D494.h"
 #include "unk_0200FA24.h"
 #include "field_warp_tasks.h"
+#include "unk_02054E00.h"
+#include "roamer.h"
+#include "unk_02097F6C.h"
+#include "sys_flags.h"
+#include "sys_vars.h"
+#include "unk_02050660.h"
+#include "pokedex.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
 
@@ -770,7 +778,7 @@ static BOOL sub_02041520(SCRIPTCONTEXT* ctx);
 
 BOOL ScrCmd_TrainerTips(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    u8* printer_id_ptr = FieldSysGetAttrAddr(fsys, SCRIPTENV_05);
+    u8* printer_id_ptr = FieldSysGetAttrAddr(fsys, SCRIPTENV_PRINTER_NUM);
     STRING** tmp_str = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRBUF2);
     STRING** unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRBUF1);
     MSGFMT** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MSGFMT);
@@ -795,7 +803,7 @@ BOOL ScrCmd_TrainerTips(SCRIPTCONTEXT* ctx) {
 
 static BOOL sub_02041520(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    u8* printer_id_ptr = FieldSysGetAttrAddr(fsys, SCRIPTENV_05);
+    u8* printer_id_ptr = FieldSysGetAttrAddr(fsys, SCRIPTENV_PRINTER_NUM);
     u16* ret_ptr = GetVarPointer(fsys, ctx->data[0]);
     u8 unused = ov01_021F3D84(fsys->unk68);
 
@@ -2225,4 +2233,257 @@ BOOL ScrCmd_Whirlpool(SCRIPTCONTEXT *ctx) {
     int playerDirection = PlayerAvatar_GetFacingDirection(ctx->fsys->playerAvatar);
     ScriptCallTask_Whirlpool(ctx->taskman, playerDirection, partySlot);
     return TRUE;
+}
+
+BOOL sub_0204378C(SCRIPTCONTEXT *ctx);
+
+BOOL ScrCmd_183(SCRIPTCONTEXT *ctx) {
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    u16 partyIdx = ScriptGetVar(ctx);
+    POKEMON *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), partyIdx);
+    int playerGender = PlayerAvatar_GetGender(ctx->fsys->playerAvatar);
+    *p_work = ov02_02249458(ctx->fsys, 0, pokemon, playerGender);
+    SetupNativeScript(ctx, sub_0204378C);
+    return TRUE;
+}
+
+BOOL sub_0204378C(SCRIPTCONTEXT *ctx) {
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    if (ov02_0224953C(*p_work) == TRUE) {
+        ov02_02249548(*p_work);
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+BOOL ScrCmd_PlayerOnBikeCheck(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    if (PlayerAvatar_GetState(ctx->fsys->playerAvatar) == PLAYER_STATE_CYCLING) {
+        *p_ret = TRUE;
+    } else {
+        *p_ret = FALSE;
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_PlayerOnBikeSet(SCRIPTCONTEXT *ctx) {
+    u8 flag = ScriptReadByte(ctx);
+    if (flag == TRUE) {
+        Fsys_SetSavedMusicId(ctx->fsys, SEQ_GS_BICYCLE);
+        Fsys_PlayOrFadeToNewMusicId(ctx->fsys, SEQ_GS_BICYCLE, 1);
+        ov01_PlayerAvatar_OrrTransitionFlags(ctx->fsys->playerAvatar, PLAYER_TRANSITION_CYCLING);
+        ov01_PlayerAvatar_ApplyTransitionFlags(ctx->fsys->playerAvatar);
+    } else {
+        ov01_PlayerAvatar_OrrTransitionFlags(ctx->fsys->playerAvatar, PLAYER_TRANSITION_WALKING);
+        ov01_PlayerAvatar_ApplyTransitionFlags(ctx->fsys->playerAvatar);
+        Fsys_SetSavedMusicId(ctx->fsys, 0);
+        Fsys_PlayOrFadeToNewMusicId(ctx->fsys, Fsys_GetSurfOverriddenMusicId(ctx->fsys, ctx->fsys->location->mapId), 1);
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_591(SCRIPTCONTEXT *ctx) {
+    Fsys_SetSavedMusicId(ctx->fsys, SEQ_PL_BICYCLE);
+    return FALSE;
+}
+
+BOOL ScrCmd_186(SCRIPTCONTEXT *ctx) {
+    u8 r1 = ScriptReadByte(ctx);
+    sub_0205CAA4(ctx->fsys->playerAvatar, r1);
+    return FALSE;
+}
+
+BOOL ScrCmd_GetPlayerState(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = PlayerAvatar_GetState(ctx->fsys->playerAvatar);
+    return FALSE;
+}
+
+BOOL ScrCmd_SetAvatarBits(SCRIPTCONTEXT *ctx) {
+    u16 flags = ScriptReadHalfword(ctx);
+    PlayerAvatar_OrrTransitionFlags(ctx->fsys->playerAvatar, flags);
+    return TRUE;
+}
+
+BOOL ScrCmd_UpdateAvatarState(SCRIPTCONTEXT *ctx) {
+    ov01_PlayerAvatar_ApplyTransitionFlags(ctx->fsys->playerAvatar);
+    return FALSE;
+}
+
+BOOL ScrCmd_211(SCRIPTCONTEXT *ctx) {
+    ROAMER_SAVE *roamerSave = Save_Roamers_get(ctx->fsys->savedata);
+    u16 *r6 = ScriptGetVarPointer(ctx);
+    u16 *r4 = ScriptGetVarPointer(ctx);
+    sub_02097F9C(Roamers_GetRand(roamerSave, 2), r6, r4);
+    return FALSE;
+}
+
+BOOL ScrCmd_GetStarterChoice(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = GetStarterFromScriptState(SavArray_Flags_get(ctx->fsys->savedata));
+    return FALSE;
+}
+
+BOOL ScrCmd_SetStarterChoice(SCRIPTCONTEXT *ctx) {
+    u16 choice = ScriptGetVar(ctx);
+    SetStarterToScriptState(SavArray_Flags_get(ctx->fsys->savedata), choice);
+    return FALSE;
+}
+
+BOOL ScrCmd_TrainerMessage(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+
+    u16 *p_scripno = FieldSysGetAttrAddr(fsys, SCRIPTENV_SCRIPT);
+    STRING **p_strbuf1 = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRBUF1);
+    u8 *p_printerno = FieldSysGetAttrAddr(fsys, SCRIPTENV_PRINTER_NUM);
+    u16 trainerno = ScriptGetVar(ctx);
+    u16 msgno = ScriptGetVar(ctx);
+
+    GetTrainerMessageByIdPair(trainerno, msgno, *p_strbuf1, 11);
+    FillWindowPixelBuffer(FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW), 15);
+    *p_printerno = sub_0205B5B4(
+        FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW),
+        *p_strbuf1,
+        Sav2_PlayerData_GetOptionsAddr(ctx->fsys->savedata),
+        TRUE
+    );
+    SetupNativeScript(ctx, ov01_021EF348);
+    return TRUE;
+}
+
+BOOL sub_02043A98(SCRIPTCONTEXT *ctx);
+
+BOOL ScrCmd_226(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 r7 = ScriptGetVar(ctx);
+    u16 sp0 = ScriptGetVar(ctx);
+    u16 sp4 = ScriptGetVar(ctx);
+    u16 r6 = ScriptReadHalfword(ctx);
+    ov03_02255BB0(fsys, r7, sp0, sp4);
+    ctx->data[0] = r6;
+    SetupNativeScript(ctx, sub_02043A98);
+    return TRUE;
+}
+
+BOOL sub_02043A98(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = GetVarPointer(ctx->fsys, ctx->data[0]);
+    int result = ov03_02255BFC();
+    if (result == 0) {
+        return FALSE;
+    } else {
+        *p_ret = result;
+        return TRUE;
+    }
+}
+
+BOOL sub_02043B30(SCRIPTCONTEXT *ctx);
+
+BOOL ScrCmd_227(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 r7 = ScriptGetVar(ctx);
+    u16 sp0 = ScriptGetVar(ctx);
+    u16 sp4 = ScriptGetVar(ctx);
+    u16 r6 = ScriptReadHalfword(ctx);
+    ov03_02255C18(fsys, r7, sp0, sp4);
+    ctx->data[0] = r6;
+    SetupNativeScript(ctx, sub_02043B30);
+    return TRUE;
+}
+
+BOOL sub_02043B30(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = GetVarPointer(ctx->fsys, ctx->data[0]);
+    int result = ov03_02255C64();
+    if (result == 0) {
+        return FALSE;
+    } else {
+        *p_ret = result;
+        return TRUE;
+    }
+}
+
+BOOL ScrCmd_228(SCRIPTCONTEXT *ctx) {
+    u16 unused = ScriptReadHalfword(ctx);
+    return TRUE;
+}
+
+BOOL ScrCmd_229(SCRIPTCONTEXT *ctx) {
+    u16 unused = ScriptReadHalfword(ctx);
+    return TRUE;
+}
+
+struct UnkStruct_ScrCmd230 {
+    u8 filler_00[0x30];
+    u8 unk_30[6];
+};
+
+BOOL ScrCmd_230(SCRIPTCONTEXT *ctx) {
+    struct UnkStruct_ScrCmd230 **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    struct UnkStruct_ScrCmd230 *work = *p_work;
+    sub_02051428(ctx->fsys->taskman, &work->unk_30, 5);
+    FreeToHeap(work);
+    *p_work = NULL;
+    return TRUE;
+}
+
+BOOL ScrCmd_231(SCRIPTCONTEXT *ctx) {
+    // dummy
+    return TRUE;
+}
+
+BOOL ScrCmd_SetDynamicWarp(SCRIPTCONTEXT *ctx) {
+    Location warp;
+    warp.mapId = ScriptGetVar(ctx);
+    warp.warpId = ScriptGetVar(ctx);
+    warp.x = ScriptGetVar(ctx);
+    warp.z = ScriptGetVar(ctx);
+    warp.direction = ScriptGetVar(ctx);
+    FlyPoints_SetDynamicWarp(Save_FlyPoints_get(ctx->fsys->savedata), &warp);
+    return FALSE;
+}
+
+BOOL ScrCmd_GetDynamicWarpFloorNo(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    Location *warp = FlyPoints_GetDynamicWarp(Save_FlyPoints_get(ctx->fsys->savedata));
+    *p_ret = MapNumToFloorNo(warp->mapId);
+    return FALSE;
+}
+
+BOOL ScrCmd_ElevatorCurFloorBox(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MSGFMT);
+    u8 x = ScriptReadByte(ctx);
+    u8 y = ScriptReadByte(ctx);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    u16 floor = ScriptGetVar(ctx);
+    PrintCurFloorInNewWindow(fsys, x, y, p_ret, *p_msgFmt, floor);
+    return FALSE;
+}
+
+BOOL ScrCmd_CountJohtoDexSeen(SCRIPTCONTEXT *ctx) {
+    POKEDEX *pokedex = Sav2_Pokedex_get(ctx->fsys->savedata);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = Pokedex_CountJohtoDexSeen(pokedex);
+    return FALSE;
+}
+
+BOOL ScrCmd_CountJohtoDexOwned(SCRIPTCONTEXT *ctx) {
+    POKEDEX *pokedex = Sav2_Pokedex_get(ctx->fsys->savedata);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = Pokedex_CountJohtoDexOwned(pokedex);
+    return FALSE;
+}
+
+BOOL ScrCmd_CountNationalDexSeen(SCRIPTCONTEXT *ctx) {
+    POKEDEX *pokedex = Sav2_Pokedex_get(ctx->fsys->savedata);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = Pokedex_CountNationalDexSeen(pokedex);
+    return FALSE;
+}
+
+BOOL ScrCmd_CountNationalDexOwned(SCRIPTCONTEXT *ctx) {
+    POKEDEX *pokedex = Sav2_Pokedex_get(ctx->fsys->savedata);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = Pokedex_CountNationalDexOwned(pokedex);
+    return FALSE;
 }
