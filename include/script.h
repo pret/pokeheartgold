@@ -251,7 +251,8 @@ struct FieldSystem {
     u8 filler34[0x8];
     MapObjectMan* mapObjectMan;
     FIELD_PLAYER_AVATAR *playerAvatar;
-    u8 filler44[0x1C];
+    void *unk_44;
+    u8 filler48[0x18];
     u32 unk60;
     int unk64;
     struct FieldSystemUnkSub68* unk68;
