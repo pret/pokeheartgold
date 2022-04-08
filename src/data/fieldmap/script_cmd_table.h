@@ -181,8 +181,8 @@ extern BOOL ScrCmd_RockClimb(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_Surf(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_Waterfall(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_180(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_181(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_182(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_FlashEffect(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_Whirlpool(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_183(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PlayerOnBikeCheck(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PlayerOnBikeSet(SCRIPTCONTEXT *ctx);
@@ -1036,8 +1036,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_Surf,
     ScrCmd_Waterfall,
     ScrCmd_180,
-    ScrCmd_181,
-    ScrCmd_182,
+    ScrCmd_FlashEffect,
+    ScrCmd_Whirlpool,
     ScrCmd_183,
     ScrCmd_PlayerOnBikeCheck,
     ScrCmd_PlayerOnBikeSet,

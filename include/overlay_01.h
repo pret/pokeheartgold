@@ -71,5 +71,10 @@ void ov01_02205604(LocalMapObject *object, int *p_x, int *p_y);
 void ov01_021FF0E4(LocalMapObject *object, int a1, int x, int y, int a4);
 void ov01_021FF964(LocalMapObject *object, int a1, int x, int y, int a4);
 void ov01_021F729C(FieldSystem *fsys);
+void ScriptCallTask_RockClimb(TaskManager *taskManager, int playerDirection, int partySlot);
+void ScriptCallTask_Surf(TaskManager *taskManager, int playerDirection, int partySlot);
+void ScriptCallTask_Waterfall(TaskManager *taskManager, int playerDirection, int partySlot);
+void ScriptCallTask_Whirlpool(TaskManager *taskManager, int playerDirection, int partySlot);
+void FieldWeatherUpdate_UsedFlash(void *unkWeatherRelated, int weatherType);
 
 #endif //POKEHEARTGOLD_OVERLAY_01_H

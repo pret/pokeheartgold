@@ -2141,3 +2141,88 @@ BOOL ScrCmd_Warp(SCRIPTCONTEXT *ctx) {
     CallTask_ScriptWarp(ctx->taskman, mapId, -1, x, y, direction);
     return TRUE;
 }
+
+BOOL ScrCmd_448(SCRIPTCONTEXT *ctx) {
+    u16 mapId = ScriptReadHalfword(ctx);
+    u16 unused = ScriptReadHalfword(ctx);
+    u16 x = ScriptGetVar(ctx);
+    u16 y = ScriptGetVar(ctx);
+    u16 direction = ScriptReadHalfword(ctx);
+    sub_0205412C(ctx->fsys->taskman, mapId, -1, x, y, direction);
+    return TRUE;
+}
+
+BOOL ScrCmd_449(SCRIPTCONTEXT *ctx) {
+    sub_02054190(ctx->fsys->taskman);
+    return TRUE;
+}
+
+BOOL ScrCmd_445(SCRIPTCONTEXT *ctx) {
+    Location *location = sub_0203B960(Save_FlyPoints_get(ctx->fsys->savedata));
+    u16 *ret_p = ScriptGetVarPointer(ctx);
+    *ret_p = location->mapId;
+    return FALSE;
+}
+
+BOOL ScrCmd_446(SCRIPTCONTEXT *ctx) {
+    u16 *ret_p = ScriptGetVarPointer(ctx);
+    *ret_p = ctx->fsys->location->mapId;
+    return FALSE;
+}
+
+BOOL ScrCmd_840(SCRIPTCONTEXT *ctx) {
+    u16 mapId = ScriptGetVar(ctx);
+    u16 *ret_p = ScriptGetVarPointer(ctx);
+
+    *ret_p = 0;
+    if (MapHeader_MapIsPokemonCenter(mapId) == TRUE) {
+        *ret_p = 1;
+    } else if (MapHeader_MapIsPokemonLeagueLobby(mapId) == TRUE) {
+        *ret_p = 2;
+    }
+
+    return FALSE;
+}
+
+BOOL ScrCmd_RockClimb(SCRIPTCONTEXT *ctx) {
+    u16 partySlot = ScriptGetVar(ctx);
+    int playerDirection = PlayerAvatar_GetFacingDirection(ctx->fsys->playerAvatar);
+    ScriptCallTask_RockClimb(ctx->taskman, playerDirection, partySlot);
+    return TRUE;
+}
+
+BOOL ScrCmd_Surf(SCRIPTCONTEXT *ctx) {
+    u16 partySlot = ScriptGetVar(ctx);
+    int playerDirection = PlayerAvatar_GetFacingDirection(ctx->fsys->playerAvatar);
+    ScriptCallTask_Surf(ctx->taskman, playerDirection, partySlot);
+    return TRUE;
+}
+
+BOOL ScrCmd_Waterfall(SCRIPTCONTEXT *ctx) {
+    u16 partySlot = ScriptGetVar(ctx);
+    int playerDirection = PlayerAvatar_GetFacingDirection(ctx->fsys->playerAvatar);
+    ScriptCallTask_Waterfall(ctx->taskman, playerDirection, partySlot);
+    return TRUE;
+}
+
+BOOL ScrCmd_180(SCRIPTCONTEXT *ctx) {
+    u16 mapId = ScriptReadHalfword(ctx);
+    u16 x = ScriptGetVar(ctx);
+    u16 y = ScriptGetVar(ctx);
+    sub_020538C0(ctx->fsys, mapId, -1, x, y, DIR_SOUTH);
+    return TRUE;
+}
+
+BOOL ScrCmd_FlashEffect(SCRIPTCONTEXT *ctx) {
+    FLYPOINTS_SAVE *flypointsSave = Save_FlyPoints_get(ctx->fsys->savedata);
+    FlyPoints_SetWeatherType(flypointsSave, 12);
+    FieldWeatherUpdate_UsedFlash(ctx->fsys->unk4->unk_0C, FlyPoints_GetWeatherType(flypointsSave));
+    return TRUE;
+}
+
+BOOL ScrCmd_Whirlpool(SCRIPTCONTEXT *ctx) {
+    u16 partySlot = ScriptGetVar(ctx);
+    int playerDirection = PlayerAvatar_GetFacingDirection(ctx->fsys->playerAvatar);
+    ScriptCallTask_Whirlpool(ctx->taskman, playerDirection, partySlot);
+    return TRUE;
+}

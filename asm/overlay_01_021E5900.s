@@ -740,7 +740,7 @@ _021E5F3E:
 	add r1, r0, #0
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0xc]
-	bl ov01_021EB2B8
+	bl FieldWeatherUpdate_UsedFlash
 	add r0, r6, #0
 	bl MapHeader_GetMapSec
 	add r6, r0, #0

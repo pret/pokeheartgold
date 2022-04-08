@@ -1066,7 +1066,7 @@
 	.short \arg2
 	.endm
 
-	.macro scrcmd_181
+	.macro flash_effect
 	.short 181
 	.endm
 

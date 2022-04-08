@@ -2794,8 +2794,8 @@
 .public ScrCmd_166
 .public ScrCmd_NamePlayer
 .public ScrCmd_180
-.public ScrCmd_181
-.public ScrCmd_182
+.public ScrCmd_FlashEffect
+.public ScrCmd_Whirlpool
 .public ScrCmd_183
 .public ScrCmd_PlayerOnBikeCheck
 .public ScrCmd_PlayerOnBikeSet
@@ -5554,7 +5554,7 @@
 .public ov01_021EB1F4
 .public ov01_021EB234
 .public ov01_021EB260
-.public ov01_021EB2B8
+.public FieldWeatherUpdate_UsedFlash
 .public ov01_021EB31C
 .public ov01_021EB320
 .public ov01_021EB3F0
@@ -5878,7 +5878,7 @@
 .public ov01_021F1F8C
 .public ov01_021F2004
 .public ov01_021F202C
-.public ov01_021F2068
+.public ScriptCallTask_Surf
 .public Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors
 .public ov01_021F2118
 .public ov01_021F232C
@@ -5887,7 +5887,7 @@
 .public ov01_021F24F4
 .public ov01_021F2538
 .public ov01_021F2548
-.public ov01_021F2590
+.public ScriptCallTask_RockClimb
 .public MetatileBehavior_IsRockClimbInDirection
 .public ov01_021F2628
 .public ov01_021F2694
@@ -5903,7 +5903,7 @@
 .public ov01_021F2894
 .public ov01_021F28B8
 .public ov01_021F28EC
-.public ov01_021F2908
+.public ScriptCallTask_Waterfall
 .public ov01_021F2944
 .public ov01_021F2998
 .public ov01_021F29C0
@@ -5916,7 +5916,7 @@
 .public ov01_021F2C88
 .public ov01_021F2CD4
 .public ov01_021F2D68
-.public ov01_021F2DA4
+.public ScriptCallTask_Whirlpool
 .public ov01_021F2DD0
 .public ov01_021F2E08
 .public ov01_021F2E20

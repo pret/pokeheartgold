@@ -1129,7 +1129,7 @@
       ]
     },
     {
-      "name": "scrcmd_181",
+      "name": "flash_effect",
       "args": []
     },
     {
@@ -2793,11 +2793,11 @@
     {
       "name": "scrcmd_448",
       "args": [
-        2,
+        "maps",
         2,
         "var",
-        2,
-        2
+        "var",
+        "direction"
       ]
     },
     {

@@ -229,9 +229,14 @@ struct FieldSystemUnkSub68 {
     u8 unk13_7:1;
 };
 
+typedef struct FsysUnkSub4 {
+    u8 filler_00[0xC];
+    void *unk_0C; // weather related?
+} FsysUnkSub4;
+
 struct FieldSystem {
     struct FieldSystemUnkSub0 *unk0;
-    void *unk4;
+    FsysUnkSub4 *unk4;
     BGCONFIG* bg_config;
     SAVEDATA* savedata;
     TaskManager* taskman;
