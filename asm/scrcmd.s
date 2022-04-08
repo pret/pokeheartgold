@@ -5624,7 +5624,7 @@ ScrCmd_525: ; 0x02045BA4
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0205BDB8
+	bl Save_PlayerHasRegiInParty
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}

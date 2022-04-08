@@ -1,10 +1,13 @@
+#include "constants/species.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
 	.rodata
 
-_020FCB74:
-	.byte 0x79, 0x01, 0x7A, 0x01, 0x7B, 0x01, 0x00, 0x00
+sRegiSpecies:
+	.short SPECIES_REGIROCK
+	.short SPECIES_REGICE
+	.short SPECIES_REGISTEEL
 
 	.text
 
@@ -387,8 +390,8 @@ _0205BDAE:
 _0205BDB4: .word 0x00000000
 	thumb_func_end Save_GetPartyLeadAlive
 
-	thumb_func_start sub_0205BDB8
-sub_0205BDB8: ; 0x0205BDB8
+	thumb_func_start Save_PlayerHasRegiInParty
+Save_PlayerHasRegiInParty: ; 0x0205BDB8
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	mov r7, #0
@@ -413,7 +416,7 @@ _0205BDD2:
 	cmp r6, r4
 	blt _0205BDD2
 _0205BDEC:
-	ldr r2, _0205BE24 ; =_020FCB74
+	ldr r2, _0205BE24 ; =sRegiSpecies
 	mov r6, #0
 _0205BDF0:
 	mov r1, #0
@@ -447,8 +450,8 @@ _0205BE1E:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0205BE24: .word _020FCB74
-	thumb_func_end sub_0205BDB8
+_0205BE24: .word sRegiSpecies
+	thumb_func_end Save_PlayerHasRegiInParty
 
 	thumb_func_start sub_0205BE28
 sub_0205BE28: ; 0x0205BE28

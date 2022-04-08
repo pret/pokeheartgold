@@ -6,6 +6,19 @@
 #include "sys_vars.h"
 #include "constants/sprites.h"
 #include "unk_02055418.h"
+#include "unk_02092BE8.h"
+#include "unk_02066EDC.h"
+#include "unk_0202C730.h"
+#include "unk_0202CA24.h"
+#include "unk_02031B0C.h"
+#include "unk_02097268.h"
+#include "save_pokeathlon.h"
+#include "fieldmap.h"
+#include "unk_0206D494.h"
+#include "overlay_01.h"
+#include "apricorn_tree.h"
+#include "unk_0201F4C4.h"
+#include "field_map_object.h"
 
 void FieldSys_StartBugContestTimer(FieldSystem* fsys) {
     RTCDate date;
@@ -58,8 +71,8 @@ void sub_02055508(FieldSystem* fsys, int unkA) {
     BOOL unkFlag = sub_02055670(fsys);
     ClearDailyFlags(fsys);
     sub_0206759C(fsys->savedata, unkA); //reset badge shininess..?
-    sub_0202C78C(sub_0202C854(fsys->savedata), unkA);
-    Roamers_SetRand(Save_Roamers_get(fsys->savedata), sub_0202C7DC(sub_0202C854(fsys->savedata)));
+    sub_0202C78C(Save_FriendGroup_get(fsys->savedata), unkA);
+    Roamers_SetRand(Save_Roamers_get(fsys->savedata), sub_0202C7DC(Save_FriendGroup_get(fsys->savedata)));
     Party_UpdatePokerus(SavArray_PlayerParty_get(fsys->savedata), unkA);
     Save_LCRNGAdvanceLotoID(fsys->savedata, (u16) unkA);
     sub_02066D60(fsys->savedata);
@@ -76,7 +89,7 @@ void sub_02055508(FieldSystem* fsys, int unkA) {
 }
 
 void sub_020555B4(FieldSystem* fsys, u32 unkA, RTCTime* time) {
-    sub_02092E34(Fsys_GetGearPhoneRingManager(), unkA, 0);
+    sub_02092E34(Fsys_GetGearPhoneRingManager(fsys), unkA, 0);
     FieldSys_IncrementBugContestTimer(fsys, unkA);
     Party_TryResetShaymin(SavArray_PlayerParty_get(fsys->savedata), unkA, time);
 }

@@ -295,7 +295,7 @@ BOOL sub_020930C4(FieldSystem* sys) {
         return FALSE;
     }
     if (var > 9) {
-        var = 9; // uncreachable
+        var = 9; // unreachable
     }
     if (!CheckFlagInArray(state, var + FLAG_UNK_988)) {
         sub_02092E14(Fsys_GetGearPhoneRingManager(sys), 4, FALSE);

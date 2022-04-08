@@ -461,7 +461,7 @@ void BufferContestBackgroundName(MSGFMT *msgFmt, u32 fieldno, u32 bgId) {
 }
 
 void BufferGroupName(MSGFMT *msgFmt, SAVEDATA *saveData, int groupId, int fieldno, int nameType) {
-    SAV_FRIEND_GRP *friendGrp = sub_0202C854(saveData);
+    SAV_FRIEND_GRP *friendGrp = Save_FriendGroup_get(saveData);
     u8 sp10 = sub_0202C830(friendGrp, groupId);
     u8 r7 = sub_0202C83C(friendGrp, groupId);
     STRING *dest = String_ctor(64, 4);

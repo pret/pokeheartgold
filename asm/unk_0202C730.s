@@ -207,14 +207,14 @@ sub_0202C848: ; 0x0202C848
 	bx lr
 	thumb_func_end sub_0202C848
 
-	thumb_func_start sub_0202C854
-sub_0202C854: ; 0x0202C854
+	thumb_func_start Save_FriendGroup_get
+Save_FriendGroup_get: ; 0x0202C854
 	ldr r3, _0202C85C ; =SavArray_get
 	mov r1, #0xe
 	bx r3
 	nop
 _0202C85C: .word SavArray_get
-	thumb_func_end sub_0202C854
+	thumb_func_end Save_FriendGroup_get
 
 	thumb_func_start sub_0202C860
 sub_0202C860: ; 0x0202C860

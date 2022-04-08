@@ -659,7 +659,7 @@ BOOL ScrCmd_MonGetRibbonCount(SCRIPTCONTEXT *ctx) {
 
     u16 i, count;
     for (i = 0, count = 0; i < RIBBON_MAX; i++) {
-        if (GetMonData(pokemon, GetRibbonAttr(i, 0), NULL)) {
+        if (GetMonData(pokemon, GetRibbonAttr(i, RIBBONDAT_MONDATNO), NULL)) {
             count++;
         }
     }
@@ -679,7 +679,7 @@ BOOL ScrCmd_GetPartyRibbonCount(SCRIPTCONTEXT *ctx) {
     for (i = 0, count = 0; i < RIBBON_MAX; i++) {
         for (j = 0; j < partyCount; j++) {
             POKEMON *pokemon = GetPartyMonByIndex(party, j);
-            if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL) && GetMonData(pokemon, GetRibbonAttr(i, 0), NULL)) {
+            if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL) && GetMonData(pokemon, GetRibbonAttr(i, RIBBONDAT_MONDATNO), NULL)) {
                 count++;
                 break;
             }
@@ -696,7 +696,7 @@ BOOL ScrCmd_MonHasRibbon(SCRIPTCONTEXT *ctx) {
     u16 ribbon = ScriptGetVar(ctx);
 
     POKEMON *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
-    *hasRibbon = GetMonData(pokemon, GetRibbonAttr(ribbon, 0), NULL);
+    *hasRibbon = GetMonData(pokemon, GetRibbonAttr(ribbon, RIBBONDAT_MONDATNO), NULL);
 
     return FALSE;
 }
@@ -707,7 +707,7 @@ BOOL ScrCmd_GiveRibbon(SCRIPTCONTEXT *ctx) {
     u8 hasRibbon = TRUE;
 
     POKEMON *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
-    SetMonData(pokemon, GetRibbonAttr(ribbon, 0), &hasRibbon);
+    SetMonData(pokemon, GetRibbonAttr(ribbon, RIBBONDAT_MONDATNO), &hasRibbon);
 
     return FALSE;
 }

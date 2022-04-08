@@ -3084,7 +3084,7 @@ ov01_02202378: ; 0x02202378
 	sub sp, #0x14
 	str r1, [sp]
 	add r5, r2, #0
-	bl sub_0202C854
+	bl Save_FriendGroup_get
 	add r4, r0, #0
 	cmp r5, #0
 	beq _02202390

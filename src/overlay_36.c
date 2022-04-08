@@ -179,7 +179,7 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SAVEDATA* saved
     Sav2_SysInfo_InitFromSystem(Sav2_SysInfo_get(savedata));
     Sav2_SysInfo_RTC_init(Sav2_SysInfo_RTC_get(savedata));
     Sav2_BerryPotRTC_init(Sav2_BerryPotRTC_get(savedata));
-    sub_0202C7C0(sub_0202C854(savedata), 1, MTRandom());
+    sub_0202C7C0(Save_FriendGroup_get(savedata), 1, MTRandom());
     sub_020674BC(savedata);
 
     PLAYERPROFILE* profile = Sav2_PlayerData_GetProfileAddr(savedata);

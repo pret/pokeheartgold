@@ -28180,7 +28180,7 @@
 .public sub_0202C830
 .public sub_0202C83C
 .public sub_0202C848
-.public sub_0202C854
+.public Save_FriendGroup_get
 .public sub_0202C860
 .public sub_0202C878
 .public sub_0202C88C
@@ -29286,7 +29286,7 @@
 .public sub_0205BBD0
 .public sub_0205BC78
 .public Save_GetPartyLead
-.public sub_0205BDB8
+.public Save_PlayerHasRegiInParty
 .public sub_0205BED8
 .public sub_0205BFB4
 .public sub_0205BFF0

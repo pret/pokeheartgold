@@ -7,12 +7,11 @@
 
 typedef struct UnkStruct_020556FC {
     HeapID heapID;
-    u32 unk4;
-    u8 unk8[0x3c];
+    NNSG3dRenderObj unk4;
     u32* unk44;
     u8 unk48[0x10];
-    u32 unk58;
-    u32 unk5c;
+    NNSG3dResMdl *unk58;
+    NNSG3dResFileHeader *unk5c;
 } UnkStruct_020556FC; //size 0x60
 
 void FieldSys_StartBugContestTimer(FieldSystem* fsys);
