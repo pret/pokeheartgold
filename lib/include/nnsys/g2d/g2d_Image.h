@@ -25,6 +25,7 @@ typedef struct NNSG2dImageProxy {
     NNSG2dVRamLocation vramLocation;
     NNSG2dImageAttr attr;
 } NNSG2dImageProxy;
+
 typedef struct NNSG2dImagePaletteProxy {
     GXTexFmt fmt;
     BOOL bExtendedPlt;
@@ -35,5 +36,7 @@ void NNS_G2dLoadPaletteEx(const NNSG2dPaletteData* pSrcData, const NNSG2dPalette
 void NNS_G2dLoadPalette(const NNSG2dPaletteData* pSrcData, u32 addr, NNS_G2D_VRAM_TYPE type, NNSG2dImagePaletteProxy* pPltProxy);
 void NNS_G2dLoadImage1DMapping(const NNSG2dCharacterData* pSrcData, u32 baseAddr, NNS_G2D_VRAM_TYPE type, NNSG2dImageProxy* pImgProxy);
 void NNS_G2dLoadImage2DMapping(const NNSG2dCharacterData* pSrcData, u32 baseAddr, NNS_G2D_VRAM_TYPE type, NNSG2dImageProxy* pImgProxy);
+u32 NNS_G2dGetImageLocation (const NNSG2dImageProxy* pImg, NNS_G2D_VRAM_TYPE type);
+u32 NNS_G2dGetImagePaletteLocation(const NNSG2dImagePaletteProxy* pImg, NNS_G2D_VRAM_TYPE type);
 
 #endif //NNSYS_G2D_G2D_IMAGE_H_

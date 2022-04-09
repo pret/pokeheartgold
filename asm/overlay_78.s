@@ -24,7 +24,7 @@ ov78_021E5900: ; 0x021E5900
 	bl OverlayManager_GetParentWork
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl Save_GetLeadMonIdxForBugContest
+	bl Save_GetPartyLeadAlive
 	add r6, r0, #0
 	cmp r5, #0
 	bne _021E593C
@@ -550,7 +550,7 @@ ov78_021E5D94: ; 0x021E5D94
 	ldrh r1, [r1, #6]
 	strh r2, [r0, #4]
 	strh r1, [r0, #6]
-	bl sub_02020080
+	bl ResetAllTextPrinters
 	ldr r3, [r4]
 	mov r0, #1
 	mov r1, #0x1b
@@ -1216,7 +1216,7 @@ ov78_021E628C: ; 0x021E628C
 	mov r2, #3
 	mov r1, #0
 	lsl r2, r2, #0x12
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	ldr r0, [r5, #0x10]
 	mov r1, #5
 	mov r2, #0

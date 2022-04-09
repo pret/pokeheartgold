@@ -1314,7 +1314,7 @@ _021E6314:
 	mov r0, #1
 	pop {r4, r5, r6, r7, pc}
 _021E632C:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	bne _021E633C
 	ldr r0, _021E6354 ; =gSystem
@@ -1567,7 +1567,7 @@ _021E6528:
 	bl ov122_021E84C8
 	b _021E6588
 _021E653E:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	bne _021E654E
 	ldr r0, _021E6590 ; =gSystem
@@ -2180,7 +2180,7 @@ ov122_021E69EC: ; 0x021E69EC
 	ldr r0, [r5, r0]
 	bl ov122_021E8770
 	add r4, r0, #0
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	bne _021E6A0C
 	ldr r0, _021E6A5C ; =gSystem
@@ -2245,7 +2245,7 @@ ov122_021E6A64: ; 0x021E6A64
 	ldr r0, [r5, r0]
 	bl ov122_021E8770
 	add r4, r0, #0
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	bne _021E6A94
 	ldr r0, _021E6B28 ; =gSystem
@@ -4018,7 +4018,7 @@ ov122_021E7820: ; 0x021E7820
 	add r4, r0, #0
 	ldr r0, _021E7850 ; =0x0000022B
 	ldrb r0, [r4, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021E784A
 	mov r0, #5
@@ -4445,7 +4445,7 @@ ov122_021E7AEC: ; 0x021E7AEC
 	mov r2, #0x83
 	mov r1, #0
 	lsl r2, r2, #0xe
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	add sp, #0x4c
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -7312,7 +7312,7 @@ ov122_021E9020: ; 0x021E9020
 	bl sub_02019F74
 	cmp r5, #0x1c
 	bhs _021E9082
-	bl sub_02025358
+	bl System_GetTouchNew
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	lsl r0, r0, #0x1f

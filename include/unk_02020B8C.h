@@ -1,0 +1,6 @@
+#ifndef POKEHEARTGOLD_UNK_02020B8C_H
+#define POKEHEARTGOLD_UNK_02020B8C_H
+
+fx32 GetDistanceFromPointToLine(VecFx32 *a, VecFx32 *near, VecFx32 *far);
+
+#endif //POKEHEARTGOLD_UNK_02020B8C_H

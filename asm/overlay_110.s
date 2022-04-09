@@ -475,7 +475,7 @@ ov110_021E5C3C: ; 0x021E5C3C
 ov110_021E5C60: ; 0x021E5C60
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	bne _021E5C70
 	mov r0, #1
@@ -526,7 +526,7 @@ _021E5CC8: .word SEQ_SE_GS_SEKIBAN_SENTAKU
 ov110_021E5CCC: ; 0x021E5CCC
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	bne _021E5CE0
 	mov r0, #0
@@ -718,7 +718,7 @@ ov110_021E5E1C: ; 0x021E5E1C
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r5, r0, #0
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	bne _021E5ECE
 	mov r0, #0x57
@@ -996,7 +996,7 @@ _021E6028:
 _021E6044:
 	add r0, #0x24
 	ldrb r0, [r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021E606C
 	add r0, r4, #0
@@ -1908,17 +1908,17 @@ _021E6770:
 	add r0, #0x8c
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r5, #0
 	add r0, #0x90
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r5, #0
 	add r0, #0x8c
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	add r0, r5, #0
 	add r0, #0x90
 	ldr r0, [r0]
@@ -1969,12 +1969,12 @@ _021E680A:
 	add r0, #0x8c
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r5, r4
 	add r0, #0x8c
 	ldr r0, [r0]
 	add r1, r7, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r0, r5, r4
 	add r0, #0x8c
 	ldr r0, [r0]
@@ -2094,7 +2094,7 @@ ov110_021E6904: ; 0x021E6904
 	add r0, #0x8c
 	ldr r0, [r0]
 	add r1, r4, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	cmp r4, #1
 	bne _021E693C
 	add r0, r5, #0
@@ -2105,14 +2105,14 @@ ov110_021E6904: ; 0x021E6904
 	add r0, #0x8c
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	b _021E6948
 _021E693C:
 	add r0, r5, #0
 	add r0, #0x8c
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 _021E6948:
 	ldr r1, [r5, #0x34]
 	mov r0, #4
@@ -2551,7 +2551,7 @@ ov110_021E6C58: ; 0x021E6C58
 	add r0, #0x90
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x57
 	lsl r0, r0, #2
 	ldr r2, [r4, r0]
@@ -2595,7 +2595,7 @@ _021E6CCC:
 	add r0, #0x90
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	mov r1, #0
 	bl ov110_021E6904
@@ -2630,7 +2630,7 @@ ov110_021E6D20: ; 0x021E6D20
 	add r1, r5, #0
 	mov r2, #0
 	str r4, [r5]
-	bl sub_0200E320
+	bl CreateSysTask
 	add r0, r4, #0
 	mov r1, #1
 	bl ov110_021E6904
@@ -2664,7 +2664,7 @@ ov110_021E6D54: ; 0x021E6D54
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _021E6D8A:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov110_021E6D54

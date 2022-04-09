@@ -89,7 +89,7 @@ _0126:
 
 _0143:
 	scrcmd_598 1
-	get_lead_mon_index VAR_TEMP_x4000
+	get_party_lead_alive VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call _025B
 	play_cry VAR_TEMP_x4000, 0
@@ -142,7 +142,7 @@ _01FB:
 
 _0218:
 	scrcmd_598 1
-	get_lead_mon_index VAR_TEMP_x4000
+	get_party_lead_alive VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call _025B
 	play_cry VAR_TEMP_x4000, 0
@@ -238,7 +238,7 @@ _0365:
 _0382:
 	setvar VAR_SPECIAL_x8007, 1
 	scrcmd_598 1
-	get_lead_mon_index VAR_TEMP_x4000
+	get_party_lead_alive VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call _04D0
 	play_cry VAR_TEMP_x4000, 0
@@ -297,7 +297,7 @@ _045C:
 _0479:
 	scrcmd_598 1
 	setvar VAR_SPECIAL_x8007, 1
-	get_lead_mon_index VAR_TEMP_x4000
+	get_party_lead_alive VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call _04D0
 	play_cry VAR_TEMP_x4000, 0
@@ -394,7 +394,7 @@ _05DD:
 	goto _060E
 
 _05F4:
-	get_lead_mon_index VAR_TEMP_x4000
+	get_party_lead_alive VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call _0715
 	play_cry VAR_TEMP_x4000, 0
@@ -453,7 +453,7 @@ _06A6:
 	goto _06D7
 
 _06BD:
-	get_lead_mon_index VAR_TEMP_x4000
+	get_party_lead_alive VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call _0715
 	play_cry VAR_TEMP_x4000, 0
@@ -617,7 +617,7 @@ _08D2:
 	goto _0909
 
 _08E9:
-	get_lead_mon_index VAR_TEMP_x4000
+	get_party_lead_alive VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call _091A
 	play_cry VAR_TEMP_x4000, 0
@@ -812,7 +812,7 @@ _0B67:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0BA0
 	scrcmd_598 1
-	get_lead_mon_index VAR_TEMP_x4000
+	get_party_lead_alive VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call _0CC5
 	play_cry VAR_TEMP_x4000, 0
@@ -876,7 +876,7 @@ _0C5D:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0C96
 	scrcmd_598 1
-	get_lead_mon_index VAR_TEMP_x4000
+	get_party_lead_alive VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call _0CC5
 	play_cry VAR_TEMP_x4000, 0

@@ -1428,7 +1428,7 @@ sub_0203C6C8: ; 0x0203C6C8
 	mov r0, #1
 	add r1, r5, r1
 	mov r2, #0xb
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	mov r1, #0x75
 	lsl r1, r1, #2
 	mov r7, #3
@@ -1440,7 +1440,7 @@ _0203C6EA:
 	mov r0, #1
 	add r1, r6, #0
 	mov r2, #0xb
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	str r0, [r4, r7]
 	add r6, r6, #1
 	add r4, r4, #4
@@ -1457,7 +1457,7 @@ _0203C6EA:
 	ldr r0, [r5, r0]
 	mov r1, #0xe
 	mov r2, #0x40
-	bl sub_0200A1D8
+	bl AddCharResObjFromNarc
 	mov r1, #0x31
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -1472,7 +1472,7 @@ _0203C6EA:
 	ldr r0, [r5, r1]
 	mov r1, #0xe
 	mov r2, #0x3d
-	bl sub_0200A234
+	bl AddPlttResObjFromNarc
 	mov r1, #0xc5
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -1487,7 +1487,7 @@ _0203C6EA:
 	mov r1, #0xe
 	mov r2, #0x3e
 	mov r3, #1
-	bl sub_0200A294
+	bl AddCellOrAnimResObjFromNarc
 	mov r1, #0xc6
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -1502,7 +1502,7 @@ _0203C6EA:
 	mov r1, #0xe
 	mov r2, #0x3f
 	mov r3, #1
-	bl sub_0200A294
+	bl AddCellOrAnimResObjFromNarc
 	mov r1, #0xc7
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -1545,7 +1545,7 @@ _0203C6EA:
 	add r0, r5, r2
 	add r2, r1, #0
 	str r1, [sp, #0x28]
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	mov r0, #0x75
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -1575,13 +1575,13 @@ _0203C6EA:
 	add r0, sp, #0x2c
 	str r3, [sp, #0x50]
 	str r2, [sp, #0x58]
-	bl sub_02024624
+	bl CreateSprite
 	mov r1, #0xd1
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -1609,7 +1609,7 @@ _0203C84E:
 	lsl r0, r4, #2
 	add r0, r5, r0
 	ldr r0, [r0, r6]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
@@ -1989,7 +1989,7 @@ _0203CB1A:
 	strh r0, [r7, #0x18]
 	strb r0, [r7, #0x12]
 	ldr r0, [r5, #0xc]
-	bl sub_0202D95C
+	bl Save_SpecialRibbons_get
 	str r0, [r7, #0x20]
 	ldr r0, [r5, #0xc]
 	bl SavArray_IsNatDexEnabled

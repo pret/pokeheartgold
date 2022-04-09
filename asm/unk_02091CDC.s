@@ -324,7 +324,7 @@ sub_02091F78: ; 0x02091F78
 	mov r2, #7
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0x18]
-	bl sub_02020080
+	bl ResetAllTextPrinters
 	mov r0, #0
 	str r0, [r4, #8]
 	add r1, r4, #0
@@ -565,7 +565,7 @@ _02092164:
 	ldr r0, [r5, #0xc]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02092194
 	ldr r0, [r5, #0x10]

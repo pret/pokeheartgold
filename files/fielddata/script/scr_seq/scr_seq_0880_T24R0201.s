@@ -103,7 +103,7 @@ _014C:
 	goto _0192
 
 _0162:
-	scrcmd_382 VAR_SPECIAL_RESULT, VAR_TEMP_x4000
+	mon_get_friendship VAR_SPECIAL_RESULT, VAR_TEMP_x4000
 	compare VAR_SPECIAL_RESULT, 149
 	goto_if_le _0181
 	call _019A

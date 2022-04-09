@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_UNK_0203E348_H
 
 #include "script.h"
+#include "overlay_02.h"
 
 struct UseMailWork;
 struct ApricornBoxWork;
@@ -23,6 +24,7 @@ struct BerryPotsWork *CreateBerryPotsWork(FieldSystem *fsys);
 struct UnownReportWork *CreateUnownReportWork(FieldSystem *fsys);
 struct GracideaWork *sub_0203FAE8(FieldSystem *fsys, HeapID heapId, u16 itemId);
 void sub_0203F570(FieldSystem *fsys, SAVEDATA *saveData);
+UnkStruct_Ov02_0224E4EC* sub_0203EB64(FieldSystem *fsys);
 void FieldSys_LaunchChooseStarterApplication(FieldSystem *fsys, struct ChooseStarterAppData *data);
 
 #endif //POKEHEARTGOLD_UNK_0203E348_H

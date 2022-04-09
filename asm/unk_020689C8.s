@@ -148,7 +148,7 @@ _02068ACE:
 	cmp r0, #0
 	bne _02068AF2
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r5, #0
 	bl sub_02068C6C
 	add sp, #0x18
@@ -222,7 +222,7 @@ _02068B52:
 	bl sub_02068DA0
 	cmp r0, #0
 	beq _02068B78
-	bl sub_0200E390
+	bl DestroySysTask
 _02068B78:
 	add r0, r4, #0
 	bl sub_02068C6C
@@ -287,7 +287,7 @@ sub_02068BDC: ; 0x02068BDC
 	add r2, r1, #0
 	ldr r0, _02068BF8 ; =sub_02068BFC
 	add r1, r3, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	add r4, r0, #0
 	bne _02068BF2
 	bl GF_AssertFail

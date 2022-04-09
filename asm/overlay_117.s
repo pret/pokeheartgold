@@ -84,7 +84,7 @@ _0225F0A2:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #6
@@ -220,7 +220,7 @@ _0225F136:
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0xf2
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -424,7 +424,7 @@ _0225F358:
 	mov r0, #0x17
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _0225F394:
 	mov r1, #0x86
 	mov r2, #0xaa
@@ -706,7 +706,7 @@ _0225F560:
 	bl ov01_021F0718
 	str r0, [r4]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r4]
 	mov r1, #1
 	bl sub_02024B78
@@ -1009,7 +1009,7 @@ _0225F820:
 	bl G2x_SetBlendAlpha_
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x6d
 	mov r1, #0
 	lsl r0, r0, #2

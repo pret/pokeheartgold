@@ -141,7 +141,7 @@ sub_0208DF2C: ; 0x0208DF2C
 	strh r0, [r1, #4]
 	strh r0, [r1, #6]
 	mov r0, #0x13
-	bl sub_02023114
+	bl GF_Camera_Create
 	mov r1, #0xa7
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -160,7 +160,7 @@ sub_0208DF2C: ; 0x0208DF2C
 	ldr r2, [r4, r2]
 	mov r0, #0
 	lsl r1, r1, #0xe
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	mov r0, #0xa7
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -168,7 +168,7 @@ sub_0208DF2C: ; 0x0208DF2C
 	mov r0, #0xa7
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0202313C
+	bl GF_Camera_RegisterToStaticPtr
 	add sp, #0x1c
 	pop {r3, r4, pc}
 	nop
@@ -642,11 +642,11 @@ sub_0208E3AC: ; 0x0208E3AC
 	bne _0208E3DE
 	mov r2, #2
 	mov r3, #0
-	bl sub_0207013C
+	bl GetBoxmonSpriteCharAndPlttNarcIds
 	b _0208E3E4
 _0208E3DE:
 	mov r2, #2
-	bl sub_02070124
+	bl GetPokemonSpriteCharAndPlttNarcIds
 _0208E3E4:
 	mov r2, #0xa9
 	lsl r2, r2, #2

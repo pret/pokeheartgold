@@ -8,5 +8,7 @@ int sub_020399B8(void);
 BOOL sub_02038D90(void);
 int sub_0203993C(void);
 int sub_02039998(void);
+u32 *sub_020392D8(void);
+BOOL sub_020393C8(void);
 
 #endif //POKEHEARTGOLD_UNK_02037C94_H

@@ -6,7 +6,7 @@
 void Sav2_BerryPots_init(BERRY_POT *berryPot) {
     int i;
 
-    MI_CpuFill8(berryPot, 0, MAX_BERRY_POT * sizeof(BERRY_POT));
+    MI_CpuClear8(berryPot, MAX_BERRY_POT * sizeof(BERRY_POT));
     for (i = 0; i < MAX_BERRY_POT; i++) {
         berryPot[i].unk_1 = 0;
         berryPot[i].unk_0 = 0;

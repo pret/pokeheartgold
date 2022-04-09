@@ -4,6 +4,7 @@
 #include "constants/snd_system.h"
 #include "math_util.h"
 #include "sound_tool.h"
+#include "unk_02005D10.h"
 
 BOOL ChatotSoundMain(void) {
     u8 *r4 = GF_SdatGetAttrPtr(SND_W_ID_WAVEOUT_CH_NORMAL_FLAG);

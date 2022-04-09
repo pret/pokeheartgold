@@ -2787,7 +2787,7 @@ ov15_021FA93C: ; 0x021FA93C
 	add r5, r0, #0
 	ldr r0, _021FAA10 ; =0x00000619
 	add r4, r5, r0
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	bne _021FA958
 	ldrb r1, [r4, #7]
@@ -4536,7 +4536,7 @@ ov15_021FB700: ; 0x021FB700
 	add r4, r0, #0
 	ldr r0, _021FB778 ; =0x00000616
 	ldrb r0, [r4, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021FB772
 	ldr r0, _021FB77C ; =gSystem
@@ -4747,7 +4747,7 @@ _021FB898:
 _021FB8AC:
 	sub r1, #0x65
 	ldrb r0, [r4, r1]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021FB936
 	ldr r0, _021FB9CC ; =gSystem
@@ -4791,7 +4791,7 @@ _021FB8CA:
 _021FB90C:
 	sub r1, #0x65
 	ldrb r0, [r4, r1]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021FB9BA
 	add r0, r4, #0
@@ -5132,7 +5132,7 @@ _021FBBC2:
 _021FBBD4:
 	sub r1, #0x65
 	ldrb r0, [r5, r1]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021FBC56
 	ldr r0, _021FBC64 ; =gSystem
@@ -5658,7 +5658,7 @@ ov15_021FBFF8: ; 0x021FBFF8
 	add r4, r0, #0
 	ldr r0, _021FC018 ; =0x00000616
 	ldrb r0, [r4, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021FC012
 	add r0, r4, #0
@@ -5811,7 +5811,7 @@ ov15_021FC140: ; 0x021FC140
 	add r4, r0, #0
 	ldr r0, _021FC160 ; =0x00000616
 	ldrb r0, [r4, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _021FC154
 	mov r0, #0xa
@@ -5832,7 +5832,7 @@ ov15_021FC164: ; 0x021FC164
 	add r5, r0, #0
 	ldr r0, _021FC218 ; =0x00000616
 	ldrb r0, [r5, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021FC214
 	ldr r0, _021FC21C ; =gSystem
@@ -6000,7 +6000,7 @@ ov15_021FC2E0: ; 0x021FC2E0
 	add r5, r0, #0
 	ldr r0, _021FC370 ; =0x00000616
 	ldrb r0, [r5, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021FC36A
 	ldr r0, _021FC374 ; =gSystem
@@ -6574,7 +6574,7 @@ ov15_021FC784: ; 0x021FC784
 	add r4, r0, #0
 	ldr r0, _021FC7E0 ; =0x00000616
 	ldrb r0, [r4, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021FC7DC
 	ldr r0, _021FC7E4 ; =gSystem
@@ -7306,7 +7306,7 @@ ov15_021FCD80: ; 0x021FCD80
 	add r4, r0, #0
 	ldr r0, _021FCDDC ; =0x00000616
 	ldrb r0, [r4, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021FCDD6
 	ldr r0, _021FCDE0 ; =0x00000682
@@ -7717,7 +7717,7 @@ ov15_021FD0E8: ; 0x021FD0E8
 	add r4, r0, #0
 	ldr r0, _021FD108 ; =0x00000616
 	ldrb r0, [r4, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021FD102
 	add r0, r4, #0
@@ -7882,7 +7882,7 @@ ov15_021FD24C: ; 0x021FD24C
 	add r4, r0, #0
 	ldr r0, _021FD2F4 ; =0x00000616
 	ldrb r0, [r4, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _021FD264
 	add sp, #4
@@ -7968,7 +7968,7 @@ ov15_021FD2FC: ; 0x021FD2FC
 	add r5, r0, #0
 	ldr r0, _021FD39C ; =0x00000616
 	ldrb r0, [r5, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021FD396
 	ldr r0, _021FD3A0 ; =gSystem
@@ -8810,7 +8810,7 @@ ov15_021FD93C: ; 0x021FD93C
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
 	mov r0, #6
-	bl sub_02023114
+	bl GF_Camera_Create
 	ldr r2, _021FDAAC ; =0x00000818
 	ldr r4, _021FDAB0 ; =ov15_02200500
 	str r0, [r5, r2]
@@ -8848,7 +8848,7 @@ ov15_021FD93C: ; 0x021FD93C
 	ldr r1, [r5, r1]
 	add r0, r6, #0
 	add r2, r5, r2
-	bl sub_02023254
+	bl GF_Camera_InitFromTargetDistanceAndAngle
 	ldr r0, _021FDABC ; =0x00000934
 	ldr r3, _021FDAC0 ; =ov15_0220050C
 	add r2, r5, r0
@@ -8874,10 +8874,10 @@ ov15_021FD93C: ; 0x021FD93C
 	ldr r1, _021FDAC8 ; =0x006A4000
 	ldr r2, [r5, r2]
 	lsl r0, r0, #0xc
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	ldr r0, _021FDAAC ; =0x00000818
 	ldr r0, [r5, r0]
-	bl sub_0202313C
+	bl GF_Camera_RegisterToStaticPtr
 	mov r6, #1
 	ldr r7, _021FDA9C ; =0x00007FFF
 	mov r4, #0
@@ -9205,7 +9205,7 @@ _021FDC94:
 	ldr r1, [r5, r1]
 	add r0, r5, r0
 	add r2, r5, r2
-	bl sub_02023254
+	bl GF_Camera_InitFromTargetDistanceAndAngle
 	bl sub_02026E48
 	bl sub_02023154
 	ldr r0, _021FDD4C ; =0x0000081C
@@ -9235,7 +9235,7 @@ _021FDC94:
 	add r1, r5, r1
 	add r2, sp, #0x18
 	add r3, sp, #0xc
-	bl sub_0201F554
+	bl Draw3dModel
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_02026E50
@@ -12663,7 +12663,7 @@ ov15_021FF850: ; 0x021FF850
 	mov r2, #1
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	pop {r4, pc}
 	thumb_func_end ov15_021FF850
 

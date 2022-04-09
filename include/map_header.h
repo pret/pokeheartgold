@@ -62,7 +62,7 @@ BOOL MapHeader_GetField14_1E(u32 map_no);
 BOOL MapHeader_GetField14_1F(u32 map_no);
 u32 MapHeader_GetMapType(u32 map_no);
 u8 MapHeader_GetFollowMode(u32 map_no);
-void MapHeader_GetWorldMapCoords(u32 map_no, u16* x, u16* y);
+void MapHeader_GetWorldMapCoords(u32 map_no, s16 *x, s16 *y);
 BOOL MapHeader_IsOutdoors(u32 map_no);
 BOOL MapHeader_MapIsOnMainMatrix(u32 map_no);
 BOOL MapHeader_IsCave(u32 map_no);

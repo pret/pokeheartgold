@@ -9093,7 +9093,7 @@ _021EA2DE:
 	mov r0, #3
 	tst r0, r1
 	bne _021EA2FC
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	beq _021EA2FC
 	ldrh r0, [r5, #2]
@@ -10376,7 +10376,7 @@ _021EAD3A:
 	mov r0, #0x10
 	tst r0, r1
 	bne _021EAD56
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	bne _021EAD56
 	mov r0, #0
@@ -11000,7 +11000,7 @@ _021EB23C:
 	mov r0, #0x10
 	tst r0, r1
 	bne _021EB258
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	bne _021EB258
 	mov r0, #0
@@ -14293,7 +14293,7 @@ _021ECD6E:
 	add sp, #4
 	pop {r3, r4, pc}
 _021ECD92:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _021ECDB4
 	ldr r0, _021ECDBC ; =0x000008E9
@@ -22633,7 +22633,7 @@ ov18_021F1024: ; 0x021F1024
 	mov r2, #2
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	add sp, #0x4c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -23938,7 +23938,7 @@ _021F1AC8:
 	ldr r2, [sp, #0x18]
 	add r0, sp, #0x30
 	add r1, r4, #0
-	bl sub_020701E4
+	bl GetMonSpriteCharAndPlttNarcIdsEx
 	str r7, [sp]
 	str r6, [sp, #4]
 	mov r0, #0
@@ -33855,7 +33855,7 @@ _021F6A22:
 	ldr r2, [sp, #0x18]
 	add r0, sp, #0x2c
 	add r1, r4, #0
-	bl sub_020701E4
+	bl GetMonSpriteCharAndPlttNarcIdsEx
 	str r7, [sp]
 	str r6, [sp, #4]
 	mov r0, #0
@@ -33955,7 +33955,7 @@ ov18_021F6B00: ; 0x021F6B00
 	ldr r0, _021F6BA8 ; =0x00000864
 	mov r1, #0
 	str r1, [r4, r0]
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _021F6B3A
 	ldr r0, _021F6BAC ; =_021FB72C
@@ -36096,7 +36096,7 @@ ov18_021F7B94: ; 0x021F7B94
 	sub sp, #8
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _021F7BE8
 	ldr r0, _021F7C04 ; =_021FB704
@@ -36164,7 +36164,7 @@ ov18_021F7C14: ; 0x021F7C14
 	mvn r1, r1
 	cmp r0, r1
 	bne _021F7CE6
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _021F7C4C
 	ldr r0, _021F7CE8 ; =_021FB934
@@ -36320,7 +36320,7 @@ ov18_021F7D30: ; 0x021F7D30
 	mvn r1, r1
 	cmp r0, r1
 	bne _021F7DBA
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _021F7D68
 	ldr r0, _021F7DBC ; =_021FB804
@@ -36399,7 +36399,7 @@ ov18_021F7DCC: ; 0x021F7DCC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _021F7DF8
 	ldr r0, _021F7E60 ; =_021FB7E0
@@ -36493,7 +36493,7 @@ ov18_021F7E70: ; 0x021F7E70
 	mvn r1, r1
 	cmp r0, r1
 	bne _021F7EC8
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _021F7EA2
 	ldr r0, _021F7ECC ; =_021FB630
@@ -37988,7 +37988,7 @@ _021F8992:
 	str r2, [r4, r0]
 	ldr r0, _021F89C4 ; =ov18_021F89F8
 	add r1, r4, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4, #0x18]
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
@@ -38016,7 +38016,7 @@ ov18_021F89D0: ; 0x021F89D0
 	ldr r0, [r4, #0x1c]
 	bl NARC_dtor
 	ldr r0, [r4, #0x18]
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -38696,7 +38696,7 @@ _021F8F6C:
 	ldr r2, [r6, #0x14]
 	mov r0, #8
 	add r1, r4, #0
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	str r0, [r5, r7]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -38715,7 +38715,7 @@ ov18_021F8F84: ; 0x021F8F84
 	lsl r6, r6, #4
 _021F8F8E:
 	ldr r0, [r5, r6]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -38732,7 +38732,7 @@ ov18_021F8FA0: ; 0x021F8FA0
 	ldr r2, [r4, #0x14]
 	mov r0, #0x20
 	add r1, #0xb8
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	add r1, r4, #0
 	add r1, #0xb4
 	str r0, [r1]
@@ -38917,19 +38917,19 @@ ov18_021F9108: ; 0x021F9108
 	ldr r0, [r4, r1]
 	add r1, #0x3c
 	ldr r1, [r4, r1]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	mov r1, #0x7a
 	lsl r1, r1, #2
 	ldr r0, [r4, r1]
 	add r1, #0x3c
 	ldr r1, [r4, r1]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	mov r1, #0x7b
 	lsl r1, r1, #2
 	ldr r0, [r4, r1]
 	add r1, #0x3c
 	ldr r1, [r4, r1]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	pop {r4, pc}
 	thumb_func_end ov18_021F9108
 
@@ -39053,7 +39053,7 @@ ov18_021F922C: ; 0x021F922C
 	ldr r0, [r4]
 	ldr r2, [sp, #0x20]
 	add r1, r7, #0
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	str r0, [r5]
 	bl sub_0200ADA4
 	ldr r0, [r5]
@@ -39082,7 +39082,7 @@ _021F9276:
 	ldr r0, [r4, #8]
 	add r1, r7, #0
 	mov r3, #1
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	str r0, [r5, #8]
 	ldr r0, [sp, #0x40]
 	ldr r2, [sp, #0x2c]
@@ -39093,7 +39093,7 @@ _021F9276:
 	ldr r0, [r4, #0xc]
 	add r1, r7, #0
 	mov r3, #1
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	str r0, [r5, #0xc]
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -39114,7 +39114,7 @@ ov18_021F92AC: ; 0x021F92AC
 	add r1, r2, #0
 	add r2, r3, #0
 	mov r3, #0
-	bl sub_0200A480
+	bl AddPlttResObjFromOpenNarc
 	add r4, r0, #0
 	bl sub_0200B00C
 	add r0, r4, #0
@@ -39136,16 +39136,16 @@ ov18_021F92DC: ; 0x021F92DC
 	bl sub_0200B0A8
 	ldr r0, [r4]
 	ldr r1, [r5]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	ldr r0, [r4, #4]
 	ldr r1, [r5, #4]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	ldr r0, [r4, #8]
 	ldr r1, [r5, #8]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	ldr r0, [r4, #0xc]
 	ldr r1, [r5, #0xc]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov18_021F92DC
 
@@ -39190,7 +39190,7 @@ ov18_021F9310: ; 0x021F9310
 	str r0, [sp, #0x28]
 	ldr r1, [sp, #0x2c]
 	add r0, r7, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -39288,7 +39288,7 @@ ov18_021F9370: ; 0x021F9370
 	str r1, [sp, #0x28]
 	add r0, sp, #0x2c
 	add r1, r4, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	add r0, r5, #0
 	add r0, #0xb4
 	ldr r0, [r0]
@@ -39326,7 +39326,7 @@ _021F947A:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add sp, #0x70
 	pop {r3, r4, r5, r6, r7, pc}
 _021F948A:
@@ -39492,7 +39492,7 @@ ov18_021F95AC: ; 0x021F95AC
 _021F95B8:
 	ldr r0, [r5, r6]
 	add r1, r7, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r4, r4, #1
 	add r5, #0x14
 	cmp r4, #4
@@ -39509,7 +39509,7 @@ ov18_021F95CC: ; 0x021F95CC
 	ldr r1, [r4, #0xc]
 	add r0, sp, #0x10
 	mov r2, #2
-	bl sub_02070124
+	bl GetPokemonSpriteCharAndPlttNarcIds
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]

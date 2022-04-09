@@ -469,7 +469,7 @@ _02237BDE:
 	mov r2, #0x11
 	mov r1, #0
 	lsl r2, r2, #0x10
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -942,7 +942,7 @@ _02237FD8:
 	mov r2, #0x11
 	mov r1, #0
 	lsl r2, r2, #0x10
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1124,12 +1124,12 @@ _02237FD8:
 	ldr r0, _02238338 ; =ov12_02239810
 	ldr r2, _0223833C ; =0x0000EA60
 	add r1, r4, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4, #0x1c]
 	ldr r0, _02238340 ; =ov12_02239854
 	ldr r2, _02238344 ; =0x0000C350
 	add r1, r4, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4, #0x20]
 	mov r2, #0x4b
 	ldr r0, _02238348 ; =ov12_0223998C
@@ -1630,9 +1630,9 @@ _022386C0:
 	ldr r0, [r4, r0]
 	bl MessagePrinter_delete
 	ldr r0, [r4, #0x1c]
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, [r4, #0x20]
-	bl sub_0200E390
+	bl DestroySysTask
 	bl sub_02021238
 	ldr r0, [r4]
 	bl ov12_022396E8
@@ -3910,7 +3910,7 @@ ov12_0223998C: ; 0x0223998C
 	cmp r0, #0
 	bne _022399B4
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _022399B4:
 	pop {r3, r4, r5, pc}
 	nop
@@ -13682,7 +13682,7 @@ ov12_0223E2F0: ; 0x0223E2F0
 	ldr r0, _0223E380 ; =0x00000C03
 	tst r0, r1
 	bne _0223E324
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _0223E32A
 _0223E324:
@@ -14357,7 +14357,7 @@ ov12_0223E81C: ; 0x0223E81C
 	str r2, [r0, #0x48]
 	ldr r0, _0223E858 ; =ov12_02245898
 	ldr r1, [r4, r1]
-	bl sub_0200E320
+	bl CreateSysTask
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
@@ -14820,7 +14820,7 @@ ov12_0223EB88: ; 0x0223EB88
 	ldr r0, _0223EBE0 ; =ov12_022465A8
 	ldr r1, [r4, r1]
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -29197,7 +29197,7 @@ _02245B7E:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02245C2A
 	ldr r0, [r4, #0x28]
@@ -29397,7 +29397,7 @@ _02245D28:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _02245D38
 	b _022463B6
@@ -29659,7 +29659,7 @@ _02245F4A:
 	ldr r0, _02246034 ; =0x00000C03
 	tst r0, r1
 	bne _02245F5C
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _02245FEA
 _02245F5C:
@@ -29845,7 +29845,7 @@ _022460E2:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02246126
 	ldr r0, [r4, #0x28]
@@ -29909,7 +29909,7 @@ _02246162:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02246268
 	ldr r0, [r4]
@@ -30029,7 +30029,7 @@ _0224625A:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _0224626A
 _02246268:
@@ -30157,7 +30157,7 @@ _02246364:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _022463B6
 	mov r0, #0xf
@@ -30192,7 +30192,7 @@ _022463A0:
 	add r0, r4, #0
 	bl FreeToHeap
 	ldr r0, [sp, #0x14]
-	bl sub_0200E390
+	bl DestroySysTask
 _022463B6:
 	add sp, #0xd8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -30785,7 +30785,7 @@ _0224686C:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0224689E
 	mov r0, #0xa
@@ -30969,7 +30969,7 @@ _02246A18:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02246A70
 	ldr r0, [r4, #0x34]
@@ -31074,7 +31074,7 @@ _02246AFA:
 	str r0, [r4, #0x28]
 	b _02246B26
 _02246B14:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _02246B26
 	ldr r0, _02246CC8 ; =0x000005DC
@@ -31207,7 +31207,7 @@ _02246C00:
 	add r0, sp, #0xc0
 	add r1, r6, #0
 	mov r2, #2
-	bl sub_02070124
+	bl GetPokemonSpriteCharAndPlttNarcIds
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -31662,7 +31662,7 @@ _0224702E:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _022470E6
 	ldr r0, [r4, #0x34]
@@ -31732,7 +31732,7 @@ _022470D0:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _022470E6
 	ldr r0, [r4, #0x34]
@@ -31767,7 +31767,7 @@ _02247116:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02247216
 	ldr r0, [r4, #0x34]
@@ -31782,7 +31782,7 @@ _02247116:
 	add r0, r4, #0
 	bl FreeToHeap
 	ldr r0, [sp, #0x10]
-	bl sub_0200E390
+	bl DestroySysTask
 	add sp, #0x158
 	pop {r3, r4, r5, r6, r7, pc}
 _02247146:
@@ -31838,7 +31838,7 @@ _022471AC:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02247216
 	ldr r0, [r4, #0x34]
@@ -31853,7 +31853,7 @@ _022471AC:
 	add r0, r4, #0
 	bl FreeToHeap
 	ldr r0, [sp, #0x10]
-	bl sub_0200E390
+	bl DestroySysTask
 	add sp, #0x158
 	pop {r3, r4, r5, r6, r7, pc}
 _022471DC:
@@ -31881,7 +31881,7 @@ _022471F8:
 	add r0, r4, #0
 	bl FreeToHeap
 	ldr r0, [sp, #0x10]
-	bl sub_0200E390
+	bl DestroySysTask
 _02247216:
 	add sp, #0x158
 	pop {r3, r4, r5, r6, r7, pc}
@@ -70005,7 +70005,7 @@ _02259418:
 	ldrh r1, [r4, #2]
 	ldrb r2, [r4, #4]
 	add r0, sp, #0x14
-	bl sub_020701E4
+	bl GetMonSpriteCharAndPlttNarcIdsEx
 	ldr r0, [r5, #0x20]
 	bl sub_02009414
 	add r7, r0, #0
@@ -70669,7 +70669,7 @@ ov12_02259944: ; 0x02259944
 	strb r2, [r1, #0x15]
 	ldr r0, _02259964 ; =ov12_02260668
 	strb r2, [r1, #0x16]
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r4, pc}
 	.balign 4, 0
 _02259964: .word ov12_02260668
@@ -70758,7 +70758,7 @@ _022599F2:
 	lsl r2, r2, #0x1e
 	add r0, sp, #0x5c
 	lsr r2, r2, #0x1e
-	bl sub_020701E4
+	bl GetMonSpriteCharAndPlttNarcIdsEx
 	ldr r0, [r5, #4]
 	str r0, [sp]
 	ldrb r3, [r5, #1]
@@ -70923,13 +70923,13 @@ _02259B1E:
 	ldr r0, _02259BA0 ; =ov12_0225B7B8
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	b _02259B82
 _02259B78:
 	ldr r0, _02259BA4 ; =ov12_0225B494
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 _02259B82:
 	mov r0, #1
 	bl Snd_SetPVDoubleFlag
@@ -70997,7 +70997,7 @@ _02259BE4:
 	ldrb r3, [r3]
 	add r0, #0x14
 	lsr r2, r2, #0x1e
-	bl sub_020701E4
+	bl GetMonSpriteCharAndPlttNarcIdsEx
 	ldr r0, [r5, #4]
 	add r2, r4, #0
 	str r0, [sp]
@@ -71122,21 +71122,21 @@ _02259BE4:
 	ldr r0, _02259D40 ; =ov12_0225B960
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 _02259D1E:
 	ldr r0, _02259D44 ; =ov12_0225BE38
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 _02259D2C:
 	ldr r0, _02259D40 ; =ov12_0225B960
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -71204,7 +71204,7 @@ _02259D92:
 	ldrb r3, [r3]
 	add r0, #0x14
 	lsr r2, r2, #0x1e
-	bl sub_020701E4
+	bl GetMonSpriteCharAndPlttNarcIdsEx
 	ldr r0, [r4, #4]
 	add r2, r5, #0
 	str r0, [sp]
@@ -71369,14 +71369,14 @@ _02259F06:
 	ldr r0, _02259F28 ; =ov12_0225C18C
 	add r1, r5, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 _02259F14:
 	ldr r0, _02259F2C ; =ov12_0225C6C8
 	add r1, r5, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -71488,14 +71488,14 @@ _02259FF4:
 	ldr r0, _0225A010 ; =ov12_0225C9BC
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 _0225A002:
 	ldr r0, _0225A014 ; =ov12_0225CC58
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -71545,7 +71545,7 @@ ov12_0225A018: ; 0x0225A018
 	ldr r0, _0225A078 ; =ov12_0225CDB8
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0225A074: .word ov12_0226D15A
@@ -71802,7 +71802,7 @@ _0225A27A:
 	ldr r0, _0225A29C ; =ov12_0225CE28
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	add sp, #0x50
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -71873,13 +71873,13 @@ _0225A2FC:
 	ldr r0, _0225A32C ; =ov12_0225D644
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 _0225A320:
 	ldr r0, _0225A330 ; =ov12_0225D138
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0225A32C: .word ov12_0225D644
@@ -71918,7 +71918,7 @@ _0225A36A:
 	strb r0, [r1, #0xb]
 	ldr r0, _0225A378 ; =ov12_0225D890
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, pc}
 	nop
 _0225A378: .word ov12_0225D890
@@ -71986,7 +71986,7 @@ _0225A3A6:
 	ldrb r0, [r5, r0]
 	strb r0, [r4, #9]
 	ldr r0, _0225A410 ; =ov12_0225D990
-	bl sub_0200E320
+	bl CreateSysTask
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -72085,7 +72085,7 @@ ov12_0225A414: ; 0x0225A414
 	ldr r0, _0225A4D8 ; =ov12_0225DA18
 	add r1, r4, #0
 	lsl r2, r2, #2
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4, #0x10]
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -72123,7 +72123,7 @@ ov12_0225A4DC: ; 0x0225A4DC
 	ldr r0, _0225A520 ; =ov12_0225DA8C
 	add r1, r4, #0
 	lsl r2, r2, #2
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4, #0x10]
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -72245,7 +72245,7 @@ _0225A5D4:
 	add r1, r4, #0
 	ldr r0, [r0]
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov12_0225A524
 
@@ -72303,7 +72303,7 @@ _0225A646:
 	strh r0, [r3, #0x22]
 	ldr r0, [sp]
 	ldr r0, [r0, #4]
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov12_0225A604
@@ -72373,7 +72373,7 @@ _0225A6F0:
 	ldr r0, [r7, #8]
 	add r1, r6, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -72460,7 +72460,7 @@ _0225A778:
 	add r1, r4, #0
 	ldr r0, [r0, #0xc]
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -72519,7 +72519,7 @@ _0225A7F0:
 	add r1, r2, #0
 	ldr r0, [r0, #0x10]
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov12_0225A7AC
@@ -72555,7 +72555,7 @@ ov12_0225A818: ; 0x0225A818
 	ldr r0, [r4, #8]
 	str r0, [r1, #0x14]
 	ldr r0, [r5, #0x14]
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov12_0225A818
@@ -72603,7 +72603,7 @@ ov12_0225A85C: ; 0x0225A85C
 	ldr r0, _0225A8C0 ; =ov12_022605D0
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -72642,7 +72642,7 @@ ov12_0225A8C4: ; 0x0225A8C4
 	ldr r0, _0225A910 ; =ov12_022605D0
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0225A910: .word ov12_022605D0
@@ -72723,7 +72723,7 @@ _0225A98C:
 	ldr r0, _0225A9AC ; =ov12_0225FD14
 	add r1, r6, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0225A9AC: .word ov12_0225FD14
@@ -72749,7 +72749,7 @@ ov12_0225A9B0: ; 0x0225A9B0
 	strb r0, [r1, #8]
 	ldr r0, _0225A9DC ; =ov12_0225FF80
 	strb r2, [r1, #0xa]
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0225A9DC: .word ov12_0225FF80
@@ -72815,7 +72815,7 @@ _0225AA50:
 	ldr r0, _0225AA68 ; =ov12_0225FFDC
 	add r1, r4, #0
 	lsl r2, r2, #2
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4, #0x10]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -72868,7 +72868,7 @@ _0225AA7E:
 	ldr r0, _0225AADC ; =ov12_02260030
 	add r1, r4, #0
 	lsl r2, r2, #2
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4, #0x10]
 	pop {r3, r4, r5, r6, r7, pc}
 _0225AACA:
@@ -72989,7 +72989,7 @@ _0225AB6E:
 	blt _0225AB6E
 	ldr r0, _0225ABB4 ; =ov12_022600F0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0225ABB0: .word 0x00000195
@@ -73044,7 +73044,7 @@ ov12_0225ABE8: ; 0x0225ABE8
 	ldrb r0, [r4, r0]
 	strb r0, [r1, #5]
 	ldr r0, _0225AC18 ; =ov12_0226037C
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, pc}
 	nop
 _0225AC18: .word ov12_0226037C
@@ -73120,7 +73120,7 @@ _0225AC68:
 	blt _0225AC68
 	ldr r0, _0225ACAC ; =ov12_02260418
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0225ACAC: .word ov12_02260418
@@ -73193,7 +73193,7 @@ ov12_0225ACE8: ; 0x0225ACE8
 	ldr r0, _0225AD40 ; =ov12_022605D0
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -73234,7 +73234,7 @@ ov12_0225AD44: ; 0x0225AD44
 	ldr r0, _0225AD98 ; =ov12_022605D0
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -73275,7 +73275,7 @@ ov12_0225AD9C: ; 0x0225AD9C
 	ldr r0, _0225ADF0 ; =ov12_022605D0
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -73315,7 +73315,7 @@ ov12_0225ADF4: ; 0x0225ADF4
 	ldr r0, _0225AE44 ; =ov12_022605D0
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -73356,7 +73356,7 @@ ov12_0225AE48: ; 0x0225AE48
 	ldr r0, _0225AE9C ; =ov12_022605D0
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -73386,7 +73386,7 @@ ov12_0225AEA0: ; 0x0225AEA0
 	strb r2, [r1, #0xa]
 	ldr r0, _0225AED4 ; =ov12_02260584
 	str r4, [r1, #4]
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, pc}
 	nop
 _0225AED4: .word ov12_02260584
@@ -73428,7 +73428,7 @@ ov12_0225AED8: ; 0x0225AED8
 	ldr r0, _0225AF70 ; =ov12_02260614
 	add r1, r7, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 _0225AF2A:
 	cmp r2, #1
@@ -73579,7 +73579,7 @@ ov12_0225B028: ; 0x0225B028
 	ldrb r0, [r4, #1]
 	strb r0, [r1, #0xe]
 	ldr r0, _0225B05C ; =ov12_022609F8
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0225B05C: .word ov12_022609F8
@@ -73612,7 +73612,7 @@ ov12_0225B060: ; 0x0225B060
 	ldrb r0, [r4, #2]
 	strb r0, [r1, #0xd]
 	ldr r0, _0225B09C ; =ov12_02260B30
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r4, r5, r6, pc}
 	nop
 _0225B09C: .word ov12_02260B30
@@ -73651,7 +73651,7 @@ _0225B0CA:
 	ldr r0, _0225B0E4 ; =ov12_02260BA0
 	mov r2, #0
 	strb r2, [r1, #0xe]
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0225B0E4: .word ov12_02260BA0
@@ -73681,7 +73681,7 @@ ov12_0225B0E8: ; 0x0225B0E8
 	strb r0, [r1, #6]
 	ldr r0, _0225B11C ; =ov12_02260C58
 	strb r2, [r1, #0xe]
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0225B11C: .word ov12_02260C58
@@ -73721,7 +73721,7 @@ _0225B14A:
 	strb r0, [r1, #0xe]
 	ldr r0, _0225B168 ; =ov12_02260BA0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r4, r5, r6, pc}
 	nop
 _0225B168: .word ov12_02260BA0
@@ -73752,7 +73752,7 @@ ov12_0225B16C: ; 0x0225B16C
 	mov r0, #1
 	strb r0, [r1, #0xe]
 	ldr r0, _0225B1A4 ; =ov12_02260C58
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r4, r5, r6, pc}
 	nop
 _0225B1A4: .word ov12_02260C58
@@ -73851,7 +73851,7 @@ ov12_0225B234: ; 0x0225B234
 	ldr r0, [r4, #0x20]
 	str r0, [r1, #8]
 	ldr r0, _0225B268 ; =ov12_02260CDC
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0225B268: .word ov12_02260CDC
@@ -73881,7 +73881,7 @@ ov12_0225B26C: ; 0x0225B26C
 	ldr r0, [r4, #0x20]
 	str r0, [r1, #8]
 	ldr r0, _0225B2A0 ; =ov12_02260D28
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0225B2A0: .word ov12_02260D28
@@ -73920,7 +73920,7 @@ ov12_0225B2A4: ; 0x0225B2A4
 	ldr r0, _0225B2F4 ; =ov12_022605D0
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -73960,7 +73960,7 @@ ov12_0225B2F8: ; 0x0225B2F8
 	ldr r0, _0225B348 ; =ov12_022605D0
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -74000,7 +74000,7 @@ ov12_0225B34C: ; 0x0225B34C
 	ldr r0, _0225B39C ; =ov12_022605D0
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -74129,7 +74129,7 @@ ov12_0225B454: ; 0x0225B454
 	ldrb r0, [r7, r0]
 	strb r0, [r4, #5]
 	ldr r0, _0225B490 ; =ov12_02260D84
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0225B490: .word ov12_02260D84
@@ -74523,7 +74523,7 @@ _0225B798:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0225B7B4:
 	add sp, #0x70
 	pop {r4, r5, r6, pc}
@@ -74728,7 +74728,7 @@ _0225B940:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0225B95C:
 	add sp, #0x70
 	pop {r4, r5, r6, pc}
@@ -75310,7 +75310,7 @@ _0225BDFC:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0225BE20:
 	add sp, #0xb0
 	pop {r3, r4, r5, pc}
@@ -75720,7 +75720,7 @@ _0225C156:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0225C17A:
 	add sp, #0xfc
 	pop {r4, r5, pc}
@@ -76365,7 +76365,7 @@ _0225C6A6:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0225C6C4:
 	add sp, #0x1d8
 	pop {r4, r5, r6, pc}
@@ -76727,7 +76727,7 @@ _0225C98C:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0225C9AA:
 	add sp, #0x1fc
 	pop {r3, r4, r5, r6, pc}
@@ -77048,7 +77048,7 @@ _0225CC24:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0225CC42:
 	add sp, #0x178
 	pop {r4, r5, r6, pc}
@@ -77227,7 +77227,7 @@ _0225CD96:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0225CDB4:
 	add sp, #0x168
 	pop {r4, r5, r6, pc}
@@ -77284,7 +77284,7 @@ _0225CE10:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0225CE26:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_0225CDB8
@@ -77679,7 +77679,7 @@ _0225D11C:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0225D132:
 	add sp, #8
 	pop {r4, r5, r6, pc}
@@ -78276,7 +78276,7 @@ _0225D618:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0225D62E:
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
@@ -78540,7 +78540,7 @@ _0225D85A:
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0225D870:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -78661,7 +78661,7 @@ _0225D90E:
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0225D97A:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
@@ -78738,7 +78738,7 @@ _0225D9FE:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov12_0225D990
@@ -78801,7 +78801,7 @@ _0225DA6E:
 	mov r0, #0
 	str r0, [r4, #0x10]
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0225DA8A:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_0225DA18
@@ -78836,7 +78836,7 @@ _0225DAAC:
 	mov r0, #0
 	str r0, [r4, #0x10]
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r4, #0
 	mov r1, #0
 	bl ov12_02264F28
@@ -79050,7 +79050,7 @@ _0225DC6A:
 	add r0, r4, #0
 	add r0, #0x35
 	ldrb r0, [r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0225DC9C
 	mov r0, #3
@@ -79576,7 +79576,7 @@ _0225E0D0:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r7, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0225E0FA:
 	add sp, #0x58
 	pop {r3, r4, r5, r6, r7, pc}
@@ -79603,7 +79603,7 @@ ov12_0225E104: ; 0x0225E104
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_0225E104
 
@@ -79619,7 +79619,7 @@ ov12_0225E134: ; 0x0225E134
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov12_0225E134
@@ -79674,7 +79674,7 @@ _0225E1B4:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0225E1CC: .word ov12_0226D140
@@ -79697,7 +79697,7 @@ ov12_0225E1D4: ; 0x0225E1D4
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_0225E1D4
 
@@ -79739,7 +79739,7 @@ _0225E22C:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_0225E1FC
 
@@ -79941,7 +79941,7 @@ _0225E3D0:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0225E3F8:
 	add sp, #0x4c
 	pop {r4, r5, r6, r7, pc}
@@ -80037,7 +80037,7 @@ _0225E4A2:
 	add r0, r6, #0
 	bl FreeToHeap
 	ldr r0, [sp, #8]
-	bl sub_0200E390
+	bl DestroySysTask
 _0225E4C2:
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
@@ -80057,7 +80057,7 @@ ov12_0225E4CC: ; 0x0225E4CC
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov12_0225E4CC
@@ -80116,7 +80116,7 @@ _0225E53E:
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -80310,7 +80310,7 @@ _0225E6D4:
 	add r0, r4, #0
 	bl FreeToHeap
 	ldr r0, [sp, #8]
-	bl sub_0200E390
+	bl DestroySysTask
 _0225E6F4:
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
@@ -80346,7 +80346,7 @@ _0225E71E:
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov12_0225E6FC
 
@@ -80362,7 +80362,7 @@ ov12_0225E740: ; 0x0225E740
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov12_0225E740
@@ -80471,7 +80471,7 @@ _0225E80C:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r7, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov12_0225E760
 
@@ -81191,7 +81191,7 @@ _0225ED8E:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r7, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	add sp, #0x1fc
 	add sp, #0x14
 	pop {r3, r4, r5, r6, r7, pc}
@@ -81225,7 +81225,7 @@ _0225EDE0:
 	pop {r3, r4, r5, r6, r7, pc}
 _0225EE1C:
 	ldrb r0, [r4, #0x11]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0225EE32
 	ldrb r0, [r4, #0x17]
@@ -81875,7 +81875,7 @@ _0225F326:
 	pop {r3, r4, r5, r6, r7, pc}
 _0225F354:
 	ldrb r0, [r4, #0x11]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0225F376
 	ldrb r0, [r4, #0x17]
@@ -81941,7 +81941,7 @@ ov12_0225F3A4: ; 0x0225F3A4
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -81968,7 +81968,7 @@ ov12_0225F3FC: ; 0x0225F3FC
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov12_0225F3FC
@@ -82048,7 +82048,7 @@ _0225F48A:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov12_0225F434
@@ -82504,7 +82504,7 @@ _0225F882:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0225F8A6:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
@@ -82592,7 +82592,7 @@ _0225F93A:
 	add r0, r5, #0
 	bl FreeToHeap
 	ldr r0, [sp]
-	bl sub_0200E390
+	bl DestroySysTask
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -82610,7 +82610,7 @@ ov12_0225F960: ; 0x0225F960
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov12_0225F960
@@ -82701,7 +82701,7 @@ _0225FA18:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	nop
@@ -82796,7 +82796,7 @@ _0225FAEC:
 	ldrh r0, [r4, #0x1a]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _0225FB02
 	ldr r0, [r4, #0x10]
@@ -82973,7 +82973,7 @@ _0225FC4C:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0225FC76:
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
@@ -82993,7 +82993,7 @@ ov12_0225FC80: ; 0x0225FC80
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov12_0225FC80
@@ -83010,7 +83010,7 @@ ov12_0225FCA0: ; 0x0225FCA0
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov12_0225FCA0
@@ -83053,7 +83053,7 @@ _0225FCF0:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_0225FCC0
 
@@ -83332,7 +83332,7 @@ _0225FF34:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	add sp, #0x1fc
 	add sp, #0x14
 	pop {r3, r4, r5, pc}
@@ -83400,7 +83400,7 @@ _0225FFBA:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_0225FF80
 
@@ -83444,7 +83444,7 @@ _02260012:
 	mov r0, #0
 	str r0, [r4, #0x10]
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0226002C:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -83542,7 +83542,7 @@ _022600CE:
 	mov r0, #0
 	str r0, [r4, #0x10]
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _022600E8:
 	pop {r3, r4, r5, pc}
 	nop
@@ -83866,7 +83866,7 @@ _02260356:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _02260374:
 	add sp, #0x114
 	pop {r3, r4, r5, r6, pc}
@@ -83940,7 +83940,7 @@ _022603F8:
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0226040E:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -84124,7 +84124,7 @@ _02260560:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _0226057E:
 	add sp, #0x110
 	pop {r4, r5, r6, pc}
@@ -84163,7 +84163,7 @@ _022605AC:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _022605C8:
 	pop {r3, r4, r5, pc}
 	nop
@@ -84187,7 +84187,7 @@ ov12_022605D0: ; 0x022605D0
 	bl ov12_0223BB80
 _022605F2:
 	ldrb r0, [r4, #6]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02260612
 	ldrb r1, [r4, #5]
@@ -84197,7 +84197,7 @@ _022605F2:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _02260612:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_022605D0
@@ -84215,7 +84215,7 @@ ov12_02260614: ; 0x02260614
 	pop {r3, r4, r5, pc}
 _02260626:
 	ldrb r0, [r4, #6]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02260666
 	ldrb r0, [r4, #7]
@@ -84241,7 +84241,7 @@ _0226063C:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _02260666:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_02260614
@@ -84542,7 +84542,7 @@ _022608CC:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 _022608E8:
@@ -84806,7 +84806,7 @@ _02260B0C:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _02260B28:
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
@@ -84869,7 +84869,7 @@ _02260B86:
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _02260B9C:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -84965,7 +84965,7 @@ _02260C3C:
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _02260C52:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -85035,7 +85035,7 @@ _02260CC2:
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r7, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _02260CD8:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -85075,7 +85075,7 @@ _02260D0E:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov12_02260CDC
@@ -85121,7 +85121,7 @@ _02260D56:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov12_02260D28
@@ -85258,7 +85258,7 @@ _02260E84:
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _02260E9A:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -87267,7 +87267,7 @@ _02261DE0:
 	str r2, [r1]
 	ldr r0, _02261E3C ; =ov12_02261E40
 	str r2, [r1, #4]
-	bl sub_0200E320
+	bl CreateSysTask
 	b _02261E34
 _02261E0A:
 	mov r4, #1
@@ -87355,7 +87355,7 @@ _02261EA0:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _02261EB6:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_02261E40
@@ -87533,7 +87533,7 @@ ov12_02261FD4: ; 0x02261FD4
 	ldr r0, _0226200C ; =ov12_0226203C
 	ldr r2, _02262010 ; =0x000003F2
 	add r1, r4, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	mov r1, #0x66
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -87553,7 +87553,7 @@ ov12_02262014: ; 0x02262014
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0226203A
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0x66
 	mov r2, #0
 	lsl r0, r0, #2
@@ -93228,7 +93228,7 @@ ov12_02264B28: ; 0x02264B28
 	ldr r0, [r4, #0x50]
 	cmp r0, #0
 	beq _02264B3A
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	str r0, [r4, #0x50]
 _02264B3A:
@@ -93669,7 +93669,7 @@ ov12_02264E84: ; 0x02264E84
 	beq _02264E9E
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	add r0, r4, #0
 	mov r1, #1
 	bl ov12_02264F00
@@ -93695,7 +93695,7 @@ ov12_02264EB4: ; 0x02264EB4
 	beq _02264ED8
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	ldr r0, [r4, #8]
 	mov r1, #0
 	ldr r0, [r0]
@@ -93903,7 +93903,7 @@ _02265040:
 	ldr r0, _0226504C ; =ov12_02265054
 	ldr r2, _02265050 ; =0x000003DE
 	add r1, r4, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0226504C: .word ov12_02265054
@@ -94049,7 +94049,7 @@ _0226514C:
 	orr r0, r1
 	strb r0, [r5]
 	add r0, r7, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _02265164:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -95474,7 +95474,7 @@ ov12_02265C54: ; 0x02265C54
 	add r1, r4, #0
 	lsl r2, r2, #2
 	str r6, [r4, #4]
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r4, r5, r6, pc}
 	nop
 _02265C84: .word ov12_02265C88
@@ -95584,7 +95584,7 @@ _02265D38:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r7, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -95619,7 +95619,7 @@ ov12_02265D78: ; 0x02265D78
 	ldr r0, _02265D98 ; =ov12_02265DC4
 	ldr r2, _02265D9C ; =0x000003F2
 	add r1, r4, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4, #0x50]
 _02265D96:
 	pop {r4, pc}
@@ -95635,7 +95635,7 @@ ov12_02265DA0: ; 0x02265DA0
 	ldr r0, [r4, #0x50]
 	cmp r0, #0
 	beq _02265DB2
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	str r0, [r4, #0x50]
 _02265DB2:
@@ -96081,7 +96081,7 @@ _02266110:
 	str r0, [r6, r2]
 	ldr r0, _022662F4 ; =ov12_022698C4
 	add r2, #0x52
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r1, _022662F8 ; =0x00000698
 	mov r4, #0
 	str r0, [r6, r1]
@@ -96293,7 +96293,7 @@ _022662CA:
 	ldr r0, _02266314 ; =ov12_02269954
 	ldr r2, _02266318 ; =0x0000D6D8
 	add r1, r6, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r6, #0x68]
 	add r0, r6, #0
 	add sp, #0x24
@@ -96336,7 +96336,7 @@ _0226632E:
 	bl sub_020135AC
 	ldr r0, _0226638C ; =0x00000698
 	ldr r0, [r6, r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r4, #0
 	add r5, r6, #0
 _02266354:
@@ -96355,7 +96355,7 @@ _02266354:
 	ldr r0, [r6, #0x64]
 	bl FreeToHeap
 	ldr r0, [r6, #0x68]
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r6, #0
 	bl FreeToHeap
 	pop {r4, r5, r6, pc}
@@ -96829,7 +96829,7 @@ _02266774:
 	ldr r0, _022667EC ; =ov12_022668D0
 	ldr r1, [sp, #0x14]
 	ldr r2, _022667F0 ; =0x00000514
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r1, [sp, #0x14]
 	str r0, [r1, #8]
 	add r0, r1, #0
@@ -96945,7 +96945,7 @@ _02266864:
 	cmp r4, #6
 	blt _02266864
 	ldr r0, [r6, #8]
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r3, _022668C4 ; =0x00004FAB
 	mov r0, #0
 	str r0, [r6, #8]
@@ -97202,7 +97202,7 @@ _02266A76:
 	ldr r0, _02266ABC ; =0x000005D8
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, _02266ABC ; =0x000005D8
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
@@ -97214,7 +97214,7 @@ _02266A76:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	mov r0, #0x5f
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -97650,7 +97650,7 @@ ov12_02266D98: ; 0x02266D98
 	ldr r0, _02266DC0 ; =ov12_02266DC4
 	add r1, r3, #0
 	lsl r2, r2, #4
-	bl sub_0200E320
+	bl CreateSysTask
 _02266DBA:
 	pop {r4, pc}
 	.balign 4, 0
@@ -97727,7 +97727,7 @@ _02266E0A:
 	and r0, r1
 	str r0, [r2]
 	ldr r0, [sp]
-	bl sub_0200E390
+	bl DestroySysTask
 _02266E54:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -97824,7 +97824,7 @@ ov12_02266E6C: ; 0x02266E6C
 	ldr r0, _02266F60 ; =ov12_02269568
 	ldr r2, _02266F64 ; =0x000004BA
 	add r1, r4, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r0, _02266F68 ; =ov12_02269774
 	add r1, r4, #0
 	bl Main_SetHBlankIntrCB
@@ -100109,7 +100109,7 @@ _02268280:
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _02268290
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, _022682B4 ; =0x00000638
 	str r7, [r5, r0]
 _02268290:
@@ -100307,7 +100307,7 @@ _022683F4:
 	str r6, [r1, r0]
 	ldr r0, _0226843C ; =ov12_022684EC
 	add r1, r6, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	lsl r1, r5, #2
 	add r2, r4, r1
 	ldr r1, _02268420 ; =0x00000638
@@ -101685,7 +101685,7 @@ _02268E94:
 	ldr r2, _02268EB4 ; =0x00000514
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4, #0xc]
 	pop {r3, r4, r5, pc}
 	nop
@@ -101700,7 +101700,7 @@ ov12_02268EB8: ; 0x02268EB8
 	ldr r0, [r4, #0xc]
 	cmp r0, #0
 	beq _02268ED4
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, _02268ED8 ; =0x0000069C
 	mov r1, #0
 	add r0, r4, r0
@@ -102632,7 +102632,7 @@ _022695DA:
 	mov r2, #0
 	strb r2, [r1, r0]
 	ldr r0, [r5, #4]
-	bl sub_0200E390
+	bl DestroySysTask
 	bl HBlankInterruptDisable
 	ldr r2, _02269660 ; =0x04001000
 	ldr r0, _02269664 ; =0xFFFF1FFF
@@ -102678,7 +102678,7 @@ _02269606:
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _02269656:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -102962,7 +102962,7 @@ _02269870:
 	cmp r4, #4
 	blt _02269870
 	ldr r0, [sp]
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02269890: .word 0x0000068B
@@ -102976,7 +102976,7 @@ ov12_0226989C: ; 0x0226989C
 	add r4, r0, #0
 	bl ov12_02268D5C
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r4, pc}
 	thumb_func_end ov12_0226989C
 
@@ -105707,7 +105707,7 @@ _0226AC84:
 	ldr r0, [r5, r1]
 	mov r1, #1
 	ldr r0, [r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	mov r0, #0x6f
 	lsl r0, r0, #4
 	mov r3, #0x11
@@ -106113,7 +106113,7 @@ _0226B00E:
 	ldr r0, [r5]
 	mov r1, #8
 	ldr r0, [r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	b _0226B05C
 _0226B044:
 	ldr r2, _0226B08C ; =ov12_0226EB20
@@ -106125,7 +106125,7 @@ _0226B044:
 	ldr r0, [r5]
 	mov r1, #7
 	ldr r0, [r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _0226B05C:
 	ldr r0, [r5]
 	ldr r0, [r0]
@@ -106138,7 +106138,7 @@ _0226B05C:
 	ldr r0, _0226B090 ; =ov12_0226B098
 	add r1, r5, #0
 	lsl r2, r2, #2
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r5, #4]
 	ldr r0, _0226B094 ; =0x00000711
 	bl PlaySE
@@ -106231,7 +106231,7 @@ _0226B116:
 	add sp, #4
 	pop {r3, r4, pc}
 _0226B12E:
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	str r0, [r4, #4]
 	add sp, #4
@@ -106268,7 +106268,7 @@ _0226B168:
 	ldr r0, _0226B17C ; =ov12_0226B180
 	add r1, r5, #0
 	lsl r2, r2, #2
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r5, #4]
 	pop {r3, r4, r5, pc}
 	nop
@@ -106406,7 +106406,7 @@ _0226B264:
 _0226B27A:
 	bl ov12_0223C340
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	str r0, [r4, #4]
 	add sp, #8
@@ -106471,7 +106471,7 @@ _0226B2FE:
 	ldr r0, [r5]
 	ldr r1, [sp, #0x20]
 	ldr r0, [r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5]
 	ldr r0, [r0]
 	bl sub_0200DC0C
@@ -106531,14 +106531,14 @@ _0226B35C:
 	strh r0, [r5, #0x28]
 	ldr r0, _0226B3A8 ; =ov12_0226B3B0
 	add r1, r5, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r5, #4]
 	pop {r3, r4, r5, r6, r7, pc}
 _0226B382:
 	ldr r0, _0226B3AC ; =ov12_0226B5B0
 	strh r1, [r5, #0x28]
 	add r1, r5, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r5, #4]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -106729,7 +106729,7 @@ _0226B4E8:
 	add r1, #0x2e
 	ldrb r1, [r1]
 	ldr r0, [r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	mov r0, #0
 	strh r0, [r4, #0x28]
 	add r0, r4, #0
@@ -106809,7 +106809,7 @@ _0226B592:
 	ldr r0, [r0]
 	bl sub_020249D4
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	str r0, [r4, #4]
 _0226B5A6:
@@ -106927,7 +106927,7 @@ _0226B666:
 	add sp, #4
 	pop {r3, r4, pc}
 _0226B67E:
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	str r0, [r4, #4]
 	add sp, #4
@@ -106970,7 +106970,7 @@ _0226B6AE:
 	strb r1, [r0]
 	ldr r0, _0226B6F0 ; =ov12_0226B6F8
 	add r1, r5, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r5, #4]
 	pop {r3, r4, r5, r6, r7, pc}
 _0226B6D8:
@@ -106980,7 +106980,7 @@ _0226B6D8:
 	strb r1, [r0]
 	ldr r0, _0226B6F4 ; =ov12_0226B82C
 	add r1, r5, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r5, #4]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -107138,7 +107138,7 @@ _0226B808:
 	ldr r0, [r0]
 	bl sub_0200DCE0
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	str r0, [r4, #4]
 	pop {r3, r4, r5, pc}
@@ -107189,7 +107189,7 @@ _0226B86C:
 	ldr r0, [r0]
 	bl sub_0200DCE0
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	str r0, [r4, #4]
 _0226B880:
@@ -107416,7 +107416,7 @@ _0226B9EE:
 	ldr r0, _0226BA20 ; =ov12_0226BB90
 	ldr r1, [sp]
 	ldr r2, _0226BA24 ; =0x00009C40
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r1, [sp]
 	str r0, [r1, #0x14]
 	add r0, r1, #0
@@ -107442,7 +107442,7 @@ _0226BA30:
 	cmp r4, #5
 	blt _0226BA30
 	ldr r0, [r6, #0x14]
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r6, #0
 	bl FreeToHeap
 	pop {r4, r5, r6, pc}
@@ -107780,7 +107780,7 @@ _0226BC78:
 	ldr r0, _0226BCDC ; =ov12_0226BD54
 	ldr r2, _0226BCE0 ; =0x000003E7
 	add r1, r4, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4, #4]
 	add r0, r4, #0
 	add sp, #0x38
@@ -107798,7 +107798,7 @@ ov12_0226BCE4: ; 0x0226BCE4
 	ldr r0, [r4]
 	bl sub_0200D9DC
 	ldr r0, [r4, #4]
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -108072,7 +108072,7 @@ ov12_0226BEC4: ; 0x0226BEC4
 	add r1, r4, #0
 	lsl r2, r2, #2
 	str r5, [r4]
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, pc}
 	nop
 _0226BEEC: .word ov12_0226BF04
@@ -108085,7 +108085,7 @@ ov12_0226BEF0: ; 0x0226BEF0
 	bl sub_0201F988
 	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r4, pc}
 	thumb_func_end ov12_0226BEF0
 

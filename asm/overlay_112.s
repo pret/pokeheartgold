@@ -6876,7 +6876,7 @@ ov112_021E9290: ; 0x021E9290
 	add r1, r6, #0
 	mov r2, #2
 	mov r3, #0
-	bl sub_0207013C
+	bl GetBoxmonSpriteCharAndPlttNarcIds
 	mov r1, #0
 	add r0, r6, #0
 	add r2, r1, #0
@@ -8788,7 +8788,7 @@ ov112_021EA1AC: ; 0x021EA1AC
 	mov r2, #1
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	bl ov112_021EAB58
 	pop {r4, pc}
 	nop
@@ -10775,7 +10775,7 @@ ov112_021EB1E8: ; 0x021EB1E8
 	ldr r0, [r0, r1]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EB1FE
 	mov r0, #7
@@ -11009,7 +11009,7 @@ ov112_021EB3B8: ; 0x021EB3B8
 	ldr r0, [r0, r1]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EB3CE
 	mov r0, #0xc
@@ -11264,7 +11264,7 @@ ov112_021EB5BC: ; 0x021EB5BC
 	ldr r0, [r0, r1]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EB5D2
 	mov r0, #0x11
@@ -11576,7 +11576,7 @@ ov112_021EB838: ; 0x021EB838
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EB854
 	mov r0, #0xb
@@ -11652,7 +11652,7 @@ ov112_021EB8C4: ; 0x021EB8C4
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EB8DE
 	ldr r0, [r4, #0xc]
@@ -11895,7 +11895,7 @@ ov112_021EBA6C: ; 0x021EBA6C
 	ldr r0, [r0, r1]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EBA82
 	mov r0, #2
@@ -12071,7 +12071,7 @@ ov112_021EBBB0: ; 0x021EBBB0
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EBBD0
 	add r0, r4, #0
@@ -12177,7 +12177,7 @@ ov112_021EBC7C: ; 0x021EBC7C
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EBCC4
 	ldr r0, _021EBCD0 ; =0x000F0100
@@ -12399,7 +12399,7 @@ ov112_021EBE4C: ; 0x021EBE4C
 	ldr r0, [r0, r1]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EBE62
 	mov r0, #9
@@ -12528,7 +12528,7 @@ ov112_021EBF4C: ; 0x021EBF4C
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EBF66
 	ldr r0, [r4, #0xc]
@@ -12591,7 +12591,7 @@ ov112_021EBFC8: ; 0x021EBFC8
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EBFF4
 	ldr r0, _021EBFFC ; =0x0001F2E0
@@ -12865,7 +12865,7 @@ ov112_021EC1E4: ; 0x021EC1E4
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EC200
 	mov r0, #0xb
@@ -12947,7 +12947,7 @@ ov112_021EC284: ; 0x021EC284
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EC2A0
 	mov r0, #0
@@ -12999,7 +12999,7 @@ ov112_021EC2E4: ; 0x021EC2E4
 	ldr r0, [r0, r1]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EC2FA
 	mov r0, #0x18
@@ -13096,7 +13096,7 @@ ov112_021EC390: ; 0x021EC390
 	ldr r0, [r0, r1]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EC3A6
 	mov r0, #0x1d
@@ -13131,7 +13131,7 @@ ov112_021EC3C8: ; 0x021EC3C8
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EC3E6
 	add r0, r4, #0
@@ -13487,7 +13487,7 @@ ov112_021EC67C: ; 0x021EC67C
 	ldr r0, [r0, r1]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EC692
 	mov r0, #0x1a
@@ -13628,7 +13628,7 @@ ov112_021EC778: ; 0x021EC778
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EC7B0
 	add r0, r4, #0
@@ -14501,7 +14501,7 @@ ov112_021ECECC: ; 0x021ECECC
 	ldr r0, [r0, r1]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021ECEE2
 	mov r0, #0xe
@@ -14602,7 +14602,7 @@ ov112_021ECF88: ; 0x021ECF88
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021ECFC6
 	ldr r0, _021ECFD0 ; =0x0001F2D6
@@ -14727,7 +14727,7 @@ ov112_021ED090: ; 0x021ED090
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021ED0BC
 	ldr r0, _021ED0C4 ; =0x0001F2D6
@@ -14790,7 +14790,7 @@ ov112_021ED0D0: ; 0x021ED0D0
 	ldr r0, _021ED134 ; =ov112_021ED13C
 	add r1, r4, #0
 	mov r2, #2
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r1, _021ED138 ; =0x0001F2D8
 	str r0, [r4, r1]
 	add sp, #4
@@ -14834,7 +14834,7 @@ _021ED154:
 	cmp r0, #0x1f
 	bne _021ED176
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _021ED176:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -14855,7 +14855,7 @@ ov112_021ED180: ; 0x021ED180
 	cmp r4, r3
 	bls _021ED19A
 	strh r3, [r1, r2]
-	bl sub_0200E390
+	bl DestroySysTask
 _021ED19A:
 	pop {r4, pc}
 	.balign 4, 0
@@ -14925,7 +14925,7 @@ ov112_021ED224: ; 0x021ED224
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021ED250
 	ldr r0, _021ED258 ; =0x0001F2E0
@@ -15021,7 +15021,7 @@ ov112_021ED2F4: ; 0x021ED2F4
 	ldr r0, _021ED30C ; =ov112_021ED180
 	add r1, r4, #0
 	mov r2, #2
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r1, _021ED310 ; =0x0001F2DC
 	str r0, [r4, r1]
 	pop {r4, pc}
@@ -16408,7 +16408,7 @@ ov112_021EDE1C: ; 0x021EDE1C
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EDE5E
 	mov r2, #0
@@ -16524,7 +16524,7 @@ ov112_021EDF08: ; 0x021EDF08
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EDF3E
 	add r0, r4, #0
@@ -16674,7 +16674,7 @@ ov112_021EE044: ; 0x021EE044
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EE0DC
 	bl IsFanfarePlaying
@@ -16770,7 +16770,7 @@ ov112_021EE10C: ; 0x021EE10C
 	ldr r0, [r0, r1]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EE122
 	mov r0, #0x3e
@@ -16826,7 +16826,7 @@ ov112_021EE178: ; 0x021EE178
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EE19C
 	bl IsFanfarePlaying
@@ -16865,7 +16865,7 @@ ov112_021EE1BC: ; 0x021EE1BC
 	ldr r0, [r0, r1]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EE1D2
 	mov r0, #0x2d
@@ -16993,7 +16993,7 @@ ov112_021EE2B4: ; 0x021EE2B4
 	ldr r0, [r0, r1]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EE2CA
 	mov r0, #0x31
@@ -17353,7 +17353,7 @@ ov112_021EE570: ; 0x021EE570
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EE58A
 	ldr r0, [r4, #0xc]
@@ -17551,7 +17551,7 @@ ov112_021EE6D0: ; 0x021EE6D0
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EE6EE
 	add r0, r4, #0
@@ -17631,7 +17631,7 @@ ov112_021EE754: ; 0x021EE754
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EE770
 	mov r0, #0xb
@@ -18470,7 +18470,7 @@ ov112_021EEE4C: ; 0x021EEE4C
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EEE7E
 	ldr r0, _021EEE88 ; =0x0001F2D6
@@ -18556,7 +18556,7 @@ ov112_021EEEE0: ; 0x021EEEE0
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021EEEFE
 	add r0, r4, #0
@@ -18842,7 +18842,7 @@ ov112_021EF100: ; 0x021EF100
 	ldr r0, _021EF154 ; =0x0001D76C
 	ldr r0, [r4, r0]
 	bl ov112_021F051C
-	bl sub_0200B244
+	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
 	ldr r0, [r4, #0x18]
@@ -18946,7 +18946,7 @@ ov112_021EF1CC: ; 0x021EF1CC
 	mov r2, #0x9a
 	str r2, [sp, #0x10]
 	add r2, r0, #0
-	bl sub_0200B150
+	bl OamManager_Create
 	add sp, #0x14
 	pop {pc}
 	thumb_func_end ov112_021EF1CC
@@ -21197,7 +21197,7 @@ ov112_021F0368: ; 0x021F0368
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021F038A
 	bl IsFanfarePlaying
@@ -21472,7 +21472,7 @@ _021F05A8:
 	lsl r0, r4, #2
 	add r0, r5, r0
 	ldr r0, [r0, r6]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -21876,7 +21876,7 @@ ov112_021F0908: ; 0x021F0908
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r4, #0
 _021F092E:
 	add r0, r7, r4
@@ -21890,13 +21890,13 @@ _021F092E:
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x67
 	lsl r0, r0, #2
 	lsl r1, r4, #1
 	ldr r0, [r6, r0]
 	add r1, r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	b _021F0974
 _021F0958:
 	lsl r0, r4, #2
@@ -21905,12 +21905,12 @@ _021F0958:
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	lsl r1, r4, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _021F0974:
 	add r0, r4, #1
 	lsl r0, r0, #0x18
@@ -21934,7 +21934,7 @@ _021F098E:
 	add r0, r5, r0
 	ldr r0, [r0, r6]
 	add r1, r7, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -21944,7 +21944,7 @@ _021F098E:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov112_021F0980
@@ -21958,14 +21958,14 @@ ov112_021F09B4: ; 0x021F09B4
 	ldr r2, [r5]
 	mov r0, #7
 	add r1, #8
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	str r0, [r5, #4]
 	add r0, r5, #0
 	mov r2, #1
 	add r0, #8
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineBToggleLayers
@@ -21977,7 +21977,7 @@ _021F09E6:
 	ldr r2, [r5]
 	mov r0, #2
 	add r1, r6, #0
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	str r0, [r4, r7]
 	add r6, r6, #1
 	add r4, r4, #4
@@ -21994,7 +21994,7 @@ _021F09E6:
 	ldr r0, [r5, r1]
 	sub r1, #0x2d
 	mov r2, #4
-	bl sub_0200A1D8
+	bl AddCharResObjFromNarc
 	mov r2, #0x52
 	lsl r2, r2, #2
 	str r0, [r5, r2]
@@ -22011,7 +22011,7 @@ _021F09E6:
 	add r1, #0xff
 	mov r2, #3
 	mov r3, #0
-	bl sub_0200A234
+	bl AddPlttResObjFromNarc
 	mov r1, #0x53
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -22026,7 +22026,7 @@ _021F09E6:
 	sub r0, #0x14
 	ldr r0, [r5, r0]
 	sub r1, #0x49
-	bl sub_0200A294
+	bl AddCellOrAnimResObjFromNarc
 	mov r1, #0x15
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -22041,7 +22041,7 @@ _021F09E6:
 	sub r0, #0x14
 	ldr r0, [r5, r0]
 	sub r1, #0x4d
-	bl sub_0200A294
+	bl AddCellOrAnimResObjFromNarc
 	mov r1, #0x55
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -22063,7 +22063,7 @@ _021F09E6:
 	ldr r0, [r5, r0]
 	mov r2, #9
 	mov r3, #0
-	bl sub_0200A1D8
+	bl AddCharResObjFromNarc
 	mov r1, #0x16
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -22079,7 +22079,7 @@ _021F09E6:
 	mov r1, #0x5d
 	mov r2, #6
 	mov r3, #0
-	bl sub_0200A234
+	bl AddPlttResObjFromNarc
 	mov r1, #0x59
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -22093,7 +22093,7 @@ _021F09E6:
 	mov r1, #0x5d
 	mov r2, #0xa
 	mov r3, #0
-	bl sub_0200A294
+	bl AddCellOrAnimResObjFromNarc
 	mov r1, #0x5a
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -22108,7 +22108,7 @@ _021F09E6:
 	mov r1, #0x5d
 	mov r2, #0xa
 	mov r3, #0
-	bl sub_0200A294
+	bl AddCellOrAnimResObjFromNarc
 	mov r1, #0x5b
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -22216,7 +22216,7 @@ ov112_021F0B9C: ; 0x021F0B9C
 	str r2, [sp, #0x28]
 	add r0, sp, #0x2c
 	add r2, r1, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r4]
 	add r2, sp, #0x2c
 	str r0, [sp]
@@ -22235,19 +22235,19 @@ ov112_021F0B9C: ; 0x021F0B9C
 	add r0, r1, r0
 	str r0, [sp, #0x5c]
 	add r0, sp, #0x50
-	bl sub_02024624
+	bl CreateSprite
 	mov r1, #1
 	add r4, r0, #0
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	ldr r1, [sp, #0x98]
 	add r0, r4, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_02024A04
 	ldr r1, [sp, #0x9c]
 	add r0, r4, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	add sp, #0x80
 	pop {r3, r4, r5, pc}
@@ -22320,7 +22320,7 @@ ov112_021F0C8C: ; 0x021F0C8C
 	ldrh r1, [r5, #4]
 	ldrb r2, [r5, #8]
 	add r0, sp, #0x14
-	bl sub_020701E4
+	bl GetMonSpriteCharAndPlttNarcIdsEx
 	ldr r0, [r5]
 	mov r3, #0x6e
 	str r0, [sp]
@@ -24054,7 +24054,7 @@ ov112_021F196C: ; 0x021F196C
 	mov r2, #0x83
 	mov r1, #0
 	lsl r2, r2, #0xe
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers

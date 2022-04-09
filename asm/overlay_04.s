@@ -167,7 +167,7 @@ _02253F6C:
 	ldr r0, _02253F90 ; =ov04_02253FF0
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -214,7 +214,7 @@ _02253FC8:
 	ldr r0, _02253FEC ; =ov04_022540C0
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -319,7 +319,7 @@ _0225408C:
 	ldr r0, _022540BC ; =SEQ_SE_DP_KI_GASYAN
 	bl PlaySE
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -417,7 +417,7 @@ _0225415C:
 	ldr r0, _0225418C ; =SEQ_SE_DP_KI_GASYAN
 	bl PlaySE
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -1017,7 +1017,7 @@ _02254670:
 	ldr r0, _02254694 ; =ov04_02254724
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -1660,7 +1660,7 @@ _02254B76:
 	cmp r3, #0
 	bne _02254BB0
 	ldr r1, [r5, #0x24]
-	bl sub_02023514
+	bl GF_Camera_ShiftBy
 	ldr r0, [r4, #0x44]
 	add r0, r0, #1
 	str r0, [r4, #0x44]
@@ -1765,7 +1765,7 @@ _02254C44:
 	add r0, r4, #0
 	bl MapObject_ClearHeldMovement
 	ldr r0, [sp, #0x18]
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, [r6]
 	add sp, #0x98
 	add r0, r0, #1
@@ -1777,7 +1777,7 @@ _02254C88:
 	cmp r0, #0
 	beq _02254C9E
 	ldr r0, [sp, #0x18]
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, [r6]
 	add r0, r0, #1
 	str r0, [r6]
@@ -1931,7 +1931,7 @@ _02254DB8:
 	str r0, [r5, #0x18]
 	ldr r0, _02254DCC ; =ov04_02254E20
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r5, #0x14]
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -1946,7 +1946,7 @@ ov04_02254DD0: ; 0x02254DD0
 	ldr r0, [r0, #0x14]
 	bx r3
 	nop
-_02254DDC: .word sub_0200E390
+_02254DDC: .word DestroySysTask
 	thumb_func_end ov04_02254DD0
 
 	thumb_func_start ov04_02254DE0
@@ -3610,7 +3610,7 @@ _022559F0:
 	ldr r0, _02255ABC ; =ov04_02255D88
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	mov r0, #1
 	str r0, [r4]
 	b _02255AB6
@@ -4204,7 +4204,7 @@ _02255E5E:
 	add r0, r6, #0
 	bl sub_02060F78
 	add r0, r7, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #3
 	add sp, #0x40
 	str r0, [r4]
@@ -4227,7 +4227,7 @@ _02255EEC:
 	ldrb r1, [r1]
 	cmp r1, #0
 	bne _02255F02
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #7
 	add sp, #0x40
 	str r0, [r4]
@@ -4313,7 +4313,7 @@ _02255F1C:
 	cmp r0, #0
 	bne _02255FB8
 	add r0, r7, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #7
 	str r0, [r4]
 _02255FB8:
@@ -4494,7 +4494,7 @@ _02256102: ; jump table
 _02256110:
 	ldr r1, [r6, #0x24]
 	add r0, sp, #0xc
-	bl sub_02023618
+	bl GF_Camera_GetAngle
 	add r0, sp, #4
 	ldrh r1, [r0, #8]
 	strh r1, [r0, #0x18]
@@ -4508,7 +4508,7 @@ _02256110:
 	add r0, sp, #0x44
 	strh r1, [r0]
 	ldr r0, [r6, #0x24]
-	bl sub_0202360C
+	bl GF_Camera_GetPerspectiveAngle
 	add r1, sp, #0x44
 	ldr r3, _02256274 ; =ov04_02257660
 	strh r0, [r1, #2]
@@ -4518,26 +4518,26 @@ _02256110:
 	ldr r0, [r3]
 	str r0, [r2]
 	ldr r0, [r6, #0x24]
-	bl sub_02023614
+	bl GF_Camera_GetDistance
 	str r0, [sp, #0x54]
 	ldr r1, [r6, #0x24]
 	mov r0, #4
-	bl sub_02019014
+	bl CreateCameraTranslationWrapper
 	str r0, [r4, #8]
 	add r1, sp, #0x44
 	mov r2, #0x18
-	bl sub_02019040
+	bl SetCameraTranslationPath
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _0225626C
 _02256168:
 	ldr r0, [r4, #8]
-	bl sub_020190E8
+	bl IsCameraTranslationFinished
 	cmp r0, #0
 	beq _0225626C
 	ldr r0, [r4, #8]
-	bl sub_02019030
+	bl DeleteCameraTranslationWrapper
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -4597,7 +4597,7 @@ _022561E8:
 	str r0, [r1, #8]
 	ldr r1, [r6, #0x24]
 	add r0, sp, #4
-	bl sub_02023618
+	bl GF_Camera_GetAngle
 	add r0, sp, #4
 	ldrh r1, [r0]
 	strh r1, [r0, #0x10]
@@ -4610,7 +4610,7 @@ _022561E8:
 	ldrh r1, [r0, #0x10]
 	strh r1, [r0, #0x2c]
 	ldr r0, [r6, #0x24]
-	bl sub_0202360C
+	bl GF_Camera_GetPerspectiveAngle
 	add r1, sp, #4
 	add r3, sp, #0x24
 	strh r0, [r1, #0x2e]
@@ -4620,26 +4620,26 @@ _022561E8:
 	ldr r0, [r3]
 	str r0, [r2]
 	ldr r0, [r6, #0x24]
-	bl sub_02023614
+	bl GF_Camera_GetDistance
 	str r0, [sp, #0x40]
 	ldr r1, [r6, #0x24]
 	mov r0, #4
-	bl sub_02019014
+	bl CreateCameraTranslationWrapper
 	str r0, [r4, #8]
 	add r1, sp, #0x30
 	mov r2, #0x18
-	bl sub_02019040
+	bl SetCameraTranslationPath
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _0225626C
 _02256248:
 	ldr r0, [r4, #8]
-	bl sub_020190E8
+	bl IsCameraTranslationFinished
 	cmp r0, #0
 	beq _0225626C
 	ldr r0, [r4, #8]
-	bl sub_02019030
+	bl DeleteCameraTranslationWrapper
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -5210,7 +5210,7 @@ _022566B4:
 	beq _022566C8
 	ldr r0, _022566E8 ; =0x00001DBC
 	ldr r0, [r1, r0]
-	bl sub_0200E390
+	bl DestroySysTask
 _022566C8:
 	add r0, r4, #1
 	lsl r0, r0, #0x18
@@ -5599,7 +5599,7 @@ _02256978:
 	ldr r0, _02256A40 ; =ov04_02256734
 	add r1, r5, #0
 	mov r2, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r5, #8]
 	ldr r0, [r5, #4]
 	mov r1, #1
@@ -5822,7 +5822,7 @@ ov04_02256B3C: ; 0x02256B3C
 	strh r0, [r4, #2]
 	str r1, [r4, #4]
 	ldr r0, [r4, #8]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	str r0, [r4, #8]
 	pop {r4, pc}
@@ -5876,7 +5876,7 @@ _02256BB8:
 	cmp r0, #0
 	beq _02256BCA
 	ldr r0, [r1, r7]
-	bl sub_0200E390
+	bl DestroySysTask
 _02256BCA:
 	add r0, r4, #1
 	lsl r0, r0, #0x18
@@ -6132,7 +6132,7 @@ _02256DA2:
 	add r1, r4, #0
 	mov r2, #0
 	str r5, [r4, #4]
-	bl sub_0200E320
+	bl CreateSysTask
 	mov r1, #0x8e
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -6194,7 +6194,7 @@ ov04_02256DFC: ; 0x02256DFC
 	mov r0, #0x8e
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0x8e
 	mov r1, #0
 	lsl r0, r0, #2
@@ -6251,7 +6251,7 @@ ov04_02256E60: ; 0x02256E60
 	ldr r0, _02256EAC ; =ov04_02257148
 	add r1, r4, #0
 	mov r2, #1
-	bl sub_0200E320
+	bl CreateSysTask
 	mov r1, #0x8d
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -6269,7 +6269,7 @@ ov04_02256EB0: ; 0x02256EB0
 	mov r0, #0x8d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r4, #0
 	bl ov04_022570EC
 	add r0, r4, #0

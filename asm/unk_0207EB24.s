@@ -71,7 +71,7 @@ sub_0207EB24: ; 0x0207EB24
 	mov r2, #1
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	ldr r3, _0207EBE0 ; =_021018B4
 	add r2, sp, #0
 	mov r1, #7
@@ -405,7 +405,7 @@ _0207EE52:
 	ldr r0, _0207EF44 ; =0x00000688
 	mov r1, #0
 	ldr r0, [r6, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r2, #0x19
 	ldr r0, _0207EF1C ; =0x00000658
 	ldr r1, _0207EF40 ; =0x0000065C
@@ -458,7 +458,7 @@ _0207EEDE:
 	str r0, [r4, r1]
 	ldr r0, [r4, r7]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #6
@@ -466,12 +466,12 @@ _0207EEDE:
 	ldr r0, _0207EF2C ; =0x0000067C
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x6d
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -566,18 +566,18 @@ sub_0207EFC4: ; 0x0207EFC4
 	ldr r0, [r5, r4]
 	bne _0207EFEA
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, r6, r7, pc}
 _0207EFEA:
 	add r1, r6, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [sp]
 	add r1, r6, #0
 	ldr r0, [r7, r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5, r4]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0207EFC4
 
@@ -593,7 +593,7 @@ sub_0207F004: ; 0x0207F004
 	bne _0207F01E
 	ldr r0, [r5, r4]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, pc}
 _0207F01E:
 	add r0, r2, #0
@@ -602,15 +602,15 @@ _0207F01E:
 	ldr r0, [r5, r4]
 	bne _0207F032
 	mov r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	b _0207F038
 _0207F032:
 	mov r1, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _0207F038:
 	ldr r0, [r5, r4]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end sub_0207F004
@@ -625,10 +625,10 @@ sub_0207F044: ; 0x0207F044
 	add r5, r0, r2
 	ldr r0, [r5, r4]
 	mov r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5, r4]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end sub_0207F044
@@ -706,11 +706,11 @@ sub_0207F0C8: ; 0x0207F0C8
 	ldr r0, [r3, r2]
 	bne _0207F0EE
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r4, pc}
 _0207F0EE:
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r4, pc}
 	nop
 _0207F0F8: .word 0x0000083A
@@ -729,7 +729,7 @@ sub_0207F0FC: ; 0x0207F0FC
 	bl sub_020249D4
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _0207F11A:
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0207F0FC
@@ -916,11 +916,11 @@ sub_0207F240: ; 0x0207F240
 	add r1, r0, #0
 	ldr r0, _0207F2A4 ; =0x00000678
 	ldr r0, [r5, r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, _0207F2A4 ; =0x00000678
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, _0207F2A4 ; =0x00000678
 	add r2, sp, #0
 	ldrb r1, [r2, #1]
@@ -963,7 +963,7 @@ sub_0207F2A8: ; 0x0207F2A8
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x6d
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -973,7 +973,7 @@ sub_0207F2A8: ; 0x0207F2A8
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add sp, #0xc
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -1005,7 +1005,7 @@ sub_0207F2F8: ; 0x0207F2F8
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _0207F332:
 	pop {r4, pc}
 	thumb_func_end sub_0207F2F8
@@ -1086,11 +1086,11 @@ _0207F3BE:
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, _0207F424 ; =0x00000748
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, _0207F420 ; =0x00000654
 	add r6, #0x30
 	ldr r0, [r7, r0]
@@ -1110,7 +1110,7 @@ _0207F3E8:
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r1, _0207F428 ; =0x00000836
 	add r0, r7, r4
 	ldrh r0, [r0, r1]
@@ -1124,7 +1124,7 @@ _0207F3E8:
 	add r0, r7, r0
 	ldr r0, [r0, r1]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _0207F41C:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

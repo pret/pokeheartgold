@@ -625,7 +625,7 @@ _02051D94:
 	cmp r0, #0
 	beq _02051DDA
 	add r0, r4, #0
-	bl Save_GetLeadMonIdxForBugContest
+	bl Save_GetPartyLeadAlive
 	mov r1, #0x73
 	lsl r1, r1, #2
 	strb r0, [r5, r1]

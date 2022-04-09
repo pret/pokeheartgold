@@ -480,11 +480,11 @@ sub_02056A54: ; 0x02056A54
 	sub sp, #0x34
 	add r4, r0, #0
 	ldr r0, [r4, #0x24]
-	bl sub_02023658
+	bl GF_Camera_GetBindTarget
 	add r5, r0, #0
 	ldr r1, [r4, #0x24]
 	add r0, sp, #4
-	bl sub_02023630
+	bl GF_Camera_GetTarget
 	add r6, sp, #4
 	add r3, sp, #0x10
 	ldmia r6!, {r0, r1}
@@ -539,7 +539,7 @@ _02056AAC:
 	bl sub_02023214
 	ldr r1, [r4, #0x24]
 	add r0, sp, #0x1c
-	bl sub_02023514
+	bl GF_Camera_ShiftBy
 	add sp, #0x34
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end sub_02056A54
@@ -550,11 +550,11 @@ sub_02056AEC: ; 0x02056AEC
 	sub sp, #0x34
 	add r5, r0, #0
 	ldr r0, [r5, #0x24]
-	bl sub_02023658
+	bl GF_Camera_GetBindTarget
 	add r4, r0, #0
 	ldr r1, [r5, #0x24]
 	add r0, sp, #4
-	bl sub_02023630
+	bl GF_Camera_GetTarget
 	add r6, sp, #4
 	add r3, sp, #0x10
 	ldmia r6!, {r0, r1}
@@ -626,7 +626,7 @@ _02056B70:
 	bl sub_02023214
 	ldr r1, [r5, #0x24]
 	add r0, sp, #0x1c
-	bl sub_02023514
+	bl GF_Camera_ShiftBy
 	add r0, r5, #0
 	bl FollowingPokemon_IsActive
 	cmp r0, #0
@@ -647,11 +647,11 @@ sub_02056BC8: ; 0x02056BC8
 	sub sp, #0x30
 	add r4, r0, #0
 	ldr r0, [r4, #0x24]
-	bl sub_02023658
+	bl GF_Camera_GetBindTarget
 	add r5, r0, #0
 	ldr r1, [r4, #0x24]
 	add r0, sp, #0
-	bl sub_02023630
+	bl GF_Camera_GetTarget
 	add r6, sp, #0
 	add r3, sp, #0xc
 	ldmia r6!, {r0, r1}
@@ -691,7 +691,7 @@ sub_02056BC8: ; 0x02056BC8
 	bl sub_02023214
 	ldr r1, [r4, #0x24]
 	add r0, sp, #0x18
-	bl sub_02023514
+	bl GF_Camera_ShiftBy
 	add r0, r5, #0
 	bl MapObject_ClearHeldMovementIfActive
 	mov r1, #2
@@ -713,11 +713,11 @@ sub_02056C64: ; 0x02056C64
 	sub sp, #0x30
 	add r4, r0, #0
 	ldr r0, [r4, #0x24]
-	bl sub_02023658
+	bl GF_Camera_GetBindTarget
 	add r5, r0, #0
 	ldr r1, [r4, #0x24]
 	add r0, sp, #0
-	bl sub_02023630
+	bl GF_Camera_GetTarget
 	add r6, sp, #0
 	add r3, sp, #0xc
 	ldmia r6!, {r0, r1}
@@ -757,7 +757,7 @@ sub_02056C64: ; 0x02056C64
 	bl sub_02023214
 	ldr r1, [r4, #0x24]
 	add r0, sp, #0x18
-	bl sub_02023514
+	bl GF_Camera_ShiftBy
 	add r0, r5, #0
 	bl MapObject_ClearHeldMovementIfActive
 	mov r1, #2

@@ -66,7 +66,7 @@ ov06_0221BA40: ; 0x0221BA40
 	mov r1, #0xe1
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 _0221BA78:
 	add r0, r4, #0
 	add sp, #8
@@ -106,7 +106,7 @@ _0221BAA0:
 	mov r1, #0xe1
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 _0221BAC8:
 	add r0, r4, #0
 	add sp, #8

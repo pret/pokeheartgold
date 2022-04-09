@@ -81,5 +81,6 @@
 #define RIBBON_CARNIVAL                77
 #define RIBBON_CLASSIC                 78
 #define RIBBON_PREMIER                 79
+#define RIBBON_MAX                     80
 
 #endif //POKEHEARTGOLD_CONSTANTS_RIBBON_H

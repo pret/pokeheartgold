@@ -22,6 +22,7 @@ typedef enum NNSSndWaveFormat {
     NNS_SND_WAVE_FORMAT_PCM16
 } NNSSndWaveFormat;
 
+struct NNSSndWaveOut;
 typedef struct NNSSndWaveOut* NNSSndWaveOutHandle;
 
-#endif /* NNS_SND_WAVEOUT_H_ */
+#endif //NNSYS_SND_WAVEOUT_H_

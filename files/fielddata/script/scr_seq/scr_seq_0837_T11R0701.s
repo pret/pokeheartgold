@@ -299,7 +299,7 @@ _0415:
 	goto_if_eq _04EA
 	load_npc_trade 12
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	scrcmd_382 VAR_TEMP_x4002, VAR_SPECIAL_x8004
+	mon_get_friendship VAR_TEMP_x4002, VAR_SPECIAL_x8004
 	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	npc_trade_get_req_species VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT

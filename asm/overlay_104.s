@@ -40,7 +40,7 @@ ov104_021E5900: ; 0x021E5900
 	mov r1, #0
 	strb r1, [r4, r0]
 	mov r0, #0x95
-	bl sub_02023114
+	bl GF_Camera_Create
 	str r0, [r4]
 	bl ov104_021E5B88
 	add r0, r4, #0
@@ -244,7 +244,7 @@ _021E5AC2:
 	add r1, sp, #0
 	add r2, sp, #0x18
 	add r3, sp, #0xc
-	bl sub_0201F554
+	bl Draw3dModel
 	mov r0, #1
 	add r1, r0, #0
 	bl sub_02026E50
@@ -400,7 +400,7 @@ ov104_021E5BEC: ; 0x021E5BEC
 	ldr r1, [r1, r6]
 	add r3, r3, r5
 	ldrh r3, [r6, r3]
-	bl sub_02023254
+	bl GF_Camera_InitFromTargetDistanceAndAngle
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldrb r1, [r4, r0]
@@ -412,7 +412,7 @@ ov104_021E5BEC: ; 0x021E5BEC
 	mul r0, r7
 	add r0, r1, r0
 	ldr r1, [r4]
-	bl sub_02023514
+	bl GF_Camera_ShiftBy
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldrb r3, [r4, r0]
@@ -429,9 +429,9 @@ ov104_021E5BEC: ; 0x021E5BEC
 	ldr r2, [r4]
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xc
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	ldr r0, [r4]
-	bl sub_0202313C
+	bl GF_Camera_RegisterToStaticPtr
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

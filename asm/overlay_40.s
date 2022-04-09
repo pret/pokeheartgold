@@ -335,7 +335,7 @@ _0222B9FE:
 	bl NARC_dtor
 	ldr r0, _0222BA84 ; =0x0000416C
 	ldr r0, [r5, r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, [r5, #0x18]
 	ldr r1, [r5, #0x1c]
 	bl sub_0200D998
@@ -653,7 +653,7 @@ _0222BCE4:
 	mov r2, #1
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	add sp, #0x4c
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -2428,7 +2428,7 @@ ov40_0222CABC: ; 0x0222CABC
 	lsl r6, r6, #8
 _0222CAC6:
 	ldr r0, [r5, r6]
-	bl sub_0200E390
+	bl DestroySysTask
 	add r4, r4, #1
 	add r5, #0x30
 	cmp r4, #6
@@ -8559,7 +8559,7 @@ ov40_0222FB74: ; 0x0222FB74
 	mov r0, #1
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov40_0222FB74
 
@@ -10150,7 +10150,7 @@ ov40_022307FC: ; 0x022307FC
 	ldr r1, [r4, r2]
 	cmp r1, #7
 	blt _02230846
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, _0223085C ; =0x00004160
 	mov r2, #0
 	str r2, [r4, r0]
@@ -10201,7 +10201,7 @@ ov40_02230864: ; 0x02230864
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0223087E
-	bl sub_0200E390
+	bl DestroySysTask
 _0223087E:
 	ldr r0, _02230930 ; =0x00004168
 	mov r1, #0
@@ -10262,7 +10262,7 @@ _02230894:
 	ldr r0, _02230940 ; =ov40_022307FC
 	add r1, r4, #0
 	lsl r2, r2, #0xc
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r2, _02230930 ; =0x00004168
 	str r0, [r4, r2]
 	ldr r0, [r4, r2]
@@ -10925,7 +10925,7 @@ _02230D46:
 	str r1, [r4, r0]
 	pop {r4, pc}
 _02230D58:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _02230D8C
 	add r0, r4, #0
@@ -11335,7 +11335,7 @@ _022310A0:
 	str r0, [r4, #8]
 	b _022310E2
 _022310A6:
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #1
 	bne _022310E2
 	add r0, r4, #0
@@ -12071,7 +12071,7 @@ _02231698: .word 0x000006E4
 ov40_0223169C: ; 0x0223169C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _022316B6
 	ldr r0, _022316F8 ; =0x0000089C
@@ -12452,7 +12452,7 @@ _02231994:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov40_022318C8
@@ -12567,7 +12567,7 @@ _02231A72:
 	ldr r0, _02231C64 ; =ov40_022318C8
 	add r1, r5, #0
 	lsl r2, r2, #0xc
-	bl sub_0200E320
+	bl CreateSysTask
 	mov r0, #0x6e
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -12729,7 +12729,7 @@ _02231BB6:
 	ldr r0, _02231C64 ; =ov40_022318C8
 	add r1, r5, #0
 	lsl r2, r2, #0xc
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r0, _02231C70 ; =0x000006D8
 	add r7, r7, #1
 	ldr r0, [r4, r0]
@@ -12917,7 +12917,7 @@ _02231D2A:
 	ldr r0, _02231E9C ; =ov40_022318C8
 	add r1, r4, #0
 	lsl r2, r2, #0xc
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r0, _02231E98 ; =0x000006D8
 	add r6, r6, #1
 	ldr r0, [r5, r0]
@@ -13000,7 +13000,7 @@ _02231DD4:
 	ldr r0, _02231E9C ; =ov40_022318C8
 	add r1, r4, #0
 	lsl r2, r2, #0xc
-	bl sub_0200E320
+	bl CreateSysTask
 	mov r0, #0x6e
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -19130,7 +19130,7 @@ _022350F4:
 	str r0, [r4, #0xc]
 	cmp r0, #0x3c
 	bge _02235106
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _02235118
 _02235106:
@@ -23605,7 +23605,7 @@ _022374D0:
 	add r1, r5, #0
 	mov r3, #2
 	str r6, [sp, #8]
-	bl sub_020701E4
+	bl GetMonSpriteCharAndPlttNarcIdsEx
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -24935,7 +24935,7 @@ _02237FEC:
 	str r0, [r4, #0xc]
 	cmp r0, #0x3c
 	bge _02237FFE
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _02238082
 _02237FFE:
@@ -30009,7 +30009,7 @@ _0223AA82:
 	bl ov40_0223A510
 	b _0223ABFC
 _0223AA94:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	bne _0223AA9E
 _0223AA9C:
@@ -33633,7 +33633,7 @@ _0223C91C:
 	str r0, [r4, #8]
 	b _0223CC98
 _0223C92C:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	bne _0223C936
 	b _0223CC98
@@ -39746,7 +39746,7 @@ _0223FA82:
 	str r0, [r4, #8]
 	b _0223FC8C
 _0223FA92:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	bne _0223FA9C
 	b _0223FC8C
@@ -42593,7 +42593,7 @@ _02241240:
 	str r0, [r4, #8]
 	b _022413DC
 _02241250:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	bne _0224125A
 	b _022413DC
@@ -43386,7 +43386,7 @@ _022418D4:
 	str r0, [r4, #8]
 	b _0224193A
 _022418FA:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _0224193A
 	add r0, r4, #0
@@ -45153,7 +45153,7 @@ _02242748:
 	bl ov40_02240F24
 	b _022428AE
 _0224275A:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	bne _02242764
 _02242762:
@@ -49271,7 +49271,7 @@ _022447FE:
 	bl ov40_0222BF80
 	b _0224481E
 _02244808:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _0224481E
 	add r0, r4, #0

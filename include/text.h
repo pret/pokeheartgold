@@ -12,7 +12,10 @@
 
 void sub_0201FFE0(const struct FontInfo *fontData);
 void DecompressGlyphTile(const u8 *src, u8 *dest);
-u8 AddTextPrinterParameterized2(WINDOW *window, FontID fontId, STRING *string, u8 x, u8 y, u8 textSpeed, u32 color, PrinterCallback_t callback);
+u16 AddTextPrinterParameterized(WINDOW* window, u8 font_id, STRING* text, u32 x, u32 y, u32 speed, void* callback);
+u8 AddTextPrinterParameterized2(WINDOW *window, FontID fontId, STRING *string, u8 x, u8 y, u32 textSpeed, u32 color, PrinterCallback_t callback);
+BOOL TextPrinterCheckActive(u8 printerId);
+void ResetAllTextPrinters(void);
 BOOL sub_02020094(u8 a0);
 
 // text_0205B4EC

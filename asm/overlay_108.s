@@ -1208,7 +1208,7 @@ ov108_021E6240: ; 0x021E6240
 	ldr r0, [r4, #0x10]
 	cmp r0, #1
 	bne _021E6276
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	beq _021E6256
 	mov r0, #0
@@ -1238,7 +1238,7 @@ _021E6276:
 	mov r0, #0
 	pop {r4, pc}
 _021E6282:
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	beq _021E62A4
 	ldr r0, _021E62B0 ; =0x000004C8
@@ -1833,7 +1833,7 @@ _021E671A:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	mov r0, #0xd9
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1869,7 +1869,7 @@ _021E6768:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	mov r0, #0xda
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -3913,7 +3913,7 @@ ov108_021E77D4: ; 0x021E77D4
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	ldr r0, _021E78B8 ; =0x000184DE
 	ldrb r0, [r5, r0]
 	cmp r0, #0
@@ -3922,20 +3922,20 @@ ov108_021E77D4: ; 0x021E77D4
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #6
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	b _021E7884
 _021E7878:
 	mov r0, #0xd9
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #4
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _021E7884:
 	mov r0, #0xda
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	ldr r0, _021E78B8 ; =0x000184DE
 	ldrb r0, [r5, r0]
 	cmp r0, #1
@@ -3944,7 +3944,7 @@ _021E7884:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #7
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 _021E78A8:
@@ -3952,7 +3952,7 @@ _021E78A8:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #5
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -3972,7 +3972,7 @@ ov108_021E78C0: ; 0x021E78C0
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r4, r5, r6, pc}
 _021E78DA:
 	mov r2, #0xd5
@@ -3981,10 +3981,10 @@ _021E78DA:
 	add r5, r0, r2
 	ldr r0, [r5, r4]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, r4]
 	add r1, r6, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov108_021E78C0
 
@@ -5540,7 +5540,7 @@ ov108_021E84F8: ; 0x021E84F8
 	ldr r0, [r0, r2]
 	add r1, r4, #0
 	mov r2, #0xa6
-	bl sub_0200A2E4
+	bl ReplaceCharResObjFromNarc
 	add r0, r4, #0
 	bl sub_0200AE8C
 	add sp, #8
@@ -5625,7 +5625,7 @@ ov108_021E8540: ; 0x021E8540
 	ldrb r1, [r1, #0x14]
 	ldr r0, [r4, #4]
 	add r1, r1, r3
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r5, #0x14]
 	cmp r0, #0
 	beq _021E85C8
@@ -5703,7 +5703,7 @@ _021E8636:
 	add r0, r5, #0
 	bl ov108_021E84F8
 	add r0, sp, #0x30
-	bl sub_02024624
+	bl CreateSprite
 	str r0, [r4]
 	cmp r0, #0
 	bne _021E866E
@@ -5743,7 +5743,7 @@ ov108_021E867C: ; 0x021E867C
 	ldrh r0, [r0, #0xc]
 	ldr r2, [r2]
 	add r1, #0x18
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	ldr r1, [sp]
 	mov r6, #0x55
 	str r0, [r1, #0x10]
@@ -5758,14 +5758,14 @@ _021E86B8:
 	ldrb r0, [r7]
 	ldr r1, [sp, #4]
 	ldr r2, [r2]
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	mov r1, #0x51
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r1, [sp]
 	ldrb r0, [r7]
 	ldr r1, [r1]
-	bl sub_0200A6F0
+	bl Create2DGfxResObjList
 	mov r1, #0x55
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -5823,9 +5823,9 @@ ov108_021E8718: ; 0x021E8718
 	sub r6, #0x10
 _021E8740:
 	ldr r0, [r5, r7]
-	bl sub_0200A714
+	bl Delete2DGfxResObjList
 	ldr r0, [r5, r6]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -5860,7 +5860,7 @@ _021E8768:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r3, #0
-	bl sub_0200A1D8
+	bl AddCharResObjFromNarc
 	ldr r1, [r6]
 	str r0, [r1, r4]
 	ldr r0, [r6]
@@ -5915,7 +5915,7 @@ _021E87D0:
 	mov r1, #0xa6
 	add r2, #0x10
 	mov r3, #0
-	bl sub_0200A294
+	bl AddCellOrAnimResObjFromNarc
 	ldr r1, [r7]
 	str r0, [r1]
 	ldr r0, [r7]
@@ -5945,7 +5945,7 @@ _021E8806:
 	str r1, [sp, #0xc]
 	ldr r0, [r5, r0]
 	mov r1, #0xa6
-	bl sub_0200A234
+	bl AddPlttResObjFromNarc
 	ldr r1, [r4]
 	str r0, [r1]
 	ldr r0, [r4]
@@ -6853,10 +6853,10 @@ _021E8F4E:
 	str r0, [r5, #0xc]
 	cmp r0, #0
 	beq _021E8F68
-	bl sub_0201F668
+	bl AllocAndLoad3dTexResources
 	ldr r0, [r5]
 	ldr r1, [r5, #0xc]
-	bl sub_0201F64C
+	bl Bind3dModelSet
 _021E8F68:
 	add r0, r5, #0
 	ldr r1, [r5, #8]
@@ -7011,7 +7011,7 @@ _021E90B0:
 	bl _ffix
 	ldr r1, [sp, #4]
 	ldr r1, [r1]
-	bl sub_020235D4
+	bl GF_Camera_SetDistance
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -7122,7 +7122,7 @@ _021E916C:
 	add r1, sp, #0xc
 	add r2, sp, #0x18
 	add r3, sp, #0
-	bl sub_0201F554
+	bl Draw3dModel
 	add sp, #0x3c
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -7223,7 +7223,7 @@ ov108_021E9230: ; 0x021E9230
 	sub sp, #0xc
 	add r4, r0, #0
 	add r0, r1, #0
-	bl sub_02023114
+	bl GF_Camera_Create
 	str r0, [r4]
 	add r0, r4, #0
 	mov r1, #0
@@ -7245,18 +7245,18 @@ ov108_021E9230: ; 0x021E9230
 	ldr r2, _021E9290 ; =ov108_021EA9C4
 	ldr r3, _021E9294 ; =0x000005C1
 	add r0, #0xdc
-	bl sub_02023254
+	bl GF_Camera_InitFromTargetDistanceAndAngle
 	ldr r0, [r4]
-	bl sub_0202313C
+	bl GF_Camera_RegisterToStaticPtr
 	mov r0, #0x19
 	mov r1, #0x4b
 	ldr r2, [r4]
 	lsl r0, r0, #0xe
 	lsl r1, r1, #0x10
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	ldr r0, _021E9298 ; =ov108_021EA9D8
 	ldr r1, [r4]
-	bl sub_02023514
+	bl GF_Camera_ShiftBy
 	add sp, #0xc
 	pop {r3, r4, pc}
 	nop
@@ -7396,7 +7396,7 @@ ov108_021E93A8: ; 0x021E93A8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r4, #0
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _021E93BC
 	mov r4, #1
@@ -7478,16 +7478,16 @@ _021E945A:
 	ldr r0, _021E9480 ; =0x0000044C
 	add r1, r4, #0
 	ldr r0, [r5, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x45
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, _021E9484 ; =0x00000444
 	add r1, r4, #0
 	ldr r0, [r5, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E947C: .word 0x00000494
@@ -8776,7 +8776,7 @@ _021E9EC2:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r7, r7, #1
 	add r4, #0x28
 	add r5, r5, #4
@@ -8820,7 +8820,7 @@ ov108_021E9F20: ; 0x021E9F20
 	add r4, r1, #0
 	ldr r0, [r5, r0]
 	add r1, r4, #2
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, _021E9F88 ; =0x00000448
 	ldr r0, [r5, r0]
 	bl sub_02024964
@@ -9167,13 +9167,13 @@ _021EA170:
 	add r0, #0x1c
 	ldr r0, [r5, r0]
 	mov r1, #7
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	b _021EA218
 _021EA20E:
 	add r0, #0x1c
 	ldr r0, [r5, r0]
 	mov r1, #5
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 _021EA218:
 	mov r0, #0x43
 	lsl r0, r0, #4
@@ -9186,14 +9186,14 @@ _021EA218:
 	add r0, #0x20
 	ldr r0, [r5, r0]
 	mov r1, #0xa
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 _021EA236:
 	add r0, #0x20
 	ldr r0, [r5, r0]
 	mov r1, #8
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -9304,7 +9304,7 @@ _021EA31A:
 	ldr r0, _021EA330 ; =0x00000444
 	add r1, r5, #0
 	ldr r0, [r4, r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021EA330: .word 0x00000444
@@ -9632,7 +9632,7 @@ ov108_021EA584: ; 0x021EA584
 	lsl r1, r6, #1
 	add r1, r6, r1
 	add r1, r1, #6
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, _021EA5DC ; =0x000005E1
 	bl PlaySE
 	ldr r1, [r4]
@@ -9645,7 +9645,7 @@ _021EA5CC:
 	ldr r0, _021EA5E0 ; =ov108_021EA5E4
 	ldr r2, [sp]
 	add r1, r4, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021EA5D8: .word 0x00000444
@@ -9678,7 +9678,7 @@ ov108_021EA5E4: ; 0x021EA5E4
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _021EA61E:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

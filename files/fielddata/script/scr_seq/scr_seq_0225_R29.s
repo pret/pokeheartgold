@@ -40,7 +40,7 @@ scr_seq_R29_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	get_lead_mon_index VAR_SPECIAL_x8002
+	get_party_lead_alive VAR_SPECIAL_x8002
 	mon_has_ribbon VAR_SPECIAL_RESULT, VAR_SPECIAL_x8002, RIBBON_SHOCK
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _018A

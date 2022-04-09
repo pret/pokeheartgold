@@ -1,0 +1,6 @@
+#ifndef NNSYS_G3D_RES_STRUCT_ACCESSOR_ANM_H_
+#define NNSYS_G3D_RES_STRUCT_ACCESSOR_ANM_H_
+
+void* NNS_G3dGetAnmByIdx(const void* pRes, u32 idx);
+
+#endif //NNSYS_G3D_RES_STRUCT_ACCESSOR_ANM_H_

@@ -630,7 +630,7 @@ ov95_021E5DD0: ; 0x021E5DD0
 	mov r1, #0xe1
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 _021E5E08:
 	add r0, r4, #0
 	add sp, #8
@@ -1206,7 +1206,7 @@ ov95_021E623C: ; 0x021E623C
 	add r0, sp, #0x3c
 	add r1, r4, #0
 	mov r2, #2
-	bl sub_02070124
+	bl GetPokemonSpriteCharAndPlttNarcIds
 	lsl r2, r6, #0x10
 	ldr r0, [r5, #0x40]
 	add r1, sp, #0x14
@@ -1495,7 +1495,7 @@ _021E64AE:
 	ldr r0, [r4, #0xc]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021E6586
 	ldr r2, [r4]
@@ -1513,7 +1513,7 @@ _021E64D4:
 	ldr r0, [r4, #0xc]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021E6586
 	ldr r0, [r4, #0x58]
@@ -1776,7 +1776,7 @@ _021E6700:
 	ldr r0, [r4, #0xc]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021E67D8
 	ldr r2, [r4]
@@ -1794,7 +1794,7 @@ _021E6726:
 	ldr r0, [r4, #0xc]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021E67D8
 	ldr r0, [r4, #0x58]

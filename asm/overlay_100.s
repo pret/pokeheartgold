@@ -2299,7 +2299,7 @@ ov100_021E6A58: ; 0x021E6A58
 	str r1, [sp, #4]
 	ldr r0, [r4, r0]
 	add r1, r5, #0
-	bl sub_0200A2E4
+	bl ReplaceCharResObjFromNarc
 	add r0, r5, #0
 	bl sub_0200AE8C
 	mov r0, #0x55
@@ -2316,7 +2316,7 @@ ov100_021E6A58: ; 0x021E6A58
 	str r1, [sp, #4]
 	ldr r0, [r4, r0]
 	add r1, r5, #0
-	bl sub_0200A350
+	bl ReplacePlttResObjFromNarc
 	add r0, r5, #0
 	bl sub_0200B084
 	add sp, #8
@@ -2401,7 +2401,7 @@ _021E6B06:
 	str r1, [sp, #0x28]
 	ldr r0, [r4, #4]
 	add r1, r3, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r5, #0x10]
 	cmp r7, #0
 	str r0, [sp, #0x34]
@@ -2485,7 +2485,7 @@ _021E6BE0:
 	ldr r0, [r5]
 	str r0, [sp, #0x60]
 	add r0, sp, #0x34
-	bl sub_02024624
+	bl CreateSprite
 	mov r1, #0x55
 	lsl r1, r1, #2
 	str r0, [r4]
@@ -2497,7 +2497,7 @@ _021E6BE0:
 	add r1, sp, #0x68
 	ldrb r5, [r1, #0x1c]
 	add r1, r5, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r0, r7, #0
 	add r1, r6, #0
 	bl sub_0200B12C
@@ -2548,7 +2548,7 @@ ov100_021E6C4C: ; 0x021E6C4C
 	ldrh r0, [r0, #0xc]
 	ldr r2, [r2]
 	add r1, #0x14
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	ldr r1, [sp]
 	mov r6, #0x15
 	str r0, [r1, #0x10]
@@ -2567,14 +2567,14 @@ _021E6C92:
 	ldrb r0, [r7]
 	ldr r1, [sp, #8]
 	ldr r2, [r2]
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	mov r1, #5
 	lsl r1, r1, #6
 	str r0, [r5, r1]
 	ldr r1, [sp]
 	ldrb r0, [r7]
 	ldr r1, [r1]
-	bl sub_0200A6F0
+	bl Create2DGfxResObjList
 	mov r1, #0x15
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -2633,9 +2633,9 @@ ov100_021E6CF4: ; 0x021E6CF4
 	sub r6, #0x10
 _021E6D1C:
 	ldr r0, [r5, r7]
-	bl sub_0200A714
+	bl Delete2DGfxResObjList
 	ldr r0, [r5, r6]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -2666,7 +2666,7 @@ ov100_021E6D34: ; 0x021E6D34
 	ldr r0, [r7, r0]
 	mov r1, #0x8f
 	add r2, r2, #6
-	bl sub_0200A1D8
+	bl AddCharResObjFromNarc
 	ldr r1, [r4]
 	str r0, [r1]
 	ldr r0, [r4]
@@ -2718,7 +2718,7 @@ _021E6DA0:
 	mov r1, #0x8f
 	add r2, #0xc
 	mov r3, #0
-	bl sub_0200A294
+	bl AddCellOrAnimResObjFromNarc
 	ldr r1, [r6]
 	str r0, [r1]
 	ldr r0, [r6]
@@ -2748,7 +2748,7 @@ _021E6DD6:
 	ldr r0, [r7, r0]
 	ldr r2, [sp, #0x10]
 	mov r1, #0x8f
-	bl sub_0200A234
+	bl AddPlttResObjFromNarc
 	ldr r1, [r4]
 	str r0, [r1]
 	ldr r0, [r4]

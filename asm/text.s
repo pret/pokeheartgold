@@ -88,7 +88,7 @@ _0202003A:
 	bl FreeToHeap
 _02020056:
 	ldr r0, [r6, r4]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	str r0, [r6, r4]
 _02020060:
@@ -113,8 +113,8 @@ _02020076:
 _0202007C: .word _021D1F74
 	thumb_func_end sub_02020068
 
-	thumb_func_start sub_02020080
-sub_02020080: ; 0x02020080
+	thumb_func_start ResetAllTextPrinters
+ResetAllTextPrinters: ; 0x02020080
 	mov r1, #0
 	ldr r2, _02020090 ; =_021D1F74
 	add r0, r1, #0
@@ -126,16 +126,16 @@ _02020086:
 	bx lr
 	.balign 4, 0
 _02020090: .word _021D1F74
-	thumb_func_end sub_02020080
+	thumb_func_end ResetAllTextPrinters
 
-	thumb_func_start sub_02020094
-sub_02020094: ; 0x02020094
+	thumb_func_start TextPrinterCheckActive
+TextPrinterCheckActive: ; 0x02020094
 	push {r3, lr}
 	bl sub_02020068
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	pop {r3, pc}
-	thumb_func_end sub_02020094
+	thumb_func_end TextPrinterCheckActive
 
 	thumb_func_start sub_020200A0
 sub_020200A0: ; 0x020200A0

@@ -166,13 +166,13 @@ ov106_021E59FC: ; 0x021E59FC
 	ldrh r3, [r4, #0xe]
 	ldr r1, [r4]
 	add r2, r4, #4
-	bl sub_02023254
+	bl GF_Camera_InitFromTargetDistanceAndAngle
 	ldr r0, [r4, #0x20]
 	ldr r1, [r4, #0x24]
 	ldr r2, [r5, #0x18]
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	ldr r0, [r5, #0x18]
-	bl sub_0202313C
+	bl GF_Camera_RegisterToStaticPtr
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov106_021E59FC
@@ -492,7 +492,7 @@ _021E5C96:
 	add r1, sp, #4
 	add r2, sp, #0x1c
 	add r3, sp, #0x10
-	bl sub_0201F554
+	bl Draw3dModel
 	mov r0, #0xff
 	ldr r1, [sp]
 	lsl r0, r0, #2
@@ -614,7 +614,7 @@ ov106_021E5D70: ; 0x021E5D70
 	sub sp, #8
 	add r4, r0, #0
 	mov r0, #0x99
-	bl sub_02023114
+	bl GF_Camera_Create
 	str r0, [r4, #0x18]
 	mov r0, #0x99
 	bl sub_0201F590
@@ -872,7 +872,7 @@ _021E5F6E:
 	mov r0, #1
 	str r0, [r4, #0x30]
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov106_021E5F24
 
@@ -1648,7 +1648,7 @@ ov106_021E6520: ; 0x021E6520
 	mov r2, #1
 	mov r1, #0
 	lsl r2, r2, #0x16
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	mov r0, #1
 	str r0, [sp]
 	ldr r0, _021E662C ; =0x0000C8E9

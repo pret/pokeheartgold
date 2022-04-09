@@ -308,10 +308,10 @@ _021E9308:
 	ldr r1, _021E936C ; =0x00456000
 	ldr r2, [r6, #0x24]
 	lsl r0, r0, #0xc
-	bl sub_02023240
+	bl GF_Camera_SetClipBounds
 	ldr r1, [r6, #0x24]
 	mov r0, #4
-	bl sub_02019014
+	bl CreateCameraTranslationWrapper
 	str r0, [r4, #0x18]
 	ldrh r2, [r4, #0x1e]
 	mov r1, #0x14
@@ -319,18 +319,18 @@ _021E9308:
 	mul r1, r2
 	add r1, r3, r1
 	mov r2, #0x18
-	bl sub_02019040
+	bl SetCameraTranslationPath
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _021E934C
 _021E9336:
 	ldr r0, [r4, #0x18]
-	bl sub_020190E8
+	bl IsCameraTranslationFinished
 	cmp r0, #0
 	beq _021E934C
 	ldr r0, [r4, #0x18]
-	bl sub_02019030
+	bl DeleteCameraTranslationWrapper
 	mov r0, #1
 	strh r0, [r4, #0x1c]
 	str r0, [r4]
@@ -491,7 +491,7 @@ _021E9476:
 	pop {r3, r4, r5, r6, r7, pc}
 _021E9486:
 	ldr r0, [r4, #0x24]
-	bl sub_0202360C
+	bl GF_Camera_GetPerspectiveAngle
 	strh r0, [r6, #0xe]
 	ldr r1, [sp, #0x20]
 	add r0, r4, #0
@@ -604,7 +604,7 @@ _021E9572:
 	cmp r0, #0
 	beq _021E95B0
 	ldr r0, [r4, #0x24]
-	bl sub_0202360C
+	bl GF_Camera_GetPerspectiveAngle
 	ldrh r1, [r6, #0xe]
 	cmp r1, r0
 	bne _021E95B0
@@ -658,7 +658,7 @@ ov01_021E95CC: ; 0x021E95CC
 	lsr r4, r0, #0x18
 _021E95EC:
 	add r0, r6, #0
-	bl sub_0202360C
+	bl GF_Camera_GetPerspectiveAngle
 	sub r0, r0, r4
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
@@ -698,7 +698,7 @@ _021E962E:
 	mov r4, #0x10
 _021E9630:
 	add r0, r6, #0
-	bl sub_0202360C
+	bl GF_Camera_GetPerspectiveAngle
 	add r0, r0, r4
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
@@ -1516,7 +1516,7 @@ _021E9C7A:
 	str r0, [r6, #0x10]
 	strb r0, [r6, #0xd]
 	ldr r0, [r4, #0x24]
-	bl sub_0202360C
+	bl GF_Camera_GetPerspectiveAngle
 	strh r0, [r6, #0xe]
 	ldr r0, _021E9EE4 ; =0x0000FFA0
 	ldr r1, [r4, #0x24]
@@ -1681,7 +1681,7 @@ _021E9DEA:
 	cmp r0, #0
 	beq _021E9ECC
 	ldr r0, [r4, #0x24]
-	bl sub_0202360C
+	bl GF_Camera_GetPerspectiveAngle
 	ldrh r1, [r6, #0xe]
 	cmp r1, r0
 	bne _021E9ECC
@@ -1763,7 +1763,7 @@ _021E9E9C:
 	cmp r0, #0
 	beq _021E9ECC
 	ldr r0, [r4, #0x24]
-	bl sub_0202360C
+	bl GF_Camera_GetPerspectiveAngle
 	ldrh r1, [r6, #0xe]
 	cmp r1, r0
 	bne _021E9ECC
@@ -1973,7 +1973,7 @@ _021EA052:
 	str r0, [r4, #4]
 	strb r0, [r4, #1]
 	ldr r0, [r5, #0x24]
-	bl sub_0202360C
+	bl GF_Camera_GetPerspectiveAngle
 	strh r0, [r4, #2]
 	ldr r0, _021EA124 ; =0x0000FFA0
 	ldr r1, [r5, #0x24]
@@ -2051,7 +2051,7 @@ _021EA0F0:
 	cmp r0, #0
 	beq _021EA110
 	ldr r0, [r5, #0x24]
-	bl sub_0202360C
+	bl GF_Camera_GetPerspectiveAngle
 	ldrh r1, [r4, #2]
 	cmp r1, r0
 	bne _021EA110

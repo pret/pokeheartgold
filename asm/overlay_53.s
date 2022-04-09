@@ -627,7 +627,7 @@ ov53_021E5E6C: ; 0x021E5E6C
 	mov r1, #1
 	lsl r1, r1, #8
 	str r0, [r4, r1]
-	bl sub_02020080
+	bl ResetAllTextPrinters
 	mov r0, #0
 	ldr r3, [r4]
 	add r1, r0, #0
@@ -1109,7 +1109,7 @@ _021E621C:
 	ldr r0, [r5, r1]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _021E6274
 	mov r0, #0x11
@@ -3669,7 +3669,7 @@ _021E76A8:
 	add r0, #0xec
 	ldr r0, [r0]
 	mov r1, #3
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r0, r4, #0
 	add r0, #0xec
 	ldr r0, [r0]
@@ -3679,7 +3679,7 @@ _021E76A8:
 	add r0, #0xec
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0x34
 	str r0, [r4, #0xc]
 	b _021E7CF8
@@ -3724,7 +3724,7 @@ _021E771C:
 	add r0, #0xec
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r0, r4, #0
 	add r0, #0xec
 	ldr r0, [r0]
@@ -3764,7 +3764,7 @@ _021E775E:
 	add r0, #0xec
 	ldr r0, [r0]
 	mov r1, #2
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	mov r0, #SPECIES_MARILL
 	add r1, r5, #0
 	bl PlayCry
@@ -4585,7 +4585,7 @@ _021E7E40:
 	add r4, #0xe4
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, pc}
 _021E7E52:
 	add r0, r4, #0
@@ -4601,19 +4601,19 @@ _021E7E64:
 	add r4, #0xe4
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, pc}
 _021E7E76:
 	add r4, #0xe4
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	pop {r3, r4, r5, pc}
 _021E7E82:
 	add r4, #0xe4
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	pop {r3, r4, r5, pc}
 _021E7E8E:
 	bl GF_AssertFail
@@ -4667,7 +4667,7 @@ ov53_021E7ECC: ; 0x021E7ECC
 	bl sub_02025204
 	add r5, r0, #0
 	bne _021E7EFA
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _021E7EFA
 	ldr r0, _021E7F20 ; =gSystem
@@ -4766,7 +4766,7 @@ ov53_021E7F24: ; 0x021E7F24
 	mov r2, #3
 	mov r1, #0
 	lsl r2, r2, #0x12
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	ldr r3, _021E7FE8 ; =ov53_021E8740
 	add r2, sp, #0
 	mov r1, #7
@@ -4844,27 +4844,27 @@ _021E801E:
 	add r0, #0xd8
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r5, #0
 	add r0, #0xdc
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r5, #0
 	add r0, #0xe0
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r5, #0
 	add r0, #0xe4
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r5, #0
 	add r0, #0xe8
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r0, r5, #0
 	add r0, #0xe4
 	ldr r0, [r0]
@@ -4874,7 +4874,7 @@ _021E801E:
 	add r0, #0xec
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	add r0, r5, #0
 	add r0, #0xec
 	ldr r0, [r0]
@@ -4883,7 +4883,7 @@ _021E801E:
 	add r5, #0xec
 	ldr r0, [r5]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E80B4: .word ov53_021E8784
@@ -4917,11 +4917,11 @@ _021E80DC:
 	add r0, #0xdc
 	ldr r0, [r0]
 	add r1, r2, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add r5, #0xe0
 	ldr r0, [r5]
 	add r1, r4, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov53_021E80B8
 
@@ -4959,7 +4959,7 @@ _021E8108:
 	str r0, [r4, #0x14]
 	add r0, r6, #0
 	mov r1, #1
-	bl sub_0202484C
+	bl Set2dSpriteAnimActiveFlag
 	add r0, r4, #0
 	bl ov53_021E82BC
 	add r0, r4, #0
@@ -5085,7 +5085,7 @@ ov53_021E81F4: ; 0x021E81F4
 	bl ToggleBgLayer
 	ldr r0, [r5, #0x10]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov53_021E81F4
 
@@ -5136,7 +5136,7 @@ _021E8292:
 	bl ToggleBgLayer
 	ldr r0, [r4, #0x10]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldrb r0, [r4, #0x1b]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x1c
@@ -5412,7 +5412,7 @@ _021E84AA:
 	bl ov53_021E8390
 	ldr r0, [r5, #0x10]
 	mov r1, #3
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, _021E84CC ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 _021E84C2:
