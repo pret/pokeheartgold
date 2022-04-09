@@ -2,7 +2,6 @@
 #include "save_flypoints.h"
 #include "map_events.h"
 #include "system.h"
-#include "bug_contest.h"
 #include "event_data.h"
 #include "sys_vars.h"
 #include "sys_flags.h"

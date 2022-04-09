@@ -48,8 +48,11 @@
 #include "unk_02050660.h"
 #include "pokedex.h"
 #include "unk_0205BB1C.h"
-#include "unk_02050660.h"
 #include "unk_020379A0.h"
+#include "easy_chat.h"
+#include "unk_02091564.h"
+#include "unk_0205AC88.h"
+#include "unk_02058AEC.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
 
@@ -2639,4 +2642,172 @@ BOOL ScrCmd_261(SCRIPTCONTEXT *ctx) {
         sub_0205A904(command);
     }
     return FALSE;
+}
+
+BOOL ScrCmd_264(SCRIPTCONTEXT *ctx) {
+    LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_TALKED);
+    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    u16 r4 = ScriptReadHalfword(ctx);
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(ctx->fsys));
+    SAVE_EASY_CHAT_T *easyChat = SaveData_EasyChat_get(Fsys_GetSaveDataPtr(ctx->fsys));
+    u16 objId;
+
+    if (r4 == 0) {
+        objId = MapObject_GetID(*p_lastTalked);
+    } else {
+        objId = 0;
+    }
+    sub_0205AA9C(*p_msgFmt, r4, objId, profile, easyChat);
+    return FALSE;
+}
+
+BOOL ScrCmd_265(SCRIPTCONTEXT *ctx) {
+    sub_02091574(ctx->fsys);
+    return FALSE;
+}
+
+BOOL sub_020441C4(SCRIPTCONTEXT *ctx);
+
+BOOL ScrCmd_266(SCRIPTCONTEXT *ctx) {
+    sub_0205AD0C(ctx->fsys->unk84);
+    sub_02037FF0();
+    SetupNativeScript(ctx, sub_020441C4);
+    return TRUE;
+}
+
+BOOL sub_020441C4(SCRIPTCONTEXT *ctx) {
+    return sub_02037454() < 2;
+}
+
+BOOL ScrCmd_267(SCRIPTCONTEXT *ctx) {
+    LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_TALKED);
+    u16 sp0 = ScriptReadHalfword(ctx);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    *p_ret = sub_0205A750(ctx->fsys->unk80, MapObject_GetID(*p_lastTalked), sp0, *p_msgFmt);
+    return FALSE;
+}
+
+BOOL ScrCmd_586(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = sub_0205A4D8(ctx->fsys->unk80);
+    if (*p_ret) {
+        void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+        FreeToHeap(*p_work);
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_268(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_TALKED);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = sub_0205A200(fsys->unk80, MapObject_GetID(*p_lastTalked));
+    return FALSE;
+}
+
+BOOL ScrCmd_274(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_TALKED);
+    u16 r7 = ScriptGetVar(ctx);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = sub_0205A284(fsys->unk80, MapObject_GetID(*p_lastTalked), r7);
+    return FALSE;
+}
+
+BOOL sub_02044318(SCRIPTCONTEXT *ctx);
+
+BOOL ScrCmd_269(SCRIPTCONTEXT *ctx) {
+    u16 var_idx = ScriptReadHalfword(ctx);
+    ctx->data[0] = var_idx;
+    SetupNativeScript(ctx, sub_02044318);
+    return TRUE;
+}
+
+BOOL sub_02044318(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    int result = sub_0205A358(fsys->unk80);
+    u16 *p_ret = GetVarPointer(fsys, ctx->data[0]);
+    if (result == 0) {
+        return FALSE;
+    } else {
+        *p_ret = result;
+        return TRUE;
+    }
+}
+
+BOOL ScrCmd_270(SCRIPTCONTEXT *ctx) {
+    sub_0205B27C(ctx->fsys->mapObjectMan, ctx->fsys->unk84);
+    return FALSE;
+}
+
+BOOL ScrCmd_262(SCRIPTCONTEXT *ctx) {
+    sub_0205A904(4);
+    sub_020380CC();
+    return FALSE;
+}
+
+BOOL ScrCmd_263(SCRIPTCONTEXT *ctx) {
+    sub_02038104();
+    sub_02037FF0();
+    sub_0205A904(0);
+    return FALSE;
+}
+
+BOOL ScrCmd_271(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 r6 = ScriptGetVar(ctx);
+    u16 r2 = ScriptGetVar(ctx);
+    sub_0205A3B0(fsys->unk80, r6, r2);
+    return FALSE;
+}
+
+BOOL sub_020443D8(SCRIPTCONTEXT *ctx);
+
+BOOL ScrCmd_272(SCRIPTCONTEXT *ctx) {
+    u16 var_idx = ScriptReadHalfword(ctx);
+    ctx->data[0] = var_idx;
+    SetupNativeScript(ctx, sub_020443D8);
+    return TRUE;
+}
+
+BOOL sub_020443D8(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = GetVarPointer(ctx->fsys, ctx->data[0]);
+    u32 r0 = sub_0205A35C(ctx->fsys->unk80);
+    if (r0 >= 1) {
+        *p_ret = r0;
+        sub_0205ABB0(ctx->fsys->unk80);
+        return TRUE;
+    } else {
+        *p_ret = 0;
+        return FALSE;
+    }
+}
+
+BOOL sub_02044434(SCRIPTCONTEXT *ctx);
+
+BOOL ScrCmd_273(SCRIPTCONTEXT *ctx) {
+    u16 var_idx = ScriptReadHalfword(ctx);
+    ctx->data[0] = var_idx;
+    SetupNativeScript(ctx, sub_02044434);
+    return TRUE;
+}
+
+BOOL sub_02044434(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = GetVarPointer(ctx->fsys, ctx->data[0]);
+    int r0 = sub_0205A39C(ctx->fsys->unk80);
+    if (gSystem.newKeys & PAD_BUTTON_B) {
+        r0 = sub_0205A47C(ctx->fsys->unk80, 8);
+    }
+    if (r0 != 0) {
+        *p_ret = r0;
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+BOOL ScrCmd_286(SCRIPTCONTEXT *ctx) {
+    sub_02054030(ctx->fsys->taskman);
+    return TRUE;
 }

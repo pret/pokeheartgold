@@ -63,6 +63,4 @@ void* FieldSysGetAttrAddr(FieldSystem *fsys, enum ScriptEnvField field);
 BOOL sub_0203BC10(FieldSystem *);
 void sub_0203BD64(FieldSystem *);
 
-u16 MapObject_GetID(struct LocalMapObject *obj);
-
 #endif
