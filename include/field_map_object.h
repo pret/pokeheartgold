@@ -104,6 +104,7 @@ void MapObjectMan_UnpauseAllMovement(MapObjectMan *man);
 void InitMapObjectsFromEventTemplates(MapObjectMan* man, int mapId, u32 nObjs, OBJECT_EVENT* dest);
 int MapObject_GetCurrentX(LocalMapObject *object);
 int MapObject_GetCurrentY(LocalMapObject *object);
+int MapObject_GetCurrentHeight(LocalMapObject *object);
 BOOL CreateMapObjectFromTemplate(MapObjectMan *mapObjectMan, u16 objectId, u32 numObjects, u32 mapId, const OBJECT_EVENT *templates);
 VecFx32 *MapObject_GetPositionVecPtr(LocalMapObject *object);
 void MapObject_Remove(LocalMapObject *object);

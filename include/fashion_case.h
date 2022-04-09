@@ -25,13 +25,18 @@ typedef struct SaveDressupData {
     SaveDressupDataSub7F4 unk_7F4; // 7F4
 } SaveDressupData; // size=0x834
 
-void *Save_DressupData_get(SAVEDATA *saveData);
-void *SaveDressupData_GetFashionCase(void *unk);
-u32 FashionCase_CountAccessories(void *unksub);
-u32 FashionCase_CountWallpapers(void *unksub);
+SaveDressupData *Save_DressupData_get(SAVEDATA *saveData);
+void *SaveDressupData_GetFashionCase(SaveDressupData *unk);
+u32 FashionCase_CountAccessories(FashionCase *unksub);
+u32 FashionCase_CountWallpapers(FashionCase *unksub);
 BOOL sub_0202B9EC(SaveDressupData *dressupData, int a1);
 BOOL sub_0202BA08(SaveDressupData *dressupData, int a1);
 SaveDressupDataSub *sub_0202B9B8(SaveDressupData *dressupData, int a1);
 void sub_0202BD7C(SaveDressupDataSub *dressupDataSub, int a1);
+void sub_0202BB08(FashionCase *a0, int a1, int a2);
+int sub_0202BA2C(FashionCase *a0, int a1, int a2);
+u32 sub_0202BA70(FashionCase *a0, int a1);
+void sub_0202BBD8(FashionCase *a0, int a1);
+int sub_0202BA5C(FashionCase *a0, int a1);
 
 #endif //POKEHEARTGOLD_FASHION_CASE_H

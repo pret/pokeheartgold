@@ -61,6 +61,8 @@
 #include "unk_02056D7C.h"
 #include "unk_02034B0C.h"
 #include "unk_02068DE0.h"
+#include "unk_02097D3C.h"
+#include "math_util.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
 
@@ -3102,5 +3104,181 @@ BOOL ScrCmd_VermilionGymCanCheck(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_ResampleVermilionGymCans(SCRIPTCONTEXT *ctx) {
     PlaceVermilionGymSwitches(ctx->fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_VioletGymInit(SCRIPTCONTEXT *ctx) {
+    Fsys_InitVioletGym(ctx->fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_VioletGymElevator(SCRIPTCONTEXT *ctx) {
+    ov04_02253ED4(ctx->fsys);
+    return TRUE;
+}
+
+BOOL ScrCmd_AzaleaGymInit(SCRIPTCONTEXT *ctx) {
+    Fsys_InitAzaleaGym(ctx->fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_AzaleaGymSpinarak(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u8 spinarakNo = ScriptReadByte(ctx);
+    Fsys_BeginAzaleaGymSpinarakRide(fsys, spinarakNo);
+    return TRUE;
+}
+
+BOOL ScrCmd_AzaleaGymSwitch(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u8 switchNo = ScriptReadByte(ctx);
+    Fsys_FlipAzaleaGymSwitch(fsys, switchNo);
+    return TRUE;
+}
+
+BOOL ScrCmd_BlackthornGymInit(SCRIPTCONTEXT *ctx) {
+    Fsys_InitBlackthornGym(ctx->fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_FuchsiaGymInit(SCRIPTCONTEXT *ctx) {
+    Fsys_InitFuchsiaGym(ctx->fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_ViridianGymInit(SCRIPTCONTEXT *ctx) {
+    Fsys_InitViridianGym(ctx->fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_GetPlayerXYZ(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 *p_x = ScriptGetVarPointer(ctx);
+    u16 *p_h = ScriptGetVarPointer(ctx);
+    u16 *p_y = ScriptGetVarPointer(ctx);
+    LocalMapObject *playerObj = PlayerAvatar_GetMapObject(fsys->playerAvatar);
+    *p_x = MapObject_GetCurrentX(playerObj);
+    *p_h = MapObject_GetCurrentHeight(playerObj) / 2;
+    *p_y = MapObject_GetCurrentY(playerObj);
+    return FALSE;
+}
+
+BOOL ScrCmd_EggHatchAnim(SCRIPTCONTEXT *ctx) {
+    sub_0203F9F4(ctx->fsys);
+    return TRUE;
+}
+
+BOOL ScrCmd_374(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 objId = ScriptGetVar(ctx);
+    LocalMapObject *object = GetMapObjectByID(fsys->mapObjectMan, objId);
+    GF_ASSERT(object != NULL);
+    sub_0205F690(object, FALSE);
+    return FALSE;
+}
+
+BOOL ScrCmd_375(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 objId = ScriptGetVar(ctx);
+    LocalMapObject *object = GetMapObjectByID(fsys->mapObjectMan, objId);
+    GF_ASSERT(object != NULL);
+    sub_0205F690(object, TRUE);
+    return FALSE;
+}
+
+BOOL ScrCmd_376(SCRIPTCONTEXT *ctx) {
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    *p_work = sub_0203F074(ctx->fsys, 11);
+    SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
+    return TRUE;
+}
+
+BOOL ScrCmd_377(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = Mailbox_CountMessages(Sav2_Mailbox_get(fsys->savedata), 0);
+    return FALSE;
+}
+
+BOOL ScrCmd_378(SCRIPTCONTEXT *ctx) {
+    u16 r4 = ScriptGetVar(ctx);
+    u16 r2 = ScriptGetVar(ctx);
+    sub_02097D3C(ctx->fsys, r4, r2);
+    return TRUE;
+}
+
+BOOL ScrCmd_379(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = Field_GetTimeOfDay(ctx->fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_Random(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    u16 modulo = ScriptGetVar(ctx);
+    *p_ret = LCRandom() % modulo;
+    return TRUE;
+}
+
+BOOL ScrCmd_381(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    u16 modulo = ScriptGetVar(ctx);
+    *p_ret = LCRandom() % modulo;
+    return TRUE;
+}
+
+BOOL ScrCmd_403(SCRIPTCONTEXT *ctx) {
+    u16 r4 = ScriptGetVar(ctx);
+    u16 r6 = ScriptGetVar(ctx);
+    sub_0202BB08(SaveDressupData_GetFashionCase(Save_DressupData_get(ctx->fsys->savedata)), r4, r6);
+    return FALSE;
+}
+
+BOOL ScrCmd_404(SCRIPTCONTEXT *ctx) {
+    u16 r4 = ScriptGetVar(ctx);
+    u16 r6 = ScriptGetVar(ctx);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = sub_0202BA2C(SaveDressupData_GetFashionCase(Save_DressupData_get(ctx->fsys->savedata)), r4, r6);
+    return FALSE;
+}
+
+BOOL ScrCmd_405(SCRIPTCONTEXT *ctx) {
+    u16 r7 = ScriptGetVar(ctx);
+    u16 r6 = ScriptGetVar(ctx);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = r6 <= sub_0202BA70(SaveDressupData_GetFashionCase(Save_DressupData_get(ctx->fsys->savedata)), r7);
+    return FALSE;
+}
+
+BOOL ScrCmd_406(SCRIPTCONTEXT *ctx) {
+    u16 r4 = ScriptGetVar(ctx);
+    sub_0202BBD8(SaveDressupData_GetFashionCase(Save_DressupData_get(ctx->fsys->savedata)), r4);
+    return FALSE;
+}
+
+BOOL ScrCmd_407(SCRIPTCONTEXT *ctx) {
+    u16 r6 = ScriptGetVar(ctx);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = sub_0202BA5C(SaveDressupData_GetFashionCase(Save_DressupData_get(ctx->fsys->savedata)), r6);
+    return FALSE;
+}
+
+BOOL ScrCmd_CheckJohtoDexComplete(SCRIPTCONTEXT *ctx) {
+    POKEDEX *pokedex = Sav2_Pokedex_get(ctx->fsys->savedata);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = FALSE;
+    if (Pokedex_JohtoDexIsComplete(pokedex) == TRUE) {
+        *p_ret = TRUE;
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_CheckNationalDexComplete(SCRIPTCONTEXT *ctx) {
+    POKEDEX *pokedex = Sav2_Pokedex_get(ctx->fsys->savedata);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = FALSE;
+    if (Pokedex_NationalDexIsComplete(pokedex) == TRUE) {
+        *p_ret = TRUE;
+    }
     return FALSE;
 }
