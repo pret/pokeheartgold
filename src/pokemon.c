@@ -19,7 +19,7 @@
 #include "constants/balls.h"
 #include "constants/abilities.h"
 #include "constants/map_sections.h"
-#include "sound_02004A44.h"
+#include "sound_tool.h"
 
 void MonEncryptSegment(void *data, u32 size, u32 key);
 void MonDecryptSegment(void *data, u32 size, u32 key);
