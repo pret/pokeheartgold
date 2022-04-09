@@ -249,7 +249,7 @@ extern BOOL ScrCmd_CountNationalDexSeen(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CountNationalDexOwned(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_247(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetDexEvalResult(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_249(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_RocketTrapBattle(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_250(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CatchingTutorial(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_252(SCRIPTCONTEXT *ctx);
@@ -1104,7 +1104,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_CountNationalDexOwned,
     ScrCmd_247,
     ScrCmd_GetDexEvalResult,
-    ScrCmd_249,
+    ScrCmd_RocketTrapBattle,
     ScrCmd_250,
     ScrCmd_CatchingTutorial,
     ScrCmd_252,

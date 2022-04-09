@@ -281,7 +281,7 @@ BOOL ScrCmd_CountNationalDexSeen(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_CountNationalDexOwned(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_247(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GetDexEvalResult(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_249(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_RocketTrapBattle(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_250(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_CatchingTutorial(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_252(SCRIPTCONTEXT* ctx);

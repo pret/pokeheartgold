@@ -2822,7 +2822,7 @@
 .public ScrCmd_PartyHasPokerus
 .public ScrCmd_MonGetGender
 .public ScrCmd_247
-.public ScrCmd_249
+.public ScrCmd_RocketTrapBattle
 .public ScrCmd_250
 .public ScrCmd_252
 .public ScrCmd_255

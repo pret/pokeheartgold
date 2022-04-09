@@ -1475,7 +1475,7 @@
 	.short \fanfare
 	.endm
 
-	.macro scrcmd_249 arg0, arg1
+	.macro rocket_trap_battle arg0, arg1
 	.short 249
 	.short \arg0
 	.short \arg1

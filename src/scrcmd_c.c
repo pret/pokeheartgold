@@ -47,6 +47,9 @@
 #include "sys_vars.h"
 #include "unk_02050660.h"
 #include "pokedex.h"
+#include "unk_0205BB1C.h"
+#include "unk_02050660.h"
+#include "unk_020379A0.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
 
@@ -2485,5 +2488,155 @@ BOOL ScrCmd_CountNationalDexOwned(SCRIPTCONTEXT *ctx) {
     POKEDEX *pokedex = Sav2_Pokedex_get(ctx->fsys->savedata);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = Pokedex_CountNationalDexOwned(pokedex);
+    return FALSE;
+}
+
+BOOL ScrCmd_247(SCRIPTCONTEXT *ctx) {
+    // dummy
+    return FALSE;
+}
+
+BOOL ScrCmd_GetDexEvalResult(SCRIPTCONTEXT *ctx) {
+    POKEDEX *pokedex = Sav2_Pokedex_get(ctx->fsys->savedata);
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(ctx->fsys->savedata);
+    u8 kind = ScriptReadByte(ctx);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    u16 *p_ret2 = ScriptGetVarPointer(ctx);
+
+    if (kind == 0) {
+        *p_ret = sub_0205BBD0(Pokedex_CountJohtoOwned_ExcludeMythical(pokedex), PlayerProfile_GetTrainerGender(profile), p_ret2);
+    } else {
+        *p_ret = sub_0205BC78(Pokedex_CountNationalOwned_ExcludeMythical(pokedex), PlayerProfile_GetTrainerGender(profile), p_ret2);
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_RocketTrapBattle(SCRIPTCONTEXT *ctx) {
+    struct BattleSetupStruct **p_battleSetup = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_0C);
+    u16 species = ScriptGetVar(ctx);
+    u16 level = ScriptGetVar(ctx);
+    SetupAndStartWildBattle(ctx->taskman, species, level, p_battleSetup, FALSE, FALSE);
+    return TRUE;
+}
+
+BOOL ScrCmd_WildBattle(SCRIPTCONTEXT *ctx) {
+    struct BattleSetupStruct **p_battleSetup = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_0C);
+    u16 species = ScriptGetVar(ctx);
+    u16 level = ScriptGetVar(ctx);
+    u8 shiny = ScriptReadByte(ctx);
+    SetupAndStartWildBattle(ctx->taskman, species, level, p_battleSetup, TRUE, shiny);
+    return TRUE;
+}
+
+BOOL ScrCmd_686(SCRIPTCONTEXT *ctx) {
+    struct BattleSetupStruct **p_battleSetup = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_0C);
+    u16 species = ScriptGetVar(ctx);
+    u16 level = ScriptGetVar(ctx);
+    sub_02051090(ctx->taskman, species, level, p_battleSetup, TRUE);
+    return TRUE;
+}
+
+BOOL ScrCmd_250(SCRIPTCONTEXT *ctx) {
+    u16 species = ScriptGetVar(ctx);
+    u16 level = ScriptGetVar(ctx);
+    sub_02051228(ctx->taskman, species, level);
+    return TRUE;
+}
+
+BOOL ScrCmd_CatchingTutorial(SCRIPTCONTEXT *ctx) {
+    SetupAndStartTutorialBattle(ctx->taskman);
+    return TRUE;
+}
+
+BOOL ScrCmd_252(SCRIPTCONTEXT *ctx) {
+    sub_0203F818(ctx->fsys);
+    SetupNativeScript(ctx, ScrNative_WaitApplication);
+    return TRUE;
+}
+
+BOOL ScrCmd_GetSaveFileState(SCRIPTCONTEXT *ctx) {
+    SAVEDATA *saveData = ctx->fsys->savedata;
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+
+    if (Save_FileDoesNotBelongToPlayer(saveData)) {
+        *p_ret = 0;
+    } else if (!Save_FileExists(saveData)) {
+        *p_ret = 1;
+    } else if (Save_NumModifiedPCBoxesIsMany(saveData)) {
+        *p_ret = 2;
+    } else {
+        *p_ret = 3;
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_SaveGameNormal(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+
+    *p_ret = Field_SaveGameNormal(fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_SaveWipeExtraChunks(SCRIPTCONTEXT *ctx) {
+    Save_WipeExtraChunks(ctx->fsys->savedata);
+    return FALSE;
+}
+
+BOOL ScrCmd_642(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = Save_CheckExtraChunksExist(ctx->fsys->savedata);
+    return FALSE;
+}
+
+BOOL sub_02044054(SCRIPTCONTEXT *ctx);
+
+BOOL ScrCmd_257(SCRIPTCONTEXT *ctx) {
+    u16 r0 = ScriptGetVar(ctx);
+    ctx->data[0] = r0;
+    sub_02037AC0(r0);
+    SetupNativeScript(ctx, sub_02044054);
+    return TRUE;
+}
+
+BOOL sub_02044054(SCRIPTCONTEXT *ctx) {
+    if (sub_02037454() < 2) {
+        return TRUE;
+    } else {
+        return sub_02037B38(ctx->data[0]);
+    }
+}
+
+BOOL ScrCmd_258(SCRIPTCONTEXT *ctx) {
+    sub_02037BEC();
+    return FALSE;
+}
+
+BOOL ScrCmd_259(SCRIPTCONTEXT *ctx) {
+    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+
+    *p_ret = sub_0205A6AC(*p_msgFmt);
+    return FALSE;
+}
+
+BOOL ScrCmd_260(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+
+    *p_ret = sub_0205A9A0(ctx->fsys->unk80, *p_msgFmt);
+    return FALSE;
+}
+
+BOOL ScrCmd_261(SCRIPTCONTEXT *ctx) {
+    u16 command = ScriptReadHalfword(ctx);
+    if (command == 5 || command == 7 || command == 9 || command == 6 || command == 12 || command == 10) {
+        sub_020380F4();
+    } else if (command == 11) {
+        sub_02038104();
+    }
+    if (!sub_0203769C()) {
+        sub_0205A904(command);
+    }
     return FALSE;
 }

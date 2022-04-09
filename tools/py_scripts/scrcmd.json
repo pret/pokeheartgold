@@ -1563,9 +1563,9 @@
       ]
     },
     {
-      "name": "scrcmd_249",
+      "name": "rocket_trap_battle",
       "args": [
-        2,
+        "species",
         2
       ]
     },
