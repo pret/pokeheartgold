@@ -42,9 +42,9 @@ scr_seq_R22_004:
 	end
 
 _0073:
-	move_person obj_R22_sakaki, 947, 1, 266, 2
-	move_person obj_R22_gsrivel, 950, 1, 266, 2
-	move_person obj_R22_var_1, 952, 1, 280, 3
+	move_person_facing obj_R22_sakaki, 947, 1, 266, DIR_WEST
+	move_person_facing obj_R22_gsrivel, 950, 1, 266, DIR_WEST
+	move_person_facing obj_R22_var_1, 952, 1, 280, DIR_EAST
 	end
 
 scr_seq_R22_003:

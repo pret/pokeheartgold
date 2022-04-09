@@ -65,15 +65,15 @@ scr_seq_D11R0106_008:
 	end
 
 _00D4:
-	move_person obj_D11R0106_gsassistantm, 21, 0, 14, 2
+	move_person_facing obj_D11R0106_gsassistantm, 21, 0, 14, DIR_WEST
 	return
 
 _00E2:
-	move_person obj_D11R0106_gsassistantm_3, 9, 0, 13, 0
+	move_person_facing obj_D11R0106_gsassistantm_3, 9, 0, 13, DIR_NORTH
 	return
 
 _00F0:
-	move_person obj_D11R0106_assistantm, 15, 0, 16, 1
+	move_person_facing obj_D11R0106_assistantm, 15, 0, 16, DIR_SOUTH
 	return
 
 scr_seq_D11R0106_000:

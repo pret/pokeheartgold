@@ -30,10 +30,10 @@ _004F:
 	scrcmd_379 VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 3
 	goto_if_ne _0086
-	scrcmd_342 1, 1, 7
-	scrcmd_342 4, 5, 6
-	scrcmd_342 2, 1, 26
-	scrcmd_342 5, 5, 25
+	move_warp 1, 1, 7
+	move_warp 4, 5, 6
+	move_warp 2, 1, 26
+	move_warp 5, 5, 25
 	goto _008C
 
 _0086:
@@ -46,10 +46,10 @@ _008E:
 	scrcmd_379 VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 4
 	goto_if_ne _00C5
-	scrcmd_342 1, 1, 7
-	scrcmd_342 4, 5, 6
-	scrcmd_342 2, 1, 26
-	scrcmd_342 5, 5, 25
+	move_warp 1, 1, 7
+	move_warp 4, 5, 6
+	move_warp 2, 1, 26
+	move_warp 5, 5, 25
 	goto _00CB
 
 _00C5:

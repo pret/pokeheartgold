@@ -21,8 +21,8 @@ scr_seq_R31R0101_000:
 	apply_movement obj_R31R0101_tsure_poke_static_marill, _028C
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	move_person obj_R31R0101_var_1, 10, 1, 7, 2
-	move_person obj_R31R0101_tsure_poke_static_marill, 10, 1, 7, 2
+	move_person_facing obj_R31R0101_var_1, 10, 1, 7, DIR_WEST
+	move_person_facing obj_R31R0101_tsure_poke_static_marill, 10, 1, 7, DIR_WEST
 	apply_movement obj_R31R0101_var_1, _0284
 	wait_movement
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -133,8 +133,8 @@ _0253:
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	move_person obj_R31R0101_var_1, 12, 0, 28, 0
-	move_person obj_R31R0101_tsure_poke_static_marill, 12, 0, 28, 0
+	move_person_facing obj_R31R0101_var_1, 12, 0, 28, DIR_NORTH
+	move_person_facing obj_R31R0101_tsure_poke_static_marill, 12, 0, 28, DIR_NORTH
 	callstd std_fade_end_friend_music
 	releaseall
 	setvar VAR_UNK_4132, 1

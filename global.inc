@@ -2871,10 +2871,10 @@
 .public ScrCmd_333
 .public ScrCmd_334
 .public ScrCmd_335
-.public ScrCmd_338
-.public ScrCmd_341
-.public ScrCmd_342
-.public ScrCmd_343
+.public ScrCmd_MovePerson
+.public ScrCmd_SetObjectFacing
+.public ScrCmd_MoveWarp
+.public ScrCmd_MoveBgEvent
 .public ScrCmd_344
 .public ScrCmd_AddWaitingIcon
 .public ScrCmd_RemoveWaitingIcon
@@ -3453,7 +3453,7 @@
 .public ScrCmd_MomGiftCheck
 .public ScrCmd_MonHasMove
 .public ScrCmd_MonHasRibbon
-.public ScrCmd_MovePerson
+.public ScrCmd_MovePersonFacing
 .public ScrCmd_MoveRelearnerGetResult
 .public ScrCmd_MoveRelearnerInit
 .public ScrCmd_MoveTutorChooseMove

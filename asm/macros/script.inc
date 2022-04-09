@@ -1912,14 +1912,14 @@
 	.short \nature
 	.endm
 
-	.macro scrcmd_338 arg0, arg1, arg2
+	.macro move_person arg0, arg1, arg2
 	.short 338
 	.short \arg0
 	.short \arg1
 	.short \arg2
 	.endm
 
-	.macro move_person person, x, z, y, facing
+	.macro move_person_facing person, x, z, y, facing
 	.short 339
 	.short \person
 	.short \x
@@ -1934,20 +1934,20 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_341 arg0, arg1
+	.macro set_object_facing arg0, arg1
 	.short 341
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_342 arg0, arg1, arg2
+	.macro move_warp arg0, arg1, arg2
 	.short 342
 	.short \arg0
 	.short \arg1
 	.short \arg2
 	.endm
 
-	.macro scrcmd_343 arg0, arg1, arg2
+	.macro move_bg_event arg0, arg1, arg2
 	.short 343
 	.short \arg0
 	.short \arg1

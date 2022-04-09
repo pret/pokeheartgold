@@ -110,6 +110,7 @@ void MapObject_Remove(LocalMapObject *object);
 u32 MapObject_GetFacingDirection(LocalMapObject *object);
 void sub_0205F9A0(LocalMapObject *object, const VecFx32 *vec);
 void sub_0205F79C(LocalMapObject *object, u8 a1);
-int MapObject_GetID(struct LocalMapObject *obj);
+int MapObject_GetID(LocalMapObject *obj);
+void sub_0205FC2C(LocalMapObject *obj, int x, int height, int y, int direction);
 
 #endif //POKEHEARTGOLD_FIELD_MAP_OBJECT_H

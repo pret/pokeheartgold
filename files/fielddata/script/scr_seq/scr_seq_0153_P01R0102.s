@@ -20,7 +20,7 @@ scr_seq_P01R0102_001:
 	end
 
 _002D:
-	move_person obj_P01R0102_seaman_2, 28, 0, 22, 2
+	move_person_facing obj_P01R0102_seaman_2, 28, 0, 22, DIR_WEST
 	end
 
 scr_seq_P01R0102_005:

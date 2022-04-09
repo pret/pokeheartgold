@@ -263,7 +263,7 @@ scr_seq_T03_011:
 	end
 
 _0371:
-	move_person obj_T03_daigo, 1047, 6, 81, 2
+	move_person_facing obj_T03_daigo, 1047, 6, 81, DIR_WEST
 	end
 
 scr_seq_T03_013:

@@ -2930,10 +2930,104 @@ BOOL ScrCmd_335(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_338(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_MovePerson(SCRIPTCONTEXT *ctx) {
     u16 objectId = ScriptGetVar(ctx);
     u16 x = ScriptGetVar(ctx);
     u16 y = ScriptGetVar(ctx);
     Field_SetObjectEventXYPos(ctx->fsys, objectId, x, y);
+    return FALSE;
+}
+
+BOOL ScrCmd_MovePersonFacing(SCRIPTCONTEXT *ctx) {
+    u16 objectId = ScriptGetVar(ctx);
+    u16 x = ScriptGetVar(ctx);
+    u16 height = ScriptGetVar(ctx);
+    u16 y = ScriptGetVar(ctx);
+    u16 direction = ScriptGetVar(ctx);
+    LocalMapObject *object = GetMapObjectByID(ctx->fsys->mapObjectMan, objectId);
+    sub_0205FC2C(object, x, height, y, direction);
+    sub_02061070(object);
+    return FALSE;
+}
+
+BOOL ScrCmd_SetObjectMovementType(SCRIPTCONTEXT *ctx) {
+    u16 objectId = ScriptGetVar(ctx);
+    u16 movementType = ScriptGetVar(ctx);
+    Field_SetObjectEventMovement(ctx->fsys, objectId, movementType);
+    return FALSE;
+}
+
+BOOL ScrCmd_SetObjectFacing(SCRIPTCONTEXT *ctx) {
+    u16 objectId = ScriptGetVar(ctx);
+    u16 facing = ScriptGetVar(ctx);
+    Field_SetObjectEventFacing(ctx->fsys, objectId, facing);
+    return FALSE;
+}
+
+BOOL ScrCmd_MoveWarp(SCRIPTCONTEXT *ctx) {
+    u16 warpId = ScriptGetVar(ctx);
+    u16 x = ScriptGetVar(ctx);
+    u16 y = ScriptGetVar(ctx);
+    Field_SetWarpXYPos(ctx->fsys, warpId, x, y);
+    return FALSE;
+}
+
+BOOL ScrCmd_MoveBgEvent(SCRIPTCONTEXT *ctx) {
+    u16 bgId = ScriptGetVar(ctx);
+    u16 x = ScriptGetVar(ctx);
+    u16 y = ScriptGetVar(ctx);
+    Field_SetBgEventXYPos(ctx->fsys, bgId, x, y);
+    return FALSE;
+}
+
+BOOL ScrCmd_344(SCRIPTCONTEXT *ctx) {
+    u16 objectId = ScriptGetVar(ctx);
+    u16 dir = ScriptGetVar(ctx);
+    LocalMapObject *object = GetMapObjectByID(ctx->fsys->mapObjectMan, objectId);
+    GF_ASSERT(object != NULL);
+    ov01_021F9408(object, dir);
+    return FALSE;
+}
+
+BOOL ScrCmd_347(SCRIPTCONTEXT *ctx) {
+    u16 **r5 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_34);
+    u16 r0 = ScriptGetVar(ctx);
+    if (*r5 != NULL) {
+        **r5 = r0;
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_307(SCRIPTCONTEXT *ctx) {
+    u16 r4 = ScriptReadHalfword(ctx);
+    u16 r6 = ScriptReadHalfword(ctx);
+    u16 r7 = ScriptGetVar(ctx);
+    u16 r2 = ScriptGetVar(ctx);
+    u8 r3 = ScriptReadByte(ctx);
+    ov01_021E9AE8(ctx->fsys, r7 + 32 * r4, r2 + 32 * r6, r3);
+    return FALSE;
+}
+
+BOOL ScrCmd_308(SCRIPTCONTEXT *ctx) {
+    u8 r1 = ScriptReadByte(ctx);
+    ov01_021E9C00(ctx->fsys, r1);
+    return TRUE;
+}
+
+BOOL ScrCmd_309(SCRIPTCONTEXT *ctx) {
+    u8 r1 = ScriptReadByte(ctx);
+    ov01_021E9C20(ctx->fsys, r1);
+    return FALSE;
+}
+
+BOOL ScrCmd_310(SCRIPTCONTEXT *ctx) {
+    u8 r1 = ScriptReadByte(ctx);
+    ov01_021E9BB8(ctx->fsys, r1);
+    return FALSE;
+}
+
+BOOL ScrCmd_311(SCRIPTCONTEXT *ctx) {
+    u8 r1 = ScriptReadByte(ctx);
+    ov01_021E9BDC(ctx->fsys, r1);
     return FALSE;
 }

@@ -82,5 +82,10 @@ void ov01_021F1448(void *);
 int MapNumToFloorNo(u32 mapId);
 void PrintCurFloorInNewWindow(FieldSystem *fsys, u8 x, u8 y, u16 *p_ret, MSGFMT *msgFmt, u16 floor);
 int Field_SaveGameNormal(FieldSystem *fsys);
+void ov01_021E9AE8(FieldSystem *fsys, int a1, int a2, u8 a3);
+void ov01_021E9C00(FieldSystem *fsys, u8 a1);
+void ov01_021E9C20(FieldSystem *fsys, u8 a1);
+void ov01_021E9BB8(FieldSystem *fsys, u8 a1);
+void ov01_021E9BDC(FieldSystem *fsys, u8 a1);
 
 #endif //POKEHEARTGOLD_OVERLAY_01_H

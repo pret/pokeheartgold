@@ -2045,47 +2045,47 @@
       ]
     },
     {
-      "name": "scrcmd_338",
+      "name": "move_person",
       "args": [
-        2,
-        2,
-        2
+        "object2",
+        "var",
+        "var"
       ]
     },
     {
-      "name": "move_person",
+      "name": "move_person_facing",
       "args": [
         "object2",
         "var",
         "var",
         "var",
-        "var"
+        "direction"
       ]
     },
     {
       "name": "set_object_movement_type",
       "args": [
         "object2",
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_341",
+      "name": "set_object_facing",
+      "args": [
+        "object2",
+        "direction"
+      ]
+    },
+    {
+      "name": "move_warp",
       "args": [
         2,
-        2
-      ]
-    },
-    {
-      "name": "scrcmd_342",
-      "args": [
-        2,
         2,
         2
       ]
     },
     {
-      "name": "scrcmd_343",
+      "name": "move_bg_event",
       "args": [
         2,
         2,

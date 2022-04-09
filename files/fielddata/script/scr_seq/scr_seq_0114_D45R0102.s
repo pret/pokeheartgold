@@ -24,13 +24,13 @@ scr_seq_D45R0102_000:
 	end
 
 _003D:
-	move_person obj_D45R0102_sakaki, 6, 1, 4, 0
-	move_person obj_D45R0102_var_1, 5, 1, 8, 1
+	move_person_facing obj_D45R0102_sakaki, 6, 1, 4, DIR_NORTH
+	move_person_facing obj_D45R0102_var_1, 5, 1, 8, DIR_SOUTH
 	end
 
 _0057:
-	move_person obj_D45R0102_sakaki, 6, 1, 6, 1
-	move_person obj_D45R0102_var_1, 5, 1, 7, 0
+	move_person_facing obj_D45R0102_sakaki, 6, 1, 6, DIR_SOUTH
+	move_person_facing obj_D45R0102_var_1, 5, 1, 7, DIR_NORTH
 	scrcmd_375 obj_partner_poke
 	scrcmd_606
 	end

@@ -41,7 +41,7 @@ scr_seq_T11R0601_005:
 	end
 
 _008D:
-	move_person obj_T11R0601_policeman, 12, 0, 7, 3
+	move_person_facing obj_T11R0601_policeman, 12, 0, 7, DIR_EAST
 	end
 
 scr_seq_T11R0601_000:

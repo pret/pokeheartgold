@@ -95,13 +95,13 @@ scr_seq_D36R0101_021:
 	end
 
 _016F:
-	move_person obj_D36R0101_gsoldman1, 15, 0, 58, 1
-	move_person obj_D36R0101_tsure_poke_static_pichu_spiky, 15, 0, 59, 3
+	move_person_facing obj_D36R0101_gsoldman1, 15, 0, 58, DIR_SOUTH
+	move_person_facing obj_D36R0101_tsure_poke_static_pichu_spiky, 15, 0, 59, DIR_EAST
 	return
 
 _0189:
-	move_person obj_D36R0101_var_1, 15, 0, 58, 1
-	move_person obj_D36R0101_tsure_poke_static_marill, 11, 0, 58, 3
+	move_person_facing obj_D36R0101_var_1, 15, 0, 58, DIR_SOUTH
+	move_person_facing obj_D36R0101_tsure_poke_static_marill, 11, 0, 58, DIR_EAST
 	return
 
 scr_seq_D36R0101_001:

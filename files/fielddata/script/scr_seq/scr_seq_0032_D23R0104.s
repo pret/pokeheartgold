@@ -34,9 +34,9 @@ _0056:
 scr_seq_D23R0104_008:
 	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_ne _0089
-	move_person obj_D23R0104_kurumi, 18, 1, 12, 3
-	move_person obj_D23R0104_tsure_poke_static_meowth, 19, 1, 12, 1
-	move_person obj_D23R0104_gsman2, 20, 1, 12, 1
+	move_person_facing obj_D23R0104_kurumi, 18, 1, 12, DIR_EAST
+	move_person_facing obj_D23R0104_tsure_poke_static_meowth, 19, 1, 12, DIR_SOUTH
+	move_person_facing obj_D23R0104_gsman2, 20, 1, 12, DIR_SOUTH
 _0089:
 	end
 

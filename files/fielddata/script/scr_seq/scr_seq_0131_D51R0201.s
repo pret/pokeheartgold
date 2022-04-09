@@ -591,7 +591,7 @@ _0833:
 	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 14
 	goto_if_eq _086E
 	release obj_D51R0201_champion
-	move_person obj_D51R0201_champion, 16, 1, 28, 0
+	move_person_facing obj_D51R0201_champion, 16, 1, 28, DIR_NORTH
 	wait 5, VAR_SPECIAL_RESULT
 	lock obj_D51R0201_champion
 _086E:

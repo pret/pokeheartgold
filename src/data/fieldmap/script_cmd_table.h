@@ -338,12 +338,12 @@ extern BOOL ScrCmd_334(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_335(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferBerryName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferNatureName(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_338(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_MovePerson(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MovePersonFacing(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SetObjectMovementType(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_341(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_342(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_343(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_SetObjectFacing(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MoveWarp(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MoveBgEvent(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_344(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_AddWaitingIcon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_RemoveWaitingIcon(SCRIPTCONTEXT *ctx);
@@ -1193,12 +1193,12 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_335,
     ScrCmd_BufferBerryName,
     ScrCmd_BufferNatureName,
-    ScrCmd_338,
     ScrCmd_MovePerson,
+    ScrCmd_MovePersonFacing,
     ScrCmd_SetObjectMovementType,
-    ScrCmd_341,
-    ScrCmd_342,
-    ScrCmd_343,
+    ScrCmd_SetObjectFacing,
+    ScrCmd_MoveWarp,
+    ScrCmd_MoveBgEvent,
     ScrCmd_344,
     ScrCmd_AddWaitingIcon,
     ScrCmd_RemoveWaitingIcon,

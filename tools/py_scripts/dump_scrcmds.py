@@ -206,6 +206,14 @@ class NormalScriptParser(ScriptParserBase):
                 return f'\t{macro} {", ".join(grps[i] for i in arg_idxs)}\n'
             return inner
 
+        def replace_case_compare(m: re.Match):
+            case = m[1]
+            if case.isnumeric():
+                case = int(case)
+                if case >= 0x8000:
+                    case -= 0x10000
+            return f'\tcase {case}, {m[2]}\n'
+
         self.macros = [
             (re.compile(
                 r'\t(set|copy)var VAR_SPECIAL_x8004, (\w+)\n'
@@ -237,7 +245,7 @@ class NormalScriptParser(ScriptParserBase):
             (re.compile(
                 r'\tcompare_var_to_value VAR_SPECIAL_x8008, (\w+)\n'
                 r'\tgoto_if eq, (\w+)\n'
-            ), r'\tcase \1, \2\n'),
+            ), replace_case_compare),
             (re.compile(
                 r'\tcompare_var_to_(var|value) '
             ), '\tcompare '),

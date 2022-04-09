@@ -48,7 +48,7 @@ scr_seq_D24R0211_000:
 scr_seq_D24R0211_001:
 	scrcmd_609
 	lockall
-	move_person obj_D24R0211_gsassistantm, 25, 0, 30, 0
+	move_person_facing obj_D24R0211_gsassistantm, 25, 0, 30, DIR_NORTH
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55

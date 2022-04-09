@@ -57,8 +57,8 @@ _00A4:
 	show_person obj_T20_var_1
 	clearflag FLAG_HIDE_NEW_BARK_MARILL
 	show_person obj_T20_tsure_poke_static_marill
-	move_person obj_T20_var_1, 686, 0, 396, 2
-	move_person obj_T20_tsure_poke_static_marill, 685, 0, 396, 1
+	move_person_facing obj_T20_var_1, 686, 0, 396, DIR_WEST
+	move_person_facing obj_T20_tsure_poke_static_marill, 685, 0, 396, DIR_SOUTH
 	end
 
 scr_seq_T20_000:
@@ -477,7 +477,7 @@ _075A:
 	scrcmd_310 77
 	scrcmd_308 77
 	show_person obj_T20_doctor
-	move_person obj_T20_doctor, 684, 0, 393, 1
+	move_person_facing obj_T20_doctor, 684, 0, 393, DIR_SOUTH
 	apply_movement obj_T20_doctor, _0D08
 	wait_movement
 	scrcmd_311 77

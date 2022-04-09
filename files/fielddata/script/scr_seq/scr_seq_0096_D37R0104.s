@@ -43,9 +43,9 @@ scr_seq_D37R0104_005:
 	end
 
 _0096:
-	move_person obj_D37R0104_babyboy1_4_6, 18, 0, 14, 0
-	move_person obj_D37R0104_babyboy1_3_6, 24, 0, 14, 0
-	move_person obj_D37R0104_stop_6, 24, 0, 14, 0
+	move_person_facing obj_D37R0104_babyboy1_4_6, 18, 0, 14, DIR_NORTH
+	move_person_facing obj_D37R0104_babyboy1_3_6, 24, 0, 14, DIR_NORTH
+	move_person_facing obj_D37R0104_stop_6, 24, 0, 14, DIR_NORTH
 	end
 
 scr_seq_D37R0104_002:
@@ -352,7 +352,7 @@ scr_seq_D37R0104_004:
 	scrcmd_609
 	lockall
 	callstd std_play_rival_intro_music
-	move_person obj_D37R0104_gsrivel, 28, 0, 4, 2
+	move_person_facing obj_D37R0104_gsrivel, 28, 0, 4, DIR_WEST
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55

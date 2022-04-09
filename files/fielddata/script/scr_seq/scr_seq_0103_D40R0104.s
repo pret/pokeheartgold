@@ -24,7 +24,7 @@ _0032:
 	end
 
 _003A:
-	move_person obj_D40R0104_bozu, 34, 1, 29, 3
+	move_person_facing obj_D40R0104_bozu, 34, 1, 29, DIR_EAST
 	setvar VAR_TEMP_x4003, 0
 	end
 
