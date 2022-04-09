@@ -53,6 +53,12 @@
 #include "unk_02091564.h"
 #include "unk_0205AC88.h"
 #include "unk_02058AEC.h"
+#include "unk_0205B3DC.h"
+#include "field_black_out.h"
+#include "use_item_on_mon.h"
+#include "unk_02058034.h"
+#include "unk_02056D7C.h"
+#include "unk_02034B0C.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
 
@@ -2810,4 +2816,124 @@ BOOL sub_02044434(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_286(SCRIPTCONTEXT *ctx) {
     sub_02054030(ctx->fsys->taskman);
     return TRUE;
+}
+
+BOOL ScrCmd_287(SCRIPTCONTEXT *ctx) {
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(ctx->fsys));
+    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    sub_0205B3DC(
+        PlayerProfile_GetTrainerID(profile),
+        PlayerProfile_GetTrainerGender(profile),
+        *p_msgFmt
+    );
+    return FALSE;
+}
+
+BOOL ScrCmd_288(SCRIPTCONTEXT *ctx) {
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(ctx->fsys));
+    u16 choice = ScriptGetVar(ctx);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = sub_0205B418(
+        PlayerProfile_GetTrainerID(profile),
+        PlayerProfile_GetTrainerGender(profile),
+        choice
+    );
+    *p_ret = sub_0205B46C(
+        PlayerProfile_GetTrainerGender(profile),
+        *p_ret,
+        2
+    );
+    return FALSE;
+}
+
+BOOL ScrCmd_558(SCRIPTCONTEXT *ctx) {
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(ctx->fsys));
+    u16 choice = ScriptGetVar(ctx);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = sub_0205B418(
+        PlayerProfile_GetTrainerID(profile),
+        PlayerProfile_GetTrainerGender(profile),
+        choice
+    );
+    return FALSE;
+}
+
+BOOL ScrCmd_289(SCRIPTCONTEXT *ctx) {
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(ctx->fsys));
+    u16 choice = ScriptGetVar(ctx);
+    PlayerProfile_SetAvatar(profile, choice);
+    return FALSE;
+}
+
+BOOL ScrCmd_OverworldWhiteOut(SCRIPTCONTEXT *ctx) {
+    FieldTask_CallBlackOut(ctx->taskman);
+    return TRUE;
+}
+
+BOOL ScrCmd_SetSpawn(SCRIPTCONTEXT *ctx) {
+    u16 spawnPoint = ScriptGetVar(ctx);
+    FLYPOINTS_SAVE *flyPoints = Save_FlyPoints_get(ctx->fsys->savedata);
+    FlyPoints_SetDeathSpawn(flyPoints, spawnPoint);
+    return FALSE;
+}
+
+BOOL ScrCmd_GetPlayerGender(SCRIPTCONTEXT *ctx) {
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(ctx->fsys));
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = PlayerProfile_GetTrainerGender(profile);
+    return FALSE;
+}
+
+BOOL ScrCmd_HealParty(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = TaskManager_GetSys(ctx->taskman); // ???
+    HealParty(SavArray_PlayerParty_get(fsys->savedata));
+    return FALSE;
+}
+
+BOOL sub_02044658(SCRIPTCONTEXT *ctx);
+
+BOOL ScrCmd_283(SCRIPTCONTEXT *ctx) {
+    sub_02058284();
+    SetupNativeScript(ctx, sub_02044658);
+    return TRUE;
+}
+
+BOOL sub_02044658(SCRIPTCONTEXT *ctx) {
+    if (sub_02037D78() != TRUE && sub_02035650() != TRUE) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+BOOL ScrCmd_587(SCRIPTCONTEXT *ctx) {
+    sub_020582A8();
+    SetupNativeScript(ctx, sub_02044658);
+    return TRUE;
+}
+
+BOOL ScrCmd_284(SCRIPTCONTEXT *ctx) {
+    sub_02058190(ctx->fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_285(SCRIPTCONTEXT *ctx) {
+    u16 val = ScriptReadHalfword(ctx);
+    sub_02057F28(val);
+    return FALSE;
+}
+
+BOOL ScrCmd_335(SCRIPTCONTEXT *ctx) {
+    u16 pocket = ScriptGetVar(ctx);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = Bag_PocketNotEmpty(Sav2_Bag_get(ctx->fsys->savedata), pocket);
+    return FALSE;
+}
+
+BOOL ScrCmd_338(SCRIPTCONTEXT *ctx) {
+    u16 objectId = ScriptGetVar(ctx);
+    u16 x = ScriptGetVar(ctx);
+    u16 y = ScriptGetVar(ctx);
+    Field_SetObjectEventXYPos(ctx->fsys, objectId, x, y);
+    return FALSE;
 }
