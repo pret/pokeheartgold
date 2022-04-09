@@ -359,7 +359,7 @@ BOOL ScrCmd_VermilionGymLockAction(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_VermilionGymCanCheck(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_ResampleVermilionGymCans(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_VioletGymInit(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_325(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_VioletGymElevator(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_AzaleaGymInit(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_AzaleaGymSpinarak(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_AzaleaGymSwitch(SCRIPTCONTEXT* ctx);

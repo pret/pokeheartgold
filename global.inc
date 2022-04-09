@@ -2867,7 +2867,7 @@
 .public ScrCmd_315
 .public ScrCmd_316
 .public ScrCmd_317
-.public ScrCmd_325
+.public ScrCmd_VioletGymElevator
 .public ScrCmd_333
 .public ScrCmd_334
 .public ScrCmd_335

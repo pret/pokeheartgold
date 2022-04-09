@@ -3,6 +3,7 @@
 #include "overlay_01.h"
 #include "overlay_26.h"
 #include "overlay_03.h"
+#include "overlay_04.h"
 #include "system.h"
 #include "task.h"
 #include "text.h"
@@ -59,6 +60,7 @@
 #include "unk_02058034.h"
 #include "unk_02056D7C.h"
 #include "unk_02034B0C.h"
+#include "unk_02068DE0.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
 
@@ -3029,5 +3031,76 @@ BOOL ScrCmd_310(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_311(SCRIPTCONTEXT *ctx) {
     u8 r1 = ScriptReadByte(ctx);
     ov01_021E9BDC(ctx->fsys, r1);
+    return FALSE;
+}
+
+BOOL ScrCmd_EcruteakGymInit(SCRIPTCONTEXT *ctx) {
+    Fsys_InitEcruteakGymSaveData(ctx->fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_315(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    if (SavGymmick_GetType(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys))) != GYMMICK_ECRUTEAK) {
+        return FALSE;
+    }
+    ov04_02254D98(fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_316(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    if (SavGymmick_GetType(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys))) != GYMMICK_ECRUTEAK) {
+        return FALSE;
+    }
+    ov04_02254DD0(fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_317(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u8 r5 = ScriptReadByte(ctx);
+    if (SavGymmick_GetType(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys))) != GYMMICK_ECRUTEAK) {
+        return TRUE;
+    }
+    ov04_02254DE0(fsys, (r5 != 0) ? 10 : 30);
+    return TRUE;
+}
+
+BOOL ScrCmd_CianwoodGymInit(SCRIPTCONTEXT *ctx) {
+    Fsys_InitCianwoodGym(ctx->fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_CianwoodGymTurnWinch(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = ov04_02256058(fsys);
+    return TRUE;
+}
+
+BOOL ScrCmd_VermilionGymInit(SCRIPTCONTEXT *ctx) {
+    Fsys_InitVermilionGym(ctx->fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_VermilionGymLockAction(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u8 lockno = ScriptReadByte(ctx);
+    u8 relock = ScriptReadByte(ctx);
+    ov04_0225640C(fsys, lockno, relock);
+    return TRUE;
+}
+
+BOOL ScrCmd_VermilionGymCanCheck(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u8 canId = ScriptReadByte(ctx);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = ov04_022563C4(fsys, canId);
+    return FALSE;
+}
+
+BOOL ScrCmd_ResampleVermilionGymCans(SCRIPTCONTEXT *ctx) {
+    PlaceVermilionGymSwitches(ctx->fsys);
     return FALSE;
 }

@@ -325,7 +325,7 @@ extern BOOL ScrCmd_VermilionGymLockAction(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_VermilionGymCanCheck(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_ResampleVermilionGymCans(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_VioletGymInit(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_325(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_VioletGymElevator(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_AzaleaGymInit(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_AzaleaGymSpinarak(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_AzaleaGymSwitch(SCRIPTCONTEXT *ctx);
@@ -1180,7 +1180,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_VermilionGymCanCheck,
     ScrCmd_ResampleVermilionGymCans,
     ScrCmd_VioletGymInit,
-    ScrCmd_325,
+    ScrCmd_VioletGymElevator,
     ScrCmd_AzaleaGymInit,
     ScrCmd_AzaleaGymSpinarak,
     ScrCmd_AzaleaGymSwitch,

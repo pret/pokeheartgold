@@ -1848,7 +1848,7 @@
 	.short 324
 	.endm
 
-	.macro scrcmd_325
+	.macro violet_gym_elevator
 	.short 325
 	.endm
 

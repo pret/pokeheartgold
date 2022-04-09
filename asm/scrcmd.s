@@ -359,7 +359,7 @@ gScriptCmdTable:
 	.word ScrCmd_VermilionGymCanCheck                    ; 322
 	.word ScrCmd_ResampleVermilionGymCans                ; 323
 	.word ScrCmd_VioletGymInit                           ; 324
-	.word ScrCmd_325                                     ; 325
+	.word ScrCmd_VioletGymElevator                                     ; 325
 	.word ScrCmd_AzaleaGymInit                           ; 326
 	.word ScrCmd_AzaleaGymSpinarak                       ; 327
 	.word ScrCmd_AzaleaGymSwitch                         ; 328
@@ -916,190 +916,6 @@ _021D4168:
 	.public sub_02042A30
 	.public sub_02042A60
 
-	thumb_func_start ScrCmd_EcruteakGymInit
-ScrCmd_EcruteakGymInit: ; 0x02044A0C
-	push {r3, lr}
-	add r0, #0x80
-	ldr r0, [r0]
-	bl Fsys_InitEcruteakGymSaveData
-	mov r0, #0
-	pop {r3, pc}
-	.balign 4, 0
-	thumb_func_end ScrCmd_EcruteakGymInit
-
-	thumb_func_start ScrCmd_315
-ScrCmd_315: ; 0x02044A1C
-	push {r4, lr}
-	add r0, #0x80
-	ldr r4, [r0]
-	add r0, r4, #0
-	bl Fsys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
-	bl SavGymmick_GetType
-	cmp r0, #1
-	beq _02044A38
-	mov r0, #0
-	pop {r4, pc}
-_02044A38:
-	add r0, r4, #0
-	bl ov04_02254D98
-	mov r0, #0
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end ScrCmd_315
-
-	thumb_func_start ScrCmd_316
-ScrCmd_316: ; 0x02044A44
-	push {r4, lr}
-	add r0, #0x80
-	ldr r4, [r0]
-	add r0, r4, #0
-	bl Fsys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
-	bl SavGymmick_GetType
-	cmp r0, #1
-	beq _02044A60
-	mov r0, #0
-	pop {r4, pc}
-_02044A60:
-	add r0, r4, #0
-	bl ov04_02254DD0
-	mov r0, #0
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end ScrCmd_316
-
-	thumb_func_start ScrCmd_317
-ScrCmd_317: ; 0x02044A6C
-	push {r3, r4, r5, lr}
-	add r1, r0, #0
-	add r1, #0x80
-	ldr r2, [r0, #8]
-	ldr r4, [r1]
-	add r1, r2, #1
-	str r1, [r0, #8]
-	add r0, r4, #0
-	ldrb r5, [r2]
-	bl Fsys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
-	bl SavGymmick_GetType
-	cmp r0, #1
-	beq _02044A92
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-_02044A92:
-	cmp r5, #0
-	beq _02044A9A
-	mov r1, #0xa
-	b _02044A9C
-_02044A9A:
-	mov r1, #0x1e
-_02044A9C:
-	add r0, r4, #0
-	bl ov04_02254DE0
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ScrCmd_317
-
-	thumb_func_start ScrCmd_CianwoodGymInit
-ScrCmd_CianwoodGymInit: ; 0x02044AA8
-	push {r3, lr}
-	add r0, #0x80
-	ldr r0, [r0]
-	bl Fsys_InitCianwoodGym
-	mov r0, #0
-	pop {r3, pc}
-	.balign 4, 0
-	thumb_func_end ScrCmd_CianwoodGymInit
-
-	thumb_func_start ScrCmd_CianwoodGymTurnWinch
-ScrCmd_CianwoodGymTurnWinch: ; 0x02044AB8
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r1, r5, #0
-	add r1, #0x80
-	ldr r4, [r1]
-	bl ScriptReadHalfword
-	add r5, #0x80
-	add r1, r0, #0
-	ldr r0, [r5]
-	bl GetVarPointer
-	add r5, r0, #0
-	add r0, r4, #0
-	bl ov04_02256058
-	strh r0, [r5]
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ScrCmd_CianwoodGymTurnWinch
-
-	thumb_func_start ScrCmd_VermilionGymInit
-ScrCmd_VermilionGymInit: ; 0x02044AE0
-	push {r3, lr}
-	add r0, #0x80
-	ldr r0, [r0]
-	bl Fsys_InitVermilionGym
-	mov r0, #0
-	pop {r3, pc}
-	.balign 4, 0
-	thumb_func_end ScrCmd_VermilionGymInit
-
-	thumb_func_start ScrCmd_VermilionGymLockAction
-ScrCmd_VermilionGymLockAction: ; 0x02044AF0
-	push {r4, lr}
-	add r1, r0, #0
-	add r1, #0x80
-	ldr r4, [r1]
-	ldr r1, [r0, #8]
-	add r3, r1, #1
-	str r3, [r0, #8]
-	ldrb r1, [r1]
-	add r2, r3, #1
-	str r2, [r0, #8]
-	ldrb r2, [r3]
-	add r0, r4, #0
-	bl ov04_0225640C
-	mov r0, #1
-	pop {r4, pc}
-	thumb_func_end ScrCmd_VermilionGymLockAction
-
-	thumb_func_start ScrCmd_VermilionGymCanCheck
-ScrCmd_VermilionGymCanCheck: ; 0x02044B10
-	push {r4, r5, r6, lr}
-	add r4, r0, #0
-	add r1, r4, #0
-	add r1, #0x80
-	ldr r2, [r4, #8]
-	ldr r6, [r1]
-	add r1, r2, #1
-	str r1, [r4, #8]
-	ldrb r5, [r2]
-	bl ScriptReadHalfword
-	add r4, #0x80
-	add r1, r0, #0
-	ldr r0, [r4]
-	bl GetVarPointer
-	add r4, r0, #0
-	add r0, r6, #0
-	add r1, r5, #0
-	bl ov04_022563C4
-	strh r0, [r4]
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_VermilionGymCanCheck
-
-	thumb_func_start ScrCmd_ResampleVermilionGymCans
-ScrCmd_ResampleVermilionGymCans: ; 0x02044B40
-	push {r3, lr}
-	add r0, #0x80
-	ldr r0, [r0]
-	bl PlaceVermilionGymSwitches
-	mov r0, #0
-	pop {r3, pc}
-	.balign 4, 0
-	thumb_func_end ScrCmd_ResampleVermilionGymCans
-
 	thumb_func_start ScrCmd_VioletGymInit
 ScrCmd_VioletGymInit: ; 0x02044B50
 	push {r3, lr}
@@ -1111,8 +927,8 @@ ScrCmd_VioletGymInit: ; 0x02044B50
 	.balign 4, 0
 	thumb_func_end ScrCmd_VioletGymInit
 
-	thumb_func_start ScrCmd_325
-ScrCmd_325: ; 0x02044B60
+	thumb_func_start ScrCmd_VioletGymElevator
+ScrCmd_VioletGymElevator: ; 0x02044B60
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -1120,7 +936,7 @@ ScrCmd_325: ; 0x02044B60
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_325
+	thumb_func_end ScrCmd_VioletGymElevator
 
 	thumb_func_start ScrCmd_AzaleaGymInit
 ScrCmd_AzaleaGymInit: ; 0x02044B70
