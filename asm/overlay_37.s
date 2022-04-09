@@ -112,7 +112,7 @@ _021E5916:
 	mov r1, #0
 	mov r0, #SND_SCENE_SUB_NAMEIN
 	add r2, r1, #0
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	ldr r2, _021E5A7C ; =0x04000304
 	ldr r0, _021E5A80 ; =0xFFFF7FFF
 	ldrh r1, [r2]

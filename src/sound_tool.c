@@ -3,13 +3,15 @@
 #include "constants/snd_def.h"
 #include "sound.h"
 #include "sound_tool.h"
+#include "unk_02005D10.h"
+#include "unk_02035900.h"
 
 static u8 auto_sample_flag;
 static u32 unk4;
  
 typedef struct UnkMicStruct {
     BOOL mono_flag;
-     u32 unkc;
+    u32 unkc;
 } UNK_MICSTRUCT;
 
 static UNK_MICSTRUCT _021D05E8; 
@@ -23,49 +25,49 @@ extern const u8 _020F5710[8][4];
 
 extern const u16 GS_SeqPairs[136][2];
 
-void GF_SetCtrlBgmFlag(u8 flag) {
-    *(u8*) GF_SdatGetAttrPtr(SND_W_ID_CTRL_BGM_FLAG) = flag;
+void Snd_SetCntrlBGMFlag(u8 flag) {
+    *(u8 *) GF_SdatGetAttrPtr(SND_W_ID_CTRL_BGM_FLAG) = flag;
 }
 
-u8 GF_GetCntrlBgmFlag(void) {
-    return *(u8*) GF_SdatGetAttrPtr(SND_W_ID_CTRL_BGM_FLAG);
+u8 Snd_GetCntrlBGMFlag(void) {
+    return *(u8 *) GF_SdatGetAttrPtr(SND_W_ID_CTRL_BGM_FLAG);
 }
 
-void GF_SetCurrentPlayingBGM(u16 no) {
-    u16* cur_bgm = (u16*) GF_SdatGetAttrPtr(SND_W_ID_CUR_BGM_NO);
+void Snd_SetCurrentlyPlayingBGM(u16 no) {
+    u16* cur_bgm = (u16 *) GF_SdatGetAttrPtr(SND_W_ID_CUR_BGM_NO);
     if (no > SEQ_GS_P_START) {
-        GF_SetUNK_58(no);
+        Snd_SetUNK_58(no);
         *cur_bgm = GBSounds_GetDSSeqNoByGBSeqNo(no);
     }
     else {
         *cur_bgm = no;
     }
-    GF_SetNextBGM(0);
+    Snd_SetNextBGM(0);
 }
 
-u16 GF_GetCurrentPlayingBGM(void) {
-    return *(u16*) GF_SdatGetAttrPtr(SND_W_ID_CUR_BGM_NO);
+u16 Snd_GetCurrentlyPlayingBGM(void) {
+    return *(u16 *) GF_SdatGetAttrPtr(SND_W_ID_CUR_BGM_NO);
 }
 
-void GF_SetNextBGM(u16 no) {
-    *(u16*) GF_SdatGetAttrPtr(SND_W_ID_NEXT_BGM_NO) = no;
+void Snd_SetNextBGM(u16 no) {
+    *(u16 *) GF_SdatGetAttrPtr(SND_W_ID_NEXT_BGM_NO) = no;
 }
 
-u16 GF_GetNextBGM(void) {
-    return *(u16*) GF_SdatGetAttrPtr(SND_W_ID_NEXT_BGM_NO);
+u16 Snd_GetNextBGM(void) {
+    return *(u16 *) GF_SdatGetAttrPtr(SND_W_ID_NEXT_BGM_NO);
 }
 
-void GF_SetUNK_58(u16 unkA) {
-    *(u16*) GF_SdatGetAttrPtr(SND_W_ID_UNK_58) = unkA;
+void Snd_SetUNK_58(u16 unkA) {
+    *(u16 *) GF_SdatGetAttrPtr(SND_W_ID_UNK_58) = unkA;
 }
 
-void GF_SetZoneBGM(u16 unkA) {
-    *(u16*) GF_SdatGetAttrPtr(SND_W_ID_ZONE_BGM) = unkA;
+void Snd_SetZoneBGM(u16 unkA) {
+    *(u16 *) GF_SdatGetAttrPtr(SND_W_ID_ZONE_BGM) = unkA;
 }
 
-void GF_SetSndScene(u8 scene) {
-    u8* scene_main = (u8*) GF_SdatGetAttrPtr(SND_W_ID_SCENE_MAIN);
-    u8* scene_sub = (u8*) GF_SdatGetAttrPtr(SND_W_ID_SCENE_SUB);
+void Snd_SetScene(u8 scene) {
+    u8* scene_main = (u8 *) GF_SdatGetAttrPtr(SND_W_ID_SCENE_MAIN);
+    u8* scene_sub = (u8 *) GF_SdatGetAttrPtr(SND_W_ID_SCENE_SUB);
     if (scene < SND_SCENE_SUB) {
         *scene_main = scene;
         *scene_sub = SND_SCENE_DUMMY;
@@ -74,18 +76,18 @@ void GF_SetSndScene(u8 scene) {
     *scene_sub = scene;
 }
 
-void GF_SetSndSubScene(u8 scene) {
+void Snd_SetSubscene(u8 scene) {
     GF_SdatGetAttrPtr(SND_W_ID_SCENE_MAIN);
-    *(u8*) GF_SdatGetAttrPtr(SND_W_ID_SCENE_SUB) = scene;
+    *(u8 *) GF_SdatGetAttrPtr(SND_W_ID_SCENE_SUB) = scene;
 }
 
-void GF_ClearHeapAndSndSubScene(void) {
+void Snd_ClearHeapAndSubscene(void) {
     u8* sub = GF_SdatGetAttrPtr(SND_W_ID_SCENE_SUB);
-    GF_ClearHeap();
+    Snd_ClearHeap();
     *sub = 0;
 }
 
-int GF_Snd_LoadGroupByScene(u8 scene) {
+int Snd_LoadGroupByScene(u8 scene) {
     int ret;
     switch (scene) {
     case SND_SCENE_TITLE:
@@ -186,8 +188,8 @@ int GF_Snd_LoadGroupByScene(u8 scene) {
     case SND_SCENE_SUB_IMAGE:
         ret = GF_Snd_LoadGroup(GROUP_SE_IMAGE);
         break;
-    case SND_SCENE_SUB_ZUKAN:
-        ret = GF_Snd_LoadGroup(GROUP_SE_ZUKAN);
+    case SND_SCENE_SUB_POKEDEX:
+        ret = GF_Snd_LoadGroup(GROUP_SE_POKEDEX);
         break;
     case SND_SCENE_SUB_TOWNMAP:
     case SND_SCENE_SUB_FNOTE:
@@ -234,9 +236,9 @@ int GF_Snd_LoadGroupByScene(u8 scene) {
         GF_Snd_LoadBank(BANK_SE_COIN);
         ret = GF_Snd_LoadWaveArc(WAVE_ARC_SE_COIN);
         break;
-    case SND_SCENE_SUB_DENDO:
-        GF_Snd_LoadBank(BANK_SE_DENDO);
-        ret = GF_Snd_LoadWaveArc(WAVE_ARC_SE_DENDO);
+    case SND_SCENE_SUB_HALL_OF_FAME:
+        GF_Snd_LoadBank(BANK_SE_HALL_OF_FAME);
+        ret = GF_Snd_LoadWaveArc(WAVE_ARC_SE_HALL_OF_FAME);
         break;
     case SND_SCENE_SUB_JUICE:
         GF_Snd_LoadBank(BANK_SE_JUICE);
@@ -259,15 +261,14 @@ int GF_Snd_LoadGroupByScene(u8 scene) {
         ret = FALSE;
         break;
     }
-
     return ret;
 }
 
 BOOL sub_02004EB4(u16 unkA) {
-    return GF_SetDataByScene(SND_SCENE_FIELD, unkA, 1);
+    return Snd_SetDataByScene(SND_SCENE_FIELD, unkA, 1);
 }
 
-BOOL GF_SetDataByScene(u8 scene, u16 no, int flag) {
+BOOL Snd_SetDataByScene(u8 scene, u16 no, int flag) {
     u8* scene_main = GF_SdatGetAttrPtr(SND_W_ID_SCENE_MAIN);
     u8* scene_sub = GF_SdatGetAttrPtr(SND_W_ID_SCENE_SUB);
     u16* me_wait = GF_SdatGetAttrPtr(SND_W_ID_ME_WAIT);
@@ -281,30 +282,30 @@ BOOL GF_SetDataByScene(u8 scene, u16 no, int flag) {
         return FALSE;    
     }
 
-    GF_SetSndScene(scene);
+    Snd_SetScene(scene);
 
     switch (scene) {
     case SND_SCENE_FIELD:
-        GF_SndSetBgmChannelAndReverb(0);    
-        GF_SetFieldData(no, flag);
+        Snd_SetBGMAndReverb(0);    
+        Snd_SetFieldData(no, flag);
         (*me_wait) = 0;    
         break;
     case SND_SCENE_BATTLE:
-        GF_SetBattleData(no, flag);
+        Snd_SetBattleData(no, flag);
         break;
     case SND_SCENE_P2P:
-        GF_SetP2PData(no, flag);
+        Snd_SetP2PData(no, flag);
         break;
     case SND_SCENE_CONTEST:
-        GF_SetContestData(no, flag);
+        Snd_SetContestData(no, flag);
         break;
     case SND_SCENE_CON_IMAGE:
-        GF_SetConImageData(no, flag);
+        Snd_SetContestImageData(no, flag);
         break;
     case SND_SCENE_SUB_BAG:
     case SND_SCENE_SUB_NAMEIN:
     case SND_SCENE_SUB_IMAGE:
-    case SND_SCENE_SUB_ZUKAN:
+    case SND_SCENE_SUB_POKEDEX:
     case SND_SCENE_SUB_TOWNMAP:
     case SND_SCENE_SUB_TRCARD:
     case SND_SCENE_SUB_POKELIST:
@@ -320,26 +321,26 @@ BOOL GF_SetDataByScene(u8 scene, u16 no, int flag) {
     case SND_SCENE_SUB_UNK_67:
     case SND_SCENE_SUB_PLANTER:
     case SND_SCENE_SUB_COIN:
-    case SND_SCENE_SUB_DENDO:
+    case SND_SCENE_SUB_HALL_OF_FAME:
     case SND_SCENE_SUB_JUICE:
     case SND_SCENE_SUB_SEKIBAN:
-        GF_SndAddSceneData(scene);
+        Snd_AddSceneData(scene);
         break;
     case SND_SCENE_SUB_LINEAR:
-        GF_SndAddSceneData(scene);
+        Snd_AddSceneData(scene);
         PlayBGM(no);
         break;
     case SND_SCENE_TITLE:
-        GF_SndSetBgmChannelAndReverb(1);    
-        GF_SetDemoData(scene, no, flag);
+        Snd_SetBGMAndReverb(1);    
+        Snd_SetDemoData(scene, no, flag);
         break;
     case SND_SCENE_ENDING:
-        GF_SndSetBgmChannelAndReverb(2);    
-        GF_SetDemoData(scene, no, flag);
+        Snd_SetBGMAndReverb(2);    
+        Snd_SetDemoData(scene, no, flag);
         break;
     case SND_SCENE_OPENING:
-        GF_SndSetBgmChannelAndReverb(0);    
-        GF_SetDemoData(scene, no, flag);
+        Snd_SetBGMAndReverb(0);    
+        Snd_SetDemoData(scene, no, flag);
         break;
     case SND_SCENE_TRADE:
     case SND_SCENE_HALL_OF_FAME:
@@ -358,30 +359,30 @@ BOOL GF_SetDataByScene(u8 scene, u16 no, int flag) {
     case SND_SCENE_THLON:
     case SND_SCENE_THLON_OPED:
     case SND_SCENE_SUB_PHC:
-        GF_SetDemoData(scene, no, flag);
+        Snd_SetDemoData(scene, no, flag);
         break;
     case SND_SCENE_DEMO01:
-        GF_SetDemoData(scene, no, flag);
+        Snd_SetDemoData(scene, no, flag);
         break;
     default:
         return FALSE;
-    };
+    }
 
     return TRUE;    
 } 
 
-void GF_SetDataSub(u8 scene) {
+void Snd_SetDataSub(u8 scene) {
     int* heap_save_global = GF_SdatGetAttrPtr(SND_W_ID_HEAP_SAVE_GLOBAL);
 
     GF_Snd_LoadState(*heap_save_global); 
 
     GF_Snd_SaveState(GF_SdatGetAttrPtr(SND_W_ID_HEAP_SAVE_BGM_BANK));   
 
-    GF_Snd_LoadGroupByScene(scene); 
+    Snd_LoadGroupByScene(scene); 
     GF_Snd_SaveState(GF_SdatGetAttrPtr(SND_W_ID_HEAP_SAVE_SE));   
 }
 
-void GF_SetFieldData(u16 no, int flag) {
+void Snd_SetFieldData(u16 no, int flag) {
     int temp;
 
     u8* field_pause_flag = GF_SdatGetAttrPtr(SND_W_ID_FIELD_PAUSE_FLAG);
@@ -398,13 +399,13 @@ void GF_SetFieldData(u16 no, int flag) {
 
     if (*field_pause_flag == 0) {
         if (player_seq_no == no) {
-            if (GF_GetNextBGM() != SEQ_GS_BICYCLE) { 
+            if (Snd_GetNextBGM() != SEQ_GS_BICYCLE) { 
                 return;
             }
         }
     }
 
-    GF_SetSndBankFlag(1);  
+    Snd_SetBankFlag(1);  
 
     if (_021D05E8.unkc == 0 || unk4 == 0) {
         sub_02005FD8();
@@ -412,31 +413,31 @@ void GF_SetFieldData(u16 no, int flag) {
     }                                    
 
     if (player_seq_no != no) {
-        GF_SndPause(PLAYER_FIELD, FALSE);      
+        SndPause(PLAYER_FIELD, FALSE);      
         sub_02005FA0();
     }
 
     if (*field_pause_flag == 1) {
 
-        GF_Snd_LoadState(GF_GetHeapSaveLv(SND_HEAP_SAVE_BGM_BANK));
+        GF_Snd_LoadState(Snd_GetSaveLv(SND_HEAP_SAVE_BGM_BANK));
 
-        GF_Snd_LoadGroupByScene(SND_SCENE_FIELD);                     
+        Snd_LoadGroupByScene(SND_SCENE_FIELD);                     
         GF_Snd_SaveState(GF_SdatGetAttrPtr(SND_W_ID_HEAP_SAVE_SE));  
 
         if (player_seq_no != no) {
-            GF_SndPause(PLAYER_FIELD, FALSE);              
+            SndPause(PLAYER_FIELD, FALSE);              
         }
 
-        GF_SetFieldData_StartPauseOff(no, temp);
+        Snd_SetFieldData_StartPauseOff(no, temp);
         return;
     }
 
     PlayBGM(no);
 }
 
-static void GF_SetFieldData_StartPauseOff(u16 no, u16 unused) {
+static void Snd_SetFieldData_StartPauseOff(u16 no, u16 unused) {
     u16* zone_bgm = GF_SdatGetAttrPtr(SND_W_ID_ZONE_BGM);
-    u32 tmp_bank_no = GF_GetBankBySeqNo(*zone_bgm);   
+    u32 tmp_bank_no = Snd_GetBank(*zone_bgm);   
 
     if (tmp_bank_no == BANK_BASIC) {
         GF_Snd_LoadSeqEx(no, NNS_SND_ARC_LOAD_WAVE);   
@@ -448,29 +449,29 @@ static void GF_SetFieldData_StartPauseOff(u16 no, u16 unused) {
 
     GF_Snd_SaveState(GF_SdatGetAttrPtr(SND_W_ID_HEAP_SAVE_BGM));
     
-    GF_SndPause(PLAYER_FIELD, FALSE);               
+    SndPause(PLAYER_FIELD, FALSE);               
     GF_SndStartFadeInBGM(BGM_VOL_MAX, 40, BGM_FADEIN_START_VOL_MIN);  
 
-    GF_SetSndBankFlag(SND_BANK_CONTINUE);          
+    Snd_SetBankFlag(SND_BANK_CONTINUE);          
 }  
 
-void GF_SetFieldDataSub(u16 no, u16 old_bank_no) {
+void Snd_SetFieldDataSub(u16 no, u16 old_bank_no) {
     u32 tmp_bank_no;
     u8* bank_flag    = GF_SdatGetAttrPtr(SND_W_ID_BANK_FLAG);
     u16* zone_bgm    = GF_SdatGetAttrPtr(SND_W_ID_ZONE_BGM);
 
     if ((*bank_flag == SND_BANK_CHANGE) || (old_bank_no == 0)) {
-        GF_Snd_LoadState(GF_GetHeapSaveLv(SND_HEAP_SAVE_GLOBAL));  
+        GF_Snd_LoadState(Snd_GetSaveLv(SND_HEAP_SAVE_GLOBAL));  
 
-        GF_SetSndSubScene(SND_SCENE_DUMMY);
+        Snd_SetSubscene(SND_SCENE_DUMMY);
 
         GF_Snd_LoadSeqEx(*zone_bgm, NNS_SND_ARC_LOAD_BANK);  
         GF_Snd_SaveState(GF_SdatGetAttrPtr(SND_W_ID_HEAP_SAVE_BGM_BANK));
     
-        GF_Snd_LoadGroupByScene(SND_SCENE_FIELD); 
+        Snd_LoadGroupByScene(SND_SCENE_FIELD); 
         GF_Snd_SaveState(GF_SdatGetAttrPtr(SND_W_ID_HEAP_SAVE_SE));  
 
-        tmp_bank_no = GF_GetBankBySeqNo(*zone_bgm); 
+        tmp_bank_no = Snd_GetBank(*zone_bgm); 
         if ((tmp_bank_no == BANK_BASIC)) {
             GF_Snd_LoadSeqEx(no, NNS_SND_ARC_LOAD_WAVE);  
             GF_ASSERT(FALSE);
@@ -478,70 +479,69 @@ void GF_SetFieldDataSub(u16 no, u16 old_bank_no) {
         else {
             GF_Snd_LoadSeqEx(*zone_bgm, NNS_SND_ARC_LOAD_WAVE);  
         }
-
         GF_Snd_SaveState(GF_SdatGetAttrPtr(SND_W_ID_HEAP_SAVE_BGM));
     }
 }
 
-static void GF_SetBattleData(u16 no, int flag) {
+static void Snd_SetBattleData(u16 no, int flag) {
     int* heap_save_global = GF_SdatGetAttrPtr(SND_W_ID_HEAP_SAVE_GLOBAL);
 
     Snd_FieldPauseOrStop();
 
-    GF_Snd_LoadState(GF_GetHeapSaveLv(SND_HEAP_SAVE_BGM_BANK));  
+    GF_Snd_LoadState(Snd_GetSaveLv(SND_HEAP_SAVE_BGM_BANK));  
 
-    GF_Snd_LoadGroupByScene(SND_SCENE_BATTLE);  
+    Snd_LoadGroupByScene(SND_SCENE_BATTLE);  
     GF_Snd_SaveState(GF_SdatGetAttrPtr(SND_W_ID_HEAP_SAVE_SE));  
 
-    GF_SetSndBankFlag(SND_BANK_CHANGE);     
+    Snd_SetBankFlag(SND_BANK_CHANGE);     
     PlayBGM(no); 
 }
 
-void GF_SetP2PData(u16 no, int unused) {
+void Snd_SetP2PData(u16 no, int unused) {
     int* heap_save_global = GF_SdatGetAttrPtr(SND_W_ID_HEAP_SAVE_GLOBAL);
 
     sub_02005FA0();   
 
-    GF_ClearPauseFlags();
+    Snd_ClearPauseFlags();
 
-    GF_SetDataSub(SND_SCENE_FIELD);
+    Snd_SetDataSub(SND_SCENE_FIELD);
 
     PlayBGM(no);        
 }
 
-void GF_SetContestData(u16 no, int flag) {
+void Snd_SetContestData(u16 no, int flag) {
     int* heap_save_global = GF_SdatGetAttrPtr(SND_W_ID_HEAP_SAVE_GLOBAL);
 
     sub_02005FA0();  
 
-    GF_SetDataSub(SND_SCENE_CONTEST);
+    Snd_SetDataSub(SND_SCENE_CONTEST);
 
-    GF_SetSndBankFlag(SND_BANK_CHANGE);  
+    Snd_SetBankFlag(SND_BANK_CHANGE);  
     PlayBGM(no);    
 }
 
-void GF_SetConImageData(u16 no, int flag) {
+void Snd_SetContestImageData(u16 no, int flag) {
     int* heap_save_global = GF_SdatGetAttrPtr(SND_W_ID_HEAP_SAVE_GLOBAL);
 
     sub_02005FA0(); 
 
-    GF_SetDataSub(SND_SCENE_CON_IMAGE);
+    Snd_SetDataSub(SND_SCENE_CON_IMAGE);
 
-    GF_SetSndBankFlag(SND_BANK_CHANGE); 
+    Snd_SetBankFlag(SND_BANK_CHANGE); 
     PlayBGM(no); 
 }
 
-static void GF_SndAddSceneData(u8 scene) {
-    GF_ClearHeap();
-    GF_Snd_LoadGroupByScene(scene);  
+static void Snd_AddSceneData(u8 scene) {
+    Snd_ClearHeap();
+    Snd_LoadGroupByScene(scene);  
     GF_Snd_SaveState(GF_SdatGetAttrPtr(SND_W_ID_HEAP_SAVE_SUB_SE));
 }
 
-static void GF_SetDemoData(u8 scene, u16 bgm, int flag) {
+static void Snd_SetDemoData(u8 scene, u16 bgm, int flag) {
     int* heap_save_global = GF_SdatGetAttrPtr(SND_W_ID_HEAP_SAVE_GLOBAL);
 
     sub_02005FA0(); 
-    GF_SetDataSub(scene);
+    Snd_SetDataSub(scene);
     PlayBGM(bgm); 
 }
 
@@ -554,11 +554,11 @@ void BGM_SaveStateAndPlayNew(u16 no) {
     PlayBGM(no);    
 }
 
-void GF_ClearHeap(void) {
-    GF_Snd_LoadState(GF_GetHeapSaveLv(4));
+void Snd_ClearHeap(void) {
+    GF_Snd_LoadState(Snd_GetSaveLv(4));
 }
 
-int GF_GetHeapSaveLv(int type) {
+int Snd_GetSaveLv(int type) {
     SND_WORK* work = GetSoundDataPointer();
     int* heap_save;
 
@@ -594,51 +594,48 @@ int GF_GetHeapSaveLv(int type) {
     return *heap_save;
 }
 
-void GF_SndPause(u8 player, BOOL flag) {
+void SndPause(u8 player, BOOL flag) {
     u8 handle_no;
     u8* pause_flag;
 
     if (player == PLAYER_FIELD) {
         pause_flag = GF_SdatGetAttrPtr(SND_W_ID_FIELD_PAUSE_FLAG);
         handle_no = SND_HANDLE_FIELD;
-
     }
     else if (player == PLAYER_BGM) {
         pause_flag = GF_SdatGetAttrPtr(SND_W_ID_BGM_PAUSE_FLAG);
         handle_no = SND_HANDLE_BGM;
-
     }
     else {
         return;
     }
-
+    
     if (flag == FALSE) {
-        GF_SetCurrentPlayingBGM(GF_NNS_SndPlayerGetSeqNo(GF_GetSoundHandle(handle_no)));
+        Snd_SetCurrentlyPlayingBGM(GF_NNS_SndPlayerGetSeqNo(GF_GetSoundHandle(handle_no)));
     }
 
     NNS_SndPlayerPause(GF_GetSoundHandle(handle_no), flag);
     *pause_flag = flag;  
 }
 
-void GF_ClearPauseFlags() {
+void Snd_ClearPauseFlags() {
     u8* field_pause_flag = GF_SdatGetAttrPtr(SND_W_ID_FIELD_PAUSE_FLAG);
     u8* bgm_pause_flag = GF_SdatGetAttrPtr(SND_W_ID_BGM_PAUSE_FLAG);
     *field_pause_flag = 0;
     *bgm_pause_flag = 0;
 }
 
-void GF_SndHandleMoveVolume(u8 handle_no, int target_volume, int frames) {
+void Snd_HandleMoveVolume(u8 handle_no, int target_volume, int frames) {
     NNS_SndPlayerMoveVolume(GF_GetSoundHandle(handle_no), target_volume, frames);
     if (handle_no == SND_HANDLE_FIELD) {
         GF_SndWorkSetGbSoundsVolume(target_volume);
     }
 }
 
-void GF_SndHandleSetInitialVolume(int handle_no, int vol) {
+void Snd_HandleSetInitialVolume(int handle_no, int vol) {
     if (vol < 0) {
         vol = 0;
     }
-
     if (vol > 127) {
         vol = 127;
     }
@@ -646,13 +643,13 @@ void GF_SndHandleSetInitialVolume(int handle_no, int vol) {
     NNS_SndPlayerSetInitialVolume(GF_GetSoundHandle(handle_no), vol);
 }
 
-void GF_SndSetVChatVolBySeqNo(int seq_no) {
-    u8 player_no = GF_GetPlayerNoBySeq(seq_no);  
+void Snd_SetVChatVolBySeqNo(int seq_no) {
+    u8 player_no = Snd_GetPlayerNo(seq_no);  
     int type = GF_GetSndHandleByPlayerNo(player_no); 
-    GF_SndSetVChatVol(seq_no, type);
+    Snd_SetVChatVol(seq_no, type);
 }
 
-void GF_SndSetVChatVol(int seq_no, int handle_no) {
+void Snd_SetVChatVol(int seq_no, int handle_no) {
     u8 vol;
     const NNSSndSeqParam* p = NNS_SndArcGetSeqParam(seq_no);
 
@@ -667,14 +664,14 @@ void GF_SndSetVChatVol(int seq_no, int handle_no) {
         }
         vol = p->volume;
         break;
-    };
+    }
 
     if (sub_020378CC() == TRUE) {
-        GF_SndHandleSetInitialVolume(handle_no, (vol / SND_VCHAT_VOL_LV));
+        Snd_HandleSetInitialVolume(handle_no, (vol / SND_VCHAT_VOL_LV));
     }
 }
 
-u8 GF_GetVolumeBySeqNo(int seq_no) {
+u8 Snd_GetVol(int seq_no) {
     NNSSndSeqParam* param = NNS_SndArcGetSeqParam(seq_no);
     if (param == 0) {
         return 0;
@@ -682,10 +679,10 @@ u8 GF_GetVolumeBySeqNo(int seq_no) {
     return param->volume;
 }
 
-void GF_SetVolumeBySeqNo(u16 seq_no, int vol) {
-    u8 player_no = GF_GetPlayerNoBySeq(seq_no); 
+void Snd_SetVol(u16 seq_no, int vol) {
+    u8 player_no = Snd_GetPlayerNo(seq_no); 
     int type = GF_GetSndHandleByPlayerNo(player_no);
-    GF_SndHandleSetInitialVolume(type, vol);
+    Snd_HandleSetInitialVolume(type, vol);
 }
 
 int GF_SndPlayerCountPlayingSeqByPlayerNo(int player_no) {
@@ -695,7 +692,7 @@ int GF_SndPlayerCountPlayingSeqByPlayerNo(int player_no) {
     return NNS_SndPlayerCountPlayingSeqByPlayerNo(player_no);
 }
 
-u8 GF_GetPlayerNoBySeq(u16 no) {
+u8 Snd_GetPlayerNo(u16 no) {
     const NNSSndSeqParam* param;
     if (no == 0) {
         return 0xff; 
@@ -714,26 +711,25 @@ int GF_NNS_SndPlayerGetSeqNo(int player_no) {
     return NNS_SndPlayerGetSeqNo(player_no);
 }
 
-const NNSSndArcBankInfo* GF_GetBankInfoBySeqNo(int no) {
-    return NNS_SndArcGetBankInfo(GF_GetBankBySeqNo(no));
+const NNSSndArcBankInfo* Snd_GetBankInfo(int no) {
+    return NNS_SndArcGetBankInfo(Snd_GetBank(no));
 }
 
-u16 GF_GetBankBySeqNo(int no) {
+u16 Snd_GetBank(int no) {
     const NNSSndSeqParam* param;
     
     param = NNS_SndArcGetSeqParam(no);
     if (param == NULL) {
         return 0;
     }
-
     return param->bankNo;
 }
 
-BOOL SndWorkMicCounterFull(void) {
-    return GF_SndWorkMicCounterFull();
+BOOL IsWorkMicCounterFull(void) {
+    return GF_IsWorkMicCounterFull();
 }
 
-MICResult GF_MIC_StartAutoSampling(MICAutoParam* p) {
+MICResult GF_MicStartAutoSampling(MICAutoParam* p) {
     MICResult ret = MIC_StartAutoSampling(p);
 
     auto_sample_flag = 1;
@@ -743,7 +739,7 @@ MICResult GF_MIC_StartAutoSampling(MICAutoParam* p) {
     return ret;
 }
 
-MICResult GF_MIC_StopAutoSampling(void) {
+MICResult GF_MicStopAutoSampling(void) {
     MICResult ret;
     SND_WORK* wk = GetSoundDataPointer();
 
@@ -752,7 +748,7 @@ MICResult GF_MIC_StopAutoSampling(void) {
     MIC_StopAutoSampling();
 }
 
-void GF_MicPauseOnLidClose(void) {
+void MicPauseOnLidClose(void) {
     if (auto_sample_flag) {
         if (MIC_StopAutoSampling()) {
             GF_ASSERT(FALSE);
@@ -760,7 +756,7 @@ void GF_MicPauseOnLidClose(void) {
     }
 }
 
-void GF_MicResumeOnLidOpen(void) {
+void MicResumeOnLidOpen(void) {
     if (auto_sample_flag) {
         if (MIC_StartAutoSampling(&_021D05F8)) {
             GF_ASSERT(FALSE);
@@ -769,7 +765,7 @@ void GF_MicResumeOnLidOpen(void) {
     GF_SndWorkMicCounterReset();
 }
 
-NNSSndWaveOutHandle* Snd_WaveOutHandleGet(u32 no) {
+NNSSndWaveOutHandle* GetWaveoutHandle(u32 no) {
     SND_WORK* wk = GetSoundDataPointer();
     u8* ch_normal_flag = GF_SdatGetAttrPtr(SND_W_ID_WAVEOUT_CH_NORMAL_FLAG);
     u8* ch_chorus_flag = GF_SdatGetAttrPtr(SND_W_ID_WAVEOUT_CH_CHORUS_FLAG);
@@ -794,7 +790,7 @@ NNSSndWaveOutHandle* Snd_WaveOutHandleGet(u32 no) {
     }
 }
 
-BOOL GF_AllocWaveOutChannel(u32 no) {
+BOOL AllocWaveoutChannel(u32 no) {
     u8* ch_normal_flag;
     u8* ch_chorus_flag;
     NNSSndWaveOutHandle* wave_handle;
@@ -837,7 +833,7 @@ BOOL GF_AllocWaveOutChannel(u32 no) {
     return TRUE;
 }
 
-void GF_FreeWaveOutChannel(u32 no) {
+void FreeWaveoutChannel(u32 no) {
     NNSSndWaveOutHandle* wave_handle;
     SND_WORK* wk = GetSoundDataPointer();
     u8* ch_normal_flag = GF_SdatGetAttrPtr(SND_W_ID_WAVEOUT_CH_NORMAL_FLAG);
@@ -850,7 +846,7 @@ void GF_FreeWaveOutChannel(u32 no) {
 
     if (no == WAVEOUT_CH_NORMAL) {
         if (*ch_normal_flag == 1) {  
-            wave_handle = Snd_WaveOutHandleGet(no);
+            wave_handle = GetWaveoutHandle(no);
             NNS_SndWaveOutFreeChannel(*wave_handle);
             *ch_normal_flag = 0; 
 
@@ -861,7 +857,7 @@ void GF_FreeWaveOutChannel(u32 no) {
     }
     else {
         if (*ch_chorus_flag == 1) {  
-            wave_handle = Snd_WaveOutHandleGet(no);
+            wave_handle = GetWaveoutHandle(no);
             NNS_SndWaveOutFreeChannel(*wave_handle);
             *ch_chorus_flag = 0; 
 
@@ -874,28 +870,28 @@ void GF_FreeWaveOutChannel(u32 no) {
     return;
 }
 
-BOOL GF_WaveOutStart(WAVEOUT_WORK* p, u32 ch) {
+BOOL WaveoutStart(WAVEOUT_WORK* p, u32 ch) {
     int ret;
     ret = NNS_SndWaveOutStart(*p->handle, p->format, p->dataaddr, p->loopFlag, p->loopStartSample,
                                 p->samples, p->sampleRate, p->volume, p->speed, p->pan);
 
     if (ret == FALSE) {
-        GF_FreeWaveOutChannel(ch);
+        FreeWaveoutChannel(ch);
     }
 
     return ret;
 }
 
-void GF_WaveOutStop(u32 no) {
-    NNS_SndWaveOutStop(*Snd_WaveOutHandleGet(no));
+void WaveoutStop(u32 no) {
+    NNS_SndWaveOutStop(*GetWaveoutHandle(no));
     return;
 }
 
-BOOL GF_WaveOutIsPlaying(u32 no) {
-    return NNS_SndWaveOutIsPlaying(*Snd_WaveOutHandleGet(no));
+BOOL WaveoutIsPlaying(u32 no) {
+    return NNS_SndWaveOutIsPlaying(*GetWaveoutHandle(no));
 }
 
-void GF_SetWaveOutPan(u32 no, u8 pan) {
+void SetWaveoutPan(u32 no, u8 pan) {
     u8 set_pan;
 
     if (pan > 127) {
@@ -905,23 +901,23 @@ void GF_SetWaveOutPan(u32 no, u8 pan) {
         set_pan = pan;
     }
 
-    NNS_SndWaveOutSetPan(*Snd_WaveOutHandleGet(no), set_pan);
+    NNS_SndWaveOutSetPan(*GetWaveoutHandle(no), set_pan);
 }
 
-void GF_SetWaveOutSpeed(u32 no, u32 spd) {
-    NNS_SndWaveOutSetSpeed(*Snd_WaveOutHandleGet(no), spd);
+void SetWaveoutSpeed(u32 no, u32 spd) {
+    NNS_SndWaveOutSetSpeed(*GetWaveoutHandle(no), spd);
 }
 
-void GF_SetWaveOutVolume(u32 no, int vol) {
+void SetWaveoutVol(u32 no, int vol) {
     if (sub_020378CC() == TRUE) {
-        NNS_SndWaveOutSetVolume(*Snd_WaveOutHandleGet(no), (vol/SND_VCHAT_VOL_LV)); 
+        NNS_SndWaveOutSetVolume(*GetWaveoutHandle(no), (vol/SND_VCHAT_VOL_LV)); 
     }
     else {
-        NNS_SndWaveOutSetVolume(*Snd_WaveOutHandleGet(no), vol);
+        NNS_SndWaveOutSetVolume(*GetWaveoutHandle(no), vol);
     }
 }
 
-BOOL GF_WaveOutStartReverse(u16 no, int vol, int pan, u32 ch, int heap_id) {
+BOOL WaveoutStartReverse(u16 no, int vol, int pan, u32 ch, int heap_id) {
     u8* reverse_flag;
     const NNSSndArcWaveArcInfo* info;
     u32 size;
@@ -958,12 +954,12 @@ BOOL GF_WaveOutStartReverse(u16 no, int vol, int pan, u32 ch, int heap_id) {
             GF_ASSERT(FALSE);
             return FALSE;
         }
-        GF_SndBufReverse(*reverse_buf, size);
+        Snd_BufferReverse(*reverse_buf, size);
     }
 
     {
         WAVEOUT_WORK waveout_wk;
-        waveout_wk.handle = Snd_WaveOutHandleGet(ch);  
+        waveout_wk.handle = GetWaveoutHandle(ch);  
         waveout_wk.format = NNS_SND_WAVE_FORMAT_PCM8;  
         waveout_wk.dataaddr = *reverse_buf;        
         waveout_wk.loopFlag = FALSE;               
@@ -974,9 +970,9 @@ BOOL GF_WaveOutStartReverse(u16 no, int vol, int pan, u32 ch, int heap_id) {
         waveout_wk.speed = 24576;             
         waveout_wk.pan = pan;         
 
-        ret = GF_WaveOutStart(&waveout_wk, ch);
+        ret = WaveoutStart(&waveout_wk, ch);
 
-        GF_SetWaveOutVolume(ch, vol);
+        SetWaveoutVol(ch, vol);
     }
 
     reverse_flag = GF_SdatGetAttrPtr(SND_W_ID_REVERSE_FLAG);
@@ -985,7 +981,7 @@ BOOL GF_WaveOutStartReverse(u16 no, int vol, int pan, u32 ch, int heap_id) {
     return ret;
 }
 
-void GF_SndBufReverse(u8* p, u32 size) {
+void Snd_BufferReverse(u8* p, u32 size) {
     int i;
     u8 temp;
 
@@ -996,7 +992,7 @@ void GF_SndBufReverse(u8* p, u32 size) {
     }
 }
 
-void GF_WaveOutStopReverse(u32 no) {
+void WaveoutStopReverse(u32 no) {
     SND_WORK* wk = GetSoundDataPointer();
     u8* reverse_flag = GF_SdatGetAttrPtr(SND_W_ID_REVERSE_FLAG);
     void** reverse_buf = GF_SdatGetAttrPtr(SND_W_ID_REVERSE_BUF);
@@ -1005,7 +1001,7 @@ void GF_WaveOutStopReverse(u32 no) {
         GF_ASSERT(FALSE);
     }
 
-    GF_WaveOutStop(no);          
+    WaveoutStop(no);          
 
     if (*reverse_flag == 1) {     
         *reverse_flag = 0; 
@@ -1013,16 +1009,16 @@ void GF_WaveOutStopReverse(u32 no) {
     }
 }
 
-BOOL GF_SndCaptureIsActive(void) {
+BOOL Snd_CaptureIsActive(void) {
     BOOL active = NNS_SndCaptureIsActive();
     if (active == TRUE) {
-        GF_GetCaptureType();
+        GF_SndCaptureGetCaptureType();
     }
     return active;
 }
 
 
-NNSSndCaptureType GF_GetCaptureType(void) {
+NNSSndCaptureType GF_SndCaptureGetCaptureType(void) {
     return NNS_SndCaptureGetCaptureType();
 }
 
@@ -1034,8 +1030,8 @@ void GF_SndHandleSetTrackPitch(int handle_no, u16 bitmask, int pitch) {
     NNS_SndPlayerSetTrackPitch(GF_GetSoundHandle(handle_no), bitmask, pitch);
 }
 
-void GF_SetHandleTrackBySeqNo(u16 no, u16 bitmask, int pitch) {
-    u8 player_no = GF_GetPlayerNoBySeq(no); 
+void Snd_SetHandleTrack(u16 no, u16 bitmask, int pitch) {
+    u8 player_no = Snd_GetPlayerNo(no); 
     int type = GF_GetSndHandleByPlayerNo(player_no);
     GF_SndHandleSetTrackPitch(type, bitmask, pitch);
 }
@@ -1045,7 +1041,7 @@ void GF_SetHandleTrackByPlayerNo(u8 player_no, u16 bitmask, int pitch) {
     GF_SndHandleSetTrackPitch(type, bitmask, pitch);
 }
 
-void GF_SndHandleSetTrackPan(int handle_no, u16 bitmask, int pan) {
+void Snd_SetHandleTrackPan(int handle_no, u16 bitmask, int pan) {
     NNS_SndPlayerSetTrackPan(GF_GetSoundHandle(handle_no), bitmask, pan);
 }
 
@@ -1058,17 +1054,17 @@ void GF_SndSetMonoFlag(BOOL flag) {
     _021D05E8.mono_flag = flag;
 }
 
-void GF_SetFadeCount(int frame) {
+void Snd_SetFadeCount(int frame) {
     int* fade_count = GF_SdatGetAttrPtr(SND_W_ID_FADE_COUNT);
     *fade_count = frame;
 }
 
-void GF_SetNextWait(int frame) {
+void Snd_SetNextWait(int frame) {
     int* next_wait = GF_SdatGetAttrPtr(SND_W_ID_NEXT_WAIT);
     *next_wait = frame;
 }
 
-int GF_SndGetAfterFadeDelayTimer(void) {
+int Snd_GetAfterFadeDelayTimer(void) {
     u16* next_wait = GF_SdatGetAttrPtr(SND_W_ID_NEXT_WAIT);
 
     if (*next_wait <= 0) {
@@ -1080,26 +1076,26 @@ int GF_SndGetAfterFadeDelayTimer(void) {
     return *next_wait;
 }
 
-void GF_SetMasterVolume(int vol) {
+void GF_SndSetMasterVolume(int vol) {
     NNS_SndSetMasterVolume(vol);
 }
 
-s8* GF_GetWaveBufAdrs(void) {
+s8* Snd_GetWaveBufferAdrs(void) {
     return sWaveBuffer;
 }
 
-void GF_SetSndBankFlag(int flag) {
-    *(u8*) GF_SdatGetAttrPtr(SND_W_ID_BANK_FLAG) = flag;
+void Snd_SetBankFlag(int flag) {
+    *(u8 *) GF_SdatGetAttrPtr(SND_W_ID_BANK_FLAG) = flag;
 }
 
-BOOL GF_NowStartMusicId(u16 no, int frame, int next_wait, u8 flag, void* adrs) {
-    return Snd_FadeOutNextPlaySet(SND_W_ID_CALLBACK_INFO, no, frame, next_wait, flag, adrs);
+BOOL StartMusic(u16 no, int frame, int next_wait, u8 flag, void* adrs) {
+    return MusicFadeOutAndPlayNext(SND_W_ID_CALLBACK_INFO, no, frame, next_wait, flag, adrs);
 }
 
-BOOL Snd_FadeOutNextPlaySet(u8 scene, u16 no, int frame, int next_wait, u8 flag, void* adrs) {
+BOOL MusicFadeOutAndPlayNext(u8 scene, u16 no, int frame, int next_wait, u8 flag, void* adrs) {
     u8* scene_sub = GF_SdatGetAttrPtr(SND_W_ID_SCENE_SUB);
 
-    Snd_FadeCommonSet(scene, no, frame, next_wait, flag, adrs);
+    SetFadeCommon(scene, no, frame, next_wait, flag, adrs);
 
     *scene_sub = SND_SCENE_DUMMY;
 
@@ -1107,14 +1103,14 @@ BOOL Snd_FadeOutNextPlaySet(u8 scene, u16 no, int frame, int next_wait, u8 flag,
     return TRUE;
 }
 
-BOOL GF_FadeStartMusicId(u16 no, int frame, int next_wait, int next_frame, u8 flag, void* adrs) {
-    return Snd_FadeOutNextFadeInSet(4, no, frame, next_wait, next_frame, flag, adrs);
+BOOL StartFadeInMusic(u16 no, int frame, int next_wait, int next_frame, u8 flag, void* adrs) {
+    return MusicFadeOutAndFadeInNext(4, no, frame, next_wait, next_frame, flag, adrs);
 }
 
-BOOL Snd_FadeOutNextFadeInSet(u8 scene, u16 no, int frame, int next_wait, int next_frame, u8 flag, void* adrs) {
+BOOL MusicFadeOutAndFadeInNext(u8 scene, u16 no, int frame, int next_wait, int next_frame, u8 flag, void* adrs) {
     int* next_frame_wk = GF_SdatGetAttrPtr(SND_W_ID_NEXT_FRAME);
 
-    Snd_FadeCommonSet(scene, no, frame, next_wait, flag, adrs);
+    SetFadeCommon(scene, no, frame, next_wait, flag, adrs);
     
     *next_frame_wk = next_frame;  
 
@@ -1122,26 +1118,26 @@ BOOL Snd_FadeOutNextFadeInSet(u8 scene, u16 no, int frame, int next_wait, int ne
     return TRUE;
 }
 
-static void Snd_FadeCommonSet(u8 scene, u16 no, int frame, int next_wait, u8 flag, void* adrs) {
+static void SetFadeCommon(u8 scene, u16 no, int frame, int next_wait, u8 flag, void* adrs) {
     const NNSSndArcBankInfo** info = GF_SdatGetAttrPtr(SND_W_ID_BANK_INFO);
 
     GF_SndStartFadeOutBGM(0, frame); //BGM_VOL_MIN
 
-    GF_SetCurrentPlayingBGM(0);   
+    Snd_SetCurrentlyPlayingBGM(0);   
 
-    GF_SetNextBGM(no);    
-    GF_SetNextWait(next_wait);       
+    Snd_SetNextBGM(no);    
+    Snd_SetNextWait(next_wait);       
 
-    *info = GF_GetBankInfoBySeqNo(no); 
+    *info = Snd_GetBankInfo(no); 
 
-    GF_SetSndBankFlag(flag);
+    Snd_SetBankFlag(flag);
 }
 
 void GF_SndSetAllocatableChannelForBGMPlayer(int channel) {
     NNS_SndPlayerSetAllocatableChannel(7, channel);
 }
 
-void GF_SndSetBgmChannelAndReverb(int flag) {
+void Snd_SetBGMAndReverb(int flag) {
     if (flag == 0) {
         GF_SndSetAllocatableChannelForBGMPlayer(PLAYER_BGM_NORMAL_CH);
         GF_SndCaptureStopReverb(0);
@@ -1149,17 +1145,14 @@ void GF_SndSetBgmChannelAndReverb(int flag) {
     else {
         GF_SndSetAllocatableChannelForBGMPlayer(0x00003FFF);
     }
-
-    GF_SndCaptureIsActive();
+    Snd_CaptureIsActive();
 }
 
 void Snd_FieldPauseOrStop(void) {
     if ((GF_SndGetFadeTimer() == 0) && 
         (GF_NNS_SndPlayerGetSeqNo(GF_GetSoundHandle(SND_HANDLE_FIELD)) != -1)) {
-
         sub_02005FD8(); 
-        GF_SndPause(PLAYER_FIELD, TRUE);  
-
+        SndPause(PLAYER_FIELD, TRUE);  
     }
     else {
         sub_02005FA0();                                
@@ -1171,28 +1164,28 @@ void GF_SndHandleSetPlayerVolume(int player_no, int vol) {
 }
 
 void Snd_SetPVDoubleFlag(u8 flag) {
-    *(u8*) GF_SdatGetAttrPtr(SND_W_ID_PV_DOUBLE_FLAG) = flag;
+    *(u8 *) GF_SdatGetAttrPtr(SND_W_ID_PV_DOUBLE_FLAG) = flag;
 }
 
 void Snd_SetBattleRecFlag(u8 flag) {
-    *(u8*) GF_SdatGetAttrPtr(SND_W_ID_BATTLE_REC_FLAG) = flag;
+    *(u8 *) GF_SdatGetAttrPtr(SND_W_ID_BATTLE_REC_FLAG) = flag;
 }
 
-BOOL GF_SndPlayerReadVariableBySeq(u16 seq_no, u16 varNo, s16* var) {
+BOOL Snd_ReadPlayerVariable(u16 seq_no, u16 varNo, s16* var) {
     if (var == NULL) {
         GF_ASSERT(FALSE);
     }
     if (varNo > 15) {
         GF_ASSERT(FALSE);
     }
-    int player_no = GF_GetPlayerNoBySeq(seq_no);
+    int player_no = Snd_GetPlayerNo(seq_no);
     int type = GF_GetSndHandleByPlayerNo(player_no);
     return NNS_SndPlayerReadVariable(GF_GetSoundHandle(type), varNo, var);
 }
 
 void sub_02005BA8(u16 no) {
-    u8* index = (u8*) GF_SdatGetAttrPtr(SND_W_ID_UNK_55);
-    GF_SetVolumeBySeqNo(no, _020F5710[*index][1]);
+    u8* index = (u8 *) GF_SdatGetAttrPtr(SND_W_ID_UNK_55);
+    Snd_SetVol(no, _020F5710[*index][1]);
     GF_SndHandleSetTrackPitch(4, 0x0000FFFF, _020F5710[*index][0]);
     if (index[1] >= 8) {
         index[1] = 0;
@@ -1200,19 +1193,19 @@ void sub_02005BA8(u16 no) {
 }
 
 void Snd_SetUNK_56(u8 unk) {
-    *(u8*) GF_SdatGetAttrPtr(SND_W_ID_UNK_56) = unk;
+    *(u8 *) GF_SdatGetAttrPtr(SND_W_ID_UNK_56) = unk;
 }
 
 u8 Snd_GetUNK_56(void) {
-    return *(u8*) GF_SdatGetAttrPtr(SND_W_ID_UNK_56);
+    return *(u8 *) GF_SdatGetAttrPtr(SND_W_ID_UNK_56);
 }
 
 void Snd_SetGBSoundsState(u8 val) {
-    *(u8*) GF_SdatGetAttrPtr(SND_W_ID_UNK_57) = val;
+    *(u8 *) GF_SdatGetAttrPtr(SND_W_ID_UNK_57) = val;
 }
 
 u8 SoundSys_GetGBSoundsState(void) {
-    return *(u8*) GF_SdatGetAttrPtr(SND_W_ID_UNK_57);
+    return *(u8 *) GF_SdatGetAttrPtr(SND_W_ID_UNK_57);
 }
 
 void SoundSys_ToggleGBSounds(void) {
@@ -1223,13 +1216,13 @@ void SoundSys_ToggleGBSounds(void) {
     else {
         Snd_SetGBSoundsState(0);
     }
-    if (GF_GetNextBGM() == 0) {
-        u16 bgm = GF_GetCurrentPlayingBGM();
+    if (Snd_GetNextBGM() == 0) {
+        u16 bgm = Snd_GetCurrentlyPlayingBGM();
         int vol = GF_SndWorkGetGbSoundsVolume();
         if (bgm != GBSounds_GetGBSeqNoByDSSeqNo(bgm)) {
             PlayBGM(bgm);
         }
-        GF_SndHandleMoveVolume(0, vol, 0);
+        Snd_HandleMoveVolume(0, vol, 0);
     }
 }
 

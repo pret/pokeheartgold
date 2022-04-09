@@ -1931,7 +1931,7 @@
 #define BANK_SE_THLON_OPED                    771
 #define BANK_SE_JUICE                         772
 #define BANK_SE_COIN                          773
-#define BANK_SE_DENDO                         774
+#define BANK_SE_HALL_OF_FAME                  774
 #define BANK_SE_SEKIBAN                       775
 #define BANK_SE_PHC                           776
 #define BANK_SE_EVENT                         777
@@ -2493,7 +2493,7 @@
 #define WAVE_ARC_SE_THLON_OPED                771
 #define WAVE_ARC_SE_JUICE                     772
 #define WAVE_ARC_SE_COIN                      773
-#define WAVE_ARC_SE_DENDO                     774
+#define WAVE_ARC_SE_HALL_OF_FAME              774
 #define WAVE_ARC_SE_SEKIBAN                   775
 #define WAVE_ARC_SE_PHC                       776
 #define WAVE_ARC_SE_EVENT                     777
@@ -2518,12 +2518,12 @@
 #define GROUP_SE_POKELIST                       7
 #define GROUP_SE_DIG                            8
 #define GROUP_SE_IMAGE                          9
-#define GROUP_SE_ZUKAN                         10
+#define GROUP_SE_POKEDEX                       10
 #define GROUP_SE_CONTEST                       11
 #define GROUP_SE_TRCARD                        12
 #define GROUP_SE_TRADE                         13
 #define GROUP_SE_NUTMIXER                      14
 #define GROUP_SE_CUSTOM                        15
-#define GROUP_SE_GURUGURU                      16
+#define GROUP_SE_SPIN                          16
 
 #endif //POKEHEARTGOLD_CONSTANTS_SNDSEQ_H

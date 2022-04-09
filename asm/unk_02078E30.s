@@ -83,7 +83,7 @@ sub_02078E30: ; 0x02078E30
 	mov r1, #0
 	mov r0, #SND_SCENE_SUB_POKELIST
 	add r2, r1, #0
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	add r0, r5, #0
 	bl sub_0207CF98
 	add r0, r5, #0
@@ -1066,7 +1066,7 @@ _02079672:
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _02079682
-	bl GF_ClearHeapAndSndSubScene
+	bl Snd_ClearHeapAndSubscene
 _02079682:
 	mov r0, #4
 	bl FontID_Release

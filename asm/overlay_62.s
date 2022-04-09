@@ -1137,7 +1137,7 @@ ov62_021E61AC: ; 0x021E61AC
 	str r0, [r5, #0x10]
 	str r6, [r5, #0x14]
 	str r7, [r5, #0x18]
-	bl SndWorkMicCounterFull
+	bl IsWorkMicCounterFull
 	str r0, [r5, #0x34]
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov62_021E61AC
@@ -1156,7 +1156,7 @@ ov62_021E61FC: ; 0x021E61FC
 ov62_021E620C: ; 0x021E620C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl SndWorkMicCounterFull
+	bl IsWorkMicCounterFull
 	add r4, r0, #0
 	beq _021E621E
 	ldr r0, [r5, #0x34]
@@ -1204,7 +1204,7 @@ ov62_021E625C: ; 0x021E625C
 	ldr r1, [r4, #0x30]
 	cmp r1, #0
 	bne _021E6270
-	bl GF_MIC_StartAutoSampling
+	bl GF_MicStartAutoSampling
 	mov r0, #1
 	str r0, [r4, #0x28]
 	pop {r4, pc}
@@ -1219,7 +1219,7 @@ _021E6270:
 ov62_021E6278: ; 0x021E6278
 	push {r4, lr}
 	add r4, r0, #0
-	bl GF_MIC_StopAutoSampling
+	bl GF_MicStopAutoSampling
 	mov r0, #0
 	str r0, [r4, #0x28]
 	pop {r4, pc}

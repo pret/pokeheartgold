@@ -1400,7 +1400,7 @@ _021E63DC:
 	ldr r1, _021E6598 ; =0x000003F3
 	mov r0, #SND_SCENE_EGG
 	mov r2, #1
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	ldr r0, [r4, #0x60]
 	add r0, r0, #1
 	str r0, [r4, #0x60]
@@ -1714,7 +1714,7 @@ _021E6670:
 	ldr r1, _021E67E8 ; =0x000003F3
 	mov r0, #SND_SCENE_EGG
 	mov r2, #1
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	ldr r0, [r4, #0x60]
 	add r0, r0, #1
 	str r0, [r4, #0x60]

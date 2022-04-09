@@ -12,7 +12,7 @@ BOOL ChatotSoundMain(void) {
 
     if (*r0 == TRUE) {
         if (*r4 == TRUE) {
-            if (GF_WaveOutIsPlaying(SND_W_ID_ME_WAIT) == 0) {
+            if (WaveoutIsPlaying(SND_W_ID_ME_WAIT) == 0) {
                 sub_02006DB8();
                 return TRUE;
             }
@@ -46,7 +46,7 @@ BOOL Chatot_checkCry(SOUND_CHATOT *a0) {
 }
 
 BOOL sub_02006D04(SOUND_CHATOT *chatot, u32 unused, s32 vol, s32 pan) {
-    s8 *sp0 = GF_GetWaveBufAdrs();
+    s8 *sp0 = Snd_GetWaveBufferAdrs();
     s8 *playFlag = GF_SdatGetAttrPtr(SND_W_ID_CHATOT_PLAY_FLAG);
 
     if (!Chatot_checkCry(chatot)) {
@@ -55,16 +55,16 @@ BOOL sub_02006D04(SOUND_CHATOT *chatot, u32 unused, s32 vol, s32 pan) {
 
     sub_02006300(0);
     sub_02006DB8();
-    GF_AllocWaveOutChannel(WAVEOUT_CH_NORMAL);
+    AllocWaveoutChannel(WAVEOUT_CH_NORMAL);
     u16 r4 = (LCRandom() % 8192);
 
     Chatot_Decode(sp0, Chatot_GetData(chatot));
 
     WAVEOUT_WORK work;
 
-    work.handle = Snd_WaveOutHandleGet(WAVEOUT_CH_NORMAL);
+    work.handle = GetWaveoutHandle(WAVEOUT_CH_NORMAL);
     work.format = 0;
-    work.dataaddr = GF_GetWaveBufAdrs();
+    work.dataaddr = Snd_GetWaveBufferAdrs();
     work.loopFlag = FALSE;
     work.loopStartSample = 0;
     work.samples = 2000;
@@ -73,8 +73,8 @@ BOOL sub_02006D04(SOUND_CHATOT *chatot, u32 unused, s32 vol, s32 pan) {
     work.pan = pan / 2 + 64;
     work.volume = vol;
 
-    BOOL ret = GF_WaveOutStart(&work, WAVEOUT_CH_NORMAL);
-    GF_SetWaveOutVolume(WAVEOUT_CH_NORMAL, vol);
+    BOOL ret = WaveoutStart(&work, WAVEOUT_CH_NORMAL);
+    SetWaveoutVol(WAVEOUT_CH_NORMAL, vol);
     *playFlag = 1;
     sub_02006E3C(0);
 
@@ -86,8 +86,8 @@ void sub_02006DB8() {
     u8 *r4 = GF_SdatGetAttrPtr(SND_W_ID_CHATOT_PLAY_FLAG);
 
     if (*r5 == 1) {
-        GF_WaveOutStopReverse(WAVEOUT_CH_NORMAL);
-        GF_FreeWaveOutChannel(WAVEOUT_CH_NORMAL);
+        WaveoutStopReverse(WAVEOUT_CH_NORMAL);
+        FreeWaveoutChannel(WAVEOUT_CH_NORMAL);
     }
 
     *r4 = 0;
@@ -97,7 +97,7 @@ u32 Chatot_startRecording(void) {
     MICAutoParam st0;
     
     st0.type = MIC_SAMPLING_TYPE_SIGNED_8BIT;
-    st0.buffer = GF_GetWaveBufAdrs();
+    st0.buffer = Snd_GetWaveBufferAdrs();
     st0.size = 2000;
     if ((st0.size & 0x1f) != 0) {
         st0.size &= ~0x1f;
@@ -107,15 +107,15 @@ u32 Chatot_startRecording(void) {
     st0.full_callback = 0;
     st0.full_arg = 0;
 
-    return GF_MIC_StartAutoSampling(&st0);
+    return GF_MicStartAutoSampling(&st0);
 }
 
 void Chatot_stopRecording() {
-    GF_MIC_StopAutoSampling();
+    GF_MicStopAutoSampling();
 }
 
 void Chatot_saveRecording(SOUND_CHATOT *a0) {
-    Chatot_Encode(a0, GF_GetWaveBufAdrs());
+    Chatot_Encode(a0, Snd_GetWaveBufferAdrs());
 }
 
 void sub_02006E3C(u8 a0) {

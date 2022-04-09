@@ -307,7 +307,7 @@ _02201E16:
 	mov r1, #0
 	mov r0, #SND_SCENE_SUB_PLANTER
 	add r2, r1, #0
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	mov r0, #0
 	add r4, #0x70
 	strh r0, [r4]

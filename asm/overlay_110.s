@@ -41,7 +41,7 @@ _021E5912:
 	str r0, [r4, #0x10]
 	mov r0, #SND_SCENE_SUB_SEKIBAN
 	add r2, r1, #0
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	add r0, r4, #0
 	bl ov110_021E5A74
 	ldr r0, [r5]

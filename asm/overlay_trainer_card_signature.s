@@ -130,7 +130,7 @@ _021E80D6:
 	mov r1, #0
 	mov r0, #SND_SCENE_SUB_TRCARD
 	add r2, r1, #0
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	ldr r2, _021E8240 ; =0x04000304
 	ldr r0, _021E8244 ; =0xFFFF7FFF
 	ldrh r1, [r2]

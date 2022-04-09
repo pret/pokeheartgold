@@ -50,7 +50,7 @@ ov75_02246960: ; 0x02246960
 	ldr r1, _022469D4 ; =0x0000047D
 	mov r0, #SND_SCENE_EMAIL
 	mov r2, #1
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	mov r0, #0
 	add r4, #0x88
 	str r0, [r4]

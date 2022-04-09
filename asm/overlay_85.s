@@ -103,7 +103,7 @@ _021E59CA:
 	lsl r1, r0, #0xc
 	mov r0, ip
 	str r1, [r0, #0x40]
-	bl GF_GetCurrentPlayingBGM
+	bl Snd_GetCurrentlyPlayingBGM
 	str r0, [r6, #0x1c]
 	add r0, r6, #0
 	bl ov85_021E7D08
@@ -690,7 +690,7 @@ _021E5DFE:
 	str r0, [r6]
 	ldr r1, _021E5E2C ; =0x00000483
 	mov r0, #SND_SCENE_SPIN_TRADE
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	add r0, r6, #0
 	bl ov85_021E72E8
 	mov r0, #1
@@ -1957,7 +1957,7 @@ ov85_021E670C: ; 0x021E670C
 	add r3, r1, #0
 	bl BeginNormalPaletteFade
 	ldr r5, [r4, #0x1c]
-	bl GF_GetCurrentPlayingBGM
+	bl Snd_GetCurrentlyPlayingBGM
 	cmp r5, r0
 	beq _021E673E
 	lsl r1, r5, #0x10
@@ -6553,7 +6553,7 @@ _021E890A:
 	mov r1, #0
 	mov r0, #SND_SCENE_SUB_NAMEIN
 	add r2, r1, #0
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	ldr r0, [r6, #0x30]
 	bl sub_02096CE0
 	bl sub_0203897C

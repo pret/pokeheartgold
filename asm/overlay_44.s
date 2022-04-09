@@ -1219,7 +1219,7 @@ _0222A7E2:
 	bne _0222A7F2
 	mov r0, #0
 	mov r1, #0x78
-	bl GF_SndHandleSetInitialVolume
+	bl Snd_HandleSetInitialVolume
 _0222A7F2:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
@@ -2603,7 +2603,7 @@ _0222B2CA:
 	ldr r1, _0222B364 ; =0x0000047D
 	mov r0, #SND_SCENE_P2P
 	mov r2, #1
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	add r0, r5, #0
 	bl ov44_0222B0B0
 	ldr r0, [r5]
@@ -8203,20 +8203,20 @@ ov44_0222E030: ; 0x0222E030
 	bne _0222E056
 	bl IsNighttime
 	mov r0, #SND_SCENE_DUMMY
-	bl GF_SetSndScene
+	bl Snd_SetScene
 	ldr r1, _0222E070 ; =0x00000427
 	mov r0, #SND_SCENE_P2P
 	mov r2, #1
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	pop {r4, pc}
 _0222E056:
-	bl GF_GetCurrentPlayingBGM
+	bl Snd_GetCurrentlyPlayingBGM
 	add r4, r0, #0
-	bl GF_GetCurrentPlayingBGM
-	bl GF_GetVolumeBySeqNo
+	bl Snd_GetCurrentlyPlayingBGM
+	bl Snd_GetVol
 	add r1, r0, #0
 	add r0, r4, #0
-	bl GF_SetVolumeBySeqNo
+	bl Snd_SetVol
 	pop {r4, pc}
 	nop
 _0222E070: .word 0x00000427
@@ -8225,7 +8225,7 @@ _0222E070: .word 0x00000427
 	thumb_func_start ov44_0222E074
 ov44_0222E074: ; 0x0222E074
 	push {r3, lr}
-	bl GF_GetCurrentPlayingBGM
+	bl Snd_GetCurrentlyPlayingBGM
 	ldr r1, _0222E08C ; =0x00000427
 	cmp r0, r1
 	beq _0222E086
@@ -20323,8 +20323,8 @@ ov44_02233F3C: ; 0x02233F3C
 	bl ov44_02233EF8
 	cmp r0, #0
 	beq _02233F4E
-	bl GF_GetCurrentPlayingBGM
-	bl GF_SndSetVChatVolBySeqNo
+	bl Snd_GetCurrentlyPlayingBGM
+	bl Snd_SetVChatVolBySeqNo
 _02233F4E:
 	pop {r3, pc}
 	thumb_func_end ov44_02233F3C
@@ -20337,7 +20337,7 @@ ov44_02233F50: ; 0x02233F50
 	beq _02233F62
 	mov r0, #0
 	mov r1, #0x78
-	bl GF_SndHandleSetInitialVolume
+	bl Snd_HandleSetInitialVolume
 _02233F62:
 	pop {r3, pc}
 	thumb_func_end ov44_02233F50

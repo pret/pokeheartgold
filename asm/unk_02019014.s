@@ -440,7 +440,7 @@ sub_020192D0: ; 0x020192D0
 	ldr r1, _02019358 ; =0x0000047D
 	mov r0, #SND_SCENE_P2P
 	mov r2, #1
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop

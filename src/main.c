@@ -290,7 +290,7 @@ void HandleDSLidAction(void) {
     if (PAD_DetectFold()) {
         if (!gSystem.lidClosedPauseDisabled) {
             GF_TouchpadPauseOnLidClose();
-            GF_MicPauseOnLidClose();
+            MicPauseOnLidClose();
             if (CTRDG_IsPulledOut() == TRUE) {
                 _02111864 = 1;
             }
@@ -309,7 +309,7 @@ void HandleDSLidAction(void) {
                 break;
             }
             GF_TouchpadResumeOnLidOpen();
-            GF_MicResumeOnLidOpen();
+            MicResumeOnLidOpen();
         } else {
             GF_TouchpadPauseOnLidClose();
             PM_GetBackLight(&top, &bottom);

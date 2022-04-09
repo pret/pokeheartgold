@@ -164,7 +164,7 @@ sub_02088298: ; 0x02088298
 	mov r1, #0
 	mov r0, #SND_SCENE_SUB_PST
 	add r2, r1, #0
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	bl sub_0203A964
 	add r0, r5, #0
 	bl NARC_dtor

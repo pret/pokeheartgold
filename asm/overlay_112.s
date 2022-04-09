@@ -10073,7 +10073,7 @@ ov112_021EAC18: ; 0x021EAC18
 	ldr r1, _021EAC30 ; =0x00000497
 	mov r0, #SND_SCENE_SUB_PHC
 	mov r2, #0
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	ldr r0, _021EAC30 ; =0x00000497
 	bl PlayBGM
 	mov r0, #2

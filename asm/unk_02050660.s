@@ -428,13 +428,13 @@ sub_02050960: ; 0x02050960
 	b _020509EA
 _0205098A:
 	mov r0, #SND_SCENE_DUMMY
-	bl GF_SetSndScene
+	bl Snd_SetScene
 	ldr r1, [r5, #8]
 	mov r0, #SND_SCENE_BATTLE
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	mov r2, #1
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	ldr r1, [r5, #0x10]
 	add r0, r7, #0
 	bl sub_020506AC

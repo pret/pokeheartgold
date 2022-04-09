@@ -2996,7 +2996,7 @@ _021E70B8:
 	mov r0, #SND_SCENE_OPENING
 	lsl r1, r1, #4
 	mov r2, #1
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	mov r0, #SEQ_GS_POKEMON_THEME>>4
 	lsl r0, r0, #4
 	add r1, r5, #0

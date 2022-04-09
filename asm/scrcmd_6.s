@@ -38,7 +38,7 @@ ScrCmd_PlayBGM: ; 0x02049134
 ScrCmd_081: ; 0x02049144
 	push {r3, lr}
 	bl ScriptReadHalfword
-	bl GF_GetCurrentPlayingBGM
+	bl Snd_GetCurrentlyPlayingBGM
 	mov r1, #0
 	bl StopBGM
 	mov r0, #0
@@ -136,7 +136,7 @@ ScrCmd_086: ; 0x020491E8
 	str r1, [r0, #8]
 	ldrb r1, [r3]
 	add r0, r2, #0
-	bl GF_SndPause
+	bl SndPause
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -159,7 +159,7 @@ ScrCmd_088: ; 0x02049214
 	add r1, r2, #1
 	str r1, [r0, #8]
 	ldrb r0, [r2]
-	bl GF_SetCtrlBgmFlag
+	bl Snd_SetCntrlBGMFlag
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -366,7 +366,7 @@ ScrCmd_ChatotStartRecording: ; 0x0204937C
 	ldr r0, [r4]
 	bl GetVarPointer
 	add r4, r0, #0
-	bl SndWorkMicCounterFull
+	bl IsWorkMicCounterFull
 	cmp r0, #0
 	bne _0204939C
 	bl GF_AssertFail
@@ -412,7 +412,7 @@ ScrCmd_093: ; 0x020493D4
 	mov r1, #0
 	mov r0, #SND_SCENE_SUB_CLIMAX
 	add r2, r1, #0
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	mov r0, #1
 	pop {r3, pc}
 	thumb_func_end ScrCmd_093
@@ -436,7 +436,7 @@ ScrCmd_544: ; 0x020493E4
 	bl VarGet
 	add r1, r0, #0
 	add r0, r5, #0
-	bl GF_SetVolumeBySeqNo
+	bl Snd_SetVol
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -477,7 +477,7 @@ ScrCmd_666: ; 0x02049440
 	ldr r0, [r4]
 	bl GetVarPointer
 	add r4, r0, #0
-	bl GF_GetCurrentPlayingBGM
+	bl Snd_GetCurrentlyPlayingBGM
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, pc}

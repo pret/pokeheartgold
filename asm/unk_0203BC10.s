@@ -3895,7 +3895,7 @@ sub_0203DAE4: ; 0x0203DAE4
 	mov r1, #0
 	bl StopBGM
 	mov r0, #SND_SCENE_DUMMY
-	bl GF_SetSndScene
+	bl Snd_SetScene
 	ldr r1, [r5, #0x20]
 	add r0, r5, #0
 	ldr r1, [r1]

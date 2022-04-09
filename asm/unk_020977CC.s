@@ -198,7 +198,7 @@ _02097938:
 	mov r0, #0
 	pop {r3, r4, r5, r6, pc}
 _0209793E:
-	bl GF_GetCurrentPlayingBGM
+	bl Snd_GetCurrentlyPlayingBGM
 	mov r1, #0
 	bl StopBGM
 	add r0, r5, #0

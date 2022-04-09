@@ -27,7 +27,7 @@ _02246970:
 	mov r0, #SND_SCENE_TRADE
 	lsl r1, r1, #2
 	mov r2, #1
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	mov r1, #0x56
 	add r0, r5, #0
 	lsl r1, r1, #2

@@ -384,13 +384,13 @@ _02087D0C:
 	ldr r1, _02087E04 ; =0x0000047B
 	mov r0, #SND_SCENE_BATTLE
 	mov r2, #1
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	b _02087D46
 _02087D3C:
 	ldr r1, _02087E08 ; =0x0000045D
 	mov r0, #SND_SCENE_BATTLE
 	mov r2, #1
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 _02087D46:
 	ldr r0, _02087E0C ; =_020FA484
 	ldr r1, [r5, #0x10]
@@ -437,7 +437,7 @@ _02087D88:
 	mov r0, #0
 	bl Snd_SetBattleRecFlag
 	mov r0, #SND_SCENE_DUMMY
-	bl GF_SetSndScene
+	bl Snd_SetScene
 	ldr r0, [r5, #0x28]
 	ldr r1, [r0, #0x20]
 	ldr r1, [r1]
@@ -447,7 +447,7 @@ _02087D88:
 	ldr r1, [r0, #0x20]
 	ldr r1, [r1]
 	bl GetMapMusic
-	bl GF_SetZoneBGM
+	bl Snd_SetZoneBGM
 	mov r0, #0
 	add r1, r4, #0
 	bl sub_02055198

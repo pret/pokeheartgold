@@ -2166,7 +2166,7 @@ _02246E42:
 	str r1, [r4, r2]
 	mov r0, #SND_SCENE_SUB_IMAGE
 	add r2, r1, #0
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, pc}

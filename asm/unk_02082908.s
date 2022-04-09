@@ -158,7 +158,7 @@ _0208291E:
 	mov r1, #0
 	mov r0, #SND_SCENE_SUB_NAMEIN
 	add r2, r1, #0
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	mov r0, #0x10
 	str r0, [sp]
 	mov r1, #1

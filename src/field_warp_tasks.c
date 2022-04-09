@@ -696,7 +696,7 @@ static BOOL sub_02053A2C(TaskManager *taskManager) {
         break;
     case 1:
         sub_0200615C(5, 10);
-        GF_SndHandleMoveVolume(0, 128, 15);
+        Snd_HandleMoveVolume(0, 128, 15);
         fsys->unkC4 = -1;
         sub_02055110(fsys, fsys->location->mapId, 1);
         ov01_021EFAF8(fsys);

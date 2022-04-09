@@ -6501,7 +6501,7 @@ ov80_0222CD94: ; 0x0222CD94
 	ldr r1, _0222CDEC ; =0x0000045D
 	mov r0, #SND_SCENE_BATTLE
 	mov r2, #1
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [r5]
@@ -8440,7 +8440,7 @@ ov80_0222DC70: ; 0x0222DC70
 	ldr r1, _0222DCE8 ; =0x0000045D
 	mov r0, #SND_SCENE_BATTLE
 	mov r2, #1
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	mov r0, #0xb
 	mov r1, #0x30
 	bl AllocFromHeap
@@ -8910,7 +8910,7 @@ ov80_0222DFF4: ; 0x0222DFF4
 	ldr r1, _0222E054 ; =0x0000047B
 	mov r0, #SND_SCENE_BATTLE
 	mov r2, #1
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	ldr r1, _0222E058 ; =ov80_0222E05C
 	add r0, r5, #0
 	bl ov80_0222AB84
@@ -14672,7 +14672,7 @@ ov80_02230D0C: ; 0x02230D0C
 	ldr r1, _02230D54 ; =0x0000045D
 	mov r0, #SND_SCENE_BATTLE
 	mov r2, #1
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5]
@@ -23712,7 +23712,7 @@ ov80_0223541C: ; 0x0223541C
 	add r4, r0, #0
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10
-	bl GF_SetZoneBGM
+	bl Snd_SetZoneBGM
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10
 	bl PlayBGM
@@ -23724,7 +23724,7 @@ ov80_0223541C: ; 0x0223541C
 ov80_02235438: ; 0x02235438
 	push {r3, lr}
 	bl ov80_0222AC58
-	bl GF_GetCurrentPlayingBGM
+	bl Snd_GetCurrentlyPlayingBGM
 	mov r1, #0
 	bl StopBGM
 	mov r0, #0
@@ -24003,7 +24003,7 @@ ov80_02235624: ; 0x02235624
 	ldr r1, _0223566C ; =0x0000045D
 	mov r0, #SND_SCENE_BATTLE
 	mov r2, #1
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5]
@@ -30618,7 +30618,7 @@ _022386D4:
 	bl ov80_0222ACA0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl GF_SetZoneBGM
+	bl Snd_SetZoneBGM
 	add r0, r5, #0
 	mov r1, #3
 	bl ov80_0222ACA0

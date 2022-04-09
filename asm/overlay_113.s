@@ -343,7 +343,7 @@ _021E5B8C:
 	mov r1, #0
 	mov r0, #SND_SCENE_SUB_PLANTER
 	add r2, r1, #0
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	mov r0, #0
 	strh r0, [r4, #0x10]
 	mov r0, #1

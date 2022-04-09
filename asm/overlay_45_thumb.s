@@ -874,7 +874,7 @@ ov45_0222A4D0: ; 0x0222A4D0
 	ldr r1, _0222A518 ; =0x00000481
 	mov r0, #SND_SCENE_WIFI_LOBBY_HIROBA
 	mov r2, #0
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	mov r0, #0x7f
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -884,7 +884,7 @@ _0222A500:
 	ldr r1, _0222A51C ; =0x0000047F
 	mov r0, #SND_SCENE_WIFI_LOBBY_HIROBA
 	mov r2, #0
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	mov r0, #0x7f
 	lsl r0, r0, #2
 	add r0, r4, r0

@@ -16555,7 +16555,7 @@ ov101_021EF848: ; 0x021EF848
 	str r0, [r4]
 	mov r0, #SND_SCENE_SUB_TOWNMAP
 	add r2, r1, #0
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	add r0, r4, #0
 	bl ov101_021EF96C
 	mov r0, #1
@@ -26780,7 +26780,7 @@ ov101_021F4558: ; 0x021F4558
 	mov r1, #0xff
 	add r0, #0x27
 	strb r1, [r0]
-	bl GF_GetCurrentPlayingBGM
+	bl Snd_GetCurrentlyPlayingBGM
 	strh r0, [r4, #0x2c]
 	pop {r4, pc}
 	.balign 4, 0
@@ -27079,7 +27079,7 @@ _021F4790:
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineBToggleLayers
-	bl GF_GetCurrentPlayingBGM
+	bl Snd_GetCurrentlyPlayingBGM
 	mov r1, #6
 	bl StopBGM
 	ldr r0, [r5, #4]
@@ -27195,7 +27195,7 @@ _021F48B6:
 	mov r1, #0xe
 	mov r2, #1
 	bl SetBlendBrightness
-	bl GF_GetCurrentPlayingBGM
+	bl Snd_GetCurrentlyPlayingBGM
 	mov r1, #6
 	bl StopBGM
 	ldr r0, [r5, #4]
@@ -29011,7 +29011,7 @@ ov101_021F56B4: ; 0x021F56B4
 	beq _021F56E6
 	add r0, r5, #0
 	bl ov101_021F5048
-	bl GF_GetCurrentPlayingBGM
+	bl Snd_GetCurrentlyPlayingBGM
 	mov r1, #0
 	bl StopBGM
 _021F56E6:
@@ -30249,7 +30249,7 @@ _021F6006:
 	strb r1, [r0]
 	add r0, r5, #0
 	bl RadioShow_PokemonMusic_InitGMM
-	bl GF_GetCurrentPlayingBGM
+	bl Snd_GetCurrentlyPlayingBGM
 	mov r1, #0
 	bl StopBGM
 	ldrb r1, [r4, #7]
@@ -30359,7 +30359,7 @@ _021F60E0:
 	add r5, #0x66
 	orr r0, r1
 	strb r0, [r5]
-	bl GF_GetCurrentPlayingBGM
+	bl Snd_GetCurrentlyPlayingBGM
 	mov r1, #0x1e
 	bl StopBGM
 	ldrb r0, [r4, #8]
@@ -30423,7 +30423,7 @@ RadioShow_PokeFlute_setup: ; 0x021F6148
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
 	bl ov101_021F61A4
-	bl GF_GetCurrentPlayingBGM
+	bl Snd_GetCurrentlyPlayingBGM
 	mov r1, #1
 	bl StopBGM
 	ldr r0, _021F617C ; =SEQ_GS_HUE
@@ -30500,7 +30500,7 @@ RadioShow_Unown_setup: ; 0x021F61D8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
 	bl RadioShow_Unown_init
-	bl GF_GetCurrentPlayingBGM
+	bl Snd_GetCurrentlyPlayingBGM
 	mov r1, #1
 	bl StopBGM
 	ldr r0, _021F620C ; =SEQ_GS_RADIO_UNKNOWN
@@ -30577,7 +30577,7 @@ RadioShow_TeamRocket_setup: ; 0x021F6268
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
 	bl RadioShow_TeamRocket_init
-	bl GF_GetCurrentPlayingBGM
+	bl Snd_GetCurrentlyPlayingBGM
 	mov r1, #1
 	bl StopBGM
 	mov r0, #0
@@ -30681,7 +30681,7 @@ RadioShow_SerialRadioDrama_setup: ; 0x021F632C
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
 	bl RadioShow_SerialRadioDrama_init
-	bl GF_GetCurrentPlayingBGM
+	bl Snd_GetCurrentlyPlayingBGM
 	mov r1, #0
 	bl StopBGM
 	ldr r0, _021F6360 ; =SEQ_GS_RADIO_VARIETY
@@ -31064,7 +31064,7 @@ RadioShow_PokemonSearchParty_setup: ; 0x021F6620
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
 	bl RadioShow_PokemonSearchParty_init
-	bl GF_GetCurrentPlayingBGM
+	bl Snd_GetCurrentlyPlayingBGM
 	mov r1, #0
 	bl StopBGM
 	ldr r0, _021F6654 ; =SEQ_GS_RADIO_VARIETY
@@ -31309,7 +31309,7 @@ RadioShow_BuenasPassword_setup: ; 0x021F680C
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
 	bl RadioShow_BuenasPassword_init
-	bl GF_GetCurrentPlayingBGM
+	bl Snd_GetCurrentlyPlayingBGM
 	mov r1, #0
 	bl StopBGM
 	mov r0, #SEQ_GS_AIKOTOBA>>4
@@ -31513,7 +31513,7 @@ RadioShow_ThatTownThesePeople_setup: ; 0x021F69A8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
 	bl RadioShow_ThatTownThesePeople_init
-	bl GF_GetCurrentPlayingBGM
+	bl Snd_GetCurrentlyPlayingBGM
 	mov r1, #0
 	bl StopBGM
 	ldr r0, _021F69DC ; =SEQ_GS_RADIO_PT
@@ -31778,7 +31778,7 @@ RadioShow_TrainerProfiles_setup: ; 0x021F6BAC
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
 	bl RadioShow_TrainerProfiles_init
-	bl GF_GetCurrentPlayingBGM
+	bl Snd_GetCurrentlyPlayingBGM
 	mov r1, #0
 	bl StopBGM
 	ldr r0, _021F6BE0 ; =SEQ_GS_RADIO_TRAINER
@@ -31994,7 +31994,7 @@ RadioShow_PokemonTalk_setup: ; 0x021F6D3C
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
 	bl RadioShow_PokemonTalk_init
-	bl GF_GetCurrentPlayingBGM
+	bl Snd_GetCurrentlyPlayingBGM
 	mov r1, #0
 	bl StopBGM
 	ldr r0, _021F6D74 ; =SEQ_GS_OHKIDO_RABO
@@ -32702,7 +32702,7 @@ RadioShow_MahoganySignal_setup: ; 0x021F72C4
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
 	bl RadioShow_MahoganySignal_init
-	bl GF_GetCurrentPlayingBGM
+	bl Snd_GetCurrentlyPlayingBGM
 	mov r1, #1
 	bl StopBGM
 	mov r0, #0

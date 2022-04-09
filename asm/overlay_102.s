@@ -19,7 +19,7 @@ _021E7752:
 	mov r1, #0
 	mov r0, #SND_SCENE_SUB_PMS
 	add r2, r1, #0
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	mov r2, #2
 	mov r0, #3
 	mov r1, #0x22

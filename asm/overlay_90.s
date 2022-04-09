@@ -1897,7 +1897,7 @@ ov90_02259588: ; 0x02259588
 	mov r0, #SND_SCENE_WIFI_LOBBY_GAME
 	lsl r1, r1, #6
 	mov r2, #0
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	ldr r1, _022596A0 ; =0x000005F4
 	add r0, r5, #0
 	bl AllocFromHeap

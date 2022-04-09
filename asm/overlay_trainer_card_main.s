@@ -201,7 +201,7 @@ _021E5C2C:
 	mov r1, #0
 	mov r0, #SND_SCENE_SUB_TRCARD
 	add r2, r1, #0
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	ldr r0, _021E5D6C ; =0x000033A0
 	add r0, r4, r0
 	bl ov51_021E7DA4

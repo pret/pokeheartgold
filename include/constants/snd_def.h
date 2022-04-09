@@ -4,7 +4,7 @@
 #define BGM_VOL_MAX                    127                            
 #define BGM_VOL_HALF                    64                            
 #define BGM_VOL_MIN                      0                                
-#define BGM_VOL_ZUKAN      BGM_VOL_MAX / 3                
+#define BGM_VOL_POKEDEX    BGM_VOL_MAX / 3                
 #define BGM_VOL_TR_CASE    BGM_VOL_MAX / 3                
 #define BGM_VOL_CLIP       BGM_VOL_MAX / 3                
 #define BGM_VOL_CHATOT     BGM_VOL_MAX / 3                

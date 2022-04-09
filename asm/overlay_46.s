@@ -30,7 +30,7 @@ ov46_02258800: ; 0x02258800
 	str r0, [r5]
 	mov r0, #SND_SCENE_P2P
 	mov r2, #0
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	mov r0, #0
 	str r0, [r4, #0x10]
 	add r0, r5, #0

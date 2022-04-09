@@ -152,7 +152,7 @@ ov65_0221BE20: ; 0x0221BE20
 	mov r0, #0
 	bl sub_02055198
 	ldr r0, _0221BFB8 ; =0x00000427
-	bl GF_SndSetVChatVolBySeqNo
+	bl Snd_SetVChatVolBySeqNo
 	add r0, r5, #0
 	bl NARC_dtor
 	mov r0, #1

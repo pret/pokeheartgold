@@ -1661,7 +1661,7 @@ _02238446:
 	ldr r1, _022385B8 ; =0x0000047D
 	mov r0, #SND_SCENE_P2P
 	mov r2, #1
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	ldr r1, _022385BC ; =0x00020020
 	mov r0, #0x3d
 	bl AllocFromHeap
@@ -3030,7 +3030,7 @@ ov70_02238FF4: ; 0x02238FF4
 	ldr r1, _022390D0 ; =0x00000484
 	mov r0, #SND_SCENE_WIFI_WORLD_TRADE
 	mov r2, #1
-	bl GF_SetDataByScene
+	bl Snd_SetDataByScene
 	ldrh r0, [r4, #0x34]
 	cmp r0, #0
 	bne _02239072

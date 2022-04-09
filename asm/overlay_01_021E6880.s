@@ -2787,7 +2787,7 @@ _021E7E80:
 	mov r0, #0
 	ldrb r1, [r1, r2]
 	mov r2, #0xf
-	bl GF_SndHandleMoveVolume
+	bl Snd_HandleMoveVolume
 	ldr r1, [sp]
 	mov r0, #5
 	ldrb r2, [r1, r4]
@@ -2798,7 +2798,7 @@ _021E7E80:
 	add r1, r1, r3
 	ldrb r1, [r2, r1]
 	add r2, r0, #0
-	bl GF_SndHandleMoveVolume
+	bl Snd_HandleMoveVolume
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7EBC:
 	cmp r7, #0x10
@@ -2818,7 +2818,7 @@ _021E7EC6:
 	mov r0, #0
 	mov r1, #0x80
 	mov r2, #0xf
-	bl GF_SndHandleMoveVolume
+	bl Snd_HandleMoveVolume
 	mov r0, #0
 	mvn r0, r0
 	add r5, #0xc4

@@ -108,7 +108,7 @@
 #define SND_SCENE_SUB_BAG                  51 
 #define SND_SCENE_SUB_NAMEIN               52 
 #define SND_SCENE_SUB_IMAGE                53 
-#define SND_SCENE_SUB_ZUKAN                54 
+#define SND_SCENE_SUB_POKEDEX              54 
 #define SND_SCENE_SUB_TOWNMAP              55 
 #define SND_SCENE_SUB_TRCARD               56 
 #define SND_SCENE_SUB_POKELIST             57 
@@ -125,7 +125,7 @@
 #define SND_SCENE_SUB_LINEAR               68
 #define SND_SCENE_SUB_PLANTER              69
 #define SND_SCENE_SUB_COIN                 70
-#define SND_SCENE_SUB_DENDO                71
+#define SND_SCENE_SUB_HALL_OF_FAME         71
 #define SND_SCENE_SUB_JUICE                72
 #define SND_SCENE_SUB_PHC                  73
 #define SND_SCENE_SUB_SEKIBAN              74

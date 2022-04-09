@@ -75,7 +75,7 @@ void GF_SndHandleInitAll(SND_WORK *work);
 void sub_02004898(struct SND_WORK *work);
 void GF_SndCallback(void);
 BOOL GF_SndIsFanfarePlaying(void);
-BOOL GF_SndWorkMicCounterFull(void);
+BOOL GF_IsWorkMicCounterFull(void);
 
 void InitSoundData(SOUND_CHATOT *chatot, OPTIONS *options) {
     SND_WORK *work = GetSoundDataPointer();
@@ -136,7 +136,7 @@ void DoSoundUpdateFrame(void) {
     }
 
     // New to HG/SS
-    if (work->micInitDone && !GF_SndWorkMicCounterFull()) {
+    if (work->micInitDone && !GF_IsWorkMicCounterFull()) {
         work->micCounter++;
     }
     NNS_SndMain();
@@ -161,7 +161,7 @@ void GF_SndCallback(void) {
         }
         break;
     case 5:
-        if (!GF_SndGetFadeTimer() && !GF_SndGetAfterFadeDelayTimer()) {
+        if (!GF_SndGetFadeTimer() && !Snd_GetAfterFadeDelayTimer()) {
             GF_SndStopPlayerBgm();
             if (work->queuedSeqNo != 0) {
                 PlayBGM(work->queuedSeqNo);
@@ -169,7 +169,7 @@ void GF_SndCallback(void) {
         }
         break;
     case 6:
-        if (!GF_SndGetFadeTimer() && !GF_SndGetAfterFadeDelayTimer()) {
+        if (!GF_SndGetFadeTimer() && !Snd_GetAfterFadeDelayTimer()) {
             GF_SndStopPlayerBgm();
             if (work->queuedSeqNo != 0) {
                 PlayBGM(work->queuedSeqNo);
@@ -492,7 +492,7 @@ void sub_02004920(u16 unk) {
 #pragma unused(unk)
 }
 
-BOOL GF_SndWorkMicCounterFull(void) {
+BOOL GF_IsWorkMicCounterFull(void) {
     SND_WORK *work;
 
     work = GetSoundDataPointer();

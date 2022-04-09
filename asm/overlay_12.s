@@ -1656,7 +1656,7 @@ _0223872E:
 	cmp r0, #0
 	beq _02238748
 	mov r0, #0x7f
-	bl GF_SetMasterVolume
+	bl GF_SndSetMasterVolume
 _02238748:
 	mov r0, #0x92
 	lsl r0, r0, #6
@@ -9205,7 +9205,7 @@ ov12_0223BFFC: ; 0x0223BFFC
 	bl BeginNormalPaletteFade
 	bl sub_02005FA0
 	mov r0, #0
-	bl GF_SetMasterVolume
+	bl GF_SndSetMasterVolume
 	ldr r1, _0223C07C ; =0x00002478
 	mov r0, #1
 	ldr r2, [r5, r1]
