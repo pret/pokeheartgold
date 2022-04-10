@@ -3684,13 +3684,20 @@ BOOL ScrCmd_518(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-/*
 extern const int _020FACC4[];
 
+#ifdef NONMATCHING
 BOOL ScrCmd_519(SCRIPTCONTEXT *ctx) {
     u16 *sp0 = ScriptGetVarPointer(ctx);
     PARTY *party = SavArray_PlayerParty_get(ctx->fsys->savedata);
     int partyCount = GetPartyCount(party);
+
+    // _020FACC4 needs to be a static initializer here.
+    // As written, this is a regswap.
+    // However, _020FACB0 comes before, and must be declared
+    // static to maintain the correct order, but cannot
+    // because it's referenced all the way at the end
+    // of asm/scrcmd.o(.text)...
     int sp18[PARTY_SIZE];
     memcpy(sp18, _020FACC4, sizeof(sp18));
     int sp4 = 0;
@@ -3702,6 +3709,7 @@ BOOL ScrCmd_519(SCRIPTCONTEXT *ctx) {
         int species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
         int forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
         if (species == SPECIES_BURMY) {
+            // r2/r3 regswap in this scope
             sp18[i] = forme;
             BOOL hasMultiple = FALSE;
             for (j = 0; j < i; j++) {
@@ -3717,4 +3725,95 @@ BOOL ScrCmd_519(SCRIPTCONTEXT *ctx) {
     *sp0 = sp4;
     return TRUE;
 }
-*/
+#else
+asm
+BOOL ScrCmd_519(SCRIPTCONTEXT *ctx) {
+    push {r3-r7,lr}
+    sub sp, #0x30
+    add r4, r0, #0
+    bl ScriptReadHalfword
+    add r1, r0, #0
+    add r0, r4, #0
+    add r0, #0x80
+    ldr r0, [r0, #0]
+    bl GetVarPointer
+    add r4, #0x80
+    str r0, [sp, #0]
+    ldr r0, [r4, #0]
+    ldr r0, [r0, #0xC]
+    bl SavArray_PlayerParty_get
+    str r0, [sp, #0xC]
+    bl GetPartyCount
+    add r2, sp, #0x18
+    mov r4, #0
+    ldr r3, =_020FACC4
+    str r0, [sp, #8]
+    add r7, r2, #0
+    ldmia r3!, {r0, r1}
+    stmia r2!, {r0, r1}
+    ldmia r3!, {r0, r1}
+    stmia r2!, {r0, r1}
+    ldmia r3!, {r0, r1}
+    stmia r2!, {r0, r1}
+    ldr r0, [sp, #8]
+    str r4, [sp, #4]
+    cmp r0, #0
+    ble @breakOuter
+    mov r5, #TRUE
+    str r7, [sp, #0x14]
+@loopOuter:
+    ldr r0, [sp, #0xC]
+    add r1, r4, #0
+    bl GetPartyMonByIndex
+    add r6, r0, #0
+    mov r1, #5
+    mov r2, #0
+    bl GetMonData
+    str r0, [sp, #0x10]
+    add r0, r6, #0
+    mov r1, #0x70
+    mov r2, #0
+    bl GetMonData
+    add r3, r0, #0
+    mov r0, #0x67
+    ldr r1, [sp, #0x10]
+    lsl r0, r0, #2
+    cmp r1, r0
+    bne @continueOuter
+    mov r2, #0
+    add r1, r2, #0
+    str r3, [r7]
+    cmp r4, #0
+    ble @breakInner
+    ldr r6, [sp, #0x14]
+@loopInner:
+    ldr r0, [r6, #0]
+    cmp r3, r0
+    bne @continueInner
+    add r2, r5, #0
+@continueInner:
+    add r1, r1, #1
+    add r6, r6, #4
+    cmp r1, r4
+    blt @loopInner
+@breakInner:
+    cmp r2, #0
+    bne @continueOuter
+    ldr r0, [sp, #4]
+    add r0, r0, #1
+    str r0, [sp, #4]
+@continueOuter:
+    ldr r0, [sp, #8]
+    add r4, r4, #1
+    add r7, r7, #4
+    cmp r4, r0
+    blt @loopOuter
+@breakOuter:
+    ldr r1, [sp, #4]
+    ldr r0, [sp]
+    strh r1, [r0]
+    mov r0, #1
+    add sp, #0x30
+    pop {r3, r4, r5, r6, r7, pc}
+}
+#endif //NONMATCHING
