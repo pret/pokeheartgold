@@ -52,4 +52,13 @@ void *ov02_02249458(FieldSystem *fsys, int a1, POKEMON *pokemon, int gender);
 BOOL ov02_0224953C(void *work);
 void ov02_02249548(void *work);
 
+void ov02_02245B80(TaskManager *taskManager);
+void PokecenterAnimCreate(FieldSystem *fsys, u8 kind);
+void ov02_0224BDE8(FieldSystem *fsys, u8 direction, u8 length);
+int ov02_0224CD38(PLAYERPROFILE *profile, u16 a, u16 b, u16 c, u16 d, HeapID heapId);
+int ov02_0224CD74(PLAYERPROFILE *profile, u16 a, u16 b, u16 c, u16 d, HeapID heapId);
+void ov02_0224BF58(FieldSystem *fsys, u8 a1);
+void ov02_0224BFC0(FieldSystem *fsys, u8 a1);
+void ov02_0224BFCC(FieldSystem *fsys, u8 a1);
+
 #endif //POKEHEARTGOLD_OVERLAY_02_H

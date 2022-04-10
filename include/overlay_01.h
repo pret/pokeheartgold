@@ -87,5 +87,7 @@ void ov01_021E9C00(FieldSystem *fsys, u8 a1);
 void ov01_021E9C20(FieldSystem *fsys, u8 a1);
 void ov01_021E9BB8(FieldSystem *fsys, u8 a1);
 void ov01_021E9BDC(FieldSystem *fsys, u8 a1);
+int Field_PlayerMovementSavingSet(FieldSystem *fsys);
+void Field_PlayerMovementSavingClear(int state);
 
 #endif //POKEHEARTGOLD_OVERLAY_01_H

@@ -42,7 +42,7 @@
 #include "unk_0200FA24.h"
 #include "field_warp_tasks.h"
 #include "unk_02054E00.h"
-#include "roamer.h"
+#include "field_roamer.h"
 #include "unk_02097F6C.h"
 #include "sys_flags.h"
 #include "sys_vars.h"
@@ -64,15 +64,19 @@
 #include "unk_02097D3C.h"
 #include "math_util.h"
 #include "game_stats.h"
+#include "safari_zone.h"
+#include "unk_02097268.h"
+#include "npc_trade.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
+FS_EXTERN_OVERLAY(npc_trade);
 
 BOOL sub_020416E4(SCRIPTCONTEXT *ctx);
 BOOL sub_02042C78(SCRIPTCONTEXT *ctx);
 BOOL ScrNative_WaitApplication(SCRIPTCONTEXT *ctx);
 LocalMapObject *sub_02041C70(FieldSystem *fsys, u16 person);
 void _ScheduleObjectEventMovement(FieldSystem *fsys, EventObjectMovementMan *mvtMan, MovementScriptCommand *a2);
-BOOL Script_SetMonSeenFlagBySpecies(FieldSystem *fsys, u16 species);
+void Script_SetMonSeenFlagBySpecies(FieldSystem *fsys, u16 species);
 
 // TODO: NELEMS(gScriptCmdTable);
 const u32 sNumScriptCmds = 853;
@@ -3349,4 +3353,291 @@ BOOL ScrCmd_705(SCRIPTCONTEXT *ctx) {
     u32 value = ScriptReadWord(ctx);
     GameStats_Add(Sav2_GameStats_get(ctx->fsys->savedata), statIdx, value);
     return FALSE;
+}
+
+BOOL ScrCmd_SafariZoneAction(SCRIPTCONTEXT *ctx) {
+    FLYPOINTS_SAVE *flypointsSave = Save_FlyPoints_get(ctx->fsys->savedata); //r6
+    SCRIPT_STATE *scriptState = SavArray_Flags_get(ctx->fsys->savedata); //sp4
+    SAFARIZONE *safariZone = Save_SafariZone_get(ctx->fsys->savedata); //sp8
+    u8 action = ScriptReadByte(ctx); //r4
+    u8 areaSet = ScriptReadByte(ctx); //sp0
+    u16 *p_nSafariBall = FlyPoints_GetSafariBallsCounter(flypointsSave);
+    u16 *p_nSafariSteps = FlyPoints_GetSafariStepsCounter(flypointsSave);
+    int r1;
+
+    switch (action) {
+    case 0:
+        ScriptState_SetSafariSysFlag(scriptState);
+        sub_0202F5F8(safariZone, areaSet);
+        *p_nSafariBall = 30;
+        *p_nSafariSteps = 0;
+        break;
+    case 1:
+        ScriptState_ClearSafariSysFlag(scriptState);
+        sub_0202F5F8(safariZone, 1);
+        r1 = sub_0202F6AC(safariZone);
+        if (r1 != 0) {
+            sub_0209730C(ctx->fsys->savedata, r1);
+            sub_0202F6A0(safariZone, 0);
+        }
+        *p_nSafariBall = 0;
+        *p_nSafariSteps = 0;
+        break;
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_459(SCRIPTCONTEXT *ctx) {
+    ov02_02245B80(ctx->taskman);
+    return TRUE;
+}
+
+BOOL ScrCmd_456(SCRIPTCONTEXT *ctx) {
+    u8 arg = ScriptReadByte(ctx);
+    sub_0205C858(ctx->fsys->playerAvatar, arg);
+    return TRUE;
+}
+
+BOOL ScrCmd_EnableMassOutbreaks(SCRIPTCONTEXT *ctx) {
+    RoamerSave_SetOutbreakActive(ctx->fsys->savedata);
+    return FALSE;
+}
+
+BOOL ScrCmd_CreateRoamer(SCRIPTCONTEXT *ctx) {
+    u8 roamerNo = ScriptReadByte(ctx);
+    Save_CreateRoamerByID(ctx->fsys->savedata, roamerNo);
+    return FALSE;
+}
+
+BOOL ScrCmd_LoadNPCTrade(SCRIPTCONTEXT *ctx) {
+    NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    u8 tradeNo = ScriptReadByte(ctx);
+
+    HandleLoadOverlay(FS_OVERLAY_ID(npc_trade), OVY_LOAD_ASYNC);
+    *p_tradeWork = NPCTrade_AllocWork(11, tradeNo);
+    return FALSE;
+}
+
+BOOL ScrCmd_GetOfferedSpecies(SCRIPTCONTEXT *ctx) {
+    NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = NPCTradeWork_GetOfferedSpecies(*p_tradeWork);
+    return FALSE;
+}
+
+BOOL ScrCmd_NPCTradeGetReqSpecies(SCRIPTCONTEXT *ctx) {
+    NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = NPCTradeWork_GetRequestedSpecies(*p_tradeWork);
+    return FALSE;
+}
+
+BOOL ScrCmd_GetNpcTradeUnusedFlag(SCRIPTCONTEXT *ctx) {
+    NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = NPCTradeWork_GetUnusedFlag(*p_tradeWork);
+    return FALSE;
+}
+
+BOOL ScrCmd_NPCTradeExec(SCRIPTCONTEXT *ctx) {
+    NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    u16 arg = ScriptGetVar(ctx);
+    Field_CreateTask_TradeAnim(ctx->taskman, *p_tradeWork, arg, 11);
+    return TRUE;
+}
+
+BOOL ScrCmd_NPCTradeEnd(SCRIPTCONTEXT *ctx) {
+    NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    NPCTrade_DeleteWork(*p_tradeWork);
+    UnloadOverlayByID(FS_OVERLAY_ID(npc_trade));
+    return FALSE;
+}
+
+BOOL ScrCmd_GiveLoanMon(SCRIPTCONTEXT *ctx) {
+    u8 tradeno = ScriptReadByte(ctx);
+    u8 level = ScriptReadByte(ctx);
+    u16 mapno = ScriptReadHalfword(ctx);
+    HandleLoadOverlay(FS_OVERLAY_ID(npc_trade), OVY_LOAD_ASYNC);
+    NPCTrade_MakeAndGiveLoanMon(ctx->fsys, tradeno, level, mapno);
+    UnloadOverlayByID(FS_OVERLAY_ID(npc_trade));
+    return FALSE;
+}
+
+BOOL ScrCmd_CheckReturnLoanMon(SCRIPTCONTEXT *ctx) {
+    u8 tradeno = ScriptReadByte(ctx);
+    u16 idx = ScriptGetVar(ctx);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    HandleLoadOverlay(FS_OVERLAY_ID(npc_trade), OVY_LOAD_ASYNC);
+    *p_ret = NPCTrade_CanGiveUpLoanMon(ctx->fsys, tradeno, idx);
+    UnloadOverlayByID(FS_OVERLAY_ID(npc_trade));
+    return FALSE;
+}
+
+BOOL ScrCmd_475(SCRIPTCONTEXT *ctx) {
+    // dummy
+    return FALSE;
+}
+
+BOOL ScrCmd_476(SCRIPTCONTEXT *ctx) {
+    sub_0202A57C(Sav2_Pokedex_get(ctx->fsys->savedata));
+    return FALSE;
+}
+
+BOOL ScrCmd_NatDexFlagAction(SCRIPTCONTEXT *ctx) {
+    u8 action = ScriptReadByte(ctx);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = 0;
+    if (action == 1) {
+        Pokedex_SetNatDexFlag(Sav2_Pokedex_get(ctx->fsys->savedata));
+        PlayerProfile_SetNatDexFlag(Sav2_PlayerData_GetProfileAddr(ctx->fsys->savedata));
+    } else if (action == 2) {
+        *p_ret = Pokedex_GetNatDexFlag(Sav2_Pokedex_get(ctx->fsys->savedata));
+    } else {
+        GF_ASSERT(0);
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_GetEVTotal(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    u16 partyIdx = ScriptGetVar(ctx);
+    POKEMON *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata),  partyIdx);
+
+    int hpEv = GetMonData(pokemon, MON_DATA_HP_EV, NULL);
+    int atkEv = GetMonData(pokemon, MON_DATA_ATK_EV, NULL);
+    int defEv = GetMonData(pokemon, MON_DATA_DEF_EV, NULL);
+    int speedEv = GetMonData(pokemon, MON_DATA_SPEED_EV, NULL);
+    int spAtkEv = GetMonData(pokemon, MON_DATA_SPATK_EV, NULL);
+    int spDefEv = GetMonData(pokemon, MON_DATA_SPDEF_EV, NULL);
+    *p_ret = hpEv + atkEv + defEv + speedEv + spAtkEv + spDefEv;
+    return FALSE;
+}
+
+BOOL ScrCmd_GetWeekday(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    RTCDate date;
+    GF_RTC_CopyDate(&date);
+    *p_ret = date.week;
+    return FALSE;
+}
+
+BOOL ScrCmd_485(SCRIPTCONTEXT *ctx) {
+    u16 *p_var = ScriptGetVarPointer(ctx);
+    ov03_022566B0(ctx->taskman, p_var);
+    return TRUE;
+}
+
+BOOL ScrCmd_PokeCenAnim(SCRIPTCONTEXT *ctx) {
+    u16 kind = ScriptGetVar(ctx);
+    PokecenterAnimCreate(ctx->fsys, kind);
+    return TRUE;
+}
+
+BOOL ScrCmd_ElevatorAnim(SCRIPTCONTEXT *ctx) {
+    u16 direction = ScriptGetVar(ctx);
+    u16 length = ScriptGetVar(ctx);
+    ov02_0224BDE8(ctx->fsys, direction, length);
+    return TRUE;
+}
+
+BOOL ScrCmd_GetGameVersion(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = GAME_VERSION;
+    return FALSE;
+}
+
+BOOL ScrCmd_PrimoPasswordCheck1(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(fsys));
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    PC_STORAGE *pcStorage = GetStoragePCPointer(fsys->savedata);
+    u16 a = ScriptGetVar(ctx);
+    u16 b = ScriptGetVar(ctx);
+    u16 c = ScriptGetVar(ctx);
+    u16 d = ScriptGetVar(ctx);
+    int wallpaper = ov02_0224CD38(profile, a, b, c, d, 4);
+    if (wallpaper == -1 || wallpaper > 7) {
+        *p_ret = 0xFF;
+        return FALSE;
+    } else if (PCStorage_IsBonusWallpaperUnlocked(pcStorage, wallpaper)) {
+        *p_ret = 0;
+    } else {
+        PCStorage_UnlockBonusWallpaper(pcStorage, wallpaper);
+        *p_ret = wallpaper + 1;
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_PrimoPasswordCheck2(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(fsys));
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    PC_STORAGE *pcStorage = GetStoragePCPointer(fsys->savedata);
+    u16 a = ScriptGetVar(ctx);
+    u16 b = ScriptGetVar(ctx);
+    u16 c = ScriptGetVar(ctx);
+    u16 d = ScriptGetVar(ctx);
+    int result = ov02_0224CD74(profile, a, b, c, d, 4);
+    if (result == -1) {
+        *p_ret = 0xFF;
+        return FALSE;
+    } else {
+        *p_ret = result;
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_500(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u8 r1 = ScriptReadByte(ctx);
+    ov02_0224BF58(fsys, r1);
+    return FALSE;
+}
+
+BOOL ScrCmd_501(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u8 r1 = ScriptReadByte(ctx);
+    ov02_0224BFC0(fsys, r1);
+    return FALSE;
+}
+
+BOOL ScrCmd_502(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u8 r1 = ScriptReadByte(ctx);
+    ov02_0224BFCC(fsys, r1);
+    return FALSE;
+}
+
+void Script_SetMonSeenFlagBySpecies(FieldSystem *fsys, u16 species) {
+    POKEDEX *pokedex = Sav2_Pokedex_get(fsys->savedata);
+    POKEMON *pokemon = AllocMonZeroed(32);
+    ZeroMonData(pokemon);
+    CreateMon(pokemon, species, 50, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
+    Pokedex_SetMonSeenFlag(pokedex, pokemon);
+    FreeToHeap(pokemon);
+}
+
+BOOL ScrCmd_687(SCRIPTCONTEXT *ctx) {
+    u16 species = ScriptGetVar(ctx);
+    Script_SetMonSeenFlagBySpecies(ctx->fsys, species);
+    return FALSE;
+}
+
+BOOL ScrCmd_CountPCEmptySpace(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = PCStorage_CountEmptySpotsInAllBoxes(GetStoragePCPointer(ctx->fsys->savedata));
+    return FALSE;
+}
+
+BOOL ScrCmd_PlayerMovementSavingSet(SCRIPTCONTEXT *ctx) {
+    int *r4 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_B8);
+    *r4 = PLAYER_STATE_WALKING;
+    *r4 = Field_PlayerMovementSavingSet(ctx->fsys);
+    return TRUE;
+}
+
+BOOL ScrCmd_PlayerMovementSavingClear(SCRIPTCONTEXT *ctx) {
+    int *r4 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_B8);
+    Field_PlayerMovementSavingClear(*r4);
+    return TRUE;
 }
