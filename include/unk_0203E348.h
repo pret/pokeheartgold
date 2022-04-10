@@ -111,5 +111,6 @@ void sub_0203E960(TaskManager *taskManager, int a1, u16 *a2, u16 *a3, u16 *a4);
 void sub_0203F818(FieldSystem *fsys);
 void sub_0203F9F4(FieldSystem *fsys);
 void *sub_0203F074(FieldSystem *fsys, HeapID heapId);
+void *sub_0203FA8C(FieldSystem *fsys, HeapID heapId, u16 a2);
 
 #endif //POKEHEARTGOLD_UNK_0203E348_H

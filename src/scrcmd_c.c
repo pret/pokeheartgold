@@ -63,6 +63,7 @@
 #include "unk_02068DE0.h"
 #include "unk_02097D3C.h"
 #include "math_util.h"
+#include "game_stats.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
 
@@ -3280,5 +3281,72 @@ BOOL ScrCmd_CheckNationalDexComplete(SCRIPTCONTEXT *ctx) {
     if (Pokedex_NationalDexIsComplete(pokedex) == TRUE) {
         *p_ret = TRUE;
     }
+    return FALSE;
+}
+
+BOOL ScrCmd_425(SCRIPTCONTEXT *ctx) {
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    u16 r2 = ScriptGetVar(ctx);
+    *p_work = sub_0203FA8C(ctx->fsys, 32, r2);
+    SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
+    return TRUE;
+}
+
+BOOL ScrCmd_427(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    // dummy
+    return FALSE;
+}
+
+BOOL ScrCmd_420(SCRIPTCONTEXT *ctx) {
+    u16 statno = ScriptReadHalfword(ctx);
+    GameStats_Inc(Sav2_GameStats_get(ctx->fsys->savedata), statno);
+    return FALSE;
+}
+
+BOOL ScrCmd_421(SCRIPTCONTEXT *ctx) {
+    u16 r7 = ScriptReadHalfword(ctx);
+    u16 r4 = ScriptReadHalfword(ctx);
+    u16 r6 = ScriptReadHalfword(ctx);
+    u16 *p_ret_hi = GetVarPointer(ctx->fsys, r4);
+    u16 *p_ret_lo = GetVarPointer(ctx->fsys, r6);
+    u32 statval = GameStats_GetCapped(Sav2_GameStats_get(ctx->fsys->savedata), r7);
+    *p_ret_hi = (statval & 0xFFFF0000) >> 16;
+    *p_ret_lo = statval & 0x0000FFFF;
+    return FALSE;
+}
+
+BOOL ScrCmd_422(SCRIPTCONTEXT *ctx) {
+    u16 statIdx = ScriptReadHalfword(ctx);
+    u16 value_hi = ScriptReadHalfword(ctx);
+    u16 value_lo = ScriptReadHalfword(ctx);
+    u8 action = ScriptReadByte(ctx);
+
+    u32 value = (value_hi << 16) | value_lo;
+    switch (action) {
+    case 0:
+        GameStats_Add(Sav2_GameStats_get(ctx->fsys->savedata), statIdx, value);
+        break;
+    case 1:
+        GameStats_SetCapped(Sav2_GameStats_get(ctx->fsys->savedata), statIdx, value);
+        break;
+    case 2:
+        GameStats_UpdateBounded(Sav2_GameStats_get(ctx->fsys->savedata), statIdx, value);
+        break;
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_704(SCRIPTCONTEXT *ctx) {
+    u16 statIdx = ScriptReadHalfword(ctx);
+    u16 value = ScriptGetVar(ctx);
+    GameStats_Add(Sav2_GameStats_get(ctx->fsys->savedata), statIdx, value);
+    return FALSE;
+}
+
+BOOL ScrCmd_705(SCRIPTCONTEXT *ctx) {
+    u16 statIdx = ScriptReadHalfword(ctx);
+    u32 value = ScriptReadWord(ctx);
+    GameStats_Add(Sav2_GameStats_get(ctx->fsys->savedata), statIdx, value);
     return FALSE;
 }
