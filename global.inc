@@ -49,7 +49,7 @@
 .public ArrayLength
 .public Ascii_GetDelim
 .public Ascii_StrToL
-.public BGM_SaveStateAndPlayNew
+.public BGM_SaveStateAndPlayBGM
 .public BG_ClearCharDataRange
 .public BG_FillCharDataRange
 .public BG_LoadBlankPltt
@@ -827,7 +827,7 @@
 .public GF_MicStopAutoSampling
 .public MicPauseOnLidClose
 .public MicResumeOnLidOpen
-.public GF_NNS_SndPlayerGetSeqNo
+.public GF_SndPlayerGetSeqNo
 .public GF_RTC_CopyDate
 .public GF_RTC_CopyDateTime
 .public GF_RTC_CopyTime
@@ -27245,12 +27245,12 @@
 .public Snd_SetUNK_58
 .public Snd_SetZoneBGM
 .public Snd_SetScene
-.public Snd_ClearHeapAndSubscene
+.public Snd_ClearBGMHeapAndSubscene
 .public Snd_LoadGroupByScene
 .public sub_02004EB4
 .public Snd_SetDataByScene
-.public Snd_SetFieldDataSub
-.public Snd_GetSaveLv
+.public Snd_SetFieldSubData
+.public Snd_GetSaveHeap
 .public SndPause
 .public Snd_ClearPauseFlags
 .public Snd_SetVChatVolBySeqNo
