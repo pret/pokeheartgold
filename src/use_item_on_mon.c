@@ -57,8 +57,7 @@ BOOL CanUseItemOnPokemon(POKEMON *pokemon, u16 itemID, s32 moveIdx, HeapID heapI
             FreeToHeap(itemData);
             return TRUE;
         }
-    }
-    else if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_HP_RESTORE) && hp != 0 && hp < GetMonData(pokemon, MON_DATA_MAXHP, NULL)) {
+    } else if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_HP_RESTORE) && hp != 0 && hp < GetMonData(pokemon, MON_DATA_MAXHP, NULL)) {
         FreeToHeap(itemData);
         return TRUE;
     }
@@ -540,8 +539,7 @@ BOOL BoostMonMovePpUpBy(POKEMON *pokemon, int moveIdx, int nPpUp) {
     return TRUE;
 }
 
-void RestoreMonHPBy(POKEMON *pokemon, u32 hp, u32 maxHp, u32 restoration)
-{
+void RestoreMonHPBy(POKEMON *pokemon, u32 hp, u32 maxHp, u32 restoration) {
     if (maxHp == 1) {
         restoration = 1;
     } else if (restoration == HP_RESTORE_ALL) {
@@ -561,8 +559,7 @@ void RestoreMonHPBy(POKEMON *pokemon, u32 hp, u32 maxHp, u32 restoration)
     SetMonData(pokemon, MON_DATA_HP, &hp);
 }
 
-s32 TryModEV(s32 ev, s32 evSum, s32 by)
-{
+s32 TryModEV(s32 ev, s32 evSum, s32 by) {
     if (ev == 0 && by < 0) {
         return -1;
     }
@@ -646,8 +643,7 @@ BOOL DoItemFriendshipMod(POKEMON *pokemon, s32 friendship, s32 mod, u16 location
     return TRUE;
 }
 
-void HealParty(PARTY * party)
-{
+void HealParty(PARTY * party) {
     int i, j;
 
     int partyCount = GetPartyCount(party);
