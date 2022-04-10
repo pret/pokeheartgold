@@ -1398,7 +1398,7 @@ _021E63DC:
 	bne _021E6412
 	bl sub_02005FA0
 	ldr r1, _021E6598 ; =0x000003F3
-	mov r0, #SND_SCENE_EGG
+	mov r0, #SOUND_MAIN_EGG
 	mov r2, #1
 	bl Snd_SetDataByScene
 	ldr r0, [r4, #0x60]
@@ -1712,7 +1712,7 @@ _021E6670:
 	cmp r0, #1
 	bne _021E6770
 	ldr r1, _021E67E8 ; =0x000003F3
-	mov r0, #SND_SCENE_EGG
+	mov r0, #SOUND_MAIN_EGG
 	mov r2, #1
 	bl Snd_SetDataByScene
 	ldr r0, [r4, #0x60]

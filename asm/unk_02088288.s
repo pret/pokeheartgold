@@ -162,7 +162,7 @@ sub_02088298: ; 0x02088298
 	strh r0, [r2]
 	bl GX_BothDispOn
 	mov r1, #0
-	mov r0, #SND_SCENE_SUB_PST
+	mov r0, #SOUND_SUB_PST
 	add r2, r1, #0
 	bl Snd_SetDataByScene
 	bl sub_0203A964

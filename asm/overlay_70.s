@@ -1659,7 +1659,7 @@ _02238446:
 	add r0, r4, #0
 	bl ov70_02238E70
 	ldr r1, _022385B8 ; =0x0000047D
-	mov r0, #SND_SCENE_P2P
+	mov r0, #SOUND_MAIN_P2P
 	mov r2, #1
 	bl Snd_SetDataByScene
 	ldr r1, _022385BC ; =0x00020020
@@ -3028,7 +3028,7 @@ ov70_02238FF4: ; 0x02238FF4
 	add r0, r4, #0
 	bl ov70_02239B00
 	ldr r1, _022390D0 ; =0x00000484
-	mov r0, #SND_SCENE_WIFI_WORLD_TRADE
+	mov r0, #SOUND_MAIN_WIFI_WORLD_TRADE
 	mov r2, #1
 	bl Snd_SetDataByScene
 	ldrh r0, [r4, #0x34]

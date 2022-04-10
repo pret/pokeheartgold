@@ -88,11 +88,11 @@ ov63_0221BE20: ; 0x0221BE20
 	add r0, r5, #0
 	bl ov63_0221C068
 	ldr r1, _0221BF20 ; =0x000003F7
-	mov r0, #SND_SCENE_HALL_OF_FAME
+	mov r0, #SOUND_MAIN_HALL_OF_FAME
 	mov r2, #1
 	bl Snd_SetDataByScene
 	mov r1, #0
-	mov r0, #SND_SCENE_SUB_HALL_OF_FAME
+	mov r0, #SOUND_SUB_HALL_OF_FAME
 	add r2, r1, #0
 	bl Snd_SetDataByScene
 	mov r1, #0x1e

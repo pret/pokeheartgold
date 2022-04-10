@@ -128,7 +128,7 @@ _021E80D6:
 	add r1, r6, #0
 	bl ov52_021E89D4
 	mov r1, #0
-	mov r0, #SND_SCENE_SUB_TRCARD
+	mov r0, #SOUND_SUB_TRCARD
 	add r2, r1, #0
 	bl Snd_SetDataByScene
 	ldr r2, _021E8240 ; =0x04000304

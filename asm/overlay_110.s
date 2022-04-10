@@ -39,7 +39,7 @@ _021E5912:
 	bl OverlayManager_GetParentWork
 	mov r1, #0
 	str r0, [r4, #0x10]
-	mov r0, #SND_SCENE_SUB_SEKIBAN
+	mov r0, #SOUND_SUB_SEKIBAN
 	add r2, r1, #0
 	bl Snd_SetDataByScene
 	add r0, r4, #0

@@ -341,7 +341,7 @@ _021E5B8C:
 	mov r0, #1
 	bl sub_02021148
 	mov r1, #0
-	mov r0, #SND_SCENE_SUB_PLANTER
+	mov r0, #SOUND_SUB_PLANTER
 	add r2, r1, #0
 	bl Snd_SetDataByScene
 	mov r0, #0

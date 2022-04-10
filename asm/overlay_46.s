@@ -28,7 +28,7 @@ ov46_02258800: ; 0x02258800
 	ldr r0, [r4]
 	ldr r1, _0225891C ; =0x0000047D
 	str r0, [r5]
-	mov r0, #SND_SCENE_P2P
+	mov r0, #SOUND_MAIN_P2P
 	mov r2, #0
 	bl Snd_SetDataByScene
 	mov r0, #0

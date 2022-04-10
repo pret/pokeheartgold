@@ -199,7 +199,7 @@ _021E5C2C:
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r1, #0
-	mov r0, #SND_SCENE_SUB_TRCARD
+	mov r0, #SOUND_SUB_TRCARD
 	add r2, r1, #0
 	bl Snd_SetDataByScene
 	ldr r0, _021E5D6C ; =0x000033A0

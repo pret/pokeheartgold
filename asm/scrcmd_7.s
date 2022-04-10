@@ -535,7 +535,7 @@ ScrCmd_EncounterMusic: ; 0x02049894
 	add r1, r0, #0
 	add r0, r4, #0
 	bl Trainer_GetEncounterMusic
-	bl BGM_SaveStateAndPlayNew
+	bl BGM_SaveStateAndPlayBGM
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

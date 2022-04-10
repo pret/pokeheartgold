@@ -24,7 +24,7 @@ _02246970:
 	bl CreateHeap
 	bl ov71_022473E4
 	mov r1, #0xfd
-	mov r0, #SND_SCENE_TRADE
+	mov r0, #SOUND_MAIN_TRADE
 	lsl r1, r1, #2
 	mov r2, #1
 	bl Snd_SetDataByScene

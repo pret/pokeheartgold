@@ -2164,7 +2164,7 @@ _02246E42:
 	str r0, [r4, r2]
 	sub r2, #0xc
 	str r1, [r4, r2]
-	mov r0, #SND_SCENE_SUB_IMAGE
+	mov r0, #SOUND_SUB_IMAGE
 	add r2, r1, #0
 	bl Snd_SetDataByScene
 	mov r0, #1

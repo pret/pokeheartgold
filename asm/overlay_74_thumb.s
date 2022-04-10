@@ -3236,7 +3236,7 @@ ov74_MainMenu_AppInit: ; 0x02228920
 _022289C4:
 	mov r0, #0
 	bl Snd_SetBGMAndReverb
-	mov r0, #SND_SCENE_DUMMY
+	mov r0, #SOUND_MAIN_DUMMY
 	bl Snd_SetScene
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -4281,7 +4281,7 @@ ov74_02229200: ; 0x02229200
 	lsl r2, r2, #4
 	bl CreateHeap
 	ldr r1, _02229290 ; =0x0000047E
-	mov r0, #SND_SCENE_AGB
+	mov r0, #SOUND_MAIN_AGB
 	mov r2, #1
 	bl Snd_SetDataByScene
 	mov r0, #1
@@ -7873,7 +7873,7 @@ ov74_0222AE6C: ; 0x0222AE6C
 	mov r1, #0
 	bl sub_0200FBF4
 	ldr r1, _0222AF18 ; =0x0000047E
-	mov r0, #SND_SCENE_MYSTERY_GIFT
+	mov r0, #SOUND_MAIN_MYSTERY_GIFT
 	mov r2, #1
 	bl Snd_SetDataByScene
 	mov r0, #0x54
@@ -24571,7 +24571,7 @@ ov74_02233230: ; 0x02233230
 	mov r2, #1
 	str r0, [r4, r1]
 	ldr r1, _022332E8 ; =0x0000047E
-	mov r0, #SND_SCENE_AGB
+	mov r0, #SOUND_MAIN_AGB
 	bl Snd_SetDataByScene
 	bl OS_IsTickAvailable
 	cmp r0, #0

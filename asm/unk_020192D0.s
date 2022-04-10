@@ -65,7 +65,7 @@ sub_020192D0: ; 0x020192D0
 	bl OverlayManager_GetParentWork
 	str r0, [r5]
 	ldr r1, _02019358 ; =0x0000047D
-	mov r0, #SND_SCENE_P2P
+	mov r0, #SOUND_MAIN_P2P
 	mov r2, #1
 	bl Snd_SetDataByScene
 	mov r0, #1

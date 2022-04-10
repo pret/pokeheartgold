@@ -16553,7 +16553,7 @@ ov101_021EF848: ; 0x021EF848
 	str r5, [r4, #0xc]
 	mov r0, #0x5b
 	str r0, [r4]
-	mov r0, #SND_SCENE_SUB_TOWNMAP
+	mov r0, #SOUND_SUB_TOWNMAP
 	add r2, r1, #0
 	bl Snd_SetDataByScene
 	add r0, r4, #0

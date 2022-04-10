@@ -382,13 +382,13 @@ _02087D0C:
 	cmp r0, #1
 	bne _02087D3C
 	ldr r1, _02087E04 ; =0x0000047B
-	mov r0, #SND_SCENE_BATTLE
+	mov r0, #SOUND_MAIN_BATTLE
 	mov r2, #1
 	bl Snd_SetDataByScene
 	b _02087D46
 _02087D3C:
 	ldr r1, _02087E08 ; =0x0000045D
-	mov r0, #SND_SCENE_BATTLE
+	mov r0, #SOUND_MAIN_BATTLE
 	mov r2, #1
 	bl Snd_SetDataByScene
 _02087D46:
@@ -436,7 +436,7 @@ _02087D88:
 	bl OverlayManager_delete
 	mov r0, #0
 	bl Snd_SetBattleRecFlag
-	mov r0, #SND_SCENE_DUMMY
+	mov r0, #SOUND_MAIN_DUMMY
 	bl Snd_SetScene
 	ldr r0, [r5, #0x28]
 	ldr r1, [r0, #0x20]

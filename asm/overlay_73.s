@@ -124,7 +124,7 @@ _021E5916:
 	add r0, r4, #0
 	bl ov73_021E7230
 	mov r1, #0
-	mov r0, #SND_SCENE_SUB_NAMEIN
+	mov r0, #SOUND_SUB_NAMEIN
 	add r2, r1, #0
 	bl Snd_SetDataByScene
 	ldr r2, _021E5AAC ; =0x04000304
@@ -4864,7 +4864,7 @@ _021E7E62:
 	add r0, r4, #0
 	bl ov73_021E8454
 	mov r1, #0
-	mov r0, #SND_SCENE_SUB_NAMEIN
+	mov r0, #SOUND_SUB_NAMEIN
 	add r2, r1, #0
 	bl Snd_SetDataByScene
 	ldr r1, _021E7FA8 ; =0x00020020
@@ -4880,7 +4880,7 @@ _021E7E62:
 	bl NNS_FndCreateExpHeapEx
 	str r0, [r4, #0x28]
 	ldr r1, _021E7FAC ; =0x0000047D
-	mov r0, #SND_SCENE_P2P
+	mov r0, #SOUND_MAIN_P2P
 	mov r2, #1
 	bl Snd_SetDataByScene
 	ldr r2, _021E7FB0 ; =0x04000304

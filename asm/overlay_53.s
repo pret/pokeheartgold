@@ -2993,7 +2993,7 @@ _021E70B8:
 	add r1, r5, #0
 	bl ToggleBgLayer
 	mov r1, #SEQ_GS_POKEMON_THEME>>4
-	mov r0, #SND_SCENE_OPENING
+	mov r0, #SOUND_MAIN_OPENING
 	lsl r1, r1, #4
 	mov r2, #1
 	bl Snd_SetDataByScene

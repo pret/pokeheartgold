@@ -14261,7 +14261,7 @@ ScrCmd_803: ; 0x02047DC8
 	thumb_func_start ScrCmd_805
 ScrCmd_805: ; 0x02047E14
 	push {r3, lr}
-	mov r0, #SND_SCENE_SUB_EVENT
+	mov r0, #SOUND_SUB_EVENT
 	bl Snd_LoadGroupByScene
 	mov r0, #0
 	pop {r3, pc}

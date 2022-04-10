@@ -140,9 +140,9 @@ _021E5A06:
 	str r0, [r5]
 	b _021E5C8E
 _021E5A20:
-	mov r0, #SND_SCENE_DUMMY
+	mov r0, #SOUND_MAIN_DUMMY
 	bl Snd_SetScene
-	mov r0, #SND_SCENE_TITLE
+	mov r0, #SOUND_MAIN_TITLE
 	mov r1, #SEQ_GS_POKEMON_THEME>>4
 	lsl r1, r1, #4
 	add r2, r0, #0
@@ -496,14 +496,14 @@ _021E5CFE:
 	bl RegisterMainOverlay
 	b _021E5D28
 _021E5D0A:
-	mov r0, #SND_SCENE_DUMMY
+	mov r0, #SOUND_MAIN_DUMMY
 	bl Snd_SetScene
 	ldr r0, _021E5D34 ; =FS_OVERLAY_ID(OVY_60)
 	ldr r1, _021E5D38 ; =ov60_021EB030
 	bl RegisterMainOverlay
 	b _021E5D28
 _021E5D1A:
-	mov r0, #SND_SCENE_DUMMY
+	mov r0, #SOUND_MAIN_DUMMY
 	bl Snd_SetScene
 	ldr r0, _021E5D3C ; =FS_OVERLAY_ID(OVY_62)
 	ldr r1, _021E5D40 ; =ov62_021E68CC
@@ -2390,7 +2390,7 @@ _021E6C5A:
 	lsl r0, r0, #2
 	str r1, [r4, r0]
 	mov r1, #SEQ_GS_TITLE>>2
-	mov r0, #SND_SCENE_OPENING
+	mov r0, #SOUND_MAIN_OPENING
 	lsl r1, r1, #2
 	bl Snd_SetDataByScene
 	ldr r0, [r5]

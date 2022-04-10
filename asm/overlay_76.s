@@ -150,7 +150,7 @@ _021E59B6:
 	ldr r0, _021E5A98 ; =0x00000257
 	mov r2, #1
 	strb r2, [r4, r0]
-	mov r0, #SND_SCENE_ENDING
+	mov r0, #SOUND_MAIN_ENDING
 	lsl r1, r1, #2
 	bl Snd_SetDataByScene
 	ldr r0, _021E5A9C ; =ov76_021E5D94

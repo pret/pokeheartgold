@@ -2491,10 +2491,10 @@ ov96_021E6A94: ; 0x021E6A94
 	add r0, r4, #0
 	mov r1, #9
 	bl ov96_021E5FC8
-	mov r0, #SND_SCENE_DUMMY
+	mov r0, #SOUND_MAIN_DUMMY
 	bl Snd_SetScene
 	ldr r1, _021E6AE4 ; =0x0000046F
-	mov r0, #SND_SCENE_THLON_OPED
+	mov r0, #SOUND_MAIN_THLON_OPED
 	mov r2, #0
 	bl Snd_SetDataByScene
 _021E6AE0:
@@ -2852,18 +2852,18 @@ ov96_021E6D54: ; 0x021E6D54
 	sub r0, r0, #1
 	cmp r1, r0
 	bne _021E6DAA
-	mov r0, #SND_SCENE_DUMMY
+	mov r0, #SOUND_MAIN_DUMMY
 	bl Snd_SetScene
 	ldr r1, _021E6DE0 ; =0x00000472
-	mov r0, #SND_SCENE_THLON
+	mov r0, #SOUND_MAIN_THLON
 	mov r2, #0
 	bl Snd_SetDataByScene
 	b _021E6DBA
 _021E6DAA:
-	mov r0, #SND_SCENE_DUMMY
+	mov r0, #SOUND_MAIN_DUMMY
 	bl Snd_SetScene
 	ldr r1, _021E6DE4 ; =0x00000471
-	mov r0, #SND_SCENE_THLON
+	mov r0, #SOUND_MAIN_THLON
 	mov r2, #0
 	bl Snd_SetDataByScene
 _021E6DBA:
@@ -3547,10 +3547,10 @@ ov96_021E72CC: ; 0x021E72CC
 	add r0, r4, #0
 	mov r1, #0x21
 	bl ov96_021E5FC8
-	mov r0, #SND_SCENE_DUMMY
+	mov r0, #SOUND_MAIN_DUMMY
 	bl Snd_SetScene
 	ldr r1, _021E731C ; =0x00000474
-	mov r0, #SND_SCENE_THLON_OPED
+	mov r0, #SOUND_MAIN_THLON_OPED
 	mov r2, #0
 	bl Snd_SetDataByScene
 _021E7318:

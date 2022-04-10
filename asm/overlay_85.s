@@ -689,7 +689,7 @@ _021E5DFE:
 	mov r0, #0x11
 	str r0, [r6]
 	ldr r1, _021E5E2C ; =0x00000483
-	mov r0, #SND_SCENE_SPIN_TRADE
+	mov r0, #SOUND_MAIN_SPIN_TRADE
 	bl Snd_SetDataByScene
 	add r0, r6, #0
 	bl ov85_021E72E8
@@ -6551,7 +6551,7 @@ _021E890A:
 	add r0, r4, #0
 	bl ov85_021E9160
 	mov r1, #0
-	mov r0, #SND_SCENE_SUB_NAMEIN
+	mov r0, #SOUND_SUB_NAMEIN
 	add r2, r1, #0
 	bl Snd_SetDataByScene
 	ldr r0, [r6, #0x30]

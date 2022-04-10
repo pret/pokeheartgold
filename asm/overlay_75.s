@@ -48,7 +48,7 @@ ov75_02246960: ; 0x02246960
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r1, _022469D4 ; =0x0000047D
-	mov r0, #SND_SCENE_EMAIL
+	mov r0, #SOUND_MAIN_EMAIL
 	mov r2, #1
 	bl Snd_SetDataByScene
 	mov r0, #0

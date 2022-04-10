@@ -6499,7 +6499,7 @@ ov80_0222CD94: ; 0x0222CD94
 	add r3, r6, #0
 	bl sub_0202FC90
 	ldr r1, _0222CDEC ; =0x0000045D
-	mov r0, #SND_SCENE_BATTLE
+	mov r0, #SOUND_MAIN_BATTLE
 	mov r2, #1
 	bl Snd_SetDataByScene
 	mov r0, #0
@@ -8438,7 +8438,7 @@ ov80_0222DC70: ; 0x0222DC70
 	add r1, #0x78
 	strh r0, [r1]
 	ldr r1, _0222DCE8 ; =0x0000045D
-	mov r0, #SND_SCENE_BATTLE
+	mov r0, #SOUND_MAIN_BATTLE
 	mov r2, #1
 	bl Snd_SetDataByScene
 	mov r0, #0xb
@@ -8908,7 +8908,7 @@ ov80_0222DFF4: ; 0x0222DFF4
 	add r0, r6, #0
 	bl ov80_0223A00C
 	ldr r1, _0222E054 ; =0x0000047B
-	mov r0, #SND_SCENE_BATTLE
+	mov r0, #SOUND_MAIN_BATTLE
 	mov r2, #1
 	bl Snd_SetDataByScene
 	ldr r1, _0222E058 ; =ov80_0222E05C
@@ -14670,7 +14670,7 @@ ov80_02230D0C: ; 0x02230D0C
 	lsl r0, r0, #8
 	str r6, [r4, r0]
 	ldr r1, _02230D54 ; =0x0000045D
-	mov r0, #SND_SCENE_BATTLE
+	mov r0, #SOUND_MAIN_BATTLE
 	mov r2, #1
 	bl Snd_SetDataByScene
 	mov r3, #0
@@ -24001,7 +24001,7 @@ ov80_02235624: ; 0x02235624
 	lsl r0, r0, #4
 	str r6, [r4, r0]
 	ldr r1, _0223566C ; =0x0000045D
-	mov r0, #SND_SCENE_BATTLE
+	mov r0, #SOUND_MAIN_BATTLE
 	mov r2, #1
 	bl Snd_SetDataByScene
 	mov r3, #0

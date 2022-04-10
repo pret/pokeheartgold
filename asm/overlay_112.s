@@ -10071,7 +10071,7 @@ ov112_021EABE8: ; 0x021EABE8
 ov112_021EAC18: ; 0x021EAC18
 	push {r3, lr}
 	ldr r1, _021EAC30 ; =0x00000497
-	mov r0, #SND_SCENE_SUB_PHC
+	mov r0, #SOUND_SUB_PHC
 	mov r2, #0
 	bl Snd_SetDataByScene
 	ldr r0, _021EAC30 ; =0x00000497

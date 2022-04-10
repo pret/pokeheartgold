@@ -110,7 +110,7 @@ _021E5916:
 	add r1, r6, #0
 	bl ov37_021E6418
 	mov r1, #0
-	mov r0, #SND_SCENE_SUB_NAMEIN
+	mov r0, #SOUND_SUB_NAMEIN
 	add r2, r1, #0
 	bl Snd_SetDataByScene
 	ldr r2, _021E5A7C ; =0x04000304

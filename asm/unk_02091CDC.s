@@ -47,7 +47,7 @@ App_DeleteSave_Exec: ; 0x02091D18
 	bl OverlayManager_GetData
 	ldr r1, [r5]
 	add r4, r0, #0
-	mov r6, #SND_SCENE_DUMMY
+	mov r6, #SOUND_MAIN_DUMMY
 	cmp r1, #3
 	bhi _02091E20
 	add r1, r1, r1

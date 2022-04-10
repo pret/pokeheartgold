@@ -1,4 +1,5 @@
 #include "constants/snd_system.h"
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -2601,7 +2602,7 @@ _0222B2A8:
 	b _0222B360
 _0222B2CA:
 	ldr r1, _0222B364 ; =0x0000047D
-	mov r0, #SND_SCENE_P2P
+	mov r0, #SOUND_MAIN_P2P
 	mov r2, #1
 	bl Snd_SetDataByScene
 	add r0, r5, #0
@@ -8202,10 +8203,10 @@ ov44_0222E030: ; 0x0222E030
 	cmp r0, #0
 	bne _0222E056
 	bl IsNighttime
-	mov r0, #SND_SCENE_DUMMY
+	mov r0, #SOUND_MAIN_DUMMY
 	bl Snd_SetScene
 	ldr r1, _0222E070 ; =0x00000427
-	mov r0, #SND_SCENE_P2P
+	mov r0, #SOUND_MAIN_P2P
 	mov r2, #1
 	bl Snd_SetDataByScene
 	pop {r4, pc}
@@ -8219,7 +8220,7 @@ _0222E056:
 	bl Snd_SetVol
 	pop {r4, pc}
 	nop
-_0222E070: .word 0x00000427
+_0222E070: .word SEQ_GS_POKESEN
 	thumb_func_end ov44_0222E030
 
 	thumb_func_start ov44_0222E074

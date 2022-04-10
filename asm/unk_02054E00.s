@@ -168,7 +168,7 @@ sub_02054F14: ; 0x02054F14
 	push {r3, lr}
 	bl sub_02005FA0
 	bl Snd_ClearPauseFlags
-	mov r0, #SND_SCENE_DUMMY
+	mov r0, #SOUND_MAIN_DUMMY
 	bl Snd_SetScene
 	pop {r3, pc}
 	.balign 4, 0
@@ -450,7 +450,7 @@ sub_02055110: ; 0x02055110
 	bl Snd_GetCntrlBGMFlag
 	cmp r0, #1
 	beq _02055160
-	mov r0, #SND_SCENE_DUMMY
+	mov r0, #SOUND_MAIN_DUMMY
 	bl Snd_SetScene
 	add r0, r5, #0
 	add r1, r6, #0

@@ -1538,7 +1538,7 @@ _021E64FC:
 	strh r2, [r0]
 	mov r0, #1
 	strb r0, [r4, #6]
-	mov r0, #SND_SCENE_SUB_TOWNMAP
+	mov r0, #SOUND_SUB_TOWNMAP
 	add r2, r1, #0
 	bl Snd_SetDataByScene
 	mov r0, #1
@@ -1647,7 +1647,7 @@ ov100_Phone_OvyExit: ; 0x021E65BC
 	ldr r4, [r4]
 	add r0, r5, #0
 	bl OverlayManager_FreeData
-	bl Snd_ClearHeapAndSubscene
+	bl Snd_ClearBGMHeapAndSubscene
 	bl sub_0203E354
 	add r0, r4, #0
 	bl DestroyHeap

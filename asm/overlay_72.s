@@ -829,7 +829,7 @@ _02237E36:
 	add r0, r4, #0
 	bl ov72_022387D8
 	mov r1, #0
-	mov r0, #SND_SCENE_SUB_NAMEIN
+	mov r0, #SOUND_SUB_NAMEIN
 	add r2, r1, #0
 	bl Snd_SetDataByScene
 	ldr r1, _02237F90 ; =0x00020020
@@ -845,7 +845,7 @@ _02237E36:
 	bl NNS_FndCreateExpHeapEx
 	str r0, [r4, #0x28]
 	ldr r1, _02237F94 ; =0x0000047D
-	mov r0, #SND_SCENE_P2P
+	mov r0, #SOUND_MAIN_P2P
 	mov r2, #1
 	bl Snd_SetDataByScene
 	mov r0, #1

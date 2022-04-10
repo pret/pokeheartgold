@@ -156,7 +156,7 @@ _0208291E:
 	add r3, r4, r3
 	bl sub_02084740
 	mov r1, #0
-	mov r0, #SND_SCENE_SUB_NAMEIN
+	mov r0, #SOUND_SUB_NAMEIN
 	add r2, r1, #0
 	bl Snd_SetDataByScene
 	mov r0, #0x10

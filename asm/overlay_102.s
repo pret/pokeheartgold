@@ -17,7 +17,7 @@ ov102_021E7740: ; 0x021E7740
 	b _021E77B2
 _021E7752:
 	mov r1, #0
-	mov r0, #SND_SCENE_SUB_PMS
+	mov r0, #SOUND_SUB_PMS
 	add r2, r1, #0
 	bl Snd_SetDataByScene
 	mov r2, #2

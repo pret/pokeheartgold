@@ -254,7 +254,7 @@ _021F95B6:
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
 	mov r1, #0
-	mov r0, #SND_SCENE_SUB_BAG
+	mov r0, #SOUND_SUB_BAG
 	add r2, r1, #0
 	bl Snd_SetDataByScene
 	bl sub_0203A964
@@ -627,7 +627,7 @@ ov15_BagApp_exit: ; 0x021F982C
 	bl NARC_dtor
 	add r0, r5, #0
 	bl OverlayManager_FreeData
-	bl Snd_ClearHeapAndSubscene
+	bl Snd_ClearBGMHeapAndSubscene
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB

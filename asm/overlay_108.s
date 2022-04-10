@@ -29,7 +29,7 @@ ov108_021E5900: ; 0x021E5900
 	add r1, r5, #0
 	bl ov108_021E59E4
 	mov r1, #0
-	mov r0, #SND_SCENE_SUB_UNK_67
+	mov r0, #SOUND_SUB_UNK_67
 	add r2, r1, #0
 	bl Snd_SetDataByScene
 	mov r0, #1
@@ -5998,7 +5998,7 @@ _021E8862:
 	add r1, r6, #0
 	bl ov108_021E8968
 	mov r1, #0
-	mov r0, #SND_SCENE_SUB_UNK_67
+	mov r0, #SOUND_SUB_UNK_67
 	add r2, r1, #0
 	bl Snd_SetDataByScene
 	ldr r0, [r5]

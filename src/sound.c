@@ -101,8 +101,8 @@ void DoSoundUpdateFrame(void) {
     SND_WORK *work = GetSoundDataPointer();
 
     // debug stuff left in
-    void *stripped_0 = GF_SdatGetAttrPtr(SND_W_ID_CHORUS_FLAG);
-    void *stripped_1 = GF_SdatGetAttrPtr(SND_W_ID_ZONE_BGM);
+    void *stripped_0 = GF_SdatGetAttrPtr(SOUND_WORK_CHORUS_FLAG);
+    void *stripped_1 = GF_SdatGetAttrPtr(SOUND_WORK_ZONE_BGM);
 
     // Only handle fade transitions if fanfare not playing
     if (!GF_SndIsFanfarePlaying()) {
@@ -210,123 +210,123 @@ void *GF_SdatGetAttrPtr(u32 attr) {
 
     work = GetSoundDataPointer();
     switch (attr) {
-    case SND_W_ID_CTRL_BGM_FLAG:
+    case SOUND_WORK_CTRL_BGM_FLAG:
         return &work->cntrlBGMFlag;
-    case SND_W_ID_PV_WAIT_WORK:
+    case SOUND_WORK_PV_WAIT_WORK:
         return &work->pvWait;
-    case SND_W_ID_WAVEOUT_HANDLE_NORMAL:
+    case SOUND_WORK_WAVEOUT_HANDLE_NORMAL:
         return &work->waveoutHandleNormal;
-    case SND_W_ID_WAVEOUT_HANDLE_CHORUS:
+    case SOUND_WORK_WAVEOUT_HANDLE_CHORUS:
         return &work->waveoutHandleChorus;
-    case SND_W_ID_BANK_INFO:
+    case SOUND_WORK_BANK_INFO:
         return &work->bankinfo;
-    case SND_W_ID_CAPTURE_BUF:
+    case SOUND_WORK_CAPTURE_BUF:
         return &work->captureBuffer;
-    case SND_W_ID_CALLBACK_INFO:
+    case SOUND_WORK_CALLBACK_INFO:
         return &work->callbackinfo;
-    case SND_W_ID_FADE_COUNT:
+    case SOUND_WORK_FADE_COUNT:
         return &work->fadeTimer;
-    case SND_W_ID_NEXT_WAIT:
+    case SOUND_WORK_NEXT_WAIT:
         return &work->nextWait;
-    case SND_W_ID_NEXT_FRAME:
+    case SOUND_WORK_NEXT_FRAME:
         return &work->queuedSeqFadeInDuration;
-    case SND_W_ID_CUR_BGM_NO:
+    case SOUND_WORK_CUR_BGM_NO:
         return &work->currentSeqNo;
-    case SND_W_ID_NEXT_BGM_NO:
+    case SOUND_WORK_NEXT_BGM_NO:
         return &work->queuedSeqNo;
-    case SND_W_ID_FIELD_PAUSE_FLAG:
+    case SOUND_WORK_FIELD_PAUSE_FLAG:
         return &work->fieldPauseFlag;
-    case SND_W_ID_BGM_PAUSE_FLAG:
+    case SOUND_WORK_BGM_PAUSE_FLAG:
         return &work->pauseBGMFlag;
-    case SND_W_ID_ME_WAIT:
+    case SOUND_WORK_ME_WAIT:
         return &work->afterFanfareWaitTimer;
-    case SND_W_ID_REVERSE_FLAG:
+    case SOUND_WORK_REVERSE_FLAG:
         return &work->reverseFlag;
-    case SND_W_ID_WAVEOUT_CH_NORMAL_FLAG:
+    case SOUND_WORK_WAVEOUT_CH_NORMAL_FLAG:
         return &work->waveoutNormalFlag;
-    case SND_W_ID_WAVEOUT_CH_CHORUS_FLAG:
+    case SOUND_WORK_WAVEOUT_CH_CHORUS_FLAG:
         return &work->waveoutChorusFlag;
-    case SND_W_ID_CHORUS_FLAG:
+    case SOUND_WORK_CHORUS_FLAG:
         return &work->chorusFlag;
-    case SND_W_ID_BANK_FLAG:
+    case SOUND_WORK_BANK_FLAG:
         return &work->bankFlag;
-    case SND_W_ID_FILTER_SIZE:
+    case SOUND_WORK_FILTER_SIZE:
         return &work->filterSize;
-    case SND_W_ID_SCENE_MAIN:
+    case SOUND_WORK_SCENE_MAIN:
         return &work->sceneMain;
-    case SND_W_ID_SCENE_SUB:
+    case SOUND_WORK_SCENE_SUB:
         return &work->sceneSub;
-    case SND_W_ID_HEAP_SAVE_START:
+    case SOUND_WORK_HEAP_SAVE_START:
         return &work->stateSaveDepth[0];
-    case SND_W_ID_HEAP_SAVE_GLOBAL:
+    case SOUND_WORK_HEAP_SAVE_GLOBAL:
         return &work->stateSaveDepth[1];
-    case SND_W_ID_HEAP_SAVE_BGM_BANK:
+    case SOUND_WORK_HEAP_SAVE_BGM_BANK:
         return &work->stateSaveDepth[2];
-    case SND_W_ID_HEAP_SAVE_SE:
+    case SOUND_WORK_HEAP_SAVE_SE:
         return &work->stateSaveDepth[3];
-    case SND_W_ID_HEAP_SAVE_BGM:
+    case SOUND_WORK_HEAP_SAVE_BGM:
         return &work->stateSaveDepth[4];
-    case SND_W_ID_HEAP_SAVE_SUB_SE:
+    case SOUND_WORK_HEAP_SAVE_SUB_SE:
         return &work->stateSaveDepth[5];
-    case SND_W_ID_HEAP_SAVE_ME:
+    case SOUND_WORK_HEAP_SAVE_ME:
         return &work->stateSaveDepth[6];
-    case SND_W_ID_CHATOT_PLAY_FLAG:
+    case SOUND_WORK_CHATOT_PLAY_FLAG:
         return &work->chatotPlayFlag;
-    case SND_W_ID_CHATOT_DEFAULT_FLAG:
+    case SOUND_WORK_CHATOT_DEFAULT_FLAG:
         return &work->chatotDefaultFlag;
-    case SND_W_ID_ZONE_BGM:
+    case SOUND_WORK_ZONE_BGM:
         return &work->zoneBGM;
-    case SND_W_ID_WAVE_DATA:
+    case SOUND_WORK_WAVE_DATA:
         return &work->wavedata;
-    case SND_W_ID_REVERSE_BUF:
+    case SOUND_WORK_REVERSE_BUF:
         return &work->reverseBuffer;
-    case SND_W_ID_LENGTH_TCB:
+    case SOUND_WORK_LENGTH_TCB:
         return &work->tcbLength;
-    case SND_W_ID_MY_CHATOT_PTR:
+    case SOUND_WORK_MY_CHATOT_PTR:
         return &work->myChatot;
-    case SND_W_ID_CHATOT_PTR1:
+    case SOUND_WORK_CHATOT_PTR1:
         return &work->otherChatots[0];
-    case SND_W_ID_CHATOT_PTR2:
+    case SOUND_WORK_CHATOT_PTR2:
         return &work->otherChatots[1];
-    case SND_W_ID_CHATOT_PTR3:
+    case SOUND_WORK_CHATOT_PTR3:
         return &work->otherChatots[2];
-    case SND_W_ID_CHATOT_PTR4:
+    case SOUND_WORK_CHATOT_PTR4:
         return &work->otherChatots[3];
-    case SND_W_ID_PV_PTN:
+    case SOUND_WORK_PV_PTN:
         return &work->cryPattern[0];
-    case SND_W_ID_PV_PAN:
+    case SOUND_WORK_PV_PAN:
         return &work->cryPan[0];
-    case SND_W_ID_PV_VOL:
+    case SOUND_WORK_VOLUME:
         return &work->cryVolume[0];
-    case SND_W_ID_PV_HEAP_ID:
+    case SOUND_WORK_PV_HEAP_ID:
         return &work->cryHeapId[0];
-    case SND_W_ID_PV_NO:
+    case SOUND_WORK_PV_NO:
         return &work->cryNo[0];
-    case SND_W_ID_PV_WAIT:
+    case SOUND_WORK_PV_WAIT:
         return &work->cryDelayTimer[0];
-    case SND_W_ID_PV_PTN_2:
+    case SOUND_WORK_PV_PTN_2:
         return &work->cryPattern[1];
-    case SND_W_ID_PV_PAN_2:
+    case SOUND_WORK_PV_PAN_2:
         return &work->cryPan[1];
-    case SND_W_ID_PV_VOL_2:
+    case SOUND_WORK_VOLUME_2:
         return &work->cryVolume[1];
-    case SND_W_ID_PV_HEAP_ID_2:
+    case SOUND_WORK_PV_HEAP_ID_2:
         return &work->cryHeapId[1];
-    case SND_W_ID_PV_NO_2:
+    case SOUND_WORK_PV_NO_2:
         return &work->cryNo[1];
-    case SND_W_ID_PV_WAIT_2:
+    case SOUND_WORK_PV_WAIT_2:
         return &work->cryDelayTimer[1];
-    case SND_W_ID_PV_DOUBLE_FLAG:
+    case SOUND_WORK_PV_DOUBLE_FLAG:
         return &work->pvDoubleFlag;
-    case SND_W_ID_BATTLE_REC_FLAG:
+    case SOUND_WORK_BATTLE_REC_FLAG:
         return &work->battleRecFlag;
-    case SND_W_ID_UNK_55:
+    case SOUND_WORK_UNK_55:
         return &work->unk_BEC78;
-    case SND_W_ID_UNK_56:
+    case SOUND_WORK_UNK_56:
         return &work->unk_BEC79;
-    case SND_W_ID_UNK_57:
+    case SOUND_WORK_UNK_57:
         return &work->unk_BEC7A;
-    case SND_W_ID_UNK_58:
+    case SOUND_WORK_UNK_58:
         return &work->unk_BEC7C;
     }
     GF_ASSERT(FALSE);

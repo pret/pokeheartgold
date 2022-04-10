@@ -7,13 +7,13 @@
 #include "unk_02005D10.h"
 
 BOOL ChatotSoundMain(void) {
-    u8 *r4 = GF_SdatGetAttrPtr(SND_W_ID_WAVEOUT_CH_NORMAL_FLAG);
-    u8 *r0 = GF_SdatGetAttrPtr(SND_W_ID_CHATOT_PLAY_FLAG);
+    u8 *r4 = GF_SdatGetAttrPtr(SOUND_WORK_WAVEOUT_CH_NORMAL_FLAG);
+    u8 *r0 = GF_SdatGetAttrPtr(SOUND_WORK_CHATOT_PLAY_FLAG);
 
 
     if (*r0 == TRUE) {
         if (*r4 == TRUE) {
-            if (WaveoutIsPlaying(SND_W_ID_ME_WAIT) == 0) {
+            if (WaveoutIsPlaying(SOUND_WORK_ME_WAIT) == 0) {
                 sub_02006DB8();
                 return TRUE;
             }
@@ -28,8 +28,8 @@ BOOL ChatotSoundMain(void) {
 }
 
 BOOL Chatot_checkCry(SOUND_CHATOT *a0) {
-    u8 *r5 = GF_SdatGetAttrPtr(SND_W_ID_CHATOT_DEFAULT_FLAG);
-    u8 *r4 = GF_SdatGetAttrPtr(SND_W_ID_BATTLE_REC_FLAG);
+    u8 *r5 = GF_SdatGetAttrPtr(SOUND_WORK_CHATOT_DEFAULT_FLAG);
+    u8 *r4 = GF_SdatGetAttrPtr(SOUND_WORK_BATTLE_REC_FLAG);
 
     if (!Chatot_exists(a0)) {
         return FALSE;
@@ -48,7 +48,7 @@ BOOL Chatot_checkCry(SOUND_CHATOT *a0) {
 
 BOOL sub_02006D04(SOUND_CHATOT *chatot, u32 unused, s32 vol, s32 pan) {
     s8 *sp0 = Snd_GetWaveBufferAdrs();
-    s8 *playFlag = GF_SdatGetAttrPtr(SND_W_ID_CHATOT_PLAY_FLAG);
+    s8 *playFlag = GF_SdatGetAttrPtr(SOUND_WORK_CHATOT_PLAY_FLAG);
 
     if (!Chatot_checkCry(chatot)) {
         return FALSE;
@@ -83,8 +83,8 @@ BOOL sub_02006D04(SOUND_CHATOT *chatot, u32 unused, s32 vol, s32 pan) {
 }
 
 void sub_02006DB8() {
-    u8 *r5 = GF_SdatGetAttrPtr(SND_W_ID_WAVEOUT_CH_NORMAL_FLAG);
-    u8 *r4 = GF_SdatGetAttrPtr(SND_W_ID_CHATOT_PLAY_FLAG);
+    u8 *r5 = GF_SdatGetAttrPtr(SOUND_WORK_WAVEOUT_CH_NORMAL_FLAG);
+    u8 *r4 = GF_SdatGetAttrPtr(SOUND_WORK_CHATOT_PLAY_FLAG);
 
     if (*r5 == 1) {
         WaveoutStopReverse(WAVEOUT_CH_NORMAL);
@@ -120,12 +120,12 @@ void Chatot_saveRecording(SOUND_CHATOT *a0) {
 }
 
 void sub_02006E3C(u8 a0) {
-    u8 *r0 = GF_SdatGetAttrPtr(SND_W_ID_CHATOT_DEFAULT_FLAG);
+    u8 *r0 = GF_SdatGetAttrPtr(SOUND_WORK_CHATOT_DEFAULT_FLAG);
     *r0 = a0;
 }
 
 void sub_02006E4C(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3) {
-    SOUND_CHATOT **r0 = GF_SdatGetAttrPtr(SND_W_ID_MY_CHATOT_PTR);
+    SOUND_CHATOT **r0 = GF_SdatGetAttrPtr(SOUND_WORK_MY_CHATOT_PTR);
     BOOL ret;
     if (a0 == 0) {
         ret = sub_02006D04(*r0, a1, a2, a3);
@@ -141,7 +141,7 @@ void sub_02006E4C(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3) {
 }
 
 BOOL sub_02006EA0(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3, u8 a4) {
-    SOUND_CHATOT **r0 = GF_SdatGetAttrPtr(SND_W_ID_MY_CHATOT_PTR);
+    SOUND_CHATOT **r0 = GF_SdatGetAttrPtr(SOUND_WORK_MY_CHATOT_PTR);
     BOOL ret;
     if (a0 == 0) {
         ret = sub_02006D04(*r0, a1, a2, a3);
