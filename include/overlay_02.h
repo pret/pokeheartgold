@@ -60,5 +60,6 @@ int ov02_0224CD74(PLAYERPROFILE *profile, u16 a, u16 b, u16 c, u16 d, HeapID hea
 void ov02_0224BF58(FieldSystem *fsys, u8 a1);
 void ov02_0224BFC0(FieldSystem *fsys, u8 a1);
 void ov02_0224BFCC(FieldSystem *fsys, u8 a1);
+void ov02_0224CDB0(FieldSystem *fsys, u8 a1);
 
 #endif //POKEHEARTGOLD_OVERLAY_02_H

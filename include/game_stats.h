@@ -11,6 +11,7 @@ GAME_STATS *Sav2_GameStats_get(SAVEDATA *saveData);
 void GameStats_Inc(GAME_STATS *gameStats, int which);
 u32 GameStats_GetCapped(GAME_STATS *gameStats, int which);
 u32 GameStats_Add(GAME_STATS *gameStats, int which, u32 value);
+u32 GameStats_AddSpecial(GAME_STATS *gameStats, int which);
 u32 GameStats_SetCapped(GAME_STATS *gameStats, int which, u32 value);
 u32 GameStats_UpdateBounded(GAME_STATS *gameStats, int which, u32 value);
 

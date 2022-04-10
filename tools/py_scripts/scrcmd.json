@@ -3271,14 +3271,14 @@
     {
       "name": "scrcmd_517",
       "args": [
-        2,
+        "species",
         "var"
       ]
     },
     {
       "name": "scrcmd_518",
       "args": [
-        2
+        "var"
       ]
     },
     {

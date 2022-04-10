@@ -70,6 +70,11 @@
 
 FS_EXTERN_OVERLAY(OVY_26);
 FS_EXTERN_OVERLAY(npc_trade);
+FS_EXTERN_OVERLAY(OVY_20);
+FS_EXTERN_OVERLAY(bug_contest);
+FS_EXTERN_OVERLAY(OVY_21);
+FS_EXTERN_OVERLAY(OVY_22);
+FS_EXTERN_OVERLAY(OVY_25);
 
 BOOL sub_020416E4(SCRIPTCONTEXT *ctx);
 BOOL sub_02042C78(SCRIPTCONTEXT *ctx);
@@ -3641,3 +3646,75 @@ BOOL ScrCmd_PlayerMovementSavingClear(SCRIPTCONTEXT *ctx) {
     Field_PlayerMovementSavingClear(*r4);
     return TRUE;
 }
+
+BOOL ScrCmd_HallOfFameAnim(SCRIPTCONTEXT *ctx) {
+    u16 kind = ScriptGetVar(ctx);
+    ov02_0224CDB0(ctx->fsys, kind);
+    return TRUE;
+}
+
+BOOL ScrCmd_AddSpecialGameStat(SCRIPTCONTEXT *ctx) {
+    u16 statno = ScriptReadHalfword(ctx);
+    GameStats_AddSpecial(Sav2_GameStats_get(ctx->fsys->savedata), statno);
+    return FALSE;
+}
+
+BOOL ScrCmd_517(SCRIPTCONTEXT *ctx) {
+    u16 species = ScriptGetVar(ctx);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = PartyHasMon(SavArray_PlayerParty_get(ctx->fsys->savedata), species);
+    return TRUE;
+}
+
+BOOL ScrCmd_518(SCRIPTCONTEXT *ctx) {
+    u16 forme = ScriptGetVar(ctx);
+    PARTY *party = SavArray_PlayerParty_get(ctx->fsys->savedata);
+    int partyCount = GetPartyCount(party);
+    POKEDEX *pokedex = Sav2_Pokedex_get(ctx->fsys->savedata);
+    int i;
+
+    for (i = 0; i < partyCount; i++) {
+        POKEMON *pokemon = GetPartyMonByIndex(party, i);
+        if (GetMonData(pokemon, MON_DATA_SPECIES, NULL) == SPECIES_DEOXYS) {
+            SetMonData(pokemon, MON_DATA_FORME, &forme);
+            CalcMonLevelAndStats(pokemon);
+            Pokedex_SetMonCaughtFlag(pokedex, pokemon);
+        }
+    }
+    return TRUE;
+}
+
+/*
+extern const int _020FACC4[];
+
+BOOL ScrCmd_519(SCRIPTCONTEXT *ctx) {
+    u16 *sp0 = ScriptGetVarPointer(ctx);
+    PARTY *party = SavArray_PlayerParty_get(ctx->fsys->savedata);
+    int partyCount = GetPartyCount(party);
+    int sp18[PARTY_SIZE];
+    memcpy(sp18, _020FACC4, sizeof(sp18));
+    int sp4 = 0;
+    int i;
+
+    for (i = 0; i < partyCount; i++) {
+        int j;
+        POKEMON *pokemon = GetPartyMonByIndex(party, i);
+        int species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+        int forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
+        if (species == SPECIES_BURMY) {
+            sp18[i] = forme;
+            BOOL hasMultiple = FALSE;
+            for (j = 0; j < i; j++) {
+                if (sp18[j] == forme) {
+                    hasMultiple = TRUE;
+                }
+            }
+            if (!hasMultiple) {
+                sp4++;
+            }
+        }
+    }
+    *sp0 = sp4;
+    return TRUE;
+}
+*/
