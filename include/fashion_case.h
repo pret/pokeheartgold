@@ -38,5 +38,6 @@ int sub_0202BA2C(FashionCase *a0, int a1, int a2);
 u32 sub_0202BA70(FashionCase *a0, int a1);
 void sub_0202BBD8(FashionCase *a0, int a1);
 int sub_0202BA5C(FashionCase *a0, int a1);
+void sub_0202BB7C(FashionCase *a0, int a1, int a2);
 
 #endif //POKEHEARTGOLD_FASHION_CASE_H

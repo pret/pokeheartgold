@@ -34,7 +34,7 @@ void Sav2_EasyChat_init(SAVE_EASY_CHAT_T *ec);
 BOOL SaveEasyChat_GetTrendySayingFlag(SAVE_EASY_CHAT_T *ec, int flag);
 u32 SaveEasyChat_RandomTrendySayingSet(SAVE_EASY_CHAT_T *ec);
 BOOL SaveEasyChat_TrendySayingsUnlockedAllCheck(SAVE_EASY_CHAT_T *ec);
-ECWORD TrendyWordIdxToECWord(u16 a0);
+ECWORD TrendyWordIdxToECWord(int a0);
 BOOL SaveEasyChat_GetGreetingsFlag(SAVE_EASY_CHAT_T *ec, u8 idx);
 void SaveEasyChat_SetGreetingFlag(SAVE_EASY_CHAT_T *ec, u8 idx);
 void WallpaperPasswordBank_Delete(struct WallpaperPasswordBank *pwdBank);

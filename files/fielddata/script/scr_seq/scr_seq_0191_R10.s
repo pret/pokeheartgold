@@ -146,7 +146,7 @@ _01D5:
 	warp MAP_R10R0202, 0, 7, 20, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	scrcmd_582 18, 1423, 185
+	scrcmd_582 MAP_R10, 1423, 185
 	releaseall
 	end
 
@@ -165,7 +165,7 @@ _022D:
 	warp MAP_R10R0201, 0, 7, 20, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	scrcmd_582 18, 1423, 185
+	scrcmd_582 MAP_R10, 1423, 185
 	releaseall
 	end
 

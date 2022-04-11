@@ -76,7 +76,7 @@ typedef struct ScriptEnvironment {
     void *unk_B8;
     WINDOW unk_BC;
     WINDOW moneyBox;
-    void *unk_DC;
+    struct SaveStatsPrinter *unk_DC;
 } ScriptEnvironment;
 
 enum ScriptEnvField {
@@ -265,9 +265,13 @@ struct FieldSystem {
     u16 unk7E;
     struct UnkStruct_02059E1C *unk80;
     struct UnkStruct_0205AC88 *unk84;
-    u8 filler_88[0x24];
+    u8 filler_88[0xC];
+    void *unk94;
+    u8 filler_98[0x8];
+    void *unkA0;
+    u8 filler_A4[0x8];
     u32 unkAC;
-    u8 unkB0[0x4];
+    void *unkB0;
     s64 unkB4;
     u8 unkBC[8];
     int unkC4;

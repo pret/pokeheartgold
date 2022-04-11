@@ -90,4 +90,11 @@ void ov01_021E9BDC(FieldSystem *fsys, u8 a1);
 int Field_PlayerMovementSavingSet(FieldSystem *fsys);
 void Field_PlayerMovementSavingClear(int state);
 
+struct SaveStatsPrinter;
+
+struct SaveStatsPrinter *Field_CreateSaveStatsPrinter(FieldSystem *fsys, HeapID x, int y);
+void SaveStatsPrinter_Print(struct SaveStatsPrinter *printer);
+void SaveStatsPrinter_RemoveFromScreen(struct SaveStatsPrinter *printer);
+void SaveStatsPrinter_Delete(struct SaveStatsPrinter *printer);
+
 #endif //POKEHEARTGOLD_OVERLAY_01_H

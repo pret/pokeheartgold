@@ -5,6 +5,7 @@
 #include "event_data.h"
 #include "map_events.h"
 #include "task.h"
+#include "field_map_object.h"
 #include "constants/std_script.h"
 #include "fielddata/script/scr_seq.naix"
 #include "msgdata/msg.naix"

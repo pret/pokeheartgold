@@ -235,7 +235,7 @@ BOOL SaveEasyChat_TrendySayingsUnlockedAllCheck(SAVE_EASY_CHAT_T *ec) {
     return TRUE;
 }
 
-ECWORD TrendyWordIdxToECWord(u16 a0) {
+ECWORD TrendyWordIdxToECWord(int a0) {
     int i;
     ECWORD n = 0;
     for (i = 0; i < EC_GROUP_UNION; i++) {

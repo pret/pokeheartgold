@@ -1200,7 +1200,7 @@ _1078:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	wait_se SEQ_SE_DP_KAIDAN2
-	scrcmd_582 60, 688, 393
+	scrcmd_582 MAP_T20, 688, 393
 	setvar VAR_UNK_407C, 1
 	end
 	.byte 0x0d, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00

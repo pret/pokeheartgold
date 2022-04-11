@@ -61,5 +61,6 @@ void ov02_0224BF58(FieldSystem *fsys, u8 a1);
 void ov02_0224BFC0(FieldSystem *fsys, u8 a1);
 void ov02_0224BFCC(FieldSystem *fsys, u8 a1);
 void ov02_0224CDB0(FieldSystem *fsys, u8 a1);
+void ov02_0224E074(FieldSystem *fsys, u16 *p_ret, int a2, HeapID heapId);
 
 #endif //POKEHEARTGOLD_OVERLAY_02_H

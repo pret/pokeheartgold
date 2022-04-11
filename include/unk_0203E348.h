@@ -65,6 +65,7 @@ struct PartyMenuAppData *sub_0203E580(HeapID heapId, FieldSystem *fsys);
 void *sub_0203E5A4(HeapID heapId, FieldSystem *fsys);
 void *sub_0203E6D4(TaskManager *taskManager, HeapID heapId);
 int sub_0203E5C8(struct PartyMenuAppData *partyWork);
+int sub_0203E5F8(struct PartyMenuAppData *partyWork);
 void sub_0203F570(FieldSystem *fsys, SAVEDATA *saveData);
 UnkStruct_Ov02_0224E4EC* sub_0203EB64(FieldSystem *fsys);
 void sub_0203F964(FieldSystem *fsys);
@@ -112,5 +113,7 @@ void sub_0203F818(FieldSystem *fsys);
 void sub_0203F9F4(FieldSystem *fsys);
 void *sub_0203F074(FieldSystem *fsys, HeapID heapId);
 void *sub_0203FA8C(FieldSystem *fsys, HeapID heapId, u16 a2);
+void *sub_0203E5D0(HeapID heapId, FieldSystem *fsys, u16 a2);
+void *sub_0203FAB4(FieldSystem *fsys, u8 a1, u8 a2, u16 a3, HeapID heapId);
 
 #endif //POKEHEARTGOLD_UNK_0203E348_H
