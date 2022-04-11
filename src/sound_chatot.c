@@ -56,14 +56,14 @@ BOOL sub_02006D04(SOUND_CHATOT *chatot, u32 unused, s32 vol, s32 pan) {
 
     sub_02006300(0);
     sub_02006DB8();
-    AllocWaveoutChannel(WAVEOUT_CH_NORMAL);
+    AllocWaveoutChannel(WAVEOUT_CHANNEL_NORMAL);
     u16 r4 = (LCRandom() % 8192);
 
     Chatot_Decode(sp0, Chatot_GetData(chatot));
 
     WAVEOUT_WORK work;
 
-    work.handle = GetWaveoutHandle(WAVEOUT_CH_NORMAL);
+    work.handle = GetWaveoutHandle(WAVEOUT_CHANNEL_NORMAL);
     work.format = 0;
     work.dataaddr = Snd_GetWaveBufferAdrs();
     work.loopFlag = FALSE;
@@ -74,8 +74,8 @@ BOOL sub_02006D04(SOUND_CHATOT *chatot, u32 unused, s32 vol, s32 pan) {
     work.pan = pan / 2 + 64;
     work.volume = vol;
 
-    BOOL ret = WaveoutStart(&work, WAVEOUT_CH_NORMAL);
-    SetWaveoutVol(WAVEOUT_CH_NORMAL, vol);
+    BOOL ret = WaveoutStart(&work, WAVEOUT_CHANNEL_NORMAL);
+    SetWaveoutVol(WAVEOUT_CHANNEL_NORMAL, vol);
     *playFlag = 1;
     sub_02006E3C(0);
 
@@ -87,8 +87,8 @@ void sub_02006DB8() {
     u8 *r4 = GF_SdatGetAttrPtr(SOUND_WORK_CHATOT_PLAY_FLAG);
 
     if (*r5 == 1) {
-        WaveoutStopReverse(WAVEOUT_CH_NORMAL);
-        FreeWaveoutChannel(WAVEOUT_CH_NORMAL);
+        WaveoutStopReverse(WAVEOUT_CHANNEL_NORMAL);
+        FreeWaveoutChannel(WAVEOUT_CHANNEL_NORMAL);
     }
 
     *r4 = 0;
