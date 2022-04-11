@@ -67,6 +67,7 @@
 #include "safari_zone.h"
 #include "unk_02097268.h"
 #include "npc_trade.h"
+#include "constants/accessories.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
 FS_EXTERN_OVERLAY(npc_trade);
@@ -3817,3 +3818,80 @@ BOOL ScrCmd_519(SCRIPTCONTEXT *ctx) {
     pop {r3, r4, r5, r6, r7, pc}
 }
 #endif //NONMATCHING
+
+BOOL ScrCmd_520(SCRIPTCONTEXT *ctx) {
+    SetFlag975(SavArray_Flags_get(ctx->fsys->savedata));
+    return FALSE;
+}
+
+BOOL ScrCmd_521(SCRIPTCONTEXT *ctx) {
+    ClearFlag975(SavArray_Flags_get(ctx->fsys->savedata));
+    return FALSE;
+}
+
+BOOL ScrCmd_522(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = Field_GetHour(ctx->fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_523(SCRIPTCONTEXT *ctx) {
+    u16 objectId = ScriptGetVar(ctx);
+    u16 spC = ScriptGetVar(ctx);
+    u16 sp8 = ScriptGetVar(ctx);
+    u16 r6 = ScriptGetVar(ctx);
+    u16 r4 = ScriptGetVar(ctx);
+    LocalMapObject *object = GetMapObjectByID(ctx->fsys->mapObjectMan, objectId);
+    GF_ASSERT(object != NULL);
+    sub_0205BED8(ctx->taskman, object, spC, sp8, r6, r4);
+    return TRUE;
+}
+
+BOOL ScrCmd_524(SCRIPTCONTEXT *ctx) {
+    u16 objectId = ScriptGetVar(ctx);
+    u16 r7 = ScriptGetVar(ctx);
+    u16 r6 = ScriptGetVar(ctx);
+    LocalMapObject *object = GetMapObjectByID(ctx->fsys->mapObjectMan, objectId);
+    GF_ASSERT(object != NULL);
+    sub_0205BFB4(ctx->taskman, object, r7, r6);
+    return TRUE;
+}
+
+BOOL ScrCmd_525(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = Save_PlayerHasRegiInParty(ctx->fsys->savedata);
+    return FALSE;
+}
+
+BOOL ScrCmd_526(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    FashionCase *fashionCase = SaveDressupData_GetFashionCase(Save_DressupData_get(ctx->fsys->savedata));
+    int i, k, n = 0;
+    u16 sp4[16];
+
+    // UB: Since sp4 is not initialized, it is possible
+    // (though unlikely) that some element could randomly
+    // be equal to 1 unintentionally on entry.
+    for (i = 0; i < 16; i++) {
+        if (sub_0202BA2C(fashionCase, i + 34, 1) == TRUE) {
+            sp4[i] = 1;
+            n++;
+        }
+    }
+    if (n == 0) {
+        *p_ret = -1;
+        return FALSE;
+    }
+    k = LCRandom() % n;
+    for (i = 0; i < 16; i++) {
+        if (sp4[i] == 1) {
+            if (k == 0) {
+                break;
+            }
+            k--;
+        }
+    }
+    GF_ASSERT(i < 16);
+    *p_ret = i + 34;
+    return FALSE;
+}
