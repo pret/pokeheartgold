@@ -1,6 +1,6 @@
 #include "pokewalker.h"
 
-static BOOL sub_020326FC(POKEWALKER *pokeWalker);
+static BOOL pokewalkerHasBoxmon(POKEWALKER *pokeWalker);
 
 POKEWALKER *Sav2_Pokewalker_get(SAVEDATA *saveData) {
     return SavArray_get(saveData, SAVE_POKEWALKER);
@@ -55,23 +55,23 @@ void sub_020326A4(POKEWALKER *pokeWalker, u16 a1, u16 a2) {
     pokeWalker->unk_002 = a2;
 }
 
-void sub_020326BC(POKEWALKER *pokeWalker, BOXMON *boxmon) {
+void Pokewalker_SetBoxMon(POKEWALKER *pokeWalker, BOXMON *boxmon) {
     MI_CpuCopyFast(boxmon, &pokeWalker->pokemon, sizeof(BOXMON));
 }
 
-void sub_020326CC(POKEWALKER *pokeWalker) {
+void Pokewalker_ClearBoxMon(POKEWALKER *pokeWalker) {
     MI_CpuClearFast(&pokeWalker->pokemon, sizeof(BOXMON));
 }
 
-BOOL sub_020326DC(POKEWALKER *pokeWalker, BOXMON *boxmon) {
-    if (sub_020326FC(pokeWalker)) {
+BOOL Pokewalker_TryGetBoxMon(POKEWALKER *pokeWalker, BOXMON *boxmon) {
+    if (pokewalkerHasBoxmon(pokeWalker)) {
         MI_CpuCopyFast(&pokeWalker->pokemon, boxmon, sizeof(BOXMON));
         return TRUE;
     }
     return FALSE;
 }
 
-static BOOL sub_020326FC(POKEWALKER *pokeWalker) {
+static BOOL pokewalkerHasBoxmon(POKEWALKER *pokeWalker) {
     // This is an annoying hack to get it matching.
     // Should just memcmp with (BOXMON){}
     u8 * ptr = (u8 *)pokeWalker;

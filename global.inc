@@ -28488,9 +28488,9 @@
 .public sub_02032674
 .public sub_02032688
 .public sub_020326A4
-.public sub_020326BC
-.public sub_020326CC
-.public sub_020326DC
+.public Pokewalker_SetBoxMon
+.public Pokewalker_ClearBoxMon
+.public Pokewalker_TryGetBoxMon
 .public sub_02032718
 .public sub_02032720
 .public sub_02032728

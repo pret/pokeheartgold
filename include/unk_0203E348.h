@@ -55,6 +55,14 @@ struct UnkStruct_ScrCmd158 {
     int unk8;
 };
 
+struct ScratchCardWork {
+    SAVEDATA *saveData;
+    u8 filler_04[4];
+    u16 unk_08[3];
+    u16 unk_0E[3];
+    u8 filler_14[4];
+};
+
 struct UseMailWork *CreateUseMailWork(FieldSystem *fsys, int kind, int mailId, HeapID heapId);
 struct ApricornBoxWork *CreateApricornBoxWork(FieldSystem *fsys, int a1);
 struct PalPadWork *CreatePalPadWork(FieldSystem *fsys, SAVEDATA *saveData, HeapID heapId);
@@ -115,5 +123,7 @@ void *sub_0203F074(FieldSystem *fsys, HeapID heapId);
 void *sub_0203FA8C(FieldSystem *fsys, HeapID heapId, u16 a2);
 void *sub_0203E5D0(HeapID heapId, FieldSystem *fsys, u16 a2);
 void *sub_0203FAB4(FieldSystem *fsys, u8 a1, u8 a2, u16 a3, HeapID heapId);
+void *ScratchOffCards_Create(FieldSystem *fsys, HeapID heapId);
+void sub_0203FC14(FieldSystem *fsys, u16 a1, u16 a2);
 
 #endif //POKEHEARTGOLD_UNK_0203E348_H

@@ -71,6 +71,10 @@
 #include "unk_0203A3B0.h"
 #include "unk_02067A80.h"
 #include "unk_020965A4.h"
+#include "unk_02056680.h"
+#include "unk_0208E600.h"
+#include "daycare.h"
+#include "pokewalker.h"
 #include "msgdata/msg/msg_0202.h"
 #include "constants/accessories.h"
 
@@ -113,7 +117,7 @@ static const u8 sConditionTable[6][3] = {
     { 1, 0, 1 }, // ne
 };
 
-extern u8 _021D415C;
+static u8 _021D415C;
 
 BOOL ScrCmd_Nop(SCRIPTCONTEXT* ctx) {
 #pragma unused(ctx)
@@ -4262,5 +4266,257 @@ BOOL ScrCmd_631(SCRIPTCONTEXT *ctx) {
     u16 r3 = ScriptGetVar(ctx);
     *p_work = sub_0203FAB4(ctx->fsys, r6, r7, r3, 32);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
+    return TRUE;
+}
+
+BOOL ScrCmd_ScratchOffCard(SCRIPTCONTEXT *ctx) {
+    struct ScratchCardWork **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    *p_work = ScratchOffCards_Create(ctx->fsys, 32);
+    SetupNativeScript(ctx, ScrNative_WaitApplication);
+    return TRUE;
+}
+
+BOOL ScrCmd_ScratchOffCardEnd(SCRIPTCONTEXT *ctx) {
+    struct ScratchCardWork **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    FreeToHeap(*p_work);
+    *p_work = NULL;
+    return TRUE;
+}
+
+BOOL ScrCmd_GetScratchOffPrize(SCRIPTCONTEXT *ctx) {
+    u16 cardno = ScriptGetVar(ctx);
+    u16 *p_ret1 = ScriptGetVarPointer(ctx);
+    u16 *p_ret2 = ScriptGetVarPointer(ctx);
+    struct ScratchCardWork **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    struct ScratchCardWork *work = *p_work;
+    *p_ret1 = work->unk_08[cardno];
+    *p_ret2 = work->unk_0E[cardno];
+    return FALSE;
+}
+
+BOOL ScrCmd_662(SCRIPTCONTEXT *ctx) {
+    u16 r6 = ScriptGetVar(ctx);
+    u16 r7 = ScriptGetVar(ctx);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    if (sub_0203A05C(ctx->fsys->savedata)) {
+        *p_ret = 1;
+        sub_0203FC14(ctx->fsys, r7, r6);
+        SetupNativeScript(ctx, ScrNative_WaitApplication);
+    } else {
+        *p_ret = 0;
+    }
+    return TRUE;
+}
+
+BOOL ScrCmd_663(SCRIPTCONTEXT *ctx) {
+    u16 *p_var = ScriptGetVarPointer(ctx);
+    if (sub_0203A05C(ctx->fsys->savedata)) {
+        sub_02056D00(ctx->taskman, *p_var);
+    }
+    return TRUE;
+}
+
+BOOL ScrCmd_667(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = 0;
+    if (gSystem.heldKeys & PAD_BUTTON_A) {
+        *p_ret = 1;
+    }
+    if (gSystem.heldKeys & PAD_BUTTON_B) {
+        *p_ret = 1;
+    }
+    return FALSE;
+}
+
+u32 sub_020467A8(SAVEDATA *saveData);
+
+BOOL ScrCmd_GetOwnedRotomFormes(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 *hasHeat = ScriptGetVarPointer(ctx);
+    u16 *hasWash = ScriptGetVarPointer(ctx);
+    u16 *hasFrost = ScriptGetVarPointer(ctx);
+    u16 *hasFan = ScriptGetVarPointer(ctx);
+    u16 *hasMow = ScriptGetVarPointer(ctx);
+    u32 flag;
+
+    *hasHeat = FALSE;
+    *hasWash = FALSE;
+    *hasFrost = FALSE;
+    *hasFan = FALSE;
+    *hasMow = FALSE;
+
+    flag = sub_020467A8(fsys->savedata);
+    if (((flag >> ROTOM_HEAT) & 1) == 1) {
+        *hasHeat = TRUE;
+    }
+    if (((flag >> ROTOM_WASH) & 1) == 1) {
+        *hasWash = TRUE;
+    }
+    if (((flag >> ROTOM_FROST) & 1) == 1) {
+        *hasFrost = TRUE;
+    }
+    if (((flag >> ROTOM_FAN) & 1) == 1) {
+        *hasFan = TRUE;
+    }
+    if (((flag >> ROTOM_MOW) & 1) == 1) {
+        *hasMow = TRUE;
+    }
+    return TRUE;
+}
+
+u32 sub_020467A8(SAVEDATA *saveData) {
+    u32 ret = 0;
+    PARTY *party = SavArray_PlayerParty_get(saveData);
+    int partyCount = GetPartyCount(party);
+    int i, j;
+
+    for (i = 0; i < partyCount; i++) {
+        POKEMON *pokemon = GetPartyMonByIndex(party, i);
+        if (GetMonData(pokemon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
+            ret |= 1 << GetMonData(pokemon, MON_DATA_FORME, NULL);
+        }
+    }
+
+    DAYCARE *dayCare = Sav2_DayCare_get(saveData);
+    for (i = 0; i < 2; i++) {
+        BOXMON *boxmon = DayCareMon_GetBoxMon(Sav2_DayCare_GetMonX(dayCare, i));
+        if (GetBoxMonData(boxmon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetBoxMonData(boxmon, MON_DATA_IS_EGG, NULL)) {
+            ret |= 1 << GetBoxMonData(boxmon, MON_DATA_FORME, NULL);
+        }
+    }
+
+    PC_STORAGE *pcStorage = GetStoragePCPointer(saveData);
+    for (i = 0; i < (u32)NUM_BOXES; i++) {
+        for (j = 0; j < MONS_PER_BOX; j++) {
+            BOXMON *boxmon = PCStorage_GetMonByIndexPair(pcStorage, i, j);
+            if (GetBoxMonData(boxmon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetBoxMonData(boxmon, MON_DATA_IS_EGG, NULL)) {
+                ret |= 1 << GetBoxMonData(boxmon, MON_DATA_FORME, NULL);
+            }
+        }
+    }
+
+    POKEMON *walkerMon = AllocMonZeroed(32);
+    BOXMON *walkerBoxMon = Mon_GetBoxMon(walkerMon);
+    POKEWALKER *pokeWalker = Sav2_Pokewalker_get(saveData);
+    if (Pokewalker_TryGetBoxMon(pokeWalker, walkerBoxMon)) {
+        if (GetBoxMonData(walkerBoxMon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetBoxMonData(walkerBoxMon, MON_DATA_IS_EGG, NULL)) {
+            ret |= 1 << GetBoxMonData(walkerBoxMon, MON_DATA_FORME, NULL);
+        }
+    }
+    FreeToHeap(walkerMon);
+
+    return ret;
+}
+
+BOOL ScrCmd_AddSpecialGameStat2(SCRIPTCONTEXT *ctx) {
+    u16 statno = ScriptReadHalfword(ctx);
+    GameStats_AddSpecial(Sav2_GameStats_get(ctx->fsys->savedata), statno);
+    return FALSE;
+}
+
+BOOL ScrCmd_682(SCRIPTCONTEXT *ctx) {
+    static u32 sHeap4Size;
+    static u32 sHeap32Size;
+    static u32 sHeap11Size;
+    u16 action = ScriptGetVar(ctx);
+    u32 heap11Size = GF_ExpHeap_FndGetTotalFreeSize(11);
+    u32 heap4Size = GF_ExpHeap_FndGetTotalFreeSize(4);
+    u32 heap32Size = GF_ExpHeap_FndGetTotalFreeSize(32);
+
+    if (action == 0) {
+        sHeap11Size = heap11Size;
+        sHeap4Size = heap4Size;
+        sHeap32Size = heap32Size;
+    } else {
+        GF_ASSERT(heap11Size == sHeap11Size);
+        //GF_ASSERT(heap4Size == sHeap4Size);
+        GF_ASSERT(heap32Size == sHeap32Size);
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_691(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    if (GF_RTC_DateTimeToSec() - fsys->unkB4 >= 120) {
+        *p_ret = TRUE;
+    } else {
+        *p_ret = FALSE;
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_696(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 r5 = ScriptGetVar(ctx);
+    PARTY *party = SavArray_PlayerParty_get(ctx->fsys->savedata);
+    int i, partyCount;
+    POKEMON *pokemon;
+
+    Party_UpdateAllGiratina_DistortionWorld(party, r5);
+    partyCount = GetPartyCount(party);
+    for (i = 0; i < partyCount; i++) {
+        pokemon = GetPartyMonByIndex(party, i);
+        if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
+            Pokedex_SetMonCaughtFlag(Sav2_Pokedex_get(fsys->savedata), pokemon);
+        }
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_FollowerPokeIsEventTrigger(SCRIPTCONTEXT *ctx) {
+    u8 r4 = ScriptReadByte(ctx);
+    u16 r7 = ScriptGetVar(ctx);
+    u16 *r6 = ScriptGetVarPointer(ctx);
+    POKEMON *pokemon;
+    int species;
+
+    *r6 = 0;
+    pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), r7);
+
+    if (r4 >= 4) {
+        return FALSE;
+    }
+    if (GetMonData(pokemon, MON_DATA_IS_EGG, NULL) || GetMonData(pokemon, MON_DATA_CHECKSUM_FAILED, NULL)) {
+        return FALSE;
+    }
+    if (!sub_0208E9E0(r4, pokemon, GetMonData(pokemon, MON_DATA_OTID, NULL) == PlayerProfile_GetTrainerID(
+        Sav2_PlayerData_GetProfileAddr(ctx->fsys->savedata)))) {
+        return FALSE;
+    }
+
+    species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+    switch (r4) {
+    case 0:
+        if ((species == SPECIES_PICHU || species == SPECIES_PIKACHU || species == SPECIES_RAICHU) && MonIsShiny(pokemon)) {
+            *r6 = 1;
+        }
+        break;
+    case 1:
+    case 2:
+        if (species == SPECIES_ARCEUS) {
+            *r6 = 1;
+        }
+        break;
+    case 3:
+        if (species == SPECIES_CELEBI) {
+            *r6 = 1;
+        }
+        break;
+    }
+
+    return FALSE;
+}
+
+BOOL ScrCmd_596(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = ov01_022055DC(GetMapObjectByID(fsys->mapObjectMan, obj_partner_poke));
+    return FALSE;
+}
+
+BOOL ScrCmd_597(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    ov01_02203AB4(fsys, GetMapObjectByID(fsys->mapObjectMan, obj_partner_poke), 0);
     return TRUE;
 }

@@ -96,5 +96,6 @@ struct SaveStatsPrinter *Field_CreateSaveStatsPrinter(FieldSystem *fsys, HeapID 
 void SaveStatsPrinter_Print(struct SaveStatsPrinter *printer);
 void SaveStatsPrinter_RemoveFromScreen(struct SaveStatsPrinter *printer);
 void SaveStatsPrinter_Delete(struct SaveStatsPrinter *printer);
+void ov01_02203AB4(FieldSystem *fsys, LocalMapObject *partnerPokeObj, int a2);
 
 #endif //POKEHEARTGOLD_OVERLAY_01_H
