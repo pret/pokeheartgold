@@ -245,7 +245,7 @@ struct FieldSystem {
     int unk1C;
     Location* location;
     GF_Camera *camera;
-    u8 filler28[0x4];
+    void *unk28;
     FsysUnkSub2C *unk2C;
     MAPMATRIX* map_matrix;
     u8 filler34[0x8];

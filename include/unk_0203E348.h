@@ -125,5 +125,6 @@ void *sub_0203E5D0(HeapID heapId, FieldSystem *fsys, u16 a2);
 void *sub_0203FAB4(FieldSystem *fsys, u8 a1, u8 a2, u16 a3, HeapID heapId);
 void *ScratchOffCards_Create(FieldSystem *fsys, HeapID heapId);
 void sub_0203FC14(FieldSystem *fsys, u16 a1, u16 a2);
+void *PhoneUI_new(FieldSystem *fsys);
 
 #endif //POKEHEARTGOLD_UNK_0203E348_H

@@ -75,8 +75,11 @@
 #include "unk_0208E600.h"
 #include "daycare.h"
 #include "pokewalker.h"
+#include "unk_02095DF4.h"
 #include "msgdata/msg/msg_0202.h"
 #include "constants/accessories.h"
+#include "constants/phone_contacts.h"
+#include "constants/trainers.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
 FS_EXTERN_OVERLAY(npc_trade);
@@ -4622,5 +4625,211 @@ BOOL ScrCmd_605(SCRIPTCONTEXT *ctx) {
         LocalMapObject *tsurePokeObj = GetMapObjectByID(ctx->fsys->mapObjectMan, obj_partner_poke);
         ov01_02205720(playerObj, tsurePokeObj, r6, r4);
     }
+    return FALSE;
+}
+
+BOOL ScrCmd_606(SCRIPTCONTEXT *ctx) {
+    if (FollowingPokemon_IsActive(ctx->fsys)) {
+        LocalMapObject *object = FollowingPokemon_GetMapObject(ctx->fsys);
+        if (GetFollowPokePermissionBySpeciesAndMap(FollowPokeObj_GetSpecies(object), ctx->fsys->location->mapId)) {
+            sub_02069E84(object, 1);
+            sub_02069DEC(object, TRUE);
+            ov01_02205790(ctx->fsys, 1);
+        }
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_607(SCRIPTCONTEXT *ctx) {
+    if (FollowingPokemon_IsActive(ctx->fsys)) {
+        LocalMapObject *object = FollowingPokemon_GetMapObject(ctx->fsys);
+        if (GetFollowPokePermissionBySpeciesAndMap(FollowPokeObj_GetSpecies(object), ctx->fsys->location->mapId)) {
+            ov01_02205790(ctx->fsys, 1);
+        }
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_608(SCRIPTCONTEXT *ctx) {
+    if (FollowingPokemon_IsActive(ctx->fsys)) {
+        LocalMapObject *object = GetMapObjectByID(ctx->fsys->mapObjectMan, obj_partner_poke);
+        ov01_02205784(object);
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_609(SCRIPTCONTEXT *ctx) {
+    if (FollowingPokemon_IsActive(ctx->fsys)) {
+        LocalMapObject *object = GetMapObjectByID(ctx->fsys->mapObjectMan, obj_partner_poke);
+        sub_020659CC(object);
+    }
+    return TRUE;
+}
+
+BOOL ScrCmd_610(SCRIPTCONTEXT *ctx) {
+    u16 r1 = ScriptReadHalfword(ctx);
+    ov01_021EACBC(ctx->fsys->unk28, r1);
+    return TRUE;
+}
+
+BOOL ScrCmd_Pokeathlon(SCRIPTCONTEXT *ctx) {
+    u8 r6 = ScriptReadByte(ctx);
+    u8 r4 = ScriptReadByte(ctx);
+    u16 r7 = ScriptGetVar(ctx);
+    u16 *sp10 = ScriptGetVarPointer(ctx);
+    u16 *sp14 = ScriptGetVarPointer(ctx);
+    u16 *sp18 = ScriptGetVarPointer(ctx);
+    u16 *spC = ScriptGetVarPointer(ctx);
+    sub_02095DF4(ctx->fsys, r6, r4, r7, sp10, sp14, sp18, spC);
+    return TRUE;
+}
+
+BOOL ScrCmd_GetFriendSprite(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    if (PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(ctx->fsys))) != PLAYER_GENDER_MALE) {
+        *p_ret = SPRITE_HERO;
+    } else {
+        *p_ret = SPRITE_HEROINE;
+    }
+    return TRUE;
+}
+
+BOOL ScrCmd_RegisterPokegearCard(SCRIPTCONTEXT *ctx) {
+    SavePokegear *pokegear = SaveData_GSPlayerMisc_get(Fsys_GetSaveDataPtr(ctx->fsys));
+    u8 card = ScriptReadByte(ctx);
+    switch (card) {
+    case 1:
+        Pokegear_RegisterCard(pokegear, 1);
+        break;
+    case 2:
+        Pokegear_RegisterCard(pokegear, 2);
+        break;
+    case 0:
+    default:
+        Pokegear_RegisterCard(pokegear, 0);
+        break;
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_804(SCRIPTCONTEXT *ctx) {
+    sub_0202EE58(SaveData_GSPlayerMisc_get(ctx->fsys->savedata), ScriptReadByte(ctx));
+    return FALSE;
+}
+
+BOOL ScrCmd_RegisterGearNumber(SCRIPTCONTEXT *ctx) {
+    SavePokegear *pokegear = SaveData_GSPlayerMisc_get(Fsys_GetSaveDataPtr(ctx->fsys));
+    u8 number = ScriptGetVar(ctx);
+    if (number < NUM_PHONE_CONTACTS) {
+        RegisterPhoneNumberInPokeGear(pokegear, number);
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_CheckRegisteredPhoneNumber(SCRIPTCONTEXT *ctx) {
+    SavePokegear *pokegear = SaveData_GSPlayerMisc_get(Fsys_GetSaveDataPtr(ctx->fsys));
+    u8 number = ScriptGetVar(ctx);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    if (number < NUM_PHONE_CONTACTS) {
+        *p_ret = GSPlayerMisc_IsGearNumberRegistered(pokegear, number);
+        if (*p_ret == 0xFF) {
+            *p_ret = FALSE;
+        } else {
+            *p_ret = TRUE;
+        }
+    } else {
+        *p_ret = FALSE;
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_SetPhoneCall(SCRIPTCONTEXT *ctx) {
+    u16 r4 = ScriptGetVar(ctx);
+    u16 r6 = ScriptGetVar(ctx);
+    u16 r7 = ScriptGetVar(ctx);
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    sub_02092DF4(Fsys_GetGearPhoneRingManager(ctx->fsys));
+    ctx->fsys->unkD2_7 = TRUE;
+    ov02_02251EB8(Fsys_GetGearPhoneRingManager(ctx->fsys), r4, 0xFF, 0, r6, r7);
+    return TRUE;
+}
+
+BOOL ScrCmd_RunPhoneCall(SCRIPTCONTEXT *ctx) {
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    *p_work = PhoneUI_new(ctx->fsys);
+    SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
+    return TRUE;
+}
+
+BOOL ScrCmd_LoadPhoneDat(SCRIPTCONTEXT *ctx) {
+    u16 idx = ScriptGetVar(ctx);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = LoadPhoneBookEntryI(idx, sub_02092E10(Fsys_GetGearPhoneRingManager(ctx->fsys)), 32);
+    return FALSE;
+}
+
+BOOL ScrCmd_GetPhoneContactMsgIds(SCRIPTCONTEXT *ctx) {
+    u16 *p_scriptno = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_SCRIPT);
+    u8 r6 = ScriptReadByte(ctx);
+    u16 *sp0 = ScriptGetVarPointer(ctx);
+    u16 *p_ret_msg = ScriptGetVarPointer(ctx);
+    PhoneBookEntry *entry = sub_02092E10(Fsys_GetGearPhoneRingManager(ctx->fsys));
+    *sp0 = GetPhoneMessageGmm(entry->unk0);
+    u16 r5, p_ret_gmm;
+
+    if (entry->unk0 == 0xFF) {
+        *p_ret_msg = 0;
+        return TRUE;
+    }
+    if (r6 > 4) {
+        r6 = 0;
+    }
+    p_ret_gmm = ScriptNumToTrainerNum(*p_scriptno);
+    r5 = r6 + 1;
+    if (p_ret_gmm >= LAST_TRAINER_INDEX) {
+        *p_ret_msg = r5;
+    } else if ((u16)TrainerNumIsDouble(ScriptNumToTrainerNum(*p_scriptno)) == FALSE) {
+        *p_ret_msg = r5;
+    } else {
+        ScriptNoToDoublePartnerNo(*p_scriptno);
+        *p_ret_msg = r5;
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_462(SCRIPTCONTEXT *ctx) {
+    u16 idx = ScriptGetVar(ctx);
+    PhoneRematches_SetSeeking(SaveData_GetMomsSavingsAddr(ctx->fsys->savedata), idx, FALSE);
+    return FALSE;
+}
+
+BOOL ScrCmd_GetPhoneContactRandomGiftBerry(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    PhoneBookEntry *entry = sub_02092E10(Fsys_GetGearPhoneRingManager(ctx->fsys));
+    if (entry->gift == ITEM_CHERI_BERRY) {
+        *p_ret = ITEM_CHERI_BERRY + (LCRandom() % 10);
+    } else {
+        *p_ret = entry->gift;
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_GetPhoneContactGiftItem(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    PhoneBookEntry *entry = sub_02092E10(Fsys_GetGearPhoneRingManager(ctx->fsys));
+    MomsSavings *momsSavings = SaveData_GetMomsSavingsAddr(ctx->fsys->savedata);
+    *p_ret = PhoneRematches_GiftItemIdGet(momsSavings, entry->unk0);
+    PhoneRematches_GiftItemIdSet(momsSavings, entry->unk0, ITEM_NONE);
+    return FALSE;
+}
+
+BOOL ScrCmd_148(SCRIPTCONTEXT *ctx) {
+    u8 r4 = ScriptReadByte(ctx);
+    sub_02092E14(Fsys_GetGearPhoneRingManager(ctx->fsys), r4, ScriptReadByte(ctx));
+    return FALSE;
+}
+
+BOOL ScrCmd_149(SCRIPTCONTEXT *ctx) {
+    sub_0202F050(SaveData_GetMomsSavingsAddr(ctx->fsys->savedata), ScriptReadByte(ctx));
     return FALSE;
 }
