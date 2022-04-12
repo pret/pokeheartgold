@@ -4520,3 +4520,107 @@ BOOL ScrCmd_597(SCRIPTCONTEXT *ctx) {
     ov01_02203AB4(fsys, GetMapObjectByID(fsys->mapObjectMan, obj_partner_poke), 0);
     return TRUE;
 }
+
+BOOL ScrCmd_598(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 mode = ScriptReadHalfword(ctx);
+    LocalMapObject *obj1, *obj2;
+    if (mode == 1) {
+        obj1 = PlayerAvatar_GetMapObject(fsys->playerAvatar);
+        obj2 = FollowingPokemon_GetMapObject(fsys);
+    } else if (mode == 2) {
+        obj1 = FollowingPokemon_GetMapObject(fsys);
+        obj2 = PlayerAvatar_GetMapObject(fsys->playerAvatar);
+    } else {
+        GF_ASSERT(0);
+        return FALSE;
+    }
+    ov02_0224E0BC(obj1, obj2, ctx->taskman);
+    return TRUE;
+}
+
+BOOL ScrCmd_599(SCRIPTCONTEXT *ctx) {
+    ov01_02205AEC(ctx->fsys);
+    return TRUE;
+}
+
+BOOL ScrCmd_600(SCRIPTCONTEXT *ctx) {
+    if (ov01_02205D68(ctx->fsys)) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+BOOL ScrCmd_FollowPokeFacePlayer(SCRIPTCONTEXT *ctx) {
+    BOOL doFace = TRUE; //sp8
+    if (FollowingPokemon_IsActive(ctx->fsys)) {
+        if (ov01_022055DC(FollowingPokemon_GetMapObject(ctx->fsys))) {
+            LocalMapObject *myObject = PlayerAvatar_GetMapObject(FieldSys_GetPlayerAvatar(ctx->fsys));
+            int facingDirection = PlayerAvatar_GetFacingDirection(FieldSys_GetPlayerAvatar(ctx->fsys));
+            int playerX = MapObject_GetCurrentX(myObject);
+            int deltaX = GetDeltaXByFacingDirection(facingDirection) * 2;
+            int playerElev = MapObject_GetCurrentHeight(myObject);
+            int playerY = MapObject_GetCurrentY(myObject);
+            int deltaY = GetDeltaYByFacingDirection(facingDirection) * 2;
+            u8 facingTile = GetMetatileBehaviorAt(ctx->fsys, playerX + deltaX, playerY + deltaY);
+            VecFx32 posVec;
+            MapObject_GetPositionVec(myObject, &posVec);
+            if (sub_020549A8(ctx->fsys, &posVec, playerX + deltaX, playerY + deltaY, 0) || sub_0205B778(facingTile) || sub_02060BFC(myObject, playerX + deltaX, playerElev, playerY + deltaY)) {
+                doFace = FALSE;
+            }
+        }
+        if (doFace) {
+            return ScrCmd_FacePlayer(ctx);
+        }
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_602(SCRIPTCONTEXT *ctx) {
+    u16 mode = ScriptReadHalfword(ctx);
+    if (FollowingPokemon_IsActive(ctx->fsys)) {
+        if (mode) {
+            MapObject_PauseMovement(FollowingPokemon_GetMapObject(ctx->fsys));
+        } else {
+            MapObject_UnpauseMovement(FollowingPokemon_GetMapObject(ctx->fsys));
+        }
+    }
+    return FALSE;
+}
+
+BOOL sub_02046D40(SCRIPTCONTEXT *ctx);
+
+BOOL ScrCmd_603(SCRIPTCONTEXT *ctx) {
+    if (FollowingPokemon_IsActive(ctx->fsys)) {
+        SetupNativeScript(ctx, sub_02046D40);
+    }
+    return TRUE;
+}
+
+BOOL ScrCmd_604(SCRIPTCONTEXT *ctx) {
+    u16 movement = ScriptReadHalfword(ctx);
+    if (FollowingPokemon_IsActive(ctx->fsys)) {
+        sub_0205FC94(GetMapObjectByID(ctx->fsys->mapObjectMan, obj_partner_poke), movement);
+    }
+    return TRUE;
+}
+
+BOOL sub_02046D40(SCRIPTCONTEXT *ctx) {
+    if (MapObject_IsMovementPaused(FollowingPokemon_GetMapObject(ctx->fsys))) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+BOOL ScrCmd_605(SCRIPTCONTEXT *ctx) {
+    u8 r6 = ScriptReadByte(ctx);
+    u8 r4 = ScriptReadByte(ctx);
+    if (FollowingPokemon_IsActive(ctx->fsys)) {
+        LocalMapObject *playerObj = PlayerAvatar_GetMapObject(ctx->fsys->playerAvatar);
+        LocalMapObject *tsurePokeObj = GetMapObjectByID(ctx->fsys->mapObjectMan, obj_partner_poke);
+        ov01_02205720(playerObj, tsurePokeObj, r6, r4);
+    }
+    return FALSE;
+}

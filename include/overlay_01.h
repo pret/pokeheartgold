@@ -38,7 +38,7 @@ BOOL ov01_021F6B10(FieldSystem *fsys);
 UnkStruct_0206793C *ov01_0220329C(LocalMapObject *obj, int a1);
 void ov01_02205790(FieldSystem *fsys, u8 a1);
 BOOL ov01_022057C4(FieldSystem *fsys);
-void ov01_02205D68(FieldSystem *fsys);
+BOOL ov01_02205D68(FieldSystem *fsys);
 BOOL Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors(FIELD_PLAYER_AVATAR *fieldPlayerAvatar, int standingTile, int facingTile);
 BOOL MetatileBehavior_IsRockClimbInDirection(int facingTile, int facingDirection);
 BOOL FieldSys_FacingModelIsHeadbuttTree(FieldSystem *fsys);
@@ -97,5 +97,7 @@ void SaveStatsPrinter_Print(struct SaveStatsPrinter *printer);
 void SaveStatsPrinter_RemoveFromScreen(struct SaveStatsPrinter *printer);
 void SaveStatsPrinter_Delete(struct SaveStatsPrinter *printer);
 void ov01_02203AB4(FieldSystem *fsys, LocalMapObject *partnerPokeObj, int a2);
+void ov01_02205AEC(FieldSystem *fsys);
+void ov01_02205720(LocalMapObject *playerObj, LocalMapObject *tsurePokeObj, int a2, int a3);
 
 #endif //POKEHEARTGOLD_OVERLAY_01_H
