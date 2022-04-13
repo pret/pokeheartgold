@@ -102,4 +102,10 @@ void ov01_02205AEC(FieldSystem *fsys);
 void ov01_02205720(LocalMapObject *playerObj, LocalMapObject *tsurePokeObj, int a2, int a3);
 void ov01_021EACBC(void *fsysUnk28, u8 a1);
 
+struct UnkStruct_020FACDC {
+    int filler_00[12/sizeof(int)];
+};
+
+void ov01_021F3C0C(void *fsys_unk9C, int a1, const struct UnkStruct_020FACDC *unk_FACDC, int a3, void *fsys_unk54);
+
 #endif //POKEHEARTGOLD_OVERLAY_01_H

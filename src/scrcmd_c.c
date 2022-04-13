@@ -67,6 +67,7 @@
 #include "safari_zone.h"
 #include "unk_02097268.h"
 #include "npc_trade.h"
+#include "script_pokemon_util.h"
 #include "unk_0202C034.h"
 #include "unk_0203A3B0.h"
 #include "unk_02067A80.h"
@@ -76,6 +77,10 @@
 #include "daycare.h"
 #include "pokewalker.h"
 #include "unk_02095DF4.h"
+#include "field_take_photo.h"
+#include "unk_020977CC.h"
+#include "unk_020979A8.h"
+#include "unk_02097BE0.h"
 #include "msgdata/msg/msg_0202.h"
 #include "constants/accessories.h"
 #include "constants/phone_contacts.h"
@@ -4831,5 +4836,198 @@ BOOL ScrCmd_148(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_149(SCRIPTCONTEXT *ctx) {
     sub_0202F050(SaveData_GetMomsSavingsAddr(ctx->fsys->savedata), ScriptReadByte(ctx));
+    return FALSE;
+}
+
+BOOL ScrCmd_CameronPhoto(SCRIPTCONTEXT *ctx) {
+    u16 photo_num = ScriptReadHalfword(ctx);
+    FieldSys_TakePhoto(ctx->fsys, photo_num);
+    return TRUE;
+}
+
+BOOL ScrCmd_616(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = PhotoAlbum_GetNumSaved(Save_PhotoAlbum_get(ctx->fsys->savedata));
+    return FALSE;
+}
+
+BOOL ScrCmd_617(SCRIPTCONTEXT *ctx) {
+    sub_0206A860(ctx->fsys);
+    return TRUE;
+}
+
+extern const struct UnkStruct_020FACDC _020FACDC[3];
+
+#ifdef NONMATCHING
+BOOL ScrCmd_621(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    // regswap to be resolved via static initializer
+    struct UnkStruct_020FACDC sp4[3];
+    memcpy(sp4, _020FACDC, sizeof(sp4));
+    int n, i;
+
+    int partyCount = GetPartyCount(SavArray_PlayerParty_get(fsys->savedata));
+    if (FlagGet(fsys, FLAG_GOT_TM51_FROM_FALKNER)) {
+        n = 0;
+    } else if (FlagGet(fsys, FLAG_MET_PASSERBY_BOY)) {
+        n = 1;
+    } else if (partyCount > 0) {
+        n = 2;
+    } else {
+        n = 3;
+    }
+    for (i = 0; i < n; i++) {
+        ov01_021F3C0C(fsys->unk9C, 0x8D, &sp4[i], 0, fsys->unk54);
+    }
+    return FALSE;
+}
+#else
+asm
+BOOL ScrCmd_621(SCRIPTCONTEXT *ctx) {
+    push {r3, r4, r5, r6, r7, lr}
+    sub sp, #0x28
+    add r0, #0x80
+    ldr r4, [r0, #0]
+    ldr r5, =_020FACDC
+    add r3, sp, #4
+    mov r2, #4
+copy:
+    ldmia r5!, {r0, r1}
+    stmia r3!, {r0, r1}
+    sub r2, r2, #1
+    bne copy
+    ldr r0, [r5, #0]
+    str r0, [r3, #0]
+    ldr r0, [r4, #0xc]
+    bl SavArray_PlayerParty_get
+    bl GetPartyCount
+    add r5, r0, #0
+    add r0, r4, #0
+    mov r1, #FLAG_GOT_TM51_FROM_FALKNER
+    bl FlagGet
+    cmp r0, #0
+    beq @no_falkner_tm
+    mov r7, #0
+    b @got_r7
+@no_falkner_tm:
+    add r0, r4, #0
+    mov r1, #FLAG_MET_PASSERBY_BOY
+    bl FlagGet
+    cmp r0, #0
+    beq @no_passerby_boy
+    mov r7, #1
+    b @got_r7
+@no_passerby_boy:
+    cmp r5, #0
+    ble @no_party
+    mov r7, #2
+    b @got_r7
+@no_party:
+    mov r7, #3
+@got_r7:
+    mov r6, #0
+    cmp r7, #0
+    ble @end
+    add r5, sp, #4
+@loop:
+    ldr r0, [r4, #0x54]
+    mov r1, #0x8d
+    str r0, [sp, #0]
+    add r0, r4, #0
+    add r0, #0x9c
+    ldr r0, [r0, #0]
+    add r2, r5, #0
+    mov r3, #0
+    bl ov01_021F3C0C
+    add r6, r6, #1
+    add r5, #0xc
+    cmp r6, r7
+    blt @loop
+@end:
+    mov r0, #0
+    add sp, #0x28
+    pop {r3, r4, r5, r6, r7, pc}
+}
+#endif //NONMATCHING
+
+BOOL ScrCmd_622(SCRIPTCONTEXT *ctx) {
+    u16 objectId = ScriptReadHalfword(ctx);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    LocalMapObject *object = GetMapObjectByID(ctx->fsys->mapObjectMan, objectId);
+    if (object != NULL) {
+        *p_ret = MapObject_GetFacingDirection(object);
+    } else {
+        *p_ret = DIR_NORTH;
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_FollowPokeInteract(SCRIPTCONTEXT *ctx) {
+    Fsys_FollowPokeInteract(ctx->fsys);
+    return TRUE;
+}
+
+BOOL ScrCmd_712(SCRIPTCONTEXT *ctx) {
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    u8 action = ScriptReadByte(ctx);
+    switch (action) {
+    case 1:
+        *p_work = sub_0203EEE4(ctx->fsys);
+        break;
+    case 2:
+        *p_work = sub_0203EF40(ctx->fsys);
+        break;
+    case 3:
+        *p_work = sub_0203EFA0(ctx->fsys);
+        break;
+    default:
+    case 0:
+        *p_work = sub_0203EEA0(ctx->fsys);
+        break;
+    }
+    SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
+    return TRUE;
+}
+
+BOOL ScrCmd_AlphPuzzle(SCRIPTCONTEXT *ctx) {
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    u8 puzzle = ScriptReadByte(ctx);
+    if (puzzle > 4) {
+        puzzle = 0;
+    }
+    *p_work = Fsys_CreateApplication_AlphPuzzle(ctx->fsys, puzzle);
+    SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
+    return TRUE;
+}
+
+BOOL ScrCmd_722(SCRIPTCONTEXT *ctx) {
+    u8 r7 = ScriptReadByte(ctx);
+    u8 r6 = ScriptReadByte(ctx);
+    u16 sp8 = ScriptReadHalfword(ctx);
+    u16 r4 = ScriptReadHalfword(ctx);
+    u16 sp4 = ScriptReadHalfword(ctx);
+    sub_020977CC(ctx->fsys, r7, r6, sp8, r4, sp4);
+    return TRUE;
+}
+
+BOOL ScrCmd_723(SCRIPTCONTEXT *ctx) {
+    u8 r7 = ScriptReadByte(ctx);
+    u8 r6 = ScriptReadByte(ctx);
+    u16 sp8 = ScriptReadHalfword(ctx);
+    u16 r4 = ScriptReadHalfword(ctx);
+    u16 sp4 = ScriptReadHalfword(ctx);
+    sub_020979A8(ctx->fsys, r7, r6, sp8, r4, sp4);
+    return TRUE;
+}
+
+BOOL ScrCmd_Cinematic(SCRIPTCONTEXT *ctx) {
+    u16 scene = ScriptReadHalfword(ctx);
+    sub_02097BE0(ctx->fsys, scene);
+    return TRUE;
+}
+
+BOOL ScrCmd_727(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = GetIdxOfFirstAliveMonInParty_CrashIfNone(SavArray_PlayerParty_get(ctx->fsys->savedata));
     return FALSE;
 }

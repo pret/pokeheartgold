@@ -126,5 +126,10 @@ void *sub_0203FAB4(FieldSystem *fsys, u8 a1, u8 a2, u16 a3, HeapID heapId);
 void *ScratchOffCards_Create(FieldSystem *fsys, HeapID heapId);
 void sub_0203FC14(FieldSystem *fsys, u16 a1, u16 a2);
 void *PhoneUI_new(FieldSystem *fsys);
+void *sub_0203EEE4(FieldSystem *fsys);
+void *sub_0203EF40(FieldSystem *fsys);
+void *sub_0203EFA0(FieldSystem *fsys);
+void *sub_0203EEA0(FieldSystem *fsys);
+void *Fsys_CreateApplication_AlphPuzzle(FieldSystem *fsys, u8 puzzle);
 
 #endif //POKEHEARTGOLD_UNK_0203E348_H
