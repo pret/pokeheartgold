@@ -498,8 +498,9 @@ BOOL MonMoveRestorePP(POKEMON *pokemon, int moveIdx, int ppRestore) {
             pp = maxPp;
         } else {
             pp += ppRestore;
-            if (pp > maxPp)
+            if (pp > maxPp) {
                 pp = maxPp;
+            }
         }
         SetMonData(pokemon, ppAttr, &pp);
         return TRUE;
