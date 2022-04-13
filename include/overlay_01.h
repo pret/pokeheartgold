@@ -32,8 +32,9 @@ BOOL Task_HoneyOrSweetScent(TaskManager *taskManager);
 BOOL Task_OverworldFish(TaskManager *taskManager);
 struct FishingRodWork *CreateFishingRodTaskEnv(FieldSystem *fsys, HeapID heapId, int rod);
 void ov01_021F4440(FieldSystem *fsys);
-void ov01_021F6A9C(FieldSystem *fsys, HeapID heapId, int a2);
+void ov01_021F6A9C(FieldSystem *fsys, int a1, int a2);
 int ov01_021F6B00(FieldSystem *fsys);
+int ov01_021F6AEC(FieldSystem *fsys);
 BOOL ov01_021F6B10(FieldSystem *fsys);
 UnkStruct_0206793C *ov01_0220329C(LocalMapObject *obj, int a1);
 void ov01_02205790(FieldSystem *fsys, u8 a1);
@@ -54,8 +55,10 @@ u8 ov01_021F3D84(struct FieldSystemUnkSub68*);
 BOOL ov01_021F3D88(struct FieldSystemUnkSub68*);
 void ov01_021F3D98(FieldSystem* fsys);
 struct UnkStruct_ov01_021EDC28 *ov01_021EDF78(FieldSystem *fsys, u8 x, u8 y, u8 initCursorPos, u8 cancellable, u16 *ret_p, MSGFMT *msgFmt, WINDOW *window, MSGDATA *msgData);
+struct UnkStruct_ov01_021EDC28 **ov01_021F6B20(FieldSystem *fsys);
 void ov01_021EDC7C(struct UnkStruct_ov01_021EDC28 *menu, u32 msgId, u32 value);
 void ov01_021EDC84(struct UnkStruct_ov01_021EDC28 *menu);
+void ov01_021EDF00(struct UnkStruct_ov01_021EDC28 *menu);
 void ov01_021EDF38(struct UnkStruct_ov01_021EDC28 *menu);
 void ov01_021EE014(struct UnkStruct_ov01_021EDC28 *menu, u16 a1);
 void ov01_021EE0EC(struct UnkStruct_ov01_021EDC28 *menu, u16 *a1, u16 *a2);
@@ -63,7 +66,7 @@ void ov01_021EDFA4(struct UnkStruct_ov01_021EDC28 *menu);
 void ov01_021EE974(struct UnkStruct_ov01_021EDC28 *menu, u8 a1);
 void ov01_021EF018(struct UnkStruct_ov01_021EDC28 *menu, u8 a1);
 void ov01_021EF034(struct UnkStruct_ov01_021EDC28 *menu, u8 a1);
-void MoveTutorMenu_SetListItem(struct UnkStruct_ov01_021EDC28 *menu, u8 a1, u8 a2, u8 a3);
+void MoveTutorMenu_SetListItem(struct UnkStruct_ov01_021EDC28 *menu, int a1, int a2, int a3);
 void ov01_021F7704(LocalMapObject *object);
 void ov01_021F62E8(VecFx32 *vec, FsysUnkSub2C *a1);
 void ov01_021F9408(LocalMapObject *object, u32 dir);
@@ -101,11 +104,18 @@ void ov01_02203AB4(FieldSystem *fsys, LocalMapObject *partnerPokeObj, int a2);
 void ov01_02205AEC(FieldSystem *fsys);
 void ov01_02205720(LocalMapObject *playerObj, LocalMapObject *tsurePokeObj, int a2, int a3);
 void ov01_021EACBC(void *fsysUnk28, u8 a1);
+void ov01_021F6ABC(FieldSystem *fsys, int a1, int a2, void *a3);
+
+typedef BOOL (*UnkCallback_021F6B34)(struct UnkStruct_ov01_021EDC28 *menu, int idx);
+
+void ov01_021F6B34(FieldSystem *fsys, UnkCallback_021F6B34 cb, struct UnkStruct_ov01_021EDC28 *menu);
+void ov01_021EEF9C(struct UnkStruct_ov01_021EDC28 *menu, int idx);
 
 struct UnkStruct_020FACDC {
     int filler_00[12/sizeof(int)];
 };
 
 void ov01_021F3C0C(void *fsys_unk9C, int a1, const struct UnkStruct_020FACDC *unk_FACDC, int a3, void *fsys_unk54);
+BOOL ov01_022060B8(FieldSystem *fsys, u8 a1, u8 a2);
 
 #endif //POKEHEARTGOLD_OVERLAY_01_H

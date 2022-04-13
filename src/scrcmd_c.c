@@ -1058,7 +1058,7 @@ BOOL ScrCmd_070(SCRIPTCONTEXT *ctx) {
     u16 r6 = ScriptGetVar(ctx);
     u16 r7 = ScriptGetVar(ctx);
     u16 r3 = ScriptGetVar(ctx);
-    MoveTutorMenu_SetListItem(*pp_menu, r6, r7, r3);
+    MoveTutorMenu_SetListItem(*pp_menu, (u8)r6, (u8)r7, (u8)r3);
     return FALSE;
 }
 
@@ -5030,4 +5030,214 @@ BOOL ScrCmd_727(SCRIPTCONTEXT *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = GetIdxOfFirstAliveMonInParty_CrashIfNone(SavArray_PlayerParty_get(ctx->fsys->savedata));
     return FALSE;
+}
+
+BOOL ScrCmd_728(SCRIPTCONTEXT *ctx) {
+    u8 r1 = ScriptReadByte(ctx);
+    u8 r2 = ScriptReadByte(ctx);
+    if (ov01_022060B8(ctx->fsys, r1, r2)) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+BOOL ScrCmd_729(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    if (FollowingPokemon_IsActive(ctx->fsys)) {
+        *p_ret = TRUE;
+    } else {
+        *p_ret = FALSE;
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_730(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    if (!FollowingPokemon_IsActive(ctx->fsys)) {
+        *p_ret = TRUE;
+    } else if (ov01_022057C4(ctx->fsys)) {
+        *p_ret = TRUE;
+    } else {
+        *p_ret = FALSE;
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_731(SCRIPTCONTEXT *ctx) {
+    ov02_022508B4(ctx->fsys);
+    return TRUE;
+}
+
+BOOL ScrCmd_732(SCRIPTCONTEXT *ctx) {
+    s8 mood = ScriptReadByte(ctx);
+    FsysUnkSub108_AddMonMood(ctx->fsys->unk108, mood);
+    return FALSE;
+}
+
+BOOL ScrCmd_733(SCRIPTCONTEXT *ctx) {
+    u8 r6 = ScriptReadByte(ctx);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    if (ov02_02250780(ctx->fsys, r6)) {
+        *p_ret = TRUE;
+    } else {
+        *p_ret = FALSE;
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_734(SCRIPTCONTEXT *ctx) {
+    u8 r1 = ScriptReadByte(ctx);
+    ov02_022507B4(ctx->fsys, r1);
+    return TRUE;
+}
+
+BOOL sub_020476E8(SCRIPTCONTEXT *ctx);
+
+BOOL ScrCmd_TouchscreenMenuHide(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    if (ov01_021F6B00(fsys) == 3) {
+        return FALSE;
+    }
+    ov01_021F6A9C(fsys, 3, 0);
+    SetupNativeScript(ctx, sub_020476E8);
+    fsys->unk1C = 3;
+    return TRUE;
+}
+
+BOOL sub_020476E8(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 *p_ret = GetVarPointer(fsys, ctx->data[0]);
+    int r5 = ov01_021F6B00(fsys);
+    int r0 = ov01_021F6B10(fsys);
+    if (r5 == 3 && r0 == 1) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+BOOL sub_02047744(SCRIPTCONTEXT *ctx);
+
+BOOL ScrCmd_TouchscreenMenuShow(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    ov01_021F6A9C(fsys, 0, 0);
+    SetupNativeScript(ctx, sub_02047744);
+    fsys->unk1C = 0;
+    return TRUE;
+}
+
+BOOL sub_02047744(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 *p_ret = GetVarPointer(fsys, ctx->data[0]);
+    int r5 = ov01_021F6B00(fsys);
+    int r0 = ov01_021F6B10(fsys);
+    if (r5 == 0 && r0 == 1) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+BOOL ScrCmd_815(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 r1 = ScriptReadHalfword(ctx);
+    sub_0203E33C(fsys, r1);
+    return FALSE;
+}
+
+BOOL sub_020477C0(SCRIPTCONTEXT *ctx);
+
+BOOL ScrCmd_GetMenuChoice(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 var_ret = ScriptReadHalfword(ctx);
+    ctx->data[0] = var_ret;
+    ov01_021F6ABC(fsys, 3, 3, &ctx->data[1]);
+    SetupNativeScript(ctx, sub_020477C0);
+    return TRUE;
+}
+
+BOOL sub_020477C0(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 *p_ret = GetVarPointer(fsys, ctx->data[0]);
+    int r7 = ov01_021F6B00(fsys);
+    int r0 = ov01_021F6AEC(fsys);
+    if (r7 == 3 && r0 == 6) {
+        *p_ret = ctx->data[1];
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+BOOL ScrCmd_MenuInitStdGmm(SCRIPTCONTEXT *ctx) {
+    sub_02041770(ctx, ov01_021F6B20(ctx->fsys), NULL);
+    return TRUE;
+}
+
+BOOL ScrCmd_MenuInit(SCRIPTCONTEXT *ctx) {
+    sub_02041770(ctx, ov01_021F6B20(ctx->fsys), ctx->msg_data);
+    return TRUE;
+}
+
+BOOL ScrCmd_MenuItemAdd(SCRIPTCONTEXT *ctx) {
+    struct UnkStruct_ov01_021EDC28 **p_menu = ov01_021F6B20(ctx->fsys);
+    u16 msgId = ScriptGetVar(ctx);
+    u16 where = ScriptGetVar(ctx);
+    u16 value = ScriptGetVar(ctx);
+    MoveTutorMenu_SetListItem(*p_menu, msgId, where, value);
+    return FALSE;
+}
+
+BOOL sub_020478D0(SCRIPTCONTEXT *ctx);
+BOOL sub_02047908(struct UnkStruct_ov01_021EDC28 *menu, int idx);
+
+BOOL ScrCmd_MenuExec(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    struct UnkStruct_ov01_021EDC28 **p_menu = ov01_021F6B20(fsys);
+    u16 *p_ret = GetVarPointer(fsys, ctx->data[0]);
+    ov01_021F6ABC(fsys, 3, 7, p_ret);
+    ov01_021F6B34(fsys, sub_02047908, *p_menu);
+    SetupNativeScript(ctx, sub_020478D0);
+    return TRUE;
+}
+
+BOOL sub_020478D0(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    struct UnkStruct_ov01_021EDC28 **p_menu = ov01_021F6B20(fsys);
+    u16 *p_ret = GetVarPointer(fsys, ctx->data[0]);
+    if (*p_ret == 0xEEEE) {
+        return FALSE;
+    } else {
+        ov01_021EDF00(*p_menu);
+        return TRUE;
+    }
+}
+
+BOOL sub_02047908(struct UnkStruct_ov01_021EDC28 *menu, int idx) {
+    ov01_021EEF9C(menu, idx);
+    return FALSE;
+}
+
+u32 sub_02047914(FieldSystem *fsys, int action) {
+    u32 ret;
+    u32 wallet = PlayerProfile_GetMoney(Sav2_PlayerData_GetProfileAddr(fsys->savedata));
+    u32 bank = MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(fsys->savedata), MOMS_BALANCE_GET, 0);
+    switch (action) {
+    case 0:
+        ret = 999999 - bank;
+        if (wallet <= ret) {
+            ret = wallet;
+        }
+        break;
+    case 1:
+        ret = 999999 - wallet;
+        if (bank <= ret) {
+            ret = bank;
+        }
+        break;
+    default:
+        GF_ASSERT(0);
+    }
+    return ret;
 }

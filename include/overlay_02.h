@@ -65,5 +65,8 @@ void ov02_0224E074(FieldSystem *fsys, u16 *p_ret, int a2, HeapID heapId);
 void ov02_0224E0BC(LocalMapObject *obj1, LocalMapObject *obj2, TaskManager *taskManager);
 void ov02_02251EB8(GearPhoneRingManager *phoneRingManager, u8 a1, u8 a2, u8 a3, u8 a4, u8 a5);
 void Fsys_FollowPokeInteract(FieldSystem *fsys);
+void ov02_022508B4(FieldSystem *fsys);
+BOOL ov02_02250780(FieldSystem *fsys, u8 a1);
+void ov02_022507B4(FieldSystem *fsys, u8 a1);
 
 #endif //POKEHEARTGOLD_OVERLAY_02_H
