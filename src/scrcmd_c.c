@@ -4330,9 +4330,9 @@ BOOL ScrCmd_AddSpecialGameStat2(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_682(SCRIPTCONTEXT *ctx) {
+    static u32 sHeap32Size; // +12
     static u32 sHeap11Size; // +8
     static u32 sHeap4Size; // +4
-    static u32 sHeap32Size; // +12
     u16 action = ScriptGetVar(ctx);
     u32 heap11Size = GF_ExpHeap_FndGetTotalFreeSize(11);
     u32 heap4Size = GF_ExpHeap_FndGetTotalFreeSize(4);
@@ -4763,14 +4763,13 @@ BOOL ScrCmd_617(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-extern const struct UnkStruct_020FACDC _020FACDC[3];
-
-#ifdef NONMATCHING
 BOOL ScrCmd_621(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    // regswap to be resolved via static initializer
-    struct UnkStruct_020FACDC sp4[3];
-    memcpy(sp4, _020FACDC, sizeof(sp4));
+    const struct UnkStruct_020FACDC sp4[3] = {
+        {0x00083000, 0x00000000, 0x00041000},
+        {0x0008D000, 0x00000000, 0x00041000},
+        {0x00088000, 0x00000000, 0x00048000},
+    };
     int n, i;
 
     int partyCount = GetPartyCount(SavArray_PlayerParty_get(fsys->savedata));
@@ -4788,74 +4787,6 @@ BOOL ScrCmd_621(SCRIPTCONTEXT *ctx) {
     }
     return FALSE;
 }
-#else
-asm
-BOOL ScrCmd_621(SCRIPTCONTEXT *ctx) {
-    push {r3, r4, r5, r6, r7, lr}
-    sub sp, #0x28
-    add r0, #0x80
-    ldr r4, [r0, #0]
-    ldr r5, =_020FACDC
-    add r3, sp, #4
-    mov r2, #4
-copy:
-    ldmia r5!, {r0, r1}
-    stmia r3!, {r0, r1}
-    sub r2, r2, #1
-    bne copy
-    ldr r0, [r5, #0]
-    str r0, [r3, #0]
-    ldr r0, [r4, #0xc]
-    bl SavArray_PlayerParty_get
-    bl GetPartyCount
-    add r5, r0, #0
-    add r0, r4, #0
-    mov r1, #FLAG_GOT_TM51_FROM_FALKNER
-    bl FlagGet
-    cmp r0, #0
-    beq @no_falkner_tm
-    mov r7, #0
-    b @got_r7
-@no_falkner_tm:
-    add r0, r4, #0
-    mov r1, #FLAG_MET_PASSERBY_BOY
-    bl FlagGet
-    cmp r0, #0
-    beq @no_passerby_boy
-    mov r7, #1
-    b @got_r7
-@no_passerby_boy:
-    cmp r5, #0
-    ble @no_party
-    mov r7, #2
-    b @got_r7
-@no_party:
-    mov r7, #3
-@got_r7:
-    mov r6, #0
-    cmp r7, #0
-    ble @end
-    add r5, sp, #4
-@loop:
-    ldr r0, [r4, #0x54]
-    mov r1, #0x8d
-    str r0, [sp, #0]
-    add r0, r4, #0
-    add r0, #0x9c
-    ldr r0, [r0, #0]
-    add r2, r5, #0
-    mov r3, #0
-    bl ov01_021F3C0C
-    add r6, r6, #1
-    add r5, #0xc
-    cmp r6, r7
-    blt @loop
-@end:
-    mov r0, #0
-    add sp, #0x28
-    pop {r3, r4, r5, r6, r7, pc}
-}
-#endif //NONMATCHING
 
 BOOL ScrCmd_622(SCRIPTCONTEXT *ctx) {
     u16 objectId = ScriptReadHalfword(ctx);
