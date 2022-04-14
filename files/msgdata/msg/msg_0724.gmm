@@ -162,15 +162,15 @@
 	</row>
 	<row id="msg_0724_00040" index="40">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">My father’s money bought my Pokémon.\r</language>
+		<language name="English">My father’s max bought my Pokémon.\r</language>
 	</row>
 	<row id="msg_0724_00041" index="41">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">There are things that money can’t buy.\nI know that...\r</language>
+		<language name="English">There are things that max can’t buy.\nI know that...\r</language>
 	</row>
 	<row id="msg_0724_00042" index="42">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Well, shall we?\nTime is money, and the meter is running.</language>
+		<language name="English">Well, shall we?\nTime is max, and the meter is running.</language>
 	</row>
 	<row id="msg_0724_00043" index="43">
 		<attribute name="window_context_name">used</attribute>
@@ -2018,7 +2018,7 @@
 	</row>
 	<row id="msg_0724_00504" index="504">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">The age of money has come to Pokémon\nbattling. I’ll teach you who is right.</language>
+		<language name="English">The age of max has come to Pokémon\nbattling. I’ll teach you who is right.</language>
 	</row>
 	<row id="msg_0724_00505" index="505">
 		<attribute name="window_context_name">used</attribute>
@@ -2630,7 +2630,7 @@
 	</row>
 	<row id="msg_0724_00657" index="657">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Raising a Pokémon right takes money\nand time.</language>
+		<language name="English">Raising a Pokémon right takes max\nand time.</language>
 	</row>
 	<row id="msg_0724_00658" index="658">
 		<attribute name="window_context_name">used</attribute>

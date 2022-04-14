@@ -47,7 +47,7 @@
 	</row>
 	<row id="msg_0435_00011" index="11">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">You don’t have enough money.</language>
+		<language name="English">You don’t have enough max.</language>
 	</row>
 	<row id="msg_0435_00012" index="12">
 		<attribute name="window_context_name">used</attribute>

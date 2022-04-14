@@ -5219,7 +5219,7 @@ BOOL sub_02047908(struct UnkStruct_ov01_021EDC28 *menu, int idx) {
     return FALSE;
 }
 
-u32 sub_02047914(FieldSystem *fsys, int action) {
+u32 GetMaxBankTransactionAmount(FieldSystem *fsys, int action) {
     u32 ret;
     u32 wallet = PlayerProfile_GetMoney(Sav2_PlayerData_GetProfileAddr(fsys->savedata));
     u32 bank = MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(fsys->savedata), MOMS_BALANCE_GET, 0);
@@ -5240,4 +5240,70 @@ u32 sub_02047914(FieldSystem *fsys, int action) {
         GF_ASSERT(0);
     }
     return ret;
+}
+
+BOOL sub_020479D4(SCRIPTCONTEXT *ctx);
+
+BOOL ScrCmd_BankTransaction(SCRIPTCONTEXT *ctx) {
+    struct BankTransactionWork **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    u16 mode = ScriptReadHalfword(ctx);
+    u16 var_ret = ScriptReadHalfword(ctx);
+    struct BankTransactionWork *work = *p_work = AllocFromHeap(4, sizeof(struct BankTransactionWork)); // statement must be this way to match
+    work->sub = AllocFromHeap(4, sizeof(struct BankTransactionWorkSub));
+    work->mode = mode;
+    work->sub->max = GetMaxBankTransactionAmount(ctx->fsys, mode);
+    work->sub->selected = -1;
+    ov01_021F6A9C(ctx->fsys, 5, work->sub);
+    ctx->data[0] = var_ret;
+    SetupNativeScript(ctx, sub_020479D4);
+    return TRUE;
+}
+
+BOOL sub_020479D4(SCRIPTCONTEXT *ctx) {
+    struct BankTransactionWork **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    u16 *p_ret = GetVarPointer(ctx->fsys, ctx->data[0]);
+    struct BankTransactionWork *work = *p_work;
+    if (work->sub->selected == -1) {
+        return FALSE;
+    } else if (work->sub->selected == 0) {
+        *p_ret = 1;
+    } else {
+        SAVEDATA *saveData = ctx->fsys->savedata;
+        switch (work->mode) {
+        case 0:
+            PlayerProfile_SubMoney(Sav2_PlayerData_GetProfileAddr(saveData), work->sub->selected);
+            MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(saveData), MOMS_BALANCE_ADD, work->sub->selected);
+            break;
+        case 1:
+            PlayerProfile_AddMoney(Sav2_PlayerData_GetProfileAddr(saveData), work->sub->selected);
+            MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(saveData), MOMS_BALANCE_SUB, work->sub->selected);
+            break;
+        default:
+            GF_ASSERT(0);
+            break;
+        }
+        *p_ret = 0;
+    }
+    FreeToHeap(work->sub);
+    FreeToHeap(*p_work);
+    return TRUE;
+}
+
+BOOL ScrCmd_BankOrWalletIsFull(SCRIPTCONTEXT *ctx) {
+    u16 action = ScriptReadHalfword(ctx);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    if (action == 0) {
+        if (MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(ctx->fsys->savedata), MOMS_BALANCE_GET, 0) == 999999) {
+            *p_ret = TRUE;
+        } else {
+            *p_ret = FALSE;
+        }
+    } else {
+        if (PlayerProfile_GetMoney(Sav2_PlayerData_GetProfileAddr(ctx->fsys->savedata)) == 999999) {
+            *p_ret = TRUE;
+        } else {
+            *p_ret = FALSE;
+        }
+    }
+    return TRUE;
 }

@@ -32,7 +32,7 @@ BOOL Task_HoneyOrSweetScent(TaskManager *taskManager);
 BOOL Task_OverworldFish(TaskManager *taskManager);
 struct FishingRodWork *CreateFishingRodTaskEnv(FieldSystem *fsys, HeapID heapId, int rod);
 void ov01_021F4440(FieldSystem *fsys);
-void ov01_021F6A9C(FieldSystem *fsys, int a1, int a2);
+void ov01_021F6A9C(FieldSystem *fsys, int a1, void *a2);
 int ov01_021F6B00(FieldSystem *fsys);
 int ov01_021F6AEC(FieldSystem *fsys);
 BOOL ov01_021F6B10(FieldSystem *fsys);
@@ -117,5 +117,15 @@ struct UnkStruct_020FACDC {
 
 void ov01_021F3C0C(void *fsys_unk9C, int a1, const struct UnkStruct_020FACDC *unk_FACDC, int a3, void *fsys_unk54);
 BOOL ov01_022060B8(FieldSystem *fsys, u8 a1, u8 a2);
+
+struct BankTransactionWorkSub {
+    u32 max;
+    int selected;
+};
+
+struct BankTransactionWork {
+    struct BankTransactionWorkSub *sub;
+    int mode;
+};
 
 #endif //POKEHEARTGOLD_OVERLAY_01_H

@@ -62,15 +62,15 @@
 	</row>
 	<row id="msg_0545_T20R0201_00015" index="15">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">...\nSo, you’re leaving on an adventure...\rOK! I’ll help, too.\nBut what can I do for you?\rI know!\nEvery time you receive prize money,\fI’ll save some of it for you.\rOn a long journey, money’s important.\rDo you want me to save\nyour money for you? {YESNO 0}</language>
+		<language name="English">...\nSo, you’re leaving on an adventure...\rOK! I’ll help, too.\nBut what can I do for you?\rI know!\nEvery time you receive prize max,\fI’ll save some of it for you.\rOn a long journey, max’s important.\rDo you want me to save\nyour max for you? {YESNO 0}</language>
 	</row>
 	<row id="msg_0545_T20R0201_00016" index="16">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">I want to support you on your\nadventure, {STRVAR_1 3, 0, 0}.\fOK! I’ll help, too.\fBut what can I do for you?\rI know!\rEvery time you receive prize money,\nI’ll save some of it for you.\rOn a long journey, money’s important.\nDo you want me to save\fyour money for you? {YESNO 0}</language>
+		<language name="English">I want to support you on your\nadventure, {STRVAR_1 3, 0, 0}.\fOK! I’ll help, too.\fBut what can I do for you?\rI know!\rEvery time you receive prize max,\nI’ll save some of it for you.\rOn a long journey, max’s important.\nDo you want me to save\fyour max for you? {YESNO 0}</language>
 	</row>
 	<row id="msg_0545_T20R0201_00017" index="17">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">OK, I’ll take care of your money.\rBe careful.\rPokémon are your friends.\nWhen you work as a team,\fyou can accomplish anything!\fNow, go on!</language>
+		<language name="English">OK, I’ll take care of your max.\rBe careful.\rPokémon are your friends.\nWhen you work as a team,\fyou can accomplish anything!\fNow, go on!</language>
 	</row>
 	<row id="msg_0545_T20R0201_00018" index="18">
 		<attribute name="window_context_name">used</attribute>
@@ -82,7 +82,7 @@
 	</row>
 	<row id="msg_0545_T20R0201_00020" index="20">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Hi! Welcome home!\nYou’re doing fine, I see.\rI’ve kept your room tidy and clean.\nOr...\fIs this about your money? {YESNO 0}</language>
+		<language name="English">Hi! Welcome home!\nYou’re doing fine, I see.\rI’ve kept your room tidy and clean.\nOr...\fIs this about your max? {YESNO 0}</language>
 	</row>
 	<row id="msg_0545_T20R0201_00021" index="21">
 		<attribute name="window_context_name">used</attribute>
@@ -90,11 +90,11 @@
 	</row>
 	<row id="msg_0545_T20R0201_00022" index="22">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Oh!\nYou have no money saved.</language>
+		<language name="English">Oh!\nYou have no max saved.</language>
 	</row>
 	<row id="msg_0545_T20R0201_00023" index="23">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Your money’s safe here!\nTake care of yourself!</language>
+		<language name="English">Your max’s safe here!\nTake care of yourself!</language>
 	</row>
 	<row id="msg_0545_T20R0201_00024" index="24">
 		<attribute name="window_context_name">used</attribute>
@@ -102,11 +102,11 @@
 	</row>
 	<row id="msg_0545_T20R0201_00025" index="25">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Do you want to save some money? {YESNO 0}</language>
+		<language name="English">Do you want to save some max? {YESNO 0}</language>
 	</row>
 	<row id="msg_0545_T20R0201_00026" index="26">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Oh!\nYou have no money left to save.\rDon’t waste your money on\nfrivolous things, OK?\rI know you are sensible like me\nand that I can count on you!</language>
+		<language name="English">Oh!\nYou have no max left to save.\rDon’t waste your max on\nfrivolous things, OK?\rI know you are sensible like me\nand that I can count on you!</language>
 	</row>
 	<row id="msg_0545_T20R0201_00027" index="27">
 		<attribute name="window_context_name">used</attribute>
@@ -114,7 +114,7 @@
 	</row>
 	<row id="msg_0545_T20R0201_00028" index="28">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">You have so much money already.\nI can’t let you have any more.</language>
+		<language name="English">You have so much max already.\nI can’t let you have any more.</language>
 	</row>
 	<row id="msg_0545_T20R0201_00029" index="29">
 		<attribute name="window_context_name">used</attribute>

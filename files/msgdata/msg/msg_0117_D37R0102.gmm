@@ -62,7 +62,7 @@
 	</row>
 	<row id="msg_0117_D37R0102_00015" index="15">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">You’ll need more money than that.</language>
+		<language name="English">You’ll need more max than that.</language>
 	</row>
 	<row id="msg_0117_D37R0102_00016" index="16">
 		<attribute name="window_context_name">used</attribute>

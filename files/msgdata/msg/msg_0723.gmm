@@ -2034,7 +2034,7 @@
 	</row>
 	<row id="msg_0723_00508" index="508">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">There’s nothing that money can’t\nbuy.\r</language>
+		<language name="English">There’s nothing that max can’t\nbuy.\r</language>
 	</row>
 	<row id="msg_0723_00509" index="509">
 		<attribute name="window_context_name">used</attribute>
@@ -2142,7 +2142,7 @@
 	</row>
 	<row id="msg_0723_00535" index="535">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Just being cute is money in the bank!\r</language>
+		<language name="English">Just being cute is max in the bank!\r</language>
 	</row>
 	<row id="msg_0723_00536" index="536">
 		<attribute name="window_context_name">used</attribute>

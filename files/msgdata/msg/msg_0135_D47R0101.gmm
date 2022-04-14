@@ -42,11 +42,11 @@
 	</row>
 	<row id="msg_0135_D47R0101_00010" index="10">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">I am sorry.\nYou don’t have enough money.\rI hope you will drop by again.</language>
+		<language name="English">I am sorry.\nYou don’t have enough max.\rI hope you will drop by again.</language>
 	</row>
 	<row id="msg_0135_D47R0101_00011" index="11">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Owner!\nYou don’t have enough money.\rI hope you drop by again.</language>
+		<language name="English">Owner!\nYou don’t have enough max.\rI hope you drop by again.</language>
 	</row>
 	<row id="msg_0135_D47R0101_00012" index="12">
 		<attribute name="window_context_name">used</attribute>
@@ -258,7 +258,7 @@
 	</row>
 	<row id="msg_0135_D47R0101_00064" index="64">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">I am sorry.\nYou don’t have enough money.\rI hope you drop by again.</language>
+		<language name="English">I am sorry.\nYou don’t have enough max.\rI hope you drop by again.</language>
 	</row>
 	<row id="msg_0135_D47R0101_00065" index="65">
 		<attribute name="window_context_name">used</attribute>

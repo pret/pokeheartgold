@@ -10,7 +10,7 @@
 	</row>
 	<row id="msg_0403_R43R0201_00002" index="2">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Then pay what you have, please.\rThose who have no money, hmm...\ncan go through free of charge!\r</language>
+		<language name="English">Then pay what you have, please.\rThose who have no max, hmm...\ncan go through free of charge!\r</language>
 	</row>
 	<row id="msg_0403_R43R0201_00003" index="3">
 		<attribute name="window_context_name">used</attribute>

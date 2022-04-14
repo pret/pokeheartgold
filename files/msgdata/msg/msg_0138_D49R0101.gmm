@@ -406,7 +406,7 @@
 	</row>
 	<row id="msg_0138_D49R0101_00089" index="89">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Not enough money...</language>
+		<language name="English">Not enough max...</language>
 	</row>
 	<row id="msg_0138_D49R0101_00090" index="90">
 		<attribute name="window_context_name">used</attribute>

@@ -162,6 +162,6 @@
 	</row>
 	<row id="msg_0691_00040" index="40">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">How are you?\rWhat are you doing?\rWhere are you?\rHow many Badges do you have now?\rHow much money have you saved?\rHow’s your mom?\rHave you got lots of Pokémon?\rIs it going to be sunny tomorrow?\rArrgh, there’s so much I want to\nchat about! This is going nowhere!</language>
+		<language name="English">How are you?\rWhat are you doing?\rWhere are you?\rHow many Badges do you have now?\rHow much max have you saved?\rHow’s your mom?\rHave you got lots of Pokémon?\rIs it going to be sunny tomorrow?\rArrgh, there’s so much I want to\nchat about! This is going nowhere!</language>
 	</row>
 </body>
