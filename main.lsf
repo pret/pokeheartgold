@@ -163,7 +163,6 @@ Static main
 	Object src/script.o
 	Object src/fieldmap.o
 	Object src/scrcmd_c.o
-	Object asm/scrcmd.o
 	Object src/scrcmd_mart.o
 	Object src/scrcmd_strbuf.o
 	Object asm/scrcmd_5.o

@@ -1,3 +1,5 @@
+#define _IN_SCRCMD_C
+
 #include "scrcmd.h"
 #include "window.h"
 #include "overlay_01.h"
@@ -104,11 +106,9 @@ LocalMapObject *sub_02041C70(FieldSystem *fsys, u16 person);
 void _ScheduleObjectEventMovement(FieldSystem *fsys, EventObjectMovementMan *mvtMan, MovementScriptCommand *a2);
 void Script_SetMonSeenFlagBySpecies(FieldSystem *fsys, u16 species);
 
-// TODO: NELEMS(gScriptCmdTable);
-const u32 sNumScriptCmds = 853;
+#include "data/fieldmap.h"
 
-// TODO: static
-const WINDOWTEMPLATE _020FAC94 = {
+static const WINDOWTEMPLATE _020FAC94 = {
     .bgId = 3,
     .left = 25,
     .top = 13,
@@ -4330,9 +4330,9 @@ BOOL ScrCmd_AddSpecialGameStat2(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_682(SCRIPTCONTEXT *ctx) {
+    static u32 sHeap4Size; // +4
     static u32 sHeap32Size; // +12
     static u32 sHeap11Size; // +8
-    static u32 sHeap4Size; // +4
     u16 action = ScriptGetVar(ctx);
     u32 heap11Size = GF_ExpHeap_FndGetTotalFreeSize(11);
     u32 heap4Size = GF_ExpHeap_FndGetTotalFreeSize(4);
