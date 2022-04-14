@@ -30,23 +30,23 @@ scr_seq_D35R0101_001:
 	end
 
 _005F:
-	move_person obj_D35R0101_gsfighter, 8, 0, 7, 2
+	move_person_facing obj_D35R0101_gsfighter, 8, 0, 7, DIR_WEST
 	end
 
 _006D:
-	move_person obj_D35R0101_gsfighter, 10, 0, 7, 2
-	move_person obj_D35R0101_sunglasses, 4, 0, 3, 1
-	move_person obj_D35R0101_babyboy1_10, 9, 0, 3, 1
-	move_person obj_D35R0101_stop, 8, 0, 3, 1
-	move_person obj_D35R0101_stop_2, 9, 0, 4, 1
-	move_person obj_D35R0101_stop_3, 8, 0, 4, 1
+	move_person_facing obj_D35R0101_gsfighter, 10, 0, 7, DIR_WEST
+	move_person_facing obj_D35R0101_sunglasses, 4, 0, 3, DIR_SOUTH
+	move_person_facing obj_D35R0101_babyboy1_10, 9, 0, 3, DIR_SOUTH
+	move_person_facing obj_D35R0101_stop, 8, 0, 3, DIR_SOUTH
+	move_person_facing obj_D35R0101_stop_2, 9, 0, 4, DIR_SOUTH
+	move_person_facing obj_D35R0101_stop_3, 8, 0, 4, DIR_SOUTH
 	end
 
 _00B7:
-	move_person obj_D35R0101_babyboy1_10, 9, 0, 3, 1
-	move_person obj_D35R0101_stop, 8, 0, 3, 1
-	move_person obj_D35R0101_stop_2, 9, 0, 4, 1
-	move_person obj_D35R0101_stop_3, 8, 0, 4, 1
+	move_person_facing obj_D35R0101_babyboy1_10, 9, 0, 3, DIR_SOUTH
+	move_person_facing obj_D35R0101_stop, 8, 0, 3, DIR_SOUTH
+	move_person_facing obj_D35R0101_stop_2, 9, 0, 4, DIR_SOUTH
+	move_person_facing obj_D35R0101_stop_3, 8, 0, 4, DIR_SOUTH
 	end
 
 scr_seq_D35R0101_008:

@@ -38,7 +38,7 @@ ScrCmd_465: ; 0x02049A6C
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0202C854
+	bl Save_FriendGroup_get
 	add r5, r0, #0
 	add r0, r4, #0
 	add r0, #0x80

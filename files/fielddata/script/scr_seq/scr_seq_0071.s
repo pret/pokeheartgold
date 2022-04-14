@@ -36,7 +36,7 @@ scr_seq_0071_002:
 _0068:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D31R0205, 0, 7, 6, 0
+	warp MAP_D31R0205, 0, 7, 6, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

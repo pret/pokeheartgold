@@ -659,7 +659,7 @@ ov14_021E5DE0: ; 0x021E5DE0
 	ldr r0, [r4, #0x14]
 	ldr r2, _021E5E70 ; =0x0000038E
 	mov r1, #0
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0x16
 	mov r0, #0
 	lsl r1, r1, #4

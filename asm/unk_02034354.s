@@ -138,7 +138,7 @@ sub_02034434: ; 0x02034434
 	ldr r0, _0203451C ; =_021D4130
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
-	bl sub_0202C854
+	bl Save_FriendGroup_get
 	str r0, [sp]
 	ldr r0, _0203451C ; =_021D4130
 	ldr r0, [r0]

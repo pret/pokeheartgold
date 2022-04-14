@@ -9,13 +9,11 @@
 #include "save_arrays.h"
 #include "unk_0205B3DC.h"
 #include "unk_02068F84.h"
+#include "ribbon.h"
+#include "sys_vars.h"
+#include "unk_0205BB1C.h"
 
 static STRING* _get_species_name(u16 species, HeapID heap_id);
-extern u16 GetStarterFromScriptState(SCRIPT_STATE*);
-extern u16 DPPtLeftover_GetRivalSpecies(SCRIPT_STATE*);
-extern u16 DPPtLeftover_GetFriendStarterSpecies(SCRIPT_STATE*);
-extern u32 sub_0208E55C(u8, u32);
-extern u32 sub_0205BB1C(u32 num);
 
 BOOL ScrCmd_BufferStatName(SCRIPTCONTEXT* ctx) {
     MSGFMT** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
@@ -366,7 +364,7 @@ BOOL ScrCmd_BufferRibbonName(SCRIPTCONTEXT* ctx) {
     u8 idx = ScriptReadByte(ctx);
     u8 unk = ScriptGetVar(ctx);
 
-    u16 ribbon_id = sub_0208E55C(unk, 3);
+    u16 ribbon_id = GetRibbonAttr(unk, RIBBONDAT_NAMEGMM);
     BufferRibbonNameOrDesc(*msg_fmt, idx, ribbon_id);
 
     return FALSE;

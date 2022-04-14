@@ -34,7 +34,7 @@ void Sav2_Mailbox_init(MAILBOX *mailbox);
 int Mailbox_GetFirstEmptySlotIdx(MAILBOX *mailbox);
 void Mailbox_DeleteSlotI(MAIL *msgs, int n, int i);
 void Mailbox_CopyMailToSlotI(MAIL *msgs, int n, int i, const MAIL *src);
-u32 Mailbox_CountMessages(MAILBOX *mailbox);
+u32 Mailbox_CountMessages(MAILBOX *mailbox, int unused);
 void Mailbox_FetchMailToBuffer(MAIL *msgs, int n, int i, MAIL *dest);
 int MailArray_GetFirstEmptySlotIdx(MAIL *msgs, int n);
 u32 MailArray_CountMessages(MAIL *msgs, int n);

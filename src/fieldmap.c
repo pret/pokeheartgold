@@ -5,6 +5,7 @@
 #include "event_data.h"
 #include "map_events.h"
 #include "task.h"
+#include "field_map_object.h"
 #include "constants/std_script.h"
 #include "fielddata/script/scr_seq.naix"
 #include "msgdata/msg.naix"
@@ -218,14 +219,14 @@ void LoadScriptsAndMessagesForCurrentMap(FieldSystem *fsys, SCRIPTCONTEXT *ctx) 
 
 void *FieldSysGetAttrAddrInternal(ScriptEnvironment *unk, enum ScriptEnvField field) {
     switch (field) {
-    case SCRIPTENV_10:
+    case SCRIPTENV_MENU_WINDOW:
         return &unk->unk_10;
-    case SCRIPTENV_14:
+    case SCRIPTENV_WINDOW:
         return &unk->unk_14;
-    case SCRIPTENV_24:
-        return &unk->unk_24;
-    case SCRIPTENV_05:
-        return &unk->unk_5;
+    case SCRIPTENV_MENU:
+        return &unk->listMenu;
+    case SCRIPTENV_PRINTER_NUM:
+        return &unk->textPrinterNum;
     case SCRIPTENV_NUM_ACTIVE_MOVEMENT:
         return &unk->numActiveMovement;
     case SCRIPTENV_07:
@@ -240,8 +241,8 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *unk, enum ScriptEnvField fi
         return &unk->facingDirection;
     case SCRIPTENV_LAST_TALKED:
         return &unk->lastTalked;
-    case SCRIPTENV_30:
-        return &unk->unk_30;
+    case SCRIPTENV_CAMERA_FOCUS_OBJ:
+        return &unk->cameraFocusObj;
     case SCRIPTENV_34:
         return &unk->unk_34;
     case SCRIPTENV_SCRCTX_0:
@@ -254,7 +255,7 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *unk, enum ScriptEnvField fi
         return &unk->strbuf1;
     case SCRIPTENV_STRBUF2:
         return &unk->strbuf2;
-    case SCRIPTENV_50:
+    case SCRIPTENV_WAITING_ICON:
         return &unk->unk_50;
     case SCRIPTENV_AC:
         return &unk->unk_AC;

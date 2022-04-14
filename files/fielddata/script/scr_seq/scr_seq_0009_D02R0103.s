@@ -15,15 +15,15 @@ scr_seq_D02R0103_002:
 	scrcmd_379 VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 3
 	goto_if_ne _003D
-	move_person obj_D02R0103_stop, 18, 0, 10, 1
-	scrcmd_342 2, 20, 3
+	move_person_facing obj_D02R0103_stop, 18, 0, 10, DIR_SOUTH
+	move_warp 2, 20, 3
 	goto _005E
 
 _003D:
 	compare VAR_TEMP_x4001, 4
 	goto_if_ne _005E
-	move_person obj_D02R0103_stop, 18, 0, 10, 1
-	scrcmd_342 2, 20, 3
+	move_person_facing obj_D02R0103_stop, 18, 0, 10, DIR_SOUTH
+	move_warp 2, 20, 3
 _005E:
 	end
 

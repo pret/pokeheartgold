@@ -287,7 +287,7 @@ void Mailbox_CopyMailToSlotI(MAIL *msgs, int n, int i, const MAIL *src) {
     }
 }
 
-u32 Mailbox_CountMessages(MAILBOX *mailbox) {
+u32 Mailbox_CountMessages(MAILBOX *mailbox, int unused) {
     return MailArray_CountMessages(mailbox->msgs, MAILBOX_MSG_COUNT);
 }
 

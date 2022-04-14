@@ -29,23 +29,23 @@ typedef struct NNSG3dRenderObj_ {
     NNSG3dResMdl* resMdl;
     NNSG3dAnmObj* anmMat;
     NNSG3dFuncAnmBlendMat funcBlendMat;
-    NNSG3dAnmObj* anmJnt;
+    NNSG3dAnmObj* anmJnt; // 10
     NNSG3dFuncAnmBlendJnt funcBlendJnt;
     NNSG3dAnmObj* anmVis;
     NNSG3dFuncAnmBlendVis funcBlendVis;
-    NNSG3dSbcCallBackFunc cbFunc;
+    NNSG3dSbcCallBackFunc cbFunc; // 20
     u8 cbCmd;
     u8 cbTiming;
     u16 dummy_;
     NNSG3dSbcCallBackFunc cbInitFunc;
     void* ptrUser;
-    u8* ptrUserSbc;
+    u8* ptrUserSbc; // 30
     struct NNSG3dJntAnmResult_* recJntAnm;
     struct NNSG3dMatAnmResult_* recMatAnm;
     u32 hintMatAnmExist[NNS_G3D_SIZE_MAT_MAX / 32];
     u32 hintJntAnmExist[NNS_G3D_SIZE_JNT_MAX / 32];
     u32 hintVisAnmExist[NNS_G3D_SIZE_JNT_MAX / 32];
-} NNSG3dRenderObj;
+} NNSG3dRenderObj; // size=0x54
 
 void NNS_G3dRenderObjAddAnmObj(NNSG3dRenderObj* pRenderObj, NNSG3dAnmObj* pAnmObj);
 void NNS_G3dRenderObjRemoveAnmObj(NNSG3dRenderObj* pRenderObj, NNSG3dAnmObj* pAnmObj);

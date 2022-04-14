@@ -513,7 +513,7 @@ _07BF:
 _07C1:
 	nop_var_490 VAR_UNK_4083
 	scrcmd_344 0, 0
-	move_person obj_T03R0101_daigo, 26, 0, 7, 1
+	move_person_facing obj_T03R0101_daigo, 26, 0, 7, DIR_SOUTH
 	goto _07BF
 	.byte 0x02, 0x00
 scr_seq_T03R0101_016:
@@ -566,7 +566,7 @@ _0870:
 	wait_fade
 	wait 30, VAR_SPECIAL_RESULT
 	release obj_T03R0101_daigo
-	move_person obj_T03R0101_daigo, 25, 0, 7, 1
+	move_person_facing obj_T03R0101_daigo, 25, 0, 7, DIR_SOUTH
 	wait 10, VAR_SPECIAL_RESULT
 	lock obj_T03R0101_daigo
 	compare VAR_TEMP_x4001, 6

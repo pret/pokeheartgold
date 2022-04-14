@@ -33,7 +33,7 @@ _0046:
 	get_player_facing VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 2
 	goto_if_eq _0065
-	move_person obj_D48R0101_gsleader5, 19, 0, 40, 1
+	move_person_facing obj_D48R0101_gsleader5, 19, 0, 40, DIR_SOUTH
 	end
 
 _0065:

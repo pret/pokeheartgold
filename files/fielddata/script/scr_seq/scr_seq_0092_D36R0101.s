@@ -95,13 +95,13 @@ scr_seq_D36R0101_021:
 	end
 
 _016F:
-	move_person obj_D36R0101_gsoldman1, 15, 0, 58, 1
-	move_person obj_D36R0101_tsure_poke_static_pichu_spiky, 15, 0, 59, 3
+	move_person_facing obj_D36R0101_gsoldman1, 15, 0, 58, DIR_SOUTH
+	move_person_facing obj_D36R0101_tsure_poke_static_pichu_spiky, 15, 0, 59, DIR_EAST
 	return
 
 _0189:
-	move_person obj_D36R0101_var_1, 15, 0, 58, 1
-	move_person obj_D36R0101_tsure_poke_static_marill, 11, 0, 58, 3
+	move_person_facing obj_D36R0101_var_1, 15, 0, 58, DIR_SOUTH
+	move_person_facing obj_D36R0101_tsure_poke_static_marill, 11, 0, 58, DIR_EAST
 	return
 
 scr_seq_D36R0101_001:
@@ -230,7 +230,7 @@ _0346:
 	wait 20, VAR_SPECIAL_x8004
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D36R0101, 0, 15, 65, 0
+	warp MAP_D36R0101, 0, 15, 65, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	wait 5, VAR_SPECIAL_x8004
@@ -592,7 +592,7 @@ _08DF:
 	wait 20, VAR_SPECIAL_x8004
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D36R0101, 0, 15, 65, 0
+	warp MAP_D36R0101, 0, 15, 65, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	wait 5, VAR_SPECIAL_x8004
@@ -1226,7 +1226,7 @@ _1207:
 	wait 20, VAR_SPECIAL_x8004
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D36R0101, 0, 15, 65, 0
+	warp MAP_D36R0101, 0, 15, 65, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	wait 5, VAR_SPECIAL_x8004
@@ -2226,7 +2226,7 @@ _1F48:
 	clearflag FLAG_HIDE_ROUTE_22_GIOVANNI_RIVAL
 	clearflag FLAG_HIDE_ROUTE_22_FRIEND
 	setflag FLAG_HIDE_ILEX_FOREST_FRIEND
-	warp MAP_R22, 0, 954, 280, 1
+	warp MAP_R22, 0, 954, 280, DIR_SOUTH
 	fade_screen 6, 15, 1, RGB_WHITE
 	wait_fade
 	releaseall

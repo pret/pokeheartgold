@@ -59,8 +59,8 @@ sub_0200E3D8: ; 0x0200E3D8
 	bx lr
 	thumb_func_end sub_0200E3D8
 
-	thumb_func_start sub_0200E3DC
-sub_0200E3DC: ; 0x0200E3DC
+	thumb_func_start LoadUserFrameGfx1
+LoadUserFrameGfx1: ; 0x0200E3DC
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	add r6, r0, #0
@@ -117,7 +117,7 @@ _0200E432:
 	bl GfGfxLoader_GXLoadPal
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_0200E3DC
+	thumb_func_end LoadUserFrameGfx1
 
 	thumb_func_start sub_0200E448
 sub_0200E448: ; 0x0200E448
@@ -373,8 +373,8 @@ sub_0200E640: ; 0x0200E640
 	bx lr
 	thumb_func_end sub_0200E640
 
-	thumb_func_start sub_0200E644
-sub_0200E644: ; 0x0200E644
+	thumb_func_start LoadUserFrameGfx2
+LoadUserFrameGfx2: ; 0x0200E644
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	str r0, [sp, #0x10]
@@ -426,7 +426,7 @@ _0200E694:
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200E644
+	thumb_func_end LoadUserFrameGfx2
 
 	thumb_func_start sub_0200E6B4
 sub_0200E6B4: ; 0x0200E6B4

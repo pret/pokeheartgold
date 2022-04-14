@@ -12,6 +12,10 @@
 #include "bug_contest_internal.h"
 #include "constants/vars.h"
 #include "overlay_manager.h"
+#include "unk_0200E320.h"
+#include "list_menu_2.h"
+#include "unk_0200E398.h"
+#include "unk_02022D74.h"
 
 #define SCRIPT_MODE_STOPPED  0
 #define SCRIPT_MODE_BYTECODE 1
@@ -39,11 +43,12 @@ typedef struct EngagedTrainer {
 } EngagedTrainer;
 
 typedef struct _NPC_TRADE_WORK NPC_TRADE_WORK;
+typedef struct FsysUnkSub2C FsysUnkSub2C;
 
 typedef struct ScriptEnvironment {
     u32 check;
     u8 state;
-    u8 unk_5;
+    u8 textPrinterNum;
     u8 numActiveMovement;
     u8 unk_7;
     u8 unk_8;
@@ -51,20 +56,17 @@ typedef struct ScriptEnvironment {
     u16 script;
     u32 unk_C;
     u32 unk_10;
-    u32 unk_14;
-    u32 unk_18;
-    u32 unk_1C;
-    u32 unk_20;
-    u32 unk_24;
+    WINDOW unk_14;
+    struct ListMenu2 *listMenu;
     int facingDirection;
     LocalMapObject* lastTalked;
-    u32 unk_30;
-    void* unk_34;
+    u32 cameraFocusObj;
+    LocalMapObject* unk_34;
     SCRIPTCONTEXT* scriptContexts[3];
     MSGFMT* msgfmt;
     STRING* strbuf1;
     STRING* strbuf2;
-    u32 unk_50;
+    struct WaitingIconManager *unk_50;
     EngagedTrainer engagedTrainers[2];
     u16 specialVars[NUM_SPECIAL_VARS];
     void (*scrctx_end_cb)(FieldSystem* fsys);
@@ -74,14 +76,14 @@ typedef struct ScriptEnvironment {
     void *unk_B8;
     WINDOW unk_BC;
     WINDOW moneyBox;
-    void *unk_DC;
+    struct SaveStatsPrinter *unk_DC;
 } ScriptEnvironment;
 
 enum ScriptEnvField {
-    SCRIPTENV_10                              =  0,
-    SCRIPTENV_14                              =  1,
-    SCRIPTENV_24                              =  2,
-    SCRIPTENV_05                              =  3,
+    SCRIPTENV_MENU_WINDOW                     =  0,
+    SCRIPTENV_WINDOW                          =  1,
+    SCRIPTENV_MENU                            =  2,
+    SCRIPTENV_PRINTER_NUM                     =  3,
     SCRIPTENV_NUM_ACTIVE_MOVEMENT             =  4,
     SCRIPTENV_07                              =  5,
     SCRIPTENV_08                              =  6,
@@ -89,7 +91,7 @@ enum ScriptEnvField {
     SCRIPTENV_SCRIPT                          =  8,
     SCRIPTENV_FACING_DIRECTION                =  9,
     SCRIPTENV_LAST_TALKED                     = 10,
-    SCRIPTENV_30                              = 11,
+    SCRIPTENV_CAMERA_FOCUS_OBJ                = 11,
     SCRIPTENV_34                              = 12,
     SCRIPTENV_SCRCTX_0                        = 13,
     SCRIPTENV_SCRCTX_1                        = 14,
@@ -97,7 +99,7 @@ enum ScriptEnvField {
     SCRIPTENV_MSGFMT                          = 16,
     SCRIPTENV_STRBUF1                         = 17,
     SCRIPTENV_STRBUF2                         = 18,
-    SCRIPTENV_50                              = 19,
+    SCRIPTENV_WAITING_ICON                    = 19,
     SCRIPTENV_AC                              = 20,
     SCRIPTENV_GENERIC_WORK_PTR                = 21,
     SCRIPTENV_B4                              = 22,
@@ -175,7 +177,7 @@ struct FieldSystemUnkSub0 {
     BOOL unkC;
 };
 
-typedef struct UnkFsysSub_114 {
+typedef struct GearPhoneRingManager {
     u8 unk_var0_0:1;
     u8 unk_var0_1:1;
     u8 unk_var0_2:1;
@@ -195,12 +197,13 @@ typedef struct UnkFsysSub_114 {
     PhoneBookEntry entry; //0x1c
     SavePokegear* pokegear_data; //0x30
     MomsSavings* savings_data;//0x34
-    SAVEDATA* data; //0x38
+    SAVEDATA* saveData; //0x38
     FieldSystem* sys; //0x3c
-    void *unk_ptr40;
-    u8 unk_var44;
-    u8 filler_45[3];
-} UnkFsysSub_114; //size: 0x48
+    struct PokegearRingingTask {
+        SysTask *task;
+        u8 counter;
+    } gearRing;
+} GearPhoneRingManager; //size: 0x48
 
 struct UnkStruct_020FC5CC {
     u32 unk0_00:4;
@@ -226,9 +229,14 @@ struct FieldSystemUnkSub68 {
     u8 unk13_7:1;
 };
 
+typedef struct FsysUnkSub4 {
+    u8 filler_00[0xC];
+    void *unk_0C; // weather related?
+} FsysUnkSub4;
+
 struct FieldSystem {
     struct FieldSystemUnkSub0 *unk0;
-    void *unk4;
+    FsysUnkSub4 *unk4;
     BGCONFIG* bg_config;
     SAVEDATA* savedata;
     TaskManager* taskman;
@@ -236,12 +244,17 @@ struct FieldSystem {
     int unk18;
     int unk1C;
     Location* location;
-    u8 filler24[0xC];
+    GF_Camera *camera;
+    void *unk28;
+    FsysUnkSub2C *unk2C;
     MAPMATRIX* map_matrix;
     u8 filler34[0x8];
     MapObjectMan* mapObjectMan;
     FIELD_PLAYER_AVATAR *playerAvatar;
-    u8 filler44[0x1C];
+    void *unk_44;
+    u8 filler48[0xC];
+    void *unk54;
+    u8 filler_58[0x8];
     u32 unk60;
     int unk64;
     struct FieldSystemUnkSub68* unk68;
@@ -254,9 +267,14 @@ struct FieldSystem {
     u16 unk7E;
     struct UnkStruct_02059E1C *unk80;
     struct UnkStruct_0205AC88 *unk84;
-    u8 filler_88[0x24];
+    u8 filler_88[0xC];
+    void *unk94;
+    u8 filler_98[0x4];
+    void *unk9C;
+    void *unkA0;
+    u8 filler_A4[0x8];
     u32 unkAC;
-    u8 unkB0[0x4];
+    void *unkB0;
     s64 unkB4;
     u8 unkBC[8];
     int unkC4;
@@ -269,7 +287,7 @@ struct FieldSystem {
     u8 unk104[4];
     struct FieldSystemUnk108 *unk108;
     u32 unk_10C[2];
-    struct UnkFsysSub_114* unk114;
+    GearPhoneRingManager* unk114;
     BUGCONTEST* bugContest;
     u8 unk11C[0xC];
 }; // size: 0x128
@@ -306,5 +324,13 @@ void ScriptCall(SCRIPTCONTEXT* ctx, const u8* ptr);
 void ScriptReturn(SCRIPTCONTEXT* ctx);
 u16 ScriptReadHalfword(SCRIPTCONTEXT* ctx);
 u32 ScriptReadWord(SCRIPTCONTEXT* ctx);
+
+static inline void InitLocation(Location *location, int mapId, int warpId, int x, int z, int direction) {
+    location->mapId = mapId;
+    location->warpId = warpId;
+    location->x = x;
+    location->z = z;
+    location->direction = direction;
+}
 
 #endif

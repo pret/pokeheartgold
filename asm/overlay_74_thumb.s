@@ -1039,7 +1039,7 @@ _022277F0:
 	ldr r2, _02227AC4 ; =0x000003F7
 	mov r1, #1
 	mov r3, #2
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r1, #1
 	str r1, [sp]
 	mov r0, #0x4f
@@ -1047,7 +1047,7 @@ _022277F0:
 	ldr r0, [r4]
 	ldr r2, _02227AC8 ; =0x000003EE
 	mov r3, #3
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	ldr r0, [r4]
 	mov r1, #1
 	bl BgClearTilemapBufferAndCommit
@@ -1576,7 +1576,7 @@ _02227B88:
 	ldr r0, [r4]
 	ldr r2, _02227CBC ; =0x000003F7
 	mov r3, #2
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0x4f
@@ -1585,7 +1585,7 @@ _02227B88:
 	ldr r2, _02227CC0 ; =0x000003EE
 	mov r1, #0
 	mov r3, #3
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	ldr r1, _02227CB8 ; =0x00006B5A
 	ldr r0, _02227CC4 ; =0x05000042
 	strh r1, [r0]
@@ -3754,7 +3754,7 @@ _02228D70:
 	str r0, [sp, #4]
 	ldr r0, [r4, #4]
 	add r3, r2, #0
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	ldr r0, [r4, #0x14]
 	bl Options_GetFrame
 	lsl r0, r0, #0x18
@@ -3766,7 +3766,7 @@ _02228D70:
 	ldr r0, [r4, #4]
 	mov r2, #0xa
 	mov r3, #2
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r0, #0x20
 	str r0, [sp]
 	ldr r0, [r4]
@@ -7496,7 +7496,7 @@ ov74_0222AB70: ; 0x0222AB70
 	mov r1, #0
 	mov r2, #1
 	mov r3, #2
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0x54
@@ -7505,7 +7505,7 @@ ov74_0222AB70: ; 0x0222AB70
 	mov r1, #0
 	mov r2, #0x1f
 	mov r3, #3
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #5
 	ldr r1, _0222AC18 ; =0x00007D8C
 	lsl r0, r0, #0x18
@@ -14339,7 +14339,7 @@ _0222E2D4:
 	mov r2, #1
 	ldr r0, [r4, r0]
 	mov r3, #0xd
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0x55
@@ -14349,7 +14349,7 @@ _0222E2D4:
 	ldr r0, [r4, r0]
 	mov r2, #0xa
 	mov r3, #0xe
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	ldr r0, _0222E5B0 ; =0x00002BAC
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -14362,7 +14362,7 @@ _0222E2D4:
 	ldr r0, _0222E5C0 ; =0x000029FC
 	mov r3, #0xa
 	ldr r0, [r4, r0]
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0
@@ -16994,7 +16994,7 @@ _0222F886:
 	mov r2, #1
 	ldr r0, [r4, r0]
 	mov r3, #0xd
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0x55
@@ -17004,7 +17004,7 @@ _0222F886:
 	ldr r0, [r4, r0]
 	mov r2, #0xa
 	mov r3, #0xe
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	ldr r0, _0222FB5C ; =0x00002BAC
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -17017,7 +17017,7 @@ _0222F886:
 	ldr r0, _0222FB64 ; =0x000029FC
 	mov r3, #0xa
 	ldr r0, [r4, r0]
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0
@@ -23672,7 +23672,7 @@ ov74_02232B18: ; 0x02232B18
 	ldr r0, [r4, #0x20]
 	lsl r2, r2, #4
 	mov r3, #0xe
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	ldr r0, [r4, #0x1c]
 	ldr r2, _02232BC0 ; =0x000003D2
 	lsl r0, r0, #0x18
@@ -23683,7 +23683,7 @@ ov74_02232B18: ; 0x02232B18
 	ldr r0, [r4, #0x20]
 	mov r1, #0
 	mov r3, #0xd
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	ldr r0, _02232BC4 ; =0x0000042C
 	mov r1, #0
 	add r0, r4, r0
@@ -23922,7 +23922,7 @@ _02232C54:
 	ldr r0, [r6, #0x20]
 	lsl r2, r2, #4
 	mov r3, #0xe
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	ldr r0, [r6, #0x1c]
 	ldr r2, _02232DA0 ; =0x000003D2
 	lsl r0, r0, #0x18
@@ -23933,7 +23933,7 @@ _02232C54:
 	ldr r0, [r6, #0x20]
 	mov r1, #0
 	mov r3, #0xd
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add r0, r6, #0
 	bl ov74_02232B18
 	mov r1, #0x46

@@ -187,7 +187,7 @@ _028C:
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	switch VAR_SPECIAL_RESULT
 	case 4, _0331
-	case 65534, _0331
+	case -2, _0331
 	scrcmd_288 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	buffer_trainer_class_name_indef 0, VAR_SPECIAL_x8005
 	capitalize 0

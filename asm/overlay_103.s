@@ -478,7 +478,7 @@ ov103_021ECD18: ; 0x021ECD18
 	ldr r2, _021ECD64 ; =0x000003E2
 	mov r1, #0
 	mov r3, #0xd
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #7
 	mov r0, #0
 	lsl r1, r1, #6

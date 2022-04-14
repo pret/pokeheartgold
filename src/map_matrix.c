@@ -7,10 +7,7 @@
 #include "map_matrix.h"
 #include "safari_zone.h"
 #include "event_data.h"
-#include <nitro/rtc.h>
-
-extern void sub_02066C1C(SCRIPT_STATE* state, u32);
-extern void sub_02066C4C(SCRIPT_STATE* state, u32);
+#include "sys_vars.h"
 
 static void MapMatrix_MapMatrixData_Load(MAPMATRIXDATA* map_matrix_data, u16 matrix_id, u32 map_no) {
     map_matrix_data->width = 0;

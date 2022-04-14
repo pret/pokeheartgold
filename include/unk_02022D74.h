@@ -28,5 +28,6 @@ VecFx32 *GF_Camera_GetBindTarget(GF_Camera *camera);
 void GF_Camera_SetAngle(GF_CameraAngle *angle, GF_Camera *camera);
 void GF_Camera_SetPerspectiveAngle(u16 a0, GF_Camera *a1);
 void GF_Camera_SetDistance(fx32 a0, GF_Camera *a1);
+void sub_02023214(VecFx32 *vec, GF_Camera *a1);
 
 #endif //POKEHEARTGOLD_UNK_02022D74_H

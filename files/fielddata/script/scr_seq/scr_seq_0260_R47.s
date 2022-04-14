@@ -18,15 +18,15 @@ scr_seq_R47_000:
 	get_game_version VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 7
 	goto_if_ne _004F
-	scrcmd_342 4, 87, 385
-	scrcmd_342 5, 87, 389
-	scrcmd_342 6, 87, 385
+	move_warp 4, 87, 385
+	move_warp 5, 87, 389
+	move_warp 6, 87, 385
 	goto _0067
 
 _004F:
-	scrcmd_342 4, 87, 389
-	scrcmd_342 5, 87, 385
-	scrcmd_342 6, 87, 385
+	move_warp 4, 87, 389
+	move_warp 5, 87, 385
+	move_warp 6, 87, 385
 _0067:
 	compare VAR_UNK_40F9, 2
 	goto_if_eq _00E6
@@ -62,9 +62,9 @@ _00E6:
 	end
 
 _00EC:
-	scrcmd_342 4, 87, 385
-	scrcmd_342 5, 87, 385
-	scrcmd_342 6, 87, 389
+	move_warp 4, 87, 385
+	move_warp 5, 87, 385
+	move_warp 6, 87, 389
 	goto _00E6
 	.byte 0x02, 0x00
 scr_seq_R47_002:
@@ -73,22 +73,22 @@ scr_seq_R47_002:
 	get_game_version VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 7
 	goto_if_ne _0148
-	scrcmd_342 4, 87, 385
-	scrcmd_342 5, 87, 389
-	scrcmd_342 6, 87, 385
+	move_warp 4, 87, 385
+	move_warp 5, 87, 389
+	move_warp 6, 87, 385
 	goto _0160
 
 _0148:
-	scrcmd_342 4, 87, 389
-	scrcmd_342 5, 87, 385
-	scrcmd_342 6, 87, 385
+	move_warp 4, 87, 389
+	move_warp 5, 87, 385
+	move_warp 6, 87, 385
 _0160:
 	end
 
 _0162:
-	scrcmd_342 4, 87, 385
-	scrcmd_342 5, 87, 385
-	scrcmd_342 6, 87, 389
+	move_warp 4, 87, 385
+	move_warp 5, 87, 385
+	move_warp 6, 87, 389
 	end
 
 scr_seq_R47_001:

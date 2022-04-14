@@ -60,7 +60,7 @@ scr_seq_D26R0102_002:
 	wait_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	move_person obj_D26R0102_gantetsu, 36, 0, 7, 2
+	move_person_facing obj_D26R0102_gantetsu, 36, 0, 7, DIR_WEST
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -94,7 +94,7 @@ _0107:
 	wait_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_T23R0501, 0, 4, 5, 0
+	warp MAP_T23R0501, 0, 4, 5, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	setflag FLAG_UNK_1AA

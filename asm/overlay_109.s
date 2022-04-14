@@ -2528,7 +2528,7 @@ ov109_021E6B5C: ; 0x021E6B5C
 	mov r3, #0xd
 	str r0, [sp, #4]
 	ldr r0, [r5, #0x14]
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov109_021E6B5C

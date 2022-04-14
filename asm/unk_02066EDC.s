@@ -789,7 +789,7 @@ _020674B8: .word 0x5D588B65
 sub_020674BC: ; 0x020674BC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0202C854
+	bl Save_FriendGroup_get
 	bl sub_0202C7DC
 	bl sub_020674B0
 	add r4, r0, #0

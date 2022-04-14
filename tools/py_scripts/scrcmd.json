@@ -395,7 +395,7 @@
       ]
     },
     {
-      "name": "scrcmd_063",
+      "name": "yesno",
       "args": [
         "var"
       ]
@@ -1067,7 +1067,7 @@
       ]
     },
     {
-      "name": "scrcmd_172",
+      "name": "name_player",
       "args": [
         2
       ]
@@ -1099,7 +1099,7 @@
         2,
         "var",
         "var",
-        "var"
+        "direction"
       ]
     },
     {
@@ -1129,7 +1129,7 @@
       ]
     },
     {
-      "name": "scrcmd_181",
+      "name": "flash_effect",
       "args": []
     },
     {
@@ -1563,9 +1563,9 @@
       ]
     },
     {
-      "name": "scrcmd_249",
+      "name": "rocket_trap_battle",
       "args": [
-        2,
+        "species",
         2
       ]
     },
@@ -1973,7 +1973,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_325",
+      "name": "violet_gym_elevator",
       "args": []
     },
     {
@@ -2045,47 +2045,47 @@
       ]
     },
     {
-      "name": "scrcmd_338",
+      "name": "move_person",
       "args": [
-        2,
-        2,
-        2
+        "object2",
+        "var",
+        "var"
       ]
     },
     {
-      "name": "move_person",
+      "name": "move_person_facing",
       "args": [
         "object2",
         "var",
         "var",
         "var",
-        "var"
+        "direction"
       ]
     },
     {
       "name": "set_object_movement_type",
       "args": [
         "object2",
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_341",
+      "name": "set_object_facing",
+      "args": [
+        "object2",
+        "direction"
+      ]
+    },
+    {
+      "name": "move_warp",
       "args": [
         2,
-        2
-      ]
-    },
-    {
-      "name": "scrcmd_342",
-      "args": [
-        2,
         2,
         2
       ]
     },
     {
-      "name": "scrcmd_343",
+      "name": "move_bg_event",
       "args": [
         2,
         2,
@@ -2100,11 +2100,11 @@
       ]
     },
     {
-      "name": "scrcmd_345",
+      "name": "add_waiting_icon",
       "args": []
     },
     {
-      "name": "scrcmd_346",
+      "name": "remove_waiting_icon",
       "args": []
     },
     {
@@ -2793,11 +2793,11 @@
     {
       "name": "scrcmd_448",
       "args": [
-        2,
+        "maps",
         2,
         "var",
-        2,
-        2
+        "var",
+        "direction"
       ]
     },
     {
@@ -3271,14 +3271,14 @@
     {
       "name": "scrcmd_517",
       "args": [
-        2,
+        "species",
         "var"
       ]
     },
     {
       "name": "scrcmd_518",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3687,9 +3687,9 @@
     {
       "name": "scrcmd_582",
       "args": [
-        2,
-        2,
-        2
+        "maps",
+        "var",
+        "var"
       ]
     },
     {
@@ -5334,5 +5334,71 @@
         1
       ]
     }
-  ]
+  ],
+  "argtypes": {
+    "var":  {
+      "header":"include/constants/vars.h",
+      "prefix":"VAR_"
+    },
+    "flag": {
+      "header": "include/constants/flags.h",
+      "prefix": "FLAG_"
+    },
+    "species":  {
+      "header": "include/constants/species.h",
+      "prefix": "SPECIES_"
+    },
+    "item": {
+      "header": "include/constants/items.h",
+      "prefix": "ITEM_"
+    },
+    "move":  {
+      "header": "include/constants/moves.h",
+      "prefix": "MOVE_"
+    },
+    "sound": {
+      "header": "include/constants/sndseq.h",
+      "prefix": "SEQ_"
+    },
+    "ribbon":  {
+      "header": "include/constants/ribbon.h",
+      "prefix": "RIBBON_"
+    },
+    "stdscr": {
+      "header": "include/constants/std_script.h",
+      "prefix": "std_"
+    },
+    "trainer":  {
+      "header": "include/constants/trainers.h",
+      "prefix": "TRAINER_"
+    },
+    "sprites": {
+      "header": "include/constants/sprites.h",
+      "prefix": "SPRITE_"
+    },
+    "maps":  {
+      "header": "include/constants/maps.h",
+      "prefix": "MAP_"
+    },
+    "phone_contact": {
+      "header": "include/constants/phone_contacts.h",
+      "prefix": "PHONE_CONTACT_"
+    },
+    "spawn":  {
+      "header": "include/constants/spawns.h",
+      "prefix": "SPAWN_"
+    },
+    "badge": {
+      "header": "include/constants/badge.h",
+      "prefix": "BADGE_"
+    },
+    "player_transition":  {
+      "header": "include/constants/global.fieldmap.h",
+      "prefix": "PLAYER_TRANSITION_"
+    },
+    "direction": {
+      "header": "include/constants/global.fieldmap.h",
+      "prefix": "DIR_"
+    }
+  }
 }

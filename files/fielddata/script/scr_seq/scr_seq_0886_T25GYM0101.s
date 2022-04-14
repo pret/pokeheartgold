@@ -104,7 +104,7 @@ scr_seq_T25GYM0101_000:
 	settrainerflag TRAINER_BEAUTY_VICTORIA
 	settrainerflag TRAINER_BEAUTY_SAMANTHA
 	add_special_game_stat 22
-	move_person obj_T25GYM0101_gsgirl1, 13, 0, 15, 0
+	move_person_facing obj_T25GYM0101_gsgirl1, 13, 0, 15, DIR_NORTH
 _017D:
 	npc_msg msg_0582_T25GYM0101_00002
 	wait_button_or_walk_away

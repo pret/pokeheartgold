@@ -3781,7 +3781,7 @@ ov27_0225BDDC: ; 0x0225BDDC
 	add r4, r1, #0
 	add r5, r0, #0
 	ldr r0, [r4, #0x10]
-	bl sub_02092DEC
+	bl Fsys_GetGearPhoneRingManager
 	str r0, [r5, #4]
 	mov r0, #0xe7
 	lsl r0, r0, #2

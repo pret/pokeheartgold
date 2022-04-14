@@ -39,11 +39,11 @@ _005C:
 	goto_if_unset FLAG_UNK_10A, _00C3
 	compare VAR_TEMP_x4003, 111
 	goto_if_ne _00BB
-	move_person obj_D17R0110_dancer, 16, 1, 18, 0
-	move_person obj_D17R0110_dancer_2, 12, 1, 18, 0
-	move_person obj_D17R0110_dancer_3, 12, 1, 12, 1
-	move_person obj_D17R0110_dancer_4, 18, 1, 18, 0
-	move_person obj_D17R0110_dancer_5, 18, 1, 12, 1
+	move_person_facing obj_D17R0110_dancer, 16, 1, 18, DIR_NORTH
+	move_person_facing obj_D17R0110_dancer_2, 12, 1, 18, DIR_NORTH
+	move_person_facing obj_D17R0110_dancer_3, 12, 1, 12, DIR_SOUTH
+	move_person_facing obj_D17R0110_dancer_4, 18, 1, 18, DIR_NORTH
+	move_person_facing obj_D17R0110_dancer_5, 18, 1, 12, DIR_SOUTH
 _00BB:
 	setvar VAR_TEMP_x4003, 0
 	end
@@ -271,11 +271,11 @@ scr_seq_D17R0110_006:
 	release obj_D17R0110_dancer_3
 	release obj_D17R0110_dancer_4
 	release obj_D17R0110_dancer_5
-	move_person obj_D17R0110_dancer, 15, 1, 18, 0
-	move_person obj_D17R0110_dancer_2, 12, 1, 18, 0
-	move_person obj_D17R0110_dancer_3, 12, 1, 12, 1
-	move_person obj_D17R0110_dancer_4, 18, 1, 18, 0
-	move_person obj_D17R0110_dancer_5, 18, 1, 12, 1
+	move_person_facing obj_D17R0110_dancer, 15, 1, 18, DIR_NORTH
+	move_person_facing obj_D17R0110_dancer_2, 12, 1, 18, DIR_NORTH
+	move_person_facing obj_D17R0110_dancer_3, 12, 1, 12, DIR_SOUTH
+	move_person_facing obj_D17R0110_dancer_4, 18, 1, 18, DIR_NORTH
+	move_person_facing obj_D17R0110_dancer_5, 18, 1, 12, DIR_SOUTH
 	wait 86, VAR_SPECIAL_RESULT
 	scrcmd_758 0
 	play_se SEQ_SE_GS_SUZUNOONPA2

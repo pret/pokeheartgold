@@ -689,7 +689,7 @@ ov52_021E85DC: ; 0x021E85DC
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xa
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x27
@@ -697,7 +697,7 @@ ov52_021E85DC: ; 0x021E85DC
 	add r0, r4, #0
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov52_021E85DC

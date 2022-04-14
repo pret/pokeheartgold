@@ -59,7 +59,7 @@ _00A6:
 	scrcmd_436
 	scrcmd_627 5
 	scrcmd_150
-	warp MAP_D31R0201, 0, 15, 6, 0
+	warp MAP_D31R0201, 0, 15, 6, DIR_NORTH
 	end
 
 _00E9:
@@ -68,13 +68,13 @@ _00E9:
 	scrcmd_436
 	scrcmd_627 6
 	scrcmd_150
-	warp MAP_D31R0201, 0, 11, 6, 0
+	warp MAP_D31R0201, 0, 11, 6, DIR_NORTH
 	end
 
 _010A:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D31R0207, 0, 8, 2, 1
+	warp MAP_D31R0207, 0, 8, 2, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
@@ -145,6 +145,6 @@ _0200:
 	scrcmd_436
 	scrcmd_627 5
 	scrcmd_150
-	warp MAP_D31R0201, 0, 19, 6, 0
+	warp MAP_D31R0201, 0, 19, 6, DIR_NORTH
 	end
 	.balign 4, 0

@@ -4446,7 +4446,7 @@ ov112_021E7B18: ; 0x021E7B18
 	ldr r2, _021E7C14 ; =0x000003E2
 	mov r1, #1
 	mov r3, #0xd
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0x9a
@@ -4496,7 +4496,7 @@ ov112_021E7B18: ; 0x021E7B18
 	ldr r2, _021E7C14 ; =0x000003E2
 	mov r1, #4
 	mov r3, #0xd
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add r0, r4, #0
 	bl NARC_dtor
 	add sp, #0x10
@@ -10392,7 +10392,7 @@ _021EAEAE:
 	ldr r0, _021EAF28 ; =0x0001E440
 	add r1, r4, #0
 	ldr r0, [r5, r0]
-	bl sub_020326DC
+	bl Pokewalker_TryGetBoxMon
 	ldr r0, _021EAF2C ; =0x0001E448
 	mov r1, #0xd
 	ldr r0, [r5, r0]
@@ -12791,7 +12791,7 @@ ov112_021EC134: ; 0x021EC134
 	ldr r0, _021EC1A0 ; =0x0001E440
 	add r1, r5, r6
 	ldr r0, [r5, r0]
-	bl sub_020326DC
+	bl Pokewalker_TryGetBoxMon
 	cmp r0, #0
 	beq _021EC192
 	add r0, sp, #0
@@ -16626,7 +16626,7 @@ ov112_021EDFE8: ; 0x021EDFE8
 	ldr r0, _021EE03C ; =0x0001E440
 	add r1, r4, #0
 	ldr r0, [r5, r0]
-	bl sub_020326DC
+	bl Pokewalker_TryGetBoxMon
 	cmp r0, #0
 	bne _021EE006
 	mov r6, #0
@@ -17202,7 +17202,7 @@ ov112_021EE464: ; 0x021EE464
 	ldr r5, _021EE4AC ; =0x0001F2E8
 	ldr r0, [r4, r0]
 	add r1, r4, r5
-	bl sub_020326DC
+	bl Pokewalker_TryGetBoxMon
 	add r0, r4, #0
 	mov r1, #0
 	bl ov112_021EA5A4
@@ -17480,7 +17480,7 @@ ov112_021EE628: ; 0x021EE628
 	add r1, r0, #0
 	ldr r0, _021EE680 ; =0x0001E440
 	ldr r0, [r5, r0]
-	bl sub_020326BC
+	bl Pokewalker_SetBoxMon
 	add r0, r7, #0
 	add r1, r4, #0
 	add r2, r6, #0
@@ -17702,7 +17702,7 @@ ov112_021EE7A8: ; 0x021EE7A8
 	ldr r0, _021EE89C ; =0x0001E440
 	add r1, r6, #0
 	ldr r0, [r5, r0]
-	bl sub_020326DC
+	bl Pokewalker_TryGetBoxMon
 	add r7, r0, #0
 	beq _021EE804
 	ldr r2, _021EE8A4 ; =0x0001EC7C
@@ -17722,7 +17722,7 @@ _021EE804:
 	str r1, [r5, r0]
 	ldr r0, _021EE89C ; =0x0001E440
 	ldr r0, [r5, r0]
-	bl sub_020326CC
+	bl Pokewalker_ClearBoxMon
 	b _021EE854
 _021EE81E:
 	ldr r7, _021EE8AC ; =0x00009D44

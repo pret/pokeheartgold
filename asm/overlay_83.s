@@ -19038,7 +19038,7 @@ ov83_02247944: ; 0x02247944
 	ldr r0, [r4]
 	ldr r2, _02247984 ; =0x000003D9
 	mov r3, #0xa
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add r0, r4, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer

@@ -86,7 +86,7 @@ sub_0205B564: ; 0x0205B564
 	ldr r2, _0205B5A4 ; =0x000003E2
 	add r1, r6, #0
 	mov r3, #0xa
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add r0, r5, #0
 	bl sub_0205B5A8
 	ldr r2, _0205B5A4 ; =0x000003E2

@@ -121,7 +121,7 @@ _019C:
 	buffer_players_name 0
 	npc_msg msg_0130_D44R0103_00006
 	closemsg
-	move_person obj_D44R0103_gsleader8, 6, 0, 21, 0
+	move_person_facing obj_D44R0103_gsleader8, 6, 0, 21, DIR_NORTH
 	wait 10, VAR_SPECIAL_x8004
 	play_se SEQ_SE_DP_DOOR
 	wait 5, VAR_SPECIAL_x8004

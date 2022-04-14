@@ -4133,7 +4133,7 @@ ov82_0223FD78: ; 0x0223FD78
 	ldr r0, [r4]
 	ldr r2, _0223FDB4 ; =0x000003D9
 	mov r3, #0xa
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add r0, r4, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer

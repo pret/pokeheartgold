@@ -2805,7 +2805,7 @@ _0225DCB0:
 	mov r1, #4
 	lsl r2, r2, #4
 	mov r3, #6
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	add r0, r5, #0
 	add r0, #0x8c
 	ldr r0, [r0]

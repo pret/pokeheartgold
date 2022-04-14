@@ -17,7 +17,7 @@ scr_seq_D51R0101_002:
 	end
 
 _0021:
-	move_person obj_D51R0101_mount_2, 13, 1, 28, 0
+	move_person_facing obj_D51R0101_mount_2, 13, 1, 28, DIR_NORTH
 	end
 
 scr_seq_D51R0101_000:
@@ -35,7 +35,7 @@ scr_seq_D51R0101_000:
 	closemsg
 	apply_movement obj_D51R0101_mount_2, _00A8
 	wait_movement
-	move_person obj_D51R0101_mount_2, 13, 1, 28, 0
+	move_person_facing obj_D51R0101_mount_2, 13, 1, 28, DIR_NORTH
 	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 5
 	releaseall
 	end

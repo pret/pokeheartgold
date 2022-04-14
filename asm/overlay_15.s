@@ -966,7 +966,7 @@ _021F9B62:
 	ldr r2, _021F9C64 ; =0x000003F7
 	mov r1, #1
 	mov r3, #0xe
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #9
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
@@ -980,7 +980,7 @@ _021F9B62:
 	ldr r2, _021F9C68 ; =0x000003D9
 	mov r1, #1
 	mov r3, #0xc
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #6
@@ -1044,7 +1044,7 @@ _021F9B62:
 	ldr r2, _021F9C74 ; =0x000003E2
 	mov r1, #4
 	mov r3, #0xc
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add sp, #0x10
 	pop {r4, pc}
 	nop
