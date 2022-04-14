@@ -5307,3 +5307,60 @@ BOOL ScrCmd_BankOrWalletIsFull(SCRIPTCONTEXT *ctx) {
     }
     return TRUE;
 }
+
+BOOL ScrCmd_753(SCRIPTCONTEXT *ctx) {
+    u16 r4 = ScriptGetVar(ctx);
+    u16 *r6 = ScriptGetVarPointer(ctx);
+    u16 *r3 = ScriptGetVarPointer(ctx);
+    ov01_02204C44(ctx->fsys, r4, r6, r3);
+    return TRUE;
+}
+
+BOOL ScrCmd_754(SCRIPTCONTEXT *ctx) {
+    u16 *r1 = ScriptGetVarPointer(ctx);
+    ov01_02204ED8(ctx->fsys, r1);
+    return TRUE;
+}
+
+BOOL ScrCmd_755(SCRIPTCONTEXT *ctx) {
+    ov02_02250A60(ctx->fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_756(SCRIPTCONTEXT *ctx) {
+    ov02_02250AC8(ctx->fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_757(SCRIPTCONTEXT *ctx) {
+    ov02_02250AE8(ctx->fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_758(SCRIPTCONTEXT *ctx) {
+    u8 r1 = ScriptReadHalfword(ctx);
+    ov02_02250AFC(ctx->fsys, r1);
+    return TRUE;
+}
+
+BOOL ScrCmd_759(SCRIPTCONTEXT *ctx) {
+    ov02_02250B80(ctx->fsys);
+    return TRUE;
+}
+
+BOOL ScrCmd_760(SCRIPTCONTEXT *ctx) {
+    ov02_02250B30(ctx->fsys);
+    return TRUE;
+}
+
+BOOL ScrCmd_761(SCRIPTCONTEXT *ctx) {
+    u8 r1 = ScriptReadHalfword(ctx);
+    ov02_02251424(ctx->fsys, r1);
+    return FALSE;
+}
+
+BOOL ScrCmd_762(SCRIPTCONTEXT *ctx) {
+    u8 r1 = ScriptReadHalfword(ctx);
+    ov02_022514C8(ctx->fsys, r1);
+    return FALSE;
+}
