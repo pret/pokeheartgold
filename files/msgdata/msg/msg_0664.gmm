@@ -90,7 +90,7 @@
 	</row>
 	<row id="msg_0664_00022" index="22">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Hello?\r...{STRVAR_1 3, 0, 0}?\rI heard from Professor Elm that you\nwent on a long trip.\rI wish you would have told me...\nWhat about your max? Should I\fsave it?</language>
+		<language name="English">Hello?\r...{STRVAR_1 3, 0, 0}?\rI heard from Professor Elm that you\nwent on a long trip.\rI wish you would have told me...\nWhat about your money? Should I\fsave it?</language>
 	</row>
 	<row id="msg_0664_00023" index="23">
 		<attribute name="window_context_name">used</attribute>
@@ -102,22 +102,22 @@
 	</row>
 	<row id="msg_0664_00025" index="25">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">OK. I’ll save your max.\r{STRVAR_1 3, 0, 0}, keep it up! I’m rooting\nfor you, baby!</language>
+		<language name="English">OK. I’ll save your money.\r{STRVAR_1 3, 0, 0}, keep it up! I’m rooting\nfor you, baby!</language>
 	</row>
 	<row id="msg_0664_00026" index="26">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">OK. I won’t save your max.\r{STRVAR_1 3, 0, 0}, keep it up! I’m rooting\nfor you, baby!</language>
+		<language name="English">OK. I won’t save your money.\r{STRVAR_1 3, 0, 0}, keep it up! I’m rooting\nfor you, baby!</language>
 	</row>
 	<row id="msg_0664_00027" index="27">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">It’s important to\nsave your max.</language>
+		<language name="English">It’s important to\nsave your money.</language>
 	</row>
 	<row id="msg_0664_00028" index="28">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Oh, {STRVAR_1 3, 0, 0}, you’re not saving\nany max. Would you like to save? {YESNO 0}</language>
+		<language name="English">Oh, {STRVAR_1 3, 0, 0}, you’re not saving\nany money. Would you like to save? {YESNO 0}</language>
 	</row>
 	<row id="msg_0664_00029" index="29">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Hello?\rOh, hi, {STRVAR_1 3, 0, 0}! How are you?\rI found a useful item while shopping, so\nI bought it with your max. Sorry!\rBut I asked the deliveryman to take it\nto you, so you should stop by the\fnearest Poké Mart or Department Store\fand pick it up! I know it’ll be useful!</language>
+		<language name="English">Hello?\rOh, hi, {STRVAR_1 3, 0, 0}! How are you?\rI found a useful item while shopping, so\nI bought it with your money. Sorry!\rBut I asked the deliveryman to take it\nto you, so you should stop by the\fnearest Poké Mart or Department Store\fand pick it up! I know it’ll be useful!</language>
 	</row>
 </body>

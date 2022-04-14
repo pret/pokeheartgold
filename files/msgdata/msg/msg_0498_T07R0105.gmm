@@ -2,7 +2,7 @@
 <body language="English">
 	<row id="msg_0498_T07R0105_00000" index="0">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">I want to buy some items that raise\nPokémon stats, but I don’t have\fenough max...</language>
+		<language name="English">I want to buy some items that raise\nPokémon stats, but I don’t have\fenough money...</language>
 	</row>
 	<row id="msg_0498_T07R0105_00001" index="1">
 		<attribute name="window_context_name">used</attribute>

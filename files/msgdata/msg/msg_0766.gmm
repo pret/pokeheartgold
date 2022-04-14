@@ -1063,7 +1063,7 @@
 	</row>
 	<row id="msg_0766_00265" index="265">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">{STRVAR_1 3, 0, 0}:\nI’d have to say max.\r</language>
+		<language name="English">{STRVAR_1 3, 0, 0}:\nI’d have to say money.\r</language>
 	</row>
 	<row id="msg_0766_00266" index="266">
 		<attribute name="window_context_name">used</attribute>
@@ -2451,7 +2451,7 @@
 	</row>
 	<row id="msg_0766_00612" index="612">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d have to say max.\r</language>
+		<language name="English">{COLOR 2}{STRVAR_1 3, 0, 0}{COLOR 0}:\nI’d have to say money.\r</language>
 	</row>
 	<row id="msg_0766_00613" index="613">
 		<attribute name="window_context_name">used</attribute>

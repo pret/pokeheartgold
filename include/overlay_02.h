@@ -76,5 +76,12 @@ void ov02_02250B30(FieldSystem *fsys);
 void ov02_02250B80(FieldSystem *fsys);
 void ov02_02251424(FieldSystem *fsys, u8 a1);
 void ov02_022514C8(FieldSystem *fsys, u8 a1);
+void ov02_02251554(FieldSystem *fsys);
+void ov02_022515A4(FieldSystem *fsys);
+void ov02_022518E0(FieldSystem *fsys);
+void ov02_02251B14(FieldSystem *fsys);
+void ov02_02251CF0(FieldSystem *fsys);
+void ov02_02251DC4(FieldSystem *fsys);
+void ov02_02251DE8(FieldSystem *fsys);
 
 #endif //POKEHEARTGOLD_OVERLAY_02_H

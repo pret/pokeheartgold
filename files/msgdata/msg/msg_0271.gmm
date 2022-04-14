@@ -34,11 +34,11 @@
 	</row>
 	<row id="msg_0271_00008" index="8">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Save some max</language>
+		<language name="English">Save some money</language>
 	</row>
 	<row id="msg_0271_00009" index="9">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Don’t save max</language>
+		<language name="English">Don’t save money</language>
 	</row>
 	<row id="msg_0271_00010" index="10">
 		<attribute name="window_context_name">used</attribute>

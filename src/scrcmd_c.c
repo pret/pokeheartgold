@@ -16,6 +16,7 @@
 #include "unk_02062108.h"
 #include "field_map_object.h"
 #include "field_follow_poke.h"
+#include "save_follow_poke.h"
 #include "map_events.h"
 #include "unk_0205FD20.h"
 #include "unk_02054648.h"
@@ -81,6 +82,7 @@
 #include "unk_020977CC.h"
 #include "unk_020979A8.h"
 #include "unk_02097BE0.h"
+#include "sound_02004A44.h"
 #include "msgdata/msg/msg_0202.h"
 #include "constants/accessories.h"
 #include "constants/phone_contacts.h"
@@ -4423,9 +4425,9 @@ BOOL ScrCmd_AddSpecialGameStat2(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_682(SCRIPTCONTEXT *ctx) {
-    static u32 sHeap4Size;
-    static u32 sHeap32Size;
-    static u32 sHeap11Size;
+    static u32 sHeap11Size; // +8
+    static u32 sHeap32Size; // +12
+    static u32 sHeap4Size; // +4
     u16 action = ScriptGetVar(ctx);
     u32 heap11Size = GF_ExpHeap_FndGetTotalFreeSize(11);
     u32 heap4Size = GF_ExpHeap_FndGetTotalFreeSize(4);
@@ -5362,5 +5364,128 @@ BOOL ScrCmd_761(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_762(SCRIPTCONTEXT *ctx) {
     u8 r1 = ScriptReadHalfword(ctx);
     ov02_022514C8(ctx->fsys, r1);
+    return FALSE;
+}
+
+BOOL ScrCmd_763(SCRIPTCONTEXT *ctx) {
+    ov02_02251554(ctx->fsys);
+    return TRUE;
+}
+
+BOOL ScrCmd_764(SCRIPTCONTEXT *ctx) {
+    ov02_022515A4(ctx->fsys);
+    return TRUE;
+}
+
+BOOL ScrCmd_765(SCRIPTCONTEXT *ctx) {
+    ov02_022518E0(ctx->fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_766(SCRIPTCONTEXT *ctx) {
+    ov02_02251B14(ctx->fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_767(SCRIPTCONTEXT *ctx) {
+    ov02_02251CF0(ctx->fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_768(SCRIPTCONTEXT *ctx) {
+    ov02_02251DC4(ctx->fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_769(SCRIPTCONTEXT *ctx) {
+    ov02_02251DE8(ctx->fsys);
+    return TRUE;
+}
+
+BOOL ScrCmd_SetFollowPokeInhibitState(SCRIPTCONTEXT *ctx) {
+    SavFollowPoke_SetInhibitFlagState(Sav2_FollowPoke_get(ctx->fsys->savedata), ScriptReadByte(ctx));
+    return FALSE;
+}
+
+// Loads an overlay containing additional script commands or data
+BOOL ScrCmd_ScriptOverlayCmd(SCRIPTCONTEXT *ctx) {
+    u8 ovy = ScriptReadByte(ctx);
+    u8 action = ScriptReadByte(ctx);
+
+    static const FSOverlayID _020FACB0[] = {
+        FS_OVERLAY_ID(OVY_20),
+        FS_OVERLAY_ID(bug_contest),
+        FS_OVERLAY_ID(OVY_21),
+        FS_OVERLAY_ID(OVY_22),
+        FS_OVERLAY_ID(OVY_25),
+    };
+
+    if (ovy >= NELEMS(_020FACB0)) {
+        return FALSE;
+    }
+
+    if (action == 0) {
+        HandleLoadOverlay(_020FACB0[ovy], OVY_LOAD_ASYNC);
+    } else {
+        UnloadOverlayByID(_020FACB0[ovy]);
+    }
+
+    return FALSE;
+}
+
+BOOL ScrCmd_CheckBankBalance(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    u32 check_amt = ScriptReadWord(ctx);
+    if (MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(ctx->fsys->savedata), MOMS_BALANCE_GET, 0) >= check_amt) {
+        *p_ret = TRUE;
+    } else {
+        *p_ret = FALSE;
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_BufferRulesetName(SCRIPTCONTEXT *ctx) {
+    u16 ruleset = ScriptReadHalfword(ctx);
+    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    ov03_022566D0(ctx->fsys, *p_msgFmt, ruleset);
+    return FALSE;
+}
+
+BOOL ScrCmd_799(SCRIPTCONTEXT *ctx) {
+    u16 *p_var = ScriptGetVarPointer(ctx);
+    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    ov03_022566D0(ctx->fsys, *p_msgFmt, *p_var);
+    return FALSE;
+}
+
+BOOL ScrCmd_800(SCRIPTCONTEXT *ctx) {
+    u16 *p_var = ScriptGetVarPointer(ctx);
+    ov03_02256710(ctx->fsys, *p_var);
+    return FALSE;
+}
+
+BOOL ScrCmd_801(SCRIPTCONTEXT *ctx) {
+    WINDOW **p_moneyBox = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MONEY_BOX);
+    u16 *p_var = ScriptGetVarPointer(ctx);
+    *p_moneyBox = ov01_021EEF68(ctx->fsys, *p_var);
+    return FALSE;
+}
+
+BOOL ScrCmd_802(SCRIPTCONTEXT *ctx) {
+    WINDOW **p_moneyBox = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MONEY_BOX);
+    ov01_021EEF88(*p_moneyBox);
+    return FALSE;
+}
+
+BOOL ScrCmd_803(SCRIPTCONTEXT *ctx) {
+    u16 *r4 = ScriptGetVarPointer(ctx);
+    u16 *r6 = ScriptGetVarPointer(ctx);
+    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    *r6 = ov03_02256A2C(ctx->fsys, *p_msgFmt, *r4);
+    return FALSE;
+}
+
+BOOL ScrCmd_805(SCRIPTCONTEXT *ctx) {
+    sub_02004B24(75);
     return FALSE;
 }

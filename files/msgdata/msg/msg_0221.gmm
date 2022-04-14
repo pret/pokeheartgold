@@ -916,7 +916,7 @@
 	</row>
 	<row id="msg_0221_00223" index="223">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">An item to be held by a Pokémon.\nIt doubles a battle’s prize max if\nthe holding Pokémon joins in.</language>
+		<language name="English">An item to be held by a Pokémon.\nIt doubles a battle’s prize money if\nthe holding Pokémon joins in.</language>
 	</row>
 	<row id="msg_0221_00224" index="224">
 		<attribute name="window_context_name">used</attribute>
@@ -1300,7 +1300,7 @@
 	</row>
 	<row id="msg_0221_00319" index="319">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">An item to be held by a Pokémon.\nIt doubles a battle’s prize max if\nthe holding Pokémon joins in.</language>
+		<language name="English">An item to be held by a Pokémon.\nIt doubles a battle’s prize money if\nthe holding Pokémon joins in.</language>
 	</row>
 	<row id="msg_0221_00320" index="320">
 		<attribute name="window_context_name">used</attribute>

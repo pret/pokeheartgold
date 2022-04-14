@@ -4642,7 +4642,7 @@
 	</row>
 	<row id="msg_0728_01160" index="1160">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">We need the max, but selling\nSlowpokeTails?\rIt’s tough being a Team Rocket Grunt!\n</language>
+		<language name="English">We need the money, but selling\nSlowpokeTails?\rIt’s tough being a Team Rocket Grunt!\n</language>
 	</row>
 	<row id="msg_0728_01161" index="1161">
 		<attribute name="window_context_name">used</attribute>
@@ -4654,7 +4654,7 @@
 	</row>
 	<row id="msg_0728_01163" index="1163">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Sure, we’ve been hacking the tails off\nSLOWPOKE and selling them.\rTeam Rocket will do anything for max!\n</language>
+		<language name="English">Sure, we’ve been hacking the tails off\nSLOWPOKE and selling them.\rTeam Rocket will do anything for money!\n</language>
 	</row>
 	<row id="msg_0728_01164" index="1164">
 		<attribute name="window_context_name">used</attribute>
@@ -5742,7 +5742,7 @@
 	</row>
 	<row id="msg_0728_01435" index="1435">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Modding my Bike costs a bunch of max!\nI need a job!\r</language>
+		<language name="English">Modding my Bike costs a bunch of money!\nI need a job!\r</language>
 	</row>
 	<row id="msg_0728_01436" index="1436">
 		<attribute name="window_context_name">used</attribute>

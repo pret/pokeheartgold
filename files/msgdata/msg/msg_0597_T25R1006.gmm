@@ -34,7 +34,7 @@
 	</row>
 	<row id="msg_0597_T25R1006_00008" index="8">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Not enough max...</language>
+		<language name="English">Not enough money...</language>
 	</row>
 	<row id="msg_0597_T25R1006_00009" index="9">
 		<attribute name="window_context_name">used</attribute>
@@ -63,11 +63,11 @@
 	</row>
 	<row id="msg_0597_T25R1006_00015" index="15">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Oh my...\nYour Bag is full.\rThen we’ll refund you the max.\r</language>
+		<language name="English">Oh my...\nYour Bag is full.\rThen we’ll refund you the money.\r</language>
 	</row>
 	<row id="msg_0597_T25R1006_00016" index="16">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Oh my...\nYou’re short of max.\rPlease come again.</language>
+		<language name="English">Oh my...\nYou’re short of money.\rPlease come again.</language>
 	</row>
 	<row id="msg_0597_T25R1006_00017" index="17">
 		<attribute name="window_context_name">used</attribute>

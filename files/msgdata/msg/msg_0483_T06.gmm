@@ -6,7 +6,7 @@
 	</row>
 	<row id="msg_0483_T06_00001" index="1">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">My Pokémon is preparing the land\nfor construction.\rBut I have no max to start\nthe project.</language>
+		<language name="English">My Pokémon is preparing the land\nfor construction.\rBut I have no money to start\nthe project.</language>
 	</row>
 	<row id="msg_0483_T06_00002" index="2">
 		<attribute name="window_context_name">used</attribute>

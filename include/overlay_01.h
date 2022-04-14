@@ -130,5 +130,7 @@ struct BankTransactionWork {
 
 void ov01_02204C44(FieldSystem *fsys, u8 a1, u16 *a2, u16 *a3);
 void ov01_02204ED8(FieldSystem *fsys, u16 *a1);
+WINDOW *ov01_021EEF68(FieldSystem *fsys, u16 a1);
+void ov01_021EEF88(WINDOW *window);
 
 #endif //POKEHEARTGOLD_OVERLAY_01_H

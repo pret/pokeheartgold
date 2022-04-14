@@ -202,7 +202,7 @@
 	</row>
 	<row id="msg_0026_00044" index="44">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">The total max spent shopping</language>
+		<language name="English">The total money spent shopping</language>
 	</row>
 	<row id="msg_0026_00045" index="45">
 		<attribute name="window_context_name">used</attribute>
