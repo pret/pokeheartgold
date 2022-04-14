@@ -325,4 +325,12 @@ void ScriptReturn(SCRIPTCONTEXT* ctx);
 u16 ScriptReadHalfword(SCRIPTCONTEXT* ctx);
 u32 ScriptReadWord(SCRIPTCONTEXT* ctx);
 
+static inline void InitLocation(Location *location, int mapId, int warpId, int x, int z, int direction) {
+    location->mapId = mapId;
+    location->warpId = warpId;
+    location->x = x;
+    location->z = z;
+    location->direction = direction;
+}
+
 #endif

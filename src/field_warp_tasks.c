@@ -295,11 +295,7 @@ static void _CopyPlayerPosToLocationWorkFacingSouth(Location *location, FieldSys
     y = GetPlayerYCoord(fsys->playerAvatar);
     x = GetPlayerXCoord(fsys->playerAvatar);
 
-    location->mapId = fsys->location->mapId;
-    location->warpId = -1;
-    location->x = x;
-    location->z = y;
-    location->direction = 1;
+    InitLocation(location, fsys->location->mapId, -1, x, y, DIR_SOUTH);
 }
 
 static BOOL _IsPlayerStandingInFrontOfUnionRoomReception(FieldSystem *fsys) {
@@ -320,17 +316,9 @@ static void _SetDynamicWarpToUnionRoomExit(FieldSystem *fsys) {
     Location *dynamicWarp = FlyPoints_GetDynamicWarp(Save_FlyPoints_get(fsys->savedata));
     SCRIPT_STATE *scriptState = SavArray_Flags_get(fsys->savedata); // unused
     if (MapHeader_MapIsPokemonLeagueLobby(fsys->location->mapId) == TRUE) {
-        dynamicWarp->mapId = fsys->location->mapId;
-        dynamicWarp->warpId = -1;
-        dynamicWarp->x = 4;
-        dynamicWarp->z = 11;
-        dynamicWarp->direction = 1;
+        InitLocation(dynamicWarp, fsys->location->mapId, -1, 4, 11, DIR_SOUTH);
     } else {
-        dynamicWarp->mapId = fsys->location->mapId;
-        dynamicWarp->warpId = -1;
-        dynamicWarp->x = 7;
-        dynamicWarp->z = 2;
-        dynamicWarp->direction = 1;
+        InitLocation(dynamicWarp, fsys->location->mapId, -1, 7, 2, DIR_SOUTH);
     }
 }
 
@@ -463,12 +451,8 @@ TaskManager *CallFieldTask_ContinueGame_CommError(FieldSystem *fsys) {
         }
     }
     env = AllocFromHeapAtEnd(11, sizeof(struct ErrorContinueEnv));
-    env->state = 00;
-    env->location.mapId = MAP_UNION;
-    env->location.warpId = -1;
-    env->location.x = 8;
-    env->location.z = 14;
-    env->location.direction = 0;
+    env->state = 0;
+    InitLocation(&env->location, MAP_UNION, -1, 8, 14, DIR_NORTH);
     fsys->unk70 = 2;
     return FieldSys_CreateTask(fsys, sub_02053550, env);
 }
@@ -593,11 +577,7 @@ static BOOL Task_ScriptWarp(TaskManager *taskManager) {
 void CallTask_ScriptWarp(TaskManager *taskManager, u32 mapId, int warpId, int x, int y, int direction) {
     struct ErrorContinueEnv *env = AllocFromHeapAtEnd(11, sizeof(struct ErrorContinueEnv));
     env->state = 0;
-    env->location.mapId = mapId;
-    env->location.warpId = warpId;
-    env->location.x = x;
-    env->location.z = y;
-    env->location.direction = direction;
+    InitLocation(&env->location, mapId, warpId, x, y, direction);
     TaskManager_Call(taskManager, Task_ScriptWarp, env);
 }
 
@@ -909,11 +889,7 @@ TaskManager *sub_02053E08(FieldSystem *fsys, u32 mapId, int warpId) {
     env = AllocFromHeapAtEnd(11, sizeof(struct UnkTaskEnv_02053CCC));
     MI_CpuClear8(env, sizeof(struct UnkTaskEnv_02053CCC));
     direction = PlayerAvatar_GetFacingDirection(fsys->playerAvatar);
-    location.mapId = mapId;
-    location.warpId = warpId;
-    location.x = 0;
-    location.z = 0;
-    location.direction = direction;
+    InitLocation(&location, mapId, warpId, 0, 0, direction);
     env->location = location;
     return FieldSys_CreateTask(fsys, sub_02053CCC, env);
 }
@@ -1024,11 +1000,7 @@ void sub_02054030(TaskManager *taskManager) {
     struct UnkTaskEnv_02053E5C *env = AllocFromHeapAtEnd(11, sizeof(struct UnkTaskEnv_02053E5C));
     MI_CpuClear8(env, sizeof(struct UnkTaskEnv_02053E5C));
     _CopyPlayerPosToLocationWorkFacingSouth(location, fsys);
-    env->location.mapId = MAP_UNION;
-    env->location.warpId = -1;
-    env->location.x = 8;
-    env->location.z = 14;
-    env->location.direction = 0;
+    InitLocation(&env->location, MAP_UNION, -1, 8, 14, DIR_NORTH);
     fsys->unk80 = sub_02059DB0(fsys);
     fsys->unk84 = sub_0205AC88(fsys->unk80);
     fsys->unk70 = 2;
