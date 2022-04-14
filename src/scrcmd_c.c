@@ -3382,11 +3382,11 @@ BOOL ScrCmd_705(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_SafariZoneAction(SCRIPTCONTEXT *ctx) {
-    FLYPOINTS_SAVE *flypointsSave = Save_FlyPoints_get(ctx->fsys->savedata); //r6
-    SCRIPT_STATE *scriptState = SavArray_Flags_get(ctx->fsys->savedata); //sp4
-    SAFARIZONE *safariZone = Save_SafariZone_get(ctx->fsys->savedata); //sp8
-    u8 action = ScriptReadByte(ctx); //r4
-    u8 areaSet = ScriptReadByte(ctx); //sp0
+    FLYPOINTS_SAVE *flypointsSave = Save_FlyPoints_get(ctx->fsys->savedata);
+    SCRIPT_STATE *scriptState = SavArray_Flags_get(ctx->fsys->savedata);
+    SAFARIZONE *safariZone = Save_SafariZone_get(ctx->fsys->savedata);
+    u8 action = ScriptReadByte(ctx);
+    u8 areaSet = ScriptReadByte(ctx);
     u16 *p_nSafariBall = FlyPoints_GetSafariBallsCounter(flypointsSave);
     u16 *p_nSafariSteps = FlyPoints_GetSafariStepsCounter(flypointsSave);
     int r1;
@@ -4330,9 +4330,9 @@ BOOL ScrCmd_AddSpecialGameStat2(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_682(SCRIPTCONTEXT *ctx) {
-    static u32 sHeap4Size; // +4
-    static u32 sHeap32Size; // +12
-    static u32 sHeap11Size; // +8
+    static u32 sHeap4Size;
+    static u32 sHeap32Size;
+    static u32 sHeap11Size;
     u16 action = ScriptGetVar(ctx);
     u32 heap11Size = GF_ExpHeap_FndGetTotalFreeSize(11);
     u32 heap4Size = GF_ExpHeap_FndGetTotalFreeSize(4);
@@ -4468,7 +4468,7 @@ BOOL ScrCmd_600(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_FollowPokeFacePlayer(SCRIPTCONTEXT *ctx) {
-    BOOL doFace = TRUE; //sp8
+    BOOL doFace = TRUE;
     if (FollowingPokemon_IsActive(ctx->fsys)) {
         if (ov01_022055DC(FollowingPokemon_GetMapObject(ctx->fsys))) {
             LocalMapObject *myObject = PlayerAvatar_GetMapObject(FieldSys_GetPlayerAvatar(ctx->fsys));
@@ -5063,13 +5063,13 @@ u32 GetMaxBankTransactionAmount(FieldSystem *fsys, int action) {
     u32 bank = MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(fsys->savedata), MOMS_BALANCE_GET, 0);
     switch (action) {
     case 0:
-        ret = 999999 - bank;
+        ret = MAX_MONEY - bank;
         if (wallet <= ret) {
             ret = wallet;
         }
         break;
     case 1:
-        ret = 999999 - wallet;
+        ret = MAX_MONEY - wallet;
         if (bank <= ret) {
             ret = bank;
         }
@@ -5131,13 +5131,13 @@ BOOL ScrCmd_BankOrWalletIsFull(SCRIPTCONTEXT *ctx) {
     u16 action = ScriptReadHalfword(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     if (action == 0) {
-        if (MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(ctx->fsys->savedata), MOMS_BALANCE_GET, 0) == 999999) {
+        if (MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(ctx->fsys->savedata), MOMS_BALANCE_GET, 0) == MAX_MONEY) {
             *p_ret = TRUE;
         } else {
             *p_ret = FALSE;
         }
     } else {
-        if (PlayerProfile_GetMoney(Sav2_PlayerData_GetProfileAddr(ctx->fsys->savedata)) == 999999) {
+        if (PlayerProfile_GetMoney(Sav2_PlayerData_GetProfileAddr(ctx->fsys->savedata)) == MAX_MONEY) {
             *p_ret = TRUE;
         } else {
             *p_ret = FALSE;

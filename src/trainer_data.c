@@ -331,7 +331,7 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
 
             // If you were treating the trainer type as a bitfield, you'd put the
             // checks for held item and moves here. You'd also treat the trpoke
-            // data as a flat u16 array rather than an array of fixed-maxItemWidth structs.
+            // data as a flat u16 array rather than an array of fixed-width structs.
 
             // Starting in Platinum, enemy trainers could have
             // personalized ball capsules.
