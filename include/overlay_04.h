@@ -33,5 +33,7 @@ void Fsys_BeginAzaleaGymSpinarakRide(FieldSystem *fsys, u8 spinarakNo);
 void Fsys_FlipAzaleaGymSwitch(FieldSystem *fsys, u8 switchNo);
 
 BOOL ov04_022550D4(FieldSystem* fsys, u32 a1, u32 a2, u32 a3, u32 a4);
+void ov04_02256ED8(FieldSystem *fsys);
+void ov04_02256F00(FieldSystem *fsys, u8 a1);
 
 #endif //POKEHEARTGOLD_OVERLAY_04_H

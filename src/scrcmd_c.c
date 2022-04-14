@@ -83,6 +83,7 @@
 #include "unk_020979A8.h"
 #include "unk_02097BE0.h"
 #include "sound_02004A44.h"
+#include "unk_020290B4.h"
 #include "msgdata/msg/msg_0202.h"
 #include "constants/accessories.h"
 #include "constants/phone_contacts.h"
@@ -5487,5 +5488,124 @@ BOOL ScrCmd_803(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_805(SCRIPTCONTEXT *ctx) {
     sub_02004B24(75);
+    return FALSE;
+}
+
+BOOL ScrCmd_806(SCRIPTCONTEXT *ctx) {
+    ov02_022523B4(ctx->fsys->taskman);
+    return TRUE;
+}
+
+BOOL ScrCmd_810(SCRIPTCONTEXT *ctx) {
+    ov02_02252534(ctx->fsys);
+    return TRUE;
+}
+
+BOOL ScrCmd_814(SCRIPTCONTEXT *ctx) {
+    SetFlag99A(SavArray_Flags_get(ctx->fsys->savedata));
+    return FALSE;
+}
+
+BOOL ScrCmd_UnownCircle(SCRIPTCONTEXT *ctx) {
+    ov02_022529FC(ctx->fsys);
+    return TRUE;
+}
+
+BOOL ScrCmd_817(SCRIPTCONTEXT *ctx) {
+    ov02_02252EE4(ctx->fsys, ScriptReadByte(ctx));
+    return TRUE;
+}
+
+BOOL ScrCmd_MystriStageGymmickInit(SCRIPTCONTEXT *ctx) {
+    Fsys_InitMystriStageGymmick(ctx->fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_819(SCRIPTCONTEXT *ctx) {
+    ov04_02256ED8(ctx->fsys);
+    return FALSE;
+}
+
+BOOL ScrCmd_820(SCRIPTCONTEXT *ctx) {
+    ov04_02256F00(ctx->fsys, ScriptReadByte(ctx));
+    return TRUE;
+}
+
+BOOL ScrCmd_822(SCRIPTCONTEXT *ctx) {
+    ov03_02258910(ctx->fsys);
+    return TRUE;
+}
+
+BOOL ScrCmd_823(SCRIPTCONTEXT *ctx) {
+    u16 *p_var = ScriptGetVarPointer(ctx);
+    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    PLAYERPROFILE *profile = PlayerProfile_new(4);
+    SafariZone_GetLinkLeaderToProfile(Save_SafariZone_get(ctx->fsys->savedata), profile);
+    BufferPlayersName(*p_msgFmt, *p_var, profile);
+    FreeToHeap(profile);
+    return FALSE;
+}
+
+BOOL ScrCmd_824(SCRIPTCONTEXT *ctx) {
+    SAFARIZONE *safariZone = Save_SafariZone_get(ctx->fsys->savedata);
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    SafariZone_DeactivateLinkIfExpired(safariZone);
+    if (SafariZone_IsCurrentlyLinked(safariZone)) {
+        *p_ret = TRUE;
+    } else {
+        *p_ret = FALSE;
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_829(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    if (ov01_02206268(ctx->fsys)) {
+        *p_ret = TRUE;
+    } else {
+        *p_ret = FALSE;
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_830(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    if (ov02_02253134(ctx->fsys->savedata) == TRUE) {
+        *p_ret = TRUE;
+    } else {
+        *p_ret = FALSE;
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_831(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = ov02_0225316C();
+    return FALSE;
+}
+
+BOOL ScrCmd_832(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    if (ov02_02253188(ctx->fsys->savedata) == TRUE) {
+        *p_ret = TRUE;
+    } else {
+        *p_ret = FALSE;
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_833(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    *p_ret = ov02_022531B4(ctx->fsys->savedata);
+    return FALSE;
+}
+
+BOOL ScrCmd_837(SCRIPTCONTEXT *ctx) {
+    u16 *p_ret = ScriptGetVarPointer(ctx);
+    if (sub_020291A4(ctx->fsys->savedata, 0)) {
+        *p_ret = TRUE;
+    } else {
+        *p_ret = FALSE;
+    }
     return FALSE;
 }
