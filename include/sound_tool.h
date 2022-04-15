@@ -1,8 +1,5 @@
-#ifndef POKEHEARTGOLD_SND_TOOL_H
-#define POKEHEARTGOLD_SND_TOOL_H
-
-#include <nnsys/snd/waveout.h>
-#include <nnsys/snd/capture.h>
+#ifndef POKEHEARTGOLD_SOUND_TOOL_H
+#define POKEHEARTGOLD_SOUND_TOOL_H
                    
 #define SND_BANK_FLAG_CONTINUE           0                        
 #define SND_BANK_FLAG_CHANGE             1                                      
@@ -101,5 +98,5 @@ void GBSounds_SetAllocatableChannels(void);
 void sub_02005CF4(u32 unkA);
 void sub_02005D00(void);
 
-#endif //POKEHEARTGOLD_SND_TOOL_H
+#endif //POKEHEARTGOLD_SOUND_TOOL_H
 

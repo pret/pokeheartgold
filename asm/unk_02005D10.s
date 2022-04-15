@@ -127,7 +127,7 @@ sub_02005DF4: ; 0x02005DF4
 	mov r0, #SOUND_WORK_BANK_FLAG
 	add r6, r2, #0
 	bl GF_SdatGetAttrPtr
-	mov r0, #SOUND_WORK_ZONE_BGM
+	mov r0, #SOUND_WORK_MAP_MUSIC
 	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	mov r0, #0
@@ -683,7 +683,7 @@ PlayCry: ; 0x02006218
 	mov r0, #SOUND_WORK_MY_CHATOT_PTR
 	bl GF_SdatGetAttrPtr
 	add r6, r0, #0
-	mov r0, #SOUND_WORK_PV_DOUBLE_FLAG
+	mov r0, #SOUND_WORK_CRY_DOUBLE_FLAG
 	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
 	ldr r1, [sp, #8]
@@ -840,7 +840,7 @@ IsCryFinished: ; 0x02006360
 	add r4, r0, #0
 	mov r0, #SOUND_WORK_REVERSE_FLAG
 	bl GF_SdatGetAttrPtr
-	mov r0, #SOUND_WORK_PV_WAIT
+	mov r0, #SOUND_WORK_CRY_DELAY
 	bl GF_SdatGetAttrPtr
 	ldrb r0, [r5]
 	cmp r0, #1
@@ -1508,54 +1508,54 @@ sub_02006920: ; 0x02006920
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x28
 	add r6, r0, #0
-	mov r0, #SOUND_WORK_PV_WAIT_WORK
+	mov r0, #SOUND_WORK_CRY_DELAY_WORK
 	add r5, r1, #0
 	add r7, r2, #0
 	str r3, [sp, #8]
 	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
-	mov r0, #SOUND_WORK_PV_DOUBLE_FLAG
+	mov r0, #SOUND_WORK_CRY_DOUBLE_FLAG
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0xc]
 	ldrb r0, [r4]
 	cmp r0, #0
 	bne _02006974
-	mov r0, #SOUND_WORK_PV_PTN
+	mov r0, #SOUND_WORK_CRY_PTR
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x24]
-	mov r0, #SOUND_WORK_PV_NO
+	mov r0, #SOUND_WORK_CRY_NO
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x20]
-	mov r0, #SOUND_WORK_PV_PAN
+	mov r0, #SOUND_WORK_CRY_PAN
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x1c]
 	mov r0, #SOUND_WORK_VOLUME
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x18]
-	mov r0, #SOUND_WORK_PV_HEAP_ID
+	mov r0, #SOUND_WORK_CRY_HEAP_ID
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x14]
-	mov r0, #SOUND_WORK_PV_WAIT
+	mov r0, #SOUND_WORK_CRY_DELAY
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x10]
 	b _020069A4
 _02006974:
-	mov r0, #SOUND_WORK_PV_PTN_2
+	mov r0, #SOUND_WORK_CRY_PTR_2
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x24]
-	mov r0, #SOUND_WORK_PV_NO_2
+	mov r0, #SOUND_WORK_CRY_NO_2
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x20]
-	mov r0, #SOUND_WORK_PV_PAN_2
+	mov r0, #SOUND_WORK_CRY_PAN_2
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x1c]
 	mov r0, #SOUND_WORK_VOLUME_2
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x18]
-	mov r0, #SOUND_WORK_PV_HEAP_ID_2
+	mov r0, #SOUND_WORK_CRY_HEAP_ID_2
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x14]
-	mov r0, #SOUND_WORK_PV_WAIT_2
+	mov r0, #SOUND_WORK_CRY_DELAY_2
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x10]
 _020069A4:
@@ -1642,40 +1642,40 @@ _02006A2C: .word 0x000001EE
 sub_02006A30: ; 0x02006A30
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1c
-	mov r0, #SOUND_WORK_PV_PTN
+	mov r0, #SOUND_WORK_CRY_PTR
 	bl GF_SdatGetAttrPtr
 	add r5, r0, #0
-	mov r0, #SOUND_WORK_PV_NO
+	mov r0, #SOUND_WORK_CRY_NO
 	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
-	mov r0, #SOUND_WORK_PV_PAN
+	mov r0, #SOUND_WORK_CRY_PAN
 	bl GF_SdatGetAttrPtr
 	add r6, r0, #0
 	mov r0, #SOUND_WORK_VOLUME
 	bl GF_SdatGetAttrPtr
 	add r7, r0, #0
-	mov r0, #SOUND_WORK_PV_HEAP_ID
+	mov r0, #SOUND_WORK_CRY_HEAP_ID
 	bl GF_SdatGetAttrPtr
 	str r0, [sp]
-	mov r0, #SOUND_WORK_PV_WAIT
+	mov r0, #SOUND_WORK_CRY_DELAY
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #4]
-	mov r0, #SOUND_WORK_PV_PTN_2
+	mov r0, #SOUND_WORK_CRY_PTR_2
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #8]
-	mov r0, #SOUND_WORK_PV_NO_2
+	mov r0, #SOUND_WORK_CRY_NO_2
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0xc]
-	mov r0, #SOUND_WORK_PV_PAN_2
+	mov r0, #SOUND_WORK_CRY_PAN_2
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x10]
 	mov r0, #SOUND_WORK_VOLUME_2
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x14]
-	mov r0, #SOUND_WORK_PV_HEAP_ID_2
+	mov r0, #SOUND_WORK_CRY_HEAP_ID_2
 	bl GF_SdatGetAttrPtr
 	str r0, [sp, #0x18]
-	mov r0, #SOUND_WORK_PV_WAIT_2
+	mov r0, #SOUND_WORK_CRY_DELAY_2
 	bl GF_SdatGetAttrPtr
 	mov r1, #0
 	str r1, [r5]

@@ -49,48 +49,47 @@ extern const u8 _020F5710[8][4];
 extern const u16 GS_SeqPairs[136][2];
 
 void Snd_SetCntrlBGMFlag(u8 flag) {
-    *(u8 *) GF_SdatGetAttrPtr(SOUND_WORK_CTRL_BGM_FLAG) = flag;
+    *(u8 *)GF_SdatGetAttrPtr(SOUND_WORK_CTRL_BGM_FLAG) = flag;
 }
 
 u8 Snd_GetCntrlBGMFlag(void) {
-    return *(u8 *) GF_SdatGetAttrPtr(SOUND_WORK_CTRL_BGM_FLAG);
+    return *(u8 *)GF_SdatGetAttrPtr(SOUND_WORK_CTRL_BGM_FLAG);
 }
 
 void Snd_SetCurrentlyPlayingBGM(u16 no) {
-    u16* cur_bgm = (u16 *) GF_SdatGetAttrPtr(SOUND_WORK_CUR_BGM_NO);
+    u16* cur_bgm = (u16 *)GF_SdatGetAttrPtr(SOUND_WORK_CUR_BGM_NO);
     if (no > SEQ_GS_P_START) {
         Snd_SetUNK_58(no);
         *cur_bgm = GBSounds_GetDSSeqNoByGBSeqNo(no);
-    }
-    else {
+    } else {
         *cur_bgm = no;
     }
     Snd_SetNextBGM(0);
 }
 
 u16 Snd_GetCurrentlyPlayingBGM(void) {
-    return *(u16 *) GF_SdatGetAttrPtr(SOUND_WORK_CUR_BGM_NO);
+    return *(u16 *)GF_SdatGetAttrPtr(SOUND_WORK_CUR_BGM_NO);
 }
 
 void Snd_SetNextBGM(u16 no) {
-    *(u16 *) GF_SdatGetAttrPtr(SOUND_WORK_NEXT_BGM_NO) = no;
+    *(u16 *)GF_SdatGetAttrPtr(SOUND_WORK_NEXT_BGM_NO) = no;
 }
 
 static u16 Snd_GetNextBGM(void) {
-    return *(u16 *) GF_SdatGetAttrPtr(SOUND_WORK_NEXT_BGM_NO);
+    return *(u16 *)GF_SdatGetAttrPtr(SOUND_WORK_NEXT_BGM_NO);
 }
 
 void Snd_SetUNK_58(u16 unkA) {
-    *(u16 *) GF_SdatGetAttrPtr(SOUND_WORK_UNK_58) = unkA;
+    *(u16 *)GF_SdatGetAttrPtr(SOUND_WORK_UNK_58) = unkA;
 }
 
 void Snd_SetZoneBGM(u16 unkA) {
-    *(u16 *) GF_SdatGetAttrPtr(SOUND_WORK_ZONE_BGM) = unkA;
+    *(u16 *)GF_SdatGetAttrPtr(SOUND_WORK_MAP_MUSIC) = unkA;
 }
 
 void Snd_SetScene(u8 scene) {
-    u8* scene_main = (u8 *) GF_SdatGetAttrPtr(SOUND_WORK_SCENE_MAIN);
-    u8* scene_sub = (u8 *) GF_SdatGetAttrPtr(SOUND_WORK_SCENE_SUB);
+    u8* scene_main = (u8 *)GF_SdatGetAttrPtr(SOUND_WORK_SCENE_MAIN);
+    u8* scene_sub = (u8 *)GF_SdatGetAttrPtr(SOUND_WORK_SCENE_SUB);
     if (scene < SOUND_SUB) {
         *scene_main = scene;
         *scene_sub = SOUND_MAIN_DUMMY;
@@ -101,7 +100,7 @@ void Snd_SetScene(u8 scene) {
 
 static void Snd_SetSubscene(u8 scene) {
     GF_SdatGetAttrPtr(SOUND_WORK_SCENE_MAIN);
-    *(u8 *) GF_SdatGetAttrPtr(SOUND_WORK_SCENE_SUB) = scene;
+    *(u8 *)GF_SdatGetAttrPtr(SOUND_WORK_SCENE_SUB) = scene;
 }
 
 void Snd_ClearBGMHeapAndSubscene(void) {
@@ -300,8 +299,7 @@ BOOL Snd_SetDataByScene(u8 scene, u16 no, int flag) {
         if (*scene_main == scene) {    
             return FALSE;
         }
-    }
-    else if (*scene_sub == scene) {
+    } else if (*scene_sub == scene) {
         return FALSE;    
     }
 
@@ -410,7 +408,7 @@ static void Snd_SetFieldData(u16 no, int flag) {
 
     u8* field_pause_flag = GF_SdatGetAttrPtr(SOUND_WORK_FIELD_PAUSE_FLAG);
     int* heap_save_global = GF_SdatGetAttrPtr(SOUND_WORK_HEAP_SAVE_GLOBAL);
-    u16* zone_bgm = GF_SdatGetAttrPtr(SOUND_WORK_ZONE_BGM);
+    u16* zone_bgm = GF_SdatGetAttrPtr(SOUND_WORK_MAP_MUSIC);
 
     temp = GF_SndPlayerGetSeqNo(GF_GetSoundHandle(SOUND_WORK_WAVEOUT_HANDLE_NORMAL));
 
@@ -459,14 +457,13 @@ static void Snd_SetFieldData(u16 no, int flag) {
 }
 
 static void Snd_SetFieldDataWithoutDelay(u16 no, u16 unused) {
-    u16* zone_bgm = GF_SdatGetAttrPtr(SOUND_WORK_ZONE_BGM);
+    u16* zone_bgm = GF_SdatGetAttrPtr(SOUND_WORK_MAP_MUSIC);
     u32 tmp_bank_no = Snd_GetBank(*zone_bgm);   
 
     if (tmp_bank_no == BANK_BASIC) {
         GF_Snd_LoadSeqEx(no, NNS_SND_ARC_LOAD_WAVE);   
         GF_ASSERT(FALSE);
-    }
-    else {
+    } else {
         GF_Snd_LoadSeqEx(*zone_bgm, NNS_SND_ARC_LOAD_WAVE | NNS_SND_ARC_LOAD_BANK);
     }
 
@@ -480,8 +477,8 @@ static void Snd_SetFieldDataWithoutDelay(u16 no, u16 unused) {
 
 void Snd_SetFieldSubData(u16 no, u16 old_bank_no) {
     u32 tmp_bank_no;
-    u8* bank_flag    = GF_SdatGetAttrPtr(SOUND_WORK_BANK_FLAG);
-    u16* zone_bgm    = GF_SdatGetAttrPtr(SOUND_WORK_ZONE_BGM);
+    u8* bank_flag = GF_SdatGetAttrPtr(SOUND_WORK_BANK_FLAG);
+    u16* zone_bgm = GF_SdatGetAttrPtr(SOUND_WORK_MAP_MUSIC);
 
     if ((*bank_flag == SND_BANK_FLAG_CHANGE) || (old_bank_no == 0)) {
         GF_Snd_LoadState(Snd_GetSaveHeap(SOUND_SAVE_HEAP_GLOBAL));  
@@ -498,8 +495,7 @@ void Snd_SetFieldSubData(u16 no, u16 old_bank_no) {
         if ((tmp_bank_no == BANK_BASIC)) {
             GF_Snd_LoadSeqEx(no, NNS_SND_ARC_LOAD_WAVE);  
             GF_ASSERT(FALSE);
-        }
-        else {
+        } else {
             GF_Snd_LoadSeqEx(*zone_bgm, NNS_SND_ARC_LOAD_WAVE);  
         }
         GF_Snd_SaveState(GF_SdatGetAttrPtr(SOUND_WORK_HEAP_SAVE_BGM));
@@ -569,7 +565,6 @@ static void Snd_SetDemoData(u8 scene, u16 bgm, int flag) {
 }
 
 void BGM_SaveStateAndPlayBGM(u16 no) {
-    int ret;
     SND_WORK* wk = GetSoundDataPointer();
 
     Snd_FieldPauseOrStop();
@@ -624,12 +619,10 @@ void SndPause(u8 player, BOOL flag) {
     if (player == PLAYER_FIELD) {
         pause_flag = GF_SdatGetAttrPtr(SOUND_WORK_FIELD_PAUSE_FLAG);
         handle_no = SND_HANDLE_FIELD;
-    }
-    else if (player == PLAYER_BGM) {
+    } else if (player == PLAYER_BGM) {
         pause_flag = GF_SdatGetAttrPtr(SOUND_WORK_BGM_PAUSE_FLAG);
         handle_no = SND_HANDLE_BGM;
-    }
-    else {
+    } else {
         return;
     }
     
@@ -807,8 +800,7 @@ NNSSndWaveOutHandle* GetWaveoutHandle(u32 no) {
 
     if (no == WAVEOUT_CHANNEL_NORMAL) {
         return GF_SdatGetAttrPtr(SOUND_WORK_WAVEOUT_HANDLE_NORMAL);
-    }
-    else {
+    } else {
         return GF_SdatGetAttrPtr(SOUND_WORK_WAVEOUT_HANDLE_CHORUS);
     }
 }
@@ -834,12 +826,10 @@ BOOL AllocWaveoutChannel(u32 no) {
                 return FALSE;  
             }
             *ch_normal_flag = 1; 
-        }
-        else {
+        } else {
             GF_ASSERT(FALSE);
         }
-    }
-    else {
+    } else {
         if (*ch_chorus_flag == 0) { 
             wave_handle = GF_SdatGetAttrPtr(SOUND_WORK_WAVEOUT_HANDLE_CHORUS);
             *wave_handle = NNS_SndWaveOutAllocChannel(no); 
@@ -847,8 +837,7 @@ BOOL AllocWaveoutChannel(u32 no) {
                 return FALSE; 
             }
             *ch_chorus_flag = 1;   
-        }
-        else {
+        } else {
             GF_ASSERT(FALSE);
         }
     }
@@ -873,19 +862,16 @@ void FreeWaveoutChannel(u32 no) {
             NNS_SndWaveOutFreeChannel(*wave_handle);
             *ch_normal_flag = 0; 
 
-        }
-        else {
+        } else {
             GF_ASSERT(FALSE);
         }
-    }
-    else {
+    } else {
         if (*ch_chorus_flag == 1) {  
             wave_handle = GetWaveoutHandle(no);
             NNS_SndWaveOutFreeChannel(*wave_handle);
             *ch_chorus_flag = 0; 
 
-        }
-        else {
+        } else {
             GF_ASSERT(FALSE);
         }
     }
@@ -919,8 +905,7 @@ void SetWaveoutPan(u32 no, u8 pan) {
 
     if (pan > 127) {
         set_pan = 127;
-    }
-    else {
+    } else {
         set_pan = pan;
     }
 
@@ -934,8 +919,7 @@ void SetWaveoutSpeed(u32 no, u32 spd) {
 void SetWaveoutVol(u32 no, int vol) {
     if (sub_020378CC() == TRUE) {
         NNS_SndWaveOutSetVolume(*GetWaveoutHandle(no), (vol/SND_VCHAT_VOL_LV)); 
-    }
-    else {
+    } else {
         NNS_SndWaveOutSetVolume(*GetWaveoutHandle(no), vol);
     }
 }
@@ -1008,7 +992,7 @@ static void Snd_ReverseBuffer(u8* p, u32 size) {
     int i;
     u8 temp;
 
-    for (i=0; i < (size / 2) ;i++) {
+    for (i = 0; i < (size / 2); i++) {
         temp = p[i];    
         p[i] = p[size-1-i];
         p[size-1-i] = temp;
@@ -1108,7 +1092,7 @@ s8* Snd_GetWaveBufferAdrs(void) {
 }
 
 void Snd_SetBankFlag(int flag) {
-    *(u8 *) GF_SdatGetAttrPtr(SOUND_WORK_BANK_FLAG) = flag;
+    *(u8 *)GF_SdatGetAttrPtr(SOUND_WORK_BANK_FLAG) = flag;
 }
 
 BOOL StartMusic(u16 no, int frame, int next_wait, u8 flag, void* adrs) {
@@ -1164,8 +1148,7 @@ void Snd_SetBGMAndReverb(int flag) {
     if (flag == 0) {
         GF_SndSetAllocatableChannelForBGMPlayer(BGM_CHANNEL_NORMAL);
         GF_SndCaptureStopReverb(0);
-    } 
-    else {
+    } else {
         GF_SndSetAllocatableChannelForBGMPlayer(0x00003FFF);
     }
     Snd_CaptureIsActive();
@@ -1176,8 +1159,7 @@ static void Snd_FieldPauseOrStop(void) {
         (GF_SndPlayerGetSeqNo(GF_GetSoundHandle(SND_HANDLE_FIELD)) != -1)) {
         sub_02005FD8(); 
         SndPause(PLAYER_FIELD, TRUE);  
-    }
-    else {
+    } else {
         sub_02005FA0();                                
     }
 }
@@ -1187,11 +1169,11 @@ void GF_SndHandleSetPlayerVolume(int player_no, int vol) {
 }
 
 void Snd_SetPVDoubleFlag(u8 flag) {
-    *(u8 *) GF_SdatGetAttrPtr(SOUND_WORK_PV_DOUBLE_FLAG) = flag;
+    *(u8 *)GF_SdatGetAttrPtr(SOUND_WORK_CRY_DOUBLE_FLAG) = flag;
 }
 
 void Snd_SetBattleRecFlag(u8 flag) {
-    *(u8 *) GF_SdatGetAttrPtr(SOUND_WORK_BATTLE_REC_FLAG) = flag;
+    *(u8 *)GF_SdatGetAttrPtr(SOUND_WORK_BATTLE_REC_FLAG) = flag;
 }
 
 BOOL Snd_ReadPlayerVariable(u16 seq_no, u16 varNo, s16* var) {
@@ -1207,7 +1189,7 @@ BOOL Snd_ReadPlayerVariable(u16 seq_no, u16 varNo, s16* var) {
 }
 
 void sub_02005BA8(u16 no) {
-    u8* index = (u8 *) GF_SdatGetAttrPtr(SOUND_WORK_UNK_55);
+    u8* index = (u8 *)GF_SdatGetAttrPtr(SOUND_WORK_UNK_55);
     Snd_SetVol(no, _020F5710[*index][1]);
     GF_SndHandleSetTrackPitch(4, 0x0000FFFF, _020F5710[*index][0]);
     if (index[1] >= 8) {
@@ -1216,27 +1198,26 @@ void sub_02005BA8(u16 no) {
 }
 
 void Snd_SetUNK_56(u8 unk) {
-    *(u8 *) GF_SdatGetAttrPtr(SOUND_WORK_UNK_56) = unk;
+    *(u8 *)GF_SdatGetAttrPtr(SOUND_WORK_UNK_56) = unk;
 }
 
 u8 Snd_GetUNK_56(void) {
-    return *(u8 *) GF_SdatGetAttrPtr(SOUND_WORK_UNK_56);
+    return *(u8 *)GF_SdatGetAttrPtr(SOUND_WORK_UNK_56);
 }
 
 static void Snd_SetGBSoundsState(u8 val) {
-    *(u8 *) GF_SdatGetAttrPtr(SOUND_WORK_UNK_57) = val;
+    *(u8 *)GF_SdatGetAttrPtr(SOUND_WORK_UNK_57) = val;
 }
 
 u8 SoundSys_GetGBSoundsState(void) {
-    return *(u8 *) GF_SdatGetAttrPtr(SOUND_WORK_UNK_57);
+    return *(u8 *)GF_SdatGetAttrPtr(SOUND_WORK_UNK_57);
 }
 
 void SoundSys_ToggleGBSounds(void) {
     u8 state = SoundSys_GetGBSoundsState();
     if (state == 0) {
         Snd_SetGBSoundsState(1);
-    }
-    else {
+    } else {
         Snd_SetGBSoundsState(0);
     }
     if (Snd_GetNextBGM() == 0) {

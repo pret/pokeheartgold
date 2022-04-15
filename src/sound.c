@@ -102,7 +102,7 @@ void DoSoundUpdateFrame(void) {
 
     // debug stuff left in
     void *stripped_0 = GF_SdatGetAttrPtr(SOUND_WORK_CHORUS_FLAG);
-    void *stripped_1 = GF_SdatGetAttrPtr(SOUND_WORK_ZONE_BGM);
+    void *stripped_1 = GF_SdatGetAttrPtr(SOUND_WORK_MAP_MUSIC);
 
     // Only handle fade transitions if fanfare not playing
     if (!GF_SndIsFanfarePlaying()) {
@@ -212,7 +212,7 @@ void *GF_SdatGetAttrPtr(u32 attr) {
     switch (attr) {
     case SOUND_WORK_CTRL_BGM_FLAG:
         return &work->cntrlBGMFlag;
-    case SOUND_WORK_PV_WAIT_WORK:
+    case SOUND_WORK_CRY_DELAY_WORK:
         return &work->pvWait;
     case SOUND_WORK_WAVEOUT_HANDLE_NORMAL:
         return &work->waveoutHandleNormal;
@@ -274,7 +274,7 @@ void *GF_SdatGetAttrPtr(u32 attr) {
         return &work->chatotPlayFlag;
     case SOUND_WORK_CHATOT_DEFAULT_FLAG:
         return &work->chatotDefaultFlag;
-    case SOUND_WORK_ZONE_BGM:
+    case SOUND_WORK_MAP_MUSIC:
         return &work->zoneBGM;
     case SOUND_WORK_WAVE_DATA:
         return &work->wavedata;
@@ -292,31 +292,31 @@ void *GF_SdatGetAttrPtr(u32 attr) {
         return &work->otherChatots[2];
     case SOUND_WORK_CHATOT_PTR4:
         return &work->otherChatots[3];
-    case SOUND_WORK_PV_PTN:
+    case SOUND_WORK_CRY_PTR:
         return &work->cryPattern[0];
-    case SOUND_WORK_PV_PAN:
+    case SOUND_WORK_CRY_PAN:
         return &work->cryPan[0];
     case SOUND_WORK_VOLUME:
         return &work->cryVolume[0];
-    case SOUND_WORK_PV_HEAP_ID:
+    case SOUND_WORK_CRY_HEAP_ID:
         return &work->cryHeapId[0];
-    case SOUND_WORK_PV_NO:
+    case SOUND_WORK_CRY_NO:
         return &work->cryNo[0];
-    case SOUND_WORK_PV_WAIT:
+    case SOUND_WORK_CRY_DELAY:
         return &work->cryDelayTimer[0];
-    case SOUND_WORK_PV_PTN_2:
+    case SOUND_WORK_CRY_PTR_2:
         return &work->cryPattern[1];
-    case SOUND_WORK_PV_PAN_2:
+    case SOUND_WORK_CRY_PAN_2:
         return &work->cryPan[1];
     case SOUND_WORK_VOLUME_2:
         return &work->cryVolume[1];
-    case SOUND_WORK_PV_HEAP_ID_2:
+    case SOUND_WORK_CRY_HEAP_ID_2:
         return &work->cryHeapId[1];
-    case SOUND_WORK_PV_NO_2:
+    case SOUND_WORK_CRY_NO_2:
         return &work->cryNo[1];
-    case SOUND_WORK_PV_WAIT_2:
+    case SOUND_WORK_CRY_DELAY_2:
         return &work->cryDelayTimer[1];
-    case SOUND_WORK_PV_DOUBLE_FLAG:
+    case SOUND_WORK_CRY_DOUBLE_FLAG:
         return &work->pvDoubleFlag;
     case SOUND_WORK_BATTLE_REC_FLAG:
         return &work->battleRecFlag;
