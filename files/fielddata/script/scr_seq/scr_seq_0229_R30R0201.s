@@ -17,7 +17,7 @@ scr_seq_R30R0201_003:
 	end
 
 _0021:
-	move_person obj_R30R0201_gsgentleman, 5, 0, 6, 3
+	move_person_facing obj_R30R0201_gsgentleman, 5, 0, 6, DIR_EAST
 	end
 
 scr_seq_R30R0201_001:

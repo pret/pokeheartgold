@@ -1,12 +1,11 @@
 #include "pokedex.h"
 #include "pokemon.h"
+#include "unk_02091278.h"
 #include "constants/species.h"
 #include "constants/johto_dex.h"
 
 #define POKEDEX_MAGIC (0xBEEFCAFE)
 #define ASSERT_POKEDEX(pokedex) do { GF_ASSERT((pokedex)->magic == POKEDEX_MAGIC);} while (0)
-
-extern int LanguageToDexFlag(u32 language);
 
 void Pokedex_InitDeoxysFormeOrder(POKEDEX *pokedex);
 u16 *LoadSpeciesToJohtoDexNoLUT(void);

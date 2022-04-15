@@ -17,7 +17,7 @@ scr_seq_W40R0101_001:
 	end
 
 _0028:
-	move_person obj_W40R0101_gsmiddleman1, 3, 0, 3, 0
+	move_person_facing obj_W40R0101_gsmiddleman1, 3, 0, 3, DIR_NORTH
 	end
 
 _0036:

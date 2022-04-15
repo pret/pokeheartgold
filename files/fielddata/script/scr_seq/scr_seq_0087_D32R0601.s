@@ -473,9 +473,9 @@ scr_seq_D32R0601_001:
 	.byte 0x02
 	.byte 0x00
 _0711:
-	scrcmd_345
+	add_waiting_icon
 	save_game_normal VAR_SPECIAL_RESULT
-	scrcmd_346
+	remove_waiting_icon
 	play_se SEQ_SE_DP_SAVE
 	wait_se SEQ_SE_DP_SAVE
 	return

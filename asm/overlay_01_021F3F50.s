@@ -282,7 +282,7 @@ SaveStatsPrinter_Print: ; 0x021F412C
 	ldrb r1, [r4, #8]
 	ldr r0, [r4, #0xc]
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0
 	mov r1, #6
 	bl GetFontAttribute

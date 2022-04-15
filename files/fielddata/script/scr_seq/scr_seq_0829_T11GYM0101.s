@@ -152,7 +152,7 @@ scr_seq_T11GYM0101_003:
 	wait_movement
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_T11GYM0101, 0, 15, 23, 1
+	warp MAP_T11GYM0101, 0, 15, 23, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

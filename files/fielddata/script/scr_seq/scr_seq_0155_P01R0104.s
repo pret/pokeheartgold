@@ -18,7 +18,7 @@ _0021:
 	scrcmd_804 2
 	setflag FLAG_UNK_168
 	setflag FLAG_SYS_FLYPOINT_VERMILION
-	scrcmd_582 54, 1309, 340
+	scrcmd_582 MAP_T06, 1309, 340
 	end
 
 scr_seq_P01R0104_002:
@@ -27,7 +27,7 @@ scr_seq_P01R0104_002:
 	end
 
 _0045:
-	move_person obj_P01R0104_seaman_2, 24, 0, 19, 2
+	move_person_facing obj_P01R0104_seaman_2, 24, 0, 19, DIR_WEST
 	end
 
 scr_seq_P01R0104_001:

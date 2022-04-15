@@ -38,13 +38,13 @@ scr_seq_D32R0401_021:
 	end
 
 _007A:
-	scrcmd_338 11, 8, 11
-	move_person obj_D32R0401_var_10, 8, 0, 11, 2
+	move_person obj_D32R0401_var_10, 8, 11
+	move_person_facing obj_D32R0401_var_10, 8, 0, 11, DIR_WEST
 	return
 
 _0090:
-	scrcmd_338 11, 13, 11
-	move_person obj_D32R0401_var_10, 13, 0, 11, 2
+	move_person obj_D32R0401_var_10, 13, 11
+	move_person_facing obj_D32R0401_var_10, 13, 0, 11, DIR_WEST
 	return
 
 scr_seq_D32R0401_020:
@@ -600,9 +600,9 @@ scr_seq_D32R0401_001:
 	goto _0689
 	.byte 0x02, 0x00
 _08D9:
-	scrcmd_345
+	add_waiting_icon
 	save_game_normal VAR_SPECIAL_RESULT
-	scrcmd_346
+	remove_waiting_icon
 	play_se SEQ_SE_DP_SAVE
 	wait_se SEQ_SE_DP_SAVE
 	return

@@ -35,15 +35,15 @@ _0058:
 	get_player_gender VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_ne _007B
-	move_person obj_D49R0107_statueheroine, 28, 0, 28, 0
+	move_person_facing obj_D49R0107_statueheroine, 28, 0, 28, DIR_NORTH
 	goto _0087
 
 _007B:
-	move_person obj_D49R0107_statuehero, 28, 0, 28, 0
+	move_person_facing obj_D49R0107_statuehero, 28, 0, 28, DIR_NORTH
 _0087:
 	compare VAR_TEMP_x400E, 1
 	goto_if_ne _00A6
-	move_person obj_D49R0107_thlonowner, 9, 0, 9, 1
+	move_person_facing obj_D49R0107_thlonowner, 9, 0, 9, DIR_SOUTH
 	setvar VAR_TEMP_x400E, 0
 _00A6:
 	end

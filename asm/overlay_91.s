@@ -6940,7 +6940,7 @@ ov91_0225F878: ; 0x0225F878
 	ldr r0, [r5]
 	add r2, r1, #0
 	mov r3, #4
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	add sp, #0xc0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

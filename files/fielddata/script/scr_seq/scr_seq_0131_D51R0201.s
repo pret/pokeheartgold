@@ -591,7 +591,7 @@ _0833:
 	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 14
 	goto_if_eq _086E
 	release obj_D51R0201_champion
-	move_person obj_D51R0201_champion, 16, 1, 28, 0
+	move_person_facing obj_D51R0201_champion, 16, 1, 28, DIR_NORTH
 	wait 5, VAR_SPECIAL_RESULT
 	lock obj_D51R0201_champion
 _086E:
@@ -727,7 +727,7 @@ _0AAA:
 	goto_if_ne _0AE5
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0216, 0, 9, 24, 1
+	warp MAP_D24R0216, 0, 9, 24, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0BAE
@@ -737,7 +737,7 @@ _0AE5:
 	goto_if_ne _0B1C
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0218, 0, 9, 24, 1
+	warp MAP_D24R0218, 0, 9, 24, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0BAE
@@ -747,7 +747,7 @@ _0B1C:
 	goto_if_ne _0B53
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0218, 0, 9, 24, 1
+	warp MAP_D24R0218, 0, 9, 24, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0BAE
@@ -757,7 +757,7 @@ _0B53:
 	goto_if_ne _0B8A
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0218, 0, 9, 24, 1
+	warp MAP_D24R0218, 0, 9, 24, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0BAE
@@ -765,7 +765,7 @@ _0B53:
 _0B8A:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0205, 0, 9, 24, 1
+	warp MAP_D24R0205, 0, 9, 24, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _0BAE:

@@ -1741,7 +1741,7 @@ sub_02059820: ; 0x02059820
 	ldr r0, [r0, #8]
 	mov r2, #1
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	ldr r0, [sp, #0x20]
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
@@ -1866,7 +1866,7 @@ sub_0205993C: ; 0x0205993C
 	ldr r0, [r0, #8]
 	mov r2, #1
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	add r0, r7, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer

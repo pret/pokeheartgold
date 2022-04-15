@@ -213,8 +213,8 @@ EventObjectMovementMan_IsFinish: ; 0x02062260
 	.balign 4, 0
 	thumb_func_end EventObjectMovementMan_IsFinish
 
-	thumb_func_start sub_0206226C
-sub_0206226C: ; 0x0206226C
+	thumb_func_start EventObjectMovementMan_Delete
+EventObjectMovementMan_Delete: ; 0x0206226C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl sub_0201F988
@@ -234,7 +234,7 @@ _02062284:
 	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0206226C
+	thumb_func_end EventObjectMovementMan_Delete
 
 	thumb_func_start MovementScriptMachine
 MovementScriptMachine: ; 0x0206229C

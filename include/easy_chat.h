@@ -22,6 +22,7 @@ struct WallpaperPasswordBank {
     u32 *words;
 };
 
+SAVE_EASY_CHAT_T *SaveData_EasyChat_get(SAVEDATA *saveData);
 u16 GetECWordIndexByPair(u32 msgBank, u32 word);
 u16 EasyChat_GetMsgBankForGroup(int category);
 void GetECWordIntoStringByIndex(u16 ecWord, STRING *dest);
@@ -33,7 +34,7 @@ void Sav2_EasyChat_init(SAVE_EASY_CHAT_T *ec);
 BOOL SaveEasyChat_GetTrendySayingFlag(SAVE_EASY_CHAT_T *ec, int flag);
 u32 SaveEasyChat_RandomTrendySayingSet(SAVE_EASY_CHAT_T *ec);
 BOOL SaveEasyChat_TrendySayingsUnlockedAllCheck(SAVE_EASY_CHAT_T *ec);
-ECWORD TrendyWordIdxToECWord(u16 a0);
+ECWORD TrendyWordIdxToECWord(int a0);
 BOOL SaveEasyChat_GetGreetingsFlag(SAVE_EASY_CHAT_T *ec, u8 idx);
 void SaveEasyChat_SetGreetingFlag(SAVE_EASY_CHAT_T *ec, u8 idx);
 void WallpaperPasswordBank_Delete(struct WallpaperPasswordBank *pwdBank);

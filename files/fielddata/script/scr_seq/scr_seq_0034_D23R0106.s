@@ -44,7 +44,7 @@ scr_seq_D23R0106_001:
 	reset_bgm
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	move_person obj_D23R0106_gsgentleman, 8, 1, 12, 1
+	move_person_facing obj_D23R0106_gsgentleman, 8, 1, 12, DIR_SOUTH
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4000, 7
 	goto_if_ne _00C1

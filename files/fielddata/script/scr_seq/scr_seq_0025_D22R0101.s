@@ -40,7 +40,7 @@ scr_seq_D22R0101_011:
 	end
 
 _007D:
-	move_person obj_D22R0101_counterm, 51, 0, 48, 1
+	move_person_facing obj_D22R0101_counterm, 51, 0, 48, DIR_SOUTH
 	setvar VAR_TEMP_x4000, 0
 	setvar VAR_TEMP_x4001, 10
 	setvar VAR_TEMP_x4002, 48
@@ -49,7 +49,7 @@ _009F:
 	is_npc_bug_contestant_registered VAR_TEMP_x4000, VAR_TEMP_x4004
 	compare VAR_TEMP_x4004, 1
 	goto_if_ne _00C4
-	move_person VAR_TEMP_x4001, VAR_TEMP_x4002, 0, 50, 0
+	move_person_facing VAR_TEMP_x4001, VAR_TEMP_x4002, 0, 50, DIR_NORTH
 	addvar VAR_TEMP_x4002, 2
 _00C4:
 	addvar VAR_TEMP_x4000, 1

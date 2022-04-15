@@ -526,7 +526,7 @@ _0204C166:
 	cmp r0, #0
 	beq _0204C186
 	mov r0, #RIBBON_RED
-	bl sub_0208E5E0
+	bl GetSpecialRibbonNo
 	ldrb r1, [r5]
 	strb r1, [r6, r0]
 _0204C186:
@@ -537,7 +537,7 @@ _0204C186:
 	cmp r0, #0
 	beq _0204C19E
 	mov r0, #RIBBON_GREEN
-	bl sub_0208E5E0
+	bl GetSpecialRibbonNo
 	ldrb r1, [r5, #1]
 	strb r1, [r6, r0]
 _0204C19E:
@@ -548,7 +548,7 @@ _0204C19E:
 	cmp r0, #0
 	beq _0204C1B6
 	mov r0, #RIBBON_BLUE
-	bl sub_0208E5E0
+	bl GetSpecialRibbonNo
 	ldrb r1, [r5, #2]
 	strb r1, [r6, r0]
 _0204C1B6:
@@ -559,7 +559,7 @@ _0204C1B6:
 	cmp r0, #0
 	beq _0204C1CE
 	mov r0, #RIBBON_FESTIVAL
-	bl sub_0208E5E0
+	bl GetSpecialRibbonNo
 	ldrb r1, [r5, #3]
 	strb r1, [r6, r0]
 _0204C1CE:
@@ -570,7 +570,7 @@ _0204C1CE:
 	cmp r0, #0
 	beq _0204C1E6
 	mov r0, #RIBBON_CARNIVAL
-	bl sub_0208E5E0
+	bl GetSpecialRibbonNo
 	ldrb r1, [r5, #4]
 	strb r1, [r6, r0]
 _0204C1E6:
@@ -581,7 +581,7 @@ _0204C1E6:
 	cmp r0, #0
 	beq _0204C1FE
 	mov r0, #RIBBON_CLASSIC
-	bl sub_0208E5E0
+	bl GetSpecialRibbonNo
 	ldrb r1, [r5, #5]
 	strb r1, [r6, r0]
 _0204C1FE:
@@ -592,7 +592,7 @@ _0204C1FE:
 	cmp r0, #0
 	beq _0204C216
 	mov r0, #RIBBON_PREMIER
-	bl sub_0208E5E0
+	bl GetSpecialRibbonNo
 	ldrb r1, [r5, #6]
 	strb r1, [r6, r0]
 _0204C216:
@@ -603,7 +603,7 @@ _0204C216:
 	cmp r0, #0
 	beq _0204C22E
 	mov r0, #RIBBON_HOENN_MARINE
-	bl sub_0208E5E0
+	bl GetSpecialRibbonNo
 	ldrb r1, [r5, #7]
 	strb r1, [r6, r0]
 _0204C22E:
@@ -614,7 +614,7 @@ _0204C22E:
 	cmp r0, #0
 	beq _0204C246
 	mov r0, #RIBBON_HOENN_LAND
-	bl sub_0208E5E0
+	bl GetSpecialRibbonNo
 	ldrb r1, [r5, #8]
 	strb r1, [r6, r0]
 _0204C246:
@@ -625,7 +625,7 @@ _0204C246:
 	cmp r0, #0
 	beq _0204C25E
 	mov r0, #RIBBON_HOENN_SKY
-	bl sub_0208E5E0
+	bl GetSpecialRibbonNo
 	ldrb r1, [r5, #9]
 	strb r1, [r6, r0]
 _0204C25E:

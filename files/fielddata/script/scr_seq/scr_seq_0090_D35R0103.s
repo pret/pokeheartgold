@@ -29,8 +29,8 @@ scr_seq_D35R0103_002:
 	end
 
 _004F:
-	move_person obj_D35R0103_babyboy1_9, 29, 0, 22, 0
-	move_person obj_D35R0103_babyboy1_9_2, 29, 0, 22, 0
+	move_person_facing obj_D35R0103_babyboy1_9, 29, 0, 22, DIR_NORTH
+	move_person_facing obj_D35R0103_babyboy1_9_2, 29, 0, 22, DIR_NORTH
 	compare VAR_UNK_40AC, 10
 	goto_if_ge _00B0
 	compare VAR_UNK_40A9, 4
@@ -41,8 +41,8 @@ _0083:
 	compare VAR_TEMP_x4007, 0
 	goto_if_ne _00B0
 	setvar VAR_TEMP_x4007, 77
-	move_person obj_D35R0103_wataru, 39, 0, 18, 0
-	move_person obj_D35R0103_tsure_poke_static_dragonite, 40, 0, 18, 0
+	move_person_facing obj_D35R0103_wataru, 39, 0, 18, DIR_NORTH
+	move_person_facing obj_D35R0103_tsure_poke_static_dragonite, 40, 0, 18, DIR_NORTH
 	end
 
 _00B0:
@@ -294,8 +294,8 @@ scr_seq_D35R0103_003:
 	clearflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_ARIANA
 	show_person obj_D35R0103_rkanbuw
 	show_person obj_D35R0103_rocketm_4
-	move_person obj_D35R0103_rkanbuw, 32, 1, 30, 3
-	move_person obj_D35R0103_rocketm_4, 30, 1, 30, 0
+	move_person_facing obj_D35R0103_rkanbuw, 32, 1, 30, DIR_EAST
+	move_person_facing obj_D35R0103_rocketm_4, 30, 1, 30, DIR_NORTH
 	scrcmd_081 0
 	play_bgm SEQ_GS_EYE_ROCKET
 	scrcmd_602 0
@@ -323,8 +323,8 @@ _0436:
 	clearflag FLAG_UNK_1E5
 	show_person obj_D35R0103_wataru
 	show_person obj_D35R0103_tsure_poke_static_dragonite
-	move_person obj_D35R0103_wataru, 20, 1, 25, 3
-	move_person obj_D35R0103_tsure_poke_static_dragonite, 19, 1, 25, 0
+	move_person_facing obj_D35R0103_wataru, 20, 1, 25, DIR_EAST
+	move_person_facing obj_D35R0103_tsure_poke_static_dragonite, 19, 1, 25, DIR_NORTH
 	apply_movement obj_D35R0103_wataru, _067C
 	apply_movement obj_D35R0103_tsure_poke_static_dragonite, _0684
 	wait_movement
@@ -348,8 +348,8 @@ _0436:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	move_person obj_D35R0103_wataru, 28, 1, 24, 1
-	move_person obj_D35R0103_tsure_poke_static_dragonite, 27, 1, 24, 3
+	move_person_facing obj_D35R0103_wataru, 28, 1, 24, DIR_SOUTH
+	move_person_facing obj_D35R0103_tsure_poke_static_dragonite, 27, 1, 24, DIR_EAST
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -402,8 +402,8 @@ _0436:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	move_person obj_D35R0103_wataru, 39, 0, 18, 0
-	move_person obj_D35R0103_tsure_poke_static_dragonite, 40, 0, 18, 0
+	move_person_facing obj_D35R0103_wataru, 39, 0, 18, DIR_NORTH
+	move_person_facing obj_D35R0103_tsure_poke_static_dragonite, 40, 0, 18, DIR_NORTH
 	releaseall
 	setvar VAR_UNK_40AC, 9
 	setvar VAR_UNK_40A9, 4

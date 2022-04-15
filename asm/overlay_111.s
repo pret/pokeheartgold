@@ -2261,7 +2261,7 @@ ov111_021E6A44: ; 0x021E6A44
 	add r1, r6, #0
 	mov r3, #0xd
 	str r4, [sp, #4]
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	nop
@@ -2318,7 +2318,7 @@ _021E6A92:
 	add r0, r5, #0
 	add r1, r7, #0
 	mov r3, #0xd
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 _021E6ADE:
 	ldr r0, [sp, #0x40]
 	bl Options_GetTextFrameDelay

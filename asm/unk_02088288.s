@@ -2319,7 +2319,7 @@ _02089584:
 	ldr r2, _02089604 ; =0x000003E2
 	mov r1, #1
 	mov r3, #0xd
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	ldr r0, _020895EC ; =0x000007BE
 	ldrb r0, [r5, r0]
 	cmp r0, #0
@@ -3087,7 +3087,7 @@ _02089BDC:
 	lsl r0, r6, #0x18
 	lsr r0, r0, #0x18
 	mov r1, #0
-	bl sub_0208E55C
+	bl GetRibbonAttr
 	add r1, r0, #0
 	add r0, r5, #0
 	mov r2, #0

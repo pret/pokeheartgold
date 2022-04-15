@@ -5313,7 +5313,7 @@ ov80_0222C4D0: ; 0x0222C4D0
 	add r5, r0, #0
 	ldr r0, [r4, #0x74]
 	ldr r1, [r4, #0x34]
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	add r6, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -5325,11 +5325,11 @@ ov80_0222C4D0: ; 0x0222C4D0
 	ldr r0, _0222C528 ; =0x000005DC
 	bl PlaySE
 	ldr r0, [r4, #0x74]
-	bl sub_02001C94
+	bl Get2dMenuSelection
 	add r6, r0, #0
 	ldr r0, [r4, #0x74]
 	ldr r1, [r4, #0x34]
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 	b _0222C516
 _0222C512:
 	mov r0, #0
@@ -9733,7 +9733,7 @@ _0222E60E:
 	ldrb r1, [r1]
 	add r0, #0xa4
 	lsr r2, r2, #0x18
-	bl sub_02001B9C
+	bl Create2dMenu
 	add r1, r5, #0
 	add r1, #0xb0
 	str r0, [r1]
@@ -9941,7 +9941,7 @@ _0222E7E4:
 	add r0, r5, #0
 	add r0, #0xb0
 	ldr r0, [r0]
-	bl sub_02001BE0
+	bl Handle2dMenuInput
 	add r4, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -9953,7 +9953,7 @@ _0222E7E4:
 	add r0, r5, #0
 	add r0, #0xb0
 	ldr r0, [r0]
-	bl sub_02001C94
+	bl Get2dMenuSelection
 	add r4, r0, #0
 _0222E814:
 	ldr r0, _0222E880 ; =gSystem
@@ -10029,7 +10029,7 @@ ov80_0222E88C: ; 0x0222E88C
 	add r0, #0xb0
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02001BC4
+	bl Delete2dMenu
 	add r0, r6, #0
 	add r0, #0xa8
 	ldr r0, [r0]
@@ -10077,7 +10077,7 @@ ov80_0222E8FC: ; 0x0222E8FC
 	add r4, r0, #0
 	add r0, #0xb0
 	ldr r0, [r0]
-	bl sub_02001C94
+	bl Get2dMenuSelection
 	lsl r0, r0, #1
 	add r1, r4, r0
 	mov r0, #0xa7
@@ -31488,7 +31488,7 @@ ov80_02238F10: ; 0x02238F10
 	ldr r2, _02238F98 ; =0x000003E2
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	ldr r0, [r4, #4]
 	mov r1, #0
 	mov r2, #0xb0
@@ -31502,7 +31502,7 @@ ov80_02238F10: ; 0x02238F10
 	ldr r2, _02238F9C ; =0x000003D9
 	mov r1, #1
 	mov r3, #0xc
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	ldr r0, [r4, #4]
 	mov r1, #0
 	mov r2, #0xc0

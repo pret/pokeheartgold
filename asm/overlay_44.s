@@ -2221,7 +2221,7 @@ ov44_0222AEC0: ; 0x0222AEC0
 	add r0, r4, #0
 	mov r1, #2
 	mov r3, #0xa
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0x35
@@ -2230,7 +2230,7 @@ ov44_0222AEC0: ; 0x0222AEC0
 	add r0, r4, #0
 	mov r1, #2
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0x35
@@ -2239,7 +2239,7 @@ ov44_0222AEC0: ; 0x0222AEC0
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -3726,7 +3726,7 @@ ov44_0222BBA4: ; 0x0222BBA4
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0x35
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -5985,7 +5985,7 @@ ov44_0222CE40: ; 0x0222CE40
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0x35
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -6010,7 +6010,7 @@ _0222CE82:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0x35
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 	mov r0, #0
 	mov r1, #0x37
 	mvn r0, r0
@@ -6553,7 +6553,7 @@ ov44_0222D2B0: ; 0x0222D2B0
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0x35
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	add r5, r0, #0
 	mov r0, #0xe3
 	lsl r0, r0, #2
@@ -6583,7 +6583,7 @@ ov44_0222D2B0: ; 0x0222D2B0
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0x35
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 _0222D314:
 	mov r5, #1
 _0222D316:
@@ -9794,7 +9794,7 @@ ov44_0222EC98: ; 0x0222EC98
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0x35
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	add r5, r0, #0
 	mov r0, #6
 	lsl r0, r0, #6
@@ -9819,7 +9819,7 @@ _0222ECD0:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0x35
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 _0222ECEE:
 	mov r5, #1
 	mvn r5, r5
@@ -10108,7 +10108,7 @@ _0222EF08:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0x35
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 	b _0222EF2E
 _0222EF24:
 	mov r0, #0x62
@@ -10140,7 +10140,7 @@ _0222EF42:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0x35
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 	b _0222EF70
 _0222EF66:
 	mov r0, #0x62
@@ -10162,7 +10162,7 @@ _0222EF78:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0x35
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -10438,7 +10438,7 @@ ov44_0222F194: ; 0x0222F194
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0x35
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 	b _0222F1D8
 _0222F1CE:
 	mov r0, #0x62
@@ -10489,7 +10489,7 @@ _0222F21C:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0x35
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 	b _0222F242
 _0222F238:
 	mov r0, #0x62
@@ -10525,7 +10525,7 @@ _0222F260:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0x35
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 	b _0222F28E
 _0222F284:
 	mov r0, #0x62
@@ -10551,7 +10551,7 @@ _0222F296:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0x35
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 	b _0222F2C4
 _0222F2BA:
 	mov r0, #0x62
@@ -10581,7 +10581,7 @@ _0222F2DE:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0x35
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -18944,7 +18944,7 @@ ov44_02233444: ; 0x02233444
 	ldr r0, [r5]
 	add r2, r1, #0
 	mov r3, #2
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r0, #0
 	str r0, [sp]
 	str r4, [sp, #4]
@@ -18952,7 +18952,7 @@ ov44_02233444: ; 0x02233444
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #3
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0
 	str r0, [sp]
 	str r4, [sp, #4]
@@ -18960,7 +18960,7 @@ ov44_02233444: ; 0x02233444
 	mov r1, #2
 	mov r2, #0x30
 	mov r3, #4
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0x13
 	str r0, [sp]
 	mov r0, #0x1b
@@ -19140,7 +19140,7 @@ ov44_022335AC: ; 0x022335AC
 	cmp r0, #0
 	beq _02233628
 	add r1, r4, #0
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 _02233628:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -19487,7 +19487,7 @@ _02233890:
 	ldr r0, [r5]
 	add r2, r1, #0
 	mov r3, #2
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	strb r6, [r5, #0x15]
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
@@ -20877,7 +20877,7 @@ ov44_022342E0: ; 0x022342E0
 	ldr r0, [r5, #0x30]
 	add r2, r1, #0
 	mov r3, #2
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 _0223431E:
 	add sp, #8
 	pop {r4, r5, r6, pc}
@@ -21297,7 +21297,7 @@ ov44_022345FC: ; 0x022345FC
 	add r4, r1, #0
 	ldr r0, [r5, r0]
 	add r1, r6, #0
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -21453,7 +21453,7 @@ ov44_0223471C: ; 0x0223471C
 	add r4, r1, #0
 	ldr r0, [r5, r0]
 	add r1, r2, #0
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -21760,7 +21760,7 @@ ov44_02234944: ; 0x02234944
 	add r4, r1, #0
 	ldr r0, [r5, r0]
 	add r1, r2, #0
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -21859,7 +21859,7 @@ ov44_022349F4: ; 0x022349F4
 	add r4, r1, #0
 	ldr r0, [r5, r0]
 	add r1, r2, #0
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -21962,7 +21962,7 @@ ov44_02234AA8: ; 0x02234AA8
 	cmp r0, #0
 	beq _02234AC8
 	add r1, r4, #0
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 	mov r0, #0x83
 	mov r1, #0
 	lsl r0, r0, #2
@@ -22102,7 +22102,7 @@ ov44_02234BB4: ; 0x02234BB4
 	add r4, r2, #0
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -22625,7 +22625,7 @@ ov44_02234F88: ; 0x02234F88
 	cmp r0, #0
 	beq _02234FA8
 	add r1, r4, #0
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 	mov r0, #0x83
 	mov r1, #0
 	lsl r0, r0, #2
@@ -22775,7 +22775,7 @@ ov44_02235090: ; 0x02235090
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 	mov r1, #0x83
 	mov r0, #0
 	lsl r1, r1, #2
@@ -22786,7 +22786,7 @@ _022350C8:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -22892,7 +22892,7 @@ ov44_0223518C: ; 0x0223518C
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, r2, #0
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1

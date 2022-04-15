@@ -22,7 +22,7 @@ scr_seq_D32R0102_002:
 	end
 
 _0035:
-	move_person obj_D32R0102_gsmiddleman1, 17, 1, 25, 2
+	move_person_facing obj_D32R0102_gsmiddleman1, 17, 1, 25, DIR_WEST
 	end
 
 scr_seq_D32R0102_004:
@@ -67,7 +67,7 @@ scr_seq_D32R0102_001:
 	lockall
 	npc_msg msg_0104_D32R0102_00000
 	closemsg
-	move_person obj_D32R0102_gsmiddleman1, 14, 1, 36, 0
+	move_person_facing obj_D32R0102_gsmiddleman1, 14, 1, 36, DIR_NORTH
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	compare VAR_SPECIAL_x8004, 12
 	goto_if_ne _00E7

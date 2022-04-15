@@ -1861,7 +1861,7 @@ ov121_021E66EC: ; 0x021E66EC
 	str r0, [sp, #4]
 	ldr r0, [r4]
 	mov r3, #0xc
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add sp, #0x14
 	pop {r3, r4, pc}
 	.balign 4, 0

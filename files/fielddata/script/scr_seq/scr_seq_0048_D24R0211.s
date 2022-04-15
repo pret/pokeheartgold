@@ -48,7 +48,7 @@ scr_seq_D24R0211_000:
 scr_seq_D24R0211_001:
 	scrcmd_609
 	lockall
-	move_person obj_D24R0211_gsassistantm, 25, 0, 30, 0
+	move_person_facing obj_D24R0211_gsassistantm, 25, 0, 30, DIR_NORTH
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -66,7 +66,7 @@ scr_seq_D24R0211_001:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0102, 0, 7, 4, 3
+	warp MAP_D24R0102, 0, 7, 4, DIR_EAST
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	scrcmd_344 2, 2

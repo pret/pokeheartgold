@@ -21,24 +21,24 @@ scr_seq_D24R0101_006:
 	compare VAR_UNOWN_REPORT_LEVEL, 6
 	goto_if_eq _0080
 _003C:
-	scrcmd_342 11, 418, 284
-	scrcmd_342 12, 419, 284
-	scrcmd_342 13, 418, 284
-	scrcmd_342 14, 419, 284
+	move_warp 11, 418, 284
+	move_warp 12, 419, 284
+	move_warp 13, 418, 284
+	move_warp 14, 419, 284
 	end
 
 _005E:
-	scrcmd_342 8, 418, 284
-	scrcmd_342 9, 419, 284
-	scrcmd_342 11, 418, 284
-	scrcmd_342 12, 419, 284
+	move_warp 8, 418, 284
+	move_warp 9, 419, 284
+	move_warp 11, 418, 284
+	move_warp 12, 419, 284
 	end
 
 _0080:
-	scrcmd_342 8, 418, 284
-	scrcmd_342 9, 419, 284
-	scrcmd_342 13, 418, 284
-	scrcmd_342 14, 419, 284
+	move_warp 8, 418, 284
+	move_warp 9, 419, 284
+	move_warp 13, 418, 284
+	move_warp 14, 419, 284
 	end
 
 scr_seq_D24R0101_005:
@@ -277,7 +277,7 @@ _03EA:
 	goto_if_ne _0467
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0216, 0, 15, 24, 2
+	warp MAP_D24R0216, 0, 15, 24, DIR_WEST
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0530
@@ -287,7 +287,7 @@ _0467:
 	goto_if_ne _049E
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0218, 0, 15, 24, 2
+	warp MAP_D24R0218, 0, 15, 24, DIR_WEST
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0530
@@ -297,7 +297,7 @@ _049E:
 	goto_if_ne _04D5
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0218, 0, 15, 24, 2
+	warp MAP_D24R0218, 0, 15, 24, DIR_WEST
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0530
@@ -307,7 +307,7 @@ _04D5:
 	goto_if_ne _050C
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0218, 0, 15, 24, 2
+	warp MAP_D24R0218, 0, 15, 24, DIR_WEST
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0530
@@ -315,7 +315,7 @@ _04D5:
 _050C:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0205, 0, 15, 24, 2
+	warp MAP_D24R0205, 0, 15, 24, DIR_WEST
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _0530:

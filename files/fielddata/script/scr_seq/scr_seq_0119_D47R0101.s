@@ -41,7 +41,7 @@ _0062:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D47R0102, 0, 79, 100, 0
+	warp MAP_D47R0102, 0, 79, 100, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	lock obj_partner_poke
@@ -559,7 +559,7 @@ _0773:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D47R0102, 0, 79, 100, 0
+	warp MAP_D47R0102, 0, 79, 100, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	lock obj_partner_poke
@@ -835,9 +835,9 @@ _0BB2:
 	touchscreen_menu_hide
 	npc_msg msg_0135_D47R0101_00082
 	npc_msg msg_0135_D47R0101_00088
-	scrcmd_345
+	add_waiting_icon
 	save_game_normal VAR_SPECIAL_RESULT
-	scrcmd_346
+	remove_waiting_icon
 	buffer_players_name 0
 	npc_msg msg_0135_D47R0101_00089
 	play_se SEQ_SE_DP_SAVE
@@ -946,7 +946,7 @@ _0CCC:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D47R0102, 0, 79, 100, 0
+	warp MAP_D47R0102, 0, 79, 100, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	lock obj_partner_poke

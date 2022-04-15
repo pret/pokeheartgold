@@ -16,7 +16,7 @@
 	scrdef_end
 
 scr_seq_T25R0501_006:
-	scrcmd_582 76, 348, 350
+	scrcmd_582 MAP_T25, 348, 350
 	goto_if_set FLAG_RESTORED_POWER, _0037
 	end
 
@@ -29,7 +29,7 @@ scr_seq_T25R0501_005:
 	end
 
 _004C:
-	move_person obj_T25R0501_policeman, 4, 0, 6, 3
+	move_person_facing obj_T25R0501_policeman, 4, 0, 6, DIR_EAST
 	end
 
 scr_seq_T25R0501_000:

@@ -425,7 +425,7 @@ _021E5BE8:
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x18]
 	mov r3, #4
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0
 	str r1, [sp]
 	ldr r0, [r4]
@@ -433,7 +433,7 @@ _021E5BE8:
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x18]
 	mov r3, #3
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	ldr r2, [r4]
 	mov r0, #0
 	mov r1, #0xa0

@@ -51,7 +51,7 @@ _0082:
 	goto_if_ne _00BA
 	clearflag FLAG_UNK_260
 	setflag FLAG_UNK_2E2
-	scrcmd_341 3, 1
+	set_object_facing obj_T07R0104_gsleader1, DIR_SOUTH
 	goto _00C0
 
 _00BA:

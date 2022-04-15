@@ -470,9 +470,9 @@ _0807:
 	return
 
 _0817:
-	scrcmd_345
+	add_waiting_icon
 	save_game_normal VAR_SPECIAL_RESULT
-	scrcmd_346
+	remove_waiting_icon
 	play_se SEQ_SE_DP_SAVE
 	wait_se SEQ_SE_DP_SAVE
 	return
@@ -481,7 +481,7 @@ _0829:
 	scrcmd_420 59
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D31R0202, 0, 3, 6, 0
+	warp MAP_D31R0202, 0, 3, 6, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

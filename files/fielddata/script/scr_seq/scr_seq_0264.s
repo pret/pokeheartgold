@@ -24,7 +24,7 @@ _002E:
 	call _01F5
 	switch VAR_SPECIAL_x8001
 	case 3, _0221
-	case 65534, _0221
+	case -2, _0221
 	call _0229
 	goto _002E
 	.byte 0x02, 0x00
@@ -39,7 +39,7 @@ _007C:
 	call _01F5
 	switch VAR_SPECIAL_x8001
 	case 3, _0221
-	case 65534, _0221
+	case -2, _0221
 	call _0229
 	goto _007C
 	.byte 0x02, 0x00
@@ -54,7 +54,7 @@ _00CA:
 	call _01F5
 	switch VAR_SPECIAL_x8001
 	case 3, _0221
-	case 65534, _0221
+	case -2, _0221
 	call _0229
 	goto _00CA
 	.byte 0x02, 0x00
@@ -69,7 +69,7 @@ _0118:
 	call _01F5
 	switch VAR_SPECIAL_x8001
 	case 3, _0221
-	case 65534, _0221
+	case -2, _0221
 	call _0229
 	goto _0118
 	.byte 0x02, 0x00
@@ -84,7 +84,7 @@ _0166:
 	call _01F5
 	switch VAR_SPECIAL_x8001
 	case 3, _0221
-	case 65534, _0221
+	case -2, _0221
 	call _0229
 	goto _0166
 	.byte 0x02, 0x00
@@ -99,7 +99,7 @@ _01B4:
 	call _01F5
 	switch VAR_SPECIAL_x8001
 	case 3, _0221
-	case 65534, _0221
+	case -2, _0221
 	call _0229
 	goto _01B4
 	.byte 0x02, 0x00

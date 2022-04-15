@@ -57,8 +57,8 @@ _00A4:
 	show_person obj_T20_var_1
 	clearflag FLAG_HIDE_NEW_BARK_MARILL
 	show_person obj_T20_tsure_poke_static_marill
-	move_person obj_T20_var_1, 686, 0, 396, 2
-	move_person obj_T20_tsure_poke_static_marill, 685, 0, 396, 1
+	move_person_facing obj_T20_var_1, 686, 0, 396, DIR_WEST
+	move_person_facing obj_T20_tsure_poke_static_marill, 685, 0, 396, DIR_SOUTH
 	end
 
 scr_seq_T20_000:
@@ -477,7 +477,7 @@ _075A:
 	scrcmd_310 77
 	scrcmd_308 77
 	show_person obj_T20_doctor
-	move_person obj_T20_doctor, 684, 0, 393, 1
+	move_person_facing obj_T20_doctor, 684, 0, 393, DIR_SOUTH
 	apply_movement obj_T20_doctor, _0D08
 	wait_movement
 	scrcmd_311 77
@@ -1196,11 +1196,11 @@ _1078:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_T20R0102, 0, 12, 6, 2
+	warp MAP_T20R0102, 0, 12, 6, DIR_WEST
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	wait_se SEQ_SE_DP_KAIDAN2
-	scrcmd_582 60, 688, 393
+	scrcmd_582 MAP_T20, 688, 393
 	setvar VAR_UNK_407C, 1
 	end
 	.byte 0x0d, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00

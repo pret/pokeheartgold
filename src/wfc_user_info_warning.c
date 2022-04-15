@@ -1,6 +1,3 @@
-#include <nitro/gx/g2.h>
-#include <nitro/gx/gx_bgcnt.h>
-#include <nitro/pad/common/pad.h>
 #include "gx_layers.h"
 #include "main.h"
 #include "msgdata.h"
@@ -11,14 +8,10 @@
 #include "unk_0200FA24.h"
 #include "wfc_user_info_warning.h"
 #include "window.h"
-
-extern void sub_0200E3DC(BGCONFIG* bg_config, enum GFBgLayer layer, u32 a2, u32 a3, u32 a4, HeapID heap_id);
-extern void LoadFontPal0(enum GFBgLayer layer, u32 base_addr, HeapID heap_id);
-extern void ResetAllTextPrinters(void);
-extern void DrawFrameAndWindow1(WINDOW* window, BOOL dont_copy_to_vram, u16 a2, u8 palette_num);
-extern u16 AddTextPrinterParameterized(WINDOW* window, u8 font_id, STRING* text, u32 x, u32 y, u32 speed, void* callback);
-extern void SetMasterBrightnessNeutral(u32 a0);
-extern void SetBlendBrightness(fx32 brightness, fx32 surface_mask, u32 screen_mask);
+#include "unk_0200E398.h"
+#include "unk_0200B380.h"
+#include "text.h"
+#include "font.h"
 
 static const GF_GXBanksConfig sWFCWarningMsgBanksConfig = {
     .bg = GX_VRAM_BG_256_AB,
@@ -88,16 +81,15 @@ void ShowWFCUserInfoWarning(HeapID heap_id, int a1) {
     GX_SwapDisplay();
     G2_BlendNone();
     G2S_BlendNone();
-    // TODO: are there SDK functions for these?
-    reg_GX_DISPCNT &= ~(REG_GX_DISPCNT_OW_MASK | REG_GX_DISPCNT_W1_MASK | REG_GX_DISPCNT_W0_MASK);
-    reg_GXS_DB_DISPCNT &= ~(REG_GXS_DB_DISPCNT_OW_MASK | REG_GXS_DB_DISPCNT_W1_MASK | REG_GXS_DB_DISPCNT_W0_MASK);
+    GX_SetVisibleWnd(0);
+    GXS_SetVisibleWnd(0);
     GX_SetBanks(&sWFCWarningMsgBanksConfig);
 
     BGCONFIG* bg_config = BgConfig_Alloc(heap_id);
     SetBothScreensModesAndDisable(&sWFCWarningMsgBgModeSet);
     InitBgFromTemplate(bg_config, 0, &sWFCWarningBgTemplate, GX_BGMODE_0);
     BgClearTilemapBufferAndCommit(bg_config, GF_BG_LYR_MAIN_0);
-    sub_0200E3DC(bg_config, GF_BG_LYR_MAIN_0, 0x1F7, 2, 0, heap_id);
+    LoadUserFrameGfx1(bg_config, GF_BG_LYR_MAIN_0, 0x1F7, 2, 0, heap_id);
     LoadFontPal0(GF_BG_LYR_MAIN_0, 0x20, heap_id);
     BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 0x20, 0, heap_id);
     BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB(1, 1, 27));

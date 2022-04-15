@@ -62,7 +62,7 @@ scr_seq_T23_002:
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	compare VAR_SPECIAL_x8005, 462
 	goto_if_ne _00E5
-	move_person obj_T23_gsrivel, 404, 0, 463, 2
+	move_person_facing obj_T23_gsrivel, 404, 0, 463, DIR_WEST
 	apply_movement obj_T23_gsrivel, _028C
 	apply_movement obj_player, _02AC
 	goto _018E
@@ -70,7 +70,7 @@ scr_seq_T23_002:
 _00E5:
 	compare VAR_SPECIAL_x8005, 463
 	goto_if_ne _0114
-	move_person obj_T23_gsrivel, 404, 0, 464, 2
+	move_person_facing obj_T23_gsrivel, 404, 0, 464, DIR_WEST
 	apply_movement obj_T23_gsrivel, _028C
 	apply_movement obj_player, _02AC
 	goto _018E
@@ -78,7 +78,7 @@ _00E5:
 _0114:
 	compare VAR_SPECIAL_x8005, 464
 	goto_if_ne _0143
-	move_person obj_T23_gsrivel, 404, 0, 463, 2
+	move_person_facing obj_T23_gsrivel, 404, 0, 463, DIR_WEST
 	apply_movement obj_T23_gsrivel, _0298
 	apply_movement obj_player, _02C0
 	goto _018E
@@ -86,13 +86,13 @@ _0114:
 _0143:
 	compare VAR_SPECIAL_x8005, 465
 	goto_if_ne _0172
-	move_person obj_T23_gsrivel, 404, 0, 464, 2
+	move_person_facing obj_T23_gsrivel, 404, 0, 464, DIR_WEST
 	apply_movement obj_T23_gsrivel, _0298
 	apply_movement obj_player, _02C0
 	goto _018E
 
 _0172:
-	move_person obj_T23_gsrivel, 404, 0, 465, 2
+	move_person_facing obj_T23_gsrivel, 404, 0, 465, DIR_WEST
 	apply_movement obj_T23_gsrivel, _0298
 	apply_movement obj_player, _02C0
 _018E:
@@ -216,7 +216,7 @@ scr_seq_T23_003:
 	closemsg
 	apply_movement obj_T23_gsmiddleman1_2, _0358
 	wait_movement
-	move_person obj_T23_gsmiddleman1_2, 23, 0, 16, 3
+	move_person_facing obj_T23_gsmiddleman1_2, 23, 0, 16, DIR_EAST
 	apply_movement obj_T23_rocketm_3, _0374
 	wait_movement
 	hide_person obj_T23_gsmiddleman1_2

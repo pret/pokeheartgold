@@ -1,0 +1,8 @@
+#ifndef POKEHEARTGOLD_UNK_020965A4_H
+#define POKEHEARTGOLD_UNK_020965A4_H
+
+#include "overlay_manager.h"
+
+extern const OVY_MGR_TEMPLATE _02108584;
+
+#endif //POKEHEARTGOLD_UNK_020965A4_H

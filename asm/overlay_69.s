@@ -334,7 +334,7 @@ _021E5BD6:
 	ldr r0, _021E5DB0 ; =0x0000C06C
 	ldr r1, [r4]
 	ldr r0, [r4, r0]
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	cmp r0, #0
 	beq _021E5BEE
 	mov r1, #1
@@ -573,7 +573,7 @@ _021E5DE0:
 	ldr r0, _021E603C ; =0x0000C06C
 	ldr r1, [r4]
 	ldr r0, [r4, r0]
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	cmp r0, #0
 	beq _021E5DF8
 	mov r1, #1
@@ -1515,7 +1515,7 @@ ov69_021E64CC: ; 0x021E64CC
 	ldr r2, _021E6778 ; =0x000001E2
 	ldr r0, [r4, r0]
 	add r3, r1, #0
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [r4]
@@ -1525,7 +1525,7 @@ ov69_021E64CC: ; 0x021E64CC
 	mov r1, #6
 	ldr r0, [r4, r0]
 	mov r3, #7
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	ldr r2, [r4]
 	mov r0, #4
 	mov r1, #0x80
@@ -1620,7 +1620,7 @@ ov69_021E64CC: ; 0x021E64CC
 	mov r1, #2
 	ldr r0, [r4, r0]
 	mov r3, #7
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	ldr r2, [r4]
 	mov r0, #0
 	mov r1, #0x80

@@ -8367,7 +8367,7 @@ ov108_021E9A60: ; 0x021E9A60
 	str r0, [sp, #4]
 	ldr r0, [r5, r2]
 	sub r2, #0x56
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0x1a
 	ldr r2, [r5]
 	mov r0, #0

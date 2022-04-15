@@ -3246,7 +3246,7 @@ ov59_02239604: ; 0x02239604
 	mov r3, #0xd
 	str r0, [sp, #4]
 	ldr r0, [r5, #0x54]
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #6
 	ldr r2, [r5]
 	mov r0, #0
@@ -7395,7 +7395,7 @@ ov59_0223B590: ; 0x0223B590
 	mov r3, #0xd
 	str r0, [sp, #4]
 	ldr r0, [r5, #0x54]
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #6
 	ldr r2, [r5]
 	mov r0, #0
