@@ -311,7 +311,7 @@ _0221BC5C:
 	add r0, r2, #4
 	ldr r0, [r4, r0]
 	ldr r1, [r1, #0x24]
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	cmp r0, #0
 	beq _0221BC78
 	mov r1, #1
@@ -374,7 +374,7 @@ _0221BCD8:
 	beq _0221BCF0
 	ldr r1, [r4]
 	ldr r1, [r1, #0x24]
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 	mov r0, #0x2f
 	mov r1, #0
 	lsl r0, r0, #6
@@ -2925,7 +2925,7 @@ _0221D168:
 	str r0, [sp, #4]
 	ldr r0, [r4, #0xc]
 	mov r3, #0xf
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	ldr r0, [r4, #8]
 	mov r1, #0
 	mov r2, #0xf0
@@ -2939,7 +2939,7 @@ _0221D168:
 	mov r3, #0xe
 	str r0, [sp, #4]
 	ldr r0, [r4, #0xc]
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	ldr r0, [r4, #8]
 	mov r1, #0
 	mov r2, #0xe0

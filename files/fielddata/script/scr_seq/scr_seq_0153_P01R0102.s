@@ -20,11 +20,11 @@ scr_seq_P01R0102_001:
 	end
 
 _002D:
-	move_person obj_P01R0102_seaman_2, 28, 0, 22, 2
+	move_person_facing obj_P01R0102_seaman_2, 28, 0, 22, DIR_WEST
 	end
 
 scr_seq_P01R0102_005:
-	scrcmd_582 77, 279, 276
+	scrcmd_582 MAP_T26, 279, 276
 	goto_if_unset FLAG_UNK_189, _0054
 	clearflag FLAG_UNK_189
 	end

@@ -105427,7 +105427,7 @@ _0226AAB4:
 	mov r2, #0x20
 	mov r3, #1
 	str r1, [sp, #4]
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	add r0, r6, #0
 	mov r1, #1
 	mov r2, #0x10

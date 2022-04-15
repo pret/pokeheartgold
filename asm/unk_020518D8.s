@@ -1310,7 +1310,7 @@ _0205237A:
 	cmp r0, #0
 	beq _02052394
 	add r0, r6, #0
-	bl sub_02092DEC
+	bl Fsys_GetGearPhoneRingManager
 	mov r1, #0xc
 	mov r2, #1
 	bl sub_02092E14

@@ -2034,7 +2034,7 @@ ov31_0225E54C: ; 0x0225E54C
 	ldr r0, [r5, #4]
 	ldr r2, _0225E5F8 ; =0x000001B5
 	mov r3, #5
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r2, #0x51
 	lsl r2, r2, #2
 	add r0, r5, r2
@@ -2156,7 +2156,7 @@ _0225E684:
 	ldr r0, [r4, #4]
 	ldr r2, _0225E6FC ; =0x000001B5
 	mov r3, #5
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r2, #0x51
 	lsl r2, r2, #2
 	add r0, r4, r2
@@ -2623,7 +2623,7 @@ ov31_0225EA08: ; 0x0225EA08
 	ldr r0, [r5, #4]
 	ldr r2, _0225EA98 ; =0x000001B5
 	mov r3, #5
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add r0, r5, #0
 	ldr r2, _0225EA98 ; =0x000001B5
 	add r0, #0x44
@@ -2691,7 +2691,7 @@ ov31_0225EA9C: ; 0x0225EA9C
 	ldr r0, [r5, #4]
 	ldr r2, _0225EB2C ; =0x000001B5
 	mov r3, #5
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add r0, r5, #0
 	ldr r2, _0225EB2C ; =0x000001B5
 	add r0, #0x44
@@ -2759,7 +2759,7 @@ ov31_0225EB30: ; 0x0225EB30
 	ldr r0, [r5, #4]
 	ldr r2, _0225EBC0 ; =0x000001B5
 	mov r3, #5
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add r0, r5, #0
 	ldr r2, _0225EBC0 ; =0x000001B5
 	add r0, #0x44
@@ -2827,7 +2827,7 @@ ov31_0225EBC4: ; 0x0225EBC4
 	ldr r0, [r5, #4]
 	ldr r2, _0225EC54 ; =0x000001B5
 	mov r3, #5
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add r0, r5, #0
 	ldr r2, _0225EC54 ; =0x000001B5
 	add r0, #0x44

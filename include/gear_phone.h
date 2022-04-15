@@ -10,7 +10,8 @@ typedef struct PhoneBookEntry {
     u8 trainerClass;
     u16 trainerId;
     u16 unk6;
-    u8 unk8[7];
+    u16 gift;
+    u8 unkA[5];
     u8 unkF;
     u8 unk10[4];
 } PhoneBookEntry;

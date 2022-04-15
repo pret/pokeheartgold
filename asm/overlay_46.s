@@ -980,7 +980,7 @@ _02258FAE:
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #0xc
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	str r4, [sp]
 	mov r1, #1
 	ldr r0, [sp, #0x10]
@@ -988,7 +988,7 @@ _02258FAE:
 	ldr r0, [r0, #0xc]
 	add r2, r1, #0
 	mov r3, #0xb
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r0, #0x12
 	lsl r0, r0, #4
 	str r0, [sp]

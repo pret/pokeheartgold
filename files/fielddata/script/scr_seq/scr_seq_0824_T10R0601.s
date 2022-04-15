@@ -84,8 +84,8 @@ _00F0:
 	wait 10, VAR_SPECIAL_x8004
 	play_se SEQ_SE_DP_KI_GASYAN
 	hide_person obj_T10R0601_leag_door2
-	move_person obj_T10R0601_kurumi, 6, 0, 20, 0
-	move_person obj_T10R0601_ookido, 6, 0, 17, 0
+	move_person_facing obj_T10R0601_kurumi, 6, 0, 20, DIR_NORTH
+	move_person_facing obj_T10R0601_ookido, 6, 0, 17, DIR_NORTH
 	wait 30, VAR_SPECIAL_x8004
 	scrcmd_081 0
 	play_bgm SEQ_GS_EYE_J_SHOUJO
@@ -159,7 +159,7 @@ _0234:
 _0268:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_T10R0701, 0, 6, 22, 0
+	warp MAP_T10R0701, 0, 6, 22, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

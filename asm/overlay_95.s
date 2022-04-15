@@ -360,7 +360,7 @@ ov95_021E5BBC: ; 0x021E5BBC
 	mov r2, #0x14
 	mov r3, #0xf
 	add r5, r0, #0
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add r0, r6, #0
 	bl sub_0200E640
 	add r2, r0, #0
@@ -382,7 +382,7 @@ ov95_021E5BBC: ; 0x021E5BBC
 	mov r1, #1
 	mov r2, #0x32
 	mov r3, #0xd
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	bl sub_0200E3D8
 	add r2, r0, #0
 	mov r0, #0

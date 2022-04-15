@@ -1743,7 +1743,7 @@ sub_02083654: ; 0x02083654
 	ldr r0, [r5, r0]
 	add r2, #0xfc
 	mov r3, #0xa
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #6
 	mov r0, #4
 	lsl r1, r1, #6

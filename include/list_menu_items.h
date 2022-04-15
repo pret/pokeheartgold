@@ -5,6 +5,14 @@
 #include "heap.h"
 #include "msgdata.h"
 
+#define LIST_HEADER          -3
+#define LIST_CANCEL          -2
+#define LIST_NOTHING_CHOSEN  -1
+
+#define LIST_NO_MULTIPLE_SCROLL    0
+#define LIST_MULTIPLE_SCROLL_DPAD  1
+#define LIST_MULTIPLE_SCROLL_L_R   2
+
 typedef struct LISTMENUITEM {
     STRING *text;
     s32 value;

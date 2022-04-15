@@ -94,7 +94,7 @@ _011A:
 	goto_if_ne _0155
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D47R0101, 0, 19, 2, 1
+	warp MAP_D47R0101, 0, 19, 2, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0179
@@ -102,7 +102,7 @@ _011A:
 _0155:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D47R0101, 0, 5, 2, 1
+	warp MAP_D47R0101, 0, 5, 2, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _0179:

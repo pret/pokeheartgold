@@ -419,7 +419,7 @@
 	.byte \arg5
 	.endm
 
-	.macro scrcmd_063 arg0
+	.macro yesno arg0
 	.short 63
 	.short \arg0
 	.endm
@@ -1012,7 +1012,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_172 arg0
+	.macro name_player arg0
 	.short 172
 	.short \arg0
 	.endm
@@ -1035,7 +1035,7 @@
 	.short 175
 	.endm
 
-	.macro warp arg0, arg1, arg2, arg3, arg4
+	.macro warp arg0, arg1=0, arg2, arg3, arg4
 	.short 176
 	.short \arg0
 	.short \arg1
@@ -1066,7 +1066,7 @@
 	.short \arg2
 	.endm
 
-	.macro scrcmd_181
+	.macro flash_effect
 	.short 181
 	.endm
 
@@ -1475,7 +1475,7 @@
 	.short \fanfare
 	.endm
 
-	.macro scrcmd_249 arg0, arg1
+	.macro rocket_trap_battle arg0, arg1
 	.short 249
 	.short \arg0
 	.short \arg1
@@ -1848,7 +1848,7 @@
 	.short 324
 	.endm
 
-	.macro scrcmd_325
+	.macro violet_gym_elevator
 	.short 325
 	.endm
 
@@ -1912,14 +1912,14 @@
 	.short \nature
 	.endm
 
-	.macro scrcmd_338 arg0, arg1, arg2
+	.macro move_person arg0, arg1, arg2
 	.short 338
 	.short \arg0
 	.short \arg1
 	.short \arg2
 	.endm
 
-	.macro move_person person, x, z, y, facing
+	.macro move_person_facing person, x, z, y, facing
 	.short 339
 	.short \person
 	.short \x
@@ -1934,20 +1934,20 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_341 arg0, arg1
+	.macro set_object_facing arg0, arg1
 	.short 341
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_342 arg0, arg1, arg2
+	.macro move_warp arg0, arg1, arg2
 	.short 342
 	.short \arg0
 	.short \arg1
 	.short \arg2
 	.endm
 
-	.macro scrcmd_343 arg0, arg1, arg2
+	.macro move_bg_event arg0, arg1, arg2
 	.short 343
 	.short \arg0
 	.short \arg1
@@ -1960,11 +1960,11 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_345
+	.macro add_waiting_icon
 	.short 345
 	.endm
 
-	.macro scrcmd_346
+	.macro remove_waiting_icon
 	.short 346
 	.endm
 

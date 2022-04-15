@@ -320,7 +320,7 @@ sub_02086490: ; 0x02086490
 	mov r1, #4
 	mov r2, #1
 	mov r3, #0xa
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add r0, r4, #0
 	bl sub_0200E640
 	add r2, r0, #0

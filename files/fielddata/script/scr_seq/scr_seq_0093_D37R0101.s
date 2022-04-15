@@ -25,7 +25,7 @@ scr_seq_D37R0101_002:
 	show_person obj_D37R0101_tsure_poke_static_marill
 	compare VAR_TEMP_x4001, 30
 	goto_if_ne _0050
-	move_person obj_D37R0101_tsure_poke_static_marill, 9, 0, 25, 2
+	move_person_facing obj_D37R0101_tsure_poke_static_marill, 9, 0, 25, DIR_WEST
 _0050:
 	play_se SEQ_SE_DP_KAIDAN2
 	apply_movement obj_D37R0101_tsure_poke_static_marill, _0174
@@ -45,7 +45,7 @@ _0050:
 	show_person obj_D37R0101_var_1
 	compare VAR_TEMP_x4001, 30
 	goto_if_ne _00AB
-	move_person obj_D37R0101_var_1, 9, 0, 25, 2
+	move_person_facing obj_D37R0101_var_1, 9, 0, 25, DIR_WEST
 _00AB:
 	play_se SEQ_SE_DP_KAIDAN2
 	callstd std_play_friend_music
@@ -160,7 +160,7 @@ _0228:
 	show_person obj_D37R0101_tsure_poke_static_marill
 	lock obj_D37R0101_tsure_poke_static_marill
 	callstd std_play_friend_music
-	move_person obj_D37R0101_var_1, 25, 0, 9, 0
+	move_person_facing obj_D37R0101_var_1, 25, 0, 9, DIR_NORTH
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	apply_movement obj_player, _0220
@@ -172,7 +172,7 @@ _0228:
 	apply_movement obj_player, _0310
 	apply_movement obj_D37R0101_var_1, _0318
 	wait 8, VAR_SPECIAL_RESULT
-	move_person obj_D37R0101_tsure_poke_static_marill, 25, 0, 9, 0
+	move_person_facing obj_D37R0101_tsure_poke_static_marill, 25, 0, 9, DIR_NORTH
 	apply_movement obj_D37R0101_tsure_poke_static_marill, _0320
 	wait_movement
 	scrcmd_603

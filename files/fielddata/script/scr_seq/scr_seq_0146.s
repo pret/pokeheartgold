@@ -626,7 +626,7 @@ _08E9:
 	scrcmd_728 16, 2
 _0909:
 	flash_action 1
-	scrcmd_181
+	flash_effect
 	wait 42, VAR_SPECIAL_RESULT
 	goto _0945
 

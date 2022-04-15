@@ -28,26 +28,26 @@ scr_seq_T20R0101_010:
 	goto_if_set FLAG_ELMS_LAB_PREVENT_PLAYER_ESCAPE, _00B8
 	compare VAR_SCENE_ELMS_LAB, 0
 	goto_if_ne _0070
-	move_person obj_T20R0101_doctor, 4, 0, 5, 1
+	move_person_facing obj_T20R0101_doctor, 4, 0, 5, DIR_SOUTH
 	goto _00B4
 
 _0070:
 	compare VAR_SCENE_ELMS_LAB, 3
 	goto_if_ne _008F
-	move_person obj_T20R0101_doctor, 4, 0, 5, 1
+	move_person_facing obj_T20R0101_doctor, 4, 0, 5, DIR_SOUTH
 	goto _00B4
 
 _008F:
 	compare VAR_SCENE_ELMS_LAB, 8
 	goto_if_ne _00B4
-	move_person obj_T20R0101_doctor, 4, 0, 5, 1
-	move_person obj_T20R0101_var_1, 7, 0, 12, 3
+	move_person_facing obj_T20R0101_doctor, 4, 0, 5, DIR_SOUTH
+	move_person_facing obj_T20R0101_var_1, 7, 0, 12, DIR_EAST
 _00B4:
 	scrcmd_621
 	end
 
 _00B8:
-	move_person obj_T20R0101_doctor, 4, 0, 5, 3
+	move_person_facing obj_T20R0101_doctor, 4, 0, 5, DIR_EAST
 	goto _00B4
 
 scr_seq_T20R0101_011:

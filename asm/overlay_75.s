@@ -1410,7 +1410,7 @@ ov75_02247450: ; 0x02247450
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xa
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x74
@@ -1418,7 +1418,7 @@ ov75_02247450: ; 0x02247450
 	ldr r0, [sp, #0x30]
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0x74
@@ -1427,7 +1427,7 @@ ov75_02247450: ; 0x02247450
 	mov r1, #2
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]

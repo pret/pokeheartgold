@@ -11,8 +11,8 @@ Static main
 	StackSize 0 2048
 	Object src/pm_version.o
 	Object src/main.o
-	Object asm/list_menu.o
-	Object asm/unk_02001AF4.o
+	Object src/list_menu.o
+	Object src/list_menu_2.o
 	Object src/string_util.o
 	Object asm/render_text.o
 	Object src/font.o
@@ -164,7 +164,6 @@ Static main
 	Object src/script.o
 	Object src/fieldmap.o
 	Object src/scrcmd_c.o
-	Object asm/scrcmd.o
 	Object src/scrcmd_mart.o
 	Object src/scrcmd_strbuf.o
 	Object asm/scrcmd_5.o
@@ -281,7 +280,7 @@ Static main
 	Object asm/unk_0208B1AC.o
 	Object asm/unk_0208C3E4.o
 	Object asm/unk_0208DE40.o
-	Object asm/unk_0208E55C.o
+	Object src/ribbon.o
 	Object asm/unk_0208E600.o
 	Object asm/unk_0208F658.o
 	Object asm/unk_0208F814.o
@@ -976,9 +975,8 @@ Overlay OVY_93
 }
 Overlay OVY_94
 {
-	After main
-	Object src/overlay_94.o
-	
+    After main
+    Object src/overlay_94.o
 }
 Overlay OVY_95
 {

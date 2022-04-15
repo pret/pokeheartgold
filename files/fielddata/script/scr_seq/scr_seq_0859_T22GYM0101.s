@@ -165,6 +165,6 @@ _01F2:
 
 scr_seq_T22GYM0101_004:
 	setvar VAR_TEMP_x4000, 0
-	scrcmd_325
+	violet_gym_elevator
 	end
 	.balign 4, 0

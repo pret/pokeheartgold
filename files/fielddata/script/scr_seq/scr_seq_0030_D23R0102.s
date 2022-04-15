@@ -40,7 +40,7 @@ _0068:
 scr_seq_D23R0102_008:
 	compare VAR_SCENE_ROCKET_TAKEOVER, 5
 	goto_if_ne _0083
-	move_person obj_D23R0102_policeman, 2, 1, 7, 3
+	move_person_facing obj_D23R0102_policeman, 2, 1, 7, DIR_EAST
 _0083:
 	end
 

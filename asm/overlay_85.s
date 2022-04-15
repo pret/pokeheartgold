@@ -3054,7 +3054,7 @@ ov85_021E705C: ; 0x021E705C
 	ldr r0, [r6, r0]
 	add r2, r1, #0
 	mov r3, #0xf
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	add r0, r6, #0
 	add r0, #0xcc
 	ldr r0, [r0]
@@ -3069,7 +3069,7 @@ ov85_021E705C: ; 0x021E705C
 	ldr r0, _021E713C ; =0x00000D84
 	mov r3, #0xe
 	ldr r0, [r6, r0]
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add r0, r6, #0
 	add r0, #0xcc
 	ldr r0, [r0]
@@ -7228,7 +7228,7 @@ ov85_021E8E6C: ; 0x021E8E6C
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xa
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x66
@@ -7236,7 +7236,7 @@ ov85_021E8E6C: ; 0x021E8E6C
 	add r0, r4, #0
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov85_021E8E6C
@@ -8008,7 +8008,7 @@ _021E955C:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0x66
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -8245,7 +8245,7 @@ _021E9736:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0x66
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -8571,7 +8571,7 @@ _021E99A2:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0x66
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -8988,7 +8988,7 @@ _021E9CC0:
 	cmp r0, #0
 	beq _021E9D8C
 	mov r1, #0x66
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 	mov r0, #0x33
 	mov r1, #0
 	lsl r0, r0, #4
@@ -9014,7 +9014,7 @@ _021E9CEE:
 	cmp r0, #0
 	beq _021E9D8C
 	mov r1, #0x66
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 	mov r0, #0x33
 	mov r1, #0
 	lsl r0, r0, #4
@@ -9040,7 +9040,7 @@ _021E9D12:
 	cmp r0, #0
 	beq _021E9D4A
 	mov r1, #0x66
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 	mov r0, #0x33
 	mov r1, #0
 	lsl r0, r0, #4
@@ -9072,7 +9072,7 @@ _021E9D74:
 	cmp r0, #0
 	beq _021E9D8C
 	mov r1, #0x66
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 	mov r0, #0x33
 	mov r1, #0
 	lsl r0, r0, #4
@@ -10011,7 +10011,7 @@ _021EA460:
 	cmp r0, #0
 	beq _021EA488
 	mov r1, #0x66
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 	mov r0, #0x33
 	mov r1, #0
 	lsl r0, r0, #4

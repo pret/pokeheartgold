@@ -2412,7 +2412,7 @@ ov72_02238BEC: ; 0x02238BEC
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xe
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0]
 	ldr r0, [r0, #0x10]
@@ -2426,7 +2426,7 @@ ov72_02238BEC: ; 0x02238BEC
 	mov r1, #4
 	mov r2, #1
 	mov r3, #0xe
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x43
@@ -2434,7 +2434,7 @@ ov72_02238BEC: ; 0x02238BEC
 	add r0, r4, #0
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]

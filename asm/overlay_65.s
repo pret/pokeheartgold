@@ -297,7 +297,7 @@ ov65_0221C08C: ; 0x0221C08C
 	ldr r2, _0221C1AC ; =0x000003D9
 	mov r1, #0
 	mov r3, #0xa
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x1a
@@ -307,7 +307,7 @@ ov65_0221C08C: ; 0x0221C08C
 	ldr r0, [r5, r0]
 	ldr r2, _0221C1B0 ; =0x000003F7
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r3, #0x61
 	lsl r3, r3, #2
 	ldr r0, [r5, r3]
@@ -7186,7 +7186,7 @@ ov65_0221F8D0: ; 0x0221F8D0
 	ldr r2, _0221FAD0 ; =0x000003D9
 	mov r1, #0
 	mov r3, #0xa
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x1a
@@ -7194,7 +7194,7 @@ ov65_0221F8D0: ; 0x0221F8D0
 	ldr r0, [sp, #0x14]
 	ldr r2, _0221FAD4 ; =0x000003F7
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r1, #0x15
 	str r1, [sp]
 	mov r0, #0x14

@@ -653,7 +653,7 @@ static BOOL Task_ActivateDowsingMchnUI(TaskManager *taskManager) {
 
     switch (*state_p) {
     case 0:
-        ov01_021F6A9C(fsys, 4, 0);
+        ov01_021F6A9C(fsys, 4, NULL);
         fsys->unkD2_7 = TRUE;
         (*state_p)++;
         break;

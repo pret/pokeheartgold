@@ -2463,7 +2463,7 @@ ov17_02202E28: ; 0x02202E28
 	add r0, r5, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #6
 	ldr r2, [r5]
 	mov r0, #0

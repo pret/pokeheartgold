@@ -4302,7 +4302,7 @@ _021E79E8:
 	ldr r0, [r4]
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x18]
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]

@@ -149,7 +149,7 @@ void ShowCommunicationError(HeapID heap_id, u32 error, u32 error_code) {
     SetBothScreensModesAndDisable(&sCommunicationErrorBgModeSet);
     InitBgFromTemplate(bg_config, 0, &sCommunicationErrorBgTemplate, GX_BGMODE_0);
     BgClearTilemapBufferAndCommit(bg_config, GF_BG_LYR_MAIN_0);
-    sub_0200E3DC(bg_config, GF_BG_LYR_MAIN_0, 0x1F7, 2, 0, heap_id);
+    LoadUserFrameGfx1(bg_config, GF_BG_LYR_MAIN_0, 0x1F7, 2, 0, heap_id);
     LoadFontPal0(GF_BG_LYR_MAIN_0, 0x20, heap_id);
     BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 0x20, 0, heap_id);
     BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB(1, 1, 27));

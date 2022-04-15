@@ -62,7 +62,7 @@ _00B3:
 	wait_movement
 	clearflag FLAG_HIDE_POKEATHLON_RECEPTION_WHITNEY
 	show_person obj_D49R0101_gsleader3
-	move_person obj_D49R0101_gsleader3, 23, 0, 20, 0
+	move_person_facing obj_D49R0101_gsleader3, 23, 0, 20, DIR_NORTH
 	compare VAR_TEMP_x400A, 0
 	goto_if_ne _00EC
 	apply_movement obj_D49R0101_gsleader3, _0248

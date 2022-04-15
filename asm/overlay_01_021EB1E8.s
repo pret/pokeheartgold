@@ -128,8 +128,8 @@ _021EB2B4:
 	.balign 4, 0
 	thumb_func_end ov01_021EB260
 
-	thumb_func_start ov01_021EB2B8
-ov01_021EB2B8: ; 0x021EB2B8
+	thumb_func_start FieldWeatherUpdate_UsedFlash
+FieldWeatherUpdate_UsedFlash: ; 0x021EB2B8
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -180,7 +180,7 @@ _021EB30E:
 	.balign 4, 0
 _021EB314: .word ov01_021EB320
 _021EB318: .word ov01_021EB3F0
-	thumb_func_end ov01_021EB2B8
+	thumb_func_end FieldWeatherUpdate_UsedFlash
 
 	thumb_func_start ov01_021EB31C
 ov01_021EB31C: ; 0x021EB31C
@@ -289,7 +289,7 @@ _021EB3D2:
 	cmp r1, #0xe
 	beq _021EB3EE
 	add r0, r4, #0
-	bl ov01_021EB2B8
+	bl FieldWeatherUpdate_UsedFlash
 	mov r0, #0xe
 	str r0, [r4, #0x10]
 _021EB3EE:
@@ -390,7 +390,7 @@ _021EB490:
 	cmp r1, #0xe
 	beq _021EB4B2
 	add r0, r4, #0
-	bl ov01_021EB2B8
+	bl FieldWeatherUpdate_UsedFlash
 	mov r0, #0xe
 	str r0, [r4, #0x10]
 _021EB4B2:

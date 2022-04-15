@@ -391,7 +391,7 @@ _02258ACA:
 	ldr r0, [r5]
 	add r2, r1, #0
 	mov r3, #5
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r0, #0
 	str r0, [sp]
 	str r7, [sp, #4]
@@ -399,7 +399,7 @@ _02258ACA:
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #6
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1552,7 +1552,7 @@ ov47_02259430: ; 0x02259430
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x20]
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -1570,7 +1570,7 @@ ov47_02259448: ; 0x02259448
 	ldr r0, [r4, #0x20]
 	cmp r0, #0
 	beq _0225945A
-	bl sub_02001FFC
+	bl Clear2dMenuWindowAndDelete
 	mov r0, #0
 	str r0, [r4, #0x20]
 _0225945A:

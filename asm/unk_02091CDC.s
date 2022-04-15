@@ -242,7 +242,7 @@ _02091E6C:
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x14]
 	mov r3, #2
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0
 	str r1, [sp]
 	ldr r0, [r4]
@@ -250,7 +250,7 @@ _02091E6C:
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x14]
 	mov r3, #3
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	ldr r2, [r4]
 	mov r0, #0
 	mov r1, #0x20
@@ -406,7 +406,7 @@ _02091FFC:
 _02092026:
 	ldr r0, [r4, #0x2c]
 	ldr r1, [r4]
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	cmp r0, #0
 	beq _0209203A
 	sub r1, r5, #2
@@ -444,7 +444,7 @@ _02092046:
 _02092070:
 	ldr r0, [r4, #0x2c]
 	ldr r1, [r4]
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	cmp r0, #0
 	beq _02092084
 	sub r1, r5, #2

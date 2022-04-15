@@ -613,7 +613,7 @@ ov68_021E5D24: ; 0x021E5D24
 	mov r1, #4
 	mov r2, #0x3d
 	mov r3, #0xd
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add sp, #0x14
 	pop {r4, r5, pc}
 	thumb_func_end ov68_021E5D24

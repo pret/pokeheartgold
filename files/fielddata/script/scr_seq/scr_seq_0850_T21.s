@@ -424,7 +424,7 @@ scr_seq_T21_002:
 	show_person obj_T21_gsoldman1
 	lock obj_T21_gsoldman1
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	move_person obj_T21_gsoldman1, VAR_TEMP_x4000, 1, 394, 0
+	move_person_facing obj_T21_gsoldman1, VAR_TEMP_x4000, 1, 394, DIR_NORTH
 	compare VAR_TEMP_x4000, 549
 	goto_if_ne _05DB
 	apply_movement obj_T21_gsoldman1, _068C
@@ -503,7 +503,7 @@ scr_seq_T21_003:
 	wait_movement
 	callstd std_play_rival_intro_music
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	move_person obj_T21_gsrivel, 583, 0, VAR_TEMP_x4001, 2
+	move_person_facing obj_T21_gsrivel, 583, 0, VAR_TEMP_x4001, DIR_WEST
 	apply_movement obj_T21_gsrivel, _0808
 	wait_movement
 	npc_msg msg_0550_T21_00013

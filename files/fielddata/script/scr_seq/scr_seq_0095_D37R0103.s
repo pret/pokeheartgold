@@ -30,89 +30,89 @@ _0059:
 	goto_if_set FLAG_UNK_097, _00B3
 	goto_if_set FLAG_UNK_098, _013E
 	scrcmd_109 0, 9
-	move_person obj_D37R0103_tsure_poke_static_machoke, 19, 0, 16, 1
-	move_person obj_D37R0103_babyboy1_5_3, 19, 0, 18, 0
-	move_person obj_D37R0103_stop, 19, 0, 17, 0
-	move_person obj_D37R0103_stop_2, 20, 0, 17, 0
-	move_person obj_D37R0103_stop_3, 20, 0, 18, 0
+	move_person_facing obj_D37R0103_tsure_poke_static_machoke, 19, 0, 16, DIR_SOUTH
+	move_person_facing obj_D37R0103_babyboy1_5_3, 19, 0, 18, DIR_NORTH
+	move_person_facing obj_D37R0103_stop, 19, 0, 17, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_2, 20, 0, 17, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_3, 20, 0, 18, DIR_NORTH
 	end
 
 _00B3:
 	goto_if_set FLAG_UNK_098, _02BF
 	scrcmd_109 0, 9
-	move_person obj_D37R0103_tsure_poke_static_machoke, 19, 0, 16, 1
-	move_person obj_D37R0103_babyboy1_5_3, 19, 0, 18, 0
-	move_person obj_D37R0103_stop, 19, 0, 17, 0
-	move_person obj_D37R0103_stop_2, 20, 0, 17, 0
-	move_person obj_D37R0103_stop_3, 20, 0, 18, 0
-	move_person obj_D37R0103_tsure_poke_static_machoke_2, 3, 0, 14, 2
-	move_person obj_D37R0103_babyboy1_5_2, 1, 0, 14, 0
-	move_person obj_D37R0103_stop_4, 1, 0, 13, 0
-	move_person obj_D37R0103_stop_5, 2, 0, 13, 0
-	move_person obj_D37R0103_stop_6, 2, 0, 14, 0
+	move_person_facing obj_D37R0103_tsure_poke_static_machoke, 19, 0, 16, DIR_SOUTH
+	move_person_facing obj_D37R0103_babyboy1_5_3, 19, 0, 18, DIR_NORTH
+	move_person_facing obj_D37R0103_stop, 19, 0, 17, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_2, 20, 0, 17, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_3, 20, 0, 18, DIR_NORTH
+	move_person_facing obj_D37R0103_tsure_poke_static_machoke_2, 3, 0, 14, DIR_WEST
+	move_person_facing obj_D37R0103_babyboy1_5_2, 1, 0, 14, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_4, 1, 0, 13, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_5, 2, 0, 13, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_6, 2, 0, 14, DIR_NORTH
 	end
 
 _013E:
 	scrcmd_109 0, 9
-	move_person obj_D37R0103_tsure_poke_static_machoke, 19, 0, 16, 1
-	move_person obj_D37R0103_babyboy1_5_3, 19, 0, 18, 0
-	move_person obj_D37R0103_stop, 19, 0, 17, 0
-	move_person obj_D37R0103_stop_2, 20, 0, 17, 0
-	move_person obj_D37R0103_stop_3, 20, 0, 18, 0
-	move_person obj_D37R0103_tsure_poke_static_machoke_3, 7, 0, 17, 3
-	move_person obj_D37R0103_babyboy1_5, 8, 0, 18, 0
-	move_person obj_D37R0103_stop_7, 8, 0, 17, 0
-	move_person obj_D37R0103_stop_8, 9, 0, 17, 0
-	move_person obj_D37R0103_stop_9, 9, 0, 18, 0
+	move_person_facing obj_D37R0103_tsure_poke_static_machoke, 19, 0, 16, DIR_SOUTH
+	move_person_facing obj_D37R0103_babyboy1_5_3, 19, 0, 18, DIR_NORTH
+	move_person_facing obj_D37R0103_stop, 19, 0, 17, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_2, 20, 0, 17, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_3, 20, 0, 18, DIR_NORTH
+	move_person_facing obj_D37R0103_tsure_poke_static_machoke_3, 7, 0, 17, DIR_EAST
+	move_person_facing obj_D37R0103_babyboy1_5, 8, 0, 18, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_7, 8, 0, 17, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_8, 9, 0, 17, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_9, 9, 0, 18, DIR_NORTH
 	end
 
 _01BE:
 	goto_if_set FLAG_UNK_098, _0245
-	move_person obj_D37R0103_tsure_poke_static_machoke_2, 3, 0, 14, 2
-	move_person obj_D37R0103_babyboy1_5_2, 1, 0, 14, 0
-	move_person obj_D37R0103_stop_4, 1, 0, 13, 0
-	move_person obj_D37R0103_stop_5, 2, 0, 13, 0
-	move_person obj_D37R0103_stop_6, 2, 0, 14, 0
+	move_person_facing obj_D37R0103_tsure_poke_static_machoke_2, 3, 0, 14, DIR_WEST
+	move_person_facing obj_D37R0103_babyboy1_5_2, 1, 0, 14, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_4, 1, 0, 13, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_5, 2, 0, 13, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_6, 2, 0, 14, DIR_NORTH
 	end
 
 _0207:
-	move_person obj_D37R0103_tsure_poke_static_machoke_3, 7, 0, 17, 3
-	move_person obj_D37R0103_babyboy1_5, 8, 0, 18, 0
-	move_person obj_D37R0103_stop_7, 8, 0, 17, 0
-	move_person obj_D37R0103_stop_8, 9, 0, 17, 0
-	move_person obj_D37R0103_stop_9, 9, 0, 18, 0
+	move_person_facing obj_D37R0103_tsure_poke_static_machoke_3, 7, 0, 17, DIR_EAST
+	move_person_facing obj_D37R0103_babyboy1_5, 8, 0, 18, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_7, 8, 0, 17, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_8, 9, 0, 17, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_9, 9, 0, 18, DIR_NORTH
 	end
 
 _0245:
-	move_person obj_D37R0103_tsure_poke_static_machoke_2, 3, 0, 14, 2
-	move_person obj_D37R0103_babyboy1_5_2, 1, 0, 14, 0
-	move_person obj_D37R0103_stop_4, 1, 0, 13, 0
-	move_person obj_D37R0103_stop_5, 2, 0, 13, 0
-	move_person obj_D37R0103_stop_6, 2, 0, 14, 0
-	move_person obj_D37R0103_tsure_poke_static_machoke_3, 7, 0, 17, 3
-	move_person obj_D37R0103_babyboy1_5, 8, 0, 18, 0
-	move_person obj_D37R0103_stop_7, 8, 0, 17, 0
-	move_person obj_D37R0103_stop_8, 9, 0, 17, 0
-	move_person obj_D37R0103_stop_9, 9, 0, 18, 0
+	move_person_facing obj_D37R0103_tsure_poke_static_machoke_2, 3, 0, 14, DIR_WEST
+	move_person_facing obj_D37R0103_babyboy1_5_2, 1, 0, 14, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_4, 1, 0, 13, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_5, 2, 0, 13, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_6, 2, 0, 14, DIR_NORTH
+	move_person_facing obj_D37R0103_tsure_poke_static_machoke_3, 7, 0, 17, DIR_EAST
+	move_person_facing obj_D37R0103_babyboy1_5, 8, 0, 18, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_7, 8, 0, 17, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_8, 9, 0, 17, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_9, 9, 0, 18, DIR_NORTH
 	end
 
 _02BF:
 	scrcmd_109 0, 9
-	move_person obj_D37R0103_tsure_poke_static_machoke, 19, 0, 16, 1
-	move_person obj_D37R0103_babyboy1_5_3, 19, 0, 18, 0
-	move_person obj_D37R0103_stop, 19, 0, 17, 0
-	move_person obj_D37R0103_stop_2, 20, 0, 17, 0
-	move_person obj_D37R0103_stop_3, 20, 0, 18, 0
-	move_person obj_D37R0103_tsure_poke_static_machoke_2, 3, 0, 14, 2
-	move_person obj_D37R0103_babyboy1_5_2, 1, 0, 14, 0
-	move_person obj_D37R0103_stop_4, 1, 0, 13, 0
-	move_person obj_D37R0103_stop_5, 2, 0, 13, 0
-	move_person obj_D37R0103_stop_6, 2, 0, 14, 0
-	move_person obj_D37R0103_tsure_poke_static_machoke_3, 7, 0, 17, 3
-	move_person obj_D37R0103_babyboy1_5, 8, 0, 18, 0
-	move_person obj_D37R0103_stop_7, 8, 0, 17, 0
-	move_person obj_D37R0103_stop_8, 9, 0, 17, 0
-	move_person obj_D37R0103_stop_9, 9, 0, 18, 0
+	move_person_facing obj_D37R0103_tsure_poke_static_machoke, 19, 0, 16, DIR_SOUTH
+	move_person_facing obj_D37R0103_babyboy1_5_3, 19, 0, 18, DIR_NORTH
+	move_person_facing obj_D37R0103_stop, 19, 0, 17, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_2, 20, 0, 17, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_3, 20, 0, 18, DIR_NORTH
+	move_person_facing obj_D37R0103_tsure_poke_static_machoke_2, 3, 0, 14, DIR_WEST
+	move_person_facing obj_D37R0103_babyboy1_5_2, 1, 0, 14, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_4, 1, 0, 13, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_5, 2, 0, 13, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_6, 2, 0, 14, DIR_NORTH
+	move_person_facing obj_D37R0103_tsure_poke_static_machoke_3, 7, 0, 17, DIR_EAST
+	move_person_facing obj_D37R0103_babyboy1_5, 8, 0, 18, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_7, 8, 0, 17, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_8, 9, 0, 17, DIR_NORTH
+	move_person_facing obj_D37R0103_stop_9, 9, 0, 18, DIR_NORTH
 	end
 
 scr_seq_D37R0103_000:

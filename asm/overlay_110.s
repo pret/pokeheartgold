@@ -1594,7 +1594,7 @@ ov110_021E6394: ; 0x021E6394
 	mov r3, #5
 	str r0, [sp, #4]
 	ldr r0, [r5, #0x14]
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]

@@ -286,7 +286,7 @@ _036C:
 scr_seq_D23R0101_009:
 	scrcmd_609
 	lockall
-	move_person obj_D23R0101_gsrivel, 13, 1, 6, 3
+	move_person_facing obj_D23R0101_gsrivel, 13, 1, 6, DIR_EAST
 	callstd std_play_rival_intro_music
 	get_person_coords 6, VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 5

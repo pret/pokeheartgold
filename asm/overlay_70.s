@@ -3425,7 +3425,7 @@ ov70_02239330: ; 0x02239330
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xe
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x3d
@@ -3433,7 +3433,7 @@ ov70_02239330: ; 0x02239330
 	add r0, r4, #0
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #3
@@ -4986,7 +4986,7 @@ ov70_02239FA4: ; 0x02239FA4
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xe
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x3d
@@ -4994,7 +4994,7 @@ ov70_02239FA4: ; 0x02239FA4
 	add r0, r5, #0
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0xa
@@ -6439,7 +6439,7 @@ ov70_0223ABF4: ; 0x0223ABF4
 	mov r1, #4
 	mov r2, #1
 	mov r3, #2
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #3
@@ -8035,7 +8035,7 @@ ov70_0223B8E0: ; 0x0223B8E0
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xe
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x3d
@@ -8043,7 +8043,7 @@ ov70_0223B8E0: ; 0x0223B8E0
 	add r0, r5, #0
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0xa
@@ -10835,7 +10835,7 @@ ov70_0223CF74: ; 0x0223CF74
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xe
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x3d
@@ -10843,7 +10843,7 @@ ov70_0223CF74: ; 0x0223CF74
 	add r0, r5, #0
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0xa
@@ -14185,7 +14185,7 @@ ov70_0223EA6C: ; 0x0223EA6C
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xe
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x3d
@@ -14193,7 +14193,7 @@ ov70_0223EA6C: ; 0x0223EA6C
 	add r0, r4, #0
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0xa
@@ -16370,7 +16370,7 @@ ov70_0223FB60: ; 0x0223FB60
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xe
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x3d
@@ -16378,7 +16378,7 @@ ov70_0223FB60: ; 0x0223FB60
 	add r0, r4, #0
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	ldr r0, _0223FBF0 ; =0x000011DC
 	ldrh r0, [r5, r0]
 	cmp r0, #0
@@ -25568,7 +25568,7 @@ ov70_022442B4: ; 0x022442B4
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xe
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x3d
@@ -25576,7 +25576,7 @@ ov70_022442B4: ; 0x022442B4
 	add r0, r4, #0
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -26131,7 +26131,7 @@ ov70_022447A0: ; 0x022447A0
 	ldr r0, _02244800 ; =0x000011B0
 	mov r1, #0x3d
 	ldr r0, [r4, r0]
-	bl sub_02001FDC
+	bl Handle2dMenuInput_DeleteOnFinish
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1

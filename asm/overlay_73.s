@@ -840,7 +840,7 @@ ov73_021E5F38: ; 0x021E5F38
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xb
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x32
@@ -848,7 +848,7 @@ ov73_021E5F38: ; 0x021E5F38
 	add r0, r6, #0
 	mov r2, #0x1f
 	mov r3, #0xa
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov73_021E5F38
@@ -5894,7 +5894,7 @@ ov73_021E8730: ; 0x021E8730
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xe
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x96
@@ -5902,7 +5902,7 @@ ov73_021E8730: ; 0x021E8730
 	add r0, r4, #0
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -9370,7 +9370,7 @@ _021EA258: .word 0x00000DD8
 	thumb_func_start ov73_021EA25C
 ov73_021EA25C: ; 0x021EA25C
 	push {r3, lr}
-	bl sub_0202C854
+	bl Save_FriendGroup_get
 	bl ov73_021E795C
 	pop {r3, pc}
 	thumb_func_end ov73_021EA25C
@@ -9380,7 +9380,7 @@ ov73_021EA268: ; 0x021EA268
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r5, r2, #0
-	bl sub_0202C854
+	bl Save_FriendGroup_get
 	add r6, r0, #0
 	add r0, r4, #0
 	add r1, r5, #0
@@ -9400,7 +9400,7 @@ ov73_021EA290: ; 0x021EA290
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
-	bl sub_0202C854
+	bl Save_FriendGroup_get
 	add r2, r0, #0
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]

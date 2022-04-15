@@ -666,7 +666,7 @@ _021E6D9E:
 	lsr r0, r0, #0x1f
 	beq _021E6DB6
 	add r0, r4, #0
-	bl sub_02092DEC
+	bl Fsys_GetGearPhoneRingManager
 	bl ov02_02251F20
 	cmp r0, #0
 	beq _021E6DB6
@@ -2209,7 +2209,7 @@ ov01_021E7A08: ; 0x021E7A08
 	cmp r0, r1
 	blo _021E7A56
 	add r0, r4, #0
-	bl sub_02092DEC
+	bl Fsys_GetGearPhoneRingManager
 	mov r1, #2
 	mov r2, #1
 	bl sub_02092E14

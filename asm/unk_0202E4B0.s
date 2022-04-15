@@ -297,7 +297,7 @@ sub_0202E66C: ; 0x0202E66C
 	str r0, [sp, #4]
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl sub_0202C854
+	bl Save_FriendGroup_get
 	mov r1, #1
 	bl sub_0202C7B4
 	str r0, [sp, #8]
@@ -711,7 +711,7 @@ sub_0202E97C: ; 0x0202E97C
 	bl sub_0202E530
 	str r0, [sp, #8]
 	add r0, r4, #0
-	bl sub_0202C854
+	bl Save_FriendGroup_get
 	mov r1, #1
 	bl sub_0202C7B4
 	mov r4, #0
@@ -783,7 +783,7 @@ sub_0202E9FC: ; 0x0202E9FC
 	add r7, r0, #0
 	bl MI_CpuFill8
 	add r0, r4, #0
-	bl sub_0202C854
+	bl Save_FriendGroup_get
 	mov r1, #1
 	bl sub_0202C7B4
 	str r0, [sp, #0xc]

@@ -52,11 +52,11 @@ _0093:
 	goto_if_unset FLAG_UNK_10B, _00FA
 	compare VAR_TEMP_x4003, 111
 	goto_if_ne _00FA
-	move_person obj_D40R0107_dancer_5, 16, 1, 32, 0
-	move_person obj_D40R0107_dancer_3, 13, 1, 33, 0
-	move_person obj_D40R0107_dancer_4, 13, 1, 27, 0
-	move_person obj_D40R0107_dancer, 19, 1, 33, 0
-	move_person obj_D40R0107_dancer_2, 19, 1, 27, 0
+	move_person_facing obj_D40R0107_dancer_5, 16, 1, 32, DIR_NORTH
+	move_person_facing obj_D40R0107_dancer_3, 13, 1, 33, DIR_NORTH
+	move_person_facing obj_D40R0107_dancer_4, 13, 1, 27, DIR_NORTH
+	move_person_facing obj_D40R0107_dancer, 19, 1, 33, DIR_NORTH
+	move_person_facing obj_D40R0107_dancer_2, 19, 1, 27, DIR_NORTH
 	setvar VAR_TEMP_x4003, 0
 	end
 
@@ -414,11 +414,11 @@ scr_seq_D40R0107_005:
 	release obj_D40R0107_dancer_4
 	release obj_D40R0107_dancer
 	release obj_D40R0107_dancer_2
-	move_person obj_D40R0107_dancer_5, 16, 1, 33, 0
-	move_person obj_D40R0107_dancer_3, 13, 1, 33, 0
-	move_person obj_D40R0107_dancer_4, 13, 1, 27, 0
-	move_person obj_D40R0107_dancer, 19, 1, 33, 0
-	move_person obj_D40R0107_dancer_2, 19, 1, 27, 0
+	move_person_facing obj_D40R0107_dancer_5, 16, 1, 33, DIR_NORTH
+	move_person_facing obj_D40R0107_dancer_3, 13, 1, 33, DIR_NORTH
+	move_person_facing obj_D40R0107_dancer_4, 13, 1, 27, DIR_NORTH
+	move_person_facing obj_D40R0107_dancer, 19, 1, 33, DIR_NORTH
+	move_person_facing obj_D40R0107_dancer_2, 19, 1, 27, DIR_NORTH
 	cinematic 1
 	scrcmd_767
 	fade_screen 6, 1, 1, RGB_BLACK

@@ -4,6 +4,7 @@
 typedef struct FIELD_PLAYER_AVATAR FIELD_PLAYER_AVATAR;
 typedef struct MapObjectMan MapObjectMan;
 typedef struct LocalMapObject LocalMapObject;
+typedef struct FieldSystem FieldSystem;
 
 struct FlypointsPlayerSub {
     u16 hasRunningShoes;
@@ -27,5 +28,10 @@ int PlayerAvatar_GetGender(FIELD_PLAYER_AVATAR *avatar);
 LocalMapObject *PlayerAvatar_GetMapObject(FIELD_PLAYER_AVATAR *avatar);
 BOOL sub_0205CABC(FIELD_PLAYER_AVATAR *avatar);
 int PlayerAvatar_GetFacingDirection(FIELD_PLAYER_AVATAR *playerAvatar);
+void PlayerAvatar_SetFacingDirection(FIELD_PLAYER_AVATAR*, u32 direction);
+void sub_0205CAA4(FIELD_PLAYER_AVATAR *, u8);
+void PlayerAvatar_OrrTransitionFlags(FIELD_PLAYER_AVATAR *playerAvatar, u32 flags);
+void sub_0205C858(FIELD_PLAYER_AVATAR *playerAvatar, u8 a1);
+FIELD_PLAYER_AVATAR *FieldSys_GetPlayerAvatar(FieldSystem *fsys);
 
 #endif //POKEHEARTGOLD_FIELD_PLAYER_AVATAR_H

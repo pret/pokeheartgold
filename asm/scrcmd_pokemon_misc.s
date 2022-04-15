@@ -459,7 +459,7 @@ _02200E62:
 	ldr r0, [r0, #8]
 	mov r1, #3
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	add r0, r4, #0
 	ldr r2, _02200EC0 ; =0x000003D9
 	add r0, #8
@@ -3084,7 +3084,7 @@ ov01_02202378: ; 0x02202378
 	sub sp, #0x14
 	str r1, [sp]
 	add r5, r2, #0
-	bl sub_0202C854
+	bl Save_FriendGroup_get
 	add r4, r0, #0
 	cmp r5, #0
 	beq _02202390

@@ -451,7 +451,7 @@ ov54_021E5C84: ; 0x021E5C84
 	ldr r0, [r4]
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x14]
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	ldr r1, [r4, #0x10]
 	ldr r0, _021E5CD8 ; =0xFFDFFFFF
 	and r0, r1
@@ -948,7 +948,7 @@ ov54_021E6004: ; 0x021E6004
 	mov r3, #0xf
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x14]
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0x1a
 	ldr r2, [r4]
 	mov r0, #0

@@ -901,7 +901,7 @@
 #define SPRITE_TSURE_POKE_STATIC_MEGANIUM       1047
 #define SPRITE_TSURE_POKE_STATIC_TYPHLOSION     1048
 #define SPRITE_TSURE_POKE_STATIC_FERALIGATR     1049
-#define SPRITE_BABYBOY1_14                      8192
+#define SPRITE_CAMERA_FOCUS                     8192
 
 #define SPRITE_VAR_0                              100
 #define SPRITE_VAR_1                              101

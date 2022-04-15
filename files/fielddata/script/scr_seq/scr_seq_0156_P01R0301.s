@@ -29,11 +29,11 @@ scr_seq_P01R0301_006:
 	end
 
 _004F:
-	scrcmd_342 0, 27, 20
+	move_warp 0, 27, 20
 	end
 
 _0059:
-	scrcmd_342 12, 27, 20
+	move_warp 12, 27, 20
 	end
 
 scr_seq_P01R0301_008:
@@ -152,29 +152,29 @@ scr_seq_P01R0301_004:
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4000, 22
 	goto_if_ne _01D3
-	move_person obj_P01R0301_gsgentleman, 31, 0, VAR_TEMP_x4001, 2
+	move_person_facing obj_P01R0301_gsgentleman, 31, 0, VAR_TEMP_x4001, DIR_WEST
 	goto _023C
 
 _01D3:
 	compare VAR_TEMP_x4000, 23
 	goto_if_ne _01F2
-	move_person obj_P01R0301_gsgentleman, 32, 0, VAR_TEMP_x4001, 2
+	move_person_facing obj_P01R0301_gsgentleman, 32, 0, VAR_TEMP_x4001, DIR_WEST
 	goto _023C
 
 _01F2:
 	compare VAR_TEMP_x4000, 24
 	goto_if_ne _0211
-	move_person obj_P01R0301_gsgentleman, 33, 0, VAR_TEMP_x4001, 2
+	move_person_facing obj_P01R0301_gsgentleman, 33, 0, VAR_TEMP_x4001, DIR_WEST
 	goto _023C
 
 _0211:
 	compare VAR_TEMP_x4000, 25
 	goto_if_ne _0230
-	move_person obj_P01R0301_gsgentleman, 34, 0, VAR_TEMP_x4001, 2
+	move_person_facing obj_P01R0301_gsgentleman, 34, 0, VAR_TEMP_x4001, DIR_WEST
 	goto _023C
 
 _0230:
-	move_person obj_P01R0301_gsgentleman, 35, 0, VAR_TEMP_x4001, 2
+	move_person_facing obj_P01R0301_gsgentleman, 35, 0, VAR_TEMP_x4001, DIR_WEST
 _023C:
 	apply_movement obj_P01R0301_gsgentleman, _0288
 	apply_movement obj_player, _02A0
