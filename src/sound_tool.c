@@ -17,13 +17,13 @@ static void Snd_SetContestData(u16, int);
 static void Snd_SetContestImageData(u16, int);
 static void Snd_AddSceneData(u8);
 static void Snd_SetDemoData(u8, u16, int);
-static void Snd_ReverseBuffer(u8* p, u32 size);
+static void Snd_ReverseBuffer(u8 *p, u32 size);
 static BOOL Snd_CaptureIsActive(void);
 static NNSSndCaptureType GF_SndCaptureGetCaptureType(void);
 static void GF_SndCaptureStopReverb(int frame);
 static void Snd_SetNextWait(int frame);
-static BOOL MusicFadeOutAndPlayNext(u8 scene, u16 no, int frame, int next_wait, u8 flag, void* adrs);
-static void SetFadeCommon(u8 scene, u16 no, int frame, int next_wait, u8 flag, void* adrs);
+static BOOL MusicFadeOutAndPlayNext(u8 scene, u16 no, int frame, int next_wait, u8 flag, void *adrs);
+static void SetFadeCommon(u8 scene, u16 no, int frame, int next_wait, u8 flag, void *adrs);
 static void GF_SndSetAllocatableChannelForBGMPlayer(int channel);
 static void Snd_FieldPauseOrStop(void);
 static void Snd_SetGBSoundsState(u8 val);
@@ -57,7 +57,7 @@ u8 Snd_GetCntrlBGMFlag(void) {
 }
 
 void Snd_SetCurrentlyPlayingBGM(u16 no) {
-    u16* cur_bgm = (u16 *)GF_SdatGetAttrPtr(SOUND_WORK_CUR_BGM_NO);
+    u16 *cur_bgm = (u16 *)GF_SdatGetAttrPtr(SOUND_WORK_CUR_BGM_NO);
     if (no > SEQ_GS_P_START) {
         Snd_SetUNK_58(no);
         *cur_bgm = GBSounds_GetDSSeqNoByGBSeqNo(no);
@@ -88,8 +88,8 @@ void Snd_SetZoneBGM(u16 unkA) {
 }
 
 void Snd_SetScene(u8 scene) {
-    u8* scene_main = (u8 *)GF_SdatGetAttrPtr(SOUND_WORK_SCENE_MAIN);
-    u8* scene_sub = (u8 *)GF_SdatGetAttrPtr(SOUND_WORK_SCENE_SUB);
+    u8 *scene_main = (u8 *)GF_SdatGetAttrPtr(SOUND_WORK_SCENE_MAIN);
+    u8 *scene_sub = (u8 *)GF_SdatGetAttrPtr(SOUND_WORK_SCENE_SUB);
     if (scene < SOUND_SUB) {
         *scene_main = scene;
         *scene_sub = SOUND_MAIN_DUMMY;
@@ -104,7 +104,7 @@ static void Snd_SetSubscene(u8 scene) {
 }
 
 void Snd_ClearBGMHeapAndSubscene(void) {
-    u8* sub = GF_SdatGetAttrPtr(SOUND_WORK_SCENE_SUB);
+    u8 *sub = GF_SdatGetAttrPtr(SOUND_WORK_SCENE_SUB);
     Snd_ClearBGMHeap();
     *sub = 0;
 }
@@ -291,9 +291,9 @@ BOOL sub_02004EB4(u16 unkA) {
 }
 
 BOOL Snd_SetDataByScene(u8 scene, u16 no, int flag) {
-    u8* scene_main = GF_SdatGetAttrPtr(SOUND_WORK_SCENE_MAIN);
-    u8* scene_sub = GF_SdatGetAttrPtr(SOUND_WORK_SCENE_SUB);
-    u16* me_wait = GF_SdatGetAttrPtr(SOUND_WORK_ME_WAIT);
+    u8 *scene_main = GF_SdatGetAttrPtr(SOUND_WORK_SCENE_MAIN);
+    u8 *scene_sub = GF_SdatGetAttrPtr(SOUND_WORK_SCENE_SUB);
+    u16 *me_wait = GF_SdatGetAttrPtr(SOUND_WORK_ME_WAIT);
 
     if (scene < SOUND_SUB) {
         if (*scene_main == scene) {    
@@ -393,7 +393,7 @@ BOOL Snd_SetDataByScene(u8 scene, u16 no, int flag) {
 } 
 
 static void Snd_SetSubData(u8 scene) {
-    int* heap_save_global = GF_SdatGetAttrPtr(SOUND_WORK_HEAP_SAVE_GLOBAL);
+    int *heap_save_global = GF_SdatGetAttrPtr(SOUND_WORK_HEAP_SAVE_GLOBAL);
 
     GF_Snd_LoadState(*heap_save_global); 
 
@@ -406,9 +406,9 @@ static void Snd_SetSubData(u8 scene) {
 static void Snd_SetFieldData(u16 no, int flag) {
     int temp;
 
-    u8* field_pause_flag = GF_SdatGetAttrPtr(SOUND_WORK_FIELD_PAUSE_FLAG);
-    int* heap_save_global = GF_SdatGetAttrPtr(SOUND_WORK_HEAP_SAVE_GLOBAL);
-    u16* zone_bgm = GF_SdatGetAttrPtr(SOUND_WORK_MAP_MUSIC);
+    u8 *field_pause_flag = GF_SdatGetAttrPtr(SOUND_WORK_FIELD_PAUSE_FLAG);
+    int *heap_save_global = GF_SdatGetAttrPtr(SOUND_WORK_HEAP_SAVE_GLOBAL);
+    u16 *zone_bgm = GF_SdatGetAttrPtr(SOUND_WORK_MAP_MUSIC);
 
     temp = GF_SndPlayerGetSeqNo(GF_GetSoundHandle(SOUND_WORK_WAVEOUT_HANDLE_NORMAL));
 
@@ -457,7 +457,7 @@ static void Snd_SetFieldData(u16 no, int flag) {
 }
 
 static void Snd_SetFieldDataWithoutDelay(u16 no, u16 unused) {
-    u16* zone_bgm = GF_SdatGetAttrPtr(SOUND_WORK_MAP_MUSIC);
+    u16 *zone_bgm = GF_SdatGetAttrPtr(SOUND_WORK_MAP_MUSIC);
     u32 tmp_bank_no = Snd_GetBank(*zone_bgm);   
 
     if (tmp_bank_no == BANK_BASIC) {
@@ -477,8 +477,8 @@ static void Snd_SetFieldDataWithoutDelay(u16 no, u16 unused) {
 
 void Snd_SetFieldSubData(u16 no, u16 old_bank_no) {
     u32 tmp_bank_no;
-    u8* bank_flag = GF_SdatGetAttrPtr(SOUND_WORK_BANK_FLAG);
-    u16* zone_bgm = GF_SdatGetAttrPtr(SOUND_WORK_MAP_MUSIC);
+    u8 *bank_flag = GF_SdatGetAttrPtr(SOUND_WORK_BANK_FLAG);
+    u16 *zone_bgm = GF_SdatGetAttrPtr(SOUND_WORK_MAP_MUSIC);
 
     if ((*bank_flag == SND_BANK_FLAG_CHANGE) || (old_bank_no == 0)) {
         GF_Snd_LoadState(Snd_GetSaveHeap(SOUND_SAVE_HEAP_GLOBAL));  
@@ -503,7 +503,7 @@ void Snd_SetFieldSubData(u16 no, u16 old_bank_no) {
 }
 
 static void Snd_SetBattleData(u16 no, int flag) {
-    int* heap_save_global = GF_SdatGetAttrPtr(SOUND_WORK_HEAP_SAVE_GLOBAL);
+    int *heap_save_global = GF_SdatGetAttrPtr(SOUND_WORK_HEAP_SAVE_GLOBAL);
 
     Snd_FieldPauseOrStop();
 
@@ -517,7 +517,7 @@ static void Snd_SetBattleData(u16 no, int flag) {
 }
 
 static void Snd_SetP2PData(u16 no, int unused) {
-    int* heap_save_global = GF_SdatGetAttrPtr(SOUND_WORK_HEAP_SAVE_GLOBAL);
+    int *heap_save_global = GF_SdatGetAttrPtr(SOUND_WORK_HEAP_SAVE_GLOBAL);
 
     sub_02005FA0();   
 
@@ -529,7 +529,7 @@ static void Snd_SetP2PData(u16 no, int unused) {
 }
 
 static void Snd_SetContestData(u16 no, int flag) {
-    int* heap_save_global = GF_SdatGetAttrPtr(SOUND_WORK_HEAP_SAVE_GLOBAL);
+    int *heap_save_global = GF_SdatGetAttrPtr(SOUND_WORK_HEAP_SAVE_GLOBAL);
 
     sub_02005FA0();  
 
@@ -540,7 +540,7 @@ static void Snd_SetContestData(u16 no, int flag) {
 }
 
 static void Snd_SetContestImageData(u16 no, int flag) {
-    int* heap_save_global = GF_SdatGetAttrPtr(SOUND_WORK_HEAP_SAVE_GLOBAL);
+    int *heap_save_global = GF_SdatGetAttrPtr(SOUND_WORK_HEAP_SAVE_GLOBAL);
 
     sub_02005FA0(); 
 
@@ -557,7 +557,7 @@ static void Snd_AddSceneData(u8 scene) {
 }
 
 static void Snd_SetDemoData(u8 scene, u16 bgm, int flag) {
-    int* heap_save_global = GF_SdatGetAttrPtr(SOUND_WORK_HEAP_SAVE_GLOBAL);
+    int *heap_save_global = GF_SdatGetAttrPtr(SOUND_WORK_HEAP_SAVE_GLOBAL);
 
     sub_02005FA0(); 
     Snd_SetSubData(scene);
@@ -565,7 +565,7 @@ static void Snd_SetDemoData(u8 scene, u16 bgm, int flag) {
 }
 
 void BGM_SaveStateAndPlayBGM(u16 no) {
-    SND_WORK* wk = GetSoundDataPointer();
+    SND_WORK *wk = GetSoundDataPointer();
 
     Snd_FieldPauseOrStop();
     
@@ -577,8 +577,8 @@ void Snd_ClearBGMHeap(void) {
 }
 
 int Snd_GetSaveHeap(int type) {
-    SND_WORK* work = GetSoundDataPointer();
-    int* heap_save;
+    SND_WORK *work = GetSoundDataPointer();
+    int *heap_save;
 
     if (type >= SOUND_SAVE_HEAP_MAX) {
         GF_ASSERT(FALSE);
@@ -614,7 +614,7 @@ int Snd_GetSaveHeap(int type) {
 
 void SndPause(u8 player, BOOL flag) {
     u8 handle_no;
-    u8* pause_flag;
+    u8 *pause_flag;
 
     if (player == PLAYER_FIELD) {
         pause_flag = GF_SdatGetAttrPtr(SOUND_WORK_FIELD_PAUSE_FLAG);
@@ -635,8 +635,8 @@ void SndPause(u8 player, BOOL flag) {
 }
 
 void Snd_ClearPauseFlags() {
-    u8* field_pause_flag = GF_SdatGetAttrPtr(SOUND_WORK_FIELD_PAUSE_FLAG);
-    u8* bgm_pause_flag = GF_SdatGetAttrPtr(SOUND_WORK_BGM_PAUSE_FLAG);
+    u8 *field_pause_flag = GF_SdatGetAttrPtr(SOUND_WORK_FIELD_PAUSE_FLAG);
+    u8 *bgm_pause_flag = GF_SdatGetAttrPtr(SOUND_WORK_BGM_PAUSE_FLAG);
     *field_pause_flag = 0;
     *bgm_pause_flag = 0;
 }
@@ -667,10 +667,10 @@ void Snd_SetVChatVolBySeqNo(int seq_no) {
 
 void Snd_SetVChatVol(int seq_no, int handle_no) {
     u8 vol;
-    const NNSSndSeqParam* p = NNS_SndArcGetSeqParam(seq_no);
+    const NNSSndSeqParam *p = NNS_SndArcGetSeqParam(seq_no);
 
     switch (handle_no) {
-    case SND_HANDLE_PV:
+    case SND_HANDLE_CRY:
     case SND_HANDLE_CHORUS:
         vol = VOLUME_MAX;
         break;
@@ -688,7 +688,7 @@ void Snd_SetVChatVol(int seq_no, int handle_no) {
 }
 
 u8 Snd_GetVol(int seq_no) {
-    NNSSndSeqParam* param = NNS_SndArcGetSeqParam(seq_no);
+    NNSSndSeqParam *param = NNS_SndArcGetSeqParam(seq_no);
     if (param == 0) {
         return 0;
     }
@@ -709,7 +709,7 @@ int GF_SndPlayerCountPlayingSeqByPlayerNo(int player_no) {
 }
 
 u8 Snd_GetPlayerNo(u16 no) {
-    const NNSSndSeqParam* param;
+    const NNSSndSeqParam *param;
     if (no == 0) {
         return 0xff; 
     }
@@ -727,12 +727,12 @@ int GF_SndPlayerGetSeqNo(int player_no) {
     return NNS_SndPlayerGetSeqNo(player_no);
 }
 
-const NNSSndArcBankInfo* Snd_GetBankInfo(int no) {
+const NNSSndArcBankInfo *Snd_GetBankInfo(int no) {
     return NNS_SndArcGetBankInfo(Snd_GetBank(no));
 }
 
 u16 Snd_GetBank(int no) {
-    const NNSSndSeqParam* param;
+    const NNSSndSeqParam *param;
     
     param = NNS_SndArcGetSeqParam(no);
     if (param == NULL) {
@@ -745,7 +745,7 @@ BOOL IsWorkMicCounterFull(void) {
     return GF_IsWorkMicCounterFull();
 }
 
-MICResult GF_MicStartAutoSampling(MICAutoParam* p) {
+MICResult GF_MicStartAutoSampling(MICAutoParam *p) {
     MICResult ret = MIC_StartAutoSampling(p);
 
     auto_sample_flag = 1;
@@ -757,7 +757,7 @@ MICResult GF_MicStartAutoSampling(MICAutoParam* p) {
 
 MICResult GF_MicStopAutoSampling(void) {
     MICResult ret;
-    SND_WORK* wk = GetSoundDataPointer();
+    SND_WORK *wk = GetSoundDataPointer();
 
     auto_sample_flag = 0;
 
@@ -781,10 +781,10 @@ void MicResumeOnLidOpen(void) {
     GF_SndWorkMicCounterReset();
 }
 
-NNSSndWaveOutHandle* GetWaveoutHandle(u32 no) {
-    SND_WORK* wk = GetSoundDataPointer();
-    u8* ch_normal_flag = GF_SdatGetAttrPtr(SOUND_WORK_WAVEOUT_CH_NORMAL_FLAG);
-    u8* ch_chorus_flag = GF_SdatGetAttrPtr(SOUND_WORK_WAVEOUT_CH_CHORUS_FLAG);
+NNSSndWaveOutHandle *GetWaveoutHandle(u32 no) {
+    SND_WORK *wk = GetSoundDataPointer();
+    u8 *ch_normal_flag = GF_SdatGetAttrPtr(SOUND_WORK_WAVEOUT_CH_NORMAL_FLAG);
+    u8 *ch_chorus_flag = GF_SdatGetAttrPtr(SOUND_WORK_WAVEOUT_CH_CHORUS_FLAG);
 
     if ((no != WAVEOUT_CHANNEL_NORMAL) && (no != WAVEOUT_CHANNEL_CHORUS)) {
         GF_ASSERT(FALSE);
@@ -806,10 +806,10 @@ NNSSndWaveOutHandle* GetWaveoutHandle(u32 no) {
 }
 
 BOOL AllocWaveoutChannel(u32 no) {
-    u8* ch_normal_flag;
-    u8* ch_chorus_flag;
-    NNSSndWaveOutHandle* wave_handle;
-    SND_WORK* wk = GetSoundDataPointer();
+    u8 *ch_normal_flag;
+    u8 *ch_chorus_flag;
+    NNSSndWaveOutHandle *wave_handle;
+    SND_WORK *wk = GetSoundDataPointer();
 
     ch_normal_flag = GF_SdatGetAttrPtr(SOUND_WORK_WAVEOUT_CH_NORMAL_FLAG);
     ch_chorus_flag = GF_SdatGetAttrPtr(SOUND_WORK_WAVEOUT_CH_CHORUS_FLAG);
@@ -846,10 +846,10 @@ BOOL AllocWaveoutChannel(u32 no) {
 }
 
 void FreeWaveoutChannel(u32 no) {
-    NNSSndWaveOutHandle* wave_handle;
-    SND_WORK* wk = GetSoundDataPointer();
-    u8* ch_normal_flag = GF_SdatGetAttrPtr(SOUND_WORK_WAVEOUT_CH_NORMAL_FLAG);
-    u8* ch_chorus_flag = GF_SdatGetAttrPtr(SOUND_WORK_WAVEOUT_CH_CHORUS_FLAG);
+    NNSSndWaveOutHandle *wave_handle;
+    SND_WORK *wk = GetSoundDataPointer();
+    u8 *ch_normal_flag = GF_SdatGetAttrPtr(SOUND_WORK_WAVEOUT_CH_NORMAL_FLAG);
+    u8 *ch_chorus_flag = GF_SdatGetAttrPtr(SOUND_WORK_WAVEOUT_CH_CHORUS_FLAG);
 
     if ((no != WAVEOUT_CHANNEL_NORMAL) && (no != WAVEOUT_CHANNEL_CHORUS)) {
         GF_ASSERT(FALSE);
@@ -879,7 +879,7 @@ void FreeWaveoutChannel(u32 no) {
     return;
 }
 
-BOOL WaveoutStart(WAVEOUT_WORK* p, u32 ch) {
+BOOL WaveoutStart(WAVEOUT_WORK *p, u32 ch) {
     int ret;
     ret = NNS_SndWaveOutStart(*p->handle, p->format, p->dataaddr, p->loopFlag, p->loopStartSample,
                                 p->samples, p->sampleRate, p->volume, p->speed, p->pan);
@@ -925,12 +925,12 @@ void SetWaveoutVol(u32 no, int vol) {
 }
 
 BOOL WaveoutStartReverse(u16 no, int vol, int pan, u32 ch, int heap_id) {
-    u8* reverse_flag;
-    const NNSSndArcWaveArcInfo* info;
+    u8 *reverse_flag;
+    const NNSSndArcWaveArcInfo *info;
     u32 size;
     int size2,ret;
-    SND_WORK* wk = GetSoundDataPointer();
-    void** reverse_buf = GF_SdatGetAttrPtr(SOUND_WORK_REVERSE_BUF);
+    SND_WORK *wk = GetSoundDataPointer();
+    void* *reverse_buf = GF_SdatGetAttrPtr(SOUND_WORK_REVERSE_BUF);
 
     if ((ch != WAVEOUT_CHANNEL_NORMAL) && (ch != WAVEOUT_CHANNEL_CHORUS)) {
         GF_ASSERT(FALSE);
@@ -988,7 +988,7 @@ BOOL WaveoutStartReverse(u16 no, int vol, int pan, u32 ch, int heap_id) {
     return ret;
 }
 
-static void Snd_ReverseBuffer(u8* p, u32 size) {
+static void Snd_ReverseBuffer(u8 *p, u32 size) {
     int i;
     u8 temp;
 
@@ -1000,9 +1000,9 @@ static void Snd_ReverseBuffer(u8* p, u32 size) {
 }
 
 void WaveoutStopReverse(u32 no) {
-    SND_WORK* wk = GetSoundDataPointer();
-    u8* reverse_flag = GF_SdatGetAttrPtr(SOUND_WORK_REVERSE_FLAG);
-    void** reverse_buf = GF_SdatGetAttrPtr(SOUND_WORK_REVERSE_BUF);
+    SND_WORK *wk = GetSoundDataPointer();
+    u8 *reverse_flag = GF_SdatGetAttrPtr(SOUND_WORK_REVERSE_FLAG);
+    void* *reverse_buf = GF_SdatGetAttrPtr(SOUND_WORK_REVERSE_BUF);
 
     if ((no != WAVEOUT_CHANNEL_NORMAL) && (no != WAVEOUT_CHANNEL_CHORUS)) {
         GF_ASSERT(FALSE);
@@ -1062,17 +1062,17 @@ void GF_SndSetMonoFlag(BOOL flag) {
 }
 
 void Snd_SetFadeCount(int frame) {
-    int* fade_count = GF_SdatGetAttrPtr(SOUND_WORK_FADE_COUNT);
+    int *fade_count = GF_SdatGetAttrPtr(SOUND_WORK_FADE_COUNT);
     *fade_count = frame;
 }
 
 static void Snd_SetNextWait(int frame) {
-    int* next_wait = GF_SdatGetAttrPtr(SOUND_WORK_NEXT_WAIT);
+    int *next_wait = GF_SdatGetAttrPtr(SOUND_WORK_NEXT_WAIT);
     *next_wait = frame;
 }
 
 int Snd_GetAfterFadeDelayTimer(void) {
-    u16* next_wait = GF_SdatGetAttrPtr(SOUND_WORK_NEXT_WAIT);
+    u16 *next_wait = GF_SdatGetAttrPtr(SOUND_WORK_NEXT_WAIT);
 
     if (*next_wait <= 0) {
         *next_wait = 0;
@@ -1087,7 +1087,7 @@ void GF_SndSetMasterVolume(int vol) {
     NNS_SndSetMasterVolume(vol);
 }
 
-s8* Snd_GetWaveBufferAdrs(void) {
+s8 *Snd_GetWaveBufferAdrs(void) {
     return sWaveBuffer;
 }
 
@@ -1095,12 +1095,12 @@ void Snd_SetBankFlag(int flag) {
     *(u8 *)GF_SdatGetAttrPtr(SOUND_WORK_BANK_FLAG) = flag;
 }
 
-BOOL StartMusic(u16 no, int frame, int next_wait, u8 flag, void* adrs) {
+BOOL StartMusic(u16 no, int frame, int next_wait, u8 flag, void *adrs) {
     return MusicFadeOutAndPlayNext(SOUND_WORK_CALLBACK_INFO, no, frame, next_wait, flag, adrs);
 }
 
-static BOOL MusicFadeOutAndPlayNext(u8 scene, u16 no, int frame, int next_wait, u8 flag, void* adrs) {
-    u8* scene_sub = GF_SdatGetAttrPtr(SOUND_WORK_SCENE_SUB);
+static BOOL MusicFadeOutAndPlayNext(u8 scene, u16 no, int frame, int next_wait, u8 flag, void *adrs) {
+    u8 *scene_sub = GF_SdatGetAttrPtr(SOUND_WORK_SCENE_SUB);
 
     SetFadeCommon(scene, no, frame, next_wait, flag, adrs);
 
@@ -1110,12 +1110,12 @@ static BOOL MusicFadeOutAndPlayNext(u8 scene, u16 no, int frame, int next_wait, 
     return TRUE;
 }
 
-BOOL StartFadeInMusic(u16 no, int frame, int next_wait, int next_frame, u8 flag, void* adrs) {
+BOOL StartFadeInMusic(u16 no, int frame, int next_wait, int next_frame, u8 flag, void *adrs) {
     return MusicFadeOutAndFadeInNext(4, no, frame, next_wait, next_frame, flag, adrs);
 }
 
-BOOL MusicFadeOutAndFadeInNext(u8 scene, u16 no, int frame, int next_wait, int next_frame, u8 flag, void* adrs) {
-    int* next_frame_wk = GF_SdatGetAttrPtr(SOUND_WORK_NEXT_FRAME);
+BOOL MusicFadeOutAndFadeInNext(u8 scene, u16 no, int frame, int next_wait, int next_frame, u8 flag, void *adrs) {
+    int *next_frame_wk = GF_SdatGetAttrPtr(SOUND_WORK_NEXT_FRAME);
 
     SetFadeCommon(scene, no, frame, next_wait, flag, adrs);
     
@@ -1125,8 +1125,8 @@ BOOL MusicFadeOutAndFadeInNext(u8 scene, u16 no, int frame, int next_wait, int n
     return TRUE;
 }
 
-static void SetFadeCommon(u8 scene, u16 no, int frame, int next_wait, u8 flag, void* adrs) {
-    const NNSSndArcBankInfo** info = GF_SdatGetAttrPtr(SOUND_WORK_BANK_INFO);
+static void SetFadeCommon(u8 scene, u16 no, int frame, int next_wait, u8 flag, void *adrs) {
+    const NNSSndArcBankInfo* *info = GF_SdatGetAttrPtr(SOUND_WORK_BANK_INFO);
 
     GF_SndStartFadeOutBGM(VOLUME_MIN, frame); 
 
@@ -1176,7 +1176,7 @@ void Snd_SetBattleRecFlag(u8 flag) {
     *(u8 *)GF_SdatGetAttrPtr(SOUND_WORK_BATTLE_REC_FLAG) = flag;
 }
 
-BOOL Snd_ReadPlayerVariable(u16 seq_no, u16 varNo, s16* var) {
+BOOL Snd_ReadPlayerVariable(u16 seq_no, u16 varNo, s16 *var) {
     if (var == NULL) {
         GF_ASSERT(FALSE);
     }
@@ -1189,7 +1189,7 @@ BOOL Snd_ReadPlayerVariable(u16 seq_no, u16 varNo, s16* var) {
 }
 
 void sub_02005BA8(u16 no) {
-    u8* index = (u8 *)GF_SdatGetAttrPtr(SOUND_WORK_UNK_55);
+    u8 *index = (u8 *)GF_SdatGetAttrPtr(SOUND_WORK_UNK_55);
     Snd_SetVol(no, _020F5710[*index][1]);
     GF_SndHandleSetTrackPitch(4, 0x0000FFFF, _020F5710[*index][0]);
     if (index[1] >= 8) {

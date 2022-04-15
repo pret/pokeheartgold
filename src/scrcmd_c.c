@@ -84,7 +84,7 @@
 #include "unk_020977CC.h"
 #include "unk_020979A8.h"
 #include "unk_02097BE0.h"
-#include "sound_02004A44.h"
+#include "sound_tool.h"
 #include "unk_020290B4.h"
 #include "msgdata/msg/msg_0202.h"
 #include "constants/accessories.h"
@@ -5322,7 +5322,7 @@ BOOL ScrCmd_803(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_805(SCRIPTCONTEXT *ctx) {
-    sub_02004B24(75);
+    Snd_LoadGroupByScene(75);
     return FALSE;
 }
 

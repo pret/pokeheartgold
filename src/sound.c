@@ -427,8 +427,8 @@ enum SoundHandleNo GF_GetSndHandleByPlayerNo(int playerNo) {
     switch (playerNo) {
     case PLAYER_FIELD:
         return SND_HANDLE_FIELD;
-    case PLAYER_PV:
-        return SND_HANDLE_PV;
+    case PLAYER_CRY:
+        return SND_HANDLE_CRY;
     case PLAYER_ME:
         return SND_HANDLE_ME;
     case PLAYER_SE_1:

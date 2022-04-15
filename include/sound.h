@@ -13,7 +13,7 @@ typedef struct SND_WORK SND_WORK;
 
 enum SoundHandleNo {
     SND_HANDLE_FIELD,
-    SND_HANDLE_PV,
+    SND_HANDLE_CRY,
     SND_HANDLE_ME,
     SND_HANDLE_SE_1,
     SND_HANDLE_SE_2,
