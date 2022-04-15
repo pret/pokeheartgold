@@ -8,5 +8,6 @@ void SetupAndStartWildBattle(TaskManager *taskManager, u16 species, u8 level, st
 void sub_02051090(TaskManager *taskManager, u16 species, u8 level, struct BattleSetupStruct **p_battleSetup, BOOL canRun);
 void sub_02051228(TaskManager *taskManager, u16 species, u8 level);
 void SetupAndStartTutorialBattle(TaskManager *taskManager);
+void SetupAndStartTrainerBattle(TaskManager *taskManager, u16 a1, u16 a2, u16 followerTrainerNum, u8 a4, u8 a5, int a6, u32 *scriptUnk0C);
 
 #endif //POKEHEARTGOLD_UNK_02050660_H

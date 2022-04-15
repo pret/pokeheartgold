@@ -167,7 +167,7 @@ Static main
 	Object src/scrcmd_strbuf.o
 	Object asm/scrcmd_5.o
 	Object asm/scrcmd_6.o
-	Object asm/scrcmd_7.o
+	Object src/scrcmd_battle.o
 	Object asm/scrcmd_8.o
 	Object asm/scrcmd_9.o
 	Object asm/scrcmd_10.o
