@@ -6,6 +6,7 @@
 #include "bag.h"
 #include "mail.h"
 #include "fashion_case.h"
+#include "field_blackthorn_tutors.h"
 
 struct UseMailWork;
 struct ApricornBoxWork;
@@ -94,6 +95,7 @@ void *sub_0203F984(FieldSystem *fsys);
 void *sub_0203F844(FieldSystem *fsys, u16 a1);
 void *sub_0203E460(FieldSystem *fsys, u8 a1);
 u16 sub_0203E4CC(void *a0);
+void sub_0203F9C4(FieldSystem *fsys, struct MoveRelearner *moveRelearner);
 
 static inline void InitUnkStructScrCmd408(struct UnkStruct_ScrCmd408 *data, u16 a1, u16 a2, SCRIPTCONTEXT *ctx) {
     MI_CpuClear8(data, sizeof(struct UnkStruct_ScrCmd408));
