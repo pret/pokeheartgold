@@ -518,10 +518,18 @@ Overlay OVY_3
     After OVY_2
     Object asm/overlay_03.o
 }
-Overlay OVY_4
+Overlay gymmick
 {
     After OVY_2
-    Object asm/overlay_04.o
+    Object asm/violet_gymmick.o
+    Object asm/azalea_gymmick.o
+    Object asm/ecruteak_gymmick.o
+    Object asm/blackthorn_gymmick.o
+    Object asm/cianwood_gymmick.o
+    Object asm/vermilion_gymmick.o
+    Object asm/fuchsia_gymmick.o
+    Object asm/viridian_gymmick.o
+    Object asm/sinjoh_gymmick.o
 }
 Overlay OVY_5
 {
