@@ -6385,11 +6385,11 @@
 .public ov01_021FB360
 .public ov01_021FB368
 .public ov01_021FB3A4
-.public ov01_021FB3E4
+.public MapHeightOverrideCreateRect
 .public ov01_021FB418
 .public ov01_021FB42C
 .public ov01_021FB474
-.public ov01_021FB4A0
+.public MapHeightOverrideUpdate
 .public ov01_021FB4C0
 .public ov01_021FB4D4
 .public ov01_021FB4F4
@@ -6942,8 +6942,8 @@
 .public ov01_0220596C
 .public ov01_02205990
 .public ov01_022059AC
-.public ov01_02205A34
-.public ov01_02205A60
+.public SetFollowingPokeHeight
+.public Task_WaitFollowingPokeSituatedOnMovingPlatform
 .public ov01_02205AEC
 .public ov01_02205B14
 .public ov01_02205CF0

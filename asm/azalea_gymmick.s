@@ -584,7 +584,7 @@ ov04_0225463C: ; 0x0225463C
 	b _0225468A
 _0225465E:
 	ldr r0, [r5, #0x10]
-	ldr r1, _02254690 ; =ov01_02205A60
+	ldr r1, _02254690 ; =Task_WaitFollowingPokeSituatedOnMovingPlatform
 	mov r2, #0
 	bl TaskManager_Call
 	ldr r0, [r4]
@@ -608,7 +608,7 @@ _0225468A:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_02254690: .word ov01_02205A60
+_02254690: .word Task_WaitFollowingPokeSituatedOnMovingPlatform
 _02254694: .word ov04_02254724
 	thumb_func_end ov04_0225463C
 

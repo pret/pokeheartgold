@@ -85,8 +85,8 @@ _021FB3E0:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov01_021FB3A4
 
-	thumb_func_start ov01_021FB3E4
-ov01_021FB3E4: ; 0x021FB3E4
+	thumb_func_start MapHeightOverrideCreateRect
+MapHeightOverrideCreateRect: ; 0x021FB3E4
 	push {r4, r5}
 	ldr r5, [sp, #0x10]
 	mov r4, #0x18
@@ -113,7 +113,7 @@ ov01_021FB3E4: ; 0x021FB3E4
 	str r1, [r0, #0x14]
 	pop {r4, r5}
 	bx lr
-	thumb_func_end ov01_021FB3E4
+	thumb_func_end MapHeightOverrideCreateRect
 
 	thumb_func_start ov01_021FB418
 ov01_021FB418: ; 0x021FB418
@@ -195,8 +195,8 @@ _021FB498:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov01_021FB474
 
-	thumb_func_start ov01_021FB4A0
-ov01_021FB4A0: ; 0x021FB4A0
+	thumb_func_start MapHeightOverrideUpdate
+MapHeightOverrideUpdate: ; 0x021FB4A0
 	push {r4, r5, r6, lr}
 	add r6, r2, #0
 	add r5, r0, #0
@@ -213,4 +213,4 @@ _021FB4B2:
 	str r4, [r0, #0x10]
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021FB4A0
+	thumb_func_end MapHeightOverrideUpdate

@@ -13809,7 +13809,7 @@ _0224C3E0:
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	beq _0224C3F0
-	ldr r1, _0224C4A8 ; =ov01_02205A60
+	ldr r1, _0224C4A8 ; =Task_WaitFollowingPokeSituatedOnMovingPlatform
 	add r0, r7, #0
 	mov r2, #0
 	bl TaskManager_Call
@@ -13909,7 +13909,7 @@ _0224C4A2:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0224C4A8: .word ov01_02205A60
+_0224C4A8: .word Task_WaitFollowingPokeSituatedOnMovingPlatform
 _0224C4AC: .word ov02_02253710
 _0224C4B0: .word ov02_02253754
 	thumb_func_end Task_FieldDig
@@ -14032,7 +14032,7 @@ _0224C58C:
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	beq _0224C59C
-	ldr r1, _0224C654 ; =ov01_02205A60
+	ldr r1, _0224C654 ; =Task_WaitFollowingPokeSituatedOnMovingPlatform
 	add r0, r7, #0
 	mov r2, #0
 	bl TaskManager_Call
@@ -14132,7 +14132,7 @@ _0224C64E:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0224C654: .word ov01_02205A60
+_0224C654: .word Task_WaitFollowingPokeSituatedOnMovingPlatform
 _0224C658: .word ov02_0225373C
 _0224C65C: .word ov02_02253724
 	thumb_func_end Task_FieldTeleport
@@ -26417,7 +26417,7 @@ _0225240A:
 	bl FollowingPokemon_GetMapObject
 	bl MapObject_UnpauseMovement
 	ldr r0, [r4, #0x10]
-	ldr r1, _0225252C ; =ov01_02205A60
+	ldr r1, _0225252C ; =Task_WaitFollowingPokeSituatedOnMovingPlatform
 	mov r2, #0
 	bl TaskManager_Call
 	ldr r0, [r5]
@@ -26548,7 +26548,7 @@ _02252524:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
-_0225252C: .word ov01_02205A60
+_0225252C: .word Task_WaitFollowingPokeSituatedOnMovingPlatform
 _02252530: .word 0x000003CE
 	thumb_func_end ov02_022523D0
 

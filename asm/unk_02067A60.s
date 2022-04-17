@@ -280,7 +280,7 @@ _02067C58: ; jump table
 	.short _02067D44 - _02067C58 - 2 ; case 5
 	.short _02067D8C - _02067C58 - 2 ; case 6
 _02067C66:
-	ldr r1, _02067DEC ; =ov01_02205A60
+	ldr r1, _02067DEC ; =Task_WaitFollowingPokeSituatedOnMovingPlatform
 	add r0, r6, #0
 	mov r2, #0
 	bl TaskManager_Call
@@ -459,7 +459,7 @@ _02067DE4:
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	nop
-_02067DEC: .word ov01_02205A60
+_02067DEC: .word Task_WaitFollowingPokeSituatedOnMovingPlatform
 _02067DF0: .word _020FE7AC
 	thumb_func_end sub_02067C30
 

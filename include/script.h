@@ -236,7 +236,7 @@ typedef struct FsysUnkSub4 {
 
 typedef struct BgModelEvent {
     int id;
-    BOOL valid;
+    BOOL enabled;
     BOOL invisible;
     NNSG3dRenderObj renderObj;
     NNSG3dResMdl *resMdl;
@@ -245,9 +245,23 @@ typedef struct BgModelEvent {
     VecFx32 scale;
 } BgModelEvent;
 
-typedef struct FieldSysUnk9CArr {
+typedef struct BgModelEventList {
     BgModelEvent objects[32];
 } BgModelEventList;
+
+typedef struct MapHeightOverride {
+    int x;
+    int z;
+    int width;
+    int depth;
+    fx32 height;
+    BOOL enabled;
+} MapHeightOverride;
+
+typedef struct MapHeightOverridesList {
+    int n;
+    MapHeightOverride *data;
+} MapHeightOverridesList;
 
 struct FieldSystem {
     struct FieldSystemUnkSub0 *unk0;
@@ -284,7 +298,7 @@ struct FieldSystem {
     struct UnkStruct_0205AC88 *unk84;
     u8 filler_88[0xC];
     void *unk94;
-    void *unk98;
+    MapHeightOverridesList *mapHeightOverrides;
     BgModelEventList *bgModels;
     void *unkA0;
     u8 filler_A4[0x8];

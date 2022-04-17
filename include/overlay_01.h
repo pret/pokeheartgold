@@ -111,7 +111,7 @@ typedef BOOL (*UnkCallback_021F6B34)(struct UnkStruct_ov01_021EDC28 *menu, int i
 void ov01_021F6B34(FieldSystem *fsys, UnkCallback_021F6B34 cb, struct UnkStruct_ov01_021EDC28 *menu);
 void ov01_021EEF9C(struct UnkStruct_ov01_021EDC28 *menu, int idx);
 
-void AddBgModelFromTemplate(BgModelEventList *modelList, int id, const VecFx32 *pos, const VecFx32 *rotation, void *fsys_unk54);
+void AddBgModelFromTemplate(BgModelEventList *modelList, int id, const VecFx32 *pos, const VecFx32 *rotation, void *_3dAnimMgr);
 BOOL ov01_022060B8(FieldSystem *fsys, u8 a1, u8 a2);
 
 struct BankTransactionWorkSub {
@@ -130,12 +130,12 @@ WINDOW *ov01_021EEF68(FieldSystem *fsys, u16 a1);
 void ov01_021EEF88(WINDOW *window);
 BOOL ov01_02206268(FieldSystem *fsys);
 
-void ov01_021FB3E4(int, int, int, int, int, int, void *fsys_unk98);
+void MapHeightOverrideCreateRect(u8 idx, int x, int z, int width, int depth, fx32 height, MapHeightOverridesList *list);
 struct BgModelEvent *GetBgModelFromMemoryList(BgModelEventList *modelList, int id);
 void BgModel_GetPosition(VecFx32 *, struct BgModelEvent *);
 void BgModel_SetPosition(struct BgModelEvent *, VecFx32 *);
-void ov01_021FB4A0(int, fx32, void *fsys_unk98);
-BOOL ov01_02205A60(TaskManager *taskManager);
-void ov01_02205A34(FieldSystem *fsys, fx32 y);
+void MapHeightOverrideUpdate(u8 idx, fx32 height, MapHeightOverridesList *list);
+BOOL Task_WaitFollowingPokeSituatedOnMovingPlatform(TaskManager *taskManager);
+void SetFollowingPokeHeight(FieldSystem *fsys, fx32 y);
 
 #endif //POKEHEARTGOLD_OVERLAY_01_H

@@ -42,15 +42,16 @@ void InitVioletGymElevatorGimmick(FieldSystem *fsys) {
     VecFx32 elevatorPos;
     fx32 ypos;
     struct BgModelEvent *elevator;
+
     AddBgModelFromTemplate(fsys->bgModels, 111, &elevInitPos, NULL, fsys->_3dAnimationMgr);
-    ov01_021FB3E4(0, 14, 19, 3, 3, 0x20000, fsys->unk98);
+    MapHeightOverrideCreateRect(0, 14, 19, 3, 3, ELEVATOR_HEIGHT_DOWN, fsys->mapHeightOverrides);
 
     ypos = getElevatorCurrentHeight(data->violet.liftState);
     elevator = GetBgModelFromMemoryList(fsys->bgModels, 111);
     BgModel_GetPosition(&elevatorPos, elevator);
     elevatorPos.y = ypos;
     BgModel_SetPosition(elevator, &elevatorPos);
-    ov01_021FB4A0(0, ypos, fsys->unk98);
+    MapHeightOverrideUpdate(0, ypos, fsys->mapHeightOverrides);
     {
         static const GXRgb edgeColors[8] = {
             GX_RGB(0, 0, 0),
@@ -92,7 +93,7 @@ static BOOL fieldTask_ElevatorUp(TaskManager *taskManager) {
     
     switch (env->state) {
     case 0:
-        TaskManager_Call(fsys->taskman, ov01_02205A60, NULL);
+        TaskManager_Call(fsys->taskman, Task_WaitFollowingPokeSituatedOnMovingPlatform, NULL);
         env->state++;
         break;
     case 1:
@@ -113,7 +114,7 @@ static BOOL fieldTask_ElevatorDown(TaskManager *taskManager) {
 
     switch (env->state) {
     case 0:
-        TaskManager_Call(fsys->taskman, ov01_02205A60, NULL);
+        TaskManager_Call(fsys->taskman, Task_WaitFollowingPokeSituatedOnMovingPlatform, NULL);
         env->state++;
         break;
     case 1:
@@ -152,11 +153,11 @@ static void sysTask_ElevatorUp(SysTask *task, struct VioletElevatorMoveTaskEnv *
         PlayerAvatar_GetPositionVec(fsys->playerAvatar, &playerPos);
         playerPos.y += ELEVATOR_HEIGHT_STEP;
         PlayerAvatar_SetHeight(fsys->playerAvatar, playerPos.y);
-        ov01_02205A34(fsys, playerPos.y);
+        SetFollowingPokeHeight(fsys, playerPos.y);
         BgModel_SetPosition(elevator, &elevatorPos);
         break;
     case 4:
-        ov01_021FB4A0(0, ELEVATOR_HEIGHT_UP, fsys->unk98);
+        MapHeightOverrideUpdate(0, ELEVATOR_HEIGHT_UP, fsys->mapHeightOverrides);
         sub_0205C874(fsys->playerAvatar, TRUE);
         PlaySE(SEQ_SE_DP_KI_GASYAN);
         DestroySysTask(task);
@@ -189,11 +190,11 @@ static void sysTask_ElevatorDown(SysTask *task, struct VioletElevatorMoveTaskEnv
         PlayerAvatar_GetPositionVec(fsys->playerAvatar, &playerPos);
         playerPos.y -= ELEVATOR_HEIGHT_STEP;
         PlayerAvatar_SetHeight(fsys->playerAvatar, playerPos.y);
-        ov01_02205A34(fsys, playerPos.y);
+        SetFollowingPokeHeight(fsys, playerPos.y);
         BgModel_SetPosition(elevator, &elevatorPos);
         break;
     case 4:
-        ov01_021FB4A0(0, ELEVATOR_HEIGHT_DOWN, fsys->unk98);
+        MapHeightOverrideUpdate(0, ELEVATOR_HEIGHT_DOWN, fsys->mapHeightOverrides);
         sub_0205C874(fsys->playerAvatar, TRUE);
         PlaySE(SEQ_SE_DP_KI_GASYAN);
         DestroySysTask(task);
