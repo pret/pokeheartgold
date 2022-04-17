@@ -620,7 +620,7 @@ BOOL ScrCmd_617(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_PhotoAlbumIsFull(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_RocketCostumeFlagCheck(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_RocketCostumeFlagAction(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_621(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_DrawRemainingStarterBalls(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_622(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_AnimApricornTree(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_ApricornTreeGetApricorn(SCRIPTCONTEXT *ctx);
@@ -1475,7 +1475,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_PhotoAlbumIsFull,
     ScrCmd_RocketCostumeFlagCheck,
     ScrCmd_RocketCostumeFlagAction,
-    ScrCmd_621,
+    ScrCmd_DrawRemainingStarterBalls,
     ScrCmd_622,
     ScrCmd_AnimApricornTree,
     ScrCmd_ApricornTreeGetApricorn,

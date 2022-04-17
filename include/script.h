@@ -236,7 +236,13 @@ typedef struct FsysUnkSub4 {
 
 typedef struct BgModelEvent {
     int id;
-    u8 filler_04[0x34];
+    BOOL valid;
+    BOOL invisible;
+    NNSG3dRenderObj renderObj;
+    NNSG3dResMdl *resMdl;
+    VecFx32 pos;
+    VecFx32 rotation;
+    VecFx32 scale;
 } BgModelEvent;
 
 typedef struct FieldSysUnk9CArr {
@@ -262,7 +268,7 @@ struct FieldSystem {
     FIELD_PLAYER_AVATAR *playerAvatar;
     void *unk_44;
     u8 filler48[0xC];
-    void *unk54;
+    void *_3dAnimationMgr;
     u8 filler_58[0x8];
     u32 unk60;
     int unk64;

@@ -3499,7 +3499,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_621
+	.macro draw_remaining_starter_balls
 	.short 621
 	.endm
 

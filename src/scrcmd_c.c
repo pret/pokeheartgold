@@ -4763,27 +4763,31 @@ BOOL ScrCmd_617(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_621(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_DrawRemainingStarterBalls(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    const struct BgModelTemplate sp4[3] = {
-        {0x00083000, 0x00000000, 0x00041000},
-        {0x0008D000, 0x00000000, 0x00041000},
-        {0x00088000, 0x00000000, 0x00048000},
+    const VecFx32 ballsPos[3] = {
+        {131 * FX32_ONE, 0, 65 * FX32_ONE},
+        {141 * FX32_ONE, 0, 65 * FX32_ONE},
+        {136 * FX32_ONE, 0, 72 * FX32_ONE},
     };
     int n, i;
 
     int partyCount = GetPartyCount(SavArray_PlayerParty_get(fsys->savedata));
     if (FlagGet(fsys, FLAG_GOT_TM51_FROM_FALKNER)) {
+        // Who took the last one?
         n = 0;
     } else if (FlagGet(fsys, FLAG_MET_PASSERBY_BOY)) {
+        // Rival stole one
         n = 1;
     } else if (partyCount > 0) {
+        // Just picked your starter
         n = 2;
     } else {
+        // Haven't picked your starter yet
         n = 3;
     }
     for (i = 0; i < n; i++) {
-        AddBgModelFromTemplate(fsys->bgModels, 0x8D, &sp4[i], 0, fsys->unk54);
+        AddBgModelFromTemplate(fsys->bgModels, 141, &ballsPos[i], NULL, fsys->_3dAnimationMgr);
     }
     return FALSE;
 }

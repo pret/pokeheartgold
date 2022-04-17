@@ -657,7 +657,7 @@ BOOL ScrCmd_617(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_PhotoAlbumIsFull(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_RocketCostumeFlagCheck(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_RocketCostumeFlagAction(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_621(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_DrawRemainingStarterBalls(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_622(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_AnimApricornTree(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_ApricornTreeGetApricorn(SCRIPTCONTEXT* ctx);

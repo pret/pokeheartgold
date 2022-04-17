@@ -3042,7 +3042,7 @@
 .public ScrCmd_617
 .public ScrCmd_RocketCostumeFlagCheck
 .public ScrCmd_RocketCostumeFlagAction
-.public ScrCmd_621
+.public ScrCmd_DrawRemainingStarterBalls
 .public ScrCmd_622
 .public ScrCmd_627
 .public ScrCmd_628

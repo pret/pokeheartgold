@@ -34,15 +34,15 @@ static inline fx32 getElevatorCurrentHeight(u8 state) {
 
 void InitVioletGymElevatorGimmick(FieldSystem *fsys) {
     union GymmickUnion *data = SavGymmick_AssertMagic_GetData(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys)), GYMMICK_VIOLET);
-    const struct BgModelTemplate template = {
-        0x000F8000,
-        0x00000000,
-        0x00148000,
+    const VecFx32 elevInitPos = {
+        248 * FX32_ONE,
+        0,
+        328 * FX32_ONE,
     };
     VecFx32 elevatorPos;
     fx32 ypos;
     struct BgModelEvent *elevator;
-    AddBgModelFromTemplate(fsys->bgModels, 111, &template, 0, fsys->unk54);
+    AddBgModelFromTemplate(fsys->bgModels, 111, &elevInitPos, NULL, fsys->_3dAnimationMgr);
     ov01_021FB3E4(0, 14, 19, 3, 3, 0x20000, fsys->unk98);
 
     ypos = getElevatorCurrentHeight(data->violet.liftState);
