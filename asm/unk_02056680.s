@@ -272,7 +272,7 @@ _0205686A:
 	blt _02056932
 	ldr r0, [r5, #0x40]
 	mov r1, #1
-	bl sub_0205C874
+	bl PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]
@@ -404,7 +404,7 @@ _02056986:
 	blt _02056A4E
 	ldr r0, [r5, #0x40]
 	mov r1, #1
-	bl sub_0205C874
+	bl PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]
@@ -671,7 +671,7 @@ sub_02056BC8: ; 0x02056BC8
 	bl PlayerAvatar_GetPositionVec
 	ldr r0, [r4, #0x40]
 	mov r1, #0
-	bl sub_0205C858
+	bl PlayerAvatar_ToggleAutomaticHeightUpdating
 	mov r0, #2
 	ldr r1, [sp, #0x28]
 	lsl r0, r0, #0x10
@@ -737,7 +737,7 @@ sub_02056C64: ; 0x02056C64
 	bl PlayerAvatar_GetPositionVec
 	ldr r0, [r4, #0x40]
 	mov r1, #0
-	bl sub_0205C858
+	bl PlayerAvatar_ToggleAutomaticHeightUpdating
 	mov r0, #2
 	ldr r1, [sp, #0x28]
 	lsl r0, r0, #0x10

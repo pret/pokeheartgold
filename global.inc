@@ -29343,8 +29343,8 @@
 .public sub_0205C7EC
 .public sub_0205C810
 .public PlayerAvatar_SetHeight
-.public sub_0205C858
-.public sub_0205C874
+.public PlayerAvatar_ToggleAutomaticHeightUpdating
+.public PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
 .public sub_0205C898
 .public sub_0205C99C
 .public sub_0205CA20

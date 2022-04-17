@@ -137,7 +137,7 @@ static void sysTask_ElevatorUp(SysTask *task, struct VioletElevatorMoveTaskEnv *
 
     switch (env->state) {
     case 2:
-        sub_0205C858(fsys->playerAvatar, FALSE);
+        PlayerAvatar_ToggleAutomaticHeightUpdating(fsys->playerAvatar, FALSE);
         PlaySE(SEQ_SE_DP_ELEBETA);
         env->state++;
         break;
@@ -158,7 +158,7 @@ static void sysTask_ElevatorUp(SysTask *task, struct VioletElevatorMoveTaskEnv *
         break;
     case 4:
         MapHeightOverrideUpdate(0, ELEVATOR_HEIGHT_UP, fsys->mapHeightOverrides);
-        sub_0205C874(fsys->playerAvatar, TRUE);
+        PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(fsys->playerAvatar, TRUE);
         PlaySE(SEQ_SE_DP_KI_GASYAN);
         DestroySysTask(task);
         env->state++;
@@ -174,7 +174,7 @@ static void sysTask_ElevatorDown(SysTask *task, struct VioletElevatorMoveTaskEnv
 
     switch (env->state) {
     case 2:
-        sub_0205C858(fsys->playerAvatar, FALSE);
+        PlayerAvatar_ToggleAutomaticHeightUpdating(fsys->playerAvatar, FALSE);
         PlaySE(SEQ_SE_DP_ELEBETA);
         env->state++;
         break;
@@ -195,7 +195,7 @@ static void sysTask_ElevatorDown(SysTask *task, struct VioletElevatorMoveTaskEnv
         break;
     case 4:
         MapHeightOverrideUpdate(0, ELEVATOR_HEIGHT_DOWN, fsys->mapHeightOverrides);
-        sub_0205C874(fsys->playerAvatar, TRUE);
+        PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(fsys->playerAvatar, TRUE);
         PlaySE(SEQ_SE_DP_KI_GASYAN);
         DestroySysTask(task);
         env->state++;

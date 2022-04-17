@@ -3420,7 +3420,7 @@ BOOL ScrCmd_459(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_456(SCRIPTCONTEXT *ctx) {
     u8 arg = ScriptReadByte(ctx);
-    sub_0205C858(ctx->fsys->playerAvatar, arg);
+    PlayerAvatar_ToggleAutomaticHeightUpdating(ctx->fsys->playerAvatar, arg);
     return TRUE;
 }
 

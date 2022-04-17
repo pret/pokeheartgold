@@ -932,7 +932,7 @@ _020562E0:
 	str r0, [r7, #4]
 	ldr r0, [r4, #0x40]
 	mov r1, #0
-	bl sub_0205C858
+	bl PlayerAvatar_ToggleAutomaticHeightUpdating
 	ldr r0, [r4, #0x2c]
 	bl ov01_021F6304
 	add r0, r4, #0
@@ -1046,7 +1046,7 @@ _020563FC:
 	beq _02056418
 	ldr r0, [r4, #0x40]
 	mov r1, #1
-	bl sub_0205C874
+	bl PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
 	ldr r0, [r5, #0x18]
 	bl FreeToHeap
 	add sp, #0x10
@@ -1124,7 +1124,7 @@ _02056474:
 	mov r1, #0
 	str r1, [r0]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C858
+	bl PlayerAvatar_ToggleAutomaticHeightUpdating
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]
@@ -1169,7 +1169,7 @@ _02056508:
 	beq _02056524
 	ldr r0, [r5, #0x40]
 	mov r1, #1
-	bl sub_0205C874
+	bl PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
 	ldr r0, [r4, #0x18]
 	bl FreeToHeap
 	add sp, #0xc
