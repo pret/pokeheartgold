@@ -12703,7 +12703,7 @@ PokecenterAnimCreate: ; 0x0224BB18
 	bl sub_02054DC8
 	ldr r1, [sp, #4]
 	add r0, sp, #8
-	bl ov01_021F3B0C
+	bl BgModel_GetPosition
 	add r3, sp, #8
 	ldmia r3!, {r0, r1}
 	add r2, r4, #0
@@ -12905,7 +12905,7 @@ _0224BC98:
 	mov r1, #0x6b
 	add r2, sp, #0x28
 	add r3, sp, #0x1c
-	bl ov01_021F3C0C
+	bl AddBgModelFromTemplate
 	ldrb r1, [r4, #0xd]
 	add r1, r4, r1
 	strb r0, [r1, #0x10]
@@ -15118,7 +15118,7 @@ ov02_0224CDB0: ; 0x0224CDB0
 	bl sub_02054DC8
 	ldr r1, [sp, #4]
 	add r0, sp, #8
-	bl ov01_021F3B0C
+	bl BgModel_GetPosition
 	add r3, sp, #8
 	ldmia r3!, {r0, r1}
 	add r2, r4, #0
@@ -15263,7 +15263,7 @@ _0224CEBA:
 	mov r1, #0x6b
 	add r2, sp, #0x24
 	add r3, sp, #0x18
-	bl ov01_021F3C0C
+	bl AddBgModelFromTemplate
 	ldrb r1, [r4, #0xd]
 	add r1, r4, r1
 	strb r0, [r1, #0x10]

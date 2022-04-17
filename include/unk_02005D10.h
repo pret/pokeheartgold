@@ -4,6 +4,7 @@
 #include "constants/sndseq.h"
 
 void PlaySE(u16 sndseq);
+void StopSE(u16 sndseq, int a1);
 void sub_0200615C(int, int);
 BOOL IsCryFinished(void);
 void sub_02006300(int);

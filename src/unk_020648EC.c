@@ -1,5 +1,5 @@
 #include "gymmick.h"
-#include "overlay_04.h"
+#include "gymmick_overlay.h"
 #include "save_misc_data.h"
 #include "scrcmd.h"
 #include "script.h"
@@ -44,7 +44,7 @@ static const FieldSystemFunc1 _020FE214[] = {
     [GYMMICK_ECRUTEAK]   = ov04_02254CBC,
     [GYMMICK_CIANWOOD]   = ov04_02255FC0,
     [GYMMICK_VERMILION]  = ov04_02256304,
-    [GYMMICK_VIOLET]     = ov04_02253E20,
+    [GYMMICK_VIOLET]     = InitVioletGymElevatorGimmick,
     [GYMMICK_AZALEA]     = ov04_02254190,
     [GYMMICK_BLACKTHORN] = ov04_02254F8C,
     [GYMMICK_FUCHSIA]    = ov04_02256650,

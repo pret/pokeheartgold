@@ -92,7 +92,7 @@ _02254FEC:
 	ldr r1, [r1]
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl ov01_021F3C0C
+	bl AddBgModelFromTemplate
 	strb r0, [r6, #0xb]
 	str r7, [sp]
 	ldr r1, [sp, #8]
@@ -1471,7 +1471,7 @@ _02255A16:
 	bl ov01_021F3B44
 	add r1, r0, #0
 	add r0, sp, #8
-	bl ov01_021F3B0C
+	bl BgModel_GetPosition
 	ldr r1, [sp, #8]
 	asr r0, r1, #0xf
 	lsr r0, r0, #0x10
@@ -1960,7 +1960,7 @@ _02255DEA:
 	str r0, [sp]
 	ldr r1, [sp]
 	add r0, sp, #0x34
-	bl ov01_021F3B0C
+	bl BgModel_GetPosition
 	add r0, sp, #0x34
 	add r1, r4, #0
 	add r1, #0x58
@@ -1968,7 +1968,7 @@ _02255DEA:
 	bl VEC_Add
 	ldr r0, [sp]
 	add r1, sp, #0x34
-	bl ov01_021F3B1C
+	bl BgModel_SetPosition
 	ldr r0, [r6, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r1, sp, #0x28
@@ -2104,7 +2104,7 @@ _02255F1C:
 	add r5, r0, #0
 	add r0, sp, #0x10
 	add r1, r5, #0
-	bl ov01_021F3B0C
+	bl BgModel_GetPosition
 	add r0, sp, #0x10
 	add r1, r4, #0
 	add r1, #0x58
@@ -2112,7 +2112,7 @@ _02255F1C:
 	bl VEC_Add
 	add r0, r5, #0
 	add r1, sp, #0x10
-	bl ov01_021F3B1C
+	bl BgModel_SetPosition
 	ldr r0, [r6, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r1, sp, #4

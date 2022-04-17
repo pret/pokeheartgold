@@ -521,7 +521,7 @@ Overlay OVY_3
 Overlay gymmick
 {
     After OVY_2
-    Object asm/violet_gymmick.o
+    Object src/violet_gymmick.o
     Object asm/azalea_gymmick.o
     Object asm/ecruteak_gymmick.o
     Object asm/blackthorn_gymmick.o

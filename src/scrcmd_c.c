@@ -5,7 +5,7 @@
 #include "overlay_01.h"
 #include "overlay_26.h"
 #include "overlay_03.h"
-#include "overlay_04.h"
+#include "gymmick_overlay.h"
 #include "system.h"
 #include "task.h"
 #include "text.h"
@@ -3144,7 +3144,7 @@ BOOL ScrCmd_VioletGymInit(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_VioletGymElevator(SCRIPTCONTEXT *ctx) {
-    ov04_02253ED4(ctx->fsys);
+    LaunchVioletGymElevatorMoveTask(ctx->fsys);
     return TRUE;
 }
 
@@ -4765,7 +4765,7 @@ BOOL ScrCmd_617(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_621(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    const struct UnkStruct_020FACDC sp4[3] = {
+    const struct BgModelTemplate sp4[3] = {
         {0x00083000, 0x00000000, 0x00041000},
         {0x0008D000, 0x00000000, 0x00041000},
         {0x00088000, 0x00000000, 0x00048000},
@@ -4783,7 +4783,7 @@ BOOL ScrCmd_621(SCRIPTCONTEXT *ctx) {
         n = 3;
     }
     for (i = 0; i < n; i++) {
-        ov01_021F3C0C(fsys->unk9C, 0x8D, &sp4[i], 0, fsys->unk54);
+        AddBgModelFromTemplate(fsys->bgModels, 0x8D, &sp4[i], 0, fsys->unk54);
     }
     return FALSE;
 }

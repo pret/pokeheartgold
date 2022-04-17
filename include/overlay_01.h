@@ -111,11 +111,11 @@ typedef BOOL (*UnkCallback_021F6B34)(struct UnkStruct_ov01_021EDC28 *menu, int i
 void ov01_021F6B34(FieldSystem *fsys, UnkCallback_021F6B34 cb, struct UnkStruct_ov01_021EDC28 *menu);
 void ov01_021EEF9C(struct UnkStruct_ov01_021EDC28 *menu, int idx);
 
-struct UnkStruct_020FACDC {
+struct BgModelTemplate {
     int filler_00[12/sizeof(int)];
 };
 
-void ov01_021F3C0C(void *fsys_unk9C, int a1, const struct UnkStruct_020FACDC *unk_FACDC, int a3, void *fsys_unk54);
+void AddBgModelFromTemplate(BgModelEventList *modelList, int a1, const struct BgModelTemplate *template, int a3, void *fsys_unk54);
 BOOL ov01_022060B8(FieldSystem *fsys, u8 a1, u8 a2);
 
 struct BankTransactionWorkSub {
@@ -133,5 +133,13 @@ void ov01_02204ED8(FieldSystem *fsys, u16 *a1);
 WINDOW *ov01_021EEF68(FieldSystem *fsys, u16 a1);
 void ov01_021EEF88(WINDOW *window);
 BOOL ov01_02206268(FieldSystem *fsys);
+
+void ov01_021FB3E4(int, int, int, int, int, int, void *fsys_unk98);
+struct BgModelEvent *GetBgModelFromMemoryList(BgModelEventList *modelList, int id);
+void BgModel_GetPosition(VecFx32 *, struct BgModelEvent *);
+void BgModel_SetPosition(struct BgModelEvent *, VecFx32 *);
+void ov01_021FB4A0(int, fx32, void *fsys_unk98);
+BOOL ov01_02205A60(TaskManager *taskManager);
+void ov01_02205A34(FieldSystem *fsys, fx32 y);
 
 #endif //POKEHEARTGOLD_OVERLAY_01_H

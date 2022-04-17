@@ -57,7 +57,7 @@ _022541C4:
 	add r0, #0x9c
 	ldr r0, [r0]
 	add r2, sp, #4
-	bl ov01_021F3C0C
+	bl AddBgModelFromTemplate
 	str r0, [r5, #4]
 	add r6, r6, #1
 	add r5, r5, #4
@@ -1097,7 +1097,7 @@ _02254A22:
 	str r0, [sp, #0x74]
 	add r0, r6, #0
 	add r1, r7, #0
-	bl ov01_021F3B1C
+	bl BgModel_SetPosition
 	ldr r3, _02254BA8 ; =ov04_02257344
 	add r2, sp, #0x5c
 	add r6, r4, #0

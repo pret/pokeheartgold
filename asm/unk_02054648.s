@@ -658,7 +658,7 @@ sub_02054A9C: ; 0x02054A9C
 	add r4, r2, #0
 	add r0, sp, #0
 	add r1, r3, #0
-	bl ov01_021F3B0C
+	bl BgModel_GetPosition
 	ldr r1, [sp]
 	ldr r0, [r4]
 	ldr r2, [sp, #8]

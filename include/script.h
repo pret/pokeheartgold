@@ -234,6 +234,15 @@ typedef struct FsysUnkSub4 {
     void *unk_0C; // weather related?
 } FsysUnkSub4;
 
+typedef struct BgModelEvent {
+    int id;
+    u8 filler_04[0x34];
+} BgModelEvent;
+
+typedef struct FieldSysUnk9CArr {
+    BgModelEvent objects[32];
+} BgModelEventList;
+
 struct FieldSystem {
     struct FieldSystemUnkSub0 *unk0;
     FsysUnkSub4 *unk4;
@@ -269,8 +278,8 @@ struct FieldSystem {
     struct UnkStruct_0205AC88 *unk84;
     u8 filler_88[0xC];
     void *unk94;
-    u8 filler_98[0x4];
-    void *unk9C;
+    void *unk98;
+    BgModelEventList *bgModels;
     void *unkA0;
     u8 filler_A4[0x8];
     u32 unkAC;

@@ -75,7 +75,7 @@ _02254D38:
 	ldr r0, [r0]
 	add r2, sp, #8
 	mov r3, #0
-	bl ov01_021F3C0C
+	bl AddBgModelFromTemplate
 	str r0, [r4]
 	ldrb r0, [r7, r6]
 	cmp r0, #0
@@ -201,7 +201,7 @@ ov04_02254E20: ; 0x02254E20
 	lsr r1, r1, #0x18
 	bl ov01_021F3B44
 	add r1, sp, #0
-	bl ov01_021F3B1C
+	bl BgModel_SetPosition
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0

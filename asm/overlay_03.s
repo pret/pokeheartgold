@@ -9746,7 +9746,7 @@ _02258B56:
 	beq _02258BC0
 	ldr r1, [sp, #0x18]
 	add r0, sp, #0x24
-	bl ov01_021F3B0C
+	bl BgModel_GetPosition
 	ldr r0, [sp, #0x2c]
 	ldrb r2, [r4, #1]
 	asr r1, r0, #0xc

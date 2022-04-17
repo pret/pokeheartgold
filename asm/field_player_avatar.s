@@ -982,8 +982,8 @@ sub_0205C810: ; 0x0205C810
 	.balign 4, 0
 	thumb_func_end sub_0205C810
 
-	thumb_func_start sub_0205C838
-sub_0205C838: ; 0x0205C838
+	thumb_func_start PlayerAvatar_SetHeight
+PlayerAvatar_SetHeight: ; 0x0205C838
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r1, #0
@@ -997,7 +997,7 @@ sub_0205C838: ; 0x0205C838
 	bl MapObject_SetPositionVec
 	add sp, #0xc
 	pop {r4, r5, pc}
-	thumb_func_end sub_0205C838
+	thumb_func_end PlayerAvatar_SetHeight
 
 	thumb_func_start sub_0205C858
 sub_0205C858: ; 0x0205C858

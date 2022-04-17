@@ -33,5 +33,8 @@ void sub_0205CAA4(FIELD_PLAYER_AVATAR *, u8);
 void PlayerAvatar_OrrTransitionFlags(FIELD_PLAYER_AVATAR *playerAvatar, u32 flags);
 void sub_0205C858(FIELD_PLAYER_AVATAR *playerAvatar, u8 a1);
 FIELD_PLAYER_AVATAR *FieldSys_GetPlayerAvatar(FieldSystem *fsys);
+void PlayerAvatar_GetPositionVec(FIELD_PLAYER_AVATAR *playerAvatar, VecFx32 *pdest);
+void PlayerAvatar_SetHeight(FIELD_PLAYER_AVATAR *playerAvatar, const fx32 ypos);
+void sub_0205C874(FIELD_PLAYER_AVATAR *playerAvatar, int a1);
 
 #endif //POKEHEARTGOLD_FIELD_PLAYER_AVATAR_H
