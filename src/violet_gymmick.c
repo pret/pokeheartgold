@@ -10,6 +10,14 @@
 #define ELEVATOR_HEIGHT_UP           (496 * FX32_ONE)
 #define ELEVATOR_HEIGHT_STEP         (16 * FX32_ONE)
 
+#define ELEVATOR_XPOS                (14)
+#define ELEVATOR_ZPOS                (19)
+#define ELEVATOR_WIDTH               (3)
+#define ELEVATOR_DEPTH               (3)
+#define ELEVATOR_HTOVRD_ID           (0)
+
+#define ELEVATOR_MODEL_ID            (111)
+
 struct VioletElevatorMoveTaskEnv {
     int state;
     FieldSystem *fsys;
@@ -35,23 +43,23 @@ static inline fx32 getElevatorCurrentHeight(u8 state) {
 void InitVioletGymElevatorGimmick(FieldSystem *fsys) {
     union GymmickUnion *data = SavGymmick_AssertMagic_GetData(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys)), GYMMICK_VIOLET);
     const VecFx32 elevInitPos = {
-        248 * FX32_ONE,
+        (ELEVATOR_XPOS + ELEVATOR_WIDTH * 0.5) * 16 * FX32_ONE,
         0,
-        328 * FX32_ONE,
+        (ELEVATOR_ZPOS + ELEVATOR_DEPTH * 0.5) * 16 * FX32_ONE,
     };
     VecFx32 elevatorPos;
     fx32 ypos;
     struct BgModelEvent *elevator;
 
-    AddBgModelFromTemplate(fsys->bgModels, 111, &elevInitPos, NULL, fsys->_3dAnimationMgr);
-    MapHeightOverrideCreateRect(0, 14, 19, 3, 3, ELEVATOR_HEIGHT_DOWN, fsys->mapHeightOverrides);
+    AddBgModelFromTemplate(fsys->bgModels, ELEVATOR_MODEL_ID, &elevInitPos, NULL, fsys->_3dAnimationMgr);
+    MapHeightOverrideCreateRect(ELEVATOR_HTOVRD_ID, ELEVATOR_XPOS, ELEVATOR_ZPOS, ELEVATOR_WIDTH, ELEVATOR_DEPTH, ELEVATOR_HEIGHT_DOWN, fsys->mapHeightOverrides);
 
     ypos = getElevatorCurrentHeight(data->violet.liftState);
-    elevator = GetBgModelFromMemoryList(fsys->bgModels, 111);
+    elevator = GetBgModelFromMemoryList(fsys->bgModels, ELEVATOR_MODEL_ID);
     BgModel_GetPosition(&elevatorPos, elevator);
     elevatorPos.y = ypos;
     BgModel_SetPosition(elevator, &elevatorPos);
-    MapHeightOverrideUpdate(0, ypos, fsys->mapHeightOverrides);
+    MapHeightOverrideUpdate(ELEVATOR_HTOVRD_ID, ypos, fsys->mapHeightOverrides);
     {
         static const GXRgb edgeColors[8] = {
             GX_RGB(0, 0, 0),
@@ -142,7 +150,7 @@ static void sysTask_ElevatorUp(SysTask *task, struct VioletElevatorMoveTaskEnv *
         env->state++;
         break;
     case 3:
-        elevator = GetBgModelFromMemoryList(fsys->bgModels, 111);
+        elevator = GetBgModelFromMemoryList(fsys->bgModels, ELEVATOR_MODEL_ID);
         BgModel_GetPosition(&elevatorPos, elevator);
         elevatorPos.y += ELEVATOR_HEIGHT_STEP;
         if (elevatorPos.y >= ELEVATOR_HEIGHT_UP) {
@@ -157,7 +165,7 @@ static void sysTask_ElevatorUp(SysTask *task, struct VioletElevatorMoveTaskEnv *
         BgModel_SetPosition(elevator, &elevatorPos);
         break;
     case 4:
-        MapHeightOverrideUpdate(0, ELEVATOR_HEIGHT_UP, fsys->mapHeightOverrides);
+        MapHeightOverrideUpdate(ELEVATOR_HTOVRD_ID, ELEVATOR_HEIGHT_UP, fsys->mapHeightOverrides);
         PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(fsys->playerAvatar, TRUE);
         PlaySE(SEQ_SE_DP_KI_GASYAN);
         DestroySysTask(task);
@@ -179,7 +187,7 @@ static void sysTask_ElevatorDown(SysTask *task, struct VioletElevatorMoveTaskEnv
         env->state++;
         break;
     case 3:
-        elevator = GetBgModelFromMemoryList(fsys->bgModels, 111);
+        elevator = GetBgModelFromMemoryList(fsys->bgModels, ELEVATOR_MODEL_ID);
         BgModel_GetPosition(&elevatorPos, elevator);
         elevatorPos.y -= ELEVATOR_HEIGHT_STEP;
         if (elevatorPos.y <= ELEVATOR_HEIGHT_DOWN) {
@@ -194,7 +202,7 @@ static void sysTask_ElevatorDown(SysTask *task, struct VioletElevatorMoveTaskEnv
         BgModel_SetPosition(elevator, &elevatorPos);
         break;
     case 4:
-        MapHeightOverrideUpdate(0, ELEVATOR_HEIGHT_DOWN, fsys->mapHeightOverrides);
+        MapHeightOverrideUpdate(ELEVATOR_HTOVRD_ID, ELEVATOR_HEIGHT_DOWN, fsys->mapHeightOverrides);
         PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(fsys->playerAvatar, TRUE);
         PlaySE(SEQ_SE_DP_KI_GASYAN);
         DestroySysTask(task);
