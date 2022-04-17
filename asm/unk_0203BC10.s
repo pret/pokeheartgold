@@ -1,5 +1,6 @@
 #include "constants/items.h"
 #include "constants/snd_system.h"
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -3891,7 +3892,7 @@ sub_0203DAE4: ; 0x0203DAE4
 	bl sub_02075D4C
 	mov r0, #0x47
 	bl DestroyHeap
-	ldr r0, _0203DB64 ; =0x000003F3
+	ldr r0, _0203DB64 ; =SEQ_GS_SHINKA
 	mov r1, #0
 	bl StopBGM
 	mov r0, #SOUND_MAIN_DUMMY
@@ -3925,6 +3926,6 @@ sub_0203DAE4: ; 0x0203DAE4
 _0203DB60:
 	pop {r3, r4, r5, pc}
 	nop
-_0203DB64: .word 0x000003F3
+_0203DB64: .word SEQ_GS_SHINKA
 _0203DB68: .word sub_0203CFC0
 	thumb_func_end sub_0203DAE4

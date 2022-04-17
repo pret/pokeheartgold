@@ -1,4 +1,5 @@
 #include "constants/snd_system.h"
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -23,7 +24,7 @@ _02246970:
 	lsl r2, r0, #0xf
 	bl CreateHeap
 	bl ov71_022473E4
-	mov r1, #0xfd
+	mov r1, #SEQ_GS_KOUKAN>>2
 	mov r0, #SOUND_MAIN_TRADE
 	lsl r1, r1, #2
 	mov r2, #1

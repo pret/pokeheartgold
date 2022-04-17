@@ -1,4 +1,5 @@
 #include "constants/sndseq.h"
+#include "constants/snd_system.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -193,7 +194,7 @@ _021E5A64:
 	cmp r0, #2
 	bne _021E5A96
 	ldr r1, _021E5B08 ; =SEQ_GS_E_LINEAR
-	mov r0, #0x44
+	mov r0, #SOUND_SUB_LINEAR
 	mov r2, #1
 	bl Snd_SetDataByScene
 _021E5A96:

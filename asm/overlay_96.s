@@ -3549,7 +3549,7 @@ ov96_021E72CC: ; 0x021E72CC
 	bl ov96_021E5FC8
 	mov r0, #SOUND_MAIN_DUMMY
 	bl Snd_SetScene
-	ldr r1, _021E731C ; =0x00000474
+	ldr r1, _021E731C ; =SEQ_GS_PT_END
 	mov r0, #SOUND_MAIN_THLON_OPED
 	mov r2, #0
 	bl Snd_SetDataByScene
@@ -3557,7 +3557,7 @@ _021E7318:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-_021E731C: .word 0x00000474
+_021E731C: .word SEQ_GS_PT_END
 	thumb_func_end ov96_021E72CC
 
 	thumb_func_start ov96_021E7320
@@ -64237,7 +64237,7 @@ _02205132:
 	mov r2, #1
 	mov r3, #0x68
 	bl ov96_021EB3E4
-	ldr r1, _022052A4 ; =0x00000474
+	ldr r1, _022052A4 ; =SEQ_GS_PT_END
 	str r0, [r4, r1]
 	add r0, r1, #0
 	ldr r0, [r4, r0]
@@ -64387,7 +64387,7 @@ _02205252:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
-_022052A4: .word 0x00000474
+_022052A4: .word SEQ_GS_PT_END
 _022052A8: .word 0x0000056C
 _022052AC: .word 0x00000568
 	thumb_func_end ov96_022050F8
@@ -64504,7 +64504,7 @@ _02205352:
 	ldr r0, [r4, r0]
 	add r1, r3, #0
 	bl ov96_021EB52C
-	ldr r0, _02205490 ; =0x00000474
+	ldr r0, _02205490 ; =SEQ_GS_PT_END
 	mov r1, #1
 	ldr r0, [r4, r0]
 	add r2, r1, #0
@@ -64620,7 +64620,7 @@ _02205480: .word 0x0000066C
 _02205484: .word 0x0000066E
 _02205488: .word 0x0000046C
 _0220548C: .word 0x0000047A
-_02205490: .word 0x00000474
+_02205490: .word SEQ_GS_PT_END
 _02205494: .word 0x000005C8
 _02205498: .word 0x00000564
 	thumb_func_end ov96_022052B0
@@ -67432,7 +67432,7 @@ _02206ACC:
 	ldr r0, [r5, r0]
 	add r1, sp, #0xc
 	bl ov96_021EB588
-	ldr r0, _02206B7C ; =0x00000474
+	ldr r0, _02206B7C ; =SEQ_GS_PT_END
 	add r1, sp, #0xc
 	ldr r0, [r5, r0]
 	bl ov96_021EB588
@@ -67456,7 +67456,7 @@ _02206ACC:
 	ldr r0, [r5, r0]
 	add r2, r1, #0
 	bl ov96_021EB52C
-	ldr r0, _02206B7C ; =0x00000474
+	ldr r0, _02206B7C ; =SEQ_GS_PT_END
 	mov r1, #1
 	ldr r0, [r5, r0]
 	add r2, r1, #0
@@ -67469,7 +67469,7 @@ _02206B48:
 	mov r1, #1
 	mov r2, #0
 	bl ov96_021EB52C
-	ldr r0, _02206B7C ; =0x00000474
+	ldr r0, _02206B7C ; =SEQ_GS_PT_END
 	mov r1, #1
 	ldr r0, [r5, r0]
 	mov r2, #0
@@ -67487,7 +67487,7 @@ _02206B6C:
 _02206B70: .word 0x0000046C
 _02206B74: .word 0x00000478
 _02206B78: .word 0x0000047A
-_02206B7C: .word 0x00000474
+_02206B7C: .word SEQ_GS_PT_END
 	thumb_func_end ov96_02206AC0
 
 	thumb_func_start ov96_02206B80
@@ -68938,7 +68938,7 @@ ov96_0220764C: ; 0x0220764C
 	add r4, r5, #0
 	lsl r7, r7, #4
 _02207658:
-	ldr r0, _022076BC ; =0x00000474
+	ldr r0, _022076BC ; =SEQ_GS_PT_END
 	mov r1, #3
 	ldr r0, [r4, r0]
 	bl ov96_021EB630
@@ -68983,7 +68983,7 @@ _02207694:
 	blt _02207694
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_022076BC: .word 0x00000474
+_022076BC: .word SEQ_GS_PT_END
 	thumb_func_end ov96_0220764C
 
 	thumb_func_start ov96_022076C0

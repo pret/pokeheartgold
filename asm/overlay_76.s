@@ -1,4 +1,5 @@
 #include "constants/snd_system.h"
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -146,7 +147,7 @@ _021E59B6:
 	lsl r0, r0, #2
 	add r0, r4, r0
 	bl CopyWindowToVram
-	mov r1, #0xfe
+	mov r1, #SEQ_GS_ENDING>>2
 	ldr r0, _021E5A98 ; =0x00000257
 	mov r2, #1
 	strb r2, [r4, r0]

@@ -1,4 +1,5 @@
 #include "constants/snd_system.h"
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -1891,7 +1892,7 @@ _02259586:
 ov90_02259588: ; 0x02259588
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r1, #0
-	mov r1, #0x12
+	mov r1, #SEQ_GS_WIFIGAME>>6
 	add r6, r0, #0
 	add r5, r2, #0
 	mov r0, #SOUND_MAIN_WIFI_LOBBY_GAME

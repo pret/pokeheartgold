@@ -211,7 +211,7 @@ _021E5A94:
 #endif
 	mov r1, #0
 	bl PlayCry
-	mov r0, #1
+	mov r0, #SEQ_CRY_001
 	mov r1, #0x30
 	bl Snd_SetVol
 	mov r0, #5

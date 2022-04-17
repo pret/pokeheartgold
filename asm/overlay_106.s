@@ -1,5 +1,6 @@
 #include "constants/mmodel.h"
 #include "constants/species.h"
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -1339,7 +1340,7 @@ ov106_021E62F4: ; 0x021E62F4
 	ldr r0, _021E6398 ; =0x00000414
 	mov r1, #0
 	str r1, [r4, r0]
-	ldr r0, _021E639C ; =0x00000868
+	ldr r0, _021E639C ; =SEQ_SE_GS_TAKI_RUGIADEMO
 	bl StopSE
 	ldr r0, [r4, #4]
 	bl ov106_021E6064
@@ -1350,7 +1351,7 @@ _021E631E:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	bne _021E6330
-	ldr r0, _021E639C ; =0x00000868
+	ldr r0, _021E639C ; =SEQ_SE_GS_TAKI_RUGIADEMO
 	mov r1, #0
 	bl sub_02006118
 	b _021E6364
@@ -1386,7 +1387,7 @@ _021E6364:
 	beq _021E638A
 	cmp r2, #0xa
 	bne _021E637A
-	ldr r0, _021E639C ; =0x00000868
+	ldr r0, _021E639C ; =SEQ_SE_GS_TAKI_RUGIADEMO
 	mov r1, #0x1e
 	bl Snd_SetVol
 	b _021E638A
@@ -1395,7 +1396,7 @@ _021E637A:
 	lsl r1, r2, #1
 	add r1, r2, r1
 	lsl r1, r1, #8
-	ldr r0, _021E639C ; =0x00000868
+	ldr r0, _021E639C ; =SEQ_SE_GS_TAKI_RUGIADEMO
 	lsr r1, r1, #8
 	bl Snd_SetVol
 _021E638A:
@@ -1407,7 +1408,7 @@ _021E638A:
 	pop {r4, pc}
 	nop
 _021E6398: .word 0x00000414
-_021E639C: .word 0x00000868
+_021E639C: .word SEQ_SE_GS_TAKI_RUGIADEMO
 _021E63A0: .word 0x00000931
 	thumb_func_end ov106_021E62F4
 
