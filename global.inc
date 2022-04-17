@@ -27243,7 +27243,7 @@
 .public Snd_GetCntrlBGMFlag
 .public Snd_SetCurrentlyPlayingBGM
 .public Snd_SetUNK_58
-.public Snd_SetZoneBGM
+.public Snd_SetMapMusic
 .public Snd_SetScene
 .public Snd_ClearBGMHeapAndSubscene
 .public Snd_LoadGroupByScene

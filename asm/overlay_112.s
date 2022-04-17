@@ -1,4 +1,5 @@
 #include "constants/snd_system.h"
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 	.public ov60_021EAFE0
@@ -10070,16 +10071,16 @@ ov112_021EABE8: ; 0x021EABE8
 	thumb_func_start ov112_021EAC18
 ov112_021EAC18: ; 0x021EAC18
 	push {r3, lr}
-	ldr r1, _021EAC30 ; =0x00000497
+	ldr r1, _021EAC30 ; =SEQ_GS_PHC
 	mov r0, #SOUND_SUB_PHC
 	mov r2, #0
 	bl Snd_SetDataByScene
-	ldr r0, _021EAC30 ; =0x00000497
+	ldr r0, _021EAC30 ; =SEQ_GS_PHC
 	bl PlayBGM
 	mov r0, #2
 	pop {r3, pc}
 	nop
-_021EAC30: .word 0x00000497
+_021EAC30: .word SEQ_GS_PHC
 	thumb_func_end ov112_021EAC18
 
 	thumb_func_start ov112_021EAC34

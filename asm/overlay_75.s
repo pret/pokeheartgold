@@ -1,4 +1,5 @@
 #include "constants/snd_system.h"
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 	.public ov60_021EAFE0
@@ -47,7 +48,7 @@ ov75_02246960: ; 0x02246960
 	mov r1, #0x45
 	lsl r1, r1, #2
 	str r0, [r4, r1]
-	ldr r1, _022469D4 ; =0x0000047D
+	ldr r1, _022469D4 ; =SEQ_GS_WIFI_ACCESS
 	mov r0, #SOUND_MAIN_EMAIL
 	mov r2, #1
 	bl Snd_SetDataByScene
@@ -57,7 +58,7 @@ ov75_02246960: ; 0x02246960
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_022469D4: .word 0x0000047D
+_022469D4: .word SEQ_GS_WIFI_ACCESS
 	thumb_func_end ov75_02246960
 
 	thumb_func_start ov75_022469D8

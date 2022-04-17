@@ -30,7 +30,7 @@ void Snd_SetCurrentlyPlayingBGM(u16 no);
 u16 Snd_GetCurrentlyPlayingBGM(void);
 void Snd_SetNextBGM(u16 no);
 void Snd_SetUNK_58(u16 unkA);
-void Snd_SetZoneBGM(u16 unkA);
+void Snd_SetMapMusic(u16 no);
 void Snd_SetScene(u8 scene);
 void Snd_ClearBGMHeapAndSubscene(void);
 int Snd_LoadGroupByScene(u8 scene);

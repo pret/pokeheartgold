@@ -1,4 +1,5 @@
 #include "constants/snd_system.h"
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -688,7 +689,7 @@ _021E5DFE:
 	str r1, [r6, r0]
 	mov r0, #0x11
 	str r0, [r6]
-	ldr r1, _021E5E2C ; =0x00000483
+	ldr r1, _021E5E2C ; =SEQ_GS_GURUGURU
 	mov r0, #SOUND_MAIN_SPIN_TRADE
 	bl Snd_SetDataByScene
 	add r0, r6, #0
@@ -697,7 +698,7 @@ _021E5DFE:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021E5E28: .word ov85_021EA788
-_021E5E2C: .word 0x00000483
+_021E5E2C: .word SEQ_GS_GURUGURU
 	thumb_func_end ov85_021E5DAC
 
 	thumb_func_start ov85_021E5E30

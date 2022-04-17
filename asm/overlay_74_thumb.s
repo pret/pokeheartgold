@@ -4280,7 +4280,7 @@ ov74_02229200: ; 0x02229200
 	mov r1, #0x59
 	lsl r2, r2, #4
 	bl CreateHeap
-	ldr r1, _02229290 ; =0x0000047E
+	ldr r1, _02229290 ; =SEQ_GS_WIFI_PRESENT
 	mov r0, #SOUND_MAIN_AGB
 	mov r2, #1
 	bl Snd_SetDataByScene
@@ -4289,7 +4289,7 @@ ov74_02229200: ; 0x02229200
 	nop
 _02229288: .word 0x000034DC
 _0222928C: .word 0x00003174
-_02229290: .word 0x0000047E
+_02229290: .word SEQ_GS_WIFI_PRESENT
 	thumb_func_end ov74_02229200
 
 	thumb_func_start ov74_02229294
@@ -7872,7 +7872,7 @@ ov74_0222AE6C: ; 0x0222AE6C
 	mov r0, #1
 	mov r1, #0
 	bl sub_0200FBF4
-	ldr r1, _0222AF18 ; =0x0000047E
+	ldr r1, _0222AF18 ; =SEQ_GS_WIFI_PRESENT
 	mov r0, #SOUND_MAIN_MYSTERY_GIFT
 	mov r2, #1
 	bl Snd_SetDataByScene
@@ -7910,7 +7910,7 @@ _0222AEE8:
 	pop {r3, r4, r5, pc}
 	nop
 _0222AF14: .word 0x000029F8
-_0222AF18: .word 0x0000047E
+_0222AF18: .word SEQ_GS_WIFI_PRESENT
 _0222AF1C: .word 0x000015D4
 _0222AF20: .word gGameVersion
 _0222AF24: .word 0x000005C8
@@ -24570,7 +24570,7 @@ ov74_02233230: ; 0x02233230
 	ldr r1, _022332E4 ; =0x0001260C
 	mov r2, #1
 	str r0, [r4, r1]
-	ldr r1, _022332E8 ; =0x0000047E
+	ldr r1, _022332E8 ; =SEQ_GS_WIFI_PRESENT
 	mov r0, #SOUND_MAIN_AGB
 	bl Snd_SetDataByScene
 	bl OS_IsTickAvailable
@@ -24590,7 +24590,7 @@ _022332D8: .word 0x00012610
 _022332DC: .word 0x0000E88C
 _022332E0: .word 0x00012608
 _022332E4: .word 0x0001260C
-_022332E8: .word 0x0000047E
+_022332E8: .word SEQ_GS_WIFI_PRESENT
 _022332EC: .word 0x0000E89C
 _022332F0: .word ov74_0223D338
 	thumb_func_end ov74_02233230

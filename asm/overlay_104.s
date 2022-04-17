@@ -1,3 +1,4 @@
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -191,7 +192,7 @@ _021E5A64:
 	ldrb r0, [r5, r0]
 	cmp r0, #2
 	bne _021E5A96
-	ldr r1, _021E5B08 ; =0x00000447
+	ldr r1, _021E5B08 ; =SEQ_GS_E_LINEAR
 	mov r0, #0x44
 	mov r2, #1
 	bl Snd_SetDataByScene
@@ -252,7 +253,7 @@ _021E5AC2:
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}
 	nop
-_021E5B08: .word 0x00000447
+_021E5B08: .word SEQ_GS_E_LINEAR
 _021E5B0C: .word ov104_021E5F3C
 _021E5B10: .word ov104_021E5EFC
 	thumb_func_end ov104_021E59E4

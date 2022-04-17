@@ -1,4 +1,5 @@
 #include "constants/snd_system.h"
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -26,7 +27,7 @@ ov46_02258800: ; 0x02258800
 	bl OverlayManager_GetParentWork
 	add r4, r0, #0
 	ldr r0, [r4]
-	ldr r1, _0225891C ; =0x0000047D
+	ldr r1, _0225891C ; =SEQ_GS_WIFI_ACCESS
 	str r0, [r5]
 	mov r0, #SOUND_MAIN_P2P
 	mov r2, #0
@@ -134,7 +135,7 @@ ov46_02258800: ; 0x02258800
 	pop {r4, r5, pc}
 	.balign 4, 0
 _02258918: .word 0x00000404
-_0225891C: .word 0x0000047D
+_0225891C: .word SEQ_GS_WIFI_ACCESS
 _02258920: .word 0x0000030A
 _02258924: .word ov46_02258F70
 _02258928: .word gSystem + 0x60

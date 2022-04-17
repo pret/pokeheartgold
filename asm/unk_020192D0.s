@@ -1,4 +1,5 @@
 #include "constants/snd_system.h"
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -64,7 +65,7 @@ sub_020192D0: ; 0x020192D0
 	add r0, r4, #0
 	bl OverlayManager_GetParentWork
 	str r0, [r5]
-	ldr r1, _02019358 ; =0x0000047D
+	ldr r1, _02019358 ; =SEQ_GS_WIFI_ACCESS
 	mov r0, #SOUND_MAIN_P2P
 	mov r2, #1
 	bl Snd_SetDataByScene
@@ -74,7 +75,7 @@ sub_020192D0: ; 0x020192D0
 _0201934C: .word 0xFFFFE0FF
 _02019350: .word 0x04001000
 _02019354: .word 0xFFFF1FFF
-_02019358: .word 0x0000047D
+_02019358: .word SEQ_GS_WIFI_ACCESS
 	thumb_func_end sub_020192D0
 
 	thumb_func_start sub_0201935C

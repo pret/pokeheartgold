@@ -1,4 +1,5 @@
 #include "constants/snd_system.h"
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -1658,7 +1659,7 @@ _02238446:
 	bl ov70_02238818
 	add r0, r4, #0
 	bl ov70_02238E70
-	ldr r1, _022385B8 ; =0x0000047D
+	ldr r1, _022385B8 ; =SEQ_GS_WIFI_ACCESS
 	mov r0, #SOUND_MAIN_P2P
 	mov r2, #1
 	bl Snd_SetDataByScene
@@ -1703,7 +1704,7 @@ _022385A8: .word 0x00000BA8
 _022385AC: .word 0x00000BAC
 _022385B0: .word 0x00000BA4
 _022385B4: .word 0x0000031E
-_022385B8: .word 0x0000047D
+_022385B8: .word SEQ_GS_WIFI_ACCESS
 _022385BC: .word 0x00020020
 	thumb_func_end ov70_02238430
 
@@ -3027,7 +3028,7 @@ ov70_02238FF4: ; 0x02238FF4
 	bl ov70_02245124
 	add r0, r4, #0
 	bl ov70_02239B00
-	ldr r1, _022390D0 ; =0x00000484
+	ldr r1, _022390D0 ; =SEQ_GS_BLD_GTC
 	mov r0, #SOUND_MAIN_WIFI_WORLD_TRADE
 	mov r2, #1
 	bl Snd_SetDataByScene
@@ -3103,7 +3104,7 @@ _022390BC:
 	.balign 4, 0
 _022390C8: .word 0x04000304
 _022390CC: .word 0xFFFF7FFF
-_022390D0: .word 0x00000484
+_022390D0: .word SEQ_GS_BLD_GTC
 _022390D4: .word 0x000011FC
 _022390D8: .word 0x0400106C
 	thumb_func_end ov70_02238FF4

@@ -1,3 +1,4 @@
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -148,10 +149,10 @@ ov65_0221BE20: ; 0x0221BE20
 	bl sub_020399FC
 	bl sub_0203A880
 	bl IsNighttime
-	ldr r1, _0221BFB8 ; =0x00000427
+	ldr r1, _0221BFB8 ; =SEQ_GS_POKESEN
 	mov r0, #0
 	bl sub_02055198
-	ldr r0, _0221BFB8 ; =0x00000427
+	ldr r0, _0221BFB8 ; =SEQ_GS_POKESEN
 	bl Snd_SetVChatVolBySeqNo
 	add r0, r5, #0
 	bl NARC_dtor
@@ -166,7 +167,7 @@ _0221BFA8: .word 0x000036CC
 _0221BFAC: .word ov65_0221CE1C
 _0221BFB0: .word 0x00000444
 _0221BFB4: .word 0x000005B4
-_0221BFB8: .word 0x00000427
+_0221BFB8: .word SEQ_GS_POKESEN
 	thumb_func_end ov65_0221BE20
 
 	thumb_func_start ov65_0221BFBC

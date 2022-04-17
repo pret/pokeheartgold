@@ -456,7 +456,7 @@ sub_02055110: ; 0x02055110
 	add r1, r6, #0
 	bl GetMapMusic
 	add r6, r0, #0
-	bl Snd_SetZoneBGM
+	bl Snd_SetMapMusic
 	mov r0, #1
 	bl sub_02005CF4
 	mov r1, #2
@@ -492,7 +492,7 @@ sub_02055164: ; 0x02055164
 	add r0, r5, #0
 	add r1, r4, #0
 	bl GetMapMusic
-	bl Snd_SetZoneBGM
+	bl Snd_SetMapMusic
 	mov r0, #1
 	bl sub_02005CF4
 	mov r0, #0

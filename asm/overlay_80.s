@@ -1,4 +1,5 @@
 #include "constants/snd_system.h"
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -6498,7 +6499,7 @@ ov80_0222CD94: ; 0x0222CD94
 	add r2, sp, #4
 	add r3, r6, #0
 	bl sub_0202FC90
-	ldr r1, _0222CDEC ; =0x0000045D
+	ldr r1, _0222CDEC ; =SEQ_GS_VS_TRAINER
 	mov r0, #SOUND_MAIN_BATTLE
 	mov r2, #1
 	bl Snd_SetDataByScene
@@ -6514,7 +6515,7 @@ ov80_0222CD94: ; 0x0222CD94
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_0222CDEC: .word 0x0000045D
+_0222CDEC: .word SEQ_GS_VS_TRAINER
 _0222CDF0: .word _020FA484
 	thumb_func_end ov80_0222CD94
 
@@ -8437,7 +8438,7 @@ ov80_0222DC70: ; 0x0222DC70
 	add r1, r5, #0
 	add r1, #0x78
 	strh r0, [r1]
-	ldr r1, _0222DCE8 ; =0x0000045D
+	ldr r1, _0222DCE8 ; =SEQ_GS_VS_TRAINER
 	mov r0, #SOUND_MAIN_BATTLE
 	mov r2, #1
 	bl Snd_SetDataByScene
@@ -8478,7 +8479,7 @@ ov80_0222DC70: ; 0x0222DC70
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_0222DCE8: .word 0x0000045D
+_0222DCE8: .word SEQ_GS_VS_TRAINER
 _0222DCEC: .word ov80_0222DCF0
 	thumb_func_end ov80_0222DC70
 
@@ -8907,7 +8908,7 @@ ov80_0222DFF4: ; 0x0222DFF4
 	ldr r3, [r4, #0x38]
 	add r0, r6, #0
 	bl ov80_0223A00C
-	ldr r1, _0222E054 ; =0x0000047B
+	ldr r1, _0222E054 ; =SEQ_GS_BA_BRAIN
 	mov r0, #SOUND_MAIN_BATTLE
 	mov r2, #1
 	bl Snd_SetDataByScene
@@ -8918,7 +8919,7 @@ ov80_0222DFF4: ; 0x0222DFF4
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	nop
-_0222E054: .word 0x0000047B
+_0222E054: .word SEQ_GS_BA_BRAIN
 _0222E058: .word ov80_0222E05C
 	thumb_func_end ov80_0222DFF4
 
@@ -14669,7 +14670,7 @@ ov80_02230D0C: ; 0x02230D0C
 	mov r0, #7
 	lsl r0, r0, #8
 	str r6, [r4, r0]
-	ldr r1, _02230D54 ; =0x0000045D
+	ldr r1, _02230D54 ; =SEQ_GS_VS_TRAINER
 	mov r0, #SOUND_MAIN_BATTLE
 	mov r2, #1
 	bl Snd_SetDataByScene
@@ -14684,7 +14685,7 @@ ov80_02230D0C: ; 0x02230D0C
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_02230D54: .word 0x0000045D
+_02230D54: .word SEQ_GS_VS_TRAINER
 _02230D58: .word _020FA484
 	thumb_func_end ov80_02230D0C
 
@@ -23712,7 +23713,7 @@ ov80_0223541C: ; 0x0223541C
 	add r4, r0, #0
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10
-	bl Snd_SetZoneBGM
+	bl Snd_SetMapMusic
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10
 	bl PlayBGM
@@ -24000,7 +24001,7 @@ ov80_02235624: ; 0x02235624
 	mov r0, #0x8d
 	lsl r0, r0, #4
 	str r6, [r4, r0]
-	ldr r1, _0223566C ; =0x0000045D
+	ldr r1, _0223566C ; =SEQ_GS_VS_TRAINER
 	mov r0, #SOUND_MAIN_BATTLE
 	mov r2, #1
 	bl Snd_SetDataByScene
@@ -24015,7 +24016,7 @@ ov80_02235624: ; 0x02235624
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_0223566C: .word 0x0000045D
+_0223566C: .word SEQ_GS_VS_TRAINER
 _02235670: .word _020FA484
 	thumb_func_end ov80_02235624
 
@@ -30618,7 +30619,7 @@ _022386D4:
 	bl ov80_0222ACA0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl Snd_SetZoneBGM
+	bl Snd_SetMapMusic
 	add r0, r5, #0
 	mov r1, #3
 	bl ov80_0222ACA0

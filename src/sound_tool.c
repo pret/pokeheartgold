@@ -83,8 +83,8 @@ void Snd_SetUNK_58(u16 unkA) {
     *(u16 *)GF_SdatGetAttrPtr(SOUND_WORK_UNK_58) = unkA;
 }
 
-void Snd_SetZoneBGM(u16 unkA) {
-    *(u16 *)GF_SdatGetAttrPtr(SOUND_WORK_MAP_MUSIC) = unkA;
+void Snd_SetMapMusic(u16 no) {
+    *(u16 *)GF_SdatGetAttrPtr(SOUND_WORK_MAP_MUSIC) = no;
 }
 
 void Snd_SetScene(u8 scene) {

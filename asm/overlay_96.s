@@ -2493,7 +2493,7 @@ ov96_021E6A94: ; 0x021E6A94
 	bl ov96_021E5FC8
 	mov r0, #SOUND_MAIN_DUMMY
 	bl Snd_SetScene
-	ldr r1, _021E6AE4 ; =0x0000046F
+	ldr r1, _021E6AE4 ; =SEQ_GS_PT_OPEN
 	mov r0, #SOUND_MAIN_THLON_OPED
 	mov r2, #0
 	bl Snd_SetDataByScene
@@ -2501,7 +2501,7 @@ _021E6AE0:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-_021E6AE4: .word 0x0000046F
+_021E6AE4: .word SEQ_GS_PT_OPEN
 	thumb_func_end ov96_021E6A94
 
 	thumb_func_start ov96_021E6AE8
@@ -2854,7 +2854,7 @@ ov96_021E6D54: ; 0x021E6D54
 	bne _021E6DAA
 	mov r0, #SOUND_MAIN_DUMMY
 	bl Snd_SetScene
-	ldr r1, _021E6DE0 ; =0x00000472
+	ldr r1, _021E6DE0 ; =SEQ_GS_PT_GAMEF
 	mov r0, #SOUND_MAIN_THLON
 	mov r2, #0
 	bl Snd_SetDataByScene
@@ -2862,7 +2862,7 @@ ov96_021E6D54: ; 0x021E6D54
 _021E6DAA:
 	mov r0, #SOUND_MAIN_DUMMY
 	bl Snd_SetScene
-	ldr r1, _021E6DE4 ; =0x00000471
+	ldr r1, _021E6DE4 ; =SEQ_GS_PT_GAME
 	mov r0, #SOUND_MAIN_THLON
 	mov r2, #0
 	bl Snd_SetDataByScene
@@ -2883,8 +2883,8 @@ _021E6DD8:
 	pop {r4, pc}
 	.balign 4, 0
 _021E6DDC: .word 0x0000072A
-_021E6DE0: .word 0x00000472
-_021E6DE4: .word 0x00000471
+_021E6DE0: .word SEQ_GS_PT_GAMEF
+_021E6DE4: .word SEQ_GS_PT_GAME
 	thumb_func_end ov96_021E6D54
 
 	thumb_func_start ov96_021E6DE8

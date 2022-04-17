@@ -1,4 +1,5 @@
 #include "constants/snd_system.h"
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -1397,7 +1398,7 @@ _021E63DC:
 	cmp r0, #1
 	bne _021E6412
 	bl sub_02005FA0
-	ldr r1, _021E6598 ; =0x000003F3
+	ldr r1, _021E6598 ; =SEQ_GS_SHINKA
 	mov r0, #SOUND_MAIN_EGG
 	mov r2, #1
 	bl Snd_SetDataByScene
@@ -1604,7 +1605,7 @@ _021E6586:
 	pop {r3, r4, r5, r6, pc}
 	nop
 _021E6594: .word 0x0000520A
-_021E6598: .word 0x000003F3
+_021E6598: .word SEQ_GS_SHINKA
 _021E659C: .word 0x000004A4
 	thumb_func_end ov95_021E6314
 
@@ -1711,7 +1712,7 @@ _021E6670:
 	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _021E6770
-	ldr r1, _021E67E8 ; =0x000003F3
+	ldr r1, _021E67E8 ; =SEQ_GS_SHINKA
 	mov r0, #SOUND_MAIN_EGG
 	mov r2, #1
 	bl Snd_SetDataByScene
@@ -1885,7 +1886,7 @@ _021E67D8:
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
 _021E67E4: .word 0x0000520A
-_021E67E8: .word 0x000003F3
+_021E67E8: .word SEQ_GS_SHINKA
 _021E67EC: .word 0x000004A4
 	thumb_func_end ov95_021E65A0
 

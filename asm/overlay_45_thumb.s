@@ -1,4 +1,5 @@
 #include "constants/snd_system.h"
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -871,7 +872,7 @@ ov45_0222A4D0: ; 0x0222A4D0
 	ldrsh r0, [r4, r0]
 	cmp r0, #0
 	bgt _0222A500
-	ldr r1, _0222A518 ; =0x00000481
+	ldr r1, _0222A518 ; =SEQ_GS_WIFIPARADE
 	mov r0, #SOUND_MAIN_WIFI_LOBBY_PLAZA
 	mov r2, #0
 	bl Snd_SetDataByScene
@@ -881,7 +882,7 @@ ov45_0222A4D0: ; 0x0222A4D0
 	bl ov45_0222BC84
 	pop {r4, pc}
 _0222A500:
-	ldr r1, _0222A51C ; =0x0000047F
+	ldr r1, _0222A51C ; =SEQ_GS_WIFIUNION
 	mov r0, #SOUND_MAIN_WIFI_LOBBY_PLAZA
 	mov r2, #0
 	bl Snd_SetDataByScene
@@ -891,8 +892,8 @@ _0222A500:
 	bl ov45_0222BC84
 	pop {r4, pc}
 	nop
-_0222A518: .word 0x00000481
-_0222A51C: .word 0x0000047F
+_0222A518: .word SEQ_GS_WIFIPARADE
+_0222A51C: .word SEQ_GS_WIFIUNION
 	thumb_func_end ov45_0222A4D0
 
 	thumb_func_start ov45_0222A520
@@ -4123,7 +4124,7 @@ _0222BC08:
 	ldrb r0, [r5, #0xc]
 	cmp r0, #0
 	bne _0222BC1E
-	ldr r0, _0222BC38 ; =0x00000481
+	ldr r0, _0222BC38 ; =SEQ_GS_WIFIPARADE
 	bl PlayBGM
 _0222BC1E:
 	ldrb r1, [r5]
@@ -4141,7 +4142,7 @@ _0222BC1E:
 _0222BC36:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0222BC38: .word 0x00000481
+_0222BC38: .word SEQ_GS_WIFIPARADE
 	thumb_func_end ov45_0222BB60
 
 	thumb_func_start ov45_0222BC3C

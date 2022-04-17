@@ -1,4 +1,5 @@
 #include "constants/snd_system.h"
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -87,7 +88,7 @@ ov63_0221BE20: ; 0x0221BE20
 	bl ov63_0221C044
 	add r0, r5, #0
 	bl ov63_0221C068
-	ldr r1, _0221BF20 ; =0x000003F7
+	ldr r1, _0221BF20 ; =SEQ_GS_E_DENDOUIRI
 	mov r0, #SOUND_MAIN_HALL_OF_FAME
 	mov r2, #1
 	bl Snd_SetDataByScene
@@ -110,7 +111,7 @@ _0221BF10: .word 0x04000050
 _0221BF14: .word 0x04001050
 _0221BF18: .word 0x04000304
 _0221BF1C: .word 0x0001306C
-_0221BF20: .word 0x000003F7
+_0221BF20: .word SEQ_GS_E_DENDOUIRI
 _0221BF24: .word 0x0001304C
 	thumb_func_end ov63_0221BE20
 

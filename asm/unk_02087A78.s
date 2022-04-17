@@ -4,6 +4,7 @@
 #include "constants/ribbon.h"
 #include "constants/party_menu.h"
 #include "constants/snd_system.h"
+#include "constants/sndseq.h"
 #include "msgdata/msg/msg_0300.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
@@ -381,13 +382,13 @@ _02087D0C:
 	bl sub_02087E34
 	cmp r0, #1
 	bne _02087D3C
-	ldr r1, _02087E04 ; =0x0000047B
+	ldr r1, _02087E04 ; =SEQ_GS_BA_BRAIN
 	mov r0, #SOUND_MAIN_BATTLE
 	mov r2, #1
 	bl Snd_SetDataByScene
 	b _02087D46
 _02087D3C:
-	ldr r1, _02087E08 ; =0x0000045D
+	ldr r1, _02087E08 ; =SEQ_GS_VS_TRAINER
 	mov r0, #SOUND_MAIN_BATTLE
 	mov r2, #1
 	bl Snd_SetDataByScene
@@ -447,7 +448,7 @@ _02087D88:
 	ldr r1, [r0, #0x20]
 	ldr r1, [r1]
 	bl GetMapMusic
-	bl Snd_SetZoneBGM
+	bl Snd_SetMapMusic
 	mov r0, #0
 	add r1, r4, #0
 	bl sub_02055198
@@ -474,8 +475,8 @@ _02087DF4: .word FS_OVERLAY_ID(OVY_39)
 _02087DF8: .word 0x0000086C
 _02087DFC: .word FS_OVERLAY_ID(OVY_40)
 _02087E00: .word 0x00000874
-_02087E04: .word 0x0000047B
-_02087E08: .word 0x0000045D
+_02087E04: .word SEQ_GS_BA_BRAIN
+_02087E08: .word SEQ_GS_VS_TRAINER
 _02087E0C: .word _020FA484
 	thumb_func_end sub_02087C38
 

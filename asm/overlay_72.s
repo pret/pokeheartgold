@@ -1,4 +1,5 @@
 #include "constants/snd_system.h"
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -844,7 +845,7 @@ _02237E36:
 	mov r2, #0
 	bl NNS_FndCreateExpHeapEx
 	str r0, [r4, #0x28]
-	ldr r1, _02237F94 ; =0x0000047D
+	ldr r1, _02237F94 ; =SEQ_GS_WIFI_ACCESS
 	mov r0, #SOUND_MAIN_P2P
 	mov r2, #1
 	bl Snd_SetDataByScene
@@ -884,7 +885,7 @@ _02237F84: .word 0x0000030A
 _02237F88: .word 0x00000BD8
 _02237F8C: .word 0x00000BDC
 _02237F90: .word 0x00020020
-_02237F94: .word 0x0000047D
+_02237F94: .word SEQ_GS_WIFI_ACCESS
 _02237F98: .word 0x04000304
 	thumb_func_end ov72_02237E20
 

@@ -2601,7 +2601,7 @@ _0222B2A8:
 	str r1, [r5, r0]
 	b _0222B360
 _0222B2CA:
-	ldr r1, _0222B364 ; =0x0000047D
+	ldr r1, _0222B364 ; =SEQ_GS_WIFI_ACCESS
 	mov r0, #SOUND_MAIN_P2P
 	mov r2, #1
 	bl Snd_SetDataByScene
@@ -2668,7 +2668,7 @@ _0222B360:
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_0222B364: .word 0x0000047D
+_0222B364: .word SEQ_GS_WIFI_ACCESS
 _0222B368: .word ov44_02235384
 	thumb_func_end ov44_0222B228
 
@@ -8205,7 +8205,7 @@ ov44_0222E030: ; 0x0222E030
 	bl IsNighttime
 	mov r0, #SOUND_MAIN_DUMMY
 	bl Snd_SetScene
-	ldr r1, _0222E070 ; =0x00000427
+	ldr r1, _0222E070 ; =SEQ_GS_POKESEN
 	mov r0, #SOUND_MAIN_P2P
 	mov r2, #1
 	bl Snd_SetDataByScene
@@ -8227,7 +8227,7 @@ _0222E070: .word SEQ_GS_POKESEN
 ov44_0222E074: ; 0x0222E074
 	push {r3, lr}
 	bl Snd_GetCurrentlyPlayingBGM
-	ldr r1, _0222E08C ; =0x00000427
+	ldr r1, _0222E08C ; =SEQ_GS_POKESEN
 	cmp r0, r1
 	beq _0222E086
 	beq _0222E086
@@ -8237,7 +8237,7 @@ _0222E086:
 	mov r0, #1
 	pop {r3, pc}
 	nop
-_0222E08C: .word 0x00000427
+_0222E08C: .word SEQ_GS_POKESEN
 	thumb_func_end ov44_0222E074
 
 	thumb_func_start ov44_0222E090
