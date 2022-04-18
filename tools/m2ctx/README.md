@@ -5,6 +5,9 @@
 
 ## How to use
 
+Before using `m2ctx`, follow the [installation instructions](../../INSTALL.md) to make a vanilla copy of the game.
+This generates some header files that may be included in decompiled files.
+
 In this example, you are decompiling an asm file `asm/npc_trade.s` into a new C file `src/npc_trade.c`.
 You've created the source file and may have added some imports you know you'll need.
 Your file may look like this:
