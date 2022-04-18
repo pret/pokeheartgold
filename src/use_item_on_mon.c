@@ -5,6 +5,7 @@
 #include "constants/moves.h"
 #include "constants/items.h"
 #include "move.h"
+#include "unk_02097E4C.h"
 
 BOOL CanUseItemOnPokemon(POKEMON *pokemon, u16 itemID, s32 moveIdx, HeapID heapID) {
     int atkEv;
