@@ -138,4 +138,13 @@ void MapHeightOverrideUpdate(u8 idx, fx32 height, MapHeightOverridesList *list);
 BOOL Task_WaitFollowingPokeSituatedOnMovingPlatform(TaskManager *taskManager);
 void SetFollowingPokeHeight(FieldSystem *fsys, fx32 y);
 
+struct UnkStruct_ov01_02004004 *ov01_02204004(HeapID heapId, int nmax, int a2, NNSG3dResFileHeader **modelFileHeaders);
+void ov01_02204084(struct UnkStruct_ov01_02004004 *unk);
+struct UnkStruct_ov01_02004004_sub *ov01_022040A4(struct UnkStruct_ov01_02004004 *mgr, s32 fileId);
+void ov01_022040C0(struct UnkStruct_ov01_02004004 *mgr, struct UnkStruct_ov01_02004004_sub *mdl);
+struct UnkStruct_ov01_02004004_sub *ov01_022040D0(struct UnkStruct_ov01_02004004 *mgr, int idx);
+struct UnkStruct_ov01_02004004_sub *ov01_022040E4(struct UnkStruct_ov01_02004004 *mgr, s32 fileId);
+struct UnkStruct_ov01_02004004_sub *ov01_022040F8(struct UnkStruct_ov01_02004004 *mgr, s32 fileId);
+BOOL ov01_0220411C(struct UnkStruct_ov01_02004004 *mgr, struct UnkStruct_ov01_02004004_sub *mdl);
+BOOL ov01_02204154(struct UnkStruct_ov01_02004004 *mgr, int fileId);
 #endif //POKEHEARTGOLD_OVERLAY_01_H

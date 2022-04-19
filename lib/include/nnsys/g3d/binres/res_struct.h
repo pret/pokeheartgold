@@ -88,10 +88,10 @@ typedef struct NNSG3dResNodeInfo_ {
 
 typedef struct NNSG3dResTex_ {
     NNSG3dResDataBlockHeader header;
-    NNSG3dResTexInfo         texInfo;
-    NNSG3dResTex4x4Info      tex4x4Info;
-    NNSG3dResPlttInfo        plttInfo;
-    NNSG3dResDict            dict;
+    NNSG3dResTexInfo texInfo;
+    NNSG3dResTex4x4Info tex4x4Info;
+    NNSG3dResPlttInfo plttInfo;
+    NNSG3dResDict dict;
 } NNSG3dResTex;
 
 typedef struct NNSG3dResMdl_ {
