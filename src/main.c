@@ -11,7 +11,7 @@
 #include "wfc_user_info_warning.h"
 #include "save_data_read_error.h"
 #include "unk_0200FA24.h"
-#include "unk_0200B150.h"
+#include "unk_0200B380.h"
 #include "unk_02018380.h"
 #include "unk_02035900.h"
 #include "unk_0201F79C.h"
