@@ -21,5 +21,6 @@ typedef struct EventObjectMovementMan EventObjectMovementMan;
 EventObjectMovementMan *EventObjectMovementMan_Create(LocalMapObject *object, const MovementScriptCommand *data);
 BOOL EventObjectMovementMan_IsFinish(EventObjectMovementMan *mvtMan);
 void EventObjectMovementMan_Delete(EventObjectMovementMan *mvtMan);
+BOOL MapObject_AreBitsSetForMovementScriptInit(LocalMapObject *object);
 
 #endif //POKEHEARTGOLD_UNK_02062108_H

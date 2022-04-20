@@ -236,15 +236,21 @@ typedef struct FsysUnkSub4 {
     void *unk_24;
 } FsysUnkSub4;
 
+struct UnkStruct_ov01_02004004_sub {
+    NNSG3dRenderObj renderObj;
+    NNSG3dResMdl *pResMdl;
+    int fileId;
+};
+
 typedef struct BgModelEvent {
     int id;
     BOOL enabled;
     BOOL invisible;
-    NNSG3dRenderObj renderObj;
-    NNSG3dResMdl *resMdl;
-    VecFx32 pos;
-    VecFx32 rotation;
-    VecFx32 scale;
+    BOOL rotationEnabled;
+    struct UnkStruct_ov01_02004004_sub *objData; // 10
+    VecFx32 pos; // 14
+    VecFx32 rotation; // 20
+    VecFx32 scale; // 2C
 } BgModelEvent;
 
 typedef struct BgModelEventList {
@@ -264,12 +270,6 @@ typedef struct MapHeightOverridesList {
     int n;
     MapHeightOverride *data;
 } MapHeightOverridesList;
-
-struct UnkStruct_ov01_02004004_sub {
-    NNSG3dRenderObj renderObj;
-    NNSG3dResMdl *pResMdl;
-    int fileId;
-};
 
 struct UnkStruct_ov01_02004004 {
     u8 *activeList;
@@ -294,13 +294,15 @@ struct FieldSystem {
     void *unk28;
     FsysUnkSub2C *unk2C;
     MAPMATRIX* map_matrix;
-    u8 filler34[0x8];
+    void *unk_34;
+    u8 filler38[0x4];
     MapObjectMan* mapObjectMan;
     FIELD_PLAYER_AVATAR *playerAvatar;
     void *unk_44;
     u8 filler48[0xC];
     void *_3dAnimationMgr;
-    u8 filler_58[0x8];
+    void *unk_58;
+    u8 filler_5C[0x4];
     u32 unk60;
     int unk64;
     struct FieldSystemUnkSub68* unk68;

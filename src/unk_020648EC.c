@@ -7,21 +7,21 @@
 typedef void (*FieldSystemFunc1)(FieldSystem*);
 typedef BOOL (*FieldSystemFunc2)(FieldSystem*, u32, u32, u32, u32);
 
-static const FieldSystemFunc1 _020FE214[];
-static const FieldSystemFunc1 _020FE1EC[];
+static const FieldSystemFunc1 sConstructors[];
+static const FieldSystemFunc1 sDestructors[];
 static const FieldSystemFunc2 _020FE23C[];
 
-void sub_020648EC(FieldSystem* fsys) {
+void InitGymmickFieldResources(FieldSystem* fsys) {
     int gymmickType = SavGymmick_GetType(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys)));
     if (gymmickType != GYMMICK_NONE) {
-        _020FE214[gymmickType](fsys);
+        sConstructors[gymmickType](fsys);
     }
 }
 
-void sub_02064910(FieldSystem* fsys) {
+void DeleteGymmickFieldResources(FieldSystem* fsys) {
     int gymmickType = SavGymmick_GetType(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys)));
-    if (gymmickType) {
-        FieldSystemFunc1 func = _020FE1EC[gymmickType];
+    if (gymmickType != GYMMICK_NONE) {
+        FieldSystemFunc1 func = sDestructors[gymmickType];
         if (func != NULL) {
             func(fsys);
         }
@@ -39,26 +39,26 @@ BOOL sub_02064938(FieldSystem *fsys, u32 a1, u32 a2, u32 a3, u32 a4) {
     return FALSE;
 }
 
-static const FieldSystemFunc1 _020FE214[] = {
+static const FieldSystemFunc1 sConstructors[] = {
     [GYMMICK_NONE]       = NULL,
     [GYMMICK_ECRUTEAK]   = ov04_02254CBC,
     [GYMMICK_CIANWOOD]   = ov04_02255FC0,
     [GYMMICK_VERMILION]  = ov04_02256304,
     [GYMMICK_VIOLET]     = InitVioletGymElevatorGimmick,
-    [GYMMICK_AZALEA]     = ov04_02254190,
+    [GYMMICK_AZALEA]     = InitAzaleaGymPuzzleGimmick,
     [GYMMICK_BLACKTHORN] = ov04_02254F8C,
     [GYMMICK_FUCHSIA]    = ov04_02256650,
     [GYMMICK_VIRIDIAN]   = ov04_02256B64,
     [GYMMICK_SINJOH]     = ov04_02256E60,
 };
 
-static const FieldSystemFunc1 _020FE1EC[] = {
+static const FieldSystemFunc1 sDestructors[] = {
     [GYMMICK_NONE]       = NULL,
     [GYMMICK_ECRUTEAK]   = ov04_02254D84,
     [GYMMICK_CIANWOOD]   = ov04_02256044,
     [GYMMICK_VERMILION]  = ov04_022563B0,
     [GYMMICK_VIOLET]     = NULL,
-    [GYMMICK_AZALEA]     = ov04_02254710,
+    [GYMMICK_AZALEA]     = DeleteAzaleaGymPuzzleGimmick,
     [GYMMICK_BLACKTHORN] = ov04_0225507C,
     [GYMMICK_FUCHSIA]    = ov04_022566A0,
     [GYMMICK_VIRIDIAN]   = ov04_02256BA0,

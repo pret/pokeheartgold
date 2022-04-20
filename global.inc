@@ -7709,12 +7709,12 @@
 .public ov04_02253F94
 .public ov04_02253FF0
 .public ov04_022540C0
-.public ov04_02254190
+.public InitAzaleaGymPuzzleGimmick
 .public ov04_0225463C
 .public ov04_02254698
 .public ov04_022546C8
 .public ov04_022546E8
-.public ov04_02254710
+.public DeleteAzaleaGymPuzzleGimmick
 .public ov04_02254724
 .public ov04_02254CA4
 .public ov04_02254CBC
@@ -29584,8 +29584,8 @@
 .public sub_0206457C
 .public sub_02064598
 .public sub_020645AC
-.public sub_020648EC
-.public sub_02064910
+.public InitGymmickFieldResources
+.public DeleteGymmickFieldResources
 .public sub_02064938
 .public sub_020658D4
 .public sub_02065900

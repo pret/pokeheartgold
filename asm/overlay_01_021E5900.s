@@ -389,7 +389,7 @@ _021E5C4A:
 	mov r0, #0
 	bl FS_LoadOverlay
 	add r0, r4, #0
-	bl sub_02064910
+	bl DeleteGymmickFieldResources
 	ldr r0, _021E5E84 ; =ov01_021E66C8
 	blx ov123_0225F610
 	ldr r1, _021E5E88 ; =0x0000023B
@@ -1540,7 +1540,7 @@ _021E65D8:
 	ldr r0, [r0, #0x10]
 	bl ov01_021EB00C
 	add r0, r4, #0
-	bl sub_020648EC
+	bl InitGymmickFieldResources
 	ldr r0, _021E6628 ; =ov01_021E5900
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB

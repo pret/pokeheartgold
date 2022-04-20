@@ -68,7 +68,7 @@ void ov01_021EF018(struct UnkStruct_ov01_021EDC28 *menu, u8 a1);
 void ov01_021EF034(struct UnkStruct_ov01_021EDC28 *menu, u8 a1);
 void MoveTutorMenu_SetListItem(struct UnkStruct_ov01_021EDC28 *menu, int a1, int a2, int a3);
 void ov01_021F7704(LocalMapObject *object);
-void ov01_021F62E8(VecFx32 *vec, FsysUnkSub2C *a1);
+void ov01_021F62E8(const VecFx32 *vec, FsysUnkSub2C *a1);
 void ov01_021F9408(LocalMapObject *object, u32 dir);
 BOOL ov01_022055DC(LocalMapObject *object);
 void ov01_02205604(LocalMapObject *object, int *p_x, int *p_y);
@@ -131,9 +131,10 @@ void ov01_021EEF88(WINDOW *window);
 BOOL ov01_02206268(FieldSystem *fsys);
 
 void MapHeightOverrideCreateRect(u8 idx, int x, int z, int width, int depth, fx32 height, MapHeightOverridesList *list);
-struct BgModelEvent *GetBgModelFromMemoryList(BgModelEventList *modelList, int id);
-void BgModel_GetPosition(VecFx32 *, struct BgModelEvent *);
-void BgModel_SetPosition(struct BgModelEvent *, VecFx32 *);
+BgModelEvent *GetBgModelFromMemoryList(BgModelEventList *modelList, int id);
+BgModelEvent *ov01_021F3B44(BgModelEventList *modelEventList, u8 idx);
+void BgModel_GetPosition(VecFx32 *, BgModelEvent *);
+void BgModel_SetPosition(BgModelEvent *, VecFx32 *);
 void MapHeightOverrideUpdate(u8 idx, fx32 height, MapHeightOverridesList *list);
 BOOL Task_WaitFollowingPokeSituatedOnMovingPlatform(TaskManager *taskManager);
 void SetFollowingPokeHeight(FieldSystem *fsys, fx32 y);
@@ -149,5 +150,14 @@ BOOL ov01_0220411C(struct UnkStruct_ov01_02004004 *mgr, struct UnkStruct_ov01_02
 BOOL ov01_02204154(struct UnkStruct_ov01_02004004 *mgr, int fileId);
 void ov01_021E8970(int mdlId, int animId, BOOL a2, struct UnkStruct_ov01_02004004_sub *obj, void *_3dAnmMgr);
 void ov01_021E8A8C(void *_3dAnmMgr, struct UnkStruct_ov01_02004004_sub *obj, int objId, int state);
+NNSG3dRenderObj *ov01_021F3B38(BgModelEvent *modelEvent);
+NNSG3dResMdl *ov01_021F3B3C(BgModelEvent *modelEvent);
+void ov01_021E8DE8(void *_3dAnmMgr, void *fsys_unk58, int a2, int a3, NNSG3dRenderObj *renderObj, NNSG3dResMdl *resMdl, void *unk_o1_21fb9e0, int a7, int a8, int a9);
+void ov01_021E8E70(void *fsys_unk58, int a1, int a2);
+
+// ???
+void *ov01_021FB9E0(void *fsys_unk34);
+void ov01_021F6304(FsysUnkSub2C *fsys_unk2C);
+void ov01_021E8ED0(void *_3dAnimMgr, void *fsys_unk58, int a2);
 
 #endif //POKEHEARTGOLD_OVERLAY_01_H

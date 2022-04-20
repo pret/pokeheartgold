@@ -4,10 +4,10 @@
 #include "script.h"
 #include "gymmick/violet.h"
 
-void ov04_02254190(FieldSystem *fsys);
+void InitAzaleaGymPuzzleGimmick(FieldSystem *fsys);
 void Fsys_FlipAzaleaGymSwitch(FieldSystem *fsys, u8 switchNo);
 void Fsys_BeginAzaleaGymSpinarakRide(FieldSystem *fsys, u8 spinarakNo);
-void ov04_02254710(FieldSystem *fsys);
+void DeleteAzaleaGymPuzzleGimmick(FieldSystem *fsys);
 void ov04_02254CBC(FieldSystem *fsys);
 void ov04_02254D84(FieldSystem *fsys);
 void ov04_02254D98(FieldSystem *fsys);
