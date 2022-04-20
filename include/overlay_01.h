@@ -111,7 +111,7 @@ typedef BOOL (*UnkCallback_021F6B34)(struct UnkStruct_ov01_021EDC28 *menu, int i
 void ov01_021F6B34(FieldSystem *fsys, UnkCallback_021F6B34 cb, struct UnkStruct_ov01_021EDC28 *menu);
 void ov01_021EEF9C(struct UnkStruct_ov01_021EDC28 *menu, int idx);
 
-void AddBgModelFromTemplate(BgModelEventList *modelList, int id, const VecFx32 *pos, const VecFx32 *rotation, void *_3dAnimMgr);
+int AddBgModelFromTemplate(BgModelEventList *modelList, int id, const VecFx32 *pos, const VecFx32 *rotation, void *_3dAnimMgr);
 BOOL ov01_022060B8(FieldSystem *fsys, u8 a1, u8 a2);
 
 struct BankTransactionWorkSub {
@@ -147,4 +147,7 @@ struct UnkStruct_ov01_02004004_sub *ov01_022040E4(struct UnkStruct_ov01_02004004
 struct UnkStruct_ov01_02004004_sub *ov01_022040F8(struct UnkStruct_ov01_02004004 *mgr, s32 fileId);
 BOOL ov01_0220411C(struct UnkStruct_ov01_02004004 *mgr, struct UnkStruct_ov01_02004004_sub *mdl);
 BOOL ov01_02204154(struct UnkStruct_ov01_02004004 *mgr, int fileId);
+void ov01_021E8970(int mdlId, int animId, BOOL a2, struct UnkStruct_ov01_02004004_sub *obj, void *_3dAnmMgr);
+void ov01_021E8A8C(void *_3dAnmMgr, struct UnkStruct_ov01_02004004_sub *obj, int objId, int state);
+
 #endif //POKEHEARTGOLD_OVERLAY_01_H

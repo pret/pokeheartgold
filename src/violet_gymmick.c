@@ -4,6 +4,7 @@
 #include "field_player_avatar.h"
 #include "scrcmd.h"
 #include "unk_02005D10.h"
+#include "unk_0203DE74.h"
 #include "overlay_01.h"
 
 #define ELEVATOR_HEIGHT_DOWN         (32 * FX32_ONE)

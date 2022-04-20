@@ -86,6 +86,7 @@
 #include "unk_02097BE0.h"
 #include "sound_02004A44.h"
 #include "unk_020290B4.h"
+#include "unk_0203DE74.h"
 #include "msgdata/msg/msg_0202.h"
 #include "constants/accessories.h"
 #include "constants/phone_contacts.h"

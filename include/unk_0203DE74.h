@@ -5,5 +5,6 @@
 
 void sub_0203E30C(void);
 u8 sub_0203DF3C(FieldSystem *fsys);
+SAVEDATA* Fsys_GetSaveDataPtr(FieldSystem*);
 
 #endif //POKEHEARTGOLD_UNK_0203DE74_H

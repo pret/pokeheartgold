@@ -10,6 +10,7 @@
 #include "npc_trade.h"
 #include "unk_0205BB1C.h"
 #include "ribbon.h"
+#include "unk_0203DE74.h"
 
 FS_EXTERN_OVERLAY(npc_trade);
 

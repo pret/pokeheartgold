@@ -232,6 +232,8 @@ struct FieldSystemUnkSub68 {
 typedef struct FsysUnkSub4 {
     u8 filler_00[0xC];
     void *unk_0C; // weather related?
+    u8 filler_10[0x14];
+    void *unk_24;
 } FsysUnkSub4;
 
 typedef struct BgModelEvent {

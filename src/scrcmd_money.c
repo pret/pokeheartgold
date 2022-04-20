@@ -1,5 +1,6 @@
 #include "scrcmd.h"
 #include "player_data.h"
+#include "unk_0203DE74.h"
 
 BOOL ScrCmd_AddMoney(SCRIPTCONTEXT* ctx) {
     SAVEDATA* savedata = Fsys_GetSaveDataPtr(ctx->fsys);

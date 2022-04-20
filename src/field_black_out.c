@@ -13,6 +13,7 @@
 #include "unk_0200B380.h"
 #include "unk_02054E00.h"
 #include "unk_020552A4.h"
+#include "unk_0203DE74.h"
 #include "use_item_on_mon.h"
 #include "sound.h"
 #include "msgdata/msg/msg_0203.h"

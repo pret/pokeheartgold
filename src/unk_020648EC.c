@@ -1,7 +1,7 @@
 #include "gymmick.h"
 #include "gymmick_overlay.h"
 #include "save_misc_data.h"
-#include "scrcmd.h"
+#include "unk_0203DE74.h"
 #include "script.h"
 
 typedef void (*FieldSystemFunc1)(FieldSystem*);
