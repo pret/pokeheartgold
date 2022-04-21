@@ -14,25 +14,27 @@ struct Vec2U16 {
 };
 
 struct AzaleaGymWork {
-    u8 filler_00[4];
-    int modelIds[4];
-    u8 unk_14;
-    u8 unk_15;
-    u8 unk_16;
+    int unused_00;
+    int modelIds[4]; // IDs of the spinarak
+    u8 pathNodeCounter;
+    u8 switchesState;
+    u8 reqNewSegment;
+    // param
     u8 spinarakNo;
     u8 startingPoint;
     u8 direction;
     u8 pathIdx;
     s8 playerZoff;
-    int unk_1C;
-    BOOL unk_20[2];
-    const struct Vec2U16 *unk_28;
+    BOOL reqStartDiagMovement;
+    BOOL xzSigns[2];
+    const struct Vec2U16 *targetXZ;
     VecFx32 vecPos;
     VecFx32 vecTranslBuf;
-    int unk_44;
-    int unk_48;
-    fx32 unk_4C;
-    int unk_50;
+    // Effect of the spinarak crashing into the end
+    int cameraShudderCount;
+    int cameraShudderFrames;
+    fx32 cameraShudderDirection;
+    int delayCounter;
 };
 
 struct SpinarakRideWork {
@@ -41,17 +43,31 @@ struct SpinarakRideWork {
 };
 
 struct SpinarakPathSpec {
-    u16 unk_0;
-    u16 unk_2;
-    const struct Vec2U16 *unk_4;
+    u16 length;
+    u16 endpoint;
+    const struct Vec2U16 *path;
 };
 
 BOOL ov04_0225463C(TaskManager *taskManager);
 void ov04_02254724(SysTask *task, struct SpinarakRideWork *work);
 BOOL ov04_02254CA4(TaskManager *taskManager);
 
-extern const u16 ov04_022575D4[][2];
-extern const struct SpinarakPathSpec *const ov04_022575A4[];
+#include "data/azalea_paths.h"
+
+static const u16 ov04_022575D4[][2] = {
+    {3, 31},
+    {9, 31},
+    {15, 31},
+    {3, 24},
+    {9, 24},
+    {15, 24},
+    {3, 16},
+    {9, 16},
+    {15, 16},
+    {3, 9},
+    {9, 9},
+    {15, 9},
+};
 
 static inline u8 getSwitchState(union GymmickUnion *gymmickUnion, int color) {
     return (gymmickUnion->azalea.switches >> color) & 1;
@@ -302,11 +318,11 @@ void Fsys_BeginAzaleaGymSpinarakRide(FieldSystem *fsys, u8 startingPoint) {
     rideWork->fsys = fsys;
     gymWork->startingPoint = startingPoint;
     gymWork->vecPos.y = 0;
-    gymWork->unk_14 = 0;
-    gymWork->unk_16 = 1;
-    gymWork->unk_1C = 0;
+    gymWork->pathNodeCounter = 0;
+    gymWork->reqNewSegment = 1;
+    gymWork->reqStartDiagMovement = FALSE;
     gymmickUnion = SavGymmick_AssertMagic_GetData(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys)), GYMMICK_AZALEA);
-    gymWork->unk_15 = gymmickUnion->azalea.switches;
+    gymWork->switchesState = gymmickUnion->azalea.switches;
     for (i = 0; i < 4; i++) {
         if (gymmickUnion->azalea.spiders[i] == startingPoint) {
             gymWork->spinarakNo = i;
@@ -325,7 +341,7 @@ void Fsys_BeginAzaleaGymSpinarakRide(FieldSystem *fsys, u8 startingPoint) {
     case 10:
     case 11:
         gymWork->direction = 1;
-        gymWork->pathIdx = ov04_022575A4[startingPoint][gymWork->unk_15].unk_0 - 1;
+        gymWork->pathIdx = sSpinarakPathSpecs[startingPoint][gymWork->switchesState].length - 1;
         gymWork->playerZoff = 1;
         break;
     case 0:
@@ -340,7 +356,7 @@ void Fsys_BeginAzaleaGymSpinarakRide(FieldSystem *fsys, u8 startingPoint) {
         gymWork->playerZoff = 0;
         break;
     }
-    initPos = &ov04_022575A4[startingPoint][gymWork->unk_15].unk_4[gymWork->pathIdx];
+    initPos = &sSpinarakPathSpecs[startingPoint][gymWork->switchesState].path[gymWork->pathIdx];
     gymWork->vecPos.x = initPos->x * 16 * FX32_ONE;
     gymWork->vecPos.z = initPos->z * 16 * FX32_ONE;
     TaskManager_Call(fsys->taskman, ov04_0225463C, rideWork);
@@ -447,19 +463,19 @@ void ov04_02254724(SysTask *task, struct SpinarakRideWork *work) {
             followPokeObj = FollowingPokemon_GetMapObject(fsys);
             if (MapObject_AreBitsSetForMovementScriptInit(playerObj) && MapObject_AreBitsSetForMovementScriptInit(followPokeObj)) {
                 MapObject_SetHeldMovement(playerObj, 73);
-                gymWork->unk_50 = 0;
+                gymWork->delayCounter = 0;
                 work->state++;
             }
         } else {
             if (MapObject_AreBitsSetForMovementScriptInit(playerObj)) {
                 MapObject_SetHeldMovement(playerObj, 73);
-                gymWork->unk_50 = 0;
+                gymWork->delayCounter = 0;
                 work->state++;
             }
         }
         break;
     case 4:
-        if (gymWork->unk_50++ < 4) {
+        if (gymWork->delayCounter++ < 4) {
             break;
         }
         spinarakMdlEvent = ov01_021F3B44(fsys->bgModels, gymWork->spinarakNo);
@@ -482,19 +498,19 @@ void ov04_02254724(SysTask *task, struct SpinarakRideWork *work) {
         break;
     case 5: {
         u8 startingPoint = gymWork->startingPoint;
-        u8 work_16 = gymWork->unk_16;
-        u8 work_15 = gymWork->unk_15;
+        u8 work_16 = gymWork->reqNewSegment;
+        u8 work_15 = gymWork->switchesState;
         if (work_16) {
             if (gymWork->direction) {
-                posvec = &ov04_022575A4[startingPoint][work_15].unk_4[gymWork->pathIdx];
-                gymWork->unk_28 = &ov04_022575A4[startingPoint][work_15].unk_4[gymWork->pathIdx - 1];
+                posvec = &sSpinarakPathSpecs[startingPoint][work_15].path[gymWork->pathIdx];
+                gymWork->targetXZ = &sSpinarakPathSpecs[startingPoint][work_15].path[gymWork->pathIdx - 1];
             }
             else {
-                posvec = &ov04_022575A4[startingPoint][work_15].unk_4[gymWork->pathIdx];
-                gymWork->unk_28 = &ov04_022575A4[startingPoint][work_15].unk_4[gymWork->pathIdx + 1];
+                posvec = &sSpinarakPathSpecs[startingPoint][work_15].path[gymWork->pathIdx];
+                gymWork->targetXZ = &sSpinarakPathSpecs[startingPoint][work_15].path[gymWork->pathIdx + 1];
             }
-            gymWork->vecTranslBuf = ov04_02254698(posvec, gymWork->unk_28);
-            ov04_022546C8(&gymWork->vecTranslBuf, gymWork->unk_20);
+            gymWork->vecTranslBuf = ov04_02254698(posvec, gymWork->targetXZ);
+            ov04_022546C8(&gymWork->vecTranslBuf, gymWork->xzSigns);
             VEC_Normalize(&gymWork->vecTranslBuf, &gymWork->vecTranslBuf);
             {
                 const VecFx32 tmp = {FX32_ONE, 0, 0};
@@ -504,19 +520,19 @@ void ov04_02254724(SysTask *task, struct SpinarakRideWork *work) {
                 VecFx32 tmp = {0, 0, 0};
                 VEC_MultAdd(2 * FX32_ONE, &gymWork->vecTranslBuf, &tmp, &gymWork->vecTranslBuf);
             }
-            if (gymWork->unk_1C == 0 && dotprod != 0 && dotprod != FX32_ONE) {
-                gymWork->unk_1C = 1;
+            if (gymWork->reqStartDiagMovement == FALSE && dotprod != 0 && dotprod != FX32_ONE) {
+                gymWork->reqStartDiagMovement = TRUE;
                 ov01_021F6304(fsys->unk2C);
             }
-            else if (gymWork->unk_1C == 1) {
-                gymWork->unk_1C = 0;
+            else if (gymWork->reqStartDiagMovement == TRUE) {
+                gymWork->reqStartDiagMovement = FALSE;
                 ov01_021F62E8(PlayerAvatar_GetPositionVecConst(fsys->playerAvatar), fsys->unk2C);
             }
-            gymWork->unk_16 = 0;
+            gymWork->reqNewSegment = 0;
         }
         {
-            int dx = ov04_022546E8(gymWork->unk_20[0], gymWork->vecPos.x, gymWork->vecTranslBuf.x, gymWork->unk_28->x);
-            int dz = ov04_022546E8(gymWork->unk_20[1], gymWork->vecPos.z, gymWork->vecTranslBuf.z, gymWork->unk_28->z);
+            int dx = ov04_022546E8(gymWork->xzSigns[0], gymWork->vecPos.x, gymWork->vecTranslBuf.x, gymWork->targetXZ->x);
+            int dz = ov04_022546E8(gymWork->xzSigns[1], gymWork->vecPos.z, gymWork->vecTranslBuf.z, gymWork->targetXZ->z);
             if (dx == 2) {
                 gymWork->vecTranslBuf.x = 0;
             }
@@ -524,13 +540,13 @@ void ov04_02254724(SysTask *task, struct SpinarakRideWork *work) {
                 gymWork->vecTranslBuf.z = 0;
             }
             if (dx != 0 && dz != 0) {
-                gymWork->vecPos.x = gymWork->unk_28->x * 16 * FX32_ONE;
-                gymWork->vecPos.z = gymWork->unk_28->z * 16 * FX32_ONE;
-                gymWork->unk_14++;
-                if (gymWork->unk_14 >= ov04_022575A4[startingPoint][work_15].unk_0 - 1) {
+                gymWork->vecPos.x = gymWork->targetXZ->x * 16 * FX32_ONE;
+                gymWork->vecPos.z = gymWork->targetXZ->z * 16 * FX32_ONE;
+                gymWork->pathNodeCounter++;
+                if (gymWork->pathNodeCounter >= sSpinarakPathSpecs[startingPoint][work_15].length - 1) {
                     union GymmickUnion *gymmickUnion = SavGymmick_AssertMagic_GetData(Sav2_GetGymmickPtr(
                         Fsys_GetSaveDataPtr(fsys)), GYMMICK_AZALEA);
-                    gymmickUnion->azalea.spiders[gymWork->spinarakNo] = ov04_022575A4[startingPoint][work_15].unk_2;
+                    gymmickUnion->azalea.spiders[gymWork->spinarakNo] = sSpinarakPathSpecs[startingPoint][work_15].endpoint;
                     ov01_021E8ED0(fsys->_3dAnimationMgr, fsys->unk_58, 1);
                     StopSE(SEQ_SE_GS_ITOMARU_ROBO, 1);
                     work->state++;
@@ -542,7 +558,7 @@ void ov04_02254724(SysTask *task, struct SpinarakRideWork *work) {
                     else {
                         gymWork->pathIdx++;
                     }
-                    gymWork->unk_16 = 1;
+                    gymWork->reqNewSegment = 1;
                 }
             }
             else {
@@ -574,44 +590,44 @@ void ov04_02254724(SysTask *task, struct SpinarakRideWork *work) {
     }
     case 6:
         playerObj = PlayerAvatar_GetMapObject(fsys->playerAvatar);
-        MapObject_SetCurrentX(playerObj, gymWork->unk_28->x);
+        MapObject_SetCurrentX(playerObj, gymWork->targetXZ->x);
         MapObject_SetCurrentHeight(playerObj, 0);
-        MapObject_SetCurrentY(playerObj, gymWork->unk_28->z + gymWork->playerZoff);
+        MapObject_SetCurrentY(playerObj, gymWork->targetXZ->z + gymWork->playerZoff);
         sub_02060F78(playerObj);
         MapObject_SetHeldMovement(playerObj, 74);
         if (FollowingPokemon_IsActive(fsys)) {
             followPokeObj = FollowingPokemon_GetMapObject(fsys);
-            MapObject_SetCurrentX(followPokeObj, gymWork->unk_28->x);
+            MapObject_SetCurrentX(followPokeObj, gymWork->targetXZ->x);
             MapObject_SetCurrentHeight(followPokeObj, 0);
-            MapObject_SetCurrentY(followPokeObj, gymWork->unk_28->z + (1 - gymWork->playerZoff));
+            MapObject_SetCurrentY(followPokeObj, gymWork->targetXZ->z + (1 - gymWork->playerZoff));
             sub_02060F78(followPokeObj);
         }
-        gymWork->unk_44 = 0;
-        gymWork->unk_48 = 0;
+        gymWork->cameraShudderCount = 0;
+        gymWork->cameraShudderFrames = 0;
         if (PlayerAvatar_GetFacingDirection(fsys->playerAvatar) == DIR_SOUTH) {
-            gymWork->unk_4C = FX32_ONE;
+            gymWork->cameraShudderDirection = FX32_ONE;
         } else {
-            gymWork->unk_4C = -FX32_ONE;
+            gymWork->cameraShudderDirection = -FX32_ONE;
         }
         work->state++;
         break;
     case 7: {
-        VecFx32 sp44 = {0,0,gymWork->unk_4C};
-        if (gymWork->unk_48++ == 0) {
-            GF_Camera_ShiftBy(&sp44, fsys->camera);
-            gymWork->unk_44++;
-        } else if (gymWork->unk_48 > 1) {
-            gymWork->unk_48 = 0;
-            gymWork->unk_4C *= -1;
+        VecFx32 cameraShudderVec = {0,0,gymWork->cameraShudderDirection};
+        if (gymWork->cameraShudderFrames++ == 0) {
+            GF_Camera_ShiftBy(&cameraShudderVec, fsys->camera);
+            gymWork->cameraShudderCount++;
+        } else if (gymWork->cameraShudderFrames > 1) {
+            gymWork->cameraShudderFrames = 0;
+            gymWork->cameraShudderDirection *= -1;
         }
-        if (gymWork->unk_44 >= 4) {
-            gymWork->unk_50 = 0;
+        if (gymWork->cameraShudderCount >= 4) {
+            gymWork->delayCounter = 0;
             work->state++;
         }
         break;
     }
     case 8:
-        if (gymWork->unk_50++ < 8) {
+        if (gymWork->delayCounter++ < 8) {
             break;
         }
         playerObj = PlayerAvatar_GetMapObject(fsys->playerAvatar);
