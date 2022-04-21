@@ -1,11 +1,19 @@
 #include "gymmick_overlay.h"
 #include "unk_0203DE74.h"
+#include "unk_02054648.h"
+#include "unk_0205B6E8.h"
 #include "overlay_01.h"
+
+struct Vec2Fx32 {
+    fx32 x;
+    fx32 z;
+};
 
 struct BlackthornGymPlatform {
     u8 filler_000[0x7];
     u8 modelId;
-    u8 filler_008[0x268];
+    u8 filler_008[0x1D8];
+    struct Vec2Fx32 unk_1E0[18];
 }; // size=0x270
 
 struct BlackthornGymWork {
@@ -14,6 +22,7 @@ struct BlackthornGymWork {
 }; // size=0x754
 
 void ov04_02255140(u8 idx, u8 rot, u16 x, u16 z, struct BlackthornGymPlatform *platform);
+BOOL ov04_02255708(struct BlackthornGymWork *gymWork, u16 x, u16 z);
 
 /*
 const VecFx32 ov04_02257620 = {
@@ -60,4 +69,41 @@ void InitBlackthornGymPuzzleGimmick(FieldSystem *fsys) {
         gymWork->platforms[i].modelId = AddBgModelFromTemplate(fsys->bgModels, sp38[i], &sp2C, &sp20, fsys->_3dAnimationMgr);
         ov04_02255140(i, gymmickUnion->blackthorn.rot[i], gymmickUnion->blackthorn.x[i], gymmickUnion->blackthorn.z[i], &gymWork->platforms[i]);
     }
+}
+
+void DeleteBlackthornPuzzleGimmick(FieldSystem *fsys) {
+    FreeToHeap(fsys->unk4->unk_24);
+    fsys->unk4->unk_24 = NULL;
+}
+
+BOOL ov04_02255090(FieldSystem *fsys) {
+    struct BlackthornGymWork *gymWork;
+    if (SavGymmick_GetType(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys))) != GYMMICK_BLACKTHORN) {
+        return FALSE;
+    }
+    gymWork = fsys->unk4->unk_24;
+    if (gymWork == NULL) {
+        return FALSE;
+    }
+    return ov04_02255708(gymWork, GetPlayerXCoord(fsys->playerAvatar), GetPlayerYCoord(fsys->playerAvatar));
+}
+
+BOOL ov04_022550D4(FieldSystem* fsys, fx32 x, fx32 z, u32 a3, BOOL *p_ret) {
+    struct BlackthornGymWork *gymWork = fsys->unk4->unk_24;
+    int i, j;
+
+    for (i = 0; i < 3; i++) {
+        struct BlackthornGymPlatform *platform = &gymWork->platforms[i];
+        for (j = 0; j < 18; j++) {
+            if (x == platform->unk_1E0[j].x && z == platform->unk_1E0[j].z) {
+                *p_ret = FALSE;
+                return TRUE;
+            }
+        }
+    }
+    if (sub_0205BAC4(GetMetatileBehaviorAt(fsys, x, z))) {
+        *p_ret = TRUE;
+        return TRUE;
+    }
+    return FALSE;
 }

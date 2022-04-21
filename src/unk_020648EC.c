@@ -5,7 +5,7 @@
 #include "script.h"
 
 typedef void (*FieldSystemFunc1)(FieldSystem*);
-typedef BOOL (*FieldSystemFunc2)(FieldSystem*, u32, u32, u32, u32);
+typedef BOOL (*FieldSystemFunc2)(FieldSystem*, fx32, fx32, u32, BOOL *);
 
 static const FieldSystemFunc1 sConstructors[];
 static const FieldSystemFunc1 sDestructors[];
@@ -28,13 +28,13 @@ void DeleteGymmickFieldResources(FieldSystem* fsys) {
     }
 }
 
-BOOL sub_02064938(FieldSystem *fsys, u32 a1, u32 a2, u32 a3, u32 a4) {
+BOOL sub_02064938(FieldSystem *fsys, fx32 x, fx32 z, u32 a3, BOOL *p_ret) {
     int gymmickType = SavGymmick_GetType(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys)));
     if (gymmickType == GYMMICK_NONE) return FALSE;
 
     FieldSystemFunc2 func = _020FE23C[gymmickType];
     if (func != NULL) {
-        return func(fsys, a1, a2, a3, a4);
+        return func(fsys, x, z, a3, p_ret);
     }
     return FALSE;
 }

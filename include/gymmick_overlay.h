@@ -15,7 +15,7 @@ static inline void *OverlayGymmick_AllocWork(FieldSystem *fsys, u32 size) {
 
 void InitBlackthornGymPuzzleGimmick(FieldSystem *fsys);
 void DeleteBlackthornPuzzleGimmick(FieldSystem *fsys);
-BOOL ov04_022550D4(FieldSystem* fsys, u32 a1, u32 a2, u32 a3, u32 a4);
+BOOL ov04_022550D4(FieldSystem* fsys, fx32 a1, fx32 a2, u32 a3, BOOL *a4);
 void InitCianwoodPuzzleGimmick(FieldSystem *fsys);
 void DeleteCianwoodPuzzleGimmick(FieldSystem *fsys);
 int ov04_02256058(FieldSystem *fsys);
