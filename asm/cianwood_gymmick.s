@@ -5,8 +5,8 @@
 
 	.text
 
-	thumb_func_start ov04_02255FC0
-ov04_02255FC0: ; 0x02255FC0
+	thumb_func_start InitCianwoodPuzzleGimmick
+InitCianwoodPuzzleGimmick: ; 0x02255FC0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl Fsys_GetSaveDataPtr
@@ -64,10 +64,10 @@ _0225603E:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02256040: .word 0x00000000
-	thumb_func_end ov04_02255FC0
+	thumb_func_end InitCianwoodPuzzleGimmick
 
-	thumb_func_start ov04_02256044
-ov04_02256044: ; 0x02256044
+	thumb_func_start DeleteCianwoodPuzzleGimmick
+DeleteCianwoodPuzzleGimmick: ; 0x02256044
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
@@ -77,7 +77,7 @@ ov04_02256044: ; 0x02256044
 	mov r1, #0
 	str r1, [r0, #0x24]
 	pop {r4, pc}
-	thumb_func_end ov04_02256044
+	thumb_func_end DeleteCianwoodPuzzleGimmick
 
 	thumb_func_start ov04_02256058
 ov04_02256058: ; 0x02256058

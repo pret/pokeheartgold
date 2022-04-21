@@ -42,27 +42,27 @@ BOOL sub_02064938(FieldSystem *fsys, u32 a1, u32 a2, u32 a3, u32 a4) {
 static const FieldSystemFunc1 sConstructors[] = {
     [GYMMICK_NONE]       = NULL,
     [GYMMICK_ECRUTEAK]   = InitEcruteakGymPuzzleGimmick,
-    [GYMMICK_CIANWOOD]   = ov04_02255FC0,
-    [GYMMICK_VERMILION]  = ov04_02256304,
+    [GYMMICK_CIANWOOD]   = InitCianwoodPuzzleGimmick,
+    [GYMMICK_VERMILION]  = InitVermilionPuzzleGimmick,
     [GYMMICK_VIOLET]     = InitVioletGymElevatorGimmick,
     [GYMMICK_AZALEA]     = InitAzaleaGymPuzzleGimmick,
-    [GYMMICK_BLACKTHORN] = ov04_02254F8C,
-    [GYMMICK_FUCHSIA]    = ov04_02256650,
-    [GYMMICK_VIRIDIAN]   = ov04_02256B64,
-    [GYMMICK_SINJOH]     = ov04_02256E60,
+    [GYMMICK_BLACKTHORN] = InitBlackthornGymPuzzleGimmick,
+    [GYMMICK_FUCHSIA]    = InitFuchsiaGymPuzzleGimmick,
+    [GYMMICK_VIRIDIAN]   = InitViridianGymPuzzleGimmick,
+    [GYMMICK_SINJOH]     = InitSinjohPuzzleGimmick,
 };
 
 static const FieldSystemFunc1 sDestructors[] = {
     [GYMMICK_NONE]       = NULL,
     [GYMMICK_ECRUTEAK]   = DeleteEcruteakGymPuzzleGimmick,
-    [GYMMICK_CIANWOOD]   = ov04_02256044,
-    [GYMMICK_VERMILION]  = ov04_022563B0,
+    [GYMMICK_CIANWOOD]   = DeleteCianwoodPuzzleGimmick,
+    [GYMMICK_VERMILION]  = DeleteVermilionPuzzleGimmick,
     [GYMMICK_VIOLET]     = NULL,
     [GYMMICK_AZALEA]     = DeleteAzaleaGymPuzzleGimmick,
-    [GYMMICK_BLACKTHORN] = ov04_0225507C,
-    [GYMMICK_FUCHSIA]    = ov04_022566A0,
-    [GYMMICK_VIRIDIAN]   = ov04_02256BA0,
-    [GYMMICK_SINJOH]     = ov04_02256EB0,
+    [GYMMICK_BLACKTHORN] = DeleteBlackthornPuzzleGimmick,
+    [GYMMICK_FUCHSIA]    = DeleteFuchsiaPuzzleGimmick,
+    [GYMMICK_VIRIDIAN]   = DeleteViridianPuzzleGimmick,
+    [GYMMICK_SINJOH]     = DeleteSinjohPuzzleGimmick,
 };
 
 static const FieldSystemFunc2 _020FE23C[] = {

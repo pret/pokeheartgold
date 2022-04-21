@@ -525,7 +525,8 @@ Overlay gymmick
     Object src/violet_gymmick.o
     Object src/azalea_gymmick.o
     Object src/ecruteak_gymmick.o
-    Object asm/blackthorn_gymmick.o
+    Object src/blackthorn_gymmick.o
+    Object asm/blackthorn_gymmick_s.o
     Object asm/cianwood_gymmick.o
     Object asm/vermilion_gymmick.o
     Object asm/fuchsia_gymmick.o

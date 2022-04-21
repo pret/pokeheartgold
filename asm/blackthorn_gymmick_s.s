@@ -3,126 +3,17 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.public ov04_02257614
+    .public ov04_02257618
+    .public ov04_02257620
+    .public ov04_0225762C
+    .public ov04_02257638
+    .public ov04_02257648
+
 	.text
 
-	thumb_func_start ov04_02254F8C
-ov04_02254F8C: ; 0x02254F8C
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0x44
-	ldr r3, _02255070 ; =ov04_0225762C
-	str r0, [sp, #4]
-	ldmia r3!, {r0, r1}
-	add r2, sp, #0x38
-	stmia r2!, {r0, r1}
-	ldr r0, [r3]
-	str r0, [r2]
-	ldr r0, [sp, #4]
-	bl Fsys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
-	mov r1, #6
-	bl SavGymmick_AssertMagic_GetData
-	str r0, [sp, #0x10]
-	ldr r1, _02255074 ; =0x00000754
-	mov r0, #4
-	bl AllocFromHeap
-	ldr r1, [sp, #4]
-	ldr r2, _02255074 ; =0x00000754
-	ldr r1, [r1, #4]
-	str r0, [r1, #0x24]
-	ldr r0, [sp, #4]
-	mov r1, #0
-	ldr r0, [r0, #4]
-	ldr r0, [r0, #0x24]
-	bl MI_CpuFill8
-	ldr r0, [sp, #4]
-	ldr r2, _02255078 ; =ov04_02257620
-	ldr r0, [r0, #4]
-	add r3, sp, #0x14
-	ldr r6, [r0, #0x24]
-	ldr r0, [sp, #4]
-	ldr r4, [sp, #0x10]
-	str r0, [r6]
-	add r0, sp, #0x38
-	str r0, [sp, #0xc]
-	ldmia r2!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldr r0, [r2]
-	mov r5, #0
-	add r7, r6, #4
-	str r0, [r3]
-_02254FEC:
-	add r3, sp, #0x14
-	ldmia r3!, {r0, r1}
-	add r2, sp, #0x2c
-	mov ip, r2
-	stmia r2!, {r0, r1}
-	ldr r0, [r3]
-	mov r1, #0
-	str r0, [r2]
-	add r0, sp, #0x20
-	str r1, [r0]
-	str r1, [r0, #4]
-	str r1, [r0, #8]
-	ldr r0, [sp, #0x10]
-	mov r2, ip
-	add r0, r0, r5
-	str r0, [sp, #8]
-	ldrb r0, [r0, #0xc]
-	add r3, sp, #0x20
-	lsl r0, r0, #0xe
-	neg r0, r0
-	str r0, [sp, #0x24]
-	ldrh r0, [r4]
-	lsl r1, r0, #0x10
-	mov r0, #2
-	lsl r0, r0, #0xe
-	add r0, r1, r0
-	str r0, [sp, #0x2c]
-	ldrh r0, [r4, #6]
-	lsl r1, r0, #0x10
-	mov r0, #2
-	lsl r0, r0, #0xe
-	add r0, r1, r0
-	str r0, [sp, #0x34]
-	ldr r0, [sp, #4]
-	ldr r1, [sp, #0xc]
-	ldr r0, [r0, #0x54]
-	str r0, [sp]
-	ldr r0, [sp, #4]
-	ldr r1, [r1]
-	add r0, #0x9c
-	ldr r0, [r0]
-	bl AddBgModelFromTemplate
-	strb r0, [r6, #0xb]
-	str r7, [sp]
-	ldr r1, [sp, #8]
-	lsl r0, r5, #0x18
-	ldrb r1, [r1, #0xc]
-	ldrh r2, [r4]
-	ldrh r3, [r4, #6]
-	lsr r0, r0, #0x18
-	bl ov04_02255140
-	ldr r0, [sp, #0xc]
-	add r5, r5, #1
-	add r0, r0, #4
-	str r0, [sp, #0xc]
-	mov r0, #0x27
-	lsl r0, r0, #4
-	add r4, r4, #2
-	add r6, r6, r0
-	add r7, r7, r0
-	cmp r5, #3
-	blt _02254FEC
-	add sp, #0x44
-	pop {r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02255070: .word ov04_0225762C
-_02255074: .word 0x00000754
-_02255078: .word ov04_02257620
-	thumb_func_end ov04_02254F8C
-
-	thumb_func_start ov04_0225507C
-ov04_0225507C: ; 0x0225507C
+	thumb_func_start DeleteBlackthornPuzzleGimmick
+DeleteBlackthornPuzzleGimmick: ; 0x0225507C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
@@ -132,7 +23,7 @@ ov04_0225507C: ; 0x0225507C
 	mov r1, #0
 	str r1, [r0, #0x24]
 	pop {r4, pc}
-	thumb_func_end ov04_0225507C
+	thumb_func_end DeleteBlackthornPuzzleGimmick
 
 	thumb_func_start ov04_02255090
 ov04_02255090: ; 0x02255090
@@ -2164,26 +2055,3 @@ _02255FB8:
 	.balign 4, 0
 _02255FBC: .word SEQ_SE_GS_GONDORA_KABEHIT
 	thumb_func_end ov04_02255D88
-
-	.rodata
-
-ov04_02257614: ; 0x02257614
-	.byte 0x40, 0x14, 0x1E, 0x2E
-
-ov04_02257618: ; 0x02257618
-	.byte 0x40, 0x40, 0x40, 0x40, 0x2A, 0x00, 0x00, 0x00
-
-ov04_02257620: ; 0x02257620
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00
-
-ov04_0225762C: ; 0x0225762C
-	.byte 0x78, 0x00, 0x00, 0x00
-	.byte 0x79, 0x00, 0x00, 0x00, 0x78, 0x00, 0x00, 0x00
-
-ov04_02257638: ; 0x02257638
-	.byte 0x0A, 0x0A, 0x0D, 0x12, 0x19, 0x26, 0x33, 0x40
-	.byte 0x40, 0x17, 0x1C, 0x23, 0x2D, 0x37, 0x00, 0x00
-
-ov04_02257648: ; 0x02257648
-	.byte 0x08, 0x09, 0x0A, 0x0E, 0x13, 0x1A, 0x25, 0x33
-	.byte 0x40, 0x11, 0x13, 0x17, 0x1C, 0x23, 0x2E, 0x37, 0x40, 0x40, 0x40, 0x1E, 0x23, 0x29, 0x31, 0x39

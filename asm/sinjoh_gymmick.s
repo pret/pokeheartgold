@@ -5,8 +5,8 @@
 
 	.text
 
-	thumb_func_start ov04_02256E60
-ov04_02256E60: ; 0x02256E60
+	thumb_func_start InitSinjohPuzzleGimmick
+InitSinjohPuzzleGimmick: ; 0x02256E60
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl Fsys_GetSaveDataPtr
@@ -40,10 +40,10 @@ ov04_02256E60: ; 0x02256E60
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02256EAC: .word ov04_02257148
-	thumb_func_end ov04_02256E60
+	thumb_func_end InitSinjohPuzzleGimmick
 
-	thumb_func_start ov04_02256EB0
-ov04_02256EB0: ; 0x02256EB0
+	thumb_func_start DeleteSinjohPuzzleGimmick
+DeleteSinjohPuzzleGimmick: ; 0x02256EB0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #4]
@@ -61,7 +61,7 @@ ov04_02256EB0: ; 0x02256EB0
 	str r1, [r0, #0x24]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov04_02256EB0
+	thumb_func_end DeleteSinjohPuzzleGimmick
 
 	thumb_func_start ov04_02256ED8
 ov04_02256ED8: ; 0x02256ED8

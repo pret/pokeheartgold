@@ -5,8 +5,8 @@
 
 	.text
 
-	thumb_func_start ov04_02256B64
-ov04_02256B64: ; 0x02256B64
+	thumb_func_start InitViridianGymPuzzleGimmick
+InitViridianGymPuzzleGimmick: ; 0x02256B64
 	push {r4, lr}
 	add r4, r0, #0
 	bl Fsys_GetSaveDataPtr
@@ -30,10 +30,10 @@ ov04_02256B64: ; 0x02256B64
 	pop {r4, pc}
 	nop
 _02256B9C: .word 0x00000708
-	thumb_func_end ov04_02256B64
+	thumb_func_end InitViridianGymPuzzleGimmick
 
-	thumb_func_start ov04_02256BA0
-ov04_02256BA0: ; 0x02256BA0
+	thumb_func_start DeleteViridianPuzzleGimmick
+DeleteViridianPuzzleGimmick: ; 0x02256BA0
 	push {r3, r4, r5, r6, r7, lr}
 	str r0, [sp]
 	ldr r0, [r0, #4]
@@ -67,7 +67,7 @@ _02256BCA:
 	ldr r0, [r0, #4]
 	str r1, [r0, #0x24]
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov04_02256BA0
+	thumb_func_end DeleteViridianPuzzleGimmick
 
 	thumb_func_start ov04_02256BE4
 ov04_02256BE4: ; 0x02256BE4

@@ -5,8 +5,8 @@
 
 	.text
 
-	thumb_func_start ov04_02256304
-ov04_02256304: ; 0x02256304
+	thumb_func_start InitVermilionPuzzleGimmick
+InitVermilionPuzzleGimmick: ; 0x02256304
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl Fsys_GetSaveDataPtr
@@ -86,10 +86,10 @@ _022563AA:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _022563AC: .word 0x00000000
-	thumb_func_end ov04_02256304
+	thumb_func_end InitVermilionPuzzleGimmick
 
-	thumb_func_start ov04_022563B0
-ov04_022563B0: ; 0x022563B0
+	thumb_func_start DeleteVermilionPuzzleGimmick
+DeleteVermilionPuzzleGimmick: ; 0x022563B0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
@@ -99,7 +99,7 @@ ov04_022563B0: ; 0x022563B0
 	mov r1, #0
 	str r1, [r0, #0x24]
 	pop {r4, pc}
-	thumb_func_end ov04_022563B0
+	thumb_func_end DeleteVermilionPuzzleGimmick
 
 	thumb_func_start ov04_022563C4
 ov04_022563C4: ; 0x022563C4

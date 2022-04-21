@@ -5,8 +5,8 @@
 
 	.text
 
-	thumb_func_start ov04_02256650
-ov04_02256650: ; 0x02256650
+	thumb_func_start InitFuchsiaGymPuzzleGimmick
+InitFuchsiaGymPuzzleGimmick: ; 0x02256650
 	push {r4, lr}
 	add r4, r0, #0
 	bl Fsys_GetSaveDataPtr
@@ -41,10 +41,10 @@ _0225668C:
 	.balign 4, 0
 _02256698: .word 0x00001DD8
 _0225669C: .word 0x00001DB6
-	thumb_func_end ov04_02256650
+	thumb_func_end InitFuchsiaGymPuzzleGimmick
 
-	thumb_func_start ov04_022566A0
-ov04_022566A0: ; 0x022566A0
+	thumb_func_start DeleteFuchsiaPuzzleGimmick
+DeleteFuchsiaPuzzleGimmick: ; 0x022566A0
 	push {r3, r4, r5, r6, r7, lr}
 	str r0, [sp]
 	ldr r0, [r0, #4]
@@ -80,7 +80,7 @@ _022566C8:
 	nop
 _022566E4: .word 0x00001DB4
 _022566E8: .word 0x00001DBC
-	thumb_func_end ov04_022566A0
+	thumb_func_end DeleteFuchsiaPuzzleGimmick
 
 	thumb_func_start ov04_022566EC
 ov04_022566EC: ; 0x022566EC
