@@ -25,12 +25,16 @@ Decompiling is the process of taking Assembly code and translating it into equiv
 "Matching" Decompiling means that the resulting C code should compile into the same Assembly instructions as the Assembly code.
 The general workflow is like this:
 
-1. Choose a .s file from `asm/` to decompile (You can look at [known asm files](Known_Asm_files.md) if you want to decompile a specific file)
+1. Choose a .s file from `asm/` to decompile (You can look at [known asm files](Known_Asm_files.md) if you're looking to decompile a specific file)
 2. Make a .c file inside `src/`, and a header file for it inside `include/`
 3. Add the new .c file to main.lsf
-4. Match-decompile the .s file. Make sure each function you decompile matches the original assembly code (by running `make compare` in the root directory) before moving on to the next function. Not doing this makes the process of matching harder than it should be.
+4. Match-decompile the .s file. Make sure each function you decompile matches the original assembly code (by running `make compare` in the root directory) before moving on to the next function.
 5. Remove the .s file from main.lsf
 6. Remove the .s file 
 7. (Optional but recommended) Document the code, figure out what each function does, and rename them appropriately
 8. Make sure your code adheres to the repository style guide
 9. Open a pull request for your decompiled code
+
+These documents explain different parts of the decompilation process in detail:
+- [Code Decompilation](Code_Decompilation.md)
+- [Struct Decompilation](Struct_Decompilation.md)
