@@ -1,24 +1,3 @@
-static const struct Vec2U16 sp0_path0[];
-static const struct Vec2U16 sp1_path0[];
-static const struct Vec2U16 sp2_path0[];
-static const struct Vec2U16 sp6_path1[];
-static const struct Vec2U16 sp6_path3[];
-static const struct Vec2U16 sp7_path0[];
-static const struct Vec2U16 sp7_path1[];
-static const struct Vec2U16 sp7_path2[];
-static const struct SpinarakPathSpec startingPoint0[];
-static const struct SpinarakPathSpec startingPoint1[];
-static const struct SpinarakPathSpec startingPoint2[];
-static const struct SpinarakPathSpec startingPoint3[];
-static const struct SpinarakPathSpec startingPoint4[];
-static const struct SpinarakPathSpec startingPoint5[];
-static const struct SpinarakPathSpec startingPoint6[];
-static const struct SpinarakPathSpec startingPoint7[];
-static const struct SpinarakPathSpec startingPoint8[];
-static const struct SpinarakPathSpec startingPoint9[];
-static const struct SpinarakPathSpec startingPoint10[];
-static const struct SpinarakPathSpec startingPoint11[];
-static const struct SpinarakPathSpec *const sSpinarakPathSpecs[];
 
 static const struct Vec2U16 sp0_path0[] = {
     {3, 31},
@@ -94,6 +73,13 @@ static const struct Vec2U16 sp7_path2[] = {
     {9, 9},
 };
 
+static const struct SpinarakPathSpec startingPoint7[] = {
+    { NELEMS(sp7_path0), 9, sp7_path0 },
+    { NELEMS(sp7_path1), 11, sp7_path1 },
+    { NELEMS(sp7_path2), 10, sp7_path2 },
+    { NELEMS(sp7_path1), 11, sp7_path1 },
+};
+
 static const struct SpinarakPathSpec startingPoint0[] = {
     { NELEMS(sp0_path0), 4, sp0_path0 },
     { NELEMS(sp0_path0), 4, sp0_path0 },
@@ -143,11 +129,11 @@ static const struct SpinarakPathSpec startingPoint6[] = {
     { NELEMS(sp6_path3), 10, sp6_path3 },
 };
 
-static const struct SpinarakPathSpec startingPoint7[] = {
-    { NELEMS(sp7_path0), 9, sp7_path0 },
-    { NELEMS(sp7_path1), 11, sp7_path1 },
-    { NELEMS(sp7_path2), 10, sp7_path2 },
-    { NELEMS(sp7_path1), 11, sp7_path1 },
+static const struct SpinarakPathSpec startingPoint11[] = {
+    {},
+    { NELEMS(sp7_path1), 7, sp7_path1 },
+    {},
+    { NELEMS(sp7_path1), 7, sp7_path1 },
 };
 
 static const struct SpinarakPathSpec startingPoint8[] = {
@@ -167,28 +153,6 @@ static const struct SpinarakPathSpec startingPoint9[] = {
 static const struct SpinarakPathSpec startingPoint10[] = {
     {},
     {},
-    { NELEMS(sp7_path2), 6, sp7_path2 },
+    { NELEMS(sp7_path2), 7, sp7_path2 },
     { NELEMS(sp6_path3), 6, sp6_path3 },
-};
-
-static const struct SpinarakPathSpec startingPoint11[] = {
-    {},
-    { NELEMS(sp7_path1), 7, sp7_path1 },
-    {},
-    { NELEMS(sp7_path1), 7, sp7_path1 },
-};
-
-static const struct SpinarakPathSpec *const sSpinarakPathSpecs[] = {
-    startingPoint0,
-    startingPoint1,
-    startingPoint2,
-    startingPoint3,
-    startingPoint4,
-    startingPoint5,
-    startingPoint6,
-    startingPoint7,
-    startingPoint8,
-    startingPoint9,
-    startingPoint10,
-    startingPoint11,
 };

@@ -236,7 +236,7 @@ typedef struct FsysUnkSub4 {
     void *unk_24;
 } FsysUnkSub4;
 
-struct UnkStruct_ov01_02004004_sub {
+struct UnkStruct_ov01_02204004_sub {
     NNSG3dRenderObj renderObj;
     NNSG3dResMdl *pResMdl;
     int fileId;
@@ -247,7 +247,7 @@ typedef struct BgModelEvent {
     BOOL enabled;
     BOOL invisible;
     BOOL rotationEnabled;
-    struct UnkStruct_ov01_02004004_sub *objData; // 10
+    struct UnkStruct_ov01_02204004_sub *objData; // 10
     VecFx32 pos; // 14
     VecFx32 rotation; // 20
     VecFx32 scale; // 2C
@@ -271,11 +271,11 @@ typedef struct MapHeightOverridesList {
     MapHeightOverride *data;
 } MapHeightOverridesList;
 
-struct UnkStruct_ov01_02004004 {
+struct UnkStruct_ov01_02204004 {
     u8 *activeList;
     NNSG3dResFileHeader **modelFileHeaders;
-    struct UnkStruct_ov01_02004004_sub *unk8;
-    struct UnkStruct_ov01_02004004_sub **unkC;
+    struct UnkStruct_ov01_02204004_sub *unk8;
+    struct UnkStruct_ov01_02204004_sub **unkC;
     int unk10;
     int unk14;
     int unk18;
@@ -325,7 +325,7 @@ struct FieldSystem {
     void *unkB0;
     s64 unkB4;
     u8 unkBC[4];
-    struct UnkStruct_ov01_02004004 *unkC0; // animated 3d model system?
+    struct UnkStruct_ov01_02204004 *unkC0; // animated 3d model system?
     int unkC4;
     u8 filler_C8[0xA];
     u8 unkD2_0:6;

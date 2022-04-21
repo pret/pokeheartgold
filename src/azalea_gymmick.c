@@ -1,4 +1,5 @@
 #include "overlay_01.h"
+#include "gymmick_overlay.h"
 #include "unk_0203DE74.h"
 #include "unk_02005D10.h"
 #include "task.h"
@@ -8,6 +9,16 @@
 #include "unk_0205FD20.h"
 #include "constants/sndseq.h"
 
+#define MDL_RED_SWITCH              (115)
+#define MDL_BLUE_SWITCH             (116)
+#define MDL_BLUE_WEB                (117)
+#define MDL_SPINARAK                (118)
+#define MDL_RED_WEB                 (122)
+
+#define TRAVERSAL_CONTINUE            (0)
+#define TRAVERSAL_ARRIVED             (1)
+#define TRAVERSAL_OVERSHOT            (2)
+
 struct Vec2U16 {
     u16 x;
     u16 z;
@@ -15,7 +26,7 @@ struct Vec2U16 {
 
 struct AzaleaGymWork {
     int unused_00;
-    int modelIds[4]; // IDs of the spinarak
+    int modelIds[GYMMICK_AZALEA_NUM_SPINARAK]; // IDs of the spinarak
     u8 pathNodeCounter;
     u8 switchesState;
     u8 reqNewSegment;
@@ -23,7 +34,7 @@ struct AzaleaGymWork {
     u8 spinarakNo;
     u8 startingPoint;
     u8 direction;
-    u8 pathIdx;
+    u8 nodeIdx;
     s8 playerZoff;
     BOOL reqStartDiagMovement;
     BOOL xzSigns[2];
@@ -48,13 +59,13 @@ struct SpinarakPathSpec {
     const struct Vec2U16 *path;
 };
 
-BOOL ov04_0225463C(TaskManager *taskManager);
-void ov04_02254724(SysTask *task, struct SpinarakRideWork *work);
-BOOL ov04_02254CA4(TaskManager *taskManager);
+static BOOL Task_RideSpinarak(TaskManager *taskManager);
+static void SysTask_DoSpinarakRideMovement(SysTask *task, struct SpinarakRideWork *work);
+static BOOL Task_FlipSwitchWaitSE(TaskManager *taskManager);
 
 #include "data/azalea_paths.h"
 
-static const u16 ov04_022575D4[][2] = {
+static const struct Vec2U16 sPathEndpoints[] = {
     {3, 31},
     {9, 31},
     {15, 31},
@@ -67,6 +78,21 @@ static const u16 ov04_022575D4[][2] = {
     {3, 9},
     {9, 9},
     {15, 9},
+};
+
+static const struct SpinarakPathSpec *const sSpinarakPathSpecs[] = {
+    startingPoint0,
+    startingPoint1,
+    startingPoint2,
+    startingPoint3,
+    startingPoint4,
+    startingPoint5,
+    startingPoint6,
+    startingPoint7,
+    startingPoint8,
+    startingPoint9,
+    startingPoint10,
+    startingPoint11,
 };
 
 static inline u8 getSwitchState(union GymmickUnion *gymmickUnion, int color) {
@@ -82,180 +108,180 @@ void InitAzaleaGymPuzzleGimmick(FieldSystem *fsys) {
     MI_CpuClear8(fsys->unk4->unk_24, sizeof(struct AzaleaGymWork));
     work = fsys->unk4->unk_24;
     for (i = 0; i < 4; i++) {
-        VecFx32 sp4 = {0, 0, 0};
-        u16 x = ov04_022575D4[gymmickUnion->azalea.spiders[i]][0];
-        u16 z = ov04_022575D4[gymmickUnion->azalea.spiders[i]][1];
+        VecFx32 spinarakInitPos = {0, 0, 0};
+        u16 x = sPathEndpoints[gymmickUnion->azalea.spiders[i]].x;
+        u16 z = sPathEndpoints[gymmickUnion->azalea.spiders[i]].z;
 
-        sp4.x = x * 16 * FX32_ONE;
-        sp4.x += 8 * FX32_ONE;
-        sp4.z = z * 16 * FX32_ONE;
-        work->modelIds[i] = AddBgModelFromTemplate(fsys->bgModels, 118, &sp4, NULL, fsys->_3dAnimationMgr);
+        spinarakInitPos.x = x * 16 * FX32_ONE;
+        spinarakInitPos.x += 8 * FX32_ONE;
+        spinarakInitPos.z = z * 16 * FX32_ONE;
+        work->modelIds[i] = AddBgModelFromTemplate(fsys->bgModels, MDL_SPINARAK, &spinarakInitPos, NULL, fsys->_3dAnimationMgr);
     }
     switch (gymmickUnion->azalea.switches) {
     case 0:
         ov01_021E8970(
-            115,
+            MDL_RED_SWITCH,
             0,
             TRUE,
             ov01_022040D0(
                 fsys->unkC0,
-                115
+                MDL_RED_SWITCH
             ),
             fsys->_3dAnimationMgr
         );
         ov01_021E8970(
-            116,
+            MDL_BLUE_SWITCH,
             0,
             TRUE,
             ov01_022040D0(
                 fsys->unkC0,
-                116
+                MDL_BLUE_SWITCH
             ),
             fsys->_3dAnimationMgr
         );
         ov01_021E8970(
-            122,
+            MDL_RED_WEB,
             0,
             TRUE,
             ov01_022040D0(
                 fsys->unkC0,
-                122
+                MDL_RED_WEB
             ),
             fsys->_3dAnimationMgr
         );
         ov01_021E8970(
-            117,
+            MDL_BLUE_WEB,
             0,
             TRUE,
             ov01_022040D0(
                 fsys->unkC0,
-                117
+                MDL_BLUE_WEB
             ),
             fsys->_3dAnimationMgr
         );
         break;
     case 1:
         ov01_021E8970(
-            115,
+            MDL_RED_SWITCH,
             0,
             TRUE,
             ov01_022040D0(
                 fsys->unkC0,
-                115
+                MDL_RED_SWITCH
             ),
             fsys->_3dAnimationMgr
         );
         ov01_021E8970(
-            116,
+            MDL_BLUE_SWITCH,
             1,
             TRUE,
             ov01_022040D0(
                 fsys->unkC0,
-                116
+                MDL_BLUE_SWITCH
             ),
             fsys->_3dAnimationMgr
         );
         ov01_021E8970(
-            122,
+            MDL_RED_WEB,
             0,
             TRUE,
             ov01_022040D0(
                 fsys->unkC0,
-                122
+                MDL_RED_WEB
             ),
             fsys->_3dAnimationMgr
         );
         ov01_021E8970(
-            117,
+            MDL_BLUE_WEB,
             1,
             TRUE,
             ov01_022040D0(
                 fsys->unkC0,
-                117
+                MDL_BLUE_WEB
             ),
             fsys->_3dAnimationMgr
         );
         break;
     case 2:
         ov01_021E8970(
-            115,
+            MDL_RED_SWITCH,
             1,
             TRUE,
             ov01_022040D0(
                 fsys->unkC0,
-                115
+                MDL_RED_SWITCH
             ),
             fsys->_3dAnimationMgr
         );
         ov01_021E8970(
-            116,
+            MDL_BLUE_SWITCH,
             0,
             TRUE,
             ov01_022040D0(
                 fsys->unkC0,
-                116
+                MDL_BLUE_SWITCH
             ),
             fsys->_3dAnimationMgr
         );
         ov01_021E8970(
-            122,
+            MDL_RED_WEB,
             1,
             TRUE,
             ov01_022040D0(
                 fsys->unkC0,
-                122
+                MDL_RED_WEB
             ),
             fsys->_3dAnimationMgr
         );
         ov01_021E8970(
-            117,
+            MDL_BLUE_WEB,
             0,
             TRUE,
             ov01_022040D0(
                 fsys->unkC0,
-                117
+                MDL_BLUE_WEB
             ),
             fsys->_3dAnimationMgr
         );
         break;
     case 3:
         ov01_021E8970(
-            115,
+            MDL_RED_SWITCH,
             1,
             TRUE,
             ov01_022040D0(
                 fsys->unkC0,
-                115
+                MDL_RED_SWITCH
             ),
             fsys->_3dAnimationMgr
         );
         ov01_021E8970(
-            116,
+            MDL_BLUE_SWITCH,
             1,
             TRUE,
             ov01_022040D0(
                 fsys->unkC0,
-                116
+                MDL_BLUE_SWITCH
             ),
             fsys->_3dAnimationMgr
         );
         ov01_021E8970(
-            122,
+            MDL_RED_WEB,
             1,
             TRUE,
             ov01_022040D0(
                 fsys->unkC0,
-                122
+                MDL_RED_WEB
             ),
             fsys->_3dAnimationMgr
         );
         ov01_021E8970(
-            117,
+            MDL_BLUE_WEB,
             1,
             TRUE,
             ov01_022040D0(
                 fsys->unkC0,
-                117
+                MDL_BLUE_WEB
             ),
             fsys->_3dAnimationMgr
         );
@@ -269,42 +295,42 @@ void InitAzaleaGymPuzzleGimmick(FieldSystem *fsys) {
 void Fsys_FlipAzaleaGymSwitch(FieldSystem *fsys, u8 switchNo) {
     union GymmickUnion *gymmickUnion = SavGymmick_AssertMagic_GetData(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys)), GYMMICK_AZALEA);
     u8 switchState;
-    struct UnkStruct_ov01_02004004_sub *obj1, *obj2;
+    struct UnkStruct_ov01_02204004_sub *obj1, *obj2;
 
     PlaySE(SEQ_SE_DP_KI_GASYAN);
 
-    if (switchNo == 0) {
-        switchState = getSwitchState(gymmickUnion, 0);
-        gymmickUnion->azalea.switches ^= 1;
-        obj1 = ov01_022040D0(fsys->unkC0, 116);
-        obj2 = ov01_022040D0(fsys->unkC0, 117);
-        ov01_021E8A8C(fsys->_3dAnimationMgr, obj1, 116, switchState);
-        ov01_021E8A8C(fsys->_3dAnimationMgr, obj2, 117, switchState);
-        if (getSwitchState(gymmickUnion, 0)) {
-            ov01_021E8970(116, 1, TRUE, obj1, fsys->_3dAnimationMgr);
-            ov01_021E8970(117, 1, TRUE, obj2, fsys->_3dAnimationMgr);
+    if (switchNo == GYMMICK_AZALEA_SWITCH_BLUE_F) {
+        switchState = getSwitchState(gymmickUnion, GYMMICK_AZALEA_SWITCH_BLUE_F);
+        gymmickUnion->azalea.switches ^= (1 << GYMMICK_AZALEA_SWITCH_BLUE_F);
+        obj1 = ov01_022040D0(fsys->unkC0, MDL_BLUE_SWITCH);
+        obj2 = ov01_022040D0(fsys->unkC0, MDL_BLUE_WEB);
+        ov01_021E8A8C(fsys->_3dAnimationMgr, obj1, MDL_BLUE_SWITCH, switchState);
+        ov01_021E8A8C(fsys->_3dAnimationMgr, obj2, MDL_BLUE_WEB, switchState);
+        if (getSwitchState(gymmickUnion, GYMMICK_AZALEA_SWITCH_BLUE_F)) {
+            ov01_021E8970(MDL_BLUE_SWITCH, 1, TRUE, obj1, fsys->_3dAnimationMgr);
+            ov01_021E8970(MDL_BLUE_WEB, 1, TRUE, obj2, fsys->_3dAnimationMgr);
         } else {
-            ov01_021E8970(116, 0, TRUE, obj1, fsys->_3dAnimationMgr);
-            ov01_021E8970(117, 0, TRUE, obj2, fsys->_3dAnimationMgr);
+            ov01_021E8970(MDL_BLUE_SWITCH, 0, TRUE, obj1, fsys->_3dAnimationMgr);
+            ov01_021E8970(MDL_BLUE_WEB, 0, TRUE, obj2, fsys->_3dAnimationMgr);
         }
-    } else if (switchNo == 1) {
-        switchState = getSwitchState(gymmickUnion, 1);
-        gymmickUnion->azalea.switches ^= 2;
-        obj1 = ov01_022040D0(fsys->unkC0, 115);
-        obj2 = ov01_022040D0(fsys->unkC0, 122);
-        ov01_021E8A8C(fsys->_3dAnimationMgr, obj1, 115, switchState);
-        ov01_021E8A8C(fsys->_3dAnimationMgr, obj2, 122, switchState);
-        if (getSwitchState(gymmickUnion, 1)) {
-            ov01_021E8970(115, 1, TRUE, obj1, fsys->_3dAnimationMgr);
-            ov01_021E8970(122, 1, TRUE, obj2, fsys->_3dAnimationMgr);
+    } else if (switchNo == GYMMICK_AZALEA_SWITCH_RED_F) {
+        switchState = getSwitchState(gymmickUnion, GYMMICK_AZALEA_SWITCH_RED_F);
+        gymmickUnion->azalea.switches ^= (1 << GYMMICK_AZALEA_SWITCH_RED_F);
+        obj1 = ov01_022040D0(fsys->unkC0, MDL_RED_SWITCH);
+        obj2 = ov01_022040D0(fsys->unkC0, MDL_RED_WEB);
+        ov01_021E8A8C(fsys->_3dAnimationMgr, obj1, MDL_RED_SWITCH, switchState);
+        ov01_021E8A8C(fsys->_3dAnimationMgr, obj2, MDL_RED_WEB, switchState);
+        if (getSwitchState(gymmickUnion, GYMMICK_AZALEA_SWITCH_RED_F)) {
+            ov01_021E8970(MDL_RED_SWITCH, 1, TRUE, obj1, fsys->_3dAnimationMgr);
+            ov01_021E8970(MDL_RED_WEB, 1, TRUE, obj2, fsys->_3dAnimationMgr);
         } else {
-            ov01_021E8970(115, 0, TRUE, obj1, fsys->_3dAnimationMgr);
-            ov01_021E8970(122, 0, TRUE, obj2, fsys->_3dAnimationMgr);
+            ov01_021E8970(MDL_RED_SWITCH, 0, TRUE, obj1, fsys->_3dAnimationMgr);
+            ov01_021E8970(MDL_RED_WEB, 0, TRUE, obj2, fsys->_3dAnimationMgr);
         }
     } else {
         GF_ASSERT(0);
     }
-    TaskManager_Call(fsys->taskman, ov04_02254CA4, NULL);
+    TaskManager_Call(fsys->taskman, Task_FlipSwitchWaitSE, NULL);
 }
 
 void Fsys_BeginAzaleaGymSpinarakRide(FieldSystem *fsys, u8 startingPoint) {
@@ -323,13 +349,13 @@ void Fsys_BeginAzaleaGymSpinarakRide(FieldSystem *fsys, u8 startingPoint) {
     gymWork->reqStartDiagMovement = FALSE;
     gymmickUnion = SavGymmick_AssertMagic_GetData(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys)), GYMMICK_AZALEA);
     gymWork->switchesState = gymmickUnion->azalea.switches;
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < GYMMICK_AZALEA_NUM_SPINARAK; i++) {
         if (gymmickUnion->azalea.spiders[i] == startingPoint) {
             gymWork->spinarakNo = i;
             break;
         }
     }
-    if (i == 4) {
+    if (i == GYMMICK_AZALEA_NUM_SPINARAK) {
         GF_ASSERT(0);
         return;
     }
@@ -340,10 +366,12 @@ void Fsys_BeginAzaleaGymSpinarakRide(FieldSystem *fsys, u8 startingPoint) {
     case 9:
     case 10:
     case 11:
+        // Downward
         gymWork->direction = 1;
-        gymWork->pathIdx = sSpinarakPathSpecs[startingPoint][gymWork->switchesState].length - 1;
+        gymWork->nodeIdx = sSpinarakPathSpecs[startingPoint][gymWork->switchesState].length - 1;
         gymWork->playerZoff = 1;
         break;
+        // Upward
     case 0:
     case 1:
     case 2:
@@ -352,17 +380,17 @@ void Fsys_BeginAzaleaGymSpinarakRide(FieldSystem *fsys, u8 startingPoint) {
     case 8:
     default:
         gymWork->direction = 0;
-        gymWork->pathIdx = 0;
+        gymWork->nodeIdx = 0;
         gymWork->playerZoff = 0;
         break;
     }
-    initPos = &sSpinarakPathSpecs[startingPoint][gymWork->switchesState].path[gymWork->pathIdx];
+    initPos = &sSpinarakPathSpecs[startingPoint][gymWork->switchesState].path[gymWork->nodeIdx];
     gymWork->vecPos.x = initPos->x * 16 * FX32_ONE;
     gymWork->vecPos.z = initPos->z * 16 * FX32_ONE;
-    TaskManager_Call(fsys->taskman, ov04_0225463C, rideWork);
+    TaskManager_Call(fsys->taskman, Task_RideSpinarak, rideWork);
 }
 
-BOOL ov04_0225463C(TaskManager *taskManager) {
+static BOOL Task_RideSpinarak(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     struct SpinarakRideWork *rideWork = TaskManager_GetEnv(taskManager);
     switch (rideWork->state) {
@@ -371,7 +399,7 @@ BOOL ov04_0225463C(TaskManager *taskManager) {
         rideWork->state++;
         break;
     case 1:
-        CreateSysTask((SysTaskFunc)ov04_02254724, rideWork, 0);
+        CreateSysTask((SysTaskFunc)SysTask_DoSpinarakRideMovement, rideWork, 0);
         rideWork->state++;
         break;
     case 10:
@@ -382,15 +410,15 @@ BOOL ov04_0225463C(TaskManager *taskManager) {
     return FALSE;
 }
 
-VecFx32 ov04_02254698(const struct Vec2U16 *a, const struct Vec2U16 *b) {
-    VecFx32 sp0;
-    sp0.x = (b->x - a->x) * FX32_ONE;
-    sp0.z = (b->z - a->z) * FX32_ONE;
-    sp0.y = 0;
-    return sp0;
+static VecFx32 getWebSegmentVec(const struct Vec2U16 *a, const struct Vec2U16 *b) {
+    VecFx32 ret;
+    ret.x = (b->x - a->x) * FX32_ONE;
+    ret.z = (b->z - a->z) * FX32_ONE;
+    ret.y = 0;
+    return ret;
 }
 
-void ov04_022546C8(const VecFx32 *vec, BOOL signs[2]) {
+static void getWebSegmentComponentSigns(const VecFx32 *vec, BOOL signs[2]) {
     if (vec->x >= 0) {
         signs[0] = TRUE;
     } else {
@@ -403,20 +431,22 @@ void ov04_022546C8(const VecFx32 *vec, BOOL signs[2]) {
     }
 }
 
-int ov04_022546E8(BOOL a0, fx32 a1, fx32 a2, int a3) {
-    fx32 r3 = a3 * 16 * FX32_ONE;
-    int r4 = 0;
-    a1 += a2;
-    if (r3 == a1) {
-        r4 = 1;
-    } else if (a0) {
-        if (a1 > r3) {
-            r4 = 2;
+static int testWebSegmentTraversalComponent(BOOL isPositive, fx32 compPos, fx32 compMove, u16 compTargetU16) {
+    fx32 compTargetFx = compTargetU16 * 16 * FX32_ONE;
+    int action = TRAVERSAL_CONTINUE;
+    compPos += compMove;
+    if (compTargetFx == compPos) {
+        action = TRAVERSAL_ARRIVED;
+    } else if (isPositive) {
+        if (compPos > compTargetFx) {
+            action = TRAVERSAL_OVERSHOT;
         }
-    } else if (a1 < r3) {
-        r4 = 2;
+    } else {
+        if (compPos < compTargetFx) {
+            action = TRAVERSAL_OVERSHOT;
+        }
     }
-    return r4;
+    return action;
 }
 
 void DeleteAzaleaGymPuzzleGimmick(FieldSystem *fsys) {
@@ -424,7 +454,7 @@ void DeleteAzaleaGymPuzzleGimmick(FieldSystem *fsys) {
     fsys->unk4->unk_24 = NULL;
 }
 
-void ov04_02254724(SysTask *task, struct SpinarakRideWork *work) {
+static void SysTask_DoSpinarakRideMovement(SysTask *task, struct SpinarakRideWork *work) {
     FieldSystem *fsys = work->fsys;
     struct AzaleaGymWork *gymWork = fsys->unk4->unk_24;
     LocalMapObject *playerObj, *followPokeObj;
@@ -432,7 +462,6 @@ void ov04_02254724(SysTask *task, struct SpinarakRideWork *work) {
     fx32 dotprod;
     void *r7;
     const struct Vec2U16 *posvec;
-    int work_1A_new;
     BgModelEvent *model;
 
     switch (work->state) {
@@ -484,7 +513,7 @@ void ov04_02254724(SysTask *task, struct SpinarakRideWork *work) {
             fsys->_3dAnimationMgr,
             fsys->unk_58,
             1,
-            118,
+            MDL_SPINARAK,
             ov01_021F3B38(spinarakMdlEvent),
             ov01_021F3B3C(spinarakMdlEvent),
             r7,
@@ -498,19 +527,19 @@ void ov04_02254724(SysTask *task, struct SpinarakRideWork *work) {
         break;
     case 5: {
         u8 startingPoint = gymWork->startingPoint;
-        u8 work_16 = gymWork->reqNewSegment;
-        u8 work_15 = gymWork->switchesState;
-        if (work_16) {
+        u8 reqNewSegment = gymWork->reqNewSegment;
+        u8 switchesState = gymWork->switchesState;
+        if (reqNewSegment) {
             if (gymWork->direction) {
-                posvec = &sSpinarakPathSpecs[startingPoint][work_15].path[gymWork->pathIdx];
-                gymWork->targetXZ = &sSpinarakPathSpecs[startingPoint][work_15].path[gymWork->pathIdx - 1];
+                posvec = &sSpinarakPathSpecs[startingPoint][switchesState].path[gymWork->nodeIdx];
+                gymWork->targetXZ = &sSpinarakPathSpecs[startingPoint][switchesState].path[gymWork->nodeIdx - 1];
             }
             else {
-                posvec = &sSpinarakPathSpecs[startingPoint][work_15].path[gymWork->pathIdx];
-                gymWork->targetXZ = &sSpinarakPathSpecs[startingPoint][work_15].path[gymWork->pathIdx + 1];
+                posvec = &sSpinarakPathSpecs[startingPoint][switchesState].path[gymWork->nodeIdx];
+                gymWork->targetXZ = &sSpinarakPathSpecs[startingPoint][switchesState].path[gymWork->nodeIdx + 1];
             }
-            gymWork->vecTranslBuf = ov04_02254698(posvec, gymWork->targetXZ);
-            ov04_022546C8(&gymWork->vecTranslBuf, gymWork->xzSigns);
+            gymWork->vecTranslBuf = getWebSegmentVec(posvec, gymWork->targetXZ);
+            getWebSegmentComponentSigns(&gymWork->vecTranslBuf, gymWork->xzSigns);
             VEC_Normalize(&gymWork->vecTranslBuf, &gymWork->vecTranslBuf);
             {
                 const VecFx32 tmp = {FX32_ONE, 0, 0};
@@ -531,32 +560,32 @@ void ov04_02254724(SysTask *task, struct SpinarakRideWork *work) {
             gymWork->reqNewSegment = 0;
         }
         {
-            int dx = ov04_022546E8(gymWork->xzSigns[0], gymWork->vecPos.x, gymWork->vecTranslBuf.x, gymWork->targetXZ->x);
-            int dz = ov04_022546E8(gymWork->xzSigns[1], gymWork->vecPos.z, gymWork->vecTranslBuf.z, gymWork->targetXZ->z);
-            if (dx == 2) {
+            int dx = testWebSegmentTraversalComponent(gymWork->xzSigns[0], gymWork->vecPos.x, gymWork->vecTranslBuf.x, gymWork->targetXZ->x);
+            int dz = testWebSegmentTraversalComponent(gymWork->xzSigns[1], gymWork->vecPos.z, gymWork->vecTranslBuf.z, gymWork->targetXZ->z);
+            if (dx == TRAVERSAL_OVERSHOT) {
                 gymWork->vecTranslBuf.x = 0;
             }
-            if (dz == 2) {
+            if (dz == TRAVERSAL_OVERSHOT) {
                 gymWork->vecTranslBuf.z = 0;
             }
-            if (dx != 0 && dz != 0) {
+            if (dx != TRAVERSAL_CONTINUE && dz != TRAVERSAL_CONTINUE) {
                 gymWork->vecPos.x = gymWork->targetXZ->x * 16 * FX32_ONE;
                 gymWork->vecPos.z = gymWork->targetXZ->z * 16 * FX32_ONE;
                 gymWork->pathNodeCounter++;
-                if (gymWork->pathNodeCounter >= sSpinarakPathSpecs[startingPoint][work_15].length - 1) {
+                if (gymWork->pathNodeCounter >= sSpinarakPathSpecs[startingPoint][switchesState].length - 1) {
                     union GymmickUnion *gymmickUnion = SavGymmick_AssertMagic_GetData(Sav2_GetGymmickPtr(
                         Fsys_GetSaveDataPtr(fsys)), GYMMICK_AZALEA);
-                    gymmickUnion->azalea.spiders[gymWork->spinarakNo] = sSpinarakPathSpecs[startingPoint][work_15].endpoint;
+                    gymmickUnion->azalea.spiders[gymWork->spinarakNo] = sSpinarakPathSpecs[startingPoint][switchesState].endpoint;
                     ov01_021E8ED0(fsys->_3dAnimationMgr, fsys->unk_58, 1);
                     StopSE(SEQ_SE_GS_ITOMARU_ROBO, 1);
                     work->state++;
                 }
                 else {
                     if (gymWork->direction) {
-                        gymWork->pathIdx--;
+                        gymWork->nodeIdx--;
                     }
                     else {
-                        gymWork->pathIdx++;
+                        gymWork->nodeIdx++;
                     }
                     gymWork->reqNewSegment = 1;
                 }
@@ -567,23 +596,23 @@ void ov04_02254724(SysTask *task, struct SpinarakRideWork *work) {
         }
         model = ov01_021F3B44(fsys->bgModels, gymWork->modelIds[gymWork->spinarakNo]);
         {
-            VecFx32 sp74 = gymWork->vecPos;
-            sp74.x += 8 * FX32_ONE;
-            BgModel_SetPosition(model, &sp74);
+            VecFx32 spinarakPos = gymWork->vecPos;
+            spinarakPos.x += 8 * FX32_ONE;
+            BgModel_SetPosition(model, &spinarakPos);
         }
         {
-            VecFx32 sp68;
-            const VecFx32 sp5C = {8 * FX32_ONE, 0, 8 * FX32_ONE};
-            sp68 = gymWork->vecPos;
-            VEC_Add(&sp68, &sp5C, &sp68);
-            sp68.z += gymWork->playerZoff * 16 * FX32_ONE;
-            MapObject_SetPositionVec(PlayerAvatar_GetMapObject(fsys->playerAvatar), &sp68);
+            VecFx32 playerPos;
+            const VecFx32 playerPossOffs = {8 * FX32_ONE, 0, 8 * FX32_ONE};
+            playerPos = gymWork->vecPos;
+            VEC_Add(&playerPos, &playerPossOffs, &playerPos);
+            playerPos.z += gymWork->playerZoff * 16 * FX32_ONE;
+            MapObject_SetPositionVec(PlayerAvatar_GetMapObject(fsys->playerAvatar), &playerPos);
             if (FollowingPokemon_IsActive(fsys)) {
                 s8 posAdj = 1 - gymWork->playerZoff;
-                VecFx32 sp50 = gymWork->vecPos;
-                VEC_Add(&sp50, &sp5C, &sp50);
-                sp50.z += posAdj * 16 * FX32_ONE;
-                MapObject_SetPositionVec(FollowingPokemon_GetMapObject(fsys), &sp50);
+                VecFx32 followPokePos = gymWork->vecPos;
+                VEC_Add(&followPokePos, &playerPossOffs, &followPokePos);
+                followPokePos.z += posAdj * 16 * FX32_ONE;
+                MapObject_SetPositionVec(FollowingPokemon_GetMapObject(fsys), &followPokePos);
             }
         }
         break;
@@ -665,5 +694,13 @@ void ov04_02254724(SysTask *task, struct SpinarakRideWork *work) {
             }
         }
         break;
+    }
+}
+
+static BOOL Task_FlipSwitchWaitSE(TaskManager *taskManager) {
+    if (!IsSEPlaying(SEQ_SE_DP_KI_GASYAN)) {
+        return TRUE;
+    } else {
+        return FALSE;
     }
 }

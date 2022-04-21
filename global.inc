@@ -7711,7 +7711,7 @@
 .public ov04_022540C0
 .public InitAzaleaGymPuzzleGimmick
 .public ov04_0225463C
-.public ov04_02254698
+.public getWebSegmentVec
 .public ov04_022546C8
 .public ov04_022546E8
 .public DeleteAzaleaGymPuzzleGimmick
