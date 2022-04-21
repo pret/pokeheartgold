@@ -100,13 +100,10 @@ static inline u8 getSwitchState(union GymmickUnion *gymmickUnion, int color) {
 }
 
 void InitAzaleaGymPuzzleGimmick(FieldSystem *fsys) {
-    struct AzaleaGymWork *work;
     union GymmickUnion *gymmickUnion = SavGymmick_AssertMagic_GetData(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys)), GYMMICK_AZALEA);
+    struct AzaleaGymWork *work = OverlayGymmick_AllocWork(fsys, sizeof(struct AzaleaGymWork));
     int i;
 
-    fsys->unk4->unk_24 = AllocFromHeap(4, sizeof(struct AzaleaGymWork));
-    MI_CpuClear8(fsys->unk4->unk_24, sizeof(struct AzaleaGymWork));
-    work = fsys->unk4->unk_24;
     for (i = 0; i < 4; i++) {
         VecFx32 spinarakInitPos = {0, 0, 0};
         u16 x = sPathEndpoints[gymmickUnion->azalea.spiders[i]].x;
@@ -507,7 +504,7 @@ static void SysTask_DoSpinarakRideMovement(SysTask *task, struct SpinarakRideWor
         if (gymWork->delayCounter++ < 4) {
             break;
         }
-        spinarakMdlEvent = ov01_021F3B44(fsys->bgModels, gymWork->spinarakNo);
+        spinarakMdlEvent = BgModelList_GetEventByIndex(fsys->bgModels, gymWork->spinarakNo);
         r7 = ov01_021FB9E0(fsys->unk_34);
         ov01_021E8DE8(
             fsys->_3dAnimationMgr,
@@ -594,7 +591,7 @@ static void SysTask_DoSpinarakRideMovement(SysTask *task, struct SpinarakRideWor
                 VEC_Add(&gymWork->vecPos, &gymWork->vecTranslBuf, &gymWork->vecPos);
             }
         }
-        model = ov01_021F3B44(fsys->bgModels, gymWork->modelIds[gymWork->spinarakNo]);
+        model = BgModelList_GetEventByIndex(fsys->bgModels, gymWork->modelIds[gymWork->spinarakNo]);
         {
             VecFx32 spinarakPos = gymWork->vecPos;
             spinarakPos.x += 8 * FX32_ONE;

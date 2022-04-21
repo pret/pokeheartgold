@@ -1468,7 +1468,7 @@ _02255A16:
 	add r0, #0x9c
 	ldrb r1, [r1, #0xb]
 	ldr r0, [r0]
-	bl ov01_021F3B44
+	bl BgModelList_GetEventByIndex
 	add r1, r0, #0
 	add r0, sp, #8
 	bl BgModel_GetPosition
@@ -1601,7 +1601,7 @@ _02255B24:
 	add r5, #0x9c
 	ldrb r1, [r1, #0xb]
 	ldr r0, [r5]
-	bl ov01_021F3B44
+	bl BgModelList_GetEventByIndex
 	bl ov01_021F3B08
 	add r1, sp, #0
 	ldrh r1, [r1]
@@ -1631,7 +1631,7 @@ _02255B64:
 	add r0, #0x9c
 	ldrb r1, [r1, #0xb]
 	ldr r0, [r0]
-	bl ov01_021F3B44
+	bl BgModelList_GetEventByIndex
 	bl ov01_021F3B08
 	mov r1, #1
 	ldr r2, [r0, #4]
@@ -1721,7 +1721,7 @@ _02255C26:
 	add r5, #0x9c
 	ldrb r1, [r1, #0xb]
 	ldr r0, [r5]
-	bl ov01_021F3B44
+	bl BgModelList_GetEventByIndex
 	bl ov01_021F3B08
 	mov r1, #1
 	ldr r2, [r0, #4]
@@ -1751,7 +1751,7 @@ _02255C64:
 	add r5, #0x9c
 	ldrb r1, [r1, #0xb]
 	ldr r0, [r5]
-	bl ov01_021F3B44
+	bl BgModelList_GetEventByIndex
 	bl ov01_021F3B08
 	mov r1, #1
 	ldr r2, [r0, #4]
@@ -1956,7 +1956,7 @@ _02255DEA:
 	add r0, #0x9c
 	ldrb r1, [r1, #0xb]
 	ldr r0, [r0]
-	bl ov01_021F3B44
+	bl BgModelList_GetEventByIndex
 	str r0, [sp]
 	ldr r1, [sp]
 	add r0, sp, #0x34
@@ -2100,7 +2100,7 @@ _02255F1C:
 	add r0, #0x9c
 	ldrb r1, [r1, #0xb]
 	ldr r0, [r0]
-	bl ov01_021F3B44
+	bl BgModelList_GetEventByIndex
 	add r5, r0, #0
 	add r0, sp, #0x10
 	add r1, r5, #0

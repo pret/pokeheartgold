@@ -6,11 +6,17 @@
 #include "gymmick/violet.h"
 #include "gymmick/azalea.h"
 
-void ov04_02254CBC(FieldSystem *fsys);
-void ov04_02254D84(FieldSystem *fsys);
-void ov04_02254D98(FieldSystem *fsys);
-void ov04_02254DD0(FieldSystem *fsys);
-void ov04_02254DE0(FieldSystem *fsys, int a1);
+static inline void *OverlayGymmick_AllocWork(FieldSystem *fsys, u32 size) {
+    fsys->unk4->unk_24 = AllocFromHeap(4, size);
+    MI_CpuClear8(fsys->unk4->unk_24, size);
+    return fsys->unk4->unk_24;
+}
+
+void InitEcruteakGymPuzzleGimmick(FieldSystem *fsys);
+void DeleteEcruteakGymPuzzleGimmick(FieldSystem *fsys);
+void Fsys_EcruteakGymEyeTrainerApproachCarryCandleEffectBegin(FieldSystem *fsys);
+void Fsys_EcruteakGymTrainerApproachCarryCandleEffectEnd(FieldSystem *fsys);
+void Fsys_EcruteakGymExtinguishCandle(FieldSystem *fsys, enum ScriptEnvField a1);
 void ov04_02254F8C(FieldSystem *fsys);
 void ov04_0225507C(FieldSystem *fsys);
 BOOL ov04_022550D4(FieldSystem* fsys, u32 a1, u32 a2, u32 a3, u32 a4);

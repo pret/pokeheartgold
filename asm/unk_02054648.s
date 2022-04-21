@@ -724,7 +724,7 @@ _02054AF4:
 _02054B26:
 	ldr r0, [sp, #0xc]
 	add r1, r5, #0
-	bl ov01_021F3B44
+	bl BgModelList_GetEventByIndex
 	add r1, r7, #0
 	add r2, sp, #0x10
 	add r4, r0, #0
@@ -798,7 +798,7 @@ _02054B84:
 _02054BB6:
 	ldr r0, [sp, #0xc]
 	add r1, r6, #0
-	bl ov01_021F3B44
+	bl BgModelList_GetEventByIndex
 	ldr r1, [sp, #4]
 	add r2, sp, #0x10
 	add r7, r0, #0
@@ -876,7 +876,7 @@ _02054C2E:
 _02054C42:
 	ldr r0, [sp, #0xc]
 	add r1, r4, #0
-	bl ov01_021F3B44
+	bl BgModelList_GetEventByIndex
 	add r6, r0, #0
 	bl ov01_021F3B34
 	cmp r0, r5
@@ -939,7 +939,7 @@ _02054CA0:
 _02054CB4:
 	ldr r0, [sp, #0xc]
 	add r1, r6, #0
-	bl ov01_021F3B44
+	bl BgModelList_GetEventByIndex
 	add r7, r0, #0
 	bl ov01_021F3B34
 	mov r1, #0
@@ -1038,7 +1038,7 @@ _02054D3A:
 _02054D6C:
 	ldr r0, [sp, #0x10]
 	add r1, r5, #0
-	bl ov01_021F3B44
+	bl BgModelList_GetEventByIndex
 	ldr r1, [sp, #4]
 	add r2, sp, #0x14
 	add r6, r0, #0

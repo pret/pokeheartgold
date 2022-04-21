@@ -1923,15 +1923,15 @@
       "args": []
     },
     {
-      "name": "scrcmd_315",
+      "name": "ecruteak_gym_trainer_approach_carry_candle_effect_begin",
       "args": []
     },
     {
-      "name": "scrcmd_316",
+      "name": "ecruteak_gym_trainer_approach_carry_candle_effect_end",
       "args": []
     },
     {
-      "name": "scrcmd_317",
+      "name": "ecruteak_gym_extinguish_candle",
       "args": [
         1
       ]

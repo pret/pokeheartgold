@@ -3073,31 +3073,31 @@ BOOL ScrCmd_EcruteakGymInit(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_315(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_EcruteakGymTrainerApproachCarryCandleEffectBegin(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     if (SavGymmick_GetType(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys))) != GYMMICK_ECRUTEAK) {
         return FALSE;
     }
-    ov04_02254D98(fsys);
+    Fsys_EcruteakGymEyeTrainerApproachCarryCandleEffectBegin(fsys);
     return FALSE;
 }
 
-BOOL ScrCmd_316(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_EcruteakGymTrainerApproachCarryCandleEffectEnd(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     if (SavGymmick_GetType(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys))) != GYMMICK_ECRUTEAK) {
         return FALSE;
     }
-    ov04_02254DD0(fsys);
+    Fsys_EcruteakGymTrainerApproachCarryCandleEffectEnd(fsys);
     return FALSE;
 }
 
-BOOL ScrCmd_317(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_EcruteakGymExtinguishCandle(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    u8 r5 = ScriptReadByte(ctx);
+    u8 isLastTalked = ScriptReadByte(ctx);
     if (SavGymmick_GetType(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys))) != GYMMICK_ECRUTEAK) {
         return TRUE;
     }
-    ov04_02254DE0(fsys, (r5 != 0) ? 10 : 30);
+    Fsys_EcruteakGymExtinguishCandle(fsys, (isLastTalked != 0) ? SCRIPTENV_LAST_TALKED : SCRIPTENV_EYE_TRAINER_1_OBJPTR);
     return TRUE;
 }
 

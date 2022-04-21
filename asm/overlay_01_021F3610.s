@@ -671,11 +671,11 @@ _021F3AFC: .word ov01_02206A90
 _021F3B00: .word 0x00000F33
 	thumb_func_end ov01_021F3A3C
 
-	thumb_func_start ov01_021F3B04
-ov01_021F3B04: ; 0x021F3B04
+	thumb_func_start BgModelEvent_GetScaleVecPtr
+BgModelEvent_GetScaleVecPtr: ; 0x021F3B04
 	add r0, #0x2c
 	bx lr
-	thumb_func_end ov01_021F3B04
+	thumb_func_end BgModelEvent_GetScaleVecPtr
 
 	thumb_func_start ov01_021F3B08
 ov01_021F3B08: ; 0x021F3B08
@@ -739,13 +739,13 @@ ov01_021F3B3C: ; 0x021F3B3C
 	.balign 4, 0
 	thumb_func_end ov01_021F3B3C
 
-	thumb_func_start ov01_021F3B44
-ov01_021F3B44: ; 0x021F3B44
+	thumb_func_start BgModelList_GetEventByIndex
+BgModelList_GetEventByIndex: ; 0x021F3B44
 	mov r2, #0x38
 	mul r2, r1
 	add r0, r0, r2
 	bx lr
-	thumb_func_end ov01_021F3B44
+	thumb_func_end BgModelList_GetEventByIndex
 
 	thumb_func_start GetBgModelFromMemoryList
 GetBgModelFromMemoryList: ; 0x021F3B4C

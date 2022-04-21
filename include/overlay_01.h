@@ -3,6 +3,7 @@
 
 #include "script.h"
 #include "unk_0206793C.h"
+#include "unk_02023694.h"
 
 //todo: split
 
@@ -132,7 +133,8 @@ BOOL ov01_02206268(FieldSystem *fsys);
 
 void MapHeightOverrideCreateRect(u8 idx, int x, int z, int width, int depth, fx32 height, MapHeightOverridesList *list);
 BgModelEvent *GetBgModelFromMemoryList(BgModelEventList *modelList, int id);
-BgModelEvent *ov01_021F3B44(BgModelEventList *modelEventList, u8 idx);
+BgModelEvent *BgModelList_GetEventByIndex(BgModelEventList *modelEventList, u8 idx);
+void ov01_021F3B2C(BgModelEvent *model, int state);
 void BgModel_GetPosition(VecFx32 *, BgModelEvent *);
 void BgModel_SetPosition(BgModelEvent *, VecFx32 *);
 void MapHeightOverrideUpdate(u8 idx, fx32 height, MapHeightOverridesList *list);
@@ -159,5 +161,15 @@ void ov01_021E8E70(void *fsys_unk58, int a1, int a2);
 void *ov01_021FB9E0(void *fsys_unk34);
 void ov01_021F6304(FsysUnkSub2C *fsys_unk2C);
 void ov01_021E8ED0(void *_3dAnimMgr, void *fsys_unk58, int a2);
+
+void ov01_021EA864(void *fogSystem, int a1, BOOL a2, int a3, int a4, int a5);
+void ov01_021EA89C(void *fogSystem, int a1, GXRgb a2, int a3);
+void ov01_021EA8C4(void *fogSystem, const char *fogTable);
+
+VecFx32 *BgModelEvent_GetScaleVecPtr(BgModelEvent *event);
+void ov01_021FA930(LocalMapObject *object, int a1);
+BOOL ov01_021FA2D4(LocalMapObject *object);
+
+struct Sprite *ov01_021F72DC(LocalMapObject *object);
 
 #endif //POKEHEARTGOLD_OVERLAY_01_H

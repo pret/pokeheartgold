@@ -9739,7 +9739,7 @@ _02258B56:
 	lsl r1, r5, #0x18
 	ldr r0, [sp, #0x20]
 	lsr r1, r1, #0x18
-	bl ov01_021F3B44
+	bl BgModelList_GetEventByIndex
 	str r0, [sp, #0x18]
 	bl ov01_021F3B30
 	cmp r0, #0

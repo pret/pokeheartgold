@@ -1802,15 +1802,15 @@
 	.short 314
 	.endm
 
-	.macro scrcmd_315
+	.macro ecruteak_gym_trainer_approach_carry_candle_effect_begin
 	.short 315
 	.endm
 
-	.macro scrcmd_316
+	.macro ecruteak_gym_trainer_approach_carry_candle_effect_end
 	.short 316
 	.endm
 
-	.macro scrcmd_317 arg0
+	.macro ecruteak_gym_extinguish_candle arg0
 	.short 317
 	.byte \arg0
 	.endm

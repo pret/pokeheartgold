@@ -41,7 +41,7 @@ BOOL sub_02064938(FieldSystem *fsys, u32 a1, u32 a2, u32 a3, u32 a4) {
 
 static const FieldSystemFunc1 sConstructors[] = {
     [GYMMICK_NONE]       = NULL,
-    [GYMMICK_ECRUTEAK]   = ov04_02254CBC,
+    [GYMMICK_ECRUTEAK]   = InitEcruteakGymPuzzleGimmick,
     [GYMMICK_CIANWOOD]   = ov04_02255FC0,
     [GYMMICK_VERMILION]  = ov04_02256304,
     [GYMMICK_VIOLET]     = InitVioletGymElevatorGimmick,
@@ -54,7 +54,7 @@ static const FieldSystemFunc1 sConstructors[] = {
 
 static const FieldSystemFunc1 sDestructors[] = {
     [GYMMICK_NONE]       = NULL,
-    [GYMMICK_ECRUTEAK]   = ov04_02254D84,
+    [GYMMICK_ECRUTEAK]   = DeleteEcruteakGymPuzzleGimmick,
     [GYMMICK_CIANWOOD]   = ov04_02256044,
     [GYMMICK_VERMILION]  = ov04_022563B0,
     [GYMMICK_VIOLET]     = NULL,

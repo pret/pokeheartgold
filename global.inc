@@ -2864,9 +2864,9 @@
 .public ScrCmd_309
 .public ScrCmd_310
 .public ScrCmd_311
-.public ScrCmd_315
-.public ScrCmd_316
-.public ScrCmd_317
+.public ScrCmd_EcruteakGymTrainerApproachCarryCandleEffectBegin
+.public ScrCmd_EcruteakGymTrainerApproachCarryCandleEffectEnd
+.public ScrCmd_EcruteakGymExtinguishCandle
 .public ScrCmd_VioletGymElevator
 .public ScrCmd_333
 .public ScrCmd_334
@@ -5953,7 +5953,7 @@
 .public ov01_021F3744
 .public ov01_021F3834
 .public ov01_021F3A3C
-.public ov01_021F3B04
+.public BgModelEvent_GetScaleVecPtr
 .public ov01_021F3B08
 .public BgModel_GetPosition
 .public BgModel_SetPosition
@@ -5962,7 +5962,7 @@
 .public ov01_021F3B34
 .public ov01_021F3B38
 .public ov01_021F3B3C
-.public ov01_021F3B44
+.public BgModelList_GetEventByIndex
 .public GetBgModelFromMemoryList
 .public ov01_021F3B60
 .public ov01_021F3B84
@@ -7717,11 +7717,11 @@
 .public DeleteAzaleaGymPuzzleGimmick
 .public ov04_02254724
 .public ov04_02254CA4
-.public ov04_02254CBC
-.public ov04_02254D84
-.public ov04_02254D98
-.public ov04_02254DD0
-.public ov04_02254DE0
+.public InitEcruteakGymPuzzleGimmick
+.public DeleteEcruteakGymPuzzleGimmick
+.public Fsys_EcruteakGymEyeTrainerApproachCarryCandleEffectBegin
+.public Fsys_EcruteakGymTrainerApproachCarryCandleEffectEnd
+.public Fsys_EcruteakGymExtinguishCandle
 .public ov04_02254E20
 .public ov04_02254E50
 .public ov04_02254F44

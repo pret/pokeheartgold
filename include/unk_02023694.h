@@ -26,5 +26,6 @@ void Set2dSpriteAnimActiveFlag(struct Sprite *, int);
 void Set2dSpriteAnimSeqNo(struct Sprite *, int);
 void Set2dSpriteVisibleFlag(struct Sprite *, int);
 SpriteList *SpriteList_Create(struct SpriteListParam *param);
+NNSG3dResMdl *sub_02023F90(struct Sprite *);
 
 #endif //POKEHEARTGOLD_UNK_02023694_H

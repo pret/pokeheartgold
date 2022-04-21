@@ -1526,7 +1526,7 @@ _0C2F:
 	copyvar VAR_TEMP_x4012, VAR_SPECIAL_x8004
 	get_trainer_num VAR_SPECIAL_x8006
 	goto_if_defeated VAR_SPECIAL_x8006, _0C7F
-	scrcmd_317 1
+	ecruteak_gym_extinguish_candle 1
 	call _0D9F
 	compare VAR_SPECIAL_RESULT, 1
 	call_if_eq _0DCF
@@ -1721,10 +1721,10 @@ _0F0A:
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	load_phone_dat VAR_SPECIAL_x8004, VAR_TEMP_x4010
 	encounter_music VAR_SPECIAL_x8004
-	scrcmd_315
+	ecruteak_gym_trainer_approach_carry_candle_effect_begin
 	get_trainer_path_to_player 0
 	call _0F87
-	scrcmd_316
+	ecruteak_gym_trainer_approach_carry_candle_effect_end
 	get_eye_trainer_num 0, VAR_SPECIAL_RESULT
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	openmsg
@@ -1737,7 +1737,7 @@ _0F0A:
 	get_eye_trainer_num 0, VAR_SPECIAL_RESULT
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	settrainerflag VAR_SPECIAL_x8004
-	scrcmd_317 0
+	ecruteak_gym_extinguish_candle 0
 	call _0D9F
 	compare VAR_SPECIAL_RESULT, 1
 	call_if_eq _0DCF

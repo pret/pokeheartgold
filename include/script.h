@@ -299,7 +299,9 @@ struct FieldSystem {
     MapObjectMan* mapObjectMan;
     FIELD_PLAYER_AVATAR *playerAvatar;
     void *unk_44;
-    u8 filler48[0xC];
+    u8 filler48[0x4];
+    void *fogSystem;
+    u8 filler_50[4];
     void *_3dAnimationMgr;
     void *unk_58;
     u8 filler_5C[0x4];
@@ -338,7 +340,8 @@ struct FieldSystem {
     u32 unk_10C[2];
     GearPhoneRingManager* unk114;
     BUGCONTEST* bugContest;
-    u8 unk11C[0xC];
+    int unk_11C;
+    u8 unk120[0x8];
 }; // size: 0x128
 
 typedef BOOL (*ScrCmdFunc)(SCRIPTCONTEXT* ctx);

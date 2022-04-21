@@ -131,7 +131,7 @@ _02054EBE:
 _02054ED2:
 	ldr r0, [sp, #8]
 	add r1, r5, #0
-	bl ov01_021F3B44
+	bl BgModelList_GetEventByIndex
 	add r4, r0, #0
 	bl ov01_021F3B30
 	cmp r0, #0

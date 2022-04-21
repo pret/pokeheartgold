@@ -120,5 +120,9 @@ void MapObject_SetPositionVec(LocalMapObject *object, const VecFx32 *vec);
 void MapObject_SetCurrentX(LocalMapObject *object, int x);
 void MapObject_SetCurrentHeight(LocalMapObject *object, int y);
 void MapObject_SetCurrentY(LocalMapObject *object, int z);
+u32 MapObjectMan_GetCount(MapObjectMan *man);
+LocalMapObject *MapObjectMan_GetArray(MapObjectMan *man);
+BOOL MapObject_IsInUse(LocalMapObject *object);
+void sub_0205F1D0(LocalMapObject **objectArray);
 
 #endif //POKEHEARTGOLD_FIELD_MAP_OBJECT_H
