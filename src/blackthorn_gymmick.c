@@ -591,3 +591,40 @@ void ov04_02255140(u8 idx, u8 rot, u16 x, u16 z, struct BlackthornGymPlatform *p
     add sp, #0x24
     pop {r4, r5, r6, r7, pc}
 }
+
+void ov04_02255480(u8 rot, u16 x, u16 z, struct Vec2Fx32 *src, struct Vec2Fx32 *dest) {
+    int xx = src->x - x;
+    int zz = src->z - z;
+    switch (rot) {
+    default:
+        return;
+    case 1:
+        dest->x = -zz;
+        dest->z = xx;
+        break;
+    case 2:
+        dest->x = -xx;
+        dest->z = -zz;
+        break;
+    case 3:
+        dest->x = zz;
+        dest->z = -xx;
+        break;
+    }
+    dest->x += x;
+    dest->z += z;
+}
+
+void ov04_022554C4(int dx, int n, struct Vec2Fx32 *vec) {
+    int i;
+    for (i = 0; i < n; i++) {
+        vec[i].x += dx;
+    }
+}
+
+void ov04_022554E0(int dz, int n, struct Vec2Fx32 *vec) {
+    int i;
+    for (i = 0; i < n; i++) {
+        vec[i].z += dz;
+    }
+}
