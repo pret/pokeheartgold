@@ -4,13 +4,29 @@ CFLAGS := -O3
 SRCS = $(wildcard *.c)
 OBJS = $(SRCS:%.c=%.o)
 
+prog := compstatic
+
 .PHONY: all clean
 
-all: compstatic
+DEPDIR := .deps
+DEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
+
+all: $(prog)
 	@:
 
-compstatic: $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^
-
 clean:
-	$(RM) compstatic compstatic.exe $(OBJS)
+	$(RM) -r $(DEPDIR) $(OBJS) $(prog) $(prog).exe
+
+$(prog): $(OBJS)
+	$(CC) $(LDFLAGS) -o $@ $^
+
+$(OBJS): %.o: %.c
+$(OBJS): %.o: %.c $(DEPDIR)/%.d | $(DEPDIR)
+	$(CC) $(CFLAGS) $(DEPFLAGS) -c -o $@ $<
+
+$(DEPDIR): ; @mkdir -p $@
+
+DEPFILES := $(SRCS:%.c=$(DEPDIR)/%.d)
+$(DEPFILES):
+
+include $(wildcard $(DEPFILES))
