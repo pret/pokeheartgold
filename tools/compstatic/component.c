@@ -10,7 +10,7 @@
 #include "static_module.h"
 #include "str.h"
 
-static bool ReadComponent(Component *component, char *a1, char *a2, char *overlayTable);
+static bool ReadComponent(Component *component, char *staticModule, char *overlayDefs, char *overlayTable);
 static bool WriteComponent(Component *component);
 static bool ComponentAddSuffix(Component *component, char *suffix);
 static void FreeComponent(Component *component);
@@ -25,7 +25,7 @@ bool ConvertComponent(Options *options, char *staticModule, char *overlayDefs, c
     if (success) {
         DebugPrintComponent(&component);
         if (!options->overlayModules || CompressOverlayModules(&component)) {
-            if (!options->overlayDigest || CalculateHMAC_OverlayModules(&component, options->unk10, options->digestKey)) {
+            if (!options->overlayDigest || CalculateHMAC_OverlayModules(&component, options->digestType, options->digestKey)) {
                 if (!options->staticModule || CompressStaticModule(&component, options->headerSize)) {
                     if (options->outSuffix == NULL || ComponentAddSuffix(&component, options->outSuffix)) {
                         DebugPrintComponent(&component);
@@ -105,10 +105,10 @@ static void DebugPrintComponent(Component *component) {
     char *filename;
     char c;
     uint staticParamsOffset = *(uint *)(component->staticModule.footerContent + 4);
+    StaticParams *staticParams = (StaticParams *)(component->staticModule.fileInfo.content + staticParamsOffset);
 
     DebugPrintf("-------------------------------------------------------------\n");
 
-    // TODO: Replace offsets with constants!
     DebugPrintf("static.buffer.filename           = %s\n"
                 "             .ptr                = %p\n"
                 "             .size               = %p %9d\n"
@@ -121,14 +121,13 @@ static void DebugPrintComponent(Component *component) {
                 component->staticModule.fileInfo.filename,
                 component->staticModule.fileInfo.content,
                 component->staticModule.fileInfo.fileSize, component->staticModule.fileInfo.fileSize,
-                component->staticModule.fileInfo.unkC, component->staticModule.fileInfo.unkC,
+                component->staticModule.fileInfo.compressedSize, component->staticModule.fileInfo.compressedSize,
                 component->staticModule.footerSize, component->staticModule.footerSize,
                 component->staticModule.footerContent,
-                *(uint *)(component->staticModule.footerContent), (*(uint *)(component->staticModule.footerContent) == 0xDEC00621) ? "NITROCODE" : "UNKNOWN!!",
-                *(uint *)(component->staticModule.footerContent + 4), *(uint *)(component->staticModule.footerContent + 4),
-                *(uint *)(component->staticModule.footerContent + 8), *(uint *)(component->staticModule.footerContent + 8));
+                *(uint *)(component->staticModule.footerContent + STATIC_FOOTER_MAGIC_OFFSET), (*(uint *)(component->staticModule.footerContent + STATIC_FOOTER_MAGIC_OFFSET) == 0xDEC00621) ? "NITROCODE" : "UNKNOWN!!",
+                *(uint *)(component->staticModule.footerContent + STATIC_FOOTER_STATIC_PARAM_OFFSET), *(uint *)(component->staticModule.footerContent + STATIC_FOOTER_STATIC_PARAM_OFFSET),
+                *(uint *)(component->staticModule.footerContent + STATIC_FOOTER_DIGEST_PARAM_OFFSET), *(uint *)(component->staticModule.footerContent + STATIC_FOOTER_DIGEST_PARAM_OFFSET));
 
-    // TODO: Replace offsets with constants!
     DebugPrintf("static.Params                    = %p\n"
                 "      .Params.autoloadList       = %p\n"
                 "      .Params.autoloadListEnd    = %p\n"
@@ -137,18 +136,17 @@ static void DebugPrintComponent(Component *component) {
                 "      .Params.staticBssEnd       = %p\n"
                 "      .Params.compressedStatic   = %p\n",
                 component->staticModule.fileInfo.content + staticParamsOffset,
-                *(uint *)(component->staticModule.fileInfo.content + staticParamsOffset),
-                *(uint *)(component->staticModule.fileInfo.content + staticParamsOffset + 4),
-                *(uint *)(component->staticModule.fileInfo.content + staticParamsOffset + 8),
-                *(uint *)(component->staticModule.fileInfo.content + staticParamsOffset + 12),
-                *(uint *)(component->staticModule.fileInfo.content + staticParamsOffset + 16),
-                *(uint *)(component->staticModule.fileInfo.content + staticParamsOffset + 20));
+                staticParams->autoloadList,
+                staticParams->autoloadListEnd,
+                staticParams->autoloadStart,
+                staticParams->staticBssStart,
+                staticParams->staticBssEnd,
+                staticParams->compressedStatic);
 
     DebugPrintf("-------------------------------------------------------------\n");
     DebugPrintf("numOverlays                      = %d\n", component->numOverlays);
     DebugPrintf("-------------------------------------------------------------\n");
 
-    // TODO: Replace offsets with constants!
     DebugPrintf("ovdefs.buffer.filename           = %s\n"
                 "             .ptr                = %p\n"
                 "             .size               = %p %9d\n"
@@ -162,12 +160,12 @@ static void DebugPrintComponent(Component *component) {
                 component->overlayDefs.fileInfo.filename,
                 component->overlayDefs.fileInfo.content,
                 &component->overlayDefs.fileInfo.fileSize, component->overlayDefs.fileInfo.fileSize,
-                &component->overlayDefs.fileInfo.unkC, component->overlayDefs.fileInfo.unkC,
-                component->overlayDefs.content_dup,
-                *(uint *)(component->overlayDefs.content_dup + 0),
-                *(uint *)(component->overlayDefs.content_dup + 4),
-                component->overlayDefs.content_dup + 8, *(uint *)(component->overlayDefs.content_dup + 8),
-                *(uint *)(component->overlayDefs.content_dup + 12),
+                &component->overlayDefs.fileInfo.compressedSize, component->overlayDefs.fileInfo.compressedSize,
+                component->overlayDefs.header,
+                *(uint *)(component->overlayDefs.header + OVERLAY_DEFS_HEADER_LOAD_ADDRESS_OFFSET),
+                *(uint *)(component->overlayDefs.header + OVERLAY_DEFS_HEADER_ENTRY_ADDRESS_OFFSET),
+                component->overlayDefs.header + OVERLAY_DEFS_HEADER_MODULE_SIZE_OFFSET, *(uint *)(component->overlayDefs.header + OVERLAY_DEFS_HEADER_MODULE_SIZE_OFFSET),
+                *(uint *)(component->overlayDefs.header + OVERLAY_DEFS_HEADER_AUTOLOAD_DONE_OFFSET),
                 component->dirName);
 
     filename = component->overlayFilenames;

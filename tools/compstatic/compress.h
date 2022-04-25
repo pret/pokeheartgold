@@ -6,6 +6,6 @@
 
 bool CompressOverlayModules(Component *component);
 bool CompressStaticModule(Component *component, int headerSize);
-bool CalculateHMAC_OverlayModules(Component *component, int a1, char *digestKey);
+bool CalculateHMAC_OverlayModules(Component *component, int digestType, char *digestKey);
 
 #endif // COMPRESS_H

@@ -26,9 +26,9 @@ void FreeBuffer(FileInfo *fileInfo) {
         free(fileInfo->filename);
         fileInfo->filename = NULL;
     }
-    fileInfo->unkC = 0;
+    fileInfo->compressedSize = 0;
     fileInfo->fileSize = 0;
-    fileInfo->unk10 = 0;
+    fileInfo->rewrite = false;
 }
 
 bool AddSuffixBuffer(FileInfo *fileInfo, char *suffix) {
@@ -47,7 +47,7 @@ bool AddSuffixBuffer(FileInfo *fileInfo, char *suffix) {
             sprintf(dest, "%s%s", fileInfo->filename, suffix);
             free(fileInfo->filename);
             fileInfo->filename = dest;
-            fileInfo->unk10 = 1;
+            fileInfo->rewrite = true;
             success = true;
         }
     }

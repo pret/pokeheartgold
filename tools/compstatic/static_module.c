@@ -10,32 +10,30 @@
 bool ReadStaticModule(Component *component, char *filename) {
     bool success;
 
-    // TODO: Note that OG makes changes on component directly.
     StaticModule *staticModule = &component->staticModule;
 
     DebugPrintf("Reading staticModule=%s\n", filename);
     int fileSize = ReadFile(filename, &staticModule->fileInfo.content);
     staticModule->fileInfo.fileSize = fileSize;
-    staticModule->fileInfo.unkC = 0;
-    staticModule->fileInfo.unk10 = 0;
+    staticModule->fileInfo.compressedSize = 0;
+    staticModule->fileInfo.rewrite = false;
     staticModule->fileInfo.filename = strdup(filename);
     if (staticModule->fileInfo.fileSize < 0) {
         success = false;
     } else if (staticModule->fileInfo.fileSize % 4 == 0) {
-        int footerOffset = *(int *)(component->overlayDefs.content_dup + OVERLAY_DEFS_FOOTER_OFFSET);
-        uint footerOffsetAligned = (footerOffset + 3) & 0xfffffffc;
+        int footerOffset = *(int *)(component->overlayDefs.header + OVERLAY_DEFS_FOOTER_OFFSET);
+        uint footerOffsetAligned = ALIGN_4(footerOffset);
         staticModule->footerSize = staticModule->fileInfo.fileSize - footerOffsetAligned;
         staticModule->footerContent = staticModule->fileInfo.content + footerOffsetAligned;
         staticModule->fileInfo.fileSize = footerOffset;
 
-        // CLEAN UP: Consider simplifying: Make a local int variable for
-        // (staticModule->footerContent + 4).
-        if (staticModule->footerSize < 0xc || *(uint *)staticModule->footerContent != 0xDEC00621) {
+        int staticParamsOffset = *(uint *)(staticModule->footerContent + 4);
+        if (staticModule->footerSize < 0xc || *(uint *)(staticModule->footerContent + STATIC_FOOTER_MAGIC_OFFSET) != 0xDEC00621) {
             ErrorPrintf("Static module is older format (No footer extension).\n");
             success = false;
-        } else if ((*(uint *)(staticModule->footerContent + 4) % 4 == 0) &&
-                   (*(int *)(staticModule->footerContent + 4) > -1) &&
-                   (*(int *)(staticModule->footerContent + 4) < footerOffset)) {
+        } else if (((staticParamsOffset % 4) == 0) &&
+                   (staticParamsOffset > -1) &&
+                   (staticParamsOffset < footerOffset)) {
                        success = true;
         } else {
             ErrorPrintf("Static module is illegal format (Unknown footer format).\n");
@@ -52,12 +50,11 @@ bool WriteStaticModule(Component *component) {
     bool success;
     StaticModule *staticModule = &component->staticModule;
 
-    if (staticModule->fileInfo.unk10 == 0) {
+    if (!staticModule->fileInfo.rewrite) {
         success = true;
     } else {
         DebugPrintf("Writing staticModule=%s\n", staticModule->fileInfo.filename);
-        int fileSize = staticModule->fileInfo.unkC ? staticModule->fileInfo.unkC : staticModule->fileInfo.fileSize;
-        // CLEAN UP: I re-wrote this from (success := ~sizeWriten >> 0x1f)
+        int fileSize = staticModule->fileInfo.compressedSize ? staticModule->fileInfo.compressedSize : staticModule->fileInfo.fileSize;
         int sizeWritten = WriteFile(staticModule->fileInfo.filename, staticModule->fileInfo.content, fileSize + staticModule->footerSize);
         success = sizeWritten >= 0;
     }

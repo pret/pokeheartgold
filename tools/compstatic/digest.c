@@ -38,14 +38,14 @@ typedef struct {
     Hash2GetDigestCb hash2GetDigest;
 } HmacParam;
 
-static void DGT_Hash2CalcHmac(char *hash, char *content, int a2, char *a3, int a4);
-static int DGT_SetOverlayTableMode(int mode);
+static void DGT_Hash2CalcHmac(char *hash, char *content, int size, char *digestKey, int digestKeySize);
+static bool DGT_SetOverlayTableMode(bool mode);
 static bool DGT_Hash2Reset(HashWork *hashWork);
 static uint DGT_Hash2SetSource(HashWork *hashWork, char *digestKey, int digestKeySize);
 static uint DGT_Hash2GetDigest(HashWork *hashWork, char *digestBuffer);
 static void DGT_Hash2SetPadding(HashWork *hashWork);
 static void DGT_Hash2DoProcess(HashWork *hashWork);
-static void HmacCalc(char *hash, char *a1, int a2, char *digestKey, int digestKeySize, HmacParam *param);
+static void HmacCalc(char *hash, char *content, int size, char *digestKey, int digestKeySize, HmacParam *param);
 
 // Set default DigestFunc
 DigestFunc gDigestFunc = DGT_Hash2CalcHmac;
@@ -101,32 +101,28 @@ bool Init_Digest(uint digestType, char *digestKey) {
     return success;
 }
 
-void Calc_Digest(char *content, int a1, char *a2, int a3) {
-    byte hash[40]; // CLEAN UP: Called `local_2c` in Ghidra
+void Calc_Digest(char *content, int size, char *hash, bool overlayTableMode) {
+    byte hashBuffer[40];
 
-    int overlayTableMode = DGT_SetOverlayTableMode(a3);
-    gDigestFunc(hash, content, a1, gDigestKey, gDigestKeySize);
-    DGT_SetOverlayTableMode(overlayTableMode);
+    bool oldMode = DGT_SetOverlayTableMode(overlayTableMode);
+    gDigestFunc(hashBuffer, content, size, gDigestKey, gDigestKeySize);
+    DGT_SetOverlayTableMode(oldMode);
     int iCpy = 0;
-    // CLEAN UP: Initialized as 0, but OG uses *(gDigestFunc + 4).
     for (int i = 0; i < 20; i++) {
-        hash[i] = hash[iCpy + 1] ^ hash[iCpy];
+        hashBuffer[i] = hashBuffer[iCpy + 1] ^ hashBuffer[iCpy];
         iCpy++;
     }
     printf(": Digest ");
     for (int i = 0; i < 20; i++) {
-        printf("%02X", hash[i]);
+        printf("%02X", hashBuffer[i]);
     }
-    // CLEAN UP: Is (long int) cast necessary? Is `int` not 32 bits? If so,
-    // that's a problem...
-    printf(" %8ld\n", (long int)a1);
-    CopyBuffer(hash, a2, 20);
+    printf(" %8ld\n", (long int)size);
+    CopyBuffer(hashBuffer, hash, 20);
 }
 
-static void DGT_Hash2CalcHmac(char *hash, char *content, int a2, char *digestKey, int digestKeySize) {
+static void DGT_Hash2CalcHmac(char *hash, char *content, int size, char *digestKey, int digestKeySize) {
     HashWork hashWork;
     char unkBuffer1[0x20];
-    // CLEAN UP: OG has a loop that initializes each field to 0.
     HmacParam param = {0};
 
     param.unk0 = 20;
@@ -136,11 +132,11 @@ static void DGT_Hash2CalcHmac(char *hash, char *content, int a2, char *digestKey
     param.hash2Reset = DGT_Hash2Reset;
     param.hash2SetSource = DGT_Hash2SetSource;
     param.hash2GetDigest = DGT_Hash2GetDigest;
-    HmacCalc(hash, content, a2, digestKey, digestKeySize, &param);
+    HmacCalc(hash, content, size, digestKey, digestKeySize, &param);
 }
 
-static int DGT_SetOverlayTableMode(int mode) {
-    int oldMode = gOverlayTableMode;
+static bool DGT_SetOverlayTableMode(bool mode) {
+    bool oldMode = gOverlayTableMode;
     gOverlayTableMode = mode;
     return oldMode;
 }
@@ -209,7 +205,6 @@ static uint DGT_Hash2GetDigest(HashWork *hashWork, char *digestBuffer) {
             hashWork->unk60 = 1;
         }
         for (int i = 0; i < 20; i++) {
-            // CLEAN UP: Replaced byte literals with unsigned ints (e.g. 3u, 8u).
             digestBuffer[i] = (char)(*(uint *)(hashWork->unk20 + (i >> 2) * 4 + -0x20) >> ((3u - ((byte)i % 4)) * 8u & 0x1f));
         }
         ret = 0;
@@ -258,7 +253,7 @@ static void DGT_Hash2DoProcess(HashWork *hashWork) {
     uint buffer[99];
     int i, idx;
 
-    if (gOverlayTableMode != 0) {
+    if (gOverlayTableMode) {
         buffer[10] = *(uint *)(hashWork->unk20 + 0x18);
         buffer[9] = *(uint *)(hashWork->unk20 + 0x38);
         *(uint *)(hashWork->unk20 + 0x18) = 0;
@@ -325,13 +320,13 @@ static void DGT_Hash2DoProcess(HashWork *hashWork) {
     hashWork->unkC = buffer[12] + hashWork->unkC;
     hashWork->unk10 = buffer[11] + hashWork->unk10;
     hashWork->unk1C = 0;
-    if (gOverlayTableMode != 0) {
+    if (gOverlayTableMode) {
         *(uint *)(hashWork->unk20 + 0x18) = buffer[10];
         *(uint *)(hashWork->unk20 + 0x38) = buffer[9];
     }
 }
 
-static void HmacCalc(char *hash, char *content, int a2, char *digestKey, int digestKeySize, HmacParam *param) {
+static void HmacCalc(char *hash, char *content, int size, char *digestKey, int digestKeySize, HmacParam *param) {
     byte digestBuffer[0x4C];
     byte *key;
     int keySize;
@@ -339,7 +334,7 @@ static void HmacCalc(char *hash, char *content, int a2, char *digestKey, int dig
     char outerKey[0x40];
     int i;
 
-    if (hash != NULL && content != NULL && a2 != 0 && digestKey != NULL &&
+    if (hash != NULL && content != NULL && size != 0 && digestKey != NULL &&
         digestKeySize != 0 && param != NULL) {
             if (param->blockSize < digestKeySize) {
                 param->hash2Reset(param->hashWork);
@@ -359,7 +354,7 @@ static void HmacCalc(char *hash, char *content, int a2, char *digestKey, int dig
             }
             param->hash2Reset(param->hashWork);
             param->hash2SetSource(param->hashWork, innerKey, param->blockSize);
-            param->hash2SetSource(param->hashWork, content, a2);
+            param->hash2SetSource(param->hashWork, content, size);
             param->hash2GetDigest(param->hashWork, param->unkC);
 
             for (i = 0; i < keySize; i++) {

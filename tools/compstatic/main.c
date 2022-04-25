@@ -9,7 +9,6 @@
 #include "print.h"
 #include "str.h"
 
-// Global vars
 bool gDebugMode = false;
 
 void InitializeOptions(Options *options) {
@@ -17,7 +16,7 @@ void InitializeOptions(Options *options) {
     options->headerSize = 0x4000;
     options->overlayModules = false;
     options->overlayDigest = false;
-    options->unk10 = 2;
+    options->digestType = 2;
     options->digestKey = StrDup(NULL, NULL);
     options->outSuffix = StrDup(NULL, "_LZ");
 }
@@ -64,10 +63,10 @@ int main(int argc, char *argv[]) {
             break;
         // Not referenced in usage
         case 'A':
-            options.unk10 = atoi(optarg);
+            options.digestType = atoi(optarg);
             break;
         case 'F':
-            options.outSuffix = StrDup(options.outSuffix, NULL); // TODO: Check if NULL or ""
+            options.outSuffix = StrDup(options.outSuffix, NULL);
             break;
         case 'a':
             options.overlayDigest = true;

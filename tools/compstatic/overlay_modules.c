@@ -35,15 +35,13 @@ bool ReadOverlayModules(Component *component) {
                     ErrorPrintf("Cannot allocate memory\n");
                     return false;
                 }
-                // TODO: Make sure that this copies only the current filename
-                // and not the whole `overlayFilenames` string!
                 sprintf(overlayModules->fileInfo.filename, "%s/%s", dirName, overlayFilenames);
                 DebugPrintf("Reading overlay[%d]=%s\n", i, overlayModules->fileInfo.filename);
 
                 int fileSize = ReadFile(overlayModules->fileInfo.filename, &overlayModules->fileInfo.content);
                 overlayModules->fileInfo.fileSize = fileSize;
-                overlayModules->fileInfo.unkC = 0;
-                overlayModules->fileInfo.unk10 = 0;
+                overlayModules->fileInfo.compressedSize = 0;
+                overlayModules->fileInfo.rewrite = false;
                 if (overlayModules->fileInfo.fileSize < 0) return false;
 
                 overlayModules++;
@@ -66,9 +64,9 @@ bool WriteOverlayModules(Component *component) {
         if (i >= component->numOverlays) {
             return true;
         }
-        if (overlayModule->fileInfo.unk10 != 0) {
+        if (overlayModule->fileInfo.rewrite) {
             DebugPrintf("Writing overlay[%d]=%s\n", i, overlayModule->fileInfo.filename);
-            int overlaySize = overlayModule->fileInfo.unkC ? overlayModule->fileInfo.unkC : overlayModule->fileInfo.fileSize;
+            int overlaySize = overlayModule->fileInfo.compressedSize ? overlayModule->fileInfo.compressedSize : overlayModule->fileInfo.fileSize;
             int sizeWritten = WriteFile(overlayModule->fileInfo.filename, overlayModule->fileInfo.content, overlaySize);
             if (sizeWritten < 0) {
                 return false;
@@ -96,11 +94,11 @@ bool AddSuffixOverlayModules(Component *component, char *suffix) {
             ErrorPrintf("Cannot allocate memory\n");
             success = false;
         } else {
-            uint *contentDup32 = (uint *)component->overlayDefs.content_dup;
-            *(uint *)buffer = contentDup32[0];
-            *(uint *)(buffer + 4) = contentDup32[1];
-            *(uint *)(buffer + 8) = contentDup32[2];
-            *(uint *)(buffer + 0xc) = contentDup32[3];
+            uint *header32 = (uint *)component->overlayDefs.header;
+            *(uint *)buffer = header32[0];
+            *(uint *)(buffer + 4) = header32[1];
+            *(uint *)(buffer + 8) = header32[2];
+            *(uint *)(buffer + 0xc) = header32[3];
 
             char *contentPtr = buffer + 0x10;
             char *ovFilename = component->overlayFilenames;
@@ -124,8 +122,8 @@ bool AddSuffixOverlayModules(Component *component, char *suffix) {
             free(component->overlayDefs.fileInfo.content);
             component->overlayDefs.fileInfo.content = buffer;
             component->overlayDefs.fileInfo.fileSize = fileSize;
-            component->overlayDefs.fileInfo.unk10 = 1;
-            component->overlayDefs.content_dup = buffer;
+            component->overlayDefs.fileInfo.rewrite = true;
+            component->overlayDefs.header = buffer;
             component->overlayFilenames = buffer + 0x10;
             success = true;
         }

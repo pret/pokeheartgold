@@ -22,7 +22,6 @@ char *GetDirName(char *filename) {
         }
         if (filename[i] == '/' || filename[i] == '\\') break;
         if (filename[i] == ':') {
-            // TODO: Slightly adjusted logic to remove `prev_i`
             dirName = malloc(i + 3);
             if (dirName != NULL) {
                 strncpy(dirName, filename, i);
@@ -54,7 +53,6 @@ bool GetFiles(char *responseFile, SourceFiles *sourceFiles) {
         success = false;
     } else {
         numWords = 0;
-        // TODO: I added this variable to get StrCat to work
         wordStart = 0;
         for (int i = 0; i < bytesRead; i++) {
             if (content[i] == '\0') {
@@ -83,8 +81,6 @@ bool GetFiles(char *responseFile, SourceFiles *sourceFiles) {
 }
 
 // Returns size of file.
-// TODO: Double-check that `content` is char **
-// NOTE: There were 3 args that weren't read at all. Removed.
 int ReadFile(char *filename, char **content) {
     int bytesRead;
     struct stat fileInfo;
@@ -94,7 +90,6 @@ int ReadFile(char *filename, char **content) {
     if (filename == NULL) {
         ErrorPrintf("Not specified filename\n");
     } else {
-        // TODO: I think OG does a mode_t check? Probably not necessary, and can be removed.
         int error = stat(filename, &fileInfo);
         if ((error == 0) && (fp = fopen(filename, "rb"), fp != NULL)) {
             *content = malloc(fileInfo.st_size);

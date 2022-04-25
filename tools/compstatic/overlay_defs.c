@@ -13,10 +13,10 @@ bool ReadOverlayDefs(Component *component, char *filename) {
     bool success = false;
 
     DebugPrintf("Reading overlayDefs=%s\n", filename);
-    int fileSize = ReadFile(filename, &component->overlayDefs.fileInfo.content); // TODO: Double-check: it passes a bunch of stack variables..
+    int fileSize = ReadFile(filename, &component->overlayDefs.fileInfo.content);
     component->overlayDefs.fileInfo.fileSize = fileSize;
-    component->overlayDefs.fileInfo.unkC = 0;
-    component->overlayDefs.fileInfo.unk10 = 0;
+    component->overlayDefs.fileInfo.compressedSize = 0;
+    component->overlayDefs.fileInfo.rewrite = false;
     component->overlayDefs.fileInfo.filename = strdup(filename);
 
     if (component->overlayDefs.fileInfo.fileSize < 0) {
@@ -25,8 +25,8 @@ bool ReadOverlayDefs(Component *component, char *filename) {
         ErrorPrintf("Overlaydefs is too small (size=%d). Must be >= %d\n", component->overlayDefs.fileInfo.fileSize, MIN_OVERLAY_DEFS_FILE_SIZE);
         success = false;
     } else {
-        component->overlayDefs.content_dup = component->overlayDefs.fileInfo.content;
-        component->overlayFilenames = component->overlayDefs.content_dup + OVERLAY_DEFS_FILENAMES_OFFSET;
+        component->overlayDefs.header = component->overlayDefs.fileInfo.content;
+        component->overlayFilenames = component->overlayDefs.header + OVERLAY_DEFS_FILENAMES_OFFSET;
         component->dirName = GetDirName(filename);
         if (component->dirName == NULL) {
             success = false;
@@ -55,12 +55,11 @@ bool WriteOverlayDefs(Component *component) {
     bool success;
 
     OverlayDefs *overlayDefs = &component->overlayDefs;
-    if (overlayDefs->fileInfo.unk10 == 0) {
+    if (!overlayDefs->fileInfo.rewrite) {
         success = true;
     } else {
         DebugPrintf("Writing overlayDefs=%s\n", overlayDefs->fileInfo.filename);
-        if (overlayDefs->fileInfo.unkC == 0) {
-            // CLEAN UP: I re-wrote this from (success := ~sizeWriten >> 0x1f)
+        if (overlayDefs->fileInfo.compressedSize == 0) {
             sizeWritten = WriteFile(overlayDefs->fileInfo.filename, overlayDefs->fileInfo.content, overlayDefs->fileInfo.fileSize);
             success = sizeWritten >= 0;
         } else {
@@ -79,7 +78,7 @@ bool AddSuffixOverlayDefs(Component *component, char *suffix) {
 void FreeOverlayDefs(Component *component) {
     DebugPrintf("Releasing overlayDefs\n");
     FreeBuffer(&component->overlayDefs.fileInfo);
-    component->overlayDefs.content_dup = NULL;
+    component->overlayDefs.header = NULL;
     component->overlayFilenames = NULL;
     if (component->dirName != NULL) {
         free(component->dirName);

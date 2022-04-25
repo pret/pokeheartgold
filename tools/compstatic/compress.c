@@ -6,7 +6,9 @@
 #include "digest.h"
 #include "global.h"
 #include "misc.h"
+#include "overlay_table.h"
 #include "print.h"
+#include "static_module.h"
 
 static int Compress(char *content, int size);
 static int LZCompressRV(char *uncompressed, int uncompressedSize, char *compressed, int compressedSize);
@@ -16,45 +18,41 @@ static int CheckOverwrite(int sourceSize, char *compressed, int compressedSize, 
 
 bool CompressOverlayModules(Component *component) {
     OverlayModule *overlayModule = component->overlayModules;
-    char *contentDup = component->overlayTable.content_dup;
+    char *overlayTable = component->overlayTable.table;
     DebugPrintf("Compressing OverlayModules\n");
-    if (component->numOverlays == 0 || overlayModule == NULL || contentDup == NULL) {
+    if (component->numOverlays == 0 || overlayModule == NULL || overlayTable == NULL) {
         DebugPrintf("No overlay to compress\n");
     } else {
         for (int i = 0; i < component->numOverlays; i++) {
-            // TODO: Replace offset with a constant!
-            if ((contentDup[0x1f] & 1) == 0) {
-                // TODO: Replace offset with a constant! Seems to be file size from overlay table
-                // TODO: Do I need to use (uint)??
-                if ((uint)overlayModule->fileInfo.fileSize < *(uint *)(contentDup + 8)) {
+            if ((overlayTable[OT_COMPRESSED_FLAGS_OFFSET] & 1) == 0) {
+                if (overlayModule->fileInfo.fileSize < *(uint *)(overlayTable + OT_FILESIZE_OFFSET)) {
                     ErrorPrintf("Overlay module file is shorter than the size reported in the overlay table\n"
-                                "FileSize=%d  InOverlayTable=%d\n", overlayModule->fileInfo.fileSize, *(uint *)(contentDup + 8));
+                                "FileSize=%d  InOverlayTable=%d\n", overlayModule->fileInfo.fileSize, *(uint *)(overlayTable + OT_FILESIZE_OFFSET));
                     return false;
                 }
-                // TODO: Try making this an int!!
-                uint compressResult = Compress(overlayModule->fileInfo.content, *(int *)(contentDup + 8));
-                if ((int)compressResult < 0) {
-                    if ((int)compressResult == -2 || (int)compressResult != -1) return false;
+                int compressResult = Compress(overlayModule->fileInfo.content, *(int *)(overlayTable + OT_FILESIZE_OFFSET));
+                if (compressResult < 0) {
+                    if (compressResult == -2 || compressResult != -1) return false;
 
                     printf("OverlayModule[%02d]. Not compressed %9d (enlarged or same size as before)\n", i, overlayModule->fileInfo.fileSize);
                 } else {
-                    if ((int)compressResult > 0x00ffffff) {
+                    if (compressResult > 0x00ffffff) {
                         ErrorPrintf("Compressed file size too large (over 24bit wide)\n");
                     }
                     printf("OverlayModule[%02d]. Compressed ... %9d -> %9d\n", i, overlayModule->fileInfo.fileSize, compressResult);
-                    // TODO: Replace offset with a constant!
-                    *(uint *)(contentDup + 0x1c) = (*(uint *)(contentDup + 0x1c) & 0xff000000) | (compressResult & 0x00ffffff);
-                    overlayModule->fileInfo.unkC = compressResult & 0x00ffffff;
-                    overlayModule->fileInfo.unkC = compressResult & 0x00ffffff;
-                    contentDup[0x1f] |= 1;
-                    overlayModule->fileInfo.unk10 = 1;
-                    component->overlayTable.fileInfo.unk10 = 1;
+                    uint *overlayTableCompressedSize = (uint *)(overlayTable + OT_COMPRESSED_FILESIZE_OFFSET);
+                    *overlayTableCompressedSize = (*overlayTableCompressedSize & 0xff000000) | (compressResult & 0x00ffffff);
+                    overlayModule->fileInfo.compressedSize = compressResult & 0x00ffffff;
+                    overlayModule->fileInfo.compressedSize = compressResult & 0x00ffffff;
+                    overlayTable[OT_COMPRESSED_FLAGS_OFFSET] |= 1;
+                    overlayModule->fileInfo.rewrite = true;
+                    component->overlayTable.fileInfo.rewrite = true;
                 }
             } else {
                 printf("OverlayModule[%02d]. Already compressed\n", i);
             }
             overlayModule++;
-            contentDup += 0x20;
+            overlayTable += OVERLAY_ENTRY_SIZE;
         }
     }
     return true;
@@ -63,12 +61,11 @@ bool CompressOverlayModules(Component *component) {
 bool CompressStaticModule(Component *component, int headerSize) {
     bool success;
 
-    // TODO: Make sure integer parsing works with big and little endian!
-    int footerPtr = *(int *)(component->staticModule.footerContent + 4);
+    int staticParamsOffset = *(int *)(component->staticModule.footerContent + 4);
     char *content = component->staticModule.fileInfo.content;
-    // TODO: Replace offset with a constant!
-    if (*(int *)(content + footerPtr + 0x14) == 0 &&
-        component->staticModule.fileInfo.unkC == 0) {
+    StaticParams *staticParams = (StaticParams *)(content + staticParamsOffset);
+    if (staticParams->compressedStatic == 0 &&
+        component->staticModule.fileInfo.compressedSize == 0) {
             if (headerSize < 0) {
               ErrorPrintf("Specified header size is less than 0 (=%d)\n", headerSize);
               success = false;
@@ -87,21 +84,17 @@ bool CompressStaticModule(Component *component, int headerSize) {
                         success = true;
                     }
                 } else {
-                    component->staticModule.fileInfo.unkC = compressResult + headerSize;
-                    // TODO: Double-check the first arg!
+                    component->staticModule.fileInfo.compressedSize = compressResult + headerSize;
                     printf("StaticModule ..... Compressed ... %9d -> %9d\n",
-                           component->staticModule.fileInfo.fileSize, component->staticModule.fileInfo.unkC);
-                    // TODO: Figure out what this var is (a header?)
-                    int *unknown = (int *)component->overlayDefs.content_dup;
-                    unknown[2] = component->staticModule.fileInfo.unkC;
-                    // TODO: Replace offset with a constant!
-                    *(int *)(content + footerPtr + 0x14) = component->staticModule.fileInfo.unkC + unknown[0];
+                           component->staticModule.fileInfo.fileSize, component->staticModule.fileInfo.compressedSize);
+                    int *header = (int *)component->overlayDefs.header;
+                    header[2] = component->staticModule.fileInfo.compressedSize;
+                    staticParams->compressedStatic = component->staticModule.fileInfo.compressedSize + header[0];
                     CopyBuffer(component->staticModule.footerContent,
-                               // TODO: Consider making a macro: #define ALIGN_4(x) ((x + 3) & 0xfffffffc)
-                               component->staticModule.fileInfo.content + ((component->staticModule.fileInfo.unkC + 3U) & 0xfffffffc),
+                               component->staticModule.fileInfo.content + ALIGN_4(component->staticModule.fileInfo.compressedSize),
                                component->staticModule.footerSize);
-                    component->overlayDefs.fileInfo.unk10 = 1;
-                    component->staticModule.fileInfo.unk10 = 1;
+                    component->overlayDefs.fileInfo.rewrite = true;
+                    component->staticModule.fileInfo.rewrite = true;
                     success = true;
                 }
             }
@@ -112,52 +105,50 @@ bool CompressStaticModule(Component *component, int headerSize) {
     return success;
 }
 
-bool CalculateHMAC_OverlayModules(Component *component, int a1, char *digestKey) {
+bool CalculateHMAC_OverlayModules(Component *component, int digestType, char *digestKey) {
     bool success;
 
     OverlayModule *overlayModule = component->overlayModules;
-    char *contentDup = component->overlayTable.content_dup;
+    char *overlayTable = component->overlayTable.table;
     int numOverlays = component->numOverlays;
-    if (numOverlays == 0 || overlayModule == NULL || contentDup == NULL) {
+    if (numOverlays == 0 || overlayModule == NULL || overlayTable == NULL) {
         DebugPrintf("No overlay to calculate HMAC\n");
         success = true;
     } else {
-        bool initDigestSuccess = Init_Digest(a1, digestKey);
+        bool initDigestSuccess = Init_Digest(digestType, digestKey);
         if (!initDigestSuccess) {
             ErrorPrintf("Cannot setup digest library\n");
             success = false;
         } else {
             DebugPrintf("Calculating HMAC for OverlayModules\n");
-            // TODO: Fill in all the unknown vars and offsets below!
-            // NOTE TO SELF: Replaced `initDigestSuccess` re-use with new var `unknown3`.
-            int unknown3 = *(int *)(component->staticModule.footerContent + 8);
+            int digestParamsOffset = *(int *)(component->staticModule.footerContent + STATIC_FOOTER_DIGEST_PARAM_OFFSET);
             char *content = component->staticModule.fileInfo.content;
-            char *unknown1 = component->staticModule.fileInfo.content + *(int *)(component->staticModule.footerContent + 8);
+            char *digestParams = (char *)(content + digestParamsOffset);
             for (int i = 0; i < numOverlays; i++) {
-                if (contentDup[0x1f] & 2U != 0) {
+                if (overlayTable[OT_COMPRESSED_FLAGS_OFFSET] & 2U != 0) {
                     printf("OverlayModule[%02d]: HMAC already calculated - do it again.\n", i);
                 }
-                if ((uint)overlayModule->fileInfo.fileSize < *(uint *)(contentDup + 8)) {
+                if ((uint)overlayModule->fileInfo.fileSize < *(uint *)(overlayTable + OT_FILESIZE_OFFSET)) {
                     ErrorPrintf("Overlay module file is shorter than the size reported in overlay table\n"
-                                "    File size=%d  InOverlayTabe=%d\n", overlayModule->fileInfo.fileSize, *(uint *)(contentDup + 8));
+                                "    File size=%d  InOverlayTabe=%d\n", overlayModule->fileInfo.fileSize, *(uint *)(overlayTable + OT_FILESIZE_OFFSET));
                     return false;
                 }
-                uint unknown2 = *(uint *)(contentDup + 0x1c) & 0x00ffffff;
-                if (unknown2 == 0) {
-                    unknown2 = *(uint *)(contentDup + 8);
+                uint overlaySize = *(uint *)(overlayTable + OT_COMPRESSED_FILESIZE_OFFSET) & 0x00ffffff;
+                if (overlaySize == 0) {
+                    overlaySize = *(uint *)(overlayTable + OT_FILESIZE_OFFSET);
                 }
 
                 printf("OverlayModule[%02d]", i);
-                Calc_Digest(overlayModule->fileInfo.content, unknown2, unknown1, 0);
-                contentDup[0x1f] |= 2;
-                component->staticModule.fileInfo.unk10 = 1;
-                component->overlayTable.fileInfo.unk10 = 1;
-                unknown1 += 0x14;
+                Calc_Digest(overlayModule->fileInfo.content, overlaySize, digestParams, false);
+                overlayTable[OT_COMPRESSED_FLAGS_OFFSET] |= 2;
+                component->staticModule.fileInfo.rewrite = true;
+                component->overlayTable.fileInfo.rewrite = true;
+                digestParams += DIGEST_HASH_SIZE;
                 overlayModule++;
-                contentDup += 0x20;
+                overlayTable += OVERLAY_ENTRY_SIZE;
             }
             printf("OverlayTable     ");
-            Calc_Digest(component->overlayTable.content_dup, numOverlays << 5, content + unknown3 - 0x14, 1);
+            Calc_Digest(component->overlayTable.table, numOverlays * OVERLAY_ENTRY_SIZE, content + digestParamsOffset - DIGEST_HASH_SIZE, true);
             success = true;
         }
     }
@@ -174,7 +165,7 @@ static int Compress(char *content, int size) {
     if (compressed == NULL) {
         ErrorPrintf("Cannot allocate memory size=%d\n", size);
         ret = -2;
-    } else if (((size_t)content % 4) == 0)  { // CLEAN UP: Replaced (uint) cast with (size_t) cast
+    } else if (((size_t)content % 4) == 0)  {
         char *contentCpy = content;
         int sizeCpy = size;
         int compressedSize = size;
@@ -187,7 +178,6 @@ static int Compress(char *content, int size) {
             compressedSize -= lzResult;
             compressed += lzResult;
             DebugPrintf("1: source size = %d  compressed = %d\n", size, compressedSize);
-            // CLEAN UP: Replaced `lzResult` with `overWriteResult`
             int overwriteResult = CheckOverwrite(sizeCpy, compressed, compressedSize, &sourceOffset, &compressedOffset);
             if (overwriteResult == 0) {
                 contentCpy += sourceOffset;
@@ -198,9 +188,8 @@ static int Compress(char *content, int size) {
                             "  !! Expand non-compressed region = +%d\n"
                             "2: source size = %d  compressed = %d\n", sourceOffset, sizeCpy, compressedSize);
             }
-            // CLEAN UP: Replaced `lzResult` with `compressedEnd`
             int compressedEnd = compressedSize + sourceOffset;
-            uint compressedEndAligned = (compressedEnd + 3) & 0xfffffffc;
+            uint compressedEndAligned = ALIGN_4(compressedEnd);
             ret = compressedEndAligned + 8;
             if (ret < size) {
                 CopyBuffer(compressed, contentCpy, compressedSize);
@@ -227,9 +216,6 @@ static int Compress(char *content, int size) {
     return ret;
 }
 
-// Parameters:
-//  - A buffer with the uncompressed byte array, and size of buffer
-//  - A buffer for the compressed byte array, and size of buffer
 static int LZCompressRV(char *uncompressed, int uncompressedSize, char *compressed, int compressedSize) {
     int optimalRemainderIdx;
     ushort optimalRemainderIdx16;
@@ -247,9 +233,7 @@ static int LZCompressRV(char *uncompressed, int uncompressedSize, char *compress
                 char *remainder = uncompressed + bytesLeft;
                 int bytesRead = uncompressedSize - bytesLeft;
                 int chunkSize = MIN(bytesLeft, 0x12);
-                // CLEAN UP: Removed var `unused`
                 char *chunk = remainder - chunkSize;
-                // CLEAN UP: Replaced `bytesReadLimit` with `bytesRead`
                 bytesRead = MIN(bytesRead, 0x1002);
                 int numMatches = FindMatched(chunk, chunkSize, remainder, bytesRead, &optimalRemainderIdx);
                 if (numMatches < 3) {
@@ -314,8 +298,6 @@ static int HowManyMatched(char *buffer1, char *buffer2, int size) {
 }
 
 static int CheckOverwrite(int sourceSize, char *compressed, int compressedSize, int *sourceOffset, int *compressedOffset) {
-    // CLEAN UP: Replaced `compressedSizeCpy` and `sourceSizeCpy` with
-    // `compressedSize` and `sourceSize`, respectively.
     do {
         if (sourceSize < 1) {
             *sourceOffset = 0;
@@ -339,7 +321,6 @@ static int CheckOverwrite(int sourceSize, char *compressed, int compressedSize, 
                     compressedSize = nextCompressedSize;
                     if (sourceSize < nextCompressedSize) {
                         *sourceOffset = sourceSize;
-                        // CLEAN UP: Replaced `nextCompressedSize` with `compressedSize`.
                         *compressedOffset = compressedSize;
                         return 0;
                     }

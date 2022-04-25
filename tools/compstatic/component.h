@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include "global.h"
 
-bool ConvertComponent(Options *options, char *a1, char *a2, char *overlayTable);
-void ConvertFinal(Options *options); // TODO: Remove if this goes unused
+bool ConvertComponent(Options *options, char *staticModule, char *overlayDefs, char *overlayTable);
+void ConvertFinal(Options *options);
 
 #endif // COMPONENT_H

@@ -6,8 +6,6 @@
 #include "overlay_table.h"
 #include "print.h"
 
-#define OVERLAY_ENTRY_SIZE (32)
-
 bool ReadOverlayTable(Component *component, char *filename) {
     OverlayTable *overlayTable = &component->overlayTable;
     if (filename == NULL || component->numOverlays < 1) {
@@ -16,17 +14,16 @@ bool ReadOverlayTable(Component *component, char *filename) {
         overlayTable->fileInfo.fileSize = 0;
         overlayTable->fileInfo.filename = NULL;
     } else {
-        // TODO: Removed duplicate var `ovTable2`. Clean up
         DebugPrintf("Reading overlayTable=%s\n", filename);
         int fileSize = ReadFile(filename, &overlayTable->fileInfo.content);
         overlayTable->fileInfo.fileSize = fileSize;
         overlayTable->fileInfo.filename = strdup(filename);
     }
-    overlayTable->fileInfo.unkC = false;
-    overlayTable->fileInfo.unk10 = 0;
+    overlayTable->fileInfo.compressedSize = 0;
+    overlayTable->fileInfo.rewrite = false;
     bool success = overlayTable->fileInfo.fileSize == component->numOverlays * OVERLAY_ENTRY_SIZE;
     if (success) {
-        overlayTable->content_dup = overlayTable->fileInfo.content;
+        overlayTable->table = overlayTable->fileInfo.content;
     } else {
         ErrorPrintf("Not matched number of overlays and size of overlay table\n");
     }
@@ -37,15 +34,14 @@ bool WriteOverlayTable(Component *component) {
     bool success;
     OverlayTable *overlayTable = &component->overlayTable;
 
-    if (overlayTable->fileInfo.unk10 == 0) {
+    if (!overlayTable->fileInfo.rewrite) {
         success = true;
     } else if (overlayTable->fileInfo.filename == NULL) {
         ErrorPrintf("No filename specified for overlay table\n");
         success = false;
     } else {
         DebugPrintf("Writing overlayTable=%s\n", overlayTable->fileInfo.filename);
-        if (overlayTable->fileInfo.unkC == 0) {
-            // CLEAN UP: I re-wrote this from (success := ~sizeWriten >> 0x1f)
+        if (overlayTable->fileInfo.compressedSize == 0) {
             int sizeWritten = WriteFile(overlayTable->fileInfo.filename, overlayTable->fileInfo.content, overlayTable->fileInfo.fileSize);
             success = sizeWritten >= 0;
         } else {
@@ -76,5 +72,5 @@ void FreeOverlayTable(Component *component) {
         DebugPrintf("Releasing overlayTable\n");
         FreeBuffer(&component->overlayTable.fileInfo);
     }
-    component->overlayTable.content_dup = NULL;
+    component->overlayTable.table = NULL;
 }
