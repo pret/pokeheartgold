@@ -10,28 +10,23 @@
 #include "print.h"
 
 typedef struct {
-    uint unk0;
-    uint unk4;
-    uint unk8;
-    uint unkC;
-    uint unk10;
-    uint unk14;
-    uint unk18;
-    int unk1C;
-    char unk20[0x40];
-    uint unk60;
-    uint unk64;
-    char unk68[0xC];
-} HashWork;
+    uint intermediateHash[5];
+    uint lengthLow;
+    uint lengthHigh;
+    int messageBlockIdx;
+    byte messageBlock[64];
+    bool computed;
+    uint corrupted;
+} DGTHash2Context;
 
-typedef bool (*Hash2ResetCb)(HashWork *hashWork);
-typedef uint (*Hash2SetSourceCb)(HashWork *hashWork, char *digestKey, int digestKeySize);
-typedef uint (*Hash2GetDigestCb)(HashWork *hashWork, char *digestBuffer);
+typedef bool (*Hash2ResetCb)(DGTHash2Context *hashCtx);
+typedef uint (*Hash2SetSourceCb)(DGTHash2Context *hashCtx, char *digestKey, int digestKeySize);
+typedef uint (*Hash2GetDigestCb)(DGTHash2Context *hashCtx, char *digestBuffer);
 
 typedef struct {
     int unk0;
     int blockSize;
-    HashWork *hashWork;
+    DGTHash2Context *hashCtx;
     char *unkC;
     Hash2ResetCb hash2Reset;
     Hash2SetSourceCb hash2SetSource;
@@ -40,11 +35,11 @@ typedef struct {
 
 static void DGT_Hash2CalcHmac(char *hash, char *content, int size, char *digestKey, int digestKeySize);
 static bool DGT_SetOverlayTableMode(bool mode);
-static bool DGT_Hash2Reset(HashWork *hashWork);
-static uint DGT_Hash2SetSource(HashWork *hashWork, char *digestKey, int digestKeySize);
-static uint DGT_Hash2GetDigest(HashWork *hashWork, char *digestBuffer);
-static void DGT_Hash2SetPadding(HashWork *hashWork);
-static void DGT_Hash2DoProcess(HashWork *hashWork);
+static bool DGT_Hash2Reset(DGTHash2Context *hashCtx);
+static uint DGT_Hash2SetSource(DGTHash2Context *hashCtx, char *digestKey, int digestKeySize);
+static uint DGT_Hash2GetDigest(DGTHash2Context *hashCtx, char *digestBuffer);
+static void DGT_Hash2SetPadding(DGTHash2Context *hashCtx);
+static void DGT_Hash2DoProcess(DGTHash2Context *hashCtx);
 static void HmacCalc(char *hash, char *content, int size, char *digestKey, int digestKeySize, HmacParam *param);
 
 // Set default DigestFunc
@@ -121,13 +116,13 @@ void Calc_Digest(char *content, int size, char *hash, bool overlayTableMode) {
 }
 
 static void DGT_Hash2CalcHmac(char *hash, char *content, int size, char *digestKey, int digestKeySize) {
-    HashWork hashWork;
+    DGTHash2Context hashCtx;
     char unkBuffer1[0x20];
     HmacParam param = {0};
 
     param.unk0 = 20;
     param.blockSize = DIGEST_KEY_SIZE;
-    param.hashWork = &hashWork;
+    param.hashCtx = &hashCtx;
     param.unkC = unkBuffer1;
     param.hash2Reset = DGT_Hash2Reset;
     param.hash2SetSource = DGT_Hash2SetSource;
@@ -141,139 +136,139 @@ static bool DGT_SetOverlayTableMode(bool mode) {
     return oldMode;
 }
 
-static bool DGT_Hash2Reset(HashWork *hashWork) {
-    if (hashWork != NULL) {
-        hashWork->unk14 = 0;
-        hashWork->unk18 = 0;
-        hashWork->unk1C = 0;
-        hashWork->unk0 = 0x67452301;
-        hashWork->unk4 = 0xefcdab89;
-        hashWork->unk8 = 0x98badcfe;
-        hashWork->unkC = 0x10325476;
-        hashWork->unk10 = 0xc3d2e1f0;
-        hashWork->unk60 = 0;
-        hashWork->unk64 = 0;
+static bool DGT_Hash2Reset(DGTHash2Context *hashCtx) {
+    if (hashCtx != NULL) {
+        hashCtx->intermediateHash[0] = 0x67452301;
+        hashCtx->intermediateHash[1] = 0xefcdab89;
+        hashCtx->intermediateHash[2] = 0x98badcfe;
+        hashCtx->intermediateHash[3] = 0x10325476;
+        hashCtx->intermediateHash[4] = 0xc3d2e1f0;
+        hashCtx->lengthLow = 0;
+        hashCtx->lengthHigh = 0;
+        hashCtx->messageBlockIdx = 0;
+        hashCtx->computed = false;
+        hashCtx->corrupted = 0;
     }
-    return hashWork == NULL;
+    return hashCtx == NULL;
 }
 
-static uint DGT_Hash2SetSource(HashWork *hashWork, char *digestKey, int digestKeySize) {
+static uint DGT_Hash2SetSource(DGTHash2Context *hashCtx, char *digestKey, int digestKeySize) {
     uint ret;
 
     if (digestKeySize == 0) {
         ret = 0;
-    } else if (hashWork == NULL || digestKey == NULL) {
+    } else if (hashCtx == NULL || digestKey == NULL) {
         ret = 1;
-    } else if (hashWork->unk60 = 0) {
-        if (hashWork->unk64 == 0) {
-            while (digestKeySize -= 1, digestKeySize != -1 && hashWork->unk64 == 0) {
-                hashWork->unk20[hashWork->unk1C] = *digestKey;
-                hashWork->unk1C += 1;
-                hashWork->unk14 += 8;
-                if (hashWork->unk1C == 0 && (hashWork->unk18 += 1, hashWork->unk18 == 0)) {
-                    hashWork->unk64 = 1;
+    } else if (!hashCtx->computed) {
+        if (hashCtx->corrupted == 0) {
+            while (digestKeySize -= 1, digestKeySize != -1 && hashCtx->corrupted == 0) {
+                hashCtx->messageBlock[hashCtx->messageBlockIdx] = *digestKey;
+                hashCtx->messageBlockIdx += 1;
+                hashCtx->lengthLow += 8;
+                if (hashCtx->messageBlockIdx == 0 && (hashCtx->lengthHigh += 1, hashCtx->lengthHigh == 0)) {
+                    hashCtx->corrupted = 1;
                 }
-                if (hashWork->unk1C == 0x40) {
-                    DGT_Hash2DoProcess(hashWork);
+                if (hashCtx->messageBlockIdx == 0x40) {
+                    DGT_Hash2DoProcess(hashCtx);
                 }
                 digestKey++;
             }
             ret = 0;
         } else {
-            ret = hashWork->unk64;
+            ret = hashCtx->corrupted;
         }
     } else {
-        hashWork->unk64 = 3;
+        hashCtx->corrupted = 3;
         ret = 3;
     }
     return ret;
 }
 
-static uint DGT_Hash2GetDigest(HashWork *hashWork, char *digestBuffer) {
+static uint DGT_Hash2GetDigest(DGTHash2Context *hashCtx, char *digestBuffer) {
     uint ret;
 
-    if (hashWork == NULL || digestBuffer == NULL) {
+    if (hashCtx == NULL || digestBuffer == NULL) {
         ret = 1;
-    } else if (hashWork->unk64 == 0) {
-        if (hashWork->unk60 == 0) {
-            DGT_Hash2SetPadding(hashWork);
+    } else if (hashCtx->corrupted == 0) {
+        if (!hashCtx->computed) {
+            DGT_Hash2SetPadding(hashCtx);
             for (int i = 0; i < 0x40; i++) {
-                hashWork->unk20[i] = '\0';
+                hashCtx->messageBlock[i] = '\0';
             }
-            hashWork->unk14 = 0;
-            hashWork->unk18 = 0;
-            hashWork->unk60 = 1;
+            hashCtx->lengthLow = 0;
+            hashCtx->lengthHigh = 0;
+            hashCtx->computed = true;
         }
         for (int i = 0; i < 20; i++) {
-            digestBuffer[i] = (char)(*(uint *)(hashWork->unk20 + (i >> 2) * 4 + -0x20) >> ((3u - ((byte)i % 4)) * 8u & 0x1f));
+            digestBuffer[i] = (char)(*(uint *)(hashCtx->messageBlock + (i >> 2) * 4 + -0x20) >> ((3u - ((byte)i % 4)) * 8u & 0x1f));
         }
         ret = 0;
     } else {
-        ret = hashWork->unk64;
+        ret = hashCtx->corrupted;
     }
     return ret;
 }
 
-static void DGT_Hash2SetPadding(HashWork *hashWork) {
-    if (hashWork->unk1C < 0x38) {
-        hashWork->unk20[hashWork->unk1C] = -0x80;
-        hashWork->unk1C += 1;
-        while (hashWork->unk1C < 0x38) {
-            hashWork->unk20[hashWork->unk1C] = '\0';
-            hashWork->unk1C += 1;
+static void DGT_Hash2SetPadding(DGTHash2Context *hashCtx) {
+    if (hashCtx->messageBlockIdx < 0x38) {
+        hashCtx->messageBlock[hashCtx->messageBlockIdx] = -0x80;
+        hashCtx->messageBlockIdx += 1;
+        while (hashCtx->messageBlockIdx < 0x38) {
+            hashCtx->messageBlock[hashCtx->messageBlockIdx] = '\0';
+            hashCtx->messageBlockIdx += 1;
         }
     } else {
-        hashWork->unk20[hashWork->unk1C] = -0x80;
-        hashWork->unk1C += 1;
-        while (hashWork->unk1C < 0x40) {
-            hashWork->unk20[hashWork->unk1C] = '\0';
-            hashWork->unk1C += 1;
+        hashCtx->messageBlock[hashCtx->messageBlockIdx] = -0x80;
+        hashCtx->messageBlockIdx += 1;
+        while (hashCtx->messageBlockIdx < 0x40) {
+            hashCtx->messageBlock[hashCtx->messageBlockIdx] = '\0';
+            hashCtx->messageBlockIdx += 1;
         }
-        DGT_Hash2DoProcess(hashWork);
-        while (hashWork->unk1C < 0x38) {
-            hashWork->unk20[hashWork->unk1C] = '\0';
-            hashWork->unk1C += 1;
+        DGT_Hash2DoProcess(hashCtx);
+        while (hashCtx->messageBlockIdx < 0x38) {
+            hashCtx->messageBlock[hashCtx->messageBlockIdx] = '\0';
+            hashCtx->messageBlockIdx += 1;
         }
     }
-    hashWork->unk20[0x38] = (char)(hashWork->unk18 >> 0x18);
-    hashWork->unk20[0x39] = (char)(hashWork->unk18 >> 0x10);
-    hashWork->unk20[0x3a] = (char)(hashWork->unk18 >> 8);
-    hashWork->unk20[0x3b] = *(char *)(&hashWork->unk18);
-    hashWork->unk20[0x3c] = (char)(hashWork->unk14 >> 0x18);
-    hashWork->unk20[0x3d] = (char)(hashWork->unk14 >> 0x10);
-    hashWork->unk20[0x3e] = (char)(hashWork->unk14 >> 8);
-    hashWork->unk20[0x3f] = *(char *)(&hashWork->unk14);
-    DGT_Hash2DoProcess(hashWork);
+    hashCtx->messageBlock[0x38] = hashCtx->lengthHigh >> 0x18;
+    hashCtx->messageBlock[0x39] = (byte)(hashCtx->lengthHigh >> 0x10);
+    hashCtx->messageBlock[0x3a] = (byte)(hashCtx->lengthHigh >> 8);
+    hashCtx->messageBlock[0x3b] = (byte)(hashCtx->lengthHigh);
+    hashCtx->messageBlock[0x3c] = hashCtx->lengthLow >> 0x18;
+    hashCtx->messageBlock[0x3d] = (byte)(hashCtx->lengthLow >> 0x10);
+    hashCtx->messageBlock[0x3e] = (byte)(hashCtx->lengthLow >> 8);
+    hashCtx->messageBlock[0x3f] = (byte)(hashCtx->lengthLow);
+    DGT_Hash2DoProcess(hashCtx);
 }
 
 // SHA hash
-static void DGT_Hash2DoProcess(HashWork *hashWork) {
+static void DGT_Hash2DoProcess(DGTHash2Context *hashCtx) {
     uint temp;
     int temp2;
     uint buffer[99];
     int i, idx;
 
     if (gOverlayTableMode) {
-        buffer[10] = *(uint *)(hashWork->unk20 + 0x18);
-        buffer[9] = *(uint *)(hashWork->unk20 + 0x38);
-        *(uint *)(hashWork->unk20 + 0x18) = 0;
-        *(uint *)(hashWork->unk20 + 0x38) = 0;
+        buffer[10] = *(uint *)(hashCtx->messageBlock + 0x18);
+        buffer[9] = *(uint *)(hashCtx->messageBlock + 0x38);
+        *(uint *)(hashCtx->messageBlock + 0x18) = 0;
+        *(uint *)(hashCtx->messageBlock + 0x38) = 0;
     }
     for (i = 0; i < 0x10; i++) {
-        buffer[i + 0x10] = (uint)(byte)hashWork->unk20[i * 4] << 0x18;
-        buffer[i + 0x10] = (uint)(byte)hashWork->unk20[i * 4 + 1] << 0x10 | buffer[i + 0x10];
-        buffer[i + 0x10] = (uint)(byte)hashWork->unk20[i * 4 + 2] << 8 | buffer[i + 0x10];
-        buffer[i + 0x10] = (uint)(byte)hashWork->unk20[i * 4 + 3] | buffer[i + 0x10];
+        buffer[i + 0x10] = (uint)(byte)hashCtx->messageBlock[i * 4] << 0x18;
+        buffer[i + 0x10] = (uint)(byte)hashCtx->messageBlock[i * 4 + 1] << 0x10 | buffer[i + 0x10];
+        buffer[i + 0x10] = (uint)(byte)hashCtx->messageBlock[i * 4 + 2] << 8 | buffer[i + 0x10];
+        buffer[i + 0x10] = (uint)(byte)hashCtx->messageBlock[i * 4 + 3] | buffer[i + 0x10];
     }
     for (i = 0x10; i < 0x50; i++) {
         temp = buffer[i + 0xd] ^ buffer[i + 8] ^ buffer[i + 2] ^ buffer[i];
         buffer[i + 0x10] = temp << 1 | (uint)((int)temp < 0);
     }
-    buffer[14] = hashWork->unk4;
-    buffer[13] = hashWork->unk8;
-    buffer[12] = hashWork->unkC;
-    buffer[11] = hashWork->unk10;
-    buffer[15] = hashWork->unk0;
+    buffer[14] = hashCtx->intermediateHash[1];
+    buffer[13] = hashCtx->intermediateHash[2];
+    buffer[12] = hashCtx->intermediateHash[3];
+    buffer[11] = hashCtx->intermediateHash[4];
+    buffer[15] = hashCtx->intermediateHash[0];
     for (i = 0; i < 0x14; i++) {
         temp2 = (~buffer[14] & buffer[12] | buffer[14] & buffer[13]) +
                 (buffer[15] << 5 | buffer[15] >> 0x1b) + buffer[11];
@@ -314,15 +309,15 @@ static void DGT_Hash2DoProcess(HashWork *hashWork) {
         buffer[14] = buffer[15];
         buffer[15] = buffer[idx] + temp2 + 0xca62c1d6;
     }
-    hashWork->unk0 = buffer[15] + hashWork->unk0;
-    hashWork->unk4 = buffer[14] + hashWork->unk4;
-    hashWork->unk8 = buffer[13] + hashWork->unk8;
-    hashWork->unkC = buffer[12] + hashWork->unkC;
-    hashWork->unk10 = buffer[11] + hashWork->unk10;
-    hashWork->unk1C = 0;
+    hashCtx->intermediateHash[0] += buffer[15];
+    hashCtx->intermediateHash[1] += buffer[14];
+    hashCtx->intermediateHash[2] += buffer[13];
+    hashCtx->intermediateHash[3] += buffer[12];
+    hashCtx->intermediateHash[4] += buffer[11];
+    hashCtx->messageBlockIdx = 0;
     if (gOverlayTableMode) {
-        *(uint *)(hashWork->unk20 + 0x18) = buffer[10];
-        *(uint *)(hashWork->unk20 + 0x38) = buffer[9];
+        *(uint *)(hashCtx->messageBlock + 0x18) = buffer[10];
+        *(uint *)(hashCtx->messageBlock + 0x38) = buffer[9];
     }
 }
 
@@ -337,9 +332,9 @@ static void HmacCalc(char *hash, char *content, int size, char *digestKey, int d
     if (hash != NULL && content != NULL && size != 0 && digestKey != NULL &&
         digestKeySize != 0 && param != NULL) {
             if (param->blockSize < digestKeySize) {
-                param->hash2Reset(param->hashWork);
-                param->hash2SetSource(param->hashWork, digestKey, digestKeySize);
-                param->hash2GetDigest(param->hashWork, digestBuffer);
+                param->hash2Reset(param->hashCtx);
+                param->hash2SetSource(param->hashCtx, digestKey, digestKeySize);
+                param->hash2GetDigest(param->hashCtx, digestBuffer);
                 key = digestBuffer;
                 keySize = param->unk0;
             } else {
@@ -352,10 +347,10 @@ static void HmacCalc(char *hash, char *content, int size, char *digestKey, int d
             for (; i < param->blockSize; i++) {
                 innerKey[i] = 0x36;
             }
-            param->hash2Reset(param->hashWork);
-            param->hash2SetSource(param->hashWork, innerKey, param->blockSize);
-            param->hash2SetSource(param->hashWork, content, size);
-            param->hash2GetDigest(param->hashWork, param->unkC);
+            param->hash2Reset(param->hashCtx);
+            param->hash2SetSource(param->hashCtx, innerKey, param->blockSize);
+            param->hash2SetSource(param->hashCtx, content, size);
+            param->hash2GetDigest(param->hashCtx, param->unkC);
 
             for (i = 0; i < keySize; i++) {
                 outerKey[i] = key[i] ^ 0x5c;
@@ -363,9 +358,9 @@ static void HmacCalc(char *hash, char *content, int size, char *digestKey, int d
             for (; i < param->blockSize; i++) {
                 outerKey[i] = 0x5c;
             }
-            param->hash2Reset(param->hashWork);
-            param->hash2SetSource(param->hashWork, outerKey, param->blockSize);
-            param->hash2SetSource(param->hashWork, param->unkC, param->unk0);
-            param->hash2GetDigest(param->hashWork, hash);
+            param->hash2Reset(param->hashCtx);
+            param->hash2SetSource(param->hashCtx, outerKey, param->blockSize);
+            param->hash2SetSource(param->hashCtx, param->unkC, param->unk0);
+            param->hash2GetDigest(param->hashCtx, hash);
     }
 }
