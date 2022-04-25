@@ -144,6 +144,6 @@ void FreeOverlayModules(Component *component) {
     }
     if (component->overlayModules != NULL) {
         free(component->overlayModules);
-        component->overlayModules == NULL;
+        component->overlayModules = NULL;
     }
 }

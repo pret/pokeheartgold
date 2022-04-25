@@ -2,15 +2,15 @@ CC := gcc
 CFLAGS := -O3
 
 SRCS = $(wildcard *.c)
-INCLUDES = $(wildcard *.h)
+OBJS = $(SRCS:%.c=%.o)
 
 .PHONY: all clean
 
 all: compstatic
 	@:
 
-compstatic: $(SRCS) $(INCLUDES)
+compstatic: $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
-	$(RM) compstatic compstatic.exe
+	$(RM) compstatic compstatic.exe $(OBJS)

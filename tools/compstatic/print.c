@@ -3,8 +3,8 @@
 #include "global.h"
 #include "print.h"
 
-int DebugPrintf(const char *format, ...) {
-    if (!gDebugMode) return 0;
+void DebugPrintf(const char *format, ...) {
+    if (!gDebugMode) return;
 
     va_list args;
     va_start(args, format);
@@ -12,7 +12,7 @@ int DebugPrintf(const char *format, ...) {
     va_end(args);
 }
 
-int ErrorPrintf(const char *format, ...) {
+void ErrorPrintf(const char *format, ...) {
     printf("Error: ");
 
     va_list args;

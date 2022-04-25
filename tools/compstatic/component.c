@@ -75,7 +75,7 @@ static bool WriteComponent(Component *component) {
 }
 
 static bool ComponentAddSuffix(Component *component, char *suffix) {
-    if (suffix == NULL || suffix == "") return true;
+    if (suffix == NULL || *suffix == '\0') return true;
 
     bool finalSuccess = false;
     bool success = AddSuffixOverlayDefs(component, suffix);

@@ -100,7 +100,7 @@ void Calc_Digest(char *content, int size, char *hash, bool overlayTableMode) {
     byte hashBuffer[40];
 
     bool oldMode = DGT_SetOverlayTableMode(overlayTableMode);
-    gDigestFunc(hashBuffer, content, size, gDigestKey, gDigestKeySize);
+    gDigestFunc((char *)hashBuffer, content, size, gDigestKey, gDigestKeySize);
     DGT_SetOverlayTableMode(oldMode);
     int iCpy = 0;
     for (int i = 0; i < 20; i++) {
@@ -112,7 +112,7 @@ void Calc_Digest(char *content, int size, char *hash, bool overlayTableMode) {
         printf("%02X", hashBuffer[i]);
     }
     printf(" %8ld\n", (long int)size);
-    CopyBuffer(hashBuffer, hash, 20);
+    CopyBuffer((char *)hashBuffer, hash, 20);
 }
 
 static void DGT_Hash2CalcHmac(char *hash, char *content, int size, char *digestKey, int digestKeySize) {
@@ -322,8 +322,8 @@ static void DGT_Hash2DoProcess(DGTHash2Context *hashCtx) {
 }
 
 static void HmacCalc(char *hash, char *content, int size, char *digestKey, int digestKeySize, HmacParam *param) {
-    byte digestBuffer[0x4C];
-    byte *key;
+    char digestBuffer[0x4C];
+    char *key;
     int keySize;
     char innerKey[0x48];
     char outerKey[0x40];

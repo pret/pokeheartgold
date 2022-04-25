@@ -125,7 +125,7 @@ bool CalculateHMAC_OverlayModules(Component *component, int digestType, char *di
             char *content = component->staticModule.fileInfo.content;
             char *digestParams = (char *)(content + digestParamsOffset);
             for (int i = 0; i < numOverlays; i++) {
-                if (overlayTable[OT_COMPRESSED_FLAGS_OFFSET] & 2U != 0) {
+                if ((overlayTable[OT_COMPRESSED_FLAGS_OFFSET] & 2U) != 0) {
                     printf("OverlayModule[%02d]: HMAC already calculated - do it again.\n", i);
                 }
                 if ((uint)overlayModule->fileInfo.fileSize < *(uint *)(overlayTable + OT_FILESIZE_OFFSET)) {
