@@ -43,7 +43,7 @@ static void DGT_Hash2DoProcess(DGTHash2Context *hashCtx);
 static void HmacCalc(char *hash, char *content, int size, char *digestKey, int digestKeySize, HmacParam *param);
 
 // Set default DigestFunc
-DigestFunc gDigestFunc = DGT_Hash2CalcHmac;
+static DigestFunc sDigestFunc = DGT_Hash2CalcHmac;
 
 static DigestFunc sDigestFuncs[] = { NULL, DGT_Hash2CalcHmac };
 static char sDefaultDigestKey[] = {
@@ -54,6 +54,10 @@ static char sDefaultDigestKey[] = {
     0x32, 0x67, 0x8d, 0xfe, 0xca, 0x83, 0x64, 0x98, 0xac, 0xfd, 0x3e, 0x37,
     0x87, 0x46, 0x58, 0x24,
 };
+
+static char *sDigestKey;
+static int sDigestKeySize;
+static bool sOverlayTableMode;
 
 bool Init_Digest(uint digestType, char *digestKey) {
     bool success;
@@ -67,25 +71,25 @@ bool Init_Digest(uint digestType, char *digestKey) {
             ErrorPrintf("Unsupported digest\n");
             success = false;
         } else {
-            gDigestFunc = digestFunc;
-            if (gDigestKey != NULL) {
-                free(gDigestKey);
-                gDigestKey = NULL;
+            sDigestFunc = digestFunc;
+            if (sDigestKey != NULL) {
+                free(sDigestKey);
+                sDigestKey = NULL;
             }
             if (digestKey == NULL) {
-                gDigestKey = calloc(1, DIGEST_KEY_SIZE);
-                if (gDigestKey == NULL) {
+                sDigestKey = calloc(1, DIGEST_KEY_SIZE);
+                if (sDigestKey == NULL) {
                     ErrorPrintf("Cannot allocate memory.\n");
                     return false;
                 }
-                memcpy(gDigestKey, sDefaultDigestKey, DIGEST_KEY_SIZE);
-                gDigestKeySize = DIGEST_KEY_SIZE;
+                memcpy(sDigestKey, sDefaultDigestKey, DIGEST_KEY_SIZE);
+                sDigestKeySize = DIGEST_KEY_SIZE;
             } else {
-                gDigestKeySize = ReadFile(digestKey, &gDigestKey);
-                if (gDigestKeySize < 0) {
+                sDigestKeySize = ReadFile(digestKey, &sDigestKey);
+                if (sDigestKeySize < 0) {
                     return false;
                 }
-                if (gDigestKeySize < DIGEST_KEY_SIZE) {
+                if (sDigestKeySize < DIGEST_KEY_SIZE) {
                     ErrorPrintf("Key file size should be >= %d bytes\n", DIGEST_KEY_SIZE);
                     return false;
                 }
@@ -100,7 +104,7 @@ void Calc_Digest(char *content, int size, char *hash, bool overlayTableMode) {
     byte hashBuffer[40];
 
     bool oldMode = DGT_SetOverlayTableMode(overlayTableMode);
-    gDigestFunc((char *)hashBuffer, content, size, gDigestKey, gDigestKeySize);
+    sDigestFunc((char *)hashBuffer, content, size, sDigestKey, sDigestKeySize);
     DGT_SetOverlayTableMode(oldMode);
     int iCpy = 0;
     for (int i = 0; i < 20; i++) {
@@ -131,8 +135,8 @@ static void DGT_Hash2CalcHmac(char *hash, char *content, int size, char *digestK
 }
 
 static bool DGT_SetOverlayTableMode(bool mode) {
-    bool oldMode = gOverlayTableMode;
-    gOverlayTableMode = mode;
+    bool oldMode = sOverlayTableMode;
+    sOverlayTableMode = mode;
     return oldMode;
 }
 
@@ -248,7 +252,7 @@ static void DGT_Hash2DoProcess(DGTHash2Context *hashCtx) {
     uint buffer[99];
     int i, idx;
 
-    if (gOverlayTableMode) {
+    if (sOverlayTableMode) {
         buffer[10] = *(uint *)(hashCtx->messageBlock + 0x18);
         buffer[9] = *(uint *)(hashCtx->messageBlock + 0x38);
         *(uint *)(hashCtx->messageBlock + 0x18) = 0;
@@ -315,7 +319,7 @@ static void DGT_Hash2DoProcess(DGTHash2Context *hashCtx) {
     hashCtx->intermediateHash[3] += buffer[12];
     hashCtx->intermediateHash[4] += buffer[11];
     hashCtx->messageBlockIdx = 0;
-    if (gOverlayTableMode) {
+    if (sOverlayTableMode) {
         *(uint *)(hashCtx->messageBlock + 0x18) = buffer[10];
         *(uint *)(hashCtx->messageBlock + 0x38) = buffer[9];
     }
