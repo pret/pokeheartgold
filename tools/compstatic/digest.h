@@ -9,11 +9,6 @@
 
 typedef void (*DigestFunc)(char *hash, char *content, int size, char *digestKey, int digestKeySize);
 
-DigestFunc gDigestFunc;
-char *gDigestKey;
-int gDigestKeySize;
-bool gOverlayTableMode;
-
 bool Init_Digest(uint digestType, char *digestKey);
 void Calc_Digest(char *content, int size, char *hash, bool overlayTableMode);
 

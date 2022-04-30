@@ -31,7 +31,7 @@ typedef struct {
     char *filenames[NUM_SOURCE_FILES];
 } SourceFiles;
 
-bool gDebugMode;
+extern bool gDebugMode;
 
 typedef struct {
     char *filename;
