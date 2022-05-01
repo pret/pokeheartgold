@@ -9,7 +9,9 @@ Example: `static int a = 23;`
 Example: `static const int pi = 3.141592`
 
 In the Pokeheartgold Repo these sections have been split alongside the Assembly subroutines, with each .asm file only containing static data used by it's functions.
-###General workflow of decomping static data
+
+### General workflow of decomping static data
+
 1. See how the data is referenced inside functions. This will give you an idea of what the data type might be (e.g. a struct, or an u8 array)
 Note: this can be tricky when looking at functions referencing a member of a struct from a struct array, as the assembly code might specify the struct's member before specifying the struct member
 2. Draft the structure of the data (based on how it's manipulated in the subroutines), then migrate it over to C code.

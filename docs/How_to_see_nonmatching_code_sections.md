@@ -2,7 +2,7 @@ There are many, *many* reasons why what you have decompiled might not match with
 
 Documenting every reason your code might not match is out of the scope of this write-up, but there are ways to figure out exactly which part of your matching-decompilation went wrong. Which in turn can help you fix it.
 
-###Decomp.me
+### Decomp.me
 
 Decomp.me is a 3rd party website that allows decompilers to throw an assembly function inside, set a compiler, and then try to write source code that matches said assembly function.
 
@@ -15,14 +15,14 @@ Decomp.me is a 3rd party website that allows decompilers to throw an assembly fu
 
 The current assembly view on the left will be filled with compiled code, where you can see where it doesn't match with the target assembly.
 
-###Compiler Explorer
+### Compiler Explorer
 Compiler Explorer is a website that allows users to hook up compilers and explore the output of it alongside the source code. It's highly customizable UI as well as it's diff view allows it to be morphed into a Decomp.me clone.
 
 It has a slight advantage over Decomp.me in that users can set up local instances of the website and let it read context for compiled source code from a repo. eliminating step 4 of the process.
 
 If you want to use the CExplorer instance for PokeHeartgold you can join the pret discord and ask for a link and the password in #pokeheartgold.
 
-###Asmdiff
+### Asmdiff
 
 Located in `tools/asmdiff/`, Asmdiff.sh is a shell script that will print out all the difference between the assembly of your nonmatching ROM and the retail rom. To use it you must put a copy of the matching rom into the root folder and rename it to `baserom.nds`
 

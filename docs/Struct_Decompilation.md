@@ -1,6 +1,6 @@
 Figuring out compiled structs is difficult because in 90% of the cases the structs compile into dynamic stack allocations. And the only way you can figure out their exact structure is from context.
 
-###How structs work in compiled code
+### How structs work in compiled code
 
 During runtime, members of a struct are stored right next to each other in memory (specifically in the stack). When a function wants to access a member of this struct they do this by getting the address of the first member and adding an offset to it. then using a variant of the `ldr` opcode to load the content of the member:
 - `ldrb r0 [r0+<offset>]` loads a byte member of a struct into r0 (`ldrsb` if it's a signed byte)
@@ -14,7 +14,7 @@ The same thing happens when functions want to store a value inside a struct memb
 
 Using this context you can write what you think might be a struct and fill it in with context later.
 
-###Example of struct decompilation
+### Example of struct decompilation
 Let's say we want to decompile `sub_02092F64`:
 
 ```asm
@@ -122,18 +122,18 @@ u8 unk02; //0x02
 ```
 
 ```diff
-	ptr->unk18 = 0;
--	ptr->unk00 |= 1;
+    ptr->unk18 = 0;
+-   ptr->unk00 |= 1;
 +   ptr->unk00_0 = 0;
--	ptr->unk00 |= 2;
+-   ptr->unk00 |= 2;
 +   ptr->unk00_1 = 0;
--	ptr->unk00 |= 8;
+-   ptr->unk00 |= 8;
 +   ptr->unk00_2 = 0;
-	ptr->unk02 = 0xff;
+    ptr->unk02 = 0xff;
 ```
 That's all the context we can get regarding `Unk_Struct` from `sub_02092F64`!
 
-###Some tips for decompiling structs
+### Some tips for decompiling structs
 - Try to decompile as many functions involved with your structs as possible. The more context you have the more you can decompile and identify the structs.
 - Giving your structs generic names such as `Unk_Struct` can make them conflict with the rest of the repo. Try appending the size of the struct to the name as well as some context to avoid that (such as `Unk_FsysSub_Struct_1C`).
 - Always check the type of the struct members as you fill out your struct. An u32 might turn out to be a pointer, and an u64 might actually be a s64, and a u32 might actually be two seperate u16-s.

@@ -1,6 +1,6 @@
 Let's say you want to decompile `unk_02091278.s`:
 
-```
+```asm
 #include "constants/easy_chat.h"
 #include "constants/items.h"
 #include "constants/maps.h"
@@ -67,7 +67,7 @@ Examples of both in use will be used to determine equivalent c code for the firs
 
 #ARM Instruction Set
 
-```	
+```asm
     thumb_func_start LanguageToDexFlag
 LanguageToDexFlag: ; 0x02091278
 	ldr r3, _02091290 ; =_02106058
@@ -90,7 +90,7 @@ _02091290: .word _02106058
 
 #Equivalent THUMB Instruction Set
 
-```
+```asm
 LanguageToDexFlag:
  ldr	r3, [pc, #20]	; (18 <LanguageToDexFlag+0x18>)
  movs	r2, #0
@@ -114,7 +114,7 @@ Our first step to decompilation is to gather information:
 
 So our first bit of C code may look something like this:
 
-```
+```c
 extern const u8 _02106058[6];
 
 void LanguageToDexFlag(void) {
@@ -152,7 +152,7 @@ In this scenario, the value of r2 gets loaded in if the loop either terminates b
 
 Knowing this, we can then finish of the function like so:
 
-```
+```c
 extern const u8 _02106058[6];
 
 int LanguageToDexFlag(u8 unk) {
@@ -181,7 +181,7 @@ Luckily, someone else previously named this function and determined that it take
 - `int c` is the dex flag that gets returned
 
 Running `grep LANGUAGE -r ./*` in the `include/` directory tells us that language constants are already defined in `config.h`:
-```
+```c
 #define LANGUAGE_JAPANESE    1
 #define LANGUAGE_ENGLISH     2
 #define LANGUAGE_FRENCH      3
@@ -192,7 +192,7 @@ Running `grep LANGUAGE -r ./*` in the `include/` directory tells us that languag
 
 Also luckily, these seem to line up well with the values in `_02106058`, so we can transcribe the array from .rodata to our .c file like so:
 
-```
+```c
 #include "config.h"
 
 const u8 Languages[] = {
@@ -208,7 +208,7 @@ const u8 Languages[] = {
 
 And after updating our main function, our final c file for this function should look like this:
 
-```
+```c
 #include "config.h"
 
 const u8 Languages[] = {

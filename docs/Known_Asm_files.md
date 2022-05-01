@@ -1,4 +1,4 @@
-#List of currently known assembly files inside `asm/`
+# List of currently known assembly files inside `asm/`
 
 This document should be updated as the decompilation progresses.
 
