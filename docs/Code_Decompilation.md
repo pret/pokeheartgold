@@ -65,7 +65,7 @@ This can be done either using the ARM instruction set (as found in the source fi
 
 Examples of both in use will be used to determine equivalent c code for the first function, LanguageToDexFlag
 
-#ARM Instruction Set
+# ARM Instruction Set
 
 ```asm
     thumb_func_start LanguageToDexFlag
@@ -88,7 +88,7 @@ _02091290: .word _02106058
 	thumb_func_end LanguageToDexFlag
 ```
 
-#Equivalent THUMB Instruction Set
+# Equivalent THUMB Instruction Set
 
 ```asm
 LanguageToDexFlag:
