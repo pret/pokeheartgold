@@ -517,7 +517,7 @@ _0204C074:
 	bl SetMonData
 _0204C166:
 	ldr r0, [r7, #0xc]
-	bl sub_0202D95C
+	bl Save_SpecialRibbons_get
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #0x2e

@@ -37,7 +37,7 @@ SAFARIZONE* Save_SafariZone_get(SAVEDATA* savedata) {
 
 void Save_SafariZone_init(SAFARIZONE* safari_zone) {
     for (s32 i = 0; i < SAFARI_ZONE_MAX_AREA_SETS; i++) {
-        MI_CpuFill8(&safari_zone->area_sets[i], 0, sizeof(SAFARIZONE_AREASET));
+        MI_CpuClear8(&safari_zone->area_sets[i], sizeof(SAFARIZONE_AREASET));
     }
 
     SafariZone_ClearLeader(&safari_zone->link_leader);
@@ -49,7 +49,7 @@ void SafariZone_ResetAreaSetToDefaultSet(SAFARIZONE_AREASET* area_set, u32 defau
         SafariZone_InitArea(&area_set->areas[i], sSafariZoneDefaultAreaSets[default_set_no_mod][i]);
     }
 
-    MI_CpuFill8(area_set->unk2DC, 0, sizeof(area_set->unk2DC));
+    MI_CpuClear8(area_set->unk2DC, sizeof(area_set->unk2DC));
 }
 
 void sub_0202F5F8(SAFARIZONE* safari_zone, s32 areaSetNo) {
@@ -116,7 +116,7 @@ void sub_0202F6B8(SAFARIZONE_AREASET* area_set, s32 a1) {
     }
 
     j = 0;
-    MI_CpuFill8(sp8, 0, NELEMS(sp8));
+    MI_CpuClear8(sp8, NELEMS(sp8));
     for (i = 0; i < SAFARI_ZONE_MAX_AREAS_PER_SET; i++) {
         area_no = area_set->areas[i].area_no;
         if (sub_0202FA3C(area_no, sp8, j)) {
@@ -277,16 +277,16 @@ void SafariZone_InitAreaSet(SAFARIZONE_AREASET* area_set) {
 }
 
 void SafariZone_InitArea(SAFARIZONE_AREA* area, u8 area_no) {
-    MI_CpuFill8(area, 0, sizeof(SAFARIZONE_AREA));
+    MI_CpuClear8(area, sizeof(SAFARIZONE_AREA));
     area->area_no = area_no;
 }
 
 void SafariZone_ClearObject(SAFARIZONE_OBJECT* object) {
-    MI_CpuFill8(object, 0, sizeof(SAFARIZONE_OBJECT));
+    MI_CpuClear8(object, sizeof(SAFARIZONE_OBJECT));
 }
 
 void SafariZone_ClearLeader(SAFARIZONE_LINKLEADER* link_leader) {
-    MI_CpuFill8(link_leader, 0, sizeof(SAFARIZONE_LINKLEADER));
+    MI_CpuClear8(link_leader, sizeof(SAFARIZONE_LINKLEADER));
 
     link_leader->id = 0;
     link_leader->gender = 0;

@@ -2064,7 +2064,7 @@ sub_0200F3D0: ; 0x0200F3D0
 	bl sub_0200F1D4
 _0200F3EA:
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, pc}
 _0200F3F2:
 	sub r2, r0, #2
@@ -2112,7 +2112,7 @@ sub_0200F43C: ; 0x0200F43C
 	add r0, r1, #0
 	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_0200F43C
@@ -2272,7 +2272,7 @@ _0200F582:
 	ldr r0, [r4, r0]
 	mov r1, #1
 	ldr r0, [r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	b _0200F5A8
 _0200F594:
 	sub r0, #0xb
@@ -2458,7 +2458,7 @@ sub_0200F6D4: ; 0x0200F6D4
 	add r1, r4, #0
 	add r2, r6, #0
 	mov r3, #2
-	bl sub_020701E4
+	bl GetMonSpriteCharAndPlttNarcIdsEx
 	add r0, r5, #0
 	add r1, sp, #0xc
 	bl sub_0200F748
@@ -2483,7 +2483,7 @@ sub_0200F714: ; 0x0200F714
 	add r0, sp, #0
 	add r1, r4, #0
 	mov r2, #2
-	bl sub_02070124
+	bl GetPokemonSpriteCharAndPlttNarcIds
 	add r0, r5, #0
 	add r1, sp, #0
 	bl sub_0200F748
@@ -2542,7 +2542,7 @@ sub_0200F748: ; 0x0200F748
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	ldr r1, _0200F828 ; =0x00015CD5
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	bl sub_0200AF00
 	mov r1, #1
 	str r0, [sp, #4]
@@ -2569,7 +2569,7 @@ sub_0200F748: ; 0x0200F748
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r1, _0200F828 ; =0x00015CD5
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	ldr r1, [sp, #4]
 	bl sub_0200B0F8
 	mov r1, #1

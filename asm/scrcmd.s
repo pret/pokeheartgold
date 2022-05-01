@@ -1742,7 +1742,7 @@ _02041CDE:
 	add r1, r4, #0
 	mov r2, #0
 	str r7, [r4, #8]
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4]
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -1764,7 +1764,7 @@ _RunObjectEventMovement: ; 0x02041CF8
 	ldr r0, [r5, #4]
 	bl sub_0206226C
 	ldr r0, [r5]
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, [r5, #8]
 	cmp r0, #0
 	beq _02041D26
@@ -2651,7 +2651,7 @@ _0204244C:
 	ldr r1, [r5]
 	add r0, sp, #0
 	ldr r1, [r1, #0x24]
-	bl sub_02023514
+	bl GF_Camera_ShiftBy
 	mov r0, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}

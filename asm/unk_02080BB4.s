@@ -938,7 +938,7 @@ sub_02081378: ; 0x02081378
 	add r4, r0, #0
 	ldr r0, _0208139C ; =0x00000C64
 	ldrb r0, [r4, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	beq _0208138C
 	mov r0, #5
@@ -1697,7 +1697,7 @@ _0208195C:
 _020819E0:
 	add r0, r1, #2
 	ldrb r0, [r4, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02081A46
 	ldr r0, _02081A50 ; =0x00000C65
@@ -1987,7 +1987,7 @@ _02081C68: ; jump table
 _02081C76:
 	sub r0, r1, #3
 	ldrb r0, [r4, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02081D0C
 	add r0, r4, #0
@@ -2002,7 +2002,7 @@ _02081C90:
 	mov r0, #3
 	tst r0, r1
 	bne _02081CA2
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _02081D0C
 _02081CA2:
@@ -2020,7 +2020,7 @@ _02081CB6:
 	mov r0, #3
 	tst r0, r1
 	bne _02081CC8
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _02081D0C
 _02081CC8:
@@ -2153,7 +2153,7 @@ _02081D84:
 _02081DDC:
 	sub r0, r1, #3
 	ldrb r0, [r4, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02081EA8
 	ldr r0, _02081EAC ; =0x00000C67

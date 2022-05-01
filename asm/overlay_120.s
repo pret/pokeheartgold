@@ -1366,7 +1366,7 @@ _0225F9EA:
 	bl ov01_021F0718
 	str r0, [r5]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5]
 	mov r1, #0x10
 	bl sub_02024ADC
@@ -1865,7 +1865,7 @@ _0225FDD6:
 _0225FDF4:
 	mov r1, #0
 	str r1, [r4, #0x18]
-	bl sub_0200E390
+	bl DestroySysTask
 	add sp, #4
 	pop {r3, r4, pc}
 _0225FE00:
@@ -1958,7 +1958,7 @@ _0225FEA4:
 	mov r0, #0
 	str r0, [r5, #0x14]
 	add r0, r6, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	add sp, #8
 	pop {r4, r5, r6, pc}
 _0225FEBE:
@@ -1980,7 +1980,7 @@ ov120_0225FECC: ; 0x0225FECC
 	ldr r0, _0225FEE4 ; =ov120_0225FE08
 	add r1, r4, #0
 	mov r2, #1
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4, #0x14]
 	pop {r4, pc}
 	.balign 4, 0

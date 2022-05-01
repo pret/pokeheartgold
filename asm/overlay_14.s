@@ -6565,7 +6565,7 @@ _021E8A06:
 	str r0, [r4, #0x1c]
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_0202D95C
+	bl Save_SpecialRibbons_get
 	str r0, [r4, #0x20]
 	mov r0, #0
 	str r0, [r4, #0x24]
@@ -11512,7 +11512,7 @@ ov14_021EB0E4: ; 0x021EB0E4
 	bl ov14_021E6048
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r4, #0
 	bl ov14_021F6B10
 	add r0, r4, #0
@@ -11635,7 +11635,7 @@ _021EB1DC: .word ov14_021F7D9C
 ov14_021EB1E0: ; 0x021EB1E0
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _021EB1F6
 	ldr r0, _021EB210 ; =0x000005DD
@@ -12091,7 +12091,7 @@ _021EB56C:
 _021EB58C:
 	ldr r0, _021EB6F4 ; =0x000005DD
 	bl PlaySE
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	bne _021EB5A2
 	add r0, r4, #0
@@ -14011,7 +14011,7 @@ _021EC532:
 _021EC550:
 	ldr r0, _021EC704 ; =0x000005DD
 	bl PlaySE
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	bne _021EC566
 	add r0, r4, #0
@@ -23584,7 +23584,7 @@ ov14_021F1448: ; 0x021F1448
 	add r1, r4, r1
 	add r0, #0x25
 	strb r1, [r0]
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	bne _021F148C
 	ldr r0, [r5, #4]
@@ -26497,7 +26497,7 @@ ov14_021F2AC8: ; 0x021F2AC8
 	mov r2, #2
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	add sp, #0x4c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -27931,7 +27931,7 @@ ov14_021F3614: ; 0x021F3614
 	add r0, sp, #0x24
 	mov r2, #2
 	mov r3, #0
-	bl sub_0207013C
+	bl GetBoxmonSpriteCharAndPlttNarcIds
 	ldrb r0, [r4, #0x12]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x1f

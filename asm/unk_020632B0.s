@@ -2605,7 +2605,7 @@ _020645CE:
 	str r6, [r4, #0x24]
 	ldr r0, _02064608 ; =sub_02064630
 	str r7, [r4, #0x28]
-	bl sub_0200E320
+	bl CreateSysTask
 	add r4, r0, #0
 	bne _02064604
 	bl GF_AssertFail
@@ -2634,7 +2634,7 @@ sub_02064618: ; 0x02064618
 	mov r0, #4
 	bl FreeToHeapExplicit
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r4, pc}
 	thumb_func_end sub_02064618
 

@@ -141,7 +141,7 @@ sub_0203A444: ; 0x0203A444
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #7
 	ldr r2, _0203A470 ; =0x40000200
 	lsl r0, r0, #0x18

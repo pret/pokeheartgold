@@ -2677,7 +2677,7 @@ ov86_021E6E98: ; 0x021E6E98
 	mov r2, #2
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	mov r0, #0xb8
 	mov r1, #0x79
 	bl NARC_ctor

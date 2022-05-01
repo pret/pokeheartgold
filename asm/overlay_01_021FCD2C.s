@@ -31,13 +31,13 @@ ov01_021FCD2C: ; 0x021FCD2C
 	str r5, [r4, #0x2c]
 	ldr r0, [r5, #0x24]
 	str r0, [r4, #0x30]
-	bl sub_02023614
+	bl GF_Camera_GetDistance
 	str r0, [r4, #0x10]
 	str r0, [r4, #0x20]
 	ldr r0, _021FCD64 ; =ov01_021FCDA8
 	ldr r2, _021FCD68 ; =0x0000FFFF
 	add r1, r4, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021FCD64: .word ov01_021FCDA8
@@ -60,7 +60,7 @@ ov01_021FCD78: ; 0x021FCD78
 	bl sub_0201F988
 	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r4, pc}
 	thumb_func_end ov01_021FCD78
 
@@ -169,13 +169,13 @@ _021FCE2A:
 
 	thumb_func_start ov01_021FCE34
 ov01_021FCE34: ; 0x021FCE34
-	ldr r3, _021FCE40 ; =sub_020235D4
+	ldr r3, _021FCE40 ; =GF_Camera_SetDistance
 	add r1, r0, #0
 	ldr r0, [r1, #0x20]
 	ldr r1, [r1, #0x30]
 	bx r3
 	nop
-_021FCE40: .word sub_020235D4
+_021FCE40: .word GF_Camera_SetDistance
 	thumb_func_end ov01_021FCE34
 
 	thumb_func_start ov01_021FCE44

@@ -570,7 +570,7 @@ ov41_02246280: ; 0x02246280
 	str r0, [sp, #0x28]
 	add r0, sp, #0x4c
 	add r2, r1, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r5, #0x44]
 	str r0, [sp, #0x2c]
 	add r0, sp, #0x4c
@@ -605,7 +605,7 @@ ov41_022462E4: ; 0x022462E4
 	mov r4, #0xe
 	str r4, [sp, #8]
 	ldr r0, [r0, #0x48]
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	bl sub_0200ADA4
 	add sp, #0xc
 	pop {r3, r4, pc}
@@ -625,7 +625,7 @@ ov41_02246304: ; 0x02246304
 	mov r4, #0xe
 	str r4, [sp, #0xc]
 	ldr r0, [r0, #0x4c]
-	bl sub_0200A480
+	bl AddPlttResObjFromOpenNarc
 	bl sub_0200B00C
 	add sp, #0x10
 	pop {r4, pc}
@@ -643,7 +643,7 @@ ov41_02246328: ; 0x02246328
 	mov r4, #0xe
 	str r4, [sp, #8]
 	ldr r0, [r0, #0x50]
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	add sp, #0xc
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -660,7 +660,7 @@ ov41_02246344: ; 0x02246344
 	mov r4, #0xe
 	str r4, [sp, #8]
 	ldr r0, [r0, #0x54]
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	add sp, #0xc
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -671,10 +671,10 @@ ov41_02246360: ; 0x02246360
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x48]
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	add r1, r0, #0
 	ldr r0, [r4, #0x48]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	pop {r4, pc}
 	thumb_func_end ov41_02246360
 
@@ -683,10 +683,10 @@ ov41_02246374: ; 0x02246374
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x4c]
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	add r1, r0, #0
 	ldr r0, [r4, #0x4c]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	pop {r4, pc}
 	thumb_func_end ov41_02246374
 
@@ -695,10 +695,10 @@ ov41_02246388: ; 0x02246388
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x50]
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	add r1, r0, #0
 	ldr r0, [r4, #0x50]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	pop {r4, pc}
 	thumb_func_end ov41_02246388
 
@@ -707,10 +707,10 @@ ov41_0224639C: ; 0x0224639C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x54]
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	add r1, r0, #0
 	ldr r0, [r4, #0x54]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	pop {r4, pc}
 	thumb_func_end ov41_0224639C
 
@@ -848,7 +848,7 @@ ov41_02246494: ; 0x02246494
 	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r0, [r4, #0x20]
 	bl sub_02009418
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov41_02246494
@@ -1132,7 +1132,7 @@ ov41_022466B8: ; 0x022466B8
 	push {r3, lr}
 	ldr r0, [r0, #0x40]
 	bl BgConfig_HandleScheduledScrollAndTransferOps
-	bl sub_0200B224
+	bl OamManager_ApplyAndResetBuffers
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov41_022466B8
@@ -1601,7 +1601,7 @@ ov41_02246A50: ; 0x02246A50
 	add r4, r0, #0
 	mov r0, #0x77
 	mov r1, #0xe
-	bl sub_02025534
+	bl Create2DGfxResMan
 	mov r1, #0x77
 	str r0, [r4, #0x34]
 	mov r0, #0xe
@@ -1625,7 +1625,7 @@ ov41_02246A7C: ; 0x02246A7C
 	ldr r0, [r4, #0x38]
 	bl FreeToHeap
 	ldr r0, [r4, #0x34]
-	bl sub_02025580
+	bl Destroy2DGfxResMan
 	mov r0, #0
 	str r0, [r4, #0x3c]
 	pop {r4, pc}
@@ -1664,38 +1664,38 @@ ov41_02246A94: ; 0x02246A94
 	mov r2, #0xe
 	str r2, [sp, #0x10]
 	add r2, r0, #0
-	bl sub_0200B150
+	bl OamManager_Create
 	add r1, r4, #0
 	mov r0, #0x30
 	add r1, #0x58
 	mov r2, #0xe
-	bl sub_02009F40
+	bl G2dRenderer_Init
 	str r0, [r4, #0x44]
 	add r0, r4, #0
 	mov r2, #2
 	add r0, #0x58
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	mov r0, #8
 	mov r1, #0
 	mov r2, #0xe
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	str r0, [r4, #0x48]
 	mov r0, #5
 	mov r1, #1
 	mov r2, #0xe
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	str r0, [r4, #0x4c]
 	mov r0, #0x30
 	mov r1, #2
 	mov r2, #0xe
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	str r0, [r4, #0x50]
 	mov r0, #0x30
 	mov r1, #3
 	mov r2, #0xe
-	bl sub_0200A090
+	bl Create2DGfxResObjMan
 	str r0, [r4, #0x54]
 	add sp, #0x24
 	pop {r4, r5, pc}
@@ -1712,14 +1712,14 @@ ov41_02246B34: ; 0x02246B34
 	mov r4, #0
 _02246B40:
 	ldr r0, [r5, #0x48]
-	bl sub_0200A0D0
+	bl Destroy2DGfxResObjMan
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
 	blt _02246B40
 	bl sub_0202168C
 	bl sub_02022608
-	bl sub_0200B244
+	bl OamManager_Free
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov41_02246B34
 
@@ -2001,7 +2001,7 @@ ov41_02246D54: ; 0x02246D54
 	bl memset
 	add r0, r4, #0
 	add r1, r7, #0
-	bl sub_02025534
+	bl Create2DGfxResMan
 	str r0, [r5, #0x10]
 	str r4, [r5, #4]
 	mov r0, #0xc
@@ -2016,7 +2016,7 @@ ov41_02246D54: ; 0x02246D54
 	bl memset
 	add r0, r6, #0
 	add r1, r7, #0
-	bl sub_02025534
+	bl Create2DGfxResMan
 	str r0, [r5, #0x14]
 	str r6, [r5, #0xc]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2030,14 +2030,14 @@ ov41_02246DA8: ; 0x02246DA8
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
 	beq _02246DBA
-	bl sub_02025580
+	bl Destroy2DGfxResMan
 	mov r0, #0
 	str r0, [r4, #0x10]
 _02246DBA:
 	ldr r0, [r4, #0x14]
 	cmp r0, #0
 	beq _02246DC8
-	bl sub_02025580
+	bl Destroy2DGfxResMan
 	mov r0, #0
 	str r0, [r4, #0x14]
 _02246DC8:
@@ -2263,7 +2263,7 @@ _02246FA4:
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _02246FD6
 	ldr r0, _02247138 ; =0x00000568
@@ -8998,7 +8998,7 @@ ov41_0224A094: ; 0x0224A094
 	lsr r1, r1, #0x18
 	bl BG_LoadCharTilesData
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, [r4, #8]
 	bl FreeToHeap
 	add r0, r4, #0
@@ -9035,7 +9035,7 @@ _0224A0F4:
 	bl GXS_LoadBGPltt
 _0224A104:
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 	ldr r0, [r4, #4]
 	bl FreeToHeap
 	add r0, r4, #0
@@ -9057,7 +9057,7 @@ _0224A126:
 	bl GF_AssertFail
 _0224A12E:
 	ldr r0, [r4]
-	bl sub_02024624
+	bl CreateSprite
 	str r0, [r5]
 	cmp r0, #0
 	bne _0224A13E
@@ -9577,7 +9577,7 @@ _0224A4FC:
 	ldr r0, [r0]
 	cmp r0, #1
 	bne _0224A526
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	beq _0224A514
 	mov r0, #0
@@ -9600,7 +9600,7 @@ _0224A526:
 	mov r0, #0
 	pop {r4, pc}
 _0224A532:
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	beq _0224A542
 	add r4, #0x80
@@ -9836,7 +9836,7 @@ ov41_0224A6C4: ; 0x0224A6C4
 	str r2, [sp, #0x24]
 	str r2, [sp, #0x28]
 	add r0, sp, #0x5c
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r5, #0x44]
 	mov r2, #0
 	mov r1, #1
@@ -9894,7 +9894,7 @@ ov41_0224A734: ; 0x0224A734
 	str r2, [sp, #0x24]
 	str r2, [sp, #0x28]
 	add r0, sp, #0x5c
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	ldr r0, [r4, #0x44]
 	mov r2, #0xe
 	str r0, [sp, #0x2c]
@@ -9925,7 +9925,7 @@ ov41_0224A734: ; 0x0224A734
 	str r2, [sp, #0x90]
 	str r0, [sp, #0xa0]
 	ldr r0, [r4, #0x4c]
-	bl sub_0200A7BC
+	bl Get2DGfxResObjById
 	mov r1, #0
 	bl sub_0200B0F8
 	str r0, [sp, #0x98]
@@ -10951,14 +10951,14 @@ _0224AF48:
 	bl sub_02024714
 	mov r1, #1
 	str r0, [r5, #0x10]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [sp, #0x1c]
 	add r1, r6, r7
 	cmp r1, r0
 	blt _0224AF6C
 	ldr r0, [r5, #0x10]
 	mov r1, #0
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 _0224AF6C:
 	add r6, r6, #1
 	add r4, #0x12
@@ -10993,7 +10993,7 @@ ov41_0224AF8C: ; 0x0224AF8C
 _0224AFA0:
 	ldr r0, [r4, #0x10]
 	mov r1, #0
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, r5
@@ -11010,7 +11010,7 @@ _0224AFB2:
 _0224AFC0:
 	ldr r0, [r4, #0x10]
 	mov r1, #1
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	sub r6, r6, #1
 	sub r4, r4, #4
 	cmp r6, r5
@@ -11059,7 +11059,7 @@ ov41_0224AFF8: ; 0x0224AFF8
 	str r3, [sp, #0x10]
 	add r1, r3, #0
 	mov r3, #0
-	bl sub_0200A3C8
+	bl AddCharResObjFromOpenNarc
 	str r0, [r5]
 	bl sub_0200ADA4
 	ldr r0, [r5]
@@ -11075,7 +11075,7 @@ ov41_0224AFF8: ; 0x0224AFF8
 	str r0, [sp, #8]
 	str r6, [sp, #0xc]
 	ldr r0, [r4, #4]
-	bl sub_0200A480
+	bl AddPlttResObjFromOpenNarc
 	str r0, [r5, #4]
 	bl sub_0200B00C
 	ldr r0, [r5, #4]
@@ -11089,7 +11089,7 @@ ov41_0224AFF8: ; 0x0224AFF8
 	str r6, [sp, #8]
 	ldr r0, [r4, #8]
 	mov r3, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	ldr r2, [sp, #0x34]
 	str r0, [r5, #8]
 	add r0, r7, r2
@@ -11100,7 +11100,7 @@ ov41_0224AFF8: ; 0x0224AFF8
 	ldr r0, [r4, #0xc]
 	ldr r1, [sp, #0x10]
 	mov r3, #0
-	bl sub_0200A540
+	bl AddCellOrAnimResObjFromOpenNarc
 	str r0, [r5, #0xc]
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
@@ -11118,16 +11118,16 @@ ov41_0224B084: ; 0x0224B084
 	bl sub_0200B0A8
 	ldr r0, [r4]
 	ldr r1, [r5]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	ldr r0, [r4, #4]
 	ldr r1, [r5, #4]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	ldr r0, [r4, #8]
 	ldr r1, [r5, #8]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	ldr r0, [r4, #0xc]
 	ldr r1, [r5, #0xc]
-	bl sub_0200A75C
+	bl DestroySingle2DGfxResObj
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov41_0224B084
 
@@ -11172,7 +11172,7 @@ ov41_0224B0B8: ; 0x0224B0B8
 	str r0, [sp, #0x28]
 	ldr r1, [sp, #0x2c]
 	add r0, r7, #0
-	bl sub_02009D48
+	bl CreateSpriteResourcesHeader
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -11311,12 +11311,12 @@ ov41_0224B21C: ; 0x0224B21C
 	add r4, r1, #0
 	cmp r0, #0
 	beq _0224B22C
-	bl sub_0200E390
+	bl DestroySysTask
 _0224B22C:
 	ldr r0, [r5, #0x28]
 	cmp r0, #0
 	beq _0224B236
-	bl sub_0200E390
+	bl DestroySysTask
 _0224B236:
 	add r0, r5, #0
 	add r1, r4, #0
@@ -11392,7 +11392,7 @@ _0224B2AE:
 _0224B2C0:
 	ldr r0, [r5, #0x10]
 	ldr r1, [sp, #4]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, [sp, #4]
 	add r1, r0, #0
 	ldr r0, [sp]
@@ -12514,7 +12514,7 @@ _0224BB48:
 	mov r0, #3
 	tst r0, r1
 	bne _0224BB5A
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #0
 	beq _0224BB96
 _0224BB5A:
@@ -12933,7 +12933,7 @@ _0224BE9C:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #5
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	mov r0, #3
 	lsl r0, r0, #0x10
 	str r0, [sp, #0x14]

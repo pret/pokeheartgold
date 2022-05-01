@@ -114,7 +114,7 @@ BOOL PartyMenu_AnimateIconFormeChange(PartyMenuStruct* unkPtr) {
         work->state++;
         break;
     case 10:
-        if (sub_02020094(unkPtr->unkc64) == 0) {
+        if (TextPrinterCheckActive(unkPtr->unkc64) == 0) {
             _DestroyLocalWork(unkPtr);
             unkPtr->unk654->unk27 = 0;
             return TRUE;
@@ -147,7 +147,7 @@ static void _CreateParticleSystem(IconFormeChangeWork* unkPtr) {
 
     unkPtr->particleSystem = sub_02014DB4(texAlloc, plttAlloc, particleHeap, PARTICLE_HEAP_SIZE, 1, HEAPID_PARTY_MENU);
 
-    sub_02023240(1 * FX32_ONE, 900 * FX32_ONE, sub_02015524());
+    GF_Camera_SetClipBounds(1 * FX32_ONE, 900 * FX32_ONE, sub_02015524());
 }
 
 static void _EmitParticles(IconFormeChangeWork* unkPtr) {

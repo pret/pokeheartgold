@@ -898,7 +898,7 @@ void Save_WipeExtraChunks(SAVEDATA *saveData) {
         if (chunkHeaders[i].id != 0) {
             data = ReadExtraSaveChunk(saveData, 3, chunkHeaders[i].id, &status);
             GF_ASSERT(data != NULL);
-            MI_CpuFill8(data, 0, chunkHeaders[i].sizeFunc());
+            MI_CpuClear8(data, chunkHeaders[i].sizeFunc());
             chunkHeaders[i].initFunc(data);
             WriteExtraSaveChunk(saveData, chunkHeaders[i].id, data);
             FreeToHeap(data);

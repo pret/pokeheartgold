@@ -333,7 +333,7 @@ _0221E806:
 	lsl r2, r2, #0x18
 	lsr r2, r2, #0x18
 	mov r3, #2
-	bl sub_020701E4
+	bl GetMonSpriteCharAndPlttNarcIdsEx
 	ldr r3, _0221E8A4 ; =ov98_0221F19C
 	add r2, sp, #0x18
 	ldmia r3!, {r0, r1}

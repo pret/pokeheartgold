@@ -25,6 +25,7 @@
 #include "save_pokegear.h"
 #include "save_flypoints.h"
 #include "save_trainer_house.h"
+#include "save_special_ribbons.h"
 
 #define DECL_CHUNK(prefix) extern u32 prefix##_sizeof(void); extern void prefix##_init(void *);
 #define DECL_CHUNK_EX(sizefn, initfn) extern u32 sizefn(void); extern void initfn(void *);
@@ -33,7 +34,6 @@ DECL_CHUNK_EX(sub_020290B8, sub_020290C8)
 DECL_CHUNK(Sav2_DressupData)
 DECL_CHUNK(GameStats)
 DECL_CHUNK_EX(sub_02031000, sub_02031008)
-DECL_CHUNK_EX(sub_0202D938, sub_0202D93C)
 DECL_CHUNK_EX(sub_0202DB40, sub_0202DB44)
 DECL_CHUNK_EX(sub_0202E41C, sub_0202E424)
 DECL_CHUNK_EX(sub_0202E4F4, sub_0202E4FC)
@@ -148,10 +148,10 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
         (SAVESIZEFN)sub_02031000,
         (SAVEINITFN)sub_02031008
     }, {
-        SAVE_UNK_20,
+        SAVE_SPECIAL_RIBBONS,
         0,
-        (SAVESIZEFN)sub_0202D938,
-        (SAVEINITFN)sub_0202D93C
+        (SAVESIZEFN)Save_SpecialRibbons_sizeof,
+        (SAVEINITFN)Save_SpecialRibbons_init
     }, {
         SAVE_ROAMER,
         0,

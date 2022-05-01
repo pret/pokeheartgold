@@ -867,7 +867,7 @@ _02085C2C:
 	ldr r0, [r0, #0x48]
 	cmp r0, #0
 	beq _02085C80
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	cmp r0, #0
 	beq _02085C82
 _02085C80:

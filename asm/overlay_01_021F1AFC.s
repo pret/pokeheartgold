@@ -2710,7 +2710,7 @@ _021F2FBC:
 	ldr r0, _021F2FE8 ; =ov01_021F3030
 	ldr r2, _021F2FEC ; =0x0000FFFF
 	add r1, r5, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	add r4, r0, #0
 	bne _021F2FE2
 	bl GF_AssertFail
@@ -2750,7 +2750,7 @@ _021F3022:
 	add r0, r6, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_0200E390
+	bl DestroySysTask
 _021F302E:
 	pop {r4, r5, r6, pc}
 	thumb_func_end Field_PlayerMovementSavingClear

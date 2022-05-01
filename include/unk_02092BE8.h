@@ -1,10 +1,12 @@
 #ifndef POKEHEARTGOLD_UNK_02092BE8_H
 #define POKEHEARTGOLD_UNK_02092BE8_H
+
 #include "save.h"
 #include "save_flypoints.h"
 #include "event_data.h"
 #include "script.h"
 #include "gear_phone.h"
+#include "unk_0200E320.h"
 
 typedef struct UnkPokegearstruct_2c{
     u8 unkBool00; 
@@ -22,7 +24,7 @@ typedef struct UnkPokegearstruct_2c{
     u8 matrixXCoord; //0x22
     u8 matrixYCoord; //0x23
     SAVEDATA* data; //0x24
-    int unkPtr28; //Pointer to a Field System variable at offset 0x10C (currently unk_10C[0];)
+    void *unkPtr28; //Pointer to a Field System variable at offset 0x10C (currently unk_10C[0];)
 } Unk_PokegearSTRUCT_2C;
 
 typedef struct UnkPokegearstruct_14{
@@ -52,7 +54,7 @@ void sub_02092F30(UnkFsysSub_114* ptr, s64 seconds);
 void sub_02092F64(UnkFsysSub_114* ptr);
 void sub_02092FA0(UnkFsysSub_114* ptr);
 void sub_02092FA8(UnkFsysSub_114* ptr);
-void sub_02092FB8(u32 uselessArg, UnkFsysSub_114* ptr);
+void sub_02092FB8(SysTask *uselessArg, UnkFsysSub_114* ptr);
 void sub_02093010(UnkFsysSub_114* ptr, BOOL Unkarg0);
 BOOL sub_02093070(FieldSystem* sys);
 BOOL sub_020930C4(FieldSystem* sys);

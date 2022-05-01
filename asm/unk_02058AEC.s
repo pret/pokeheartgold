@@ -61,7 +61,7 @@ sub_02058AEC: ; 0x02058AEC
 	ldr r0, [sp, #0x20]
 	strb r0, [r4, #0x12]
 	add r0, r5, #0
-	bl sub_0202D95C
+	bl Save_SpecialRibbons_get
 	str r0, [r4, #0x20]
 	mov r0, #0
 	str r0, [r4, #0x30]
@@ -2493,7 +2493,7 @@ _02059E2E:
 	ldr r0, _02059E84 ; =sub_0205A03C
 	add r1, r4, #0
 	mov r2, #0xa
-	bl sub_0200E320
+	bl CreateSysTask
 	str r0, [r4, #0xc]
 	str r5, [r4]
 	str r6, [r4, #4]
@@ -2739,7 +2739,7 @@ sub_0205A03C: ; 0x0205A03C
 	str r1, [sp]
 	cmp r1, #0
 	bne _0205A04A
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, r4, r5, r6, r7, pc}
 _0205A04A:
 	mov r7, #0x11
@@ -2946,7 +2946,7 @@ sub_0205A1D4: ; 0x0205A1D4
 	add r4, r0, #0
 	beq _0205A1EC
 	ldr r0, [r4, #0xc]
-	bl sub_0200E390
+	bl DestroySysTask
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #0x1f

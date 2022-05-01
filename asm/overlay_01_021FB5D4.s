@@ -83,7 +83,7 @@ _021FB63E:
 	ldr r0, _021FB6B4 ; =ov01_021FB6C4
 	add r1, r4, #0
 	add r2, #0xec
-	bl sub_0200E320
+	bl CreateSysTask
 	mov r2, #0xc7
 	lsl r2, r2, #2
 	str r0, [r4, r2]
@@ -353,21 +353,21 @@ ov01_021FB82C: ; 0x021FB82C
 	str r1, [r4, r0]
 	add r0, #8
 	ldr r0, [r4, r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0xc7
 	mov r1, #0
 	lsl r0, r0, #2
 	str r1, [r4, r0]
 	add r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0x32
 	mov r1, #0
 	lsl r0, r0, #4
 	str r1, [r4, r0]
 	add r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0xc9
 	mov r1, #0
 	lsl r0, r0, #2

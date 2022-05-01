@@ -93,7 +93,7 @@ ov45_02229F94: ; 0x02229F94
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -14469,11 +14469,11 @@ _022304D0:
 _022304E2:
 	mov r0, #1
 	add r1, r7, #0
-	bl sub_02025534
+	bl Create2DGfxResMan
 	str r0, [r4]
 	mov r0, #2
 	add r1, r7, #0
-	bl sub_02025534
+	bl Create2DGfxResMan
 	str r0, [r4, #4]
 	mov r0, #0x14
 	add r1, r7, #0
@@ -14646,9 +14646,9 @@ ov45_02230638: ; 0x02230638
 	ldr r0, [r4, #8]
 	bl sub_020257C4
 	ldr r0, [r4]
-	bl sub_02025580
+	bl Destroy2DGfxResMan
 	ldr r0, [r4, #4]
-	bl sub_02025580
+	bl Destroy2DGfxResMan
 	ldr r0, [r4, #0x10]
 	bl FreeToHeap
 	add r0, r4, #0
@@ -15183,7 +15183,7 @@ _02230A24:
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
 	ldr r1, [r4, #0xc]
-	bl sub_0201F64C
+	bl Bind3dModelSet
 	ldr r0, [r4, #8]
 	mov r1, #0x14
 	bl NNS_G3dMdlSetMdlPolygonIDAll

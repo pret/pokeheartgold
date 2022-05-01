@@ -19,6 +19,7 @@
 #include "constants/balls.h"
 #include "constants/abilities.h"
 #include "constants/map_sections.h"
+#include "sound_02004A44.h"
 
 void MonEncryptSegment(void *data, u32 size, u32 key);
 void MonDecryptSegment(void *data, u32 size, u32 key);
@@ -37,9 +38,9 @@ void LoadMonPersonal(int species, BASE_STATS *dest);
 int ResolveMonForme(int species, int forme);
 u8 GetGenderBySpeciesAndPersonality_PreloadedPersonal(const BASE_STATS *personal, u16 species, u32 pid);
 u32 MaskOfFlagNo(int flagno);
-void sub_0207013C(struct SomeDrawPokemonStruct *a0, BOXMON *boxmon, u8 whichFacing, BOOL a3);
-void sub_02070588(struct SomeDrawPokemonStruct *a0, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 forme, u32 pid);
-void sub_020701E4(struct SomeDrawPokemonStruct *a0, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 forme, u32 pid);
+void GetBoxmonSpriteCharAndPlttNarcIds(struct SomeDrawPokemonStruct *a0, BOXMON *boxmon, u8 whichFacing, BOOL a3);
+void DP_GetMonSpriteCharAndPlttNarcIdsEx(struct SomeDrawPokemonStruct *a0, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 forme, u32 pid);
+void GetMonSpriteCharAndPlttNarcIdsEx(struct SomeDrawPokemonStruct *a0, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 forme, u32 pid);
 u8 sub_02070438(u16 species, u8 forme);
 u8 sub_02070854(BOXMON *boxmon, u8 whichFacing, BOOL a2);
 u8 sub_02070A64(u16 species, u8 gender, u8 whichFacing, u8 forme, u32 pid);
@@ -2147,15 +2148,15 @@ u32 GenerateShinyPersonality(u32 otid) {
     return (u32)((r5 << 16) | r6);
 }
 
-void sub_02070124(struct SomeDrawPokemonStruct *a0, BOXMON *boxmon, u8 whichFacing) {
-    sub_0207013C(a0, boxmon, whichFacing, FALSE);
+void GetPokemonSpriteCharAndPlttNarcIds(struct SomeDrawPokemonStruct *a0, BOXMON *boxmon, u8 whichFacing) {
+    GetBoxmonSpriteCharAndPlttNarcIds(a0, boxmon, whichFacing, FALSE);
 }
 
 void sub_02070130(struct SomeDrawPokemonStruct *a0, BOXMON *boxmon, u8 whichFacing) {
-    sub_0207013C(a0, boxmon, whichFacing, TRUE);
+    GetBoxmonSpriteCharAndPlttNarcIds(a0, boxmon, whichFacing, TRUE);
 }
 
-void sub_0207013C(struct SomeDrawPokemonStruct *spC, BOXMON *boxmon, u8 whichFacing, BOOL sp14) {
+void GetBoxmonSpriteCharAndPlttNarcIds(struct SomeDrawPokemonStruct *spC, BOXMON *boxmon, u8 whichFacing, BOOL sp14) {
     BOOL decry = AcquireBoxMonLock(boxmon);
     u16 species = GetBoxMonData(boxmon, MON_DATA_SPECIES2, NULL);
     u8 gender = GetBoxMonGender(boxmon);
@@ -2172,14 +2173,14 @@ void sub_0207013C(struct SomeDrawPokemonStruct *spC, BOXMON *boxmon, u8 whichFac
         forme = GetBoxMonData(boxmon, MON_DATA_FORME, NULL);
     }
     if (sp14 == TRUE) {
-        sub_02070588(spC, species, gender, whichFacing, shiny, forme, pid);
+        DP_GetMonSpriteCharAndPlttNarcIdsEx(spC, species, gender, whichFacing, shiny, forme, pid);
     } else {
-        sub_020701E4(spC, species, gender, whichFacing, shiny, forme, pid);
+        GetMonSpriteCharAndPlttNarcIdsEx(spC, species, gender, whichFacing, shiny, forme, pid);
     }
     ReleaseBoxMonLock(boxmon, decry);
 }
 
-void sub_020701E4(struct SomeDrawPokemonStruct * spC, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 forme, u32 personality) {
+void GetMonSpriteCharAndPlttNarcIdsEx(struct SomeDrawPokemonStruct * spC, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 forme, u32 personality) {
     spC->unk6 = 0;
     spC->unk8 = 0;
     spC->unkC = 0;
@@ -2356,7 +2357,7 @@ void sub_02070560(struct SomeDrawPokemonStruct * spC, u16 species, u8 whichFacin
     spC->palDataID = (u16)(shiny + (species * 6 + 4));
 }
 
-void sub_02070588(struct SomeDrawPokemonStruct * spC, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 forme, u32 personality) {
+void DP_GetMonSpriteCharAndPlttNarcIdsEx(struct SomeDrawPokemonStruct * spC, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 forme, u32 personality) {
     spC->unk6 = 0;
     spC->unk8 = 0;
     spC->unkC = 0;
@@ -5006,7 +5007,7 @@ void CalcBoxmonPokeathlonStars(struct PokeathlonPerformanceStars *dest, BOXMON *
     int i;
     struct PokeathlonTodayPerformance basePerf;
 
-    MI_CpuFill8(dest, 0, sizeof(struct PokeathlonPerformanceStars));
+    MI_CpuClear8(dest, sizeof(struct PokeathlonPerformanceStars));
     CalcBoxMonPokeathlonPerformance(boxmon, &basePerf);
     for (i = PERFORMANCE_MIN; i < PERFORMANCE_MAX; i++) {
         s16 stars = (

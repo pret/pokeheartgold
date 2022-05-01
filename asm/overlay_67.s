@@ -475,7 +475,7 @@ _021E5CA8:
 	mov r0, #5
 	pop {r4, pc}
 _021E5CBE:
-	bl sub_02025358
+	bl System_GetTouchNew
 	cmp r0, #1
 	bne _021E5CCC
 	ldr r0, _021E5D94 ; =0x000005DC
@@ -1953,7 +1953,7 @@ ov67_021E6820: ; 0x021E6820
 	mov r2, #2
 	mov r1, #0
 	lsl r2, r2, #0x14
-	bl sub_02009FC8
+	bl G2dRenderer_SetSubSurfaceCoords
 	ldr r1, [r5]
 	mov r0, #0x76
 	bl NARC_ctor

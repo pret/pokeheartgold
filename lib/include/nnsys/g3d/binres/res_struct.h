@@ -104,4 +104,43 @@ typedef struct NNSG3dResMdl_ {
     NNSG3dResNodeInfo nodeInfo;
 } NNSG3dResMdl;
 
+typedef struct NNSG3dResFileHeader_ {
+    union {
+        char signature[4];
+        u32  sigVal;
+    };
+    u16 byteOrder;
+    u16 version;
+    u32 fileSize;
+    u16 headerSize;
+    u16 dataBlocks;
+} NNSG3dResFileHeader;
+
+typedef struct NNSG3dResMdlSet_ {
+    NNSG3dResDataBlockHeader header;
+    NNSG3dResDict dict;
+} NNSG3dResMdlSet;
+
+typedef struct NNSG3dResAnmHeader_ {
+    u8 category0;
+    u8 revision;
+    u16 category1;
+} NNSG3dResAnmHeader;
+
+typedef struct {
+    NNSG3dResAnmHeader anmHeader;
+    u16 numFrame;
+    u16 dummy_;
+} NNSG3dResAnmCommon;
+
+typedef struct NNSG3dResDictEntryHeader_ {
+    u16 sizeUnit;
+    u16 ofsName;
+    u8 data[4];
+} NNSG3dResDictEntryHeader;
+
+typedef struct NNSG3dResDictMdlSetData_ {
+    u32 offset;
+} NNSG3dResDictMdlSetData;
+
 #endif //NNSYS_G3D_BINRES_RES_STRUCT_H_

@@ -89,11 +89,11 @@ sub_02026CC4: ; 0x02026CC4
 	add r5, r0, #0
 	mov r0, #0
 	str r0, [sp]
-	bl sub_0202534C
+	bl System_GetTouchHeld
 	str r0, [sp, #4]
 	cmp r0, #0
 	beq _02026D28
-	bl sub_02025358
+	bl System_GetTouchNew
 	str r0, [sp, #8]
 	ldr r0, [r5, #4]
 	mov r6, #0

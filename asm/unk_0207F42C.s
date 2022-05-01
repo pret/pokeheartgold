@@ -311,7 +311,7 @@ sub_0207F694: ; 0x0207F694
 	add r4, r0, #0
 	ldr r0, _0207F6DC ; =0x00000C64
 	ldrb r0, [r4, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0207F6D6
 	mov r0, #0x89
@@ -350,7 +350,7 @@ sub_0207F6E8: ; 0x0207F6E8
 	add r4, r0, #0
 	ldr r0, _0207F71C ; =0x00000C64
 	ldrb r0, [r4, r0]
-	bl sub_02020094
+	bl TextPrinterCheckActive
 	cmp r0, #0
 	bne _0207F716
 	mov r0, #0x89
@@ -901,11 +901,11 @@ sub_0207FB0C: ; 0x0207FB0C
 	ldr r0, _0207FBC0 ; =0x0000067C
 	add r1, r1, #2
 	ldr r0, [r5, r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, _0207FBC0 ; =0x0000067C
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r1, _0207FBB8 ; =0x00000C63
 	add r0, r5, #0
 	ldrb r1, [r5, r1]
@@ -946,7 +946,7 @@ sub_0207FBC8: ; 0x0207FBC8
 	ldr r0, _0207FC14 ; =0x0000067C
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, _0207FC18 ; =0x00000C65
 	ldrb r1, [r4, r0]
 	cmp r1, #6
@@ -1114,11 +1114,11 @@ _0207FCD0:
 	ldr r0, _0207FD64 ; =0x00000678
 	mov r1, #0
 	ldr r0, [r6, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r0, _0207FD68 ; =0x0000067C
 	mov r1, #0
 	ldr r0, [r6, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1265,7 +1265,7 @@ _0207FE6A:
 	ldr r0, _0207FEE0 ; =0x00000678
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	mov r0, #0xc1
 	mov r1, #0
 	lsl r0, r0, #2
@@ -2447,7 +2447,7 @@ sub_020807AC: ; 0x020807AC
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	b _02080808
 _020807F2:
 	mov r2, #0x1f
@@ -2891,11 +2891,11 @@ _02080AB8:
 	ldr r0, _02080B64 ; =0x0000067C
 	add r1, r1, #2
 	ldr r0, [r4, r0]
-	bl sub_020248F0
+	bl Set2dSpriteAnimSeqNo
 	ldr r0, _02080B64 ; =0x0000067C
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl sub_02024830
+	bl Set2dSpriteVisibleFlag
 	ldr r1, _02080B6C ; =0x00000C63
 	add r0, r4, #0
 	ldrb r1, [r4, r1]

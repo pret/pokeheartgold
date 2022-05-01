@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_SYSTEM_H
 
 #include "unk_0201F79C.h"
+#include "heap.h"
 
 #define BUTTONMODE_NORMAL         0
 #define BUTTONMODE_STARTEQUALSX   1
@@ -41,7 +42,7 @@ struct System {
     int keyRepeatStartDelay;
     int simulatedInputs;
 
-    u16 touchX;
+    u16 touchX; // 60
     u16 touchY;
     u16 touchNew;
     u16 touchHeld;
@@ -56,15 +57,25 @@ struct System {
 
 extern struct System gSystem;
 
+void sub_0201A0E0(void);
 void Main_SetVBlankIntrCB(GFIntrCB cb, void *arg);
+void HBlankInterruptDisable(void);
 BOOL Main_SetHBlankIntrCB(GFIntrCB cb, void *arg);
 void InitSystemForTheGame(void);
 void InitGraphicMemory(void);
+void *Sys_AllocAndReadFile(HeapID heapId, const char *path);
+void sub_0201A3F8(const char * path, void **mem);
+void sub_0201A430(void);
 void InitKeypadAndTouchpad(void);
 void sub_0201A4B0(int a0);
+void Sys_SetSleepDisableFlag(int a0);
+void Sys_ClearSleepDisableFlag(int a0);
 void ReadKeypadAndTouchpad(void);
-void Sys_SetSleepDisableFlag(int);
-void Sys_ClearSleepDisableFlag(int);
 void SetKeyRepeatTimers(int cont, int start);
+void sub_0201A728(int a0);
+void sub_0201A738(int a0);
+void sub_0201A748(HeapID heapId);
+void sub_0201A774(void);
+BOOL sub_0201A79C(void);
 
 #endif //POKEHEARTGOLD_SYSTEM_H

@@ -38,7 +38,7 @@ sub_02058038: ; 0x02058038
 	strh r1, [r0, #0x38]
 	ldr r0, _02058094 ; =sub_020582CC
 	mov r1, #0
-	bl sub_0200E320
+	bl CreateSysTask
 	ldr r1, _02058090 ; =_021D41C8
 	ldr r2, [r1]
 	str r0, [r2, #0x34]
@@ -67,7 +67,7 @@ sub_02058098: ; 0x02058098
 	cmp r0, #0
 	beq _020580DE
 	ldr r0, [r0, #0x34]
-	bl sub_0200E390
+	bl DestroySysTask
 	mov r4, #0
 	ldr r6, _020580E0 ; =_021D41C8
 	add r5, r4, #0
@@ -357,7 +357,7 @@ sub_020582CC: ; 0x020582CC
 	ldr r2, [r1]
 	cmp r2, #0
 	bne _020582DC
-	bl sub_0200E390
+	bl DestroySysTask
 	pop {r3, pc}
 _020582DC:
 	ldr r1, [r2, #0x30]

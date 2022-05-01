@@ -355,7 +355,7 @@ sub_020699AC: ; 0x020699AC
 	add r4, r2, #0
 	add r2, r3, #0
 	add r3, r4, #0
-	bl sub_0201F554
+	bl Draw3dModel
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_020699AC

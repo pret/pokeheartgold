@@ -45,7 +45,6 @@ static BOOL CreateStarter(TaskManager *taskManager) {
                 SPECIES_CYNDAQUIL,
                 SPECIES_TOTODILE,
             };
-            i;//sp18
             mapsec = MapHeader_GetMapSec(fsys->location->mapId); //sp14
 
             env->appData = AllocFromHeapAtEnd(11, sizeof(struct ChooseStarterAppData));
