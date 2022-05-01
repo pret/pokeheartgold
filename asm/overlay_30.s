@@ -349,7 +349,7 @@ ov30_0225D784: ; 0x0225D784
 	ldr r0, [r4, #4]
 	mov r2, #0xec
 	add r3, r1, #0
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add sp, #0x14
 	pop {r3, r4, pc}
 	.balign 4, 0

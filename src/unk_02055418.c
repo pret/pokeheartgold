@@ -6,6 +6,19 @@
 #include "sys_vars.h"
 #include "constants/sprites.h"
 #include "unk_02055418.h"
+#include "unk_02092BE8.h"
+#include "unk_02066EDC.h"
+#include "unk_0202C730.h"
+#include "unk_0202CA24.h"
+#include "unk_02031B0C.h"
+#include "unk_02097268.h"
+#include "save_pokeathlon.h"
+#include "fieldmap.h"
+#include "unk_0206D494.h"
+#include "overlay_01.h"
+#include "apricorn_tree.h"
+#include "unk_0201F4C4.h"
+#include "field_map_object.h"
 
 void FieldSys_StartBugContestTimer(FieldSystem* fsys) {
     RTCDate date;
@@ -42,7 +55,7 @@ void sub_02055478(FieldSystem* fsys, SYSINFO_RTC* sysinfo, RTCDate* date, RTCTim
     }
     s32 delta_seconds = seconds - sys_seconds;
     if (delta_seconds > 0) {
-        sub_02092F30(sub_02092DEC(fsys), seconds);
+        sub_02092F30(Fsys_GetGearPhoneRingManager(fsys), seconds);
     }    
     s32 minutes = delta_seconds / 60;
     if (minutes <= 0) {
@@ -58,8 +71,8 @@ void sub_02055508(FieldSystem* fsys, int unkA) {
     BOOL unkFlag = sub_02055670(fsys);
     ClearDailyFlags(fsys);
     sub_0206759C(fsys->savedata, unkA); //reset badge shininess..?
-    sub_0202C78C(sub_0202C854(fsys->savedata), unkA);
-    Roamers_SetRand(Save_Roamers_get(fsys->savedata), sub_0202C7DC(sub_0202C854(fsys->savedata)));
+    sub_0202C78C(Save_FriendGroup_get(fsys->savedata), unkA);
+    Roamers_SetRand(Save_Roamers_get(fsys->savedata), sub_0202C7DC(Save_FriendGroup_get(fsys->savedata)));
     Party_UpdatePokerus(SavArray_PlayerParty_get(fsys->savedata), unkA);
     Save_LCRNGAdvanceLotoID(fsys->savedata, (u16) unkA);
     sub_02066D60(fsys->savedata);
@@ -76,7 +89,7 @@ void sub_02055508(FieldSystem* fsys, int unkA) {
 }
 
 void sub_020555B4(FieldSystem* fsys, u32 unkA, RTCTime* time) {
-    sub_02092E34(sub_02092DEC(), unkA, 0);
+    sub_02092E34(Fsys_GetGearPhoneRingManager(fsys), unkA, 0);
     FieldSys_IncrementBugContestTimer(fsys, unkA);
     Party_TryResetShaymin(SavArray_PlayerParty_get(fsys->savedata), unkA, time);
 }
@@ -121,15 +134,15 @@ BOOL sub_02055670(FieldSystem* fsys) {
     return sub_02028E1C(sysinfo);
 }
 
-UnkStruct_020556FC* sub_02055680(UnkStruct_020556FC* unkA, HeapID heapID) {
+UnkStruct_020556FC * sub_02055680(FieldSystem *fsys, HeapID heapID) {
     UnkStruct_020556FC* unkPtr = AllocFromHeap(heapID, sizeof(UnkStruct_020556FC));
     MI_CpuClear8(unkPtr, sizeof(UnkStruct_020556FC));
     unkPtr->heapID = heapID;
-    sub_020556C8(unkA, unkPtr);
+    sub_020556C8(fsys, unkPtr);
     return unkPtr;
 }
 
-void sub_020556A8(UnkStruct_020556FC* unkPtr) {
+void sub_020556A8(UnkStruct_020556FC *unkPtr) {
     sub_020556FC(unkPtr);
     FreeToHeap(unkPtr);
 }
@@ -139,14 +152,14 @@ void sub_020556B8(FieldSystem* fsys) {
     sub_0202AE74(trees); 
 }
 
-void sub_020556C8(UnkStruct_020556FC* unkPtrA, UnkStruct_020556FC* unkPtrB) { 
-    u32* unkB = unkPtrA->unk44;
+void sub_020556C8(FieldSystem *fsys, UnkStruct_020556FC *unkPtrB) {
+    void* unkB = fsys->unk_44;
     unkPtrB->unk5c = AllocFromHeap(unkPtrB->heapID, ov01_021F149C(unkB, 31));
     ov01_021F14A8(unkB, 31, unkPtrB->unk5c);
     sub_0201F51C(&unkPtrB->unk4, &unkPtrB->unk58, &unkPtrB->unk5c);
 }
 
-void sub_020556FC(struct UnkStruct_020556FC* unkPtr) {
+void sub_020556FC(struct UnkStruct_020556FC *unkPtr) {
     ov01_021F1448(unkPtr->unk5c); //function frees unk5c to heap
 }
 

@@ -17,7 +17,7 @@ scr_seq_T25R0502_000:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_T25R0501, 0, 3, 3, 3
+	warp MAP_T25R0501, 0, 3, 3, DIR_EAST
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	wait_se SEQ_SE_DP_KAIDAN2

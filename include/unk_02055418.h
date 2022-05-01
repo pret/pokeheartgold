@@ -7,12 +7,9 @@
 
 typedef struct UnkStruct_020556FC {
     HeapID heapID;
-    u32 unk4;
-    u8 unk8[0x3c];
-    u32* unk44;
-    u8 unk48[0x10];
-    u32 unk58;
-    u32 unk5c;
+    NNSG3dRenderObj unk4;
+    NNSG3dResMdl *unk58;
+    NNSG3dResFileHeader *unk5c;
 } UnkStruct_020556FC; //size 0x60
 
 void FieldSys_StartBugContestTimer(FieldSystem* fsys);
@@ -29,11 +26,11 @@ void sub_02055624(FieldSystem* fsys, RTCDate* date, RTCTime* time);
 void sub_02055640(FieldSystem* fsys, RTCDate* date, RTCTime* time);
 void sub_0205565C(FieldSystem* fsys);
 BOOL sub_02055670(FieldSystem *fsys);
-UnkStruct_020556FC* sub_02055680(UnkStruct_020556FC* unkA, HeapID heapID);
-void sub_020556A8(UnkStruct_020556FC* unkPtr);
+UnkStruct_020556FC * sub_02055680(FieldSystem *fsys, HeapID heapID);
+void sub_020556A8(UnkStruct_020556FC *unkPtr);
 void sub_020556B8(FieldSystem* fsys);
-void sub_020556C8(UnkStruct_020556FC* unkPtrA, UnkStruct_020556FC* unkPtrB);
-void sub_020556FC(UnkStruct_020556FC* unkPtr);
+void sub_020556C8(FieldSystem *fsys, UnkStruct_020556FC *unkPtrB);
+void sub_020556FC(struct UnkStruct_020556FC *unkPtr);
 BOOL sub_02055708(FieldSystem* fsys, LocalMapObject* mapObject);
 BOOL sub_02055760(FieldSystem* fsys, LocalMapObject* mapObj);
 BOOL sub_02055780(FieldSystem* fsys, LocalMapObject* mapObj);

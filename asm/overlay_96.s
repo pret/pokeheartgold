@@ -12996,7 +12996,7 @@ _021EB8F4:
 	lsr r0, r0, #0x10
 	lsl r1, r1, #0x10
 	asr r1, r1, #0x10
-	bl sub_02006134
+	bl PlaySE_SetPitch
 	add r0, r4, #0
 	mov r5, #1
 	add r0, #0xb0
@@ -19326,7 +19326,7 @@ ov96_021EE9D8: ; 0x021EE9D8
 	add r1, r6, #0
 	mov r3, #0xd
 	str r4, [sp, #4]
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	nop
@@ -82148,7 +82148,7 @@ _0220DC68:
 _0220DC6C:
 	ldr r0, _0220DC78 ; =0x0000088D
 	add r1, r4, #0
-	bl sub_02006134
+	bl PlaySE_SetPitch
 	pop {r4, pc}
 	nop
 _0220DC78: .word 0x0000088D
@@ -87153,7 +87153,7 @@ _022103A8:
 	bne _022103E6
 	ldr r0, _02210408 ; =0x0000088D
 	mov r1, #0x80
-	bl sub_02006134
+	bl PlaySE_SetPitch
 	b _022103FE
 _022103E6:
 	cmp r0, #3
@@ -87161,12 +87161,12 @@ _022103E6:
 	bne _022103F6
 	mov r1, #1
 	lsl r1, r1, #8
-	bl sub_02006134
+	bl PlaySE_SetPitch
 	b _022103FE
 _022103F6:
 	mov r1, #5
 	lsl r1, r1, #6
-	bl sub_02006134
+	bl PlaySE_SetPitch
 _022103FE:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
@@ -100992,7 +100992,7 @@ _02216F10:
 	mov r1, #1
 	ldr r0, _02216F7C ; =0x000008D1
 	lsl r1, r1, #8
-	bl sub_02006134
+	bl PlaySE_SetPitch
 	b _02216F8C
 _02216F36:
 	ldr r0, _02216F80 ; =0x000008D5

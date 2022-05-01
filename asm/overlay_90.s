@@ -1644,7 +1644,7 @@ ov90_0225938C: ; 0x0225938C
 	ldr r0, [r7]
 	mov r2, #1
 	mov r3, #0xd
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -1654,7 +1654,7 @@ ov90_0225938C: ; 0x0225938C
 	ldr r0, [r7]
 	mov r2, #1
 	mov r3, #0xd
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	ldr r4, [sp, #0x14]
 	mov r6, #0
 	add r5, r4, #0

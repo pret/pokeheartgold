@@ -391,7 +391,7 @@ _02067D44:
 	cmp r0, #0
 	beq _02067DE4
 	ldr r0, [r4, #0x18]
-	bl sub_0206226C
+	bl EventObjectMovementMan_Delete
 	ldrh r0, [r4, #6]
 	cmp r0, #0
 	ldr r0, [r4]

@@ -19,7 +19,7 @@ scr_seq_P01R0101_001:
 	end
 
 _0029:
-	scrcmd_341 0, 1
+	set_object_facing obj_P01R0101_seaman_2, DIR_SOUTH
 	end
 
 scr_seq_P01R0101_002:

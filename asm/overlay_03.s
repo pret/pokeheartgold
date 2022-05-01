@@ -5116,7 +5116,7 @@ ov03_02256730: ; 0x02256730
 	ldr r0, [r0, #8]
 	mov r1, #3
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	ldr r0, [sp, #0x18]
 	ldr r2, _02256A10 ; =0x000003D9
 	mov r1, #1
@@ -6512,7 +6512,7 @@ _0225720C:
 	ldr r0, [r4]
 	mov r1, #3
 	mov r2, #0x1f
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0x25
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -6526,7 +6526,7 @@ _0225720C:
 	mov r1, #3
 	mov r2, #1
 	mov r3, #0xa
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add sp, #0x10
 	pop {r4, pc}
 	nop
@@ -10085,7 +10085,7 @@ ov03_02258DE8: ; 0x02258DE8
 	ldr r2, _02258E84 ; =0x000003D9
 	mov r1, #3
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	add r0, r4, #0
 	ldr r2, _02258E84 ; =0x000003D9
 	add r0, #0x10

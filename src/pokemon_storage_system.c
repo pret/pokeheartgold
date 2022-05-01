@@ -318,12 +318,12 @@ BOXMON* PCStorage_GetMonByIndexPair(PC_STORAGE* storage, u32 boxno, u32 slotno) 
     return &storage->boxes[boxno].mons[slotno];
 }
 
-void PCStorage_UnlockBonusWallpaper(PC_STORAGE* storage, u8 wallpaper) {
+void PCStorage_UnlockBonusWallpaper(PC_STORAGE* storage, u32 wallpaper) {
     GF_ASSERT(wallpaper < NUM_BONUS_WALLPAPER);
     storage->unlockedWallpapers |= (1 << wallpaper);
 }
 
-BOOL PCStorage_IsBonusWallpaperUnlocked(PC_STORAGE* storage, u8 wallpaper) {
+BOOL PCStorage_IsBonusWallpaperUnlocked(PC_STORAGE* storage, u32 wallpaper) {
     GF_ASSERT(wallpaper < NUM_BONUS_WALLPAPER);
     return (storage->unlockedWallpapers & (1 << wallpaper)) != 0;
 }

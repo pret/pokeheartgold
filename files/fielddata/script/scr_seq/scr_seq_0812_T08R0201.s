@@ -28,8 +28,8 @@ _003B:
 	end
 
 _0052:
-	scrcmd_338 6, 8, 9
-	scrcmd_341 6, 2
+	move_person obj_T08R0201_workman, 8, 9
+	set_object_facing obj_T08R0201_workman, DIR_WEST
 	end
 
 _0062:
@@ -153,7 +153,7 @@ _01FB:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D10R0101, 0, 24, 47, 0
+	warp MAP_D10R0101, 0, 24, 47, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	lock obj_partner_poke

@@ -17,7 +17,7 @@
 	scrdef_end
 
 scr_seq_T11R0601_006:
-	scrcmd_582 76, 1290, 209
+	scrcmd_582 MAP_T25, 1290, 209
 	goto_if_set FLAG_RESTORED_POWER, _003F
 	goto _0045
 
@@ -41,7 +41,7 @@ scr_seq_T11R0601_005:
 	end
 
 _008D:
-	move_person obj_T11R0601_policeman, 12, 0, 7, 3
+	move_person_facing obj_T11R0601_policeman, 12, 0, 7, DIR_EAST
 	end
 
 scr_seq_T11R0601_000:

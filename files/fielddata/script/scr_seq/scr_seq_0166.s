@@ -187,7 +187,7 @@ _0254:
 	.byte 0x02, 0x00
 _0295:
 	npc_msg msg_0043_00212
-	scrcmd_063 VAR_SPECIAL_RESULT
+	yesno VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0254
 	closemsg
@@ -206,7 +206,7 @@ _02DF:
 	.byte 0x02, 0x00
 _02E7:
 	npc_msg msg_0043_00212
-	scrcmd_063 VAR_SPECIAL_RESULT
+	yesno VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0254
 	closemsg

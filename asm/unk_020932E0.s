@@ -3641,7 +3641,7 @@ sub_0209501C: ; 0x0209501C
 	ldr r0, [r4]
 	ldr r2, _020950B0 ; =0x000003D2
 	mov r3, #0xb
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r0, #0x15
 	str r0, [sp]
 	str r0, [sp, #4]

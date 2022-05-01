@@ -18,10 +18,10 @@
 
 scr_seq_R22R0101_006:
 	goto_if_unset FLAG_UNLOCKED_WEST_KANTO, _003D
-	move_person obj_R22R0101_policeman_3, 15, 0, 8, 1
+	move_person_facing obj_R22R0101_policeman_3, 15, 0, 8, DIR_SOUTH
 _003D:
 	goto_if_unset FLAG_UNLOCKED_MT_SILVER, _0054
-	move_person obj_R22R0101_policeman_2, 7, 0, 8, 1
+	move_person_facing obj_R22R0101_policeman_2, 7, 0, 8, DIR_SOUTH
 _0054:
 	end
 

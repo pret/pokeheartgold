@@ -61,13 +61,13 @@ _00C3:
 scr_seq_T11R0701_005:
 	compare VAR_TEMP_x4009, 1
 	goto_if_ne _00E0
-	scrcmd_342 1, 23, 2
+	move_warp 1, 23, 2
 _00E0:
 	compare VAR_TEMP_x4008, 0
 	goto_if_ne _0106
 	compare VAR_UNK_4130, 3
 	goto_if_gt _0106
-	move_person obj_T11R0701_daigo, 22, 0, 8, 0
+	move_person_facing obj_T11R0701_daigo, 22, 0, 8, DIR_NORTH
 _0106:
 	end
 

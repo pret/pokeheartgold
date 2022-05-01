@@ -31,33 +31,33 @@ scr_seq_T27R0501_013:
 _0057:
 	compare VAR_UNK_410C, 0
 	goto_if_ne _007C
-	move_person obj_T27R0501_rocketm, 6, 0, 6, 3
-	move_person obj_T27R0501_dancer_3, 8, 0, 6, 2
+	move_person_facing obj_T27R0501_rocketm, 6, 0, 6, DIR_EAST
+	move_person_facing obj_T27R0501_dancer_3, 8, 0, 6, DIR_WEST
 _007C:
 	compare VAR_TEMP_x4009, 222
 	goto_if_ne _0110
-	move_person obj_T27R0501_rocketm, 29, 0, 29, 1
+	move_person_facing obj_T27R0501_rocketm, 29, 0, 29, DIR_SOUTH
 	scrcmd_375 obj_T27R0501_rocketm
 	get_player_facing VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_ne _00BC
-	move_person obj_T27R0501_rocketm_2, 7, 0, 6, 1
+	move_person_facing obj_T27R0501_rocketm_2, 7, 0, 6, DIR_SOUTH
 	goto _0106
 
 _00BC:
 	compare VAR_TEMP_x4000, 1
 	goto_if_ne _00DB
-	move_person obj_T27R0501_rocketm_2, 7, 0, 6, 0
+	move_person_facing obj_T27R0501_rocketm_2, 7, 0, 6, DIR_NORTH
 	goto _0106
 
 _00DB:
 	compare VAR_TEMP_x4000, 2
 	goto_if_ne _00FA
-	move_person obj_T27R0501_rocketm_2, 7, 0, 6, 3
+	move_person_facing obj_T27R0501_rocketm_2, 7, 0, 6, DIR_EAST
 	goto _0106
 
 _00FA:
-	move_person obj_T27R0501_rocketm_2, 7, 0, 6, 2
+	move_person_facing obj_T27R0501_rocketm_2, 7, 0, 6, DIR_WEST
 _0106:
 	scrcmd_374 obj_T27R0501_rocketm_2
 	setvar VAR_TEMP_x4009, 0
@@ -66,7 +66,7 @@ _0110:
 	goto_if_eq _0136
 	compare VAR_UNK_410C, 3
 	goto_if_ne _0136
-	move_person obj_T27R0501_dancer_3, 7, 0, 6, 1
+	move_person_facing obj_T27R0501_dancer_3, 7, 0, 6, DIR_SOUTH
 _0136:
 	end
 

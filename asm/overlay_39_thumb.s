@@ -2920,7 +2920,7 @@ ov39_022285CC: ; 0x022285CC
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xa
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x7c
@@ -2928,7 +2928,7 @@ ov39_022285CC: ; 0x022285CC
 	add r0, r4, #0
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]

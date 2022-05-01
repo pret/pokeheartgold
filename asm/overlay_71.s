@@ -2302,7 +2302,7 @@ ov71_02247A10: ; 0x02247A10
 	mov r1, #1
 	mov r2, #0x6d
 	mov r3, #2
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r0, #0x13
 	str r0, [sp]
 	mov r0, #0x1b
@@ -9389,7 +9389,7 @@ ov71_0224B280: ; 0x0224B280
 	mov r1, #1
 	mov r2, #0x6d
 	mov r3, #2
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r0, #0x13
 	str r0, [sp]
 	mov r0, #0x1b

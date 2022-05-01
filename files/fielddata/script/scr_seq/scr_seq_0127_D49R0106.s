@@ -28,7 +28,7 @@ _0039:
 scr_seq_D49R0106_007:
 	compare VAR_TEMP_x400D, 1
 	goto_if_ne _0060
-	move_person obj_D49R0106_pcwoman2, 6, 1, 3, 3
+	move_person_facing obj_D49R0106_pcwoman2, 6, 1, 3, DIR_EAST
 	setvar VAR_TEMP_x400D, 0
 _0060:
 	end

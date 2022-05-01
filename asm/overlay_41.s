@@ -3878,7 +3878,7 @@ ov41_02247BB8: ; 0x02247BB8
 	mov r1, #3
 	mov r2, #0x3c
 	mov r3, #8
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	ldr r0, _02247C74 ; =0x000006BC
 	mov r1, #0
 	ldr r0, [r5, r0]
@@ -10642,7 +10642,7 @@ ov41_0224ACDC: ; 0x0224ACDC
 	add r0, r4, #0
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r0, #4
 	mov r1, #0x40
 	mov r2, #0xe

@@ -25,7 +25,6 @@ MAKEROM      := $(TOOLSDIR)/bin/makerom.exe
 MAKELCF      := $(TOOLSDIR)/bin/makelcf.exe
 MAKEBNR      := $(TOOLSDIR)/bin/makebanner.exe
 NTRCOMP      := $(TOOLSDIR)/bin/ntrcomp.exe
-COMPSTATIC   := $(TOOLSDIR)/bin/compstatic.exe
 
 export LM_LICENSE_FILE := $(TOOLSDIR)/mwccarm/license.dat
 
@@ -40,6 +39,9 @@ ASPATCH      := $(TOOLSDIR)/mwasmarm_patcher/mwasmarm_patcher$(EXE)
 CSV2BIN      := $(TOOLSDIR)/csv2bin/csv2bin$(EXE)
 MKFXCONST    := $(TOOLSDIR)/gen_fx_consts/gen_fx_consts$(EXE)
 
+# Decompiled NitroSDK tools
+COMPSTATIC   := $(TOOLSDIR)/compstatic/compstatic$(EXE)
+
 NTRMERGE     := $(TOOLSDIR)/ntr_merge_elf/ntr_merge_elf.sh
 
 NATIVE_TOOLS := \
@@ -51,7 +53,8 @@ NATIVE_TOOLS := \
 	$(MSGENC) \
 	$(ASPATCH) \
 	$(CSV2BIN) \
-	$(MKFXCONST)
+	$(MKFXCONST) \
+	$(COMPSTATIC)
 
 TOOLDIRS := $(foreach tool,$(NATIVE_TOOLS),$(dir $(tool)))
 

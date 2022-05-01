@@ -45,7 +45,7 @@ _0071:
 	wait_se SEQ_SE_GS_W012
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_R10R0201, 0, 13, 7, 1
+	warp MAP_R10R0201, 0, 13, 7, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0345_R10R0202_00015

@@ -1348,7 +1348,7 @@ ov56_021E6650: ; 0x021E6650
 	str r0, [sp, #4]
 	ldr r0, [r5, #0x18]
 	mov r3, #4
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	ldrb r0, [r5, #0xb]
 	mov r1, #0
 	mov r2, #0xa
@@ -1357,7 +1357,7 @@ ov56_021E6650: ; 0x021E6650
 	mov r3, #6
 	str r0, [sp, #4]
 	ldr r0, [r5, #0x18]
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add r0, r7, #0
 	str r0, [sp, #0x1c]
 	add r0, #0xc

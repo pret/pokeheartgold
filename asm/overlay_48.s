@@ -1794,14 +1794,14 @@ _0225951A:
 	ldr r0, [r5]
 	mov r1, #1
 	mov r2, #0x1f
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	mov r3, #0
 	str r3, [sp]
 	str r7, [sp, #4]
 	ldr r0, [r5]
 	mov r1, #1
 	mov r2, #0x1f
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	ldr r0, [sp, #0x10]
 	bl Options_GetFrame
 	lsl r0, r0, #0x18
@@ -1812,14 +1812,14 @@ _0225951A:
 	ldr r0, [r5]
 	mov r1, #4
 	add r3, r2, #0
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	str r4, [sp]
 	str r7, [sp, #4]
 	mov r1, #1
 	ldr r0, [r5]
 	add r2, r1, #0
 	mov r3, #2
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	ldr r1, _0225964C ; =0x000072CA
 	mov r0, #0
 	bl BG_SetMaskColor

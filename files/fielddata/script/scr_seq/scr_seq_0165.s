@@ -34,9 +34,9 @@ _0037:
 _005E:
 	fade_out_bgm 42, 10
 	npc_msg msg_0268_00008
-	scrcmd_345
+	add_waiting_icon
 	wait 80, VAR_SPECIAL_RESULT
-	scrcmd_346
+	remove_waiting_icon
 	npc_msg msg_0268_00001
 	chatot_start_recording VAR_SPECIAL_RESULT
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT

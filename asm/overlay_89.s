@@ -1304,7 +1304,7 @@ _022592FE:
 	ldr r0, [r4, #8]
 	add r2, r1, #0
 	mov r3, #0xe
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0x20

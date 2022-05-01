@@ -1,4 +1,4 @@
-# Pokemon HeartGold
+# Pokémon HeartGold and SoulSilver
 
 This is a WIP decompilation of Pokemon HeartGold and SoulSilver. 
 

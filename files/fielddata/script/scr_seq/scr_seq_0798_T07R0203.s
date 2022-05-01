@@ -29,8 +29,8 @@ scr_seq_T07R0203_008:
 scr_seq_T07R0203_011:
 	compare VAR_UNK_412C, 0
 	goto_if_ne _006B
-	move_person obj_T07R0203_var_1, 12, 0, 6, 2
-	move_person obj_T07R0203_tsure_poke_static_marill, 13, 0, 6, 2
+	move_person_facing obj_T07R0203_var_1, 12, 0, 6, DIR_WEST
+	move_person_facing obj_T07R0203_tsure_poke_static_marill, 13, 0, 6, DIR_WEST
 _006B:
 	end
 
@@ -71,8 +71,8 @@ scr_seq_T07R0203_010:
 	scrcmd_309 77
 	callstd std_fade_end_friend_music
 	setvar VAR_UNK_412C, 1
-	move_person obj_T07R0203_var_1, 29, 0, 29, 2
-	move_person obj_T07R0203_tsure_poke_static_marill, 29, 0, 29, 2
+	move_person_facing obj_T07R0203_var_1, 29, 0, 29, DIR_WEST
+	move_person_facing obj_T07R0203_tsure_poke_static_marill, 29, 0, 29, DIR_WEST
 	releaseall
 	end
 	.byte 0x00

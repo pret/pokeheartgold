@@ -2575,7 +2575,7 @@ _0203F5F6:
 	bl String_c_str
 	add r7, r0, #0
 	ldr r0, [r6, #0xc]
-	bl sub_0202C854
+	bl Save_FriendGroup_get
 	add r1, r7, #0
 	bl sub_0202C88C
 	cmp r0, #0
@@ -2674,7 +2674,7 @@ _0203F6BE:
 	pop {r4, r5, r6, pc}
 _0203F6CA:
 	ldr r0, [r5, #0xc]
-	bl sub_0202C854
+	bl Save_FriendGroup_get
 	ldr r3, [r4, #0xc]
 	mov r1, #0
 	ldr r3, [r3, #0x18]

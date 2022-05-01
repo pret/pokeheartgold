@@ -5227,7 +5227,7 @@ ov87_021E8134: ; 0x021E8134
 	ldr r0, [r4]
 	ldr r2, _021E8170 ; =0x000003D9
 	mov r3, #0xa
-	bl sub_0200E644
+	bl LoadUserFrameGfx2
 	add r0, r4, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer

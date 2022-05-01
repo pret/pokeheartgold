@@ -364,8 +364,8 @@ _04B2:
 	buffer_rivals_name 1
 	npc_msg msg_0129_D44R0102_00014
 	closemsg
-	move_person obj_D44R0102_wataru, 28, 0, 34, 1
-	move_person obj_D44R0102_gsleader8_2, 28, 0, 33, 1
+	move_person_facing obj_D44R0102_wataru, 28, 0, 34, DIR_SOUTH
+	move_person_facing obj_D44R0102_gsleader8_2, 28, 0, 33, DIR_SOUTH
 	callstd std_fade_end_rival_intro_music
 	apply_movement obj_D44R0102_gsrivel_2, _0674
 	apply_movement obj_player, _06A8

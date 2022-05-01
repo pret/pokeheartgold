@@ -4,7 +4,6 @@
 #include "constants/species.h"
 #include "friend_group.h"
 #include "heap.h"
-#include "igt.h"
 #include "mail.h"
 #include "main.h"
 #include "math_util.h"
@@ -20,6 +19,10 @@
 #include "sys_flags.h"
 #include "sys_vars.h"
 #include "unk_0205B3DC.h"
+#include "unk_02018380.h"
+#include "unk_0202C730.h"
+#include "unk_02066EDC.h"
+#include "unk_0203E348.h"
 #include "msgdata/msg/msg_0445.h"
 
 #define HEAPID_OV36   ((HeapID)75)
@@ -27,11 +30,6 @@
 extern const OVY_MGR_TEMPLATE gApplication_NewGameFieldsys;
 extern const OVY_MGR_TEMPLATE gApplication_ContinueFieldsys;
 extern const OVY_MGR_TEMPLATE gApplication_OakSpeech;
-
-extern void sub_0201838C(IGT* igt);
-extern u32 sub_020674BC(SAVEDATA* savedata);
-extern void Save_CurrentLocation_BackUp(SAVEDATA* savedata);
-extern void sub_0202C7C0(SAV_FRIEND_GRP* friend_groups, u32 group_idx, u32 a2);
 
 static BOOL ov36_App_MainMenu_SelectOption_Continue_AppInit(OVY_MANAGER* man, int* state);
 static BOOL ov36_App_MainMenu_SelectOption_Continue_AppExec(OVY_MANAGER* man, int* state);
@@ -181,7 +179,7 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SAVEDATA* saved
     Sav2_SysInfo_InitFromSystem(Sav2_SysInfo_get(savedata));
     Sav2_SysInfo_RTC_init(Sav2_SysInfo_RTC_get(savedata));
     Sav2_BerryPotRTC_init(Sav2_BerryPotRTC_get(savedata));
-    sub_0202C7C0(sub_0202C854(savedata), 1, MTRandom());
+    sub_0202C7C0(Save_FriendGroup_get(savedata), 1, MTRandom());
     sub_020674BC(savedata);
 
     PLAYERPROFILE* profile = Sav2_PlayerData_GetProfileAddr(savedata);

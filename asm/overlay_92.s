@@ -4623,7 +4623,7 @@ ov92_0225E9B4: ; 0x0225E9B4
 	mov r1, #7
 	mov r2, #0xb4
 	mov r3, #0xd
-	bl sub_0200E3DC
+	bl LoadUserFrameGfx1
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov92_0225E9B4
