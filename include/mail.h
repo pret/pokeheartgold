@@ -31,6 +31,7 @@ void Mail_SetMessage(MAIL *mail, const MAIL_MESSAGE *src, int i);
 MAILBOX *Sav2_Mailbox_get(SAVEDATA *saveData);
 u32 Sav2_Mailbox_sizeof(void);
 void Sav2_Mailbox_init(MAILBOX *mailbox);
+MAIL *Mailbox_AllocAndFetchMailI(MAIL *msgs, int n, int i, HeapID heapId);
 int Mailbox_GetFirstEmptySlotIdx(MAILBOX *mailbox);
 void Mailbox_DeleteSlotI(MAIL *msgs, int n, int i);
 void Mailbox_CopyMailToSlotI(MAIL *msgs, int n, int i, const MAIL *src);
