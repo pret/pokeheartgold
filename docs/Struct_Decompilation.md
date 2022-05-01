@@ -56,7 +56,7 @@ This function takes in a single parameter, uses it to load multiple different th
 Let's look at the offsets for storing and loading opcodes and write a dummy struct.
 
 ```c
-typedef struct Unk_Struct{
+typedef struct UnkStruct {
 	//0x00
 	//0x02
 	//0x03
@@ -67,13 +67,13 @@ typedef struct Unk_Struct{
 	//0x14
 	//0x18
 	//0x1c
-}Unk_Struct; //size: 0x1d
+} UnkStruct; //size: 0x1d
 ```
 
 We can use the difference between offsets to figure out the type of the members, filling in any remaining gaps with "filler" members. (Keep in mind that a type like u64 is actually 64 bits, a k a 8 bytes. and the hex offsets are in bytes)
 
 ```c
-typedef struct Unk_Struct{
+typedef struct UnkStruct{
 	u16 unk00; //0x00
 	u8 unk02; //0x02
 	u8 unk03; //0x03
@@ -86,13 +86,13 @@ typedef struct Unk_Struct{
 	u32 unk14; //0x14
 	u64 unk18; //0x18
 	u8 unk1c; //0x1c
-}Unk_Struct; //size: 0x1d
+} UnkStruct; //size: 0x1d
 ```
 
 With that done, let's decompile `sub_02092F64` to see if we'll gain any more context for the struct:
 
 ```c
-void sub_02092F64(Unk_Struct* ptr){
+void sub_02092F64(Unk_Struct* ptr) {
 	sub_02093010(ptr, 0);
 	ptr->unk08 = 0;
 	ptr->unk14 = 0;

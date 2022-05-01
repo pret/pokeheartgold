@@ -39,3 +39,4 @@ These documents explain different parts of the decompilation process in detail:
 - [Code/Static Data Decompilation shown in an Example](Code_Decompilation.md)
 - [Non-static Struct Decompilation](Struct_Decompilation.md)
 - [How to figure out nonmatching code sections](How_to_see_nonmatching_code_sections.md)
+- [Style guide](Style_Guide.md)
