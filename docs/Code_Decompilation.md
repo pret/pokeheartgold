@@ -133,7 +133,7 @@ Since a u8 value is being compares to the value in r0, we can assume it's also o
 
 Now our code looks something like this:
 
-```
+```c
 extern const u8 _02106058[6];
 
 void LanguageToDexFlag(u8 unk) {
