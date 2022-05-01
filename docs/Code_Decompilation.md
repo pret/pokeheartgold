@@ -54,7 +54,10 @@ _02106058:
 Assembly files are divided into multiple parts:
 - .text: Contains function definitions
 - .rodata: Read Only Data- these are the same as consts in C
-- .bss: Block Starting Symbol- these are statically allocated variables
+- .bss: Block Starting Symbol- these are statically allocated variables with no values on initilizarions
+- .data: Data- these are statically allocated variables with a specific value on initializations
+
+(See [Static Data Decompilation](Static_Data_Decompilation.md) for more info on data segments)
 
 Functions are the most important part of decompiling any assembly file, so it's important to know how to translate the assembly into C
 
@@ -237,3 +240,4 @@ If you're confused about what an instructions means, Google or any other search 
 Don't be afraid to ask for help in the #asm2c channel either, just make sure to provide your code when you do.
 
 And if you use decomp.me to work in, please remember to include `#pragma thumb on` at the top of your code, as otherwise you will be comparing an ARM instruction set to decomp.me's THUMB target
+(See [How to see nonmatching code sections](How_to_see_nonmatching_code_sections.md) for more info)

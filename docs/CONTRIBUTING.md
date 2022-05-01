@@ -17,7 +17,7 @@ The goal is to take the assembly code and turn them into readable C code that ge
 * `src/`: contains decompiled code
 * `include/`: contains header files for decompiled code
 * `include/constants/`: has constant macros to make decompiled code more readable
-* `main.lsf`: list of code files that will be compiled into a ROM
+* `main.lsf`: list of compiled files that will be linked into a ROM
 
 ## Matching-Decompiling ASM code into C code
 
@@ -36,5 +36,6 @@ The general workflow is like this:
 9. Open a pull request for your decompiled code
 
 These documents explain different parts of the decompilation process in detail:
-- [Code Decompilation](Code_Decompilation.md)
-- [Struct Decompilation](Struct_Decompilation.md)
+- [Code/Static Data Decompilation shown in an Example](Code_Decompilation.md)
+- [Non-static Struct Decompilation](Struct_Decompilation.md)
+- [How to figure out nonmatching code sections](How_to_see_nonmatching_code_sections.md)

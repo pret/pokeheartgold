@@ -1,11 +1,12 @@
-Figuring out compiled structs is difficult because in 90% of the cases the structs compile into raw bytes. And the only way you can figure out their exact structure is from context.
+Figuring out compiled structs is difficult because in 90% of the cases the structs compile into dynamic stack allocations. And the only way you can figure out their exact structure is from context.
 
 ###How structs work in compiled code
 
-During runtime, members of a struct are stored right next to each other in memory. When a function wants to access a member of this struct they do this by getting the address of the first member and adding an offset to it. then using a variant of the `ldr` opcode to load the content of the member:
+During runtime, members of a struct are stored right next to each other in memory (specifically in the stack). When a function wants to access a member of this struct they do this by getting the address of the first member and adding an offset to it. then using a variant of the `ldr` opcode to load the content of the member:
 - `ldrb r0 [r0+<offset>]` loads a byte member of a struct into r0 (`ldrsb` if it's a signed byte)
 - `ldrh r0 [r0+<offset>]` loads a halfword (2 bytes) member of a struct into r0 (`ldrsh` if it's a signed halfword)
 - `ldr r0 [r0+<offset>]` loads a word (4 bytes) member of a struct into r0 (`ldrs` if it's a signed word)
+
 The same thing happens when functions want to store a value inside a struct member:
 - `strb r0 [r0+<offset>]` stores r0 into a byte member of a struct
 - `strh r0 [r0+<offset>]` stores r0 a halfword (2 bytes) member of a struct 
@@ -66,10 +67,10 @@ typedef struct Unk_Struct{
 	//0x14
 	//0x18
 	//0x1c
-}Unk_Struct;
+}Unk_Struct; //size: 0x1d
 ```
 
-We can use the difference between offsets to figure out the type of the members, filling in any remaining gaps with "filler" members
+We can use the difference between offsets to figure out the type of the members, filling in any remaining gaps with "filler" members. (Keep in mind that a type like u64 is actually 64 bits, a k a 8 bytes. and the hex offsets are in bytes)
 
 ```c
 typedef struct Unk_Struct{
@@ -85,7 +86,7 @@ typedef struct Unk_Struct{
 	u32 unk14; //0x14
 	u64 unk18; //0x18
 	u8 unk1c; //0x1c
-}Unk_Struct;
+}Unk_Struct; //size: 0x1d
 ```
 
 With that done, let's decompile `sub_02092F64` to see if we'll gain any more context for the struct:
@@ -134,5 +135,5 @@ That's all the context we can get regarding `Unk_Struct` from `sub_02092F64`!
 
 ###Some tips for decompiling structs
 - Try to decompile as many functions involved with your structs as possible. The more context you have the more you can decompile and identify the structs.
-- Giving your structs generic names such as `Unk_Struct` can make them conflict with the rest of the repo. Try appending the size of the struct to the name to avoid that (such as `Unk_Struct_1C`).
-- Always check the type of the struct members as you fill out your struct. An u32 might turn out to be a pointer, and an u64 might actually be a s64!
+- Giving your structs generic names such as `Unk_Struct` can make them conflict with the rest of the repo. Try appending the size of the struct to the name as well as some context to avoid that (such as `Unk_FsysSub_Struct_1C`).
+- Always check the type of the struct members as you fill out your struct. An u32 might turn out to be a pointer, and an u64 might actually be a s64, and a u32 might actually be two seperate u16-s.
