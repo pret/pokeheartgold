@@ -93,9 +93,9 @@ void Snd_SetScene(u8 scene) {
     if (scene < SOUND_SUB) {
         *scene_main = scene;
         *scene_sub = SOUND_MAIN_DUMMY;
-        return;
+    } else {
+        *scene_sub = scene;
     }
-    *scene_sub = scene;
 }
 
 static void Snd_SetSubscene(u8 scene) {
