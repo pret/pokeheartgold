@@ -225,7 +225,7 @@
 #define FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_3                 0xCD
 #define FLAG_UNK_0CE                                                0xCE
 #define FLAG_UNK_0CF                                                0xCF
-#define FLAG_UNK_0D0                                                0xD0
+#define FLAG_TRADE_BLACKTHORN_CITY_DRAGONAIR_DODRIO                 0xD0
 #define FLAG_UNK_0D1                                                0xD1
 #define FLAG_UNK_0D2                                                0xD2
 #define FLAG_UNK_0D3                                                0xD3
