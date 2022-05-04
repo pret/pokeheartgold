@@ -304,7 +304,7 @@ scr_seq_D44R0103_000:
 	faceplayer
 	goto_if_set FLAG_UNK_0DD, _053D
 	goto_if_set FLAG_UNK_0DC, _052E
-	goto_if_set FLAG_UNK_0DA, _04A6
+	goto_if_set FLAG_GOT_TM59_FROM_CLAIR, _04A6
 	get_game_version VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _049B

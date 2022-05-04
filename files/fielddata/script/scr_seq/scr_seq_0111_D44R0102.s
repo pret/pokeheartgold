@@ -153,7 +153,7 @@ _01F8:
 	npc_msg msg_0129_D44R0102_00001
 	goto_if_no_item_space ITEM_TM59, 1, _02A7
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_0DA
+	setflag FLAG_GOT_TM59_FROM_CLAIR
 	npc_msg msg_0129_D44R0102_00003
 _0236:
 	npc_msg msg_0129_D44R0102_00005

@@ -235,7 +235,7 @@
 #define FLAG_UNK_0D7                                                0xD7
 #define FLAG_GOT_TWISTEDSPOON_FROM_TUSCANY                          0xD8
 #define FLAG_UNK_0D9                                                0xD9
-#define FLAG_UNK_0DA                                                0xDA
+#define FLAG_GOT_TM59_FROM_CLAIR                                    0xDA
 #define FLAG_UNK_0DB                                                0xDB
 #define FLAG_UNK_0DC                                                0xDC
 #define FLAG_UNK_0DD                                                0xDD
