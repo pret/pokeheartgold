@@ -208,9 +208,9 @@
 #define FLAG_UNK_0BC                                                0xBC
 #define FLAG_UNK_0BD                                                0xBD
 #define FLAG_TRADE_OLIVINE_CITY_KRABBY_VOLTORB                      0xBE
-#define FLAG_UNK_0BF                                                0xBF
+#define FLAG_GOT_LOAN_SHUCKLE                                       0xBF
 #define FLAG_UNK_0C0                                                0xC0
-#define FLAG_UNK_0C1                                                0xC1
+#define FLAG_RETURNED_OR_INHERITED_LOAN_SHUCKLE                     0xC1
 #define FLAG_UNK_0C2                                                0xC2
 #define FLAG_UNK_0C3                                                0xC3
 #define FLAG_UNK_0C4                                                0xC4
@@ -2067,7 +2067,7 @@
 #define FLAG_UNK_ABA                                               0xABA
 #define FLAG_UNK_ABB                                               0xABB
 #define FLAG_DAILY_GOT_SHOCK_RIBBON                                0xABC
-#define FLAG_UNK_ABD                                               0xABD
+#define FLAG_DAILY_GOT_LOAN_SHUCKLE_TODAY                          0xABD
 #define FLAG_UNK_ABE                                               0xABE
 #define FLAG_UNK_ABF                                               0xABF
 #define FLAG_UNK_AC0                                               0xAC0
