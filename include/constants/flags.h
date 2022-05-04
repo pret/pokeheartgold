@@ -158,7 +158,7 @@
 #define FLAG_GOT_RADIO_CARD                                         0x8A
 #define FLAG_UNK_08B                                                0x8B
 #define FLAG_UNK_08C                                                0x8C
-#define FLAG_UNK_08D                                                0x8D
+#define FLAG_TRADE_GOLDENROD_CITY_DROWZEE_MACHOP                    0x8D
 #define FLAG_UNK_08E                                                0x8E
 #define FLAG_UNK_08F                                                0x8F
 #define FLAG_UNK_090                                                0x90
