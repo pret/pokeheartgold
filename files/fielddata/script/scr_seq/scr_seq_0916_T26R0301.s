@@ -12,7 +12,7 @@ scr_seq_T26R0301_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_0BE, _00B3
+	goto_if_set FLAG_TRADE_OLIVINE_CITY_KRABBY_VOLTORB, _00B3
 	npc_msg msg_0608_T26R0301_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -40,7 +40,7 @@ _0037:
 	goto_if_ne _009B
 	npc_trade_exec VAR_SPECIAL_x8004
 	npc_trade_end
-	setflag FLAG_UNK_0BE
+	setflag FLAG_TRADE_OLIVINE_CITY_KRABBY_VOLTORB
 	npc_msg msg_0608_T26R0301_00001
 	wait_button_or_walk_away
 	closemsg

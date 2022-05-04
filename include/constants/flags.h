@@ -207,7 +207,7 @@
 #define FLAG_UNK_0BB                                                0xBB
 #define FLAG_UNK_0BC                                                0xBC
 #define FLAG_UNK_0BD                                                0xBD
-#define FLAG_UNK_0BE                                                0xBE
+#define FLAG_TRADE_OLIVINE_CITY_KRABBY_VOLTORB                      0xBE
 #define FLAG_UNK_0BF                                                0xBF
 #define FLAG_UNK_0C0                                                0xC0
 #define FLAG_UNK_0C1                                                0xC1
