@@ -130,7 +130,7 @@
 #define FLAG_UNK_06E                                                0x6E
 #define FLAG_UNK_06F                                                0x6F
 #define FLAG_UNK_070                                                0x70
-#define FLAG_UNK_071                                                0x71
+#define FLAG_TRADE_VIOLET_CITY_BELLSPROUT_ONIX                      0x71
 #define FLAG_UNK_072                                                0x72
 #define FLAG_GOT_TM51_FROM_FALKNER                                  0x73
 #define FLAG_UNK_074                                                0x74
