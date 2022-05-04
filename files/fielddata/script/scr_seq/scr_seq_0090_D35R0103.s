@@ -61,7 +61,7 @@ _00BF:
 	setflag FLAG_UNK_96B
 	hide_person obj_D35R0103_tsure_poke_static_electrode
 	hide_person obj_D35R0103_tsure_poke_static_electrode_4
-	setflag FLAG_UNK_1F5
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_ELECTRODE_1_AND_4
 	goto _0127
 
 _00F4:
@@ -70,14 +70,14 @@ _00F4:
 	setflag FLAG_UNK_96C
 	hide_person obj_D35R0103_tsure_poke_static_electrode_2
 	hide_person obj_D35R0103_tsure_poke_static_electrode_5
-	setflag FLAG_UNK_1F6
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_ELECTRODE_2_AND_5
 	goto _0127
 
 _0117:
 	setflag FLAG_UNK_96D
 	hide_person obj_D35R0103_tsure_poke_static_electrode_3
 	hide_person obj_D35R0103_tsure_poke_static_electrode_6
-	setflag FLAG_UNK_1F7
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_ELECTRODE_3_AND_6
 _0127:
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
@@ -555,9 +555,9 @@ scr_seq_D35R0103_004:
 	scrcmd_221 VAR_TEMP_x4000, 0
 	compare VAR_TEMP_x4000, 1
 	goto_if_eq _07D0
-	setflag FLAG_UNK_0CB
-	goto_if_unset FLAG_UNK_0CC, _07D0
-	goto_if_unset FLAG_UNK_0CD, _07D0
+	setflag FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_1
+	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_2, _07D0
+	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_3, _07D0
 	goto _08A2
 
 _07D0:
@@ -578,9 +578,9 @@ scr_seq_D35R0103_005:
 	scrcmd_221 VAR_TEMP_x4000, 0
 	compare VAR_TEMP_x4000, 1
 	goto_if_eq _0834
-	setflag FLAG_UNK_0CC
-	goto_if_unset FLAG_UNK_0CB, _0834
-	goto_if_unset FLAG_UNK_0CD, _0834
+	setflag FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_2
+	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_1, _0834
+	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_3, _0834
 	goto _08A2
 
 _0834:
@@ -601,9 +601,9 @@ scr_seq_D35R0103_006:
 	scrcmd_221 VAR_TEMP_x4000, 0
 	compare VAR_TEMP_x4000, 1
 	goto_if_eq _0898
-	setflag FLAG_UNK_0CD
-	goto_if_unset FLAG_UNK_0CB, _0898
-	goto_if_unset FLAG_UNK_0CC, _0898
+	setflag FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_3
+	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_1, _0898
+	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_2, _0898
 	goto _08A2
 
 _0898:
@@ -768,9 +768,9 @@ _0AAC:
 	step_end
 scr_seq_D35R0103_010:
 	releaseall
-	goto_if_unset FLAG_UNK_0CB, _0AE4
-	goto_if_unset FLAG_UNK_0CC, _0AE4
-	goto_if_unset FLAG_UNK_0CD, _0AE4
+	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_1, _0AE4
+	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_2, _0AE4
+	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_3, _0AE4
 	npc_msg msg_0113_D35R0103_00023
 	closemsg
 	releaseall

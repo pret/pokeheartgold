@@ -220,9 +220,9 @@
 #define FLAG_UNK_0C8                                                0xC8
 #define FLAG_GOT_RED_SCALE                                          0xC9
 #define FLAG_RED_GYARADOS_MEET                                      0xCA
-#define FLAG_UNK_0CB                                                0xCB
-#define FLAG_UNK_0CC                                                0xCC
-#define FLAG_UNK_0CD                                                0xCD
+#define FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_1                 0xCB
+#define FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_2                 0xCC
+#define FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_3                 0xCD
 #define FLAG_UNK_0CE                                                0xCE
 #define FLAG_UNK_0CF                                                0xCF
 #define FLAG_UNK_0D0                                                0xD0
@@ -522,9 +522,9 @@
 #define FLAG_HIDE_MAHOGANY_SHOP_SHADY_SALESMAN                     0x1F2
 #define FLAG_HIDE_ROCKET_HIDEOUT_B2F_ARIANA                        0x1F3
 #define FLAG_HIDE_ROCKET_HIDEOUT_B3F_PETREL                        0x1F4
-#define FLAG_UNK_1F5                                               0x1F5
-#define FLAG_UNK_1F6                                               0x1F6
-#define FLAG_UNK_1F7                                               0x1F7
+#define FLAG_HIDE_ROCKET_HIDEOUT_B3F_ELECTRODE_1_AND_4             0x1F5
+#define FLAG_HIDE_ROCKET_HIDEOUT_B3F_ELECTRODE_2_AND_5             0x1F6
+#define FLAG_HIDE_ROCKET_HIDEOUT_B3F_ELECTRODE_3_AND_6             0x1F7
 #define FLAG_HIDE_MAHOGANY_SHOP_LANCE                              0x1F8
 #define FLAG_UNK_1F9                                               0x1F9
 #define FLAG_HIDE_ROUTE_43_GATE_ROCKETS                            0x1FA
