@@ -378,7 +378,7 @@
 #define FLAG_TRADE_JASMINE_STEELIX                                 0x166
 #define FLAG_TRADE_STEVEN_FORRETRESS_BELDUM                        0x167
 #define FLAG_UNK_168                                               0x168
-#define FLAG_UNK_169                                               0x169
+#define FLAG_CAUGHT_SUDOWOODO                                      0x169
 #define FLAG_UNK_16A                                               0x16A
 #define FLAG_UNK_16B                                               0x16B
 #define FLAG_UNK_16C                                               0x16C
@@ -471,7 +471,7 @@
 #define FLAG_UNK_1BF                                               0x1BF
 #define FLAG_UNK_1C0                                               0x1C0
 #define FLAG_UNK_1C1                                               0x1C1
-#define FLAG_UNK_1C2                                               0x1C2
+#define FLAG_HIDE_ROUTE_36_SUDOWOODO                               0x1C2
 #define FLAG_UNK_1C3                                               0x1C3
 #define FLAG_UNK_1C4                                               0x1C4
 #define FLAG_UNK_1C5                                               0x1C5

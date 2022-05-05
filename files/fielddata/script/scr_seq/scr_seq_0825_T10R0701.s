@@ -51,7 +51,7 @@ _009A:
 	clearflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
 	call_if_unset FLAG_CAUGHT_HO_OH, _01C9
 	call_if_unset FLAG_CAUGHT_LUGIA, _01CF
-	call_if_unset FLAG_UNK_169, _01D5
+	call_if_unset FLAG_CAUGHT_SUDOWOODO, _01D5
 	call_if_unset FLAG_UNK_16A, _01DB
 	call_if_unset FLAG_UNK_16B, _01E1
 	call_if_unset FLAG_UNK_16C, _01E7
@@ -118,7 +118,7 @@ _01CF:
 	return
 
 _01D5:
-	clearflag FLAG_UNK_1C2
+	clearflag FLAG_HIDE_ROUTE_36_SUDOWOODO
 	return
 
 _01DB:
