@@ -371,7 +371,7 @@
 #define FLAG_BUG_CONTEST_OTHER_POKES_HELD                          0x15F
 #define FLAG_ELMS_LAB_PREVENT_PLAYER_ESCAPE                        0x160
 #define FLAG_UNK_161                                               0x161
-#define FLAG_UNK_162                                               0x162
+#define FLAG_TRADE_LT_SURGE_PIKACHU                                0x162
 #define FLAG_UNK_163                                               0x163
 #define FLAG_UNK_164                                               0x164
 #define FLAG_UNK_165                                               0x165

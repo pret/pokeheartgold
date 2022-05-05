@@ -69,7 +69,7 @@ _00F9:
 	end
 
 _00FB:
-	goto_if_set FLAG_UNK_162, _010C
+	goto_if_set FLAG_TRADE_LT_SURGE_PIKACHU, _010C
 	setflag FLAG_UNK_2F0
 	end
 
