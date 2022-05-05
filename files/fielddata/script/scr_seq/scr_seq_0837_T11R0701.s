@@ -25,7 +25,7 @@ _0046:
 	setvar VAR_TEMP_x4009, 1
 	clearflag FLAG_UNK_281
 	clearflag FLAG_UNK_282
-	goto_if_set FLAG_UNK_167, _0099
+	goto_if_set FLAG_TRADE_STEVEN_FORRETRESS_BELDUM, _0099
 	compare VAR_UNK_4130, 4
 	goto_if_eq _0099
 	compare VAR_UNK_4130, 1
@@ -306,7 +306,7 @@ _0415:
 	goto_if_ne _04F5
 	npc_trade_exec VAR_SPECIAL_x8004
 	npc_trade_end
-	setflag FLAG_UNK_167
+	setflag FLAG_TRADE_STEVEN_FORRETRESS_BELDUM
 	compare VAR_TEMP_x4002, 200
 	goto_if_lt _04A2
 	npc_msg msg_0537_T11R0701_00013

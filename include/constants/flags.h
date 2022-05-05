@@ -376,7 +376,7 @@
 #define FLAG_UNK_164                                               0x164
 #define FLAG_TRADE_BROCK_BONSLY_RHYHORN                            0x165
 #define FLAG_TRADE_JASMINE_STEELIX                                 0x166
-#define FLAG_UNK_167                                               0x167
+#define FLAG_TRADE_STEVEN_FORRETRESS_BELDUM                        0x167
 #define FLAG_UNK_168                                               0x168
 #define FLAG_UNK_169                                               0x169
 #define FLAG_UNK_16A                                               0x16A
