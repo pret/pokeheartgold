@@ -164,7 +164,7 @@ _0235:
 	end
 
 _023B:
-	goto_if_set FLAG_UNK_166, _036F
+	goto_if_set FLAG_TRADE_JASMINE_STEELIX, _036F
 	compare VAR_TEMP_x4000, 77
 	goto_if_eq _0264
 	setvar VAR_TEMP_x4000, 77
@@ -219,7 +219,7 @@ _030E:
 	load_npc_trade 5
 	npc_trade_exec VAR_SPECIAL_x8004
 	npc_trade_end
-	setflag FLAG_UNK_166
+	setflag FLAG_TRADE_JASMINE_STEELIX
 	setvar VAR_TEMP_x4000, 55
 	npc_msg msg_0606_T26GYM0101_00011
 	wait_button_or_walk_away
