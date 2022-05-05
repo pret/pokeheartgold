@@ -70,13 +70,13 @@ _012D:
 
 _0133:
 	call_if_unset FLAG_CAUGHT_RAYQUAZA, _0264
-	compare VAR_UNK_4046, 2
+	compare VAR_ROAMER_ENTEI_STATUS, 2
 	call_if_eq _026A
-	compare VAR_UNK_4045, 2
+	compare VAR_ROAMER_RAIKOU_STATUS, 2
 	call_if_eq _0275
-	compare VAR_UNK_4047, 2
+	compare VAR_ROAMER_LATIAS_STATUS, 2
 	call_if_eq _0280
-	compare VAR_UNK_4048, 2
+	compare VAR_ROAMER_LATIOS_STATUS, 2
 	call_if_eq _028B
 	hof_credits 0
 	scrcmd_150
@@ -181,22 +181,22 @@ _0264:
 	return
 
 _026A:
-	setvar VAR_UNK_4046, 0
+	setvar VAR_ROAMER_ENTEI_STATUS, 0
 	create_roamer 1
 	return
 
 _0275:
-	setvar VAR_UNK_4045, 0
+	setvar VAR_ROAMER_RAIKOU_STATUS, 0
 	create_roamer 0
 	return
 
 _0280:
-	setvar VAR_UNK_4047, 0
+	setvar VAR_ROAMER_LATIAS_STATUS, 0
 	create_roamer 2
 	return
 
 _028B:
-	setvar VAR_UNK_4048, 0
+	setvar VAR_ROAMER_LATIOS_STATUS, 0
 	create_roamer 3
 	return
 	.balign 4, 0

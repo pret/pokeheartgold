@@ -81,10 +81,10 @@
 #define VAR_UNK_4042                 0x4042
 #define VAR_UNK_4043                 0x4043
 #define VAR_UNK_4044                 0x4044
-#define VAR_UNK_4045                 0x4045
-#define VAR_UNK_4046                 0x4046
-#define VAR_UNK_4047                 0x4047
-#define VAR_UNK_4048                 0x4048
+#define VAR_ROAMER_RAIKOU_STATUS     0x4045
+#define VAR_ROAMER_ENTEI_STATUS      0x4046
+#define VAR_ROAMER_LATIAS_STATUS     0x4047
+#define VAR_ROAMER_LATIOS_STATUS     0x4048
 #define VAR_UNK_4049                 0x4049
 #define VAR_UNK_404A                 0x404A
 #define VAR_UNK_404B                 0x404B
