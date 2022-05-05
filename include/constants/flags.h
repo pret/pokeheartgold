@@ -390,7 +390,7 @@
 #define FLAG_UNK_172                                               0x172
 #define FLAG_CAUGHT_SNORLAX                                        0x173
 #define FLAG_UNK_174                                               0x174
-#define FLAG_ENGAGED_STATIC_SUICUNE                                0x175
+#define FLAG_CAUGHT_SUICINE                                        0x175
 #define FLAG_UNK_176                                               0x176
 #define FLAG_UNK_177                                               0x177
 #define FLAG_UNK_178                                               0x178
