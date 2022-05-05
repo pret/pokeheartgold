@@ -98,7 +98,7 @@ _0167:
 	end
 
 _0171:
-	setflag FLAG_UNK_116
+	setflag FLAG_CAUGHT_HO_OH
 	return
 
 scr_seq_D17R0110_006:
