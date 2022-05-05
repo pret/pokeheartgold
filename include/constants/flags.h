@@ -347,7 +347,7 @@
 #define FLAG_UNK_147                                               0x147
 #define FLAG_UNK_148                                               0x148
 #define FLAG_UNK_149                                               0x149
-#define FLAG_UNK_14A                                               0x14A
+#define FLAG_CAUGHT_ZAPDOS                                         0x14A
 #define FLAG_UNK_14B                                               0x14B
 #define FLAG_UNK_14C                                               0x14C
 #define FLAG_UNK_14D                                               0x14D

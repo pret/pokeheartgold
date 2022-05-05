@@ -55,7 +55,7 @@ _009A:
 	call_if_unset FLAG_UNK_16A, _01DB
 	call_if_unset FLAG_UNK_16B, _01E1
 	call_if_unset FLAG_UNK_16C, _01E7
-	call_if_unset FLAG_UNK_14A, _01ED
+	call_if_unset FLAG_CAUGHT_ZAPDOS, _01ED
 	call_if_unset FLAG_UNK_16D, _0206
 	goto_if_unset FLAG_UNK_173, _020C
 _0105:
