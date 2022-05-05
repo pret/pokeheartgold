@@ -379,7 +379,7 @@
 #define FLAG_TRADE_STEVEN_FORRETRESS_BELDUM                        0x167
 #define FLAG_UNK_168                                               0x168
 #define FLAG_CAUGHT_SUDOWOODO                                      0x169
-#define FLAG_UNK_16A                                               0x16A
+#define FLAG_CAUGHT_RED_GYARADOS                                   0x16A
 #define FLAG_UNK_16B                                               0x16B
 #define FLAG_UNK_16C                                               0x16C
 #define FLAG_UNK_16D                                               0x16D

@@ -52,7 +52,7 @@ _009A:
 	call_if_unset FLAG_CAUGHT_HO_OH, _01C9
 	call_if_unset FLAG_CAUGHT_LUGIA, _01CF
 	call_if_unset FLAG_CAUGHT_SUDOWOODO, _01D5
-	call_if_unset FLAG_UNK_16A, _01DB
+	call_if_unset FLAG_CAUGHT_RED_GYARADOS, _01DB
 	call_if_unset FLAG_UNK_16B, _01E1
 	call_if_unset FLAG_UNK_16C, _01E7
 	call_if_unset FLAG_CAUGHT_ZAPDOS, _01ED
