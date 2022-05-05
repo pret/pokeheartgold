@@ -170,7 +170,7 @@ Static main
 	Object src/scrcmd_battle.o
 	Object src/scrcmd_8.o
 	Object asm/scrcmd_9.o
-	Object asm/scrcmd_10.o
+	Object src/scrcmd_apricorn.o
 	Object asm/scrcmd_11.o
 	Object src/scrcmd_12.o
 	Object src/scrcmd_money.o
