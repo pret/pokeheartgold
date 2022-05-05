@@ -799,7 +799,7 @@
 #define FLAG_HIDE_MT_SILVER_CAVE_MOLTRES                           0x307
 #define FLAG_HIDE_STEVEN_IN_HOUSE_BEFORE_LATIS                     0x308
 #define FLAG_HIDE_ROUTE_25_MISTYS_BOYFRIEND                        0x309
-#define FLAG_UNK_30A                                               0x30A
+#define FLAG_HIDE_UNION_CAVE_LAPRAS                                0x30A
 #define FLAG_UNK_30B                                               0x30B
 #define FLAG_HIDE_PEWTER_CITY_STEVEN                               0x30C
 #define FLAG_HIDE_PEWTER_CITY_LATIOS                               0x30D
@@ -2062,7 +2062,7 @@
 #define FLAG_UNK_AB5                                               0xAB5
 #define FLAG_DAILY_HEARD_BUENAS_PASSWORD                           0xAB6
 #define FLAG_UNK_AB7                                               0xAB7
-#define FLAG_UNK_AB8                                               0xAB8
+#define FLAG_DAILY_CAUGHT_LAPRAS                                   0xAB8
 #define FLAG_UNK_AB9                                               0xAB9
 #define FLAG_UNK_ABA                                               0xABA
 #define FLAG_UNK_ABB                                               0xABB

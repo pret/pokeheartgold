@@ -75,7 +75,7 @@
       "ovid": "SPRITE_RAPURASU",
       "mvt": 3,
       "type": 0,
-      "flag": "FLAG_UNK_30A",
+      "flag": "FLAG_HIDE_UNION_CAVE_LAPRAS",
       "scr": "_EV_scr_seq_D25R0103_000 + 1",
       "dirn": 3,
       "eye": 0,
