@@ -392,7 +392,7 @@
 #define FLAG_UNK_174                                               0x174
 #define FLAG_CAUGHT_SUICINE                                        0x175
 #define FLAG_UNK_176                                               0x176
-#define FLAG_UNK_177                                               0x177
+#define FLAG_GOT_HOENN_STARTER_FROM_STEVEN                         0x177
 #define FLAG_UNK_178                                               0x178
 #define FLAG_UNK_179                                               0x179
 #define FLAG_UNK_17A                                               0x17A
@@ -783,7 +783,7 @@
 #define FLAG_UNK_2F7                                               0x2F7
 #define FLAG_HIDE_VIRIDIAN_CITY_OLD_MAN_OUTSIDE_GYM_LOCKED         0x2F8
 #define FLAG_HIDE_VIRIDIAN_CITY_OLD_MAN_OUTSIDE_GYM_UNLOCKED       0x2F9
-#define FLAG_UNK_2FA                                               0x2FA
+#define FLAG_HIDE_SAFFRON_CITY_STEVEN                              0x2FA
 #define FLAG_UNK_2FB                                               0x2FB
 #define FLAG_HIDE_VERMILION_FAN_CLUB_LOST_ITEM                     0x2FC
 #define FLAG_HIDE_VERMILION_CITY_STEVEN                            0x2FD
