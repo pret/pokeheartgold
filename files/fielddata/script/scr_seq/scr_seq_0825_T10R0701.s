@@ -69,7 +69,7 @@ _012D:
 	goto _024F
 
 _0133:
-	call_if_unset FLAG_UNK_17B, _0264
+	call_if_unset FLAG_CAUGHT_RAYQUAZA, _0264
 	compare VAR_UNK_4046, 2
 	call_if_eq _026A
 	compare VAR_UNK_4045, 2
@@ -161,17 +161,23 @@ _0238:
 	return
 
 _023A:
-	goto_if_set FLAG_UNK_17A, _0133
-	clearflag FLAG_UNK_18B
+	goto_if_set FLAG_CAUGHT_KYOGRE, _0133
+	clearflag FLAG_BEAT_OR_ESCAPED_FROM_GROUDON_OR_KYOGRE
 	goto _0133
 
+// This branch is for SoulSilver, so this should be checking
+// FLAG_CAUGHT_GROUDON instead of FLAG_CAUGHT_KYOGRE. This problem
+// has existed since this file was disassembled and is probably a
+// mistake in SoulSilver. Because capturing Groudon sets
+// VAR_SCENE_EMBEDDED_TOWER to 4 and the tower does not regenerate
+// Groudon if the variable is 4 or more, the mistake has no effect.
 _024F:
-	goto_if_set FLAG_UNK_17A, _0133
-	clearflag FLAG_UNK_18B
+	goto_if_set FLAG_CAUGHT_KYOGRE, _0133
+	clearflag FLAG_BEAT_OR_ESCAPED_FROM_GROUDON_OR_KYOGRE
 	goto _0133
 
 _0264:
-	clearflag FLAG_UNK_2D2
+	clearflag FLAG_HIDE_EMBEDDED_TOWER_RAYQUAZA
 	return
 
 _026A:

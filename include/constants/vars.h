@@ -261,7 +261,7 @@
 #define VAR_UNK_40F6                 0x40F6
 #define VAR_UNK_40F7                 0x40F7
 #define VAR_UNK_40F8                 0x40F8
-#define VAR_UNK_40F9                 0x40F9
+#define VAR_SCENE_EMBEDDED_TOWER     0x40F9
 #define VAR_UNK_40FA                 0x40FA
 #define VAR_SCENE_SINJOH_MYSTRI_ROOM                 0x40FB
 #define VAR_UNK_40FC                 0x40FC

@@ -92,7 +92,7 @@
       "ovid": "SPRITE_MOUNT_2",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2CF",
+      "flag": "FLAG_HIDE_ROUTE_47_EMBEDDED_TOWER_HIKER",
       "scr": "_EV_scr_seq_R47_001 + 1",
       "dirn": 3,
       "eye": 0,
