@@ -54,7 +54,7 @@ _009A:
 	call_if_unset FLAG_CAUGHT_SUDOWOODO, _01D5
 	call_if_unset FLAG_CAUGHT_RED_GYARADOS, _01DB
 	call_if_unset FLAG_CAUGHT_MEWTWO, _01E1
-	call_if_unset FLAG_UNK_16C, _01E7
+	call_if_unset FLAG_CAUGHT_ARTICUNO, _01E7
 	call_if_unset FLAG_CAUGHT_ZAPDOS, _01ED
 	call_if_unset FLAG_UNK_16D, _0206
 	goto_if_unset FLAG_UNK_173, _020C
@@ -130,7 +130,7 @@ _01E1:
 	return
 
 _01E7:
-	clearflag FLAG_UNK_306
+	clearflag FLAG_HIDE_SEAFOAM_ISLAND_ARTICUNO
 	return
 
 _01ED:
