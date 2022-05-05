@@ -374,7 +374,7 @@
 #define FLAG_TRADE_LT_SURGE_PIKACHU                                0x162
 #define FLAG_UNK_163                                               0x163
 #define FLAG_UNK_164                                               0x164
-#define FLAG_UNK_165                                               0x165
+#define FLAG_TRADE_BROCK_BONSLY_RHYHORN                            0x165
 #define FLAG_UNK_166                                               0x166
 #define FLAG_UNK_167                                               0x167
 #define FLAG_UNK_168                                               0x168
