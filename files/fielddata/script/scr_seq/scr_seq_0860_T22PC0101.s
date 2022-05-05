@@ -66,11 +66,11 @@ _00DD:
 	compare VAR_SPECIAL_RESULT, 10
 	goto_if_eq _0191
 _011D:
-	goto_if_set FLAG_UNK_159, _0212
+	goto_if_set FLAG_GOT_MAREEP_EGG_FROM_PRIMO, _0212
 	get_party_count VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _0207
-	setflag FLAG_UNK_159
+	setflag FLAG_GOT_MAREEP_EGG_FROM_PRIMO
 	npc_msg msg_0559_T22PC0101_00018
 	buffer_players_name 0
 	buffer_species_name 1, SPECIES_MAREEP, 0, 0
@@ -78,11 +78,11 @@ _011D:
 	goto _01CB
 
 _0157:
-	goto_if_set FLAG_UNK_15A, _0212
+	goto_if_set FLAG_GOT_WOOPER_EGG_FROM_PRIMO, _0212
 	get_party_count VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _0207
-	setflag FLAG_UNK_15A
+	setflag FLAG_GOT_WOOPER_EGG_FROM_PRIMO
 	npc_msg msg_0559_T22PC0101_00018
 	buffer_players_name 0
 	buffer_species_name 1, SPECIES_WOOPER, 0, 0
@@ -90,11 +90,11 @@ _0157:
 	goto _01CB
 
 _0191:
-	goto_if_set FLAG_UNK_15B, _0212
+	goto_if_set FLAG_GOT_SLUGMA_EGG_FROM_PRIMO, _0212
 	get_party_count VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _0207
-	setflag FLAG_UNK_15B
+	setflag FLAG_GOT_SLUGMA_EGG_FROM_PRIMO
 	npc_msg msg_0559_T22PC0101_00018
 	buffer_players_name 0
 	buffer_species_name 1, SPECIES_SLUGMA, 0, 0

@@ -362,9 +362,9 @@
 #define FLAG_UNK_156                                               0x156
 #define FLAG_UNK_157                                               0x157
 #define FLAG_UNK_158                                               0x158
-#define FLAG_UNK_159                                               0x159
-#define FLAG_UNK_15A                                               0x15A
-#define FLAG_UNK_15B                                               0x15B
+#define FLAG_GOT_MAREEP_EGG_FROM_PRIMO                             0x159
+#define FLAG_GOT_WOOPER_EGG_FROM_PRIMO                             0x15A
+#define FLAG_GOT_SLUGMA_EGG_FROM_PRIMO                             0x15B
 #define FLAG_GOT_LUCKY_PUNCH                                       0x15C
 #define FLAG_UNK_15D                                               0x15D
 #define FLAG_MET_MOVE_MANIAC                                       0x15E
