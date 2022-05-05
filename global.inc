@@ -3133,7 +3133,7 @@
 .public ScrCmd_742
 .public ScrCmd_743
 .public ScrCmd_744
-.public ScrCmd_753
+.public ScrCmd_RockSmashItemCheck
 .public ScrCmd_754
 .public ScrCmd_755
 .public ScrCmd_756
@@ -3784,7 +3784,6 @@
 .public TaskManager_GetStatePtr
 .public TaskManager_GetSys
 .public TaskManager_Jump
-.public Task_AnimApricornTree
 .public Task_BlackOut
 .public Task_FieldEscapeRope
 .public Task_FollowPokeInteract
@@ -6894,14 +6893,6 @@
 .public ov01_0220476C
 .public ov01_022047DC
 .public ov01_02204834
-.public ov01_02204AAC
-.public ov01_02204B24
-.public ov01_02204B78
-.public ov01_02204C44
-.public ov01_02204C80
-.public ov01_02204CF8
-.public ov01_02204DA0
-.public ov01_02204E8C
 .public ov01_02204ED8
 .public ov01_02204EFC
 .public ov01_02204FE0
@@ -28105,7 +28096,7 @@
 .public sub_0202AC60
 .public sub_0202AE0C
 .public sub_0202AE38
-.public sub_0202AE40
+.public ApricornTrees_TryGetApricorn
 .public sub_0202AE68
 .public sub_0202AE74
 .public sub_0202B404
@@ -29073,7 +29064,7 @@
 .public sub_02055708
 .public sub_02055760
 .public sub_02055780
-.public sub_020557A0
+.public FieldSys_ApricornTree_TryGetApricorn
 .public sub_020557E0
 .public sub_020557F8
 .public sub_02055828
