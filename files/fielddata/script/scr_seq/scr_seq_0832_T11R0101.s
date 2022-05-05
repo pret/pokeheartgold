@@ -658,7 +658,7 @@ scr_seq_T11R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_10D, _08B2
+	goto_if_set FLAG_BEAT_KARATE_KING, _08B2
 	npc_msg msg_0533_T11R0101_00000
 	wait_button_or_walk_away
 	closemsg

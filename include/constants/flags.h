@@ -285,8 +285,8 @@
 #define FLAG_UNK_109                                               0x109
 #define FLAG_UNK_10A                                               0x10A
 #define FLAG_UNK_10B                                               0x10B
-#define FLAG_UNK_10C                                               0x10C
-#define FLAG_UNK_10D                                               0x10D
+#define FLAG_GOT_TYROGUE_FROM_KARATE_KING                          0x10C
+#define FLAG_BEAT_KARATE_KING                                      0x10D
 #define FLAG_UNK_10E                                               0x10E
 #define FLAG_UNK_10F                                               0x10F
 #define FLAG_GOT_UNOWN_REPORT                                      0x110
