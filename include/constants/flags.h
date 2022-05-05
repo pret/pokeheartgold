@@ -324,7 +324,7 @@
 #define FLAG_UNK_130                                               0x130
 #define FLAG_UNK_131                                               0x131
 #define FLAG_UNK_132                                               0x132
-#define FLAG_UNK_133                                               0x133
+#define FLAG_TRADE_PEWTER_CITY_HAUNTER_XATU                        0x133
 #define FLAG_UNK_134                                               0x134
 #define FLAG_UNK_135                                               0x135
 #define FLAG_UNK_136                                               0x136
