@@ -1,6 +1,6 @@
 # Pokémon HeartGold and SoulSilver
 
-This is a WIP decompilation of Pokemon HeartGold and SoulSilver. 
+This is a WIP decompilation of Pokémon HeartGold and SoulSilver. 
 
 For instructions on how to set up the repository, please read [INSTALL.md](docs/INSTALL.md).
 

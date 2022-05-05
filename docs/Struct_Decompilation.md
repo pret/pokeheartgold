@@ -70,7 +70,7 @@ typedef struct UnkStruct {
 } UnkStruct; //size: 0x1d
 ```
 
-We can use the difference between offsets to figure out the type of the members, filling in any remaining gaps with "filler" members. (Keep in mind that a type like u64 is actually 64 bits, a k a 8 bytes. and the hex offsets are in bytes)
+We can use the difference between offsets to figure out the type of the members, filling in any remaining gaps with "filler" members. (Keep in mind that a type like u64 is actually 64 bits, aka 8 bytes. and the hex offsets are in bytes)
 
 ```c
 typedef struct UnkStruct{
@@ -109,7 +109,7 @@ void sub_02092F64(Unk_Struct* ptr) {
 }
 ```
 
-the multiple ANDs on unk00 with multiple powers of 2 show that it's a bitfield, so we have to update our struct and function:
+The multiple ANDs on unk00 with multiple powers of 2 show that it's a bitfield, so we have to update our struct and function:
 
 ```diff
 typedef struct Unk_Struct{
@@ -136,4 +136,4 @@ That's all the context we can get regarding `Unk_Struct` from `sub_02092F64`!
 ### Some tips for decompiling structs
 - Try to decompile as many functions involved with your structs as possible. The more context you have the more you can decompile and identify the structs.
 - Giving your structs generic names such as `Unk_Struct` can make them conflict with the rest of the repo. Try appending the size of the struct to the name as well as some context to avoid that (such as `Unk_FsysSub_Struct_1C`).
-- Always check the type of the struct members as you fill out your struct. An u32 might turn out to be a pointer, and an u64 might actually be a s64, and a u32 might actually be two seperate u16-s.
+- Always check the type of the struct members as you fill out your struct. An u32 might turn out to be a pointer, and an u64 might actually be a s64, and a u32 might actually be two separate u16s.

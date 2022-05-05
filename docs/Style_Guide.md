@@ -1,4 +1,4 @@
-# PokeHeartgold Style guide
+# pokeheartgold Style guide
 The following text consists of examples on styling code properly. Keep using this style in your code to make it consistent with the rest of the repo 
 When not sure how to style a specific code, ask in the pret discord!
 
@@ -59,7 +59,7 @@ When not sure how to style a specific code, ask in the pret discord!
  typedef struct unkStruct32 { //incorrect
  typedef struct UnkStruct32 { //correct
 ```
-- local variables, struct fields and function arguments should use either camelCase or snake_case names
+- Local variables, struct fields and function arguments should use either camelCase or snake_case names
 ```c
  int UnkArg = 0; //incorrect
  int unkArg = 0; //correct

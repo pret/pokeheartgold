@@ -148,9 +148,9 @@ void LanguageToDexFlag(u8 unk) {
 
 The final thing to note is that return values are loaded into r0 towards the end of the function. 
 When a function returns a variable, that variable will ALWAYS be passed through this r0 directory, so it being set is a strong indicator that something gets returned.
-In this scenario, the value of r2 gets loaded in if the loop either terminates by reaching the end or reaches a state where `_02106058[c] == unk`
+In this scenario, the value of r2 gets loaded in if the loop either terminates by reaching the end or reaches a state where `_02106058[c] == unk`.
 
-Knowing this, we can then finish of the function like so:
+Knowing this, we can then finish off the function like so:
 
 ```c
 extern const u8 _02106058[6];
@@ -166,14 +166,14 @@ int LanguageToDexFlag(u8 unk) {
 }
 ```
 
-And viola! Our first decompiled function! But don't stop here, because the next step will be documenting what that function does.
+And voilà! Our first decompiled function! But don't stop here, because the next step will be documenting what that function does.
 
-In scenarios where the function name or usage is NOT known, here are some ways to determine it's functionality:
+In scenarios where the function name or usage is NOT known, here are some ways to determine its functionality:
 - Check the Platinum source code leak for similar code, since HGSS and Platinum are very similar
 - Find where the function is called/what other functions the function calls to try and figure out what context it's used in
 - Use identified/easily identifiable data to relate the function to sprites, dates, sounds, specific pokemon dex numbers, etc.
 
-Do note that sometimes we mislabel things, so if something is identified, make sure the code logically does what we thought it did
+Do note that sometimes we mislabel things, so if something is identified, make sure the code logically does what we thought it did.
 
 Luckily, someone else previously named this function and determined that it takes in a language argument and returns the dex flag associated with it, meaning we can determine the following:
 - `u8 unk` is a variable denoting language
@@ -237,7 +237,7 @@ In order to gain experience for both decompiling and identifying functions, you 
 Knowing that `bl GF_AssertFail` will call the function GF_AssertFail(), you have all the information you need to do this.
 
 If you're confused about what an instructions means, Google or any other search engine are your friends. 
-Don't be afraid to ask for help in the #asm2c channel either, just make sure to provide your code when you do.
+Don't be afraid to ask for help in the #asm2c-help channel either, just make sure to provide your code when you do.
 
 And if you use decomp.me to work in, please remember to include `#pragma thumb on` at the top of your code, as otherwise you will be comparing an ARM instruction set to decomp.me's THUMB target
 (See [How to see nonmatching code sections](How_to_see_nonmatching_code_sections.md) for more info)

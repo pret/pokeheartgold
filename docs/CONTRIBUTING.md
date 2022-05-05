@@ -1,15 +1,15 @@
-# Contributing guide for Pokemon Heartgold
+# Contributing guide for Pokémon HeartGold
 
-This repo contains binary code extracted from Pokemon - Heartgold Version (USA), disassembled into .s files.
+This repo contains binary code extracted from Pokémon - HeartGold Version (USA), disassembled into .s files.
 The goal is to take the assembly code and turn them into readable C code that generates the same assembly instructions.
 
 ## Prerequisites
 
-* Basic knowledge of ARMv4 and ARMv4T assembly.
+* Basic knowledge of ARMv4T assembly.
 * Basic knowledge of C programming language.
-* Be able to use Github version control
-* Have a clone of the repo set up on your computer per [INSTALL.md](INSTALL.md) instructions
-* An understanding of how compilers work (including common compiler flags)
+* Be able to use GitHub version control.
+* Have a clone of the repo set up on your computer per [INSTALL.md](INSTALL.md) instructions.
+* An understanding of how compilers work (including common compiler flags).
 
 ## Important Repository files and directories when decompiling
 
