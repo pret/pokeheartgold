@@ -57,7 +57,7 @@ _009A:
 	call_if_unset FLAG_CAUGHT_ARTICUNO, _01E7
 	call_if_unset FLAG_CAUGHT_ZAPDOS, _01ED
 	call_if_unset FLAG_CAUGHT_MOLTRES, _0206
-	goto_if_unset FLAG_UNK_173, _020C
+	goto_if_unset FLAG_CAUGHT_SNORLAX, _020C
 _0105:
 	call_if_unset FLAG_ENGAGED_STATIC_SUICUNE, _0227
 	get_game_version VAR_TEMP_x4000
