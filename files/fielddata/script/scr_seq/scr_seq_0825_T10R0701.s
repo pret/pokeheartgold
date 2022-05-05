@@ -50,7 +50,7 @@ _009A:
 	setflag FLAG_UNK_97E
 	clearflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
 	call_if_unset FLAG_CAUGHT_HO_OH, _01C9
-	call_if_unset FLAG_UNK_117, _01CF
+	call_if_unset FLAG_CAUGHT_LUGIA, _01CF
 	call_if_unset FLAG_UNK_169, _01D5
 	call_if_unset FLAG_UNK_16A, _01DB
 	call_if_unset FLAG_UNK_16B, _01E1

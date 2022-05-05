@@ -32,7 +32,7 @@ scr_seq_D40R0104_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_117, _010D
+	goto_if_set FLAG_CAUGHT_LUGIA, _010D
 	get_game_version VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 8
 	goto_if_eq _0093

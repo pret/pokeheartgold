@@ -296,7 +296,7 @@
 #define FLAG_UNK_114                                               0x114
 #define FLAG_UNK_115                                               0x115
 #define FLAG_CAUGHT_HO_OH                                          0x116
-#define FLAG_UNK_117                                               0x117
+#define FLAG_CAUGHT_LUGIA                                          0x117
 #define FLAG_RESTORED_POWER                                        0x118
 #define FLAG_UNK_119                                               0x119
 #define FLAG_UNK_11A                                               0x11A
