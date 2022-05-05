@@ -288,7 +288,7 @@
 #define VAR_UNK_4111                 0x4111
 #define VAR_UNK_4112                 0x4112
 #define VAR_ELEVATOR_LAST_FLOOR                 0x4113
-#define VAR_UNK_4114                 0x4114
+#define VAR_LOAN_SPEAROW             0x4114
 #define VAR_NUM_TIMES_GIVEN_BLUE_CARD                 0x4115
 #define VAR_UNK_4116                 0x4116
 #define VAR_SCENE_POKECENTER_WIFI_BASEMENT                 0x4117
