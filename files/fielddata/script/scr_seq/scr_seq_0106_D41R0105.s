@@ -14,7 +14,7 @@ scr_seq_D41R0105_001:
 	end
 
 _0017:
-	setflag FLAG_UNK_307
+	setflag FLAG_HIDE_MT_SILVER_CAVE_MOLTRES
 	hide_person obj_D41R0105_tsure_poke_static_moltres
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
@@ -46,6 +46,6 @@ _0077:
 	end
 
 _007D:
-	setflag FLAG_UNK_16D
+	setflag FLAG_CAUGHT_MOLTRES
 	return
 	.balign 4, 0

@@ -382,7 +382,7 @@
 #define FLAG_CAUGHT_RED_GYARADOS                                   0x16A
 #define FLAG_CAUGHT_MEWTWO                                         0x16B
 #define FLAG_CAUGHT_ARTICUNO                                       0x16C
-#define FLAG_UNK_16D                                               0x16D
+#define FLAG_CAUGHT_MOLTRES                                        0x16D
 #define FLAG_UNK_16E                                               0x16E
 #define FLAG_SPECIAL_MART_PHARMACY                                 0x16F
 #define FLAG_SPECIAL_MART_BITTER                                   0x170
@@ -796,7 +796,7 @@
 #define FLAG_UNK_304                                               0x304
 #define FLAG_HIDE_CERULEAN_CAVE_MEWTWO                             0x305
 #define FLAG_HIDE_SEAFOAM_ISLAND_ARTICUNO                          0x306
-#define FLAG_UNK_307                                               0x307
+#define FLAG_HIDE_MT_SILVER_CAVE_MOLTRES                           0x307
 #define FLAG_HIDE_STEVEN_IN_HOUSE_BEFORE_LATIS                     0x308
 #define FLAG_HIDE_ROUTE_25_MISTYS_BOYFRIEND                        0x309
 #define FLAG_UNK_30A                                               0x30A

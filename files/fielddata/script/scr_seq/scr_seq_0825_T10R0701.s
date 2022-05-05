@@ -56,7 +56,7 @@ _009A:
 	call_if_unset FLAG_CAUGHT_MEWTWO, _01E1
 	call_if_unset FLAG_CAUGHT_ARTICUNO, _01E7
 	call_if_unset FLAG_CAUGHT_ZAPDOS, _01ED
-	call_if_unset FLAG_UNK_16D, _0206
+	call_if_unset FLAG_CAUGHT_MOLTRES, _0206
 	goto_if_unset FLAG_UNK_173, _020C
 _0105:
 	call_if_unset FLAG_ENGAGED_STATIC_SUICUNE, _0227
@@ -142,7 +142,7 @@ _0204:
 	return
 
 _0206:
-	clearflag FLAG_UNK_307
+	clearflag FLAG_HIDE_MT_SILVER_CAVE_MOLTRES
 	return
 
 _020C:
