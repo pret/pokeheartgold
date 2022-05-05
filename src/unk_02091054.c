@@ -4,7 +4,8 @@ typedef struct {
     u8 unk0;
     u8 unk1;
     u8 unk2;
-    u8 unk3;
+    u8 unk3_0:2;
+    u8 unk3_2:6;
 } Unk02091054;
 
 extern Unk02091054 _02105F04[81];
@@ -27,7 +28,9 @@ u8 sub_02091084(u32 idx) {
 
 BOOL sub_0209109C(u32 idx) {
     GF_ASSERT(idx < NELEMS(_02105F04));
-    if (idx < 0x32 || idx > 0x4d) return FALSE;
+    if (idx < 0x32 || idx > 0x4d) {
+        return FALSE;
+    }
 
     return TRUE;
 }
@@ -35,5 +38,5 @@ BOOL sub_0209109C(u32 idx) {
 u32 sub_020910B8(u32 idx) {
     GF_ASSERT(idx < NELEMS(_02105F04));
     Unk02091054 *ptr = &_02105F04[idx];
-    return ((u32)(ptr->unk3 << 0x18) >> 0x1a);
+    return ptr->unk3_2;
 }

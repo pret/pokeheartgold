@@ -45,10 +45,7 @@ void sub_02090D18(Unk02090C94 *a0, u16 a1, u16 a2) {
 }
 
 void sub_02090D20(Unk02090C94 *a0, MAIL_MESSAGE *mailMessage) {
-    a0->mailMessage.msg_bank = mailMessage->msg_bank;
-    a0->mailMessage.msg_no = mailMessage->msg_no;
-    a0->mailMessage.fields[0] = mailMessage->fields[0];
-    a0->mailMessage.fields[1] = mailMessage->fields[1];
+    a0->mailMessage = *mailMessage;
 }
 
 void sub_02090D34(Unk02090C94 *a0) {
@@ -119,10 +116,7 @@ void sub_02090D8C(Unk02090C94 *a0, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2) {
         msg1->msg_no = a0->unk1C[1];
         return;
     case 2:
-        msg2->msg_bank = a0->mailMessage.msg_bank;
-        msg2->msg_no = a0->mailMessage.msg_no;
-        msg2->fields[0] = a0->mailMessage.fields[0];
-        msg2->fields[1] = a0->mailMessage.fields[1];
+        *msg2 = a0->mailMessage;
         return;
     }
 }
@@ -148,14 +142,13 @@ void sub_02090E04(Unk02090C94 *a0, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2) {
         a0->unk1C[i] = src[i];
     }
 
-    a0->mailMessage.msg_bank = msg2->msg_bank;
-    a0->mailMessage.msg_no = msg2->msg_no;
-    a0->mailMessage.fields[0] = msg2->fields[0];
-    a0->mailMessage.fields[1] = msg2->fields[1];
+    a0->mailMessage = *msg2;
 }
 
 int sub_02090E44(Unk02090C94 *a0) {
-    if (a0 == NULL || a0->unk24 == 0) return 0;
+    if (a0 == NULL || a0->unk24 == 0) {
+        return 0;
+    }
 
     return sub_020183F0(a0->unk24);
 }
