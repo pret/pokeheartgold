@@ -380,7 +380,7 @@
 #define FLAG_UNK_168                                               0x168
 #define FLAG_CAUGHT_SUDOWOODO                                      0x169
 #define FLAG_CAUGHT_RED_GYARADOS                                   0x16A
-#define FLAG_UNK_16B                                               0x16B
+#define FLAG_CAUGHT_MEWTWO                                         0x16B
 #define FLAG_UNK_16C                                               0x16C
 #define FLAG_UNK_16D                                               0x16D
 #define FLAG_UNK_16E                                               0x16E
@@ -794,7 +794,7 @@
 #define FLAG_HIDE_ROUTE_22_FRIEND                                  0x302
 #define FLAG_HIDE_TOHJO_FALLS_GIOVANNI                             0x303
 #define FLAG_UNK_304                                               0x304
-#define FLAG_UNK_305                                               0x305
+#define FLAG_HIDE_CERULEAN_CAVE_MEWTWO                             0x305
 #define FLAG_UNK_306                                               0x306
 #define FLAG_UNK_307                                               0x307
 #define FLAG_HIDE_STEVEN_IN_HOUSE_BEFORE_LATIS                     0x308

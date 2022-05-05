@@ -270,7 +270,7 @@
       "ovid": "SPRITE_TSURE_POKE_STATIC_MEWTWO",
       "mvt": 15,
       "type": 0,
-      "flag": "FLAG_UNK_305",
+      "flag": "FLAG_HIDE_CERULEAN_CAVE_MEWTWO",
       "scr": "_EV_scr_seq_D03R0103_000 + 1",
       "dirn": 1,
       "eye": 0,
