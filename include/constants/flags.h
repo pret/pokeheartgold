@@ -188,7 +188,7 @@
 #define FLAG_UNK_0A8                                                0xA8
 #define FLAG_UNK_0A9                                                0xA9
 #define FLAG_UNK_0AA                                                0xAA
-#define FLAG_UNK_0AB                                                0xAB
+#define FLAG_GOT_TM83_FROM_MOOMOO_FARM_WOMAN                        0xAB
 #define FLAG_UNK_0AC                                                0xAC
 #define FLAG_UNK_0AD                                                0xAD
 #define FLAG_UNK_0AE                                                0xAE
