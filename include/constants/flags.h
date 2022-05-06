@@ -250,7 +250,7 @@
 #define FLAG_DEFEATED_BRUNO                                         0xE6
 #define FLAG_DEFEATED_KAREN                                         0xE7
 #define FLAG_UNK_0E8                                                0xE8
-#define FLAG_UNK_0E9                                                0xE9
+#define FLAG_GOT_TM37_FROM_ROUTE_27_WOMAN                           0xE9
 #define FLAG_UNK_0EA                                                0xEA
 #define FLAG_BOAT_ARRIVED                                           0xEB
 #define FLAG_UNK_0EC                                                0xEC
