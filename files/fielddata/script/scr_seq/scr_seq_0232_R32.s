@@ -143,11 +143,11 @@ scr_seq_R32_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_06E, _023B
+	goto_if_set FLAG_GOT_TM05_FROM_ROUTE_32_MAN, _023B
 	npc_msg msg_0380_R32_00010
 	goto_if_no_item_space ITEM_TM05, 1, _0246
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_06E
+	setflag FLAG_GOT_TM05_FROM_ROUTE_32_MAN
 _023B:
 	npc_msg msg_0380_R32_00012
 	wait_button_or_walk_away

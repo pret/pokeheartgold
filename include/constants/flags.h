@@ -127,7 +127,7 @@
 #define FLAG_GOT_POKEDEX                                            0x6B
 #define FLAG_EXCHANGED_RED_SCALE                                    0x6C
 #define FLAG_GOT_APRICORN_BOX                                       0x6D
-#define FLAG_UNK_06E                                                0x6E
+#define FLAG_GOT_TM05_FROM_ROUTE_32_MAN                             0x6E
 #define FLAG_UNK_06F                                                0x6F
 #define FLAG_UNK_070                                                0x70
 #define FLAG_TRADE_VIOLET_CITY_BELLSPROUT_ONIX                      0x71
