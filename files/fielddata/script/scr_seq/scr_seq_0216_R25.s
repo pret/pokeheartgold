@@ -378,11 +378,11 @@ scr_seq_R25_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_122, _0558
+	goto_if_set FLAG_GOT_NUGGET_FROM_ACE_TRAINER_M_KEVIN, _0558
 	npc_msg msg_0363_R25_00011
 	goto_if_no_item_space ITEM_NUGGET, 1, _0563
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_122
+	setflag FLAG_GOT_NUGGET_FROM_ACE_TRAINER_M_KEVIN
 	npc_msg msg_0363_R25_00013
 	closemsg
 	trainer_battle TRAINER_ACE_TRAINER_M_KEVIN, 0, 0, 0

@@ -307,7 +307,7 @@
 #define FLAG_GOT_EXPN_CARD                                         0x11F
 #define FLAG_GOT_POWER_PLANT_MANAGERS_STORY                        0x120
 #define FLAG_TRADE_POWER_PLANT_DUGTRIO_MAGNETON                    0x121
-#define FLAG_UNK_122                                               0x122
+#define FLAG_GOT_NUGGET_FROM_ACE_TRAINER_M_KEVIN                   0x122
 #define FLAG_UNK_123                                               0x123
 #define FLAG_GOT_TM19_FROM_ERIKA                                   0x124
 #define FLAG_UNK_125                                               0x125
