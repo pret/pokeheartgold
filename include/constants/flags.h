@@ -203,7 +203,7 @@
 #define FLAG_UNK_0B7                                                0xB7
 #define FLAG_UNK_0B8                                                0xB8
 #define FLAG_GOT_SECRETPOTION                                       0xB9
-#define FLAG_UNK_0BA                                                0xBA
+#define FLAG_GOT_TM01_FROM_CHUCK                                    0xBA
 #define FLAG_UNK_0BB                                                0xBB
 #define FLAG_UNK_0BC                                                0xBC
 #define FLAG_UNK_0BD                                                0xBD
