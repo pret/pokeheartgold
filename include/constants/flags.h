@@ -216,7 +216,7 @@
 #define FLAG_UNK_0C4                                                0xC4
 #define FLAG_UNK_0C5                                                0xC5
 #define FLAG_BEAT_RADIO_TOWER_ROCKETS                               0xC6
-#define FLAG_UNK_0C7                                                0xC7
+#define FLAG_GOT_TM10_FROM_LAKE_OF_RAGE_MAN                         0xC7
 #define FLAG_UNK_0C8                                                0xC8
 #define FLAG_GOT_RED_SCALE                                          0xC9
 #define FLAG_RED_GYARADOS_MEET                                      0xCA
