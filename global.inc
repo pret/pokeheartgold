@@ -2806,7 +2806,7 @@
 .public ScrCmd_221
 .public ScrCmd_223
 .public ScrCmd_224
-.public ScrCmd_225
+.public ScrCmd_GotoIfTrainerDefeated
 .public ScrCmd_226
 .public ScrCmd_227
 .public ScrCmd_228

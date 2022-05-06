@@ -46,7 +46,7 @@ BOOL ScrCmd_465(SCRIPTCONTEXT *ctx) {
     case 4: {
         u16 *r5 = sub_0202C7E0(group, 0, 0);
         u16 *retPtr = ScriptGetVarPointer(ctx);
-        CreateNamingScreen(ctx->taskman, 5, 0, 7, 0, r5, retPtr);
+        CreateNamingScreen(ctx->taskman, NAMINGSCREEN_GROUP, 0, OT_NAME_LENGTH, 0, r5, retPtr);
         return TRUE;
     }
     case 5: {
