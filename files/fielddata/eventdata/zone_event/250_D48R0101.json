@@ -91,7 +91,7 @@
       "ovid": "SPRITE_GSLEADER5",
       "mvt": 17,
       "type": 0,
-      "flag": "FLAG_UNK_2CE",
+      "flag": "FLAG_HIDE_CLIFFS_EDGE_GATE_CHUCK",
       "scr": 0,
       "dirn": 3,
       "eye": 0,

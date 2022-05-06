@@ -25,20 +25,20 @@ _0046:
 	setvar VAR_TEMP_x4009, 1
 	clearflag FLAG_UNK_281
 	clearflag FLAG_UNK_282
-	goto_if_set FLAG_UNK_167, _0099
+	goto_if_set FLAG_TRADE_STEVEN_FORRETRESS_BELDUM, _0099
 	compare VAR_UNK_4130, 4
 	goto_if_eq _0099
 	compare VAR_UNK_4130, 1
 	goto_if_le _0099
 	compare VAR_UNK_40FD, 0
 	goto_if_eq _0099
-	clearflag FLAG_UNK_2FA
+	clearflag FLAG_HIDE_SAFFRON_CITY_STEVEN
 	compare VAR_UNK_4130, 5
 	call_if_eq _00A5
 	end
 
 _0099:
-	setflag FLAG_UNK_2FA
+	setflag FLAG_HIDE_SAFFRON_CITY_STEVEN
 	call _00C3
 	end
 
@@ -50,7 +50,7 @@ _00AB:
 	setflag FLAG_UNK_0A0
 	setflag FLAG_UNK_281
 	setflag FLAG_UNK_282
-	setflag FLAG_UNK_2FA
+	setflag FLAG_HIDE_SAFFRON_CITY_STEVEN
 	call _00C3
 	end
 
@@ -98,7 +98,7 @@ _0165:
 	end
 
 scr_seq_T11R0701_004:
-	goto_if_set FLAG_UNK_177, _03E8
+	goto_if_set FLAG_GOT_HOENN_STARTER_FROM_STEVEN, _03E8
 	compare VAR_UNK_4130, 3
 	goto_if_eq _039B
 	play_se SEQ_SE_DP_SELECT
@@ -196,8 +196,8 @@ _0317:
 _031F:
 	wait_movement
 	hide_person obj_T11R0701_daigo
-	setflag FLAG_UNK_2FA
-	setflag FLAG_UNK_177
+	setflag FLAG_HIDE_SAFFRON_CITY_STEVEN
+	setflag FLAG_GOT_HOENN_STARTER_FROM_STEVEN
 	setvar VAR_UNK_4130, 4
 	clearflag FLAG_HIDE_STEVEN_IN_HOUSE_AFTER_LATIS
 	releaseall
@@ -306,7 +306,7 @@ _0415:
 	goto_if_ne _04F5
 	npc_trade_exec VAR_SPECIAL_x8004
 	npc_trade_end
-	setflag FLAG_UNK_167
+	setflag FLAG_TRADE_STEVEN_FORRETRESS_BELDUM
 	compare VAR_TEMP_x4002, 200
 	goto_if_lt _04A2
 	npc_msg msg_0537_T11R0701_00013
@@ -329,7 +329,7 @@ _04CE:
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	hide_person obj_T11R0701_daigo
-	setflag FLAG_UNK_2FA
+	setflag FLAG_HIDE_SAFFRON_CITY_STEVEN
 	setvar VAR_UNK_4130, 7
 	releaseall
 	end

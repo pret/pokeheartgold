@@ -50,7 +50,7 @@
       "ovid": "SPRITE_TSURE_POKE_STATIC_ARTICUNO",
       "mvt": 15,
       "type": 0,
-      "flag": "FLAG_UNK_306",
+      "flag": "FLAG_HIDE_SEAFOAM_ISLAND_ARTICUNO",
       "scr": "_EV_scr_seq_D11R0105_000 + 1",
       "dirn": 1,
       "eye": 0,

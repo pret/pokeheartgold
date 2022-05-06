@@ -50,7 +50,7 @@
       "ovid": "SPRITE_DAIGO",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2FA",
+      "flag": "FLAG_HIDE_SAFFRON_CITY_STEVEN",
       "scr": "_EV_scr_seq_T11R0701_004 + 1",
       "dirn": 1,
       "eye": 0,

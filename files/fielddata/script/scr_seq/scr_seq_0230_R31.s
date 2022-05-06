@@ -20,22 +20,22 @@ scr_seq_R31_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4114, 1
+	compare VAR_LOAN_SPEAROW, 1
 	goto_if_ne _003D
 	goto _0098
 	.byte 0x16, 0x00, 0x50, 0x00, 0x00, 0x00
 _003D:
-	compare VAR_UNK_4114, 2
+	compare VAR_LOAN_SPEAROW, 2
 	goto_if_ne _0056
 	goto _01AD
 	.byte 0x16, 0x00, 0x37, 0x00, 0x00, 0x00
 _0056:
-	compare VAR_UNK_4114, 4
+	compare VAR_LOAN_SPEAROW, 4
 	goto_if_ne _006F
 	goto _01AD
 	.byte 0x16, 0x00, 0x1e, 0x00, 0x00, 0x00
 _006F:
-	compare VAR_UNK_4114, 6
+	compare VAR_LOAN_SPEAROW, 6
 	goto_if_ne _008D
 	kenya_check_party_or_mailbox VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
@@ -102,20 +102,20 @@ _0187:
 	wait_fanfare
 _0195:
 	npc_msg msg_0378_R31_00007
-	setvar VAR_UNK_4114, 2
+	setvar VAR_LOAN_SPEAROW, 2
 	compare VAR_TEMP_x4000, VAR_TEMP_x4001
 	goto_if_ne _01AD
 	scrcmd_606
 _01AD:
 	goto_if_no_item_space ITEM_TM44, 1, _01FC
 	callstd std_give_item_verbose
-	compare VAR_UNK_4114, 2
+	compare VAR_LOAN_SPEAROW, 2
 	goto_if_ne _01EB
-	setvar VAR_UNK_4114, 3
+	setvar VAR_LOAN_SPEAROW, 3
 	goto _01F1
 
 _01EB:
-	setvar VAR_UNK_4114, 5
+	setvar VAR_LOAN_SPEAROW, 5
 _01F1:
 	npc_msg msg_0378_R31_00008
 	wait_button_or_walk_away
@@ -193,7 +193,7 @@ _0295:
 	end
 
 _02AE:
-	setvar VAR_UNK_4114, 1
+	setvar VAR_LOAN_SPEAROW, 1
 	goto _0098
 	.byte 0x02, 0x00
 

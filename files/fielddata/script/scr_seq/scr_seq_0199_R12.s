@@ -207,7 +207,7 @@ _02AE:
 	end
 
 _02B4:
-	setflag FLAG_UNK_173
+	setflag FLAG_CAUGHT_SNORLAX
 	return
 	.byte 0x61, 0x00, 0x02, 0x00
 scr_seq_R12_002:

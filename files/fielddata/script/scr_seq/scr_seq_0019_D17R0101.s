@@ -14,7 +14,7 @@ scr_seq_D17R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_116, _0053
+	goto_if_set FLAG_CAUGHT_HO_OH, _0053
 	get_game_version VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 8
 	goto_if_eq _0048
