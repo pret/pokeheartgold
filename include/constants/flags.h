@@ -160,7 +160,7 @@
 #define FLAG_UNK_08C                                                0x8C
 #define FLAG_TRADE_GOLDENROD_CITY_DROWZEE_MACHOP                    0x8D
 #define FLAG_UNK_08E                                                0x8E
-#define FLAG_UNK_08F                                                0x8F
+#define FLAG_GOT_TM11_FROM_RADIO_TOWER_WOMAN                        0x8F
 #define FLAG_UNK_090                                                0x90
 #define FLAG_UNK_091                                                0x91
 #define FLAG_UNK_092                                                0x92
