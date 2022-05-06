@@ -265,7 +265,7 @@
 #define FLAG_UNK_0F5                                                0xF5
 #define FLAG_UNK_0F6                                                0xF6
 #define FLAG_GOT_PP_MAX_FROM_VERMILLION_CITY_MAN                    0xF7
-#define FLAG_UNK_0F8                                                0xF8
+#define FLAG_GOT_RARE_CANDY_FROM_FAN_CLUB_CHAIRMAN                  0xF8
 #define FLAG_SNORLAX_MEET                                           0xF9
 #define FLAG_UNK_0FA                                                0xFA
 #define FLAG_UNK_0FB                                                0xFB
