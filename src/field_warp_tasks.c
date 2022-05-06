@@ -149,7 +149,7 @@ static void sub_02052F94(FieldSystem *fsys, Location *location) {
     if (fsys->location->warpId != -1) {
         warp = Field_GetWarpEventI(fsys, fsys->location->warpId);
         fsys->location->x = warp->x;
-        fsys->location->z = warp->y;
+        fsys->location->y = warp->y;
         if (warp->anchor == 0x100) {
             *FlyPoints_GetDynamicWarp(flypointsSave) = *sub_0203B95C(flypointsSave);
         }
@@ -221,13 +221,13 @@ static void sub_0205316C(FieldSystem *fsys) {
     if (fsys->unkAC) {
         gender = PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(fsys->savedata));
         avatar_sub = SaveFlyPoints_GetPlayerSub(Save_FlyPoints_get(fsys->savedata));
-        fsys->playerAvatar = sub_0205C390(fsys->mapObjectMan, fsys->location->x, fsys->location->z, fsys->location->direction, avatar_sub->unk4, gender, 2, avatar_sub);
+        fsys->playerAvatar = sub_0205C390(fsys->mapObjectMan, fsys->location->x, fsys->location->y, fsys->location->direction, avatar_sub->unk4, gender, 2, avatar_sub);
     } else {
         fsys->mapObjectMan = sub_0205E0BC(fsys, 64, 5);
         gender = PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(fsys->savedata));
         avatar_sub = SaveFlyPoints_GetPlayerSub(Save_FlyPoints_get(fsys->savedata));
-        fsys->playerAvatar = sub_0205C390(fsys->mapObjectMan, fsys->location->x, fsys->location->z, fsys->location->direction, avatar_sub->unk4, gender, 2, avatar_sub);
-        sub_020699F8(fsys->mapObjectMan, fsys->location->x, fsys->location->z, fsys->location->direction, fsys->location->mapId);
+        fsys->playerAvatar = sub_0205C390(fsys->mapObjectMan, fsys->location->x, fsys->location->y, fsys->location->direction, avatar_sub->unk4, gender, 2, avatar_sub);
+        sub_020699F8(fsys->mapObjectMan, fsys->location->x, fsys->location->y, fsys->location->direction, fsys->location->mapId);
         Field_InitMapObjectsFromZoneEventData(fsys);
         sub_0205F55C(fsys->mapObjectMan);
     }
@@ -300,12 +300,12 @@ static void _CopyPlayerPosToLocationWorkFacingSouth(Location *location, FieldSys
 
 static BOOL _IsPlayerStandingInFrontOfUnionRoomReception(FieldSystem *fsys) {
     if (MapHeader_MapIsPokemonCenter(fsys->location->mapId)
-     && fsys->location->x == 6 && fsys->location->z == 6) {
+     && fsys->location->x == 6 && fsys->location->y == 6) {
         return TRUE;
     }
 
     if (MapHeader_MapIsPokemonLeagueLobby(fsys->location->mapId)
-     && fsys->location->x == 3 && fsys->location->z == 15) {
+     && fsys->location->x == 3 && fsys->location->y == 15) {
         return TRUE;
     }
 

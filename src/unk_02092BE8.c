@@ -36,7 +36,7 @@ static void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL a2) 
         ptr->mapHeader = ptr->mapID;
     } else {
         ptr->x = warpPtr->x;
-        ptr->y = warpPtr->z;
+        ptr->y = warpPtr->y;
         MapHeader_GetWorldMapCoords(ptr->mapID, &Unk_struct.x, &Unk_struct.y);
         MAPMATRIX* matrix = MapMatrix_New();
         MapMatrix_Load(MAP_T20, matrix);
