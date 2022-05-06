@@ -416,7 +416,7 @@ scr_seq_R14_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_GOT_LUCKY_PUNCH, _0658
+	goto_if_set FLAG_GOT_LUCKY_PUNCH_FROM_ROUTE_14_WOMAN, _0658
 	npc_msg msg_0351_R14_00000
 	player_on_bike_check VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
@@ -438,7 +438,7 @@ _060D:
 	npc_msg msg_0351_R14_00002
 	goto_if_no_item_space ITEM_LUCKY_PUNCH, 1, _064E
 	callstd std_give_item_verbose
-	setflag FLAG_GOT_LUCKY_PUNCH
+	setflag FLAG_GOT_LUCKY_PUNCH_FROM_ROUTE_14_WOMAN
 	npc_msg msg_0351_R14_00003
 	wait_button_or_walk_away
 	closemsg

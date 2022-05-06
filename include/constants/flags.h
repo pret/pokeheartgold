@@ -365,7 +365,7 @@
 #define FLAG_GOT_MAREEP_EGG_FROM_PRIMO                             0x159
 #define FLAG_GOT_WOOPER_EGG_FROM_PRIMO                             0x15A
 #define FLAG_GOT_SLUGMA_EGG_FROM_PRIMO                             0x15B
-#define FLAG_GOT_LUCKY_PUNCH                                       0x15C
+#define FLAG_GOT_LUCKY_PUNCH_FROM_ROUTE_14_WOMAN                   0x15C
 #define FLAG_UNK_15D                                               0x15D
 #define FLAG_MET_MOVE_MANIAC                                       0x15E
 #define FLAG_BUG_CONTEST_OTHER_POKES_HELD                          0x15F
