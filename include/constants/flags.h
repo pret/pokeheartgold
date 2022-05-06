@@ -223,7 +223,7 @@
 #define FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_1                 0xCB
 #define FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_2                 0xCC
 #define FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_3                 0xCD
-#define FLAG_UNK_0CE                                                0xCE
+#define FLAG_GOT_TM36_FROM_ROUTE_43_GUARD                           0xCE
 #define FLAG_UNK_0CF                                                0xCF
 #define FLAG_TRADE_BLACKTHORN_CITY_DRAGONAIR_DODRIO                 0xD0
 #define FLAG_UNK_0D1                                                0xD1
