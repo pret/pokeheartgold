@@ -389,7 +389,7 @@
 #define FLAG_SPECIAL_MART_MAHOGANY_GOOD                            0x171
 #define FLAG_UNK_172                                               0x172
 #define FLAG_CAUGHT_SNORLAX                                        0x173
-#define FLAG_UNK_174                                               0x174
+#define FLAG_GOT_LURE_BALL_FROM_ROUTE_32_KURT_FAN                  0x174
 #define FLAG_CAUGHT_SUICINE                                        0x175
 #define FLAG_UNK_176                                               0x176
 #define FLAG_GOT_HOENN_STARTER_FROM_STEVEN                         0x177
