@@ -1,6 +1,6 @@
-# Pokemon HeartGold
+# Pokémon HeartGold and SoulSilver
 
-This is a WIP disassembly of Pokemon HeartGold and SoulSilver. For instructions on how to set up the repository, please read [INSTALL.md](INSTALL.md).
+This is a WIP disassembly of Pokémon HeartGold and SoulSilver. For instructions on how to set up the repository, please read [INSTALL.md](INSTALL.md).
 
 This repository builds the following ROMs:
 

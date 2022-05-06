@@ -12,7 +12,7 @@
 	scrdef_end
 
 scr_seq_R30R0201_003:
-	compare VAR_UNK_40F9, 1
+	compare VAR_SCENE_EMBEDDED_TOWER, 1
 	goto_if_eq _0021
 	end
 
@@ -61,9 +61,9 @@ scr_seq_R30R0201_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_40F9, 4
+	compare VAR_SCENE_EMBEDDED_TOWER, 4
 	goto_if_ge _00F1
-	compare VAR_UNK_40F9, 2
+	compare VAR_SCENE_EMBEDDED_TOWER, 2
 	goto_if_ge _02CD
 _00F1:
 	goto_if_set FLAG_EXCHANGED_RED_SCALE, _019F
@@ -160,7 +160,7 @@ _0220:
 scr_seq_R30R0201_002:
 	scrcmd_609
 	lockall
-	setvar VAR_UNK_40F9, 2
+	setvar VAR_SCENE_EMBEDDED_TOWER, 2
 	apply_movement obj_R30R0201_gsgentleman, _03AC
 	wait_movement
 	apply_movement obj_R30R0201_gsgentleman, _02D8

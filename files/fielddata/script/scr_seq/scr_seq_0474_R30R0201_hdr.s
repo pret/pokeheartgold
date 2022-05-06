@@ -10,7 +10,7 @@
 	.byte 0
 
 scr_seq_R30R0201_map_scripts_2:
-	.short VAR_UNK_40F9, 1, _EV_scr_seq_R30R0201_002 + 1
+	.short VAR_SCENE_EMBEDDED_TOWER, 1, _EV_scr_seq_R30R0201_002 + 1
 	.short VAR_SCENE_MR_POKEMONS_HOUSE, 0, _EV_scr_seq_R30R0201_001 + 1
 	.short 0
 

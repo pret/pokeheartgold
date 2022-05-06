@@ -934,7 +934,7 @@ scr_seq_D35R0102_013:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
-	setvar VAR_UNK_40B2, 1
+	setvar VAR_ROCKET_TRAP_KOFFING_1, 1
 	releaseall
 	end
 
@@ -947,7 +947,7 @@ scr_seq_D35R0102_014:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
-	setvar VAR_UNK_40B3, 1
+	setvar VAR_ROCKET_TRAP_VOLTORB_1, 1
 	releaseall
 	end
 
@@ -960,7 +960,7 @@ scr_seq_D35R0102_015:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
-	setvar VAR_UNK_40B4, 1
+	setvar VAR_ROCKET_TRAP_GEODUDE_1, 1
 	releaseall
 	end
 
@@ -973,7 +973,7 @@ scr_seq_D35R0102_016:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
-	setvar VAR_UNK_40B5, 1
+	setvar VAR_ROCKET_TRAP_VOLTORB_2, 1
 	releaseall
 	end
 
@@ -986,7 +986,7 @@ scr_seq_D35R0102_017:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
-	setvar VAR_UNK_40B6, 1
+	setvar VAR_ROCKET_TRAP_GEODUDE_2, 1
 	releaseall
 	end
 
@@ -999,7 +999,7 @@ scr_seq_D35R0102_018:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
-	setvar VAR_UNK_40B7, 1
+	setvar VAR_ROCKET_TRAP_VOLTORB_3, 1
 	releaseall
 	end
 
@@ -1012,7 +1012,7 @@ scr_seq_D35R0102_019:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
-	setvar VAR_UNK_40B8, 1
+	setvar VAR_ROCKET_TRAP_VOLTORB_4, 1
 	releaseall
 	end
 
@@ -1025,7 +1025,7 @@ scr_seq_D35R0102_020:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
-	setvar VAR_UNK_40B9, 1
+	setvar VAR_ROCKET_TRAP_KOFFING_2, 1
 	releaseall
 	end
 
@@ -1038,7 +1038,7 @@ scr_seq_D35R0102_021:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
-	setvar VAR_UNK_40BA, 1
+	setvar VAR_ROCKET_TRAP_KOFFING_3, 1
 	releaseall
 	end
 
@@ -1051,7 +1051,7 @@ scr_seq_D35R0102_022:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
-	setvar VAR_UNK_40BB, 1
+	setvar VAR_ROCKET_TRAP_GEODUDE_3, 1
 	releaseall
 	end
 
@@ -1064,7 +1064,7 @@ scr_seq_D35R0102_023:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
-	setvar VAR_UNK_40BC, 1
+	setvar VAR_ROCKET_TRAP_GEODUDE_4, 1
 	releaseall
 	end
 
@@ -1077,7 +1077,7 @@ scr_seq_D35R0102_024:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
-	setvar VAR_UNK_40BD, 1
+	setvar VAR_ROCKET_TRAP_KOFFING_4, 1
 	releaseall
 	end
 
@@ -1090,7 +1090,7 @@ scr_seq_D35R0102_025:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
-	setvar VAR_UNK_40BE, 1
+	setvar VAR_ROCKET_TRAP_VOLTORB_5, 1
 	releaseall
 	end
 
@@ -1103,7 +1103,7 @@ scr_seq_D35R0102_026:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
-	setvar VAR_UNK_40BF, 1
+	setvar VAR_ROCKET_TRAP_VOLTORB_6, 1
 	releaseall
 	end
 
@@ -1116,7 +1116,7 @@ scr_seq_D35R0102_027:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
-	setvar VAR_UNK_40C0, 1
+	setvar VAR_ROCKET_TRAP_KOFFING_5, 1
 	releaseall
 	end
 
@@ -1129,7 +1129,7 @@ scr_seq_D35R0102_028:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
-	setvar VAR_UNK_40C1, 1
+	setvar VAR_ROCKET_TRAP_GEODUDE_5, 1
 	releaseall
 	end
 
