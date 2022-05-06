@@ -318,7 +318,7 @@
 #define FLAG_UNK_12A                                               0x12A
 #define FLAG_UNLOCKED_MT_SILVER                                    0x12B
 #define FLAG_UNLOCKED_WEST_KANTO                                   0x12C
-#define FLAG_UNK_12D                                               0x12D
+#define FLAG_GOT_TM84_FROM_JANINE                                  0x12D
 #define FLAG_GOT_TM85_FROM_VIRIDIAN_CITY_MAN                       0x12E
 #define FLAG_UNK_12F                                               0x12F
 #define FLAG_UNK_130                                               0x130
