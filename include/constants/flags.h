@@ -400,7 +400,7 @@
 #define FLAG_UNK_17C                                               0x17C
 #define FLAG_GOT_TM50_FROM_BLAINE                                  0x17D
 #define FLAG_GOT_TM92_FROM_BLUE                                    0x17E
-#define FLAG_UNK_17F                                               0x17F
+#define FLAG_GOT_TM80_FROM_BROCK                                   0x17F
 #define FLAG_UNK_180                                               0x180
 #define FLAG_UNK_181                                               0x181
 #define FLAG_UNK_182                                               0x182

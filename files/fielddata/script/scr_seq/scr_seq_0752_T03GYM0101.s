@@ -111,9 +111,9 @@ scr_seq_T03GYM0101_000:
 _016C:
 	goto_if_no_item_space ITEM_TM80, 1, _01AE
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_17F
+	setflag FLAG_GOT_TM80_FROM_BROCK
 _0195:
-	goto_if_unset FLAG_UNK_17F, _016C
+	goto_if_unset FLAG_GOT_TM80_FROM_BROCK, _016C
 	buffer_players_name 0
 	npc_msg msg_0462_T03GYM0101_00005
 	wait_button_or_walk_away
