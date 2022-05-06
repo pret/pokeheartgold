@@ -17,7 +17,7 @@ scr_seq_T22R0601_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_071, _00BD
+	goto_if_set FLAG_TRADE_VIOLET_CITY_BELLSPROUT_ONIX, _00BD
 	npc_msg msg_0562_T22R0601_00001
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -45,7 +45,7 @@ _0041:
 	goto_if_ne _00A5
 	npc_trade_exec VAR_SPECIAL_x8004
 	npc_trade_end
-	setflag FLAG_UNK_071
+	setflag FLAG_TRADE_VIOLET_CITY_BELLSPROUT_ONIX
 	npc_msg msg_0562_T22R0601_00002
 	wait_button_or_walk_away
 	closemsg

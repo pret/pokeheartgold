@@ -316,7 +316,7 @@ _045C:
 	end
 
 _0466:
-	setflag FLAG_UNK_16A
+	setflag FLAG_CAUGHT_RED_GYARADOS
 	return
 
 _046C:
