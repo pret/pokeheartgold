@@ -21,7 +21,7 @@ scr_seq_T03PC0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_133, _00C9
+	goto_if_set FLAG_TRADE_PEWTER_CITY_HAUNTER_XATU, _00C9
 	npc_msg msg_0463_T03PC0101_00003
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -46,7 +46,7 @@ scr_seq_T03PC0101_001:
 	goto_if_ne _00B1
 	npc_trade_exec VAR_SPECIAL_x8004
 	npc_trade_end
-	setflag FLAG_UNK_133
+	setflag FLAG_TRADE_PEWTER_CITY_HAUNTER_XATU
 	npc_msg msg_0463_T03PC0101_00004
 	wait_button_or_walk_away
 	closemsg
