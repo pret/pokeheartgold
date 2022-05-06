@@ -234,7 +234,7 @@
 #define FLAG_UNK_0D6                                                0xD6
 #define FLAG_UNK_0D7                                                0xD7
 #define FLAG_GOT_TWISTEDSPOON_FROM_TUSCANY                          0xD8
-#define FLAG_UNK_0D9                                                0xD9
+#define FLAG_GOT_POISON_BARB_FROM_FRIEDA                            0xD9
 #define FLAG_GOT_TM59_FROM_CLAIR                                    0xDA
 #define FLAG_FAILED_DRAGONS_DEN_QUIZ                                0xDB
 #define FLAG_GOT_DRATINI_FROM_MASTER_JUST_NOW                       0xDC
