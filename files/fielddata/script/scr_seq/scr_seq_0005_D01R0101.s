@@ -137,19 +137,19 @@ _01B6:
 	get_weekday VAR_SPECIAL_x8004
 	compare VAR_SPECIAL_x8004, 1
 	goto_if_ne _01D8
-	goto_if_unset FLAG_UNK_165, _0292
+	goto_if_unset FLAG_TRADE_BROCK_BONSLY_RHYHORN, _0292
 	goto _020E
 
 _01D8:
 	compare VAR_SPECIAL_x8004, 4
 	goto_if_ne _01F6
-	goto_if_unset FLAG_UNK_165, _0292
+	goto_if_unset FLAG_TRADE_BROCK_BONSLY_RHYHORN, _0292
 	goto _020E
 
 _01F6:
 	compare VAR_SPECIAL_x8004, 6
 	goto_if_ne _020E
-	goto_if_unset FLAG_UNK_165, _0292
+	goto_if_unset FLAG_TRADE_BROCK_BONSLY_RHYHORN, _0292
 _020E:
 	compare VAR_TEMP_x4000, 55
 	goto_if_eq _0357
@@ -228,7 +228,7 @@ _02AF:
 	npc_trade_exec VAR_SPECIAL_x8004
 	npc_trade_end
 	set_mon_move VAR_SPECIAL_x8004, 0, MOVE_THUNDER_FANG
-	setflag FLAG_UNK_165
+	setflag FLAG_TRADE_BROCK_BONSLY_RHYHORN
 	setvar VAR_TEMP_x4000, 55
 	npc_msg msg_0047_D01R0101_00016
 	wait_button_or_walk_away

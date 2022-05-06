@@ -43,7 +43,7 @@ _005F:
 _0087:
 	setflag FLAG_UNK_226
 _008B:
-	goto_if_unset FLAG_UNK_162, _00E3
+	goto_if_unset FLAG_TRADE_LT_SURGE_PIKACHU, _00E3
 	get_phone_book_rematch PHONE_CONTACT_LT__SURGE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00E3

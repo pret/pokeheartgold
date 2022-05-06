@@ -11,20 +11,20 @@
 	scrdef_end
 
 scr_seq_D25R0103_002:
-	goto_if_set FLAG_UNK_AB8, _003A
+	goto_if_set FLAG_DAILY_CAUGHT_LAPRAS, _003A
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 5
 	goto_if_ne _0034
-	clearflag FLAG_UNK_30A
+	clearflag FLAG_HIDE_UNION_CAVE_LAPRAS
 	goto _0038
 
 _0034:
-	setflag FLAG_UNK_30A
+	setflag FLAG_HIDE_UNION_CAVE_LAPRAS
 _0038:
 	end
 
 _003A:
-	setflag FLAG_UNK_30A
+	setflag FLAG_HIDE_UNION_CAVE_LAPRAS
 	end
 
 scr_seq_D25R0103_001:
@@ -32,7 +32,7 @@ scr_seq_D25R0103_001:
 	end
 
 _004D:
-	setflag FLAG_UNK_30A
+	setflag FLAG_HIDE_UNION_CAVE_LAPRAS
 	hide_person obj_D25R0103_rapurasu
 	end
 
@@ -48,7 +48,7 @@ scr_seq_D25R0103_000:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _008F
-	setflag FLAG_UNK_AB8
+	setflag FLAG_DAILY_CAUGHT_LAPRAS
 	releaseall
 	end
 

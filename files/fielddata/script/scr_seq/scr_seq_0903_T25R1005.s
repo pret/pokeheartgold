@@ -79,7 +79,7 @@ scr_seq_T25R1005_003:
 	lockall
 	faceplayer
 	goto_if_set FLAG_SYS_ROCKET_COSTUME, _017D
-	goto_if_set FLAG_UNK_08D, _0172
+	goto_if_set FLAG_TRADE_GOLDENROD_CITY_DROWZEE_MACHOP, _0172
 	npc_msg msg_0596_T25R1005_00009
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -107,7 +107,7 @@ _00F6:
 	goto_if_ne _015A
 	npc_trade_exec VAR_SPECIAL_x8004
 	npc_trade_end
-	setflag FLAG_UNK_08D
+	setflag FLAG_TRADE_GOLDENROD_CITY_DROWZEE_MACHOP
 	npc_msg msg_0596_T25R1005_00010
 	wait_button_or_walk_away
 	closemsg

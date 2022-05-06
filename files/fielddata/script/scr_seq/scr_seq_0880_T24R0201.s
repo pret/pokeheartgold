@@ -12,9 +12,9 @@ scr_seq_T24R0201_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_0C1, _0037
-	goto_if_unset FLAG_UNK_0BF, _0042
-	goto_if_set FLAG_UNK_ABD, _00A2
+	goto_if_set FLAG_RETURNED_OR_INHERITED_LOAN_SHUCKLE, _0037
+	goto_if_unset FLAG_GOT_LOAN_SHUCKLE, _0042
+	goto_if_set FLAG_DAILY_GOT_LOAN_SHUCKLE_TODAY, _00A2
 	goto _00AD
 	.byte 0x02, 0x00
 _0037:
@@ -49,8 +49,8 @@ _007D:
 	npc_msg msg_0576_T24R0201_00002
 	play_fanfare SEQ_ME_PT_SPECIAL
 	wait_fanfare
-	setflag FLAG_UNK_0BF
-	setflag FLAG_UNK_ABD
+	setflag FLAG_GOT_LOAN_SHUCKLE
+	setflag FLAG_DAILY_GOT_LOAN_SHUCKLE_TODAY
 	goto _003A
 	.byte 0x02, 0x00
 _00A2:
@@ -113,7 +113,7 @@ _0181:
 	return_loan_mon VAR_TEMP_x4000
 	call _019A
 	npc_msg msg_0576_T24R0201_00007
-	setflag FLAG_UNK_0C1
+	setflag FLAG_RETURNED_OR_INHERITED_LOAN_SHUCKLE
 _0192:
 	goto _003A
 	.byte 0x02, 0x00
@@ -129,7 +129,7 @@ _01AA:
 	.byte 0x02, 0x00
 _01B5:
 	npc_msg msg_0576_T24R0201_00009
-	setflag FLAG_UNK_0C1
+	setflag FLAG_RETURNED_OR_INHERITED_LOAN_SHUCKLE
 	goto _003A
 	.byte 0x02, 0x00
 	.balign 4, 0

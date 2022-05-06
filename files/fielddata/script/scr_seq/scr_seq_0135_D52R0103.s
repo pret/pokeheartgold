@@ -16,14 +16,14 @@ scr_seq_D52R0103_002:
 	end
 
 _001F:
-	setflag FLAG_UNK_2D2
+	setflag FLAG_HIDE_EMBEDDED_TOWER_RAYQUAZA
 	hide_person obj_D52R0103_tsure_poke_static_rayquaza
 	end
 
 scr_seq_D52R0103_003:
-	compare VAR_UNK_40F9, 7
+	compare VAR_SCENE_EMBEDDED_TOWER, 7
 	goto_if_ge _003C
-	clearflag FLAG_UNK_2D2
+	clearflag FLAG_HIDE_EMBEDDED_TOWER_RAYQUAZA
 	end
 
 _003C:
@@ -57,7 +57,7 @@ scr_seq_D52R0103_001:
 	wait_cry
 	lock obj_D52R0103_tsure_poke_static_rayquaza
 	closemsg
-	setvar VAR_UNK_40F9, 6
+	setvar VAR_SCENE_EMBEDDED_TOWER, 6
 	releaseall
 	end
 	.byte 0x00, 0x00, 0x00
@@ -91,13 +91,13 @@ _0123:
 	npc_msg msg_0150_D52R0103_00001
 	wait_button_or_walk_away
 	closemsg
-	setvar VAR_UNK_40F9, 9
+	setvar VAR_SCENE_EMBEDDED_TOWER, 9
 	releaseall
 	end
 
 _0134:
-	setvar VAR_UNK_40F9, 7
-	setflag FLAG_UNK_17B
+	setvar VAR_SCENE_EMBEDDED_TOWER, 7
+	setflag FLAG_CAUGHT_RAYQUAZA
 	releaseall
 	end
 

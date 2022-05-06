@@ -65,7 +65,7 @@ _00B4:
 	end
 
 _00BA:
-	setflag FLAG_UNK_173
+	setflag FLAG_CAUGHT_SNORLAX
 	return
 
 scr_seq_R11_002:

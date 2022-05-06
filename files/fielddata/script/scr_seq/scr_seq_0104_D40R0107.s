@@ -110,7 +110,7 @@ _019E:
 	end
 
 _01A8:
-	setflag FLAG_UNK_117
+	setflag FLAG_CAUGHT_LUGIA
 	return
 
 scr_seq_D40R0107_005:
