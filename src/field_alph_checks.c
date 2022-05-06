@@ -9,7 +9,7 @@ BOOL CheckUseEscapeRopeInAlphChamber(FieldSystem* fsys) {
         return FALSE;
     }
 
-    if (position->x != 6 || position->z != 3 || position->direction != DIR_NORTH) {
+    if (position->x != 6 || position->y != 3 || position->direction != DIR_NORTH) {
         return FALSE;
     }
 
@@ -23,7 +23,7 @@ BOOL CheckUseFlashInAlphChamber(FieldSystem* fsys) {
         return FALSE;
     }
 
-    if (position->x != 6 || position->z != 3 || position->direction != DIR_NORTH) {
+    if (position->x != 6 || position->y != 3 || position->direction != DIR_NORTH) {
         return FALSE;
     }
 
@@ -37,7 +37,7 @@ BOOL CheckUseWaterStoneInAlphChamber(FieldSystem* fsys) {
         return FALSE;
     }
 
-    if (position->x != 6 || position->z != 3 || position->direction != DIR_NORTH) {
+    if (position->x != 6 || position->y != 3 || position->direction != DIR_NORTH) {
         return FALSE;
     }
 
