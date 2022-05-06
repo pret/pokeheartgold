@@ -2483,7 +2483,7 @@ BOOL ScrCmd_SetDynamicWarp(SCRIPTCONTEXT *ctx) {
     warp.mapId = ScriptGetVar(ctx);
     warp.warpId = ScriptGetVar(ctx);
     warp.x = ScriptGetVar(ctx);
-    warp.z = ScriptGetVar(ctx);
+    warp.y = ScriptGetVar(ctx);
     warp.direction = ScriptGetVar(ctx);
     FlyPoints_SetDynamicWarp(Save_FlyPoints_get(ctx->fsys->savedata), &warp);
     return FALSE;
@@ -4092,7 +4092,7 @@ BOOL ScrCmd_582(SCRIPTCONTEXT *ctx) {
     Location *specialSpawn = FlyPoints_GetSpecialSpawnWarpPtr(Save_FlyPoints_get(ctx->fsys->savedata));
     specialSpawn->mapId = mapId;
     specialSpawn->x = x;
-    specialSpawn->z = y;
+    specialSpawn->y = y;
     specialSpawn->warpId = -1;
     specialSpawn->direction = DIR_SOUTH;
     return FALSE;
