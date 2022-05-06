@@ -328,7 +328,7 @@
 #define FLAG_UNK_134                                               0x134
 #define FLAG_UNK_135                                               0x135
 #define FLAG_UNK_136                                               0x136
-#define FLAG_UNK_137                                               0x137
+#define FLAG_GOT_TM47_FROM_ROUTE_28_CELEBRITY                      0x137
 #define FLAG_UNK_138                                               0x138
 #define FLAG_UNK_139                                               0x139
 #define FLAG_UNK_13A                                               0x13A
