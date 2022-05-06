@@ -403,7 +403,7 @@
 #define FLAG_GOT_TM80_FROM_BROCK                                   0x17F
 #define FLAG_GOT_TM03_FROM_MISTY                                   0x180
 #define FLAG_GOT_TM34_FROM_LT_SURGE                                0x181
-#define FLAG_UNK_182                                               0x182
+#define FLAG_GOT_TM48_FROM_SABRINA                                 0x182
 #define FLAG_UNK_183                                               0x183
 #define FLAG_UNK_184                                               0x184
 #define FLAG_GOT_HM08                                              0x185
