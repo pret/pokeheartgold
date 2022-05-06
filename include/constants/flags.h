@@ -162,7 +162,7 @@
 #define FLAG_UNK_08E                                                0x8E
 #define FLAG_GOT_TM11_FROM_RADIO_TOWER_WOMAN                        0x8F
 #define FLAG_UNK_090                                                0x90
-#define FLAG_UNK_091                                                0x91
+#define FLAG_GOT_BRIGHTPOWDER_FROM_MARY                             0x91
 #define FLAG_UNK_092                                                0x92
 #define FLAG_UNK_093                                                0x93
 #define FLAG_UNK_094                                                0x94
