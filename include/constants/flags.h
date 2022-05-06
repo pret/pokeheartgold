@@ -211,7 +211,7 @@
 #define FLAG_GOT_LOAN_SHUCKLE                                       0xBF
 #define FLAG_UNK_0C0                                                0xC0
 #define FLAG_RETURNED_OR_INHERITED_LOAN_SHUCKLE                     0xC1
-#define FLAG_UNK_0C2                                                0xC2
+#define FLAG_GOT_TM23_FROM_JASMINE                                  0xC2
 #define FLAG_UNK_0C3                                                0xC3
 #define FLAG_UNK_0C4                                                0xC4
 #define FLAG_UNK_0C5                                                0xC5
