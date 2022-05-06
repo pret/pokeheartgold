@@ -12,7 +12,7 @@ scr_seq_T07R0205_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_158, _0071
+	goto_if_set FLAG_GOT_SPELL_TAG_FROM_CELADON_CITY_MAN, _0071
 	npc_msg msg_0505_T07R0205_00000
 	scrcmd_379 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 3
@@ -29,7 +29,7 @@ _0045:
 	npc_msg msg_0505_T07R0205_00002
 	goto_if_no_item_space ITEM_SPELL_TAG, 1, _007C
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_158
+	setflag FLAG_GOT_SPELL_TAG_FROM_CELADON_CITY_MAN
 _0071:
 	npc_msg msg_0505_T07R0205_00003
 	wait_button_or_walk_away

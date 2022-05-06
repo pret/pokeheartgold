@@ -361,7 +361,7 @@
 #define FLAG_UNK_155                                               0x155
 #define FLAG_UNK_156                                               0x156
 #define FLAG_UNK_157                                               0x157
-#define FLAG_UNK_158                                               0x158
+#define FLAG_GOT_SPELL_TAG_FROM_CELADON_CITY_MAN                   0x158
 #define FLAG_GOT_MAREEP_EGG_FROM_PRIMO                             0x159
 #define FLAG_GOT_WOOPER_EGG_FROM_PRIMO                             0x15A
 #define FLAG_GOT_SLUGMA_EGG_FROM_PRIMO                             0x15B
