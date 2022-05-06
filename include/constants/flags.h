@@ -134,7 +134,7 @@
 #define FLAG_UNK_072                                                0x72
 #define FLAG_GOT_TM51_FROM_FALKNER                                  0x73
 #define FLAG_UNK_074                                                0x74
-#define FLAG_UNK_075                                                0x75
+#define FLAG_GOT_OLD_ROD                                            0x75
 #define FLAG_UNK_076                                                0x76
 #define FLAG_UNK_077                                                0x77
 #define FLAG_UNK_078                                                0x78
