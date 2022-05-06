@@ -240,7 +240,7 @@
 #define FLAG_GOT_DRATINI_FROM_MASTER_JUST_NOW                       0xDC
 #define FLAG_GOT_DRATINI_FROM_MASTER_LONG_AGO                       0xDD
 #define FLAG_UNK_0DE                                                0xDE
-#define FLAG_UNK_0DF                                                0xDF
+#define FLAG_GOT_BLACKGLASSES_FROM_DARK_CAVE_MAN                    0xDF
 #define FLAG_UNK_0E0                                                0xE0
 #define FLAG_UNK_0E1                                                0xE1
 #define FLAG_UNK_0E2                                                0xE2
