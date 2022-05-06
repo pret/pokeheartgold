@@ -222,11 +222,11 @@ scr_seq_D22R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_10E, _0380
+	goto_if_set FLAG_GOT_QUICK_CLAW_FROM_NATIONAL_PARK_WOMAN, _0380
 	npc_msg msg_0062_D22R0101_00002
 	goto_if_no_item_space ITEM_QUICK_CLAW, 1, _038B
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_10E
+	setflag FLAG_GOT_QUICK_CLAW_FROM_NATIONAL_PARK_WOMAN
 _0380:
 	npc_msg msg_0062_D22R0101_00004
 	wait_button_or_walk_away

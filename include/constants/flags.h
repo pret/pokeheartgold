@@ -287,7 +287,7 @@
 #define FLAG_UNK_10B                                               0x10B
 #define FLAG_GOT_TYROGUE_FROM_KARATE_KING                          0x10C
 #define FLAG_BEAT_KARATE_KING                                      0x10D
-#define FLAG_UNK_10E                                               0x10E
+#define FLAG_GOT_QUICK_CLAW_FROM_NATIONAL_PARK_WOMAN               0x10E
 #define FLAG_UNK_10F                                               0x10F
 #define FLAG_GOT_UNOWN_REPORT                                      0x110
 #define FLAG_UNK_111                                               0x111
