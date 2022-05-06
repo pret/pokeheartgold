@@ -139,7 +139,7 @@
 #define FLAG_UNK_077                                                0x77
 #define FLAG_UNK_078                                                0x78
 #define FLAG_UNK_079                                                0x79
-#define FLAG_UNK_07A                                                0x7A
+#define FLAG_GOT_KINGS_ROCK_FROM_SLOWPOKE_WELL_MAN                  0x7A
 #define FLAG_BEAT_AZALEA_ROCKETS                                    0x7B
 #define FLAG_UNK_07C                                                0x7C
 #define FLAG_FOUND_FIRST_FARFETCHD                                  0x7D
