@@ -325,7 +325,7 @@
 #define FLAG_GOT_CLEANSE_TAG_FROM_ROUTE_5_GRANDMA                  0x131
 #define FLAG_UNK_132                                               0x132
 #define FLAG_TRADE_PEWTER_CITY_HAUNTER_XATU                        0x133
-#define FLAG_UNK_134                                               0x134
+#define FLAG_GOT_NUGGET_FROM_ROUTE_2_MAN                           0x134
 #define FLAG_GOT_SACRED_ASH_FROM_ROUTE_2_LAB_AIDE                  0x135
 #define FLAG_UNK_136                                               0x136
 #define FLAG_GOT_TM47_FROM_ROUTE_28_CELEBRITY                      0x137
