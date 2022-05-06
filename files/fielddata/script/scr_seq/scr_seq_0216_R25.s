@@ -576,7 +576,7 @@ _07AA:
 	end
 
 _07B0:
-	setflag FLAG_ENGAGED_STATIC_SUICUNE
+	setflag FLAG_CAUGHT_SUICINE
 	return
 
 _07B6:

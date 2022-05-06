@@ -12,15 +12,15 @@ scr_seq_D38R0104_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_10C, _0097
-	goto_if_set FLAG_UNK_10D, _0046
+	goto_if_set FLAG_GOT_TYROGUE_FROM_KARATE_KING, _0097
+	goto_if_set FLAG_BEAT_KARATE_KING, _0046
 	npc_msg msg_0121_D38R0104_00000
 	closemsg
 	trainer_battle TRAINER_BLACK_BELT_KIYO, 0, 0, 0
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00CC
-	setflag FLAG_UNK_10D
+	setflag FLAG_BEAT_KARATE_KING
 _0046:
 	npc_msg msg_0121_D38R0104_00001
 	get_party_count VAR_SPECIAL_x8005
@@ -43,7 +43,7 @@ _0063:
 	call_if_eq _00A6
 	touchscreen_menu_show
 _0097:
-	setflag FLAG_UNK_10C
+	setflag FLAG_GOT_TYROGUE_FROM_KARATE_KING
 	npc_msg msg_0121_D38R0104_00003
 	wait_button_or_walk_away
 	closemsg

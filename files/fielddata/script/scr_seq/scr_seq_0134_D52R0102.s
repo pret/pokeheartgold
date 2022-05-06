@@ -11,7 +11,7 @@
 	scrdef_end
 
 scr_seq_D52R0102_001:
-	compare VAR_UNK_40F9, 4
+	compare VAR_SCENE_EMBEDDED_TOWER, 4
 	goto_if_ge _007C
 	get_game_version VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 7
@@ -22,20 +22,20 @@ _0038:
 	goto _0040
 	.byte 0x02, 0x00
 _0040:
-	setflag FLAG_UNK_2D1
-	setflag FLAG_UNK_2D4
+	setflag FLAG_HIDE_EMBEDDED_TOWER_KYOGRE
+	setflag FLAG_HIDE_EMBEDDED_TOWER_KYOGRE_HIKER
 	end
 
 _004A:
-	goto_if_set FLAG_UNK_18B, _007C
+	goto_if_set FLAG_BEAT_OR_ESCAPED_FROM_GROUDON_OR_KYOGRE, _007C
 	hasitem ITEM_BLUE_ORB, 1, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 1
 	goto_if_ge _0072
 	goto _0040
 	.byte 0x02, 0x00
 _0072:
-	setflag FLAG_UNK_2D4
-	clearflag FLAG_UNK_2D1
+	setflag FLAG_HIDE_EMBEDDED_TOWER_KYOGRE_HIKER
+	clearflag FLAG_HIDE_EMBEDDED_TOWER_KYOGRE
 	end
 
 _007C:
@@ -46,7 +46,7 @@ scr_seq_D52R0102_002:
 	end
 
 _008B:
-	setflag FLAG_UNK_2D1
+	setflag FLAG_HIDE_EMBEDDED_TOWER_KYOGRE
 	hide_person obj_D52R0102_tsure_poke_static_kyogre
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
@@ -74,14 +74,14 @@ _00EC:
 	npc_msg msg_0149_D52R0102_00001
 	wait_button_or_walk_away
 	closemsg
-	setflag FLAG_UNK_18B
+	setflag FLAG_BEAT_OR_ESCAPED_FROM_GROUDON_OR_KYOGRE
 	releaseall
 	end
 
 _00FB:
-	setvar VAR_UNK_40F9, 4
-	setflag FLAG_UNK_17A
-	clearflag FLAG_UNK_2D4
+	setvar VAR_SCENE_EMBEDDED_TOWER, 4
+	setflag FLAG_CAUGHT_KYOGRE
+	clearflag FLAG_HIDE_EMBEDDED_TOWER_KYOGRE_HIKER
 	show_person obj_D52R0102_mount_2
 	scrcmd_602 0
 	scrcmd_603
@@ -117,8 +117,8 @@ _0156:
 	apply_movement obj_D52R0102_mount_2, _01EC
 	wait_movement
 	hide_person obj_D52R0102_mount_2
-	setflag FLAG_UNK_2D4
-	setflag FLAG_UNK_2CF
+	setflag FLAG_HIDE_EMBEDDED_TOWER_KYOGRE_HIKER
+	setflag FLAG_HIDE_ROUTE_47_EMBEDDED_TOWER_HIKER
 	releaseall
 	end
 

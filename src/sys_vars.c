@@ -118,7 +118,7 @@ BOOL sub_02066BC0(SCRIPT_STATE* state, u32 a1) {
 
 void sub_02066BE8(SCRIPT_STATE* state, u32 a1, u16 value) {
     if (a1 < NELEMS(_020FE4A8)) {
-        SetScriptVar(state, VAR_UNK_4045 + a1, value);
+        SetScriptVar(state, VAR_ROAMER_RAIKOU_STATUS + a1, value);
     }
 }
 

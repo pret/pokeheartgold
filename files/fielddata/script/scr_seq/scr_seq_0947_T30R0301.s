@@ -13,7 +13,7 @@ scr_seq_T30R0301_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_0D0, _00CA
+	goto_if_set FLAG_TRADE_BLACKTHORN_CITY_DRAGONAIR_DODRIO, _00CA
 	npc_msg msg_0634_T30R0301_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -44,7 +44,7 @@ _003B:
 	goto_if_ne _00B2
 	npc_trade_exec VAR_SPECIAL_x8004
 	npc_trade_end
-	setflag FLAG_UNK_0D0
+	setflag FLAG_TRADE_BLACKTHORN_CITY_DRAGONAIR_DODRIO
 	npc_msg msg_0634_T30R0301_00001
 	wait_button_or_walk_away
 	closemsg

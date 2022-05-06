@@ -49,17 +49,17 @@ scr_seq_T10R0701_000:
 _009A:
 	setflag FLAG_UNK_97E
 	clearflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
-	call_if_unset FLAG_UNK_116, _01C9
-	call_if_unset FLAG_UNK_117, _01CF
-	call_if_unset FLAG_UNK_169, _01D5
-	call_if_unset FLAG_UNK_16A, _01DB
-	call_if_unset FLAG_UNK_16B, _01E1
-	call_if_unset FLAG_UNK_16C, _01E7
-	call_if_unset FLAG_UNK_14A, _01ED
-	call_if_unset FLAG_UNK_16D, _0206
-	goto_if_unset FLAG_UNK_173, _020C
+	call_if_unset FLAG_CAUGHT_HO_OH, _01C9
+	call_if_unset FLAG_CAUGHT_LUGIA, _01CF
+	call_if_unset FLAG_CAUGHT_SUDOWOODO, _01D5
+	call_if_unset FLAG_CAUGHT_RED_GYARADOS, _01DB
+	call_if_unset FLAG_CAUGHT_MEWTWO, _01E1
+	call_if_unset FLAG_CAUGHT_ARTICUNO, _01E7
+	call_if_unset FLAG_CAUGHT_ZAPDOS, _01ED
+	call_if_unset FLAG_CAUGHT_MOLTRES, _0206
+	goto_if_unset FLAG_CAUGHT_SNORLAX, _020C
 _0105:
-	call_if_unset FLAG_ENGAGED_STATIC_SUICUNE, _0227
+	call_if_unset FLAG_CAUGHT_SUICINE, _0227
 	get_game_version VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 7
 	goto_if_ne _012D
@@ -69,14 +69,14 @@ _012D:
 	goto _024F
 
 _0133:
-	call_if_unset FLAG_UNK_17B, _0264
-	compare VAR_UNK_4046, 2
+	call_if_unset FLAG_CAUGHT_RAYQUAZA, _0264
+	compare VAR_ROAMER_ENTEI_STATUS, 2
 	call_if_eq _026A
-	compare VAR_UNK_4045, 2
+	compare VAR_ROAMER_RAIKOU_STATUS, 2
 	call_if_eq _0275
-	compare VAR_UNK_4047, 2
+	compare VAR_ROAMER_LATIAS_STATUS, 2
 	call_if_eq _0280
-	compare VAR_UNK_4048, 2
+	compare VAR_ROAMER_LATIOS_STATUS, 2
 	call_if_eq _028B
 	hof_credits 0
 	scrcmd_150
@@ -118,7 +118,7 @@ _01CF:
 	return
 
 _01D5:
-	clearflag FLAG_UNK_1C2
+	clearflag FLAG_HIDE_ROUTE_36_SUDOWOODO
 	return
 
 _01DB:
@@ -126,11 +126,11 @@ _01DB:
 	return
 
 _01E1:
-	clearflag FLAG_UNK_305
+	clearflag FLAG_HIDE_CERULEAN_CAVE_MEWTWO
 	return
 
 _01E7:
-	clearflag FLAG_UNK_306
+	clearflag FLAG_HIDE_SEAFOAM_ISLAND_ARTICUNO
 	return
 
 _01ED:
@@ -142,7 +142,7 @@ _0204:
 	return
 
 _0206:
-	clearflag FLAG_UNK_307
+	clearflag FLAG_HIDE_MT_SILVER_CAVE_MOLTRES
 	return
 
 _020C:
@@ -161,36 +161,42 @@ _0238:
 	return
 
 _023A:
-	goto_if_set FLAG_UNK_17A, _0133
-	clearflag FLAG_UNK_18B
+	goto_if_set FLAG_CAUGHT_KYOGRE, _0133
+	clearflag FLAG_BEAT_OR_ESCAPED_FROM_GROUDON_OR_KYOGRE
 	goto _0133
 
+// This branch is for SoulSilver, so this should be checking
+// FLAG_CAUGHT_GROUDON instead of FLAG_CAUGHT_KYOGRE. This problem
+// has existed since this file was disassembled and is probably a
+// mistake in SoulSilver. Because capturing Groudon sets
+// VAR_SCENE_EMBEDDED_TOWER to 4 and the tower does not regenerate
+// Groudon if the variable is 4 or more, the mistake has no effect.
 _024F:
-	goto_if_set FLAG_UNK_17A, _0133
-	clearflag FLAG_UNK_18B
+	goto_if_set FLAG_CAUGHT_KYOGRE, _0133
+	clearflag FLAG_BEAT_OR_ESCAPED_FROM_GROUDON_OR_KYOGRE
 	goto _0133
 
 _0264:
-	clearflag FLAG_UNK_2D2
+	clearflag FLAG_HIDE_EMBEDDED_TOWER_RAYQUAZA
 	return
 
 _026A:
-	setvar VAR_UNK_4046, 0
+	setvar VAR_ROAMER_ENTEI_STATUS, 0
 	create_roamer 1
 	return
 
 _0275:
-	setvar VAR_UNK_4045, 0
+	setvar VAR_ROAMER_RAIKOU_STATUS, 0
 	create_roamer 0
 	return
 
 _0280:
-	setvar VAR_UNK_4047, 0
+	setvar VAR_ROAMER_LATIAS_STATUS, 0
 	create_roamer 2
 	return
 
 _028B:
-	setvar VAR_UNK_4048, 0
+	setvar VAR_ROAMER_LATIOS_STATUS, 0
 	create_roamer 3
 	return
 	.balign 4, 0

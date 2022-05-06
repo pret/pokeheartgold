@@ -35,11 +35,11 @@ _005A:
 _0064:
 	clearflag FLAG_HIDE_CAMERON
 _0068:
-	goto_if_set FLAG_UNK_0DC, _0075
+	goto_if_set FLAG_GOT_DRATINI_FROM_MASTER_JUST_NOW, _0075
 	end
 
 _0075:
-	setflag FLAG_UNK_0DD
+	setflag FLAG_GOT_DRATINI_FROM_MASTER_LONG_AGO
 	end
 
 scr_seq_D44R0103_003:
@@ -193,7 +193,7 @@ _02D6:
 	end
 
 _0310:
-	setflag FLAG_UNK_0DB
+	setflag FLAG_FAILED_DRAGONS_DEN_QUIZ
 	apply_movement obj_D44R0103_chourou, _0378
 	wait_movement
 	npc_msg msg_0130_D44R0103_00007
@@ -302,9 +302,9 @@ scr_seq_D44R0103_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_0DD, _053D
-	goto_if_set FLAG_UNK_0DC, _052E
-	goto_if_set FLAG_UNK_0DA, _04A6
+	goto_if_set FLAG_GOT_DRATINI_FROM_MASTER_LONG_AGO, _053D
+	goto_if_set FLAG_GOT_DRATINI_FROM_MASTER_JUST_NOW, _052E
+	goto_if_set FLAG_GOT_TM59_FROM_CLAIR, _04A6
 	get_game_version VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _049B
@@ -333,7 +333,7 @@ _04C3:
 	play_fanfare SEQ_ME_SHINKAOME
 	wait_fanfare
 	give_mon SPECIES_DRATINI, 15, 0, 0, 0, VAR_SPECIAL_RESULT
-	goto_if_set FLAG_UNK_0DB, _04F0
+	goto_if_set FLAG_FAILED_DRAGONS_DEN_QUIZ, _04F0
 	set_mon_move VAR_SPECIAL_x8005, 0, MOVE_EXTREME_SPEED
 _04F0:
 	npc_msg msg_0130_D44R0103_00032
@@ -352,7 +352,7 @@ _050E:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _052E:
-	setflag FLAG_UNK_0DC
+	setflag FLAG_GOT_DRATINI_FROM_MASTER_JUST_NOW
 	npc_msg msg_0130_D44R0103_00029
 	wait_button_or_walk_away
 	closemsg
