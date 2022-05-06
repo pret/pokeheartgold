@@ -227,7 +227,7 @@
 #define FLAG_UNK_0CF                                                0xCF
 #define FLAG_TRADE_BLACKTHORN_CITY_DRAGONAIR_DODRIO                 0xD0
 #define FLAG_UNK_0D1                                                0xD1
-#define FLAG_UNK_0D2                                                0xD2
+#define FLAG_GOT_TM07_FROM_PRYCE                                    0xD2
 #define FLAG_UNK_0D3                                                0xD3
 #define FLAG_UNK_0D4                                                0xD4
 #define FLAG_UNK_0D5                                                0xD5
