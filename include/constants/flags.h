@@ -150,7 +150,7 @@
 #define FLAG_UNK_082                                                0x82
 #define FLAG_GOT_TM12_FROM_ILEX_FOREST_GATE_WOMAN                   0x83
 #define FLAG_UNK_084                                                0x84
-#define FLAG_UNK_085                                                0x85
+#define FLAG_GOT_TM45_FROM_WHITNEY                                  0x85
 #define FLAG_UNK_086                                                0x86
 #define FLAG_UNK_087                                                0x87
 #define FLAG_UNK_088                                                0x88
