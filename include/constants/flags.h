@@ -194,7 +194,7 @@
 #define FLAG_UNK_0AE                                                0xAE
 #define FLAG_UNK_0AF                                                0xAF
 #define FLAG_UNK_0B0                                                0xB0
-#define FLAG_UNK_0B1                                                0xB1
+#define FLAG_GOT_HARD_STONE_FROM_ARTHUR                             0xB1
 #define FLAG_UNK_0B2                                                0xB2
 #define FLAG_UNK_0B3                                                0xB3
 #define FLAG_UNK_0B4                                                0xB4
