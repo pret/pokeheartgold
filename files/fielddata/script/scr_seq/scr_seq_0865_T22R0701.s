@@ -13,7 +13,7 @@ scr_seq_T22R0701_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_1C2, _0026
+	goto_if_set FLAG_HIDE_ROUTE_36_SUDOWOODO, _0026
 	npc_msg msg_0563_T22R0701_00000
 	goto _0029
 

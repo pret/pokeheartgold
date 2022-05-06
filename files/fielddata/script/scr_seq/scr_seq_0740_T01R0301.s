@@ -99,11 +99,11 @@ scr_seq_T01R0301_000:
 	goto_if_eq _0277
 	compare VAR_UNK_4131, 2
 	goto_if_eq _026C
-	compare VAR_UNK_40F9, 7
+	compare VAR_SCENE_EMBEDDED_TOWER, 7
 	goto_if_eq _04B1
-	compare VAR_UNK_40F9, 5
+	compare VAR_SCENE_EMBEDDED_TOWER, 5
 	goto_if_eq _04A6
-	compare VAR_UNK_40F9, 4
+	compare VAR_SCENE_EMBEDDED_TOWER, 4
 	goto_if_eq _02CB
 	goto_if_set FLAG_GOT_HM08, _01B2
 	goto_if_set FLAG_UNK_12A, _0195
@@ -329,7 +329,7 @@ _047E:
 	closemsg
 	npc_msg msg_0451_T01R0301_00021
 	closemsg
-	setvar VAR_UNK_40F9, 5
+	setvar VAR_SCENE_EMBEDDED_TOWER, 5
 	goto _01B2
 
 _04A6:
@@ -340,7 +340,7 @@ _04A6:
 _04B1:
 	npc_msg msg_0451_T01R0301_00023
 	closemsg
-	setvar VAR_UNK_40F9, 8
+	setvar VAR_SCENE_EMBEDDED_TOWER, 8
 	goto _01B2
 
 _04C2:
@@ -614,7 +614,7 @@ _0912:
 	closemsg
 	releaseall
 	copyvar VAR_UNK_4131, VAR_SPECIAL_x8006
-	setvar VAR_UNK_40F9, 1
+	setvar VAR_SCENE_EMBEDDED_TOWER, 1
 	return
 
 _0929:
