@@ -398,7 +398,7 @@
 #define FLAG_CAUGHT_KYOGRE                                         0x17A
 #define FLAG_CAUGHT_RAYQUAZA                                       0x17B
 #define FLAG_UNK_17C                                               0x17C
-#define FLAG_UNK_17D                                               0x17D
+#define FLAG_GOT_TM50_FROM_BLAINE                                  0x17D
 #define FLAG_UNK_17E                                               0x17E
 #define FLAG_UNK_17F                                               0x17F
 #define FLAG_UNK_180                                               0x180
