@@ -282,7 +282,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": "VAR_UNK_40B2"
+      "var": "VAR_ROCKET_TRAP_KOFFING_1"
     },
     {
       "scr": "_EV_scr_seq_D35R0102_014 + 1",
@@ -292,7 +292,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": "VAR_UNK_40B3"
+      "var": "VAR_ROCKET_TRAP_VOLTORB_1"
     },
     {
       "scr": "_EV_scr_seq_D35R0102_015 + 1",
@@ -302,7 +302,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": "VAR_UNK_40B4"
+      "var": "VAR_ROCKET_TRAP_GEODUDE_1"
     },
     {
       "scr": "_EV_scr_seq_D35R0102_016 + 1",
@@ -312,7 +312,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": "VAR_UNK_40B5"
+      "var": "VAR_ROCKET_TRAP_VOLTORB_2"
     },
     {
       "scr": "_EV_scr_seq_D35R0102_017 + 1",
@@ -322,7 +322,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": "VAR_UNK_40B6"
+      "var": "VAR_ROCKET_TRAP_GEODUDE_2"
     },
     {
       "scr": "_EV_scr_seq_D35R0102_018 + 1",
@@ -332,7 +332,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": "VAR_UNK_40B7"
+      "var": "VAR_ROCKET_TRAP_VOLTORB_3"
     },
     {
       "scr": "_EV_scr_seq_D35R0102_019 + 1",
@@ -342,7 +342,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": "VAR_UNK_40B8"
+      "var": "VAR_ROCKET_TRAP_VOLTORB_4"
     },
     {
       "scr": "_EV_scr_seq_D35R0102_020 + 1",
@@ -352,7 +352,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": "VAR_UNK_40B9"
+      "var": "VAR_ROCKET_TRAP_KOFFING_2"
     },
     {
       "scr": "_EV_scr_seq_D35R0102_021 + 1",
@@ -362,7 +362,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": "VAR_UNK_40BA"
+      "var": "VAR_ROCKET_TRAP_KOFFING_3"
     },
     {
       "scr": "_EV_scr_seq_D35R0102_022 + 1",
@@ -372,7 +372,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": "VAR_UNK_40BB"
+      "var": "VAR_ROCKET_TRAP_GEODUDE_3"
     },
     {
       "scr": "_EV_scr_seq_D35R0102_023 + 1",
@@ -382,7 +382,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": "VAR_UNK_40BC"
+      "var": "VAR_ROCKET_TRAP_GEODUDE_4"
     },
     {
       "scr": "_EV_scr_seq_D35R0102_024 + 1",
@@ -392,7 +392,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": "VAR_UNK_40BD"
+      "var": "VAR_ROCKET_TRAP_KOFFING_4"
     },
     {
       "scr": "_EV_scr_seq_D35R0102_025 + 1",
@@ -402,7 +402,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": "VAR_UNK_40BE"
+      "var": "VAR_ROCKET_TRAP_VOLTORB_5"
     },
     {
       "scr": "_EV_scr_seq_D35R0102_026 + 1",
@@ -412,7 +412,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": "VAR_UNK_40BF"
+      "var": "VAR_ROCKET_TRAP_VOLTORB_6"
     },
     {
       "scr": "_EV_scr_seq_D35R0102_027 + 1",
@@ -422,7 +422,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": "VAR_UNK_40C0"
+      "var": "VAR_ROCKET_TRAP_KOFFING_5"
     },
     {
       "scr": "_EV_scr_seq_D35R0102_028 + 1",
@@ -432,7 +432,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": "VAR_UNK_40C1"
+      "var": "VAR_ROCKET_TRAP_GEODUDE_5"
     },
     {
       "scr": "_EV_scr_seq_D35R0102_029 + 1",

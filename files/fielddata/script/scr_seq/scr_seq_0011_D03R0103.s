@@ -14,7 +14,7 @@ scr_seq_D03R0103_001:
 	end
 
 _0017:
-	setflag FLAG_UNK_305
+	setflag FLAG_HIDE_CERULEAN_CAVE_MEWTWO
 	hide_person obj_D03R0103_tsure_poke_static_mewtwo
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
@@ -46,6 +46,6 @@ _0077:
 	end
 
 _007D:
-	setflag FLAG_UNK_16B
+	setflag FLAG_CAUGHT_MEWTWO
 	return
 	.balign 4, 0

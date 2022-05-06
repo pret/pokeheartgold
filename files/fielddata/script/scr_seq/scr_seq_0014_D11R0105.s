@@ -14,7 +14,7 @@ scr_seq_D11R0105_001:
 	end
 
 _0017:
-	setflag FLAG_UNK_306
+	setflag FLAG_HIDE_SEAFOAM_ISLAND_ARTICUNO
 	hide_person obj_D11R0105_tsure_poke_static_articuno
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
@@ -46,6 +46,6 @@ _0077:
 	end
 
 _007D:
-	setflag FLAG_UNK_16C
+	setflag FLAG_CAUGHT_ARTICUNO
 	return
 	.balign 4, 0
