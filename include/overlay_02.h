@@ -91,5 +91,6 @@ BOOL ov02_02253134(SAVEDATA *saveData);
 int ov02_0225316C(void);
 BOOL ov02_02253188(SAVEDATA *saveData);
 int ov02_022531B4(SAVEDATA *saveData);
+BOOL ov02_022470A0(FieldSystem *fsys, int *a1);
 
 #endif //POKEHEARTGOLD_OVERLAY_02_H
