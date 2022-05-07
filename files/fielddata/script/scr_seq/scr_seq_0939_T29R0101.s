@@ -9,14 +9,14 @@
 	scrdef_end
 
 scr_seq_T29R0101_000:
-	goto_if_set FLAG_UNK_0C7, _005A
+	goto_if_set FLAG_GOT_TM10_FROM_LAKE_OF_RAGE_MAN, _005A
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	npc_msg msg_0627_T29R0101_00000
 	goto_if_no_item_space ITEM_TM10, 1, _006B
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_0C7
+	setflag FLAG_GOT_TM10_FROM_LAKE_OF_RAGE_MAN
 	npc_msg msg_0627_T29R0101_00002
 	wait_button_or_walk_away
 	closemsg

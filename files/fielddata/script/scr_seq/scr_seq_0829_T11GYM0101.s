@@ -78,7 +78,7 @@ scr_seq_T11GYM0101_000:
 _0102:
 	goto_if_no_item_space ITEM_TM48, 1, _0136
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_182
+	setflag FLAG_GOT_TM48_FROM_SABRINA
 	npc_msg msg_0531_T11GYM0101_00004
 	wait_button_or_walk_away
 	closemsg
@@ -92,7 +92,7 @@ _0136:
 	end
 
 _0140:
-	goto_if_unset FLAG_UNK_182, _0102
+	goto_if_unset FLAG_GOT_TM48_FROM_SABRINA, _0102
 	npc_msg msg_0531_T11GYM0101_00005
 	wait_button_or_walk_away
 	closemsg

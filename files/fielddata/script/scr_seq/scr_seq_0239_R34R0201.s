@@ -14,12 +14,12 @@ scr_seq_R34R0201_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_083, _0055
+	goto_if_set FLAG_GOT_TM12_FROM_ILEX_FOREST_GATE_WOMAN, _0055
 	npc_msg msg_0386_R34R0201_00000
 	wait_button
 	goto_if_no_item_space ITEM_TM12, 1, _0060
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_083
+	setflag FLAG_GOT_TM12_FROM_ILEX_FOREST_GATE_WOMAN
 	goto _0055
 
 _0055:

@@ -134,7 +134,7 @@ scr_seq_T06_000:
 	lockall
 	faceplayer
 	scrcmd_491 247
-	goto_if_set FLAG_UNK_0F7, _01FF
+	goto_if_set FLAG_GOT_PP_MAX_FROM_VERMILLION_CITY_MAN, _01FF
 	compare VAR_UNK_4135, 8
 	goto_if_ge _020A
 	compare VAR_UNK_4135, 5
@@ -172,7 +172,7 @@ _020A:
 	npc_msg msg_0483_T06_00007
 	goto_if_no_item_space ITEM_PP_MAX, 1, _0241
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_0F7
+	setflag FLAG_GOT_PP_MAX_FROM_VERMILLION_CITY_MAN
 	npc_msg msg_0483_T06_00008
 	wait_button_or_walk_away
 	closemsg

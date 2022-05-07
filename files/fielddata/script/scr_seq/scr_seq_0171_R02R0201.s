@@ -12,11 +12,11 @@ scr_seq_R02R0201_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_134, _0045
+	goto_if_set FLAG_GOT_NUGGET_FROM_ROUTE_2_MAN, _0045
 	npc_msg msg_0322_R02R0201_00000
 	goto_if_no_item_space ITEM_NUGGET, 1, _0050
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_134
+	setflag FLAG_GOT_NUGGET_FROM_ROUTE_2_MAN
 _0045:
 	npc_msg msg_0322_R02R0201_00002
 	wait_button_or_walk_away

@@ -13,11 +13,11 @@ scr_seq_R05R0401_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_131, _0049
+	goto_if_set FLAG_GOT_CLEANSE_TAG_FROM_ROUTE_5_GRANDMA, _0049
 	npc_msg msg_0333_R05R0401_00000
 	goto_if_no_item_space ITEM_CLEANSE_TAG, 1, _0054
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_131
+	setflag FLAG_GOT_CLEANSE_TAG_FROM_ROUTE_5_GRANDMA
 _0049:
 	npc_msg msg_0333_R05R0401_00001
 	wait_button_or_walk_away

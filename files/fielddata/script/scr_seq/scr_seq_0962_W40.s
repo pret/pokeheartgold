@@ -40,7 +40,7 @@ scr_seq_W40_001:
 	goto_if_set FLAG_DAILY_GOT_SHOCK_RIBBON, _0185
 	compare VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
 	goto_if_eq _011F
-	goto_if_set FLAG_UNK_0D7, _0101
+	goto_if_set FLAG_GOT_SHARP_BEAK_FROM_MONICA, _0101
 	get_weekday VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _00B2
@@ -53,7 +53,7 @@ _00B2:
 	msgbox_extern VAR_SPECIAL_RESULT, 0
 	goto_if_no_item_space ITEM_SHARP_BEAK, 1, _0115
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_0D7
+	setflag FLAG_GOT_SHARP_BEAK_FROM_MONICA
 	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 1

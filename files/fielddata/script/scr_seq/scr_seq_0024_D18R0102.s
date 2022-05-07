@@ -250,6 +250,6 @@ _035C:
 	end
 
 _0362:
-	setflag FLAG_CAUGHT_SUICINE
+	setflag FLAG_CAUGHT_SUICUNE
 	return
 	.balign 4, 0

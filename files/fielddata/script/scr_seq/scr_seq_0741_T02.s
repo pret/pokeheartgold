@@ -87,11 +87,11 @@ scr_seq_T02_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_12E, _0147
+	goto_if_set FLAG_GOT_TM85_FROM_VIRIDIAN_CITY_MAN, _0147
 	npc_msg msg_0452_T02_00005
 	goto_if_no_item_space ITEM_TM85, 1, _0152
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_12E
+	setflag FLAG_GOT_TM85_FROM_VIRIDIAN_CITY_MAN
 _0147:
 	npc_msg msg_0452_T02_00006
 	wait_button_or_walk_away

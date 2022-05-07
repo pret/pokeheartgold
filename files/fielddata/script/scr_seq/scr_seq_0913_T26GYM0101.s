@@ -138,7 +138,7 @@ _01CE:
 	wait_button_or_walk_away
 	closemsg
 	releaseall
-	setflag FLAG_UNK_0C2
+	setflag FLAG_GOT_TM23_FROM_JASMINE
 	end
 
 _0202:
@@ -148,7 +148,7 @@ _0202:
 	end
 
 _020C:
-	goto_if_unset FLAG_UNK_0C2, _01CE
+	goto_if_unset FLAG_GOT_TM23_FROM_JASMINE, _01CE
 	check_registered_phone_number PHONE_CONTACT_JASMINE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _023B

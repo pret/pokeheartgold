@@ -109,7 +109,7 @@ scr_seq_D11R0106_000:
 _0175:
 	goto_if_no_item_space ITEM_TM50, 1, _01AC
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_17D
+	setflag FLAG_GOT_TM50_FROM_BLAINE
 	buffer_players_name 0
 	npc_msg msg_0053_D11R0106_00004
 	wait_button_or_walk_away
@@ -124,7 +124,7 @@ _01AC:
 	end
 
 _01B6:
-	goto_if_unset FLAG_UNK_17D, _0175
+	goto_if_unset FLAG_GOT_TM50_FROM_BLAINE, _0175
 	npc_msg msg_0053_D11R0106_00005
 	wait_button_or_walk_away
 	closemsg

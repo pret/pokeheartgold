@@ -71,7 +71,7 @@ _00E8:
 	end
 
 _00F0:
-	goto_if_set FLAG_UNK_091, _013D
+	goto_if_set FLAG_GOT_BRIGHTPOWDER_FROM_MARY, _013D
 	npc_msg msg_0068_D23R0104_00002
 	goto_if_no_item_space ITEM_BRIGHTPOWDER, 1, _0132
 	callstd std_give_item_verbose
@@ -79,7 +79,7 @@ _00F0:
 	wait_button_or_walk_away
 	closemsg
 	releaseall
-	setflag FLAG_UNK_091
+	setflag FLAG_GOT_BRIGHTPOWDER_FROM_MARY
 	end
 
 _0132:

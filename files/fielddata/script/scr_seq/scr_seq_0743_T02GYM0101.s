@@ -75,7 +75,7 @@ scr_seq_T02GYM0101_000:
 _00F0:
 	goto_if_no_item_space ITEM_TM92, 1, _0127
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_17E
+	setflag FLAG_GOT_TM92_FROM_BLUE
 	buffer_players_name 0
 	npc_msg msg_0454_T02GYM0101_00004
 	wait_button_or_walk_away
@@ -90,7 +90,7 @@ _0127:
 	end
 
 _0131:
-	goto_if_unset FLAG_UNK_17E, _00F0
+	goto_if_unset FLAG_GOT_TM92_FROM_BLUE, _00F0
 	npc_msg msg_0454_T02GYM0101_00005
 	wait_button_or_walk_away
 	closemsg

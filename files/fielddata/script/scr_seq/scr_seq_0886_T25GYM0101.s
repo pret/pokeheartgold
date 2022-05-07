@@ -134,7 +134,7 @@ _01C4:
 	npc_msg msg_0582_T25GYM0101_00007
 	wait_button_or_walk_away
 	closemsg
-	setflag FLAG_UNK_085
+	setflag FLAG_GOT_TM45_FROM_WHITNEY
 	releaseall
 	end
 
@@ -145,7 +145,7 @@ _01F8:
 	end
 
 _0202:
-	goto_if_unset FLAG_UNK_085, _01C4
+	goto_if_unset FLAG_GOT_TM45_FROM_WHITNEY, _01C4
 	npc_msg msg_0582_T25GYM0101_00008
 	wait_button_or_walk_away
 	closemsg

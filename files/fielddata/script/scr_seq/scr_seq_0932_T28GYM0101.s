@@ -59,6 +59,13 @@ _00B8:
 	setflag FLAG_UNK_2EE
 	end
 
+// This script contains a programming mistake where if the
+// player has 99 TM07, the TM07 from Pryce is permanently
+// lost. This is unlike every other script for obtaining a
+// TM from someone, which all attempt to give the TM until
+// the player can accept it.
+// FLAG_GOT_TM07_FROM_PRYCE is used here but no code in the
+// game ever checks what it is, meaning that flag is useless.
 scr_seq_T28GYM0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -92,7 +99,7 @@ _012F:
 	npc_msg msg_0622_T28GYM0101_00003
 	goto_if_no_item_space ITEM_TM07, 1, _018E
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_0D2
+	setflag FLAG_GOT_TM07_FROM_PRYCE
 	npc_msg msg_0622_T28GYM0101_00004
 	wait_button_or_walk_away
 	closemsg

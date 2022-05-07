@@ -22,7 +22,7 @@ scr_seq_T23R0201_000:
 	end
 
 _002C:
-	goto_if_set FLAG_UNK_080, _0042
+	goto_if_set FLAG_GOT_HM01, _0042
 	npc_msg msg_0570_T23R0201_00001
 	wait_button_or_walk_away
 	closemsg
@@ -40,7 +40,7 @@ scr_seq_T23R0201_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_080, _006B
+	goto_if_set FLAG_GOT_HM01, _006B
 	npc_msg msg_0570_T23R0201_00003
 	wait_button_or_walk_away
 	closemsg
@@ -48,12 +48,12 @@ scr_seq_T23R0201_001:
 	end
 
 _006B:
-	goto_if_set FLAG_UNK_081, _00AA
+	goto_if_set FLAG_GOT_CHARCOAL_FROM_AZALEA_TOWN_MAN, _00AA
 	npc_msg msg_0570_T23R0201_00004
 	wait_button
 	goto_if_no_item_space ITEM_CHARCOAL, 1, _00B5
 	callstd std_obtain_item_verbose
-	setflag FLAG_UNK_081
+	setflag FLAG_GOT_CHARCOAL_FROM_AZALEA_TOWN_MAN
 	closemsg
 	releaseall
 	end

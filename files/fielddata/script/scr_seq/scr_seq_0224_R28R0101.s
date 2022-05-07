@@ -25,7 +25,7 @@ scr_seq_R28R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_137, _012A
+	goto_if_set FLAG_GOT_TM47_FROM_ROUTE_28_CELEBRITY, _012A
 	faceplayer
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
@@ -74,7 +74,7 @@ _00FC:
 	npc_msg msg_0372_R28R0101_00001
 	goto_if_no_item_space ITEM_TM47, 1, _0135
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_137
+	setflag FLAG_GOT_TM47_FROM_ROUTE_28_CELEBRITY
 _012A:
 	npc_msg msg_0372_R28R0101_00002
 	wait_button_or_walk_away

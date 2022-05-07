@@ -124,7 +124,7 @@ scr_seq_T27GYM0101_001:
 _019B:
 	goto_if_no_item_space ITEM_TM30, 1, _01CF
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_0A6
+	setflag FLAG_GOT_TM30_FROM_MORTY
 	npc_msg msg_0614_T27GYM0101_00005
 	wait_button_or_walk_away
 	closemsg
@@ -138,7 +138,7 @@ _01CF:
 	end
 
 _01D9:
-	goto_if_unset FLAG_UNK_0A6, _019B
+	goto_if_unset FLAG_GOT_TM30_FROM_MORTY, _019B
 	npc_msg msg_0614_T27GYM0101_00006
 	wait_button_or_walk_away
 	closemsg

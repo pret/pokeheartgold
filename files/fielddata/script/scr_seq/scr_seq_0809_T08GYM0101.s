@@ -521,9 +521,9 @@ scr_seq_T08GYM0101_001:
 _074F:
 	goto_if_no_item_space ITEM_TM84, 1, _0794
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_12D
+	setflag FLAG_GOT_TM84_FROM_JANINE
 _0778:
-	goto_if_unset FLAG_UNK_12D, _074F
+	goto_if_unset FLAG_GOT_TM84_FROM_JANINE, _074F
 	npc_msg msg_0514_T08GYM0101_00004
 	wait_button_or_walk_away
 	closemsg

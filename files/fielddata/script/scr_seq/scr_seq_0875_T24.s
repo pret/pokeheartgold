@@ -37,7 +37,7 @@ scr_seq_T24_006:
 	npc_msg msg_0572_T24_00002
 	goto_if_no_item_space ITEM_HM02, 1, _00B8
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_0BB
+	setflag FLAG_GOT_HM02
 	setvar VAR_UNK_4116, 2
 	npc_msg msg_0572_T24_00004
 	wait_button_or_walk_away
@@ -160,7 +160,7 @@ scr_seq_T24_000:
 	lockall
 	faceplayer
 	goto_if_set FLAG_GAME_CLEAR, _0276
-	goto_if_set FLAG_UNK_0BB, _026B
+	goto_if_set FLAG_GOT_HM02, _026B
 	npc_msg msg_0572_T24_00000
 	npc_msg msg_0572_T24_00001
 	wait_button_or_walk_away

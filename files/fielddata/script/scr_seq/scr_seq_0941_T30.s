@@ -80,7 +80,7 @@ scr_seq_T30_006:
 	goto_if_set FLAG_DAILY_GOT_SHOCK_RIBBON, _021D
 	compare VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
 	goto_if_eq _01B7
-	goto_if_set FLAG_UNK_0D4, _0199
+	goto_if_set FLAG_GOT_SOFT_SAND_FROM_SANTOS, _0199
 	get_weekday VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _014A
@@ -93,7 +93,7 @@ _014A:
 	msgbox_extern VAR_SPECIAL_RESULT, 20
 	goto_if_no_item_space ITEM_SOFT_SAND, 1, _01AD
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_0D4
+	setflag FLAG_GOT_SOFT_SAND_FROM_SANTOS
 	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 21

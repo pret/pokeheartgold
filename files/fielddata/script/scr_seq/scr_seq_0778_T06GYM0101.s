@@ -298,7 +298,7 @@ scr_seq_T06GYM0101_023:
 _0389:
 	goto_if_no_item_space ITEM_TM34, 1, _03BD
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_181
+	setflag FLAG_GOT_TM34_FROM_LT_SURGE
 	npc_msg msg_0485_T06GYM0101_00004
 	wait_button_or_walk_away
 	closemsg
@@ -312,7 +312,7 @@ _03BD:
 	end
 
 _03C7:
-	goto_if_unset FLAG_UNK_181, _0389
+	goto_if_unset FLAG_GOT_TM34_FROM_LT_SURGE, _0389
 	npc_msg msg_0485_T06GYM0101_00005
 	wait_button_or_walk_away
 	closemsg

@@ -355,7 +355,7 @@ scr_seq_T27R0501_011:
 	npc_msg msg_0618_T27R0501_00026
 	goto_if_no_item_space ITEM_HM03, 1, _05A9
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_0A2
+	setflag FLAG_GOT_HM03
 	setvar VAR_UNK_410C, 3
 	setvar VAR_UNK_4090, 1
 	npc_msg msg_0618_T27R0501_00028
@@ -373,7 +373,7 @@ scr_seq_T27R0501_012:
 	npc_msg msg_0618_T27R0501_00026
 	goto_if_no_item_space ITEM_HM03, 1, _05A9
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_0A2
+	setflag FLAG_GOT_HM03
 	setvar VAR_UNK_4090, 1
 	setvar VAR_UNK_410C, 3
 	npc_msg msg_0618_T27R0501_00028
@@ -387,7 +387,7 @@ scr_seq_T27R0501_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_0A2, _059E
+	goto_if_set FLAG_GOT_HM03, _059E
 	npc_msg msg_0618_T27R0501_00025
 	wait_button_or_walk_away
 	closemsg

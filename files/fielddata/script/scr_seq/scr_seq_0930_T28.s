@@ -37,7 +37,7 @@ scr_seq_T28_000:
 	faceplayer
 	compare VAR_SCENE_ROCKET_TAKEOVER, 5
 	goto_if_eq _0117
-	goto_if_set FLAG_UNK_163, _010C
+	goto_if_set FLAG_GOT_RAGECANDYBAR, _010C
 	npc_msg msg_0620_T28_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -53,7 +53,7 @@ _009D:
 	submoneyimmediate 200
 	npc_msg msg_0620_T28_00005
 	wait_button_or_walk_away
-	setflag FLAG_UNK_163
+	setflag FLAG_GOT_RAGECANDYBAR
 	goto _014C
 
 _00EC:
@@ -76,7 +76,7 @@ _010C:
 	goto _014C
 
 _0117:
-	goto_if_set FLAG_UNK_163, _0147
+	goto_if_set FLAG_GOT_RAGECANDYBAR, _0147
 	npc_msg msg_0620_T28_00003
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -116,7 +116,7 @@ _01A3:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	goto_if_set FLAG_UNK_163, _026D
+	goto_if_set FLAG_GOT_RAGECANDYBAR, _026D
 	npc_msg msg_0620_T28_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -134,7 +134,7 @@ _01DF:
 	submoneyimmediate 300
 	npc_msg msg_0620_T28_00006
 	closemsg
-	setflag FLAG_UNK_163
+	setflag FLAG_GOT_RAGECANDYBAR
 _0228:
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 176

@@ -54,7 +54,7 @@ _00A6:
 _00AF:
 	goto_if_no_item_space ITEM_TM01, 1, _00E3
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_0BA
+	setflag FLAG_GOT_TM01_FROM_CHUCK
 	npc_msg msg_0574_T24GYM0101_00006
 	wait_button_or_walk_away
 	closemsg
@@ -69,7 +69,7 @@ _00E3:
 	end
 
 _00EE:
-	goto_if_unset FLAG_UNK_0BA, _00AF
+	goto_if_unset FLAG_GOT_TM01_FROM_CHUCK, _00AF
 	npc_msg msg_0574_T24GYM0101_00008
 	wait_button_or_walk_away
 	closemsg
