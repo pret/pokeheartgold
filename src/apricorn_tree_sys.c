@@ -64,11 +64,14 @@ u8 sub_0202AE38(const APRICORN_TREE *trees, int idx) {
     return trees[idx].unk_0;
 }
 
-u8 sub_0202AE40(const APRICORN_TREE *trees, int idx) {
+// Returns the Apricorn type or APRICORN_NONE if undefined.
+u8 ApricornTrees_TryGetApricorn(const APRICORN_TREE *trees, int idx) {
 #pragma unused(trees)
     return sTreeApricorns[idx];
 }
 
+// Returns the Apricorn type. Defaults to APRICORN_RED if Apricorn type is
+// undefined.
 int ApricornTrees_GetApricorn(const APRICORN_TREE *trees, int idx) {
 #pragma unused(trees)
     int ret;

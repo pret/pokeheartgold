@@ -35,6 +35,8 @@ void TaskManager_Jump(TaskManager *taskman, TaskFunc taskFunc, void *env) {
     }
 }
 
+// Synchronously executes a new task, returning to the current task `taskman`
+// once finished.
 void TaskManager_Call(TaskManager *taskman, TaskFunc taskFunc, void *env) {
     TaskManager *newman;
 

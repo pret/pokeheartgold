@@ -5146,11 +5146,11 @@ BOOL ScrCmd_BankOrWalletIsFull(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_753(SCRIPTCONTEXT *ctx) {
-    u16 r4 = ScriptGetVar(ctx);
-    u16 *r6 = ScriptGetVarPointer(ctx);
-    u16 *r3 = ScriptGetVarPointer(ctx);
-    ov01_02204C44(ctx->fsys, r4, r6, r3);
+BOOL ScrCmd_RockSmashItemCheck(SCRIPTCONTEXT *ctx) {
+    u16 followMonKnowsHm = ScriptGetVar(ctx);
+    u16 *itemFound = ScriptGetVarPointer(ctx);
+    u16 *item = ScriptGetVarPointer(ctx);
+    FieldSys_RockSmashItemCheck(ctx->fsys, (u8)followMonKnowsHm, itemFound, item);
     return TRUE;
 }
 

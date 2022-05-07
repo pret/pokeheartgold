@@ -252,7 +252,7 @@ _03B4:
 	compare VAR_SPECIAL_x8005, 0
 	goto_if_eq _03B4
 	releaseall
-	scrcmd_753 VAR_SPECIAL_x8007, VAR_SPECIAL_RESULT, VAR_SPECIAL_x8006
+	scrcmd_rock_smash_item_check VAR_SPECIAL_x8007, VAR_SPECIAL_RESULT, VAR_SPECIAL_x8006
 	goto _0CEB
 	.byte 0x02, 0x00
 scr_seq_0146_008:
@@ -311,7 +311,7 @@ _04AB:
 	compare VAR_SPECIAL_x8005, 0
 	goto_if_eq _04AB
 	releaseall
-	scrcmd_753 VAR_SPECIAL_x8007, VAR_SPECIAL_RESULT, VAR_SPECIAL_x8006
+	scrcmd_rock_smash_item_check VAR_SPECIAL_x8007, VAR_SPECIAL_RESULT, VAR_SPECIAL_x8006
 	goto _0CEB
 	.byte 0x02, 0x00
 _04D0:

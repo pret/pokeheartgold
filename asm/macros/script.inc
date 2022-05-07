@@ -4252,7 +4252,7 @@
 	.short 752
 	.endm
 
-	.macro scrcmd_753 arg0, arg1, arg2
+	.macro scrcmd_rock_smash_item_check arg0, arg1, arg2
 	.short 753
 	.short \arg0
 	.short \arg1
