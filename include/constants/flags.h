@@ -260,7 +260,7 @@
 #define FLAG_UNK_0F0                                                0xF0
 #define FLAG_UNK_0F1                                                0xF1
 #define FLAG_UNK_0F2                                                0xF2
-#define FLAG_UNK_0F3                                                0xF3
+#define FLAG_GOT_MYSTIC_WATER_FROM_CHERRYGROVE_CITY_MAN             0xF3
 #define FLAG_UNK_0F4                                                0xF4
 #define FLAG_UNK_0F5                                                0xF5
 #define FLAG_UNK_0F6                                                0xF6
