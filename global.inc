@@ -3716,7 +3716,6 @@
 .public SndRadio_StopSeq
 .public SoundSys_GetGBSoundsState
 .public SoundSys_ToggleGBSounds
-.public Special_EnterHallOfFame
 .public SpeciesAndFormeToWazaOshieIndex
 .public SpeciesIsMythical
 .public SpeciesToJohtoDexNo
@@ -28903,9 +28902,9 @@
 .public sub_0203F844
 .public sub_0203F8EC
 .public sub_0203F964
-.public sub_0203F974
+.public LaunchHOFCongratulationsApp
 .public sub_0203F984
-.public sub_0203F9B4
+.public LaunchCreditsApp
 .public sub_0203F9C4
 .public sub_0203F9F4
 .public sub_0203FA38
@@ -29056,8 +29055,7 @@
 .public sub_0205560C
 .public sub_02055618
 .public sub_02055624
-.public sub_02055640
-.public sub_0205565C
+.public FieldSys_GetGameClearTime
 .public sub_02055670
 .public sub_02055680
 .public sub_020556A8
@@ -29196,7 +29194,7 @@
 .public sub_0205B5A8
 .public sub_0205B5B4
 .public sub_0205B5EC
-.public sub_0205B624
+.public IsPrintFinished
 .public sub_0205B63C
 .public sub_0205B6A0
 .public sub_0205B6E8
