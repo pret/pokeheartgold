@@ -6,6 +6,7 @@
 #include "bag.h"
 #include "mail.h"
 #include "fashion_case.h"
+#include "field_blackthorn_tutors.h"
 
 struct UseMailWork;
 struct ApricornBoxWork;
@@ -94,6 +95,7 @@ void *sub_0203F984(FieldSystem *fsys);
 void *sub_0203F844(FieldSystem *fsys, u16 a1);
 void *sub_0203E460(FieldSystem *fsys, u8 a1);
 u16 sub_0203E4CC(void *a0);
+void sub_0203F9C4(FieldSystem *fsys, struct MoveRelearner *moveRelearner);
 
 static inline void InitUnkStructScrCmd408(struct UnkStruct_ScrCmd408 *data, u16 a1, u16 a2, SCRIPTCONTEXT *ctx) {
     MI_CpuClear8(data, sizeof(struct UnkStruct_ScrCmd408));
@@ -114,6 +116,7 @@ static inline struct UnkStruct_ScrCmd158 *NewUnkStructScrCmd158(SCRIPTCONTEXT *c
 #define NAMINGSCREEN_POKEMON            1
 #define NAMINGSCREEN_BOX                2
 #define NAMINGSCREEN_RIVAL              3
+#define NAMINGSCREEN_GROUP              5
 
 void CreateNamingScreen(TaskManager *taskManager, int kind, int param, int maxLen, int initPos, const u16 *defaultStr, u16 *retVar);
 void sub_0203E960(TaskManager *taskManager, int a1, u16 *a2, u16 *a3, u16 *a4);
