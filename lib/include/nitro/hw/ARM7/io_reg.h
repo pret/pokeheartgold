@@ -13,6 +13,28 @@
 #define REG_SEND_FIFO_ADDR                                 (HW_REG_BASE + REG_SEND_FIFO_OFFSET)
 #define reg_PXI_SEND_FIFO                                  (*( REGType32v *) REG_SEND_FIFO_ADDR)
 
+#define REG_SOUNDCNT_8_OFFSET                              0x501
+#define REG_SOUNDCNT_8_ADDR                                (HW_REG_BASE + REG_SOUNDCNT_8_OFFSET)
+#define reg_SND_SOUNDCNT_8                                 (*( REGType8v *) REG_SOUNDCNT_8_ADDR)
+
+/* SOUNDCNT_VOL */
+
+#define REG_SOUNDCNT_VOL_OFFSET                            0x500
+#define REG_SOUNDCNT_VOL_ADDR                              (HW_REG_BASE + REG_SOUNDCNT_VOL_OFFSET)
+#define reg_SND_SOUNDCNT_VOL                               (*( REGType8v *) REG_SOUNDCNT_VOL_ADDR)
+
+/* SNDCAP0CNT */
+
+#define REG_SNDCAP0CNT_OFFSET                              0x508
+#define REG_SNDCAP0CNT_ADDR                                (HW_REG_BASE + REG_SNDCAP0CNT_OFFSET)
+#define reg_SND_SNDCAP0CNT                                 (*( REGType8v *) REG_SNDCAP0CNT_ADDR)
+
+/* SNDCAP1CNT */
+
+#define REG_SNDCAP1CNT_OFFSET                              0x509
+#define REG_SNDCAP1CNT_ADDR                                (HW_REG_BASE + REG_SNDCAP1CNT_OFFSET)
+#define reg_SND_SNDCAP1CNT                                 (*( REGType8v *) REG_SNDCAP1CNT_ADDR)
+
 /* RECV_FIFO */
 
 #define REG_RECV_FIFO_OFFSET                               0x100000
@@ -206,6 +228,38 @@
     ((u32)(data_r2) << REG_EXI_RCNT0_H_DATA_R2_SHIFT) | \
     ((u32)(data_r1) << REG_EXI_RCNT0_H_DATA_R1_SHIFT) | \
     ((u32)(data_r0) << REG_EXI_RCNT0_H_DATA_R0_SHIFT))
+#endif
+
+/* SOUNDCNT_8 */
+
+#define REG_SND_SOUNDCNT_8_E_SHIFT                         7
+#define REG_SND_SOUNDCNT_8_E_SIZE                          1
+#define REG_SND_SOUNDCNT_8_E_MASK                          0x80
+
+#define REG_SND_SOUNDCNT_8_MIX_CH3_SHIFT                   5
+#define REG_SND_SOUNDCNT_8_MIX_CH3_SIZE                    1
+#define REG_SND_SOUNDCNT_8_MIX_CH3_MASK                    0x20
+
+#define REG_SND_SOUNDCNT_8_MIX_CH1_SHIFT                   4
+#define REG_SND_SOUNDCNT_8_MIX_CH1_SIZE                    1
+#define REG_SND_SOUNDCNT_8_MIX_CH1_MASK                    0x10
+
+#define REG_SND_SOUNDCNT_8_ROUT_SHIFT                      2
+#define REG_SND_SOUNDCNT_8_ROUT_SIZE                       2
+#define REG_SND_SOUNDCNT_8_ROUT_MASK                       0x0c
+
+#define REG_SND_SOUNDCNT_8_LOUT_SHIFT                      0
+#define REG_SND_SOUNDCNT_8_LOUT_SIZE                       2
+#define REG_SND_SOUNDCNT_8_LOUT_MASK                       0x03
+
+#ifndef SDK_ASM
+#define REG_SND_SOUNDCNT_8_FIELD( e, mix_ch3, mix_ch1, rout, lout ) \
+    (u8)( \
+    ((u32)(e) << REG_SND_SOUNDCNT_8_E_SHIFT) | \
+    ((u32)(mix_ch3) << REG_SND_SOUNDCNT_8_MIX_CH3_SHIFT) | \
+    ((u32)(mix_ch1) << REG_SND_SOUNDCNT_8_MIX_CH1_SHIFT) | \
+    ((u32)(rout) << REG_SND_SOUNDCNT_8_ROUT_SHIFT) | \
+    ((u32)(lout) << REG_SND_SOUNDCNT_8_LOUT_SHIFT))
 #endif
 
 #endif //NITRO_HW_ARM7_IO_REG_H_

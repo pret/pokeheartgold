@@ -39,6 +39,7 @@ Autoload WRAM
 	Object lib/src/PXI_fifo.o
 	Object lib/src/EXI_genPort.o
 	Object lib/src/PAD_xyButton.o
+	Object lib/src/SND_global.o
 	Object asm/sub.wram_1.o
 	Object asm/libsyscall.o
 	Object asm/sub.wram_2.o
