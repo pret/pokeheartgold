@@ -47,5 +47,6 @@ FIELD_PLAYER_AVATAR *FieldSys_GetPlayerAvatar(FieldSystem *fsys);
 void PlayerAvatar_GetPositionVec(FIELD_PLAYER_AVATAR *playerAvatar, VecFx32 *pdest);
 const VecFx32 *PlayerAvatar_GetPositionVecConst(FIELD_PLAYER_AVATAR *playerAvatar);
 void PlayerAvatar_SetHeight(FIELD_PLAYER_AVATAR *playerAvatar, const fx32 ypos);
+int sub_0205C99C(int a0);
 
 #endif //POKEHEARTGOLD_FIELD_PLAYER_AVATAR_H

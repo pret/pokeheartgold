@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_OVERLAY_01_H
 #define POKEHEARTGOLD_OVERLAY_01_H
 
+#include "overlay_01_rock_smash_item.h"
 #include "script.h"
 #include "unk_0206793C.h"
 #include "unk_02023694.h"
@@ -125,7 +126,6 @@ struct BankTransactionWork {
     int mode;
 };
 
-void ov01_02204C44(FieldSystem *fsys, u8 a1, u16 *a2, u16 *a3);
 void ov01_02204ED8(FieldSystem *fsys, u16 *a1);
 WINDOW *ov01_021EEF68(FieldSystem *fsys, u16 a1);
 void ov01_021EEF88(WINDOW *window);

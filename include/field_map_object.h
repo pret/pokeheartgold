@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_FIELD_MAP_OBJECT_H
 #define POKEHEARTGOLD_FIELD_MAP_OBJECT_H
 
+#include "script.h"
+
 typedef struct LocalMapObject LocalMapObject;
 
 struct SavedMapObject {
@@ -64,7 +66,7 @@ struct LocalMapObject {
     /*0x128*/ FieldSystem *fsys;
 };
 
-LocalMapObject *CreateSpecialFieldObject(MapObjectMan *objectMan, u32 x, u32 y, u32 direction, u32 sprite, u32 movement, u32 mapNo);
+LocalMapObject *CreateSpecialFieldObject(MapObjectMan *objectMan, u32 x, u32 z, u32 direction, u32 sprite, u32 movement, u32 mapNo);
 void DeleteMapObject(LocalMapObject *mapObject);
 LocalMapObject *sub_0205EEB4(MapObjectMan *arr, int a1);
 LocalMapObject *GetMapObjectByID(MapObjectMan *arr, int id);
@@ -124,5 +126,6 @@ u32 MapObjectMan_GetCount(MapObjectMan *man);
 LocalMapObject *MapObjectMan_GetArray(MapObjectMan *man);
 BOOL MapObject_IsInUse(LocalMapObject *object);
 void sub_0205F1D0(LocalMapObject **objectArray);
+void sub_0205F328(LocalMapObject* obj, int a1);
 
 #endif //POKEHEARTGOLD_FIELD_MAP_OBJECT_H
