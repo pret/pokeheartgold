@@ -179,7 +179,7 @@
 #define FLAG_UNK_09F                                                0x9F
 #define FLAG_UNK_0A0                                                0xA0
 #define FLAG_UNK_0A1                                                0xA1
-#define FLAG_UNK_0A2                                                0xA2
+#define FLAG_GOT_HM03                                               0xA2
 #define FLAG_GOT_DOWSING_MACHINE                                    0xA3
 #define FLAG_ENGAGING_STATIC_POKEMON                                0xA4
 #define FLAG_GOT_MAGNET_FROM_SUNNY                                  0xA5
