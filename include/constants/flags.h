@@ -146,7 +146,7 @@
 #define FLAG_FOUND_SECOND_FARFETCHD                                 0x7E
 #define FLAG_GOT_TM89_FROM_BUGSY                                    0x7F
 #define FLAG_GOT_HM01                                               0x80
-#define FLAG_UNK_081                                                0x81
+#define FLAG_GOT_CHARCOAL_FROM_AZALEA_TOWN_MAN                      0x81
 #define FLAG_UNK_082                                                0x82
 #define FLAG_GOT_TM12_FROM_ILEX_FOREST_GATE_WOMAN                   0x83
 #define FLAG_UNK_084                                                0x84
