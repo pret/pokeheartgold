@@ -206,7 +206,7 @@
 #define FLAG_GOT_TM01_FROM_CHUCK                                    0xBA
 #define FLAG_GOT_HM02                                               0xBB
 #define FLAG_UNK_0BC                                                0xBC
-#define FLAG_UNK_0BD                                                0xBD
+#define FLAG_GOT_GOOD_ROD                                           0xBD
 #define FLAG_TRADE_OLIVINE_CITY_KRABBY_VOLTORB                      0xBE
 #define FLAG_GOT_LOAN_SHUCKLE                                       0xBF
 #define FLAG_UNK_0C0                                                0xC0

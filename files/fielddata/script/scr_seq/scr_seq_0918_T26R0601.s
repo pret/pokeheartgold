@@ -12,7 +12,7 @@ scr_seq_T26R0601_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_0BD, _008E
+	goto_if_set FLAG_GOT_GOOD_ROD, _008E
 	npc_msg msg_0610_T26R0601_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -28,7 +28,7 @@ _0040:
 	npc_msg msg_0610_T26R0601_00001
 	wait_button_or_walk_away
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_0BD
+	setflag FLAG_GOT_GOOD_ROD
 	npc_msg msg_0610_T26R0601_00003
 	wait_button_or_walk_away
 	closemsg
