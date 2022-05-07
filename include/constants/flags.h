@@ -232,7 +232,7 @@
 #define FLAG_GOT_SOFT_SAND_FROM_SANTOS                              0xD4
 #define FLAG_GOT_BLACK_BELT_FROM_WESLEY                             0xD5
 #define FLAG_UNK_0D6                                                0xD6
-#define FLAG_UNK_0D7                                                0xD7
+#define FLAG_GOT_SHARP_BEAK_FROM_MONICA                             0xD7
 #define FLAG_GOT_TWISTEDSPOON_FROM_TUSCANY                          0xD8
 #define FLAG_GOT_POISON_BARB_FROM_FRIEDA                            0xD9
 #define FLAG_GOT_TM59_FROM_CLAIR                                    0xDA
