@@ -31,6 +31,7 @@
 
 #define obj_daycare_poke_1         250
 #define obj_daycare_poke_2         251
+#define obj_apricorn               252
 #define obj_partner_poke           253
 #define obj_player                 255
 #define SCRDEF_END              0xFD13

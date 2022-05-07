@@ -190,12 +190,12 @@ BOOL sub_02055760(FieldSystem* fsys, LocalMapObject* mapObj) {
 
 BOOL sub_02055780(FieldSystem* fsys, LocalMapObject* mapObj) {
     APRICORN_TREE* trees = Sav2_FieldApricornTrees_get(fsys->savedata);
-    int param = MapObject_GetParam(mapObj, 0);
-    return sub_0202AE38(trees, param);
+    int idx = MapObject_GetParam(mapObj, 0);
+    return sub_0202AE38(trees, idx);
 }
 
-u32 sub_020557A0(FieldSystem* fsys, LocalMapObject* mapObject) {
-    return sub_0202AE40(Sav2_FieldApricornTrees_get(fsys->savedata), MapObject_GetParam(mapObject, 0));
+u32 FieldSys_ApricornTree_TryGetApricorn(FieldSystem* fsys, LocalMapObject* mapObject) {
+    return ApricornTrees_TryGetApricorn(Sav2_FieldApricornTrees_get(fsys->savedata), MapObject_GetParam(mapObject, 0));
 }
 
 int FieldSys_ApricornTree_GetApricorn(FieldSystem* fsys, LocalMapObject* mapObject) {

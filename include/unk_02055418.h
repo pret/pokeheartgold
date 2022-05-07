@@ -34,7 +34,7 @@ void sub_020556FC(struct UnkStruct_020556FC *unkPtr);
 BOOL sub_02055708(FieldSystem* fsys, LocalMapObject* mapObject);
 BOOL sub_02055760(FieldSystem* fsys, LocalMapObject* mapObj);
 BOOL sub_02055780(FieldSystem* fsys, LocalMapObject* mapObj);
-u32 sub_020557A0(FieldSystem* fsys, LocalMapObject* mapObject);
+u32 FieldSys_ApricornTree_TryGetApricorn(FieldSystem* fsys, LocalMapObject* mapObject);
 int FieldSys_ApricornTree_GetApricorn(FieldSystem* fsys, LocalMapObject* mapObject);
 
 #endif //POKEHEARTGOLD_UNK_02055418_H
