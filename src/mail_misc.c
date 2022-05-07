@@ -6,6 +6,7 @@
 #include "player_data.h"
 #include "sys_flags.h"
 #include "constants/items.h"
+#include "constants/mail.h"
 #include "constants/pokemon.h"
 
 Unk02090C94 *sub_02090C94(u8 a0, u8 a1, SAVEDATA *saveData, u32 a3, HeapID heapId) {
@@ -173,7 +174,7 @@ Unk02090E68 *sub_02090E68(SAVEDATA *saveData, u16 a1, u8 partyIdx, u8 a3, HeapID
     MAIL *mail = Mail_new(heapId);
     ptr->mail = mail;
     Mail_init(mail);
-    Mail_SetNewMessageDetails(ptr->mail, -1, partyIdx, saveData);
+    Mail_SetNewMessageDetails(ptr->mail, MAIL_NONE, partyIdx, saveData);
 
     return ptr;
 }

@@ -8,7 +8,7 @@ typedef struct {
     u8 unk3_2:6;
 } Unk02091054;
 
-extern Unk02091054 _02105F04[81];
+extern const Unk02091054 _02105F04[81];
 
 // Has something to do with seals...
 u8 sub_02091054(u32 idx) {
