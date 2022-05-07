@@ -372,7 +372,7 @@
 #define FLAG_ELMS_LAB_PREVENT_PLAYER_ESCAPE                        0x160
 #define FLAG_UNK_161                                               0x161
 #define FLAG_TRADE_LT_SURGE_PIKACHU                                0x162
-#define FLAG_UNK_163                                               0x163
+#define FLAG_GOT_RAGECANDYBAR                                      0x163
 #define FLAG_UNK_164                                               0x164
 #define FLAG_TRADE_BROCK_BONSLY_RHYHORN                            0x165
 #define FLAG_TRADE_JASMINE_STEELIX                                 0x166
