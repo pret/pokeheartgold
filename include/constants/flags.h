@@ -229,7 +229,7 @@
 #define FLAG_UNK_0D1                                                0xD1
 #define FLAG_GOT_TM07_FROM_PRYCE                                    0xD2
 #define FLAG_UNK_0D3                                                0xD3
-#define FLAG_UNK_0D4                                                0xD4
+#define FLAG_GOT_SOFT_SAND_FROM_SANTOS                              0xD4
 #define FLAG_GOT_BLACK_BELT_FROM_WESLEY                             0xD5
 #define FLAG_UNK_0D6                                                0xD6
 #define FLAG_UNK_0D7                                                0xD7
