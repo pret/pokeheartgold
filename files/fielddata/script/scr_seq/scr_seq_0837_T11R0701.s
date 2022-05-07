@@ -79,11 +79,11 @@ scr_seq_T11R0701_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_130, _015A
+	goto_if_set FLAG_GOT_UPGRADE_FROM_SAFFRON_CITY_GUARD, _015A
 	npc_msg msg_0537_T11R0701_00001
 	goto_if_no_item_space ITEM_UPGRADE, 1, _0165
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_130
+	setflag FLAG_GOT_UPGRADE_FROM_SAFFRON_CITY_GUARD
 _015A:
 	npc_msg msg_0537_T11R0701_00002
 	wait_button_or_walk_away
