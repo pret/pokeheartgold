@@ -576,7 +576,7 @@ _07AA:
 	end
 
 _07B0:
-	setflag FLAG_CAUGHT_SUICINE
+	setflag FLAG_CAUGHT_SUICUNE
 	return
 
 _07B6:
