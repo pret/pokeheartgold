@@ -299,7 +299,7 @@
 #define FLAG_CAUGHT_LUGIA                                          0x117
 #define FLAG_RESTORED_POWER                                        0x118
 #define FLAG_UNK_119                                               0x119
-#define FLAG_UNK_11A                                               0x11A
+#define FLAG_GOT_EVERSTONE_FROM_ELM                                0x11A
 #define FLAG_GOT_BAG                                               0x11B
 #define FLAG_GOT_TRAINER_CARD                                      0x11C
 #define FLAG_GOT_SAVE_BUTTON                                       0x11D
