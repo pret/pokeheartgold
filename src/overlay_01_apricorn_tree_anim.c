@@ -62,7 +62,7 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
     int direction;
     int posX;
     int posZ;
-    VecFx32 vec;
+    VecFx32 pos;
     int apricornType;
 
     FieldSystem *fsys = TaskManager_GetSys(taskman);
@@ -132,9 +132,9 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
         apricornType = FieldSys_ApricornTree_TryGetApricorn(fsys, env->tree) - 1;
         GF_ASSERT(apricornType >= APRICORN_NONE);
         env->apricorn = CreateJumpingApricornObj(fsys->mapObjectMan, SPRITE_BONMI_R + apricornType, posX, posZ);
-        MapObject_GetPositionVec(env->apricorn, &vec);
-        vec.y += 12 * FX32_ONE;
-        MapObject_SetPositionVec(env->apricorn, &vec);
+        MapObject_GetPositionVec(env->apricorn, &pos);
+        pos.y += 12 * FX32_ONE;
+        MapObject_SetPositionVec(env->apricorn, &pos);
         env->state = 5;
         break;
     case 5:
