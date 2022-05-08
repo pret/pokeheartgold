@@ -13,6 +13,74 @@
 #define REG_SEND_FIFO_ADDR                                 (HW_REG_BASE + REG_SEND_FIFO_OFFSET)
 #define reg_PXI_SEND_FIFO                                  (*( REGType32v *) REG_SEND_FIFO_ADDR)
 
+/* POWCNT */
+
+#define REG_POWCNT_OFFSET                                  0x304
+#define REG_POWCNT_ADDR                                    (HW_REG_BASE + REG_POWCNT_OFFSET)
+#define reg_SND_POWCNT                                     (*( REGType16v *) REG_POWCNT_ADDR)
+
+/* SOUND0CNT */
+
+#define REG_SOUND0CNT_OFFSET                               0x400
+#define REG_SOUND0CNT_ADDR                                 (HW_REG_BASE + REG_SOUND0CNT_OFFSET)
+#define reg_SND_SOUND0CNT                                  (*( REGType32v *) REG_SOUND0CNT_ADDR)
+
+/* SOUND0CNT_VOL_16 */
+
+#define REG_SOUND0CNT_VOL_16_OFFSET                        0x400
+#define REG_SOUND0CNT_VOL_16_ADDR                          (HW_REG_BASE + REG_SOUND0CNT_VOL_16_OFFSET)
+#define reg_SND_SOUND0CNT_VOL_16                           (*( REGType16v *) REG_SOUND0CNT_VOL_16_ADDR)
+
+/* SOUND0CNT_VOL */
+
+#define REG_SOUND0CNT_VOL_OFFSET                           0x400
+#define REG_SOUND0CNT_VOL_ADDR                             (HW_REG_BASE + REG_SOUND0CNT_VOL_OFFSET)
+#define reg_SND_SOUND0CNT_VOL                              (*( REGType8v *) REG_SOUND0CNT_VOL_ADDR)
+
+/* SOUND0CNT_PAN */
+
+#define REG_SOUND0CNT_PAN_OFFSET                           0x402
+#define REG_SOUND0CNT_PAN_ADDR                             (HW_REG_BASE + REG_SOUND0CNT_PAN_OFFSET)
+#define reg_SND_SOUND0CNT_PAN                              (*( REGType8v *) REG_SOUND0CNT_PAN_ADDR)
+
+/* SOUND0CNT_8 */
+
+#define REG_SOUND0CNT_8_OFFSET                             0x403
+#define REG_SOUND0CNT_8_ADDR                               (HW_REG_BASE + REG_SOUND0CNT_8_OFFSET)
+#define reg_SND_SOUND0CNT_8                                (*( REGType8v *) REG_SOUND0CNT_8_ADDR)
+
+/* SOUND0SAD */
+
+#define REG_SOUND0SAD_OFFSET                               0x404
+#define REG_SOUND0SAD_ADDR                                 (HW_REG_BASE + REG_SOUND0SAD_OFFSET)
+#define reg_SND_SOUND0SAD                                  (*( REGType32v *) REG_SOUND0SAD_ADDR)
+
+/* SOUND0TMR */
+
+#define REG_SOUND0TMR_OFFSET                               0x408
+#define REG_SOUND0TMR_ADDR                                 (HW_REG_BASE + REG_SOUND0TMR_OFFSET)
+#define reg_SND_SOUND0TMR                                  (*( REGType16v *) REG_SOUND0TMR_ADDR)
+
+/* SOUND0RPT_PT */
+
+#define REG_SOUND0RPT_PT_OFFSET                            0x40a
+#define REG_SOUND0RPT_PT_ADDR                              (HW_REG_BASE + REG_SOUND0RPT_PT_OFFSET)
+#define reg_SND_SOUND0RPT_PT                               (*( REGType16v *) REG_SOUND0RPT_PT_ADDR)
+
+/* SOUND0RPT_LEN */
+
+#define REG_SOUND0RPT_LEN_OFFSET                           0x40c
+#define REG_SOUND0RPT_LEN_ADDR                             (HW_REG_BASE + REG_SOUND0RPT_LEN_OFFSET)
+#define reg_SND_SOUND0RPT_LEN                              (*( REGType32v *) REG_SOUND0RPT_LEN_ADDR)
+
+/* SOUNDCNT */
+
+#define REG_SOUNDCNT_OFFSET                                0x500
+#define REG_SOUNDCNT_ADDR                                  (HW_REG_BASE + REG_SOUNDCNT_OFFSET)
+#define reg_SND_SOUNDCNT                                   (*( REGType16v *) REG_SOUNDCNT_ADDR)
+
+/* SOUNDCNT_8 */
+
 #define REG_SOUNDCNT_8_OFFSET                              0x501
 #define REG_SOUNDCNT_8_ADDR                                (HW_REG_BASE + REG_SOUNDCNT_8_OFFSET)
 #define reg_SND_SOUNDCNT_8                                 (*( REGType8v *) REG_SOUNDCNT_8_ADDR)
@@ -34,6 +102,22 @@
 #define REG_SNDCAP1CNT_OFFSET                              0x509
 #define REG_SNDCAP1CNT_ADDR                                (HW_REG_BASE + REG_SNDCAP1CNT_OFFSET)
 #define reg_SND_SNDCAP1CNT                                 (*( REGType8v *) REG_SNDCAP1CNT_ADDR)
+
+#define reg_SOUNDxCNT_VOL(x)    (*(REGType8v *)(0x4000400 + ((int)(x) * 0x10)))
+#define reg_SOUNDxCNT_VOLS(x)   (*(REGType16v *)(0x4000400 + ((int)(x) * 0x10)))
+#define reg_SOUNDxCNT_PAN(x)    (*(REGType8v *)(0x4000402 + ((int)(x) * 0x10)))
+#define reg_SOUNDxCNT_STAT(x)   (*(REGType8v *)(0x4000403 + ((int)(x) * 0x10)))
+#define reg_SOUNDxCNT(x)        (*(REGType32v *)(0x4000400 + ((int)x) * 0x10))
+#define reg_SOUNDoffCNT(off)    (*(REGType32v *)(0x4000400 + (int)(off)))
+#define reg_SOUNDxSAD(x)        (*(REGType32v *)(0x4000404 + ((int)x) * 0x10))
+#define reg_SOUNDoffSAD(off)    (*(REGType32v *)(0x4000404 + (int)(off)))
+#define reg_SOUNDxTMR(x)        (*(REGType16v *)(0x4000408 + ((int)x) * 0x10))
+#define reg_SOUNDoffTMR(off)    (*(REGType16v *)(0x4000408 + (int)(off)))
+#define reg_SOUNDxPNT(x)        (*(REGType16v *)(0x400040A + ((int)x) * 0x10))
+#define reg_SOUNDoffPNT(off)    (*(REGType16v *)(0x400040A + (int)(off)))
+#define reg_SOUNDxLEN(x)        (*(REGType32v *)(0x400040C + ((int)x) * 0x10))
+#define reg_SOUNDoffLEN(off)    (*(REGType32v *)(0x400040C + (int)(off)))
+
 
 /* RECV_FIFO */
 
@@ -228,6 +312,70 @@
     ((u32)(data_r2) << REG_EXI_RCNT0_H_DATA_R2_SHIFT) | \
     ((u32)(data_r1) << REG_EXI_RCNT0_H_DATA_R1_SHIFT) | \
     ((u32)(data_r0) << REG_EXI_RCNT0_H_DATA_R0_SHIFT))
+#endif
+
+/* POWCNT */
+
+#define REG_SND_POWCNT_EWL_SHIFT                           1
+#define REG_SND_POWCNT_EWL_SIZE                            1
+#define REG_SND_POWCNT_EWL_MASK                            0x0002
+
+#define REG_SND_POWCNT_SPE_SHIFT                           0
+#define REG_SND_POWCNT_SPE_SIZE                            1
+#define REG_SND_POWCNT_SPE_MASK                            0x0001
+
+#ifndef SDK_ASM
+#define REG_SND_POWCNT_FIELD( ewl, spe ) \
+    (u16)( \
+    ((u32)(ewl) << REG_SND_POWCNT_EWL_SHIFT) | \
+    ((u32)(spe) << REG_SND_POWCNT_SPE_SHIFT))
+#endif
+
+/* SOUND0CNT */
+
+#define REG_SND_SOUND0CNT_E_SHIFT                          31
+#define REG_SND_SOUND0CNT_E_SIZE                           1
+#define REG_SND_SOUND0CNT_E_MASK                           0x80000000
+
+#define REG_SND_SOUND0CNT_FORMAT_SHIFT                     29
+#define REG_SND_SOUND0CNT_FORMAT_SIZE                      2
+#define REG_SND_SOUND0CNT_FORMAT_MASK                      0x60000000
+
+#define REG_SND_SOUND0CNT_REPEAT_SHIFT                     27
+#define REG_SND_SOUND0CNT_REPEAT_SIZE                      2
+#define REG_SND_SOUND0CNT_REPEAT_MASK                      0x18000000
+
+#define REG_SND_SOUND0CNT_DUTY_SHIFT                       24
+#define REG_SND_SOUND0CNT_DUTY_SIZE                        3
+#define REG_SND_SOUND0CNT_DUTY_MASK                        0x07000000
+
+#define REG_SND_SOUND0CNT_PAN_SHIFT                        16
+#define REG_SND_SOUND0CNT_PAN_SIZE                         7
+#define REG_SND_SOUND0CNT_PAN_MASK                         0x007f0000
+
+#define REG_SND_SOUND0CNT_HOLD_SHIFT                       15
+#define REG_SND_SOUND0CNT_HOLD_SIZE                        1
+#define REG_SND_SOUND0CNT_HOLD_MASK                        0x00008000
+
+#define REG_SND_SOUND0CNT_SHIFT_SHIFT                      8
+#define REG_SND_SOUND0CNT_SHIFT_SIZE                       2
+#define REG_SND_SOUND0CNT_SHIFT_MASK                       0x00000300
+
+#define REG_SND_SOUND0CNT_VOLUME_SHIFT                     0
+#define REG_SND_SOUND0CNT_VOLUME_SIZE                      7
+#define REG_SND_SOUND0CNT_VOLUME_MASK                      0x0000007f
+
+#ifndef SDK_ASM
+#define REG_SND_SOUND0CNT_FIELD( e, format, repeat, duty, pan, hold, shift, volume ) \
+    (u32)( \
+    ((u32)(e) << REG_SND_SOUND0CNT_E_SHIFT) | \
+    ((u32)(format) << REG_SND_SOUND0CNT_FORMAT_SHIFT) | \
+    ((u32)(repeat) << REG_SND_SOUND0CNT_REPEAT_SHIFT) | \
+    ((u32)(duty) << REG_SND_SOUND0CNT_DUTY_SHIFT) | \
+    ((u32)(pan) << REG_SND_SOUND0CNT_PAN_SHIFT) | \
+    ((u32)(hold) << REG_SND_SOUND0CNT_HOLD_SHIFT) | \
+    ((u32)(shift) << REG_SND_SOUND0CNT_SHIFT_SHIFT) | \
+    ((u32)(volume) << REG_SND_SOUND0CNT_VOLUME_SHIFT))
 #endif
 
 /* SOUNDCNT_8 */

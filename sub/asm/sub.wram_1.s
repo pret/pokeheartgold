@@ -14,371 +14,18 @@
 	.public SND_Enable
 	.public SND_SetMasterVolume
 	.public SND_SetOutputSelector
-
-	arm_func_start SND_SetupChannelPcm
-SND_SetupChannelPcm: ; 0x037FB798
-	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	ldr r4, _037FB850 ; =sMasterPan
-	mov r8, r1
-	ldr lr, [r4]
-	ldr r1, _037FB854 ; =sSurroundDecay
-	mov r7, r2
-	ldr r5, [sp, #0x2c]
-	ldr r4, _037FB858 ; =sOrgPan
-	ldr ip, [sp, #0x20]
-	ldr r2, _037FB85C ; =sOrgVolume
-	strb r5, [r4, r0]
-	cmp lr, #0
-	ldr r1, [r1]
-	movge r5, lr
-	mov r6, r3
-	mov r4, r0, lsl #4
-	strb ip, [r2, r0]
-	cmp r1, #0
-	ble _037FB804
-	ldr r1, _037FB860 ; =0x0000FFF5
-	mov r2, #1
-	tst r1, r2, lsl r0
-	beq _037FB804
-	mov r0, ip
-	mov r1, r5
-	bl CalcSurroundDecay
-	mov ip, r0
-_037FB804:
-	ldr r2, [sp, #0x24]
-	mov r0, r6, lsl #0x1b
-	orr r0, r0, r7, lsl #29
-	orr r1, r0, r5, lsl #16
-	ldr r0, [sp, #0x28]
-	orr r2, r1, r2, lsl #8
-	add r1, r4, #0x4000000
-	orr r2, ip, r2
-	str r2, [r1, #0x400]
-	ldr r3, [sp, #0x18]
-	rsb r2, r0, #0x10000
-	add r0, r1, #0x400
-	strh r2, [r0, #8]
-	ldr r2, [sp, #0x1c]
-	strh r3, [r0, #0xa]
-	str r2, [r1, #0x40c]
-	str r8, [r1, #0x404]
-	ldmia sp!, {r4, r5, r6, r7, r8, lr}
-	bx lr
-	.align 2, 0
-_037FB850: .word sMasterPan
-_037FB854: .word sSurroundDecay
-_037FB858: .word sOrgPan
-_037FB85C: .word sOrgVolume
-_037FB860: .word 0x0000FFF5
-	arm_func_end SND_SetupChannelPcm
-
-	arm_func_start SND_SetupChannelPsg
-SND_SetupChannelPsg: ; 0x037FB864
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r4, _037FB8FC ; =sMasterPan
-	mov r7, r1
-	ldr ip, [r4]
-	ldr r1, _037FB900 ; =sSurroundDecay
-	mov r6, r3
-	ldr r3, _037FB904 ; =sOrgVolume
-	ldr r5, [sp, #0x1c]
-	ldr r4, _037FB908 ; =sOrgPan
-	ldr r1, [r1]
-	strb r5, [r4, r0]
-	cmp ip, #0
-	movge r5, ip
-	mov r4, r0, lsl #4
-	strb r2, [r3, r0]
-	cmp r1, #0
-	ble _037FB8C8
-	ldr r1, _037FB90C ; =0x0000FFF5
-	mov r3, #1
-	tst r1, r3, lsl r0
-	beq _037FB8C8
-	mov r0, r2
-	mov r1, r5
-	bl CalcSurroundDecay
-	mov r2, r0
-_037FB8C8:
-	mov r0, r7, lsl #0x18
-	orr r0, r0, #0x60000000
-	orr r0, r0, r5, lsl #16
-	ldr r1, [sp, #0x18]
-	orr r3, r0, r6, lsl #8
-	add r0, r4, #0x4000000
-	orr r2, r2, r3
-	str r2, [r0, #0x400]
-	rsb r1, r1, #0x10000
-	add r0, r0, #0x400
-	strh r1, [r0, #8]
-	ldmia sp!, {r3, r4, r5, r6, r7, lr}
-	bx lr
-	.align 2, 0
-_037FB8FC: .word sMasterPan
-_037FB900: .word sSurroundDecay
-_037FB904: .word sOrgVolume
-_037FB908: .word sOrgPan
-_037FB90C: .word 0x0000FFF5
-	arm_func_end SND_SetupChannelPsg
-
-	arm_func_start SND_SetupChannelNoise
-SND_SetupChannelNoise: ; 0x037FB910
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r4, _037FB9A0 ; =sMasterPan
-	mov r7, r2
-	ldr ip, [r4]
-	ldr r2, _037FB9A4 ; =sSurroundDecay
-	mov r6, r3
-	ldr r3, _037FB9A8 ; =sOrgVolume
-	ldr r5, [sp, #0x18]
-	ldr r4, _037FB9AC ; =sOrgPan
-	ldr r2, [r2]
-	strb r5, [r4, r0]
-	cmp ip, #0
-	movge r5, ip
-	mov r4, r0, lsl #4
-	strb r1, [r3, r0]
-	cmp r2, #0
-	ble _037FB974
-	ldr r2, _037FB9B0 ; =0x0000FFF5
-	mov r3, #1
-	tst r2, r3, lsl r0
-	beq _037FB974
-	mov r0, r1
-	mov r1, r5
-	bl CalcSurroundDecay
-	mov r1, r0
-_037FB974:
-	mov r0, r5, lsl #0x10
-	orr r0, r0, #0x60000000
-	orr r2, r0, r7, lsl #8
-	add r0, r4, #0x4000000
-	orr r1, r1, r2
-	str r1, [r0, #0x400]
-	rsb r1, r6, #0x10000
-	add r0, r0, #0x400
-	strh r1, [r0, #8]
-	ldmia sp!, {r3, r4, r5, r6, r7, lr}
-	bx lr
-	.align 2, 0
-_037FB9A0: .word sMasterPan
-_037FB9A4: .word sSurroundDecay
-_037FB9A8: .word sOrgVolume
-_037FB9AC: .word sOrgPan
-_037FB9B0: .word 0x0000FFF5
-	arm_func_end SND_SetupChannelNoise
-
-	arm_func_start SND_StopChannel
-SND_StopChannel: ; 0x037FB9B4
-	mov r3, r0, lsl #4
-	add r0, r3, #0x4000000
-	ldr r2, [r0, #0x400]
-	add r0, r3, #0x400
-	tst r1, #1
-	bic r1, r2, #0x80000000
-	add r0, r0, #0x4000000
-	orrne r1, r1, #0x8000
-	str r1, [r0]
-	bx lr
-	arm_func_end SND_StopChannel
-
-	arm_func_start SND_SetChannelVolume
-SND_SetChannelVolume: ; 0x037FB9DC
-	stmdb sp!, {r3, r4, r5, lr}
-	ldr r3, _037FBA48 ; =sSurroundDecay
-	ldr ip, _037FBA4C ; =sOrgVolume
-	ldr r3, [r3]
-	mov r5, r0
-	mov r4, r2
-	strb r1, [ip, r5]
-	cmp r3, #0
-	ble _037FBA2C
-	ldr r0, _037FBA50 ; =0x0000FFF5
-	mov r2, #1
-	tst r0, r2, lsl r5
-	beq _037FBA2C
-	mov r0, r5, lsl #4
-	add r0, r0, #0x4000000
-	ldrb r2, [r0, #0x402]
-	mov r0, r1
-	mov r1, r2
-	bl CalcSurroundDecay
-	mov r1, r0
-_037FBA2C:
-	mov r0, r5, lsl #4
-	add r0, r0, #0x4000000
-	orr r1, r1, r4, lsl #8
-	add r0, r0, #0x400
-	strh r1, [r0]
-	ldmia sp!, {r3, r4, r5, lr}
-	bx lr
-	.align 2, 0
-_037FBA48: .word sSurroundDecay
-_037FBA4C: .word sOrgVolume
-_037FBA50: .word 0x0000FFF5
-	arm_func_end SND_SetChannelVolume
-
-	arm_func_start SND_SetChannelTimer
-SND_SetChannelTimer: ; 0x037FBA54
-	mov r0, r0, lsl #4
-	add r0, r0, #0x4000000
-	rsb r1, r1, #0x10000
-	add r0, r0, #0x400
-	strh r1, [r0, #8]
-	bx lr
-	arm_func_end SND_SetChannelTimer
-
-	arm_func_start SND_SetChannelPan
-SND_SetChannelPan: ; 0x037FBA6C
-	stmdb sp!, {r4, lr}
-	ldr r2, _037FBAD0 ; =sMasterPan
-	ldr r3, _037FBAD4 ; =sOrgPan
-	ldr r2, [r2]
-	strb r1, [r3, r0]
-	cmp r2, #0
-	ldr r3, _037FBAD8 ; =sSurroundDecay
-	mov r4, r0, lsl #4
-	movge r1, r2
-	add r2, r4, #0x4000000
-	strb r1, [r2, #0x402]
-	ldr r2, [r3]
-	cmp r2, #0
-	ble _037FBAC8
-	ldr r2, _037FBADC ; =0x0000FFF5
-	mov r3, #1
-	tst r2, r3, lsl r0
-	beq _037FBAC8
-	ldr r2, _037FBAE0 ; =sOrgVolume
-	ldrb r0, [r2, r0]
-	bl CalcSurroundDecay
-	add r1, r4, #0x4000000
-	strb r0, [r1, #0x400]
-_037FBAC8:
-	ldmia sp!, {r4, lr}
-	bx lr
-	.align 2, 0
-_037FBAD0: .word sMasterPan
-_037FBAD4: .word sOrgPan
-_037FBAD8: .word sSurroundDecay
-_037FBADC: .word 0x0000FFF5
-_037FBAE0: .word sOrgVolume
-	arm_func_end SND_SetChannelPan
-
-	arm_func_start SND_IsChannelActive
-SND_IsChannelActive: ; 0x037FBAE4
-	mov r0, r0, lsl #4
-	add r0, r0, #0x4000000
-	ldrb r0, [r0, #0x403]
-	tst r0, #0x80
-	movne r0, #1
-	moveq r0, #0
-	bx lr
-	arm_func_end SND_IsChannelActive
-
-	arm_func_start SND_SetMasterPan
-SND_SetMasterPan: ; 0x037FBB00
-	ldr r1, _037FBB5C ; =sMasterPan
-	cmp r0, #0
-	str r0, [r1]
-	blt _037FBB34
-	mov r2, #0
-	and r1, r0, #0xff
-_037FBB18:
-	mov r0, r2, lsl #4
-	add r0, r0, #0x4000000
-	add r2, r2, #1
-	strb r1, [r0, #0x402]
-	cmp r2, #0x10
-	blt _037FBB18
-	bx lr
-_037FBB34:
-	ldr r2, _037FBB60 ; =sOrgPan
-	mov r3, #0
-_037FBB3C:
-	ldrb r1, [r2, r3]
-	mov r0, r3, lsl #4
-	add r0, r0, #0x4000000
-	add r3, r3, #1
-	strb r1, [r0, #0x402]
-	cmp r3, #0x10
-	blt _037FBB3C
-	bx lr
-	.align 2, 0
-_037FBB5C: .word sMasterPan
-_037FBB60: .word sOrgPan
-	arm_func_end SND_SetMasterPan
-
-	arm_func_start SND_GetChannelControl
-SND_GetChannelControl: ; 0x037FBB64
-	mov r0, r0, lsl #4
-	add r0, r0, #0x4000000
-	ldr r0, [r0, #0x400]
-	bx lr
-	arm_func_end SND_GetChannelControl
-
-	arm_func_start SNDi_SetSurroundDecay
-SNDi_SetSurroundDecay: ; 0x037FBB74
-	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	ldr r1, _037FBBC8 ; =sSurroundDecay
-	ldr r5, _037FBBCC ; =sOrgVolume
-	ldr r4, _037FBBD0 ; =0x0000FFF5
-	str r0, [r1]
-	mov r7, #0
-	mov r6, #1
-_037FBB90:
-	tst r4, r6, lsl r7
-	beq _037FBBB4
-	mov r8, r7, lsl #4
-	add r0, r8, #0x4000000
-	ldrb r1, [r0, #0x402]
-	ldrb r0, [r5, r7]
-	bl CalcSurroundDecay
-	add r1, r8, #0x4000000
-	strb r0, [r1, #0x400]
-_037FBBB4:
-	add r7, r7, #1
-	cmp r7, #0x10
-	blt _037FBB90
-	ldmia sp!, {r4, r5, r6, r7, r8, lr}
-	bx lr
-	.align 2, 0
-_037FBBC8: .word sSurroundDecay
-_037FBBCC: .word sOrgVolume
-_037FBBD0: .word 0x0000FFF5
-	arm_func_end SNDi_SetSurroundDecay
-
-	arm_func_start CalcSurroundDecay
-CalcSurroundDecay: ; 0x037FBBD4
-	cmp r1, #0x18
-	bge _037FBC04
-	ldr r2, _037FBC38 ; =sSurroundDecay
-	add r3, r1, #0x28
-	ldr ip, [r2]
-	ldr r1, _037FBC3C ; =0x00007FFF
-	mul r2, ip, r3
-	sub r1, r1, ip
-	add r1, r2, r1, lsl #6
-	mul r1, r0, r1
-	mov r0, r1, asr #0x15
-	bx lr
-_037FBC04:
-	cmp r1, #0x68
-	bxle lr
-	ldr r2, _037FBC38 ; =sSurroundDecay
-	sub r1, r1, #0x28
-	ldr ip, [r2]
-	rsb r2, ip, #0
-	mul r3, r2, r1
-	add r1, ip, #0xff
-	add r1, r1, #0x7f00
-	add r1, r3, r1, lsl #6
-	mul r1, r0, r1
-	mov r0, r1, asr #0x15
-	bx lr
-	.align 2, 0
-_037FBC38: .word sSurroundDecay
-_037FBC3C: .word 0x00007FFF
-	arm_func_end CalcSurroundDecay
+	.public SND_SetupChannelPcm
+	.public SND_SetupChannelPsg
+	.public SND_SetupChannelNoise
+	.public SND_StopChannel
+	.public SND_SetChannelVolume
+	.public SND_SetChannelTimer
+	.public SND_SetChannelPan
+	.public SND_IsChannelActive
+	.public SND_SetMasterPan
+	.public SND_GetChannelControl
+	.public SNDi_SetSurroundDecay
+	.public CalcSurroundDecay
 
 	arm_func_start SND_CalcTimer
 SND_CalcTimer: ; 0x037FBC40
@@ -6365,27 +6012,48 @@ buf$3759: ; 0x038067A0
 
 	.section .data,4,1,1
 
+	.type sMasterPan,@object
+	.public sMasterPan
 sMasterPan: ; 0x03806AEC
 	.word 0xFFFFFFFF
+	.size sMasterPan,.-sMasterPan
 
+	.type u$3681,@object
+	.public u$3681
 u$3681: ; 0x03806AF0
 	.word 0x12345678
+	.size u$3681,.-u$3681
 
+	.type _03806AF4,@object
+	.public _03806AF4
 _03806AF4:
 	.byte 50
+	.size _03806AF4,.-_03806AF4
 
 	.balign 4, 0
+	.type _03806AF8,@object
+	.public _03806AF8
 _03806AF8:
 	.word 1
+	.size _03806AF8,.-_03806AF8
 
+	.type cardi_rom_header_addr,@object
+	.public cardi_rom_header_addr
 cardi_rom_header_addr: ; 0x03806AFC
 	.word 0x027FFE00
+	.size cardi_rom_header_addr,.-cardi_rom_header_addr
 
+	.type nextCount$3668,@object
+	.public nextCount$3668
 nextCount$3668: ; 0x03806B00
 	.word 0xFFFFFFFF
+	.size nextCount$3668,.-nextCount$3668
 
+	.type isFirstCheck$3676,@object
+	.public isFirstCheck$3676
 isFirstCheck$3676: ; 0x03806B04
 	.word 1
+	.size isFirstCheck$3676,.-isFirstCheck$3676
 
 	.bss
 
@@ -6396,143 +6064,171 @@ PADi_XYButtonAlarm: ; 0x03806E80
 	.size PADi_XYButtonAlarm,.-PADi_XYButtonAlarm
 
 	.type sSurroundDecay,@object
+	.public sSurroundDecay
 sSurroundDecay: ; 0x03806EAC
 	.space 0x4
 	.size sSurroundDecay,.-sSurroundDecay
 
 	.type sOrgPan,@object
+	.public sOrgPan
 sOrgPan: ; 0x03806EB0
 	.space 0x10
 	.size sOrgPan,.-sOrgPan
 
 	.type sOrgVolume,@object
+	.public sOrgVolume
 sOrgVolume: ; 0x03806EC0
 	.space 0x10
 	.size sOrgVolume,.-sOrgVolume
 
 	.type initialized$3619,@object
+	.public initialized$3619
 initialized$3619: ; 0x03806ED0
 	.space 0x4
 	.size initialized$3619,.-initialized$3619
 
 	.type sndMesgBuffer,@object
+	.public sndMesgBuffer
 sndMesgBuffer: ; 0x03806ED4
 	.space 0x20
 	.size sndMesgBuffer,.-sndMesgBuffer
 
 	.type sndMesgQueue,@object
+	.public sndMesgQueue
 sndMesgQueue: ; 0x03806EF4
 	.space 0x20
 	.size sndMesgQueue,.-sndMesgQueue
 
 	.type sndAlarm,@object
+	.public sndAlarm
 sndAlarm: ; 0x03806F14
 	.space 0x2C
 	.size sndAlarm,.-sndAlarm
 
 	.type sndThread,@object
+	.public sndThread
 sndThread: ; 0x03806F40
 	.space 0xA4
 	.size sndThread,.-sndThread
 
 	.type sndStack,@object
+	.public sndStack
 sndStack: ; 0x03806FE4
 	.space 0x400
 	.size sndStack,.-sndStack
 
 	.type sWeakLockChannel,@object
+	.public sWeakLockChannel
 sWeakLockChannel: ; 0x038073E4
 	.space 0x4
 	.size sWeakLockChannel,.-sWeakLockChannel
 
 	.type sLockChannel,@object
+	.public sLockChannel
 sLockChannel: ; 0x038073E8
 	.space 0x4
 	.size sLockChannel,.-sLockChannel
 
 	.type sMmlPrintEnable,@object
+	.public sMmlPrintEnable
 sMmlPrintEnable: ; 0x038073EC
 	.space 0x4
 	.size sMmlPrintEnable,.-sMmlPrintEnable
 
 	.type seqCache,@object
+	.public seqCache
 seqCache: ; 0x038073F0
 	.space 0x18
 	.size seqCache,.-seqCache
 
 	.type SNDi_SharedWork,@object
+	.public SNDi_SharedWork
 SNDi_SharedWork: ; 0x03807408
 	.space 0x4
 	.size SNDi_SharedWork,.-SNDi_SharedWork
 
 	.type SNDi_Work,@object
+	.public SNDi_Work
 SNDi_Work: ; 0x0380740C
 	.space 0x1180
 	.size SNDi_Work,.-SNDi_Work
 
 	.type sCommandMesgQueue,@object
+	.public sCommandMesgQueue
 sCommandMesgQueue: ; 0x0380858C
 	.space 0x20
 	.size sCommandMesgQueue,.-sCommandMesgQueue
 
 	.type sCommandMesgBuffer,@object
+	.public sCommandMesgBuffer
 sCommandMesgBuffer: ; 0x038085AC
 	.space 0x20
 	.size sCommandMesgBuffer,.-sCommandMesgBuffer
 
 	.type CARDi_EnableFlag,@object
+	.public CARDi_EnableFlag
 CARDi_EnableFlag: ; 0x038085CC
 	.space 0x4
 	.size CARDi_EnableFlag,.-CARDi_EnableFlag
 
 	.balign 32, 0
 	.type cardi_common,@object
+	.public cardi_common
 cardi_common: ; 0x038085E0
 	.space 0x200
 	.size cardi_common,.-cardi_common
 
 	.type cardi_thread_stack,@object
+	.public cardi_thread_stack
 cardi_thread_stack: ; 0x038087E0
 	.space 0x400
 	.size cardi_thread_stack,.-cardi_thread_stack
 
 	.type status_checked$3825,@object
+	.public status_checked$3825
 status_checked$3825: ; 0x03808BE0
 	.space 0x4
 	.size status_checked$3825,.-status_checked$3825
 
 	.type cardi_param,@object
+	.public cardi_param
 cardi_param: ; 0x03808BE4
 	.space 0x10
 	.size cardi_param,.-cardi_param
 
 	.type cardi_rom_base,@object
+	.public cardi_rom_base
 cardi_rom_base: ; 0x03808BF4
 	.space 0x4
 	.size cardi_rom_base,.-cardi_rom_base
 
 	.balign 32, 0
 	.type rom_stat,@object
+	.public rom_stat
 rom_stat: ; 0x03808C00
 	.space 0x220
 	.size rom_stat,.-rom_stat
 
 	.type skipCheck$3668,@object
+	.public skipCheck$3668
 skipCheck$3668: ; 0x03808E20
 	.space 0x4
 	.size skipCheck$3668,.-skipCheck$3668
 
 	.type isCardPullOut,@object
+	.public isCardPullOut
 isCardPullOut: ; 0x03808E24
 	.space 0x4
 	.size isCardPullOut,.-isCardPullOut
 
 	.type isInitialized$3621,@object
+	.public isInitialized$3621
 isInitialized$3621: ; 0x03808E28
 	.space 0x4
 	.size isInitialized$3621,.-isInitialized$3621
 
 	.type detectPullOut,@object
+	.public detectPullOut
 detectPullOut: ; 0x03808E2C
 	.space 0x4
 	.size detectPullOut,.-detectPullOut

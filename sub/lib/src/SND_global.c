@@ -23,11 +23,11 @@ void SND_BeginSleep(void) {
     SVC_ResetSoundBias(0x80);
     OS_SpinWait(0x40000);
     PMi_ResetControl(1);
-    reg_GX_POWCNT &= ~REG_GX_POWCNT_LCD_MASK;
+    reg_SND_POWCNT &= ~REG_SND_POWCNT_SPE_MASK;
 }
 
 void SND_EndSleep(void) {
-    reg_GX_POWCNT |= REG_GX_POWCNT_LCD_MASK;
+    reg_SND_POWCNT |= REG_SND_POWCNT_SPE_MASK;
     PMi_SetControl(1);
     SVC_SetSoundBias(0x100);
     OS_SpinWait(0x7AB80);
