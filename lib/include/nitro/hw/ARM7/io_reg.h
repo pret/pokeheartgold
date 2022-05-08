@@ -102,21 +102,50 @@
 #define REG_SNDCAP1CNT_OFFSET                              0x509
 #define REG_SNDCAP1CNT_ADDR                                (HW_REG_BASE + REG_SNDCAP1CNT_OFFSET)
 #define reg_SND_SNDCAP1CNT                                 (*( REGType8v *) REG_SNDCAP1CNT_ADDR)
+/* SNDCAP0DAD */
 
-#define reg_SOUNDxCNT_VOL(x)    (*(REGType8v *)(0x4000400 + ((int)(x) * 0x10)))
-#define reg_SOUNDxCNT_VOLS(x)   (*(REGType16v *)(0x4000400 + ((int)(x) * 0x10)))
-#define reg_SOUNDxCNT_PAN(x)    (*(REGType8v *)(0x4000402 + ((int)(x) * 0x10)))
-#define reg_SOUNDxCNT_STAT(x)   (*(REGType8v *)(0x4000403 + ((int)(x) * 0x10)))
-#define reg_SOUNDxCNT(x)        (*(REGType32v *)(0x4000400 + ((int)x) * 0x10))
-#define reg_SOUNDoffCNT(off)    (*(REGType32v *)(0x4000400 + (int)(off)))
-#define reg_SOUNDxSAD(x)        (*(REGType32v *)(0x4000404 + ((int)x) * 0x10))
-#define reg_SOUNDoffSAD(off)    (*(REGType32v *)(0x4000404 + (int)(off)))
-#define reg_SOUNDxTMR(x)        (*(REGType16v *)(0x4000408 + ((int)x) * 0x10))
-#define reg_SOUNDoffTMR(off)    (*(REGType16v *)(0x4000408 + (int)(off)))
-#define reg_SOUNDxPNT(x)        (*(REGType16v *)(0x400040A + ((int)x) * 0x10))
-#define reg_SOUNDoffPNT(off)    (*(REGType16v *)(0x400040A + (int)(off)))
-#define reg_SOUNDxLEN(x)        (*(REGType32v *)(0x400040C + ((int)x) * 0x10))
-#define reg_SOUNDoffLEN(off)    (*(REGType32v *)(0x400040C + (int)(off)))
+#define REG_SNDCAP0DAD_OFFSET                              0x510
+#define REG_SNDCAP0DAD_ADDR                                (HW_REG_BASE + REG_SNDCAP0DAD_OFFSET)
+#define reg_SND_SNDCAP0DAD                                 (*( REGType32v *) REG_SNDCAP0DAD_ADDR)
+
+/* SNDCAP0LEN */
+
+#define REG_SNDCAP0LEN_OFFSET                              0x514
+#define REG_SNDCAP0LEN_ADDR                                (HW_REG_BASE + REG_SNDCAP0LEN_OFFSET)
+#define reg_SND_SNDCAP0LEN                                 (*( REGType16v *) REG_SNDCAP0LEN_ADDR)
+
+/* SNDCAP1DAD */
+
+#define REG_SNDCAP1DAD_OFFSET                              0x518
+#define REG_SNDCAP1DAD_ADDR                                (HW_REG_BASE + REG_SNDCAP1DAD_OFFSET)
+#define reg_SND_SNDCAP1DAD                                 (*( REGType32v *) REG_SNDCAP1DAD_ADDR)
+
+/* SNDCAP1LEN */
+
+#define REG_SNDCAP1LEN_OFFSET                              0x51c
+#define REG_SNDCAP1LEN_ADDR                                (HW_REG_BASE + REG_SNDCAP1LEN_OFFSET)
+#define reg_SND_SNDCAP1LEN                                 (*( REGType16v *) REG_SNDCAP1LEN_ADDR)
+
+#define reg_SOUNDxCNT_VOL(x)    (*(REGType8v *)(REG_SOUND0CNT_VOL_ADDR + ((int)(x) * 0x10)))
+#define reg_SOUNDxCNT_VOLS(x)   (*(REGType16v *)(REG_SOUND0CNT_VOL_16_ADDR + ((int)(x) * 0x10)))
+#define reg_SOUNDxCNT_PAN(x)    (*(REGType8v *)(REG_SOUND0CNT_PAN_ADDR + ((int)(x) * 0x10)))
+#define reg_SOUNDxCNT_STAT(x)   (*(REGType8v *)(REG_SOUND0CNT_8_ADDR + ((int)(x) * 0x10)))
+#define reg_SOUNDxCNT(x)        (*(REGType32v *)(REG_SOUND0CNT_ADDR + ((int)x) * 0x10))
+#define reg_SOUNDoffCNT(off)    (*(REGType32v *)(REG_SOUND0CNT_ADDR + (int)(off)))
+#define reg_SOUNDxSAD(x)        (*(REGType32v *)(REG_SOUND0SAD_ADDR + ((int)x) * 0x10))
+#define reg_SOUNDoffSAD(off)    (*(REGType32v *)(REG_SOUND0SAD_ADDR + (int)(off)))
+#define reg_SOUNDxTMR(x)        (*(REGType16v *)(REG_SOUND0TMR_ADDR + ((int)x) * 0x10))
+#define reg_SOUNDoffTMR(off)    (*(REGType16v *)(REG_SOUND0TMR_ADDR + (int)(off)))
+#define reg_SOUNDxPNT(x)        (*(REGType16v *)(REG_SOUND0RPT_PT_ADDR + ((int)x) * 0x10))
+#define reg_SOUNDoffPNT(off)    (*(REGType16v *)(REG_SOUND0RPT_PT_ADDR + (int)(off)))
+#define reg_SOUNDxLEN(x)        (*(REGType32v *)(REG_SOUND0RPT_LEN_ADDR + ((int)x) * 0x10))
+#define reg_SOUNDoffLEN(off)    (*(REGType32v *)(REG_SOUND0RPT_LEN_ADDR + (int)(off)))
+
+#define reg_SNDCAPxCNT(x) (*(REGType8v *)(REG_SNDCAP0CNT_ADDR + ((int)(x))))
+#define reg_SNDCAPxDAD(x) (*(REGType32v *)(REG_SNDCAP0DAD_ADDR + ((int)((x) * 8))))
+#define reg_SNDCAPoffDAD(x) (*(REGType32v *)(REG_SNDCAP0DAD_ADDR + ((int)(x))))
+#define reg_SNDCAPxLEN(x) (*(REGType16v *)(REG_SNDCAP0LEN_ADDR + ((int)((x) * 8))))
+#define reg_SNDCAPoffLEN(x) (*(REGType16v *)(REG_SNDCAP0LEN_ADDR + ((int)(x))))
 
 
 /* RECV_FIFO */
@@ -408,6 +437,38 @@
     ((u32)(mix_ch1) << REG_SND_SOUNDCNT_8_MIX_CH1_SHIFT) | \
     ((u32)(rout) << REG_SND_SOUNDCNT_8_ROUT_SHIFT) | \
     ((u32)(lout) << REG_SND_SOUNDCNT_8_LOUT_SHIFT))
+#endif
+
+/* SNDCAP0CNT */
+
+#define REG_SND_SNDCAP0CNT_E_SHIFT                         7
+#define REG_SND_SNDCAP0CNT_E_SIZE                          1
+#define REG_SND_SNDCAP0CNT_E_MASK                          0x80
+
+#define REG_SND_SNDCAP0CNT_FORMAT_SHIFT                    3
+#define REG_SND_SNDCAP0CNT_FORMAT_SIZE                     1
+#define REG_SND_SNDCAP0CNT_FORMAT_MASK                     0x08
+
+#define REG_SND_SNDCAP0CNT_REPEAT_SHIFT                    2
+#define REG_SND_SNDCAP0CNT_REPEAT_SIZE                     1
+#define REG_SND_SNDCAP0CNT_REPEAT_MASK                     0x04
+
+#define REG_SND_SNDCAP0CNT_IN_SHIFT                        1
+#define REG_SND_SNDCAP0CNT_IN_SIZE                         1
+#define REG_SND_SNDCAP0CNT_IN_MASK                         0x02
+
+#define REG_SND_SNDCAP0CNT_OUT_SHIFT                       0
+#define REG_SND_SNDCAP0CNT_OUT_SIZE                        1
+#define REG_SND_SNDCAP0CNT_OUT_MASK                        0x01
+
+#ifndef SDK_ASM
+#define REG_SND_SNDCAP0CNT_FIELD( e, format, repeat, in, out ) \
+    (u8)( \
+    ((u32)(e) << REG_SND_SNDCAP0CNT_E_SHIFT) | \
+    ((u32)(format) << REG_SND_SNDCAP0CNT_FORMAT_SHIFT) | \
+    ((u32)(repeat) << REG_SND_SNDCAP0CNT_REPEAT_SHIFT) | \
+    ((u32)(in) << REG_SND_SNDCAP0CNT_IN_SHIFT) | \
+    ((u32)(out) << REG_SND_SNDCAP0CNT_OUT_SHIFT))
 #endif
 
 #endif //NITRO_HW_ARM7_IO_REG_H_
