@@ -2,8 +2,8 @@
 #define NITRO_SND_H_
 
 #include <nitro/snd/common/global.h>
-#include <nitro/snd/common/exchannel.h>
 #include <nitro/snd/common/channel.h>
+#include <nitro/snd/common/exchannel.h>
 #include <nitro/snd/common/util.h>
 #include <nitro/snd/common/command.h>
 #include <nitro/snd/common/seq.h>

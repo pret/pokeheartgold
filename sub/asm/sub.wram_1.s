@@ -39,35 +39,6 @@
 	.public SND_SetupCapture
 	.public SND_IsCaptureActive
 
-	arm_func_start SND_ExChannelInit
-SND_ExChannelInit: ; 0x037FC0F8
-	stmdb sp!, {r3, lr}
-	ldr r3, _037FC14C ; =SNDi_Work
-	mov lr, #0
-	mov r0, #0x54
-_037FC108:
-	mul r1, lr, r0
-	add ip, r3, r1
-	strb lr, [r3, r1]
-	ldrb r1, [ip, #3]
-	add lr, lr, #1
-	bic r2, r1, #0xf8
-	and r1, r2, #0xff
-	bic r1, r1, #1
-	strb r1, [ip, #3]
-	cmp lr, #0x10
-	blt _037FC108
-	ldr r0, _037FC150 ; =sWeakLockChannel
-	mov r1, #0
-	str r1, [r0, #4]
-	str r1, [r0]
-	ldmia sp!, {r3, lr}
-	bx lr
-	.align 2, 0
-_037FC14C: .word SNDi_Work
-_037FC150: .word sWeakLockChannel
-	arm_func_end SND_ExChannelInit
-
 	arm_func_start SND_UpdateExChannel
 SND_UpdateExChannel: ; 0x037FC154
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}

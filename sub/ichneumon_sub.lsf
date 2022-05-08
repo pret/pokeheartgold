@@ -44,6 +44,7 @@ Autoload WRAM
 	Object lib/src/SND_util.o
 	Object lib/src/SND_main.o
 	Object lib/src/SND_capture.o
+	Object lib/src/SND_exchannel.o
 	Object asm/sub.wram_1.o
 	Object asm/libsyscall.o
 	Object asm/sub.wram_2.o
