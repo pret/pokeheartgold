@@ -886,6 +886,7 @@ Overlay OVY_75
 Overlay OVY_76
 {
     After main
+    Object src/overlay_76_src.o
     Object asm/overlay_76.o
 }
 Overlay OVY_77
