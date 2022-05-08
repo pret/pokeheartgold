@@ -23,4 +23,6 @@ typedef struct SNDTrackInfo {
     u8 channel[SND_CHANNEL_NUM];
 } SNDTrackInfo;
 
+void SND_UpdateSharedWork(void);
+
 #endif //NITRO_SND_WORK_H_

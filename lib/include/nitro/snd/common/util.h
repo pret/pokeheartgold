@@ -20,4 +20,9 @@
 #define SND_SIN_TABLE_SIZE 32
 #define SND_SIN_PERIOD ( SND_SIN_TABLE_SIZE * 4 )
 
+u16 SND_CalcTimer(int timer, int pitch);
+u16 SND_CalcChannelVolume(int value);
+s8 SND_SinIdx(int x);
+u16 SND_CalcRandom(void);
+
 #endif

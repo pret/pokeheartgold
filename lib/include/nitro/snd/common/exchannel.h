@@ -8,4 +8,8 @@ typedef enum SNDEnvStatus {
     SND_ENV_RELEASE
 } SNDEnvStatus;
 
+void SND_ExChannelInit(void);
+void SND_UpdateExChannel(void);
+void SND_ExChannelMain(u32 update);
+
 #endif //NITRO_SND_EXCHANNEL_H_

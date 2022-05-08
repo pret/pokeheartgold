@@ -30,177 +30,12 @@
 	.public SND_CalcChannelVolume
 	.public SND_SinIdx
 	.public SND_CalcRandom
-
-	arm_func_start SND_Init
-SND_Init: ; 0x037FBE8C
-	stmdb sp!, {r4, lr}
-	sub sp, sp, #8
-	ldr r1, _037FBEE8 ; =initialized$3619
-	mov r4, r0
-	ldr r0, [r1]
-	cmp r0, #0
-	bne _037FBEDC
-	mov r0, #1
-	str r0, [r1]
-	bl SND_CommandInit
-	mov r0, #0x400
-	str r0, [sp]
-	ldr r0, _037FBEEC ; =sndThread
-	ldr r1, _037FBEF0 ; =SndThread
-	ldr r3, _037FBEF4 ; =sWeakLockChannel
-	mov r2, #0
-	str r4, [sp, #4]
-	bl OS_CreateThread
-	ldr r0, _037FBEEC ; =sndThread
-	bl OS_WakeupThreadDirect
-_037FBEDC:
-	add sp, sp, #8
-	ldmia sp!, {r4, lr}
-	bx lr
-	.align 2, 0
-_037FBEE8: .word initialized$3619
-_037FBEEC: .word sndThread
-_037FBEF0: .word SndThread
-_037FBEF4: .word sWeakLockChannel
-	arm_func_end SND_Init
-
-	arm_func_start SND_StartIntervalTimer
-SND_StartIntervalTimer: ; 0x037FBEF8
-	stmdb sp!, {lr}
-	sub sp, sp, #0xc
-	bl OS_GetTick
-	ldr r3, _037FBF3C ; =SndAlarmCallback
-	adds ip, r0, #0x10000
-	str r3, [sp, #4]
-	mov lr, #0
-	str lr, [sp, #8]
-	adc r2, r1, #0
-	ldr r3, _037FBF40 ; =0x00000AA8
-	ldr r0, _037FBF44 ; =sndAlarm
-	mov r1, ip
-	str lr, [sp]
-	bl OS_SetPeriodicAlarm
-	add sp, sp, #0xc
-	ldmia sp!, {lr}
-	bx lr
-	.align 2, 0
-_037FBF3C: .word SndAlarmCallback
-_037FBF40: .word 0x00000AA8
-_037FBF44: .word sndAlarm
-	arm_func_end SND_StartIntervalTimer
-
-	arm_func_start SND_StopIntervalTimer
-SND_StopIntervalTimer: ; 0x037FBF48
-	ldr ip, _037FBF54 ; =OS_CancelAlarm
-	ldr r0, _037FBF58 ; =sndAlarm
-	bx ip
-	.align 2, 0
-_037FBF54: .word OS_CancelAlarm
-_037FBF58: .word sndAlarm
-	arm_func_end SND_StopIntervalTimer
-
-	arm_func_start SND_SendWakeupMessage
-SND_SendWakeupMessage: ; 0x037FBF5C
-	ldr ip, _037FBF70 ; =OS_SendMessage
-	ldr r0, _037FBF74 ; =sndMesgQueue
-	mov r1, #2
-	mov r2, #0
-	bx ip
-	.align 2, 0
-_037FBF70: .word OS_SendMessage
-_037FBF74: .word sndMesgQueue
-	arm_func_end SND_SendWakeupMessage
-
-	arm_func_start SNDi_LockMutex
-SNDi_LockMutex: ; 0x037FBF78
-	bx lr
-	arm_func_end SNDi_LockMutex
-
-	arm_func_start SNDi_UnlockMutex
-SNDi_UnlockMutex: ; 0x037FBF7C
-	bx lr
-	arm_func_end SNDi_UnlockMutex
-
-	arm_func_start SndAlarmCallback
-SndAlarmCallback: ; 0x037FBF80
-	ldr ip, _037FBF94 ; =OS_SendMessage
-	ldr r0, _037FBF98 ; =sndMesgQueue
-	mov r1, #1
-	mov r2, #0
-	bx ip
-	.align 2, 0
-_037FBF94: .word OS_SendMessage
-_037FBF98: .word sndMesgQueue
-	arm_func_end SndAlarmCallback
-
-	arm_func_start SndThread
-SndThread: ; 0x037FBF9C
-	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	sub sp, sp, #0x10
-	ldr r0, _037FC07C ; =sndMesgQueue
-	ldr r1, _037FC080 ; =sndMesgBuffer
-	mov r2, #8
-	bl OS_InitMessageQueue
-	ldr r0, _037FC084 ; =sndAlarm
-	bl OS_CreateAlarm
-	bl SND_ExChannelInit
-	bl SND_SeqInit
-	bl SND_AlarmInit
-	bl SND_Enable
-	mov r0, #0
-	mov r1, r0
-	mov r2, r0
-	mov r3, r0
-	bl SND_SetOutputSelector
-	mov r0, #0x7f
-	bl SND_SetMasterVolume
-	bl OS_GetTick
-	ldr r2, _037FC088 ; =SndAlarmCallback
-	adds r4, r0, #0x10000
-	str r2, [sp, #4]
-	mov r0, #0
-	str r0, [sp, #8]
-	str r0, [sp]
-	adc r2, r1, #0
-	ldr r3, _037FC08C ; =0x00000AA8
-	ldr r0, _037FC084 ; =sndAlarm
-	mov r1, r4
-	bl OS_SetPeriodicAlarm
-	ldr r7, _037FC07C ; =sndMesgQueue
-	mov r4, #1
-	add r6, sp, #0xc
-	mov r8, #0
-	mov r5, r4
-_037FC02C:
-	mov r0, r7
-	mov r1, r6
-	mov r2, r5
-	mov sb, r8
-	bl OS_ReceiveMessage
-	ldr r0, [sp, #0xc]
-	cmp r0, #1
-	beq _037FC054
-	cmp r0, #2
-	b _037FC058
-_037FC054:
-	mov sb, r4
-_037FC058:
-	bl SND_UpdateExChannel
-	bl SND_CommandProc
-	mov r0, sb
-	bl SND_SeqMain
-	mov r0, sb
-	bl SND_ExChannelMain
-	bl SND_UpdateSharedWork
-	bl SND_CalcRandom
-	b _037FC02C
-	.align 2, 0
-_037FC07C: .word sndMesgQueue
-_037FC080: .word sndMesgBuffer
-_037FC084: .word sndAlarm
-_037FC088: .word SndAlarmCallback
-_037FC08C: .word 0x00000AA8
-	arm_func_end SndThread
+	.public SND_StartIntervalTimer
+	.public SND_StopIntervalTimer
+	.public SND_SendWakeupMessage
+	.public SNDi_LockMutex
+	.public SNDi_UnlockMutex
+	.public SndAlarmCallback
 
 	arm_func_start SND_SetupCapture
 SND_SetupCapture: ; 0x037FC090
@@ -5891,11 +5726,11 @@ sOrgVolume: ; 0x03806EC0
 	.space 0x10
 	.size sOrgVolume,.-sOrgVolume
 
-	.type initialized$3619,@object
-	.public initialized$3619
-initialized$3619: ; 0x03806ED0
+	.type SND_Init__sinit__initialized,@object
+	.public SND_Init__sinit__initialized
+SND_Init__sinit__initialized: ; 0x03806ED0
 	.space 0x4
-	.size initialized$3619,.-initialized$3619
+	.size SND_Init__sinit__initialized,.-SND_Init__sinit__initialized
 
 	.type sndMesgBuffer,@object
 	.public sndMesgBuffer

@@ -34,10 +34,6 @@ void SND_EndSleep(void) {
     reg_SND_SOUNDCNT_8 |= REG_SND_SOUNDCNT_8_E_MASK;
 }
 
-static inline BOOL SND_IsEnabled(void) {
-    return (reg_SND_SOUNDCNT_8 & REG_SND_SOUNDCNT_8_E_MASK) ? TRUE : FALSE;
-}
-
 void SND_SetMasterVolume(u8 volume) {
     reg_SND_SOUNDCNT_VOL = volume;
 }
