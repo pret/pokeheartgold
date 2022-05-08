@@ -1641,7 +1641,7 @@ _02063E9C:
 	add r0, r5, #0
 	bl MapObject_GetFieldSysPtr
 	add r1, r5, #0
-	bl sub_020557A0
+	bl FieldSys_ApricornTree_TryGetApricorn
 	add r1, r6, #0
 	bl sub_020640A4
 	str r0, [r4]
@@ -1666,7 +1666,7 @@ _02063ECC:
 	add r0, r5, #0
 	bl MapObject_GetFieldSysPtr
 	add r1, r5, #0
-	bl sub_020557A0
+	bl FieldSys_ApricornTree_TryGetApricorn
 	add r1, r6, #0
 	bl sub_020640A4
 	str r0, [r4]

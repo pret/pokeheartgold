@@ -2483,7 +2483,7 @@ BOOL ScrCmd_SetDynamicWarp(SCRIPTCONTEXT *ctx) {
     warp.mapId = ScriptGetVar(ctx);
     warp.warpId = ScriptGetVar(ctx);
     warp.x = ScriptGetVar(ctx);
-    warp.z = ScriptGetVar(ctx);
+    warp.y = ScriptGetVar(ctx);
     warp.direction = ScriptGetVar(ctx);
     FlyPoints_SetDynamicWarp(Save_FlyPoints_get(ctx->fsys->savedata), &warp);
     return FALSE;
@@ -4092,7 +4092,7 @@ BOOL ScrCmd_582(SCRIPTCONTEXT *ctx) {
     Location *specialSpawn = FlyPoints_GetSpecialSpawnWarpPtr(Save_FlyPoints_get(ctx->fsys->savedata));
     specialSpawn->mapId = mapId;
     specialSpawn->x = x;
-    specialSpawn->z = y;
+    specialSpawn->y = y;
     specialSpawn->warpId = -1;
     specialSpawn->direction = DIR_SOUTH;
     return FALSE;
@@ -5146,11 +5146,11 @@ BOOL ScrCmd_BankOrWalletIsFull(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_753(SCRIPTCONTEXT *ctx) {
-    u16 r4 = ScriptGetVar(ctx);
-    u16 *r6 = ScriptGetVarPointer(ctx);
-    u16 *r3 = ScriptGetVarPointer(ctx);
-    ov01_02204C44(ctx->fsys, r4, r6, r3);
+BOOL ScrCmd_RockSmashItemCheck(SCRIPTCONTEXT *ctx) {
+    u16 followMonKnowsHm = ScriptGetVar(ctx);
+    u16 *itemFound = ScriptGetVarPointer(ctx);
+    u16 *item = ScriptGetVarPointer(ctx);
+    FieldSys_RockSmashItemCheck(ctx->fsys, (u8)followMonKnowsHm, itemFound, item);
     return TRUE;
 }
 

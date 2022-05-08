@@ -165,21 +165,21 @@ Static main
 	Object src/scrcmd_c.o
 	Object src/scrcmd_mart.o
 	Object src/scrcmd_strbuf.o
-	Object asm/scrcmd_5.o
+	Object src/scrcmd_lottery.o
 	Object asm/scrcmd_6.o
-	Object asm/scrcmd_7.o
-	Object asm/scrcmd_8.o
+	Object src/scrcmd_battle.o
+	Object src/scrcmd_8.o
 	Object asm/scrcmd_9.o
 	Object asm/scrcmd_10.o
 	Object asm/scrcmd_11.o
-	Object asm/scrcmd_12.o
+	Object src/scrcmd_12.o
 	Object src/scrcmd_money.o
 	Object src/scrcmd_daycare.o
 	Object src/scrcmd_party.o
 	Object src/scrcmd_dppl_prizes.o
 	Object src/scrcmd_17.o
 	Object src/scrcmd_items.o
-	Object asm/scrcmd_19.o
+	Object src/scrcmd_move_relearner.o
 	Object asm/scrcmd_20.o
 	Object asm/unk_0204F500.o
 	Object src/event_data.o
@@ -504,7 +504,8 @@ Overlay field
     Object asm/overlay_01_02203A18.o
     Object asm/overlay_01_02203E40.o
     Object asm/overlay_01_02204004.o
-    Object asm/overlay_01_02204840.o
+    Object src/overlay_01_apricorn_tree_anim.o
+    Object src/overlay_01_rock_smash_item.o
     Object asm/overlay_01_02204ED8.o
     Object asm/overlay_01_022051EC.o
     Object asm/overlay_01_022053EC.o

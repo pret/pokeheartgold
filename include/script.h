@@ -144,7 +144,7 @@ typedef struct Location {
     int mapId;
     int warpId;
     int x;
-    int z;
+    int y;
     int direction;
 } Location;
 
@@ -325,11 +325,11 @@ void ScriptReturn(SCRIPTCONTEXT* ctx);
 u16 ScriptReadHalfword(SCRIPTCONTEXT* ctx);
 u32 ScriptReadWord(SCRIPTCONTEXT* ctx);
 
-static inline void InitLocation(Location *location, int mapId, int warpId, int x, int z, int direction) {
+static inline void InitLocation(Location *location, int mapId, int warpId, int x, int y, int direction) {
     location->mapId = mapId;
     location->warpId = warpId;
     location->x = x;
-    location->z = z;
+    location->y = y;
     location->direction = direction;
 }
 
