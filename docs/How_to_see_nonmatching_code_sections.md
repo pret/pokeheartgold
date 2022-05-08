@@ -9,7 +9,7 @@ Decomp.me is a 3rd party website that allows decompilers to throw an assembly fu
 1. Go to Decomp.me, click "Start Decomping" to open a "New Scratch" window
 2. Once in that window, set the platform to "Nintendo DS (ARMv4T)", and the Compiler preset to "Pokémon HeartGold/SoulSilver"
 3. Copy paste the Assembly function into Target Assembly, and the function's name into Diff label
-4. Use m2ctx to generate context for your function, paste it into the Context field in decomp.me
+4. Use [m2ctx](../tools/m2ctx/README.md) to generate context for your function, paste it into the Context field in decomp.me
 5. Click "Create a scratch". You'll be taken to the Scratch view. with a diff view of the target and compiled assembly on the right, and the source code view on the left
 6. Add "#pragma thumb on" on top of the empty function, then replace the function with your non-matching function.
 

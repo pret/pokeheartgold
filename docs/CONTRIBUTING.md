@@ -5,7 +5,7 @@ The goal is to take the assembly code and turn them into readable C code that ge
 
 ## Prerequisites
 
-* Basic knowledge of ARMv4T assembly.
+* Basic knowledge of ARMv5TE assembly.
 * Basic knowledge of C programming language.
 * Be able to use GitHub version control.
 * Have a clone of the repo set up on your computer per [INSTALL.md](INSTALL.md) instructions.
