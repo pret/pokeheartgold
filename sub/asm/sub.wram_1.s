@@ -26,195 +26,10 @@
 	.public SND_GetChannelControl
 	.public SNDi_SetSurroundDecay
 	.public CalcSurroundDecay
-
-	arm_func_start SND_CalcTimer
-SND_CalcTimer: ; 0x037FBC40
-	stmdb sp!, {r4, r5, r6, lr}
-	mov r5, r0
-	rsb r0, r1, #0
-	mov r4, #0
-	b _037FBC5C
-_037FBC54:
-	sub r4, r4, #1
-	add r0, r0, #0x300
-_037FBC5C:
-	cmp r0, #0
-	blt _037FBC54
-	b _037FBC70
-_037FBC68:
-	add r4, r4, #1
-	sub r0, r0, #0x300
-_037FBC70:
-	cmp r0, #0x300
-	bge _037FBC68
-	bl __VENEER_SVC_GetPitchTable
-	adds r3, r0, #0x10000
-	mov r0, r5, asr #0x1f
-	umull r2, r1, r3, r5
-	mov ip, #0
-	mla r1, r3, r0, r1
-	adc r3, ip, #0
-	sub r0, r4, #0x10
-	mla r1, r3, r5, r1
-	cmp r0, #0
-	mov r4, #0x10000
-	bgt _037FBCC8
-	rsb r3, r0, #0
-	mov r4, r2, lsr r3
-	rsb r0, r3, #0x20
-	orr r4, r4, r1, lsl r0
-	sub r0, r3, #0x20
-	mov r3, r1, lsr r3
-	orr r4, r4, r1, lsr r0
-	b _037FBD24
-_037FBCC8:
-	cmp r0, #0x20
-	bge _037FBD1C
-	rsb r5, r0, #0x20
-	sub lr, ip, #1
-	mov r6, lr, lsl r5
-	rsb r3, r5, #0x20
-	orr r6, r6, lr, lsr r3
-	sub r3, r5, #0x20
-	orr r6, r6, lr, lsl r3
-	and r3, r1, r6
-	and r6, r2, lr, lsl r5
-	cmp r3, ip
-	cmpeq r6, ip
-	subne r0, r4, #1
-	bne _037FBD54
-	mov r3, r1, lsl r0
-	orr r3, r3, r2, lsr r5
-	sub r1, r0, #0x20
-	mov r4, r2, lsl r0
-	orr r3, r3, r2, lsl r1
-	b _037FBD24
-_037FBD1C:
-	sub r0, r4, #1
-	b _037FBD54
-_037FBD24:
-	mov r0, #0x10
-	cmp r3, #0
-	cmpeq r4, #0x10
-	mov r1, #0
-	movlo r4, r0
-	blo _037FBD4C
-	ldr r0, _037FBD5C ; =0x0000FFFF
-	cmp r3, r1
-	cmpeq r4, r0
-	movhi r4, r0
-_037FBD4C:
-	mov r0, r4, lsl #0x10
-	mov r0, r0, lsr #0x10
-_037FBD54:
-	ldmia sp!, {r4, r5, r6, lr}
-	bx lr
-	.align 2, 0
-_037FBD5C: .word 0x0000FFFF
-	arm_func_end SND_CalcTimer
-
-	arm_func_start __VENEER_SVC_GetPitchTable
-__VENEER_SVC_GetPitchTable: ; 0x037FBD60
-	ldr ip, _037FBD68 ; =SVC_GetPitchTable
-	bx ip
-	.align 2, 0
-_037FBD68: .word SVC_GetPitchTable
-	arm_func_end __VENEER_SVC_GetPitchTable
-
-	arm_func_start SND_CalcChannelVolume
-SND_CalcChannelVolume: ; 0x037FBD6C
-	stmdb sp!, {r4, lr}
-	ldr r1, _037FBDDC ; =0xFFFFFD2D
-	mov r4, r0
-	cmp r4, r1
-	movlt r4, r1
-	blt _037FBD8C
-	cmp r4, #0
-	movgt r4, #0
-_037FBD8C:
-	add r0, r4, #0xd3
-	add r0, r0, #0x200
-	bl __VENEER_SVC_GetVolumeTable
-	mvn r2, #0xef
-	cmp r4, r2
-	movlt r1, #3
-	blt _037FBDC8
-	add r1, r2, #0x78
-	cmp r4, r1
-	movlt r1, #2
-	blt _037FBDC8
-	add r1, r2, #0xb4
-	cmp r4, r1
-	movlt r1, #1
-	movge r1, #0
-_037FBDC8:
-	orr r0, r0, r1, lsl #8
-	mov r0, r0, lsl #0x10
-	mov r0, r0, lsr #0x10
-	ldmia sp!, {r4, lr}
-	bx lr
-	.align 2, 0
-_037FBDDC: .word 0xFFFFFD2D
-	arm_func_end SND_CalcChannelVolume
-
-	arm_func_start __VENEER_SVC_GetVolumeTable
-__VENEER_SVC_GetVolumeTable: ; 0x037FBDE0
-	ldr ip, _037FBDE8 ; =SVC_GetVolumeTable
-	bx ip
-	.align 2, 0
-_037FBDE8: .word SVC_GetVolumeTable
-	arm_func_end __VENEER_SVC_GetVolumeTable
-
-	arm_func_start SND_SinIdx
-SND_SinIdx: ; 0x037FBDEC
-	cmp r0, #0x20
-	ldrlt r1, _037FBE54 ; =SinTable
-	ldrltsb r0, [r1, r0]
-	bxlt lr
-	cmp r0, #0x40
-	ldrlt r1, _037FBE54 ; =SinTable
-	rsblt r0, r0, #0x40
-	ldrltsb r0, [r1, r0]
-	bxlt lr
-	cmp r0, #0x60
-	bge _037FBE34
-	ldr r1, _037FBE54 ; =SinTable
-	sub r0, r0, #0x40
-	ldrsb r0, [r1, r0]
-	rsb r0, r0, #0
-	mov r0, r0, lsl #0x18
-	mov r0, r0, asr #0x18
-	bx lr
-_037FBE34:
-	ldr r1, _037FBE54 ; =SinTable
-	sub r0, r0, #0x60
-	rsb r0, r0, #0x20
-	ldrsb r0, [r1, r0]
-	rsb r0, r0, #0
-	mov r0, r0, lsl #0x18
-	mov r0, r0, asr #0x18
-	bx lr
-	.align 2, 0
-_037FBE54: .word SinTable
-	arm_func_end SND_SinIdx
-
-	arm_func_start SND_CalcRandom
-SND_CalcRandom: ; 0x037FBE58
-	ldr r2, _037FBE80 ; =u$3681
-	ldr r0, _037FBE84 ; =0x0019660D
-	ldr r3, [r2]
-	ldr r1, _037FBE88 ; =0x3C6EF35F
-	mla r1, r3, r0, r1
-	mov r0, r1, lsr #0x10
-	mov r0, r0, lsl #0x10
-	str r1, [r2]
-	mov r0, r0, lsr #0x10
-	bx lr
-	.align 2, 0
-_037FBE80: .word u$3681
-_037FBE84: .word 0x0019660D
-_037FBE88: .word 0x3C6EF35F
-	arm_func_end SND_CalcRandom
+	.public SND_CalcTimer
+	.public SND_CalcChannelVolume
+	.public SND_SinIdx
+	.public SND_CalcRandom
 
 	arm_func_start SND_Init
 SND_Init: ; 0x037FBE8C
@@ -5962,11 +5777,6 @@ _038008A0: .word nextCount$3668
 
 	.rodata
 
-SinTable: ; 0x0380664C
-	.byte 0x00, 0x06, 0x0C, 0x13
-	.byte 0x19, 0x1F, 0x25, 0x2B, 0x31, 0x36, 0x3C, 0x41, 0x47, 0x4C, 0x51, 0x55, 0x5A, 0x5E, 0x62, 0x66
-	.byte 0x6A, 0x6D, 0x70, 0x73, 0x75, 0x78, 0x7A, 0x7B, 0x7D, 0x7E, 0x7E, 0x7F, 0x7F
-
 	.balign 4, 0
 
 SNDi_DecibelTable: ; 0x03806670
@@ -6018,11 +5828,11 @@ sMasterPan: ; 0x03806AEC
 	.word 0xFFFFFFFF
 	.size sMasterPan,.-sMasterPan
 
-	.type u$3681,@object
-	.public u$3681
-u$3681: ; 0x03806AF0
+	.type SND_CalcRandom__sinit__u,@object
+	.public SND_CalcRandom__sinit__u
+SND_CalcRandom__sinit__u: ; 0x03806AF0
 	.word 0x12345678
-	.size u$3681,.-u$3681
+	.size SND_CalcRandom__sinit__u,.-SND_CalcRandom__sinit__u
 
 	.type _03806AF4,@object
 	.public _03806AF4

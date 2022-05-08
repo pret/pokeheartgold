@@ -4,6 +4,7 @@
 #include <nitro/snd/common/global.h>
 #include <nitro/snd/common/exchannel.h>
 #include <nitro/snd/common/channel.h>
+#include <nitro/snd/common/util.h>
 #include <nitro/snd/common/data.h>
 #include <nitro/snd/common/work.h>
 
