@@ -44,9 +44,9 @@ scr_seq_R35R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4114, 1
+	compare VAR_LOAN_SPEAROW, 1
 	goto_if_eq _00BC
-	compare VAR_UNK_4114, 2
+	compare VAR_LOAN_SPEAROW, 2
 	goto_if_ge _0104
 	npc_msg msg_0388_R35R0101_00000
 	touchscreen_menu_hide
@@ -59,7 +59,7 @@ scr_seq_R35R0101_000:
 	goto_if_eq _00F9
 	npc_msg msg_0388_R35R0101_00003
 	give_loan_mon 7, 20, 101
-	setvar VAR_UNK_4114, 1
+	setvar VAR_LOAN_SPEAROW, 1
 	buffer_players_name 0
 	npc_msg msg_0388_R35R0101_00004
 	play_fanfare SEQ_ME_PT_SPECIAL
@@ -97,18 +97,18 @@ _00F9:
 	end
 
 _0104:
-	compare VAR_UNK_4114, 4
+	compare VAR_LOAN_SPEAROW, 4
 	goto_if_ge _016D
 	npc_msg msg_0388_R35R0101_00007
 	goto_if_no_item_space ITEM_HP_UP, 1, _0163
 	callstd std_give_item_verbose
-	compare VAR_UNK_4114, 3
+	compare VAR_LOAN_SPEAROW, 3
 	goto_if_ne _0152
-	setvar VAR_UNK_4114, 5
+	setvar VAR_LOAN_SPEAROW, 5
 	goto _0158
 
 _0152:
-	setvar VAR_UNK_4114, 4
+	setvar VAR_LOAN_SPEAROW, 4
 _0158:
 	npc_msg msg_0388_R35R0101_00008
 	wait_button_or_walk_away
@@ -130,7 +130,7 @@ _016D:
 	end
 
 _0178:
-	setvar VAR_UNK_4114, 6
+	setvar VAR_LOAN_SPEAROW, 6
 	npc_msg msg_0388_R35R0101_00009
 	wait_button_or_walk_away
 	closemsg

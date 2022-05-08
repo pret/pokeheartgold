@@ -1408,7 +1408,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_225",
+      "name": "goto_if_trainer_defeated",
       "args": [
         "script"
       ]
@@ -4759,7 +4759,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_753",
+      "name": "scrcmd_rock_smash_item_check",
       "args": [
         "var",
         "var",

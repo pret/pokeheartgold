@@ -124,11 +124,11 @@ _0188:
 	end
 
 _018E:
-	goto_if_set FLAG_UNK_0DA, _01C8
+	goto_if_set FLAG_GOT_TM59_FROM_CLAIR, _01C8
 	npc_msg msg_0631_T30GYM0101_00006
 	goto_if_no_item_space ITEM_TM59, 1, _01D3
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_0DA
+	setflag FLAG_GOT_TM59_FROM_CLAIR
 	npc_msg msg_0631_T30GYM0101_00007
 _01C8:
 	npc_msg msg_0631_T30GYM0101_00009

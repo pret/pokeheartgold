@@ -41,7 +41,7 @@ _0079:
 	get_phone_book_rematch PHONE_CONTACT_LT__SURGE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _014A
-	goto_if_unset FLAG_UNK_14A, _0144
+	goto_if_unset FLAG_CAUGHT_ZAPDOS, _0144
 	check_registered_phone_number PHONE_CONTACT_LT__SURGE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _00FB
@@ -69,7 +69,7 @@ _00F9:
 	end
 
 _00FB:
-	goto_if_set FLAG_UNK_162, _010C
+	goto_if_set FLAG_TRADE_LT_SURGE_PIKACHU, _010C
 	setflag FLAG_UNK_2F0
 	end
 

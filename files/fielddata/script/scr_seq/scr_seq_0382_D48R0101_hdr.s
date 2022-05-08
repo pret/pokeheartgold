@@ -12,7 +12,7 @@
 	.byte 0
 
 scr_seq_D48R0101_map_scripts_2:
-	.short VAR_UNK_40F9, 2, _EV_scr_seq_D48R0101_004 + 1
+	.short VAR_SCENE_EMBEDDED_TOWER, 2, _EV_scr_seq_D48R0101_004 + 1
 	.short 0
 
 	.balign 4, 0
