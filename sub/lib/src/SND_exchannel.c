@@ -3,12 +3,12 @@
 int sLockChannel;
 int sWeakLockChannel;
 
-static void StartExChannel(struct SNDExChannel *chn, int length);
+static void StartExChannel(SNDExChannel *chn, int length);
 static u16 CalcRelease(int vol);
-static void ExChannelSetup(struct SNDExChannel *chn, SNDExChannelCallback callback, void *callbackUserData, int priority);
-static int ExChannelVolumeCmp(struct SNDExChannel *chn_a, struct SNDExChannel *chn_b);
-static int ExChannelLfoUpdate(struct SNDExChannel *chn, BOOL step);
-static int ExChannelSweepUpdate(struct SNDExChannel *chn, BOOL step);
+static void ExChannelSetup(SNDExChannel *chn, SNDExChannelCallback callback, void *callbackUserData, int priority);
+static int ExChannelVolumeCmp(SNDExChannel *chn_a, SNDExChannel *chn_b);
+static int ExChannelLfoUpdate(SNDExChannel *chn, BOOL step);
+static int ExChannelSweepUpdate(SNDExChannel *chn, BOOL step);
 
 extern const s16 SNDi_DecibelTable[];
 
@@ -29,7 +29,7 @@ void SND_ExChannelInit(void) {
 }
 
 void SND_UpdateExChannel(void) {
-    struct SNDExChannel *chn;
+    SNDExChannel *chn;
     s32 i;
 
     for (i = 0; i < SND_CHANNEL_NUM; i++) {
@@ -97,7 +97,7 @@ void SND_UpdateExChannel(void) {
 }
 
 void SND_ExChannelMain(BOOL step) {
-    struct SNDExChannel *chn;
+    SNDExChannel *chn;
     s32 i;
     s32 vol;
     s32 pitch;
@@ -201,7 +201,7 @@ void SND_ExChannelMain(BOOL step) {
     }
 }
 
-BOOL SND_StartExChannelPcm(struct SNDExChannel *chn, const struct SNDWaveParam *wave, const void *data, s32 length) {
+BOOL SND_StartExChannelPcm(SNDExChannel *chn, const SNDWaveParam *wave, const void *data, s32 length) {
     chn->type = SND_EX_CHANNEL_PCM;
     chn->wave = *wave;
     chn->data = data;
@@ -209,7 +209,7 @@ BOOL SND_StartExChannelPcm(struct SNDExChannel *chn, const struct SNDWaveParam *
     return TRUE;
 }
 
-BOOL SND_StartExChannelPsg(struct SNDExChannel *chn, s32 duty, s32 length) {
+BOOL SND_StartExChannelPsg(SNDExChannel *chn, s32 duty, s32 length) {
     if (chn->myNo < 8) {
         return FALSE;
     } else if (chn->myNo > 13) {
@@ -223,7 +223,7 @@ BOOL SND_StartExChannelPsg(struct SNDExChannel *chn, s32 duty, s32 length) {
     }
 }
 
-BOOL SND_StartExChannelNoise(struct SNDExChannel *chn, s32 length) {
+BOOL SND_StartExChannelNoise(SNDExChannel *chn, s32 length) {
     if (chn->myNo < 14) {
         return FALSE;
     } else if (chn->myNo > 15) {
@@ -236,7 +236,7 @@ BOOL SND_StartExChannelNoise(struct SNDExChannel *chn, s32 length) {
     }
 }
 
-s32 SND_UpdateExChannelEnvelope(struct SNDExChannel *chn, BOOL step) {
+s32 SND_UpdateExChannelEnvelope(SNDExChannel *chn, BOOL step) {
     s32 sustain;
 
     if (step) {
@@ -287,18 +287,18 @@ void SND_SetExChannelRelease(SNDExChannel *ch_p, int release) {
     ch_p->release = CalcRelease(release);
 }
 
-void SND_ReleaseExChannel(struct SNDExChannel *chn) {
+void SND_ReleaseExChannel(SNDExChannel *chn) {
     chn->env_status = SND_ENV_RELEASE;
 }
 
-BOOL SND_IsExChannelActive(struct SNDExChannel *chn) {
+BOOL SND_IsExChannelActive(SNDExChannel *chn) {
     return chn->active_flag;
 }
 
 SNDExChannel *SND_AllocExChannel(u32 channelMask, int priority, u32 flags, SNDExChannelCallback callback, void *callbackUserData) {
-    struct SNDExChannel *chnPrev;
+    SNDExChannel *chnPrev;
     int i;
-    struct SNDExChannel *chn;
+    SNDExChannel *chn;
     u8 channelCandidate;
     extern u8 SND_AllocExChannel__sinit__channel_order[];
 
@@ -348,7 +348,7 @@ SNDExChannel *SND_AllocExChannel(u32 channelMask, int priority, u32 flags, SNDEx
     return chnPrev;
 }
 
-void SND_FreeExChannel(struct SNDExChannel *chn) {
+void SND_FreeExChannel(SNDExChannel *chn) {
     if (chn) {
         chn->callback = NULL;
         chn->callback_data = NULL;
@@ -383,7 +383,7 @@ void SND_StopUnlockedChannel(u32 channelMask, u32 flags) {
 }
 
 void SND_LockChannel(u32 channelMask, u32 weak) {
-    struct SNDExChannel *chn;
+    SNDExChannel *chn;
     u32 j = channelMask;
     int i = 0;
 
@@ -434,7 +434,7 @@ u32 SND_GetLockedChannel(u32 weak) {
 
 void SND_InvalidateWave(const void *start, const void *end) {
     for (u8 i = 0; i < SND_CHANNEL_NUM; i++) {
-        struct SNDExChannel *chn = &SNDi_Work.channel[i];
+        SNDExChannel *chn = &SNDi_Work.channel[i];
 
         if (chn->active_flag && chn->type == 0 && start <= chn->data &&
             chn->data <= end) {
@@ -478,7 +478,7 @@ void SND_UpdateLfo(SNDLfo *lfo)
     }
 }
 
-s32 SND_GetLfoValue(struct SNDLfo *lfo) {
+s32 SND_GetLfoValue(SNDLfo *lfo) {
     if (lfo->param.depth == 0) {
         return 0;
     } else if (lfo->delay_counter < lfo->param.delay) {
@@ -500,7 +500,7 @@ u16 CalcRelease(int vol) {
     }
 }
 
-static void StartExChannel(struct SNDExChannel *chn, int length) {
+static void StartExChannel(SNDExChannel *chn, int length) {
     chn->env_decay = -92544;
     chn->env_status = 0;
     chn->length = length;
@@ -537,7 +537,7 @@ static void ExChannelSetup(SNDExChannel *chn, SNDExChannelCallback callback, voi
     SND_InitLfoParam(&chn->lfo.param);
 }
 
-static int ExChannelVolumeCmp(struct SNDExChannel *chn_a, struct SNDExChannel *chn_b) {
+static int ExChannelVolumeCmp(SNDExChannel *chn_a, SNDExChannel *chn_b) {
     extern const u8 SND_AllocExChannel__sinit__shift[];
     int vol_a = chn_a->volume & 0xFF;
     int vol_b = chn_b->volume & 0xFF;
@@ -558,7 +558,7 @@ static int ExChannelVolumeCmp(struct SNDExChannel *chn_a, struct SNDExChannel *c
     return 0;
 }
 
-static int ExChannelSweepUpdate(struct SNDExChannel *chn, BOOL step) {
+static int ExChannelSweepUpdate(SNDExChannel *chn, BOOL step) {
     s64 result;
 
     if (chn->sweep_pitch == 0) {
@@ -576,7 +576,7 @@ static int ExChannelSweepUpdate(struct SNDExChannel *chn, BOOL step) {
     return (int)result;
 }
 
-static int ExChannelLfoUpdate(struct SNDExChannel *chn, BOOL step) {
+static int ExChannelLfoUpdate(SNDExChannel *chn, BOOL step) {
     s64 result = SND_GetLfoValue(&chn->lfo);
 
     if (result != 0) {

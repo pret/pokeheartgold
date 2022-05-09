@@ -13,6 +13,9 @@
 
 #define SND_TRACK_CALL_STACK_DEPTH 3
 
+#define SND_PLAYER_VARIABLE_NUM 16
+#define SND_GLOBAL_VARIABLE_NUM 16
+
 typedef struct SNDPlayer {
     u8 active_flag:1;
     u8 prepared_flag:1;
@@ -73,6 +76,6 @@ typedef struct SNDTrack
 } SNDTrack;
 
 void SND_SeqInit(void);
-void SND_SeqMain(u32 update);
+void SND_SeqMain(BOOL doPeriodicProc);
 
 #endif //NITRO_SND_COMMON_SEQ_H_

@@ -30,8 +30,21 @@ typedef struct SNDWork {
     SNDAlarm alarm[SND_ALARM_NUM];
 } SNDWork;
 
+typedef struct SNDSharedWork {
+    vu32 finishCommandTag;
+    vu32 playerStatus;
+    vu16 channelStatus;
+    vu16 captureStatus;
+    vu32 padding[5];
+    struct {
+        vs16 variable[SND_PLAYER_VARIABLE_NUM];
+        vu32 tickCounter;
+    } player[SND_PLAYER_NUM];
+    vs16 globalVariable[SND_GLOBAL_VARIABLE_NUM];
+} SNDSharedWork;                         // must be 32 byte boundary
+
 extern SNDWork SNDi_Work;
-extern SNDWork *SND_SharedWork;
+extern SNDSharedWork *SNDi_SharedWork;
 
 static inline SNDWork *SND_GetWork(void) {
     return &SNDi_Work;

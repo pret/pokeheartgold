@@ -1,4 +1,4 @@
 #include <nitro.h>
 
 SNDWork SNDi_Work;
-SNDWork *SNDi_SharedWork;
+SNDSharedWork *SNDi_SharedWork;
