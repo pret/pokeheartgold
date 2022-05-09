@@ -3,8 +3,8 @@
 int sLockChannel;
 int sWeakLockChannel;
 
-void StartExChannel(struct SNDExChannel *chn, int length);
-u16 CalcRelease(int vol);
+static void StartExChannel(struct SNDExChannel *chn, int length);
+static u16 CalcRelease(int vol);
 static void ExChannelSetup(struct SNDExChannel *chn, SNDExChannelCallback callback, void *callbackUserData, int priority);
 static int ExChannelVolumeCmp(struct SNDExChannel *chn_a, struct SNDExChannel *chn_b);
 static int ExChannelLfoUpdate(struct SNDExChannel *chn, BOOL step);
@@ -382,21 +382,112 @@ void SND_StopUnlockedChannel(u32 channelMask, u32 flags) {
     }
 }
 
-/*static void StartExChannel(struct SNDExChannel *chn, int length) {
-    chn->env_decay = -92544;
-    chn->env_status = 0;
-    chn->length = length;
-    SND_StartLfo(&chn->lfo);
-    chn->start_flag = TRUE;
-    chn->active_flag = TRUE;
-}*/
+void SND_LockChannel(u32 channelMask, u32 weak) {
+    struct SNDExChannel *chn;
+    u32 j = channelMask;
+    int i = 0;
 
-void SND_StartLfo(struct SNDLfo *lfo) {
+    for (; i < SND_CHANNEL_NUM && j != 0; i++, j >>= 1) {
+        if ((j & 1) == 0) {
+            continue;
+        }
+
+        chn = &SNDi_Work.channel[i];
+
+        if (sLockChannel & (1 << i)) {
+            continue;
+        }
+
+        if (chn->callback) {
+            chn->callback(chn, 0, chn->callback_data);
+        }
+
+        SND_StopChannel(i, 0);
+        chn->prio = 0;
+        SND_FreeExChannel(chn);
+        chn->sync_flag = 0;
+        chn->active_flag = 0;
+    }
+
+    if (weak & 1) {
+        sWeakLockChannel |= channelMask;
+    } else {
+        sLockChannel |= channelMask;
+    }
+}
+
+void SND_UnlockChannel(u32 channelMask, u32 weak) {
+    if (weak & 1) {
+        sWeakLockChannel &= ~channelMask;
+    } else {
+        sLockChannel &= ~channelMask;
+    }
+}
+
+u32 SND_GetLockedChannel(u32 weak) {
+    if (weak & 1) {
+        return sWeakLockChannel;
+    } else {
+        return sLockChannel;
+    }
+}
+
+void SND_InvalidateWave(const void *start, const void *end) {
+    for (u8 i = 0; i < SND_CHANNEL_NUM; i++) {
+        struct SNDExChannel *chn = &SNDi_Work.channel[i];
+
+        if (chn->active_flag && chn->type == 0 && start <= chn->data &&
+            chn->data <= end) {
+            chn->start_flag = FALSE;
+            SND_StopChannel(i, 0);
+        }
+    }
+}
+
+void SND_InitLfoParam(SNDLfoParam *lfoParam) {
+    lfoParam->target = SND_LFO_PITCH;
+    lfoParam->depth = 0;
+    lfoParam->range = 1;
+    lfoParam->speed = 16;
+    lfoParam->delay = 0;
+}
+
+void SND_StartLfo(SNDLfo *lfo) {
     lfo->counter = 0;
     lfo->delay_counter = 0;
 }
 
-/*
+void SND_UpdateLfo(SNDLfo *lfo)
+{
+    if (lfo->delay_counter < lfo->param.delay)
+    {
+        lfo->delay_counter++;
+    }
+    else
+    {
+        u32 tmp = lfo->counter;
+        tmp += lfo->param.speed << 6;
+        tmp >>= 8;
+        while (tmp >= 0x80)
+        {
+            tmp -= 0x80;
+        }
+        lfo->counter += lfo->param.speed << 6;
+        lfo->counter &= 0xFF;
+        lfo->counter |= tmp << 8;
+    }
+}
+
+s32 SND_GetLfoValue(struct SNDLfo *lfo) {
+    if (lfo->param.depth == 0) {
+        return 0;
+    } else if (lfo->delay_counter < lfo->param.delay) {
+        return 0;
+    } else {
+        return SND_SinIdx((s32)((u32)lfo->counter >> 8)) * lfo->param.depth * lfo->param.range;
+    }
+}
+
 u16 CalcRelease(int vol) {
     if (vol == 127) {
         return 0xFFFF;
@@ -408,7 +499,15 @@ u16 CalcRelease(int vol) {
         return (u16)(0x1E00 / (126 - vol));
     }
 }
-*/
+
+static void StartExChannel(struct SNDExChannel *chn, int length) {
+    chn->env_decay = -92544;
+    chn->env_status = 0;
+    chn->length = length;
+    SND_StartLfo(&chn->lfo);
+    chn->start_flag = TRUE;
+    chn->active_flag = TRUE;
+}
 
 static void ExChannelSetup(SNDExChannel *chn, SNDExChannelCallback callback, void *callbackUserData, int priority) {
     chn->nextLink = NULL;
