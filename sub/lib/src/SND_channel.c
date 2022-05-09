@@ -1,9 +1,9 @@
 #include <nitro.h>
 
 extern int sMasterPan; // = -1;
-extern u8 sOrgVolume[SND_CHANNEL_NUM];
-extern u8 sOrgPan[SND_CHANNEL_NUM];
-extern int sSurroundDecay;
+static u8 sOrgVolume[SND_CHANNEL_NUM];
+static u8 sOrgPan[SND_CHANNEL_NUM];
+static int sSurroundDecay;
 
 int CalcSurroundDecay(int vol, int pan);
 
@@ -44,8 +44,7 @@ void SND_SetupChannelPsg(int chNo, SNDDuty duty, int volume, SNDChannelDataShift
     reg_SOUNDoffTMR(off) = (u16)(0x10000 - timer);
 }
 
-void SND_SetupChannelNoise(int chNo, int volume, SNDChannelDataShift shift, int timer, int pan)
-{
+void SND_SetupChannelNoise(int chNo, int volume, SNDChannelDataShift shift, int timer, int pan) {
     int off = chNo * 0x10;
 
     sOrgPan[chNo] = (u8)pan;

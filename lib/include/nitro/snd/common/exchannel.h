@@ -1,6 +1,18 @@
 #ifndef NITRO_SND_EXCHANNEL_H_
 #define NITRO_SND_EXCHANNEL_H_
 
+#define SND_EX_CHANNEL_UPDATE_START  (0x01 << 0)
+#define SND_EX_CHANNEL_UPDATE_STOP   (0x01 << 1)
+#define SND_EX_CHANNEL_UPDATE_TIMER  (0x01 << 2)
+#define SND_EX_CHANNEL_UPDATE_VOLUME (0x01 << 3)
+#define SND_EX_CHANNEL_UPDATE_PAN    (0x01 << 4)
+
+typedef enum SNDExChannelType {
+    SND_EX_CHANNEL_PCM,
+    SND_EX_CHANNEL_PSG,
+    SND_EX_CHANNEL_NOISE
+} SNDExChannelType;
+
 typedef enum SNDExChannelCallbackStatus {
     SND_EX_CHANNEL_CALLBACK_DROP,
     SND_EX_CHANNEL_CALLBACK_FINISH
@@ -12,6 +24,12 @@ typedef enum SNDEnvStatus {
     SND_ENV_SUSTAIN,
     SND_ENV_RELEASE
 } SNDEnvStatus;
+
+typedef enum SNDLfoTarget {
+    SND_LFO_PITCH,
+    SND_LFO_VOLUME,
+    SND_LFO_PAN
+} SNDLfoTarget;
 
 struct SNDExChannel;
 
@@ -81,8 +99,23 @@ typedef struct SNDExChannel {
     struct SNDExChannel *nextLink;
 } SNDExChannel;
 
+#ifdef SDK_ARM7
 void SND_ExChannelInit(void);
 void SND_UpdateExChannel(void);
-void SND_ExChannelMain(u32 update);
+void SND_ExChannelMain(BOOL step);
+s32 SND_UpdateExChannelEnvelope(SNDExChannel *ch_p, BOOL doPeriodicProc);
+void SND_SetExChannelAttack(struct SNDExChannel *ch_p, int attack);
+void SND_SetExChannelDecay(struct SNDExChannel *ch_p, int decay);
+void SND_SetExChannelSustain(struct SNDExChannel *ch_p, int sustain);
+void SND_SetExChannelRelease(struct SNDExChannel *ch_p, int release);
+void SND_InitLfoParam(SNDLfoParam *lfo);
+s32 SND_GetLfoValue(SNDLfo *lfo);
+void SND_StartLfo(SNDLfo *lfo);
+void SND_UpdateLfo(SNDLfo *lfo);
+void SND_LockChannel(u32 chBitMask, u32 flags);
+void SND_UnlockChannel(u32 chBitMask, u32 flags);
+void SND_StopUnlockedChannel(u32 chBitMask, u32 flags);
+u32 SND_GetLockedChannel(u32 flags);
+#endif //SDK_ARM7
 
 #endif //NITRO_SND_EXCHANNEL_H_

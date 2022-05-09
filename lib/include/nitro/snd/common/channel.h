@@ -54,7 +54,18 @@ typedef enum {
 } SNDChannelDataShift;
 
 #ifdef SDK_ARM7
+void SND_SetupChannelPcm(int chNo, const void *data, SNDWaveFormat format, SNDChannelLoop loop, int loopStart, int dataLen, int volume, SNDChannelDataShift shift, int timer, int pan);
+void SND_SetupChannelPsg(int chNo, SNDDuty duty, int volume, SNDChannelDataShift shift, int timer, int pan);
+void SND_SetupChannelNoise(int chNo, int volume, SNDChannelDataShift shift, int timer, int pan);
 void SND_StopChannel(int chNo, s32 flags);
+void SND_SetChannelVolume(int chNo, int volume, SNDChannelDataShift shift);
+void SND_SetChannelTimer(int chNo, int timer);
+void SND_SetChannelPan(int chNo, int pan);
+BOOL SND_IsChannelActive(int chnIdx);
+void SND_SetMasterPan(int pan);
+u32 SND_GetChannelControl(int chnIdx);
+void SNDi_SetSurroundDecay(int decay);
+static int CalcSurroundDecay(int vol, int pan);
 #endif //SDK_ARM7
 
 #endif //NITRO_SND_CHANNEL_H_

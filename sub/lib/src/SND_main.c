@@ -2,20 +2,20 @@
 
 #define SND_MESSAGE_MAX            8
 
-extern OSThread sndThread;
-extern u8 sndStack[0x400];
-extern OSMessageQueue sndMesgQueue;
-extern OSMessage sndMesgBuffer[SND_MESSAGE_MAX];
-extern OSAlarm sndAlarm;
+OSThread sndThread;
+u8 sndStack[0x400];
+OSMessage sndMesgBuffer[SND_MESSAGE_MAX];
+OSMessageQueue sndMesgQueue;
+OSAlarm sndAlarm;
 
 void SndThread(void *);
 void SndAlarmCallback(void *);
 void SND_CreateThread(u32 threadPrio);
 
 void SND_Init(u32 threadPrio) {
-    extern BOOL SND_Init__sinit__initialized;
-    if (!SND_Init__sinit__initialized) {
-        SND_Init__sinit__initialized = TRUE;
+    static BOOL initialized;
+    if (!initialized) {
+        initialized = TRUE;
         SND_CommandInit();
         SND_CreateThread(threadPrio);
     }

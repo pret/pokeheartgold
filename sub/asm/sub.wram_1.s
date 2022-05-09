@@ -38,772 +38,39 @@
 	.public SndAlarmCallback
 	.public SND_SetupCapture
 	.public SND_IsCaptureActive
-
-	arm_func_start SND_UpdateExChannel
-SND_UpdateExChannel: ; 0x037FC154
-	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
-	sub sp, sp, #0x18
-	ldr r7, _037FC33C ; =SNDi_Work
-	mov sb, #0
-	mov r4, #2
-	mov r5, #1
-	mov r6, sb
-	mov sl, #0x54
-_037FC174:
-	mla r8, sb, sl, r7
-	ldrb r0, [r8, #3]
-	mov r0, r0, lsl #0x18
-	movs r0, r0, lsr #0x1b
-	beq _037FC2D4
-	tst r0, #2
-	beq _037FC19C
-	mov r0, sb
-	mov r1, r6
-	bl SND_StopChannel
-_037FC19C:
-	ldrb r0, [r8, #3]
-	mov r0, r0, lsl #0x18
-	mov r0, r0, lsr #0x1b
-	tst r0, #1
-	beq _037FC278
-	ldrb r0, [r8, #1]
-	cmp r0, #0
-	beq _037FC1D0
-	cmp r0, #1
-	beq _037FC228
-	cmp r0, #2
-	beq _037FC254
-	b _037FC2D4
-_037FC1D0:
-	ldrb r0, [r8, #0x39]
-	ldrh ip, [r8, #0x24]
-	cmp r0, #0
-	ldrh r0, [r8, #0x3e]
-	movne r3, r5
-	str r0, [sp]
-	ldr r2, [r8, #0x40]
-	and r1, ip, #0xff
-	str r2, [sp, #4]
-	str r1, [sp, #8]
-	mov r0, ip, asr #8
-	str r0, [sp, #0xc]
-	ldrh r1, [r8, #0x26]
-	moveq r3, r4
-	str r1, [sp, #0x10]
-	ldrb r1, [r8, #0x23]
-	mov r0, sb
-	str r1, [sp, #0x14]
-	ldr r1, [r8, #0x44]
-	ldrb r2, [r8, #0x38]
-	bl SND_SetupChannelPcm
-	b _037FC2D4
-_037FC228:
-	ldrh r3, [r8, #0x24]
-	ldrh r1, [r8, #0x26]
-	mov r0, sb
-	str r1, [sp]
-	ldrb r1, [r8, #0x23]
-	and r2, r3, #0xff
-	str r1, [sp, #4]
-	ldr r1, [r8, #0x44]
-	mov r3, r3, asr #8
-	bl SND_SetupChannelPsg
-	b _037FC2D4
-_037FC254:
-	ldrh r2, [r8, #0x24]
-	ldrb r1, [r8, #0x23]
-	mov r0, sb
-	str r1, [sp]
-	ldrh r3, [r8, #0x26]
-	and r1, r2, #0xff
-	mov r2, r2, asr #8
-	bl SND_SetupChannelNoise
-	b _037FC2D4
-_037FC278:
-	tst r0, #4
-	beq _037FC28C
-	ldrh r1, [r8, #0x26]
-	mov r0, sb
-	bl SND_SetChannelTimer
-_037FC28C:
-	ldrb r0, [r8, #3]
-	mov r0, r0, lsl #0x18
-	mov r0, r0, lsr #0x1b
-	tst r0, #8
-	beq _037FC2B4
-	ldrh r2, [r8, #0x24]
-	mov r0, sb
-	and r1, r2, #0xff
-	mov r2, r2, asr #8
-	bl SND_SetChannelVolume
-_037FC2B4:
-	ldrb r0, [r8, #3]
-	mov r0, r0, lsl #0x18
-	mov r0, r0, lsr #0x1b
-	tst r0, #0x10
-	beq _037FC2D4
-	ldrb r1, [r8, #0x23]
-	mov r0, sb
-	bl SND_SetChannelPan
-_037FC2D4:
-	add sb, sb, #1
-	cmp sb, #0x10
-	blt _037FC174
-	ldr r3, _037FC33C ; =SNDi_Work
-	mov r4, #0
-	mov r1, #0x54
-_037FC2EC:
-	mla r5, r4, r1, r3
-	ldrb r0, [r5, #3]
-	mov r0, r0, lsl #0x18
-	movs r0, r0, lsr #0x1b
-	beq _037FC324
-	tst r0, #1
-	movne r0, r4, lsl #4
-	addne r0, r0, #0x4000000
-	ldrneb r2, [r0, #0x403]
-	orrne r2, r2, #0x80
-	strneb r2, [r0, #0x403]
-	ldrb r0, [r5, #3]
-	bic r0, r0, #0xf8
-	strb r0, [r5, #3]
-_037FC324:
-	add r4, r4, #1
-	cmp r4, #0x10
-	blt _037FC2EC
-	add sp, sp, #0x18
-	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
-	bx lr
-	.align 2, 0
-_037FC33C: .word SNDi_Work
-	arm_func_end SND_UpdateExChannel
-
-	arm_func_start SND_ExChannelMain
-SND_ExChannelMain: ; 0x037FC340
-	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	mov fp, r0
-	mov r0, #0x8000
-	rsb r0, r0, #0
-	mov r6, #0
-	str r0, [sp]
-	mov r4, r6
-_037FC35C:
-	ldr r0, _037FC6E8 ; =SNDi_Work
-	mov r1, #0x54
-	mla r5, r6, r1, r0
-	ldrb r2, [r5, #3]
-	mov r7, #0
-	mov r0, r2, lsl #0x1f
-	mov r8, r7
-	mov sb, r7
-	movs r0, r0, lsr #0x1f
-	beq _037FC6D4
-	mov r0, r2, lsl #0x1e
-	movs r0, r0, lsr #0x1f
-	beq _037FC3C0
-	bic r1, r2, #0xf8
-	mov r0, r2, lsl #0x18
-	mov r0, r0, lsr #0x1b
-	orr r0, r0, #1
-	and r0, r0, #0xff
-	mov r0, r0, lsl #0x1b
-	orr r0, r1, r0, lsr #24
-	strb r0, [r5, #3]
-	and r0, r0, #0xff
-	bic r0, r0, #2
-	strb r0, [r5, #3]
-	b _037FC410
-_037FC3C0:
-	mov r0, r6
-	bl SND_IsChannelActive
-	cmp r0, #0
-	bne _037FC410
-	ldr r3, [r5, #0x48]
-	cmp r3, #0
-	moveq r0, r7
-	streqb r0, [r5, #0x22]
-	beq _037FC3F8
-	ldr r2, [r5, #0x4c]
-	mov r0, r5
-	mov r1, #1
-	mov lr, pc
-	bx r3
-_037FC3F8:
-	mov r0, #0
-	strh r0, [r5, #0x24]
-	ldrb r0, [r5, #3]
-	bic r0, r0, #1
-	strb r0, [r5, #3]
-	b _037FC6D4
-_037FC410:
-	ldrb r0, [r5, #9]
-	ldrb r1, [r5, #8]
-	mov r2, r0, lsl #1
-	ldr r0, _037FC6EC ; =SNDi_DecibelTable
-	ldrsh r2, [r0, r2]
-	ldrb r0, [r5, #5]
-	add r7, r7, r2
-	sub r0, r1, r0
-	add r8, r8, r0, lsl #6
-	mov r0, r5
-	mov r1, fp
-	bl SND_UpdateExChannelEnvelope
-	ldrsh r3, [r5, #0x32]
-	add r7, r7, r0
-	cmp r3, #0
-	moveq r0, #0
-	beq _037FC498
-	ldr r0, [r5, #0x14]
-	ldr r2, [r5, #0x18]
-	cmp r0, r2
-	movge r0, #0
-	bge _037FC498
-	sub r0, r2, r0
-	smull r0, r1, r3, r0
-	mov r3, r2, asr #0x1f
-	bl _ll_sdiv
-	cmp fp, #0
-	beq _037FC498
-	ldrb r1, [r5, #3]
-	mov r1, r1, lsl #0x1d
-	movs r1, r1, lsr #0x1f
-	ldrne r1, [r5, #0x14]
-	addne r1, r1, #1
-	strne r1, [r5, #0x14]
-_037FC498:
-	ldrsh r1, [r5, #0xc]
-	add r2, r8, r0
-	ldrsh r0, [r5, #6]
-	add r1, r7, r1
-	add r7, r1, r0
-	ldrsh r1, [r5, #0xe]
-	add r0, r5, #0x28
-	add r8, r2, r1
-	bl SND_GetLfoValue
-	mov r1, r0, asr #0x1f
-	cmp r1, #0
-	mov sl, r0
-	cmpeq r0, r4
-	beq _037FC524
-	ldrb r2, [r5, #0x28]
-	cmp r2, #0
-	beq _037FC510
-	cmp r2, #1
-	beq _037FC4F8
-	cmp r2, #2
-	moveq r1, r1, lsl #6
-	orreq r1, r1, r0, lsr #26
-	moveq sl, r0, lsl #6
-	b _037FC51C
-_037FC4F8:
-	mov r2, #0x3c
-	umull sl, r3, r0, r2
-	mov r0, #0x3c
-	mla r3, r1, r0, r3
-	mov r1, r3
-	b _037FC51C
-_037FC510:
-	mov r1, r1, lsl #6
-	orr r1, r1, r0, lsr #26
-	mov sl, r0, lsl #6
-_037FC51C:
-	mov sl, sl, lsr #0xe
-	orr sl, sl, r1, lsl #18
-_037FC524:
-	cmp fp, #0
-	beq _037FC534
-	add r0, r5, #0x28
-	bl SND_UpdateLfo
-_037FC534:
-	ldrb r0, [r5, #0x28]
-	cmp r0, #0
-	beq _037FC564
-	cmp r0, #1
-	beq _037FC554
-	cmp r0, #2
-	addeq sb, sb, sl
-	b _037FC568
-_037FC554:
-	ldr r0, [sp]
-	cmp r7, r0
-	addgt r7, r7, sl
-	b _037FC568
-_037FC564:
-	add r8, r8, sl
-_037FC568:
-	ldrsb r1, [r5, #0xa]
-	ldrb r0, [r5, #4]
-	add sb, sb, r1
-	cmp r0, #0x7f
-	mulne r0, sb, r0
-	addne r0, r0, #0x40
-	movne sb, r0, asr #7
-	ldrsb r1, [r5, #0xb]
-	ldrb r0, [r5, #2]
-	add sb, sb, r1
-	cmp r0, #3
-	bne _037FC5F4
-	ldr r0, _037FC6F0 ; =0xFFFFFD2D
-	cmp r7, r0
-	bgt _037FC5F4
-	ldrb r0, [r5, #3]
-	bic r0, r0, #0xf8
-	orr r0, r0, #0x10
-	strb r0, [r5, #3]
-	ldr r3, [r5, #0x48]
-	cmp r3, #0
-	moveq r0, #0
-	streqb r0, [r5, #0x22]
-	beq _037FC5DC
-	ldr r2, [r5, #0x4c]
-	mov r0, r5
-	mov r1, #1
-	mov lr, pc
-	bx r3
-_037FC5DC:
-	mov r0, #0
-	strh r0, [r5, #0x24]
-	ldrb r0, [r5, #3]
-	bic r0, r0, #1
-	strb r0, [r5, #3]
-	b _037FC6D4
-_037FC5F4:
-	mov r0, r7
-	bl SND_CalcChannelVolume
-	mov r7, r0
-	ldrh r0, [r5, #0x3c]
-	mov r1, r8
-	bl SND_CalcTimer
-	ldrb r1, [r5, #1]
-	cmp r1, #1
-	ldreq r1, _037FC6F4 ; =0x0000FFFC
-	andeq r0, r0, r1
-	moveq r0, r0, lsl #0x10
-	moveq r0, r0, lsr #0x10
-	adds sb, sb, #0x40
-	movmi sb, #0
-	bmi _037FC638
-	cmp sb, #0x7f
-	movgt sb, #0x7f
-_037FC638:
-	ldrh r1, [r5, #0x24]
-	cmp r7, r1
-	beq _037FC66C
-	strh r7, [r5, #0x24]
-	ldrb r1, [r5, #3]
-	bic r2, r1, #0xf8
-	mov r1, r1, lsl #0x18
-	mov r1, r1, lsr #0x1b
-	orr r1, r1, #8
-	and r1, r1, #0xff
-	mov r1, r1, lsl #0x1b
-	orr r1, r2, r1, lsr #24
-	strb r1, [r5, #3]
-_037FC66C:
-	ldrh r1, [r5, #0x26]
-	cmp r0, r1
-	beq _037FC6A0
-	strh r0, [r5, #0x26]
-	ldrb r0, [r5, #3]
-	bic r1, r0, #0xf8
-	mov r0, r0, lsl #0x18
-	mov r0, r0, lsr #0x1b
-	orr r0, r0, #4
-	and r0, r0, #0xff
-	mov r0, r0, lsl #0x1b
-	orr r0, r1, r0, lsr #24
-	strb r0, [r5, #3]
-_037FC6A0:
-	ldrb r0, [r5, #0x23]
-	cmp sb, r0
-	beq _037FC6D4
-	strb sb, [r5, #0x23]
-	ldrb r0, [r5, #3]
-	bic r1, r0, #0xf8
-	mov r0, r0, lsl #0x18
-	mov r0, r0, lsr #0x1b
-	orr r0, r0, #0x10
-	and r0, r0, #0xff
-	mov r0, r0, lsl #0x1b
-	orr r0, r1, r0, lsr #24
-	strb r0, [r5, #3]
-_037FC6D4:
-	add r6, r6, #1
-	cmp r6, #0x10
-	blt _037FC35C
-	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	bx lr
-	.align 2, 0
-_037FC6E8: .word SNDi_Work
-_037FC6EC: .word SNDi_DecibelTable
-_037FC6F0: .word 0xFFFFFD2D
-_037FC6F4: .word 0x0000FFFC
-	arm_func_end SND_ExChannelMain
-
-	arm_func_start SND_StartExChannelPcm
-SND_StartExChannelPcm: ; 0x037FC6F8
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	mov r0, #0
-	strb r0, [r4, #1]
-	mov lr, r2
-	add ip, r4, #0x38
-	ldmia r1, {r0, r1, r2}
-	stmia ip, {r0, r1, r2}
-	mov r0, r4
-	mov r1, r3
-	str lr, [r4, #0x44]
-	bl StartExChannel
-	mov r0, #1
-	ldmia sp!, {r4, lr}
-	bx lr
-	arm_func_end SND_StartExChannelPcm
-
-	arm_func_start SND_StartExChannelPsg
-SND_StartExChannelPsg: ; 0x037FC734
-	stmdb sp!, {r3, lr}
-	ldrb r3, [r0]
-	cmp r3, #8
-	movlo r0, #0
-	blo _037FC774
-	cmp r3, #0xd
-	movhi r0, #0
-	bhi _037FC774
-	mov r3, #1
-	strb r3, [r0, #1]
-	str r1, [r0, #0x44]
-	ldr r3, _037FC77C ; =0x00001F46
-	mov r1, r2
-	strh r3, [r0, #0x3c]
-	bl StartExChannel
-	mov r0, #1
-_037FC774:
-	ldmia sp!, {r3, lr}
-	bx lr
-	.align 2, 0
-_037FC77C: .word 0x00001F46
-	arm_func_end SND_StartExChannelPsg
-
-	arm_func_start SND_StartExChannelNoise
-SND_StartExChannelNoise: ; 0x037FC780
-	stmdb sp!, {r3, lr}
-	ldrb r2, [r0]
-	cmp r2, #0xe
-	movlo r0, #0
-	blo _037FC7B8
-	cmp r2, #0xf
-	movhi r0, #0
-	bhi _037FC7B8
-	ldr r2, _037FC7C0 ; =0x00001F46
-	mov r3, #2
-	strb r3, [r0, #1]
-	strh r2, [r0, #0x3c]
-	bl StartExChannel
-	mov r0, #1
-_037FC7B8:
-	ldmia sp!, {r3, lr}
-	bx lr
-	.align 2, 0
-_037FC7C0: .word 0x00001F46
-	arm_func_end SND_StartExChannelNoise
-
-	arm_func_start SND_UpdateExChannelEnvelope
-SND_UpdateExChannelEnvelope: ; 0x037FC7C4
-	cmp r1, #0
-	beq _037FC85C
-	ldrb r1, [r0, #2]
-	cmp r1, #3
-	addls pc, pc, r1, lsl #2
-	b _037FC85C
-_037FC7DC: ; jump table
-	b _037FC7EC ; case 0
-	b _037FC814 ; case 1
-	b _037FC85C ; case 2
-	b _037FC84C ; case 3
-_037FC7EC:
-	ldr r2, [r0, #0x10]
-	ldrb r1, [r0, #0x1c]
-	rsb r2, r2, #0
-	mul r1, r2, r1
-	mov r1, r1, asr #8
-	rsbs r1, r1, #0
-	str r1, [r0, #0x10]
-	moveq r1, #1
-	streqb r1, [r0, #2]
-	b _037FC85C
-_037FC814:
-	ldrb r2, [r0, #0x1d]
-	ldr r1, _037FC868 ; =SNDi_DecibelTable
-	mov r2, r2, lsl #1
-	ldrsh r3, [r1, r2]
-	ldr r2, [r0, #0x10]
-	ldrh r1, [r0, #0x1e]
-	mov ip, r3, lsl #7
-	sub r1, r2, r1
-	str r1, [r0, #0x10]
-	cmp r1, r3, lsl #7
-	strle ip, [r0, #0x10]
-	movle r1, #2
-	strleb r1, [r0, #2]
-	b _037FC85C
-_037FC84C:
-	ldr r2, [r0, #0x10]
-	ldrh r1, [r0, #0x20]
-	sub r1, r2, r1
-	str r1, [r0, #0x10]
-_037FC85C:
-	ldr r0, [r0, #0x10]
-	mov r0, r0, asr #7
-	bx lr
-	.align 2, 0
-_037FC868: .word SNDi_DecibelTable
-	arm_func_end SND_UpdateExChannelEnvelope
-
-	arm_func_start SND_SetExChannelAttack
-SND_SetExChannelAttack: ; 0x037FC86C
-	cmp r1, #0x6d
-	ldrge r2, _037FC888 ; =attack_table$3790
-	rsblt r1, r1, #0xff
-	rsbge r1, r1, #0x7f
-	ldrgeb r1, [r2, r1]
-	strb r1, [r0, #0x1c]
-	bx lr
-	.align 2, 0
-_037FC888: .word attack_table$3790
-	arm_func_end SND_SetExChannelAttack
-
-	arm_func_start SND_SetExChannelDecay
-SND_SetExChannelDecay: ; 0x037FC88C
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	mov r0, r1
-	bl CalcRelease
-	strh r0, [r4, #0x1e]
-	ldmia sp!, {r4, lr}
-	bx lr
-	arm_func_end SND_SetExChannelDecay
-
-	arm_func_start SND_SetExChannelSustain
-SND_SetExChannelSustain: ; 0x037FC8A8
-	strb r1, [r0, #0x1d]
-	bx lr
-	arm_func_end SND_SetExChannelSustain
-
-	arm_func_start SND_SetExChannelRelease
-SND_SetExChannelRelease: ; 0x037FC8B0
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	mov r0, r1
-	bl CalcRelease
-	strh r0, [r4, #0x20]
-	ldmia sp!, {r4, lr}
-	bx lr
-	arm_func_end SND_SetExChannelRelease
-
-	arm_func_start SND_ReleaseExChannel
-SND_ReleaseExChannel: ; 0x037FC8CC
-	mov r1, #3
-	strb r1, [r0, #2]
-	bx lr
-	arm_func_end SND_ReleaseExChannel
-
-	arm_func_start SND_IsExChannelActive
-SND_IsExChannelActive: ; 0x037FC8D8
-	ldrb r0, [r0, #3]
-	mov r0, r0, lsl #0x1f
-	mov r0, r0, lsr #0x1f
-	bx lr
-	arm_func_end SND_IsExChannelActive
-
-	arm_func_start SND_AllocExChannel
-SND_AllocExChannel: ; 0x037FC8E8
-	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r4, _037FCAA0 ; =sWeakLockChannel
-	mov r6, r1
-	ldr r1, [r4, #4]
-	mov r5, r3
-	mvn r1, r1
-	cmp r2, #0
-	and r0, r0, r1
-	ldreq r1, [r4]
-	mov r4, #0
-	mvneq r1, r1
-	andeq r0, r0, r1
-	ldr r3, _037FCAA4 ; =shift$4005
-	ldr r8, _037FCAA8 ; =channel_order$3829
-	mov sb, r4
-	mvn r1, #0
-	mov fp, #1
-_037FC92C:
-	ldrb ip, [r8, sb]
-	tst r0, fp, lsl ip
-	beq _037FC9AC
-	ldr r2, _037FCAAC ; =SNDi_Work
-	mov r7, #0x54
-	mla sl, ip, r7, r2
-	cmp r4, #0
-	moveq r4, sl
-	beq _037FC9AC
-	ldrb r7, [r4, #0x22]
-	ldrb r2, [sl, #0x22]
-	cmp r2, r7
-	bhi _037FC9AC
-	bne _037FC9A8
-	ldrh r2, [r4, #0x24]
-	ldrh r7, [sl, #0x24]
-	mov ip, r2, lsl #0x18
-	mov ip, ip, lsr #0x14
-	ldrb r2, [r3, r2, asr #8]
-	mov lr, r7, lsl #0x18
-	mov r2, ip, asr r2
-	mov ip, lr, lsr #0x14
-	ldrb r7, [r3, r7, asr #8]
-	cmp r2, ip, asr r7
-	beq _037FC99C
-	movlt r2, fp
-	movge r2, r1
-	b _037FC9A0
-_037FC99C:
-	mov r2, #0
-_037FC9A0:
-	cmp r2, #0
-	bge _037FC9AC
-_037FC9A8:
-	mov r4, sl
-_037FC9AC:
-	add sb, sb, #1
-	cmp sb, #0x10
-	blt _037FC92C
-	cmp r4, #0
-	moveq r0, #0
-	beq _037FCA98
-	ldrb r0, [r4, #0x22]
-	cmp r6, r0
-	movlt r0, #0
-	blt _037FCA98
-	ldr r3, [r4, #0x48]
-	cmp r3, #0
-	beq _037FC9F4
-	ldr r2, [r4, #0x4c]
-	mov r0, r4
-	mov r1, #0
-	mov lr, pc
-	bx r3
-_037FC9F4:
-	ldrb r0, [r4, #3]
-	mov r7, #0
-	bic r0, r0, #0xf8
-	orr r1, r0, #0x10
-	and r0, r1, #0xff
-	bic r0, r0, #1
-	strb r0, [r4, #3]
-	str r7, [r4, #0x50]
-	ldr r0, [sp, #0x28]
-	str r5, [r4, #0x48]
-	str r0, [r4, #0x4c]
-	str r7, [r4, #0x34]
-	strb r6, [r4, #0x22]
-	mov r3, #0x7f
-	strh r3, [r4, #0x24]
-	ldrb r1, [r4, #3]
-	mov r0, #0x3c
-	bic r2, r1, #2
-	and r1, r2, #0xff
-	orr r1, r1, #4
-	strb r1, [r4, #3]
-	strb r0, [r4, #8]
-	strb r0, [r4, #5]
-	strb r3, [r4, #9]
-	strb r7, [r4, #0xa]
-	strh r7, [r4, #0xc]
-	strh r7, [r4, #6]
-	strh r7, [r4, #0xe]
-	strb r7, [r4, #0xb]
-	strb r3, [r4, #4]
-	strh r7, [r4, #0x32]
-	str r7, [r4, #0x18]
-	str r7, [r4, #0x14]
-	ldr r1, _037FCAB0 ; =0x0000FFFF
-	strb r7, [r4, #0x1c]
-	strh r1, [r4, #0x1e]
-	strb r3, [r4, #0x1d]
-	add r0, r4, #0x28
-	strh r1, [r4, #0x20]
-	bl SND_InitLfoParam
-	mov r0, r4
-_037FCA98:
-	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	bx lr
-	.align 2, 0
-_037FCAA0: .word sWeakLockChannel
-_037FCAA4: .word shift$4005
-_037FCAA8: .word channel_order$3829
-_037FCAAC: .word SNDi_Work
-_037FCAB0: .word 0x0000FFFF
-	arm_func_end SND_AllocExChannel
-
-	arm_func_start SND_FreeExChannel
-SND_FreeExChannel: ; 0x037FCAB4
-	cmp r0, #0
-	movne r1, #0
-	strne r1, [r0, #0x48]
-	strne r1, [r0, #0x4c]
-	bx lr
-	arm_func_end SND_FreeExChannel
-
-	arm_func_start SND_StopUnlockedChannel
-SND_StopUnlockedChannel: ; 0x037FCAC8
-	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	mov sb, #0
-	ldr r7, _037FCB70 ; =SNDi_Work
-	ldr r4, _037FCB74 ; =sWeakLockChannel
-	mov sl, r0
-	mov r5, sb
-	mov r6, #1
-	mov fp, #0x54
-	b _037FCB58
-_037FCAEC:
-	tst sl, #1
-	beq _037FCB50
-	ldr r0, [r4, #4]
-	mla r8, sb, fp, r7
-	tst r0, r6, lsl sb
-	bne _037FCB50
-	ldr r3, [r8, #0x48]
-	cmp r3, #0
-	beq _037FCB24
-	ldr r2, [r8, #0x4c]
-	mov r0, r8
-	mov r1, #0
-	mov lr, pc
-	bx r3
-_037FCB24:
-	mov r0, sb
-	mov r1, #0
-	bl SND_StopChannel
-	strb r5, [r8, #0x22]
-	mov r0, r8
-	bl SND_FreeExChannel
-	ldrb r0, [r8, #3]
-	bic r1, r0, #0xf8
-	and r0, r1, #0xff
-	bic r0, r0, #1
-	strb r0, [r8, #3]
-_037FCB50:
-	add sb, sb, #1
-	mov sl, sl, lsr #1
-_037FCB58:
-	cmp sb, #0x10
-	bge _037FCB68
-	cmp sl, #0
-	bne _037FCAEC
-_037FCB68:
-	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	bx lr
-	.align 2, 0
-_037FCB70: .word SNDi_Work
-_037FCB74: .word sWeakLockChannel
-	arm_func_end SND_StopUnlockedChannel
+	.public SND_UpdateExChannel
+	.public SND_StartExChannelPcm
+	.public SND_StartExChannelPsg
+	.public SND_StartExChannelNoise
+	.public SND_SetExChannelAttack
+	.public SND_SetExChannelDecay
+	.public SND_SetExChannelSustain
+	.public SND_SetExChannelRelease
+	.public SND_ReleaseExChannel
+	.public SND_IsExChannelActive
+	.public SND_AllocExChannel
+	.public SND_FreeExChannel
+	.public SND_StopUnlockedChannel
+	.public sWeakLockChannel
+	.public PADi_XYButtonAlarm
+	.public sSurroundDecay
+	.public sOrgPan
+	.public sOrgVolume
+	.public SND_Init__sinit__initialized
+	.public sndMesgBuffer
+	.public sndMesgQueue
+	.public sndAlarm
+	.public sndThread
+	.public sndStack
+	.public sWeakLockChannel
+	.public sLockChannel
+	.public sMmlPrintEnable
+	.public seqCache
+	.public SNDi_SharedWork
+	.public SNDi_Work
+	.public sCommandMesgQueue
+	.public sCommandMesgBuffer
+	.public CARDi_EnableFlag
 
 	arm_func_start SND_LockChannel
 SND_LockChannel: ; 0x037FCB78
@@ -5553,6 +4820,8 @@ _038008A0: .word nextCount$3668
 
 	.balign 4, 0
 
+	.type SNDi_DecibelTable,@object
+	.public SNDi_DecibelTable
 SNDi_DecibelTable: ; 0x03806670
 	.byte 0x00, 0x80, 0x2E, 0xFD, 0x2F, 0xFD, 0x75, 0xFD, 0xA7, 0xFD, 0xCE, 0xFD, 0xEE, 0xFD, 0x09, 0xFE
 	.byte 0x20, 0xFE, 0x34, 0xFE, 0x46, 0xFE, 0x57, 0xFE, 0x66, 0xFE, 0x74, 0xFE, 0x81, 0xFE, 0x8D, 0xFE
@@ -5570,29 +4839,48 @@ SNDi_DecibelTable: ; 0x03806670
 	.byte 0xDD, 0xFF, 0xDF, 0xFF, 0xE1, 0xFF, 0xE2, 0xFF, 0xE4, 0xFF, 0xE5, 0xFF, 0xE7, 0xFF, 0xE9, 0xFF
 	.byte 0xEA, 0xFF, 0xEC, 0xFF, 0xED, 0xFF, 0xEF, 0xFF, 0xF0, 0xFF, 0xF2, 0xFF, 0xF3, 0xFF, 0xF5, 0xFF
 	.byte 0xF6, 0xFF, 0xF8, 0xFF, 0xF9, 0xFF, 0xFA, 0xFF, 0xFC, 0xFF, 0xFD, 0xFF, 0xFF, 0xFF, 0x00, 0x00
+	.size SNDi_DecibelTable,.-SNDi_DecibelTable
 
-shift$4005: ; 0x03806770
+	.type SND_AllocExChannel__sinit__shift,@object
+	.public SND_AllocExChannel__sinit__shift
+SND_AllocExChannel__sinit__shift: ; 0x03806770
 	.byte 0x00, 0x01, 0x02, 0x04
+	.size SND_AllocExChannel__sinit__shift,.-SND_AllocExChannel__sinit__shift
 
-channel_order$3829: ; 0x03806774
+	.type SND_AllocExChannel__sinit__channel_order,@object
+	.public SND_AllocExChannel__sinit__channel_order
+SND_AllocExChannel__sinit__channel_order: ; 0x03806774
 	.byte 0x04, 0x05, 0x06, 0x07, 0x02, 0x00, 0x03, 0x01, 0x08, 0x09, 0x0A, 0x0B
 	.byte 0x0E, 0x0C, 0x0F, 0x0D
+	.size SND_AllocExChannel__sinit__channel_order,.-SND_AllocExChannel__sinit__channel_order
 
-attack_table$3790: ; 0x03806784
+	.type SND_SetExChannelAttack__sinit__attack_table,@object
+	.public SND_SetExChannelAttack__sinit__attack_table
+SND_SetExChannelAttack__sinit__attack_table: ; 0x03806784
 	.byte 0x00, 0x01, 0x05, 0x0E, 0x1A, 0x26, 0x33, 0x3F, 0x49, 0x54, 0x5C, 0x64
 	.byte 0x6D, 0x74, 0x7B, 0x7F, 0x84, 0x89, 0x8F
+	.size SND_SetExChannelAttack__sinit__attack_table,.-SND_SetExChannelAttack__sinit__attack_table
 
 	.balign 4, 0
+	.type arg$3806,@object
+	.public arg$3806
 arg$3806: ; 0x03806798
 	.byte 0xC7
+	.size arg$3806,.-arg$3806
 
 	.balign 4, 0
+	.type arg$3983,@object
+	.public arg$3983
 arg$3983: ; 0x0380679C
 	.byte 0x05
+	.size arg$3983,.-arg$3983
 
 	.balign 4, 0
+	.type buf$3759,@object
+	.public buf$3759
 buf$3759: ; 0x038067A0
 	.byte 0x06
+	.size buf$3759,.-buf$3759
 
 	.section .data,4,1,1
 
@@ -5640,120 +4928,6 @@ isFirstCheck$3676: ; 0x03806B04
 	.size isFirstCheck$3676,.-isFirstCheck$3676
 
 	.bss
-
-	.type PADi_XYButtonAlarm,@object
-	.public PADi_XYButtonAlarm
-PADi_XYButtonAlarm: ; 0x03806E80
-	.space 0x2C
-	.size PADi_XYButtonAlarm,.-PADi_XYButtonAlarm
-
-	.type sSurroundDecay,@object
-	.public sSurroundDecay
-sSurroundDecay: ; 0x03806EAC
-	.space 0x4
-	.size sSurroundDecay,.-sSurroundDecay
-
-	.type sOrgPan,@object
-	.public sOrgPan
-sOrgPan: ; 0x03806EB0
-	.space 0x10
-	.size sOrgPan,.-sOrgPan
-
-	.type sOrgVolume,@object
-	.public sOrgVolume
-sOrgVolume: ; 0x03806EC0
-	.space 0x10
-	.size sOrgVolume,.-sOrgVolume
-
-	.type SND_Init__sinit__initialized,@object
-	.public SND_Init__sinit__initialized
-SND_Init__sinit__initialized: ; 0x03806ED0
-	.space 0x4
-	.size SND_Init__sinit__initialized,.-SND_Init__sinit__initialized
-
-	.type sndMesgBuffer,@object
-	.public sndMesgBuffer
-sndMesgBuffer: ; 0x03806ED4
-	.space 0x20
-	.size sndMesgBuffer,.-sndMesgBuffer
-
-	.type sndMesgQueue,@object
-	.public sndMesgQueue
-sndMesgQueue: ; 0x03806EF4
-	.space 0x20
-	.size sndMesgQueue,.-sndMesgQueue
-
-	.type sndAlarm,@object
-	.public sndAlarm
-sndAlarm: ; 0x03806F14
-	.space 0x2C
-	.size sndAlarm,.-sndAlarm
-
-	.type sndThread,@object
-	.public sndThread
-sndThread: ; 0x03806F40
-	.space 0xA4
-	.size sndThread,.-sndThread
-
-	.type sndStack,@object
-	.public sndStack
-sndStack: ; 0x03806FE4
-	.space 0x400
-	.size sndStack,.-sndStack
-
-	.type sWeakLockChannel,@object
-	.public sWeakLockChannel
-sWeakLockChannel: ; 0x038073E4
-	.space 0x4
-	.size sWeakLockChannel,.-sWeakLockChannel
-
-	.type sLockChannel,@object
-	.public sLockChannel
-sLockChannel: ; 0x038073E8
-	.space 0x4
-	.size sLockChannel,.-sLockChannel
-
-	.type sMmlPrintEnable,@object
-	.public sMmlPrintEnable
-sMmlPrintEnable: ; 0x038073EC
-	.space 0x4
-	.size sMmlPrintEnable,.-sMmlPrintEnable
-
-	.type seqCache,@object
-	.public seqCache
-seqCache: ; 0x038073F0
-	.space 0x18
-	.size seqCache,.-seqCache
-
-	.type SNDi_SharedWork,@object
-	.public SNDi_SharedWork
-SNDi_SharedWork: ; 0x03807408
-	.space 0x4
-	.size SNDi_SharedWork,.-SNDi_SharedWork
-
-	.type SNDi_Work,@object
-	.public SNDi_Work
-SNDi_Work: ; 0x0380740C
-	.space 0x1180
-	.size SNDi_Work,.-SNDi_Work
-
-	.type sCommandMesgQueue,@object
-	.public sCommandMesgQueue
-sCommandMesgQueue: ; 0x0380858C
-	.space 0x20
-	.size sCommandMesgQueue,.-sCommandMesgQueue
-
-	.type sCommandMesgBuffer,@object
-	.public sCommandMesgBuffer
-sCommandMesgBuffer: ; 0x038085AC
-	.space 0x20
-	.size sCommandMesgBuffer,.-sCommandMesgBuffer
-
-	.type CARDi_EnableFlag,@object
-	.public CARDi_EnableFlag
-CARDi_EnableFlag: ; 0x038085CC
-	.space 0x4
-	.size CARDi_EnableFlag,.-CARDi_EnableFlag
 
 	.balign 32, 0
 	.type cardi_common,@object
