@@ -29,6 +29,9 @@ int AllocTrack(void);
 void InitTrack(SNDTrack *track);
 void StartTrack(SNDTrack *track, const void *seq, u32 offset);
 static void InitPlayer(SNDPlayer *player, struct SNDBankData *bank);
+void ReleaseTrackChannelAll(SNDTrack *track, SNDPlayer *player, int release);
+void FreeTrackChannelAll(SNDTrack *track);
+void SetTrackMute(SNDTrack *track, SNDPlayer *player, int muteMode);
 
 void SND_SeqInit(void) {
     int i;
@@ -76,8 +79,7 @@ void SND_SeqMain(BOOL doPeriodicProc) {
     }
 }
 
-void SND_PrepareSeq(int player, const void *seq, u32 offset, struct SNDBankData *bankData)
-{
+void SND_PrepareSeq(int player, const void *seq, u32 offset, struct SNDBankData *bankData) {
     struct SNDPlayer *ply = &SNDi_Work.player[player];
 
     if (ply->active_flag) {
@@ -147,6 +149,143 @@ static u16 ReadShort(SNDTrack *track) {
     ret = ReadByte(track);
     ret |= ReadByte(track) << 8;
     return ret;
+}
+
+void SND_StartPreparedSeq(int playerNo) {
+    SNDi_Work.player[playerNo].prepared_flag = TRUE;
+}
+
+void SND_StartSeq(int playerNo, const void *seq, u32 offset, struct SNDBankData *bankData) {
+    SND_PrepareSeq(playerNo, seq, offset, bankData);
+    SND_StartPreparedSeq(playerNo);
+}
+
+void SND_StopSeq(int player) {
+    SNDPlayer *ply = &SNDi_Work.player[player];
+
+    if (ply->active_flag) {
+        FinishPlayer(ply);
+
+        if (SNDi_SharedWork) {
+            SNDi_SharedWork->playerStatus &= ~(1 << player);
+        }
+    }
+}
+
+void SND_PauseSeq(int player, BOOL flag) {
+    SNDPlayer *ply = &SNDi_Work.player[player];
+    int i;
+
+    ply->pause_flag = flag;
+
+    if (flag) {
+        for (i = 0; i < SND_TRACK_NUM_PER_PLAYER; i++) {
+            SNDTrack *trk = GetPlayerTrack(ply, i);
+
+            if (trk) {
+                ReleaseTrackChannelAll(trk, ply, 127);
+                FreeTrackChannelAll(trk);
+            }
+        }
+    }
+}
+
+void SND_SkipSeq(int player, u32 ticks) {
+    SNDPlayer *ply = &SNDi_Work.player[player];
+    int i;
+
+    for (i = 0; i < SND_TRACK_NUM_PER_PLAYER; i++) {
+        SNDTrack *trk = GetPlayerTrack(ply, i);
+
+        if (trk) {
+            ReleaseTrackChannelAll(trk, ply, 127);
+            FreeTrackChannelAll(trk);
+        }
+    }
+
+    SND_StopIntervalTimer();
+
+    for (i = 0; i < ticks; i++) {
+        if (PlayerSeqMain(ply, 0)) {
+            FinishPlayer(ply);
+            break;
+        }
+    }
+
+    SND_StartIntervalTimer();
+
+    if (SNDi_SharedWork) {
+        SNDi_SharedWork->player[ply->myNo].tickCounter += i;
+    }
+}
+
+void SND_SetTrackMute(int player, u32 trackMask, int muteMode) {
+    SNDPlayer *ply = &SNDi_Work.player[player];
+    int i;
+
+    for (i = 0; i < SND_TRACK_NUM_PER_PLAYER && trackMask != 0; i++, trackMask >>= 1) {
+        if (trackMask & 1) {
+            SNDTrack *trk = GetPlayerTrack(ply, i);
+
+            if (trk) {
+                SetTrackMute(trk, ply, muteMode);
+            }
+        }
+    }
+}
+
+void SND_SetTrackAllocatableChannel(int player, u32 trackMask, u32 channelMask) {
+    SNDPlayer *ply = &SNDi_Work.player[player];
+    int i;
+
+    for (i = 0; i < SND_TRACK_NUM_PER_PLAYER && trackMask != 0; i++, trackMask >>= 1) {
+        if (trackMask & 1) {
+            struct SNDTrack *trk = GetPlayerTrack(ply, i);
+
+            if (trk) {
+                trk->channel_mask = (u16)channelMask;
+                trk->channel_mask_flag = TRUE;
+            }
+        }
+    }
+}
+
+void SND_InvalidateSeq(const void *start, const void *end) {
+    SNDPlayer *ply;
+    SNDTrack *trk;
+    int i;
+    int j;
+
+    for (i = 0; i < SND_PLAYER_NUM; i++) {
+        ply = &SNDi_Work.player[i];
+
+        if (!ply->active_flag) {
+            continue;
+        }
+
+        for (j = 0; j < SND_TRACK_NUM_PER_PLAYER; j++) {
+            trk = GetPlayerTrack(ply, j);
+
+            if (!trk) {
+                continue;
+            }
+
+            if (start <= (const void *)trk->cur && (const void *)trk->cur <= end) {
+                FinishPlayer(ply);
+                break;
+            }
+        }
+    }
+}
+
+void SND_InvalidateBank(const void *start, const void *end) {
+    for (int i = 0; i < SND_PLAYER_NUM; i++) {
+        SNDPlayer *ply = &SNDi_Work.player[i];
+
+        if (ply->active_flag && start <= (const void *)ply->bank && (const void *)ply->bank <= end) {
+            FinishPlayer(ply);
+        }
+    }
 }
 
 static void PlayerUpdateChannel(SNDPlayer *player) {
