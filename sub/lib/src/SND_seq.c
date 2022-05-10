@@ -389,9 +389,7 @@ static int ReadVlen(SNDTrack *track) {
 
 static int ReadArg(SNDTrack *track, SNDPlayer *player, enum SNDSeqVal valueType) {
     int retval;
-    int lo;
-    int hi;
-    int ran;
+    int lo, hi, ran;
     s16 *var;
 
     // BUG: undefined behavior if invalid valueType is passed (uninitialized return value)
@@ -413,14 +411,13 @@ static int ReadArg(SNDTrack *track, SNDPlayer *player, enum SNDSeqVal valueType)
         }
         break;
     case SND_SEQ_VAL_RAN:
-        lo = Read16(track) << 16;
+        lo = (s16)Read16(track);
         hi = (s16)Read16(track);
         ran = SND_CalcRandom();
 
-        retval = hi - (lo >> 16);
-        retval += 1;
+        retval = hi - lo + 1;
         retval = (ran * retval) >> 16;
-        retval += lo >> 16;
+        retval += lo;
         break;
     }
 
@@ -769,10 +766,7 @@ static void TrackPlayNote(SNDTrack *track, SNDPlayer *player, int key, int veloc
     chn->sweep_counter = 0;
 }
 
-static int TrackSeqMain(
-    SNDTrack *track, SNDPlayer *player, int trackIdx, u32 playNotes) {
-    (void)trackIdx;
-
+static int TrackSeqMain(SNDTrack *track, SNDPlayer *player, int trackIdx, u32 playNotes) {
     SNDExChannel *chn;
     u8 cmd;
     enum SNDSeqVal valueType;
@@ -781,7 +775,8 @@ static int TrackSeqMain(
     s32 length;
     int key;
 
-    int par;
+    u8 par8;
+    int par32;
 
     for (chn = track->channel_list; chn; chn = chn->nextLink) {
         if (chn->length > 0) {
@@ -833,7 +828,7 @@ static int TrackSeqMain(
         }
 
         if ((cmd & 0x80) == 0) {
-            par = ReadByte(track);
+            par8 = ReadByte(track);
 
             length = ReadArg(track, player, specialValueType ? valueType : SND_SEQ_VAL_VLV);
             key = cmd + track->transpose;
@@ -849,7 +844,7 @@ static int TrackSeqMain(
             }
 
             if (!track->mute_flag && playNotes != 0) {
-                TrackPlayNote(track, player, key, par, (length > 0) ? length : -1);
+                TrackPlayNote(track, player, key, par8, (length > 0) ? length : -1);
             }
 
             track->porta_key = (u8)key;
@@ -866,7 +861,7 @@ static int TrackSeqMain(
 
         switch (cmd & 0xF0) {
         case 0x80:
-            par =
+            par32 =
                 ReadArg(track, player, specialValueType ? valueType : SND_SEQ_VAL_VLV);
             if (!runCmd) {
                 break;
@@ -874,11 +869,11 @@ static int TrackSeqMain(
 
             switch (cmd) {
             case 0x80:
-                track->wait = par;
+                track->wait = par32;
                 break;
             case 0x81:
-                if (par < 0x10000) {
-                    track->prgNo = (u16)par;
+                if (par32 < 0x10000) {
+                    track->prgNo = (u16)par32;
                 }
                 break;
             }
@@ -889,13 +884,13 @@ static int TrackSeqMain(
                 u32 off;
                 SNDTrack *newTrack;
 
-                par = ReadByte(track);
+                par8 = ReadByte(track);
                 off = Read24(track);
                 if (!runCmd) {
                     break;
                 }
 
-                newTrack = GetPlayerTrack(player, par);
+                newTrack = GetPlayerTrack(player, par8);
                 if (newTrack && newTrack != track) {
                     TrackStop(newTrack, player);
                     StartTrack(newTrack, track->base, off);
