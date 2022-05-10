@@ -24,6 +24,7 @@
 #include "use_item_on_mon.h"
 #include "window.h"
 #include "constants/sndseq.h"
+#include "msgdata/msg/msg_0040.h"
 
 #define WAIT_SE_SAVE_FRAMES   32
 #define SCREEN_FADEOUT_FRAMES 32
@@ -67,15 +68,15 @@ static const BGTEMPLATE sGameClearSaveBgTemplate = {
     .y          = 0,
     .bufferSize = 0x0800,
     .baseTile   = 0,
-    .size       = 1,
-    .colorMode  = 0,
-    .screenBase = 0,
-    .charBase   = 0,
-    .bgExtPltt  = 0,
+    .size       = GF_BG_SCR_SIZE_256x256,
+    .colorMode  = GX_BG_COLORMODE_16,
+    .screenBase = GX_BG_SCRBASE_0x0000,
+    .charBase   = GX_BG_CHARBASE_0x00000,
+    .bgExtPltt  = GX_BG_EXTPLTT_01,
     .priority   = 1,
-    .areaOver   = 0,
+    .areaOver   = GX_BG_AREAOVER_XLU,
     .dummy      = 0,
-    .mosaic     = 0,
+    .mosaic     = FALSE,
 };
 
 BOOL Task_GameClearSave(TaskManager *taskman);
@@ -298,18 +299,18 @@ static void GameClearSave_InitGraphics(FieldSystem *fsys, GameClearWork *env) {
     env->waitIconMgr = NULL;
     InitWindow(&env->window);
     GX_SetBanks(&sGameClearSaveBanksConfig);
-    reg_GX_POWCNT |= 0x8000;
+    GX_SetDispSelect(GX_DISP_SELECT_MAIN_SUB);
     SetBothScreensModesAndDisable(&sGameClearSaveBgModeSet);
-    BG_SetMaskColor(3, 0);
+    BG_SetMaskColor(3, RGB_BLACK);
     InitBgFromTemplate(env->bgConfig, 3, &sGameClearSaveBgTemplate, 0);
     BG_ClearCharDataRange(3, 32, 0, 32);
-    FillBgTilemapRect(env->bgConfig, 3, 0, 0, 0, 32, 32, 17);
+    FillBgTilemapRect(env->bgConfig, 3, RGB_BLACK, 0, 0, 32, 32, 17);
     BgCommitTilemapBufferToVram(env->bgConfig, 3);
 }
 
 static void GameClearSave_PrintSaving(FieldSystem *fsys, GameClearWork *env) {
     OPTIONS *options = Sav2_PlayerData_GetOptionsAddr(fsys->savedata);
-    env->windowText = ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, NARC_msg_msg_0040_bin, 15, 32);
+    env->windowText = ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, NARC_msg_msg_0040_bin, msg_0040_00015, 32);
     sub_0205B514(env->bgConfig, &env->window, 3);
     sub_0205B564(&env->window, options);
     env->printerId = sub_0205B5B4(&env->window, env->windowText, options, 1);
@@ -332,10 +333,10 @@ static void GameClearSave_PrintSaveStatus(FieldSystem *fsys, GameClearWork *env,
     if (writeStatus == 2) {
         MSGFMT *msgFmt = ScrStrBufs_new(4);
         BufferPlayersName(msgFmt, 0, Sav2_PlayerData_GetProfileAddr(fsys->savedata));
-        env->windowText = ReadMsgData_ExpandPlaceholders(msgFmt, msgData, 16, 4);
+        env->windowText = ReadMsgData_ExpandPlaceholders(msgFmt, msgData, msg_0040_00016, 4);
         ScrStrBufs_delete(msgFmt);
     } else {
-        env->windowText = NewString_ReadMsgData(msgData, 18);
+        env->windowText = NewString_ReadMsgData(msgData, msg_0040_00018);
     }
     DestroyMsgData(msgData);
     OPTIONS *options = Sav2_PlayerData_GetOptionsAddr(fsys->savedata);
