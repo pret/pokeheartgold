@@ -16,6 +16,12 @@
 #define SND_PLAYER_VARIABLE_NUM 16
 #define SND_GLOBAL_VARIABLE_NUM 16
 
+#define SND_SEQ_VAL_U8           0
+#define SND_SEQ_VAL_U16          1
+#define SND_SEQ_VAL_VLV          2
+#define SND_SEQ_VAL_RAN          3
+#define SND_SEQ_VAL_VAR          4
+
 typedef struct SNDPlayer {
     u8 active_flag:1;
     u8 prepared_flag:1;

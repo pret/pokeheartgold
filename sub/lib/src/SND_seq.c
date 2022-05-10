@@ -23,7 +23,7 @@ SNDTrack *GetPlayerTrack(SNDPlayer *player, int trkNo);
 void UpdateTrackChannel(SNDTrack *trk, SNDPlayer *player, BOOL doPeriodicUpdate);
 static u8 FetchByte(const u8 *addr);
 u8 ReadByte(SNDTrack *track);
-static u16 ReadShort(SNDTrack *track);
+static u16 Read16(SNDTrack *track);
 void InitCache(const u8 *addr);
 int AllocTrack(void);
 void InitTrack(SNDTrack *track);
@@ -110,7 +110,7 @@ void SND_PrepareSeq(int player, const void *seq, u32 offset, struct SNDBankData 
         int track;
         u16 trackMask;
 
-        for (trackMask = (u16)(ReadShort(trk) >> 1), track = 1; trackMask != 0;
+        for (trackMask = (u16)(Read16(trk) >> 1), track = 1; trackMask != 0;
              track++, trackMask >>= 1) {
             if (trackMask & 1) {
                 allocTrkIdx = AllocTrack();
@@ -142,13 +142,6 @@ u8 ReadByte(SNDTrack *track) {
     u8 retval = FetchByte(track->cur);
     track->cur++;
     return retval;
-}
-
-static u16 ReadShort(SNDTrack *track) {
-    int ret;
-    ret = ReadByte(track);
-    ret |= ReadByte(track) << 8;
-    return ret;
 }
 
 void SND_StartPreparedSeq(int playerNo) {
@@ -286,6 +279,83 @@ void SND_InvalidateBank(const void *start, const void *end) {
             FinishPlayer(ply);
         }
     }
+}
+
+void SNDi_SetPlayerParam(int player, u32 offset, u32 data, int size) {
+    struct SNDPlayer *ply = &SNDi_Work.player[player];
+
+    switch (size) {
+    case 1:
+        *(u8 *)((u8 *)ply + offset) = (u8)data;
+        break;
+    case 2:
+        *(u16 *)((u8 *)ply + offset) = (u16)data;
+        break;
+    case 4:
+        *(u32 *)((u8 *)ply + offset) = (u32)data;
+        break;
+    }
+}
+
+void SNDi_SetTrackParam(int player, u32 trackMask, u32 offset, u32 data, int size) {
+    struct SNDPlayer *ply = &SNDi_Work.player[player];
+
+    for (int i = 0; i < SND_TRACK_NUM_PER_PLAYER && trackMask != 0; i++, trackMask >>= 1) {
+        if (!(trackMask & 1)) {
+            continue;
+        }
+
+        SNDTrack *trk = GetPlayerTrack(ply, i);
+
+        if (!trk) {
+            continue;
+        }
+
+        switch (size)
+        {
+        case 1:
+            *(u8 *)((u8 *)trk + offset) = (u8)data;
+            break;
+        case 2:
+            *(u16 *)((u8 *)trk + offset) = (u16)data;
+            break;
+        case 4:
+            *(u32 *)((u8 *)trk + offset) = (u32)data;
+            break;
+        }
+    }
+}
+
+void InitCache(const u8 *addr) {
+    addr = (const u8 *)((u32)addr & ~3);
+    seqCache.begin = addr;
+    seqCache.end = seqCache.begin + 16;
+
+    const u32 *src = (const u32 *)addr;
+
+    seqCache.buf32[0] = src[0];
+    seqCache.buf32[1] = src[1];
+    seqCache.buf32[2] = src[2];
+    seqCache.buf32[3] = src[3];
+}
+
+static u8 Read8(SNDTrack *track) {
+    return ReadByte(track);
+}
+
+static u16 Read16(SNDTrack *track) {
+    int ret;
+    ret = ReadByte(track);
+    ret |= ReadByte(track) << 8;
+    return ret;
+}
+
+u32 Read24(SNDTrack *track) {
+    int ret;
+    ret = ReadByte(track);
+    ret |= ReadByte(track) << 8;
+    ret |= ReadByte(track) << 16;
+    return ret;
 }
 
 static void PlayerUpdateChannel(SNDPlayer *player) {
