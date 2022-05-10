@@ -35,8 +35,7 @@ typedef struct SNDPlayer {
     struct SNDBankData *bank;
 } SNDPlayer;
 
-typedef struct SNDTrack
-{
+typedef struct SNDTrack {
     u8 active_flag:1;
     u8 note_wait:1;
     u8 mute_flag:1;
