@@ -84,7 +84,7 @@ sub_02068FC8: ; 0x02068FC8
 	add r0, r6, #0
 	add r1, sp, #0x84
 	add r2, sp, #0x78
-	bl sub_02055640
+	bl FieldSys_GetGameClearTime
 	ldr r0, [r6, #0xc]
 	bl SavArray_Flags_get
 	bl CheckGameClearFlag

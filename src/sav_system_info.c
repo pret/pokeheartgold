@@ -80,7 +80,7 @@ void Sav2_SysInfo_RTC_init(SYSINFO_RTC* rtc_info) {
     GF_RTC_CopyDateTime(&rtc_info->date, &rtc_info->time);
     rtc_info->days_since_nitro_epoch = RTC_ConvertDateToDay(&rtc_info->date);
     rtc_info->seconds_since_nitro_epoch = RTC_ConvertDateTimeToSecond(&rtc_info->date, &rtc_info->time);
-    rtc_info->unk2C = 0;
+    rtc_info->seconds_at_game_clear = 0;
     rtc_info->unk34 = 0;
 }
 

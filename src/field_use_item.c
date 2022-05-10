@@ -497,7 +497,7 @@ static BOOL Task_PrintRegisteredKeyItemUseMessage(TaskManager *taskManager) {
         env->state++;
         break;
     case 1:
-        if (sub_0205B624(env->printerId) == TRUE) {
+        if (IsPrintFinished(env->printerId) == TRUE) {
             if ((gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B | PAD_KEY_UP | PAD_KEY_DOWN | PAD_KEY_LEFT | PAD_KEY_RIGHT)) || (gSystem.simulatedInputs & PAD_BUTTON_A)) {
                 fsys->unkD2_6 = FALSE;
                 ClearFrameAndWindow2(&env->window, 0);

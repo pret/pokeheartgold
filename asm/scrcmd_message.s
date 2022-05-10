@@ -390,7 +390,7 @@ ov01_021EF348: ; 0x021EF348
 	mov r1, #3
 	bl FieldSysGetAttrAddr
 	ldrb r0, [r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	pop {r3, pc}
 	thumb_func_end ov01_021EF348
 

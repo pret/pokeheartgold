@@ -37,7 +37,7 @@
 #include "unk_0206B910.h"
 #include "pokegear.h"
 #include "unk_02068FC8.h"
-#include "unk_0205298C.h"
+#include "game_clear.h"
 #include "save_arrays.h"
 #include "unk_02037C94.h"
 #include "choose_starter.h"
@@ -856,7 +856,7 @@ static BOOL sub_02041520(SCRIPTCONTEXT* ctx) {
 
     u16 direction = 0xFFFF;
 
-    if (sub_0205B624(*printer_id_ptr) == TRUE) {
+    if (IsPrintFinished(*printer_id_ptr) == TRUE) {
         *ret_ptr = 2;
         return TRUE;
     }
@@ -2002,8 +2002,8 @@ BOOL ScrCmd_162(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_HOF_Credits(SCRIPTCONTEXT *ctx) {
-    u16 kind = ScriptReadHalfword(ctx);
-    Special_EnterHallOfFame(ctx->fsys->taskman, kind);
+    u16 vsTrainerRed = ScriptReadHalfword(ctx);
+    Task_GameClear(ctx->fsys->taskman, vsTrainerRed);
     return TRUE;
 }
 

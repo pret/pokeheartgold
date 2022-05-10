@@ -119,14 +119,14 @@ void sub_02055624(FieldSystem* fsys, RTCDate* date, RTCTime* time) {
     RTC_ConvertSecondToDateTime(date, time, sysinfo->seconds_since_nitro_epoch);
 }
 
-void sub_02055640(FieldSystem* fsys, RTCDate* date, RTCTime* time) {
+void FieldSys_GetGameClearTime(FieldSystem* fsys, RTCDate* date, RTCTime* time) {
     SYSINFO_RTC* sysinfo = Sav2_SysInfo_RTC_get(fsys->savedata);
-    RTC_ConvertSecondToDateTime(date, time, sysinfo->unk2C);
+    RTC_ConvertSecondToDateTime(date, time, sysinfo->seconds_at_game_clear);
 }
 
-void sub_0205565C(FieldSystem* fsys) {
+void FieldSys_SetGameClearTime(FieldSystem* fsys) {
     SYSINFO_RTC* sysinfo = Sav2_SysInfo_RTC_get(fsys->savedata);
-    sysinfo->unk2C = GF_RTC_DateTimeToSec();
+    sysinfo->seconds_at_game_clear = GF_RTC_DateTimeToSec();
 }
 
 BOOL sub_02055670(FieldSystem* fsys) {
