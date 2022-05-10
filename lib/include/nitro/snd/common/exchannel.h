@@ -103,19 +103,26 @@ typedef struct SNDExChannel {
 void SND_ExChannelInit(void);
 void SND_UpdateExChannel(void);
 void SND_ExChannelMain(BOOL step);
-s32 SND_UpdateExChannelEnvelope(SNDExChannel *ch_p, BOOL doPeriodicProc);
-void SND_SetExChannelAttack(struct SNDExChannel *ch_p, int attack);
-void SND_SetExChannelDecay(struct SNDExChannel *ch_p, int decay);
-void SND_SetExChannelSustain(struct SNDExChannel *ch_p, int sustain);
-void SND_SetExChannelRelease(struct SNDExChannel *ch_p, int release);
-void SND_InitLfoParam(SNDLfoParam *lfo);
-s32 SND_GetLfoValue(SNDLfo *lfo);
+BOOL SND_StartExChannelPcm(SNDExChannel *chn, const SNDWaveParam *wave, const void *data, s32 length);
+BOOL SND_StartExChannelPsg(SNDExChannel *chn, s32 duty, s32 length);
+BOOL SND_StartExChannelNoise(SNDExChannel *chn, s32 length);
+s32 SND_UpdateExChannelEnvelope(SNDExChannel *chn, BOOL step);
+void SND_SetExChannelAttack(SNDExChannel *ch_p, int attack);
+void SND_SetExChannelDecay(SNDExChannel *ch_p, int decay);
+void SND_SetExChannelSustain(SNDExChannel *ch_p, int sustain);
+void SND_SetExChannelRelease(SNDExChannel *ch_p, int release);
+void SND_ReleaseExChannel(SNDExChannel *chn);
+BOOL SND_IsExChannelActive(SNDExChannel *chn);
+SNDExChannel *SND_AllocExChannel(u32 channelMask, int priority, u32 flags, SNDExChannelCallback callback, void *callbackUserData);
+void SND_FreeExChannel(SNDExChannel *chn);
+void SND_StopUnlockedChannel(u32 channelMask, u32 flags);
+void SND_LockChannel(u32 channelMask, u32 weak);
+void SND_UnlockChannel(u32 channelMask, u32 weak);
+u32 SND_GetLockedChannel(u32 weak);
+void SND_InvalidateWave(const void *start, const void *end);
+void SND_InitLfoParam(SNDLfoParam *lfoParam);
 void SND_StartLfo(SNDLfo *lfo);
-void SND_UpdateLfo(SNDLfo *lfo);
-void SND_LockChannel(u32 chBitMask, u32 flags);
-void SND_UnlockChannel(u32 chBitMask, u32 flags);
-void SND_StopUnlockedChannel(u32 chBitMask, u32 flags);
-u32 SND_GetLockedChannel(u32 flags);
+s32 SND_GetLfoValue(SNDLfo *lfo);
 #endif //SDK_ARM7
 
 #endif //NITRO_SND_EXCHANNEL_H_
