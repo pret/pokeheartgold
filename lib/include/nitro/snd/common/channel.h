@@ -54,6 +54,8 @@ typedef enum {
 } SNDChannelDataShift;
 
 #ifdef SDK_ARM7
+#define SND_CHANNEL_REG_OFFSET( ch ) ( (ch) << 4 )
+
 void SND_SetupChannelPcm(int chNo, const void *data, SNDWaveFormat format, SNDChannelLoop loop, int loopStart, int dataLen, int volume, SNDChannelDataShift shift, int timer, int pan);
 void SND_SetupChannelPsg(int chNo, SNDDuty duty, int volume, SNDChannelDataShift shift, int timer, int pan);
 void SND_SetupChannelNoise(int chNo, int volume, SNDChannelDataShift shift, int timer, int pan);
@@ -66,6 +68,10 @@ void SND_SetMasterPan(int pan);
 u32 SND_GetChannelControl(int chnIdx);
 void SNDi_SetSurroundDecay(int decay);
 static int CalcSurroundDecay(int vol, int pan);
+
+static inline void SND_StartChannel(int chNo) {
+    *((REGType8v *)(REG_SOUND0CNT_8_ADDR + SND_CHANNEL_REG_OFFSET(chNo))) |= REG_SND_SOUND0CNT_8_E_MASK;
+}
 #endif //SDK_ARM7
 
 #endif //NITRO_SND_CHANNEL_H_

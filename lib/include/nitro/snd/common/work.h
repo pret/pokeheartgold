@@ -51,5 +51,7 @@ static inline SNDWork *SND_GetWork(void) {
 }
 
 void SND_UpdateSharedWork(void);
+void SND_SetPlayerLocalVariable(int playerNo, int varNo, s16 var);
+void SND_SetPlayerGlobalVariable(int varNo, s16 var);
 
 #endif //NITRO_SND_WORK_H_

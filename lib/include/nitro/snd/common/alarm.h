@@ -19,5 +19,8 @@ typedef struct SNDAlarm {
 } SNDAlarm;
 
 void SND_AlarmInit(void);
+void SND_SetupAlarm(int alarmNo, OSTick tick, OSTick period, int id);
+void SND_StartAlarm(int alarmNo);
+void SND_StopAlarm(int alarmNo);
 
 #endif //NITRO_SND_COMMON_ALARM_H_

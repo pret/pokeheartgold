@@ -31,17 +31,17 @@ void SND_EndSleep(void) {
     reg_SND_SOUNDCNT_8 |= REG_SND_SOUNDCNT_8_E_MASK;
 }
 
-void SND_SetMasterVolume(u8 volume) {
+void SND_SetMasterVolume(int volume) {
     reg_SND_SOUNDCNT_VOL = volume;
 }
 
-void SND_SetOutputSelector(u8 lout, u8 rout, u8 mix1, u8 mix3) {
+void SND_SetOutputSelector(SNDOutput left, SNDOutput right, SNDChannelOut channel1, SNDChannelOut channel3) {
     BOOL isEnabled = SND_IsEnabled();
     reg_SND_SOUNDCNT_8 = REG_SND_SOUNDCNT_8_FIELD(
         isEnabled,
-        mix3,
-        mix1,
-        rout,
-        lout
+        channel3,
+        channel1,
+        right,
+        left
     );
 }

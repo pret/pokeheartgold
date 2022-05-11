@@ -16,6 +16,13 @@
 #define SND_PLAYER_VARIABLE_NUM 16
 #define SND_GLOBAL_VARIABLE_NUM 16
 
+typedef enum {
+    SND_SEQ_MUTE_OFF,
+    SND_SEQ_MUTE_NO_STOP,
+    SND_SEQ_MUTE_RELEASE,
+    SND_SEQ_MUTE_STOP
+} SNDSeqMute;
+
 typedef struct SNDPlayer {
     u8 active_flag:1;
     u8 prepared_flag:1;
@@ -76,5 +83,17 @@ typedef struct SNDTrack {
 
 void SND_SeqInit(void);
 void SND_SeqMain(BOOL doPeriodicProc);
+void SND_PrepareSeq(int player, const void *seq, u32 offset, struct SNDBankData *bankData);
+void SND_StartPreparedSeq(int player);
+void SND_StartSeq(int player, const void *seq, u32 offset, struct SNDBankData *bankData);
+void SND_StopSeq(int player);
+void SND_PauseSeq(int player, BOOL flag);
+void SND_SkipSeq(int player, u32 ticks);
+void SND_SetTrackMute(int player, u32 trackMask, int muteMode);
+void SND_SetTrackAllocatableChannel(int player, u32 trackMask, u32 channel_mask);
+void SND_InvalidateSeq(const void *start, const void *end);
+void SND_InvalidateBank(const void *start, const void *end);
+void SNDi_SetPlayerParam(int player, u32 offset, u32 data, int size);
+void SNDi_SetTrackParam(int player, u32 trackMask, u32 offset, u32 data, int size);
 
 #endif //NITRO_SND_COMMON_SEQ_H_

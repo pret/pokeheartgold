@@ -91,6 +91,12 @@
 #define REG_SOUNDCNT_VOL_ADDR                              (HW_REG_BASE + REG_SOUNDCNT_VOL_OFFSET)
 #define reg_SND_SOUNDCNT_VOL                               (*( REGType8v *) REG_SOUNDCNT_VOL_ADDR)
 
+/* SNDCAPCNT */
+
+#define REG_SNDCAPCNT_OFFSET                               0x508
+#define REG_SNDCAPCNT_ADDR                                 (HW_REG_BASE + REG_SNDCAPCNT_OFFSET)
+#define reg_SND_SNDCAPCNT                                  (*( REGType16v *) REG_SNDCAPCNT_ADDR)
+
 /* SNDCAP0CNT */
 
 #define REG_SNDCAP0CNT_OFFSET                              0x508
@@ -439,6 +445,33 @@
     ((u32)(lout) << REG_SND_SOUNDCNT_8_LOUT_SHIFT))
 #endif
 
+/* SOUND0CNT_8 */
+
+#define REG_SND_SOUND0CNT_8_E_SHIFT                        7
+#define REG_SND_SOUND0CNT_8_E_SIZE                         1
+#define REG_SND_SOUND0CNT_8_E_MASK                         0x80
+
+#define REG_SND_SOUND0CNT_8_FORMAT_SHIFT                   5
+#define REG_SND_SOUND0CNT_8_FORMAT_SIZE                    2
+#define REG_SND_SOUND0CNT_8_FORMAT_MASK                    0x60
+
+#define REG_SND_SOUND0CNT_8_REPEAT_SHIFT                   3
+#define REG_SND_SOUND0CNT_8_REPEAT_SIZE                    2
+#define REG_SND_SOUND0CNT_8_REPEAT_MASK                    0x18
+
+#define REG_SND_SOUND0CNT_8_DUTY_SHIFT                     0
+#define REG_SND_SOUND0CNT_8_DUTY_SIZE                      3
+#define REG_SND_SOUND0CNT_8_DUTY_MASK                      0x07
+
+#ifndef SDK_ASM
+#define REG_SND_SOUND0CNT_8_FIELD( e, format, repeat, duty ) \
+    (u8)( \
+    ((u32)(e) << REG_SND_SOUND0CNT_8_E_SHIFT) | \
+    ((u32)(format) << REG_SND_SOUND0CNT_8_FORMAT_SHIFT) | \
+    ((u32)(repeat) << REG_SND_SOUND0CNT_8_REPEAT_SHIFT) | \
+    ((u32)(duty) << REG_SND_SOUND0CNT_8_DUTY_SHIFT))
+#endif
+
 /* SNDCAP0CNT */
 
 #define REG_SND_SNDCAP0CNT_E_SHIFT                         7
@@ -469,6 +502,63 @@
     ((u32)(repeat) << REG_SND_SNDCAP0CNT_REPEAT_SHIFT) | \
     ((u32)(in) << REG_SND_SNDCAP0CNT_IN_SHIFT) | \
     ((u32)(out) << REG_SND_SNDCAP0CNT_OUT_SHIFT))
+#endif
+
+/* SNDCAPCNT */
+
+#define REG_SND_SNDCAPCNT_CAP1_E_SHIFT                     15
+#define REG_SND_SNDCAPCNT_CAP1_E_SIZE                      1
+#define REG_SND_SNDCAPCNT_CAP1_E_MASK                      0x8000
+
+#define REG_SND_SNDCAPCNT_CAP1_FORMAT_SHIFT                11
+#define REG_SND_SNDCAPCNT_CAP1_FORMAT_SIZE                 1
+#define REG_SND_SNDCAPCNT_CAP1_FORMAT_MASK                 0x0800
+
+#define REG_SND_SNDCAPCNT_CAP1_REPEAT_SHIFT                10
+#define REG_SND_SNDCAPCNT_CAP1_REPEAT_SIZE                 1
+#define REG_SND_SNDCAPCNT_CAP1_REPEAT_MASK                 0x0400
+
+#define REG_SND_SNDCAPCNT_CAP1_IN_SHIFT                    9
+#define REG_SND_SNDCAPCNT_CAP1_IN_SIZE                     1
+#define REG_SND_SNDCAPCNT_CAP1_IN_MASK                     0x0200
+
+#define REG_SND_SNDCAPCNT_CAP1_OUT_SHIFT                   8
+#define REG_SND_SNDCAPCNT_CAP1_OUT_SIZE                    1
+#define REG_SND_SNDCAPCNT_CAP1_OUT_MASK                    0x0100
+
+#define REG_SND_SNDCAPCNT_CAP0_E_SHIFT                     7
+#define REG_SND_SNDCAPCNT_CAP0_E_SIZE                      1
+#define REG_SND_SNDCAPCNT_CAP0_E_MASK                      0x0080
+
+#define REG_SND_SNDCAPCNT_CAP0_FORMAT_SHIFT                3
+#define REG_SND_SNDCAPCNT_CAP0_FORMAT_SIZE                 1
+#define REG_SND_SNDCAPCNT_CAP0_FORMAT_MASK                 0x0008
+
+#define REG_SND_SNDCAPCNT_CAP0_REPEAT_SHIFT                2
+#define REG_SND_SNDCAPCNT_CAP0_REPEAT_SIZE                 1
+#define REG_SND_SNDCAPCNT_CAP0_REPEAT_MASK                 0x0004
+
+#define REG_SND_SNDCAPCNT_CAP0_IN_SHIFT                    1
+#define REG_SND_SNDCAPCNT_CAP0_IN_SIZE                     1
+#define REG_SND_SNDCAPCNT_CAP0_IN_MASK                     0x0002
+
+#define REG_SND_SNDCAPCNT_CAP0_OUT_SHIFT                   0
+#define REG_SND_SNDCAPCNT_CAP0_OUT_SIZE                    1
+#define REG_SND_SNDCAPCNT_CAP0_OUT_MASK                    0x0001
+
+#ifndef SDK_ASM
+#define REG_SND_SNDCAPCNT_FIELD( cap1_e, cap1_format, cap1_repeat, cap1_in, cap1_out, cap0_e, cap0_format, cap0_repeat, cap0_in, cap0_out ) \
+    (u16)( \
+    ((u32)(cap1_e) << REG_SND_SNDCAPCNT_CAP1_E_SHIFT) | \
+    ((u32)(cap1_format) << REG_SND_SNDCAPCNT_CAP1_FORMAT_SHIFT) | \
+    ((u32)(cap1_repeat) << REG_SND_SNDCAPCNT_CAP1_REPEAT_SHIFT) | \
+    ((u32)(cap1_in) << REG_SND_SNDCAPCNT_CAP1_IN_SHIFT) | \
+    ((u32)(cap1_out) << REG_SND_SNDCAPCNT_CAP1_OUT_SHIFT) | \
+    ((u32)(cap0_e) << REG_SND_SNDCAPCNT_CAP0_E_SHIFT) | \
+    ((u32)(cap0_format) << REG_SND_SNDCAPCNT_CAP0_FORMAT_SHIFT) | \
+    ((u32)(cap0_repeat) << REG_SND_SNDCAPCNT_CAP0_REPEAT_SHIFT) | \
+    ((u32)(cap0_in) << REG_SND_SNDCAPCNT_CAP0_IN_SHIFT) | \
+    ((u32)(cap0_out) << REG_SND_SNDCAPCNT_CAP0_OUT_SHIFT))
 #endif
 
 #endif //NITRO_HW_ARM7_IO_REG_H_
