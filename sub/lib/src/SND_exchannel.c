@@ -267,11 +267,14 @@ s32 SND_UpdateExChannelEnvelope(SNDExChannel *chn, BOOL step) {
 }
 
 void SND_SetExChannelAttack(SNDExChannel *ch_p, int attack) {
-    extern const u8 SND_SetExChannelAttack__sinit__attack_table[];
+    static const u8 attack_table[] = {
+        0, 1, 5, 14, 26, 38, 51, 63,
+        73, 84, 92, 100, 109, 116, 123, 127, 132, 137, 143
+    };
     if (attack < 109) {
         ch_p->attack = (u8)(255 - attack);
     } else {
-        ch_p->attack = SND_SetExChannelAttack__sinit__attack_table[127 - attack];
+        ch_p->attack = attack_table[127 - attack];
     }
 }
 
@@ -300,7 +303,12 @@ SNDExChannel *SND_AllocExChannel(u32 channelMask, int priority, u32 flags, SNDEx
     int i;
     SNDExChannel *chn;
     u8 channelCandidate;
-    extern u8 SND_AllocExChannel__sinit__channel_order[];
+    static const u8 channel_order[] = {
+        4, 5, 6, 7,
+        2, 0, 3, 1,
+        8, 9, 10, 11,
+        14, 12, 15, 13,
+    };
 
     channelMask &= ~sLockChannel;
     if (flags == 0) {
@@ -310,7 +318,7 @@ SNDExChannel *SND_AllocExChannel(u32 channelMask, int priority, u32 flags, SNDEx
     chnPrev = NULL;
 
     for (i = 0; i < SND_CHANNEL_NUM; i++) {
-        channelCandidate = SND_AllocExChannel__sinit__channel_order[i];
+        channelCandidate = channel_order[i];
 
         if (channelMask & (1 << channelCandidate)) {
             chn = &SNDi_Work.channel[channelCandidate];
@@ -538,15 +546,17 @@ static void ExChannelSetup(SNDExChannel *chn, SNDExChannelCallback callback, voi
 }
 
 static int ExChannelVolumeCmp(SNDExChannel *chn_a, SNDExChannel *chn_b) {
-    extern const u8 SND_AllocExChannel__sinit__shift[];
+    static const u8 shift[] = {
+        0, 1, 2, 4
+    };
     int vol_a = chn_a->volume & 0xFF;
     int vol_b = chn_b->volume & 0xFF;
 
     vol_a <<= 4;
     vol_b <<= 4;
 
-    vol_a >>= SND_AllocExChannel__sinit__shift[chn_a->volume >> 8];
-    vol_b >>= SND_AllocExChannel__sinit__shift[chn_b->volume >> 8];
+    vol_a >>= shift[chn_a->volume >> 8];
+    vol_b >>= shift[chn_b->volume >> 8];
 
     if (vol_a != vol_b) {
         if (vol_a < vol_b) {

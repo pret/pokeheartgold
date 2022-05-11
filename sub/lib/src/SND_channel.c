@@ -1,6 +1,6 @@
 #include <nitro.h>
 
-extern int sMasterPan; // = -1;
+static int sMasterPan = -1;
 static u8 sOrgVolume[SND_CHANNEL_NUM];
 static u8 sOrgPan[SND_CHANNEL_NUM];
 static int sSurroundDecay;
