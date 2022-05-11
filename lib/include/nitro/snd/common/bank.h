@@ -66,6 +66,17 @@ typedef struct SNDInstData {
     struct SNDInstParam param;
 } SNDInstData;
 
+typedef struct SNDKeySplit {
+    u8 key[SND_INST_KEYSPLIT_MAX];
+    struct SNDInstData instOffset[0];
+} SNDKeySplit;
+
+typedef struct SNDDrumSet {
+    u8 min;
+    u8 max;
+    struct SNDInstData instOffset[0];
+} SNDDrumSet;
+
 BOOL SND_ReadInstData(const struct SNDBankData *bank, int prgNo, int key,
                          struct SNDInstData *inst);
 
