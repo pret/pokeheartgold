@@ -103,16 +103,6 @@
     .public SND_StopAlarm
     .public SND_SetupAlarm
 
-	; FS
-
-	arm_func_start FS_Init
-FS_Init: ; 0x037FF5B0
-	ldr ip, _037FF5B8 ; =CARD_Init
-	bx ip
-	.align 2, 0
-_037FF5B8: .word CARD_Init
-	arm_func_end FS_Init
-
 	; CARD
 
 	arm_func_start CARDi_InitCommon
