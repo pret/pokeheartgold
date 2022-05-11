@@ -48,6 +48,7 @@ Autoload WRAM
 	Object lib/src/SND_seq.o
 	Object lib/src/SND_bank.o
 	Object lib/src/SND_work.o
+	Object lib/src/SND_alarm.o
 	Object lib/src/SND_command.o
 	Object lib/src/CARD_common.o
 	Object asm/sub.wram_1.o
