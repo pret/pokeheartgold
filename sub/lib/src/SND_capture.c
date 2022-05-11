@@ -5,14 +5,13 @@ enum SNDLoop {
     SND_CAP_ONESHOT = 1
 };
 
-void SND_SetupCapture(
-    int idx, int format, void *captureData, int size, BOOL loop, int capCtrlSrc, int capCtrlDst) {
+void SND_SetupCapture(int idx, int format, void *captureData, int size, BOOL loop, int capCtrlSrc, int capCtrlDst) {
     int off = idx * 8;
 
     reg_SNDCAPxCNT(idx) = REG_SND_SNDCAP0CNT_FIELD(
         FALSE,
         format,
-        loop ? SND_CAP_LOOP : SND_CAP_ONESHOT,
+        loop ? SND_CAPTURE_REPEAT_YES : SND_CAPTURE_REPEAT_NO,
         capCtrlSrc,
         capCtrlDst
     );

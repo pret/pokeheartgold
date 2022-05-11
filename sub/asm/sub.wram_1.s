@@ -96,76 +96,9 @@
     .public InitCache
     .public Read24
     .public SND_GetWaveDataAddress
-
-	arm_func_start SND_SetPlayerLocalVariable
-SND_SetPlayerLocalVariable: ; 0x037FEBE8
-	ldr ip, _037FEC04 ; =SNDi_SharedWork
-	mov r3, #0x24
-	ldr ip, [ip]
-	mla r3, r0, r3, ip
-	add r0, r3, r1, lsl #1
-	strh r2, [r0, #0x20]
-	bx lr
-	.align 2, 0
-_037FEC04: .word SNDi_SharedWork
-	arm_func_end SND_SetPlayerLocalVariable
-
-	arm_func_start SND_SetPlayerGlobalVariable
-SND_SetPlayerGlobalVariable: ; 0x037FEC08
-	ldr r2, _037FEC20 ; =SNDi_SharedWork
-	ldr r2, [r2]
-	add r0, r2, r0, lsl #1
-	add r0, r0, #0x200
-	strh r1, [r0, #0x60]
-	bx lr
-	.align 2, 0
-_037FEC20: .word SNDi_SharedWork
-	arm_func_end SND_SetPlayerGlobalVariable
-
-	arm_func_start SND_UpdateSharedWork
-SND_UpdateSharedWork: ; 0x037FEC24
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r0, _037FECB8 ; =SNDi_SharedWork
-	mov r4, #0
-	ldr r0, [r0]
-	mov r5, r4
-	cmp r0, #0
-	beq _037FECB0
-	mov r7, r4
-	mov r6, #1
-_037FEC48:
-	mov r0, r7
-	bl SND_IsChannelActive
-	cmp r0, #0
-	orrne r0, r4, r6, lsl r7
-	movne r0, r0, lsl #0x10
-	add r7, r7, #1
-	movne r4, r0, lsr #0x10
-	cmp r7, #0x10
-	blt _037FEC48
-	mov r0, #0
-	bl SND_IsCaptureActive
-	cmp r0, #0
-	orrne r0, r5, #1
-	movne r0, r0, lsl #0x10
-	movne r5, r0, lsr #0x10
-	mov r0, #1
-	bl SND_IsCaptureActive
-	cmp r0, #0
-	orrne r0, r5, #2
-	movne r0, r0, lsl #0x10
-	movne r5, r0, lsr #0x10
-	ldr r0, _037FECB8 ; =SNDi_SharedWork
-	ldr r1, [r0]
-	strh r4, [r1, #8]
-	ldr r0, [r0]
-	strh r5, [r0, #0xa]
-_037FECB0:
-	ldmia sp!, {r3, r4, r5, r6, r7, lr}
-	bx lr
-	.align 2, 0
-_037FECB8: .word SNDi_SharedWork
-	arm_func_end SND_UpdateSharedWork
+    .public SND_SetPlayerLocalVariable
+    .public SND_SetPlayerGlobalVariable
+    .public SND_UpdateSharedWork
 
 	arm_func_start SND_AlarmInit
 SND_AlarmInit: ; 0x037FECBC
