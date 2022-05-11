@@ -1,8 +1,5 @@
 #include <nitro.h>
 
-extern void SVC_SetSoundBias(int mask);
-extern void SVC_ResetSoundBias(int mask);
-
 void SND_Enable(void) {
     reg_SND_SOUNDCNT_8 |= REG_SND_SOUNDCNT_8_E_MASK;
 }

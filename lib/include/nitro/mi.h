@@ -5,6 +5,7 @@
 #include <nitro/mi/exMemory.h>
 #include <nitro/mi/swap.h>
 #include <nitro/mi/dma.h>
+#include <nitro/mi/stream.h>
 #include <nitro/mi/uncompress.h>
 
 void MI_Init(void);

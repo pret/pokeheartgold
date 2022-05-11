@@ -1,8 +1,5 @@
 #include <nitro.h>
 
-extern u16 SVC_GetPitchTable(int idx);
-extern u16 SVC_GetVolumeTable(int idx);
-
 static const s8 SinTable[] = {
     0,6,12,19,25,31,37,43,
     49,54,60,65,71,76,81,85,
