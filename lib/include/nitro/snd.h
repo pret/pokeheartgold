@@ -3,6 +3,7 @@
 
 #include <nitro/snd/common/global.h>
 #include <nitro/snd/common/data.h>
+#include <nitro/snd/common/mml.h>
 #include <nitro/snd/common/main.h>
 #include <nitro/snd/common/channel.h>
 #include <nitro/snd/common/exchannel.h>

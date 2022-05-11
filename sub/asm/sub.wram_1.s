@@ -1086,6 +1086,8 @@ _037FF59C:
 _037FF5AC: .word sCommandMesgQueue
 	arm_func_end PxiFifoCallback
 
+	; FS
+
 	arm_func_start FS_Init
 FS_Init: ; 0x037FF5B0
 	ldr ip, _037FF5B8 ; =CARD_Init
@@ -1093,6 +1095,8 @@ FS_Init: ; 0x037FF5B0
 	.align 2, 0
 _037FF5B8: .word CARD_Init
 	arm_func_end FS_Init
+
+	; CARD
 
 	arm_func_start CARDi_InitCommon
 CARDi_InitCommon: ; 0x037FF5BC

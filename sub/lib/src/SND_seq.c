@@ -121,7 +121,7 @@ void SND_PrepareSeq(int player, const void *seq, u32 offset, struct SNDBankData 
 
     u8 cmd = ReadByte(trk);
 
-    if (cmd != SND_SEQ_CMD_TRACKNUM) {
+    if (cmd != SND_MML_ALLOC_TRACK) {
         trk->cur--;
     } else {
         int track;
@@ -810,24 +810,24 @@ static int TrackSeqMain(SNDTrack *track, SNDPlayer *player, int trackIdx, u32 pl
 
         cmd = ReadByte(track);
 
-        if (cmd == SND_SEQ_CMD_IFTRUE) {
+        if (cmd == SND_MML_IF) {
             cmd = ReadByte(track);
             runCmd = track->cmp_flag;
         }
 
-        if (cmd == SND_SEQ_CMD_RANDARG) {
+        if (cmd == SND_MML_RANDOM) {
             cmd = ReadByte(track);
             valueType = SND_SEQ_VAL_RAN;
             specialValueType = TRUE;
         }
 
-        if (cmd == SND_SEQ_CMD_VARARG) {
+        if (cmd == SND_MML_VARIABLE) {
             cmd = ReadByte(track);
             valueType = SND_SEQ_VAL_VAR;
             specialValueType = TRUE;
         }
 
-        if ((cmd & SND_SEQ_CMD_NOTNOTE_MASK) == 0) {
+        if ((cmd & 0x80) == 0) {
             par8 = ReadByte(track);
 
             length = ReadArg(track, player, specialValueType ? valueType : SND_SEQ_VAL_VLV);
@@ -859,8 +859,8 @@ static int TrackSeqMain(SNDTrack *track, SNDPlayer *player, int trackIdx, u32 pl
             continue;
         }
 
-        switch (cmd & SND_SEQ_CMD_GRP_MASK) {
-        case SND_SEQ_CMD_GRP_VARLEN:
+        switch (cmd & 0xF0) {
+        case 0x80:
             par32 =
                 ReadArg(track, player, specialValueType ? valueType : SND_SEQ_VAL_VLV);
             if (!runCmd) {
@@ -868,19 +868,19 @@ static int TrackSeqMain(SNDTrack *track, SNDPlayer *player, int trackIdx, u32 pl
             }
 
             switch (cmd) {
-            case SND_SEQ_CMD_REST:
+            case SND_MML_WAIT:
                 track->wait = par32;
                 break;
-            case SND_SEQ_CMD_PRGNO:
+            case SND_MML_PRG:
                 if (par32 < 0x10000) {
                     track->prgNo = (u16)par32;
                 }
                 break;
             }
             break;
-        case SND_SEQ_CMD_GRP_POINTER:
+        case 0x90:
             switch (cmd) {
-            case SND_SEQ_CMD_TRACK: {
+            case SND_MML_OPEN_TRACK: {
                 u32 off;
                 SNDTrack *newTrack;
 
@@ -897,7 +897,7 @@ static int TrackSeqMain(SNDTrack *track, SNDPlayer *player, int trackIdx, u32 pl
                 }
             }
                 break;
-            case SND_SEQ_CMD_JUMP: {
+            case SND_MML_JUMP: {
                 u32 off = Read24(track);
                 if (!runCmd) {
                     break;
@@ -905,7 +905,7 @@ static int TrackSeqMain(SNDTrack *track, SNDPlayer *player, int trackIdx, u32 pl
                 track->cur = &track->base[off];
             }
                 break;
-            case SND_SEQ_CMD_CALL: {
+            case SND_MML_CALL: {
                 u32 off = Read24(track);
                 if (!runCmd) {
                     break;
@@ -920,8 +920,8 @@ static int TrackSeqMain(SNDTrack *track, SNDPlayer *player, int trackIdx, u32 pl
             }
             }
             break;
-        case SND_SEQ_CMD_GRP_U8ARG_0:
-        case SND_SEQ_CMD_GRP_U8ARG_1: {
+        case 0xC0:
+        case 0xD0: {
             union {
                 u8 _u8;
                 s8 _s8;
@@ -933,83 +933,83 @@ static int TrackSeqMain(SNDTrack *track, SNDPlayer *player, int trackIdx, u32 pl
             }
 
             switch (cmd) {
-            case SND_SEQ_CMD_VOLUME:
+            case SND_MML_VOLUME:
                 track->volume = par._u8;
                 break;
-            case SND_SEQ_CMD_VOLUME2:
+            case SND_MML_VOLUME2:
                 track->volume2 = par._u8;
                 break;
-            case SND_SEQ_CMD_MASTERVOLUME:
+            case SND_MML_MAIN_VOLUME:
                 player->volume = par._u8;
                 break;
-            case SND_SEQ_CMD_BEND_RANGE:
+            case SND_MML_BEND_RANGE:
                 track->bend_range = par._u8;
                 break;
-            case SND_SEQ_CMD_PRIORITY:
+            case SND_MML_PRIO:
                 track->prio = par._u8;
                 break;
-            case SND_SEQ_CMD_POLY:
+            case SND_MML_NOTE_WAIT:
                 track->note_wait = par._u8;
                 break;
-            case SND_SEQ_CMD_PORTA_TIME:
+            case SND_MML_PORTA_TIME:
                 track->porta_time = par._u8;
                 break;
-            case SND_SEQ_CMD_MODDEPTH:
+            case SND_MML_MOD_DEPTH:
                 track->mod.depth = par._u8;
                 break;
-            case SND_SEQ_CMD_MODSPEED:
+            case SND_MML_MOD_SPEED:
                 track->mod.speed = par._u8;
                 break;
-            case SND_SEQ_CMD_MODTYPE:
+            case SND_MML_MOD_TYPE:
                 track->mod.target = par._u8;
                 break;
-            case SND_SEQ_CMD_MODRANGE:
+            case SND_MML_MOD_RANGE:
                 track->mod.range = par._u8;
                 break;
-            case SND_SEQ_CMD_ATTACK:
+            case SND_MML_ATTACK:
                 track->attack = par._u8;
                 break;
-            case SND_SEQ_CMD_DECAY:
+            case SND_MML_DECAY:
                 track->decay = par._u8;
                 break;
-            case SND_SEQ_CMD_SUSTAIN:
+            case SND_MML_SUSTAIN:
                 track->sustain = par._u8;
                 break;
-            case SND_SEQ_CMD_RELEASE:
+            case SND_MML_RELEASE:
                 track->release = par._u8;
                 break;
-            case SND_SEQ_CMD_LOOPSTART:
+            case SND_MML_LOOP_START:
                 if (track->call_stack_depth < SND_TRACK_CALL_STACK_DEPTH) {
                     track->call_stack[track->call_stack_depth] = track->cur;
                     track->loop_count[track->call_stack_depth] = par._u8;
                     track->call_stack_depth++;
                 }
                 break;
-            case SND_SEQ_CMD_TIE:
+            case SND_MML_TIE:
                 track->tie_flag = par._u8;
                 ReleaseTrackChannelAll(track, player, -1);
                 FreeTrackChannelAll(track);
                 break;
-            case SND_SEQ_CMD_MUTE:
+            case SND_MML_MUTE:
                 SetTrackMute(track, player, par._u8);
                 break;
-            case SND_SEQ_CMD_PORTA_CNT:
+            case SND_MML_PORTA:
                 track->porta_key = (u8)(par._u8 + track->transpose);
                 track->porta_flag = TRUE;
                 break;
-            case SND_SEQ_CMD_PORTA_TOGGLE:
+            case SND_MML_PORTA_SW:
                 track->porta_flag = par._u8;
                 break;
-            case SND_SEQ_CMD_TRANSPOSE:
+            case SND_MML_TRANSPOSE:
                 track->transpose = par._s8;
                 break;
-            case SND_SEQ_CMD_PITCHBEND:
+            case SND_MML_PITCH_BEND:
                 track->pitch_bend = par._s8;
                 break;
-            case SND_SEQ_CMD_GRP_U8ARG_0:
+            case SND_MML_PAN:
                 track->pan = (s8)(par._u8 - 0x40);
                 break;
-            case SND_SEQ_CMD_PRINT: {
+            case SND_MML_PRINTVAR: {
                 s16 *varPtr;
 
                 if (sMmlPrintEnable) {
@@ -1021,7 +1021,7 @@ static int TrackSeqMain(SNDTrack *track, SNDPlayer *player, int trackIdx, u32 pl
             }
         }
             break;
-        case SND_SEQ_CMD_GRP_U16ARG: {
+        case 0xE0: {
             s16 par = (s16)ReadArg(
                 track, player, specialValueType ? valueType : SND_SEQ_VAL_U16);
             if (!runCmd) {
@@ -1029,19 +1029,19 @@ static int TrackSeqMain(SNDTrack *track, SNDPlayer *player, int trackIdx, u32 pl
             }
 
             switch (cmd) {
-            case SND_SEQ_CMD_PITCHSWEEP:
+            case SND_MML_SWEEP_PITCH:
                 track->sweep_pitch = par;
                 break;
-            case SND_SEQ_CMD_TEMPO:
+            case SND_MML_TEMPO:
                 player->tempo = (u16)par;
                 break;
-            case SND_SEQ_CMD_MODDELAY:
+            case SND_MML_MOD_DELAY:
                 track->mod.delay = (u16)par;
                 break;
             }
         }
             break;
-        case SND_SEQ_CMD_GRP_VARACT: {
+        case 0xB0: {
             int varNum = ReadByte(track);
 
             s16 par = (s16)ReadArg(
@@ -1057,31 +1057,31 @@ static int TrackSeqMain(SNDTrack *track, SNDPlayer *player, int trackIdx, u32 pl
             }
 
             switch (cmd) {
-            case SND_SEQ_CMD_SETVAR:
+            case SND_MML_SETVAR:
                 *varPtr = par;
                 break;
-            case SND_SEQ_CMD_ADDVAR:
+            case SND_MML_ADDVAR:
                 *varPtr += par;
                 break;
-            case SND_SEQ_CMD_SUBVAR:
+            case SND_MML_SUBVAR:
                 *varPtr -= par;
                 break;
-            case SND_SEQ_CMD_MULVAR:
+            case SND_MML_MULVAR:
                 *varPtr *= par;
                 break;
-            case SND_SEQ_CMD_DIVVAR:
+            case SND_MML_DIVVAR:
                 if (par != 0) {
                     *varPtr /= par;
                 }
                 break;
-            case SND_SEQ_CMD_SHIFTVAR:
+            case SND_MML_SHIFTVAR:
                 if (par >= 0) {
                     *varPtr <<= par;
                 } else {
                     *varPtr >>= -par;
                 }
                 break;
-            case SND_SEQ_CMD_SETVARRND: {
+            case SND_MML_RANDVAR: {
                 BOOL neg = FALSE;
                 if (par < 0) {
                     neg = TRUE;
@@ -1095,42 +1095,40 @@ static int TrackSeqMain(SNDTrack *track, SNDPlayer *player, int trackIdx, u32 pl
                 *varPtr = (s16)random;
             }
                 break;
-            case SND_SEQ_CMD_VARNOP:
-                break;
-            case SND_SEQ_CMD_VAREQ:
+            case SND_MML_CMP_EQ:
                 track->cmp_flag = *varPtr == par;
                 break;
-            case SND_SEQ_CMD_VARGE:
+            case SND_MML_CMP_GE:
                 track->cmp_flag = *varPtr >= par;
                 break;
-            case SND_SEQ_CMD_VARGT:
+            case SND_MML_CMP_GT:
                 track->cmp_flag = *varPtr > par;
                 break;
-            case SND_SEQ_CMD_VARLE:
+            case SND_MML_CMP_LE:
                 track->cmp_flag = *varPtr <= par;
                 break;
-            case SND_SEQ_CMD_VARLT:
+            case SND_MML_CMP_LT:
                 track->cmp_flag = *varPtr < par;
                 break;
-            case SND_SEQ_CMD_VARNE:
+            case SND_MML_CMP_NE:
                 track->cmp_flag = *varPtr != par;
                 break;
             }
         }
             break;
-        case SND_SEQ_CMD_GRP_CNT:
+        case 0xF0:
             if (!runCmd) {
                 break;
             }
 
             switch (cmd) {
-            case SND_SEQ_CMD_RETURN:
+            case SND_MML_RET:
                 if (track->call_stack_depth != 0) {
                     track->call_stack_depth--;
                     track->cur = track->call_stack[track->call_stack_depth];
                 }
                 break;
-            case SND_SEQ_CMD_LOOPEND: {
+            case SND_MML_LOOP_END: {
                 if (track->call_stack_depth == 0) {
                     break;
                 }
@@ -1148,9 +1146,9 @@ static int TrackSeqMain(SNDTrack *track, SNDPlayer *player, int trackIdx, u32 pl
                 track->cur = track->call_stack[track->call_stack_depth - 1];
             }
                 break;
-            case SND_SEQ_CMD_TRACKNUM:
+            case SND_MML_ALLOC_TRACK:
                 break;
-            case SND_SEQ_CMD_TRACKEND:
+            case SND_MML_FIN:
                 return -1;
             }
             break;
