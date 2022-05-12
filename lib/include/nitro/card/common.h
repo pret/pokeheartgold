@@ -141,14 +141,20 @@ typedef struct CARDiCommandArg
     } spec;
 } CARDiCommandArg;
 
-typedef struct CARDiCommon
-{
+typedef struct CARDiCommon {
     CARDiCommandArg *cmd;
     s32 command;
+#if defined(SDK_ARM7)
+    u32 recv_step;
+#endif //SDK_ARM7
 
     volatile CARDiOwner lock_owner;
-    volatile s32 lock_ref;
+    volatile int lock_ref;
+#ifndef SDK_THREAD_INFINITY
+    OSThreadQueue lock_queue[4 / sizeof(OSThreadQueue)];
+#else
     OSThreadQueue lock_queue[1];
+#endif
     CARDTargetMode lock_target;
 
     u32 src;
@@ -166,11 +172,22 @@ typedef struct CARDiCommon
     OSThread *cur_th;
 
     u32 priority;
+#ifndef SDK_THREAD_INFINITY
+    OSThreadQueue busy_q[4 / sizeof(OSThreadQueue)];
+#else
     OSThreadQueue busy_q[1];
+#endif //SDK_THREAD_INFINITY
 
     volatile u32 flag;
 
-    u8 dummy[8];
+#if	defined(SDK_ARM9)
+    u32 flush_threshold_ic;
+    u32 flush_threshold_dc;
+#endif
+
+#ifndef SDK_THREAD_INFINITY
+    u8 dummy[20];
+#endif
 
     u8 backup_cache_page_buf[256] ALIGN(32);
 } CARDiCommon;
@@ -235,5 +252,7 @@ void CARD_SetCacheFlushThreshold(u32 icache, u32 dcache);
 BOOL CARD_IdentifyBackup(CARDBackupType type);
 void CARD_LockBackup(u16 lock_id);
 void CARD_UnlockBackup(u16 lock_id);
+void CARDi_TaskThread(void *arg);
+void CARDi_OnFifoRecv(PXIFifoTag tag, u32 data, BOOL err);
 
 #endif //NITRO_CARD_COMMON_H_

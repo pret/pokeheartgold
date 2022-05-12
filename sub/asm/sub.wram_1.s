@@ -3,188 +3,15 @@
 
 	.text
 
-	.public OSi_SetTimerReserved
-	.public OS_IsTickAvailable
-	.public FifoCtrlInit
-	.public FifoRecvCallbackTable
-	.public PADi_XYButtonAvailable
 	.public MI_StopDma
 	.public PXI_IsCallbackReady
-	.public PXIi_SetToFifo
-	.public SND_Enable
-	.public SND_SetMasterVolume
-	.public SND_SetOutputSelector
-	.public SND_SetupChannelPcm
-	.public SND_SetupChannelPsg
-	.public SND_SetupChannelNoise
-	.public SND_StopChannel
-	.public SND_SetChannelVolume
-	.public SND_SetChannelTimer
-	.public SND_SetChannelPan
-	.public SND_IsChannelActive
-	.public SND_SetMasterPan
-	.public SND_GetChannelControl
-	.public SNDi_SetSurroundDecay
-	.public CalcSurroundDecay
-	.public SND_CalcTimer
-	.public SND_CalcChannelVolume
-	.public SND_SinIdx
-	.public SND_CalcRandom
-	.public SND_StartIntervalTimer
-	.public SND_StopIntervalTimer
-	.public SND_SendWakeupMessage
-	.public SNDi_LockMutex
-	.public SNDi_UnlockMutex
-	.public SndAlarmCallback
-	.public SND_SetupCapture
-	.public SND_IsCaptureActive
-	.public SND_UpdateExChannel
-	.public SND_StartExChannelPcm
-	.public SND_StartExChannelPsg
-	.public SND_StartExChannelNoise
-	.public SND_SetExChannelAttack
-	.public SND_SetExChannelDecay
-	.public SND_SetExChannelSustain
-	.public SND_SetExChannelRelease
-	.public SND_ReleaseExChannel
-	.public SND_IsExChannelActive
-	.public SND_AllocExChannel
-	.public SND_FreeExChannel
-	.public SND_StopUnlockedChannel
-	.public sWeakLockChannel
-	.public PADi_XYButtonAlarm
-	.public sSurroundDecay
-	.public sOrgPan
-	.public sOrgVolume
-	.public SND_Init__sinit__initialized
-	.public sndMesgBuffer
-	.public sndMesgQueue
-	.public sndAlarm
-	.public sndThread
-	.public sndStack
-	.public sWeakLockChannel
-	.public sLockChannel
-	.public sMmlPrintEnable
-	.public seqCache
-	.public SNDi_SharedWork
-	.public SNDi_Work
-	.public sCommandMesgQueue
-	.public sCommandMesgBuffer
+	.public CARD_GetRomHeader
+    .public CARDi_InitCommon
 	.public CARDi_EnableFlag
-	.public SND_LockChannel
-    .public SND_UnlockChannel
-    .public SND_GetLockedChannel
-    .public SND_InvalidateWave
-    .public SND_InitLfoParam
-    .public SND_UpdateLfo
-    .public SND_GetLfoValue
-    .public CalcRelease
-    .public StartExChannel
-    .public SND_PrepareSeq
-    .public ReadByte
-    .public SND_StartPreparedSeq
-    .public SND_StartSeq
-    .public SND_StopSeq
-    .public SND_PauseSeq
-    .public SND_SkipSeq
-    .public SND_SetTrackMute
-    .public SND_SetTrackAllocatableChannel
-    .public SND_InvalidateSeq
-    .public SND_InvalidateBank
-    .public SNDi_SetPlayerParam
-    .public SNDi_SetTrackParam
-    .public InitCache
-    .public Read24
-    .public SND_GetWaveDataAddress
-    .public SND_SetPlayerLocalVariable
-    .public SND_SetPlayerGlobalVariable
-    .public SND_UpdateSharedWork
-    .public SND_StartAlarm
-    .public SND_StopAlarm
-    .public SND_SetupAlarm
+	.public cardi_common
+    .public cardi_thread_stack
 
 	; CARD
-
-	arm_func_start CARDi_InitCommon
-CARDi_InitCommon: ; 0x037FF5BC
-	stmdb sp!, {r4, lr}
-	sub sp, sp, #8
-	ldr r4, _037FF660 ; =cardi_common
-	mov r2, #0
-	mvn r1, #2
-	str r1, [r4, #0xc]
-	mov r0, #4
-	str r0, [r4, #0xf0]
-	str r2, [r4, #0x10]
-	str r2, [r4, #0x1c]
-	str r2, [r4]
-	str r2, [r4, #8]
-	str r2, [r4, #0x18]
-	str r2, [r4, #0x14]
-	str r2, [r4, #0xf8]
-	str r2, [r4, #0xf4]
-	mov r0, #0x400
-	str r0, [sp]
-	ldr ip, [r4, #0xf0]
-	ldr r1, _037FF664 ; =CARDi_TaskThread
-	ldr r3, _037FF668 ; =status_checked$3825
-	add r0, r4, #0x48
-	str ip, [sp, #4]
-	bl OS_CreateThread
-	add r0, r4, #0x48
-	bl OS_WakeupThreadDirect
-	ldr r1, _037FF66C ; =CARDi_OnFifoRecv
-	mov r0, #0xb
-	bl PXI_SetFifoRecvCallback
-	ldr r0, _037FF670 ; =0x027FFC40
-	ldrh r0, [r0]
-	cmp r0, #2
-	moveq r0, #1
-	movne r0, #0
-	cmp r0, #0
-	ldreq r0, _037FF674 ; =CARDi_EnableFlag
-	moveq r1, #1
-	streq r1, [r0]
-	add sp, sp, #8
-	ldmia sp!, {r4, lr}
-	bx lr
-	.align 2, 0
-_037FF660: .word cardi_common
-_037FF664: .word CARDi_TaskThread
-_037FF668: .word status_checked$3825
-_037FF66C: .word CARDi_OnFifoRecv
-_037FF670: .word 0x027FFC40
-_037FF674: .word CARDi_EnableFlag
-	arm_func_end CARDi_InitCommon
-
-	arm_func_start CARD_SetThreadPriority
-CARD_SetThreadPriority: ; 0x037FF678
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r5, _037FF6B4 ; =cardi_common
-	mov r7, r0
-	bl OS_DisableInterrupts
-	ldr r6, [r5, #0xf0]
-	mov r4, r0
-	mov r1, r7
-	add r0, r5, #0x48
-	str r7, [r5, #0xf0]
-	bl OS_SetThreadPriority
-	mov r0, r4
-	bl OS_RestoreInterrupts
-	mov r0, r6
-	ldmia sp!, {r3, r4, r5, r6, r7, lr}
-	bx lr
-	.align 2, 0
-_037FF6B4: .word cardi_common
-	arm_func_end CARD_SetThreadPriority
-
-	arm_func_start CARD_GetRomHeader
-CARD_GetRomHeader: ; 0x037FF6B8
-	ldr r0, _037FF6C0 ; =0x027FFA80
-	bx lr
-	.align 2, 0
-_037FF6C0: .word 0x027FFA80
-	arm_func_end CARD_GetRomHeader
 
 	arm_func_start CARDi_CommandEnd
 CARDi_CommandEnd: ; 0x037FF6C4
@@ -1645,19 +1472,6 @@ isFirstCheck$3676: ; 0x03806B04
 	.size isFirstCheck$3676,.-isFirstCheck$3676
 
 	.bss
-
-	.balign 32, 0
-	.type cardi_common,@object
-	.public cardi_common
-cardi_common: ; 0x038085E0
-	.space 0x200
-	.size cardi_common,.-cardi_common
-
-	.type cardi_thread_stack,@object
-	.public cardi_thread_stack
-cardi_thread_stack: ; 0x038087E0
-	.space 0x400
-	.size cardi_thread_stack,.-cardi_thread_stack
 
 	.type status_checked$3825,@object
 	.public status_checked$3825

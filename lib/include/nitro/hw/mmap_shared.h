@@ -20,6 +20,8 @@
 
 #define HW_WRAM                 0x037F8000
 
+#define HW_CARD_ROM_HEADER      (HW_MAIN_MEM + 0x007ffa80)
+
 #define HW_MAIN_MEM_SYSTEM      (HW_MAIN_MEM + 0x007ffc00)
 #define HW_WM_BOOT_BUF          (HW_MAIN_MEM + 0x007ffc40)
 #define HW_ARENA_INFO_BUF       (HW_MAIN_MEM + 0x007ffda0)
