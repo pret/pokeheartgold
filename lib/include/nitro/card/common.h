@@ -21,6 +21,7 @@
 #define	CARD_BACKUP_TYPE_SIZEBIT_SHIFT	8
 #define	CARD_BACKUP_TYPE_SIZEBIT_MASK	0xFF
 #define	CARD_BACKUP_TYPE_VENDER_SHIFT	16
+#define	CARD_BACKUP_TYPE_VENDER_MASK	0xFF
 #define	CARD_BACKUP_TYPE_DEFINE(type, size, vender)	\
 	(((CARD_BACKUP_TYPE_DEVICE_ ## type) << CARD_BACKUP_TYPE_DEVICE_SHIFT) |	\
 	((size) << CARD_BACKUP_TYPE_SIZEBIT_SHIFT) |	\
@@ -38,6 +39,9 @@
 #define CARD_BACKUP_CAPS_ERASE_PAGE     (u32)(1 << CARD_REQ_ERASE_PAGE_BACKUP)
 #define CARD_BACKUP_CAPS_ERASE_SECTOR   (u32)(1 << CARD_REQ_ERASE_SECTOR_BACKUP)
 #define CARD_BACKUP_CAPS_ERASE_CHIP     (u32)(1 << CARD_REQ_ERASE_CHIP_BACKUP)
+#define CARD_BACKUP_CAPS_READ_STATUS    (u32)(1 << CARD_REQ_READ_STATUS)
+#define CARD_BACKUP_CAPS_WRITE_STATUS   (u32)(1 << CARD_REQ_WRITE_STATUS)
+#define CARD_BACKUP_CAPS_ERASE_SUBSECTOR    (u32)(1 << CARD_REQ_ERASE_SUBSECTOR_BACKUP)
 
 typedef enum
 {
@@ -87,7 +91,10 @@ typedef enum
     CARD_REQ_ERASE_PAGE_BACKUP,
     CARD_REQ_ERASE_SECTOR_BACKUP,
     CARD_REQ_ERASE_CHIP_BACKUP,
-    CARD_REQ_MAX
+    CARD_REQ_READ_STATUS,
+    CARD_REQ_WRITE_STATUS,
+    CARD_REQ_ERASE_SUBSECTOR_BACKUP,
+    CARD_REQ_MAX,
 } CARDRequest;
 
 typedef enum
@@ -111,8 +118,7 @@ enum
 
 typedef s32 CARDiOwner;
 
-typedef struct CARDiCommandArg
-{
+typedef struct CARDiCommandArg {
     CARDResult result;
     CARDBackupType type;
     u32 id;
@@ -120,10 +126,10 @@ typedef struct CARDiCommandArg
     u32 dest;
     u32 len;
 
-    struct
-    {
+    struct {
         u32 total_size;
         u32 sect_size;
+        u32 subsect_size;
         u32 page_size;
         u32 addr_width;
         u32 program_page;
@@ -133,6 +139,8 @@ typedef struct CARDiCommandArg
         u32 erase_chip_total;
         u32 erase_sector;
         u32 erase_sector_total;
+        u32 erase_subsector;
+        u32 erase_subsector_total;
         u32 erase_page;
         u8 initial_status;
         u8 padding1[3];
