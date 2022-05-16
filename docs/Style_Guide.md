@@ -108,7 +108,7 @@ When not sure how to style a specific code, ask in the pret discord!
  u8 i;
  for (i = 0; i < 5; i++) { //correct
 ```
-- Pokeheartgold uses a Macro named `GF_ASSERT` to see whether a part of code has executed correctly. As such `GF_ASSERT(exp);` compiles to `if(!exp) GF_AssertFail();`. So as an example
+- pokeheartgold uses a macro named `GF_ASSERT` to see whether a part of code has executed correctly. As such `GF_ASSERT(exp);` compiles to `if(!exp) GF_AssertFail();`. So as an example:
 ```asm
     bl SomeFunction
     cmp r0, #0
