@@ -3,11 +3,6 @@
 
 	.text
 
-_021E6CE4: .word ov76_021E7098
-_021E6CE8: .word ov76_021E7094
-_021E6CEC: .word ov76_021E709C
-_021E6CF0: .word ov76_021E70A0
-
 	thumb_func_start ov76_021E6CF4
 ov76_021E6CF4: ; 0x021E6CF4
 	push {r3, r4, r5, r6, lr}
@@ -239,6 +234,10 @@ _021E6E82:
 	.public ov76_021E6ED4
 	.public ov76_021E6E98
 	.public ov76_021E7334
+	.public ov76_021E7098
+	.public ov76_021E7094
+	.public ov76_021E709C
+	.public ov76_021E70A0
 
 	.rodata
 

@@ -42,7 +42,8 @@ MKFXCONST    := $(TOOLSDIR)/gen_fx_consts/gen_fx_consts$(EXE)
 # Decompiled NitroSDK tools
 COMPSTATIC   := $(TOOLSDIR)/compstatic/compstatic$(EXE)
 
-NTRMERGE     := $(TOOLSDIR)/ntr_merge_elf/ntr_merge_elf.sh
+NTRMERGE      := $(TOOLSDIR)/ntr_merge_elf/ntr_merge_elf.sh
+ASM_PROCESSOR := $(TOOLSDIR)/asm_processor/compile.sh
 
 NATIVE_TOOLS := \
 	$(JSONPROC) \
@@ -75,15 +76,17 @@ LIB_ASM_BUILDDIR          := $(addprefix $(BUILD_DIR)/,$(LIB_ASM_SUBDIR))
 
 C_SRCS                    := $(foreach dname,$(SRC_SUBDIR),$(wildcard $(dname)/*.c))
 ASM_SRCS                  := $(foreach dname,$(ASM_SUBDIR),$(wildcard $(dname)/*.s))
+GLOBAL_ASM_SRCS           != grep -rl 'GLOBAL_ASM(' $(C_SRCS)
 LIB_C_SRCS                := $(foreach dname,$(LIB_SRC_SUBDIR),$(wildcard $(dname)/*.c))
 LIB_ASM_SRCS              := $(foreach dname,$(LIB_ASM_SUBDIR),$(wildcard $(dname)/*.s))
-ALL_SRCS                  := $(C_SRCS) $(ASM_SRCS) $(LIB_C_SRCS) $(LIB_ASM_SRCS)
+ALL_SRCS                  := $(C_SRCS) $(ASM_SRCS) $(GLOBAL_ASM_SRCS) $(LIB_C_SRCS) $(LIB_ASM_SRCS)
 
 C_OBJS                    = $(C_SRCS:%.c=$(BUILD_DIR)/%.o)
 ASM_OBJS                  = $(ASM_SRCS:%.s=$(BUILD_DIR)/%.o)
+GLOBAL_ASM_OBJS           = $(GLOBAL_ASM_SRCS:%.c=$(BUILD_DIR)/%.o)
 LIB_C_OBJS                = $(LIB_C_SRCS:%.c=$(BUILD_DIR)/%.o)
 LIB_ASM_OBJS              = $(LIB_ASM_SRCS:%.s=$(BUILD_DIR)/%.o)
-ALL_GAME_OBJS             = $(C_OBJS) $(ASM_OBJS)
+ALL_GAME_OBJS             = $(C_OBJS) $(ASM_OBJS) $(GLOBAL_ASM_OBJS)
 ALL_LIB_OBJS              = $(LIB_C_OBJS) $(LIB_ASM_OBJS)
 ALL_OBJS                  = $(ALL_GAME_OBJS) $(ALL_LIB_OBJS)
 
@@ -104,6 +107,11 @@ MWCFLAGS           = $(DEFINES) $(OPTFLAGS) -enum int -lang c99 $(EXCCFLAGS) -gc
 MWASFLAGS          = $(DEFINES) -proc $(PROC_S) -gccinc -i . -i ./include -i $(WORK_DIR)/files -I$(WORK_DIR)/lib/include -DSDK_ASM
 MWLDFLAGS         := -w off -proc $(PROC) -nopic -nopid -interworking -map closure,unused -symtab sort -m _start -msgstyle gcc
 ARFLAGS           := rcS
+
+$(C_OBJS):   MWCFLAGS  +=          -include global.h
+
+CC = $(WINE) $(MWCC) $(MWCFLAGS)
+AS = $(WINE) $(MWAS) $(MWASFLAGS)
 
 export MWCIncludes := lib/include
 
@@ -145,13 +153,17 @@ endef
 endif
 DEPFLAGS := -gccdep -MD
 DEPFILES := $(ALL_OBJS:%.o=%.d)
+CC += $(DEPFLAGS)
+$(GLOBAL_ASM_OBJS): BUILD_C := $(ASM_PROCESSOR) "$(CC)" "$(AS)"
+BUILD_C ?= $(CC) -c -o
+
 $(DEPFILES):
 
 $(BUILD_DIR)/lib/NitroSDK/%.o: MWCCVER := 2.0/sp2p3
 
 $(BUILD_DIR)/%.o: %.c
 $(BUILD_DIR)/%.o: %.c $(BUILD_DIR)/%.d
-	$(WINE) $(MWCC) $(MWCFLAGS) $(DEPFLAGS) -c -o $@ $<
+	$(BUILD_C) $@ $<
 	@$(call fixdep,$(BUILD_DIR)/$*.d)
 
 $(BUILD_DIR)/%.o: %.s
@@ -161,8 +173,11 @@ $(BUILD_DIR)/%.o: %.s $(BUILD_DIR)/%.d
 
 include $(wildcard $(DEPFILES))
 else
+$(GLOBAL_ASM_OBJS): BUILD_C := $(ASM_PROCESSOR) "$(CC)" "$(AS)"
+BUILD_C ?= $(CC) -c -o
+
 $(BUILD_DIR)/%.o: %.c
-	$(WINE) $(MWCC) $(MWCFLAGS) -c -o $@ $<
+	$(BUILD_C) $@ $<
 
 $(BUILD_DIR)/%.o: %.s
 	$(WINE) $(MWAS) $(MWASFLAGS) -o $@ $<

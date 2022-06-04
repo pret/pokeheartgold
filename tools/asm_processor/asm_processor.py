@@ -507,8 +507,8 @@ class GlobalAsmBlock:
             self.fail("size cannot be negative", line)
         self.fn_section_sizes[self.cur_section] += size
         if self.cur_section in ['.text', '.init']:
-            if not self.text_glabels:
-                self.fail(".text or .init block without an initial glabel", line)
+            # if not self.text_glabels:
+            #     self.fail(".text or .init block without an initial glabel", line)
             self.fn_ins_inds.append((self.num_lines - 1, size // 2))
 
     def process_line(self, line, output_enc):
@@ -907,15 +907,6 @@ def parse_source(f, opt, framepointer, input_enc, output_enc, print_source=None)
     out_file.close()
     return asm_functions
 
-# Return the function name in objfile corresponding to function
-# `asm_func_name` in asm_objfile. `to_copy` is the dictionary of the
-# same name in fix_objfile().
-def convert_func_name(asm_func_name, to_copy):
-    for sec_name, func_data in to_copy.items():
-        if func_data and func_data[0][4] == asm_func_name:
-            return func_data[0][2]
-    return ''
-
 def fixup_objfile(objfile_name, functions, asm_prelude, assembler, output_enc):
     SECTIONS = ['.data']
     SECTIONS.extend(['.text' for i in range(0,len(functions))])
@@ -960,7 +951,7 @@ def fixup_objfile(objfile_name, functions, asm_prelude, assembler, output_enc):
                         asm.append('nop')
                 else:
                     asm.append('.space {}'.format(loc - prev_loc))
-            to_copy[sectype + (str(n_text) if sectype == '.text' else '')].append((loc, size, temp_name, function.fn_desc, function.text_glabels[0]))
+            to_copy[sectype + (str(n_text) if sectype == '.text' else '')].append((loc, size, temp_name, function.fn_desc, []))
             prev_locs[sectype + (str(n_text) if sectype == '.text' else '')] = loc + size
         if not ifdefed:
             all_text_glabels.update(function.text_glabels)
@@ -970,14 +961,16 @@ def fixup_objfile(objfile_name, functions, asm_prelude, assembler, output_enc):
             for sectype, (temp_name, size) in function.data.items():
                 if temp_name is not None:
                     asm.append('.section ' + sectype)
-                    asm.append('glabel ' + temp_name + '_asm_start')
+                    asm.append('.global ' + temp_name + '_asm_start')
+                    asm.append(temp_name + '_asm_start:')
             asm.append('.section .text')
             for line in function.asm_conts:
                 asm.append(line)
             for sectype, (temp_name, size) in function.data.items():
                 if temp_name is not None:
                     #asm.append('.section ' + sectype)
-                    asm.append('glabel ' + temp_name + '_asm_end')
+                    asm.append('.global ' + temp_name + '_asm_end')
+                    asm.append(temp_name + '_asm_end:')
 
     if any(late_rodata_asm):
         late_rodata_source_name_start = '_asmpp_late_rodata_start'
@@ -1135,8 +1128,7 @@ def fixup_objfile(objfile_name, functions, asm_prelude, assembler, output_enc):
                     raise Failure("generated assembly .o must only have symbols for .text, .data, .rodata, .sdata, .sdata2, .sbss, ABS and UNDEF, but found " + section_name)
                 if section_name == '.sbss2': #! I'm not sure why this isn't working
                     continue
-                obj_func_name = convert_func_name(s.name, to_copy)
-                obj_n_text = objfile.text_section_index(obj_func_name)                
+                obj_n_text = objfile.text_section_index(temp_name)
                 s.st_shndx = objfile.find_section(section_name, obj_n_text if section_name == '.text' else 0).index
                 if section_name == '.text':
                     n_text += 1

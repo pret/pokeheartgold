@@ -50,7 +50,8 @@ typedef struct {
 } UnkOv76_021E6170;
 
 typedef struct {
-    u8 unk0[0x4];
+    u16 unk0;
+    u16 unk2;
     int unk4;
     struct Sprite *unk8;
 } UnkOv76_021E683C_sub;
@@ -60,10 +61,8 @@ typedef struct {
     int unkC0;
 } UnkOv76_021E683C;
 
+// TODO: RENAME OFFSETS! These names are no longer correct!
 typedef struct {
-    NARC *unk0;
-    u16 unk4;
-    u16 unk6;
     u8 unk8[0x4];
     u32 unkC;
     u32 unk10;
@@ -73,11 +72,15 @@ typedef struct {
     NNSG2dCellDataBank *unk24;
     NNSG2dAnimBankData *unk28;
     u8 unk2C[0x8];
+    void *unk34;
+    void *unk38;
 } UnkOv76_021E6B2C;
 
 typedef struct {
-    UnkOv76_021E6B2C unk0[6];
-    u8 unk138[0x8];
+    NARC *unk0;
+    u16 unk4;
+    u16 unk6;
+    UnkOv76_021E6B2C unk8[6];
     // This seems to be unrelated to Narc, so maybe it's not in this
     // struct...?
     UnkOv76_021E683C unk140;
@@ -151,6 +154,27 @@ typedef struct {
     int unkC;
 } UnkOv76_021E6B8C;
 
+typedef struct {
+    u16 unk0;
+    u8 unk2;
+    u8 unk3;
+    s16 unk4;
+    s16 unk6;
+    int unk8;
+} UnkOv76_021E6CF4;
+
+typedef struct {
+    u8 unk0[0x8];
+    u32 unk8;
+} UnkOv76_021E6D80_sub;
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2[6];
+    UnkOv76_021E6D80_sub unk8[16];
+} UnkOv76_021E6D80;
+
 extern const GF_GXBanksConfig ov76_021E6FC0;
 extern const struct GFBgModeSet ov76_021E6EB0;
 extern const BGTEMPLATE ov76_021E6F18;
@@ -170,6 +194,7 @@ extern const int ov76_021E6ED4[5];
 extern const WINDOWTEMPLATE ov76_021E6E98;
 extern UnkOv76_21E6A94 ov76_021E7334[];
 extern const UnkOv76_021E6B8C ov76_021E7094[];
+extern const UnkOv76_021E6D80 ov76_021E7B0C[];
 
 static void ov76_021E5D94(void *data);
 static void ov76_021E5DA4(void);
@@ -198,11 +223,11 @@ static void ov76_021E69C4(int a0, UnkOv76_021E6944 *a1, int a2);
 static void ov76_021E6A34(int a0, int a1, int a2, int a3);
 static void ov76_021E6A94(Ov76_Data_021E5AA0 *a0);
 static void ov76_021E6B2C(Ov76_Work *a0);
+static void ov76_021E6D80(Ov76_Work *a0);
+static void ov76_021E6E20(Ov76_Work *a0);
+
 // TODO: Update to `static` after matching.
 void ov76_021E6B8C(NarcStruct *a0, int a1);
-
-// For NONMATCHING
-static void ov76_021E6D80(Ov76_Work *a0);
 
 BOOL ov76_021E5900(OVY_MANAGER *a0, int *a1) {
     Ov76_Work *data;
@@ -287,7 +312,7 @@ BOOL ov76_021E5AA0(OVY_MANAGER *a0, int *a1) {
         *a1 += 1;
         break;
     case 2: // inst 0x88
-        NARC_dtor(data->unk260.unk0[0].unk0);
+        NARC_dtor(data->unk260.unk0);
         ov76_021E62B4(data);
         ov76_021E613C(data);
         *a1 += 1;
@@ -498,10 +523,10 @@ static void ov76_021E6170(Ov76_Work *a0) {
     a0->unk154[1] = AddPlttResObjFromNarc(a0->unk144[1], 0x49 + 0xc0, 0, 0, 1, 3, 7, 0x49);
     a0->unk154[2] = AddCellOrAnimResObjFromNarc(a0->unk144[2], 0x49 + 0xc0, 2, 1, 1, 2, 0x49);
     a0->unk154[3] = AddCellOrAnimResObjFromNarc(a0->unk144[3], 0x49 + 0xc0, 3, 1, 1, 3, 0x49);
-    a0->unk260.unk0[0].unk0 = NARC_ctor(0x109, 0x49);
+    a0->unk260.unk0 = NARC_ctor(0x109, 0x49);
 
     NarcStruct *temp = &a0->unk260;
-    NARC **narc = &temp->unk0[0].unk0;
+    NARC **narc = &temp->unk0;
     temp->unk204 = a0->unk10->unk0;
 
     for (u8 i = 0; i < 6; i++) {
@@ -1023,7 +1048,7 @@ static void ov76_021E6810(Ov76_Work *a0) {
 static void ov76_021E683C(Ov76_Work *a0) {
     UnkOv76_021E683C *ptr = &a0->unk260.unk140;
 
-    if (a0->unk260.unk0[0].unk6 >= 16) {
+    if (a0->unk260.unk6 >= 16) {
         return;
     }
 
@@ -1039,7 +1064,7 @@ static void ov76_021E683C(Ov76_Work *a0) {
     }
     if (count == ptr->unkC0) {
         ov76_021E6E20(a0);
-        a0->unk260.unk0[0].unk6 += 1;
+        a0->unk260.unk6 += 1;
         ov76_021E6D80(a0);
     }
 }
@@ -1179,10 +1204,10 @@ static void ov76_021E6B2C(Ov76_Work *a0) {
         NNSG2dImageProxy *var1 = sub_0200AF00(temp2);
         NNSG2dImagePaletteProxy *var2 = sub_0200B0F8(temp3, var1);
 
-        temp->unk0[i].unk18 = var1;
-        temp->unk0[i].unk14 = var2;
-        temp->unk0[i].unkC = NNS_G2dGetImageLocation(var1, 1);
-        temp->unk0[i].unk10 = NNS_G2dGetImagePaletteLocation(var2, 1);
+        temp->unk8[i].unk18 = var1;
+        temp->unk8[i].unk14 = var2;
+        temp->unk8[i].unkC = NNS_G2dGetImageLocation(var1, 1);
+        temp->unk8[i].unk10 = NNS_G2dGetImagePaletteLocation(var2, 1);
     }
 }
 
@@ -1264,171 +1289,54 @@ void ov76_021E6B8C(NarcStruct *a0, int a1) {
     a0->unk0[0].unk4++;
 }
 #else
-asm void ov76_021E6B8C(NarcStruct *a0, int a1) {
-	push	{r4, r5, r6, r7, lr}
-	sub	sp, #0x14
-	mov	r2, #0x0
-	add	r6, r1, #0x0
-	add	r4, r0, #0x0
-	add	r3, r2, #0x0
-	cmp	r6, #0x5
-	bne	_24
-	mov	r0, #0x81
-	lsl	r0, r0, #0x2
-	ldr	r0, [r4, r0]
-	mov	r2, #0x1
-	cmp	r0, #0x1
-	bne	_20
-	mov	r0, #0x7
-	b	_3a
-_20:
-	mov	r0, #0x5
-	b	_3a
-_24:
-	cmp	r6, #0x7
-	bne	_3a
-	mov	r1, #0x81
-	lsl	r1, r1, #0x2
-	ldr	r1, [r4, r1]
-	mov	r3, #0x1
-	cmp	r1, #0x1
-	bne	_38
-	mov	r1, #0x5
-	b	_3a
-_38:
-	mov	r1, #0x7
-_3a:
-	cmp	r2, #0x0
-	beq	_66
-	ldr	r1, [pc, #0x118]
-	lsl	r5, r0, #0x4
-	mov	r0, #0x49
-	str	r0, [sp, #0x0]
-	ldr	r0, [r4, #0x0]
-	ldr	r1, [r1, r5]
-	mov	r2, #0x1
-	add	r3, sp, #0x10
-	bl	GfGfxLoader_GetCharDataFromOpenNarc
-	ldr	r1, [pc, #0x108]
-	str	r0, [sp, #0x8]
-	ldr	r0, [r4, #0x0]
-	ldr	r1, [r1, r5]
-	add	r2, sp, #0xc
-	mov	r3, #0x49
-	bl	GfGfxLoader_GetPlttDataFromOpenNarc
-	str	r0, [sp, #0x4]
-	b	_b6
-_66:
-	cmp	r3, #0x0
-	add	r3, sp, #0x10
-	beq	_92
-	lsl	r5, r1, #0x4
-	ldr	r1, [pc, #0xe8]
-	mov	r0, #0x49
-	str	r0, [sp, #0x0]
-	ldr	r0, [r4, #0x0]
-	ldr	r1, [r1, r5]
-	mov	r2, #0x1
-	bl	GfGfxLoader_GetCharDataFromOpenNarc
-	ldr	r1, [pc, #0xdc]
-	str	r0, [sp, #0x8]
-	ldr	r0, [r4, #0x0]
-	ldr	r1, [r1, r5]
-	add	r2, sp, #0xc
-	mov	r3, #0x49
-	bl	GfGfxLoader_GetPlttDataFromOpenNarc
-	str	r0, [sp, #0x4]
-	b	_b6
-_92:
-	ldr	r1, [pc, #0xc4]
-	lsl	r5, r6, #0x4
-	mov	r0, #0x49
-	str	r0, [sp, #0x0]
-	ldr	r0, [r4, #0x0]
-	ldr	r1, [r1, r5]
-	mov	r2, #0x1
-	bl	GfGfxLoader_GetCharDataFromOpenNarc
-	ldr	r1, [pc, #0xb4]
-	str	r0, [sp, #0x8]
-	ldr	r0, [r4, #0x0]
-	ldr	r1, [r1, r5]
-	add	r2, sp, #0xc
-	mov	r3, #0x49
-	bl	GfGfxLoader_GetPlttDataFromOpenNarc
-	str	r0, [sp, #0x4]
-_b6:
-	ldr	r1, [sp, #0x10]
-	ldr	r0, [r1, #0x14]
-	ldr	r1, [r1, #0x10]
-	bl	DC_FlushRange
-	ldr	r2, [sp, #0x10]
-	ldrh	r3, [r4, #0x4]
-	mov	r1, #0x34
-	ldr	r0, [r2, #0x14]
-	mul	r1, r3
-	add	r1, r4, r1
-	ldr	r1, [r1, #0xc]
-	ldr	r2, [r2, #0x10]
-	bl	GX_LoadOBJ
-	ldr	r1, [sp, #0xc]
-	ldr	r0, [r1, #0xc]
-	ldr	r1, [r1, #0x8]
-	bl	DC_FlushRange
-	ldr	r0, [sp, #0xc]
-	ldrh	r2, [r4, #0x4]
-	mov	r1, #0x34
-	ldr	r0, [r0, #0xc]
-	mul	r1, r2
-	add	r1, r4, r1
-	ldr	r1, [r1, #0x10]
-	mov	r2, #0x20
-	bl	GX_LoadOBJPltt
-	mov	r0, #0x49
-	str	r0, [sp, #0x0]
-	lsl	r5, r6, #0x4
-	ldr	r1, [pc, #0x64]
-	add	r7, r4, #0x0
-	ldrh	r6, [r4, #0x4]
-	mov	r3, #0x34
-	ldr	r0, [r4, #0x0]
-	ldr	r1, [r1, r5]
-	add	r7, #0x24
-	mul	r3, r6
-	mov	r2, #0x1
-	add	r3, r7, r3
-	bl	GfGfxLoader_GetCellBankFromOpenNarc
-	ldrh	r1, [r4, #0x4]
-	add	r3, r4, #0x0
-	mov	r6, #0x34
-	add	r2, r1, #0x0
-	mul	r2, r6
-	add	r1, r4, r2
-	str	r0, [r1, #0x34]
-	mov	r0, #0x49
-	ldr	r1, [pc, #0x40]
-	str	r0, [sp, #0x0]
-	ldr	r1, [r1, r5]
-	ldrh	r5, [r4, #0x4]
-	ldr	r0, [r4, #0x0]
-	add	r3, #0x28
-	mul	r6, r5
-	mov	r2, #0x1
-	add	r3, r3, r6
-	bl	GfGfxLoader_GetAnimBankFromOpenNarc
-	ldrh	r2, [r4, #0x4]
-	mov	r1, #0x34
-	mul	r1, r2
-	add	r1, r4, r1
-	str	r0, [r1, #0x38]
-	ldr	r0, [sp, #0x8]
-	bl	FreeToHeap
-	ldr	r0, [sp, #0x4]
-	bl	FreeToHeap
-	ldrh	r0, [r4, #0x4]
-	add	r0, r0, #0x1
-	strh	r0, [r4, #0x4]
-	add	sp, #0x14
-	pop	{r4, r5, r6, r7, pc}
-	nop
-}
+#pragma GLOBAL_ASM("asm/nonmatchings/ov76_021E6B8C.s")
 #endif //NONMATCHING
+
+// UNCOMMENT after asm_processor works!
+// void ov76_021E6CF4(Ov76_Work *a0, UnkOv76_021E6CF4 *a1) {
+//     SpriteResourcesHeader spriteRsrcHeader;
+//     struct SpriteTemplate spriteTemplate;
+
+//     ov76_021E64B0(a1->unk2, a0, 3, 1, &spriteTemplate, &spriteRsrcHeader);
+//     UnkOv76_021E683C *temp2 = &a0->unk260.unk140;
+//     int idx = temp2->unkC0;
+//     UnkOv76_021E683C_sub *temp3 = &temp2->unk0[idx];
+//     temp3->unk0 = 1;
+//     temp3->unk2 = a1->unk0;
+//     spriteTemplate.position.x = a1->unk4 * FX32_ONE;
+//     spriteTemplate.position.y = (a1->unk6 + 256) * FX32_ONE;
+//     spriteTemplate.priority = 1;
+
+//     struct Sprite *sprite = CreateSprite(&spriteTemplate);
+//     temp3->unk8 = sprite;
+//     GF_ASSERT(sprite != NULL);
+
+//     Set2dSpriteAnimActiveFlag(temp3->unk8, 0);
+//     Set2dSpriteVisibleFlag(temp3->unk8, 0);
+//     Set2dSpriteAnimSeqNo(temp3->unk8, a1->unk3);
+//     temp3->unk4 = a1->unk8;
+//     temp2->unkC0 += 1;
+// }
+
+// static void ov76_021E6E20(Ov76_Work *a0) {
+//     u8 i;
+//     NarcStruct *temp = &a0->unk260;
+//     UnkOv76_021E683C *temp2 = &temp->unk140;
+
+//     for (i = 0; i < 16; i++) {
+//         if (temp2->unk0[i].unk0 != 0) {
+//             sub_02024758(temp2->unk0[i].unk8);
+//             temp2->unk0[i].unk0 = 0;
+//             temp2->unk0[i].unk2 = 0;
+//         }
+//     }
+
+//     temp2->unkC0 = 0;
+//     for (i = 0; i < temp->unk4; i++) {
+//         FreeToHeap(temp->unk8[i].unk34);
+//         FreeToHeap(temp->unk8[i].unk38);
+//         temp->unk8[i].unk24 = NULL;
+//         temp->unk8[i].unk28 = NULL;
+//     }
+//     temp->unk4 = 0;
+// }
