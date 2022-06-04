@@ -160,19 +160,14 @@ typedef struct {
     u8 unk3;
     s16 unk4;
     s16 unk6;
-    int unk8;
-} UnkOv76_021E6CF4;
-
-typedef struct {
-    u8 unk0[0x8];
     u32 unk8;
-} UnkOv76_021E6D80_sub;
+} UnkOv76_021E6CF4;
 
 typedef struct {
     u8 unk0;
     u8 unk1;
     u8 unk2[6];
-    UnkOv76_021E6D80_sub unk8[16];
+    UnkOv76_021E6CF4 unk8[16];
 } UnkOv76_021E6D80;
 
 extern const GF_GXBanksConfig ov76_021E6FC0;
@@ -556,253 +551,67 @@ static void ov76_021E62B4(Ov76_Work *a0) {
     }
 }
 
-#ifdef NONMATCHING
 // Probably initializes the dancing Pokémon sprites
 static void ov76_021E62F4(Ov76_Work *a0) {
-    // sp + 0x8 <- a0
-
-    
-    int temp4;
-    // sp + 0x14 <- &temp4
-    
-    // int temp5;
-    // sp + 0x18 <- &temp5
-
-    // int temp6;
-    // sp + 0x30 <- &temp6
-    
-    struct SpriteTemplate temp2; // THIS MIGHT NOT BE SpriteTemplate!
-    // sp + 0x3c <- &temp2
-
+    struct SpriteResourcesHeader temp2;
     struct SpriteTemplate temp1; 
-    // sp + 0xc <- &temp1
     
     u8 var2;
 
-    // UnkOv76_021E62F4 is not the right structure...
-    // It is either a single array or two single arrays back-to-back
-    struct Sprite **temp3;
-    
-    temp3 = a0->unk1C4;
-    // r4 <- temp3
-
+    UnkOv76_021E664C *temp3 = &a0->unk1C4;
     ov76_021E6440(1, a0, 1, 3, &temp1, &temp2);
     for (u8 i = 0; i < 6; i++) {
-        // r6 <- i
         if (i < 3) {
-            // r1 <- var2
-            // var2 = i;
-        
-            temp4 = (1 << 16);
-            temp1.position.x = temp4;
+            var2 = i;
+            temp1.position.x = (1 << 16);
         } else {
-            // r1 <- var2
-            i -= 3;
-
-            temp4 = (0xf << 16);
-            temp1.position.x = temp4;
+            var2 = i - 3;
+            temp1.position.x = (0xf << 16);
         }
     
-        temp1.position.y = (i * 0x50 + 16) * FX32_ONE;
+        temp1.position.y = (var2 * 0x50 + 16) * FX32_ONE;
         temp1.priority = 1;
-        temp3[i] = CreateSprite(&temp1);
-        GF_ASSERT(temp3[i] != NULL);
-        Set2dSpriteAnimActiveFlag(temp3[i], 1);
-        Set2dSpriteVisibleFlag(temp3[i], 1);
-        Set2dSpriteAnimSeqNo(temp3[i], 6);
+        temp3->unk0[i] = CreateSprite(&temp1);
+        GF_ASSERT(temp3->unk0[i] != NULL);
+        Set2dSpriteAnimActiveFlag(temp3->unk0[i], 1);
+        Set2dSpriteVisibleFlag(temp3->unk0[i], 1);
+        Set2dSpriteAnimSeqNo(temp3->unk0[i], 6);
         
         temp1.priority = 0;
-        temp3[i + 12] = CreateSprite(&temp1); // offset by 12
-        GF_ASSERT(temp3[i + 12] != NULL);
-        Set2dSpriteAnimActiveFlag(temp3[i + 12], 1);
-        Set2dSpriteVisibleFlag(temp3[i + 12], 0);
-        Set2dSpriteAnimSeqNo(temp3[i + 12], 7);
+        temp3->unk30[i] = CreateSprite(&temp1);
+        GF_ASSERT(temp3->unk30[i] != NULL);
+        Set2dSpriteAnimActiveFlag(temp3->unk30[i], 1);
+        Set2dSpriteVisibleFlag(temp3->unk30[i], 0);
+        Set2dSpriteAnimSeqNo(temp3->unk30[i], 7);
     }
 
     for (u8 i = 0; i < 6; i++) {
         if (i < 3) {
             var2 = i;
-            temp4 = 1 << 16;
-            temp1.position.x = temp4;
+            temp1.position.x = 1 << 16;
         } else {
             var2 = i - 3;
-            temp4 = 0xf << 16;
-            temp1.position.x = temp4;
+            temp1.position.x = 0xf << 16;
         }
-        temp1.position.y = (var2 * 0x50 + 0x110) * FX32_ONE;
+        temp1.position.y = (var2 * 0x50 + 0x50 + 0xc0) * FX32_ONE;
         temp1.priority = 1;
-        var2 += 6;
-        temp3[var2] = CreateSprite(&temp1);
-        Set2dSpriteAnimActiveFlag(temp3[var2], 1);
-        Set2dSpriteVisibleFlag(temp3[var2], 1);
-        Set2dSpriteAnimSeqNo(temp3[var2], 6);
+        u8 idx = i + 6;
+        temp3->unk0[idx] = CreateSprite(&temp1);
+        Set2dSpriteAnimActiveFlag(temp3->unk0[idx], 1);
+        Set2dSpriteVisibleFlag(temp3->unk0[idx], 1);
+        Set2dSpriteAnimSeqNo(temp3->unk0[idx], 6);
 
         temp1.priority = 0;
-        temp3[var2 + 12] = CreateSprite(&temp1);
-        Set2dSpriteAnimActiveFlag(temp3[var2 + 12], 1);
-        Set2dSpriteVisibleFlag(temp3[var2 + 12], 0);
-        Set2dSpriteAnimSeqNo(temp3[var2 + 12], 7);
+        temp3->unk30[idx] = CreateSprite(&temp1);
+        Set2dSpriteAnimActiveFlag(temp3->unk30[idx], 1);
+        Set2dSpriteVisibleFlag(temp3->unk30[idx], 0);
+        Set2dSpriteAnimSeqNo(temp3->unk30[idx], 7);
     }
 
     ov76_021E6D80(a0);
     GX_EngineAToggleLayers(16, 1);
     GX_EngineBToggleLayers(16, 1);
 }
-#else
-asm void ov76_021E62F4(Ov76_Work *a0) {
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x60
-	mov r1, #0x71
-	lsl r1, r1, #2
-	str r0, [sp, #8]
-	add r4, r0, r1
-	add r0, sp, #0xc
-	str r0, [sp, #0x00]
-	add r0, sp, #0x3c
-	str r0, [sp, #4]
-	mov r0, #1
-	ldr r1, [sp, #8]
-	add r2, r0, #0
-	mov r3, #3
-	bl ov76_021E6440
-	mov r6, #0
-_021E6316:
-	cmp r6, #3
-	bhs _021E6324
-	mov r0, #1
-	lsl r0, r0, #0x10
-	add r1, r6, #0
-	str r0, [sp, #0x14]
-	b _021E6330
-_021E6324:
-	sub r0, r6, #3
-	lsl r0, r0, #0x18
-	lsr r1, r0, #0x18
-	mov r0, #0xf
-	lsl r0, r0, #0x10
-	str r0, [sp, #0x14]
-_021E6330:
-	mov r0, #0x50
-	mul r0, r1
-	add r0, #0x10
-	lsl r0, r0, #0xc
-	str r0, [sp, #0x18]
-	mov r0, #1
-	str r0, [sp, #0x30]
-	lsl r7, r6, #2
-	add r0, sp, #0xc
-	add r5, r4, r7
-	bl CreateSprite
-	str r0, [r4, r7]
-	ldr r0, [r4, r7]
-	cmp r0, #0
-	bne _021E6354
-	bl GF_AssertFail
-_021E6354:
-	ldr r0, [r5, #0x00]
-	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
-	ldr r0, [r5, #0x00]
-	mov r1, #1
-	bl Set2dSpriteVisibleFlag
-	ldr r0, [r5, #0x00]
-	mov r1, #6
-	bl Set2dSpriteAnimSeqNo
-	mov r0, #0
-	str r0, [sp, #0x30]
-	add r0, sp, #0xc
-	bl CreateSprite
-	str r0, [r5, #0x30]
-	cmp r0, #0
-	bne _021E6380
-	bl GF_AssertFail
-_021E6380:
-	ldr r0, [r5, #0x30]
-	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
-	ldr r0, [r5, #0x30]
-	mov r1, #0
-	bl Set2dSpriteVisibleFlag
-	ldr r0, [r5, #0x30]
-	mov r1, #7
-	bl Set2dSpriteAnimSeqNo
-	add r0, r6, #1
-	lsl r0, r0, #0x18
-	lsr r6, r0, #0x18
-	cmp r6, #6
-	blo _021E6316
-	mov r5, #0
-_021E63A4:
-	cmp r5, #3
-	bhs _021E63B2
-	mov r0, #1
-	lsl r0, r0, #0x10
-	add r2, r5, #0
-	str r0, [sp, #0x14]
-	b _021E63BE
-_021E63B2:
-	sub r0, r5, #3
-	lsl r0, r0, #0x18
-	lsr r2, r0, #0x18
-	mov r0, #0xf
-	lsl r0, r0, #0x10
-	str r0, [sp, #0x14]
-_021E63BE:
-	mov r0, #0x50
-	add r1, r2, #0
-	mul r1, r0
-	add r0, #0xc0
-	add r0, r1, r0
-	lsl r0, r0, #0xc
-	str r0, [sp, #0x18]
-	mov r0, #1
-	str r0, [sp, #0x30]
-	add r0, r5, #6
-	lsl r0, r0, #0x18
-	lsr r7, r0, #0x16
-	add r0, sp, #0xc
-	add r6, r4, r7
-	bl CreateSprite
-	str r0, [r4, r7]
-	ldr r0, [r4, r7]
-	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
-	ldr r0, [r4, r7]
-	mov r1, #1
-	bl Set2dSpriteVisibleFlag
-	ldr r0, [r4, r7]
-	mov r1, #6
-	bl Set2dSpriteAnimSeqNo
-	mov r0, #0
-	str r0, [sp, #0x30]
-	add r0, sp, #0xc
-	bl CreateSprite
-	str r0, [r6, #0x30]
-	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
-	ldr r0, [r6, #0x30]
-	mov r1, #0
-	bl Set2dSpriteVisibleFlag
-	ldr r0, [r6, #0x30]
-	mov r1, #7
-	bl Set2dSpriteAnimSeqNo
-	add r0, r5, #1
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-	cmp r5, #6
-	blo _021E63A4
-	ldr r0, [sp, #8]
-	bl ov76_021E6D80
-	mov r0, #0x10
-	mov r1, #1
-	bl GX_EngineAToggleLayers
-	mov r0, #0x10
-	mov r1, #1
-	bl GX_EngineBToggleLayers
-	add sp, #0x60
-	pop {r3, r4, r5, r6, r7, pc}
-}
-#endif
 
 static void ov76_021E6440(int a0, Ov76_Work *a1, int a2, int a3, struct SpriteTemplate *a4, struct SpriteResourcesHeader *a5) {
     CreateSpriteResourcesHeader(a5, a0, a0, a0, a0, -1, -1, 0, a2, a1->unk144[0], a1->unk144[1], a1->unk144[2], a1->unk144[3], 0, 0);
@@ -820,19 +629,14 @@ static void ov76_021E6440(int a0, Ov76_Work *a1, int a2, int a3, struct SpriteTe
     a4->heapId = 0x49;
 }
 
-#ifdef NONMATCHING
-void ov76_021E64B0(u8 a0, Ov76_Work *a1, u8 a2, int a3, struct SpriteTemplate *a4, SpriteResourcesHeader *a5) {
-    UnkOv76_021E64B0 *ptr;
-    struct SpriteTemplate *template;
-
-    ptr = &a1->unk260.unk8[a0];
-    template = a4;
+static void ov76_021E64B0(u8 a0, Ov76_Work *a1, u8 a2, int a3, struct SpriteTemplate *a4, SpriteResourcesHeader *a5) {
+    UnkOv76_021E6B2C *ptr = &a1->unk260.unk8[a0];
 
     a5->charData = 0;
-    a5->plttProxy = ptr->unkC; // *(r6 + 12);
-    a5->imageProxy = ptr->unk10; // *(r6 + 16);
-    a5->cellData = ptr->unk1C; // *(r6 + 0x1c);
-    a5->cellAnim = ptr->unk20; // *(r6 + 32);
+    a5->plttProxy = ptr->unk14; // *(r6 + 12);
+    a5->imageProxy = ptr->unk18; // *(r6 + 16);
+    a5->cellData = ptr->unk24; // *(r6 + 0x1c);
+    a5->cellAnim = ptr->unk28; // *(r6 + 32);
     a5->multiCellData = 0;
     a5->multiCellAnim = 0;
     a5->flag = 0;
@@ -840,73 +644,23 @@ void ov76_021E64B0(u8 a0, Ov76_Work *a1, u8 a2, int a3, struct SpriteTemplate *a
 
     a4->spriteList = a1->unk18;
     a4->header = a5;
-    a4->position.x = a0;
-    a4->position.y = a0;
-    a4->position.z = a0;
+    a4->position.x = 0;
+    a4->position.y = 0;
+    a4->position.z = 0;
     a4->scale.x = FX32_ONE;
     a4->scale.y = FX32_ONE;
     a4->scale.z = FX32_ONE;
-    a4->rotation = a0;
-    a4->priority = a0;
+    a4->rotation = 0;
+    a4->priority = 0;
     a4->whichScreen = a3;
     a4->heapId = 0x49;
 }
-#else
-asm void ov76_021E64B0(u8 a0, Ov76_Work *a1, u8 a2, int a3, struct SpriteTemplate *a4, SpriteResourcesHeader *a5) {
-	push {r4, r5, r6, r7}
-	mov r6, #0x9a
-	add r4, r0, #0
-	add r0, r1, #0
-	lsl r6, r6, #2
-	mov r7, #0x34
-	mul r7, r4
-	add r6, r0, r6
-	ldr r1, [sp, #0x14]
-	mov r4, #0
-	add r6, r6, r7
-	str r4, [r1, #4]
-	ldr r7, [r6, #0xc]
-	add r5, r2, #0
-	str r7, [r1, #8]
-	ldr r7, [r6, #0x10]
-	ldr r2, [sp, #0x10]
-	str r7, [r1]
-	ldr r7, [r6, #0x1c]
-	str r7, [r1, #0xc]
-	ldr r6, [r6, #0x20]
-	str r6, [r1, #0x10]
-	str r4, [r1, #0x14]
-	str r4, [r1, #0x18]
-	add r6, r1, #0
-	str r4, [r1, #0x1c]
-	add r6, #0x20
-	strb r5, [r6]
-	ldr r0, [r0, #0x18]
-	str r0, [r2]
-	str r1, [r2, #4]
-	str r4, [r2, #8]
-	str r4, [r2, #0xc]
-	mov r0, #1
-	str r4, [r2, #0x10]
-	lsl r0, r0, #0xc
-	str r0, [r2, #0x14]
-	str r0, [r2, #0x18]
-	str r0, [r2, #0x1c]
-	strh r4, [r2, #0x20]
-	str r4, [r2, #0x24]
-	str r3, [r2, #0x28]
-	mov r0, #0x49
-	str r0, [r2, #0x2c]
-	pop {r4, r5, r6, r7}
-	bx lr
-}
-#endif
 
-// DO NOT SUBMIT until removing (SysTask *) casts!!
+// DO NOT SUBMIT until adding external functions!!
 static void ov76_021E650C(Ov76_Work *a0) {
     Ov76_Data_021E5AA0 *ptr = &a0->unk228;
-    ptr->unk18.unkC = (SysTask *) sub_0200E33C(ov76_021E69C4, &ptr->unk18, 0);
-    a0->unk228.unk30.unk4 = (SysTask *) sub_0200E33C(ov76_021E68DC, &a0->unk228.unk30, 1);
+    ptr->unk18.unkC = sub_0200E33C(ov76_021E69C4, &ptr->unk18, 0);
+    a0->unk228.unk30.unk4 = sub_0200E33C(ov76_021E68DC, &a0->unk228.unk30, 1);
 }
 
 static void ov76_021E6544(Ov76_Work *a0) {
@@ -1292,51 +1046,75 @@ void ov76_021E6B8C(NarcStruct *a0, int a1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/ov76_021E6B8C.s")
 #endif //NONMATCHING
 
-// UNCOMMENT after asm_processor works!
-// void ov76_021E6CF4(Ov76_Work *a0, UnkOv76_021E6CF4 *a1) {
-//     SpriteResourcesHeader spriteRsrcHeader;
-//     struct SpriteTemplate spriteTemplate;
+void ov76_021E6CF4(Ov76_Work *a0, const UnkOv76_021E6CF4 *a1) {
+    SpriteResourcesHeader spriteRsrcHeader;
+    struct SpriteTemplate spriteTemplate;
 
-//     ov76_021E64B0(a1->unk2, a0, 3, 1, &spriteTemplate, &spriteRsrcHeader);
-//     UnkOv76_021E683C *temp2 = &a0->unk260.unk140;
-//     int idx = temp2->unkC0;
-//     UnkOv76_021E683C_sub *temp3 = &temp2->unk0[idx];
-//     temp3->unk0 = 1;
-//     temp3->unk2 = a1->unk0;
-//     spriteTemplate.position.x = a1->unk4 * FX32_ONE;
-//     spriteTemplate.position.y = (a1->unk6 + 256) * FX32_ONE;
-//     spriteTemplate.priority = 1;
+    ov76_021E64B0(a1->unk2, a0, 3, 1, &spriteTemplate, &spriteRsrcHeader);
+    UnkOv76_021E683C *temp2 = &a0->unk260.unk140;
+    int idx = temp2->unkC0;
+    UnkOv76_021E683C_sub *temp3 = &temp2->unk0[idx];
+    temp3->unk0 = 1;
+    temp3->unk2 = a1->unk0;
+    spriteTemplate.position.x = a1->unk4 * FX32_ONE;
+    spriteTemplate.position.y = (a1->unk6 + 256) * FX32_ONE;
+    spriteTemplate.priority = 1;
 
-//     struct Sprite *sprite = CreateSprite(&spriteTemplate);
-//     temp3->unk8 = sprite;
-//     GF_ASSERT(sprite != NULL);
+    struct Sprite *sprite = CreateSprite(&spriteTemplate);
+    temp3->unk8 = sprite;
+    GF_ASSERT(sprite != NULL);
 
-//     Set2dSpriteAnimActiveFlag(temp3->unk8, 0);
-//     Set2dSpriteVisibleFlag(temp3->unk8, 0);
-//     Set2dSpriteAnimSeqNo(temp3->unk8, a1->unk3);
-//     temp3->unk4 = a1->unk8;
-//     temp2->unkC0 += 1;
-// }
+    Set2dSpriteAnimActiveFlag(temp3->unk8, 0);
+    Set2dSpriteVisibleFlag(temp3->unk8, 0);
+    Set2dSpriteAnimSeqNo(temp3->unk8, a1->unk3);
+    temp3->unk4 = a1->unk8;
+    temp2->unkC0 += 1;
+}
 
-// static void ov76_021E6E20(Ov76_Work *a0) {
-//     u8 i;
-//     NarcStruct *temp = &a0->unk260;
-//     UnkOv76_021E683C *temp2 = &temp->unk140;
+static void ov76_021E6D80(Ov76_Work *a0) {
+    NarcStruct *temp = &a0->unk260;
+    u8 temp2 = temp->unk6;
 
-//     for (i = 0; i < 16; i++) {
-//         if (temp2->unk0[i].unk0 != 0) {
-//             sub_02024758(temp2->unk0[i].unk8);
-//             temp2->unk0[i].unk0 = 0;
-//             temp2->unk0[i].unk2 = 0;
-//         }
-//     }
+    if (temp2 >= 16) {
+        return;
+    }
 
-//     temp2->unkC0 = 0;
-//     for (i = 0; i < temp->unk4; i++) {
-//         FreeToHeap(temp->unk8[i].unk34);
-//         FreeToHeap(temp->unk8[i].unk38);
-//         temp->unk8[i].unk24 = NULL;
-//         temp->unk8[i].unk28 = NULL;
-//     }
-//     temp->unk4 = 0;
-// }
+    const UnkOv76_021E6D80 *temp3 = &ov76_021E7B0C[temp2];
+
+    GF_ASSERT(temp3->unk0 <= 6);
+    for (u8 i = 0; i < temp3->unk0; i++) {
+        ov76_021E6B8C(temp, temp3->unk2[i]);
+    }
+    int temp4 = -1;
+    GF_ASSERT(temp3->unk1 <= 16);
+    for (u8 i = 0; i < temp3->unk1; i++) {
+        ov76_021E6CF4(a0, &temp3->unk8[i]);
+        if (temp4 > temp3->unk8[i].unk8) {
+            temp4 = temp3->unk8[i].unk8;
+        }
+    }
+    GF_ASSERT(temp4 > a0->unk8);
+}
+
+static void ov76_021E6E20(Ov76_Work *a0) {
+    u8 i;
+    NarcStruct *temp = &a0->unk260;
+    UnkOv76_021E683C *temp2 = &temp->unk140;
+
+    for (i = 0; i < 16; i++) {
+        if (temp2->unk0[i].unk0 != 0) {
+            sub_02024758(temp2->unk0[i].unk8);
+            temp2->unk0[i].unk0 = 0;
+            temp2->unk0[i].unk2 = 0;
+        }
+    }
+
+    temp2->unkC0 = 0;
+    for (i = 0; i < temp->unk4; i++) {
+        FreeToHeap(temp->unk8[i].unk34);
+        FreeToHeap(temp->unk8[i].unk38);
+        temp->unk8[i].unk24 = NULL;
+        temp->unk8[i].unk28 = NULL;
+    }
+    temp->unk4 = 0;
+}
