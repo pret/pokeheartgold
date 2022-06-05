@@ -218,11 +218,9 @@ static void ov76_021E69C4(int a0, UnkOv76_021E6944 *a1, int a2);
 static void ov76_021E6A34(int a0, int a1, int a2, int a3);
 static void ov76_021E6A94(Ov76_Data_021E5AA0 *a0);
 static void ov76_021E6B2C(Ov76_Work *a0);
+static void ov76_021E6B8C(NarcStruct *a0, int a1);
 static void ov76_021E6D80(Ov76_Work *a0);
 static void ov76_021E6E20(Ov76_Work *a0);
-
-// TODO: Update to `static` after matching.
-void ov76_021E6B8C(NarcStruct *a0, int a1);
 
 BOOL ov76_021E5900(OVY_MANAGER *a0, int *a1) {
     Ov76_Work *data;
@@ -965,32 +963,16 @@ static void ov76_021E6B2C(Ov76_Work *a0) {
     }
 }
 
-#ifdef NONMATCHING
-void ov76_021E6B8C(NarcStruct *a0, int a1) {
-    // r6 <- a1
-    // r4 <- a0
-    // r3 <- a2
-
+static void ov76_021E6B8C(NarcStruct *a0, int a1) {
     int temp;
-    // r0 <- temp
     int temp3;
-    // r1 = temp3
-
     BOOL isCompressed = FALSE;
-    // r2 <- isCompressed
     int temp2 = 0;
-    // r3 <- temp2
 
     NNSG2dCharacterData *ppCharData;
-    // sp + 0x10 <- ppCharData
-
     NNSG2dPaletteData *ppPlttData;
-    // sp + 0xc <- ppPlttData
-
     void *data;
-    // sp + 0x8 <- data
     void *data2;
-    // sp + 0x4 <- data2
 
     if (a1 == 5) {
         isCompressed = TRUE;
@@ -1011,40 +993,31 @@ void ov76_021E6B8C(NarcStruct *a0, int a1) {
     }
 
     if (isCompressed != 0) {
-        data = GfGfxLoader_GetCharDataFromOpenNarc(a0->unk0[0].unk0, ov76_021E7094[temp].unk4, 1, &ppCharData, 0x49);
-        data2 = GfGfxLoader_GetPlttDataFromOpenNarc(a0->unk0[0].unk0, ov76_021E7094[temp].unk0, &ppPlttData, 0x49);
+        data = GfGfxLoader_GetCharDataFromOpenNarc(a0->unk0, ov76_021E7094[temp].unk4, 1, &ppCharData, 0x49);
+        data2 = GfGfxLoader_GetPlttDataFromOpenNarc(a0->unk0, ov76_021E7094[temp].unk0, &ppPlttData, 0x49);
     } else {
-        // r3 <- sp + 0x10
         if (temp2 != 0) {
-            data = GfGfxLoader_GetCharDataFromOpenNarc(a0->unk0[0].unk0, ov76_021E7094[temp3].unk4, 1, &ppCharData, 0x49);
-            data2 = GfGfxLoader_GetPlttDataFromOpenNarc(a0->unk0[0].unk0, ov76_021E7094[temp3].unk0, &ppPlttData, 0x49);
+            data = GfGfxLoader_GetCharDataFromOpenNarc(a0->unk0, ov76_021E7094[temp3].unk4, 1, &ppCharData, 0x49);
+            data2 = GfGfxLoader_GetPlttDataFromOpenNarc(a0->unk0, ov76_021E7094[temp3].unk0, &ppPlttData, 0x49);
         } else {
-            data = GfGfxLoader_GetCharDataFromOpenNarc(a0->unk0[0].unk0, ov76_021E7094[a1].unk4, 1, &ppCharData, 0x49);
-            data2 = GfGfxLoader_GetPlttDataFromOpenNarc(a0->unk0[0].unk0, ov76_021E7094[a1].unk0, &ppPlttData, 0x49);
+            data = GfGfxLoader_GetCharDataFromOpenNarc(a0->unk0, ov76_021E7094[a1].unk4, 1, &ppCharData, 0x49); 
+            data2 = GfGfxLoader_GetPlttDataFromOpenNarc(a0->unk0, ov76_021E7094[a1].unk0, &ppPlttData, 0x49);
         }
     }
 
-    // inst 0xb6
     DC_FlushRange(ppCharData->pRawData, ppCharData->szByte);
-    int idx = a0->unk0[0].unk4;
-    GX_LoadOBJ(ppCharData->pRawData, a0->unk0[idx].unkC, ppCharData->szByte);
+    int idx = a0->unk4; 
+    GX_LoadOBJ(ppCharData->pRawData, a0->unk8[idx].unkC, ppCharData->szByte);
     DC_FlushRange(ppPlttData->pRawData, ppPlttData->szByte);
-    idx = a0->unk0[0].unk4;
-    GX_LoadOBJPltt(ppPlttData->pRawData, a0->unk0[idx].unk10, 0x20);
+    idx = a0->unk4;
+    GX_LoadOBJPltt(ppPlttData->pRawData, a0->unk8[idx].unk10, 0x20);
 
-    // inst 0xf2
-    // idx = a0->unk0[0].unk4;
-    // UnkOv76_021E6B2C *temp4 = &a0->unk0[idx];
-    a0->unk0[a0->unk0[0].unk4 + 1].unk0 = GfGfxLoader_GetCellBankFromOpenNarc(a0->unk0[0].unk0, ov76_021E7094[a1].unk8, 1, &a0->unk0[a0->unk0[0].unk4].unk24, 0x49);
-    // This cast is incorrect! It's storing a 4-byte value
-    a0->unk0[a0->unk0[0].unk4 + 1].unk4 = (u16)GfGfxLoader_GetAnimBankFromOpenNarc(a0->unk0[0].unk0, ov76_021E7094[a1].unkC, 1, &a0->unk0[a0->unk0[0].unk4].unk28, 0x49);
+    a0->unk8[a0->unk4].unk34 = GfGfxLoader_GetCellBankFromOpenNarc(a0->unk0, ov76_021E7094[a1].unk8, 1, &a0->unk8[a0->unk4].unk24, 0x49);
+    a0->unk8[a0->unk4].unk38 = GfGfxLoader_GetAnimBankFromOpenNarc(a0->unk0, ov76_021E7094[a1].unkC, 1, &a0->unk8[a0->unk4].unk28, 0x49);
     FreeToHeap(data);
     FreeToHeap(data2);
-    a0->unk0[0].unk4++;
+    a0->unk4++;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/ov76_021E6B8C.s")
-#endif //NONMATCHING
 
 void ov76_021E6CF4(Ov76_Work *a0, const UnkOv76_021E6CF4 *a1) {
     SpriteResourcesHeader spriteRsrcHeader;
