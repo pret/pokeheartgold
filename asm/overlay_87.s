@@ -27,7 +27,7 @@ ov87_021E5900: ; 0x021E5900
 	str r0, [r4, #0x58]
 	add r0, r5, #0
 	str r5, [r4]
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r5, r0, #0
 	mov r1, #0x5a
 	add r2, r5, #0

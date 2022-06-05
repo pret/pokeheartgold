@@ -193,7 +193,7 @@ ov102_021E7888: ; 0x021E7888
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	str r0, [r4]
 	bl sub_02090D70
 	str r0, [r4, #4]

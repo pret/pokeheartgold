@@ -29,7 +29,7 @@ ov75_02246960: ; 0x02246960
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	ldr r0, [r0, #8]
 	str r0, [r4, #4]
 	bl Sav2_PlayerData_GetOptionsAddr
@@ -825,7 +825,7 @@ ov75_02246F0C: ; 0x02246F0C
 	add r5, r0, #0
 	bl MI_CpuFill8
 	add r0, r4, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	str r0, [r5]
 	mov r0, #0x74
 	bl BgConfig_Alloc
