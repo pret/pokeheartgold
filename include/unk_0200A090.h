@@ -40,19 +40,19 @@ typedef enum GF_GraphicsResourceType {
     GF_GFX_RES_TYPE_MANM = 5,
 } GfGfxResType;
 
-struct _2DGfxResObj {
+typedef struct _2DGfxResObj {
     struct _2DGfxRawResObj *resource;
     GfGfxResType type;
     void *extra;
-};
+} _2DGfxResObj;
 
-struct _2DGfxResMan {
+typedef struct _2DGfxResMan {
     struct _2DGfxRawResMan *resourceMgr;
     struct _2DGfxResObj *objects;
     int max;
     int num;
     GfGfxResType type;
-};
+} _2DGfxResMan;
 
 struct _2DGfxResHeaderFile {
     int id;

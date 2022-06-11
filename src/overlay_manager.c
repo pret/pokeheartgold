@@ -1,13 +1,13 @@
 #include "overlay_manager.h"
 
-OVY_MANAGER *OverlayManager_new(const OVY_MGR_TEMPLATE *template, void *parentWork, HeapID heapId) {
+OVY_MANAGER *OverlayManager_new(const OVY_MGR_TEMPLATE *template, void *args, HeapID heapId) {
     OVY_MANAGER *ret;
 
     ret = AllocFromHeap(heapId, sizeof(OVY_MANAGER));
     ret->template = *template;
     ret->exec_state = 0;
     ret->proc_state = 0;
-    ret->parentWork = parentWork;
+    ret->args = args;
     ret->data = NULL;
     ret->unk_20 = 0;
     ret->unk_24 = 0;
@@ -35,8 +35,9 @@ void OverlayManager_FreeData(OVY_MANAGER *man) {
     man->data = NULL;
 }
 
-void *OverlayManager_GetParentWork(OVY_MANAGER *man) {
-    return man->parentWork;
+// Get arguments passed into the application.
+void *OverlayManager_GetArgs(OVY_MANAGER *man) {
+    return man->args;
 }
 
 BOOL OverlayManager_run(OVY_MANAGER *man) {

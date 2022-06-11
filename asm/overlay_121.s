@@ -232,7 +232,7 @@ _021E5AE8: .word 0x0000025E
 ov121_021E5AEC: ; 0x021E5AEC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	mov r2, #1
 	add r4, r0, #0
 	mov r0, #3

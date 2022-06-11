@@ -1816,7 +1816,7 @@ ov65_0221CD74: ; 0x0221CD74
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	ldr r1, [r4, #0x68]
 	str r1, [r0, #0x24]
 	add r0, r4, #0
@@ -2212,7 +2212,7 @@ ov65_0221D0EC: ; 0x0221D0EC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, r1, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r4, r0, #0
 	mov r2, #6
 	ldr r0, _0221D1B0 ; =0x00000674

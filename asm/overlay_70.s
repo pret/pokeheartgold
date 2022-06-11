@@ -1983,7 +1983,7 @@ ov70_02238818: ; 0x02238818
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	mov r1, #0
 	str r0, [r4]
 	add r0, r4, #0

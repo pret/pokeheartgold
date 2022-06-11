@@ -803,7 +803,7 @@ ov16_0220196C: ; 0x0220196C
 	mov r0, #0x82
 	str r0, [r4]
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	str r0, [r4, #4]
 	add r0, r4, #0
 	bl ov16_02201A34

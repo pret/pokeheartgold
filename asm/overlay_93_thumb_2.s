@@ -5435,7 +5435,7 @@ ov93_02262598: ; 0x02262598
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	str r0, [r4]
 	mov r0, #1
 	pop {r3, r4, r5, pc}

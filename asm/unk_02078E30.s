@@ -1703,7 +1703,7 @@ sub_02079BD8: ; 0x02079BD8
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	ldr r1, _02079CC8 ; =0x00000654
 	str r0, [r4, r1]
 	mov r0, #0xc

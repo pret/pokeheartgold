@@ -21,7 +21,7 @@ ov14_021E5900: ; 0x021E5900
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	str r0, [r4]
 	ldr r0, [r0]
 	bl GetStoragePCPointer

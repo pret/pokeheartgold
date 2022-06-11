@@ -30,7 +30,7 @@ App_DeleteSave_Init: ; 0x02091CDC
 	mov r0, #0
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	ldr r0, [r0, #8]
 	str r0, [r4, #0x30]
 	mov r0, #1

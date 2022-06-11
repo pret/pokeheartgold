@@ -45,7 +45,7 @@ ov58_022378E4: ; 0x022378E4
 	mov r0, #0x85
 	str r0, [r4]
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	str r0, [r4, #4]
 	add r0, r4, #0
 	bl ov58_02237B40

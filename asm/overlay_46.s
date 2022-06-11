@@ -22,7 +22,7 @@ ov46_02258800: ; 0x02258800
 	add r5, r0, #0
 	bl memset
 	add r0, r4, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r1, _0225891C ; =0x0000047D
@@ -148,7 +148,7 @@ ov46_0225892C: ; 0x0225892C
 	bl OverlayManager_GetData
 	add r5, r0, #0
 	add r0, r6, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r6, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0xf
@@ -581,7 +581,7 @@ ov46_02258CB4: ; 0x02258CB4
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	ldr r0, [r0]
 	mov r1, #0x77
 	str r0, [r4]
@@ -680,7 +680,7 @@ ov46_02258DA8: ; 0x02258DA8
 	bl OverlayManager_GetData
 	add r5, r0, #0
 	add r0, r6, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r6, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0xa

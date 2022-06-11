@@ -5106,7 +5106,7 @@ _021E8090: .word 0x04001000
 ov122_021E8094: ; 0x021E8094
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r5, r0, #0
 	bne _021E80A4
 	bl GF_AssertFail

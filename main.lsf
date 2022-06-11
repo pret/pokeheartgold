@@ -883,10 +883,12 @@ Overlay OVY_75
     After OVY_70
     Object asm/overlay_75.o
 }
-Overlay OVY_76
+Overlay credits
 {
     After main
-    Object asm/overlay_76.o
+    Object src/overlay_credits_data.o
+    Object src/overlay_credits.o
+    Object src/overlay_credits_data2.o
 }
 Overlay OVY_77
 {

@@ -3192,7 +3192,7 @@ ov74_MainMenu_AppInit: ; 0x02228920
 	mov r1, #0
 	bl sub_0200FBF4
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	ldr r0, [r0, #8]
 	str r0, [r4, #4]
 	bl Save_MysteryGift_get
@@ -4241,7 +4241,7 @@ ov74_02229200: ; 0x02229200
 	bl BgConfig_Alloc
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	ldr r0, [r0, #8]
 	str r0, [r4, #8]
 	bl Sav2_PlayerData_GetProfileAddr
@@ -5611,7 +5611,7 @@ ov74_02229D1C: ; 0x02229D1C
 	cmp r0, #0
 	bne _02229D48
 	bl ov74_0222CD7C
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	ldr r0, [r0, #8]
 	add r1, r4, #0
 	bl sub_02038148
@@ -6216,7 +6216,7 @@ ov74_0222A174: ; 0x0222A174
 	add r0, r6, #0
 	add r4, #0x8c
 	add r5, #0xdc
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	ldr r0, [r0, #8]
 	str r0, [sp]
 	add r0, r4, #0
@@ -7893,7 +7893,7 @@ _0222AEE8:
 	mov r1, #0x1d
 	str r1, [r4, r0]
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	ldr r0, [r0, #8]
 	str r0, [r4, #4]
 	bl Sav2_PlayerData_GetOptionsAddr
@@ -14267,7 +14267,7 @@ _0222E216: ; jump table
 	.short _0222E79C - _0222E216 - 2 ; case 30
 _0222E254:
 	add r0, r6, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	ldr r1, [r0, #8]
 	ldr r0, _0222E5A4 ; =0x00002BA4
 	str r1, [r4, r0]
@@ -16942,7 +16942,7 @@ _0222F7F6: ; jump table
 	.short _0222FB2C - _0222F7F6 - 2 ; case 30
 _0222F834:
 	add r0, r6, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	ldr r1, [r0, #8]
 	ldr r0, _0222FB50 ; =0x00002BA4
 	str r1, [r4, r0]
@@ -24546,7 +24546,7 @@ ov74_02233230: ; 0x02233230
 	mov r1, #0
 	bl sub_0200FBF4
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	ldr r0, [r0, #8]
 	str r0, [r4, #0x10]
 	bl Sav2_PlayerData_GetProfileAddr

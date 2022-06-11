@@ -10,7 +10,7 @@ ov12_022378C0: ; 0x022378C0
 	sub sp, #0x24
 	add r4, r1, #0
 	add r6, r0, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	ldr r1, [r4]
 	add r5, r0, #0
 	cmp r1, #0xf
@@ -755,7 +755,7 @@ ov12_02237F18: ; 0x02237F18
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r7, r0, #0
 	bl sub_02026E8C
 	add r5, r0, #0
@@ -1320,7 +1320,7 @@ ov12_0223843C: ; 0x0223843C
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	ldr r3, _02238778 ; =0x0000244C
 	mov r2, #0x67
 	ldr r1, [r4, r3]
@@ -4771,7 +4771,7 @@ ov12_0223A0D4: ; 0x0223A0D4
 	bl OverlayManager_CreateAndGetData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r5, r0, #0
 	ldr r2, _0223A20C ; =0x00002490
 	mov r0, #0
@@ -4970,7 +4970,7 @@ ov12_0223A260: ; 0x0223A260
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	ldr r0, [r4, #0x2c]
 	mov r1, #4
 	tst r1, r0
@@ -5163,7 +5163,7 @@ _0223A3EA:
 ov12_0223A3F0: ; 0x0223A3F0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r7, r0, #0
 	ldr r0, [r7]
 	mov r1, #4
@@ -5405,7 +5405,7 @@ _0223A5E0: .word 0x000001B2
 	thumb_func_start ov12_0223A5E4
 ov12_0223A5E4: ; 0x0223A5E4
 	push {r4, r5, r6, lr}
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	mov r1, #0x66
 	lsl r1, r1, #2
 	ldr r6, [r0, r1]

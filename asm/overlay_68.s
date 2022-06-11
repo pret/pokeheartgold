@@ -23,7 +23,7 @@ ov68_021E5900: ; 0x021E5900
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	str r0, [r4]
 	add r0, r4, #0
 	bl ov68_021E5A58

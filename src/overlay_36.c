@@ -92,7 +92,7 @@ BOOL ov36_TitleScreen_NewGame_AppInit(OVY_MANAGER* man, int* state) {
 
 BOOL ov36_TitleScreen_NewGame_AppExec(OVY_MANAGER* man, int* state) {
 #pragma unused(state)
-    SAVEDATA* savedata = ((struct UnkStruct_02111868_sub*)OverlayManager_GetParentWork(man))->savedata;
+    SAVEDATA* savedata = ((struct UnkStruct_02111868_sub*)OverlayManager_GetArgs(man))->savedata;
     NewGame_InitSaveData(HEAPID_OV36, savedata);
 
     return TRUE;
@@ -116,7 +116,7 @@ BOOL ov36_App_InitGameState_AfterOakSpeech_AppInit(OVY_MANAGER* man, int* state)
 
 BOOL ov36_App_InitGameState_AfterOakSpeech_AppExec(OVY_MANAGER* man, int* state) {
 #pragma unused(state)
-    struct UnkStruct_02111868_sub* unk_work = OverlayManager_GetParentWork(man);
+    struct UnkStruct_02111868_sub* unk_work = OverlayManager_GetArgs(man);
     SAVEDATA* savedata = unk_work->savedata;
     InitGameStateAfterOakSpeech_Internal(HEAPID_OV36, savedata, TRUE);
     sub_0201838C(Sav2_PlayerData_GetIGTAddr(savedata));
@@ -142,7 +142,7 @@ BOOL ov36_App_MainMenu_SelectOption_Continue_AppInit(OVY_MANAGER* man, int* stat
 
 BOOL ov36_App_MainMenu_SelectOption_Continue_AppExec(OVY_MANAGER* man, int* state) {
 #pragma unused(state)
-    struct UnkStruct_02111868_sub* unk_work = OverlayManager_GetParentWork(man);
+    struct UnkStruct_02111868_sub* unk_work = OverlayManager_GetArgs(man);
     SAVEDATA* savedata = unk_work->savedata;
     SYSINFO* sys_info = Sav2_SysInfo_get(savedata);
 

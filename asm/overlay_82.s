@@ -32,7 +32,7 @@ ov82_0223DD60: ; 0x0223DD60
 	str r0, [r5, #0x48]
 	add r0, r4, #0
 	str r4, [r5]
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r4, r0, #0
 	add r0, r5, #0
 	ldr r1, [r4]

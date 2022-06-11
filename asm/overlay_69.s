@@ -52,7 +52,7 @@ _021E5960:
 	lsl r0, r0, #8
 	str r1, [r5, r0]
 	add r0, r4, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r4, r0, #0
 	bl sub_0202CA44
 	str r0, [r5, #4]

@@ -28,7 +28,7 @@ _021E5920:
 ov55_021E5924: ; 0x021E5924
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	mov r2, #1
 	add r5, r0, #0
 	mov r0, #3
@@ -85,7 +85,7 @@ ov55_021E598C: ; 0x021E598C
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r5, r0, #0
 	ldr r0, [r6]
 	cmp r0, #4

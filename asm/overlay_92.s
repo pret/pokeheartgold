@@ -689,7 +689,7 @@ ov92_0225CAB4: ; 0x0225CAB4
 	str r0, [sp, #4]
 	bl memset
 	add r0, r4, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	ldr r1, [sp, #4]
 	ldr r6, [sp, #4]
 	add r1, #0x88

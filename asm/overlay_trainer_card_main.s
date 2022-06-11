@@ -54,7 +54,7 @@ TrainerCardMainApp_OvyInit: ; 0x021E5AC0
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r1, r4, #0
 	add r1, #0xe4
 	str r0, [r1]

@@ -82,7 +82,7 @@ _021E5916:
 	add r3, r0, #0
 	bl BeginNormalPaletteFade
 	add r0, r6, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	str r0, [r4, #8]
 	mov r0, #0x4e
 	mov r1, #0x27
@@ -302,7 +302,7 @@ ov37_021E5B94: ; 0x021E5B94
 	bl OverlayManager_GetData
 	add r6, r0, #0
 	add r0, r4, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r5, r0, #0
 	ldr r0, [r7]
 	cmp r0, #3

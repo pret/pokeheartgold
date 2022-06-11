@@ -34,7 +34,7 @@ _02237D52:
 	mov r0, #0x86
 	str r0, [r4]
 	add r0, r6, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	str r0, [r4, #4]
 	add r0, r4, #0
 	bl ov59_02237E94
@@ -5682,7 +5682,7 @@ _0223A8F2:
 	mov r0, #0x86
 	str r0, [r4]
 	add r0, r6, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	str r0, [r4, #4]
 	add r0, r4, #0
 	bl ov59_0223A9E4

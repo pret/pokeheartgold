@@ -37,7 +37,7 @@ _02246970:
 	b _02246B06
 _022469A6:
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	str r0, [r4]
 	mov r0, #0
 	str r0, [r4, #4]

@@ -2609,7 +2609,7 @@ ov95_021E6D70: ; 0x021E6D70
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	str r0, [r4]
 	ldr r0, [r0, #0x10]
 	bl Options_GetTextFrameDelay
