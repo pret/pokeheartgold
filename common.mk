@@ -110,8 +110,8 @@ ARFLAGS           := rcS
 
 $(C_OBJS):   MWCFLAGS  +=          -include global.h
 
-CC = $(WINE) $(MWCC) $(MWCFLAGS)
-AS = $(WINE) $(MWAS) $(MWASFLAGS)
+MW_COMPILE = $(WINE) $(MWCC) $(MWCFLAGS)
+MW_ASSEMBLE = $(WINE) $(MWAS) $(MWASFLAGS)
 
 export MWCIncludes := lib/include
 
@@ -153,9 +153,9 @@ endef
 endif
 DEPFLAGS := -gccdep -MD
 DEPFILES := $(ALL_OBJS:%.o=%.d)
-CC += $(DEPFLAGS)
-$(GLOBAL_ASM_OBJS): BUILD_C := $(ASM_PROCESSOR) "$(CC)" "$(AS)"
-BUILD_C ?= $(CC) -c -o
+MW_COMPILE += $(DEPFLAGS)
+$(GLOBAL_ASM_OBJS): BUILD_C := $(ASM_PROCESSOR) "$(MW_COMPILE)" "$(MW_ASSEMBLE)"
+BUILD_C ?= $(MW_COMPILE) -c -o
 
 $(DEPFILES):
 
@@ -173,8 +173,8 @@ $(BUILD_DIR)/%.o: %.s $(BUILD_DIR)/%.d
 
 include $(wildcard $(DEPFILES))
 else
-$(GLOBAL_ASM_OBJS): BUILD_C := $(ASM_PROCESSOR) "$(CC)" "$(AS)"
-BUILD_C ?= $(CC) -c -o
+$(GLOBAL_ASM_OBJS): BUILD_C := $(ASM_PROCESSOR) "$(MW_COMPILE)" "$(MW_ASSEMBLE)"
+BUILD_C ?= $(MW_COMPILE) -c -o
 
 $(BUILD_DIR)/%.o: %.c
 	$(BUILD_C) $@ $<
