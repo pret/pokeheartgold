@@ -5,9 +5,6 @@
 #include "fieldmap.h"
 #include "script.h"
 
-// unk_0203DE74.s
-extern SAVEDATA* Fsys_GetSaveDataPtr(FieldSystem*);
-
 static inline u16 ScriptGetVar(SCRIPTCONTEXT* ctx) {
     return VarGet(ctx->fsys, ScriptReadHalfword(ctx));
 }
@@ -349,9 +346,9 @@ BOOL ScrCmd_311(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_BufferDayCareMonNicks(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GetDayCareState(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_EcruteakGymInit(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_315(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_316(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_317(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_EcruteakGymTrainerApproachCarryCandleEffectBegin(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_EcruteakGymTrainerApproachCarryCandleEffectEnd(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_EcruteakGymExtinguishCandle(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_CianwoodGymInit(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_CianwoodGymTurnWinch(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_VermilionGymInit(SCRIPTCONTEXT* ctx);
@@ -657,7 +654,7 @@ BOOL ScrCmd_617(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_PhotoAlbumIsFull(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_RocketCostumeFlagCheck(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_RocketCostumeFlagAction(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_621(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_DrawRemainingStarterBalls(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_622(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_AnimApricornTree(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_ApricornTreeGetApricorn(SCRIPTCONTEXT* ctx);

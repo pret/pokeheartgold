@@ -12,6 +12,28 @@
 #define GYMMICK_VIRIDIAN     8
 #define GYMMICK_SINJOH       9
 
+// Azalea Gym - the spinarak maze
+#define GYMMICK_AZALEA_NUM_SPINARAK       (4)
+#define GYMMICK_AZALEA_NUM_STARTS         (12)
+
+// Initial position
+#define GYMMICK_AZALEA_SPIN0POS_INIT      (0)
+#define GYMMICK_AZALEA_SPIN1POS_INIT      (1)
+#define GYMMICK_AZALEA_SPIN2POS_INIT      (2)
+#define GYMMICK_AZALEA_SPIN3POS_INIT      (7)
+
+// Switches to control slack of specific segments
+// in second part
+#define GYMMICK_AZALEA_NUM_SWITCHES       (2)
+
+// .switches bitfield offsets
+#define GYMMICK_AZALEA_SWITCH_BLUE_F      (0)
+#define GYMMICK_AZALEA_SWITCH_RED_F       (1)
+
+// .switches bitfield states
+#define GYMMICK_AZALEA_SWITCH_TAUT        (0)
+#define GYMMICK_AZALEA_SWITCH_SLACK       (1)
+
 union GymmickUnion {
     u8 raw[0x20];
     struct {
@@ -28,7 +50,7 @@ union GymmickUnion {
         BOOL liftState;
     } violet;
     struct {
-        u8 spiders[4];
+        u8 spiders[GYMMICK_AZALEA_NUM_SPINARAK];
         int switches;
     } azalea;
     struct {

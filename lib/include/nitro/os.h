@@ -33,6 +33,7 @@
 #include <nitro/os/tick.h>
 #include <nitro/os/alarm.h>
 #include <nitro/os/common/entropy.h>
+#include <nitro/os/common/systemCall.h>
 
 #ifdef SDK_ARM9
 #include <nitro/os/cache.h>

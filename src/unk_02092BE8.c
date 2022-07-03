@@ -2,7 +2,6 @@
 #include "unk_02092BE8.h"
 #include "safari_zone.h"
 #include "map_header.h"
-#include "scrcmd.h"
 #include "unk_02054E00.h"
 #include "unk_0203DE74.h"
 #include "unk_0206D494.h"

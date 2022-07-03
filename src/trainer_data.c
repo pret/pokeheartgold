@@ -316,7 +316,7 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
             // pseudorandom value and add the gender selector.
             // This guarantees that NPC trainers' Pokemon are generated in a
             // consistent manner between attempts.
-            // This procedure results in only a 24-bit peersonality value.
+            // This procedure results in only a 24-bit personality value.
             personality = monSpecies[i].difficulty + monSpecies[i].level + species + enemies->trainer_idxs[party_id];
             SetLCRNGSeed(personality);
             for (j = 0; j < enemies->trainers[party_id].trainerClass; j++) {

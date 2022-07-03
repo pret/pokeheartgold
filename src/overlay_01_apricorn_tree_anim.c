@@ -213,7 +213,7 @@ static BOOL DoApricornJump(AnimApricornTreeWork *env) {
 static BOOL Task_AnimPlayerShakeTree(TaskManager *taskman) {
     FieldSystem *fsys = TaskManager_GetSys(taskman);
     LocalMapObject *playerObj = PlayerAvatar_GetMapObject(fsys->playerAvatar);
-    int *state_p = TaskManager_GetStatePtr(taskman);
+    u32 *state_p = TaskManager_GetStatePtr(taskman);
     AnimPlayerShakeTreeWork *env = TaskManager_GetEnv(taskman);
 
     switch (*state_p) {

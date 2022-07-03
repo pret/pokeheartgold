@@ -314,9 +314,9 @@ BOOL ScrCmd_311(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_BufferDayCareMonNicks(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_GetDayCareState(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_EcruteakGymInit(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_315(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_316(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_317(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_EcruteakGymTrainerApproachCarryCandleEffectBegin(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_EcruteakGymTrainerApproachCarryCandleEffectEnd(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_EcruteakGymExtinguishCandle(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_CianwoodGymInit(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_CianwoodGymTurnWinch(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_VermilionGymInit(SCRIPTCONTEXT *ctx);
@@ -620,7 +620,7 @@ BOOL ScrCmd_617(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_PhotoAlbumIsFull(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_RocketCostumeFlagCheck(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_RocketCostumeFlagAction(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_621(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_DrawRemainingStarterBalls(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_622(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_AnimApricornTree(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_ApricornTreeGetApricorn(SCRIPTCONTEXT *ctx);
@@ -1169,9 +1169,9 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_BufferDayCareMonNicks,
     ScrCmd_GetDayCareState,
     ScrCmd_EcruteakGymInit,
-    ScrCmd_315,
-    ScrCmd_316,
-    ScrCmd_317,
+    ScrCmd_EcruteakGymTrainerApproachCarryCandleEffectBegin,
+    ScrCmd_EcruteakGymTrainerApproachCarryCandleEffectEnd,
+    ScrCmd_EcruteakGymExtinguishCandle,
     ScrCmd_CianwoodGymInit,
     ScrCmd_CianwoodGymTurnWinch,
     ScrCmd_VermilionGymInit,
@@ -1475,7 +1475,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_PhotoAlbumIsFull,
     ScrCmd_RocketCostumeFlagCheck,
     ScrCmd_RocketCostumeFlagAction,
-    ScrCmd_621,
+    ScrCmd_DrawRemainingStarterBalls,
     ScrCmd_622,
     ScrCmd_AnimApricornTree,
     ScrCmd_ApricornTreeGetApricorn,

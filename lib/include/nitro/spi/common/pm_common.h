@@ -12,4 +12,9 @@ typedef u32 PMWakeUpTrigger;
 #define PM_PAD_LOGIC_AND   (1 << REG_PAD_KEYCNT_LOGIC_SHIFT)
 typedef u32 PMLogic;
 
+#ifdef SDK_ARM7
+void PMi_SetControl(int mask);
+void PMi_ResetControl(int mask);
+#endif //SDK_ARM7
+
 #endif //NITRO_SPI_COMMON_PM_COMMON_H_

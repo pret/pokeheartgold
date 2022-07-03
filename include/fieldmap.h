@@ -57,7 +57,6 @@ BOOL TryStartMapScriptByType(FieldSystem *fsys, u8 type);
 BOOL MapSceneScriptCheck(FieldSystem *fsys);
 u16 GetMapLoadScriptId(u8 *header, u8 type);
 u16 GetMapSceneScriptId(FieldSystem *fsys, u8 *header, u8 type);
-void* FieldSysGetAttrAddr(FieldSystem *fsys, enum ScriptEnvField field);
 
 
 BOOL sub_0203BC10(FieldSystem *);

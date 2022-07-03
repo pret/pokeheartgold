@@ -452,7 +452,7 @@ _0206A6BC: ; jump table
 _0206A6C8:
 	ldr r0, [r5, #0x40]
 	mov r1, #0
-	bl sub_0205C874
+	bl PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
 	ldrh r0, [r4]
 	add r0, r0, #1
 	strh r0, [r4]
@@ -479,7 +479,7 @@ _0206A6D8:
 	blo _0206A790
 	ldr r0, [r5, #0x40]
 	mov r1, #1
-	bl sub_0205C874
+	bl PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
 	ldrh r0, [r4]
 	add r0, r0, #1
 	strh r0, [r4]

@@ -5,6 +5,7 @@
 #include "party.h"
 #include "player_data.h"
 #include "pokemon.h"
+#include "unk_0203DE74.h"
 
 extern void ov01_021F9048(LocalMapObject* map_object);
 extern void FollowPokeMapObjectSetParams(LocalMapObject *mapObject, u16 species, u8 forme, BOOL shiny);

@@ -115,7 +115,7 @@ _021E599E:
 	beq _021E59DE
 	b _021E59E8
 _021E59D4:
-	ldr r0, _021E5BBC ; =FS_OVERLAY_ID(OVY_4)
+	ldr r0, _021E5BBC ; =FS_OVERLAY_ID(gymmick)
 	mov r1, #2
 	bl HandleLoadOverlay
 	b _021E59F0
@@ -318,7 +318,7 @@ _021E5BAC: .word ov01_021E66A8
 _021E5BB0: .word 0x000004CF
 _021E5BB4: .word ov01_021E66D8
 _021E5BB8: .word FS_OVERLAY_ID(OVY_2)
-_021E5BBC: .word FS_OVERLAY_ID(OVY_4)
+_021E5BBC: .word FS_OVERLAY_ID(gymmick)
 _021E5BC0: .word FS_OVERLAY_ID(OVY_3)
 _021E5BC4: .word ov01_021E66B8
 _021E5BC8: .word 0x000003A1
@@ -389,7 +389,7 @@ _021E5C4A:
 	mov r0, #0
 	bl FS_LoadOverlay
 	add r0, r4, #0
-	bl sub_02064910
+	bl DeleteGymmickFieldResources
 	ldr r0, _021E5E84 ; =ov01_021E66C8
 	blx ov123_0225F610
 	ldr r1, _021E5E88 ; =0x0000023B
@@ -601,7 +601,7 @@ _021E5E12:
 	beq _021E5E6E
 	ldr r0, _021E5EAC ; =FS_OVERLAY_ID(OVY_2)
 	bl UnloadOverlayByID
-	ldr r0, _021E5EB0 ; =FS_OVERLAY_ID(OVY_4)
+	ldr r0, _021E5EB0 ; =FS_OVERLAY_ID(gymmick)
 	bl UnloadOverlayByID
 	ldr r0, _021E5EB4 ; =FS_OVERLAY_ID(OVY_3)
 	bl UnloadOverlayByID
@@ -626,7 +626,7 @@ _021E5EA0: .word 0x00001EA5
 _021E5EA4: .word 0x000004EB
 _021E5EA8: .word 0x000004DD
 _021E5EAC: .word FS_OVERLAY_ID(OVY_2)
-_021E5EB0: .word FS_OVERLAY_ID(OVY_4)
+_021E5EB0: .word FS_OVERLAY_ID(gymmick)
 _021E5EB4: .word FS_OVERLAY_ID(OVY_3)
 	thumb_func_end ov01_021E5C24
 
@@ -1540,7 +1540,7 @@ _021E65D8:
 	ldr r0, [r0, #0x10]
 	bl ov01_021EB00C
 	add r0, r4, #0
-	bl sub_020648EC
+	bl InitGymmickFieldResources
 	ldr r0, _021E6628 ; =ov01_021E5900
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB

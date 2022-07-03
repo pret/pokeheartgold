@@ -42,9 +42,9 @@ typedef struct NNSG3dRenderObj_ {
     u8* ptrUserSbc; // 30
     struct NNSG3dJntAnmResult_* recJntAnm;
     struct NNSG3dMatAnmResult_* recMatAnm;
-    u32 hintMatAnmExist[NNS_G3D_SIZE_MAT_MAX / 32];
-    u32 hintJntAnmExist[NNS_G3D_SIZE_JNT_MAX / 32];
-    u32 hintVisAnmExist[NNS_G3D_SIZE_JNT_MAX / 32];
+    u32 hintMatAnmExist[NNS_G3D_SIZE_MAT_MAX / 32]; // 3C
+    u32 hintJntAnmExist[NNS_G3D_SIZE_JNT_MAX / 32]; // 44
+    u32 hintVisAnmExist[NNS_G3D_SIZE_JNT_MAX / 32]; // 4C
 } NNSG3dRenderObj; // size=0x54
 
 void NNS_G3dRenderObjAddAnmObj(NNSG3dRenderObj* pRenderObj, NNSG3dAnmObj* pAnmObj);

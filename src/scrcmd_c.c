@@ -5,7 +5,7 @@
 #include "overlay_01.h"
 #include "overlay_26.h"
 #include "overlay_03.h"
-#include "overlay_04.h"
+#include "gymmick_overlay.h"
 #include "system.h"
 #include "task.h"
 #include "text.h"
@@ -86,6 +86,7 @@
 #include "unk_02097BE0.h"
 #include "sound_02004A44.h"
 #include "unk_020290B4.h"
+#include "unk_0203DE74.h"
 #include "msgdata/msg/msg_0202.h"
 #include "constants/accessories.h"
 #include "constants/phone_contacts.h"
@@ -3072,31 +3073,31 @@ BOOL ScrCmd_EcruteakGymInit(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_315(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_EcruteakGymTrainerApproachCarryCandleEffectBegin(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     if (SavGymmick_GetType(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys))) != GYMMICK_ECRUTEAK) {
         return FALSE;
     }
-    ov04_02254D98(fsys);
+    Fsys_EcruteakGymEyeTrainerApproachCarryCandleEffectBegin(fsys);
     return FALSE;
 }
 
-BOOL ScrCmd_316(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_EcruteakGymTrainerApproachCarryCandleEffectEnd(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     if (SavGymmick_GetType(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys))) != GYMMICK_ECRUTEAK) {
         return FALSE;
     }
-    ov04_02254DD0(fsys);
+    Fsys_EcruteakGymTrainerApproachCarryCandleEffectEnd(fsys);
     return FALSE;
 }
 
-BOOL ScrCmd_317(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_EcruteakGymExtinguishCandle(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    u8 r5 = ScriptReadByte(ctx);
+    u8 isLastTalked = ScriptReadByte(ctx);
     if (SavGymmick_GetType(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys))) != GYMMICK_ECRUTEAK) {
         return TRUE;
     }
-    ov04_02254DE0(fsys, (r5 != 0) ? 10 : 30);
+    Fsys_EcruteakGymExtinguishCandle(fsys, (isLastTalked != 0) ? SCRIPTENV_LAST_TALKED : SCRIPTENV_EYE_TRAINER_1_OBJPTR);
     return TRUE;
 }
 
@@ -3144,7 +3145,7 @@ BOOL ScrCmd_VioletGymInit(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_VioletGymElevator(SCRIPTCONTEXT *ctx) {
-    ov04_02253ED4(ctx->fsys);
+    LaunchVioletGymElevatorMoveTask(ctx->fsys);
     return TRUE;
 }
 
@@ -3420,7 +3421,7 @@ BOOL ScrCmd_459(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_456(SCRIPTCONTEXT *ctx) {
     u8 arg = ScriptReadByte(ctx);
-    sub_0205C858(ctx->fsys->playerAvatar, arg);
+    PlayerAvatar_ToggleAutomaticHeightUpdating(ctx->fsys->playerAvatar, arg);
     return TRUE;
 }
 
@@ -4763,27 +4764,31 @@ BOOL ScrCmd_617(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_621(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_DrawRemainingStarterBalls(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    const struct UnkStruct_020FACDC sp4[3] = {
-        {0x00083000, 0x00000000, 0x00041000},
-        {0x0008D000, 0x00000000, 0x00041000},
-        {0x00088000, 0x00000000, 0x00048000},
+    const VecFx32 ballsPos[3] = {
+        {131 * FX32_ONE, 0, 65 * FX32_ONE},
+        {141 * FX32_ONE, 0, 65 * FX32_ONE},
+        {136 * FX32_ONE, 0, 72 * FX32_ONE},
     };
     int n, i;
 
     int partyCount = GetPartyCount(SavArray_PlayerParty_get(fsys->savedata));
     if (FlagGet(fsys, FLAG_GOT_TM51_FROM_FALKNER)) {
+        // Who took the last one?
         n = 0;
     } else if (FlagGet(fsys, FLAG_MET_PASSERBY_BOY)) {
+        // Rival stole one
         n = 1;
     } else if (partyCount > 0) {
+        // Just picked your starter
         n = 2;
     } else {
+        // Haven't picked your starter yet
         n = 3;
     }
     for (i = 0; i < n; i++) {
-        ov01_021F3C0C(fsys->unk9C, 0x8D, &sp4[i], 0, fsys->unk54);
+        AddBgModelFromTemplate(fsys->bgModels, 141, &ballsPos[i], NULL, fsys->_3dAnimationMgr);
     }
     return FALSE;
 }

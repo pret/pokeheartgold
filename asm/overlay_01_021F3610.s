@@ -671,11 +671,11 @@ _021F3AFC: .word ov01_02206A90
 _021F3B00: .word 0x00000F33
 	thumb_func_end ov01_021F3A3C
 
-	thumb_func_start ov01_021F3B04
-ov01_021F3B04: ; 0x021F3B04
+	thumb_func_start BgModelEvent_GetScaleVecPtr
+BgModelEvent_GetScaleVecPtr: ; 0x021F3B04
 	add r0, #0x2c
 	bx lr
-	thumb_func_end ov01_021F3B04
+	thumb_func_end BgModelEvent_GetScaleVecPtr
 
 	thumb_func_start ov01_021F3B08
 ov01_021F3B08: ; 0x021F3B08
@@ -683,8 +683,8 @@ ov01_021F3B08: ; 0x021F3B08
 	bx lr
 	thumb_func_end ov01_021F3B08
 
-	thumb_func_start ov01_021F3B0C
-ov01_021F3B0C: ; 0x021F3B0C
+	thumb_func_start BgModel_GetPosition
+BgModel_GetPosition: ; 0x021F3B0C
 	add r2, r1, #0
 	add r2, #0x14
 	add r3, r0, #0
@@ -693,10 +693,10 @@ ov01_021F3B0C: ; 0x021F3B0C
 	ldr r0, [r2]
 	str r0, [r3]
 	bx lr
-	thumb_func_end ov01_021F3B0C
+	thumb_func_end BgModel_GetPosition
 
-	thumb_func_start ov01_021F3B1C
-ov01_021F3B1C: ; 0x021F3B1C
+	thumb_func_start BgModel_SetPosition
+BgModel_SetPosition: ; 0x021F3B1C
 	add r3, r1, #0
 	add r2, r0, #0
 	ldmia r3!, {r0, r1}
@@ -705,7 +705,7 @@ ov01_021F3B1C: ; 0x021F3B1C
 	ldr r0, [r3]
 	str r0, [r2]
 	bx lr
-	thumb_func_end ov01_021F3B1C
+	thumb_func_end BgModel_SetPosition
 
 	thumb_func_start ov01_021F3B2C
 ov01_021F3B2C: ; 0x021F3B2C
@@ -739,16 +739,16 @@ ov01_021F3B3C: ; 0x021F3B3C
 	.balign 4, 0
 	thumb_func_end ov01_021F3B3C
 
-	thumb_func_start ov01_021F3B44
-ov01_021F3B44: ; 0x021F3B44
+	thumb_func_start BgModelList_GetEventByIndex
+BgModelList_GetEventByIndex: ; 0x021F3B44
 	mov r2, #0x38
 	mul r2, r1
 	add r0, r0, r2
 	bx lr
-	thumb_func_end ov01_021F3B44
+	thumb_func_end BgModelList_GetEventByIndex
 
-	thumb_func_start ov01_021F3B4C
-ov01_021F3B4C: ; 0x021F3B4C
+	thumb_func_start GetBgModelFromMemoryList
+GetBgModelFromMemoryList: ; 0x021F3B4C
 	mov r3, #0
 _021F3B4E:
 	ldr r2, [r0]
@@ -761,7 +761,7 @@ _021F3B4E:
 	mov r0, #0
 _021F3B5E:
 	bx lr
-	thumb_func_end ov01_021F3B4C
+	thumb_func_end GetBgModelFromMemoryList
 
 	thumb_func_start ov01_021F3B60
 ov01_021F3B60: ; 0x021F3B60
@@ -852,8 +852,8 @@ _021F3C04: .word NNS_G3dGlb + 0xBC
 _021F3C08: .word NNS_G3dGlb + 0x80
 	thumb_func_end ov01_021F3B84
 
-	thumb_func_start ov01_021F3C0C
-ov01_021F3C0C: ; 0x021F3C0C
+	thumb_func_start AddBgModelFromTemplate
+AddBgModelFromTemplate: ; 0x021F3C0C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	ldr r4, _021F3C98 ; =ov01_02206A78
@@ -928,7 +928,7 @@ _021F3C84:
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021F3C98: .word ov01_02206A78
-	thumb_func_end ov01_021F3C0C
+	thumb_func_end AddBgModelFromTemplate
 
 	thumb_func_start ov01_021F3C9C
 ov01_021F3C9C: ; 0x021F3C9C
@@ -1014,18 +1014,21 @@ _021F3D34: .word ov01_02206AB4
 	.rodata
 
 ov01_02206A78: ; 0x02206A78
-	.byte 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00
-	.byte 0x00, 0x10, 0x00, 0x00
+	.word 0x00001000
+	.word 0x00001000
+	.word 0x00001000
 
 ov01_02206A84: ; 0x02206A84
-	.byte 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00
+	.word 0x00001000
+	.word 0x00001000
+	.word 0x00001000
 
 ov01_02206A90: ; 0x02206A90
-	.byte 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x10, 0x00, 0x00
+	.word 0x00001000, 0x00000000, 0x00000000
+	.word 0x00000000, 0x00001000, 0x00000000
+	.word 0x00000000, 0x00000000, 0x00001000
 
 ov01_02206AB4: ; 0x02206AB4
-	.byte 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00
+	.word 0x00001000, 0x00000000, 0x00000000
+	.word 0x00000000, 0x00001000, 0x00000000
+	.word 0x00000000, 0x00000000, 0x00001000

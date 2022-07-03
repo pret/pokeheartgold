@@ -2864,9 +2864,9 @@
 .public ScrCmd_309
 .public ScrCmd_310
 .public ScrCmd_311
-.public ScrCmd_315
-.public ScrCmd_316
-.public ScrCmd_317
+.public ScrCmd_EcruteakGymTrainerApproachCarryCandleEffectBegin
+.public ScrCmd_EcruteakGymTrainerApproachCarryCandleEffectEnd
+.public ScrCmd_EcruteakGymExtinguishCandle
 .public ScrCmd_VioletGymElevator
 .public ScrCmd_333
 .public ScrCmd_334
@@ -3042,7 +3042,7 @@
 .public ScrCmd_617
 .public ScrCmd_RocketCostumeFlagCheck
 .public ScrCmd_RocketCostumeFlagAction
-.public ScrCmd_621
+.public ScrCmd_DrawRemainingStarterBalls
 .public ScrCmd_622
 .public ScrCmd_627
 .public ScrCmd_628
@@ -5952,20 +5952,20 @@
 .public ov01_021F3744
 .public ov01_021F3834
 .public ov01_021F3A3C
-.public ov01_021F3B04
+.public BgModelEvent_GetScaleVecPtr
 .public ov01_021F3B08
-.public ov01_021F3B0C
-.public ov01_021F3B1C
+.public BgModel_GetPosition
+.public BgModel_SetPosition
 .public ov01_021F3B2C
 .public ov01_021F3B30
 .public ov01_021F3B34
 .public ov01_021F3B38
 .public ov01_021F3B3C
-.public ov01_021F3B44
-.public ov01_021F3B4C
+.public BgModelList_GetEventByIndex
+.public GetBgModelFromMemoryList
 .public ov01_021F3B60
 .public ov01_021F3B84
-.public ov01_021F3C0C
+.public AddBgModelFromTemplate
 .public ov01_021F3C9C
 .public ov01_021F3D38
 .public ov01_021F3D50
@@ -6384,11 +6384,11 @@
 .public ov01_021FB360
 .public ov01_021FB368
 .public ov01_021FB3A4
-.public ov01_021FB3E4
+.public MapHeightOverrideCreateRect
 .public ov01_021FB418
 .public ov01_021FB42C
 .public ov01_021FB474
-.public ov01_021FB4A0
+.public MapHeightOverrideUpdate
 .public ov01_021FB4C0
 .public ov01_021FB4D4
 .public ov01_021FB4F4
@@ -6933,8 +6933,8 @@
 .public ov01_0220596C
 .public ov01_02205990
 .public ov01_022059AC
-.public ov01_02205A34
-.public ov01_02205A60
+.public SetFollowingPokeHeight
+.public Task_WaitFollowingPokeSituatedOnMovingPlatform
 .public ov01_02205AEC
 .public ov01_02205B14
 .public ov01_02205CF0
@@ -7694,30 +7694,30 @@
 .public ov03_02258F48
 .public ov03_02258F8C
 .public ov03_02259070
-.public ov04_02253E20
-.public ov04_02253ED4
+.public InitVioletGymElevatorGimmick
+.public LaunchVioletGymElevatorMoveTask
 .public ov04_02253F38
 .public ov04_02253F94
 .public ov04_02253FF0
 .public ov04_022540C0
-.public ov04_02254190
+.public InitAzaleaGymPuzzleGimmick
 .public ov04_0225463C
-.public ov04_02254698
+.public getWebSegmentVec
 .public ov04_022546C8
 .public ov04_022546E8
-.public ov04_02254710
+.public DeleteAzaleaGymPuzzleGimmick
 .public ov04_02254724
 .public ov04_02254CA4
-.public ov04_02254CBC
-.public ov04_02254D84
-.public ov04_02254D98
-.public ov04_02254DD0
-.public ov04_02254DE0
+.public InitEcruteakGymPuzzleGimmick
+.public DeleteEcruteakGymPuzzleGimmick
+.public Fsys_EcruteakGymEyeTrainerApproachCarryCandleEffectBegin
+.public Fsys_EcruteakGymTrainerApproachCarryCandleEffectEnd
+.public Fsys_EcruteakGymExtinguishCandle
 .public ov04_02254E20
 .public ov04_02254E50
 .public ov04_02254F44
-.public ov04_02254F8C
-.public ov04_0225507C
+.public InitBlackthornGymPuzzleGimmick
+.public DeleteBlackthornPuzzleGimmick
 .public ov04_02255090
 .public ov04_022550D4
 .public ov04_02255140
@@ -7738,19 +7738,19 @@
 .public ov04_02255CBC
 .public ov04_02255D34
 .public ov04_02255D88
-.public ov04_02255FC0
-.public ov04_02256044
+.public InitCianwoodPuzzleGimmick
+.public DeleteCianwoodPuzzleGimmick
 .public ov04_02256058
 .public ov04_0225609C
 .public ov04_022560D4
 .public ov04_02256278
-.public ov04_02256304
-.public ov04_022563B0
+.public InitVermilionPuzzleGimmick
+.public DeleteVermilionPuzzleGimmick
 .public ov04_022563C4
 .public ov04_0225640C
 .public ov04_022564A0
-.public ov04_02256650
-.public ov04_022566A0
+.public InitFuchsiaGymPuzzleGimmick
+.public DeleteFuchsiaPuzzleGimmick
 .public ov04_022566EC
 .public ov04_02256734
 .public ov04_02256758
@@ -7762,16 +7762,16 @@
 .public ov04_02256A90
 .public ov04_02256AC4
 .public ov04_02256B3C
-.public ov04_02256B64
-.public ov04_02256BA0
+.public InitViridianGymPuzzleGimmick
+.public DeleteViridianPuzzleGimmick
 .public ov04_02256BE4
 .public ov04_02256C20
 .public ov04_02256D00
 .public ov04_02256D68
 .public ov04_02256DFC
 .public ov04_02256E48
-.public ov04_02256E60
-.public ov04_02256EB0
+.public InitSinjohPuzzleGimmick
+.public DeleteSinjohPuzzleGimmick
 .public ov04_02256ED8
 .public ov04_02256F00
 .public ov04_02256F50
@@ -29333,9 +29333,9 @@
 .public FlypointsPlayerSub_init
 .public sub_0205C7EC
 .public sub_0205C810
-.public sub_0205C838
-.public sub_0205C858
-.public sub_0205C874
+.public PlayerAvatar_SetHeight
+.public PlayerAvatar_ToggleAutomaticHeightUpdating
+.public PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
 .public sub_0205C898
 .public sub_0205C99C
 .public sub_0205CA20
@@ -29575,8 +29575,8 @@
 .public sub_0206457C
 .public sub_02064598
 .public sub_020645AC
-.public sub_020648EC
-.public sub_02064910
+.public InitGymmickFieldResources
+.public DeleteGymmickFieldResources
 .public sub_02064938
 .public sub_020658D4
 .public sub_02065900
@@ -30248,7 +30248,7 @@ FS_EXTERN_OVERLAY(OVY_36)
 FS_EXTERN_OVERLAY(OVY_37)
 FS_EXTERN_OVERLAY(OVY_38)
 FS_EXTERN_OVERLAY(OVY_39)
-FS_EXTERN_OVERLAY(OVY_4)
+FS_EXTERN_OVERLAY(gymmick)
 FS_EXTERN_OVERLAY(OVY_40)
 FS_EXTERN_OVERLAY(OVY_41)
 FS_EXTERN_OVERLAY(OVY_42)

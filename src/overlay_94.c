@@ -16,6 +16,7 @@
 #include "constants/sndseq.h"
 #include "msgdata/msg/msg_0300.h"
 #include "overlay_94.h"
+#include "unk_0203DE74.h"
 
 static void _DestroyLocalWork(struct PartyMenuStruct* unkPtr);
 static void _InitEffects(struct PartyMenuStruct* unkPtr);

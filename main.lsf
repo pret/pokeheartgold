@@ -502,7 +502,8 @@ Overlay field
     Object asm/overlay_01_022031C0.o
     Object asm/overlay_01_02203A18.o
     Object asm/overlay_01_02203E40.o
-    Object asm/overlay_01_02204004.o
+    Object src/overlay_01_02204004.o
+    Object asm/overlay_01_022041C4.o
     Object src/overlay_01_apricorn_tree_anim.o
     Object src/overlay_01_rock_smash_item.o
     Object asm/overlay_01_02204ED8.o
@@ -519,10 +520,19 @@ Overlay OVY_3
     After OVY_2
     Object asm/overlay_03.o
 }
-Overlay OVY_4
+Overlay gymmick
 {
     After OVY_2
-    Object asm/overlay_04.o
+    Object src/violet_gymmick.o
+    Object src/azalea_gymmick.o
+    Object src/ecruteak_gymmick.o
+    Object src/blackthorn_gymmick.o
+    Object asm/blackthorn_gymmick_s.o
+    Object asm/cianwood_gymmick.o
+    Object asm/vermilion_gymmick.o
+    Object asm/fuchsia_gymmick.o
+    Object asm/viridian_gymmick.o
+    Object asm/sinjoh_gymmick.o
 }
 Overlay OVY_5
 {

@@ -9739,14 +9739,14 @@ _02258B56:
 	lsl r1, r5, #0x18
 	ldr r0, [sp, #0x20]
 	lsr r1, r1, #0x18
-	bl ov01_021F3B44
+	bl BgModelList_GetEventByIndex
 	str r0, [sp, #0x18]
 	bl ov01_021F3B30
 	cmp r0, #0
 	beq _02258BC0
 	ldr r1, [sp, #0x18]
 	add r0, sp, #0x24
-	bl ov01_021F3B0C
+	bl BgModel_GetPosition
 	ldr r0, [sp, #0x2c]
 	ldrb r2, [r4, #1]
 	asr r1, r0, #0xc

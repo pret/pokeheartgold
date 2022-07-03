@@ -1,8 +1,7 @@
 #include <nitro.h>
 
 BOOL PADi_XYButtonAvailable = FALSE;
-// OSAlarm PADi_XYButtonAlarm = {};
-extern OSAlarm PADi_XYButtonAlarm;
+OSAlarm PADi_XYButtonAlarm = {};
 
 void PADi_XYButton_Callback(void);
 

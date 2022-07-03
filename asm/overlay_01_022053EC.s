@@ -870,8 +870,8 @@ _02205A2A:
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov01_022059AC
 
-	thumb_func_start ov01_02205A34
-ov01_02205A34: ; 0x02205A34
+	thumb_func_start SetFollowingPokeHeight
+SetFollowingPokeHeight: ; 0x02205A34
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -891,10 +891,10 @@ ov01_02205A34: ; 0x02205A34
 _02205A5C:
 	add sp, #0xc
 	pop {r4, r5, pc}
-	thumb_func_end ov01_02205A34
+	thumb_func_end SetFollowingPokeHeight
 
-	thumb_func_start ov01_02205A60
-ov01_02205A60: ; 0x02205A60
+	thumb_func_start Task_WaitFollowingPokeSituatedOnMovingPlatform
+Task_WaitFollowingPokeSituatedOnMovingPlatform: ; 0x02205A60
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl TaskManager_GetSys
@@ -961,7 +961,7 @@ _02205AE6:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov01_02205A60
+	thumb_func_end Task_WaitFollowingPokeSituatedOnMovingPlatform
 
 	thumb_func_start ov01_02205AEC
 ov01_02205AEC: ; 0x02205AEC

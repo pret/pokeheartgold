@@ -89,7 +89,7 @@ _021FCF20:
 	cmp r0, #0
 	beq _021FCF46
 	ldr r0, [sp]
-	ldr r1, _021FCFE4 ; =ov01_02205A60
+	ldr r1, _021FCFE4 ; =Task_WaitFollowingPokeSituatedOnMovingPlatform
 	mov r2, #0
 	bl TaskManager_Call
 	mov r0, #4
@@ -173,7 +173,7 @@ _021FCFDE:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_021FCFE4: .word ov01_02205A60
+_021FCFE4: .word Task_WaitFollowingPokeSituatedOnMovingPlatform
 _021FCFE8: .word Task_HoneyOrSweetScent
 	thumb_func_end Task_UseSweetScentInField
 

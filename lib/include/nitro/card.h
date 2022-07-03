@@ -2,6 +2,7 @@
 #define NITRO_CARD_H_
 
 #include <nitro/card/pullOut.h>
+#include <nitro/card/spi.h>
 #include <nitro/card/backup.h>
 
 void CARD_Init(void);

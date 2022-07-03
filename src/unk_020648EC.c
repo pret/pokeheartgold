@@ -1,68 +1,68 @@
 #include "gymmick.h"
-#include "overlay_04.h"
+#include "gymmick_overlay.h"
 #include "save_misc_data.h"
-#include "scrcmd.h"
+#include "unk_0203DE74.h"
 #include "script.h"
 
 typedef void (*FieldSystemFunc1)(FieldSystem*);
-typedef BOOL (*FieldSystemFunc2)(FieldSystem*, u32, u32, u32, u32);
+typedef BOOL (*FieldSystemFunc2)(FieldSystem*, fx32, fx32, u32, BOOL *);
 
-static const FieldSystemFunc1 _020FE214[];
-static const FieldSystemFunc1 _020FE1EC[];
+static const FieldSystemFunc1 sConstructors[];
+static const FieldSystemFunc1 sDestructors[];
 static const FieldSystemFunc2 _020FE23C[];
 
-void sub_020648EC(FieldSystem* fsys) {
+void InitGymmickFieldResources(FieldSystem* fsys) {
     int gymmickType = SavGymmick_GetType(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys)));
     if (gymmickType != GYMMICK_NONE) {
-        _020FE214[gymmickType](fsys);
+        sConstructors[gymmickType](fsys);
     }
 }
 
-void sub_02064910(FieldSystem* fsys) {
+void DeleteGymmickFieldResources(FieldSystem* fsys) {
     int gymmickType = SavGymmick_GetType(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys)));
-    if (gymmickType) {
-        FieldSystemFunc1 func = _020FE1EC[gymmickType];
+    if (gymmickType != GYMMICK_NONE) {
+        FieldSystemFunc1 func = sDestructors[gymmickType];
         if (func != NULL) {
             func(fsys);
         }
     }
 }
 
-BOOL sub_02064938(FieldSystem *fsys, u32 a1, u32 a2, u32 a3, u32 a4) {
+BOOL sub_02064938(FieldSystem *fsys, fx32 x, fx32 z, u32 a3, BOOL *p_ret) {
     int gymmickType = SavGymmick_GetType(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys)));
     if (gymmickType == GYMMICK_NONE) return FALSE;
 
     FieldSystemFunc2 func = _020FE23C[gymmickType];
     if (func != NULL) {
-        return func(fsys, a1, a2, a3, a4);
+        return func(fsys, x, z, a3, p_ret);
     }
     return FALSE;
 }
 
-static const FieldSystemFunc1 _020FE214[] = {
+static const FieldSystemFunc1 sConstructors[] = {
     [GYMMICK_NONE]       = NULL,
-    [GYMMICK_ECRUTEAK]   = ov04_02254CBC,
-    [GYMMICK_CIANWOOD]   = ov04_02255FC0,
-    [GYMMICK_VERMILION]  = ov04_02256304,
-    [GYMMICK_VIOLET]     = ov04_02253E20,
-    [GYMMICK_AZALEA]     = ov04_02254190,
-    [GYMMICK_BLACKTHORN] = ov04_02254F8C,
-    [GYMMICK_FUCHSIA]    = ov04_02256650,
-    [GYMMICK_VIRIDIAN]   = ov04_02256B64,
-    [GYMMICK_SINJOH]     = ov04_02256E60,
+    [GYMMICK_ECRUTEAK]   = InitEcruteakGymPuzzleGimmick,
+    [GYMMICK_CIANWOOD]   = InitCianwoodPuzzleGimmick,
+    [GYMMICK_VERMILION]  = InitVermilionPuzzleGimmick,
+    [GYMMICK_VIOLET]     = InitVioletGymElevatorGimmick,
+    [GYMMICK_AZALEA]     = InitAzaleaGymPuzzleGimmick,
+    [GYMMICK_BLACKTHORN] = InitBlackthornGymPuzzleGimmick,
+    [GYMMICK_FUCHSIA]    = InitFuchsiaGymPuzzleGimmick,
+    [GYMMICK_VIRIDIAN]   = InitViridianGymPuzzleGimmick,
+    [GYMMICK_SINJOH]     = InitSinjohPuzzleGimmick,
 };
 
-static const FieldSystemFunc1 _020FE1EC[] = {
+static const FieldSystemFunc1 sDestructors[] = {
     [GYMMICK_NONE]       = NULL,
-    [GYMMICK_ECRUTEAK]   = ov04_02254D84,
-    [GYMMICK_CIANWOOD]   = ov04_02256044,
-    [GYMMICK_VERMILION]  = ov04_022563B0,
+    [GYMMICK_ECRUTEAK]   = DeleteEcruteakGymPuzzleGimmick,
+    [GYMMICK_CIANWOOD]   = DeleteCianwoodPuzzleGimmick,
+    [GYMMICK_VERMILION]  = DeleteVermilionPuzzleGimmick,
     [GYMMICK_VIOLET]     = NULL,
-    [GYMMICK_AZALEA]     = ov04_02254710,
-    [GYMMICK_BLACKTHORN] = ov04_0225507C,
-    [GYMMICK_FUCHSIA]    = ov04_022566A0,
-    [GYMMICK_VIRIDIAN]   = ov04_02256BA0,
-    [GYMMICK_SINJOH]     = ov04_02256EB0,
+    [GYMMICK_AZALEA]     = DeleteAzaleaGymPuzzleGimmick,
+    [GYMMICK_BLACKTHORN] = DeleteBlackthornPuzzleGimmick,
+    [GYMMICK_FUCHSIA]    = DeleteFuchsiaPuzzleGimmick,
+    [GYMMICK_VIRIDIAN]   = DeleteViridianPuzzleGimmick,
+    [GYMMICK_SINJOH]     = DeleteSinjohPuzzleGimmick,
 };
 
 static const FieldSystemFunc2 _020FE23C[] = {

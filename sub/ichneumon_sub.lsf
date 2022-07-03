@@ -39,6 +39,21 @@ Autoload WRAM
 	Object lib/src/PXI_fifo.o
 	Object lib/src/EXI_genPort.o
 	Object lib/src/PAD_xyButton.o
+	Object lib/src/SND_global.o
+	Object lib/src/SND_channel.o
+	Object lib/src/SND_util.o
+	Object lib/src/SND_main.o
+	Object lib/src/SND_capture.o
+	Object lib/src/SND_exchannel.o
+	Object lib/src/SND_seq.o
+	Object lib/src/SND_bank.o
+	Object lib/src/SND_work.o
+	Object lib/src/SND_alarm.o
+	Object lib/src/SND_command.o
+	Object lib/src/FS_file.o
+	Object lib/src/CARD_common.o
+	Object lib/src/CARD_spi.o
+	Object lib/src/CARD_rom.o
 	Object asm/sub.wram_1.o
 	Object asm/libsyscall.o
 	Object asm/sub.wram_2.o

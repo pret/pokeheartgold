@@ -232,8 +232,54 @@ struct FieldSystemUnkSub68 {
 typedef struct FsysUnkSub4 {
     u8 filler_00[0xC];
     void *unk_0C; // weather related?
+    u8 filler_10[0x14];
+    void *unk_24;
 } FsysUnkSub4;
 
+struct UnkStruct_ov01_02204004_sub {
+    NNSG3dRenderObj renderObj;
+    NNSG3dResMdl *pResMdl;
+    int fileId;
+};
+
+typedef struct BgModelEvent {
+    int id;
+    BOOL enabled;
+    BOOL invisible;
+    BOOL rotationEnabled;
+    struct UnkStruct_ov01_02204004_sub *objData; // 10
+    VecFx32 pos; // 14
+    VecFx32 rotation; // 20
+    VecFx32 scale; // 2C
+} BgModelEvent;
+
+typedef struct BgModelEventList {
+    BgModelEvent objects[32];
+} BgModelEventList;
+
+typedef struct MapHeightOverride {
+    int x;
+    int z;
+    int width;
+    int depth;
+    fx32 height;
+    BOOL enabled;
+} MapHeightOverride;
+
+typedef struct MapHeightOverridesList {
+    int n;
+    MapHeightOverride *data;
+} MapHeightOverridesList;
+
+struct UnkStruct_ov01_02204004 {
+    u8 *activeList;
+    NNSG3dResFileHeader **modelFileHeaders;
+    struct UnkStruct_ov01_02204004_sub *unk8;
+    struct UnkStruct_ov01_02204004_sub **unkC;
+    int unk10;
+    int unk14;
+    int unk18;
+};
 struct FieldSystem {
     struct FieldSystemUnkSub0 *unk0;
     FsysUnkSub4 *unk4;
@@ -248,13 +294,17 @@ struct FieldSystem {
     void *unk28;
     FsysUnkSub2C *unk2C;
     MAPMATRIX* map_matrix;
-    u8 filler34[0x8];
+    void *unk_34;
+    u8 filler38[0x4];
     MapObjectMan* mapObjectMan;
     FIELD_PLAYER_AVATAR *playerAvatar;
     void *unk_44;
-    u8 filler48[0xC];
-    void *unk54;
-    u8 filler_58[0x8];
+    u8 filler48[0x4];
+    void *fogSystem;
+    u8 filler_50[4];
+    void *_3dAnimationMgr;
+    void *unk_58;
+    u8 filler_5C[0x4];
     u32 unk60;
     int unk64;
     struct FieldSystemUnkSub68* unk68;
@@ -269,14 +319,15 @@ struct FieldSystem {
     struct UnkStruct_0205AC88 *unk84;
     u8 filler_88[0xC];
     void *unk94;
-    u8 filler_98[0x4];
-    void *unk9C;
+    MapHeightOverridesList *mapHeightOverrides;
+    BgModelEventList *bgModels;
     void *unkA0;
     u8 filler_A4[0x8];
     u32 unkAC;
     void *unkB0;
     s64 unkB4;
-    u8 unkBC[8];
+    u8 unkBC[4];
+    struct UnkStruct_ov01_02204004 *unkC0; // animated 3d model system?
     int unkC4;
     u8 filler_C8[0xA];
     u8 unkD2_0:6;
@@ -289,7 +340,8 @@ struct FieldSystem {
     u32 unk_10C[2];
     GearPhoneRingManager* unk114;
     BUGCONTEST* bugContest;
-    u8 unk11C[0xC];
+    int unk_11C;
+    u8 unk120[0x8];
 }; // size: 0x128
 
 typedef BOOL (*ScrCmdFunc)(SCRIPTCONTEXT* ctx);
