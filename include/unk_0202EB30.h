@@ -12,4 +12,7 @@ struct UnkStruct_0202EB30 {
     u8 macAddress[6];
 };
 
+int sub_0202EC98(struct UnkStruct_0202EB30 *a0);
+void sub_0202EB74(struct UnkStruct_0202EB30 *a0);
+
 #endif //POKEHEARTGOLD_UNK_0202EB30_H

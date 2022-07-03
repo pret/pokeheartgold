@@ -1335,7 +1335,7 @@
 	.short 224
 	.endm
 
-	.macro scrcmd_225 arg0
+	.macro goto_if_trainer_defeated arg0
 	.short 225
 	.word \arg0-.-4
 	.endm

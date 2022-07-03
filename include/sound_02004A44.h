@@ -34,5 +34,6 @@ BOOL GF_MIC_StartAutoSampling(MICAutoParam *param);
 void GF_MIC_StopAutoSampling(void);
 void PlayCryEx(int, int, int, int, int, int);
 void sub_02004B24(int);
+void BGM_SaveStateAndPlayNew(int a0);
 
 #endif //POKEHEARTGOLD_SOUND_02004A44_H

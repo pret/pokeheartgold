@@ -224,7 +224,7 @@ BOOL ScrCmd_221(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_PartyCheckForDouble(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_223(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_224(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_225(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_GotoIfTrainerDefeated(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_226(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_227(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_228(SCRIPTCONTEXT *ctx);
@@ -1079,7 +1079,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_PartyCheckForDouble,
     ScrCmd_223,
     ScrCmd_224,
-    ScrCmd_225,
+    ScrCmd_GotoIfTrainerDefeated,
     ScrCmd_226,
     ScrCmd_227,
     ScrCmd_228,
