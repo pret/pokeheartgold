@@ -525,7 +525,7 @@
 	.short \bgm
 	.endm
 
-	.macro scrcmd_081 arg0
+	.macro stop_bgm arg0
 	.short 81
 	.short \arg0
 	.endm
@@ -547,7 +547,7 @@
 	.short \frames
 	.endm
 
-	.macro scrcmd_085 arg0
+	.macro fade_in_bgm arg0
 	.short 85
 	.short \arg0
 	.endm

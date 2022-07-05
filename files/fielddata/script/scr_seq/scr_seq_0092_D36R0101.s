@@ -1645,7 +1645,7 @@ _1803:
 _1816:
 	scrcmd_609
 	lockall
-	scrcmd_081 0
+	stop_bgm 0
 	clearflag FLAG_HIDE_ILEX_FOREST_SPIKY_EAR_PICHU
 	show_person obj_D36R0101_tsure_poke_static_pichu_spiky
 	apply_movement obj_D36R0101_tsure_poke_static_pichu_spiky, _1C44

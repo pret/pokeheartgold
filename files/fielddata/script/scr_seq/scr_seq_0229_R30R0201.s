@@ -49,7 +49,7 @@ scr_seq_R30R0201_001:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_081 0
+	stop_bgm 0
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
 	heal_party
@@ -250,7 +250,7 @@ _02E8:
 	hide_person obj_R30R0201_ookido
 	wait_se SEQ_SE_DP_DOOR
 	fade_out_bgm 0, 30
-	scrcmd_081 0
+	stop_bgm 0
 	reset_bgm
 	releaseall
 	setvar VAR_SCENE_MR_POKEMONS_HOUSE, 1

@@ -206,7 +206,7 @@ _03DB:
 	wait_button_or_walk_away
 	closemsg
 	touchscreen_menu_show
-	scrcmd_081 0
+	stop_bgm 0
 	reset_bgm
 	scrcmd_726
 	releaseall

@@ -8,7 +8,7 @@ BOOL ChatotSoundMain(void);
 BOOL Chatot_checkCry(SOUND_CHATOT *a0);
 BOOL sub_02006D04(SOUND_CHATOT *a0, u32 a1, s32 a2, s32 a3);
 void sub_02006DB8();
-u32 Chatot_startRecording(void);
+BOOL Chatot_startRecording(void);
 void Chatot_stopRecording();
 void Chatot_saveRecording(SOUND_CHATOT *a0);
 void sub_02006E3C(u8 a0);

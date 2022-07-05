@@ -41,7 +41,7 @@ _005E:
 	chatot_start_recording VAR_SPECIAL_RESULT
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
-	scrcmd_085 10
+	fade_in_bgm 10
 	wait 10, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_x8004, 0
 	goto_if_eq _00D5

@@ -87,7 +87,7 @@ _00F0:
 	move_person_facing obj_T10R0601_kurumi, 6, 0, 20, DIR_NORTH
 	move_person_facing obj_T10R0601_ookido, 6, 0, 17, DIR_NORTH
 	wait 30, VAR_SPECIAL_x8004
-	scrcmd_081 0
+	stop_bgm 0
 	play_bgm SEQ_GS_EYE_J_SHOUJO
 	apply_movement obj_T10R0601_wataru, _02C8
 	apply_movement obj_player, _02E0

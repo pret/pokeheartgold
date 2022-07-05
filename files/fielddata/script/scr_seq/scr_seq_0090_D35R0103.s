@@ -296,7 +296,7 @@ scr_seq_D35R0103_003:
 	show_person obj_D35R0103_rocketm_4
 	move_person_facing obj_D35R0103_rkanbuw, 32, 1, 30, DIR_EAST
 	move_person_facing obj_D35R0103_rocketm_4, 30, 1, 30, DIR_NORTH
-	scrcmd_081 0
+	stop_bgm 0
 	play_bgm SEQ_GS_EYE_ROCKET
 	scrcmd_602 0
 	scrcmd_603

@@ -1346,7 +1346,7 @@ scr_seq_0003_028:
 	.byte 0x2d
 	.byte 0x00, 0x58, 0x32, 0x00, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00
 scr_seq_0003_029:
-	scrcmd_081 0
+	stop_bgm 0
 	get_player_gender VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	call_if_eq _12D6
@@ -1364,49 +1364,49 @@ _12DC:
 	return
 
 scr_seq_0003_031:
-	scrcmd_081 0
+	stop_bgm 0
 	temp_bgm SEQ_GS_E_RIVAL1
 	endstd
 	end
 
 scr_seq_0003_070:
-	scrcmd_081 0
+	stop_bgm 0
 	temp_bgm SEQ_GS_E_RIVAL2
 	endstd
 	end
 
 scr_seq_0003_042:
-	scrcmd_081 0
+	stop_bgm 0
 	temp_bgm SEQ_GS_E_MINAKI
 	endstd
 	end
 
 scr_seq_0003_044:
-	scrcmd_081 0
+	stop_bgm 0
 	temp_bgm SEQ_GS_IBUKI
 	endstd
 	end
 
 scr_seq_0003_036:
-	scrcmd_081 0
+	stop_bgm 0
 	temp_bgm SEQ_GS_E_TSURETEKE1
 	endstd
 	end
 
 scr_seq_0003_037:
-	scrcmd_081 0
+	stop_bgm 0
 	temp_bgm SEQ_GS_E_TSURETEKE2
 	endstd
 	end
 
 scr_seq_0003_065:
-	scrcmd_081 0
+	stop_bgm 0
 	temp_bgm SEQ_GS_E_G_PICHU
 	endstd
 	end
 
 scr_seq_0003_067:
-	scrcmd_081 0
+	stop_bgm 0
 	temp_bgm SEQ_GS_E_MAIKO_THEME
 	endstd
 	end
@@ -1420,7 +1420,7 @@ scr_seq_0003_066:
 scr_seq_0003_068:
 scr_seq_0003_071:
 	fade_out_bgm 0, 30
-	scrcmd_081 0
+	stop_bgm 0
 	reset_bgm
 	endstd
 	end

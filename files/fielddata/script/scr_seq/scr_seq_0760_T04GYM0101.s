@@ -78,7 +78,7 @@ _00ED:
 scr_seq_T04GYM0101_004:
 	scrcmd_609
 	lockall
-	scrcmd_081 SEQ_GS_GYM
+	stop_bgm SEQ_GS_GYM
 	play_bgm SEQ_GS_EYE_ROCKET
 	apply_movement obj_T04GYM0101_rocketm, _01C8
 	wait_movement
@@ -116,7 +116,7 @@ _018B:
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person obj_T04GYM0101_rocketm
 	wait_se SEQ_SE_DP_KAIDAN2
-	scrcmd_081 SEQ_GS_EYE_ROCKET
+	stop_bgm SEQ_GS_EYE_ROCKET
 	play_bgm SEQ_GS_GYM
 	setflag FLAG_HIDE_CERULEAN_GYM_ROCKET
 	clearflag FLAG_HIDE_ROUTE_24_ROCKET

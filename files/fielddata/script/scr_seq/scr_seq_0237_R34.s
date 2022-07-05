@@ -574,7 +574,7 @@ _07DB:
 
 _07E1:
 	apply_movement obj_R34_gswoman3, _0918
-	scrcmd_081 0
+	stop_bgm 0
 	play_bgm SEQ_GS_EYE_J_SHOUJO
 	wait_movement
 	apply_movement obj_player, _0944
@@ -590,7 +590,7 @@ _07E1:
 	npc_msg msg_0384_R34_00021
 	closemsg
 	apply_movement obj_R34_gswoman3_2, _0924
-	scrcmd_081 0
+	stop_bgm 0
 	play_bgm SEQ_GS_EYE_J_SHOUJO
 	wait_movement
 	apply_movement obj_player, _093C
@@ -610,7 +610,7 @@ _07E1:
 	.byte 0x02, 0x00
 _087D:
 	apply_movement obj_R34_gswoman3, _0918
-	scrcmd_081 0
+	stop_bgm 0
 	play_bgm SEQ_GS_EYE_J_SHOUJO
 	wait_movement
 	apply_movement obj_player, _0944
@@ -687,12 +687,12 @@ scr_seq_R34_005:
 	lockall
 	setvar VAR_TEMP_x4004, 777
 	apply_movement obj_R34_gswoman3_3, _0930
-	scrcmd_081 0
+	stop_bgm 0
 	play_bgm SEQ_GS_EYE_J_SHOUJO
 	wait_movement
 	npc_msg msg_0384_R34_00028
 	closemsg
-	scrcmd_081 0
+	stop_bgm 0
 	trainer_battle TRAINER_ACE_TRAINER_F_KATE, 0, 0, 0
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
