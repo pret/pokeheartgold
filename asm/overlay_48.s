@@ -1071,7 +1071,7 @@ _0225904C: .word 0x0000C40C
 ov48_02259050: ; 0x02259050
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	ldr r0, _0225908C ; =0x0000C3CC
 	add r0, r4, r0
 	bl ov48_02259C44

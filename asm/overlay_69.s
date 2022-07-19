@@ -3330,7 +3330,7 @@ _021E7414:
 	beq _021E7446
 	cmp r0, #2
 	bne _021E74F2
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	mov r0, #0
 	mov r1, #1
 	bl sub_02026E50
@@ -3340,7 +3340,7 @@ _021E7414:
 	str r1, [r5, r0]
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7446:
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl sub_02023154
 	ldr r1, _021E7500 ; =0x0000C2C4
 	add r0, sp, #0x4c

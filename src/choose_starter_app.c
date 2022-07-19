@@ -643,7 +643,7 @@ static void init3dEngine(struct ChooseStarterAppWork *work) {
 
 static void update3dObjectsMain(struct ChooseStarterAppWork *work) {
     sub_0202457C(work->monSpriteData.spriteList);
-    sub_02026E48();
+    Thunk_G3X_Reset();
     NNS_G3dGePushMtx();
     sub_02023154();
     updateBaseAndBallsRotation(work);

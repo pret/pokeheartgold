@@ -4693,7 +4693,7 @@ _0225AA1E:
 ov49_0225AA2C: ; 0x0225AA2C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	mov r0, #0xfb
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]

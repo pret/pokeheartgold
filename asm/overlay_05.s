@@ -4078,7 +4078,7 @@ ov05_0221DAE0: ; 0x0221DAE0
 	mov r0, #0
 	pop {r4, pc}
 _0221DAF2:
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	ldr r0, _0221DB14 ; =0x00000B5C
 	ldr r0, [r4, r0]
 	bl sub_020154B0

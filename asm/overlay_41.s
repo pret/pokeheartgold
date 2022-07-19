@@ -492,7 +492,7 @@ ov41_022461D0: ; 0x022461D0
 ov41_0224621C: ; 0x0224621C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r4, #0x1c]
 	cmp r0, #0
@@ -12455,7 +12455,7 @@ ov41_0224BACC: ; 0x0224BACC
 	add r4, r1, #0
 	bl OverlayManager_GetData
 	add r5, r0, #0
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r5, #0x10]
 	bl ov41_0224B554

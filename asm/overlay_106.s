@@ -455,7 +455,7 @@ _021E5C3C:
 	str r0, [r1]
 	str r0, [r1, #4]
 	str r0, [r1, #8]
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl sub_02023154
 	mov r1, #0xff
 	ldr r0, [sp]

@@ -2356,7 +2356,7 @@ ov89_02259C0C: ; 0x02259C0C
 	str r0, [sp, #0x30]
 	add r0, sp, #4
 	bl MTX_Identity33_
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	add r0, r4, #0
 	add r0, #0xcc
 	ldr r0, [r0]

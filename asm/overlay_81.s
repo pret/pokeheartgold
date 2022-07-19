@@ -9877,7 +9877,7 @@ _02242C44: .word 0x04000580
 ov81_02242C48: ; 0x02242C48
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	ldr r2, _02242C78 ; =0x04000440
 	mov r3, #0
 	add r1, r2, #0

@@ -2469,11 +2469,11 @@ _02238C08: .word NNS_GfdDefaultFuncAllocPlttVram
 	thumb_func_start ov57_02238C0C
 ov57_02238C0C: ; 0x02238C0C
 	push {r3, lr}
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl sub_0201543C
 	cmp r0, #0
 	ble _02238C22
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl NNS_G2dSetupSoftwareSpriteCamera
 _02238C22:
 	bl sub_02015460

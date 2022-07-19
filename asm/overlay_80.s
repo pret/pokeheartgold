@@ -32879,7 +32879,7 @@ _02239A2C:
 	thumb_func_start ov80_02239A38
 ov80_02239A38: ; 0x02239A38
 	push {r3, lr}
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl sub_02015420
 	cmp r0, #0
 	bne _02239A4A
@@ -32889,7 +32889,7 @@ _02239A4A:
 	bl sub_0201543C
 	cmp r0, #0
 	ble _02239A56
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 _02239A56:
 	bl sub_02015460
 	mov r0, #1

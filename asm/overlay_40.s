@@ -928,7 +928,7 @@ _0222BF0A:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _0222BF0E:
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	ldr r0, [r4, #0x64]
 	bl sub_02008120
 	mov r0, #1
@@ -17667,7 +17667,7 @@ _02234446:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _02234466
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	mov r0, #0x8a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -17714,7 +17714,7 @@ _022344AA:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _022344CA
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	mov r0, #0x8a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -19290,7 +19290,7 @@ _02235254:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _02235274
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	mov r0, #0x8a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -19382,7 +19382,7 @@ _02235316:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _02235336
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	mov r0, #0x8a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]

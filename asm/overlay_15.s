@@ -9205,7 +9205,7 @@ _021FDC94:
 	add r0, r5, r0
 	add r2, r5, r2
 	bl GF_Camera_InitFromTargetDistanceAndAngle
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl sub_02023154
 	ldr r0, _021FDD4C ; =0x0000081C
 	add r4, r5, r0

@@ -873,7 +873,7 @@ _021E5FD4:
 	add sp, #0x24
 	pop {r4, r5, pc}
 _021E5FF2:
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	mov r0, #0
 	mov r1, #1
 	bl sub_02026E50
@@ -882,7 +882,7 @@ _021E5FF2:
 	str r0, [r4]
 	pop {r4, r5, pc}
 _021E6006:
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl sub_02023154
 	add r1, r4, #0
 	add r0, sp, #0
@@ -8266,7 +8266,7 @@ _021E9B6C:
 	ldr r0, _021E9BF8 ; =0x0000FFFF
 	cmp r4, r0
 	beq _021E9BEC
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl sub_02023154
 	lsl r0, r4, #0x18
 	lsr r1, r0, #0x18
@@ -9824,7 +9824,7 @@ ov60_021EA870: ; 0x021EA870
 	thumb_func_start ov60_021EA8B0
 ov60_021EA8B0: ; 0x021EA8B0
 	push {r3, lr}
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl sub_0201543C
 	bl sub_02015460
 	mov r0, #1

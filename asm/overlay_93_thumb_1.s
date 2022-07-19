@@ -1358,7 +1358,7 @@ ov93_0225D07C: ; 0x0225D07C
 	bl ov93_0225E03C
 	add r0, r4, #0
 	bl ov93_02260A30
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	add r0, r4, #0
 	add r0, #0x9c
 	ldr r0, [r0]
@@ -1420,11 +1420,11 @@ ov93_0225D07C: ; 0x0225D07C
 	add r1, sp, #0
 	str r2, [sp]
 	bl NNS_G3dGeBufferOP_N
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl sub_0201543C
 	cmp r0, #0
 	ble _0225D18C
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 _0225D18C:
 	bl sub_02015460
 	ldr r0, [r4, #0x28]

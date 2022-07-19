@@ -2,6 +2,7 @@
 #define GUARD_CSVFILE_H
 
 #include "global.h"
+#include <cstring>
 
 class CsvFile {
     std::vector<std::string> _colnames;

@@ -532,7 +532,7 @@ Overlay OVY_5
 Overlay OVY_6
 {
     After OVY_0
-    Object asm/overlay_06.o
+    Object src/overlay_06.o
 }
 Overlay OVY_7
 {

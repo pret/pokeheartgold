@@ -164,11 +164,11 @@ _020774DC: .word NNS_GfdDefaultFuncAllocPlttVram
 	thumb_func_start sub_020774E0
 sub_020774E0: ; 0x020774E0
 	push {r3, lr}
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl sub_0201543C
 	cmp r0, #0
 	ble _020774F6
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl NNS_G2dSetupSoftwareSpriteCamera
 _020774F6:
 	bl sub_02015460
