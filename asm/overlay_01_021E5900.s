@@ -1070,7 +1070,7 @@ ov01_021E6220: ; 0x021E6220
 	push {r4, r5, r6, lr}
 	sub sp, #0x88
 	add r4, r0, #0
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl sub_02023154
 	ldr r0, [r4, #0x2c]
 	ldr r1, [r4, #0x48]

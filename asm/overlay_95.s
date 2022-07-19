@@ -292,11 +292,11 @@ _021E5B54: .word 0x00003FF8
 	thumb_func_start ov95_021E5B58
 ov95_021E5B58: ; 0x021E5B58
 	push {r3, lr}
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl sub_0201543C
 	cmp r0, #0
 	ble _021E5B6E
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl NNS_G2dSetupSoftwareSpriteCamera
 _021E5B6E:
 	bl sub_02015460
