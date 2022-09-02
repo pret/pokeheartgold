@@ -238,7 +238,7 @@ _021E5AC2:
 	str r0, [r1]
 	str r0, [r1, #4]
 	str r0, [r1, #8]
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl sub_02023154
 	add r0, r4, #0
 	add r1, sp, #0
