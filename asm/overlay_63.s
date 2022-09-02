@@ -38,7 +38,7 @@ ov63_0221BE20: ; 0x0221BE20
 	add r5, r0, #0
 	bl MI_CpuFill8
 	add r0, r4, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	str r0, [r5]
 	mov r0, #0
 	mov r1, #0x1b

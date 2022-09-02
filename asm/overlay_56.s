@@ -23,7 +23,7 @@ ov56_021E5C20: ; 0x021E5C20
 	mov r0, #0x29
 	str r0, [r4]
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	str r0, [r4, #0x1c]
 	ldrh r0, [r0]
 	ldr r1, _021E5C98 ; =0x0000FFFF

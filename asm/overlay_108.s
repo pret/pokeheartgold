@@ -7,7 +7,7 @@
 ov108_021E5900: ; 0x021E5900
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	mov r2, #5
 	add r5, r0, #0
 	mov r0, #3
@@ -5979,7 +5979,7 @@ _021E8862:
 	lsl r2, r2, #0xe
 	bl CreateHeap
 	add r0, r4, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	mov r1, #0x53
 	add r6, r0, #0
 	add r0, r4, #0

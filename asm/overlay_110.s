@@ -35,7 +35,7 @@ _021E5912:
 	mov r0, #0x61
 	str r0, [r4]
 	add r0, r6, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	mov r1, #0
 	str r0, [r4, #0x10]
 	mov r0, #0x4a
