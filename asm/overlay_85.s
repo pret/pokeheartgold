@@ -2059,7 +2059,7 @@ ov85_021E67CC: ; 0x021E67CC
 ov85_021E67F4: ; 0x021E67F4
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl sub_02023154
 	mov r0, #0
 	ldr r2, _021E6848 ; =0xFFFFF000

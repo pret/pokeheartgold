@@ -2240,7 +2240,7 @@ _0226021C:
 	ldr r0, [r6]
 	cmp r0, #4
 	ble _02260242
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl ov01_021F1008
 	bl ov01_021F0EAC
 	mov r0, #0
