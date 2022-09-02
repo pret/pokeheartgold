@@ -146,7 +146,7 @@ scr_seq_D40R0107_005:
 	apply_movement obj_D40R0107_dancer_2, _09A8
 	wait_movement
 	wait 16, VAR_SPECIAL_RESULT
-	scrcmd_081 0
+	stop_bgm 0
 	temp_bgm SEQ_GS_E_MAIKO_MAI
 	wait 18, VAR_SPECIAL_RESULT
 	apply_movement obj_D40R0107_dancer_5, _09B8
@@ -373,7 +373,7 @@ scr_seq_D40R0107_005:
 	play_se SEQ_SE_GS_SUZUNOONPA2
 	wait_movement
 	fade_out_bgm 0, 100
-	scrcmd_081 0
+	stop_bgm 0
 	wait 32, VAR_SPECIAL_RESULT
 	apply_movement obj_D40R0107_dancer_5, _0B2C
 	apply_movement obj_D40R0107_dancer_3, _0B24
@@ -425,7 +425,7 @@ scr_seq_D40R0107_005:
 	wait_fade
 	wait 59, VAR_SPECIAL_RESULT
 	scrcmd_764
-	scrcmd_081 15
+	stop_bgm 15
 	scrcmd_769
 	scrcmd_768
 	wait 16, VAR_SPECIAL_RESULT

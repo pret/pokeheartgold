@@ -77,7 +77,7 @@ scr_seq_D45R0102_001:
 	buffer_players_name 0
 	gender_msgbox msg_0131_D45R0102_00014, msg_0131_D45R0102_00013
 	closemsg
-	scrcmd_081 0
+	stop_bgm 0
 	play_se SEQ_SE_PL_FR03
 	play_bgm SEQ_GS_SENKYO
 	npc_msg msg_0131_D45R0102_00002
@@ -105,7 +105,7 @@ scr_seq_D45R0102_001:
 	apply_movement obj_D45R0102_var_1, _0380
 	wait_movement
 	fade_out_bgm 0, 30
-	scrcmd_081 0
+	stop_bgm 0
 	play_se SEQ_SE_PL_FR03
 	npc_msg msg_0131_D45R0102_00005
 	stop_se SEQ_SE_PL_FR03

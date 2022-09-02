@@ -67,7 +67,7 @@ _010F:
 	end
 
 scr_seq_D35R0101_006:
-	scrcmd_081 0
+	stop_bgm 0
 	play_bgm SEQ_GS_D_AJITO
 	scrcmd_609
 	lockall

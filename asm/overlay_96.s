@@ -28,7 +28,7 @@ PokeathlonCourseApplication_OvyInit: ; 0x021E5900
 	lsl r0, r0, #2
 	str r1, [r4, r0]
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	mov r2, #0x7e
 	lsl r2, r2, #2
 	add r5, sp, #4

@@ -39,7 +39,7 @@ scr_seq_D23R0106_001:
 	wait_se SEQ_SE_DP_KAIDAN2
 	clearflag FLAG_ROCKET_TAKEOVER_ACTIVE
 	fade_out_bgm 0, 30
-	scrcmd_081 0
+	stop_bgm 0
 	wait 15, VAR_SPECIAL_RESULT
 	reset_bgm
 	fade_screen 6, 1, 1, RGB_BLACK
