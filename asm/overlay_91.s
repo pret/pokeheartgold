@@ -6670,7 +6670,7 @@ ov91_0225F7A8: ; 0x0225F7A8
 	lsl r0, r0, #2
 	add r0, r4, r0
 	bl ov91_0225D6A0
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	add r0, r4, #0
 	bl ov91_0225FDD8
 	mov r0, #0

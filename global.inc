@@ -28044,7 +28044,7 @@
 .public sub_02026DE0
 .public sub_02026E18
 .public sub_02026E30
-.public sub_02026E48
+.public Thunk_G3X_Reset
 .public sub_02026E50
 .public sub_02026E60
 .public sub_02026E84
