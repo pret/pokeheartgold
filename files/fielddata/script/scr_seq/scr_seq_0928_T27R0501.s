@@ -205,7 +205,7 @@ scr_seq_T27R0501_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_081 0
+	stop_bgm 0
 	play_bgm SEQ_GS_EYE_ROCKET
 	npc_msg msg_0618_T27R0501_00005
 	closemsg
@@ -710,7 +710,7 @@ _092D:
 	goto_if_eq _0BD3
 	closemsg
 _0944:
-	scrcmd_081 30
+	stop_bgm 30
 	play_bgm SEQ_GS_EYE_MAIKO
 	apply_movement obj_T27R0501_dancer_6, _0D74
 	wait_movement
@@ -723,7 +723,7 @@ _0944:
 	goto_if_eq _0BC9
 	apply_movement obj_T27R0501_dancer_6, _0C0C
 	wait_movement
-	scrcmd_081 30
+	stop_bgm 30
 	play_bgm SEQ_GS_EYE_MAIKO
 	apply_movement obj_T27R0501_dancer, _0C18
 	wait_movement
@@ -735,7 +735,7 @@ _0944:
 	goto_if_eq _0BC9
 	apply_movement obj_T27R0501_dancer, _0C48
 	wait_movement
-	scrcmd_081 30
+	stop_bgm 30
 	play_bgm SEQ_GS_EYE_MAIKO
 	apply_movement obj_T27R0501_dancer_5, _0C54
 	wait_movement
@@ -747,7 +747,7 @@ _0944:
 	goto_if_eq _0BC9
 	apply_movement obj_T27R0501_dancer_5, _0C84
 	wait_movement
-	scrcmd_081 30
+	stop_bgm 30
 	play_bgm SEQ_GS_EYE_MAIKO
 	apply_movement obj_T27R0501_dancer_2, _0C90
 	wait_movement
@@ -759,7 +759,7 @@ _0944:
 	goto_if_eq _0BC9
 	apply_movement obj_T27R0501_dancer_2, _0CBC
 	wait_movement
-	scrcmd_081 30
+	stop_bgm 30
 	play_bgm SEQ_GS_EYE_MAIKO
 	apply_movement obj_T27R0501_dancer_4, _0CCC
 	wait_movement
