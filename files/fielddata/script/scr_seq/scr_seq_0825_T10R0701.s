@@ -10,7 +10,7 @@
 	scrdef_end
 
 scr_seq_T10R0701_001:
-	scrcmd_081 0
+	stop_bgm 0
 	end
 
 scr_seq_T10R0701_000:

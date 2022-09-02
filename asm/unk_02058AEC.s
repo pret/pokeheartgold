@@ -425,7 +425,7 @@ _02058E08:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _02058E94
 	mov r0, #0x5d
@@ -578,7 +578,7 @@ _02058F40:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _02058FB2
 	mov r0, #0xd
@@ -761,7 +761,7 @@ _020590AA:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _020590C8
 	mov r0, #0xd
@@ -823,7 +823,7 @@ _0205912A:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _0205922E
 	bl sub_02058D24
@@ -893,7 +893,7 @@ _020591C2:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _0205922E
 	add r0, r4, #0
@@ -919,7 +919,7 @@ _020591FA:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _0205922E
 	add r0, r4, #0
@@ -1002,7 +1002,7 @@ _020592B2:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _02059348
 	add r0, r4, #0
@@ -1108,7 +1108,7 @@ _02059398:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _02059472
 	mov r0, #2
@@ -1172,7 +1172,7 @@ _02059420:
 	ldr r0, [r4, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _02059472
 	add r0, r4, #0
@@ -2259,7 +2259,7 @@ _02059C6C:
 	ldr r0, [r4, #0x20]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _02059D36
 	ldr r0, _02059D3C ; =gSystem

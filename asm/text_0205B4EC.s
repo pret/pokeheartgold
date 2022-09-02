@@ -164,8 +164,8 @@ sub_0205B5EC: ; 0x0205B5EC
 	.balign 4, 0
 	thumb_func_end sub_0205B5EC
 
-	thumb_func_start sub_0205B624
-sub_0205B624: ; 0x0205B624
+	thumb_func_start IsPrintFinished
+IsPrintFinished: ; 0x0205B624
 	push {r3, lr}
 	bl TextPrinterCheckActive
 	cmp r0, #0
@@ -179,7 +179,7 @@ _0205B634:
 	lsr r0, r0, #0x18
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_0205B624
+	thumb_func_end IsPrintFinished
 
 	thumb_func_start sub_0205B63C
 sub_0205B63C: ; 0x0205B63C

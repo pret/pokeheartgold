@@ -120,7 +120,7 @@ _019C:
 	apply_movement obj_player, _0310
 _01B4:
 	wait_movement
-	scrcmd_081 SEQ_GS_R_12_24
+	stop_bgm SEQ_GS_R_12_24
 	play_bgm SEQ_GS_EYE_K_SHOUJO
 	compare VAR_TEMP_x4001, 40
 	goto_if_ne _01E1
@@ -162,7 +162,7 @@ _0271:
 	wait_movement
 	hide_person obj_R25_gsman1
 	hide_person obj_R25_gsleader11
-	scrcmd_081 SEQ_GS_EYE_K_SHOUJO
+	stop_bgm SEQ_GS_EYE_K_SHOUJO
 	play_bgm SEQ_GS_R_12_24
 	setflag FLAG_HIDE_ROUTE_25_MISTYS_BOYFRIEND
 	setflag FLAG_HIDE_ROUTE_25_MISTY

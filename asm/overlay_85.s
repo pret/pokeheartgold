@@ -8,7 +8,7 @@ ov85_021E5900: ; 0x021E5900
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r4, r0, #0
 	mov r0, #1
 	add r1, r0, #0
@@ -6453,7 +6453,7 @@ ov85_021E88AC: ; 0x021E88AC
 	sub sp, #0xc
 	add r5, r1, #0
 	add r4, r0, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r6, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0

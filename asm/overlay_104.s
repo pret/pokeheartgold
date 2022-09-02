@@ -24,7 +24,7 @@ ov104_021E5900: ; 0x021E5900
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r5, r0, #0
 	mov r0, #0x59
 	ldrb r1, [r5]

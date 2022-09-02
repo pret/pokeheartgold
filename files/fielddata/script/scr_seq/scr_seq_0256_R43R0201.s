@@ -12,7 +12,7 @@
 	scrdef_end
 
 scr_seq_R43R0201_001:
-	scrcmd_081 SEQ_GS_R_7_42
+	stop_bgm SEQ_GS_R_7_42
 	play_bgm SEQ_GS_EYE_ROCKET
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
@@ -66,7 +66,7 @@ _00D5:
 	apply_movement obj_R43R0201_rocketm_2, _01A4
 	wait_movement
 _00ED:
-	scrcmd_081 SEQ_GS_EYE_ROCKET
+	stop_bgm SEQ_GS_EYE_ROCKET
 	play_bgm SEQ_GS_R_7_42
 	setvar VAR_UNK_410F, 1
 	end

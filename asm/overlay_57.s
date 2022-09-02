@@ -38,7 +38,7 @@ ov57_022378DC: ; 0x022378DC
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	str r0, [r4]
 	mov r0, #0xb4
 	mov r1, #0x34

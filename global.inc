@@ -2121,7 +2121,7 @@
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetData
-.public OverlayManager_GetParentWork
+.public OverlayManager_GetArgs
 .public OverlayManager_delete
 .public OverlayManager_new
 .public OverlayManager_run
@@ -2755,9 +2755,9 @@
 .public ScrCmd_070
 .public ScrCmd_071
 .public ScrCmd_072
-.public ScrCmd_081
+.public ScrCmd_StopBGM
 .public ScrCmd_083
-.public ScrCmd_085
+.public ScrCmd_FadeInBGM
 .public ScrCmd_086
 .public ScrCmd_088
 .public ScrCmd_093
@@ -3716,7 +3716,6 @@
 .public SndRadio_StopSeq
 .public SoundSys_GetGBSoundsState
 .public SoundSys_ToggleGBSounds
-.public Special_EnterHallOfFame
 .public SpeciesAndFormeToWazaOshieIndex
 .public SpeciesIsMythical
 .public SpeciesToJohtoDexNo
@@ -22589,41 +22588,9 @@
 .public ov75_02249780
 .public ov75_02249838
 .public ov75_02249884
-.public ov76_021E5900
-.public ov76_021E5AA0
-.public ov76_021E5B60
-.public ov76_021E5D94
-.public ov76_021E5DA4
-.public ov76_021E5DC4
-.public ov76_021E5EE0
-.public ov76_021E5F1C
-.public ov76_021E607C
-.public ov76_021E613C
-.public ov76_021E6170
-.public ov76_021E62B4
-.public ov76_021E62F4
-.public ov76_021E6440
-.public ov76_021E64B0
-.public ov76_021E650C
-.public ov76_021E6544
-.public ov76_021E656C
-.public ov76_021E664C
-.public ov76_021E6810
-.public ov76_021E683C
-.public ov76_021E68B4
-.public ov76_021E68C8
-.public ov76_021E68DC
-.public ov76_021E6904
-.public ov76_021E6944
-.public ov76_021E69C0
-.public ov76_021E69C4
-.public ov76_021E6A34
-.public ov76_021E6A94
-.public ov76_021E6B2C
-.public ov76_021E6B8C
-.public ov76_021E6CF4
-.public ov76_021E6D80
-.public ov76_021E6E20
+.public CreditsApp_OvyInit
+.public CreditsApp_OvyExit
+.public CreditsApp_OvyExec
 .public ov78_021E5900
 .public ov78_021E59EC
 .public ov78_021E5B24
@@ -28903,9 +28870,9 @@
 .public sub_0203F844
 .public sub_0203F8EC
 .public sub_0203F964
-.public sub_0203F974
+.public LaunchHOFCongratulationsApp
 .public sub_0203F984
-.public sub_0203F9B4
+.public LaunchCreditsApp
 .public sub_0203F9C4
 .public sub_0203F9F4
 .public sub_0203FA38
@@ -29056,8 +29023,7 @@
 .public sub_0205560C
 .public sub_02055618
 .public sub_02055624
-.public sub_02055640
-.public sub_0205565C
+.public FieldSys_GetGameClearTime
 .public sub_02055670
 .public sub_02055680
 .public sub_020556A8
@@ -29196,7 +29162,7 @@
 .public sub_0205B5A8
 .public sub_0205B5B4
 .public sub_0205B5EC
-.public sub_0205B624
+.public IsPrintFinished
 .public sub_0205B63C
 .public sub_0205B6A0
 .public sub_0205B6E8
@@ -30285,7 +30251,7 @@ FS_EXTERN_OVERLAY(OVY_72)
 FS_EXTERN_OVERLAY(OVY_73)
 FS_EXTERN_OVERLAY(OVY_74)
 FS_EXTERN_OVERLAY(OVY_75)
-FS_EXTERN_OVERLAY(OVY_76)
+FS_EXTERN_OVERLAY(credits)
 FS_EXTERN_OVERLAY(OVY_77)
 FS_EXTERN_OVERLAY(OVY_78)
 FS_EXTERN_OVERLAY(OVY_79)

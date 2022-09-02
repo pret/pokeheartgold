@@ -12,7 +12,7 @@ ov03_02253E20: ; 0x02253E20
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	bne _02253E42
 	ldr r0, _02253ECC ; =ov03_022598A0
@@ -752,7 +752,7 @@ ov03_02254420: ; 0x02254420
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _022544E6
 	mov r0, #0x10
@@ -1100,7 +1100,7 @@ _02254714:
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	bne _02254730
 	ldr r0, _022547D0 ; =ov03_022598A0
@@ -1263,7 +1263,7 @@ _0225486A:
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	bne _022548A6
 	ldr r0, _022548DC ; =ov03_022598A0
@@ -1308,7 +1308,7 @@ ov03_022548E0: ; 0x022548E0
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _02254980
 	add r0, r4, #0
@@ -1404,7 +1404,7 @@ _022549B0:
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _022549CC
 	add r0, r4, #0
@@ -1890,7 +1890,7 @@ ov03_02254D78: ; 0x02254D78
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _02254E52
 	mov r0, #5
@@ -2491,7 +2491,7 @@ ov03_02255280: ; 0x02255280
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _022552BE
 	ldr r0, _022552C4 ; =gSystem
@@ -2528,7 +2528,7 @@ ov03_022552C8: ; 0x022552C8
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _022552FC
 	ldr r0, _02255304 ; =gSystem
@@ -2560,7 +2560,7 @@ ov03_0225530C: ; 0x0225530C
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _02255370
 	ldr r0, _02255378 ; =ov03_02254E70
@@ -2657,7 +2657,7 @@ ov03_022553C8: ; 0x022553C8
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _022553FA
 	add r0, r4, #0
@@ -2835,7 +2835,7 @@ ov03_0225554C: ; 0x0225554C
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _02255582
 	ldr r0, _02255588 ; =gSystem
@@ -2923,7 +2923,7 @@ ov03_022555F4: ; 0x022555F4
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _02255620
 	add r0, r4, #0
@@ -3057,7 +3057,7 @@ ov03_02255714: ; 0x02255714
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _02255740
 	add r0, r4, #0
@@ -3228,7 +3228,7 @@ _02255898:
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _022558B4
 	mov r0, #0xa
@@ -3306,7 +3306,7 @@ _02255932:
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	bne _02255960
 	ldr r0, _022559F8 ; =ov03_022598A0
@@ -3401,7 +3401,7 @@ ov03_02255A00: ; 0x02255A00
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _02255A20
 	mov r0, #0
@@ -3424,7 +3424,7 @@ ov03_02255A2C: ; 0x02255A2C
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _02255A66
 	ldr r0, _02255A6C ; =gSystem
@@ -3490,7 +3490,7 @@ ov03_02255AB0: ; 0x02255AB0
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _02255AD6
 	bl sub_02058180
@@ -3534,7 +3534,7 @@ ov03_02255B04: ; 0x02255B04
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _02255B38
 	ldr r0, _02255B40 ; =gSystem
@@ -4805,7 +4805,7 @@ _022564F2:
 	ldr r0, [r4, #0x74]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	bne _02256502
 	b _0225663A
@@ -4888,7 +4888,7 @@ _0225658E:
 	ldr r0, [r4, #0x74]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _0225663A
 	ldr r0, _02256640 ; =gSystem
@@ -4927,7 +4927,7 @@ _022565E2:
 	ldr r0, [r4, #0x74]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	beq _0225663A
 	mov r0, #3
@@ -7409,7 +7409,7 @@ ov03_02257944: ; 0x02257944
 	mov r0, #0xa
 	lsl r0, r0, #6
 	ldrb r0, [r4, r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	bne _0225795A
 	mov r0, #5
@@ -7929,7 +7929,7 @@ ov03_02257D6C: ; 0x02257D6C
 	mov r0, #0xa
 	lsl r0, r0, #6
 	ldrb r0, [r4, r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	bne _02257D82
 	mov r0, #0xa
@@ -8068,7 +8068,7 @@ ov03_02257E6C: ; 0x02257E6C
 	mov r0, #0xa
 	lsl r0, r0, #6
 	ldrb r0, [r4, r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	bne _02257E82
 	mov r0, #0xc
@@ -8160,7 +8160,7 @@ ov03_02257F24: ; 0x02257F24
 	mov r0, #0xa
 	lsl r0, r0, #6
 	ldrb r0, [r4, r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	bne _02257F3A
 	mov r0, #0xd
@@ -8262,7 +8262,7 @@ ov03_02257FF8: ; 0x02257FF8
 	mov r0, #0xa
 	lsl r0, r0, #6
 	ldrb r0, [r4, r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	bne _0225800E
 	mov r0, #0xe
@@ -8324,7 +8324,7 @@ ov03_02258078: ; 0x02258078
 	mov r0, #0xa
 	lsl r0, r0, #6
 	ldrb r0, [r4, r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #0
 	bne _0225808E
 	mov r0, #0xf
