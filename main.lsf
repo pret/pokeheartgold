@@ -166,11 +166,11 @@ Static main
 	Object src/scrcmd_mart.o
 	Object src/scrcmd_strbuf.o
 	Object src/scrcmd_lottery.o
-	Object asm/scrcmd_6.o
+	Object src/scrcmd_sound.o
 	Object src/scrcmd_battle.o
 	Object src/scrcmd_8.o
 	Object asm/scrcmd_9.o
-	Object asm/scrcmd_10.o
+	Object src/scrcmd_apricorn.o
 	Object asm/scrcmd_11.o
 	Object src/scrcmd_12.o
 	Object src/scrcmd_money.o
@@ -532,7 +532,7 @@ Overlay OVY_5
 Overlay OVY_6
 {
     After OVY_0
-    Object asm/overlay_06.o
+    Object src/overlay_06.o
 }
 Overlay OVY_7
 {

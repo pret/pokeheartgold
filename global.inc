@@ -2755,9 +2755,9 @@
 .public ScrCmd_070
 .public ScrCmd_071
 .public ScrCmd_072
-.public ScrCmd_081
+.public ScrCmd_StopBGM
 .public ScrCmd_083
-.public ScrCmd_085
+.public ScrCmd_FadeInBGM
 .public ScrCmd_086
 .public ScrCmd_088
 .public ScrCmd_093
@@ -28045,7 +28045,7 @@
 .public sub_02026DE0
 .public sub_02026E18
 .public sub_02026E30
-.public sub_02026E48
+.public Thunk_G3X_Reset
 .public sub_02026E50
 .public sub_02026E60
 .public sub_02026E84

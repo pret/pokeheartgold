@@ -27,7 +27,7 @@ scr_seq_P01R0101_002:
 	lockall
 	apply_movement obj_P01R0101_ookido, _00E4
 	wait_movement
-	scrcmd_081 0
+	stop_bgm 0
 	play_bgm SEQ_GS_OHKIDO
 	scrcmd_602 0
 	scrcmd_603
@@ -61,7 +61,7 @@ scr_seq_P01R0101_002:
 	setflag FLAG_HIDE_OLIVINE_PORT_OAK
 	setvar VAR_UNK_411A, 0
 	fade_out_bgm 0, 30
-	scrcmd_081 0
+	stop_bgm 0
 	reset_bgm
 	releaseall
 	compare VAR_UNK_40D3, 1
