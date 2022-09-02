@@ -275,7 +275,7 @@ scr_seq_R36_001:
 	goto_if_set FLAG_DAILY_GOT_SHOCK_RIBBON, _04F6
 	compare VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
 	goto_if_eq _0490
-	goto_if_set FLAG_UNK_0B1, _0472
+	goto_if_set FLAG_GOT_HARD_STONE_FROM_ARTHUR, _0472
 	get_weekday VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _0423
@@ -288,7 +288,7 @@ _0423:
 	msgbox_extern VAR_SPECIAL_RESULT, 12
 	goto_if_no_item_space ITEM_HARD_STONE, 1, _0486
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_0B1
+	setflag FLAG_GOT_HARD_STONE_FROM_ARTHUR
 	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 13

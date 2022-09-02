@@ -12,13 +12,13 @@ scr_seq_D26R0103_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_07A, _004F
+	goto_if_set FLAG_GOT_KINGS_ROCK_FROM_SLOWPOKE_WELL_MAN, _004F
 	npc_msg msg_0092_D26R0103_00000
 	wait_button
 	closemsg
 	goto_if_no_item_space ITEM_KINGS_ROCK, 1, _005A
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_07A
+	setflag FLAG_GOT_KINGS_ROCK_FROM_SLOWPOKE_WELL_MAN
 	goto _004F
 
 _004F:

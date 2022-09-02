@@ -228,7 +228,7 @@ scr_seq_T04GYM0101_000:
 _0307:
 	goto_if_no_item_space ITEM_TM03, 1, _033E
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_180
+	setflag FLAG_GOT_TM03_FROM_MISTY
 	buffer_players_name 0
 	npc_msg msg_0469_T04GYM0101_00012
 	wait_button_or_walk_away
@@ -243,7 +243,7 @@ _033E:
 	end
 
 _0348:
-	goto_if_unset FLAG_UNK_180, _0307
+	goto_if_unset FLAG_GOT_TM03_FROM_MISTY, _0307
 	npc_msg msg_0469_T04GYM0101_00013
 	wait_button_or_walk_away
 	closemsg

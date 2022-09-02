@@ -432,13 +432,19 @@ _05D9:
 	gender_msgbox msg_0543_T20R0101_00104, msg_0543_T20R0101_00105
 	goto _05F2
 
+// This script contains a programming mistake where if the player has
+// no space in their bag, the Everstone from Elm is permanently lost.
+// This is unlike every other script for obtaining an item from someone,
+// which all attempt to give the item until the player can accept it.
+// FLAG_GOT_EVERSTONE_FROM_ELM is set here but no code in the game ever
+// checks what it is, meaning that flag is useless.
 _05EE:
 	gender_msgbox msg_0543_T20R0101_00047, msg_0543_T20R0101_00048
 _05F2:
 	goto_if_no_item_space ITEM_EVERSTONE, 1, _064E
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_072
-	setflag FLAG_UNK_11A
+	setflag FLAG_GOT_EVERSTONE_FROM_ELM
 	setvar VAR_TEMP_x400F, 0
 	npc_msg msg_0543_T20R0101_00049
 	buffer_players_name 0
