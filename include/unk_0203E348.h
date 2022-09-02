@@ -3,6 +3,8 @@
 
 #include "script.h"
 #include "overlay_02.h"
+#include "overlay_63.h"
+#include "overlay_76.h"
 #include "bag.h"
 #include "mail.h"
 #include "fashion_case.h"
@@ -135,5 +137,9 @@ void *sub_0203EF40(FieldSystem *fsys);
 void *sub_0203EFA0(FieldSystem *fsys);
 void *sub_0203EEA0(FieldSystem *fsys);
 void *Fsys_CreateApplication_AlphPuzzle(FieldSystem *fsys, u8 puzzle);
+void LaunchHOFCongratulationsApp(FieldSystem *fsys, HOFCongratsAppWork *work);
+void LaunchCreditsApp(FieldSystem *fsys, CreditsAppWork *work);
+void LocationData_BackUp(Location *data);
+void LocationData_Restore(Location *data);
 
 #endif //POKEHEARTGOLD_UNK_0203E348_H
