@@ -61,7 +61,7 @@ sub_020192D0: ; 0x020192D0
 	add r5, r0, #0
 	bl MI_CpuFill8
 	add r0, r4, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	str r0, [r5]
 	ldr r1, _02019358 ; =0x0000047D
 	mov r0, #0xb

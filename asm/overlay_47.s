@@ -8,7 +8,7 @@ ov47_02258800: ; 0x02258800
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r4, r0, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	mov r2, #5
 	add r5, r0, #0
 	mov r0, #3
@@ -82,7 +82,7 @@ ov47_02258898: ; 0x02258898
 	bl OverlayManager_GetData
 	add r7, r0, #0
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r5, r0, #0
 	ldr r0, [r4]
 	cmp r0, #4
@@ -215,7 +215,7 @@ ov47_022589A8: ; 0x022589A8
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r6, r0, #0
 	mov r0, #0
 	add r1, r0, #0

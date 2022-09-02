@@ -68,7 +68,7 @@ scr_seq_R24_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_081 SEQ_GS_R_12_24
+	stop_bgm SEQ_GS_R_12_24
 	play_bgm SEQ_GS_EYE_ROCKET
 	npc_msg msg_0362_R24_00000
 	closemsg

@@ -21,7 +21,7 @@ sFieldSysPtr:
 Field_Continue_AppInit: ; 0x0203DE74
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r4, r0, #0
 	add r0, r5, #0
 	bl FieldSystem_new

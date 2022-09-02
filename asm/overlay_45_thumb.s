@@ -33,7 +33,7 @@ _02229F18:
 	sub r1, r1, #1
 	bne _02229F18
 	add r0, r4, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	mov r1, #0x6f

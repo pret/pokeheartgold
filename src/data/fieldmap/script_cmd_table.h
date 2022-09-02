@@ -80,11 +80,11 @@ BOOL ScrCmd_WaitCry(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_PlayFanfare(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_WaitFanfare(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_PlayBGM(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_081(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_StopBGM(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_ResetBGM(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_083(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_FadeOutBGM(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_085(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_FadeInBGM(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_086(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_TempBGM(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_088(SCRIPTCONTEXT *ctx);
@@ -935,11 +935,11 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_PlayFanfare,
     ScrCmd_WaitFanfare,
     ScrCmd_PlayBGM,
-    ScrCmd_081,
+    ScrCmd_StopBGM,
     ScrCmd_ResetBGM,
     ScrCmd_083,
     ScrCmd_FadeOutBGM,
-    ScrCmd_085,
+    ScrCmd_FadeInBGM,
     ScrCmd_086,
     ScrCmd_TempBGM,
     ScrCmd_088,
