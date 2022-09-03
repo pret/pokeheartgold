@@ -85,8 +85,9 @@ static s8 ItemIdGetMoodEffect(u16 itemId) {
 
 void ApplyItemEffectOnMonMood(POKEMON *pokemon, u16 itemId) {
     s8 moodEffect = ItemIdGetMoodEffect(itemId);
-    if(moodEffect != 0)
+    if(moodEffect != 0) {
         MonAdjustMood(pokemon, moodEffect);
+    }
 }
 
 void ApplyMonMoodModifier(POKEMON *pokemon, int modifierId) {
@@ -111,5 +112,4 @@ void ApplyMonMoodModifier(POKEMON *pokemon, int modifierId) {
 
         SetMonData(pokemon, MON_DATA_MOOD, &mood);
     }
-
 }
