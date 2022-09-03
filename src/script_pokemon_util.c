@@ -1,7 +1,7 @@
 #include "party.h"
 #include "unk_0202ECC0.h"
 #include "unk_0206979C.h"
-#include "unk_02097E4C.h"
+#include "pokemon_mood.h"
 #include "script_pokemon_util.h"
 #include "constants/items.h"
 
