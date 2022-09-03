@@ -1,7 +1,7 @@
 #include "pokemon.h"
 #include "constants/items.h"
 
-static s8 sMoodModifiers[] = {
+static const s8 sMoodModifiers[] = {
     40,
     8,
     50,
@@ -53,6 +53,7 @@ static s8 ItemIdGetMoodEffect(u16 itemId) {
     case ITEM_PROTEIN:
     case ITEM_IRON:
     case ITEM_CARBOS:
+    case ITEM_CALCIUM:
     case ITEM_ZINC:
         moodEffect = 8;
         break;
@@ -66,6 +67,18 @@ static s8 ItemIdGetMoodEffect(u16 itemId) {
     case ITEM_X_SP__DEF:
         moodEffect = 10;
         break;
+    case ITEM_ETHER:
+    case ITEM_MAX_ETHER:
+    case ITEM_ELIXIR:
+    case ITEM_MAX_ELIXIR:
+    case ITEM_LAVA_COOKIE:
+    case ITEM_BERRY_JUICE:
+    case ITEM_SACRED_ASH:
+    case ITEM_PP_UP:
+    case ITEM_PP_MAX:
+    case ITEM_OLD_GATEAU:
+        moodEffect = 0;
+        break;
     }
     return moodEffect;
 }
@@ -76,7 +89,7 @@ void ApplyItemEffectOnMonMood(POKEMON *pokemon, u16 itemId) {
         MonAdjustMood(pokemon, moodEffect);
 }
 
-void ApplyMonMoodModifier(POKEMON *pokemon, u32 modifierId) {
+void ApplyMonMoodModifier(POKEMON *pokemon, int modifierId) {
     s8 mood;
     u16 species; 
     s32 adjustedMood;
