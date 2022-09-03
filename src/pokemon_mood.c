@@ -1,7 +1,7 @@
 #include "pokemon.h"
 #include "constants/items.h"
 
-static s8 _02108F44[] = {
+static s8 sMoodModifiers[] = {
     40,
     8,
     50,
@@ -86,7 +86,7 @@ void ApplyMonMoodModifier(POKEMON *pokemon, u32 modifierId) {
     if (species != 0 && species != SPECIES_EGG) {
         mood = GetMonData(pokemon, MON_DATA_MOOD, NULL);
 
-        adjustedMood = mood + _02108F44[modifierId];
+        adjustedMood = mood + sMoodModifiers[modifierId];
 
         if (adjustedMood < -127) {
             adjustedMood = -127;
