@@ -1,0 +1,102 @@
+#include "pokemon.h"
+#include "constants/items.h"
+
+static s8 _02108F44[] = {
+    40,
+    8,
+    50,
+    40,
+    -80,
+    -50,
+    -100,
+    30
+};
+
+static void MonAdjustMood(POKEMON *pokemon, s8 unk1) {
+    s8 mood;
+    s32 adjustedMood;
+
+    mood = GetMonData(pokemon, MON_DATA_MOOD, NULL);
+    adjustedMood = mood + unk1;
+    
+    if (adjustedMood > 127) {
+        adjustedMood = 127;
+    } else if (adjustedMood < -127) {
+        adjustedMood = -127;
+    }
+
+    mood = adjustedMood;
+
+    SetMonData(pokemon, MON_DATA_MOOD, &mood);
+}
+
+static s8 ItemIdGetMoodEffect(u16 itemId) {
+    s8 moodEffect = 0;
+    
+    switch (itemId) {
+    case ITEM_RARE_CANDY:
+        moodEffect = 40;
+        break;
+    case ITEM_ENERGYPOWDER:
+        moodEffect = -20;
+        break;
+    case ITEM_ENERGY_ROOT:
+        moodEffect = -30;
+        break;
+    case ITEM_HEAL_POWDER:
+        moodEffect = -20;
+        break;
+    case ITEM_REVIVAL_HERB:
+        moodEffect = -40;
+        break;
+    case ITEM_HP_UP:
+    case ITEM_PROTEIN:
+    case ITEM_IRON:
+    case ITEM_CARBOS:
+    case ITEM_ZINC:
+        moodEffect = 8;
+        break;
+    case ITEM_GUARD_SPEC_:
+    case ITEM_DIRE_HIT:
+    case ITEM_X_ATTACK:
+    case ITEM_X_DEFENSE:
+    case ITEM_X_SPEED:
+    case ITEM_X_ACCURACY:
+    case ITEM_X_SPECIAL:
+    case ITEM_X_SP__DEF:
+        moodEffect = 10;
+        break;
+    }
+    return moodEffect;
+}
+
+void ApplyItemEffectOnMonMood(POKEMON *pokemon, u16 itemId) {
+    s8 moodEffect = ItemIdGetMoodEffect(itemId);
+    if(moodEffect != 0)
+        MonAdjustMood(pokemon, moodEffect);
+}
+
+void ApplyMonMoodModifier(POKEMON *pokemon, u32 modifierId) {
+    s8 mood;
+    u16 species; 
+    s32 adjustedMood;
+
+    species = GetMonData(pokemon, MON_DATA_SPECIES2, NULL);
+
+    if (species != 0 && species != SPECIES_EGG) {
+        mood = GetMonData(pokemon, MON_DATA_MOOD, NULL);
+
+        adjustedMood = mood + _02108F44[modifierId];
+
+        if (adjustedMood < -127) {
+            adjustedMood = -127;
+        } else if (adjustedMood > 127) {
+            adjustedMood = 127;
+        }
+
+        mood = adjustedMood;
+
+        SetMonData(pokemon, MON_DATA_MOOD, &mood);
+    }
+
+}
