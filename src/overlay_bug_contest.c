@@ -30,7 +30,7 @@ void BugContest_InitEncounters(BUGCONTEST *bugContest);
 void BugContest_RestoreParty_RetrieveCaughtPokemon(BUGCONTEST *bugContest);
 u16 BugContest_JudgePlayerMon(BUGCONTEST *bugContest, POKEMON *pokemon);
 
-BUGCONTEST *BugContest_new(FieldSystem *fsys, u8 weekday) {
+BUGCONTEST *BugContest_new(FieldSystem *fsys, u32 weekday) {
     BUGCONTEST *bugContest;
 
     bugContest = (BUGCONTEST *)AllocFromHeap(3, sizeof(BUGCONTEST));

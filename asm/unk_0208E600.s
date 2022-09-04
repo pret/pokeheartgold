@@ -3,6 +3,7 @@
 #include "constants/pokemon.h"
 #include "constants/ribbon.h"
 #include "constants/party_menu.h"
+#include "constants/pokemon.h"
 #include "msgdata/msg/msg_0300.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
@@ -476,7 +477,7 @@ sub_0208E9E0: ; 0x0208E9E0
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
 	add r0, r6, #0
-	mov r1, #0x7a
+	mov r1, #MON_DATA_GAME_VERSION
 	mov r2, #0
 	bl GetMonData
 	add r1, r5, #0
@@ -516,7 +517,7 @@ _0208EA2C:
 	bne _0208EA58
 _0208EA3C:
 	add r0, r6, #0
-	mov r1, #0x99
+	mov r1, #MON_DATA_MET_LOCATION
 	mov r2, #0
 	bl GetMonData
 	add r4, r0, #0
@@ -575,7 +576,7 @@ sub_0208EA84: ; 0x0208EA84
 	add r2, r4, #0
 	bl ReadMsgDataIntoString
 	ldr r0, [r5, #0xc]
-	mov r1, #0x95
+	mov r1, #MON_DATA_MET_YEAR
 	mov r2, #0
 	bl GetMonData
 	mov r3, #2
@@ -587,7 +588,7 @@ sub_0208EA84: ; 0x0208EA84
 	mov r1, #0
 	bl BufferIntegerAsString
 	ldr r0, [r5, #0xc]
-	mov r1, #0x96
+	mov r1, #MON_DATA_MET_MONTH
 	mov r2, #0
 	bl GetMonData
 	add r2, r0, #0
@@ -595,7 +596,7 @@ sub_0208EA84: ; 0x0208EA84
 	mov r1, #1
 	bl BufferMonthNameAbbr
 	ldr r0, [r5, #0xc]
-	mov r1, #0x97
+	mov r1, #MON_DATA_MET_DAY
 	mov r2, #0
 	bl GetMonData
 	add r2, r0, #0
@@ -608,7 +609,7 @@ sub_0208EA84: ; 0x0208EA84
 	add r3, r1, #0
 	bl BufferIntegerAsString
 	ldr r0, [r5, #0xc]
-	mov r1, #0x9c
+	mov r1, #MON_DATA_MET_LEVEL
 	mov r2, #0
 	bl GetMonData
 	add r2, r0, #0
@@ -621,7 +622,7 @@ sub_0208EA84: ; 0x0208EA84
 	add r3, r1, #0
 	bl BufferIntegerAsString
 	ldr r0, [r5, #0xc]
-	mov r1, #0x99
+	mov r1, #MON_DATA_MET_LOCATION
 	mov r2, #0
 	bl GetMonData
 	add r2, r0, #0
@@ -629,7 +630,7 @@ sub_0208EA84: ; 0x0208EA84
 	mov r1, #4
 	bl BufferLocationName
 	ldr r0, [r5, #0xc]
-	mov r1, #0x92
+	mov r1, #MON_DATA_EGG_MET_YEAR
 	mov r2, #0
 	bl GetMonData
 	mov r3, #2
@@ -641,7 +642,7 @@ sub_0208EA84: ; 0x0208EA84
 	mov r1, #5
 	bl BufferIntegerAsString
 	ldr r0, [r5, #0xc]
-	mov r1, #0x93
+	mov r1, #MON_DATA_EGG_MET_MONTH
 	mov r2, #0
 	bl GetMonData
 	add r2, r0, #0
@@ -649,7 +650,7 @@ sub_0208EA84: ; 0x0208EA84
 	mov r1, #6
 	bl BufferMonthNameAbbr
 	ldr r0, [r5, #0xc]
-	mov r1, #0x94
+	mov r1, #MON_DATA_EGG_MET_DAY
 	mov r2, #0
 	bl GetMonData
 	add r2, r0, #0
@@ -662,7 +663,7 @@ sub_0208EA84: ; 0x0208EA84
 	mov r3, #2
 	bl BufferIntegerAsString
 	ldr r0, [r5, #0xc]
-	mov r1, #0x98
+	mov r1, #MON_DATA_EGG_MET_LOCATION
 	mov r2, #0
 	bl GetMonData
 	add r2, r0, #0

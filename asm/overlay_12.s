@@ -1,3 +1,4 @@
+#include "constants/pokemon.h"
 #include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
@@ -64865,13 +64866,13 @@ _02256DB8:
 	mov r0, #0
 	str r0, [sp, #0xc]
 	add r0, r4, #0
-	mov r1, #6
+	mov r1, #MON_DATA_HELD_ITEM
 	add r2, sp, #0xc
 	bl SetMonData
 	mov r0, #0
 	str r0, [sp, #0xc]
 	add r0, r4, #0
-	mov r1, #0x70
+	mov r1, #MON_DATA_FORME
 	add r2, sp, #0xc
 	bl SetMonData
 	add r0, r4, #0

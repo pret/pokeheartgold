@@ -1,3 +1,4 @@
+#include "constants/pokemon.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -6794,7 +6795,7 @@ _0221F62C:
 	add r2, #1
 	bl SetMonData
 	add r0, r4, #0
-	mov r1, #0xbb
+	mov r1, #MON_DATA_MOOD
 	add r2, sp, #0x14
 	bl SetMonData
 _0221F664:

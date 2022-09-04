@@ -3,6 +3,7 @@
 #include "constants/std_script.h"
 #include "constants/species.h"
 #include "constants/sprites.h"
+#include "constants/pokemon.h"
 #include "constants/maps.h"
 #include "constants/mmodel.h"
 #include "constants/items.h"
@@ -3334,7 +3335,7 @@ ov01_02202570: ; 0x02202570
 _0220257A:
 	add r1, r4, #0
 	add r0, r6, #0
-	add r1, #0xb5
+	add r1, #MON_DATA_SHINY_LEAF_A
 	add r2, r7, #0
 	bl GetMonData
 	add r4, r4, #1
@@ -3344,7 +3345,7 @@ _0220257A:
 	cmp r5, #5
 	bne _022025A2
 	add r0, r6, #0
-	mov r1, #0xba
+	mov r1, #MON_DATA_SHINY_LEAF_CROWN
 	mov r2, #0
 	bl GetMonData
 	cmp r0, #0
@@ -3780,258 +3781,6 @@ _022028FA:
 	nop
 _02202904: .word 0x0000017E
 	thumb_func_end ScrCmd_836
-
-	thumb_func_start ScrCmd_839
-ScrCmd_839: ; 0x02202908
-	push {r4, lr}
-	add r4, r0, #0
-	bl ScriptReadHalfword
-	add r4, #0x80
-	add r1, r0, #0
-	ldr r0, [r4]
-	bl VarGet
-	cmp r0, #0
-	beq _02202926
-	mov r0, #8
-	bl Sys_SetSleepDisableFlag
-	b _0220292C
-_02202926:
-	mov r0, #8
-	bl Sys_ClearSleepDisableFlag
-_0220292C:
-	mov r0, #0
-	pop {r4, pc}
-	thumb_func_end ScrCmd_839
-
-	thumb_func_start ScrCmd_BugContestAction
-ScrCmd_BugContestAction: ; 0x02202930
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	ldr r2, [r5, #8]
-	add r1, r2, #1
-	str r1, [r5, #8]
-	ldrb r4, [r2]
-	bl ScriptReadHalfword
-	add r1, r0, #0
-	add r0, r5, #0
-	add r0, #0x80
-	ldr r0, [r0]
-	bl VarGet
-	add r5, #0x80
-	add r1, r0, #0
-	ldr r5, [r5]
-	cmp r4, #0
-	bne _02202964
-	add r0, r5, #0
-	bl BugContest_new
-	mov r1, #0x46
-	lsl r1, r1, #2
-	str r0, [r5, r1]
-	b _0220297C
-_02202964:
-	mov r0, #0x46
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	bl BugContest_delete
-	mov r0, #0x46
-	mov r1, #0
-	lsl r0, r0, #2
-	str r1, [r5, r0]
-	add r0, r5, #0
-	bl sub_02093070
-_0220297C:
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_BugContestAction
-
-	thumb_func_start ScrCmd_BufferBugContestWinner
-ScrCmd_BufferBugContestWinner: ; 0x02202980
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r0, #0x80
-	ldr r0, [r0]
-	mov r1, #0x10
-	bl FieldSysGetAttrAddr
-	add r4, r0, #0
-	add r0, r5, #0
-	add r0, #0x80
-	ldr r0, [r0]
-	bl FieldSys_BugContest_get
-	ldr r3, [r5, #8]
-	add r1, r3, #1
-	str r1, [r5, #8]
-	ldrb r3, [r3]
-	ldr r1, [r5, #0x78]
-	ldr r2, [r4]
-	bl BugContest_BufferContestWinnerNames
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ScrCmd_BufferBugContestWinner
-
-	thumb_func_start ScrCmd_JudgeBugContest
-ScrCmd_JudgeBugContest: ; 0x022029B0
-	push {r3, r4, r5, r6, r7, lr}
-	add r4, r0, #0
-	add r0, #0x80
-	ldr r0, [r0]
-	bl FieldSys_BugContest_get
-	add r5, r0, #0
-	add r0, r4, #0
-	bl ScriptReadHalfword
-	add r1, r0, #0
-	add r0, r4, #0
-	add r0, #0x80
-	ldr r0, [r0]
-	bl GetVarPointer
-	add r6, r0, #0
-	add r0, r4, #0
-	bl ScriptReadHalfword
-	add r1, r0, #0
-	add r0, r4, #0
-	add r0, #0x80
-	ldr r0, [r0]
-	bl GetVarPointer
-	add r7, r0, #0
-	add r0, r4, #0
-	bl ScriptReadHalfword
-	add r4, #0x80
-	add r1, r0, #0
-	ldr r0, [r4]
-	bl GetVarPointer
-	add r4, r0, #0
-	add r0, r5, #0
-	bl BugContest_Judge
-	ldrb r0, [r5, #0x17]
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x1a
-	strh r0, [r6]
-	ldrh r0, [r5, #0x1a]
-	strh r0, [r7]
-	ldrb r0, [r5, #0x17]
-	lsl r0, r0, #0x1f
-	lsr r0, r0, #0x1f
-	bne _02202A16
-	mov r0, #0
-	b _02202A20
-_02202A16:
-	ldr r0, [r5, #0x10]
-	mov r1, #5
-	mov r2, #0
-	bl GetMonData
-_02202A20:
-	strh r0, [r4]
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ScrCmd_JudgeBugContest
-
-	thumb_func_start ScrCmd_BufferBugContestMonNick
-ScrCmd_BufferBugContestMonNick: ; 0x02202A28
-	push {r3, r4, r5, r6, r7, lr}
-	add r4, r0, #0
-	add r0, #0x80
-	ldr r0, [r0]
-	mov r1, #0x10
-	bl FieldSysGetAttrAddr
-	add r6, r0, #0
-	add r0, r4, #0
-	add r0, #0x80
-	ldr r0, [r0]
-	bl FieldSys_BugContest_get
-	ldr r1, [r4, #8]
-	add r7, r0, #0
-	add r0, r1, #1
-	str r0, [r4, #8]
-	add r0, r4, #0
-	ldrb r5, [r1]
-	bl ScriptReadHalfword
-	add r4, #0x80
-	add r1, r0, #0
-	ldr r0, [r4]
-	bl GetVarPointer
-	add r4, r0, #0
-	ldr r1, [r6]
-	add r0, r7, #0
-	add r2, r5, #0
-	bl BugContest_BufferCaughtMonNick
-	strh r0, [r4]
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ScrCmd_BufferBugContestMonNick
-
-	thumb_func_start ScrCmd_BugContestGetTimeLeft
-ScrCmd_BugContestGetTimeLeft: ; 0x02202A70
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #8
-	add r5, r0, #0
-	add r0, #0x80
-	ldr r0, [r0]
-	mov r1, #0x10
-	bl FieldSysGetAttrAddr
-	ldr r1, [r5, #8]
-	add r7, r0, #0
-	add r0, r1, #1
-	str r0, [r5, #8]
-	add r5, #0x80
-	ldr r0, [r5]
-	ldrb r6, [r1]
-	mov r4, #1
-	bl FieldSys_BugContest_get
-	cmp r0, #0
-	beq _02202AA2
-	ldr r1, [r0, #0x1c]
-	cmp r1, #0x14
-	bhs _02202AA2
-	mov r0, #0x14
-	sub r4, r0, r1
-_02202AA2:
-	mov r0, #0
-	str r0, [sp]
-	mov r0, #1
-	str r0, [sp, #4]
-	ldr r0, [r7]
-	add r1, r6, #0
-	add r2, r4, #0
-	mov r3, #2
-	bl BufferIntegerAsString
-	mov r0, #0
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_BugContestGetTimeLeft
-
-	thumb_func_start ScrCmd_IsBugContestantRegistered
-ScrCmd_IsBugContestantRegistered: ; 0x02202ABC
-	push {r4, r5, r6, lr}
-	add r4, r0, #0
-	add r0, #0x80
-	ldr r0, [r0]
-	bl FieldSys_BugContest_get
-	add r6, r0, #0
-	add r0, r4, #0
-	bl ScriptReadHalfword
-	add r1, r0, #0
-	add r0, r4, #0
-	add r0, #0x80
-	ldr r0, [r0]
-	bl VarGet
-	add r5, r0, #0
-	add r0, r4, #0
-	bl ScriptReadHalfword
-	add r4, #0x80
-	add r1, r0, #0
-	ldr r0, [r4]
-	bl GetVarPointer
-	lsl r1, r5, #0x18
-	add r4, r0, #0
-	add r0, r6, #0
-	lsr r1, r1, #0x18
-	bl BugContest_ContestantIsRegistered
-	strh r0, [r4]
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_IsBugContestantRegistered
 
 	.rodata
 

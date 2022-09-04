@@ -2,6 +2,7 @@
 #include "constants/items.h"
 #include "constants/maps.h"
 #include "constants/moves.h"
+#include "constants/pokemon.h"
 #include "constants/species.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
@@ -106,7 +107,7 @@ _0209119A:
 	bl TaskManager_GetSys
 	add r6, r0, #0
 	ldr r0, [r4, #0xc]
-	mov r1, #5
+	mov r1, #MON_DATA_SPECIES
 	mov r2, #0
 	bl GetMonData
 	add r7, r0, #0
@@ -123,14 +124,14 @@ _0209119A:
 	bl sub_020830D8
 	str r0, [r4, #8]
 	ldr r0, [r4, #0xc]
-	mov r1, #0x6f
+	mov r1, #MON_DATA_GENDER
 	mov r2, #0
 	bl GetMonData
 	ldr r1, [r4, #8]
 	mov r2, #0
 	str r0, [r1, #0x10]
 	ldr r0, [r4, #0xc]
-	mov r1, #0x70
+	mov r1, #MON_DATA_FORME
 	bl GetMonData
 	ldr r1, [r4, #8]
 	str r0, [r1, #8]

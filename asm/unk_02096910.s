@@ -2,6 +2,7 @@
 #include "constants/items.h"
 #include "constants/maps.h"
 #include "constants/moves.h"
+#include "constants/pokemon.h"
 #include "constants/species.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
@@ -313,7 +314,7 @@ sub_02096AF4: ; 0x02096AF4
 _02096B30:
 	add r1, r4, #0
 	bl GetPartyMonByIndex
-	mov r1, #5
+	mov r1, #MON_DATA_SPECIES
 	mov r2, #0
 	add r4, r0, #0
 	bl GetMonData
@@ -321,7 +322,7 @@ _02096B30:
 	add r1, #0x76
 	strh r0, [r1]
 	add r0, r4, #0
-	mov r1, #6
+	mov r1, #MON_DATA_HELD_ITEM
 	mov r2, #0
 	bl GetMonData
 	add r1, r5, #0
@@ -330,7 +331,7 @@ _02096B30:
 	add r0, r7, #0
 	add r1, r6, #0
 	bl GetPartyMonByIndex
-	mov r1, #5
+	mov r1, #MON_DATA_SPECIES
 	mov r2, #0
 	add r4, r0, #0
 	bl GetMonData
@@ -338,7 +339,7 @@ _02096B30:
 	add r1, #0x78
 	strh r0, [r1]
 	add r0, r4, #0
-	mov r1, #6
+	mov r1, #MON_DATA_HELD_ITEM
 	mov r2, #0
 	bl GetMonData
 	add r1, r5, #0

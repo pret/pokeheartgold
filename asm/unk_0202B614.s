@@ -1,3 +1,4 @@
+#include "constants/pokemon.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -73,28 +74,28 @@ sub_0202B684: ; 0x0202B684
 	add r5, r0, #0
 	add r6, r2, #0
 	add r0, r4, #0
-	mov r1, #5
+	mov r1, #MON_DATA_SPECIES
 	mov r2, #0
 	add r7, r3, #0
 	bl GetMonData
 	add r2, r5, #0
 	strh r0, [r5, #8]
 	add r0, r4, #0
-	mov r1, #0x75
+	mov r1, #MON_DATA_NICKNAME
 	add r2, #0xa
 	bl GetMonData
-	mov r1, #0
+	mov r1, #MON_DATA_PERSONALITY
 	add r0, r4, #0
 	add r2, r1, #0
 	bl GetMonData
 	str r0, [r5]
 	add r0, r4, #0
-	mov r1, #7
+	mov r1, #MON_DATA_OTID
 	mov r2, #0
 	bl GetMonData
 	str r0, [r5, #4]
 	add r0, r4, #0
-	mov r1, #0x70
+	mov r1, #MON_DATA_FORME
 	mov r2, #0
 	bl GetMonData
 	add r1, r5, #0

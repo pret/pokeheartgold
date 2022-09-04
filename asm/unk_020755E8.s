@@ -1,5 +1,6 @@
 #include "constants/items.h"
 #include "constants/moves.h"
+#include "constants/pokemon.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -1752,7 +1753,7 @@ _020763FC:
 	bne _020764F4
 	add r2, r4, #0
 	ldr r0, [r4, #0x28]
-	mov r1, #5
+	mov r1, #MON_DATA_SPECIES
 	add r2, #0x62
 	bl SetMonData
 	ldr r0, [r4, #0x28]
@@ -1824,7 +1825,7 @@ _02076478:
 	cmp r0, #0
 	bne _020764CE
 	ldr r0, [r4, #0x28]
-	mov r1, #0xb3
+	mov r1, #MON_DATA_SPECIES_NAME
 	mov r2, #0
 	bl SetMonData
 _020764CE:
@@ -2434,7 +2435,7 @@ _020769BC:
 	ldrb r1, [r1]
 	ldr r0, [r4, #0x28]
 	add r2, #0x66
-	add r1, #0x3e
+	add r1, #MON_DATA_MOVE1PPUP
 	bl SetMonData
 	add r1, r4, #0
 	add r2, r4, #0
@@ -2814,26 +2815,26 @@ _02076CE6:
 	lsl r0, r0, #2
 	str r0, [sp]
 	add r0, r5, #0
-	mov r1, #5
+	mov r1, #MON_DATA_SPECIES
 	add r2, sp, #0
 	bl SetMonData
 	mov r0, #4
 	str r0, [sp]
 	add r0, r5, #0
-	mov r1, #0x9b
+	mov r1, #MON_DATA_POKEBALL
 	add r2, sp, #0
 	bl SetMonData
 	mov r0, #0
 	str r0, [sp]
 	add r0, r5, #0
-	mov r1, #6
+	mov r1, #MON_DATA_HELD_ITEM
 	add r2, sp, #0
 	bl SetMonData
 	add r0, r5, #0
-	mov r1, #0xb
+	mov r1, #MON_DATA_MARKINGS
 	add r2, sp, #0
 	bl SetMonData
-	mov r1, #0x19
+	mov r1, #MON_DATA_SINNOH_CHAMP_RIBBON
 	str r1, [sp, #4]
 	add r6, sp, #0
 _02076D32:
@@ -2845,7 +2846,7 @@ _02076D32:
 	str r1, [sp, #4]
 	cmp r1, #0x36
 	blt _02076D32
-	mov r1, #0x4e
+	mov r1, #MON_DATA_HOENN_COOL_RIBBON
 	str r1, [sp, #4]
 	add r6, sp, #0
 _02076D4A:
@@ -2857,7 +2858,7 @@ _02076D4A:
 	str r1, [sp, #4]
 	cmp r1, #0x6e
 	blt _02076D4A
-	mov r1, #0x7b
+	mov r1, #MON_DATA_COOL_RIBBON
 	str r1, [sp, #4]
 	add r6, sp, #0
 _02076D62:
@@ -2870,31 +2871,31 @@ _02076D62:
 	cmp r1, #0x90
 	blt _02076D62
 	add r0, r5, #0
-	mov r1, #0xb5
+	mov r1, #MON_DATA_SHINY_LEAF_A
 	add r2, sp, #0
 	bl SetMonData
 	add r0, r5, #0
-	mov r1, #0xb6
+	mov r1, #MON_DATA_SHINY_LEAF_B
 	add r2, sp, #0
 	bl SetMonData
 	add r0, r5, #0
-	mov r1, #0xb7
+	mov r1, #MON_DATA_SHINY_LEAF_C
 	add r2, sp, #0
 	bl SetMonData
 	add r0, r5, #0
-	mov r1, #0xb8
+	mov r1, #MON_DATA_SHINY_LEAF_D
 	add r2, sp, #0
 	bl SetMonData
 	add r0, r5, #0
-	mov r1, #0xb9
+	mov r1, #MON_DATA_SHINY_LEAF_E
 	add r2, sp, #0
 	bl SetMonData
 	add r0, r5, #0
-	mov r1, #0xba
+	mov r1, #MON_DATA_SHINY_LEAF_CROWN
 	add r2, sp, #0
 	bl SetMonData
 	add r0, r5, #0
-	mov r1, #0xbb
+	mov r1, #MON_DATA_MOOD
 	add r2, sp, #0
 	bl SetMonData
 	add r0, r5, #0

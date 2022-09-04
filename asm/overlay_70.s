@@ -1,3 +1,4 @@
+#include "constants/pokemon.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
