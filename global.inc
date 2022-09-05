@@ -3006,7 +3006,7 @@
 .public ScrCmd_568
 .public ScrCmd_569
 .public ScrCmd_571
-.public ScrCmd_572
+.public ScrCmd_GetUniqueSealsQuantity
 .public ScrCmd_573
 .public ScrCmd_574
 .public ScrCmd_575
@@ -3184,8 +3184,8 @@
 .public ScrCmd_822
 .public ScrCmd_823
 .public ScrCmd_824
-.public ScrCmd_825
-.public ScrCmd_826
+.public ScrCmd_GetShinyLeafCount
+.public ScrCmd_TryGiveShinyLeafCrown
 .public ScrCmd_MonAddContestValue
 .public ScrCmd_829
 .public ScrCmd_830
@@ -6797,8 +6797,8 @@
 .public ov01_02201B2C
 .public ov01_02201F98
 .public ov01_02202378
-.public ov01_02202570
-.public ov01_022026F8
+.public MonGetShinyLeafCount
+.public IsSealNonUnique
 .public ov01_0220305C
 .public ov01_022031C0
 .public ov01_022031E8

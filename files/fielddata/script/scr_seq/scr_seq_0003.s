@@ -933,7 +933,7 @@ _0D18:
 	goto _0C39
 
 _0D3A:
-	scrcmd_572 VAR_SPECIAL_RESULT
+	get_unique_seals_quantity VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0D5B
 	closemsg

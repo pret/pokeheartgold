@@ -40,7 +40,7 @@ BOOL ScrCmd_GetBuenasPassword(SCRIPTCONTEXT *ctx) {
 
 
 //TODO: Rename to MonGetShinyLeafCount
-static u32 ov01_02202570(POKEMON *mon) {
+static u32 MonGetShinyLeafCount(POKEMON *mon) {
     int c;
     u32 shinyLeafCount = 0;
 
@@ -54,20 +54,20 @@ static u32 ov01_02202570(POKEMON *mon) {
     return shinyLeafCount;
 }
 
-//TODO: Rename to ScrCmd_UpdateShinyLeafCount
-BOOL ScrCmd_825(SCRIPTCONTEXT *ctx) {
+//TODO: Rename to ScrCmd_GetShinyLeafCount
+BOOL ScrCmd_GetShinyLeafCount(SCRIPTCONTEXT *ctx) {
     u32 monIndex = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 *shinyLeafCount = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
-    *shinyLeafCount = ov01_02202570(GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), monIndex));
+    *shinyLeafCount = MonGetShinyLeafCount(GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), monIndex));
     return FALSE;
 }
 
 //TODO: Rename to ScrCmd_TryGiveShinyLeafCrown
-BOOL ScrCmd_826(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_TryGiveShinyLeafCrown(SCRIPTCONTEXT *ctx) {
     u32 monIndex = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
 
     POKEMON *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), monIndex);
-    if (ov01_02202570(GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), monIndex)) == 5) {
+    if (MonGetShinyLeafCount(GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), monIndex)) == 5) {
         u8 data = TRUE;
         SetMonData(mon, MON_DATA_SHINY_LEAF_CROWN, &data);
     }
@@ -75,8 +75,8 @@ BOOL ScrCmd_826(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-//TODO: Rename to ScrCmd_CountUniqueSeals
-BOOL ScrCmd_572(SCRIPTCONTEXT *ctx) {
+//TODO: Rename to ScrCmd_GetUniqueSealsCount
+BOOL ScrCmd_GetUniqueSealsQuantity(SCRIPTCONTEXT *ctx) {
     u16 *uniqueSeals = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
 
     *uniqueSeals = SealCase_CountUniqueSeals(Sav2_SealCase_get(ctx->fsys->savedata));
@@ -102,8 +102,8 @@ BOOL ScrCmd_GiveOrTakeSeal(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-//TODO: rename to CheckSealNonUnique
-static BOOL ov01_022026F8(u16 sealId, u16 *uniqueSealIds, s32 size) {
+//TODO: rename to IsSealNonUnique
+static BOOL IsSealNonUnique(u16 sealId, u16 *uniqueSealIds, s32 size) {
     s32 c;
 
     for (c = 0; c < size; c++) {
@@ -158,7 +158,7 @@ BOOL ScrCmd_GiveRandomSeal(SCRIPTCONTEXT *ctx) {
     while (i < givenSeals) {
         do {
             randVal = LCRandom() % avaliableSeals;
-        } while (ov01_022026F8(randVal, givenSealIds, i));
+        } while (IsSealNonUnique(randVal, givenSealIds, i));
         
         givenSealIds[i] = randVal;
         

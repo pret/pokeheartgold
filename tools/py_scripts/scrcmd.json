@@ -3632,7 +3632,7 @@
       ]
     },
     {
-      "name": "scrcmd_572",
+      "name": "get_unique_seals_quantity",
       "args": [
         "var"
       ]
@@ -5151,14 +5151,14 @@
       ]
     },
     {
-      "name": "scrcmd_825",
+      "name": "get_shiny_leaf_count",
       "args": [
         "var",
         "var"
       ]
     },
     {
-      "name": "scrcmd_826",
+      "name": "try_give_shiny_leaf_crown",
       "args": [
         "var"
       ]

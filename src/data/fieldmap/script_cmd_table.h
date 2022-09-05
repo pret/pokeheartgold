@@ -571,7 +571,7 @@ BOOL ScrCmd_568(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_569(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_CheckCoinsVar(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_571(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_572(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_GetUniqueSealsQuantity(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_573(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_574(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_575(SCRIPTCONTEXT *ctx);
@@ -824,8 +824,8 @@ BOOL ScrCmd_GetBuenasPassword(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_822(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_823(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_824(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_825(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_826(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_GetShinyLeafCount(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_TryGiveShinyLeafCrown(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_GetPartymonForme(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_MonAddContestValue(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_829(SCRIPTCONTEXT *ctx);
@@ -1426,7 +1426,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_569,
     ScrCmd_CheckCoinsVar,
     ScrCmd_571,
-    ScrCmd_572,
+    ScrCmd_GetUniqueSealsQuantity,
     ScrCmd_573,
     ScrCmd_574,
     ScrCmd_575,
@@ -1679,8 +1679,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_822,
     ScrCmd_823,
     ScrCmd_824,
-    ScrCmd_825,
-    ScrCmd_826,
+    ScrCmd_GetShinyLeafCount,
+    ScrCmd_TryGiveShinyLeafCrown,
     ScrCmd_GetPartymonForme,
     ScrCmd_MonAddContestValue,
     ScrCmd_829,

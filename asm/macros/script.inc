@@ -3259,7 +3259,7 @@
 	.short \arg4
 	.endm
 
-	.macro scrcmd_572 arg0
+	.macro get_unique_seals_quantity arg0
 	.short 572
 	.short \arg0
 	.endm
@@ -4602,13 +4602,13 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_825 arg0, arg1
+	.macro get_shiny_leaf_count arg0, arg1
 	.short 825
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_826 arg0
+	.macro try_give_shiny_leaf_crown arg0
 	.short 826
 	.short \arg0
 	.endm
