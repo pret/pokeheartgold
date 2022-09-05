@@ -314,6 +314,7 @@ struct SCRIPTCONTEXT {
 void InitScriptContext(SCRIPTCONTEXT* ctx, const ScrCmdFunc* cmd_table, u32 cmd_count);
 BOOL SetupBytecodeScript(SCRIPTCONTEXT* ctx, const u8* ptr);
 void SetupNativeScript(SCRIPTCONTEXT* ctx, ScrCmdFunc ptr);
+BOOL ScrNative_WaitApplication_DestroyTaskData(SCRIPTCONTEXT *ctx);
 void StopScript(SCRIPTCONTEXT* ctx);
 void sub_0203FD68(SCRIPTCONTEXT* ctx, TaskManager *unk);
 BOOL RunScriptCommand(SCRIPTCONTEXT* ctx);

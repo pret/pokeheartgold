@@ -2,6 +2,42 @@
 #include "fieldmap.h"
 #include "scrcmd.h"
 #include "unk_0206D494.h"
+#include "msgdata/msg/msg_0096_D31R0201.h"
+#include "msgdata/msg/msg_0066_D23R0102.h"
+
+BOOL ScrCmd_BufferPokeathlonCourseName(SCRIPTCONTEXT *ctx) {
+    u8 fieldNo = *(ctx->script_ptr++);
+    u32 courseId = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    BufferPokeathlonCourseName(*(MSGFMT**)FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT), fieldNo, (u8) courseId);
+    return FALSE;
+}
+
+BOOL ScrCmd_811(SCRIPTCONTEXT *ctx) {
+    u16 *unkPtr1 = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    u16 *unkPtr2 = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+
+    *unkPtr2 = sub_0202F224(SaveData_GetMomsSavingsAddr(ctx->fsys->savedata), 0, unkPtr1);
+
+    return FALSE;
+}
+
+BOOL ScrCmd_812(SCRIPTCONTEXT *ctx) {
+    sub_0202F1F4(SaveData_GetMomsSavingsAddr(ctx->fsys->savedata));
+    return FALSE;
+}
+
+BOOL ScrCmd_GetBuenasPassword(SCRIPTCONTEXT *ctx) {
+    u16 *msgPtr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    u16 *unkPtr2 = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+
+    u8 unkVar = ScriptState_GetBuenasPasswordSet(SavArray_Flags_get(ctx->fsys->savedata)) % 30;
+
+    *msgPtr = 2*(unkVar / 3) + unkVar / 3 + msg_0066_D23R0102_00040;
+
+    *unkPtr2 = unkVar % 3;
+    return FALSE;
+}
+
 
 //TODO: Rename to MonGetShinyLeafCount
 static u32 ov01_02202570(POKEMON *mon) {
