@@ -22303,19 +22303,19 @@ _02250392: ; jump table
 	.short _022503AA - _02250392 - 2 ; case 4
 	.short _022503AE - _02250392 - 2 ; case 5
 _0225039E:
-	mov r5, #0xb5
+	mov r5, #MON_DATA_SHINY_LEAF_A
 	b _022503BA
 _022503A2:
-	mov r5, #0xb6
+	mov r5, #MON_DATA_SHINY_LEAF_B
 	b _022503BA
 _022503A6:
-	mov r5, #0xb7
+	mov r5, #MON_DATA_SHINY_LEAF_C
 	b _022503BA
 _022503AA:
-	mov r5, #0xb8
+	mov r5, #MON_DATA_SHINY_LEAF_D
 	b _022503BA
 _022503AE:
-	mov r5, #0xb9
+	mov r5, #MON_DATA_SHINY_LEAF_E
 	b _022503BA
 _022503B2:
 	bl GF_AssertFail
