@@ -15,4 +15,10 @@
 
 #define NELEMS(a) (sizeof(a) / sizeof(*(a)))
 
+typedef struct {
+    int x;
+    int y;
+    int z;
+} Vec32;
+
 #endif //POKEHEARTGOLD_GLOBAL_H
