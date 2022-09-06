@@ -4,7 +4,7 @@
 #include "game_clear.h"
 #include "hall_of_fame.h"
 #include "overlay_63.h"
-#include "overlay_76.h"
+#include "overlay_credits.h"
 #include "player_data.h"
 #include "save_arrays.h"
 #include "save_flypoints.h"
@@ -31,8 +31,8 @@
 
 typedef struct {
     BOOL gameCleared;
-    HOFCongratsAppWork hofCongrats;
-    CreditsAppWork credits;
+    HOFCongratsAppArgs hofCongrats;
+    CreditsAppArgs credits;
     BGCONFIG *bgConfig;
     WINDOW window;
     STRING *windowText;
@@ -155,7 +155,7 @@ static BOOL Task_GameClearSave(TaskManager *taskman) {
     switch (*state) {
     case 0:
         if (!env->vsTrainerRed) {
-            LaunchHOFCongratulationsApp(fsys, &env->hofCongrats);
+            LaunchHOFCongratsApp(fsys, &env->hofCongrats);
             *state += 1;
             break;
         }

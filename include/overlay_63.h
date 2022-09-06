@@ -9,6 +9,6 @@ typedef struct {
     PLAYERPROFILE *profile;
     PARTY *party;
     IGT *igt;
-} HOFCongratsAppWork;
+} HOFCongratsAppArgs;
 
 #endif //POKEHEARTGOLD_OVERLAY_63_H
