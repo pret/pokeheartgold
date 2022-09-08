@@ -93,17 +93,31 @@ static void ConvertFromTiles4Bpp(unsigned char *src, unsigned char *dest, int nu
 	}
 }
 
-static uint32_t ConvertFromScanned4Bpp(unsigned char *src, unsigned char *dest, int fileSize, bool invertColours)
+static uint32_t ConvertFromScanned4Bpp(unsigned char *src, unsigned char *dest, int fileSize, bool invertColours, bool scanFrontToBack)
 {
-    uint32_t encValue = (src[fileSize - 1] << 8) | src[fileSize - 2];
-    for (int i = fileSize; i > 0; i -= 2)
-    {
-        uint16_t val = (src[i - 1] << 8) | src[i - 2];
-        val ^= (encValue & 0xFFFF);
-        src[i - 1] = (val >> 8);
-        src[i - 2] = val;
-        encValue = encValue * 1103515245;
-        encValue = encValue + 24691;
+    uint32_t encValue = 0;
+    if (scanFrontToBack) {
+        encValue = (src[1] << 8) | src[0];
+        for (int i = 0; i < fileSize; i += 2)
+        {
+            uint16_t val = src[i] | (src[i + 1] << 8);
+            val ^= (encValue & 0xFFFF);
+            src[i] = val;
+            src[i + 1] = val >> 8;
+            encValue = encValue * 1103515245;
+            encValue = encValue + 24691;
+        }
+    } else {
+        encValue = (src[fileSize - 1] << 8) | src[fileSize - 2];
+        for (int i = fileSize; i > 0; i -= 2)
+        {
+            uint16_t val = (src[i - 1] << 8) | src[i - 2];
+            val ^= (encValue & 0xFFFF);
+            src[i - 1] = (val >> 8);
+            src[i - 2] = val;
+            encValue = encValue * 1103515245;
+            encValue = encValue + 24691;
+        }
     }
     for (int i = 0; i < fileSize; i++)
     {
@@ -205,7 +219,7 @@ static void ConvertToTiles4Bpp(unsigned char *src, unsigned char *dest, int numT
 	}
 }
 
-static void ConvertToScanned4Bpp(unsigned char *src, unsigned char *dest, int fileSize, bool invertColours, uint32_t encValue)
+static void ConvertToScanned4Bpp(unsigned char *src, unsigned char *dest, int fileSize, bool invertColours, uint32_t encValue, uint32_t scanMode)
 {
     for (int i = 0; i < fileSize; i++)
     {
@@ -219,13 +233,25 @@ static void ConvertToScanned4Bpp(unsigned char *src, unsigned char *dest, int fi
         dest[i] = (leftPixel << 4) | rightPixel;
     }
 
-    for (int i = 1; i < fileSize; i += 2)
-    {
-        uint16_t val = (dest[i] << 8) | dest[i - 1];
-        encValue = (encValue - 24691) * 4005161829;
-        val ^= (encValue & 0xFFFF);
-        dest[i] = (val >> 8);
-        dest[i - 1] = val;
+    if (scanMode == 2) { // front to back
+        for (int i = fileSize - 2; i > 0; i -= 2)
+        {
+            uint16_t val = dest[i] | (dest[i + 1] << 8);
+            encValue = (encValue - 24691) * 4005161829;
+            val ^= (encValue & 0xFFFF);
+            dest[i + 1] = (val >> 8);
+            dest[i] = val;
+        }
+    }
+    else if (scanMode == 1) {
+        for (int i = 1; i < fileSize; i += 2)
+        {
+            uint16_t val = (dest[i] << 8) | dest[i - 1];
+            encValue = (encValue - 24691) * 4005161829;
+            val ^= (encValue & 0xFFFF);
+            dest[i] = (val >> 8);
+            dest[i - 1] = val;
+        }
     }
 }
 
@@ -298,7 +324,7 @@ void ReadImage(char *path, int tilesWidth, int bitDepth, int metatileWidth, int 
 	free(buffer);
 }
 
-uint32_t ReadNtrImage(char *path, int tilesWidth, int bitDepth, int metatileWidth, int metatileHeight, struct Image *image, bool invertColors)
+uint32_t ReadNtrImage(char *path, int tilesWidth, int bitDepth, int metatileWidth, int metatileHeight, struct Image *image, bool invertColors, bool scanFrontToBack)
 {
     int fileSize;
     unsigned char *buffer = ReadWholeFile(path, &fileSize);
@@ -364,7 +390,7 @@ uint32_t ReadNtrImage(char *path, int tilesWidth, int bitDepth, int metatileWidt
         switch (bitDepth)
         {
             case 4:
-                key = ConvertFromScanned4Bpp(imageData, image->pixels, fileSize - 0x30, invertColors);
+                key = ConvertFromScanned4Bpp(imageData, image->pixels, fileSize - 0x30, invertColors, scanFrontToBack);
                 break;
             case 8:
                 FATAL_ERROR("8bpp is not implemented yet\n");
@@ -441,7 +467,7 @@ void WriteImage(char *path, int numTiles, int bitDepth, int metatileWidth, int m
 	free(buffer);
 }
 
-void WriteNtrImage(char *path, int numTiles, int bitDepth, int metatileWidth, int metatileHeight, struct Image *image, bool invertColors, bool clobberSize, bool byteOrder, bool version101, bool sopc, bool scanned, uint32_t key)
+void WriteNtrImage(char *path, int numTiles, int bitDepth, int metatileWidth, int metatileHeight, struct Image *image, bool invertColors, bool clobberSize, bool byteOrder, bool version101, bool sopc, uint32_t scanMode, uint32_t key)
 {
     FILE *fp = fopen(path, "wb");
 
@@ -480,12 +506,12 @@ void WriteNtrImage(char *path, int numTiles, int bitDepth, int metatileWidth, in
 
     int metatilesWide = tilesWidth / metatileWidth;
 
-    if (scanned)
+    if (scanMode)
     {
         switch (bitDepth)
         {
             case 4:
-                ConvertToScanned4Bpp(image->pixels, pixelBuffer, bufferSize, invertColors, key);
+                ConvertToScanned4Bpp(image->pixels, pixelBuffer, bufferSize, invertColors, key, scanMode);
                 break;
             case 8:
                 FATAL_ERROR("8Bpp not supported yet.\n");
@@ -537,7 +563,7 @@ void WriteNtrImage(char *path, int numTiles, int bitDepth, int metatileWidth, in
 
     charHeader[12] = bitDepth == 4 ? 3 : 4;
 
-    if (scanned)
+    if (scanMode)
     {
         charHeader[20] = 1;
     }

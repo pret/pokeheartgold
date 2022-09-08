@@ -31,7 +31,18 @@ struct PngToNtrOptions {
     bool byteOrder;
     bool version101;
     bool sopc;
-    bool scanned;
+    uint32_t scanMode;
+};
+
+struct NtrToPngOptions {
+    char *paletteFilePath;
+    int bitDepth;
+    bool hasTransparency;
+    int width;
+    int metatileWidth;
+    int metatileHeight;
+    int palIndex;
+    bool scanFrontToBack;
 };
 
 
