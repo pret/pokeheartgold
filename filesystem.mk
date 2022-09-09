@@ -463,6 +463,7 @@ include files/data/gs_areawindow.mk
 include files/fielddata/encountdata/gs_enc_data.mk
 include files/itemtool/itemdata/item_data.mk
 include files/poketool/personal/growtbl.mk
+include files/poketool/pokegra/pokegra.mk
 include files/poketool/trainer/trainer.mk
 include files/fielddata/mapmatrix/map_matrix.mk
 include files/resource/eng/pms_aikotoba/pms_aikotoba.mk
