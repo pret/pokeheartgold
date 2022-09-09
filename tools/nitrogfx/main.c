@@ -47,6 +47,28 @@ void ConvertGbaToPng(char *inputPath, char *outputPath, struct GbaToPngOptions *
 
 void ConvertNtrToPng(char *inputPath, char *outputPath, struct NtrToPngOptions *options)
 {
+    // handle empty files if possible
+    FILE *fp = fopen(inputPath, "rb");
+
+	if (options->handleEmpty)
+    {
+        if (fp != NULL)
+        {
+            fseek(fp, 0, SEEK_END);
+            uint32_t size = ftell(fp);
+            rewind(fp);
+            if (size == 0)
+            {
+                FILE *out = fopen(outputPath, "wb+");
+                fclose(out);
+                fclose(fp);
+                return;
+            }
+        }
+    }
+    
+    fclose(fp);
+
     struct Image image;
 
     if (options->paletteFilePath != NULL)
@@ -94,6 +116,28 @@ void ConvertPngToGba(char *inputPath, char *outputPath, struct PngToGbaOptions *
 
 void ConvertPngToNtr(char *inputPath, char *outputPath, struct PngToNtrOptions *options)
 {
+    // handle empty files if possible
+    FILE *fp = fopen(inputPath, "rb");
+    
+	if (options->handleEmpty)
+    {
+        if (fp != NULL)
+        {
+            fseek(fp, 0, SEEK_END);
+            uint32_t size = ftell(fp);
+            rewind(fp);
+            if (size == 0)
+            {
+                FILE *out = fopen(outputPath, "wb+");
+                fclose(out);
+                fclose(fp);
+                return;
+            }
+        }
+    }
+    
+    fclose(fp);
+
     struct Image image;
 
     image.bitDepth = options->bitDepth;
@@ -211,6 +255,7 @@ void HandleNtrToPngCommand(char *inputPath, char *outputPath, int argc, char **a
     options.metatileHeight = 1;
     options.palIndex = 1;
     options.scanFrontToBack = false;
+    options.handleEmpty = false;
 
     for (int i = 3; i < argc; i++)
     {
@@ -284,6 +329,10 @@ void HandleNtrToPngCommand(char *inputPath, char *outputPath, int argc, char **a
         else if (strcmp(option, "-scanfronttoback") == 0)
         {
             options.scanFrontToBack = true;
+        }
+        else if (strcmp(option, "-handleempty") == 0)
+        {
+            options.handleEmpty = true;
         }
         else
         {
@@ -375,6 +424,7 @@ void HandlePngToNtrCommand(char *inputPath, char *outputPath, int argc, char **a
     options.version101 = false;
     options.sopc = false;
     options.scanMode = 0;
+    options.handleEmpty = false;
 
     for (int i = 3; i < argc; i++)
     {
@@ -459,6 +509,10 @@ void HandlePngToNtrCommand(char *inputPath, char *outputPath, int argc, char **a
             if (options.scanMode != 0)
                 FATAL_ERROR("Scan mode specified more than once.\n-scanned goes back to front as in DP, -scanfronttoback goes front to back as in PtHGSS\n");
             options.scanMode = 2;
+        }
+        else if (strcmp(option, "-handleempty") == 0)
+        {
+            options.handleEmpty = true;
         }
         else
         {

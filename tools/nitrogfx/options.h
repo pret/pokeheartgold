@@ -32,6 +32,7 @@ struct PngToNtrOptions {
     bool version101;
     bool sopc;
     uint32_t scanMode;
+    bool handleEmpty;
 };
 
 struct NtrToPngOptions {
@@ -43,6 +44,7 @@ struct NtrToPngOptions {
     int metatileHeight;
     int palIndex;
     bool scanFrontToBack;
+    bool handleEmpty;
 };
 
 

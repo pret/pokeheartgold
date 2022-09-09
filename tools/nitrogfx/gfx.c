@@ -234,13 +234,13 @@ static void ConvertToScanned4Bpp(unsigned char *src, unsigned char *dest, int fi
     }
 
     if (scanMode == 2) { // front to back
-        for (int i = fileSize - 2; i > 0; i -= 2)
+        for (int i = fileSize - 1; i > 0; i -= 2)
         {
-            uint16_t val = dest[i] | (dest[i + 1] << 8);
+            uint16_t val = dest[i - 1] | (dest[i] << 8);
             encValue = (encValue - 24691) * 4005161829;
             val ^= (encValue & 0xFFFF);
-            dest[i + 1] = (val >> 8);
-            dest[i] = val;
+            dest[i] = (val >> 8);
+            dest[i - 1] = val;
         }
     }
     else if (scanMode == 1) {
