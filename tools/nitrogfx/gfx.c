@@ -381,7 +381,7 @@ uint32_t ReadNtrImage(char *path, int tilesWidth, int bitDepth, int metatileWidt
 
     if (image->pixels == NULL)
         FATAL_ERROR("Failed to allocate memory for pixels.\n");
-    
+
     int metatilesWide = tilesWidth / metatileWidth;
 
     uint32_t key = 0;

@@ -50,7 +50,7 @@ void ConvertNtrToPng(char *inputPath, char *outputPath, struct NtrToPngOptions *
     // handle empty files if possible
     FILE *fp = fopen(inputPath, "rb");
 
-	if (options->handleEmpty)
+    if (options->handleEmpty)
     {
         if (fp != NULL)
         {
@@ -66,7 +66,7 @@ void ConvertNtrToPng(char *inputPath, char *outputPath, struct NtrToPngOptions *
             }
         }
     }
-    
+
     fclose(fp);
 
     struct Image image;
@@ -80,7 +80,7 @@ void ConvertNtrToPng(char *inputPath, char *outputPath, struct NtrToPngOptions *
     {
         image.hasPalette = false;
     }
-    
+
     uint32_t key = ReadNtrImage(inputPath, options->width, 0, options->metatileWidth, options->metatileHeight, &image, !image.hasPalette, options->scanFrontToBack);
 
     if (key)
@@ -118,8 +118,8 @@ void ConvertPngToNtr(char *inputPath, char *outputPath, struct PngToNtrOptions *
 {
     // handle empty files if possible
     FILE *fp = fopen(inputPath, "rb");
-    
-	if (options->handleEmpty)
+
+    if (options->handleEmpty)
     {
         if (fp != NULL)
         {
@@ -135,7 +135,7 @@ void ConvertPngToNtr(char *inputPath, char *outputPath, struct PngToNtrOptions *
             }
         }
     }
-    
+
     fclose(fp);
 
     struct Image image;
