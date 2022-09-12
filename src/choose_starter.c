@@ -12,7 +12,7 @@
 
 struct ChooseStarterTaskData {
     int state;
-    struct ChooseStarterAppData *appData;
+    struct ChooseStarterAppArgs *args;
 };
 
 static BOOL CreateStarter(TaskManager *taskManager);
@@ -47,11 +47,11 @@ static BOOL CreateStarter(TaskManager *taskManager) {
             };
             mapsec = MapHeader_GetMapSec(fsys->location->mapId); //sp14
 
-            env->appData = AllocFromHeapAtEnd(11, sizeof(struct ChooseStarterAppData));
-            env->appData->cursorPos = 0;
-            env->appData->options = Sav2_PlayerData_GetOptionsAddr(fsys->savedata);
+            env->args = AllocFromHeapAtEnd(11, sizeof(struct ChooseStarterAppArgs));
+            env->args->cursorPos = 0;
+            env->args->options = Sav2_PlayerData_GetOptionsAddr(fsys->savedata);
             for (i = 0; i < (int)NELEMS(species); i++) {
-                POKEMON *pokemon = &env->appData->starters[i];
+                POKEMON *pokemon = &env->args->starters[i];
                 PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(fsys->savedata);
                 ZeroMonData(pokemon);
                 CreateMon(pokemon, species[i], 5, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
@@ -62,7 +62,7 @@ static BOOL CreateStarter(TaskManager *taskManager) {
                 }
             }
         }
-        FieldSys_LaunchChooseStarterApplication(fsys, env->appData);
+        LaunchChooseStarterApp(fsys, env->args);
         sub_0203E30C();
         env->state = 2;
         break;
@@ -75,7 +75,7 @@ static BOOL CreateStarter(TaskManager *taskManager) {
     case 3: {
         POKEDEX *pokedex = Sav2_Pokedex_get(fsys->savedata);
         party = SavArray_PlayerParty_get(fsys->savedata);
-        POKEMON *myChoice = &env->appData->starters[env->appData->cursorPos];
+        POKEMON *myChoice = &env->args->starters[env->args->cursorPos];
         if (AddMonToParty(party, myChoice)) {
             UpdatePokedexWithReceivedSpecies(fsys->savedata, myChoice);
         }
@@ -95,7 +95,7 @@ static BOOL CreateStarter(TaskManager *taskManager) {
         if (!IsPaletteFadeFinished()) {
             break;
         }
-        FreeToHeap(env->appData);
+        FreeToHeap(env->args);
         FreeToHeap(env);
         return TRUE;
     }
