@@ -32,7 +32,7 @@ sub_020850F4: ; 0x020850F4
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r5, r0, #0
 	mov r0, #0xee
 	lsl r0, r0, #2

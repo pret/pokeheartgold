@@ -34,7 +34,7 @@ _02237D52:
 	mov r0, #0x86
 	str r0, [r4]
 	add r0, r6, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	str r0, [r4, #4]
 	add r0, r4, #0
 	bl ov59_02237E94
@@ -5682,7 +5682,7 @@ _0223A8F2:
 	mov r0, #0x86
 	str r0, [r4]
 	add r0, r6, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	str r0, [r4, #4]
 	add r0, r4, #0
 	bl ov59_0223A9E4
@@ -9005,9 +9005,9 @@ _0223C300: .word 0x04000008
 ov59_0223C304: ; 0x0223C304
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl sub_0201543C
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl NNS_G2dSetupSoftwareSpriteCamera
 	bl sub_02023154
 	ldr r2, _0223C348 ; =0x04000440

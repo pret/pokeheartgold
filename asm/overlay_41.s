@@ -492,7 +492,7 @@ ov41_022461D0: ; 0x022461D0
 ov41_0224621C: ; 0x0224621C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r4, #0x1c]
 	cmp r0, #0
@@ -2083,7 +2083,7 @@ ov41_02246DE0: ; 0x02246DE0
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	ldr r1, _02246EF4 ; =0x000006DC
@@ -2188,7 +2188,7 @@ ov41_02246F08: ; 0x02246F08
 	add r4, r0, #0
 	add r0, r7, #0
 	mov r6, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	ldr r1, [r5]
 	cmp r1, #0xc
 	bhi _02246FD6
@@ -2470,7 +2470,7 @@ ov41_02247150: ; 0x02247150
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r6, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r5, r0, #0
 	mov r0, #0x1b
 	lsl r0, r0, #6
@@ -12399,7 +12399,7 @@ ov41_0224BA10: ; 0x0224BA10
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
 	add r0, r4, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
@@ -12455,7 +12455,7 @@ ov41_0224BACC: ; 0x0224BACC
 	add r4, r1, #0
 	bl OverlayManager_GetData
 	add r5, r0, #0
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r5, #0x10]
 	bl ov41_0224B554

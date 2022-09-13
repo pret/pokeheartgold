@@ -247,7 +247,7 @@ static u16 calcBallTranslationArcStep(const fx32 *from, const fx32 *to, int step
 
 BOOL ChooseStarterApplication_OvyInit(OVY_MANAGER *ovy, int *state_p) {
     struct ChooseStarterAppWork *work;
-    struct ChooseStarterAppData *parent;
+    struct ChooseStarterAppArgs *args;
     int i;
 
     CreateHeap(3, HEAPID_STARTERCHOOSE, 0x40000);
@@ -255,10 +255,10 @@ BOOL ChooseStarterApplication_OvyInit(OVY_MANAGER *ovy, int *state_p) {
     MI_CpuClear8(work, sizeof(struct ChooseStarterAppWork));
     work->heapId = HEAPID_STARTERCHOOSE;
     GF_ExpHeap_FndInitAllocator(&work->allocator, HEAPID_STARTERCHOOSE, 0x20);
-    parent = OverlayManager_GetParentWork(ovy);
-    work->frame = Options_GetFrame(parent->options);
+    args = OverlayManager_GetArgs(ovy);
+    work->frame = Options_GetFrame(args->options);
     for (i = 0; i < 3; i++) {
-        work->choices[i] = &parent->starters[i];
+        work->choices[i] = &args->starters[i];
     }
     work->textSpeed = 1;
     Main_SetVBlankIntrCB((GFIntrCB)vBlankCB, work);
@@ -535,12 +535,12 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
 
 BOOL ChooseStarterApplication_OvyExit(OVY_MANAGER *ovy, int *state) {
     struct ChooseStarterAppWork *work = OverlayManager_GetData(ovy);
-    struct ChooseStarterAppData *data = OverlayManager_GetParentWork(ovy);
+    struct ChooseStarterAppArgs *args = OverlayManager_GetArgs(ovy);
 
     TextFlags_SetCanABSpeedUpPrint(FALSE);
     sub_02002B50(FALSE);
     sub_02002B8C(FALSE);
-    data->cursorPos = work->curSelection;
+    args->cursorPos = work->curSelection;
     Main_SetVBlankIntrCB(NULL, NULL);
     DeleteCameraTranslationWrapper(work->cameraTranslation);
     sub_02023120(work->camera);
@@ -643,7 +643,7 @@ static void init3dEngine(struct ChooseStarterAppWork *work) {
 
 static void update3dObjectsMain(struct ChooseStarterAppWork *work) {
     sub_0202457C(work->monSpriteData.spriteList);
-    sub_02026E48();
+    Thunk_G3X_Reset();
     NNS_G3dGePushMtx();
     sub_02023154();
     updateBaseAndBallsRotation(work);

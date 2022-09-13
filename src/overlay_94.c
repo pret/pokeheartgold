@@ -147,7 +147,7 @@ static void _CreateParticleSystem(IconFormeChangeWork* unkPtr) {
 
     unkPtr->particleSystem = sub_02014DB4(texAlloc, plttAlloc, particleHeap, PARTICLE_HEAP_SIZE, 1, HEAPID_PARTY_MENU);
 
-    GF_Camera_SetClipBounds(1 * FX32_ONE, 900 * FX32_ONE, sub_02015524());
+    GF_Camera_SetClipBounds(1 * FX32_ONE, 900 * FX32_ONE, sub_02015524(unkPtr->particleSystem));
 }
 
 static void _EmitParticles(IconFormeChangeWork* unkPtr) {
@@ -184,10 +184,10 @@ static void particleEmitCallback(struct SPLEmitter* emitter) {
 }
 
 static s32 _RunParticleSystem(void) {
-    sub_02026E48();
+    Thunk_G3X_Reset();
     s32 val = sub_0201543C();
     if (val > 0) {
-        sub_02026E48();
+        Thunk_G3X_Reset();
     }
     sub_02015460();
     sub_02026E50(1, 0);

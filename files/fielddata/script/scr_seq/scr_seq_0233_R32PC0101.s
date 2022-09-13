@@ -20,7 +20,7 @@ scr_seq_R32PC0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_075, _008C
+	goto_if_set FLAG_GOT_OLD_ROD, _008C
 	npc_msg msg_0381_R32PC0101_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -34,7 +34,7 @@ scr_seq_R32PC0101_001:
 _0058:
 	goto_if_no_item_space ITEM_OLD_ROD, 1, _0097
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_075
+	setflag FLAG_GOT_OLD_ROD
 	npc_msg msg_0381_R32PC0101_00003
 	wait_button_or_walk_away
 	closemsg
@@ -65,7 +65,7 @@ scr_seq_R32PC0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_174, _0121
+	goto_if_set FLAG_GOT_LURE_BALL_FROM_ROUTE_32_KURT_FAN, _0121
 	npc_msg msg_0381_R32PC0101_00007
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -84,7 +84,7 @@ _00E3:
 	wait_button_or_walk_away
 	closemsg
 	releaseall
-	setflag FLAG_UNK_174
+	setflag FLAG_GOT_LURE_BALL_FROM_ROUTE_32_KURT_FAN
 	end
 
 _0117:

@@ -21114,7 +21114,7 @@ _0224FA50:
 	ldrh r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #1
 	bne _0224FB28
 	ldr r1, _0224FB2C ; =0x0000086C
@@ -22370,7 +22370,7 @@ _02250418:
 	ldrh r0, [r1, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #1
 	bne _0225047E
 	bl IsFanfarePlaying

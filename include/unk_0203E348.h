@@ -3,6 +3,8 @@
 
 #include "script.h"
 #include "overlay_02.h"
+#include "overlay_63.h"
+#include "overlay_credits.h"
 #include "bag.h"
 #include "mail.h"
 #include "fashion_case.h"
@@ -32,7 +34,7 @@ struct PartyMenuAppData {
     u8 filler_33[0x11];
 };
 
-struct ChooseStarterAppData {
+struct ChooseStarterAppArgs {
     int cursorPos;
     OPTIONS *options;
     POKEMON starters[3];
@@ -78,7 +80,7 @@ int sub_0203E5F8(struct PartyMenuAppData *partyWork);
 void sub_0203F570(FieldSystem *fsys, SAVEDATA *saveData);
 UnkStruct_Ov02_0224E4EC* sub_0203EB64(FieldSystem *fsys);
 void sub_0203F964(FieldSystem *fsys);
-void FieldSys_LaunchChooseStarterApplication(FieldSystem *fsys, struct ChooseStarterAppData *data);
+void LaunchChooseStarterApp(FieldSystem *fsys, struct ChooseStarterAppArgs *args);
 void Save_CurrentLocation_BackUp(SAVEDATA *saveData);
 u16 sub_0203E864(void *a0);
 u16 sub_0203E600(void *a0);
@@ -135,5 +137,9 @@ void *sub_0203EF40(FieldSystem *fsys);
 void *sub_0203EFA0(FieldSystem *fsys);
 void *sub_0203EEA0(FieldSystem *fsys);
 void *Fsys_CreateApplication_AlphPuzzle(FieldSystem *fsys, u8 puzzle);
+void LaunchHOFCongratsApp(FieldSystem *fsys, HOFCongratsAppArgs *args);
+void LaunchCreditsApp(FieldSystem *fsys, CreditsAppArgs *args);
+void LocationData_BackUp(Location *data);
+void LocationData_Restore(Location *data);
 
 #endif //POKEHEARTGOLD_UNK_0203E348_H

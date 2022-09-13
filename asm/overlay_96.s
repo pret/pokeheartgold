@@ -28,7 +28,7 @@ PokeathlonCourseApplication_OvyInit: ; 0x021E5900
 	lsl r0, r0, #2
 	str r1, [r4, r0]
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	mov r2, #0x7e
 	lsl r2, r2, #2
 	add r5, sp, #4
@@ -34553,7 +34553,7 @@ _021F6378: .word 0x45800000
 ov96_021F637C: ; 0x021F637C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl sub_02023154
 	add r0, r4, #0
 	bl ov96_021F61C8

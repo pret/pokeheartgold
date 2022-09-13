@@ -7,7 +7,7 @@
 ov91_0225C540: ; 0x0225C540
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r5, r0, #0
 	mov r0, #3
 	mov r1, #0x6a
@@ -48,7 +48,7 @@ ov91_0225C58C: ; 0x0225C58C
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r6, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r6, r0, #0
 	add r0, r4, #0
 	add r0, #8
@@ -588,7 +588,7 @@ ov91_0225C9EC: ; 0x0225C9EC
 	bl OverlayManager_GetData
 	add r6, r0, #0
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _0225CA0A
@@ -6670,7 +6670,7 @@ ov91_0225F7A8: ; 0x0225F7A8
 	lsl r0, r0, #2
 	add r0, r4, r0
 	bl ov91_0225D6A0
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	add r0, r4, #0
 	bl ov91_0225FDD8
 	mov r0, #0

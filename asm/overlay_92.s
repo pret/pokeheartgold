@@ -689,7 +689,7 @@ ov92_0225CAB4: ; 0x0225CAB4
 	str r0, [sp, #4]
 	bl memset
 	add r0, r4, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	ldr r1, [sp, #4]
 	ldr r6, [sp, #4]
 	add r1, #0x88
@@ -2531,7 +2531,7 @@ ov92_0225DA40: ; 0x0225DA40
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x24
 	add r5, r0, #0
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl sub_02023154
 	ldr r4, _0225DD04 ; =ov92_02263B68
 	add r3, sp, #0x18

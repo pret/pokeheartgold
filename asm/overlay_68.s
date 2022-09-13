@@ -23,7 +23,7 @@ ov68_021E5900: ; 0x021E5900
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	str r0, [r4]
 	add r0, r4, #0
 	bl ov68_021E5A58
@@ -3277,7 +3277,7 @@ _021E7348: .word 0x04000008
 ov68_021E734C: ; 0x021E734C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl sub_02023154
 	ldr r2, _021E7380 ; =0x04000440
 	mov r3, #0

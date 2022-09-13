@@ -28,7 +28,7 @@ _020FA1D4:
 _020FA1E4:
 	.word ov68_021E5900, ov68_021E5968, ov68_021E5A3C, FS_OVERLAY_ID(OVY_68)
 _020FA1F4:
-	.word ov76_021E5900, ov76_021E5B60, ov76_021E5AA0, FS_OVERLAY_ID(OVY_76)
+	.word CreditsApp_OvyInit, CreditsApp_OvyExec, CreditsApp_OvyExit, FS_OVERLAY_ID(credits)
 _020FA204:
 	.word ov64_021E5900, ov64_021E5A18, ov64_021E59C8, FS_OVERLAY_ID(OVY_64)
 _020FA214:
@@ -2828,8 +2828,8 @@ sub_0203F7F4: ; 0x0203F7F4
 _0203F804: .word _020FA284
 	thumb_func_end sub_0203F7F4
 
-	thumb_func_start FieldSys_LaunchChooseStarterApplication
-FieldSys_LaunchChooseStarterApplication: ; 0x0203F808
+	thumb_func_start LaunchChooseStarterApp
+LaunchChooseStarterApp: ; 0x0203F808
 	ldr r3, _0203F810 ; =Fsys_LaunchApplication
 	add r2, r1, #0
 	ldr r1, _0203F814 ; =sAppTemplate_ChooseStarter
@@ -2837,7 +2837,7 @@ FieldSys_LaunchChooseStarterApplication: ; 0x0203F808
 	.balign 4, 0
 _0203F810: .word Fsys_LaunchApplication
 _0203F814: .word sAppTemplate_ChooseStarter
-	thumb_func_end FieldSys_LaunchChooseStarterApplication
+	thumb_func_end LaunchChooseStarterApp
 
 	thumb_func_start sub_0203F818
 sub_0203F818: ; 0x0203F818
@@ -3000,8 +3000,8 @@ _0203F96C: .word Fsys_LaunchApplication
 _0203F970: .word _020FA224
 	thumb_func_end sub_0203F964
 
-	thumb_func_start sub_0203F974
-sub_0203F974: ; 0x0203F974
+	thumb_func_start LaunchHOFCongratsApp
+LaunchHOFCongratsApp: ; 0x0203F974
 	ldr r3, _0203F97C ; =Fsys_LaunchApplication
 	add r2, r1, #0
 	ldr r1, _0203F980 ; =_020FA214
@@ -3009,7 +3009,7 @@ sub_0203F974: ; 0x0203F974
 	.balign 4, 0
 _0203F97C: .word Fsys_LaunchApplication
 _0203F980: .word _020FA214
-	thumb_func_end sub_0203F974
+	thumb_func_end LaunchHOFCongratsApp
 
 	thumb_func_start sub_0203F984
 sub_0203F984: ; 0x0203F984
@@ -3037,8 +3037,8 @@ _0203F9A2:
 _0203F9B0: .word _020FA204
 	thumb_func_end sub_0203F984
 
-	thumb_func_start sub_0203F9B4
-sub_0203F9B4: ; 0x0203F9B4
+	thumb_func_start LaunchCreditsApp
+LaunchCreditsApp: ; 0x0203F9B4
 	ldr r3, _0203F9BC ; =Fsys_LaunchApplication
 	add r2, r1, #0
 	ldr r1, _0203F9C0 ; =_020FA1F4
@@ -3046,7 +3046,7 @@ sub_0203F9B4: ; 0x0203F9B4
 	.balign 4, 0
 _0203F9BC: .word Fsys_LaunchApplication
 _0203F9C0: .word _020FA1F4
-	thumb_func_end sub_0203F9B4
+	thumb_func_end LaunchCreditsApp
 
 	thumb_func_start sub_0203F9C4
 sub_0203F9C4: ; 0x0203F9C4

@@ -50,7 +50,7 @@ ov89_02258800: ; 0x02258800
 	add r5, r0, #0
 	bl MI_CpuFill8
 	add r0, r4, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	str r0, [r5]
 	ldr r0, [r0]
 	bl ov45_0222A2C8
@@ -2356,7 +2356,7 @@ ov89_02259C0C: ; 0x02259C0C
 	str r0, [sp, #0x30]
 	add r0, sp, #4
 	bl MTX_Identity33_
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	add r0, r4, #0
 	add r0, #0xcc
 	ldr r0, [r0]

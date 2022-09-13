@@ -7,7 +7,7 @@
 ov108_021E5900: ; 0x021E5900
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	mov r2, #5
 	add r5, r0, #0
 	mov r0, #3
@@ -5979,7 +5979,7 @@ _021E8862:
 	lsl r2, r2, #0xe
 	bl CreateHeap
 	add r0, r4, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	mov r1, #0x53
 	add r6, r0, #0
 	add r0, r4, #0
@@ -6684,7 +6684,7 @@ _021E8E0C: .word 0x04000008
 ov108_021E8E10: ; 0x021E8E10
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl sub_02023154
 	bl NNS_G3dGeFlushBuffer
 	ldr r2, _021E8E58 ; =0x04000440
@@ -6791,7 +6791,7 @@ ov108_021E8ED8: ; 0x021E8ED8
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _021E8EFA
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl sub_02023154
 	bl NNS_G3dGeFlushBuffer
 	ldr r0, _021E8EFC ; =0x04000540

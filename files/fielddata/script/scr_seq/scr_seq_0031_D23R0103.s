@@ -88,7 +88,7 @@ _00F5:
 	end
 
 _0100:
-	goto_if_set FLAG_UNK_08F, _014D
+	goto_if_set FLAG_GOT_TM11_FROM_RADIO_TOWER_WOMAN, _014D
 	npc_msg msg_0067_D23R0103_00005
 	goto_if_no_item_space ITEM_TM11, 1, _0142
 	callstd std_give_item_verbose
@@ -96,7 +96,7 @@ _0100:
 	wait_button_or_walk_away
 	closemsg
 	releaseall
-	setflag FLAG_UNK_08F
+	setflag FLAG_GOT_TM11_FROM_RADIO_TOWER_WOMAN
 	end
 
 _0142:

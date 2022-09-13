@@ -10,7 +10,7 @@
 	scrdef_end
 
 scr_seq_T10R0701_001:
-	scrcmd_081 0
+	stop_bgm 0
 	end
 
 scr_seq_T10R0701_000:
@@ -59,7 +59,7 @@ _009A:
 	call_if_unset FLAG_CAUGHT_MOLTRES, _0206
 	goto_if_unset FLAG_CAUGHT_SNORLAX, _020C
 _0105:
-	call_if_unset FLAG_CAUGHT_SUICINE, _0227
+	call_if_unset FLAG_CAUGHT_SUICUNE, _0227
 	get_game_version VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 7
 	goto_if_ne _012D

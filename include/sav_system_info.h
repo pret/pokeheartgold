@@ -10,7 +10,7 @@ typedef struct SYSINFO_RTC {
     RTCTime time;
     s32 days_since_nitro_epoch;
     s64 seconds_since_nitro_epoch;
-    s64 unk2C;
+    s64 seconds_at_game_clear;
     u32 unk34;
 } SYSINFO_RTC;
 

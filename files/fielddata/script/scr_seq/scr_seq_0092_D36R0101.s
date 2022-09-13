@@ -1193,11 +1193,11 @@ scr_seq_D36R0101_011:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_080, _11F2
+	goto_if_set FLAG_GOT_HM01, _11F2
 	npc_msg msg_0115_D36R0101_00006
 	goto_if_no_item_space ITEM_HM01, 1, _11FD
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_080
+	setflag FLAG_GOT_HM01
 	clearflag FLAG_UNK_1AE
 	clearflag FLAG_UNK_1AC
 	npc_msg msg_0115_D36R0101_00008
@@ -1236,7 +1236,7 @@ _1207:
 	apply_movement obj_D36R0101_gsfighter, _12EC
 	apply_movement obj_player, _12F8
 	wait_movement
-	goto_if_set FLAG_UNK_080, _12BE
+	goto_if_set FLAG_GOT_HM01, _12BE
 	npc_msg msg_0115_D36R0101_00006
 	goto_if_no_item_space ITEM_HM01, 1, _12C9
 	callstd std_give_item_verbose
@@ -1246,7 +1246,7 @@ _1207:
 	setflag FLAG_HIDE_FARFETCHD_2_LOST
 	setflag FLAG_HIDE_FARFETCHD_1_FOUND
 	setflag FLAG_HIDE_FARFETCHD_2_FOUND
-	setflag FLAG_UNK_080
+	setflag FLAG_GOT_HM01
 	clearflag FLAG_UNK_1AE
 	clearflag FLAG_UNK_1AC
 	npc_msg msg_0115_D36R0101_00008
@@ -1645,7 +1645,7 @@ _1803:
 _1816:
 	scrcmd_609
 	lockall
-	scrcmd_081 0
+	stop_bgm 0
 	clearflag FLAG_HIDE_ILEX_FOREST_SPIKY_EAR_PICHU
 	show_person obj_D36R0101_tsure_poke_static_pichu_spiky
 	apply_movement obj_D36R0101_tsure_poke_static_pichu_spiky, _1C44

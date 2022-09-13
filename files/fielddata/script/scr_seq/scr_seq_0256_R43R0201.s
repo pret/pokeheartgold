@@ -12,7 +12,7 @@
 	scrdef_end
 
 scr_seq_R43R0201_001:
-	scrcmd_081 SEQ_GS_R_7_42
+	stop_bgm SEQ_GS_R_7_42
 	play_bgm SEQ_GS_EYE_ROCKET
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
@@ -66,7 +66,7 @@ _00D5:
 	apply_movement obj_R43R0201_rocketm_2, _01A4
 	wait_movement
 _00ED:
-	scrcmd_081 SEQ_GS_EYE_ROCKET
+	stop_bgm SEQ_GS_EYE_ROCKET
 	play_bgm SEQ_GS_R_7_42
 	setvar VAR_UNK_410F, 1
 	end
@@ -143,12 +143,12 @@ scr_seq_R43R0201_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_0CE, _0208
+	goto_if_set FLAG_GOT_TM36_FROM_ROUTE_43_GUARD, _0208
 	npc_msg msg_0403_R43R0201_00004
 	goto_if_no_item_space ITEM_TM36, 1, _0213
 	callstd std_obtain_item_verbose
 	wait_button_or_walk_away
-	setflag FLAG_UNK_0CE
+	setflag FLAG_GOT_TM36_FROM_ROUTE_43_GUARD
 _0208:
 	npc_msg msg_0403_R43R0201_00006
 	wait_button_or_walk_away

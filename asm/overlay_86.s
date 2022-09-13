@@ -50,7 +50,7 @@ ov86_021E5900: ; 0x021E5900
 	bl BgConfig_Alloc
 	str r0, [r5, #0xc]
 	add r0, r4, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r4, r0, #0
 	mov r0, #0x89
 	ldr r1, [r4]

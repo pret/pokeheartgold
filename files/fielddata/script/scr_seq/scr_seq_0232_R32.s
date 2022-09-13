@@ -64,7 +64,7 @@ scr_seq_R32_005:
 	goto_if_set FLAG_DAILY_GOT_SHOCK_RIBBON, _01E8
 	compare VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
 	goto_if_eq _0182
-	goto_if_set FLAG_UNK_0D9, _0164
+	goto_if_set FLAG_GOT_POISON_BARB_FROM_FRIEDA, _0164
 	get_weekday VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 5
 	goto_if_eq _0115
@@ -77,7 +77,7 @@ _0115:
 	msgbox_extern VAR_SPECIAL_RESULT, 16
 	goto_if_no_item_space ITEM_POISON_BARB, 1, _0178
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_0D9
+	setflag FLAG_GOT_POISON_BARB_FROM_FRIEDA
 	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 17
@@ -143,11 +143,11 @@ scr_seq_R32_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_06E, _023B
+	goto_if_set FLAG_GOT_TM05_FROM_ROUTE_32_MAN, _023B
 	npc_msg msg_0380_R32_00010
 	goto_if_no_item_space ITEM_TM05, 1, _0246
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_06E
+	setflag FLAG_GOT_TM05_FROM_ROUTE_32_MAN
 _023B:
 	npc_msg msg_0380_R32_00012
 	wait_button_or_walk_away

@@ -166,11 +166,11 @@ Static main
 	Object src/scrcmd_mart.o
 	Object src/scrcmd_strbuf.o
 	Object src/scrcmd_lottery.o
-	Object asm/scrcmd_6.o
+	Object src/scrcmd_sound.o
 	Object src/scrcmd_battle.o
 	Object src/scrcmd_8.o
 	Object asm/scrcmd_9.o
-	Object asm/scrcmd_10.o
+	Object src/scrcmd_apricorn.o
 	Object asm/scrcmd_11.o
 	Object src/scrcmd_12.o
 	Object src/scrcmd_money.o
@@ -188,7 +188,7 @@ Static main
 	Object asm/unk_020517A4.o
 	Object asm/unk_020518D8.o
 	Object src/field_black_out.o
-	Object asm/unk_0205298C.o
+	Object src/game_clear.o
 	Object src/field_warp_tasks.o
 	Object src/script_pokemon_util.o
 	Object asm/unk_02054514.o
@@ -285,7 +285,8 @@ Static main
 	Object asm/unk_0208F814.o
 	Object asm/unk_0208FB64.o
 	Object src/use_item_on_mon.o
-	Object asm/unk_02090C94.o
+	Object src/mail_misc.o
+	Object src/unk_02091054.o
 	Object asm/unk_020910D8.o
 	Object asm/unk_02091278.o
 	Object asm/unk_020912AC.o
@@ -325,7 +326,7 @@ Static main
 	Object asm/unk_02097B78.o
 	Object asm/unk_02097BE0.o
 	Object asm/unk_02097D3C.o
-	Object asm/unk_02097E4C.o
+	Object src/pokemon_mood.o
 	Object asm/unk_02097F6C.o
 
 	### Vendor libraries ###
@@ -532,7 +533,7 @@ Overlay OVY_5
 Overlay OVY_6
 {
     After OVY_0
-    Object asm/overlay_06.o
+    Object src/overlay_06.o
 }
 Overlay OVY_7
 {
@@ -883,10 +884,12 @@ Overlay OVY_75
     After OVY_70
     Object asm/overlay_75.o
 }
-Overlay OVY_76
+Overlay credits
 {
     After main
-    Object asm/overlay_76.o
+    Object src/overlay_credits_data.o
+    Object src/overlay_credits.o
+    Object src/overlay_credits_data2.o
 }
 Overlay OVY_77
 {

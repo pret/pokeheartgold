@@ -120,7 +120,7 @@ _019C:
 	apply_movement obj_player, _0310
 _01B4:
 	wait_movement
-	scrcmd_081 SEQ_GS_R_12_24
+	stop_bgm SEQ_GS_R_12_24
 	play_bgm SEQ_GS_EYE_K_SHOUJO
 	compare VAR_TEMP_x4001, 40
 	goto_if_ne _01E1
@@ -162,7 +162,7 @@ _0271:
 	wait_movement
 	hide_person obj_R25_gsman1
 	hide_person obj_R25_gsleader11
-	scrcmd_081 SEQ_GS_EYE_K_SHOUJO
+	stop_bgm SEQ_GS_EYE_K_SHOUJO
 	play_bgm SEQ_GS_R_12_24
 	setflag FLAG_HIDE_ROUTE_25_MISTYS_BOYFRIEND
 	setflag FLAG_HIDE_ROUTE_25_MISTY
@@ -378,11 +378,11 @@ scr_seq_R25_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_122, _0558
+	goto_if_set FLAG_GOT_NUGGET_FROM_ACE_TRAINER_M_KEVIN, _0558
 	npc_msg msg_0363_R25_00011
 	goto_if_no_item_space ITEM_NUGGET, 1, _0563
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_122
+	setflag FLAG_GOT_NUGGET_FROM_ACE_TRAINER_M_KEVIN
 	npc_msg msg_0363_R25_00013
 	closemsg
 	trainer_battle TRAINER_ACE_TRAINER_M_KEVIN, 0, 0, 0
@@ -576,7 +576,7 @@ _07AA:
 	end
 
 _07B0:
-	setflag FLAG_CAUGHT_SUICINE
+	setflag FLAG_CAUGHT_SUICUNE
 	return
 
 _07B6:

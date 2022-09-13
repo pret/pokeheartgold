@@ -8,7 +8,7 @@ ov48_02258800: ; 0x02258800
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r4, r0, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	mov r2, #5
 	add r5, r0, #0
 	mov r0, #3
@@ -135,7 +135,7 @@ ov48_02258920: ; 0x02258920
 	bl OverlayManager_GetData
 	add r7, r0, #0
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r5, r0, #0
 	ldr r0, [r4]
 	cmp r0, #6
@@ -243,7 +243,7 @@ ov48_022589FC: ; 0x022589FC
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -1071,7 +1071,7 @@ _0225904C: .word 0x0000C40C
 ov48_02259050: ; 0x02259050
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	ldr r0, _0225908C ; =0x0000C3CC
 	add r0, r4, r0
 	bl ov48_02259C44

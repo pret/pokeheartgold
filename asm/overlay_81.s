@@ -41,7 +41,7 @@ ov81_0223DD60: ; 0x0223DD60
 	str r0, [r4, #0x4c]
 	str r5, [r4]
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	mov r3, #0x6f
 	mov r2, #0xf
 	ldr r1, [r0]
@@ -9877,7 +9877,7 @@ _02242C44: .word 0x04000580
 ov81_02242C48: ; 0x02242C48
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	ldr r2, _02242C78 ; =0x04000440
 	mov r3, #0
 	add r1, r2, #0

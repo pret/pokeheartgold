@@ -777,7 +777,7 @@ ov01_021FCBCC: ; 0x021FCBCC
 	add r4, r0, #0
 	add r0, #0x28
 	ldrb r0, [r0]
-	bl sub_0205B624
+	bl IsPrintFinished
 	cmp r0, #1
 	bne _021FCBFA
 	bl ov01_021FCAFC

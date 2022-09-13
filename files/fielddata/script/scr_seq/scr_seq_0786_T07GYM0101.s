@@ -114,9 +114,9 @@ scr_seq_T07GYM0101_000:
 _017C:
 	goto_if_no_item_space ITEM_TM19, 1, _01C1
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_124
+	setflag FLAG_GOT_TM19_FROM_ERIKA
 _01A5:
-	goto_if_unset FLAG_UNK_124, _017C
+	goto_if_unset FLAG_GOT_TM19_FROM_ERIKA, _017C
 	npc_msg msg_0492_T07GYM0101_00004
 	wait_button_or_walk_away
 	closemsg

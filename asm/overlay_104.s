@@ -24,7 +24,7 @@ ov104_021E5900: ; 0x021E5900
 	add r4, r0, #0
 	bl memset
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	add r5, r0, #0
 	mov r0, #0x59
 	ldrb r1, [r5]
@@ -238,7 +238,7 @@ _021E5AC2:
 	str r0, [r1]
 	str r0, [r1, #4]
 	str r0, [r1, #8]
-	bl sub_02026E48
+	bl Thunk_G3X_Reset
 	bl sub_02023154
 	add r0, r4, #0
 	add r1, sp, #0

@@ -132,7 +132,7 @@ scr_seq_D17R0110_006:
 	apply_movement obj_D17R0110_dancer_5, _0790
 	wait_movement
 	wait 16, VAR_SPECIAL_RESULT
-	scrcmd_081 0
+	stop_bgm 0
 	temp_bgm SEQ_GS_E_MAIKO_MAI
 	wait 18, VAR_SPECIAL_RESULT
 	apply_movement obj_D17R0110_dancer, _07A0
@@ -309,7 +309,7 @@ scr_seq_D17R0110_006:
 	wait 60, VAR_SPECIAL_RESULT
 	scrcmd_762 1
 	scrcmd_763
-	scrcmd_081 0
+	stop_bgm 0
 	scrcmd_756
 	setvar VAR_TEMP_x400B, 123
 	fade_screen 6, 1, 0, RGB_WHITE
@@ -323,7 +323,7 @@ scr_seq_D17R0110_006:
 	wait_fade
 	wait 20, VAR_SPECIAL_RESULT
 	scrcmd_764
-	scrcmd_081 30
+	stop_bgm 30
 	apply_movement obj_D17R0110_dancer, _0798
 	wait_movement
 	scrcmd_726

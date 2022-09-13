@@ -29,7 +29,7 @@ ov53_OakSpeech_OvyInit: ; 0x021E5900
 	mov r0, #0x50
 	str r0, [r4]
 	add r0, r5, #0
-	bl OverlayManager_GetParentWork
+	bl OverlayManager_GetArgs
 	ldr r0, [r0, #8]
 	str r0, [r4, #4]
 	bl Sav2_PlayerData_GetOptionsAddr

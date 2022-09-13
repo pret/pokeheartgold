@@ -78,7 +78,7 @@ _00ED:
 scr_seq_T04GYM0101_004:
 	scrcmd_609
 	lockall
-	scrcmd_081 SEQ_GS_GYM
+	stop_bgm SEQ_GS_GYM
 	play_bgm SEQ_GS_EYE_ROCKET
 	apply_movement obj_T04GYM0101_rocketm, _01C8
 	wait_movement
@@ -116,7 +116,7 @@ _018B:
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person obj_T04GYM0101_rocketm
 	wait_se SEQ_SE_DP_KAIDAN2
-	scrcmd_081 SEQ_GS_EYE_ROCKET
+	stop_bgm SEQ_GS_EYE_ROCKET
 	play_bgm SEQ_GS_GYM
 	setflag FLAG_HIDE_CERULEAN_GYM_ROCKET
 	clearflag FLAG_HIDE_ROUTE_24_ROCKET
@@ -228,7 +228,7 @@ scr_seq_T04GYM0101_000:
 _0307:
 	goto_if_no_item_space ITEM_TM03, 1, _033E
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_180
+	setflag FLAG_GOT_TM03_FROM_MISTY
 	buffer_players_name 0
 	npc_msg msg_0469_T04GYM0101_00012
 	wait_button_or_walk_away
@@ -243,7 +243,7 @@ _033E:
 	end
 
 _0348:
-	goto_if_unset FLAG_UNK_180, _0307
+	goto_if_unset FLAG_GOT_TM03_FROM_MISTY, _0307
 	npc_msg msg_0469_T04GYM0101_00013
 	wait_button_or_walk_away
 	closemsg
