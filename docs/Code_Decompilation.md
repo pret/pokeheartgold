@@ -59,11 +59,11 @@ Assembly files are divided into multiple parts:
 
 (See [Static Data Decompilation](Static_Data_Decompilation.md) for more info on data segments)
 
-Functions are the most important part of decompiling any assembly file, so it's important to know how to translate the assembly into C
+Functions are the most important part of decompiling any assembly file, so it's important to know how to translate the assembly into C.
 
-This can be done either using the ARM instruction set (as found in the source files) or THUMB instruction set (as used in decomp.me, compiler explorer, or when using the -t flag with asmdiff.sh)
+This can be done either using the ARM instruction set (as found in the source files) or THUMB instruction set (as used in decomp.me, compiler explorer, or when using the -t flag with asmdiff.sh).
 
-Examples of both in use will be used to determine equivalent c code for the first function, LanguageToDexFlag
+Examples of both in use will be used to determine equivalent c code for the first function, LanguageToDexFlag.
 
 # ARM Instruction Set
 
@@ -108,9 +108,9 @@ LanguageToDexFlag:
 ```
 
 Our first step to decompilation is to gather information:
-- We know that `_02106058` is a constant array of some sort since it's defined in .rodata, and that it's pointer (address in memory) is loaded into registry 3
-- Since `ldrb` is used when accessing a value of r3, we can tell that it's an 8 bit type
-- This array is being read in a loop, and it terminates after 6 elements have been read. Furthermore, `_02106058` only has 6 non-zero values, leading us to believe it's of size 6
+- We know that `_02106058` is a constant array of some sort since it's defined in .rodata, and that it's pointer (address in memory) is loaded into registry 3.
+- Since `ldrb` is used when accessing a value of r3, we can tell that it's an 8 bit type.
+- This array is being read in a loop, and it terminates after 6 elements have been read. Furthermore, `_02106058` only has 6 non-zero values, leading us to believe it's of size 6.
 
 So our first bit of C code may look something like this:
 
@@ -169,7 +169,7 @@ int LanguageToDexFlag(u8 unk) {
 And voilà! Our first decompiled function! But don't stop here, because the next step will be documenting what that function does.
 
 In scenarios where the function name or usage is NOT known, here are some ways to determine its functionality:
-- Check the Platinum source code leak for similar code, since HGSS and Platinum are very similar
+- Check the [Pokediamond decompilation project's source code](https://github.com/pret/pokediamond) for similar code, since HGSS and Diamond/Pearl are very similar
 - Find where the function is called/what other functions the function calls to try and figure out what context it's used in
 - Use identified/easily identifiable data to relate the function to sprites, dates, sounds, specific pokemon dex numbers, etc.
 
@@ -239,5 +239,5 @@ Knowing that `bl GF_AssertFail` will call the function GF_AssertFail(), you have
 If you're confused about what an instructions means, Google or any other search engine are your friends. 
 Don't be afraid to ask for help in the #asm2c-help channel either, just make sure to provide your code when you do.
 
-And if you use decomp.me to work in, please remember to include `#pragma thumb on` at the top of your code, as otherwise you will be comparing an ARM instruction set to decomp.me's THUMB target
+And if you use decomp.me to work in, please remember to include `#pragma thumb on` at the top of your code, as otherwise you will be comparing an ARM instruction set to decomp.me's THUMB target.
 (See [How to see nonmatching code sections](How_to_see_nonmatching_code_sections.md) for more info)
