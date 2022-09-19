@@ -60,5 +60,5 @@ void sub_02097F9C(u32 rand, u16 *mapno, u16 *species) {
         break;
     }
     GF_ASSERT(*species != 0);
-    *mapno = *swarmMap[0];
+    *mapno = (*swarmMap)[0];
 }
