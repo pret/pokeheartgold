@@ -327,7 +327,7 @@ Static main
 	Object asm/unk_02097BE0.o
 	Object asm/unk_02097D3C.o
 	Object src/pokemon_mood.o
-	Object asm/unk_02097F6C.o
+	Object src/unk_02097F6C.o
 
 	### Vendor libraries ###
 	Object asm/middleware.o
