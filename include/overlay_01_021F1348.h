@@ -20,7 +20,7 @@ typedef struct {
 
 typedef struct {
     int unk0;
-    int unk4;
+    BOOL unk4;
     int unk8;
     int unkC;
     UnkOv01_021FFFCC_common unk10;
@@ -47,7 +47,7 @@ typedef struct {
 } UnkOv01_021FFF5C;
 
 UnkOv01_021FFECC *ov01_021F1430(void *a0, int a1, int a2, int a3);
-FieldSystem *ov01_021F146C(LocalMapObject *a0);
+FieldSystem *ov01_021F146C(LocalMapObject *mapObject);
 TaskManager *ov01_021F1468(FieldSystem *fsys);
 UnkOv01_021FFECC *ov01_021F1450(FieldSystem *fsys, int a1);
 void ov01_021F1620(FieldSystem *fsys, const UnkOv01_02209280 *a1, VecFx32 *a2, int a3, UnkOv01_021FFF5C *a4, int a5);

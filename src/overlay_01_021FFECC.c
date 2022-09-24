@@ -48,29 +48,29 @@ static NNSG3dRenderObj *ov01_021FFF50(UnkOv01_021FFECC *a0, int idx) {
     return &a0->unk54[idx];
 }
 
-void ov01_021FFF5C(LocalMapObject *a0, int a1) {
-    VecFx32 temp2;
-    UnkOv01_021FFF5C temp;
+void ov01_021FFF5C(LocalMapObject *mapObject, int a1) {
+    VecFx32 temp;
+    UnkOv01_021FFF5C temp2;
 
-    FieldSystem *fsys = ov01_021F146C(a0);
+    FieldSystem *fsys = ov01_021F146C(mapObject);
     TaskManager* taskman = ov01_021F1468(fsys);
 
-    int x = MapObject_GetCurrentX(a0);
-    int y = MapObject_GetCurrentY(a0);
+    int x = MapObject_GetCurrentX(mapObject);
+    int y = MapObject_GetCurrentY(mapObject);
 
-    sub_020611C8(x, y, &temp2);
-    sub_0206121C(taskman, &temp2);
+    sub_020611C8(x, y, &temp);
+    sub_0206121C(taskman, &temp);
 
-    temp.unk0 = a1;
-    temp.unk4 = fsys;
+    temp2.unk0 = a1;
+    temp2.unk4 = fsys;
 
     UnkOv01_021FFECC *val1 = ov01_021F1450(fsys, 0xe);
-    temp.unk8 = val1;
-    temp.unkC = a0;
-    temp.unk10 = ov01_021FFF50(val1, a1);
+    temp2.unk8 = val1;
+    temp2.unkC = mapObject;
+    temp2.unk10 = ov01_021FFF50(val1, a1);
 
-    int val3 = sub_0205F09C(a0, 2);
-    ov01_021F1620(fsys, &ov01_02209280, &temp2, 0, &temp, val3);
+    int val3 = sub_0205F09C(mapObject, 2);
+    ov01_021F1620(fsys, &ov01_02209280, &temp, 0, &temp2, val3);
 }
 
 static BOOL ov01_021FFFCC(void *a0, UnkOv01_021FFFCD *a1) {
@@ -98,7 +98,7 @@ static void ov01_0220001C(void *a0, UnkOv01_021FFFCD *a1) {}
 static void ov01_02200020(void *a0, UnkOv01_021FFFCD *a1) {
     VecFx32 translation;
 
-    if (a1->unk4 != 1) {
+    if (a1->unk4 != TRUE) {
         sub_02068DB8(a0, &translation);
         sub_020699BC(a1->unk10.unk10, &translation);
     }
