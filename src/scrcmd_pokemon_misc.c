@@ -1,9 +1,82 @@
 #include "bug_contest.h"
 #include "fieldmap.h"
+#include "friend_group.h"
 #include "scrcmd.h"
 #include "unk_0206D494.h"
 #include "msgdata/msg/msg_0096_D31R0201.h"
 #include "msgdata/msg/msg_0066_D23R0102.h"
+
+BOOL ScrCmd_RadioMusicIsPlaying(SCRIPTCONTEXT *ctx) {
+    u32 musicSeq = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    u16 *isPlaying = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    
+    //TODO: rename ov02_022522B4 => GetRadioMusicPlayingSeq
+    *isPlaying = (ov02_022522B4() == musicSeq);
+    
+    return FALSE;
+}
+
+extern s32 ov01_022093D0[2][2];
+
+static u32 ov01_02202378(SAVEDATA *savedata, u8 luckValue, u8 city) {
+    SAV_FRIEND_GRP *friendGroup;
+    u8 *unkPtr;
+    s32 *unkData;
+    u32 size;
+    s32 rngSeed;
+    u8 ret;
+    u8 randVal;
+    u32 i;
+    s32 j;
+    
+    friendGroup = Save_FriendGroup_get(savedata);
+    
+    if (city != 0) { //1 = celadon; 0 = goldenrod
+        size = 14;
+    } else {
+        size = 21;
+    }
+
+    if (luckValue >= size) {
+        return 3;
+    }
+
+    rngSeed = GetLCRNGSeed();
+    SetLCRNGSeed(sub_0202C7DC(friendGroup));
+
+    unkPtr = AllocFromHeapAtEnd(0x20, size);
+    MI_CpuFill8(unkPtr, 0, size);
+    
+    i = 0;
+    unkData = ov01_022093D0[city];
+
+    for (; i < 2; i = (u8) ++i) {
+        for (j = 0; j < unkData[i]; j = (u8) ++j) {
+            do {
+                randVal = LCRandom() % (s32) size;
+            } while (unkPtr[randVal] != 0);
+            unkPtr[randVal] = i + 1;
+        } 
+    }
+
+    ret = unkPtr[luckValue];
+
+    FreeToHeap(unkPtr);
+    SetLCRNGSeed(rngSeed);
+
+    return ret;
+}
+
+BOOL ScrCmd_CasinoGame(SCRIPTCONTEXT *ctx) {
+    u8 luckValue = *(ctx->script_ptr++);
+    u8 city = *(ctx->script_ptr++); //1 = celadon; 0 = goldenrod
+    u32 *unkPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+
+    *unkPtr = sub_0203FA38(ctx->fsys, ov01_02202378(ctx->fsys->savedata, luckValue, city));
+
+    SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
+    return TRUE;
+}
 
 BOOL ScrCmd_BufferPokeathlonCourseName(SCRIPTCONTEXT *ctx) {
     u8 fieldNo = *(ctx->script_ptr++);
