@@ -1,10 +1,130 @@
 #include "bug_contest.h"
 #include "fieldmap.h"
 #include "friend_group.h"
+#include "photo_album.h"
 #include "scrcmd.h"
 #include "unk_0206D494.h"
 #include "msgdata/msg/msg_0096_D31R0201.h"
 #include "msgdata/msg/msg_0066_D23R0102.h"
+
+BOOL ScrCmd_GiveTogepiEgg(SCRIPTCONTEXT *ctx) {
+    s32 i;
+    u8 pp;
+    u32 personality;
+    u16 moveData;
+    POKEMON *togepi;
+    PLAYERPROFILE *profile;
+    PARTY *party;
+    FieldSystem *fsys = ctx->fsys;
+    
+    profile = Sav2_PlayerData_GetProfileAddr(fsys->savedata);
+    party = SavArray_PlayerParty_get(fsys->savedata);
+
+    if (GetPartyCount(party) >= 6) {
+        return FALSE;
+    }
+
+    togepi = AllocMonZeroed(0xb);
+    ZeroMonData(togepi);
+
+    SetEggStats(togepi, SPECIES_TOGEPI, 1, profile, 3, sub_02017FE4(1, 0xd));
+    
+    for (i = 0; i < 4; i++) {
+        if (!GetMonData(togepi, MON_DATA_MOVE1 + i, 0)) {
+            break;
+        }
+    }
+
+    if (i == 4) {
+        i = 3;
+    }    
+
+    moveData = 0x146; //TODO: Update this egg move with the move constant - I think it's Extrasensoy?
+    SetMonData(togepi, MON_DATA_MOVE1 + i, &moveData);
+
+    pp = GetMonData(togepi, MON_DATA_MOVE1MAXPP + i, 0);
+    SetMonData(togepi, MON_DATA_MOVE1PP + i, &pp);
+
+    AddMonToParty(party, togepi);
+
+    FreeToHeap(togepi);
+
+    //TODO: Update this function with some documentation on what the parameters are
+    sub_0202ABB0(Sav2_Misc_get(fsys->savedata), GetMonData(togepi, MON_DATA_PERSONALITY, 0), GetMonData(togepi, MON_DATA_GENDER, 0));
+
+    return FALSE;
+}
+
+BOOL ScrCmd_777(SCRIPTCONTEXT *ctx) {
+    u32 partyIndex = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    u16 *unkPtr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+
+    POKEMON *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), partyIndex);
+
+    *unkPtr = sub_0206D8D0(mon, ctx->fsys->savedata);
+
+    return FALSE;
+}
+
+extern u16 sSpikyEarPichuMoveset[4];
+
+BOOL ScrCmd_GiveSpikyEarPichu(SCRIPTCONTEXT *ctx) {
+    s32 i;
+    u8 forme;
+    u8 maxPP;
+    u16 heldItem;
+    POKEMON *pichu;    
+    PARTY *party;
+    FieldSystem *fsys;
+    PLAYERPROFILE *profile;
+    
+    fsys = ctx->fsys;
+
+    profile = Sav2_PlayerData_GetProfileAddr(fsys->savedata);
+    party = SavArray_PlayerParty_get(fsys->savedata);
+    if (GetPartyCount(party) >= 6) {
+        return FALSE;
+    }
+    pichu = AllocMonZeroed(0xb);
+    ZeroMonData(pichu);
+
+    u32 trId = PlayerProfile_GetTrainerID(profile);
+    u32 unkA = sub_02072490(trId, 0xac, 4, 1, 0, 0);
+    CreateMon(pichu, SPECIES_PICHU, 30, 0x20, 1, unkA, 1, trId);
+    
+    forme = 1;
+    SetMonData(pichu, MON_DATA_FORME, &forme);
+
+    for (i = 0; i < 4; i++) {
+        SetMonData(pichu, MON_DATA_MOVE1 + i, &sSpikyEarPichuMoveset[i]);
+        maxPP = GetMonData(pichu, MON_DATA_MOVE1MAXPP + i, 0);
+        SetMonData(pichu, MON_DATA_MOVE1PP + i, &maxPP);
+    }
+
+    heldItem = 300; //TODO: Replace with an item constant
+    SetMonData(pichu, MON_DATA_HELD_ITEM, &heldItem);
+
+    u32 unkB = sub_02017FE4(0, MapHeader_GetMapSec(ctx->fsys->location->mapId));
+
+    sub_020720FC(pichu, profile, 4, unkB, 0x18, 0xb);
+
+    AddMonToParty(party, pichu);
+
+    FreeToHeap(pichu);
+
+    UpdatePokedexWithReceivedSpecies(fsys->savedata, pichu);
+
+    return FALSE;
+}
+
+BOOL ScrCmd_PhotoAlbumIsFull(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 *albumIsFull = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+
+    *albumIsFull = (PhotoAlbum_GetNumSaved(Save_PhotoAlbum_get(fsys->savedata)) >= 36);
+
+    return FALSE;
+}
 
 BOOL ScrCmd_RadioMusicIsPlaying(SCRIPTCONTEXT *ctx) {
     u32 musicSeq = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
