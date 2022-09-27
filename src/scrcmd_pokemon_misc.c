@@ -2,10 +2,113 @@
 #include "fieldmap.h"
 #include "friend_group.h"
 #include "photo_album.h"
+#include "pokedex.h"
 #include "scrcmd.h"
 #include "unk_0206D494.h"
+#include "unk_02031AF0.h"
 #include "msgdata/msg/msg_0096_D31R0201.h"
 #include "msgdata/msg/msg_0066_D23R0102.h"
+
+static LocalMapObject *ov01_02201F98(MapObjectMan *mapObjectMan, u8 unkA, u16 species, u16 forme, u32 gender, u32 x, u32 y, u32 mapId);
+
+//TODO: define ov03_02258CFC in a header
+BOOL ScrCmd_743(SCRIPTCONTEXT *ctx) {
+    ov03_02258CFC(ctx->taskman, VarGet(ctx->fsys, ScriptReadHalfword(ctx)));
+    return TRUE;
+}
+
+extern u8 sFriendshipRoomStatuesPositions[3][2];
+
+//TODO: rename to ScrCmd_CreatePokeathlonFriendshipRoomSprites
+BOOL ScrCmd_744(SCRIPTCONTEXT *ctx) {
+    s32 i;
+    u16 species;
+    FieldSystem *fsys = ctx->fsys;
+    
+    UnkSaveStruct29 *unkPtr = sub_02031B00(fsys->savedata);
+
+    for (i = 0; i < 3; i++) {
+        //TODO: Replace 0xf6 with whatever the const is
+        LocalMapObject *mapObj = GetMapObjectByID(fsys->mapObjectMan, 0xf6 + i);
+
+        if (mapObj) {
+            DeleteMapObject(mapObj);
+        }
+
+        species = unkPtr->friendshipRoomStatues[i].species;
+
+        if (species != 0 && species <= SPECIES_ARCEUS) {
+            ov01_02201F98(fsys->mapObjectMan, (u8) i, species, unkPtr->friendshipRoomStatues[i].forme, unkPtr->friendshipRoomStatues[i].gender, sFriendshipRoomStatuesPositions[i][0], sFriendshipRoomStatuesPositions[i][1], fsys->location->mapId);
+        }
+    }
+    return TRUE;
+}
+
+static LocalMapObject *ov01_02201F98(MapObjectMan *mapObjectMan, u8 unkA, u16 species, u16 forme, u32 gender, u32 x, u32 y, u32 mapId) {  
+    LocalMapObject *mapObj;
+    u32 spriteId;
+    u32  size;
+
+
+    spriteId = FollowingPokemon_GetSpriteID(species, forme, gender) << 1;
+    size = GetFollowPokeSizeParamBySpecies(species)*3 + unkA;
+    
+    //TODO: Define CreateSpecialFieldObjectEx in a header
+    mapObj = CreateSpecialFieldObjectEx(mapObjectMan, x, y, DIR_SOUTH, size + 0x19f, 0, mapId, 0, 0, spriteId);
+    
+    if (!mapObj) {
+        GF_AssertFail();
+    }
+
+    MapObject_SetID(mapObj, unkA + 0xf6);
+    MapObject_SetType(mapObj, 0);
+    MapObject_SetFlagID(mapObj, 0);
+    MapObject_SetScript(mapObj, 0);
+    MapObject_SetParam(mapObj, 0, 2);
+    sub_02069F0C(mapObj, species, (u8) forme, FALSE, spriteId);
+    MapObject_SetXRange(mapObj, -1);
+    MapObject_SetYRange(mapObj, -1);
+    MapObject_SetBits(mapObj, 1 << 0x1e);
+    MapObject_ClearBits(mapObj, FALSE);
+    sub_0205F89C(mapObj, FALSE);
+
+    return mapObj;
+}
+
+//TODO: Rename to ScrCmd_CheckAllLetterUnownSeen
+BOOL ScrCmd_770(SCRIPTCONTEXT *ctx) {
+    u32 forme;
+    s32 i;
+    u32 counter;
+    s32 unownFormes;
+    POKEDEX *pokedex;
+    u16 *allUnownSeen;
+
+    allUnownSeen = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    pokedex = Sav2_Pokedex_get(ctx->fsys->savedata);
+    
+    unownFormes = Pokedex_GetSeenFormeNum_Unown(pokedex, 1);
+    if (unownFormes < 26) {
+        *allUnownSeen = FALSE;
+        return TRUE;
+    }
+
+    counter = 0;
+    for (i = 0; i < unownFormes; i++) {
+        forme = Pokedex_GetSeenFormeByIdx_Unown(pokedex, i, TRUE);
+        if (forme != 26 && forme != 27) {
+            counter++;
+        }
+    }
+
+    if (counter == 26) {
+        *allUnownSeen = TRUE;
+    } else {
+        *allUnownSeen = FALSE;
+    }
+
+    return TRUE;
+}
 
 BOOL ScrCmd_GiveTogepiEgg(SCRIPTCONTEXT *ctx) {
     s32 i;
@@ -231,8 +334,6 @@ BOOL ScrCmd_GetBuenasPassword(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-
-//TODO: Rename to MonGetShinyLeafCount
 static u32 MonGetShinyLeafCount(POKEMON *mon) {
     int c;
     u32 shinyLeafCount = 0;
@@ -247,7 +348,6 @@ static u32 MonGetShinyLeafCount(POKEMON *mon) {
     return shinyLeafCount;
 }
 
-//TODO: Rename to ScrCmd_GetShinyLeafCount
 BOOL ScrCmd_GetShinyLeafCount(SCRIPTCONTEXT *ctx) {
     u32 monIndex = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 *shinyLeafCount = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
@@ -255,7 +355,6 @@ BOOL ScrCmd_GetShinyLeafCount(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-//TODO: Rename to ScrCmd_TryGiveShinyLeafCrown
 BOOL ScrCmd_TryGiveShinyLeafCrown(SCRIPTCONTEXT *ctx) {
     u32 monIndex = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
 
@@ -268,7 +367,6 @@ BOOL ScrCmd_TryGiveShinyLeafCrown(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-//TODO: Rename to ScrCmd_GetUniqueSealsCount
 BOOL ScrCmd_GetUniqueSealsQuantity(SCRIPTCONTEXT *ctx) {
     u16 *uniqueSeals = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
 
@@ -295,7 +393,6 @@ BOOL ScrCmd_GiveOrTakeSeal(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-//TODO: rename to IsSealNonUnique
 static BOOL IsSealNonUnique(u16 sealId, u16 *uniqueSealIds, s32 size) {
     s32 c;
 

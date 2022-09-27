@@ -4,7 +4,15 @@
 #include "save.h"
 
 typedef struct {
-	u8 unk[0x28]; 
+    u16 species;
+    u8 gender;
+    u8 forme;
+} PokeathlonFriendshipRoomStatueData;
+
+//TODO: Rename to PokeathlonSaveData or PokeathlonRecords smth like that
+typedef struct {
+    PokeathlonFriendshipRoomStatueData friendshipRoomStatues[3];
+    u8 unk[0x1C]; 
 } UnkSaveStruct29;
 
 u32 sub_02031AF0(void); 
