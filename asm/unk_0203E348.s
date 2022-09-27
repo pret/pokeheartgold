@@ -2828,8 +2828,8 @@ sub_0203F7F4: ; 0x0203F7F4
 _0203F804: .word _020FA284
 	thumb_func_end sub_0203F7F4
 
-	thumb_func_start FieldSys_LaunchChooseStarterApplication
-FieldSys_LaunchChooseStarterApplication: ; 0x0203F808
+	thumb_func_start LaunchChooseStarterApp
+LaunchChooseStarterApp: ; 0x0203F808
 	ldr r3, _0203F810 ; =Fsys_LaunchApplication
 	add r2, r1, #0
 	ldr r1, _0203F814 ; =sAppTemplate_ChooseStarter
@@ -2837,7 +2837,7 @@ FieldSys_LaunchChooseStarterApplication: ; 0x0203F808
 	.balign 4, 0
 _0203F810: .word Fsys_LaunchApplication
 _0203F814: .word sAppTemplate_ChooseStarter
-	thumb_func_end FieldSys_LaunchChooseStarterApplication
+	thumb_func_end LaunchChooseStarterApp
 
 	thumb_func_start sub_0203F818
 sub_0203F818: ; 0x0203F818
@@ -3000,8 +3000,8 @@ _0203F96C: .word Fsys_LaunchApplication
 _0203F970: .word _020FA224
 	thumb_func_end sub_0203F964
 
-	thumb_func_start LaunchHOFCongratulationsApp
-LaunchHOFCongratulationsApp: ; 0x0203F974
+	thumb_func_start LaunchHOFCongratsApp
+LaunchHOFCongratsApp: ; 0x0203F974
 	ldr r3, _0203F97C ; =Fsys_LaunchApplication
 	add r2, r1, #0
 	ldr r1, _0203F980 ; =_020FA214
@@ -3009,7 +3009,7 @@ LaunchHOFCongratulationsApp: ; 0x0203F974
 	.balign 4, 0
 _0203F97C: .word Fsys_LaunchApplication
 _0203F980: .word _020FA214
-	thumb_func_end LaunchHOFCongratulationsApp
+	thumb_func_end LaunchHOFCongratsApp
 
 	thumb_func_start sub_0203F984
 sub_0203F984: ; 0x0203F984

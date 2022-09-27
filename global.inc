@@ -612,7 +612,7 @@
 .public FieldSys_CreateTask
 .public FieldSys_GetPlayerAvatar
 .public FieldSys_IncrementBugContestTimer
-.public FieldSys_LaunchChooseStarterApplication
+.public LaunchChooseStarterApp
 .public FieldSys_SetEngagedTrainer
 .public FieldSys_StartBugContestTimer
 .public FieldSys_TakePhoto
@@ -6716,14 +6716,7 @@
 .public ov01_021FFE98
 .public ov01_021FFECC
 .public ov01_021FFEE8
-.public ov01_021FFEF8
-.public ov01_021FFF38
-.public ov01_021FFF50
 .public ov01_021FFF5C
-.public ov01_021FFFCC
-.public ov01_021FFFFC
-.public ov01_0220001C
-.public ov01_02200020
 .public ov01_02200040
 .public ov01_0220005C
 .public ov01_0220006C
@@ -28870,7 +28863,7 @@
 .public sub_0203F844
 .public sub_0203F8EC
 .public sub_0203F964
-.public LaunchHOFCongratulationsApp
+.public LaunchHOFCongratsApp
 .public sub_0203F984
 .public LaunchCreditsApp
 .public sub_0203F9C4
