@@ -1995,7 +1995,7 @@ ov02_02246B00: ; 0x02246B00
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r2, #0
-	bl ov02_022522B4
+	bl GetRadioMusicPlayingSeq
 	cmp r0, #3
 	bne _02246B2E
 	add r0, r5, #0
@@ -2015,7 +2015,7 @@ ov02_02246B00: ; 0x02246B00
 	str r0, [r4, #0x28]
 	pop {r3, r4, r5, pc}
 _02246B2E:
-	bl ov02_022522B4
+	bl GetRadioMusicPlayingSeq
 	cmp r0, #4
 	bne _02246B54
 	add r0, r5, #0
@@ -3347,7 +3347,7 @@ _022475B4:
 	add r0, r4, r0
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
-	bl ov02_022522B4
+	bl GetRadioMusicPlayingSeq
 	cmp r0, #1
 	bne _022475D4
 	add r4, #0x19
@@ -3355,7 +3355,7 @@ _022475B4:
 	lsr r4, r0, #0x18
 	b _022475E2
 _022475D4:
-	bl ov02_022522B4
+	bl GetRadioMusicPlayingSeq
 	cmp r0, #2
 	bne _022475E2
 	sub r4, #0x19
@@ -5351,7 +5351,7 @@ _02248470:
 	mov r1, #0
 	mov r2, #0x1c
 	bl MI_CpuFill8
-	bl ov02_022522B4
+	bl GetRadioMusicPlayingSeq
 	cmp r0, #6
 	bne _022484A4
 	mov r0, #1
@@ -26225,8 +26225,8 @@ ov02_022522AC: ; 0x022522AC
 _022522B0: .word GearPhone_ToggleRinging
 	thumb_func_end ov02_022522AC
 
-	thumb_func_start ov02_022522B4
-ov02_022522B4: ; 0x022522B4
+	thumb_func_start GetRadioMusicPlayingSeq
+GetRadioMusicPlayingSeq: ; 0x022522B4
 	push {r3, lr}
 	bl SndRadio_GetSeqNo
 	lsl r0, r0, #0x10
@@ -26300,7 +26300,7 @@ _02252328:
 	.balign 4, 0
 _0225232C: .word SEQ_GS_RADIO_R_201
 _02252330: .word SEQ_GS_RADIO_R_101
-	thumb_func_end ov02_022522B4
+	thumb_func_end GetRadioMusicPlayingSeq
 
 	thumb_func_start ov02_02252334
 ov02_02252334: ; 0x02252334

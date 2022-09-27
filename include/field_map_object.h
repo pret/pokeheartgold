@@ -67,6 +67,7 @@ struct LocalMapObject {
 };
 
 LocalMapObject *CreateSpecialFieldObject(MapObjectMan *objectMan, u32 x, u32 z, u32 direction, u32 sprite, u32 movement, u32 mapNo);
+LocalMapObject *CreateSpecialFieldObjectEx(MapObjectMan *mapObjectMan, u32 x, u32 y, u32 direction, u32 a4, u32 a5, u32 mapNo, u32 a7, u32 a8, u32 spriteId);
 void DeleteMapObject(LocalMapObject *mapObject);
 LocalMapObject *sub_0205EEB4(MapObjectMan *arr, int a1);
 LocalMapObject *GetMapObjectByID(MapObjectMan *arr, int id);

@@ -4200,7 +4200,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_744
+	.macro scrcmd_create_friendship_room_statues
 	.short 744
 	.endm
 
@@ -4327,7 +4327,7 @@
 	.short 769
 	.endm
 
-	.macro scrcmd_770 arg0
+	.macro scrcmd_check_seen_all_letter_unown arg0
 	.short 770
 	.short \arg0
 	.endm

@@ -32,7 +32,7 @@
 #define SAVE_UNK_26              26
 #define SAVE_MYSTERY_GIFT        27
 #define SAVE_UNK_28              28
-#define SAVE_UNK_29              29
+#define SAVE_POKEATHLON_FRIENDSHIP_RECORDS              29
 #define SAVE_EASY_CHAT           30
 #define SAVE_UNK_31              31
 #define SAVE_UNK_32              32

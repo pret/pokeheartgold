@@ -4702,7 +4702,7 @@
       ]
     },
     {
-      "name": "scrcmd_744",
+      "name": "scrcmd_create_friendship_room_statues",
       "args": []
     },
     {
@@ -4839,7 +4839,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_770",
+      "name": "scrcmd_check_seen_all_letter_unown",
       "args": [
         "var"
       ]

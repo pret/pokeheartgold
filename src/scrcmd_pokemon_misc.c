@@ -1,17 +1,20 @@
 #include "bug_contest.h"
 #include "fieldmap.h"
+#include "field_map_object.h"
 #include "friend_group.h"
 #include "photo_album.h"
 #include "pokedex.h"
+#include "overlay_03.h"
 #include "scrcmd.h"
 #include "unk_0206D494.h"
 #include "unk_02031AF0.h"
 #include "msgdata/msg/msg_0096_D31R0201.h"
 #include "msgdata/msg/msg_0066_D23R0102.h"
+#include "constants/items.h"
+#include "constants/moves.h"
 
 static LocalMapObject *ov01_02201F98(MapObjectMan *mapObjectMan, u8 unkA, u16 species, u16 forme, u32 gender, u32 x, u32 y, u32 mapId);
 
-//TODO: define ov03_02258CFC in a header
 BOOL ScrCmd_743(SCRIPTCONTEXT *ctx) {
     ov03_02258CFC(ctx->taskman, VarGet(ctx->fsys, ScriptReadHalfword(ctx)));
     return TRUE;
@@ -19,16 +22,14 @@ BOOL ScrCmd_743(SCRIPTCONTEXT *ctx) {
 
 extern u8 sFriendshipRoomStatuesPositions[3][2];
 
-//TODO: rename to ScrCmd_CreatePokeathlonFriendshipRoomSprites
-BOOL ScrCmd_744(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_CreatePokeathlonFriendshipRoomStatues(SCRIPTCONTEXT *ctx) {
     s32 i;
     u16 species;
     FieldSystem *fsys = ctx->fsys;
     
-    UnkSaveStruct29 *unkPtr = sub_02031B00(fsys->savedata);
+    SavePokeathlonFriendshipRecords *unkPtr = sub_02031B00(fsys->savedata);
 
     for (i = 0; i < 3; i++) {
-        //TODO: Replace 0xf6 with whatever the const is
         LocalMapObject *mapObj = GetMapObjectByID(fsys->mapObjectMan, 0xf6 + i);
 
         if (mapObj) {
@@ -49,11 +50,9 @@ static LocalMapObject *ov01_02201F98(MapObjectMan *mapObjectMan, u8 unkA, u16 sp
     u32 spriteId;
     u32  size;
 
-
     spriteId = FollowingPokemon_GetSpriteID(species, forme, gender) << 1;
     size = GetFollowPokeSizeParamBySpecies(species)*3 + unkA;
     
-    //TODO: Define CreateSpecialFieldObjectEx in a header
     mapObj = CreateSpecialFieldObjectEx(mapObjectMan, x, y, DIR_SOUTH, size + 0x19f, 0, mapId, 0, 0, spriteId);
     
     if (!mapObj) {
@@ -75,8 +74,7 @@ static LocalMapObject *ov01_02201F98(MapObjectMan *mapObjectMan, u8 unkA, u16 sp
     return mapObj;
 }
 
-//TODO: Rename to ScrCmd_CheckAllLetterUnownSeen
-BOOL ScrCmd_770(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_CheckSeenAllLetterUnown(SCRIPTCONTEXT *ctx) {
     u32 forme;
     s32 i;
     u32 counter;
@@ -142,7 +140,7 @@ BOOL ScrCmd_GiveTogepiEgg(SCRIPTCONTEXT *ctx) {
         i = 3;
     }    
 
-    moveData = 0x146; //TODO: Update this egg move with the move constant - I think it's Extrasensoy?
+    moveData = MOVE_EXTRASENSORY; 
     SetMonData(togepi, MON_DATA_MOVE1 + i, &moveData);
 
     pp = GetMonData(togepi, MON_DATA_MOVE1MAXPP + i, 0);
@@ -152,12 +150,12 @@ BOOL ScrCmd_GiveTogepiEgg(SCRIPTCONTEXT *ctx) {
 
     FreeToHeap(togepi);
 
-    //TODO: Update this function with some documentation on what the parameters are
-    sub_0202ABB0(Sav2_Misc_get(fsys->savedata), GetMonData(togepi, MON_DATA_PERSONALITY, 0), GetMonData(togepi, MON_DATA_GENDER, 0));
+    SaveMisc_SetTogepiPersonalityGender(Sav2_Misc_get(fsys->savedata), GetMonData(togepi, MON_DATA_PERSONALITY, 0), GetMonData(togepi, MON_DATA_GENDER, 0));
 
     return FALSE;
 }
 
+//unused
 BOOL ScrCmd_777(SCRIPTCONTEXT *ctx) {
     u32 partyIndex = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 *unkPtr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
@@ -204,7 +202,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(SCRIPTCONTEXT *ctx) {
         SetMonData(pichu, MON_DATA_MOVE1PP + i, &maxPP);
     }
 
-    heldItem = 300; //TODO: Replace with an item constant
+    heldItem = ITEM_ZAP_PLATE;
     SetMonData(pichu, MON_DATA_HELD_ITEM, &heldItem);
 
     u32 unkB = sub_02017FE4(0, MapHeader_GetMapSec(ctx->fsys->location->mapId));
@@ -233,8 +231,7 @@ BOOL ScrCmd_RadioMusicIsPlaying(SCRIPTCONTEXT *ctx) {
     u32 musicSeq = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 *isPlaying = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
     
-    //TODO: rename ov02_022522B4 => GetRadioMusicPlayingSeq
-    *isPlaying = (ov02_022522B4() == musicSeq);
+    *isPlaying = (GetRadioMusicPlayingSeq() == musicSeq);
     
     return FALSE;
 }

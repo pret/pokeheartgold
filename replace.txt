@@ -1,3 +1,1 @@
-get_shiny_leaf_count get_shiny_leaf_count
-try_give_shiny_leaf_crown try_give_shiny_leaf_crown
-get_unique_seals_quantity get_unique_seals_quantity
+SAVE_POKEATHLON_FRIENDSHIP_RECORDS SAVE_POKEATHLON_FRIENDSHIP_RECORDS

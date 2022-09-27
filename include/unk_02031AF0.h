@@ -9,14 +9,13 @@ typedef struct {
     u8 forme;
 } PokeathlonFriendshipRoomStatueData;
 
-//TODO: Rename to PokeathlonSaveData or PokeathlonRecords smth like that
 typedef struct {
     PokeathlonFriendshipRoomStatueData friendshipRoomStatues[3];
     u8 unk[0x1C]; 
-} UnkSaveStruct29;
+} SavePokeathlonFriendshipRecords;
 
 u32 sub_02031AF0(void); 
-void sub_02031AF4(UnkSaveStruct29* unk);
-UnkSaveStruct29* sub_02031B00(SAVEDATA* savedata);
+void sub_02031AF4(SavePokeathlonFriendshipRecords* unk);
+SavePokeathlonFriendshipRecords* sub_02031B00(SAVEDATA* savedata);
 
 #endif //POKEHEARTGOLD_UNK_02031AF0_H

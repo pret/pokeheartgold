@@ -743,7 +743,7 @@ BOOL ScrCmd_740(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_741(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_742(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_743(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_744(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_CreatePokeathlonFriendshipRoomStatues(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_BufferPokeathlonCourseName(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_TouchscreenMenuHide(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_TouchscreenMenuShow(SCRIPTCONTEXT *ctx);
@@ -769,7 +769,7 @@ BOOL ScrCmd_766(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_767(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_768(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_769(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_770(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_CheckSeenAllLetterUnown(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_771(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_772(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_Cinematic(SCRIPTCONTEXT *ctx);
@@ -1598,7 +1598,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_741,
     ScrCmd_742,
     ScrCmd_743,
-    ScrCmd_744,
+    ScrCmd_CreatePokeathlonFriendshipRoomStatues,
     ScrCmd_BufferPokeathlonCourseName,
     ScrCmd_TouchscreenMenuHide,
     ScrCmd_TouchscreenMenuShow,
@@ -1624,7 +1624,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_767,
     ScrCmd_768,
     ScrCmd_769,
-    ScrCmd_770,
+    ScrCmd_CheckSeenAllLetterUnown,
     ScrCmd_771,
     ScrCmd_772,
     ScrCmd_Cinematic,

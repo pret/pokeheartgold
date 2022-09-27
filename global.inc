@@ -3132,7 +3132,7 @@
 .public ScrCmd_741
 .public ScrCmd_742
 .public ScrCmd_743
-.public ScrCmd_744
+.public ScrCmd_CreatePokeathlonFriendshipRoomStatues
 .public ScrCmd_RockSmashItemCheck
 .public ScrCmd_754
 .public ScrCmd_755
@@ -3150,7 +3150,7 @@
 .public ScrCmd_767
 .public ScrCmd_768
 .public ScrCmd_769
-.public ScrCmd_770
+.public ScrCmd_CheckSeenAllLetterUnown
 .public ScrCmd_771
 .public ScrCmd_772
 .public ScrCmd_774
@@ -7490,7 +7490,7 @@
 .public ov02_022521C0
 .public ov02_02252218
 .public ov02_022522AC
-.public ov02_022522B4
+.public GetRadioMusicPlayingSeq
 .public ov02_02252334
 .public ov02_022523B4
 .public ov02_022523D0
@@ -28053,8 +28053,8 @@
 .public sub_0202AA9C
 .public sub_0202AAD4
 .public sub_0202AB18
-.public sub_0202ABB0
-.public sub_0202ABBC
+.public SaveMisc_SetTogepiPersonalityGender
+.public SaveMisc_GetTogepiPersonalityGender
 .public SaveMisc_GetBattleGreeting
 .public SaveMisc_SetBattleGreeting
 .public sub_0202AC0C
