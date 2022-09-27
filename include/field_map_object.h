@@ -118,5 +118,8 @@ void sub_0205FC2C(LocalMapObject *obj, int x, int height, int y, int direction);
 void MapObject_GetPositionVec(LocalMapObject *object, VecFx32 *dest);
 void MapObject_SetPositionVec(LocalMapObject *object, VecFx32 *src);
 void sub_0205F328(LocalMapObject* obj, int a1);
+int sub_0205F09C(LocalMapObject *obj, int a1);
+int sub_0205F254(LocalMapObject *obj);
+BOOL sub_0205F0A8(LocalMapObject *obj, int a1, int a2);
 
 #endif //POKEHEARTGOLD_FIELD_MAP_OBJECT_H
