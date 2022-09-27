@@ -4,7 +4,7 @@
 #include "game_clear.h"
 #include "hall_of_fame.h"
 #include "overlay_63.h"
-#include "overlay_76.h"
+#include "overlay_credits.h"
 #include "player_data.h"
 #include "save_arrays.h"
 #include "save_flypoints.h"
@@ -31,8 +31,8 @@
 
 typedef struct {
     BOOL gameCleared;
-    HOFCongratsAppWork hofCongrats;
-    CreditsAppWork credits;
+    HOFCongratsAppArgs hofCongratsArgs;
+    CreditsAppArgs creditsArgs;
     BGCONFIG *bgConfig;
     WINDOW window;
     STRING *windowText;
@@ -155,7 +155,7 @@ static BOOL Task_GameClearSave(TaskManager *taskman) {
     switch (*state) {
     case 0:
         if (!env->vsTrainerRed) {
-            LaunchHOFCongratulationsApp(fsys, &env->hofCongrats);
+            LaunchHOFCongratsApp(fsys, &env->hofCongratsArgs);
             *state += 1;
             break;
         }
@@ -236,7 +236,7 @@ static BOOL Task_GameClearSave(TaskManager *taskman) {
         if (IsPaletteFadeFinished()) {
             GameClearSave_Free(fsys, env);
             sub_020059D0(127);
-            LaunchCreditsApp(fsys, &env->credits);
+            LaunchCreditsApp(fsys, &env->creditsArgs);
             *state += 1;
         }
         break;
@@ -270,11 +270,11 @@ void Task_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
     spawnWarp = FlyPoints_GetSpecialSpawnWarpPtr(Save_FlyPoints_get(fsys->savedata));
 
     env->gameCleared = CheckGameClearFlag(scriptState);
-    env->hofCongrats.profile = Sav2_PlayerData_GetProfileAddr(fsys->savedata);
-    env->hofCongrats.party = SavArray_PlayerParty_get(fsys->savedata);
-    env->hofCongrats.igt = Sav2_PlayerData_GetIGTAddr(fsys->savedata);
-    env->credits.gender = PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(fsys->savedata));
-    env->credits.gameCleared = CheckGameClearFlag(scriptState);
+    env->hofCongratsArgs.profile = Sav2_PlayerData_GetProfileAddr(fsys->savedata);
+    env->hofCongratsArgs.party = SavArray_PlayerParty_get(fsys->savedata);
+    env->hofCongratsArgs.igt = Sav2_PlayerData_GetIGTAddr(fsys->savedata);
+    env->creditsArgs.gender = PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(fsys->savedata));
+    env->creditsArgs.gameCleared = CheckGameClearFlag(scriptState);
     env->vsTrainerRed = vsTrainerRed;
 
     if (!CheckGameClearFlag(scriptState)) {

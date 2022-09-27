@@ -1,0 +1,261 @@
+files/poketool/pokegra/otherpoke/deoxys/normal/back.png files/poketool/pokegra/build-otherpoke/0000.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/deoxys/normal/front.png files/poketool/pokegra/build-otherpoke/0001.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/deoxys/attack/back.png files/poketool/pokegra/build-otherpoke/0002.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/deoxys/attack/front.png files/poketool/pokegra/build-otherpoke/0003.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/deoxys/defense/back.png files/poketool/pokegra/build-otherpoke/0004.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/deoxys/defense/front.png files/poketool/pokegra/build-otherpoke/0005.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/deoxys/speed/back.png files/poketool/pokegra/build-otherpoke/0006.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/deoxys/speed/front.png files/poketool/pokegra/build-otherpoke/0007.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/a/back.png  files/poketool/pokegra/build-otherpoke/0008.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/a/front.png files/poketool/pokegra/build-otherpoke/0009.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/b/back.png  files/poketool/pokegra/build-otherpoke/0010.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/b/front.png files/poketool/pokegra/build-otherpoke/0011.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/c/back.png  files/poketool/pokegra/build-otherpoke/0012.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/c/front.png files/poketool/pokegra/build-otherpoke/0013.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/d/back.png  files/poketool/pokegra/build-otherpoke/0014.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/d/front.png files/poketool/pokegra/build-otherpoke/0015.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/e/back.png  files/poketool/pokegra/build-otherpoke/0016.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/e/front.png files/poketool/pokegra/build-otherpoke/0017.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/f/back.png  files/poketool/pokegra/build-otherpoke/0018.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/f/front.png files/poketool/pokegra/build-otherpoke/0019.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/g/back.png  files/poketool/pokegra/build-otherpoke/0020.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/g/front.png files/poketool/pokegra/build-otherpoke/0021.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/h/back.png  files/poketool/pokegra/build-otherpoke/0022.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/h/front.png files/poketool/pokegra/build-otherpoke/0023.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/i/back.png  files/poketool/pokegra/build-otherpoke/0024.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/i/front.png files/poketool/pokegra/build-otherpoke/0025.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/j/back.png  files/poketool/pokegra/build-otherpoke/0026.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/j/front.png files/poketool/pokegra/build-otherpoke/0027.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/k/back.png  files/poketool/pokegra/build-otherpoke/0028.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/k/front.png files/poketool/pokegra/build-otherpoke/0029.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/l/back.png  files/poketool/pokegra/build-otherpoke/0030.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/l/front.png files/poketool/pokegra/build-otherpoke/0031.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/m/back.png  files/poketool/pokegra/build-otherpoke/0032.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/m/front.png files/poketool/pokegra/build-otherpoke/0033.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/n/back.png  files/poketool/pokegra/build-otherpoke/0034.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/n/front.png files/poketool/pokegra/build-otherpoke/0035.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/o/back.png  files/poketool/pokegra/build-otherpoke/0036.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/o/front.png files/poketool/pokegra/build-otherpoke/0037.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/p/back.png  files/poketool/pokegra/build-otherpoke/0038.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/p/front.png files/poketool/pokegra/build-otherpoke/0039.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/q/back.png  files/poketool/pokegra/build-otherpoke/0040.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/q/front.png files/poketool/pokegra/build-otherpoke/0041.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/r/back.png  files/poketool/pokegra/build-otherpoke/0042.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/r/front.png files/poketool/pokegra/build-otherpoke/0043.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/s/back.png  files/poketool/pokegra/build-otherpoke/0044.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/s/front.png files/poketool/pokegra/build-otherpoke/0045.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/t/back.png  files/poketool/pokegra/build-otherpoke/0046.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/t/front.png files/poketool/pokegra/build-otherpoke/0047.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/u/back.png  files/poketool/pokegra/build-otherpoke/0048.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/u/front.png files/poketool/pokegra/build-otherpoke/0049.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/v/back.png  files/poketool/pokegra/build-otherpoke/0050.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/v/front.png files/poketool/pokegra/build-otherpoke/0051.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/w/back.png  files/poketool/pokegra/build-otherpoke/0052.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/w/front.png files/poketool/pokegra/build-otherpoke/0053.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/x/back.png  files/poketool/pokegra/build-otherpoke/0054.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/x/front.png files/poketool/pokegra/build-otherpoke/0055.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/y/back.png  files/poketool/pokegra/build-otherpoke/0056.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/y/front.png files/poketool/pokegra/build-otherpoke/0057.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/z/back.png  files/poketool/pokegra/build-otherpoke/0058.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/z/front.png files/poketool/pokegra/build-otherpoke/0059.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/exclamation_mark/back.png  files/poketool/pokegra/build-otherpoke/0060.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/exclamation_mark/front.png files/poketool/pokegra/build-otherpoke/0061.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/question_mark/back.png  files/poketool/pokegra/build-otherpoke/0062.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/unown/question_mark/front.png files/poketool/pokegra/build-otherpoke/0063.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/castform/normal/back.png files/poketool/pokegra/build-otherpoke/0064.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/castform/sun/back.png files/poketool/pokegra/build-otherpoke/0065.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/castform/rain/back.png files/poketool/pokegra/build-otherpoke/0066.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/castform/ice/back.png files/poketool/pokegra/build-otherpoke/0067.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/castform/normal/front.png files/poketool/pokegra/build-otherpoke/0068.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/castform/sun/front.png files/poketool/pokegra/build-otherpoke/0069.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/castform/rain/front.png files/poketool/pokegra/build-otherpoke/0070.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/castform/ice/front.png files/poketool/pokegra/build-otherpoke/0071.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/burmy/plant/back.png  files/poketool/pokegra/build-otherpoke/0072.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/burmy/plant/front.png files/poketool/pokegra/build-otherpoke/0073.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/burmy/sandy/back.png  files/poketool/pokegra/build-otherpoke/0074.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/burmy/sandy/front.png files/poketool/pokegra/build-otherpoke/0075.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/burmy/trash/back.png  files/poketool/pokegra/build-otherpoke/0076.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/burmy/trash/front.png files/poketool/pokegra/build-otherpoke/0077.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/wormadam/plant/back.png  files/poketool/pokegra/build-otherpoke/0078.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/wormadam/plant/front.png files/poketool/pokegra/build-otherpoke/0079.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/wormadam/sandy/back.png  files/poketool/pokegra/build-otherpoke/0080.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/wormadam/sandy/front.png files/poketool/pokegra/build-otherpoke/0081.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/wormadam/trash/back.png  files/poketool/pokegra/build-otherpoke/0082.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/wormadam/trash/front.png files/poketool/pokegra/build-otherpoke/0083.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/shellos/west/back.png  files/poketool/pokegra/build-otherpoke/0084.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/shellos/east/back.png  files/poketool/pokegra/build-otherpoke/0085.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/shellos/west/front.png files/poketool/pokegra/build-otherpoke/0086.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/shellos/east/front.png files/poketool/pokegra/build-otherpoke/0087.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/gastrodon/west/back.png  files/poketool/pokegra/build-otherpoke/0088.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/gastrodon/east/back.png  files/poketool/pokegra/build-otherpoke/0089.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/gastrodon/west/front.png files/poketool/pokegra/build-otherpoke/0090.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/gastrodon/east/front.png files/poketool/pokegra/build-otherpoke/0091.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/cherrim/normal/back.png files/poketool/pokegra/build-otherpoke/0092.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/cherrim/sunshine/back.png files/poketool/pokegra/build-otherpoke/0093.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/cherrim/normal/front.png files/poketool/pokegra/build-otherpoke/0094.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/cherrim/sunshine/front.png files/poketool/pokegra/build-otherpoke/0095.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/normal/back.png  files/poketool/pokegra/build-otherpoke/0096.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/normal/front.png files/poketool/pokegra/build-otherpoke/0097.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/fighting/back.png  files/poketool/pokegra/build-otherpoke/0098.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/fighting/front.png files/poketool/pokegra/build-otherpoke/0099.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/flying/back.png  files/poketool/pokegra/build-otherpoke/0100.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/flying/front.png files/poketool/pokegra/build-otherpoke/0101.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/poison/back.png  files/poketool/pokegra/build-otherpoke/0102.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/poison/front.png files/poketool/pokegra/build-otherpoke/0103.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/ground/back.png  files/poketool/pokegra/build-otherpoke/0104.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/ground/front.png files/poketool/pokegra/build-otherpoke/0105.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/rock/back.png  files/poketool/pokegra/build-otherpoke/0106.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/rock/front.png files/poketool/pokegra/build-otherpoke/0107.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/bug/back.png  files/poketool/pokegra/build-otherpoke/0108.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/bug/front.png files/poketool/pokegra/build-otherpoke/0109.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/ghost/back.png  files/poketool/pokegra/build-otherpoke/0110.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/ghost/front.png files/poketool/pokegra/build-otherpoke/0111.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/steel/back.png  files/poketool/pokegra/build-otherpoke/0112.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/steel/front.png files/poketool/pokegra/build-otherpoke/0113.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/mystery/back.png  files/poketool/pokegra/build-otherpoke/0114.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/mystery/front.png files/poketool/pokegra/build-otherpoke/0115.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/fire/back.png  files/poketool/pokegra/build-otherpoke/0116.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/fire/front.png files/poketool/pokegra/build-otherpoke/0117.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/water/back.png  files/poketool/pokegra/build-otherpoke/0118.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/water/front.png files/poketool/pokegra/build-otherpoke/0119.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/grass/back.png  files/poketool/pokegra/build-otherpoke/0120.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/grass/front.png files/poketool/pokegra/build-otherpoke/0121.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/electric/back.png  files/poketool/pokegra/build-otherpoke/0122.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/electric/front.png files/poketool/pokegra/build-otherpoke/0123.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/psychic/back.png  files/poketool/pokegra/build-otherpoke/0124.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/psychic/front.png files/poketool/pokegra/build-otherpoke/0125.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/ice/back.png  files/poketool/pokegra/build-otherpoke/0126.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/ice/front.png files/poketool/pokegra/build-otherpoke/0127.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/dragon/back.png  files/poketool/pokegra/build-otherpoke/0128.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/dragon/front.png files/poketool/pokegra/build-otherpoke/0129.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/dark/back.png  files/poketool/pokegra/build-otherpoke/0130.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/arceus/dark/front.png files/poketool/pokegra/build-otherpoke/0131.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/egg/normal.png  files/poketool/pokegra/build-otherpoke/0132.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/egg/manaphy.png files/poketool/pokegra/build-otherpoke/0133.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/shaymin/land/back.png  files/poketool/pokegra/build-otherpoke/0134.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/shaymin/land/front.png files/poketool/pokegra/build-otherpoke/0135.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/shaymin/sky/back.png  files/poketool/pokegra/build-otherpoke/0136.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/shaymin/sky/front.png files/poketool/pokegra/build-otherpoke/0137.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/rotom/normal/back.png  files/poketool/pokegra/build-otherpoke/0138.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/rotom/normal/front.png files/poketool/pokegra/build-otherpoke/0139.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/rotom/oven/back.png  files/poketool/pokegra/build-otherpoke/0140.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/rotom/oven/front.png files/poketool/pokegra/build-otherpoke/0141.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/rotom/washer/back.png  files/poketool/pokegra/build-otherpoke/0142.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/rotom/washer/front.png files/poketool/pokegra/build-otherpoke/0143.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/rotom/fridge/back.png  files/poketool/pokegra/build-otherpoke/0144.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/rotom/fridge/front.png files/poketool/pokegra/build-otherpoke/0145.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/rotom/fan/back.png  files/poketool/pokegra/build-otherpoke/0146.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/rotom/fan/front.png files/poketool/pokegra/build-otherpoke/0147.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/rotom/lawnmower/back.png  files/poketool/pokegra/build-otherpoke/0148.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/rotom/lawnmower/front.png files/poketool/pokegra/build-otherpoke/0149.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/giratina/altered/back.png  files/poketool/pokegra/build-otherpoke/0150.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/giratina/altered/front.png files/poketool/pokegra/build-otherpoke/0151.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/giratina/origin/back.png  files/poketool/pokegra/build-otherpoke/0152.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/giratina/origin/front.png files/poketool/pokegra/build-otherpoke/0153.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/pichu/normal/back.png  files/poketool/pokegra/build-otherpoke/0154.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/pichu/normal/front.png files/poketool/pokegra/build-otherpoke/0155.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/pichu/spiky/back.png  files/poketool/pokegra/build-otherpoke/0156.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/pichu/spiky/front.png files/poketool/pokegra/build-otherpoke/0157.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/deoxys/normal/front.png files/poketool/pokegra/build-otherpoke/158.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/deoxys/normal/back.png  files/poketool/pokegra/build-otherpoke/159.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/unown/a/front.png files/poketool/pokegra/build-otherpoke/160.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/unown/a/back.png  files/poketool/pokegra/build-otherpoke/161.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/castform/normal/front.png files/poketool/pokegra/build-otherpoke/162.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/castform/sun/front.png files/poketool/pokegra/build-otherpoke/163.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/castform/rain/front.png files/poketool/pokegra/build-otherpoke/164.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/castform/ice/front.png files/poketool/pokegra/build-otherpoke/165.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/castform/normal/back.png files/poketool/pokegra/build-otherpoke/166.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/castform/sun/back.png files/poketool/pokegra/build-otherpoke/167.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/castform/rain/back.png files/poketool/pokegra/build-otherpoke/168.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/castform/ice/back.png files/poketool/pokegra/build-otherpoke/169.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/burmy/plant/front.png files/poketool/pokegra/build-otherpoke/170.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/burmy/plant/back.png  files/poketool/pokegra/build-otherpoke/171.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/burmy/sandy/front.png files/poketool/pokegra/build-otherpoke/172.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/burmy/sandy/back.png  files/poketool/pokegra/build-otherpoke/173.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/burmy/trash/front.png files/poketool/pokegra/build-otherpoke/174.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/burmy/trash/back.png  files/poketool/pokegra/build-otherpoke/175.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/wormadam/plant/front.png files/poketool/pokegra/build-otherpoke/176.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/wormadam/plant/back.png  files/poketool/pokegra/build-otherpoke/177.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/wormadam/sandy/front.png files/poketool/pokegra/build-otherpoke/178.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/wormadam/sandy/back.png  files/poketool/pokegra/build-otherpoke/179.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/wormadam/trash/front.png files/poketool/pokegra/build-otherpoke/180.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/wormadam/trash/back.png  files/poketool/pokegra/build-otherpoke/181.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/shellos/west/front.png files/poketool/pokegra/build-otherpoke/182.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/shellos/west/back.png  files/poketool/pokegra/build-otherpoke/183.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/shellos/east/front.png files/poketool/pokegra/build-otherpoke/184.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/shellos/east/back.png  files/poketool/pokegra/build-otherpoke/185.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/gastrodon/west/front.png files/poketool/pokegra/build-otherpoke/186.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/gastrodon/west/back.png  files/poketool/pokegra/build-otherpoke/187.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/gastrodon/east/front.png files/poketool/pokegra/build-otherpoke/188.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/gastrodon/east/back.png  files/poketool/pokegra/build-otherpoke/189.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/cherrim/normal/front.png files/poketool/pokegra/build-otherpoke/190.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/cherrim/sunshine/front.png files/poketool/pokegra/build-otherpoke/191.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/cherrim/normal/back.png  files/poketool/pokegra/build-otherpoke/192.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/cherrim/sunshine/back.png  files/poketool/pokegra/build-otherpoke/193.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/normal/front.png files/poketool/pokegra/build-otherpoke/194.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/normal/back.png  files/poketool/pokegra/build-otherpoke/195.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/fighting/front.png files/poketool/pokegra/build-otherpoke/196.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/fighting/back.png  files/poketool/pokegra/build-otherpoke/197.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/flying/front.png files/poketool/pokegra/build-otherpoke/198.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/flying/back.png  files/poketool/pokegra/build-otherpoke/199.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/poison/front.png files/poketool/pokegra/build-otherpoke/200.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/poison/back.png  files/poketool/pokegra/build-otherpoke/201.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/ground/front.png files/poketool/pokegra/build-otherpoke/202.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/ground/back.png  files/poketool/pokegra/build-otherpoke/203.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/rock/front.png files/poketool/pokegra/build-otherpoke/204.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/rock/back.png  files/poketool/pokegra/build-otherpoke/205.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/bug/front.png files/poketool/pokegra/build-otherpoke/206.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/bug/back.png  files/poketool/pokegra/build-otherpoke/207.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/ghost/front.png files/poketool/pokegra/build-otherpoke/208.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/ghost/back.png  files/poketool/pokegra/build-otherpoke/209.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/steel/front.png files/poketool/pokegra/build-otherpoke/210.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/steel/back.png  files/poketool/pokegra/build-otherpoke/211.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/mystery/front.png files/poketool/pokegra/build-otherpoke/212.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/mystery/back.png  files/poketool/pokegra/build-otherpoke/213.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/fire/front.png files/poketool/pokegra/build-otherpoke/214.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/fire/back.png  files/poketool/pokegra/build-otherpoke/215.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/water/front.png files/poketool/pokegra/build-otherpoke/216.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/water/back.png  files/poketool/pokegra/build-otherpoke/217.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/grass/front.png files/poketool/pokegra/build-otherpoke/218.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/grass/back.png  files/poketool/pokegra/build-otherpoke/219.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/electric/front.png files/poketool/pokegra/build-otherpoke/220.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/electric/back.png  files/poketool/pokegra/build-otherpoke/221.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/psychic/front.png files/poketool/pokegra/build-otherpoke/222.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/psychic/back.png  files/poketool/pokegra/build-otherpoke/223.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/ice/front.png files/poketool/pokegra/build-otherpoke/224.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/ice/back.png  files/poketool/pokegra/build-otherpoke/225.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/dragon/front.png files/poketool/pokegra/build-otherpoke/226.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/dragon/back.png  files/poketool/pokegra/build-otherpoke/227.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/dark/front.png files/poketool/pokegra/build-otherpoke/228.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/arceus/dark/back.png  files/poketool/pokegra/build-otherpoke/229.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/egg/normal.png files/poketool/pokegra/build-otherpoke/230.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/egg/manaphy.png  files/poketool/pokegra/build-otherpoke/231.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/shaymin/land/front.png files/poketool/pokegra/build-otherpoke/232.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/shaymin/land/back.png  files/poketool/pokegra/build-otherpoke/233.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/shaymin/sky/front.png files/poketool/pokegra/build-otherpoke/234.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/shaymin/sky/back.png  files/poketool/pokegra/build-otherpoke/235.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/rotom/normal/front.png files/poketool/pokegra/build-otherpoke/236.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/rotom/normal/back.png  files/poketool/pokegra/build-otherpoke/237.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/rotom/oven/front.png files/poketool/pokegra/build-otherpoke/238.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/rotom/oven/back.png  files/poketool/pokegra/build-otherpoke/239.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/rotom/washer/front.png files/poketool/pokegra/build-otherpoke/240.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/rotom/washer/back.png  files/poketool/pokegra/build-otherpoke/241.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/rotom/fridge/front.png files/poketool/pokegra/build-otherpoke/242.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/rotom/fridge/back.png  files/poketool/pokegra/build-otherpoke/243.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/rotom/fan/front.png files/poketool/pokegra/build-otherpoke/244.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/rotom/fan/back.png  files/poketool/pokegra/build-otherpoke/245.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/rotom/lawnmower/front.png files/poketool/pokegra/build-otherpoke/246.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/rotom/lawnmower/back.png  files/poketool/pokegra/build-otherpoke/247.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/giratina/altered/front.png files/poketool/pokegra/build-otherpoke/248.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/giratina/altered/back.png  files/poketool/pokegra/build-otherpoke/249.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/giratina/origin/front.png files/poketool/pokegra/build-otherpoke/250.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/giratina/origin/back.png  files/poketool/pokegra/build-otherpoke/251.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/pichu/normal/front.png files/poketool/pokegra/build-otherpoke/252.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/pichu/normal/back.png  files/poketool/pokegra/build-otherpoke/253.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/pichu/spiky/front.png files/poketool/pokegra/build-otherpoke/254.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/pichu/spiky/back.png  files/poketool/pokegra/build-otherpoke/255.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/substitute/back.png  files/poketool/pokegra/build-otherpoke/256.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/substitute/front.png files/poketool/pokegra/build-otherpoke/257.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/substitute/front.png files/poketool/pokegra/build-otherpoke/258.NCLR -bitdepth 8 -nopad -comp 10
+files/poketool/pokegra/otherpoke/shadow.png files/poketool/pokegra/build-otherpoke/259.NCGR -scanfronttoback -handleempty
+files/poketool/pokegra/otherpoke/shadow.png files/poketool/pokegra/build-otherpoke/260.NCLR -bitdepth 8 -nopad -comp 10
