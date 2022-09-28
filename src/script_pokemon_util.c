@@ -1,5 +1,5 @@
 #include "party.h"
-#include "unk_0202ECC0.h"
+#include "update_dex_received.h"
 #include "unk_0206979C.h"
 #include "pokemon_mood.h"
 #include "script_pokemon_util.h"
