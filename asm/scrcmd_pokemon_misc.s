@@ -2932,7 +2932,7 @@ _02202224:
 	mov r2, #4
 	mov r3, #1
 	add r4, r0, #0
-	bl sub_02072490
+	bl ChangePersonalityToNatureGenderAndAbility
 	mov r1, #1
 	str r1, [sp]
 	str r0, [sp, #4]
