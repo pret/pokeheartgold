@@ -125,7 +125,7 @@ Static main
 	Object asm/unk_0202E41C.o
 	Object asm/unk_0202E4B0.o
 	Object asm/unk_0202EB30.o
-	Object asm/unk_0202ECC0.o
+	Object src/update_dex_received.o
 	Object asm/unk_0202ED18.o
 	Object src/save_pokegear.o
 	Object src/safari_zone.o
@@ -327,7 +327,7 @@ Static main
 	Object asm/unk_02097BE0.o
 	Object asm/unk_02097D3C.o
 	Object src/pokemon_mood.o
-	Object asm/unk_02097F6C.o
+	Object src/unk_02097F6C.o
 
 	### Vendor libraries ###
 	Object asm/middleware.o

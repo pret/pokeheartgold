@@ -2,7 +2,7 @@
 #include "unk_0200FA24.h"
 #include "unk_0203E348.h"
 #include "unk_0203DE74.h"
-#include "unk_0202ECC0.h"
+#include "update_dex_received.h"
 #include "map_header.h"
 #include "pokedex.h"
 #include "choose_starter.h"
