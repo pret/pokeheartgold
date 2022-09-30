@@ -2928,11 +2928,11 @@ _02202224:
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
-	mov r1, #0xac
-	mov r2, #4
-	mov r3, #1
+	mov r1, #SPECIES_PICHU
+	mov r2, #4 ; NATURE_NAUGHTY
+	mov r3, #1 ; MON_FEMALE
 	add r4, r0, #0
-	bl sub_02072490
+	bl ChangePersonalityToNatureGenderAndAbility
 	mov r1, #1
 	str r1, [sp]
 	str r0, [sp, #4]
