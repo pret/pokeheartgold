@@ -6716,14 +6716,7 @@
 .public ov01_021FFE98
 .public ov01_021FFECC
 .public ov01_021FFEE8
-.public ov01_021FFEF8
-.public ov01_021FFF38
-.public ov01_021FFF50
 .public ov01_021FFF5C
-.public ov01_021FFFCC
-.public ov01_021FFFFC
-.public ov01_0220001C
-.public ov01_02200020
 .public ov01_02200040
 .public ov01_0220005C
 .public ov01_0220006C
