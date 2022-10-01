@@ -5,6 +5,7 @@
 #include "photo_album.h"
 #include "pokedex.h"
 #include "overlay_03.h"
+#include "save_pokeathlon.h"
 #include "scrcmd.h"
 #include "unk_0206D494.h"
 #include "unk_02031AF0.h"
@@ -14,6 +15,196 @@
 #include "msgdata/msg/msg_0066_D23R0102.h"
 #include "constants/items.h"
 #include "constants/moves.h"
+
+BOOL ScrCmd_702(SCRIPTCONTEXT *ctx) {
+    sub_0202CA44(ctx->fsys->savedata);
+    sub_02039F68();
+    return TRUE;
+}
+
+//TODO: Rename to ScrCmd_SetPlayerVolume
+BOOL ScrCmd_703(SCRIPTCONTEXT *ctx) {
+    GF_SndHandleSetPlayerVolume(1, VarGet(ctx->fsys, ScriptReadHalfword(ctx)));
+    return FALSE;
+}
+
+//TODO: Rename to ScrCmd_CheckMonSeen
+BOOL ScrCmd_707(SCRIPTCONTEXT *ctx) {
+    u16 monNumber = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    u16 *seenFlag = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+
+    *seenFlag = Pokedex_CheckMonSeenFlag(Sav2_Pokedex_get(ctx->fsys->savedata), monNumber);
+
+    return FALSE;
+}
+
+//TODO: Define ov02_022460AC in a header
+ov02_022460AC(TaskManager *taskMan, u8 unkB);
+
+BOOL ScrCmd_708(SCRIPTCONTEXT *ctx) {
+    u32 unkVar = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    ov02_022460AC(ctx->fsys->taskman, unkVar);
+    return TRUE;
+}
+
+//TODO: Define ov02_0224618C in a header
+ov02_0224618C(TaskManager *taskMan, u8 unkB);
+
+BOOL ScrCmd_774(SCRIPTCONTEXT *ctx) {
+    u32 unkVar = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    ov02_0224618C(ctx->fsys->taskman, unkVar);
+    return TRUE;
+}
+
+//TODO: Define ov02_022462E8 in a header
+ov02_022462E8(TaskManager *taskMan);
+
+BOOL ScrCmd_709(SCRIPTCONTEXT *ctx) {
+    ov02_022462E8(ctx->fsys->taskman);
+    return TRUE;
+}
+
+BOOL ScrCmd_561(SCRIPTCONTEXT *ctx) {
+    u32 a1 = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    u32 a2 = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    u32 a3 = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    u32 a4 = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    ov02_02246714(ctx->fsys->taskman, a1, a2, a3, a4);
+    return TRUE;
+}
+
+BOOL ScrCmd_775(SCRIPTCONTEXT *ctx) {
+    u32 objIdA = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    u32 objIdB = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+
+    LocalMapObject *objA = GetMapObjectByID(ctx->fsys->mapObjectMan, objIdA);
+    LocalMapObject *objB = GetMapObjectByID(ctx->fsys->mapObjectMan, objIdB);
+
+    ov02_022469B4(ctx->fsys->taskman, objA, objB);
+
+    return TRUE;
+}
+
+BOOL ScrCmd_714(SCRIPTCONTEXT *ctx) {
+    ov02_022467C4(ctx->fsys->taskman, *(ctx->script_ptr++));
+    return TRUE;
+}
+
+u32 ov01_02201B2C(u32 unkA) {
+    u16 ret = 0xFFFF;
+    if (unkA <= ret) {
+        ret = unkA;
+    }
+    return ret;
+}
+
+//TODO: A lot of the functions here and the below function aren't defined in headers yet- do that pls
+BOOL ScrCmd_724(SCRIPTCONTEXT *ctx) {
+    u8 unkVar = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    u16 *unkPtrA = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+
+    Pokeathlon_UnkSubStruct_B00 *unkPtrB = sub_0203199C(Save_Pokeathlon_get(ctx->fsys->savedata));
+
+    if (unkVar <= 9) {
+        *unkPtrA = ov01_02201B2C(unkPtrB->unk44[unkVar]);
+        return FALSE;
+    }
+
+    switch (unkVar - 10) {
+    case 0:
+        *unkPtrA = ov01_02201B2C(unkPtrB->unk8);
+        break;
+    case 1:
+        *unkPtrA = ov01_02201B2C(unkPtrB->unk70);
+        break;
+    case 2:
+        *unkPtrA = ov01_02201B2C(unkPtrB->unk4);
+        break;
+    case 3:
+        *unkPtrA = ov01_02201B2C(unkPtrB->unk14);
+        break;
+    case 4:
+        *unkPtrA = ov01_02201B2C(unkPtrB->unk1C);
+        break;
+    case 5:
+        *unkPtrA = ov01_02201B2C(unkPtrB->unk24);
+        break;
+    case 6:
+        *unkPtrA = ov01_02201B2C(unkPtrB->unk2C);
+        break;
+    case 7:
+        *unkPtrA = ov01_02201B2C(unkPtrB->unk30);
+        break;
+    default:
+        *unkPtrA = 0;
+        break;
+    }
+
+    return FALSE;
+}
+
+BOOL ScrCmd_725(SCRIPTCONTEXT *ctx) {
+    s32 val;
+
+    u8 unkA = *(ctx->script_ptr++);
+    u32 unkB = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+
+    Pokeathlon_UnkSubStruct_B00 *unkPtr = sub_020319F0(Save_Pokeathlon_get(ctx->fsys->savedata));
+
+    if (unkA == 0) {
+        val = unkPtr->unk70 + unkB;
+        if ((u32) val > 0xFFFF) {
+            unkPtr->unk70 = 0xFFFF;
+        } else {
+            unkPtr->unk70 = val;
+        }
+    } else {
+        val = unkPtr->unk70 - unkB;
+        if (val < 0) {
+            unkPtr->unk70 = 0;
+        } else {
+            unkPtr->unk70 = val;
+        }
+    }
+
+    return FALSE;
+}
+
+BOOL ScrCmd_726(SCRIPTCONTEXT *ctx) {
+    ov01_021E7F00(ctx->fsys, TRUE);
+    return FALSE;
+}
+
+BOOL ScrCmd_735(SCRIPTCONTEXT *ctx) {
+    u16 *apricornQuantity = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    *apricornQuantity = ApricornBox_GetKurtQuantity(Save_ApricornBox_get(ctx->fsys->savedata));
+    return FALSE;
+}
+
+BOOL ScrCmd_736(SCRIPTCONTEXT *ctx) {
+    ApricornBox_SetKurtApricorn(Save_ApricornBox_get(ctx->fsys->savedata), 0, 0);
+    return FALSE;
+}
+
+BOOL ScrCmd_737(SCRIPTCONTEXT *ctx) {
+    u16 *unkPtr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    *unkPtr = ApricornBox_GetKurtBall(Save_ApricornBox_get(ctx->fsys->savedata));
+    return FALSE;
+}
+
+BOOL ScrCmd_738(SCRIPTCONTEXT *ctx) {
+    s32 i;
+    u32 cnt;
+    u16 *unkPtr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    cnt = 0;
+    SaveApricornBox *apricornBox = Save_ApricornBox_get(ctx->fsys->savedata);   
+    for (i = 0; i < 7; i = i + 1) {
+        cnt += ApricornBox_CountApricorn(apricornBox, i);
+    }
+    *unkPtr = cnt;
+    return FALSE;
+}
+
 
 BOOL ScrCmd_739(SCRIPTCONTEXT *ctx) {
     struct ApricornBoxWork **unkPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
