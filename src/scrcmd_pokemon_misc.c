@@ -8,10 +8,90 @@
 #include "scrcmd.h"
 #include "unk_0206D494.h"
 #include "unk_02031AF0.h"
+#include "unk_02031B0C.h"
+#include "unk_0203E348.h"
 #include "msgdata/msg/msg_0096_D31R0201.h"
 #include "msgdata/msg/msg_0066_D23R0102.h"
 #include "constants/items.h"
 #include "constants/moves.h"
+
+BOOL ScrCmd_739(SCRIPTCONTEXT *ctx) {
+    struct ApricornBoxWork **unkPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    *unkPtr = CreateApricornBoxWork(ctx->fsys, 2);
+    SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
+    return TRUE;
+}
+
+//TODO: define sub_0203ED80 in header
+BOOL ScrCmd_740(SCRIPTCONTEXT *ctx) {
+    u32 *unkPtrA = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    u32 unkVar = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    u32 *unkPtrB = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    *unkPtrA = sub_0203ED80(ctx->fsys, unkVar, unkPtrB);
+    SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
+    return TRUE;
+}
+
+typedef struct UnkStruct_02031CEC {
+    u16 unk0;
+    u8 unk2;
+    u8 unk3;
+    u32 unk4;
+} UnkStruct_02031CEC; //size: 0x8
+
+//This has something to do with the aprijuice stand
+BOOL ScrCmd_741(SCRIPTCONTEXT *ctx) {
+    UnkStruct_02031CEC unkOut;
+    RTCDate date;   
+    s32 unkVar;
+    struct MSGFMT **msgfmt;
+    SaveApricornBox *apricornBox;
+    u16 *price;
+    u16 *unkPtrA; 
+    u16 *unkPtrC;
+    STRING *str;
+    
+    apricornBox = Save_ApricornBox_get(ctx->fsys->savedata);
+    msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    unkVar = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    unkPtrA = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    price = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    unkPtrC = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    GF_RTC_CopyDate(&date);
+    *unkPtrA = unkVar + 5;
+    //TODO: define sub_02031CEC in header
+    if (!sub_02031CEC(apricornBox, *unkPtrA, &unkOut)) {
+        *unkPtrA = (date.week + 2*unkVar) % 5;
+        sub_02031CEC(apricornBox, *unkPtrA, &unkOut);
+    }
+    //TODO: define sub_020322AC in header
+    str = sub_020322AC(apricornBox, *unkPtrA, 0x20);
+    BufferString(*msgfmt, 0, str, 2, 1, gGameVersion); //buffer owner..?
+    FreeToHeap(str);
+    //TODO: define sub_02032308 in header
+    str = sub_02032308(apricornBox, *unkPtrA, 0x20);
+    BufferString(*msgfmt, 1, str, 2, 1, gGameVersion); //buffer juice type..?
+    FreeToHeap(str);
+
+    //TODO: define sub_02031D80 in header
+    unkVar = sub_02031D80(&unkOut);
+    *price = (unkOut.unk0 / 10) + 2*unkVar;
+
+    if (*price < 100) {
+        *price = 100;
+    } else if (*price > 5000) {
+        *price = 5000;
+    }
+
+    //TODO: some of these are enums- replace with their respective constants 
+    BufferIntegerAsString(*msgfmt, 2, *price, 4, 0, 1);
+    BufferIntegerAsString(*msgfmt, 3, unkVar, 3, 0, 1); //richness..?
+    BufferIntegerAsString(*msgfmt, 4, unkOut.unk2, 3, 0, 1); //smoothness..?
+
+    *unkPtrC = unkOut.unk0;
+
+    return FALSE;
+}
 
 static LocalMapObject *ov01_02201F98(MapObjectMan *mapObjectMan, u8 unkA, u16 species, u16 forme, u32 gender, u32 x, u32 y, u32 mapId);
 
@@ -190,7 +270,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(SCRIPTCONTEXT *ctx) {
     ZeroMonData(pichu);
 
     u32 trId = PlayerProfile_GetTrainerID(profile);
-    u32 unkA = sub_02072490(trId, 0xac, 4, 1, 0, 0);
+    u32 unkA = sub_02072490(trId, 0xac, NATURE_NAUGHTY, MON_FEMALE, 0, 0);
     CreateMon(pichu, SPECIES_PICHU, 30, 0x20, 1, unkA, 1, trId);
     
     forme = 1;
