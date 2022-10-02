@@ -29,7 +29,7 @@ scr_seq_D24R0202_000:
 _004A:
 	setflag FLAG_UNK_188
 	wait 2, VAR_SPECIAL_x8004
-	scrcmd_561 0, 2, 10, 6
+	screen_shake 0, 2, 10, 6
 	wait 10, VAR_SPECIAL_x8004
 	apply_movement obj_player, _02AC
 	wait_movement
@@ -147,7 +147,7 @@ _0240:
 scr_seq_D24R0202_001:
 	scrcmd_609
 	lockall
-	scrcmd_714 0
+	open_alph_hidden_room 0
 	releaseall
 	end
 
@@ -156,7 +156,7 @@ scr_seq_D24R0202_002:
 	lockall
 	goto_if_set FLAG_OPENED_ALPH_ESCAPE_ROPE_SECRET_ROOM, _029A
 	wait 2, VAR_SPECIAL_x8004
-	scrcmd_561 0, 2, 10, 6
+	screen_shake 0, 2, 10, 6
 	wait 10, VAR_SPECIAL_x8004
 	apply_movement obj_player, _02AC
 	wait_movement

@@ -392,7 +392,7 @@ scr_seq_D40R0107_005:
 	wait 32, VAR_SPECIAL_RESULT
 	temp_bgm SEQ_GS_E_LUGIA
 	wait 48, VAR_SPECIAL_RESULT
-	scrcmd_561 3, 3, 15, 5
+	screen_shake 3, 3, 15, 5
 	wait 10, VAR_SPECIAL_RESULT
 	wait 70, VAR_SPECIAL_RESULT
 	scrcmd_759

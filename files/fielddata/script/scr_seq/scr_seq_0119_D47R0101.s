@@ -1085,7 +1085,7 @@ _0EF1:
 	end
 
 _0EFC:
-	scrcmd_561 0, 2, 10, 6
+	screen_shake 0, 2, 10, 6
 	play_se SEQ_SE_DP_KI_GASYAN
 	npc_msg msg_0135_D47R0101_00091
 	wait_button_or_walk_away

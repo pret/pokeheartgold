@@ -27,7 +27,7 @@ scr_seq_D24R0206_000:
 
 _0046:
 	wait 2, VAR_SPECIAL_x8004
-	scrcmd_561 0, 2, 10, 6
+	screen_shake 0, 2, 10, 6
 	wait 10, VAR_SPECIAL_x8004
 	apply_movement obj_player, _02A4
 	wait_movement
@@ -145,7 +145,7 @@ _0238:
 scr_seq_D24R0206_001:
 	scrcmd_609
 	lockall
-	scrcmd_714 2
+	open_alph_hidden_room 2
 	releaseall
 	end
 
@@ -154,7 +154,7 @@ scr_seq_D24R0206_002:
 	lockall
 	goto_if_set FLAG_OPENED_ALPH_WATER_STONE_SECRET_ROOM, _0292
 	wait 2, VAR_SPECIAL_x8004
-	scrcmd_561 0, 2, 10, 6
+	screen_shake 0, 2, 10, 6
 	wait 10, VAR_SPECIAL_x8004
 	apply_movement obj_player, _02A4
 	wait_movement

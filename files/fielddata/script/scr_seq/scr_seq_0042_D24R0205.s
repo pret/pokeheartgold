@@ -60,7 +60,7 @@ scr_seq_D24R0205_000:
 	apply_movement obj_player, _018C
 	scrcmd_374 obj_player
 	wait_movement
-	scrcmd_561 0, 1, 1, 8
+	screen_shake 0, 1, 1, 8
 	play_se SEQ_SE_DP_SUTYA2
 	goto_if_set FLAG_UNK_111, _016F
 	goto_if_set FLAG_GOT_UNOWN_REPORT, _016F

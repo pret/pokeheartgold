@@ -27,7 +27,7 @@ scr_seq_D24R0204_000:
 
 _0046:
 	wait 2, VAR_SPECIAL_x8004
-	scrcmd_561 0, 2, 10, 6
+	screen_shake 0, 2, 10, 6
 	wait 10, VAR_SPECIAL_x8004
 	apply_movement obj_player, _02BC
 	wait_movement
@@ -145,7 +145,7 @@ _0238:
 scr_seq_D24R0204_001:
 	scrcmd_609
 	lockall
-	scrcmd_714 1
+	open_alph_hidden_room 1
 	releaseall
 	end
 
@@ -159,7 +159,7 @@ scr_seq_D24R0204_002:
 	scrcmd_183 VAR_SPECIAL_x8000
 	wait 2, VAR_SPECIAL_x8004
 	goto_if_set FLAG_OPENED_ALPH_FLASH_SECRET_ROOM, _02A9
-	scrcmd_561 0, 2, 10, 6
+	screen_shake 0, 2, 10, 6
 	wait 10, VAR_SPECIAL_x8004
 	apply_movement obj_player, _02BC
 	wait_movement

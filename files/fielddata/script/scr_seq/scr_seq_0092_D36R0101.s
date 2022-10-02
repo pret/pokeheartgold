@@ -965,13 +965,13 @@ scr_seq_D36R0101_016:
 	apply_movement obj_D36R0101_gsbigman, _0ED0
 	wait_movement
 	play_se SEQ_SE_DP_KI_GASYAN
-	scrcmd_561 0, 2, 10, 5
+	screen_shake 0, 2, 10, 5
 	apply_movement obj_D36R0101_gsbigman, _0ED8
 	wait_movement
 	apply_movement obj_D36R0101_gsbigman, _0ED0
 	wait_movement
 	play_se SEQ_SE_DP_KI_GASYAN
-	scrcmd_561 0, 2, 10, 5
+	screen_shake 0, 2, 10, 5
 	apply_movement obj_D36R0101_gsbigman, _0ED8
 	wait_movement
 	setvar VAR_UNK_40EA, 1

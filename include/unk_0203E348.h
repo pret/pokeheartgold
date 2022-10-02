@@ -85,6 +85,7 @@ void Save_CurrentLocation_BackUp(SAVEDATA *saveData);
 u16 sub_0203E864(void *a0);
 u16 sub_0203E600(void *a0);
 void *sub_0203E7F4(HeapID heapId, FieldSystem *fsys, u8 a2, u16 a3);
+u32 sub_0203ED80(FieldSystem *fsys, u32 a1, u16 *a2);
 void *sub_0203FB94(HeapID heapId, FieldSystem *fsys, u16 a2, u16 a3);
 void sub_0203F198(TaskManager *taskManager, u16 *ret_p, SAVEDATA *saveData, u16 a3, u16 a4);
 void sub_0203F204(FieldSystem *fsys, struct DressupSomethingAppData *data);

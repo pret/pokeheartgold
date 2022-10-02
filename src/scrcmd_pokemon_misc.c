@@ -4,6 +4,7 @@
 #include "friend_group.h"
 #include "photo_album.h"
 #include "pokedex.h"
+#include "overlay_02.h"
 #include "overlay_03.h"
 #include "save_pokeathlon.h"
 #include "scrcmd.h"
@@ -11,25 +12,26 @@
 #include "unk_02031AF0.h"
 #include "unk_02031B0C.h"
 #include "unk_0203E348.h"
+#include "unk_02031904.h"
 #include "msgdata/msg/msg_0096_D31R0201.h"
 #include "msgdata/msg/msg_0066_D23R0102.h"
 #include "constants/items.h"
 #include "constants/moves.h"
 
-BOOL ScrCmd_702(SCRIPTCONTEXT *ctx) {
+static LocalMapObject *ov01_02201F98(MapObjectMan *mapObjectMan, u8 unkA, u16 species, u16 forme, u32 gender, u32 x, u32 y, u32 mapId);
+
+BOOL ScrCmd_BattleTowerSetUpMultiBattle(SCRIPTCONTEXT *ctx) {
     sub_0202CA44(ctx->fsys->savedata);
     sub_02039F68();
     return TRUE;
 }
 
-//TODO: Rename to ScrCmd_SetPlayerVolume
-BOOL ScrCmd_703(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_SetPlayerVolume(SCRIPTCONTEXT *ctx) {
     GF_SndHandleSetPlayerVolume(1, VarGet(ctx->fsys, ScriptReadHalfword(ctx)));
     return FALSE;
 }
 
-//TODO: Rename to ScrCmd_CheckMonSeen
-BOOL ScrCmd_707(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_CheckMonSeen(SCRIPTCONTEXT *ctx) {
     u16 monNumber = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 *seenFlag = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
 
@@ -38,33 +40,26 @@ BOOL ScrCmd_707(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-//TODO: Define ov02_022460AC in a header
-ov02_022460AC(TaskManager *taskMan, u8 unkB);
-
+//Related to the trapped floor in the rocket hideout
 BOOL ScrCmd_708(SCRIPTCONTEXT *ctx) {
     u32 unkVar = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     ov02_022460AC(ctx->fsys->taskman, unkVar);
     return TRUE;
 }
 
-//TODO: Define ov02_0224618C in a header
-ov02_0224618C(TaskManager *taskMan, u8 unkB);
-
-BOOL ScrCmd_774(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_CheckHasLegendaryWing(SCRIPTCONTEXT *ctx) {
     u32 unkVar = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
-    ov02_0224618C(ctx->fsys->taskman, unkVar);
+    CheckHasLegendaryWing(ctx->fsys->taskman, unkVar);
     return TRUE;
 }
 
-//TODO: Define ov02_022462E8 in a header
-ov02_022462E8(TaskManager *taskMan);
-
+//Related to Persian statues in the rocket hideout
 BOOL ScrCmd_709(SCRIPTCONTEXT *ctx) {
     ov02_022462E8(ctx->fsys->taskman);
     return TRUE;
 }
 
-BOOL ScrCmd_561(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_ScreenShake(SCRIPTCONTEXT *ctx) {
     u32 a1 = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u32 a2 = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u32 a3 = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
@@ -73,6 +68,7 @@ BOOL ScrCmd_561(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
+//Related to Lance flying off on his dragonite in the Lake of Rage
 BOOL ScrCmd_775(SCRIPTCONTEXT *ctx) {
     u32 objIdA = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u32 objIdB = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
@@ -85,12 +81,12 @@ BOOL ScrCmd_775(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_714(SCRIPTCONTEXT *ctx) {
-    ov02_022467C4(ctx->fsys->taskman, *(ctx->script_ptr++));
+BOOL ScrCmd_OpenAlphHiddenRoom(SCRIPTCONTEXT *ctx) {
+    OpenAlphHiddenRoom(ctx->fsys->taskman, *(ctx->script_ptr++));
     return TRUE;
 }
 
-u32 ov01_02201B2C(u32 unkA) {
+static u32 ov01_02201B2C(u32 unkA) {
     u16 ret = 0xFFFF;
     if (unkA <= ret) {
         ret = unkA;
@@ -98,7 +94,7 @@ u32 ov01_02201B2C(u32 unkA) {
     return ret;
 }
 
-//TODO: A lot of the functions here and the below function aren't defined in headers yet- do that pls
+//Related to Pokeathlon "Ball Sign"- whatever that is
 BOOL ScrCmd_724(SCRIPTCONTEXT *ctx) {
     u8 unkVar = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 *unkPtrA = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
@@ -143,6 +139,7 @@ BOOL ScrCmd_724(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
+//This does something with pokeathlon records like "number times jumped"
 BOOL ScrCmd_725(SCRIPTCONTEXT *ctx) {
     s32 val;
 
@@ -175,24 +172,27 @@ BOOL ScrCmd_726(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
+//Related to Kurt
 BOOL ScrCmd_735(SCRIPTCONTEXT *ctx) {
     u16 *apricornQuantity = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
     *apricornQuantity = ApricornBox_GetKurtQuantity(Save_ApricornBox_get(ctx->fsys->savedata));
     return FALSE;
 }
 
-BOOL ScrCmd_736(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_ClearKurtApricorn(SCRIPTCONTEXT *ctx) {
     ApricornBox_SetKurtApricorn(Save_ApricornBox_get(ctx->fsys->savedata), 0, 0);
     return FALSE;
 }
 
+//Related to Kurt
 BOOL ScrCmd_737(SCRIPTCONTEXT *ctx) {
     u16 *unkPtr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
     *unkPtr = ApricornBox_GetKurtBall(Save_ApricornBox_get(ctx->fsys->savedata));
     return FALSE;
 }
 
-BOOL ScrCmd_738(SCRIPTCONTEXT *ctx) {
+//Related to Kurt
+BOOL ScrCmd_GetTotalApricornCount(SCRIPTCONTEXT *ctx) {
     s32 i;
     u32 cnt;
     u16 *unkPtr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
@@ -205,7 +205,7 @@ BOOL ScrCmd_738(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-
+//Related to Kurt- canceling
 BOOL ScrCmd_739(SCRIPTCONTEXT *ctx) {
     struct ApricornBoxWork **unkPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
     *unkPtr = CreateApricornBoxWork(ctx->fsys, 2);
@@ -213,24 +213,17 @@ BOOL ScrCmd_739(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-//TODO: define sub_0203ED80 in header
+//Related to aprijuice stand- canceling
 BOOL ScrCmd_740(SCRIPTCONTEXT *ctx) {
     u32 *unkPtrA = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
     u32 unkVar = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
-    u32 *unkPtrB = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    u16 *unkPtrB = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
     *unkPtrA = sub_0203ED80(ctx->fsys, unkVar, unkPtrB);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
 
-typedef struct UnkStruct_02031CEC {
-    u16 unk0;
-    u8 unk2;
-    u8 unk3;
-    u32 unk4;
-} UnkStruct_02031CEC; //size: 0x8
-
-//This has something to do with the aprijuice stand
+//Related to aprijuice stand- viewing label
 BOOL ScrCmd_741(SCRIPTCONTEXT *ctx) {
     UnkStruct_02031CEC unkOut;
     RTCDate date;   
@@ -250,21 +243,17 @@ BOOL ScrCmd_741(SCRIPTCONTEXT *ctx) {
     unkPtrC = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
     GF_RTC_CopyDate(&date);
     *unkPtrA = unkVar + 5;
-    //TODO: define sub_02031CEC in header
     if (!sub_02031CEC(apricornBox, *unkPtrA, &unkOut)) {
         *unkPtrA = (date.week + 2*unkVar) % 5;
         sub_02031CEC(apricornBox, *unkPtrA, &unkOut);
     }
-    //TODO: define sub_020322AC in header
     str = sub_020322AC(apricornBox, *unkPtrA, 0x20);
     BufferString(*msgfmt, 0, str, 2, 1, gGameVersion); //buffer owner..?
     FreeToHeap(str);
-    //TODO: define sub_02032308 in header
     str = sub_02032308(apricornBox, *unkPtrA, 0x20);
     BufferString(*msgfmt, 1, str, 2, 1, gGameVersion); //buffer juice type..?
     FreeToHeap(str);
 
-    //TODO: define sub_02031D80 in header
     unkVar = sub_02031D80(&unkOut);
     *price = (unkOut.unk0 / 10) + 2*unkVar;
 
@@ -274,18 +263,16 @@ BOOL ScrCmd_741(SCRIPTCONTEXT *ctx) {
         *price = 5000;
     }
 
-    //TODO: some of these are enums- replace with their respective constants 
-    BufferIntegerAsString(*msgfmt, 2, *price, 4, 0, 1);
-    BufferIntegerAsString(*msgfmt, 3, unkVar, 3, 0, 1); //richness..?
-    BufferIntegerAsString(*msgfmt, 4, unkOut.unk2, 3, 0, 1); //smoothness..?
+    BufferIntegerAsString(*msgfmt, 2, *price, 4, STRCONVMODE_LEFT_ALIGN, 1);
+    BufferIntegerAsString(*msgfmt, 3, unkVar, 3, STRCONVMODE_LEFT_ALIGN, 1); //richness..?
+    BufferIntegerAsString(*msgfmt, 4, unkOut.unk2, 3, STRCONVMODE_LEFT_ALIGN, 1); //smoothness..?
 
     *unkPtrC = unkOut.unk0;
 
     return FALSE;
 }
 
-static LocalMapObject *ov01_02201F98(MapObjectMan *mapObjectMan, u8 unkA, u16 species, u16 forme, u32 gender, u32 x, u32 y, u32 mapId);
-
+//Gets called after selecting which type of pokeathlon data to load- might just outright start the loading process
 BOOL ScrCmd_743(SCRIPTCONTEXT *ctx) {
     ov03_02258CFC(ctx->taskman, VarGet(ctx->fsys, ScriptReadHalfword(ctx)));
     return TRUE;
@@ -576,6 +563,7 @@ BOOL ScrCmd_BufferPokeathlonCourseName(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
+//Gets called when getting a package from your mom
 BOOL ScrCmd_811(SCRIPTCONTEXT *ctx) {
     u16 *unkPtr1 = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
     u16 *unkPtr2 = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
@@ -585,6 +573,7 @@ BOOL ScrCmd_811(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
+//Gets called when getting a package from your mom
 BOOL ScrCmd_812(SCRIPTCONTEXT *ctx) {
     sub_0202F1F4(SaveData_GetMomsSavingsAddr(ctx->fsys->savedata));
     return FALSE;
@@ -739,8 +728,7 @@ BOOL ScrCmd_GiveRandomSeal(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-//This might be related to the rayquaza room near the safari zone
-BOOL ScrCmd_836(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_CheckKyogreGroudonInParty(SCRIPTCONTEXT *ctx) {
     int c;
     u32 unkVar;
     int partyCount;
@@ -786,7 +774,7 @@ BOOL ScrCmd_836(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_839(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_SysSetSleepFlag(SCRIPTCONTEXT *ctx) {
     if (VarGet(ctx->fsys, ScriptReadHalfword(ctx)) != 0) {
         Sys_SetSleepDisableFlag(1 << 3);
     } else {

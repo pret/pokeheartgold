@@ -15,7 +15,7 @@ scr_seq_D24R0207_000:
 	apply_movement obj_player, _0068
 	scrcmd_374 obj_player
 	wait_movement
-	scrcmd_561 0, 1, 1, 8
+	screen_shake 0, 1, 1, 8
 	play_se SEQ_SE_DP_SUTYA2
 	setvar VAR_UNK_40D5, 0
 	compare VAR_UNK_40EF, 1

@@ -787,7 +787,7 @@ _0AA4:
 _0AB8:
 	closemsg
 	play_se SEQ_SE_DP_KI_GASYAN
-	scrcmd_561 0, 2, 10, 6
+	screen_shake 0, 2, 10, 6
 	wait_se SEQ_SE_DP_KI_GASYAN
 	clearflag FLAG_HIDE_DANCE_STUDIO_LITTLE_GIRL
 	show_person obj_T27R0501_gsbabygirl1

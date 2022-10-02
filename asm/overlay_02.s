@@ -783,8 +783,8 @@ _02246184: .word ov02_02253264
 _02246188: .word ov02_02253264 + 8
 	thumb_func_end ov02_022460FC
 
-	thumb_func_start ov02_0224618C
-ov02_0224618C: ; 0x0224618C
+	thumb_func_start CheckHasLegendaryWing
+CheckHasLegendaryWing: ; 0x0224618C
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -798,7 +798,7 @@ ov02_0224618C: ; 0x0224618C
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _022461A8: .word ov02_022461DC
-	thumb_func_end ov02_0224618C
+	thumb_func_end CheckHasLegendaryWing
 
 	thumb_func_start ov02_022461AC
 ov02_022461AC: ; 0x022461AC
@@ -1574,8 +1574,8 @@ _022467AE:
 	pop {r4, pc}
 	thumb_func_end ov02_02246798
 
-	thumb_func_start ov02_022467C4
-ov02_022467C4: ; 0x022467C4
+	thumb_func_start OpenAlphHiddenRoom
+OpenAlphHiddenRoom: ; 0x022467C4
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r0, #0
@@ -1590,7 +1590,7 @@ ov02_022467C4: ; 0x022467C4
 	pop {r3, r4, r5, pc}
 	nop
 _022467E4: .word ov02_02246818
-	thumb_func_end ov02_022467C4
+	thumb_func_end OpenAlphHiddenRoom
 
 	thumb_func_start ov02_022467E8
 ov02_022467E8: ; 0x022467E8

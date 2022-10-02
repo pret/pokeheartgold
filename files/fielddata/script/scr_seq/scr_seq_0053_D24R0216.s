@@ -242,7 +242,7 @@ scr_seq_D24R0216_005:
 	apply_movement obj_player, _038C
 	scrcmd_374 obj_player
 	wait_movement
-	scrcmd_561 0, 1, 1, 8
+	screen_shake 0, 1, 1, 8
 	play_se SEQ_SE_DP_SUTYA2
 	setvar VAR_UNK_40CE, 0
 	releaseall
