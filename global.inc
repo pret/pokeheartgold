@@ -3153,7 +3153,7 @@
 .public ScrCmd_CheckSeenAllLetterUnown
 .public ScrCmd_771
 .public ScrCmd_772
-.public ScrCmd_CheckHasLegendaryWing
+.public ScrCmd_ShowLegendaryWing
 .public ScrCmd_775
 .public ScrCmd_777
 .public ScrCmd_KenyaCheckPartyOrMailbox
@@ -7002,7 +7002,7 @@
 .public ov02_022460AC
 .public ov02_022460CC
 .public ov02_022460FC
-.public CheckHasLegendaryWing
+.public ShowLegendaryWing
 .public ov02_022461AC
 .public ov02_022461DC
 .public ov02_022462DC

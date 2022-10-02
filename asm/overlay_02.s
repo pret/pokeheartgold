@@ -783,8 +783,8 @@ _02246184: .word ov02_02253264
 _02246188: .word ov02_02253264 + 8
 	thumb_func_end ov02_022460FC
 
-	thumb_func_start CheckHasLegendaryWing
-CheckHasLegendaryWing: ; 0x0224618C
+	thumb_func_start ShowLegendaryWing
+ShowLegendaryWing: ; 0x0224618C
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -798,7 +798,7 @@ CheckHasLegendaryWing: ; 0x0224618C
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _022461A8: .word ov02_022461DC
-	thumb_func_end CheckHasLegendaryWing
+	thumb_func_end ShowLegendaryWing
 
 	thumb_func_start ov02_022461AC
 ov02_022461AC: ; 0x022461AC

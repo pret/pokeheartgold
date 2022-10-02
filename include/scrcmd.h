@@ -810,7 +810,7 @@ BOOL ScrCmd_CheckSeenAllLetterUnown(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_771(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_772(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_Cinematic(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_CheckHasLegendaryWing(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_ShowLegendaryWing(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_775(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GiveTogepiEgg(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_777(SCRIPTCONTEXT* ctx);

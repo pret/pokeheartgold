@@ -4859,7 +4859,7 @@
       ]
     },
     {
-      "name": "check_has_legendary_wing",
+      "name": "show_legendary_wing",
       "args": [
         2
       ]

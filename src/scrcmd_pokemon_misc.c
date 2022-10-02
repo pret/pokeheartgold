@@ -20,6 +20,26 @@
 
 static LocalMapObject *ov01_02201F98(MapObjectMan *mapObjectMan, u8 unkA, u16 species, u16 forme, u32 gender, u32 x, u32 y, u32 mapId);
 
+BOOL ScrCmd_700(SCRIPTCONTEXT *ctx) {
+    u32 unkVar = 0;
+    FieldSystem *fsys;
+    MapObjectMan *mapObjectMan;
+    LocalMapObject *playerObj;
+    LocalMapObject *curObj; 
+
+    fsys = ctx->fsys;
+    mapObjectMan = fsys->mapObjectMan;
+
+    playerObj  = PlayerAvatar_GetMapObject(fsys->playerAvatar);
+    
+    while (sub_0205EEF4(mapObjectMan, &curObj, &unkVar, 1) == TRUE) {
+        if (curObj == playerObj) continue;
+        MapObject_ClearBits(curObj, 0x2000);
+    }
+    
+    return FALSE;
+}
+
 BOOL ScrCmd_BattleTowerSetUpMultiBattle(SCRIPTCONTEXT *ctx) {
     sub_0202CA44(ctx->fsys->savedata);
     sub_02039F68();
@@ -47,9 +67,9 @@ BOOL ScrCmd_708(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_CheckHasLegendaryWing(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_ShowLegendaryWing(SCRIPTCONTEXT *ctx) {
     u32 unkVar = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
-    CheckHasLegendaryWing(ctx->fsys->taskman, unkVar);
+    ShowLegendaryWing(ctx->fsys->taskman, unkVar);
     return TRUE;
 }
 

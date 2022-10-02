@@ -1791,49 +1791,6 @@ _02201926:
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ScrCmd_699
-
-	thumb_func_start ScrCmd_700
-ScrCmd_700: ; 0x0220192C
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #8
-	mov r1, #0
-	str r1, [sp, #4]
-	add r0, #0x80
-	ldr r0, [r0]
-	ldr r4, [r0, #0x3c]
-	ldr r0, [r0, #0x40]
-	bl PlayerAvatar_GetMapObject
-	add r5, r0, #0
-	add r0, r4, #0
-	add r1, sp, #0
-	add r2, sp, #4
-	mov r3, #1
-	bl sub_0205EEF4
-	cmp r0, #1
-	bne _02201974
-	mov r6, #2
-	lsl r6, r6, #0xc
-	add r7, sp, #0
-_02201958:
-	ldr r0, [sp]
-	cmp r0, r5
-	beq _02201964
-	add r1, r6, #0
-	bl MapObject_ClearBits
-_02201964:
-	add r0, r4, #0
-	add r1, r7, #0
-	add r2, sp, #4
-	mov r3, #1
-	bl sub_0205EEF4
-	cmp r0, #1
-	beq _02201958
-_02201974:
-	mov r0, #0
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ScrCmd_700
     
 	.rodata
 

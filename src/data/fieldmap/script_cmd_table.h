@@ -773,7 +773,7 @@ BOOL ScrCmd_CheckSeenAllLetterUnown(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_771(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_772(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_Cinematic(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_CheckHasLegendaryWing(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_ShowLegendaryWing(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_775(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_GiveTogepiEgg(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_777(SCRIPTCONTEXT *ctx);
@@ -1628,7 +1628,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_771,
     ScrCmd_772,
     ScrCmd_Cinematic,
-    ScrCmd_CheckHasLegendaryWing,
+    ScrCmd_ShowLegendaryWing,
     ScrCmd_775,
     ScrCmd_GiveTogepiEgg,
     ScrCmd_777,

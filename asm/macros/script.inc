@@ -4345,7 +4345,7 @@
 	.short \arg0
 	.endm
 
-	.macro check_has_legendary_wing arg0
+	.macro show_legendary_wing arg0
 	.short 774
 	.short \arg0
 	.endm
