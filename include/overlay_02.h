@@ -54,7 +54,7 @@ void ov02_02249548(void *work);
 
 void ov02_02245B80(TaskManager *taskManager);
 void ov02_022460AC(TaskManager *taskMan, u8 a1);
-void CheckHasLegendaryWing(TaskManager *taskMan, u8 a1);
+void ShowLegendaryWing(TaskManager *taskMan, u8 a1);
 void ov02_022462E8(TaskManager *taskMan);
 void PokecenterAnimCreate(FieldSystem *fsys, u8 kind);
 void ov02_0224BDE8(FieldSystem *fsys, u8 direction, u8 length);

@@ -1,3 +1,1 @@
-ScrCmd_ShowLegendaryWing ScrCmd_ShowLegendaryWing
-show_legendary_wing show_legendary_wing
-ShowLegendaryWing ShowLegendaryWing
+ScrCmd_GetFavoriteMon ScrCmd_GetFavoriteMon

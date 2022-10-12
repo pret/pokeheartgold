@@ -3797,11 +3797,11 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_671
+	.macro set_favorite_mon
 	.short 671
 	.endm
 
-	.macro scrcmd_672 arg0, arg1, arg2
+	.macro get_favorite_mon arg0, arg1, arg2
 	.short 672
 	.short \arg0
 	.short \arg1

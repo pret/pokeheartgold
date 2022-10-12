@@ -20,6 +20,80 @@
 
 static LocalMapObject *ov01_02201F98(MapObjectMan *mapObjectMan, u8 unkA, u16 species, u16 forme, u32 gender, u32 x, u32 y, u32 mapId);
 
+BOOL ScrCmd_SetFavoriteMon(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    POKEMON *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), 0);
+    SAVE_MISC_DATA *data = Sav2_Misc_get(fsys->savedata);
+    u32 species = GetMonData(mon, MON_DATA_SPECIES, 0);
+    u32 forme = GetMonData(mon, MON_DATA_FORME, 0);
+    u32 isEgg = GetMonData(mon, MON_DATA_IS_EGG, 0);
+    SaveMisc_SetFavoriteMon(data, species, forme, isEgg);
+    return FALSE;
+}
+
+BOOL ScrCmd_GetFavoriteMon(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u32 sp, form, egg;
+    u16 *species = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    u16 *forme = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    u16 *isEgg = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    SAVE_MISC_DATA *data = Sav2_Misc_get(fsys->savedata);
+    SaveMisc_GetFavoriteMon(data, &sp, &form, &egg);
+    *species = sp;
+    *forme = form;
+    *isEgg = egg;
+    return FALSE;
+}
+
+BOOL ScrCmd_GetPartyMonForme(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u32 index = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    u16 *forme = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    POKEMON *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), index);
+    *forme = GetMonData(mon, MON_DATA_FORME, 0);
+    return FALSE;
+}
+
+BOOL ScrCmd_699(SCRIPTCONTEXT *ctx) {
+    u32 unkVar;
+    FieldSystem *fsys;
+    MapObjectMan *mapObjectMan;
+    LocalMapObject *playerObj;
+    LocalMapObject *curObj; 
+    u32 *unkPtr;    
+    int height;
+    int unkMeasure;
+    BOOL flag;
+    VecFx32 vec;
+
+    unkVar = 0;
+
+    fsys = ctx->fsys;
+    mapObjectMan = fsys->mapObjectMan;
+
+    playerObj  = PlayerAvatar_GetMapObject(fsys->playerAvatar);
+    MapObject_GetPositionVec(playerObj, &vec);
+
+    height = vec.y;
+
+    while (sub_0205EEF4(mapObjectMan, &curObj, &unkVar, 1) == TRUE) {   
+        if (curObj == playerObj) continue;
+        MapObject_SetBits(curObj, 0x2000);
+        if (MapObject_TestBits(curObj, 0x1000) == TRUE) {
+            MapObject_GetPositionVec(curObj, &vec);
+            vec.y = height;
+            MapObject_SetPositionVec(curObj, &vec);
+            MapObject_SetCurrentHeight(curObj, (height >> 3) / FX32_ONE);
+        }
+        unkPtr = ov01_021F72DC(curObj);
+        if (unkPtr) {
+            ov01_021FA3E8(curObj, unkPtr);
+            sub_02023EA4(unkPtr, 1);
+        }
+    }
+    return FALSE;
+}
+
 BOOL ScrCmd_700(SCRIPTCONTEXT *ctx) {
     u32 unkVar = 0;
     FieldSystem *fsys;
@@ -548,7 +622,7 @@ static u32 ov01_02202378(SAVEDATA *savedata, u8 luckValue, u8 city) {
     i = 0;
     unkData = ov01_022093D0[city];
 
-    for (; i < 2; i = (u8) ++i) {
+    for (; i < 2; i = (u8) ++i) { //I swear I couldn't get it to match otherwise
         for (j = 0; j < unkData[i]; j = (u8) ++j) {
             do {
                 randVal = LCRandom() % (s32) size;

@@ -1603,7 +1603,7 @@ sub_020314C4: ; 0x020314C4
 	add r1, sp, #0xc
 	add r2, sp, #8
 	add r3, sp, #4
-	bl sub_0202AA20
+	bl SaveMisc_GetFavoriteMon
 	add r0, r5, #0
 	mov r1, #0
 	mov r2, #0x80

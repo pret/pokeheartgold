@@ -670,8 +670,8 @@ BOOL ScrCmd_667(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_BufferTypeName(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_GetItemQuantity(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_GetHiddenPowerType(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_671(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_672(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_SetFavoriteMon(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_GetFavoriteMon(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_GetOwnedRotomFormes(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_CountTranformedRotomsInParty(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_UpdateRotomForme(SCRIPTCONTEXT *ctx);
@@ -1525,8 +1525,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_BufferTypeName,
     ScrCmd_GetItemQuantity,
     ScrCmd_GetHiddenPowerType,
-    ScrCmd_671,
-    ScrCmd_672,
+    ScrCmd_SetFavoriteMon,
+    ScrCmd_GetFavoriteMon,
     ScrCmd_GetOwnedRotomFormes,
     ScrCmd_CountTranformedRotomsInParty,
     ScrCmd_UpdateRotomForme,

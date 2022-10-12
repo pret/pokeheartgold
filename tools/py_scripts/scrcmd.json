@@ -4243,11 +4243,11 @@
       ]
     },
     {
-      "name": "scrcmd_671",
+      "name": "set_favorite_mon",
       "args": []
     },
     {
-      "name": "scrcmd_672",
+      "name": "get_favorite_mon",
       "args": [
         2,
         2,

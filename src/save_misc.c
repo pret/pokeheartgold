@@ -89,16 +89,16 @@ BOOL SaveMisc_CheckExtraChunksExist(SAVE_MISC_DATA *saveMiscData) {
     return saveMiscData->extraChunksExist;
 }
 
-void sub_0202A9E8(SAVE_MISC_DATA *saveMiscData, int a1, int a2, int a3) {
-    saveMiscData->unk_0298 = a1;
-    saveMiscData->unk_029A_0 = a2;
-    saveMiscData->unk_029A_7 = a3;
+void SaveMisc_SetFavoriteMon(SAVE_MISC_DATA *saveMiscData, int species, int forme, int isEgg) {
+    saveMiscData->favoriteMonSpecies = species;
+    saveMiscData->favoriteMonForme = forme;
+    saveMiscData->favoriteMonIsEgg = isEgg;
 }
 
-void sub_0202AA20(SAVE_MISC_DATA *saveMiscData, int *a1, int *a2, int *a3) {
-    *a1 = saveMiscData->unk_0298;
-    *a2 = saveMiscData->unk_029A_0;
-    *a3 = saveMiscData->unk_029A_7;
+void SaveMisc_GetFavoriteMon(SAVE_MISC_DATA *saveMiscData, int *species, int *forme, int *isEgg) {
+    *species = saveMiscData->favoriteMonSpecies;
+    *forme = saveMiscData->favoriteMonForme;
+    *isEgg = saveMiscData->favoriteMonIsEgg;
 }
 
 static const u8 _020F677C[3][2] = {

@@ -3074,8 +3074,8 @@
 .public ScrCmd_666
 .public ScrCmd_667
 .public ScrCmd_GetHiddenPowerType
-.public ScrCmd_671
-.public ScrCmd_672
+.public ScrCmd_SetFavoriteMon
+.public ScrCmd_GetFavoriteMon
 .public ScrCmd_677
 .public ScrCmd_678
 .public ScrCmd_679
@@ -28040,8 +28040,8 @@
 .public sub_0202925C
 .public sub_02029264
 .public sub_0202A57C
-.public sub_0202A9E8
-.public sub_0202AA20
+.public SaveMisc_SetFavoriteMon
+.public SaveMisc_GetFavoriteMon
 .public sub_0202AA44
 .public sub_0202AA9C
 .public sub_0202AAD4
