@@ -1,3 +1,4 @@
+#include "bag.h"
 #include "bug_contest.h"
 #include "fieldmap.h"
 #include "field_map_object.h"
@@ -20,6 +21,71 @@
 
 static void GetHiddenPowerPowerType(POKEMON *mon, s32 *power, s32 *type);
 static LocalMapObject *ov01_02201F98(MapObjectMan *mapObjectMan, u8 unkA, u16 species, u16 forme, u32 gender, u32 x, u32 y, u32 mapId);
+
+BOOL ScrCmd_CommSanitizeParty(SCRIPTCONTEXT *ctx) {
+    int partyCount, i, forme;
+    u32 species, data;
+    u32 heldItems[6];
+    POKEMON *mon;
+    int count = 0;
+    FieldSystem *fsys = ctx->fsys;
+    u16 *success = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    PARTY *party = SavArray_PlayerParty_get(fsys->savedata);
+    partyCount = GetPartyCount(party);
+
+    *success = FALSE;
+
+    for (i = 0; i < partyCount; i++) {
+        mon = GetPartyMonByIndex(party, i);
+        heldItems[i] = GetMonData(mon, MON_DATA_HELD_ITEM, 0);
+        if (heldItems[i] == ITEM_GRISEOUS_ORB) {
+            count++;
+        }
+    }
+    if (count > 0) {
+        if (Bag_AddItem(Sav2_Bag_get(fsys->savedata), ITEM_GRISEOUS_ORB, count, 4) == FALSE) {
+            *success = 255;
+            return FALSE;
+        }
+
+        data = 0;
+        for (i = 0; i < partyCount; i++) {
+            if (heldItems[i] == ITEM_GRISEOUS_ORB) {
+                mon = GetPartyMonByIndex(party, i);
+                SetMonData(mon, MON_DATA_HELD_ITEM, &data);
+            }
+        }
+    }
+
+    for (i = 0; i < partyCount; i++) {
+        mon = GetPartyMonByIndex(party, i);
+        forme = GetMonData(mon, MON_DATA_FORME, 0);
+        if (forme > 0) {
+            species = GetMonData(mon, MON_DATA_SPECIES, 0);
+            switch (species) {
+            case SPECIES_GIRATINA:
+                Mon_UpdateGiratinaForme(mon);
+                break;
+            case SPECIES_ROTOM:
+                Mon_UpdateRotomForme(mon, 0, 0);
+                break;
+            case SPECIES_SHAYMIN:
+                Mon_UpdateShayminForme(mon, 0);
+                break;
+            }
+        }
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_SetMonForme(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u16 index = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    u16 forme = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    POKEMON *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), index);
+    SetMonData(mon, MON_DATA_FORME, &forme);
+    return FALSE;
+}
 
 BOOL ScrCmd_CountTranformedRotomsInParty(SCRIPTCONTEXT *ctx) {
     int i, partyCount, count;
