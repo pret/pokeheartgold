@@ -1,0 +1,83 @@
+# Object files
+*.nds
+
+# Compilers
+tools/mwccarm/**
+
+# SDK
+tools/bin/**
+
+# Build folder
+build/**
+sub/build/**
+
+# CLion folders
+.idea/
+cmake-build-debug/
+
+# ROM
+*.srl
+
+# Tool executables
+*.exe
+
+# Generated files
+*.4bpp
+*.lz
+*.gbapal
+
+# For asmdiff
+*/baserom.*
+*.dump
+
+# For decomp.me
+ctx.c
+
+*.lcf.template
+*.lcf
+*.response.template
+*.response
+
+# Working files
+overlays/*/module_*.s
+overlays/*/module_*.sbin
+overlays/*/module_*.cfg
+
+*.sbin
+*.bnr
+*.nbfp
+*.nbfc
+
+# Dism scripts
+dism.sh
+asmdiff.sh
+
+# Symbols CSV
+symbols.csv
+
+# NARCs
+*.narc
+*.arc
+files/**/*.c
+*.o
+*.naix
+*.a
+
+# Utilities
+ntruncompbw
+*.elf
+cmake-build-*
+*.sbin_LZ
+*.diff
+
+*.dSYM
+
+# MacOS garbage
+.DS_Store
+
+# Depfiles
+*.d
+
+diff.txt
+
+.vscode/
