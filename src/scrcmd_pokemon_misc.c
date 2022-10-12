@@ -18,7 +18,119 @@
 #include "constants/items.h"
 #include "constants/moves.h"
 
+static void GetHiddenPowerPowerType(POKEMON *mon, s32 *power, s32 *type);
 static LocalMapObject *ov01_02201F98(MapObjectMan *mapObjectMan, u8 unkA, u16 species, u16 forme, u32 gender, u32 x, u32 y, u32 mapId);
+
+BOOL ScrCmd_CountTranformedRotomsInParty(SCRIPTCONTEXT *ctx) {
+    int i, partyCount, count;
+    u32 species, forme, isEgg;
+    POKEMON *mon;
+    PARTY *party;
+    FieldSystem *fsys = ctx->fsys;
+    u16 *rotomCount = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    u16 *firstIndex = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    
+    count = 0;
+    *firstIndex = 255;
+
+    party = SavArray_PlayerParty_get(fsys->savedata);
+    partyCount = GetPartyCount(party);
+    for (i = 0; i < partyCount; i++) {
+        mon = GetPartyMonByIndex(party, i);
+        species = GetMonData(mon, MON_DATA_SPECIES, 0);
+        forme = GetMonData(mon, MON_DATA_FORME, 0);
+        isEgg = GetMonData(mon, MON_DATA_IS_EGG, 0);
+        if (species == SPECIES_ROTOM && forme && !isEgg) {
+            if (*firstIndex == 255) {
+                *firstIndex = i;
+            }
+            count++;
+        }
+    }
+    *rotomCount = count;
+    return FALSE;
+}
+
+BOOL ScrCmd_UpdateRotomForme(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    int rotomIndex = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    int defaultSlot = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    VarGet(ctx->fsys, ScriptReadHalfword(ctx)); //unsused variable
+    u32 forme = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    POKEMON *rotom = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), rotomIndex);
+    Mon_UpdateRotomForme(rotom, forme, defaultSlot);
+    Pokedex_SetMonCaughtFlag(Sav2_Pokedex_get(fsys->savedata), rotom);
+    return FALSE;
+}
+
+BOOL ScrCmd_GetHiddenPowerType(SCRIPTCONTEXT *ctx) {
+    int power, type;
+    FieldSystem *fsys = ctx->fsys;
+    int partyIndex = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    u16 *typePtr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    POKEMON *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), partyIndex);
+    
+    u16 species = GetMonData(mon, MON_DATA_SPECIES, 0);
+
+    if (GetMonData(mon, MON_DATA_IS_EGG, 0) == FALSE) {
+        switch (species) {
+        case SPECIES_CATERPIE:
+        case SPECIES_METAPOD:
+        case SPECIES_WEEDLE:
+        case SPECIES_KAKUNA:
+        case SPECIES_MAGIKARP:
+        case SPECIES_DITTO:
+        case SPECIES_WOBBUFFET:
+        case SPECIES_SMEARGLE:
+        case SPECIES_WURMPLE:
+        case SPECIES_SILCOON:
+        case SPECIES_CASCOON:
+        case SPECIES_WYNAUT:
+        case SPECIES_BELDUM:
+        case SPECIES_KRICKETOT:
+        case SPECIES_BURMY: //Despite Burmy learning hidden power by level up, you cannot check what type it is until it evolves
+        case SPECIES_COMBEE:
+            *typePtr = -1;
+            return FALSE;
+        }
+    }
+
+    GetHiddenPowerPowerType(mon, &power, &type);
+    *typePtr = type;
+
+    return FALSE;
+}
+
+static void GetHiddenPowerPowerType(POKEMON *mon, s32 *power, s32 *type) {
+    int hpIv = GetMonData(mon, MON_DATA_HP_IV, 0);
+    int atkIv = GetMonData(mon, MON_DATA_ATK_IV, 0);
+    int defIv = GetMonData(mon, MON_DATA_DEF_IV, 0);
+    int spdIv = GetMonData(mon, MON_DATA_SPEED_IV, 0);
+    int spatkIv = GetMonData(mon, MON_DATA_SPATK_IV, 0);
+    int spdefIv = GetMonData(mon, MON_DATA_SPDEF_IV, 0);
+    if (power) {
+        *power = ((hpIv & 2) >> 1) |
+                 (atkIv & 2) |
+                 ((defIv & 2) << 1) |
+                 ((spdIv & 2) << 2) |
+                 ((spatkIv & 2) << 3) |
+                 ((spdefIv & 2) << 4);
+        *power = ((*power)*40/63)+30;
+    }
+    if (type) {
+        *type = (hpIv & 1) |
+                 ((atkIv & 1) << 1) |
+                 ((defIv & 1) << 2) |
+                 ((spdIv & 1) << 3) |
+                 ((spatkIv & 1) << 4) |
+                 ((spdefIv & 1) << 5);
+        *type = ((*type)*15/63)+1;
+
+        if (*type >= 9) {
+            (*type)++;
+        }
+    }
+}
 
 BOOL ScrCmd_SetFavoriteMon(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
