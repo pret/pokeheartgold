@@ -888,149 +888,6 @@ _022011BE:
 _022011CC: .word SEQ_SE_DP_SELECT
 _022011D0: .word 0x00000207
 	thumb_func_end ov01_0220116C
-
-	thumb_func_start ScrCmd_StatJudge
-ScrCmd_StatJudge: ; 0x022011D4
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x20
-	add r4, r0, #0
-	add r1, r4, #0
-	add r1, #0x80
-	ldr r1, [r1]
-	str r1, [sp, #4]
-	bl ScriptReadHalfword
-	add r1, r0, #0
-	add r0, r4, #0
-	add r0, #0x80
-	ldr r0, [r0]
-	bl VarGet
-	add r6, r0, #0
-	add r0, r4, #0
-	bl ScriptReadHalfword
-	add r1, r0, #0
-	add r0, r4, #0
-	add r0, #0x80
-	ldr r0, [r0]
-	bl GetVarPointer
-	add r5, r0, #0
-	add r0, r4, #0
-	bl ScriptReadHalfword
-	add r1, r0, #0
-	add r0, r4, #0
-	add r0, #0x80
-	ldr r0, [r0]
-	bl GetVarPointer
-	add r7, r0, #0
-	add r0, r4, #0
-	bl ScriptReadHalfword
-	add r4, #0x80
-	add r1, r0, #0
-	ldr r0, [r4]
-	bl GetVarPointer
-	str r0, [sp]
-	ldr r0, [sp, #4]
-	ldr r0, [r0, #0xc]
-	bl SavArray_PlayerParty_get
-	add r1, r6, #0
-	bl GetPartyMonByIndex
-	add r4, r0, #0
-	mov r1, #0x46
-	mov r2, #0
-	bl GetMonData
-	str r0, [sp, #8]
-	add r0, r4, #0
-	mov r1, #0x47
-	mov r2, #0
-	bl GetMonData
-	str r0, [sp, #0xc]
-	add r0, r4, #0
-	mov r1, #0x48
-	mov r2, #0
-	bl GetMonData
-	str r0, [sp, #0x10]
-	add r0, r4, #0
-	mov r1, #0x49
-	mov r2, #0
-	bl GetMonData
-	str r0, [sp, #0x14]
-	add r0, r4, #0
-	mov r1, #0x4a
-	mov r2, #0
-	bl GetMonData
-	str r0, [sp, #0x18]
-	add r0, r4, #0
-	mov r1, #0x4b
-	mov r2, #0
-	bl GetMonData
-	mov r4, #0
-	str r0, [sp, #0x1c]
-	strh r4, [r5]
-	add r2, r4, #0
-	add r1, sp, #8
-_0220128C:
-	lsl r0, r2, #2
-	ldrh r3, [r5]
-	ldr r0, [r1, r0]
-	add r3, r3, r0
-	strh r3, [r5]
-	cmp r4, r0
-	bhs _0220129E
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-_0220129E:
-	add r0, r2, #1
-	lsl r0, r0, #0x18
-	lsr r2, r0, #0x18
-	cmp r2, #6
-	blo _0220128C
-	mov r1, #0x49
-	ldr r0, [sp, #4]
-	lsl r1, r1, #2
-	ldr r0, [r0, r1]
-	mov r5, #0
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	strh r0, [r7]
-	add r6, sp, #8
-_022012BA:
-	lsl r1, r0, #2
-	ldr r1, [r6, r1]
-	cmp r4, r1
-	bne _022012D6
-	strh r0, [r7]
-	add r0, r0, #1
-	mov r1, #6
-	bl _s32_div_f
-	mov r2, #0x49
-	ldr r0, [sp, #4]
-	lsl r2, r2, #2
-	str r1, [r0, r2]
-	b _022012EC
-_022012D6:
-	add r0, r0, #1
-	mov r1, #6
-	bl _s32_div_f
-	lsl r0, r1, #0x18
-	add r1, r5, #1
-	lsl r1, r1, #0x18
-	lsr r5, r1, #0x18
-	lsr r0, r0, #0x18
-	cmp r5, #6
-	blo _022012BA
-_022012EC:
-	ldr r0, [sp]
-	strh r4, [r0]
-	ldrh r0, [r7]
-	lsl r1, r0, #1
-	ldr r0, _02201300 ; =sStatJudgeBestStatMsgIdxs
-	ldrh r0, [r0, r1]
-	strh r0, [r7]
-	mov r0, #0
-	add sp, #0x20
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02201300: .word sStatJudgeBestStatMsgIdxs
-	thumb_func_end ScrCmd_StatJudge
     
 	.rodata
 
@@ -1046,6 +903,8 @@ sSpikyEarPichuMoveset: ; 0x022093BA
 	.short MOVE_VOLT_TACKLE
 	.short MOVE_SWAGGER
 	.short MOVE_PAIN_SPLIT
+
+.public sStatJudgeBestStatMsgIdxs
 
 sStatJudgeBestStatMsgIdxs: ; 0x022093C2
 	.short msg_0096_D31R0201_00122

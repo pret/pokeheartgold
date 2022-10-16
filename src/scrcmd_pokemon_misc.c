@@ -22,6 +22,54 @@
 static void GetHiddenPowerPowerType(POKEMON *mon, s32 *power, s32 *type);
 static LocalMapObject *ov01_02201F98(MapObjectMan *mapObjectMan, u8 unkA, u16 species, u16 forme, u32 gender, u32 x, u32 y, u32 mapId);
 
+extern u16 sStatJudgeBestStatMsgIdxs[6];
+
+BOOL ScrCmd_StatJudge(SCRIPTCONTEXT *ctx) {
+    u32 ivList[6];
+    u32 i;
+    u8 offset;
+    u8 highestIvValue;
+    FieldSystem *fsys = ctx->fsys;
+    u32 monIndex = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    u16 *ivTotal = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    u16 *highestIvIndex = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    u16 *highestIv = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    POKEMON *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), monIndex);
+    ivList[0] = GetMonData(mon, MON_DATA_HP_IV, 0);
+    ivList[1] = GetMonData(mon, MON_DATA_ATK_IV, 0);
+    ivList[2] = GetMonData(mon, MON_DATA_DEF_IV, 0);
+    ivList[3] = GetMonData(mon, MON_DATA_SPEED_IV, 0);
+    ivList[4] = GetMonData(mon, MON_DATA_SPATK_IV, 0);
+    ivList[5] = GetMonData(mon, MON_DATA_SPDEF_IV, 0);
+
+    highestIvValue = 0;
+    *ivTotal = 0;
+
+    for (i = 0; i < 6; i = (u8)++i) {
+        *ivTotal += ivList[i];
+        if (highestIvValue < ivList[i]) {
+            highestIvValue = ivList[i];
+        }
+    }
+
+    offset = fsys->judgeStatPosition;
+    *highestIvIndex = offset;
+
+    for (i = 0; i < 6; i = (u8)++i) {
+        if (highestIvValue == ivList[offset]) {
+            *highestIvIndex = offset;
+            fsys->judgeStatPosition = (offset + 1) % 6;
+            break;
+        }
+        offset = (offset + 1) % 6;
+    }
+
+    *highestIv = highestIvValue;
+    *highestIvIndex = sStatJudgeBestStatMsgIdxs[*highestIvIndex];
+
+    return FALSE;
+}
+
 BOOL ScrCmd_CommSanitizeParty(SCRIPTCONTEXT *ctx) {
     int partyCount, i, forme;
     u32 species, data;
