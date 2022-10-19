@@ -32,9 +32,9 @@ typedef struct SAVE_MISC_DATA {
     u16 rivalName[OT_NAME_LENGTH + 1];
     u8 unk_0280[8]; // 3 chunks of size (4, 2, 2)
     u8 filler_0288[0x10];
-    u16 unk_0298;
-    u8 unk_029A_0:7;
-    u8 unk_029A_7:1;
+    u16 favoriteMonSpecies;
+    u8 favoriteMonForme:7;
+    u8 favoriteMonIsEgg:1;
     u8 extraChunksExist:1;
     u8 unk_029B_1:4;
     u8 filer_029C[4];
@@ -42,8 +42,8 @@ typedef struct SAVE_MISC_DATA {
     u32 unk_02A8[2][5];
     u8 unk_02D0[5];
     u8 dummy_02D5[3];
-    u32 unk_02D8;
-    u8 unk_02DC;
+    u32 togepiEggPersonality;
+    u8 togepiEggGender;
     u8 dummy_02DD[3];
 } SAVE_MISC_DATA;
 
@@ -61,14 +61,14 @@ const u16 *Sav2_Misc_RivalName_const_get(const SAVE_MISC_DATA *saveMiscData);
 void Sav2_Misc_RivalName_set(SAVE_MISC_DATA *saveMiscData, const STRING *name);
 void SaveMisc_SetExtraChunksExist(SAVE_MISC_DATA *saveMiscData);
 BOOL SaveMisc_CheckExtraChunksExist(SAVE_MISC_DATA *saveMiscData);
-void sub_0202A9E8(SAVE_MISC_DATA *saveMiscData, int a1, int a2, int a3);
-void sub_0202AA20(SAVE_MISC_DATA *saveMiscData, int *a1, int *a2, int *a3);
+void SaveMisc_SetFavoriteMon(SAVE_MISC_DATA *saveMiscData, int species, int forme, int isEgg);
+void SaveMisc_GetFavoriteMon(SAVE_MISC_DATA *saveMiscData, int *species, int *forme, int *isEgg);
 BOOL sub_0202AA44(SAVE_MISC_DATA *saveMiscData, int a1, int a2);
 void sub_0202AA9C(SAVE_MISC_DATA *saveMiscData, int a1);
 u8 sub_0202AAD4(SAVE_MISC_DATA *saveMiscData, int a1);
 void sub_0202AB18(SAVE_MISC_DATA *saveMiscData, u8 a1, u8 a2, u8 a3);
-void sub_0202ABB0(SAVE_MISC_DATA * saveMiscData, int a1, u8 a2);
-void sub_0202ABBC(SAVE_MISC_DATA * saveMiscData, int *a1, u8 *a2);
+void SaveMisc_SetTogepiPersonalityGender(SAVE_MISC_DATA * saveMiscData, int personality, u8 gender);
+void SaveMisc_GetTogepiPersonalityGender(SAVE_MISC_DATA * saveMiscData, int *a1, u8 *a2);
 void SaveMisc_GetBattleGreeting(SAVE_MISC_DATA *saveMiscData, MAIL_MESSAGE *a1);
 void SaveMisc_SetBattleGreeting(SAVE_MISC_DATA *saveMiscData, MAIL_MESSAGE *a1);
 void sub_0202AC0C(SAVE_MISC_DATA *saveMiscData, u8 *a1);

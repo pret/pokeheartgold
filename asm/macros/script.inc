@@ -3189,7 +3189,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_561 arg0, arg1, arg2, arg3
+	.macro screen_shake arg0, arg1, arg2, arg3
 	.short 561
 	.short \arg0
 	.short \arg1
@@ -3259,7 +3259,7 @@
 	.short \arg4
 	.endm
 
-	.macro scrcmd_572 arg0
+	.macro get_unique_seals_quantity arg0
 	.short 572
 	.short \arg0
 	.endm
@@ -3797,11 +3797,11 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_671
+	.macro set_favorite_mon
 	.short 671
 	.endm
 
-	.macro scrcmd_672 arg0, arg1, arg2
+	.macro get_favorite_mon arg0, arg1, arg2
 	.short 672
 	.short \arg0
 	.short \arg1
@@ -3977,11 +3977,11 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_702
+	.macro battle_tower_setup_multi_battle
 	.short 702
 	.endm
 
-	.macro scrcmd_703 arg0
+	.macro set_player_volume arg0
 	.short 703
 	.short \arg0
 	.endm
@@ -4003,7 +4003,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_707 arg0, arg1
+	.macro check_mon_seen arg0, arg1
 	.short 707
 	.short \arg0
 	.short \arg1
@@ -4036,7 +4036,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_714 arg0
+	.macro open_alph_hidden_room arg0
 	.short 714
 	.byte \arg0
 	.endm
@@ -4156,7 +4156,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_736
+	.macro clear_kurt_apricorn
 	.short 736
 	.endm
 
@@ -4165,7 +4165,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_738 arg0
+	.macro get_total_apricorn_count arg0
 	.short 738
 	.short \arg0
 	.endm
@@ -4200,7 +4200,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_744
+	.macro create_friendship_room_statues
 	.short 744
 	.endm
 
@@ -4327,7 +4327,7 @@
 	.short 769
 	.endm
 
-	.macro scrcmd_770 arg0
+	.macro check_seen_all_letter_unown arg0
 	.short 770
 	.short \arg0
 	.endm
@@ -4345,7 +4345,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_774 arg0
+	.macro show_legendary_wing arg0
 	.short 774
 	.short \arg0
 	.endm
@@ -4602,13 +4602,13 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_825 arg0, arg1
+	.macro get_shiny_leaf_count arg0, arg1
 	.short 825
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_826 arg0
+	.macro try_give_shiny_leaf_crown arg0
 	.short 826
 	.short \arg0
 	.endm
@@ -4677,7 +4677,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_839 arg0
+	.macro sys_set_sleep_flag arg0
 	.short 839
 	.short \arg0
 	.endm

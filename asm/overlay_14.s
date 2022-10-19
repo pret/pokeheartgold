@@ -1,3 +1,4 @@
+#include "constants/pokemon.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -1074,7 +1075,7 @@ ov14_021E611C: ; 0x021E611C
 	add r0, sp, #0
 	strb r1, [r0]
 	ldr r0, [r4]
-	mov r1, #0xbb
+	mov r1, #MON_DATA_MOOD
 	add r2, sp, #0
 	bl SetMonData
 	ldr r0, [r5, #8]
@@ -1138,7 +1139,7 @@ ov14_021E61BC: ; 0x021E61BC
 	add r1, sp, #0
 	strb r2, [r1]
 	add r6, r0, #0
-	mov r1, #0xbb
+	mov r1, #MON_DATA_MOOD
 	add r2, sp, #0
 	bl SetMonData
 	add r0, r6, #0

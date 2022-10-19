@@ -89,16 +89,16 @@ BOOL SaveMisc_CheckExtraChunksExist(SAVE_MISC_DATA *saveMiscData) {
     return saveMiscData->extraChunksExist;
 }
 
-void sub_0202A9E8(SAVE_MISC_DATA *saveMiscData, int a1, int a2, int a3) {
-    saveMiscData->unk_0298 = a1;
-    saveMiscData->unk_029A_0 = a2;
-    saveMiscData->unk_029A_7 = a3;
+void SaveMisc_SetFavoriteMon(SAVE_MISC_DATA *saveMiscData, int species, int forme, int isEgg) {
+    saveMiscData->favoriteMonSpecies = species;
+    saveMiscData->favoriteMonForme = forme;
+    saveMiscData->favoriteMonIsEgg = isEgg;
 }
 
-void sub_0202AA20(SAVE_MISC_DATA *saveMiscData, int *a1, int *a2, int *a3) {
-    *a1 = saveMiscData->unk_0298;
-    *a2 = saveMiscData->unk_029A_0;
-    *a3 = saveMiscData->unk_029A_7;
+void SaveMisc_GetFavoriteMon(SAVE_MISC_DATA *saveMiscData, int *species, int *forme, int *isEgg) {
+    *species = saveMiscData->favoriteMonSpecies;
+    *forme = saveMiscData->favoriteMonForme;
+    *isEgg = saveMiscData->favoriteMonIsEgg;
 }
 
 static const u8 _020F677C[3][2] = {
@@ -172,14 +172,14 @@ void sub_0202AB18(SAVE_MISC_DATA *saveMiscData, u8 a1, u8 a2, u8 a3) {
     saveMiscData->unk_0280[max] = a3;
 }
 
-void sub_0202ABB0(SAVE_MISC_DATA * saveMiscData, int a1, u8 a2) {
-    saveMiscData->unk_02D8 = a1;
-    saveMiscData->unk_02DC = a2;
+void SaveMisc_SetTogepiPersonalityGender(SAVE_MISC_DATA * saveMiscData, int personality, u8 gender) {
+    saveMiscData->togepiEggPersonality = personality;
+    saveMiscData->togepiEggGender = gender;
 }
 
-void sub_0202ABBC(SAVE_MISC_DATA * saveMiscData, int *a1, u8 *a2) {
-    *a1 = saveMiscData->unk_02D8;
-    *a2 = saveMiscData->unk_02DC;
+void SaveMisc_GetTogepiPersonalityGender(SAVE_MISC_DATA * saveMiscData, int *personality, u8 *gender) {
+    *personality = saveMiscData->togepiEggPersonality;
+    *gender = saveMiscData->togepiEggGender;
 }
 
 void SaveMisc_GetBattleGreeting(SAVE_MISC_DATA *saveMiscData, MAIL_MESSAGE *a1) {

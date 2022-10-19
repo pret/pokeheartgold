@@ -14,7 +14,7 @@ scr_seq_D43R0102_000:
 	apply_movement obj_player, _0048
 	scrcmd_374 obj_player
 	wait_movement
-	scrcmd_561 0, 1, 1, 8
+	screen_shake 0, 1, 1, 8
 	play_se SEQ_SE_DP_SUTYA2
 	setvar VAR_UNK_40CA, 0
 	end

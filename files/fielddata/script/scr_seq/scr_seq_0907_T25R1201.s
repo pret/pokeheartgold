@@ -421,7 +421,7 @@ _0622:
 	goto _067F
 	.byte 0x02, 0x00
 _062D:
-	scrcmd_671
+	set_favorite_mon
 	npc_msg msg_0600_T25R1201_00020
 	goto _067F
 	.byte 0x02, 0x00

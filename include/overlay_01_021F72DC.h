@@ -1,0 +1,8 @@
+#ifndef POKEHEARTGOLD_OVERLAY_01_021F72DC_H
+#define POKEHEARTGOLD_OVERLAY_01_021F72DC_H
+
+#include "field_map_object.h"
+
+u32 *ov01_021F72DC(LocalMapObject *obj);
+
+#endif //POKEHEARTGOLD_OVERLAY_01_021F72DC_H

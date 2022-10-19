@@ -11,7 +11,7 @@
 scr_seq_0165_000:
 	scrcmd_609
 	lockall
-	scrcmd_839 1
+	sys_set_sleep_flag 1
 	wait 1, VAR_SPECIAL_RESULT
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x8000
 	scrcmd_547 VAR_SPECIAL_x8000
@@ -60,7 +60,7 @@ _005E:
 _00C9:
 	scrcmd_453
 	closemsg
-	scrcmd_839 0
+	sys_set_sleep_flag 0
 	releaseall
 	end
 

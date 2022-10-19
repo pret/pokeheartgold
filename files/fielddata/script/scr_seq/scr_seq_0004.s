@@ -434,63 +434,63 @@ _0778:
 	buffer_players_name 0
 	npc_msg msg_0046_00025
 	setvar VAR_TEMP_x4005, 0
-	scrcmd_707 150, VAR_TEMP_x4004
+	check_mon_seen 150, VAR_TEMP_x4004
 	compare VAR_TEMP_x4004, 1
 	goto_if_ne _07AA
 	buffer_species_name 0, SPECIES_MEWTWO, 0, 0
 	npc_msg msg_0046_00026
 	setvar VAR_TEMP_x4005, 1
 _07AA:
-	scrcmd_707 249, VAR_TEMP_x4004
+	check_mon_seen 249, VAR_TEMP_x4004
 	compare VAR_TEMP_x4004, 1
 	goto_if_ne _07CE
 	buffer_species_name 0, SPECIES_LUGIA, 0, 0
 	npc_msg msg_0046_00026
 	setvar VAR_TEMP_x4005, 1
 _07CE:
-	scrcmd_707 250, VAR_TEMP_x4004
+	check_mon_seen 250, VAR_TEMP_x4004
 	compare VAR_TEMP_x4004, 1
 	goto_if_ne _07F2
 	buffer_species_name 0, SPECIES_HO_OH, 0, 0
 	npc_msg msg_0046_00026
 	setvar VAR_TEMP_x4005, 1
 _07F2:
-	scrcmd_707 382, VAR_TEMP_x4004
+	check_mon_seen 382, VAR_TEMP_x4004
 	compare VAR_TEMP_x4004, 1
 	goto_if_ne _0816
 	buffer_species_name 0, SPECIES_KYOGRE, 0, 0
 	npc_msg msg_0046_00026
 	setvar VAR_TEMP_x4005, 1
 _0816:
-	scrcmd_707 383, VAR_TEMP_x4004
+	check_mon_seen 383, VAR_TEMP_x4004
 	compare VAR_TEMP_x4004, 1
 	goto_if_ne _083A
 	buffer_species_name 0, SPECIES_GROUDON, 0, 0
 	npc_msg msg_0046_00026
 	setvar VAR_TEMP_x4005, 1
 _083A:
-	scrcmd_707 384, VAR_TEMP_x4004
+	check_mon_seen 384, VAR_TEMP_x4004
 	compare VAR_TEMP_x4004, 1
 	goto_if_ne _085E
 	buffer_species_name 0, SPECIES_RAYQUAZA, 0, 0
 	npc_msg msg_0046_00026
 	setvar VAR_TEMP_x4005, 1
 _085E:
-	scrcmd_707 483, VAR_TEMP_x4004
+	check_mon_seen 483, VAR_TEMP_x4004
 	compare VAR_TEMP_x4004, 1
 	goto_if_ne _0882
 	buffer_species_name 0, SPECIES_DIALGA, 0, 0
 	npc_msg msg_0046_00026
 	setvar VAR_TEMP_x4005, 1
 _0882:
-	scrcmd_707 484, VAR_TEMP_x4004
+	check_mon_seen 484, VAR_TEMP_x4004
 	compare VAR_TEMP_x4004, 1
 	goto_if_ne _08A6
 	buffer_species_name 0, SPECIES_PALKIA, 0, 0
 	npc_msg msg_0046_00026
 	setvar VAR_TEMP_x4005, 1
 _08A6:
-	scrcmd_707 487, VAR_TEMP_x4004
+	check_mon_seen 487, VAR_TEMP_x4004
 	compare VAR_TEMP_x4004, 1
 	goto_if_ne _08CA
 	buffer_species_name 0, SPECIES_GIRATINA, 0, 0

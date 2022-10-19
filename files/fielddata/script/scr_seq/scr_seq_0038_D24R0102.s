@@ -104,7 +104,7 @@ scr_seq_D24R0102_001:
 	scrcmd_545 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02DB
-	scrcmd_770 VAR_SPECIAL_RESULT
+	check_seen_all_letter_unown VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0223
 	compare VAR_UNK_40EC, 4
@@ -246,7 +246,7 @@ scr_seq_D24R0102_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_770 VAR_SPECIAL_RESULT
+	check_seen_all_letter_unown VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _03AA
 	scrcmd_545 VAR_SPECIAL_RESULT
@@ -269,7 +269,7 @@ scr_seq_D24R0102_003:
 	faceplayer
 	compare VAR_UNOWN_REPORT_LEVEL, 7
 	goto_if_ge _03EB
-	scrcmd_770 VAR_SPECIAL_RESULT
+	check_seen_all_letter_unown VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _03E2
 	npc_msg msg_0073_D24R0102_00021

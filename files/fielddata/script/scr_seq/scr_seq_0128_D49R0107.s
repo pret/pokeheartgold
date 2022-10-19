@@ -29,7 +29,7 @@ _0041:
 scr_seq_D49R0107_006:
 	compare VAR_TEMP_x400F, 0
 	goto_if_ne _0058
-	scrcmd_744
+	create_friendship_room_statues
 	setvar VAR_TEMP_x400F, 1
 _0058:
 	get_player_gender VAR_TEMP_x4000

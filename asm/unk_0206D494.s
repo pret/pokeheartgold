@@ -638,7 +638,7 @@ _0206D988:
 	add r0, r6, #0
 	add r1, sp, #4
 	add r2, sp, #0
-	bl sub_0202ABBC
+	bl SaveMisc_GetTogepiPersonalityGender
 	mov r1, #0
 	add r0, r5, #0
 	add r2, r1, #0

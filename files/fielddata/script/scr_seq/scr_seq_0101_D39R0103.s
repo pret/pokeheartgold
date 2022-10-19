@@ -16,7 +16,7 @@ scr_seq_D39R0103_000:
 	wait 1, VAR_SPECIAL_RESULT
 	scrcmd_374 obj_player
 	wait_movement
-	scrcmd_561 0, 1, 1, 8
+	screen_shake 0, 1, 1, 8
 	play_se SEQ_SE_DP_SUTYA2
 	setvar VAR_UNK_40AB, 0
 	end

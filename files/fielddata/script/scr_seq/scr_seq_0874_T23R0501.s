@@ -92,7 +92,7 @@ _011A:
 	scrcmd_735 VAR_SPECIAL_x8000
 	compare VAR_SPECIAL_x8000, 0
 	goto_if_ne _01A5
-	scrcmd_738 VAR_SPECIAL_RESULT
+	get_total_apricorn_count VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _020F
 	apply_movement obj_T23R0501_gantetsu, _02BC
@@ -130,7 +130,7 @@ _01A5:
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x8000
 	callstd std_give_item_verbose
-	scrcmd_736
+	clear_kurt_apricorn
 	compare VAR_UNK_413B, 10
 	goto_if_ge _01EE
 	addvar VAR_UNK_413B, 1

@@ -26,7 +26,7 @@ scr_seq_D24R0208_000:
 
 _0042:
 	wait 2, VAR_SPECIAL_x8004
-	scrcmd_561 0, 2, 10, 6
+	screen_shake 0, 2, 10, 6
 	wait 10, VAR_SPECIAL_x8004
 	apply_movement obj_player, _0298
 	wait_movement
@@ -144,7 +144,7 @@ _0234:
 scr_seq_D24R0208_001:
 	scrcmd_609
 	lockall
-	scrcmd_714 3
+	open_alph_hidden_room 3
 	player_has_species VAR_SPECIAL_RESULT, SPECIES_HO_OH
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0264
@@ -156,7 +156,7 @@ _0264:
 
 _0268:
 	wait 2, VAR_SPECIAL_x8004
-	scrcmd_561 0, 2, 10, 6
+	screen_shake 0, 2, 10, 6
 	wait 10, VAR_SPECIAL_x8004
 	apply_movement obj_player, _0298
 	wait_movement

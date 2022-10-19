@@ -1,3 +1,4 @@
+#include "constants/pokemon.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -20,7 +21,7 @@ sub_0202EB38: ; 0x0202EB38
 	add r1, r5, #0
 	bl MIi_CpuClearFast
 	mov r4, #0
-	mov r6, #0xac
+	mov r6, #MON_DATA_SPECIES_EXISTS
 	add r7, r4, #0
 _0202EB4C:
 	add r0, r5, #0
@@ -51,7 +52,7 @@ sub_0202EB74: ; 0x0202EB74
 	add r1, r5, #0
 	bl MIi_CpuClearFast
 	mov r4, #0
-	mov r6, #0xac
+	mov r6, #MON_DATA_SPECIES_EXISTS
 	add r7, r4, #0
 _0202EB88:
 	add r0, r5, #0
@@ -207,7 +208,7 @@ sub_0202EC98: ; 0x0202EC98
 	mov r4, #0
 	add r5, r0, #0
 	add r6, r4, #0
-	mov r7, #0xac
+	mov r7, #MON_DATA_SPECIES_EXISTS
 _0202ECA2:
 	add r0, r5, #0
 	add r1, r7, #0

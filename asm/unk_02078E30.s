@@ -6393,7 +6393,7 @@ _0207C0AA:
 	ldrh r1, [r7, r4]
 	add r2, sp, #0
 	str r1, [sp]
-	mov r1, #0xa3
+	mov r1, #MON_DATA_HP
 	bl SetMonData
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -7026,7 +7026,7 @@ sub_0207C5D4: ; 0x0207C5D4
 	ldrh r1, [r1, #0x28]
 	bl Bag_TakeItem
 	add r0, r6, #0
-	mov r1, #6
+	mov r1, #MON_DATA_HELD_ITEM
 	add r2, sp, #0
 	bl SetMonData
 	add r0, r6, #0
@@ -7087,7 +7087,7 @@ sub_0207C658: ; 0x0207C658
 	mov r3, #0xc
 	bl Bag_AddItem
 	add r0, r5, #0
-	mov r1, #6
+	mov r1, #MON_DATA_HELD_ITEM
 	add r2, sp, #0x1c
 	bl SetMonData
 	add r0, r5, #0

@@ -193,7 +193,7 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
         (SAVESIZEFN)sub_0202EB30,
         (SAVEINITFN)sub_0202EB38
     }, {
-        SAVE_UNK_29,
+        SAVE_POKEATHLON_FRIENDSHIP_RECORDS,
         0,
         (SAVESIZEFN)sub_02031AF0,
         (SAVEINITFN)sub_02031AF4

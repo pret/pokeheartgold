@@ -2,6 +2,7 @@
 #include "constants/items.h"
 #include "constants/maps.h"
 #include "constants/moves.h"
+#include "constants/pokemon.h"
 #include "constants/species.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
@@ -3509,22 +3510,22 @@ sub_02094F14: ; 0x02094F14
 	ldr r0, [r0, r2]
 	bl GetPartyMonByIndex
 	add r5, r0, #0
-	mov r1, #5
+	mov r1, #MON_DATA_SPECIES
 	mov r2, #0
 	bl GetMonData
 	str r0, [r4]
 	add r0, r5, #0
-	mov r1, #0x4c
+	mov r1, #MON_DATA_IS_EGG
 	mov r2, #0
 	bl GetMonData
 	strh r0, [r4, #8]
 	add r0, r5, #0
-	mov r1, #0x70
+	mov r1, #MON_DATA_FORME
 	mov r2, #0
 	bl GetMonData
 	strh r0, [r4, #0xa]
 	add r0, r5, #0
-	mov r1, #6
+	mov r1, #MON_DATA_HELD_ITEM
 	mov r2, #0
 	bl GetMonData
 	strh r0, [r4, #0xc]

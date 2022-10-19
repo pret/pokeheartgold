@@ -289,7 +289,8 @@ struct FieldSystem {
     u32 unk_10C[2];
     GearPhoneRingManager* unk114;
     BUGCONTEST* bugContest;
-    u8 unk11C[0xC];
+    u8 unk11C[0x8];
+    u32 judgeStatPosition;
 }; // size: 0x128
 
 typedef BOOL (*ScrCmdFunc)(SCRIPTCONTEXT* ctx);
@@ -314,6 +315,7 @@ struct SCRIPTCONTEXT {
 void InitScriptContext(SCRIPTCONTEXT* ctx, const ScrCmdFunc* cmd_table, u32 cmd_count);
 BOOL SetupBytecodeScript(SCRIPTCONTEXT* ctx, const u8* ptr);
 void SetupNativeScript(SCRIPTCONTEXT* ctx, ScrCmdFunc ptr);
+BOOL ScrNative_WaitApplication_DestroyTaskData(SCRIPTCONTEXT *ctx);
 void StopScript(SCRIPTCONTEXT* ctx);
 void sub_0203FD68(SCRIPTCONTEXT* ctx, TaskManager *unk);
 BOOL RunScriptCommand(SCRIPTCONTEXT* ctx);

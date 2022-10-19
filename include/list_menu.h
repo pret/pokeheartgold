@@ -77,4 +77,14 @@ struct ListMenu
     /*0x34*/ u8 heap_id;
 };
 
+struct ListMenu *ListMenuInit(const struct ListMenuTemplate *template, u16 cursorPos, u16 itemsAbove, HeapID heap_id);
+s32 ListMenu_ProcessInput(struct ListMenu *list);
+void DestroyListMenu(struct ListMenu *list, u16 * cursorPos, u16 * itemsAbove);
+void RedrawListMenu(struct ListMenu *list);
+void ListMenuOverrideSetColors(struct ListMenu *list, u8 cursorPal, u8 fillValue, u8 cursorShadowPal);
+void ListMenuGetCurrentItemArrayId(struct ListMenu *list, u16 *index_p);
+void ListMenuGetScrollAndRow(struct ListMenu *list, u16 *cursorPos_p, u16 *itemsAbove_p);
+s32 ListMenuGetValueByArrayId(struct ListMenu *list, s32 index);
+s32 ListMenuGetTemplateField(struct ListMenu *list, enum ListMenuAttr attr);
+
 #endif //POKEHEARTGOLD_LIST_MENU_H

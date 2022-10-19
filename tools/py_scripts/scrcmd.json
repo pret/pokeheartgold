@@ -3552,7 +3552,7 @@
       ]
     },
     {
-      "name": "scrcmd_561",
+      "name": "screen_shake",
       "args": [
         2,
         2,
@@ -3632,7 +3632,7 @@
       ]
     },
     {
-      "name": "scrcmd_572",
+      "name": "get_unique_seals_quantity",
       "args": [
         "var"
       ]
@@ -4243,11 +4243,11 @@
       ]
     },
     {
-      "name": "scrcmd_671",
+      "name": "set_favorite_mon",
       "args": []
     },
     {
-      "name": "scrcmd_672",
+      "name": "get_favorite_mon",
       "args": [
         2,
         2,
@@ -4447,11 +4447,11 @@
       ]
     },
     {
-      "name": "scrcmd_702",
+      "name": "battle_tower_setup_multi_battle",
       "args": []
     },
     {
-      "name": "scrcmd_703",
+      "name": "set_player_volume",
       "args": [
         2
       ]
@@ -4477,7 +4477,7 @@
       ]
     },
     {
-      "name": "scrcmd_707",
+      "name": "check_mon_seen",
       "args": [
         2,
         "var"
@@ -4514,7 +4514,7 @@
       ]
     },
     {
-      "name": "scrcmd_714",
+      "name": "open_alph_hidden_room",
       "args": [
         1
       ]
@@ -4652,7 +4652,7 @@
       ]
     },
     {
-      "name": "scrcmd_736",
+      "name": "clear_kurt_apricorn",
       "args": []
     },
     {
@@ -4662,7 +4662,7 @@
       ]
     },
     {
-      "name": "scrcmd_738",
+      "name": "get_total_apricorn_count",
       "args": [
         "var"
       ]
@@ -4702,7 +4702,7 @@
       ]
     },
     {
-      "name": "scrcmd_744",
+      "name": "create_friendship_room_statues",
       "args": []
     },
     {
@@ -4839,7 +4839,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_770",
+      "name": "check_seen_all_letter_unown",
       "args": [
         "var"
       ]
@@ -4859,7 +4859,7 @@
       ]
     },
     {
-      "name": "scrcmd_774",
+      "name": "show_legendary_wing",
       "args": [
         2
       ]
@@ -5151,14 +5151,14 @@
       ]
     },
     {
-      "name": "scrcmd_825",
+      "name": "get_shiny_leaf_count",
       "args": [
         "var",
         "var"
       ]
     },
     {
-      "name": "scrcmd_826",
+      "name": "try_give_shiny_leaf_crown",
       "args": [
         "var"
       ]
@@ -5240,7 +5240,7 @@
       ]
     },
     {
-      "name": "scrcmd_839",
+      "name": "sys_set_sleep_flag",
       "args": [
         2
       ]

@@ -188,7 +188,7 @@ _028A:
 _028E:
 	npc_msg msg_0057_D17R0101_00002
 	closemsg
-	scrcmd_774 0
+	show_legendary_wing 0
 	releaseall
 	setvar VAR_UNK_40F3, 1
 	end

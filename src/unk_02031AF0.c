@@ -2,13 +2,13 @@
 #include "save.h"
 
 u32 sub_02031AF0(void) { 
-    return sizeof(UnkSaveStruct29);
+    return sizeof(SavePokeathlonFriendshipRecords);
 }
 
-void sub_02031AF4(UnkSaveStruct29* unk) {
-    MI_CpuClear8(unk, sizeof(UnkSaveStruct29));
+void sub_02031AF4(SavePokeathlonFriendshipRecords* unk) {
+    MI_CpuClear8(unk, sizeof(SavePokeathlonFriendshipRecords));
 }
 
-UnkSaveStruct29* sub_02031B00(SAVEDATA* savedata) {
-    return SavArray_get(savedata, SAVE_UNK_29);
+SavePokeathlonFriendshipRecords* sub_02031B00(SAVEDATA* savedata) {
+    return SavArray_get(savedata, SAVE_POKEATHLON_FRIENDSHIP_RECORDS);
 }

@@ -560,7 +560,7 @@ BOOL ScrCmd_CheckBattlePoints(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_558(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_559(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_560(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_561(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_ScreenShake(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_MultiBattle(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_563(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_564(SCRIPTCONTEXT *ctx);
@@ -571,7 +571,7 @@ BOOL ScrCmd_568(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_569(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_CheckCoinsVar(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_571(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_572(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_GetUniqueSealsQuantity(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_573(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_574(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_575(SCRIPTCONTEXT *ctx);
@@ -670,8 +670,8 @@ BOOL ScrCmd_667(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_BufferTypeName(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_GetItemQuantity(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_GetHiddenPowerType(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_671(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_672(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_SetFavoriteMon(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_GetFavoriteMon(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_GetOwnedRotomFormes(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_CountTranformedRotomsInParty(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_UpdateRotomForme(SCRIPTCONTEXT *ctx);
@@ -701,19 +701,19 @@ BOOL ScrCmd_FollowerPokeIsEventTrigger(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_699(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_700(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_MonHasItem(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_702(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_703(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_BattleTowerSetUpMultiBattle(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_SetPlayerVolume(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_704(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_705(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_706(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_707(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_CheckMonSeen(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_708(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_709(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_710(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_FollowPokeInteract(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_712(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_AlphPuzzle(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_714(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_OpenAlphHiddenRoom(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_UpdateDayCareMonObjects(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_716(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_717(SCRIPTCONTEXT *ctx);
@@ -735,15 +735,15 @@ BOOL ScrCmd_732(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_733(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_734(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_735(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_736(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_ClearKurtApricorn(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_737(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_738(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_GetTotalApricornCount(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_739(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_740(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_741(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_742(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_743(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_744(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_CreatePokeathlonFriendshipRoomStatues(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_BufferPokeathlonCourseName(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_TouchscreenMenuHide(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_TouchscreenMenuShow(SCRIPTCONTEXT *ctx);
@@ -769,11 +769,11 @@ BOOL ScrCmd_766(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_767(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_768(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_769(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_770(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_CheckSeenAllLetterUnown(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_771(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_772(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_Cinematic(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_774(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_ShowLegendaryWing(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_775(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_GiveTogepiEgg(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_777(SCRIPTCONTEXT *ctx);
@@ -824,8 +824,8 @@ BOOL ScrCmd_GetBuenasPassword(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_822(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_823(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_824(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_825(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_826(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_GetShinyLeafCount(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_TryGiveShinyLeafCrown(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_GetPartymonForme(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_MonAddContestValue(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_829(SCRIPTCONTEXT *ctx);
@@ -835,10 +835,10 @@ BOOL ScrCmd_832(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_833(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_834(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_835(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_836(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_CheckKyogreGroudonInParty(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_837(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_BankOrWalletIsFull(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_839(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_SysSetSleepFlag(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_840(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_841(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_842(SCRIPTCONTEXT *ctx);
@@ -1415,7 +1415,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_558,
     ScrCmd_559,
     ScrCmd_560,
-    ScrCmd_561,
+    ScrCmd_ScreenShake,
     ScrCmd_MultiBattle,
     ScrCmd_563,
     ScrCmd_564,
@@ -1426,7 +1426,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_569,
     ScrCmd_CheckCoinsVar,
     ScrCmd_571,
-    ScrCmd_572,
+    ScrCmd_GetUniqueSealsQuantity,
     ScrCmd_573,
     ScrCmd_574,
     ScrCmd_575,
@@ -1525,8 +1525,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_BufferTypeName,
     ScrCmd_GetItemQuantity,
     ScrCmd_GetHiddenPowerType,
-    ScrCmd_671,
-    ScrCmd_672,
+    ScrCmd_SetFavoriteMon,
+    ScrCmd_GetFavoriteMon,
     ScrCmd_GetOwnedRotomFormes,
     ScrCmd_CountTranformedRotomsInParty,
     ScrCmd_UpdateRotomForme,
@@ -1556,19 +1556,19 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_699,
     ScrCmd_700,
     ScrCmd_MonHasItem,
-    ScrCmd_702,
-    ScrCmd_703,
+    ScrCmd_BattleTowerSetUpMultiBattle,
+    ScrCmd_SetPlayerVolume,
     ScrCmd_704,
     ScrCmd_705,
     ScrCmd_706,
-    ScrCmd_707,
+    ScrCmd_CheckMonSeen,
     ScrCmd_708,
     ScrCmd_709,
     ScrCmd_710,
     ScrCmd_FollowPokeInteract,
     ScrCmd_712,
     ScrCmd_AlphPuzzle,
-    ScrCmd_714,
+    ScrCmd_OpenAlphHiddenRoom,
     ScrCmd_UpdateDayCareMonObjects,
     ScrCmd_716,
     ScrCmd_717,
@@ -1590,15 +1590,15 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_733,
     ScrCmd_734,
     ScrCmd_735,
-    ScrCmd_736,
+    ScrCmd_ClearKurtApricorn,
     ScrCmd_737,
-    ScrCmd_738,
+    ScrCmd_GetTotalApricornCount,
     ScrCmd_739,
     ScrCmd_740,
     ScrCmd_741,
     ScrCmd_742,
     ScrCmd_743,
-    ScrCmd_744,
+    ScrCmd_CreatePokeathlonFriendshipRoomStatues,
     ScrCmd_BufferPokeathlonCourseName,
     ScrCmd_TouchscreenMenuHide,
     ScrCmd_TouchscreenMenuShow,
@@ -1624,11 +1624,11 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_767,
     ScrCmd_768,
     ScrCmd_769,
-    ScrCmd_770,
+    ScrCmd_CheckSeenAllLetterUnown,
     ScrCmd_771,
     ScrCmd_772,
     ScrCmd_Cinematic,
-    ScrCmd_774,
+    ScrCmd_ShowLegendaryWing,
     ScrCmd_775,
     ScrCmd_GiveTogepiEgg,
     ScrCmd_777,
@@ -1679,8 +1679,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_822,
     ScrCmd_823,
     ScrCmd_824,
-    ScrCmd_825,
-    ScrCmd_826,
+    ScrCmd_GetShinyLeafCount,
+    ScrCmd_TryGiveShinyLeafCrown,
     ScrCmd_GetPartymonForme,
     ScrCmd_MonAddContestValue,
     ScrCmd_829,
@@ -1690,10 +1690,10 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_833,
     ScrCmd_834,
     ScrCmd_835,
-    ScrCmd_836,
+    ScrCmd_CheckKyogreGroudonInParty,
     ScrCmd_837,
     ScrCmd_BankOrWalletIsFull,
-    ScrCmd_839,
+    ScrCmd_SysSetSleepFlag,
     ScrCmd_840,
     ScrCmd_841,
     ScrCmd_842,

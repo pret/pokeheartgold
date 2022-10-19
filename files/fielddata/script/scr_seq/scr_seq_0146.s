@@ -469,8 +469,8 @@ scr_seq_0146_015:
 	play_se SEQ_SE_GS_IWAOTOSHI01
 	wait 12, VAR_SPECIAL_RESULT
 	play_se SEQ_SE_GS_IWAOTOSHI02
-	scrcmd_561 0, 4, 2, 8
-	scrcmd_561 0, 2, 1, 8
+	screen_shake 0, 4, 2, 8
+	screen_shake 0, 2, 1, 8
 	wait_se SEQ_SE_GS_IWAOTOSHI02
 	npc_msg msg_0211_00013
 	wait_button_or_walk_away

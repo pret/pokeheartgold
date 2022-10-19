@@ -892,7 +892,7 @@ _0F52:
 	heal_party
 	npc_msg msg_0096_D31R0201_00069
 	call _0817
-	scrcmd_702
+	battle_tower_setup_multi_battle
 	npc_msg msg_0096_D31R0201_00032
 	wait 30, VAR_SPECIAL_RESULT
 	scrcmd_258

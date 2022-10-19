@@ -56,7 +56,7 @@ _0093:
 _00B4:
 	npc_msg msg_0124_D40R0104_00002
 	closemsg
-	scrcmd_774 1
+	show_legendary_wing 1
 	releaseall
 	setflag FLAG_UNK_106
 	end
