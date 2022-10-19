@@ -1074,7 +1074,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(SCRIPTCONTEXT *ctx) {
     ZeroMonData(pichu);
 
     u32 trId = PlayerProfile_GetTrainerID(profile);
-    u32 unkA = sub_02072490(trId, 0xac, NATURE_NAUGHTY, MON_FEMALE, 0, 0);
+    u32 unkA = ChangePersonalityToNatureGenderAndAbility(trId, 0xac, NATURE_NAUGHTY, MON_FEMALE, 0, 0);
     CreateMon(pichu, SPECIES_PICHU, 30, 0x20, 1, unkA, 1, trId);
     
     forme = 1;
