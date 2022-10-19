@@ -6,7 +6,7 @@
 #include "save_arrays.h"
 #include "pokedex.h"
 #include "unk_0208E600.h"
-#include "unk_0202ECC0.h"
+#include "update_dex_received.h"
 #include "unk_02092BE8.h"
 
 BOOL ScrCmd_MomGiftCheck(SCRIPTCONTEXT *ctx) {

@@ -3862,13 +3862,19 @@ void SetMonPersonality(struct Pokemon * r5, u32 personality) {
     FreeToHeap(sp4);
 }
 
-u32 sub_02072490(u32 pid, u16 species, u8 nature, u8 gender, u8 ability, BOOL gen_mode) {
+u32 ChangePersonalityToNatureGenderAndAbility(u32 pid, u16 species, u8 nature, u8 gender, u8 ability, BOOL gen_mode) {
+    // u32 pid is a random seed to convolve into a pid that bears the
+    // requested nature, gender, and ability. This is used to make
+    // pokemon caught on the Pokewalker, and the Spiky-Eared Pichu.
+    // In both actual use cases, u32 pid is OTID, which means r4 and r1
+    // are always SID ^ TID.
     GF_ASSERT(ability < 2);
     GF_ASSERT(gender != 0xFF);
     if (gen_mode) {
         u32 r4 = ((pid & 0xFFFF0000) >> 16) ^ (u16)pid;
         pid = GenPersonalityByGenderAndNature(species, gender, nature);
         if ((pid & 1) != ability) {
+            // Force correct ability for gender and nature pid
             pid++;
         }
         pid |= ((u16)pid ^ r4) << 16;
@@ -3878,7 +3884,10 @@ u32 sub_02072490(u32 pid, u16 species, u8 nature, u8 gender, u8 ability, BOOL ge
         GF_ASSERT((nature & 1) == ability);
         r1 = ((pid & 0xFFFF0000) >> 16) ^ (u16)pid;
         pid = (0xFF00 ^ (r1 & 0xFF00)) << 16;
+        // Force the pid to have the requested nature
         pid += nature - (pid % 25);
+        // Maintaining that pid%25 is nature, and pid&1 is ability,
+        // ensure pid&0xFF compared to the gender ratio yields gender
         switch (ratio) {
         case MON_RATIO_MALE:
         case MON_RATIO_FEMALE:
@@ -3887,6 +3896,7 @@ u32 sub_02072490(u32 pid, u16 species, u8 nature, u8 gender, u8 ability, BOOL ge
         default:
             if (gender == MON_MALE) {
                 if (ratio > (u8)pid) {
+                    // pid is female; force pid to become male
                     pid += 25 * ((ratio - (u8)pid) / 25u + 1);
                     if ((pid & 1) != ability) {
                         GF_ASSERT((u8)pid <= 230);
@@ -3895,6 +3905,7 @@ u32 sub_02072490(u32 pid, u16 species, u8 nature, u8 gender, u8 ability, BOOL ge
                 }
             } else {
                 if (ratio < (u8)pid) {
+                    // pid is male; force pid to become female
                     pid -= 25 * (((u8)pid - ratio) / 25u + 1);
                     if ((pid & 1) != ability) {
                         GF_ASSERT((u8)pid >= 25);

@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_UNK_02097F6C_H
 #define POKEHEARTGOLD_UNK_02097F6C_H
 
-void sub_02097F9C(u32 rand, u16 *a1, u16 *a2);
+BOOL sub_02097F6C(u32 rand, u16 mapno, u16 swarmValue);
+void sub_02097F9C(u32 rand, u16 *mapno, u16 *species);
 
 #endif //POKEHEARTGOLD_UNK_02097F6C_H

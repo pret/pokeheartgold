@@ -1,7 +1,7 @@
 #include "npc_trade.h"
 #include "pokemon.h"
 #include "gf_gfx_loader.h"
-#include "unk_0202ECC0.h"
+#include "update_dex_received.h"
 #include "item.h"
 #include "mail.h"
 #include "unk_0206D494.h"

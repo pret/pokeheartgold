@@ -175,7 +175,7 @@ BOOL GetMonTMHMCompat(POKEMON *pokemon, u8 tmhm);
 BOOL GetBoxMonTMHMCompat(BOXMON *boxmon, u8 tmhm);
 BOOL GetTMHMCompatBySpeciesAndForme(u16 species, u32 forme, u8 tmhm);
 void SetMonPersonality(struct Pokemon * r5, u32 personality);
-u32 sub_02072490(u32 pid, u16 species, u8 nature, u8 gender, u8 ability, BOOL gen_mode);
+u32 ChangePersonalityToNatureGenderAndAbility(u32 pid, u16 species, u8 nature, u8 gender, u8 ability, BOOL gen_mode);
 void LoadMonPersonal(int species, BASE_STATS *personal);
 void LoadMonBaseStats_HandleAlternateForme(int species, int forme, BASE_STATS *personal);
 void LoadMonEvolutionTable(u16 species, struct Evolution *evo);

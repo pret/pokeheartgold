@@ -29679,7 +29679,7 @@
 .public sub_020720D4
 .public sub_020720FC
 .public sub_0207217C
-.public sub_02072490
+.public ChangePersonalityToNatureGenderAndAbility
 .public sub_02072914
 .public sub_0207294C
 .public sub_020729A4
