@@ -3,8 +3,11 @@
 #include "fieldmap.h"
 #include "field_map_object.h"
 #include "friend_group.h"
+#include "gf_gfx_loader.h"
 #include "photo_album.h"
 #include "pokedex.h"
+#include "list_menu.h"
+#include "overlay_01_021F72DC.h"
 #include "overlay_02.h"
 #include "overlay_03.h"
 #include "save_pokeathlon.h"
@@ -14,13 +17,316 @@
 #include "unk_02031B0C.h"
 #include "unk_0203E348.h"
 #include "unk_02031904.h"
+#include "unk_02030A98.h"
+#include "unk_0205BFF0.h"
 #include "msgdata/msg/msg_0096_D31R0201.h"
 #include "msgdata/msg/msg_0066_D23R0102.h"
 #include "constants/items.h"
 #include "constants/moves.h"
 
+typedef struct UnkStructScr_648 {
+    FieldSystem *fsys;
+    SysTask *sysTask;
+    WINDOW window_8;
+    WINDOW *window_18;
+    STRING *stringArr_1C[120];
+    MSGDATA *msgdata;
+    MSGFMT *msgfmt;
+    u8 unk_204;
+    u8 unk_205;
+    u8 unk_206;
+    u8 unk_207;
+    u8 x;
+    u8 y;
+    u8 unk_20A;
+    u8 totalItems;
+    u8 unk_20C;
+    u8 unk_20D;
+    u8 unk_20E;
+    u8 unk_20F;
+    u16 *input;
+    u16 *cursorPos;
+    u16 *itemsAbove;
+    struct ListMenuTemplate listMenuTemplate;
+    struct ListMenu * listMenu_23C;
+    u32 unk_240;
+    LISTMENUITEM items[120];
+    u16 unk_604[120];
+    u16 unk_6F4;
+} SCR_648_STRUCT;
+
+static BOOL ov01_02200C6C(SCRIPTCONTEXT *ctx);
+static void *ov01_02200C94(HeapID heapId, s32 fileId, u32 *unkPtr);
+static void ov01_02200CB4(SCR_648_STRUCT *unkPtr, MSGDATA *msgdata);
+static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, s16 *input, MSGFMT *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove);
+static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fsys, u8 x, u8 y, u8 a3, u8 a4, s16* input, MSGFMT *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove);
+static void ov01_02200DF8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3);
+static void ov01_02200E00(SCR_648_STRUCT *unkPtr);
+static void ov01_02200EC8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3);
+static void ov01_02200F54(SCR_648_STRUCT *unkPtr);
+static void ov01_02201064(struct ListMenu *listMenu, s32 a1, u8 unused);
+static void ov01_02201088(struct ListMenu *listMenu, s32 unused1, u8 unused2);
+static void ov01_022010CC(SysTask *sysTask, void *work);
+static void ov01_0220116C(SCR_648_STRUCT *unkPtr);
 static void GetHiddenPowerPowerType(POKEMON *mon, s32 *power, s32 *type);
 static LocalMapObject *ov01_02201F98(MapObjectMan *mapObjectMan, u8 unkA, u16 species, u16 forme, u32 gender, u32 x, u32 y, u32 mapId);
+
+extern u16 ov01_02209AE0[10];
+
+BOOL ScrCmd_648(SCRIPTCONTEXT *ctx) { 
+    int i;
+    u32 out_1;
+    int out_2;
+    s16 *input;
+    u32 *unkPtr_2;
+
+    MSGDATA *msgdata2;
+    SCR_648_STRUCT *unkPtr;
+    u32 *unkG;
+    u16 *data;
+    u16 *cursorPos;
+    u16 *itemsAbove;
+    WINDOW *window;
+    MSGFMT **msgfmt;    
+    MSGDATA *msgdata;
+    FieldSystem *fsys = ctx->fsys;
+
+    msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    u32 unkA = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    u32 fileIndex = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    u16 unkC = ScriptReadHalfword(ctx);
+    u16 unkD = ScriptReadHalfword(ctx);
+    u16 unkE = ScriptReadHalfword(ctx);
+
+    ctx->data[0] = unkC;
+
+    msgdata = NewMsgDataFromNarc(0, 27, 237, 32);
+
+    input = GetVarPointer(fsys, unkC);
+
+    window = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WINDOW);
+
+    cursorPos = GetVarPointer(fsys, unkD);
+    itemsAbove = GetVarPointer(fsys, unkE);
+
+    unkPtr = ov01_02200D9C(fsys, 20, 1, 0, 1, input, *msgfmt, window, msgdata, cursorPos, itemsAbove);
+
+    unkG = sub_020312C4(fsys->savedata, 0xb, &out_1);
+
+    if (out_1 == 1) {
+        data = ov01_02200C94(0x20, ov01_02209AE0[fileIndex], &out_2);
+
+        for (i = 0; i < out_2; i++) {
+            unkPtr_2 = sub_020312E0(fsys->savedata, unkG, sub_0205C144(unkA), data[i]);
+            if (unkPtr_2) {
+                ov01_02200DF8(unkPtr, data[i], 0xff, data[i]);
+            }
+        }
+        FreeToHeap(data);
+    }
+    if (unkG) {
+        FreeToHeap(unkG);
+    }
+
+    msgdata2 = NewMsgDataFromNarc(1, 0x1b, 0xbf, 0x20);
+
+    ov01_02200CB4(unkPtr, msgdata2);
+    ov01_02200DF8(unkPtr, 0xd, 0xff, 0xfffe);
+    DestroyMsgData(msgdata2);
+
+    ov01_02200CB4(unkPtr, msgdata);
+    ov01_02200E00(unkPtr);
+
+    SetupNativeScript(ctx, ov01_02200C6C);
+
+    DestroyMsgData(msgdata);
+
+    return TRUE;
+}
+
+static BOOL ov01_02200C6C(SCRIPTCONTEXT *ctx) {
+    return (*GetVarPointer(ctx->fsys, ctx->data[0]) != 0xEEEE);
+}
+
+static void *ov01_02200C94(HeapID heapId, s32 fileId, u32 *unkPtr) {
+    u32 size;
+    void *data = GfGfxLoader_LoadFromNarc_GetSizeOut(74, fileId, FALSE, heapId, FALSE, &size);
+    *unkPtr = size/2;
+    return data;
+}
+
+static void ov01_02200CB4(SCR_648_STRUCT *unkPtr, MSGDATA *msgdata) {
+    unkPtr->msgdata = msgdata;
+}
+
+static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, s16 *input, MSGFMT *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove) {
+    int i;
+    unkPtr->msgdata = msgdata;
+    unkPtr->unk_207 = unkPtr->unk_207 & ~0x2;
+    unkPtr->msgfmt = msgfmt;
+    unkPtr->fsys = fsys;
+    unkPtr->input = input;
+    i = 0;
+    *unkPtr->input = 0;
+    unkPtr->cursorPos = cursorPos;
+    unkPtr->itemsAbove = itemsAbove;
+    unkPtr->unk_207 = unkPtr->unk_207 & ~1 | a5 & 1;
+    unkPtr->unk_206 = a4;
+    unkPtr->x = x;
+    unkPtr->y = y;
+    unkPtr->totalItems = 0;
+    unkPtr->window_18 = window;
+    unkPtr->unk_204 = 3;
+    unkPtr->unk_6F4 = a4;
+    
+    for (i = 0; i < 0x78; i++) {
+        unkPtr->items[i].text = NULL;
+        unkPtr->items[i].value = 0;
+        unkPtr->unk_604[i] = 0xff;
+    }
+
+    for (i = 0; i < 0x78; i++) {
+        unkPtr->stringArr_1C[i] = String_ctor(0x50, 4);
+    }
+
+    *unkPtr->input = 0xEEEE;
+}
+
+static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fsys, u8 x, u8 y, u8 a3, u8 a4, s16* input, MSGFMT *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove) {
+    SCR_648_STRUCT *unkPtr = AllocFromHeap(4, sizeof(SCR_648_STRUCT));
+    if (!unkPtr) {
+        return NULL;
+    }
+    memset(unkPtr, 0, sizeof(SCR_648_STRUCT));
+    ov01_02200CBC(fsys, unkPtr, x, y, a3, a4, input, msgfmt, window, msgdata, cursorPos, itemsAbove);
+    return unkPtr;
+}
+
+static void ov01_02200DF8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3) {
+    ov01_02200EC8(unkPtr, strNo, a2, a3);
+}
+
+static void ov01_02200E00(SCR_648_STRUCT *unkPtr) {
+    u32 unk = unkPtr->totalItems;
+    if (unk > 8) {
+        AddWindowParameterized(unkPtr->fsys->bg_config, &unkPtr->window_8, 3, unkPtr->x, unkPtr->y, 11, 0x10, 13, 1);
+    } else {
+        AddWindowParameterized(unkPtr->fsys->bg_config, &unkPtr->window_8, 3, unkPtr->x, unkPtr->y, 11, 2*unk, 13, 1);
+    }
+    LoadUserFrameGfx1(unkPtr->fsys->bg_config, 3, 0x3D9, 0xb, 0, 4);
+    DrawFrameAndWindow1(&unkPtr->window_8, 1, 0x3D9, 11);
+    ov01_02200F54(unkPtr);
+    unkPtr->listMenu_23C = ListMenuInit(&unkPtr->listMenuTemplate, *unkPtr->cursorPos, *unkPtr->itemsAbove, 4);
+    unkPtr->sysTask = CreateSysTask(ov01_022010CC, unkPtr, 0);
+}
+
+static void ov01_02200EC8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3) {
+    STRING *str = String_ctor(0x50, 4);
+    ReadMsgDataIntoString(unkPtr->msgdata, strNo, str);
+    StringExpandPlaceholders(unkPtr->msgfmt, unkPtr->stringArr_1C[unkPtr->totalItems], str);
+    unkPtr->items[unkPtr->totalItems].text = unkPtr->stringArr_1C[unkPtr->totalItems];
+    String_dtor(str);
+    if (a3 == 0xfa) {
+        unkPtr->items[unkPtr->totalItems].value = -3;
+    } else {
+        unkPtr->items[unkPtr->totalItems].value = a3;
+    }
+    unkPtr->unk_604[unkPtr->totalItems] = a2;
+    unkPtr->totalItems++;
+}
+
+static void ov01_02200F54(SCR_648_STRUCT *unkPtr) {
+    unkPtr->listMenuTemplate.items = unkPtr->items;
+    unkPtr->listMenuTemplate.moveCursorFunc = ov01_02201088;
+    unkPtr->listMenuTemplate.itemPrintFunc = ov01_02201064;
+    unkPtr->listMenuTemplate.window = &unkPtr->window_8;
+    unkPtr->listMenuTemplate.totalItems = unkPtr->totalItems;
+    unkPtr->listMenuTemplate.maxShowed = 8;
+    unkPtr->listMenuTemplate.header_X = 1;
+    unkPtr->listMenuTemplate.item_X = 12;
+    unkPtr->listMenuTemplate.cursor_X = 2;
+    unkPtr->listMenuTemplate.upText_Y = 1;
+    unkPtr->listMenuTemplate.cursorPal = 1;
+    unkPtr->listMenuTemplate.fillValue = 15;
+    unkPtr->listMenuTemplate.cursorShadowPal = 2;
+    unkPtr->listMenuTemplate.lettersSpacing = 0;
+    unkPtr->listMenuTemplate.itemVerticalPadding = 16;
+    unkPtr->listMenuTemplate.scrollMultiple = 1;
+    unkPtr->listMenuTemplate.fontId = 0;
+    unkPtr->listMenuTemplate.cursorKind = 0;
+    unkPtr->listMenuTemplate.unk_1C = (u32) unkPtr;
+}
+
+static void ov01_02201064(struct ListMenu *listMenu, s32 a1, u8 unused) {
+    if (a1 == -3) {
+        ListMenuOverrideSetColors(listMenu, 3, 0xf, 4);
+    } else {
+        ListMenuOverrideSetColors(listMenu, 1, 0xf, 2);
+    }
+}
+
+static void ov01_02201088(struct ListMenu *listMenu, s32 unused1, u8 unused2) {
+    u16 cursorPos = 0, itemsAbove = 0;
+    SCR_648_STRUCT *unkPtr = (SCR_648_STRUCT *)ListMenuGetTemplateField(listMenu, LISTMENUATTR_UNK_1C);
+    ListMenuGetScrollAndRow(listMenu, &cursorPos, &itemsAbove);
+    if (unkPtr->cursorPos != 0 && unkPtr->itemsAbove != 0) {
+        *unkPtr->cursorPos = cursorPos;
+        *unkPtr->itemsAbove = itemsAbove;
+    }
+}
+
+static void ov01_022010CC(SysTask *sysTask, void *work) {
+    u16 prev;
+    int input;
+    SCR_648_STRUCT *unkPtr = work;
+    if (unkPtr->unk_204) {
+        unkPtr->unk_204--;
+        return;
+    }
+    if (IsPaletteFadeFinished()) {
+        input = ListMenu_ProcessInput(unkPtr->listMenu_23C);
+        prev = unkPtr->unk_6F4;
+        ListMenuGetCurrentItemArrayId(unkPtr->listMenu_23C, &unkPtr->unk_6F4);
+        if (prev != unkPtr->unk_6F4) {
+            PlaySE(SEQ_SE_DP_SELECT);
+        }
+        switch (input) {
+        case -2:
+            if (((u32)(unkPtr->unk_207 << 0x1f) >> 0x1f) == 1) {
+                PlaySE(SEQ_SE_DP_SELECT);
+                *unkPtr->input = -2;
+                ov01_0220116C(unkPtr);
+            }   
+        case -1:
+            break;
+        default:
+            PlaySE(SEQ_SE_DP_SELECT);
+            *unkPtr->input = input;
+            ov01_0220116C(unkPtr);
+            break;
+        }
+    }
+}
+
+static void ov01_0220116C(SCR_648_STRUCT *unkPtr) {
+    int i;
+    PlaySE(SEQ_SE_DP_SELECT);
+    DestroyListMenu(unkPtr->listMenu_23C, NULL, NULL);
+    sub_0200E5D4(unkPtr->listMenuTemplate.window, FALSE);
+    RemoveWindow(&unkPtr->window_8);
+
+    for (i = 0; i < 0x78; i++) {
+        String_dtor(unkPtr->stringArr_1C[i]);
+    }
+
+    if (((u32)(unkPtr->unk_207 << 0x1e) >> 0x1f) == 1) {
+        DestroyMsgData(unkPtr->msgdata);
+    }
+
+    DestroySysTask(unkPtr->sysTask);
+    
+    FreeToHeap(unkPtr);
+}
 
 extern u16 sStatJudgeBestStatMsgIdxs[6];
 
