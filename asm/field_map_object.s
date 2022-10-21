@@ -11,87 +11,10 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
+	.public sub_0205ECE0
+	.public sub_0205ED18
+
 	.text
-
-	thumb_func_start sub_0205ECE0
-sub_0205ECE0: ; 0x0205ECE0
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	bl MapObject_GetMovement
-	bl sub_0205FB00
-	add r4, r0, #0
-	bl sub_0205FB18
-	add r1, r0, #0
-	add r0, r5, #0
-	bl sub_0205F414
-	add r0, r4, #0
-	bl sub_0205FB1C
-	add r1, r0, #0
-	add r0, r5, #0
-	bl sub_0205F428
-	add r0, r4, #0
-	bl sub_0205FB20
-	add r1, r0, #0
-	add r0, r5, #0
-	bl sub_0205F43C
-	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0205ECE0
-
-	thumb_func_start sub_0205ED18
-sub_0205ED18: ; 0x0205ED18
-	push {r3, r4, r5, lr}
-	add r4, r0, #0
-	bl MapObject_GetGfxID
-	mov r1, #2
-	lsl r1, r1, #0xc
-	cmp r0, r1
-	bne _0205ED2C
-	ldr r5, _0205ED7C ; =ov01_0220724C
-	b _0205ED32
-_0205ED2C:
-	bl sub_0205FB38
-	add r5, r0, #0
-_0205ED32:
-	add r0, r5, #0
-	bl sub_0205FB24
-	add r1, r0, #0
-	add r0, r4, #0
-	bl sub_0205F468
-	add r0, r5, #0
-	bl sub_0205FB28
-	add r1, r0, #0
-	add r0, r4, #0
-	bl sub_0205F47C
-	add r0, r5, #0
-	bl sub_0205FB2C
-	add r1, r0, #0
-	add r0, r4, #0
-	bl sub_0205F490
-	add r0, r5, #0
-	bl sub_0205FB30
-	add r1, r0, #0
-	add r0, r4, #0
-	bl sub_0205F4A4
-	add r0, r5, #0
-	bl sub_0205FB34
-	add r1, r0, #0
-	add r0, r4, #0
-	bl sub_0205F4B8
-	pop {r3, r4, r5, pc}
-	nop
-_0205ED7C: .word ov01_0220724C
-	thumb_func_end sub_0205ED18
-
-	thumb_func_start sub_0205ED80
-sub_0205ED80: ; 0x0205ED80
-	ldr r3, _0205ED8C ; =memset
-	mov r2, #0x4b
-	mov r1, #0
-	lsl r2, r2, #2
-	bx r3
-	nop
-_0205ED8C: .word memset
-	thumb_func_end sub_0205ED80
 
 	thumb_func_start sub_0205ED90
 sub_0205ED90: ; 0x0205ED90
