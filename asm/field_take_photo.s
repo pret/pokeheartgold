@@ -2003,7 +2003,7 @@ _0206B726:
 	cmp r2, #0x1e
 	blo _0206B824
 	add r0, r6, #0
-	bl sub_020552E8
+	bl PalleteFadeUntilFinished
 	mov r0, #0x10
 	strb r0, [r4, #0x14]
 	b _0206B824

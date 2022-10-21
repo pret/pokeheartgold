@@ -177,6 +177,11 @@ struct FieldSystemUnkSub0 {
     BOOL unkC;
 };
 
+typedef struct FieldEnvSubUnk18 {
+    int state;
+    u32 direction;
+} FieldEnvSubUnk18;
+
 typedef struct GearPhoneRingManager {
     u8 unk_var0_0:1;
     u8 unk_var0_1:1;
@@ -230,8 +235,14 @@ struct FieldSystemUnkSub68 {
 };
 
 typedef struct FsysUnkSub4 {
-    u8 filler_00[0xC];
+    u32 unk0;
+    u32 unk4;
+    u32 unk8;
     void *unk_0C; // weather related?
+    u8 unk10[0x4];
+    u32 unk14;
+    u32 unk18;
+    u32 unk1c;
 } FsysUnkSub4;
 
 struct FieldSystem {
@@ -241,7 +252,7 @@ struct FieldSystem {
     SAVEDATA* savedata;
     TaskManager* taskman;
     MAP_EVENTS* map_events;
-    int unk18;
+    FieldEnvSubUnk18 *unk18;
     int unk1C;
     Location* location;
     GF_Camera *camera;

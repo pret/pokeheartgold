@@ -1197,7 +1197,7 @@ _021E71B0:
 	ldr r1, [sp, #0x14]
 	ldr r2, [sp, #0x18]
 	add r0, r6, #0
-	bl sub_02055C9C
+	bl NewFieldTransitionEnvironment
 	add sp, #0x28
 	mov r0, #1
 	pop {r4, r5, r6, pc}
@@ -1231,7 +1231,7 @@ _021E7208:
 	ldr r1, [sp, #0x14]
 	ldr r2, [sp, #0x18]
 	add r0, r6, #0
-	bl sub_02055C9C
+	bl NewFieldTransitionEnvironment
 	add sp, #0x28
 	mov r0, #1
 	pop {r4, r5, r6, pc}
@@ -1283,7 +1283,7 @@ _021E726C:
 	ldr r1, [sp, #0x14]
 	ldr r2, [sp, #0x18]
 	add r0, r6, #0
-	bl sub_02055C9C
+	bl NewFieldTransitionEnvironment
 	add sp, #0x28
 	mov r0, #1
 	pop {r4, r5, r6, pc}
@@ -1454,7 +1454,7 @@ _021E73FC:
 	ldr r1, [sp, #0x14]
 	ldr r2, [sp, #0x18]
 	add r0, r6, #0
-	bl sub_02055C9C
+	bl NewFieldTransitionEnvironment
 	mov r0, #1
 	add sp, #0x28
 	pop {r4, r5, r6, pc}
@@ -1899,7 +1899,7 @@ _021E77C6:
 	ldr r1, [sp, #0xc]
 	ldr r2, [sp, #0x10]
 	add r0, r4, #0
-	bl sub_02055C9C
+	bl NewFieldTransitionEnvironment
 	add sp, #0x20
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -1927,7 +1927,7 @@ _021E7802:
 	ldr r1, [sp, #0xc]
 	ldr r2, [sp, #0x10]
 	add r0, r4, #0
-	bl sub_02055C9C
+	bl NewFieldTransitionEnvironment
 	add sp, #0x20
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -1976,7 +1976,7 @@ _021E7860:
 	ldr r1, [sp, #0xc]
 	ldr r2, [sp, #0x10]
 	add r0, r4, #0
-	bl sub_02055C9C
+	bl NewFieldTransitionEnvironment
 	add sp, #0x20
 	mov r0, #1
 	pop {r3, r4, r5, pc}

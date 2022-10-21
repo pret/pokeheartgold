@@ -417,8 +417,8 @@ _020550DC: .word SEQ_GS_EYE_J_SHOUNEN
 _020550E0: .word sTrainerEncounterMusicParam
 	thumb_func_end Trainer_GetEncounterMusic
 
-	thumb_func_start sub_020550E4
-sub_020550E4: ; 0x020550E4
+	thumb_func_start Fsys_BeginFadeOutMusic
+Fsys_BeginFadeOutMusic: ; 0x020550E4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -438,7 +438,7 @@ sub_020550E4: ; 0x020550E4
 _0205510C:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_020550E4
+	thumb_func_end Fsys_BeginFadeOutMusic
 
 	thumb_func_start sub_02055110
 sub_02055110: ; 0x02055110

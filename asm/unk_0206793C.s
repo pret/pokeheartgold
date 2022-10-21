@@ -78,7 +78,7 @@ _02067990:
 	b _02067A16
 _020679B8:
 	add r0, r5, #0
-	bl sub_020552E8
+	bl PalleteFadeUntilFinished
 	ldr r0, [r4, #4]
 	add r0, r0, #1
 	str r0, [r4, #4]

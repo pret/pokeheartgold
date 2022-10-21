@@ -29001,14 +29001,14 @@
 .public Fsys_ClearSavedMusicId
 .public Fsys_GetSurfOverriddenMusicId
 .public Fsys_PlayOrFadeToNewMusicId
-.public sub_020550E4
+.public Fsys_BeginFadeOutMusic
 .public sub_02055110
 .public sub_02055164
 .public sub_02055198
 .public sub_02055218
 .public sub_0205525C
 .public sub_020552A4
-.public sub_020552E8
+.public PalleteFadeUntilFinished
 .public sub_0205532C
 .public sub_020553B0
 .public sub_02055408
@@ -29039,8 +29039,8 @@
 .public sub_02055B68
 .public sub_02055B7C
 .public sub_02055BEC
-.public sub_02055BF0
-.public sub_02055C9C
+.public NewFieldFadeEnvironment
+.public NewFieldTransitionEnvironment
 .public sub_02055CD8
 .public sub_02056680
 .public sub_020566F8
@@ -29293,8 +29293,8 @@
 .public sub_0205C7EC
 .public sub_0205C810
 .public sub_0205C838
-.public sub_0205C858
-.public sub_0205C874
+.public PlayerAvatar_ToggleAutomaticHeightUpdating
+.public PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
 .public sub_0205C898
 .public sub_0205C99C
 .public sub_0205CA20
@@ -29646,7 +29646,7 @@
 .public sub_02069ED4
 .public sub_02069F0C
 .public sub_02069FB0
-.public sub_02069FD4
+.public GetFollowPokePermission
 .public sub_0206A040
 .public sub_0206A054
 .public sub_0206A360

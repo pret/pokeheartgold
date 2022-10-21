@@ -517,7 +517,7 @@ _021E94AA:
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x10]
 	mov r2, #9
-	bl sub_02055BF0
+	bl NewFieldFadeEnvironment
 	ldr r0, [r4, #0x58]
 	mov r1, #1
 	bl ov01_021E8F30
@@ -1892,7 +1892,7 @@ _021E9F98:
 	add r0, r5, #0
 	mov r2, #0x10
 	add r3, r1, #0
-	bl sub_02055BF0
+	bl NewFieldFadeEnvironment
 	mov r0, #1
 	str r0, [r4, #4]
 	ldrb r0, [r4]
@@ -2016,7 +2016,7 @@ _021EA096:
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x10]
 	add r2, r6, #0
-	bl sub_02055BF0
+	bl NewFieldFadeEnvironment
 	mov r0, #1
 	str r0, [r4, #4]
 	b _021EA110
@@ -2131,7 +2131,7 @@ _021EA182:
 	str r0, [sp, #0xc]
 	add r0, r7, #0
 	add r3, r2, #0
-	bl sub_02055BF0
+	bl NewFieldFadeEnvironment
 	b _021EA1EE
 _021EA19E:
 	ldr r0, [r5, #0x40]
