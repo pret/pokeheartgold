@@ -999,8 +999,8 @@ sub_0205C838: ; 0x0205C838
 	pop {r4, r5, pc}
 	thumb_func_end sub_0205C838
 
-	thumb_func_start sub_0205C858
-sub_0205C858: ; 0x0205C858
+	thumb_func_start PlayerAvatar_ToggleAutomaticHeightUpdating
+PlayerAvatar_ToggleAutomaticHeightUpdating: ; 0x0205C858
 	push {r4, lr}
 	add r4, r1, #0
 	bl PlayerAvatar_GetMapObject
@@ -1013,10 +1013,10 @@ _0205C86C:
 	mov r1, #1
 	bl sub_0205F768
 	pop {r4, pc}
-	thumb_func_end sub_0205C858
+	thumb_func_end PlayerAvatar_ToggleAutomaticHeightUpdating
 
-	thumb_func_start sub_0205C874
-sub_0205C874: ; 0x0205C874
+	thumb_func_start PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
+PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply: ; 0x0205C874
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	bl PlayerAvatar_GetMapObject
@@ -1032,7 +1032,7 @@ _0205C890:
 	mov r1, #1
 	bl sub_0205F768
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0205C874
+	thumb_func_end PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
 
 	thumb_func_start sub_0205C898
 sub_0205C898: ; 0x0205C898

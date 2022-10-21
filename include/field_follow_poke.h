@@ -25,7 +25,7 @@ u8 GetFollowPokeSizeParamBySpecies(int species);
 int FollowPokeObj_GetSpecies(LocalMapObject *mapObject);
 BOOL FollowingPokemon_IsActive(FieldSystem *fsys);
 BOOL sub_02069FB0(FieldSystem *fsys);
-BOOL sub_02069FD4(FieldSystem *fsys);
+BOOL GetFollowPokePermission(FieldSystem *fsys);
 BOOL GetFollowPokePermissionBySpeciesAndMap(int species, u32 mapno);
 void sub_0206A040(LocalMapObject *mapObject, BOOL enable_bit);
 void sub_0206A054(FieldSystem *fsys);

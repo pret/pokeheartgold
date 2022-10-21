@@ -464,7 +464,7 @@ static BOOL sub_02053688(TaskManager *taskManager) {
     switch (env->unk0) {
     case 0:
         PlaySE(SEQ_SE_DP_KAIDAN2);
-        sub_020550E4(fsys, env->location.mapId);
+        Fsys_BeginFadeOutMusic(fsys, env->location.mapId);
         sub_020553B0(taskManager);
         env->unk0++;
         break;
@@ -550,7 +550,7 @@ static BOOL Task_ScriptWarp(TaskManager *taskManager) {
 
     switch (env->state) {
     case 0:
-        sub_020550E4(fsys, env->location.mapId);
+        Fsys_BeginFadeOutMusic(fsys, env->location.mapId);
         sub_0205525C(taskManager);
         env->state++;
         break;
@@ -617,7 +617,7 @@ static BOOL sub_02053950(TaskManager *taskManager) {
     Location *location = &env->location;
     switch (env->unk0) {
     case 0:
-        sub_020550E4(fsys, location->mapId);
+        Fsys_BeginFadeOutMusic(fsys, location->mapId);
         sub_020539D8(taskManager);
         env->unk0++;
         break;
@@ -726,7 +726,7 @@ static BOOL sub_02053B3C(TaskManager *taskManager) {
 
     switch (env->unk0) {
     case 0:
-        sub_020550E4(fsys, location->mapId);
+        Fsys_BeginFadeOutMusic(fsys, location->mapId);
         sub_02053BE8(taskManager);
         env->unk0++;
         break;
@@ -839,7 +839,7 @@ static BOOL sub_02053CCC(TaskManager *taskManager) {
         break;
     case 2:
         if (env->unk4) {
-            sub_020550E4(fsys, location->mapId);
+            Fsys_BeginFadeOutMusic(fsys, location->mapId);
             sub_0205525C(taskManager);
             env->unk0++;
         }
@@ -902,7 +902,7 @@ static BOOL sub_02053E5C(TaskManager *taskManager) {
 
     switch (*state_p) {
     case 0:
-        sub_020550E4(fsys, location->mapId);
+        Fsys_BeginFadeOutMusic(fsys, location->mapId);
         ov01_021F35C4(fsys, 1, &env->unk4);
         (*state_p)++;
         break;
@@ -956,8 +956,8 @@ static BOOL sub_02053F70(TaskManager *taskManager) {
 
     switch (*state_p) {
     case 0:
-        sub_020550E4(fsys, location->mapId);
-        sub_020552E8(taskManager);
+        Fsys_BeginFadeOutMusic(fsys, location->mapId);
+        PalleteFadeUntilFinished(taskManager);
         (*state_p)++;
         break;
     case 1:
@@ -1014,7 +1014,7 @@ static BOOL sub_020540A4(TaskManager *taskManager) {
     switch (env->unk0) {
     case 0:
         PlaySE(SEQ_SE_DP_KAIDAN2);
-        sub_020550E4(fsys, env->location.mapId);
+        Fsys_BeginFadeOutMusic(fsys, env->location.mapId);
         sub_020553B0(taskManager);
         env->unk0++;
         break;

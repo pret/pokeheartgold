@@ -93,8 +93,8 @@ _020552E2:
 	.balign 4, 0
 	thumb_func_end sub_020552D4
 
-	thumb_func_start sub_020552E8
-sub_020552E8: ; 0x020552E8
+	thumb_func_start PalleteFadeUntilFinished
+PalleteFadeUntilFinished: ; 0x020552E8
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -125,7 +125,7 @@ _02055302:
 	pop {r3, r4, pc}
 	.balign 4, 0
 _02055328: .word sub_020552D4
-	thumb_func_end sub_020552E8
+	thumb_func_end PalleteFadeUntilFinished
 
 	thumb_func_start sub_0205532C
 sub_0205532C: ; 0x0205532C
@@ -176,7 +176,7 @@ sub_02055370: ; 0x02055370
 	b _020553AA
 _0205538A:
 	add r0, r5, #0
-	bl sub_020552E8
+	bl PalleteFadeUntilFinished
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]

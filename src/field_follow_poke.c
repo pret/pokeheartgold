@@ -1799,7 +1799,7 @@ BOOL sub_02069FB0(FieldSystem *fsys) {
     }
 }
 
-BOOL sub_02069FD4(FieldSystem *fsys) {
+BOOL GetFollowPokePermission(FieldSystem *fsys) {
     u32 mapno;
 
     mapno = SavFollowPoke_GetMapId(Sav2_FollowPoke_get(fsys->savedata));

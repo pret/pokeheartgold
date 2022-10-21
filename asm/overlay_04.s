@@ -250,7 +250,7 @@ ov04_02253FF0: ; 0x02253FF0
 _0225400C:
 	ldr r0, [r4, #0x40]
 	mov r1, #0
-	bl sub_0205C858
+	bl PlayerAvatar_ToggleAutomaticHeightUpdating
 	mov r0, #SEQ_SE_DP_ELEBETA>>4
 	lsl r0, r0, #4
 	bl PlaySE
@@ -315,7 +315,7 @@ _0225408C:
 	bl ov01_021FB4A0
 	ldr r0, [r4, #0x40]
 	mov r1, #1
-	bl sub_0205C874
+	bl PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
 	ldr r0, _022540BC ; =SEQ_SE_DP_KI_GASYAN
 	bl PlaySE
 	add r0, r6, #0
@@ -348,7 +348,7 @@ ov04_022540C0: ; 0x022540C0
 _022540DC:
 	ldr r0, [r4, #0x40]
 	mov r1, #0
-	bl sub_0205C858
+	bl PlayerAvatar_ToggleAutomaticHeightUpdating
 	mov r0, #SEQ_SE_DP_ELEBETA>>4
 	lsl r0, r0, #4
 	bl PlaySE
@@ -413,7 +413,7 @@ _0225415C:
 	bl ov01_021FB4A0
 	ldr r0, [r4, #0x40]
 	mov r1, #1
-	bl sub_0205C874
+	bl PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
 	ldr r0, _0225418C ; =SEQ_SE_DP_KI_GASYAN
 	bl PlaySE
 	add r0, r6, #0
