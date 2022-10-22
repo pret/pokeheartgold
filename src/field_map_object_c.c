@@ -1,6 +1,7 @@
 // #include "field_player_avatar.h"
 // #include "field_map_object.h"
 // #include "script.h"
+#include "filesystem.h"
 #include "heap.h"
 #include "unk_0200E320.h"
 
@@ -26,11 +27,14 @@ typedef struct FieldSystem FieldSystem;
 typedef struct LocalMapObject LocalMapObject;
 
 typedef struct MapObjectMan {
-    u8 unk0[4];
+    u32 flags;
     u32 object_count;
-    u8 unk8[4];
+    u32 unk8;
     u32 unkC;
-    u8 unk10[0x124-0x10];
+    u8 unk10[4];
+    NARC* mmodel_narc;
+    u8 unk18[4];
+    u8 unk1C[0x124-0x1C];
     LocalMapObject* objects;
     FieldSystem* fsys;
 } MapObjectMan; // size: 0x12c
@@ -128,28 +132,28 @@ void MapObject_SetGfxID(LocalMapObject* object, u32 id);
 void MapObject_SetMovement(LocalMapObject* object, u32 movement);
 void MapObject_SetType(LocalMapObject* object, u32 type);
 u16 ObjectEventTemplate_GetID(OBJECT_EVENT*);
-int sub_0205F16C();
-int sub_0205F160();
+void sub_0205F16C(MapObjectMan* manager);
+MapObjectMan* sub_0205F160(MapObjectMan* manager);
 void sub_0205EAF0(MapObjectMan* manager, LocalMapObject* object);
-int sub_0205EFB4();
-int sub_0205EFA4();
+void sub_0205EFB4(LocalMapObject* object);
+void sub_0205EFA4(LocalMapObject* object);
 void sub_0205F250(LocalMapObject* object, u32 a1);
 void sub_0205EC90(LocalMapObject* object, MapObjectMan* manager);
 void sub_0205EB2C(LocalMapObject* object, OBJECT_EVENT* template, FieldSystem* fsys);
 FieldSystem* MapObjectMan_GetFieldSysPtr(MapObjectMan*);
 LocalMapObject* sub_0205EA64(MapObjectMan*);
-int sub_0205F058();
+void sub_0205F058(LocalMapObject* object, u32 map_no, OBJECT_EVENT* template);
 LocalMapObject* sub_0205EE10(MapObjectMan*, u32, u32);
 u16 ObjectEventTemplate_GetFlagID_AssertScriptIdIsFFFF(OBJECT_EVENT* template);
-int sub_0205F014();
+void sub_0205F014(LocalMapObject* object, OBJECT_EVENT* template, u32 map_no);
 LocalMapObject* sub_0205EA98(MapObjectMan*, u32, u32);
 BOOL ObjectEventTemplate_ScriptIdIsFFFF();
 u32 MapObjectMan_GetCount(MapObjectMan*);
 BOOL MapObject_IsInUse(LocalMapObject*);
-void ov01_021F9FB0(MapObjectMan*, void*);
+void ov01_021F9FB0();
 void* sub_0205F1A0(MapObjectMan*);
 u32 sub_0205ED90(LocalMapObject*, u32, u32, OBJECT_EVENT*);
-int sub_0205F1A4();
+void sub_0205F1A4(MapObjectMan* manager, LocalMapObject* objects);
 LocalMapObject* CreateSpecialFieldObjectEx(MapObjectMan* manager, u16 x, u16 y, s16 direction, u32 sprite, u32 movement, u32 map_no, u32 a7, u32 a8, u32 a9);
 void ObjectEventTemplate_SetID(OBJECT_EVENT* template, u16);
 void ObjectEventTemplate_SetSprite(OBJECT_EVENT*, u32);
@@ -261,6 +265,12 @@ u32 ObjectEventTemplate_GetHeight(OBJECT_EVENT* template);
 u16 ObjectEventTemplate_GetYCoord(OBJECT_EVENT* template);
 void sub_0205ECE0(LocalMapObject* object);
 Unkthing* sub_0205FB00(u32 movement);
+void sub_0205F328(LocalMapObject* object, u32 a1);
+void* sub_0205F538(LocalMapObject* object);
+void sub_0205F148(LocalMapObject* object);
+void sub_0205F174(MapObjectMan* manager);
+u32 sub_0205F19C(MapObjectMan* manager);
+u32 MapObject_GetFlagID(LocalMapObject* object);
 
 MapObjectMan* sub_0205E0BC(FieldSystem* fsys, int object_count, u32 a2) {
     MapObjectMan* ret = MapObjectMan_new(object_count);
@@ -1489,4 +1499,392 @@ u32 ResolveObjectGfxId(FieldSystem* fsys, int a1) {
         a1 = VarGetObjectEventGraphicsId(fsys, (u16)(a1 - 101));
     }
     return a1;
+}
+
+void sub_0205EF8C(LocalMapObject* object) {
+    if (MapObject_GetBitsMask(object, (1 << 12))) {
+        sub_02061070(object);
+    }
+}
+
+void sub_0205EFA4(LocalMapObject* object) {
+    sub_0205ECE0(object);
+    sub_0205FD20(object);
+}
+
+void sub_0205EFB4(LocalMapObject* object) {
+    if (!sub_0205F5D4(sub_0205F35C(object))) {
+        return;
+    }
+
+    sub_0205EF8C(object);
+    sub_0205F328(object, 0);
+    ov01_021FA2B8(object, FALSE);
+    if (!sub_0205F678(object)) {
+        sub_0205ED18(object);
+        sub_0205F470(object);
+        sub_0205F66C(object);
+    }
+}
+
+BOOL sub_0205EFF8(LocalMapObject* object) {
+    u16 script = MapObject_GetScript(object);
+    return script == 0xFFFF;
+}
+
+void sub_0205F014(LocalMapObject* object, OBJECT_EVENT* template, u32 map_no) {
+    GF_ASSERT(sub_0205F7D4(object) == TRUE);
+
+    sub_0205F7B8(object, FALSE);
+    sub_0205F250(object, map_no);
+    MapObject_SetScript(object, ObjectEventTemplate_GetScript(template));
+    MapObject_SetFlagID(object, ObjectEventTemplate_GetFlagID(template));
+}
+
+void sub_0205F058(LocalMapObject* object, u32 map_no, OBJECT_EVENT* template) {
+    GF_ASSERT(ObjectEventTemplate_ScriptIdIsFFFF(template) == TRUE);
+
+    sub_0205F7B8(object, TRUE);
+    MapObject_SetScript(object, ObjectEventTemplate_GetScript(template));
+    MapObject_SetFlagID(object, ObjectEventTemplate_GetFlagID_AssertScriptIdIsFFFF(template));
+    sub_0205F250(object, map_no);
+}
+
+u32 sub_0205F09C(LocalMapObject* object, u32 a1) {
+    return sub_0205F538(object) + a1;
+}
+
+BOOL sub_0205F0A8(LocalMapObject* object, u32 a1, u32 a2) {
+    if (!MapObject_TestBits(object, (1 << 0))) {
+        return FALSE;
+    }
+
+    if (a1 != MapObject_GetID(object)) {
+        return FALSE;
+    }
+
+    if (a2 != sub_0205F254(object)) {
+        if (!sub_0205F7D4(object)) {
+            return FALSE;
+        }
+
+        if (a2 != sub_0205F544(object)) {
+            return FALSE;
+        }
+    }
+
+    return TRUE;
+}
+
+BOOL sub_0205F0F8(LocalMapObject* object, u32 a1, u32 a2, u32 a3) {
+    if (!MapObject_TestBits(object, (1 << 0))) {
+        return FALSE;
+    }
+
+    u32 gfx_id = MapObject_GetGfxID(object);
+    if (gfx_id != a1) {
+        return FALSE;
+    }
+
+    return sub_0205F0A8(object, a2, a3);
+}
+
+void sub_0205F12C(void* unused, LocalMapObject* object) {
+    sub_0205FD30(object);
+    if (MapObject_IsInUse(object)) {
+        sub_0205F148(object);
+    }
+}
+
+void sub_0205F148(LocalMapObject* object) {
+    if (sub_0205F5D4(sub_0205F35C(object)) == TRUE) {
+        ov01_021F92A0(object);
+    }
+}
+
+// ?
+MapObjectMan* sub_0205F160(MapObjectMan* manager) {
+    return manager;
+}
+
+void MapObjectMan_SetCount(MapObjectMan* manager, u32 count) {
+    manager->object_count = count;
+}
+
+u32 MapObjectMan_GetCount(MapObjectMan* manager) {
+    return manager->object_count;
+}
+
+void sub_0205F16C(MapObjectMan* manager) {
+    manager->unk8++;
+}
+
+void sub_0205F174(MapObjectMan* manager) {
+    manager->unk8--;
+}
+
+void sub_0205F17C(MapObjectMan* manager, u32 bits) {
+    manager->flags |= bits;
+}
+
+void sub_0205F184(MapObjectMan* manager, u32 bits) {
+    manager->flags &= ~bits;
+}
+
+u32 sub_0205F190(MapObjectMan* manager, u32 bits) {
+    return manager->flags & bits;
+}
+
+void sub_0205F198(MapObjectMan* manager, u32 a1) {
+    manager->unkC = a1;
+}
+
+u32 sub_0205F19C(MapObjectMan* manager) {
+    return manager->unkC;
+}
+
+void* sub_0205F1A0(MapObjectMan* manager) {
+    return manager->unk18;
+}
+
+void sub_0205F1A4(MapObjectMan* manager, LocalMapObject* objects) {
+    manager->objects = objects;
+}
+
+LocalMapObject* sub_0205F1AC(MapObjectMan* manager) {
+    return manager->objects;
+}
+
+const LocalMapObject* MapObjectMan_GetConstArray(MapObjectMan* manager) {
+    return manager->objects;
+}
+
+LocalMapObject* MapObjectMan_GetArray(MapObjectMan* manager) {
+    return manager->objects;
+}
+
+void sub_0205F1C4(LocalMapObject** objects) {
+    (*objects)++;
+}
+
+void sub_0205F1D0(LocalMapObject** objects) {
+    (*objects)++;
+}
+
+void MapObjectMan_SetFieldSysPtr(MapObjectMan* manager, FieldSystem* fsys) {
+    manager->fsys = fsys;
+}
+
+FieldSystem* MapObjectMan_GetFieldSysPtr(MapObjectMan* manager) {
+    return manager->fsys;
+}
+
+void FldObjSys_SetMModelNarc(MapObjectMan* manager, NARC* mmodel_narc) {
+    manager->mmodel_narc = mmodel_narc;
+}
+
+NARC* FldObjSys_GetMModelNarc(MapObjectMan* manager) {
+    GF_ASSERT(manager->mmodel_narc != NULL);
+    return manager->mmodel_narc;
+}
+
+void sub_0205F204(LocalMapObject* object, u32 bits) {
+    object->flags = bits;
+}
+
+u32 MapObject_GetBitsWord(LocalMapObject* object) {
+    return object->flags;
+}
+
+void MapObject_SetBits(LocalMapObject* object, u32 bits) {
+    object->flags |= bits;
+}
+
+void MapObject_ClearBits(LocalMapObject* object, u32 bits) {
+    object->flags &= ~bits;
+}
+
+u32 MapObject_GetBitsMask(LocalMapObject* object, u32 mask) {
+    return object->flags & mask;
+}
+
+BOOL MapObject_TestBits(LocalMapObject* object, u32 bits) {
+    return (object->flags & bits) != 0;
+}
+
+void sub_0205F238(LocalMapObject* object, u32 bits) {
+    object->flags2 = bits;
+}
+
+u32 sub_0205F23C(LocalMapObject* object) {
+    return object->flags2;
+}
+
+u32 sub_0205F240(LocalMapObject* object, u32 mask) {
+    return object->flags2 & mask;
+}
+
+void MapObject_SetID(LocalMapObject* object, u32 id) {
+    object->id = id;
+}
+
+u32 MapObject_GetID(LocalMapObject* object) {
+    return object->id;
+}
+
+void sub_0205F250(LocalMapObject* object, u32 a1) {
+    object->unkC = a1;
+}
+
+u32 sub_0205F254(LocalMapObject* object) {
+    return object->unkC;
+}
+
+void MapObject_SetGfxID(LocalMapObject* object, u32 gfx_id) {
+    object->gfxId = gfx_id;
+}
+
+u32 MapObject_GetGfxID(LocalMapObject* object) {
+    return object->gfxId;
+}
+
+void MapObject_SetMovement(LocalMapObject* object, u32 movement) {
+    object->movement = movement;
+}
+
+u32 MapObject_GetMovement(LocalMapObject* object) {
+    return object->movement;
+}
+
+void MapObject_SetType(LocalMapObject* object, u32 type) {
+    object->type = type;
+}
+
+u32 MapObject_GetType(LocalMapObject* object) {
+    return object->type;
+}
+
+void MapObject_SetFlagID(LocalMapObject* object, u32 flag_id) {
+    object->evFlagId = flag_id;
+}
+
+u32 MapObject_GetFlagID(LocalMapObject* object) {
+    return object->evFlagId;
+}
+
+void MapObject_SetScript(LocalMapObject* object, u32 script) {
+    object->scriptId = script;
+}
+
+u32 MapObject_GetScript(LocalMapObject* object) {
+    return object->scriptId;
+}
+
+void MapObject_SetInitialFacing(LocalMapObject* object, u32 initial_facing) {
+    object->facingInit = initial_facing;
+}
+
+u32 MapObject_GetInitialFacing(LocalMapObject* object) {
+    return object->facingInit;
+}
+
+void MapObject_ForceSetFacingDirection(LocalMapObject* object, u32 direction) {
+    object->curFacingBak = object->curFacing;
+    object->curFacing = direction;
+}
+
+void MapObject_SetFacingDirection(LocalMapObject* object, u32 direction) {
+    if (MapObject_GetBitsMask(object, (1 << 7)) == 0) {
+        object->curFacingBak = object->curFacing;
+        object->curFacing = direction;
+    }
+}
+
+u32 MapObject_GetFacingDirection(LocalMapObject* object) {
+    return object->curFacing;
+}
+
+u32 MapObject_GetPreviousFacing(LocalMapObject* object) {
+    return object->curFacingBak;
+}
+
+void MapObject_SetNextFacing(LocalMapObject* object, u32 direction) {
+    object->nextFacingBak = object->nextFacing;
+    object->nextFacing = direction;
+}
+
+u32 MapObject_GetNextFacing(LocalMapObject* object) {
+    return object->nextFacing;
+}
+
+void MapObject_SetOrQueueFacing(LocalMapObject* object, u32 direction) {
+    MapObject_SetFacingDirection(object, direction);
+    MapObject_SetNextFacing(object, direction);
+}
+
+void MapObject_SetParam(LocalMapObject* object, u32 value, int param) {
+    switch (param) {
+        case 0:
+            object->param[0] = value;
+            return;
+        case 1:
+            object->param[1] = value;
+            return;
+        case 2:
+            object->param[2] = value;
+            return;
+        default:
+            GF_ASSERT(FALSE);
+            return;
+    }
+}
+
+u32 MapObject_GetParam(LocalMapObject* object, int param) {
+    switch (param) {
+        case 0:
+            return object->param[0];
+        case 1:
+            return object->param[1];
+        case 2:
+            return object->param[2];
+        default:
+            GF_ASSERT(FALSE);
+            return 0;
+    }
+}
+
+void MapObject_SetXRange(LocalMapObject* object, u32 x_range) {
+    object->xrange = x_range;
+}
+
+u32 MapObject_GetXRange(LocalMapObject* object) {
+    return object->xrange;
+}
+
+void MapObject_SetYRange(LocalMapObject* object, u32 y_range) {
+    object->yrange = y_range;
+}
+
+u32 MapObject_GetYRange(LocalMapObject* object) {
+    return object->yrange;
+}
+
+void sub_0205F328(LocalMapObject* object, u32 a1) {
+    object->unkA0 = a1;
+}
+
+u32 sub_0205F330(LocalMapObject* object) {
+    return object->unkA0;
+}
+
+void sub_0205F338(LocalMapObject* object, SysTask* a1) {
+    object->unkB0 = a1;
+}
+
+SysTask* sub_0205F340(LocalMapObject* object) {
+    return object->unkB0;
+}
+
+void sub_0205F348(LocalMapObject* object) {
+    DestroySysTask(sub_0205F340(object));
 }
