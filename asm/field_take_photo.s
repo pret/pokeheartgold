@@ -2117,7 +2117,7 @@ sub_0206B82C: ; 0x0206B82C
 	add r5, r0, #0
 	add r0, r1, #0
 	add r1, r2, #0
-	bl sub_0205C898
+	bl PlayerAvatar_GetSpriteByStateAndGender
 	add r6, r0, #0
 	add r0, r5, #0
 	bl PlayerAvatar_GetMapObject

@@ -235,10 +235,10 @@ static void sub_0205316C(FieldSystem *fsys) {
 
 static void sub_02053210(FieldSystem *fsys) {
     if (fsys->unkAC) {
-        sub_0205C4CC(fsys->playerAvatar);
+        PlayerAvatar_DeleteFromMap(fsys->playerAvatar);
     } else {
         sub_02056E38();
-        sub_0205C4C4(fsys->playerAvatar);
+        PlayerAvatar_FreeToHeap(fsys->playerAvatar);
         sub_0205E494(fsys->mapObjectMan);
         sub_0205E0E8(fsys->mapObjectMan);
     }

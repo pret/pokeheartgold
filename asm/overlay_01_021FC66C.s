@@ -581,7 +581,7 @@ _021FCA68:
 	bl ov01_021FCB4C
 	add r0, r5, #0
 	bl PlayerAvatar_GetState
-	bl sub_0205C99C
+	bl PlayerAvatar_GetTransitionBits
 	add r1, r0, #0
 	add r0, r5, #0
 	bl ov01_PlayerAvatar_OrrTransitionFlags

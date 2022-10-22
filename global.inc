@@ -29263,8 +29263,8 @@
 .public sub_0205C390
 .public sub_0205C408
 .public sub_0205C46C
-.public sub_0205C4C4
-.public sub_0205C4CC
+.public PlayerAvatar_FreeToHeap
+.public PlayerAvatar_DeleteFromMap
 .public sub_0205C600
 .public sub_0205C6C8
 .public sub_0205C6CC
@@ -29295,8 +29295,8 @@
 .public sub_0205C838
 .public PlayerAvatar_ToggleAutomaticHeightUpdating
 .public PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
-.public sub_0205C898
-.public sub_0205C99C
+.public PlayerAvatar_GetSpriteByStateAndGender
+.public PlayerAvatar_GetTransitionBits
 .public sub_0205CA20
 .public sub_0205CA38
 .public sub_0205CA4C

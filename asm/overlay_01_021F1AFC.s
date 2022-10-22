@@ -57,7 +57,7 @@ ov01_021F1B38: ; 0x021F1B38
 	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #0
-	bl sub_0205C898
+	bl PlayerAvatar_GetSpriteByStateAndGender
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov01_021F3084
@@ -86,7 +86,7 @@ ov01_021F1B78: ; 0x021F1B78
 	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #1
-	bl sub_0205C898
+	bl PlayerAvatar_GetSpriteByStateAndGender
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov01_021F3084
@@ -119,7 +119,7 @@ ov01_021F1BC0: ; 0x021F1BC0
 	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #2
-	bl sub_0205C898
+	bl PlayerAvatar_GetSpriteByStateAndGender
 	add r1, r0, #0
 	add r0, r5, #0
 	bl ov01_021F3084
@@ -166,7 +166,7 @@ ov01_021F1C30: ; 0x021F1C30
 	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #3
-	bl sub_0205C898
+	bl PlayerAvatar_GetSpriteByStateAndGender
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov01_021F3084
@@ -204,7 +204,7 @@ ov01_021F1C7C: ; 0x021F1C7C
 	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #5
-	bl sub_0205C898
+	bl PlayerAvatar_GetSpriteByStateAndGender
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov01_021F3084
@@ -219,7 +219,7 @@ ov01_021F1C98: ; 0x021F1C98
 	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #7
-	bl sub_0205C898
+	bl PlayerAvatar_GetSpriteByStateAndGender
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov01_021F3084
@@ -234,7 +234,7 @@ ov01_021F1CB4: ; 0x021F1CB4
 	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #8
-	bl sub_0205C898
+	bl PlayerAvatar_GetSpriteByStateAndGender
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov01_021F3084
@@ -249,7 +249,7 @@ ov01_021F1CD0: ; 0x021F1CD0
 	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #9
-	bl sub_0205C898
+	bl PlayerAvatar_GetSpriteByStateAndGender
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov01_021F3084
@@ -264,7 +264,7 @@ ov01_021F1CEC: ; 0x021F1CEC
 	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #0xa
-	bl sub_0205C898
+	bl PlayerAvatar_GetSpriteByStateAndGender
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov01_021F3084
@@ -279,7 +279,7 @@ ov01_021F1D08: ; 0x021F1D08
 	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #0xb
-	bl sub_0205C898
+	bl PlayerAvatar_GetSpriteByStateAndGender
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov01_021F3084
@@ -294,7 +294,7 @@ ov01_021F1D24: ; 0x021F1D24
 	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #0xc
-	bl sub_0205C898
+	bl PlayerAvatar_GetSpriteByStateAndGender
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov01_021F3084
@@ -309,7 +309,7 @@ ov01_021F1D40: ; 0x021F1D40
 	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #6
-	bl sub_0205C898
+	bl PlayerAvatar_GetSpriteByStateAndGender
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov01_021F3084
@@ -324,7 +324,7 @@ ov01_021F1D5C: ; 0x021F1D5C
 	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #0xd
-	bl sub_0205C898
+	bl PlayerAvatar_GetSpriteByStateAndGender
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov01_021F3084
@@ -339,7 +339,7 @@ ov01_021F1D78: ; 0x021F1D78
 	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #0xe
-	bl sub_0205C898
+	bl PlayerAvatar_GetSpriteByStateAndGender
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov01_021F3084
@@ -981,7 +981,7 @@ _021F2274:
 	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #0
-	bl sub_0205C898
+	bl PlayerAvatar_GetSpriteByStateAndGender
 	add r1, r0, #0
 	ldr r0, [r4, #0x20]
 	bl ov01_021F3084
@@ -1020,7 +1020,7 @@ _021F22C2:
 	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #2
-	bl sub_0205C898
+	bl PlayerAvatar_GetSpriteByStateAndGender
 	add r1, r0, #0
 	ldr r0, [r4, #0x20]
 	bl ov01_021F3084
@@ -1149,7 +1149,7 @@ _021F23DC:
 	bl PlayerAvatar_GetGender
 	add r1, r0, #0
 	mov r0, #0
-	bl sub_0205C898
+	bl PlayerAvatar_GetSpriteByStateAndGender
 	add r1, r0, #0
 	ldr r0, [r4, #0xc]
 	bl ov01_021F3084
