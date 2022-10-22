@@ -683,10 +683,10 @@ sub_0205724C: ; 0x0205724C
 	beq _0205727A
 	cmp r2, #0
 	beq _02057276
-	bl sub_0205C4CC
+	bl PlayerAvatar_DeleteFromMap
 	b _0205727A
 _02057276:
-	bl sub_0205C4C4
+	bl PlayerAvatar_FreeToHeap
 _0205727A:
 	ldr r0, _020572A8 ; =_021D41C4
 	mov r1, #0

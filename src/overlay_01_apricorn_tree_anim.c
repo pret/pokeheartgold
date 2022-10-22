@@ -235,7 +235,7 @@ static BOOL Task_AnimPlayerShakeTree(TaskManager *taskman) {
         if (++env->timer > 24) {
             if (MapObject_AreBitsSetForMovementScriptInit(playerObj) == TRUE) {
                 MapObject_ClearHeldMovementIfActive(playerObj);
-                int flags = sub_0205C99C(PlayerAvatar_GetState(fsys->playerAvatar));
+                int flags = PlayerAvatar_GetTransitionBits(PlayerAvatar_GetState(fsys->playerAvatar));
                 ov01_PlayerAvatar_OrrTransitionFlags(fsys->playerAvatar, flags);
                 ov01_PlayerAvatar_ApplyTransitionFlags(fsys->playerAvatar);
                 *state_p += 1;

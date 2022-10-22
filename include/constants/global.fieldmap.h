@@ -22,26 +22,38 @@
 #define BG_DIR_NORTHSOUTH    6
 
 // Player avatar state
-#define PLAYER_STATE_WALKING 0
-#define PLAYER_STATE_CYCLING 1
-#define PLAYER_STATE_SURFING 2
-#define PLAYER_STATE_ROCKET  3
+#define PLAYER_STATE_WALKING         0
+#define PLAYER_STATE_CYCLING         1
+#define PLAYER_STATE_SURFING         2
+#define PLAYER_STATE_ROCKET          3
+#define PLAYER_STATE_UNK_SP          4
+#define PLAYER_STATE_UNK_WATER       5   
+#define PLAYER_STATE_POKEATHLON      6
+#define PLAYER_STATE_FISHING         7
+#define PLAYER_STATE_UNK_POKE        8
+#define PLAYER_STATE_SAVING          9
+#define PLAYER_STATE_HEAL           10
+#define PLAYER_STATE_LADDER         11
+#define PLAYER_STATE_ROCKET_HEAL    12
+#define PLAYER_STATE_APRICORN_SHAKE 13
+#define PLAYER_STATE_ROCKET_SAVING  14
 
 // Player transition bits
-#define PLAYER_TRANSITION_WALKING               1
-#define PLAYER_TRANSITION_CYCLING               2
-#define PLAYER_TRANSITION_SURFING               4
-#define PLAYER_TRANSITION_x0008                 8
-#define PLAYER_TRANSITION_x0010                16
-#define PLAYER_TRANSITION_x0020                32
-#define PLAYER_TRANSITION_x0040                64
-#define PLAYER_TRANSITION_x0080               128
-#define PLAYER_TRANSITION_HEAL                256
-#define PLAYER_TRANSITION_x0200               512
-#define PLAYER_TRANSITION_ROCKET             1024
-#define PLAYER_TRANSITION_ROCKET_HEAL        2048
-#define PLAYER_TRANSITION_POKEATHLON         4096
-#define PLAYER_TRANSITION_x2000              8192
-#define PLAYER_TRANSITION_x4000             16384
+#define PLAYER_TRANSITION_WALKING               1 << 0
+#define PLAYER_TRANSITION_CYCLING               1 << 1
+#define PLAYER_TRANSITION_SURFING               1 << 2
+#define PLAYER_TRANSITION_x0008                 1 << 3
+#define PLAYER_TRANSITION_x0010                 1 << 4
+#define PLAYER_TRANSITION_x0020                 1 << 5
+#define PLAYER_TRANSITION_x0040                 1 << 6
+#define PLAYER_TRANSITION_x0080                 1 << 7
+#define PLAYER_TRANSITION_HEAL                  1 << 8
+#define PLAYER_TRANSITION_x0200                 1 << 9
+#define PLAYER_TRANSITION_ROCKET                1 << 10
+#define PLAYER_TRANSITION_ROCKET_HEAL           1 << 11
+#define PLAYER_TRANSITION_POKEATHLON            1 << 12
+#define PLAYER_TRANSITION_x2000                 1 << 13
+#define PLAYER_TRANSITION_x4000                 1 << 14
+
 
 #endif //POKEHEARTGOLD_CONSTANTS_GLOBAL_FIELDMAP_H
