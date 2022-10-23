@@ -2451,12 +2451,9 @@ void sub_0205F9C0(LocalMapObject* object, VecFx32* a1) {
     object->unk94 = *a1;
 }
 
-fx32 sub_0205F9D0(LocalMapObject* object) {
+u32 sub_0205F9D0(LocalMapObject* object) {
     fx32 y = MapObject_GetPosVecYCoord(object);
-
-    // FIXME: This could be some inlined FX code.
-    fx32 y_ = y >> 3;
-    return FX_Whole((fx32)((y_) + ((u32)(y_ >> 11) >> 20)));
+    return (y >> 3) / 4096;
 }
 
 void ObjectEventTemplate_SetID(OBJECT_EVENT* template, u16 id) {
