@@ -2648,3 +2648,141 @@ LocalMapObject_UnkCallback* sub_0205FB30(Unkthing2* unk) {
 LocalMapObject_UnkCallback* sub_0205FB34(Unkthing2* unk) {
     return unk->unk10;
 }
+
+typedef struct ObjectEventGraphicsInfo {
+    u16 sprite_no;
+    u16 mmodel_no;
+    u16 unk4_0:5; // Unknown actual size
+    u16 unk4_5:5;
+    u16 unk4_10:6; // Unknown actual size
+} ObjectEventGraphicsInfo;
+
+extern ObjectEventGraphicsInfo* GetObjectEventGfxInfoPtr(u32 gfx_id);
+extern Unkthing2* ov01_02209A38[20];
+
+Unkthing2* sub_0205FB38(u32 gfx_id) {
+    ObjectEventGraphicsInfo* unk = GetObjectEventGfxInfoPtr(gfx_id);
+    if (unk == NULL) {
+        return NULL;
+    }
+
+    return ov01_02209A38[unk->unk4_5];
+}
+
+LocalMapObject* sub_0205FB58(MapObjectMan* manager, u32 x, u32 y, BOOL a3) {
+    u32 count = MapObjectMan_GetCount(manager);
+    LocalMapObject* objects = MapObjectMan_GetArray(manager);
+
+    do {
+        if (MapObject_GetBitsMask(objects, (1 << 0)) != 0) {
+            if (a3 && x == MapObject_GetPrevX(objects) && y == MapObject_GetPrevY(objects)) {
+                return objects;
+            }
+
+            if (x == MapObject_GetCurrentX(objects) && y == MapObject_GetCurrentY(objects)) {
+                return objects;
+            }
+        }
+
+        objects++;
+        count--;
+    } while (count > 0);
+
+    return NULL;
+}
+
+void sub_0205FBC0(LocalMapObject* object, VecFx32* position_vec, u32 direction) {
+    MapObject_SetCurrentX(object, (position_vec->x >> 4) / 4096);
+    MapObject_SetCurrentHeight(object, (position_vec->y >> 3) / 4096);
+    MapObject_SetCurrentY(object, (position_vec->z >> 4) / 4096);
+    MapObject_SetPositionVec(object, position_vec);
+    sub_02060F78(object);
+    MapObject_ForceSetFacingDirection(object, direction);
+    MapObject_ClearHeldMovement(object);
+    MapObject_SetBits(object, (1 << 2));
+    MapObject_ClearBits(object, (1 << 3) | (1 << 1));
+}
+
+void sub_0205FC2C(LocalMapObject* object, u32 x, u32 height, u32 y, u32 direction) {
+    VecFx32 position_vec;
+    position_vec.x = x * (16 * FX32_ONE) + (8 * FX32_ONE);
+    MapObject_SetCurrentX(object, x);
+    position_vec.y = height << 15;
+    MapObject_SetCurrentHeight(object, height);
+    position_vec.z = y * (16 * FX32_ONE) + (8 * FX32_ONE);
+    MapObject_SetCurrentY(object, y);
+
+    MapObject_SetPositionVec(object, &position_vec);
+    sub_02060F78(object);
+    MapObject_ForceSetFacingDirection(object, direction);
+    MapObject_SetBits(object, (1 << 2));
+    MapObject_ClearBits(object, (1 << 3) | (1 << 1));
+    MapObject_ClearHeldMovement(object);
+}
+
+void sub_0205FC94(LocalMapObject* object, u32 movement) {
+    sub_0205F444(object);
+    MapObject_SetMovement(object, movement);
+    sub_0205ECE0(object);
+    sub_0205FD20(object);
+}
+
+void sub_0205FCB4(LocalMapObject*) {
+
+}
+
+void sub_0205FCB8(LocalMapObject*) {
+
+}
+
+void sub_0205FCBC(LocalMapObject*) {
+
+}
+
+void sub_0205FCC0(LocalMapObject*) {
+
+}
+
+void sub_0205FCC4(LocalMapObject*) {
+
+}
+
+void sub_0205FCC8(LocalMapObject*) {
+
+}
+
+void sub_0205FCCC(LocalMapObject*) {
+
+}
+
+void sub_0205FCD0(LocalMapObject*) {
+
+}
+
+void sub_0205FCD4(LocalMapObject* object) {
+    u32 gfx_id = MapObject_GetGfxID(object);
+    sub_0205F47C(object, sub_0205FB28(gfx_id == 0x2000 ? (Unkthing2*)&ov01_0220724C : sub_0205FB38(gfx_id)));
+}
+
+asm SavedMapObject* SaveMapObjects_SearchSpriteId(SavedMapObjectList* a0, u32 a1, u32 a2) {
+    push {r3, r4}
+    cmp r1, #0
+    beq _0205FD1A
+    mov r3, #1
+    _0205FD08:
+    ldr r4, [r0, #0]
+    tst r4, r3
+    beq _0205FD14
+    ldrh r4, [r0, #0x12]
+    cmp r4, r2
+    beq _0205FD1C
+    _0205FD14:
+    add r0, #0x50
+    sub r1, r1, #1
+    bne _0205FD08
+    _0205FD1A:
+    mov r0, #0
+    _0205FD1C:
+    pop {r3, r4}
+    bx lr
+}
