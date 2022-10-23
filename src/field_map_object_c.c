@@ -39,7 +39,7 @@ typedef struct MapObjectMan {
     FieldSystem* fsys;
 } MapObjectMan; // size: 0x12c
 
-typedef void (LocalMapObject_UnkCallback)();
+typedef void (LocalMapObject_UnkCallback)(LocalMapObject*);
 
 typedef struct LocalMapObject {
     /*0x000*/ u32 flags;
@@ -77,7 +77,7 @@ typedef struct LocalMapObject {
     /*0x0A8*/ int movementStep;
     /*0x0AC*/ u16 unkAC;
     /*0x0AE*/ u16 unkAE;
-    /*0x0B0*/ int unkB0;
+    /*0x0B0*/ SysTask* unkB0;
     /*0x0B4*/ MapObjectMan* manager;
     /*0x0B8*/ LocalMapObject_UnkCallback* unkB8;
     /*0x0BC*/ LocalMapObject_UnkCallback* unkBC;
@@ -92,6 +92,7 @@ typedef struct LocalMapObject {
     /*0x0F8*/ u8 unkF8[0x10];
     /*0x108*/ u8 unk108[0x20];
     /*0x128*/ u16 unk128;
+    /*0x12A*/ u16 padding;
 } LocalMapObject;
 
 typedef struct Unkthing {
@@ -168,8 +169,8 @@ void ObjectEventTemplate_SetYRange(OBJECT_EVENT*, s16);
 void ObjectEventTemplate_SetXCoord(OBJECT_EVENT*, u16);
 void ObjectEventTemplate_SetYCoord(OBJECT_EVENT*, u16);
 void ObjectEventTemplate_SetHeight(OBJECT_EVENT*, u32);
-void* sub_0205F3BC(LocalMapObject*);
-void* sub_0205F394(LocalMapObject*);
+u8* sub_0205F3BC(LocalMapObject*);
+u8* sub_0205F394(LocalMapObject*);
 int sub_0205F784();
 int sub_02061248();
 int sub_0205F8B8();
@@ -243,8 +244,8 @@ void sub_0205EF48(LocalMapObject* object);
 void sub_0205FD20(LocalMapObject* object);
 void MapObject_PauseMovement(LocalMapObject* object);
 void MapObject_UnpauseMovement(LocalMapObject* object);
-void* sub_0205F3E4(LocalMapObject*);
-void* sub_0205F40C(LocalMapObject*);
+u8* sub_0205F3E4(LocalMapObject*);
+u8* sub_0205F40C(LocalMapObject*);
 void sub_0205F444(LocalMapObject* object);
 void sub_0205F450(LocalMapObject*);
 void sub_0205F468(LocalMapObject* object, LocalMapObject_UnkCallback* callback);
@@ -256,7 +257,7 @@ void sub_0205F4B8(LocalMapObject* object, LocalMapObject_UnkCallback* callback);
 void sub_0205F354(LocalMapObject* object, MapObjectMan* manager);
 MapObjectMan* sub_0205F35C(LocalMapObject* object);
 MapObjectMan* sub_0205F364(LocalMapObject* object);
-OBJECT_EVENT* sub_0205FA98(u32 id, u32 count_maybe, OBJECT_EVENT* templates);
+OBJECT_EVENT* sub_0205FA98(u32 id, int num_templates, OBJECT_EVENT* templates);
 void sub_0205F338(LocalMapObject* object, SysTask* a1);
 BOOL FlagGet(FieldSystem*, u16);
 void sub_0205EBFC(LocalMapObject* object, OBJECT_EVENT* template);
@@ -271,6 +272,20 @@ void sub_0205F148(LocalMapObject* object);
 void sub_0205F174(MapObjectMan* manager);
 u32 sub_0205F19C(MapObjectMan* manager);
 u32 MapObject_GetFlagID(LocalMapObject* object);
+void sub_0205F414(LocalMapObject* object, LocalMapObject_UnkCallback* callback);
+void sub_0205F428(LocalMapObject* object, LocalMapObject_UnkCallback* callback);
+void sub_0205F43C(LocalMapObject* object, LocalMapObject_UnkCallback* callback);
+void sub_0205F470(LocalMapObject* object);
+void sub_0205F66C(LocalMapObject* object);
+LocalMapObject_UnkCallback* sub_0205FB18(Unkthing* unk);
+LocalMapObject_UnkCallback* sub_0205FB1C(Unkthing* unk);
+LocalMapObject_UnkCallback* sub_0205FB20(Unkthing* unk);
+LocalMapObject_UnkCallback* sub_0205FB24(Unkthing2* unk);
+LocalMapObject_UnkCallback* sub_0205FB28(Unkthing2* unk);
+LocalMapObject_UnkCallback* sub_0205FB2C(Unkthing2* unk);
+LocalMapObject_UnkCallback* sub_0205FB30(Unkthing2* unk);
+LocalMapObject_UnkCallback* sub_0205FB34(Unkthing2* unk);
+Unkthing2* sub_0205FB38(u32 gfx_id);
 
 MapObjectMan* sub_0205E0BC(FieldSystem* fsys, int object_count, u32 a2) {
     MapObjectMan* ret = MapObjectMan_new(object_count);
@@ -1308,18 +1323,11 @@ void sub_0205ECE0(LocalMapObject* object) {
 
 extern const Unkthing2 ov01_0220724C;
 
-LocalMapObject_UnkCallback* sub_0205FB24(const Unkthing2*);
-LocalMapObject_UnkCallback* sub_0205FB28(const Unkthing2*);
-LocalMapObject_UnkCallback* sub_0205FB2C(const Unkthing2*);
-LocalMapObject_UnkCallback* sub_0205FB30(const Unkthing2*);
-LocalMapObject_UnkCallback* sub_0205FB34(const Unkthing2*);
-const Unkthing2* sub_0205FB38(u32 gfx_id);
-
 void sub_0205ED18(LocalMapObject* object) {
     u32 gfx_id = MapObject_GetGfxID(object);
-    const Unkthing2* unk;
+    Unkthing2* unk;
     if (gfx_id == 0x2000) {
-        unk = &ov01_0220724C;
+        unk = (Unkthing2*)&ov01_0220724C;
     } else {
         unk = sub_0205FB38(gfx_id);
     }
@@ -1887,4 +1895,759 @@ SysTask* sub_0205F340(LocalMapObject* object) {
 
 void sub_0205F348(LocalMapObject* object) {
     DestroySysTask(sub_0205F340(object));
+}
+
+void sub_0205F354(LocalMapObject* object, MapObjectMan* manager) {
+    object->manager = manager;
+}
+
+MapObjectMan* sub_0205F35C(LocalMapObject* object) {
+    return object->manager;
+}
+
+MapObjectMan* sub_0205F364(LocalMapObject* object) {
+    return sub_0205F160(object->manager);
+}
+
+u8* sub_0205F370(LocalMapObject* object, s32 size) {
+    GF_ASSERT(size <= 16);
+
+    u8* ret = sub_0205F394(object);
+    memset(ret, 0, size);
+    return ret;
+}
+
+u8* sub_0205F394(LocalMapObject* object) {
+    return object->unkD8;
+}
+
+u8* sub_0205F398(LocalMapObject* object, s32 size) {
+    GF_ASSERT(size <= 16);
+
+    u8* ret = sub_0205F3BC(object);
+    memset(ret, 0, size);
+    return ret;
+}
+
+u8* sub_0205F3BC(LocalMapObject* object) {
+    return object->unkE8;
+}
+
+u8* sub_0205F3C0(LocalMapObject* object, s32 size) {
+    GF_ASSERT(size <= 16);
+
+    u8* ret = sub_0205F3E4(object);
+    memset(ret, 0, size);
+    return ret;
+}
+
+u8* sub_0205F3E4(LocalMapObject* object) {
+    return object->unkF8;
+}
+
+u8* sub_0205F3E8(LocalMapObject* object, s32 size) {
+    GF_ASSERT(size <= 32);
+
+    u8* ret = sub_0205F40C(object);
+    memset(ret, 0, size);
+    return ret;
+}
+
+u8* sub_0205F40C(LocalMapObject* object) {
+    return object->unk108;
+}
+
+void sub_0205F414(LocalMapObject* object, LocalMapObject_UnkCallback* callback) {
+    object->unkB8 = callback;
+}
+
+void sub_0205F41C(LocalMapObject* object) {
+    object->unkB8(object);
+}
+
+void sub_0205F428(LocalMapObject* object, LocalMapObject_UnkCallback* callback) {
+    object->unkBC = callback;
+}
+
+void sub_0205F430(LocalMapObject* object) {
+    object->unkBC(object);
+}
+
+void sub_0205F43C(LocalMapObject* object, LocalMapObject_UnkCallback* callback) {
+    object->unkC0 = callback;
+}
+
+void sub_0205F444(LocalMapObject* object) {
+    object->unkC0(object);
+}
+
+void sub_0205F450(LocalMapObject* object) {
+    Unkthing* unk = sub_0205FB00(MapObject_GetMovement(object));
+    unk->unk10(object);
+}
+
+void sub_0205F468(LocalMapObject* object, LocalMapObject_UnkCallback* callback) {
+    object->unkC4 = callback;
+}
+
+void sub_0205F470(LocalMapObject* object) {
+    object->unkC4(object);
+}
+
+void sub_0205F47C(LocalMapObject* object, LocalMapObject_UnkCallback* callback) {
+    object->unkC8 = callback;
+}
+
+void sub_0205F484(LocalMapObject* object) {
+    object->unkC8(object);
+}
+
+void sub_0205F490(LocalMapObject* object, LocalMapObject_UnkCallback* callback) {
+    object->unkCC = callback;
+}
+
+void sub_0205F498(LocalMapObject* object) {
+    object->unkCC(object);
+}
+
+void sub_0205F4A4(LocalMapObject* object, LocalMapObject_UnkCallback* callback) {
+    object->unkD0 = callback;
+}
+
+void sub_0205F4AC(LocalMapObject* object) {
+    object->unkD0(object);
+}
+
+void sub_0205F4B8(LocalMapObject* object, LocalMapObject_UnkCallback* callback) {
+    object->unkD4 = callback;
+}
+
+void sub_0205F4C0(LocalMapObject* object) {
+    object->unkD4(object);
+}
+
+void MapObject_SetMovementCommand(LocalMapObject* object, u32 command) {
+    object->movementCmd = command;
+}
+
+u32 MapObject_GetMovementCommand(LocalMapObject* object) {
+    return object->movementCmd;
+}
+
+void MapObject_SetMovementStep(LocalMapObject* object, u32 step) {
+    object->movementStep = step;
+}
+
+void MapObject_IncMovementStep(LocalMapObject* object) {
+    object->movementStep++;
+}
+
+u32 MapObject_GetMovementStep(LocalMapObject* object) {
+    return object->movementStep;
+}
+
+void sub_0205F4FC(LocalMapObject* object, u16 a1) {
+    object->unkAC = a1;
+}
+
+u16 sub_0205F504(LocalMapObject* object) {
+    return object->unkAC;
+}
+
+void sub_0205F50C(LocalMapObject* object, u16 a1) {
+    object->unkAE = a1;
+}
+
+u16 sub_0205F514(LocalMapObject* object) {
+    return object->unkAE;
+}
+
+void sub_0205F51C(LocalMapObject* object, u16 a1) {
+    object->unk128 = a1;
+}
+
+u16 sub_0205F524(LocalMapObject* object) {
+    return object->unk128;
+}
+
+FieldSystem* MapObject_GetFieldSysPtr(LocalMapObject* object) {
+    return MapObjectMan_GetFieldSysPtr(sub_0205F364(object));
+}
+
+void* sub_0205F538(LocalMapObject* object) {
+    return sub_0205F19C(sub_0205F35C(object));
+}
+
+u32 sub_0205F544(LocalMapObject* object) {
+    GF_ASSERT(sub_0205F7D4(object) == TRUE);
+    return MapObject_GetFlagID(object);
+}
+
+void sub_0205F55C(MapObjectMan* map_obj_man) {
+    sub_0205F17C(map_obj_man, (1 << 2) | (1 << 1));
+}
+
+void sub_0205F568(MapObjectMan* map_obj_man) {
+    sub_0205F184(map_obj_man, (1 << 2) | (1 << 1));
+}
+
+void MapObjectMan_PauseAllMovement(MapObjectMan* manager) {
+    u32 count = MapObjectMan_GetCount(manager);
+    LocalMapObject* objects = MapObjectMan_GetArray(manager);
+
+    do {
+        if (MapObject_IsInUse(objects)) {
+            MapObject_PauseMovement(objects);
+        }
+
+        objects++;
+        count--;
+    } while (count > 0);
+}
+
+void MapObjectMan_UnpauseAllMovement(MapObjectMan* manager) {
+    u32 count = MapObjectMan_GetCount(manager);
+    LocalMapObject* objects = MapObjectMan_GetArray(manager);
+
+    do {
+        if (MapObject_IsInUse(objects)) {
+            MapObject_UnpauseMovement(objects);
+        }
+
+        objects++;
+        count--;
+    } while (count > 0);
+}
+
+BOOL sub_0205F5D4(MapObjectMan* manager) {
+    return sub_0205F190(manager, (1 << 0)) != 0;
+}
+
+u32 sub_0205F5E8(LocalMapObject* object, u32 bits) {
+    return sub_0205F190(sub_0205F35C(object), bits);
+}
+
+void sub_0205F5F8(MapObjectMan* manager, BOOL clear) {
+    if (clear == FALSE) {
+        sub_0205F17C(manager, (1 << 3));
+    } else {
+        sub_0205F184(manager, (1 << 3));
+    }
+}
+
+BOOL sub_0205F610(MapObjectMan* manager) {
+    return sub_0205F190(manager, (1 << 3)) == 0;
+}
+
+BOOL MapObject_IsInUse(LocalMapObject* object) {
+    return MapObject_TestBits(object, (1 << 0));
+}
+
+void MapObject_SingleMovementSetActive(LocalMapObject* object) {
+    MapObject_SetBits(object, (1 << 1));
+}
+
+void MapObject_SingleMovementSetInactive(LocalMapObject* object) {
+    MapObject_ClearBits(object, (1 << 1));
+}
+
+BOOL MapObject_IsSingleMovementActive(LocalMapObject* object) {
+    return MapObject_TestBits(object, (1 << 1));
+}
+
+void sub_0205F654(LocalMapObject* object) {
+    MapObject_SetBits(object, (1 << 2));
+}
+
+void sub_0205F660(LocalMapObject* object) {
+    MapObject_ClearBits(object, (1 << 3));
+}
+
+void sub_0205F66C(LocalMapObject* object) {
+    MapObject_SetBits(object, (1 << 14));
+}
+
+BOOL sub_0205F678(LocalMapObject* object) {
+    return MapObject_TestBits(object, (1 << 14));
+}
+
+BOOL sub_0205F684(LocalMapObject* object) {
+    return MapObject_TestBits(object, (1 << 9));
+}
+
+void sub_0205F690(LocalMapObject* object, BOOL set) {
+    if (set == TRUE) {
+        MapObject_SetBits(object, (1 << 9));
+    } else {
+        MapObject_ClearBits(object, (1 << 9));
+    }
+}
+
+void sub_0205F6AC(LocalMapObject* object, BOOL clear) {
+    if (clear == TRUE) {
+        MapObject_ClearBits(object, (1 << 18));
+    } else {
+        MapObject_SetBits(object, (1 << 18));
+    }
+}
+
+BOOL sub_0205F6C8(LocalMapObject* object) {
+    return MapObject_TestBits(object, (1 << 19)) != TRUE;
+}
+
+void sub_0205F6E0(LocalMapObject* object, BOOL set) {
+    if (set == TRUE) {
+        MapObject_SetBits(object, (1 << 19));
+    } else {
+        MapObject_ClearBits(object, (1 << 19));
+    }
+}
+
+void MapObject_PauseMovement(LocalMapObject* object) {
+    MapObject_SetBits(object, (1 << 6));
+}
+
+void MapObject_UnpauseMovement(LocalMapObject* object) {
+    MapObject_ClearBits(object, (1 << 6));
+}
+
+BOOL sub_0205F714(LocalMapObject* object) {
+    if (MapObject_TestBits(object, (1 << 30)) == TRUE) {
+        return TRUE;
+    }
+
+    if (MapObject_TestBits(object, (1 << 6)) == TRUE) {
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+BOOL sub_0205F73C(LocalMapObject* object) {
+    if (!sub_0205F5D4(sub_0205F35C(object))) {
+        return FALSE;
+    }
+
+    if (MapObject_GetBitsMask(object, (1 << 14)) != 0) {
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+void sub_0205F768(LocalMapObject* object, BOOL set) {
+    if (set == TRUE) {
+        MapObject_SetBits(object, (1 << 23));
+    } else {
+        MapObject_ClearBits(object, (1 << 23));
+    }
+}
+
+BOOL sub_0205F784(LocalMapObject* object) {
+    return MapObject_GetBitsMask(object, (1 << 23)) != 0;
+}
+
+void sub_0205F79C(LocalMapObject* object, BOOL set) {
+    if (set == TRUE) {
+        MapObject_SetBits(object, (1 << 10));
+    } else {
+        MapObject_ClearBits(object, (1 << 10));
+    }
+}
+
+void sub_0205F7B8(LocalMapObject* object, BOOL set) {
+    if (set == TRUE) {
+        MapObject_SetBits(object, (1 << 25));
+    } else {
+        MapObject_ClearBits(object, (1 << 25));
+    }
+}
+
+BOOL sub_0205F7D4(LocalMapObject* object) {
+    return MapObject_GetBitsMask(object, (1 << 25)) != 0;
+}
+
+void sub_0205F7EC(LocalMapObject* object, BOOL set) {
+    if (set == TRUE) {
+        MapObject_SetBits(object, (1 << 26));
+    } else {
+        MapObject_ClearBits(object, (1 << 26));
+    }
+}
+
+BOOL sub_0205F808(LocalMapObject* object) {
+    return MapObject_GetBitsMask(object, (1 << 26)) != 0;
+}
+
+void sub_0205F820(LocalMapObject* object, BOOL set) {
+    if (set == TRUE) {
+        MapObject_SetBits(object, (1 << 28));
+    } else {
+        MapObject_ClearBits(object, (1 << 28));
+    }
+}
+
+BOOL sub_0205F83C(LocalMapObject* object) {
+    return MapObject_GetBitsMask(object, (1 << 28)) != 0;
+}
+
+void sub_0205F854(LocalMapObject* object, BOOL set) {
+    if (set == TRUE) {
+        MapObject_SetBits(object, (1 << 24));
+    } else {
+        MapObject_ClearBits(object, (1 << 24));
+    }
+}
+
+BOOL sub_0205F870(LocalMapObject* object) {
+    return MapObject_GetBitsMask(object, (1 << 24)) != 0;
+}
+
+BOOL sub_0205F888(LocalMapObject* object) {
+    return MapObject_GetBitsMask(object, (1 << 4)) != 0;
+}
+
+void sub_0205F89C(LocalMapObject* object, BOOL set) {
+    if (set == TRUE) {
+        MapObject_SetBits(object, (1 << 29));
+    } else {
+        MapObject_ClearBits(object, (1 << 29));
+    }
+}
+
+BOOL sub_0205F8B8(LocalMapObject* object) {
+    return MapObject_GetBitsMask(object, (1 << 29)) != 0;
+}
+
+BOOL sub_0205F8D0(LocalMapObject* object) {
+    return sub_0205F240(object, (1 << 2)) != FALSE;
+}
+
+u32 MapObject_GetInitialX(LocalMapObject* object) {
+    return object->xInit;
+}
+
+void MapObject_SetInitialX(LocalMapObject* object, u32 initial_x) {
+    object->xInit = initial_x;
+}
+
+u32 MapObject_GetInitialHeight(LocalMapObject* object) {
+    return object->hInit;
+}
+
+void MapObject_SetInitialHeight(LocalMapObject* object, u32 initial_height) {
+    object->hInit = initial_height;
+}
+
+u32 MapObject_GetInitialY(LocalMapObject* object) {
+    return object->yInit;
+}
+
+void MapObject_SetInitialY(LocalMapObject* object, u32 initial_y) {
+    object->yInit = initial_y;
+}
+
+u32 MapObject_GetPrevX(LocalMapObject* object) {
+    return object->xPrev;
+}
+
+void MapObject_SetPrevX(LocalMapObject* object, u32 previous_x) {
+    object->xPrev = previous_x;
+}
+
+u32 MapObject_GetPrevHeight(LocalMapObject* object) {
+    return object->hPrev;
+}
+
+void MapObject_SetPrevHeight(LocalMapObject* object, u32 previous_height) {
+    object->hPrev = previous_height;
+}
+
+u32 MapObject_GetPrevY(LocalMapObject* object) {
+    return object->yPrev;
+}
+
+void MapObject_SetPrevY(LocalMapObject* object, u32 previous_y) {
+    object->yPrev = previous_y;
+}
+
+u32 MapObject_GetCurrentX(LocalMapObject* object) {
+    return object->xCurr;
+}
+
+void MapObject_SetCurrentX(LocalMapObject* object, u32 x) {
+    object->xCurr = x;
+}
+
+void MapObject_AddCurrentX(LocalMapObject* object, u32 x) {
+    object->xCurr += x;
+}
+
+u32 MapObject_GetCurrentHeight(LocalMapObject* object) {
+    return object->hCurr;
+}
+
+void MapObject_SetCurrentHeight(LocalMapObject* object, u32 height) {
+    object->hCurr = height;
+}
+
+void MapObject_AddCurrentHeight(LocalMapObject* object, u32 height) {
+    object->hCurr += height;
+}
+
+u32 MapObject_GetCurrentY(LocalMapObject* object) {
+    return object->yCurr;
+}
+
+void MapObject_SetCurrentY(LocalMapObject* object, u32 y) {
+    object->yCurr = y;
+}
+
+void MapObject_AddCurrentY(LocalMapObject* object, u32 y) {
+    object->yCurr += y;
+}
+
+void MapObject_GetPositionVec(LocalMapObject* object, VecFx32* pos_vec_dest) {
+    *pos_vec_dest = object->posVec;
+}
+
+void MapObject_SetPositionVec(LocalMapObject* object, VecFx32* pos_vec) {
+    object->posVec = *pos_vec;
+}
+
+VecFx32* MapObject_GetPositionVecPtr(LocalMapObject* object) {
+    return &object->posVec;
+}
+
+fx32 MapObject_GetPosVecYCoord(LocalMapObject* object) {
+    return object->posVec.y;
+}
+
+void MapObject_GetFacingVec(LocalMapObject* object, VecFx32* face_vec_dest) {
+    *face_vec_dest = object->faceVec;
+}
+
+void MapObject_SetFacingVec(LocalMapObject* object, VecFx32* face_vec) {
+    object->faceVec = *face_vec;
+}
+
+VecFx32* MapObject_GetFacingVecPtr(LocalMapObject* object) {
+    return &object->faceVec;
+}
+
+void sub_0205F990(LocalMapObject* object, VecFx32* a1_dest) {
+    *a1_dest = object->unk88;
+}
+
+void sub_0205F9A0(LocalMapObject* object, VecFx32* a1) {
+    object->unk88 = *a1;
+}
+
+void sub_0205F9B0(LocalMapObject* object, VecFx32* a1_dest) {
+    *a1_dest = object->unk94;
+}
+
+void sub_0205F9C0(LocalMapObject* object, VecFx32* a1) {
+    object->unk94 = *a1;
+}
+
+fx32 sub_0205F9D0(LocalMapObject* object) {
+    fx32 y = MapObject_GetPosVecYCoord(object);
+
+    // FIXME: This could be some inlined FX code.
+    fx32 y_ = y >> 3;
+    return FX_Whole((fx32)((y_) + ((u32)(y_ >> 11) >> 20)));
+}
+
+void ObjectEventTemplate_SetID(OBJECT_EVENT* template, u16 id) {
+    template->id = id;
+}
+
+u16 ObjectEventTemplate_GetID(OBJECT_EVENT* template) {
+    return template->id;
+}
+
+void ObjectEventTemplate_SetSprite(OBJECT_EVENT* template, u32 sprite) {
+    template->ovid = sprite;
+}
+
+u16 ObjectEventTemplate_GetSprite(OBJECT_EVENT* template) {
+    return template->ovid;
+}
+
+void ObjectEventTemplate_SetMovement(OBJECT_EVENT* template, u32 movement) {
+    template->mvt = movement;
+}
+
+u16 ObjectEventTemplate_GetMovement(OBJECT_EVENT* template) {
+    return template->mvt;
+}
+
+void ObjectEventTemplate_SetType(OBJECT_EVENT* template, u16 type) {
+    template->type = type;
+}
+
+u16 ObjectEventTemplate_GetType(OBJECT_EVENT* template) {
+    return template->type;
+}
+
+void ObjectEventTemplate_SetFlagID(OBJECT_EVENT* template, u16 flag) {
+    template->flag = flag;
+}
+
+u16 ObjectEventTemplate_GetFlagID(OBJECT_EVENT* template) {
+    return template->flag;
+}
+
+void ObjectEventTemplate_SetScript(OBJECT_EVENT* template, u16 script) {
+    template->scr = script;
+}
+
+u16 ObjectEventTemplate_GetScript(OBJECT_EVENT* template) {
+    return template->scr;
+}
+
+void ObjectEventTemplate_SetFacing(OBJECT_EVENT* template, s16 direction) {
+    template->dirn = direction;
+}
+
+s16 ObjectEventTemplate_GetFacing(OBJECT_EVENT* template) {
+    return template->dirn;
+}
+
+void ObjectEventTemplate_SetParam(OBJECT_EVENT* template, u32 value, int param) {
+    switch (param) {
+        case 0:
+            template->eye = value;
+            return;
+        case 1:
+            template->unk10 = value;
+            return;
+        case 2:
+            template->tsure_poke_color = value;
+            return;
+        default:
+            GF_ASSERT(FALSE);
+            return;
+    }
+}
+
+u16 ObjectEventTemplate_GetParam(OBJECT_EVENT* template, int param) {
+    switch (param) {
+        case 0:
+            return template->eye;
+        case 1:
+            return template->unk10;
+        case 2:
+            return template->tsure_poke_color;
+        default:
+            GF_ASSERT(FALSE);
+            return 0;
+    }
+}
+
+void ObjectEventTemplate_SetXRange(OBJECT_EVENT* template, s16 x_range) {
+    template->xrange = x_range;
+}
+
+s16 ObjectEventTemplate_GetXRange(OBJECT_EVENT* template) {
+    return template->xrange;
+}
+
+void ObjectEventTemplate_SetYRange(OBJECT_EVENT* template, s16 y_range) {
+    template->yrange = y_range;
+}
+
+s16 ObjectEventTemplate_GetYRange(OBJECT_EVENT* template) {
+    return template->yrange;
+}
+
+void ObjectEventTemplate_SetXCoord(OBJECT_EVENT* template, u16 x) {
+    template->x = x;
+}
+
+u16 ObjectEventTemplate_GetXCoord(OBJECT_EVENT* template) {
+    return template->x;
+}
+
+void ObjectEventTemplate_SetHeight(OBJECT_EVENT* template, u32 height) {
+    template->z = height;
+}
+
+u32 ObjectEventTemplate_GetHeight(OBJECT_EVENT* template) {
+    return template->z;
+}
+
+void ObjectEventTemplate_SetYCoord(OBJECT_EVENT* template, u16 y) {
+    template->y = y;
+}
+
+u16 ObjectEventTemplate_GetYCoord(OBJECT_EVENT* template) {
+    return template->y;
+}
+
+OBJECT_EVENT* sub_0205FA98(u32 id, int num_templates, OBJECT_EVENT* templates) {
+    int i = 0;
+    OBJECT_EVENT* current_template = templates;
+
+    do {
+        if (!ObjectEventTemplate_ScriptIdIsFFFF(current_template) && id == ObjectEventTemplate_GetID(current_template)) {
+            return templates + i;
+        }
+
+        i++;
+        current_template++;
+    } while (i < num_templates);
+
+    return NULL;
+}
+
+BOOL ObjectEventTemplate_ScriptIdIsFFFF(OBJECT_EVENT* template) {
+    // FIXME?
+    u16 script = (u16)(u32)ObjectEventTemplate_GetScript(template);
+    return script == 0xFFFF;
+}
+
+u16 ObjectEventTemplate_GetFlagID_AssertScriptIdIsFFFF(OBJECT_EVENT* template) {
+    GF_ASSERT(ObjectEventTemplate_ScriptIdIsFFFF(template) == TRUE);
+    return ObjectEventTemplate_GetFlagID(template);
+}
+
+extern Unkthing* _020FD1F4[57];
+
+Unkthing* sub_0205FB00(u32 movement) {
+    GF_ASSERT(movement < NELEMS(_020FD1F4));
+    return _020FD1F4[movement];
+}
+
+LocalMapObject_UnkCallback* sub_0205FB18(Unkthing* unk) {
+    return unk->unk4;
+}
+
+LocalMapObject_UnkCallback* sub_0205FB1C(Unkthing* unk) {
+    return unk->unk8;
+}
+
+LocalMapObject_UnkCallback* sub_0205FB20(Unkthing* unk) {
+    return unk->unkC;
+}
+
+LocalMapObject_UnkCallback* sub_0205FB24(Unkthing2* unk) {
+    return unk->unk0;
+}
+
+LocalMapObject_UnkCallback* sub_0205FB28(Unkthing2* unk) {
+    return unk->unk4;
+}
+
+LocalMapObject_UnkCallback* sub_0205FB2C(Unkthing2* unk) {
+    return unk->unk8;
+}
+
+LocalMapObject_UnkCallback* sub_0205FB30(Unkthing2* unk) {
+    return unk->unkC;
+}
+
+LocalMapObject_UnkCallback* sub_0205FB34(Unkthing2* unk) {
+    return unk->unk10;
 }
