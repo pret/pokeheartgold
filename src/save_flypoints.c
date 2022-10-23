@@ -139,7 +139,7 @@ void Fsys_RestoreMapObjectsFromSave(FieldSystem *fsys) {
         if (species != SPECIES_SHAYMIN) {
             GF_ASSERT(0);
         } else if (forme == SHAYMIN_LAND) {
-            follower->unk_12 = SPRITE_TSURE_POKE_SHAYMIN;
+            follower->gfxId = SPRITE_TSURE_POKE_SHAYMIN;
         }
     }
     MapObjectMan_RestoreFromSave(fsys->mapObjectMan, unk->subs, 64);
