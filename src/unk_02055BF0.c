@@ -490,7 +490,7 @@ BOOL sub_02056530(TaskManager *man) {
     case 0:
         obj = PlayerAvatar_GetMapObject(fsys->playerAvatar);
         if (sub_0205B70C(GetMetatileBehaviorAt(fsys, GetPlayerXCoord(fsys->playerAvatar), GetPlayerYCoord(fsys->playerAvatar)))) {
-            sub_0205F690(obj, TRUE);
+            MapObject_SetFlag9(obj, TRUE);
             fenv->transitionState = 1;
             break;
         }
@@ -506,7 +506,7 @@ BOOL sub_02056530(TaskManager *man) {
         FieldEnvSubUnk18 *unk = fenv->unk18;
         if (ov01_021E9374(fsys, unk)) {
             ov01_021E90D4(unk);
-            sub_0205F690(PlayerAvatar_GetMapObject(fsys->playerAvatar), FALSE);
+            MapObject_SetFlag9(PlayerAvatar_GetMapObject(fsys->playerAvatar), FALSE);
             return TRUE;
         }
         break;
@@ -523,7 +523,7 @@ BOOL sub_020565FC(TaskManager *man) {
     case 0:
         LocalMapObject *mapObj = PlayerAvatar_GetMapObject(fsys->playerAvatar);
         if (sub_0205B70C(GetMetatileBehaviorAt(fsys, GetPlayerXCoord(fsys->playerAvatar), GetPlayerYCoord(fsys->playerAvatar)))) {
-            sub_0205F690(mapObj, 1);
+            MapObject_SetFlag9(mapObj, TRUE);
             fenv->transitionState = 1;
             TaskManager_Jump(man, sub_02056530, fenv);
             break;

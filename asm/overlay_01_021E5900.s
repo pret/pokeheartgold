@@ -1465,7 +1465,7 @@ _021E654E:
 	ldr r0, [r5, #0x3c]
 	beq _021E6566
 	mov r1, #2
-	bl sub_0205F184
+	bl MapObjectMan_ClearFlagsBits
 	b _021E656A
 _021E6566:
 	bl sub_0205F568

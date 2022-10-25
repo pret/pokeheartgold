@@ -164,7 +164,7 @@ sub_0203DC64: ; 0x0203DC64
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _0203DC8C
-	bl sub_0205F6C8
+	bl MapObject_CheckFlag19Is0
 	cmp r0, #1
 	bne _0203DC8C
 	ldr r0, [r5, #0x40]

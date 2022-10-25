@@ -170,7 +170,7 @@ ov01_021F9574: ; 0x021F9574
 	mov r0, #0
 	str r0, [r5]
 	add r0, r6, #0
-	bl sub_0205F35C
+	bl MapObject_GetManager
 	add r1, r6, #0
 	add r2, r4, #0
 	bl ov01_021F97BC
@@ -223,7 +223,7 @@ _021F95E6:
 	cmp r4, r0
 	beq _021F960A
 	add r0, r6, #0
-	bl sub_0205F35C
+	bl MapObject_GetManager
 	add r1, r6, #0
 	add r2, r4, #0
 	bl ov01_021F97BC
@@ -2079,12 +2079,12 @@ ov01_021FA2B8: ; 0x021FA2B8
 	bne _021FA2C8
 	mov r1, #1
 	lsl r1, r1, #0x16
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	pop {r3, pc}
 _021FA2C8:
 	mov r1, #1
 	lsl r1, r1, #0x16
-	bl MapObject_ClearBits
+	bl MapObject_ClearFlagsBits
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021FA2B8
@@ -2094,7 +2094,7 @@ ov01_021FA2D4: ; 0x021FA2D4
 	push {r3, lr}
 	mov r1, #1
 	lsl r1, r1, #0x16
-	bl MapObject_GetBitsMask
+	bl MapObject_GetFlagsMask
 	cmp r0, #0
 	beq _021FA2E6
 	mov r0, #1
@@ -2223,7 +2223,7 @@ ov01_021FA370: ; 0x021FA370
 	thumb_func_start ov01_021FA3DC
 ov01_021FA3DC: ; 0x021FA3DC
 	push {r3, lr}
-	bl sub_0205F35C
+	bl MapObject_GetManager
 	bl sub_0205F1A0
 	pop {r3, pc}
 	thumb_func_end ov01_021FA3DC
@@ -2255,7 +2255,7 @@ ov01_021FA40C: ; 0x021FA40C
 	add r6, r1, #0
 	lsl r1, r4, #9
 	add r5, r0, #0
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #1
 	bne _021FA420
 	mov r4, #0
@@ -2263,13 +2263,13 @@ _021FA420:
 	mov r1, #1
 	add r0, r5, #0
 	lsl r1, r1, #0xc
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #1
 	bne _021FA43E
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0xc
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #0
 	bne _021FA43E
 	mov r4, #0
@@ -2873,7 +2873,7 @@ _021FA82A:
 	mov r1, #2
 	ldr r0, [r4, #4]
 	lsl r1, r1, #0x14
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #1
 	ldr r0, [r4, #4]
 	bne _021FA848
@@ -3008,7 +3008,7 @@ _021FA948:
 	bl MapObject_GetGfxID
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0205F35C
+	bl MapObject_GetManager
 	add r7, r0, #0
 	add r0, r5, #0
 	bl sub_0205E420
@@ -3187,7 +3187,7 @@ _021FAAAA:
 	ldr r0, [r5, #0x24]
 	bl sub_02023FC0
 	add r0, r6, #0
-	bl sub_0205F870
+	bl MapObject_CheckFlag24
 	cmp r0, #1
 	bne _021FAB4A
 	add r0, r6, #0

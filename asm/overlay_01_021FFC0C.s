@@ -160,7 +160,7 @@ _021FFCBC:
 	mov r1, #2
 	ldr r0, [r4, #0x30]
 	lsl r1, r1, #8
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #1
 	bne _021FFD46
 	ldr r0, [r4, #0x3c]
@@ -214,7 +214,7 @@ _021FFD94:
 	mov r1, #2
 	add r0, r7, #0
 	lsl r1, r1, #8
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #1
 	ldr r0, [r5, #0x3c]
 	bne _021FFDAC

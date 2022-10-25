@@ -83,7 +83,7 @@ ov01_021FECA0: ; 0x021FECA0
 	add r5, r0, #0
 	add r4, r2, #0
 	add r7, r3, #0
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #1
 	beq _021FED0A
 	add r0, r5, #0

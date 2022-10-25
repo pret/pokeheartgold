@@ -1017,14 +1017,14 @@ _0206AF2A:
 	mov r1, #9
 	add r0, r4, #0
 	lsl r1, r1, #0xa
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	mov r1, #6
 	add r0, r4, #0
 	lsl r1, r1, #6
-	bl MapObject_ClearBits
+	bl MapObject_ClearFlagsBits
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0205F89C
+	bl MapObject_SetFlag29
 	add r0, r4, #0
 	add sp, #0xc
 	pop {r3, r4, pc}
@@ -2122,7 +2122,7 @@ sub_0206B82C: ; 0x0206B82C
 	add r0, r5, #0
 	bl PlayerAvatar_GetMapObject
 	add r4, r0, #0
-	bl sub_0205F35C
+	bl MapObject_GetManager
 	add r7, r0, #0
 	add r0, r4, #0
 	bl MapObject_GetGfxID
@@ -2240,4 +2240,3 @@ _021100C4:
 	.byte 0xC1, 0xAE, 0x29, 0x00, 0x00, 0xEE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x02
 	.byte 0x96, 0x00, 0x00, 0x00, 0x84, 0x03, 0x00, 0x00, 0x00, 0x05, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x10, 0xFD, 0xFF
-

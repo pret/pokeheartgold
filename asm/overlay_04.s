@@ -2135,7 +2135,7 @@ ov04_02254F44: ; 0x02254F44
 	bl MapObjectMan_GetCount
 	add r5, r0, #0
 	ldr r0, [r4, #0x3c]
-	bl MapObjectMan_GetArray
+	bl MapObjectMan_GetObjects
 	mov r4, #0
 	str r0, [sp]
 	cmp r5, #0

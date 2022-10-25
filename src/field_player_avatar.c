@@ -158,9 +158,9 @@ FIELD_PLAYER_AVATAR* sub_0205C408(MapObjectMan* man, FIELD_PLAYER_AVATAR_SUB* av
     sub_0205C500(avatar, state, gender, avatar_sub);
     LocalMapObject* mapObj = sub_0205C640(man);
     MapObject_SetGfxID(mapObj, PlayerAvatar_GetSpriteByStateAndGender(state, gender));
-    MapObject_SetBits(mapObj, 9216);
-    MapObject_ClearBits(mapObj, 384);
-    sub_0205F89C(mapObj, 1);
+    MapObject_SetFlagsBits(mapObj, MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_UNK10);
+    MapObject_ClearFlagsBits(mapObj, MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7);
+    MapObject_SetFlag29(mapObj, TRUE);
     sub_0205C6D8(avatar, mapObj);
     return avatar;
 }
@@ -170,7 +170,7 @@ void sub_0205C46C(FIELD_PLAYER_AVATAR* avatar) {
     if (!mapObj) {
         GF_ASSERT(FALSE);
     }
-    sub_0205F35C(mapObj);
+    MapObject_GetManager(mapObj);
     ov01_022008B4(avatar);
     if (PlayerAvatar_GetState(avatar) == PLAYER_STATE_SURFING) {
         int x = GetPlayerXCoord(avatar);
@@ -226,16 +226,16 @@ void CreatePlayerAvatarMapObject(FIELD_PLAYER_AVATAR* avatar, MapObjectMan* man,
     MapObject_SetParam(mapObj, 0, 2);
     MapObject_SetXRange(mapObj, -1);
     MapObject_SetYRange(mapObj, -1);
-    MapObject_SetBits(mapObj, 9216);
-    MapObject_ClearBits(mapObj, 384);
-    sub_0205F89C(mapObj, 1);
+    MapObject_SetFlagsBits(mapObj, MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_UNK10);
+    MapObject_ClearFlagsBits(mapObj, MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7);
+    MapObject_SetFlag29(mapObj, TRUE);
     sub_0205C6D8(avatar, mapObj);
 }
 
 LocalMapObject* sub_0205C600(MapObjectMan* man) {
     int y = 0;
     LocalMapObject* mapObj = 0;
-    while (sub_0205EEF4(man, &mapObj, &y, 1)) {
+    while (sub_0205EEF4(man, &mapObj, &y, MAPOBJECTFLAG_ACTIVE)) {
         if (MapObject_GetMovement(mapObj) == TRUE) {
             break;
         }
@@ -500,21 +500,21 @@ void sub_0205C838(FIELD_PLAYER_AVATAR* avatar, int unkA) {
 void PlayerAvatar_ToggleAutomaticHeightUpdating(FIELD_PLAYER_AVATAR* avatar, u8 state) {
     LocalMapObject* mapObj = PlayerAvatar_GetMapObject(avatar);
     if (state == TRUE) {
-        sub_0205F768(mapObj, 0);
+        MapObject_SetFlag23(mapObj, FALSE);
     }
     else {
-        sub_0205F768(mapObj, 1);
+        MapObject_SetFlag23(mapObj, TRUE);
     }
 }
 
 void PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(FIELD_PLAYER_AVATAR* avatar, BOOL state) {
     LocalMapObject* mapObj = PlayerAvatar_GetMapObject(avatar);
     if (state == TRUE) {
-        sub_0205F768(mapObj, 0);
+        MapObject_SetFlag23(mapObj, FALSE);
         sub_02061070(mapObj);
     }
     else {
-        sub_0205F768(mapObj, 1);
+        MapObject_SetFlag23(mapObj, TRUE);
     }
 }
 

@@ -271,7 +271,7 @@ _02061420:
 	add r0, r5, #0
 	bl MapObject_SingleMovementSetInactive
 	add r0, r5, #0
-	bl sub_0205F660
+	bl MapObject_ClearFlag3
 	add r0, r5, #0
 	bl MapObject_GetFacingDirection
 	mov r1, #0
@@ -2054,7 +2054,7 @@ _020620AE:
 	ldr r4, [r1, r0]
 	add r0, r7, #0
 	mov r1, #0x80
-	bl MapObject_GetBitsMask
+	bl MapObject_GetFlagsMask
 	cmp r0, #0
 	beq _020620DC
 	mov r0, #1
@@ -2068,7 +2068,7 @@ _020620DE:
 	bl MapObject_SetFacingDirection
 	add r0, r7, #0
 	mov r1, #0x80
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _020620F4: .word _020FD7E0
@@ -2081,7 +2081,7 @@ sub_020620F8: ; 0x020620F8
 	cmp r1, #0
 	bne _02062106
 	mov r1, #0x80
-	bl MapObject_ClearBits
+	bl MapObject_ClearFlagsBits
 _02062106:
 	pop {r3, pc}
 	thumb_func_end sub_020620F8
