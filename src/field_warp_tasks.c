@@ -239,8 +239,8 @@ static void sub_02053210(FieldSystem *fsys) {
     } else {
         sub_02056E38();
         PlayerAvatar_FreeToHeap(fsys->playerAvatar);
-        sub_0205E494(fsys->mapObjectMan);
-        sub_0205E0E8(fsys->mapObjectMan);
+        MapObjectMan_RemoveAllActiveObjects(fsys->mapObjectMan);
+        MapObjectMan_delete(fsys->mapObjectMan);
     }
 }
 

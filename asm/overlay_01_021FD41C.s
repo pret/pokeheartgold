@@ -402,7 +402,7 @@ ov01_021FD6C8: ; 0x021FD6C8
 	bl MapObject_GetID
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x1c]
-	bl sub_0205F7D4
+	bl MapObject_CheckFlag25
 	cmp r0, #1
 	ldr r0, [r4, #0x1c]
 	bne _021FD70A
@@ -455,7 +455,7 @@ _021FD752:
 	str r0, [r4, #0xc]
 	ldr r1, _021FD780 ; =0x00100200
 	add r0, r6, #0
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #1
 	bne _021FD76A
 	mov r0, #1
@@ -498,7 +498,7 @@ ov01_021FD784: ; 0x021FD784
 	bl MapObject_GetID
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x1c]
-	bl sub_0205F7D4
+	bl MapObject_CheckFlag25
 	cmp r0, #1
 	ldr r0, [r4, #0x1c]
 	bne _021FD7C6
@@ -710,7 +710,7 @@ _021FD950:
 	str r0, [r4, #0xc]
 	ldr r1, _021FD97C ; =0x00100200
 	add r0, r6, #0
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #1
 	bne _021FD968
 	mov r0, #1

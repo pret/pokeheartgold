@@ -24,7 +24,7 @@ ov01_021F8D80: ; 0x021F8D80
 	bl ov01_021F9344
 	str r0, [sp, #4]
 	add r0, r5, #0
-	bl sub_0205F888
+	bl MapObject_CheckFlag4
 	add r7, r0, #0
 	add r0, r5, #0
 	bl ov01_02205564
@@ -502,7 +502,7 @@ _021F90E6:
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0x14
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021F90D0
@@ -535,7 +535,7 @@ _021F911E:
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0x14
-	bl MapObject_ClearBits
+	bl MapObject_ClearFlagsBits
 _021F913C:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -604,7 +604,7 @@ ov01_021F91A4: ; 0x021F91A4
 	add r6, r1, #0
 	lsl r1, r4, #9
 	add r5, r0, #0
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #1
 	bne _021F91B8
 	mov r4, #0
@@ -612,13 +612,13 @@ _021F91B8:
 	mov r1, #1
 	add r0, r5, #0
 	lsl r1, r1, #0xc
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #1
 	bne _021F91D6
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0xc
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #0
 	bne _021F91D6
 	mov r4, #0
@@ -652,7 +652,7 @@ ov01_021F91F8: ; 0x021F91F8
 	add r5, r0, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_0205F190
+	bl MapObjectMan_GetFlagsBitsMask
 	cmp r0, #0
 	beq _021F9212
 	bl GF_AssertFail
@@ -679,7 +679,7 @@ _021F9212:
 	bl ov01_021F944C
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0205F17C
+	bl MapObjectMan_SetFlagsBits
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021F91F8
@@ -698,7 +698,7 @@ _021F9260:
 	bl ov01_021F94A0
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0205F184
+	bl MapObjectMan_ClearFlagsBits
 	add r0, r4, #0
 	bl FldObjSys_CloseMModelNarc
 	pop {r4, pc}
@@ -731,15 +731,15 @@ FldObjSys_CloseMModelNarc: ; 0x021F9294
 ov01_021F92A0: ; 0x021F92A0
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205F35C
+	bl MapObject_GetManager
 	mov r1, #4
-	bl sub_0205F190
+	bl MapObjectMan_GetFlagsBitsMask
 	cmp r0, #0
 	bne _021F92DA
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0xe
-	bl MapObject_GetBitsMask
+	bl MapObject_GetFlagsMask
 	cmp r0, #0
 	beq _021F92DA
 	add r0, r4, #0
@@ -747,7 +747,7 @@ ov01_021F92A0: ; 0x021F92A0
 	cmp r0, #0
 	beq _021F92D4
 	add r0, r4, #0
-	bl sub_0205F888
+	bl MapObject_CheckFlag4
 	cmp r0, #0
 	beq _021F92DA
 _021F92D4:
@@ -830,7 +830,7 @@ ov01_021F9344: ; 0x021F9344
 	cmp r0, #1
 	bne _021F935E
 	add r0, r4, #0
-	bl sub_0205F888
+	bl MapObject_CheckFlag4
 	cmp r0, #0
 	bne _021F935E
 	mov r0, #1
@@ -839,7 +839,7 @@ _021F935E:
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #8
-	bl MapObject_GetBitsMask
+	bl MapObject_GetFlagsMask
 	cmp r0, #0
 	beq _021F9370
 	mov r0, #1
@@ -930,7 +930,7 @@ ov01_021F9408: ; 0x021F9408
 	add r4, r0, #0
 	bl MapObject_SetFacingDirection
 	add r0, r4, #0
-	bl sub_0205F678
+	bl MapObject_CheckFlag14
 	cmp r0, #1
 	bne _021F9420
 	add r0, r4, #0
@@ -945,11 +945,11 @@ ov01_021F9424: ; 0x021F9424
 	push {r4, lr}
 	mov r1, #1
 	add r4, r0, #0
-	bl sub_0205F690
+	bl MapObject_SetFlag9
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0x14
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021F9424

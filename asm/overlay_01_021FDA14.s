@@ -190,7 +190,7 @@ ov01_021FDB44: ; 0x021FDB44
 	cmp r0, #0
 	beq _021FDB72
 	add r0, r6, #0
-	bl sub_0205F870
+	bl MapObject_CheckFlag24
 	cmp r0, #0
 	bne _021FDB7C
 _021FDB72:
@@ -261,7 +261,7 @@ ov01_021FDBCC: ; 0x021FDBCC
 	cmp r0, #0
 	beq _021FDBFC
 	add r0, r6, #0
-	bl sub_0205F870
+	bl MapObject_CheckFlag24
 	cmp r0, #0
 	bne _021FDC06
 _021FDBFC:
@@ -282,7 +282,7 @@ _021FDC06:
 	mov r4, #1
 _021FDC1C:
 	add r0, r6, #0
-	bl sub_0205F684
+	bl MapObject_CheckFlag9
 	cmp r0, #1
 	bne _021FDC28
 	mov r4, #1
@@ -433,7 +433,7 @@ ov01_021FDD48: ; 0x021FDD48
 	add r4, r1, #0
 	add r5, r0, #0
 	ldr r0, [r4, #0x20]
-	bl sub_0205F35C
+	bl MapObject_GetManager
 	ldr r1, [r4, #8]
 	add r2, sp, #0
 	bl ov01_021F9744
@@ -836,7 +836,7 @@ ov01_021FE058: ; 0x021FE058
 	cmp r0, #0
 	beq _021FE086
 	add r0, r6, #0
-	bl sub_0205F870
+	bl MapObject_CheckFlag24
 	cmp r0, #0
 	bne _021FE090
 _021FE086:
@@ -911,7 +911,7 @@ ov01_021FE0EC: ; 0x021FE0EC
 	cmp r0, #0
 	beq _021FE11A
 	add r0, r4, #0
-	bl sub_0205F870
+	bl MapObject_CheckFlag24
 	cmp r0, #0
 	bne _021FE124
 _021FE11A:
@@ -924,7 +924,7 @@ _021FE124:
 	cmp r0, #0
 	beq _021FE18A
 	add r0, r4, #0
-	bl sub_0205F684
+	bl MapObject_CheckFlag9
 	cmp r0, #1
 	ldr r0, [r5, #0x24]
 	bne _021FE13E
@@ -975,7 +975,7 @@ ov01_021FE190: ; 0x021FE190
 	add r4, r1, #0
 	add r5, r0, #0
 	ldr r0, [r4, #0x20]
-	bl sub_0205F35C
+	bl MapObject_GetManager
 	ldr r1, [r4, #8]
 	add r2, sp, #0
 	bl ov01_021F9744

@@ -195,7 +195,7 @@ _021F7420:
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0x14
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021F7408
 
@@ -228,7 +228,7 @@ _021F7456:
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0x14
-	bl MapObject_ClearBits
+	bl MapObject_ClearFlagsBits
 _021F7476:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021F7434
@@ -303,7 +303,7 @@ _021F74DE:
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0x14
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021F74C8
@@ -327,7 +327,7 @@ _021F7522:
 	b _021F7654
 _021F7524:
 	add r0, r5, #0
-	bl sub_0205F35C
+	bl MapObject_GetManager
 	bl MapObjectMan_GetFieldSysPtr
 	str r0, [sp, #0x10]
 	ldr r0, [r0, #0xc]
@@ -372,7 +372,7 @@ _021F7524:
 	bl sub_0205FCD4
 	add r0, r5, #0
 	mov r1, #4
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	add r0, r5, #0
 	add r1, sp, #0x30
 	bl MapObject_GetPositionVec
@@ -526,7 +526,7 @@ _021F76E0:
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0x14
-	bl MapObject_ClearBits
+	bl MapObject_ClearFlagsBits
 	add r0, r5, #0
 	bl sub_0205F484
 _021F7700:
@@ -1455,7 +1455,7 @@ _021F7E14:
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0x14
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021F7DFC
 
@@ -1488,7 +1488,7 @@ _021F7E4A:
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0x14
-	bl MapObject_ClearBits
+	bl MapObject_ClearFlagsBits
 _021F7E6A:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021F7E28
@@ -3308,7 +3308,7 @@ ov01_021F8C88: ; 0x021F8C88
 	add r6, r1, #0
 	lsl r1, r4, #9
 	add r5, r0, #0
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #1
 	bne _021F8C9C
 	mov r4, #0
@@ -3316,13 +3316,13 @@ _021F8C9C:
 	mov r1, #1
 	add r0, r5, #0
 	lsl r1, r1, #0xc
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #1
 	bne _021F8CBA
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0xc
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #0
 	bne _021F8CBA
 	mov r4, #0

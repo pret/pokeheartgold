@@ -135,7 +135,7 @@ sub_0206D590: ; 0x0206D590
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r4, r0, #0
-	bl sub_0205F35C
+	bl MapObject_GetManager
 	str r0, [sp]
 	add r0, r4, #0
 	bl MapObject_GetFacingDirection
@@ -201,7 +201,7 @@ sub_0206D614: ; 0x0206D614
 	add r6, r1, #0
 	add r7, r2, #0
 	str r3, [sp]
-	bl MapObjectMan_GetArray
+	bl MapObjectMan_GetObjects
 	str r0, [sp, #4]
 	add r0, r4, #0
 	bl MapObjectMan_GetCount
@@ -209,13 +209,13 @@ sub_0206D614: ; 0x0206D614
 _0206D62E:
 	ldr r0, [sp, #4]
 	mov r1, #1
-	bl MapObject_GetBitsMask
+	bl MapObject_GetFlagsMask
 	cmp r0, #0
 	beq _0206D676
 	mov r1, #1
 	ldr r0, [sp, #4]
 	lsl r1, r1, #0x12
-	bl MapObject_GetBitsMask
+	bl MapObject_GetFlagsMask
 	cmp r0, #0
 	bne _0206D676
 	ldr r0, [sp, #4]
@@ -293,7 +293,7 @@ _0206D69E:
 	tst r1, r0
 	beq _0206D730
 	ldr r0, [r5]
-	bl sub_0205F35C
+	bl MapObject_GetManager
 	ldr r3, [sp, #4]
 	ldr r2, [sp]
 	add r1, r4, r6
@@ -491,7 +491,7 @@ sub_0206D850: ; 0x0206D850
 	bl PlayerAvatar_GetMapObject
 	mov r1, #6
 	lsl r1, r1, #6
-	bl MapObject_ClearBits
+	bl MapObject_ClearFlagsBits
 	add r0, r4, #0
 	bl sub_0205CB2C
 	cmp r0, #0

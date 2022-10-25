@@ -485,7 +485,7 @@ _0205B012:
 	bl MapObject_ClearHeldMovementIfActive
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F6E0
+	bl MapObject_SetFlag19
 	ldrb r0, [r4, #0xc]
 	cmp r0, #1
 	bne _0205B048
@@ -541,10 +541,10 @@ _0205B07A:
 	strb r0, [r4, #0x15]
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0205F690
+	bl MapObject_SetFlag9
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F6AC
+	bl MapObject_ClearFlag18
 	b _0205B0AA
 _0205B0A6:
 	mov r0, #0
@@ -678,10 +678,10 @@ _0205B16C:
 	bl MapObject_SetHeldMovement
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F690
+	bl MapObject_SetFlag9
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0205F6AC
+	bl MapObject_ClearFlag18
 	mov r1, #1
 	strb r1, [r5, #1]
 	ldrb r0, [r5, #2]
@@ -720,7 +720,7 @@ sub_0205B1E4: ; 0x0205B1E4
 	bl MapObject_SetHeldMovement
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0205F6E0
+	bl MapObject_SetFlag19
 	add r0, r5, #0
 	mov r1, #0
 	bl sub_0205FC94
@@ -778,13 +778,13 @@ _0205B24C:
 _0205B25C:
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0205F690
+	bl MapObject_SetFlag9
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F6AC
+	bl MapObject_ClearFlag18
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0205F6E0
+	bl MapObject_SetFlag19
 	add r5, r5, #1
 	cmp r5, r6
 	blt _0205B24C
@@ -838,10 +838,10 @@ _0205B2C4:
 	bl MapObject_SetHeldMovement
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F690
+	bl MapObject_SetFlag9
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0205F6AC
+	bl MapObject_ClearFlag18
 	mov r0, #1
 	strb r0, [r5, #1]
 	ldrb r0, [r5, #2]

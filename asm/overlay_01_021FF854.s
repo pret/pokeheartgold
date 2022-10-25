@@ -276,7 +276,7 @@ _021FFA08:
 	mov r1, #2
 	ldr r0, [r4, #0x30]
 	lsl r1, r1, #8
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #1
 	bne _021FFA88
 	ldr r0, [r4, #0x3c]
@@ -334,7 +334,7 @@ _021FFAE0:
 	mov r1, #2
 	add r0, r6, #0
 	lsl r1, r1, #8
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #1
 	ldr r0, [r4, #0x3c]
 	bne _021FFAF8

@@ -616,7 +616,7 @@ sub_0205BF6C: ; 0x0205BF6C
 	add r4, r0, #0
 	ldrb r1, [r4, #9]
 	ldr r0, [r4]
-	bl sub_0205F690
+	bl MapObject_SetFlag9
 	ldrb r1, [r4, #8]
 	add r0, r1, #1
 	strb r0, [r4, #8]

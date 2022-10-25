@@ -149,7 +149,7 @@ _020633B2:
 	bl sub_02060F78
 	ldr r0, [sp]
 	ldr r1, _0206341C ; =0x00010004
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	add r2, sp, #0x10
 	mov r1, #0x10
 	ldrsb r1, [r2, r1]
@@ -162,7 +162,7 @@ _020633B2:
 	ldr r0, [sp]
 	bl MapObject_IncMovementStep
 	ldr r0, [sp]
-	bl sub_0205F684
+	bl MapObject_CheckFlag9
 	cmp r0, #0
 	bne _02063416
 	ldr r0, _02063420 ; =SEQ_SE_DP_DANSA
@@ -242,7 +242,7 @@ _02063456:
 	bl MapObject_GetFieldSysPtr
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0205F8B8
+	bl MapObject_CheckFlag29
 	add r2, r0, #0
 	add r0, r6, #0
 	add r1, sp, #8
@@ -421,7 +421,7 @@ _02063624:
 	bl sub_02061070
 	ldr r1, _0206367C ; =0x00020008
 	add r0, r5, #0
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	add r0, r5, #0
 	bl sub_02060F78
 	add r0, r5, #0
@@ -432,7 +432,7 @@ _02063624:
 	add r0, r5, #0
 	bl MapObject_IncMovementStep
 	add r0, r5, #0
-	bl sub_0205F684
+	bl MapObject_CheckFlag9
 	cmp r0, #0
 	bne _0206366E
 	ldr r0, _02063680 ; =SEQ_SE_DP_SUTYA2
@@ -1815,7 +1815,7 @@ _02064014:
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0x14
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02063FFC
 
@@ -1856,7 +1856,7 @@ _0206405E:
 	mov r1, #2
 	add r0, r5, #0
 	lsl r1, r1, #0x14
-	bl MapObject_ClearBits
+	bl MapObject_ClearFlagsBits
 _0206407E:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2690,7 +2690,7 @@ _0206467C:
 	bl ov01_021F9408
 	add r0, r5, #0
 	mov r1, #0x40
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	mov r0, #2
 	str r0, [r4]
 	mov r0, #1
@@ -2982,7 +2982,7 @@ _02064870:
 	bne _0206489C
 	add r0, r4, #0
 	mov r1, #0x80
-	bl MapObject_ClearBits
+	bl MapObject_ClearFlagsBits
 	add r0, r6, #0
 	mov r1, #0
 	bl sub_0206234C

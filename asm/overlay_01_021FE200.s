@@ -337,7 +337,7 @@ ov01_021FE3F8: ; 0x021FE3F8
 	str r0, [sp, #0x1c]
 	add r0, r5, #0
 	lsl r1, r1, #8
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #1
 	bne _021FE454
 	add sp, #0x38

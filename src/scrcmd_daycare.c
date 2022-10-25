@@ -191,9 +191,9 @@ static LocalMapObject* CreateDayCareMonSpriteInternal(MapObjectMan* object_man, 
     FollowPokeMapObjectSetParams(lmo, species, (u32)forme, shiny);
     MapObject_SetXRange(lmo, -1);
     MapObject_SetYRange(lmo, -1);
-    MapObject_SetBits(lmo, 4);
-    MapObject_ClearBits(lmo, 0);
-    sub_0205F89C(lmo, 1);
+    MapObject_SetFlagsBits(lmo, MAPOBJECTFLAG_UNK2);
+    MapObject_ClearFlagsBits(lmo, 0);
+    MapObject_SetFlag29(lmo, TRUE);
     ov01_021F9048(lmo);
 
     return lmo;

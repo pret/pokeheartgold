@@ -567,7 +567,7 @@ _022057BE:
 ov01_022057C4: ; 0x022057C4
 	push {r3, lr}
 	bl FollowingPokemon_GetMapObject
-	bl sub_0205F684
+	bl MapObject_CheckFlag9
 	pop {r3, pc}
 	thumb_func_end ov01_022057C4
 
@@ -613,7 +613,7 @@ ov01_02205808: ; 0x02205808
 	add r6, r0, #0
 	add r0, r5, #0
 	add r4, r2, #0
-	bl sub_0205F35C
+	bl MapObject_GetManager
 	add r7, r0, #0
 	add r0, r5, #0
 	bl MapObject_GetGfxID
@@ -659,7 +659,7 @@ ov01_02205870: ; 0x02205870
 	add r5, r0, #0
 	add r0, r1, #0
 	add r4, r3, #0
-	bl sub_0205F35C
+	bl MapObject_GetManager
 	bl sub_0205F1A0
 	cmp r5, #0
 	beq _02205888
@@ -697,7 +697,7 @@ ov01_0220589C: ; 0x0220589C
 	bl ov01_02206088
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_0205F35C
+	bl MapObject_GetManager
 	bl FldObjSys_GetMModelNarc
 	add r1, r7, #0
 	mov r2, #0xb
