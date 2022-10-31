@@ -46640,7 +46640,7 @@ _0224E3F2:
 	cmp r6, #4
 	blt _0224E3B2
 _0224E3F8:
-	ldr r2, _0224E40C ; =0x02220AAC
+	ldr r2, _0224E40C ; =ov10_02220AAC
 	ldr r1, _0224E410 ; =0x00002134
 	ldr r0, [sp, #4]
 	str r2, [r0, r1]
@@ -46649,7 +46649,7 @@ _0224E3F8:
 	.balign 4, 0
 _0224E404: .word 0x00001DE0
 _0224E408: .word 0x000003CD
-_0224E40C: .word 0x02220AAC
+_0224E40C: .word ov10_02220AAC
 _0224E410: .word 0x00002134
 	thumb_func_end ov12_0224E384
 
