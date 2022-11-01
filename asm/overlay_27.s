@@ -246,7 +246,7 @@ ov27_0225A19C: ; 0x0225A19C
 	mov r0, #0
 	bl FS_LoadOverlay
 	ldr r0, _0225A2B4 ; =ov27_0225C238
-	blx ov123_0225F430
+	bl ov123_0225F430
 	cmp r0, #0
 	beq _0225A1C8
 	mov r1, #0xfa
@@ -298,7 +298,7 @@ _0225A216:
 	cmp r5, #4
 	blt _0225A216
 	ldr r0, _0225A2C0 ; =ov27_0225C248
-	blx ov123_0225F598
+	bl ov123_0225F598
 	cmp r0, #0
 	bne _0225A238
 	mov r1, #0xfa
@@ -342,7 +342,7 @@ _0225A246:
 	mov r0, #8
 	bl DestroyHeap
 	ldr r0, _0225A2C4 ; =ov27_0225C24C
-	blx ov123_0225F688
+	bl ov123_0225F688
 	cmp r0, #0
 	bne _0225A2A4
 	mov r1, #0xfa
