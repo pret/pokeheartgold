@@ -10301,6 +10301,7 @@
 .public ov10_022203A4
 .public ov10_022205BC
 .public ov10_022206B0
+.public ov10_02220AAC
 .public ov110_021E5A24
 .public ov110_021E5A74
 .public ov110_021E5AAC

@@ -38,6 +38,7 @@ MSGENC       := $(TOOLSDIR)/msgenc/msgenc$(EXE)
 ASPATCH      := $(TOOLSDIR)/mwasmarm_patcher/mwasmarm_patcher$(EXE)
 CSV2BIN      := $(TOOLSDIR)/csv2bin/csv2bin$(EXE)
 MKFXCONST    := $(TOOLSDIR)/gen_fx_consts/gen_fx_consts$(EXE)
+MOD123ENCRY  := $(TOOLSDIR)/mod123encry/mod123encry$(EXE)
 
 # Decompiled NitroSDK tools
 COMPSTATIC   := $(TOOLSDIR)/compstatic/compstatic$(EXE)
@@ -55,7 +56,8 @@ NATIVE_TOOLS := \
 	$(ASPATCH) \
 	$(CSV2BIN) \
 	$(MKFXCONST) \
-	$(COMPSTATIC)
+	$(COMPSTATIC) \
+	$(MOD123ENCRY)
 
 TOOLDIRS := $(foreach tool,$(NATIVE_TOOLS),$(dir $(tool)))
 
@@ -216,6 +218,10 @@ $(NEF): $(LCF) $(RESPONSE) $(ALL_OBJS)
 .INTERMEDIATE: $(BUILD_DIR)/obj.list
 
 $(SBIN): build/%.sbin: build/%.nef
+ifeq ($(SBIN),$(BUILD_DIR)/main.sbin)
+# Overlay 123 is encrypted in the retail ROM, so we need to reencrypt it after building it
+	cd $(BUILD_DIR) && ../../$(MOD123ENCRY) encry main OVY_123_enc.sbin 123 && mv OVY_123_enc.sbin OVY_123.sbin
+endif
 ifeq ($(COMPARE),1)
 	$(SHA1SUM) --quiet -c $*.sha1
 endif
