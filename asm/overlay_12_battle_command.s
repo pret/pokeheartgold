@@ -4,127 +4,6 @@
 	.include "global.inc"
 
 	.text
-    
-	thumb_func_start RunBattleScript
-RunBattleScript: ; 0x0223CF68
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r7, _0223CFB0 ; =sBattleScriptCommandTable
-	add r5, r0, #0
-	add r4, r1, #0
-_0223CF70:
-	add r2, r4, #0
-	add r2, #0xb4
-	ldr r2, [r2]
-	add r0, r5, #0
-	lsl r2, r2, #2
-	add r3, r4, r2
-	mov r2, #0x27
-	lsl r2, r2, #8
-	ldr r2, [r3, r2]
-	add r1, r4, #0
-	lsl r2, r2, #2
-	ldr r2, [r7, r2]
-	blx r2
-	add r6, r0, #0
-	ldr r0, _0223CFB4 ; =0x00003154
-	ldr r0, [r4, r0]
-	lsl r0, r0, #0x1f
-	lsr r0, r0, #0x1f
-	bne _0223CFA2
-	add r0, r5, #0
-	bl ov12_0223A7E0
-	mov r1, #4
-	tst r0, r1
-	beq _0223CF70
-_0223CFA2:
-	ldr r1, _0223CFB4 ; =0x00003154
-	mov r0, #1
-	ldr r2, [r4, r1]
-	bic r2, r0
-	str r2, [r4, r1]
-	add r0, r6, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_0223CFB0: .word sBattleScriptCommandTable
-_0223CFB4: .word 0x00003154
-	thumb_func_end RunBattleScript
-
-	thumb_func_start ov12_0223CFB8
-ov12_0223CFB8: ; 0x0223CFB8
-	push {r4, lr}
-	add r4, r0, #0
-	add r0, r1, #0
-	mov r1, #1
-	bl ov12_02245508
-	add r0, r4, #0
-	mov r1, #0
-	bl ov12_022622C8
-	mov r0, #0
-	pop {r4, pc}
-	thumb_func_end ov12_0223CFB8
-
-	thumb_func_start ov12_0223CFD0
-ov12_0223CFD0: ; 0x0223CFD0
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r4, r0, #0
-	bl ov12_0223A7F0
-	add r6, r0, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl ov12_02245508
-	add r0, r5, #0
-	bl ov12_022454E8
-	cmp r0, #0
-	beq _0223CFF6
-	cmp r0, #3
-	beq _0223D042
-	cmp r0, #4
-	beq _0223D014
-_0223CFF6:
-	mov r5, #0
-	cmp r6, #0
-	ble _0223D042
-_0223CFFC:
-	add r0, r4, #0
-	add r1, r5, #0
-	bl ov12_022622F0
-	add r0, r4, #0
-	add r1, r5, #0
-	bl ov12_0223C288
-	add r5, r5, #1
-	cmp r5, r6
-	blt _0223CFFC
-	b _0223D042
-_0223D014:
-	mov r5, #0
-	cmp r6, #0
-	ble _0223D042
-	mov r7, #1
-_0223D01C:
-	add r0, r4, #0
-	add r1, r5, #0
-	bl ov12_0223A7E8
-	ldr r1, _0223D048 ; =0x00000195
-	ldrb r0, [r0, r1]
-	tst r0, r7
-	beq _0223D03C
-	add r0, r4, #0
-	add r1, r5, #0
-	bl ov12_022622F0
-	add r0, r4, #0
-	add r1, r5, #0
-	bl ov12_0223C288
-_0223D03C:
-	add r5, r5, #1
-	cmp r5, r6
-	blt _0223D01C
-_0223D042:
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_0223D048: .word 0x00000195
-	thumb_func_end ov12_0223CFD0
 
 	thumb_func_start ov12_0223D04C
 ov12_0223D04C: ; 0x0223D04C
@@ -135,9 +14,9 @@ ov12_0223D04C: ; 0x0223D04C
 	add r7, r0, #0
 	add r0, r6, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	cmp r0, #6
 	bhi _0223D084
 	add r0, r0, r0
@@ -349,9 +228,9 @@ ov12_0223D20C: ; 0x0223D20C
 	add r7, r0, #0
 	add r0, r6, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	cmp r0, #6
 	bhi _0223D244
 	add r0, r0, r0
@@ -576,9 +455,9 @@ ov12_0223D3E8: ; 0x0223D3E8
 	add r7, r0, #0
 	add r0, r6, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	beq _0223D410
 	cmp r2, #3
@@ -672,9 +551,9 @@ ov12_0223D4A8: ; 0x0223D4A8
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -696,9 +575,9 @@ ov12_0223D4D4: ; 0x0223D4D4
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	cmp r0, #0
 	beq _0223D4FA
 	cmp r0, #3
@@ -837,12 +716,12 @@ ov12_0223D5F0: ; 0x0223D5F0
 	add r6, r0, #0
 	ldr r0, [sp]
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r0, [sp]
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r5, r0, #0
 	ldr r0, [sp]
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	cmp r5, #0
 	beq _0223D620
@@ -970,9 +849,9 @@ ov12_0223D700: ; 0x0223D700
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	cmp r0, #0xc
 	bhi _0223D744
 	add r0, r0, r0
@@ -1194,12 +1073,12 @@ ov12_0223D8B0: ; 0x0223D8B0
 	add r5, r0, #0
 	add r0, r7, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r7, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r7, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	cmp r6, #0xc
 	bhi _0223D8FE
@@ -1409,7 +1288,7 @@ ov12_0223DA48: ; 0x0223DA48
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	mov r4, #0
 	cmp r5, #0
 	ble _0223DA70
@@ -1434,9 +1313,9 @@ ov12_0223DA74: ; 0x0223DA74
 	add r6, r0, #0
 	add r0, r7, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r7, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	beq _0223DA9C
 	cmp r2, #3
@@ -1529,9 +1408,9 @@ ov12_0223DB2C: ; 0x0223DB2C
 	add r7, r0, #0
 	ldr r0, [sp]
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r0, [sp]
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	ldr r4, _0223DBEC ; =0x00000000
 	beq _0223DB56
@@ -1632,9 +1511,9 @@ ov12_0223DBF4: ; 0x0223DBF4
 	add r6, r0, #0
 	add r0, r7, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r7, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	beq _0223DC1C
 	cmp r2, #3
@@ -1727,7 +1606,7 @@ ov12_0223DCAC: ; 0x0223DCAC
 	beq _0223DCC4
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _0223DCCA
 _0223DCC4:
 	add r0, r4, #0
@@ -1929,7 +1808,7 @@ ov12_0223DE4C: ; 0x0223DE4C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov12_0223DCE0
@@ -1958,7 +1837,7 @@ ov12_0223DE84: ; 0x0223DE84
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov12_0223DCE0
@@ -1981,7 +1860,7 @@ ov12_0223DEB0: ; 0x0223DEB0
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r0, _0223DEEC ; =0x0000213C
 	ldr r1, [r4, r0]
 	mov r0, #1
@@ -2016,7 +1895,7 @@ ov12_0223DEF0: ; 0x0223DEF0
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
 	add r1, sp, #0x24
 	bl ov12_022478F4
@@ -2042,7 +1921,7 @@ ov12_0223DF24: ; 0x0223DF24
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
 	add r1, sp, #0x24
 	bl ov12_022478F4
@@ -2073,7 +1952,7 @@ ov12_0223DF64: ; 0x0223DF64
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r1, r4, #0
 	add r4, #0xf4
 	add r0, r5, #0
@@ -2092,7 +1971,7 @@ ov12_0223DF84: ; 0x0223DF84
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
 	add r1, sp, #0
 	bl ov12_022478F4
@@ -2115,9 +1994,9 @@ ov12_0223DFB0: ; 0x0223DFB0
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r4, #0
 	add r1, sp, #0x24
@@ -2154,9 +2033,9 @@ ov12_0223E004: ; 0x0223E004
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	cmp r0, #0xff
 	bne _0223E022
 	mov r0, #0x49
@@ -2218,15 +2097,15 @@ ov12_0223E080: ; 0x0223E080
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #8]
 	cmp r6, #0xff
 	bne _0223E0B2
@@ -2301,9 +2180,9 @@ ov12_0223E12C: ; 0x0223E12C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -2326,9 +2205,9 @@ ov12_0223E160: ; 0x0223E160
 	str r0, [sp]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	ldr r0, [sp]
 	add r1, r4, #0
@@ -2408,9 +2287,9 @@ ov12_0223E200: ; 0x0223E200
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -2430,9 +2309,9 @@ ov12_0223E22C: ; 0x0223E22C
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r6, #0
 	add r1, r5, #0
@@ -2478,7 +2357,7 @@ ov12_0223E290: ; 0x0223E290
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r2, [r4, #0x74]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -2524,9 +2403,9 @@ ov12_0223E2F0: ; 0x0223E2F0
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ov12_0223A7E0
@@ -2568,7 +2447,7 @@ _0223E342:
 	mov r1, #1
 	add r0, r5, #0
 	mvn r1, r1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
 	add r0, #0xf0
 	ldr r0, [r0]
@@ -2603,12 +2482,12 @@ ov12_0223E38C: ; 0x0223E38C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -2631,18 +2510,18 @@ ov12_0223E3C4: ; 0x0223E3C4
 	str r0, [sp]
 	add r0, r6, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #4]
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r5, r0, #0
 	ldr r0, [sp]
 	ldr r2, [sp, #4]
@@ -2711,7 +2590,7 @@ _0223E462:
 	beq _0223E46E
 	add r0, r6, #0
 	add r1, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _0223E46E:
 	mov r0, #0
 	add sp, #8
@@ -2726,21 +2605,21 @@ ov12_0223E474: ; 0x0223E474
 	str r0, [sp]
 	add r0, r6, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #4]
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #8]
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r5, r0, #0
 	ldr r0, [sp]
 	ldr r2, [sp, #4]
@@ -2807,7 +2686,7 @@ _0223E518:
 	beq _0223E524
 	add r0, r6, #0
 	add r1, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _0223E524:
 	mov r0, #0
 	add sp, #0xc
@@ -2822,7 +2701,7 @@ ov12_0223E52C: ; 0x0223E52C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov12_0226371C
@@ -2837,9 +2716,9 @@ ov12_0223E548: ; 0x0223E548
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #1
@@ -2854,7 +2733,7 @@ ov12_0223E568: ; 0x0223E568
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r2, _0223E58C ; =0x00003044
 	add r0, r4, #0
 	ldr r2, [r4, r2]
@@ -2879,9 +2758,9 @@ ov12_0223E594: ; 0x0223E594
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	ldr r2, _0223E62C ; =0x0000213C
 	mov r1, #1
 	ldr r3, [r4, r2]
@@ -2961,7 +2840,7 @@ ov12_0223E63C: ; 0x0223E63C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
 	bl ov12_0223A7E0
 	mov r1, #1
@@ -3018,9 +2897,9 @@ ov12_0223E6A0: ; 0x0223E6A0
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r1, r0, #0
 	ldr r0, _0223E814 ; =0x00000195
 	ldrb r2, [r6, r0]
@@ -3178,7 +3057,7 @@ _0223E800:
 	b _0223E80E
 _0223E808:
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _0223E80E:
 	mov r0, #0
 	add sp, #8
@@ -3195,7 +3074,7 @@ ov12_0223E81C: ; 0x0223E81C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	mov r0, #5
 	mov r1, #0x58
 	bl AllocFromHeap
@@ -3231,7 +3110,7 @@ ov12_0223E85C: ; 0x0223E85C
 	bne _0223E872
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _0223E872:
 	ldr r1, _0223E884 ; =0x00003154
 	mov r0, #1
@@ -3252,9 +3131,9 @@ ov12_0223E888: ; 0x0223E888
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -3270,7 +3149,7 @@ ov12_0223E8A0: ; 0x0223E8A0
 	add r7, r0, #0
 	ldr r0, [sp, #8]
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	mov r4, #0
 	add r5, r4, #0
 	cmp r7, #0
@@ -3503,7 +3382,7 @@ _0223EA6A:
 	str r0, [r5, r1]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _0223EA7E:
 	ldr r1, _0223EA9C ; =0x00003154
 	mov r0, #1
@@ -3528,9 +3407,9 @@ ov12_0223EAA0: ; 0x0223EAA0
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	cmp r0, #1
 	beq _0223EAC2
 	cmp r0, #6
@@ -3607,9 +3486,9 @@ ov12_0223EB40: ; 0x0223EB40
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	mov r0, #0
 	cmp r4, #0
@@ -3625,7 +3504,7 @@ _0223EB68:
 	str r0, [r5, #0x78]
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _0223EB82
 _0223EB7A:
 	add r0, r0, #1
@@ -3645,9 +3524,9 @@ ov12_0223EB88: ; 0x0223EB88
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	mov r0, #5
 	mov r1, #0x58
@@ -3694,7 +3573,7 @@ ov12_0223EBE4: ; 0x0223EBE4
 	bne _0223EBFA
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _0223EBFA:
 	ldr r1, _0223EC0C ; =0x00003154
 	mov r0, #1
@@ -3716,12 +3595,12 @@ ov12_0223EC10: ; 0x0223EC10
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	ldr r0, _0223EC7C ; =0x0000217D
 	ldrb r0, [r5, r0]
@@ -3775,15 +3654,15 @@ ov12_0223EC84: ; 0x0223EC84
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp]
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r5, r0, #0
 	ldr r2, [sp]
 	add r0, r7, #0
@@ -3919,15 +3798,15 @@ ov12_0223ED78: ; 0x0223ED78
 	add r6, r2, r0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #0x14]
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #0x10]
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	ldr r1, _0223F0DC ; =0x0000213C
 	str r0, [sp, #0xc]
 	mov r0, #0
@@ -4001,7 +3880,7 @@ _0223EE0E:
 	bhi _0223EE3E
 	ldr r1, [sp, #0x10]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _0223F36C
 _0223EE3E:
 	add r0, r5, #0
@@ -4026,7 +3905,7 @@ _0223EE3E:
 	str r1, [r0]
 	ldr r1, [sp, #0x14]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _0223F36C
 _0223EE72:
 	add r0, r5, #0
@@ -4427,7 +4306,7 @@ _0223F16C:
 	bhi _0223F19E
 	ldr r1, [sp, #0x10]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add sp, #0x18
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -4454,7 +4333,7 @@ _0223F19E:
 	str r1, [r0]
 	ldr r1, [sp, #0x14]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add sp, #0x18
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -4512,7 +4391,7 @@ _0223F218:
 	bhi _0223F248
 	ldr r1, [sp, #0x10]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add sp, #0x18
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -4539,7 +4418,7 @@ _0223F248:
 	str r1, [r0]
 	ldr r1, [sp, #0x14]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add sp, #0x18
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -4554,7 +4433,7 @@ _0223F280:
 	bne _0223F29E
 	ldr r1, [sp, #0xc]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add sp, #0x18
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -4569,7 +4448,7 @@ _0223F29E:
 	bne _0223F2BC
 	ldr r1, [sp, #0x10]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add sp, #0x18
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -4579,7 +4458,7 @@ _0223F2BC:
 	beq _0223F2D0
 	ldr r1, [sp, #0x14]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add sp, #0x18
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -4684,18 +4563,18 @@ ov12_0223F38C: ; 0x0223F38C
 	str r0, [sp]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	ldr r0, [sp]
 	ldr r2, [sp, #8]
@@ -4837,12 +4716,12 @@ ov12_0223F4B0: ; 0x0223F4B0
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r5, #0
@@ -4867,12 +4746,12 @@ ov12_0223F4EC: ; 0x0223F4EC
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -4895,18 +4774,18 @@ ov12_0223F524: ; 0x0223F524
 	str r0, [sp]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #8]
 	cmp r4, #0
 	bne _0223F59A
@@ -4926,7 +4805,7 @@ _0223F566:
 	bne _0223F590
 	ldr r1, [sp, #8]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r5, #0x80
 	str r4, [r5]
 	b _0223F5DC
@@ -4957,7 +4836,7 @@ _0223F59A:
 	bne _0223F5DC
 	ldr r1, [sp, #8]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r5, #0x80
 	str r4, [r5]
 	b _0223F5DC
@@ -4969,7 +4848,7 @@ _0223F5C4:
 	beq _0223F5DC
 	ldr r1, [sp, #8]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r5, #0x80
 	str r4, [r5]
 _0223F5DC:
@@ -4986,12 +4865,12 @@ ov12_0223F5E4: ; 0x0223F5E4
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r7, #0
 	bl ov12_0223BD98
@@ -5013,15 +4892,15 @@ ov12_0223F61C: ; 0x0223F61C
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp]
 	add r0, r7, #0
 	add r1, r5, #0
@@ -5166,18 +5045,18 @@ ov12_0223F734: ; 0x0223F734
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r5, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #8]
 	ldr r2, [sp, #4]
 	add r0, r7, #0
@@ -5349,12 +5228,12 @@ ov12_0223F894: ; 0x0223F894
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r1, r0, #0
 	add r0, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -5366,9 +5245,9 @@ ov12_0223F8B4: ; 0x0223F8B4
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #1
@@ -5384,9 +5263,9 @@ ov12_0223F8D4: ; 0x0223F8D4
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -5412,7 +5291,7 @@ ov12_0223F904: ; 0x0223F904
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r1, [r5, #0x64]
 	lsl r0, r1, #1
 	add r2, r5, r0
@@ -5546,7 +5425,7 @@ ov12_0223FA1C: ; 0x0223FA1C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
 	bl ov12_0223A7F0
 	mov r2, #0
@@ -5589,9 +5468,9 @@ ov12_0223FA6C: ; 0x0223FA6C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -5611,9 +5490,9 @@ ov12_0223FA98: ; 0x0223FA98
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -5633,12 +5512,12 @@ ov12_0223FAC4: ; 0x0223FAC4
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -5660,12 +5539,12 @@ ov12_0223FAFC: ; 0x0223FAFC
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -5837,7 +5716,7 @@ ov12_0223FC4C: ; 0x0223FC4C
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r0, _0223FCD4 ; =0x00002420
 	ldrb r0, [r5, r0]
 	cmp r0, #1
@@ -5910,12 +5789,12 @@ ov12_0223FCDC: ; 0x0223FCDC
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	add r0, r6, #0
 	bl ov12_0223B6D4
@@ -5960,15 +5839,15 @@ ov12_0223FD40: ; 0x0223FD40
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #4]
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	add r0, r6, #0
 	bl ov12_0223B6D4
@@ -6025,12 +5904,12 @@ ov12_0223FDCC: ; 0x0223FDCC
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r7, #0
 	add r1, r5, #0
@@ -6079,9 +5958,9 @@ ov12_0223FE3C: ; 0x0223FE3C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -6106,9 +5985,9 @@ ov12_0223FE74: ; 0x0223FE74
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -6133,9 +6012,9 @@ ov12_0223FEAC: ; 0x0223FEAC
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -6155,9 +6034,9 @@ ov12_0223FED8: ; 0x0223FED8
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -6177,9 +6056,9 @@ ov12_0223FF04: ; 0x0223FF04
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -6202,9 +6081,9 @@ ov12_0223FF34: ; 0x0223FF34
 	str r0, [sp]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #4]
 	ldr r1, [r4, #0x64]
 	add r0, r4, #0
@@ -6213,7 +6092,7 @@ ov12_0223FF34: ; 0x0223FF34
 	bne _0223FF66
 	ldr r1, [sp, #4]
 	add r0, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add sp, #0xc
 	mov r0, #0
 	pop {r4, r5, r6, r7, pc}
@@ -6300,7 +6179,7 @@ _0223FFF8:
 	bne _02240008
 	ldr r1, [sp, #4]
 	add r0, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _0224009C
 _02240008:
 	ldr r7, _022400A4 ; =0x00002D4C
@@ -6393,18 +6272,18 @@ ov12_022400B0: ; 0x022400B0
 	str r0, [sp]
 	add r0, r6, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #4]
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r5, r0, #0
 	ldr r0, [sp]
 	add r1, r6, #0
@@ -6485,7 +6364,7 @@ _02240168:
 	beq _02240174
 	add r0, r6, #0
 	add r1, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02240174:
 	mov r0, #0
 	add sp, #8
@@ -6501,21 +6380,21 @@ ov12_0224017C: ; 0x0224017C
 	str r0, [sp]
 	add r0, r6, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #4]
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #8]
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r5, r0, #0
 	ldr r0, [sp]
 	add r1, r6, #0
@@ -6595,7 +6474,7 @@ _0224023C:
 	beq _02240248
 	add r0, r6, #0
 	add r1, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02240248:
 	mov r0, #0
 	add sp, #0xc
@@ -6610,7 +6489,7 @@ ov12_02240250: ; 0x02240250
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	mov r0, #0x53
 	lsl r0, r0, #2
 	ldr r1, _02240298 ; =0x00002168
@@ -6651,9 +6530,9 @@ ov12_022402A0: ; 0x022402A0
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp]
 	ldr r1, [r5, #0x64]
 	add r0, r7, #0
@@ -6669,7 +6548,7 @@ ov12_022402A0: ; 0x022402A0
 	beq _022402E4
 	ldr r1, [sp]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r1, _02240374 ; =0x0000216C
 	mov r0, #0x40
 	ldr r2, [r5, r1]
@@ -6762,9 +6641,9 @@ ov12_02240380: ; 0x02240380
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp]
 	ldr r1, [r5, #0x64]
 	add r0, r7, #0
@@ -6780,7 +6659,7 @@ ov12_02240380: ; 0x02240380
 	beq _022403C4
 	ldr r1, [sp]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r1, _02240458 ; =0x0000216C
 	mov r0, #0x40
 	ldr r2, [r5, r1]
@@ -6873,9 +6752,9 @@ ov12_02240460: ; 0x02240460
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	ldr r1, [r4, #0x64]
 	add r0, r5, #0
@@ -6891,7 +6770,7 @@ ov12_02240460: ; 0x02240460
 	beq _022404A4
 	add r0, r4, #0
 	add r1, r7, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r1, _022404D4 ; =0x0000216C
 	mov r0, #0x40
 	ldr r2, [r4, r1]
@@ -6936,7 +6815,7 @@ ov12_022404E0: ; 0x022404E0
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r1, _022406B4 ; =0x0000213C
 	mov r0, #1
 	ldr r2, [r4, r1]
@@ -7185,12 +7064,12 @@ ov12_022406D4: ; 0x022406D4
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -7212,12 +7091,12 @@ ov12_0224070C: ; 0x0224070C
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r6, #0
 	add r1, r5, #0
@@ -7256,9 +7135,9 @@ ov12_02240764: ; 0x02240764
 	add r6, r1, #0
 	add r0, r6, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp]
 	ldr r0, [r6, #0x6c]
 	lsl r0, r0, #1
@@ -7297,7 +7176,7 @@ ov12_02240764: ; 0x02240764
 _022407BE:
 	ldr r1, [sp]
 	add r0, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _02240884
 _022407C8:
 	mov r2, #0
@@ -7397,7 +7276,7 @@ _0224082A:
 _0224087C:
 	ldr r1, [sp]
 	add r0, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02240884:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -7416,7 +7295,7 @@ ov12_0224089C: ; 0x0224089C
 	add r7, r0, #0
 	add r0, r6, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r4, _022408F4 ; =0x00002D4C
 _022408AC:
 	add r0, r7, #0
@@ -7466,9 +7345,9 @@ ov12_022408FC: ; 0x022408FC
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	mov r0, #0xb5
 	lsl r0, r0, #6
@@ -7543,7 +7422,7 @@ ov12_022408FC: ; 0x022408FC
 _022409A2:
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _022409AA:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -7560,7 +7439,7 @@ ov12_022409B8: ; 0x022409B8
 	str r0, [sp]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r1, [r5, #0x64]
 	lsl r0, r1, #6
 	add r2, r5, r0
@@ -7686,7 +7565,7 @@ ov12_02240AB4: ; 0x02240AB4
 	str r0, [sp]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r1, [r5, #0x64]
 	lsl r0, r1, #6
 	add r2, r5, r0
@@ -7811,9 +7690,9 @@ ov12_02240BB0: ; 0x02240BB0
 	str r0, [sp]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	mov r0, #0xb5
 	lsl r0, r0, #6
@@ -7906,7 +7785,7 @@ _02240C72:
 	str r0, [r5, r1]
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02240C84:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -7925,9 +7804,9 @@ ov12_02240C98: ; 0x02240C98
 	str r0, [sp, #4]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #8]
 	ldr r1, [r5, #0x64]
 	add r0, r5, #0
@@ -7936,7 +7815,7 @@ ov12_02240C98: ; 0x02240C98
 	bne _02240CCA
 	ldr r1, [sp, #8]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add sp, #0x10
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -7975,7 +7854,7 @@ _02240CE2:
 	beq _02240D16
 	ldr r1, [sp, #8]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add sp, #0x10
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -8121,7 +8000,7 @@ _02240E16:
 _02240E30:
 	ldr r1, [sp, #8]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	mov r0, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -8145,9 +8024,9 @@ ov12_02240E58: ; 0x02240E58
 	str r0, [sp, #8]
 	add r0, r6, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	mov ip, r0
 	ldr r1, [r6, #0x64]
 	mov r0, #0xc0
@@ -8178,7 +8057,7 @@ ov12_02240E58: ; 0x02240E58
 _02240EAA:
 	add r0, r6, #0
 	mov r1, ip
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _02240F62
 _02240EB4:
 	mov r0, #0
@@ -8270,7 +8149,7 @@ _02240EEC:
 _02240F5A:
 	add r0, r6, #0
 	mov r1, ip
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02240F62:
 	mov r0, #0
 	add sp, #0xc
@@ -8291,9 +8170,9 @@ ov12_02240F7C: ; 0x02240F7C
 	str r0, [sp, #4]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	mov r7, #0
 	str r0, [sp, #8]
 	add r6, r7, #0
@@ -8351,7 +8230,7 @@ _02240FE2:
 	bne _0224100C
 	ldr r1, [sp, #8]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _0224103E
 _0224100C:
 	mov r7, #0x1e
@@ -8392,7 +8271,7 @@ ov12_02241048: ; 0x02241048
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r1, [r4, #0x64]
 	mov r0, #0xc0
 	mul r0, r1
@@ -8435,9 +8314,9 @@ ov12_0224109C: ; 0x0224109C
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	ldr r2, [r5, #0x6c]
 	add r4, r0, #0
 	lsl r0, r2, #1
@@ -8468,7 +8347,7 @@ ov12_0224109C: ; 0x0224109C
 _022410E8:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _02241132
 _022410F2:
 	mov r1, #4
@@ -8502,7 +8381,7 @@ _022410FA:
 _0224112A:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02241132:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -8520,7 +8399,7 @@ ov12_02241140: ; 0x02241140
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	mov r1, #0x4d
 	mov r0, #0
 	lsl r1, r1, #2
@@ -8686,12 +8565,12 @@ ov12_02241290: ; 0x02241290
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp]
 	add r0, r6, #0
 	bl ov12_0223A7E0
@@ -8711,7 +8590,7 @@ ov12_02241290: ; 0x02241290
 	bne _022412E0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _022413A4
 _022412E0:
 	ldr r0, [r5, #0x64]
@@ -8730,7 +8609,7 @@ _022412E0:
 	beq _02241308
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _022413A4
 _02241308:
 	ldr r1, [r5, #0x64]
@@ -8746,7 +8625,7 @@ _02241308:
 _02241320:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _022413A4
 _0224132A:
 	ldr r2, [r5, #0x6c]
@@ -8760,7 +8639,7 @@ _0224132A:
 	bne _02241346
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _022413A4
 _02241346:
 	add r3, #0x14
@@ -8775,7 +8654,7 @@ _02241346:
 _02241358:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _022413A4
 _02241362:
 	cmp r0, #0
@@ -8788,7 +8667,7 @@ _02241362:
 	bne _0224137E
 	ldr r1, [sp]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _022413A4
 _0224137E:
 	ldr r1, [r5, #0x64]
@@ -8808,7 +8687,7 @@ _0224137E:
 _0224139C:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _022413A4:
 	mov r0, #0
 	add sp, #8
@@ -8826,9 +8705,9 @@ ov12_022413B4: ; 0x022413B4
 	str r0, [sp]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	ldr r1, [r5, #0x64]
 	str r0, [sp, #8]
 	lsl r0, r1, #1
@@ -8961,7 +8840,7 @@ _022414BE:
 	str r0, [r4, r7]
 	ldr r1, [sp, #8]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _022414CE:
 	mov r0, #0
 	add sp, #0xc
@@ -8982,9 +8861,9 @@ ov12_022414F0: ; 0x022414F0
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	ldr r1, [r5, #0x64]
 	mov r0, #0xc0
@@ -9005,7 +8884,7 @@ ov12_022414F0: ; 0x022414F0
 	bgt _02241532
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _02241556
 _02241532:
 	ldr r1, _02241564 ; =0x0000215C
@@ -9044,9 +8923,9 @@ ov12_0224156C: ; 0x0224156C
 	str r1, [sp, #4]
 	add r0, r1, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r0, [sp, #4]
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #0x1c]
 	ldr r0, [sp]
 	bl ov12_0223A7E0
@@ -9163,7 +9042,7 @@ _02241662:
 	bgt _02241672
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0x1c]
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _022416FA
 _02241672:
 	ldr r0, [sp]
@@ -9216,7 +9095,7 @@ _02241680:
 _022416DC:
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0x1c]
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _022416FA
 _022416E6:
 	ldr r0, [sp]
@@ -9226,7 +9105,7 @@ _022416E6:
 	bne _022416FA
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0x1c]
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _022416FA:
 	mov r0, #0
 	add sp, #0x20
@@ -9242,7 +9121,7 @@ ov12_02241708: ; 0x02241708
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r5, [r4, #0x64]
 	ldr r1, _022418D8 ; =0x00002DB0
 	add r0, r5, #0
@@ -9492,9 +9371,9 @@ ov12_022418FC: ; 0x022418FC
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	ldr r1, [r4, #0x64]
 	add r0, r5, #0
@@ -9524,7 +9403,7 @@ ov12_022418FC: ; 0x022418FC
 	str r1, [r2, r0]
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _0224197A
 _02241952:
 	add r1, r2, #0
@@ -9560,12 +9439,12 @@ ov12_02241980: ; 0x02241980
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r6, #0
 	add r1, r5, #0
@@ -9607,7 +9486,7 @@ ov12_02241980: ; 0x02241980
 _022419EE:
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _022419F6:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -9624,9 +9503,9 @@ ov12_02241A04: ; 0x02241A04
 	str r1, [sp]
 	add r0, r1, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r0, [sp]
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #8]
 	add r0, r4, #0
 	bl ov12_0223A7F0
@@ -9696,7 +9575,7 @@ _02241A94:
 	bne _02241AA2
 	ldr r0, [sp]
 	ldr r1, [sp, #8]
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02241AA2:
 	mov r0, #0
 	add sp, #0xc
@@ -9714,9 +9593,9 @@ ov12_02241AB4: ; 0x02241AB4
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -9741,12 +9620,12 @@ ov12_02241AEC: ; 0x02241AEC
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -9760,7 +9639,7 @@ ov12_02241AEC: ; 0x02241AEC
 	bhs _02241B2A
 	add r0, r4, #0
 	add r1, r7, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02241B2A:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -9775,9 +9654,9 @@ ov12_02241B30: ; 0x02241B30
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r6, #0
 	add r1, r5, #0
@@ -10119,7 +9998,7 @@ ov12_02241DF4: ; 0x02241DF4
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r6, [r4, #0x64]
 	mov r0, #0xb5
 	lsl r0, r0, #2
@@ -10259,7 +10138,7 @@ ov12_02241F10: ; 0x02241F10
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r2, [r4, #0x64]
 	mov r0, #0xc0
 	add r1, r2, #0
@@ -10332,9 +10211,9 @@ ov12_02241FA0: ; 0x02241FA0
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r3, r0, #0
 	add r0, r4, #0
 	add r0, #0x94
@@ -10370,7 +10249,7 @@ ov12_02241FA0: ; 0x02241FA0
 _02241FF2:
 	add r0, r4, #0
 	add r1, r3, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _02242016
 _02241FFC:
 	bl MaskOfFlagNo
@@ -10400,9 +10279,9 @@ ov12_02242024: ; 0x02242024
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	ldr r1, [r4, #0x64]
 	add r0, r5, #0
@@ -10418,7 +10297,7 @@ ov12_02242024: ; 0x02242024
 	beq _02242068
 	add r0, r4, #0
 	add r1, r7, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r1, _022420AC ; =0x0000216C
 	mov r0, #0x40
 	ldr r2, [r4, r1]
@@ -10474,9 +10353,9 @@ ov12_022420B8: ; 0x022420B8
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ov12_0223BD98
@@ -10515,7 +10394,7 @@ _022420FC:
 	str r0, [r4, r1]
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _0224211A:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -10532,7 +10411,7 @@ ov12_0224212C: ; 0x0224212C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r0, _022421CC ; =0x00003120
 	ldrb r0, [r4, r0]
 	cmp r0, #0
@@ -10622,15 +10501,15 @@ ov12_022421D4: ; 0x022421D4
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp]
 	add r0, r6, #0
 	add r1, r5, #0
@@ -10645,7 +10524,7 @@ ov12_022421D4: ; 0x022421D4
 	bne _0224221E
 	ldr r1, [sp]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _02242232
 _0224221E:
 	cmp r7, #1
@@ -10818,7 +10697,7 @@ _0224233A:
 _02242366:
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -10834,7 +10713,7 @@ ov12_02242380: ; 0x02242380
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	mov r0, #6
 	lsl r0, r0, #6
 	ldr r1, [r4, r0]
@@ -10915,7 +10794,7 @@ ov12_02242424: ; 0x02242424
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r0, _02242504 ; =0x00002D54
 	ldr r1, [r4, #0x64]
 	add r3, r4, r0
@@ -11032,7 +10911,7 @@ ov12_02242510: ; 0x02242510
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r2, _02242568 ; =0x00002D58
 	mov r1, #0
 	mov r3, #0xc0
@@ -11084,9 +10963,9 @@ ov12_02242570: ; 0x02242570
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	ldr r1, [r4, #0x6c]
 	add r2, r0, #0
 	mov r0, #0x62
@@ -11183,7 +11062,7 @@ ov12_02242570: ; 0x02242570
 _02242648:
 	add r0, r4, #0
 	add r1, r2, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02242650:
 	mov r0, #0
 	add sp, #0x18
@@ -11200,18 +11079,18 @@ ov12_0224265C: ; 0x0224265C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #8]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -11239,7 +11118,7 @@ ov12_0224265C: ; 0x0224265C
 	beq _022426CC
 	ldr r1, [sp, #8]
 	add r0, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _022426CC:
 	mov r0, #0
 	add sp, #0x10
@@ -11256,9 +11135,9 @@ ov12_022426DC: ; 0x022426DC
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	ldr r2, [r4, #0x64]
 	add r0, r5, #0
@@ -11269,7 +11148,7 @@ ov12_022426DC: ; 0x022426DC
 	beq _0224270A
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _0224270A:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -11284,7 +11163,7 @@ ov12_02242710: ; 0x02242710
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r1, [r5, #0x64]
 	add r0, r7, #0
 	bl ov12_0223A834
@@ -11565,7 +11444,7 @@ ov12_0224296C: ; 0x0224296C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r1, [r4, #0x64]
 	add r0, r5, #0
 	bl ov12_0223AB1C
@@ -11599,9 +11478,9 @@ ov12_022429AC: ; 0x022429AC
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ov12_0223A7E0
@@ -11656,12 +11535,12 @@ ov12_022429AC: ; 0x022429AC
 _02242A2C:
 	add r0, r5, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _02242A3E
 _02242A36:
 	add r0, r5, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02242A3E:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -11679,12 +11558,12 @@ ov12_02242A50: ; 0x02242A50
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #4]
 	add r0, r5, #0
 	bl ov12_0223A7E0
@@ -11708,7 +11587,7 @@ ov12_02242A50: ; 0x02242A50
 	bne _02242AAA
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _02242B48
 _02242AAA:
 	ldr r0, [r4, #0x64]
@@ -11743,7 +11622,7 @@ _02242AAA:
 _02242AE8:
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _02242B48
 _02242AF2:
 	ldr r1, [r4, #0x64]
@@ -11774,7 +11653,7 @@ _02242B10:
 _02242B26:
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _02242B48
 _02242B30:
 	ldr r1, [r4, #0x64]
@@ -11786,7 +11665,7 @@ _02242B30:
 	bne _02242B48
 	ldr r1, [sp, #4]
 	add r0, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02242B48:
 	mov r0, #0
 	add sp, #0xc
@@ -11802,9 +11681,9 @@ ov12_02242B58: ; 0x02242B58
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	mov r2, #0x63
 	lsl r2, r2, #2
 	ldr r3, [r4, #0x64]
@@ -11814,7 +11693,7 @@ ov12_02242B58: ; 0x02242B58
 	cmp r0, #0
 	beq _02242B82
 	add r0, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _02242B92
 _02242B82:
 	mov r0, #2
@@ -11840,9 +11719,9 @@ ov12_02242B9C: ; 0x02242B9C
 	str r1, [sp, #4]
 	add r0, r1, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r0, [sp, #4]
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	ldr r1, [sp, #4]
 	str r0, [sp, #0x14]
 	ldr r0, [sp]
@@ -11934,7 +11813,7 @@ _02242C4A:
 _02242C6A:
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0x14]
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02242C72:
 	mov r0, #0
 	add sp, #0x48
@@ -11951,9 +11830,9 @@ ov12_02242C80: ; 0x02242C80
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r4, #0
@@ -11973,7 +11852,7 @@ _02242CAE:
 	bne _02242CC0
 	add r0, r6, #0
 	add r1, r7, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _02242CD2
 _02242CC0:
 	mov r0, #0x75
@@ -12000,7 +11879,7 @@ ov12_02242CDC: ; 0x02242CDC
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r1, [r5, #0x64]
 	add r0, r6, #0
 	bl ov12_0223AB1C
@@ -12093,7 +11972,7 @@ ov12_02242D90: ; 0x02242D90
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r1, [r5, #0x64]
 	ldr r0, [r5, #0x6c]
 	lsl r4, r1, #6
@@ -12154,9 +12033,9 @@ ov12_02242E00: ; 0x02242E00
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	ldr r1, [r4, #0x6c]
 	add r0, r5, #0
@@ -12200,7 +12079,7 @@ _02242E34:
 _02242E64:
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02242E6C:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -12214,9 +12093,9 @@ ov12_02242E74: ; 0x02242E74
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r1, r0, #0
 	mov r0, #0xb7
 	lsl r0, r0, #6
@@ -12230,7 +12109,7 @@ ov12_02242E74: ; 0x02242E74
 	tst r5, r0
 	beq _02242EA6
 	add r0, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _02242EAE
 _02242EA6:
 	mov r1, #1
@@ -12250,9 +12129,9 @@ ov12_02242EB4: ; 0x02242EB4
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	ldr r1, [r5, #0x6c]
 	add r0, r4, #0
@@ -12369,7 +12248,7 @@ _02242F2E:
 _02242FB4:
 	add r0, r5, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02242FBC:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -12388,7 +12267,7 @@ ov12_02242FD8: ; 0x02242FD8
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r0, _02243020 ; =0x00002154
 	ldr r0, [r4, r0]
 	cmp r0, #0
@@ -12434,9 +12313,9 @@ ov12_02243030: ; 0x02243030
 	str r0, [sp]
 	add r0, r7, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r7, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #0x14]
 	ldr r0, [sp]
 	ldr r1, [r7, #0x64]
@@ -12473,7 +12352,7 @@ ov12_02243030: ; 0x02243030
 	beq _02243098
 	ldr r1, [sp, #0x14]
 	add r0, r7, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _0224313C
 _02243098:
 	ldr r0, [sp]
@@ -12548,7 +12427,7 @@ _02243112:
 	bne _02243124
 	ldr r1, [sp, #0x14]
 	add r0, r7, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _0224313C
 _02243124:
 	mov r0, #0xb7
@@ -12578,9 +12457,9 @@ ov12_02243148: ; 0x02243148
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp]
 	ldr r1, [r4, #0x6c]
 	add r0, r7, #0
@@ -12646,7 +12525,7 @@ ov12_02243148: ; 0x02243148
 _022431E0:
 	ldr r1, [sp]
 	add r0, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _022431E8:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -12661,9 +12540,9 @@ ov12_022431F0: ; 0x022431F0
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r4, #0
@@ -12683,7 +12562,7 @@ _0224321E:
 	bne _02243230
 	add r0, r6, #0
 	add r1, r7, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _02243242
 _02243230:
 	mov r0, #0x75
@@ -12708,7 +12587,7 @@ ov12_0224324C: ; 0x0224324C
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r2, [r4, #0x6c]
 	mov r1, #0xc0
 	mul r1, r2
@@ -12759,7 +12638,7 @@ ov12_022432AC: ; 0x022432AC
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	mov r0, #0xd
 	str r0, [sp]
 	add r0, r5, #0
@@ -12858,9 +12737,9 @@ ov12_0224336C: ; 0x0224336C
 	str r0, [sp]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #0x10]
 	ldr r0, [sp]
 	bl ov12_0223A7F0
@@ -13010,7 +12889,7 @@ _022434A6:
 	bne _022434B6
 	ldr r1, [sp, #0x10]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _022434E2
 _022434B6:
 	ldr r1, [r5, #0x64]
@@ -13059,7 +12938,7 @@ ov12_02243510: ; 0x02243510
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r0, [r4, #0x64]
 	ldr r3, _02243550 ; =0x00002144
 	str r0, [sp]
@@ -13097,18 +12976,18 @@ ov12_02243558: ; 0x02243558
 	add r0, r4, #0
 	mov r1, #1
 	mov r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #8]
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r5, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #4]
 	ldr r0, [sp]
 	ldr r2, [sp, #8]
@@ -13218,7 +13097,7 @@ _0224364A:
 	beq _02243656
 	ldr r1, [sp, #4]
 	add r0, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02243656:
 	mov r0, #0
 	add sp, #0xc
@@ -13232,15 +13111,15 @@ ov12_0224365C: ; 0x0224365C
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp]
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r5, r0, #0
 	ldr r2, [sp]
 	add r0, r7, #0
@@ -13363,7 +13242,7 @@ ov12_02243754: ; 0x02243754
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r0, [r4, #0x6c]
 	ldr r1, _02243790 ; =0x000021F0
 	lsl r0, r0, #2
@@ -13399,9 +13278,9 @@ ov12_02243798: ; 0x02243798
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp]
 	ldr r1, [r5, #0x64]
 	add r0, r6, #0
@@ -13504,7 +13383,7 @@ _0224386C:
 _02243878:
 	ldr r1, [sp]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02243880:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -13519,7 +13398,7 @@ ov12_0224388C: ; 0x0224388C
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r0, [r4, #0x6c]
 	ldr r1, _022438C8 ; =0x000021A8
 	lsl r0, r0, #4
@@ -13558,7 +13437,7 @@ ov12_022438D4: ; 0x022438D4
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r1, [r4, #0x64]
 	mov r0, #0xc0
 	mul r0, r1
@@ -13593,7 +13472,7 @@ ov12_02243918: ; 0x02243918
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r1, [r4, #0x6c]
 	mov r0, #0xc0
 	mul r0, r1
@@ -13621,9 +13500,9 @@ ov12_02243950: ; 0x02243950
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	ldr r1, [r5, #0x6c]
 	mov r0, #0xc0
@@ -13698,7 +13577,7 @@ _0224398C:
 _022439F0:
 	add r0, r5, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _022439F8:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -13716,9 +13595,9 @@ ov12_02243A0C: ; 0x02243A0C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	ldr r0, _02243A64 ; =0x00003048
 	ldr r0, [r4, r0]
@@ -13748,7 +13627,7 @@ ov12_02243A0C: ; 0x02243A0C
 _02243A58:
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02243A60:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -13762,7 +13641,7 @@ ov12_02243A68: ; 0x02243A68
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r5, _02243AB8 ; =0x00002D58
 	mov r1, #0
 	ldr r3, [r4, #0x6c]
@@ -13810,9 +13689,9 @@ ov12_02243AC0: ; 0x02243AC0
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	ldr r1, [r5, #0x6c]
 	mov r0, #0xc0
@@ -13858,7 +13737,7 @@ _02243AFA:
 _02243B24:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02243B2C:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -13876,18 +13755,18 @@ ov12_02243B3C: ; 0x02243B3C
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #8]
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp]
 	ldr r2, [sp, #8]
 	add r0, r7, #0
@@ -14101,7 +13980,7 @@ _02243CE6:
 	bne _02243CF8
 	ldr r1, [sp]
 	add r0, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02243CF8:
 	ldr r0, [sp, #4]
 	cmp r0, #1
@@ -14110,7 +13989,7 @@ _02243CF8:
 	beq _02243D0A
 	ldr r1, [sp]
 	add r0, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02243D0A:
 	mov r0, #0
 	add sp, #0xc
@@ -14128,9 +14007,9 @@ ov12_02243D20: ; 0x02243D20
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r1, r0, #0
 	ldr r0, [r4, #0x6c]
 	lsl r0, r0, #6
@@ -14142,7 +14021,7 @@ ov12_02243D20: ; 0x02243D20
 	lsr r0, r0, #0x1f
 	bne _02243D4C
 	add r0, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02243D4C:
 	mov r0, #0
 	pop {r4, pc}
@@ -14154,9 +14033,9 @@ ov12_02243D50: ; 0x02243D50
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r1, r0, #0
 	ldr r0, [r4, #0x6c]
 	mov r2, #0xc0
@@ -14181,7 +14060,7 @@ ov12_02243D50: ; 0x02243D50
 	bne _02243D94
 _02243D8E:
 	add r0, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02243D94:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -14196,9 +14075,9 @@ ov12_02243D9C: ; 0x02243D9C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	ldr r2, [r4, #0x64]
 	add r0, r5, #0
@@ -14220,7 +14099,7 @@ ov12_02243D9C: ; 0x02243D9C
 _02243DD6:
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02243DDE:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -14235,9 +14114,9 @@ ov12_02243DE8: ; 0x02243DE8
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	ldr r1, [r4, #0x64]
 	add r0, r5, #0
@@ -14267,7 +14146,7 @@ ov12_02243DE8: ; 0x02243DE8
 	str r1, [r2, r0]
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _02243E66
 _02243E3E:
 	add r5, r2, #0
@@ -14304,12 +14183,12 @@ ov12_02243E6C: ; 0x02243E6C
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #4]
 	add r0, r4, #0
 	add r1, r5, #0
@@ -14372,7 +14251,7 @@ _02243EE4:
 _02243F06:
 	ldr r1, [sp, #4]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02243F0E:
 	mov r0, #0
 	add sp, #8
@@ -14389,18 +14268,18 @@ ov12_02243F18: ; 0x02243F18
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #4]
 	cmp r4, #0
 	bne _02243FC8
@@ -14433,7 +14312,7 @@ _02243F5A:
 	beq _02243FBE
 	ldr r1, [sp, #4]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r5, #0x80
 	str r4, [r5]
 	b _02244030
@@ -14455,7 +14334,7 @@ _02243F92:
 _02243FB0:
 	ldr r1, [sp, #4]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r5, #0x80
 	str r4, [r5]
 	b _02244030
@@ -14490,7 +14369,7 @@ _02243FC8:
 	beq _02244030
 	ldr r1, [sp, #4]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r5, #0x80
 	str r4, [r5]
 	b _02244030
@@ -14512,7 +14391,7 @@ _02244006:
 _02244024:
 	ldr r1, [sp, #4]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r5, #0x80
 	str r4, [r5]
 _02244030:
@@ -14531,15 +14410,15 @@ ov12_02244040: ; 0x02244040
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -14562,7 +14441,7 @@ ov12_02244040: ; 0x02244040
 	bne _0224409C
 	ldr r1, [sp]
 	add r0, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _0224409C:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -14575,7 +14454,7 @@ ov12_022440A0: ; 0x022440A0
 	add r7, r0, #0
 	add r0, r1, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	mov r0, #0
 	str r0, [sp, #8]
 	ldr r1, [sp, #8]
@@ -14759,7 +14638,7 @@ ov12_02244224: ; 0x02244224
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	mov r0, #0xb5
 	ldr r1, [r4, #0x64]
 	lsl r0, r0, #2
@@ -14783,12 +14662,12 @@ ov12_0224424C: ; 0x0224424C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -14801,7 +14680,7 @@ ov12_0224424C: ; 0x0224424C
 	bne _02244288
 	add r0, r4, #0
 	add r1, r7, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02244288:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -14815,18 +14694,18 @@ ov12_0224428C: ; 0x0224428C
 	str r0, [sp]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #4]
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	ldr r0, [sp]
 	ldr r2, [sp, #4]
@@ -14841,7 +14720,7 @@ ov12_0224428C: ; 0x0224428C
 	bne _022442F2
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _022442F2
 _022442E0:
 	add r0, r5, #0
@@ -14850,7 +14729,7 @@ _022442E0:
 	beq _022442F2
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _022442F2:
 	mov r0, #0
 	add sp, #8
@@ -14864,12 +14743,12 @@ ov12_022442F8: ; 0x022442F8
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -14899,12 +14778,12 @@ ov12_02244344: ; 0x02244344
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -14934,9 +14813,9 @@ ov12_02244390: ; 0x02244390
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	ldr r1, [r5, #0x64]
 	add r0, r5, #0
@@ -14945,7 +14824,7 @@ ov12_02244390: ; 0x02244390
 	bne _022443BE
 	add r0, r5, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 _022443BE:
@@ -14992,7 +14871,7 @@ _022443CA:
 _02244412:
 	add r0, r5, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _0224441A:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -15008,7 +14887,7 @@ ov12_02244428: ; 0x02244428
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
 	bl ov12_0223AB40
 	cmp r0, #0xc
@@ -15034,7 +14913,7 @@ ov12_02244458: ; 0x02244458
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
 	bl ov12_0223AB40
 	cmp r0, #0xc
@@ -15059,9 +14938,9 @@ ov12_02244488: ; 0x02244488
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r5, r0, #0
 	ldr r1, [r4, #0x64]
 	add r0, r4, #0
@@ -15079,7 +14958,7 @@ ov12_02244488: ; 0x02244488
 _022444BA:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _022444C2:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -15095,12 +14974,12 @@ ov12_022444D0: ; 0x022444D0
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	ldr r2, [r4, #0x6c]
 	mov r0, #0xc0
@@ -15118,7 +14997,7 @@ ov12_022444D0: ; 0x022444D0
 	bne _02244516
 	add r0, r4, #0
 	add r1, r7, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _02244544
 _02244516:
 	ldr r2, [r4, #0x6c]
@@ -15143,7 +15022,7 @@ _02244530:
 _0224453C:
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02244544:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -15158,9 +15037,9 @@ ov12_0224454C: ; 0x0224454C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	ldr r2, [r4, #0x64]
 	add r0, r5, #0
@@ -15170,7 +15049,7 @@ ov12_0224454C: ; 0x0224454C
 	beq _02244578
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02244578:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -15184,9 +15063,9 @@ ov12_0224457C: ; 0x0224457C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp]
 	mov r2, #0
 	str r2, [sp, #4]
@@ -15213,22 +15092,22 @@ ov12_022445AC: ; 0x022445AC
 	beq _022445F4
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r1, r0, #0
 	cmp r4, #0xff
 	bne _022445E2
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _022445EA
 _022445E2:
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _022445EA:
 	add r0, r6, #0
 	mov r1, #0
@@ -15257,7 +15136,7 @@ ov12_0224460C: ; 0x0224460C
 	bl ov12_0223A7F0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #6
@@ -15284,14 +15163,14 @@ ov12_0224463C: ; 0x0224463C
 	beq _0224466E
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r1, r0, #0
 	cmp r5, #0xff
 	bne _02244668
 	add r0, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _0224466E
 _02244668:
 	ldr r0, _02244680 ; =0x000021A0
@@ -15318,7 +15197,7 @@ ov12_02244688: ; 0x02244688
 	add r4, r0, #0
 	add r0, r1, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
 	bl ov12_0223A7E0
 	mov r1, #4
@@ -15339,12 +15218,12 @@ ov12_022446AC: ; 0x022446AC
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp]
 	add r0, r6, #0
 	add r1, r5, #0
@@ -15437,7 +15316,7 @@ _0224476E:
 _02244776:
 	ldr r1, [sp]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _02244782:
@@ -15458,7 +15337,7 @@ _02244786:
 _022447A0:
 	ldr r1, [sp]
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _022447A8:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -15475,9 +15354,9 @@ ov12_022447B8: ; 0x022447B8
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	ldr r1, [r5, #0x64]
 	add r0, r5, #0
@@ -15525,7 +15404,7 @@ _022447FE:
 _02244826:
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -15541,9 +15420,9 @@ ov12_02244840: ; 0x02244840
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	ldr r0, [r5, #0x64]
 	mov r4, #0xc0
@@ -15610,12 +15489,12 @@ _022448C4:
 	ble _022448E6
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _022448E6
 _022448DE:
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _022448E6:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -15628,9 +15507,9 @@ ov12_022448EC: ; 0x022448EC
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r1, r0, #0
 	ldr r0, _0224491C ; =0x000003DE
 	add r2, r4, r0
@@ -15656,15 +15535,15 @@ ov12_02244924: ; 0x02244924
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -15686,9 +15565,9 @@ ov12_02244964: ; 0x02244964
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -15707,7 +15586,7 @@ ov12_02244990: ; 0x02244990
 	add r4, r0, #0
 	add r0, r1, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
 	mov r1, #0
 	bl ov12_02263DFC
@@ -15722,9 +15601,9 @@ ov12_022449A8: ; 0x022449A8
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -15753,12 +15632,12 @@ ov12_022449E8: ; 0x022449E8
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -15772,7 +15651,7 @@ ov12_022449E8: ; 0x022449E8
 	beq _02244A26
 	add r0, r4, #0
 	add r1, r7, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02244A26:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -15786,9 +15665,9 @@ ov12_02244A2C: ; 0x02244A2C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -15808,9 +15687,9 @@ ov12_02244A58: ; 0x02244A58
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -15830,9 +15709,9 @@ ov12_02244A84: ; 0x02244A84
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -15852,9 +15731,9 @@ ov12_02244AB0: ; 0x02244AB0
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -15873,7 +15752,7 @@ ov12_02244ADC: ; 0x02244ADC
 	add r4, r0, #0
 	add r0, r1, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
 	bl ov12_02263ED4
 	mov r0, #0
@@ -15887,7 +15766,7 @@ ov12_02244AF4: ; 0x02244AF4
 	add r4, r0, #0
 	add r0, r1, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
 	bl ov12_02263EF0
 	mov r0, #0
@@ -15902,15 +15781,15 @@ ov12_02244B0C: ; 0x02244B0C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -15932,9 +15811,9 @@ ov12_02244B4C: ; 0x02244B4C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -15954,9 +15833,9 @@ ov12_02244B78: ; 0x02244B78
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	mov r2, #0x4e
 	lsl r2, r2, #2
 	add r6, r0, #0
@@ -15968,7 +15847,7 @@ ov12_02244B78: ; 0x02244B78
 	bne _02244BA8
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02244BA8:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -15983,9 +15862,9 @@ ov12_02244BAC: ; 0x02244BAC
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	cmp r2, #3
 	beq _02244BD2
@@ -16057,9 +15936,9 @@ ov12_02244C3C: ; 0x02244C3C
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	cmp r2, #3
 	beq _02244C62
@@ -16131,12 +16010,12 @@ ov12_02244CCC: ; 0x02244CCC
 	add r0, r1, #0
 	mov r1, #1
 	mov r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	ldr r0, [sp, #4]
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	ldr r0, [sp, #4]
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp, #0x14]
 	ldr r0, [sp]
 	bl ov12_0223A7E0
@@ -16262,7 +16141,7 @@ _02244DF8:
 	bne _02244E6E
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0x14]
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _02244E6E
 _02244E06:
 	ldr r0, [sp]
@@ -16310,7 +16189,7 @@ _02244E62:
 	bne _02244E6E
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0x14]
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02244E6E:
 	mov r0, #0
 	add sp, #0x18
@@ -16327,9 +16206,9 @@ ov12_02244E78: ; 0x02244E78
 	str r0, [sp]
 	add r0, r6, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	mov ip, r0
 	ldr r1, [r6, #0x6c]
 	mov r0, #0xc0
@@ -16374,7 +16253,7 @@ _02244EB0:
 _02244EE0:
 	add r0, r6, #0
 	mov r1, ip
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02244EE8:
 	mov r0, #0
 	add sp, #0x24
@@ -16391,9 +16270,9 @@ ov12_02244EF8: ; 0x02244EF8
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r7, #0
 	add r1, r4, #0
@@ -16427,9 +16306,9 @@ ov12_02244F44: ; 0x02244F44
 	add r4, r1, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r1, r0, #0
 	ldr r0, [r4, #0x64]
 	ldr r2, _02244F84 ; =0x00003124
@@ -16449,7 +16328,7 @@ ov12_02244F44: ; 0x02244F44
 	b _02244F7E
 _02244F78:
 	add r0, r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02244F7E:
 	mov r0, #0
 	pop {r4, pc}
@@ -16464,9 +16343,9 @@ ov12_02244F88: ; 0x02244F88
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	mov r2, #0x4e
 	lsl r2, r2, #2
 	add r6, r0, #0
@@ -16478,7 +16357,7 @@ ov12_02244F88: ; 0x02244F88
 	bne _02244FB8
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02244FB8:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -16490,7 +16369,7 @@ ov12_02244FBC: ; 0x02244FBC
 	add r4, r0, #0
 	add r0, r1, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
 	bl ov12_02264070
 	mov r0, #0
@@ -16505,7 +16384,7 @@ ov12_02244FD4: ; 0x02244FD4
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov12_0226408C
@@ -16520,7 +16399,7 @@ ov12_02244FF0: ; 0x02244FF0
 	add r4, r0, #0
 	add r0, r1, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
 	bl ov12_02264120
 	mov r0, #0
@@ -16537,9 +16416,9 @@ ov12_02245008: ; 0x02245008
 	add r0, r5, #0
 	mov r1, #1
 	mov r4, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	ldr r0, [sp]
 	add r1, r5, #0
@@ -16617,12 +16496,12 @@ ov12_022450B0: ; 0x022450B0
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r6, #0
 	add r1, r5, #0
@@ -16666,12 +16545,12 @@ ov12_022450B0: ; 0x022450B0
 	bne _0224513A
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	b _0224513A
 _02245132:
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _0224513A:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -16688,12 +16567,12 @@ ov12_0224514C: ; 0x0224514C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -16720,7 +16599,7 @@ ov12_0224514C: ; 0x0224514C
 _02245198:
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _022451A0:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -16736,9 +16615,9 @@ ov12_022451A8: ; 0x022451A8
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	mov r0, #0xd
 	str r0, [sp]
@@ -16761,7 +16640,7 @@ ov12_022451A8: ; 0x022451A8
 _022451E8:
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _022451F0:
 	mov r0, #0
 	add sp, #4
@@ -16776,9 +16655,9 @@ ov12_022451F8: ; 0x022451F8
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -16800,9 +16679,9 @@ ov12_02245228: ; 0x02245228
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	mov r2, #0x4e
 	lsl r2, r2, #2
 	add r6, r0, #0
@@ -16814,7 +16693,7 @@ ov12_02245228: ; 0x02245228
 	bne _02245258
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02245258:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -16827,9 +16706,9 @@ ov12_0224525C: ; 0x0224525C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -16849,9 +16728,9 @@ ov12_02245288: ; 0x02245288
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -16871,12 +16750,12 @@ ov12_022452B4: ; 0x022452B4
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -16898,9 +16777,9 @@ ov12_022452EC: ; 0x022452EC
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #0
@@ -16913,7 +16792,7 @@ ov12_022452EC: ; 0x022452EC
 	bne _02245320
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _02245320:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -16926,9 +16805,9 @@ ov12_02245324: ; 0x02245324
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	ldr r2, [r4, #0x2c]
 	mov r1, #4
 	tst r1, r2
@@ -16951,7 +16830,7 @@ _02245350:
 	mov r1, #1
 	add r0, r5, #0
 	mvn r1, r1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
 	add r0, #0xf0
 	ldr r0, [r0]
@@ -16983,12 +16862,12 @@ ov12_02245390: ; 0x02245390
 	add r5, r1, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r1, r0, #0
 	ldr r0, _022453C8 ; =0x00003044
 	ldr r0, [r5, r0]
@@ -16999,7 +16878,7 @@ ov12_02245390: ; 0x02245390
 	cmp r4, r0
 	bne _022453C2
 	add r0, r5, #0
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 _022453C2:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -17015,15 +16894,15 @@ ov12_022453D0: ; 0x022453D0
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [sp]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -17049,9 +16928,9 @@ ov12_02245418: ; 0x02245418
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -17076,12 +16955,12 @@ ov12_02245450: ; 0x02245450
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r5, #0
@@ -17116,9 +16995,9 @@ ov12_022454A0: ; 0x022454A0
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02245508
+	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	add r3, r0, #0
 	mov r2, #1
 	and r2, r3
@@ -17149,8 +17028,8 @@ _022454E0: .word 0x00003154
 _022454E4: .word ov12_0224EC74
 	thumb_func_end ov12_022454CC
 
-	thumb_func_start ov12_022454E8
-ov12_022454E8: ; 0x022454E8
+	thumb_func_start BattleScriptReadWord
+BattleScriptReadWord: ; 0x022454E8
 	add r1, r0, #0
 	add r1, #0xb4
 	ldr r1, [r1]
@@ -17167,10 +17046,10 @@ ov12_022454E8: ; 0x022454E8
 	str r1, [r0]
 	add r0, r2, #0
 	bx lr
-	thumb_func_end ov12_022454E8
+	thumb_func_end BattleScriptReadWord
 
-	thumb_func_start ov12_02245508
-ov12_02245508: ; 0x02245508
+	thumb_func_start BattleScriptIncrementPointer
+BattleScriptIncrementPointer: ; 0x02245508
 	add r2, r0, #0
 	add r2, #0xb4
 	ldr r2, [r2]
@@ -17179,7 +17058,7 @@ ov12_02245508: ; 0x02245508
 	str r1, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end ov12_02245508
+	thumb_func_end BattleScriptIncrementPointer
 
 	thumb_func_start ov12_02245518
 ov12_02245518: ; 0x02245518
@@ -21676,10 +21555,10 @@ ov12_022478F4: ; 0x022478F4
 	add r7, r0, #0
 	add r4, r1, #0
 	mov r6, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [r4]
 	add r0, r7, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [r4, #4]
 	cmp r0, #0x3c
 	bhi _022479A8
@@ -21773,7 +21652,7 @@ _022479A8:
 	ble _022479BE
 _022479AE:
 	add r0, r7, #0
-	bl ov12_022454E8
+	bl BattleScriptReadWord
 	str r0, [r4, #8]
 	add r5, r5, #1
 	add r4, r4, #4
@@ -23439,6 +23318,7 @@ ov12_0226C4C6: ; 0x0226C4C6
 	.byte 0x7C, 0x00, 0x2D, 0x00, 0x7D, 0x00, 0x00, 0x00, 0x7E, 0x00, 0x00, 0x00, 0x7F, 0x00, 0x00, 0x00
 	.byte 0x80, 0x00, 0x00, 0x00, 0x1E, 0x00, 0x08, 0x00
 
+.public sBattleScriptCommandTable;
  
 sBattleScriptCommandTable: ; 0x0226C6C8
 	.word ov12_0223CFB8

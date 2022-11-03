@@ -11745,8 +11745,8 @@
 .public ov12_02245450
 .public ov12_022454A0
 .public ov12_022454CC
-.public ov12_022454E8
-.public ov12_02245508
+.public BattleScriptReadWord
+.public BattleScriptIncrementPointer
 .public ov12_02245518
 .public ov12_02245520
 .public ov12_02245528
