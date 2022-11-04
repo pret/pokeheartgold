@@ -685,3 +685,88 @@ BOOL ov12_0223DCAC(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     return FALSE;
 }
+
+//TODO: Put in appropriate header:
+int ov12_02256FF8(BattleSystem *bsys, BATTLECONTEXT *ctx, u32, u32, u32, u16, u8, u8, u8, u8);
+
+static void ov12_0223DCE0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int type;
+
+    if (ov12_022527CC(ctx, ctx->attackerBattlerId) == ABILITY_NORMALIZE) {
+        type = TYPE_NORMAL;
+    } else if (ctx->moveType) {
+        type = ctx->moveType;
+    } else {
+        type = ctx->unk_334.unkA8[ctx->field115_0xdcc].moveType;
+    }
+
+    ctx->unk_2144 = ov12_02256FF8(bsys, ctx, ctx->field115_0xdcc, ctx->field71_0x168[ov12_0223AB1C(bsys, ctx->targetBattlerId)], ctx->unk_180, ctx->movePower, type, ctx->attackerBattlerId, ctx->targetBattlerId, ctx->unk_2150);
+
+    ctx->unk_2144 *= ctx->unk_2150;
+
+    if (ov12_02255830(ctx, ctx->attackerBattlerId) == 0x62) {
+        ctx->unk_2144 = ctx->unk_2144 * (100 + ov12_02255844(ctx, ctx->attackerBattlerId, 0))/100;
+    }
+
+    if (ov12_02255830(ctx, ctx->attackerBattlerId) == 0x69) {
+        ctx->unk_2144 = ctx->unk_2144 * (10 + ctx->battleMons[ctx->attackerBattlerId].unk88.unk4_17)/10;
+    }
+
+    //Me First
+    if (ctx->battleMons[ctx->attackerBattlerId].unk88.me_first_flag) {
+        if (ctx->unk_174 == ctx->battleMons[ctx->attackerBattlerId].unk88.unk10) {
+            ctx->battleMons[ctx->attackerBattlerId].unk88.unk10--;
+        }
+        if ((ctx->unk_174 - ctx->battleMons[ctx->attackerBattlerId].unk88.unk10) < 2) {
+            ctx->unk_2144 = ctx->unk_2144*15/10;
+        } else {
+            ctx->battleMons[ctx->attackerBattlerId].unk88.me_first_flag = 0;
+        }
+    }
+}
+
+BOOL ov12_0223DE4C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+    
+    ov12_0223DCE0(bsys, ctx);
+    //TODO: Declare in header
+    ctx->unk_2144 = ov12_02257C30(bsys, ctx, ctx->unk_2144);
+    ctx->unk_2144 *= -1;
+
+    return FALSE;
+}
+
+BOOL ov12_0223DE84(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+    
+    ov12_0223DCE0(bsys, ctx);
+    ctx->unk_2144 *= -1;
+
+    return FALSE;
+}
+
+BOOL ov12_0223DEB0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    if ((ctx->unk_213C & 1) == FALSE) {
+        ov12_022633B8(bsys, ctx);
+    }
+    
+    ctx->unk_213C |= 1; 
+    ctx->unk_2140 |= 4;
+
+    return FALSE;
+}
+
+BOOL ov12_0223DEF0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BATTLEMSGDATA msgdata;
+    BATTLEMSG msg;
+    
+    BattleScriptIncrementPointer(ctx, 1);
+    
+    ov12_022478F4(ctx, &msgdata);
+    ov12_022479C0(bsys, ctx, &msgdata, &msg);
+    ov12_022633F0(bsys, ctx, &msg);
+
+    return FALSE;
+}

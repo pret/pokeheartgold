@@ -87,7 +87,7 @@ typedef struct UnkBtlCtxSub_74 {
 
 typedef struct UnkBtlCtxSub_76_Sub {
     u16 unk0;
-    u8 unk2;
+    u8 moveType;
     u8 unk3;
     u8 unk4;
     u8 unk5;
@@ -131,11 +131,15 @@ typedef struct UnkBtlCtxSub_76 {
     u16 unk288[4];
 } UnkBtlCtxSub_76;
 
+
 typedef struct UnkBattlemonSub {
+    u32 unk4_0:2, unk4_2:4, unk4_6:2, unk4_8:2,
+        unk4_A:3, unk4_D:3, unk4_10:3, unk4_13:3,
+        unk4_16:1, unk4_17:4, unk4_2B:1, unk4_2C:1,
+        unk4_2D:1, me_first_flag:1, unk4_2F:1;
     u32 unk0_0:3, unk0_3:3, unk0_6:2, unk0_8:3,
         unk0_B:2, unk0_D:2, unk0_F:3, unk0_12:3,
         unk0_15:3, unk0_18:3, unk0_1A:3, unk0_1D:1, unk0_1E:1;
-    int unk4;
     int unk8;
     int unkC;
     int unk10;
@@ -150,6 +154,7 @@ typedef struct UnkBattlemonSub {
     u16 unk2E;
     int unk30;
 } UnkBattlemonSub;
+
 
 typedef struct BATTLEMON {
     u16 unk0;
