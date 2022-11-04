@@ -171,7 +171,7 @@ ov01_021FF54C: ; 0x021FF54C
 	mov r1, #2
 	ldr r0, [r4, #0x20]
 	lsl r1, r1, #8
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #1
 	bne _021FF5B2
 	ldr r0, [r4, #0x24]
@@ -215,7 +215,7 @@ _021FF5E4:
 	cmp r7, #1
 	bne _021FF602
 	add r0, r6, #0
-	bl sub_0205F808
+	bl MapObject_CheckFlag26
 	cmp r0, #0
 	bne _021FF602
 	add r0, r5, #0
@@ -225,7 +225,7 @@ _021FF602:
 	mov r1, #2
 	add r0, r6, #0
 	lsl r1, r1, #8
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #1
 	ldr r0, [r4, #0x24]
 	bne _021FF61A

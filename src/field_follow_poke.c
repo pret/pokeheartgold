@@ -1610,7 +1610,7 @@ void sub_02069B74(MapObjectMan *mapObjectMan, u32 mapno) {
                 if (SavFollowPoke_GetInhibitFlagState(Sav2_FollowPoke_get(fsys->savedata))) {
                     sub_0206A054(fsys);
                 }
-                sub_0205F6AC(fsys->followMon.mapObject, 0);
+                MapObject_ClearFlag18(fsys->followMon.mapObject, FALSE);
             }
         } else {
             followPokeObj = GetMapObjectByID(fsys->mapObjectMan, obj_partner_poke);
@@ -1789,7 +1789,7 @@ BOOL FollowingPokemon_IsActive(FieldSystem *fsys) {
 
 BOOL sub_02069FB0(FieldSystem *fsys) {
     if (FollowingPokemon_IsActive(fsys)) {
-        if (!sub_0205F684(fsys->followMon.mapObject)) {
+        if (!MapObject_CheckFlag9(fsys->followMon.mapObject)) {
             return TRUE;
         } else {
             return FALSE;
@@ -1832,8 +1832,8 @@ BOOL GetFollowPokePermissionBySpeciesAndMap(int species, u32 mapno) {
 }
 
 void sub_0206A040(LocalMapObject *mapObject, BOOL enable_bit) {
-    sub_0205F690(mapObject, enable_bit);
-    sub_0205F6E0(mapObject, enable_bit);
+    MapObject_SetFlag9(mapObject, enable_bit);
+    MapObject_SetFlag19(mapObject, enable_bit);
 }
 
 void sub_0206A054(FieldSystem *fsys) {
@@ -1927,9 +1927,9 @@ static LocalMapObject *CreateFollowingSpriteFieldObject(MapObjectMan *mapObjectM
     FollowPokeMapObjectSetParams(ret, species, forme, shiny);
     MapObject_SetXRange(ret, -1);
     MapObject_SetYRange(ret, -1);
-    MapObject_SetBits(ret, 0x2400);
-    MapObject_ClearBits(ret, 0x180);
-    sub_0205F89C(ret, TRUE);
+    MapObject_SetFlagsBits(ret, MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_UNK10);
+    MapObject_ClearFlagsBits(ret, MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7);
+    MapObject_SetFlag29(ret, TRUE);
     sub_02069DC8(ret, TRUE);
     return ret;
 }

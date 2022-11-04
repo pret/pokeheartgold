@@ -246,7 +246,7 @@ ov01_021FD328: ; 0x021FD328
 	bl ov01_021FD2CC
 	str r0, [r4, #0x18]
 	ldr r0, [r4, #0x24]
-	bl sub_0205F7D4
+	bl MapObject_CheckFlag25
 	cmp r0, #1
 	ldr r0, [r4, #0x24]
 	bne _021FD364

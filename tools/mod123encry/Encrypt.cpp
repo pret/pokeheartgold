@@ -72,10 +72,10 @@ u32 Encryptor::DoEncryptLvl1(u32 tableOffset) {
             switch (GetInsnType(word)) {
             case 1:
             case 2:
-                word = (((word & ~0xFF000000) + 0x1300) & ~0xFF000000) | ((word & 0xFF000000) ^ 0x01000000);
+                word = (((word & ~0xFF000000) + 0x4C2) & ~0xFF000000) | ((word & 0xFF000000) ^ 0x01000000);
                 break;
             case 3:
-                word = (((word & ~0xFF000000) + 0x4C2) & ~0xFF000000) | ((word & 0xFF000000) ^ 0x01000000);
+                word = (((word & ~0xFF000000) + 0x1300) & ~0xFF000000) | ((word & 0xFF000000) ^ 0x01000000);
                 break;
             default:
                 u8 *ptr = (u8 *)&word;

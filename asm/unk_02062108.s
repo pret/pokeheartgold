@@ -25,7 +25,7 @@ MapObject_AreBitsSetForMovementScriptInit: ; 0x02062108
 	push {r4, lr}
 	mov r1, #1
 	add r4, r0, #0
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #0
 	bne _0206211A
 	mov r0, #0
@@ -33,7 +33,7 @@ MapObject_AreBitsSetForMovementScriptInit: ; 0x02062108
 _0206211A:
 	add r0, r4, #0
 	mov r1, #2
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #1
 	bne _0206212A
 	mov r0, #0
@@ -41,12 +41,12 @@ _0206211A:
 _0206212A:
 	add r0, r4, #0
 	mov r1, #0x10
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #1
 	bne _02062146
 	add r0, r4, #0
 	mov r1, #0x20
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #0
 	bne _02062146
 	mov r0, #0
@@ -74,10 +74,10 @@ _0206215A:
 	bl MapObject_SetMovementStep
 	add r0, r5, #0
 	mov r1, #0x10
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	add r0, r5, #0
 	mov r1, #0x20
-	bl MapObject_ClearBits
+	bl MapObject_ClearFlagsBits
 	pop {r3, r4, r5, pc}
 	thumb_func_end MapObject_SetHeldMovement
 
@@ -91,7 +91,7 @@ MapObject_ForceSetHeldMovement: ; 0x0206217C
 	bl MapObject_SetMovementStep
 	add r0, r4, #0
 	mov r1, #0x20
-	bl MapObject_ClearBits
+	bl MapObject_ClearFlagsBits
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end MapObject_ForceSetHeldMovement
@@ -101,7 +101,7 @@ MapObject_IsMovementPaused: ; 0x02062198
 	push {r4, lr}
 	mov r1, #0x10
 	add r4, r0, #0
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #0
 	bne _020621AA
 	mov r0, #1
@@ -109,7 +109,7 @@ MapObject_IsMovementPaused: ; 0x02062198
 _020621AA:
 	add r0, r4, #0
 	mov r1, #0x20
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #0
 	beq _020621BA
 	mov r0, #1
@@ -125,7 +125,7 @@ MapObject_ClearHeldMovementIfActive: ; 0x020621C0
 	push {r4, lr}
 	mov r1, #0x10
 	add r4, r0, #0
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #0
 	bne _020621D2
 	mov r0, #1
@@ -133,7 +133,7 @@ MapObject_ClearHeldMovementIfActive: ; 0x020621C0
 _020621D2:
 	add r0, r4, #0
 	mov r1, #0x20
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #0
 	bne _020621E2
 	mov r0, #0
@@ -141,7 +141,7 @@ _020621D2:
 _020621E2:
 	add r0, r4, #0
 	mov r1, #0x30
-	bl MapObject_ClearBits
+	bl MapObject_ClearFlagsBits
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -152,10 +152,10 @@ MapObject_ClearHeldMovement: ; 0x020621F0
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #0x10
-	bl MapObject_ClearBits
+	bl MapObject_ClearFlagsBits
 	add r0, r4, #0
 	mov r1, #0x20
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	add r0, r4, #0
 	mov r1, #0xff
 	bl MapObject_SetMovementCommand
@@ -186,7 +186,7 @@ _02062230:
 	sub r1, r1, #1
 	bne _02062230
 	add r0, r5, #0
-	bl sub_0205F35C
+	bl MapObject_GetManager
 	bl sub_0205F19C
 	sub r2, r0, #1
 	ldr r0, _0206225C ; =MovementScriptMachine
@@ -496,7 +496,7 @@ sub_02062428: ; 0x02062428
 	bl sub_02062400
 	add r0, r4, #0
 	mov r1, #0x20
-	bl MapObject_TestBits
+	bl MapObject_TestFlagsBits
 	cmp r0, #0
 	bne _02062440
 	mov r0, #0
@@ -504,7 +504,7 @@ sub_02062428: ; 0x02062428
 _02062440:
 	add r0, r4, #0
 	mov r1, #0x20
-	bl MapObject_ClearBits
+	bl MapObject_ClearFlagsBits
 	add r0, r4, #0
 	mov r1, #0xff
 	bl MapObject_SetMovementCommand
@@ -533,7 +533,7 @@ _0206246C: .word gMovementCmdTable
 MapObjectMovementCmd098_Step2: ; 0x02062470
 	push {r3, lr}
 	mov r1, #0x20
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end MapObjectMovementCmd098_Step2
@@ -617,7 +617,7 @@ sub_020624CC: ; 0x020624CC
 	bl sub_0205F328
 	add r0, r5, #0
 	mov r1, #4
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	add r0, r5, #0
 	bl MapObject_IncMovementStep
 	pop {r3, r4, r5, r6, r7, pc}
@@ -648,7 +648,7 @@ MapObjectMovementCmd090_Step1: ; 0x02062514
 _02062540:
 	add r0, r5, #0
 	mov r1, #0x28
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	add r0, r5, #0
 	bl sub_02060F78
 	add r0, r5, #0
@@ -1081,7 +1081,7 @@ MapObjectMovementCmd040_Step1: ; 0x020627E4
 _020627FE:
 	add r0, r4, #0
 	mov r1, #0x20
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_0205F328
@@ -1343,7 +1343,7 @@ _0206298A:
 _02062992:
 	ldr r1, _020629C4 ; =0x00010004
 	add r0, r5, #0
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	add r0, r5, #0
 	add r1, r4, #0
 	bl MapObject_SetOrQueueFacing
@@ -1354,7 +1354,7 @@ _02062992:
 	add r0, r5, #0
 	bl MapObject_IncMovementStep
 	add r0, r5, #0
-	bl sub_0205F684
+	bl MapObject_CheckFlag9
 	cmp r0, #0
 	bne _020629C2
 	ldr r0, _020629C8 ; =SEQ_SE_DP_DANSA
@@ -1395,7 +1395,7 @@ MapObjectMovementCmd092_Step1: ; 0x020629CC
 	bl sub_02060F24
 	add r0, r5, #0
 	mov r1, #4
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 _02062A0E:
 	ldr r1, [r4]
 	cmp r1, #0
@@ -1454,7 +1454,7 @@ _02062A68:
 	bl MapObject_SetFacingVec
 	ldr r1, _02062AB4 ; =0x00020028
 	add r0, r5, #0
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	add r0, r5, #0
 	bl sub_02060F78
 	add r0, r5, #0
@@ -1465,7 +1465,7 @@ _02062A68:
 	add r0, r5, #0
 	bl MapObject_IncMovementStep
 	add r0, r5, #0
-	bl sub_0205F684
+	bl MapObject_CheckFlag9
 	cmp r0, #0
 	bne _02062AAA
 	ldr r0, _02062AB8 ; =SEQ_SE_DP_SUTYA2
@@ -2092,7 +2092,7 @@ MapObjectMovementCmd069_Step0: ; 0x02062EC0
 	mov r1, #2
 	add r4, r0, #0
 	lsl r1, r1, #8
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	add r0, r4, #0
 	bl MapObject_IncMovementStep
 	mov r0, #1
@@ -2106,7 +2106,7 @@ MapObjectMovementCmd070_Step0: ; 0x02062ED8
 	mov r1, #2
 	add r4, r0, #0
 	lsl r1, r1, #8
-	bl MapObject_ClearBits
+	bl MapObject_ClearFlagsBits
 	add r0, r4, #0
 	bl MapObject_IncMovementStep
 	mov r0, #1
@@ -2119,7 +2119,7 @@ MapObjectMovementCmd071_Step0: ; 0x02062EF0
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #0x80
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	add r0, r4, #0
 	bl MapObject_IncMovementStep
 	mov r0, #1
@@ -2131,7 +2131,7 @@ MapObjectMovementCmd072_Step0: ; 0x02062F04
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #0x80
-	bl MapObject_ClearBits
+	bl MapObject_ClearFlagsBits
 	add r0, r4, #0
 	bl MapObject_IncMovementStep
 	mov r0, #1
@@ -2144,7 +2144,7 @@ MapObjectMovementCmd073_Step0: ; 0x02062F18
 	mov r1, #1
 	add r4, r0, #0
 	lsl r1, r1, #8
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	add r0, r4, #0
 	bl MapObject_IncMovementStep
 	mov r0, #1
@@ -2158,7 +2158,7 @@ MapObjectMovementCmd074_Step0: ; 0x02062F30
 	mov r1, #1
 	add r4, r0, #0
 	lsl r1, r1, #8
-	bl MapObject_ClearBits
+	bl MapObject_ClearFlagsBits
 	add r0, r4, #0
 	bl MapObject_IncMovementStep
 	mov r0, #1
@@ -2247,7 +2247,7 @@ sub_02062FAC: ; 0x02062FAC
 	bl sub_0205F328
 	add r0, r5, #0
 	mov r1, #4
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	add r0, r5, #0
 	bl MapObject_IncMovementStep
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2285,7 +2285,7 @@ sub_02062FEC: ; 0x02062FEC
 _02063026:
 	add r0, r5, #0
 	mov r1, #0x28
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	add r0, r5, #0
 	bl sub_02060F78
 	add r0, r5, #0
@@ -2541,11 +2541,11 @@ _020631B6:
 	bl ov01_022000DC
 	ldr r1, _020631EC ; =0x00010004
 	add r0, r4, #0
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0x14
-	bl MapObject_ClearBits
+	bl MapObject_ClearFlagsBits
 	add r0, r4, #0
 	bl MapObject_IncMovementStep
 	mov r0, #0
@@ -2591,7 +2591,7 @@ _02063228:
 	bl MapObject_SetFacingVec
 	ldr r1, _02063254 ; =0x00020028
 	add r0, r5, #0
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	add r0, r5, #0
 	bl sub_02066438
 	add r0, r5, #0

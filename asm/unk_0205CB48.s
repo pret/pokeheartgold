@@ -759,7 +759,7 @@ _0205D136:
 	mov r1, #6
 	add r0, r4, #0
 	lsl r1, r1, #6
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	add r0, r6, #0
 	mov r1, #8
 	bl sub_0206234C
@@ -783,7 +783,7 @@ _0205D170:
 	mov r1, #6
 	add r0, r4, #0
 	lsl r1, r1, #6
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	add r0, r5, #0
 	add r1, r6, #0
 	bl sub_0205D2D0
@@ -855,7 +855,7 @@ sub_0205D1FC: ; 0x0205D1FC
 	bl PlayerAvatar_GetMapObject
 	mov r1, #6
 	lsl r1, r1, #6
-	bl MapObject_ClearBits
+	bl MapObject_ClearFlagsBits
 	add r0, r4, #0
 	bl sub_0205CB2C
 	cmp r0, #0

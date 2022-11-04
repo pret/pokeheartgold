@@ -7459,7 +7459,7 @@ ov02_02249444: ; 0x02249444
 	add r4, r1, #0
 	bl PlayerAvatar_GetMapObject
 	add r1, r4, #0
-	bl sub_0205F690
+	bl MapObject_SetFlag9
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov02_02249444
@@ -12102,7 +12102,7 @@ ov02_0224B6B0: ; 0x0224B6B0
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_0205F690
+	bl MapObject_SetFlag9
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov02_0224B6B0
@@ -12443,7 +12443,7 @@ ov02_0224B938: ; 0x0224B938
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_0205F690
+	bl MapObject_SetFlag9
 	mov r0, #0x83
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -20329,7 +20329,7 @@ ov02_0224F4BC: ; 0x0224F4BC
 	bl MapObjectMan_GetCount
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x3c]
-	bl MapObjectMan_GetArray
+	bl MapObjectMan_GetObjects
 	str r0, [sp, #0x10]
 	mov r0, #0
 	str r0, [sp, #0xc]
@@ -24825,7 +24825,7 @@ _02251760:
 	bl MapObject_SetPositionVec
 	add r0, r6, #0
 	mov r1, #0
-	bl sub_0205F690
+	bl MapObject_SetFlag9
 	mov r0, #0
 	strh r0, [r4, #8]
 	add r4, #0xe2
@@ -26479,7 +26479,7 @@ _02252490:
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]
-	bl sub_0205F35C
+	bl MapObject_GetManager
 	add r6, r0, #0
 	add r0, r4, #0
 	add r0, #0xe4

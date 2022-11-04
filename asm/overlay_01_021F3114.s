@@ -140,7 +140,7 @@ _021F31F4:
 	mov r1, #1
 	add r0, r6, #0
 	lsl r1, r1, #8
-	bl MapObject_SetBits
+	bl MapObject_SetFlagsBits
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -240,11 +240,11 @@ _021F32BC:
 	str r0, [r4]
 	add r0, r6, #0
 	mov r1, #0x80
-	bl MapObject_ClearBits
+	bl MapObject_ClearFlagsBits
 	mov r1, #1
 	add r0, r6, #0
 	lsl r1, r1, #8
-	bl MapObject_ClearBits
+	bl MapObject_ClearFlagsBits
 	ldr r0, [r4, #0x10]
 	ldr r1, [r4]
 	bl PlayerAvatar_SetFacingDirection
@@ -271,11 +271,11 @@ _021F3300:
 _021F3314:
 	add r0, r6, #0
 	mov r1, #0x80
-	bl MapObject_ClearBits
+	bl MapObject_ClearFlagsBits
 	mov r1, #1
 	add r0, r6, #0
 	lsl r1, r1, #8
-	bl MapObject_ClearBits
+	bl MapObject_ClearFlagsBits
 	ldr r0, [r4, #0x10]
 	ldr r1, [r4]
 	bl PlayerAvatar_SetFacingDirection

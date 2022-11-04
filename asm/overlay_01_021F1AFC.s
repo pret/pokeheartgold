@@ -783,7 +783,7 @@ Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors: ; 0x021F20C0
 	bne _021F20FE
 _021F20F0:
 	add r0, r6, #0
-	bl sub_0205F83C
+	bl MapObject_CheckFlag28
 	cmp r0, #1
 	bne _021F20FE
 	mov r0, #0
@@ -2836,7 +2836,7 @@ ov01_021F3094: ; 0x021F3094
 	add r5, r0, #0
 	add r0, r4, #0
 	bl PlayerAvatar_GetMapObject
-	bl sub_0205F35C
+	bl MapObject_GetManager
 	ldr r2, [sp]
 	add r1, r6, r7
 	add r2, r2, r5

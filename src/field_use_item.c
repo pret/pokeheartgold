@@ -463,7 +463,7 @@ static u32 ItemCheckUseFunc_FishingRod(const struct ItemCheckUseData *data) {
     }
     if (sub_0205B778(data->facingTile) == TRUE) {
         if (sub_0205BA30(data->standingTile) == TRUE || sub_0205BA24(data->standingTile) == TRUE) {
-            if (sub_0205F83C(PlayerAvatar_GetMapObject(data->playerAvatar)) == TRUE) {
+            if (MapObject_CheckFlag28(PlayerAvatar_GetMapObject(data->playerAvatar)) == TRUE) {
                 return ITEMUSEERROR_OAKSWORDS;
             }
         }

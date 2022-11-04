@@ -1421,8 +1421,8 @@ BOOL ScrCmd_102(SCRIPTCONTEXT *ctx) {
     VecFx32 *pos;
     *p_cameraObj = CreateSpecialFieldObject(ctx->fsys->mapObjectMan, x, y, 0, SPRITE_CAMERA_FOCUS, 0, ctx->fsys->location->mapId);
     sub_02061070(*p_cameraObj);
-    sub_0205F690(*p_cameraObj, TRUE);
-    sub_0205F6AC(*p_cameraObj, FALSE);
+    MapObject_SetFlag9(*p_cameraObj, TRUE);
+    MapObject_ClearFlag18(*p_cameraObj, FALSE);
     pos = MapObject_GetPositionVecPtr(*p_cameraObj);
     ov01_021F62E8(pos, ctx->fsys->unk2C);
     sub_02023214(pos, ctx->fsys->camera);
@@ -1445,8 +1445,8 @@ BOOL ScrCmd_678(SCRIPTCONTEXT *ctx) {
     LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_CAMERA_FOCUS_OBJ);
     *p_cameraObj = CreateSpecialFieldObject(ctx->fsys->mapObjectMan, x, y, 0, SPRITE_CAMERA_FOCUS, 0, ctx->fsys->location->mapId);
     sub_02061070(*p_cameraObj);
-    sub_0205F690(*p_cameraObj, TRUE);
-    sub_0205F6AC(*p_cameraObj, FALSE);
+    MapObject_SetFlag9(*p_cameraObj, TRUE);
+    MapObject_ClearFlag18(*p_cameraObj, FALSE);
     return FALSE;
 }
 
@@ -1489,7 +1489,7 @@ BOOL ScrCmd_FacePlayer(SCRIPTCONTEXT *ctx) {
              && sub_0205B8AC(metatile) == FALSE
              && sub_0205BA70(metatile) == FALSE
             ) {
-                MapObject_ClearBits(*p_lastTalked, 0x100000);
+                MapObject_ClearFlagsBits(*p_lastTalked, MAPOBJECTFLAG_UNK20);
             }
         }
     }
@@ -1550,7 +1550,7 @@ BOOL ScrCmd_108(SCRIPTCONTEXT *ctx) {
     u16 objectId = ScriptGetVar(ctx);
     LocalMapObject *object = GetMapObjectByID(ctx->fsys->mapObjectMan, objectId);
     u8 arg = ScriptReadByte(ctx);
-    sub_0205F79C(object, arg);
+    MapObject_SetFlag10(object, arg);
     return FALSE;
 }
 
@@ -3204,7 +3204,7 @@ BOOL ScrCmd_374(SCRIPTCONTEXT *ctx) {
     u16 objId = ScriptGetVar(ctx);
     LocalMapObject *object = GetMapObjectByID(fsys->mapObjectMan, objId);
     GF_ASSERT(object != NULL);
-    sub_0205F690(object, FALSE);
+    MapObject_SetFlag9(object, FALSE);
     return FALSE;
 }
 
@@ -3213,7 +3213,7 @@ BOOL ScrCmd_375(SCRIPTCONTEXT *ctx) {
     u16 objId = ScriptGetVar(ctx);
     LocalMapObject *object = GetMapObjectByID(fsys->mapObjectMan, objId);
     GF_ASSERT(object != NULL);
-    sub_0205F690(object, TRUE);
+    MapObject_SetFlag9(object, TRUE);
     return FALSE;
 }
 
@@ -4103,7 +4103,7 @@ BOOL ScrCmd_583(SCRIPTCONTEXT *ctx) {
     u8 r4 = ScriptReadByte(ctx);
     LocalMapObject *object = GetMapObjectByID(ctx->fsys->mapObjectMan, objectId);
     GF_ASSERT(object != NULL);
-    sub_0205F6AC(object, r4);
+    MapObject_ClearFlag18(object, r4);
     return FALSE;
 }
 

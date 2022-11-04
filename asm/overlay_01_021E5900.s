@@ -71,7 +71,7 @@ _021E5952:
 	ldr r0, _021E5BA8 ; =0x04001050
 	strh r1, [r0]
 	ldr r0, _021E5BAC ; =ov01_021E66A8
-	blx ov123_0225F610
+	bl ov123_0225F610
 	ldr r1, _021E5BB0 ; =0x000004CF
 	mul r1, r0
 	mov r0, #0
@@ -82,7 +82,7 @@ _021E5952:
 	add r0, r4, #0
 	bl ov01_021E6364
 	ldr r0, _021E5BB4 ; =ov01_021E66D8
-	blx ov123_0225F598
+	bl ov123_0225F598
 	cmp r0, #0
 	bne _021E599C
 	mov r1, #1
@@ -130,7 +130,7 @@ _021E59E8:
 	bl HandleLoadOverlay
 _021E59F0:
 	ldr r0, _021E5BC4 ; =ov01_021E66B8
-	blx ov123_0225F430
+	bl ov123_0225F430
 	ldr r2, [r4, #0x74]
 	add r7, r0, #0
 	ldr r1, _021E5BC8 ; =0x000003A1
@@ -391,7 +391,7 @@ _021E5C4A:
 	add r0, r4, #0
 	bl sub_02064910
 	ldr r0, _021E5E84 ; =ov01_021E66C8
-	blx ov123_0225F610
+	bl ov123_0225F610
 	ldr r1, _021E5E88 ; =0x0000023B
 	mul r1, r0
 	ldr r0, [r4, #0x2c]
@@ -421,7 +421,7 @@ _021E5C9C:
 	ldr r0, [r4, #0x2c]
 	bl ov01_021F61F8
 	ldr r0, _021E5E8C ; =ov01_021E66DC
-	blx ov123_0225F4A8
+	bl ov123_0225F4A8
 	cmp r0, #0
 	bne _021E5CB0
 	mov r1, #1
@@ -452,7 +452,7 @@ _021E5CB2:
 	ldr r0, [r0]
 	bl ov01_02204278
 	ldr r0, _021E5E94 ; =ov01_021E66E0
-	blx ov123_0225F598
+	bl ov123_0225F598
 	cmp r0, #0
 	bne _021E5CF8
 	mov r1, #1
@@ -1465,7 +1465,7 @@ _021E654E:
 	ldr r0, [r5, #0x3c]
 	beq _021E6566
 	mov r1, #2
-	bl sub_0205F184
+	bl MapObjectMan_ClearFlagsBits
 	b _021E656A
 _021E6566:
 	bl sub_0205F568
