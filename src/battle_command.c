@@ -1,8 +1,10 @@
 #include "battle.h"
 #include "pokemon.h"
 #include "overlay_12_022378C0.h"
-#include "constants/pokemon.h"
 #include "constants/abilities.h"
+#include "constants/moves.h"
+#include "constants/pokemon.h"
+
 
 extern BtlCmdFunc sBattleScriptCommandTable[];
 
@@ -18,13 +20,13 @@ BOOL RunBattleScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return ret;
 }
 
-BOOL ov12_0223CFB8(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
     ov12_022622C8(bsys, FALSE);
     return FALSE;
 }
 
-BOOL ov12_0223CFD0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_1(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
     int unkA = ov12_0223A7F0(bsys);
     BattleScriptIncrementPointer(ctx, 1);
@@ -53,7 +55,7 @@ BOOL ov12_0223CFD0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ov12_0223D04C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
     int unkA = ov12_0223A7F0(bsys);
 
@@ -133,7 +135,7 @@ BOOL ov12_0223D04C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ov12_0223D20C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_3(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
     int unkA = ov12_0223A7F0(bsys);
 
@@ -213,7 +215,7 @@ BOOL ov12_0223D20C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ov12_0223D3E8(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_4(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
     int unkA = ov12_0223A7F0(bsys);
     OpponentData *opponentData;
@@ -251,7 +253,7 @@ BOOL ov12_0223D3E8(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ov12_0223D4A8(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_5(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     u32 unkA = ov12_0224768C(bsys, ctx, BattleScriptReadWord(ctx));
@@ -260,7 +262,7 @@ BOOL ov12_0223D4A8(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ov12_0223D4D4(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_6(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
     int unkA = ov12_0223A7F0(bsys);
     OpponentData *opponentData;
@@ -318,7 +320,7 @@ BOOL ov12_0223D4D4(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ov12_0223D5F0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_ThrowPokeball(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
     int unkA = ov12_0223A7F0(bsys);
     OpponentData *opponentData;
@@ -372,7 +374,7 @@ BOOL ov12_0223D5F0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ov12_0223D700(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_8(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
     int unkA = ov12_0223A7F0(bsys);
     OpponentData *opponentData;
@@ -459,7 +461,7 @@ BOOL ov12_0223D700(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ov12_0223D8B0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_9(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
     int unkA = ov12_0223A7F0(bsys);
     OpponentData *opponentData;
@@ -542,7 +544,7 @@ BOOL ov12_0223D8B0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ov12_0223DA48(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_10(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
     int unkA = ov12_0223A7F0(bsys);
     BattleScriptIncrementPointer(ctx, 1);
@@ -555,7 +557,7 @@ BOOL ov12_0223DA48(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ov12_0223DA74(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_HealthbarSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
     int unkA = ov12_0223A7F0(bsys);
     OpponentData *opponentData;
@@ -593,7 +595,7 @@ BOOL ov12_0223DA74(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ov12_0223DB2C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_12(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
     int unkA = ov12_0223A7F0(bsys);
     OpponentData *opponentData;
@@ -636,7 +638,7 @@ BOOL ov12_0223DB2C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ov12_0223DBF4(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_13(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
     int unkA = ov12_0223A7F0(bsys);
     OpponentData *opponentData;
@@ -674,7 +676,7 @@ BOOL ov12_0223DBF4(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ov12_0223DCAC(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_WaitForMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (ov12_0224ED48(ctx)) {
         BattleScriptIncrementPointer(ctx, 1);
     } else {
@@ -725,7 +727,7 @@ static void ov12_0223DCE0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     }
 }
 
-BOOL ov12_0223DE4C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_DamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
     
     ov12_0223DCE0(bsys, ctx);
@@ -736,7 +738,7 @@ BOOL ov12_0223DE4C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ov12_0223DE84(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_16(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
     
     ov12_0223DCE0(bsys, ctx);
@@ -745,7 +747,7 @@ BOOL ov12_0223DE84(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ov12_0223DEB0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_PrintAttackMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     if ((ctx->unk_213C & 1) == FALSE) {
@@ -758,7 +760,7 @@ BOOL ov12_0223DEB0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ov12_0223DEF0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_PrintMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BATTLEMSGDATA msgdata;
     BATTLEMSG msg;
     
@@ -767,6 +769,83 @@ BOOL ov12_0223DEF0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     ov12_022478F4(ctx, &msgdata);
     ov12_022479C0(bsys, ctx, &msgdata, &msg);
     ov12_022633F0(bsys, ctx, &msg);
+
+    return FALSE;
+}
+
+BOOL BtlCmd_PrintMessage2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BATTLEMSGDATA msgdata;
+    BATTLEMSG msg;
+
+    BattleScriptIncrementPointer(ctx, 1);
+
+    ov12_022478F4(ctx, &msgdata);
+    ov12_022479C0(bsys, ctx, &msgdata, &msg);
+
+    msg.unk1 |= 128;
+
+    ov12_022633F0(bsys, ctx, &msg);
+
+    return FALSE;
+}
+
+BOOL BtlCmd_PrintBufferedMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+    //TODO: Define in header
+    ov12_022633F0(bsys, ctx, &ctx->unk_F4);
+    return FALSE;
+}
+
+BOOL BtlCmd_BufferMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BATTLEMSGDATA msgdata;
+    
+    BattleScriptIncrementPointer(ctx, 1);
+
+    ov12_022478F4(ctx, &msgdata);
+    ov12_022479C0(bsys, ctx, &msgdata, &ctx->unk_F4);
+
+    return FALSE;
+}
+
+BOOL BtlCmd_22(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BATTLEMSGDATA msgdata;
+    BATTLEMSG msg;
+
+    BattleScriptIncrementPointer(ctx, 1);
+
+    u32 unkA = BattleScriptReadWord(ctx);
+
+    ov12_022478F4(ctx, &msgdata);
+    ov12_022479C0(bsys, ctx, &msgdata, &msg);
+
+    msg.unk1 |= 64;
+    msg.unk20 = ov12_0224768C(bsys, ctx, unkA);
+
+    ov12_022633F0(bsys, ctx, &msg);
+
+    return FALSE;
+}
+
+BOOL BtlCmd_PlayMoveAnimation(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    u16 move;
+    
+    BattleScriptIncrementPointer(ctx, 1);
+    u32 unkB = BattleScriptReadWord(ctx);
+
+    if (unkB == 255) {
+        move = ctx->unk_124;
+    } else {
+        move = ctx->field115_0xdcc;
+    }
+
+    if ((!(ctx->unk_213C & (1 << 14)) && ov12_0223B6D4(bsys) == TRUE) || move == MOVE_TRANSFORM) {
+        ctx->unk_213C |= (1 << 14);
+        ov12_0226340C(bsys, ctx, move);
+    }
+
+    if (!ov12_0223B6D4(bsys)) {
+        ov12_02245520(ctx, 1, 0x123);
+    }
 
     return FALSE;
 }

@@ -5,184 +5,8 @@
 
 	.text
 
-	thumb_func_start ov12_0223DF24
-ov12_0223DF24: ; 0x0223DF24
-	push {r4, r5, lr}
-	sub sp, #0x44
-	add r4, r1, #0
-	add r5, r0, #0
-	add r0, r4, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	add r0, r4, #0
-	add r1, sp, #0x24
-	bl ov12_022478F4
-	add r0, r5, #0
-	add r1, r4, #0
-	add r2, sp, #0x24
-	add r3, sp, #0
-	bl ov12_022479C0
-	add r1, sp, #0
-	ldrb r2, [r1, #1]
-	mov r0, #0x80
-	orr r0, r2
-	strb r0, [r1, #1]
-	add r0, r5, #0
-	add r1, r4, #0
-	add r2, sp, #0
-	bl ov12_022633F0
-	mov r0, #0
-	add sp, #0x44
-	pop {r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ov12_0223DF24
-
-	thumb_func_start ov12_0223DF64
-ov12_0223DF64: ; 0x0223DF64
-	push {r3, r4, r5, lr}
-	add r4, r1, #0
-	add r5, r0, #0
-	add r0, r4, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	add r1, r4, #0
-	add r4, #0xf4
-	add r0, r5, #0
-	add r2, r4, #0
-	bl ov12_022633F0
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ov12_0223DF64
-
-	thumb_func_start ov12_0223DF84
-ov12_0223DF84: ; 0x0223DF84
-	push {r3, r4, r5, lr}
-	sub sp, #0x20
-	add r4, r1, #0
-	add r5, r0, #0
-	add r0, r4, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	add r0, r4, #0
-	add r1, sp, #0
-	bl ov12_022478F4
-	add r1, r4, #0
-	add r4, #0xf4
-	add r0, r5, #0
-	add r2, sp, #0
-	add r3, r4, #0
-	bl ov12_022479C0
-	mov r0, #0
-	add sp, #0x20
-	pop {r3, r4, r5, pc}
-	thumb_func_end ov12_0223DF84
-
-	thumb_func_start ov12_0223DFB0
-ov12_0223DFB0: ; 0x0223DFB0
-	push {r3, r4, r5, r6, lr}
-	sub sp, #0x44
-	add r4, r1, #0
-	add r5, r0, #0
-	add r0, r4, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	add r0, r4, #0
-	bl BattleScriptReadWord
-	add r6, r0, #0
-	add r0, r4, #0
-	add r1, sp, #0x24
-	bl ov12_022478F4
-	add r0, r5, #0
-	add r1, r4, #0
-	add r2, sp, #0x24
-	add r3, sp, #0
-	bl ov12_022479C0
-	add r1, sp, #0
-	ldrb r2, [r1, #1]
-	mov r0, #0x40
-	orr r0, r2
-	strb r0, [r1, #1]
-	add r0, r5, #0
-	add r1, r4, #0
-	add r2, r6, #0
-	bl ov12_0224768C
-	str r0, [sp, #0x20]
-	add r0, r5, #0
-	add r1, r4, #0
-	add r2, sp, #0
-	bl ov12_022633F0
-	mov r0, #0
-	add sp, #0x44
-	pop {r3, r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end ov12_0223DFB0
-
-	thumb_func_start ov12_0223E004
-ov12_0223E004: ; 0x0223E004
-	push {r4, r5, r6, lr}
-	add r5, r1, #0
-	add r6, r0, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	add r0, r5, #0
-	bl BattleScriptReadWord
-	cmp r0, #0xff
-	bne _0223E022
-	mov r0, #0x49
-	lsl r0, r0, #2
-	b _0223E024
-_0223E022:
-	ldr r0, _0223E074 ; =0x00003044
-_0223E024:
-	ldr r0, [r5, r0]
-	lsl r0, r0, #0x10
-	lsr r4, r0, #0x10
-	ldr r0, _0223E078 ; =0x0000213C
-	ldr r1, [r5, r0]
-	mov r0, #1
-	lsl r0, r0, #0xe
-	tst r0, r1
-	bne _0223E040
-	add r0, r6, #0
-	bl ov12_0223B6D4
-	cmp r0, #1
-	beq _0223E044
-_0223E040:
-	cmp r4, #0x90
-	bne _0223E05A
-_0223E044:
-	ldr r1, _0223E078 ; =0x0000213C
-	mov r0, #1
-	ldr r2, [r5, r1]
-	lsl r0, r0, #0xe
-	orr r0, r2
-	str r0, [r5, r1]
-	add r0, r6, #0
-	add r1, r5, #0
-	add r2, r4, #0
-	bl ov12_0226340C
-_0223E05A:
-	add r0, r6, #0
-	bl ov12_0223B6D4
-	cmp r0, #0
-	bne _0223E06E
-	ldr r2, _0223E07C ; =0x00000123
-	add r0, r5, #0
-	mov r1, #1
-	bl ov12_02245520
-_0223E06E:
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-	nop
-_0223E074: .word 0x00003044
-_0223E078: .word 0x0000213C
-_0223E07C: .word 0x00000123
-	thumb_func_end ov12_0223E004
-
-	thumb_func_start ov12_0223E080
-ov12_0223E080: ; 0x0223E080
+	thumb_func_start BtlCmd_PlayMoveAnimation2
+BtlCmd_PlayMoveAnimation2: ; 0x0223E080
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r1, #0
@@ -263,10 +87,10 @@ _0223E11A:
 _0223E120: .word 0x00003044
 _0223E124: .word 0x0000213C
 _0223E128: .word 0x00000123
-	thumb_func_end ov12_0223E080
+	thumb_func_end BtlCmd_PlayMoveAnimation2
 
-	thumb_func_start ov12_0223E12C
-ov12_0223E12C: ; 0x0223E12C
+	thumb_func_start BtlCmd_MonFlicker
+BtlCmd_MonFlicker: ; 0x0223E12C
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -288,10 +112,10 @@ ov12_0223E12C: ; 0x0223E12C
 	pop {r3, r4, r5, pc}
 	nop
 _0223E15C: .word 0x0000216C
-	thumb_func_end ov12_0223E12C
+	thumb_func_end BtlCmd_MonFlicker
 
-	thumb_func_start ov12_0223E160
-ov12_0223E160: ; 0x0223E160
+	thumb_func_start BtlCmd_HealthbarDataUpdate
+BtlCmd_HealthbarDataUpdate: ; 0x0223E160
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	str r0, [sp]
@@ -370,10 +194,10 @@ _0223E1E6:
 _0223E1F4: .word 0x00002D8C
 _0223E1F8: .word 0x0000215C
 _0223E1FC: .word 0x00002148
-	thumb_func_end ov12_0223E160
+	thumb_func_end BtlCmd_HealthbarDataUpdate
 
-	thumb_func_start ov12_0223E200
-ov12_0223E200: ; 0x0223E200
+	thumb_func_start BtlCmd_HealthbarUpdate
+BtlCmd_HealthbarUpdate: ; 0x0223E200
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -392,10 +216,10 @@ ov12_0223E200: ; 0x0223E200
 	bl ov12_02263488
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov12_0223E200
+	thumb_func_end BtlCmd_HealthbarUpdate
 
-	thumb_func_start ov12_0223E22C
-ov12_0223E22C: ; 0x0223E22C
+	thumb_func_start BtlCmd_TryFaintMon
+BtlCmd_TryFaintMon: ; 0x0223E22C
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	add r6, r0, #0
@@ -440,10 +264,10 @@ _0223E282:
 	nop
 _0223E288: .word 0x00002D8C
 _0223E28C: .word 0x0000213C
-	thumb_func_end ov12_0223E22C
+	thumb_func_end BtlCmd_TryFaintMon
 
-	thumb_func_start ov12_0223E290
-ov12_0223E290: ; 0x0223E290
+	thumb_func_start BtlCmd_PlayFaintAnimation
+BtlCmd_PlayFaintAnimation: ; 0x0223E290
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -486,10 +310,10 @@ ov12_0223E290: ; 0x0223E290
 	pop {r3, r4, r5, pc}
 	nop
 _0223E2EC: .word 0x0000213C
-	thumb_func_end ov12_0223E290
+	thumb_func_end BtlCmd_PlayFaintAnimation
 
-	thumb_func_start ov12_0223E2F0
-ov12_0223E2F0: ; 0x0223E2F0
+	thumb_func_start BtlCmd_Wait
+BtlCmd_Wait: ; 0x0223E2F0
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	add r4, r0, #0
@@ -565,10 +389,10 @@ _0223E37C: .word gSystem
 _0223E380: .word 0x00000C03
 _0223E384: .word 0x0000240C
 _0223E388: .word 0x00003154
-	thumb_func_end ov12_0223E2F0
+	thumb_func_end BtlCmd_Wait
 
-	thumb_func_start ov12_0223E38C
-ov12_0223E38C: ; 0x0223E38C
+	thumb_func_start BtlCmd_PlaySE
+BtlCmd_PlaySE: ; 0x0223E38C
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -592,10 +416,10 @@ ov12_0223E38C: ; 0x0223E38C
 	bl ov12_022636FC
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov12_0223E38C
+	thumb_func_end BtlCmd_PlaySE
 
-	thumb_func_start ov12_0223E3C4
-ov12_0223E3C4: ; 0x0223E3C4
+	thumb_func_start BtlCmd_If
+BtlCmd_If: ; 0x0223E3C4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r6, r1, #0
@@ -687,10 +511,10 @@ _0223E46E:
 	mov r0, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov12_0223E3C4
+	thumb_func_end BtlCmd_If
 
-	thumb_func_start ov12_0223E474
-ov12_0223E474: ; 0x0223E474
+	thumb_func_start BtlCmd_IfMonStat
+BtlCmd_IfMonStat: ; 0x0223E474
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r6, r1, #0
@@ -784,10 +608,10 @@ _0223E524:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0223E474
+	thumb_func_end BtlCmd_IfMonStat
 
-	thumb_func_start ov12_0223E52C
-ov12_0223E52C: ; 0x0223E52C
+	thumb_func_start BtlCmd_FadeOutBattle
+BtlCmd_FadeOutBattle: ; 0x0223E52C
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -800,10 +624,10 @@ ov12_0223E52C: ; 0x0223E52C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0223E52C
+	thumb_func_end BtlCmd_FadeOutBattle
 
-	thumb_func_start ov12_0223E548
-ov12_0223E548: ; 0x0223E548
+	thumb_func_start BtlCmd_JumpToSubSeq
+BtlCmd_JumpToSubSeq: ; 0x0223E548
 	push {r4, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -817,10 +641,10 @@ ov12_0223E548: ; 0x0223E548
 	bl ov12_02245518
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ov12_0223E548
+	thumb_func_end BtlCmd_JumpToSubSeq
 
-	thumb_func_start ov12_0223E568
-ov12_0223E568: ; 0x0223E568
+	thumb_func_start BtlCmd_JumpToCurMoveEffectScript
+BtlCmd_JumpToCurMoveEffectScript: ; 0x0223E568
 	push {r4, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -840,10 +664,10 @@ ov12_0223E568: ; 0x0223E568
 	.balign 4, 0
 _0223E58C: .word 0x00003044
 _0223E590: .word 0x000003DE
-	thumb_func_end ov12_0223E568
+	thumb_func_end BtlCmd_JumpToCurMoveEffectScript
 
-	thumb_func_start ov12_0223E594
-ov12_0223E594: ; 0x0223E594
+	thumb_func_start BtlCmd_JumpToEffectScript
+BtlCmd_JumpToEffectScript: ; 0x0223E594
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r4, r1, #0
@@ -922,10 +746,10 @@ _0223E62C: .word 0x0000213C
 _0223E630: .word 0xFFFFBFFF
 _0223E634: .word 0x00003044
 _0223E638: .word 0x000021AC
-	thumb_func_end ov12_0223E594
+	thumb_func_end BtlCmd_JumpToEffectScript
 
-	thumb_func_start ov12_0223E63C
-ov12_0223E63C: ; 0x0223E63C
+	thumb_func_start BtlCmd_CritCalc
+BtlCmd_CritCalc: ; 0x0223E63C
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r4, r1, #0
@@ -973,10 +797,10 @@ _0223E692:
 	.balign 4, 0
 _0223E698: .word 0x00002150
 _0223E69C: .word 0x0000214C
-	thumb_func_end ov12_0223E63C
+	thumb_func_end BtlCmd_CritCalc
 
-	thumb_func_start ov12_0223E6A0
-ov12_0223E6A0: ; 0x0223E6A0
+	thumb_func_start BtlCmd_ShouldGetExp
+BtlCmd_ShouldGetExp: ; 0x0223E6A0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r1, #0
@@ -1157,10 +981,10 @@ _0223E80E:
 	.balign 4, 0
 _0223E814: .word 0x00000195
 _0223E818: .word 0x00002D74
-	thumb_func_end ov12_0223E6A0
+	thumb_func_end BtlCmd_ShouldGetExp
 
-	thumb_func_start ov12_0223E81C
-ov12_0223E81C: ; 0x0223E81C
+	thumb_func_start BtlCmd_InitGetExp
+BtlCmd_InitGetExp: ; 0x0223E81C
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -1189,10 +1013,10 @@ ov12_0223E81C: ; 0x0223E81C
 	pop {r3, r4, r5, pc}
 	nop
 _0223E858: .word ov12_02245898
-	thumb_func_end ov12_0223E81C
+	thumb_func_end BtlCmd_InitGetExp
 
-	thumb_func_start ov12_0223E85C
-ov12_0223E85C: ; 0x0223E85C
+	thumb_func_start BtlCmd_GetExp
+BtlCmd_GetExp: ; 0x0223E85C
 	push {r4, lr}
 	mov r0, #0x5e
 	add r4, r1, #0
@@ -1215,10 +1039,10 @@ _0223E872:
 	pop {r4, pc}
 	.balign 4, 0
 _0223E884: .word 0x00003154
-	thumb_func_end ov12_0223E85C
+	thumb_func_end BtlCmd_GetExp
 
-	thumb_func_start ov12_0223E888
-ov12_0223E888: ; 0x0223E888
+	thumb_func_start BtlCmd_GetExpLoop
+BtlCmd_GetExpLoop: ; 0x0223E888
 	push {r4, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -1229,10 +1053,10 @@ ov12_0223E888: ; 0x0223E888
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0223E888
+	thumb_func_end BtlCmd_GetExpLoop
 
-	thumb_func_start ov12_0223E8A0
-ov12_0223E8A0: ; 0x0223E8A0
+	thumb_func_start BtlCmd_ShowParty
+BtlCmd_ShowParty: ; 0x0223E8A0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	str r1, [sp, #8]
@@ -1339,10 +1163,10 @@ _0223E972:
 	mov r0, #0
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end ov12_0223E8A0
+	thumb_func_end BtlCmd_ShowParty
 
-	thumb_func_start ov12_0223E978
-ov12_0223E978: ; 0x0223E978
+	thumb_func_start BtlCmd_WaitForMonSelection
+BtlCmd_WaitForMonSelection: ; 0x0223E978
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	str r0, [sp]
@@ -1490,10 +1314,10 @@ _0223EA7E:
 _0223EA94: .word 0x000021A0
 _0223EA98: .word 0xF0FFFFFF
 _0223EA9C: .word 0x00003154
-	thumb_func_end ov12_0223E978
+	thumb_func_end BtlCmd_WaitForMonSelection
 
-	thumb_func_start ov12_0223EAA0
-ov12_0223EAA0: ; 0x0223EAA0
+	thumb_func_start BtlCmd_SwitchInDataUpdate
+BtlCmd_SwitchInDataUpdate: ; 0x0223EAA0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r7, r0, #0
@@ -1568,10 +1392,10 @@ _0223EB30: .word 0x00003108
 _0223EB34: .word 0x000021A0
 _0223EB38: .word 0x00002E4C
 _0223EB3C: .word 0x00003122
-	thumb_func_end ov12_0223EAA0
+	thumb_func_end BtlCmd_SwitchInDataUpdate
 
-	thumb_func_start ov12_0223EB40
-ov12_0223EB40: ; 0x0223EB40
+	thumb_func_start BtlCmd_JumpIfCantSwitch
+BtlCmd_JumpIfCantSwitch: ; 0x0223EB40
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	bl ov12_0223A7F0
@@ -1607,10 +1431,10 @@ _0223EB82:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0223EB40
+	thumb_func_end BtlCmd_JumpIfCantSwitch
 
-	thumb_func_start ov12_0223EB88
-ov12_0223EB88: ; 0x0223EB88
+	thumb_func_start BtlCmd_47
+BtlCmd_47: ; 0x0223EB88
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -1652,10 +1476,10 @@ ov12_0223EB88: ; 0x0223EB88
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0223EBE0: .word ov12_022465A8
-	thumb_func_end ov12_0223EB88
+	thumb_func_end BtlCmd_47
 
-	thumb_func_start ov12_0223EBE4
-ov12_0223EBE4: ; 0x0223EBE4
+	thumb_func_start BtlCmd_48
+BtlCmd_48: ; 0x0223EBE4
 	push {r4, lr}
 	mov r0, #0x5e
 	add r4, r1, #0
@@ -1678,10 +1502,10 @@ _0223EBFA:
 	pop {r4, pc}
 	.balign 4, 0
 _0223EC0C: .word 0x00003154
-	thumb_func_end ov12_0223EBE4
+	thumb_func_end BtlCmd_48
 
-	thumb_func_start ov12_0223EC10
-ov12_0223EC10: ; 0x0223EC10
+	thumb_func_start BtlCmd_SetMultiHit
+BtlCmd_SetMultiHit: ; 0x0223EC10
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r0, #0
@@ -1737,10 +1561,10 @@ _0223EC78:
 	.balign 4, 0
 _0223EC7C: .word 0x0000217D
 _0223EC80: .word 0x0000217C
-	thumb_func_end ov12_0223EC10
+	thumb_func_end BtlCmd_SetMultiHit
 
-	thumb_func_start ov12_0223EC84
-ov12_0223EC84: ; 0x0223EC84
+	thumb_func_start BtlCmd_ChangeVar
+BtlCmd_ChangeVar: ; 0x0223EC84
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r7, r0, #0
@@ -1871,10 +1695,10 @@ _0223ED72:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0223EC84
+	thumb_func_end BtlCmd_ChangeVar
 
-	thumb_func_start ov12_0223ED78
-ov12_0223ED78: ; 0x0223ED78
+	thumb_func_start BtlCmd_BufferStatChangeMsg
+BtlCmd_BufferStatChangeMsg: ; 0x0223ED78
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	str r0, [sp]
@@ -2645,10 +2469,10 @@ _0223F37C: .word 0x00002DB0
 _0223F380: .word 0x00000296
 _0223F384: .word 0x000002FA
 _0223F388: .word 0x000002FD
-	thumb_func_end ov12_0223ED78
+	thumb_func_end BtlCmd_BufferStatChangeMsg
 
-	thumb_func_start ov12_0223F38C
-ov12_0223F38C: ; 0x0223F38C
+	thumb_func_start BtlCmd_ChangeMonDataVar
+BtlCmd_ChangeMonDataVar: ; 0x0223F38C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r1, #0
@@ -2799,10 +2623,10 @@ _0223F492:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0223F38C
+	thumb_func_end BtlCmd_ChangeMonDataVar
 
-	thumb_func_start ov12_0223F4B0
-ov12_0223F4B0: ; 0x0223F4B0
+	thumb_func_start BtlCmd_53
+BtlCmd_53: ; 0x0223F4B0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r0, #0
@@ -2829,10 +2653,10 @@ ov12_0223F4B0: ; 0x0223F4B0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0223F4E8: .word 0x0000218C
-	thumb_func_end ov12_0223F4B0
+	thumb_func_end BtlCmd_53
 
-	thumb_func_start ov12_0223F4EC
-ov12_0223F4EC: ; 0x0223F4EC
+	thumb_func_start BtlCmd_ToggleVanish
+BtlCmd_ToggleVanish: ; 0x0223F4EC
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -2856,10 +2680,10 @@ ov12_0223F4EC: ; 0x0223F4EC
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0223F4EC
+	thumb_func_end BtlCmd_ToggleVanish
 
-	thumb_func_start ov12_0223F524
-ov12_0223F524: ; 0x0223F524
+	thumb_func_start BtlCmd_CheckAbility
+BtlCmd_CheckAbility: ; 0x0223F524
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r1, #0
@@ -2948,10 +2772,10 @@ _0223F5DC:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0223F524
+	thumb_func_end BtlCmd_CheckAbility
 
-	thumb_func_start ov12_0223F5E4
-ov12_0223F5E4: ; 0x0223F5E4
+	thumb_func_start BtlCmd_Random
+BtlCmd_Random: ; 0x0223F5E4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r7, r0, #0
@@ -2975,10 +2799,10 @@ ov12_0223F5E4: ; 0x0223F5E4
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0223F5E4
+	thumb_func_end BtlCmd_Random
 
-	thumb_func_start ov12_0223F61C
-ov12_0223F61C: ; 0x0223F61C
+	thumb_func_start BtlCmd_ChangeVar2
+BtlCmd_ChangeVar2: ; 0x0223F61C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r7, r0, #0
@@ -3127,10 +2951,10 @@ _0223F72E:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0223F61C
+	thumb_func_end BtlCmd_ChangeVar2
 
-	thumb_func_start ov12_0223F734
-ov12_0223F734: ; 0x0223F734
+	thumb_func_start BtlCmd_ChangeMonDataByVar
+BtlCmd_ChangeMonDataByVar: ; 0x0223F734
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r4, r1, #0
@@ -3312,10 +3136,10 @@ _0223F88E:
 	mov r0, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov12_0223F734
+	thumb_func_end BtlCmd_ChangeMonDataByVar
 
-	thumb_func_start ov12_0223F894
-ov12_0223F894: ; 0x0223F894
+	thumb_func_start BtlCmd_Goto
+BtlCmd_Goto: ; 0x0223F894
 	push {r4, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -3329,10 +3153,10 @@ ov12_0223F894: ; 0x0223F894
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0223F894
+	thumb_func_end BtlCmd_Goto
 
-	thumb_func_start ov12_0223F8B4
-ov12_0223F8B4: ; 0x0223F8B4
+	thumb_func_start BtlCmd_GotoSubscript
+BtlCmd_GotoSubscript: ; 0x0223F8B4
 	push {r4, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -3346,10 +3170,10 @@ ov12_0223F8B4: ; 0x0223F8B4
 	bl ov12_02245520
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ov12_0223F8B4
+	thumb_func_end BtlCmd_GotoSubscript
 
-	thumb_func_start ov12_0223F8D4
-ov12_0223F8D4: ; 0x0223F8D4
+	thumb_func_start BtlCmd_GotoSubscriptVar
+BtlCmd_GotoSubscriptVar: ; 0x0223F8D4
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -3370,10 +3194,10 @@ ov12_0223F8D4: ; 0x0223F8D4
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0223F8D4
+	thumb_func_end BtlCmd_GotoSubscriptVar
 
-	thumb_func_start ov12_0223F904
-ov12_0223F904: ; 0x0223F904
+	thumb_func_start BtlCmd_SetMoveToMirrorMove
+BtlCmd_SetMoveToMirrorMove: ; 0x0223F904
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r1, #0
@@ -3508,10 +3332,10 @@ _0223FA0C: .word 0x0000213C
 _0223FA10: .word 0xFFFFBFFF
 _0223FA14: .word 0x00003044
 _0223FA18: .word 0x000021AC
-	thumb_func_end ov12_0223F904
+	thumb_func_end BtlCmd_SetMoveToMirrorMove
 
-	thumb_func_start ov12_0223FA1C
-ov12_0223FA1C: ; 0x0223FA1C
+	thumb_func_start BtlCmd_ResetAllStatChanges
+BtlCmd_ResetAllStatChanges: ; 0x0223FA1C
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -3551,10 +3375,10 @@ _0223FA5C:
 _0223FA60: .word 0x00002D58
 _0223FA64: .word 0x00002DB0
 _0223FA68: .word 0xFFEFFFFF
-	thumb_func_end ov12_0223FA1C
+	thumb_func_end BtlCmd_ResetAllStatChanges
 
-	thumb_func_start ov12_0223FA6C
-ov12_0223FA6C: ; 0x0223FA6C
+	thumb_func_start BtlCmd_64
+BtlCmd_64: ; 0x0223FA6C
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -3573,10 +3397,10 @@ ov12_0223FA6C: ; 0x0223FA6C
 	bl ov12_02250C70
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov12_0223FA6C
+	thumb_func_end BtlCmd_64
 
-	thumb_func_start ov12_0223FA98
-ov12_0223FA98: ; 0x0223FA98
+	thumb_func_start BtlCmd_65
+BtlCmd_65: ; 0x0223FA98
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -3595,10 +3419,10 @@ ov12_0223FA98: ; 0x0223FA98
 	bl ov12_02250CA0
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov12_0223FA98
+	thumb_func_end BtlCmd_65
 
-	thumb_func_start ov12_0223FAC4
-ov12_0223FAC4: ; 0x0223FAC4
+	thumb_func_start BtlCmd_SetHealthbarStatus
+BtlCmd_SetHealthbarStatus: ; 0x0223FAC4
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -3622,10 +3446,10 @@ ov12_0223FAC4: ; 0x0223FAC4
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0223FAC4
+	thumb_func_end BtlCmd_SetHealthbarStatus
 
-	thumb_func_start ov12_0223FAFC
-ov12_0223FAFC: ; 0x0223FAFC
+	thumb_func_start BtlCmd_PrintTrainerMessage
+BtlCmd_PrintTrainerMessage: ; 0x0223FAFC
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -3649,7 +3473,7 @@ ov12_0223FAFC: ; 0x0223FAFC
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0223FAFC
+	thumb_func_end BtlCmd_PrintTrainerMessage
 
 	thumb_func_start ov12_0223FB34
 ov12_0223FB34: ; 0x0223FB34
@@ -3801,8 +3625,8 @@ _0223FC44: .word ov12_0226C4C6
 _0223FC48: .word 0x00002168
 	thumb_func_end ov12_0223FB34
 
-	thumb_func_start ov12_0223FC4C
-ov12_0223FC4C: ; 0x0223FC4C
+	thumb_func_start BtlCmd_CalcPrizeMoney
+BtlCmd_CalcPrizeMoney: ; 0x0223FC4C
 	push {r4, r5, r6, lr}
 	add r6, r1, #0
 	add r5, r0, #0
@@ -3872,10 +3696,10 @@ _0223FCC2:
 	.balign 4, 0
 _0223FCD4: .word 0x00002420
 _0223FCD8: .word 0x00002478
-	thumb_func_end ov12_0223FC4C
+	thumb_func_end BtlCmd_CalcPrizeMoney
 
-	thumb_func_start ov12_0223FCDC
-ov12_0223FCDC: ; 0x0223FCDC
+	thumb_func_start BtlCmd_SetStatus2Effect
+BtlCmd_SetStatus2Effect: ; 0x0223FCDC
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r0, #0
@@ -3921,10 +3745,10 @@ _0223FD3A:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0223FCDC
+	thumb_func_end BtlCmd_SetStatus2Effect
 
-	thumb_func_start ov12_0223FD40
-ov12_0223FD40: ; 0x0223FD40
+	thumb_func_start BtlCmd_CopyStatus2Effect
+BtlCmd_CopyStatus2Effect: ; 0x0223FD40
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r1, #0
@@ -3987,10 +3811,10 @@ _0223FDC4:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0223FD40
+	thumb_func_end BtlCmd_CopyStatus2Effect
 
-	thumb_func_start ov12_0223FDCC
-ov12_0223FDCC: ; 0x0223FDCC
+	thumb_func_start BtlCmd_SetStatus2EffectVar
+BtlCmd_SetStatus2EffectVar: ; 0x0223FDCC
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r7, r0, #0
@@ -4041,10 +3865,10 @@ _0223FE36:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0223FDCC
+	thumb_func_end BtlCmd_SetStatus2EffectVar
 
-	thumb_func_start ov12_0223FE3C
-ov12_0223FE3C: ; 0x0223FE3C
+	thumb_func_start BtlCmd_ReturnMessage
+BtlCmd_ReturnMessage: ; 0x0223FE3C
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -4068,10 +3892,10 @@ ov12_0223FE3C: ; 0x0223FE3C
 	pop {r3, r4, r5, pc}
 	nop
 _0223FE70: .word 0x0000219C
-	thumb_func_end ov12_0223FE3C
+	thumb_func_end BtlCmd_ReturnMessage
 
-	thumb_func_start ov12_0223FE74
-ov12_0223FE74: ; 0x0223FE74
+	thumb_func_start BtlCmd_SendOutMessage
+BtlCmd_SendOutMessage: ; 0x0223FE74
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -4095,10 +3919,10 @@ ov12_0223FE74: ; 0x0223FE74
 	pop {r3, r4, r5, pc}
 	nop
 _0223FEA8: .word 0x0000219C
-	thumb_func_end ov12_0223FE74
+	thumb_func_end BtlCmd_SendOutMessage
 
-	thumb_func_start ov12_0223FEAC
-ov12_0223FEAC: ; 0x0223FEAC
+	thumb_func_start BtlCmd_EncounterMessage
+BtlCmd_EncounterMessage: ; 0x0223FEAC
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -4117,10 +3941,10 @@ ov12_0223FEAC: ; 0x0223FEAC
 	bl ov12_02263938
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov12_0223FEAC
+	thumb_func_end BtlCmd_EncounterMessage
 
-	thumb_func_start ov12_0223FED8
-ov12_0223FED8: ; 0x0223FED8
+	thumb_func_start BtlCmd_75
+BtlCmd_75: ; 0x0223FED8
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -4139,10 +3963,10 @@ ov12_0223FED8: ; 0x0223FED8
 	bl ov12_02263950
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov12_0223FED8
+	thumb_func_end BtlCmd_75
 
-	thumb_func_start ov12_0223FF04
-ov12_0223FF04: ; 0x0223FF04
+	thumb_func_start BtlCmd_TrainerMessageVar
+BtlCmd_TrainerMessageVar: ; 0x0223FF04
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -4163,10 +3987,10 @@ ov12_0223FF04: ; 0x0223FF04
 	bl ov12_02263828
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov12_0223FF04
+	thumb_func_end BtlCmd_TrainerMessageVar
 
-	thumb_func_start ov12_0223FF34
-ov12_0223FF34: ; 0x0223FF34
+	thumb_func_start BtlCmd_TryConversion
+BtlCmd_TryConversion: ; 0x0223FF34
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r1, #0
@@ -4354,10 +4178,10 @@ _0224009C:
 _022400A4: .word 0x00002D4C
 _022400A8: .word 0x000003E2
 _022400AC: .word 0x00002D64
-	thumb_func_end ov12_0223FF34
+	thumb_func_end BtlCmd_TryConversion
 
-	thumb_func_start ov12_022400B0
-ov12_022400B0: ; 0x022400B0
+	thumb_func_start BtlCmd_Compare
+BtlCmd_Compare: ; 0x022400B0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r6, r1, #0
@@ -4462,10 +4286,10 @@ _02240174:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_022400B0
+	thumb_func_end BtlCmd_Compare
 
-	thumb_func_start ov12_0224017C
-ov12_0224017C: ; 0x0224017C
+	thumb_func_start BtlCmd_IfMonStatVar
+BtlCmd_IfMonStatVar: ; 0x0224017C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r6, r1, #0
@@ -4572,10 +4396,10 @@ _02240248:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0224017C
+	thumb_func_end BtlCmd_IfMonStatVar
 
-	thumb_func_start ov12_02240250
-ov12_02240250: ; 0x02240250
+	thumb_func_start BtlCmd_PayDay
+BtlCmd_PayDay: ; 0x02240250
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -4613,10 +4437,10 @@ _02240282:
 	.balign 4, 0
 _02240298: .word 0x00002168
 _0224029C: .word 0x0000FFFF
-	thumb_func_end ov12_02240250
+	thumb_func_end BtlCmd_PayDay
 
-	thumb_func_start ov12_022402A0
-ov12_022402A0: ; 0x022402A0
+	thumb_func_start BtlCmd_TryLightScreen
+BtlCmd_TryLightScreen: ; 0x022402A0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r7, r0, #0
@@ -4724,10 +4548,10 @@ _02240370:
 _02240374: .word 0x0000216C
 _02240378: .word 0xFFFFFC7F
 _0224037C: .word 0x00003044
-	thumb_func_end ov12_022402A0
+	thumb_func_end BtlCmd_TryLightScreen
 
-	thumb_func_start ov12_02240380
-ov12_02240380: ; 0x02240380
+	thumb_func_start BtlCmd_TryReflect
+BtlCmd_TryReflect: ; 0x02240380
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r7, r0, #0
@@ -4835,10 +4659,10 @@ _02240452:
 	nop
 _02240458: .word 0x0000216C
 _0224045C: .word 0x00003044
-	thumb_func_end ov12_02240380
+	thumb_func_end BtlCmd_TryReflect
 
-	thumb_func_start ov12_02240460
-ov12_02240460: ; 0x02240460
+	thumb_func_start BtlCmd_TryMist
+BtlCmd_TryMist: ; 0x02240460
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -4898,10 +4722,10 @@ _022404CE:
 _022404D4: .word 0x0000216C
 _022404D8: .word 0xFFFF8FFF
 _022404DC: .word 0xFFFFF3FF
-	thumb_func_end ov12_02240460
+	thumb_func_end BtlCmd_TryMist
 
-	thumb_func_start ov12_022404E0
-ov12_022404E0: ; 0x022404E0
+	thumb_func_start BtlCmd_TryOHKO
+BtlCmd_TryOHKO: ; 0x022404E0
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r6, r0, #0
@@ -5147,10 +4971,10 @@ _022406C4: .word 0x00002D74
 _022406C8: .word 0x00002DCC
 _022406CC: .word 0x00002D8C
 _022406D0: .word 0x00002144
-	thumb_func_end ov12_022404E0
+	thumb_func_end BtlCmd_TryOHKO
 
-	thumb_func_start ov12_022406D4
-ov12_022406D4: ; 0x022406D4
+	thumb_func_start BtlCmd_SetDamageDivide
+BtlCmd_SetDamageDivide: ; 0x022406D4
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -5174,10 +4998,10 @@ ov12_022406D4: ; 0x022406D4
 	str r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov12_022406D4
+	thumb_func_end BtlCmd_SetDamageDivide
 
-	thumb_func_start ov12_0224070C
-ov12_0224070C: ; 0x0224070C
+	thumb_func_start BtlCmd_SetDamageDivideVar
+BtlCmd_SetDamageDivideVar: ; 0x0224070C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r0, #0
@@ -5219,10 +5043,10 @@ _02240750:
 _02240760:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov12_0224070C
+	thumb_func_end BtlCmd_SetDamageDivideVar
 
-	thumb_func_start ov12_02240764
-ov12_02240764: ; 0x02240764
+	thumb_func_start BtlCmd_TryMimic
+BtlCmd_TryMimic: ; 0x02240764
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r1, #0
 	add r0, r6, #0
@@ -5378,10 +5202,10 @@ _0224088C: .word 0x00002DB0
 _02240890: .word 0x00002D4C
 _02240894: .word 0x00002DCC
 _02240898: .word 0xFFFFE3FF
-	thumb_func_end ov12_02240764
+	thumb_func_end BtlCmd_TryMimic
 
-	thumb_func_start ov12_0224089C
-ov12_0224089C: ; 0x0224089C
+	thumb_func_start BtlCmd_Metronome
+BtlCmd_Metronome: ; 0x0224089C
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r1, #0
 	add r7, r0, #0
@@ -5428,10 +5252,10 @@ _022408D6:
 	.balign 4, 0
 _022408F4: .word 0x00002D4C
 _022408F8: .word 0x000001D3
-	thumb_func_end ov12_0224089C
+	thumb_func_end BtlCmd_Metronome
 
-	thumb_func_start ov12_022408FC
-ov12_022408FC: ; 0x022408FC
+	thumb_func_start BtlCmd_TryDisable
+BtlCmd_TryDisable: ; 0x022408FC
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -5521,10 +5345,10 @@ _022409AA:
 	nop
 _022409B0: .word 0x0000307C
 _022409B4: .word 0x00002DE8
-	thumb_func_end ov12_022408FC
+	thumb_func_end BtlCmd_TryDisable
 
-	thumb_func_start ov12_022409B8
-ov12_022409B8: ; 0x022409B8
+	thumb_func_start BtlCmd_Counter
+BtlCmd_Counter: ; 0x022409B8
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r1, #0
@@ -5647,10 +5471,10 @@ _02240AA0:
 _02240AA8: .word 0x00002D8C
 _02240AAC: .word 0x00002144
 _02240AB0: .word 0x0000216C
-	thumb_func_end ov12_022409B8
+	thumb_func_end BtlCmd_Counter
 
-	thumb_func_start ov12_02240AB4
-ov12_02240AB4: ; 0x02240AB4
+	thumb_func_start BtlCmd_MirrorCoat
+BtlCmd_MirrorCoat: ; 0x02240AB4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r1, #0
@@ -5773,10 +5597,10 @@ _02240B9C:
 _02240BA4: .word 0x00002D8C
 _02240BA8: .word 0x00002144
 _02240BAC: .word 0x0000216C
-	thumb_func_end ov12_02240AB4
+	thumb_func_end BtlCmd_MirrorCoat
 
-	thumb_func_start ov12_02240BB0
-ov12_02240BB0: ; 0x02240BB0
+	thumb_func_start BtlCmd_TryEncore
+BtlCmd_TryEncore: ; 0x02240BB0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	str r0, [sp]
@@ -5886,10 +5710,10 @@ _02240C88: .word 0x0000307C
 _02240C8C: .word 0x00002DEC
 _02240C90: .word 0x00002DC8
 _02240C94: .word 0x0000216C
-	thumb_func_end ov12_02240BB0
+	thumb_func_end BtlCmd_TryEncore
 
-	thumb_func_start ov12_02240C98
-ov12_02240C98: ; 0x02240C98
+	thumb_func_start BtlCmd_TryConversion2
+BtlCmd_TryConversion2: ; 0x02240C98
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r1, #0
@@ -6103,10 +5927,10 @@ _02240E48: .word 0x00002DB0
 _02240E4C: .word 0x000030D4
 _02240E50: .word 0x0000FFFF
 _02240E54: .word 0x00002D64
-	thumb_func_end ov12_02240C98
+	thumb_func_end BtlCmd_TryConversion2
 
-	thumb_func_start ov12_02240E58
-ov12_02240E58: ; 0x02240E58
+	thumb_func_start BtlCmd_TrySketch
+BtlCmd_TrySketch: ; 0x02240E58
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	str r0, [sp]
@@ -6252,10 +6076,10 @@ _02240F6C: .word 0x000030AC
 _02240F70: .word 0x00002D4C
 _02240F74: .word 0x00002DCC
 _02240F78: .word 0xFFFFE3FF
-	thumb_func_end ov12_02240E58
+	thumb_func_end BtlCmd_TrySketch
 
-	thumb_func_start ov12_02240F7C
-ov12_02240F7C: ; 0x02240F7C
+	thumb_func_start BtlCmd_TrySleepTalk
+BtlCmd_TrySleepTalk: ; 0x02240F7C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r1, #0
@@ -6355,10 +6179,10 @@ _0224103E:
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02241044: .word 0x00002D4C
-	thumb_func_end ov12_02240F7C
+	thumb_func_end BtlCmd_TrySleepTalk
 
-	thumb_func_start ov12_02241048
-ov12_02241048: ; 0x02241048
+	thumb_func_start BtlCmd_FlailDamageCalc
+BtlCmd_FlailDamageCalc: ; 0x02241048
 	push {r4, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -6397,10 +6221,10 @@ _0224108C: .word 0x00002D8C
 _02241090: .word ov12_0226C300
 _02241094: .word ov12_0226C301
 _02241098: .word 0x00002154
-	thumb_func_end ov12_02241048
+	thumb_func_end BtlCmd_FlailDamageCalc
 
-	thumb_func_start ov12_0224109C
-ov12_0224109C: ; 0x0224109C
+	thumb_func_start BtlCmd_TrySpite
+BtlCmd_TrySpite: ; 0x0224109C
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	add r6, r0, #0
@@ -6480,10 +6304,10 @@ _02241132:
 	nop
 _02241138: .word 0x0000307C
 _0224113C: .word 0x00002D6C
-	thumb_func_end ov12_0224109C
+	thumb_func_end BtlCmd_TrySpite
 
-	thumb_func_start ov12_02241140
-ov12_02241140: ; 0x02241140
+	thumb_func_start BtlCmd_HealBell
+BtlCmd_HealBell: ; 0x02241140
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r7, r0, #0
@@ -6647,10 +6471,10 @@ _02241280: .word 0x00003044
 _02241284: .word 0x00002DAC
 _02241288: .word 0xF7FFFFFF
 _0224128C: .word 0x00003108
-	thumb_func_end ov12_02241140
+	thumb_func_end BtlCmd_HealBell
 
-	thumb_func_start ov12_02241290
-ov12_02241290: ; 0x02241290
+	thumb_func_start BtlCmd_TryThief
+BtlCmd_TryThief: ; 0x02241290
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r1, #0
@@ -6787,10 +6611,10 @@ _022413A4:
 	nop
 _022413AC: .word 0x0000219C
 _022413B0: .word 0x00002DB8
-	thumb_func_end ov12_02241290
+	thumb_func_end BtlCmd_TryThief
 
-	thumb_func_start ov12_022413B4
-ov12_022413B4: ; 0x022413B4
+	thumb_func_start BtlCmd_TryProtect
+BtlCmd_TryProtect: ; 0x022413B4
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r1, #0
@@ -6945,10 +6769,10 @@ _022414E0: .word 0x00003150
 _022414E4: .word ov12_0226C2F8
 _022414E8: .word 0x00003044
 _022414EC: .word 0x000003DE
-	thumb_func_end ov12_022413B4
+	thumb_func_end BtlCmd_TryProtect
 
-	thumb_func_start ov12_022414F0
-ov12_022414F0: ; 0x022414F0
+	thumb_func_start BtlCmd_TrySubstitute
+BtlCmd_TrySubstitute: ; 0x022414F0
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r0, r5, #0
@@ -7005,10 +6829,10 @@ _0224155C: .word 0x00002D90
 _02241560: .word 0x00002D8C
 _02241564: .word 0x0000215C
 _02241568: .word 0xFFFF1FFF
-	thumb_func_end ov12_022414F0
+	thumb_func_end BtlCmd_TrySubstitute
 
-	thumb_func_start ov12_0224156C
-ov12_0224156C: ; 0x0224156C
+	thumb_func_start BtlCmd_TryWhirlwind
+BtlCmd_TryWhirlwind: ; 0x0224156C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	str r0, [sp]
@@ -7205,10 +7029,10 @@ _022416FA:
 	.balign 4, 0
 _02241700: .word 0x0000219C
 _02241704: .word 0x000021A0
-	thumb_func_end ov12_0224156C
+	thumb_func_end BtlCmd_TryWhirlwind
 
-	thumb_func_start ov12_02241708
-ov12_02241708: ; 0x02241708
+	thumb_func_start BtlCmd_Transform
+BtlCmd_Transform: ; 0x02241708
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -7454,10 +7278,10 @@ _022418EC: .word 0xFFFFFBFF
 _022418F0: .word 0xBFFFFFFF
 _022418F4: .word 0x00002D4C
 _022418F8: .word 0x00002D6C
-	thumb_func_end ov12_02241708
+	thumb_func_end BtlCmd_Transform
 
-	thumb_func_start ov12_022418FC
-ov12_022418FC: ; 0x022418FC
+	thumb_func_start BtlCmd_TrySpikes
+BtlCmd_TrySpikes: ; 0x022418FC
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -7522,10 +7346,10 @@ _0224197A:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov12_022418FC
+	thumb_func_end BtlCmd_TrySpikes
 
-	thumb_func_start ov12_02241980
-ov12_02241980: ; 0x02241980
+	thumb_func_start BtlCmd_CheckSpikes
+BtlCmd_CheckSpikes: ; 0x02241980
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r0, #0
@@ -7585,10 +7409,10 @@ _022419F6:
 	nop
 _022419FC: .word 0x00002D8C
 _02241A00: .word 0x0000215C
-	thumb_func_end ov12_02241980
+	thumb_func_end BtlCmd_CheckSpikes
 
-	thumb_func_start ov12_02241A04
-ov12_02241A04: ; 0x02241A04
+	thumb_func_start BtlCmd_TryPerishSong
+BtlCmd_TryPerishSong: ; 0x02241A04
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -7676,10 +7500,10 @@ _02241AA2:
 _02241AA8: .word 0x00002DC8
 _02241AAC: .word 0x00002D8C
 _02241AB0: .word 0xFFFF9FFF
-	thumb_func_end ov12_02241A04
+	thumb_func_end BtlCmd_TryPerishSong
 
-	thumb_func_start ov12_02241AB4
-ov12_02241AB4: ; 0x02241AB4
+	thumb_func_start BtlCmd_SetTurnOrderBySpeed
+BtlCmd_SetTurnOrderBySpeed: ; 0x02241AB4
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -7703,10 +7527,10 @@ ov12_02241AB4: ; 0x02241AB4
 	nop
 _02241AE4: .word 0x00003104
 _02241AE8: .word 0x000021EC
-	thumb_func_end ov12_02241AB4
+	thumb_func_end BtlCmd_SetTurnOrderBySpeed
 
-	thumb_func_start ov12_02241AEC
-ov12_02241AEC: ; 0x02241AEC
+	thumb_func_start BtlCmd_JumpIfValidBattlerVar
+BtlCmd_JumpIfValidBattlerVar: ; 0x02241AEC
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -7736,10 +7560,10 @@ _02241B2A:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02241AEC
+	thumb_func_end BtlCmd_JumpIfValidBattlerVar
 
-	thumb_func_start ov12_02241B30
-ov12_02241B30: ; 0x02241B30
+	thumb_func_start BtlCmd_WeatherDamageCalc
+BtlCmd_WeatherDamageCalc: ; 0x02241B30
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r5, r1, #0
@@ -8081,10 +7905,10 @@ _02241DE4: .word 0x00002D90
 _02241DE8: .word 0x00000102
 _02241DEC: .word 0x00002DAC
 _02241DF0: .word 0x00000F88
-	thumb_func_end ov12_02241B30
+	thumb_func_end BtlCmd_WeatherDamageCalc
 
-	thumb_func_start ov12_02241DF4
-ov12_02241DF4: ; 0x02241DF4
+	thumb_func_start BtlCmd_RolloutDamageCalc
+BtlCmd_RolloutDamageCalc: ; 0x02241DF4
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -8222,10 +8046,10 @@ _02241F00: .word 0x00003044
 _02241F04: .word 0x000003E1
 _02241F08: .word 0x00002154
 _02241F0C: .word 0x00002DB0
-	thumb_func_end ov12_02241DF4
+	thumb_func_end BtlCmd_RolloutDamageCalc
 
-	thumb_func_start ov12_02241F10
-ov12_02241F10: ; 0x02241F10
+	thumb_func_start BtlCmd_FuryCutterDamageCalc
+BtlCmd_FuryCutterDamageCalc: ; 0x02241F10
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -8295,10 +8119,10 @@ _02241F90: .word 0xFFE3FFFF
 _02241F94: .word 0x00003044
 _02241F98: .word 0x000003E1
 _02241F9C: .word 0x00002154
-	thumb_func_end ov12_02241F10
+	thumb_func_end BtlCmd_FuryCutterDamageCalc
 
-	thumb_func_start ov12_02241FA0
-ov12_02241FA0: ; 0x02241FA0
+	thumb_func_start BtlCmd_TryAttract
+BtlCmd_TryAttract: ; 0x02241FA0
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -8362,10 +8186,10 @@ _02242016:
 	nop
 _0224201C: .word 0x00002DBE
 _02242020: .word 0x00002DB0
-	thumb_func_end ov12_02241FA0
+	thumb_func_end BtlCmd_TryAttract
 
-	thumb_func_start ov12_02242024
-ov12_02242024: ; 0x02242024
+	thumb_func_start BtlCmd_TrySafeguard
+BtlCmd_TrySafeguard: ; 0x02242024
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -8436,10 +8260,10 @@ _022420A8:
 _022420AC: .word 0x0000216C
 _022420B0: .word 0xFFF1FFFF
 _022420B4: .word 0xFFFE7FFF
-	thumb_func_end ov12_02242024
+	thumb_func_end BtlCmd_TrySafeguard
 
-	thumb_func_start ov12_022420B8
-ov12_022420B8: ; 0x022420B8
+	thumb_func_start BtlCmd_Present
+BtlCmd_Present: ; 0x022420B8
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -8494,10 +8318,10 @@ _0224211A:
 _02242120: .word 0x00002154
 _02242124: .word 0x00002D90
 _02242128: .word 0x0000215C
-	thumb_func_end ov12_022420B8
+	thumb_func_end BtlCmd_Present
 
-	thumb_func_start ov12_0224212C
-ov12_0224212C: ; 0x0224212C
+	thumb_func_start BtlCmd_MagnitudeDamageCalc
+BtlCmd_MagnitudeDamageCalc: ; 0x0224212C
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -8584,10 +8408,10 @@ _022421BC:
 	nop
 _022421CC: .word 0x00003120
 _022421D0: .word 0x00002154
-	thumb_func_end ov12_0224212C
+	thumb_func_end BtlCmd_MagnitudeDamageCalc
 
-	thumb_func_start ov12_022421D4
-ov12_022421D4: ; 0x022421D4
+	thumb_func_start BtlCmd_TrySwitchMon
+BtlCmd_TrySwitchMon: ; 0x022421D4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r0, #0
@@ -8633,10 +8457,10 @@ _02242232:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_022421D4
+	thumb_func_end BtlCmd_TrySwitchMon
 
-	thumb_func_start ov12_02242238
-ov12_02242238: ; 0x02242238
+	thumb_func_start BtlCmd_RapidSpin
+BtlCmd_RapidSpin: ; 0x02242238
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	ldr r1, [r4, #0x64]
@@ -8796,10 +8620,10 @@ _02242366:
 _02242374: .word 0x00002DB0
 _02242378: .word 0xFFFF1FFF
 _0224237C: .word 0xFFFFFBFF
-	thumb_func_end ov12_02242238
+	thumb_func_end BtlCmd_RapidSpin
 
-	thumb_func_start ov12_02242380
-ov12_02242380: ; 0x02242380
+	thumb_func_start BtlCmd_ChangeWeatherBasedHPRecovery
+BtlCmd_ChangeWeatherBasedHPRecovery: ; 0x02242380
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -8878,10 +8702,10 @@ _02242412:
 _02242418: .word 0x000080FF
 _0224241C: .word 0x00002D90
 _02242420: .word 0x0000215C
-	thumb_func_end ov12_02242380
+	thumb_func_end BtlCmd_ChangeWeatherBasedHPRecovery
 
-	thumb_func_start ov12_02242424
-ov12_02242424: ; 0x02242424
+	thumb_func_start BtlCmd_HiddenPowerDamageCalc
+BtlCmd_HiddenPowerDamageCalc: ; 0x02242424
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -8995,10 +8819,10 @@ _022424FE:
 _02242504: .word 0x00002D54
 _02242508: .word 0x00002154
 _0224250C: .word 0x00002160
-	thumb_func_end ov12_02242424
+	thumb_func_end BtlCmd_HiddenPowerDamageCalc
 
-	thumb_func_start ov12_02242510
-ov12_02242510: ; 0x02242510
+	thumb_func_start BtlCmd_PsychUp
+BtlCmd_PsychUp: ; 0x02242510
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -9045,10 +8869,10 @@ _02242524:
 	nop
 _02242568: .word 0x00002D58
 _0224256C: .word 0x00002DB0
-	thumb_func_end ov12_02242510
+	thumb_func_end BtlCmd_PsychUp
 
-	thumb_func_start ov12_02242570
-ov12_02242570: ; 0x02242570
+	thumb_func_start BtlCmd_TryFutureSight
+BtlCmd_TryFutureSight: ; 0x02242570
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	add r4, r1, #0
@@ -9161,10 +8985,10 @@ _02242650:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02242658: .word 0x00003044
-	thumb_func_end ov12_02242570
+	thumb_func_end BtlCmd_TryFutureSight
 
-	thumb_func_start ov12_0224265C
-ov12_0224265C: ; 0x0224265C
+	thumb_func_start BtlCmd_CheckHitRate
+BtlCmd_CheckHitRate: ; 0x0224265C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r4, r1, #0
@@ -9218,10 +9042,10 @@ _022426CC:
 	nop
 _022426D4: .word 0x0000216C
 _022426D8: .word 0x001FD849
-	thumb_func_end ov12_0224265C
+	thumb_func_end BtlCmd_CheckHitRate
 
-	thumb_func_start ov12_022426DC
-ov12_022426DC: ; 0x022426DC
+	thumb_func_start BtlCmd_TryTeleport
+BtlCmd_TryTeleport: ; 0x022426DC
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -9245,10 +9069,10 @@ _0224270A:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov12_022426DC
+	thumb_func_end BtlCmd_TryTeleport
 
-	thumb_func_start ov12_02242710
-ov12_02242710: ; 0x02242710
+	thumb_func_start BtlCmd_BeatUpDamageCalc
+BtlCmd_BeatUpDamageCalc: ; 0x02242710
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r1, #0
@@ -9527,10 +9351,10 @@ _0224295C: .word 0x00003044
 _02242960: .word 0x000003E1
 _02242964: .word 0x000001E1
 _02242968: .word 0x0000217C
-	thumb_func_end ov12_02242710
+	thumb_func_end BtlCmd_BeatUpDamageCalc
 
-	thumb_func_start ov12_0224296C
-ov12_0224296C: ; 0x0224296C
+	thumb_func_start BtlCmd_FollowMe
+BtlCmd_FollowMe: ; 0x0224296C
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -9561,10 +9385,10 @@ ov12_0224296C: ; 0x0224296C
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _022429A8: .word 0xFF9FFFFF
-	thumb_func_end ov12_0224296C
+	thumb_func_end BtlCmd_FollowMe
 
-	thumb_func_start ov12_022429AC
-ov12_022429AC: ; 0x022429AC
+	thumb_func_start BtlCmd_TryHelpingHand
+BtlCmd_TryHelpingHand: ; 0x022429AC
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	add r4, r0, #0
@@ -9640,10 +9464,10 @@ _02242A3E:
 _02242A44: .word 0x00003108
 _02242A48: .word 0x000021A8
 _02242A4C: .word 0x00002D8C
-	thumb_func_end ov12_022429AC
+	thumb_func_end BtlCmd_TryHelpingHand
 
-	thumb_func_start ov12_02242A50
-ov12_02242A50: ; 0x02242A50
+	thumb_func_start BtlCmd_TryTrick
+BtlCmd_TryTrick: ; 0x02242A50
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r1, #0
@@ -9765,10 +9589,10 @@ _02242B48:
 	nop
 _02242B50: .word 0x0000219C
 _02242B54: .word 0x00002DB8
-	thumb_func_end ov12_02242A50
+	thumb_func_end BtlCmd_TryTrick
 
-	thumb_func_start ov12_02242B58
-ov12_02242B58: ; 0x02242B58
+	thumb_func_start BtlCmd_TryWish
+BtlCmd_TryWish: ; 0x02242B58
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -9801,10 +9625,10 @@ _02242B92:
 	pop {r3, r4, r5, pc}
 	nop
 _02242B98: .word 0x0000219C
-	thumb_func_end ov12_02242B58
+	thumb_func_end BtlCmd_TryWish
 
-	thumb_func_start ov12_02242B9C
-ov12_02242B9C: ; 0x02242B9C
+	thumb_func_start BtlCmd_TryAssist
+BtlCmd_TryAssist: ; 0x02242B9C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x48
 	str r0, [sp]
@@ -9913,10 +9737,10 @@ _02242C72:
 	.balign 4, 0
 _02242C78: .word 0x0000219C
 _02242C7C: .word 0x000001EE
-	thumb_func_end ov12_02242B9C
+	thumb_func_end BtlCmd_TryAssist
 
-	thumb_func_start ov12_02242C80
-ov12_02242C80: ; 0x02242C80
+	thumb_func_start BtlCmd_TrySetMagicCoat
+BtlCmd_TrySetMagicCoat: ; 0x02242C80
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r1, #0
 	add r5, r0, #0
@@ -9961,10 +9785,10 @@ _02242CD2:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02242CD8: .word 0x00003150
-	thumb_func_end ov12_02242C80
+	thumb_func_end BtlCmd_TrySetMagicCoat
 
-	thumb_func_start ov12_02242CDC
-ov12_02242CDC: ; 0x02242CDC
+	thumb_func_start BtlCmd_MagicCoat
+BtlCmd_MagicCoat: ; 0x02242CDC
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r5, r1, #0
@@ -10056,10 +9880,10 @@ _02242D72:
 _02242D84: .word 0x00002D8C
 _02242D88: .word 0x00003044
 _02242D8C: .word 0x000003E6
-	thumb_func_end ov12_02242CDC
+	thumb_func_end BtlCmd_MagicCoat
 
-	thumb_func_start ov12_02242D90
-ov12_02242D90: ; 0x02242D90
+	thumb_func_start BtlCmd_RevengeDamageCalc
+BtlCmd_RevengeDamageCalc: ; 0x02242D90
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r0, r5, #0
@@ -10116,10 +9940,10 @@ _02242DF6:
 	pop {r3, r4, r5, pc}
 	nop
 _02242DFC: .word 0x00002158
-	thumb_func_end ov12_02242D90
+	thumb_func_end BtlCmd_RevengeDamageCalc
 
-	thumb_func_start ov12_02242E00
-ov12_02242E00: ; 0x02242E00
+	thumb_func_start BtlCmd_TryBreakScreens
+BtlCmd_TryBreakScreens: ; 0x02242E00
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -10177,10 +10001,10 @@ _02242E6C:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02242E70: .word 0xFFFFFC7F
-	thumb_func_end ov12_02242E00
+	thumb_func_end BtlCmd_TryBreakScreens
 
-	thumb_func_start ov12_02242E74
-ov12_02242E74: ; 0x02242E74
+	thumb_func_start BtlCmd_TryYawn
+BtlCmd_TryYawn: ; 0x02242E74
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -10212,10 +10036,10 @@ _02242EAE:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02242E74
+	thumb_func_end BtlCmd_TryYawn
 
-	thumb_func_start ov12_02242EB4
-ov12_02242EB4: ; 0x02242EB4
+	thumb_func_start BtlCmd_TryKnockOff
+BtlCmd_TryKnockOff: ; 0x02242EB4
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	add r4, r0, #0
@@ -10351,10 +10175,10 @@ _02242FC8: .word 0x00002D67
 _02242FCC: .word 0x00003044
 _02242FD0: .word 0x0000219C
 _02242FD4: .word 0xE07FFFFF
-	thumb_func_end ov12_02242EB4
+	thumb_func_end BtlCmd_TryKnockOff
 
-	thumb_func_start ov12_02242FD8
-ov12_02242FD8: ; 0x02242FD8
+	thumb_func_start BtlCmd_EruptionDamageCalc
+BtlCmd_EruptionDamageCalc: ; 0x02242FD8
 	push {r4, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -10395,10 +10219,10 @@ _02243020: .word 0x00002154
 _02243024: .word 0x00003044
 _02243028: .word 0x000003E1
 _0224302C: .word 0x00002D8C
-	thumb_func_end ov12_02242FD8
+	thumb_func_end BtlCmd_EruptionDamageCalc
 
-	thumb_func_start ov12_02243030
-ov12_02243030: ; 0x02243030
+	thumb_func_start BtlCmd_TryImprison
+BtlCmd_TryImprison: ; 0x02243030
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	add r7, r1, #0
@@ -10540,10 +10364,10 @@ _0224313C:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02243144: .word 0x00002D4C
-	thumb_func_end ov12_02243030
+	thumb_func_end BtlCmd_TryImprison
 
-	thumb_func_start ov12_02243148
-ov12_02243148: ; 0x02243148
+	thumb_func_start BtlCmd_TryGrudge
+BtlCmd_TryGrudge: ; 0x02243148
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r7, r0, #0
@@ -10623,10 +10447,10 @@ _022431E8:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _022431EC: .word 0x00002D8C
-	thumb_func_end ov12_02243148
+	thumb_func_end BtlCmd_TryGrudge
 
-	thumb_func_start ov12_022431F0
-ov12_022431F0: ; 0x022431F0
+	thumb_func_start BtlCmd_TrySnatch
+BtlCmd_TrySnatch: ; 0x022431F0
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r1, #0
 	add r5, r0, #0
@@ -10671,10 +10495,10 @@ _02243242:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02243248: .word 0x00003150
-	thumb_func_end ov12_022431F0
+	thumb_func_end BtlCmd_TrySnatch
 
-	thumb_func_start ov12_0224324C
-ov12_0224324C: ; 0x0224324C
+	thumb_func_start BtlCmd_LowKickDamageCalc
+BtlCmd_LowKickDamageCalc: ; 0x0224324C
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -10721,10 +10545,10 @@ _0224329C: .word ov12_0226C39C
 _022432A0: .word 0x0000FFFF
 _022432A4: .word ov12_0226C39E
 _022432A8: .word 0x00002154
-	thumb_func_end ov12_0224324C
+	thumb_func_end BtlCmd_LowKickDamageCalc
 
-	thumb_func_start ov12_022432AC
-ov12_022432AC: ; 0x022432AC
+	thumb_func_start BtlCmd_WeatherBallDamageCalc
+BtlCmd_WeatherBallDamageCalc: ; 0x022432AC
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -10819,10 +10643,10 @@ _0224335C: .word 0x00003044
 _02243360: .word 0x000003E1
 _02243364: .word 0x00002154
 _02243368: .word 0x00002160
-	thumb_func_end ov12_022432AC
+	thumb_func_end BtlCmd_WeatherBallDamageCalc
 
-	thumb_func_start ov12_0224336C
-ov12_0224336C: ; 0x0224336C
+	thumb_func_start BtlCmd_TryPursuit
+BtlCmd_TryPursuit: ; 0x0224336C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1c
 	add r5, r1, #0
@@ -11020,10 +10844,10 @@ _02243500: .word 0x00002D6C
 _02243504: .word 0x00002158
 _02243508: .word 0x00003044
 _0224350C: .word 0x00002DF8
-	thumb_func_end ov12_0224336C
+	thumb_func_end BtlCmd_TryPursuit
 
-	thumb_func_start ov12_02243510
-ov12_02243510: ; 0x02243510
+	thumb_func_start BtlCmd_TypeEffectivenessCheck
+BtlCmd_TypeEffectivenessCheck: ; 0x02243510
 	push {r3, r4, r5, lr}
 	sub sp, #0x10
 	add r4, r1, #0
@@ -11057,10 +10881,10 @@ ov12_02243510: ; 0x02243510
 	.balign 4, 0
 _02243550: .word 0x00002144
 _02243554: .word 0x00003044
-	thumb_func_end ov12_02243510
+	thumb_func_end BtlCmd_TypeEffectivenessCheck
 
-	thumb_func_start ov12_02243558
-ov12_02243558: ; 0x02243558
+	thumb_func_start BtlCmd_144
+BtlCmd_144: ; 0x02243558
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r1, #0
@@ -11194,10 +11018,10 @@ _02243656:
 	mov r0, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end ov12_02243558
+	thumb_func_end BtlCmd_144
 
-	thumb_func_start ov12_0224365C
-ov12_0224365C: ; 0x0224365C
+	thumb_func_start BtlCmd_145
+BtlCmd_145: ; 0x0224365C
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r7, r0, #0
@@ -11326,10 +11150,10 @@ _0224373A:
 _02243750:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov12_0224365C
+	thumb_func_end BtlCmd_145
 
-	thumb_func_start ov12_02243754
-ov12_02243754: ; 0x02243754
+	thumb_func_start BtlCmd_GyroBallDamageCalc
+BtlCmd_GyroBallDamageCalc: ; 0x02243754
 	push {r4, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -11361,10 +11185,10 @@ _0224378A:
 	nop
 _02243790: .word 0x000021F0
 _02243794: .word 0x00002154
-	thumb_func_end ov12_02243754
+	thumb_func_end BtlCmd_GyroBallDamageCalc
 
-	thumb_func_start ov12_02243798
-ov12_02243798: ; 0x02243798
+	thumb_func_start BtlCmd_MetalBurstDamageCalc
+BtlCmd_MetalBurstDamageCalc: ; 0x02243798
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r0, #0
@@ -11482,10 +11306,10 @@ _02243880:
 	.balign 4, 0
 _02243884: .word 0x00002D8C
 _02243888: .word 0x00002144
-	thumb_func_end ov12_02243798
+	thumb_func_end BtlCmd_MetalBurstDamageCalc
 
-	thumb_func_start ov12_0224388C
-ov12_0224388C: ; 0x0224388C
+	thumb_func_start BtlCmd_PaybackDamageCalc
+BtlCmd_PaybackDamageCalc: ; 0x0224388C
 	push {r4, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -11521,10 +11345,10 @@ _022438C0:
 _022438C8: .word 0x000021A8
 _022438CC: .word 0x00003044
 _022438D0: .word 0x000003E1
-	thumb_func_end ov12_0224388C
+	thumb_func_end BtlCmd_PaybackDamageCalc
 
-	thumb_func_start ov12_022438D4
-ov12_022438D4: ; 0x022438D4
+	thumb_func_start BtlCmd_TrumpCardDamageCalc
+BtlCmd_TrumpCardDamageCalc: ; 0x022438D4
 	push {r4, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -11556,10 +11380,10 @@ _02243908: .word 0x000030BC
 _0224390C: .word 0x00002D6C
 _02243910: .word ov12_0226C2F0
 _02243914: .word 0x00002154
-	thumb_func_end ov12_022438D4
+	thumb_func_end BtlCmd_TrumpCardDamageCalc
 
-	thumb_func_start ov12_02243918
-ov12_02243918: ; 0x02243918
+	thumb_func_start BtlCmd_WringOutDamageCalc
+BtlCmd_WringOutDamageCalc: ; 0x02243918
 	push {r4, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -11584,10 +11408,10 @@ ov12_02243918: ; 0x02243918
 	nop
 _02243948: .word 0x00002D8C
 _0224394C: .word 0x00002154
-	thumb_func_end ov12_02243918
+	thumb_func_end BtlCmd_WringOutDamageCalc
 
-	thumb_func_start ov12_02243950
-ov12_02243950: ; 0x02243950
+	thumb_func_start BtlCmd_TryMeFirst
+BtlCmd_TryMeFirst: ; 0x02243950
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r0, r5, #0
@@ -11678,10 +11502,10 @@ _022439FC: .word 0x00002DEC
 _02243A00: .word 0x000021A8
 _02243A04: .word 0x000003E1
 _02243A08: .word 0x00002DCC
-	thumb_func_end ov12_02243950
+	thumb_func_end BtlCmd_TryMeFirst
 
-	thumb_func_start ov12_02243A0C
-ov12_02243A0C: ; 0x02243A0C
+	thumb_func_start BtlCmd_TryCopycat
+BtlCmd_TryCopycat: ; 0x02243A0C
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -11725,10 +11549,10 @@ _02243A60:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02243A64: .word 0x00003048
-	thumb_func_end ov12_02243A0C
+	thumb_func_end BtlCmd_TryCopycat
 
-	thumb_func_start ov12_02243A68
-ov12_02243A68: ; 0x02243A68
+	thumb_func_start BtlCmd_PunishmentDamageCalc
+BtlCmd_PunishmentDamageCalc: ; 0x02243A68
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -11773,10 +11597,10 @@ _02243AB2:
 	nop
 _02243AB8: .word 0x00002D58
 _02243ABC: .word 0x00002154
-	thumb_func_end ov12_02243A68
+	thumb_func_end BtlCmd_PunishmentDamageCalc
 
-	thumb_func_start ov12_02243AC0
-ov12_02243AC0: ; 0x02243AC0
+	thumb_func_start BtlCmd_TrySuckerPunch
+BtlCmd_TrySuckerPunch: ; 0x02243AC0
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	add r0, r5, #0
@@ -11837,10 +11661,10 @@ _02243B2C:
 _02243B30: .word 0x00002DEC
 _02243B34: .word 0x000021A8
 _02243B38: .word 0x000003E1
-	thumb_func_end ov12_02243AC0
+	thumb_func_end BtlCmd_TrySuckerPunch
 
-	thumb_func_start ov12_02243B3C
-ov12_02243B3C: ; 0x02243B3C
+	thumb_func_start BtlCmd_CheckSideCondition
+BtlCmd_CheckSideCondition: ; 0x02243B3C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r1, #0
@@ -12091,10 +11915,10 @@ _02243D10: .word 0xFFFFFC7F
 _02243D14: .word 0xFFFF8FFF
 _02243D18: .word 0xFFF1FFFF
 _02243D1C: .word 0xFFFFFBFF
-	thumb_func_end ov12_02243B3C
+	thumb_func_end BtlCmd_CheckSideCondition
 
-	thumb_func_start ov12_02243D20
-ov12_02243D20: ; 0x02243D20
+	thumb_func_start BtlCmd_TryFeint
+BtlCmd_TryFeint: ; 0x02243D20
 	push {r4, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -12117,10 +11941,10 @@ ov12_02243D20: ; 0x02243D20
 _02243D4C:
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ov12_02243D20
+	thumb_func_end BtlCmd_TryFeint
 
-	thumb_func_start ov12_02243D50
-ov12_02243D50: ; 0x02243D50
+	thumb_func_start BtlCmd_TryPyschoShift
+BtlCmd_TryPyschoShift: ; 0x02243D50
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -12158,10 +11982,10 @@ _02243D94:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02243D98: .word 0x00002DAC
-	thumb_func_end ov12_02243D50
+	thumb_func_end BtlCmd_TryPyschoShift
 
-	thumb_func_start ov12_02243D9C
-ov12_02243D9C: ; 0x02243D9C
+	thumb_func_start BtlCmd_TryLastResort
+BtlCmd_TryLastResort: ; 0x02243D9C
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -12197,10 +12021,10 @@ _02243DDE:
 	pop {r4, r5, r6, pc}
 	nop
 _02243DE4: .word 0x00002DCC
-	thumb_func_end ov12_02243D9C
+	thumb_func_end BtlCmd_TryLastResort
 
-	thumb_func_start ov12_02243DE8
-ov12_02243DE8: ; 0x02243DE8
+	thumb_func_start BtlCmd_TryToxicSpikes
+BtlCmd_TryToxicSpikes: ; 0x02243DE8
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -12265,10 +12089,10 @@ _02243E66:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02243DE8
+	thumb_func_end BtlCmd_TryToxicSpikes
 
-	thumb_func_start ov12_02243E6C
-ov12_02243E6C: ; 0x02243E6C
+	thumb_func_start BtlCmd_CheckToxicSpikes
+BtlCmd_CheckToxicSpikes: ; 0x02243E6C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r1, #0
@@ -12350,10 +12174,10 @@ _02243F0E:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02243F14: .word 0xFFFFFBFF
-	thumb_func_end ov12_02243E6C
+	thumb_func_end BtlCmd_CheckToxicSpikes
 
-	thumb_func_start ov12_02243F18
-ov12_02243F18: ; 0x02243F18
+	thumb_func_start BtlCmd_CheckMoldBreaker
+BtlCmd_CheckMoldBreaker: ; 0x02243F18
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r1, #0
@@ -12493,10 +12317,10 @@ _02244030:
 	nop
 _02244038: .word 0x000021EC
 _0224403C: .word 0x00002D8C
-	thumb_func_end ov12_02243F18
+	thumb_func_end BtlCmd_CheckMoldBreaker
 
-	thumb_func_start ov12_02244040
-ov12_02244040: ; 0x02244040
+	thumb_func_start BtlCmd_CheckTeammates
+BtlCmd_CheckTeammates: ; 0x02244040
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -12537,10 +12361,10 @@ ov12_02244040: ; 0x02244040
 _0224409C:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov12_02244040
+	thumb_func_end BtlCmd_CheckTeammates
 
-	thumb_func_start ov12_022440A0
-ov12_022440A0: ; 0x022440A0
+	thumb_func_start BtlCmd_Pickup
+BtlCmd_Pickup: ; 0x022440A0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r7, r0, #0
@@ -12722,10 +12546,10 @@ _02244214: .word ov12_0226CA4C
 _02244218: .word ov12_0226C404
 _0224421C: .word ov12_0226C30C
 _02244220: .word ov12_0226CA58
-	thumb_func_end ov12_022440A0
+	thumb_func_end BtlCmd_Pickup
 
-	thumb_func_start ov12_02244224
-ov12_02244224: ; 0x02244224
+	thumb_func_start BtlCmd_TrickRoom
+BtlCmd_TrickRoom: ; 0x02244224
 	push {r4, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -12745,10 +12569,10 @@ ov12_02244224: ; 0x02244224
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02244224
+	thumb_func_end BtlCmd_TrickRoom
 
-	thumb_func_start ov12_0224424C
-ov12_0224424C: ; 0x0224424C
+	thumb_func_start BtlCmd_CheckMoveFinished
+BtlCmd_CheckMoveFinished: ; 0x0224424C
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -12776,10 +12600,10 @@ ov12_0224424C: ; 0x0224424C
 _02244288:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov12_0224424C
+	thumb_func_end BtlCmd_CheckMoveFinished
 
-	thumb_func_start ov12_0224428C
-ov12_0224428C: ; 0x0224428C
+	thumb_func_start BtlCmd_CheckItemEffect
+BtlCmd_CheckItemEffect: ; 0x0224428C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r1, #0
@@ -12826,10 +12650,10 @@ _022442F2:
 	mov r0, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov12_0224428C
+	thumb_func_end BtlCmd_CheckItemEffect
 
-	thumb_func_start ov12_022442F8
-ov12_022442F8: ; 0x022442F8
+	thumb_func_start BtlCmd_GetItemEffect
+BtlCmd_GetItemEffect: ; 0x022442F8
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -12861,10 +12685,10 @@ ov12_022442F8: ; 0x022442F8
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_022442F8
+	thumb_func_end BtlCmd_GetItemEffect
 
-	thumb_func_start ov12_02244344
-ov12_02244344: ; 0x02244344
+	thumb_func_start BtlCmd_GetItemPower
+BtlCmd_GetItemPower: ; 0x02244344
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -12896,10 +12720,10 @@ ov12_02244344: ; 0x02244344
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02244344
+	thumb_func_end BtlCmd_GetItemPower
 
-	thumb_func_start ov12_02244390
-ov12_02244390: ; 0x02244390
+	thumb_func_start BtlCmd_TryCamouflage
+BtlCmd_TryCamouflage: ; 0x02244390
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	add r4, r0, #0
@@ -12970,10 +12794,10 @@ _0224441A:
 	nop
 _02244420: .word ov12_0226CA64
 _02244424: .word 0x00002D64
-	thumb_func_end ov12_02244390
+	thumb_func_end BtlCmd_TryCamouflage
 
-	thumb_func_start ov12_02244428
-ov12_02244428: ; 0x02244428
+	thumb_func_start BtlCmd_NaturePower
+BtlCmd_NaturePower: ; 0x02244428
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -12996,10 +12820,10 @@ _02244442:
 	pop {r3, r4, r5, pc}
 	nop
 _02244454: .word ov12_0226C3B4
-	thumb_func_end ov12_02244428
+	thumb_func_end BtlCmd_NaturePower
 
-	thumb_func_start ov12_02244458
-ov12_02244458: ; 0x02244458
+	thumb_func_start BtlCmd_SecretPower
+BtlCmd_SecretPower: ; 0x02244458
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -13022,10 +12846,10 @@ _02244472:
 	.balign 4, 0
 _02244480: .word ov12_0226C490
 _02244484: .word 0x00002174
-	thumb_func_end ov12_02244458
+	thumb_func_end BtlCmd_SecretPower
 
-	thumb_func_start ov12_02244488
-ov12_02244488: ; 0x02244488
+	thumb_func_start BtlCmd_TryNaturalGift
+BtlCmd_TryNaturalGift: ; 0x02244488
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -13057,10 +12881,10 @@ _022444C2:
 	nop
 _022444C8: .word 0x00002154
 _022444CC: .word 0x00002160
-	thumb_func_end ov12_02244488
+	thumb_func_end BtlCmd_TryNaturalGift
 
-	thumb_func_start ov12_022444D0
-ov12_022444D0: ; 0x022444D0
+	thumb_func_start BtlCmd_TryPluck
+BtlCmd_TryPluck: ; 0x022444D0
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -13120,10 +12944,10 @@ _02244544:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02244548: .word 0x00002DB8
-	thumb_func_end ov12_022444D0
+	thumb_func_end BtlCmd_TryPluck
 
-	thumb_func_start ov12_0224454C
-ov12_0224454C: ; 0x0224454C
+	thumb_func_start BtlCmd_TryFling
+BtlCmd_TryFling: ; 0x0224454C
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -13145,10 +12969,10 @@ ov12_0224454C: ; 0x0224454C
 _02244578:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov12_0224454C
+	thumb_func_end BtlCmd_TryFling
 
-	thumb_func_start ov12_0224457C
-ov12_0224457C: ; 0x0224457C
+	thumb_func_start BtlCmd_YesNoBox
+BtlCmd_YesNoBox: ; 0x0224457C
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r4, r1, #0
@@ -13170,10 +12994,10 @@ ov12_0224457C: ; 0x0224457C
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0224457C
+	thumb_func_end BtlCmd_YesNoBox
 
-	thumb_func_start ov12_022445AC
-ov12_022445AC: ; 0x022445AC
+	thumb_func_start BtlCmd_YesNoBoxWait
+BtlCmd_YesNoBoxWait: ; 0x022445AC
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r0, #0
@@ -13217,10 +13041,10 @@ _022445F4:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02244608: .word 0x00003154
-	thumb_func_end ov12_022445AC
+	thumb_func_end BtlCmd_YesNoBoxWait
 
-	thumb_func_start ov12_0224460C
-ov12_0224460C: ; 0x0224460C
+	thumb_func_start BtlCmd_MonList
+BtlCmd_MonList: ; 0x0224460C
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r4, r1, #0
@@ -13242,10 +13066,10 @@ ov12_0224460C: ; 0x0224460C
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0224460C
+	thumb_func_end BtlCmd_MonList
 
-	thumb_func_start ov12_0224463C
-ov12_0224463C: ; 0x0224463C
+	thumb_func_start BtlCmd_MonListWait
+BtlCmd_MonListWait: ; 0x0224463C
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -13281,10 +13105,10 @@ _0224466E:
 	.balign 4, 0
 _02244680: .word 0x000021A0
 _02244684: .word 0x00003154
-	thumb_func_end ov12_0224463C
+	thumb_func_end BtlCmd_MonListWait
 
-	thumb_func_start ov12_02244688
-ov12_02244688: ; 0x02244688
+	thumb_func_start BtlCmd_SetBattleResults
+BtlCmd_SetBattleResults: ; 0x02244688
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
@@ -13301,10 +13125,10 @@ _022446A6:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02244688
+	thumb_func_end BtlCmd_SetBattleResults
 
-	thumb_func_start ov12_022446AC
-ov12_022446AC: ; 0x022446AC
+	thumb_func_start BtlCmd_CheckStealthRock
+BtlCmd_CheckStealthRock: ; 0x022446AC
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r0, #0
@@ -13437,10 +13261,10 @@ _022447A8:
 _022447AC: .word 0x00002D8C
 _022447B0: .word 0x0000215C
 _022447B4: .word 0x00002D90
-	thumb_func_end ov12_022446AC
+	thumb_func_end BtlCmd_CheckStealthRock
 
-	thumb_func_start ov12_022447B8
-ov12_022447B8: ; 0x022447B8
+	thumb_func_start BtlCmd_CheckEffectActivation
+BtlCmd_CheckEffectActivation: ; 0x022447B8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r0, #0
@@ -13503,10 +13327,10 @@ _02244826:
 _02244834: .word 0x00003044
 _02244838: .word 0x000003E5
 _0224483C: .word 0x00002D8C
-	thumb_func_end ov12_022447B8
+	thumb_func_end BtlCmd_CheckEffectActivation
 
-	thumb_func_start ov12_02244840
-ov12_02244840: ; 0x02244840
+	thumb_func_start BtlCmd_CheckChatterActivation
+BtlCmd_CheckChatterActivation: ; 0x02244840
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r0, #0
@@ -13591,10 +13415,10 @@ _022448E6:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02244840
+	thumb_func_end BtlCmd_CheckChatterActivation
 
-	thumb_func_start ov12_022448EC
-ov12_022448EC: ; 0x022448EC
+	thumb_func_start BtlCmd_GetMoveParam
+BtlCmd_GetMoveParam: ; 0x022448EC
 	push {r4, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -13618,10 +13442,10 @@ ov12_022448EC: ; 0x022448EC
 	nop
 _0224491C: .word 0x000003DE
 _02244920: .word 0x00003044
-	thumb_func_end ov12_022448EC
+	thumb_func_end BtlCmd_GetMoveParam
 
-	thumb_func_start ov12_02244924
-ov12_02244924: ; 0x02244924
+	thumb_func_start BtlCmd_Mosaic
+BtlCmd_Mosaic: ; 0x02244924
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -13648,10 +13472,10 @@ ov12_02244924: ; 0x02244924
 	bl ov12_02263D48
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov12_02244924
+	thumb_func_end BtlCmd_Mosaic
 
-	thumb_func_start ov12_02244964
-ov12_02244964: ; 0x02244964
+	thumb_func_start BtlCmd_ChangeForme
+BtlCmd_ChangeForme: ; 0x02244964
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -13670,10 +13494,10 @@ ov12_02244964: ; 0x02244964
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02244964
+	thumb_func_end BtlCmd_ChangeForme
 
-	thumb_func_start ov12_02244990
-ov12_02244990: ; 0x02244990
+	thumb_func_start BtlCmd_SetBattleBackground
+BtlCmd_SetBattleBackground: ; 0x02244990
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
@@ -13684,10 +13508,10 @@ ov12_02244990: ; 0x02244990
 	bl ov12_02263DFC
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ov12_02244990
+	thumb_func_end BtlCmd_SetBattleBackground
 
-	thumb_func_start ov12_022449A8
-ov12_022449A8: ; 0x022449A8
+	thumb_func_start BtlCmd_RecoverStatus
+BtlCmd_RecoverStatus: ; 0x022449A8
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -13715,10 +13539,10 @@ ov12_022449A8: ; 0x022449A8
 	pop {r3, r4, r5, pc}
 	nop
 _022449E4: .word 0x0000219C
-	thumb_func_end ov12_022449A8
+	thumb_func_end BtlCmd_RecoverStatus
 
-	thumb_func_start ov12_022449E8
-ov12_022449E8: ; 0x022449E8
+	thumb_func_start BtlCmd_TryRun
+BtlCmd_TryRun: ; 0x022449E8
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -13748,10 +13572,10 @@ _02244A26:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_022449E8
+	thumb_func_end BtlCmd_TryRun
 
-	thumb_func_start ov12_02244A2C
-ov12_02244A2C: ; 0x02244A2C
+	thumb_func_start BtlCmd_InitStartBallGauge
+BtlCmd_InitStartBallGauge: ; 0x02244A2C
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -13770,10 +13594,10 @@ ov12_02244A2C: ; 0x02244A2C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02244A2C
+	thumb_func_end BtlCmd_InitStartBallGauge
 
-	thumb_func_start ov12_02244A58
-ov12_02244A58: ; 0x02244A58
+	thumb_func_start BtlCmd_DeleteStartBallGauge
+BtlCmd_DeleteStartBallGauge: ; 0x02244A58
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -13792,10 +13616,10 @@ ov12_02244A58: ; 0x02244A58
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02244A58
+	thumb_func_end BtlCmd_DeleteStartBallGauge
 
-	thumb_func_start ov12_02244A84
-ov12_02244A84: ; 0x02244A84
+	thumb_func_start BtlCmd_InitBallGauge
+BtlCmd_InitBallGauge: ; 0x02244A84
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -13814,10 +13638,10 @@ ov12_02244A84: ; 0x02244A84
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02244A84
+	thumb_func_end BtlCmd_InitBallGauge
 
-	thumb_func_start ov12_02244AB0
-ov12_02244AB0: ; 0x02244AB0
+	thumb_func_start BtlCmd_DeleteBallGauge
+BtlCmd_DeleteBallGauge: ; 0x02244AB0
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -13836,10 +13660,10 @@ ov12_02244AB0: ; 0x02244AB0
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02244AB0
+	thumb_func_end BtlCmd_DeleteBallGauge
 
-	thumb_func_start ov12_02244ADC
-ov12_02244ADC: ; 0x02244ADC
+	thumb_func_start BtlCmd_LoadBallGfx
+BtlCmd_LoadBallGfx: ; 0x02244ADC
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
@@ -13850,10 +13674,10 @@ ov12_02244ADC: ; 0x02244ADC
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02244ADC
+	thumb_func_end BtlCmd_LoadBallGfx
 
-	thumb_func_start ov12_02244AF4
-ov12_02244AF4: ; 0x02244AF4
+	thumb_func_start BtlCmd_DeleteBallGfx
+BtlCmd_DeleteBallGfx: ; 0x02244AF4
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
@@ -13864,10 +13688,10 @@ ov12_02244AF4: ; 0x02244AF4
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02244AF4
+	thumb_func_end BtlCmd_DeleteBallGfx
 
-	thumb_func_start ov12_02244B0C
-ov12_02244B0C: ; 0x02244B0C
+	thumb_func_start BtlCmd_IncrementGameStat
+BtlCmd_IncrementGameStat: ; 0x02244B0C
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -13894,10 +13718,10 @@ ov12_02244B0C: ; 0x02244B0C
 	bl ov12_02263F0C
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov12_02244B0C
+	thumb_func_end BtlCmd_IncrementGameStat
 
-	thumb_func_start ov12_02244B4C
-ov12_02244B4C: ; 0x02244B4C
+	thumb_func_start BtlCmd_196
+BtlCmd_196: ; 0x02244B4C
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -13916,10 +13740,10 @@ ov12_02244B4C: ; 0x02244B4C
 	bl ov12_02263F8C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov12_02244B4C
+	thumb_func_end BtlCmd_196
 
-	thumb_func_start ov12_02244B78
-ov12_02244B78: ; 0x02244B78
+	thumb_func_start BtlCmd_CheckAbilityEffectOnHit
+BtlCmd_CheckAbilityEffectOnHit: ; 0x02244B78
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -13943,10 +13767,10 @@ ov12_02244B78: ; 0x02244B78
 _02244BA8:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov12_02244B78
+	thumb_func_end BtlCmd_CheckAbilityEffectOnHit
 
-	thumb_func_start ov12_02244BAC
-ov12_02244BAC: ; 0x02244BAC
+	thumb_func_start BtlCmd_198
+BtlCmd_198: ; 0x02244BAC
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r4, r0, #0
@@ -14017,10 +13841,10 @@ _02244C32:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02244C38: .word 0x00000195
-	thumb_func_end ov12_02244BAC
+	thumb_func_end BtlCmd_198
 
-	thumb_func_start ov12_02244C3C
-ov12_02244C3C: ; 0x02244C3C
+	thumb_func_start BtlCmd_199
+BtlCmd_199: ; 0x02244C3C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r4, r0, #0
@@ -14091,10 +13915,10 @@ _02244CC2:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02244CC8: .word 0x00000195
-	thumb_func_end ov12_02244C3C
+	thumb_func_end BtlCmd_199
 
-	thumb_func_start ov12_02244CCC
-ov12_02244CCC: ; 0x02244CCC
+	thumb_func_start BtlCmd_CheckWhiteout
+BtlCmd_CheckWhiteout: ; 0x02244CCC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	str r0, [sp]
@@ -14288,10 +14112,10 @@ _02244E6E:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02244E74: .word 0x000001EE
-	thumb_func_end ov12_02244CCC
+	thumb_func_end BtlCmd_CheckWhiteout
 
-	thumb_func_start ov12_02244E78
-ov12_02244E78: ; 0x02244E78
+	thumb_func_start BtlCmd_TryAcupressure
+BtlCmd_TryAcupressure: ; 0x02244E78
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x24
 	add r6, r1, #0
@@ -14353,10 +14177,10 @@ _02244EE8:
 	nop
 _02244EF0: .word 0x00002D58
 _02244EF4: .word 0x00002170
-	thumb_func_end ov12_02244E78
+	thumb_func_end BtlCmd_TryAcupressure
 
-	thumb_func_start ov12_02244EF8
-ov12_02244EF8: ; 0x02244EF8
+	thumb_func_start BtlCmd_RemoveItem
+BtlCmd_RemoveItem: ; 0x02244EF8
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r7, r0, #0
@@ -14390,10 +14214,10 @@ ov12_02244EF8: ; 0x02244EF8
 	.balign 4, 0
 _02244F3C: .word 0x00002DB8
 _02244F40: .word 0x00003124
-	thumb_func_end ov12_02244EF8
+	thumb_func_end BtlCmd_RemoveItem
 
-	thumb_func_start ov12_02244F44
-ov12_02244F44: ; 0x02244F44
+	thumb_func_start BtlCmd_TryRecycle
+BtlCmd_TryRecycle: ; 0x02244F44
 	push {r4, lr}
 	add r4, r1, #0
 	add r0, r4, #0
@@ -14426,10 +14250,10 @@ _02244F7E:
 	pop {r4, pc}
 	nop
 _02244F84: .word 0x00003124
-	thumb_func_end ov12_02244F44
+	thumb_func_end BtlCmd_TryRecycle
 
-	thumb_func_start ov12_02244F88
-ov12_02244F88: ; 0x02244F88
+	thumb_func_start BtlCmd_CheckItemEffectOnHit
+BtlCmd_CheckItemEffectOnHit: ; 0x02244F88
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -14453,10 +14277,10 @@ ov12_02244F88: ; 0x02244F88
 _02244FB8:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov12_02244F88
+	thumb_func_end BtlCmd_CheckItemEffectOnHit
 
-	thumb_func_start ov12_02244FBC
-ov12_02244FBC: ; 0x02244FBC
+	thumb_func_start BtlCmd_BattleResultMessage
+BtlCmd_BattleResultMessage: ; 0x02244FBC
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
@@ -14467,10 +14291,10 @@ ov12_02244FBC: ; 0x02244FBC
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02244FBC
+	thumb_func_end BtlCmd_BattleResultMessage
 
-	thumb_func_start ov12_02244FD4
-ov12_02244FD4: ; 0x02244FD4
+	thumb_func_start BtlCmd_RunAwayMessage
+BtlCmd_RunAwayMessage: ; 0x02244FD4
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -14483,10 +14307,10 @@ ov12_02244FD4: ; 0x02244FD4
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02244FD4
+	thumb_func_end BtlCmd_RunAwayMessage
 
-	thumb_func_start ov12_02244FF0
-ov12_02244FF0: ; 0x02244FF0
+	thumb_func_start BtlCmd_ForefitMessage
+BtlCmd_ForefitMessage: ; 0x02244FF0
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
@@ -14497,10 +14321,10 @@ ov12_02244FF0: ; 0x02244FF0
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02244FF0
+	thumb_func_end BtlCmd_ForefitMessage
 
-	thumb_func_start ov12_02245008
-ov12_02245008: ; 0x02245008
+	thumb_func_start BtlCmd_CheckHoldOnWith1HP
+BtlCmd_CheckHoldOnWith1HP: ; 0x02245008
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r1, #0
@@ -14579,10 +14403,10 @@ _022450A0:
 	nop
 _022450A8: .word 0x00002D8C
 _022450AC: .word 0x0000215C
-	thumb_func_end ov12_02245008
+	thumb_func_end BtlCmd_CheckHoldOnWith1HP
 
-	thumb_func_start ov12_022450B0
-ov12_022450B0: ; 0x022450B0
+	thumb_func_start BtlCmd_TryNaturalCure
+BtlCmd_TryNaturalCure: ; 0x022450B0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r0, #0
@@ -14650,10 +14474,10 @@ _0224513A:
 _02245140: .word 0x00002D8C
 _02245144: .word 0x0000219C
 _02245148: .word 0x00002D67
-	thumb_func_end ov12_022450B0
+	thumb_func_end BtlCmd_TryNaturalCure
 
-	thumb_func_start ov12_0224514C
-ov12_0224514C: ; 0x0224514C
+	thumb_func_start BtlCmd_CheckSubstitute
+BtlCmd_CheckSubstitute: ; 0x0224514C
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -14697,10 +14521,10 @@ _022451A0:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _022451A4: .word 0x00002DB0
-	thumb_func_end ov12_0224514C
+	thumb_func_end BtlCmd_CheckSubstitute
 
-	thumb_func_start ov12_022451A8
-ov12_022451A8: ; 0x022451A8
+	thumb_func_start BtlCmd_CheckCloudNine
+BtlCmd_CheckCloudNine: ; 0x022451A8
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r4, r1, #0
@@ -14738,10 +14562,10 @@ _022451F0:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov12_022451A8
+	thumb_func_end BtlCmd_CheckCloudNine
 
-	thumb_func_start ov12_022451F8
-ov12_022451F8: ; 0x022451F8
+	thumb_func_start BtlCmd_CheckUTurnItemEffect
+BtlCmd_CheckUTurnItemEffect: ; 0x022451F8
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -14762,10 +14586,10 @@ ov12_022451F8: ; 0x022451F8
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov12_022451F8
+	thumb_func_end BtlCmd_CheckUTurnItemEffect
 
-	thumb_func_start ov12_02245228
-ov12_02245228: ; 0x02245228
+	thumb_func_start BtlCmd_212
+BtlCmd_212: ; 0x02245228
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -14789,10 +14613,10 @@ ov12_02245228: ; 0x02245228
 _02245258:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov12_02245228
+	thumb_func_end BtlCmd_212
 
-	thumb_func_start ov12_0224525C
-ov12_0224525C: ; 0x0224525C
+	thumb_func_start BtlCmd_SwapToSubstituteSprite
+BtlCmd_SwapToSubstituteSprite: ; 0x0224525C
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -14811,10 +14635,10 @@ ov12_0224525C: ; 0x0224525C
 	bl ov12_0226417C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov12_0224525C
+	thumb_func_end BtlCmd_SwapToSubstituteSprite
 
-	thumb_func_start ov12_02245288
-ov12_02245288: ; 0x02245288
+	thumb_func_start BtlCmd_PlayMoveSE
+BtlCmd_PlayMoveSE: ; 0x02245288
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -14833,10 +14657,10 @@ ov12_02245288: ; 0x02245288
 	bl ov12_02264228
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov12_02245288
+	thumb_func_end BtlCmd_PlayMoveSE
 
-	thumb_func_start ov12_022452B4
-ov12_022452B4: ; 0x022452B4
+	thumb_func_start BtlCmd_PlaySong
+BtlCmd_PlaySong: ; 0x022452B4
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -14860,10 +14684,10 @@ ov12_022452B4: ; 0x022452B4
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_022452B4
+	thumb_func_end BtlCmd_PlaySong
 
-	thumb_func_start ov12_022452EC
-ov12_022452EC: ; 0x022452EC
+	thumb_func_start BtlCmd_CheckSafariEncounterDone
+BtlCmd_CheckSafariEncounterDone: ; 0x022452EC
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -14888,10 +14712,10 @@ ov12_022452EC: ; 0x022452EC
 _02245320:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov12_022452EC
+	thumb_func_end BtlCmd_CheckSafariEncounterDone
 
-	thumb_func_start ov12_02245324
-ov12_02245324: ; 0x02245324
+	thumb_func_start BtlCmd_WaitWithoutInterrupt
+BtlCmd_WaitWithoutInterrupt: ; 0x02245324
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r0, #0
@@ -14946,10 +14770,10 @@ _02245370:
 	.balign 4, 0
 _02245388: .word 0x0000240C
 _0224538C: .word 0x00003154
-	thumb_func_end ov12_02245324
+	thumb_func_end BtlCmd_WaitWithoutInterrupt
 
-	thumb_func_start ov12_02245390
-ov12_02245390: ; 0x02245390
+	thumb_func_start BtlCmd_CheckCurMoveIsType
+BtlCmd_CheckCurMoveIsType: ; 0x02245390
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r0, r5, #0
@@ -14977,10 +14801,10 @@ _022453C2:
 	nop
 _022453C8: .word 0x00003044
 _022453CC: .word 0x000003E2
-	thumb_func_end ov12_02245390
+	thumb_func_end BtlCmd_CheckCurMoveIsType
 
-	thumb_func_start ov12_022453D0
-ov12_022453D0: ; 0x022453D0
+	thumb_func_start BtlCmd_GetMonDataFromNarc
+BtlCmd_GetMonDataFromNarc: ; 0x022453D0
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -15011,10 +14835,10 @@ ov12_022453D0: ; 0x022453D0
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_022453D0
+	thumb_func_end BtlCmd_GetMonDataFromNarc
 
-	thumb_func_start ov12_02245418
-ov12_02245418: ; 0x02245418
+	thumb_func_start BtlCmd_RefreshMonData
+BtlCmd_RefreshMonData: ; 0x02245418
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -15038,10 +14862,10 @@ ov12_02245418: ; 0x02245418
 	pop {r3, r4, r5, pc}
 	nop
 _0224544C: .word 0x0000219C
-	thumb_func_end ov12_02245418
+	thumb_func_end BtlCmd_RefreshMonData
 
-	thumb_func_start ov12_02245450
-ov12_02245450: ; 0x02245450
+	thumb_func_start BtlCmd_222
+BtlCmd_222: ; 0x02245450
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r0, #0
@@ -15078,10 +14902,10 @@ _02245494:
 _0224549C:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov12_02245450
+	thumb_func_end BtlCmd_222
 
-	thumb_func_start ov12_022454A0
-ov12_022454A0: ; 0x022454A0
+	thumb_func_start BtlCmd_223
+BtlCmd_223: ; 0x022454A0
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -15101,10 +14925,10 @@ ov12_022454A0: ; 0x022454A0
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov12_022454A0
+	thumb_func_end BtlCmd_223
 
-	thumb_func_start ov12_022454CC
-ov12_022454CC: ; 0x022454CC
+	thumb_func_start BtlCmd_EndScript
+BtlCmd_EndScript: ; 0x022454CC
 	ldr r2, _022454E0 ; =0x00003154
 	mov r0, #1
 	ldr r3, [r1, r2]
@@ -15118,7 +14942,7 @@ ov12_022454CC: ; 0x022454CC
 	.balign 4, 0
 _022454E0: .word 0x00003154
 _022454E4: .word ov12_0224EC74
-	thumb_func_end ov12_022454CC
+	thumb_func_end BtlCmd_EndScript
 
 	thumb_func_start BattleScriptReadWord
 BattleScriptReadWord: ; 0x022454E8
@@ -21413,231 +21237,231 @@ ov12_0226C4C6: ; 0x0226C4C6
 .public sBattleScriptCommandTable;
  
 sBattleScriptCommandTable: ; 0x0226C6C8
-	.word ov12_0223CFB8
-	.word ov12_0223CFD0
-	.word ov12_0223D04C
-	.word ov12_0223D20C
-	.word ov12_0223D3E8
-	.word ov12_0223D4A8
-	.word ov12_0223D4D4
-	.word ov12_0223D5F0
-	.word ov12_0223D700
-	.word ov12_0223D8B0
-	.word ov12_0223DA48
-	.word ov12_0223DA74
-	.word ov12_0223DB2C
-	.word ov12_0223DBF4
-	.word ov12_0223DCAC
-	.word ov12_0223DE4C
-	.word ov12_0223DE84
-	.word ov12_0223DEB0
-	.word ov12_0223DEF0
-	.word ov12_0223DF24
-	.word ov12_0223DF64
-	.word ov12_0223DF84
-	.word ov12_0223DFB0
-	.word ov12_0223E004
-	.word ov12_0223E080
-	.word ov12_0223E12C
-	.word ov12_0223E160
-	.word ov12_0223E200
-	.word ov12_0223E22C
-	.word ov12_0223E290
-	.word ov12_0223E2F0
-	.word ov12_0223E38C
-	.word ov12_0223E3C4
-	.word ov12_0223E474
-	.word ov12_0223E52C
-	.word ov12_0223E548
-	.word ov12_0223E568
-	.word ov12_0223E594
-	.word ov12_0223E63C
-	.word ov12_0223E6A0
-	.word ov12_0223E81C
-	.word ov12_0223E85C
-	.word ov12_0223E888
-	.word ov12_0223E8A0
-	.word ov12_0223E978
-	.word ov12_0223EAA0
-	.word ov12_0223EB40
-	.word ov12_0223EB88
-	.word ov12_0223EBE4
-	.word ov12_0223EC10
-	.word ov12_0223EC84
-	.word ov12_0223ED78
-	.word ov12_0223F38C
-	.word ov12_0223F4B0
-	.word ov12_0223F4EC
-	.word ov12_0223F524
-	.word ov12_0223F5E4
-	.word ov12_0223F61C
-	.word ov12_0223F734
-	.word ov12_0223F894
-	.word ov12_0223F8B4
-	.word ov12_0223F8D4
-	.word ov12_0223F904
-	.word ov12_0223FA1C
-	.word ov12_0223FA6C
-	.word ov12_0223FA98
-	.word ov12_0223FAC4
-	.word ov12_0223FAFC
-	.word ov12_0223FC4C
-	.word ov12_0223FCDC
-	.word ov12_0223FD40
-	.word ov12_0223FDCC
-	.word ov12_0223FE3C
-	.word ov12_0223FE74
-	.word ov12_0223FEAC
-	.word ov12_0223FED8
-	.word ov12_0223FF04
-	.word ov12_0223FF34
-	.word ov12_022400B0
-	.word ov12_0224017C
-	.word ov12_02240250
-	.word ov12_022402A0
-	.word ov12_02240380
-	.word ov12_02240460
-	.word ov12_022404E0
-	.word ov12_022406D4
-	.word ov12_0224070C
-	.word ov12_02240764
-	.word ov12_0224089C
-	.word ov12_022408FC
-	.word ov12_022409B8
-	.word ov12_02240AB4
-	.word ov12_02240BB0
-	.word ov12_02240C98
-	.word ov12_02240E58
-	.word ov12_02240F7C
-	.word ov12_02241048
-	.word ov12_0224109C
-	.word ov12_02241140
-	.word ov12_02241290
-	.word ov12_022413B4
-	.word ov12_022414F0
-	.word ov12_0224156C
-	.word ov12_02241708
-	.word ov12_022418FC
-	.word ov12_02241980
-	.word ov12_02241A04
-	.word ov12_02241AB4
-	.word ov12_02241AEC
-	.word ov12_02241B30
-	.word ov12_02241DF4
-	.word ov12_02241F10
-	.word ov12_02241FA0
-	.word ov12_02242024
-	.word ov12_022420B8
-	.word ov12_0224212C
-	.word ov12_022421D4
-	.word ov12_02242238
-	.word ov12_02242380
-	.word ov12_02242424
-	.word ov12_02242510
-	.word ov12_02242570
-	.word ov12_0224265C
-	.word ov12_022426DC
-	.word ov12_02242710
-	.word ov12_0224296C
-	.word ov12_022429AC
-	.word ov12_02242A50
-	.word ov12_02242B58
-	.word ov12_02242B9C
-	.word ov12_02242C80
-	.word ov12_02242CDC
-	.word ov12_02242D90
-	.word ov12_02242E00
-	.word ov12_02242E74
-	.word ov12_02242EB4
-	.word ov12_02242FD8
-	.word ov12_02243030
-	.word ov12_02243148
-	.word ov12_022431F0
-	.word ov12_0224324C
-	.word ov12_022432AC
-	.word ov12_0224336C
-	.word ov12_02243510
-	.word ov12_02243558
-	.word ov12_0224365C
-	.word ov12_02243754
-	.word ov12_02243798
-	.word ov12_0224388C
-	.word ov12_022438D4
-	.word ov12_02243918
-	.word ov12_02243950
-	.word ov12_02243A0C
-	.word ov12_02243A68
-	.word ov12_02243AC0
-	.word ov12_02243B3C
-	.word ov12_02243D20
-	.word ov12_02243D50
-	.word ov12_02243D9C
-	.word ov12_02243DE8
-	.word ov12_02243E6C
-	.word ov12_02243F18
-	.word ov12_02244040
-	.word ov12_022440A0
-	.word ov12_02244224
-	.word ov12_0224424C
-	.word ov12_0224428C
-	.word ov12_022442F8
-	.word ov12_02244344
-	.word ov12_02244390
-	.word ov12_02244428
-	.word ov12_02244458
-	.word ov12_02244488
-	.word ov12_022444D0
-	.word ov12_0224454C
-	.word ov12_0224457C
-	.word ov12_022445AC
-	.word ov12_0224460C
-	.word ov12_0224463C
-	.word ov12_02244688
-	.word ov12_022446AC
-	.word ov12_022447B8
-	.word ov12_02244840
-	.word ov12_022448EC
-	.word ov12_02244924
-	.word ov12_02244964
-	.word ov12_02244990
-	.word ov12_022449A8
-	.word ov12_022449E8
-	.word ov12_02244A2C
-	.word ov12_02244A58
-	.word ov12_02244A84
-	.word ov12_02244AB0
-	.word ov12_02244ADC
-	.word ov12_02244AF4
-	.word ov12_02244B0C
-	.word ov12_02244B4C
-	.word ov12_02244B78
-	.word ov12_02244BAC
-	.word ov12_02244C3C
-	.word ov12_02244CCC
-	.word ov12_02244E78
-	.word ov12_02244EF8
-	.word ov12_02244F44
-	.word ov12_02244F88
-	.word ov12_02244FBC
-	.word ov12_02244FD4
-	.word ov12_02244FF0
-	.word ov12_02245008
-	.word ov12_022450B0
-	.word ov12_0224514C
-	.word ov12_022451A8
-	.word ov12_022451F8
-	.word ov12_02245228
-	.word ov12_0224525C
-	.word ov12_02245288
-	.word ov12_022452B4
-	.word ov12_022452EC
-	.word ov12_02245324
-	.word ov12_02245390
-	.word ov12_022453D0
-	.word ov12_02245418
-	.word ov12_02245450
-	.word ov12_022454A0
-	.word ov12_022454CC
+	.word BtlCmd_0
+	.word BtlCmd_1
+	.word BtlCmd_PokemonSlideIn
+	.word BtlCmd_3
+	.word BtlCmd_4 ;5
+	.word BtlCmd_5
+	.word BtlCmd_6
+	.word BtlCmd_ThrowPokeball
+	.word BtlCmd_8
+	.word BtlCmd_9 ;10
+	.word BtlCmd_10
+	.word BtlCmd_HealthbarSlideIn
+	.word BtlCmd_12
+	.word BtlCmd_13
+	.word BtlCmd_WaitForMessage ;15
+	.word BtlCmd_DamageCalc
+	.word BtlCmd_16
+	.word BtlCmd_PrintAttackMessage
+	.word BtlCmd_PrintMessage
+	.word BtlCmd_PrintMessage2 ;20
+	.word BtlCmd_PrintBufferedMessage
+	.word BtlCmd_BufferMessage
+	.word BtlCmd_22
+	.word BtlCmd_PlayMoveAnimation
+	.word BtlCmd_PlayMoveAnimation2 ;25
+	.word BtlCmd_MonFlicker
+	.word BtlCmd_HealthbarDataUpdate
+	.word BtlCmd_HealthbarUpdate
+	.word BtlCmd_TryFaintMon
+	.word BtlCmd_PlayFaintAnimation
+	.word BtlCmd_Wait
+	.word BtlCmd_PlaySE
+	.word BtlCmd_If
+	.word BtlCmd_IfMonStat
+	.word BtlCmd_FadeOutBattle
+	.word BtlCmd_JumpToSubSeq
+	.word BtlCmd_JumpToCurMoveEffectScript
+	.word BtlCmd_JumpToEffectScript
+	.word BtlCmd_CritCalc
+	.word BtlCmd_ShouldGetExp
+	.word BtlCmd_InitGetExp
+	.word BtlCmd_GetExp
+	.word BtlCmd_GetExpLoop
+	.word BtlCmd_ShowParty
+	.word BtlCmd_WaitForMonSelection
+	.word BtlCmd_SwitchInDataUpdate
+	.word BtlCmd_JumpIfCantSwitch
+	.word BtlCmd_47
+	.word BtlCmd_48
+	.word BtlCmd_SetMultiHit
+	.word BtlCmd_ChangeVar
+	.word BtlCmd_BufferStatChangeMsg
+	.word BtlCmd_ChangeMonDataVar
+	.word BtlCmd_53
+	.word BtlCmd_ToggleVanish
+	.word BtlCmd_CheckAbility
+	.word BtlCmd_Random
+	.word BtlCmd_ChangeVar2
+	.word BtlCmd_ChangeMonDataByVar
+	.word BtlCmd_Goto
+	.word BtlCmd_GotoSubscript
+	.word BtlCmd_GotoSubscriptVar
+	.word BtlCmd_SetMoveToMirrorMove
+	.word BtlCmd_ResetAllStatChanges
+	.word BtlCmd_64
+	.word BtlCmd_65
+	.word BtlCmd_SetHealthbarStatus
+	.word BtlCmd_PrintTrainerMessage
+	.word BtlCmd_CalcPrizeMoney
+	.word BtlCmd_SetStatus2Effect
+	.word BtlCmd_CopyStatus2Effect
+	.word BtlCmd_SetStatus2EffectVar
+	.word BtlCmd_ReturnMessage
+	.word BtlCmd_SendOutMessage
+	.word BtlCmd_EncounterMessage
+	.word BtlCmd_75
+	.word BtlCmd_TrainerMessageVar
+	.word BtlCmd_TryConversion
+	.word BtlCmd_Compare
+	.word BtlCmd_IfMonStatVar
+	.word BtlCmd_PayDay
+	.word BtlCmd_TryLightScreen
+	.word BtlCmd_TryReflect
+	.word BtlCmd_TryMist
+	.word BtlCmd_TryOHKO
+	.word BtlCmd_SetDamageDivide
+	.word BtlCmd_SetDamageDivideVar
+	.word BtlCmd_TryMimic
+	.word BtlCmd_Metronome
+	.word BtlCmd_TryDisable
+	.word BtlCmd_Counter
+	.word BtlCmd_MirrorCoat
+	.word BtlCmd_TryEncore
+	.word BtlCmd_TryConversion2
+	.word BtlCmd_TrySketch
+	.word BtlCmd_TrySleepTalk
+	.word BtlCmd_FlailDamageCalc
+	.word BtlCmd_TrySpite
+	.word BtlCmd_HealBell
+	.word BtlCmd_TryThief
+	.word BtlCmd_TryProtect
+	.word BtlCmd_TrySubstitute
+	.word BtlCmd_TryWhirlwind
+	.word BtlCmd_Transform
+	.word BtlCmd_TrySpikes
+	.word BtlCmd_CheckSpikes
+	.word BtlCmd_TryPerishSong
+	.word BtlCmd_SetTurnOrderBySpeed
+	.word BtlCmd_JumpIfValidBattlerVar
+	.word BtlCmd_WeatherDamageCalc
+	.word BtlCmd_RolloutDamageCalc
+	.word BtlCmd_FuryCutterDamageCalc
+	.word BtlCmd_TryAttract
+	.word BtlCmd_TrySafeguard
+	.word BtlCmd_Present
+	.word BtlCmd_MagnitudeDamageCalc
+	.word BtlCmd_TrySwitchMon
+	.word BtlCmd_RapidSpin
+	.word BtlCmd_ChangeWeatherBasedHPRecovery
+	.word BtlCmd_HiddenPowerDamageCalc
+	.word BtlCmd_PsychUp
+	.word BtlCmd_TryFutureSight
+	.word BtlCmd_CheckHitRate
+	.word BtlCmd_TryTeleport
+	.word BtlCmd_BeatUpDamageCalc
+	.word BtlCmd_FollowMe
+	.word BtlCmd_TryHelpingHand
+	.word BtlCmd_TryTrick
+	.word BtlCmd_TryWish
+	.word BtlCmd_TryAssist
+	.word BtlCmd_TrySetMagicCoat
+	.word BtlCmd_MagicCoat
+	.word BtlCmd_RevengeDamageCalc
+	.word BtlCmd_TryBreakScreens
+	.word BtlCmd_TryYawn
+	.word BtlCmd_TryKnockOff
+	.word BtlCmd_EruptionDamageCalc
+	.word BtlCmd_TryImprison
+	.word BtlCmd_TryGrudge
+	.word BtlCmd_TrySnatch
+	.word BtlCmd_LowKickDamageCalc
+	.word BtlCmd_WeatherBallDamageCalc
+	.word BtlCmd_TryPursuit
+	.word BtlCmd_TypeEffectivenessCheck
+	.word BtlCmd_144
+	.word BtlCmd_145
+	.word BtlCmd_GyroBallDamageCalc
+	.word BtlCmd_MetalBurstDamageCalc
+	.word BtlCmd_PaybackDamageCalc
+	.word BtlCmd_TrumpCardDamageCalc
+	.word BtlCmd_WringOutDamageCalc
+	.word BtlCmd_TryMeFirst
+	.word BtlCmd_TryCopycat
+	.word BtlCmd_PunishmentDamageCalc
+	.word BtlCmd_TrySuckerPunch
+	.word BtlCmd_CheckSideCondition
+	.word BtlCmd_TryFeint
+	.word BtlCmd_TryPyschoShift
+	.word BtlCmd_TryLastResort
+	.word BtlCmd_TryToxicSpikes
+	.word BtlCmd_CheckToxicSpikes
+	.word BtlCmd_CheckMoldBreaker
+	.word BtlCmd_CheckTeammates
+	.word BtlCmd_Pickup
+	.word BtlCmd_TrickRoom
+	.word BtlCmd_CheckMoveFinished
+	.word BtlCmd_CheckItemEffect
+	.word BtlCmd_GetItemEffect
+	.word BtlCmd_GetItemPower
+	.word BtlCmd_TryCamouflage
+	.word BtlCmd_NaturePower
+	.word BtlCmd_SecretPower
+	.word BtlCmd_TryNaturalGift
+	.word BtlCmd_TryPluck
+	.word BtlCmd_TryFling
+	.word BtlCmd_YesNoBox
+	.word BtlCmd_YesNoBoxWait
+	.word BtlCmd_MonList
+	.word BtlCmd_MonListWait
+	.word BtlCmd_SetBattleResults
+	.word BtlCmd_CheckStealthRock
+	.word BtlCmd_CheckEffectActivation
+	.word BtlCmd_CheckChatterActivation
+	.word BtlCmd_GetMoveParam
+	.word BtlCmd_Mosaic
+	.word BtlCmd_ChangeForme
+	.word BtlCmd_SetBattleBackground
+	.word BtlCmd_RecoverStatus
+	.word BtlCmd_TryRun
+	.word BtlCmd_InitStartBallGauge
+	.word BtlCmd_DeleteStartBallGauge
+	.word BtlCmd_InitBallGauge
+	.word BtlCmd_DeleteBallGauge
+	.word BtlCmd_LoadBallGfx
+	.word BtlCmd_DeleteBallGfx
+	.word BtlCmd_IncrementGameStat
+	.word BtlCmd_196
+	.word BtlCmd_CheckAbilityEffectOnHit
+	.word BtlCmd_198
+	.word BtlCmd_199
+	.word BtlCmd_CheckWhiteout
+	.word BtlCmd_TryAcupressure
+	.word BtlCmd_RemoveItem
+	.word BtlCmd_TryRecycle
+	.word BtlCmd_CheckItemEffectOnHit
+	.word BtlCmd_BattleResultMessage
+	.word BtlCmd_RunAwayMessage
+	.word BtlCmd_ForefitMessage
+	.word BtlCmd_CheckHoldOnWith1HP
+	.word BtlCmd_TryNaturalCure
+	.word BtlCmd_CheckSubstitute
+	.word BtlCmd_CheckCloudNine
+	.word BtlCmd_CheckUTurnItemEffect
+	.word BtlCmd_212
+	.word BtlCmd_SwapToSubstituteSprite
+	.word BtlCmd_PlayMoveSE
+	.word BtlCmd_PlaySong
+	.word BtlCmd_CheckSafariEncounterDone
+	.word BtlCmd_WaitWithoutInterrupt
+	.word BtlCmd_CheckCurMoveIsType
+	.word BtlCmd_GetMonDataFromNarc
+	.word BtlCmd_RefreshMonData
+	.word BtlCmd_222
+	.word BtlCmd_223
+	.word BtlCmd_EndScript
 
 ov12_0226CA4C: ; 0x0226CA4C
 	.byte 0x1E, 0x28, 0x32, 0x3C
