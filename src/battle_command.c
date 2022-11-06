@@ -6,6 +6,8 @@
 #include "constants/pokemon.h"
 
 
+static u8 ov12_0224768C(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 a2);
+
 extern BtlCmdFunc sBattleScriptCommandTable[];
 
 BOOL RunBattleScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
@@ -702,16 +704,16 @@ static void ov12_0223DCE0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         type = ctx->unk_334.unkA8[ctx->field115_0xdcc].moveType;
     }
 
-    ctx->unk_2144 = ov12_02256FF8(bsys, ctx, ctx->field115_0xdcc, ctx->field71_0x168[ov12_0223AB1C(bsys, ctx->targetBattlerId)], ctx->unk_180, ctx->movePower, type, ctx->attackerBattlerId, ctx->targetBattlerId, ctx->unk_2150);
+    ctx->damage = ov12_02256FF8(bsys, ctx, ctx->field115_0xdcc, ctx->field71_0x168[ov12_0223AB1C(bsys, ctx->targetBattlerId)], ctx->unk_180, ctx->movePower, type, ctx->attackerBattlerId, ctx->targetBattlerId, ctx->criticalMultiplier);
 
-    ctx->unk_2144 *= ctx->unk_2150;
+    ctx->damage *= ctx->criticalMultiplier;
 
     if (ov12_02255830(ctx, ctx->attackerBattlerId) == 0x62) {
-        ctx->unk_2144 = ctx->unk_2144 * (100 + ov12_02255844(ctx, ctx->attackerBattlerId, 0))/100;
+        ctx->damage = ctx->damage * (100 + ov12_02255844(ctx, ctx->attackerBattlerId, 0))/100;
     }
 
     if (ov12_02255830(ctx, ctx->attackerBattlerId) == 0x69) {
-        ctx->unk_2144 = ctx->unk_2144 * (10 + ctx->battleMons[ctx->attackerBattlerId].unk88.unk4_17)/10;
+        ctx->damage = ctx->damage * (10 + ctx->battleMons[ctx->attackerBattlerId].unk88.unk4_17)/10;
     }
 
     //Me First
@@ -720,7 +722,7 @@ static void ov12_0223DCE0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             ctx->battleMons[ctx->attackerBattlerId].unk88.unk10--;
         }
         if ((ctx->unk_174 - ctx->battleMons[ctx->attackerBattlerId].unk88.unk10) < 2) {
-            ctx->unk_2144 = ctx->unk_2144*15/10;
+            ctx->damage = ctx->damage*15/10;
         } else {
             ctx->battleMons[ctx->attackerBattlerId].unk88.me_first_flag = 0;
         }
@@ -732,8 +734,8 @@ BOOL BtlCmd_DamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     
     ov12_0223DCE0(bsys, ctx);
     //TODO: Declare in header
-    ctx->unk_2144 = ov12_02257C30(bsys, ctx, ctx->unk_2144);
-    ctx->unk_2144 *= -1;
+    ctx->damage = ov12_02257C30(bsys, ctx, ctx->damage);
+    ctx->damage *= -1;
 
     return FALSE;
 }
@@ -742,7 +744,7 @@ BOOL BtlCmd_16(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
     
     ov12_0223DCE0(bsys, ctx);
-    ctx->unk_2144 *= -1;
+    ctx->damage *= -1;
 
     return FALSE;
 }
@@ -845,6 +847,96 @@ BOOL BtlCmd_PlayMoveAnimation(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     if (!ov12_0223B6D4(bsys)) {
         ov12_02245520(ctx, 1, 0x123);
+    }
+
+    return FALSE;
+}
+
+BOOL BtlCmd_PlayMoveAnimation2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    u16 move;
+    
+    BattleScriptIncrementPointer(ctx, 1);
+    u32 unkB = BattleScriptReadWord(ctx);
+    u32 unkC = BattleScriptReadWord(ctx);
+    u32 unkD = BattleScriptReadWord(ctx);
+
+    if (unkB == 255) {
+        move = ctx->unk_124;
+    } else {
+        move = ctx->field115_0xdcc;
+    }
+
+    u32 unkE = ov12_0224768C(bsys, ctx, unkC);
+    u32 unkF = ov12_0224768C(bsys, ctx, unkD);
+
+    if ((!(ctx->unk_213C & (1 << 14)) && ov12_0223B6D4(bsys) == TRUE) || move == MOVE_TRANSFORM) {
+        ctx->unk_213C |= (1 << 14);
+        ov12_0226343C(bsys, ctx, move, unkE, unkF);
+    }
+
+    if (!ov12_0223B6D4(bsys)) {
+        ov12_02245520(ctx, 1, 0x123);
+    }
+
+    return FALSE;
+}
+
+BOOL BtlCmd_MonFlicker(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+    
+    u32 unkA = BattleScriptReadWord(ctx);
+
+    ov12_0226346C(bsys, ov12_0224768C(bsys, ctx, unkA), ctx->unk_216C);
+
+    return FALSE;
+}
+
+BOOL BtlCmd_HealthbarDataUpdate(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+    
+    u8 unkA = ov12_0224768C(bsys, ctx, BattleScriptReadWord(ctx));
+
+    if ((ctx->battleMons[unkA].hp + ctx->unk_215C) <= 0) {
+        ctx->unk_2148 = ctx->battleMons[unkA].hp * -1;
+    } else {
+        ctx->unk_2148 = ctx->unk_215C;
+    }
+
+    if (ctx->unk_2148 < 0) {
+        ctx->unk_164[unkA] += (-1*ctx->unk_2148);
+    }
+
+    ctx->battleMons[unkA].hp += ctx->unk_215C;
+
+    if (ctx->battleMons[unkA].hp < 0) {
+        ctx->battleMons[unkA].hp = 0;
+    } else if (ctx->battleMons[unkA].hp > ctx->battleMons[unkA].maxHp) {
+        ctx->battleMons[unkA].hp = ctx->battleMons[unkA].maxHp;
+    }
+
+    ov12_02250C40(bsys, ctx, unkA);
+
+    return FALSE;
+}
+
+BOOL BtlCmd_HealthbarUpdate(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+    
+    ov12_02263488(bsys, ctx, ov12_0224768C(bsys, ctx, BattleScriptReadWord(ctx)));
+
+    return FALSE;
+}
+
+BOOL BtlCmd_TryFaintMon(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    u32 unkA = ov12_0224768C(bsys, ctx, BattleScriptReadWord(ctx));
+
+    if (ctx->battleMons[unkA].hp == 0) {
+        ctx->unk_74 = unkA;
+        ctx->unk_213C |= MaskOfFlagNo(unkA) << 24;
+        ctx->unk_154[unkA]++;
+        ov12_02248558(bsys, ctx, unkA);
     }
 
     return FALSE;

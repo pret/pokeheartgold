@@ -155,7 +155,6 @@ typedef struct UnkBattlemonSub {
     int unk30;
 } UnkBattlemonSub;
 
-
 typedef struct BATTLEMON {
     u16 unk0;
     u16 unk2;
@@ -179,9 +178,10 @@ typedef struct BATTLEMON {
     u8 unk30[4];
     u8 unk34;
     u8 unk35;
-    u16 unk36[11];
-    s32 unk4C;
-    u32 unk50;
+    u16 unk36[9];
+    int hp;
+    u32 maxHp;
+    u32 unk;
     u16 unk54[8];
     u32 unk64;
     u32 unk68;
@@ -287,10 +287,10 @@ typedef struct BATTLECONTEXT {
     u32 unk_2138;
     u32 unk_213C;
     u32 unk_2140;
-    int unk_2144;
+    int damage;
     int unk_2148;
     int unk_214C;
-    int unk_2150;
+    int criticalMultiplier;
     int movePower;
     int unk_2158;
     int unk_215C;
