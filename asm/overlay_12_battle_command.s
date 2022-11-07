@@ -5,253 +5,6 @@
 
 	.text
 
-	thumb_func_start BtlCmd_PlayFaintAnimation
-BtlCmd_PlayFaintAnimation: ; 0x0223E290
-	push {r3, r4, r5, lr}
-	add r4, r1, #0
-	add r5, r0, #0
-	add r0, r4, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	ldr r2, [r4, #0x74]
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov12_022635E8
-	ldr r0, [r4, #0x74]
-	bl MaskOfFlagNo
-	ldr r2, _0223E2EC ; =0x0000213C
-	lsl r3, r0, #0x18
-	mov r0, #0
-	mvn r0, r0
-	ldr r1, [r4, r2]
-	eor r0, r3
-	and r0, r1
-	str r0, [r4, r2]
-	ldr r0, [r4, #0x74]
-	bl MaskOfFlagNo
-	mov r1, #0x85
-	lsl r1, r1, #6
-	ldr r2, [r4, r1]
-	lsl r0, r0, #0x1c
-	orr r0, r2
-	str r0, [r4, r1]
-	ldr r0, [r4, #0x74]
-	mov r2, #0x28
-	lsl r0, r0, #4
-	add r0, r4, r0
-	add r1, #0x68
-	str r2, [r0, r1]
-	ldr r2, [r4, #0x74]
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov12_022514C4
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-	nop
-_0223E2EC: .word 0x0000213C
-	thumb_func_end BtlCmd_PlayFaintAnimation
-
-	thumb_func_start BtlCmd_Wait
-BtlCmd_Wait: ; 0x0223E2F0
-	push {r4, r5, r6, lr}
-	add r5, r1, #0
-	add r4, r0, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	add r0, r5, #0
-	bl BattleScriptReadWord
-	add r6, r0, #0
-	add r0, r4, #0
-	bl ov12_0223A7E0
-	mov r1, #4
-	tst r0, r1
-	bne _0223E32A
-	ldr r0, _0223E37C ; =gSystem
-	ldr r1, [r0, #0x48]
-	ldr r0, _0223E380 ; =0x00000C03
-	tst r0, r1
-	bne _0223E324
-	bl System_GetTouchNew
-	cmp r0, #0
-	beq _0223E32A
-_0223E324:
-	add r0, r5, #0
-	add r0, #0xf0
-	str r6, [r0]
-_0223E32A:
-	ldr r1, [r4, #0x2c]
-	mov r0, #4
-	tst r0, r1
-	beq _0223E340
-	ldr r0, _0223E384 ; =0x0000240C
-	ldr r1, [r4, r0]
-	mov r0, #0x10
-	tst r0, r1
-	bne _0223E340
-	mov r4, #2
-	b _0223E342
-_0223E340:
-	mov r4, #1
-_0223E342:
-	add r0, r5, #0
-	add r0, #0xf0
-	ldr r0, [r0]
-	cmp r6, r0
-	ble _0223E360
-	mov r1, #1
-	add r0, r5, #0
-	mvn r1, r1
-	bl BattleScriptIncrementPointer
-	add r0, r5, #0
-	add r0, #0xf0
-	ldr r0, [r0]
-	add r1, r0, r4
-	b _0223E362
-_0223E360:
-	mov r1, #0
-_0223E362:
-	add r0, r5, #0
-	add r0, #0xf0
-	str r1, [r0]
-	ldr r1, _0223E388 ; =0x00003154
-	mov r0, #1
-	ldr r2, [r5, r1]
-	bic r2, r0
-	mov r0, #1
-	orr r0, r2
-	str r0, [r5, r1]
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-	nop
-_0223E37C: .word gSystem
-_0223E380: .word 0x00000C03
-_0223E384: .word 0x0000240C
-_0223E388: .word 0x00003154
-	thumb_func_end BtlCmd_Wait
-
-	thumb_func_start BtlCmd_PlaySE
-BtlCmd_PlaySE: ; 0x0223E38C
-	push {r3, r4, r5, r6, r7, lr}
-	add r4, r1, #0
-	add r5, r0, #0
-	add r0, r4, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	add r0, r4, #0
-	bl BattleScriptReadWord
-	add r6, r0, #0
-	add r0, r4, #0
-	bl BattleScriptReadWord
-	add r7, r0, #0
-	add r0, r5, #0
-	add r1, r4, #0
-	add r2, r6, #0
-	bl ov12_0224768C
-	add r3, r0, #0
-	add r0, r5, #0
-	add r1, r4, #0
-	add r2, r7, #0
-	bl ov12_022636FC
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end BtlCmd_PlaySE
-
-	thumb_func_start BtlCmd_If
-BtlCmd_If: ; 0x0223E3C4
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #8
-	add r6, r1, #0
-	str r0, [sp]
-	add r0, r6, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	add r0, r6, #0
-	bl BattleScriptReadWord
-	add r7, r0, #0
-	add r0, r6, #0
-	bl BattleScriptReadWord
-	str r0, [sp, #4]
-	add r0, r6, #0
-	bl BattleScriptReadWord
-	add r4, r0, #0
-	add r0, r6, #0
-	bl BattleScriptReadWord
-	add r5, r0, #0
-	ldr r0, [sp]
-	ldr r2, [sp, #4]
-	add r1, r6, #0
-	bl ov12_02245528
-	cmp r7, #6
-	bhi _0223E462
-	add r1, r7, r7
-	add r1, pc
-	ldrh r1, [r1, #6]
-	lsl r1, r1, #0x10
-	asr r1, r1, #0x10
-	add pc, r1
-_0223E40E: ; jump table
-	.short _0223E41C - _0223E40E - 2 ; case 0
-	.short _0223E426 - _0223E40E - 2 ; case 1
-	.short _0223E430 - _0223E40E - 2 ; case 2
-	.short _0223E43A - _0223E40E - 2 ; case 3
-	.short _0223E444 - _0223E40E - 2 ; case 4
-	.short _0223E44E - _0223E40E - 2 ; case 5
-	.short _0223E458 - _0223E40E - 2 ; case 6
-_0223E41C:
-	ldr r0, [r0]
-	cmp r0, r4
-	beq _0223E462
-	mov r5, #0
-	b _0223E462
-_0223E426:
-	ldr r0, [r0]
-	cmp r0, r4
-	bne _0223E462
-	mov r5, #0
-	b _0223E462
-_0223E430:
-	ldr r0, [r0]
-	cmp r0, r4
-	bgt _0223E462
-	mov r5, #0
-	b _0223E462
-_0223E43A:
-	ldr r0, [r0]
-	cmp r0, r4
-	ble _0223E462
-	mov r5, #0
-	b _0223E462
-_0223E444:
-	ldr r0, [r0]
-	tst r0, r4
-	bne _0223E462
-	mov r5, #0
-	b _0223E462
-_0223E44E:
-	ldr r0, [r0]
-	tst r0, r4
-	beq _0223E462
-	mov r5, #0
-	b _0223E462
-_0223E458:
-	ldr r0, [r0]
-	and r0, r4
-	cmp r4, r0
-	beq _0223E462
-	mov r5, #0
-_0223E462:
-	cmp r5, #0
-	beq _0223E46E
-	add r0, r6, #0
-	add r1, r5, #0
-	bl BattleScriptIncrementPointer
-_0223E46E:
-	mov r0, #0
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end BtlCmd_If
-
 	thumb_func_start BtlCmd_IfMonStat
 BtlCmd_IfMonStat: ; 0x0223E474
 	push {r4, r5, r6, r7, lr}
@@ -279,7 +32,7 @@ BtlCmd_IfMonStat: ; 0x0223E474
 	ldr r0, [sp]
 	ldr r2, [sp, #4]
 	add r1, r6, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r1, r0, #0
 	ldr r2, [sp, #8]
 	add r0, r6, #0
@@ -2234,7 +1987,7 @@ BtlCmd_ChangeMonDataVar: ; 0x0223F38C
 	ldr r0, [sp]
 	ldr r2, [sp, #8]
 	add r1, r5, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	str r0, [sp, #4]
 	ldr r1, [sp, #4]
 	add r0, r5, #0
@@ -2381,7 +2134,7 @@ BtlCmd_53: ; 0x0223F4B0
 	add r0, r6, #0
 	add r1, r5, #0
 	add r2, r7, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	ldr r1, _0223F4E8 ; =0x0000218C
 	add r2, r5, r1
 	lsl r1, r0, #2
@@ -2411,7 +2164,7 @@ BtlCmd_ToggleVanish: ; 0x0223F4EC
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r1, r0, #0
 	add r0, r5, #0
 	add r2, r7, #0
@@ -2480,7 +2233,7 @@ _0223F59A:
 	ldr r0, [sp]
 	add r1, r5, #0
 	add r2, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r4, r0, #0
 	cmp r7, #0
 	bne _0223F5C4
@@ -2716,7 +2469,7 @@ BtlCmd_ChangeMonDataByVar: ; 0x0223F734
 	ldr r2, [sp, #4]
 	add r0, r7, #0
 	add r1, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	str r0, [sp]
 	ldr r1, [sp]
 	add r0, r4, #0
@@ -3129,7 +2882,7 @@ BtlCmd_64: ; 0x0223FA6C
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -3151,7 +2904,7 @@ BtlCmd_65: ; 0x0223FA98
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -3177,7 +2930,7 @@ BtlCmd_SetHealthbarStatus: ; 0x0223FAC4
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r1, r0, #0
 	add r0, r5, #0
 	add r2, r7, #0
@@ -3204,7 +2957,7 @@ BtlCmd_PrintTrainerMessage: ; 0x0223FAFC
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r1, r0, #0
 	add r0, r5, #0
 	add r2, r7, #0
@@ -3467,7 +3220,7 @@ _0223FD14:
 	add r0, r6, #0
 	add r1, r5, #0
 	add r2, r7, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
@@ -3520,12 +3273,12 @@ _0223FD82:
 	add r0, r6, #0
 	add r1, r5, #0
 	add r2, r7, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r7, r0, #0
 	ldr r2, [sp, #4]
 	add r0, r6, #0
 	add r1, r5, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	str r0, [sp, #8]
 	add r0, r5, #0
 	add r1, r7, #0
@@ -3569,7 +3322,7 @@ BtlCmd_SetStatus2EffectVar: ; 0x0223FDCC
 	add r0, r7, #0
 	add r1, r5, #0
 	add r2, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	str r0, [sp]
 	add r0, r7, #0
 	add r1, r5, #0
@@ -3619,7 +3372,7 @@ BtlCmd_ReturnMessage: ; 0x0223FE3C
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r2, r0, #0
 	add r1, r4, #0
 	ldr r3, _0223FE70 ; =0x0000219C
@@ -3646,7 +3399,7 @@ BtlCmd_SendOutMessage: ; 0x0223FE74
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r2, r0, #0
 	add r1, r4, #0
 	ldr r3, _0223FEA8 ; =0x0000219C
@@ -3673,7 +3426,7 @@ BtlCmd_EncounterMessage: ; 0x0223FEAC
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -3695,7 +3448,7 @@ BtlCmd_75: ; 0x0223FED8
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -3717,7 +3470,7 @@ BtlCmd_TrainerMessageVar: ; 0x0223FF04
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	mov r2, #0x13
 	lsl r2, r2, #4
 	add r1, r0, #0
@@ -4054,7 +3807,7 @@ BtlCmd_IfMonStatVar: ; 0x0224017C
 	ldr r0, [sp]
 	add r1, r6, #0
 	add r2, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r1, r0, #0
 	ldr r2, [sp, #4]
 	add r0, r6, #0
@@ -6101,7 +5854,7 @@ _022411A2:
 	add r0, r7, #0
 	add r1, r5, #0
 	mov r2, #0x10
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r4, r0, #0
 	bl MaskOfFlagNo
 	ldr r1, _0224128C ; =0x00003108
@@ -6171,7 +5924,7 @@ _0224120E:
 	add r0, r7, #0
 	add r1, r5, #0
 	mov r2, #0x10
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r4, r0, #0
 	bl MaskOfFlagNo
 	ldr r1, _0224128C ; =0x00003108
@@ -7104,7 +6857,7 @@ BtlCmd_CheckSpikes: ; 0x02241980
 	add r0, r6, #0
 	add r1, r5, #0
 	add r2, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
@@ -7315,7 +7068,7 @@ BtlCmd_WeatherDamageCalc: ; 0x02241B30
 	add r2, r0, #0
 	add r0, r6, #0
 	add r1, r5, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r4, r0, #0
 	mov r0, #0x4e
 	mov r3, #0
@@ -8169,7 +7922,7 @@ BtlCmd_TrySwitchMon: ; 0x022421D4
 	add r0, r6, #0
 	add r1, r5, #0
 	add r2, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r5, #0
@@ -8750,12 +8503,12 @@ BtlCmd_CheckHitRate: ; 0x0224265C
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	str r0, [sp, #0xc]
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r7, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r6, r0, #0
 	ldr r1, [sp, #4]
 	add r0, r4, #0
@@ -9145,7 +8898,7 @@ BtlCmd_TryHelpingHand: ; 0x022429AC
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #0x10
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r4, r0, #0
 	bl MaskOfFlagNo
 	ldr r1, _02242A44 ; =0x00003108
@@ -10647,7 +10400,7 @@ BtlCmd_144: ; 0x02243558
 	ldr r0, [sp]
 	ldr r2, [sp, #8]
 	add r1, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	cmp r7, #6
 	bhi _0224364A
 	add r1, r7, r7
@@ -10779,7 +10532,7 @@ BtlCmd_145: ; 0x0224365C
 	ldr r2, [sp]
 	add r0, r7, #0
 	add r1, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	cmp r6, #6
 	bhi _02243750
 	add r1, r6, r6
@@ -11426,7 +11179,7 @@ BtlCmd_CheckSideCondition: ; 0x02243B3C
 	ldr r2, [sp, #8]
 	add r0, r7, #0
 	add r1, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r1, r0, #0
 	add r0, r7, #0
 	bl ov12_0223AB1C
@@ -11848,7 +11601,7 @@ BtlCmd_CheckToxicSpikes: ; 0x02243E6C
 	add r0, r4, #0
 	add r1, r5, #0
 	add r2, r6, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r7, r0, #0
 	add r0, r4, #0
 	add r1, r7, #0
@@ -12003,7 +11756,7 @@ _02243FC8:
 	add r0, r6, #0
 	add r1, r5, #0
 	add r2, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r4, r0, #0
 	ldr r0, [sp, #8]
 	cmp r0, #0
@@ -12078,12 +11831,12 @@ BtlCmd_CheckTeammates: ; 0x02244040
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r7, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
@@ -12327,7 +12080,7 @@ BtlCmd_CheckMoveFinished: ; 0x0224424C
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov12_0225561C
@@ -12365,7 +12118,7 @@ BtlCmd_CheckItemEffect: ; 0x0224428C
 	ldr r0, [sp]
 	ldr r2, [sp, #4]
 	add r1, r5, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r1, r0, #0
 	cmp r6, #0
 	bne _022442E0
@@ -12412,7 +12165,7 @@ BtlCmd_GetItemEffect: ; 0x022442F8
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r7, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov12_022555EC
@@ -12447,7 +12200,7 @@ BtlCmd_GetItemPower: ; 0x02244344
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r7, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov12_022555EC
@@ -12883,7 +12636,7 @@ BtlCmd_CheckStealthRock: ; 0x022446AC
 	add r0, r6, #0
 	add r1, r5, #0
 	add r2, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
@@ -13203,7 +12956,7 @@ BtlCmd_Mosaic: ; 0x02244924
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r1, r0, #0
 	ldr r3, [sp]
 	add r0, r5, #0
@@ -13226,7 +12979,7 @@ BtlCmd_ChangeForme: ; 0x02244964
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r1, r0, #0
 	add r0, r5, #0
 	bl ov12_02263D6C
@@ -13262,7 +13015,7 @@ BtlCmd_RecoverStatus: ; 0x022449A8
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r1, r0, #0
 	mov r0, #0x4a
 	lsl r0, r0, #2
@@ -13297,7 +13050,7 @@ BtlCmd_TryRun: ; 0x022449E8
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -13326,7 +13079,7 @@ BtlCmd_InitStartBallGauge: ; 0x02244A2C
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r1, r0, #0
 	add r0, r5, #0
 	bl ov12_02263E34
@@ -13348,7 +13101,7 @@ BtlCmd_DeleteStartBallGauge: ; 0x02244A58
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r1, r0, #0
 	add r0, r5, #0
 	bl ov12_02263E5C
@@ -13370,7 +13123,7 @@ BtlCmd_InitBallGauge: ; 0x02244A84
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r1, r0, #0
 	add r0, r5, #0
 	bl ov12_02263E84
@@ -13392,7 +13145,7 @@ BtlCmd_DeleteBallGauge: ; 0x02244AB0
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r1, r0, #0
 	add r0, r5, #0
 	bl ov12_02263EAC
@@ -13449,7 +13202,7 @@ BtlCmd_IncrementGameStat: ; 0x02244B0C
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r1, r0, #0
 	ldr r3, [sp]
 	add r0, r5, #0
@@ -13472,7 +13225,7 @@ BtlCmd_196: ; 0x02244B4C
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -13571,7 +13324,7 @@ _02244C1A:
 _02244C22:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov12_02264038
@@ -13645,7 +13398,7 @@ _02244CAA:
 _02244CB2:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov12_02264054
@@ -13678,7 +13431,7 @@ BtlCmd_CheckWhiteout: ; 0x02244CCC
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
 	add r2, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	str r0, [sp, #0x10]
 	ldr r0, [sp, #0xc]
 	mov r1, #8
@@ -13931,7 +13684,7 @@ BtlCmd_RemoveItem: ; 0x02244EF8
 	add r2, r0, #0
 	add r0, r7, #0
 	add r1, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r2, r0, #0
 	ldr r0, _02244F3C ; =0x00002DB8
 	add r5, r2, #0
@@ -14077,7 +13830,7 @@ BtlCmd_CheckHoldOnWith1HP: ; 0x02245008
 	add r2, r0, #0
 	ldr r0, [sp]
 	add r1, r5, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
@@ -14161,7 +13914,7 @@ BtlCmd_TryNaturalCure: ; 0x022450B0
 	add r0, r6, #0
 	add r1, r5, #0
 	add r2, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r1, r0, #0
 	mov r0, #0xc0
 	add r4, r1, #0
@@ -14232,7 +13985,7 @@ BtlCmd_CheckSubstitute: ; 0x0224514C
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r7, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	mov r1, #0xc0
 	mul r1, r0
 	add r2, r4, r1
@@ -14316,7 +14069,7 @@ BtlCmd_CheckUTurnItemEffect: ; 0x022451F8
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -14367,7 +14120,7 @@ BtlCmd_SwapToSubstituteSprite: ; 0x0224525C
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -14389,7 +14142,7 @@ BtlCmd_PlayMoveSE: ; 0x02245288
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -14415,7 +14168,7 @@ BtlCmd_PlaySong: ; 0x022452B4
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r1, r0, #0
 	add r0, r5, #0
 	add r2, r7, #0
@@ -14589,7 +14342,7 @@ BtlCmd_RefreshMonData: ; 0x02245418
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r2, r0, #0
 	add r1, r4, #0
 	ldr r3, _0224544C ; =0x0000219C
@@ -14620,7 +14373,7 @@ BtlCmd_222: ; 0x02245450
 	add r0, r6, #0
 	add r1, r5, #0
 	add r2, r7, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r1, r0, #0
 	add r0, r6, #0
 	bl ov12_0223A9AC
@@ -18873,8 +18626,8 @@ ov12_02247668: ; 0x02247668
 	.balign 4, 0
 	thumb_func_end ov12_02247668
 
-	thumb_func_start ov12_0224768C
-ov12_0224768C: ; 0x0224768C
+	thumb_func_start GetBattlerIDBySide
+GetBattlerIDBySide: ; 0x0224768C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r4, r0, #0
@@ -19202,10 +18955,10 @@ _022478EA:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _022478F0: .word 0x00000195
-	thumb_func_end ov12_0224768C
+	thumb_func_end GetBattlerIDBySide
 
-	thumb_func_start ov12_022478F4
-ov12_022478F4: ; 0x022478F4
+	thumb_func_start InitBattleMsgData
+InitBattleMsgData: ; 0x022478F4
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	add r4, r1, #0
@@ -19315,10 +19068,10 @@ _022479AE:
 	blt _022479AE
 _022479BE:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov12_022478F4
+	thumb_func_end InitBattleMsgData
 
-	thumb_func_start ov12_022479C0
-ov12_022479C0: ; 0x022479C0
+	thumb_func_start InitBattleMsg
+InitBattleMsg: ; 0x022479C0
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r2, #0
 	ldr r2, [r4]
@@ -19403,7 +19156,7 @@ _022479E6: ; jump table
 	.short _02248078 - _022479E6 - 2 ; case 60
 _02247A60:
 	ldr r2, [r4, #8]
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	str r0, [r5, #4]
 	pop {r3, r4, r5, r6, r7, pc}
 _02247A6A:
@@ -19549,7 +19302,7 @@ _02247B8C:
 	ldr r2, [r4, #0xc]
 	add r0, r7, #0
 	add r1, r6, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	str r0, [r5, #8]
 	pop {r3, r4, r5, r6, r7, pc}
 _02247BA4:
@@ -20128,14 +19881,14 @@ _02248078:
 _022480BC:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_022479C0
+	thumb_func_end InitBattleMsg
 
 	thumb_func_start ov12_022480C0
 ov12_022480C0: ; 0x022480C0
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r2, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	cmp r4, #0x16
 	bne _022480DA
 	ldr r1, _022480E8 ; =0x000021A0
@@ -20276,7 +20029,7 @@ ov12_0224819C: ; 0x0224819C
 	ldr r4, [r5, r0]
 	b _022481C8
 _022481AC:
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	add r1, r0, #0
 	mov r0, #0xc0
 	mul r0, r1
@@ -20321,7 +20074,7 @@ _022481E6:
 ov12_022481E8: ; 0x022481E8
 	push {r4, lr}
 	add r4, r1, #0
-	bl ov12_0224768C
+	bl GetBattlerIDBySide
 	ldr r1, _022481FC ; =0x0000219C
 	add r2, r4, r0
 	ldrb r1, [r2, r1]
@@ -20356,18 +20109,18 @@ _02248216:
 
 	thumb_func_start ov12_02248218
 ov12_02248218: ; 0x02248218
-	ldr r3, _0224821C ; =ov12_0224768C
+	ldr r3, _0224821C ; =GetBattlerIDBySide
 	bx r3
 	.balign 4, 0
-_0224821C: .word ov12_0224768C
+_0224821C: .word GetBattlerIDBySide
 	thumb_func_end ov12_02248218
 
 	thumb_func_start ov12_02248220
 ov12_02248220: ; 0x02248220
-	ldr r3, _02248224 ; =ov12_0224768C
+	ldr r3, _02248224 ; =GetBattlerIDBySide
 	bx r3
 	.balign 4, 0
-_02248224: .word ov12_0224768C
+_02248224: .word GetBattlerIDBySide
 	thumb_func_end ov12_02248220
 
 	thumb_func_start ov12_02248228

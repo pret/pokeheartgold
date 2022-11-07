@@ -7,7 +7,7 @@ typedef struct BATTLEMSG {
     u16 unk2;
     int unk4[6];
     int unk1C;
-    int unk20;
+    int battlerId;
 } BATTLEMSG;
 
 typedef struct BATTLEMSGDATA {
@@ -231,11 +231,11 @@ typedef struct BATTLECONTEXT {
     int unk_58;
     int unk_5C;
     int unk_60;
-    int attackerBattlerId;
+    int battlerIdAttacker;
     int unk_68;
-    int targetBattlerId;
+    int battlerIdTarget;
     int unk_70;
-    int unk_74;
+    int battlerIdFainted;
     int unk_78;
     int unk_7C;
     int unk_80;
@@ -257,7 +257,7 @@ typedef struct BATTLECONTEXT {
     int unk_DC[4];
     int unk_EC;
     int unk_F0;
-    BATTLEMSG unk_F4;
+    BATTLEMSG buffMsg;
     int unk_118;
     int unk_11C;
     int unk_120;
@@ -431,6 +431,48 @@ typedef struct OpponentData {
     u8 unk1A9[3];
 } OpponentData;
 
+typedef struct UnkBattleSystemSubAC_Sub {
+    u16 unk0;
+    u16 unk2;
+    u16 unk4[2];
+} UnkBattleSystemSubAC_Sub;
+
+typedef struct UnkBattleSystemSubAC {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    u16 unk4[4];
+    u32 unkC;
+    u32 unk10;
+    u16 unk14[8];
+    UnkBattleSystemSubAC_Sub unk24;
+    UnkBattleSystemSubAC_Sub unk2C;
+} UnkBattleSystemSubAC; //size: 0x34
+
+typedef struct UnkBattleSystemSub17C {
+    u32 unk0;
+    BattleSystem *bsys;
+    u8 unk8;
+    u8 unk9;
+    s16 unkA;
+    s16 unkC;
+    u16 unused;
+} UnkBattleSystemSub17C; //size: 0x10
+
+typedef struct UnkBattleSystemSub1D0 {
+    u8 *unk0;
+    int unk4;
+    int unk8;
+    int unkC;
+} UnkBattleSystemSub1D0;
+
+typedef struct UnkBattleSystemSub220 {
+    int unk0;
+    int unk4;
+    int unk8;
+} UnkBattleSystemSub220;
+
 struct BattleSystem {
     u32 *unk0;
     u32 *unk4;
@@ -439,15 +481,14 @@ struct BattleSystem {
     u32 *unk10;
     u32 *unk14;
     u32 *unk18;
-    u32 *unk1C;
+    u32 unk1C;
     u32 unk20;
     u32 unk24;
     u32 unk28;
-    u32 unk2C;
-    u32 unk30;
+    u32 unk2C; 
     BATTLECONTEXT *ctx;
     OpponentData *opponentData[4];
-    int unk44;
+    int unk44; //labels wrong from here until unk23E8
     u32 *unk48[4];
     u32 *unk58;
     u32 *unk5C;
@@ -463,7 +504,71 @@ struct BattleSystem {
     u32 *unk9C;
     u16 unkA0[4];
     u8 unkA8[4];
-    //Unfinished
+    UnkBattleSystemSubAC unkAC[4];
+    UnkBattleSystemSub17C unk17C[2];
+    u32 unk19C;
+    u32 unk1A0[2];
+    u32 *unk1A8;
+    u32 *unk1AC;
+    void *unk1B0;
+    u32 *unk1B4;
+    u32 *unk1B8;
+    void *unk1BC;
+    u32 *unk1C0;
+    u32 *unk1C4;
+    u32 unk1C8;
+    u32 *unk1CC;
+    UnkBattleSystemSub1D0 unk1D0[4];
+    UnkBattleSystemSub220 unk220;
+    u32 *unk22C;
+    u8 *unk230;
+    u16 *unk234;
+    u8 unk238[0x1000];
+    u8 unk1238[0x1000];
+    u16 unk2238[0x70];
+    u16 unk2318[0x70];
+    u16 unk23E8; //labeling may be wrong before here 
+    u16 unk23EA;
+    u16 unk23EC;
+    u16 unk23EE;
+    u16 unk23F0;
+    u16 unk23F2;
+    u8 *unk23F4;
+    u8 *unk23F8;
+    u8 unk23FC;
+    u8 unk23FD;
+    u8 unk23FE;
+    u8 unk240F_0:1, unk240F_1:1, unk240E_F:1, unk240F_3:2, unk240F_5:3;
+    int unk2400;
+    int unk2404;
+    int unk2408;
+    u32 unk240C; 
+    int unk2410;
+    int unk2414;
+    u8 unk2418[4];
+    u32 unk241C;
+    u8 unk2420;
+    u8 unk2421;
+    u16 unk2422;
+    int unk2424;
+    int unk2428;
+    int unk242C;
+    int unk2430;
+    u32 unk2434;
+    int unk2438;
+    int unk243C;
+    u8 unk2440;
+    u8 unk2441;
+    u32 unk2442;
+    u32 unk2444;
+    u32 unk2448;
+    u16 unk244C[4];
+    u16 unk2454[4];
+    u16 unk245C[4];
+    int unk2464[4];
+    u32 unk2474_0:1, unk2474_1:31;
+    u32 unk2478;
+    u8 unk247C[4];
 };
 
 typedef BOOL (*BtlCmdFunc)(BattleSystem*, BATTLECONTEXT*);

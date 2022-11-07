@@ -1,0 +1,13 @@
+#ifndef POKEHEARTGOLD_CONSTANTS_BATTLE_H
+#define POKEHEARTGOLD_CONSTANTS_BATTLE_H
+
+enum BattleSide {
+    B_SIDE_ALL,
+    B_SIDE_1,
+    B_SIDE_2,
+    B_SIDE_PLAYER,
+    B_SIDE_OPPONENT
+};
+
+
+#endif

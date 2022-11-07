@@ -11534,7 +11534,7 @@
 .public BtlCmd_12
 .public BtlCmd_13
 .public BtlCmd_WaitForMessage
-.public ov12_0223DCE0
+.public DamageCalcDefault
 .public BtlCmd_DamageCalc
 .public BtlCmd_16
 .public BtlCmd_PrintAttackMessage
@@ -11756,9 +11756,9 @@
 .public ov12_022465A8
 .public ov12_02247228
 .public ov12_02247668
-.public ov12_0224768C
-.public ov12_022478F4
-.public ov12_022479C0
+.public GetBattlerIDBySide
+.public InitBattleMsgData
+.public InitBattleMsg
 .public ov12_022480C0
 .public ov12_022480F0
 .public ov12_0224810C
