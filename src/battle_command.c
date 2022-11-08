@@ -1056,3 +1056,210 @@ BOOL BtlCmd_If(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     return FALSE;
 }
+
+BOOL BtlCmd_IfMonStat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    u32 operator = BattleScriptReadWord(ctx);
+    u32 side = BattleScriptReadWord(ctx);
+    u32 unkA = BattleScriptReadWord(ctx);
+    int cmp = BattleScriptReadWord(ctx);
+    u32 adrs = BattleScriptReadWord(ctx);
+
+    int var = ov12_0224EDE0(ctx, GetBattlerIDBySide(bsys, ctx, side), unkA, 0);
+
+    switch (operator) {
+    case 0:
+        if (var != cmp) {
+            adrs = 0;
+        }
+        break;
+    case 1:
+        if (var == cmp) {
+            adrs = 0;
+        }
+        break;
+    case 2:
+        if (var <= cmp) {
+            adrs = 0;
+        }
+        break;
+    case 3:
+        if (var > cmp) {
+            adrs = 0;
+        }
+        break;
+    case 4:
+        if (!(var & cmp)) {
+            adrs = 0;
+        }
+        break;
+    case 5:
+        if (var & cmp) {
+            adrs = 0;
+        }
+        break;
+    case 6:
+        if ((var & cmp) != cmp) {
+            adrs = 0;
+        }
+        break;
+    }
+
+    if (adrs) {
+        BattleScriptIncrementPointer(ctx, adrs);
+    }
+
+    return FALSE;
+}
+
+BOOL BtlCmd_FadeOutBattle(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    ov12_0226371C(bsys, ctx);
+
+    return FALSE;
+}
+
+BOOL BtlCmd_JumpToSubSeq(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    ov12_02245518(ctx, 1, BattleScriptReadWord(ctx));
+
+    return FALSE;
+}
+
+BOOL BtlCmd_JumpToCurMoveEffectScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    ov12_02245518(ctx, 30, ctx->unk_334.unkA8[ctx->field115_0xdcc].unk0);
+
+    return FALSE;
+}
+
+BOOL BtlCmd_JumpToEffectScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    u32 unkA = BattleScriptReadWord(ctx);
+
+    ctx->unk_213C &= ~1;
+    ctx->unk_213C &= 0xffffbfff;
+
+    ctx->field115_0xdcc = ctx->unk_124;
+
+    if (unkA == 0) {
+        //TODO: Define these functions in a header or leave them until you reach them here
+        ctx->battlerIdTarget = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, (u16)ctx->unk_124, 1, 0);
+        ov12_02250A18(bsys, ctx, ctx->battlerIdAttacker, (u16)ctx->unk_124);
+        ctx->unk_21A8[ctx->battlerIdAttacker][1] = ctx->battlerIdTarget;
+    }
+
+    if (ctx->battlerIdTarget == 255) {
+        ctx->unk_C = 39;
+        ov12_02245518(ctx, 1, 281);
+    } else {
+        ov12_02245518(ctx, 0, ctx->field115_0xdcc);
+    }
+
+    return FALSE;
+}
+
+BOOL BtlCmd_CritCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    if ((ov12_0223A7E0(bsys) & (1 << 10)) || (ov12_0223B514(bsys) & 1)) {
+        ctx->criticalMultiplier = 1;
+    } else {
+        ctx->criticalMultiplier = ov12_02257C5C(bsys, ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget, ctx->unk_214C, ov12_022581D4(bsys, ctx, 0, ctx->battlerIdTarget));
+    }
+
+    return FALSE;
+}
+
+BOOL BtlCmd_ShouldGetExp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int adrs;
+    u32 unkA = ov12_0223A7E0(bsys);
+    OpponentData *opponentData = ov12_0223A7E8(bsys, ctx->battlerIdFainted);
+
+    BattleScriptIncrementPointer(ctx, 1);
+
+    adrs = BattleScriptReadWord(ctx);
+
+    if ((opponentData->unk195 & 1) && !(unkA & 0x2A4)) {
+        int expMonsCnt = 0;
+        int expShareMonsCnt = 0;
+        u16 totalExp;
+        u16 itemNo;
+        POKEMON *mon;
+        for (int i = 0; i < GetPartyCount(ov12_0223A7F4(bsys, 0)); i++) {
+            mon = ov12_0223A880(bsys, 0, i);
+            if (GetMonData(mon, MON_DATA_SPECIES, 0) && GetMonData(mon, MON_DATA_HP, 0)) {
+                if (ctx->unk_A4[(ctx->battlerIdFainted >> 1) & 1] & MaskOfFlagNo(i)) {
+                    expMonsCnt++;
+                }
+                itemNo = GetMonData(mon, 6, 0);
+                if (ov12_02257E74(ctx, itemNo, 1) == 51) {
+                    expShareMonsCnt++;
+                }
+            }
+        }
+        totalExp = GetMonBaseStat(ctx->battleMons[ctx->battlerIdFainted].species, 9);
+        totalExp = (totalExp * ctx->battleMons[ctx->battlerIdFainted].level) / 7;
+        if (expShareMonsCnt) {
+            ctx->unk_9C = (totalExp / 2) / expMonsCnt;
+            if (ctx->unk_9C == 0) {
+                ctx->unk_9C = 1;
+            }
+            ctx->unk_A0 = (totalExp / 2) / expShareMonsCnt;
+            if (ctx->unk_A0 == 0) {
+                ctx->unk_A0 = 1;
+            }
+        } else {
+            ctx->unk_9C = totalExp / expMonsCnt;
+            if (ctx->unk_9C == 0) {
+                ctx->unk_9C = 1;
+            }
+            ctx->unk_A0 = 0;
+        }
+    } else {
+        BattleScriptIncrementPointer(ctx, adrs);
+    }
+
+    return FALSE;
+}
+
+//TODO: Declare as a system task in appropriate header
+void ov12_02245898();
+
+BOOL BtlCmd_InitGetExp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    ctx->unk_178 = AllocFromHeap(5, sizeof(UnkBtlCtxSub_67));
+
+    ctx->unk_178->bsys = bsys;
+    ctx->unk_178->ctx = ctx;
+    ctx->unk_178->unk28 = 0;
+    ctx->unk_178->unk30[6] = 0;
+
+    CreateSysTask(ov12_02245898, ctx->unk_178, 0);
+
+    return FALSE;
+}
+
+BOOL BtlCmd_GetExp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    if (ctx->unk_178 == NULL) {
+        BattleScriptIncrementPointer(ctx, 1);
+    }
+
+    ctx->unk_3154 = 1;
+
+    return FALSE;
+}
+
+BOOL BtlCmd_GetExpLoop(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+    
+    BattleScriptReadWord(ctx);
+    
+    return FALSE;
+}

@@ -18,6 +18,8 @@ typedef struct BATTLEMSGDATA {
     int unk1C;
 } BATTLEMSGDATA;
 
+typedef struct UnkBtlCtxSub_67 UnkBtlCtxSub_67;
+
 typedef struct UnkBtlCtxSub_70 {
     u32 unk0;
     u8 unk4[4];
@@ -87,16 +89,17 @@ typedef struct UnkBtlCtxSub_74 {
 
 typedef struct UnkBtlCtxSub_76_Sub {
     u16 unk0;
-    u8 moveType;
+    u8 unk1;
     u8 unk3;
-    u8 unk4;
+    u8 moveType;
     u8 unk5;
     u8 unk6;
     u8 unk7;
     u16 unk8;
     s8 unkA;
     u8 unkB;
-    u32 unkC;
+    u16 unkC;
+    u16 unkE;
 } UnkBtlCtxSub_76_Sub;
 
 typedef struct UnkBtlCtxSub_76 {
@@ -156,7 +159,7 @@ typedef struct UnkBattlemonSub {
 } UnkBattlemonSub;
 
 typedef struct BATTLEMON {
-    u16 unk0;
+    u16 species;
     u16 unk2;
     u16 unk4;
     u16 unk6;
@@ -175,7 +178,10 @@ typedef struct BATTLEMON {
         unk28_8:1, unk28_9:1, unk28_A:1, unk28_B:21;
     u32 unk2A;
     u8 unk2C[4];
-    u8 unk30[4];
+    u8 level;
+    u8 unk31;
+    u8 unk32;
+    u8 unk33;
     u8 unk34;
     u8 unk35;
     u16 unk36[9];
@@ -198,12 +204,6 @@ typedef struct BATTLEMON {
     u32 unk84;
     UnkBattlemonSub unk88;
 } BATTLEMON;
-
-/*
-typedef struct UnkBtlCtxSub_73 {
-    
-} UnkBtlCtxSub_73;
-*/
 
 typedef struct BATTLECONTEXT {
     u8 unk_0[4];
@@ -273,7 +273,7 @@ typedef struct BATTLECONTEXT {
     int unk_154[4];
     int unk_164[4];
     int unk_174;
-    u32 unk_178;
+    UnkBtlCtxSub_67 *unk_178;
     void * unk_17C;
     u32 unk_180;
     UnkBtlCtxSub_70 unk_184;
@@ -570,6 +570,20 @@ struct BattleSystem {
     u32 unk2478;
     u8 unk247C[4];
 };
+
+struct UnkBtlCtxSub_67 {
+    BattleSystem *bsys;
+    BATTLECONTEXT *ctx;
+    u32 unk8;
+    u32 unkC[2];
+    u32 unk14;
+    u32 unk18[3];
+    int unk24;
+    int unk28;
+    int unk2C;
+    int unk30[8];
+    void *unk50[2];
+}; //size: 0x58
 
 typedef BOOL (*BtlCmdFunc)(BattleSystem*, BATTLECONTEXT*);
 
