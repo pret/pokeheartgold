@@ -1,6 +1,8 @@
 #include "battle.h"
+#include "item.h"
 #include "pokemon.h"
 #include "system.h"
+#include "unk_0200E320.h"
 #include "overlay_12_022378C0.h"
 #include "constants/abilities.h"
 #include "constants/battle.h"
@@ -1260,6 +1262,189 @@ BOOL BtlCmd_GetExpLoop(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
     
     BattleScriptReadWord(ctx);
+    
+    return FALSE;
+}
+
+BOOL BtlCmd_ShowParty(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int i, unkA, unkB;
+    int unkC = ov12_0223A7F0(bsys);
+
+    BattleScriptIncrementPointer(ctx, 1);
+
+    unkB = 0;
+
+    for (i = 0; i < unkC; i++) {
+        if (ctx->unk_13C[i] & 1) {
+            unkB |= MaskOfFlagNo(i);
+            ov12_022632DC(bsys, ctx, i, 1, 0, 6);
+        }
+    }
+
+    for (i = 0; i < unkC; i++) {
+        if (ov12_0223A7E0(bsys) == 7) {
+            unkA = ov12_0223AB6C(bsys, i);
+            if (!(unkB & MaskOfFlagNo(i)) && !(unkB & MaskOfFlagNo(unkA))) {
+                unkB |= MaskOfFlagNo(i);
+                ov12_02263F30(bsys, i);
+            }
+        } else {
+            if (!(unkB & MaskOfFlagNo(i))) {
+                ov12_02263F30(bsys, i);
+            }
+        }
+    }
+
+    for (i = 0; i < unkC; i++) {
+        if (ctx->unk_13C[i] & 1) {
+            ctx->unk_78 = i;
+            break;
+        }
+    }
+
+    return FALSE;
+}
+
+BOOL BtlCmd_WaitForMonSelection(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int i;
+
+    int unkA = ov12_0223A7F0(bsys);
+    int unkB = 0;
+
+    for (i = 0; i < unkA; i++) {
+        if (ctx->unk_13C[i] & 1) {
+            unkB++;
+        }
+    }
+
+    for (i = 0; i < unkA; i++) {
+        if ((ctx->unk_13C[i] & 1) && ov12_0225682C(ctx, i)) {
+            ctx->unk_21A0[i] = ctx->field111_0x378[i][0] - 1;
+            unkB--;
+            if (!(ctx->unk_2140 & (MaskOfFlagNo(i) << 24))) {
+                ctx->unk_2140 |= (MaskOfFlagNo(i) << 24);
+                ov12_02263F30(bsys, i);
+            }
+        }
+    }
+
+    if (unkB == 0) {
+        for (i = 0; i < unkA; i++) {
+            if ((ctx->unk_13C[i] & 1) && ov12_0225682C(ctx, i)) {
+                ov12_0223BDDC(bsys, i, ctx->field111_0x378[i][0]);
+            }
+        }
+        ctx->unk_2140 &= 0xf0ffffff;
+        BattleScriptIncrementPointer(ctx, 1);
+    }
+
+    ctx->unk_3154 = 1;
+
+    return FALSE;
+}
+
+BOOL BtlCmd_SwitchInDataUpdate(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    int side = BattleScriptReadWord(ctx);
+    
+    int battlerId;
+
+    switch (side) {
+    case B_SIDE_1:
+        battlerId = ctx->battlerIdAttacker;
+        break;
+    case B_SIDE_6:
+        battlerId = ctx->unk_78;
+        break;
+    case B_SIDE_18:
+        battlerId = ctx->battlerIdTarget;
+        break;
+    }
+
+    ctx->unk_13C[battlerId] &= ~1;
+    ctx->unk_3108 &= (MaskOfFlagNo(battlerId)^~0);
+    ctx->unk_219C[battlerId] = ctx->unk_21A0[battlerId]; 
+    ctx->unk_21A0[battlerId] = 6;
+
+    ov12_0224E4FC(bsys, ctx, battlerId, ctx->unk_219C[battlerId]);
+    ov12_02256F78(bsys, ctx, battlerId, ctx->unk_219C[battlerId]);
+
+    ctx->unk_3122 = ctx->battleMons[1].hp;
+
+    ov12_022510BC(bsys, ctx, battlerId);
+
+    return FALSE;
+}
+
+BOOL BtlCmd_JumpIfCantSwitch(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int i;
+    int unkA = ov12_0223A7F0(bsys);
+    
+    BattleScriptIncrementPointer(ctx, 1);
+
+    u32 unkB = BattleScriptReadWord(ctx);
+
+    for (i = 0; i < unkA; i++) {
+        if (ctx->unk_13C[i] & 1) {
+            ctx->unk_78 = i;
+            BattleScriptIncrementPointer(ctx, unkB);
+            break;
+        }
+    }
+
+    return FALSE;
+}
+
+void ov12_022465A8(SysTask *task, void *data);
+
+BOOL BtlCmd_47(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    int unkA = BattleScriptReadWord(ctx);
+
+    ctx->unk_178 = (UnkBtlCtxSub_67*) AllocFromHeap(5, sizeof(UnkBtlCtxSub_67));
+    ctx->unk_178->bsys = bsys;
+    ctx->unk_178->ctx = ctx;
+    ctx->unk_178->unk28 = 0;
+    ctx->unk_178->unk24 = unkA;
+    ctx->unk_178->unk2C = ItemToBallId(ctx->unk_128);
+
+    CreateSysTask(ov12_022465A8, ctx->unk_178, 0);
+
+    return FALSE;
+}
+
+BOOL BtlCmd_48(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    if (ctx->unk_178 == NULL) {
+        BattleScriptIncrementPointer(ctx, 1);
+    }
+
+    ctx->unk_3154 = 1;
+    
+    return FALSE;
+}
+
+BOOL BtlCmd_SetMultiHit(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    int unkA = BattleScriptReadWord(ctx);
+    int unkB = BattleScriptReadWord(ctx);
+
+    if (ctx->unk_217D == 0) {
+        if (unkA == 0) {
+            if (ov12_022527CC(ctx, ctx->battlerIdAttacker) == 92) {
+                unkA = 5;
+            } else if ((unkA = ov12_0223BD98(bsys) & 3) < 2) {
+                unkA += 2;
+            } else {
+                unkA = (ov12_0223BD98(bsys) & 3) + 2;
+            }
+        }
+        ctx->unk_217C = unkA;
+        ctx->unk_217D = unkA;
+        ctx->unk_2188 = unkB;
+    }
     
     return FALSE;
 }
