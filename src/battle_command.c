@@ -1,3 +1,4 @@
+#include "assert.h"
 #include "battle.h"
 #include "item.h"
 #include "pokemon.h"
@@ -1446,5 +1447,558 @@ BOOL BtlCmd_SetMultiHit(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ctx->unk_2188 = unkB;
     }
     
+    return FALSE;
+}
+
+BOOL BtlCmd_ChangeVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    int operator = BattleScriptReadWord(ctx);
+    int unkB = BattleScriptReadWord(ctx);
+    int val = BattleScriptReadWord(ctx);
+
+    int *var = ov12_02245528(bsys, ctx, unkB);
+
+    switch (operator) {
+    case 7:
+        *var = val;
+        break;
+    case 8:
+        *var += val;
+        break;
+    case 9:
+        *var -= val;
+        break;
+    case 10:
+        *var |= val;
+        break;
+    case 11:
+        *var &= (val ^ ~0);
+        break;
+    case 12:
+        *var *= val;
+        break;
+    case 13:
+        *var /= val;
+        break;
+    case 14:
+        *var <<= val;
+        break;
+    case 15:
+        u32 uvar = *var;
+        *var = uvar >> val;
+        break;
+    case 16:
+        *var = MaskOfFlagNo(val);
+        break;
+    case 17:
+        GF_ASSERT(FALSE);
+        break;
+    case 18:
+        *var -= val;
+        if (*var < 0) {
+            *var = 0;
+        }
+        break;
+    case 19:
+        *var ^= val;
+        break;
+    case 20:
+        *var &= val;
+        break;
+    default:
+        GF_ASSERT(FALSE);
+        break;
+    }
+
+    return FALSE;
+}
+
+BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int change, stat;
+    BATTLEMON *mon = &ctx->battleMons[ctx->battlerIdStatChange];
+    
+    BattleScriptIncrementPointer(ctx, 1);
+
+    int unkA = BattleScriptReadWord(ctx);
+    int unkB = BattleScriptReadWord(ctx);
+    int unkC = BattleScriptReadWord(ctx);
+
+    int unkD = 0;
+
+    ctx->unk_213C &= 0xFFFDFFFF;
+
+    if (ctx->unk_8C >= 46) {
+        stat = ctx->unk_8C - 46;
+        change = -2;
+        ctx->unk_138 = 13;
+    } else if (ctx->unk_8C >= 39) {
+        stat = ctx->unk_8C - 39;
+        change = 2;
+        ctx->unk_138 = 12;
+    } else if (ctx->unk_8C >= 22) {
+        stat = ctx->unk_8C - 22;
+        change = -1;
+        ctx->unk_138 = 13;
+    } else {
+        stat = ctx->unk_8C - 15;
+        change = 1;
+        ctx->unk_138 = 12;
+    }
+
+    if (change > 0) { //Stat Increase
+        if (mon->statChanges[stat + 1] == 12) {
+            ctx->unk_213C |= (1 << 17);
+            if (ctx->unk_88 == 3 || ctx->unk_88 == 2) {
+                BattleScriptIncrementPointer(ctx, unkB);
+            } else {
+                ctx->buffMsg.unk2 = 142;
+                ctx->buffMsg.unk1 = 12;
+                ctx->buffMsg.unk4[0] = ov12_022522E0(ctx, ctx->battlerIdStatChange);
+                ctx->buffMsg.unk4[1] = stat + 1;
+                BattleScriptIncrementPointer(ctx, unkA);
+            }
+        } else {
+            if (ctx->unk_88 == 3) {
+                ctx->buffMsg.unk2 = 0x26E;
+                ctx->buffMsg.unk1 = 39;
+                ctx->buffMsg.unk4[0] = ov12_022522E0(ctx, ctx->battlerIdStatChange);
+                ctx->buffMsg.unk4[1] = ctx->battleMons[ctx->battlerIdStatChange].unk27;
+                ctx->buffMsg.unk4[2] = stat + 1;
+            } else if (ctx->unk_88 == 5) {
+                ctx->buffMsg.unk2 = 0x2F4;
+                ctx->buffMsg.unk1 = 45;
+                ctx->buffMsg.unk4[0] = ov12_022522E0(ctx, ctx->battlerIdStatChange);
+                ctx->buffMsg.unk4[1] = ctx->unk_128;
+                ctx->buffMsg.unk4[2] = stat + 1;
+            } else {
+                ctx->buffMsg.unk2 = (change == 1) ? 0x2EE:0x2F1;
+                ctx->buffMsg.unk1 = 12;
+                ctx->buffMsg.unk4[0] = ov12_022522E0(ctx, ctx->battlerIdStatChange);
+                ctx->buffMsg.unk4[1] = stat + 1;
+            }
+            mon->statChanges[stat + 1] += change;
+            if (mon->statChanges[stat + 1] > 12) {
+                mon->statChanges[stat + 1] = 12;
+            }
+        }
+    } else { //Stat Decrease
+        if (!(ctx->unk_90 & (1 << 27))) {
+            if (ctx->battlerIdAttacker != ctx->battlerIdStatChange) {
+                //White Smoke check
+                if(ctx->field72_0x170[ov12_0223AB1C(bsys, ctx->battlerIdStatChange)].unk0_C) {
+                    ctx->buffMsg.unk2 = 273;
+                    ctx->buffMsg.unk1 = 2;
+                    ctx->buffMsg.unk4[0] = ov12_022522E0(ctx, ctx->battlerIdStatChange);
+                    unkD = 1;
+                } else if (ov12_02252834(ctx, ctx->battlerIdAttacker, ctx->battlerIdStatChange, ABILITY_CLEAR_BODY) == TRUE || ov12_02252834(ctx, ctx->battlerIdAttacker, ctx->battlerIdStatChange, ABILITY_WHITE_SMOKE) == TRUE) {
+                if (ctx->unk_88 == 3) {
+                    ctx->buffMsg.unk2 = 0x2D7;
+                    ctx->buffMsg.unk1 = 53;
+                    ctx->buffMsg.unk4[0] = ov12_022522E0(ctx, ctx->battlerIdStatChange);
+                    ctx->buffMsg.unk4[1] = ctx->battleMons[ctx->battlerIdStatChange].unk27;
+                    ctx->buffMsg.unk4[2] = ov12_022522E0(ctx, ctx->battlerIdAttacker);
+                    ctx->buffMsg.unk4[3] = ctx->battleMons[ctx->battlerIdAttacker].unk27;
+                } else {
+                    ctx->buffMsg.unk2 = 0x29D;
+                    ctx->buffMsg.unk1 = 11;
+                    ctx->buffMsg.unk4[0] = ov12_022522E0(ctx, ctx->battlerIdStatChange);
+                    ctx->buffMsg.unk4[1] = ctx->battleMons[ctx->battlerIdStatChange].unk27;
+                }
+                unkD = TRUE;
+            } else if ((ov12_02252834(ctx, ctx->battlerIdAttacker, ctx->battlerIdStatChange, ABILITY_KEEN_EYE) == TRUE && (1 + stat) == 6) ||
+                       (ov12_02252834(ctx, ctx->battlerIdAttacker, ctx->battlerIdStatChange, ABILITY_HYPER_CUTTER) == TRUE && (1 + stat) == 1)) {
+                if (ctx->unk_88 == 3) {
+                    ctx->buffMsg.unk2 = 0x2D7;
+                    ctx->buffMsg.unk1 = 53;
+                    ctx->buffMsg.unk4[0] = ov12_022522E0(ctx, ctx->battlerIdStatChange);
+                    ctx->buffMsg.unk4[1] = ctx->battleMons[ctx->battlerIdStatChange].unk27;
+                    ctx->buffMsg.unk4[2] = ov12_022522E0(ctx, ctx->battlerIdAttacker);
+                    ctx->buffMsg.unk4[3] = ctx->battleMons[ctx->battlerIdAttacker].unk27;
+                } else {
+                    ctx->buffMsg.unk2 = 704;
+                    ctx->buffMsg.unk1 = 39;
+                    ctx->buffMsg.unk4[0] = ov12_022522E0(ctx, ctx->battlerIdStatChange);
+                    ctx->buffMsg.unk4[1] = ctx->battleMons[ctx->battlerIdStatChange].unk27;
+                    ctx->buffMsg.unk4[2] = stat + 1;
+                }
+                unkD = TRUE;
+                }
+                else if (mon->statChanges[1 + stat] == 0) {
+                    ctx->unk_213C |= (1 << 17);
+                    if (ctx->unk_88 == 2 || ctx->unk_88 == 3) {
+                        BattleScriptIncrementPointer(ctx, unkB);
+                        return FALSE;
+                    } else {
+                        ctx->buffMsg.unk2 = 145;
+                        ctx->buffMsg.unk1 = 12;
+                        ctx->buffMsg.unk4[0] = ov12_022522E0(ctx, ctx->battlerIdStatChange);
+                        ctx->buffMsg.unk4[1] = stat + 1;
+                        BattleScriptIncrementPointer(ctx, unkA);
+                        return FALSE;
+                    }
+                } else if (ov12_02252834(ctx, ctx->battlerIdAttacker, ctx->battlerIdStatChange, ABILITY_SHIELD_DUST) == TRUE && ctx->unk_88 == 2) {
+                    unkD = 1;
+                } else if (ctx->battleMons[ctx->battlerIdStatChange].unk6C &  (1 << 24)){
+                    unkD = 2;
+                } 
+            } else if (mon->statChanges[1 + stat] == 0) {
+                ctx->unk_213C |= (1 << 17);
+                if (ctx->unk_88 == 2 || ctx->unk_88 == 3) {
+                    BattleScriptIncrementPointer(ctx, unkB);
+                    return FALSE;
+                } else {
+                    ctx->buffMsg.unk2 = 145;
+                    ctx->buffMsg.unk1 = 12;
+                    ctx->buffMsg.unk4[0] = ov12_022522E0(ctx, ctx->battlerIdStatChange);
+                    ctx->buffMsg.unk4[1] = stat + 1;
+                    BattleScriptIncrementPointer(ctx, unkA);
+                    return FALSE;
+                }
+            }
+            if (unkD == 2 && ctx->unk_88 == 1) {
+                BattleScriptIncrementPointer(ctx, unkC);
+                return FALSE;
+            } else if (unkD && ctx->unk_88 == 2) {
+                BattleScriptIncrementPointer(ctx, unkB);
+                return FALSE;
+            } else if (unkD) {
+                BattleScriptIncrementPointer(ctx, unkA);
+                return FALSE;
+            }
+        }
+        if (ctx->unk_88 == 3) {
+            ctx->buffMsg.unk2 = 0x296;
+            ctx->buffMsg.unk1 = 54;
+            ctx->buffMsg.unk4[0] = ov12_022522E0(ctx, ctx->battlerIdAttacker);
+            ctx->buffMsg.unk4[1] = ctx->battleMons[ctx->battlerIdAttacker].unk27;
+            ctx->buffMsg.unk4[2] = ov12_022522E0(ctx, ctx->battlerIdStatChange);
+            ctx->buffMsg.unk4[3] = stat + 1;
+        } else {
+            ctx->buffMsg.unk2 = (change == -1) ? 0x2FA:0x2FD;
+            ctx->buffMsg.unk1 = 12;
+            ctx->buffMsg.unk4[0] = ov12_022522E0(ctx, ctx->battlerIdStatChange);
+            ctx->buffMsg.unk4[1] = stat + 1;           
+        }
+        mon->statChanges[stat + 1] += change;
+        if (mon->statChanges[stat + 1] < 0) {
+            mon->statChanges[stat + 1] = 0;
+        }
+    }
+
+    return FALSE;
+}
+
+//TODO: Move to above of file once defined as static
+void ov12_02248648(BATTLECONTEXT *ctx, u8 a1, u8 a2);
+
+BOOL BtlCmd_ChangeMonDataVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    int operator = BattleScriptReadWord(ctx);
+    int side = BattleScriptReadWord(ctx);
+    int unkB = BattleScriptReadWord(ctx);
+    int val = BattleScriptReadWord(ctx);
+    int battlerId = GetBattlerIDBySide(bsys, ctx, side);
+    int var = ov12_0224EDE0(ctx, battlerId, unkB, 0);
+
+    switch (operator) {
+    case 7:
+        var = val;
+        break;
+    case 8:
+        var += val;
+        break;
+    case 9:
+        var -= val;
+        break;
+    case 10:
+        var |= val;
+        break;
+    case 11:
+        var &= (val ^ ~0);
+        break;
+    case 12:
+        var *= val;
+        break;
+    case 13:
+        var /= val;
+        break;
+    case 14:
+        var <<= val;
+        break;
+    case 15:
+        u32 uvar = var;
+        var = uvar >> val;
+        break;
+    case 16:
+        var = MaskOfFlagNo(val);
+        break;
+    case 17:
+        GF_ASSERT(FALSE);
+        break;
+    case 18:
+        var -= val;
+        if (var < 0) {
+            var = 0;
+        }
+        break;
+    case 19:
+        var ^= val;
+        break;
+    case 20:
+        var &= val;
+        break;
+    default:
+        GF_ASSERT(FALSE);
+        break;
+    }
+
+    if (unkB == 26) {
+        ov12_02248648(ctx, battlerId, var);
+    }
+
+    ov12_0224F168(ctx, battlerId, unkB, &var);
+    ov12_02250C40(bsys, ctx, battlerId);
+
+    return FALSE;
+}
+
+BOOL BtlCmd_53(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    int side = BattleScriptReadWord(ctx);
+    int var = BattleScriptReadWord(ctx);
+
+    int battlerId = GetBattlerIDBySide(bsys, ctx, side);
+
+    ctx->unk_218C[battlerId] |= var;
+
+    return FALSE;
+}
+
+BOOL BtlCmd_ToggleVanish(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    int side = BattleScriptReadWord(ctx);
+    int unkA = BattleScriptReadWord(ctx);
+    int battlerId = GetBattlerIDBySide(bsys, ctx, side);
+
+    ov12_02263738(bsys, battlerId, unkA);
+
+    return FALSE;
+}
+
+BOOL BtlCmd_CheckAbility(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int battlerId;
+    
+    BattleScriptIncrementPointer(ctx, 1);
+    
+    int unkA = BattleScriptReadWord(ctx);
+    int side = BattleScriptReadWord(ctx);
+    int ability = BattleScriptReadWord(ctx);
+    int adrs = BattleScriptReadWord(ctx);
+
+    if (side == B_SIDE_ALL) {
+        int unkB = ov12_0223A7F0(bsys);
+
+        for (battlerId = 0; battlerId < unkB; battlerId++) {
+            if (unkA == 0) {
+                if (ov12_022527CC(ctx, battlerId) == ability) {
+                    BattleScriptIncrementPointer(ctx, adrs);
+                    ctx->battlerIdAbility = battlerId;
+                    break;
+                }
+            } else if (ov12_022527CC(ctx, battlerId) == ability) {
+                break;
+            }
+        }
+    } else {
+        battlerId = GetBattlerIDBySide(bsys, ctx, side);
+
+        if (unkA == 0) {
+            if (ov12_022527CC(ctx, battlerId) == ability) {
+                BattleScriptIncrementPointer(ctx, adrs);
+                ctx->battlerIdAbility = battlerId;
+            }
+        } else if (ov12_022527CC(ctx, battlerId) != ability) {
+                BattleScriptIncrementPointer(ctx, adrs);
+                ctx->battlerIdAbility = battlerId;
+        }
+    }
+
+    return FALSE;
+}
+
+BOOL BtlCmd_Random(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    int modulo = BattleScriptReadWord(ctx);
+    modulo += 1;
+
+    int x0 = BattleScriptReadWord(ctx);
+
+    ctx->unk_134 = ov12_0223BD98(bsys) % modulo + x0;
+
+    return FALSE;
+}
+
+BOOL BtlCmd_ChangeVar2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    int operator = BattleScriptReadWord(ctx);
+    int unkB = BattleScriptReadWord(ctx);
+    int unkC = BattleScriptReadWord(ctx);
+
+    int *var = ov12_02245528(bsys, ctx, unkB);
+    int *val = ov12_02245528(bsys, ctx, unkC);
+
+    switch (operator) {
+    case 7:
+        *var = *val;
+        break;
+    case 8:
+        *var += *val;
+        break;
+    case 9:
+        *var -= *val;
+        break;
+    case 10:
+        *var |= *val;
+        break;
+    case 11:
+        *var &= (*val ^ ~0);
+        break;
+    case 12:
+        *var *= *val;
+        break;
+    case 13:
+        *var /= *val;
+        break;
+    case 14:
+        *var <<= *val;
+        break;
+    case 15:
+        u32 uvar = *var;
+        *var = uvar >> *val;
+        break;
+    case 16:
+        *var = MaskOfFlagNo(*val);
+        break;
+    case 17:
+        *val = *var;
+        break;
+    case 18:
+        *var -= *val;
+        if (*var < 0) {
+            *var = 0;
+        }
+        break;
+    case 19:
+        *var ^= *val;
+        break;
+    case 20:
+        *var &= *val;
+        break;
+    default:
+        GF_ASSERT(FALSE);
+        break;
+    }
+
+    return FALSE;
+}
+
+BOOL BtlCmd_ChangeMonDataByVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    int operator = BattleScriptReadWord(ctx);
+    int side = BattleScriptReadWord(ctx);
+    int unkB = BattleScriptReadWord(ctx);
+    int unkC = BattleScriptReadWord(ctx);
+
+    int battlerId = GetBattlerIDBySide(bsys, ctx, side);
+
+    int var = ov12_0224EDE0(ctx, battlerId, unkB, 0);
+    int *val = ov12_02245528(bsys, ctx, unkC);
+
+    switch (operator) {
+    case 7:
+        var = *val;
+        break;
+    case 8:
+        var += *val;
+        break;
+    case 9:
+        var -= *val;
+        break;
+    case 10:
+        var |= *val;
+        break;
+    case 11:
+        var &= (*val ^ ~0);
+        break;
+    case 12:
+        var *= *val;
+        break;
+    case 13:
+        var /= *val;
+        break;
+    case 14:
+        var <<= *val;
+        break;
+    case 15:
+        u32 uvar = var;
+        var = uvar >> *val;
+        break;
+    case 16:
+        var = MaskOfFlagNo(*val);
+        break;
+    case 17:
+        *val = var;
+        break;
+    case 18:
+        var -= *val;
+        if (var < 0) {
+            var = 0;
+        }
+        break;
+    case 19:
+        var ^= *val;
+        break;
+    case 20:
+        var &= *val;
+        break;
+    default:
+        GF_ASSERT(FALSE);
+        break;
+    }
+
+    if (operator != 17) {
+        if (unkB == 26) {
+            ov12_02248648(ctx, battlerId, var);
+        }
+        ov12_0224F168(ctx, battlerId, unkB, &var);
+        ov12_02250C40(bsys, ctx, battlerId);
+    }
+
+    return FALSE;
+}
+
+BOOL BtlCmd_Goto(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+    BattleScriptIncrementPointer(ctx, BattleScriptReadWord(ctx));
+    return FALSE;
+}
+
+BOOL BtlCmd_GotoSubscript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+    ov12_02245520(ctx, 1, BattleScriptReadWord(ctx));
+    return FALSE;
+}
+
+BOOL BtlCmd_GotoSubscriptVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+    int *var = ov12_02245528(bsys, ctx, BattleScriptReadWord(ctx));
+    ov12_02245520(ctx, 1, *var);
     return FALSE;
 }

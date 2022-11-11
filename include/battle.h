@@ -167,7 +167,7 @@ typedef struct BATTLEMON {
     u16 unkA;
     u16 unkC[4];
     u32 hpIV:5, atkIV:5, defIV:5, spdIV:5, spatkIV:5, spdefIV:5, isEgg:1, isNicknamed:1;
-    s8 unk18[8];
+    s8 statChanges[8];
     int unk20;
     u8 unk24;
     u8 unk25;
@@ -238,12 +238,12 @@ typedef struct BATTLECONTEXT {
     int battlerIdFainted;
     int unk_78;
     int unk_7C;
-    int unk_80;
+    int battlerIdAbility;
     int unk_84;
     int unk_88;
     int unk_8C;
     int unk_90;
-    int unk_94;
+    int battlerIdStatChange;
     int unk_98;
     int unk_9C;
     int unk_A0;
