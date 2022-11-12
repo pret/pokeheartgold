@@ -564,9 +564,21 @@ Overlay OVY_12
 {
     After OVY_7
     Object asm/overlay_12_022378C0.o
+    Object asm/overlay_12_battle_system.o
     Object src/battle_command.o
     Object asm/overlay_12_battle_command.o
-    Object asm/overlay_12_02248660.o
+    Object asm/overlay_12_battle_controller_player.o
+    Object asm/overlay_12_0224E4FC.o
+    Object asm/overlay_12_battle_controller_opponent.o
+    Object asm/overlay_12_02261FD4.o
+    Object asm/overlay_12_battle_controller.o
+    Object asm/overlay_12_02264824.o
+    Object asm/overlay_12_02265E28.o
+    Object asm/overlay_12_02266024.o 
+    Object asm/overlay_12_0226ADE0.o
+    Object asm/overlay_12_0226B8FC.o
+    Object asm/overlay_12_0226BBC4.o
+    Object asm/overlay_12_0226BEC4.o
 }
 Overlay OVY_13
 {

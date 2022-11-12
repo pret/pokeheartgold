@@ -34,26 +34,26 @@ BOOL BtlCmd_0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 BOOL BtlCmd_1(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    int i;
-    int unkA = ov12_0223A7F0(bsys);
+    int battlerId;
+    int battlersMax = BattleSys_GetMaxBattlers(bsys);
     BattleScriptIncrementPointer(ctx, 1);
     switch (BattleScriptReadWord(ctx)) {
     default:
-    case 0:
-        for (i = 0; i < unkA; i++) {
-            ov12_022622F0(bsys, i);
-            ov12_0223C288(bsys, i);
+    case B_SIDE_ALL:
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            ov12_022622F0(bsys, battlerId);
+            ov12_0223C288(bsys, battlerId);
         }
         break;
-    case 3:
+    case B_SIDE_PLAYER:
         break;
-    case 4:
+    case B_SIDE_OPPONENT:
         OpponentData *opponentData;
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = ov12_0223A7E8(bsys, battlerId);
             if (opponentData->unk195 & 1) {
-                ov12_022622F0(bsys, i);
-                ov12_0223C288(bsys, i);  
+                ov12_022622F0(bsys, battlerId);
+                ov12_0223C288(bsys, battlerId);  
             }
         }
         break;
@@ -64,7 +64,7 @@ BOOL BtlCmd_1(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
-    int unkA = ov12_0223A7F0(bsys);
+    int unkA = BattleSys_GetMaxBattlers(bsys);
 
     OpponentData *opponentData;
 
@@ -144,7 +144,7 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 BOOL BtlCmd_3(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
-    int unkA = ov12_0223A7F0(bsys);
+    int unkA = BattleSys_GetMaxBattlers(bsys);
 
     OpponentData *opponentData;
 
@@ -224,7 +224,7 @@ BOOL BtlCmd_3(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 BOOL BtlCmd_4(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
-    int unkA = ov12_0223A7F0(bsys);
+    int unkA = BattleSys_GetMaxBattlers(bsys);
     OpponentData *opponentData;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -271,7 +271,7 @@ BOOL BtlCmd_5(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 BOOL BtlCmd_6(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
-    int unkA = ov12_0223A7F0(bsys);
+    int unkA = BattleSys_GetMaxBattlers(bsys);
     OpponentData *opponentData;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -329,7 +329,7 @@ BOOL BtlCmd_6(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 BOOL BtlCmd_ThrowPokeball(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
-    int unkA = ov12_0223A7F0(bsys);
+    int unkA = BattleSys_GetMaxBattlers(bsys);
     OpponentData *opponentData;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -383,7 +383,7 @@ BOOL BtlCmd_ThrowPokeball(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 BOOL BtlCmd_8(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
-    int unkA = ov12_0223A7F0(bsys);
+    int unkA = BattleSys_GetMaxBattlers(bsys);
     OpponentData *opponentData;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -470,7 +470,7 @@ BOOL BtlCmd_8(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 BOOL BtlCmd_9(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
-    int unkA = ov12_0223A7F0(bsys);
+    int unkA = BattleSys_GetMaxBattlers(bsys);
     OpponentData *opponentData;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -553,7 +553,7 @@ BOOL BtlCmd_9(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 BOOL BtlCmd_10(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
-    int unkA = ov12_0223A7F0(bsys);
+    int unkA = BattleSys_GetMaxBattlers(bsys);
     BattleScriptIncrementPointer(ctx, 1);
 
     for (i = 0; i < unkA; i++) {
@@ -566,7 +566,7 @@ BOOL BtlCmd_10(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 BOOL BtlCmd_HealthbarSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
-    int unkA = ov12_0223A7F0(bsys);
+    int unkA = BattleSys_GetMaxBattlers(bsys);
     OpponentData *opponentData;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -604,7 +604,7 @@ BOOL BtlCmd_HealthbarSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 BOOL BtlCmd_12(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
-    int unkA = ov12_0223A7F0(bsys);
+    int unkA = BattleSys_GetMaxBattlers(bsys);
     OpponentData *opponentData;
     u8 delay;
 
@@ -647,7 +647,7 @@ BOOL BtlCmd_12(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 BOOL BtlCmd_13(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
-    int unkA = ov12_0223A7F0(bsys);
+    int unkA = BattleSys_GetMaxBattlers(bsys);
     OpponentData *opponentData;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -1269,7 +1269,7 @@ BOOL BtlCmd_GetExpLoop(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 BOOL BtlCmd_ShowParty(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i, unkA, unkB;
-    int unkC = ov12_0223A7F0(bsys);
+    int unkC = BattleSys_GetMaxBattlers(bsys);
 
     BattleScriptIncrementPointer(ctx, 1);
 
@@ -1309,7 +1309,7 @@ BOOL BtlCmd_ShowParty(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 BOOL BtlCmd_WaitForMonSelection(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
 
-    int unkA = ov12_0223A7F0(bsys);
+    int unkA = BattleSys_GetMaxBattlers(bsys);
     int unkB = 0;
 
     for (i = 0; i < unkA; i++) {
@@ -1380,7 +1380,7 @@ BOOL BtlCmd_SwitchInDataUpdate(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 BOOL BtlCmd_JumpIfCantSwitch(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
-    int unkA = ov12_0223A7F0(bsys);
+    int unkA = BattleSys_GetMaxBattlers(bsys);
     
     BattleScriptIncrementPointer(ctx, 1);
 
@@ -1800,7 +1800,7 @@ BOOL BtlCmd_CheckAbility(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int adrs = BattleScriptReadWord(ctx);
 
     if (side == B_SIDE_ALL) {
-        int unkB = ov12_0223A7F0(bsys);
+        int unkB = BattleSys_GetMaxBattlers(bsys);
 
         for (battlerId = 0; battlerId < unkB; battlerId++) {
             if (unkA == 0) {

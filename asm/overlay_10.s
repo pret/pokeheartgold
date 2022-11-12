@@ -4656,7 +4656,7 @@ ov10_0221E1CC: ; 0x0221E1CC
 	bl ov10_0221EF34
 	str r0, [sp, #0x10]
 	ldr r0, [sp, #4]
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	mov r1, #0
 	str r0, [sp, #0x14]
 	cmp r0, #0

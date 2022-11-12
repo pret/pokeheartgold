@@ -151,7 +151,7 @@ BtlCmd_ResetAllStatChanges: ; 0x0223FA1C
 	mov r1, #1
 	bl BattleScriptIncrementPointer
 	add r0, r5, #0
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	mov r2, #0
 	cmp r0, #0
 	ble _0223FA5C
@@ -4232,7 +4232,7 @@ BtlCmd_TryPerishSong: ; 0x02241A04
 	bl BattleScriptReadWord
 	str r0, [sp, #8]
 	add r0, r4, #0
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	mov r2, #0x4d
 	mov r7, #0
 	str r0, [sp, #4]
@@ -4357,7 +4357,7 @@ BtlCmd_JumpIfValidBattlerVar: ; 0x02241AEC
 	bl ov12_02245528
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	ldr r1, [r6]
 	cmp r1, r0
 	bhs _02241B2A
@@ -6560,13 +6560,13 @@ BtlCmd_TrySetMagicCoat: ; 0x02242C80
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r4, #0
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	cmp r0, #0
 	ble _02242CAE
 _02242CA2:
 	add r0, r5, #0
 	add r4, r4, #1
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	cmp r4, r0
 	blt _02242CA2
 _02242CAE:
@@ -7083,7 +7083,7 @@ _02243098:
 	bl ov12_0223AB1C
 	str r0, [sp, #0x10]
 	ldr r0, [sp]
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	str r0, [sp, #8]
 	mov r0, #0
 	str r0, [sp, #0xc]
@@ -7270,13 +7270,13 @@ BtlCmd_TrySnatch: ; 0x022431F0
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r4, #0
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	cmp r0, #0
 	ble _0224321E
 _02243212:
 	add r0, r5, #0
 	add r4, r4, #1
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	cmp r4, r0
 	blt _02243212
 _0224321E:
@@ -7466,7 +7466,7 @@ BtlCmd_TryPursuit: ; 0x0224336C
 	bl BattleScriptReadWord
 	str r0, [sp, #0x10]
 	ldr r0, [sp]
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	mov r7, #0
 	str r0, [sp, #0xc]
 	cmp r0, #0
@@ -9008,7 +9008,7 @@ BtlCmd_CheckMoldBreaker: ; 0x02243F18
 	cmp r4, #0
 	bne _02243FC8
 	add r0, r6, #0
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	mov r6, #0
 	str r0, [sp]
 	cmp r0, #0
@@ -9857,7 +9857,7 @@ BtlCmd_MonList: ; 0x0224460C
 	sub sp, #8
 	add r4, r1, #0
 	add r5, r0, #0
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	add r0, r4, #0
 	mov r1, #1
 	bl BattleScriptIncrementPointer
@@ -10582,7 +10582,7 @@ BtlCmd_198: ; 0x02244BAC
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r4, r0, #0
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
@@ -10656,7 +10656,7 @@ BtlCmd_199: ; 0x02244C3C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r4, r0, #0
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #1
@@ -14857,7 +14857,7 @@ _02246DB0:
 	bl ov12_0223BCF0
 	ldr r0, [r4]
 	mov r5, #0
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	cmp r0, #0
 	ble _02246E18
 	add r7, r5, #0
@@ -14874,7 +14874,7 @@ _02246DF6:
 _02246E0C:
 	ldr r0, [r4]
 	add r5, r5, #1
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	cmp r5, r0
 	blt _02246DF6
 _02246E18:
@@ -16007,7 +16007,7 @@ _022476F2:
 	ldr r5, [r6]
 	b _022478E2
 _022476F8:
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	add r6, r0, #0
 	mov r5, #0
 	cmp r6, #0
@@ -16027,7 +16027,7 @@ _02247706:
 _0224771C:
 	b _022478E2
 _0224771E:
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	add r6, r0, #0
 	mov r5, #0
 	cmp r6, #0
@@ -16058,7 +16058,7 @@ _02247754:
 	mov r6, #1
 _02247756:
 	add r0, r4, #0
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	add r7, r0, #0
 	mov r5, #0
 	cmp r7, #0
@@ -16077,7 +16077,7 @@ _02247764:
 _0224777A:
 	b _022478E2
 _0224777C:
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	add r6, r0, #0
 	mov r5, #0
 	cmp r6, #0
@@ -16097,7 +16097,7 @@ _0224778A:
 _022477A0:
 	b _022478E2
 _022477A2:
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	add r6, r0, #0
 	mov r5, #0
 	cmp r6, #0
@@ -16128,7 +16128,7 @@ _022477D8:
 	mov r6, #0
 _022477DA:
 	add r0, r4, #0
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	add r7, r0, #0
 	mov r5, #0
 	cmp r7, #0
@@ -16156,7 +16156,7 @@ _02247808:
 	ldr r5, [r6, r0]
 	b _022478E2
 _02247810:
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	mov r5, #0
 	str r0, [sp, #4]
 	cmp r0, #0
@@ -16187,7 +16187,7 @@ _02247842:
 	mov r5, #0
 	b _022478E2
 _0224784C:
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	mov r5, #0
 	str r0, [sp]
 	cmp r0, #0
@@ -16218,7 +16218,7 @@ _0224787E:
 	mov r5, #0
 	b _022478E2
 _02247888:
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	add r7, r0, #0
 	ldr r1, [r6, #0x64]
 	add r0, r4, #0
@@ -16238,7 +16238,7 @@ _0224789E:
 	blt _0224789E
 	b _022478E2
 _022478B2:
-	bl ov12_0223A7F0
+	bl BattleSys_GetMaxBattlers
 	add r7, r0, #0
 	ldr r1, [r6, #0x6c]
 	add r0, r4, #0

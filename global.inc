@@ -11365,7 +11365,7 @@
 .public ov12_0223A7E0
 .public ov12_0223A7E4
 .public ov12_0223A7E8
-.public ov12_0223A7F0
+.public BattleSys_GetMaxBattlers
 .public ov12_0223A7F4
 .public ov12_0223A834
 .public ov12_0223A880
