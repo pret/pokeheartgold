@@ -113,7 +113,7 @@ _02258874:
 	add r1, r6, #0
 	mov r2, #0x1b
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x60]
@@ -121,7 +121,7 @@ _02258874:
 	add r1, r6, #0
 	mov r2, #0x1c
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x5c]
@@ -215,23 +215,23 @@ _0225897E:
 	str r0, [sp, #0x70]
 	add r0, r5, #0
 	add r1, r6, #0
-	bl ov12_022527CC
+	bl GetBattlerAbility
 	str r0, [sp, #0x74]
 	add r0, r5, #0
 	add r1, r6, #0
-	bl ov12_02255830
+	bl GetBattlerHeldItemEffect
 	str r0, [sp, #0x78]
 	add r0, r5, #0
 	add r1, r6, #0
 	mov r2, #0x1b
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	str r0, [sp, #0x7c]
 	add r0, r5, #0
 	add r1, r6, #0
 	mov r2, #0x1c
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	ldr r1, [sp, #0x74]
 	ldr r2, [sp, #0x6c]
 	str r1, [sp]
@@ -9525,7 +9525,7 @@ _0225D244:
 	bl ov12_0223AB6C
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A7E8
+	bl BattleSys_GetOpponentDataByBattlerId
 	add r4, r0, #0
 	add r0, #0x88
 	ldr r0, [r0]
@@ -9703,7 +9703,7 @@ _0225D368:
 	bl ov12_0223AB6C
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A7E8
+	bl BattleSys_GetOpponentDataByBattlerId
 	ldr r1, [r4, #0xc]
 	add r6, r0, #0
 	add r3, r1, #0
@@ -10088,7 +10088,7 @@ _0225D71C:
 	bl ov12_0223AB6C
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl ov12_0223A7E8
+	bl BattleSys_GetOpponentDataByBattlerId
 	add r4, r0, #0
 	cmp r7, #3
 	bne _0225D7F2
@@ -10514,7 +10514,7 @@ ov12_0225DAD4: ; 0x0225DAD4
 	add r6, r0, #0
 	ldrb r1, [r4, #9]
 	ldr r0, [r4]
-	bl ov12_0223A7E8
+	bl BattleSys_GetOpponentDataByBattlerId
 	str r0, [sp, #0xc]
 	ldr r0, [r4]
 	bl ov12_0223A7E0
@@ -11018,7 +11018,7 @@ _0225DEF0:
 _0225DF04:
 	ldr r0, [r4]
 	add r1, r5, #0
-	bl ov12_0223A7E8
+	bl BattleSys_GetOpponentDataByBattlerId
 	add r0, #0x28
 	bl ov12_02264C84
 	ldr r0, [r4]
@@ -11293,7 +11293,7 @@ ov12_0225E154: ; 0x0225E154
 	mov r2, #0
 	ldrb r1, [r4, #9]
 	add r3, r2, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	mov r1, #0x1a
@@ -11308,7 +11308,7 @@ ov12_0225E154: ; 0x0225E154
 	bl _s32_div_f
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223BD98
+	bl BattleSys_Random
 	mov r1, #0xff
 	bl _s32_div_f
 	cmp r1, r5
@@ -11412,7 +11412,7 @@ ov12_0225E250: ; 0x0225E250
 	add r7, r0, #0
 	ldrb r1, [r4, #0x1d]
 	ldr r0, [r4]
-	bl ov12_0223A7E8
+	bl BattleSys_GetOpponentDataByBattlerId
 	str r0, [sp, #0x10]
 	ldrb r1, [r4, #0x1d]
 	ldr r0, [r4]
@@ -11657,7 +11657,7 @@ _0225E462:
 	cmp r4, #4
 	blt _0225E450
 	ldr r0, [r6]
-	bl ov12_0223BD98
+	bl BattleSys_Random
 	add r1, r7, #0
 	bl _s32_div_f
 	lsl r1, r1, #2
@@ -11749,7 +11749,7 @@ _0225E51C:
 	ldrb r1, [r5, #0x1d]
 	add r2, r4, #5
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
 	beq _0225E538
@@ -11789,7 +11789,7 @@ ov12_0225E568: ; 0x0225E568
 	bl ov12_0223A7D4
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]
-	bl ov12_0223A7E8
+	bl BattleSys_GetOpponentDataByBattlerId
 	add r7, r0, #0
 	ldr r0, [r4]
 	bl ov12_0223A900
@@ -12912,7 +12912,7 @@ _0225EE3E:
 	bl ov12_022643C8
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]
-	bl ov12_0223A7E8
+	bl BattleSys_GetOpponentDataByBattlerId
 	add r5, r0, #0
 	ldr r0, [r4]
 	bl ov12_0223A8DC
@@ -12944,7 +12944,7 @@ _0225EE7E:
 	bl ov12_022643C8
 	ldr r0, [r4]
 	add r1, r5, #0
-	bl ov12_0223A7E8
+	bl BattleSys_GetOpponentDataByBattlerId
 	add r5, r0, #0
 	ldr r0, [r4]
 	bl ov12_0223A8DC
@@ -12977,7 +12977,7 @@ _0225EEC4:
 	bl ov12_022643C8
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]
-	bl ov12_0223A7E8
+	bl BattleSys_GetOpponentDataByBattlerId
 	add r5, r0, #0
 	ldr r0, [r4]
 	bl ov12_0223A8DC
@@ -13002,7 +13002,7 @@ _0225EF02:
 	bl ov12_022643C8
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]
-	bl ov12_0223A7E8
+	bl BattleSys_GetOpponentDataByBattlerId
 	add r5, r0, #0
 	ldr r0, [r4]
 	bl ov12_0223A8DC
@@ -13025,7 +13025,7 @@ _0225EF3A:
 	bl ov12_022643C8
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]
-	bl ov12_0223A7E8
+	bl BattleSys_GetOpponentDataByBattlerId
 	add r5, r0, #0
 	ldr r0, [r4]
 	bl ov12_0223A8DC
@@ -13153,7 +13153,7 @@ _0225F02A:
 	bl ov12_022643C8
 	ldr r0, [r4]
 	add r1, r5, #0
-	bl ov12_0223A7E8
+	bl BattleSys_GetOpponentDataByBattlerId
 	add r5, r0, #0
 	ldr r0, [r4]
 	bl ov12_0223A8DC
@@ -14377,7 +14377,7 @@ ov12_0225FA44: ; 0x0225FA44
 	add r5, r0, #0
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]
-	bl ov12_0223A7E8
+	bl BattleSys_GetOpponentDataByBattlerId
 	str r0, [sp, #0xc]
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]

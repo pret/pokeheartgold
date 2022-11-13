@@ -31,13 +31,13 @@ ov12_0223A7E4: ; 0x0223A7E4
 	bx lr
 	thumb_func_end ov12_0223A7E4
 
-	thumb_func_start ov12_0223A7E8
-ov12_0223A7E8: ; 0x0223A7E8
+	thumb_func_start BattleSys_GetOpponentDataByBattlerId
+BattleSys_GetOpponentDataByBattlerId: ; 0x0223A7E8
 	lsl r1, r1, #2
 	add r0, r0, r1
 	ldr r0, [r0, #0x34]
 	bx lr
-	thumb_func_end ov12_0223A7E8
+	thumb_func_end BattleSys_GetOpponentDataByBattlerId
 
 	thumb_func_start BattleSys_GetMaxBattlers
 BattleSys_GetMaxBattlers: ; 0x0223A7F0
@@ -854,7 +854,7 @@ _0223ACE4:
 	add r1, r7, #0
 	mov r2, #0x34
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	mov r1, #7
 	str r0, [sp, #0x20]
 	bic r0, r1
@@ -863,12 +863,12 @@ _0223ACE4:
 	add r1, r7, #0
 	mov r2, #0x34
 	add r3, sp, #0x20
-	bl ov12_0224F168
+	bl SetBattlerVar
 	ldr r0, [sp, #0x1c]
 	add r1, r7, #0
 	mov r2, #0x35
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	ldr r1, _0223AF38 ; =0xF7FFFFFF
 	str r0, [sp, #0x20]
 	and r0, r1
@@ -877,7 +877,7 @@ _0223ACE4:
 	add r1, r7, #0
 	mov r2, #0x35
 	add r3, sp, #0x20
-	bl ov12_0224F168
+	bl SetBattlerVar
 _0223AD24:
 	mov r0, #1
 	str r0, [sp, #0x14]
@@ -916,7 +916,7 @@ _0223AD68:
 	add r1, r7, #0
 	mov r2, #0x34
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	ldr r1, _0223AF40 ; =0xFFFFF077
 	str r0, [sp, #0x20]
 	and r0, r1
@@ -925,7 +925,7 @@ _0223AD68:
 	add r1, r7, #0
 	mov r2, #0x34
 	add r3, sp, #0x20
-	bl ov12_0224F168
+	bl SetBattlerVar
 _0223AD88:
 	mov r0, #1
 	str r0, [sp, #0x14]
@@ -964,7 +964,7 @@ _0223ADCC:
 	add r1, r7, #0
 	mov r2, #0x34
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	mov r1, #0x10
 	str r0, [sp, #0x20]
 	bic r0, r1
@@ -973,7 +973,7 @@ _0223ADCC:
 	add r1, r7, #0
 	mov r2, #0x34
 	add r3, sp, #0x20
-	bl ov12_0224F168
+	bl SetBattlerVar
 _0223ADEC:
 	mov r0, #1
 	str r0, [sp, #0x14]
@@ -1012,7 +1012,7 @@ _0223AE30:
 	add r1, r7, #0
 	mov r2, #0x34
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	mov r1, #0x20
 	str r0, [sp, #0x20]
 	bic r0, r1
@@ -1021,7 +1021,7 @@ _0223AE30:
 	add r1, r7, #0
 	mov r2, #0x34
 	add r3, sp, #0x20
-	bl ov12_0224F168
+	bl SetBattlerVar
 _0223AE50:
 	mov r0, #1
 	str r0, [sp, #0x14]
@@ -1060,7 +1060,7 @@ _0223AE94:
 	add r1, r7, #0
 	mov r2, #0x34
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	mov r1, #0x40
 	str r0, [sp, #0x20]
 	bic r0, r1
@@ -1069,7 +1069,7 @@ _0223AE94:
 	add r1, r7, #0
 	mov r2, #0x34
 	add r3, sp, #0x20
-	bl ov12_0224F168
+	bl SetBattlerVar
 _0223AEB4:
 	mov r0, #1
 	str r0, [sp, #0x14]
@@ -1093,7 +1093,7 @@ _0223AED6:
 	add r1, r7, #0
 	mov r2, #0x35
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	mov r1, #7
 	str r0, [sp, #0x20]
 	tst r1, r0
@@ -1105,7 +1105,7 @@ _0223AED6:
 	add r1, r7, #0
 	mov r2, #0x35
 	add r3, sp, #0x20
-	bl ov12_0224F168
+	bl SetBattlerVar
 	mov r0, #1
 	str r0, [sp, #0x14]
 _0223AF00:
@@ -1128,7 +1128,7 @@ _0223AF1E:
 	add r1, r7, #0
 	mov r2, #0x35
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	mov r1, #0xf
 	lsl r1, r1, #0x10
 	str r0, [sp, #0x20]
@@ -1148,7 +1148,7 @@ _0223AF48:
 	ldr r0, [sp, #0x1c]
 	add r1, r7, #0
 	add r3, sp, #0x20
-	bl ov12_0224F168
+	bl SetBattlerVar
 	mov r0, #1
 	str r0, [sp, #0x14]
 _0223AF5C:
@@ -1212,7 +1212,7 @@ _0223AFD4:
 	add r1, r7, #0
 	mov r2, #0x13
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	cmp r0, #0xc
 	bge _0223AFF4
 	ldr r0, [sp, #0x1c]
@@ -1242,7 +1242,7 @@ _0223B012:
 	add r1, r7, #0
 	mov r2, #0x14
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	cmp r0, #0xc
 	bge _0223B032
 	ldr r0, [sp, #0x1c]
@@ -1272,7 +1272,7 @@ _0223B050:
 	add r1, r7, #0
 	mov r2, #0x16
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	cmp r0, #0xc
 	bge _0223B070
 	ldr r0, [sp, #0x1c]
@@ -1302,7 +1302,7 @@ _0223B08E:
 	add r1, r7, #0
 	mov r2, #0x17
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	cmp r0, #0xc
 	bge _0223B0AE
 	ldr r0, [sp, #0x1c]
@@ -1332,7 +1332,7 @@ _0223B0CC:
 	add r1, r7, #0
 	mov r2, #0x15
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	cmp r0, #0xc
 	bge _0223B0EC
 	ldr r0, [sp, #0x1c]
@@ -1362,7 +1362,7 @@ _0223B10A:
 	add r1, r7, #0
 	mov r2, #0x18
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	cmp r0, #0xc
 	bge _0223B12A
 	ldr r0, [sp, #0x1c]
@@ -1392,7 +1392,7 @@ _0223B148:
 	add r1, r7, #0
 	mov r2, #0x35
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	mov r1, #1
 	lsl r1, r1, #0x14
 	add r2, r0, #0
@@ -1405,7 +1405,7 @@ _0223B148:
 	add r1, r7, #0
 	mov r2, #0x35
 	add r3, sp, #0x20
-	bl ov12_0224F168
+	bl SetBattlerVar
 	mov r0, #1
 	str r0, [sp, #0x14]
 _0223B174:
@@ -1453,7 +1453,7 @@ _0223B1CC:
 	add r1, r7, #0
 	mov r2, #0x35
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	mov r1, #2
 	lsl r1, r1, #0x14
 	tst r0, r1
@@ -1462,7 +1462,7 @@ _0223B1CC:
 	add r1, r7, #0
 	mov r2, #0x4b
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	add r5, r0, #0
 	add r0, r4, #0
 	bl MaskOfFlagNo
@@ -1524,7 +1524,7 @@ _0223B264:
 	add r1, r7, #0
 	mov r2, #0x35
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	mov r1, #2
 	lsl r1, r1, #0x14
 	tst r0, r1
@@ -1533,7 +1533,7 @@ _0223B264:
 	add r1, r7, #0
 	mov r2, #0x4b
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	add r5, r0, #0
 	add r0, r4, #0
 	bl MaskOfFlagNo
@@ -1670,7 +1670,7 @@ _0223B372:
 	add r1, r7, #0
 	mov r2, #0x5f
 	add r3, sp, #0x20
-	bl ov12_0224F168
+	bl SetBattlerVar
 	b _0223B3C0
 _0223B3A8:
 	ldr r0, [sp, #0x10]
@@ -3155,8 +3155,8 @@ ov12_0223BD8C: ; 0x0223BD8C
 _0223BD94: .word 0x0000243C
 	thumb_func_end ov12_0223BD8C
 
-	thumb_func_start ov12_0223BD98
-ov12_0223BD98: ; 0x0223BD98
+	thumb_func_start BattleSys_Random
+BattleSys_Random: ; 0x0223BD98
 	push {r3, r4}
 	ldr r2, _0223BDB8 ; =0x00002448
 	ldr r1, _0223BDBC ; =0x41C64E6D
@@ -3176,7 +3176,7 @@ ov12_0223BD98: ; 0x0223BD98
 _0223BDB8: .word 0x00002448
 _0223BDBC: .word 0x41C64E6D
 _0223BDC0: .word 0x00006073
-	thumb_func_end ov12_0223BD98
+	thumb_func_end BattleSys_Random
 
 	thumb_func_start ov12_0223BDC4
 ov12_0223BDC4: ; 0x0223BDC4

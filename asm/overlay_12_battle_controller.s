@@ -405,21 +405,21 @@ _02262392:
 	add r1, r7, #0
 	add r2, r4, #6
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	strh r0, [r5, #0xc]
 	add r2, r4, #0
 	ldr r0, [r6, #0x30]
 	add r1, r7, #0
 	add r2, #0x1f
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	strh r0, [r5, #0x14]
 	add r2, r4, #0
 	ldr r0, [r6, #0x30]
 	add r1, r7, #0
 	add r2, #0x27
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	strh r0, [r5, #0x1c]
 	add r4, r4, #1
 	add r5, r5, #2
@@ -429,7 +429,7 @@ _02262392:
 	add r1, r7, #0
 	mov r2, #0x2d
 	add r3, sp, #0x28
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	mov r0, #0x3c
 	str r0, [sp]
 	add r0, r6, #0
@@ -552,21 +552,21 @@ _022624C2:
 	add r1, r7, #0
 	add r2, r4, #6
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	strh r0, [r5, #0x18]
 	add r2, r4, #0
 	ldr r0, [r6, #0x30]
 	add r1, r7, #0
 	add r2, #0x1f
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	strh r0, [r5, #0x20]
 	add r2, r4, #0
 	ldr r0, [r6, #0x30]
 	add r1, r7, #0
 	add r2, #0x27
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	strh r0, [r5, #0x28]
 	add r4, r4, #1
 	add r5, r5, #2
@@ -576,7 +576,7 @@ _022624C2:
 	add r1, r7, #0
 	mov r2, #0x2d
 	add r3, sp, #0x34
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	mov r0, #0x74
 	str r0, [sp]
 	add r0, r6, #0
@@ -738,21 +738,21 @@ _02262634:
 	add r1, r7, #0
 	add r2, r6, #6
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	strh r0, [r5, #0x18]
 	add r2, r6, #0
 	ldr r0, [r4, #0x30]
 	add r1, r7, #0
 	add r2, #0x1f
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	strh r0, [r5, #0x20]
 	add r2, r6, #0
 	ldr r0, [r4, #0x30]
 	add r1, r7, #0
 	add r2, #0x27
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	strh r0, [r5, #0x28]
 	add r6, r6, #1
 	add r5, r5, #2
@@ -762,7 +762,7 @@ _02262634:
 	add r1, r7, #0
 	mov r2, #0x2d
 	add r3, sp, #0x40
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	add r3, sp, #0x10
 	mov r2, #0
 	mov ip, r2
@@ -1805,21 +1805,21 @@ _02262E82:
 	ldr r1, [sp, #0xc]
 	add r2, r5, #6
 	add r3, r7, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	strh r0, [r6, #0x14]
 	add r2, r5, #0
 	ldr r0, [sp, #8]
 	ldr r1, [sp, #0xc]
 	add r2, #0x1f
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	strb r0, [r4, #0x1c]
 	add r2, r5, #0
 	ldr r0, [sp, #8]
 	ldr r1, [sp, #0xc]
 	add r2, #0x27
 	mov r3, #0
-	bl ov12_0224EDE0
+	bl GetBattlerVar
 	add r1, r4, #0
 	add r1, #0x20
 	add r5, r5, #1

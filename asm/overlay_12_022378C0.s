@@ -3788,7 +3788,7 @@ _02239898:
 _022398A0:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_0223A7E8
+	bl BattleSys_GetOpponentDataByBattlerId
 	add r7, r0, #0
 	bl ov12_02261264
 	cmp r0, #0

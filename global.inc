@@ -11364,7 +11364,7 @@
 .public ov12_0223A7D8
 .public ov12_0223A7E0
 .public ov12_0223A7E4
-.public ov12_0223A7E8
+.public BattleSys_GetOpponentDataByBattlerId
 .public BattleSys_GetMaxBattlers
 .public ov12_0223A7F4
 .public ov12_0223A834
@@ -11470,7 +11470,7 @@
 .public ov12_0223BD58
 .public ov12_0223BD68
 .public ov12_0223BD8C
-.public ov12_0223BD98
+.public BattleSys_Random
 .public ov12_0223BDC4
 .public ov12_0223BDD0
 .public ov12_0223BDDC
@@ -11750,7 +11750,7 @@
 .public BattleScriptIncrementPointer
 .public ov12_02245518
 .public ov12_02245520
-.public ov12_02245528
+.public BattleScriptGetVarPointer
 .public ov12_02245898
 .public ov12_022463E8
 .public ov12_022465A8
@@ -11863,8 +11863,8 @@
 .public ov12_0224ED48
 .public ov12_0224ED9C
 .public ov12_0224EDC0
-.public ov12_0224EDE0
-.public ov12_0224F168
+.public GetBattlerVar
+.public SetBattlerVar
 .public ov12_0224F794
 .public ov12_0224F7AC
 .public ov12_0224FC48
@@ -11906,8 +11906,8 @@
 .public ov12_02252700
 .public ov12_0225275C
 .public ov12_0225277C
-.public ov12_022527CC
-.public ov12_02252834
+.public GetBattlerAbility
+.public CheckBattlerAbilityIfNotIgnored
 .public ov12_02252890
 .public ov12_02252980
 .public ov12_02252B68
@@ -11937,7 +11937,7 @@
 .public ov12_022555EC
 .public ov12_0225561C
 .public ov12_02255634
-.public ov12_02255830
+.public GetBattlerHeldItemEffect
 .public ov12_02255844
 .public ov12_02255890
 .public ov12_022558A4

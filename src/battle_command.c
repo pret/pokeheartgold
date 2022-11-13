@@ -1,15 +1,17 @@
 #include "assert.h"
 #include "battle.h"
+#include "battle_controller.h"
+#include "battle_system.h"
 #include "item.h"
 #include "pokemon.h"
 #include "system.h"
 #include "unk_0200E320.h"
-#include "overlay_12_022378C0.h"
+#include "overlay_12_0224E4FC.h"
 #include "constants/abilities.h"
 #include "constants/battle.h"
+#include "constants/items.h"
 #include "constants/moves.h"
 #include "constants/pokemon.h"
-
 
 static u8 GetBattlerIDBySide(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 a2);
 
@@ -20,8 +22,8 @@ BOOL RunBattleScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     
     do {
         ret = sBattleScriptCommandTable[ctx->unk_2700[ctx->unk_B4]](bsys, ctx);
-    } while(ctx->unk_3154 == 0 && (ov12_0223A7E0(bsys)&4) == 0);
-    //TODO: Define ov12_0223A7E0 in header
+    } while(ctx->unk_3154 == 0 && (ov12_0223A7E0(bsys) & 4) == 0);
+    
     ctx->unk_3154 = 0;
 
     return ret;
@@ -50,7 +52,7 @@ BOOL BtlCmd_1(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     case B_SIDE_OPPONENT:
         OpponentData *opponentData;
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
-            opponentData = ov12_0223A7E8(bsys, battlerId);
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (opponentData->unk195 & 1) {
                 ov12_022622F0(bsys, battlerId);
                 ov12_0223C288(bsys, battlerId);  
@@ -63,8 +65,8 @@ BOOL BtlCmd_1(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    int i;
-    int unkA = BattleSys_GetMaxBattlers(bsys);
+    int battlerId;
+    int battlersMax = BattleSys_GetMaxBattlers(bsys);
 
     OpponentData *opponentData;
 
@@ -72,37 +74,35 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     switch (BattleScriptReadWord(ctx)) {
     default:
-    case 0:
-    case 5:
-        for (i = 0; i < unkA; i++) {
-            ov12_022623F0(bsys, i);
-            ov12_0223C288(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            ov12_022623F0(bsys, battlerId);
+            ov12_0223C288(bsys, battlerId);
         }
         break;
-    case 3:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+    case B_SIDE_PLAYER:
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (!(opponentData->unk195 & 1)) {
-                ov12_022623F0(bsys, i);
-                ov12_0223C288(bsys, i);
+                ov12_022623F0(bsys, battlerId);
+                ov12_0223C288(bsys, battlerId);
             }
         }
         ov12_02250370(bsys, ctx, 1);
         ov12_02250370(bsys, ctx, 3);
         break;
-    case 4:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+    case B_SIDE_OPPONENT:
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (opponentData->unk195 & 1) {
-                ov12_02250360(ctx, i);
-                ov12_02250370(bsys, ctx, i);
-                ov12_022623F0(bsys, i);
-                ov12_0223C288(bsys, i);
+                ov12_02250360(ctx, battlerId);
+                ov12_02250370(bsys, ctx, battlerId);
+                ov12_022623F0(bsys, battlerId);
+                ov12_0223C288(bsys, battlerId);
             }
         }
         break;
-    case 1:
-        opponentData = ov12_0223A7E8(bsys, ctx->battlerIdAttacker);
+    case B_SIDE_1:
+        opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, ctx->battlerIdAttacker);
         if (!(opponentData->unk195 & 1)) {
             ov12_02250370(bsys, ctx, 1);
             ov12_02250370(bsys, ctx, 3);
@@ -113,8 +113,8 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ov12_0223C288(bsys, ctx->battlerIdAttacker);
         ov12_022623F0(bsys, ctx->battlerIdAttacker);
         break;
-    case 2:
-        opponentData = ov12_0223A7E8(bsys, ctx->battlerIdTarget);
+    case B_SIDE_2:
+        opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, ctx->battlerIdTarget);
         if (!(opponentData->unk195 & 1)) {
             ov12_02250370(bsys, ctx, 1);
             ov12_02250370(bsys, ctx, 3);
@@ -125,8 +125,8 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ov12_0223C288(bsys, ctx->battlerIdTarget);
         ov12_022623F0(bsys, ctx->battlerIdTarget);
         break;
-    case 6:
-        opponentData = ov12_0223A7E8(bsys, ctx->unk_78);
+    case B_SIDE_6:
+        opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, ctx->unk_78);
         if (!(opponentData->unk195 & 1)) {
             ov12_02250370(bsys, ctx, 1);
             ov12_02250370(bsys, ctx, 3);
@@ -143,8 +143,8 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 BOOL BtlCmd_3(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    int i;
-    int unkA = BattleSys_GetMaxBattlers(bsys);
+    int battlerId;
+    int battlersMax = BattleSys_GetMaxBattlers(bsys);
 
     OpponentData *opponentData;
 
@@ -152,37 +152,35 @@ BOOL BtlCmd_3(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     switch (BattleScriptReadWord(ctx)) {
     default:
-    case 0:
-    case 5:
-        for (i = 0; i < unkA; i++) {
-            ov12_02262524(bsys, i, 0, 0);
-            ov12_0223C288(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            ov12_02262524(bsys, battlerId, 0, 0);
+            ov12_0223C288(bsys, battlerId);
         }
         break;
     case 3:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (!(opponentData->unk195 & 1)) {
-                ov12_02262524(bsys, i, 0, 0);
-                ov12_0223C288(bsys, i);
+                ov12_02262524(bsys, battlerId, 0, 0);
+                ov12_0223C288(bsys, battlerId);
             }
         }
         ov12_02250370(bsys, ctx, 1);
         ov12_02250370(bsys, ctx, 3);
         break;
     case 4:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (opponentData->unk195 & 1) {
-                ov12_02250360(ctx, i);
-                ov12_02250370(bsys, ctx, i);
-                ov12_02262524(bsys, i, 0, 0);
-                ov12_0223C288(bsys, i);
+                ov12_02250360(ctx, battlerId);
+                ov12_02250370(bsys, ctx, battlerId);
+                ov12_02262524(bsys, battlerId, 0, 0);
+                ov12_0223C288(bsys, battlerId);
             }
         }
         break;
     case 1:
-        opponentData = ov12_0223A7E8(bsys, ctx->battlerIdAttacker);
+        opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, ctx->battlerIdAttacker);
         if (!(opponentData->unk195 & 1)) {
             ov12_02250370(bsys, ctx, 1);
             ov12_02250370(bsys, ctx, 3);
@@ -194,7 +192,7 @@ BOOL BtlCmd_3(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ov12_02262524(bsys, ctx->battlerIdAttacker, 0, 0);
         break;
     case 2:
-        opponentData = ov12_0223A7E8(bsys, ctx->battlerIdTarget);
+        opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, ctx->battlerIdTarget);
         if (!(opponentData->unk195 & 1)) {
             ov12_02250370(bsys, ctx, 1);
             ov12_02250370(bsys, ctx, 3);
@@ -206,7 +204,7 @@ BOOL BtlCmd_3(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ov12_02262524(bsys, ctx->battlerIdTarget, 0, 0);
         break;
     case 6:
-        opponentData = ov12_0223A7E8(bsys, ctx->unk_78);
+        opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, ctx->unk_78);
         if (!(opponentData->unk195 & 1)) {
             ov12_02250370(bsys, ctx, 1);
             ov12_02250370(bsys, ctx, 3);
@@ -223,8 +221,8 @@ BOOL BtlCmd_3(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 BOOL BtlCmd_4(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    int i;
-    int unkA = BattleSys_GetMaxBattlers(bsys);
+    int battlerId;
+    int battlersMax = BattleSys_GetMaxBattlers(bsys);
     OpponentData *opponentData;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -232,23 +230,23 @@ BOOL BtlCmd_4(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     switch (side) {
     case B_SIDE_ALL:
-        for (i = 0; i < unkA; i++) {
-            ov12_02262734(bsys, ctx, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            ov12_02262734(bsys, ctx, battlerId);
         }
         break;
     case B_SIDE_PLAYER:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if ((opponentData->unk195 & 1) == 0) {
-                ov12_02262734(bsys, ctx, i);
+                ov12_02262734(bsys, ctx, battlerId);
             }
         }
         break;
     case B_SIDE_OPPONENT:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
-            if (opponentData->unk195 & 1 && !(ctx->unk_3108 & MaskOfFlagNo(i))) {
-                ov12_02262734(bsys, ctx, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
+            if (opponentData->unk195 & 1 && !(ctx->unk_3108 & MaskOfFlagNo(battlerId))) {
+                ov12_02262734(bsys, ctx, battlerId);
             }
         }
         break;
@@ -270,8 +268,8 @@ BOOL BtlCmd_5(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 BOOL BtlCmd_6(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    int i;
-    int unkA = BattleSys_GetMaxBattlers(bsys);
+    int battlerId;
+    int battlersMax = BattleSys_GetMaxBattlers(bsys);
     OpponentData *opponentData;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -280,28 +278,28 @@ BOOL BtlCmd_6(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     case 0:
     default:
         if (ov12_0223A7E0(bsys) & 16) {
-            for (i = 0; i < unkA; i++) {
-                opponentData = ov12_0223A7E8(bsys, i);
+            for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+                opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
                 if (opponentData->unk195 != 4) {
-                    ov12_02262974(bsys, i);
+                    ov12_02262974(bsys, battlerId);
                 }
             }
         } else {
-            for (i = 0; i < unkA; i++) {
+            for (battlerId = 0; battlerId < battlersMax; battlerId++) {
                 if ((ov12_0223A7E0(bsys) & 8) == 0 &&
                     (ov12_0223A7E0(bsys) & 2) &&
-                    (i > 1)) {
+                    (battlerId > 1)) {
                     break;
                 }
-                ov12_02262974(bsys, i);
+                ov12_02262974(bsys, battlerId);
             }
         }
         break;
     case 3:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if ((opponentData->unk195 & 1) == FALSE) {
-                ov12_02262974(bsys, i);
+                ov12_02262974(bsys, battlerId);
                 if ((ov12_0223A7E0(bsys) & 8) == 0 &&
                     (ov12_0223A7E0(bsys) & 2)) {
                     break;
@@ -310,10 +308,10 @@ BOOL BtlCmd_6(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         }
         break;
     case 4:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (opponentData->unk195 & 1) {
-                ov12_02262974(bsys, i);
+                ov12_02262974(bsys, battlerId);
                 if ((ov12_0223A7E0(bsys) & 8) == 0 &&
                     (ov12_0223A7E0(bsys) & 16) == 0 &&
                     (ov12_0223A7E0(bsys) & 2)) {
@@ -328,8 +326,8 @@ BOOL BtlCmd_6(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 BOOL BtlCmd_ThrowPokeball(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    int i;
-    int unkA = BattleSys_GetMaxBattlers(bsys);
+    int battlerId;
+    int battlersMax = BattleSys_GetMaxBattlers(bsys);
     OpponentData *opponentData;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -340,20 +338,20 @@ BOOL BtlCmd_ThrowPokeball(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     switch (unkB) {
     case 0:
     default:
-        for (i = 0; i < unkA; i++) {
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             if ((ov12_0223A7E0(bsys) & 8) == 0 &&
                 (ov12_0223A7E0(bsys) & 2) &&
-                (i > 1)) {
+                (battlerId > 1)) {
                 break;
             }
-            ov12_022629A4(bsys, i, unkC);
+            ov12_022629A4(bsys, battlerId, unkC);
         }
         break;
     case 3:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if ((opponentData->unk195 & 1) == FALSE) {
-                ov12_022629A4(bsys, i, unkC);
+                ov12_022629A4(bsys, battlerId, unkC);
                 if ((ov12_0223A7E0(bsys) & 8) == 0 &&
                     (ov12_0223A7E0(bsys) & 2)) {
                     break;
@@ -362,10 +360,10 @@ BOOL BtlCmd_ThrowPokeball(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         }
         break;
     case 4:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (opponentData->unk195 & 1) {
-                ov12_022629A4(bsys, i, unkC);
+                ov12_022629A4(bsys, battlerId, unkC);
                 if ((ov12_0223A7E0(bsys) & 8) == 0 &&
                     (ov12_0223A7E0(bsys) & 16) == 0 &&
                     (ov12_0223A7E0(bsys) & 2)) {
@@ -382,8 +380,8 @@ BOOL BtlCmd_ThrowPokeball(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 BOOL BtlCmd_8(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    int i;
-    int unkA = BattleSys_GetMaxBattlers(bsys);
+    int battlerId;
+    int battlersMax = BattleSys_GetMaxBattlers(bsys);
     OpponentData *opponentData;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -393,20 +391,20 @@ BOOL BtlCmd_8(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     switch (unkB) {
     case 0:
     default:
-        for (i = 0; i < unkA; i++) {
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             if ((ov12_0223A7E0(bsys) & 8) == 0 &&
                 (ov12_0223A7E0(bsys) & 2) &&
-                (i > 1)) {
+                (battlerId > 1)) {
                 break;
             }
-            ov12_022629DC(bsys, i);
+            ov12_022629DC(bsys, battlerId);
         }
         break;
     case 3:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if ((opponentData->unk195 & 1) == FALSE) {
-                ov12_022629DC(bsys, i);
+                ov12_022629DC(bsys, battlerId);
                 if ((ov12_0223A7E0(bsys) & 8) == 0 &&
                     (ov12_0223A7E0(bsys) & 2)) {
                     break;
@@ -415,10 +413,10 @@ BOOL BtlCmd_8(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         }
         break;
     case 4:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (opponentData->unk195 & 1) {
-                ov12_022629DC(bsys, i);
+                ov12_022629DC(bsys, battlerId);
                 if ((ov12_0223A7E0(bsys) & 8) == 0 &&
                     (ov12_0223A7E0(bsys) & 16) == 0 &&
                     (ov12_0223A7E0(bsys) & 2)) {
@@ -428,37 +426,37 @@ BOOL BtlCmd_8(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         }
         break;
     case 9:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (opponentData->unk195 == 0 || opponentData->unk195 == 2) {
-                ov12_022629DC(bsys, i);
+                ov12_022629DC(bsys, battlerId);
                 break;
             }
         }
         break;
     case 10:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (opponentData->unk195 == 1 || opponentData->unk195 == 3) {
-                ov12_022629DC(bsys, i);
+                ov12_022629DC(bsys, battlerId);
                 break;
             }
         }
         break;
     case 11:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (opponentData->unk195 == 4) {
-                ov12_022629DC(bsys, i);
+                ov12_022629DC(bsys, battlerId);
                 break;
             }
         }
         break;
     case 12:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (opponentData->unk195 == 5) {
-                ov12_022629DC(bsys, i);
+                ov12_022629DC(bsys, battlerId);
                 break;
             }
         }
@@ -469,8 +467,8 @@ BOOL BtlCmd_8(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 BOOL BtlCmd_9(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    int i;
-    int unkA = BattleSys_GetMaxBattlers(bsys);
+    int battlerId;
+    int battlersMax = BattleSys_GetMaxBattlers(bsys);
     OpponentData *opponentData;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -481,18 +479,18 @@ BOOL BtlCmd_9(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     switch (unkB) {
     case 0:
     default:
-        for (i = 0; i < unkA; i++) {
-            if ((ov12_0223A7E0(bsys) & 2) && (i > 1)) {
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            if ((ov12_0223A7E0(bsys) & 2) && (battlerId > 1)) {
                 break;
             }
-            ov12_022629F8(bsys, i, unkC);
+            ov12_022629F8(bsys, battlerId, unkC);
         }
         break;
     case 3:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if ((opponentData->unk195 & 1) == FALSE) {
-                ov12_022629F8(bsys, i, unkC);
+                ov12_022629F8(bsys, battlerId, unkC);
                 if ((ov12_0223A7E0(bsys) & 2)) {
                     break;
                 }
@@ -500,10 +498,10 @@ BOOL BtlCmd_9(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         }
         break;
     case 4:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (opponentData->unk195 & 1) {
-                ov12_022629F8(bsys, i, unkC);
+                ov12_022629F8(bsys, battlerId, unkC);
                 if ((ov12_0223A7E0(bsys) & 2)) {
                     break;
                 }
@@ -511,37 +509,37 @@ BOOL BtlCmd_9(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         }
         break;
     case 9:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (opponentData->unk195 == 0 || opponentData->unk195 == 2) {
-                ov12_022629F8(bsys, i, unkC);
+                ov12_022629F8(bsys, battlerId, unkC);
                 break;
             }
         }
         break;
     case 10:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (opponentData->unk195 == 1 || opponentData->unk195 == 3) {
-                ov12_022629F8(bsys, i, unkC);
+                ov12_022629F8(bsys, battlerId, unkC);
                 break;
             }
         }
         break;
     case 11:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (opponentData->unk195 == 4) {
-                ov12_022629F8(bsys, i, unkC);
+                ov12_022629F8(bsys, battlerId, unkC);
                 break;
             }
         }
         break;
     case 12:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (opponentData->unk195 == 5) {
-                ov12_022629F8(bsys, i, unkC);
+                ov12_022629F8(bsys, battlerId, unkC);
                 break;
             }
         }
@@ -552,21 +550,20 @@ BOOL BtlCmd_9(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 BOOL BtlCmd_10(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    int i;
-    int unkA = BattleSys_GetMaxBattlers(bsys);
+    int battlerId;
+    int battlersMax = BattleSys_GetMaxBattlers(bsys);
     BattleScriptIncrementPointer(ctx, 1);
 
-    for (i = 0; i < unkA; i++) {
-        //TODO: Declare
-        ov12_02263CB0(bsys, i);
+    for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+        ov12_02263CB0(bsys, battlerId);
     }
 
     return FALSE;
 }
 
 BOOL BtlCmd_HealthbarSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    int i;
-    int unkA = BattleSys_GetMaxBattlers(bsys);
+    int battlerId;
+    int battlersMax = BattleSys_GetMaxBattlers(bsys);
     OpponentData *opponentData;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -574,23 +571,23 @@ BOOL BtlCmd_HealthbarSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     switch (side) {
     case B_SIDE_ALL:
-        for (i = 0; i < unkA; i++) {
-            ov12_02262A2C(bsys, ctx, i, 0);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            ov12_02262A2C(bsys, ctx, battlerId, 0);
         }
         break;
     case B_SIDE_PLAYER:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if ((opponentData->unk195 & 1) == 0) {
-                ov12_02262A2C(bsys, ctx, i, 0);
+                ov12_02262A2C(bsys, ctx, battlerId, 0);
             }
         }
         break;
     case B_SIDE_OPPONENT:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (opponentData->unk195 & 1) {
-                ov12_02262A2C(bsys, ctx, i, 0);
+                ov12_02262A2C(bsys, ctx, battlerId, 0);
             }
         }
         break;
@@ -603,8 +600,8 @@ BOOL BtlCmd_HealthbarSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 BOOL BtlCmd_12(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    int i;
-    int unkA = BattleSys_GetMaxBattlers(bsys);
+    int battlerId;
+    int battlersMax = BattleSys_GetMaxBattlers(bsys);
     OpponentData *opponentData;
     u8 delay;
 
@@ -615,24 +612,24 @@ BOOL BtlCmd_12(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     switch (side) {
     case B_SIDE_ALL:
-        for (i = 0; i < unkA; i++) {
-            ov12_02262A2C(bsys, ctx, i, 0);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            ov12_02262A2C(bsys, ctx, battlerId, 0);
         }
         break;
     case B_SIDE_PLAYER:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if ((opponentData->unk195 & 1) == 0) {
-                ov12_02262A2C(bsys, ctx, i, delay);
+                ov12_02262A2C(bsys, ctx, battlerId, delay);
                 delay += 4;
             }
         }
         break;
     case B_SIDE_OPPONENT:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (opponentData->unk195 & 1) {
-                ov12_02262A2C(bsys, ctx, i, delay);
+                ov12_02262A2C(bsys, ctx, battlerId, delay);
                 delay += 4;
             }
         }
@@ -646,8 +643,8 @@ BOOL BtlCmd_12(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 BOOL BtlCmd_13(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    int i;
-    int unkA = BattleSys_GetMaxBattlers(bsys);
+    int battlerId;
+    int battlersMax = BattleSys_GetMaxBattlers(bsys);
     OpponentData *opponentData;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -655,23 +652,23 @@ BOOL BtlCmd_13(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     switch (side) {
     case B_SIDE_ALL:
-        for (i = 0; i < unkA; i++) {
-            ov12_02262B64(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            ov12_02262B64(bsys, battlerId);
         }
         break;
     case B_SIDE_PLAYER:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
-            if ((opponentData->unk195 & 1) == 0 && (ctx->unk_3108 & MaskOfFlagNo(i)) == 0) {
-                ov12_02262B64(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
+            if ((opponentData->unk195 & 1) == 0 && (ctx->unk_3108 & MaskOfFlagNo(battlerId)) == 0) {
+                ov12_02262B64(bsys, battlerId);
             }
         }
         break;
     case B_SIDE_OPPONENT:
-        for (i = 0; i < unkA; i++) {
-            opponentData = ov12_0223A7E8(bsys, i);
+        for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+            opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (opponentData->unk195 & 1) {
-                ov12_02262B64(bsys, i);
+                ov12_02262B64(bsys, battlerId);
             }
         }
         break;
@@ -695,13 +692,10 @@ BOOL BtlCmd_WaitForMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-//TODO: Put in appropriate header:
-int ov12_02256FF8(BattleSystem *bsys, BATTLECONTEXT *ctx, u32, u32, u32, u16, u8, u8, u8, u8);
-
 static void DamageCalcDefault(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int type;
 
-    if (ov12_022527CC(ctx, ctx->battlerIdAttacker) == ABILITY_NORMALIZE) {
+    if (GetBattlerAbility(ctx, ctx->battlerIdAttacker) == ABILITY_NORMALIZE) {
         type = TYPE_NORMAL;
     } else if (ctx->moveType) {
         type = ctx->moveType;
@@ -713,11 +707,11 @@ static void DamageCalcDefault(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     ctx->damage *= ctx->criticalMultiplier;
 
-    if (ov12_02255830(ctx, ctx->battlerIdAttacker) == 0x62) {
+    if (GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker) == HOLD_EFFECT_HP_DRAIN_ON_ATK) {
         ctx->damage = ctx->damage * (100 + ov12_02255844(ctx, ctx->battlerIdAttacker, 0))/100;
     }
 
-    if (ov12_02255830(ctx, ctx->battlerIdAttacker) == 0x69) {
+    if (GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker) == HOLD_EFFECT_BOOST_REPEATED) {
         ctx->damage = ctx->damage * (10 + ctx->battleMons[ctx->battlerIdAttacker].unk88.unk4_17)/10;
     }
 
@@ -738,7 +732,6 @@ BOOL BtlCmd_DamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
     
     DamageCalcDefault(bsys, ctx);
-    //TODO: Declare in header
     ctx->damage = ov12_02257C30(bsys, ctx, ctx->damage);
     ctx->damage *= -1;
 
@@ -798,7 +791,6 @@ BOOL BtlCmd_PrintMessage2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 BOOL BtlCmd_PrintBufferedMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
-    //TODO: Define in header
     ov12_022633F0(bsys, ctx, &ctx->buffMsg);
     return FALSE;
 }
@@ -1012,8 +1004,7 @@ BOOL BtlCmd_If(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int cmp = BattleScriptReadWord(ctx);
     u32 adrs = BattleScriptReadWord(ctx);
 
-    //TODO: Define this function as BattleScriptGetVarPointer
-    int *var = ov12_02245528(bsys, ctx, unkA);
+    int *var = BattleScriptGetVarPointer(bsys, ctx, unkA);
 
     switch (operator) {
     case 0:
@@ -1069,7 +1060,7 @@ BOOL BtlCmd_IfMonStat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int cmp = BattleScriptReadWord(ctx);
     u32 adrs = BattleScriptReadWord(ctx);
 
-    int var = ov12_0224EDE0(ctx, GetBattlerIDBySide(bsys, ctx, side), unkA, 0);
+    int var = GetBattlerVar(ctx, GetBattlerIDBySide(bsys, ctx, side), unkA, 0);
 
     switch (operator) {
     case 0:
@@ -1182,7 +1173,7 @@ BOOL BtlCmd_CritCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 BOOL BtlCmd_ShouldGetExp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int adrs;
     u32 unkA = ov12_0223A7E0(bsys);
-    OpponentData *opponentData = ov12_0223A7E8(bsys, ctx->battlerIdFainted);
+    OpponentData *opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, ctx->battlerIdFainted);
 
     BattleScriptIncrementPointer(ctx, 1);
 
@@ -1231,8 +1222,7 @@ BOOL BtlCmd_ShouldGetExp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-//TODO: Declare as a system task in appropriate header
-void ov12_02245898();
+static void ov12_02245898(SysTask *task, void *data);
 
 BOOL BtlCmd_InitGetExp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
@@ -1268,37 +1258,37 @@ BOOL BtlCmd_GetExpLoop(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 BOOL BtlCmd_ShowParty(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    int i, unkA, unkB;
+    int battlerId, unkA, unkB;
     int unkC = BattleSys_GetMaxBattlers(bsys);
 
     BattleScriptIncrementPointer(ctx, 1);
 
     unkB = 0;
 
-    for (i = 0; i < unkC; i++) {
-        if (ctx->unk_13C[i] & 1) {
-            unkB |= MaskOfFlagNo(i);
-            ov12_022632DC(bsys, ctx, i, 1, 0, 6);
+    for (battlerId = 0; battlerId < unkC; battlerId++) {
+        if (ctx->unk_13C[battlerId] & 1) {
+            unkB |= MaskOfFlagNo(battlerId);
+            ov12_022632DC(bsys, ctx, battlerId, 1, 0, 6);
         }
     }
 
-    for (i = 0; i < unkC; i++) {
+    for (battlerId = 0; battlerId < unkC; battlerId++) {
         if (ov12_0223A7E0(bsys) == 7) {
-            unkA = ov12_0223AB6C(bsys, i);
-            if (!(unkB & MaskOfFlagNo(i)) && !(unkB & MaskOfFlagNo(unkA))) {
-                unkB |= MaskOfFlagNo(i);
-                ov12_02263F30(bsys, i);
+            unkA = ov12_0223AB6C(bsys, battlerId);
+            if (!(unkB & MaskOfFlagNo(battlerId)) && !(unkB & MaskOfFlagNo(unkA))) {
+                unkB |= MaskOfFlagNo(battlerId);
+                ov12_02263F30(bsys, battlerId);
             }
         } else {
-            if (!(unkB & MaskOfFlagNo(i))) {
-                ov12_02263F30(bsys, i);
+            if (!(unkB & MaskOfFlagNo(battlerId))) {
+                ov12_02263F30(bsys, battlerId);
             }
         }
     }
 
-    for (i = 0; i < unkC; i++) {
-        if (ctx->unk_13C[i] & 1) {
-            ctx->unk_78 = i;
+    for (battlerId = 0; battlerId < unkC; battlerId++) {
+        if (ctx->unk_13C[battlerId] & 1) {
+            ctx->unk_78 = battlerId;
             break;
         }
     }
@@ -1307,32 +1297,32 @@ BOOL BtlCmd_ShowParty(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 BOOL BtlCmd_WaitForMonSelection(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    int i;
+    int battlerId;
 
     int unkA = BattleSys_GetMaxBattlers(bsys);
     int unkB = 0;
 
-    for (i = 0; i < unkA; i++) {
-        if (ctx->unk_13C[i] & 1) {
+    for (battlerId = 0; battlerId < unkA; battlerId++) {
+        if (ctx->unk_13C[battlerId] & 1) {
             unkB++;
         }
     }
 
-    for (i = 0; i < unkA; i++) {
-        if ((ctx->unk_13C[i] & 1) && ov12_0225682C(ctx, i)) {
-            ctx->unk_21A0[i] = ctx->field111_0x378[i][0] - 1;
+    for (battlerId = 0; battlerId < unkA; battlerId++) {
+        if ((ctx->unk_13C[battlerId] & 1) && ov12_0225682C(ctx, battlerId)) {
+            ctx->unk_21A0[battlerId] = ctx->field111_0x378[battlerId][0] - 1;
             unkB--;
-            if (!(ctx->unk_2140 & (MaskOfFlagNo(i) << 24))) {
-                ctx->unk_2140 |= (MaskOfFlagNo(i) << 24);
-                ov12_02263F30(bsys, i);
+            if (!(ctx->unk_2140 & (MaskOfFlagNo(battlerId) << 24))) {
+                ctx->unk_2140 |= (MaskOfFlagNo(battlerId) << 24);
+                ov12_02263F30(bsys, battlerId);
             }
         }
     }
 
     if (unkB == 0) {
-        for (i = 0; i < unkA; i++) {
-            if ((ctx->unk_13C[i] & 1) && ov12_0225682C(ctx, i)) {
-                ov12_0223BDDC(bsys, i, ctx->field111_0x378[i][0]);
+        for (battlerId = 0; battlerId < unkA; battlerId++) {
+            if ((ctx->unk_13C[battlerId] & 1) && ov12_0225682C(ctx, battlerId)) {
+                ov12_0223BDDC(bsys, battlerId, ctx->field111_0x378[battlerId][0]);
             }
         }
         ctx->unk_2140 &= 0xf0ffffff;
@@ -1379,16 +1369,16 @@ BOOL BtlCmd_SwitchInDataUpdate(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 BOOL BtlCmd_JumpIfCantSwitch(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    int i;
+    int battlerId;
     int unkA = BattleSys_GetMaxBattlers(bsys);
     
     BattleScriptIncrementPointer(ctx, 1);
 
     u32 unkB = BattleScriptReadWord(ctx);
 
-    for (i = 0; i < unkA; i++) {
-        if (ctx->unk_13C[i] & 1) {
-            ctx->unk_78 = i;
+    for (battlerId = 0; battlerId < unkA; battlerId++) {
+        if (ctx->unk_13C[battlerId] & 1) {
+            ctx->unk_78 = battlerId;
             BattleScriptIncrementPointer(ctx, unkB);
             break;
         }
@@ -1397,7 +1387,7 @@ BOOL BtlCmd_JumpIfCantSwitch(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-void ov12_022465A8(SysTask *task, void *data);
+static void ov12_022465A8(SysTask *task, void *data);
 
 BOOL BtlCmd_47(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
@@ -1434,12 +1424,12 @@ BOOL BtlCmd_SetMultiHit(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     if (ctx->unk_217D == 0) {
         if (unkA == 0) {
-            if (ov12_022527CC(ctx, ctx->battlerIdAttacker) == 92) {
+            if (GetBattlerAbility(ctx, ctx->battlerIdAttacker) == 92) {
                 unkA = 5;
-            } else if ((unkA = ov12_0223BD98(bsys) & 3) < 2) {
+            } else if ((unkA = BattleSys_Random(bsys) & 3) < 2) {
                 unkA += 2;
             } else {
-                unkA = (ov12_0223BD98(bsys) & 3) + 2;
+                unkA = (BattleSys_Random(bsys) & 3) + 2;
             }
         }
         ctx->unk_217C = unkA;
@@ -1457,7 +1447,7 @@ BOOL BtlCmd_ChangeVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int unkB = BattleScriptReadWord(ctx);
     int val = BattleScriptReadWord(ctx);
 
-    int *var = ov12_02245528(bsys, ctx, unkB);
+    int *var = BattleScriptGetVarPointer(bsys, ctx, unkB);
 
     switch (operator) {
     case 7:
@@ -1585,13 +1575,13 @@ BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     } else { //Stat Decrease
         if (!(ctx->unk_90 & (1 << 27))) {
             if (ctx->battlerIdAttacker != ctx->battlerIdStatChange) {
-                //White Smoke check
+                //Mist
                 if(ctx->field72_0x170[ov12_0223AB1C(bsys, ctx->battlerIdStatChange)].unk0_C) {
                     ctx->buffMsg.unk2 = 273;
                     ctx->buffMsg.unk1 = 2;
                     ctx->buffMsg.unk4[0] = ov12_022522E0(ctx, ctx->battlerIdStatChange);
                     unkD = 1;
-                } else if (ov12_02252834(ctx, ctx->battlerIdAttacker, ctx->battlerIdStatChange, ABILITY_CLEAR_BODY) == TRUE || ov12_02252834(ctx, ctx->battlerIdAttacker, ctx->battlerIdStatChange, ABILITY_WHITE_SMOKE) == TRUE) {
+                } else if (CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, ctx->battlerIdStatChange, ABILITY_CLEAR_BODY) == TRUE || CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, ctx->battlerIdStatChange, ABILITY_WHITE_SMOKE) == TRUE) {
                 if (ctx->unk_88 == 3) {
                     ctx->buffMsg.unk2 = 0x2D7;
                     ctx->buffMsg.unk1 = 53;
@@ -1606,8 +1596,8 @@ BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                     ctx->buffMsg.unk4[1] = ctx->battleMons[ctx->battlerIdStatChange].unk27;
                 }
                 unkD = TRUE;
-            } else if ((ov12_02252834(ctx, ctx->battlerIdAttacker, ctx->battlerIdStatChange, ABILITY_KEEN_EYE) == TRUE && (1 + stat) == 6) ||
-                       (ov12_02252834(ctx, ctx->battlerIdAttacker, ctx->battlerIdStatChange, ABILITY_HYPER_CUTTER) == TRUE && (1 + stat) == 1)) {
+            } else if ((CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, ctx->battlerIdStatChange, ABILITY_KEEN_EYE) == TRUE && (1 + stat) == 6) ||
+                       (CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, ctx->battlerIdStatChange, ABILITY_HYPER_CUTTER) == TRUE && (1 + stat) == 1)) {
                 if (ctx->unk_88 == 3) {
                     ctx->buffMsg.unk2 = 0x2D7;
                     ctx->buffMsg.unk1 = 53;
@@ -1637,7 +1627,7 @@ BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                         BattleScriptIncrementPointer(ctx, unkA);
                         return FALSE;
                     }
-                } else if (ov12_02252834(ctx, ctx->battlerIdAttacker, ctx->battlerIdStatChange, ABILITY_SHIELD_DUST) == TRUE && ctx->unk_88 == 2) {
+                } else if (CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, ctx->battlerIdStatChange, ABILITY_SHIELD_DUST) == TRUE && ctx->unk_88 == 2) {
                     unkD = 1;
                 } else if (ctx->battleMons[ctx->battlerIdStatChange].unk6C &  (1 << 24)){
                     unkD = 2;
@@ -1700,7 +1690,7 @@ BOOL BtlCmd_ChangeMonDataVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int unkB = BattleScriptReadWord(ctx);
     int val = BattleScriptReadWord(ctx);
     int battlerId = GetBattlerIDBySide(bsys, ctx, side);
-    int var = ov12_0224EDE0(ctx, battlerId, unkB, 0);
+    int var = GetBattlerVar(ctx, battlerId, unkB, 0);
 
     switch (operator) {
     case 7:
@@ -1758,7 +1748,7 @@ BOOL BtlCmd_ChangeMonDataVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ov12_02248648(ctx, battlerId, var);
     }
 
-    ov12_0224F168(ctx, battlerId, unkB, &var);
+    SetBattlerVar(ctx, battlerId, unkB, &var);
     ov12_02250C40(bsys, ctx, battlerId);
 
     return FALSE;
@@ -1804,12 +1794,12 @@ BOOL BtlCmd_CheckAbility(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
         for (battlerId = 0; battlerId < unkB; battlerId++) {
             if (unkA == 0) {
-                if (ov12_022527CC(ctx, battlerId) == ability) {
+                if (GetBattlerAbility(ctx, battlerId) == ability) {
                     BattleScriptIncrementPointer(ctx, adrs);
                     ctx->battlerIdAbility = battlerId;
                     break;
                 }
-            } else if (ov12_022527CC(ctx, battlerId) == ability) {
+            } else if (GetBattlerAbility(ctx, battlerId) == ability) {
                 break;
             }
         }
@@ -1817,11 +1807,11 @@ BOOL BtlCmd_CheckAbility(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         battlerId = GetBattlerIDBySide(bsys, ctx, side);
 
         if (unkA == 0) {
-            if (ov12_022527CC(ctx, battlerId) == ability) {
+            if (GetBattlerAbility(ctx, battlerId) == ability) {
                 BattleScriptIncrementPointer(ctx, adrs);
                 ctx->battlerIdAbility = battlerId;
             }
-        } else if (ov12_022527CC(ctx, battlerId) != ability) {
+        } else if (GetBattlerAbility(ctx, battlerId) != ability) {
                 BattleScriptIncrementPointer(ctx, adrs);
                 ctx->battlerIdAbility = battlerId;
         }
@@ -1838,7 +1828,7 @@ BOOL BtlCmd_Random(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int x0 = BattleScriptReadWord(ctx);
 
-    ctx->unk_134 = ov12_0223BD98(bsys) % modulo + x0;
+    ctx->unk_134 = BattleSys_Random(bsys) % modulo + x0;
 
     return FALSE;
 }
@@ -1850,8 +1840,8 @@ BOOL BtlCmd_ChangeVar2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int unkB = BattleScriptReadWord(ctx);
     int unkC = BattleScriptReadWord(ctx);
 
-    int *var = ov12_02245528(bsys, ctx, unkB);
-    int *val = ov12_02245528(bsys, ctx, unkC);
+    int *var = BattleScriptGetVarPointer(bsys, ctx, unkB);
+    int *val = BattleScriptGetVarPointer(bsys, ctx, unkC);
 
     switch (operator) {
     case 7:
@@ -1918,8 +1908,8 @@ BOOL BtlCmd_ChangeMonDataByVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int battlerId = GetBattlerIDBySide(bsys, ctx, side);
 
-    int var = ov12_0224EDE0(ctx, battlerId, unkB, 0);
-    int *val = ov12_02245528(bsys, ctx, unkC);
+    int var = GetBattlerVar(ctx, battlerId, unkB, 0);
+    int *val = BattleScriptGetVarPointer(bsys, ctx, unkC);
 
     switch (operator) {
     case 7:
@@ -1977,7 +1967,7 @@ BOOL BtlCmd_ChangeMonDataByVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         if (unkB == 26) {
             ov12_02248648(ctx, battlerId, var);
         }
-        ov12_0224F168(ctx, battlerId, unkB, &var);
+        SetBattlerVar(ctx, battlerId, unkB, &var);
         ov12_02250C40(bsys, ctx, battlerId);
     }
 
@@ -1998,7 +1988,7 @@ BOOL BtlCmd_GotoSubscript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 BOOL BtlCmd_GotoSubscriptVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
-    int *var = ov12_02245528(bsys, ctx, BattleScriptReadWord(ctx));
+    int *var = BattleScriptGetVarPointer(bsys, ctx, BattleScriptReadWord(ctx));
     ov12_02245520(ctx, 1, *var);
     return FALSE;
 }
