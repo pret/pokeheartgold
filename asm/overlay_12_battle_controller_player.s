@@ -5301,7 +5301,7 @@ ov12_0224AED0: ; 0x0224AED0
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #0
-	bl ov12_0223AA40
+	bl BattleSys_GetPlayerProfile
 	str r0, [sp, #0x28]
 	mov r0, #0x84
 	tst r0, r6

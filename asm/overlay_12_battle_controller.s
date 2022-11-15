@@ -1180,8 +1180,8 @@ ov12_02262974: ; 0x02262974
 	pop {r3, pc}
 	thumb_func_end ov12_02262974
 
-	thumb_func_start ov12_022629A4
-ov12_022629A4: ; 0x022629A4
+	thumb_func_start BattleController_EmitThrowPokeball
+BattleController_EmitThrowPokeball: ; 0x022629A4
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	mov r6, #9
@@ -1208,7 +1208,7 @@ ov12_022629A4: ; 0x022629A4
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _022629D8: .word 0x0000219C
-	thumb_func_end ov12_022629A4
+	thumb_func_end BattleController_EmitThrowPokeball
 
 	thumb_func_start ov12_022629DC
 ov12_022629DC: ; 0x022629DC
@@ -1256,8 +1256,8 @@ ov12_022629F8: ; 0x022629F8
 	pop {r3, r4, pc}
 	thumb_func_end ov12_022629F8
 
-	thumb_func_start ov12_02262A2C
-ov12_02262A2C: ; 0x02262A2C
+	thumb_func_start BattleController_EmitHealthbarSlideIn
+BattleController_EmitHealthbarSlideIn: ; 0x02262A2C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x2c
 	add r5, r1, #0
@@ -1402,7 +1402,7 @@ _02262B54: .word 0x00002D74
 _02262B58: .word 0x00002D54
 _02262B5C: .word 0x00002DBE
 _02262B60: .word 0x00002DA4
-	thumb_func_end ov12_02262A2C
+	thumb_func_end BattleController_EmitHealthbarSlideIn
 
 	thumb_func_start ov12_02262B64
 ov12_02262B64: ; 0x02262B64
@@ -2493,8 +2493,8 @@ ov12_0226337C: ; 0x0226337C
 	.balign 4, 0
 	thumb_func_end ov12_0226337C
 
-	thumb_func_start ov12_022633B8
-ov12_022633B8: ; 0x022633B8
+	thumb_func_start BattleController_EmitPrintAttackMessage
+BattleController_EmitPrintAttackMessage: ; 0x022633B8
 	push {r4, lr}
 	sub sp, #8
 	add r2, r1, #0
@@ -2520,10 +2520,10 @@ ov12_022633B8: ; 0x022633B8
 	nop
 _022633E8: .word 0x0000219C
 _022633EC: .word 0x00003044
-	thumb_func_end ov12_022633B8
+	thumb_func_end BattleController_EmitPrintAttackMessage
 
-	thumb_func_start ov12_022633F0
-ov12_022633F0: ; 0x022633F0
+	thumb_func_start BattleController_EmitPrintMessage
+BattleController_EmitPrintMessage: ; 0x022633F0
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r1, #0
@@ -2537,7 +2537,7 @@ ov12_022633F0: ; 0x022633F0
 	bl ov12_02262240
 	add sp, #4
 	pop {r3, r4, pc}
-	thumb_func_end ov12_022633F0
+	thumb_func_end BattleController_EmitPrintMessage
 
 	thumb_func_start ov12_0226340C
 ov12_0226340C: ; 0x0226340C
@@ -2591,8 +2591,8 @@ ov12_0226343C: ; 0x0226343C
 	.balign 4, 0
 	thumb_func_end ov12_0226343C
 
-	thumb_func_start ov12_0226346C
-ov12_0226346C: ; 0x0226346C
+	thumb_func_start BattleController_EmitMonFlicker
+BattleController_EmitMonFlicker: ; 0x0226346C
 	push {r3, lr}
 	sub sp, #8
 	add r2, r1, #0
@@ -2606,10 +2606,10 @@ ov12_0226346C: ; 0x0226346C
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0226346C
+	thumb_func_end BattleController_EmitMonFlicker
 
-	thumb_func_start ov12_02263488
-ov12_02263488: ; 0x02263488
+	thumb_func_start BattleController_EmitHealthbarUpdate
+BattleController_EmitHealthbarUpdate: ; 0x02263488
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	add r5, r1, #0
@@ -2710,7 +2710,7 @@ _02263554: .word 0x0000215C
 _02263558: .word 0x00002D54
 _0226355C: .word 0x00002DBE
 _02263560: .word 0x00002DA4
-	thumb_func_end ov12_02263488
+	thumb_func_end BattleController_EmitHealthbarUpdate
 
 	thumb_func_start ov12_02263564
 ov12_02263564: ; 0x02263564
@@ -2918,8 +2918,8 @@ _022636F4: .word 0x00002DE4
 _022636F8: .word 0x00002DA8
 	thumb_func_end ov12_022635E8
 
-	thumb_func_start ov12_022636FC
-ov12_022636FC: ; 0x022636FC
+	thumb_func_start BattleController_EmitPlaySE
+BattleController_EmitPlaySE: ; 0x022636FC
 	push {r4, lr}
 	sub sp, #8
 	mov r4, #0x1b
@@ -2935,10 +2935,10 @@ ov12_022636FC: ; 0x022636FC
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov12_022636FC
+	thumb_func_end BattleController_EmitPlaySE
 
-	thumb_func_start ov12_0226371C
-ov12_0226371C: ; 0x0226371C
+	thumb_func_start BattleController_EmitFadeOutBattle
+BattleController_EmitFadeOutBattle: ; 0x0226371C
 	push {r3, lr}
 	sub sp, #8
 	mov r1, #0x1c
@@ -2952,7 +2952,7 @@ ov12_0226371C: ; 0x0226371C
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0226371C
+	thumb_func_end BattleController_EmitFadeOutBattle
 
 	thumb_func_start ov12_02263738
 ov12_02263738: ; 0x02263738
@@ -3060,8 +3060,8 @@ _02263800: .word 0x00002DBE
 _02263804: .word 0x00002DA8
 	thumb_func_end ov12_02263738
 
-	thumb_func_start ov12_02263808
-ov12_02263808: ; 0x02263808
+	thumb_func_start BattleController_EmitHealthbarStatus
+BattleController_EmitHealthbarStatus: ; 0x02263808
 	push {r4, lr}
 	sub sp, #8
 	add r4, r1, #0
@@ -3077,10 +3077,10 @@ ov12_02263808: ; 0x02263808
 	bl ov12_02262240
 	add sp, #8
 	pop {r4, pc}
-	thumb_func_end ov12_02263808
+	thumb_func_end BattleController_EmitHealthbarStatus
 
-	thumb_func_start ov12_02263828
-ov12_02263828: ; 0x02263828
+	thumb_func_start BattleController_EmitPrintTrainerMessage
+BattleController_EmitPrintTrainerMessage: ; 0x02263828
 	push {r4, lr}
 	sub sp, #8
 	add r4, r1, #0
@@ -3096,7 +3096,7 @@ ov12_02263828: ; 0x02263828
 	bl ov12_02262240
 	add sp, #8
 	pop {r4, pc}
-	thumb_func_end ov12_02263828
+	thumb_func_end BattleController_EmitPrintTrainerMessage
 
 	thumb_func_start ov12_02263848
 ov12_02263848: ; 0x02263848
@@ -3150,8 +3150,8 @@ ov12_02263878: ; 0x02263878
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_02263878
 
-	thumb_func_start ov12_022638A8
-ov12_022638A8: ; 0x022638A8
+	thumb_func_start BattleController_EmitPrintReturnMessage
+BattleController_EmitPrintReturnMessage: ; 0x022638A8
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -3183,10 +3183,10 @@ ov12_022638A8: ; 0x022638A8
 	.balign 4, 0
 _022638E4: .word 0x00003122
 _022638E8: .word 0x00002E4C
-	thumb_func_end ov12_022638A8
+	thumb_func_end BattleController_EmitPrintReturnMessage
 
-	thumb_func_start ov12_022638EC
-ov12_022638EC: ; 0x022638EC
+	thumb_func_start BattleController_EmitPrintSendOutMessage
+BattleController_EmitPrintSendOutMessage: ; 0x022638EC
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -3225,10 +3225,10 @@ _02263920:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02263934: .word 0x00002E4C
-	thumb_func_end ov12_022638EC
+	thumb_func_end BattleController_EmitPrintSendOutMessage
 
-	thumb_func_start ov12_02263938
-ov12_02263938: ; 0x02263938
+	thumb_func_start BattleController_EmitPrintEncounterMessage
+BattleController_EmitPrintEncounterMessage: ; 0x02263938
 	push {r3, lr}
 	sub sp, #8
 	mov r1, #0x22
@@ -3240,7 +3240,7 @@ ov12_02263938: ; 0x02263938
 	bl ov12_02262240
 	add sp, #8
 	pop {r3, pc}
-	thumb_func_end ov12_02263938
+	thumb_func_end BattleController_EmitPrintEncounterMessage
 
 	thumb_func_start ov12_02263950
 ov12_02263950: ; 0x02263950

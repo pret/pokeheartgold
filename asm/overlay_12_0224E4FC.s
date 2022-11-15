@@ -17331,7 +17331,7 @@ ov12_022567D4: ; 0x022567D4
 	add r5, r0, #0
 	mov r1, #0
 	add r6, r2, #0
-	bl ov12_0223AA40
+	bl BattleSys_GetPlayerProfile
 	str r0, [sp, #0xc]
 	add r0, r5, #0
 	bl ov12_0223AB60
@@ -17400,7 +17400,7 @@ ov12_02256854: ; 0x02256854
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	mov r1, #0
-	bl ov12_0223AA40
+	bl BattleSys_GetPlayerProfile
 	add r4, r0, #0
 	bl PlayerProfile_GetTrainerID
 	add r6, r0, #0
@@ -17447,7 +17447,7 @@ ov12_022568B0: ; 0x022568B0
 	sub sp, #0x10
 	add r5, r1, #0
 	mov r1, #0
-	bl ov12_0223AA40
+	bl BattleSys_GetPlayerProfile
 	add r4, r0, #0
 	bl PlayerProfile_GetTrainerID
 	add r6, r0, #0

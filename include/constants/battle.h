@@ -23,5 +23,13 @@ enum BattleSide {
     B_SIDE_18
 };
 
+//Field Side Conditions
+#define SIDE_CONDITION_REFLECT              (1 << 0)
+#define SIDE_CONDITION_LIGHT_SCREEN         (1 << 1)
+#define SIDE_CONDITION_2                    (1 << 2)
+#define SIDE_CONDITION_3                    (1 << 3)
+#define SIDE_CONDITION_4                    (1 << 4)
+#define SIDE_CONDITION_5                    (1 << 5)
+#define SIDE_CONDITION_MIST                 (1 << 6)
 
 #endif

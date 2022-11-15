@@ -344,14 +344,14 @@ BOOL BtlCmd_ThrowPokeball(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 (battlerId > 1)) {
                 break;
             }
-            ov12_022629A4(bsys, battlerId, unkC);
+            BattleController_EmitThrowPokeball(bsys, battlerId, unkC);
         }
         break;
     case 3:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if ((opponentData->unk195 & 1) == FALSE) {
-                ov12_022629A4(bsys, battlerId, unkC);
+                BattleController_EmitThrowPokeball(bsys, battlerId, unkC);
                 if ((ov12_0223A7E0(bsys) & 8) == 0 &&
                     (ov12_0223A7E0(bsys) & 2)) {
                     break;
@@ -363,7 +363,7 @@ BOOL BtlCmd_ThrowPokeball(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (opponentData->unk195 & 1) {
-                ov12_022629A4(bsys, battlerId, unkC);
+                BattleController_EmitThrowPokeball(bsys, battlerId, unkC);
                 if ((ov12_0223A7E0(bsys) & 8) == 0 &&
                     (ov12_0223A7E0(bsys) & 16) == 0 &&
                     (ov12_0223A7E0(bsys) & 2)) {
@@ -572,14 +572,14 @@ BOOL BtlCmd_HealthbarSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     switch (side) {
     case B_SIDE_ALL:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
-            ov12_02262A2C(bsys, ctx, battlerId, 0);
+            BattleController_EmitHealthbarSlideIn(bsys, ctx, battlerId, 0);
         }
         break;
     case B_SIDE_PLAYER:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if ((opponentData->unk195 & 1) == 0) {
-                ov12_02262A2C(bsys, ctx, battlerId, 0);
+                BattleController_EmitHealthbarSlideIn(bsys, ctx, battlerId, 0);
             }
         }
         break;
@@ -587,12 +587,12 @@ BOOL BtlCmd_HealthbarSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (opponentData->unk195 & 1) {
-                ov12_02262A2C(bsys, ctx, battlerId, 0);
+                BattleController_EmitHealthbarSlideIn(bsys, ctx, battlerId, 0);
             }
         }
         break;
     default:
-        ov12_02262A2C(bsys, ctx, GetBattlerIDBySide(bsys, ctx, side), 0);
+        BattleController_EmitHealthbarSlideIn(bsys, ctx, GetBattlerIDBySide(bsys, ctx, side), 0);
         break;
     }
 
@@ -613,14 +613,14 @@ BOOL BtlCmd_12(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     switch (side) {
     case B_SIDE_ALL:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
-            ov12_02262A2C(bsys, ctx, battlerId, 0);
+            BattleController_EmitHealthbarSlideIn(bsys, ctx, battlerId, 0);
         }
         break;
     case B_SIDE_PLAYER:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if ((opponentData->unk195 & 1) == 0) {
-                ov12_02262A2C(bsys, ctx, battlerId, delay);
+                BattleController_EmitHealthbarSlideIn(bsys, ctx, battlerId, delay);
                 delay += 4;
             }
         }
@@ -629,13 +629,13 @@ BOOL BtlCmd_12(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (opponentData->unk195 & 1) {
-                ov12_02262A2C(bsys, ctx, battlerId, delay);
+                BattleController_EmitHealthbarSlideIn(bsys, ctx, battlerId, delay);
                 delay += 4;
             }
         }
         break;
     default:
-        ov12_02262A2C(bsys, ctx, GetBattlerIDBySide(bsys, ctx, side), 0);
+        BattleController_EmitHealthbarSlideIn(bsys, ctx, GetBattlerIDBySide(bsys, ctx, side), 0);
         break;
     }
     
@@ -700,10 +700,10 @@ static void DamageCalcDefault(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     } else if (ctx->moveType) {
         type = ctx->moveType;
     } else {
-        type = ctx->unk_334.unkA8[ctx->field115_0xdcc].moveType;
+        type = ctx->unk_334.unkA8[ctx->moveNoCur].moveType;
     }
 
-    ctx->damage = ov12_02256FF8(bsys, ctx, ctx->field115_0xdcc, ctx->field71_0x168[ov12_0223AB1C(bsys, ctx->battlerIdTarget)], ctx->unk_180, ctx->movePower, type, ctx->battlerIdAttacker, ctx->battlerIdTarget, ctx->criticalMultiplier);
+    ctx->damage = ov12_02256FF8(bsys, ctx, ctx->moveNoCur, ctx->fieldSideConditionFlags[ov12_0223AB1C(bsys, ctx->battlerIdTarget)], ctx->unk_180, ctx->movePower, type, ctx->battlerIdAttacker, ctx->battlerIdTarget, ctx->criticalMultiplier);
 
     ctx->damage *= ctx->criticalMultiplier;
 
@@ -751,7 +751,7 @@ BOOL BtlCmd_PrintAttackMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     if ((ctx->unk_213C & 1) == FALSE) {
-        ov12_022633B8(bsys, ctx);
+        BattleController_EmitPrintAttackMessage(bsys, ctx);
     }
     
     ctx->unk_213C |= 1; 
@@ -768,7 +768,7 @@ BOOL BtlCmd_PrintMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     
     InitBattleMsgData(ctx, &msgdata);
     InitBattleMsg(bsys, ctx, &msgdata, &msg);
-    ov12_022633F0(bsys, ctx, &msg);
+    BattleController_EmitPrintMessage(bsys, ctx, &msg);
 
     return FALSE;
 }
@@ -784,14 +784,14 @@ BOOL BtlCmd_PrintMessage2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     msg.unk1 |= 128;
 
-    ov12_022633F0(bsys, ctx, &msg);
+    BattleController_EmitPrintMessage(bsys, ctx, &msg);
 
     return FALSE;
 }
 
 BOOL BtlCmd_PrintBufferedMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
-    ov12_022633F0(bsys, ctx, &ctx->buffMsg);
+    BattleController_EmitPrintMessage(bsys, ctx, &ctx->buffMsg);
     return FALSE;
 }
 
@@ -820,7 +820,7 @@ BOOL BtlCmd_22(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     msg.unk1 |= 64;
     msg.battlerId = GetBattlerIDBySide(bsys, ctx, side);
 
-    ov12_022633F0(bsys, ctx, &msg);
+    BattleController_EmitPrintMessage(bsys, ctx, &msg);
 
     return FALSE;
 }
@@ -834,7 +834,7 @@ BOOL BtlCmd_PlayMoveAnimation(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (battler == 255) {
         move = ctx->unk_124;
     } else {
-        move = ctx->field115_0xdcc;
+        move = ctx->moveNoCur;
     }
 
     if ((!(ctx->unk_213C & (1 << 14)) && ov12_0223B6D4(bsys) == TRUE) || move == MOVE_TRANSFORM) {
@@ -843,7 +843,7 @@ BOOL BtlCmd_PlayMoveAnimation(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     }
 
     if (!ov12_0223B6D4(bsys)) {
-        ov12_02245520(ctx, 1, 0x123);
+        BattleScriptGotoSubscript(ctx, 1, 0x123);
     }
 
     return FALSE;
@@ -860,7 +860,7 @@ BOOL BtlCmd_PlayMoveAnimation2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (battler == 255) {
         move = ctx->unk_124;
     } else {
-        move = ctx->field115_0xdcc;
+        move = ctx->moveNoCur;
     }
 
     u32 attacker = GetBattlerIDBySide(bsys, ctx, attackerSide);
@@ -872,7 +872,7 @@ BOOL BtlCmd_PlayMoveAnimation2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     }
 
     if (!ov12_0223B6D4(bsys)) {
-        ov12_02245520(ctx, 1, 0x123);
+        BattleScriptGotoSubscript(ctx, 1, 0x123);
     }
 
     return FALSE;
@@ -883,7 +883,7 @@ BOOL BtlCmd_MonFlicker(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     
     u32 side = BattleScriptReadWord(ctx);
 
-    ov12_0226346C(bsys, GetBattlerIDBySide(bsys, ctx, side), ctx->unk_216C);
+    BattleController_EmitMonFlicker(bsys, GetBattlerIDBySide(bsys, ctx, side), ctx->unk_216C);
 
     return FALSE;
 }
@@ -919,7 +919,7 @@ BOOL BtlCmd_HealthbarDataUpdate(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 BOOL BtlCmd_HealthbarUpdate(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
     
-    ov12_02263488(bsys, ctx, GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx)));
+    BattleController_EmitHealthbarUpdate(bsys, ctx, GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx)));
 
     return FALSE;
 }
@@ -966,8 +966,7 @@ BOOL BtlCmd_Wait(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         }
     }
     
-    //TODO: unk2C are the battle type flags
-    if (bsys->unk2C & 4 && !(bsys->unk240C & 16)) {
+    if (bsys->battleTypeFlags & 4 && !(bsys->unk240C & 16)) {
         waitIncrement = 2;
     } else {
         waitIncrement = 1;
@@ -991,7 +990,7 @@ BOOL BtlCmd_PlaySE(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     u32 side = BattleScriptReadWord(ctx);
     u32 sound = BattleScriptReadWord(ctx);
 
-    ov12_022636FC(bsys, ctx, sound, GetBattlerIDBySide(bsys, ctx, side));
+    BattleController_EmitPlaySE(bsys, ctx, sound, GetBattlerIDBySide(bsys, ctx, side));
 
     return FALSE;
 }
@@ -1110,7 +1109,7 @@ BOOL BtlCmd_IfMonStat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 BOOL BtlCmd_FadeOutBattle(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    ov12_0226371C(bsys, ctx);
+    BattleController_EmitFadeOutBattle(bsys, ctx);
 
     return FALSE;
 }
@@ -1126,7 +1125,7 @@ BOOL BtlCmd_JumpToSubSeq(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 BOOL BtlCmd_JumpToCurMoveEffectScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    ov12_02245518(ctx, 30, ctx->unk_334.unkA8[ctx->field115_0xdcc].unk0);
+    ov12_02245518(ctx, 30, ctx->unk_334.unkA8[ctx->moveNoCur].unk0);
 
     return FALSE;
 }
@@ -1139,7 +1138,7 @@ BOOL BtlCmd_JumpToEffectScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     ctx->unk_213C &= ~1;
     ctx->unk_213C &= 0xffffbfff;
 
-    ctx->field115_0xdcc = ctx->unk_124;
+    ctx->moveNoCur = ctx->unk_124;
 
     if (unkA == 0) {
         //TODO: Define these functions in a header or leave them until you reach them here
@@ -1152,7 +1151,7 @@ BOOL BtlCmd_JumpToEffectScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ctx->unk_C = 39;
         ov12_02245518(ctx, 1, 281);
     } else {
-        ov12_02245518(ctx, 0, ctx->field115_0xdcc);
+        ov12_02245518(ctx, 0, ctx->moveNoCur);
     }
 
     return FALSE;
@@ -1576,7 +1575,7 @@ BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         if (!(ctx->unk_90 & (1 << 27))) {
             if (ctx->battlerIdAttacker != ctx->battlerIdStatChange) {
                 //Mist
-                if(ctx->field72_0x170[ov12_0223AB1C(bsys, ctx->battlerIdStatChange)].unk0_C) {
+                if(ctx->fieldSideConditionData[ov12_0223AB1C(bsys, ctx->battlerIdStatChange)].mistTurns) {
                     ctx->buffMsg.unk2 = 273;
                     ctx->buffMsg.unk1 = 2;
                     ctx->buffMsg.unk4[0] = ov12_022522E0(ctx, ctx->battlerIdStatChange);
@@ -1982,13 +1981,558 @@ BOOL BtlCmd_Goto(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 BOOL BtlCmd_GotoSubscript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
-    ov12_02245520(ctx, 1, BattleScriptReadWord(ctx));
+    BattleScriptGotoSubscript(ctx, 1, BattleScriptReadWord(ctx));
     return FALSE;
 }
 
 BOOL BtlCmd_GotoSubscriptVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
     int *var = BattleScriptGetVarPointer(bsys, ctx, BattleScriptReadWord(ctx));
-    ov12_02245520(ctx, 1, *var);
+    BattleScriptGotoSubscript(ctx, 1, *var);
+    return FALSE;
+}
+
+BOOL BtlCmd_SetMoveToMirrorMove(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int move = 0;
+    int unkA = ov12_0223A7E0(bsys);
+
+    BattleScriptIncrementPointer(ctx, 1);
+
+    if (ctx->field123_0xe0c[ctx->battlerIdAttacker]) {
+        move = ctx->field123_0xe0c[ctx->battlerIdAttacker];
+    } else if (unkA & 2) {
+        move = ctx->field124_0xe14[ctx->battlerIdAttacker][0] +
+               ctx->field124_0xe14[ctx->battlerIdAttacker][1] +
+               ctx->field124_0xe14[ctx->battlerIdAttacker][2] +
+               ctx->field124_0xe14[ctx->battlerIdAttacker][3];
+        if (move) {
+            do {
+                move = ctx->field124_0xe14[ctx->battlerIdAttacker][BattleSys_Random(bsys) % 4];
+            } while (!move);
+        }
+    }
+    if (move && ov12_02257DFC(ctx, move) == TRUE) {
+        ctx->unk_213C &= ~1;
+        ctx->unk_213C &= 0xFFFFBFFF;
+        ctx->moveNoCur = move;
+        ctx->battlerIdTarget = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, move, 1, 0);
+        if (ctx->battlerIdTarget == 255) {
+            ctx->unk_C = 39;
+            ov12_02245518(ctx, 1, 281);
+        } else {
+            ctx->unk_21A8[ctx->battlerIdAttacker][1] = ctx->battlerIdTarget;
+            ov12_02245518(ctx, 0, move);
+        }
+    } else {
+        ctx->field74_0x188[ctx->battlerIdAttacker].unk0_0 = 1;
+    }
+
+    return FALSE;
+}
+
+BOOL BtlCmd_ResetAllStatChanges(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int stat, battlerId;
+
+    BattleScriptIncrementPointer(ctx, 1);
+    
+    int battlersMax = BattleSys_GetMaxBattlers(bsys);
+
+    for (battlerId = 0; battlerId < battlersMax; battlerId++) {
+        for (stat = 0; stat < 8; stat++) {
+            ctx->battleMons[battlerId].statChanges[stat] = 6;
+        }
+        ctx->battleMons[battlerId].unk6C &= 0xffefffff;
+    }
+
+    return FALSE;
+}
+
+BOOL BtlCmd_64(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+    
+    ov12_02250C70(bsys, ctx, GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx)));
+
+    return FALSE;
+}
+
+BOOL BtlCmd_65(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+    
+    ov12_02250CA0(bsys, ctx, GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx)));
+
+    return FALSE;
+}
+
+BOOL BtlCmd_SetHealthbarStatus(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    int side = BattleScriptReadWord(ctx);
+    int status = BattleScriptReadWord(ctx);
+
+    BattleController_EmitHealthbarStatus(bsys, GetBattlerIDBySide(bsys, ctx, side), status);
+
+    return FALSE;
+}
+
+BOOL BtlCmd_PrintTrainerMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    int side = BattleScriptReadWord(ctx);
+    int msg = BattleScriptReadWord(ctx);
+
+    BattleController_EmitPrintTrainerMessage(bsys, GetBattlerIDBySide(bsys, ctx, side), msg);
+
+    return FALSE;
+}
+
+extern u16 sPrizeMoneyTbl[0x81][2];
+
+u32 ov12_0223FB34(BattleSystem *bsys, BATTLECONTEXT *ctx, int trainerIndex) {
+    int i;
+    TRPOKE *trPoke;
+    u32 prizeMoney;
+    u8 level = 0;
+    u8 trainerClass;
+    TRAINER trainer;
+
+    trPoke = AllocFromHeap(5, sizeof(TRPOKE)*6);
+
+    TrainerData_ReadTrData(bsys->trainerId[trainerIndex], &trainer);
+    TrainerData_ReadTrPoke(bsys->trainerId[trainerIndex], trPoke);
+
+    switch (trainer.trainerType) {
+    default:
+    case 0:
+        TRPOKE_NOITEM_DFLTMOVES *pokeDef = (TRPOKE_NOITEM_DFLTMOVES *)trPoke;
+        level = pokeDef[trainer.npoke-1].level;
+        break;
+    case 1:
+        TRPOKE_NOITEM_CUSTMOVES *pokeCust = (TRPOKE_NOITEM_CUSTMOVES *)trPoke;
+        level = pokeCust[trainer.npoke-1].level;
+        break;
+    case 2:
+        TRPOKE_ITEM_DFLTMOVES *pokeItem = (TRPOKE_ITEM_DFLTMOVES *)trPoke;
+        level = pokeItem[trainer.npoke-1].level;
+        break;
+    case 3:
+        TRPOKE_ITEM_CUSTMOVES *pokeCustItem = (TRPOKE_ITEM_CUSTMOVES *)trPoke;
+        level = pokeCustItem[trainer.npoke-1].level;
+        break;
+    }
+
+    i = 0;
+    trainerClass = trainer.trainerClass;
+
+    do {
+        if (trainerClass != sPrizeMoneyTbl[i][0]) {
+            i++;
+            if (i < (int)NELEMS(sPrizeMoneyTbl)) continue;
+        }
+
+        if (i >= (int)NELEMS(sPrizeMoneyTbl)) {
+            GF_ASSERT(FALSE);
+        }
+        if (i >= (int)NELEMS(sPrizeMoneyTbl)) {
+            i = 2;
+        }
+        if (bsys->battleTypeFlags & 16 || bsys->battleTypeFlags == 75) {
+            prizeMoney = level*4*ctx->unk_2168*sPrizeMoneyTbl[i][1];
+            break;
+        } else if (bsys->battleTypeFlags & 2) {
+            prizeMoney = level*4*ctx->unk_2168*2*sPrizeMoneyTbl[i][1];
+            break;
+        } else {
+            prizeMoney = level*4*ctx->unk_2168*sPrizeMoneyTbl[i][1];
+            break;
+        }
+        
+    } while (TRUE);
+
+    FreeToHeap(trPoke);
+
+    return prizeMoney;
+}
+
+BOOL BtlCmd_CalcPrizeMoney(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    u32 prizeMoney;
+
+    BattleScriptIncrementPointer(ctx, 1);
+
+    if (bsys->battleOutcomeFlag == 1) {
+        prizeMoney = ov12_0223FB34(bsys, ctx, 1);
+        if (bsys->battleTypeFlags & 16 || bsys->battleTypeFlags == 0x4b) {
+            prizeMoney += ov12_0223FB34(bsys, ctx, 3);
+        }
+        PlayerProfile_AddMoney(BattleSys_GetPlayerProfile(bsys, 0), prizeMoney);
+    } else {
+        prizeMoney = ov12_0223C24C(bsys->trainerParty[0], bsys->unk48[0]);
+        PlayerProfile_SubMoney(BattleSys_GetPlayerProfile(bsys, 0), prizeMoney);
+    }
+
+    if (prizeMoney) {
+        ctx->unk_130 = prizeMoney;
+    } else {
+        ctx->unk_130 = 0;
+    }
+
+    ctx->unk_138 = bsys->unk2474_1;
+
+    return FALSE;
+}
+
+BOOL BtlCmd_SetStatus2Effect(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    int side = BattleScriptReadWord(ctx);
+    int status = BattleScriptReadWord(ctx);
+
+    if (ov12_0223B6D4(bsys) == TRUE || status == 15 || status == 16 || status == 25 || status == 26) {
+        int battlerId = GetBattlerIDBySide(bsys, ctx, side);
+        if (ov12_02257F54(ctx, battlerId, status) == TRUE) {
+            ov12_02263848(bsys, ctx, battlerId, status);
+        }
+    }
+
+    return FALSE;
+}
+
+BOOL BtlCmd_CopyStatus2Effect(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    int sideA = BattleScriptReadWord(ctx);
+    int sideB = BattleScriptReadWord(ctx);
+    int status = BattleScriptReadWord(ctx);
+
+    if (ov12_0223B6D4(bsys) == TRUE || status == 15 || status == 16 || status == 26 || status == 25) {
+        int battlerIdA = GetBattlerIDBySide(bsys, ctx, sideA);
+        int battlerIdB = GetBattlerIDBySide(bsys, ctx, sideB);      
+        if (ov12_02257F54(ctx, battlerIdA, status) == TRUE && ov12_02257F54(ctx, battlerIdB, status) == TRUE) {
+            ov12_02263878(bsys, ctx, battlerIdA, battlerIdB, status);
+        }
+    }
+
+    return FALSE;
+}
+
+BOOL BtlCmd_SetStatus2EffectVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    int side = BattleScriptReadWord(ctx);
+    int status = BattleScriptReadWord(ctx);
+
+    int battlerId = GetBattlerIDBySide(bsys, ctx, side);
+    int *data = BattleScriptGetVarPointer(bsys, ctx, status);
+
+    if (ov12_0223B6D4(bsys) == TRUE || status == 15 || status == 16 || *data == 25 || *data == 26) {
+        if (ov12_02257F54(ctx, battlerId, *data) == TRUE) {
+            ov12_02263848(bsys, ctx, battlerId, *data);
+        }
+    }
+
+    return FALSE;
+}
+
+BOOL BtlCmd_ReturnMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    int battlerId = GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx));
+
+    BattleController_EmitPrintReturnMessage(bsys, ctx, battlerId, ctx->unk_219C[battlerId]);
+
+    return FALSE;
+}
+
+BOOL BtlCmd_SendOutMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    int battlerId = GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx));
+
+    BattleController_EmitPrintSendOutMessage(bsys, ctx, battlerId, ctx->unk_219C[battlerId]);
+
+    return FALSE;
+}
+
+BOOL BtlCmd_EncounterMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    BattleController_EmitPrintEncounterMessage(bsys, ctx, GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx)));
+
+    return FALSE;
+}
+
+BOOL BtlCmd_75(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    ov12_02263950(bsys, ctx, GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx)));
+
+    return FALSE;
+}
+
+BOOL BtlCmd_TrainerMessageVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    BattleController_EmitPrintTrainerMessage(bsys, GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx)), ctx->unk_130);
+
+    return FALSE;
+}
+
+BOOL BtlCmd_TryConversion(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int i, cnt, moveType;
+
+    BattleScriptIncrementPointer(ctx, 1);
+
+    int adrs = BattleScriptReadWord(ctx);
+
+    if (GetBattlerAbility(ctx, ctx->battlerIdAttacker) == ABILITY_MULTITYPE) {
+        BattleScriptIncrementPointer(ctx, adrs);
+        return FALSE;
+    }
+
+    for (cnt = 0; cnt < 4; cnt++) {
+        if (ctx->battleMons[ctx->battlerIdAttacker].moves[cnt] == 0) {
+            break;
+        }
+    }
+
+    for (i = 0; i < cnt; i++) {
+        if (ctx->battleMons[ctx->battlerIdAttacker].moves[i] != MOVE_CONVERSION) {
+            moveType = ctx->unk_334.unkA8[ctx->battleMons[ctx->battlerIdAttacker].moves[i]].moveType;
+            if (moveType == TYPE_MYSTERY) {
+                if (GetBattlerVar(ctx, ctx->battlerIdAttacker, 27, 0) == TYPE_GHOST || GetBattlerVar(ctx, ctx->battlerIdAttacker, 28, 0) == TYPE_GHOST) {
+                    moveType = TYPE_GHOST;
+                } else {
+                    moveType = TYPE_NORMAL;
+                }
+            }
+            if (GetBattlerVar(ctx, ctx->battlerIdAttacker, 27, 0) != moveType && GetBattlerVar(ctx, ctx->battlerIdAttacker, 28, 0) != moveType) {
+                break;
+            }
+        }
+    }
+
+    if (i == cnt) {
+        BattleScriptIncrementPointer(ctx, adrs);
+    } else {
+        do {
+            do {
+                i = BattleSys_Random(bsys) % cnt;
+            } while(ctx->battleMons[ctx->battlerIdAttacker].moves[i] == MOVE_CONVERSION);
+            moveType = ctx->unk_334.unkA8[ctx->battleMons[ctx->battlerIdAttacker].moves[i]].moveType;
+            if (moveType == TYPE_MYSTERY) {
+                if (GetBattlerVar(ctx, ctx->battlerIdAttacker, 27, 0) == TYPE_GHOST || GetBattlerVar(ctx, ctx->battlerIdAttacker, 28, 0) == TYPE_GHOST) {
+                    moveType = TYPE_GHOST;
+                } else {
+                    moveType = TYPE_NORMAL;
+                }
+            }
+        } while(GetBattlerVar(ctx, ctx->battlerIdAttacker, 27, 0) == moveType || GetBattlerVar(ctx, ctx->battlerIdAttacker, 28, 0) == moveType);
+        ctx->battleMons[ctx->battlerIdAttacker].type1 = moveType;
+        ctx->battleMons[ctx->battlerIdAttacker].type2 = moveType;
+        ctx->unk_130 = moveType;
+    }
+
+    return FALSE;
+}
+
+BOOL BtlCmd_Compare(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    int operator = BattleScriptReadWord(ctx);
+    int varNo = BattleScriptReadWord(ctx);
+    int cmpNo = BattleScriptReadWord(ctx);
+    int adrs = BattleScriptReadWord(ctx);
+
+    u32 *var = BattleScriptGetVarPointer(bsys, ctx, varNo);
+    u32 *cmp = BattleScriptGetVarPointer(bsys, ctx, cmpNo);
+
+    switch (operator) {
+    case 0:
+        if (*var != *cmp) {
+            adrs = 0;
+        }
+        break;
+    case 1:
+        if (*var == *cmp) {
+            adrs = 0;
+        }
+        break;
+    case 2:
+        if (*var <= *cmp) {
+            adrs = 0;
+        }
+        break;
+    case 3:
+        if (*var > *cmp) {
+            adrs = 0;
+        }
+        break;
+    case 4:
+        if ((*var & *cmp) == 0) {
+            adrs = 0;
+        }
+        break;
+    case 5:
+        if (*var & *cmp) {
+            adrs = 0;
+        }
+        break;
+    case 6:
+        if ((*var & *cmp) != *cmp) {
+            adrs = 0;
+        }
+        break;
+    }
+
+    if (adrs) {
+        BattleScriptIncrementPointer(ctx, adrs);
+    }
+
+    return FALSE;
+}
+
+BOOL BtlCmd_IfMonStatVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    int operator = BattleScriptReadWord(ctx);
+    int side = BattleScriptReadWord(ctx);
+    int varNo = BattleScriptReadWord(ctx);
+    int cmpNo = BattleScriptReadWord(ctx);
+    int adrs = BattleScriptReadWord(ctx);
+
+    u32 var = GetBattlerVar(ctx, GetBattlerIDBySide(bsys, ctx, side), varNo, 0);
+    u32 *cmp = BattleScriptGetVarPointer(bsys, ctx, cmpNo);
+
+    switch (operator) {
+    case 0:
+        if (var != *cmp) {
+            adrs = 0;
+        }
+        break;
+    case 1:
+        if (var == *cmp) {
+            adrs = 0;
+        }
+        break;
+    case 2:
+        if (var <= *cmp) {
+            adrs = 0;
+        }
+        break;
+    case 3:
+        if (var > *cmp) {
+            adrs = 0;
+        }
+        break;
+    case 4:
+        if ((var & *cmp) == 0) {
+            adrs = 0;
+        }
+        break;
+    case 5:
+        if (var & *cmp) {
+            adrs = 0;
+        }
+        break;
+    case 6:
+        if ((var & *cmp) != *cmp) {
+            adrs = 0;
+        }
+        break;
+    }
+
+    if (adrs) {
+        BattleScriptIncrementPointer(ctx, adrs);
+    }
+
+    return FALSE;
+}
+
+BOOL BtlCmd_PayDay(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    ctx->unk_130 = ctx->unk_14C * ctx->unk_2168;
+
+    if (ctx->unk_130 > 0xFFFF) {
+        ctx->unk_130 = 0xFFFF;
+    }
+
+    PlayerProfile_AddMoney(BattleSys_GetPlayerProfile(bsys, 0), ctx->unk_130);
+
+    return FALSE;
+}
+
+BOOL BtlCmd_TryLightScreen(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    int adrs = BattleScriptReadWord(ctx);
+
+    int unkA = ov12_0223AB1C(bsys, ctx->battlerIdAttacker);
+
+    if (ctx->fieldSideConditionFlags[unkA] & SIDE_CONDITION_LIGHT_SCREEN) {
+        BattleScriptIncrementPointer(ctx, adrs);
+        ctx->unk_216C |= 64;
+    } else {
+        ctx->fieldSideConditionFlags[unkA] |= SIDE_CONDITION_LIGHT_SCREEN;
+        ctx->fieldSideConditionData[unkA].lightScreenTurns = 5;
+        ctx->fieldSideConditionData[unkA].lightScreenBattler = ctx->battlerIdAttacker;
+        if (GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker) == HOLD_EFFECT_EXTEND_SCREENS) {
+            ctx->fieldSideConditionData[unkA].lightScreenTurns += ov12_02255844(ctx, ctx->battlerIdAttacker, 0);
+        }
+        ctx->buffMsg.unk1 = 20;
+        ctx->buffMsg.unk4[0] = ctx->moveNoCur;
+        ctx->buffMsg.unk4[1] = ctx->battlerIdAttacker;
+        if (ov12_02252260(bsys, ctx, 1, ctx->battlerIdAttacker) == 2) {
+            ctx->buffMsg.unk2 = 192;
+        } else {
+            ctx->buffMsg.unk2 = 190;
+        }
+    }
+    return FALSE;
+}
+
+BOOL BtlCmd_TryReflect(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    int adrs = BattleScriptReadWord(ctx);
+
+    int unkA = ov12_0223AB1C(bsys, ctx->battlerIdAttacker);
+
+    if (ctx->fieldSideConditionFlags[unkA] & SIDE_CONDITION_REFLECT) {
+        BattleScriptIncrementPointer(ctx, adrs);
+        ctx->unk_216C |= 64;
+    } else {
+        ctx->fieldSideConditionFlags[unkA] |= SIDE_CONDITION_REFLECT;
+        ctx->fieldSideConditionData[unkA].reflectTurns = 5;
+        ctx->fieldSideConditionData[unkA].reflectBattler = ctx->battlerIdAttacker;
+        if (GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker) == HOLD_EFFECT_EXTEND_SCREENS) {
+            ctx->fieldSideConditionData[unkA].reflectTurns += ov12_02255844(ctx, ctx->battlerIdAttacker, 0);
+        }
+        ctx->buffMsg.unk1 = 20;
+        ctx->buffMsg.unk4[0] = ctx->moveNoCur;
+        ctx->buffMsg.unk4[1] = ctx->battlerIdAttacker;
+        if (ov12_02252260(bsys, ctx, 1, ctx->battlerIdAttacker) == 2) {
+            ctx->buffMsg.unk2 = 196;
+        } else {
+            ctx->buffMsg.unk2 = 194;
+        }
+    }
+    return FALSE;
+}
+
+BOOL BtlCmd_TryMist(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleScriptIncrementPointer(ctx, 1);
+
+    int adrs = BattleScriptReadWord(ctx);
+
+    int unkA = ov12_0223AB1C(bsys, ctx->battlerIdAttacker);
+
+    if (ctx->fieldSideConditionFlags[unkA] & SIDE_CONDITION_MIST) {
+        BattleScriptIncrementPointer(ctx, adrs);
+        ctx->unk_216C |= 64;
+    } else {
+        ctx->fieldSideConditionFlags[unkA] |= SIDE_CONDITION_MIST;
+        ctx->fieldSideConditionData[unkA].mistTurns = 5;
+        ctx->fieldSideConditionData[unkA].mistBattler = ctx->battlerIdAttacker;
+    }
     return FALSE;
 }

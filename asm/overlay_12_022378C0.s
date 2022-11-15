@@ -3366,7 +3366,7 @@ _0223954E:
 _0223956A:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl ov12_0223AA40
+	bl BattleSys_GetPlayerProfile
 	bl PlayerProfile_GetVersion
 	cmp r0, #GAME_VERSION
 	beq _0223957C

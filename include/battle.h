@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_BATTLE_H
 #define POKEHEARTGOLD_BATTLE_H
 
+#include "trainer_data.h"
+
 typedef struct BATTLEMSG {
     u8 unk0;
     u8 unk1;
@@ -30,13 +32,13 @@ typedef struct UnkBtlCtxSub_70 {
     u8 unk34[4];
 } UnkBtlCtxSub_70;
 
-typedef struct UnkBtlBitfield_72 {
-    u32 unk0_0:2;
-    u32 unk0_2:3;
-    u32 unk0_5:2;
-    u32 unk0_7:3;
-    u32 unk0_A:2;
-    u32 unk0_C:3;
+typedef struct SideConditionData {
+    u32 reflectBattler:2;
+    u32 reflectTurns:3;
+    u32 lightScreenBattler:2;
+    u32 lightScreenTurns:3;
+    u32 mistBattler:2;
+    u32 mistTurns:3;
     u32 unk0_F:2;
     u32 unk0_11:3;
     u32 unk0_14:1;
@@ -46,7 +48,7 @@ typedef struct UnkBtlBitfield_72 {
     u32 unk4_0:2;
     u32 unk4_2:2;
     u32 unk4_4:28;
-} UnkBtlBitfield_72;
+} SideConditionData;
 
 typedef struct UnkBtlCtxSub_73 {
     u32 unk0_0:1;
@@ -165,12 +167,12 @@ typedef struct BATTLEMON {
     u16 unk6;
     u16 unk8;
     u16 unkA;
-    u16 unkC[4];
+    u16 moves[4];
     u32 hpIV:5, atkIV:5, defIV:5, spdIV:5, spatkIV:5, spdefIV:5, isEgg:1, isNicknamed:1;
     s8 statChanges[8];
     int unk20;
-    u8 unk24;
-    u8 unk25;
+    u8 type1;
+    u8 type2;
     u8 unk26_0:5, unk26_5:1, unk26_6:2;
     u8 unk27;
     u32 unk28_0:1, unk28_1:1, unk28_2:1, unk28_3:1, 
@@ -277,8 +279,8 @@ typedef struct BATTLECONTEXT {
     void * unk_17C;
     u32 unk_180;
     UnkBtlCtxSub_70 unk_184;
-    u32 field71_0x168[2];
-    UnkBtlBitfield_72 field72_0x170[2];
+    u32 fieldSideConditionFlags[2];
+    SideConditionData fieldSideConditionData[2];
     UnkBtlCtxSub_73 unk_1D4[4];
     UnkBtlCtxSub_74 field74_0x188[4];
     u32 field75_0x198[4]; //note: this is an unidentified bitfield array
@@ -320,9 +322,9 @@ typedef struct BATTLECONTEXT {
     u8 field111_0x378[4][256];
     int unk_2700[400];
     BATTLEMON battleMons[4];
-    u32 field114_0xdc8;
-    u32 field115_0xdcc;
-    u32 field116_0xdd0;
+    u32 moveNoTemp;
+    u32 moveNoCur;
+    u32 moveNoPrev;
     u32 field117_0xdd4[4];
     u16 field118_0xde4[4];
     u16 field119_0xdec[4];
@@ -431,25 +433,6 @@ typedef struct OpponentData {
     u8 unk1A9[3];
 } OpponentData;
 
-typedef struct UnkBattleSystemSubAC_Sub {
-    u16 unk0;
-    u16 unk2;
-    u16 unk4[2];
-} UnkBattleSystemSubAC_Sub;
-
-typedef struct UnkBattleSystemSubAC {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 unk3;
-    u16 unk4[4];
-    u32 unkC;
-    u32 unk10;
-    u16 unk14[8];
-    UnkBattleSystemSubAC_Sub unk24;
-    UnkBattleSystemSubAC_Sub unk2C;
-} UnkBattleSystemSubAC; //size: 0x34
-
 typedef struct UnkBattleSystemSub17C {
     u32 unk0;
     BattleSystem *bsys;
@@ -485,7 +468,7 @@ struct BattleSystem {
     u32 unk20;
     u32 unk24;
     u32 unk28;
-    u32 unk2C; 
+    u32 battleTypeFlags; 
     BATTLECONTEXT *ctx;
     OpponentData *opponentData[4];
     int unk44; //labels wrong from here until unk23E8
@@ -494,7 +477,7 @@ struct BattleSystem {
     u32 *unk5C;
     u32 *unk60;
     u32 *unk64;
-    u32 *unk68[4];
+    PARTY *trainerParty[4];
     u32 *unk78[4];
     u32 *unk88;
     u32 unk8C;
@@ -502,9 +485,9 @@ struct BattleSystem {
     u32 unk94;
     u32 *unk98;
     u32 *unk9C;
-    u16 unkA0[4];
-    u8 unkA8[4];
-    UnkBattleSystemSubAC unkAC[4];
+    u16 trainerId[4];
+    u8 trainerGender[4];
+    TRAINER trainers[4];
     UnkBattleSystemSub17C unk17C[2];
     u32 unk19C;
     u32 unk1A0[2];
@@ -547,7 +530,7 @@ struct BattleSystem {
     int unk2414;
     u8 unk2418[4];
     u32 unk241C;
-    u8 unk2420;
+    u8 battleOutcomeFlag;
     u8 unk2421;
     u16 unk2422;
     int unk2424;
@@ -566,7 +549,7 @@ struct BattleSystem {
     u16 unk2454[4];
     u16 unk245C[4];
     int unk2464[4];
-    u32 unk2474_0:1, unk2474_1:31;
+    u32 unk2474_0:1, unk2474_1:1, unk2474_2:30;
     u32 unk2478;
     u8 unk247C[4];
 };
@@ -586,5 +569,14 @@ struct UnkBtlCtxSub_67 {
 }; //size: 0x58
 
 typedef BOOL (*BtlCmdFunc)(BattleSystem*, BATTLECONTEXT*);
+
+typedef struct {
+    u16 unk0;
+    u16 unk2;
+    u16 unk4;
+    u16 unk6;
+    u16 unk8[4];
+    u16 unk10;
+} UnkBtlCmdStruct_CPM;
 
 #endif

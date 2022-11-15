@@ -456,8 +456,8 @@ _0223AA34:
 	.balign 4, 0
 	thumb_func_end ov12_0223A9F4
 
-	thumb_func_start ov12_0223AA40
-ov12_0223AA40: ; 0x0223AA40
+	thumb_func_start BattleSys_GetPlayerProfile
+BattleSys_GetPlayerProfile: ; 0x0223AA40
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #0x2c]
@@ -492,7 +492,7 @@ _0223AA78:
 	add r0, r5, r0
 	ldr r0, [r0, #0x48]
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov12_0223AA40
+	thumb_func_end BattleSys_GetPlayerProfile
 
 	thumb_func_start ov12_0223AA80
 ov12_0223AA80: ; 0x0223AA80

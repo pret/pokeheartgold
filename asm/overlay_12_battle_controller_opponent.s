@@ -12240,7 +12240,7 @@ _0225E8EC:
 	str r1, [r0]
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]
-	bl ov12_0223AA40
+	bl BattleSys_GetPlayerProfile
 	ldr r1, [r4, #4]
 	str r0, [r1, #4]
 	ldr r0, [r4, #4]
@@ -19066,7 +19066,7 @@ _02261F0A:
 _02261F0E:
 	add r0, r5, #0
 	add r1, r6, #0
-	bl ov12_0223AA40
+	bl BattleSys_GetPlayerProfile
 	bl PlayerProfile_GetVersion
 	cmp r0, #0
 	beq _02261F24
