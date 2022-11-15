@@ -8714,7 +8714,7 @@ BtlCmd_GetMoveParam: ; 0x022448EC
 	ldr r0, [r4, r0]
 	lsl r0, r0, #4
 	add r0, r2, r0
-	bl GetAttrFromWazaTbl
+	bl GetMoveTblAttr
 	mov r1, #0x4d
 	lsl r1, r1, #2
 	str r0, [r4, r1]

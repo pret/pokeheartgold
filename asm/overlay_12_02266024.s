@@ -2717,7 +2717,7 @@ _02267654:
 	cmp r0, #0
 	beq _0226766E
 	add r1, r7, #0
-	bl GetWazaAttr
+	bl GetMoveAttr
 	add r1, r0, #0
 	add r0, r5, #0
 	add r2, r4, #0
@@ -4987,7 +4987,7 @@ _022688CA:
 	cmp r0, #0
 	beq _02268910
 	mov r1, #3
-	bl GetWazaAttr
+	bl GetMoveAttr
 	str r0, [sp, #0x3c]
 	bl sub_020776B4
 	str r0, [sp, #0x40]
@@ -5277,7 +5277,7 @@ _02268B20:
 	cmp r0, #0
 	beq _02268B9A
 	mov r1, #3
-	bl GetWazaAttr
+	bl GetMoveAttr
 	add r2, r0, #0
 	ldr r0, _02268BB0 ; =0x00004E39
 	ldr r1, _02268BB4 ; =ov12_0226E2B8

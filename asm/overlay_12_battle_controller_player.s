@@ -27,7 +27,7 @@ ov12_02248660: ; 0x02248660
 	bl ov12_0224E384
 	ldr r0, _022486A8 ; =0x000003DE
 	add r0, r4, r0
-	bl LoadAllWazaTbl
+	bl LoadMoveTbl
 	mov r0, #5
 	bl LoadAllItemData
 	ldr r1, _022486AC ; =0x00002120

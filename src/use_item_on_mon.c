@@ -73,7 +73,7 @@ BOOL CanUseItemOnPokemon(POKEMON *pokemon, u16 itemID, s32 moveIdx, HeapID heapI
     }
 
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PP_UP) || GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PP_MAX)) {
-        if (GetMonData(pokemon, MON_DATA_MOVE1PPUP + moveIdx, NULL) < 3 && WazaGetMaxPp(GetMonData(pokemon, MON_DATA_MOVE1 + moveIdx, NULL), 0) >= 5) {
+        if (GetMonData(pokemon, MON_DATA_MOVE1PPUP + moveIdx, NULL) < 3 && GetMoveMaxPP(GetMonData(pokemon, MON_DATA_MOVE1 + moveIdx, NULL), 0) >= 5) {
             FreeToHeap(itemData);
             return TRUE;
         }
@@ -480,7 +480,7 @@ BOOL MonMoveCanRestorePP(POKEMON *pokemon, int moveIdx) {
 
     u8 pp = GetMonData(pokemon, MON_DATA_MOVE1PP + moveIdx, NULL);
     u8 ppUp = GetMonData(pokemon, MON_DATA_MOVE1PPUP + moveIdx, NULL);
-    return (u8)(pp < WazaGetMaxPp(moveID, ppUp));
+    return (u8)(pp < GetMoveMaxPP(moveID, ppUp));
 }
 
 BOOL MonMoveRestorePP(POKEMON *pokemon, int moveIdx, int ppRestore) {
@@ -492,7 +492,7 @@ BOOL MonMoveRestorePP(POKEMON *pokemon, int moveIdx, int ppRestore) {
     int ppAttr = MON_DATA_MOVE1PP + moveIdx;
     u8 pp = GetMonData(pokemon, ppAttr, NULL);
     int ppUpAttr = MON_DATA_MOVE1PPUP + moveIdx;
-    u8 maxPp = WazaGetMaxPp(move_id, GetMonData(pokemon, ppUpAttr, NULL));
+    u8 maxPp = GetMoveMaxPP(move_id, GetMonData(pokemon, ppUpAttr, NULL));
     if (pp < maxPp) {
         if (ppRestore == PP_RESTORE_ALL) {
             pp = maxPp;
@@ -519,20 +519,20 @@ BOOL BoostMonMovePpUpBy(POKEMON *pokemon, int moveIdx, int nPpUp) {
     }
     
     move = GetMonData(pokemon, MON_DATA_MOVE1 + moveIdx, NULL);
-    if (WazaGetMaxPp(move, 0) < 5) {
+    if (GetMoveMaxPP(move, 0) < 5) {
         return FALSE;
     }
 
     int ppAttr = MON_DATA_MOVE1PP + moveIdx;
     pp = GetMonData(pokemon, ppAttr, NULL);
-    u8 maxPp = WazaGetMaxPp(move, ppUp);
+    u8 maxPp = GetMoveMaxPP(move, ppUp);
     if ((u32)(ppUp + nPpUp) > 3) {
         ppUp = 3;
     } else {
         ppUp = ppUp + nPpUp;
     }
     
-    u8 newMaxPp = WazaGetMaxPp(move, ppUp);
+    u8 newMaxPp = GetMoveMaxPP(move, ppUp);
     pp = pp + newMaxPp - maxPp;
     SetMonData(pokemon, ppUpAttr, &ppUp);
     SetMonData(pokemon, ppAttr, &pp);

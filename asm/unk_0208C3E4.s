@@ -2517,7 +2517,7 @@ _0208D8B8:
 	mov r1, #0
 	ldrh r0, [r0, #0x18]
 	str r0, [sp, #0x20]
-	bl WazaGetMaxPp
+	bl GetMoveMaxPP
 	str r0, [sp, #0x1c]
 	str r0, [sp, #0x18]
 _0208D8CA:
@@ -2659,7 +2659,7 @@ sub_0208D9A0: ; 0x0208D9A0
 	bl FillWindowPixelBuffer
 	add r0, r4, #0
 	mov r1, #2
-	bl GetWazaAttr
+	bl GetMoveAttr
 	add r2, r0, #0
 	cmp r2, #1
 	bhi _0208DA10
@@ -2689,7 +2689,7 @@ _0208DA1E:
 	bl sub_0208C778
 	add r0, r4, #0
 	mov r1, #4
-	bl GetWazaAttr
+	bl GetMoveAttr
 	add r2, r0, #0
 	bne _0208DA4E
 	mov r2, #0x7a

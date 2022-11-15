@@ -700,7 +700,7 @@ static void DamageCalcDefault(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     } else if (ctx->moveType) {
         type = ctx->moveType;
     } else {
-        type = ctx->unk_334.unkA8[ctx->moveNoCur].moveType;
+        type = ctx->unk_334.moveData[ctx->moveNoCur].type;
     }
 
     ctx->damage = ov12_02256FF8(bsys, ctx, ctx->moveNoCur, ctx->fieldSideConditionFlags[ov12_0223AB1C(bsys, ctx->battlerIdTarget)], ctx->unk_180, ctx->movePower, type, ctx->battlerIdAttacker, ctx->battlerIdTarget, ctx->criticalMultiplier);
@@ -1125,7 +1125,7 @@ BOOL BtlCmd_JumpToSubSeq(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 BOOL BtlCmd_JumpToCurMoveEffectScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    ov12_02245518(ctx, 30, ctx->unk_334.unkA8[ctx->moveNoCur].unk0);
+    ov12_02245518(ctx, 30, ctx->unk_334.moveData[ctx->moveNoCur].effect);
 
     return FALSE;
 }
@@ -2296,7 +2296,7 @@ BOOL BtlCmd_TryConversion(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     for (i = 0; i < cnt; i++) {
         if (ctx->battleMons[ctx->battlerIdAttacker].moves[i] != MOVE_CONVERSION) {
-            moveType = ctx->unk_334.unkA8[ctx->battleMons[ctx->battlerIdAttacker].moves[i]].moveType;
+            moveType = ctx->unk_334.moveData[ctx->battleMons[ctx->battlerIdAttacker].moves[i]].type;
             if (moveType == TYPE_MYSTERY) {
                 if (GetBattlerVar(ctx, ctx->battlerIdAttacker, 27, 0) == TYPE_GHOST || GetBattlerVar(ctx, ctx->battlerIdAttacker, 28, 0) == TYPE_GHOST) {
                     moveType = TYPE_GHOST;
@@ -2317,7 +2317,7 @@ BOOL BtlCmd_TryConversion(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             do {
                 i = BattleSys_Random(bsys) % cnt;
             } while(ctx->battleMons[ctx->battlerIdAttacker].moves[i] == MOVE_CONVERSION);
-            moveType = ctx->unk_334.unkA8[ctx->battleMons[ctx->battlerIdAttacker].moves[i]].moveType;
+            moveType = ctx->unk_334.moveData[ctx->battleMons[ctx->battlerIdAttacker].moves[i]].type;
             if (moveType == TYPE_MYSTERY) {
                 if (GetBattlerVar(ctx, ctx->battlerIdAttacker, 27, 0) == TYPE_GHOST || GetBattlerVar(ctx, ctx->battlerIdAttacker, 28, 0) == TYPE_GHOST) {
                     moveType = TYPE_GHOST;

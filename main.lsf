@@ -246,7 +246,7 @@ Static main
 	Object src/get_egg.o
 	Object asm/unk_0206D494.o
 	Object src/pokemon.o
-	Object src/waza.o
+	Object src/move.o
 	Object src/trainer_data.o
 	Object src/pokemon_storage_system.o
 	Object src/pokemon_icon_idx.o

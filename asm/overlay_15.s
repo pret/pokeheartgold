@@ -10463,7 +10463,7 @@ ov15_021FE620: ; 0x021FE620
 	bl String_dtor
 	ldr r0, [sp, #0x10]
 	mov r1, #0
-	bl WazaGetMaxPp
+	bl GetMoveMaxPP
 	add r7, r0, #0
 	mov r0, #0x2f
 	lsl r0, r0, #4
@@ -10505,7 +10505,7 @@ ov15_021FE620: ; 0x021FE620
 	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x10]
 	mov r1, #2
-	bl GetWazaAttr
+	bl GetMoveAttr
 	lsl r0, r0, #0x10
 	lsr r7, r0, #0x10
 	cmp r7, #1
@@ -10557,7 +10557,7 @@ _021FE79C:
 	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x10]
 	mov r1, #4
-	bl GetWazaAttr
+	bl GetMoveAttr
 	lsl r0, r0, #0x10
 	lsr r7, r0, #0x10
 	bne _021FE800
@@ -12815,12 +12815,12 @@ ov15_021FF97C: ; 0x021FF97C
 	bl TMHMGetMove
 	mov r1, #3
 	add r4, r0, #0
-	bl GetWazaAttr
+	bl GetMoveAttr
 	lsl r0, r0, #0x10
 	lsr r6, r0, #0x10
 	add r0, r4, #0
 	mov r1, #1
-	bl GetWazaAttr
+	bl GetMoveAttr
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
 	bl sub_020776B4

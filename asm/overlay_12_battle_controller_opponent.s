@@ -18817,7 +18817,7 @@ ov12_02261D30: ; 0x02261D30
 	ldrh r6, [r0, #0x10]
 	mov r1, #9
 	add r0, r6, #0
-	bl GetWazaAttr
+	bl GetMoveAttr
 	mov r1, #0x40
 	tst r0, r1
 	bne _02261D50
@@ -18829,7 +18829,7 @@ _02261D52:
 	strb r0, [r4]
 	add r0, r6, #0
 	mov r1, #9
-	bl GetWazaAttr
+	bl GetMoveAttr
 	mov r1, #0x80
 	tst r0, r1
 	beq _02261D68

@@ -997,7 +997,7 @@
 .public GameStats_sizeof
 .public GenerateShinyPersonality
 .public GetArceusTypeByHeldItemEffect
-.public GetAttrFromWazaTbl
+.public GetMoveTblAttr
 .public GetBattleMonIconNaixEx
 .public GetBattleMonIconPaletteEx
 .public GetBgColorMode
@@ -1113,7 +1113,7 @@
 .public GetTrainerMessageByIdPair
 .public GetVarAddr
 .public GetVarPointer
-.public GetWazaAttr
+.public GetMoveAttr
 .public GetWindowBaseTile
 .public GetWindowBgConfig
 .public GetWindowBgId
@@ -1216,7 +1216,7 @@
 .public ListMenuUpdateCursorObj
 .public ListMenu_ProcessInput
 .public LoadAllItemData
-.public LoadAllWazaTbl
+.public LoadMoveTbl
 .public LoadAreaOrDungeonLightTxt
 .public LoadDwcOverlay
 .public LoadFontPal0
@@ -3935,7 +3935,7 @@
 .public WallpaperPasswordBank_GetIndexOfWord
 .public WallpaperPasswordBank_GetNum
 .public WallpaperPasswordBank_GetWordI
-.public WazaGetMaxPp
+.public GetMoveMaxPP
 .public WazaOshieGet
 .public WildEncounters_ReadFromNarc
 .public WildMonSetRandomHeldItem

@@ -1316,7 +1316,7 @@ _0224EF6A:
 	add r1, #0x30
 	ldrh r0, [r0, #0xc]
 	ldrb r1, [r1]
-	bl WazaGetMaxPp
+	bl GetMoveMaxPP
 	pop {r4, r5, r6, pc}
 _0224EF7E:
 	add r4, #0x34
@@ -2731,7 +2731,7 @@ _0224F956:
 	add r1, #0x30
 	ldrh r0, [r0, #0xc]
 	ldrb r1, [r1]
-	bl WazaGetMaxPp
+	bl GetMoveMaxPP
 	add r4, #0x2c
 	ldrb r1, [r4, r6]
 	add r1, r5, r1
@@ -15683,7 +15683,7 @@ _02255B68:
 	add r2, r5, r1
 	ldr r1, _02255DB8 ; =0x00002D70
 	ldrb r1, [r2, r1]
-	bl WazaGetMaxPp
+	bl GetMoveMaxPP
 	add r1, r4, r7
 	add r2, r5, r1
 	ldr r1, _02255DBC ; =0x00002D6C
@@ -16395,7 +16395,7 @@ _022560BA:
 	add r2, r6, r1
 	ldr r1, _022562EC ; =0x00002D70
 	ldrb r1, [r2, r1]
-	bl WazaGetMaxPp
+	bl GetMoveMaxPP
 	ldr r1, [sp, #8]
 	add r1, r4, r1
 	add r2, r6, r1

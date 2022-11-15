@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_BATTLE_H
 #define POKEHEARTGOLD_BATTLE_H
 
+#include "move.h"
 #include "trainer_data.h"
 
 typedef struct BATTLEMSG {
@@ -89,21 +90,6 @@ typedef struct UnkBtlCtxSub_74 {
     int unk18;
 } UnkBtlCtxSub_74;
 
-typedef struct UnkBtlCtxSub_76_Sub {
-    u16 unk0;
-    u8 unk1;
-    u8 unk3;
-    u8 moveType;
-    u8 unk5;
-    u8 unk6;
-    u8 unk7;
-    u16 unk8;
-    s8 unkA;
-    u8 unkB;
-    u16 unkC;
-    u16 unkE;
-} UnkBtlCtxSub_76_Sub;
-
 typedef struct UnkBtlCtxSub_76 {
     u8 unk0;
     u8 unk1;
@@ -130,7 +116,7 @@ typedef struct UnkBtlCtxSub_76 {
     u8 unk9F[2];
     u16 unkA0[2];
     u8 unkA4[4];
-    UnkBtlCtxSub_76_Sub unkA8[468];
+    MOVE moveData[468];
     u32 unk27C;
     u16 unk280[4];
     u16 unk288[4];
