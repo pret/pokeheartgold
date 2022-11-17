@@ -252,7 +252,7 @@ _02264A02:
 	and r4, r0
 _02264A06:
 	ldr r0, [r5, #0xc]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #1
 	tst r0, r1
 	beq _02264A16
@@ -850,7 +850,7 @@ ov12_02264E84: ; 0x02264E84
 	bl ov12_02264F00
 _02264E9E:
 	ldr r0, [r4, #0xc]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #0x22
 	lsl r1, r1, #4
 	tst r0, r1
@@ -912,7 +912,7 @@ ov12_02264F00: ; 0x02264F00
 	cmp r0, #0
 	beq _02264F26
 	ldr r0, [r5, #0xc]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #0x22
 	lsl r1, r1, #4
 	tst r0, r1

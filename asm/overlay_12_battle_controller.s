@@ -1471,7 +1471,7 @@ _02262BD0:
 	add r0, sp, #0x48
 	strb r1, [r0, #9]
 	ldr r0, [sp, #4]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #2
 	str r0, [sp, #0x20]
 	tst r0, r1
@@ -1581,7 +1581,7 @@ _02262C9E:
 _02262CBC:
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0xc]
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	cmp r0, #0
 	beq _02262CD2
 	ldr r0, [sp, #4]
@@ -1656,7 +1656,7 @@ _02262D48:
 _02262D56:
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0xc]
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	cmp r0, #0
 	beq _02262D6C
 	ldr r0, [sp, #4]
@@ -2003,7 +2003,7 @@ ov12_02262FFC: ; 0x02262FFC
 	str r3, [sp, #0xc]
 	bl ov12_0224EDC0
 	ldr r0, [sp, #4]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r2, #0x10
 	add r1, sp, #0x1c
 	strb r2, [r1]
@@ -2212,7 +2212,7 @@ _02263170:
 	cmp r1, #4
 	blt _02263162
 	ldr r0, [sp, #4]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	cmp r0, #0x4a
 	bne _0226324E
 	mov r0, #1
@@ -2304,7 +2304,7 @@ _0226324A:
 	b _02263298
 _0226324E:
 	ldr r0, [sp, #4]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	cmp r0, #0
 	bne _0226328E
 	mov r2, #0xba
@@ -3498,8 +3498,8 @@ _02263B44: .word 0x00002DBE
 _02263B48: .word 0x00002DA4
 	thumb_func_end ov12_02263A1C
 
-	thumb_func_start ov12_02263B4C
-ov12_02263B4C: ; 0x02263B4C
+	thumb_func_start BattleController_EmitBattleMonToPartyMonCopy
+BattleController_EmitBattleMonToPartyMonCopy: ; 0x02263B4C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x3c
 	add r6, r1, #0
@@ -3546,7 +3546,7 @@ ov12_02263B4C: ; 0x02263B4C
 	ldrh r1, [r3, r1]
 	strh r1, [r2, #0xc]
 	ldr r1, [sp, #8]
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	lsl r0, r0, #3
 	add r1, r6, r0
 	mov r0, #0x71
@@ -3673,7 +3673,7 @@ _02263CA0: .word 0xFFFFF0FF
 _02263CA4: .word 0x00002DB0
 _02263CA8: .word 0xFBFFFFFF
 _02263CAC: .word 0xF7FFFFFF
-	thumb_func_end ov12_02263B4C
+	thumb_func_end BattleController_EmitBattleMonToPartyMonCopy
 
 	thumb_func_start ov12_02263CB0
 ov12_02263CB0: ; 0x02263CB0
@@ -3709,8 +3709,8 @@ ov12_02263CCC: ; 0x02263CCC
 	.balign 4, 0
 	thumb_func_end ov12_02263CCC
 
-	thumb_func_start ov12_02263CE8
-ov12_02263CE8: ; 0x02263CE8
+	thumb_func_start BattleControl_EmitPartyStatusHeal
+BattleControl_EmitPartyStatusHeal: ; 0x02263CE8
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	mov r5, #0x2a
@@ -3732,7 +3732,7 @@ ov12_02263CE8: ; 0x02263CE8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02263D10: .word 0x00002D67
-	thumb_func_end ov12_02263CE8
+	thumb_func_end BattleControl_EmitPartyStatusHeal
 
 	thumb_func_start ov12_02263D14
 ov12_02263D14: ; 0x02263D14
@@ -4042,7 +4042,7 @@ ov12_02263F30: ; 0x02263F30
 	sub sp, #0x24
 	add r5, r0, #0
 	add r4, r1, #0
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r2, #0x37
 	add r1, sp, #4
 	strb r2, [r1]
@@ -4228,7 +4228,7 @@ ov12_0226408C: ; 0x0226408C
 	sub sp, #0x28
 	add r6, r0, #0
 	add r5, r1, #0
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	str r0, [sp, #4]
 	mov r1, #0x3c
 	add r0, sp, #8
@@ -4300,7 +4300,7 @@ ov12_02264120: ; 0x02264120
 	push {r3, r4, lr}
 	sub sp, #0x24
 	add r4, r0, #0
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r2, #0x3d
 	add r1, sp, #4
 	strb r2, [r1]
@@ -4489,7 +4489,7 @@ ov12_02264288: ; 0x02264288
 	push {r3, r4, r5, lr}
 	sub sp, #0x28
 	add r5, r0, #0
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	add r4, r0, #0
 	mov r1, #0x41
 	add r0, sp, #4
@@ -4954,7 +4954,7 @@ ov12_022645F8: ; 0x022645F8
 	add r6, r3, #0
 	bl MIi_CpuClearFast
 	ldr r0, [sp]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	add r4, r0, #0
 	mov r0, #0xc
 	and r0, r4
@@ -4966,7 +4966,7 @@ ov12_022645F8: ; 0x022645F8
 	beq _02264636
 	ldr r0, [sp]
 	ldr r1, [sp, #0x38]
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	cmp r0, #0
 	bne _0226464C
 _02264636:
@@ -4974,7 +4974,7 @@ _02264636:
 	bne _02264646
 	ldr r0, [sp]
 	ldr r1, [sp, #0x38]
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	cmp r0, #0
 	bne _0226464C
 _02264646:

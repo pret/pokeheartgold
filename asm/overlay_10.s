@@ -555,7 +555,7 @@ _0221C1DA:
 	cmp r2, r0
 	bne _0221C23E
 	add r0, r7, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	cmp r0, #0
 	bne _0221C23E
 	ldr r0, _0221C264 ; =0x000003CF
@@ -1290,7 +1290,7 @@ ov10_0221C7D8: ; 0x0221C7D8
 	bl ov10_0221EF34
 	add r1, r0, #0
 	add r0, r7, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	lsl r0, r0, #2
 	add r1, r5, r0
 	mov r0, #0x6f
@@ -1328,7 +1328,7 @@ ov10_0221C828: ; 0x0221C828
 	bl ov10_0221EF34
 	add r1, r0, #0
 	add r0, r7, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	lsl r0, r0, #2
 	add r1, r5, r0
 	mov r0, #0x6f
@@ -4314,7 +4314,7 @@ ov10_0221DF20: ; 0x0221DF20
 	bl ov10_0221EF34
 	add r1, r0, #0
 	add r0, r7, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	cmp r4, #4
 	beq _0221DF5E
 	mov r1, #1
@@ -6593,7 +6593,7 @@ ov10_0221F084: ; 0x0221F084
 	lsl r1, r1, #4
 	ldrb r1, [r6, r1]
 	add r5, r2, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	mov r4, #0
 	str r0, [sp, #0x28]
 	add r0, r4, #0
@@ -7386,7 +7386,7 @@ ov10_0221F62C: ; 0x0221F62C
 	str r0, [sp, #0x14]
 	add r5, r1, #0
 	str r2, [sp, #0x18]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #2
 	tst r0, r1
 	beq _0221F646
@@ -7603,7 +7603,7 @@ ov10_0221F7F0: ; 0x0221F7F0
 	add r7, r0, #0
 	add r5, r1, #0
 	str r2, [sp, #0x14]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r4, #2
 	tst r0, r4
 	beq _0221F808
@@ -7728,12 +7728,12 @@ _0221F8E2:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x6c]
 	add r0, r7, #0
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #0x10
 	tst r0, r1
 	bne _0221F902
 	add r0, r7, #0
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #8
 	tst r0, r1
 	beq _0221F908
@@ -8336,7 +8336,7 @@ _0221FDD0:
 	blt _0221FD70
 _0221FDDC:
 	add r0, r5, #0
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #2
 	tst r0, r1
 	bne _0221FDEE
@@ -8504,12 +8504,12 @@ _0221FF1C:
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	add r0, r6, #0
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #0x10
 	tst r0, r1
 	bne _0221FF3A
 	add r0, r6, #0
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #8
 	tst r0, r1
 	beq _0221FF3E
@@ -8652,12 +8652,12 @@ _0222004A:
 	ldr r1, [sp, #0x18]
 	lsl r1, r1, #0x18
 	lsr r4, r1, #0x18
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #0x10
 	tst r0, r1
 	bne _02220066
 	ldr r0, [sp, #0x14]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #8
 	tst r0, r1
 	beq _0222006A
@@ -9137,12 +9137,12 @@ _0222042A:
 	lsl r0, r6, #0x18
 	lsr r4, r0, #0x18
 	ldr r0, [sp, #4]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #0x10
 	tst r0, r1
 	bne _0222044A
 	ldr r0, [sp, #4]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #8
 	tst r0, r1
 	beq _0222044E
@@ -9336,14 +9336,14 @@ ov10_022205BC: ; 0x022205BC
 	add r1, r0, #0
 	str r0, [sp]
 	ldr r5, [r1, #0x30]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	add r6, r0, #0
 	mov r0, #1
 	tst r0, r6
 	bne _022205E0
 	ldr r0, [sp]
 	add r1, r7, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	cmp r0, #0
 	bne _022206A0
 _022205E0:

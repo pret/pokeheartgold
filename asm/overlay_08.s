@@ -3654,7 +3654,7 @@ ov08_0221DAE4: ; 0x0221DAE4
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	cmp r0, #0x4a
 	beq _0221DB00
 	cmp r0, #0x4b
@@ -3674,7 +3674,7 @@ ov08_0221DB04: ; 0x0221DB04
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	cmp r0, #0x4a
 	beq _0221DB20
 	cmp r0, #0x4b
@@ -12766,7 +12766,7 @@ _02222614:
 	bl ov08_02223B78
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #1
 	lsl r1, r1, #0xa
 	tst r0, r1
@@ -13501,7 +13501,7 @@ _02222C34:
 	cmp r6, #3
 	bne _02222C9C
 	ldr r0, [r4]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #1
 	tst r0, r1
 	bne _02222C56

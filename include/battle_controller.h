@@ -34,5 +34,7 @@ void BattleController_EmitPrintReturnMessage(BattleSystem *bsys, BATTLECONTEXT *
 void BattleController_EmitPrintSendOutMessage(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int a3);
 void BattleController_EmitPrintEncounterMessage(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 void ov12_02263950(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+void BattleController_EmitBattleMonToPartyMonCopy(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+void BattleControl_EmitPartyStatusHeal(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
 
 #endif

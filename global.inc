@@ -11362,7 +11362,7 @@
 .public ov12_0223A7A0
 .public ov12_0223A7D4
 .public ov12_0223A7D8
-.public ov12_0223A7E0
+.public BattleSys_GetBattleType
 .public ov12_0223A7E4
 .public BattleSys_GetOpponentDataByBattlerId
 .public BattleSys_GetMaxBattlers
@@ -11404,7 +11404,7 @@
 .public ov12_0223AAC8
 .public ov12_0223AAD8
 .public ov12_0223AB0C
-.public ov12_0223AB1C
+.public BattleSys_GetFieldSide
 .public ov12_0223AB34
 .public ov12_0223AB3C
 .public ov12_0223AB40
@@ -11887,7 +11887,7 @@
 .public ov12_02251710
 .public ov12_022517EC
 .public ov12_02251A28
-.public ov12_02251C60
+.public BattleMon_GetMoveIndex
 .public ov12_02251C74
 .public ov12_02251D28
 .public ov12_02252054
@@ -11963,7 +11963,7 @@
 .public ov12_02257C30
 .public ov12_02257C5C
 .public ov12_02257D6C
-.public ov12_02257DA4
+.public CheckLegalMetronomeMove
 .public ov12_02257DFC
 .public ov12_02257E38
 .public ov12_02257E74
@@ -12255,10 +12255,10 @@
 .public ov12_022639B8
 .public ov12_02263A00
 .public ov12_02263A1C
-.public ov12_02263B4C
+.public BattleController_EmitBattleMonToPartyMonCopy
 .public ov12_02263CB0
 .public ov12_02263CCC
-.public ov12_02263CE8
+.public BattleControl_EmitPartyStatusHeal
 .public ov12_02263D14
 .public ov12_02263D48
 .public ov12_02263D6C

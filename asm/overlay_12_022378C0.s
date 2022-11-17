@@ -3760,7 +3760,7 @@ ov12_02239854: ; 0x02239854
 	bl ov12_0223BD2C
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #0x22
 	lsl r1, r1, #4
 	tst r0, r1
@@ -3801,7 +3801,7 @@ _022398A0:
 _022398BE:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	cmp r0, #0
 	bne _022398FE
 	add r0, r5, #0

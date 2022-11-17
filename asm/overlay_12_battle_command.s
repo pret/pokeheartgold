@@ -5,1755 +5,6 @@
 
 	.text
 
-	thumb_func_start BtlCmd_TryOHKO
-BtlCmd_TryOHKO: ; 0x022404E0
-	push {r4, r5, r6, lr}
-	add r4, r1, #0
-	add r6, r0, #0
-	add r0, r4, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	ldr r1, _022406B4 ; =0x0000213C
-	mov r0, #1
-	ldr r2, [r4, r1]
-	lsl r0, r0, #0xa
-	orr r0, r2
-	str r0, [r4, r1]
-	ldr r1, [r4, #0x64]
-	ldr r2, [r4, #0x6c]
-	add r0, r4, #0
-	mov r3, #5
-	bl CheckBattlerAbilityIfNotIgnored
-	cmp r0, #1
-	bne _02240518
-	ldr r1, _022406B8 ; =0x0000216C
-	mov r0, #2
-	ldr r2, [r4, r1]
-	lsl r0, r0, #0x12
-	orr r0, r2
-	str r0, [r4, r1]
-	b _022406B0
-_02240518:
-	ldr r1, [r4, #0x6c]
-	mov r0, #0xc0
-	mul r0, r1
-	add r1, r4, r0
-	mov r0, #0xb7
-	lsl r0, r0, #6
-	ldr r1, [r1, r0]
-	mov r0, #0x18
-	tst r0, r1
-	bne _022405A0
-	ldr r1, [r4, #0x64]
-	add r0, r4, #0
-	bl GetBattlerAbility
-	cmp r0, #0x63
-	beq _022405A0
-	ldr r1, [r4, #0x6c]
-	add r0, r4, #0
-	bl GetBattlerAbility
-	cmp r0, #0x63
-	beq _022405A0
-	ldr r0, _022406BC ; =0x00003044
-	mov r2, #0xc0
-	ldr r0, [r4, r0]
-	ldr r5, [r4, #0x6c]
-	lsl r0, r0, #4
-	add r1, r4, r0
-	ldr r0, _022406C0 ; =0x000003E3
-	ldrb r1, [r1, r0]
-	ldr r0, [r4, #0x64]
-	add r3, r0, #0
-	mul r3, r2
-	add r0, r4, r3
-	ldr r3, _022406C4 ; =0x00002D74
-	mul r2, r5
-	add r2, r4, r2
-	ldrb r0, [r0, r3]
-	ldrb r2, [r2, r3]
-	sub r0, r0, r2
-	add r0, r1, r0
-	lsl r0, r0, #0x10
-	lsr r5, r0, #0x10
-	add r0, r6, #0
-	bl BattleSys_Random
-	mov r1, #0x64
-	bl _s32_div_f
-	cmp r1, r5
-	bge _0224059C
-	ldr r1, [r4, #0x64]
-	mov r0, #0xc0
-	add r2, r1, #0
-	mul r2, r0
-	ldr r1, _022406C4 ; =0x00002D74
-	add r2, r4, r2
-	ldrb r3, [r2, r1]
-	ldr r2, [r4, #0x6c]
-	mul r0, r2
-	add r0, r4, r0
-	ldrb r0, [r0, r1]
-	cmp r3, r0
-	blo _0224059C
-	mov r3, #1
-	b _0224065A
-_0224059C:
-	mov r3, #0
-	b _0224065A
-_022405A0:
-	ldr r1, [r4, #0x6c]
-	mov r0, #0xc0
-	mul r0, r1
-	add r3, r4, r0
-	ldr r0, _022406C8 ; =0x00002DCC
-	ldr r1, [r4, #0x64]
-	ldr r2, [r3, r0]
-	lsl r2, r2, #0x1e
-	lsr r2, r2, #0x1e
-	cmp r1, r2
-	bne _022405C0
-	sub r0, #0xc
-	ldr r2, [r3, r0]
-	mov r0, #0x18
-	tst r0, r2
-	bne _022405D6
-_022405C0:
-	add r0, r4, #0
-	bl GetBattlerAbility
-	cmp r0, #0x63
-	beq _022405D6
-	ldr r1, [r4, #0x6c]
-	add r0, r4, #0
-	bl GetBattlerAbility
-	cmp r0, #0x63
-	bne _022405F4
-_022405D6:
-	ldr r0, [r4, #0x64]
-	mov r1, #0xc0
-	add r2, r0, #0
-	mul r2, r1
-	ldr r3, [r4, #0x6c]
-	add r0, r4, r2
-	ldr r2, _022406C4 ; =0x00002D74
-	mul r1, r3
-	add r1, r4, r1
-	ldrb r0, [r0, r2]
-	ldrb r1, [r1, r2]
-	cmp r0, r1
-	blo _022405F4
-	mov r3, #1
-	b _0224064E
-_022405F4:
-	ldr r0, _022406BC ; =0x00003044
-	mov r2, #0xc0
-	ldr r0, [r4, r0]
-	ldr r5, [r4, #0x6c]
-	lsl r0, r0, #4
-	add r1, r4, r0
-	ldr r0, _022406C0 ; =0x000003E3
-	ldrb r1, [r1, r0]
-	ldr r0, [r4, #0x64]
-	add r3, r0, #0
-	mul r3, r2
-	add r0, r4, r3
-	ldr r3, _022406C4 ; =0x00002D74
-	mul r2, r5
-	add r2, r4, r2
-	ldrb r0, [r0, r3]
-	ldrb r2, [r2, r3]
-	sub r0, r0, r2
-	add r0, r1, r0
-	lsl r0, r0, #0x10
-	lsr r5, r0, #0x10
-	add r0, r6, #0
-	bl BattleSys_Random
-	mov r1, #0x64
-	bl _s32_div_f
-	cmp r1, r5
-	bge _0224064C
-	ldr r1, [r4, #0x64]
-	mov r0, #0xc0
-	add r2, r1, #0
-	mul r2, r0
-	ldr r1, _022406C4 ; =0x00002D74
-	add r2, r4, r2
-	ldrb r3, [r2, r1]
-	ldr r2, [r4, #0x6c]
-	mul r0, r2
-	add r0, r4, r0
-	ldrb r0, [r0, r1]
-	cmp r3, r0
-	blo _0224064C
-	mov r3, #1
-	b _0224064E
-_0224064C:
-	mov r3, #0
-_0224064E:
-	ldr r1, _022406B8 ; =0x0000216C
-	mov r0, #1
-	ldr r2, [r4, r1]
-	lsl r0, r0, #0xa
-	orr r0, r2
-	str r0, [r4, r1]
-_0224065A:
-	cmp r3, #0
-	beq _02240680
-	ldr r1, [r4, #0x6c]
-	mov r0, #0xc0
-	mul r0, r1
-	add r1, r4, r0
-	ldr r0, _022406CC ; =0x00002D8C
-	ldr r0, [r1, r0]
-	ldr r1, _022406D0 ; =0x00002144
-	neg r0, r0
-	str r0, [r4, r1]
-	add r0, r1, #0
-	add r0, #0x28
-	ldr r2, [r4, r0]
-	mov r0, #0x20
-	orr r0, r2
-	add r1, #0x28
-	str r0, [r4, r1]
-	b _022406B0
-_02240680:
-	ldr r1, [r4, #0x64]
-	mov r0, #0xc0
-	add r2, r1, #0
-	mul r2, r0
-	ldr r1, _022406C4 ; =0x00002D74
-	add r2, r4, r2
-	ldrb r3, [r2, r1]
-	ldr r2, [r4, #0x6c]
-	mul r0, r2
-	add r0, r4, r0
-	ldrb r0, [r0, r1]
-	cmp r3, r0
-	ldr r1, _022406B8 ; =0x0000216C
-	blo _022406A6
-	ldr r2, [r4, r1]
-	mov r0, #1
-	orr r0, r2
-	str r0, [r4, r1]
-	b _022406B0
-_022406A6:
-	mov r0, #1
-	ldr r2, [r4, r1]
-	lsl r0, r0, #0xc
-	orr r0, r2
-	str r0, [r4, r1]
-_022406B0:
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-_022406B4: .word 0x0000213C
-_022406B8: .word 0x0000216C
-_022406BC: .word 0x00003044
-_022406C0: .word 0x000003E3
-_022406C4: .word 0x00002D74
-_022406C8: .word 0x00002DCC
-_022406CC: .word 0x00002D8C
-_022406D0: .word 0x00002144
-	thumb_func_end BtlCmd_TryOHKO
-
-	thumb_func_start BtlCmd_SetDamageDivide
-BtlCmd_SetDamageDivide: ; 0x022406D4
-	push {r3, r4, r5, r6, r7, lr}
-	add r4, r1, #0
-	add r5, r0, #0
-	add r0, r4, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	add r0, r4, #0
-	bl BattleScriptReadWord
-	add r6, r0, #0
-	add r0, r4, #0
-	bl BattleScriptReadWord
-	add r7, r0, #0
-	add r0, r5, #0
-	add r1, r4, #0
-	add r2, r6, #0
-	bl BattleScriptGetVarPointer
-	add r4, r0, #0
-	ldr r0, [r4]
-	add r1, r7, #0
-	bl ov12_02253178
-	str r0, [r4]
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end BtlCmd_SetDamageDivide
-
-	thumb_func_start BtlCmd_SetDamageDivideVar
-BtlCmd_SetDamageDivideVar: ; 0x0224070C
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r6, r0, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	add r0, r5, #0
-	bl BattleScriptReadWord
-	add r4, r0, #0
-	add r0, r5, #0
-	bl BattleScriptReadWord
-	add r7, r0, #0
-	add r0, r6, #0
-	add r1, r5, #0
-	add r2, r4, #0
-	bl BattleScriptGetVarPointer
-	add r4, r0, #0
-	add r0, r6, #0
-	add r1, r5, #0
-	add r2, r7, #0
-	bl BattleScriptGetVarPointer
-	add r1, r0, #0
-	ldr r0, [r4]
-	cmp r0, #0
-	bge _0224074E
-	mov r5, #0
-	mvn r5, r5
-	b _02240750
-_0224074E:
-	mov r5, #1
-_02240750:
-	ldr r0, [r4]
-	ldr r1, [r1]
-	bl _s32_div_f
-	str r0, [r4]
-	cmp r0, #0
-	bne _02240760
-	str r5, [r4]
-_02240760:
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end BtlCmd_SetDamageDivideVar
-
-	thumb_func_start BtlCmd_TryMimic
-BtlCmd_TryMimic: ; 0x02240764
-	push {r3, r4, r5, r6, r7, lr}
-	add r6, r1, #0
-	add r0, r6, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	add r0, r6, #0
-	bl BattleScriptReadWord
-	str r0, [sp]
-	ldr r0, [r6, #0x6c]
-	lsl r0, r0, #1
-	add r1, r6, r0
-	ldr r0, _02240888 ; =0x0000307C
-	ldrh r0, [r1, r0]
-	bl ov12_02257D6C
-	cmp r0, #0
-	beq _022407BE
-	ldr r0, [r6, #0x64]
-	mov r2, #2
-	mov r3, #0xc0
-	add r1, r0, #0
-	mul r1, r3
-	add r0, r6, r1
-	ldr r1, _0224088C ; =0x00002DB0
-	mov ip, r0
-	ldr r0, [r0, r1]
-	lsl r2, r2, #0x14
-	tst r0, r2
-	bne _022407BE
-	ldr r0, [r6, #0x6c]
-	add r4, r0, #0
-	mul r4, r3
-	add r4, r6, r4
-	ldr r4, [r4, r1]
-	lsl r1, r2, #3
-	tst r1, r4
-	bne _022407BE
-	lsl r0, r0, #1
-	add r1, r6, r0
-	ldr r0, _02240888 ; =0x0000307C
-	ldrh r7, [r1, r0]
-	cmp r7, #0
-	bne _022407C8
-_022407BE:
-	ldr r1, [sp]
-	add r0, r6, #0
-	bl BattleScriptIncrementPointer
-	b _02240884
-_022407C8:
-	mov r2, #0
-	sub r3, #0xc1
-	mov r4, ip
-	add r5, r2, #0
-_022407D0:
-	ldr r0, _02240890 ; =0x00002D4C
-	ldrh r0, [r4, r0]
-	cmp r7, r0
-	beq _022407F8
-	mov r0, ip
-	add r1, r0, r5
-	ldr r0, _02240890 ; =0x00002D4C
-	ldrh r0, [r1, r0]
-	cmp r0, #0x66
-	bne _022407EE
-	mov r0, #0
-	mvn r0, r0
-	cmp r3, r0
-	bne _022407EE
-	add r3, r2, #0
-_022407EE:
-	add r2, r2, #1
-	add r4, r4, #2
-	add r5, r5, #2
-	cmp r2, #4
-	blt _022407D0
-_022407F8:
-	cmp r2, #4
-	bne _0224087C
-	mov r4, #0x49
-	lsl r4, r4, #2
-	str r7, [r6, r4]
-	ldr r2, [r6, #0x64]
-	mov r1, #0xc0
-	add r5, r2, #0
-	mul r5, r1
-	add r5, r6, r5
-	lsl r2, r3, #1
-	add r5, r5, r2
-	ldr r0, [r6, r4]
-	ldr r2, _02240890 ; =0x00002D4C
-	strh r0, [r5, r2]
-	ldr r0, [r6, r4]
-	lsl r0, r0, #4
-	add r4, r6, r0
-	mov r0, #0xf9
-	lsl r0, r0, #2
-	ldrb r0, [r4, r0]
-	cmp r0, #5
-	bhs _02240828
-	b _0224082A
-_02240828:
-	mov r0, #5
-_0224082A:
-	ldr r4, [r6, #0x64]
-	add r2, #0x20
-	mul r1, r4
-	add r1, r6, r1
-	add r1, r1, r3
-	strb r0, [r1, r2]
-	add r0, r3, #0
-	bl MaskOfFlagNo
-	ldr r1, _02240894 ; =0x00002DCC
-	mov r4, #0xc0
-	add r3, r6, r1
-	ldr r1, [r6, #0x64]
-	mov r5, #0x3c
-	add r2, r1, #0
-	mul r2, r4
-	ldr r7, [r3, r2]
-	add r1, r7, #0
-	bic r1, r5
-	lsl r5, r7, #0x1a
-	lsr r5, r5, #0x1c
-	orr r0, r5
-	lsl r0, r0, #0x1c
-	lsr r0, r0, #0x1a
-	orr r0, r1
-	str r0, [r3, r2]
-	add r0, r4, #0
-	add r0, #0x64
-	ldr r1, [r6, r0]
-	add r0, r4, #0
-	add r0, #0xc3
-	cmp r1, r0
-	bne _02240884
-	ldr r0, [r6, #0x64]
-	add r2, r0, #0
-	mul r2, r4
-	ldr r1, [r3, r2]
-	ldr r0, _02240898 ; =0xFFFFE3FF
-	and r0, r1
-	str r0, [r3, r2]
-	b _02240884
-_0224087C:
-	ldr r1, [sp]
-	add r0, r6, #0
-	bl BattleScriptIncrementPointer
-_02240884:
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02240888: .word 0x0000307C
-_0224088C: .word 0x00002DB0
-_02240890: .word 0x00002D4C
-_02240894: .word 0x00002DCC
-_02240898: .word 0xFFFFE3FF
-	thumb_func_end BtlCmd_TryMimic
-
-	thumb_func_start BtlCmd_Metronome
-BtlCmd_Metronome: ; 0x0224089C
-	push {r3, r4, r5, r6, r7, lr}
-	add r6, r1, #0
-	add r7, r0, #0
-	add r0, r6, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	ldr r4, _022408F4 ; =0x00002D4C
-_022408AC:
-	add r0, r7, #0
-	bl BattleSys_Random
-	ldr r1, _022408F8 ; =0x000001D3
-	bl _s32_div_f
-	add r0, r1, #1
-	lsl r0, r0, #0x10
-	lsr r5, r0, #0x10
-	ldr r3, [r6, #0x64]
-	mov r0, #0xc0
-	mul r0, r3
-	mov r1, #0
-	add r2, r6, r0
-_022408C8:
-	ldrh r0, [r2, r4]
-	cmp r5, r0
-	beq _022408D6
-	add r1, r1, #1
-	add r2, r2, #2
-	cmp r1, #4
-	blt _022408C8
-_022408D6:
-	cmp r1, #4
-	bne _022408AC
-	add r2, r3, #0
-	add r0, r7, #0
-	add r1, r6, #0
-	add r3, r5, #0
-	bl ov12_02257DA4
-	cmp r0, #0
-	beq _022408AC
-	mov r0, #0x49
-	lsl r0, r0, #2
-	str r5, [r6, r0]
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_022408F4: .word 0x00002D4C
-_022408F8: .word 0x000001D3
-	thumb_func_end BtlCmd_Metronome
-
-	thumb_func_start BtlCmd_TryDisable
-BtlCmd_TryDisable: ; 0x022408FC
-	push {r3, r4, r5, r6, r7, lr}
-	add r4, r1, #0
-	add r5, r0, #0
-	add r0, r4, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	add r0, r4, #0
-	bl BattleScriptReadWord
-	add r6, r0, #0
-	mov r0, #0xb5
-	lsl r0, r0, #6
-	add r2, r4, r0
-	ldr r1, [r4, #0x6c]
-	mov r0, #0xc0
-	mul r0, r1
-	lsl r1, r1, #1
-	add r0, r2, r0
-	add r2, r4, r1
-	ldr r1, _022409B0 ; =0x0000307C
-	ldrh r1, [r2, r1]
-	bl ov12_02251C60
-	add r3, r0, #0
-	ldr r2, [r4, #0x6c]
-	mov r0, #0xc0
-	mul r0, r2
-	ldr r7, _022409B4 ; =0x00002DE8
-	add r1, r4, r0
-	ldrh r0, [r1, r7]
-	cmp r0, #0
-	bne _022409A2
-	cmp r3, #4
-	beq _022409A2
-	add r0, r7, #0
-	add r1, r1, r3
-	sub r0, #0x7c
-	ldrb r0, [r1, r0]
-	cmp r0, #0
-	beq _022409A2
-	lsl r0, r2, #1
-	add r1, r4, r0
-	ldr r0, _022409B0 ; =0x0000307C
-	ldrh r1, [r1, r0]
-	cmp r1, #0
-	beq _022409A2
-	mov r0, #0xc0
-	add r0, #0x64
-	str r1, [r4, r0]
-	mov r0, #0xc0
-	add r0, #0x64
-	ldr r2, [r4, #0x6c]
-	mov r1, #0xc0
-	mul r1, r2
-	ldr r0, [r4, r0]
-	add r1, r4, r1
-	strh r0, [r1, r7]
-	add r0, r5, #0
-	bl BattleSys_Random
-	add r1, r7, #0
-	sub r1, #0x20
-	add r3, r4, r1
-	ldr r4, [r4, #0x6c]
-	mov r1, #0xc0
-	add r2, r4, #0
-	mul r2, r1
-	ldr r1, [r3, r2]
-	mov r4, #7
-	bic r1, r4
-	lsr r5, r0, #0x1f
-	lsl r4, r0, #0x1e
-	sub r4, r4, r5
-	mov r0, #0x1e
-	ror r4, r0
-	add r0, r5, r4
-	add r4, r0, #3
-	mov r0, #7
-	and r0, r4
-	orr r0, r1
-	str r0, [r3, r2]
-	b _022409AA
-_022409A2:
-	add r0, r4, #0
-	add r1, r6, #0
-	bl BattleScriptIncrementPointer
-_022409AA:
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_022409B0: .word 0x0000307C
-_022409B4: .word 0x00002DE8
-	thumb_func_end BtlCmd_TryDisable
-
-	thumb_func_start BtlCmd_Counter
-BtlCmd_Counter: ; 0x022409B8
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #8
-	add r5, r1, #0
-	str r0, [sp]
-	add r0, r5, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	ldr r1, [r5, #0x64]
-	lsl r0, r1, #6
-	add r2, r5, r0
-	mov r0, #0x7a
-	lsl r0, r0, #2
-	ldr r4, [r2, r0]
-	ldr r0, [sp]
-	bl ov12_0223AB1C
-	str r0, [sp, #4]
-	ldr r0, [sp]
-	add r1, r4, #0
-	bl ov12_0223AB1C
-	ldr r6, [r5, #0x64]
-	add r3, r0, #0
-	lsl r0, r6, #6
-	add r1, r5, r0
-	lsl r0, r4, #2
-	add r0, r1, r0
-	mov r1, #0x76
-	lsl r1, r1, #2
-	ldr r7, [r0, r1]
-	cmp r7, #0
-	beq _02240A7E
-	ldr r0, [sp, #4]
-	cmp r0, r3
-	beq _02240A7E
-	mov r0, #0xc0
-	mul r0, r4
-	add r2, r5, r0
-	ldr r0, _02240AA8 ; =0x00002D8C
-	ldr r0, [r2, r0]
-	cmp r0, #0
-	beq _02240A7E
-	ldr r0, _02240AAC ; =0x00002144
-	lsl r2, r7, #1
-	sub r1, #0x14
-	str r2, [r5, r0]
-	add r1, r5, r1
-	lsl r0, r3, #3
-	ldr r0, [r1, r0]
-	lsl r1, r0, #0xb
-	lsr r1, r1, #0x1f
-	beq _02240A38
-	lsl r0, r0, #9
-	lsr r0, r0, #0x1e
-	mov r1, #0xc0
-	mul r1, r0
-	add r2, r5, r1
-	ldr r1, _02240AA8 ; =0x00002D8C
-	ldr r1, [r2, r1]
-	cmp r1, #0
-	beq _02240A38
-	str r0, [r5, #0x6c]
-	b _02240A3A
-_02240A38:
-	str r4, [r5, #0x6c]
-_02240A3A:
-	ldr r1, [r5, #0x6c]
-	mov r0, #0xc0
-	mul r0, r1
-	add r1, r5, r0
-	ldr r0, _02240AA8 ; =0x00002D8C
-	ldr r0, [r1, r0]
-	cmp r0, #0
-	bne _02240A72
-	ldr r0, [sp]
-	ldr r2, [r5, #0x64]
-	add r1, r5, #0
-	bl ov12_02253DA0
-	mov r1, #0xc0
-	mul r1, r0
-	str r0, [r5, #0x6c]
-	ldr r0, _02240AA8 ; =0x00002D8C
-	add r1, r5, r1
-	ldr r0, [r1, r0]
-	cmp r0, #0
-	bne _02240A72
-	mov r2, #0x27
-	str r2, [r5, #0xc]
-	add r0, r5, #0
-	mov r1, #1
-	add r2, #0xf2
-	bl ov12_02245518
-_02240A72:
-	ldr r1, [r5, #0x64]
-	ldr r2, [r5, #0x6c]
-	add r0, r5, #0
-	bl ov12_02258180
-	b _02240AA0
-_02240A7E:
-	mov r0, #0xb5
-	lsl r0, r0, #2
-	mov r1, #0x1c
-	add r3, r6, #0
-	mul r3, r1
-	add r0, r5, r0
-	ldr r2, [r0, r3]
-	mov r1, #1
-	bic r2, r1
-	mov r1, #1
-	orr r1, r2
-	str r1, [r0, r3]
-	ldr r1, _02240AB0 ; =0x0000216C
-	mov r0, #0x40
-	ldr r2, [r5, r1]
-	orr r0, r2
-	str r0, [r5, r1]
-_02240AA0:
-	mov r0, #0
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_02240AA8: .word 0x00002D8C
-_02240AAC: .word 0x00002144
-_02240AB0: .word 0x0000216C
-	thumb_func_end BtlCmd_Counter
-
-	thumb_func_start BtlCmd_MirrorCoat
-BtlCmd_MirrorCoat: ; 0x02240AB4
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #8
-	add r5, r1, #0
-	str r0, [sp]
-	add r0, r5, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	ldr r1, [r5, #0x64]
-	lsl r0, r1, #6
-	add r2, r5, r0
-	mov r0, #2
-	lsl r0, r0, #8
-	ldr r4, [r2, r0]
-	ldr r0, [sp]
-	bl ov12_0223AB1C
-	str r0, [sp, #4]
-	ldr r0, [sp]
-	add r1, r4, #0
-	bl ov12_0223AB1C
-	ldr r6, [r5, #0x64]
-	add r3, r0, #0
-	lsl r0, r6, #6
-	add r1, r5, r0
-	lsl r0, r4, #2
-	add r0, r1, r0
-	mov r1, #0x1f
-	lsl r1, r1, #4
-	ldr r7, [r0, r1]
-	cmp r7, #0
-	beq _02240B7A
-	ldr r0, [sp, #4]
-	cmp r0, r3
-	beq _02240B7A
-	mov r0, #0xc0
-	mul r0, r4
-	add r2, r5, r0
-	ldr r0, _02240BA4 ; =0x00002D8C
-	ldr r0, [r2, r0]
-	cmp r0, #0
-	beq _02240B7A
-	ldr r0, _02240BA8 ; =0x00002144
-	lsl r2, r7, #1
-	sub r1, #0x2c
-	str r2, [r5, r0]
-	add r1, r5, r1
-	lsl r0, r3, #3
-	ldr r0, [r1, r0]
-	lsl r1, r0, #0xb
-	lsr r1, r1, #0x1f
-	beq _02240B34
-	lsl r0, r0, #9
-	lsr r0, r0, #0x1e
-	mov r1, #0xc0
-	mul r1, r0
-	add r2, r5, r1
-	ldr r1, _02240BA4 ; =0x00002D8C
-	ldr r1, [r2, r1]
-	cmp r1, #0
-	beq _02240B34
-	str r0, [r5, #0x6c]
-	b _02240B36
-_02240B34:
-	str r4, [r5, #0x6c]
-_02240B36:
-	ldr r1, [r5, #0x6c]
-	mov r0, #0xc0
-	mul r0, r1
-	add r1, r5, r0
-	ldr r0, _02240BA4 ; =0x00002D8C
-	ldr r0, [r1, r0]
-	cmp r0, #0
-	bne _02240B6E
-	ldr r0, [sp]
-	ldr r2, [r5, #0x64]
-	add r1, r5, #0
-	bl ov12_02253DA0
-	mov r1, #0xc0
-	mul r1, r0
-	str r0, [r5, #0x6c]
-	ldr r0, _02240BA4 ; =0x00002D8C
-	add r1, r5, r1
-	ldr r0, [r1, r0]
-	cmp r0, #0
-	bne _02240B6E
-	mov r2, #0x27
-	str r2, [r5, #0xc]
-	add r0, r5, #0
-	mov r1, #1
-	add r2, #0xf2
-	bl ov12_02245518
-_02240B6E:
-	ldr r1, [r5, #0x64]
-	ldr r2, [r5, #0x6c]
-	add r0, r5, #0
-	bl ov12_02258180
-	b _02240B9C
-_02240B7A:
-	mov r0, #0xb5
-	lsl r0, r0, #2
-	mov r1, #0x1c
-	add r3, r6, #0
-	mul r3, r1
-	add r0, r5, r0
-	ldr r2, [r0, r3]
-	mov r1, #1
-	bic r2, r1
-	mov r1, #1
-	orr r1, r2
-	str r1, [r0, r3]
-	ldr r1, _02240BAC ; =0x0000216C
-	mov r0, #0x40
-	ldr r2, [r5, r1]
-	orr r0, r2
-	str r0, [r5, r1]
-_02240B9C:
-	mov r0, #0
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_02240BA4: .word 0x00002D8C
-_02240BA8: .word 0x00002144
-_02240BAC: .word 0x0000216C
-	thumb_func_end BtlCmd_MirrorCoat
-
-	thumb_func_start BtlCmd_TryEncore
-BtlCmd_TryEncore: ; 0x02240BB0
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	str r0, [sp]
-	add r0, r5, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	add r0, r5, #0
-	bl BattleScriptReadWord
-	add r7, r0, #0
-	mov r0, #0xb5
-	lsl r0, r0, #6
-	add r2, r5, r0
-	ldr r1, [r5, #0x6c]
-	mov r0, #0xc0
-	mul r0, r1
-	lsl r1, r1, #1
-	add r0, r2, r0
-	add r2, r5, r1
-	ldr r1, _02240C88 ; =0x0000307C
-	ldrh r1, [r2, r1]
-	bl ov12_02251C60
-	ldr r1, [r5, #0x6c]
-	add r4, r0, #0
-	lsl r1, r1, #1
-	add r2, r5, r1
-	ldr r1, _02240C88 ; =0x0000307C
-	add r0, r5, #0
-	ldrh r1, [r2, r1]
-	bl ov12_02257DFC
-	cmp r0, #0
-	bne _02240BF8
-	mov r4, #4
-_02240BF8:
-	ldr r0, [r5, #0x6c]
-	mov r2, #0xc0
-	add r1, r0, #0
-	mul r1, r2
-	ldr r3, _02240C8C ; =0x00002DEC
-	add r6, r5, r1
-	ldrh r1, [r6, r3]
-	cmp r1, #0
-	bne _02240C72
-	cmp r4, #4
-	beq _02240C72
-	add r1, r3, #0
-	add r6, r6, r4
-	sub r1, #0x80
-	ldrb r1, [r6, r1]
-	cmp r1, #0
-	beq _02240C72
-	lsl r0, r0, #1
-	add r1, r5, r0
-	ldr r0, _02240C88 ; =0x0000307C
-	ldrh r1, [r1, r0]
-	cmp r1, #0
-	beq _02240C72
-	add r0, r2, #0
-	add r0, #0x64
-	str r1, [r5, r0]
-	ldr r1, [r5, #0x6c]
-	add r0, r2, #0
-	add r0, #0x64
-	add r6, r1, #0
-	mul r6, r2
-	ldr r0, [r5, r0]
-	add r1, r5, r6
-	strh r0, [r1, r3]
-	ldr r0, [r5, #0x6c]
-	add r1, r0, #0
-	mul r1, r2
-	add r1, r5, r1
-	add r0, r3, #2
-	strh r4, [r1, r0]
-	ldr r0, [sp]
-	bl BattleSys_Random
-	ldr r1, _02240C90 ; =0x00002DC8
-	ldr r2, [r5, #0x6c]
-	add r4, r5, r1
-	mov r1, #0xc0
-	add r5, r2, #0
-	mul r5, r1
-	mov r1, #5
-	bl _s32_div_f
-	ldr r2, [r4, r5]
-	mov r0, #0x38
-	bic r2, r0
-	add r0, r1, #3
-	lsl r0, r0, #0x1d
-	lsr r0, r0, #0x1a
-	orr r0, r2
-	str r0, [r4, r5]
-	b _02240C84
-_02240C72:
-	ldr r1, _02240C94 ; =0x0000216C
-	mov r0, #0x40
-	ldr r2, [r5, r1]
-	orr r0, r2
-	str r0, [r5, r1]
-	add r0, r5, #0
-	add r1, r7, #0
-	bl BattleScriptIncrementPointer
-_02240C84:
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02240C88: .word 0x0000307C
-_02240C8C: .word 0x00002DEC
-_02240C90: .word 0x00002DC8
-_02240C94: .word 0x0000216C
-	thumb_func_end BtlCmd_TryEncore
-
-	thumb_func_start BtlCmd_TryConversion2
-BtlCmd_TryConversion2: ; 0x02240C98
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x10
-	add r5, r1, #0
-	str r0, [sp, #4]
-	add r0, r5, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	add r0, r5, #0
-	bl BattleScriptReadWord
-	str r0, [sp, #8]
-	ldr r1, [r5, #0x64]
-	add r0, r5, #0
-	bl GetBattlerAbility
-	cmp r0, #0x79
-	bne _02240CCA
-	ldr r1, [sp, #8]
-	add r0, r5, #0
-	bl BattleScriptIncrementPointer
-	add sp, #0x10
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_02240CCA:
-	ldr r0, [r5, #0x64]
-	lsl r0, r0, #1
-	add r2, r5, r0
-	ldr r0, _02240E40 ; =0x000030C4
-	ldrh r1, [r2, r0]
-	cmp r1, #0
-	beq _02240CE0
-	add r0, #8
-	ldrh r0, [r2, r0]
-	cmp r0, #0xff
-	bne _02240CE2
-_02240CE0:
-	b _02240E30
-_02240CE2:
-	add r0, r5, #0
-	bl ov12_022525AC
-	cmp r0, #0
-	beq _02240D16
-	ldr r0, [r5, #0x64]
-	lsl r0, r0, #1
-	add r1, r5, r0
-	ldr r0, _02240E44 ; =0x000030CC
-	ldrh r1, [r1, r0]
-	mov r0, #0xc0
-	mul r0, r1
-	add r1, r5, r0
-	ldr r0, _02240E48 ; =0x00002DB0
-	ldr r1, [r1, r0]
-	mov r0, #1
-	lsl r0, r0, #0xc
-	tst r0, r1
-	beq _02240D16
-	ldr r1, [sp, #8]
-	add r0, r5, #0
-	bl BattleScriptIncrementPointer
-	add sp, #0x10
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_02240D16:
-	ldr r0, [r5, #0x64]
-	mov r6, #0
-	lsl r0, r0, #1
-	add r1, r5, r0
-	ldr r0, _02240E4C ; =0x000030D4
-	ldrh r7, [r1, r0]
-_02240D22:
-	add r0, sp, #0xc
-	str r0, [sp]
-	add r2, sp, #0xc
-	add r3, sp, #0xc
-	ldr r0, [sp, #4]
-	ldr r1, _02240E50 ; =0x0000FFFF
-	add r2, #2
-	add r3, #1
-	bl ov12_0225260C
-	add r0, sp, #0xc
-	ldrb r0, [r0, #2]
-	cmp r0, r7
-	bne _02240D94
-	add r0, sp, #0xc
-	ldrb r0, [r0]
-	cmp r0, #5
-	bhi _02240D94
-	add r0, sp, #0xc
-	ldrb r4, [r0, #1]
-	ldr r1, [r5, #0x64]
-	add r0, r5, #0
-	mov r2, #0x1b
-	mov r3, #0
-	bl GetBattlerVar
-	cmp r4, r0
-	beq _02240D94
-	ldr r1, [r5, #0x64]
-	add r0, r5, #0
-	mov r2, #0x1c
-	mov r3, #0
-	bl GetBattlerVar
-	cmp r4, r0
-	beq _02240D94
-	ldr r0, [r5, #0x64]
-	add r3, sp, #0xc
-	mov r2, #0xc0
-	add r1, r0, #0
-	mul r1, r2
-	add r0, r5, r1
-	ldr r1, _02240E54 ; =0x00002D64
-	add sp, #0x10
-	strb r4, [r0, r1]
-	ldr r4, [r5, #0x64]
-	ldrb r0, [r3, #1]
-	add r6, r4, #0
-	mul r6, r2
-	add r4, r5, r6
-	add r1, r1, #1
-	strb r0, [r4, r1]
-	ldrb r0, [r3, #1]
-	add r2, #0x70
-	str r0, [r5, r2]
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_02240D94:
-	mov r0, #0xfa
-	add r6, r6, #1
-	lsl r0, r0, #2
-	cmp r6, r0
-	blt _02240D22
-	add r0, sp, #0xc
-	mov r6, #0
-	str r0, [sp]
-	add r2, sp, #0xc
-	add r3, sp, #0xc
-	ldr r0, [sp, #4]
-	add r1, r6, #0
-	add r2, #2
-	add r3, #1
-	bl ov12_0225260C
-	cmp r0, #1
-	bne _02240E30
-_02240DB8:
-	add r0, sp, #0xc
-	ldrb r0, [r0, #2]
-	cmp r0, r7
-	bne _02240E16
-	add r0, sp, #0xc
-	ldrb r0, [r0]
-	cmp r0, #5
-	bhi _02240E16
-	add r0, sp, #0xc
-	ldrb r4, [r0, #1]
-	ldr r1, [r5, #0x64]
-	add r0, r5, #0
-	mov r2, #0x1b
-	mov r3, #0
-	bl GetBattlerVar
-	cmp r4, r0
-	beq _02240E16
-	ldr r1, [r5, #0x64]
-	add r0, r5, #0
-	mov r2, #0x1c
-	mov r3, #0
-	bl GetBattlerVar
-	cmp r4, r0
-	beq _02240E16
-	ldr r0, [r5, #0x64]
-	add r3, sp, #0xc
-	mov r2, #0xc0
-	add r1, r0, #0
-	mul r1, r2
-	add r0, r5, r1
-	ldr r1, _02240E54 ; =0x00002D64
-	add sp, #0x10
-	strb r4, [r0, r1]
-	ldr r4, [r5, #0x64]
-	ldrb r0, [r3, #1]
-	add r6, r4, #0
-	mul r6, r2
-	add r4, r5, r6
-	add r1, r1, #1
-	strb r0, [r4, r1]
-	ldrb r0, [r3, #1]
-	add r2, #0x70
-	str r0, [r5, r2]
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_02240E16:
-	add r0, sp, #0xc
-	add r6, r6, #1
-	str r0, [sp]
-	add r2, sp, #0xc
-	add r3, sp, #0xc
-	ldr r0, [sp, #4]
-	add r1, r6, #0
-	add r2, #2
-	add r3, #1
-	bl ov12_0225260C
-	cmp r0, #1
-	beq _02240DB8
-_02240E30:
-	ldr r1, [sp, #8]
-	add r0, r5, #0
-	bl BattleScriptIncrementPointer
-	mov r0, #0
-	add sp, #0x10
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_02240E40: .word 0x000030C4
-_02240E44: .word 0x000030CC
-_02240E48: .word 0x00002DB0
-_02240E4C: .word 0x000030D4
-_02240E50: .word 0x0000FFFF
-_02240E54: .word 0x00002D64
-	thumb_func_end BtlCmd_TryConversion2
-
-	thumb_func_start BtlCmd_TrySketch
-BtlCmd_TrySketch: ; 0x02240E58
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0xc
-	str r0, [sp]
-	mov r0, #0
-	add r6, r1, #0
-	mvn r0, r0
-	str r0, [sp, #8]
-	add r0, r6, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	add r0, r6, #0
-	bl BattleScriptReadWord
-	mov ip, r0
-	ldr r1, [r6, #0x64]
-	mov r0, #0xc0
-	mul r0, r1
-	str r0, [sp, #4]
-	add r3, r6, r0
-	ldr r0, _02240F68 ; =0x00002DB0
-	ldr r1, [r3, r0]
-	mov r0, #2
-	lsl r0, r0, #0x14
-	tst r0, r1
-	bne _02240EAA
-	ldr r0, [r6, #0x6c]
-	lsl r0, r0, #1
-	add r1, r6, r0
-	ldr r0, _02240F6C ; =0x000030AC
-	ldrh r7, [r1, r0]
-	cmp r7, #0xa5
-	beq _02240EAA
-	cmp r7, #0xa6
-	beq _02240EAA
-	mov r0, #7
-	lsl r0, r0, #6
-	cmp r7, r0
-	beq _02240EAA
-	cmp r7, #0
-	bne _02240EB4
-_02240EAA:
-	add r0, r6, #0
-	mov r1, ip
-	bl BattleScriptIncrementPointer
-	b _02240F62
-_02240EB4:
-	mov r0, #0
-	add r1, r3, #0
-	add r2, r0, #0
-_02240EBA:
-	ldr r4, _02240F70 ; =0x00002D4C
-	ldrh r4, [r1, r4]
-	cmp r4, #0xa6
-	beq _02240ECC
-	ldr r4, _02240F70 ; =0x00002D4C
-	add r5, r3, r2
-	ldrh r4, [r5, r4]
-	cmp r7, r4
-	beq _02240EEC
-_02240ECC:
-	ldr r4, _02240F70 ; =0x00002D4C
-	add r5, r3, r2
-	ldrh r4, [r5, r4]
-	cmp r4, #0xa6
-	bne _02240EE2
-	mov r5, #0
-	ldr r4, [sp, #8]
-	mvn r5, r5
-	cmp r4, r5
-	bne _02240EE2
-	str r0, [sp, #8]
-_02240EE2:
-	add r0, r0, #1
-	add r1, r1, #2
-	add r2, r2, #2
-	cmp r0, #4
-	blt _02240EBA
-_02240EEC:
-	cmp r0, #4
-	bne _02240F5A
-	ldr r0, [sp, #4]
-	add r1, r6, r0
-	ldr r0, [sp, #8]
-	lsl r0, r0, #1
-	add r1, r1, r0
-	ldr r0, _02240F70 ; =0x00002D4C
-	strh r7, [r1, r0]
-	ldr r1, [r6, #0x6c]
-	ldr r3, [r6, #0x64]
-	lsl r1, r1, #1
-	add r2, r6, r1
-	ldr r1, _02240F6C ; =0x000030AC
-	add r0, #0x20
-	ldrh r1, [r2, r1]
-	lsl r1, r1, #4
-	add r2, r6, r1
-	mov r1, #0xf9
-	lsl r1, r1, #2
-	ldrb r1, [r2, r1]
-	mov r2, #0xc0
-	mul r2, r3
-	add r3, r6, r2
-	ldr r2, [sp, #8]
-	add r2, r3, r2
-	strb r1, [r2, r0]
-	ldr r0, [sp]
-	ldr r2, [r6, #0x64]
-	add r1, r6, #0
-	bl ov12_02263B4C
-	ldr r0, [r6, #0x6c]
-	lsl r0, r0, #1
-	add r1, r6, r0
-	ldr r0, _02240F6C ; =0x000030AC
-	ldrh r1, [r1, r0]
-	mov r0, #0x49
-	lsl r0, r0, #2
-	str r1, [r6, r0]
-	ldr r1, [r6, r0]
-	add r0, #0x5f
-	cmp r1, r0
-	bne _02240F62
-	ldr r0, _02240F74 ; =0x00002DCC
-	ldr r1, [r6, #0x64]
-	add r3, r6, r0
-	mov r0, #0xc0
-	add r2, r1, #0
-	mul r2, r0
-	ldr r1, [r3, r2]
-	ldr r0, _02240F78 ; =0xFFFFE3FF
-	and r0, r1
-	str r0, [r3, r2]
-	b _02240F62
-_02240F5A:
-	add r0, r6, #0
-	mov r1, ip
-	bl BattleScriptIncrementPointer
-_02240F62:
-	mov r0, #0
-	add sp, #0xc
-	pop {r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02240F68: .word 0x00002DB0
-_02240F6C: .word 0x000030AC
-_02240F70: .word 0x00002D4C
-_02240F74: .word 0x00002DCC
-_02240F78: .word 0xFFFFE3FF
-	thumb_func_end BtlCmd_TrySketch
-
-	thumb_func_start BtlCmd_TrySleepTalk
-BtlCmd_TrySleepTalk: ; 0x02240F7C
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0xc
-	add r5, r1, #0
-	str r0, [sp, #4]
-	add r0, r5, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	add r0, r5, #0
-	bl BattleScriptReadWord
-	mov r7, #0
-	str r0, [sp, #8]
-	add r6, r7, #0
-	add r4, r7, #0
-_02240F9A:
-	ldr r1, [r5, #0x64]
-	mov r0, #0xc0
-	mul r0, r1
-	add r0, r5, r0
-	add r1, r4, r0
-	ldr r0, _02241044 ; =0x00002D4C
-	ldrh r0, [r1, r0]
-	bl ov12_02252698
-	cmp r0, #0
-	bne _02240FDA
-	ldr r1, [r5, #0x64]
-	mov r0, #0xc0
-	mul r0, r1
-	add r0, r5, r0
-	add r1, r4, r0
-	ldr r0, _02241044 ; =0x00002D4C
-	ldrh r1, [r1, r0]
-	mov r0, #0x42
-	lsl r0, r0, #2
-	cmp r1, r0
-	beq _02240FDA
-	cmp r1, #0xfd
-	beq _02240FDA
-	add r0, #0xb8
-	cmp r1, r0
-	beq _02240FDA
-	add r0, r5, #0
-	bl ov12_022525AC
-	cmp r0, #0
-	beq _02240FE2
-_02240FDA:
-	add r0, r6, #0
-	bl MaskOfFlagNo
-	orr r7, r0
-_02240FE2:
-	add r6, r6, #1
-	add r4, r4, #2
-	cmp r6, #4
-	blt _02240F9A
-	mov r0, #2
-	mvn r0, r0
-	str r0, [sp]
-	ldr r0, [sp, #4]
-	ldr r2, [r5, #0x64]
-	add r1, r5, #0
-	add r3, r7, #0
-	bl ov12_022517EC
-	add r4, r0, #0
-	cmp r4, #0xf
-	bne _0224100C
-	ldr r1, [sp, #8]
-	add r0, r5, #0
-	bl BattleScriptIncrementPointer
-	b _0224103E
-_0224100C:
-	mov r7, #0x1e
-_0224100E:
-	ldr r0, [sp, #4]
-	bl BattleSys_Random
-	lsr r1, r0, #0x1f
-	lsl r0, r0, #0x1e
-	sub r0, r0, r1
-	ror r0, r7
-	add r6, r1, r0
-	add r0, r6, #0
-	bl MaskOfFlagNo
-	tst r0, r4
-	bne _0224100E
-	ldr r0, [r5, #0x64]
-	mov r1, #0xc0
-	add r2, r0, #0
-	mul r2, r1
-	add r2, r5, r2
-	lsl r0, r6, #1
-	add r2, r2, r0
-	ldr r0, _02241044 ; =0x00002D4C
-	add r1, #0x64
-	ldrh r0, [r2, r0]
-	str r0, [r5, r1]
-_0224103E:
-	mov r0, #0
-	add sp, #0xc
-	pop {r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02241044: .word 0x00002D4C
-	thumb_func_end BtlCmd_TrySleepTalk
-
-	thumb_func_start BtlCmd_FlailDamageCalc
-BtlCmd_FlailDamageCalc: ; 0x02241048
-	push {r4, lr}
-	add r4, r1, #0
-	add r0, r4, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	ldr r1, [r4, #0x64]
-	mov r0, #0xc0
-	mul r0, r1
-	ldr r1, _0224108C ; =0x00002D8C
-	add r2, r4, r0
-	ldr r0, [r2, r1]
-	add r1, r1, #4
-	ldr r1, [r2, r1]
-	mov r2, #0x40
-	bl sub_02088068
-	ldr r3, _02241090 ; =ov12_0226C300
-	mov r2, #0
-_0224106E:
-	ldrb r1, [r3]
-	cmp r0, r1
-	ble _0224107C
-	add r2, r2, #1
-	add r3, r3, #2
-	cmp r2, #6
-	blo _0224106E
-_0224107C:
-	ldr r0, _02241094 ; =ov12_0226C301
-	lsl r1, r2, #1
-	ldrb r1, [r0, r1]
-	ldr r0, _02241098 ; =0x00002154
-	str r1, [r4, r0]
-	mov r0, #0
-	pop {r4, pc}
-	nop
-_0224108C: .word 0x00002D8C
-_02241090: .word ov12_0226C300
-_02241094: .word ov12_0226C301
-_02241098: .word 0x00002154
-	thumb_func_end BtlCmd_FlailDamageCalc
-
-	thumb_func_start BtlCmd_TrySpite
-BtlCmd_TrySpite: ; 0x0224109C
-	push {r4, r5, r6, lr}
-	add r5, r1, #0
-	add r6, r0, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	add r0, r5, #0
-	bl BattleScriptReadWord
-	ldr r2, [r5, #0x6c]
-	add r4, r0, #0
-	lsl r0, r2, #1
-	add r1, r5, r0
-	ldr r0, _02241138 ; =0x0000307C
-	ldrh r1, [r1, r0]
-	cmp r1, #0
-	beq _0224112A
-	mov r0, #0xb5
-	lsl r0, r0, #6
-	mov r3, #0xc0
-	add r0, r5, r0
-	mul r3, r2
-	add r0, r0, r3
-	bl ov12_02251C60
-	add r2, r0, #0
-	cmp r2, #4
-	beq _022410E8
-	ldr r0, [r5, #0x6c]
-	mov r1, #0xc0
-	mul r1, r0
-	add r1, r5, r1
-	add r3, r1, r2
-	ldr r1, _0224113C ; =0x00002D6C
-	ldrb r3, [r3, r1]
-	cmp r3, #0
-	bne _022410F2
-_022410E8:
-	add r0, r5, #0
-	add r1, r4, #0
-	bl BattleScriptIncrementPointer
-	b _02241132
-_022410F2:
-	mov r1, #4
-	cmp r3, #4
-	bge _022410FA
-	add r1, r3, #0
-_022410FA:
-	lsl r0, r0, #1
-	add r3, r5, r0
-	ldr r0, _02241138 ; =0x0000307C
-	ldrh r3, [r3, r0]
-	mov r0, #0x49
-	lsl r0, r0, #2
-	str r3, [r5, r0]
-	add r0, #0xc
-	str r1, [r5, r0]
-	ldr r0, _0224113C ; =0x00002D6C
-	ldr r4, [r5, #0x6c]
-	mov r3, #0xc0
-	add r0, r5, r0
-	mul r3, r4
-	add r3, r0, r3
-	ldrb r0, [r3, r2]
-	sub r0, r0, r1
-	strb r0, [r3, r2]
-	ldr r2, [r5, #0x6c]
-	add r0, r6, #0
-	add r1, r5, #0
-	bl ov12_02250C40
-	b _02241132
-_0224112A:
-	add r0, r5, #0
-	add r1, r4, #0
-	bl BattleScriptIncrementPointer
-_02241132:
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-	nop
-_02241138: .word 0x0000307C
-_0224113C: .word 0x00002D6C
-	thumb_func_end BtlCmd_TrySpite
-
-	thumb_func_start BtlCmd_HealBell
-BtlCmd_HealBell: ; 0x02241140
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r7, r0, #0
-	bl ov12_0223A7E0
-	add r4, r0, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	mov r1, #0x4d
-	mov r0, #0
-	lsl r1, r1, #2
-	ldr r2, _02241280 ; =0x00003044
-	str r0, [r5, r1]
-	ldr r2, [r5, r2]
-	cmp r2, #0xd7
-	bne _0224120E
-	sub r1, #0x10
-	str r2, [r5, r1]
-	ldr r1, [r5, #0x64]
-	add r0, r5, #0
-	bl GetBattlerAbility
-	cmp r0, #0x2b
-	beq _02241196
-	ldr r2, [r5, #0x64]
-	mov r0, #0xc0
-	add r3, r2, #0
-	mul r3, r0
-	ldr r2, _02241284 ; =0x00002DAC
-	mov r1, #0
-	add r3, r5, r3
-	str r1, [r3, r2]
-	add r1, r2, #4
-	ldr r2, [r5, #0x64]
-	add r1, r5, r1
-	mul r0, r2
-	ldr r3, [r1, r0]
-	ldr r2, _02241288 ; =0xF7FFFFFF
-	and r2, r3
-	str r2, [r1, r0]
-	b _022411A2
-_02241196:
-	mov r1, #0x4d
-	lsl r1, r1, #2
-	ldr r2, [r5, r1]
-	mov r0, #5
-	orr r0, r2
-	str r0, [r5, r1]
-_022411A2:
-	mov r0, #2
-	tst r0, r4
-	beq _02241200
-	add r0, r7, #0
-	add r1, r5, #0
-	mov r2, #0x10
-	bl GetBattlerIDBySide
-	add r4, r0, #0
-	bl MaskOfFlagNo
-	ldr r1, _0224128C ; =0x00003108
-	ldrb r1, [r5, r1]
-	tst r0, r1
-	bne _0224126E
-	ldr r1, [r5, #0x64]
-	add r0, r5, #0
-	add r2, r4, #0
-	mov r3, #0x2b
-	bl CheckBattlerAbilityIfNotIgnored
-	cmp r0, #0
-	bne _022411EA
-	mov r0, #0xc0
-	mul r0, r4
-	ldr r1, _02241284 ; =0x00002DAC
-	mov r3, #0
-	add r2, r5, r0
-	str r3, [r2, r1]
-	add r1, r1, #4
-	add r3, r5, r1
-	ldr r2, [r3, r0]
-	ldr r1, _02241288 ; =0xF7FFFFFF
-	and r1, r2
-	str r1, [r3, r0]
-	b _0224126E
-_022411EA:
-	mov r1, #0x46
-	lsl r1, r1, #2
-	add r0, r1, #0
-	str r4, [r5, r1]
-	add r0, #0x1c
-	ldr r2, [r5, r0]
-	mov r0, #0xa
-	orr r0, r2
-	add r1, #0x1c
-	str r0, [r5, r1]
-	b _0224126E
-_02241200:
-	mov r1, #0x4d
-	lsl r1, r1, #2
-	ldr r2, [r5, r1]
-	mov r0, #8
-	orr r0, r2
-	str r0, [r5, r1]
-	b _0224126E
-_0224120E:
-	ldr r3, [r5, #0x64]
-	mov r2, #0xc0
-	mul r2, r3
-	add r3, r5, r2
-	ldr r2, _02241284 ; =0x00002DAC
-	str r0, [r3, r2]
-	add r0, r2, #4
-	add r6, r5, r0
-	ldr r0, [r5, #0x64]
-	mov r2, #0xc0
-	add r3, r0, #0
-	mul r3, r2
-	ldr r2, [r6, r3]
-	ldr r0, _02241288 ; =0xF7FFFFFF
-	and r0, r2
-	str r0, [r6, r3]
-	mov r0, #2
-	tst r0, r4
-	beq _02241266
-	add r0, r7, #0
-	add r1, r5, #0
-	mov r2, #0x10
-	bl GetBattlerIDBySide
-	add r4, r0, #0
-	bl MaskOfFlagNo
-	ldr r1, _0224128C ; =0x00003108
-	ldrb r1, [r5, r1]
-	tst r0, r1
-	bne _0224126E
-	mov r0, #0xc0
-	mul r0, r4
-	ldr r1, _02241284 ; =0x00002DAC
-	mov r3, #0
-	add r2, r5, r0
-	str r3, [r2, r1]
-	add r1, r1, #4
-	add r3, r5, r1
-	ldr r2, [r3, r0]
-	ldr r1, _02241288 ; =0xF7FFFFFF
-	and r1, r2
-	str r1, [r3, r0]
-	b _0224126E
-_02241266:
-	ldr r2, [r5, r1]
-	mov r0, #8
-	orr r0, r2
-	str r0, [r5, r1]
-_0224126E:
-	ldr r3, _02241280 ; =0x00003044
-	ldr r2, [r5, #0x64]
-	ldr r3, [r5, r3]
-	add r0, r7, #0
-	add r1, r5, #0
-	bl ov12_02263CE8
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02241280: .word 0x00003044
-_02241284: .word 0x00002DAC
-_02241288: .word 0xF7FFFFFF
-_0224128C: .word 0x00003108
-	thumb_func_end BtlCmd_HealBell
-
 	thumb_func_start BtlCmd_TryThief
 BtlCmd_TryThief: ; 0x02241290
 	push {r3, r4, r5, r6, r7, lr}
@@ -1770,15 +21,15 @@ BtlCmd_TryThief: ; 0x02241290
 	bl BattleScriptReadWord
 	str r0, [sp]
 	add r0, r6, #0
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	str r0, [sp, #4]
 	ldr r1, [r5, #0x64]
 	add r0, r6, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	add r7, r0, #0
 	ldr r1, [r5, #0x64]
 	add r0, r6, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	cmp r0, #0
 	beq _022412E0
 	ldr r0, [sp, #4]
@@ -2125,7 +376,7 @@ BtlCmd_TryWhirlwind: ; 0x0224156C
 	bl BattleScriptReadWord
 	str r0, [sp, #0x1c]
 	ldr r0, [sp]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	add r4, r0, #0
 	mov r0, #1
 	tst r0, r4
@@ -2152,7 +403,7 @@ _02241594:
 	ldr r1, [sp, #4]
 	ldr r0, [sp]
 	ldr r1, [r1, #0x6c]
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	cmp r0, #0
 	beq _022415E0
 _022415C8:
@@ -2574,7 +825,7 @@ BtlCmd_TrySpikes: ; 0x022418FC
 	add r6, r0, #0
 	ldr r1, [r4, #0x64]
 	add r0, r5, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	mov r2, #0x72
 	mov r1, #1
 	add r3, r0, #0
@@ -2650,7 +901,7 @@ BtlCmd_CheckSpikes: ; 0x02241980
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	lsl r0, r0, #3
 	add r1, r5, r0
 	mov r0, #0x72
@@ -3482,7 +1733,7 @@ BtlCmd_TrySafeguard: ; 0x02242024
 	add r7, r0, #0
 	ldr r1, [r4, #0x64]
 	add r0, r5, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	mov r5, #0x6f
 	add r2, r0, #0
 	lsl r5, r5, #2
@@ -3745,7 +1996,7 @@ BtlCmd_RapidSpin: ; 0x02242238
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	ldr r1, [r4, #0x64]
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	ldr r1, [r4, #0x64]
 	mov r6, #0xe
 	ldr r5, _02242374 ; =0x00002DB0
@@ -4172,7 +2423,7 @@ BtlCmd_TryFutureSight: ; 0x02242570
 	cmp r0, #0
 	bne _02242648
 	add r0, r7, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	mov r1, #0x6f
 	lsl r1, r1, #2
 	lsl r3, r0, #2
@@ -4644,7 +2895,7 @@ BtlCmd_FollowMe: ; 0x0224296C
 	bl BattleScriptIncrementPointer
 	ldr r1, [r4, #0x64]
 	add r0, r5, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	mov r1, #0x71
 	lsl r1, r1, #2
 	mov r2, #1
@@ -4680,7 +2931,7 @@ BtlCmd_TryHelpingHand: ; 0x022429AC
 	bl BattleScriptReadWord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #2
 	tst r0, r1
 	beq _02242A36
@@ -4763,19 +3014,19 @@ BtlCmd_TryTrick: ; 0x02242A50
 	bl BattleScriptReadWord
 	str r0, [sp, #4]
 	add r0, r5, #0
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	str r0, [sp, #8]
 	ldr r1, [r4, #0x64]
 	add r0, r5, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	str r0, [sp]
 	ldr r1, [r4, #0x6c]
 	add r0, r5, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	add r7, r0, #0
 	ldr r1, [r4, #0x64]
 	add r0, r5, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	cmp r0, #0
 	beq _02242AAA
 	ldr r0, [sp, #8]
@@ -4975,7 +3226,7 @@ _02242C06:
 	add r2, r1, #0
 	ldr r2, [r2, #0x64]
 	add r3, r6, #0
-	bl ov12_02257DA4
+	bl CheckLegalMetronomeMove
 	cmp r0, #1
 	bne _02242C38
 	strh r6, [r5]
@@ -5079,7 +3330,7 @@ BtlCmd_MagicCoat: ; 0x02242CDC
 	bl BattleScriptIncrementPointer
 	ldr r1, [r5, #0x64]
 	add r0, r6, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	add r1, r5, #0
 	ldr r4, [r5, #0x64]
 	add r1, #0x84
@@ -5236,7 +3487,7 @@ BtlCmd_TryBreakScreens: ; 0x02242E00
 	add r6, r0, #0
 	ldr r1, [r4, #0x6c]
 	add r0, r5, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	lsl r1, r0, #2
 	add r2, r4, r1
 	mov r1, #0x6f
@@ -5332,7 +3583,7 @@ BtlCmd_TryKnockOff: ; 0x02242EB4
 	add r6, r0, #0
 	ldr r1, [r5, #0x6c]
 	add r0, r4, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	add r4, r0, #0
 	ldr r2, [r5, #0x6c]
 	mov r0, #0xc0
@@ -5553,7 +3804,7 @@ BtlCmd_TryImprison: ; 0x02243030
 	b _0224313C
 _02243098:
 	ldr r0, [sp]
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	str r0, [sp, #0x10]
 	ldr r0, [sp]
 	bl BattleSys_GetMaxBattlers
@@ -5567,7 +3818,7 @@ _02243098:
 _022430B4:
 	ldr r0, [sp]
 	ldr r1, [sp, #0xc]
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	ldr r1, [sp, #0x10]
 	cmp r1, r0
 	beq _02243100
@@ -5660,7 +3911,7 @@ BtlCmd_TryGrudge: ; 0x02243148
 	str r0, [sp]
 	ldr r1, [r4, #0x6c]
 	add r0, r7, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	ldr r5, [r4, #0x74]
 	mov r0, #0xc0
 	mul r0, r5
@@ -5674,11 +3925,11 @@ BtlCmd_TryGrudge: ; 0x02243148
 	beq _022431E0
 	ldr r1, [r4, #0x64]
 	add r0, r7, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	add r6, r0, #0
 	add r0, r7, #0
 	add r1, r5, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	cmp r6, r0
 	beq _022431E0
 	ldr r6, [r4, #0x64]
@@ -5974,11 +4225,11 @@ _022433A0:
 	bne _0224348E
 	ldr r0, [sp]
 	add r1, r7, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	str r0, [sp, #0x14]
 	ldr r0, [sp]
 	ldr r1, [r5, #0x78]
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	ldr r1, [sp, #0x14]
 	cmp r1, r0
 	beq _0224348E
@@ -6005,7 +4256,7 @@ _02243402:
 	lsl r1, r6, #0x10
 	ldr r0, [sp, #4]
 	lsr r1, r1, #0x10
-	bl ov12_02251C60
+	bl BattleMon_GetMoveIndex
 	str r0, [sp, #0x18]
 	lsl r0, r6, #4
 	add r1, r5, r0
@@ -6481,7 +4732,7 @@ BtlCmd_MetalBurstDamageCalc: ; 0x02243798
 	str r0, [sp]
 	ldr r1, [r5, #0x64]
 	add r0, r6, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	ldr r1, [r5, #0x64]
 	add r7, r0, #0
 	lsl r1, r1, #6
@@ -6490,7 +4741,7 @@ BtlCmd_MetalBurstDamageCalc: ; 0x02243798
 	lsl r1, r1, #2
 	ldr r1, [r2, r1]
 	add r0, r6, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	add r4, r0, #0
 	ldr r0, [r5, #0x64]
 	mov r2, #0x82
@@ -6812,7 +5063,7 @@ BtlCmd_TryCopycat: ; 0x02243A0C
 	add r0, r5, #0
 	add r1, r4, #0
 	lsr r3, r3, #0x10
-	bl ov12_02257DA4
+	bl CheckLegalMetronomeMove
 	cmp r0, #1
 	bne _02243A58
 	ldr r0, _02243A64 ; =0x00003048
@@ -6971,7 +5222,7 @@ BtlCmd_CheckSideCondition: ; 0x02243B3C
 	bl GetBattlerIDBySide
 	add r1, r0, #0
 	add r0, r7, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	ldr r1, [sp, #4]
 	cmp r1, #0
 	beq _02243B8E
@@ -7317,7 +5568,7 @@ BtlCmd_TryToxicSpikes: ; 0x02243DE8
 	add r6, r0, #0
 	ldr r1, [r4, #0x64]
 	add r0, r5, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	mov r2, #0x72
 	mov r1, #1
 	add r3, r0, #0
@@ -7394,7 +5645,7 @@ BtlCmd_CheckToxicSpikes: ; 0x02243E6C
 	add r7, r0, #0
 	add r0, r4, #0
 	add r1, r7, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	mov r1, #0x72
 	lsl r1, r1, #2
 	add r4, r5, r1
@@ -7629,11 +5880,11 @@ BtlCmd_CheckTeammates: ; 0x02244040
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	cmp r6, r0
 	bne _0224409C
 	ldr r1, [sp]
@@ -8396,7 +6647,7 @@ BtlCmd_SetBattleResults: ; 0x02244688
 	mov r1, #1
 	bl BattleScriptIncrementPointer
 	add r0, r4, #0
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #4
 	tst r0, r1
 	beq _022446A6
@@ -8429,7 +6680,7 @@ BtlCmd_CheckStealthRock: ; 0x022446AC
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -9215,7 +7466,7 @@ BtlCmd_CheckWhiteout: ; 0x02244CCC
 	bl BattleScriptReadWord
 	str r0, [sp, #0x14]
 	ldr r0, [sp]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	str r0, [sp, #0xc]
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
@@ -9232,7 +7483,7 @@ BtlCmd_CheckWhiteout: ; 0x02244CCC
 	beq _02244E06
 	ldr r0, [sp]
 	ldr r1, [sp, #0x10]
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	cmp r0, #0
 	beq _02244E06
 _02244D1E:
@@ -9291,7 +7542,7 @@ _02244D8C:
 	bhi _02244DAE
 	ldr r0, [sp]
 	ldr r1, [sp, #0x10]
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	cmp r0, #0
 	bne _02244DAE
 	ldr r0, [sp]
@@ -10406,7 +8657,7 @@ _0224560A:
 	pop {r4, pc}
 _02245610:
 	ldr r1, [r4, #0x64]
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	mov r1, #0x6f
 	lsl r1, r1, #2
 	add r1, r4, r1
@@ -10415,7 +8666,7 @@ _02245610:
 	pop {r4, pc}
 _02245622:
 	ldr r1, [r4, #0x6c]
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	mov r1, #0x6f
 	lsl r1, r1, #2
 	add r1, r4, r1
@@ -10426,7 +8677,7 @@ _02245634:
 	add r1, r4, #0
 	add r1, #0x94
 	ldr r1, [r1]
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	mov r1, #0x6f
 	lsl r1, r1, #2
 	add r1, r4, r1
@@ -10773,7 +9024,7 @@ ov12_02245898: ; 0x02245898
 	bl ov12_0223A930
 	str r0, [sp, #0x40]
 	ldr r0, [r4]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	str r0, [sp, #0x3c]
 	ldr r0, [r4, #4]
 	mov r7, #0
@@ -12467,7 +10718,7 @@ _02246636:
 	ldr r0, [r4]
 	str r0, [sp, #0x154]
 	ldr r0, [r4]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #2
 	tst r0, r1
 	beq _02246686
@@ -12541,7 +10792,7 @@ _022466F8:
 	cmp r0, #0
 	bne _02246788
 	ldr r0, [r4]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #1
 	tst r0, r1
 	beq _02246728
@@ -12752,7 +11003,7 @@ _022468A2:
 	bl ov12_0223A880
 	add r6, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #6
 	lsl r1, r1, #8
 	tst r0, r1
@@ -12819,7 +11070,7 @@ _02246950:
 	cmp r0, #0
 	beq _022469E6
 	ldr r0, [r4]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #1
 	lsl r1, r1, #0xc
 	tst r0, r1
@@ -13018,7 +11269,7 @@ _02246B26:
 	cmp r0, #0xe
 	bne _02246BFE
 	ldr r0, [r4]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #1
 	lsl r1, r1, #0xc
 	tst r0, r1
@@ -13055,7 +11306,7 @@ _02246B62:
 	pop {r3, r4, r5, r6, r7, pc}
 _02246B7A:
 	ldr r0, [r4]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #1
 	lsl r1, r1, #0xc
 	tst r0, r1
@@ -13428,7 +11679,7 @@ _02246E84:
 	mov r3, #0xa
 	bl ov12_02263F0C
 	ldr r0, [r4]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #1
 	lsl r1, r1, #0xc
 	tst r0, r1
@@ -13829,7 +12080,7 @@ ov12_02247228: ; 0x02247228
 	sub sp, #0xc
 	add r7, r0, #0
 	add r4, r1, #0
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #6
 	lsl r1, r1, #8
 	tst r0, r1
@@ -14521,7 +12772,7 @@ _0224772C:
 _02247744:
 	b _022478E2
 _02247746:
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #2
 	tst r0, r1
 	beq _02247754
@@ -14591,7 +12842,7 @@ _022477B0:
 _022477C8:
 	b _022478E2
 _022477CA:
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #2
 	tst r0, r1
 	beq _022477D8
@@ -14640,11 +12891,11 @@ _0224781C:
 	beq _0224783A
 	add r0, r4, #0
 	add r1, r5, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	str r0, [sp, #8]
 	add r0, r4, #0
 	add r1, r7, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	ldr r1, [sp, #8]
 	cmp r1, r0
 	beq _02247842
@@ -14671,11 +12922,11 @@ _02247858:
 	beq _02247876
 	add r0, r4, #0
 	add r1, r5, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	add r1, r7, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	ldr r1, [sp, #0xc]
 	cmp r1, r0
 	beq _0224787E
@@ -14695,7 +12946,7 @@ _02247888:
 	add r7, r0, #0
 	ldr r1, [r6, #0x64]
 	add r0, r4, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	add r6, r0, #0
 	mov r5, #0
 	cmp r7, #0
@@ -14703,7 +12954,7 @@ _02247888:
 _0224789E:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	cmp r6, r0
 	bne _022478E2
 	add r5, r5, #1
@@ -14715,7 +12966,7 @@ _022478B2:
 	add r7, r0, #0
 	ldr r1, [r6, #0x6c]
 	add r0, r4, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	add r6, r0, #0
 	mov r5, #0
 	cmp r7, #0
@@ -14723,7 +12974,7 @@ _022478B2:
 _022478C8:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	cmp r6, r0
 	bne _022478E2
 	add r5, r5, #1
@@ -16263,11 +14514,11 @@ ov12_02248558: ; 0x02248558
 	add r1, r2, #0
 	add r5, r0, #0
 	str r2, [sp]
-	bl ov12_0223AB1C
+	bl BattleSys_GetFieldSide
 	cmp r0, #0
 	bne _0224863C
 	add r0, r5, #0
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #2
 	tst r0, r1
 	beq _022485A8
@@ -16398,11 +14649,11 @@ ov12_0226C2F0: ; 0x0226C2F0
 
 ov12_0226C2F8: ; 0x0226C2F8
 	.byte 0xFF, 0xFF, 0xFF, 0x7F, 0xFF, 0x3F, 0xFF, 0x1F
-    
-ov12_0226C300: ; 0x0226C300
+   
+.public sFlailDamageTable
+   
+sFlailDamageTable: ; 0x0226C300
 	.byte 0x01
-
-ov12_0226C301: ; 0x0226C301
 	.byte 0xC8, 0x05, 0x96, 0x0C, 0x64, 0x15, 0x50, 0x2A, 0x28, 0x40, 0x14
 
 ov12_0226C30C: ; 0x0226C30C

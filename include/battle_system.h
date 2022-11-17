@@ -4,8 +4,8 @@
 #include "battle.h"
 #include "player_data.h"
 
-u32 ov12_0223A7E0(BattleSystem *bsys);
-u32 ov12_0223AB1C(BattleSystem *bsys, int battlerId);
+u32 BattleSys_GetBattleType(BattleSystem *bsys);
+u32 BattleSys_GetFieldSide(BattleSystem *bsys, int battlerId);
 int BattleSys_GetMaxBattlers(BattleSystem *bsys);
 int BattleSys_Random(BattleSystem *bsys);
 PLAYERPROFILE *BattleSys_GetPlayerProfile(BattleSystem *bsys, int a1);
