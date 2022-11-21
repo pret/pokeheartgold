@@ -40,21 +40,21 @@ typedef struct SideConditionData {
     u32 lightScreenTurns:3;
     u32 mistBattler:2;
     u32 mistTurns:3;
-    u32 unk0_F:2;
-    u32 unk0_11:3;
+    u32 safeguardBattler:2;
+    u32 safeguardTurns:3;
     u32 unk0_14:1;
     u32 unk0_15:2;
     u32 unk0_17:6;
     u32 unk0_1D:3;
-    u32 unk4_0:2;
-    u32 unk4_2:2;
+    u32 spikesLayers:2;
+    u32 toxicSpikesLayers:2;
     u32 unk4_4:28;
 } SideConditionData;
 
 typedef struct TurnData {
     u32 unk0_0:1;
     u32 unk0_1:1;
-    u32 unk0_2:1;
+    u32 protectFlag:1;
     u32 unk0_3:1;
     u32 unk0_4:1;
     u32 unk0_5:1;
@@ -80,7 +80,7 @@ typedef struct SelfTurnData {
     u32 unk0_3:1;
     u32 unk0_4:1;
     u32 unk0_5:1;
-    u32 unk0_6:3;
+    u32 rolloutCount:3;
     u32 unk0_9:23;
     int unk4;
     int unk8;
@@ -125,7 +125,7 @@ typedef struct UnkBtlCtxSub_76 {
 
 typedef struct UnkBattlemonSub {
     u32 disabledTurns:3, encoredTurns:3, unk0_6:2, unk0_8:3,
-        unk0_B:2, unk0_D:2, unk0_F:3, unk0_12:3,
+        protectSuccessTurns:2, perishSongTurns:2, rolloutCount:3, furyCutterCount:3,
         unk0_15:3, unk0_18:3, unk0_1A:3, unk0_1D:1, unk0_1E:1;
     u32 battlerIdLockOn:2, mimicedMoveIndex:4, unk4_6:2, unk4_8:2,
         lastResortCount:3, unk4_D:3, unk4_10:3, unk4_13:3,
@@ -133,17 +133,17 @@ typedef struct UnkBattlemonSub {
         unk4_2D:1, me_first_flag:1, unk4_2F:1;
     int unk;
     int unk8;
-    int unkC;
+    int slowStartTurns;
     int unk10;
-    int unk14;
-    u32 unk18;
+    int substituteHp;
+    u32 transformPersonality;
     u16 disabledMove;
     u16 unk1C;
     u16 encoredMove;
     u16 encoredMoveIndex;
     u16 unk24[4];
     u16 unk2C;
-    u16 unk2E;
+    u16 transformGender;
     int unk30;
 } UnkBattlemonSub;
 
@@ -162,9 +162,9 @@ typedef struct BATTLEMON {
     u8 type2;
     u8 unk26_0:5, unk26_5:1, unk26_6:2;
     u8 unk27;
-    u32 unk28_0:1, unk28_1:1, unk28_2:1, unk28_3:1, 
-        unk28_4:1, unk28_5:1, unk28_6:1, unk28_7:1,
-        unk28_8:1, unk28_9:1, unk28_A:1, unk28_B:21;
+    u32 unk28_0:1, unk28_1:1, traceFlag:1, downloadFlag:1, 
+        unk28_4:1, unk28_5:1, slowStartFlag:1, slowStartEnded:1,
+        unk28_8:1, unk28_9:1, pressureFlag:1, unk28_B:21;
     u8 movePPCur[4];
     u8 movePP[4];
     u8 level;
@@ -178,16 +178,17 @@ typedef struct BATTLEMON {
     u32 maxHp;
     u32 unk;
     u16 unk54[8];
-    u32 unk64;
+    u32 personality;
     u32 status;
     u32 status2;
     u32 unk70;
-    u32 unk74;
+    u16 item;
+    u16 unk76;
     u16 unk78;
-    u16 unk7A;
+    u8 gender:4, unk7A_4 : 4;
+    u8 unk7B;
     u32 unk7C;
     u32 unk80;
-//    u32 unk84;
     UnkBattlemonSub unk88;
 } BATTLEMON;
 
@@ -252,10 +253,10 @@ typedef struct BATTLECONTEXT {
     int unk_12C;
     int msgWork;
     int calcWork;
-    int unk_138;
+    int tempWork;
     u32 unk_13C[4];
     u32 unk_14C;
-    int unk_150;
+    int totalTurns;
     int unk_154[4];
     int unk_164[4];
     int unk_174;
@@ -279,7 +280,7 @@ typedef struct BATTLECONTEXT {
     int criticalMultiplier;
     int movePower;
     int unk_2158;
-    int unk_215C;
+    int hpCalcWork;
     int moveType;
     int unk_2164;
     int unk_2168;
@@ -310,7 +311,7 @@ typedef struct BATTLECONTEXT {
     u32 moveNoCur;
     u32 moveNoPrev;
     u32 field117_0xdd4[4];
-    u16 field118_0xde4[4];
+    u16 moveNoProtect[4];
     u16 field119_0xdec[4];
     u16 field120_0xdf4[4];
     u16 field121_0xdfc[4];
@@ -337,7 +338,7 @@ typedef struct BATTLECONTEXT {
     u8 unk_311D;
     u8 unk_311E;
     u8 unk_311F;
-    u8 unk_3120;
+    u8 magnitude;
     u8 unk_3121;
     s16 unk_3122;
     u16 unk_3124[4];

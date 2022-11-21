@@ -23,6 +23,13 @@ enum BattleSide {
     B_SIDE_18
 };
 
+//Battle Type
+#define BATTLE_TYPE_TRAINER                 (1 << 0)
+#define BATTLE_TYPE_1                       (1 << 1)
+#define BATTLE_TYPE_2                       (1 << 2)
+#define BATTLE_TYPE_3                       (1 << 3)
+#define BATTLE_TYPE_4                       (1 << 4)
+
 //Field Side Conditions
 #define SIDE_CONDITION_REFLECT              (1 << 0)
 #define SIDE_CONDITION_LIGHT_SCREEN         (1 << 1)
