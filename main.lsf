@@ -1133,10 +1133,18 @@ Overlay OVY_121
     After main
     Object asm/overlay_121.o
 }
-Overlay OVY_122
+Overlay voltorb_flip
 {
     After main
-    Object asm/overlay_122.o
+    Object src/voltorb_flip/voltorb_flip.o
+    Object src/voltorb_flip/voltorb_flip_workflow.o
+    Object src/voltorb_flip/voltorb_flip_game.o
+    Object src/voltorb_flip/voltorb_flip_input.o
+    Object src/voltorb_flip/voltorb_flip_data1.o
+    Object src/voltorb_flip/voltorb_flip_data2.o
+    Object src/voltorb_flip/voltorb_flip_data3.o
+    Object src/voltorb_flip/voltorb_flip_data4.o
+    Object src/voltorb_flip/voltorb_flip_data5.o
 }
 Overlay OVY_123
 {

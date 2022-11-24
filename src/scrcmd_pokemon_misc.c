@@ -1120,63 +1120,64 @@ BOOL ScrCmd_RadioMusicIsPlaying(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-extern s32 ov01_022093D0[2][2];
+extern s32 sSlotLuckDistribution[2][2];
 
-static u32 ov01_02202378(SAVEDATA *savedata, u8 luckValue, u8 city) {
+// Return value is unused outside of Japanese copies.
+static u32 SlotLuckiness(SAVEDATA *savedata, u8 machineId, u8 city) {
     SAV_FRIEND_GRP *friendGroup;
-    u8 *unkPtr;
-    s32 *unkData;
-    u32 size;
+    u8 *luckValues;
+    s32 *dist;
+    u32 numMachines;
     s32 rngSeed;
-    u8 ret;
-    u8 randVal;
+    u8 luckiness;
+    u8 randIdx;
     u32 i;
     s32 j;
     
     friendGroup = Save_FriendGroup_get(savedata);
     
     if (city != 0) { //1 = celadon; 0 = goldenrod
-        size = 14;
+        numMachines = 14;
     } else {
-        size = 21;
+        numMachines = 21;
     }
 
-    if (luckValue >= size) {
+    if (machineId >= numMachines) {
         return 3;
     }
 
     rngSeed = GetLCRNGSeed();
     SetLCRNGSeed(sub_0202C7DC(friendGroup));
 
-    unkPtr = AllocFromHeapAtEnd(0x20, size);
-    MI_CpuFill8(unkPtr, 0, size);
+    luckValues = AllocFromHeapAtEnd(0x20, numMachines);
+    MI_CpuFill8(luckValues, 0, numMachines);
     
     i = 0;
-    unkData = ov01_022093D0[city];
+    dist = sSlotLuckDistribution[city];
 
     for (; i < 2; i = (u8) ++i) { //I swear I couldn't get it to match otherwise
-        for (j = 0; j < unkData[i]; j = (u8) ++j) {
+        for (j = 0; j < dist[i]; j = (u8) ++j) {
             do {
-                randVal = LCRandom() % (s32) size;
-            } while (unkPtr[randVal] != 0);
-            unkPtr[randVal] = i + 1;
+                randIdx = LCRandom() % (s32) numMachines;
+            } while (luckValues[randIdx] != 0);
+            luckValues[randIdx] = i + 1;
         } 
     }
 
-    ret = unkPtr[luckValue];
+    luckiness = luckValues[machineId];
 
-    FreeToHeap(unkPtr);
+    FreeToHeap(luckValues);
     SetLCRNGSeed(rngSeed);
 
-    return ret;
+    return luckiness;
 }
 
 BOOL ScrCmd_CasinoGame(SCRIPTCONTEXT *ctx) {
-    u8 luckValue = *(ctx->script_ptr++);
+    u8 machineId = *(ctx->script_ptr++);
     u8 city = *(ctx->script_ptr++); //1 = celadon; 0 = goldenrod
     u32 *unkPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
 
-    *unkPtr = sub_0203FA38(ctx->fsys, ov01_02202378(ctx->fsys->savedata, luckValue, city));
+    *unkPtr = LaunchVoltorbFlipApp(ctx->fsys, SlotLuckiness(ctx->fsys->savedata, machineId, city));
 
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;

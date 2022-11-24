@@ -37,10 +37,10 @@ sStatJudgeBestStatMsgIdxs: ; 0x022093C2
 	.short msg_0096_D31R0201_00125
 	.short msg_0096_D31R0201_00126
 
-.public ov01_022093D0
+.public sSlotLuckDistribution
 
 	.balign 4, 0
-ov01_022093D0:
+sSlotLuckDistribution:
 	.word 7, 3
 	.word 5, 2
 
