@@ -18,6 +18,7 @@ BOOL CheckBattlerAbilityIfNotIgnored(BATTLECONTEXT *ctx, int battlerIdAttacker, 
 int BattleMon_GetMoveIndex(BATTLEMON *mon, int move);
 int ov12_02252260(BattleSystem *bsys, BATTLECONTEXT *ctx, int a2, int battlerId);
 int ov12_022522E0(BATTLECONTEXT *ctx, int battlerId);
+u16 ov12_022522F0(BATTLECONTEXT *ctx, int battlerId);
 int ov12_022525AC(BATTLECONTEXT *ctx, int moveNo);
 BOOL ov12_0225260C(BattleSystem *bsys, int a1, u8 *type1, u8 *typeB, u8 *val);
 int ov12_02252698(int moveNo);

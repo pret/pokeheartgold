@@ -57,7 +57,7 @@ typedef struct TurnData {
     u32 protectFlag:1;
     u32 helpingHandFlag:1;
     u32 unk0_4:1;
-    u32 unk0_5:1;
+    u32 snatchFlag:1;
     u32 unk0_6:1;
     u32 unk0_7:2;
     u32 unk0_9:1;
@@ -124,17 +124,38 @@ typedef struct UnkBtlCtxSub_76 {
 
 
 typedef struct UnkBattlemonSub {
-    u32 disabledTurns:3, encoredTurns:3, unk0_6:2, unk0_8:3,
-        protectSuccessTurns:2, perishSongTurns:2, rolloutCount:3, furyCutterCount:3,
-        unk0_15:3, unk0_18:3, unk0_1A:3, unk0_1D:1, unk0_1E:1;
-    u32 battlerIdLockOn:2, mimicedMoveIndex:4, battlerIdBinding:2, unk4_8:2,
-        lastResortCount:3, unk4_D:3, unk4_10:3, unk4_13:3,
-        unk4_16:1, unk4_17:4, unk4_2B:1, unk4_2C:1,
-        unk4_2D:1, me_first_flag:1, unk4_2F:1;
+    u32 disabledTurns:3, 
+        encoredTurns:3, 
+        unk0_6:2, 
+        unk0_8:3,
+        protectSuccessTurns:2, 
+        perishSongTurns:2, 
+        rolloutCount:3, 
+        furyCutterCount:3,
+        unk0_15:3, 
+        unk0_18:3, 
+        unk0_1A:3, 
+        unk0_1D:1, 
+        unk0_1E:1;
+    u32 battlerIdLockOn:2, 
+        mimicedMoveIndex:4, 
+        battlerIdBinding:2, 
+        unk4_8:2,
+        lastResortCount:3, 
+        unk4_D:3, 
+        unk4_10:3, 
+        unk4_13:3,
+        unk4_16:1, 
+        unk4_17:4, 
+        unk4_2B:1, 
+        unk4_2C:1,
+        unk4_2D:1, 
+        meFirstFlag:1, 
+        unk4_2F:1;
     int unk;
     int unk8;
     int slowStartTurns;
-    int unk10;
+    int meFirstCount;
     int substituteHp;
     u32 transformPersonality;
     u16 disabledMove;
@@ -142,7 +163,7 @@ typedef struct UnkBattlemonSub {
     u16 encoredMove;
     u16 encoredMoveIndex;
     u16 unk24[4];
-    u16 unk2C;
+    u16 moveNoChoice;
     u16 transformGender;
     int unk30;
 } UnkBattlemonSub;
@@ -155,16 +176,34 @@ typedef struct BATTLEMON {
     u16 unk8;
     u16 unkA;
     u16 moves[4];
-    u32 hpIV:5, atkIV:5, defIV:5, spdIV:5, spatkIV:5, spdefIV:5, isEgg:1, isNicknamed:1;
+    u32 hpIV:5, 
+        atkIV:5, 
+        defIV:5, 
+        spdIV:5, 
+        spatkIV:5, 
+        spdefIV:5, 
+        isEgg:1, 
+        isNicknamed:1;
     s8 statChanges[8];
     int weight;
     u8 type1;
     u8 type2;
-    u8 forme:5, unk26_5:1, unk26_6:2;
+    u8 forme:5, 
+       unk26_5:1, 
+       unk26_6:2;
     u8 unk27;
-    u32 unk28_0:1, unk28_1:1, traceFlag:1, downloadFlag:1, 
-        unk28_4:1, unk28_5:1, slowStartFlag:1, slowStartEnded:1,
-        unk28_8:1, unk28_9:1, pressureFlag:1, unk28_B:21;
+    u32 unk28_0:1, 
+        unk28_1:1, 
+        traceFlag:1, 
+        downloadFlag:1, 
+        unk28_4:1, 
+        unk28_5:1, 
+        slowStartFlag:1, 
+        slowStartEnded:1,
+        unk28_8:1, 
+        unk28_9:1, 
+        pressureFlag:1, 
+        unk28_B:21;
     u8 movePPCur[4];
     u8 movePP[4];
     u8 level;
@@ -185,7 +224,8 @@ typedef struct BATTLEMON {
     u16 item;
     u16 unk76;
     u16 unk78;
-    u8 gender:4, unk7A_4 : 4;
+    u8 gender:4, 
+       unk7A_4:4;
     u8 unk7B;
     u32 unk7C;
     u32 unk80;
@@ -259,7 +299,7 @@ typedef struct BATTLECONTEXT {
     int totalTurns;
     int unk_154[4];
     int unk_164[4];
-    int unk_174;
+    int meFirstTotal;
     UnkBtlCtxSub_67 *unk_178;
     void * unk_17C;
     u32 fieldCondition;
@@ -310,17 +350,17 @@ typedef struct BATTLECONTEXT {
     u32 moveNoTemp;
     u32 moveNoCur;
     u32 moveNoPrev;
-    u32 field117_0xdd4[4];
+    u32 moveNoKeep[4];
     u16 moveNoProtect[4];
     u16 field119_0xdec[4];
     u16 field120_0xdf4[4];
     u16 field121_0xdfc[4];
-    u16 battlerMovePrev[4];
+    u16 moveNoBattlerPrev[4];
     u16 field123_0xe0c[4];
     u16 field124_0xe14[4][4];
-    u16 sketchMove[4];
+    u16 moveNoSketch[4];
     u16 unk_30B4[4];
-    u16 unk_30BC[4];
+    u16 movePos[4];
     u16 conversion2Move[4];
     u16 conversion2BattlerId[4];
     u16 conversion2Type[4];
@@ -346,7 +386,7 @@ typedef struct BATTLECONTEXT {
     int unk_3144;
     int unk_3148;
     u8 unk_314C[4];
-    int unk_3150;
+    int battlersOnField;
     u32 unk_3154:1;
     u32 unused:31;
 } BATTLECONTEXT;
