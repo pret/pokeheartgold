@@ -660,8 +660,8 @@ ov12_0223AB60: ; 0x0223AB60
 _0223AB68: .word 0x00002408
 	thumb_func_end ov12_0223AB60
 
-	thumb_func_start ov12_0223AB6C
-ov12_0223AB6C: ; 0x0223AB6C
+	thumb_func_start BattleSys_GetBattlerIdPartner
+BattleSys_GetBattlerIdPartner: ; 0x0223AB6C
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	add r5, r1, #0
@@ -700,7 +700,7 @@ _0223ABB2:
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0223AB6C
+	thumb_func_end BattleSys_GetBattlerIdPartner
 
 	thumb_func_start ov12_0223ABB8
 ov12_0223ABB8: ; 0x0223ABB8
@@ -757,8 +757,8 @@ _0223AC18:
 	.balign 4, 0
 	thumb_func_end ov12_0223ABB8
 
-	thumb_func_start ov12_0223AC20
-ov12_0223AC20: ; 0x0223AC20
+	thumb_func_start BattleSys_RecoverStatus
+BattleSys_RecoverStatus: ; 0x0223AC20
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x24
 	add r7, r1, #0
@@ -795,7 +795,7 @@ ov12_0223AC20: ; 0x0223AC20
 _0223AC6A:
 	ldr r0, [sp, #4]
 	add r1, r7, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	add r3, r0, #0
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0x1c]
@@ -806,7 +806,7 @@ _0223AC6A:
 	bne _0223AC94
 	ldr r0, [sp, #4]
 	add r1, r7, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	add r7, r0, #0
 	b _0223AC94
 _0223AC90:
@@ -1846,7 +1846,7 @@ _0223B50C:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0223AC20
+	thumb_func_end BattleSys_RecoverStatus
 
 	thumb_func_start BattleSys_GetBattleFlags
 BattleSys_GetBattleFlags: ; 0x0223B514
@@ -1937,7 +1937,7 @@ ov12_0223B580: ; 0x0223B580
 	beq _0223B5B2
 	add r0, r5, #0
 	add r1, r6, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	bl MaskOfFlagNo
 	tst r0, r4
 	bne _0223B5E8
@@ -2200,8 +2200,8 @@ ov12_0223B750: ; 0x0223B750
 	bx lr
 	thumb_func_end ov12_0223B750
 
-	thumb_func_start ov12_0223B758
-ov12_0223B758: ; 0x0223B758
+	thumb_func_start BattleSys_GetChatotVoice
+BattleSys_GetChatotVoice: ; 0x0223B758
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #0x2c]
@@ -2236,7 +2236,7 @@ _0223B790:
 	add r0, r5, r0
 	ldr r0, [r0, #0x78]
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov12_0223B758
+	thumb_func_end BattleSys_GetChatotVoice
 
 	thumb_func_start ov12_0223B798
 ov12_0223B798: ; 0x0223B798
@@ -3623,8 +3623,8 @@ _0223C0E4:
 _0223C0E8: .word 0x0000240C
 	thumb_func_end ov12_0223C0C4
 
-	thumb_func_start ov12_0223C0EC
-ov12_0223C0EC: ; 0x0223C0EC
+	thumb_func_start BattleSys_GetChatotVoiceParam
+BattleSys_GetChatotVoiceParam: ; 0x0223C0EC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #0x2c]
@@ -3662,7 +3662,7 @@ _0223C126:
 	pop {r3, r4, r5, pc}
 	nop
 _0223C130: .word 0x00002484
-	thumb_func_end ov12_0223C0EC
+	thumb_func_end BattleSys_GetChatotVoiceParam
 
 	thumb_func_start ov12_0223C134
 ov12_0223C134: ; 0x0223C134

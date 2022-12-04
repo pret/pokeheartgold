@@ -4640,7 +4640,7 @@ _022507D2:
 	bne _0225081C
 	add r0, r6, #0
 	add r1, r5, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	mov r1, #0xc0
 	mul r1, r0
 	str r0, [sp, #0xc]
@@ -4701,7 +4701,7 @@ _02250862:
 	beq _02250882
 	add r0, r6, #0
 	add r1, r5, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	str r0, [sp, #0xc]
 	b _02250A0C
 _02250882:
@@ -8596,8 +8596,8 @@ _02252644: .word ov12_0226CC7D
 _02252648: .word ov12_0226CC7E
 	thumb_func_end ov12_0225260C
 
-	thumb_func_start ov12_0225264C
-ov12_0225264C: ; 0x0225264C
+	thumb_func_start CalculateTypeEffectiveness
+CalculateTypeEffectiveness: ; 0x0225264C
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r4, _02252694 ; =ov12_0226CC7C
 	add r5, r1, #0
@@ -8636,7 +8636,7 @@ _02252686:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02252694: .word ov12_0226CC7C
-	thumb_func_end ov12_0225264C
+	thumb_func_end CalculateTypeEffectiveness
 
 	thumb_func_start ov12_02252698
 ov12_02252698: ; 0x02252698
@@ -8974,7 +8974,7 @@ _022528E6:
 	add r1, r4, #0
 	str r0, [sp, #0xc]
 	ldr r0, [sp]
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	ldr r1, [sp, #4]
 	add r1, r1, r0
 	ldr r0, _0225297C ; =0x0000219C
@@ -9281,8 +9281,8 @@ _02252B60: .word 0x0400E000
 _02252B64: .word 0x0000031A
 	thumb_func_end CanEscape
 
-	thumb_func_start ov12_02252B68
-ov12_02252B68: ; 0x02252B68
+	thumb_func_start BattleTryRun
+BattleTryRun: ; 0x02252B68
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r4, r2, #0
@@ -9377,7 +9377,7 @@ _02252C18:
 	add r1, r4, #0
 	mov r2, #0
 	mov r3, #0x63
-	bl ov12_02263F0C
+	bl BattleController_EmitIncrementGameStat
 _02252C28:
 	ldr r0, _02252C3C ; =0x0000311E
 	ldrb r1, [r5, r0]
@@ -9390,7 +9390,7 @@ _02252C30:
 _02252C34: .word 0xFFFFFE7F
 _02252C38: .word 0x00002D46
 _02252C3C: .word 0x0000311E
-	thumb_func_end ov12_02252B68
+	thumb_func_end BattleTryRun
 
 	thumb_func_start ov12_02252C40
 ov12_02252C40: ; 0x02252C40
@@ -11778,8 +11778,8 @@ _02253DFC:
 _02253E00: .word 0x00002D8C
 	thumb_func_end ov12_02253DA0
 
-	thumb_func_start ov12_02253E04
-ov12_02253E04: ; 0x02253E04
+	thumb_func_start CheckAbilityEffectOnHit
+CheckAbilityEffectOnHit: ; 0x02253E04
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	ldr r1, [r5, #0x6c]
@@ -12503,7 +12503,7 @@ _02254390: .word 0x00002D8C
 _02254394: .word 0x0000216C
 _02254398: .word 0x801FDA49
 _0225439C: .word 0x0000215C
-	thumb_func_end ov12_02253E04
+	thumb_func_end CheckAbilityEffectOnHit
 
 	thumb_func_start ov12_022543A0
 ov12_022543A0: ; 0x022543A0
@@ -15275,8 +15275,8 @@ _02255888: .word 0x00002DCC
 _0225588C: .word 0x00002DB8
 	thumb_func_end ov12_02255844
 
-	thumb_func_start ov12_02255890
-ov12_02255890: ; 0x02255890
+	thumb_func_start GetNaturalGiftPower
+GetNaturalGiftPower: ; 0x02255890
 	push {r4, lr}
 	add r4, r0, #0
 	bl GetBattlerHeldItem
@@ -15285,10 +15285,10 @@ ov12_02255890: ; 0x02255890
 	mov r2, #0xb
 	bl GetItemHoldEffect
 	pop {r4, pc}
-	thumb_func_end ov12_02255890
+	thumb_func_end GetNaturalGiftPower
 
-	thumb_func_start ov12_022558A4
-ov12_022558A4: ; 0x022558A4
+	thumb_func_start GetNaturalGiftType
+GetNaturalGiftType: ; 0x022558A4
 	push {r4, lr}
 	add r4, r0, #0
 	bl GetBattlerHeldItem
@@ -15297,7 +15297,7 @@ ov12_022558A4: ; 0x022558A4
 	mov r2, #0xc
 	bl GetItemHoldEffect
 	pop {r4, pc}
-	thumb_func_end ov12_022558A4
+	thumb_func_end GetNaturalGiftType
 
 	thumb_func_start ov12_022558B8
 ov12_022558B8: ; 0x022558B8
@@ -15495,8 +15495,8 @@ _02255A24: .word 0x0400E000
 _02255A28: .word 0x00002DCC
 	thumb_func_end ov12_02255920
 
-	thumb_func_start ov12_02255A2C
-ov12_02255A2C: ; 0x02255A2C
+	thumb_func_start CanEatOpponentBerry
+CanEatOpponentBerry: ; 0x02255A2C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r4, r1, #0
@@ -16211,10 +16211,10 @@ _02255F6C: .word 0x00002D5D
 _02255F70: .word 0x00002DB0
 _02255F74: .word 0x00000109
 _02255F78: .word 0x00002DB8
-	thumb_func_end ov12_02255A2C
+	thumb_func_end CanEatOpponentBerry
 
-	thumb_func_start ov12_02255F7C
-ov12_02255F7C: ; 0x02255F7C
+	thumb_func_start CanFling
+CanFling: ; 0x02255F7C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r4, r1, #0
@@ -17055,7 +17055,7 @@ _022565D0: .word 0x00002D5B
 _022565D4: .word 0x00002D5C
 _022565D8: .word 0x00002D5D
 _022565DC: .word 0x00000109
-	thumb_func_end ov12_02255F7C
+	thumb_func_end CanFling
 
 	thumb_func_start ov12_022565E0
 ov12_022565E0: ; 0x022565E0
@@ -21400,7 +21400,7 @@ _022586B0:
 _022586B8:
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov12_022558A4
+	bl GetNaturalGiftType
 	add r5, r0, #0
 	b _022587F0
 _022586C4:

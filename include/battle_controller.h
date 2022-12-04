@@ -16,7 +16,8 @@ void BattleController_EmitTrainerSlideIn(BattleSystem *bsys, int battlerId, u32 
 void BattleController_EmitBackgroundSlideIn(BattleSystem *bsys, int battlerId);
 void BattleController_EmitHealthbarSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u32 delay);
 void BattleController_EmitHealthbarSlideOut(BattleSystem *bsys, int battlerId);
-void ov12_022632DC(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u32 a3, u32 a4, u32 a5);
+void BattleController_EmitShowMonList(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u32 a3, u32 a4, u32 a5);
+void BattleController_EmitDrawYesNoBox(BattleSystem *bsys, BATTLECONTEXT *ctx, int a2, int a3, int a4, int a5, int a6);
 void BattleController_EmitShowWaitMessage(BattleSystem *bsys, int battlerId);
 void BattleController_EmitPrintAttackMessage(BattleSystem *bsys, BATTLECONTEXT *ctx);
 void BattleController_EmitPrintMessage(BattleSystem *bsys, BATTLECONTEXT *ctx, BATTLEMSG *msg);
@@ -38,5 +39,19 @@ void BattleController_EmitPrintEncounterMessage(BattleSystem *bsys, BATTLECONTEX
 void BattleController_EmitPrintFirstSendOutMessage(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 void BattleController_EmitBattleMonToPartyMonCopy(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 void BattleControl_EmitPartyStatusHeal(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
+void BattleController_EmitSetBattleResults(BattleSystem *bsys);
+void BattleController_EmitPlayMosaicAnimation(BattleSystem *bsys, int battlerId, int a2, int delay);
+void BattleController_EmitChangeForme(BattleSystem *bsys, int battlerId);
+void BattleController_EmitSetBattleBackground(BattleSystem *bsys, int a1);
+void BattleController_EmitInitStartBallGauge(BattleSystem *bsys, int battlerId);
+void BattleController_EmitDeleteStartBallGauge(BattleSystem *bsys, int battlerId);
+void BattleController_EmitInitBallGauge(BattleSystem *bsys, int battlerId);
+void BattleController_EmitDeleteBallGauge(BattleSystem *bsys, int battlerId);
+void BattleController_EmitLoadBallGfx(BattleSystem *bsys);
+void BattleController_EmitDeleteBallGfx(BattleSystem *bsys);
+void BattleController_EmitIncrementGameStat(BattleSystem *bsys, int battlerId, int flag, int id);
+void ov12_02263F8C(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+void ov12_02264038(BattleSystem *bsys, int battlerId);
+void ov12_02264054(BattleSystem *bsys, int battlerId);
 
 #endif

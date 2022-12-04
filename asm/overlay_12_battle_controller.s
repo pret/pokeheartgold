@@ -535,7 +535,7 @@ BattleController_EmitPokemonSlideIn: ; 0x022623F0
 	add r1, r7, #0
 	str r0, [sp, #0x14]
 	add r0, r6, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	ldr r1, [r6, #0x30]
 	ldr r2, [sp, #0x10]
 	add r1, r1, r0
@@ -1190,7 +1190,7 @@ BattleController_EmitThrowPokeball: ; 0x022629A4
 	add r5, r0, #0
 	strb r2, [r3, #1]
 	add r4, r1, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	ldr r1, [r5, #0x30]
 	add r2, r4, #0
 	add r1, r1, r0
@@ -2377,8 +2377,8 @@ ov12_022632C0: ; 0x022632C0
 	.balign 4, 0
 	thumb_func_end ov12_022632C0
 
-	thumb_func_start ov12_022632DC
-ov12_022632DC: ; 0x022632DC
+	thumb_func_start BattleController_EmitShowMonList
+BattleController_EmitShowMonList: ; 0x022632DC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x38
 	str r0, [sp, #4]
@@ -2442,7 +2442,7 @@ _02263324:
 _02263354: .word 0x00003108
 _02263358: .word 0x0000312C
 _0226335C: .word 0x0000219C
-	thumb_func_end ov12_022632DC
+	thumb_func_end BattleController_EmitShowMonList
 
 	thumb_func_start ov12_02263360
 ov12_02263360: ; 0x02263360
@@ -2461,8 +2461,8 @@ ov12_02263360: ; 0x02263360
 	.balign 4, 0
 	thumb_func_end ov12_02263360
 
-	thumb_func_start ov12_0226337C
-ov12_0226337C: ; 0x0226337C
+	thumb_func_start BattleController_EmitDrawYesNoBox
+BattleController_EmitDrawYesNoBox: ; 0x0226337C
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	add r5, r2, #0
@@ -2491,7 +2491,7 @@ ov12_0226337C: ; 0x0226337C
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0226337C
+	thumb_func_end BattleController_EmitDrawYesNoBox
 
 	thumb_func_start BattleController_EmitPrintAttackMessage
 BattleController_EmitPrintAttackMessage: ; 0x022633B8
@@ -3761,8 +3761,8 @@ ov12_02263D14: ; 0x02263D14
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov12_02263D14
 
-	thumb_func_start ov12_02263D48
-ov12_02263D48: ; 0x02263D48
+	thumb_func_start BattleController_EmitPlayMosaicAnimation
+BattleController_EmitPlayMosaicAnimation: ; 0x02263D48
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r4, r1, #0
@@ -3780,10 +3780,10 @@ ov12_02263D48: ; 0x02263D48
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02263D48
+	thumb_func_end BattleController_EmitPlayMosaicAnimation
 
-	thumb_func_start ov12_02263D6C
-ov12_02263D6C: ; 0x02263D6C
+	thumb_func_start BattleController_EmitChangeForme
+BattleController_EmitChangeForme: ; 0x02263D6C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r7, r1, #0
@@ -3857,10 +3857,10 @@ _02263DD6:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02263DF8: .word 0x00002D66
-	thumb_func_end ov12_02263D6C
+	thumb_func_end BattleController_EmitChangeForme
 
-	thumb_func_start ov12_02263DFC
-ov12_02263DFC: ; 0x02263DFC
+	thumb_func_start BattleController_EmitSetBattleBackground
+BattleController_EmitSetBattleBackground: ; 0x02263DFC
 	push {r3, lr}
 	sub sp, #8
 	add r2, r1, #0
@@ -3874,7 +3874,7 @@ ov12_02263DFC: ; 0x02263DFC
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02263DFC
+	thumb_func_end BattleController_EmitSetBattleBackground
 
 	thumb_func_start ov12_02263E18
 ov12_02263E18: ; 0x02263E18
@@ -3893,8 +3893,8 @@ ov12_02263E18: ; 0x02263E18
 	.balign 4, 0
 	thumb_func_end ov12_02263E18
 
-	thumb_func_start ov12_02263E34
-ov12_02263E34: ; 0x02263E34
+	thumb_func_start BattleController_EmitInitStartBallGauge
+BattleController_EmitInitStartBallGauge: ; 0x02263E34
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r4, r1, #0
@@ -3913,10 +3913,10 @@ ov12_02263E34: ; 0x02263E34
 	bl ov12_02262240
 	add sp, #0xc
 	pop {r4, r5, pc}
-	thumb_func_end ov12_02263E34
+	thumb_func_end BattleController_EmitInitStartBallGauge
 
-	thumb_func_start ov12_02263E5C
-ov12_02263E5C: ; 0x02263E5C
+	thumb_func_start BattleController_EmitDeleteStartBallGauge
+BattleController_EmitDeleteStartBallGauge: ; 0x02263E5C
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r4, r1, #0
@@ -3935,10 +3935,10 @@ ov12_02263E5C: ; 0x02263E5C
 	bl ov12_02262240
 	add sp, #0xc
 	pop {r4, r5, pc}
-	thumb_func_end ov12_02263E5C
+	thumb_func_end BattleController_EmitDeleteStartBallGauge
 
-	thumb_func_start ov12_02263E84
-ov12_02263E84: ; 0x02263E84
+	thumb_func_start BattleController_EmitInitBallGauge
+BattleController_EmitInitBallGauge: ; 0x02263E84
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r4, r1, #0
@@ -3957,10 +3957,10 @@ ov12_02263E84: ; 0x02263E84
 	bl ov12_02262240
 	add sp, #0xc
 	pop {r4, r5, pc}
-	thumb_func_end ov12_02263E84
+	thumb_func_end BattleController_EmitInitBallGauge
 
-	thumb_func_start ov12_02263EAC
-ov12_02263EAC: ; 0x02263EAC
+	thumb_func_start BattleController_EmitDeleteBallGauge
+BattleController_EmitDeleteBallGauge: ; 0x02263EAC
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r4, r1, #0
@@ -3979,10 +3979,10 @@ ov12_02263EAC: ; 0x02263EAC
 	bl ov12_02262240
 	add sp, #0xc
 	pop {r4, r5, pc}
-	thumb_func_end ov12_02263EAC
+	thumb_func_end BattleController_EmitDeleteBallGauge
 
-	thumb_func_start ov12_02263ED4
-ov12_02263ED4: ; 0x02263ED4
+	thumb_func_start BattleController_EmitLoadBallGfx
+BattleController_EmitLoadBallGfx: ; 0x02263ED4
 	push {r3, lr}
 	sub sp, #8
 	mov r1, #0x34
@@ -3996,10 +3996,10 @@ ov12_02263ED4: ; 0x02263ED4
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02263ED4
+	thumb_func_end BattleController_EmitLoadBallGfx
 
-	thumb_func_start ov12_02263EF0
-ov12_02263EF0: ; 0x02263EF0
+	thumb_func_start BattleController_EmitDeleteBallGfx
+BattleController_EmitDeleteBallGfx: ; 0x02263EF0
 	push {r3, lr}
 	sub sp, #8
 	mov r1, #0x35
@@ -4013,10 +4013,10 @@ ov12_02263EF0: ; 0x02263EF0
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02263EF0
+	thumb_func_end BattleController_EmitDeleteBallGfx
 
-	thumb_func_start ov12_02263F0C
-ov12_02263F0C: ; 0x02263F0C
+	thumb_func_start BattleController_EmitIncrementGameStat
+BattleController_EmitIncrementGameStat: ; 0x02263F0C
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r4, r1, #0
@@ -4034,7 +4034,7 @@ ov12_02263F0C: ; 0x02263F0C
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02263F0C
+	thumb_func_end BattleController_EmitIncrementGameStat
 
 	thumb_func_start BattleController_EmitShowWaitMessage
 BattleController_EmitShowWaitMessage: ; 0x02263F30
@@ -4484,8 +4484,8 @@ ov12_02264268: ; 0x02264268
 	pop {r4, pc}
 	thumb_func_end ov12_02264268
 
-	thumb_func_start ov12_02264288
-ov12_02264288: ; 0x02264288
+	thumb_func_start BattleController_EmitSetBattleResults
+BattleController_EmitSetBattleResults: ; 0x02264288
 	push {r3, r4, r5, lr}
 	sub sp, #0x28
 	add r5, r0, #0
@@ -4532,7 +4532,7 @@ _022642D6:
 	pop {r3, r4, r5, pc}
 	nop
 _022642EC: .word 0x0000240C
-	thumb_func_end ov12_02264288
+	thumb_func_end BattleController_EmitSetBattleResults
 
 	thumb_func_start ov12_022642F0
 ov12_022642F0: ; 0x022642F0
@@ -4996,13 +4996,13 @@ _02264664:
 	ldr r6, [sp, #0x38]
 	ldr r0, [sp]
 	add r1, r6, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	str r0, [sp, #0x38]
 	b _0226467C
 _02264672:
 	ldr r0, [sp]
 	ldr r1, [sp, #0x38]
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	add r6, r0, #0
 _0226467C:
 	ldr r0, [sp]

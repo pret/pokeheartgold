@@ -523,7 +523,7 @@ _0221C236:
 	add r2, r4, r2
 	add r2, #0x2c
 	ldrb r2, [r2]
-	bl ov12_0223AC20
+	bl BattleSys_RecoverStatus
 	cmp r0, #1
 	bne _0221C2E6
 	ldrh r0, [r4, #0x22]
@@ -1315,7 +1315,7 @@ _0221C862:
 	add r2, r6, r2
 	add r2, #0x2c
 	ldrb r2, [r2]
-	bl ov12_0223AC20
+	bl BattleSys_RecoverStatus
 	cmp r0, #1
 	bne _0221C8BA
 	ldr r0, _0221C90C ; =0x0000207C
@@ -3456,7 +3456,7 @@ ov08_0221D91C: ; 0x0221D91C
 	add r4, r0, #0
 	ldr r0, [r1, #8]
 	ldr r1, [r1, #0x28]
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	add r1, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
@@ -13486,7 +13486,7 @@ _02222C0E:
 	str r0, [sp]
 	ldr r0, [r4]
 	ldr r1, [r4, #0x10]
-	bl ov12_0223AC20
+	bl BattleSys_RecoverStatus
 	cmp r0, #1
 	bne _02222C34
 	ldr r2, _02222D6C ; =0x0000114D

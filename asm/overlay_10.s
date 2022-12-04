@@ -1839,7 +1839,7 @@ _0221CC28:
 	ldr r1, _0221CCAC ; =0x000003CF
 	add r0, r5, #0
 	ldrb r1, [r4, r1]
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0x1b
@@ -1854,7 +1854,7 @@ _0221CC46:
 	lsl r1, r1, #4
 	ldrb r1, [r4, r1]
 	add r0, r5, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0x1b
@@ -1868,7 +1868,7 @@ _0221CC66:
 	ldr r1, _0221CCAC ; =0x000003CF
 	add r0, r5, #0
 	ldrb r1, [r4, r1]
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0x1c
@@ -1883,7 +1883,7 @@ _0221CC84:
 	lsl r1, r1, #4
 	ldrb r1, [r4, r1]
 	add r0, r5, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0x1b
@@ -2307,7 +2307,7 @@ ov10_0221CF8C: ; 0x0221CF8C
 	ldr r1, [sp]
 	str r0, [sp, #8]
 	add r0, r7, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	add r1, r5, r0
 	ldr r0, _0221D060 ; =0x0000219C
 	ldrb r0, [r1, r0]
@@ -2854,7 +2854,7 @@ ov10_0221D3AC: ; 0x0221D3AC
 	add r1, r6, #0
 	str r0, [sp, #8]
 	add r0, r7, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	ldr r1, [sp]
 	add r1, r1, r0
 	ldr r0, _0221D498 ; =0x0000219C
@@ -2969,7 +2969,7 @@ ov10_0221D4A0: ; 0x0221D4A0
 	add r1, r6, #0
 	str r0, [sp, #8]
 	add r0, r7, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	ldr r1, [sp]
 	add r1, r1, r0
 	ldr r0, _0221D58C ; =0x0000219C
@@ -5570,7 +5570,7 @@ _0221E8C4:
 	ldr r1, _0221E998 ; =0x000003CF
 	ldr r0, [sp, #0x18]
 	ldrb r1, [r6, r1]
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	add r7, r0, #0
 	ldr r0, [sp, #0x1c]
 	cmp r0, #0
@@ -7164,7 +7164,7 @@ _0221F4A4:
 _0221F4AC:
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov12_022558A4
+	bl GetNaturalGiftType
 	add r5, r0, #0
 	b _0221F5E4
 _0221F4B8:
@@ -7744,7 +7744,7 @@ _0221F902:
 _0221F908:
 	ldr r1, [sp, #0x14]
 	add r0, r7, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x68]
@@ -8346,7 +8346,7 @@ _0221FDDC:
 _0221FDEE:
 	ldr r1, [sp, #0x24]
 	add r0, r5, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x1c]
@@ -8519,7 +8519,7 @@ _0221FF3A:
 _0221FF3E:
 	ldr r1, [sp, #4]
 	add r0, r6, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	lsl r0, r0, #0x18
 	lsr r7, r0, #0x18
 _0221FF4A:
@@ -8667,7 +8667,7 @@ _02220066:
 _0222006A:
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x18]
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	lsl r0, r0, #0x18
 	lsr r7, r0, #0x18
 _02220076:
@@ -9152,7 +9152,7 @@ _0222044A:
 _0222044E:
 	ldr r0, [sp, #4]
 	add r1, r6, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	lsl r0, r0, #0x18
 	lsr r7, r0, #0x18
 _0222045A:
@@ -9381,7 +9381,7 @@ _0222061A:
 _02220620:
 	ldr r0, [sp]
 	add r1, r7, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #8]

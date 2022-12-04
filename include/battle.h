@@ -289,8 +289,8 @@ typedef struct BATTLECONTEXT {
     int unk_11C;
     int unk_120;
     int moveWork;
-    int unk_128;
-    int unk_12C;
+    int itemWork;
+    int abilityWork;
     int msgWork;
     int calcWork;
     int tempWork;
@@ -308,7 +308,7 @@ typedef struct BATTLECONTEXT {
     SideConditionData fieldSideConditionData[2];
     TurnData turnData[4];
     SelfTurnData selfTurnData[4];
-    u32 field75_0x198[4]; //note: this is an unidentified bitfield array
+    u32 unk_324[4]; //note: this is an unidentified bitfield array
     UnkBtlCtxSub_76 unk_334;
     u32 * unk_2134;
     u32 unk_2138;

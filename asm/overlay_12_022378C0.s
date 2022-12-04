@@ -4846,7 +4846,7 @@ _0223A16E:
 	str r1, [r0, #4]
 	add r0, r4, #0
 	add r1, r5, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	lsl r0, r0, #2
 	add r0, r4, r0
 	ldr r1, [r0, #0x68]
@@ -4858,7 +4858,7 @@ _0223A16E:
 _0223A194:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	lsl r0, r0, #2
 	add r0, r4, r0
 	ldr r2, [r0, #0x68]

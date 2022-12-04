@@ -33,10 +33,18 @@ int CalcMoveDamage(BattleSystem *bsys, BATTLECONTEXT *ctx, u32, u32, u32, u16, u
 u16 GetBattlerHeldItem(BATTLECONTEXT *ctx, int battlerId);
 BOOL ov12_0225561C(BATTLECONTEXT *ctx, int battlerId);
 int ov12_02257C30(BattleSystem *bsys, BATTLECONTEXT *ctx, int a2);
+int GetNaturalGiftPower(BATTLECONTEXT *ctx, int battlerId);
+int GetNaturalGiftType(BATTLECONTEXT *ctx, int battlerId);
+BOOL CanEatOpponentBerry(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+BOOL CanFling(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL CheckLegalMetronomeMove(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u16 moveNo);
 BOOL CheckLegalMeFirstMove(BATTLECONTEXT *ctx, u16 move);
 BOOL CheckLegalMimicMove(u16 move);
 BOOL IsMoveEncored(BATTLECONTEXT *ctx, u16 move);
 void CheckIgnorePressure(BATTLECONTEXT *ctx, int battlerIdA, int battlerIdB);
+u8 ov12_0225682C(BATTLECONTEXT *ctx, int a1);
+int CalculateTypeEffectiveness(int typeAttack, u8 typeDef1, u8 typeDef2);
+BOOL BattleTryRun(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *work);
 
 #endif

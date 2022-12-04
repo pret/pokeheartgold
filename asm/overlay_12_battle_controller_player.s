@@ -800,7 +800,7 @@ _02248C48:
 	strb r0, [r5]
 	add r0, r7, #0
 	add r1, r4, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	ldr r1, [sp, #0x1c]
 	mov r2, #0
 	strb r2, [r1, r0]
@@ -1068,7 +1068,7 @@ _02248E56:
 _02248E74:
 	add r0, r7, #0
 	add r1, r4, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	lsl r1, r0, #4
 	ldr r0, [sp, #0x1c]
 	add r2, r0, r1
@@ -1086,7 +1086,7 @@ _02248E8E:
 	add r2, r4, #0
 	mov r3, #0
 	str r6, [sp, #4]
-	bl ov12_022632DC
+	bl BattleController_EmitShowMonList
 	mov r0, #0xa
 	strb r0, [r5]
 _02248EA4:
@@ -1143,7 +1143,7 @@ _02248F02:
 	ldr r3, _02249180 ; =0x000003BB
 	add r0, r7, #0
 	add r2, r4, #0
-	bl ov12_0226337C
+	bl BattleController_EmitDrawYesNoBox
 	mov r0, #0xc
 	strb r0, [r5]
 	b _022490F0
@@ -1287,7 +1287,7 @@ _02249028:
 	bne _022490F0
 	add r0, r7, #0
 	add r1, r4, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	ldr r1, [sp, #0x1c]
 	mov r2, #0xd
 	strb r2, [r1, r0]
@@ -1301,7 +1301,7 @@ _0224904A:
 	bne _02249072
 	add r0, r7, #0
 	add r1, r4, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	ldr r1, [sp, #0x1c]
 	ldrb r0, [r1, r0]
 	cmp r0, #0xe
@@ -5061,7 +5061,7 @@ _0224AD06:
 	ldr r2, [r4, #0x64]
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_02252B68
+	bl BattleTryRun
 	cmp r0, #0
 	beq _0224AD30
 	add r0, r4, #0
@@ -8419,7 +8419,7 @@ _0224C6E4:
 	add r0, r7, #0
 	mov r2, #0
 	mov r3, #0x62
-	bl ov12_02263F0C
+	bl BattleController_EmitIncrementGameStat
 _0224C706:
 	ldr r0, [r4, #0x6c]
 	ldr r2, [r4, #0x64]
@@ -8984,7 +8984,7 @@ _0224CB56:
 	str r0, [r4, #0x3c]
 	add r0, r5, #0
 	add r2, sp, #8
-	bl ov12_02253E04
+	bl CheckAbilityEffectOnHit
 	cmp r0, #1
 	bne _0224CB80
 	ldr r2, [sp, #8]
@@ -9084,7 +9084,7 @@ _0224CC1E:
 	str r0, [r4, #0x3c]
 	add r0, r5, #0
 	add r2, sp, #0
-	bl ov12_02253E04
+	bl CheckAbilityEffectOnHit
 	cmp r0, #1
 	bne _0224CC48
 	ldr r2, [sp]
@@ -10745,7 +10745,7 @@ _0224D8DE:
 	add r7, r0, #0
 	ldr r0, [sp]
 	ldr r1, [sp, #0x28]
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	add r1, r0, #0
 	ldr r0, [sp]
 	bl BattleSys_GetParty
@@ -11102,7 +11102,7 @@ _0224DBAE:
 	bne _0224DBDE
 	ldr r0, [sp]
 	add r1, r6, #0
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	bl MaskOfFlagNo
 	ldr r1, _0224DC04 ; =0x00003108
 	ldrb r1, [r5, r1]
