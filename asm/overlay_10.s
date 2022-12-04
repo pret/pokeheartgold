@@ -50,7 +50,7 @@ _0221BE5A:
 	add r0, r6, #0
 	add r1, r5, #0
 	mov r3, #0
-	bl ov12_022517EC
+	bl StruggleCheck
 	lsl r0, r0, #0x18
 	lsr r7, r0, #0x18
 	mov r4, #0
@@ -2294,7 +2294,7 @@ ov10_0221CF8C: ; 0x0221CF8C
 	str r0, [sp]
 	ldr r1, [sp]
 	add r0, r7, #0
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	str r0, [sp, #0xc]
 	ldr r1, [r7, #0x2c]
 	mov r0, #2
@@ -2324,7 +2324,7 @@ _0221CFF2:
 	ldr r1, [sp]
 	add r0, r7, #0
 	mov r4, #0
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	cmp r0, #0
 	ble _0221D05C
 _0221D000:
@@ -2367,7 +2367,7 @@ _0221D04E:
 	ldr r1, [sp]
 	add r0, r7, #0
 	add r4, r4, #1
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	cmp r4, r0
 	blt _0221D000
 _0221D05C:
@@ -2871,12 +2871,12 @@ _0221D406:
 _0221D412:
 	add r0, r7, #0
 	add r1, r6, #0
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	str r0, [sp, #0x14]
 	add r0, r7, #0
 	add r1, r6, #0
 	mov r5, #0
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	cmp r0, #0
 	ble _0221D494
 _0221D42A:
@@ -2924,7 +2924,7 @@ _0221D486:
 	add r0, r7, #0
 	add r1, r6, #0
 	add r5, r5, #1
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	cmp r5, r0
 	blt _0221D42A
 _0221D494:
@@ -2986,12 +2986,12 @@ _0221D4FA:
 _0221D506:
 	add r0, r7, #0
 	add r1, r6, #0
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	str r0, [sp, #0x14]
 	add r0, r7, #0
 	add r1, r6, #0
 	mov r5, #0
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	cmp r0, #0
 	ble _0221D588
 _0221D51E:
@@ -3039,7 +3039,7 @@ _0221D57A:
 	add r0, r7, #0
 	add r1, r6, #0
 	add r5, r5, #1
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	cmp r5, r0
 	blt _0221D51E
 _0221D588:
@@ -4194,7 +4194,7 @@ ov10_0221DE24: ; 0x0221DE24
 	ldrh r1, [r2, r1]
 	add r0, r4, #0
 	mov r2, #1
-	bl ov12_02257E74
+	bl GetItemHoldEffect
 	mov r1, #0xd7
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -4207,7 +4207,7 @@ _0221DE64:
 	add r0, r4, #0
 	ldrh r1, [r2, r1]
 	mov r2, #1
-	bl ov12_02257E74
+	bl GetItemHoldEffect
 	mov r1, #0xd7
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -4370,7 +4370,7 @@ ov10_0221DF88: ; 0x0221DF88
 	add r0, r5, #0
 	add r1, r6, #0
 	mov r4, #0
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	cmp r0, #0
 	ble _0221E010
 	ldr r0, [sp]
@@ -4380,7 +4380,7 @@ _0221DFC8:
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	ldr r2, [sp, #4]
 	ldr r1, _0221E014 ; =0x0000219C
 	str r0, [sp, #0xc]
@@ -4406,7 +4406,7 @@ _0221E002:
 	add r0, r5, #0
 	add r1, r6, #0
 	add r4, r4, #1
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	cmp r4, r0
 	blt _0221DFC8
 _0221E010:
@@ -4439,7 +4439,7 @@ ov10_0221E018: ; 0x0221E018
 	ldr r0, [sp]
 	ldr r1, [sp, #8]
 	mov r7, #0
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	cmp r0, #0
 	ble _0221E0B2
 	ldr r1, [sp, #4]
@@ -4450,7 +4450,7 @@ _0221E05A:
 	ldr r0, [sp]
 	ldr r1, [sp, #8]
 	add r2, r7, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	add r5, r0, #0
 	ldr r1, [sp, #0xc]
 	ldr r0, _0221E0B8 ; =0x0000219C
@@ -4487,7 +4487,7 @@ _0221E0A4:
 	ldr r0, [sp]
 	ldr r1, [sp, #8]
 	add r7, r7, #1
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	cmp r7, r0
 	blt _0221E05A
 _0221E0B2:
@@ -4569,7 +4569,7 @@ ov10_0221E11C: ; 0x0221E11C
 	add r0, r6, #0
 	add r1, r4, #0
 	add r2, r5, #0
-	bl ov12_02252EA8
+	bl GetBattlerLearnedMoveCount
 	mov r1, #0xc0
 	mul r1, r5
 	add r2, r4, r1
@@ -4849,7 +4849,7 @@ _0221E2FA:
 	ldr r0, [sp, #0x18]
 	ldr r1, [sp, #0x28]
 	mov r7, #0
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	cmp r0, #0
 	ble _0221E44A
 	ldr r1, [sp, #0x1c]
@@ -4865,7 +4865,7 @@ _0221E374:
 	ldr r0, [sp, #0x18]
 	ldr r1, [sp, #0x28]
 	add r2, r7, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	mov r1, #0xa3
 	mov r2, #0
 	add r6, r0, #0
@@ -4953,7 +4953,7 @@ _0221E43C:
 	ldr r0, [sp, #0x18]
 	ldr r1, [sp, #0x28]
 	add r7, r7, #1
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	cmp r7, r0
 	blt _0221E374
 _0221E44A:
@@ -6695,13 +6695,13 @@ _0221F132:
 	ldr r1, [sp, #0x1c]
 	add r0, r6, #0
 	mov r2, #0xb
-	bl ov12_02257E74
+	bl GetItemHoldEffect
 	add r4, r0, #0
 	beq _0221F166
 	ldr r1, [sp, #0x1c]
 	add r0, r6, #0
 	mov r2, #0xc
-	bl ov12_02257E74
+	bl GetItemHoldEffect
 	add r7, r0, #0
 	b _0221F3B4
 _0221F15A:
@@ -6717,7 +6717,7 @@ _0221F168:
 	ldr r1, [sp, #0x1c]
 	add r0, r6, #0
 	mov r2, #1
-	bl ov12_02257E74
+	bl GetItemHoldEffect
 	sub r0, #0x7e
 	cmp r0, #0xf
 	bhi _0221F1E4
@@ -7072,7 +7072,7 @@ _0221F3B4:
 	ldr r3, [r4, r3]
 	add r1, r6, #0
 	add r2, r5, #0
-	bl ov12_02256FF8
+	bl CalcMoveDamage
 	str r0, [sp, #0x20]
 	b _0221F40A
 _0221F3FE:
@@ -7116,7 +7116,7 @@ _0221F442:
 	mul r1, r0
 	add r0, r1, #0
 	mov r1, #0x64
-	bl ov12_02253178
+	bl DamageDivide
 	add sp, #0x4c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -7298,7 +7298,7 @@ _0221F590:
 	str r2, [sp]
 	mov r2, #8
 	mov r3, #0
-	bl ov12_02252324
+	bl CheckAbilityActive
 	cmp r0, #0
 	bne _0221F5E4
 	mov r0, #0x4c
@@ -7307,7 +7307,7 @@ _0221F590:
 	add r1, r4, #0
 	mov r2, #8
 	mov r3, #0
-	bl ov12_02252324
+	bl CheckAbilityActive
 	cmp r0, #0
 	bne _0221F5E4
 	mov r0, #6
@@ -7453,7 +7453,7 @@ _0221F6A8:
 	str r0, [sp, #0x20]
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x18]
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	cmp r0, #0
 	bgt _0221F6C6
 _0221F6C4:
@@ -7466,7 +7466,7 @@ _0221F6CC:
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x18]
 	ldr r2, [sp, #0x20]
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	mov r1, #0xa3
 	mov r2, #0
 	add r6, r0, #0
@@ -7579,7 +7579,7 @@ _0221F7C0:
 	add r0, r0, #1
 	str r0, [sp, #0x20]
 	ldr r0, [sp, #0x14]
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	ldr r1, [sp, #0x20]
 	cmp r1, r0
 	bge _0221F7D6
@@ -7751,7 +7751,7 @@ _0221F908:
 _0221F916:
 	ldr r1, [sp, #0x14]
 	add r0, r7, #0
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	str r0, [sp, #0x60]
 	mov r0, #0
 	str r0, [sp, #0x30]
@@ -7770,7 +7770,7 @@ _0221F938:
 	ldr r1, [sp, #0x14]
 	ldr r2, [sp, #0x30]
 	add r0, r7, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	mov r1, #0xa3
 	mov r2, #0
 	str r0, [sp, #0x58]
@@ -8008,7 +8008,7 @@ _0221FB26:
 	ldr r1, [sp, #0x14]
 	ldr r2, [sp, #0x34]
 	add r0, r7, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	mov r1, #0xa3
 	mov r2, #0
 	str r0, [sp, #0x1c]
@@ -8525,7 +8525,7 @@ _0221FF3E:
 _0221FF4A:
 	ldr r1, [sp, #4]
 	add r0, r6, #0
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	mov r5, #0
 	str r0, [sp, #0xc]
 	cmp r0, #0
@@ -8539,7 +8539,7 @@ _0221FF64:
 	ldr r1, [sp, #4]
 	add r0, r6, #0
 	add r2, r5, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	mov r1, #0xa3
 	mov r2, #0
 	add r4, r0, #0
@@ -8673,7 +8673,7 @@ _0222006A:
 _02220076:
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x18]
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	str r0, [sp, #0x30]
 	mov r0, #0
 	str r0, [sp, #0x34]
@@ -8694,7 +8694,7 @@ _0222009C:
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x18]
 	ldr r2, [sp, #0x34]
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	mov r1, #0xa3
 	mov r2, #0
 	add r6, r0, #0
@@ -8770,7 +8770,7 @@ _02220104:
 	add r0, r5, #0
 	lsr r1, r1, #0x10
 	mov r2, #1
-	bl ov12_02257E74
+	bl GetItemHoldEffect
 	str r0, [sp, #0x44]
 	add r0, r6, #0
 	mov r1, #0xb1
@@ -9092,7 +9092,7 @@ ov10_022203A4: ; 0x022203A4
 	str r2, [sp]
 	mov r2, #2
 	add r3, r6, #0
-	bl ov12_02252324
+	bl CheckAbilityActive
 	cmp r0, #0
 	bne _02220424
 	mov r0, #0x47
@@ -9101,7 +9101,7 @@ ov10_022203A4: ; 0x022203A4
 	ldr r1, [sp, #8]
 	mov r2, #2
 	add r3, r6, #0
-	bl ov12_02252324
+	bl CheckAbilityActive
 	cmp r0, #0
 	bne _02220424
 	mov r0, #0x2a
@@ -9110,7 +9110,7 @@ ov10_022203A4: ; 0x022203A4
 	ldr r1, [sp, #8]
 	mov r2, #6
 	add r3, r6, #0
-	bl ov12_02252324
+	bl CheckAbilityActive
 	cmp r0, #0
 	beq _0222042A
 	ldr r0, [sp, #8]
@@ -9158,7 +9158,7 @@ _0222044E:
 _0222045A:
 	ldr r0, [sp, #4]
 	add r1, r6, #0
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	mov r5, #0
 	str r0, [sp, #0x10]
 	cmp r0, #0
@@ -9172,7 +9172,7 @@ _02220474:
 	ldr r0, [sp, #4]
 	add r1, r6, #0
 	add r2, r5, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	mov r1, #0xa3
 	mov r2, #0
 	add r4, r0, #0
@@ -9388,7 +9388,7 @@ _02220620:
 _0222062E:
 	ldr r0, [sp]
 	add r1, r7, #0
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	mov r4, #0
 	str r0, [sp, #4]
 	cmp r0, #0
@@ -9401,7 +9401,7 @@ _02220646:
 	ldr r0, [sp]
 	add r1, r7, #0
 	add r2, r4, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	mov r1, #0xa3
 	mov r2, #0
 	bl GetMonData
@@ -9500,7 +9500,7 @@ _022206E6:
 _02220704:
 	ldr r1, [sp]
 	add r0, r5, #0
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	add r7, r0, #0
 	mov r5, #0
 	bl GetPartyCount
@@ -9594,13 +9594,13 @@ _022207BC:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x26
-	bl ov12_02257E74
+	bl GetItemHoldEffect
 	cmp r0, #0
 	beq _022207FE
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x36
-	bl ov12_02257E74
+	bl GetItemHoldEffect
 	lsl r0, r0, #0x18
 	lsr r2, r0, #0x18
 	beq _02220816
@@ -9627,7 +9627,7 @@ _022207FE:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0xf
-	bl ov12_02257E74
+	bl GetItemHoldEffect
 	cmp r0, #0
 	beq _02220834
 	ldr r0, _022209DC ; =0x00002DAC
@@ -9655,7 +9655,7 @@ _02220834:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x10
-	bl ov12_02257E74
+	bl GetItemHoldEffect
 	cmp r0, #0
 	beq _0222086E
 	ldr r0, _022209DC ; =0x00002DAC
@@ -9684,7 +9684,7 @@ _0222086E:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x11
-	bl ov12_02257E74
+	bl GetItemHoldEffect
 	cmp r0, #0
 	beq _022208A2
 	ldr r0, _022209DC ; =0x00002DAC
@@ -9709,7 +9709,7 @@ _022208A2:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x12
-	bl ov12_02257E74
+	bl GetItemHoldEffect
 	cmp r0, #0
 	beq _022208D6
 	ldr r0, _022209DC ; =0x00002DAC
@@ -9734,7 +9734,7 @@ _022208D6:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x13
-	bl ov12_02257E74
+	bl GetItemHoldEffect
 	cmp r0, #0
 	beq _0222090A
 	ldr r0, _022209DC ; =0x00002DAC
@@ -9759,7 +9759,7 @@ _0222090A:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x14
-	bl ov12_02257E74
+	bl GetItemHoldEffect
 	cmp r0, #0
 	beq _02220940
 	ldr r0, _022209E0 ; =0x00002DB0
@@ -9796,7 +9796,7 @@ _02220950:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x1b
-	bl ov12_02257E74
+	bl GetItemHoldEffect
 	cmp r0, #0
 	beq _02220970
 	ldr r0, _022209C4 ; =0x000003D3
@@ -9812,7 +9812,7 @@ _02220970:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x1c
-	bl ov12_02257E74
+	bl GetItemHoldEffect
 	cmp r0, #0
 	beq _02220990
 	ldr r0, _022209C4 ; =0x000003D3
@@ -9828,7 +9828,7 @@ _02220990:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x1d
-	bl ov12_02257E74
+	bl GetItemHoldEffect
 	cmp r0, #0
 	beq _022209B0
 	ldr r0, _022209C4 ; =0x000003D3
@@ -9844,7 +9844,7 @@ _022209B0:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x1e
-	bl ov12_02257E74
+	bl GetItemHoldEffect
 	cmp r0, #0
 	beq _022209F8
 	ldr r0, _022209C4 ; =0x000003D3
@@ -9872,7 +9872,7 @@ _022209F8:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x1f
-	bl ov12_02257E74
+	bl GetItemHoldEffect
 	cmp r0, #0
 	beq _02220A16
 	ldr r0, _02220AA0 ; =0x000003D3
@@ -9887,7 +9887,7 @@ _02220A16:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x20
-	bl ov12_02257E74
+	bl GetItemHoldEffect
 	cmp r0, #0
 	beq _02220A36
 	ldr r0, _02220AA0 ; =0x000003D3
@@ -9903,7 +9903,7 @@ _02220A36:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x16
-	bl ov12_02257E74
+	bl GetItemHoldEffect
 	cmp r0, #0
 	beq _02220A62
 	mov r0, #7

@@ -297,8 +297,8 @@ _022622AC:
 _022622C4: .word 0x0000240C
 	thumb_func_end ov12_02262240
 
-	thumb_func_start ov12_022622C8
-ov12_022622C8: ; 0x022622C8
+	thumb_func_start BattleController_EmitPlayEncounterAnimation
+BattleController_EmitPlayEncounterAnimation: ; 0x022622C8
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r4, r1, #0
@@ -317,10 +317,10 @@ ov12_022622C8: ; 0x022622C8
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov12_022622C8
+	thumb_func_end BattleController_EmitPlayEncounterAnimation
 
-	thumb_func_start ov12_022622F0
-ov12_022622F0: ; 0x022622F0
+	thumb_func_start BattleController_EmitPokemonEncounter
+BattleController_EmitPokemonEncounter: ; 0x022622F0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x40
 	add r7, r1, #0
@@ -442,10 +442,10 @@ _02262392:
 	.balign 4, 0
 _022623E8: .word 0x00002DBE
 _022623EC: .word 0x00002D66
-	thumb_func_end ov12_022622F0
+	thumb_func_end BattleController_EmitPokemonEncounter
 
-	thumb_func_start ov12_022623F0
-ov12_022623F0: ; 0x022623F0
+	thumb_func_start BattleController_EmitPokemonSlideIn
+BattleController_EmitPokemonSlideIn: ; 0x022623F0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x78
 	add r7, r1, #0
@@ -590,10 +590,10 @@ _022624C2:
 _02262518: .word 0x00002DBE
 _0226251C: .word 0x0000219C
 _02262520: .word 0x00002D66
-	thumb_func_end ov12_022623F0
+	thumb_func_end BattleController_EmitPokemonSlideIn
 
-	thumb_func_start ov12_02262524
-ov12_02262524: ; 0x02262524
+	thumb_func_start BattleController_EmitPokemonSendOut
+BattleController_EmitPokemonSendOut: ; 0x02262524
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x84
 	add r7, r1, #0
@@ -854,10 +854,10 @@ _02262724: .word 0x00002DFA
 _02262728: .word 0x00002DE4
 _0226272C: .word 0x00002DBE
 _02262730: .word 0x00002DA8
-	thumb_func_end ov12_02262524
+	thumb_func_end BattleController_EmitPokemonSendOut
 
-	thumb_func_start ov12_02262734
-ov12_02262734: ; 0x02262734
+	thumb_func_start BattleController_EmitRecallPokemon
+BattleController_EmitRecallPokemon: ; 0x02262734
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x3c
 	add r4, r1, #0
@@ -1039,7 +1039,7 @@ _02262890: .word 0x00002DB0
 _02262894: .word 0x00002DFA
 _02262898: .word 0x00002DE4
 _0226289C: .word 0x00002DA8
-	thumb_func_end ov12_02262734
+	thumb_func_end BattleController_EmitRecallPokemon
 
 	thumb_func_start ov12_022628A0
 ov12_022628A0: ; 0x022628A0
@@ -1136,8 +1136,8 @@ _02262950: .word 0x00000195
 _02262954: .word 0x00002D66
 	thumb_func_end ov12_022628A0
 
-	thumb_func_start ov12_02262958
-ov12_02262958: ; 0x02262958
+	thumb_func_start BattleController_EmitDeletePokemon
+BattleController_EmitDeletePokemon: ; 0x02262958
 	push {r3, lr}
 	sub sp, #8
 	add r2, r1, #0
@@ -1151,10 +1151,10 @@ ov12_02262958: ; 0x02262958
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02262958
+	thumb_func_end BattleController_EmitDeletePokemon
 
-	thumb_func_start ov12_02262974
-ov12_02262974: ; 0x02262974
+	thumb_func_start BattleController_EmitTrainerEncounter
+BattleController_EmitTrainerEncounter: ; 0x02262974
 	push {r3, lr}
 	sub sp, #8
 	add r2, r1, #0
@@ -1178,7 +1178,7 @@ ov12_02262974: ; 0x02262974
 	bl ov12_02262240
 	add sp, #8
 	pop {r3, pc}
-	thumb_func_end ov12_02262974
+	thumb_func_end BattleController_EmitTrainerEncounter
 
 	thumb_func_start BattleController_EmitThrowPokeball
 BattleController_EmitThrowPokeball: ; 0x022629A4
@@ -1210,8 +1210,8 @@ BattleController_EmitThrowPokeball: ; 0x022629A4
 _022629D8: .word 0x0000219C
 	thumb_func_end BattleController_EmitThrowPokeball
 
-	thumb_func_start ov12_022629DC
-ov12_022629DC: ; 0x022629DC
+	thumb_func_start BattleController_EmitTrainerSlideOut
+BattleController_EmitTrainerSlideOut: ; 0x022629DC
 	push {r3, lr}
 	sub sp, #8
 	add r2, r1, #0
@@ -1225,10 +1225,10 @@ ov12_022629DC: ; 0x022629DC
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov12_022629DC
+	thumb_func_end BattleController_EmitTrainerSlideOut
 
-	thumb_func_start ov12_022629F8
-ov12_022629F8: ; 0x022629F8
+	thumb_func_start BattleController_EmitTrainerSlideIn
+BattleController_EmitTrainerSlideIn: ; 0x022629F8
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r3, r1, #0
@@ -1254,7 +1254,7 @@ ov12_022629F8: ; 0x022629F8
 	bl ov12_02262240
 	add sp, #0xc
 	pop {r3, r4, pc}
-	thumb_func_end ov12_022629F8
+	thumb_func_end BattleController_EmitTrainerSlideIn
 
 	thumb_func_start BattleController_EmitHealthbarSlideIn
 BattleController_EmitHealthbarSlideIn: ; 0x02262A2C
@@ -1268,7 +1268,7 @@ BattleController_EmitHealthbarSlideIn: ; 0x02262A2C
 	add r1, r4, #0
 	str r0, [sp, #4]
 	str r3, [sp, #8]
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	add r6, r0, #0
 	mov r1, #5
 	mov r2, #0
@@ -1404,8 +1404,8 @@ _02262B5C: .word 0x00002DBE
 _02262B60: .word 0x00002DA4
 	thumb_func_end BattleController_EmitHealthbarSlideIn
 
-	thumb_func_start ov12_02262B64
-ov12_02262B64: ; 0x02262B64
+	thumb_func_start BattleController_EmitHealthbarSlideOut
+BattleController_EmitHealthbarSlideOut: ; 0x02262B64
 	push {r3, lr}
 	sub sp, #8
 	add r2, r1, #0
@@ -1419,7 +1419,7 @@ ov12_02262B64: ; 0x02262B64
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02262B64
+	thumb_func_end BattleController_EmitHealthbarSlideOut
 
 	thumb_func_start ov12_02262B80
 ov12_02262B80: ; 0x02262B80
@@ -1490,7 +1490,7 @@ _02262C06:
 _02262C08:
 	ldr r0, [sp, #4]
 	add r1, r4, #0
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	str r0, [sp, #0x24]
 	mov r7, #0
 	bl GetPartyCount
@@ -1596,7 +1596,7 @@ _02262CDA:
 	add r4, r0, #0
 	ldr r0, [sp, #4]
 	add r1, r4, #0
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	str r0, [sp, #0x10]
 	mov r7, #0
 	bl GetPartyCount
@@ -1671,7 +1671,7 @@ _02262D74:
 	add r4, r0, #0
 	ldr r0, [sp, #4]
 	add r1, r4, #0
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	str r0, [sp, #0x14]
 	mov r7, #0
 	bl GetPartyCount
@@ -1738,7 +1738,7 @@ _02262DF4:
 	add r4, r0, #0
 	ldr r0, [sp, #4]
 	add r1, r4, #0
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	str r0, [sp, #0x18]
 	mov r7, #0
 	bl GetPartyCount
@@ -1955,7 +1955,7 @@ _02262F7A:
 	ldr r1, [sp, #8]
 	ldr r2, [sp, #0xc]
 	mov r3, #0
-	bl ov12_022517EC
+	bl StruggleCheck
 	add r1, sp, #0x14
 	strh r0, [r1, #2]
 	mov r0, #0x14
@@ -2619,7 +2619,7 @@ BattleController_EmitHealthbarUpdate: ; 0x02263488
 	ldr r2, _0226354C ; =0x0000219C
 	str r0, [sp, #4]
 	ldrb r2, [r3, r2]
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	add r4, r0, #0
 	mov r1, #5
 	mov r2, #0
@@ -2724,7 +2724,7 @@ ov12_02263564: ; 0x02263564
 	ldrb r2, [r3, r2]
 	add r1, r4, #0
 	str r0, [sp, #4]
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	add r6, r0, #0
 	mov r1, #5
 	mov r2, #0
@@ -2773,8 +2773,8 @@ _022635E0: .word 0x0000219C
 _022635E4: .word 0x00002DA4
 	thumb_func_end ov12_02263564
 
-	thumb_func_start ov12_022635E8
-ov12_022635E8: ; 0x022635E8
+	thumb_func_start BattleController_EmitPlayFaintAnimation
+BattleController_EmitPlayFaintAnimation: ; 0x022635E8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x3c
 	str r0, [sp, #4]
@@ -2916,7 +2916,7 @@ _022636EC: .word 0x00002D66
 _022636F0: .word 0x00002DB0
 _022636F4: .word 0x00002DE4
 _022636F8: .word 0x00002DA8
-	thumb_func_end ov12_022635E8
+	thumb_func_end BattleController_EmitPlayFaintAnimation
 
 	thumb_func_start BattleController_EmitPlaySE
 BattleController_EmitPlaySE: ; 0x022636FC
@@ -2954,8 +2954,8 @@ BattleController_EmitFadeOutBattle: ; 0x0226371C
 	.balign 4, 0
 	thumb_func_end BattleController_EmitFadeOutBattle
 
-	thumb_func_start ov12_02263738
-ov12_02263738: ; 0x02263738
+	thumb_func_start BattleController_EmitToggleVanish
+BattleController_EmitToggleVanish: ; 0x02263738
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x30
 	mov ip, r1
@@ -3058,7 +3058,7 @@ _022637F8: .word 0x00002DFA
 _022637FC: .word 0x00002DE4
 _02263800: .word 0x00002DBE
 _02263804: .word 0x00002DA8
-	thumb_func_end ov12_02263738
+	thumb_func_end BattleController_EmitToggleVanish
 
 	thumb_func_start BattleController_EmitHealthbarStatus
 BattleController_EmitHealthbarStatus: ; 0x02263808
@@ -3098,8 +3098,8 @@ BattleController_EmitPrintTrainerMessage: ; 0x02263828
 	pop {r4, pc}
 	thumb_func_end BattleController_EmitPrintTrainerMessage
 
-	thumb_func_start ov12_02263848
-ov12_02263848: ; 0x02263848
+	thumb_func_start BattleController_EmitSetStatus2Effect
+BattleController_EmitSetStatus2Effect: ; 0x02263848
 	push {r3, r4, r5, lr}
 	sub sp, #0x68
 	add r4, r2, #0
@@ -3122,10 +3122,10 @@ ov12_02263848: ; 0x02263848
 	add sp, #0x68
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02263848
+	thumb_func_end BattleController_EmitSetStatus2Effect
 
-	thumb_func_start ov12_02263878
-ov12_02263878: ; 0x02263878
+	thumb_func_start BattleController_EmitCopyStatus2Effect
+BattleController_EmitCopyStatus2Effect: ; 0x02263878
 	push {r3, r4, r5, lr}
 	sub sp, #0x68
 	add r4, r2, #0
@@ -3148,7 +3148,7 @@ ov12_02263878: ; 0x02263878
 	bl ov12_02262240
 	add sp, #0x68
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov12_02263878
+	thumb_func_end BattleController_EmitCopyStatus2Effect
 
 	thumb_func_start BattleController_EmitPrintReturnMessage
 BattleController_EmitPrintReturnMessage: ; 0x022638A8
@@ -3242,8 +3242,8 @@ BattleController_EmitPrintEncounterMessage: ; 0x02263938
 	pop {r3, pc}
 	thumb_func_end BattleController_EmitPrintEncounterMessage
 
-	thumb_func_start ov12_02263950
-ov12_02263950: ; 0x02263950
+	thumb_func_start BattleController_EmitPrintFirstSendOutMessage
+BattleController_EmitPrintFirstSendOutMessage: ; 0x02263950
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r7, r1, #0
@@ -3280,7 +3280,7 @@ _02263982:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02263998: .word 0x0000219C
-	thumb_func_end ov12_02263950
+	thumb_func_end BattleController_EmitPrintFirstSendOutMessage
 
 	thumb_func_start ov12_0226399C
 ov12_0226399C: ; 0x0226399C
@@ -3365,7 +3365,7 @@ ov12_02263A1C: ; 0x02263A1C
 	ldrb r2, [r7, r4]
 	add r1, r4, #0
 	str r0, [sp, #4]
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	add r6, r0, #0
 	mov r1, #5
 	mov r2, #0
@@ -3675,8 +3675,8 @@ _02263CA8: .word 0xFBFFFFFF
 _02263CAC: .word 0xF7FFFFFF
 	thumb_func_end BattleController_EmitBattleMonToPartyMonCopy
 
-	thumb_func_start ov12_02263CB0
-ov12_02263CB0: ; 0x02263CB0
+	thumb_func_start BattleController_EmitBackgroundSlideIn
+BattleController_EmitBackgroundSlideIn: ; 0x02263CB0
 	push {r3, lr}
 	sub sp, #8
 	add r2, r1, #0
@@ -3690,7 +3690,7 @@ ov12_02263CB0: ; 0x02263CB0
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02263CB0
+	thumb_func_end BattleController_EmitBackgroundSlideIn
 
 	thumb_func_start ov12_02263CCC
 ov12_02263CCC: ; 0x02263CCC
@@ -4036,8 +4036,8 @@ ov12_02263F0C: ; 0x02263F0C
 	.balign 4, 0
 	thumb_func_end ov12_02263F0C
 
-	thumb_func_start ov12_02263F30
-ov12_02263F30: ; 0x02263F30
+	thumb_func_start BattleController_EmitShowWaitMessage
+BattleController_EmitShowWaitMessage: ; 0x02263F30
 	push {r4, r5, lr}
 	sub sp, #0x24
 	add r5, r0, #0
@@ -4081,7 +4081,7 @@ _02263F84:
 	pop {r4, r5, pc}
 	.balign 4, 0
 _02263F88: .word 0x0000240C
-	thumb_func_end ov12_02263F30
+	thumb_func_end BattleController_EmitShowWaitMessage
 
 	thumb_func_start ov12_02263F8C
 ov12_02263F8C: ; 0x02263F8C
@@ -4678,7 +4678,7 @@ ov12_022643C8: ; 0x022643C8
 	ldr r1, [sp, #0x20]
 	str r3, [r4, #0x4c]
 	str r1, [r4, #0x50]
-	bl ov12_0223AB40
+	bl BattleSys_GetTerrainId
 	str r0, [r4, #0x54]
 	ldrh r1, [r4, #0xe]
 	mov r0, #4
@@ -4726,7 +4726,7 @@ _02264430:
 	mov r0, #0xd
 	str r0, [sp]
 	ldr r0, [sp, #4]
-	bl ov12_02252324
+	bl CheckAbilityActive
 	cmp r0, #0
 	bne _02264476
 	mov r0, #0x4c
@@ -4735,7 +4735,7 @@ _02264430:
 	ldr r1, [sp, #8]
 	mov r2, #8
 	mov r3, #0
-	bl ov12_02252324
+	bl CheckAbilityActive
 	cmp r0, #0
 	bne _02264476
 	mov r1, #6
@@ -5007,7 +5007,7 @@ _02264672:
 _0226467C:
 	ldr r0, [sp]
 	add r1, r6, #0
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	mov r4, #0
 	str r0, [sp, #0x10]
 	add r7, r4, #0
@@ -5070,7 +5070,7 @@ _022646EE:
 _022646FC:
 	ldr r0, [sp]
 	ldr r1, [sp, #0x38]
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	str r0, [sp, #8]
 	mov r4, #3
 	mov r7, #0
@@ -5148,7 +5148,7 @@ _02264782:
 _02264796:
 	ldr r0, [sp]
 	ldr r1, [sp, #0x38]
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	mov r4, #0
 	str r0, [sp, #0xc]
 	add r7, r4, #0

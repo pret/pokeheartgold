@@ -561,7 +561,7 @@ _0221C266:
 	add r2, r4, r2
 	add r2, #0x2c
 	ldrb r2, [r2]
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	ldrb r2, [r4, #0x11]
 	mov r1, #0x50
 	add r3, r2, #0
@@ -1629,7 +1629,7 @@ _0221CAB6:
 	add r2, r5, r2
 	add r2, #0x2c
 	ldrb r2, [r2]
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	ldrb r2, [r5, #0x11]
 	mov r1, #0x50
 	mul r1, r2
@@ -1838,7 +1838,7 @@ _0221CC54:
 	add r2, #0x2c
 	ldrb r2, [r2]
 	ldr r1, [r1, #0x28]
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	ldr r1, [sp, #4]
 	mov r7, #0
 	ldrb r2, [r1, #0x11]
@@ -3160,7 +3160,7 @@ _0221D6F6:
 	add r0, r1, #0
 _0221D6FA:
 	mov r2, #0x40
-	bl sub_02088068
+	bl RatioToInt
 	add r4, r0, #0
 	mov r5, #0
 	mov r7, #0x1e
@@ -4370,7 +4370,7 @@ ov08_0221E048: ; 0x0221E048
 	ldrh r1, [r5, #0x12]
 	mov r2, #0x30
 	mov r7, #1
-	bl sub_02088068
+	bl RatioToInt
 	str r0, [sp, #0x14]
 	ldrh r0, [r5, #0x10]
 	ldrh r1, [r5, #0x12]
@@ -8314,7 +8314,7 @@ ov08_02220224: ; 0x02220224
 	ldrb r2, [r2]
 	ldr r0, [r0, #8]
 	ldr r1, [r1, #0x28]
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	mov r1, #0xa3
 	mov r2, #0
 	add r7, r0, #0
@@ -8688,7 +8688,7 @@ ov08_0222057C: ; 0x0222057C
 	add r2, r3, r2
 	add r2, #0x2c
 	ldrb r2, [r2]
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	add r6, r0, #0
 	ldr r0, _022205D4 ; =0x00001FA8
 	mov r1, #0x5f
@@ -13450,7 +13450,7 @@ _02222B9C:
 	ldr r0, [r4]
 	ldr r1, [r4, #0x10]
 	add r2, r7, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	add r6, r0, #0
 	ldr r0, [r5, #0x10]
 	mov r1, #0x2e
@@ -13610,7 +13610,7 @@ _02222D02:
 _02222D26:
 	ldr r0, [r4]
 	ldr r1, [r4, #0x10]
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	add r6, r0, #0
 	ldr r0, [r4]
 	bl ov12_0223AB3C

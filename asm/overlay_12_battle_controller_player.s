@@ -635,7 +635,7 @@ _02248B00:
 	add r0, r7, #0
 	add r2, r4, #0
 	mov r3, #0
-	bl ov12_022517EC
+	bl StruggleCheck
 	cmp r0, #0xf
 	bne _02248B40
 	ldr r0, [sp, #0x54]
@@ -647,7 +647,7 @@ _02248B00:
 	ldr r0, [sp, #0x54]
 	str r1, [r0]
 	add r0, r7, #0
-	bl ov12_0223B514
+	bl BattleSys_GetBattleFlags
 	mov r1, #0x10
 	tst r0, r1
 	beq _02248B38
@@ -681,7 +681,7 @@ _02248B40:
 	mov r2, #0
 	str r2, [r0, r1]
 	add r0, r7, #0
-	bl ov12_0223B514
+	bl BattleSys_GetBattleFlags
 	mov r1, #0x10
 	tst r0, r1
 	beq _02248B7A
@@ -868,7 +868,7 @@ _02248CD0:
 	cmp r0, #0
 	bne _02248D38
 	add r0, r7, #0
-	bl ov12_0223B514
+	bl BattleSys_GetBattleFlags
 	mov r1, #0x10
 	tst r0, r1
 	beq _02248D06
@@ -1155,7 +1155,7 @@ _02248F22:
 	cmp r0, #0
 	bne _02248F8E
 	add r0, r7, #0
-	bl ov12_0223B514
+	bl BattleSys_GetBattleFlags
 	mov r1, #0x10
 	tst r0, r1
 	beq _02248F52
@@ -1204,11 +1204,11 @@ _02248F8E:
 	add r0, r7, #0
 	add r2, r4, #0
 	add r3, sp, #0x7c
-	bl ov12_02252980
+	bl CanEscape
 	cmp r0, #0
 	beq _02248FF4
 	add r0, r7, #0
-	bl ov12_0223B514
+	bl BattleSys_GetBattleFlags
 	mov r1, #0x10
 	tst r0, r1
 	beq _02248FC2
@@ -1308,12 +1308,12 @@ _0224904A:
 	bne _0224907A
 	add r0, r7, #0
 	add r1, r4, #0
-	bl ov12_02263F30
+	bl BattleController_EmitShowWaitMessage
 	b _0224907A
 _02249072:
 	add r0, r7, #0
 	add r1, r4, #0
-	bl ov12_02263F30
+	bl BattleController_EmitShowWaitMessage
 _0224907A:
 	mov r0, #0xe
 	strb r0, [r5]
@@ -1343,7 +1343,7 @@ _022490A0:
 	strh r1, [r0, #6]
 	ldr r0, [sp, #0x1c]
 	add r1, r4, #0
-	bl ov12_022522E0
+	bl CreateNicknameTag
 	str r0, [sp, #0x80]
 	mov r0, sp
 	sub r0, #8
@@ -1725,7 +1725,7 @@ _02249360:
 	bne _022493C2
 	add r0, r4, #0
 	add r1, r5, #0
-	bl ov12_022522F0
+	bl GetBattlerSelectedMove
 	mov r1, #0x42
 	lsl r1, r1, #2
 	cmp r0, r1
@@ -1783,7 +1783,7 @@ _022493DC:
 	beq _02249402
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov12_022522F0
+	bl GetBattlerSelectedMove
 	cmp r0, #0x63
 	beq _02249402
 	ldr r0, _02249458 ; =0x00002DB0
@@ -2521,7 +2521,7 @@ _0224994C:
 	ldr r1, _02249C88 ; =0x00002D90
 	ldr r0, [r0, r1]
 	add r1, r7, #0
-	bl ov12_02253178
+	bl DamageDivide
 	ldr r1, _02249C8C ; =0x0000215C
 	mov r2, #0x88
 	str r0, [r4, r1]
@@ -3141,7 +3141,7 @@ _02249E28:
 	sub r0, #0x30
 	ldr r0, [r3, r0]
 	mov r1, #0x10
-	bl ov12_02253178
+	bl DamageDivide
 	ldr r1, _0224A048 ; =0x0000215C
 	mov r2, #0xa9
 	str r0, [r4, r1]
@@ -3278,7 +3278,7 @@ _02249F22:
 	sub r0, #9
 	mul r0, r1
 	add r1, r6, #0
-	bl ov12_02253178
+	bl DamageDivide
 	ldr r1, _0224A048 ; =0x0000215C
 	mov r2, #0x17
 	str r0, [r4, r1]
@@ -3315,7 +3315,7 @@ _02249F74:
 	sub r1, #0x1c
 	ldr r0, [r6, r1]
 	mov r1, #0x10
-	bl ov12_02253178
+	bl DamageDivide
 	ldr r1, _0224A048 ; =0x0000215C
 	str r0, [r4, r1]
 	ldr r1, _0224A050 ; =0x00002DAC
@@ -3505,7 +3505,7 @@ _0224A0DC:
 	sub r0, #0xc1
 	mul r0, r1
 	mov r1, #0x10
-	bl ov12_02253178
+	bl DamageDivide
 	ldr r1, _0224A3A0 ; =0x0000215C
 	mov r2, #0x3b
 	str r0, [r4, r1]
@@ -3544,7 +3544,7 @@ _0224A154:
 	add r1, r4, #0
 	mov r2, #4
 	add r3, r5, #0
-	bl ov12_02252324
+	bl CheckAbilityActive
 	mov r1, #0x4e
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -3576,7 +3576,7 @@ _0224A154:
 	mvn r0, r0
 	mul r0, r1
 	mov r1, #8
-	bl ov12_02253178
+	bl DamageDivide
 	ldr r1, _0224A3A0 ; =0x0000215C
 	ldr r2, _0224A3B0 ; =0x00000107
 	str r0, [r4, r1]
@@ -4376,7 +4376,7 @@ _0224A76A:
 	strb r1, [r0]
 	add r0, r4, #0
 	add r1, r6, #0
-	bl ov12_022522E0
+	bl CreateNicknameTag
 	add r1, r4, #0
 	add r1, #0xf8
 	str r0, [r1]
@@ -5494,7 +5494,7 @@ _0224B020:
 	ldr r2, [r4, #0x64]
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_022517EC
+	bl StruggleCheck
 	add r6, r0, #0
 	cmp r6, #0xf
 	bne _0224B074
@@ -5641,7 +5641,7 @@ _0224B160:
 	add r0, r5, #0
 	add r1, r4, #0
 	str r2, [sp, #0x14]
-	bl ov12_02256FF8
+	bl CalcMoveDamage
 	ldr r2, _0224B1F4 ; =0x0000215C
 	add r1, r4, #0
 	str r0, [r4, r2]
@@ -5716,7 +5716,7 @@ ov12_0224B1FC: ; 0x0224B1FC
 	mov r2, #0x2e
 	str r2, [sp]
 	mov r2, #3
-	bl ov12_02252324
+	bl CheckAbilityActive
 	add r4, r4, r0
 	b _0224B2B6
 _0224B23A:
@@ -5764,7 +5764,7 @@ _0224B280:
 	ldr r0, [sp, #4]
 	add r1, r5, #0
 	mov r2, #9
-	bl ov12_02252324
+	bl CheckAbilityActive
 	add r4, r4, r0
 	b _0224B2B6
 _0224B292:
@@ -5773,7 +5773,7 @@ _0224B292:
 	ldr r0, [sp, #4]
 	add r1, r5, #0
 	mov r2, #3
-	bl ov12_02252324
+	bl CheckAbilityActive
 	add r4, r4, r0
 	b _0224B2B6
 _0224B2A4:
@@ -5837,7 +5837,7 @@ _0224B312:
 	ldr r0, [sp, #4]
 	ldr r2, [r5, #0x64]
 	add r1, r5, #0
-	bl ov12_02250C40
+	bl CopyBattleMonToPartyMon
 	b _0224B37C
 _0224B320:
 	ldr r1, _0224B390 ; =0x0000216C
@@ -5911,7 +5911,7 @@ ov12_0224B398: ; 0x0224B398
 	ldr r1, _0224B484 ; =0x00003044
 	add r0, r5, #0
 	ldr r1, [r5, r1]
-	bl ov12_022525AC
+	bl BattleCtx_IsIdenticalToCurrentMove
 	cmp r0, #0
 	beq _0224B3E8
 _0224B3B6:
@@ -5921,7 +5921,7 @@ _0224B3B6:
 	ldr r1, _0224B484 ; =0x00003044
 	add r0, r5, #0
 	ldr r1, [r5, r1]
-	bl ov12_022525AC
+	bl BattleCtx_IsIdenticalToCurrentMove
 	cmp r0, #1
 	bne _0224B3FC
 	ldr r1, [r5, #0x64]
@@ -5956,7 +5956,7 @@ _0224B3FC:
 	add r1, r5, #0
 	mov r2, #8
 	mov r3, #0
-	bl ov12_02252324
+	bl CheckAbilityActive
 	cmp r0, #0
 	bne _0224B442
 	mov r0, #0x4c
@@ -5965,7 +5965,7 @@ _0224B3FC:
 	add r1, r5, #0
 	mov r2, #8
 	mov r3, #0
-	bl ov12_02252324
+	bl CheckAbilityActive
 	cmp r0, #0
 	bne _0224B442
 	ldr r0, _0224B484 ; =0x00003044
@@ -5990,7 +5990,7 @@ _0224B442:
 	ldr r1, _0224B484 ; =0x00003044
 	add r0, r5, #0
 	ldr r1, [r5, r1]
-	bl ov12_022525AC
+	bl BattleCtx_IsIdenticalToCurrentMove
 	cmp r0, #1
 	bne _0224B480
 	cmp r4, #0
@@ -6689,7 +6689,7 @@ _0224B982:
 	ldr r0, [sp, #0x18]
 	add r1, r4, #0
 	mov r2, #0xa5
-	bl ov12_02256FF8
+	bl CalcMoveDamage
 	ldr r1, _0224BBE4 ; =0x0000215C
 	ldr r2, _0224BBE4 ; =0x0000215C
 	str r0, [r4, r1]
@@ -6955,7 +6955,7 @@ _0224BBC8:
 	ldr r0, [sp, #0x18]
 	ldr r2, [r4, #0x64]
 	add r1, r4, #0
-	bl ov12_02250C40
+	bl CopyBattleMonToPartyMon
 	cmp r7, #1
 	bne _0224BC1C
 	ldr r1, _0224BC00 ; =0x0000213C
@@ -7229,7 +7229,7 @@ _0224BDCE:
 	add r1, r5, #0
 	mov r2, #8
 	mov r3, #0
-	bl ov12_02252324
+	bl CheckAbilityActive
 	cmp r0, #0
 	bne _0224BE10
 	mov r0, #0x4c
@@ -7238,7 +7238,7 @@ _0224BDCE:
 	add r1, r5, #0
 	mov r2, #8
 	mov r3, #0
-	bl ov12_02252324
+	bl CheckAbilityActive
 	cmp r0, #0
 	bne _0224BE10
 	mov r0, #6
@@ -7282,7 +7282,7 @@ _0224BE3E:
 	add r1, r5, #0
 	mov r2, #8
 	mov r3, #0
-	bl ov12_02252324
+	bl CheckAbilityActive
 	cmp r0, #0
 	bne _0224BED6
 	mov r0, #0x4c
@@ -7291,7 +7291,7 @@ _0224BE3E:
 	add r1, r5, #0
 	mov r2, #8
 	mov r3, #0
-	bl ov12_02252324
+	bl CheckAbilityActive
 	cmp r0, #0
 	bne _0224BED6
 	mov r0, #6
@@ -7538,7 +7538,7 @@ _0224C036:
 _0224C066:
 	add r0, r5, #0
 	add r1, r6, #0
-	bl ov12_022525AC
+	bl BattleCtx_IsIdenticalToCurrentMove
 	cmp r0, #0
 	beq _0224C07E
 	ldr r0, _0224C1F0 ; =0x0000213C
@@ -7551,7 +7551,7 @@ _0224C07E:
 	ldr r0, [sp, #4]
 	add r1, r5, #0
 	add r2, r7, #0
-	bl ov12_02250CA0
+	bl UnlockBattlerOutOfCurrentMove
 	ldr r1, _0224C1F8 ; =0x0000216C
 	mov r0, #2
 	ldr r2, [r5, r1]
@@ -7610,7 +7610,7 @@ _0224C0EC:
 	add r1, r5, #0
 	mov r2, #8
 	mov r3, #0
-	bl ov12_02252324
+	bl CheckAbilityActive
 	cmp r0, #0
 	bne _0224C15A
 	mov r0, #0x4c
@@ -7619,7 +7619,7 @@ _0224C0EC:
 	add r1, r5, #0
 	mov r2, #8
 	mov r3, #0
-	bl ov12_02252324
+	bl CheckAbilityActive
 	cmp r0, #0
 	bne _0224C15A
 	mov r0, #6
@@ -7827,7 +7827,7 @@ _0224C218:
 	ldr r1, [r4, #0x6c]
 	ldr r2, [r4, #0x64]
 	add r0, r4, #0
-	bl ov12_02258180
+	bl CheckIgnorePressure
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _0224C2AA:
@@ -7908,7 +7908,7 @@ _0224C32A:
 	str r0, [r4, #8]
 	ldr r2, [r4, #0x64]
 	add r0, r4, #0
-	bl ov12_02258180
+	bl CheckIgnorePressure
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _0224C34A:
@@ -10255,7 +10255,7 @@ ov12_0224D504: ; 0x0224D504
 	bne _0224D52A
 	add r0, r6, #0
 	mov r1, #0
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	add r6, r0, #0
 	bl Party_GivePokerusAtRandom
 	add r0, r6, #0
@@ -10370,7 +10370,7 @@ _0224D5E6:
 	ldr r0, [sp]
 	ldr r1, [sp, #0x2c]
 	mov r7, #0
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	add r6, r0, #0
 	ldr r0, [sp]
 	ldr r1, [sp, #0x2c]
@@ -10463,7 +10463,7 @@ _0224D69E:
 	ldr r0, [sp]
 	ldr r1, [sp, #0x2c]
 	mov r7, #0
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	add r6, r0, #0
 	ldr r0, [sp]
 	ldr r1, [sp, #0x2c]
@@ -10576,7 +10576,7 @@ _0224D790:
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
 	mov r2, #0
-	bl ov12_02252890
+	bl CanSwitchMon
 	cmp r0, #0
 	beq _0224D7C6
 	mov r1, #0x4f
@@ -10669,7 +10669,7 @@ _0224D820:
 	ldr r0, [sp]
 	ldr r1, [sp, #0x28]
 	mov r7, #0
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	add r6, r0, #0
 	ldr r0, [sp]
 	ldr r1, [sp, #0x28]
@@ -10741,14 +10741,14 @@ _0224D8DE:
 	ldr r0, [sp]
 	ldr r1, [sp, #0x28]
 	mov r4, #0
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	add r7, r0, #0
 	ldr r0, [sp]
 	ldr r1, [sp, #0x28]
 	bl ov12_0223AB6C
 	add r1, r0, #0
 	ldr r0, [sp]
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	str r0, [sp, #0x18]
 	ldr r0, [sp]
 	ldr r1, [sp, #0x28]
@@ -10852,7 +10852,7 @@ _0224D9C4:
 	ldr r0, [sp]
 	ldr r1, [sp, #0x28]
 	mov r7, #0
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	add r6, r0, #0
 	ldr r0, [sp]
 	ldr r1, [sp, #0x28]
@@ -12011,7 +12011,7 @@ _0224E244:
 	beq _0224E2BC
 	ldr r1, [sp]
 	neg r0, r7
-	bl ov12_02253178
+	bl DamageDivide
 	ldr r1, _0224E37C ; =0x0000215C
 	mov r2, #0xd5
 	str r0, [r4, r1]
@@ -12076,7 +12076,7 @@ _0224E2C4:
 	mvn r0, r0
 	mul r0, r1
 	mov r1, #0xa
-	bl ov12_02253178
+	bl DamageDivide
 	ldr r1, _0224E37C ; =0x0000215C
 	mov r2, #0xd6
 	str r0, [r4, r1]

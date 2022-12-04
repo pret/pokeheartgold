@@ -1261,7 +1261,7 @@ ov12_0226516C: ; 0x0226516C
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r5, #0xc]
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	bl Mon_GetBoxMon
 	add r2, r0, #0
 	add r0, r4, #0

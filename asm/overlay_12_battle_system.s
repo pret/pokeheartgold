@@ -45,8 +45,8 @@ BattleSys_GetMaxBattlers: ; 0x0223A7F0
 	bx lr
 	thumb_func_end BattleSys_GetMaxBattlers
 
-	thumb_func_start ov12_0223A7F4
-ov12_0223A7F4: ; 0x0223A7F4
+	thumb_func_start BattleSys_GetParty
+BattleSys_GetParty: ; 0x0223A7F4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #0x2c]
@@ -81,10 +81,10 @@ _0223A82C:
 	add r0, r5, r0
 	ldr r0, [r0, #0x68]
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov12_0223A7F4
+	thumb_func_end BattleSys_GetParty
 
-	thumb_func_start ov12_0223A834
-ov12_0223A834: ; 0x0223A834
+	thumb_func_start BattleSys_GetPartySize
+BattleSys_GetPartySize: ; 0x0223A834
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #0x2c]
@@ -122,10 +122,10 @@ _0223A874:
 	ldr r0, [r0, #0x68]
 	bl GetPartyCount
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov12_0223A834
+	thumb_func_end BattleSys_GetPartySize
 
-	thumb_func_start ov12_0223A880
-ov12_0223A880: ; 0x0223A880
+	thumb_func_start BattleSystem_GetPartyMon
+BattleSystem_GetPartyMon: ; 0x0223A880
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r2, #0
@@ -167,7 +167,7 @@ _0223A8C6:
 	add r1, r6, #0
 	bl GetPartyMonByIndex
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov12_0223A880
+	thumb_func_end BattleSystem_GetPartyMon
 
 	thumb_func_start ov12_0223A8D4
 ov12_0223A8D4: ; 0x0223A8D4
@@ -626,8 +626,8 @@ ov12_0223AB3C: ; 0x0223AB3C
 	bx lr
 	thumb_func_end ov12_0223AB3C
 
-	thumb_func_start ov12_0223AB40
-ov12_0223AB40: ; 0x0223AB40
+	thumb_func_start BattleSys_GetTerrainId
+BattleSys_GetTerrainId: ; 0x0223AB40
 	mov r1, #9
 	lsl r1, r1, #0xa
 	ldr r0, [r0, r1]
@@ -640,7 +640,7 @@ _0223AB4E:
 _0223AB50:
 	bx lr
 	.balign 4, 0
-	thumb_func_end ov12_0223AB40
+	thumb_func_end BattleSys_GetTerrainId
 
 	thumb_func_start ov12_0223AB54
 ov12_0223AB54: ; 0x0223AB54
@@ -816,7 +816,7 @@ _0223AC94:
 	ldr r0, [sp, #4]
 	add r1, r7, #0
 	add r2, r6, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	str r0, [sp, #0x18]
 	mov r0, #0
 	str r0, [sp, #8]
@@ -1848,14 +1848,14 @@ _0223B50C:
 	.balign 4, 0
 	thumb_func_end ov12_0223AC20
 
-	thumb_func_start ov12_0223B514
-ov12_0223B514: ; 0x0223B514
+	thumb_func_start BattleSys_GetBattleFlags
+BattleSys_GetBattleFlags: ; 0x0223B514
 	ldr r1, _0223B51C ; =0x0000240C
 	ldr r0, [r0, r1]
 	bx lr
 	nop
 _0223B51C: .word 0x0000240C
-	thumb_func_end ov12_0223B514
+	thumb_func_end BattleSys_GetBattleFlags
 
 	thumb_func_start ov12_0223B520
 ov12_0223B520: ; 0x0223B520
@@ -2116,8 +2116,8 @@ ov12_0223B6CC: ; 0x0223B6CC
 	bx lr
 	thumb_func_end ov12_0223B6CC
 
-	thumb_func_start ov12_0223B6D4
-ov12_0223B6D4: ; 0x0223B6D4
+	thumb_func_start BattleSys_AreBattleAnimationsOn
+BattleSys_AreBattleAnimationsOn: ; 0x0223B6D4
 	push {r3, lr}
 	ldr r2, [r0, #0x2c]
 	mov r1, #4
@@ -2144,7 +2144,7 @@ _0223B6FE:
 	pop {r3, pc}
 	nop
 _0223B704: .word 0x0000240C
-	thumb_func_end ov12_0223B6D4
+	thumb_func_end BattleSys_AreBattleAnimationsOn
 
 	thumb_func_start ov12_0223B708
 ov12_0223B708: ; 0x0223B708
@@ -2249,7 +2249,7 @@ ov12_0223B798: ; 0x0223B798
 	bne _0223B84E
 	mov r4, #0
 	add r1, r4, #0
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	cmp r0, #0
 	ble _0223B84E
 	add r7, r4, #0
@@ -2257,7 +2257,7 @@ _0223B7B4:
 	add r0, r5, #0
 	mov r1, #0
 	add r2, r4, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	mov r1, #0xae
 	mov r2, #0
 	add r6, r0, #0
@@ -2275,7 +2275,7 @@ _0223B7B4:
 	tst r0, r1
 	beq _0223B840
 	add r0, r5, #0
-	bl ov12_0223AB40
+	bl BattleSys_GetTerrainId
 	cmp r0, #0x17
 	bhi _0223B828
 	add r0, r0, r0
@@ -2328,7 +2328,7 @@ _0223B840:
 	add r0, r5, #0
 	mov r1, #0
 	add r4, r4, #1
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	cmp r4, r0
 	blt _0223B7B4
 _0223B84E:
@@ -3867,8 +3867,8 @@ _0223C27E:
 _0223C284: .word ov12_0226C2E0
 	thumb_func_end ov12_0223C24C
 
-	thumb_func_start ov12_0223C288
-ov12_0223C288: ; 0x0223C288
+	thumb_func_start PokedexSetBattlerSeen
+PokedexSetBattlerSeen: ; 0x0223C288
 	push {r4, r5, r6, lr}
 	add r6, r1, #0
 	add r5, r0, #0
@@ -3885,7 +3885,7 @@ ov12_0223C288: ; 0x0223C288
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	add r6, r0, #0
 	ldr r0, [r5, #0x2c]
 	mov r1, #0x84
@@ -3918,7 +3918,7 @@ _0223C2CE:
 	bl Pokedex_SetMonCaughtFlag
 _0223C2EE:
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov12_0223C288
+	thumb_func_end PokedexSetBattlerSeen
 
 	thumb_func_start ov12_0223C2F0
 ov12_0223C2F0: ; 0x0223C2F0
@@ -3944,7 +3944,7 @@ ov12_0223C2F0: ; 0x0223C2F0
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	add r1, r0, #0
 	ldr r0, [r5, #0x60]
 	bl Pokedex_SetMonCaughtFlag
@@ -5250,7 +5250,7 @@ ov12_0223CDD0: ; 0x0223CDD0
 	add r5, r0, #0
 	lsr r1, r1, #0x18
 	asr r2, r2, #8
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	add r2, r0, #0
 	ldr r0, [r5, #0x14]
 	add r1, r4, #0
@@ -5364,7 +5364,7 @@ ov12_0223CE80: ; 0x0223CE80
 	add r5, r0, #0
 	lsr r1, r1, #0x18
 	asr r2, r2, #8
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	add r2, r0, #0
 	ldr r0, [r5, #0x14]
 	add r1, r4, #0

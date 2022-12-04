@@ -6,9 +6,9 @@
 
 typedef struct BATTLEMSG {
     u8 unk0;
-    u8 unk1;
-    u16 unk2;
-    int unk4[6];
+    u8 tag;
+    u16 id;
+    int param[6];
     int unk1C;
     int battlerId;
 } BATTLEMSG;
@@ -21,7 +21,7 @@ typedef struct BATTLEMSGDATA {
     int unk1C;
 } BATTLEMSGDATA;
 
-typedef struct UnkBtlCtxSub_67 UnkBtlCtxSub_67;
+typedef struct GetterWork GetterWork;
 
 typedef struct FieldConditionData {
     u32 weatherTurns;
@@ -52,11 +52,11 @@ typedef struct SideConditionData {
 } SideConditionData;
 
 typedef struct TurnData {
-    u32 unk0_0:1;
+    u32 struggleFlag:1;
     u32 unk0_1:1;
     u32 protectFlag:1;
     u32 helpingHandFlag:1;
-    u32 unk0_4:1;
+    u32 magicCoatFlag:1;
     u32 snatchFlag:1;
     u32 unk0_6:1;
     u32 unk0_7:2;
@@ -74,11 +74,11 @@ typedef struct TurnData {
 } TurnData;
 
 typedef struct SelfTurnData {
-    u32 unk0_0:1;
+    u32 ignorePressure:1;
     u32 unk0_1:1;
     u32 unk0_2:1;
     u32 unk0_3:1;
-    u32 unk0_4:1;
+    u32 trickRoomFlag:1;
     u32 unk0_5:1;
     u32 rolloutCount:3;
     u32 unk0_9:23;
@@ -135,7 +135,7 @@ typedef struct UnkBattlemonSub {
         unk0_15:3, 
         unk0_18:3, 
         unk0_1A:3, 
-        unk0_1D:1, 
+        trauntFlag:1, 
         unk0_1E:1;
     u32 battlerIdLockOn:2, 
         mimicedMoveIndex:4, 
@@ -193,15 +193,15 @@ typedef struct BATTLEMON {
        unk26_6:2;
     u8 unk27;
     u32 unk28_0:1, 
-        unk28_1:1, 
+        intimidateFlag:1, 
         traceFlag:1, 
         downloadFlag:1, 
-        unk28_4:1, 
-        unk28_5:1, 
+        anticipationFlag:1, 
+        forewarnFlag:1, 
         slowStartFlag:1, 
         slowStartEnded:1,
-        unk28_8:1, 
-        unk28_9:1, 
+        friskFlag:1, 
+        moldBreakerFlag:1, 
         pressureFlag:1, 
         unk28_B:21;
     u8 movePPCur[4];
@@ -227,7 +227,7 @@ typedef struct BATTLEMON {
     u8 gender:4, 
        unk7A_4:4;
     u8 unk7B;
-    u32 unk7C;
+    u32 moveEffectFlags;
     u32 unk80;
     UnkBattlemonSub unk88;
 } BATTLEMON;
@@ -268,12 +268,12 @@ typedef struct BATTLECONTEXT {
     int battlerIdAbility;
     int battlerIdMagicCoat;
     int unk_88;
-    int unk_8C;
+    int statChangeParam;
     int unk_90;
     int battlerIdStatChange;
     int unk_98;
-    int unk_9C;
-    int unk_A0;
+    int gainedExp;
+    int partyGainedExp;
     u32 unk_A4[2];
     int unk_AC;
     int unk_B0;
@@ -297,10 +297,10 @@ typedef struct BATTLECONTEXT {
     u32 unk_13C[4];
     u32 unk_14C;
     int totalTurns;
-    int unk_154[4];
-    int unk_164[4];
+    int totalTimesFainted[4];
+    int totalDamage[4];
     int meFirstTotal;
-    UnkBtlCtxSub_67 *unk_178;
+    GetterWork *getterWork;
     void * unk_17C;
     u32 fieldCondition;
     FieldConditionData fieldConditionData;
@@ -312,10 +312,10 @@ typedef struct BATTLECONTEXT {
     UnkBtlCtxSub_76 unk_334;
     u32 * unk_2134;
     u32 unk_2138;
-    u32 unk_213C;
-    u32 unk_2140;
+    u32 linkStatus;
+    u32 linkStatus2;
     int damage;
-    int unk_2148;
+    int hitDamage;
     int unk_214C;
     int criticalMultiplier;
     int movePower;
@@ -323,20 +323,20 @@ typedef struct BATTLECONTEXT {
     int hpCalcWork;
     int moveType;
     int unk_2164;
-    int unk_2168;
-    u32 unk_216C;
+    int prizeMoneyValue;
+    u32 moveStatusFlag;
     u32 unk_2170;
     u32 unk_2174;
     u32 unk_2178;
-    u8 unk_217C;
-    u8 unk_217D;
+    u8 multiHitCount;
+    u8 multiHitCountTemp;
     u8 unk_217E;
     u8 beatUpCount;
     u32 unk_2180;
     u32 unk_2184;
-    u32 unk_2188;
+    u32 checkMultiHit;
     u32 unk_218C[4];
-    u8 unk_219C[4];
+    u8 battlerIdSelected[4];
     u8 unk_21A0[4];
     u8 unk_21A4[4];
     u32 unk_21A8[4][4];
@@ -356,8 +356,8 @@ typedef struct BATTLECONTEXT {
     u16 field120_0xdf4[4];
     u16 field121_0xdfc[4];
     u16 moveNoBattlerPrev[4];
-    u16 field123_0xe0c[4];
-    u16 field124_0xe14[4][4];
+    u16 moveNoCopied[4];
+    u16 moveNoCopiedHit[4][4];
     u16 moveNoSketch[4];
     u16 unk_30B4[4];
     u16 movePos[4];
@@ -380,14 +380,14 @@ typedef struct BATTLECONTEXT {
     u8 unk_311F;
     u8 magnitude;
     u8 unk_3121;
-    s16 unk_3122;
+    s16 hpTemp;
     u16 unk_3124[4];
     u8 unk_312C[4][6];
     int unk_3144;
     int unk_3148;
     u8 unk_314C[4];
     int battlersOnField;
-    u32 unk_3154:1;
+    u32 battleContinueFlag:1;
     u32 unused:31;
 } BATTLECONTEXT;
 
@@ -579,7 +579,7 @@ struct BattleSystem {
     u8 unk247C[4];
 };
 
-struct UnkBtlCtxSub_67 {
+struct GetterWork {
     BattleSystem *bsys;
     BATTLECONTEXT *ctx;
     u32 unk8;

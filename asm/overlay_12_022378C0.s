@@ -1929,7 +1929,7 @@ _022389B4: .word ov12_02239730
 ov12_022389B8: ; 0x022389B8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl ov12_0223AB40
+	bl BattleSys_GetTerrainId
 	add r4, r0, #0
 	mov r0, #0x5f
 	lsl r0, r0, #2
@@ -1963,7 +1963,7 @@ _022389F4:
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r7, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	add r1, r0, #0
 	add r0, r5, #0
 	bl ov12_0223AA88
@@ -2859,14 +2859,14 @@ _0223913A:
 	add r0, r4, #0
 	add r1, r7, #0
 	mov r5, #0
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	cmp r0, #0
 	ble _022391BE
 _02239148:
 	add r0, r4, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	add r6, r0, #0
 	cmp r7, #2
 	bne _02239188
@@ -2913,7 +2913,7 @@ _022391B0:
 	add r0, r4, #0
 	add r1, r7, #0
 	add r5, r5, #1
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	cmp r5, r0
 	blt _02239148
 _022391BE:
@@ -3794,7 +3794,7 @@ _022398A0:
 	cmp r0, #0
 	bne _022398BE
 	add r0, r5, #0
-	bl ov12_0223B514
+	bl BattleSys_GetBattleFlags
 	mov r1, #0x10
 	tst r0, r1
 	beq _022398D6
@@ -3805,7 +3805,7 @@ _022398BE:
 	cmp r0, #0
 	bne _022398FE
 	add r0, r5, #0
-	bl ov12_0223B514
+	bl BattleSys_GetBattleFlags
 	mov r1, #0x10
 	tst r0, r1
 	beq _022398FE

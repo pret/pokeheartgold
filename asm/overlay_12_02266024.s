@@ -2126,7 +2126,7 @@ _02267074:
 	ldrb r1, [r6, #1]
 	ldrb r2, [r6, #2]
 	ldr r0, [r5]
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	str r0, [sp, #0x38]
 	add r0, r5, #0
 	bl ov12_02268194
@@ -3445,7 +3445,7 @@ _02267CDA:
 	ldrb r2, [r7, r2]
 	ldr r0, [r5]
 	add r1, r6, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	str r0, [sp, #0x20]
 	bl Mon_GetBoxMon
 	add r2, r0, #0

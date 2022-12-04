@@ -45,7 +45,7 @@ _0225883E:
 	lsr r6, r0, #0x18
 	ldr r1, [sp, #0x18]
 	add r0, r7, #0
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	str r0, [sp, #0x40]
 	mov r0, #0
 	str r0, [sp, #0x50]
@@ -67,7 +67,7 @@ _02258874:
 	ldr r1, [sp, #0x18]
 	add r0, r7, #0
 	add r2, r4, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	mov r1, #0xae
 	mov r2, #0
 	str r0, [sp, #0x68]
@@ -184,7 +184,7 @@ _02258968:
 	ldr r1, [sp, #0x18]
 	ldr r2, [sp, #0x38]
 	add r0, r7, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp, #0x20]
@@ -295,7 +295,7 @@ _02258A50:
 	ldr r1, [sp, #0x18]
 	ldr r2, [sp, #0x24]
 	add r0, r7, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	mov r1, #0xae
 	mov r2, #0
 	str r0, [sp, #0x1c]
@@ -397,7 +397,7 @@ _02258AC4:
 	ldr r3, [r4, r3]
 	add r0, r7, #0
 	add r1, r5, #0
-	bl ov12_02256FF8
+	bl CalcMoveDamage
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
 	mov r0, #0
@@ -509,7 +509,7 @@ _02258BE6:
 	add r0, r6, #0
 	lsr r1, r1, #0x10
 	mov r2, #0xc
-	bl ov12_02257E74
+	bl GetItemHoldEffect
 	add r5, r0, #0
 	b _02258D66
 _02258C02:
@@ -522,7 +522,7 @@ _02258C02:
 	add r0, r6, #0
 	lsr r1, r1, #0x10
 	mov r2, #1
-	bl ov12_02257E74
+	bl GetItemHoldEffect
 	sub r0, #0x7e
 	cmp r0, #0xf
 	bhi _02258C8C
@@ -664,7 +664,7 @@ _02258D12:
 	str r2, [sp]
 	mov r2, #8
 	mov r3, #0
-	bl ov12_02252324
+	bl CheckAbilityActive
 	cmp r0, #0
 	bne _02258D66
 	mov r0, #0x4c
@@ -673,7 +673,7 @@ _02258D12:
 	add r1, r6, #0
 	mov r2, #8
 	mov r3, #0
-	bl ov12_02252324
+	bl CheckAbilityActive
 	cmp r0, #0
 	bne _02258D66
 	mov r0, #6
@@ -1382,7 +1382,7 @@ ov12_022591F4: ; 0x022591F4
 	str r0, [sp]
 	lsl r2, r2, #0x1c
 	lsr r2, r2, #0x1c
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	add r7, r0, #0
 	mov r0, #2
 	ldr r1, [r6, #0x1c]
@@ -1555,7 +1555,7 @@ ov12_02259358: ; 0x02259358
 	ldrb r1, [r7, r1]
 	str r0, [sp]
 	add r4, #0x94
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	mov r5, #0
 	str r0, [sp, #4]
 	cmp r0, #0
@@ -1566,7 +1566,7 @@ _0225937A:
 	ldrb r1, [r7, r1]
 	ldr r0, [sp]
 	add r2, r5, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	ldrb r1, [r4, #1]
 	add r6, r0, #0
 	cmp r1, #0x68
@@ -2176,7 +2176,7 @@ _02259824:
 _02259832:
 	ldr r0, [sp]
 	ldr r1, [sp, #0xc]
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	add r6, r0, #0
 	mov r5, #0
 	bl GetPartyCount
@@ -2508,7 +2508,7 @@ _02259AD2:
 	cmp r0, #2
 	bne _02259B12
 	ldr r0, [sp, #0x24]
-	bl ov12_0223B514
+	bl BattleSys_GetBattleFlags
 	mov r1, #0x40
 	tst r0, r1
 	beq _02259B12
@@ -2572,7 +2572,7 @@ _02259B1E:
 	cmp r0, #2
 	bne _02259B78
 	ldr r0, [sp, #0x24]
-	bl ov12_0223B514
+	bl BattleSys_GetBattleFlags
 	mov r1, #0x40
 	tst r0, r1
 	beq _02259B78
@@ -6430,7 +6430,7 @@ _0225B990:
 	tst r0, r1
 	ldr r0, [r4]
 	beq _0225B9C8
-	bl ov12_0223B514
+	bl BattleSys_GetBattleFlags
 	mov r1, #0x20
 	tst r0, r1
 	bne _0225BA06
@@ -6445,7 +6445,7 @@ _0225B990:
 	str r0, [r4, #0x10]
 	b _0225BA06
 _0225B9C8:
-	bl ov12_0223B514
+	bl BattleSys_GetBattleFlags
 	mov r1, #0x20
 	tst r0, r1
 	bne _0225BA06
@@ -6499,7 +6499,7 @@ _0225BA16:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r4]
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	str r0, [sp, #0x54]
 	mov r0, #5
 	add r1, sp, #0x4c
@@ -7017,7 +7017,7 @@ _0225BE66:
 	tst r0, r1
 	ldr r0, [r4]
 	beq _0225BE9E
-	bl ov12_0223B514
+	bl BattleSys_GetBattleFlags
 	mov r1, #0x20
 	tst r0, r1
 	bne _0225BEDC
@@ -7032,7 +7032,7 @@ _0225BE66:
 	str r0, [r4, #0x10]
 	b _0225BEDC
 _0225BE9E:
-	bl ov12_0223B514
+	bl BattleSys_GetBattleFlags
 	mov r1, #0x20
 	tst r0, r1
 	bne _0225BEDC
@@ -7571,7 +7571,7 @@ _0225C2E6:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r4]
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	str r0, [sp, #0x2c]
 	add r0, r4, #0
 	add r0, #0x8e
@@ -10774,7 +10774,7 @@ _0225DC9E:
 	mov r1, #1
 	bl ov12_022698AC
 	ldr r0, [r4]
-	bl ov12_0223B514
+	bl BattleSys_GetBattleFlags
 	mov r1, #1
 	tst r0, r1
 	beq _0225DD20
@@ -10875,7 +10875,7 @@ _0225DDC8:
 	b _0225DE98
 _0225DDD2:
 	ldr r0, [r4]
-	bl ov12_0223B514
+	bl BattleSys_GetBattleFlags
 	mov r1, #1
 	tst r0, r1
 	beq _0225DDF4
@@ -11622,7 +11622,7 @@ ov12_0225E404: ; 0x0225E404
 	tst r0, r4
 	bne _0225E43A
 	ldr r0, [r6]
-	bl ov12_0223B514
+	bl BattleSys_GetBattleFlags
 	mov r1, #1
 	tst r0, r1
 	bne _0225E43A
@@ -12352,7 +12352,7 @@ _0225E9E0:
 _0225E9EA:
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	str r0, [sp, #0x14]
 	ldr r0, [r4]
 	bl BattleSys_GetBattleType
@@ -12389,7 +12389,7 @@ _0225EA36:
 	ldrb r2, [r5, #0x18]
 	ldr r0, [r4]
 	add r1, r7, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	add r1, r0, #0
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #4]
@@ -12652,7 +12652,7 @@ _0225EC44:
 	cmp r0, #0x17
 	ldr r0, [r4]
 	bne _0225EC6C
-	bl ov12_0223B6D4
+	bl BattleSys_AreBattleAnimationsOn
 	cmp r0, #1
 	bne _0225EC5C
 	mov r0, #0x11
@@ -12667,7 +12667,7 @@ _0225EC5C:
 	strh r0, [r4, #0x12]
 	b _0225ED4E
 _0225EC6C:
-	bl ov12_0223B6D4
+	bl BattleSys_AreBattleAnimationsOn
 	cmp r0, #1
 	bne _0225EC7A
 	mov r0, #0x19
@@ -12714,7 +12714,7 @@ _0225ECB8:
 	cmp r0, #0
 	beq _0225ECE8
 	ldr r0, [r4]
-	bl ov12_0223B6D4
+	bl BattleSys_AreBattleAnimationsOn
 	cmp r0, #1
 	bne _0225ECD8
 	mov r0, #0x11
@@ -12747,7 +12747,7 @@ _0225ED02:
 	cmp r1, #0x37
 	ldr r0, [r4]
 	bne _0225ED26
-	bl ov12_0223B6D4
+	bl BattleSys_AreBattleAnimationsOn
 	cmp r0, #1
 	bne _0225ED16
 	mov r0, #0xd
@@ -12762,7 +12762,7 @@ _0225ED16:
 	strh r0, [r4, #0x12]
 	b _0225ED4E
 _0225ED26:
-	bl ov12_0223B6D4
+	bl BattleSys_AreBattleAnimationsOn
 	cmp r0, #1
 	bne _0225ED34
 	mov r0, #0xb
@@ -13198,7 +13198,7 @@ _0225F070:
 	ldr r0, [r4]
 	add r1, r6, #0
 	add r2, r7, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	mov r1, #0xa3
 	mov r2, #0
 	add r6, r0, #0
@@ -13338,7 +13338,7 @@ _0225F1B2:
 	add r2, r3, r2
 	add r2, #0x2c
 	ldrb r2, [r2]
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	mov r1, #0xa0
 	add r2, r5, #0
 	bl GetMonData
@@ -13843,7 +13843,7 @@ _0225F5E6:
 	ldr r0, [r4]
 	ldr r1, [sp, #0x18]
 	mov r7, #0
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	cmp r0, #0
 	ble _0225F64E
 	ldr r0, [sp, #0x18]
@@ -13855,7 +13855,7 @@ _0225F614:
 	ldrb r2, [r5, #0x1c]
 	ldr r0, [r4]
 	ldr r1, [sp, #0x18]
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	str r0, [sp, #0x1c]
 	ldr r0, [r4, #4]
 	add r1, r6, #0
@@ -13874,14 +13874,14 @@ _0225F614:
 	add r5, r5, #1
 	add r6, r6, #2
 	add r7, r7, #1
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	cmp r7, r0
 	blt _0225F614
 _0225F64E:
 	ldr r0, [r4]
 	ldr r1, [sp, #0x14]
 	mov r6, #0
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	cmp r0, #0
 	ble _0225F6AA
 	ldr r0, [sp, #0x14]
@@ -13895,7 +13895,7 @@ _0225F66A:
 	ldrb r2, [r5, #0x1c]
 	ldr r0, [r4]
 	ldr r1, [sp, #0x14]
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	str r0, [sp, #0x20]
 	ldr r0, [r4, #4]
 	ldr r1, [sp, #0xc]
@@ -13917,7 +13917,7 @@ _0225F66A:
 	add r5, r5, #1
 	add r7, r7, #2
 	add r6, r6, #1
-	bl ov12_0223A834
+	bl BattleSys_GetPartySize
 	cmp r6, r0
 	blt _0225F66A
 _0225F6AA:
@@ -13968,7 +13968,7 @@ _0225F6FC:
 	strb r1, [r0, #0x11]
 	ldrb r1, [r4, #9]
 	ldr r0, [r4]
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	str r0, [sp, #0x10]
 	mov r6, #0
 	bl GetPartyCount
@@ -13981,7 +13981,7 @@ _0225F71A:
 	ldrb r2, [r5, #0x1c]
 	ldr r0, [r4]
 	add r1, r7, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	add r1, r0, #0
 	ldr r0, [r4, #4]
 	ldr r0, [r0]
@@ -14205,7 +14205,7 @@ _0225F8D6:
 	bne _0225F93A
 	ldrb r1, [r5, #9]
 	ldr r0, [r5]
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	str r0, [sp, #8]
 	mov r4, #0
 	bl GetPartyCount
@@ -14218,7 +14218,7 @@ _0225F90C:
 	ldrb r1, [r5, #9]
 	ldr r0, [r5]
 	add r2, r4, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	mov r1, #0xa3
 	mov r2, #0
 	bl GetMonData
@@ -14300,7 +14300,7 @@ _0225F9B0:
 	ldrb r1, [r4, #9]
 	sub r5, r0, #1
 	ldr r0, [r4]
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	ldrb r1, [r4, #9]
 	add r1, r4, r1
 	ldrb r1, [r1, #0xc]
@@ -14325,7 +14325,7 @@ _0225F9D2:
 _0225F9E6:
 	ldrb r1, [r4, #9]
 	sub r2, r5, #1
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	mov r1, #0xa3
 	mov r2, #0
 	add r5, r0, #0
@@ -15914,7 +15914,7 @@ ov12_02260668: ; 0x02260668
 	bl ov12_0223A938
 	add r7, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223AB40
+	bl BattleSys_GetTerrainId
 	add r5, r0, #0
 	ldr r0, [r4]
 	bl ov12_0223AB54
@@ -16370,7 +16370,7 @@ _02260A44:
 	str r0, [r4, #4]
 	ldrb r1, [r4, #9]
 	ldr r0, [r4]
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	ldr r1, [r4, #4]
 	mov r2, #3
 	str r0, [r1]
@@ -16930,7 +16930,7 @@ ov12_02260EA4: ; 0x02260EA4
 	bl BattleSys_GetBattleType
 	add r4, r0, #0
 	add r0, r6, #0
-	bl ov12_0223B514
+	bl BattleSys_GetBattleFlags
 	mov r1, #0x40
 	tst r1, r4
 	beq _02260F2C
@@ -19099,7 +19099,7 @@ ov12_02261F38: ; 0x02261F38
 	add r7, r0, #0
 	add r6, r3, #0
 	strb r2, [r1]
-	bl ov12_0223B6D4
+	bl BattleSys_AreBattleAnimationsOn
 	cmp r0, #1
 	bne _02261F8C
 	add r0, r6, #0

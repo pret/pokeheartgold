@@ -5771,7 +5771,7 @@ _0221E846:
 	ldrh r1, [r7, r6]
 	ldrh r0, [r0, r6]
 	mov r2, #0x30
-	bl sub_02088068
+	bl RatioToInt
 	add r5, r0, #0
 	lsl r0, r5, #0x10
 	lsr r0, r0, #0x10
