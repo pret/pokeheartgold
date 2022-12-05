@@ -22,8 +22,8 @@ sub_0208805C: ; 0x0208805C
 _02088064: .word _02103894
 	thumb_func_end sub_0208805C
 
-	thumb_func_start sub_02088068
-sub_02088068: ; 0x02088068
+	thumb_func_start RatioToInt
+RatioToInt: ; 0x02088068
 	push {r4, lr}
 	add r4, r0, #0
 	mul r0, r2
@@ -36,7 +36,7 @@ sub_02088068: ; 0x02088068
 	mov r0, #1
 _0208807E:
 	pop {r4, pc}
-	thumb_func_end sub_02088068
+	thumb_func_end RatioToInt
 
 	thumb_func_start sub_02088080
 sub_02088080: ; 0x02088080
@@ -80,7 +80,7 @@ sub_020880B0: ; 0x020880B0
 _020880BC:
 	lsl r2, r4, #0x18
 	lsr r2, r2, #0x18
-	bl sub_02088068
+	bl RatioToInt
 	add r1, r4, #0
 	bl sub_02088080
 	pop {r4, pc}

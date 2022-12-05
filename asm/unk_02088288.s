@@ -2915,7 +2915,7 @@ _02089A3C:
 	lsr r1, r0, #0x18
 	ldr r0, [sp]
 	ldrh r0, [r0, #0x34]
-	bl WazaGetMaxPp
+	bl GetMoveMaxPP
 	add r1, r4, r6
 	add r1, #0x40
 	strb r0, [r1]
@@ -3773,7 +3773,7 @@ _0208A126:
 	add r1, r1, #2
 	ldrh r1, [r6, r1]
 	mov r2, #0x30
-	bl sub_02088068
+	bl RatioToInt
 	add r4, r0, #0
 	add r0, r7, #0
 	add r0, #8
@@ -3857,7 +3857,7 @@ _0208A1C8:
 	add r0, r1, #0
 _0208A1CC:
 	mov r2, #0x38
-	bl sub_02088068
+	bl RatioToInt
 	add r4, r0, #0
 	mov r5, #0
 	mov r7, #0x13

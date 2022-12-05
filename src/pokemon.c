@@ -645,7 +645,7 @@ static u32 GetBoxMonDataInternal(BOXMON * boxmon, int attr, void * dest) {
     case MON_DATA_MOVE2MAXPP:
     case MON_DATA_MOVE3MAXPP:
     case MON_DATA_MOVE4MAXPP:
-        ret = (u32)WazaGetMaxPp(blockB->moves[attr - MON_DATA_MOVE1MAXPP], blockB->movePpUps[attr - MON_DATA_MOVE1MAXPP]);
+        ret = (u32)GetMoveMaxPP(blockB->moves[attr - MON_DATA_MOVE1MAXPP], blockB->movePpUps[attr - MON_DATA_MOVE1MAXPP]);
         break;
     case MON_DATA_HP_IV:
         ret = blockB->hpIV;
@@ -1493,8 +1493,8 @@ static void AddBoxMonDataInternal(BOXMON * boxmon, int attr, int value) {
     case MON_DATA_MOVE2PP:
     case MON_DATA_MOVE3PP:
     case MON_DATA_MOVE4PP:
-        if (blockB->movePP[attr - MON_DATA_MOVE1PP] + value > WazaGetMaxPp(blockB->moves[attr - MON_DATA_MOVE1PP], blockB->movePpUps[attr - MON_DATA_MOVE1PP])) {
-            blockB->movePP[attr - MON_DATA_MOVE1PP] = (u8)WazaGetMaxPp(blockB->moves[attr - MON_DATA_MOVE1PP],
+        if (blockB->movePP[attr - MON_DATA_MOVE1PP] + value > GetMoveMaxPP(blockB->moves[attr - MON_DATA_MOVE1PP], blockB->movePpUps[attr - MON_DATA_MOVE1PP])) {
+            blockB->movePP[attr - MON_DATA_MOVE1PP] = (u8)GetMoveMaxPP(blockB->moves[attr - MON_DATA_MOVE1PP],
                                                                        blockB->movePpUps[attr - MON_DATA_MOVE1PP]);
         } else {
             blockB->movePP[attr - MON_DATA_MOVE1PP] += value;
@@ -3055,7 +3055,7 @@ void InitBoxMonMoveset(BOXMON * boxmon) {
         if ((wotbl[i] & WOTBL_LEVEL_MASK) > (level << WOTBL_LEVEL_SHIFT))
             break;
         move = WOTBL_MOVE(wotbl[i]);
-        if (TryAppendBoxMonMove(boxmon, move) == WAZA_APPEND_FULL)
+        if (TryAppendBoxMonMove(boxmon, move) == MOVE_APPEND_FULL)
             DeleteBoxMonFirstMoveAndAppend(boxmon, move);
     }
     FreeToHeap(wotbl);
@@ -3067,7 +3067,7 @@ u32 TryAppendMonMove(POKEMON *pokemon, u16 move) {
 }
 
 u32 TryAppendBoxMonMove(BOXMON *boxmon, u16 move) {
-    u32 ret = WAZA_APPEND_FULL;
+    u32 ret = MOVE_APPEND_FULL;
     int i;
     BOOL decry = AcquireBoxMonLock(boxmon);
     u16 cur_move;
@@ -3079,7 +3079,7 @@ u32 TryAppendBoxMonMove(BOXMON *boxmon, u16 move) {
             break;
         }
         if (cur_move == move) {
-            ret = WAZA_APPEND_KNOWN;
+            ret = MOVE_APPEND_KNOWN;
             break;
         }
     }
@@ -3105,7 +3105,7 @@ void DeleteBoxMonFirstMoveAndAppend(BOXMON * boxmon, u16 move) {
     }
 
     moves[3] = move;
-    pp[3] = (u8)GetWazaAttr(move, MOVEATTR_PP);
+    pp[3] = (u8)GetMoveAttr(move, MOVEATTR_PP);
     ppUp[3] = 0;
 
     for (i = 0; i < 4; i++) {
@@ -3124,7 +3124,7 @@ void MonSetMoveInSlot_ResetPpUp(POKEMON* pokemon, u16 move, u8 slot) {
     MonSetMoveInSlot(pokemon, move, slot);
     ppUp = 0;
     SetMonData(pokemon, MON_DATA_MOVE1PPUP + slot, &ppUp);
-    pp = WazaGetMaxPp(move, 0);
+    pp = GetMoveMaxPP(move, 0);
     SetMonData(pokemon, MON_DATA_MOVE1PP + slot, &pp);
 }
 
@@ -3138,7 +3138,7 @@ void BoxMonSetMoveInSlot(BOXMON* boxmon, u16 move, u8 slot) {
 
     SetBoxMonData(boxmon, MON_DATA_MOVE1 + slot, &move);
     ppUp = (u8)GetBoxMonData(boxmon, MON_DATA_MOVE1PPUP + slot, NULL);
-    pp = (u8)WazaGetMaxPp(move, ppUp);
+    pp = (u8)GetMoveMaxPP(move, ppUp);
     SetBoxMonData(boxmon, MON_DATA_MOVE1PP + slot, &pp);
 }
 

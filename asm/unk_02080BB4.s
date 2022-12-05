@@ -3059,7 +3059,7 @@ sub_0208254C: ; 0x0208254C
 	mov r1, #0
 	ldr r0, [r5, r0]
 	ldrh r0, [r0, #0x2a]
-	bl WazaGetMaxPp
+	bl GetMoveMaxPP
 	add r6, #0x3a
 	str r0, [sp]
 	add r0, r4, #0

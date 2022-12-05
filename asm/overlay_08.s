@@ -523,7 +523,7 @@ _0221C236:
 	add r2, r4, r2
 	add r2, #0x2c
 	ldrb r2, [r2]
-	bl ov12_0223AC20
+	bl BattleSys_RecoverStatus
 	cmp r0, #1
 	bne _0221C2E6
 	ldrh r0, [r4, #0x22]
@@ -561,7 +561,7 @@ _0221C266:
 	add r2, r4, r2
 	add r2, #0x2c
 	ldrb r2, [r2]
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	ldrb r2, [r4, #0x11]
 	mov r1, #0x50
 	add r3, r2, #0
@@ -1315,7 +1315,7 @@ _0221C862:
 	add r2, r6, r2
 	add r2, #0x2c
 	ldrb r2, [r2]
-	bl ov12_0223AC20
+	bl BattleSys_RecoverStatus
 	cmp r0, #1
 	bne _0221C8BA
 	ldr r0, _0221C90C ; =0x0000207C
@@ -1629,7 +1629,7 @@ _0221CAB6:
 	add r2, r5, r2
 	add r2, #0x2c
 	ldrb r2, [r2]
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	ldrb r2, [r5, #0x11]
 	mov r1, #0x50
 	mul r1, r2
@@ -1838,7 +1838,7 @@ _0221CC54:
 	add r2, #0x2c
 	ldrb r2, [r2]
 	ldr r1, [r1, #0x28]
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	ldr r1, [sp, #4]
 	mov r7, #0
 	ldrb r2, [r1, #0x11]
@@ -2726,23 +2726,23 @@ _0221D3A0:
 	strb r0, [r5, #3]
 	ldrh r0, [r5]
 	ldrb r1, [r5, #3]
-	bl WazaGetMaxPp
+	bl GetMoveMaxPP
 	strb r0, [r5, #3]
 	ldrh r0, [r5]
 	mov r1, #3
-	bl GetWazaAttr
+	bl GetMoveAttr
 	strb r0, [r5, #4]
 	ldrh r0, [r5]
 	mov r1, #1
-	bl GetWazaAttr
+	bl GetMoveAttr
 	strb r0, [r5, #5]
 	ldrh r0, [r5]
 	mov r1, #4
-	bl GetWazaAttr
+	bl GetMoveAttr
 	strb r0, [r5, #6]
 	ldrh r0, [r5]
 	mov r1, #2
-	bl GetWazaAttr
+	bl GetMoveAttr
 	strb r0, [r5, #7]
 _0221D40C:
 	add r0, r4, #1
@@ -3160,7 +3160,7 @@ _0221D6F6:
 	add r0, r1, #0
 _0221D6FA:
 	mov r2, #0x40
-	bl sub_02088068
+	bl RatioToInt
 	add r4, r0, #0
 	mov r5, #0
 	mov r7, #0x1e
@@ -3456,7 +3456,7 @@ ov08_0221D91C: ; 0x0221D91C
 	add r4, r0, #0
 	ldr r0, [r1, #8]
 	ldr r1, [r1, #0x28]
-	bl ov12_0223AB6C
+	bl BattleSys_GetBattlerIdPartner
 	add r1, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
@@ -3654,7 +3654,7 @@ ov08_0221DAE4: ; 0x0221DAE4
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	cmp r0, #0x4a
 	beq _0221DB00
 	cmp r0, #0x4b
@@ -3674,7 +3674,7 @@ ov08_0221DB04: ; 0x0221DB04
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	cmp r0, #0x4a
 	beq _0221DB20
 	cmp r0, #0x4b
@@ -4370,7 +4370,7 @@ ov08_0221E048: ; 0x0221E048
 	ldrh r1, [r5, #0x12]
 	mov r2, #0x30
 	mov r7, #1
-	bl sub_02088068
+	bl RatioToInt
 	str r0, [sp, #0x14]
 	ldrh r0, [r5, #0x10]
 	ldrh r1, [r5, #0x12]
@@ -7733,7 +7733,7 @@ _0221FD20:
 	ldr r0, [r5]
 	mov r1, #5
 	ldrh r0, [r0, #0x24]
-	bl GetWazaAttr
+	bl GetMoveAttr
 	add r1, sp, #0x14
 	strb r0, [r1, #2]
 	ldrb r0, [r1, #2]
@@ -7910,7 +7910,7 @@ ov08_0221FDA4: ; 0x0221FDA4
 _0221FEE0:
 	ldrh r0, [r1, #0x24]
 	mov r1, #5
-	bl GetWazaAttr
+	bl GetMoveAttr
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -7931,7 +7931,7 @@ _0221FEE0:
 	ldr r0, [r5]
 	mov r1, #4
 	ldrh r0, [r0, #0x24]
-	bl GetWazaAttr
+	bl GetMoveAttr
 	add r2, r0, #0
 	add r0, r5, #0
 	mov r1, #6
@@ -7939,7 +7939,7 @@ _0221FEE0:
 	ldr r0, [r5]
 	mov r1, #2
 	ldrh r0, [r0, #0x24]
-	bl GetWazaAttr
+	bl GetMoveAttr
 	add r2, r0, #0
 	add r0, r5, #0
 	mov r1, #7
@@ -7947,7 +7947,7 @@ _0221FEE0:
 	ldr r0, [r5]
 	mov r1, #1
 	ldrh r0, [r0, #0x24]
-	bl GetWazaAttr
+	bl GetMoveAttr
 	add r2, r0, #0
 	add r0, r5, #0
 	mov r1, #0xa
@@ -8211,7 +8211,7 @@ ov08_02220084: ; 0x02220084
 _02220176:
 	ldrh r0, [r1, #0x24]
 	mov r1, #5
-	bl GetWazaAttr
+	bl GetMoveAttr
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -8314,7 +8314,7 @@ ov08_02220224: ; 0x02220224
 	ldrb r2, [r2]
 	ldr r0, [r0, #8]
 	ldr r1, [r1, #0x28]
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	mov r1, #0xa3
 	mov r2, #0
 	add r7, r0, #0
@@ -8688,7 +8688,7 @@ ov08_0222057C: ; 0x0222057C
 	add r2, r3, r2
 	add r2, #0x2c
 	ldrb r2, [r2]
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	add r6, r0, #0
 	ldr r0, _022205D4 ; =0x00001FA8
 	mov r1, #0x5f
@@ -10107,7 +10107,7 @@ ov08_02221088: ; 0x02221088
 _0222111E:
 	ldrh r0, [r1, #0x24]
 	mov r1, #1
-	bl GetWazaAttr
+	bl GetMoveAttr
 	ldr r1, _02221148 ; =0x00002020
 	add r2, r0, #0
 	ldr r1, [r5, r1]
@@ -10333,7 +10333,7 @@ _022212DC:
 	cmp r0, #0
 	beq _02221312
 	mov r1, #3
-	bl GetWazaAttr
+	bl GetMoveAttr
 	add r3, r0, #0
 	ldr r1, _02221320 ; =0x0000201C
 	lsl r3, r3, #0x18
@@ -10379,7 +10379,7 @@ _0222133C:
 	lsl r1, r4, #2
 	add r6, r7, r1
 	mov r1, #0xb
-	bl GetWazaAttr
+	bl GetMoveAttr
 	add r3, r0, #0
 	ldr r1, _022213B4 ; =0x0000200C
 	ldr r2, _022213B8 ; =0x0000B010
@@ -10409,7 +10409,7 @@ _0222137A:
 	cmp r0, #0
 	beq _022213B2
 	mov r1, #0xb
-	bl GetWazaAttr
+	bl GetMoveAttr
 	add r3, r0, #0
 	ldr r1, _022213C0 ; =0x0000201C
 	add r3, #0x12
@@ -12766,7 +12766,7 @@ _02222614:
 	bl ov08_02223B78
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #1
 	lsl r1, r1, #0xa
 	tst r0, r1
@@ -13450,7 +13450,7 @@ _02222B9C:
 	ldr r0, [r4]
 	ldr r1, [r4, #0x10]
 	add r2, r7, #0
-	bl ov12_0223A880
+	bl BattleSystem_GetPartyMon
 	add r6, r0, #0
 	ldr r0, [r5, #0x10]
 	mov r1, #0x2e
@@ -13486,7 +13486,7 @@ _02222C0E:
 	str r0, [sp]
 	ldr r0, [r4]
 	ldr r1, [r4, #0x10]
-	bl ov12_0223AC20
+	bl BattleSys_RecoverStatus
 	cmp r0, #1
 	bne _02222C34
 	ldr r2, _02222D6C ; =0x0000114D
@@ -13501,7 +13501,7 @@ _02222C34:
 	cmp r6, #3
 	bne _02222C9C
 	ldr r0, [r4]
-	bl ov12_0223A7E0
+	bl BattleSys_GetBattleType
 	mov r1, #1
 	tst r0, r1
 	bne _02222C56
@@ -13610,7 +13610,7 @@ _02222D02:
 _02222D26:
 	ldr r0, [r4]
 	ldr r1, [r4, #0x10]
-	bl ov12_0223A7F4
+	bl BattleSys_GetParty
 	add r6, r0, #0
 	ldr r0, [r4]
 	bl ov12_0223AB3C

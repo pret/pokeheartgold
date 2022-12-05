@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_CONSTANTS_MOVES_H
 #define POKEHEARTGOLD_CONSTANTS_MOVES_H
 
+#define LEARNED_MOVES_MAX     4
+
 #define MOVE_NONE             0
 #define MOVE_POUND            1
 #define MOVE_KARATE_CHOP      2

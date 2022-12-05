@@ -144,7 +144,7 @@ static void Daycare_LearnLevelUpMoves(POKEMON *pokemon) {
             stat != 0;
             stat = MonTryLearnMoveOnLevelUp(pokemon, &last_i, &learned)
             ) {
-            if (stat == WAZA_APPEND_FULL) {
+            if (stat == MOVE_APPEND_FULL) {
                 DeleteMonFirstMoveAndAppend(pokemon, learned);
             }
         }
@@ -470,7 +470,7 @@ static void InheritMoves(POKEMON *egg, BOXMON *dad, BOXMON *mom) {
         if (search->dad_moves[i] != MOVE_NONE) {
             for (j = 0; j < r5; j++) {
                 if (search->dad_moves[i] == search->baby_egg_moves[j]) {
-                    if (TryAppendMonMove(egg, search->dad_moves[i]) == WAZA_APPEND_FULL) {
+                    if (TryAppendMonMove(egg, search->dad_moves[i]) == MOVE_APPEND_FULL) {
                         DeleteMonFirstMoveAndAppend(egg, search->dad_moves[i]);
                     }
                     break;
@@ -485,7 +485,7 @@ static void InheritMoves(POKEMON *egg, BOXMON *dad, BOXMON *mom) {
             for (j = 0; j < 100; j++) {
                 if (search->dad_moves[i] == TMHMGetMove(j + ITEM_TM01)) {
                     if (GetTMHMCompatBySpeciesAndForme(egg_species, egg_forme, j)) {
-                        if (TryAppendMonMove(egg, search->dad_moves[i]) == WAZA_APPEND_FULL) {
+                        if (TryAppendMonMove(egg, search->dad_moves[i]) == MOVE_APPEND_FULL) {
                             DeleteMonFirstMoveAndAppend(egg, search->dad_moves[i]);
                         }
                     }
@@ -510,7 +510,7 @@ static void InheritMoves(POKEMON *egg, BOXMON *dad, BOXMON *mom) {
         for (j = 0; j < learnset_size; j++) {
             if (search->baby_learnset[j] != MOVE_NONE) {
                 if (search->shared_moves[i] == search->baby_learnset[j]) {
-                    if (TryAppendMonMove(egg, search->shared_moves[i]) == WAZA_APPEND_FULL) {
+                    if (TryAppendMonMove(egg, search->shared_moves[i]) == MOVE_APPEND_FULL) {
                         DeleteMonFirstMoveAndAppend(egg, search->shared_moves[i]);
                     }
                     break;
@@ -571,7 +571,7 @@ static void Daycare_LightBallCheck(POKEMON *egg, DAYCARE *dayCare) {
     item2 = GetBoxMonData(parents[1], MON_DATA_HELD_ITEM, NULL);
 
     if (item1 == ITEM_LIGHT_BALL || item2 == ITEM_LIGHT_BALL) {
-        if (TryAppendMonMove(egg, MOVE_VOLT_TACKLE) == WAZA_APPEND_FULL) {
+        if (TryAppendMonMove(egg, MOVE_VOLT_TACKLE) == MOVE_APPEND_FULL) {
             DeleteMonFirstMoveAndAppend(egg, MOVE_VOLT_TACKLE);
         }
     }

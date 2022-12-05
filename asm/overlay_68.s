@@ -1046,7 +1046,7 @@ ov68_021E614C: ; 0x021E614C
 	add r0, r4, #0
 	bl ov68_021E6BEC
 	mov r1, #0
-	bl WazaGetMaxPp
+	bl GetMoveMaxPP
 	str r0, [sp]
 	ldr r1, [r4]
 	add r2, sp, #0
@@ -1780,7 +1780,7 @@ _021E6720:
 	ldr r0, [r0, #4]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl WazaGetMaxPp
+	bl GetMoveMaxPP
 	add r6, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -1983,7 +1983,7 @@ ov68_021E68D4: ; 0x021E68D4
 	beq _021E69EE
 	add r0, r4, #0
 	mov r1, #2
-	bl GetWazaAttr
+	bl GetMoveAttr
 	add r2, r0, #0
 	cmp r2, #1
 	bhi _021E692E
@@ -2014,7 +2014,7 @@ _021E693C:
 	bl ov68_021E6234
 	add r0, r4, #0
 	mov r1, #4
-	bl GetWazaAttr
+	bl GetMoveAttr
 	add r2, r0, #0
 	bne _021E696E
 	mov r1, #0x21
@@ -2902,13 +2902,13 @@ ov68_021E7028: ; 0x021E7028
 	bne _021E7044
 	add r0, r1, #0
 	mov r1, #3
-	bl GetWazaAttr
+	bl GetMoveAttr
 	add r6, r0, #0
 	b _021E7050
 _021E7044:
 	add r0, r1, #0
 	mov r1, #0xb
-	bl GetWazaAttr
+	bl GetMoveAttr
 	add r6, r0, #0
 	add r6, #0x12
 _021E7050:
@@ -3023,7 +3023,7 @@ ov68_021E7124: ; 0x021E7124
 	add r5, r0, #0
 	add r0, r1, #0
 	mov r1, #1
-	bl GetWazaAttr
+	bl GetMoveAttr
 	add r4, r0, #0
 	bl sub_02077830
 	add r6, r0, #0

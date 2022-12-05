@@ -459,7 +459,7 @@ _0208B56C:
 	cmp r0, #0
 	beq _0208B596
 	add r1, r7, #0
-	bl GetWazaAttr
+	bl GetMoveAttr
 	add r3, r0, #0
 	add r1, r4, #0
 	add r1, #0xd
@@ -564,7 +564,7 @@ _0208B63A:
 	cmp r0, #0
 	beq _0208B684
 	mov r1, #3
-	bl GetWazaAttr
+	bl GetMoveAttr
 	add r3, r0, #0
 	add r1, r4, #0
 	add r1, #0xd
@@ -604,7 +604,7 @@ _0208B684:
 	cmp r0, #0
 	beq _0208B6C8
 	mov r1, #3
-	bl GetWazaAttr
+	bl GetMoveAttr
 	add r3, r0, #0
 	lsl r3, r3, #0x18
 	add r0, r5, #0
@@ -1248,7 +1248,7 @@ sub_0208BB8C: ; 0x0208BB8C
 	add r5, r0, #0
 	add r0, r1, #0
 	mov r1, #1
-	bl GetWazaAttr
+	bl GetMoveAttr
 	add r4, r0, #0
 	bl sub_02077830
 	add r6, r0, #0
