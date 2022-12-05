@@ -16,13 +16,13 @@
 #include "constants/moves.h"
 #include "constants/pokemon.h"
 
-//static int BattleScriptReadWord(BATTLECONTEXT *ctx);
+int BattleScriptReadWord(BATTLECONTEXT *ctx);
 static void BattleScriptIncrementPointer(BATTLECONTEXT *ctx, int adrs);
 static void BattleScriptJump(BATTLECONTEXT *ctx, int a1, int adrs);
 static void BattleScriptGotoSubscript(BATTLECONTEXT *ctx, int a1, int adrs);
 static void *BattleScriptGetVarPointer(BattleSystem *bsys, BATTLECONTEXT *ctx, int var);
 
-static u8 GetBattlerIDBySide(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 a2);
+u8 GetBattlerIDBySide(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 a2);
 
 extern BtlCmdFunc sBattleScriptCommandTable[];
 
@@ -1197,7 +1197,7 @@ BOOL BtlCmd_ShouldGetExp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 if (ctx->unk_A4[(ctx->battlerIdFainted >> 1) & 1] & MaskOfFlagNo(i)) {
                     expMonsCnt++;
                 }
-                itemNo = GetMonData(mon, 6, 0);
+                itemNo = GetMonData(mon, MON_DATA_HELD_ITEM, 0);
                 if (GetItemHoldEffect(ctx, itemNo, 1) == HOLD_EFFECT_EXP_SHARE) {
                     expShareMonsCnt++;
                 }
@@ -1228,7 +1228,7 @@ BOOL BtlCmd_ShouldGetExp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-static void Task_GetExp(SysTask *task, void *data);
+void Task_GetExp(SysTask *task, void *data);
 
 BOOL BtlCmd_InitGetExp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
@@ -1393,7 +1393,7 @@ BOOL BtlCmd_JumpIfCantSwitch(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-static void Task_GetPokemon(SysTask *task, void *data);
+void Task_GetPokemon(SysTask *task, void *data);
 
 BOOL BtlCmd_InitGetPokemon(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
@@ -3164,7 +3164,7 @@ BOOL BtlCmd_TryWhirlwind(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
         for (monIndex = index0; monIndex < indexEnd; monIndex++) {
             mon = GetPartyMonByIndex(party, monIndex);
-            if (GetMonData(mon, 5, 0) && !GetMonData(mon, 76, 0) && GetMonData(mon, 163, 0)) {
+            if (GetMonData(mon, MON_DATA_SPECIES, 0) && !GetMonData(mon, MON_DATA_IS_EGG, 0) && GetMonData(mon, MON_DATA_HP, 0)) {
                 cnt++;
             }
         }
@@ -3178,7 +3178,7 @@ BOOL BtlCmd_TryWhirlwind(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                     monIndex += index0;
                 } while (monIndex == monIndexA || monIndex == monIndexB);
                 mon = GetPartyMonByIndex(party, monIndex);
-            } while (!GetMonData(mon, 5, 0) || GetMonData(mon, 76, 0) == 1 || !GetMonData(mon, 163, 0));
+            } while (!GetMonData(mon, MON_DATA_SPECIES, 0) || GetMonData(mon, MON_DATA_IS_EGG, 0) == 1 || !GetMonData(mon, MON_DATA_HP, 0));
             ctx->unk_21A0[ctx->battlerIdTarget] = monIndex;
         } else {
             BattleScriptIncrementPointer(ctx, adrs);
@@ -3735,7 +3735,7 @@ BOOL BtlCmd_BeatUpDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         while (TRUE) {
             mon = BattleSystem_GetPartyMon(bsys, ctx->battlerIdAttacker, ctx->beatUpCount);
             if (ctx->beatUpCount == ctx->selectedMonIndex[ctx->battlerIdAttacker] || 
-                (GetMonData(mon, MON_DATA_HP, 0) && GetMonData(mon, 174, 0) && GetMonData(mon, 174, 0) != 0x1ee && GetMonData(mon, 160, 0) == 0)) {
+                (GetMonData(mon, MON_DATA_HP, 0) && GetMonData(mon, MON_DATA_SPECIES2, 0) && GetMonData(mon, MON_DATA_SPECIES2, 0) != 0x1ee && GetMonData(mon, MON_DATA_STATUS, 0) == 0)) {
                 break;
             }
             ctx->beatUpCount++;
@@ -3771,7 +3771,7 @@ BOOL BtlCmd_BeatUpDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         while (TRUE) {
             mon = BattleSystem_GetPartyMon(bsys, ctx->battlerIdAttacker, ctx->beatUpCount);
             if (ctx->beatUpCount == ctx->selectedMonIndex[ctx->battlerIdAttacker] || 
-                (GetMonData(mon, MON_DATA_HP, 0) && GetMonData(mon, 174, 0) && GetMonData(mon, 174, 0) != 0x1ee && GetMonData(mon, 160, 0) == 0)) {
+                (GetMonData(mon, MON_DATA_HP, 0) && GetMonData(mon, MON_DATA_SPECIES2, 0) && GetMonData(mon, MON_DATA_SPECIES2, 0) != 0x1ee && GetMonData(mon, MON_DATA_STATUS, 0) == 0)) {
                 break;
             }
             ctx->beatUpCount++;
@@ -3878,9 +3878,9 @@ BOOL BtlCmd_TryAssist(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     for (i = 0; i < monCnt; i++) {
         if (i != ctx->selectedMonIndex[ctx->battlerIdAttacker]) {
             mon = BattleSystem_GetPartyMon(bsys, ctx->battlerIdAttacker, i);
-            if (GetMonData(mon, 0xae, 0) && GetMonData(mon, 0xae, 0) != 0x1EE) {
+            if (GetMonData(mon, MON_DATA_SPECIES2, 0) && GetMonData(mon, MON_DATA_SPECIES2, 0) != SPECIES_EGG) {
                 for (j = 0; j < 4; j++) {
-                    move = GetMonData(mon, 0x36 + j, 0);
+                    move = GetMonData(mon, MON_DATA_MOVE1 + j, 0);
                     if (ov12_02252698(move) == FALSE && CheckLegalMetronomeMove(bsys, ctx, ctx->battlerIdAttacker, move) == TRUE) {
                         avaliableMoves[moveCnt] = move;
                         moveCnt++;
@@ -4861,21 +4861,21 @@ BOOL BtlCmd_Pickup(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     for (i = 0; i < BattleSys_GetPartySize(bsys, 0); i++) {
         mon = BattleSystem_GetPartyMon(bsys, 0, i);
-        species = GetMonData(mon, 174, 0);
-        item = GetMonData(mon, 6, 0);
-        ability = GetMonData(mon, 10, 0);
+        species = GetMonData(mon, MON_DATA_SPECIES2, 0);
+        item = GetMonData(mon, MON_DATA_HELD_ITEM, 0);
+        ability = GetMonData(mon, MON_DATA_ABILITY, 0);
         if (ability == ABILITY_PICKUP && species && species != SPECIES_EGG && !item && !(BattleSys_Random(bsys)%10)) {
             rnd = BattleSys_Random(bsys) % 100;
-            lvl = (GetMonData(mon, 161, 0) - 1) / 10;
+            lvl = (GetMonData(mon, MON_DATA_LEVEL, 0) - 1) / 10;
             if (lvl >= 10) {
                 lvl = 9;
             }
             for (j = 0; j < 9; j++) {
                 if (sPickupWeightTable[j] > rnd) {
-                    SetMonData(mon, 6, &sPickupTable1[lvl + j]);
+                    SetMonData(mon, MON_DATA_HELD_ITEM, &sPickupTable1[lvl + j]);
                     break;
                 } else if (rnd >= 98 && rnd <= 99) {
-                    SetMonData(mon, 6, &sPickupTable2[lvl + (99 - rnd)]);
+                    SetMonData(mon, MON_DATA_HELD_ITEM, &sPickupTable2[lvl + (99 - rnd)]);
                     break;
                 }
             }
@@ -4883,7 +4883,7 @@ BOOL BtlCmd_Pickup(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         if (ability == ABILITY_HONEY_GATHER && species && species != SPECIES_EGG && !item) {
             j = 0;
             k = 10;
-            lvl = GetMonData(mon, 161, 0);
+            lvl = GetMonData(mon, MON_DATA_LEVEL, 0);
             while (lvl > k) {
                 j++;
                 k += 10;
@@ -4893,7 +4893,7 @@ BOOL BtlCmd_Pickup(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
             if ((BattleSys_Random(bsys) % 100) < sHoneyGatherChanceTable[j]) {
                 j = ITEM_HONEY;
-                SetMonData(mon, 6, &j);
+                SetMonData(mon, MON_DATA_HELD_ITEM, &j);
             }
         }
     }
@@ -5496,8 +5496,8 @@ BOOL BtlCmd_CheckWhiteout(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
         for (i = 0; i < GetPartyCount(party1); i++) {
             mon = GetPartyMonByIndex(party1, i);
-            if (GetMonData(mon, 174, 0) != 0 && GetMonData(mon, 174, 0) != SPECIES_EGG) {
-                partyHp += GetMonData(mon, 163, 0);
+            if (GetMonData(mon, MON_DATA_SPECIES2, 0) != 0 && GetMonData(mon, MON_DATA_SPECIES2, 0) != SPECIES_EGG) {
+                partyHp += GetMonData(mon, MON_DATA_HP, 0);
             }
         }
 
@@ -5505,8 +5505,8 @@ BOOL BtlCmd_CheckWhiteout(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
         } else for (i = 0; i < GetPartyCount(party2); i++) {
             mon = GetPartyMonByIndex(party2, i);
-            if (GetMonData(mon, 174, 0) != 0 && GetMonData(mon, 174, 0) != SPECIES_EGG) {
-                partyHp += GetMonData(mon, 163, 0);
+            if (GetMonData(mon, MON_DATA_SPECIES2, 0) != 0 && GetMonData(mon, MON_DATA_SPECIES2, 0) != SPECIES_EGG) {
+                partyHp += GetMonData(mon, MON_DATA_HP, 0);
             } 
         }
 
@@ -5520,8 +5520,8 @@ BOOL BtlCmd_CheckWhiteout(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
         for (i = 0; i < GetPartyCount(party); i++) {
             mon = GetPartyMonByIndex(party, i);
-            if (GetMonData(mon, 174, 0) != 0 && GetMonData(mon, 174, 0) != SPECIES_EGG) {
-                partyHp += GetMonData(mon, 163, 0);
+            if (GetMonData(mon, MON_DATA_SPECIES2, 0) != 0 && GetMonData(mon, MON_DATA_SPECIES2, 0) != SPECIES_EGG) {
+                partyHp += GetMonData(mon, MON_DATA_HP, 0);
             } 
         }
 
@@ -5657,8 +5657,8 @@ BOOL BtlCmd_TryNaturalCure(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int battlerId = GetBattlerIDBySide(bsys, ctx, side);
     if (ctx->battleMons[battlerId].hp && ctx->selectedMonIndex[battlerId] != 6) {
         POKEMON *mon = BattleSystem_GetPartyMon(bsys, battlerId, ctx->selectedMonIndex[battlerId]);
-        int ability = GetMonData(mon, 10, 0);
-        int status = GetMonData(mon, 160, 0);
+        int ability = GetMonData(mon, MON_DATA_ABILITY, 0);
+        int status = GetMonData(mon, MON_DATA_STATUS, 0);
         if (ctx->battleMons[battlerId].ability != ABILITY_NATURAL_CURE && !CheckNaturalCureOnSwitch(ctx, ability, status)) {
             BattleScriptIncrementPointer(ctx, adrs);
         }
@@ -5864,7 +5864,7 @@ BOOL BtlCmd_EndScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return ov12_0224EC74(ctx);
 }
 
-/*static */int BattleScriptReadWord(BATTLECONTEXT *ctx) {
+int BattleScriptReadWord(BATTLECONTEXT *ctx) {
     int data = ctx->battleScriptWork[ctx->scriptSeqNo];
 
     ctx->scriptSeqNo++;
@@ -6032,3 +6032,4 @@ static void *BattleScriptGetVarPointer(BattleSystem *bsys, BATTLECONTEXT *ctx, i
 
     return 0;
 }
+
