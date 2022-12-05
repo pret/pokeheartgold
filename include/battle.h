@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_BATTLE_H
 
 #include "move.h"
+#include "pokemon_storage_system.h"
 #include "trainer_data.h"
 
 typedef struct BATTLEMSG {
@@ -191,7 +192,7 @@ typedef struct BATTLEMON {
     u8 forme:5, 
        unk26_5:1, 
        unk26_6:2;
-    u8 unk27;
+    u8 ability;
     u32 unk28_0:1, 
         intimidateFlag:1, 
         traceFlag:1, 
@@ -277,7 +278,7 @@ typedef struct BATTLECONTEXT {
     u32 unk_A4[2];
     int unk_AC;
     int unk_B0;
-    int unk_B4;
+    int scriptSeqNo;
     int unk_B8;
     int unk_BC[4];
     int unk_CC[4];
@@ -316,7 +317,7 @@ typedef struct BATTLECONTEXT {
     u32 linkStatus2;
     int damage;
     int hitDamage;
-    int unk_214C;
+    int criticalCnt;
     int criticalMultiplier;
     int movePower;
     int unk_2158;
@@ -336,7 +337,7 @@ typedef struct BATTLECONTEXT {
     u32 unk_2184;
     u32 checkMultiHit;
     u32 unk_218C[4];
-    u8 battlerIdSelected[4];
+    u8 selectedMonIndex[4];
     u8 unk_21A0[4];
     u8 unk_21A4[4];
     u32 unk_21A8[4][4];
@@ -344,17 +345,17 @@ typedef struct BATTLECONTEXT {
     u8 unk_21EC[4];
     u32 unk_21F0[4];
     u8 unk_2200[4][4][16];
-    u8 field111_0x378[4][256];
-    int unk_2700[400];
+    u8 unk_2300[4][256];
+    int battleScriptWork[400];
     BATTLEMON battleMons[4];
     u32 moveNoTemp;
     u32 moveNoCur;
     u32 moveNoPrev;
     u32 moveNoKeep[4];
     u16 moveNoProtect[4];
-    u16 field119_0xdec[4];
-    u16 field120_0xdf4[4];
-    u16 field121_0xdfc[4];
+    u16 moveNoHit[4];
+    u16 moveNoHitBattler[4];
+    u16 moveNoHitType[4];
     u16 moveNoBattlerPrev[4];
     u16 moveNoCopied[4];
     u16 moveNoCopiedHit[4][4];
@@ -364,7 +365,7 @@ typedef struct BATTLECONTEXT {
     u16 conversion2Move[4];
     u16 conversion2BattlerId[4];
     u16 conversion2Type[4];
-    u16 unk_30DC[4];
+    u16 moveNoMetronome[4];
     int unk_30E4[4];
     int unk_30F4[4];
     int unk_3104;
@@ -381,7 +382,7 @@ typedef struct BATTLECONTEXT {
     u8 magnitude;
     u8 unk_3121;
     s16 hpTemp;
-    u16 unk_3124[4];
+    u16 recycleItem[4];
     u8 unk_312C[4][6];
     int unk_3144;
     int unk_3148;
@@ -496,12 +497,12 @@ struct BattleSystem {
     u32 battleTypeFlags; 
     BATTLECONTEXT *ctx;
     OpponentData *opponentData[4];
-    int unk44; //labels wrong from here until unk23E8
+    int unk44; //offset labels wrong from here until unk23E8
     u32 *unk48[4];
     u32 *unk58;
     u32 *unk5C;
     u32 *unk60;
-    u32 *unk64;
+    PC_STORAGE *storage;
     PARTY *trainerParty[4];
     u32 *unk78[4];
     u32 *unk88;
@@ -552,7 +553,7 @@ struct BattleSystem {
     int unk2408;
     u32 unk240C; 
     int unk2410;
-    int unk2414;
+    int safariBallCnt;
     u8 unk2418[4];
     u32 unk241C;
     u8 battleOutcomeFlag;

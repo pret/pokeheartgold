@@ -22,5 +22,6 @@ OpponentData *BattleSys_GetOpponentDataByBattlerId(BattleSystem *bsys, int battl
 SOUND_CHATOT *BattleSys_GetChatotVoice(BattleSystem *bsys, int battlerId);
 int BattleSys_GetChatotVoiceParam(BattleSystem *bsys, int battlerId);
 int BattleSys_GetBattlerIdPartner(BattleSystem *bsys, int battlerId);
+int BattleSys_GetTrainerIndex(BattleSystem *bsys, int battlerId);
 
 #endif

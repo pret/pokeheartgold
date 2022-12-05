@@ -4822,7 +4822,7 @@ ov12_0225ACE8: ; 0x0225ACE8
 	ldrb r1, [r5, r1]
 	add r6, r0, #0
 	add r7, r2, #0
-	bl ov12_0223A9AC
+	bl BattleSys_GetTrainerIndex
 	str r0, [sp, #4]
 	mov r0, #5
 	mov r1, #8
@@ -10658,7 +10658,7 @@ _0225DC00:
 	strb r1, [r0, #0xd]
 	ldrb r1, [r4, #9]
 	ldr r0, [r4]
-	bl ov12_0223A9AC
+	bl BattleSys_GetTrainerIndex
 	str r0, [sp, #0x20]
 	ldr r1, _0225DEE0 ; =0x0000039A
 	add r0, sp, #0x10
@@ -10673,7 +10673,7 @@ _0225DC20:
 	strb r1, [r0, #0xd]
 	ldrb r1, [r4, #9]
 	ldr r0, [r4]
-	bl ov12_0223A9AC
+	bl BattleSys_GetTrainerIndex
 	str r0, [sp, #0x20]
 	ldr r1, _0225DEE4 ; =0x000004C6
 	add r0, sp, #0x10

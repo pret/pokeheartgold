@@ -46,5 +46,13 @@ u8 ov12_0225682C(BATTLECONTEXT *ctx, int a1);
 int CalculateTypeEffectiveness(int typeAttack, u8 typeDef1, u8 typeDef2);
 BOOL BattleTryRun(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *work);
+BOOL CheckItemEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *itemWork);
+int ov12_02255844(BATTLECONTEXT *ctx, int battlerId, int a2);
+BOOL CheckNaturalCureOnSwitch(BATTLECONTEXT *ctx, int ability, int status);
+int ov12_02253DA0(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+BOOL CheckItemEffectOnUTurn(BattleSystem *bsys, BATTLECONTEXT *ctx, int *work);
+BOOL ov12_0224EC74(BATTLECONTEXT *ctx);
+void ReadBattleScriptFromNarc(BATTLECONTEXT *ctx, int a1, int adrs);
+void ov12_0224EBDC(BATTLECONTEXT *ctx, int a1, int adrs);
 
 #endif

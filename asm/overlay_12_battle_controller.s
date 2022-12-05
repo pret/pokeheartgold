@@ -4205,8 +4205,8 @@ ov12_02264054: ; 0x02264054
 	.balign 4, 0
 	thumb_func_end ov12_02264054
 
-	thumb_func_start ov12_02264070
-ov12_02264070: ; 0x02264070
+	thumb_func_start BattleController_EmitPrintResultMessage
+BattleController_EmitPrintResultMessage: ; 0x02264070
 	push {r3, lr}
 	sub sp, #8
 	mov r1, #0x3b
@@ -4220,10 +4220,10 @@ ov12_02264070: ; 0x02264070
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02264070
+	thumb_func_end BattleController_EmitPrintResultMessage
 
-	thumb_func_start ov12_0226408C
-ov12_0226408C: ; 0x0226408C
+	thumb_func_start BattleController_EmitRunAwayMessage
+BattleController_EmitRunAwayMessage: ; 0x0226408C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x28
 	add r6, r0, #0
@@ -4293,10 +4293,10 @@ _02264104:
 	.balign 4, 0
 _02264118: .word 0x000021A8
 _0226411C: .word 0x0000240C
-	thumb_func_end ov12_0226408C
+	thumb_func_end BattleController_EmitRunAwayMessage
 
-	thumb_func_start ov12_02264120
-ov12_02264120: ; 0x02264120
+	thumb_func_start BattleController_EmitForefitMessage
+BattleController_EmitForefitMessage: ; 0x02264120
 	push {r3, r4, lr}
 	sub sp, #0x24
 	add r4, r0, #0
@@ -4338,10 +4338,10 @@ _02264162:
 	pop {r3, r4, pc}
 	nop
 _02264178: .word 0x0000240C
-	thumb_func_end ov12_02264120
+	thumb_func_end BattleController_EmitForefitMessage
 
-	thumb_func_start ov12_0226417C
-ov12_0226417C: ; 0x0226417C
+	thumb_func_start BattleController_EmitSwapToSubstituteSprite
+BattleController_EmitSwapToSubstituteSprite: ; 0x0226417C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x64
 	str r0, [sp, #4]
@@ -4426,10 +4426,10 @@ _02264218: .word 0x00002DB0
 _0226421C: .word 0x00002DFA
 _02264220: .word 0x00002DE4
 _02264224: .word 0x00002DA8
-	thumb_func_end ov12_0226417C
+	thumb_func_end BattleController_EmitSwapToSubstituteSprite
 
-	thumb_func_start ov12_02264228
-ov12_02264228: ; 0x02264228
+	thumb_func_start BattleController_EmitPlayMoveSE
+BattleController_EmitPlayMoveSE: ; 0x02264228
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	mov r3, #0x3f
@@ -4463,10 +4463,10 @@ _02264252:
 	pop {r3, r4, r5, pc}
 	nop
 _02264264: .word 0x0000216C
-	thumb_func_end ov12_02264228
+	thumb_func_end BattleController_EmitPlayMoveSE
 
-	thumb_func_start ov12_02264268
-ov12_02264268: ; 0x02264268
+	thumb_func_start BattleController_EmitPlaySong
+BattleController_EmitPlaySong: ; 0x02264268
 	push {r4, lr}
 	sub sp, #8
 	add r4, r1, #0
@@ -4482,7 +4482,7 @@ ov12_02264268: ; 0x02264268
 	bl ov12_02262240
 	add sp, #8
 	pop {r4, pc}
-	thumb_func_end ov12_02264268
+	thumb_func_end BattleController_EmitPlaySong
 
 	thumb_func_start BattleController_EmitSetBattleResults
 BattleController_EmitSetBattleResults: ; 0x02264288

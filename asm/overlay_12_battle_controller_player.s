@@ -9283,7 +9283,7 @@ _0224CD96:
 	str r0, [r4, #0x40]
 	add r0, r6, #0
 	add r2, sp, #0xc
-	bl ov12_02255634
+	bl CheckItemEffectOnHit
 	cmp r0, #1
 	bne _0224CDC0
 	ldr r2, [sp, #0xc]

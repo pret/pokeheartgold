@@ -370,8 +370,8 @@ ov12_0223A9A8: ; 0x0223A9A8
 	bx lr
 	thumb_func_end ov12_0223A9A8
 
-	thumb_func_start ov12_0223A9AC
-ov12_0223A9AC: ; 0x0223A9AC
+	thumb_func_start BattleSys_GetTrainerIndex
+BattleSys_GetTrainerIndex: ; 0x0223A9AC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #0x2c]
@@ -410,7 +410,7 @@ _0223A9E8:
 	ldrh r0, [r0]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0223A9AC
+	thumb_func_end BattleSys_GetTrainerIndex
 
 	thumb_func_start ov12_0223A9F4
 ov12_0223A9F4: ; 0x0223A9F4

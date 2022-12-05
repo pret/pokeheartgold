@@ -583,8 +583,8 @@ _0224EA0C: .word 0x00002DCC
 _0224EA10: .word 0xFFBFFFFF
 	thumb_func_end ov12_0224E4FC
 
-	thumb_func_start ov12_0224EA14
-ov12_0224EA14: ; 0x0224EA14
+	thumb_func_start BattleController_EmitRefreshMonData
+BattleController_EmitRefreshMonData: ; 0x0224EA14
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r2, #0
@@ -757,7 +757,7 @@ _0224EB8C: .word 0x00002D4C
 _0224EB90: .word 0x00002D6C
 _0224EB94: .word 0x00002D70
 _0224EB98: .word 0x00002DA4
-	thumb_func_end ov12_0224EA14
+	thumb_func_end BattleController_EmitRefreshMonData
 
 	thumb_func_start ReadBattleScriptFromNarc
 ReadBattleScriptFromNarc: ; 0x0224EB9C
@@ -5369,7 +5369,7 @@ _02250D72:
 	pop {r4, r5, r6, r7, pc}
 _02250D7E:
 	ldr r0, [sp]
-	bl ov12_0223A9AC
+	bl BattleSys_GetTrainerIndex
 	str r0, [sp, #8]
 	mov r0, #0
 	str r0, [sp, #4]
@@ -12707,8 +12707,8 @@ _02254514: .word 0x00002DB0
 _02254518: .word 0x00002DB8
 	thumb_func_end ov12_022543A0
 
-	thumb_func_start ov12_0225451C
-ov12_0225451C: ; 0x0225451C
+	thumb_func_start CheckNaturalCureOnSwitch
+CheckNaturalCureOnSwitch: ; 0x0225451C
 	mov r0, #0
 	cmp r1, #0x28
 	bgt _0225453C
@@ -12768,7 +12768,7 @@ _0225457A:
 	bx lr
 	.balign 4, 0
 _0225457C: .word 0x00000F88
-	thumb_func_end ov12_0225451C
+	thumb_func_end CheckNaturalCureOnSwitch
 
 	thumb_func_start ov12_02254580
 ov12_02254580: ; 0x02254580
@@ -14968,8 +14968,8 @@ _0225562C:
 _02255630: .word 0x000021A8
 	thumb_func_end ov12_0225561C
 
-	thumb_func_start ov12_02255634
-ov12_02255634: ; 0x02255634
+	thumb_func_start CheckItemEffectOnHit
+CheckItemEffectOnHit: ; 0x02255634
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r1, #0
@@ -15219,7 +15219,7 @@ _02255820: .word 0x00002D90
 _02255824: .word 0x0000215C
 _02255828: .word 0x0000216C
 _0225582C: .word 0x00002DB8
-	thumb_func_end ov12_02255634
+	thumb_func_end CheckItemEffectOnHit
 
 	thumb_func_start GetBattlerHeldItemEffect
 GetBattlerHeldItemEffect: ; 0x02255830
@@ -20398,8 +20398,8 @@ _02257F98: .word 0x200400C0
 _02257F9C: .word ov12_0226CBDC
 	thumb_func_end CheckStatusEffectsSubstitute
 
-	thumb_func_start ov12_02257FA0
-ov12_02257FA0: ; 0x02257FA0
+	thumb_func_start CheckItemEffectOnUTurn
+CheckItemEffectOnUTurn: ; 0x02257FA0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r5, r1, #0
@@ -20628,7 +20628,7 @@ _02258170: .word 0x00003044
 _02258174: .word 0x00002D90
 _02258178: .word 0x0000219C
 _0225817C: .word 0x000003E9
-	thumb_func_end ov12_02257FA0
+	thumb_func_end CheckItemEffectOnUTurn
 
 	thumb_func_start CheckIgnorePressure
 CheckIgnorePressure: ; 0x02258180

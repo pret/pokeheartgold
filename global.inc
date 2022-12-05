@@ -11394,7 +11394,7 @@
 .public ov12_0223A99C
 .public ov12_0223A9A4
 .public ov12_0223A9A8
-.public ov12_0223A9AC
+.public BattleSys_GetTrainerIndex
 .public ov12_0223A9F4
 .public BattleSys_GetPlayerProfile
 .public ov12_0223AA80
@@ -11733,8 +11733,8 @@
 .public BtlCmd_TryNaturalCure
 .public BtlCmd_CheckSubstitute
 .public BtlCmd_CheckCloudNine
-.public BtlCmd_CheckUTurnItemEffect
-.public BtlCmd_212
+.public BtlCmd_211
+.public BtlCmd_CheckItemEffectOnUTurn
 .public BtlCmd_SwapToSubstituteSprite
 .public BtlCmd_PlayMoveSE
 .public BtlCmd_PlaySong
@@ -11743,8 +11743,8 @@
 .public BtlCmd_CheckCurMoveIsType
 .public BtlCmd_GetMonDataFromNarc
 .public BtlCmd_RefreshMonData
-.public BtlCmd_BufferMessageSide2
-.public BtlCmd_BufferMessageSide3
+.public BtlCmd_222
+.public BtlCmd_223
 .public BtlCmd_EndScript
 .public BattleScriptReadWord
 .public BattleScriptIncrementPointer
@@ -11855,7 +11855,7 @@
 .public ov12_0224E384
 .public ov12_0224E414
 .public ov12_0224E4FC
-.public ov12_0224EA14
+.public BattleController_EmitRefreshMonData
 .public ov12_0224EBDC
 .public ov12_0224EC74
 .public ov12_0224ECC4
@@ -11928,7 +11928,7 @@
 .public ov12_02253DA0
 .public CheckAbilityEffectOnHit
 .public ov12_022543A0
-.public ov12_0225451C
+.public CheckNaturalCureOnSwitch
 .public ov12_02254580
 .public ov12_0225471C
 .public ov12_02254D80
@@ -11936,7 +11936,7 @@
 .public ov12_0225551C
 .public GetBattlerHeldItem
 .public ov12_0225561C
-.public ov12_02255634
+.public CheckItemEffectOnHit
 .public GetBattlerHeldItemEffect
 .public ov12_02255844
 .public GetNaturalGiftPower
@@ -11970,7 +11970,7 @@
 .public ov12_02257E98
 .public ov12_02257EC0
 .public CheckStatusEffectsSubstitute
-.public ov12_02257FA0
+.public CheckItemEffectOnUTurn
 .public CheckIgnorePressure
 .public ov12_022581BC
 .public ov12_022581D4
@@ -12275,12 +12275,12 @@
 .public ov12_02263F8C
 .public ov12_02264038
 .public ov12_02264054
-.public ov12_02264070
-.public ov12_0226408C
-.public ov12_02264120
-.public ov12_0226417C
-.public ov12_02264228
-.public ov12_02264268
+.public BattleController_EmitPrintResultMessage
+.public BattleController_EmitRunAwayMessage
+.public BattleController_EmitForefitMessage
+.public BattleController_EmitSwapToSubstituteSprite
+.public BattleController_EmitPlayMoveSE
+.public BattleController_EmitPlaySong
 .public BattleController_EmitSetBattleResults
 .public ov12_022642F0
 .public ov12_0226430C

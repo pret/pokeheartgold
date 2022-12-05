@@ -53,5 +53,14 @@ void BattleController_EmitIncrementGameStat(BattleSystem *bsys, int battlerId, i
 void ov12_02263F8C(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 void ov12_02264038(BattleSystem *bsys, int battlerId);
 void ov12_02264054(BattleSystem *bsys, int battlerId);
+void BattleController_EmitPrintResultMessage(BattleSystem *bsys);
+void BattleController_EmitRunAwayMessage(BattleSystem *bsys, BATTLECONTEXT *ctx);
+void BattleController_EmitForefitMessage(BattleSystem *bsys);
+void BattleController_EmitSwapToSubstituteSprite(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+void BattleController_EmitPlayMoveSE(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+void BattleController_EmitPlaySong(BattleSystem *bsys, int battlerId, int song);
+void BattleController_EmitRefreshMonData(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int monIndex);
+
+void ov12_022645C8(BattleSystem *bsys, BATTLECONTEXT *ctx, u8 a2);
 
 #endif
