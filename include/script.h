@@ -283,7 +283,8 @@ struct FieldSystem {
     u8 filler_98[0x4];
     void *unk9C;
     void *unkA0;
-    u8 filler_A4[0x8];
+    u8 filler_A4[0x4];
+    u32 *unkA8;
     u32 unkAC;
     void *unkB0;
     s64 unkB4;
@@ -297,7 +298,9 @@ struct FieldSystem {
     FollowMon followMon; // A4
     u8 unk104[4];
     struct FieldSystemUnk108 *unk108;
-    u32 unk_10C[2];
+    u32 unk_10C;
+    u8 unk_110;
+    u8 unk_111[3];
     GearPhoneRingManager* unk114;
     BUGCONTEST* bugContest;
     u8 unk11C[0x8];

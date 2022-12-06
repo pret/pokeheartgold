@@ -23,12 +23,11 @@
 #include "unk_0202C730.h"
 #include "unk_02066EDC.h"
 #include "unk_0203E348.h"
+#include "unk_0203DE74.h"
 #include "msgdata/msg/msg_0445.h"
 
 #define HEAPID_OV36   ((HeapID)75)
 
-extern const OVY_MGR_TEMPLATE gApplication_NewGameFieldsys;
-extern const OVY_MGR_TEMPLATE gApplication_ContinueFieldsys;
 extern const OVY_MGR_TEMPLATE gApplication_OakSpeech;
 
 static BOOL ov36_App_MainMenu_SelectOption_Continue_AppInit(OVY_MANAGER* man, int* state);
