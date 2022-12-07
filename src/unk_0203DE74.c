@@ -117,7 +117,7 @@ BOOL sub_0203DF8C(FieldSystem *fsys) {
 }
 
 BOOL sub_0203DFA4(FieldSystem *fsys) {
-    return (fsys->unk0->unk4 != 0);
+    return (fsys->unk0->unk4 != NULL);
 }
 
 void Fsys_LaunchApplication(FieldSystem *fsys, const OVY_MGR_TEMPLATE *template, void *parentWork) {
