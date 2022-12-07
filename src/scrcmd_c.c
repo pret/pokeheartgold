@@ -22,7 +22,7 @@
 #include "map_events.h"
 #include "unk_0205FD20.h"
 #include "unk_02054648.h"
-#include "unk_0205B6E8.h"
+#include "metatile_behavior.h"
 #include "unk_0203E348.h"
 #include "unk_02055418.h"
 #include "unk_020932A4.h"
