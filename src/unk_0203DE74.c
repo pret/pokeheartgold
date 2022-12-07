@@ -121,9 +121,7 @@ BOOL sub_0203DFA4(FieldSystem *fsys) {
 }
 
 void Fsys_LaunchApplication(FieldSystem *fsys, const OVY_MGR_TEMPLATE *template, void *parentWork) {
-    if (fsys->unk0->unk4) {
-        GF_ASSERT(FALSE);
-    }
+    GF_ASSERT(fsys->unk0->unk4 == NULL);
 
     sub_0203DF34(fsys);
 
