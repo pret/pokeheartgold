@@ -292,7 +292,7 @@ void sub_0203E30C() {
 }
 
 int sub_0203E324() {
-    if (sFieldSysPtr->unk4 == 0) {
+    if (sFieldSysPtr->unk4 == NULL) {
         return 0;
     }
     return sFieldSysPtr->unk4->unk14;
