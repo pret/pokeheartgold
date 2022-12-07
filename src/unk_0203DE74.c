@@ -25,7 +25,7 @@ const OVY_MGR_TEMPLATE gApplication_NewGameFieldsys = {
     .init = Field_NewGame_AppInit,
     .exec = Field_AppExec,
     .exit = Field_AppExit,
-    .ovy_id = 0xFFFFFFFF
+    .ovy_id = FS_OVERLAY_ID_NONE
 };
 
 const OVY_MGR_TEMPLATE gApplication_ContinueFieldsys = {
