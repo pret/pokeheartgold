@@ -32,7 +32,7 @@ const OVY_MGR_TEMPLATE gApplication_ContinueFieldsys = {
     .init = Field_Continue_AppInit,
     .exec = Field_AppExec,
     .exit = Field_AppExit,
-    .ovy_id = 0xFFFFFFFF
+    .ovy_id = FS_OVERLAY_ID_NONE
 };
 
 static FieldSystem *sFieldSysPtr;
