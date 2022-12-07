@@ -109,7 +109,7 @@ void sub_0203DF64(FieldSystem *fsys, int a1) {
 }
 
 BOOL sub_0203DF7C(FieldSystem *fsys) {
-    return (fsys->unk0->unk0 != 0);
+    return (fsys->unk0->unk0 != NULL);
 }
 
 BOOL sub_0203DF8C(FieldSystem *fsys) {
