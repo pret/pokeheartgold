@@ -316,4 +316,3 @@ void sub_0203E348() {
 void sub_0203E354() {
     sFieldSysPtr->unkC4 = -2;
 }
-
