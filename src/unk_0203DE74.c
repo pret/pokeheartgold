@@ -242,7 +242,7 @@ void sub_0203E15C(FieldSystem *fsys) {
                 ov01_021F6830(fsys, 0, 1);
                 break;
             }
-            if (gSystem.newKeys & 1) {
+            if (gSystem.newKeys & PAD_BUTTON_A) {
                 ov01_021EFACC(fsys->unk4->unk8);
             } 
             flag = 0;
