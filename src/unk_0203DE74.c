@@ -131,9 +131,9 @@ void Fsys_LaunchApplication(FieldSystem *fsys, const OVY_MGR_TEMPLATE *template,
 }
 
 FieldSystem *FieldSystem_new(OVY_MANAGER *man) {
-    CreateHeap(3, 11, 7 << 14);
-    CreateHeap(3, 32, 32 << 9);
-    CreateHeap(0, 89, 87 << 4);
+    CreateHeap(3, 11, 0x1C000);
+    CreateHeap(3, 32, 0x4000);
+    CreateHeap(0, 89, 0x570);
     FieldSystem *fsys = OverlayManager_CreateAndGetData(man, sizeof(FieldSystem), 11);
     MI_CpuFill8(fsys, 0, sizeof(FieldSystem));
     fsys->unk0 = AllocFromHeap(11, sizeof(struct FieldSystemUnkSub0));
