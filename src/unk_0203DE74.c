@@ -83,12 +83,8 @@ BOOL Field_AppExit(OVY_MANAGER *man, int *unused) {
 extern OVY_MGR_TEMPLATE ov01_02206378;
 
 void sub_0203DEF0(FieldSystem *fsys) {
-    if (fsys->unk0->unk4) {
-        GF_ASSERT(FALSE);
-    }
-    if (fsys->unk0->unk0) {
-        GF_ASSERT(FALSE);
-    }
+    GF_ASSERT(fsys->unk0->unk4 == NULL);
+    GF_ASSERT(fsys->unk0->unk0 == NULL);
 
     HandleLoadOverlay(FS_OVERLAY_ID(field), 2);
 
