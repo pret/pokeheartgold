@@ -1,0 +1,81 @@
+#ifndef POKEHEARTGOLD_UNK_METATILE_BEHAVIOR_H
+#define POKEHEARTGOLD_UNK_METATILE_BEHAVIOR_H
+
+
+BOOL sub_0205B6E8(u8 tile);
+BOOL sub_0205B6F4(u8 tile);
+BOOL sub_0205B700(u8 tile);
+BOOL sub_0205B70C(u8 tile);
+BOOL sub_0205B718(u8 tile);
+BOOL sub_0205B724(u8 tile);
+BOOL sub_0205B730(u8 tile);
+BOOL sub_0205B73C(u8 tile);
+BOOL sub_0205B748(u8 tile);
+BOOL sub_0205B754(u8 tile);
+BOOL sub_0205B760(u8 tile);
+BOOL sub_0205B76C(u8 tile);
+BOOL sub_0205B778(u8 tile);
+BOOL sub_0205B78C(u8 tile);
+BOOL sub_0205B798(u8 tile);
+BOOL sub_0205B7A4(u8 tile);
+BOOL sub_0205B7B0(u8 tile);
+BOOL sub_0205B7BC(u8 tile);
+BOOL sub_0205B7C8(u8 tile);
+BOOL sub_0205B7D4(u8 tile);
+BOOL sub_0205B7E0(u8 tile);
+BOOL sub_0205B7EC(u8 tile);
+BOOL sub_0205B7F8(u8 tile);
+BOOL sub_0205B804(u8 tile);
+BOOL sub_0205B810(u8 tile);
+BOOL sub_0205B81C(u8 tile);
+BOOL sub_0205B828(u8 tile);
+BOOL sub_0205B834(u8 tile);
+BOOL sub_0205B840(u8 tile);
+BOOL sub_0205B84C(u8 tile);
+BOOL sub_0205B858(u8 tile);
+BOOL sub_0205B864(u8 tile);
+BOOL sub_0205B870(u8 tile);
+BOOL sub_0205B87C(u8 tile);
+BOOL sub_0205B888(u8 tile);
+BOOL sub_0205B894(u8 tile);
+BOOL sub_0205B8A0(u8 tile);
+BOOL sub_0205B8AC(u8 tile);
+BOOL sub_0205B8B8(u8 tile);
+BOOL sub_0205B8C4(u8 tile);
+BOOL sub_0205B8D0(u8 tile);
+BOOL MetatileBehavior_IsWaterfall(u8 tile);
+BOOL MetatileBehavior_IsWhirlpool(u8 tile);
+BOOL sub_0205B8F4(u8 tile);
+BOOL sub_0205B918(u8 tile);
+BOOL sub_0205B93C(u8 tile);
+BOOL sub_0205B960(u8 tile);
+BOOL sub_0205B984(u8 tile);
+BOOL sub_0205B994(u8 tile);
+BOOL sub_0205B9AC(u8 tile);
+BOOL sub_0205B9B8(u8 tile);
+BOOL sub_0205B9DC(u8 tile);
+BOOL sub_0205B9E8(u8 tile);
+BOOL sub_0205B9F4(u8 tile);
+BOOL sub_0205BA00(u8 tile);
+BOOL sub_0205BA0C(u8 tile);
+BOOL sub_0205BA18(u8 tile);
+BOOL sub_0205BA24(u8 tile);
+BOOL sub_0205BA30(u8 tile);
+BOOL sub_0205BA44(u8 tile);
+BOOL sub_0205BA54(u8 tile);
+BOOL sub_0205BA60(u8 tile);
+u8 sub_0205BA6C(void);
+BOOL sub_0205BA70(u8 tile);
+BOOL sub_0205BA94(u8 tile);
+BOOL sub_0205BAA0(u8 tile);
+BOOL sub_0205BAAC(u8 tile);
+BOOL sub_0205BAB8(u8 tile);
+BOOL sub_0205BAC4(u8 tile);
+BOOL sub_0205BAD0(u8 tile);
+BOOL sub_0205BAE4(u8 tile);
+BOOL sub_0205BAEC(u8 tile);
+BOOL MetatileBehavior_IsHeadbutt(u8 tile);
+BOOL sub_0205BB04(u8 tile);
+
+
+#endif //POKEHEARTGOLD_UNK_0205B6E8_H

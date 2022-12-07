@@ -208,7 +208,7 @@ Static main
 	Object asm/unk_0205AC88.o
 	Object src/unk_0205B3DC.o
 	Object asm/text_0205B4EC.o
-	Object asm/unk_0205B6E8.o
+	Object src/metatile_behavior.o
 	Object asm/unk_0205BB1C.o
 	Object asm/unk_0205BFF0.o
 	Object src/field_player_avatar.o
