@@ -1,9 +1,7 @@
 #ifndef POKEHEARTGOLD_SCRIPT_H
 #define POKEHEARTGOLD_SCRIPT_H
 
-#include "save.h"
 #include "map_events_internal.h"
-#include "map_matrix.h"
 #include "msgdata.h"
 #include "window.h"
 #include "field_player_avatar.h"
@@ -16,6 +14,7 @@
 #include "list_menu_2.h"
 #include "unk_0200E398.h"
 #include "unk_02022D74.h"
+#include "field_system.h"
 
 #define SCRIPT_MODE_STOPPED  0
 #define SCRIPT_MODE_BYTECODE 1
@@ -27,7 +26,6 @@
 
 #define ScriptReadByte(ctx) *(ctx->script_ptr++)
 
-typedef struct FieldSystem FieldSystem;
 typedef struct SCRIPTCONTEXT SCRIPTCONTEXT;
 
 #define Unk80_10_C_MAGIC         (222271)
@@ -43,7 +41,6 @@ typedef struct EngagedTrainer {
 } EngagedTrainer;
 
 typedef struct _NPC_TRADE_WORK NPC_TRADE_WORK;
-typedef struct FsysUnkSub2C FsysUnkSub2C;
 
 typedef struct ScriptEnvironment {
     u32 check;
@@ -138,78 +135,6 @@ enum ScriptEnvField {
     SCRIPTENV_SPECIAL_VAR_LAST_TALKED         = 55,
 };
 
-typedef struct TaskManager TaskManager;
-
-typedef struct Location {
-    int mapId;
-    int warpId;
-    int x;
-    int y;
-    int direction;
-} Location;
-
-typedef struct FollowMon {
-    LocalMapObject *mapObject;
-    u32 unk4;
-    u32 unk8;
-    u32 unkC;
-    u32 species;
-    u8 gender;
-    u8 unk15;
-    u8 active;
-    u8 shiny;
-    u16 forme;
-    u16 dummy;
-    u32 unk1C;
-} FollowMon;
-
-struct FieldSystemUnk108 {
-    u32 personality;
-    u16 species;
-    u16 isRegistered;
-    POKEMON *pokemon;
-};
-
-struct FieldSystemUnkSub0 {
-    OVY_MANAGER *unk0;
-    OVY_MANAGER *unk4;
-    BOOL unk8;
-    BOOL unkC;
-};
-
-typedef struct FieldEnvSubUnk18 {
-    int state;
-    u32 direction;
-} FieldEnvSubUnk18;
-
-typedef struct GearPhoneRingManager {
-    u8 unk_var0_0:1;
-    u8 unk_var0_1:1;
-    u8 unk_var0_2:1;
-    u8 unk_var0_3:1;
-    u8 unk_var0_4:4;
-    u8 unk_var1;
-    u8 unk_var2;
-    u8 unk_var3;
-    u8 unk_var4;
-    u8 unk_arr5[2];
-    u8 unk_var7;
-    s32 unk_var8;
-    s32 unk_varC;
-    u16 unk_var10;
-    u16 unk_var12;
-    s64 unk_var14; //Seconds? see sub_02092F30
-    PhoneBookEntry entry; //0x1c
-    SavePokegear *pokegearData; //0x30
-    MomsSavings *savingsData;//0x34
-    SAVEDATA *saveData; //0x38
-    FieldSystem *sys; //0x3c
-    struct PokegearRingingTask {
-        SysTask *task;
-        u8 counter;
-    } gearRing;
-} GearPhoneRingManager; //size: 0x48
-
 struct UnkStruct_020FC5CC {
     u32 unk0_00:4;
     u32 unk0_04:4;
@@ -225,87 +150,6 @@ struct UnkStruct_020FC5CC {
 
 struct UnkStruct_02059E1C;
 struct UnkStruct_0205AC88;
-
-struct FieldSystemUnkSub68 {
-    WINDOW unk0;
-    u16 unk10;
-    u8 unk12;
-    u8 unk13_0:7;
-    u8 unk13_7:1;
-};
-
-typedef struct FsysUnkSub4 {
-    u32 unk0;
-    u32 unk4;
-    u32 unk8;
-    void *unk_0C; // weather related?
-    u8 unk10[0x4];
-    u32 unk14;
-    u32 unk18;
-    u32 unk1c;
-} FsysUnkSub4;
-
-struct FieldSystem {
-    struct FieldSystemUnkSub0 *unk0;
-    FsysUnkSub4 *unk4;
-    BGCONFIG *bgConfig;
-    SAVEDATA *savedata;
-    TaskManager *taskman;
-    MAP_EVENTS *mapEvents;
-    FieldEnvSubUnk18 *unk18;
-    int unk1C;
-    Location *location;
-    GF_Camera *camera;
-    void *unk28;
-    FsysUnkSub2C *unk2C;
-    MAPMATRIX *mapMatrix;
-    u8 filler34[0x8];
-    MapObjectMan *mapObjectMan;
-    FIELD_PLAYER_AVATAR *playerAvatar;
-    void *unk_44;
-    u8 filler48[0xC];
-    void *unk54;
-    u8 filler_58[0x8];
-    u32 unk60;
-    int unk64;
-    struct FieldSystemUnkSub68 *unk68;
-    u32 unk6C;
-    int unk70;
-    const struct UnkStruct_020FC5CC *unk74;
-    u16 unk78;
-    u16 unk7A;
-    u16 unk7C;
-    u16 unk7E;
-    struct UnkStruct_02059E1C *unk80;
-    struct UnkStruct_0205AC88 *unk84;
-    u8 filler_88[0xC];
-    void *unk94;
-    u8 filler_98[0x4];
-    void *unk9C;
-    void *unkA0;
-    u8 filler_A4[0x4];
-    u32 *unkA8;
-    u32 unkAC;
-    void *unkB0;
-    s64 unkB4;
-    u8 unkBC[8];
-    int unkC4;
-    u8 filler_C8[0xA];
-    u8 unkD2_0:6;
-    u8 unkD2_6:1;
-    u8 unkD2_7:1;
-    u8 filler_D3[0x11];
-    FollowMon followMon; // A4
-    u8 unk104[4];
-    struct FieldSystemUnk108 *unk108;
-    u32 unk_10C;
-    u8 unk_110;
-    u8 unk_111[3];
-    GearPhoneRingManager *unk114;
-    BUGCONTEST *bugContest;
-    u8 unk11C[0x8];
-    u32 judgeStatPosition;
-}; // size: 0x128
 
 typedef BOOL (*ScrCmdFunc)(SCRIPTCONTEXT *ctx);
 
@@ -340,13 +184,5 @@ void ScriptCall(SCRIPTCONTEXT *ctx, const u8 *ptr);
 void ScriptReturn(SCRIPTCONTEXT *ctx);
 u16 ScriptReadHalfword(SCRIPTCONTEXT *ctx);
 u32 ScriptReadWord(SCRIPTCONTEXT *ctx);
-
-static inline void InitLocation(Location *location, int mapId, int warpId, int x, int y, int direction) {
-    location->mapId = mapId;
-    location->warpId = warpId;
-    location->x = x;
-    location->y = y;
-    location->direction = direction;
-}
 
 #endif
