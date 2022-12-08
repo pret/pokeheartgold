@@ -1432,7 +1432,7 @@ BOOL ScrCmd_BufferBugContestWinner(SCRIPTCONTEXT *ctx) {
     msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
     bugContest = FieldSys_BugContest_get(ctx->fsys);
 
-    BugContest_BufferContestWinnerNames(bugContest, ctx->msg_data, *msgfmt, *ctx->script_ptr++);
+    BugContest_BufferContestWinnerNames(bugContest, ctx->msgdata, *msgfmt, *ctx->script_ptr++);
 
     return FALSE;
 }

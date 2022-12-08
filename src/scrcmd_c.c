@@ -572,13 +572,13 @@ BOOL ScrCmd_048(SCRIPTCONTEXT* ctx) {
     u8 msg_no = ScriptReadByte(ctx);
 
     if (!sub_02037474()) {
-        ov01_021EF4DC(ctx, ctx->msg_data, msg_no, TRUE, NULL);
+        ov01_021EF4DC(ctx, ctx->msgdata, msg_no, TRUE, NULL);
     } else {
         struct UnkStruct_Ov01_021EF4C4 unk_struct;
         ov01_021EF4C4(&unk_struct, ctx);
         unk_struct.textFrameDelay = 1;
         unk_struct.unk1 = 1;
-        ov01_021EF4DC(ctx, ctx->msg_data, msg_no, FALSE, &unk_struct);
+        ov01_021EF4DC(ctx, ctx->msgdata, msg_no, FALSE, &unk_struct);
     }
 
     SetupNativeScript(ctx, ov01_021EF348);
@@ -780,7 +780,7 @@ BOOL ScrCmd_DirectionSignpost(SCRIPTCONTEXT* ctx) {
     ov01_021F3D70(fsys->unk68, 1);
     ov01_021F3D98(fsys);
 
-    ReadMsgDataIntoString(ctx->msg_data, msg_no, *tmp_str);
+    ReadMsgDataIntoString(ctx->msgdata, msg_no, *tmp_str);
     StringExpandPlaceholders(*msg_fmt, *unk1, *tmp_str);
     WINDOW* window = ov01_021F3D80(fsys->unk68);
     AddTextPrinterParameterized2(window, 1, *unk1, 0, 0, 0, MakeTextColor(2, 10, 15), NULL);
@@ -833,7 +833,7 @@ BOOL ScrCmd_TrainerTips(SCRIPTCONTEXT* ctx) {
     u8 msg_no = ScriptReadByte(ctx);
     u16 result_var_id = ScriptReadHalfword(ctx);
 
-    ReadMsgDataIntoString(ctx->msg_data, msg_no, *tmp_str);
+    ReadMsgDataIntoString(ctx->msgdata, msg_no, *tmp_str);
     StringExpandPlaceholders(*msg_fmt, *unk, *tmp_str);
 
     TextFlags_SetCanABSpeedUpPrint(TRUE);
@@ -988,7 +988,7 @@ BOOL ScrCmd_064(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_065(SCRIPTCONTEXT *ctx) {
-    sub_02041770(ctx, FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MENU_WINDOW), ctx->msg_data);
+    sub_02041770(ctx, FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MENU_WINDOW), ctx->msgdata);
     return TRUE;
 }
 
@@ -1053,7 +1053,7 @@ BOOL ScrCmd_068(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_069(SCRIPTCONTEXT *ctx) {
-    sub_02041770(ctx, FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MENU_WINDOW), ctx->msg_data);
+    sub_02041770(ctx, FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MENU_WINDOW), ctx->msgdata);
     return TRUE;
 }
 
@@ -5015,7 +5015,7 @@ BOOL ScrCmd_MenuInitStdGmm(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_MenuInit(SCRIPTCONTEXT *ctx) {
-    sub_02041770(ctx, ov01_021F6B20(ctx->fsys), ctx->msg_data);
+    sub_02041770(ctx, ov01_021F6B20(ctx->fsys), ctx->msgdata);
     return TRUE;
 }
 

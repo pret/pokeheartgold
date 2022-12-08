@@ -321,7 +321,7 @@ struct SCRIPTCONTEXT {
     u32 cmd_count;
     u32 data[4];
     TaskManager *taskman;
-    MSGDATA *msg_data;
+    MSGDATA *msgdata;
     u8 *mapScripts;
     FieldSystem *fsys;
 };
