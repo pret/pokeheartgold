@@ -98,7 +98,7 @@ GearPhoneRingManager* GearPhoneRingManager_new(HeapID heapId, FieldSystem* sys) 
     ptr->unk_var12 = 50;
     ptr->saveData = sys->savedata;
     ptr->pokegearData = SaveData_GSPlayerMisc_get(ptr->saveData);
-    ptr->savings_data = SaveData_GetMomsSavingsAddr(ptr->saveData);
+    ptr->savingsData = SaveData_GetMomsSavingsAddr(ptr->saveData);
     ptr->sys = sys;
     return ptr;
 }
@@ -126,7 +126,7 @@ PhoneBookEntry* sub_02092E10(GearPhoneRingManager* ptr) {
 }
 
 void sub_02092E14(GearPhoneRingManager* ptr, u8 a1, BOOL a2) {
-    sub_0202F01C(ptr->savings_data, a1);
+    sub_0202F01C(ptr->savingsData, a1);
     if (a2) {
         if (ptr->unk_var8 < ptr->unk_varC - 1) {
             ptr->unk_var8 = ptr->unk_varC - 1;
@@ -152,7 +152,7 @@ static void sub_02092E54(GearPhoneRingManager* ptr) {
     u8 var4057 = ScriptState_GetVar4057(state);
     u8 i;
     for (i = 0; i < 5; i++) {
-        if (sub_0202F08C(ptr->savings_data, i + 7)) {
+        if (sub_0202F08C(ptr->savingsData, i + 7)) {
             return;
         }
     }
