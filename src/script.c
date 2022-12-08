@@ -8,7 +8,7 @@ void InitScriptContext(SCRIPTCONTEXT* ctx, const ScrCmdFunc* cmd_table, u32 cmd_
     ctx->stackDepth = 0;
     ctx->id = 0;
     ctx->native_ptr = NULL;
-    ctx->cmd_table = cmd_table;
+    ctx->cmdTable = cmd_table;
     ctx->cmd_count = cmd_count;
 
     for (i = 0; i < NELEMS(ctx->data); i++) {
@@ -79,7 +79,7 @@ BOOL RunScriptCommand(SCRIPTCONTEXT* ctx) {
                 return FALSE;
             }
 
-            ScrCmdFunc cmd = ctx->cmd_table[cmd_code];
+            ScrCmdFunc cmd = ctx->cmdTable[cmd_code];
             if ((*cmd)(ctx) == TRUE) {
                 break;
             }

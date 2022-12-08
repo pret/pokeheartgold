@@ -317,7 +317,7 @@ struct SCRIPTCONTEXT {
     ScrCmdFunc native_ptr;
     const u8 *script_ptr;
     const u8 *stack[20];
-    const ScrCmdFunc *cmd_table;
+    const ScrCmdFunc *cmdTable;
     u32 cmd_count;
     u32 data[4];
     TaskManager *taskman;
