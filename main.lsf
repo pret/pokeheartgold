@@ -158,7 +158,7 @@ Static main
 	Object src/diamond_dust.o
 	Object asm/unk_0203BC10.o
 	Object asm/unk_0203DB6C.o
-	Object src/unk_0203DE74.o
+	Object src/field_system.o
 	Object asm/unk_0203E348.o
 	Object src/script.o
 	Object src/fieldmap.o

@@ -4,7 +4,7 @@
 #include "map_header.h"
 #include "scrcmd.h"
 #include "unk_02054E00.h"
-#include "unk_0203DE74.h"
+#include "field_system.h"
 #include "unk_0206D494.h"
 #include "sys_vars.h"
 #include "overlay_02.h"
