@@ -633,7 +633,7 @@ _021E5EB4: .word FS_OVERLAY_ID(OVY_3)
 	thumb_func_start ov01_021E5EB8
 ov01_021E5EB8: ; 0x021E5EB8
 	push {r3, lr}
-	bl Fsys_GetSaveDataPtr
+	bl FieldSys_GetSaveDataPtr
 	bl Sav2_GetGymmickPtr
 	bl SavGymmick_GetType
 	cmp r0, #0

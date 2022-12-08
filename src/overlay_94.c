@@ -64,7 +64,7 @@ BOOL PartyMenu_AnimateIconFormeChange(PartyMenuStruct* unkPtr) {
             GF_ASSERT(FALSE);
             break;
         } 
-        Pokedex_SetMonCaughtFlag(Sav2_Pokedex_get(Fsys_GetSaveDataPtr(unkPtr->unk654->fsys)), pokemon);
+        Pokedex_SetMonCaughtFlag(Sav2_Pokedex_get(FieldSys_GetSaveDataPtr(unkPtr->unk654->fsys)), pokemon);
         work->state++;
         break;
     case 1:

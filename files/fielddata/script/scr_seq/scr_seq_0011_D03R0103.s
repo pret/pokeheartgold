@@ -31,7 +31,7 @@ scr_seq_D03R0103_000:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0077
-	scrcmd_683 VAR_TEMP_x4002
+	get_static_encounter_outcome VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 3
 	goto_if_eq _0073
 	compare VAR_TEMP_x4002, 4

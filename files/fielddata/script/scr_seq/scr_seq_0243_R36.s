@@ -101,7 +101,7 @@ _012C:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0255
-	scrcmd_683 VAR_TEMP_x4001
+	get_static_encounter_outcome VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 3
 	goto_if_eq _0251
 	compare VAR_TEMP_x4001, 4
@@ -213,7 +213,7 @@ _02E2:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0255
-	scrcmd_683 VAR_TEMP_x4001
+	get_static_encounter_outcome VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 4
 	call_if_eq _023F
 	scrcmd_221 VAR_TEMP_x4000, 0

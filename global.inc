@@ -720,9 +720,9 @@
 .public Fsys_CreateApplication_AlphPuzzle
 .public Fsys_FlipAzaleaGymSwitch
 .public Fsys_FollowPokeInteract
-.public Fsys_GetBgConfigPtr
+.public FieldSys_GetBgConfigPtr
 .public Fsys_GetFacingObject
-.public Fsys_GetSaveDataPtr
+.public FieldSys_GetSaveDataPtr
 .public Fsys_GetWeather_HandleDiamondDust
 .public Fsys_InitAzaleaGym
 .public Fsys_InitBlackthornGym
@@ -734,7 +734,7 @@
 .public Fsys_InitVioletGym
 .public Fsys_InitViridianGym
 .public Fsys_IsSavGymmickTypeEqualTo
-.public Fsys_LaunchApplication
+.public FieldSys_LaunchApplication
 .public Fsys_LaunchPokeathlonCourseApplication
 .public Fsys_RunTaskFrame
 .public Fsys_TaskIsRunning
@@ -3081,7 +3081,7 @@
 .public ScrCmd_679
 .public ScrCmd_681
 .public ScrCmd_682
-.public ScrCmd_683
+.public ScrCmd_GetStaticEncounterOutcomeFlag
 .public ScrCmd_684
 .public ScrCmd_686
 .public ScrCmd_687
@@ -11383,8 +11383,8 @@
 .public ov12_0223A934
 .public ov12_0223A938
 .public ov12_0223A93C
-.public ov12_0223A940
-.public ov12_0223A948
+.public BattleSys_GetSendBufferPtr
+.public BattleSys_GetRecvBufferPtr
 .public ov12_0223A954
 .public ov12_0223A960
 .public ov12_0223A96C
@@ -12204,8 +12204,8 @@
 .public ov12_02261FD4
 .public ov12_02262014
 .public ov12_0226203C
-.public ov12_02262098
-.public ov12_02262130
+.public BattleController_SendData
+.public BattleController_RecvData
 .public ov12_022621C4
 .public ov12_02262240
 .public BattleController_EmitPlayEncounterAnimation
@@ -29220,7 +29220,7 @@
 .public sub_0205BA30
 .public sub_0205BA44
 .public sub_0205BA54
-.public sub_0205BA60
+.public MetatileBehavior_IsNone
 .public sub_0205BA6C
 .public sub_0205BA70
 .public sub_0205BA94

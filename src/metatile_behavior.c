@@ -284,7 +284,7 @@ BOOL sub_0205BA54(u8 tile) {
     return tile == TILE_BEHAVIOR_115;
 }
 
-BOOL sub_0205BA60(u8 tile) {
+BOOL MetatileBehavior_IsNone(u8 tile) {
     return tile == TILE_BEHAVIOR_NONE;
 }
 

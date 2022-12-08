@@ -2690,8 +2690,8 @@ BOOL ScrCmd_264(SCRIPTCONTEXT *ctx) {
     LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_TALKED);
     MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
     u16 r4 = ScriptReadHalfword(ctx);
-    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(ctx->fsys));
-    SAVE_EASY_CHAT_T *easyChat = SaveData_EasyChat_get(Fsys_GetSaveDataPtr(ctx->fsys));
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
+    SAVE_EASY_CHAT_T *easyChat = SaveData_EasyChat_get(FieldSys_GetSaveDataPtr(ctx->fsys));
     u16 objId;
 
     if (r4 == 0) {
@@ -2855,7 +2855,7 @@ BOOL ScrCmd_286(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_287(SCRIPTCONTEXT *ctx) {
-    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(ctx->fsys));
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
     MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
     sub_0205B3DC(
         PlayerProfile_GetTrainerID(profile),
@@ -2866,7 +2866,7 @@ BOOL ScrCmd_287(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_288(SCRIPTCONTEXT *ctx) {
-    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(ctx->fsys));
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
     u16 choice = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = sub_0205B418(
@@ -2883,7 +2883,7 @@ BOOL ScrCmd_288(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_558(SCRIPTCONTEXT *ctx) {
-    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(ctx->fsys));
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
     u16 choice = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = sub_0205B418(
@@ -2895,7 +2895,7 @@ BOOL ScrCmd_558(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_289(SCRIPTCONTEXT *ctx) {
-    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(ctx->fsys));
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
     u16 choice = ScriptGetVar(ctx);
     PlayerProfile_SetAvatar(profile, choice);
     return FALSE;
@@ -2914,7 +2914,7 @@ BOOL ScrCmd_SetSpawn(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_GetPlayerGender(SCRIPTCONTEXT *ctx) {
-    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(ctx->fsys));
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = PlayerProfile_GetTrainerGender(profile);
     return FALSE;
@@ -3075,7 +3075,7 @@ BOOL ScrCmd_EcruteakGymInit(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_315(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    if (SavGymmick_GetType(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys))) != GYMMICK_ECRUTEAK) {
+    if (SavGymmick_GetType(Sav2_GetGymmickPtr(FieldSys_GetSaveDataPtr(fsys))) != GYMMICK_ECRUTEAK) {
         return FALSE;
     }
     ov04_02254D98(fsys);
@@ -3084,7 +3084,7 @@ BOOL ScrCmd_315(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_316(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    if (SavGymmick_GetType(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys))) != GYMMICK_ECRUTEAK) {
+    if (SavGymmick_GetType(Sav2_GetGymmickPtr(FieldSys_GetSaveDataPtr(fsys))) != GYMMICK_ECRUTEAK) {
         return FALSE;
     }
     ov04_02254DD0(fsys);
@@ -3094,7 +3094,7 @@ BOOL ScrCmd_316(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_317(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u8 r5 = ScriptReadByte(ctx);
-    if (SavGymmick_GetType(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys))) != GYMMICK_ECRUTEAK) {
+    if (SavGymmick_GetType(Sav2_GetGymmickPtr(FieldSys_GetSaveDataPtr(fsys))) != GYMMICK_ECRUTEAK) {
         return TRUE;
     }
     ov04_02254DE0(fsys, (r5 != 0) ? 10 : 30);
@@ -3575,7 +3575,7 @@ BOOL ScrCmd_GetGameVersion(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_PrimoPasswordCheck1(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(fsys));
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(fsys));
     u16 *p_ret = ScriptGetVarPointer(ctx);
     PC_STORAGE *pcStorage = GetStoragePCPointer(fsys->savedata);
     u16 a = ScriptGetVar(ctx);
@@ -3597,7 +3597,7 @@ BOOL ScrCmd_PrimoPasswordCheck1(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_PrimoPasswordCheck2(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(fsys));
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(fsys));
     u16 *p_ret = ScriptGetVarPointer(ctx);
     PC_STORAGE *pcStorage = GetStoragePCPointer(fsys->savedata);
     u16 a = ScriptGetVar(ctx);
@@ -4599,7 +4599,7 @@ BOOL ScrCmd_Pokeathlon(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_GetFriendSprite(SCRIPTCONTEXT *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    if (PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(ctx->fsys))) != PLAYER_GENDER_MALE) {
+    if (PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys))) != PLAYER_GENDER_MALE) {
         *p_ret = SPRITE_HERO;
     } else {
         *p_ret = SPRITE_HEROINE;
@@ -4608,7 +4608,7 @@ BOOL ScrCmd_GetFriendSprite(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_RegisterPokegearCard(SCRIPTCONTEXT *ctx) {
-    SavePokegear *pokegear = SaveData_GSPlayerMisc_get(Fsys_GetSaveDataPtr(ctx->fsys));
+    SavePokegear *pokegear = SaveData_GSPlayerMisc_get(FieldSys_GetSaveDataPtr(ctx->fsys));
     u8 card = ScriptReadByte(ctx);
     switch (card) {
     case 1:
@@ -4631,7 +4631,7 @@ BOOL ScrCmd_804(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_RegisterGearNumber(SCRIPTCONTEXT *ctx) {
-    SavePokegear *pokegear = SaveData_GSPlayerMisc_get(Fsys_GetSaveDataPtr(ctx->fsys));
+    SavePokegear *pokegear = SaveData_GSPlayerMisc_get(FieldSys_GetSaveDataPtr(ctx->fsys));
     u8 number = ScriptGetVar(ctx);
     if (number < NUM_PHONE_CONTACTS) {
         RegisterPhoneNumberInPokeGear(pokegear, number);
@@ -4640,7 +4640,7 @@ BOOL ScrCmd_RegisterGearNumber(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_CheckRegisteredPhoneNumber(SCRIPTCONTEXT *ctx) {
-    SavePokegear *pokegear = SaveData_GSPlayerMisc_get(Fsys_GetSaveDataPtr(ctx->fsys));
+    SavePokegear *pokegear = SaveData_GSPlayerMisc_get(FieldSys_GetSaveDataPtr(ctx->fsys));
     u8 number = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     if (number < NUM_PHONE_CONTACTS) {

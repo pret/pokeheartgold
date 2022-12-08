@@ -5,7 +5,7 @@
 #include "unk_0203E348.h"
 #include "math_util.h"
 
-BOOL ScrCmd_683(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_GetStaticEncounterOutcomeFlag(SCRIPTCONTEXT *ctx) {
     u32 *unkC = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_0C);
     u16 *var0 = ScriptGetVarPointer(ctx);
     *var0 = *unkC;

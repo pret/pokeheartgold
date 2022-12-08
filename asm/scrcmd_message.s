@@ -495,7 +495,7 @@ ScrCmd_GenderMsgbox: ; 0x021EF41C
 	add r5, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl Fsys_GetSaveDataPtr
+	bl FieldSys_GetSaveDataPtr
 	bl Sav2_PlayerData_GetProfileAddr
 	ldr r0, [r5, #8]
 	add r1, r0, #1
@@ -507,7 +507,7 @@ ScrCmd_GenderMsgbox: ; 0x021EF41C
 	add r0, #0x80
 	ldr r0, [r0]
 	ldrb r4, [r1]
-	bl Fsys_GetSaveDataPtr
+	bl FieldSys_GetSaveDataPtr
 	bl Sav2_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0

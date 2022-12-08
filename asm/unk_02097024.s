@@ -126,7 +126,7 @@ sub_020970E4: ; 0x020970E4
 	ldr r0, [r4, #0x28]
 	ldr r1, _02097104 ; =_02108EA0
 	ldr r2, [r4, #0x24]
-	bl Fsys_LaunchApplication
+	bl FieldSys_LaunchApplication
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -205,7 +205,7 @@ _0209718C:
 	str r4, [r0, #4]
 	ldr r0, [r5, #0x28]
 	ldr r2, [r5, #0x24]
-	bl Fsys_LaunchApplication
+	bl FieldSys_LaunchApplication
 	ldr r0, [r5, #0x24]
 	mov r1, #3
 	str r1, [r0]

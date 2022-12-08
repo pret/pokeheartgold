@@ -2602,7 +2602,7 @@ _0203D066:
 	ldr r0, [sp, #8]
 	ldr r1, _0203D19C ; =_0210159C
 	add r2, r5, #0
-	bl Fsys_LaunchApplication
+	bl FieldSys_LaunchApplication
 	mov r0, #0xe
 	lsl r0, r0, #6
 	str r5, [r4, r0]
@@ -2699,7 +2699,7 @@ _0203D166:
 	ldr r0, [sp, #8]
 	ldr r1, _0203D19C ; =_0210159C
 	add r2, r5, #0
-	bl Fsys_LaunchApplication
+	bl FieldSys_LaunchApplication
 	mov r0, #0xe
 	lsl r0, r0, #6
 	str r5, [r4, r0]
@@ -3294,7 +3294,7 @@ _0203D604:
 	ldr r0, [sp]
 	ldr r1, _0203D65C ; =_0210159C
 	add r2, r5, #0
-	bl Fsys_LaunchApplication
+	bl FieldSys_LaunchApplication
 	mov r0, #0xe1
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -3718,7 +3718,7 @@ sub_0203D940: ; 0x0203D940
 	ldr r1, _0203D9AC ; =_0210159C
 	add r0, r7, #0
 	add r2, r4, #0
-	bl Fsys_LaunchApplication
+	bl FieldSys_LaunchApplication
 	mov r0, #0xe
 	lsl r0, r0, #6
 	str r4, [r5, r0]

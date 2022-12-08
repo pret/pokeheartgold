@@ -79,7 +79,7 @@ _02095E72:
 	ldr r0, [r4, #4]
 	str r1, [r0, #4]
 	add r0, r5, #0
-	bl Fsys_GetSaveDataPtr
+	bl FieldSys_GetSaveDataPtr
 	ldr r1, [r4, #4]
 	str r0, [r1]
 	ldrh r1, [r4, #0xc]

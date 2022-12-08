@@ -46,7 +46,7 @@ static BOOL FieldSys_Main(FieldSystem *fsys);
 
 BOOL Field_Continue_AppInit(OVY_MANAGER *man, int *unused) {
     FsysInitWork *args = OverlayManager_GetArgs(man);
-    sFieldSysPtr = FieldSystem_new(man);
+    sFieldSysPtr = FieldSys_New(man);
     
     if (args->unk4) {
         CallFieldTask_ContinueGame_CommError(sFieldSysPtr);
@@ -60,7 +60,7 @@ BOOL Field_Continue_AppInit(OVY_MANAGER *man, int *unused) {
 }
 
 BOOL Field_NewGame_AppInit(OVY_MANAGER *man, int *unused) {
-    sFieldSysPtr = FieldSystem_new(man);
+    sFieldSysPtr = FieldSys_New(man);
     CallFieldTask_NewGame(sFieldSysPtr);
     return TRUE;
 }
@@ -75,7 +75,7 @@ BOOL Field_AppExec(OVY_MANAGER *man, int *unused) {
 extern OVY_MGR_TEMPLATE ov60_021EAFE0;
 
 BOOL Field_AppExit(OVY_MANAGER *man, int *unused) {
-    FieldSystem_delete(man);
+    FieldSys_Delete(man);
     RegisterMainOverlay(FS_OVERLAY_ID(OVY_60), &ov60_021EAFE0);
     return TRUE;
 }
@@ -120,7 +120,7 @@ BOOL sub_0203DFA4(FieldSystem *fsys) {
     return (fsys->unk0->unk4 != NULL);
 }
 
-void Fsys_LaunchApplication(FieldSystem *fsys, const OVY_MGR_TEMPLATE *template, void *parentWork) {
+void FieldSys_LaunchApplication(FieldSystem *fsys, const OVY_MGR_TEMPLATE *template, void *parentWork) {
     GF_ASSERT(fsys->unk0->unk4 == NULL);
 
     sub_0203DF34(fsys);
@@ -128,7 +128,7 @@ void Fsys_LaunchApplication(FieldSystem *fsys, const OVY_MGR_TEMPLATE *template,
     fsys->unk0->unk4 = OverlayManager_new(template, parentWork, 11);
 }
 
-FieldSystem *FieldSystem_new(OVY_MANAGER *man) {
+FieldSystem *FieldSys_New(OVY_MANAGER *man) {
     CreateHeap(3, 11, 0x1C000);
     CreateHeap(3, 32, 0x4000);
     CreateHeap(0, 89, 0x570);
@@ -150,7 +150,7 @@ FieldSystem *FieldSystem_new(OVY_MANAGER *man) {
     return fsys;
 }
 
-void FieldSystem_delete(OVY_MANAGER *man) {
+void FieldSys_Delete(OVY_MANAGER *man) {
     FieldSystem *fsys = OverlayManager_GetData(man);
     MapMatrix_Free(fsys->mapMatrix);
     Field_FreeMapEvents(fsys);
@@ -300,11 +300,11 @@ void sub_0203E33C(FieldSystem *fsys, int a1) {
     fsys->unk1C = a1;
 }
 
-BGCONFIG *Fsys_GetBgConfigPtr(FieldSystem *fsys) {
+BGCONFIG *FieldSys_GetBgConfigPtr(FieldSystem *fsys) {
     return fsys->bgConfig;
 }
 
-SAVEDATA *Fsys_GetSaveDataPtr(FieldSystem *fsys) {
+SAVEDATA *FieldSys_GetSaveDataPtr(FieldSystem *fsys) {
     return fsys->savedata;
 }
 

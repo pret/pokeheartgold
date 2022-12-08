@@ -3,8 +3,8 @@
 
 	.text
 
-	thumb_func_start ov12_02262098
-ov12_02262098: ; 0x02262098
+	thumb_func_start BattleController_SendData
+BattleController_SendData: ; 0x02262098
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r7, r0, #0
@@ -13,7 +13,7 @@ ov12_02262098: ; 0x02262098
 	str r2, [sp, #4]
 	cmp r1, #1
 	bne _022620BE
-	bl ov12_0223A948
+	bl BattleSys_GetRecvBufferPtr
 	add r4, r0, #0
 	add r0, r7, #0
 	bl ov12_0223A984
@@ -22,7 +22,7 @@ ov12_02262098: ; 0x02262098
 	bl ov12_0223A990
 	b _022620D2
 _022620BE:
-	bl ov12_0223A940
+	bl BattleSys_GetSendBufferPtr
 	add r4, r0, #0
 	add r0, r7, #0
 	bl ov12_0223A960
@@ -81,10 +81,10 @@ _0226212A:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02262098
+	thumb_func_end BattleController_SendData
 
-	thumb_func_start ov12_02262130
-ov12_02262130: ; 0x02262130
+	thumb_func_start BattleController_RecvData
+BattleController_RecvData: ; 0x02262130
 	push {r3, r4, r5, r6, r7, lr}
 	add r3, r1, #0
 	ldrb r6, [r3, #3]
@@ -165,7 +165,7 @@ _022621BE:
 _022621C0:
 	add r0, r2, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov12_02262130
+	thumb_func_end BattleController_RecvData
 
 	thumb_func_start ov12_022621C4
 ov12_022621C4: ; 0x022621C4
@@ -173,7 +173,7 @@ ov12_022621C4: ; 0x022621C4
 	add r5, r0, #0
 	cmp r1, #1
 	bne _022621EA
-	bl ov12_0223A948
+	bl BattleSys_GetRecvBufferPtr
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ov12_0223A978
@@ -185,7 +185,7 @@ ov12_022621C4: ; 0x022621C4
 	bl ov12_0223A990
 	b _02262206
 _022621EA:
-	bl ov12_0223A940
+	bl BattleSys_GetSendBufferPtr
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ov12_0223A954
@@ -210,7 +210,7 @@ _0226221A:
 	ldrh r1, [r4]
 	add r0, r5, #0
 	add r1, r6, r1
-	bl ov12_02262130
+	bl BattleController_RecvData
 	cmp r0, #1
 	bne _0226223C
 	ldrh r0, [r4]
@@ -290,7 +290,7 @@ _022622AC:
 	str r0, [sp]
 	add r0, r5, #0
 	add r3, r6, #0
-	bl ov12_02262098
+	bl BattleController_SendData
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

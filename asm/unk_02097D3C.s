@@ -25,7 +25,7 @@ sub_02097D3C: ; 0x02097D3C
 	bl AllocFromHeapAtEnd
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl Fsys_GetSaveDataPtr
+	bl FieldSys_GetSaveDataPtr
 	ldr r1, [r4, #4]
 	add r2, r4, #0
 	str r0, [r1, #4]

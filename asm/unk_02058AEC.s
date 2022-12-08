@@ -74,7 +74,7 @@ sub_02058AEC: ; 0x02058AEC
 	ldr r1, _02058B80 ; =_02103A1C
 	add r0, r6, #0
 	add r2, r4, #0
-	bl Fsys_LaunchApplication
+	bl FieldSys_LaunchApplication
 	str r4, [r7]
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -202,7 +202,7 @@ _02058C5C:
 	ldr r0, [r5, #0x24]
 	ldr r1, _02058C7C ; =_0210159C
 	add r2, r4, #0
-	bl Fsys_LaunchApplication
+	bl FieldSys_LaunchApplication
 	str r4, [r5, #4]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2474,7 +2474,7 @@ sub_02059E1C: ; 0x02059E1C
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 _02059E2E:
-	bl Fsys_GetSaveDataPtr
+	bl FieldSys_GetSaveDataPtr
 	add r6, r0, #0
 	bl sub_02037F18
 	mov r1, #0x19

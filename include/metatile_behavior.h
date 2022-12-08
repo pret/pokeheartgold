@@ -63,7 +63,7 @@ BOOL sub_0205BA24(u8 tile);
 BOOL sub_0205BA30(u8 tile);
 BOOL sub_0205BA44(u8 tile);
 BOOL sub_0205BA54(u8 tile);
-BOOL sub_0205BA60(u8 tile);
+BOOL MetatileBehavior_IsNone(u8 tile);
 u8 sub_0205BA6C(void);
 BOOL sub_0205BA70(u8 tile);
 BOOL sub_0205BA94(u8 tile);

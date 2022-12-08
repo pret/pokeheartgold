@@ -228,7 +228,7 @@ static void ItemMenuUseFunc_HealingItem(struct ItemMenuUseData *data, const stru
     usedat->itemId = data->itemId;
     usedat->unk26 = data->unk6;
     usedat->unk20 = &fsys->unk_10C;
-    Fsys_LaunchApplication(fsys, &_0210159C, usedat);
+    FieldSys_LaunchApplication(fsys, &_0210159C, usedat);
     env->atexit_TaskEnv = usedat;
     sub_0203C8F0(env, sub_0203CA9C);
 }
@@ -351,7 +351,7 @@ static void ItemMenuUseFunc_TMHM(struct ItemMenuUseData *data, const struct Item
     usedat->unk26 = data->unk6;
     usedat->unk2A = TMHMGetMove(data->itemId);
     usedat->unk20 = &fsys->unk_10C;
-    Fsys_LaunchApplication(fsys, &_0210159C, usedat);
+    FieldSys_LaunchApplication(fsys, &_0210159C, usedat);
     env->atexit_TaskEnv = usedat;
     sub_0203C8F0(env, sub_0203CA9C);
 }
@@ -541,7 +541,7 @@ static void ItemMenuUseFunc_EvoStone(struct ItemMenuUseData *data, const struct 
     usedat->unk26 = data->unk6;
     usedat->fsys = fsys;
     usedat->unk20 = &fsys->unk_10C;
-    Fsys_LaunchApplication(fsys, &_0210159C, usedat);
+    FieldSys_LaunchApplication(fsys, &_0210159C, usedat);
     env->atexit_TaskEnv = usedat;
     sub_0203C8F0(env, sub_0203CA9C);
 }
