@@ -182,7 +182,7 @@ void sub_02053038(FieldSystem *fsys, BOOL isConnection) {
     }
     if (!isConnection) {
         SavGymmick_Clear(Sav2_GetGymmickPtr(fsys->savedata));
-        SetLakeOfRageWaterLevel(fsys->map_matrix, ShouldUseAlternateLakeOfRage(fsys->savedata, mapId));
+        SetLakeOfRageWaterLevel(fsys->mapMatrix, ShouldUseAlternateLakeOfRage(fsys->savedata, mapId));
     }
     scriptState = SavArray_Flags_get(fsys->savedata);
     weather = Fsys_GetWeather_HandleDiamondDust(fsys, mapId);
@@ -262,13 +262,13 @@ static void sub_02053284(FieldSystem *fsys) {
 
     sub_02052F30(fsys);
     GF_ASSERT(fsys->unk60 == 0);
-    MapMatrix_Load(fsys->location->mapId, fsys->map_matrix);
+    MapMatrix_Load(fsys->location->mapId, fsys->mapMatrix);
     scriptState = SavArray_Flags_get(fsys->savedata);
     if (sub_02066C74(scriptState, 0)) {
-        RemoveMahoganyTownAntennaTree(fsys->map_matrix);
+        RemoveMahoganyTownAntennaTree(fsys->mapMatrix);
     }
-    SetLakeOfRageWaterLevel(fsys->map_matrix, sub_02066C74(scriptState, 1));
-    PlaceSafariZoneAreas(fsys->map_matrix, fsys->savedata);
+    SetLakeOfRageWaterLevel(fsys->mapMatrix, sub_02066C74(scriptState, 1));
+    PlaceSafariZoneAreas(fsys->mapMatrix, fsys->savedata);
     GF_ASSERT(fsys->unk70 < 6);
     fsys->unk74 = &_020FC5CC[fsys->unk70];
     fsys->unk64 = fsys->unk74->unk0_04;

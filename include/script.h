@@ -258,7 +258,7 @@ struct FieldSystem {
     GF_Camera *camera;
     void *unk28;
     FsysUnkSub2C *unk2C;
-    MAPMATRIX *map_matrix;
+    MAPMATRIX *mapMatrix;
     u8 filler34[0x8];
     MapObjectMan *mapObjectMan;
     FIELD_PLAYER_AVATAR *playerAvatar;

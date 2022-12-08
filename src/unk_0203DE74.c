@@ -152,7 +152,7 @@ FieldSystem *FieldSystem_new(OVY_MANAGER *man) {
 
 void FieldSystem_delete(OVY_MANAGER *man) {
     FieldSystem *fsys = OverlayManager_GetData(man);
-    MapMatrix_Free(fsys->map_matrix);
+    MapMatrix_Free(fsys->mapMatrix);
     Field_FreeMapEvents(fsys);
     FreeToHeap(fsys->unk94);
     sub_02092BD0(fsys->unkA8);
