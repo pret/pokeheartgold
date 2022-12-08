@@ -310,7 +310,7 @@ struct FieldSystem {
 typedef BOOL (*ScrCmdFunc)(SCRIPTCONTEXT *ctx);
 
 struct SCRIPTCONTEXT {
-    u8 stack_depth;
+    u8 stackDepth;
     u8 mode;
     u8 comparison_result;
     u8 id;
