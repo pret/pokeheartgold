@@ -251,7 +251,7 @@ struct FieldSystem {
     BGCONFIG *bgConfig;
     SAVEDATA *savedata;
     TaskManager *taskman;
-    MAP_EVENTS *map_events;
+    MAP_EVENTS *mapEvents;
     FieldEnvSubUnk18 *unk18;
     int unk1C;
     Location *location;
