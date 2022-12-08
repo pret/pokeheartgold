@@ -301,7 +301,7 @@ void sub_0203E33C(FieldSystem *fsys, int a1) {
 }
 
 BGCONFIG *Fsys_GetBgConfigPtr(FieldSystem *fsys) {
-    return fsys->bg_config;
+    return fsys->bgConfig;
 }
 
 SAVEDATA *Fsys_GetSaveDataPtr(FieldSystem *fsys) {
