@@ -59,17 +59,17 @@ typedef struct ScriptEnvironment {
     WINDOW unk_14;
     struct ListMenu2 *listMenu;
     int facingDirection;
-    LocalMapObject* lastTalked;
+    LocalMapObject *lastTalked;
     u32 cameraFocusObj;
-    LocalMapObject* unk_34;
-    SCRIPTCONTEXT* scriptContexts[3];
-    MSGFMT* msgfmt;
-    STRING* strbuf1;
-    STRING* strbuf2;
+    LocalMapObject *unk_34;
+    SCRIPTCONTEXT *scriptContexts[3];
+    MSGFMT *msgfmt;
+    STRING *strbuf1;
+    STRING *strbuf2;
     struct WaitingIconManager *unk_50;
     EngagedTrainer engagedTrainers[2];
     u16 specialVars[NUM_SPECIAL_VARS];
-    void (*scrctx_end_cb)(FieldSystem* fsys);
+    void (*scrctx_end_cb)(FieldSystem *fsys);
     void *unk_AC;
     void *genericWorkPtr;
     void *unk_B4;
@@ -200,10 +200,10 @@ typedef struct GearPhoneRingManager {
     u16 unk_var12;
     s64 unk_var14; //Seconds? see sub_02092F30
     PhoneBookEntry entry; //0x1c
-    SavePokegear* pokegear_data; //0x30
-    MomsSavings* savings_data;//0x34
-    SAVEDATA* saveData; //0x38
-    FieldSystem* sys; //0x3c
+    SavePokegear *pokegear_data; //0x30
+    MomsSavings *savings_data;//0x34
+    SAVEDATA *saveData; //0x38
+    FieldSystem *sys; //0x3c
     struct PokegearRingingTask {
         SysTask *task;
         u8 counter;
@@ -248,19 +248,19 @@ typedef struct FsysUnkSub4 {
 struct FieldSystem {
     struct FieldSystemUnkSub0 *unk0;
     FsysUnkSub4 *unk4;
-    BGCONFIG* bg_config;
-    SAVEDATA* savedata;
-    TaskManager* taskman;
-    MAP_EVENTS* map_events;
+    BGCONFIG *bg_config;
+    SAVEDATA *savedata;
+    TaskManager *taskman;
+    MAP_EVENTS *map_events;
     FieldEnvSubUnk18 *unk18;
     int unk1C;
-    Location* location;
+    Location *location;
     GF_Camera *camera;
     void *unk28;
     FsysUnkSub2C *unk2C;
-    MAPMATRIX* map_matrix;
+    MAPMATRIX *map_matrix;
     u8 filler34[0x8];
-    MapObjectMan* mapObjectMan;
+    MapObjectMan *mapObjectMan;
     FIELD_PLAYER_AVATAR *playerAvatar;
     void *unk_44;
     u8 filler48[0xC];
@@ -268,7 +268,7 @@ struct FieldSystem {
     u8 filler_58[0x8];
     u32 unk60;
     int unk64;
-    struct FieldSystemUnkSub68* unk68;
+    struct FieldSystemUnkSub68 *unk68;
     u32 unk6C;
     int unk70;
     const struct UnkStruct_020FC5CC *unk74;
@@ -301,13 +301,13 @@ struct FieldSystem {
     u32 unk_10C;
     u8 unk_110;
     u8 unk_111[3];
-    GearPhoneRingManager* unk114;
-    BUGCONTEST* bugContest;
+    GearPhoneRingManager *unk114;
+    BUGCONTEST *bugContest;
     u8 unk11C[0x8];
     u32 judgeStatPosition;
 }; // size: 0x128
 
-typedef BOOL (*ScrCmdFunc)(SCRIPTCONTEXT* ctx);
+typedef BOOL (*ScrCmdFunc)(SCRIPTCONTEXT *ctx);
 
 struct SCRIPTCONTEXT {
     u8 stack_depth;
@@ -315,31 +315,31 @@ struct SCRIPTCONTEXT {
     u8 comparison_result;
     u8 id;
     ScrCmdFunc native_ptr;
-    const u8* script_ptr;
-    const u8* stack[20];
-    const ScrCmdFunc* cmd_table;
+    const u8 *script_ptr;
+    const u8 *stack[20];
+    const ScrCmdFunc *cmd_table;
     u32 cmd_count;
     u32 data[4];
-    TaskManager* taskman;
-    MSGDATA* msg_data;
-    u8* mapScripts;
-    FieldSystem* fsys;
+    TaskManager *taskman;
+    MSGDATA *msg_data;
+    u8 *mapScripts;
+    FieldSystem *fsys;
 };
 
-void InitScriptContext(SCRIPTCONTEXT* ctx, const ScrCmdFunc* cmd_table, u32 cmd_count);
-BOOL SetupBytecodeScript(SCRIPTCONTEXT* ctx, const u8* ptr);
-void SetupNativeScript(SCRIPTCONTEXT* ctx, ScrCmdFunc ptr);
+void InitScriptContext(SCRIPTCONTEXT *ctx, const ScrCmdFunc *cmd_table, u32 cmd_count);
+BOOL SetupBytecodeScript(SCRIPTCONTEXT *ctx, const u8 *ptr);
+void SetupNativeScript(SCRIPTCONTEXT *ctx, ScrCmdFunc ptr);
 BOOL ScrNative_WaitApplication_DestroyTaskData(SCRIPTCONTEXT *ctx);
-void StopScript(SCRIPTCONTEXT* ctx);
-void sub_0203FD68(SCRIPTCONTEXT* ctx, TaskManager *unk);
-BOOL RunScriptCommand(SCRIPTCONTEXT* ctx);
-BOOL ScriptPush(SCRIPTCONTEXT* ctx, const u8* ptr);
-const u8* ScriptPop(SCRIPTCONTEXT* ctx);
-void ScriptJump(SCRIPTCONTEXT* ctx, const u8* ptr);
-void ScriptCall(SCRIPTCONTEXT* ctx, const u8* ptr);
-void ScriptReturn(SCRIPTCONTEXT* ctx);
-u16 ScriptReadHalfword(SCRIPTCONTEXT* ctx);
-u32 ScriptReadWord(SCRIPTCONTEXT* ctx);
+void StopScript(SCRIPTCONTEXT *ctx);
+void sub_0203FD68(SCRIPTCONTEXT *ctx, TaskManager *unk);
+BOOL RunScriptCommand(SCRIPTCONTEXT *ctx);
+BOOL ScriptPush(SCRIPTCONTEXT *ctx, const u8 *ptr);
+const u8 *ScriptPop(SCRIPTCONTEXT *ctx);
+void ScriptJump(SCRIPTCONTEXT *ctx, const u8 *ptr);
+void ScriptCall(SCRIPTCONTEXT *ctx, const u8 *ptr);
+void ScriptReturn(SCRIPTCONTEXT *ctx);
+u16 ScriptReadHalfword(SCRIPTCONTEXT *ctx);
+u32 ScriptReadWord(SCRIPTCONTEXT *ctx);
 
 static inline void InitLocation(Location *location, int mapId, int warpId, int x, int y, int direction) {
     location->mapId = mapId;
