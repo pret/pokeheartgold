@@ -248,7 +248,7 @@ BOOL ScrCmd_CompareLocalToLocal(SCRIPTCONTEXT* ctx) {
     u8 a = ctx->data[ScriptReadByte(ctx)];
     u8 b = ctx->data[ScriptReadByte(ctx)];
 
-    ctx->comparison_result = Compare(a, b);
+    ctx->comparisonResult = Compare(a, b);
 
     return FALSE;
 }
@@ -257,7 +257,7 @@ BOOL ScrCmd_CompareLocalToValue(SCRIPTCONTEXT* ctx) {
     u8 a = ctx->data[ScriptReadByte(ctx)];
     u8 b = ScriptReadByte(ctx);
 
-    ctx->comparison_result = Compare(a, b);
+    ctx->comparisonResult = Compare(a, b);
 
     return FALSE;
 }
@@ -266,7 +266,7 @@ BOOL ScrCmd_CompareLocalToAddr(SCRIPTCONTEXT* ctx) {
     u8 a = ctx->data[ScriptReadByte(ctx)];
     u8 b = *(u8*)ScriptReadWord(ctx);
 
-    ctx->comparison_result = Compare(a, b);
+    ctx->comparisonResult = Compare(a, b);
 
     return FALSE;
 }
@@ -275,7 +275,7 @@ BOOL ScrCmd_CompareAddrToLocal(SCRIPTCONTEXT* ctx) {
     u8 a = *(u8*)ScriptReadWord(ctx);
     u8 b = ctx->data[ScriptReadByte(ctx)];
 
-    ctx->comparison_result = Compare(a, b);
+    ctx->comparisonResult = Compare(a, b);
 
     return FALSE;
 }
@@ -284,7 +284,7 @@ BOOL ScrCmd_CompareAddrToValue(SCRIPTCONTEXT* ctx) {
     u8 a = *(u8*)ScriptReadWord(ctx);
     u8 b = ScriptReadByte(ctx);
 
-    ctx->comparison_result = Compare(a, b);
+    ctx->comparisonResult = Compare(a, b);
 
     return FALSE;
 }
@@ -293,7 +293,7 @@ BOOL ScrCmd_CompareAddrToAddr(SCRIPTCONTEXT* ctx) {
     u8 a = *(u8*)ScriptReadWord(ctx);
     u8 b = *(u8*)ScriptReadWord(ctx);
 
-    ctx->comparison_result = Compare(a, b);
+    ctx->comparisonResult = Compare(a, b);
 
     return FALSE;
 }
@@ -302,7 +302,7 @@ BOOL ScrCmd_CompareVarToValue(SCRIPTCONTEXT* ctx) {
     u16 a = *ScriptGetVarPointer(ctx);
     u16 b = ScriptReadHalfword(ctx);
 
-    ctx->comparison_result = Compare(a, b);
+    ctx->comparisonResult = Compare(a, b);
 
     return FALSE;
 }
@@ -311,7 +311,7 @@ BOOL ScrCmd_CompareVarToVar(SCRIPTCONTEXT* ctx) {
     u16* a_ptr = ScriptGetVarPointer(ctx);
     u16* b_ptr = ScriptGetVarPointer(ctx);
 
-    ctx->comparison_result = Compare(*a_ptr, *b_ptr);
+    ctx->comparisonResult = Compare(*a_ptr, *b_ptr);
 
     return FALSE;
 }
@@ -425,7 +425,7 @@ BOOL ScrCmd_GoToIf(SCRIPTCONTEXT* ctx) {
     u8 condition = ScriptReadByte(ctx);
     u32 offset_in_script = ScriptReadWord(ctx);
 
-    if (sConditionTable[condition][ctx->comparison_result] == 1) {
+    if (sConditionTable[condition][ctx->comparisonResult] == 1) {
         ScriptJump(ctx, ctx->script_ptr + offset_in_script);
     }
 
@@ -436,7 +436,7 @@ BOOL ScrCmd_CallIf(SCRIPTCONTEXT* ctx) {
     u8 condition = ScriptReadByte(ctx);
     u32 offset_in_script = ScriptReadWord(ctx);
 
-    if (sConditionTable[condition][ctx->comparison_result] == 1) {
+    if (sConditionTable[condition][ctx->comparisonResult] == 1) {
         ScriptCall(ctx, ctx->script_ptr + offset_in_script);
     }
 
@@ -465,7 +465,7 @@ BOOL ScrCmd_CheckFlag(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     u16 flag_to_check = ScriptReadHalfword(ctx);
 
-    ctx->comparison_result = FlagGet(fsys, flag_to_check);
+    ctx->comparisonResult = FlagGet(fsys, flag_to_check);
 
     return FALSE;
 }
@@ -518,7 +518,7 @@ BOOL ScrCmd_CheckTrainerFlag(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     u16 flag_to_check = ScriptGetVar(ctx);
 
-    ctx->comparison_result = TrainerFlagCheck(fsys->savedata, flag_to_check);
+    ctx->comparisonResult = TrainerFlagCheck(fsys->savedata, flag_to_check);
 
     return FALSE;
 }

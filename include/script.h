@@ -312,7 +312,7 @@ typedef BOOL (*ScrCmdFunc)(SCRIPTCONTEXT *ctx);
 struct SCRIPTCONTEXT {
     u8 stackDepth;
     u8 mode;
-    u8 comparison_result;
+    u8 comparisonResult;
     u8 id;
     ScrCmdFunc native_ptr;
     const u8 *script_ptr;
