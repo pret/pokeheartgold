@@ -249,7 +249,7 @@ void sub_0203E15C(FieldSystem *fsys) {
             if (sub_0203E324()) {
                 flag = ov35_02259DB8();
             }
-            sub_0205CB48(fsys->playerAvatar, fsys->unk2C, ~0, unkStruct.unk6, unkStruct.unk8, flag);
+            sub_0205CB48(fsys->playerAvatar, fsys->unk2C, -1, unkStruct.unk6, unkStruct.unk8, flag);
         }
         break;
     default:
@@ -272,7 +272,7 @@ void sub_0203E15C(FieldSystem *fsys) {
                 if (sub_0203E324()) {
                     flag = ov35_02259DB8();
                 }
-                sub_0205CB48(fsys->playerAvatar, fsys->unk2C, ~0, unkStruct.unk6, unkStruct.unk8, flag);
+                sub_0205CB48(fsys->playerAvatar, fsys->unk2C, -1, unkStruct.unk6, unkStruct.unk8, flag);
             }
         }
         break;
