@@ -209,11 +209,11 @@ static void ov01_02200DF8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3) {
 static void ov01_02200E00(SCR_648_STRUCT *unkPtr) {
     u32 unk = unkPtr->totalItems;
     if (unk > 8) {
-        AddWindowParameterized(unkPtr->fsys->bg_config, &unkPtr->window_8, 3, unkPtr->x, unkPtr->y, 11, 0x10, 13, 1);
+        AddWindowParameterized(unkPtr->fsys->bgConfig, &unkPtr->window_8, 3, unkPtr->x, unkPtr->y, 11, 0x10, 13, 1);
     } else {
-        AddWindowParameterized(unkPtr->fsys->bg_config, &unkPtr->window_8, 3, unkPtr->x, unkPtr->y, 11, 2*unk, 13, 1);
+        AddWindowParameterized(unkPtr->fsys->bgConfig, &unkPtr->window_8, 3, unkPtr->x, unkPtr->y, 11, 2*unk, 13, 1);
     }
-    LoadUserFrameGfx1(unkPtr->fsys->bg_config, 3, 0x3D9, 0xb, 0, 4);
+    LoadUserFrameGfx1(unkPtr->fsys->bgConfig, 3, 0x3D9, 0xb, 0, 4);
     DrawFrameAndWindow1(&unkPtr->window_8, 1, 0x3D9, 11);
     ov01_02200F54(unkPtr);
     unkPtr->listMenu_23C = ListMenuInit(&unkPtr->listMenuTemplate, *unkPtr->cursorPos, *unkPtr->itemsAbove, 4);
