@@ -97,7 +97,7 @@ GearPhoneRingManager* GearPhoneRingManager_new(HeapID heapId, FieldSystem* sys) 
     ptr->unk_var10 = 30;
     ptr->unk_var12 = 50;
     ptr->saveData = sys->savedata;
-    ptr->pokegear_data = SaveData_GSPlayerMisc_get(ptr->saveData);
+    ptr->pokegearData = SaveData_GSPlayerMisc_get(ptr->saveData);
     ptr->savings_data = SaveData_GetMomsSavingsAddr(ptr->saveData);
     ptr->sys = sys;
     return ptr;

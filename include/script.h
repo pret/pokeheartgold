@@ -200,7 +200,7 @@ typedef struct GearPhoneRingManager {
     u16 unk_var12;
     s64 unk_var14; //Seconds? see sub_02092F30
     PhoneBookEntry entry; //0x1c
-    SavePokegear *pokegear_data; //0x30
+    SavePokegear *pokegearData; //0x30
     MomsSavings *savings_data;//0x34
     SAVEDATA *saveData; //0x38
     FieldSystem *sys; //0x3c
