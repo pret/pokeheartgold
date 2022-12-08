@@ -248,7 +248,7 @@ typedef struct FsysUnkSub4 {
 struct FieldSystem {
     struct FieldSystemUnkSub0 *unk0;
     FsysUnkSub4 *unk4;
-    BGCONFIG *bg_config;
+    BGCONFIG *bgConfig;
     SAVEDATA *savedata;
     TaskManager *taskman;
     MAP_EVENTS *map_events;

@@ -664,7 +664,7 @@ BOOL ScrCmd_OpenMsg(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_08);
 
-    sub_0205B514(fsys->bg_config, FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW), 3);
+    sub_0205B514(fsys->bgConfig, FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW), 3);
     sub_0205B564(FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW), Sav2_PlayerData_GetOptionsAddr(ctx->fsys->savedata));
 
     fsys->unkD2_6 = 1;
@@ -737,17 +737,17 @@ static BOOL sub_02041270(SCRIPTCONTEXT* ctx) {
 
     if (*var_8008 != 0) {
         if (*var_8009 == 0) {
-            BgSetPosTextAndCommit(fsys->bg_config, GF_BG_LYR_MAIN_3, BG_POS_OP_ADD_X, *var_8008);
+            BgSetPosTextAndCommit(fsys->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_ADD_X, *var_8008);
         } else {
-            BgSetPosTextAndCommit(fsys->bg_config, GF_BG_LYR_MAIN_3, BG_POS_OP_SUB_X, *var_8008);
+            BgSetPosTextAndCommit(fsys->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SUB_X, *var_8008);
         }
     }
 
     if (*var_800A != 0) {
         if (*var_800B == 0) {
-            BgSetPosTextAndCommit(fsys->bg_config, GF_BG_LYR_MAIN_3, BG_POS_OP_ADD_Y, *var_800A);
+            BgSetPosTextAndCommit(fsys->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_ADD_Y, *var_800A);
         } else {
-            BgSetPosTextAndCommit(fsys->bg_config, GF_BG_LYR_MAIN_3, BG_POS_OP_SUB_Y, *var_800A);
+            BgSetPosTextAndCommit(fsys->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SUB_Y, *var_800A);
         }
     }
 
@@ -933,8 +933,8 @@ BOOL ScrCmd_YesNo(SCRIPTCONTEXT* ctx) {
     FieldSystem *fsys = ctx->fsys;
     struct ListMenu2 **listMenu = FieldSysGetAttrAddr(fsys, SCRIPTENV_MENU);
     u16 data = ScriptReadHalfword(ctx);
-    LoadUserFrameGfx1(fsys->bg_config, 3, 0x3D9, 11, 0, 4);
-    *listMenu = Std_CreateYesNoMenu(fsys->bg_config, &_020FAC94, 0x3D9, 11, 4);
+    LoadUserFrameGfx1(fsys->bgConfig, 3, 0x3D9, 11, 0, 4);
+    *listMenu = Std_CreateYesNoMenu(fsys->bgConfig, &_020FAC94, 0x3D9, 11, 4);
     ctx->data[0] = data;
     SetupNativeScript(ctx, sub_020416E4);
     return TRUE;
@@ -1843,8 +1843,8 @@ BOOL ScrCmd_452(SCRIPTCONTEXT *ctx) {
     struct PokepicManager **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
     u16 species = ScriptGetVar(ctx);
     u16 gender = ScriptGetVar(ctx);
-    LoadUserFrameGfx1(ctx->fsys->bg_config, 3, 0x3D9, 0xB, 0, 4);
-    *p_work = sub_0200F4A0(ctx->fsys->bg_config, 3, 10, 5, 11, 0x3D9, species, gender, 4);
+    LoadUserFrameGfx1(ctx->fsys->bgConfig, 3, 0x3D9, 0xB, 0, 4);
+    *p_work = sub_0200F4A0(ctx->fsys->bgConfig, 3, 10, 5, 11, 0x3D9, species, gender, 4);
     Script_SetMonSeenFlagBySpecies(ctx->fsys, species);
     return FALSE;
 }
@@ -1853,8 +1853,8 @@ BOOL ScrCmd_547(SCRIPTCONTEXT *ctx) {
     struct PokepicManager **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
     u16 partyIdx = ScriptGetVar(ctx);
     POKEMON *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), partyIdx);
-    LoadUserFrameGfx1(ctx->fsys->bg_config, 3, 0x3D9, 0xB, 0, 4);
-    *p_work = sub_0200F4F8(ctx->fsys->bg_config, 3, 10, 5, 11, 0x3D9, pokemon, 4);
+    LoadUserFrameGfx1(ctx->fsys->bgConfig, 3, 0x3D9, 0xB, 0, 4);
+    *p_work = sub_0200F4F8(ctx->fsys->bgConfig, 3, 10, 5, 11, 0x3D9, pokemon, 4);
     return FALSE;
 }
 
