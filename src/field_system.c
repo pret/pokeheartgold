@@ -86,7 +86,7 @@ void sub_0203DEF0(FieldSystem *fsys) {
     GF_ASSERT(fsys->unk0->unk4 == NULL);
     GF_ASSERT(fsys->unk0->unk0 == NULL);
 
-    HandleLoadOverlay(FS_OVERLAY_ID(field), 2);
+    HandleLoadOverlay(FS_OVERLAY_ID(field), OVY_LOAD_ASYNC);
 
     fsys->unk6C = 0;
     fsys->unk0->unk8 = FALSE;
@@ -136,12 +136,12 @@ FieldSystem *FieldSys_New(OVY_MANAGER *man) {
     MI_CpuFill8(fsys, 0, sizeof(FieldSystem));
     fsys->unk0 = AllocFromHeap(11, sizeof(struct FieldSystemUnkSub0));
     
-    fsys->unk0->unk0 = 0;
-    fsys->unk0->unk4 = 0;
-    fsys->unk0->unk8 = 0;
-    fsys->unk0->unkC = 0;
+    fsys->unk0->unk0 = NULL;
+    fsys->unk0->unk4 = NULL;
+    fsys->unk0->unk8 = FALSE;
+    fsys->unk0->unkC = FALSE;
 
-    HandleLoadOverlay(FS_OVERLAY_ID(OVY_124), 2);
+    HandleLoadOverlay(FS_OVERLAY_ID(OVY_124), OVY_LOAD_ASYNC);
 
     FieldSystem_init(man, fsys);
 
@@ -167,7 +167,7 @@ void FieldSys_Delete(OVY_MANAGER *man) {
 static void ppOverlayManager_RunFrame_DeleteIfFinished(OVY_MANAGER **man) {
     if (*man && OverlayManager_run(*man)) {
         OverlayManager_delete(*man);
-        *man = 0;
+        *man = NULL;
     }
 }
 
@@ -280,12 +280,12 @@ void sub_0203E15C(FieldSystem *fsys) {
 }
 
 void sub_0203E2F4() {
-    sFieldSysPtr->unk0->unk8 = 1;
+    sFieldSysPtr->unk0->unk8 = TRUE;
     sub_02037504();
 }
 
 void sub_0203E30C() {
-    sFieldSysPtr->unk0->unk8 = 0;
+    sFieldSysPtr->unk0->unk8 = FALSE;
     sub_020374E4();
 }
 

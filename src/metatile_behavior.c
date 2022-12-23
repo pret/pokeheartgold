@@ -185,7 +185,7 @@ BOOL sub_0205B8D0(u8 tile) {
 }
 
 BOOL MetatileBehavior_IsWaterfall(u8 tile) {
-    return tile == TILE_BEHAVIOR_19;
+    return tile == TILE_BEHAVIOR_WATERFALL;
 }
 
 BOOL MetatileBehavior_IsWhirlpool(u8 tile) {
@@ -339,4 +339,3 @@ BOOL MetatileBehavior_IsHeadbutt(u8 tile) {
 BOOL sub_0205BB04(u8 tile) {
     return sub_0205BA44(tile) || tile == TILE_BEHAVIOR_46;
 }
-
