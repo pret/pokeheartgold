@@ -65,7 +65,7 @@ scr_seq_D52R0102_000:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _019D
-	scrcmd_683 VAR_TEMP_x4002
+	get_static_encounter_outcome VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 3
 	goto_if_eq _00EC
 	compare VAR_TEMP_x4002, 4

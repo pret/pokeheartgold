@@ -91,7 +91,7 @@ static BOOL Task_RunApplicationUntilComplete(TaskManager *taskManager) {
 
     switch (env->state) {
     case 0:
-        Fsys_LaunchApplication(fsys, env->template, env->work);
+        FieldSys_LaunchApplication(fsys, env->template, env->work);
         env->state++;
         break;
     case 1:

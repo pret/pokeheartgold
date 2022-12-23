@@ -682,7 +682,7 @@ BOOL ScrCmd_679(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_AddSpecialGameStat2(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_681(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_682(SCRIPTCONTEXT *ctx);
-BOOL ScrCmd_683(SCRIPTCONTEXT *ctx);
+BOOL ScrCmd_GetStaticEncounterOutcomeFlag(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_684(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_GetPlayerXYZ(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_686(SCRIPTCONTEXT *ctx);
@@ -1537,7 +1537,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_AddSpecialGameStat2,
     ScrCmd_681,
     ScrCmd_682,
-    ScrCmd_683,
+    ScrCmd_GetStaticEncounterOutcomeFlag,
     ScrCmd_684,
     ScrCmd_GetPlayerXYZ,
     ScrCmd_686,

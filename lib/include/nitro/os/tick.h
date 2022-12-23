@@ -8,6 +8,7 @@ BOOL OS_IsTickAvailable(void);
 void OSi_CountUpTick(void);
 OSTick OS_GetTick(void);
 u16 OS_GetTickLo(void);
+void OS_SetTick(OSTick tick);
 
 extern vu64 OSi_TickCounter;
 

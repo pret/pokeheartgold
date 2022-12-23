@@ -486,7 +486,7 @@ sub_02078B9C: ; 0x02078B9C
 	str r0, [r2, #8]
 	add r0, r5, #0
 	str r2, [r6, #0x10]
-	bl Fsys_LaunchApplication
+	bl FieldSys_LaunchApplication
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02078BD0: .word _0210125C
@@ -560,7 +560,7 @@ sub_02078C18: ; 0x02078C18
 	ldr r1, _02078C5C ; =_02101260
 	add r0, r5, #0
 	add r2, r4, #0
-	bl Fsys_LaunchApplication
+	bl FieldSys_LaunchApplication
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -602,7 +602,7 @@ sub_02078C74: ; 0x02078C74
 	ldr r1, _02078CB0 ; =_02101270
 	add r0, r5, #0
 	add r2, r4, #0
-	bl Fsys_LaunchApplication
+	bl FieldSys_LaunchApplication
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -648,7 +648,7 @@ sub_02078CC8: ; 0x02078CC8
 	ldr r1, _02078D0C ; =_021012A0
 	add r0, r5, #0
 	add r2, r4, #0
-	bl Fsys_LaunchApplication
+	bl FieldSys_LaunchApplication
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

@@ -3868,7 +3868,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_683 arg0
+	.macro get_static_encounter_outcome arg0
 	.short 683
 	.short \arg0
 	.endm

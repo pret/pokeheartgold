@@ -1105,7 +1105,7 @@ _0204FD3A:
 	ldr r1, _0204FD4C ; =_0210159C
 	add r0, r6, #0
 	add r2, r4, #0
-	bl Fsys_LaunchApplication
+	bl FieldSys_LaunchApplication
 	ldr r0, [r5, #0xc]
 	str r4, [r0]
 	mov r0, #1
@@ -1210,7 +1210,7 @@ sub_0204FDA0: ; 0x0204FDA0
 	ldr r1, _0204FE2C ; =_02103A1C
 	add r0, r7, #0
 	add r2, r4, #0
-	bl Fsys_LaunchApplication
+	bl FieldSys_LaunchApplication
 	ldr r0, [r6, #0xc]
 	str r4, [r0]
 	mov r0, #3
@@ -1782,7 +1782,7 @@ _0205027A:
 	ldr r1, _0205028C ; =_0210159C
 	add r0, r6, #0
 	add r2, r4, #0
-	bl Fsys_LaunchApplication
+	bl FieldSys_LaunchApplication
 	ldr r0, [r5, #0xc]
 	str r4, [r0]
 	mov r0, #1
@@ -1887,7 +1887,7 @@ sub_020502E0: ; 0x020502E0
 	ldr r1, _0205036C ; =_02103A1C
 	add r0, r7, #0
 	add r2, r4, #0
-	bl Fsys_LaunchApplication
+	bl FieldSys_LaunchApplication
 	ldr r0, [r6, #0xc]
 	str r4, [r0]
 	mov r0, #3

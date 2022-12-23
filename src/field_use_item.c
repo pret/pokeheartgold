@@ -13,7 +13,7 @@
 #include "overlay_01.h"
 #include "overlay_02.h"
 #include "unk_02054E00.h"
-#include "unk_0205B6E8.h"
+#include "metatile_behavior.h"
 #include "unk_0203E348.h"
 #include "unk_0200E398.h"
 #include "unk_0200FA24.h"
@@ -228,7 +228,7 @@ static void ItemMenuUseFunc_HealingItem(struct ItemMenuUseData *data, const stru
     usedat->itemId = data->itemId;
     usedat->unk26 = data->unk6;
     usedat->unk20 = &fsys->unk_10C;
-    Fsys_LaunchApplication(fsys, &_0210159C, usedat);
+    FieldSys_LaunchApplication(fsys, &_0210159C, usedat);
     env->atexit_TaskEnv = usedat;
     sub_0203C8F0(env, sub_0203CA9C);
 }
@@ -351,7 +351,7 @@ static void ItemMenuUseFunc_TMHM(struct ItemMenuUseData *data, const struct Item
     usedat->unk26 = data->unk6;
     usedat->unk2A = TMHMGetMove(data->itemId);
     usedat->unk20 = &fsys->unk_10C;
-    Fsys_LaunchApplication(fsys, &_0210159C, usedat);
+    FieldSys_LaunchApplication(fsys, &_0210159C, usedat);
     env->atexit_TaskEnv = usedat;
     sub_0203C8F0(env, sub_0203CA9C);
 }
@@ -490,7 +490,7 @@ static BOOL Task_PrintRegisteredKeyItemUseMessage(TaskManager *taskManager) {
     case 0:
         fsys->unkD2_6 = TRUE;
         MapObjectMan_PauseAllMovement(fsys->mapObjectMan);
-        sub_0205B514(fsys->bg_config, &env->window, 3);
+        sub_0205B514(fsys->bgConfig, &env->window, 3);
         options = Sav2_PlayerData_GetOptionsAddr(fsys->savedata);
         sub_0205B564(&env->window, options);
         env->printerId = sub_0205B5B4(&env->window, env->strbuf, options, TRUE);
@@ -541,7 +541,7 @@ static void ItemMenuUseFunc_EvoStone(struct ItemMenuUseData *data, const struct 
     usedat->unk26 = data->unk6;
     usedat->fsys = fsys;
     usedat->unk20 = &fsys->unk_10C;
-    Fsys_LaunchApplication(fsys, &_0210159C, usedat);
+    FieldSys_LaunchApplication(fsys, &_0210159C, usedat);
     env->atexit_TaskEnv = usedat;
     sub_0203C8F0(env, sub_0203CA9C);
 }

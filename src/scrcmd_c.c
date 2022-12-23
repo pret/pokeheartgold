@@ -22,7 +22,7 @@
 #include "map_events.h"
 #include "unk_0205FD20.h"
 #include "unk_02054648.h"
-#include "unk_0205B6E8.h"
+#include "metatile_behavior.h"
 #include "unk_0203E348.h"
 #include "unk_02055418.h"
 #include "unk_020932A4.h"
@@ -32,6 +32,7 @@
 #include "unk_02078834.h"
 #include "unk_020961D8.h"
 #include "unk_02055244.h"
+#include "field_system.h"
 #include "fashion_case.h"
 #include "save_flypoints.h"
 #include "unk_0206B910.h"
@@ -247,7 +248,7 @@ BOOL ScrCmd_CompareLocalToLocal(SCRIPTCONTEXT* ctx) {
     u8 a = ctx->data[ScriptReadByte(ctx)];
     u8 b = ctx->data[ScriptReadByte(ctx)];
 
-    ctx->comparison_result = Compare(a, b);
+    ctx->comparisonResult = Compare(a, b);
 
     return FALSE;
 }
@@ -256,7 +257,7 @@ BOOL ScrCmd_CompareLocalToValue(SCRIPTCONTEXT* ctx) {
     u8 a = ctx->data[ScriptReadByte(ctx)];
     u8 b = ScriptReadByte(ctx);
 
-    ctx->comparison_result = Compare(a, b);
+    ctx->comparisonResult = Compare(a, b);
 
     return FALSE;
 }
@@ -265,7 +266,7 @@ BOOL ScrCmd_CompareLocalToAddr(SCRIPTCONTEXT* ctx) {
     u8 a = ctx->data[ScriptReadByte(ctx)];
     u8 b = *(u8*)ScriptReadWord(ctx);
 
-    ctx->comparison_result = Compare(a, b);
+    ctx->comparisonResult = Compare(a, b);
 
     return FALSE;
 }
@@ -274,7 +275,7 @@ BOOL ScrCmd_CompareAddrToLocal(SCRIPTCONTEXT* ctx) {
     u8 a = *(u8*)ScriptReadWord(ctx);
     u8 b = ctx->data[ScriptReadByte(ctx)];
 
-    ctx->comparison_result = Compare(a, b);
+    ctx->comparisonResult = Compare(a, b);
 
     return FALSE;
 }
@@ -283,7 +284,7 @@ BOOL ScrCmd_CompareAddrToValue(SCRIPTCONTEXT* ctx) {
     u8 a = *(u8*)ScriptReadWord(ctx);
     u8 b = ScriptReadByte(ctx);
 
-    ctx->comparison_result = Compare(a, b);
+    ctx->comparisonResult = Compare(a, b);
 
     return FALSE;
 }
@@ -292,7 +293,7 @@ BOOL ScrCmd_CompareAddrToAddr(SCRIPTCONTEXT* ctx) {
     u8 a = *(u8*)ScriptReadWord(ctx);
     u8 b = *(u8*)ScriptReadWord(ctx);
 
-    ctx->comparison_result = Compare(a, b);
+    ctx->comparisonResult = Compare(a, b);
 
     return FALSE;
 }
@@ -301,7 +302,7 @@ BOOL ScrCmd_CompareVarToValue(SCRIPTCONTEXT* ctx) {
     u16 a = *ScriptGetVarPointer(ctx);
     u16 b = ScriptReadHalfword(ctx);
 
-    ctx->comparison_result = Compare(a, b);
+    ctx->comparisonResult = Compare(a, b);
 
     return FALSE;
 }
@@ -310,7 +311,7 @@ BOOL ScrCmd_CompareVarToVar(SCRIPTCONTEXT* ctx) {
     u16* a_ptr = ScriptGetVarPointer(ctx);
     u16* b_ptr = ScriptGetVarPointer(ctx);
 
-    ctx->comparison_result = Compare(*a_ptr, *b_ptr);
+    ctx->comparisonResult = Compare(*a_ptr, *b_ptr);
 
     return FALSE;
 }
@@ -424,7 +425,7 @@ BOOL ScrCmd_GoToIf(SCRIPTCONTEXT* ctx) {
     u8 condition = ScriptReadByte(ctx);
     u32 offset_in_script = ScriptReadWord(ctx);
 
-    if (sConditionTable[condition][ctx->comparison_result] == 1) {
+    if (sConditionTable[condition][ctx->comparisonResult] == 1) {
         ScriptJump(ctx, ctx->script_ptr + offset_in_script);
     }
 
@@ -435,7 +436,7 @@ BOOL ScrCmd_CallIf(SCRIPTCONTEXT* ctx) {
     u8 condition = ScriptReadByte(ctx);
     u32 offset_in_script = ScriptReadWord(ctx);
 
-    if (sConditionTable[condition][ctx->comparison_result] == 1) {
+    if (sConditionTable[condition][ctx->comparisonResult] == 1) {
         ScriptCall(ctx, ctx->script_ptr + offset_in_script);
     }
 
@@ -464,7 +465,7 @@ BOOL ScrCmd_CheckFlag(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     u16 flag_to_check = ScriptReadHalfword(ctx);
 
-    ctx->comparison_result = FlagGet(fsys, flag_to_check);
+    ctx->comparisonResult = FlagGet(fsys, flag_to_check);
 
     return FALSE;
 }
@@ -517,7 +518,7 @@ BOOL ScrCmd_CheckTrainerFlag(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     u16 flag_to_check = ScriptGetVar(ctx);
 
-    ctx->comparison_result = TrainerFlagCheck(fsys->savedata, flag_to_check);
+    ctx->comparisonResult = TrainerFlagCheck(fsys->savedata, flag_to_check);
 
     return FALSE;
 }
@@ -571,13 +572,13 @@ BOOL ScrCmd_048(SCRIPTCONTEXT* ctx) {
     u8 msg_no = ScriptReadByte(ctx);
 
     if (!sub_02037474()) {
-        ov01_021EF4DC(ctx, ctx->msg_data, msg_no, TRUE, NULL);
+        ov01_021EF4DC(ctx, ctx->msgdata, msg_no, TRUE, NULL);
     } else {
         struct UnkStruct_Ov01_021EF4C4 unk_struct;
         ov01_021EF4C4(&unk_struct, ctx);
         unk_struct.textFrameDelay = 1;
         unk_struct.unk1 = 1;
-        ov01_021EF4DC(ctx, ctx->msg_data, msg_no, FALSE, &unk_struct);
+        ov01_021EF4DC(ctx, ctx->msgdata, msg_no, FALSE, &unk_struct);
     }
 
     SetupNativeScript(ctx, ov01_021EF348);
@@ -663,7 +664,7 @@ BOOL ScrCmd_OpenMsg(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_08);
 
-    sub_0205B514(fsys->bg_config, FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW), 3);
+    sub_0205B514(fsys->bgConfig, FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW), 3);
     sub_0205B564(FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW), Sav2_PlayerData_GetOptionsAddr(ctx->fsys->savedata));
 
     fsys->unkD2_6 = 1;
@@ -736,17 +737,17 @@ static BOOL sub_02041270(SCRIPTCONTEXT* ctx) {
 
     if (*var_8008 != 0) {
         if (*var_8009 == 0) {
-            BgSetPosTextAndCommit(fsys->bg_config, GF_BG_LYR_MAIN_3, BG_POS_OP_ADD_X, *var_8008);
+            BgSetPosTextAndCommit(fsys->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_ADD_X, *var_8008);
         } else {
-            BgSetPosTextAndCommit(fsys->bg_config, GF_BG_LYR_MAIN_3, BG_POS_OP_SUB_X, *var_8008);
+            BgSetPosTextAndCommit(fsys->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SUB_X, *var_8008);
         }
     }
 
     if (*var_800A != 0) {
         if (*var_800B == 0) {
-            BgSetPosTextAndCommit(fsys->bg_config, GF_BG_LYR_MAIN_3, BG_POS_OP_ADD_Y, *var_800A);
+            BgSetPosTextAndCommit(fsys->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_ADD_Y, *var_800A);
         } else {
-            BgSetPosTextAndCommit(fsys->bg_config, GF_BG_LYR_MAIN_3, BG_POS_OP_SUB_Y, *var_800A);
+            BgSetPosTextAndCommit(fsys->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SUB_Y, *var_800A);
         }
     }
 
@@ -779,7 +780,7 @@ BOOL ScrCmd_DirectionSignpost(SCRIPTCONTEXT* ctx) {
     ov01_021F3D70(fsys->unk68, 1);
     ov01_021F3D98(fsys);
 
-    ReadMsgDataIntoString(ctx->msg_data, msg_no, *tmp_str);
+    ReadMsgDataIntoString(ctx->msgdata, msg_no, *tmp_str);
     StringExpandPlaceholders(*msg_fmt, *unk1, *tmp_str);
     WINDOW* window = ov01_021F3D80(fsys->unk68);
     AddTextPrinterParameterized2(window, 1, *unk1, 0, 0, 0, MakeTextColor(2, 10, 15), NULL);
@@ -832,7 +833,7 @@ BOOL ScrCmd_TrainerTips(SCRIPTCONTEXT* ctx) {
     u8 msg_no = ScriptReadByte(ctx);
     u16 result_var_id = ScriptReadHalfword(ctx);
 
-    ReadMsgDataIntoString(ctx->msg_data, msg_no, *tmp_str);
+    ReadMsgDataIntoString(ctx->msgdata, msg_no, *tmp_str);
     StringExpandPlaceholders(*msg_fmt, *unk, *tmp_str);
 
     TextFlags_SetCanABSpeedUpPrint(TRUE);
@@ -932,8 +933,8 @@ BOOL ScrCmd_YesNo(SCRIPTCONTEXT* ctx) {
     FieldSystem *fsys = ctx->fsys;
     struct ListMenu2 **listMenu = FieldSysGetAttrAddr(fsys, SCRIPTENV_MENU);
     u16 data = ScriptReadHalfword(ctx);
-    LoadUserFrameGfx1(fsys->bg_config, 3, 0x3D9, 11, 0, 4);
-    *listMenu = Std_CreateYesNoMenu(fsys->bg_config, &_020FAC94, 0x3D9, 11, 4);
+    LoadUserFrameGfx1(fsys->bgConfig, 3, 0x3D9, 11, 0, 4);
+    *listMenu = Std_CreateYesNoMenu(fsys->bgConfig, &_020FAC94, 0x3D9, 11, 4);
     ctx->data[0] = data;
     SetupNativeScript(ctx, sub_020416E4);
     return TRUE;
@@ -987,7 +988,7 @@ BOOL ScrCmd_064(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_065(SCRIPTCONTEXT *ctx) {
-    sub_02041770(ctx, FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MENU_WINDOW), ctx->msg_data);
+    sub_02041770(ctx, FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MENU_WINDOW), ctx->msgdata);
     return TRUE;
 }
 
@@ -1052,7 +1053,7 @@ BOOL ScrCmd_068(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_069(SCRIPTCONTEXT *ctx) {
-    sub_02041770(ctx, FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MENU_WINDOW), ctx->msg_data);
+    sub_02041770(ctx, FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MENU_WINDOW), ctx->msgdata);
     return TRUE;
 }
 
@@ -1842,8 +1843,8 @@ BOOL ScrCmd_452(SCRIPTCONTEXT *ctx) {
     struct PokepicManager **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
     u16 species = ScriptGetVar(ctx);
     u16 gender = ScriptGetVar(ctx);
-    LoadUserFrameGfx1(ctx->fsys->bg_config, 3, 0x3D9, 0xB, 0, 4);
-    *p_work = sub_0200F4A0(ctx->fsys->bg_config, 3, 10, 5, 11, 0x3D9, species, gender, 4);
+    LoadUserFrameGfx1(ctx->fsys->bgConfig, 3, 0x3D9, 0xB, 0, 4);
+    *p_work = sub_0200F4A0(ctx->fsys->bgConfig, 3, 10, 5, 11, 0x3D9, species, gender, 4);
     Script_SetMonSeenFlagBySpecies(ctx->fsys, species);
     return FALSE;
 }
@@ -1852,8 +1853,8 @@ BOOL ScrCmd_547(SCRIPTCONTEXT *ctx) {
     struct PokepicManager **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
     u16 partyIdx = ScriptGetVar(ctx);
     POKEMON *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), partyIdx);
-    LoadUserFrameGfx1(ctx->fsys->bg_config, 3, 0x3D9, 0xB, 0, 4);
-    *p_work = sub_0200F4F8(ctx->fsys->bg_config, 3, 10, 5, 11, 0x3D9, pokemon, 4);
+    LoadUserFrameGfx1(ctx->fsys->bgConfig, 3, 0x3D9, 0xB, 0, 4);
+    *p_work = sub_0200F4F8(ctx->fsys->bgConfig, 3, 10, 5, 11, 0x3D9, pokemon, 4);
     return FALSE;
 }
 
@@ -2689,8 +2690,8 @@ BOOL ScrCmd_264(SCRIPTCONTEXT *ctx) {
     LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_TALKED);
     MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
     u16 r4 = ScriptReadHalfword(ctx);
-    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(ctx->fsys));
-    SAVE_EASY_CHAT_T *easyChat = SaveData_EasyChat_get(Fsys_GetSaveDataPtr(ctx->fsys));
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
+    SAVE_EASY_CHAT_T *easyChat = SaveData_EasyChat_get(FieldSys_GetSaveDataPtr(ctx->fsys));
     u16 objId;
 
     if (r4 == 0) {
@@ -2854,7 +2855,7 @@ BOOL ScrCmd_286(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_287(SCRIPTCONTEXT *ctx) {
-    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(ctx->fsys));
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
     MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
     sub_0205B3DC(
         PlayerProfile_GetTrainerID(profile),
@@ -2865,7 +2866,7 @@ BOOL ScrCmd_287(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_288(SCRIPTCONTEXT *ctx) {
-    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(ctx->fsys));
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
     u16 choice = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = sub_0205B418(
@@ -2882,7 +2883,7 @@ BOOL ScrCmd_288(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_558(SCRIPTCONTEXT *ctx) {
-    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(ctx->fsys));
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
     u16 choice = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = sub_0205B418(
@@ -2894,7 +2895,7 @@ BOOL ScrCmd_558(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_289(SCRIPTCONTEXT *ctx) {
-    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(ctx->fsys));
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
     u16 choice = ScriptGetVar(ctx);
     PlayerProfile_SetAvatar(profile, choice);
     return FALSE;
@@ -2913,7 +2914,7 @@ BOOL ScrCmd_SetSpawn(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_GetPlayerGender(SCRIPTCONTEXT *ctx) {
-    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(ctx->fsys));
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = PlayerProfile_GetTrainerGender(profile);
     return FALSE;
@@ -3074,7 +3075,7 @@ BOOL ScrCmd_EcruteakGymInit(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_315(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    if (SavGymmick_GetType(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys))) != GYMMICK_ECRUTEAK) {
+    if (SavGymmick_GetType(Sav2_GetGymmickPtr(FieldSys_GetSaveDataPtr(fsys))) != GYMMICK_ECRUTEAK) {
         return FALSE;
     }
     ov04_02254D98(fsys);
@@ -3083,7 +3084,7 @@ BOOL ScrCmd_315(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_316(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    if (SavGymmick_GetType(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys))) != GYMMICK_ECRUTEAK) {
+    if (SavGymmick_GetType(Sav2_GetGymmickPtr(FieldSys_GetSaveDataPtr(fsys))) != GYMMICK_ECRUTEAK) {
         return FALSE;
     }
     ov04_02254DD0(fsys);
@@ -3093,7 +3094,7 @@ BOOL ScrCmd_316(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_317(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u8 r5 = ScriptReadByte(ctx);
-    if (SavGymmick_GetType(Sav2_GetGymmickPtr(Fsys_GetSaveDataPtr(fsys))) != GYMMICK_ECRUTEAK) {
+    if (SavGymmick_GetType(Sav2_GetGymmickPtr(FieldSys_GetSaveDataPtr(fsys))) != GYMMICK_ECRUTEAK) {
         return TRUE;
     }
     ov04_02254DE0(fsys, (r5 != 0) ? 10 : 30);
@@ -3574,7 +3575,7 @@ BOOL ScrCmd_GetGameVersion(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_PrimoPasswordCheck1(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(fsys));
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(fsys));
     u16 *p_ret = ScriptGetVarPointer(ctx);
     PC_STORAGE *pcStorage = GetStoragePCPointer(fsys->savedata);
     u16 a = ScriptGetVar(ctx);
@@ -3596,7 +3597,7 @@ BOOL ScrCmd_PrimoPasswordCheck1(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_PrimoPasswordCheck2(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(fsys));
+    PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(fsys));
     u16 *p_ret = ScriptGetVarPointer(ctx);
     PC_STORAGE *pcStorage = GetStoragePCPointer(fsys->savedata);
     u16 a = ScriptGetVar(ctx);
@@ -4598,7 +4599,7 @@ BOOL ScrCmd_Pokeathlon(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_GetFriendSprite(SCRIPTCONTEXT *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    if (PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(Fsys_GetSaveDataPtr(ctx->fsys))) != PLAYER_GENDER_MALE) {
+    if (PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys))) != PLAYER_GENDER_MALE) {
         *p_ret = SPRITE_HERO;
     } else {
         *p_ret = SPRITE_HEROINE;
@@ -4607,7 +4608,7 @@ BOOL ScrCmd_GetFriendSprite(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_RegisterPokegearCard(SCRIPTCONTEXT *ctx) {
-    SavePokegear *pokegear = SaveData_GSPlayerMisc_get(Fsys_GetSaveDataPtr(ctx->fsys));
+    SavePokegear *pokegear = SaveData_GSPlayerMisc_get(FieldSys_GetSaveDataPtr(ctx->fsys));
     u8 card = ScriptReadByte(ctx);
     switch (card) {
     case 1:
@@ -4630,7 +4631,7 @@ BOOL ScrCmd_804(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_RegisterGearNumber(SCRIPTCONTEXT *ctx) {
-    SavePokegear *pokegear = SaveData_GSPlayerMisc_get(Fsys_GetSaveDataPtr(ctx->fsys));
+    SavePokegear *pokegear = SaveData_GSPlayerMisc_get(FieldSys_GetSaveDataPtr(ctx->fsys));
     u8 number = ScriptGetVar(ctx);
     if (number < NUM_PHONE_CONTACTS) {
         RegisterPhoneNumberInPokeGear(pokegear, number);
@@ -4639,7 +4640,7 @@ BOOL ScrCmd_RegisterGearNumber(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_CheckRegisteredPhoneNumber(SCRIPTCONTEXT *ctx) {
-    SavePokegear *pokegear = SaveData_GSPlayerMisc_get(Fsys_GetSaveDataPtr(ctx->fsys));
+    SavePokegear *pokegear = SaveData_GSPlayerMisc_get(FieldSys_GetSaveDataPtr(ctx->fsys));
     u8 number = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     if (number < NUM_PHONE_CONTACTS) {
@@ -5014,7 +5015,7 @@ BOOL ScrCmd_MenuInitStdGmm(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_MenuInit(SCRIPTCONTEXT *ctx) {
-    sub_02041770(ctx, ov01_021F6B20(ctx->fsys), ctx->msg_data);
+    sub_02041770(ctx, ov01_021F6B20(ctx->fsys), ctx->msgdata);
     return TRUE;
 }
 

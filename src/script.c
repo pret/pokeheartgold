@@ -5,10 +5,10 @@ void InitScriptContext(SCRIPTCONTEXT* ctx, const ScrCmdFunc* cmd_table, u32 cmd_
 
     ctx->mode = SCRIPT_MODE_STOPPED;
     ctx->script_ptr = NULL;
-    ctx->stack_depth = 0;
+    ctx->stackDepth = 0;
     ctx->id = 0;
     ctx->native_ptr = NULL;
-    ctx->cmd_table = cmd_table;
+    ctx->cmdTable = cmd_table;
     ctx->cmd_count = cmd_count;
 
     for (i = 0; i < NELEMS(ctx->data); i++) {
@@ -79,7 +79,7 @@ BOOL RunScriptCommand(SCRIPTCONTEXT* ctx) {
                 return FALSE;
             }
 
-            ScrCmdFunc cmd = ctx->cmd_table[cmd_code];
+            ScrCmdFunc cmd = ctx->cmdTable[cmd_code];
             if ((*cmd)(ctx) == TRUE) {
                 break;
             }
@@ -90,22 +90,22 @@ BOOL RunScriptCommand(SCRIPTCONTEXT* ctx) {
 }
 
 BOOL ScriptPush(SCRIPTCONTEXT* ctx, const u8* ptr) {
-    if (ctx->stack_depth + 1 >= (s32)NELEMS(ctx->stack)) {
+    if (ctx->stackDepth + 1 >= (s32)NELEMS(ctx->stack)) {
         return TRUE;
     }
 
-    ctx->stack[ctx->stack_depth] = ptr;
-    ctx->stack_depth++;
+    ctx->stack[ctx->stackDepth] = ptr;
+    ctx->stackDepth++;
 
     return FALSE;
 }
 
 const u8* ScriptPop(SCRIPTCONTEXT* ctx) {
-    if (ctx->stack_depth == 0) {
+    if (ctx->stackDepth == 0) {
         return NULL;
     }
 
-    return ctx->stack[--ctx->stack_depth];
+    return ctx->stack[--ctx->stackDepth];
 }
 
 void ScriptJump(SCRIPTCONTEXT* ctx, const u8* ptr) {

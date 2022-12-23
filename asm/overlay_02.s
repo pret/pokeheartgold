@@ -18287,7 +18287,7 @@ ov02_0224E4EC: ; 0x0224E4EC
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl Fsys_GetSaveDataPtr
+	bl FieldSys_GetSaveDataPtr
 	str r0, [r4]
 	mov r0, #0x43
 	lsl r0, r0, #2

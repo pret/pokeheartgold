@@ -72,7 +72,7 @@ _0103:
 	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle VAR_TEMP_x400A, VAR_SPECIAL_x8004, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	scrcmd_683 VAR_TEMP_x4005
+	get_static_encounter_outcome VAR_TEMP_x4005
 	compare VAR_TEMP_x4005, 2
 	goto_if_eq _0167
 	compare VAR_TEMP_x4005, 3

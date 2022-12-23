@@ -194,7 +194,7 @@ _0268:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02AE
-	scrcmd_683 VAR_TEMP_x4005
+	get_static_encounter_outcome VAR_TEMP_x4005
 	compare VAR_TEMP_x4005, 4
 	call_if_eq _02B4
 	setflag FLAG_SNORLAX_MEET

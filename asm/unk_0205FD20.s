@@ -2553,7 +2553,7 @@ _0206115A:
 	add r1, r4, #0
 	bl sub_0205F4FC
 	add r0, r4, #0
-	bl sub_0205BA60
+	bl MetatileBehavior_IsNone
 	cmp r0, #1
 	bne _02061182
 	mov r1, #2

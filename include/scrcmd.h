@@ -5,9 +5,6 @@
 #include "fieldmap.h"
 #include "script.h"
 
-// unk_0203DE74.s
-extern SAVEDATA* Fsys_GetSaveDataPtr(FieldSystem*);
-
 static inline u16 ScriptGetVar(SCRIPTCONTEXT* ctx) {
     return VarGet(ctx->fsys, ScriptReadHalfword(ctx));
 }
@@ -719,7 +716,7 @@ BOOL ScrCmd_679(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_AddSpecialGameStat(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_681(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_682(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_683(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_GetStaticEncounterOutcomeFlag(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_684(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GetPlayerXYZ(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_686(SCRIPTCONTEXT* ctx);

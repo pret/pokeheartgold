@@ -753,7 +753,7 @@ _0204F3E2:
 	ldr r1, _0204F3F4 ; =_0210159C
 	add r0, r6, #0
 	add r2, r4, #0
-	bl Fsys_LaunchApplication
+	bl FieldSys_LaunchApplication
 	ldr r0, [r5, #8]
 	str r4, [r0]
 	mov r0, #1
@@ -858,7 +858,7 @@ sub_0204F448: ; 0x0204F448
 	ldr r1, _0204F4D4 ; =_02103A1C
 	add r0, r7, #0
 	add r2, r4, #0
-	bl Fsys_LaunchApplication
+	bl FieldSys_LaunchApplication
 	ldr r0, [r6, #8]
 	str r4, [r0]
 	mov r0, #3

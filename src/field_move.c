@@ -9,7 +9,7 @@
 #include "save_flypoints.h"
 #include "overlay_01.h"
 #include "overlay_02.h"
-#include "unk_0205B6E8.h"
+#include "metatile_behavior.h"
 #include "unk_0203BC10.h"
 #include "map_header.h"
 #include "sys_flags.h"

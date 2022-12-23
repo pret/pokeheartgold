@@ -279,22 +279,22 @@ ov12_0223A93C: ; 0x0223A93C
 	bx lr
 	thumb_func_end ov12_0223A93C
 
-	thumb_func_start ov12_0223A940
-ov12_0223A940: ; 0x0223A940
+	thumb_func_start BattleSys_GetSendBufferPtr
+BattleSys_GetSendBufferPtr: ; 0x0223A940
 	mov r1, #0x8a
 	lsl r1, r1, #2
 	add r0, r0, r1
 	bx lr
-	thumb_func_end ov12_0223A940
+	thumb_func_end BattleSys_GetSendBufferPtr
 
-	thumb_func_start ov12_0223A948
-ov12_0223A948: ; 0x0223A948
+	thumb_func_start BattleSys_GetRecvBufferPtr
+BattleSys_GetRecvBufferPtr: ; 0x0223A948
 	ldr r1, _0223A950 ; =0x00001228
 	add r0, r0, r1
 	bx lr
 	nop
 _0223A950: .word 0x00001228
-	thumb_func_end ov12_0223A948
+	thumb_func_end BattleSys_GetRecvBufferPtr
 
 	thumb_func_start ov12_0223A954
 ov12_0223A954: ; 0x0223A954
