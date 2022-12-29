@@ -26,6 +26,7 @@ class GMM {
     fstream stream;
     pugi::xml_document doc;
     vector<string> id_strings;
+    vector<string> messages;
     void ReadGmmHeader(const string &_filename);
     void WriteGmmHeader(const string &_filename);
     void IncRowNoBuf() {
@@ -47,6 +48,9 @@ public:
     }
     void FromFile(MessagesConverter &converter);
     void ToFile(MessagesConverter &converter);
+
+private:
+    vector<string> SplitMessage(const string &message);
 };
 
 
