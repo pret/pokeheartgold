@@ -11,7 +11,6 @@ typedef struct Ov122_021E8CFC {
     u8 unkD;
     u8 unkEx:4;
     u8 unkEy:4;
-    // Focused on a card while the memo is open
     u8 memoOpen:1;
     u8 memoFocused:1;
     u8 unkFz:1;

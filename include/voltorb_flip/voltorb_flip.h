@@ -4,6 +4,7 @@
 #include "options.h"
 #include "overlay_manager.h"
 #include "player_data.h"
+#include "save.h"
 
 typedef struct VoltorbFlipAppArgs {
     OPTIONS *options;
