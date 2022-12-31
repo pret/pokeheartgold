@@ -2690,7 +2690,7 @@ static const int _020FF50C[] = {
     0, 1, 1, 2, 0, 3
 };
 
-struct UnkStruct_0200CF18 *sub_02070C24(void * r6, s32 sp18, s32 sp1C, s32 sp20, s32 sp88, s32 trainerClass, s32 sp90, s32 sp94, s32 r5, HeapID heapId) {
+struct UnkStruct_0200CF18 *sub_02070C24(Unk122_021E7C9C *r6, void *sp18, s32 sp1C, s32 sp20, s32 sp88, s32 trainerClass, s32 sp90, s32 sp94, s32 r5, HeapID heapId) {
     s32 r7;
     NARC *narc_r4;
     struct UnkStruct_0200CF18 *ret_r4;

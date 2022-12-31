@@ -12,6 +12,9 @@ WORK_DIR   := $(shell realpath --relative-to $(CURDIR) $(PROJECT_ROOT))
 $(shell mkdir -p $(BUILD_DIR))
 BACK_REL   := $(shell realpath --relative-to $(BUILD_DIR) $(CURDIR))
 
+# Recursive wildcard function
+rwildcard=$(foreach d,$(wildcard $(1:=/*)),$(call rwildcard,$d,$2) $(filter $(subst *,%,$2),$d))
+
 TOOLSDIR     := $(WORK_DIR)/tools
 
 include $(WORK_DIR)/platform.mk
@@ -76,7 +79,7 @@ ASM_BUILDDIR              := $(addprefix $(BUILD_DIR)/,$(ASM_SUBDIR))
 LIB_SRC_BUILDDIR          := $(addprefix $(BUILD_DIR)/,$(LIB_SRC_SUBDIR))
 LIB_ASM_BUILDDIR          := $(addprefix $(BUILD_DIR)/,$(LIB_ASM_SUBDIR))
 
-C_SRCS                    := $(foreach dname,$(SRC_SUBDIR),$(wildcard $(dname)/*.c))
+C_SRCS                    := $(call rwildcard,src,*.c)
 ASM_SRCS                  := $(foreach dname,$(ASM_SUBDIR),$(wildcard $(dname)/*.s))
 GLOBAL_ASM_SRCS           != grep -rl 'GLOBAL_ASM(' $(C_SRCS)
 LIB_C_SRCS                := $(foreach dname,$(LIB_SRC_SUBDIR),$(wildcard $(dname)/*.c))

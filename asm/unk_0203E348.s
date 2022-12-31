@@ -36,7 +36,7 @@ _020FA214:
 _020FA224:
 	.word ov69_021E5900, ov69_021E5A34, ov69_021E6080, FS_OVERLAY_ID(OVY_69)
 _020FA234:
-	.word ov122_021E82A8, ov122_021E8360, ov122_021E8308, FS_OVERLAY_ID(OVY_122)
+	.word VoltorbFlipApp_OvyInit, VoltorbFlipApp_OvyExec, VoltorbFlipApp_OvyExit, FS_OVERLAY_ID(voltorb_flip)
 _020FA244:
 	.word PokeathlonCourseApplication_OvyInit, PokeathlonCourseApplication_OvyExec, PokeathlonCourseApplication_OvyExit, FS_OVERLAY_ID(OVY_96)
 _020FA254:
@@ -3106,8 +3106,8 @@ _0203FA0C:
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0203F9F4
 
-	thumb_func_start sub_0203FA38
-sub_0203FA38: ; 0x0203FA38
+	thumb_func_start LaunchVoltorbFlipApp
+LaunchVoltorbFlipApp: ; 0x0203FA38
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	mov r0, #0xb
@@ -3142,7 +3142,7 @@ sub_0203FA38: ; 0x0203FA38
 	pop {r4, r5, r6, pc}
 	nop
 _0203FA88: .word _020FA234
-	thumb_func_end sub_0203FA38
+	thumb_func_end LaunchVoltorbFlipApp
 
 	thumb_func_start sub_0203FA8C
 sub_0203FA8C: ; 0x0203FA8C
