@@ -455,7 +455,7 @@ include files/fielddata/script/scr_seq.mk
 
 # This rule must come after the above includes
 # and serves to enforce build order.
-$(SCRIPT_BINS): $(MSGFILE_H)
+$(SCRIPT_BINS): $(FIRST_MSG_H_GEN)
 
 include files/fielddata/eventdata/zone_event.mk
 include files/data/sound/sound_data.mk
