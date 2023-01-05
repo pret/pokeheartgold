@@ -206,11 +206,11 @@ else
 	$(SED) -i '/\} > check\.WORKRAM/a SDK_SUBPRIV_ARENA_LO = SDK_SUBPRIV_ARENA_LO + SDK_AUTOLOAD.EXT_WRAM.SIZE + SDK_AUTOLOAD.EXT_WRAM.BSS_SIZE;' $@
 endif
 
-RESPONSE_TEMPLATE    := $(PROJECT_ROOT)/mwldarm.response.template
-RESPONSE_TEMPLATE_NT := $(PROJECT_ROOT_NT)/mwldarm.response.template
+RESPONSE_TEMPLATE    := $(PROJECT_ROOT)mwldarm.response.template
+RESPONSE_TEMPLATE_NT := $(PROJECT_ROOT_NT)mwldarm.response.template
 
 $(RESPONSE): $(LSF) $(RESPONSE_TEMPLATE)
-	$(WINE) $(MAKELCF) $(MAKELCF_FLAGS) $< $(RESPONSE_TEMPLATE_NT) $@
+	$(MAKELCF) $(MAKELCF_FLAGS) $< $(RESPONSE_TEMPLATE) $@
 
 # Locate crt0.o
 CRT0_OBJ := lib/asm/crt0.o
