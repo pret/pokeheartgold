@@ -165,7 +165,7 @@ void ConvertPngToNtr(char *inputPath, char *outputPath, struct PngToNtrOptions *
 
 void HandleGbaToPngCommand(char *inputPath, char *outputPath, int argc, char **argv)
 {
-    unsigned char *inputFileExtension = (unsigned char *)GetFileExtension(inputPath);
+    char *inputFileExtension = GetFileExtension(inputPath);
     struct GbaToPngOptions options;
     options.paletteFilePath = NULL;
     if (isdigit(inputFileExtension[0]))
