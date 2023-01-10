@@ -52,7 +52,7 @@ static u16 BattleArcade_GetWinstreak(GAME_BOARD_WORK *work);
 static BOOL ov84_0223ECBC(GAME_BOARD_WORK *work, u16 type, u16 a2);
 static void ov84_0223ED00(GAME_BOARD_WORK *work, u16 type);
 static void ov84_0223ED6C(GAME_BOARD_WORK *work, u16 type, u16 a2);
-static u16 ov84_0223EDA0(GAME_BOARD_WORK *work);
+static u16 BattleArcade_Random(GAME_BOARD_WORK *work);
 static void ov84_0223EDF8(GAME_BOARD_WORK *work, u16 type);
 static void BattleArcadeGameBoard_StopCursor(GAME_BOARD_WORK *work, u8 type);
 static void ov84_0223EE74(GAME_BOARD_WORK *work);
@@ -70,10 +70,10 @@ static void ov84_0223F4B4(GAME_BOARD_SUB_3E8 *work);
 static void ov84_0223F538(GAME_BOARD_SUB_3E8 *work);
 static void ov84_0223F5E4(GAME_BOARD_SUB_3E8 *work, PARTY *playerParty, PARTY *opponentParty, u8 type);
 static void ov84_0223F714(GAME_BOARD_SUB_3E8 *work);
-static BATTLE_ARCADE_OBJECT *ov84_0223F7A0(GAME_BOARD_SUB_3E8 *work, u32 chara, u32 pal, u32 cell, u32 anim, u16 x, u16 y, u32 priority, int bgPrio, u8 display);
+static BATTLE_ARCADE_OBJECT *BattleArcadeObject_Create(GAME_BOARD_SUB_3E8 *work, u32 chara, u32 pal, u32 cell, u32 anim, u16 x, u16 y, u32 priority, int bgPrio, u8 display);
 static void *BattleArcadeObj_Delete(BATTLE_ARCADE_OBJECT *obj);
-static void BattleArcadeObj_Vanish(BATTLE_ARCADE_OBJECT *obj, int flag);
-static void ov84_0223F838(BATTLE_ARCADE_OBJECT *obj, u16 x, u16 y);
+static void BattleArcadeObj_SetVisible(BATTLE_ARCADE_OBJECT *obj, int flag);
+static void BattleArcadeObj_SetPos(BATTLE_ARCADE_OBJECT *obj, u16 x, u16 y);
 static void BattleArcadeObj_SetAnimation(BATTLE_ARCADE_OBJECT *obj, u32 val);
 static void ov84_0223F894(BATTLE_ARCADE_OBJECT *obj, POKEMON *mon);
 static void ov84_0223F8A8(BATTLE_ARCADE_OBJECT *obj, int flag);
@@ -125,7 +125,7 @@ BOOL BattleArcadeGameBoard_InitOverlay(OVY_MANAGER *man, int *state) {
     
     work->multiCursorPos = 0;
     
-    *work->unk24 = ov84_0223EDA0(work);
+    *work->unk24 = BattleArcade_Random(work);
     work->cursorPosStart = LCRandom() % 16;
     
     BattleArcadeGameBoard_InitObjects(work);
@@ -318,7 +318,7 @@ static BOOL BattleArcadeGameBoard_MoveCursor(GAME_BOARD_WORK *work) {
         for (i = 0; i < 16; i++) {
             if (work->panel[i] != NULL) {
                 BattleArcadeObj_SetAnimation(work->panel[i], 32);
-                BattleArcadeObj_Vanish(work->panel[i], 1);
+                BattleArcadeObj_SetVisible(work->panel[i], 1);
             }
         }
         ov84_0223EB08(work, 3);
@@ -364,7 +364,7 @@ static BOOL BattleArcadeGameBoard_MoveCursor(GAME_BOARD_WORK *work) {
                 BattleArcadeObj_SetAnimation(work->panel[i], work->unk34[i]);
             }
         }
-        BattleArcadeObj_Vanish(work->cursor, 1);
+        BattleArcadeObj_SetVisible(work->cursor, 1);
         PlaySE(SEQ_SE_DP_UG_020);
         BattleArcadeObj_SetAnimation(work->button, 0);
         work->substate = 6;
@@ -563,12 +563,12 @@ static void BattleArcadeGameBoard_InitObjects(GAME_BOARD_WORK *work) {
     LoadFontPal0(0, 416, HEAP_ID_GAME_BOARD);
     LoadFontPal1(0, 384, HEAP_ID_GAME_BOARD);
     ov84_0223F8B4(work->bgConfig, work->window);
-    work->cursor = ov84_0223F7A0(&work->unk3E8, 1, 1, 1, 35, 68, 36, 0, 2, 0);
-    BattleArcadeObj_Vanish(work->cursor, 0);
+    work->cursor = BattleArcadeObject_Create(&work->unk3E8, 1, 1, 1, 35, 68, 36, 0, 2, 0);
+    BattleArcadeObj_SetVisible(work->cursor, 0);
     
     for (i = 0; i < 16; i++) {
-        work->panel[i] = ov84_0223F7A0(&work->unk3E8, 1, 1, 1, 32, 68 + 40*(i%4), 36 + 40*(i/4), 1, 2, 0);
-        BattleArcadeObj_Vanish(work->panel[i], 0);
+        work->panel[i] = BattleArcadeObject_Create(&work->unk3E8, 1, 1, 1, 32, 68 + 40*(i%4), 36 + 40*(i/4), 1, 2, 0);
+        BattleArcadeObj_SetVisible(work->panel[i], 0);
     }
     
     max = BattleArcade_GetMonCount(work->type, 1);
@@ -582,10 +582,10 @@ static void BattleArcadeGameBoard_InitObjects(GAME_BOARD_WORK *work) {
     }
     
     for (i = 0; i < max; i++) {
-        work->itemA[i] = ov84_0223F7A0(&work->unk3E8, 2, 2, 2, 0, 24, yOffset2 + i*40, 0, 2, 0);
-        work->itemB[i] = ov84_0223F7A0(&work->unk3E8, 2, 2, 2, 0, 246, yOffset2 + i*40, 0, 2, 0);
-        work->iconA[i] = ov84_0223F7A0(&work->unk3E8, 3 + i, 3, 3, 1, 16, yOffset + i*40, 1, 2, 0);
-        work->iconB[i] = ov84_0223F7A0(&work->unk3E8, 7 + i, 3, 3, 1, 238, yOffset + i*40, 1, 2, 0);
+        work->itemA[i] = BattleArcadeObject_Create(&work->unk3E8, 2, 2, 2, 0, 24, yOffset2 + i*40, 0, 2, 0);
+        work->itemB[i] = BattleArcadeObject_Create(&work->unk3E8, 2, 2, 2, 0, 246, yOffset2 + i*40, 0, 2, 0);
+        work->iconA[i] = BattleArcadeObject_Create(&work->unk3E8, 3 + i, 3, 3, 1, 16, yOffset + i*40, 1, 2, 0);
+        work->iconB[i] = BattleArcadeObject_Create(&work->unk3E8, 7 + i, 3, 3, 1, 238, yOffset + i*40, 1, 2, 0);
         ov84_0223F894(work->iconA[i], GetPartyMonByIndex(work->playerParty, i));
         ov84_0223F894(work->iconB[i], GetPartyMonByIndex(work->opponentParty, i));
         ov84_0223F8A8(work->iconA[i], 0);
@@ -594,7 +594,7 @@ static void BattleArcadeGameBoard_InitObjects(GAME_BOARD_WORK *work) {
     
     ov84_0223F1BC(work);
     
-    work->button = ov84_0223F7A0(&work->unk3E8, 0, 0, 0, 2, 128, 96, 0, 0, 1);
+    work->button = BattleArcadeObject_Create(&work->unk3E8, 0, 0, 0, 2, 128, 96, 0, 0, 1);
     
     if (sub_02037474()) {
         sub_02009FE8(1, 16);
@@ -753,7 +753,7 @@ static void ov84_0223EBE8(GAME_BOARD_WORK *work, int key) {
 }
 
 static void BattleArcadeGameBoard_SetCursorPos(GAME_BOARD_WORK *work, u8 cursorPos) {
-    ov84_0223F838(work->cursor, 68 + 40*(cursorPos % 4), 36 + 40*(cursorPos / 4));
+    BattleArcadeObj_SetPos(work->cursor, 68 + 40*(cursorPos % 4), 36 + 40*(cursorPos / 4));
 }
 
 static void BattleArcadeGameBoard_StartCursorSlowdown(GAME_BOARD_WORK *work) {
@@ -859,7 +859,7 @@ static void ov84_0223ED6C(GAME_BOARD_WORK *work, u16 type, u16 a2) {
     work->sendBuffer[offset] = *work->unk24;
 }
 
-static u16 ov84_0223EDA0(GAME_BOARD_WORK *work) {
+static u16 BattleArcade_Random(GAME_BOARD_WORK *work) {
     return LCRandom();
 }
 
@@ -1157,23 +1157,23 @@ static void ov84_0223F1BC(GAME_BOARD_WORK *work) {
     POKEMON *mon;
     
     partyCount = BattleArcade_GetMonCount(work->type, 1);
-    opponentPartyCount = ov80_0223811C(work->type, 1);
+    opponentPartyCount = BattleArcade_GetOpponentMonCount(work->type, 1);
     
     for (i = 0; i < partyCount; i++) {
         mon = GetPartyMonByIndex(work->playerParty, i);
         if (GetMonData(mon, 6, NULL) == 0) {
-            BattleArcadeObj_Vanish(work->itemA[i], 0);
+            BattleArcadeObj_SetVisible(work->itemA[i], 0);
         } else {
-            BattleArcadeObj_Vanish(work->itemA[i], 1);
+            BattleArcadeObj_SetVisible(work->itemA[i], 1);
         }
     }
     
     for (i = 0; i < opponentPartyCount; i++) {
         mon = GetPartyMonByIndex(work->opponentParty, i);
         if (GetMonData(mon, 6, NULL) == 0) {
-            BattleArcadeObj_Vanish(work->itemB[i], 0);
+            BattleArcadeObj_SetVisible(work->itemB[i], 0);
         } else {
-            BattleArcadeObj_Vanish(work->itemB[i], 1);
+            BattleArcadeObj_SetVisible(work->itemB[i], 1);
         }
     }
 }
@@ -1355,7 +1355,7 @@ static void ov84_0223F714(GAME_BOARD_SUB_3E8 *work) {
     work->resourceObj[0][3] = AddCellOrAnimResObjFromNarc(work->resourceMan[3], 184, 22, TRUE, 0, 3, HEAP_ID_GAME_BOARD); 
 }
 
-static BATTLE_ARCADE_OBJECT *ov84_0223F7A0(GAME_BOARD_SUB_3E8 *work, u32 chara, u32 pal, u32 cell, u32 anim, u16 x, u16 y, u32 priority, int bgPrio, u8 display) {
+static BATTLE_ARCADE_OBJECT *BattleArcadeObject_Create(GAME_BOARD_SUB_3E8 *work, u32 chara, u32 pal, u32 cell, u32 anim, u16 x, u16 y, u32 priority, int bgPrio, u8 display) {
     BATTLE_ARCADE_OBJECT *obj;
     VecFx32 vec;
     u32 i;
@@ -1386,16 +1386,16 @@ static BATTLE_ARCADE_OBJECT *ov84_0223F7A0(GAME_BOARD_SUB_3E8 *work, u32 chara, 
 }
 
 static void *BattleArcadeObj_Delete(BATTLE_ARCADE_OBJECT *obj) {
-    sub_02024758(obj->sprite);
+    Sprite_Delete(obj->sprite);
     FreeToHeap(obj);
     return NULL;
 }
 
-static void BattleArcadeObj_Vanish(BATTLE_ARCADE_OBJECT *obj, int flag) {
+static void BattleArcadeObj_SetVisible(BATTLE_ARCADE_OBJECT *obj, int flag) {
     Set2dSpriteVisibleFlag(obj->sprite, flag);
 }
 
-static void ov84_0223F838(BATTLE_ARCADE_OBJECT *obj, u16 x, u16 y) {
+static void BattleArcadeObj_SetPos(BATTLE_ARCADE_OBJECT *obj, u16 x, u16 y) {
     VecFx32 vec;
     vec = *sub_020248AC(obj->sprite);
     vec.x = x * 0x1000;

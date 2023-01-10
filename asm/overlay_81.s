@@ -10035,7 +10035,7 @@ ov81_02242D74: ; 0x02242D74
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #8]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #0
@@ -10213,7 +10213,7 @@ ov81_02242EA4: ; 0x02242EA4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #0
@@ -10403,7 +10403,7 @@ ov81_02242FC8: ; 0x02242FC8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #0

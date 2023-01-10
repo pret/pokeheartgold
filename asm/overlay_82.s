@@ -3994,7 +3994,7 @@ ov82_0223FC9C: ; 0x0223FC9C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #0

@@ -683,7 +683,7 @@ ov19_02259DF4: ; 0x02259DF4
 	lsl r6, r6, #6
 _02259E00:
 	ldr r0, [r5, r6]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #3

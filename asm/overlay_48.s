@@ -4823,7 +4823,7 @@ ov48_0225AC34: ; 0x0225AC34
 _0225AC4A:
 	ldr r0, [sp]
 	ldr r0, [r0, #0x3c]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r7, #0x6c]
 	bl sub_0200AEB0
 	ldr r0, [sp, #8]

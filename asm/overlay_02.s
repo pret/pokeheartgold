@@ -6620,11 +6620,11 @@ _02248DDA:
 
 	thumb_func_start ov02_02248DE4
 ov02_02248DE4: ; 0x02248DE4
-	ldr r3, _02248DEC ; =sub_02024758
+	ldr r3, _02248DEC ; =Sprite_Delete
 	ldr r0, [r1, #0x68]
 	bx r3
 	nop
-_02248DEC: .word sub_02024758
+_02248DEC: .word Sprite_Delete
 	thumb_func_end ov02_02248DE4
 
 	thumb_func_start ov02_02248DF0
@@ -10514,11 +10514,11 @@ ov02_0224AA80: ; 0x0224AA80
 
 	thumb_func_start ov02_0224AAC8
 ov02_0224AAC8: ; 0x0224AAC8
-	ldr r3, _0224AAD0 ; =sub_02024758
+	ldr r3, _0224AAD0 ; =Sprite_Delete
 	ldr r0, [r1, #8]
 	bx r3
 	nop
-_0224AAD0: .word sub_02024758
+_0224AAD0: .word Sprite_Delete
 	thumb_func_end ov02_0224AAC8
 
 	thumb_func_start ov02_0224AAD4
@@ -10684,11 +10684,11 @@ ov02_0224ABCC: ; 0x0224ABCC
 
 	thumb_func_start ov02_0224ABF8
 ov02_0224ABF8: ; 0x0224ABF8
-	ldr r3, _0224AC00 ; =sub_02024758
+	ldr r3, _0224AC00 ; =Sprite_Delete
 	ldr r0, [r1, #0x58]
 	bx r3
 	nop
-_0224AC00: .word sub_02024758
+_0224AC00: .word Sprite_Delete
 	thumb_func_end ov02_0224ABF8
 
 	thumb_func_start ov02_0224AC04

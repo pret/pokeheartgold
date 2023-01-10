@@ -3019,7 +3019,7 @@ _022480A4:
 	ldr r0, [r5, #0x3c]
 	cmp r0, #0
 	beq _022480AE
-	bl sub_02024758
+	bl Sprite_Delete
 _022480AE:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -4341,12 +4341,12 @@ _02248B2C:
 	ldr r0, [r5, #0x1c]
 	cmp r0, #0
 	beq _02248B36
-	bl sub_02024758
+	bl Sprite_Delete
 _02248B36:
 	ldr r0, [r5, #0x20]
 	cmp r0, #0
 	beq _02248B40
-	bl sub_02024758
+	bl Sprite_Delete
 _02248B40:
 	add r4, r4, #1
 	add r5, #8
@@ -6176,7 +6176,7 @@ ov71_02249970: ; 0x02249970
 	ldr r0, [r4, #0x20]
 	cmp r0, #0
 	beq _0224997E
-	bl sub_02024758
+	bl Sprite_Delete
 _0224997E:
 	add r4, #0x10
 	add r0, r4, #0
@@ -7694,7 +7694,7 @@ ov71_0224A590: ; 0x0224A590
 	ldr r0, [r4, #0x20]
 	cmp r0, #0
 	beq _0224A59E
-	bl sub_02024758
+	bl Sprite_Delete
 _0224A59E:
 	add r4, #0x10
 	add r0, r4, #0
@@ -10110,7 +10110,7 @@ _0224B8F4:
 	ldr r0, [r5, #0x40]
 	cmp r0, #0
 	beq _0224B8FE
-	bl sub_02024758
+	bl Sprite_Delete
 _0224B8FE:
 	add r4, r4, #1
 	add r5, r5, #4

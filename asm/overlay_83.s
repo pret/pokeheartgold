@@ -18454,7 +18454,7 @@ ov83_0224753C: ; 0x0224753C
 	pop {r4, pc}
 _0224754A:
 	ldr r0, [r4, #4]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #0

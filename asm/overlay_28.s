@@ -778,15 +778,15 @@ ov28_0225DB54: ; 0x0225DB54
 	mov r0, #6
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r0, #0x61
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -866,7 +866,7 @@ ov28_0225DBFC: ; 0x0225DBFC
 	lsl r6, r6, #4
 _0225DC08:
 	ldr r0, [r5, r6]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4

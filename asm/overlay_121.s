@@ -993,35 +993,35 @@ ov121_021E611C: ; 0x021E611C
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E612E
-	bl sub_02024758
+	bl Sprite_Delete
 _021E612E:
 	mov r0, #0x87
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E613C
-	bl sub_02024758
+	bl Sprite_Delete
 _021E613C:
 	mov r0, #0x22
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E614A
-	bl sub_02024758
+	bl Sprite_Delete
 _021E614A:
 	mov r0, #0x89
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E6158
-	bl sub_02024758
+	bl Sprite_Delete
 _021E6158:
 	mov r0, #0x8a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E6166
-	bl sub_02024758
+	bl Sprite_Delete
 _021E6166:
 	pop {r4, pc}
 	thumb_func_end ov121_021E611C

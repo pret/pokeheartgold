@@ -26,7 +26,7 @@ typedef struct Unk122_021E7F64 {
 void sub_02024AA8(void *, s32);
 void sub_02024504(SpriteList *);
 void sub_0202457C(SpriteList *);
-void sub_02024758(Sprite *);
+void Sprite_Delete(Sprite *);
 int sub_02024B68(Sprite *);
 struct Sprite *CreateSprite(const struct SpriteTemplate *template);
 void Set2dSpriteAnimActiveFlag(Sprite *, int);

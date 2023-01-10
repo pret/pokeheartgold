@@ -72,7 +72,7 @@ ov115_0225F09C: ; 0x0225F09C
 	mov r4, #0
 _0225F0A2:
 	ldr r0, [r5, #4]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -766,7 +766,7 @@ _0225F650:
 	mov r0, #0x7a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r0, #0x7b
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -2201,7 +2201,7 @@ _022601BA:
 	lsl r7, r7, #2
 _022601D6:
 	ldr r0, [r5, r7]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #4

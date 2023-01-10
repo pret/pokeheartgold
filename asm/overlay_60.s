@@ -5001,9 +5001,9 @@ ov60_021E8028: ; 0x021E8028
 	add r4, r1, #0
 	add r5, r0, #0
 	ldr r0, [r4, #0x18]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r4, #0x1c]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r4, #8]
 	bl sub_0200AEB0
 	ldr r0, [r4, #0xc]
@@ -6061,23 +6061,23 @@ ov60_021E8914: ; 0x021E8914
 	add r5, r1, #0
 	add r7, r0, #0
 	ldr r0, [r5, #0x24]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r5, #0x28]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r5, #0x2c]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r5, #0x30]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r5, #0x34]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r5, #0x38]
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r4, #0
 _021E8940:
 	lsl r0, r4, #2
 	add r0, r5, r0
 	ldr r0, [r0, #0x3c]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -7903,15 +7903,15 @@ ov60_021E9878: ; 0x021E9878
 	add r5, r1, #0
 	add r7, r0, #0
 	ldr r0, [r5, #0x64]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r5, #0x68]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r5, #0x6c]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r5, #0x70]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r5, #0x74]
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r4, #0
 _021E989E:
 	lsl r0, r4, #4
@@ -9578,17 +9578,17 @@ ov60_021EA6AC: ; 0x021EA6AC
 	add r5, r1, #0
 	add r7, r0, #0
 	ldr r0, [r5, #0x44]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r5, #0x48]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r5, #0x4c]
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r4, #0
 _021EA6C6:
 	lsl r0, r4, #2
 	add r0, r5, r0
 	ldr r0, [r0, #0x50]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18

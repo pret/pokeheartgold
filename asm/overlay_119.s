@@ -374,7 +374,7 @@ _0225F328:
 	mov r0, #0x6e
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #2
@@ -728,7 +728,7 @@ _0225F618:
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r7, r7, #1
 	add r5, r5, #4
 	cmp r7, #2
@@ -1174,7 +1174,7 @@ _0225F9BC:
 	mov r0, #7
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #2
@@ -1737,7 +1737,7 @@ _0225FE64:
 	mov r0, #0x17
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r5, r7]
 	bl ov01_021F0780
 	add r6, r6, #1
@@ -2176,7 +2176,7 @@ _02260210:
 	mov r0, #0x73
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r1, #0x66
 	add r0, r4, #0
 	lsl r1, r1, #2
@@ -2666,7 +2666,7 @@ _02260616:
 	lsl r7, r7, #4
 _0226061E:
 	ldr r0, [r5, r7]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #3

@@ -2265,7 +2265,7 @@ _021E6AD0:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _021E6ADE
-	bl sub_02024758
+	bl Sprite_Delete
 _021E6ADE:
 	add r4, r4, #1
 	add r5, r5, #4

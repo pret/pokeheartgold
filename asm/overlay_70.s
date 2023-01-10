@@ -3570,12 +3570,12 @@ _022394A4: .word 0x00000DCC
 	thumb_func_start ov70_022394A8
 ov70_022394A8: ; 0x022394A8
 	ldr r1, _022394B0 ; =0x00000DCC
-	ldr r3, _022394B4 ; =sub_02024758
+	ldr r3, _022394B4 ; =Sprite_Delete
 	ldr r0, [r0, r1]
 	bx r3
 	.balign 4, 0
 _022394B0: .word 0x00000DCC
-_022394B4: .word sub_02024758
+_022394B4: .word Sprite_Delete
 	thumb_func_end ov70_022394A8
 
 	thumb_func_start ov70_022394B8
@@ -5079,11 +5079,11 @@ ov70_0223A06C: ; 0x0223A06C
 ov70_0223A0C4: ; 0x0223A0C4
 	mov r1, #0xee
 	lsl r1, r1, #4
-	ldr r3, _0223A0D0 ; =sub_02024758
+	ldr r3, _0223A0D0 ; =Sprite_Delete
 	ldr r0, [r0, r1]
 	bx r3
 	nop
-_0223A0D0: .word sub_02024758
+_0223A0D0: .word Sprite_Delete
 	thumb_func_end ov70_0223A0C4
 
 	thumb_func_start ov70_0223A0D4
@@ -6535,11 +6535,11 @@ ov70_0223AC98: ; 0x0223AC98
 ov70_0223ACE4: ; 0x0223ACE4
 	mov r1, #0xee
 	lsl r1, r1, #4
-	ldr r3, _0223ACF0 ; =sub_02024758
+	ldr r3, _0223ACF0 ; =Sprite_Delete
 	ldr r0, [r0, r1]
 	bx r3
 	nop
-_0223ACF0: .word sub_02024758
+_0223ACF0: .word Sprite_Delete
 	thumb_func_end ov70_0223ACE4
 
 	thumb_func_start ov70_0223ACF4
@@ -8201,17 +8201,17 @@ ov70_0223BAAC: ; 0x0223BAAC
 	add r4, r0, #0
 	ldr r0, _0223BAD4 ; =0x00000DCC
 	ldr r0, [r4, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r0, #0xdd
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, _0223BAD8 ; =0x00000F04
 	ldr r0, [r4, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, _0223BADC ; =0x00000F08
 	ldr r0, [r4, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	pop {r4, pc}
 	.balign 4, 0
 _0223BAD4: .word 0x00000DCC
@@ -11103,14 +11103,14 @@ ov70_0223D208: ; 0x0223D208
 	add r4, r5, #0
 _0223D212:
 	ldr r0, [r4, r7]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #2
 	blt _0223D212
 	ldr r0, _0223D260 ; =0x00000DCC
 	ldr r0, [r5, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r7, #0xe5
 	mov r6, #0
 	add r4, r5, #0
@@ -11118,9 +11118,9 @@ _0223D212:
 _0223D230:
 	ldr r0, _0223D264 ; =0x00000DD8
 	ldr r0, [r4, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r4, r7]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #0x1e
@@ -11129,7 +11129,7 @@ _0223D230:
 	mov r4, #0
 _0223D24A:
 	ldr r0, [r5, r6]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #6
@@ -14422,13 +14422,13 @@ ov70_0223ECA4: ; 0x0223ECA4
 	mov r0, #0xdd
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, _0223ECC4 ; =0x00000F04
 	ldr r0, [r4, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, _0223ECC8 ; =0x00000F08
 	ldr r0, [r4, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	pop {r4, pc}
 	.balign 4, 0
 _0223ECC4: .word 0x00000F04

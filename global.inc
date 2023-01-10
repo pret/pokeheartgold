@@ -1252,7 +1252,7 @@
 .public sub_0202457C
 .public CreateSprite
 .public sub_02024714
-.public sub_02024758
+.public Sprite_Delete
 .public sub_020247D4
 .public sub_020247E4
 .public sub_020247F4
@@ -8063,7 +8063,7 @@
 .public ov80_02237D8C
 .public ov80_02237FA4
 .public BattleArcade_GetMonCount
-.public ov80_0223811C
+.public BattleArcade_GetOpponentMonCount
 .public BattleArcade_MultiplayerCheck
 .public ov80_022384BC
 .public ov80_022385D8

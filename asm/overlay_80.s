@@ -20523,7 +20523,7 @@ _02233C02:
 	str r0, [sp, #0x18]
 	ldrb r0, [r4, #0x10]
 	mov r1, #1
-	bl ov80_0223811C
+	bl BattleArcade_GetOpponentMonCount
 	mov r0, #0
 	str r0, [sp, #0x10]
 	ldr r0, [sp, #0x18]
@@ -20623,7 +20623,7 @@ _02233CD4:
 	str r0, [sp, #0x14]
 	ldrb r0, [r4, #0x10]
 	mov r1, #1
-	bl ov80_0223811C
+	bl BattleArcade_GetOpponentMonCount
 	add r7, r0, #0
 	cmp r6, #0
 	bne _02233D16
@@ -21470,7 +21470,7 @@ ov80_02234390: ; 0x02234390
 	ldrb r0, [r5, #0x10]
 	mov r1, #1
 	ldrb r4, [r5, #0x11]
-	bl ov80_0223811C
+	bl BattleArcade_GetOpponentMonCount
 	add r6, r0, #0
 	ldrb r0, [r5, #0x10]
 	bl BattleArcade_MultiplayerCheck
@@ -21728,7 +21728,7 @@ ov80_02234588: ; 0x02234588
 	str r0, [sp, #4]
 	ldrb r0, [r5, #0x10]
 	mov r1, #1
-	bl ov80_0223811C
+	bl BattleArcade_GetOpponentMonCount
 	ldrb r1, [r5, #0x10]
 	add r0, sp, #8
 	strb r1, [r0, #8]
@@ -22034,7 +22034,7 @@ ov80_022347EC: ; 0x022347EC
 	ldrb r0, [r5, #0x10]
 	mov r1, #1
 	ldrb r4, [r5, #0x11]
-	bl ov80_0223811C
+	bl BattleArcade_GetOpponentMonCount
 	add r6, r0, #0
 	ldrb r0, [r5, #0x10]
 	bl BattleArcade_MultiplayerCheck
@@ -22357,7 +22357,7 @@ ov80_02234A74: ; 0x02234A74
 	ldr r0, [sp, #4]
 	mov r1, #1
 	ldrb r0, [r0, #0x10]
-	bl ov80_0223811C
+	bl BattleArcade_GetOpponentMonCount
 	str r0, [sp, #0xc]
 	cmp r4, #0
 	bne _02234AD8
@@ -22442,7 +22442,7 @@ ov80_02234B24: ; 0x02234B24
 	add r4, r0, #0
 	ldrb r0, [r5, #0x10]
 	mov r1, #1
-	bl ov80_0223811C
+	bl BattleArcade_GetOpponentMonCount
 	str r0, [sp]
 	cmp r6, #0
 	bne _02234B5E
@@ -22517,7 +22517,7 @@ ov80_02234BB4: ; 0x02234BB4
 	mov r1, #1
 	add r6, r2, #0
 	add r4, r3, #0
-	bl ov80_0223811C
+	bl BattleArcade_GetOpponentMonCount
 	cmp r4, r0
 	bge _02234BEA
 	cmp r6, #1
@@ -22553,7 +22553,7 @@ ov80_02234BEC: ; 0x02234BEC
 	str r0, [sp, #8]
 	ldrb r0, [r7, #0x10]
 	mov r1, #1
-	bl ov80_0223811C
+	bl BattleArcade_GetOpponentMonCount
 	str r0, [sp, #4]
 	cmp r4, #0
 	bne _02234C5C
@@ -22649,7 +22649,7 @@ ov80_02234CB0: ; 0x02234CB0
 	str r0, [sp]
 	ldrb r0, [r5, #0x10]
 	mov r1, #1
-	bl ov80_0223811C
+	bl BattleArcade_GetOpponentMonCount
 	add r7, r0, #0
 	cmp r6, #0
 	bne _02234CEC
@@ -22695,7 +22695,7 @@ ov80_02234D04: ; 0x02234D04
 	add r7, r0, #0
 	ldrb r0, [r5, #0x10]
 	mov r1, #1
-	bl ov80_0223811C
+	bl BattleArcade_GetOpponentMonCount
 	cmp r6, #0
 	bne _02234D72
 	cmp r4, r7
@@ -22893,7 +22893,7 @@ ov80_02234E98: ; 0x02234E98
 	ldrb r0, [r5, #0x10]
 	mov r1, #1
 	ldr r4, [r5, #0x74]
-	bl ov80_0223811C
+	bl BattleArcade_GetOpponentMonCount
 	b _02234EB8
 _02234EAE:
 	ldrb r0, [r5, #0x10]
@@ -29726,8 +29726,8 @@ _02238112:
 	.balign 4, 0
 	thumb_func_end BattleArcade_GetMonCount
 
-	thumb_func_start ov80_0223811C
-ov80_0223811C: ; 0x0223811C
+	thumb_func_start BattleArcade_GetOpponentMonCount
+BattleArcade_GetOpponentMonCount: ; 0x0223811C
 	push {r3, lr}
 	cmp r0, #3
 	bhi _02238146
@@ -29758,7 +29758,7 @@ _02238146:
 	mov r0, #3
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov80_0223811C
+	thumb_func_end BattleArcade_GetOpponentMonCount
 
 	thumb_func_start ov80_02238150
 ov80_02238150: ; 0x02238150
@@ -29772,7 +29772,7 @@ ov80_02238150: ; 0x02238150
 	str r0, [sp, #0x10]
 	ldrb r0, [r7, #0x10]
 	mov r1, #0
-	bl ov80_0223811C
+	bl BattleArcade_GetOpponentMonCount
 	str r0, [sp, #0xc]
 	ldrb r0, [r7, #0x10]
 	bl ov80_02238344
@@ -29868,7 +29868,7 @@ _02238202:
 	bl ov80_0222A480
 	ldrb r0, [r7, #0x10]
 	mov r1, #0
-	bl ov80_0223811C
+	bl BattleArcade_GetOpponentMonCount
 	add r1, r0, #0
 	ldr r0, [r4, #8]
 	bl InitPartyWithMaxSize
@@ -29942,7 +29942,7 @@ _0223829A:
 	bl ov80_0222A480
 	ldrb r0, [r7, #0x10]
 	mov r1, #0
-	bl ov80_0223811C
+	bl BattleArcade_GetOpponentMonCount
 	add r1, r0, #0
 	ldr r0, [r4, #0x10]
 	bl InitPartyWithMaxSize
@@ -30081,7 +30081,7 @@ ov80_022383C0: ; 0x022383C0
 	bl SavArray_Party_init
 	ldrb r0, [r5, #0x10]
 	mov r1, #1
-	bl ov80_0223811C
+	bl BattleArcade_GetOpponentMonCount
 	str r0, [sp]
 	mov r0, #0xb
 	bl AllocMonZeroed

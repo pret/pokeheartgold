@@ -1070,7 +1070,7 @@ static void FreeCutsceneSprites(CreditsAppWork *work) {
 
     for (i = 0; i < 16; i++) {
         if (sprites->sprite[i].unk0 != 0) {
-            sub_02024758(sprites->sprite[i].sprite);
+            Sprite_Delete(sprites->sprite[i].sprite);
             sprites->sprite[i].unk0 = 0;
             sprites->sprite[i].unk2 = 0;
         }

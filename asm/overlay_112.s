@@ -21495,7 +21495,7 @@ ov112_021F05CC: ; 0x021F05CC
 	lsl r6, r6, #2
 _021F05D8:
 	ldr r0, [r5, r6]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #6
@@ -21503,7 +21503,7 @@ _021F05D8:
 	mov r0, #0x6d
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r0, #0x6e
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]

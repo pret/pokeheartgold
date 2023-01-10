@@ -1752,13 +1752,13 @@ ov43_0222ACDC: ; 0x0222ACDC
 	mov r0, #0x7f
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r6, #0x7d
 	mov r4, #0
 	lsl r6, r6, #2
 _0222ACF0:
 	ldr r0, [r5, r6]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #2
@@ -3530,7 +3530,7 @@ ov43_0222BAB8: ; 0x0222BAB8
 	add r0, #0xf8
 	ldr r0, [r0]
 	add r7, r2, #0
-	bl sub_02024758
+	bl Sprite_Delete
 	add r0, r5, #0
 	add r0, #0xc8
 	bl RemoveWindow

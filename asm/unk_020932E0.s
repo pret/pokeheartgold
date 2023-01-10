@@ -3805,7 +3805,7 @@ _02095168:
 	ldr r0, [r4, r7]
 	cmp r0, #0
 	beq _02095172
-	bl sub_02024758
+	bl Sprite_Delete
 _02095172:
 	add r6, r6, #1
 	add r4, #0x34
@@ -3821,7 +3821,7 @@ _02095186:
 	ldr r0, [r4, r7]
 	cmp r0, #0
 	beq _02095190
-	bl sub_02024758
+	bl Sprite_Delete
 _02095190:
 	ldrb r0, [r5, #0xd]
 	add r6, r6, #1
@@ -3840,7 +3840,7 @@ _020951A6:
 	ldr r0, [r0, r4]
 	cmp r0, #0
 	beq _020951B2
-	bl sub_02024758
+	bl Sprite_Delete
 _020951B2:
 	ldrb r0, [r5, #0xd]
 	add r6, r6, #1
@@ -3852,32 +3852,32 @@ _020951BC:
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _020951C8
-	bl sub_02024758
+	bl Sprite_Delete
 _020951C8:
 	ldr r0, _02095228 ; =0x000008BC
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _020951D4
-	bl sub_02024758
+	bl Sprite_Delete
 _020951D4:
 	ldr r0, _0209522C ; =0x000008B8
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _020951E0
-	bl sub_02024758
+	bl Sprite_Delete
 _020951E0:
 	ldr r0, _02095230 ; =0x000008C4
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _020951EC
-	bl sub_02024758
+	bl Sprite_Delete
 _020951EC:
 	mov r0, #0x23
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _020951FA
-	bl sub_02024758
+	bl Sprite_Delete
 _020951FA:
 	ldrb r1, [r5, #0xd]
 	mov r0, #3
@@ -3892,7 +3892,7 @@ _0209520C:
 	ldr r0, [r5, r7]
 	cmp r0, #0
 	beq _02095216
-	bl sub_02024758
+	bl Sprite_Delete
 _02095216:
 	add r4, r4, #1
 	add r5, r5, #4

@@ -14995,7 +14995,7 @@ ov44_022316B0: ; 0x022316B0
 	add r4, r5, #0
 _022316D6:
 	ldr r0, [r4, r7]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #3
@@ -16919,11 +16919,11 @@ ov44_02232530: ; 0x02232530
 	mov r0, #0x17
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r0, #0x5d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov44_02232530

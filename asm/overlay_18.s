@@ -39347,11 +39347,11 @@ ov18_021F94A0: ; 0x021F94A0
 	mov r0, #0x81
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r0, #0x86
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov18_021F94A0
@@ -39400,11 +39400,11 @@ ov18_021F94BC: ; 0x021F94BC
 ov18_021F9508: ; 0x021F9508
 	mov r1, #0x1f
 	lsl r1, r1, #4
-	ldr r3, _021F9514 ; =sub_02024758
+	ldr r3, _021F9514 ; =Sprite_Delete
 	ldr r0, [r0, r1]
 	bx r3
 	nop
-_021F9514: .word sub_02024758
+_021F9514: .word Sprite_Delete
 	thumb_func_end ov18_021F9508
 
 	thumb_func_start ov18_021F9518
@@ -39473,11 +39473,11 @@ ov18_021F9518: ; 0x021F9518
 ov18_021F959C: ; 0x021F959C
 	mov r1, #0x8b
 	lsl r1, r1, #2
-	ldr r3, _021F95A8 ; =sub_02024758
+	ldr r3, _021F95A8 ; =Sprite_Delete
 	ldr r0, [r0, r1]
 	bx r3
 	nop
-_021F95A8: .word sub_02024758
+_021F95A8: .word Sprite_Delete
 	thumb_func_end ov18_021F959C
 
 	thumb_func_start ov18_021F95AC

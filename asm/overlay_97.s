@@ -1394,7 +1394,7 @@ ov97_0221F0E0: ; 0x0221F0E0
 	lsl r6, r6, #2
 _0221F0EE:
 	ldr r0, [r5, r6]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #5
@@ -1408,12 +1408,12 @@ _0221F106:
 	mov r0, #0x77
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r4, #0
 	add r5, r7, #0
 _0221F114:
 	ldr r0, [r5, r6]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #5
@@ -1428,7 +1428,7 @@ _0221F114:
 	ldr r0, [sp]
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r1, #0x96
 	ldr r0, [sp]
 	lsl r1, r1, #2

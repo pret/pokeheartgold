@@ -3065,11 +3065,11 @@ ov74_0222883C: ; 0x0222883C
 	cmp r1, #0
 	beq _02228868
 _02228856:
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r0, #0x69
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	bl ov74_022359BC
 _02228868:
 	add r5, r7, #0
@@ -8264,7 +8264,7 @@ ov74_0222B1F4: ; 0x0222B1F4
 	add r4, r0, #0
 	ldr r0, _0222B208 ; =0x00003014
 	ldr r0, [r4, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, _0222B208 ; =0x00003014
 	mov r1, #0
 	str r1, [r4, r0]
@@ -8279,7 +8279,7 @@ ov74_0222B20C: ; 0x0222B20C
 	add r4, r0, #0
 	ldr r0, _0222B220 ; =0x00003060
 	ldr r0, [r4, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, _0222B220 ; =0x00003060
 	mov r1, #0
 	str r1, [r4, r0]
@@ -8454,7 +8454,7 @@ _0222B34C:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0222B36A
-	bl sub_02024758
+	bl Sprite_Delete
 	add r0, r5, #0
 	add r0, #0x94
 	str r6, [r0]
@@ -8480,7 +8480,7 @@ ov74_0222B374: ; 0x0222B374
 _0222B37E:
 	ldr r0, _0222B3A0 ; =0x00001854
 	ldr r0, [r5, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, _0222B3A0 ; =0x00001854
 	str r6, [r5, r0]
 	ldr r0, [r5, r7]
@@ -11965,13 +11965,13 @@ ov74_0222D024: ; 0x0222D024
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0222D034
-	bl sub_02024758
+	bl Sprite_Delete
 _0222D034:
 	ldr r0, _0222D08C ; =0x00002DC8
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0222D040
-	bl sub_02024758
+	bl Sprite_Delete
 _0222D040:
 	ldr r0, _0222D08C ; =0x00002DC8
 	mov r1, #0
@@ -11983,19 +11983,19 @@ _0222D040:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0222D058
-	bl sub_02024758
+	bl Sprite_Delete
 _0222D058:
 	ldr r0, _0222D090 ; =0x00002DD0
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0222D064
-	bl sub_02024758
+	bl Sprite_Delete
 _0222D064:
 	ldr r0, _0222D094 ; =0x00002DD4
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0222D070
-	bl sub_02024758
+	bl Sprite_Delete
 _0222D070:
 	ldr r1, _0222D094 ; =0x00002DD4
 	mov r0, #0
@@ -15447,14 +15447,14 @@ ov74_0222EC60: ; 0x0222EC60
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0222EC70
-	bl sub_02024758
+	bl Sprite_Delete
 _0222EC70:
 	mov r0, #0xb6
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0222EC7E
-	bl sub_02024758
+	bl Sprite_Delete
 _0222EC7E:
 	mov r0, #0xb6
 	mov r1, #0
@@ -15467,19 +15467,19 @@ _0222EC7E:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0222EC98
-	bl sub_02024758
+	bl Sprite_Delete
 _0222EC98:
 	ldr r0, _0222ECCC ; =0x00002D88
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0222ECA4
-	bl sub_02024758
+	bl Sprite_Delete
 _0222ECA4:
 	ldr r0, _0222ECD0 ; =0x00002D8C
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0222ECB0
-	bl sub_02024758
+	bl Sprite_Delete
 _0222ECB0:
 	ldr r1, _0222ECD0 ; =0x00002D8C
 	mov r0, #0
@@ -23981,7 +23981,7 @@ ov74_02232DC4: ; 0x02232DC4
 	add r5, r6, #0
 _02232DCE:
 	ldr r0, [r5, r7]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #6
@@ -24046,14 +24046,14 @@ _02232E50:
 	ldr r0, [r5, r7]
 	cmp r0, #0
 	beq _02232E5A
-	bl sub_02024758
+	bl Sprite_Delete
 _02232E5A:
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _02232E68
-	bl sub_02024758
+	bl Sprite_Delete
 _02232E68:
 	add r4, r4, #1
 	add r5, #0xc
@@ -24067,7 +24067,7 @@ _02232E78:
 	ldr r0, [r4, r7]
 	cmp r0, #0
 	beq _02232E82
-	bl sub_02024758
+	bl Sprite_Delete
 _02232E82:
 	add r5, r5, #1
 	add r4, #0xc
@@ -24078,21 +24078,21 @@ _02232E82:
 	ldr r0, [r6, r0]
 	cmp r0, #0
 	beq _02232E98
-	bl sub_02024758
+	bl Sprite_Delete
 _02232E98:
 	mov r0, #0xee
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	cmp r0, #0
 	beq _02232EA6
-	bl sub_02024758
+	bl Sprite_Delete
 _02232EA6:
 	mov r0, #0xea
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	cmp r0, #0
 	beq _02232EB4
-	bl sub_02024758
+	bl Sprite_Delete
 _02232EB4:
 	ldr r0, _02232F48 ; =0x00000478
 	add r0, r6, r0
@@ -29822,7 +29822,7 @@ ov74_022359BC: ; 0x022359BC
 	mov r0, #0x82
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r0, #0x82
 	mov r1, #0
 	lsl r0, r0, #2

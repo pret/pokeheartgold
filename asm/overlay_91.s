@@ -2399,7 +2399,7 @@ ov91_0225D750: ; 0x0225D750
 	mov r4, #0
 _0225D756:
 	ldr r0, [r5]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #3
@@ -5960,7 +5960,7 @@ ov91_0225F1E8: ; 0x0225F1E8
 	add r5, r0, #0
 	ldr r0, [r5, #0x34]
 	add r4, r1, #0
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r5]
 	bl sub_0200AEB0
 	ldr r0, [r5, #4]
@@ -8723,7 +8723,7 @@ ov91_02260830: ; 0x02260830
 	push {r4, lr}
 	add r4, r1, #0
 	ldr r0, [r4]
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r2, #0x42
 	add r0, r4, #0
 	mov r1, #0
@@ -9302,11 +9302,11 @@ _02260CA4: .word 0x0000076C
 
 	thumb_func_start ov91_02260CA8
 ov91_02260CA8: ; 0x02260CA8
-	ldr r3, _02260CB0 ; =sub_02024758
+	ldr r3, _02260CB0 ; =Sprite_Delete
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_02260CB0: .word sub_02024758
+_02260CB0: .word Sprite_Delete
 	thumb_func_end ov91_02260CA8
 
 	thumb_func_start ov91_02260CB4
@@ -9432,7 +9432,7 @@ ov91_02260D80: ; 0x02260D80
 	mov r4, #0
 _02260D86:
 	ldr r0, [r5, #4]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r4, r4, #1
 	add r5, #0x1c
 	cmp r4, #8
@@ -10767,7 +10767,7 @@ ov91_02261790: ; 0x02261790
 	ldr r0, [r5, #0x5c]
 	bl String_dtor
 	ldr r0, [r5, #0x34]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r5]
 	bl sub_0200AEB0
 	ldr r0, [r5, #4]
