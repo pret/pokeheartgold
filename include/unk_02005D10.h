@@ -17,5 +17,6 @@ void sub_02005E44(u16 a0);
 void StopSE(u16 sndseq, int a1);
 void PlayFanfare(u16 a0);
 BOOL IsFanfarePlaying(void);
+BOOL GF_IsAnySEPlaying();
 
 #endif //POKEHEARTGOLD_UNK_02005D10_H
