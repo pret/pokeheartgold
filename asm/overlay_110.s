@@ -1417,7 +1417,7 @@ ov110_021E6394: ; 0x021E6394
 	bl NARC_ctor
 	add r4, r0, #0
 	ldr r0, [r5]
-	bl sub_020030E8
+	bl PaletteData_Init
 	add r1, r5, #0
 	add r1, #0x80
 	str r0, [r1]
@@ -1631,7 +1631,7 @@ ov110_021E6544: ; 0x021E6544
 	bl PaletteData_FreeBuffers
 	add r4, #0x80
 	ldr r0, [r4]
-	bl sub_02003104
+	bl PaletteData_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov110_021E6544

@@ -4198,7 +4198,7 @@ ov80_0222BCE0: ; 0x0222BCE0
 	add r7, r0, #0
 	ldrb r0, [r7, #0x10]
 	mov r1, #0
-	bl ov80_022380E8
+	bl BattleArcade_GetMonCount
 	str r0, [sp]
 	bl SizeOfStructPokemon
 	add r6, r0, #0
@@ -4262,7 +4262,7 @@ ov80_0222BD44: ; 0x0222BD44
 	ldr r0, [sp, #4]
 	mov r1, #0
 	ldrb r0, [r0, #0x10]
-	bl ov80_022380E8
+	bl BattleArcade_GetMonCount
 	str r0, [sp, #8]
 	bl SizeOfStructPokemon
 	add r5, r0, #0
@@ -20011,7 +20011,7 @@ _02233804:
 	bne _02233858
 	ldrb r0, [r6, #0x10]
 	mov r1, #1
-	bl ov80_022380E8
+	bl BattleArcade_GetMonCount
 	mov r5, #0
 	str r0, [sp, #4]
 	cmp r0, #0
@@ -20519,7 +20519,7 @@ _02233C02:
 	bne _02233CAE
 	ldrb r0, [r4, #0x10]
 	mov r1, #1
-	bl ov80_022380E8
+	bl BattleArcade_GetMonCount
 	str r0, [sp, #0x18]
 	ldrb r0, [r4, #0x10]
 	mov r1, #1
@@ -20599,7 +20599,7 @@ _02233CB0:
 	b _02233F12
 _02233CB8:
 	ldrb r0, [r4, #0x10]
-	bl ov80_02238374
+	bl BattleArcade_MultiplayerCheck
 	strh r0, [r5]
 	b _02233F12
 _02233CC2:
@@ -20619,7 +20619,7 @@ _02233CD4:
 	bl ov80_02234A74
 	ldrb r0, [r4, #0x10]
 	mov r1, #1
-	bl ov80_022380E8
+	bl BattleArcade_GetMonCount
 	str r0, [sp, #0x14]
 	ldrb r0, [r4, #0x10]
 	mov r1, #1
@@ -20691,7 +20691,7 @@ _02233D62:
 	b _02233F12
 _02233D6C:
 	ldrb r0, [r4, #0x10]
-	bl ov80_02238374
+	bl BattleArcade_MultiplayerCheck
 	cmp r0, #1
 	beq _02233D78
 	b _02233F12
@@ -20720,7 +20720,7 @@ _02233D82:
 	b _02233F12
 _02233DAA:
 	ldrb r0, [r4, #0x10]
-	bl ov80_02238374
+	bl BattleArcade_MultiplayerCheck
 	cmp r0, #0
 	bne _02233DBE
 	ldr r0, [sp, #0x24]
@@ -21368,7 +21368,7 @@ _0223429A:
 	mov r1, #0
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x10]
-	bl ov80_022380E8
+	bl BattleArcade_GetMonCount
 	add r7, r0, #0
 	mov r5, #0
 	cmp r7, #0
@@ -21424,7 +21424,7 @@ _0223434E:
 	ldr r0, _02234374 ; =ov80_0223DD4C
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x10]
-	bl ov80_02238374
+	bl BattleArcade_MultiplayerCheck
 	cmp r0, #1
 	bne _02234366
 	ldr r0, _02234374 ; =ov80_0223DD4C
@@ -21473,7 +21473,7 @@ ov80_02234390: ; 0x02234390
 	bl ov80_0223811C
 	add r6, r0, #0
 	ldrb r0, [r5, #0x10]
-	bl ov80_02238374
+	bl BattleArcade_MultiplayerCheck
 	mov r3, #0x33
 	lsl r3, r3, #4
 	add r1, r5, r3
@@ -22037,7 +22037,7 @@ ov80_022347EC: ; 0x022347EC
 	bl ov80_0223811C
 	add r6, r0, #0
 	ldrb r0, [r5, #0x10]
-	bl ov80_02238374
+	bl BattleArcade_MultiplayerCheck
 	mov r3, #0x33
 	lsl r3, r3, #4
 	add r1, r5, r3
@@ -22082,7 +22082,7 @@ ov80_02234848: ; 0x02234848
 	str r2, [sp]
 	add r1, r4, #0
 	add r5, r3, #0
-	bl ov80_022380E8
+	bl BattleArcade_GetMonCount
 	add r3, r0, #0
 	ldr r2, [sp]
 	add r0, r6, #0
@@ -22164,7 +22164,7 @@ _022348EA:
 _022348F2:
 	ldr r0, [sp]
 	ldrb r0, [r0, #0x10]
-	bl ov80_02238374
+	bl BattleArcade_MultiplayerCheck
 	cmp r0, #1
 	bne _0223494C
 	ldr r0, [sp, #0xc]
@@ -22352,7 +22352,7 @@ ov80_02234A74: ; 0x02234A74
 	str r1, [sp, #8]
 	mov r1, #1
 	add r4, r2, #0
-	bl ov80_022380E8
+	bl BattleArcade_GetMonCount
 	add r7, r0, #0
 	ldr r0, [sp, #4]
 	mov r1, #1
@@ -22438,7 +22438,7 @@ ov80_02234B24: ; 0x02234B24
 	add r7, r1, #0
 	mov r1, #1
 	add r6, r2, #0
-	bl ov80_022380E8
+	bl BattleArcade_GetMonCount
 	add r4, r0, #0
 	ldrb r0, [r5, #0x10]
 	mov r1, #1
@@ -22486,7 +22486,7 @@ ov80_02234B7C: ; 0x02234B7C
 	mov r1, #1
 	add r6, r2, #0
 	add r4, r3, #0
-	bl ov80_022380E8
+	bl BattleArcade_GetMonCount
 	cmp r4, r0
 	bge _02234BB2
 	cmp r6, #1
@@ -22549,7 +22549,7 @@ ov80_02234BEC: ; 0x02234BEC
 	str r1, [sp]
 	mov r1, #1
 	add r4, r2, #0
-	bl ov80_022380E8
+	bl BattleArcade_GetMonCount
 	str r0, [sp, #8]
 	ldrb r0, [r7, #0x10]
 	mov r1, #1
@@ -22645,7 +22645,7 @@ ov80_02234CB0: ; 0x02234CB0
 	add r4, r1, #0
 	mov r1, #1
 	add r6, r2, #0
-	bl ov80_022380E8
+	bl BattleArcade_GetMonCount
 	str r0, [sp]
 	ldrb r0, [r5, #0x10]
 	mov r1, #1
@@ -22691,7 +22691,7 @@ ov80_02234D04: ; 0x02234D04
 	mov r1, #1
 	add r6, r2, #0
 	add r4, r3, #0
-	bl ov80_022380E8
+	bl BattleArcade_GetMonCount
 	add r7, r0, #0
 	ldrb r0, [r5, #0x10]
 	mov r1, #1
@@ -22899,7 +22899,7 @@ _02234EAE:
 	ldrb r0, [r5, #0x10]
 	mov r1, #1
 	ldr r4, [r5, #0x70]
-	bl ov80_022380E8
+	bl BattleArcade_GetMonCount
 _02234EB8:
 	ldr r3, _02234EC8 ; =ov80_0223DCB8
 	add r1, r4, #0
@@ -29692,8 +29692,8 @@ _022380DE:
 	.balign 4, 0
 	thumb_func_end ov80_022380A0
 
-	thumb_func_start ov80_022380E8
-ov80_022380E8: ; 0x022380E8
+	thumb_func_start BattleArcade_GetMonCount
+BattleArcade_GetMonCount: ; 0x022380E8
 	push {r3, lr}
 	cmp r0, #3
 	bhi _02238112
@@ -29724,7 +29724,7 @@ _02238112:
 	mov r0, #3
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov80_022380E8
+	thumb_func_end BattleArcade_GetMonCount
 
 	thumb_func_start ov80_0223811C
 ov80_0223811C: ; 0x0223811C
@@ -29768,7 +29768,7 @@ ov80_02238150: ; 0x02238150
 	ldrb r0, [r7, #0x10]
 	add r5, r1, #0
 	mov r1, #0
-	bl ov80_022380E8
+	bl BattleArcade_GetMonCount
 	str r0, [sp, #0x10]
 	ldrb r0, [r7, #0x10]
 	mov r1, #0
@@ -30024,8 +30024,8 @@ ov80_02238370: ; 0x02238370
 	bx lr
 	thumb_func_end ov80_02238370
 
-	thumb_func_start ov80_02238374
-ov80_02238374: ; 0x02238374
+	thumb_func_start BattleArcade_MultiplayerCheck
+BattleArcade_MultiplayerCheck: ; 0x02238374
 	cmp r0, #2
 	beq _0223837C
 	cmp r0, #3
@@ -30036,7 +30036,7 @@ _0223837C:
 _02238380:
 	mov r0, #0
 	bx lr
-	thumb_func_end ov80_02238374
+	thumb_func_end BattleArcade_MultiplayerCheck
 
 	thumb_func_start ov80_02238384
 ov80_02238384: ; 0x02238384
@@ -30194,7 +30194,7 @@ ov80_02238498: ; 0x02238498
 	add r5, r0, #0
 	ldrb r0, [r5, #0x10]
 	ldrh r4, [r5, #0x1a]
-	bl ov80_02238374
+	bl BattleArcade_MultiplayerCheck
 	cmp r0, #1
 	bne _022384B4
 	ldr r0, _022384B8 ; =0x00000A76
@@ -30529,7 +30529,7 @@ _022386D4:
 	bl ov80_022392DC
 	str r0, [r4, #0xc]
 	mov r0, #0x65
-	bl sub_020030E8
+	bl PaletteData_Init
 	str r0, [r4, #4]
 	mov r1, #1
 	bl sub_02003B50
@@ -30722,7 +30722,7 @@ ov80_0223885C: ; 0x0223885C
 	mov r1, #3
 	bl PaletteData_FreeBuffers
 	ldr r0, [r4, #4]
-	bl sub_02003104
+	bl PaletteData_Free
 	ldr r0, [r4]
 	bl FreeToHeap
 	add r0, r4, #0
@@ -37006,8 +37006,8 @@ ov80_0223BE6C: ; 0x0223BE6C
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
 ov80_0223BE78: ; 0x0223BE78
-	.word ov84_0223DD60
-	.word ov84_0223DEB8
+	.word BattleArcadeGameBoard_InitOverlay
+	.word BattleArcadeGameBoard_Main
 	.word ov84_0223DFF0
 	.word FS_OVERLAY_ID(OVY_84)
 

@@ -1016,7 +1016,7 @@ ov100_021E60C4: ; 0x021E60C4
 	bl NARC_ctor
 	add r4, r0, #0
 	ldr r0, [r5]
-	bl sub_020030E8
+	bl PaletteData_Init
 	str r0, [r5, #0x78]
 	mov r2, #2
 	ldr r3, [r5]
@@ -1077,7 +1077,7 @@ ov100_021E6134: ; 0x021E6134
 	mov r1, #0
 	bl PaletteData_FreeBuffers
 	ldr r0, [r4, #0x78]
-	bl sub_02003104
+	bl PaletteData_Free
 	mov r0, #0
 	str r0, [r4, #0x78]
 	pop {r4, pc}

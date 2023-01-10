@@ -2639,7 +2639,7 @@ ov95_021E6D70: ; 0x021E6D70
 	bl sub_02016EDC
 	str r0, [r4, #0x58]
 	mov r0, #0x46
-	bl sub_020030E8
+	bl PaletteData_Init
 	mov r1, #1
 	str r0, [r4, #8]
 	bl sub_02003B50
@@ -2802,7 +2802,7 @@ ov95_021E6F0C: ; 0x021E6F0C
 	mov r1, #1
 	bl PaletteData_FreeBuffers
 	ldr r0, [r4, #8]
-	bl sub_02003104
+	bl PaletteData_Free
 	mov r0, #0
 	bl sub_02002B8C
 	ldr r0, [r4, #4]

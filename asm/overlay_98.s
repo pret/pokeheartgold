@@ -85,7 +85,7 @@ ov98_0221E5E0: ; 0x0221E5E0
 	ldr r2, [sp]
 	bl sub_0200D3F8
 	ldr r0, [r4]
-	bl sub_020030E8
+	bl PaletteData_Init
 	str r0, [r4, #0xc]
 	mov r0, #0x10
 	mov r1, #1
@@ -110,7 +110,7 @@ ov98_0221E684: ; 0x0221E684
 	add r6, r2, #0
 	bl NARC_dtor
 	ldr r0, [r7, #0xc]
-	bl sub_02003104
+	bl PaletteData_Free
 	mov r4, #0
 	cmp r6, #0
 	bls _0221E6B4

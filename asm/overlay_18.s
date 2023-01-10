@@ -1078,7 +1078,7 @@ ov18_021E61A4: ; 0x021E61A4
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x25
-	bl sub_020030E8
+	bl PaletteData_Init
 	mov r1, #0x85
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -1146,7 +1146,7 @@ ov18_021E6204: ; 0x021E6204
 	mov r0, #0x85
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02003104
+	bl PaletteData_Free
 	pop {r4, pc}
 	thumb_func_end ov18_021E6204
 

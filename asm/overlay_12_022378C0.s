@@ -790,7 +790,7 @@ ov12_02237F18: ; 0x02237F18
 	add r0, r1, #4
 	str r2, [r4, r0]
 	mov r0, #5
-	bl sub_020030E8
+	bl PaletteData_Init
 	str r0, [r4, #0x28]
 	mov r1, #1
 	bl sub_02003B50
@@ -1561,7 +1561,7 @@ _0223861E:
 	mov r1, #3
 	bl PaletteData_FreeBuffers
 	ldr r0, [r4, #0x28]
-	bl sub_02003104
+	bl PaletteData_Free
 	ldr r0, [r4, #0xc]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x10]
@@ -3951,7 +3951,7 @@ ov12_022399D4: ; 0x022399D4
 	add r0, r0, #2
 	strh r2, [r5, r0]
 	mov r0, #5
-	bl sub_020030E8
+	bl PaletteData_Init
 	str r0, [r5, #0xc]
 	mov r1, #1
 	bl sub_02003B50
@@ -4746,7 +4746,7 @@ ov12_0223A088: ; 0x0223A088
 	mov r1, #0
 	bl PaletteData_FreeBuffers
 	ldr r0, [r4, #0xc]
-	bl sub_02003104
+	bl PaletteData_Free
 	ldr r0, [r4, #8]
 	mov r1, #1
 	bl WindowArray_dtor

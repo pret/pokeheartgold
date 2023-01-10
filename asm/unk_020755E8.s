@@ -726,7 +726,7 @@ sub_02075A7C: ; 0x02075A7C
 	mov r3, #1
 	bl sub_020729A4
 	add r0, r5, #0
-	bl sub_020030E8
+	bl PaletteData_Init
 	str r0, [r4, #0x14]
 	mov r1, #1
 	bl sub_02003B50
@@ -993,7 +993,7 @@ sub_02075D4C: ; 0x02075D4C
 	mov r1, #2
 	bl PaletteData_FreeBuffers
 	ldr r0, [r4, #0x14]
-	bl sub_02003104
+	bl PaletteData_Free
 	ldr r0, [r4, #0x18]
 	bl sub_02008524
 	ldr r0, [r4, #0x44]

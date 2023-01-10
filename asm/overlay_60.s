@@ -1324,7 +1324,7 @@ _021E62C0:
 	sub r0, r0, #4
 	str r1, [r5, r0]
 	mov r0, #0x1e
-	bl sub_020030E8
+	bl PaletteData_Init
 	mov r1, #0x81
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -1505,7 +1505,7 @@ ov60_021E6544: ; 0x021E6544
 	mov r0, #0x81
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02003104
+	bl PaletteData_Free
 	mov r0, #0x81
 	mov r1, #0
 	lsl r0, r0, #2

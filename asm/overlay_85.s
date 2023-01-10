@@ -2763,7 +2763,7 @@ ov85_021E6E14: ; 0x021E6E14
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x66
-	bl sub_020030E8
+	bl PaletteData_Init
 	ldr r1, _021E6E68 ; =0x00000D9C
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
@@ -2822,7 +2822,7 @@ ov85_021E6E6C: ; 0x021E6E6C
 	bl PaletteData_FreeBuffers
 	ldr r0, _021E6EA4 ; =0x00000D9C
 	ldr r0, [r4, r0]
-	bl sub_02003104
+	bl PaletteData_Free
 	pop {r4, pc}
 	nop
 _021E6EA4: .word 0x00000D9C

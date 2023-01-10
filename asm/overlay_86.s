@@ -208,7 +208,7 @@ ov86_021E5AA4: ; 0x021E5AA4
 	mov r0, #0x87
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02003104
+	bl PaletteData_Free
 	mov r0, #0x87
 	mov r1, #0
 	lsl r0, r0, #2
@@ -627,7 +627,7 @@ ov86_021E5E0C: ; 0x021E5E0C
 	ldr r0, [r4, #0xc]
 	bl ov86_021E5D30
 	mov r0, #0x79
-	bl sub_020030E8
+	bl PaletteData_Init
 	mov r1, #0x87
 	lsl r1, r1, #2
 	str r0, [r4, r1]

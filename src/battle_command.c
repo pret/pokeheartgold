@@ -6032,4 +6032,3 @@ static void *BattleScriptGetVarPointer(BattleSystem *bsys, BATTLECONTEXT *ctx, i
 
     return 0;
 }
-

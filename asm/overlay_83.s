@@ -2295,7 +2295,7 @@ _0223F0F0:
 	mov r0, #5
 	lsl r0, r0, #8
 	ldr r0, [r5, r0]
-	bl sub_02003104
+	bl PaletteData_Free
 	mov r0, #5
 	mov r1, #0
 	lsl r0, r0, #8
@@ -2914,7 +2914,7 @@ ov83_0223F690: ; 0x0223F690
 	ldr r0, [r4, #0x4c]
 	bl ov83_0223F804
 	mov r0, #0x6b
-	bl sub_020030E8
+	bl PaletteData_Init
 	mov r1, #5
 	lsl r1, r1, #8
 	str r0, [r4, r1]
@@ -11762,7 +11762,7 @@ _02243EDC:
 	ldr r0, [sp]
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl sub_02003104
+	bl PaletteData_Free
 	mov r1, #0x2b
 	ldr r0, [sp]
 	mov r2, #0
@@ -12298,7 +12298,7 @@ ov83_02244394: ; 0x02244394
 	ldr r0, [r4, #0x4c]
 	bl ov83_022444E0
 	mov r0, #0x6b
-	bl sub_020030E8
+	bl PaletteData_Init
 	mov r1, #0x2b
 	lsl r1, r1, #4
 	str r0, [r4, r1]

@@ -86,8 +86,8 @@
 .public LoadFontPal1
 .public FontID_String_GetWidthMultiline
 .public FontID_String_GetCenterAlignmentX
-.public sub_020030E8
-.public sub_02003104
+.public PaletteData_Init
+.public PaletteData_Free
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
 .public PaletteData_LoadPalette
@@ -8062,9 +8062,9 @@
 .public ov80_02237B58
 .public ov80_02237D8C
 .public ov80_02237FA4
-.public ov80_022380E8
+.public BattleArcade_GetMonCount
 .public ov80_0223811C
-.public ov80_02238374
+.public BattleArcade_MultiplayerCheck
 .public ov80_022384BC
 .public ov80_022385D8
 .public ov80_02238648
@@ -8098,8 +8098,8 @@
 .public ov83_022451B8
 .public ov83_02245220
 .public ov83_02245254
-.public ov84_0223DD60
-.public ov84_0223DEB8
+.public BattleArcadeGameBoard_InitOverlay
+.public BattleArcadeGameBoard_Main
 .public ov84_0223DFF0
 .public ov84_0223ED34
 .public ov84_0223EDA8

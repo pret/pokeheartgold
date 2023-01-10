@@ -442,7 +442,7 @@ ov05_0221BD28: ; 0x0221BD28
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
 	ldr r0, [r0, #0x24]
-	bl sub_020030E8
+	bl PaletteData_Init
 	str r0, [r4, #8]
 	ldr r3, [r4]
 	mov r1, #0
@@ -2330,7 +2330,7 @@ _0221CCCA:
 	mov r1, #0
 	bl PaletteData_FreeBuffers
 	ldr r0, [r4, #8]
-	bl sub_02003104
+	bl PaletteData_Free
 	ldr r0, [r4]
 	mov r1, #1
 	add r0, #0x2b

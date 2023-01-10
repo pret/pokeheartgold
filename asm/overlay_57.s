@@ -156,7 +156,7 @@ _022379D6:
 	mov r1, #0x34
 	bl GF_CreateVramTransferManager
 	mov r0, #0x34
-	bl sub_020030E8
+	bl PaletteData_Init
 	add r1, r4, #0
 	add r1, #0xe8
 	str r0, [r1]
@@ -368,7 +368,7 @@ ov57_02237B20: ; 0x02237B20
 	add r0, r4, #0
 	add r0, #0xe8
 	ldr r0, [r0]
-	bl sub_02003104
+	bl PaletteData_Free
 	mov r1, #0xfb
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
