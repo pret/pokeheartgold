@@ -10,6 +10,7 @@
 #include "save_frontier.h"
 #include "window.h"
 #include "unk_02009D48.h"
+#include "unk_02023694.h"
 
 #define ARCADE_ENEMY_POKEMON_MAX    4
 #define HEAP_ID_GAME_BOARD        110
@@ -42,19 +43,6 @@ typedef struct GAME_BOARD_ARGS {
     u8 dummy1;
     u16 dummy2;
 } GAME_BOARD_ARGS;
-
-typedef struct GAME_BOARD_SUB_94 {
-    void *unk0;
-    u8 unk4;
-    u8 unk5;
-    u8 unk6;
-    u8 unk7;
-    u8 unk8;
-    u8 unk9;
-    u16 unkA_0:15;
-    u16 unkA_15:1;
-    void *unkC;
-} GAME_BOARD_SUB_94; //size: 0x10
 
 typedef struct GAME_BOARD_SUB_3B4 {
     void *unk0;
@@ -120,7 +108,7 @@ typedef struct GAME_BOARD_WORK {
     STRING *unk78[2];
     u16 unk80[8];
     BGCONFIG *bgConfig;
-    GAME_BOARD_SUB_94 unk94[2];
+    WINDOW window[2];
     GAME_BOARD_SUB_3B4 unk3B4;
     void *unk3C0;
     GAME_BOARD_SUB_3C4 unk3C4[2];
@@ -149,5 +137,20 @@ typedef struct GAME_BOARD_WORK {
     u16 dummy1;
     u32 dummy;
 } GAME_BOARD_WORK;
+
+typedef struct BATTLE_ARCADE_OBJECT {
+    u32 pause;
+    u32 work;
+    u16 cnt;
+    u8 temp;
+    u8 display;
+    u16 x0;
+    u16 y0;
+    Sprite *sprite;
+} BATTLE_ARCADE_OBJECT;
+
+BOOL BattleArcadeGameBoard_InitOverlay(OVY_MANAGER *man, int *state);
+BOOL BattleArcadeGameBoard_Main(OVY_MANAGER *man, int *state);
+BOOL ov84_0223DFF0(OVY_MANAGER *man, int *state);
 
 #endif

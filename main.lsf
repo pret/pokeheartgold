@@ -946,7 +946,7 @@ Overlay OVY_84
 {
     After OVY_80
     Object src/battle_arcade_game_board.o
-    Object asm/overlay_84.o
+    Object asm/battle_arcade_game_board_data.o
 }
 Overlay OVY_85
 {
