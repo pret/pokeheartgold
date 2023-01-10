@@ -1,0 +1,27 @@
+{{ doNotModifyHeader }}
+
+#include "pokemon_types_def.h"
+#include "constants/species.h"
+#include "constants/moves.h"
+#include "constants/items.h"
+#include "constants/pokemon.h"
+
+typedef struct EvolutionDataFile {
+	struct Evolution evos[MAX_EVOS_PER_POKE];
+	u16 pad0;
+} EVOLUTION_FILE;
+
+size_t __size = sizeof(struct EvolutionDataFile);
+
+const struct EvolutionDataFile __data[NUM_SPECIES + 1] = {
+## for entry in evoTable
+	[{{ entry.baseSpecies }}] =
+	{
+		{
+## for evo in entry.evos
+			{ {{ evo.method }}, {{ evo.param }}, {{ evo.target }} },
+## endfor
+		}
+	},
+## endfor
+};
