@@ -145,7 +145,7 @@ struct FieldSystem {
     u8 filler_98[0x4];
     void *unk9C;
     void *unkA0;
-    u32 unkA4;
+    void * unkA4;
     u32 *unkA8;
     u32 unkAC;
     void *unkB0;

@@ -104,7 +104,7 @@ _021FC728:
 	ldr r0, [r5, #0x10]
 	cmp r0, #0
 	beq _021FC732
-	bl sub_02051BF8
+	bl BattleSetup_Delete
 _021FC732:
 	ldr r0, [r4, #0x3c]
 	bl MapObjectMan_UnpauseAllMovement

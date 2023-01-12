@@ -20,7 +20,7 @@
 
 static void sub_02051660(FieldSystem *fsys, BATTLE_SETUP *setup);
 
-/*static*/ BOOL sub_02050660(TaskManager *man) {
+static BOOL sub_02050660(TaskManager *man) {
     FieldSystem *fsys = TaskManager_GetSys(man);
     BATTLE_SETUP *battleSetup = TaskManager_GetEnv(man);
     int *state = TaskManager_GetStatePtr(man);
@@ -40,11 +40,11 @@ static void sub_02051660(FieldSystem *fsys, BATTLE_SETUP *setup);
     return FALSE;
 }
 
-/*static*/ void sub_020506AC(TaskManager *man, BATTLE_SETUP *setup) {
+static void sub_020506AC(TaskManager *man, BATTLE_SETUP *setup) {
     TaskManager_Call(man, sub_02050660, setup);
 }
 
-/*static*/ ENCOUNTER *sub_020506BC(BATTLE_SETUP *setup, int effect, int bgm, int *flag) {
+static ENCOUNTER *Encounter_New(BATTLE_SETUP *setup, int effect, int bgm, int *flag) {
     ENCOUNTER *work;
     work = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(ENCOUNTER));
     work->winFlag = flag;
@@ -57,12 +57,12 @@ static void sub_02051660(FieldSystem *fsys, BATTLE_SETUP *setup);
     return work;
 }
 
-/*static*/ void sub_020506E0(ENCOUNTER *work) {
-    sub_02051BF8(work->setup);
+static void Encounter_Delete(ENCOUNTER *work) {
+    BattleSetup_Delete(work->setup);
     FreeToHeap(work);
 }
 
-/*static*/ BOOL sub_020506F4(ENCOUNTER *work, FieldSystem *fsys) {
+static BOOL sub_020506F4(ENCOUNTER *work, FieldSystem *fsys) {
     if (work->winFlag != NULL) {
         *(work->winFlag) = work->setup->winFlag;
     }
@@ -70,13 +70,13 @@ static void sub_02051660(FieldSystem *fsys, BATTLE_SETUP *setup);
     return IsBattleResultWin(work->setup->winFlag);
 }
 
-/*static*/ void sub_02050724(BATTLE_SETUP *setup, FieldSystem *fsys) {
+static void sub_02050724(BATTLE_SETUP *setup, FieldSystem *fsys) {
     if (!(setup->flags & (1 << 31))) {
         sub_0205239C(setup, fsys);
     }
 }
 
-/*static*/ BOOL sub_02050738(TaskManager *man) {
+static BOOL sub_02050738(TaskManager *man) {
     FieldSystem *fsys = TaskManager_GetSys(man);
     ENCOUNTER *encounter = TaskManager_GetEnv(man);
     int *state = TaskManager_GetStatePtr(man);
@@ -109,7 +109,7 @@ static void sub_02051660(FieldSystem *fsys, BATTLE_SETUP *setup);
                 if (encounter->setup->flags & (1 << 11)) {
                     HealParty(SavArray_PlayerParty_get(fsys->savedata));
                 } else {
-                    sub_020506E0(encounter);
+                    Encounter_Delete(encounter);
                     return TRUE;
                 }
             }
@@ -128,19 +128,19 @@ static void sub_02051660(FieldSystem *fsys, BATTLE_SETUP *setup);
             (*state)++;
             break;
         case 5:
-            sub_020506E0(encounter);
+            Encounter_Delete(encounter);
             return TRUE;
     }
     
     return FALSE;
 }
 
-/*static*/ void sub_0205085C(TaskManager *man, BATTLE_SETUP *setup, int effect, int bgm, int *winFlag) {
-    ENCOUNTER *encounter = sub_020506BC(setup, effect, bgm, winFlag);
+static void sub_0205085C(TaskManager *man, BATTLE_SETUP *setup, int effect, int bgm, int *winFlag) {
+    ENCOUNTER *encounter = Encounter_New(setup, effect, bgm, winFlag);
     TaskManager_Call(man, sub_02050738, encounter);
 }
 
-/*static*/ void sub_0205087C(int a0, FieldSystem *fsys) {
+static void sub_0205087C(int a0, FieldSystem *fsys) {
     switch(a0 & 15) {
     case 1:
     case 6:
@@ -154,7 +154,7 @@ static void sub_02051660(FieldSystem *fsys, BATTLE_SETUP *setup);
     }
 }
 
-/*static*/ BOOL sub_020508B8(TaskManager *man) {
+static BOOL sub_020508B8(TaskManager *man) {
     FieldSystem *fsys = TaskManager_GetSys(man);
     ENCOUNTER *encounter = TaskManager_GetEnv(man);
     int *state = TaskManager_GetStatePtr(man);
@@ -181,14 +181,14 @@ static void sub_02051660(FieldSystem *fsys, BATTLE_SETUP *setup);
         (*state)++;
         break;
     case 4:
-        sub_020506E0(encounter);
+        Encounter_Delete(encounter);
         return TRUE;
         break;
     }
     return FALSE;
 }
 
-/*static*/ BOOL sub_02050960(TaskManager *man) {
+static BOOL sub_02050960(TaskManager *man) {
     FieldSystem *fsys = TaskManager_GetSys(man);
     ENCOUNTER *encounter = TaskManager_GetEnv(man);
     int *state = TaskManager_GetStatePtr(man);
@@ -208,14 +208,14 @@ static void sub_02051660(FieldSystem *fsys, BATTLE_SETUP *setup);
         (*state)++;
         break;
     case 2:
-        sub_020506E0(encounter);
+        Encounter_Delete(encounter);
         sub_0202FC24();
         return TRUE;
     }
     return FALSE;
 }
 
-/*static*/ BOOL sub_020509F0(TaskManager *man) {
+static BOOL sub_020509F0(TaskManager *man) {
     FieldSystem *fsys = TaskManager_GetSys(man);
     ENCOUNTER *encounter = TaskManager_GetEnv(man);
     int *state = TaskManager_GetStatePtr(man);
@@ -250,18 +250,18 @@ static void sub_02051660(FieldSystem *fsys, BATTLE_SETUP *setup);
         (*state)++;
         break;
     case 5:
-        sub_020506E0(encounter);
+        Encounter_Delete(encounter);
         return TRUE;
     }
     return FALSE;
 }
 
-/*static*/ void sub_02050AAC(TaskManager *man, BATTLE_SETUP *setup, int effect, int bgm, int *winFlag) {
-    ENCOUNTER *encounter = sub_020506BC(setup, effect, bgm, winFlag);
+void sub_02050AAC(TaskManager *man, BATTLE_SETUP *setup, int effect, int bgm, int *winFlag) {
+    ENCOUNTER *encounter = Encounter_New(setup, effect, bgm, winFlag);
     TaskManager_Call(man, sub_020509F0, encounter);
 }
 
-/*static*/ WILD_ENCOUNTER *sub_02050ACC(BATTLE_SETUP *setup, int effect, int bgm, int *winFlag) {
+static WILD_ENCOUNTER *WildEncounter_New(BATTLE_SETUP *setup, int effect, int bgm, int *winFlag) {
     WILD_ENCOUNTER *encounter = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(WILD_ENCOUNTER));
     encounter->winFlag = winFlag;
     if (winFlag != NULL) {
@@ -274,14 +274,14 @@ static void sub_02051660(FieldSystem *fsys, BATTLE_SETUP *setup);
     return encounter;
 }
 
-/*static*/ void sub_02050AF4(WILD_ENCOUNTER *encounter) {
-    sub_02051BF8(encounter->setup);
+static void WildEncounter_Delete(WILD_ENCOUNTER *encounter) {
+    BattleSetup_Delete(encounter->setup);
     FreeToHeap(encounter);
 }
 
-/*static*/ BOOL sub_02050D1C(TaskManager *man);
-/*static*/ BOOL sub_02050EB8(TaskManager *man);
-/*static*/ BOOL sub_02050C18(TaskManager *man);
+static BOOL Task_SafariEncounter(TaskManager *man);
+static BOOL Task_BugContestEncounter(TaskManager *man);
+static BOOL Task_WildEncounter(TaskManager *man);
 
 void sub_02050B08(FieldSystem *fsys, BATTLE_SETUP *setup) {   
     SCRIPT_STATE *flags = SavArray_Flags_get(fsys->savedata);
@@ -289,14 +289,14 @@ void sub_02050B08(FieldSystem *fsys, BATTLE_SETUP *setup) {
     int a1 = sub_020517FC(setup);
     
     if (ScriptState_CheckSafariSysFlag(flags)) {
-        ENCOUNTER *encounter = sub_020506BC(setup, a0, a1, NULL);
-        FieldSys_CreateTask(fsys, sub_02050D1C, encounter);
+        ENCOUNTER *encounter = Encounter_New(setup, a0, a1, NULL);
+        FieldSys_CreateTask(fsys, Task_SafariEncounter, encounter);
     } else if (CheckFlag996(flags)) {
-        ENCOUNTER *encounter = sub_020506BC(setup, a0, a1, NULL);
-        FieldSys_CreateTask(fsys, sub_02050EB8, encounter);
+        ENCOUNTER *encounter = Encounter_New(setup, a0, a1, NULL);
+        FieldSys_CreateTask(fsys, Task_BugContestEncounter, encounter);
     } else {
-        WILD_ENCOUNTER *encounter = sub_02050ACC(setup, a0, a1, NULL);
-        FieldSys_CreateTask(fsys, sub_02050C18, encounter);
+        WILD_ENCOUNTER *encounter = WildEncounter_New(setup, a0, a1, NULL);
+        FieldSys_CreateTask(fsys, Task_WildEncounter, encounter);
     }
 }
 
@@ -306,18 +306,18 @@ void sub_02050B90(FieldSystem *fsys, TaskManager *man, BATTLE_SETUP *setup) {
     int a1 = sub_020517FC(setup);
     
     if (ScriptState_CheckSafariSysFlag(flags)) {
-        ENCOUNTER *encounter = sub_020506BC(setup, a0, a1, NULL);
-        TaskManager_Jump(man, sub_02050D1C, encounter);
+        ENCOUNTER *encounter = Encounter_New(setup, a0, a1, NULL);
+        TaskManager_Jump(man, Task_SafariEncounter, encounter);
     } else if (CheckFlag996(flags)) {
-        ENCOUNTER *encounter = sub_020506BC(setup, a0, a1, NULL);
-        TaskManager_Jump(man, sub_02050EB8, encounter);
+        ENCOUNTER *encounter = Encounter_New(setup, a0, a1, NULL);
+        TaskManager_Jump(man, Task_BugContestEncounter, encounter);
     } else {
-        WILD_ENCOUNTER *encounter = sub_02050ACC(setup, a0, a1, NULL);
-        TaskManager_Jump(man, sub_02050C18, encounter);
+        WILD_ENCOUNTER *encounter = WildEncounter_New(setup, a0, a1, NULL);
+        TaskManager_Jump(man, Task_WildEncounter, encounter);
     }
 }
 
-/*static*/ BOOL sub_02050C18(TaskManager *man) {
+static BOOL Task_WildEncounter(TaskManager *man) {
     FieldSystem *fsys = TaskManager_GetSys(man);
     WILD_ENCOUNTER *encounter = TaskManager_GetEnv(man);
     
@@ -342,7 +342,7 @@ void sub_02050B90(FieldSystem *fsys, TaskManager *man, BATTLE_SETUP *setup) {
         sub_020930C4(fsys);
         
         if (IsBattleResultWin(encounter->setup->winFlag) == FALSE) {
-            sub_02050AF4(encounter);
+            WildEncounter_Delete(encounter);
             TaskManager_Jump(man, Task_BlackOut, NULL);
             return FALSE;
         }
@@ -363,14 +363,14 @@ void sub_02050B90(FieldSystem *fsys, TaskManager *man, BATTLE_SETUP *setup) {
         break;
     case 5:
         MapObjectMan_UnpauseAllMovement(fsys->mapObjectMan);
-        sub_02050AF4(encounter);
+        WildEncounter_Delete(encounter);
         return TRUE;
         break;
     }
     return FALSE;
 }
 
-/*static*/ BOOL  sub_02050D1C(TaskManager *man) {
+static BOOL  Task_SafariEncounter(TaskManager *man) {
     FieldSystem *fsys = TaskManager_GetSys(man);
     ENCOUNTER *encounter = TaskManager_GetEnv(man);
     int *state = TaskManager_GetStatePtr(man);
@@ -440,13 +440,13 @@ void sub_02050B90(FieldSystem *fsys, TaskManager *man, BATTLE_SETUP *setup) {
         (*state)++;
         break;
     case 8:
-        sub_020506E0(encounter);
+        Encounter_Delete(encounter);
         return TRUE;
     }
     return FALSE;
 }
 
-/*static*/ BOOL sub_02050EB8(TaskManager *man) {
+static BOOL Task_BugContestEncounter(TaskManager *man) {
     FieldSystem *fsys = TaskManager_GetSys(man);
     ENCOUNTER *encounter = TaskManager_GetEnv(man);
     BUGCONTEST *contest = FieldSys_BugContest_get(fsys);
@@ -471,7 +471,7 @@ void sub_02050B90(FieldSystem *fsys, TaskManager *man, BATTLE_SETUP *setup) {
     case 3:
         sub_02050724(encounter->setup, fsys);
         if (!IsBattleResultWin(encounter->setup->winFlag)) {
-            sub_020506E0(encounter);
+            Encounter_Delete(encounter);
             TaskManager_Jump(man, sub_0205298C, NULL);
             return FALSE;
         }
@@ -501,7 +501,7 @@ void sub_02050B90(FieldSystem *fsys, TaskManager *man, BATTLE_SETUP *setup) {
         (*state)++;
         break;
     case 7:
-        sub_020506E0(encounter);
+        Encounter_Delete(encounter);
         if (*sportBall == 0 && encounter->setup->winFlag == 4) {
             StartScriptFromMenu(man, std_bug_contest_balls_up, NULL);
             return FALSE;
@@ -514,8 +514,8 @@ void sub_02050B90(FieldSystem *fsys, TaskManager *man, BATTLE_SETUP *setup) {
 void SetupAndStartWildBattle(TaskManager *man, u16 mon, u8 level, int *winFlag, BOOL canFlee, BOOL shiny) {
     BATTLE_SETUP *setup;
     FieldSystem *fsys = TaskManager_GetSys(man);
-    setup = BattleStruct_new(HEAP_ID_FIELDMAP, 0);
-    BattleStruct_InitFromFsys(setup, fsys);
+    setup = BattleSetup_New(HEAP_ID_FIELDMAP, 0);
+    BattleSetup_InitFromFsys(setup, fsys);
     ov02_02247F30(fsys, mon, level, shiny, setup);
     
     if (canFlee) {
@@ -533,8 +533,8 @@ void sub_02051090(TaskManager *man, u16 species, u8 level, int *winFlag, BOOL ca
     int var;
     
     fsys = TaskManager_GetSys(man);
-    setup = BattleStruct_new(HEAP_ID_FIELDMAP, 0);
-    BattleStruct_InitFromFsys(setup, fsys);
+    setup = BattleSetup_New(HEAP_ID_FIELDMAP, 0);
+    BattleSetup_InitFromFsys(setup, fsys);
     
     ov02_02247F30(fsys, species, level, 0, setup);
 
@@ -551,7 +551,7 @@ void sub_02051090(TaskManager *man, u16 species, u8 level, int *winFlag, BOOL ca
    sub_0205085C(man, setup, sub_020517E8(setup), sub_020517FC(setup), winFlag);
 }
 
-/*static*/ BOOL sub_02051114(TaskManager *man) {
+static BOOL Task_PalParkEncounter(TaskManager *man) {
     FieldSystem *fsys = TaskManager_GetSys(man);
     ENCOUNTER *encounter = TaskManager_GetEnv(man);
     int *state = TaskManager_GetStatePtr(man);
@@ -587,7 +587,7 @@ void sub_02051090(TaskManager *man, u16 species, u8 level, int *winFlag, BOOL ca
         (*state)++;
         break;
     case 6:
-        sub_020506E0(encounter);
+        Encounter_Delete(encounter);
         if (sub_020558BC(fsys) == 0) {
             StartScriptFromMenu(man, 3, NULL);
             return FALSE;
@@ -598,14 +598,14 @@ void sub_02051090(TaskManager *man, u16 species, u8 level, int *winFlag, BOOL ca
 }
 
 void sub_020511F8(FieldSystem *fsys, BATTLE_SETUP *setup) {
-    ENCOUNTER *encounter = sub_020506BC(setup, sub_020517E8(setup), sub_020517FC(setup), NULL);
-    FieldSys_CreateTask(fsys, sub_02051114, encounter);
+    ENCOUNTER *encounter = Encounter_New(setup, sub_020517E8(setup), sub_020517FC(setup), NULL);
+    FieldSys_CreateTask(fsys, Task_PalParkEncounter, encounter);
 }
 
 void sub_02051228(TaskManager *man, u16 species, u8 level) {
     FieldSystem *fsys = TaskManager_GetSys(man);
-    BATTLE_SETUP *setup = BattleStruct_new(HEAP_ID_FIELDMAP, 0);
-    BattleStruct_InitFromFsys(setup, fsys);
+    BATTLE_SETUP *setup = BattleSetup_New(HEAP_ID_FIELDMAP, 0);
+    BattleSetup_InitFromFsys(setup, fsys);
     
     ov02_02247F30(fsys, species, level, 0, setup);
     
@@ -616,7 +616,7 @@ void sub_02051228(TaskManager *man, u16 species, u8 level) {
     sub_0205085C(man, setup, sub_020517E8(setup), sub_020517FC(setup), NULL);
 }
 
-/*static*/ BOOL sub_0205128C(TaskManager *man) {
+static BOOL Task_TutorialBattle(TaskManager *man) {
     ENCOUNTER *encounter = TaskManager_GetEnv(man);
     FieldSystem *fsys = TaskManager_GetSys(man);
     int *state = TaskManager_GetStatePtr(man);
@@ -648,7 +648,7 @@ void sub_02051228(TaskManager *man, u16 species, u8 level) {
         (*state)++;
         break;
     case 6:
-        sub_020506E0(encounter);
+        Encounter_Delete(encounter);
         return TRUE;
     }
     return FALSE;
@@ -661,9 +661,9 @@ void SetupAndStartTutorialBattle(TaskManager *man) {
     
     fsys = TaskManager_GetSys(man);
     setup = sub_02051AAC(HEAP_ID_FIELDMAP, fsys);
-    encounter = sub_020506BC(setup, sub_020517E8(setup), sub_020517FC(setup), NULL);
+    encounter = Encounter_New(setup, sub_020517E8(setup), sub_020517FC(setup), NULL);
     
-    TaskManager_Call(man, sub_0205128C, encounter);
+    TaskManager_Call(man, Task_TutorialBattle, encounter);
 }
 
 void SetupAndStartTrainerBattle(TaskManager *man, u32 opponentTrainer1, u32 opponentTrainer2, u32 followerTrainerNum, u32 a4, u32 a5, HeapID heapId, int *winFlag) {
@@ -687,8 +687,8 @@ void SetupAndStartTrainerBattle(TaskManager *man, u32 opponentTrainer1, u32 oppo
         }
     }
     
-    setup = BattleStruct_new(HEAP_ID_FIELDMAP, battleFlags);
-    BattleStruct_InitFromFsys(setup, fsys);
+    setup = BattleSetup_New(HEAP_ID_FIELDMAP, battleFlags);
+    BattleSetup_InitFromFsys(setup, fsys);
 
     setup->trainerId[1] = opponentTrainer1;
     setup->trainerId[3] = opponentTrainer2;
@@ -709,7 +709,7 @@ void SetupAndStartTrainerBattle(TaskManager *man, u32 opponentTrainer1, u32 oppo
     sub_0205085C(man, setup, sub_020517E8(setup), sub_020517FC(setup), winFlag);
 }
 
-/*static*/ BOOL sub_020508B8(TaskManager *man);
+static BOOL sub_020508B8(TaskManager *man);
 
 void sub_02051428(TaskManager *man, void *a1, int battleFlags) {
     FieldSystem *fsys;
@@ -717,15 +717,15 @@ void sub_02051428(TaskManager *man, void *a1, int battleFlags) {
     BATTLE_SETUP *setup;
     
     fsys = TaskManager_GetSys(man);
-    setup = BattleStruct_new(HEAP_ID_FIELDMAP, battleFlags);
+    setup = BattleSetup_New(HEAP_ID_FIELDMAP, battleFlags);
     
     sub_020522F0(setup, fsys, a1);
     
-    encounter = sub_020506BC(setup, sub_020517E8(setup), sub_020517FC(setup), NULL);
+    encounter = Encounter_New(setup, sub_020517E8(setup), sub_020517FC(setup), NULL);
     TaskManager_Call(man, sub_020508B8, encounter);
 }
 
-/*static*/ int sub_02051474(void *a0, int battleFlags) {
+static int sub_02051474(void *a0, int battleFlags) {
     int var = sub_02029264(a0);
     int mode;
     
@@ -752,13 +752,13 @@ void sub_020514A4(TaskManager *man, int target, int maxLevel, int flag) {
     fsys = TaskManager_GetSys(man);
     
     if (flag == 0) {
-        setup = BattleStruct_new(HEAP_ID_FIELDMAP, 5);
+        setup = BattleSetup_New(HEAP_ID_FIELDMAP, 5);
         mode = 0;
     } else if (flag == 1) {
-        setup = BattleStruct_new(HEAP_ID_FIELDMAP, 7);
+        setup = BattleSetup_New(HEAP_ID_FIELDMAP, 7);
         mode = 7;
     } else {
-        setup = BattleStruct_new(HEAP_ID_FIELDMAP, 143);
+        setup = BattleSetup_New(HEAP_ID_FIELDMAP, 143);
         
         setup->trainerId[1] = 1;
         setup->trainerId[3] = 2;
@@ -773,13 +773,13 @@ void sub_020514A4(TaskManager *man, int target, int maxLevel, int flag) {
     
     setup->unk1B2 = mode;
     
-    encounter = sub_020506BC(setup, sub_020517E8(setup), sub_020517FC(setup), NULL);    
+    encounter = Encounter_New(setup, sub_020517E8(setup), sub_020517FC(setup), NULL);    
     encounter->unkC = target;
     
     TaskManager_Call(man, sub_02050960, encounter);
 }
 
-/*static*/ BOOL sub_02051540(TaskManager *man) {
+static BOOL sub_02051540(TaskManager *man) {
     FieldSystem *fsys = TaskManager_GetSys(man);
     ENCOUNTER *encounter = TaskManager_GetEnv(man);
     int *state = TaskManager_GetStatePtr(man);
@@ -804,13 +804,13 @@ void sub_02051598(FieldSystem *fsys, void *a1, int battleFlags) {
     BATTLE_SETUP *setup;
     int var;
     
-    setup = BattleStruct_new(HEAP_ID_FIELDMAP, battleFlags);
+    setup = BattleSetup_New(HEAP_ID_FIELDMAP, battleFlags);
     sub_020522F0(setup, fsys, a1);
     sub_0202FBF0(fsys->savedata, HEAP_ID_FIELDMAP, &var);
     
     setup->unk1B2 = sub_02051474(fsys->unkA4, battleFlags);
     
-    encounter = sub_020506BC(setup, sub_020517E8(setup), sub_020517FC(setup), NULL);
+    encounter = Encounter_New(setup, sub_020517E8(setup), sub_020517FC(setup), NULL);
     
     FieldSys_CreateTask(fsys, sub_02051540, encounter);
 }
@@ -820,13 +820,13 @@ void sub_020515FC(FieldSystem *fsys, PARTY *party, int battleFlags) {
     BATTLE_SETUP *setup;
     int var;
     
-    setup = BattleStruct_new(HEAP_ID_FIELDMAP, battleFlags);
+    setup = BattleSetup_New(HEAP_ID_FIELDMAP, battleFlags);
     sub_020520B0(setup, fsys, party, NULL);
     sub_0202FBF0(fsys->savedata, HEAP_ID_FIELDMAP, &var);
     
     setup->unk1B2 = sub_02051474(fsys->unkA4, battleFlags);
     
-    encounter = sub_020506BC(setup, sub_020517E8(setup), sub_020517FC(setup), NULL);
+    encounter = Encounter_New(setup, sub_020517E8(setup), sub_020517FC(setup), NULL);
     
     FieldSys_CreateTask(fsys, sub_02051540, encounter);
 }

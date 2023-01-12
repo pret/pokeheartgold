@@ -11886,7 +11886,7 @@ ov80_0222F6E0: ; 0x0222F6E0
 	bl IsBattleResultWin
 	str r0, [r4, #0x14]
 	add r0, r5, #0
-	bl sub_02051BF8
+	bl BattleSetup_Delete
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
@@ -14644,7 +14644,7 @@ ov80_02230CE8: ; 0x02230CE8
 	bl IsBattleResultWin
 	str r0, [r4, #0x14]
 	add r0, r5, #0
-	bl sub_02051BF8
+	bl BattleSetup_Delete
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov80_02230CE8
@@ -16732,7 +16732,7 @@ _02231DA8:
 	bl IsBattleResultWin
 	str r0, [r4, #0x1c]
 	add r0, r5, #0
-	bl sub_02051BF8
+	bl BattleSetup_Delete
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -20118,7 +20118,7 @@ _0223386E:
 	blt _0223386E
 _022338FA:
 	ldr r0, [sp, #8]
-	bl sub_02051BF8
+	bl BattleSetup_Delete
 	mov r0, #0
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
@@ -24039,7 +24039,7 @@ ov80_02235674: ; 0x02235674
 	ldr r0, [r4, r1]
 	strh r0, [r6]
 	add r0, r5, #0
-	bl sub_02051BF8
+	bl BattleSetup_Delete
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -26469,7 +26469,7 @@ ov80_0223690C: ; 0x0223690C
 	bl ov80_02236A88
 	add r1, r0, #0
 	ldr r0, [r5, #4]
-	bl BattleStruct_new
+	bl BattleSetup_New
 	add r7, r0, #0
 	ldr r0, [r4, #8]
 	bl SavArray_PlayerParty_get
@@ -27344,7 +27344,7 @@ ov80_02236F24: ; 0x02236F24
 	bl ov80_022370F4
 	add r1, r0, #0
 	mov r0, #0xb
-	bl BattleStruct_new
+	bl BattleSetup_New
 	ldr r1, [r6, #0xc]
 	add r4, r0, #0
 	str r1, [sp]
@@ -28224,7 +28224,7 @@ ov80_022375D0: ; 0x022375D0
 	bl ov80_02237850
 	add r1, r0, #0
 	mov r0, #0xb
-	bl BattleStruct_new
+	bl BattleSetup_New
 	ldr r1, [r6, #0xc]
 	add r4, r0, #0
 	str r1, [sp]
@@ -29003,7 +29003,7 @@ ov80_02237B8C: ; 0x02237B8C
 	bl ov80_02237D5C
 	add r1, r0, #0
 	mov r0, #0xb
-	bl BattleStruct_new
+	bl BattleSetup_New
 	ldr r1, [r6, #0xc]
 	add r4, r0, #0
 	str r1, [sp]
@@ -29778,7 +29778,7 @@ ov80_02238150: ; 0x02238150
 	bl ov80_02238344
 	add r1, r0, #0
 	mov r0, #0xb
-	bl BattleStruct_new
+	bl BattleSetup_New
 	ldr r1, [r5, #0xc]
 	add r4, r0, #0
 	str r1, [sp]

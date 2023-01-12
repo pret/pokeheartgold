@@ -30,6 +30,7 @@ void SetupAndStartTutorialBattle(TaskManager *taskManager);
 void SetupAndStartTrainerBattle(TaskManager *taskManager, u32 opponentTrainer1, u32 opponentTrainer2, u32 followerTrainerNum, u32 a4, u32 a5, HeapID heapId, int *winFlag);
 void sub_02050B90(FieldSystem *fsys, TaskManager *taskManager, BATTLE_SETUP *setup);
 void sub_0205239C(BATTLE_SETUP *setup, FieldSystem *fsys);
-BATTLE_SETUP *BattleStruct_new(HeapID heapId, int battleType);
+BATTLE_SETUP *BattleSetup_New(HeapID heapId, int battleType);
+void sub_02050AAC(TaskManager *man, BATTLE_SETUP *setup, int effect, int bgm, int *winFlag);
 
 #endif //POKEHEARTGOLD_ENCOUNTER_H

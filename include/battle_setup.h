@@ -66,7 +66,7 @@ typedef struct BattleSetupStruct {
 BOOL IsBattleResultWin(u32 a0);
 int sub_02052564(u32 a0);
 int sub_02052574(u32 a0);
-void sub_02051BF8(BATTLE_SETUP *setup);
+void BattleSetup_Delete(BATTLE_SETUP *setup);
 BATTLE_SETUP *sub_02051AAC(HeapID heapId, FieldSystem *fsys);
 
 #endif //POKEHEARTGOLD_BATTLE_SETUP_H

@@ -251,7 +251,7 @@ ov25_02259AAC: ; 0x02259AAC
 	add r4, r0, #0
 	ldr r1, _02259B8C ; =0x00002081
 	mov r0, #0xb
-	bl BattleStruct_new
+	bl BattleSetup_New
 	ldr r5, [r4, #0xc]
 	add r6, r0, #0
 	add r0, r5, #0
