@@ -6,7 +6,7 @@
 #include "sound.h"
 #include "system.h"
 #include "text.h"
-#include "unk_02004A44.h"
+#include "sound_02004A44.h"
 #include "unk_02009D48.h"
 #include "unk_0200A090.h"
 #include "unk_0200ACF0.h"

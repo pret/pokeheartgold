@@ -1,3 +1,4 @@
+#include "encounter.h"
 #include "field_follow_poke.h"
 #include "filesystem.h"
 #include "overlay_01_022001E4.h"
@@ -5,7 +6,6 @@
 #include "overlay_02.h"
 #include "script.h"
 #include "task.h"
-#include "unk_02050660.h"
 #include "unk_020689C8.h"
 #include "constants/abilities.h"
 #include "constants/items.h"
@@ -99,15 +99,15 @@ void FieldSys_RockSmashItemCheck(FieldSystem *fsys, int followMonKnowsHm, u16 *i
 }
 
 static BOOL Task_RockSmashItemCheck(TaskManager *taskman) {
-    int val;
+    BATTLE_SETUP *setup;
     FieldSystem *fsys = TaskManager_GetSys(taskman);
     RockSmashItemCheckWork *env = TaskManager_GetEnv(taskman);
 
-    if (ov02_022470A0(fsys, &val)) {
+    if (ov02_022470A0(fsys, &setup)) {
         *env->itemFound = FALSE;
         *env->item = ITEM_NONE;
         FreeToHeap(env);
-        sub_02050B90(fsys, taskman, val);
+        sub_02050B90(fsys, taskman, setup);
         return FALSE;
     }
 

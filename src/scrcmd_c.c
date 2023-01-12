@@ -50,7 +50,7 @@
 #include "unk_02097F6C.h"
 #include "sys_flags.h"
 #include "sys_vars.h"
-#include "unk_02050660.h"
+#include "encounter.h"
 #include "pokedex.h"
 #include "unk_0205BB1C.h"
 #include "unk_020379A0.h"
@@ -2557,27 +2557,27 @@ BOOL ScrCmd_GetDexEvalResult(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_RocketTrapBattle(SCRIPTCONTEXT *ctx) {
-    struct BattleSetupStruct **p_battleSetup = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_0C);
+    int *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_0C);
     u16 species = ScriptGetVar(ctx);
     u16 level = ScriptGetVar(ctx);
-    SetupAndStartWildBattle(ctx->taskman, species, level, p_battleSetup, FALSE, FALSE);
+    SetupAndStartWildBattle(ctx->taskman, species, level, winFlag, FALSE, FALSE);
     return TRUE;
 }
 
 BOOL ScrCmd_WildBattle(SCRIPTCONTEXT *ctx) {
-    struct BattleSetupStruct **p_battleSetup = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_0C);
+    int *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_0C);
     u16 species = ScriptGetVar(ctx);
     u16 level = ScriptGetVar(ctx);
     u8 shiny = ScriptReadByte(ctx);
-    SetupAndStartWildBattle(ctx->taskman, species, level, p_battleSetup, TRUE, shiny);
+    SetupAndStartWildBattle(ctx->taskman, species, level, winFlag, TRUE, shiny);
     return TRUE;
 }
 
 BOOL ScrCmd_686(SCRIPTCONTEXT *ctx) {
-    struct BattleSetupStruct **p_battleSetup = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_0C);
+    int *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_0C);
     u16 species = ScriptGetVar(ctx);
     u16 level = ScriptGetVar(ctx);
-    sub_02051090(ctx->taskman, species, level, p_battleSetup, TRUE);
+    sub_02051090(ctx->taskman, species, level, winFlag, TRUE);
     return TRUE;
 }
 

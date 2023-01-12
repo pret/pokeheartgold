@@ -160,12 +160,10 @@ BOOL BattleArcadeGameBoard_Main(OVY_MANAGER *man, int *state) {
         if (BattleArcadeGameBoard_MoveCursor(work) == TRUE) {
             if (work->unk2F_1 == 1) {
                 BattleArcadeGameBoard_SetState(work, state, 2);
-            } else {
-                if (BattleArcade_MultiplayerCheck(work->type) == TRUE) {
-                    BattleArcadeGameBoard_SetState(work, state, 3);
-                } else {    
-                    BattleArcadeGameBoard_SetState(work, state, 4);
-                }
+            } else if (BattleArcade_MultiplayerCheck(work->type) == TRUE) {
+                BattleArcadeGameBoard_SetState(work, state, 3);
+            } else {    
+                BattleArcadeGameBoard_SetState(work, state, 4);
             }
         }
         break;

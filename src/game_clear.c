@@ -12,7 +12,7 @@
 #include "sys_flags.h"
 #include "task.h"
 #include "text.h"
-#include "unk_02004A44.h"
+#include "sound_02004A44.h"
 #include "unk_02005D10.h"
 #include "unk_0200FA24.h"
 #include "unk_0203E348.h"
@@ -219,7 +219,7 @@ static BOOL Task_GameClearSave(TaskManager *taskman) {
         env->bgmVolume--;
         sub_020059D0(env->bgmVolume);
         if (env->bgmVolume == 0) {
-            StopBGM(GF_GetCurrentPlayingBGM(), 0);
+            StopBGM(GF_GetCurrentPlayingBGM(env->bgmVolume), 0);
             sub_0200616C(0);
             env->timer = SCREEN_FADEOUT_FRAMES;
             *state += 1;

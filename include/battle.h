@@ -123,7 +123,6 @@ typedef struct UnkBtlCtxSub_76 {
     u16 unk288[4];
 } UnkBtlCtxSub_76;
 
-
 typedef struct UnkBattlemonSub {
     u32 disabledTurns:3, 
         encoredTurns:3, 

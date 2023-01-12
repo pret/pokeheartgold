@@ -59,8 +59,6 @@ const struct ScriptBankMapping sScriptBankMapping[30] = {
     {_std_misc,           NARC_scr_seq_scr_seq_0003_bin, NARC_msg_msg_0040_bin},
 };
 
-#define HEAP_ID_FIELDMAP                  11
-
 void StartMapSceneScript(FieldSystem *fsys, u16 script, LocalMapObject *lastTalked) {
     ScriptEnvironment *r4 = ScriptEnvironment_new();
     SetupScriptEngine(fsys, r4, script, lastTalked, NULL);

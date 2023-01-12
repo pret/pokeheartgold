@@ -3,6 +3,7 @@
 
 #include "script.h"
 
+void sub_02067484(FieldSystem *fsys, void *);
 BOOL sub_02067584(FieldSystem *fsys);
 void sub_020674BC(SAVEDATA *saveData);
 void sub_0206759C(SAVEDATA *saveData, int a1);
