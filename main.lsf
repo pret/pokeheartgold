@@ -925,7 +925,38 @@ Overlay OVY_79
 Overlay OVY_80
 {
     After OVY_42
-    Object asm/overlay_80.o
+    Object asm/overlay_80_02229EE0.o
+    Object asm/overlay_80_0222A84C.o
+    Object asm/overlay_80_0222AB40.o
+    Object asm/overlay_80_0222ACA0.o
+    Object asm/overlay_80_0222AEF8.o
+    Object asm/overlay_80_0222BDF4.o
+    Object asm/overlay_80_0222F608.o
+    Object asm/overlay_80_0222FD08.o
+    Object asm/overlay_80_02230B8C.o
+    Object asm/overlay_80_022310C4.o
+    Object asm/overlay_80_02231BF8.o
+    Object asm/overlay_80_022324C4.o
+    Object asm/overlay_80_02233688.o
+    Object asm/overlay_80_022340E8.o
+    Object asm/overlay_80_02235390.o
+    Object asm/overlay_80_02235438.o
+    Object asm/overlay_80_022357B4.o
+    Object asm/overlay_80_02235900.o
+    Object asm/overlay_80_02235FC8.o
+    Object asm/overlay_80_02236450.o
+    Object asm/overlay_80_02236B78.o
+    Object asm/overlay_80_022372D8.o
+    Object asm/overlay_80_02237A70.o
+    Object asm/overlay_80_02238034.o
+    Object asm/overlay_80_022384D8.o
+    Object asm/overlay_80_02238648.o
+    Object asm/overlay_80_02239960.o
+    Object asm/overlay_80_02239AF8.o
+    Object asm/overlay_80_02239BF0.o
+    Object asm/overlay_80_02239D74.o
+    Object asm/overlay_80_0223A00C.o
+    Object asm/overlay_80_0223AC24.o
 }
 Overlay OVY_81
 {
