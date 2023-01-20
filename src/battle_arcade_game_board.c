@@ -1254,7 +1254,7 @@ static Sprite *ov84_0223F374(GAME_BOARD_SUB_3E8 *work, u32 chara, u32 pal, u32 c
         template.whichScreen = 1;
     } else {
         template.whichScreen = 2;
-        template.position.y += 0xC0000;
+        template.position.y += (192 * FX32_ONE);
     }
     
     sprite = CreateSprite(&template);
