@@ -1375,7 +1375,7 @@ static BATTLE_ARCADE_OBJECT *BattleArcadeObject_Create(GAME_BOARD_SUB_3E8 *work,
     vec.y = y*0x1000;
     
     if (display == 1) {
-        vec.y += 0xC0000;
+        vec.y += (192 * FX32_ONE);
     }
     
     sub_020247D4(obj->sprite, &vec);
