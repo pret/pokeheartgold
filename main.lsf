@@ -184,7 +184,7 @@ Static main
 	Object asm/unk_0204F500.o
 	Object src/event_data.o
 	Object src/task.o
-    Object src/encounter.o
+	Object src/encounter.o
 	Object asm/unk_020517A4.o
 	Object asm/battle_setup.o
 	Object src/field_black_out.o
