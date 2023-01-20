@@ -1371,8 +1371,8 @@ static BATTLE_ARCADE_OBJECT *BattleArcadeObject_Create(GAME_BOARD_SUB_3E8 *work,
     obj->y0 = y;
     obj->display = display;
     
-    vec.x = x*0x1000;
-    vec.y = y*0x1000;
+    vec.x = x * FX32_ONE;
+    vec.y = y * FX32_ONE;
     
     if (display == 1) {
         vec.y += (192 * FX32_ONE);
