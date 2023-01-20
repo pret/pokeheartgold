@@ -546,9 +546,9 @@ void sub_02051090(TaskManager *man, u16 species, u8 level, int *winFlag, BOOL ca
         setup->unkCC |= 8;
     }
    
-   GameStats_Inc(Sav2_GameStats_get(fsys->savedata), 8);
+    GameStats_Inc(Sav2_GameStats_get(fsys->savedata), 8);
     
-   sub_0205085C(man, setup, sub_020517E8(setup), sub_020517FC(setup), winFlag);
+    sub_0205085C(man, setup, sub_020517E8(setup), sub_020517FC(setup), winFlag);
 }
 
 static BOOL Task_PalParkEncounter(TaskManager *man) {
