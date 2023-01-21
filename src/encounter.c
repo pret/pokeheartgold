@@ -370,7 +370,7 @@ static BOOL Task_WildEncounter(TaskManager *man) {
     return FALSE;
 }
 
-static BOOL  Task_SafariEncounter(TaskManager *man) {
+static BOOL Task_SafariEncounter(TaskManager *man) {
     FieldSystem *fsys = TaskManager_GetSys(man);
     ENCOUNTER *encounter = TaskManager_GetEnv(man);
     int *state = TaskManager_GetStatePtr(man);

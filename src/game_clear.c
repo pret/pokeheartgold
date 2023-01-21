@@ -219,7 +219,7 @@ static BOOL Task_GameClearSave(TaskManager *taskman) {
         env->bgmVolume--;
         sub_020059D0(env->bgmVolume);
         if (env->bgmVolume == 0) {
-            StopBGM(GF_GetCurrentPlayingBGM(env->bgmVolume), 0);
+            StopBGM(GF_GetCurrentPlayingBGM(), 0);
             sub_0200616C(0);
             env->timer = SCREEN_FADEOUT_FRAMES;
             *state += 1;

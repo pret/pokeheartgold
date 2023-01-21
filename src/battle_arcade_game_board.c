@@ -1259,7 +1259,7 @@ static Sprite *ov84_0223F374(GAME_BOARD_SUB_3E8 *work, u32 chara, u32 pal, u32 c
     
     sprite = CreateSprite(&template);
     Set2dSpriteAnimActiveFlag(sprite, 1);
-    sub_02024868(sprite, 0x1000);
+    sub_02024868(sprite, 1 * FX32_ONE);
     Set2dSpriteAnimSeqNo(sprite, anim);
     }
 
@@ -1396,18 +1396,18 @@ static void BattleArcadeObj_SetVisible(BATTLE_ARCADE_OBJECT *obj, int flag) {
 static void BattleArcadeObj_SetPos(BATTLE_ARCADE_OBJECT *obj, u16 x, u16 y) {
     VecFx32 vec;
     vec = *sub_020248AC(obj->sprite);
-    vec.x = x * 0x1000;
-    vec.y = y * 0x1000;
+    vec.x = x * FX32_ONE;
+    vec.y = y * FX32_ONE;
     
     if (obj->display == 1) {
-        vec.y += 0xC0000;
+        vec.y += (192 * FX32_ONE);
     }
     
     sub_020247D4(obj->sprite, &vec);
 }
 
 static void BattleArcadeObj_SetAnimation(BATTLE_ARCADE_OBJECT *obj, u32 val) {
-    sub_02024868(obj->sprite, 0x1000);
+    sub_02024868(obj->sprite, FX32_ONE);
     sub_02024950(obj->sprite, val);
 }
 
