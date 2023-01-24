@@ -56,9 +56,12 @@ void GMM::WriteGmmHeader(const string &_filename) {
     hstrm << "#ifndef MSGENC_" << guard << endl;
     hstrm << "#define MSGENC_" << guard << endl;
     hstrm << endl;
-    int i = 0;
-    for (const auto & id : id_strings) {
-        hstrm << "#define " << id << " " << i++ << endl;
+    for (size_t i = 0; i < id_strings.size(); i++) {
+        auto message_lines = SplitMessage(messages[i]);
+        for (const auto & message_line : message_lines) {
+            hstrm << "// " << message_line << endl;
+        }
+        hstrm << "#define " << id_strings[i] << " " << i << endl;
     }
     hstrm << endl;
     hstrm << "#endif //MSGENC_" << guard << endl;
@@ -98,6 +101,7 @@ void GMM::FromFile(MessagesConverter &converter) {
                 row_id = rowname_pref + '_' + row_no_buf;
             }
             id_strings.emplace_back(row_id);
+            messages.emplace_back(message);
             i++;
             IncRowNoBuf();
         }
@@ -158,4 +162,16 @@ void GMM::ToFile(MessagesConverter &converter) {
         IncRowNoBuf();
     }
     doc.save(stream);
+}
+
+// The message headers are included in script files, which can cause the
+// assembler to break if the lines are too long.
+vector<string> GMM::SplitMessage(const string &message) {
+    vector<string> v;
+
+    auto limit = 300;
+    for (size_t i = 0; i < message.size(); i += limit) {
+        v.push_back(message.substr(i, limit));
+    }
+    return v;
 }

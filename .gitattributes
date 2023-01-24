@@ -1,2 +1,23 @@
-*.sha1 text eol=lf
 charmap.txt text eol=crlf
+
+*.sh text eol=lf
+*.s text eol=lf
+Makefile text eol=lf
+*.mk text eol=lf
+*.c text eol=lf
+*.h text eol=lf
+*.inc text eol=lf
+*.sha1 text eol=lf
+*.json text eol=lf
+*.cpp text eol=lf
+*.hpp text eol=lf
+.gitattributes text eol=lf
+.gitignore text eol=lf
+*.md text eol=lf
+*.lsf text eol=lf
+*.yml text eol=lf
+
+*.bin binary
+
+*.h linguist-language=C
+*.inc linguist-language=Assembly
