@@ -79,7 +79,7 @@ ov89_02258800: ; 0x02258800
 	bl ov89_02259D70
 	str r0, [r5, #0x14]
 	mov r0, #0x7d
-	bl sub_020030E8
+	bl PaletteData_Init
 	str r0, [r5, #0xc]
 	mov r1, #1
 	bl sub_02003B50
@@ -846,7 +846,7 @@ ov89_02258F00: ; 0x02258F00
 	mov r1, #3
 	bl PaletteData_FreeBuffers
 	ldr r0, [r4, #0xc]
-	bl sub_02003104
+	bl PaletteData_Free
 	add r0, r4, #0
 	bl ov89_02259C00
 	add r0, r4, #0

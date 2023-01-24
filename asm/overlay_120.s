@@ -1133,7 +1133,7 @@ _0225F852:
 	mov r0, #6
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r1, #0x53
 	add r0, r4, #0
 	lsl r1, r1, #2

@@ -3969,7 +3969,7 @@ _02239C7A:
 	ldr r0, [r5, r6]
 	cmp r0, #0
 	beq _02239C84
-	bl sub_02024758
+	bl Sprite_Delete
 _02239C84:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -7896,7 +7896,7 @@ _0223BA4E:
 	ldr r0, [r5, r6]
 	cmp r0, #0
 	beq _0223BA58
-	bl sub_02024758
+	bl Sprite_Delete
 _0223BA58:
 	add r4, r4, #1
 	add r5, r5, #4

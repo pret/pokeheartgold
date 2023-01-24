@@ -353,7 +353,7 @@ ov93_0225C768: ; 0x0225C768
 	add r0, r5, #0
 	bl ov93_022626FC
 	mov r0, #0x75
-	bl sub_020030E8
+	bl PaletteData_Init
 	add r1, r5, #0
 	add r1, #0x8c
 	str r0, [r1]
@@ -1034,7 +1034,7 @@ _0225CD72:
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl sub_02003104
+	bl PaletteData_Free
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]

@@ -682,7 +682,7 @@ ov14_021E5E74: ; 0x021E5E74
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0xa
-	bl sub_020030E8
+	bl PaletteData_Init
 	ldr r1, [r4, #0x34]
 	mov r2, #2
 	str r0, [r1, #0x18]
@@ -705,7 +705,7 @@ ov14_021E5E94: ; 0x021E5E94
 	bl PaletteData_FreeBuffers
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x18]
-	bl sub_02003104
+	bl PaletteData_Free
 	pop {r4, pc}
 	thumb_func_end ov14_021E5E94
 

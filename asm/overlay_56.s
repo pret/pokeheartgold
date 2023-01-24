@@ -1417,7 +1417,7 @@ ov56_021E6650: ; 0x021E6650
 	lsr r2, r2, #0x10
 	bl BG_LoadPlttData
 	ldr r0, [r5]
-	bl sub_020030E8
+	bl PaletteData_Init
 	str r0, [r5, #0x30]
 	ldr r3, [r5]
 	mov r1, #0
@@ -1664,7 +1664,7 @@ ov56_021E692C: ; 0x021E692C
 	mov r1, #0
 	bl PaletteData_FreeBuffers
 	ldr r0, [r4, #0x30]
-	bl sub_02003104
+	bl PaletteData_Free
 	mov r1, #0
 	str r1, [r4, #0x30]
 	ldr r0, _021E6968 ; =0x04000050

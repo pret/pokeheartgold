@@ -1907,7 +1907,7 @@ _021E6816:
 	mov r0, #0x57
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_02003104
+	bl PaletteData_Free
 	mov r0, #0x57
 	mov r1, #0
 	lsl r0, r0, #2
@@ -2266,7 +2266,7 @@ ov87_021E6B38: ; 0x021E6B38
 	ldr r0, [r4, #0x58]
 	bl ov87_021E6C60
 	mov r0, #0x7a
-	bl sub_020030E8
+	bl PaletteData_Init
 	mov r1, #0x57
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -4989,7 +4989,7 @@ ov87_021E7FC0: ; 0x021E7FC0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #0

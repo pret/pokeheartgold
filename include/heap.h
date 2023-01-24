@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_HEAP_H
 #define POKEHEARTGOLD_HEAP_H
 
+#include "constants/heap_id.h"
+
 typedef u32 HeapID;
 
 typedef struct HeapParam {

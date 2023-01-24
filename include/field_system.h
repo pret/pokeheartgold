@@ -1,13 +1,22 @@
-#ifndef POKEHEARTGOLD_UNK_0203DE74_H
-#define POKEHEARTGOLD_UNK_0203DE74_H
+#ifndef POKEHEARTGOLD_FIELD_SYSTEM_H
+#define POKEHEARTGOLD_FIELD_SYSTEM_H
 
+#include "bug_contest_internal.h"
+#include "field_player_avatar.h"
+#include "gear_phone.h"
+#include "map_events_internal.h"
+#include "map_object_manager.h"
 #include "map_matrix.h"
 #include "overlay_manager.h"
-#include "save.h"
+#include "save_pokegear.h"
+#include "unk_0200E320.h"
+#include "unk_02022D74.h"
+#include "window.h"
 
 typedef struct FieldSystem FieldSystem;
 typedef struct TaskManager TaskManager;
 typedef struct FsysUnkSub2C FsysUnkSub2C;
+typedef struct LocalMapObject LocalMapObject;
 
 typedef struct FollowMon {
     LocalMapObject *mapObject;
@@ -136,7 +145,7 @@ struct FieldSystem {
     u8 filler_98[0x4];
     void *unk9C;
     void *unkA0;
-    u8 filler_A4[0x4];
+    void * unkA4;
     u32 *unkA8;
     u32 unkAC;
     void *unkB0;
@@ -203,4 +212,4 @@ static inline void InitLocation(Location *location, int mapId, int warpId, int x
     location->direction = direction;
 }
 
-#endif //POKEHEARTGOLD_UNK_0203DE74_H
+#endif //POKEHEARTGOLD_FIELD_SYSTEM_H

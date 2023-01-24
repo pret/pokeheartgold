@@ -2196,7 +2196,7 @@ _02024558:
 _0202456A:
 	ldr r5, [r1, r6]
 	add r0, r1, #0
-	bl sub_02024758
+	bl Sprite_Delete
 	add r1, r5, #0
 	cmp r5, r4
 	bne _0202456A
@@ -2389,7 +2389,7 @@ _02024636:
 	cmp r0, #0
 	bne _020246E6
 	add r0, r4, #0
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 _020246E6:
@@ -2453,8 +2453,8 @@ sub_02024714: ; 0x02024714
 	.balign 4, 0
 	thumb_func_end sub_02024714
 
-	thumb_func_start sub_02024758
-sub_02024758: ; 0x02024758
+	thumb_func_start Sprite_Delete
+Sprite_Delete: ; 0x02024758
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -2516,7 +2516,7 @@ _020247C0:
 _020247D0:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02024758
+	thumb_func_end Sprite_Delete
 
 	thumb_func_start sub_020247D4
 sub_020247D4: ; 0x020247D4

@@ -1968,7 +1968,7 @@ _021EC060:
 	ldr r0, [r5, #0x4c]
 	cmp r0, #0
 	beq _021EC06C
-	bl sub_02024758
+	bl Sprite_Delete
 	str r6, [r5, #0x4c]
 _021EC06C:
 	add r4, r4, #1

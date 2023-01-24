@@ -493,10 +493,10 @@ ov42_0222740C: ; 0x0222740C
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	beq _0222741A
-	bl sub_02024758
+	bl Sprite_Delete
 _0222741A:
 	ldr r0, [r4, #4]
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r1, #0x18
 	mov r0, #0
 _02227424:

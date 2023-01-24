@@ -25,7 +25,7 @@ BOOL ScrCmd_PlayBGM(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_StopBGM(SCRIPTCONTEXT *ctx) {
     u16 var0 = ScriptReadHalfword(ctx);
-    u16 bgm = GF_GetCurrentPlayingBGM(var0);
+    u16 bgm = GF_GetCurrentPlayingBGM();
     StopBGM(bgm, 0);
     return FALSE;
 }
@@ -209,6 +209,6 @@ BOOL ScrCmd_665(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_666(SCRIPTCONTEXT *ctx) {
     u16 *retPtr = ScriptGetVarPointer(ctx);
-    *retPtr = GF_GetCurrentPlayingBGM(retPtr);
+    *retPtr = GF_GetCurrentPlayingBGM();
     return FALSE;
 }

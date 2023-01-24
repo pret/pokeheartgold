@@ -1,3 +1,4 @@
+#include "battle_setup.h"
 #include "trainer_data.h"
 #include "msgdata.h"
 #include "save_misc_data.h"
@@ -20,14 +21,14 @@ void EnemyTrainerSet_Init(BATTLE_SETUP *battleSetup, SAVEDATA *saveData, HeapID 
     msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0729_bin, heap_id);
     rivalName = Sav2_Misc_RivalName_const_get(Sav2_Misc_const_get(saveData));
     for (i = 0; i < 4; i++) {
-        if (battleSetup->trainer_idxs[i] != 0) {
-            TrainerData_ReadTrData(battleSetup->trainer_idxs[i], &trainer);
-            battleSetup->trainers[i] = trainer;
+        if (battleSetup->trainerId[i] != 0) {
+            TrainerData_ReadTrData(battleSetup->trainerId[i], &trainer);
+            battleSetup->trainer[i] = trainer;
             if (trainer.trainerClass == TRAINERCLASS_RIVAL) {
-                CopyU16StringArray(battleSetup->trainers[i].name, rivalName);
+                CopyU16StringArray(battleSetup->trainer[i].name, rivalName);
             } else {
-                string = NewString_ReadMsgData(msgData, battleSetup->trainer_idxs[i]);
-                CopyStringToU16Array(string, battleSetup->trainers[i].name, OT_NAME_LENGTH + 1);
+                string = NewString_ReadMsgData(msgData, battleSetup->trainerId[i]);
+                CopyStringToU16Array(string, battleSetup->trainer[i].name, OT_NAME_LENGTH + 1);
                 String_dtor(string);
             }
             CreateNPCTrainerParty(battleSetup, i, heap_id);
@@ -277,16 +278,16 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
     // We abuse the global RNG for personality value generation,
     // so back up the overworld state here.
     seed_bak = GetLCRNGSeed();
-    InitPartyWithMaxSize(enemies->parties[party_id], PARTY_SIZE);
+    InitPartyWithMaxSize(enemies->party[party_id], PARTY_SIZE);
     data = (TRPOKE *)AllocFromHeap(heap_id, sizeof(TRPOKE) * PARTY_SIZE);
     pokemon = AllocMonZeroed(heap_id);
-    TrainerData_ReadTrPoke(enemies->trainer_idxs[party_id], data);
+    TrainerData_ReadTrPoke(enemies->trainerId[party_id], data);
 
     // If a Pokemon's gender ratio is 50/50, the generated Pokemon will be the same
     // gender as its trainer. Otherwise, it will assume the more abundant gender
     // according to its species gender ratio. In double battles, the behavior is
     // identical to that of a solitary male opponent.
-    if (TrainerClass_GetGenderOrTrainerCount(enemies->trainers[party_id].trainerClass) == TRAINER_FEMALE) {
+    if (TrainerClass_GetGenderOrTrainerCount(enemies->trainer[party_id].trainerClass) == TRAINER_FEMALE) {
         pid_gender = 0x78;
     } else {
         pid_gender = 0x88;
@@ -296,13 +297,13 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
     // array, with bit 0 being custom moveset and bit 1 being held item.
     // Nintendo didn't do it that way, instead using a switch statement and a lot
     // of code duplication. This has been the case since the 2nd generation games.
-    switch (enemies->trainers[party_id].trainerType) {
+    switch (enemies->trainer[party_id].trainerType) {
     case TRTYPE_MON: {
         TRPOKE_NOITEM_DFLTMOVES *monSpecies;
         u16 species;
         u8 forme;
         monSpecies = &data->species;
-        for (i = 0; i < enemies->trainers[party_id].npoke; i++) {
+        for (i = 0; i < enemies->trainer[party_id].npoke; i++) {
             // Starting in Platinum, the Pokemon's forme was encoded
             // in the upper 6 bits of the species.
             species = monSpecies[i].species & 0x3FF;
@@ -314,12 +315,12 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
             // level, species, and opponent ID. Roll the RNG N times, where N is
             // the index of its trainer class. Finally, left shift the 16-bit
             // pseudorandom value and add the gender selector.
-            // This guarantees that NPC trainers' Pokemon are generated in a
+            // This guarantees that NPC trainer' Pokemon are generated in a
             // consistent manner between attempts.
             // This procedure results in only a 24-bit peersonality value.
-            personality = monSpecies[i].difficulty + monSpecies[i].level + species + enemies->trainer_idxs[party_id];
+            personality = monSpecies[i].difficulty + monSpecies[i].level + species + enemies->trainerId[party_id];
             SetLCRNGSeed(personality);
-            for (j = 0; j < enemies->trainers[party_id].trainerClass; j++) {
+            for (j = 0; j < enemies->trainer[party_id].trainerClass; j++) {
                 personality = LCRandom();
             }
             personality = (personality << 8) + pid_gender;
@@ -333,14 +334,14 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
             // checks for held item and moves here. You'd also treat the trpoke
             // data as a flat u16 array rather than an array of fixed-width structs.
 
-            // Starting in Platinum, enemy trainers could have
+            // Starting in Platinum, enemy trainer could have
             // personalized ball capsules.
             SetTrMonCapsule(monSpecies[i].capsule, pokemon, heap_id);
             SetMonData(pokemon, MON_DATA_FORME, &forme);
             // Starting in HGSS, an AI Pokemon with Frustration
             // will have minimum friendship.
             TrMon_FrustrationCheckAndSetFriendship(pokemon);
-            AddMonToParty(enemies->parties[party_id], pokemon);
+            AddMonToParty(enemies->party[party_id], pokemon);
         }
         break;
     }
@@ -349,13 +350,13 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
         u16 species;
         u8 forme;
         monSpeciesMoves = &data->species_moves;
-        for (i = 0; i < enemies->trainers[party_id].npoke; i++) {
+        for (i = 0; i < enemies->trainer[party_id].npoke; i++) {
             species = monSpeciesMoves[i].species & 0x3FF;
             forme = (monSpeciesMoves[i].species & 0xFC00) >> 10;
             TrMon_OverridePidGender(species, forme, monSpeciesMoves[i].genderAbilityOverride, &pid_gender);
-            personality = monSpeciesMoves[i].difficulty + monSpeciesMoves[i].level + species + enemies->trainer_idxs[party_id];
+            personality = monSpeciesMoves[i].difficulty + monSpeciesMoves[i].level + species + enemies->trainerId[party_id];
             SetLCRNGSeed(personality);
-            for (j = 0; j < enemies->trainers[party_id].trainerClass; j++) {
+            for (j = 0; j < enemies->trainer[party_id].trainerClass; j++) {
                 personality = LCRandom();
             }
             personality = (personality << 8) + pid_gender;
@@ -367,7 +368,7 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
             SetTrMonCapsule(monSpeciesMoves[i].capsule, pokemon, heap_id);
             SetMonData(pokemon, MON_DATA_FORME, &forme);
             TrMon_FrustrationCheckAndSetFriendship(pokemon);
-            AddMonToParty(enemies->parties[party_id], pokemon);
+            AddMonToParty(enemies->party[party_id], pokemon);
         }
         break;
     }
@@ -376,13 +377,13 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
         u16 species;
         u8 forme;
         monSpeciesItem = &data->species_item;
-        for (i = 0; i < enemies->trainers[party_id].npoke; i++) {
+        for (i = 0; i < enemies->trainer[party_id].npoke; i++) {
             species = monSpeciesItem[i].species & 0x3FF;
             forme = (monSpeciesItem[i].species & 0xFC00) >> 10;
             TrMon_OverridePidGender(species, forme, monSpeciesItem[i].genderAbilityOverride, &pid_gender);
-            personality = monSpeciesItem[i].difficulty + monSpeciesItem[i].level + species + enemies->trainer_idxs[party_id];
+            personality = monSpeciesItem[i].difficulty + monSpeciesItem[i].level + species + enemies->trainerId[party_id];
             SetLCRNGSeed(personality);
-            for (j = 0; j < enemies->trainers[party_id].trainerClass; j++) {
+            for (j = 0; j < enemies->trainer[party_id].trainerClass; j++) {
                 personality = LCRandom();
             }
             personality = (personality << 8) + pid_gender;
@@ -392,7 +393,7 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
             SetTrMonCapsule(monSpeciesItem[i].capsule, pokemon, heap_id);
             SetMonData(pokemon, MON_DATA_FORME, &forme);
             TrMon_FrustrationCheckAndSetFriendship(pokemon);
-            AddMonToParty(enemies->parties[party_id], pokemon);
+            AddMonToParty(enemies->party[party_id], pokemon);
         }
         break;
     }
@@ -401,13 +402,13 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
         u16 species;
         u8 forme;
         monSpeciesItemMoves = &data->species_item_moves;
-        for (i = 0; i < enemies->trainers[party_id].npoke; i++) {
+        for (i = 0; i < enemies->trainer[party_id].npoke; i++) {
             species = monSpeciesItemMoves[i].species & 0x3FF;
             forme = (monSpeciesItemMoves[i].species & 0xFC00) >> 10;
             TrMon_OverridePidGender(species, forme, monSpeciesItemMoves[i].genderAbilityOverride, &pid_gender);
-            personality = monSpeciesItemMoves[i].difficulty + monSpeciesItemMoves[i].level + species + enemies->trainer_idxs[party_id];
+            personality = monSpeciesItemMoves[i].difficulty + monSpeciesItemMoves[i].level + species + enemies->trainerId[party_id];
             SetLCRNGSeed(personality);
-            for (j = 0; j < enemies->trainers[party_id].trainerClass; j++) {
+            for (j = 0; j < enemies->trainer[party_id].trainerClass; j++) {
                 personality = LCRandom();
             }
             personality = (personality << 8) + pid_gender;
@@ -420,7 +421,7 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
             SetTrMonCapsule(monSpeciesItemMoves[i].capsule, pokemon, heap_id);
             SetMonData(pokemon, MON_DATA_FORME, &forme);
             TrMon_FrustrationCheckAndSetFriendship(pokemon);
-            AddMonToParty(enemies->parties[party_id], pokemon);
+            AddMonToParty(enemies->party[party_id], pokemon);
         }
         break;
     }

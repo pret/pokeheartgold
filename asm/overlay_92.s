@@ -1782,7 +1782,7 @@ ov92_0225D3CC: ; 0x0225D3CC
 	bl BgConfig_Alloc
 	str r0, [r4, #0x58]
 	mov r0, #0x71
-	bl sub_020030E8
+	bl PaletteData_Init
 	str r0, [r4, #0x5c]
 	mov r0, #4
 	str r0, [sp]
@@ -1922,7 +1922,7 @@ ov92_0225D49C: ; 0x0225D49C
 	mov r1, #3
 	bl PaletteData_FreeBuffers
 	ldr r0, [r4, #0x5c]
-	bl sub_02003104
+	bl PaletteData_Free
 	ldr r0, [r4, #0x48]
 	bl NARC_dtor
 	ldr r0, [r4, #0x4c]

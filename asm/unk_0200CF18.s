@@ -150,10 +150,10 @@ _0200D006:
 
 	thumb_func_start sub_0200D018
 sub_0200D018: ; 0x0200D018
-	ldr r3, _0200D01C ; =sub_02024758
+	ldr r3, _0200D01C ; =Sprite_Delete
 	bx r3
 	.balign 4, 0
-_0200D01C: .word sub_02024758
+_0200D01C: .word Sprite_Delete
 	thumb_func_end sub_0200D018
 
 	thumb_func_start sub_0200D020
@@ -1494,7 +1494,7 @@ sub_0200D9DC: ; 0x0200D9DC
 	bl sub_0200AF80
 _0200D9EE:
 	ldr r0, [r4]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r4, #8]
 	bl sub_02009F24
 	add r0, r4, #0

@@ -1163,7 +1163,7 @@ ov47_0225912C: ; 0x0225912C
 	add r0, r5, #0
 	bl RemoveWindow
 	ldr r0, [r5, #0x14]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r5, #0x18]
 	bl sub_0200AEB0
 	ldr r0, [r5, #0x1c]

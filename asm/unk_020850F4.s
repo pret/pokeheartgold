@@ -73,7 +73,7 @@ _0208512C:
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #0x6c
-	bl sub_020030E8
+	bl PaletteData_Init
 	mov r1, #0xbf
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -285,7 +285,7 @@ _02085294:
 	mov r0, #0xbf
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02003104
+	bl PaletteData_Free
 	mov r0, #0xbb
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]

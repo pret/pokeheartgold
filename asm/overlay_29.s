@@ -766,7 +766,7 @@ ov29_0225DB38: ; 0x0225DB38
 	lsl r7, r7, #2
 _0225DB44:
 	ldr r0, [r5, r7]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0xb

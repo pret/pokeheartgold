@@ -1,0 +1,8 @@
+#ifndef POKEHEARTGOLD_SAVE_FRONTIER_H
+#define POKEHEARTGOLD_SAVE_FRONTIER_H
+
+typedef struct FRONTIER_SAVE {
+    
+} FRONTIER_SAVE;
+
+#endif

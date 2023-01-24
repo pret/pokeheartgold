@@ -263,7 +263,7 @@ _0225F238:
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r1, #0x5a
 	add r0, r5, #0
 	lsl r1, r1, #2
@@ -571,7 +571,7 @@ _0225F4B6:
 	mov r0, #0x17
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r7, r7, #1
 	add r5, r5, #4
 	cmp r7, #4

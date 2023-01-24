@@ -39145,13 +39145,13 @@ _021F8738:
 	add r0, r4, #0
 	bl ov96_021F8E94
 	ldr r0, [r5, #0x14]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r5, #0x18]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r5, #0x1c]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r5, #0x20]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r7, r7, #1
 	add r6, #0x48
 	add r4, #0x48
@@ -46453,11 +46453,11 @@ _021FC1B6:
 	mov r0, #0x61
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r5, r7]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r5, r6]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #0xc

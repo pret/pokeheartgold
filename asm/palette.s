@@ -3,8 +3,8 @@
 
 	.text
 
-	thumb_func_start sub_020030E8
-sub_020030E8: ; 0x020030E8
+	thumb_func_start PaletteData_Init
+PaletteData_Init: ; 0x020030E8
 	push {r4, lr}
 	mov r1, #0x12
 	lsl r1, r1, #4
@@ -17,15 +17,15 @@ sub_020030E8: ; 0x020030E8
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_020030E8
+	thumb_func_end PaletteData_Init
 
-	thumb_func_start sub_02003104
-sub_02003104: ; 0x02003104
+	thumb_func_start PaletteData_Free
+PaletteData_Free: ; 0x02003104
 	ldr r3, _02003108 ; =FreeToHeap
 	bx r3
 	.balign 4, 0
 _02003108: .word FreeToHeap
-	thumb_func_end sub_02003104
+	thumb_func_end PaletteData_Free
 
 	thumb_func_start PaletteData_SetBuffers
 PaletteData_SetBuffers: ; 0x0200310C

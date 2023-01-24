@@ -2332,10 +2332,10 @@ _02246D8A:
 	mov r0, #0xb
 	add r1, r0, #0
 	add r1, #0xf5
-	bl BattleStruct_new
+	bl BattleSetup_New
 	str r0, [sp, #0x20]
 	add r1, r5, #0
-	bl BattleStruct_InitFromFsys
+	bl BattleSetup_InitFromFsys
 	ldr r0, [sp, #0x24]
 	ldr r1, [sp, #0x1c]
 	ldr r2, [sp, #0x20]
@@ -2380,12 +2380,12 @@ _02246E0E:
 _02246E18:
 	mov r0, #0xb
 	mov r1, #0x4a
-	bl BattleStruct_new
+	bl BattleSetup_New
 	str r0, [sp, #0x20]
 _02246E22:
 	ldr r0, [sp, #0x20]
 	add r1, r5, #0
-	bl BattleStruct_InitFromFsys
+	bl BattleSetup_InitFromFsys
 	add r0, sp, #0x18
 	ldrb r0, [r0, #1]
 	cmp r0, #0
@@ -2500,7 +2500,7 @@ _02246ED4:
 _02246F16:
 	bl GF_AssertFail
 	ldr r0, [sp, #0x20]
-	bl sub_02051BF8
+	bl BattleSetup_Delete
 	add sp, #0xa0
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2535,7 +2535,7 @@ _02246F5E:
 	cmp r7, #0
 	bne _02246F68
 	ldr r0, [sp, #0x20]
-	bl sub_02051BF8
+	bl BattleSetup_Delete
 _02246F68:
 	add r0, r7, #0
 	add sp, #0xa0
@@ -2612,7 +2612,7 @@ _02247002:
 	ldr r0, [sp, #0x10]
 	ldr r1, [sp, #0x20]
 	ldr r0, [r0]
-	bl BattleStruct_InitFromFsys
+	bl BattleSetup_InitFromFsys
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0]
 	bl sub_02052544
@@ -2743,7 +2743,7 @@ _02247106:
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0xc]
 	ldr r0, [r0]
-	bl BattleStruct_InitFromFsys
+	bl BattleSetup_InitFromFsys
 	ldr r0, [sp, #0xc]
 	bl MapEvents_GetLoadedEncTable
 	add r5, r0, #0
@@ -2778,7 +2778,7 @@ _02247126:
 	bne _0224716A
 	ldr r0, [sp, #4]
 	ldr r0, [r0]
-	bl sub_02051BF8
+	bl BattleSetup_Delete
 	add sp, #0x8c
 	mov r0, #0
 	pop {r4, r5, r6, r7, pc}
@@ -2846,10 +2846,10 @@ _022471AC:
 	mov r0, #0xb
 	add r1, r0, #0
 	add r1, #0xf5
-	bl BattleStruct_new
+	bl BattleSetup_New
 	str r0, [sp, #0x1c]
 	add r1, r5, #0
-	bl BattleStruct_InitFromFsys
+	bl BattleSetup_InitFromFsys
 	ldr r0, [sp, #0x20]
 	ldr r1, [sp, #0x18]
 	ldr r2, [sp, #0x1c]
@@ -2888,12 +2888,12 @@ _02247240:
 _0224724A:
 	mov r0, #0xb
 	mov r1, #0x4a
-	bl BattleStruct_new
+	bl BattleSetup_New
 	str r0, [sp, #0x1c]
 _02247254:
 	ldr r0, [sp, #0x1c]
 	add r1, r5, #0
-	bl BattleStruct_InitFromFsys
+	bl BattleSetup_InitFromFsys
 	add r0, sp, #0x14
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -3054,7 +3054,7 @@ ov02_02247374: ; 0x02247374
 	ldr r0, [sp, #0xc]
 	add r1, r5, #0
 	ldr r0, [r0]
-	bl BattleStruct_InitFromFsys
+	bl BattleSetup_InitFromFsys
 	mov r5, #0
 	add r0, sp, #0x14
 _022473B0:
@@ -3107,7 +3107,7 @@ _022473D2:
 	bne _0224741C
 	ldr r0, [sp, #0xc]
 	ldr r0, [r0]
-	bl sub_02051BF8
+	bl BattleSetup_Delete
 	add sp, #0xa8
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -5075,7 +5075,7 @@ _0224826A:
 _02248284:
 	mov r0, #0xb
 	mov r1, #0
-	bl BattleStruct_new
+	bl BattleSetup_New
 	str r0, [r5]
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov02_02248244
@@ -6620,11 +6620,11 @@ _02248DDA:
 
 	thumb_func_start ov02_02248DE4
 ov02_02248DE4: ; 0x02248DE4
-	ldr r3, _02248DEC ; =sub_02024758
+	ldr r3, _02248DEC ; =Sprite_Delete
 	ldr r0, [r1, #0x68]
 	bx r3
 	nop
-_02248DEC: .word sub_02024758
+_02248DEC: .word Sprite_Delete
 	thumb_func_end ov02_02248DE4
 
 	thumb_func_start ov02_02248DF0
@@ -10514,11 +10514,11 @@ ov02_0224AA80: ; 0x0224AA80
 
 	thumb_func_start ov02_0224AAC8
 ov02_0224AAC8: ; 0x0224AAC8
-	ldr r3, _0224AAD0 ; =sub_02024758
+	ldr r3, _0224AAD0 ; =Sprite_Delete
 	ldr r0, [r1, #8]
 	bx r3
 	nop
-_0224AAD0: .word sub_02024758
+_0224AAD0: .word Sprite_Delete
 	thumb_func_end ov02_0224AAC8
 
 	thumb_func_start ov02_0224AAD4
@@ -10684,11 +10684,11 @@ ov02_0224ABCC: ; 0x0224ABCC
 
 	thumb_func_start ov02_0224ABF8
 ov02_0224ABF8: ; 0x0224ABF8
-	ldr r3, _0224AC00 ; =sub_02024758
+	ldr r3, _0224AC00 ; =Sprite_Delete
 	ldr r0, [r1, #0x58]
 	bx r3
 	nop
-_0224AC00: .word sub_02024758
+_0224AC00: .word Sprite_Delete
 	thumb_func_end ov02_0224ABF8
 
 	thumb_func_start ov02_0224AC04

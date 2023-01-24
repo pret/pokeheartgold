@@ -30,8 +30,8 @@ _020FC4C0:
 
 	.text
 
-	thumb_func_start BattleStruct_new
-BattleStruct_new: ; 0x020518D8
+	thumb_func_start BattleSetup_New
+BattleSetup_New: ; 0x020518D8
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	add r5, r1, #0
@@ -214,14 +214,14 @@ _02051A48:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02051A5C: .word gSystem
-	thumb_func_end BattleStruct_new
+	thumb_func_end BattleSetup_New
 
 	thumb_func_start sub_02051A60
 sub_02051A60: ; 0x02051A60
 	push {r4, lr}
 	add r4, r1, #0
 	mov r1, #0x20
-	bl BattleStruct_new
+	bl BattleSetup_New
 	mov r1, #0x19
 	lsl r1, r1, #4
 	str r4, [r0, r1]
@@ -236,7 +236,7 @@ sub_02051A74: ; 0x02051A74
 	mov r1, #1
 	lsl r1, r1, #0xc
 	add r6, r2, #0
-	bl BattleStruct_new
+	bl BattleSetup_New
 	mov r1, #0x19
 	add r4, r0, #0
 	lsl r1, r1, #4
@@ -255,7 +255,7 @@ sub_02051A98: ; 0x02051A98
 	add r4, r1, #0
 	mov r1, #2
 	lsl r1, r1, #8
-	bl BattleStruct_new
+	bl BattleSetup_New
 	mov r1, #0x19
 	lsl r1, r1, #4
 	str r4, [r0, r1]
@@ -277,7 +277,7 @@ sub_02051AAC: ; 0x02051AAC
 	str r0, [sp, #0x14]
 	add r0, r6, #0
 	lsl r1, r1, #0xa
-	bl BattleStruct_new
+	bl BattleSetup_New
 	add r4, r0, #0
 	mov r2, #7
 	ldr r0, [r5, #0xc]
@@ -406,8 +406,8 @@ sub_02051AAC: ; 0x02051AAC
 	.balign 4, 0
 	thumb_func_end sub_02051AAC
 
-	thumb_func_start sub_02051BF8
-sub_02051BF8: ; 0x02051BF8
+	thumb_func_start BattleSetup_Delete
+BattleSetup_Delete: ; 0x02051BF8
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	mov r4, #0
@@ -484,7 +484,7 @@ _02051C4E:
 	bl FreeToHeap
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02051BF8
+	thumb_func_end BattleSetup_Delete
 
 	thumb_func_start sub_02051C9C
 sub_02051C9C: ; 0x02051C9C
@@ -777,8 +777,8 @@ _02051EB0:
 _02051EFC: .word 0x000F423F
 	thumb_func_end sub_02051D18
 
-	thumb_func_start BattleStruct_InitFromFsys
-BattleStruct_InitFromFsys: ; 0x02051F00
+	thumb_func_start BattleSetup_InitFromFsys
+BattleSetup_InitFromFsys: ; 0x02051F00
 	push {r4, lr}
 	sub sp, #8
 	add r2, r1, #0
@@ -799,7 +799,7 @@ BattleStruct_InitFromFsys: ; 0x02051F00
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end BattleStruct_InitFromFsys
+	thumb_func_end BattleSetup_InitFromFsys
 
 	thumb_func_start sub_02051F2C
 sub_02051F2C: ; 0x02051F2C

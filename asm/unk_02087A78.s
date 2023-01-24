@@ -294,7 +294,7 @@ _02087C62:
 _02087C6A:
 	add r0, r4, #0
 	mov r1, #0
-	bl BattleStruct_new
+	bl BattleSetup_New
 	str r0, [r5, #0x10]
 	bl sub_0202FC48
 	cmp r0, #0
@@ -354,7 +354,7 @@ _02087CDA:
 	ldr r0, [r1, r0]
 	bl FreeToHeap
 	ldr r0, [r5, #0x10]
-	bl sub_02051BF8
+	bl BattleSetup_Delete
 	mov r0, #0
 	str r0, [r5]
 	add sp, #8
@@ -430,7 +430,7 @@ _02087D88:
 	ldr r0, [r1, r0]
 	bl FreeToHeap
 	ldr r0, [r5, #0x10]
-	bl sub_02051BF8
+	bl BattleSetup_Delete
 	ldr r0, [r5, #8]
 	bl OverlayManager_delete
 	mov r0, #0

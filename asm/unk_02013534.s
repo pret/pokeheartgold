@@ -1352,7 +1352,7 @@ sub_02013ECC: ; 0x02013ECC
 _02013EDA:
 	ldr r0, [r5]
 	ldr r0, [r0, r4]
-	bl sub_02024758
+	bl Sprite_Delete
 	ldr r0, [r5, #4]
 	add r6, r6, #1
 	add r4, #0xc

@@ -9125,7 +9125,7 @@ ov41_0224A1A8: ; 0x0224A1A8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r1, #0x10
 	mov r0, #0
 _0224A1B6:
@@ -11029,7 +11029,7 @@ ov41_0224AFD4: ; 0x0224AFD4
 	add r5, r6, #0
 _0224AFDE:
 	ldr r0, [r5, #0x10]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0x14
@@ -12817,7 +12817,7 @@ ov41_0224BD8C: ; 0x0224BD8C
 	mov r0, #0x66
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024758
+	bl Sprite_Delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov41_0224BD8C

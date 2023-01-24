@@ -4659,7 +4659,7 @@ ov81_022403C0: ; 0x022403C0
 	ldr r0, [r4, #0x4c]
 	bl ov81_02240230
 	mov r0, #0x64
-	bl sub_020030E8
+	bl PaletteData_Init
 	mov r1, #0x1a
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -5736,7 +5736,7 @@ _02240BE0:
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_02003104
+	bl PaletteData_Free
 	mov r0, #0x1a
 	mov r1, #0
 	lsl r0, r0, #4
@@ -10035,7 +10035,7 @@ ov81_02242D74: ; 0x02242D74
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #8]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #0
@@ -10213,7 +10213,7 @@ ov81_02242EA4: ; 0x02242EA4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #0
@@ -10403,7 +10403,7 @@ ov81_02242FC8: ; 0x02242FC8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_02024758
+	bl Sprite_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #0

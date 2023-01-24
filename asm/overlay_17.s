@@ -1942,7 +1942,7 @@ ov17_02202A84: ; 0x02202A84
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
 	beq _02202AA8
-	bl sub_02024758
+	bl Sprite_Delete
 _02202AA8:
 	ldrb r0, [r4, #1]
 	cmp r0, #0
@@ -2089,7 +2089,7 @@ ov17_02202B98: ; 0x02202B98
 	add r0, r5, #0
 	bl ov17_0220387C
 	ldr r0, [r4, #0x10]
-	bl sub_02024758
+	bl Sprite_Delete
 	mov r0, #0
 	str r0, [r4, #0x10]
 	add r0, r5, #0
@@ -3089,7 +3089,7 @@ _022033EE:
 	ldr r0, [r5, r6]
 	cmp r0, #0
 	beq _022033F8
-	bl sub_02024758
+	bl Sprite_Delete
 _022033F8:
 	add r4, r4, #1
 	add r5, r5, #4

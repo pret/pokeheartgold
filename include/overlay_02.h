@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_OVERLAY_02_H
 #define POKEHEARTGOLD_OVERLAY_02_H
 
+#include "battle_setup.h"
 #include "script.h"
 #include "unk_0201F79C.h"
 #include "unk_0203BC10.h"
@@ -94,6 +95,8 @@ BOOL ov02_02253134(SAVEDATA *saveData);
 int ov02_0225316C(void);
 BOOL ov02_02253188(SAVEDATA *saveData);
 int ov02_022531B4(SAVEDATA *saveData);
-BOOL ov02_022470A0(FieldSystem *fsys, int *a1);
+BOOL ov02_022470A0(FieldSystem *fsys, BATTLE_SETUP **a1);
+void ov02_BattleExit_HandleRoamerAction(FieldSystem *fsys, BATTLE_SETUP *setup);
+void ov02_02247F30(FieldSystem *fsys, u16 mon, u8 level, BOOL shiny, BATTLE_SETUP *setup);
 
 #endif //POKEHEARTGOLD_OVERLAY_02_H

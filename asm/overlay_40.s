@@ -35,7 +35,7 @@ ov40_0222B6E0: ; 0x0222B6E0
 	bl BgConfig_Alloc
 	str r0, [r4, #0x24]
 	mov r0, #0x6d
-	bl sub_020030E8
+	bl PaletteData_Init
 	str r0, [r4, #0x28]
 	mov r0, #4
 	str r0, [sp]
@@ -318,7 +318,7 @@ ov40_0222B934: ; 0x0222B934
 	mov r1, #3
 	bl PaletteData_FreeBuffers
 	ldr r0, [r5, #0x28]
-	bl sub_02003104
+	bl PaletteData_Free
 	ldr r0, [r5]
 	cmp r0, #0
 	bne _0222B9FE

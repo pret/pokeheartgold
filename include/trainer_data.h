@@ -97,16 +97,7 @@ typedef struct TrainerData {
     /*02C*/ MAIL_MESSAGE loseMessage;
 } TRAINER; // size=0x34
 
-typedef struct BattleSetupStruct {
-    /*000*/ u32 flags;
-    /*004*/ PARTY *parties[4];
-    /*014*/ u16 field_14[2];
-    /*018*/ u32 trainer_idxs[4];
-    /*028*/ TRAINER trainers[4];
-    /*0F8*/ u8 unk_0F8[0x60];
-    /*158*/ u32 unk_158;
-    /*15C*/ u8 unk_15C[0x78];
-} BATTLE_SETUP; // size=0x1d4
+typedef struct BattleSetupStruct BATTLE_SETUP;
 
 void TrainerData_ReadTrData(u32 trno, TRAINER *dest);
 TrainerGender TrainerClass_GetGenderOrTrainerCount(int trainerClass);

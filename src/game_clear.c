@@ -12,7 +12,7 @@
 #include "sys_flags.h"
 #include "task.h"
 #include "text.h"
-#include "unk_02004A44.h"
+#include "sound_02004A44.h"
 #include "unk_02005D10.h"
 #include "unk_0200FA24.h"
 #include "unk_0203E348.h"

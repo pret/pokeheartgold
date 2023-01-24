@@ -5942,32 +5942,32 @@ _021EA390:
 	ldr r0, [r4, #0x60]
 	cmp r0, #0
 	beq _021EA39A
-	bl sub_02024758
+	bl Sprite_Delete
 _021EA39A:
 	ldr r0, [r4, #0x64]
 	cmp r0, #0
 	beq _021EA3A4
-	bl sub_02024758
+	bl Sprite_Delete
 _021EA3A4:
 	ldr r0, [r4, #0x68]
 	cmp r0, #0
 	beq _021EA3AE
-	bl sub_02024758
+	bl Sprite_Delete
 _021EA3AE:
 	ldr r0, [r4, #0x6c]
 	cmp r0, #0
 	beq _021EA3B8
-	bl sub_02024758
+	bl Sprite_Delete
 _021EA3B8:
 	ldr r0, [r4, #0x70]
 	cmp r0, #0
 	beq _021EA3C2
-	bl sub_02024758
+	bl Sprite_Delete
 _021EA3C2:
 	ldr r0, [r4, #0x74]
 	cmp r0, #0
 	beq _021EA3CC
-	bl sub_02024758
+	bl Sprite_Delete
 _021EA3CC:
 	ldr r0, [r4, #0x78]
 	cmp r0, #0
@@ -7883,7 +7883,7 @@ ov102_021EB29C: ; 0x021EB29C
 	ldr r0, [r7, #0xc]
 	cmp r0, #0
 	beq _021EB2B2
-	bl sub_02024758
+	bl Sprite_Delete
 _021EB2B2:
 	add r4, r7, #0
 	mov r6, #0
@@ -8435,7 +8435,7 @@ ov102_021EB6C8: ; 0x021EB6C8
 	ldr r0, [r4, #0x5c]
 	cmp r0, #0
 	beq _021EB6D6
-	bl sub_02024758
+	bl Sprite_Delete
 _021EB6D6:
 	add r0, r4, #0
 	bl FreeToHeap
@@ -9226,17 +9226,17 @@ ov102_021EBCBC: ; 0x021EBCBC
 	ldr r0, [r4, #0x30]
 	cmp r0, #0
 	beq _021EBCCA
-	bl sub_02024758
+	bl Sprite_Delete
 _021EBCCA:
 	ldr r0, [r4, #0x34]
 	cmp r0, #0
 	beq _021EBCD4
-	bl sub_02024758
+	bl Sprite_Delete
 _021EBCD4:
 	ldr r0, [r4, #0x38]
 	cmp r0, #0
 	beq _021EBCDE
-	bl sub_02024758
+	bl Sprite_Delete
 _021EBCDE:
 	ldr r0, [r4, #0x3c]
 	cmp r0, #0
