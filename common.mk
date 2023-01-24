@@ -141,8 +141,6 @@ DUMMY := $(shell mkdir -p $(ALL_BUILDDIRS))
 $(MWAS):
 	$(ASPATCH) -q $@
 
-all: tools
-
 ifeq ($(NODEP),)
 ifneq ($(WINPATH),)
 PROJECT_ROOT_NT := $(shell $(WINPATH) -w $(PROJECT_ROOT) | $(SED) 's/\\/\//g')
