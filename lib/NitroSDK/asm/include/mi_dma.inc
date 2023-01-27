@@ -1,0 +1,16 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public OSi_EnterDmaCallback
+.public OS_DisableInterrupts
+.public OS_RestoreInterrupts
+.public OS_Terminate
+.public MI_DmaFill32
+.public MI_DmaCopy32
+.public MI_DmaCopy16
+.public MI_DmaFill32Async
+.public MI_DmaCopy32Async
+.public MI_WaitDma
+.public MI_StopDma
+.public MIi_CheckAnotherAutoDMA
+.public MIi_CheckDma0SourceAddress
+.public MIi_DmaSetParams

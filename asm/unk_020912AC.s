@@ -4,6 +4,7 @@
 #include "constants/moves.h"
 #include "constants/species.h"
 	.include "asm/macros.inc"
+	.include "unk_020912AC.inc"
 	.include "global.inc"
 
 	.public _02102610

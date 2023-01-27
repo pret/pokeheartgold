@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "nitrocrypto.inc"
 	.include "global.inc"
 
 	; rc4s-arm4cw.o

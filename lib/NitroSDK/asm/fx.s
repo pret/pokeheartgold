@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "fx.inc"
 	.include "global.inc"
 	.text
 

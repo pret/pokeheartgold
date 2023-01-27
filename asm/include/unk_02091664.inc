@@ -1,0 +1,12 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public GF_AssertFail
+.public LocationGmmDatCountGet
+.public LocationGmmDatIndexGetByCountryMsgNo
+.public LocationGmmDatRegionCountGetByCountryMsgNo
+.public GetCityNamesMsgdataIdByCountry
+.public LocationGmmDatGetGmmNo
+.public LocationGmmDatGetCountryMsgNo
+.public LocationGmmDatGetEarthPlaceDatId
+.public LocationGmmDatGetDistrictNameMsgIdsPtr
+.public LocationGmmDatGetDistrictCount

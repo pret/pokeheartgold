@@ -1,6 +1,7 @@
 #include "constants/mmodel.h"
 #include "constants/species.h"
 	.include "asm/macros.inc"
+	.include "overlay_106.inc"
 	.include "global.inc"
 
 	.text

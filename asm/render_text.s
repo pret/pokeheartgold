@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "render_text.inc"
 	.include "global.inc"
 
 	.rodata

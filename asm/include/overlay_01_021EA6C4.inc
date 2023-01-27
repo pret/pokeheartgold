@@ -1,0 +1,15 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public AllocFromHeap
+.public FreeToHeap
+.public GF_AssertFail
+.public FS_InitFile
+.public FS_OpenFile
+.public FS_CloseFile
+.public FS_ReadFile
+.public ov01_021EA724
+.public ov01_021EA73C
+.public ov01_021EA7E0
+.public ov01_021EA7F8
+.public ov01_021EA804
+.public ov01_021EA81C

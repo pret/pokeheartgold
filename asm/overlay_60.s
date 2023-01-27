@@ -1,6 +1,7 @@
 #include "constants/sndseq.h"
 #include "constants/species.h"
 	.include "asm/macros.inc"
+	.include "overlay_60.inc"
 	.include "global.inc"
 	.public ov62_021E68CC
 

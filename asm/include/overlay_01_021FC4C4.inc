@@ -1,0 +1,17 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public NARC_ReadWholeMember
+.public NARC_GetMemberSize
+.public CreateHeap
+.public DestroyHeap
+.public AllocFromHeap
+.public AllocFromHeapAtEnd
+.public FreeToHeap
+.public GF_AssertFail
+.public memset
+.public ov01_021FC4C4
+.public ov01_021FC520
+.public ov01_021FC588
+.public ov01_021FC5A4
+.public ov01_021FC5B8
+.public ov01_021FC5CC

@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "mi_dma.inc"
 	.include "global.inc"
 
 	.public OSi_EnterDmaCallback

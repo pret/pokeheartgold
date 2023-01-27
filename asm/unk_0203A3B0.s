@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "unk_0203A3B0.inc"
 	.include "global.inc"
 
 	.bss

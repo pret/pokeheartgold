@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "unk_0201F79C.inc"
 	.include "global.inc"
 
 	.public NNS_G3dGlb

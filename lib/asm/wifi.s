@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "wifi.inc"
 	.include "global.inc"
 
 	.bss

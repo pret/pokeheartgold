@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "wvr.inc"
 	.include "global.inc"
 
 	.bss

@@ -1,0 +1,14 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public AllocFromHeap
+.public FreeToHeap
+.public GF_AssertFail
+.public sub_02095CE0
+.public sub_02095D1C
+.public sub_02095D2C
+.public sub_02095D40
+.public sub_02095D88
+.public sub_02095DD8
+.public sub_02095DE8
+.public memset
+.public _s32_div_f

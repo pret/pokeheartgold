@@ -1,0 +1,12 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public OS_AllocFromHeap
+.public OS_FreeToHeap
+.public MI_CpuFill8
+.public MI_CpuCopy8
+.public MATH_CalcSHA1
+.public _s32_div_f
+.public _u32_div_f
+.public CRYPTO_RC4Encrypt
+.public CRYPTO_VerifySignature
+.public CRYPTO_SetAllocator

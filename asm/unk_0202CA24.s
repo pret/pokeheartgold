@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "unk_0202CA24.inc"
 	.include "global.inc"
 
 	.text

@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "g3imm.inc"
 	.include "global.inc"
 
 	.public GX_SendFifo64B

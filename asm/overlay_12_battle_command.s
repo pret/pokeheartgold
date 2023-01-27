@@ -3,6 +3,7 @@
 #include "constants/items.h"
 #include "constants/moves.h"
 	.include "asm/macros.inc"
+	.include "overlay_12_battle_command.inc"
 	.include "global.inc"
 
 	.text
