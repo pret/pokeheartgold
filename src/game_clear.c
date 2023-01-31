@@ -4,7 +4,6 @@
 #include "game_clear.h"
 #include "hall_of_fame.h"
 #include "overlay_63.h"
-#include "overlay_credits.h"
 #include "player_data.h"
 #include "save_arrays.h"
 #include "save_flypoints.h"
@@ -24,6 +23,7 @@
 #include "use_item_on_mon.h"
 #include "window.h"
 #include "constants/sndseq.h"
+#include "credits/credits.h"
 #include "msgdata/msg/msg_0040.h"
 
 #define WAIT_SE_SAVE_FRAMES   32

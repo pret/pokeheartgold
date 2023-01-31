@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_OVERLAY_CREDITS_H
-#define POKEHEARTGOLD_OVERLAY_CREDITS_H
+#ifndef POKEHEARTGOLD_CREDITS_CREDITS_H
+#define POKEHEARTGOLD_CREDITS_CREDITS_H
 
 #include "overlay_manager.h"
 
@@ -25,4 +25,4 @@ BOOL CreditsApp_OvyInit(OVY_MANAGER *man, int *state);
 BOOL CreditsApp_OvyExit(OVY_MANAGER *man, int *state);
 BOOL CreditsApp_OvyExec(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_OVERLAY_CREDITS_H
+#endif //POKEHEARTGOLD_CREDITS_CREDITS_H

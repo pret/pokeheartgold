@@ -5,11 +5,11 @@
 #include "script.h"
 #include "overlay_02.h"
 #include "overlay_63.h"
-#include "overlay_credits.h"
 #include "bag.h"
 #include "mail.h"
 #include "fashion_case.h"
 #include "field_blackthorn_tutors.h"
+#include "credits/credits.h"
 
 struct UseMailWork;
 struct ApricornBoxWork;

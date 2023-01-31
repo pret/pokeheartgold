@@ -905,9 +905,9 @@ Overlay OVY_75
 Overlay credits
 {
     After main
-    Object src/overlay_credits_data.o
-    Object src/overlay_credits.o
-    Object src/overlay_credits_data2.o
+    Object src/credits/data1.o
+    Object src/credits/credits.o
+    Object src/credits/data2.o
 }
 Overlay OVY_77
 {

@@ -1,9 +1,9 @@
-#ifndef POKEHEARTGOLD_OVERLAY_CREDITS_DATA_H
-#define POKEHEARTGOLD_OVERLAY_CREDITS_DATA_H
+#ifndef POKEHEARTGOLD_CREDITS_DATA_H
+#define POKEHEARTGOLD_CREDITS_DATA_H
 
 #include "gx_layers.h"
-#include "overlay_credits.h"
 #include "window.h"
+#include "credits/credits.h"
 
 typedef struct {
     int plttFileId;
@@ -884,4 +884,4 @@ static const Cutscene sCutscenes[NUM_CUTSCENES] = {
     },
 };
 
-#endif //POKEHEARTGOLD_OVERLAY_CREDITS_DATA_H
+#endif //POKEHEARTGOLD_CREDITS_DATA_H
