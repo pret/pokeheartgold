@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "battle_setup.inc"
 	.include "global.inc"
 
 	.rodata

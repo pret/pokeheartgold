@@ -1,5 +1,6 @@
 #include "constants/items.h"
 	.include "asm/macros.inc"
+	.include "unk_0203BC10.inc"
 	.include "global.inc"
 
 	.rodata

@@ -7,6 +7,7 @@
 #include "msgdata/msg/msg_0411.h"
 #include "msgdata/msg/msg_0664.h"
 	.include "asm/macros.inc"
+	.include "overlay_101.inc"
 	.include "global.inc"
 
 	.text

@@ -5,6 +5,7 @@
 #include "constants/party_menu.h"
 #include "msgdata/msg/msg_0300.h"
 	.include "asm/macros.inc"
+	.include "unk_02082908.inc"
 	.include "global.inc"
 
 	.public _020FA484

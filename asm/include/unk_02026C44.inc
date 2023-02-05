@@ -1,0 +1,12 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public AllocFromHeap
+.public FreeToHeap
+.public sub_020252F4
+.public sub_02025320
+.public System_GetTouchHeld
+.public System_GetTouchNew
+.public GF_AssertFail
+.public sub_02026C44
+.public sub_02026CAC
+.public sub_02026CC4

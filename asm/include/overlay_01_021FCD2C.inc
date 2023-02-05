@@ -1,0 +1,15 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public CreateSysTask
+.public DestroySysTask
+.public AllocFromHeapAtEnd
+.public FreeToHeap
+.public sub_0201F988
+.public GF_Camera_SetDistance
+.public GF_Camera_GetDistance
+.public memset
+.public _s32_div_f
+.public ov01_021FCD2C
+.public ov01_021FCD6C
+.public ov01_021FCD78
+.public ov01_021FCD8C

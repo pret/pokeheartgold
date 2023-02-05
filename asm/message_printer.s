@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "message_printer.inc"
 	.include "global.inc"
 
 	.rodata

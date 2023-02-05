@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "nitro.inc"
 	.include "global.inc"
 
 	.bss

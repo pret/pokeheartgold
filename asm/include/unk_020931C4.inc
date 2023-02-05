@@ -1,0 +1,11 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public LCRandom
+.public MomSavingsBalanceAction
+.public sub_0202F198
+.public sub_0202F1B4
+.public sub_0202F1C4
+.public sub_0202F240
+.public sub_0209322C
+.public _s32_div_f
+.public _u32_div_f

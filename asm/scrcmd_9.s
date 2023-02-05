@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "scrcmd_9.inc"
 	.include "global.inc"
 
 	.rodata

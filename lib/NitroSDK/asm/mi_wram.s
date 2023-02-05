@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "mi_wram.inc"
 	.include "global.inc"
 
 	.text

@@ -1,0 +1,13 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public sub_02007200
+.public sub_02007234
+.public sub_0200E374
+.public DestroySysTask
+.public sub_0201F988
+.public GX_SetGraphicsMode
+.public GX_SetBankForLCDC
+.public GX_GetBankForLCDC
+.public MIi_CpuClearFast
+.public ov01_021F4464
+.public ov01_021F44B4

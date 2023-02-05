@@ -1,5 +1,6 @@
 #include "constants/maps.h"
 	.include "asm/macros.inc"
+	.include "unk_0203BA5C.inc"
 	.include "global.inc"
 
 	.rodata

@@ -1,6 +1,7 @@
 #include "constants/sndseq.h"
 #include "constants/trainer_class.h"
 	.include "asm/macros.inc"
+	.include "unk_02054E00.inc"
 	.include "global.inc"
 
 	.rodata

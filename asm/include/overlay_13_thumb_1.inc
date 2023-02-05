@@ -1,0 +1,15 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public AllocFromHeap
+.public FreeToHeap
+.public sub_02034D8C
+.public NNS_SndPlayerSetPlayerVolume
+.public NNS_SndPlayerSetPlayableSeqCount
+.public NNS_SndPlayerSetAllocatableChannel
+.public OS_InitTick
+.public OS_InitAlarm
+.public OS_DisableInterrupts
+.public OS_RestoreInterrupts
+.public ov00_021EC454
+.public ov13_0221BA00
+.public ov13_0222B430

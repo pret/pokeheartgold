@@ -1,5 +1,6 @@
 #include "constants/pokemon.h"
 	.include "asm/macros.inc"
+	.include "unk_0202EB30.inc"
 	.include "global.inc"
 
 	.text

@@ -1,0 +1,14 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public VEC_Add
+.public VEC_Subtract
+.public VEC_Fx16Add
+.public VEC_DotProduct
+.public VEC_Fx16DotProduct
+.public VEC_CrossProduct
+.public VEC_Fx16CrossProduct
+.public VEC_Mag
+.public VEC_Normalize
+.public VEC_Fx16Normalize
+.public VEC_MultAdd
+.public VEC_Distance

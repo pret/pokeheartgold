@@ -9,6 +9,7 @@
 #include "fielddata/script/scr_seq/event_D24R0204.h"
 #include "constants/party_menu.h"
 	.include "asm/macros.inc"
+	.include "unk_020658D4.inc"
 	.include "global.inc"
 
 	.text

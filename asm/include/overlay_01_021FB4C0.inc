@@ -1,0 +1,12 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public Main_SetHBlankIntrCB
+.public AllocFromHeap
+.public FreeToHeap
+.public GF_AssertFail
+.public ov01_021FB4C0
+.public ov01_021FB4D4
+.public ov01_021FB4F4
+.public ov01_021FB514
+.public ov01_021FB530
+.public ov01_021FB554

@@ -9,6 +9,7 @@
 #include "msgdata/msg/msg_0096_D31R0201.h"
 #include "msgdata/msg/msg_0066_D23R0102.h"
 	.include "asm/macros.inc"
+	.include "overlay_01_sprite_data.inc"
 	.include "global.inc"
 
 	.rodata

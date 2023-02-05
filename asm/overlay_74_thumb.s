@@ -2,6 +2,7 @@
 #include "msgdata/msg/msg_0442.h"
 #include "constants/sndseq.h"
 	.include "asm/macros.inc"
+	.include "overlay_74_thumb.inc"
 	.include "global.inc"
 	.public ov60_021EAFE0
 	.public sub_020342C0

@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "msl.inc"
 	.include "global.inc"
 	.public __sinit__
 	.public __exception_table_start__

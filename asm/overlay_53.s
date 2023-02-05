@@ -2,6 +2,7 @@
 #include "constants/species.h"
 #include "msgdata/msg/msg_0219.h"
 	.include "asm/macros.inc"
+	.include "overlay_53.inc"
 	.include "global.inc"
 
 	.text

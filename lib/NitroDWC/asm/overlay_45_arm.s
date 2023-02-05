@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "overlay_45_arm.inc"
 	.include "global.inc"
 	.public _version_NINTENDO_DWC_LOBBY
 

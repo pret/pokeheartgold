@@ -6,6 +6,7 @@
 #include "constants/moves.h"
 #include "constants/std_script.h"
 	.include "asm/macros.inc"
+	.include "unk_0206A360.inc"
 	.include "global.inc"
 
 	.public NNS_G3dGlb

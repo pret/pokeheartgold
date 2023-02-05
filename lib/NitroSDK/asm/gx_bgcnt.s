@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "gx_bgcnt.inc"
 	.include "global.inc"
 
 	.text

@@ -5,6 +5,7 @@
 #include "constants/moves.h"
 #include "constants/sndseq.h"
 	.include "asm/macros.inc"
+	.include "field_take_photo.inc"
 	.include "global.inc"
 
 	.public NNS_G3dGlb

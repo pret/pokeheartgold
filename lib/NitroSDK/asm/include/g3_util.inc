@@ -1,0 +1,11 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public MTX_LookAt
+.public MTX_OrthoW
+.public G3_LoadMtx44
+.public G3_LoadMtx43
+.public G3i_OrthoW_
+.public G3i_LookAt_
+.public G3_RotX
+.public G3_RotY
+.public G3_RotZ

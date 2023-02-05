@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "mi_init.inc"
 	.include "global.inc"
 
 	.public MI_SetWramBank

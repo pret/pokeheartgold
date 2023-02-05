@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "libVCT.inc"
 	.include "global.inc"
 
 	.bss

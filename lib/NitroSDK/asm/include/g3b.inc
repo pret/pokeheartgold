@@ -1,0 +1,16 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public G3B_PushMtx
+.public G3B_PopMtx
+.public G3B_LoadMtx44
+.public G3B_Color
+.public G3B_Normal
+.public G3B_Vtx
+.public G3B_PolygonAttr
+.public G3B_MaterialColorDiffAmb
+.public G3B_MaterialColorSpecEmi
+.public G3B_LightVector
+.public G3B_LightColor
+.public G3B_Begin
+.public G3B_End
+.public MI_Copy64B
