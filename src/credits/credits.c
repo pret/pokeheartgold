@@ -1,7 +1,6 @@
 #include "font.h"
 #include "gf_gfx_loader.h"
 #include "msgdata.h"
-#include "overlay_credits.h"
 #include "overlay_manager.h"
 #include "sound.h"
 #include "system.h"
@@ -19,6 +18,7 @@
 #include "window.h"
 #include "constants/rgb.h"
 #include "constants/sndseq.h"
+#include "credits/credits.h"
 
 #ifdef HEARTGOLD
 #define GAME_TITLE_MSG_NO 0
@@ -175,7 +175,7 @@ typedef struct {
 extern const UnkOv021E60F6 ov76_021E6E88[4];
 extern const u8 sPokemonSpriteSeqNos[8];
 
-#include "overlay_credits_data.h"
+#include "credits/data.h"
 
 static void VBlankCB(CreditsAppWork *work);
 static void SetGXBanks(void);
