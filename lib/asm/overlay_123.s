@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "overlay_123.inc"
 	.include "global.inc"
 
 	; This overlay has multiple levels of encryption for some reason.

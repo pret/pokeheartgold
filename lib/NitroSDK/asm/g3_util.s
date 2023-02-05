@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "g3_util.inc"
 	.include "global.inc"
 
 	.public G3_LoadMtx44

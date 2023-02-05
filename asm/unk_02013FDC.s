@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "unk_02013FDC.inc"
 	.include "global.inc"
 
 	.rodata

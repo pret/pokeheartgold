@@ -1,0 +1,11 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public _start
+.public MIi_UncompressBackward
+.public _start_AutoloadDoneCallback
+.public OSi_ReferSymbol
+.public NitroMain
+.public _fp_init
+.public __call_static_initializers
+.public OS_IrqHandler
+.public OS_IRQTable

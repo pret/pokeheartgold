@@ -1,0 +1,15 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public OverlayManager_CreateAndGetData
+.public OverlayManager_GetData
+.public OverlayManager_FreeData
+.public OverlayManager_GetArgs
+.public CreateHeap
+.public DestroyHeap
+.public sub_02097B78
+.public sub_02097BAC
+.public sub_02097BD0
+.public MI_CpuFill8
+.public ScriptCinematic_HoOh
+.public ScriptCinematic_Lugia
+.public ScriptCinematic_Arceus

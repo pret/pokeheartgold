@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "gx_vramcnt.inc"
 	.include "global.inc"
 
 	.public gGXState

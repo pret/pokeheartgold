@@ -1,5 +1,6 @@
 #include "constants/species.h"
 	.include "asm/macros.inc"
+	.include "unk_0205BB1C.inc"
 	.include "global.inc"
 
 	.rodata

@@ -1,0 +1,15 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public AllocFromHeap
+.public FreeToHeap
+.public GF_AssertFail
+.public PlayerProfile_GetTrainerGender
+.public PlayerProfile_GetAvatar
+.public PlayerProfile_GetVersion
+.public PlayerProfile_GetLanguage
+.public sub_02078DD8
+.public sub_02078E28
+.public memset
+.public _020FA484
+.public gNatureStatMods
+.public ov00_021E6D60

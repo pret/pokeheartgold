@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "overlay_38_arm.inc"
 	.include "global.inc"
 
 	.text

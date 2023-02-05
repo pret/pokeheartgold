@@ -1,0 +1,9 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public G3_LoadMtx44
+.public G3_LoadMtx43
+.public G3_MultMtx43
+.public G3_MultMtx33
+.public GX_SendFifo48B
+.public GX_SendFifo64B
+.public MI_Copy36B

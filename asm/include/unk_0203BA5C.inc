@@ -1,0 +1,12 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public GF_AssertFail
+.public GetMomSpawnId
+.public GetFlyWarpData
+.public GetDeathWarpData
+.public GetSpecialSpawnWarpData
+.public MapHeader_GetSpawnIdForDeathWarp
+.public sub_0203BB50
+.public FlypointFlagAction
+.public SavArray_Flags_get
+.public ScriptState_FlypointFlagAction

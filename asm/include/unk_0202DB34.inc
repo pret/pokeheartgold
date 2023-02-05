@@ -1,0 +1,17 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public SavArray_get
+.public sub_0202DB34
+.public sub_0202DB40
+.public sub_0202DB44
+.public sub_0202DB54
+.public sub_0202DB5C
+.public sub_0202DB64
+.public sub_0202DB70
+.public sub_0202DB80
+.public sub_0202DB88
+.public sub_0202DB90
+.public sub_0202DB98
+.public sub_0202DBA0
+.public MIi_CpuClearFast
+.public MIi_CpuCopyFast

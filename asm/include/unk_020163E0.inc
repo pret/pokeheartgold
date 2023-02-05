@@ -1,0 +1,14 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public PaletteData_LoadPalette
+.public PaletteData_GetUnfadedBuf
+.public sub_02007200
+.public sub_02007234
+.public sub_020163E0
+.public sub_0201649C
+.public sub_020164C4
+.public BG_LoadPlttData
+.public sub_0201F988
+.public sub_02026E84
+.public sub_02026E94
+.public MIi_CpuCopy16

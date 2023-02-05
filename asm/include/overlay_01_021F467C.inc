@@ -1,0 +1,12 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public AllocFromHeap
+.public FreeToHeapExplicit
+.public GX_EngineAToggleLayers
+.public GX_SetBankForBG
+.public GX_ResetBankForBG
+.public MIi_CpuClear32
+.public ov01_021F4464
+.public ov01_021F44B4
+.public ov01_021F467C
+.public ov01_021F46DC

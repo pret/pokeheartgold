@@ -1,6 +1,7 @@
 #include "constants/pokemon.h"
 #include "constants/sndseq.h"
 	.include "asm/macros.inc"
+	.include "overlay_12_0224E4FC.inc"
 	.include "global.inc"
 
 	.text

@@ -1,6 +1,7 @@
 #include "constants/items.h"
 #include "constants/moves.h"
 	.include "asm/macros.inc"
+	.include "unk_02074944.inc"
 	.include "global.inc"
 
 	.text

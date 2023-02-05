@@ -2,6 +2,7 @@
 #include "constants/items.h"
 #include "constants/ribbon.h"
 	.include "asm/macros.inc"
+	.include "scrcmd_11.inc"
 	.include "global.inc"
 
 	.rodata

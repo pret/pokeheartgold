@@ -1,0 +1,12 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public GF_AssertFail
+.public ov80_0222AB40
+.public ov80_0222AB78
+.public ov80_0222AB84
+.public ov80_0222AB90
+.public ov80_0222AB98
+.public ov80_0222AC3C
+.public ov80_0222AC4C
+.public ov80_0222AC58
+.public ov80_0222AC70

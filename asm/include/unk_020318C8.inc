@@ -1,0 +1,11 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public SavArray_get
+.public sub_020318C8
+.public sub_020318CC
+.public sub_020318E8
+.public sub_020318F4
+.public sub_020318F8
+.public sub_020318FC
+.public sub_02031900
+.public MIi_CpuClear32

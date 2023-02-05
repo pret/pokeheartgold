@@ -1,0 +1,12 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public sub_02027010
+.public sub_02027098
+.public OS_ResetSystem
+.public OS_Terminate
+.public MI_CpuCopy8
+.public FS_FindArchive
+.public FS_IsAvailable
+.public FS_InitFile
+.public FS_OpenFile
+.public CARD_Init

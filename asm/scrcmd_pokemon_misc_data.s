@@ -10,6 +10,7 @@
 #include "msgdata/msg/msg_0096_D31R0201.h"
 #include "msgdata/msg/msg_0066_D23R0102.h"
 	.include "asm/macros.inc"
+	.include "scrcmd_pokemon_misc_data.inc"
 	.include "global.inc"
 
 	.rodata

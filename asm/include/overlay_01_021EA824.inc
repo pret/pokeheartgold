@@ -1,0 +1,17 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public AllocFromHeap
+.public FreeToHeapExplicit
+.public G3X_SetFog
+.public G3X_SetFogTable
+.public MIi_CpuClear32
+.public MIi_CpuCopy32
+.public ov01_021EA824
+.public ov01_021EA840
+.public ov01_021EA854
+.public ov01_021EA858
+.public ov01_021EA85C
+.public ov01_021EA860
+.public ov01_021EA864
+.public ov01_021EA89C
+.public ov01_021EA8C4

@@ -1,0 +1,13 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public MTX_Identity33_
+.public MTX_ScaleApply33
+.public MTX_RotX33_
+.public MTX_RotY33_
+.public MTX_RotZ33_
+.public MTX_Inverse33
+.public MTX_Concat33
+.public MTX_MultVec33
+.public FX_GetDivResult
+.public FX_InvAsync
+.public MI_Copy36B

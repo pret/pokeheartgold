@@ -1,0 +1,16 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public MIi_CpuClear16
+.public MIi_CpuCopy16
+.public MIi_CpuClear32
+.public MIi_CpuCopy32
+.public MIi_CpuSend32
+.public MIi_CpuClearFast
+.public MIi_CpuCopyFast
+.public MI_Copy32B
+.public MI_Copy36B
+.public MI_Copy48B
+.public MI_Copy64B
+.public MI_CpuFill8
+.public MI_CpuCopy8
+.public MI_Zero36B

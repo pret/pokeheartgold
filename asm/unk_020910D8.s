@@ -5,6 +5,7 @@
 #include "constants/pokemon.h"
 #include "constants/species.h"
 	.include "asm/macros.inc"
+	.include "unk_020910D8.inc"
 	.include "global.inc"
 
 	.public _02102610

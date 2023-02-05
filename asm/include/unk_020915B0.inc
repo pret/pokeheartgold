@@ -1,0 +1,15 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public UnloadOverlayByID
+.public HandleLoadOverlay
+.public OverlayManager_GetArgs
+.public CreateHeap
+.public DestroyHeap
+.public LoadDwcOverlay
+.public UnloadDwcOverlay
+.public LoadOVY13
+.public LoadOVY38
+.public UnloadOVY38
+.public OS_ResetSystem
+.public gApp_MainMenu_SelectOption_NintendoWFCSetup
+.public ov13_0221BA00

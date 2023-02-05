@@ -6,6 +6,7 @@
 #include "constants/pokemon.h"
 #include "msgdata/msg/msg_0300.h"
 	.include "asm/macros.inc"
+	.include "unk_0208E600.inc"
 	.include "global.inc"
 
 	.public _020FA484

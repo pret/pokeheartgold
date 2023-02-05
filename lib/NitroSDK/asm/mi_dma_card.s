@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "mi_dma_card.inc"
 	.include "global.inc"
 
 	.public MIi_CheckAnotherAutoDMA

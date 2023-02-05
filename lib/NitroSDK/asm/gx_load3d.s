@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "gx_load3d.inc"
 	.include "global.inc"
 	.public GXi_DmaId
 	.public GX_ResetBankForClearImage

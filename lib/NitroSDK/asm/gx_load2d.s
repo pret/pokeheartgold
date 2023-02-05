@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "gx_load2d.inc"
 	.include "global.inc"
 	.public GXi_DmaId
 

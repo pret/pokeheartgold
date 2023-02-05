@@ -1,0 +1,17 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public OS_SetIrqFunction
+.public OS_GetIrqFunction
+.public OSi_EnterDmaCallback
+.public OS_EnableIrqMask
+.public OS_DisableIrqMask
+.public OS_ResetRequestIrqMask
+.public OS_DisableInterrupts
+.public OS_RestoreInterrupts
+.public MI_WaitDma
+.public MIi_CheckAnotherAutoDMA
+.public MIi_CheckDma0SourceAddress
+.public MI_SendGXCommandAsync
+.public MI_SendGXCommandAsyncFast
+.public MIi_DmaSetParams
+.public MI_SendGXCommand

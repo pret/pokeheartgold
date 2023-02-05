@@ -1,5 +1,6 @@
 #include "constants/sndseq.h"
 	.include "asm/macros.inc"
+	.include "overlay_110.inc"
 	.include "global.inc"
 
 	.text
