@@ -63,12 +63,12 @@ int sub_02090E44(Unk02090C94 *a0);
 void sub_02090E5C(Unk02090C94 *a0);
 Unk02090E68 *sub_02090E68(SAVEDATA *saveData, u16 a1, u8 partyIdx, u8 a3, HeapID heapId);
 Unk02090E68 *sub_02090EC0(SAVEDATA *saveData, int n, u16 i, HeapID heapId);
-Unk02090E68 *sub_02090F00(SAVEDATA *saveData, POKEMON *pokemon, HeapID heapId);
+Unk02090E68 *sub_02090F00(SAVEDATA *saveData, Pokemon *pokemon, HeapID heapId);
 Unk02090E68 *sub_02090F38(SAVEDATA *saveData, u8 mailType, HeapID heapId);
 u32 sub_02090F6C(Unk02090E68 *a0);
-BOOL sub_02090F70(Unk02090E68 *a0, POKEMON *pokemon);
+BOOL sub_02090F70(Unk02090E68 *a0, Pokemon *pokemon);
 void sub_02090F90(Unk02090E68 *a0);
-int sub_02090FA8(MAILBOX *mailbox, POKEMON *pokemon, HeapID heapId);
-int sub_02091004(MAIL *msgs, int i, POKEMON *pokemon, HeapID heapId);
+int sub_02090FA8(MAILBOX *mailbox, Pokemon *pokemon, HeapID heapId);
+int sub_02091004(MAIL *msgs, int i, Pokemon *pokemon, HeapID heapId);
 
 #endif //POKEHEARTGOLD_MAIL_MISC_H

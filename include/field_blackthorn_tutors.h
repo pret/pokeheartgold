@@ -5,7 +5,7 @@
 #include "pokemon_types_def.h"
 
 struct MoveRelearner {
-    POKEMON *pokemon;
+    Pokemon *pokemon;
     PLAYERPROFILE *profile;
     OPTIONS *options;
     u8 filler_0C[4];
@@ -17,7 +17,7 @@ struct MoveRelearner {
 
 struct MoveRelearner *MoveRelearner_new(HeapID heapId);
 void MoveRelearner_delete(struct MoveRelearner *moveRelearner);
-u16 *GetEligibleLevelUpMoves(POKEMON *pokemon, HeapID heapId);
+u16 *GetEligibleLevelUpMoves(Pokemon *pokemon, HeapID heapId);
 BOOL sub_0209186C(const u16 *ptr);
 
 #endif //POKEHEARTGOLD_FIELD_BLACKTHORN_TUTORS_H

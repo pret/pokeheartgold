@@ -195,7 +195,7 @@ Unk02090E68 *sub_02090EC0(SAVEDATA *saveData, int n, u16 i, HeapID heapId) {
     return ptr;
 }
 
-Unk02090E68 *sub_02090F00(SAVEDATA *saveData, POKEMON *pokemon, HeapID heapId) {
+Unk02090E68 *sub_02090F00(SAVEDATA *saveData, Pokemon *pokemon, HeapID heapId) {
     Unk02090E68 *ptr = AllocFromHeapAtEnd(heapId, sizeof(Unk02090E68));
     MI_CpuFill8(ptr, 0, sizeof(Unk02090E68));
 
@@ -227,7 +227,7 @@ u32 sub_02090F6C(Unk02090E68 *a0) {
     return a0->unk4;
 }
 
-BOOL sub_02090F70(Unk02090E68 *a0, POKEMON *pokemon) {
+BOOL sub_02090F70(Unk02090E68 *a0, Pokemon *pokemon) {
     if (sub_02090F6C(a0) == 0) {
         return FALSE;
     }
@@ -242,7 +242,7 @@ void sub_02090F90(Unk02090E68 *a0) {
     FreeToHeap(a0);
 }
 
-int sub_02090FA8(MAILBOX *mailbox, POKEMON *pokemon, HeapID heapId) {
+int sub_02090FA8(MAILBOX *mailbox, Pokemon *pokemon, HeapID heapId) {
     int item = ITEM_NONE;
     int idx = Mailbox_GetFirstEmptySlotIdx(mailbox);
 
@@ -260,7 +260,7 @@ int sub_02090FA8(MAILBOX *mailbox, POKEMON *pokemon, HeapID heapId) {
     return -1;
 }
 
-int sub_02091004(MAIL *msgs, int i, POKEMON *pokemon, HeapID heapId) {
+int sub_02091004(MAIL *msgs, int i, Pokemon *pokemon, HeapID heapId) {
     int item = ITEM_NONE;
 
     MAIL *mail = Mailbox_AllocAndFetchMailI(msgs, 0, i, heapId);

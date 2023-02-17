@@ -128,7 +128,7 @@ void Fsys_SyncMapObjectsToSave(FieldSystem *fsys) {
 void Fsys_RestoreMapObjectsFromSave(FieldSystem *fsys) {
     struct SavedMapObjectList *unk = Save_MapObjects_get(fsys->savedata);
     struct SavedMapObject *follower = SaveMapObjects_SearchSpriteId(unk->subs, 64, SPRITE_TSURE_POKE_SHAYMIN_SKY);
-    POKEMON *pokemon;
+    Pokemon *pokemon;
     int species;
     int forme;
 

@@ -171,7 +171,7 @@ void Save_CreateRoamerByID(SAVEDATA *saveData, u8 idx) {
     PLAYERPROFILE *profile;
     ROAMER_SAVE *roamerSave = Save_Roamers_get(saveData);
     ROAMER *roamerStats = Roamers_GetRoamMonStats(roamerSave, idx);
-    POKEMON *pokemon;
+    Pokemon *pokemon;
     u16 species;
     u8 level;
 

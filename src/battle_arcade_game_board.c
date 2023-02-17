@@ -75,7 +75,7 @@ static void *BattleArcadeObj_Delete(BATTLE_ARCADE_OBJECT *obj);
 static void BattleArcadeObj_SetVisible(BATTLE_ARCADE_OBJECT *obj, int flag);
 static void BattleArcadeObj_SetPos(BATTLE_ARCADE_OBJECT *obj, u16 x, u16 y);
 static void BattleArcadeObj_SetAnimation(BATTLE_ARCADE_OBJECT *obj, u32 val);
-static void ov84_0223F894(BATTLE_ARCADE_OBJECT *obj, POKEMON *mon);
+static void ov84_0223F894(BATTLE_ARCADE_OBJECT *obj, Pokemon *mon);
 static void ov84_0223F8A8(BATTLE_ARCADE_OBJECT *obj, int flag);
 static void ov84_0223F8B4(BGCONFIG *config, WINDOW *window);
 static void ov84_0223F8E4(WINDOW *window);
@@ -1152,7 +1152,7 @@ static u8 ov84_0223F178(GAME_BOARD_WORK *work, u8 a1) {
 
 static void ov84_0223F1BC(GAME_BOARD_WORK *work) {
     u8 partyCount, opponentPartyCount, i;
-    POKEMON *mon;
+    Pokemon *mon;
     
     partyCount = BattleArcade_GetMonCount(work->type, 1);
     opponentPartyCount = BattleArcade_GetOpponentMonCount(work->type, 1);
@@ -1317,8 +1317,8 @@ static void ov84_0223F538(GAME_BOARD_SUB_3E8 *work) {
 
 static void ov84_0223F5E4(GAME_BOARD_SUB_3E8 *work, PARTY *playerParty, PARTY *opponentParty, u8 type) {
     u32 i;
-    POKEMON *playerMon;
-    POKEMON *opponentMon;
+    Pokemon *playerMon;
+    Pokemon *opponentMon;
     NARC *narc = NARC_ctor(20, HEAP_ID_GAME_BOARD);
     
     work->resourceObj[3][1] = AddPlttResObjFromNarc(work->resourceMan[1], 20, sub_02074490(), FALSE, 3, 1, 3, HEAP_ID_GAME_BOARD);
@@ -1411,7 +1411,7 @@ static void BattleArcadeObj_SetAnimation(BATTLE_ARCADE_OBJECT *obj, u32 val) {
     sub_02024950(obj->sprite, val);
 }
 
-static void ov84_0223F894(BATTLE_ARCADE_OBJECT *obj, POKEMON *mon) {
+static void ov84_0223F894(BATTLE_ARCADE_OBJECT *obj, Pokemon *mon) {
     sub_02024AA8(obj->sprite, Pokemon_GetIconPalette(mon));
 }
 

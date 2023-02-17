@@ -1507,7 +1507,7 @@ LocalMapObject *sub_020699F8(MapObjectMan *mapObjectMan, int x, int y, int direc
     FieldSystem *fsys;
     PARTY *party;
     int partyCount;
-    POKEMON *pokemon;
+    Pokemon *pokemon;
     int species;
     int forme;
     int gender;
@@ -1563,7 +1563,7 @@ void sub_02069B74(MapObjectMan *mapObjectMan, u32 mapno) {
     FieldSystem *fsys;
     PARTY *party;
     int partyCount;
-    POKEMON *pokemon;
+    Pokemon *pokemon;
     int species;
     int forme;
     u8 gender;
@@ -1983,7 +1983,7 @@ s8 FsysUnkSub108_GetMonMood(struct FieldSystemUnk108 *unk) {
     return GetMonData(unk->pokemon, MON_DATA_MOOD, NULL);
 }
 
-void FsysUnkSub108_Set(struct FieldSystemUnk108 *a0, POKEMON *pokemon, u16 species, u32 personality) {
+void FsysUnkSub108_Set(struct FieldSystemUnk108 *a0, Pokemon *pokemon, u16 species, u32 personality) {
     s8 mood;
     if (species != SPECIES_NONE && (a0->isRegistered == 0 || a0->species != species || a0->personality != personality)) {
         a0->species = species;

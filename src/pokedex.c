@@ -314,7 +314,7 @@ static BOOL Pokedex_CheckSeenDeoxysForme(POKEDEX *pokedex, u32 forme) {
     return FALSE;
 }
 
-static void Pokedex_SetSeenDeoxysForme(POKEDEX *pokedex, u16 species, POKEMON *pokemon) {
+static void Pokedex_SetSeenDeoxysForme(POKEDEX *pokedex, u16 species, Pokemon *pokemon) {
     u8 forme;
 
     forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
@@ -377,7 +377,7 @@ static void Pokedex_SetSeenRotomForme(POKEDEX *pokedex, u32 species, u32 forme) 
     }
 }
 
-static void Pokedex_TryAppendSeenForme(POKEDEX *pokedex, u16 species, POKEMON *pokemon) {
+static void Pokedex_TryAppendSeenForme(POKEDEX *pokedex, u16 species, Pokemon *pokemon) {
     u32 forme;
 
     forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
@@ -762,7 +762,7 @@ static u32 Pokedex_GetSeenFormeNum_Deoxys(POKEDEX *pokedex) {
     return Pokedex_CountSeenDeoxysFormes(pokedex);
 }
 
-void Pokedex_SetMonSeenFlag(POKEDEX *pokedex, POKEMON *pokemon) {
+void Pokedex_SetMonSeenFlag(POKEDEX *pokedex, Pokemon *pokemon) {
     u16 species;
     u32 personality;
     u32 gender;
@@ -790,7 +790,7 @@ void Pokedex_SetMonSeenFlag(POKEDEX *pokedex, POKEMON *pokemon) {
     }
 }
 
-void Pokedex_SetMonCaughtFlag(POKEDEX *pokedex, POKEMON *pokemon) {
+void Pokedex_SetMonCaughtFlag(POKEDEX *pokedex, Pokemon *pokemon) {
     u16 species;
     u32 language;
     u32 personality;

@@ -39,6 +39,6 @@ u32 Mailbox_CountMessages(MAILBOX *mailbox, int unused);
 void Mailbox_FetchMailToBuffer(MAIL *msgs, int n, int i, MAIL *dest);
 int MailArray_GetFirstEmptySlotIdx(MAIL *msgs, int n);
 u32 MailArray_CountMessages(MAIL *msgs, int n);
-MAIL *CreateKenyaMail(POKEMON *pokemon, u8 mailType, u8 gender, STRING *name, u8 otId);
+MAIL *CreateKenyaMail(Pokemon *pokemon, u8 mailType, u8 gender, STRING *name, u8 otId);
 
 #endif //POKEHEARTGOLD_MAIL_H

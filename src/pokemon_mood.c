@@ -12,7 +12,7 @@ static const s8 sMoodModifiers[] = {
     30
 };
 
-static void MonAdjustMood(POKEMON *pokemon, s8 unk1) {
+static void MonAdjustMood(Pokemon *pokemon, s8 unk1) {
     s8 mood;
     s32 adjustedMood;
 
@@ -83,14 +83,14 @@ static s8 ItemIdGetMoodEffect(u16 itemId) {
     return moodEffect;
 }
 
-void ApplyItemEffectOnMonMood(POKEMON *pokemon, u16 itemId) {
+void ApplyItemEffectOnMonMood(Pokemon *pokemon, u16 itemId) {
     s8 moodEffect = ItemIdGetMoodEffect(itemId);
     if (moodEffect != 0) {
         MonAdjustMood(pokemon, moodEffect);
     }
 }
 
-void ApplyMonMoodModifier(POKEMON *pokemon, int modifierId) {
+void ApplyMonMoodModifier(Pokemon *pokemon, int modifierId) {
     s8 mood;
     u16 species; 
     s32 adjustedMood;

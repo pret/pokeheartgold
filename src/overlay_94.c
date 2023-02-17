@@ -43,7 +43,7 @@ void PartyMenu_InitIconFormeChangeWork(PartyMenuStruct* unkPtr) {
 
 BOOL PartyMenu_AnimateIconFormeChange(PartyMenuStruct* unkPtr) {
     IconFormeChangeWork* work = unkPtr->iconFormeChange;
-    POKEMON* pokemon = GetPartyMonByIndex(unkPtr->unk654->party, unkPtr->partyMonIndex);
+    Pokemon* pokemon = GetPartyMonByIndex(unkPtr->unk654->party, unkPtr->partyMonIndex);
 
     switch (work->state) {
     case 0:

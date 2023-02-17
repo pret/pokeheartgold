@@ -1852,7 +1852,7 @@ BOOL ScrCmd_452(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_547(SCRIPTCONTEXT *ctx) {
     struct PokepicManager **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
     u16 partyIdx = ScriptGetVar(ctx);
-    POKEMON *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), partyIdx);
+    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), partyIdx);
     LoadUserFrameGfx1(ctx->fsys->bgConfig, 3, 0x3D9, 0xB, 0, 4);
     *p_work = sub_0200F4F8(ctx->fsys->bgConfig, 3, 10, 5, 11, 0x3D9, pokemon, 4);
     return FALSE;
@@ -2097,7 +2097,7 @@ BOOL ScrCmd_NicknameInput(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 partyPos = ScriptGetVar(ctx);
     BUGCONTEST *contest;
-    POKEMON *pokemon;
+    Pokemon *pokemon;
     u16 nickname[20];
     u16 *var_ret;
     int species;
@@ -2288,7 +2288,7 @@ BOOL sub_0204378C(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_183(SCRIPTCONTEXT *ctx) {
     void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
     u16 partyIdx = ScriptGetVar(ctx);
-    POKEMON *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), partyIdx);
+    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), partyIdx);
     int playerGender = PlayerAvatar_GetGender(ctx->fsys->playerAvatar);
     *p_work = ov02_02249458(ctx->fsys, 0, pokemon, playerGender);
     SetupNativeScript(ctx, sub_0204378C);
@@ -3528,7 +3528,7 @@ BOOL ScrCmd_NatDexFlagAction(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_GetEVTotal(SCRIPTCONTEXT *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     u16 partyIdx = ScriptGetVar(ctx);
-    POKEMON *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata),  partyIdx);
+    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata),  partyIdx);
 
     int hpEv = GetMonData(pokemon, MON_DATA_HP_EV, NULL);
     int atkEv = GetMonData(pokemon, MON_DATA_ATK_EV, NULL);
@@ -3637,7 +3637,7 @@ BOOL ScrCmd_502(SCRIPTCONTEXT *ctx) {
 
 void Script_SetMonSeenFlagBySpecies(FieldSystem *fsys, u16 species) {
     POKEDEX *pokedex = Sav2_Pokedex_get(fsys->savedata);
-    POKEMON *pokemon = AllocMonZeroed(32);
+    Pokemon *pokemon = AllocMonZeroed(32);
     ZeroMonData(pokemon);
     CreateMon(pokemon, species, 50, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
     Pokedex_SetMonSeenFlag(pokedex, pokemon);
@@ -3696,7 +3696,7 @@ BOOL ScrCmd_518(SCRIPTCONTEXT *ctx) {
     int i;
 
     for (i = 0; i < partyCount; i++) {
-        POKEMON *pokemon = GetPartyMonByIndex(party, i);
+        Pokemon *pokemon = GetPartyMonByIndex(party, i);
         if (GetMonData(pokemon, MON_DATA_SPECIES, NULL) == SPECIES_DEOXYS) {
             SetMonData(pokemon, MON_DATA_FORME, &forme);
             CalcMonLevelAndStats(pokemon);
@@ -3725,7 +3725,7 @@ BOOL ScrCmd_519(SCRIPTCONTEXT *ctx) {
     for (i = 0; i < partyCount; i++) {
         int j;
         BOOL hasMultiple;
-        POKEMON *pokemon = GetPartyMonByIndex(party, i);
+        Pokemon *pokemon = GetPartyMonByIndex(party, i);
         u32 species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
         u32 forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
         if (species == SPECIES_BURMY) {
@@ -4287,7 +4287,7 @@ u32 sub_020467A8(SAVEDATA *saveData) {
     int i, j;
 
     for (i = 0; i < partyCount; i++) {
-        POKEMON *pokemon = GetPartyMonByIndex(party, i);
+        Pokemon *pokemon = GetPartyMonByIndex(party, i);
         if (GetMonData(pokemon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
             ret |= 1 << GetMonData(pokemon, MON_DATA_FORME, NULL);
         }
@@ -4311,7 +4311,7 @@ u32 sub_020467A8(SAVEDATA *saveData) {
         }
     }
 
-    POKEMON *walkerMon = AllocMonZeroed(32);
+    Pokemon *walkerMon = AllocMonZeroed(32);
     BOXMON *walkerBoxMon = Mon_GetBoxMon(walkerMon);
     POKEWALKER *pokeWalker = Sav2_Pokewalker_get(saveData);
     if (Pokewalker_TryGetBoxMon(pokeWalker, walkerBoxMon)) {
@@ -4367,7 +4367,7 @@ BOOL ScrCmd_696(SCRIPTCONTEXT *ctx) {
     u16 r5 = ScriptGetVar(ctx);
     PARTY *party = SavArray_PlayerParty_get(ctx->fsys->savedata);
     int i, partyCount;
-    POKEMON *pokemon;
+    Pokemon *pokemon;
 
     Party_UpdateAllGiratina_DistortionWorld(party, r5);
     partyCount = GetPartyCount(party);
@@ -4384,7 +4384,7 @@ BOOL ScrCmd_FollowerPokeIsEventTrigger(SCRIPTCONTEXT *ctx) {
     u8 r4 = ScriptReadByte(ctx);
     u16 r7 = ScriptGetVar(ctx);
     u16 *r6 = ScriptGetVarPointer(ctx);
-    POKEMON *pokemon;
+    Pokemon *pokemon;
     int species;
 
     *r6 = 0;

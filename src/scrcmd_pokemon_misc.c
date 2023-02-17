@@ -68,7 +68,7 @@ static void ov01_02201064(struct ListMenu *listMenu, s32 a1, u8 unused);
 static void ov01_02201088(struct ListMenu *listMenu, s32 unused1, u8 unused2);
 static void ov01_022010CC(SysTask *sysTask, void *work);
 static void ov01_0220116C(SCR_648_STRUCT *unkPtr);
-static void GetHiddenPowerPowerType(POKEMON *mon, s32 *power, s32 *type);
+static void GetHiddenPowerPowerType(Pokemon *mon, s32 *power, s32 *type);
 static LocalMapObject *ov01_02201F98(MapObjectMan *mapObjectMan, u8 unkA, u16 species, u16 forme, u32 gender, u32 x, u32 y, u32 mapId);
 
 extern u16 ov01_02209AE0[10];
@@ -340,7 +340,7 @@ BOOL ScrCmd_StatJudge(SCRIPTCONTEXT *ctx) {
     u16 *ivTotal = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
     u16 *highestIvIndex = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
     u16 *highestIv = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
-    POKEMON *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), monIndex);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), monIndex);
     ivList[0] = GetMonData(mon, MON_DATA_HP_IV, 0);
     ivList[1] = GetMonData(mon, MON_DATA_ATK_IV, 0);
     ivList[2] = GetMonData(mon, MON_DATA_DEF_IV, 0);
@@ -380,7 +380,7 @@ BOOL ScrCmd_CommSanitizeParty(SCRIPTCONTEXT *ctx) {
     int partyCount, i, forme;
     u32 species, data;
     u32 heldItems[6];
-    POKEMON *mon;
+    Pokemon *mon;
     int count = 0;
     FieldSystem *fsys = ctx->fsys;
     u16 *success = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
@@ -436,7 +436,7 @@ BOOL ScrCmd_SetMonForme(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 index = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 forme = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
-    POKEMON *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), index);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), index);
     SetMonData(mon, MON_DATA_FORME, &forme);
     return FALSE;
 }
@@ -444,7 +444,7 @@ BOOL ScrCmd_SetMonForme(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_CountTranformedRotomsInParty(SCRIPTCONTEXT *ctx) {
     int i, partyCount, count;
     u32 species, forme, isEgg;
-    POKEMON *mon;
+    Pokemon *mon;
     PARTY *party;
     FieldSystem *fsys = ctx->fsys;
     u16 *rotomCount = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
@@ -477,7 +477,7 @@ BOOL ScrCmd_UpdateRotomForme(SCRIPTCONTEXT *ctx) {
     int defaultSlot = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     VarGet(ctx->fsys, ScriptReadHalfword(ctx)); //unsused variable
     u32 forme = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
-    POKEMON *rotom = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), rotomIndex);
+    Pokemon *rotom = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), rotomIndex);
     Mon_UpdateRotomForme(rotom, forme, defaultSlot);
     Pokedex_SetMonCaughtFlag(Sav2_Pokedex_get(fsys->savedata), rotom);
     return FALSE;
@@ -488,7 +488,7 @@ BOOL ScrCmd_GetHiddenPowerType(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     int partyIndex = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 *typePtr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
-    POKEMON *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), partyIndex);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), partyIndex);
     
     u16 species = GetMonData(mon, MON_DATA_SPECIES, 0);
 
@@ -521,7 +521,7 @@ BOOL ScrCmd_GetHiddenPowerType(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-static void GetHiddenPowerPowerType(POKEMON *mon, s32 *power, s32 *type) {
+static void GetHiddenPowerPowerType(Pokemon *mon, s32 *power, s32 *type) {
     int hpIv = GetMonData(mon, MON_DATA_HP_IV, 0);
     int atkIv = GetMonData(mon, MON_DATA_ATK_IV, 0);
     int defIv = GetMonData(mon, MON_DATA_DEF_IV, 0);
@@ -554,7 +554,7 @@ static void GetHiddenPowerPowerType(POKEMON *mon, s32 *power, s32 *type) {
 
 BOOL ScrCmd_SetFavoriteMon(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    POKEMON *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), 0);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), 0);
     SAVE_MISC_DATA *data = Sav2_Misc_get(fsys->savedata);
     u32 species = GetMonData(mon, MON_DATA_SPECIES, 0);
     u32 forme = GetMonData(mon, MON_DATA_FORME, 0);
@@ -581,7 +581,7 @@ BOOL ScrCmd_GetPartyMonForme(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u32 index = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 *forme = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
-    POKEMON *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), index);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), index);
     *forme = GetMonData(mon, MON_DATA_FORME, 0);
     return FALSE;
 }
@@ -997,7 +997,7 @@ BOOL ScrCmd_GiveTogepiEgg(SCRIPTCONTEXT *ctx) {
     u8 pp;
     u32 personality;
     u16 moveData;
-    POKEMON *togepi;
+    Pokemon *togepi;
     PLAYERPROFILE *profile;
     PARTY *party;
     FieldSystem *fsys = ctx->fsys;
@@ -1044,7 +1044,7 @@ BOOL ScrCmd_777(SCRIPTCONTEXT *ctx) {
     u32 partyIndex = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 *unkPtr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
 
-    POKEMON *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), partyIndex);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), partyIndex);
 
     *unkPtr = sub_0206D8D0(mon, ctx->fsys->savedata);
 
@@ -1058,7 +1058,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(SCRIPTCONTEXT *ctx) {
     u8 forme;
     u8 maxPP;
     u16 heldItem;
-    POKEMON *pichu;    
+    Pokemon *pichu;    
     PARTY *party;
     FieldSystem *fsys;
     PLAYERPROFILE *profile;
@@ -1218,7 +1218,7 @@ BOOL ScrCmd_GetBuenasPassword(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-static u32 MonGetShinyLeafCount(POKEMON *mon) {
+static u32 MonGetShinyLeafCount(Pokemon *mon) {
     int c;
     u32 shinyLeafCount = 0;
 
@@ -1242,7 +1242,7 @@ BOOL ScrCmd_GetShinyLeafCount(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_TryGiveShinyLeafCrown(SCRIPTCONTEXT *ctx) {
     u32 monIndex = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
 
-    POKEMON *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), monIndex);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), monIndex);
     if (MonGetShinyLeafCount(GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), monIndex)) == 5) {
         u8 data = TRUE;
         SetMonData(mon, MON_DATA_SHINY_LEAF_CROWN, &data);
@@ -1370,7 +1370,7 @@ BOOL ScrCmd_CheckKyogreGroudonInParty(SCRIPTCONTEXT *ctx) {
     unkVar = *(ctx->script_ptr);
 
     for (c = 0; c < partyCount; c++) {
-        POKEMON *mon = GetPartyMonByIndex(playerParty, c);
+        Pokemon *mon = GetPartyMonByIndex(playerParty, c);
         u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
         u8 gameVer = GetMonData(mon, MON_DATA_GAME_VERSION, NULL);
         if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)

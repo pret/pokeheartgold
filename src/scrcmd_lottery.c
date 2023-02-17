@@ -43,7 +43,7 @@ BOOL ScrCmd_LotoIdSearch(SCRIPTCONTEXT *ctx) {
 
     partyCount = GetPartyCount(SavArray_PlayerParty_get(fsys->savedata));
     for (monDigit = 0, monPosition = 0, i = 0; i < partyCount; i++) {
-        POKEMON *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
+        Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
         if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
             otid = GetMonData(pokemon, MON_DATA_OTID, NULL) & 0xffff;
             digitCount = LotoId_CountDigitsMatched(lotoId, otid);

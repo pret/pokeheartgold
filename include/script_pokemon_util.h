@@ -9,11 +9,11 @@ BOOL GiveEgg(HeapID heapId, SAVEDATA *saveData, int species, u8 metLocation, Map
 void PartyMonSetMoveInSlot(PARTY *party, int mon_slot, int move_slot, u16 moveId);
 int GetIdxOfFirstPartyMonWithMove(PARTY *party, u16 move);
 int CountAlivePokemon(PARTY *party);
-POKEMON *GetFirstAliveMonInParty_CrashIfNone(PARTY *party);
+Pokemon *GetFirstAliveMonInParty_CrashIfNone(PARTY *party);
 u8 GetIdxOfFirstAliveMonInParty_CrashIfNone(PARTY *party);
-POKEMON *GetFirstNonEggInParty(PARTY *party);
+Pokemon *GetFirstNonEggInParty(PARTY *party);
 BOOL HasEnoughAlivePokemonForDoubleBattle(PARTY *party);
 BOOL ApplyPoisonStep(PARTY *party, u16 location);
-BOOL SurvivePoisoning(POKEMON *pokemon);
+BOOL SurvivePoisoning(Pokemon *pokemon);
 
 #endif //POKEHEARTGOLD_SCRIPT_POKEMON_UTIL_H

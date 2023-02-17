@@ -200,7 +200,7 @@ static LocalMapObject* CreateDayCareMonSpriteInternal(MapObjectMan* object_man, 
 }
 
 BOOL ScrCmd_DayCareSanitizeMon(SCRIPTCONTEXT* ctx) {
-    POKEMON* party_mon;
+    Pokemon* party_mon;
 
     FieldSystem* fsys = ctx->fsys;
     u16 party_slot = ScriptGetVar(ctx);

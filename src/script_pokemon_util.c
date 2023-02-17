@@ -5,7 +5,7 @@
 #include "script_pokemon_util.h"
 #include "constants/items.h"
 
-static BOOL MonNotFaintedOrEgg(POKEMON *pokemon) {
+static BOOL MonNotFaintedOrEgg(Pokemon *pokemon) {
     if (GetMonData(pokemon, MON_DATA_HP, NULL) == 0) {
         return FALSE;
     }
@@ -14,7 +14,7 @@ static BOOL MonNotFaintedOrEgg(POKEMON *pokemon) {
 
 BOOL GiveMon(HeapID heapId, SAVEDATA *saveData, int species, int level, int forme, u8 ability, u16 heldItem, int ball, int encounterType) {
     PARTY *party;
-    POKEMON *pokemon;
+    Pokemon *pokemon;
     PLAYERPROFILE *profile;
     u32 sp1C;
     BOOL result;
@@ -45,7 +45,7 @@ BOOL GiveEgg(HeapID heapId, SAVEDATA *saveData, int species, u8 metLocation, Map
 #pragma unused(heapId)
     PLAYERPROFILE *profile;
     PARTY *party;
-    POKEMON *pokemon;
+    Pokemon *pokemon;
     BOOL result;
 
     profile = Sav2_PlayerData_GetProfileAddr(saveData);
@@ -65,7 +65,7 @@ void PartyMonSetMoveInSlot(PARTY *party, int mon_slot, int move_slot, u16 moveId
 int GetIdxOfFirstPartyMonWithMove(PARTY *party, u16 move) {
     int i;
     int n;
-    POKEMON *pokemon;
+    Pokemon *pokemon;
 
     n = GetPartyCount(party);
     for (i = 0; i < n; i++) {
@@ -87,7 +87,7 @@ int CountAlivePokemon(PARTY *party) {
     int i;
     int n;
     int c;
-    POKEMON *pokemon;
+    Pokemon *pokemon;
 
     n = GetPartyCount(party);
     c = 0;
@@ -100,10 +100,10 @@ int CountAlivePokemon(PARTY *party) {
     return c;
 }
 
-POKEMON *GetFirstAliveMonInParty_CrashIfNone(PARTY *party) {
+Pokemon *GetFirstAliveMonInParty_CrashIfNone(PARTY *party) {
     int i;
     int n;
-    POKEMON *pokemon;
+    Pokemon *pokemon;
 
     n = GetPartyCount(party);
     for (i = 0; i < n; i++) {
@@ -119,7 +119,7 @@ POKEMON *GetFirstAliveMonInParty_CrashIfNone(PARTY *party) {
 u8 GetIdxOfFirstAliveMonInParty_CrashIfNone(PARTY *party) {
     int i;
     int n;
-    POKEMON *pokemon;
+    Pokemon *pokemon;
 
     n = GetPartyCount(party);
     for (i = 0; i < n; i++) {
@@ -132,10 +132,10 @@ u8 GetIdxOfFirstAliveMonInParty_CrashIfNone(PARTY *party) {
     return 0;
 }
 
-POKEMON *GetFirstNonEggInParty(PARTY *party) {
+Pokemon *GetFirstNonEggInParty(PARTY *party) {
     u16 i;
     u16 n;
-    POKEMON *pokemon;
+    Pokemon *pokemon;
 
     n = GetPartyCount(party);
     for (i = 0; i < n; i++) {
@@ -157,7 +157,7 @@ BOOL ApplyPoisonStep(PARTY *party, u16 location) {
     int n_poisoned;
     int n_fainted;
     u32 hp;
-    POKEMON *pokemon;
+    Pokemon *pokemon;
 
     n_poisoned = 0;
     n_fainted = 0;
@@ -191,7 +191,7 @@ BOOL ApplyPoisonStep(PARTY *party, u16 location) {
     }
 }
 
-BOOL SurvivePoisoning(POKEMON *pokemon) {
+BOOL SurvivePoisoning(Pokemon *pokemon) {
     u32 status;
     if ((GetMonData(pokemon, MON_DATA_STATUS, NULL) & STATUS_POISON_ANY) && GetMonData(pokemon, MON_DATA_HP, NULL) == 1) {
         status = 0;

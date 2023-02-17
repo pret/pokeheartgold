@@ -34,7 +34,7 @@ void Sav2_HOF_RecordParty(HALL_OF_FAME *hof, PARTY *party, RTCDate *date) {
         MI_CpuClear16(team->party, sizeof(team->party));
 
         for (i = 0, j = 0; i < npokes; i++) {
-            POKEMON *pokemon = GetPartyMonByIndex(party, i);
+            Pokemon *pokemon = GetPartyMonByIndex(party, i);
             BOOL lock = AcquireMonLock(pokemon);
             if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
                 team->party[j].species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);

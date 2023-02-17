@@ -191,7 +191,7 @@ struct ChooseStarterAppWork {
     STRING *strbuf;
     struct StarterChooseMonSpriteData monSpriteData;
     GFCameraTranslationWrapper *cameraTranslation;
-    POKEMON *choices[3]; // 578
+    Pokemon *choices[3]; // 578
     int modelAnimState;
     GXRgb edgeColorTable[8];
 }; // size=0x598

@@ -23,7 +23,7 @@ static const u16 sBigMonSizeTable[][3] = {
     {1700, 1,   65510},
 };
 
-static u32 GetMonSizeHash(POKEMON *pokemon) {
+static u32 GetMonSizeHash(Pokemon *pokemon) {
     u16 pid_lo;
     u16 hpIv_lo;
     u16 atkIv_lo;
@@ -78,7 +78,7 @@ static void FormatSizeRecord(FieldSystem *fsys, u8 idx0, u8 idx1, u16 species, u
 };
 
 BOOL ScrCmd_SizeRecordCompare(SCRIPTCONTEXT *ctx) {
-    POKEMON *pokemon;
+    Pokemon *pokemon;
     vu16 rand, record;
     u16 slot;
     u16 species;
@@ -114,7 +114,7 @@ BOOL ScrCmd_SizeRecordCompare(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_SizeRecordUpdate(SCRIPTCONTEXT *ctx) {
-    POKEMON *pokemon;
+    Pokemon *pokemon;
     u16 slot;
     FieldSystem *fsys;
 
@@ -142,7 +142,7 @@ BOOL ScrCmd_BufferRecordSize(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_BufferMonSize(SCRIPTCONTEXT *ctx) {
-    POKEMON *pokemon;
+    Pokemon *pokemon;
     FieldSystem *fsys;
     u16 idx0;
     u16 idx1;

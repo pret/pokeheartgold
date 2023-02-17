@@ -28,7 +28,7 @@ void BugContest_BackUpParty(BUGCONTEST *bugContest);
 void BugContest_InitOpponents(BUGCONTEST *bugContest);
 void BugContest_InitEncounters(BUGCONTEST *bugContest);
 void BugContest_RestoreParty_RetrieveCaughtPokemon(BUGCONTEST *bugContest);
-u16 BugContest_JudgePlayerMon(BUGCONTEST *bugContest, POKEMON *pokemon);
+u16 BugContest_JudgePlayerMon(BUGCONTEST *bugContest, Pokemon *pokemon);
 
 BUGCONTEST *BugContest_new(FieldSystem *fsys, u32 weekday) {
     BUGCONTEST *bugContest;
@@ -202,7 +202,7 @@ void BugContest_BackUpParty(BUGCONTEST *bugContest) {
 }
 
 void BugContest_RestoreParty_RetrieveCaughtPokemon(BUGCONTEST *bugContest) {
-    POKEMON *pokemon;
+    Pokemon *pokemon;
     PARTY_EXTRA_SUB sub;
 
     // Restore the player's party to its prior state, but keep the
@@ -306,7 +306,7 @@ void BugContest_InitEncounters(BUGCONTEST *bugContest) {
     FS_CloseFile(&file);
 }
 
-u16 BugContest_JudgePlayerMon(BUGCONTEST *bugContest, POKEMON *pokemon) {
+u16 BugContest_JudgePlayerMon(BUGCONTEST *bugContest, Pokemon *pokemon) {
     u16 score = 0;
     int i;
     u16 species;

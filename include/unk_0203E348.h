@@ -38,7 +38,7 @@ struct PartyMenuAppData {
 struct ChooseStarterAppArgs {
     int cursorPos;
     OPTIONS *options;
-    POKEMON starters[3];
+    Pokemon starters[3];
 };
 
 struct DressupSomethingAppData {

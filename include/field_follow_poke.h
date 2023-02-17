@@ -33,7 +33,7 @@ struct FieldSystemUnk108 *FsysUnkSub108_Alloc(HeapID heapId);
 void FsysUnkSub108_AddMonMood(struct FieldSystemUnk108 *unk, s8 by);
 void FsysUnkSub108_SetMonMood(struct FieldSystemUnk108 *unk, s8 mood);
 s8 FsysUnkSub108_GetMonMood(struct FieldSystemUnk108 *unk);
-void FsysUnkSub108_Set(struct FieldSystemUnk108 *a0, POKEMON *pokemon, u16 species, u32 personality);
+void FsysUnkSub108_Set(struct FieldSystemUnk108 *a0, Pokemon *pokemon, u16 species, u32 personality);
 void FsysUnkSub108_MoveMoodTowardsNeutral(struct FieldSystemUnk108 *a0);
 int SpeciesToOverworldModelIndexOffset(int species);
 int OverworldModelLookupFormeCount(int species);

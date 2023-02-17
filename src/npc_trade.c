@@ -14,14 +14,14 @@
 
 struct _NPC_TRADE_WORK {
     NPC_TRADE *trade_dat;
-    POKEMON *pokemon;
+    Pokemon *pokemon;
     PLAYERPROFILE *profile;
     u32 tradeno;
     HeapID heapId;
 };
 
 static STRING *_GetNpcTradeName(HeapID heapId, s32 msgno);
-static void _CreateTradeMon(POKEMON *pokemon, NPC_TRADE *trade_dat, u32 level, u32 tradeno, u32 mapno, u32 met_level_strat, HeapID heapId);
+static void _CreateTradeMon(Pokemon *pokemon, NPC_TRADE *trade_dat, u32 level, u32 tradeno, u32 mapno, u32 met_level_strat, HeapID heapId);
 
 NPC_TRADE_WORK *NPCTrade_AllocWork(HeapID heapId, u32 tradeno) {
     NPC_TRADE_WORK *ret;
@@ -56,9 +56,9 @@ void NPCTrade_DeleteWork(NPC_TRADE_WORK *work) {
 
 void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fsys, u8 tradeno, u8 level, u16 mapno) {
     PARTY *party;
-    POKEMON *pokemon;
+    Pokemon *pokemon;
     NPC_TRADE *trade_dat;
-    POKEMON *givenMon;
+    Pokemon *givenMon;
     STRING *name;
     MAIL *mail;
     u8 mailno;
@@ -84,9 +84,9 @@ void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fsys, u8 tradeno, u8 level, u16 ma
 
 MAIL *NPCTrade_MakeKenyaMail(void) {
     PARTY *party;
-    POKEMON *pokemon;
+    Pokemon *pokemon;
     NPC_TRADE *trade_dat;
-    POKEMON *givenMon;
+    Pokemon *givenMon;
     STRING *name;
     MAIL *mail;
     u8 mailno;
@@ -105,7 +105,7 @@ MAIL *NPCTrade_MakeKenyaMail(void) {
 
 int NPCTrade_CanGiveUpLoanMon(FieldSystem *fsys, u8 tradeno, u8 idx) {
     PARTY *party;
-    POKEMON *pokemon, *cur_poke;
+    Pokemon *pokemon, *cur_poke;
     u8 capsule;
     u16 heldItem;
     int i, n, party_count;
@@ -158,8 +158,8 @@ void NPCTrade_ReceiveMonToSlot(FieldSystem *fsys, NPC_TRADE_WORK *work, int slot
     UpdatePokedexWithReceivedSpecies(fsys->savedata, work->pokemon);
 }
 
-void NPCTrade_CreateTradeAnim(FieldSystem *fsys, NPC_TRADE_WORK *work, int slot, TRADE_ANIM_WORK *anim_work, POKEMON *my_mon_buf, POKEMON *trade_mon_buf) {
-    POKEMON *my_poke;
+void NPCTrade_CreateTradeAnim(FieldSystem *fsys, NPC_TRADE_WORK *work, int slot, TRADE_ANIM_WORK *anim_work, Pokemon *my_mon_buf, Pokemon *trade_mon_buf) {
+    Pokemon *my_poke;
     u32 time_of_day;
 
     my_poke = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
@@ -191,7 +191,7 @@ static STRING *_GetNpcTradeName(HeapID heapId, s32 msgno) {
     return ret;
 }
 
-static void _CreateTradeMon(POKEMON *pokemon, NPC_TRADE *trade_dat, u32 level, u32 tradeno, u32 mapno, u32 met_level_strat, HeapID heapId) {
+static void _CreateTradeMon(Pokemon *pokemon, NPC_TRADE *trade_dat, u32 level, u32 tradeno, u32 mapno, u32 met_level_strat, HeapID heapId) {
     STRING *name;
     u8 nickname_flag;
     u32 mapsec;

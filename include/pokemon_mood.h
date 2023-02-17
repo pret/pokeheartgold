@@ -3,7 +3,7 @@
 
 #include "pokemon.h"
 
-void ApplyItemEffectOnMonMood(POKEMON *pokemon, u16 itemId);
-void ApplyMonMoodModifier(POKEMON *pokemon, int modifierId);
+void ApplyItemEffectOnMonMood(Pokemon *pokemon, u16 itemId);
+void ApplyMonMoodModifier(Pokemon *pokemon, int modifierId);
 
 #endif //POKEHEARTGOLD_POKEMON_MOOD_H

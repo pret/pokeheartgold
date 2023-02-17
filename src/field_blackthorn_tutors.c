@@ -13,7 +13,7 @@ void MoveRelearner_delete(struct MoveRelearner *moveRelearner) {
     FreeToHeap(moveRelearner);
 }
 
-u16 *GetEligibleLevelUpMoves(POKEMON *pokemon, HeapID heapId) {
+u16 *GetEligibleLevelUpMoves(Pokemon *pokemon, HeapID heapId) {
     u16 cur_moveset[MON_MOVES]; // sp+10
     u16 species; // sp+0C
     u8 forme;    // sp+08

@@ -12,7 +12,7 @@ int BattleSys_Random(BattleSystem *bsys);
 PLAYERPROFILE *BattleSys_GetPlayerProfile(BattleSystem *bsys, int a1);
 PARTY *BattleSys_GetParty(BattleSystem *bsys, int battlerId);
 int BattleSys_GetPartySize(BattleSystem *bsys, int battlerId);
-POKEMON *BattleSystem_GetPartyMon(BattleSystem *bsys, int battlerId, int index);
+Pokemon *BattleSystem_GetPartyMon(BattleSystem *bsys, int battlerId, int index);
 int BattleSys_GetTerrainId(BattleSystem *bsys);
 int ov12_0223ABB8(BattleSystem *bsys, int battlerId, int a2);
 void BattleSys_RecoverStatus(BattleSystem *bsys, int battlerIdA, int battlerIdB, int a2, int itemWork);

@@ -832,7 +832,7 @@ void sub_020515FC(FieldSystem *fsys, PARTY *party, int battleFlags) {
 }
 
 static void sub_02051660(FieldSystem *fsys, BATTLE_SETUP *setup) {
-    POKEMON *mon;
+    Pokemon *mon;
     u32 battleFlags = setup->flags;
     int winFlag = setup->winFlag;
     

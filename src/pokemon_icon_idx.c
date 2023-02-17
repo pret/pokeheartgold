@@ -20,7 +20,7 @@ u32 Boxmon_GetIconNaix(BOXMON *boxmon) {
     return ret;
 }
 
-u32 Pokemon_GetIconNaix(POKEMON *pokemon) {
+u32 Pokemon_GetIconNaix(Pokemon *pokemon) {
     return Boxmon_GetIconNaix(Mon_GetBoxMon(pokemon));
 }
 
@@ -195,7 +195,7 @@ const u8 Boxmon_GetIconPalette(BOXMON *boxmon) {
     return GetMonIconPaletteEx(species, forme, isEgg);
 }
 
-const u8 Pokemon_GetIconPalette(POKEMON *pokemon) {
+const u8 Pokemon_GetIconPalette(Pokemon *pokemon) {
     return Boxmon_GetIconPalette(Mon_GetBoxMon(pokemon));
 }
 

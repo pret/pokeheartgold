@@ -41,7 +41,7 @@ BOOL ScrCmd_508(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_509(SCRIPTCONTEXT *ctx) {
     struct UnkStruct_0202EB30 *unkStruct = sub_020270F8(ctx->fsys->savedata);
-    POKEMON *pokemon = AllocMonZeroed(32);
+    Pokemon *pokemon = AllocMonZeroed(32);
     u16 *retPtr = ScriptGetVarPointer(ctx);
     if (sub_0202EC98(unkStruct) == PARTY_SIZE) {
         *retPtr = TRUE;
@@ -55,7 +55,7 @@ BOOL ScrCmd_509(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_510(SCRIPTCONTEXT *ctx) {    
     struct UnkStruct_0202EB30 *unkStruct = sub_020270F8(ctx->fsys->savedata);
     PC_STORAGE *storage = GetStoragePCPointer(ctx->fsys->savedata);
-    POKEMON *pokemon = AllocMonZeroed(32);
+    Pokemon *pokemon = AllocMonZeroed(32);
     PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(ctx->fsys->savedata);
     POKEDEX *pokedex = Sav2_Pokedex_get(ctx->fsys->savedata);
     int i;

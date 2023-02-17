@@ -203,7 +203,7 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SAVEDATA* saved
     // Put an email from your friend into your PC.
     friend_names_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0445_bin, 3);
     MAILBOX* mailbox = Sav2_Mailbox_get(savedata);
-    POKEMON* friend_pokemon = AllocMonZeroed(3);
+    Pokemon* friend_pokemon = AllocMonZeroed(3);
 
     CreateMon(friend_pokemon, SPECIES_MARILL, 1, 0, FALSE, 0, OT_ID_PLAYER_ID, 0);
 

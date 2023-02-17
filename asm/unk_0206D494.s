@@ -515,7 +515,7 @@ _0206D892:
 
 	thumb_func_start MonIsInGameTradePoke
 MonIsInGameTradePoke: ; 0x0206D894
-	; BOOL MonIsInGameTradePoke(struct Pokemon *poke, int tradeno);
+	; BOOL MonIsInGameTradePoke(Pokemon *poke, int tradeno);
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
@@ -673,7 +673,7 @@ _0206D9CC: .word gGameVersion
 
 	thumb_func_start MonIsInGameTradePokeEx
 MonIsInGameTradePokeEx: ; 0x0206D9D0
-	; BOOL MonIsInGameTradePokeEx(struct Pokemon *poke, struct InGameTrade *trade, int tradeno);
+	; BOOL MonIsInGameTradePokeEx(Pokemon *poke, struct InGameTrade *trade, int tradeno);
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r1, #0

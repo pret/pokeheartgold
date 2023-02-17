@@ -39,7 +39,7 @@ struct FieldUseMoveEnv {
 };
 
 struct TeleportFieldEnv {
-    POKEMON *pokemon;
+    Pokemon *pokemon;
     struct FlyTaskStruct *flySub; // waste of space
 };
 

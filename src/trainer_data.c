@@ -260,7 +260,7 @@ TrainerGender TrainerClass_GetGenderOrTrainerCount(int trainerClass) {
 }
 
 void TrMon_OverridePidGender(int species, int forme, int overrideParam, u32 *pid);
-void TrMon_FrustrationCheckAndSetFriendship(POKEMON *pokemon);
+void TrMon_FrustrationCheckAndSetFriendship(Pokemon *pokemon);
 
 void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) {
     // enemies -> r4
@@ -273,7 +273,7 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
     u32 personality;
     u32 seed_bak;
     u8 iv;
-    POKEMON * pokemon;
+    Pokemon * pokemon;
 
     // We abuse the global RNG for personality value generation,
     // so back up the overworld state here.
@@ -451,7 +451,7 @@ void TrMon_OverridePidGender(int species, int forme, int overrideParam, u32 *pid
     }
 }
 
-void TrMon_FrustrationCheckAndSetFriendship(POKEMON *pokemon) {
+void TrMon_FrustrationCheckAndSetFriendship(Pokemon *pokemon) {
     u8 friendship = FRIENDSHIP_MAX;
     int i;
 
