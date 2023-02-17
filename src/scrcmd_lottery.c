@@ -29,13 +29,13 @@ BOOL ScrCmd_LotoIdSearch(SCRIPTCONTEXT *ctx) {
     u16 *retPtr2 = ScriptGetVarPointer(ctx);
     u16 lotoId = ScriptGetVar(ctx);
     u16 partyCount;
-    
+
     u16 monDigit;
     u16 monPosition;
     u16 i;
     u32 otid;
     u8 digitCount;
-    
+
     u16 boxDigit;
     u16 boxPosition;
     u32 ii;

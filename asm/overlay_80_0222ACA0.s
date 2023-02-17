@@ -354,9 +354,9 @@ ov80_0222AEF4: ; 0x0222AEF4
 	bx lr
 	.balign 4, 0
 	thumb_func_end ov80_0222AEF4
-    
+
     .rodata
-    
+
 ov80_0223B724: ; 0x0223B724
 	.byte 0x00, 0x00, 0x00, 0x00
 

@@ -2173,9 +2173,9 @@ _0223367A:
 _02233680: .word ov80_0223BE54
 _02233684: .word ov80_0223BE60
 	thumb_func_end ov80_02233648
-    
+
     .bss
-    
+
 ov80_0223DD48: ; 0x0223DD48
 	.space 0x4
     

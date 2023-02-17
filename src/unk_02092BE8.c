@@ -23,13 +23,13 @@ static void SysTask_RingGearPhone(SysTask *task, GearPhoneRingManager* ptr);
 static void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL a2) {
     Unk_PokegearSTRUCT_14 Unk_struct;
     SCRIPT_STATE *state = SavArray_Flags_get(sys->savedata);
-    FLYPOINTS_SAVE *points = Save_FlyPoints_get(sys->savedata); 
-    Location *warpPtr = FlyPoints_GetSpecialSpawnWarpPtr(points); 
-    Location *PosPtr = FlyPoints_GetPosition(points); 
+    FLYPOINTS_SAVE *points = Save_FlyPoints_get(sys->savedata);
+    Location *warpPtr = FlyPoints_GetSpecialSpawnWarpPtr(points);
+    Location *PosPtr = FlyPoints_GetPosition(points);
     GearPhoneRingManager* phoneRingMgr = Fsys_GetGearPhoneRingManager(sys);
     ptr->saveData = sys->savedata;
     ptr->mapID = PosPtr->mapId;
-    if (MapHeader_MapIsOnMainMatrix(ptr->mapID)) { 
+    if (MapHeader_MapIsOnMainMatrix(ptr->mapID)) {
         ptr->x = GetPlayerXCoord(sys->playerAvatar);
         ptr->y = GetPlayerYCoord(sys->playerAvatar);
         ptr->matrixXCoord = ptr->x / 32;
@@ -56,7 +56,7 @@ static void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL a2) 
     ptr->unk28 = &sys->unk_10C;
     ptr->unk01 = sub_0203DF3C(sys);
     ptr->mapMusicID = Fsys_GetSurfOverriddenMusicId(sys, ptr->mapID);
-    
+
     if (a2) {
         return;
     }

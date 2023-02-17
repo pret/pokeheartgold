@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
-#include <stdarg.h> 
+#include <stdarg.h>
 #include <stdlib.h>
 
 // mwasmarm patcher v1.2
@@ -223,7 +223,7 @@ int main(int argc, char *argv[]) {
             fatal_printf("ERROR: Failed to retrieve sha1 hash\n");
         }
         free(string);
-        
+
         char buf[(SHA_DIGEST_LENGTH*2)+1];
         for (int i=0; i < SHA_DIGEST_LENGTH; i++) {
             sprintf(&(buf[i*2]), "%02x", sha1[i]);

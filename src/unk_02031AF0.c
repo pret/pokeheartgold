@@ -1,7 +1,7 @@
 #include "unk_02031AF0.h"
 #include "save.h"
 
-u32 sub_02031AF0(void) { 
+u32 sub_02031AF0(void) {
     return sizeof(SavePokeathlonFriendshipRecords);
 }
 

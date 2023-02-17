@@ -5,7 +5,7 @@
 	.include "global.inc"
 
 	.text
-    
+
 	thumb_func_start ov12_02258800
 ov12_02258800: ; 0x02258800
 	push {r4, r5, r6, r7, lr}
@@ -19169,7 +19169,7 @@ _02261FA6:
 	thumb_func_end ov12_02261F38
 
     .rodata
-    
+
 ov12_0226D010: ; 0x0226D010
 	.word ov12_02258EB0
 	.word ov12_02258EB4

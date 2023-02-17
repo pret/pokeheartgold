@@ -164,7 +164,7 @@ BOOL ScrCmd_ChatotHasCry(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_ChatotStartRecording(SCRIPTCONTEXT *ctx) {
     u16 *retPtr = ScriptGetVarPointer(ctx);
-    GF_ASSERT(sub_02005518());    
+    GF_ASSERT(sub_02005518());
     if (!Chatot_startRecording()) {
         *retPtr = TRUE;
         return FALSE;

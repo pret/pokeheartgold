@@ -11,14 +11,14 @@ void OS_InitMutex(OSMutex* mutex) {
 void OS_LockMutex(OSMutex* mutex) {
     OSIntrMode mode;
     OSThread* current;
-    
+
     mode = OS_DisableInterrupts();
     current = OS_GetCurrentThread();
     while (1) {
         OSThread* owner = mutex->thread;
         if (owner == NULL) {
             mutex->thread = current;
-            mutex->count++; 
+            mutex->count++;
             OSi_EnqueueTail(current, mutex);
             break;
         }
@@ -38,7 +38,7 @@ void OS_LockMutex(OSMutex* mutex) {
 void OS_UnlockMutex(OSMutex* mutex) {
     OSIntrMode mode;
     OSThread* current;
-    
+
     mode = OS_DisableInterrupts();
     current = OS_GetCurrentThread();
     if (mutex->thread == current) {

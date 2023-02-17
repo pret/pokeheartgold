@@ -3,7 +3,7 @@
 	.include "global.inc"
 
 	.text
-    
+
 	.rodata
 
 .public _0223F900

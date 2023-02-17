@@ -193,32 +193,32 @@ BOOL MetatileBehavior_IsWhirlpool(u8 tile) {
 }
 
 BOOL sub_0205B8F4(u8 tile) {
-    return tile == TILE_BEHAVIOR_50 || 
-           tile == TILE_BEHAVIOR_52 || 
-           tile == TILE_BEHAVIOR_53 || 
-           tile == TILE_BEHAVIOR_60 || 
+    return tile == TILE_BEHAVIOR_50 ||
+           tile == TILE_BEHAVIOR_52 ||
+           tile == TILE_BEHAVIOR_53 ||
+           tile == TILE_BEHAVIOR_60 ||
            tile == TILE_BEHAVIOR_73;
 }
 
 BOOL sub_0205B918(u8 tile) {
-    return tile == TILE_BEHAVIOR_51 || 
-           tile == TILE_BEHAVIOR_54 || 
-           tile == TILE_BEHAVIOR_55 || 
-           tile == TILE_BEHAVIOR_61 || 
+    return tile == TILE_BEHAVIOR_51 ||
+           tile == TILE_BEHAVIOR_54 ||
+           tile == TILE_BEHAVIOR_55 ||
+           tile == TILE_BEHAVIOR_61 ||
            tile == TILE_BEHAVIOR_73;
 }
 
 BOOL sub_0205B93C(u8 tile) {
-    return tile == TILE_BEHAVIOR_49 || 
-           tile == TILE_BEHAVIOR_53 || 
-           tile == TILE_BEHAVIOR_55 || 
+    return tile == TILE_BEHAVIOR_49 ||
+           tile == TILE_BEHAVIOR_53 ||
+           tile == TILE_BEHAVIOR_55 ||
            tile == TILE_BEHAVIOR_74;
 }
 
 BOOL sub_0205B960(u8 tile) {
-    return tile == TILE_BEHAVIOR_48 || 
-           tile == TILE_BEHAVIOR_52 || 
-           tile == TILE_BEHAVIOR_54 || 
+    return tile == TILE_BEHAVIOR_48 ||
+           tile == TILE_BEHAVIOR_52 ||
+           tile == TILE_BEHAVIOR_54 ||
            tile == TILE_BEHAVIOR_74;
 }
 
@@ -235,10 +235,10 @@ BOOL sub_0205B9AC(u8 tile) {
 }
 
 BOOL sub_0205B9B8(u8 tile) {
-    return tile == TILE_BEHAVIOR_16 || 
-           tile == TILE_BEHAVIOR_22 || 
-           tile == TILE_BEHAVIOR_29 || 
-           tile == TILE_BEHAVIOR_32 || 
+    return tile == TILE_BEHAVIOR_16 ||
+           tile == TILE_BEHAVIOR_22 ||
+           tile == TILE_BEHAVIOR_29 ||
+           tile == TILE_BEHAVIOR_32 ||
            tile == TILE_BEHAVIOR_45;
 }
 
@@ -271,8 +271,8 @@ BOOL sub_0205BA24(u8 tile) {
 }
 
 BOOL sub_0205BA30(u8 tile) {
-    return tile == TILE_BEHAVIOR_113 || 
-           tile == TILE_BEHAVIOR_114 || 
+    return tile == TILE_BEHAVIOR_113 ||
+           tile == TILE_BEHAVIOR_114 ||
            tile == TILE_BEHAVIOR_115;
 }
 
@@ -293,8 +293,8 @@ u8 sub_0205BA6C(void) {
 }
 
 BOOL sub_0205BA70(u8 tile) {
-    return tile == TILE_BEHAVIOR_29 || 
-           tile == TILE_BEHAVIOR_32 || 
+    return tile == TILE_BEHAVIOR_29 ||
+           tile == TILE_BEHAVIOR_32 ||
            tile == TILE_BEHAVIOR_45;
 }
 
@@ -319,8 +319,8 @@ BOOL sub_0205BAC4(u8 tile) {
 }
 
 BOOL sub_0205BAD0(u8 tile) {
-    return tile == TILE_BEHAVIOR_0 || 
-           tile == TILE_BEHAVIOR_33 || 
+    return tile == TILE_BEHAVIOR_0 ||
+           tile == TILE_BEHAVIOR_33 ||
            tile == TILE_BEHAVIOR_164;
 }
 

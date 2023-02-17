@@ -23,7 +23,7 @@
 void FieldSys_StartBugContestTimer(FieldSystem* fsys) {
     RTCDate date;
     RTCTime time;
-    SYSINFO_RTC* sysinfo = Sav2_SysInfo_RTC_get(fsys->savedata); 
+    SYSINFO_RTC* sysinfo = Sav2_SysInfo_RTC_get(fsys->savedata);
     if (!sysinfo->initialized) {
         return;
     }
@@ -46,8 +46,8 @@ void sub_02055450(FieldSystem* fsys, SYSINFO_RTC* sysinfo, RTCDate* date) {
 }
 
 void sub_02055478(FieldSystem* fsys, SYSINFO_RTC* sysinfo, RTCDate* date, RTCTime* time) {
-    s64 seconds = RTC_ConvertDateTimeToSecond(date, time); 
-    s64 sys_seconds = RTC_ConvertDateTimeToSecond(&sysinfo->date, &sysinfo->time); 
+    s64 seconds = RTC_ConvertDateTimeToSecond(date, time);
+    s64 sys_seconds = RTC_ConvertDateTimeToSecond(&sysinfo->date, &sysinfo->time);
     if (seconds < sys_seconds) {
         sysinfo->date = *date;
         sysinfo->time = *time;
@@ -56,7 +56,7 @@ void sub_02055478(FieldSystem* fsys, SYSINFO_RTC* sysinfo, RTCDate* date, RTCTim
     s32 delta_seconds = seconds - sys_seconds;
     if (delta_seconds > 0) {
         sub_02092F30(Fsys_GetGearPhoneRingManager(fsys), seconds);
-    }    
+    }
     s32 minutes = delta_seconds / 60;
     if (minutes <= 0) {
         return;
@@ -106,7 +106,7 @@ u32 Field_GetMonth(FieldSystem* fsys) {
     return Sav2_SysInfo_RTC_get(fsys->savedata)->date.month;
 }
 
-u32 Field_GetDay(FieldSystem* fsys) { 
+u32 Field_GetDay(FieldSystem* fsys) {
     return Sav2_SysInfo_RTC_get(fsys->savedata)->date.day;
 }
 
@@ -149,7 +149,7 @@ void sub_020556A8(UnkStruct_020556FC *unkPtr) {
 
 void sub_020556B8(FieldSystem* fsys) {
     APRICORN_TREE* trees = Sav2_FieldApricornTrees_get(fsys->savedata);
-    sub_0202AE74(trees); 
+    sub_0202AE74(trees);
 }
 
 void sub_020556C8(FieldSystem *fsys, UnkStruct_020556FC *unkPtrB) {
@@ -168,12 +168,12 @@ BOOL sub_02055708(FieldSystem* fsys, LocalMapObject* mapObject) {
         return FALSE;
     }
     u32 id = MapObject_GetGfxID(mapObject);
-    if (id != SPRITE_BONGURI_R && 
-        id != SPRITE_BONGURI_Y && 
-        id != SPRITE_BONGURI_B && 
-        id != SPRITE_BONGURI_G && 
-        id != SPRITE_BONGURI_P && 
-        id != SPRITE_BONGURI_W && 
+    if (id != SPRITE_BONGURI_R &&
+        id != SPRITE_BONGURI_Y &&
+        id != SPRITE_BONGURI_B &&
+        id != SPRITE_BONGURI_G &&
+        id != SPRITE_BONGURI_P &&
+        id != SPRITE_BONGURI_W &&
         id != SPRITE_BONGURI_BK) {
         return FALSE;
     }

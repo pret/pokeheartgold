@@ -11,10 +11,10 @@ typedef struct {
 
 typedef struct {
     PokeathlonFriendshipRoomStatueData friendshipRoomStatues[3];
-    u8 unk[0x1C]; 
+    u8 unk[0x1C];
 } SavePokeathlonFriendshipRecords;
 
-u32 sub_02031AF0(void); 
+u32 sub_02031AF0(void);
 void sub_02031AF4(SavePokeathlonFriendshipRecords* unk);
 SavePokeathlonFriendshipRecords* sub_02031B00(SAVEDATA* savedata);
 

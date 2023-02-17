@@ -3,7 +3,7 @@
 	.include "global.inc"
 
     .text
-    
+
 	thumb_func_start ov80_02236450
 ov80_02236450: ; 0x02236450
 	push {r3, r4, r5, r6, r7, lr}

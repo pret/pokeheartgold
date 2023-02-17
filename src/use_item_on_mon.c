@@ -237,7 +237,7 @@ BOOL UseItemOnPokemon(POKEMON *pokemon, u16 itemID, u16 moveIdx, u16 location, H
 
     hadEffect = FALSE;
     effectFound = FALSE;
-    
+
     sp58 = sp54 = GetMonData(pokemon, MON_DATA_STATUS, NULL);
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_SLP_HEAL)) {
         sp58 &= ~MON_STATUS_SLP_MASK;
@@ -258,7 +258,7 @@ BOOL UseItemOnPokemon(POKEMON *pokemon, u16 itemID, u16 moveIdx, u16 location, H
         sp58 &= ~MON_STATUS_FRZ_MASK;
         effectFound = TRUE;
     }
-    
+
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PRZ_HEAL)) {
         sp58 &= ~MON_STATUS_PRZ_MASK;
         effectFound = TRUE;
@@ -268,7 +268,7 @@ BOOL UseItemOnPokemon(POKEMON *pokemon, u16 itemID, u16 moveIdx, u16 location, H
         SetMonData(pokemon, MON_DATA_STATUS, &sp58);
         hadEffect = TRUE;
     }
-    
+
     sp54 = GetMonData(pokemon, MON_DATA_HP, NULL);
     sp58 = GetMonData(pokemon, MON_DATA_MAXHP, NULL);
     if ((GetItemAttr_PreloadedItemData(itemData, ITEMATTR_REVIVE) || GetItemAttr_PreloadedItemData(itemData, ITEMATTR_REVIVE_ALL)) && GetItemAttr_PreloadedItemData(itemData, ITEMATTR_LEVEL_UP)) {
@@ -329,7 +329,7 @@ BOOL UseItemOnPokemon(POKEMON *pokemon, u16 itemID, u16 moveIdx, u16 location, H
         }
         effectFound = TRUE;
     }
-    
+
     sp54 = GetMonData(pokemon, MON_DATA_HP_EV, NULL);
     sp58 = GetMonData(pokemon, MON_DATA_ATK_EV, NULL);
     sp5C = GetMonData(pokemon, MON_DATA_DEF_EV, NULL);
@@ -430,7 +430,7 @@ BOOL UseItemOnPokemon(POKEMON *pokemon, u16 itemID, u16 moveIdx, u16 location, H
         FreeToHeap(itemData);
         return FALSE;
     }
-    
+
     sp54 = GetMonData(pokemon, MON_DATA_FRIENDSHIP, NULL);
     if (sp54 < 100) {
         if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_FRIENDSHIP_MOD_LO)) {
@@ -488,7 +488,7 @@ BOOL MonMoveRestorePP(POKEMON *pokemon, int moveIdx, int ppRestore) {
     if (move_id == MOVE_NONE) {
         return FALSE;
     }
-    
+
     int ppAttr = MON_DATA_MOVE1PP + moveIdx;
     u8 pp = GetMonData(pokemon, ppAttr, NULL);
     int ppUpAttr = MON_DATA_MOVE1PPUP + moveIdx;
@@ -517,7 +517,7 @@ BOOL BoostMonMovePpUpBy(POKEMON *pokemon, int moveIdx, int nPpUp) {
     if (ppUp == 3) {
         return FALSE;
     }
-    
+
     move = GetMonData(pokemon, MON_DATA_MOVE1 + moveIdx, NULL);
     if (GetMoveMaxPP(move, 0) < 5) {
         return FALSE;
@@ -531,12 +531,12 @@ BOOL BoostMonMovePpUpBy(POKEMON *pokemon, int moveIdx, int nPpUp) {
     } else {
         ppUp = ppUp + nPpUp;
     }
-    
+
     u8 newMaxPp = GetMoveMaxPP(move, ppUp);
     pp = pp + newMaxPp - maxPp;
     SetMonData(pokemon, ppUpAttr, &ppUp);
     SetMonData(pokemon, ppAttr, &pp);
-    
+
     return TRUE;
 }
 
