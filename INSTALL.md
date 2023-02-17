@@ -40,7 +40,7 @@ Before following the respective guides, please install devkitARM and ensure the 
 
 Msys2:
 ```console
-export DEVKITPRO=C:/devkitPro 
+export DEVKITPRO=C:/devkitPro
 export DEVKITARM=${DEVKITPRO}/devkitARM
 ```
 

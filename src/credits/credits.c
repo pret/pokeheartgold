@@ -542,7 +542,7 @@ static void ov76_021E62B4(CreditsAppWork *work) {
 static void InitSprites(CreditsAppWork *work) {
     SpriteResourcesHeader header;
     SpriteTemplate tmpl;
-    
+
     u8 yIdx;
 
     SceneWork *ptr = &work->sceneWork;
@@ -557,7 +557,7 @@ static void InitSprites(CreditsAppWork *work) {
             yIdx = i - 3;
             tmpl.position.x = 240 * FX32_ONE;
         }
-    
+
         tmpl.position.y = (yIdx * 80 + 16) * FX32_ONE;
         tmpl.priority = 1;
         ptr->pokemon[i] = CreateSprite(&tmpl);

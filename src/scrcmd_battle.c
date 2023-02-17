@@ -95,7 +95,7 @@ BOOL ScrCmd_GetTrainerNum(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_TrainerBattle(SCRIPTCONTEXT *ctx) {    
+BOOL ScrCmd_TrainerBattle(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 *script = FieldSysGetAttrAddr(fsys, SCRIPTENV_SCRIPT);
     u32 *scriptUnk0C = FieldSysGetAttrAddr(fsys, SCRIPTENV_0C);
@@ -182,7 +182,7 @@ BOOL ScrCmd_GetRematchMsgParams(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_TrainerIsDoubleBattle(SCRIPTCONTEXT *ctx) {    
+BOOL ScrCmd_TrainerIsDoubleBattle(SCRIPTCONTEXT *ctx) {
     u16 *script = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_SCRIPT);
     u16 *retDoubleBattle = ScriptGetVarPointer(ctx);
     *retDoubleBattle = TrainerNumIsDouble(ScriptNumToTrainerNum(*script));
@@ -236,7 +236,7 @@ BOOL ScrCmd_PartyCheckForDouble(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_223(SCRIPTCONTEXT *ctx) {    
+BOOL ScrCmd_223(SCRIPTCONTEXT *ctx) {
     u32 *scriptUnk0C = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_0C);
     SetupAndStartTrainerBattle(ctx->taskman, 1, 0, 0, 0, 0, 11, scriptUnk0C);
     return TRUE;
@@ -258,6 +258,6 @@ BOOL ScrCmd_GotoIfTrainerDefeated(SCRIPTCONTEXT *ctx) {
     if (TrainerFlagCheck(fsys->savedata, (u16)mapObjectId) == TRUE) {
         ScriptJump(ctx, ctx->script_ptr + offset);
         return TRUE;
-    }    
+    }
     return FALSE;
 }

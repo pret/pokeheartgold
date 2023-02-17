@@ -644,7 +644,7 @@ _022384D4:
 	thumb_func_end ov80_022384BC
 
     .rodata
-    
+
 ov80_0223D514: ; 0x0223D514
 	.byte 0x00, 0x00
 

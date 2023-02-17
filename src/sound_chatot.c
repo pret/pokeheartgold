@@ -94,7 +94,7 @@ void sub_02006DB8() {
 
 BOOL Chatot_startRecording(void) {
     MICAutoParam st0;
-    
+
     st0.type = MIC_SAMPLING_TYPE_SIGNED_8BIT;
     st0.buffer = sub_020059D8();
     st0.size = 2000;

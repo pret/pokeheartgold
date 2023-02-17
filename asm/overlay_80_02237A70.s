@@ -782,7 +782,7 @@ _02238030: .word 0x0000270F
 	thumb_func_end ov80_02237FA4
 
     .rodata
-    
+
 ov80_0223D4D4: ; 0x0223D4D4
 	.byte 0x00, 0x00
 

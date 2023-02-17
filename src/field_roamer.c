@@ -35,7 +35,7 @@ static const u32 sRoamerLocations[ROAMER_LOC_COUNT] = {
     MAP_R44,
     MAP_R45,
     MAP_R46,
-    
+
     // Kanto
     MAP_R01,
     MAP_R02,
@@ -82,7 +82,7 @@ static const struct RoamerAdjacency sRoamerAdjacencyTable[ROAMER_LOC_COUNT] = {
     {3, {ROAMER_LOC_R42, ROAMER_LOC_R43, ROAMER_LOC_R46, -1,-1,-1}},
     {2, {ROAMER_LOC_R44, ROAMER_LOC_R46, -1,-1,-1,-1}},
     {2, {ROAMER_LOC_R29, ROAMER_LOC_R45, -1,-1,-1,-1}},
-    
+
     // Kanto
     {2, {ROAMER_LOC_R02, ROAMER_LOC_R22, -1,-1,-1,-1}},
     {3, {ROAMER_LOC_R01, ROAMER_LOC_R22, ROAMER_LOC_R03, -1,-1,-1}},

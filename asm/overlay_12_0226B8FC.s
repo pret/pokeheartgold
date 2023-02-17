@@ -3,7 +3,7 @@
 	.include "global.inc"
 
 	.text
-    
+
     thumb_func_start ov12_0226B8FC
 ov12_0226B8FC: ; 0x0226B8FC
 	push {r3, r4, r5, r6, r7, lr}

@@ -1,6 +1,6 @@
 #include "scrcmd.h"
 
-extern WINDOW *Fsys_ShowMoneyBox(FieldSystem *, u8, u8); 
+extern WINDOW *Fsys_ShowMoneyBox(FieldSystem *, u8, u8);
 
 BOOL ScrCmd_ShowMoneyBox(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;

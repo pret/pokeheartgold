@@ -80,7 +80,7 @@ static int TCardAppRunStep_Init(TrainerCardAppState *work) {
         TrainerCardMainApp_OvyInit,
         TrainerCardMainApp_OvyExec,
         TrainerCardMainApp_OvyExit,
-        FS_OVERLAY_ID(trainer_card_main) 
+        FS_OVERLAY_ID(trainer_card_main)
     };
 
     work->ov_mgr = OverlayManager_new(&template, work->parentData, work->heap_id);
@@ -99,10 +99,10 @@ static int TCardAppRunStep_Exec(TrainerCardAppState *work) {
 
 static int TCardAppRunStep_SignatureInit(TrainerCardAppState *work) {
     const OVY_MGR_TEMPLATE template = {
-        SignBackOfTrainerCardApp_OvyInit, 
-        SignBackOfTrainerCardApp_OvyExec, 
+        SignBackOfTrainerCardApp_OvyInit,
+        SignBackOfTrainerCardApp_OvyExec,
         SignBackOfTrainerCardApp_OvyExit,
-        FS_OVERLAY_ID(trainer_card_signature) 
+        FS_OVERLAY_ID(trainer_card_signature)
     };
     work->ov_mgr = OverlayManager_new(&template, work->parentData->saveData, work->heap_id);
     return TRAINERCARD_RUN_SIGNATURE_EXEC;

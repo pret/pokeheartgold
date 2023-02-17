@@ -3,7 +3,7 @@
 	.include "global.inc"
 
     .text
-    
+
 	thumb_func_start ov80_02238648
 ov80_02238648: ; 0x02238648
 	push {r3, r4, r5, r6, r7, lr}
@@ -2315,7 +2315,7 @@ _0223995C:
 	thumb_func_end ov80_02239938
 
     .rodata
-    
+
 ov80_0223D554: ; 0x0223D554
 	.byte 0x00, 0x03, 0x00, 0x05, 0x0C, 0x00, 0x03, 0x00, 0x00, 0x00, 0x01, 0x00
 

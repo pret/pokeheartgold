@@ -225,7 +225,7 @@ _02239D6A:
 	thumb_func_end ov80_02239C80
 
     .rodata
-    
+
 ov80_0223DB24: ; 0x0223DB24
 	.byte 0x00, 0x00, 0x00, 0x00
 	.word ov80_02239C80

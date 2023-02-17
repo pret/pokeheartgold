@@ -3,7 +3,7 @@
 	.include "global.inc"
 
     .text
-    
+
     thumb_func_start ov80_02236B78
 ov80_02236B78: ; 0x02236B78
 	push {r3, r4, r5, lr}
@@ -1000,6 +1000,6 @@ _022372D4: .word 0x0000057E
 	thumb_func_end ov80_022372B4
 
     .data
-    
+
 ov80_0223DD38: ; 0x0223DD38
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

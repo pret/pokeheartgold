@@ -2479,7 +2479,7 @@ ov80_02235364: ; 0x02235364
 	thumb_func_end ov80_02235364
 
     .data
-    
+
 ov80_0223DCA0: ; 0x0223DCA0
 	.word ov80_0223BEA8
 	.word ov80_0223BF32
@@ -2523,6 +2523,6 @@ ov80_0223DCB8: ; 0x0223DCB8
 	.word ov80_02235318
 
     .bss
-    
+
 ov80_0223DD4C: ; 0x0223DD4C
 	.space 0x4

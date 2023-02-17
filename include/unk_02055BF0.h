@@ -11,11 +11,11 @@ typedef struct FieldFadeEnvironment {
     u16 colour;
     u16 unk12;
     u32 duration;
-    int framesPer; 
+    int framesPer;
     HeapID heapID;
 } FieldFadeEnvironment;
 
-typedef struct FieldTransitionEnvironment { 
+typedef struct FieldTransitionEnvironment {
     u8 state;
     u8 unk1;
     u16 transitionState;

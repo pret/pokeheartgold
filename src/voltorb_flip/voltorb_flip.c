@@ -297,7 +297,7 @@ BOOL GenerateBoardAndPrintNewLevel(WorkflowEngine *workflow, VoltorbFlipAppWork 
     PrintMessageOnWindow(work, 0, msg_0039_00000, &work->wCurrentLevel, 0, 0, 0x000f0100);
     BgCommitTilemapBufferToVram(work->bgConfig, 5);
     sub_02004EC4(64, 0, 0);
-    
+
     if (levelDiff != 0) {
         if (levelDiff > 0) {
             ov122_021E7888(&work->unk25C);

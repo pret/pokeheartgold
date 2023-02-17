@@ -5,7 +5,7 @@
 	.include "global.inc"
 
 	.text
-    
+
 	thumb_func_start ov12_02248660
 ov12_02248660: ; 0x02248660
 	push {r3, r4, r5, lr}
@@ -10278,7 +10278,7 @@ ov12_0224D53C: ; 0x0224D53C
 	bx lr
 	.balign 4, 0
 	thumb_func_end ov12_0224D53C
-    
+
 	thumb_func_start ov12_0224D540
 ov12_0224D540: ; 0x0224D540
 	push {r4, r5, r6, r7, lr}
@@ -12322,7 +12322,7 @@ _0224E4F8: .word 0x000021AC
 	thumb_func_end ov12_0224E414
 
     .rodata
-    
+
 ov12_0226CA74: ; 0x0226CA74
 	.byte 0x21
 

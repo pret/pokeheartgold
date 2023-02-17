@@ -1936,11 +1936,11 @@ void CopyGlyphToWindow(WINDOW *window, u8 *glyphPixels, u16 srcWidth, u16 srcHei
     u16 destWidth, destHeight;
     int srcRight, srcBottom;
     u8 glyphSizeParam;
-    
+
     windowPixels = (u8 *)window->pixelBuffer;
     destWidth = (u16)(window->width * 8);
     destHeight = (u16)(window->height * 8);
-    
+
     // Don't overflow the window
     if (destWidth - dstX < srcWidth) {
         srcRight = destWidth - dstX;
@@ -1962,7 +1962,7 @@ void CopyGlyphToWindow(WINDOW *window, u8 *glyphPixels, u16 srcWidth, u16 srcHei
     if (srcBottom > 8) {
         glyphSizeParam |= 2; // 2 high
     }
-    
+
     if (window->colorMode == GF_BG_CLR_4BPP) {
         switch (glyphSizeParam) {
         case 0: // 1x1

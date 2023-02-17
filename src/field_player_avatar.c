@@ -684,7 +684,7 @@ void sub_0205CAA4(FIELD_PLAYER_AVATAR* avatar, u8 unkA) {
     if (unkA == 1) {
         sub_0205C728(avatar, 8);
     }
-    else { 
+    else {
         sub_0205C730(avatar, 8);
     }
 }

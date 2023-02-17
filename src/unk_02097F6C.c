@@ -45,7 +45,7 @@ BOOL sub_02097F6C(u32 rand, u16 mapno, u16 swarmValue) {
 void sub_02097F9C(u32 rand, u16 *mapno, u16 *species) {
     ENC_DATA encData;
     const u16 (*swarmMap)[2];
-    
+
     swarmMap = &sSwarmMapLUT[rand % SWARM_MAP_COUNT];
     WildEncounters_ReadFromNarc(&encData, (*swarmMap)[0]);
     switch((*swarmMap)[1]) {

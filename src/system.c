@@ -251,7 +251,7 @@ void ReadKeypadAndTouchpad(void) {
         gSystem.touchHeld = 0;
         return;
     }
-    
+
     raw = PAD_Read() | gSystem.simulatedInputs;
     gSystem.simulatedInputs = 0;
     gSystem.newKeysRaw = raw & (raw ^ gSystem.heldKeysRaw);

@@ -80,7 +80,7 @@ static uint16_t Calc_CRC16(uint8_t * data, size_t length, uint16_t crc)
         0x8801,
         0x4400,
     };
-    
+
     uint16_t x = 0;
     uint16_t y;
     uint16_t bit = 0;
@@ -170,7 +170,7 @@ int main(int argc, char ** argv)
     {
         HeaderWriteU16LE(0x6C, secure_crc);
     }
-    
+
     if (override_code)
     {
         memcpy(RomHeader + 0xC, game_code, 4);
