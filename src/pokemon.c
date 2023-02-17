@@ -752,7 +752,7 @@ static u32 GetBoxMonDataInternal(BOXMON * boxmon, int attr, void * dest) {
             CopyU16ArrayToString(dest, blockC->nickname);
         }
         break;
-    case MON_DATA_UNK_120:
+    case MON_DATA_UNK_121:
         ret = blockC->Unused;
         break;
     case MON_DATA_GAME_VERSION:
@@ -778,7 +778,7 @@ static u32 GetBoxMonDataInternal(BOXMON * boxmon, int attr, void * dest) {
     case MON_DATA_TOUGH_RIBBON_GREAT:
     case MON_DATA_TOUGH_RIBBON_ULTRA:
     case MON_DATA_TOUGH_RIBBON_MASTER:
-    case MON_DATA_SINNOH_RIBBON_142:
+    case MON_DATA_SINNOH_RIBBON_143:
         if (blockC->sinnohRibbons2 & (1ll << (attr - MON_DATA_COOL_RIBBON))) {
             ret = TRUE;
         } else {
@@ -854,7 +854,7 @@ static u32 GetBoxMonDataInternal(BOXMON * boxmon, int attr, void * dest) {
                  (blockB->spatkIV << 20) | \
                  (blockB->spdefIV << 25);
         break;
-    case MON_DATA_UNK_175:
+    case MON_DATA_UNK_176:
         if ((blockA->species == SPECIES_NIDORAN_F || blockA->species == SPECIES_NIDORAN_M) && !blockB->isNicknamed) {
             ret = FALSE;
         } else {
@@ -1216,7 +1216,7 @@ static void SetBoxMonDataInternal(BOXMON * boxmon, int attr, const void * value)
     case MON_DATA_NICKNAME_3:
         CopyStringToU16Array(value, blockC->nickname, POKEMON_NAME_LENGTH + 1);
         break;
-    case MON_DATA_UNK_120:
+    case MON_DATA_UNK_121:
         blockC->Unused = VALUE(u8);
         break;
     case MON_DATA_GAME_VERSION:
@@ -1242,7 +1242,7 @@ static void SetBoxMonDataInternal(BOXMON * boxmon, int attr, const void * value)
     case MON_DATA_TOUGH_RIBBON_GREAT:
     case MON_DATA_TOUGH_RIBBON_ULTRA:
     case MON_DATA_TOUGH_RIBBON_MASTER:
-    case MON_DATA_SINNOH_RIBBON_142:
+    case MON_DATA_SINNOH_RIBBON_143:
         mask = 1 << (attr - MON_DATA_COOL_RIBBON);
         if (VALUE(u8)) {
             blockC->sinnohRibbons2 |= mask;
@@ -1644,7 +1644,7 @@ static void AddBoxMonDataInternal(BOXMON * boxmon, int attr, int value) {
     case MON_DATA_NICKNAME_2:
     case MON_DATA_NICKNAME_3:
     case MON_DATA_NICKNAME_4:
-    case MON_DATA_UNK_120:
+    case MON_DATA_UNK_121:
     case MON_DATA_GAME_VERSION:
     case MON_DATA_COOL_RIBBON:
     case MON_DATA_COOL_RIBBON_GREAT:
@@ -1666,7 +1666,7 @@ static void AddBoxMonDataInternal(BOXMON * boxmon, int attr, int value) {
     case MON_DATA_TOUGH_RIBBON_GREAT:
     case MON_DATA_TOUGH_RIBBON_ULTRA:
     case MON_DATA_TOUGH_RIBBON_MASTER:
-    case MON_DATA_SINNOH_RIBBON_142:
+    case MON_DATA_SINNOH_RIBBON_143:
     case MON_DATA_OT_NAME:
     case MON_DATA_OT_NAME_2:
     case MON_DATA_EGG_MET_YEAR:
@@ -1684,7 +1684,7 @@ static void AddBoxMonDataInternal(BOXMON * boxmon, int attr, int value) {
     case MON_DATA_MET_LEVEL:
     case MON_DATA_MET_GENDER:
     case MON_DATA_ENCOUNTER_TYPE:
-    case MON_DATA_RESERVED_158:
+    case MON_DATA_RESERVED_159:
     case MON_DATA_STATUS:
     case MON_DATA_LEVEL:
     case MON_DATA_CAPSULE:
@@ -1701,7 +1701,7 @@ static void AddBoxMonDataInternal(BOXMON * boxmon, int attr, int value) {
     case MON_DATA_SANITY_IS_EGG:
     case MON_DATA_SPECIES2:
     case MON_DATA_IVS_WORD:
-    case MON_DATA_UNK_175:
+    case MON_DATA_UNK_176:
     case MON_DATA_TYPE_1:
     case MON_DATA_TYPE_2:
     case MON_DATA_SPECIES_NAME:
