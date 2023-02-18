@@ -28,11 +28,11 @@ void InitBoxMonMoveset(BoxPokemon *boxmon);
 void LoadMonBaseStats_HandleAlternateForme(int species, int forme, BASE_STATS *dest);
 u16 ModifyStatByNature(u8 nature, u16 stat, u8 statID);
 static u32 GetMonDataInternal(Pokemon *mon, int attr, void * dest);
-static u32 GetBoxMonDataInternal(BoxPokemon * boxmon, int attr, void * dest);
+static u32 GetBoxMonDataInternal(BoxPokemon *boxmon, int attr, void * dest);
 static void SetMonDataInternal(Pokemon *mon, int attr, const void * data);
-static void SetBoxMonDataInternal(BoxPokemon * boxmon, int attr, const void * data);
+static void SetBoxMonDataInternal(BoxPokemon *boxmon, int attr, const void * data);
 static void AddMonDataInternal(Pokemon *mon, int attr, int value);
-static void AddBoxMonDataInternal(BoxPokemon * boxmon, int attr, int value);
+static void AddBoxMonDataInternal(BoxPokemon *boxmon, int attr, int value);
 PokemonDataBlock *GetSubstruct(BoxPokemon *boxmon, u32 pid, u8 which_struct);
 void LoadMonPersonal(int species, BASE_STATS *dest);
 int ResolveMonForme(int species, int forme);
@@ -182,7 +182,7 @@ void CreateMon(Pokemon *mon, int species, int level, int fixedIV, int hasFixedPe
     CalcMonLevelAndStats(mon);
 }
 
-void CreateBoxMon(BoxPokemon * boxPokemon, int species, int level, int fixedIV, int hasFixedPersonality, int fixedPersonality, int otIdType, int fixedOtId) {
+void CreateBoxMon(BoxPokemon *boxPokemon, int species, int level, int fixedIV, int hasFixedPersonality, int fixedPersonality, int otIdType, int fixedOtId) {
     BOOL decry;
     u32 exp;
     u32 iv;
@@ -457,7 +457,7 @@ static u32 GetMonDataInternal(Pokemon *mon, int attr, void * dest) {
     }
 }
 
-u32 GetBoxMonData(BoxPokemon * boxmon, int attr, void * dest) {
+u32 GetBoxMonData(BoxPokemon *boxmon, int attr, void * dest) {
     u32 ret;
     u32 checksum;
     if (!boxmon->box_lock) {
@@ -475,7 +475,7 @@ u32 GetBoxMonData(BoxPokemon * boxmon, int attr, void * dest) {
     return ret;
 }
 
-static u32 GetBoxMonDataInternal(BoxPokemon * boxmon, int attr, void * dest) {
+static u32 GetBoxMonDataInternal(BoxPokemon *boxmon, int attr, void * dest) {
     u32 ret = 0;
     PokemonDataBlockA * blockA = &GetSubstruct(boxmon, boxmon->pid, 0)->blockA;
     PokemonDataBlockB * blockB = &GetSubstruct(boxmon, boxmon->pid, 1)->blockB;
@@ -954,7 +954,7 @@ static void SetMonDataInternal(Pokemon *mon, int attr, const void * value) {
 #undef VALUE
 }
 
-void SetBoxMonData(BoxPokemon * boxmon, int attr, void * value) {
+void SetBoxMonData(BoxPokemon *boxmon, int attr, void * value) {
     u32 checksum;
     if (!boxmon->box_lock) {
         DECRYPT_BOX(boxmon);
@@ -974,7 +974,7 @@ void SetBoxMonData(BoxPokemon * boxmon, int attr, void * value) {
 }
 
 
-static void SetBoxMonDataInternal(BoxPokemon * boxmon, int attr, const void * value) {
+static void SetBoxMonDataInternal(BoxPokemon *boxmon, int attr, const void * value) {
 #define VALUE(type) (*(const type *)value)
     u8 flag;
     u64 mask;
@@ -1403,7 +1403,7 @@ static void AddMonDataInternal(Pokemon *mon, int attr, int value) {
     }
 }
 
-static void AddBoxMonDataInternal(BoxPokemon * boxmon, int attr, int value) {
+static void AddBoxMonDataInternal(BoxPokemon *boxmon, int attr, int value) {
     PokemonDataBlockA *blockA = &GetSubstruct(boxmon, boxmon->pid, 0)->blockA;
     PokemonDataBlockB *blockB = &GetSubstruct(boxmon, boxmon->pid, 1)->blockB;
     PokemonDataBlockC *blockC = &GetSubstruct(boxmon, boxmon->pid, 2)->blockC;
@@ -1882,7 +1882,7 @@ u32 CalcMonExpToNextLevel(Pokemon *mon) {
     return CalcBoxMonExpToNextLevel(&mon->box);
 }
 
-u32 CalcBoxMonExpToNextLevel(BoxPokemon * boxmon) {
+u32 CalcBoxMonExpToNextLevel(BoxPokemon *boxmon) {
     u16 species = (u16)GetBoxMonData(boxmon, MON_DATA_SPECIES, NULL);
     u16 level = (u16)(CalcBoxMonLevel(boxmon) + 1);
     u32 cur = GetBoxMonData(boxmon, MON_DATA_EXPERIENCE, NULL);
@@ -1921,7 +1921,7 @@ int CalcMonLevel(Pokemon *mon) {
     return CalcBoxMonLevel(&mon->box);
 }
 
-int CalcBoxMonLevel(BoxPokemon * boxmon) {
+int CalcBoxMonLevel(BoxPokemon *boxmon) {
     BOOL decry = AcquireBoxMonLock(boxmon);
     int species = (int)GetBoxMonData(boxmon, MON_DATA_SPECIES, NULL);
     int exp = (int)GetBoxMonData(boxmon, MON_DATA_EXPERIENCE, NULL);
@@ -1954,7 +1954,7 @@ u8 GetMonNature(Pokemon *mon) {
     return GetBoxMonNature(&mon->box);
 }
 
-u8 GetBoxMonNature(BoxPokemon * boxmon) {
+u8 GetBoxMonNature(BoxPokemon *boxmon) {
     BOOL decry = AcquireBoxMonLock(boxmon);
     u32 personality = GetBoxMonData(boxmon, MON_DATA_PERSONALITY, NULL);
     ReleaseBoxMonLock(boxmon, decry);
@@ -2757,11 +2757,11 @@ u8 GetMonUnownLetter(Pokemon *mon) {
     return GetBoxMonUnownLetter(&mon->box);
 }
 
-u8 GetBoxMonUnownLetter(BoxPokemon * boxmon) {
+u8 GetBoxMonUnownLetter(BoxPokemon *boxmon) {
     return (u8)GetBoxMonData(boxmon, MON_DATA_FORME, NULL);
 }
 
-BoxPokemon * Mon_GetBoxMon(Pokemon *mon) {
+BoxPokemon *Mon_GetBoxMon(Pokemon *mon) {
     return &mon->box;
 }
 
@@ -3037,7 +3037,7 @@ u16 GetEggSpecies(u16 species) {
     }
 }
 
-void InitBoxMonMoveset(BoxPokemon * boxmon) {
+void InitBoxMonMoveset(BoxPokemon *boxmon) {
     BOOL decry;
     u16 * wotbl;
     int i;
@@ -3091,7 +3091,7 @@ void DeleteMonFirstMoveAndAppend(Pokemon *mon, u16 move_id) {
     DeleteBoxMonFirstMoveAndAppend(Mon_GetBoxMon(mon), move_id);
 }
 
-void DeleteBoxMonFirstMoveAndAppend(BoxPokemon * boxmon, u16 move) {
+void DeleteBoxMonFirstMoveAndAppend(BoxPokemon *boxmon, u16 move) {
     BOOL decry = AcquireBoxMonLock(boxmon);
     int i;
     u16 moves[4];
@@ -3132,7 +3132,7 @@ void MonSetMoveInSlot(Pokemon *mon, u16 move, u8 slot) {
     BoxMonSetMoveInSlot(&mon->box, move, slot);
 }
 
-void BoxMonSetMoveInSlot(BoxPokemon* boxmon, u16 move, u8 slot) {
+void BoxMonSetMoveInSlot(BoxPokemon *boxmon, u16 move, u8 slot) {
     u8 ppUp;
     u8 pp;
 
@@ -3174,7 +3174,7 @@ void MonSwapMoves(Pokemon *mon, int a, int b) {
     BoxMonSwapMoves(&mon->box, a, b);
 }
 
-void BoxMonSwapMoves(BoxPokemon * boxmon, int slot1, int slot2) {
+void BoxMonSwapMoves(BoxPokemon *boxmon, int slot1, int slot2) {
     u16 moves[2];
     u8 pp[2];
     u8 ppUp[2];
@@ -3228,7 +3228,7 @@ BOOL MonHasMove(Pokemon *mon, u16 move) {
     }
 }
 
-void CopyBoxPokemonToPokemon(const BoxPokemon * src, Pokemon *dest) {
+void CopyBoxPokemonToPokemon(const BoxPokemon *src, Pokemon *dest) {
     u32 sp0 = 0;
     CAPSULE sp4;
     struct Mail * mail;
@@ -3290,7 +3290,7 @@ s8 MonGetFlavorPreference(Pokemon *mon, int flavor) {
     return BoxMonGetFlavorPreference(&mon->box, flavor);
 }
 
-s8 BoxMonGetFlavorPreference(BoxPokemon * boxmon, int flavor) {
+s8 BoxMonGetFlavorPreference(BoxPokemon *boxmon, int flavor) {
     u32 personality = GetBoxMonData(boxmon, MON_DATA_PERSONALITY, NULL);
     return GetFlavorPreferenceFromPID(personality, flavor);
 }
@@ -3422,7 +3422,7 @@ BOOL Pokemon_HasPokerus(Pokemon *mon) {
     return BoxMon_HasPokerus(&mon->box);
 }
 
-BOOL BoxMon_HasPokerus(BoxPokemon * boxmon) {
+BOOL BoxMon_HasPokerus(BoxPokemon *boxmon) {
     return (GetBoxMonData(boxmon, MON_DATA_POKERUS, NULL) & 0xF) != 0;
 }
 
@@ -3430,7 +3430,7 @@ BOOL Pokemon_IsImmuneToPokerus(Pokemon *mon) {
     return BoxMon_IsImmuneToPokerus(&mon->box);
 }
 
-BOOL BoxMon_IsImmuneToPokerus(BoxPokemon * boxmon) {
+BOOL BoxMon_IsImmuneToPokerus(BoxPokemon *boxmon) {
     u8 pokerus = (u8)GetBoxMonData(boxmon, MON_DATA_POKERUS, NULL);
     if (pokerus & 0xF) {
         return FALSE;
@@ -3445,7 +3445,7 @@ void Pokemon_UpdateArceusForme(Pokemon *mon) {
     BoxMon_UpdateArceusForme(&mon->box);
 }
 
-void BoxMon_UpdateArceusForme(BoxPokemon * boxmon) {
+void BoxMon_UpdateArceusForme(BoxPokemon *boxmon) {
     u32 species = GetBoxMonData(boxmon, MON_DATA_SPECIES, NULL);
     u32 ability = GetBoxMonData(boxmon, MON_DATA_ABILITY, NULL);
     u32 heldItem = GetBoxMonData(boxmon, MON_DATA_HELD_ITEM, NULL);
@@ -3719,7 +3719,7 @@ void sub_020720FC(Pokemon *mon, PLAYERPROFILE *a1, u32 pokeball, u32 a3, u32 enc
     }
 }
 
-void sub_0207213C(BoxPokemon * boxmon, PLAYERPROFILE *playerProfile, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
+void sub_0207213C(BoxPokemon *boxmon, PLAYERPROFILE *playerProfile, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
     sub_0208F270(boxmon, playerProfile, 0, a3, heap_id);
     SetBoxMonData(boxmon, MON_DATA_GAME_VERSION, (void *)&gGameVersion);
     SetBoxMonData(boxmon, MON_DATA_POKEBALL, &pokeball);
@@ -4114,7 +4114,7 @@ BOOL MonCheckFrontierIneligibility(Pokemon *mon) {
     return IsPokemonLegendaryOrMythical(species, forme);
 }
 
-BOOL BoxmonBelongsToPlayer(BoxPokemon * boxmon, PLAYERPROFILE * profile, HeapID heap_id) {
+BOOL BoxmonBelongsToPlayer(BoxPokemon *boxmon, PLAYERPROFILE * profile, HeapID heap_id) {
     u32 myId = PlayerProfile_GetTrainerID(profile);
     u32 otId = GetBoxMonData(boxmon, MON_DATA_OTID, NULL);
     u32 myGender = PlayerProfile_GetTrainerGender(profile);
@@ -4174,7 +4174,7 @@ void Pokemon_RemoveCapsule(Pokemon *mon) {
     SetMonData(mon, MON_DATA_SEAL_COORDS, &sp1);
 }
 
-void RestoreBoxMonPP(BoxPokemon * boxmon) {
+void RestoreBoxMonPP(BoxPokemon *boxmon) {
     int i;
     u8 pp;
     BOOL decry = AcquireBoxMonLock(boxmon);

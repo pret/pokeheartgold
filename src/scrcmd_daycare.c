@@ -162,7 +162,7 @@ BOOL ScrCmd_UpdateDayCareMonObjects(SCRIPTCONTEXT* ctx) {
             DeleteMapObject(mon_map_object);
         }
 
-        BoxPokemon* dc_box_mon = DayCareMon_GetBoxMon(Sav2_DayCare_GetMonX(daycare, dc_mon_idx));
+        BoxPokemon *dc_box_mon = DayCareMon_GetBoxMon(Sav2_DayCare_GetMonX(daycare, dc_mon_idx));
         if (GetBoxMonData(dc_box_mon, MON_DATA_SPECIES, NULL) == SPECIES_NONE) {
             continue;
         }

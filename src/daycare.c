@@ -16,7 +16,7 @@ DAYCAREMON* Sav2_DayCare_GetMonX(DAYCARE* daycare, int i) {
     return &daycare->mons[i];
 }
 
-BoxPokemon* DayCareMon_GetBoxMon(DAYCAREMON* dcmon) {
+BoxPokemon *DayCareMon_GetBoxMon(DAYCAREMON* dcmon) {
     return &dcmon->mon;
 }
 
