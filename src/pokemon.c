@@ -3071,7 +3071,7 @@ u32 TryAppendBoxMonMove(BOXMON *boxmon, u16 move) {
     int i;
     BOOL decry = AcquireBoxMonLock(boxmon);
     u16 cur_move;
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < MAX_MON_MOVES; i++) {
         cur_move = (u16)GetBoxMonData(boxmon, MON_DATA_MOVE1 + i, NULL);
         if (cur_move == MOVE_NONE) {
             BoxMonSetMoveInSlot(boxmon, move, (u8)i);
@@ -3094,11 +3094,11 @@ void DeleteMonFirstMoveAndAppend(POKEMON *pokemon, u16 move_id) {
 void DeleteBoxMonFirstMoveAndAppend(BOXMON * boxmon, u16 move) {
     BOOL decry = AcquireBoxMonLock(boxmon);
     int i;
-    u16 moves[4];
-    u8 pp[4];
-    u8 ppUp[4];
+    u16 moves[MAX_MON_MOVES];
+    u8 pp[MAX_MON_MOVES];
+    u8 ppUp[MAX_MON_MOVES];
 
-    for (i = 0; i < 3; i++) {
+    for (i = 0; i < MAX_MON_MOVES - 1; i++) {
         moves[i] = (u16)GetBoxMonData(boxmon, MON_DATA_MOVE1 + i + 1, NULL);
         pp[i] = (u8)GetBoxMonData(boxmon, MON_DATA_MOVE1PP + i + 1, NULL);
         ppUp[i] = (u8)GetBoxMonData(boxmon, MON_DATA_MOVE1PPUP + i + 1, NULL);
@@ -3108,7 +3108,7 @@ void DeleteBoxMonFirstMoveAndAppend(BOXMON * boxmon, u16 move) {
     pp[3] = (u8)GetMoveAttr(move, MOVEATTR_PP);
     ppUp[3] = 0;
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < MAX_MON_MOVES; i++) {
         SetBoxMonData(boxmon, MON_DATA_MOVE1 + i, &moves[i]);
         SetBoxMonData(boxmon, MON_DATA_MOVE1PP + i, &pp[i]);
         SetBoxMonData(boxmon, MON_DATA_MOVE1PPUP + i, &ppUp[i]);
@@ -3198,7 +3198,7 @@ void MonDeleteMoveSlot(POKEMON * pokemon, u32 slot) {
     u16 move;
     u8 pp;
     u8 ppUp;
-    for (; slot < 3; slot++) {
+    for (; slot < MAX_MON_MOVES - 1; slot++) {
         move = (u16)GetMonData(pokemon, (int)(MON_DATA_MOVE1 + slot + 1), NULL);
         pp = (u8)GetMonData(pokemon, (int)(MON_DATA_MOVE1PP + slot + 1), NULL);
         ppUp = (u8)GetMonData(pokemon, (int)(MON_DATA_MOVE1PPUP + slot + 1), NULL);
@@ -3216,12 +3216,12 @@ void MonDeleteMoveSlot(POKEMON * pokemon, u32 slot) {
 
 BOOL MonHasMove(POKEMON* pokemon, u16 move) {
     int i;
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < MAX_MON_MOVES; i++) {
         if (GetMonData(pokemon, MON_DATA_MOVE1 + i, NULL) == move) {
             break;
         }
     }
-    if (i != 4) {
+    if (i != MAX_MON_MOVES) {
         return TRUE;
     } else {
         return FALSE;
@@ -4178,7 +4178,7 @@ void RestoreBoxMonPP(BOXMON * boxmon) {
     int i;
     u8 pp;
     BOOL decry = AcquireBoxMonLock(boxmon);
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < MAX_MON_MOVES; i++) {
         if (GetBoxMonData(boxmon, MON_DATA_MOVE1 + i, NULL) != MOVE_NONE) {
             pp = (u8)GetBoxMonData(boxmon, MON_DATA_MOVE1MAXPP + i, NULL);
             SetBoxMonData(boxmon, MON_DATA_MOVE1PP + i, &pp);
