@@ -2,9 +2,9 @@
 #include "pokemon_icon_idx.h"
 #include "constants/species.h"
 
-static u16 _BoxMonGetForme(BOXMON *boxmon);
+static u16 _BoxMonGetForme(BoxPokemon *boxmon);
 
-u32 Boxmon_GetIconNaix(BOXMON *boxmon) {
+u32 Boxmon_GetIconNaix(BoxPokemon *boxmon) {
     BOOL encry;
     int species;
     BOOL isEgg;
@@ -78,7 +78,7 @@ u32 GetBattleMonIconNaixEx(u32 species, BOOL isEgg, u32 forme) {
     return GetMonIconNaixEx(species, isEgg, forme);
 }
 
-static u16 _BoxMonGetForme(BOXMON *boxmon) {
+static u16 _BoxMonGetForme(BoxPokemon *boxmon) {
     switch (GetBoxMonData(boxmon, MON_DATA_SPECIES2, NULL)) {
     case SPECIES_UNOWN:
         return GetBoxMonUnownLetter(boxmon);
@@ -181,7 +181,7 @@ const u8 GetBattleMonIconPaletteEx(u32 species, u32 forme, BOOL isEgg) {
     return GetMonIconPaletteEx(species, forme, isEgg);
 }
 
-const u8 Boxmon_GetIconPalette(BOXMON *boxmon) {
+const u8 Boxmon_GetIconPalette(BoxPokemon *boxmon) {
     BOOL encry;
     u32 species;
     u32 forme;

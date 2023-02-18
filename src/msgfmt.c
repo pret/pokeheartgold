@@ -122,11 +122,11 @@ void BufferSpeciesName(MSGFMT *msgFmt, u32 fieldno, u16 species) {
     DestroyMsgData(msgData);
 }
 
-void BufferBoxMonSpeciesName(MSGFMT *msgFmt, u32 fieldno, BOXMON *boxmon) {
+void BufferBoxMonSpeciesName(MSGFMT *msgFmt, u32 fieldno, BoxPokemon *boxmon) {
     BufferSpeciesName(msgFmt, fieldno, GetBoxMonData(boxmon, MON_DATA_SPECIES, NULL));
 }
 
-void BufferBoxMonSpeciesNameWithArticle(MSGFMT *msgFmt, u32 fieldno, BOXMON *boxmon) {
+void BufferBoxMonSpeciesNameWithArticle(MSGFMT *msgFmt, u32 fieldno, BoxPokemon *boxmon) {
     BufferSpeciesNameWithArticle(msgFmt, fieldno, GetBoxMonData(boxmon, MON_DATA_SPECIES, NULL));
 }
 
@@ -137,12 +137,12 @@ void BufferSpeciesNameWithArticle(MSGFMT *msgFmt, u32 fieldno, u32 species) {
     DestroyMsgData(msgData);
 }
 
-void BufferBoxMonNickname(MSGFMT *msgFmt, u32 fieldno, BOXMON *boxmon) {
+void BufferBoxMonNickname(MSGFMT *msgFmt, u32 fieldno, BoxPokemon *boxmon) {
     GetBoxMonData(boxmon, MON_DATA_NICKNAME_3, msgFmt->buffer);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }
 
-void BufferBoxMonOTName(MSGFMT *msgFmt, u32 fieldno, BOXMON *boxmon) {
+void BufferBoxMonOTName(MSGFMT *msgFmt, u32 fieldno, BoxPokemon *boxmon) {
     GetBoxMonData(boxmon, MON_DATA_OT_NAME_2, msgFmt->buffer);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }

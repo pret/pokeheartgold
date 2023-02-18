@@ -183,7 +183,7 @@ BOOL ScrCmd_BufferBoxMonNick(SCRIPTCONTEXT* ctx) {
     u8 idx = ScriptReadByte(ctx);
     u16 box_mon_slot = ScriptGetVar(ctx);
 
-    BOXMON* box_mon = PCStorage_GetMonByIndexPair(pc, box_mon_slot / MONS_PER_BOX, box_mon_slot % MONS_PER_BOX);
+    BoxPokemon* box_mon = PCStorage_GetMonByIndexPair(pc, box_mon_slot / MONS_PER_BOX, box_mon_slot % MONS_PER_BOX);
     BufferBoxMonNickname(*msg_fmt, idx, box_mon);
 
     return FALSE;

@@ -4,7 +4,7 @@
 #include "msgdata/msg/msg_0024.h"
 
 void PCStorage_InitializeBoxes(PC_STORAGE *storage);
-BOOL PCStorage_PlaceMonInBoxFirstEmptySlot(PC_STORAGE *storage, u32 boxno, BOXMON *boxmon);
+BOOL PCStorage_PlaceMonInBoxFirstEmptySlot(PC_STORAGE *storage, u32 boxno, BoxPokemon *boxmon);
 void PCStorage_SetBoxModified(PC_STORAGE *storage, u8 boxno);
 
 void PCStorage_init(PC_STORAGE *storage) {
@@ -46,7 +46,7 @@ void PCStorage_InitializeBoxes(PC_STORAGE *storage) {
     storage->curBox = 0;
 }
 
-BOOL PCStorage_PlaceMonInFirstEmptySlotInAnyBox(PC_STORAGE *storage, BOXMON *boxmon) {
+BOOL PCStorage_PlaceMonInFirstEmptySlotInAnyBox(PC_STORAGE *storage, BoxPokemon *boxmon) {
     u32 i = storage->curBox;
     do {
         RestoreBoxMonPP(boxmon);
@@ -62,7 +62,7 @@ BOOL PCStorage_PlaceMonInFirstEmptySlotInAnyBox(PC_STORAGE *storage, BOXMON *box
     return FALSE;
 }
 
-BOOL PCStorage_PlaceMonInBoxFirstEmptySlot(PC_STORAGE* storage, u32 boxno, BOXMON* boxmon) {
+BOOL PCStorage_PlaceMonInBoxFirstEmptySlot(PC_STORAGE* storage, u32 boxno, BoxPokemon* boxmon) {
     u32 i;
     RestoreBoxMonPP(boxmon);
     if (boxno == -1u) {
@@ -78,7 +78,7 @@ BOOL PCStorage_PlaceMonInBoxFirstEmptySlot(PC_STORAGE* storage, u32 boxno, BOXMO
     return FALSE;
 }
 
-BOOL PCStorage_PlaceMonInBoxByIndexPair(PC_STORAGE* storage, u32 boxno, u32 slotno, BOXMON* boxmon) {
+BOOL PCStorage_PlaceMonInBoxByIndexPair(PC_STORAGE* storage, u32 boxno, u32 slotno, BoxPokemon* boxmon) {
     RestoreBoxMonPP(boxmon);
     if (boxno == -1u) {
         boxno = storage->curBox;
@@ -93,7 +93,7 @@ BOOL PCStorage_PlaceMonInBoxByIndexPair(PC_STORAGE* storage, u32 boxno, u32 slot
 }
 
 void PCStorage_SwapMonsInBoxByIndexPair(PC_STORAGE* storage, u32 boxno, u32 from, u32 to) {
-    BOXMON temp;
+    BoxPokemon temp;
 
     temp = storage->boxes[boxno].mons[from];
     storage->boxes[boxno].mons[from] = storage->boxes[boxno].mons[to];
@@ -309,7 +309,7 @@ u32 PCStorage_GetMonDataByIndexPair(PC_STORAGE* storage, u32 boxno, u32 slotno, 
     return GetBoxMonData(&storage->boxes[boxno].mons[slotno], attr, ptr);
 }
 
-BOXMON* PCStorage_GetMonByIndexPair(PC_STORAGE* storage, u32 boxno, u32 slotno) {
+BoxPokemon* PCStorage_GetMonByIndexPair(PC_STORAGE* storage, u32 boxno, u32 slotno) {
     GF_ASSERT(boxno < NUM_BOXES || boxno == -1u);
     GF_ASSERT(slotno < MONS_PER_BOX);
     if (boxno == -1u) {

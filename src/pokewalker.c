@@ -55,17 +55,17 @@ void sub_020326A4(POKEWALKER *pokeWalker, u16 a1, u16 a2) {
     pokeWalker->unk_002 = a2;
 }
 
-void Pokewalker_SetBoxMon(POKEWALKER *pokeWalker, BOXMON *boxmon) {
-    MI_CpuCopyFast(boxmon, &pokeWalker->pokemon, sizeof(BOXMON));
+void Pokewalker_SetBoxMon(POKEWALKER *pokeWalker, BoxPokemon *boxmon) {
+    MI_CpuCopyFast(boxmon, &pokeWalker->pokemon, sizeof(BoxPokemon));
 }
 
 void Pokewalker_ClearBoxMon(POKEWALKER *pokeWalker) {
-    MI_CpuClearFast(&pokeWalker->pokemon, sizeof(BOXMON));
+    MI_CpuClearFast(&pokeWalker->pokemon, sizeof(BoxPokemon));
 }
 
-BOOL Pokewalker_TryGetBoxMon(POKEWALKER *pokeWalker, BOXMON *boxmon) {
+BOOL Pokewalker_TryGetBoxMon(POKEWALKER *pokeWalker, BoxPokemon *boxmon) {
     if (pokewalkerHasBoxmon(pokeWalker)) {
-        MI_CpuCopyFast(&pokeWalker->pokemon, boxmon, sizeof(BOXMON));
+        MI_CpuCopyFast(&pokeWalker->pokemon, boxmon, sizeof(BoxPokemon));
         return TRUE;
     }
     return FALSE;
@@ -73,16 +73,16 @@ BOOL Pokewalker_TryGetBoxMon(POKEWALKER *pokeWalker, BOXMON *boxmon) {
 
 static BOOL pokewalkerHasBoxmon(POKEWALKER *pokeWalker) {
     // This is an annoying hack to get it matching.
-    // Should just memcmp with (BOXMON){}
+    // Should just memcmp with (BoxPokemon){}
     u8 * ptr = (u8 *)pokeWalker;
     int i;
 
-    for (i = 0; i < (int)sizeof(BOXMON); i++) {
+    for (i = 0; i < (int)sizeof(BoxPokemon); i++) {
         if (ptr[i + offsetof(POKEWALKER, pokemon)] != 0) {
             break;
         }
     }
-    if (i == sizeof(BOXMON)) {
+    if (i == sizeof(BoxPokemon)) {
         return FALSE;
     }
     return TRUE;

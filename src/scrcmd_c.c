@@ -4295,7 +4295,7 @@ u32 sub_020467A8(SAVEDATA *saveData) {
 
     DAYCARE *dayCare = Sav2_DayCare_get(saveData);
     for (i = 0; i < 2; i++) {
-        BOXMON *boxmon = DayCareMon_GetBoxMon(Sav2_DayCare_GetMonX(dayCare, i));
+        BoxPokemon *boxmon = DayCareMon_GetBoxMon(Sav2_DayCare_GetMonX(dayCare, i));
         if (GetBoxMonData(boxmon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetBoxMonData(boxmon, MON_DATA_IS_EGG, NULL)) {
             ret |= 1 << GetBoxMonData(boxmon, MON_DATA_FORME, NULL);
         }
@@ -4304,7 +4304,7 @@ u32 sub_020467A8(SAVEDATA *saveData) {
     PC_STORAGE *pcStorage = GetStoragePCPointer(saveData);
     for (i = 0; i < (u32)NUM_BOXES; i++) {
         for (j = 0; j < MONS_PER_BOX; j++) {
-            BOXMON *boxmon = PCStorage_GetMonByIndexPair(pcStorage, i, j);
+            BoxPokemon *boxmon = PCStorage_GetMonByIndexPair(pcStorage, i, j);
             if (GetBoxMonData(boxmon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetBoxMonData(boxmon, MON_DATA_IS_EGG, NULL)) {
                 ret |= 1 << GetBoxMonData(boxmon, MON_DATA_FORME, NULL);
             }
@@ -4312,7 +4312,7 @@ u32 sub_020467A8(SAVEDATA *saveData) {
     }
 
     Pokemon *walkerMon = AllocMonZeroed(32);
-    BOXMON *walkerBoxMon = Mon_GetBoxMon(walkerMon);
+    BoxPokemon *walkerBoxMon = Mon_GetBoxMon(walkerMon);
     POKEWALKER *pokeWalker = Sav2_Pokewalker_get(saveData);
     if (Pokewalker_TryGetBoxMon(pokeWalker, walkerBoxMon)) {
         if (GetBoxMonData(walkerBoxMon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetBoxMonData(walkerBoxMon, MON_DATA_IS_EGG, NULL)) {

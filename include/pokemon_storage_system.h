@@ -9,7 +9,7 @@
 typedef struct PokemonStorageSystem PC_STORAGE;
 
 typedef struct PC_Box {
-    BOXMON mons[MONS_PER_BOX];
+    BoxPokemon mons[MONS_PER_BOX];
     u8 unk_FF0[16];
 } PC_BOX;
 
@@ -26,12 +26,12 @@ struct PokemonStorageSystem {
 #define BOX_ALL_MODIFIED_FLAG      ((u32)((1<<NUM_BOXES)-1))
 
 void PCStorage_GetBoxName(PC_STORAGE *pcStorage, u32 boxno, STRING *dest);
-BOOL PCStorage_PlaceMonInFirstEmptySlotInAnyBox(PC_STORAGE *storage, BOXMON *boxmon);
+BOOL PCStorage_PlaceMonInFirstEmptySlotInAnyBox(PC_STORAGE *storage, BoxPokemon *boxmon);
 void PCStorage_init(PC_STORAGE *storage);
 u32 PCStorage_sizeof(void);
 void PCStorage_InitializeBoxes(PC_STORAGE *storage);
-BOOL PCStorage_PlaceMonInBoxFirstEmptySlot(PC_STORAGE* storage, u32 boxno, BOXMON* boxmon);
-BOOL PCStorage_PlaceMonInBoxByIndexPair(PC_STORAGE* storage, u32 boxno, u32 slotno, BOXMON* boxmon);
+BOOL PCStorage_PlaceMonInBoxFirstEmptySlot(PC_STORAGE* storage, u32 boxno, BoxPokemon* boxmon);
+BOOL PCStorage_PlaceMonInBoxByIndexPair(PC_STORAGE* storage, u32 boxno, u32 slotno, BoxPokemon* boxmon);
 void PCStorage_SwapMonsInBoxByIndexPair(PC_STORAGE* storage, u32 boxno, u32 from, u32 to);
 void PCStorage_DeleteBoxMonByIndexPair(PC_STORAGE* storage, u32 boxno, u32 slotno);
 int PCStorage_GetActiveBox(PC_STORAGE *storage);
@@ -48,7 +48,7 @@ int PCStorage_CountMonsAndEggsInBox(PC_STORAGE* storage, u32 boxno);
 int PCStorage_CountMonsInBox(PC_STORAGE* storage, u32 boxno);
 int PCStorage_CountMonsInAllBoxes(PC_STORAGE* storage);
 u32 PCStorage_GetMonDataByIndexPair(PC_STORAGE* storage, u32 boxno, u32 slotno, int attr, void *ptr);
-BOXMON* PCStorage_GetMonByIndexPair(PC_STORAGE* storage, u32 boxno, u32 slotno);
+BoxPokemon* PCStorage_GetMonByIndexPair(PC_STORAGE* storage, u32 boxno, u32 slotno);
 void PCStorage_UnlockBonusWallpaper(PC_STORAGE* storage, u32 wallpaper);
 BOOL PCStorage_IsBonusWallpaperUnlocked(PC_STORAGE* storage, u32 wallpaper);
 void PCStorage_SetBoxModified(PC_STORAGE* storage, u8 boxno);

@@ -115,7 +115,7 @@ typedef union {
     PokemonDataBlockD blockD;
 } PokemonDataBlock;
 
-typedef struct BoxPokemon {
+typedef struct {
     /* 0x000 */ u32 pid;
     /* 0x004 */ u16 party_lock:1;
                 u16 box_lock:1;
@@ -123,7 +123,7 @@ typedef struct BoxPokemon {
                 u16 Unused:13;    // Might be used for validity checks
     /* 0x006 */ u16 checksum;  // Stored checksum of pokemon
     /* 0x008 */ PokemonDataBlock substructs[4];
-} BOXMON;
+} BoxPokemon;
 
 union MailPatternData
 {
@@ -172,7 +172,7 @@ typedef struct PartyPokemon {
 } PARTYMON;
 
 typedef struct {
-    /* 0x000 */ BOXMON box;
+    /* 0x000 */ BoxPokemon box;
     /* 0x088 */ PARTYMON party;
 } Pokemon; // size: 0xEC
 
