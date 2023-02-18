@@ -7438,7 +7438,7 @@ ov80_0222F5EC: ; 0x0222F5EC
 	bx lr
 	.balign 4, 0
 	thumb_func_end ov80_0222F5EC
-    
+
 	.rodata
 
 ov80_0223B9CC: ; 0x0223B9CC

@@ -64,7 +64,7 @@ void NewFieldTransitionEnvironment(FieldSystem *fsys, int mapID, int warpID, int
     FieldSys_CreateTask(fsys, sub_02055DBC, fenv);
 }
 
-void sub_02055CD8(FieldSystem *fsys, int mapID, int warpID, int x, int y, int dir) { 
+void sub_02055CD8(FieldSystem *fsys, int mapID, int warpID, int x, int y, int dir) {
     FieldTransitionEnvironment *fenv = AllocFromHeapAtEnd(11, sizeof(FieldTransitionEnvironment));
     fenv->state = 0;
     fenv->transitionState = 0;
@@ -151,7 +151,7 @@ BOOL sub_02055DBC(TaskManager *man) {
         env->state++;
         break;
     case 3:
-        sub_0205525C(man); 
+        sub_0205525C(man);
         env->state++;
         break;
     case 4:
@@ -179,14 +179,14 @@ BOOL sub_02055DBC(TaskManager *man) {
                     if (env->transitionNo == 8) {
                         parity = 1;
                     }
-                    TIMEOFDAY time = GF_RTC_GetTimeOfDay(); 
+                    TIMEOFDAY time = GF_RTC_GetTimeOfDay();
                     sub_0206A388(man, index, (u8) time, parity); //this should set the specific map icon based on time?
                     env->state++;
                     ov01_021EFAF8(fsys); //<= this func specifically gets and displays the area's icon and text
                     break;
                 }
             }
-            ov01_021EFAF8(fsys); 
+            ov01_021EFAF8(fsys);
             env->transitionState = 0;
             TaskManager_Call(man, sMapEnterRoutines[env->transitionNo], env);
             LocalMapObject *followerMon = FollowingPokemon_GetMapObject(fsys);
@@ -195,7 +195,7 @@ BOOL sub_02055DBC(TaskManager *man) {
                 ov01_02205790(fsys, (u8) PlayerAvatar_GetFacingDirection(fsys->playerAvatar));
             }
             env->state++;
-            break;        
+            break;
         }
         break;
     case 8:
@@ -284,7 +284,7 @@ BOOL sub_0205613C(TaskManager *man) {
             if (MapObject_IsMovementPaused(FollowingPokemon_GetMapObject(fsys))) {
                 sub_0205FC94(FollowingPokemon_GetMapObject(fsys), 55);
                 fenv->transitionState++;
-            } 
+            }
         } else {
             fenv->transitionState++;
         }

@@ -18,7 +18,7 @@ static void MonAdjustMood(Pokemon *mon, s8 unk1) {
 
     mood = GetMonData(mon, MON_DATA_MOOD, NULL);
     adjustedMood = mood + unk1;
-    
+
     if (adjustedMood > 127) {
         adjustedMood = 127;
     } else if (adjustedMood < -127) {
@@ -32,7 +32,7 @@ static void MonAdjustMood(Pokemon *mon, s8 unk1) {
 
 static s8 ItemIdGetMoodEffect(u16 itemId) {
     s8 moodEffect = 0;
-    
+
     switch (itemId) {
     case ITEM_RARE_CANDY:
         moodEffect = 40;
@@ -92,7 +92,7 @@ void ApplyItemEffectOnMonMood(Pokemon *mon, u16 itemId) {
 
 void ApplyMonMoodModifier(Pokemon *mon, int modifierId) {
     s8 mood;
-    u16 species; 
+    u16 species;
     s32 adjustedMood;
 
     species = GetMonData(mon, MON_DATA_SPECIES2, NULL);

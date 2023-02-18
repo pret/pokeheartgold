@@ -1392,6 +1392,6 @@ _02231BF4: .word 0x3FE00000
 	thumb_func_end ov80_02231A14
 
     .bss
-    
+
 ov80_0223DD44: ; 0x0223DD44
 	.space 0x4

@@ -116,7 +116,7 @@ BOOL ScrCmd_MonHasMove(SCRIPTCONTEXT *ctx) {
     Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
     *hasMove = FALSE;
     if (GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
-        return FALSE;   
+        return FALSE;
     }
 
     if (GetMonData(mon, MON_DATA_MOVE1, NULL) == move || GetMonData(mon, MON_DATA_MOVE2, NULL) == move ||
@@ -254,7 +254,7 @@ BOOL ScrCmd_MonAddFriendship(SCRIPTCONTEXT *ctx) {
         if (GetMonData(mon, MON_DATA_POKEBALL, NULL) == BALL_LUXURY) {
             friendshipModifier++;
         }
-        
+
         if (map == GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL)) {
             friendshipModifier++;
         }
@@ -324,7 +324,7 @@ BOOL ScrCmd_GetMonTypes(SCRIPTCONTEXT *ctx) {
     *type1 = GetMonData(mon, MON_DATA_TYPE_1, NULL);
     *type2 = GetMonData(mon, MON_DATA_TYPE_2, NULL);
 
-    return FALSE; 
+    return FALSE;
 }
 
 BOOL ScrCmd_GetPartyCount(SCRIPTCONTEXT *ctx) {
@@ -768,7 +768,7 @@ BOOL ScrCmd_MonHasItem(SCRIPTCONTEXT *ctx) {
         }
     }
 
-    return FALSE; 
+    return FALSE;
 }
 
 BOOL ScrCmd_GetPartymonForme(SCRIPTCONTEXT *ctx) {

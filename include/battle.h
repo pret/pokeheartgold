@@ -124,33 +124,33 @@ typedef struct UnkBtlCtxSub_76 {
 } UnkBtlCtxSub_76;
 
 typedef struct UnkBattlemonSub {
-    u32 disabledTurns:3, 
-        encoredTurns:3, 
-        unk0_6:2, 
+    u32 disabledTurns:3,
+        encoredTurns:3,
+        unk0_6:2,
         unk0_8:3,
-        protectSuccessTurns:2, 
-        perishSongTurns:2, 
-        rolloutCount:3, 
+        protectSuccessTurns:2,
+        perishSongTurns:2,
+        rolloutCount:3,
         furyCutterCount:3,
-        unk0_15:3, 
-        unk0_18:3, 
-        unk0_1A:3, 
-        trauntFlag:1, 
+        unk0_15:3,
+        unk0_18:3,
+        unk0_1A:3,
+        trauntFlag:1,
         unk0_1E:1;
-    u32 battlerIdLockOn:2, 
-        mimicedMoveIndex:4, 
-        battlerIdBinding:2, 
+    u32 battlerIdLockOn:2,
+        mimicedMoveIndex:4,
+        battlerIdBinding:2,
         unk4_8:2,
-        lastResortCount:3, 
-        unk4_D:3, 
-        unk4_10:3, 
+        lastResortCount:3,
+        unk4_D:3,
+        unk4_10:3,
         unk4_13:3,
-        unk4_16:1, 
-        unk4_17:4, 
-        unk4_2B:1, 
+        unk4_16:1,
+        unk4_17:4,
+        unk4_2B:1,
         unk4_2C:1,
-        unk4_2D:1, 
-        meFirstFlag:1, 
+        unk4_2D:1,
+        meFirstFlag:1,
         unk4_2F:1;
     int unk;
     int unk8;
@@ -176,33 +176,33 @@ typedef struct BATTLEMON {
     u16 unk8;
     u16 unkA;
     u16 moves[4];
-    u32 hpIV:5, 
-        atkIV:5, 
-        defIV:5, 
-        spdIV:5, 
-        spatkIV:5, 
-        spdefIV:5, 
-        isEgg:1, 
+    u32 hpIV:5,
+        atkIV:5,
+        defIV:5,
+        spdIV:5,
+        spatkIV:5,
+        spdefIV:5,
+        isEgg:1,
         isNicknamed:1;
     s8 statChanges[8];
     int weight;
     u8 type1;
     u8 type2;
-    u8 forme:5, 
-       unk26_5:1, 
+    u8 forme:5,
+       unk26_5:1,
        unk26_6:2;
     u8 ability;
-    u32 unk28_0:1, 
-        intimidateFlag:1, 
-        traceFlag:1, 
-        downloadFlag:1, 
-        anticipationFlag:1, 
-        forewarnFlag:1, 
-        slowStartFlag:1, 
+    u32 unk28_0:1,
+        intimidateFlag:1,
+        traceFlag:1,
+        downloadFlag:1,
+        anticipationFlag:1,
+        forewarnFlag:1,
+        slowStartFlag:1,
         slowStartEnded:1,
-        friskFlag:1, 
-        moldBreakerFlag:1, 
-        pressureFlag:1, 
+        friskFlag:1,
+        moldBreakerFlag:1,
+        pressureFlag:1,
         unk28_B:21;
     u8 movePPCur[4];
     u8 movePP[4];
@@ -224,7 +224,7 @@ typedef struct BATTLEMON {
     u16 item;
     u16 unk76;
     u16 unk78;
-    u8 gender:4, 
+    u8 gender:4,
        unk7A_4:4;
     u8 unk7B;
     u32 moveEffectFlags;
@@ -493,7 +493,7 @@ struct BattleSystem {
     u32 unk20;
     u32 unk24;
     u32 unk28;
-    u32 battleTypeFlags; 
+    u32 battleTypeFlags;
     BATTLECONTEXT *ctx;
     OpponentData *opponentData[4];
     int unk44; //offset labels wrong from here until unk23E8
@@ -535,7 +535,7 @@ struct BattleSystem {
     u8 unk1238[0x1000];
     u16 unk2238[0x70];
     u16 unk2318[0x70];
-    u16 unk23E8; //labeling may be wrong before here 
+    u16 unk23E8; //labeling may be wrong before here
     u16 unk23EA;
     u16 unk23EC;
     u16 unk23EE;
@@ -550,7 +550,7 @@ struct BattleSystem {
     int unk2400;
     int unk2404;
     int unk2408;
-    u32 unk240C; 
+    u32 unk240C;
     int unk2410;
     int safariBallCnt;
     u8 unk2418[4];

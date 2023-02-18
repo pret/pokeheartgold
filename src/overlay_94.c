@@ -63,7 +63,7 @@ BOOL PartyMenu_AnimateIconFormeChange(PartyMenuStruct* unkPtr) {
         default:
             GF_ASSERT(FALSE);
             break;
-        } 
+        }
         Pokedex_SetMonCaughtFlag(Sav2_Pokedex_get(FieldSys_GetSaveDataPtr(unkPtr->unk654->fsys)), mon);
         work->state++;
         break;
@@ -154,13 +154,13 @@ static void _EmitParticles(IconFormeChangeWork* unkPtr) {
     sub_0201526C(unkPtr->particleSystem, sub_02015264(NARC_a_2_0_6, unkPtr->fileId, HEAPID_PARTY_MENU), 0xA, 1);
 
     switch (unkPtr->species) {
-    case SPECIES_GIRATINA: 
+    case SPECIES_GIRATINA:
         sub_02015494(unkPtr->particleSystem, 0, particleEmitCallback, unkPtr);
         sub_02015494(unkPtr->particleSystem, 1, particleEmitCallback, unkPtr);
         sub_02015494(unkPtr->particleSystem, 2, particleEmitCallback, unkPtr);
         PlaySE(SEQ_SE_PL_W467109);
         break;
-    case SPECIES_SHAYMIN: 
+    case SPECIES_SHAYMIN:
         sub_02015494(unkPtr->particleSystem, 0, particleEmitCallback, unkPtr);
         sub_02015494(unkPtr->particleSystem, 1, particleEmitCallback, unkPtr);
         PlaySE(SEQ_SE_PL_W363);
@@ -204,15 +204,15 @@ static u32 texAlloc(u32 szByte, BOOL is4x4comp) {
     NNSGfdTexKey unkC = NNS_GfdDefaultFuncAllocTexVram(szByte, is4x4comp, 0);
 
     GF_ASSERT(unkC != NNS_GFD_ALLOC_ERROR_TEXKEY);
-     
+
     sub_02015354(unkC);
-    
+
     return NNS_GfdGetTexKeyAddr(unkC);
 }
 
 static u32 plttAlloc(u32 szByte, BOOL is4pltt) {
     NNSGfdPlttKey unkC = NNS_GfdDefaultFuncAllocPlttVram(szByte, is4pltt, 1);
-    
+
     GF_ASSERT(unkC != NNS_GFD_ALLOC_ERROR_PLTTKEY);
 
     sub_02015394(unkC);

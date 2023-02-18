@@ -52,7 +52,7 @@ BOOL ScrCmd_509(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_510(SCRIPTCONTEXT *ctx) {    
+BOOL ScrCmd_510(SCRIPTCONTEXT *ctx) {
     struct UnkStruct_0202EB30 *unkStruct = sub_020270F8(ctx->fsys->savedata);
     PC_STORAGE *storage = GetStoragePCPointer(ctx->fsys->savedata);
     Pokemon *mon = AllocMonZeroed(32);

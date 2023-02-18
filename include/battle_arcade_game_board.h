@@ -37,7 +37,7 @@ typedef struct GAME_BOARD_ARGS {
     PARTY *playerParty;
     PARTY *opponentParty;
     u16 returnWork;
-    void *work; 
+    void *work;
     u16 unk;
     u8 randomFlag;
     u8 dummy1;
@@ -73,7 +73,7 @@ typedef struct GAME_BOARD_WORK {
     u8 substate;
     u8 type;
     u8 unkA;
-    u8 wait;  
+    u8 wait;
     u8 randomFlag;
     u8 cursorPos;
     u8 unkE;

@@ -1613,7 +1613,7 @@ _0222BA6E:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov80_0222BA5C
-    
+
     	thumb_func_start ov80_0222BA7C
 ov80_0222BA7C: ; 0x0222BA7C
 	push {r4, lr}

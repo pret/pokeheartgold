@@ -45,7 +45,7 @@ struct _2DGfxResObj *Add2DGfxResObjFromHeader(struct _2DGfxResMan *mgr, const st
     struct _2DGfxResObj *ret;
     struct _2DGfxResHeaderFile *headerFile;
     struct _2DGfxResHeaderNarc *headerNarc;
-    
+
     GF_ASSERT(mgr != NULL);
     GF_ASSERT(header != NULL);
     GF_ASSERT(header->num > idx);

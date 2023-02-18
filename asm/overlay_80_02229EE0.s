@@ -1251,9 +1251,9 @@ ov80_0222A840: ; 0x0222A840
 	bl sub_02039F68
 	pop {r3, pc}
 	thumb_func_end ov80_0222A840
-    
+
     .rodata
-    
+
 _0223B620: ; 0x0223B620
 	.byte 0xD5, 0x00, 0x9D, 0x00, 0xEA, 0x00, 0xD9, 0x00
 

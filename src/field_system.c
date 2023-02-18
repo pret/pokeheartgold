@@ -47,7 +47,7 @@ static BOOL FieldSys_Main(FieldSystem *fsys);
 BOOL Field_Continue_AppInit(OVY_MANAGER *man, int *unused) {
     FsysInitWork *args = OverlayManager_GetArgs(man);
     sFieldSysPtr = FieldSys_New(man);
-    
+
     if (args->unk4) {
         CallFieldTask_ContinueGame_CommError(sFieldSysPtr);
     } else {
@@ -99,7 +99,7 @@ void sub_0203DF34(FieldSystem *fsys) {
 
 u8 sub_0203DF3C(FieldSystem *fsys) {
     GF_ASSERT(fsys->unk_110 == 0 || fsys->unk_110 == 1);
-    
+
     return fsys->unk_110;
 }
 
@@ -135,7 +135,7 @@ FieldSystem *FieldSys_New(OVY_MANAGER *man) {
     FieldSystem *fsys = OverlayManager_CreateAndGetData(man, sizeof(FieldSystem), 11);
     MI_CpuFill8(fsys, 0, sizeof(FieldSystem));
     fsys->unk0 = AllocFromHeap(11, sizeof(struct FieldSystemUnkSub0));
-    
+
     fsys->unk0->unk0 = NULL;
     fsys->unk0->unk4 = NULL;
     fsys->unk0->unk8 = FALSE;
@@ -244,7 +244,7 @@ void sub_0203E15C(FieldSystem *fsys) {
             }
             if (gSystem.newKeys & PAD_BUTTON_A) {
                 ov01_021EFACC(fsys->unk4->unk8);
-            } 
+            }
             flag = 0;
             if (sub_0203E324()) {
                 flag = ov35_02259DB8();

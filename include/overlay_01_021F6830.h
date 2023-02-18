@@ -5,4 +5,4 @@
 
 void ov01_021F6830(FieldSystem *fsys, int a1, int a2);
 
-#endif 
+#endif

@@ -27,7 +27,7 @@
 #define PLAYER_STATE_SURFING         2
 #define PLAYER_STATE_ROCKET          3
 #define PLAYER_STATE_UNK_SP          4
-#define PLAYER_STATE_UNK_WATER       5   
+#define PLAYER_STATE_UNK_WATER       5
 #define PLAYER_STATE_POKEATHLON      6
 #define PLAYER_STATE_FISHING         7
 #define PLAYER_STATE_UNK_POKE        8
