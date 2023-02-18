@@ -53,7 +53,7 @@ typedef struct TrainerMonSpeciesMoves {
     u8 genderAbilityOverride;
     u16 level;
     u16 species;
-    u16 moves[MON_MOVES];
+    u16 moves[MAX_MON_MOVES];
     u16 capsule;
 } TRPOKE_NOITEM_CUSTMOVES;
 
@@ -72,7 +72,7 @@ typedef struct TrainerMonSpeciesItemMoves {
     u16 level;
     u16 species;
     u16 item;
-    u16 moves[MON_MOVES];
+    u16 moves[MAX_MON_MOVES];
     u16 capsule;
 } TRPOKE_ITEM_CUSTMOVES;
 

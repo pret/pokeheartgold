@@ -5,6 +5,8 @@
 #include "constants/charcode.h"
 #include "constants/global.fieldmap.h"
 
+#define MAX_MON_MOVES 4
+
 #define OT_NAME_LENGTH           7
 #define POKEMON_NAME_LENGTH     10
 

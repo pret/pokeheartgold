@@ -3632,7 +3632,7 @@ BOOL Mon_UpdateRotomForme(POKEMON *pokemon, int forme, int defaultSlot) {
     }
     GetMonData(pokemon, MON_DATA_FORME, NULL);
     new_move = forme_moves[forme];
-    for (i = 0; i < MON_MOVES; i++) {
+    for (i = 0; i < MAX_MON_MOVES; i++) {
         cur_move = GetMonData(pokemon, MON_DATA_MOVE1 + i, NULL);
         for (j = ROTOM_HEAT; j < (unsigned)ROTOM_FORME_MAX; j++) {
             if (cur_move != MOVE_NONE && cur_move == forme_moves[j]) {
@@ -3648,13 +3648,13 @@ BOOL Mon_UpdateRotomForme(POKEMON *pokemon, int forme, int defaultSlot) {
         }
     }
     if (new_move != MOVE_NONE) {
-        for (i = 0; i < MON_MOVES; i++) {
+        for (i = 0; i < MAX_MON_MOVES; i++) {
             if (GetMonData(pokemon, MON_DATA_MOVE1 + i, NULL) == MOVE_NONE) {
                 MonSetMoveInSlot_ResetPpUp(pokemon, new_move, i);
                 break;
             }
         }
-        if (i == MON_MOVES) {
+        if (i == MAX_MON_MOVES) {
             MonSetMoveInSlot_ResetPpUp(pokemon, new_move, defaultSlot);
         }
     }
@@ -4283,7 +4283,7 @@ void sub_02072A98(POKEMON *pokemon, struct UnkPokemonStruct_02072A98 *dest) {
     dest->spdefEV = dbA->spdefEV;
     dest->originLanguage = dbA->originLanguage;
 
-    for (i = 0; i < MON_MOVES; i++) {
+    for (i = 0; i < MAX_MON_MOVES; i++) {
         dest->moves[i] = dbB->moves[i];
         dest->movePP[i] = dbB->movePP[i];
         dest->movePpUps[i] = dbB->movePpUps[i];
@@ -4360,7 +4360,7 @@ void sub_02072D64(const struct UnkPokemonStruct_02072A98 *src, POKEMON *pokemon)
     dbA->spdefEV = src->spdefEV;
     dbA->originLanguage = src->originLanguage;
 
-    for (i = 0; i < MON_MOVES; i++) {
+    for (i = 0; i < MAX_MON_MOVES; i++) {
         dbB->moves[i] = src->moves[i];
         dbB->movePP[i] = src->movePP[i];
         dbB->movePpUps[i] = src->movePpUps[i];

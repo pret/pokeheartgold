@@ -437,9 +437,9 @@ static u8 LoadEggMoves(POKEMON *pokemon, u16 *dest) {
 }
 
 struct EggMoveSearch {
-    int dad_moves[MON_MOVES];
-    int shared_moves[MON_MOVES];
-    int mom_moves[MON_MOVES];
+    int dad_moves[MAX_MON_MOVES];
+    int shared_moves[MAX_MON_MOVES];
+    int mom_moves[MAX_MON_MOVES];
     u16 baby_learnset[50];
     u16 baby_egg_moves[16];
 };
@@ -461,12 +461,12 @@ static void InheritMoves(POKEMON *egg, BOXMON *dad, BOXMON *mom) {
     egg_species = GetMonData(egg, MON_DATA_SPECIES, NULL);
     egg_forme = GetMonData(egg, MON_DATA_FORME, NULL);
     learnset_size = Species_LoadLearnsetTable(egg_species, egg_forme, search->baby_learnset);
-    for (i = 0; i < MON_MOVES; i++) {
+    for (i = 0; i < MAX_MON_MOVES; i++) {
         search->dad_moves[i] = GetBoxMonData(dad, MON_DATA_MOVE1 + i, NULL);
         search->mom_moves[i] = GetBoxMonData(mom, MON_DATA_MOVE1 + i, NULL);
     }
     r5 = LoadEggMoves(egg, search->baby_egg_moves);
-    for (i = 0; i < MON_MOVES; i++) {
+    for (i = 0; i < MAX_MON_MOVES; i++) {
         if (search->dad_moves[i] != MOVE_NONE) {
             for (j = 0; j < r5; j++) {
                 if (search->dad_moves[i] == search->baby_egg_moves[j]) {
@@ -480,7 +480,7 @@ static void InheritMoves(POKEMON *egg, BOXMON *dad, BOXMON *mom) {
             break;
         }
     }
-    for (i = 0; i < MON_MOVES; i++) {
+    for (i = 0; i < MAX_MON_MOVES; i++) {
         if (search->dad_moves[i] != MOVE_NONE) {
             for (j = 0; j < 100; j++) {
                 if (search->dad_moves[i] == TMHMGetMove(j + ITEM_TM01)) {
@@ -493,17 +493,17 @@ static void InheritMoves(POKEMON *egg, BOXMON *dad, BOXMON *mom) {
             }
         }
     }
-    for (i = 0; i < MON_MOVES; i++) {
+    for (i = 0; i < MAX_MON_MOVES; i++) {
         if (search->dad_moves[i] == MOVE_NONE) {
             break;
         }
-        for (j = 0; j < MON_MOVES; j++) {
+        for (j = 0; j < MAX_MON_MOVES; j++) {
             if (search->dad_moves[i] == search->mom_moves[j] && search->dad_moves[i] != MOVE_NONE) {
                 search->shared_moves[sp1C++] = search->dad_moves[i];
             }
         }
     }
-    for (i = 0; i < MON_MOVES; i++) {
+    for (i = 0; i < MAX_MON_MOVES; i++) {
         if (search->shared_moves[i] == MOVE_NONE) {
             break;
         }
@@ -1005,8 +1005,8 @@ u8 Sav2_DayCare_CalcCompatibility(DAYCARE *dayCare) {
 }
 
 static void sub_0206D038(POKEMON *pokemon, HeapID heapId) {
-    u16 moves[MON_MOVES];
-    u8 pp[MON_MOVES];
+    u16 moves[MAX_MON_MOVES];
+    u8 pp[MAX_MON_MOVES];
     u32 otId;
     u8 ivs[NUM_STATS];
     u16 metLoc;
@@ -1030,7 +1030,7 @@ static void sub_0206D038(POKEMON *pokemon, HeapID heapId) {
     string = String_ctor(OT_NAME_LENGTH + 1, heapId);
     tmpMon = AllocMonZeroed(heapId);
     species = (u16)GetMonData(pokemon, MON_DATA_SPECIES, NULL);
-    for (i = 0; i < MON_MOVES; i++) {
+    for (i = 0; i < MAX_MON_MOVES; i++) {
         moves[i] = GetMonData(pokemon, MON_DATA_MOVE1 + i, NULL);
         pp[i] = GetMonData(pokemon, MON_DATA_MOVE1PP + i, NULL);
     }
@@ -1055,7 +1055,7 @@ static void sub_0206D038(POKEMON *pokemon, HeapID heapId) {
         }
     }
     CreateMon(tmpMon, species, 1, 32, TRUE, pid, OT_ID_PLAYER_ID, 0);
-    for (i = 0; i < MON_MOVES; i++) {
+    for (i = 0; i < MAX_MON_MOVES; i++) {
         SetMonData(tmpMon, MON_DATA_MOVE1 + i, &moves[i]);
         SetMonData(tmpMon, MON_DATA_MOVE1PP + i, &pp[i]);
     }

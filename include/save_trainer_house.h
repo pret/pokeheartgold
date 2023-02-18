@@ -20,7 +20,7 @@ typedef struct TrainerHouseMon {
     u16 species:11;
     u16 forme:5;
     u16 item;
-    u16 moves[MON_MOVES];
+    u16 moves[MAX_MON_MOVES];
     u32 pid;
     u32 otid;
     u32 hpIv:5;
