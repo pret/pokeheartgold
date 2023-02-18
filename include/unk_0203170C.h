@@ -16,7 +16,7 @@ typedef struct {
     u8 unk2;
     u8 unk3;
     u32 otId;
-    u16 name[OT_NAME_LENGTH + 1];
+    u16 name[PLAYER_NAME_LENGTH + 1];
     u32 unk18;
     u8 unk1c[0x8];
     char unk24[0x33];

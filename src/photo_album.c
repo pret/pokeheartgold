@@ -87,7 +87,7 @@ PHOTO *PhotoAlbum_LoadAllInUsePhotos(const PHOTO_ALBUM *photoAlbum, HeapID heapI
 
 void Photo_init(PHOTO *photo) {
     MI_CpuClear8(photo, sizeof(PHOTO));
-    StringFillEOS(photo->playerName, OT_NAME_LENGTH + 1);
+    StringFillEOS(photo->playerName, PLAYER_NAME_LENGTH + 1);
     StringFillEOS(photo->leadMonNick, POKEMON_NAME_LENGTH + 2);
 }
 

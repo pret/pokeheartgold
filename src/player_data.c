@@ -58,7 +58,7 @@ void PlayerProfile_init(PLAYERPROFILE* profile) {
 }
 
 BOOL PlayerProfile_IsNameEmpty(PLAYERPROFILE* profile) {
-    for (s32 i = 0; i < OT_NAME_LENGTH + 1; i++) {
+    for (s32 i = 0; i < PLAYER_NAME_LENGTH + 1; i++) {
         if (profile->name[i] != CHAR_NUL) {
             return FALSE;
         }
@@ -68,12 +68,12 @@ BOOL PlayerProfile_IsNameEmpty(PLAYERPROFILE* profile) {
 }
 
 void Sav2_Profile_PlayerName_set(PLAYERPROFILE* profile, u16* name) {
-    GF_ASSERT(StringLength(name) < OT_NAME_LENGTH + 1);
+    GF_ASSERT(StringLength(name) < PLAYER_NAME_LENGTH + 1);
     CopyU16StringArray(profile->name, name);
 }
 
 void PlayerName_StringToFlat(PLAYERPROFILE* profile, STRING* str) {
-    CopyStringToU16Array(str, profile->name, OT_NAME_LENGTH + 1);
+    CopyStringToU16Array(str, profile->name, PLAYER_NAME_LENGTH + 1);
 }
 
 const u16 * PlayerProfile_GetNamePtr(const PLAYERPROFILE *profile) {
@@ -85,7 +85,7 @@ void PlayerName_FlatToString(PLAYERPROFILE* profile, STRING* str) {
 }
 
 STRING* PlayerProfile_GetPlayerName_NewString(PLAYERPROFILE* profile, HeapID heap_id) {
-    STRING* str = String_ctor(OT_NAME_LENGTH + 1, heap_id);
+    STRING* str = String_ctor(PLAYER_NAME_LENGTH + 1, heap_id);
     PlayerName_FlatToString(profile, str);
 
     return str;
