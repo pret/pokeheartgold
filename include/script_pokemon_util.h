@@ -14,6 +14,6 @@ u8 GetIdxOfFirstAliveMonInParty_CrashIfNone(PARTY *party);
 Pokemon *GetFirstNonEggInParty(PARTY *party);
 BOOL HasEnoughAlivePokemonForDoubleBattle(PARTY *party);
 BOOL ApplyPoisonStep(PARTY *party, u16 location);
-BOOL SurvivePoisoning(Pokemon *pokemon);
+BOOL SurvivePoisoning(Pokemon *mon);
 
 #endif //POKEHEARTGOLD_SCRIPT_POKEMON_UTIL_H

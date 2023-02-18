@@ -195,7 +195,7 @@ Unk02090E68 *sub_02090EC0(SAVEDATA *saveData, int n, u16 i, HeapID heapId) {
     return ptr;
 }
 
-Unk02090E68 *sub_02090F00(SAVEDATA *saveData, Pokemon *pokemon, HeapID heapId) {
+Unk02090E68 *sub_02090F00(SAVEDATA *saveData, Pokemon *mon, HeapID heapId) {
     Unk02090E68 *ptr = AllocFromHeapAtEnd(heapId, sizeof(Unk02090E68));
     MI_CpuFill8(ptr, 0, sizeof(Unk02090E68));
 
@@ -204,7 +204,7 @@ Unk02090E68 *sub_02090F00(SAVEDATA *saveData, Pokemon *pokemon, HeapID heapId) {
 
     MAIL *mail = Mail_new(heapId);
     ptr->mail = mail;
-    GetMonData(pokemon, MON_DATA_MAIL_STRUCT, ptr->mail);
+    GetMonData(mon, MON_DATA_MAIL_STRUCT, ptr->mail);
 
     return ptr;
 }
@@ -227,11 +227,11 @@ u32 sub_02090F6C(Unk02090E68 *a0) {
     return a0->unk4;
 }
 
-BOOL sub_02090F70(Unk02090E68 *a0, Pokemon *pokemon) {
+BOOL sub_02090F70(Unk02090E68 *a0, Pokemon *mon) {
     if (sub_02090F6C(a0) == 0) {
         return FALSE;
     }
-    SetMonData(pokemon, MON_DATA_MAIL_STRUCT, a0->mail);
+    SetMonData(mon, MON_DATA_MAIL_STRUCT, a0->mail);
     return TRUE;
 }
 
@@ -242,25 +242,25 @@ void sub_02090F90(Unk02090E68 *a0) {
     FreeToHeap(a0);
 }
 
-int sub_02090FA8(MAILBOX *mailbox, Pokemon *pokemon, HeapID heapId) {
+int sub_02090FA8(MAILBOX *mailbox, Pokemon *mon, HeapID heapId) {
     int item = ITEM_NONE;
     int idx = Mailbox_GetFirstEmptySlotIdx(mailbox);
 
     if (idx != -1) {
         MAIL *mail = Mail_new(heapId);
 
-        GetMonData(pokemon, MON_DATA_MAIL_STRUCT, mail);
+        GetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
         Mailbox_CopyMailToSlotI(&mailbox->msgs[0], 0, idx, mail);
         Mail_init(mail);
-        SetMonData(pokemon, MON_DATA_MAIL_STRUCT, mail);
-        SetMonData(pokemon, MON_DATA_HELD_ITEM, &item);
+        SetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
+        SetMonData(mon, MON_DATA_HELD_ITEM, &item);
         FreeToHeap(mail);
         return idx;
     }
     return -1;
 }
 
-int sub_02091004(MAIL *msgs, int i, Pokemon *pokemon, HeapID heapId) {
+int sub_02091004(MAIL *msgs, int i, Pokemon *mon, HeapID heapId) {
     int item = ITEM_NONE;
 
     MAIL *mail = Mailbox_AllocAndFetchMailI(msgs, 0, i, heapId);
@@ -269,8 +269,8 @@ int sub_02091004(MAIL *msgs, int i, Pokemon *pokemon, HeapID heapId) {
     }
 
     item = MailToItemId(Mail_GetType(mail));
-    SetMonData(pokemon, MON_DATA_MAIL_STRUCT, mail);
-    SetMonData(pokemon, MON_DATA_HELD_ITEM, &item);
+    SetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
+    SetMonData(mon, MON_DATA_HELD_ITEM, &item);
     Mailbox_DeleteSlotI(msgs, 0, i);
     FreeToHeap(mail);
 

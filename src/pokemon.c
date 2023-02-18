@@ -27,11 +27,11 @@ u32 CalcMonChecksum(void *data, u32 size);
 void InitBoxMonMoveset(BOXMON *boxmon);
 void LoadMonBaseStats_HandleAlternateForme(int species, int forme, BASE_STATS *dest);
 u16 ModifyStatByNature(u8 nature, u16 stat, u8 statID);
-static u32 GetMonDataInternal(Pokemon * pokemon, int attr, void * dest);
+static u32 GetMonDataInternal(Pokemon *mon, int attr, void * dest);
 static u32 GetBoxMonDataInternal(BOXMON * boxmon, int attr, void * dest);
-static void SetMonDataInternal(Pokemon * pokemon, int attr, const void * data);
+static void SetMonDataInternal(Pokemon *mon, int attr, const void * data);
 static void SetBoxMonDataInternal(BOXMON * boxmon, int attr, const void * data);
-static void AddMonDataInternal(Pokemon * pokemon, int attr, int value);
+static void AddMonDataInternal(Pokemon *mon, int attr, int value);
 static void AddBoxMonDataInternal(BOXMON * boxmon, int attr, int value);
 PokemonDataBlock *GetSubstruct(BOXMON *boxmon, u32 pid, u8 which_struct);
 void LoadMonPersonal(int species, BASE_STATS *dest);
@@ -48,7 +48,7 @@ u8 sub_020708D8(u16 species, u8 gender, u8 whichFacing, u8 forme, u32 pid);
 void sub_02070D3C(s32 trainer_class, s32 a1, s32 a2, struct UnkStruct_02070D3C *a3);
 int TrainerClassToBackpicID(int trainer_class, int a1);
 void LoadMonEvolutionTable(u16 species, struct Evolution *evoTable);
-BOOL MonHasMove(Pokemon *pokemon, u16 move_id);
+BOOL MonHasMove(Pokemon *mon, u16 move_id);
 void sub_0207213C(BOXMON *boxmon, PLAYERPROFILE *playerProfile, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id);
 void sub_02072190(BOXMON *boxmon, PLAYERPROFILE *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id);
 
@@ -95,10 +95,10 @@ static const s8 sFlavorPreferencesByNature[NATURE_NUM][FLAVOR_MAX] = {
     { 0,  0,  0,  0,  0},
 };
 
-void ZeroMonData(Pokemon *pokemon) {
-    MI_CpuClearFast(pokemon, sizeof(Pokemon));
-    ENCRYPT_BOX(&pokemon->box);
-    ENCRYPT_PTY(pokemon);
+void ZeroMonData(Pokemon *mon) {
+    MI_CpuClearFast(mon, sizeof(Pokemon));
+    ENCRYPT_BOX(&mon->box);
+    ENCRYPT_PTY(mon);
 }
 
 void ZeroBoxMonData(BOXMON *boxmon) {
@@ -111,33 +111,33 @@ u32 SizeOfStructPokemon(void) {
 }
 
 Pokemon *AllocMonZeroed(HeapID heapId) {
-    Pokemon *ret = (Pokemon *)AllocFromHeap(heapId, sizeof(Pokemon));
-    ZeroMonData(ret);
-    return ret;
+    Pokemon *mon = (Pokemon *)AllocFromHeap(heapId, sizeof(Pokemon));
+    ZeroMonData(mon);
+    return mon;
 }
 
-BOOL AcquireMonLock(Pokemon *pokemon) {
+BOOL AcquireMonLock(Pokemon *mon) {
     BOOL locked = FALSE;
-    if (!pokemon->box.party_lock) {
+    if (!mon->box.party_lock) {
         locked = TRUE;
-        GF_ASSERT(!pokemon->box.box_lock);
-        pokemon->box.party_lock = TRUE;
-        pokemon->box.box_lock = TRUE;
-        DECRYPT_PTY(pokemon);
-        DECRYPT_BOX(&pokemon->box);
+        GF_ASSERT(!mon->box.box_lock);
+        mon->box.party_lock = TRUE;
+        mon->box.box_lock = TRUE;
+        DECRYPT_PTY(mon);
+        DECRYPT_BOX(&mon->box);
     }
     return locked;
 }
 
-BOOL ReleaseMonLock(Pokemon *pokemon, BOOL locked) {
+BOOL ReleaseMonLock(Pokemon *mon, BOOL locked) {
     BOOL prev = FALSE;
-    if (pokemon->box.party_lock == TRUE && locked == TRUE) {
+    if (mon->box.party_lock == TRUE && locked == TRUE) {
         prev = TRUE;
-        pokemon->box.party_lock = FALSE;
-        pokemon->box.box_lock = FALSE;
-        ENCRYPT_PTY(pokemon);
-        pokemon->box.checksum = CHECKSUM(&pokemon->box);
-        ENCRYPT_BOX(&pokemon->box);
+        mon->box.party_lock = FALSE;
+        mon->box.box_lock = FALSE;
+        ENCRYPT_PTY(mon);
+        mon->box.checksum = CHECKSUM(&mon->box);
+        ENCRYPT_BOX(&mon->box);
     }
     return prev;
 }
@@ -162,24 +162,24 @@ BOOL ReleaseBoxMonLock(BOXMON *boxmon, BOOL locked) {
     }
     return prev;
 }
-void CreateMon(Pokemon * pokemon, int species, int level, int fixedIV, int hasFixedPersonality, int fixedPersonality, int otIdType, int fixedOtId) {
+void CreateMon(Pokemon *mon, int species, int level, int fixedIV, int hasFixedPersonality, int fixedPersonality, int otIdType, int fixedOtId) {
     MAIL * mail;
     u32 capsule;
     CAPSULE seal_coords;
-    ZeroMonData(pokemon);
-    CreateBoxMon(&pokemon->box, species, level, fixedIV, hasFixedPersonality, fixedPersonality, otIdType, fixedOtId);
+    ZeroMonData(mon);
+    CreateBoxMon(&mon->box, species, level, fixedIV, hasFixedPersonality, fixedPersonality, otIdType, fixedOtId);
     // Not your average encryption call
-    MonEncryptSegment((u16 *)&pokemon->party, sizeof(pokemon->party), 0);
-    ENCRYPT_PTY(pokemon);
-    SetMonData(pokemon, MON_DATA_LEVEL, &level);
+    MonEncryptSegment((u16 *)&mon->party, sizeof(mon->party), 0);
+    ENCRYPT_PTY(mon);
+    SetMonData(mon, MON_DATA_LEVEL, &level);
     mail = Mail_new(0);
-    SetMonData(pokemon, MON_DATA_MAIL_STRUCT, mail);
+    SetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
     FreeToHeap(mail);
     capsule = 0;
-    SetMonData(pokemon, MON_DATA_CAPSULE, &capsule);
+    SetMonData(mon, MON_DATA_CAPSULE, &capsule);
     MI_CpuClearFast(&seal_coords, sizeof(seal_coords));
-    SetMonData(pokemon, MON_DATA_SEAL_COORDS, &seal_coords);
-    CalcMonLevelAndStats(pokemon);
+    SetMonData(mon, MON_DATA_SEAL_COORDS, &seal_coords);
+    CalcMonLevelAndStats(mon);
 }
 
 void CreateBoxMon(BOXMON * boxPokemon, int species, int level, int fixedIV, int hasFixedPersonality, int fixedPersonality, int otIdType, int fixedOtId) {
@@ -252,15 +252,15 @@ void CreateBoxMon(BOXMON * boxPokemon, int species, int level, int fixedIV, int 
     ReleaseBoxMonLock(boxPokemon, decry);
 }
 
-void CreateMonWithNature(Pokemon * pokemon, u16 species, u8 level, u8 fixedIv, u8 nature) {
+void CreateMonWithNature(Pokemon *mon, u16 species, u8 level, u8 fixedIv, u8 nature) {
     u32 personality;
     do {
         personality = (u32)(LCRandom() | (LCRandom() << 16));
     } while (nature != GetNatureFromPersonality(personality));
-    CreateMon(pokemon, (int)species, (int)level, (int)fixedIv, TRUE, (int)personality, (int)0, (int)0);
+    CreateMon(mon, (int)species, (int)level, (int)fixedIv, TRUE, (int)personality, (int)0, (int)0);
 }
 
-void CreateMonWithGenderNatureLetter(Pokemon * pokemon, u16 species, u8 level, u8 fixedIv, u8 gender, u8 nature, u8 letter) {
+void CreateMonWithGenderNatureLetter(Pokemon *mon, u16 species, u8 level, u8 fixedIv, u8 gender, u8 nature, u8 letter) {
     u32 pid = 0;
     u16 test = 0;
     if (letter != 0 && letter < 29) {
@@ -271,7 +271,7 @@ void CreateMonWithGenderNatureLetter(Pokemon * pokemon, u16 species, u8 level, u
     } else {
         pid = GenPersonalityByGenderAndNature(species, gender, nature);
     }
-    CreateMon(pokemon, (int)species, (int)level, (int)fixedIv, 1, (int)pid, 0, 0);
+    CreateMon(mon, (int)species, (int)level, (int)fixedIv, 1, (int)pid, 0, 0);
 }
 
 u32 GenPersonalityByGenderAndNature(u16 species, u8 gender, u8 nature) {
@@ -294,21 +294,21 @@ u32 GenPersonalityByGenderAndNature(u16 species, u8 gender, u8 nature) {
     return (u32)pid;
 }
 
-void CreateMonWithFixedIVs(Pokemon * pokemon, int species, int level, int ivs, int personality) {
-    CreateMon(pokemon, species, level, 0, 1, personality, 0, 0);
-    SetMonData(pokemon, MON_DATA_IVS_WORD, &ivs);
-    CalcMonLevelAndStats(pokemon);
+void CreateMonWithFixedIVs(Pokemon *mon, int species, int level, int ivs, int personality) {
+    CreateMon(mon, species, level, 0, 1, personality, 0, 0);
+    SetMonData(mon, MON_DATA_IVS_WORD, &ivs);
+    CalcMonLevelAndStats(mon);
 }
 
-void CalcMonLevelAndStats(Pokemon * pokemon) {
-    BOOL decry = AcquireMonLock(pokemon);
-    u32 level = (u32)CalcMonLevel(pokemon);
-    SetMonData(pokemon, MON_DATA_LEVEL, &level);
-    CalcMonStats(pokemon);
-    ReleaseMonLock(pokemon, decry);
+void CalcMonLevelAndStats(Pokemon *mon) {
+    BOOL decry = AcquireMonLock(mon);
+    u32 level = (u32)CalcMonLevel(mon);
+    SetMonData(mon, MON_DATA_LEVEL, &level);
+    CalcMonStats(mon);
+    ReleaseMonLock(mon, decry);
 }
 
-void CalcMonStats(Pokemon * pokemon) {
+void CalcMonStats(Pokemon *mon) {
     BASE_STATS * baseStats;
     int level;
     int maxHp;
@@ -334,24 +334,24 @@ void CalcMonStats(Pokemon * pokemon) {
     int newSpatk;
     int newSpdef;
 
-    BOOL decry = AcquireMonLock(pokemon);
-    level = (int)GetMonData(pokemon, MON_DATA_LEVEL, NULL);
-    maxHp = (int)GetMonData(pokemon, MON_DATA_MAXHP, NULL);
-    hp = (int)GetMonData(pokemon, MON_DATA_HP, NULL);
-    hpIv = (int)GetMonData(pokemon, MON_DATA_HP_IV, NULL);
-    hpEv = (int)GetMonData(pokemon, MON_DATA_HP_EV, NULL);
-    atkIv = (int)GetMonData(pokemon, MON_DATA_ATK_IV, NULL);
-    atkEv = (int)GetMonData(pokemon, MON_DATA_ATK_EV, NULL);
-    defIv = (int)GetMonData(pokemon, MON_DATA_DEF_IV, NULL);
-    defEv = (int)GetMonData(pokemon, MON_DATA_DEF_EV, NULL);
-    speedIv = (int)GetMonData(pokemon, MON_DATA_SPEED_IV, NULL);
-    speedEv = (int)GetMonData(pokemon, MON_DATA_SPEED_EV, NULL);
-    spatkIv = (int)GetMonData(pokemon, MON_DATA_SPATK_IV, NULL);
-    spatkEv = (int)GetMonData(pokemon, MON_DATA_SPATK_EV, NULL);
-    spdefIv = (int)GetMonData(pokemon, MON_DATA_SPDEF_IV, NULL);
-    spdefEv = (int)GetMonData(pokemon, MON_DATA_SPDEF_EV, NULL);
-    forme = (int)GetMonData(pokemon, MON_DATA_FORME, NULL);
-    species = (int)GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+    BOOL decry = AcquireMonLock(mon);
+    level = (int)GetMonData(mon, MON_DATA_LEVEL, NULL);
+    maxHp = (int)GetMonData(mon, MON_DATA_MAXHP, NULL);
+    hp = (int)GetMonData(mon, MON_DATA_HP, NULL);
+    hpIv = (int)GetMonData(mon, MON_DATA_HP_IV, NULL);
+    hpEv = (int)GetMonData(mon, MON_DATA_HP_EV, NULL);
+    atkIv = (int)GetMonData(mon, MON_DATA_ATK_IV, NULL);
+    atkEv = (int)GetMonData(mon, MON_DATA_ATK_EV, NULL);
+    defIv = (int)GetMonData(mon, MON_DATA_DEF_IV, NULL);
+    defEv = (int)GetMonData(mon, MON_DATA_DEF_EV, NULL);
+    speedIv = (int)GetMonData(mon, MON_DATA_SPEED_IV, NULL);
+    speedEv = (int)GetMonData(mon, MON_DATA_SPEED_EV, NULL);
+    spatkIv = (int)GetMonData(mon, MON_DATA_SPATK_IV, NULL);
+    spatkEv = (int)GetMonData(mon, MON_DATA_SPATK_EV, NULL);
+    spdefIv = (int)GetMonData(mon, MON_DATA_SPDEF_IV, NULL);
+    spdefEv = (int)GetMonData(mon, MON_DATA_SPDEF_EV, NULL);
+    forme = (int)GetMonData(mon, MON_DATA_FORME, NULL);
+    species = (int)GetMonData(mon, MON_DATA_SPECIES, NULL);
 
     baseStats = (BASE_STATS *)AllocFromHeap(0, sizeof(BASE_STATS));
     LoadMonBaseStats_HandleAlternateForme(species, forme, baseStats);
@@ -361,27 +361,27 @@ void CalcMonStats(Pokemon * pokemon) {
     } else {
         newMaxHp = (baseStats->hp * 2 + hpIv + hpEv / 4) * level / 100 + level + 10;
     }
-    SetMonData(pokemon, MON_DATA_MAXHP, &newMaxHp);
+    SetMonData(mon, MON_DATA_MAXHP, &newMaxHp);
 
     newAtk = (baseStats->atk * 2 + atkIv + atkEv / 4) * level / 100 + 5;
-    newAtk = ModifyStatByNature(GetMonNature(pokemon), (u16)newAtk, STAT_ATK);
-    SetMonData(pokemon, MON_DATA_ATK, &newAtk);
+    newAtk = ModifyStatByNature(GetMonNature(mon), (u16)newAtk, STAT_ATK);
+    SetMonData(mon, MON_DATA_ATK, &newAtk);
 
     newDef = (baseStats->def * 2 + defIv + defEv / 4) * level / 100 + 5;
-    newDef = ModifyStatByNature(GetMonNature(pokemon), (u16)newDef, STAT_DEF);
-    SetMonData(pokemon, MON_DATA_DEF, &newDef);
+    newDef = ModifyStatByNature(GetMonNature(mon), (u16)newDef, STAT_DEF);
+    SetMonData(mon, MON_DATA_DEF, &newDef);
 
     newSpeed = (baseStats->speed * 2 + speedIv + speedEv / 4) * level / 100 + 5;
-    newSpeed = ModifyStatByNature(GetMonNature(pokemon), (u16)newSpeed, STAT_SPEED);
-    SetMonData(pokemon, MON_DATA_SPEED, &newSpeed);
+    newSpeed = ModifyStatByNature(GetMonNature(mon), (u16)newSpeed, STAT_SPEED);
+    SetMonData(mon, MON_DATA_SPEED, &newSpeed);
 
     newSpatk = (baseStats->spatk * 2 + spatkIv + spatkEv / 4) * level / 100 + 5;
-    newSpatk = ModifyStatByNature(GetMonNature(pokemon), (u16)newSpatk, STAT_SPATK);
-    SetMonData(pokemon, MON_DATA_SPATK, &newSpatk);
+    newSpatk = ModifyStatByNature(GetMonNature(mon), (u16)newSpatk, STAT_SPATK);
+    SetMonData(mon, MON_DATA_SPATK, &newSpatk);
 
     newSpdef = (baseStats->spdef * 2 + spdefIv + spdefEv / 4) * level / 100 + 5;
-    newSpdef = ModifyStatByNature(GetMonNature(pokemon), (u16)newSpdef, STAT_SPDEF);
-    SetMonData(pokemon, MON_DATA_SPDEF, &newSpdef);
+    newSpdef = ModifyStatByNature(GetMonNature(mon), (u16)newSpdef, STAT_SPDEF);
+    SetMonData(mon, MON_DATA_SPDEF, &newSpdef);
 
     FreeToHeap(baseStats);
 
@@ -399,61 +399,61 @@ void CalcMonStats(Pokemon * pokemon) {
         }
     }
     if (hp != 0) {
-        SetMonData(pokemon, MON_DATA_HP, &hp);
+        SetMonData(mon, MON_DATA_HP, &hp);
     }
-    ReleaseMonLock(pokemon, decry);
+    ReleaseMonLock(mon, decry);
 }
 
-u32 GetMonData(Pokemon * pokemon, int attr, void * dest) {
+u32 GetMonData(Pokemon *mon, int attr, void * dest) {
     u32 ret;
     u32 checksum;
-    if (!pokemon->box.party_lock) {
-        DECRYPT_PTY(pokemon);
-        DECRYPT_BOX(&pokemon->box);
-        checksum = CHECKSUM(&pokemon->box);
-        if (checksum != pokemon->box.checksum) {
-            GF_ASSERT(checksum == pokemon->box.checksum);
-            pokemon->box.checksum_fail = TRUE;
+    if (!mon->box.party_lock) {
+        DECRYPT_PTY(mon);
+        DECRYPT_BOX(&mon->box);
+        checksum = CHECKSUM(&mon->box);
+        if (checksum != mon->box.checksum) {
+            GF_ASSERT(checksum == mon->box.checksum);
+            mon->box.checksum_fail = TRUE;
         }
     }
-    ret = GetMonDataInternal(pokemon, attr, dest);
-    if (!pokemon->box.party_lock) {
-        ENCRYPT_PTY(pokemon);
-        ENCRYPT_BOX(&pokemon->box);
+    ret = GetMonDataInternal(mon, attr, dest);
+    if (!mon->box.party_lock) {
+        ENCRYPT_PTY(mon);
+        ENCRYPT_BOX(&mon->box);
     }
     return ret;
 }
 
-static u32 GetMonDataInternal(Pokemon * pokemon, int attr, void * dest) {
+static u32 GetMonDataInternal(Pokemon *mon, int attr, void * dest) {
     switch (attr) {
     case MON_DATA_STATUS:
-        return pokemon->party.status;
+        return mon->party.status;
     case MON_DATA_LEVEL:
-        return pokemon->party.level;
+        return mon->party.level;
     case MON_DATA_CAPSULE:
-        return pokemon->party.capsule;
+        return mon->party.capsule;
     case MON_DATA_HP:
-        return pokemon->party.hp;
+        return mon->party.hp;
     case MON_DATA_MAXHP:
-        return pokemon->party.maxHp;
+        return mon->party.maxHp;
     case MON_DATA_ATK:
-        return pokemon->party.atk;
+        return mon->party.atk;
     case MON_DATA_DEF:
-        return pokemon->party.def;
+        return mon->party.def;
     case MON_DATA_SPEED:
-        return pokemon->party.speed;
+        return mon->party.speed;
     case MON_DATA_SPATK:
-        return pokemon->party.spatk;
+        return mon->party.spatk;
     case MON_DATA_SPDEF:
-        return pokemon->party.spdef;
+        return mon->party.spdef;
     case MON_DATA_MAIL_STRUCT:
-        Mail_copy(&pokemon->party.mail, dest);
+        Mail_copy(&mon->party.mail, dest);
         return 1;
     case MON_DATA_SEAL_COORDS:
-        CopyCapsule(&pokemon->party.sealCoords, dest);
+        CopyCapsule(&mon->party.sealCoords, dest);
         return 1;
     default:
-        return GetBoxMonDataInternal(&pokemon->box, attr, dest);
+        return GetBoxMonDataInternal(&mon->box, attr, dest);
     }
 }
 
@@ -887,68 +887,68 @@ static u32 GetBoxMonDataInternal(BOXMON * boxmon, int attr, void * dest) {
     return ret;
 }
 
-void SetMonData(Pokemon * pokemon, int attr, void * value) {
+void SetMonData(Pokemon *mon, int attr, void * value) {
     u32 checksum;
-    if (!pokemon->box.party_lock) {
-        DECRYPT_PTY(pokemon);
-        DECRYPT_BOX(&pokemon->box);
-        checksum = CHECKSUM(&pokemon->box);
-        if (checksum != pokemon->box.checksum) {
-            GF_ASSERT(checksum == pokemon->box.checksum);
-            pokemon->box.checksum_fail = TRUE;
-            ENCRYPT_BOX(&pokemon->box);
+    if (!mon->box.party_lock) {
+        DECRYPT_PTY(mon);
+        DECRYPT_BOX(&mon->box);
+        checksum = CHECKSUM(&mon->box);
+        if (checksum != mon->box.checksum) {
+            GF_ASSERT(checksum == mon->box.checksum);
+            mon->box.checksum_fail = TRUE;
+            ENCRYPT_BOX(&mon->box);
             return;
         }
     }
-    SetMonDataInternal(pokemon, attr, value);
-    if (!pokemon->box.party_lock) {
-        ENCRYPT_PTY(pokemon);
-        pokemon->box.checksum = CHECKSUM(&pokemon->box);
-        ENCRYPT_BOX(&pokemon->box);
+    SetMonDataInternal(mon, attr, value);
+    if (!mon->box.party_lock) {
+        ENCRYPT_PTY(mon);
+        mon->box.checksum = CHECKSUM(&mon->box);
+        ENCRYPT_BOX(&mon->box);
     }
 }
 
-static void SetMonDataInternal(Pokemon * pokemon, int attr, const void * value) {
+static void SetMonDataInternal(Pokemon *mon, int attr, const void * value) {
 #define VALUE(type) (*(const type *)value)
     switch (attr) {
     case MON_DATA_STATUS:
-        pokemon->party.status = VALUE(u32);
+        mon->party.status = VALUE(u32);
         break;
     case MON_DATA_LEVEL:
-        pokemon->party.level = VALUE(u8);
+        mon->party.level = VALUE(u8);
         break;
     case MON_DATA_CAPSULE:
-        pokemon->party.capsule = VALUE(u8);
+        mon->party.capsule = VALUE(u8);
         break;
     case MON_DATA_HP:
-        pokemon->party.hp = VALUE(u16);
+        mon->party.hp = VALUE(u16);
         break;
     case MON_DATA_MAXHP:
-        pokemon->party.maxHp = VALUE(u16);
+        mon->party.maxHp = VALUE(u16);
         break;
     case MON_DATA_ATK:
-        pokemon->party.atk = VALUE(u16);
+        mon->party.atk = VALUE(u16);
         break;
     case MON_DATA_DEF:
-        pokemon->party.def = VALUE(u16);
+        mon->party.def = VALUE(u16);
         break;
     case MON_DATA_SPEED:
-        pokemon->party.speed = VALUE(u16);
+        mon->party.speed = VALUE(u16);
         break;
     case MON_DATA_SPATK:
-        pokemon->party.spatk = VALUE(u16);
+        mon->party.spatk = VALUE(u16);
         break;
     case MON_DATA_SPDEF:
-        pokemon->party.spdef = VALUE(u16);
+        mon->party.spdef = VALUE(u16);
         break;
     case MON_DATA_MAIL_STRUCT:
-        Mail_copy((const MAIL *)value, &pokemon->party.mail);
+        Mail_copy((const MAIL *)value, &mon->party.mail);
         break;
     case MON_DATA_SEAL_COORDS:
-        CopyCapsule((const CAPSULE *)value, &pokemon->party.sealCoords);
+        CopyCapsule((const CAPSULE *)value, &mon->party.sealCoords);
         break;
     default:
-        SetBoxMonDataInternal(&pokemon->box, attr, value);
+        SetBoxMonDataInternal(&mon->box, attr, value);
         break;
     }
 #undef VALUE
@@ -1353,35 +1353,35 @@ static void SetBoxMonDataInternal(BOXMON * boxmon, int attr, const void * value)
 #undef VALUE
 }
 
-void AddMonData(Pokemon * pokemon, int attr, int value) {
+void AddMonData(Pokemon *mon, int attr, int value) {
     u32 checksum;
-    if (!pokemon->box.party_lock) {
-        DECRYPT_PTY(pokemon);
-        DECRYPT_BOX(&pokemon->box);
-        checksum = CHECKSUM(&pokemon->box);
-        if (checksum != pokemon->box.checksum) {
-            GF_ASSERT(checksum == pokemon->box.checksum);
-            ENCRYPT_BOX(&pokemon->box);
+    if (!mon->box.party_lock) {
+        DECRYPT_PTY(mon);
+        DECRYPT_BOX(&mon->box);
+        checksum = CHECKSUM(&mon->box);
+        if (checksum != mon->box.checksum) {
+            GF_ASSERT(checksum == mon->box.checksum);
+            ENCRYPT_BOX(&mon->box);
             return;
         }
     }
-    AddMonDataInternal(pokemon, attr, value);
-    if (!pokemon->box.party_lock) {
-        ENCRYPT_PTY(pokemon);
-        pokemon->box.checksum = CHECKSUM(&pokemon->box);
-        ENCRYPT_BOX(&pokemon->box);
+    AddMonDataInternal(mon, attr, value);
+    if (!mon->box.party_lock) {
+        ENCRYPT_PTY(mon);
+        mon->box.checksum = CHECKSUM(&mon->box);
+        ENCRYPT_BOX(&mon->box);
     }
 }
 
-static void AddMonDataInternal(Pokemon * pokemon, int attr, int value) {
+static void AddMonDataInternal(Pokemon *mon, int attr, int value) {
     s32 maxHp;
     switch (attr) {
     case MON_DATA_HP:
-        maxHp = pokemon->party.maxHp;
-        if ((s32)(pokemon->party.hp + value) > maxHp) {
-            pokemon->party.hp = (u16)maxHp;
+        maxHp = mon->party.maxHp;
+        if ((s32)(mon->party.hp + value) > maxHp) {
+            mon->party.hp = (u16)maxHp;
         } else {
-            pokemon->party.hp += value;
+            mon->party.hp += value;
         }
         break;
     case MON_DATA_STATUS:
@@ -1398,7 +1398,7 @@ static void AddMonDataInternal(Pokemon * pokemon, int attr, int value) {
         GF_ASSERT(0);
         break;
     default:
-        AddBoxMonDataInternal(&pokemon->box, attr, value);
+        AddBoxMonDataInternal(&mon->box, attr, value);
         break;
     }
 }
@@ -1867,19 +1867,19 @@ int GetMonBaseStatEx_HandleAlternateForme(NARC *narc, int species, int forme, Ba
     return ret;
 }
 
-u8 GetPercentProgressTowardsNextLevel(Pokemon * pokemon) {
-    BOOL decry = AcquireMonLock(pokemon);
-    u16 species = (u16)GetMonData(pokemon, MON_DATA_SPECIES, NULL);
-    u8 level = (u8)GetMonData(pokemon, MON_DATA_LEVEL, NULL);
+u8 GetPercentProgressTowardsNextLevel(Pokemon *mon) {
+    BOOL decry = AcquireMonLock(mon);
+    u16 species = (u16)GetMonData(mon, MON_DATA_SPECIES, NULL);
+    u8 level = (u8)GetMonData(mon, MON_DATA_LEVEL, NULL);
     u32 lo = GetMonExpBySpeciesAndLevel(species, level);
     u32 hi = GetMonExpBySpeciesAndLevel(species, level + 1);
-    u32 cur = GetMonData(pokemon, MON_DATA_EXPERIENCE, NULL);
-    ReleaseMonLock(pokemon, decry);
+    u32 cur = GetMonData(mon, MON_DATA_EXPERIENCE, NULL);
+    ReleaseMonLock(mon, decry);
     return (u8)(100 * (cur - lo) / (hi - lo));
 }
 
-u32 CalcMonExpToNextLevel(Pokemon * pokemon) {
-    return CalcBoxMonExpToNextLevel(&pokemon->box);
+u32 CalcMonExpToNextLevel(Pokemon *mon) {
+    return CalcBoxMonExpToNextLevel(&mon->box);
 }
 
 u32 CalcBoxMonExpToNextLevel(BOXMON * boxmon) {
@@ -1890,9 +1890,9 @@ u32 CalcBoxMonExpToNextLevel(BOXMON * boxmon) {
     return hi - cur;
 }
 
-u32 GetMonBaseExperienceAtCurrentLevel(Pokemon * pokemon) {
-    int species = (int)GetMonData(pokemon, MON_DATA_SPECIES, NULL);
-    int level = (int)GetMonData(pokemon, MON_DATA_LEVEL, NULL);
+u32 GetMonBaseExperienceAtCurrentLevel(Pokemon *mon) {
+    int species = (int)GetMonData(mon, MON_DATA_SPECIES, NULL);
+    int level = (int)GetMonData(mon, MON_DATA_LEVEL, NULL);
     return GetMonExpBySpeciesAndLevel(species, level);
 }
 
@@ -1917,8 +1917,8 @@ u32 GetExpByGrowthRateAndLevel(int growthRate, int level) {
     return ret;
 }
 
-int CalcMonLevel(Pokemon * pokemon) {
-    return CalcBoxMonLevel(&pokemon->box);
+int CalcMonLevel(Pokemon *mon) {
+    return CalcBoxMonLevel(&mon->box);
 }
 
 int CalcBoxMonLevel(BOXMON * boxmon) {
@@ -1950,8 +1950,8 @@ int CalcLevelBySpeciesAndExp_PreloadedPersonal(BASE_STATS * personal, u16 specie
     return i - 1;
 }
 
-u8 GetMonNature(Pokemon * pokemon) {
-    return GetBoxMonNature(&pokemon->box);
+u8 GetMonNature(Pokemon *mon) {
+    return GetBoxMonNature(&mon->box);
 }
 
 u8 GetBoxMonNature(BOXMON * boxmon) {
@@ -2032,7 +2032,7 @@ static const s8 sFriendshipModTable[FRIENDSHIP_EVENT_NUM][FRIENDSHIP_TIER_NUM] =
     {  3,   2,   1},  // FRIENDHSIP_EVENT_CONTEST_WIN
 };
 
-void MonApplyFriendshipMod(Pokemon * pokemon, u8 kind, u16 location) {
+void MonApplyFriendshipMod(Pokemon *mon, u8 kind, u16 location) {
     u16 species;
     u8 effect;
     u8 tier;
@@ -2042,21 +2042,21 @@ void MonApplyFriendshipMod(Pokemon * pokemon, u8 kind, u16 location) {
     if (kind == FRIENDSHIP_EVENT_WALKING && (LCRandom() & 1))
         return;
 
-    species = (u16)GetMonData(pokemon, MON_DATA_SPECIES2, NULL);
+    species = (u16)GetMonData(mon, MON_DATA_SPECIES2, NULL);
     if (species == SPECIES_NONE || species == SPECIES_EGG)
         return;
 
-    effect = (u8)GetItemAttr((u16)GetMonData(pokemon, MON_DATA_HELD_ITEM, NULL), ITEMATTR_HOLD_EFFECT, 0);
+    effect = (u8)GetItemAttr((u16)GetMonData(mon, MON_DATA_HELD_ITEM, NULL), ITEMATTR_HOLD_EFFECT, 0);
     tier = FRIENDSHIP_TIER_LOW;
-    friendship = (s16)GetMonData(pokemon, MON_DATA_FRIENDSHIP, NULL);
+    friendship = (s16)GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
     if (friendship >= FRIENDSHIP_TIER_MID_MIN)
         tier++;
     if (friendship >= FRIENDSHIP_TIER_HI_MIN)
         tier++;
     mod = sFriendshipModTable[kind][tier];
-    if (mod > 0 && GetMonData(pokemon, MON_DATA_DP_POKEBALL, NULL) == BALL_LUXURY)
+    if (mod > 0 && GetMonData(mon, MON_DATA_DP_POKEBALL, NULL) == BALL_LUXURY)
         mod++;
-    if (mod > 0 && GetMonData(pokemon, MON_DATA_EGG_MET_LOCATION, NULL) == location)
+    if (mod > 0 && GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == location)
         mod++;
     if (mod > 0 && effect == HOLD_EFFECT_FRIENDSHIP_UP)
         mod = (s8)(mod * 150 / 100);
@@ -2065,11 +2065,11 @@ void MonApplyFriendshipMod(Pokemon * pokemon, u8 kind, u16 location) {
         friendship = 0;
     if (friendship > FRIENDSHIP_MAX)
         friendship = FRIENDSHIP_MAX;
-    SetMonData(pokemon, MON_DATA_FRIENDSHIP, &friendship);
+    SetMonData(mon, MON_DATA_FRIENDSHIP, &friendship);
 }
 
-u8 GetMonGender(Pokemon *pokemon) {
-    return GetBoxMonGender(&pokemon->box);
+u8 GetMonGender(Pokemon *mon) {
+    return GetBoxMonGender(&mon->box);
 }
 
 u8 GetBoxMonGender(BOXMON *boxmon) {
@@ -2112,8 +2112,8 @@ BOOL BoxMonIsHoldingMail(BOXMON *boxmon) {
     return ItemIdIsMail(GetBoxMonData(boxmon, MON_DATA_HELD_ITEM, NULL));
 }
 
-u8 MonIsShiny(Pokemon *pokemon) {
-    return BoxMonIsShiny(&pokemon->box);
+u8 MonIsShiny(Pokemon *mon) {
+    return BoxMonIsShiny(&mon->box);
 }
 
 u8 BoxMonIsShiny(BOXMON *boxmon) {
@@ -2753,38 +2753,38 @@ u32 sub_02070D94(void) {
     return sizeof(BOXMON);
 }
 
-u8 GetMonUnownLetter(Pokemon * pokemon) {
-    return GetBoxMonUnownLetter(&pokemon->box);
+u8 GetMonUnownLetter(Pokemon *mon) {
+    return GetBoxMonUnownLetter(&mon->box);
 }
 
 u8 GetBoxMonUnownLetter(BOXMON * boxmon) {
     return (u8)GetBoxMonData(boxmon, MON_DATA_FORME, NULL);
 }
 
-BOXMON * Mon_GetBoxMon(Pokemon * pokemon) {
-    return &pokemon->box;
+BOXMON * Mon_GetBoxMon(Pokemon *mon) {
+    return &mon->box;
 }
 
-BOOL Pokemon_TryLevelUp(Pokemon * pokemon) {
-    u16 species = (u16)GetMonData(pokemon, MON_DATA_SPECIES, NULL);
-    u8 level = (u8)(GetMonData(pokemon, MON_DATA_LEVEL, NULL) + 1);
-    u32 exp = GetMonData(pokemon, MON_DATA_EXPERIENCE, NULL);
+BOOL Pokemon_TryLevelUp(Pokemon *mon) {
+    u16 species = (u16)GetMonData(mon, MON_DATA_SPECIES, NULL);
+    u8 level = (u8)(GetMonData(mon, MON_DATA_LEVEL, NULL) + 1);
+    u32 exp = GetMonData(mon, MON_DATA_EXPERIENCE, NULL);
     u32 growthrate = (u32)GetMonBaseStat(species, BASE_GROWTH_RATE);
     u32 maxexp = GetExpByGrowthRateAndLevel((int)growthrate, 100);
     if (exp > maxexp) {
         exp = maxexp;
-        SetMonData(pokemon, MON_DATA_EXPERIENCE, &exp);
+        SetMonData(mon, MON_DATA_EXPERIENCE, &exp);
     }
     if (level > 100)
         return FALSE;
     if (exp >= GetExpByGrowthRateAndLevel((int)growthrate, level)) {
-        SetMonData(pokemon, MON_DATA_LEVEL, &level);
+        SetMonData(mon, MON_DATA_LEVEL, &level);
         return TRUE;
     }
     return FALSE;
 }
 
-u16 GetMonEvolution(PARTY *party, Pokemon *pokemon, u8 context, u16 usedItem, int *method_ret) {
+u16 GetMonEvolution(PARTY *party, Pokemon *mon, u8 context, u16 usedItem, int *method_ret) {
     u16 species;
     u16 heldItem;
     u8 level;
@@ -2798,10 +2798,10 @@ u16 GetMonEvolution(PARTY *party, Pokemon *pokemon, u8 context, u16 usedItem, in
     struct Evolution *evoTable;
     int method_local;
 
-    species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
-    heldItem = GetMonData(pokemon, MON_DATA_HELD_ITEM, NULL);
-    pid = GetMonData(pokemon, MON_DATA_PERSONALITY, NULL);
-    beauty = GetMonData(pokemon, MON_DATA_BEAUTY, NULL);
+    species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    heldItem = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+    pid = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
+    beauty = GetMonData(mon, MON_DATA_BEAUTY, NULL);
     pid_hi = (u16)((pid & 0xFFFF0000) >> 16);
     holdEffect = GetItemAttr(heldItem, ITEMATTR_HOLD_EFFECT, 0);
     // Kadabra bypasses Everstone because he's just that broken.
@@ -2809,7 +2809,7 @@ u16 GetMonEvolution(PARTY *party, Pokemon *pokemon, u8 context, u16 usedItem, in
         return SPECIES_NONE;
     }
     // Spiky-ear Pichu cannot evolve
-    if (species == SPECIES_PICHU && GetMonData(pokemon, MON_DATA_FORME, 0) == 1) {
+    if (species == SPECIES_PICHU && GetMonData(mon, MON_DATA_FORME, 0) == 1) {
         return SPECIES_NONE;
     }
     if (method_ret == NULL) {
@@ -2819,8 +2819,8 @@ u16 GetMonEvolution(PARTY *party, Pokemon *pokemon, u8 context, u16 usedItem, in
     LoadMonEvolutionTable(species, evoTable);
     switch (context) {
     case EVOCTX_LEVELUP:
-        level = (u8)GetMonData(pokemon, MON_DATA_LEVEL, NULL);
-        friendship = (u16)GetMonData(pokemon, MON_DATA_FRIENDSHIP, NULL);
+        level = (u8)GetMonData(mon, MON_DATA_LEVEL, NULL);
+        friendship = (u16)GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
         for (i = 0; i < 7; i++) {
             switch (evoTable[i].method) {
             case EVO_NONE:
@@ -2856,19 +2856,19 @@ u16 GetMonEvolution(PARTY *party, Pokemon *pokemon, u8 context, u16 usedItem, in
             case EVO_STONE:
                 break;
             case EVO_LEVEL_ATK_GT_DEF:
-                if (evoTable[i].param <= level && GetMonData(pokemon, MON_DATA_ATK, NULL) > GetMonData(pokemon, MON_DATA_DEF, NULL)) {
+                if (evoTable[i].param <= level && GetMonData(mon, MON_DATA_ATK, NULL) > GetMonData(mon, MON_DATA_DEF, NULL)) {
                     target = evoTable[i].target;
                     *method_ret = EVO_LEVEL_ATK_GT_DEF;
                 }
                 break;
             case EVO_LEVEL_ATK_EQ_DEF:
-                if (evoTable[i].param <= level && GetMonData(pokemon, MON_DATA_ATK, NULL) == GetMonData(pokemon, MON_DATA_DEF, NULL)) {
+                if (evoTable[i].param <= level && GetMonData(mon, MON_DATA_ATK, NULL) == GetMonData(mon, MON_DATA_DEF, NULL)) {
                     target = evoTable[i].target;
                     *method_ret = EVO_LEVEL_ATK_EQ_DEF;
                 }
                 break;
             case EVO_LEVEL_ATK_LT_DEF:
-                if (evoTable[i].param <= level && GetMonData(pokemon, MON_DATA_ATK, NULL) < GetMonData(pokemon, MON_DATA_DEF, NULL)) {
+                if (evoTable[i].param <= level && GetMonData(mon, MON_DATA_ATK, NULL) < GetMonData(mon, MON_DATA_DEF, NULL)) {
                     target = evoTable[i].target;
                     *method_ret = EVO_LEVEL_ATK_LT_DEF;
                 }
@@ -2917,7 +2917,7 @@ u16 GetMonEvolution(PARTY *party, Pokemon *pokemon, u8 context, u16 usedItem, in
                 }
                 break;
             case EVO_HAS_MOVE:
-                if (MonHasMove(pokemon, evoTable[i].param) == TRUE) {
+                if (MonHasMove(mon, evoTable[i].param) == TRUE) {
                     target = evoTable[i].target;
                     *method_ret = EVO_HAS_MOVE;
                 }
@@ -2929,13 +2929,13 @@ u16 GetMonEvolution(PARTY *party, Pokemon *pokemon, u8 context, u16 usedItem, in
                 }
                 break;
             case EVO_LEVEL_MALE:
-                if (GetMonData(pokemon, MON_DATA_GENDER, NULL) == MON_MALE && evoTable[i].param <= level) {
+                if (GetMonData(mon, MON_DATA_GENDER, NULL) == MON_MALE && evoTable[i].param <= level) {
                     target = evoTable[i].target;
                     *method_ret = EVO_LEVEL_MALE;
                 }
                 break;
             case EVO_LEVEL_FEMALE:
-                if (GetMonData(pokemon, MON_DATA_GENDER, NULL) == MON_FEMALE && evoTable[i].param <= level) {
+                if (GetMonData(mon, MON_DATA_GENDER, NULL) == MON_FEMALE && evoTable[i].param <= level) {
                     target = evoTable[i].target;
                     *method_ret = EVO_LEVEL_FEMALE;
                 }
@@ -2991,12 +2991,12 @@ u16 GetMonEvolution(PARTY *party, Pokemon *pokemon, u8 context, u16 usedItem, in
                 *method_ret = 0;
                 break;
             }
-            if (evoTable[i].method == EVO_STONE_MALE && GetMonData(pokemon, MON_DATA_GENDER, NULL) == MON_MALE && usedItem == evoTable[i].param) {
+            if (evoTable[i].method == EVO_STONE_MALE && GetMonData(mon, MON_DATA_GENDER, NULL) == MON_MALE && usedItem == evoTable[i].param) {
                 target = evoTable[i].target;
                 *method_ret = 0;
                 break;
             }
-            if (evoTable[i].method == EVO_STONE_FEMALE && GetMonData(pokemon, MON_DATA_GENDER, NULL) == MON_FEMALE && usedItem == evoTable[i].param) {
+            if (evoTable[i].method == EVO_STONE_FEMALE && GetMonData(mon, MON_DATA_GENDER, NULL) == MON_FEMALE && usedItem == evoTable[i].param) {
                 target = evoTable[i].target;
                 *method_ret = 0;
                 break;
@@ -3062,8 +3062,8 @@ void InitBoxMonMoveset(BOXMON * boxmon) {
     ReleaseBoxMonLock(boxmon, decry);
 }
 
-u32 TryAppendMonMove(Pokemon *pokemon, u16 move) {
-    return TryAppendBoxMonMove(Mon_GetBoxMon(pokemon), move);
+u32 TryAppendMonMove(Pokemon *mon, u16 move) {
+    return TryAppendBoxMonMove(Mon_GetBoxMon(mon), move);
 }
 
 u32 TryAppendBoxMonMove(BOXMON *boxmon, u16 move) {
@@ -3087,8 +3087,8 @@ u32 TryAppendBoxMonMove(BOXMON *boxmon, u16 move) {
     return ret;
 }
 
-void DeleteMonFirstMoveAndAppend(Pokemon *pokemon, u16 move_id) {
-    DeleteBoxMonFirstMoveAndAppend(Mon_GetBoxMon(pokemon), move_id);
+void DeleteMonFirstMoveAndAppend(Pokemon *mon, u16 move_id) {
+    DeleteBoxMonFirstMoveAndAppend(Mon_GetBoxMon(mon), move_id);
 }
 
 void DeleteBoxMonFirstMoveAndAppend(BOXMON * boxmon, u16 move) {
@@ -3117,19 +3117,19 @@ void DeleteBoxMonFirstMoveAndAppend(BOXMON * boxmon, u16 move) {
     ReleaseBoxMonLock(boxmon, decry);
 }
 
-void MonSetMoveInSlot_ResetPpUp(Pokemon* pokemon, u16 move, u8 slot) {
+void MonSetMoveInSlot_ResetPpUp(Pokemon *mon, u16 move, u8 slot) {
     int pp;
     int ppUp;
 
-    MonSetMoveInSlot(pokemon, move, slot);
+    MonSetMoveInSlot(mon, move, slot);
     ppUp = 0;
-    SetMonData(pokemon, MON_DATA_MOVE1PPUP + slot, &ppUp);
+    SetMonData(mon, MON_DATA_MOVE1PPUP + slot, &ppUp);
     pp = GetMoveMaxPP(move, 0);
-    SetMonData(pokemon, MON_DATA_MOVE1PP + slot, &pp);
+    SetMonData(mon, MON_DATA_MOVE1PP + slot, &pp);
 }
 
-void MonSetMoveInSlot(Pokemon* pokemon, u16 move, u8 slot) {
-    BoxMonSetMoveInSlot(&pokemon->box, move, slot);
+void MonSetMoveInSlot(Pokemon *mon, u16 move, u8 slot) {
+    BoxMonSetMoveInSlot(&mon->box, move, slot);
 }
 
 void BoxMonSetMoveInSlot(BOXMON* boxmon, u16 move, u8 slot) {
@@ -3142,12 +3142,12 @@ void BoxMonSetMoveInSlot(BOXMON* boxmon, u16 move, u8 slot) {
     SetBoxMonData(boxmon, MON_DATA_MOVE1PP + slot, &pp);
 }
 
-u32 MonTryLearnMoveOnLevelUp(Pokemon * pokemon, int * last_i, u16 * sp0) {
+u32 MonTryLearnMoveOnLevelUp(Pokemon *mon, int * last_i, u16 * sp0) {
     u32 ret = 0;
     u16 * wotbl = AllocFromHeap(0, 22 * sizeof(u16));
-    u16 species = (u16)GetMonData(pokemon, MON_DATA_SPECIES, NULL);
-    u32 forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
-    u8 level = (u8)GetMonData(pokemon, MON_DATA_LEVEL, NULL);
+    u16 species = (u16)GetMonData(mon, MON_DATA_SPECIES, NULL);
+    u32 forme = GetMonData(mon, MON_DATA_FORME, NULL);
+    u8 level = (u8)GetMonData(mon, MON_DATA_LEVEL, NULL);
     LoadWotbl_HandleAlternateForme(species, (int)forme, wotbl);
 
     if (wotbl[*last_i] == WOTBL_END) {
@@ -3164,14 +3164,14 @@ u32 MonTryLearnMoveOnLevelUp(Pokemon * pokemon, int * last_i, u16 * sp0) {
     if ((wotbl[*last_i] & WOTBL_LEVEL_MASK) == (level << WOTBL_LEVEL_SHIFT)) {
         *sp0 = WOTBL_MOVE(wotbl[*last_i]);
         (*last_i)++;
-        ret = TryAppendMonMove(pokemon, *sp0);
+        ret = TryAppendMonMove(mon, *sp0);
     }
     FreeToHeap(wotbl);
     return ret;
 }
 
-void MonSwapMoves(Pokemon *pokemon, int a, int b) {
-    BoxMonSwapMoves(&pokemon->box, a, b);
+void MonSwapMoves(Pokemon *mon, int a, int b) {
+    BoxMonSwapMoves(&mon->box, a, b);
 }
 
 void BoxMonSwapMoves(BOXMON * boxmon, int slot1, int slot2) {
@@ -3194,30 +3194,30 @@ void BoxMonSwapMoves(BOXMON * boxmon, int slot1, int slot2) {
     SetBoxMonData(boxmon, MON_DATA_MOVE1PPUP + slot2, &ppUp[0]);
 }
 
-void MonDeleteMoveSlot(Pokemon * pokemon, u32 slot) {
+void MonDeleteMoveSlot(Pokemon *mon, u32 slot) {
     u16 move;
     u8 pp;
     u8 ppUp;
     for (; slot < 3; slot++) {
-        move = (u16)GetMonData(pokemon, (int)(MON_DATA_MOVE1 + slot + 1), NULL);
-        pp = (u8)GetMonData(pokemon, (int)(MON_DATA_MOVE1PP + slot + 1), NULL);
-        ppUp = (u8)GetMonData(pokemon, (int)(MON_DATA_MOVE1PPUP + slot + 1), NULL);
-        SetMonData(pokemon, (int)(MON_DATA_MOVE1 + slot), &move);
-        SetMonData(pokemon, (int)(MON_DATA_MOVE1PP + slot), &pp);
-        SetMonData(pokemon, (int)(MON_DATA_MOVE1PPUP + slot), &ppUp);
+        move = (u16)GetMonData(mon, (int)(MON_DATA_MOVE1 + slot + 1), NULL);
+        pp = (u8)GetMonData(mon, (int)(MON_DATA_MOVE1PP + slot + 1), NULL);
+        ppUp = (u8)GetMonData(mon, (int)(MON_DATA_MOVE1PPUP + slot + 1), NULL);
+        SetMonData(mon, (int)(MON_DATA_MOVE1 + slot), &move);
+        SetMonData(mon, (int)(MON_DATA_MOVE1PP + slot), &pp);
+        SetMonData(mon, (int)(MON_DATA_MOVE1PPUP + slot), &ppUp);
     }
     move = MOVE_NONE;
     pp = 0;
     ppUp = 0;
-    SetMonData(pokemon, MON_DATA_MOVE1 + 3, &move);
-    SetMonData(pokemon, MON_DATA_MOVE1PP + 3, &pp);
-    SetMonData(pokemon, MON_DATA_MOVE1PPUP + 3, &ppUp);
+    SetMonData(mon, MON_DATA_MOVE1 + 3, &move);
+    SetMonData(mon, MON_DATA_MOVE1PP + 3, &pp);
+    SetMonData(mon, MON_DATA_MOVE1PPUP + 3, &ppUp);
 }
 
-BOOL MonHasMove(Pokemon* pokemon, u16 move) {
+BOOL MonHasMove(Pokemon *mon, u16 move) {
     int i;
     for (i = 0; i < 4; i++) {
-        if (GetMonData(pokemon, MON_DATA_MOVE1 + i, NULL) == move) {
+        if (GetMonData(mon, MON_DATA_MOVE1 + i, NULL) == move) {
             break;
         }
     }
@@ -3228,7 +3228,7 @@ BOOL MonHasMove(Pokemon* pokemon, u16 move) {
     }
 }
 
-void CopyBoxPokemonToPokemon(const BOXMON * src, Pokemon * dest) {
+void CopyBoxPokemonToPokemon(const BOXMON * src, Pokemon *dest) {
     u32 sp0 = 0;
     CAPSULE sp4;
     struct Mail * mail;
@@ -3253,10 +3253,10 @@ u8 Party_GetMaxLevel(PARTY * party) {
     u8 ret = 1;
     u8 level;
     for (i = 0; i < r7; i++) {
-        Pokemon * pokemon = GetPartyMonByIndex(party, i);
-        if (GetMonData(pokemon, MON_DATA_SPECIES, NULL) != SPECIES_NONE
-            && !GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
-            level = (u8)GetMonData(pokemon, MON_DATA_LEVEL, NULL);
+        Pokemon *mon = GetPartyMonByIndex(party, i);
+        if (GetMonData(mon, MON_DATA_SPECIES, NULL) != SPECIES_NONE
+            && !GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
+            level = (u8)GetMonData(mon, MON_DATA_LEVEL, NULL);
             if (level > ret)
                 ret = level;
         }
@@ -3286,8 +3286,8 @@ void CopyPokemonToBoxPokemon(const Pokemon *src, BOXMON *dest) {
     *dest = src->box;
 }
 
-s8 MonGetFlavorPreference(Pokemon * pokemon, int flavor) {
-    return BoxMonGetFlavorPreference(&pokemon->box, flavor);
+s8 MonGetFlavorPreference(Pokemon *mon, int flavor) {
+    return BoxMonGetFlavorPreference(&mon->box, flavor);
 }
 
 s8 BoxMonGetFlavorPreference(BOXMON * boxmon, int flavor) {
@@ -3313,7 +3313,7 @@ int Species_LoadLearnsetTable(u16 species, u32 forme, u16 * dest) {
 void Party_GivePokerusAtRandom(PARTY * party) {
     int count = GetPartyCount(party);
     int idx;
-    Pokemon * pokemon;
+    Pokemon *mon;
     u8 sp0;
     switch (LCRandom()) {
     case 0x4000:
@@ -3321,8 +3321,8 @@ void Party_GivePokerusAtRandom(PARTY * party) {
     case 0xC000:
         do {
             idx = LCRandom() % count;
-            pokemon = GetPartyMonByIndex(party, idx);
-        } while (GetMonData(pokemon, MON_DATA_SPECIES, NULL) == SPECIES_NONE || GetMonData(pokemon, MON_DATA_IS_EGG, NULL));
+            mon = GetPartyMonByIndex(party, idx);
+        } while (GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_NONE || GetMonData(mon, MON_DATA_IS_EGG, NULL));
         if (!Party_MaskMonsWithPokerus(party, (u8)MaskOfFlagNo(idx))) {
             do {
                 sp0 = (u8)LCRandom();
@@ -3333,7 +3333,7 @@ void Party_GivePokerusAtRandom(PARTY * party) {
             sp0 |= sp0 << 4;
             sp0 &= 0xF3;
             sp0++;
-            SetMonData(pokemon, MON_DATA_POKERUS, &sp0);
+            SetMonData(mon, MON_DATA_POKERUS, &sp0);
         }
     }
 }
@@ -3342,12 +3342,12 @@ u8 Party_MaskMonsWithPokerus(PARTY * party, u8 mask) {
     int i = 0;
     u32 flag = 1;
     u8 ret = 0;
-    Pokemon * pokemon;
+    Pokemon *mon;
     if (mask != 0) {
         do {
             if (mask & 1) {
-                pokemon = GetPartyMonByIndex(party, i);
-                if (GetMonData(pokemon, MON_DATA_POKERUS, NULL)) {
+                mon = GetPartyMonByIndex(party, i);
+                if (GetMonData(mon, MON_DATA_POKERUS, NULL)) {
                     ret |= flag;
                 }
             }
@@ -3357,8 +3357,8 @@ u8 Party_MaskMonsWithPokerus(PARTY * party, u8 mask) {
         }
         while (mask != 0);
     } else {
-        pokemon = GetPartyMonByIndex(party, 0);
-        if (GetMonData(pokemon, MON_DATA_POKERUS, NULL))
+        mon = GetPartyMonByIndex(party, 0);
+        if (GetMonData(mon, MON_DATA_POKERUS, NULL))
             ret++;
     }
     return ret;
@@ -3367,12 +3367,12 @@ u8 Party_MaskMonsWithPokerus(PARTY * party, u8 mask) {
 void Party_UpdatePokerus(PARTY * party, int r5) {
     int i;
     u8 pokerus;
-    Pokemon * pokemon;
+    Pokemon *mon;
     int count = GetPartyCount(party);
     for (i = 0; i < count; i++) {
-        pokemon = GetPartyMonByIndex(party, i);
-        if (GetMonData(pokemon, MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
-            pokerus = (u8)GetMonData(pokemon, MON_DATA_POKERUS, NULL);
+        mon = GetPartyMonByIndex(party, i);
+        if (GetMonData(mon, MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
+            pokerus = (u8)GetMonData(mon, MON_DATA_POKERUS, NULL);
             if (pokerus & 0xF) {
                 if ((pokerus & 0xF) < r5 || r5 > 4) {
                     pokerus &= 0xF0;
@@ -3382,7 +3382,7 @@ void Party_UpdatePokerus(PARTY * party, int r5) {
                 if (pokerus == 0) {
                     pokerus = 0x10; // immune
                 }
-                SetMonData(pokemon, MON_DATA_POKERUS, &pokerus);
+                SetMonData(mon, MON_DATA_POKERUS, &pokerus);
             }
         }
     }
@@ -3391,24 +3391,24 @@ void Party_UpdatePokerus(PARTY * party, int r5) {
 void Party_SpreadPokerus(PARTY * party) {
     int count = GetPartyCount(party);
     int i;
-    Pokemon * pokemon;
+    Pokemon *mon;
     u8 pokerus;
     if ((LCRandom() % 3) == 0) {
         for (i = 0; i < count; i++) {
-            pokemon = GetPartyMonByIndex(party, i);
-            if (GetMonData(pokemon, MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
-                pokerus = (u8)GetMonData(pokemon, MON_DATA_POKERUS, NULL);
+            mon = GetPartyMonByIndex(party, i);
+            if (GetMonData(mon, MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
+                pokerus = (u8)GetMonData(mon, MON_DATA_POKERUS, NULL);
                 if (pokerus & 0xF) {
                     if (i != 0) {
-                        pokemon = GetPartyMonByIndex(party, i - 1);
-                        if (!(GetMonData(pokemon, MON_DATA_POKERUS, NULL) & 0xF0)) {
-                            SetMonData(pokemon, MON_DATA_POKERUS, &pokerus);
+                        mon = GetPartyMonByIndex(party, i - 1);
+                        if (!(GetMonData(mon, MON_DATA_POKERUS, NULL) & 0xF0)) {
+                            SetMonData(mon, MON_DATA_POKERUS, &pokerus);
                         }
                     }
                     if (i < count - 1) {
-                        pokemon = GetPartyMonByIndex(party, i + 1);
-                        if (!(GetMonData(pokemon, MON_DATA_POKERUS, NULL) & 0xF0)) {
-                            SetMonData(pokemon, MON_DATA_POKERUS, &pokerus);
+                        mon = GetPartyMonByIndex(party, i + 1);
+                        if (!(GetMonData(mon, MON_DATA_POKERUS, NULL) & 0xF0)) {
+                            SetMonData(mon, MON_DATA_POKERUS, &pokerus);
                             i++; // don't infect the rest of the party
                         }
                     }
@@ -3418,16 +3418,16 @@ void Party_SpreadPokerus(PARTY * party) {
     }
 }
 
-BOOL Pokemon_HasPokerus(Pokemon * pokemon) {
-    return BoxMon_HasPokerus(&pokemon->box);
+BOOL Pokemon_HasPokerus(Pokemon *mon) {
+    return BoxMon_HasPokerus(&mon->box);
 }
 
 BOOL BoxMon_HasPokerus(BOXMON * boxmon) {
     return (GetBoxMonData(boxmon, MON_DATA_POKERUS, NULL) & 0xF) != 0;
 }
 
-BOOL Pokemon_IsImmuneToPokerus(Pokemon * pokemon) {
-    return BoxMon_IsImmuneToPokerus(&pokemon->box);
+BOOL Pokemon_IsImmuneToPokerus(Pokemon *mon) {
+    return BoxMon_IsImmuneToPokerus(&mon->box);
 }
 
 BOOL BoxMon_IsImmuneToPokerus(BOXMON * boxmon) {
@@ -3441,8 +3441,8 @@ BOOL BoxMon_IsImmuneToPokerus(BOXMON * boxmon) {
     return FALSE;
 }
 
-void Pokemon_UpdateArceusForme(Pokemon * pokemon) {
-    BoxMon_UpdateArceusForme(&pokemon->box);
+void Pokemon_UpdateArceusForme(Pokemon *mon) {
+    BoxMon_UpdateArceusForme(&mon->box);
 }
 
 void BoxMon_UpdateArceusForme(BOXMON * boxmon) {
@@ -3495,10 +3495,10 @@ u32 GetArceusTypeByHeldItemEffect(u16 heldEffect) {
     }
 }
 
-s32 Mon_UpdateGiratinaForme(Pokemon *pokemon) {
-    s32 ret = BoxMon_UpdateGiratinaForme(&pokemon->box);
+s32 Mon_UpdateGiratinaForme(Pokemon *mon) {
+    s32 ret = BoxMon_UpdateGiratinaForme(&mon->box);
     if (ret != -1) {
-        CalcMonLevelAndStats(pokemon);
+        CalcMonLevelAndStats(mon);
     }
     return ret;
 }
@@ -3520,32 +3520,32 @@ s32 BoxMon_UpdateGiratinaForme(BOXMON *boxmon) {
     return -1;
 }
 
-void Mon_ForceSetGiratinaOriginForme(Pokemon *pokemon) {
+void Mon_ForceSetGiratinaOriginForme(Pokemon *mon) {
     s32 forme = GIRATINA_ORIGIN;
-    if (GetMonData(pokemon, MON_DATA_SPECIES, NULL) == SPECIES_GIRATINA) {
-        SetBoxMonData(&pokemon->box, MON_DATA_FORME, &forme);
-        UpdateBoxMonAbility(&pokemon->box);
-        CalcMonLevelAndStats(pokemon);
+    if (GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_GIRATINA) {
+        SetBoxMonData(&mon->box, MON_DATA_FORME, &forme);
+        UpdateBoxMonAbility(&mon->box);
+        CalcMonLevelAndStats(mon);
     }
 }
 
 void Party_UpdateAllGiratina_DistortionWorld(PARTY *party, BOOL force_origin) {
     int npoke = GetPartyCount(party);
     int i;
-    Pokemon *pokemon;
+    Pokemon *mon;
     for (i = 0; i < npoke; i++) {
-        pokemon = GetPartyMonByIndex(party, i);
+        mon = GetPartyMonByIndex(party, i);
         if (force_origin) {
-            Mon_ForceSetGiratinaOriginForme(pokemon);
+            Mon_ForceSetGiratinaOriginForme(mon);
         } else {
-            Mon_UpdateGiratinaForme(pokemon);
+            Mon_UpdateGiratinaForme(mon);
         }
     }
 }
 
-void Mon_UpdateShayminForme(Pokemon *pokemon, int forme) {
-    BoxMon_UpdateShayminForme(&pokemon->box, forme);
-    CalcMonLevelAndStats(pokemon);
+void Mon_UpdateShayminForme(Pokemon *mon, int forme) {
+    BoxMon_UpdateShayminForme(&mon->box, forme);
+    CalcMonLevelAndStats(mon);
 }
 
 void BoxMon_UpdateShayminForme(BOXMON *boxmon, int forme) {
@@ -3556,13 +3556,13 @@ void BoxMon_UpdateShayminForme(BOXMON *boxmon, int forme) {
     }
 }
 
-BOOL Mon_CanUseGracidea(Pokemon *pokemon) {
+BOOL Mon_CanUseGracidea(Pokemon *mon) {
     RTCTime time;
-    int species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
-    int forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
-    int status = GetMonData(pokemon, MON_DATA_STATUS, NULL);
-    int hp = GetMonData(pokemon, MON_DATA_HP, NULL);
-    BOOL fatefulEncounter = GetMonData(pokemon, MON_DATA_FATEFUL_ENCOUNTER, NULL);
+    int species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    int forme = GetMonData(mon, MON_DATA_FORME, NULL);
+    int status = GetMonData(mon, MON_DATA_STATUS, NULL);
+    int hp = GetMonData(mon, MON_DATA_HP, NULL);
+    BOOL fatefulEncounter = GetMonData(mon, MON_DATA_FATEFUL_ENCOUNTER, NULL);
     GF_RTC_CopyTime(&time);
 
     if (species == SPECIES_SHAYMIN && forme == SHAYMIN_LAND && hp != 0 && fatefulEncounter == TRUE && !(status & MON_STATUS_FRZ_MASK) && (time.hour >= 4 && time.hour < 20)) {
@@ -3614,7 +3614,7 @@ BOOL Party_TryResetShaymin(PARTY *party, int min_max, const RTCTime *time) {
     }
 }
 
-BOOL Mon_UpdateRotomForme(Pokemon *pokemon, int forme, int defaultSlot) {
+BOOL Mon_UpdateRotomForme(Pokemon *mon, int forme, int defaultSlot) {
     static const u16 forme_moves[ROTOM_FORME_MAX] = {
         MOVE_NONE,
         MOVE_OVERHEAT,
@@ -3627,20 +3627,20 @@ BOOL Mon_UpdateRotomForme(Pokemon *pokemon, int forme, int defaultSlot) {
     int i, j;
     int cur_move;
     int new_move;
-    if (GetMonData(pokemon, MON_DATA_SPECIES, NULL) != SPECIES_ROTOM) {
+    if (GetMonData(mon, MON_DATA_SPECIES, NULL) != SPECIES_ROTOM) {
         return FALSE;
     }
-    GetMonData(pokemon, MON_DATA_FORME, NULL);
+    GetMonData(mon, MON_DATA_FORME, NULL);
     new_move = forme_moves[forme];
     for (i = 0; i < MON_MOVES; i++) {
-        cur_move = GetMonData(pokemon, MON_DATA_MOVE1 + i, NULL);
+        cur_move = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
         for (j = ROTOM_HEAT; j < (unsigned)ROTOM_FORME_MAX; j++) {
             if (cur_move != MOVE_NONE && cur_move == forme_moves[j]) {
                 if (new_move != MOVE_NONE) {
-                    MonSetMoveInSlot_ResetPpUp(pokemon, new_move, i);
+                    MonSetMoveInSlot_ResetPpUp(mon, new_move, i);
                     new_move = MOVE_NONE;
                 } else {
-                    MonDeleteMoveSlot(pokemon, i);
+                    MonDeleteMoveSlot(mon, i);
                     i--;
                 }
                 break;
@@ -3649,21 +3649,21 @@ BOOL Mon_UpdateRotomForme(Pokemon *pokemon, int forme, int defaultSlot) {
     }
     if (new_move != MOVE_NONE) {
         for (i = 0; i < MON_MOVES; i++) {
-            if (GetMonData(pokemon, MON_DATA_MOVE1 + i, NULL) == MOVE_NONE) {
-                MonSetMoveInSlot_ResetPpUp(pokemon, new_move, i);
+            if (GetMonData(mon, MON_DATA_MOVE1 + i, NULL) == MOVE_NONE) {
+                MonSetMoveInSlot_ResetPpUp(mon, new_move, i);
                 break;
             }
         }
         if (i == MON_MOVES) {
-            MonSetMoveInSlot_ResetPpUp(pokemon, new_move, defaultSlot);
+            MonSetMoveInSlot_ResetPpUp(mon, new_move, defaultSlot);
         }
     }
-    if (GetMonData(pokemon, MON_DATA_MOVE1, NULL) == MOVE_NONE) {
-        MonSetMoveInSlot_ResetPpUp(pokemon, MOVE_THUNDER_SHOCK, 0);
+    if (GetMonData(mon, MON_DATA_MOVE1, NULL) == MOVE_NONE) {
+        MonSetMoveInSlot_ResetPpUp(mon, MOVE_THUNDER_SHOCK, 0);
     }
-    SetMonData(pokemon, MON_DATA_FORME, &forme);
-    UpdateMonAbility(pokemon);
-    CalcMonLevelAndStats(pokemon);
+    SetMonData(mon, MON_DATA_FORME, &forme);
+    UpdateMonAbility(mon);
+    CalcMonLevelAndStats(mon);
     return TRUE;
 }
 
@@ -3704,18 +3704,18 @@ void sub_0207204C(SOUND_CHATOT *r7, u32 r6, u16 r5, s32 r4, s32 sp20, u32 sp24, 
     }
 }
 
-void sub_020720D4(Pokemon *pokemon) {
-    PlayCry(GetMonData(pokemon, MON_DATA_SPECIES, NULL), GetMonData(pokemon, MON_DATA_FORME, NULL));
+void sub_020720D4(Pokemon *mon) {
+    PlayCry(GetMonData(mon, MON_DATA_SPECIES, NULL), GetMonData(mon, MON_DATA_FORME, NULL));
 }
 
-void sub_020720FC(Pokemon * pokemon, PLAYERPROFILE *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
+void sub_020720FC(Pokemon *mon, PLAYERPROFILE *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
     u32 hp;
-    sub_0207213C(&pokemon->box, a1, pokeball, a3, encounterType, heap_id);
+    sub_0207213C(&mon->box, a1, pokeball, a3, encounterType, heap_id);
     if (pokeball == ITEM_HEAL_BALL) {
-        hp = GetMonData(pokemon, MON_DATA_MAXHP, NULL);
-        SetMonData(pokemon, MON_DATA_HP, &hp);
+        hp = GetMonData(mon, MON_DATA_MAXHP, NULL);
+        SetMonData(mon, MON_DATA_HP, &hp);
         hp = 0;
-        SetMonData(pokemon, MON_DATA_STATUS, &hp);
+        SetMonData(mon, MON_DATA_STATUS, &hp);
     }
 }
 
@@ -3726,8 +3726,8 @@ void sub_0207213C(BOXMON * boxmon, PLAYERPROFILE *playerProfile, u32 pokeball, u
     SetBoxMonData(boxmon, MON_DATA_ENCOUNTER_TYPE, &encounterType);
 }
 
-void sub_0207217C(Pokemon *pokemon, PLAYERPROFILE *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
-    sub_02072190(&pokemon->box, a1, pokeball, a3, encounterType, heap_id);
+void sub_0207217C(Pokemon *mon, PLAYERPROFILE *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
+    sub_02072190(&mon->box, a1, pokeball, a3, encounterType, heap_id);
 }
 
 void sub_02072190(BOXMON *boxmon, PLAYERPROFILE *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
@@ -3739,7 +3739,7 @@ static const u16 sItemOdds[2][2] = {
     {20, 80},
 };
 
-void WildMonSetRandomHeldItem(Pokemon * pokemon, u32 a1, u32 a2) {
+void WildMonSetRandomHeldItem(Pokemon *mon, u32 a1, u32 a2) {
     u32 chance;
     u16 species;
     u16 forme;
@@ -3747,26 +3747,26 @@ void WildMonSetRandomHeldItem(Pokemon * pokemon, u32 a1, u32 a2) {
     u16 item2;
     if (!(a1 & 0x81)) {
         chance = (u32)(LCRandom() % 100);
-        species = (u16)GetMonData(pokemon, MON_DATA_SPECIES, 0);
-        forme = (u16)GetMonData(pokemon, MON_DATA_FORME, 0);
+        species = (u16)GetMonData(mon, MON_DATA_SPECIES, 0);
+        forme = (u16)GetMonData(mon, MON_DATA_FORME, 0);
         item1 = (u16)GetMonBaseStat_HandleAlternateForme(species, forme, BASE_ITEM_1);
         item2 = (u16)GetMonBaseStat_HandleAlternateForme(species, forme, BASE_ITEM_2);
         if (item1 == item2 && item1 != ITEM_NONE) {
-            SetMonData(pokemon, MON_DATA_HELD_ITEM, &item1);
+            SetMonData(mon, MON_DATA_HELD_ITEM, &item1);
         } else {
             if (chance >= sItemOdds[a2][0]) {
                 if (chance < sItemOdds[a2][1]) {
-                    SetMonData(pokemon, MON_DATA_HELD_ITEM, &item1);
+                    SetMonData(mon, MON_DATA_HELD_ITEM, &item1);
                 } else {
-                    SetMonData(pokemon, MON_DATA_HELD_ITEM, &item2);
+                    SetMonData(mon, MON_DATA_HELD_ITEM, &item2);
                 }
             }
         }
     }
 }
 
-BOOL GetMonTMHMCompat(Pokemon *pokemon, u8 tmhm) {
-    return GetBoxMonTMHMCompat(&pokemon->box, tmhm);
+BOOL GetMonTMHMCompat(Pokemon *mon, u8 tmhm) {
+    return GetBoxMonTMHMCompat(&mon->box, tmhm);
 }
 
 BOOL GetBoxMonTMHMCompat(BOXMON *boxmon, u8 tmhm) {
@@ -3803,8 +3803,8 @@ BOOL GetTMHMCompatBySpeciesAndForme(u16 species, u32 forme, u8 tmhm) {
     return (GetMonBaseStat_HandleAlternateForme(species, forme, baseStat) & mask) != 0;
 }
 
-void UpdateMonAbility(Pokemon *pokemon) {
-    UpdateBoxMonAbility(&pokemon->box);
+void UpdateMonAbility(Pokemon *mon) {
+    UpdateBoxMonAbility(&mon->box);
 }
 
 void UpdateBoxMonAbility(BOXMON *boxmon) {
@@ -3826,7 +3826,7 @@ void UpdateBoxMonAbility(BOXMON *boxmon) {
     ReleaseBoxMonLock(boxmon, decry);
 }
 
-void SetMonPersonality(Pokemon * r5, u32 personality) {
+void SetMonPersonality(Pokemon *mon, u32 personality) {
     PokemonDataBlockA * r4;
     PokemonDataBlockB * r6;
     PokemonDataBlockC * r7;
@@ -3835,31 +3835,31 @@ void SetMonPersonality(Pokemon * r5, u32 personality) {
     PokemonDataBlockB * sp10;
     PokemonDataBlockC * sp14;
     PokemonDataBlockD * sp18;
-    Pokemon * sp4;
+    Pokemon *tmpMon;
 
-    sp4 = AllocMonZeroed(0);
-    CopyPokemonToPokemon(r5, sp4);
-    r4 = &GetSubstruct(&sp4->box, r5->box.pid, 0)->blockA;
-    r6 = &GetSubstruct(&sp4->box, r5->box.pid, 1)->blockB;
-    r7 = &GetSubstruct(&sp4->box, r5->box.pid, 2)->blockC;
-    sp8 = &GetSubstruct(&sp4->box, r5->box.pid, 3)->blockD;
-    spC = &GetSubstruct(&r5->box, personality, 0)->blockA;
-    sp10 = &GetSubstruct(&r5->box, personality, 1)->blockB;
-    sp14 = &GetSubstruct(&r5->box, personality, 2)->blockC;
-    sp18 = &GetSubstruct(&r5->box, personality, 3)->blockD;
+    tmpMon = AllocMonZeroed(0);
+    CopyPokemonToPokemon(mon, tmpMon);
+    r4 = &GetSubstruct(&tmpMon->box, mon->box.pid, 0)->blockA;
+    r6 = &GetSubstruct(&tmpMon->box, mon->box.pid, 1)->blockB;
+    r7 = &GetSubstruct(&tmpMon->box, mon->box.pid, 2)->blockC;
+    sp8 = &GetSubstruct(&tmpMon->box, mon->box.pid, 3)->blockD;
+    spC = &GetSubstruct(&mon->box, personality, 0)->blockA;
+    sp10 = &GetSubstruct(&mon->box, personality, 1)->blockB;
+    sp14 = &GetSubstruct(&mon->box, personality, 2)->blockC;
+    sp18 = &GetSubstruct(&mon->box, personality, 3)->blockD;
 
-    DECRYPT_BOX(&sp4->box);
-    DECRYPT_PTY(r5);
-    DECRYPT_BOX(&r5->box);
-    r5->box.pid = personality;
+    DECRYPT_BOX(&tmpMon->box);
+    DECRYPT_PTY(mon);
+    DECRYPT_BOX(&mon->box);
+    mon->box.pid = personality;
     *spC = *r4;
     *sp10 = *r6;
     *sp14 = *r7;
     *sp18 = *sp8;
-    r5->box.checksum = CHECKSUM(&r5->box);
-    ENCRYPT_BOX(&r5->box);
-    ENCRYPT_PTY(r5);
-    FreeToHeap(sp4);
+    mon->box.checksum = CHECKSUM(&mon->box);
+    ENCRYPT_BOX(&mon->box);
+    ENCRYPT_PTY(mon);
+    FreeToHeap(tmpMon);
 }
 
 u32 ChangePersonalityToNatureGenderAndAbility(u32 pid, u16 species, u8 nature, u8 gender, u8 ability, BOOL gen_mode) {
@@ -4108,9 +4108,9 @@ BOOL SpeciesIsMythical(u16 species) {
     return FALSE;
 }
 
-BOOL MonCheckFrontierIneligibility(Pokemon *pokemon) {
-    u16 species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
-    u16 forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
+BOOL MonCheckFrontierIneligibility(Pokemon *mon) {
+    u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    u16 forme = GetMonData(mon, MON_DATA_FORME, NULL);
     return IsPokemonLegendaryOrMythical(species, forme);
 }
 
@@ -4166,12 +4166,12 @@ int TrainerClassToBackpicID(int trainerClass, int a1) {
     return trainerClass;
 }
 
-void Pokemon_RemoveCapsule(Pokemon * pokemon) {
+void Pokemon_RemoveCapsule(Pokemon *mon) {
     u8 sp0 = 0;
     CAPSULE sp1;
     MI_CpuClearFast(&sp1, sizeof(sp1));
-    SetMonData(pokemon, MON_DATA_CAPSULE, &sp0);
-    SetMonData(pokemon, MON_DATA_SEAL_COORDS, &sp1);
+    SetMonData(mon, MON_DATA_CAPSULE, &sp0);
+    SetMonData(mon, MON_DATA_SEAL_COORDS, &sp1);
 }
 
 void RestoreBoxMonPP(BOXMON * boxmon) {
@@ -4230,7 +4230,7 @@ void sub_02072A20(NARC *narc, u8 *ret, u16 a2, u16 a3) {
     *ret = sp4.unk_58;
 }
 
-BOOL SetTrMonCapsule(int a0, Pokemon *pokemon, HeapID heap_id) {
+BOOL SetTrMonCapsule(int a0, Pokemon *mon, HeapID heap_id) {
     CAPSULE capsule;
     int data;
     NARC *narc;
@@ -4240,13 +4240,13 @@ BOOL SetTrMonCapsule(int a0, Pokemon *pokemon, HeapID heap_id) {
     narc = NARC_ctor(NARC_application_custom_ball_edit_gs_cb_data, heap_id);
     data = 1;
     NARC_ReadFromMember(narc, 0, (a0 - 1) * sizeof(CAPSULE), sizeof(CAPSULE), &capsule);
-    SetMonData(pokemon, MON_DATA_CAPSULE, &data);
-    SetMonData(pokemon, MON_DATA_SEAL_COORDS, &capsule);
+    SetMonData(mon, MON_DATA_CAPSULE, &data);
+    SetMonData(mon, MON_DATA_SEAL_COORDS, &capsule);
     NARC_dtor(narc);
     return TRUE;
 }
 
-void sub_02072A98(Pokemon *pokemon, struct UnkPokemonStruct_02072A98 *dest) {
+void sub_02072A98(Pokemon *mon, struct UnkPokemonStruct_02072A98 *dest) {
     PokemonDataBlockA *dbA; // r5
     PokemonDataBlockB *dbB; // sp4
     PokemonDataBlockC *dbC; // r7
@@ -4254,11 +4254,11 @@ void sub_02072A98(Pokemon *pokemon, struct UnkPokemonStruct_02072A98 *dest) {
     BOXMON *boxmon; // r6
     int i;
 
-    if (!pokemon->box.party_lock) {
-        DECRYPT_PTY(pokemon);
-        DECRYPT_BOX(&pokemon->box);
+    if (!mon->box.party_lock) {
+        DECRYPT_PTY(mon);
+        DECRYPT_BOX(&mon->box);
     }
-    boxmon = Mon_GetBoxMon(pokemon);
+    boxmon = Mon_GetBoxMon(mon);
     dbA = &GetSubstruct(boxmon, boxmon->pid, 0)->blockA;
     dbB = &GetSubstruct(boxmon, boxmon->pid, 1)->blockB;
     dbC = &GetSubstruct(boxmon, boxmon->pid, 2)->blockC;
@@ -4309,24 +4309,24 @@ void sub_02072A98(Pokemon *pokemon, struct UnkPokemonStruct_02072A98 *dest) {
     }
     dest->pokeball = dbD->pokeball;
 
-    dest->status = pokemon->party.status;
-    dest->level = pokemon->party.level;
-    dest->capsule = pokemon->party.capsule;
-    dest->hp = pokemon->party.hp;
-    dest->maxHp = pokemon->party.maxHp;
-    dest->atk = pokemon->party.atk;
-    dest->def = pokemon->party.def;
-    dest->speed = pokemon->party.speed;
-    dest->spatk = pokemon->party.spatk;
-    dest->spdef = pokemon->party.spdef;
+    dest->status = mon->party.status;
+    dest->level = mon->party.level;
+    dest->capsule = mon->party.capsule;
+    dest->hp = mon->party.hp;
+    dest->maxHp = mon->party.maxHp;
+    dest->atk = mon->party.atk;
+    dest->def = mon->party.def;
+    dest->speed = mon->party.speed;
+    dest->spatk = mon->party.spatk;
+    dest->spdef = mon->party.spdef;
 
-    if (!pokemon->box.party_lock) {
-        ENCRYPT_PTY(pokemon);
-        ENCRYPT_BOX(&pokemon->box);
+    if (!mon->box.party_lock) {
+        ENCRYPT_PTY(mon);
+        ENCRYPT_BOX(&mon->box);
     }
 }
 
-void sub_02072D64(const struct UnkPokemonStruct_02072A98 *src, Pokemon *pokemon) {
+void sub_02072D64(const struct UnkPokemonStruct_02072A98 *src, Pokemon *mon) {
     PokemonDataBlockA *dbA; // r5
     PokemonDataBlockB *dbB; // r6
     PokemonDataBlockC *dbC; // r7
@@ -4334,8 +4334,8 @@ void sub_02072D64(const struct UnkPokemonStruct_02072A98 *src, Pokemon *pokemon)
     BOXMON *boxmon; // sp4
     int i;
 
-    MI_CpuClearFast(pokemon, sizeof(Pokemon));
-    boxmon = Mon_GetBoxMon(pokemon);
+    MI_CpuClearFast(mon, sizeof(Pokemon));
+    boxmon = Mon_GetBoxMon(mon);
     dbA = &GetSubstruct(boxmon, src->pid, 0)->blockA;
     dbB = &GetSubstruct(boxmon, src->pid, 1)->blockB;
     dbC = &GetSubstruct(boxmon, src->pid, 2)->blockC;
@@ -4391,20 +4391,20 @@ void sub_02072D64(const struct UnkPokemonStruct_02072A98 *src, Pokemon *pokemon)
         dbD->pokeball = BALL_POKE;
     }
 
-    pokemon->party.status = src->status;
-    pokemon->party.level = src->level;
-    pokemon->party.capsule = src->capsule;
-    pokemon->party.hp = src->hp;
-    pokemon->party.maxHp = src->maxHp;
-    pokemon->party.atk = src->atk;
-    pokemon->party.def = src->def;
-    pokemon->party.speed = src->speed;
-    pokemon->party.spatk = src->spatk;
-    pokemon->party.spdef = src->spdef;
+    mon->party.status = src->status;
+    mon->party.level = src->level;
+    mon->party.capsule = src->capsule;
+    mon->party.hp = src->hp;
+    mon->party.maxHp = src->maxHp;
+    mon->party.atk = src->atk;
+    mon->party.def = src->def;
+    mon->party.speed = src->speed;
+    mon->party.spatk = src->spatk;
+    mon->party.spdef = src->spdef;
 
-    ENCRYPT_PTY(pokemon);
-    pokemon->box.checksum = CHECKSUM(&pokemon->box);
-    ENCRYPT_BOX(&pokemon->box);
+    ENCRYPT_PTY(mon);
+    mon->box.checksum = CHECKSUM(&mon->box);
+    ENCRYPT_BOX(&mon->box);
 }
 
 u32 _u32_getDigitN(u32 num, u8 digit) {
@@ -5009,8 +5009,8 @@ void CalcBoxMonPokeathlonPerformance(BOXMON *boxmon, struct PokeathlonTodayPerfo
     dest->stats[PERFORMANCE_STAMINA].hi = data.minmax[ARCPERF_STAMINA][1];
 }
 
-void CalcMonPokeathlonPerformance(Pokemon *pokemon, struct PokeathlonTodayPerformance *dest) {
-    CalcBoxMonPokeathlonPerformance(Mon_GetBoxMon(pokemon), dest);
+void CalcMonPokeathlonPerformance(Pokemon *mon, struct PokeathlonTodayPerformance *dest) {
+    CalcBoxMonPokeathlonPerformance(Mon_GetBoxMon(mon), dest);
 }
 
 void CalcBoxmonPokeathlonStars(struct PokeathlonPerformanceStars *dest, BOXMON *boxmon, const s8 *aprijuice, HeapID heap_id) {
@@ -5042,6 +5042,6 @@ void CalcBoxmonPokeathlonStars(struct PokeathlonPerformanceStars *dest, BOXMON *
     }
 }
 
-void CalcMonPokeathlonStars(struct PokeathlonPerformanceStars *dest, Pokemon *pokemon, const s8 *aprijuice, HeapID heap_id) {
-    CalcBoxmonPokeathlonStars(dest, Mon_GetBoxMon(pokemon), aprijuice, heap_id);
+void CalcMonPokeathlonStars(struct PokeathlonPerformanceStars *dest, Pokemon *mon, const s8 *aprijuice, HeapID heap_id) {
+    CalcBoxmonPokeathlonStars(dest, Mon_GetBoxMon(mon), aprijuice, heap_id);
 }

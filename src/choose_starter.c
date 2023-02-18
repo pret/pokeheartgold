@@ -51,14 +51,14 @@ static BOOL CreateStarter(TaskManager *taskManager) {
             env->args->cursorPos = 0;
             env->args->options = Sav2_PlayerData_GetOptionsAddr(fsys->savedata);
             for (i = 0; i < (int)NELEMS(species); i++) {
-                Pokemon *pokemon = &env->args->starters[i];
+                Pokemon *mon = &env->args->starters[i];
                 PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(fsys->savedata);
-                ZeroMonData(pokemon);
-                CreateMon(pokemon, species[i], 5, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
-                sub_020720FC(pokemon, profile, BALL_POKE, mapsec, 12, 11);
+                ZeroMonData(mon);
+                CreateMon(mon, species[i], 5, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
+                sub_020720FC(mon, profile, BALL_POKE, mapsec, 12, 11);
                 {
                     int item = ITEM_NONE;
-                    SetMonData(pokemon, MON_DATA_HELD_ITEM, &item);
+                    SetMonData(mon, MON_DATA_HELD_ITEM, &item);
                 }
             }
         }

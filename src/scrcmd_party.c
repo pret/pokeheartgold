@@ -43,9 +43,9 @@ BOOL ScrCmd_GetPartyMonSpecies(SCRIPTCONTEXT *ctx) {
     u16 slot = ScriptGetVar(ctx);
     u16 *species = ScriptGetVarPointer(ctx);
 
-    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
-    if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
-        *species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
+    if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
+        *species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     }
     else {
         *species = SPECIES_NONE;
@@ -62,8 +62,8 @@ BOOL ScrCmd_PartymonIsMine(SCRIPTCONTEXT *ctx) {
     u16 *slot = ScriptGetVarPointer(ctx);
     u16 *mine = ScriptGetVarPointer(ctx);
 
-    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), *slot);
-    u16 pokemonID = GetMonData(pokemon, MON_DATA_OTID, NULL);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), *slot);
+    u16 pokemonID = GetMonData(mon, MON_DATA_OTID, NULL);
     u16 playerID = PlayerProfile_GetTrainerID(profile);
 
     if (pokemonID == playerID) {
@@ -86,12 +86,12 @@ BOOL ScrCmd_GiveEgg(SCRIPTCONTEXT *ctx) {
     PARTY *party = SavArray_PlayerParty_get(fsys->savedata);
     u8 partyCount = GetPartyCount(party);
     if (partyCount < PARTY_SIZE) {
-        Pokemon *pokemon = AllocMonZeroed(11);
-        ZeroMonData(pokemon);
+        Pokemon *mon = AllocMonZeroed(11);
+        ZeroMonData(mon);
         int val = sub_02017FE4(MAPSECTYPE_GIFT, offset);
-        SetEggStats(pokemon, species, 1, profile, 3, val);
-        AddMonToParty(party, pokemon);
-        FreeToHeap(pokemon);
+        SetEggStats(mon, species, 1, profile, 3, val);
+        AddMonToParty(party, mon);
+        FreeToHeap(mon);
     }
 
     return FALSE;
@@ -113,14 +113,14 @@ BOOL ScrCmd_MonHasMove(SCRIPTCONTEXT *ctx) {
     u16 move = ScriptGetVar(ctx);
     u16 slot = ScriptGetVar(ctx);
 
-    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
     *hasMove = FALSE;
-    if (GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
+    if (GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
         return FALSE;   
     }
 
-    if (GetMonData(pokemon, MON_DATA_MOVE1, NULL) == move || GetMonData(pokemon, MON_DATA_MOVE2, NULL) == move ||
-        GetMonData(pokemon, MON_DATA_MOVE3, NULL) == move || GetMonData(pokemon, MON_DATA_MOVE4, NULL) == move) {
+    if (GetMonData(mon, MON_DATA_MOVE1, NULL) == move || GetMonData(mon, MON_DATA_MOVE2, NULL) == move ||
+        GetMonData(mon, MON_DATA_MOVE3, NULL) == move || GetMonData(mon, MON_DATA_MOVE4, NULL) == move) {
         *hasMove = TRUE;
     }
 
@@ -135,13 +135,13 @@ BOOL ScrCmd_GetPartySlotWithMove(SCRIPTCONTEXT *ctx) {
 
     u8 partyCount = GetPartyCount(SavArray_PlayerParty_get(fsys->savedata));
     for (i = 0, *slot = PARTY_SIZE; i < partyCount; i++) {
-        Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
-        if (GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
+        Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
+        if (GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
             continue;
         }
 
-        if (GetMonData(pokemon, MON_DATA_MOVE1, NULL) == move || GetMonData(pokemon, MON_DATA_MOVE2, NULL) == move ||
-            GetMonData(pokemon, MON_DATA_MOVE3, NULL) == move || GetMonData(pokemon, MON_DATA_MOVE4, NULL) == move) {
+        if (GetMonData(mon, MON_DATA_MOVE1, NULL) == move || GetMonData(mon, MON_DATA_MOVE2, NULL) == move ||
+            GetMonData(mon, MON_DATA_MOVE3, NULL) == move || GetMonData(mon, MON_DATA_MOVE4, NULL) == move) {
             *slot = i;
             break;
         }
@@ -154,8 +154,8 @@ BOOL ScrCmd_SurvivePoisoning(SCRIPTCONTEXT *ctx) {
     u16 *poison = ScriptGetVarPointer(ctx);
     u16 slot = ScriptGetVar(ctx);
 
-    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
-    *poison = SurvivePoisoning(pokemon);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
+    *poison = SurvivePoisoning(mon);
 
     return FALSE;
 }
@@ -168,8 +168,8 @@ BOOL ScrCmd_PartyCountMonsAtOrBelowLevel(SCRIPTCONTEXT *ctx) {
 
     u8 partyCount = GetPartyCount(SavArray_PlayerParty_get(fsys->savedata));
     for (i = 0, count = 0, *levelCount = 0; i < partyCount; i++) {
-        Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
-        if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL) && GetMonData(pokemon, MON_DATA_LEVEL, NULL) <= level) {
+        Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
+        if (!GetMonData(mon, MON_DATA_IS_EGG, NULL) && GetMonData(mon, MON_DATA_LEVEL, NULL) <= level) {
             count++;
         }
     }
@@ -183,10 +183,10 @@ BOOL ScrCmd_MonGetLevel(SCRIPTCONTEXT *ctx) {
     u16 *level = ScriptGetVarPointer(ctx);
     u16 slot = ScriptGetVar(ctx);
 
-    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
     *level = 0;
-    if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
-        *level = GetMonData(pokemon, MON_DATA_LEVEL, NULL);
+    if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
+        *level = GetMonData(mon, MON_DATA_LEVEL, NULL);
     }
 
     return FALSE;
@@ -203,13 +203,13 @@ BOOL ScrCmd_MonGetNature(SCRIPTCONTEXT *ctx) {
         return FALSE;
     }
 
-    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
-    if (GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
+    if (GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
         *nature = 0;
         return FALSE;
     }
 
-    *nature = GetMonNature(pokemon);
+    *nature = GetMonNature(mon);
     return FALSE;
 }
 
@@ -221,8 +221,8 @@ BOOL ScrCmd_GetPartySlotWithNature(SCRIPTCONTEXT *ctx) {
 
     u8 partyCount = GetPartyCount(SavArray_PlayerParty_get(fsys->savedata));
     for (i = 0, *slot = 255; i < partyCount; i++) {
-        Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
-        if (!GetMonData(pokemon , MON_DATA_IS_EGG, NULL) && GetMonNature(pokemon) == nature) {
+        Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
+        if (!GetMonData(mon , MON_DATA_IS_EGG, NULL) && GetMonNature(mon) == nature) {
             *slot = i;
             break;
         }
@@ -236,8 +236,8 @@ BOOL ScrCmd_MonGetFriendship(SCRIPTCONTEXT *ctx) {
     u16 *friendship = ScriptGetVarPointer(ctx);
     u16 slot = ScriptGetVar(ctx);
 
-    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
-    *friendship = GetMonData(pokemon, MON_DATA_FRIENDSHIP, NULL);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
+    *friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
 
     return FALSE;
 }
@@ -248,18 +248,18 @@ BOOL ScrCmd_MonAddFriendship(SCRIPTCONTEXT *ctx) {
     u16 slot = ScriptGetVar(ctx);
     u16 map = MapHeader_GetMapSec(ctx->fsys->location->mapId);
 
-    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
-    u16 friendship = GetMonData(pokemon, MON_DATA_FRIENDSHIP, NULL);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
+    u16 friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
     if (friendshipModifier != 0) {
-        if (GetMonData(pokemon, MON_DATA_POKEBALL, NULL) == BALL_LUXURY) {
+        if (GetMonData(mon, MON_DATA_POKEBALL, NULL) == BALL_LUXURY) {
             friendshipModifier++;
         }
         
-        if (map == GetMonData(pokemon, MON_DATA_EGG_MET_LOCATION, NULL)) {
+        if (map == GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL)) {
             friendshipModifier++;
         }
 
-        if (GetItemAttr(GetMonData(pokemon, MON_DATA_HELD_ITEM, NULL), ITEMATTR_HOLD_EFFECT, 11) == HOLD_EFFECT_FRIENDSHIP_UP) {
+        if (GetItemAttr(GetMonData(mon, MON_DATA_HELD_ITEM, NULL), ITEMATTR_HOLD_EFFECT, 11) == HOLD_EFFECT_FRIENDSHIP_UP) {
             friendshipModifier = friendshipModifier * 150 / 100;
         }
     }
@@ -268,7 +268,7 @@ BOOL ScrCmd_MonAddFriendship(SCRIPTCONTEXT *ctx) {
     if (friendship > FRIENDSHIP_MAX) {
         friendship = FRIENDSHIP_MAX;
     }
-    SetMonData(pokemon, MON_DATA_FRIENDSHIP, &friendship);
+    SetMonData(mon, MON_DATA_FRIENDSHIP, &friendship);
 
     return FALSE;
 }
@@ -278,15 +278,15 @@ BOOL ScrCmd_MonSubtractFriendship(SCRIPTCONTEXT *ctx) {
     u16 friendshipModifier = ScriptGetVar(ctx);
     u16 slot = ScriptGetVar(ctx);
 
-    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
-    u16 friendship = GetMonData(pokemon, MON_DATA_FRIENDSHIP, NULL);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
+    u16 friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
     if (friendshipModifier > friendship) {
         friendship = 0;
     }
     else {
         friendship -= friendshipModifier;
     }
-    SetMonData(pokemon, MON_DATA_FRIENDSHIP, &friendship);
+    SetMonData(mon, MON_DATA_FRIENDSHIP, &friendship);
 
     return FALSE;
 }
@@ -296,8 +296,8 @@ BOOL ScrCmd_MonGetContestValue(SCRIPTCONTEXT *ctx) {
     u16 contestAttribute = ScriptGetVar(ctx);
     u16 *contestValue = ScriptGetVarPointer(ctx);
 
-    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
-    *contestValue = GetMonData(pokemon, contestAttribute + MON_DATA_COOL, NULL);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
+    *contestValue = GetMonData(mon, contestAttribute + MON_DATA_COOL, NULL);
 
     return FALSE;
 }
@@ -320,9 +320,9 @@ BOOL ScrCmd_GetMonTypes(SCRIPTCONTEXT *ctx) {
     u16 *type2 = ScriptGetVarPointer(ctx);
     u16 slot = ScriptGetVar(ctx);
 
-    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
-    *type1 = GetMonData(pokemon, MON_DATA_TYPE_1, NULL);
-    *type2 = GetMonData(pokemon, MON_DATA_TYPE_2, NULL);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
+    *type1 = GetMonData(mon, MON_DATA_TYPE_1, NULL);
+    *type2 = GetMonData(mon, MON_DATA_TYPE_2, NULL);
 
     return FALSE; 
 }
@@ -341,8 +341,8 @@ BOOL ScrCmd_PartyCountNotEgg(SCRIPTCONTEXT *ctx) {
 
     int partyCount = GetPartyCount(SavArray_PlayerParty_get(fsys->savedata));
     for (i = 0, count = 0; i < partyCount; i++) {
-        Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
-        if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
+        Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
+        if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
             count++;
         }
     }
@@ -360,8 +360,8 @@ BOOL ScrCmd_CountAliveMons(SCRIPTCONTEXT *ctx) {
     int partyCount = GetPartyCount(SavArray_PlayerParty_get(fsys->savedata));
     for (i = 0, count = 0; i < partyCount; i++) {
         if (i != slot) {
-            Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
-            if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL) && GetMonData(pokemon, MON_DATA_HP, NULL) != 0) {
+            Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
+            if (!GetMonData(mon, MON_DATA_IS_EGG, NULL) && GetMonData(mon, MON_DATA_HP, NULL) != 0) {
                 count++;
             }
         }
@@ -379,8 +379,8 @@ BOOL ScrCmd_CountAliveMonsAndPC(SCRIPTCONTEXT *ctx) {
 
     partyCount = GetPartyCount(SavArray_PlayerParty_get(fsys->savedata));
     for (i = 0, count = 0; i < partyCount; i++) {
-        Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
-        if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL) && GetMonData(pokemon, MON_DATA_HP, NULL) != 0) {
+        Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
+        if (!GetMonData(mon, MON_DATA_IS_EGG, NULL) && GetMonData(mon, MON_DATA_HP, NULL) != 0) {
             count++;
         }
     }
@@ -396,8 +396,8 @@ BOOL ScrCmd_PartyCountEgg(SCRIPTCONTEXT *ctx) {
 
     partyCount = GetPartyCount(SavArray_PlayerParty_get(fsys->savedata));
     for (i = 0, count = 0; i < partyCount; i++) {
-        Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
-        if (GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
+        Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
+        if (GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
             count++;
         }
     }
@@ -413,8 +413,8 @@ BOOL ScrCmd_PartyHasPokerus(SCRIPTCONTEXT *ctx) {
 
     partyCount = GetPartyCount(SavArray_PlayerParty_get(fsys->savedata));
     for (i = 0, *pokerus = FALSE; i < partyCount; i++) {
-        Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
-        if (GetMonData(pokemon, MON_DATA_POKERUS, NULL)) {
+        Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
+        if (GetMonData(mon, MON_DATA_POKERUS, NULL)) {
             *pokerus = TRUE;
             break;
         }
@@ -427,8 +427,8 @@ BOOL ScrCmd_MonGetGender(SCRIPTCONTEXT *ctx) {
     u16 slot = ScriptGetVar(ctx);
     u16 *gender = ScriptGetVarPointer(ctx);
 
-    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
-    *gender = GetMonData(pokemon, MON_DATA_GENDER, NULL);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
+    *gender = GetMonData(mon, MON_DATA_GENDER, NULL);
 
     return FALSE;
 }
@@ -438,26 +438,26 @@ BOOL ScrCmd_CountMonMoves(SCRIPTCONTEXT *ctx) {
     u16 *moveCount = ScriptGetVarPointer(ctx);
     u16 slot = ScriptGetVar(ctx);
 
-    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
-    if (GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
+    if (GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
         *moveCount = 0;
         return FALSE;
     }
 
     u8 count = 0;
-    if (GetMonData(pokemon, MON_DATA_MOVE1, NULL) != MOVE_NONE) {
+    if (GetMonData(mon, MON_DATA_MOVE1, NULL) != MOVE_NONE) {
         count++;
     }
 
-    if (GetMonData(pokemon, MON_DATA_MOVE2, NULL) != MOVE_NONE) {
+    if (GetMonData(mon, MON_DATA_MOVE2, NULL) != MOVE_NONE) {
         count++;
     }
 
-    if (GetMonData(pokemon, MON_DATA_MOVE3, NULL) != MOVE_NONE) {
+    if (GetMonData(mon, MON_DATA_MOVE3, NULL) != MOVE_NONE) {
         count++;
     }
 
-    if (GetMonData(pokemon, MON_DATA_MOVE4, NULL) != MOVE_NONE) {
+    if (GetMonData(mon, MON_DATA_MOVE4, NULL) != MOVE_NONE) {
         count++;
     }
 
@@ -470,8 +470,8 @@ BOOL ScrCmd_MonForgetMove(SCRIPTCONTEXT *ctx) {
     u16 pokemonSlot = ScriptGetVar(ctx);
     u16 moveSlot = ScriptGetVar(ctx);
 
-    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), pokemonSlot);
-    MonDeleteMoveSlot(pokemon, moveSlot);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), pokemonSlot);
+    MonDeleteMoveSlot(mon, moveSlot);
 
     return FALSE;
 }
@@ -482,8 +482,8 @@ BOOL ScrCmd_MonGetMove(SCRIPTCONTEXT *ctx) {
     u16 pokemonSlot = ScriptGetVar(ctx);
     u16 moveSlot = ScriptGetVar(ctx);
 
-    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), pokemonSlot);
-    *move = GetMonData(pokemon, moveSlot + MON_DATA_MOVE1, NULL);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), pokemonSlot);
+    *move = GetMonData(mon, moveSlot + MON_DATA_MOVE1, NULL);
 
     return FALSE;
 }
@@ -494,8 +494,8 @@ BOOL ScrCmd_KenyaCheck(SCRIPTCONTEXT *ctx) {
     u16 slot = ScriptGetVar(ctx);
     u8 val = ScriptReadByte(ctx);
 
-    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
-    if (!ItemIdIsMail(GetMonData(pokemon, MON_DATA_HELD_ITEM, NULL))) {
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
+    if (!ItemIdIsMail(GetMonData(mon, MON_DATA_HELD_ITEM, NULL))) {
         *kenya = FALSE;
         return FALSE;
     }
@@ -508,7 +508,7 @@ BOOL ScrCmd_KenyaCheck(SCRIPTCONTEXT *ctx) {
     HandleLoadOverlay(FS_OVERLAY_ID(npc_trade), OVY_LOAD_ASYNC);
     MAIL *kenyaMail = NPCTrade_MakeKenyaMail();
     MAIL *mail = Mail_new(11);
-    GetMonData(pokemon, MON_DATA_MAIL_STRUCT, mail);
+    GetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
     *kenya = Mail_compare(kenyaMail, mail);
     FreeToHeap(mail);
     FreeToHeap(kenyaMail);
@@ -530,9 +530,9 @@ BOOL ScrCmd_KenyaCheckPartyOrMailbox(SCRIPTCONTEXT *ctx) {
     UnloadOverlayByID(FS_OVERLAY_ID(npc_trade));
 
     for (i = 0; i < GetPartyCount(party); i++) {
-        Pokemon *pokemon = GetPartyMonByIndex(party, i);
-        if (ItemIdIsMail(GetMonData(pokemon, MON_DATA_HELD_ITEM, NULL))) {
-            GetMonData(pokemon, MON_DATA_MAIL_STRUCT, mail);
+        Pokemon *mon = GetPartyMonByIndex(party, i);
+        if (ItemIdIsMail(GetMonData(mon, MON_DATA_HELD_ITEM, NULL))) {
+            GetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
             if (Mail_compare(kenyaMail, mail)) {
                 *kenya = TRUE;
                 FreeToHeap(mail);
@@ -567,16 +567,16 @@ BOOL ScrCmd_MonGiveMail(SCRIPTCONTEXT *ctx) {
     u16 slot = ScriptGetVar(ctx);
     u16 item;
 
-    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
-    if (!ItemIdIsMail(GetMonData(pokemon, MON_DATA_HELD_ITEM, NULL))) {
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
+    if (!ItemIdIsMail(GetMonData(mon, MON_DATA_HELD_ITEM, NULL))) {
         return FALSE;
     }
 
     item = ITEM_NONE;
     MAIL *mail = Mail_new(11);
     Mail_init(mail);
-    SetMonData(pokemon, MON_DATA_MAIL_STRUCT, mail);
-    SetMonData(pokemon, MON_DATA_HELD_ITEM, &item);
+    SetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
+    SetMonData(mon, MON_DATA_HELD_ITEM, &item);
     FreeToHeap(mail);
 
     return FALSE;
@@ -590,8 +590,8 @@ BOOL ScrCmd_PlayerHasSpecies(SCRIPTCONTEXT *ctx) {
 
     u8 partyCount = GetPartyCount(SavArray_PlayerParty_get(fsys->savedata));
     for (i = 0, *playerHasSpecies = FALSE; i < partyCount; i++) {
-        Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
-        if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL) && (u16)GetMonData(pokemon, MON_DATA_SPECIES, NULL) == species) {
+        Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
+        if (!GetMonData(mon, MON_DATA_IS_EGG, NULL) && (u16)GetMonData(mon, MON_DATA_SPECIES, NULL) == species) {
             *playerHasSpecies = TRUE;
             break;
         }
@@ -613,9 +613,9 @@ BOOL ScrCmd_CountPartyMonsOfSpecies(SCRIPTCONTEXT *ctx) {
 
     u8 partyCount = GetPartyCount(SavArray_PlayerParty_get(fsys->savedata));
     for (i = 0, *speciesCount = 0; i < partyCount; i++) {
-        Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
-        if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
-            u16 monSpecies = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+        Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
+        if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
+            u16 monSpecies = GetMonData(mon, MON_DATA_SPECIES, NULL);
             if (species == 0) {
                 array[i] = monSpecies;
                 for (j = 0; j < i; j++) {
@@ -642,8 +642,8 @@ BOOL ScrCmd_GetPartySlotWithSpecies(SCRIPTCONTEXT *ctx) {
 
     u8 partyCount = GetPartyCount(SavArray_PlayerParty_get(fsys->savedata));
     for (i = 0, *slot = 255; i < partyCount; i++) {
-        Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
-        if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL) && (u16)GetMonData(pokemon, MON_DATA_SPECIES, NULL) == species) {
+        Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
+        if (!GetMonData(mon, MON_DATA_IS_EGG, NULL) && (u16)GetMonData(mon, MON_DATA_SPECIES, NULL) == species) {
             *slot = i;
             break;
         }
@@ -655,11 +655,11 @@ BOOL ScrCmd_GetPartySlotWithSpecies(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_MonGetRibbonCount(SCRIPTCONTEXT *ctx) {
     u16 *ribbons = ScriptGetVarPointer(ctx);
     u16 slot = ScriptGetVar(ctx);
-    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
 
     u16 i, count;
     for (i = 0, count = 0; i < RIBBON_MAX; i++) {
-        if (GetMonData(pokemon, GetRibbonAttr(i, RIBBONDAT_MONDATNO), NULL)) {
+        if (GetMonData(mon, GetRibbonAttr(i, RIBBONDAT_MONDATNO), NULL)) {
             count++;
         }
     }
@@ -678,8 +678,8 @@ BOOL ScrCmd_GetPartyRibbonCount(SCRIPTCONTEXT *ctx) {
 
     for (i = 0, count = 0; i < RIBBON_MAX; i++) {
         for (j = 0; j < partyCount; j++) {
-            Pokemon *pokemon = GetPartyMonByIndex(party, j);
-            if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL) && GetMonData(pokemon, GetRibbonAttr(i, RIBBONDAT_MONDATNO), NULL)) {
+            Pokemon *mon = GetPartyMonByIndex(party, j);
+            if (!GetMonData(mon, MON_DATA_IS_EGG, NULL) && GetMonData(mon, GetRibbonAttr(i, RIBBONDAT_MONDATNO), NULL)) {
                 count++;
                 break;
             }
@@ -695,8 +695,8 @@ BOOL ScrCmd_MonHasRibbon(SCRIPTCONTEXT *ctx) {
     u16 slot = ScriptGetVar(ctx);
     u16 ribbon = ScriptGetVar(ctx);
 
-    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
-    *hasRibbon = GetMonData(pokemon, GetRibbonAttr(ribbon, RIBBONDAT_MONDATNO), NULL);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
+    *hasRibbon = GetMonData(mon, GetRibbonAttr(ribbon, RIBBONDAT_MONDATNO), NULL);
 
     return FALSE;
 }
@@ -706,8 +706,8 @@ BOOL ScrCmd_GiveRibbon(SCRIPTCONTEXT *ctx) {
     u16 ribbon = ScriptGetVar(ctx);
     u8 hasRibbon = TRUE;
 
-    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
-    SetMonData(pokemon, GetRibbonAttr(ribbon, RIBBONDAT_MONDATNO), &hasRibbon);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
+    SetMonData(mon, GetRibbonAttr(ribbon, RIBBONDAT_MONDATNO), &hasRibbon);
 
     return FALSE;
 }
@@ -721,8 +721,8 @@ BOOL ScrCmd_PartyLegalCheck(SCRIPTCONTEXT *ctx) {
 
     for (i = 0; i < RIBBON_MAX; i++) {
         for (j = 0; j < partyCount; j++) {
-            Pokemon *pokemon = GetPartyMonByIndex(party, j);
-            if (GetMonData(pokemon, MON_DATA_IS_EGG, NULL) && GetMonData(pokemon, MON_DATA_CHECKSUM_FAILED, NULL)) {
+            Pokemon *mon = GetPartyMonByIndex(party, j);
+            if (GetMonData(mon, MON_DATA_IS_EGG, NULL) && GetMonData(mon, MON_DATA_CHECKSUM_FAILED, NULL)) {
                 *legal = TRUE;
                 return FALSE;
             }
@@ -741,9 +741,9 @@ BOOL ScrCmd_GetPartySlotWithFatefulEncounter(SCRIPTCONTEXT *ctx) {
 
     partyCount = GetPartyCount(SavArray_PlayerParty_get(fsys->savedata));
     for (i = 0, *slot = 255; i < partyCount; i++) {
-        Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
-        if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
-            if ((u16)GetMonData(pokemon, MON_DATA_SPECIES, NULL) == species && GetMonData(pokemon, MON_DATA_FATEFUL_ENCOUNTER, NULL) == TRUE) {
+        Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
+        if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
+            if ((u16)GetMonData(mon, MON_DATA_SPECIES, NULL) == species && GetMonData(mon, MON_DATA_FATEFUL_ENCOUNTER, NULL) == TRUE) {
                 *slot = i;
                 break;
             }
@@ -761,8 +761,8 @@ BOOL ScrCmd_MonHasItem(SCRIPTCONTEXT *ctx) {
 
     int partyCount = GetPartyCount(SavArray_PlayerParty_get(fsys->savedata));
     for (i = 0, *hasItem = FALSE; i < partyCount; i++) {
-        Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
-        if (GetMonData(pokemon, MON_DATA_HELD_ITEM, NULL) == item) {
+        Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
+        if (GetMonData(mon, MON_DATA_HELD_ITEM, NULL) == item) {
             *hasItem = TRUE;
             break;
         }
@@ -775,15 +775,15 @@ BOOL ScrCmd_GetPartymonForme(SCRIPTCONTEXT *ctx) {
     u16 slot = ScriptGetVar(ctx);
     u16 *forme = ScriptGetVarPointer(ctx);
 
-    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
-    *forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
+    *forme = GetMonData(mon, MON_DATA_FORME, NULL);
 
     return FALSE;
 }
 
 
 BOOL ScrCmd_MonAddContestValue(SCRIPTCONTEXT *ctx) {
-    Pokemon *pokemon;
+    Pokemon *mon;
     u8 contestValue = 0;
     u16 slot = ScriptGetVar(ctx);
     u8 contestAttribute = ScriptReadByte(ctx);
@@ -793,13 +793,13 @@ BOOL ScrCmd_MonAddContestValue(SCRIPTCONTEXT *ctx) {
         return FALSE;
     }
 
-    pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
-    if (GetMonData(pokemon, MON_DATA_SHEEN, NULL) == 255) {
+    mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
+    if (GetMonData(mon, MON_DATA_SHEEN, NULL) == 255) {
         return FALSE;
     }
 
     contestAttribute += MON_DATA_COOL;
-    contestValue = GetMonData(pokemon, contestAttribute, NULL);
+    contestValue = GetMonData(mon, contestAttribute, NULL);
 
     if ((contestModifier + contestValue) > 255) {
         contestValue = 255;
@@ -807,7 +807,7 @@ BOOL ScrCmd_MonAddContestValue(SCRIPTCONTEXT *ctx) {
     else {
         contestValue += contestModifier;
     }
-    SetMonData(pokemon, contestAttribute, &contestValue);
+    SetMonData(mon, contestAttribute, &contestValue);
 
     return FALSE;
 }

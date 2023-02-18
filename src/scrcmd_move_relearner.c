@@ -31,19 +31,19 @@ BOOL ScrCmd_466(SCRIPTCONTEXT *ctx) {
     u16 *retPtr = ScriptGetVarPointer(ctx);
     u16 slot = ScriptGetVar(ctx);
     PARTY *party = SavArray_PlayerParty_get(ctx->fsys->savedata);
-    Pokemon *pokemon = GetPartyMonByIndex(party, slot);
-    u16 *eligibleMoves = GetEligibleLevelUpMoves(pokemon, 32);
+    Pokemon *mon = GetPartyMonByIndex(party, slot);
+    u16 *eligibleMoves = GetEligibleLevelUpMoves(mon, 32);
     *retPtr = sub_0209186C(eligibleMoves);
     FreeToHeap(eligibleMoves);
     return FALSE;
 }
 
-static void CreateMoveRelearner(SCRIPTCONTEXT *ctx, int a1, Pokemon *pokemon, u16 *eligibleMoves) {
+static void CreateMoveRelearner(SCRIPTCONTEXT *ctx, int a1, Pokemon *mon, u16 *eligibleMoves) {
     void **unkAC = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
     struct MoveRelearner *moveRelearner = MoveRelearner_new(32);
     *unkAC = moveRelearner;
 
-    moveRelearner->pokemon = pokemon;
+    moveRelearner->mon = mon;
     moveRelearner->profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys)); 
     moveRelearner->options = Sav2_PlayerData_GetOptionsAddr(ctx->fsys->savedata);
     moveRelearner->eligibleMoves = eligibleMoves;
@@ -56,20 +56,20 @@ static void CreateMoveRelearner(SCRIPTCONTEXT *ctx, int a1, Pokemon *pokemon, u1
 
 BOOL ScrCmd_MoveRelearnerInit(SCRIPTCONTEXT *ctx) {
     u16 slot = ScriptGetVar(ctx);
-    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
-    u16 *eligibleMoves = GetEligibleLevelUpMoves(pokemon, 32);
-    CreateMoveRelearner(ctx, 1, pokemon, eligibleMoves);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
+    u16 *eligibleMoves = GetEligibleLevelUpMoves(mon, 32);
+    CreateMoveRelearner(ctx, 1, mon, eligibleMoves);
     return TRUE;
 }
 
 BOOL ScrCmd_MoveTutorInit(SCRIPTCONTEXT *ctx) {
     u16 slot = ScriptGetVar(ctx);
     u16 move = ScriptGetVar(ctx);
-    Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
     u16 *eligibleMoves = AllocFromHeap(32, 4);
     eligibleMoves[0] = move;
     eligibleMoves[1] = 0xffff;
-    CreateMoveRelearner(ctx, 0, pokemon, eligibleMoves);
+    CreateMoveRelearner(ctx, 0, mon, eligibleMoves);
     return TRUE;
 }
 

@@ -43,9 +43,9 @@ BOOL ScrCmd_LotoIdSearch(SCRIPTCONTEXT *ctx) {
 
     partyCount = GetPartyCount(SavArray_PlayerParty_get(fsys->savedata));
     for (monDigit = 0, monPosition = 0, i = 0; i < partyCount; i++) {
-        Pokemon *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
-        if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
-            otid = GetMonData(pokemon, MON_DATA_OTID, NULL) & 0xffff;
+        Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), i);
+        if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
+            otid = GetMonData(mon, MON_DATA_OTID, NULL) & 0xffff;
             digitCount = LotoId_CountDigitsMatched(lotoId, otid);
             if (digitCount != 0 && monDigit < digitCount) {
                 monDigit = digitCount;
@@ -56,9 +56,9 @@ BOOL ScrCmd_LotoIdSearch(SCRIPTCONTEXT *ctx) {
 
     for (boxDigit = 0, boxPosition = 0, ii = 0; ii < NUM_BOXES; ii++) {
         for (j = 0; j < MONS_PER_BOX; j++) {
-            BOXMON *pokemon = PCStorage_GetMonByIndexPair(storage, ii, j);
-            if (GetBoxMonData(pokemon, MON_DATA_SPECIES, NULL) != 0 && !GetBoxMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
-                otid = GetBoxMonData(pokemon, MON_DATA_OTID, NULL) & 0xffff;
+            BOXMON *boxMon = PCStorage_GetMonByIndexPair(storage, ii, j);
+            if (GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL) != 0 && !GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL)) {
+                otid = GetBoxMonData(boxMon, MON_DATA_OTID, NULL) & 0xffff;
                 digitCount = LotoId_CountDigitsMatched(lotoId, otid);
                 if (digitCount != 0 && boxDigit < digitCount) {
                     boxDigit = digitCount;

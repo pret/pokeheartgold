@@ -10,7 +10,7 @@ int DayCareMon_CalcLevelGrowth(DAYCAREMON *daycareMon);
 u16 Sav2_DayCare_BufferMonNickAndRetrievalPrice(DAYCARE *dayCare, u8 slot, MSGFMT *msgFmt);
 u8 Sav2_DayCare_BufferGrowthAndNick(DAYCARE *dayCare, u32 slot, MSGFMT *msgFmt);
 void Sav2_DayCare_ResetEggStats(DAYCARE *dayCare);
-void SetEggStats(Pokemon *pokemon, int species, u8 metLocation, PLAYERPROFILE *profile, int a4, int a5);
+void SetEggStats(Pokemon *mon, int species, u8 metLocation, PLAYERPROFILE *profile, int a4, int a5);
 void GiveEggToPlayer(DAYCARE *dayCare, PARTY *party, PLAYERPROFILE* profile);
 BOOL HandleDayCareStep(DAYCARE *dayCare, PARTY *party, FieldSystem *fsys);
 Pokemon *sub_0206CE44(PARTY *party);
@@ -19,6 +19,6 @@ void Sav2_DayCare_BufferMonStats(DAYCARE *dayCare, u32 nickname_idx, u32 level_i
 u16 Sav2_DayCare_BufferTailMonNick(DAYCARE *dayCare, MSGFMT *msgFmt);
 u8 Sav2_DayCare_GetState(DAYCARE *dayCare);
 u8 Sav2_DayCare_CalcCompatibility(DAYCARE *dayCare);
-void sub_0206D328(Pokemon *pokemon, HeapID heapId);
+void sub_0206D328(Pokemon *mon, HeapID heapId);
 
 #endif

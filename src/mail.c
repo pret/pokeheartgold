@@ -94,7 +94,7 @@ void Mail_SetNewMessageDetails(MAIL *mail, u8 mailType, u8 mon_no, SAVEDATA *sav
     u32 icon, isEgg, forme;
     PLAYERPROFILE *profile;
     PARTY *party;
-    Pokemon *pokemon;
+    Pokemon *mon;
 
     Mail_init(mail);
     mail->mail_type = mailType;
@@ -109,11 +109,11 @@ void Mail_SetNewMessageDetails(MAIL *mail, u8 mailType, u8 mon_no, SAVEDATA *sav
     // Get the Pokemon icon data
     mail->forme_flags = 0;
     for (i = mon_no, j = 0; i < GetPartyCount(party); i++) {
-        pokemon = GetPartyMonByIndex(party, i);
-        species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
-        isEgg = GetMonData(pokemon, MON_DATA_IS_EGG, NULL);
-        forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
-        icon = Pokemon_GetIconNaix(pokemon);
+        mon = GetPartyMonByIndex(party, i);
+        species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        isEgg = GetMonData(mon, MON_DATA_IS_EGG, NULL);
+        forme = GetMonData(mon, MON_DATA_FORME, NULL);
+        icon = Pokemon_GetIconNaix(mon);
         pal = GetMonIconPaletteEx(species, forme, isEgg);
 
         mail->mon_icons[j].icon = icon;
@@ -136,7 +136,7 @@ void Mail_SetNewMessageDetails(MAIL *mail, u8 mailType, u8 mon_no, SAVEDATA *sav
     }
 }
 
-MAIL *CreateKenyaMail(Pokemon *pokemon, u8 mailType, u8 gender, STRING *name, u8 otId) {
+MAIL *CreateKenyaMail(Pokemon *mon, u8 mailType, u8 gender, STRING *name, u8 otId) {
     u8 r0;
     u32 r5;
     u16 species;
@@ -165,10 +165,10 @@ MAIL *CreateKenyaMail(Pokemon *pokemon, u8 mailType, u8 gender, STRING *name, u8
 
     ret->forme_flags = 0;
 
-    species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
-    isEgg = GetMonData(pokemon, MON_DATA_IS_EGG, NULL);
-    forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
-    r5 = Pokemon_GetIconNaix(pokemon);
+    species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    isEgg = GetMonData(mon, MON_DATA_IS_EGG, NULL);
+    forme = GetMonData(mon, MON_DATA_FORME, NULL);
+    r5 = Pokemon_GetIconNaix(mon);
     r0 = GetMonIconPaletteEx(species, forme, isEgg);
     ret->mon_icons[0].icon = r5;
     ret->mon_icons[0].pal = r0;

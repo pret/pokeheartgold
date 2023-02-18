@@ -39,8 +39,8 @@ UNK_0201F79C_Sub *ov02_0224B418(FieldSystem *fsys, int gender);
 BOOL ov02_0224B43C(UNK_0201F79C_Sub *unk);
 void ov02_0224B448(UNK_0201F79C_Sub *unk);
 struct FieldLongWarpTaskData *CreateFieldEscapeRopeTaskEnv(FieldSystem *fsys, HeapID heapId);
-struct FieldLongWarpTaskData *CreateFieldTeleportTaskEnv(FieldSystem *fsys, Pokemon *pokemon, u8 slotno, HeapID heapId);
-struct FieldLongWarpTaskData *CreateFieldDigTaskEnv(FieldSystem *fsys, Pokemon *pokemon, u8 slotno, HeapID heapId);
+struct FieldLongWarpTaskData *CreateFieldTeleportTaskEnv(FieldSystem *fsys, Pokemon *mon, u8 slotno, HeapID heapId);
+struct FieldLongWarpTaskData *CreateFieldDigTaskEnv(FieldSystem *fsys, Pokemon *mon, u8 slotno, HeapID heapId);
 BOOL Task_FieldEscapeRope(TaskManager *taskManager);
 BOOL Task_FieldTeleport(TaskManager *taskManager);
 BOOL Task_FieldDig(TaskManager *taskManager);
@@ -49,7 +49,7 @@ void *ov02_0224C1D8(FieldSystem *fsys, int a1, int a2);
 u8 ov02_02251EE8(GearPhoneRingManager *a0, u8 *a1);
 
 // TODO: define the struct, figure out what a1 is
-void *ov02_02249458(FieldSystem *fsys, int a1, Pokemon *pokemon, int gender);
+void *ov02_02249458(FieldSystem *fsys, int a1, Pokemon *mon, int gender);
 BOOL ov02_0224953C(void *work);
 void ov02_02249548(void *work);
 

@@ -16,6 +16,6 @@ void BugContest_RestoreParty_RetrieveCaughtPokemon(BUGCONTEST *bugContest);
 BOOL BugContest_ContestantIsRegisteredN(BUGCONTEST *bugContest, u8 id, u8 n);
 void BugContest_InitOpponents(BUGCONTEST *bugContest);
 void BugContest_InitEncounters(BUGCONTEST *bugContest);
-u16 BugContest_JudgePlayerMon(BUGCONTEST *bugContest, Pokemon *pokemon);
+u16 BugContest_JudgePlayerMon(BUGCONTEST *bugContest, Pokemon *mon);
 
 #endif //POKEHEARTGOLD_BUG_CONTEST_H

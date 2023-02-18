@@ -477,9 +477,9 @@ BOOL ScrCmd_UpdateRotomForme(SCRIPTCONTEXT *ctx) {
     int defaultSlot = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     VarGet(ctx->fsys, ScriptReadHalfword(ctx)); //unsused variable
     u32 forme = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
-    Pokemon *rotom = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), rotomIndex);
-    Mon_UpdateRotomForme(rotom, forme, defaultSlot);
-    Pokedex_SetMonCaughtFlag(Sav2_Pokedex_get(fsys->savedata), rotom);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), rotomIndex);
+    Mon_UpdateRotomForme(mon, forme, defaultSlot);
+    Pokedex_SetMonCaughtFlag(Sav2_Pokedex_get(fsys->savedata), mon);
     return FALSE;
 }
 
@@ -997,7 +997,7 @@ BOOL ScrCmd_GiveTogepiEgg(SCRIPTCONTEXT *ctx) {
     u8 pp;
     u32 personality;
     u16 moveData;
-    Pokemon *togepi;
+    Pokemon *mon;
     PLAYERPROFILE *profile;
     PARTY *party;
     FieldSystem *fsys = ctx->fsys;
@@ -1009,13 +1009,13 @@ BOOL ScrCmd_GiveTogepiEgg(SCRIPTCONTEXT *ctx) {
         return FALSE;
     }
 
-    togepi = AllocMonZeroed(0xb);
-    ZeroMonData(togepi);
+    mon = AllocMonZeroed(0xb);
+    ZeroMonData(mon);
 
-    SetEggStats(togepi, SPECIES_TOGEPI, 1, profile, 3, sub_02017FE4(1, 0xd));
+    SetEggStats(mon, SPECIES_TOGEPI, 1, profile, 3, sub_02017FE4(1, 0xd));
     
     for (i = 0; i < 4; i++) {
-        if (!GetMonData(togepi, MON_DATA_MOVE1 + i, 0)) {
+        if (!GetMonData(mon, MON_DATA_MOVE1 + i, 0)) {
             break;
         }
     }
@@ -1025,16 +1025,16 @@ BOOL ScrCmd_GiveTogepiEgg(SCRIPTCONTEXT *ctx) {
     }    
 
     moveData = MOVE_EXTRASENSORY; 
-    SetMonData(togepi, MON_DATA_MOVE1 + i, &moveData);
+    SetMonData(mon, MON_DATA_MOVE1 + i, &moveData);
 
-    pp = GetMonData(togepi, MON_DATA_MOVE1MAXPP + i, 0);
-    SetMonData(togepi, MON_DATA_MOVE1PP + i, &pp);
+    pp = GetMonData(mon, MON_DATA_MOVE1MAXPP + i, 0);
+    SetMonData(mon, MON_DATA_MOVE1PP + i, &pp);
 
-    AddMonToParty(party, togepi);
+    AddMonToParty(party, mon);
 
-    FreeToHeap(togepi);
+    FreeToHeap(mon);
 
-    SaveMisc_SetTogepiPersonalityGender(Sav2_Misc_get(fsys->savedata), GetMonData(togepi, MON_DATA_PERSONALITY, 0), GetMonData(togepi, MON_DATA_GENDER, 0));
+    SaveMisc_SetTogepiPersonalityGender(Sav2_Misc_get(fsys->savedata), GetMonData(mon, MON_DATA_PERSONALITY, 0), GetMonData(mon, MON_DATA_GENDER, 0));
 
     return FALSE;
 }
@@ -1058,7 +1058,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(SCRIPTCONTEXT *ctx) {
     u8 forme;
     u8 maxPP;
     u16 heldItem;
-    Pokemon *pichu;    
+    Pokemon *mon;    
     PARTY *party;
     FieldSystem *fsys;
     PLAYERPROFILE *profile;
@@ -1070,34 +1070,34 @@ BOOL ScrCmd_GiveSpikyEarPichu(SCRIPTCONTEXT *ctx) {
     if (GetPartyCount(party) >= 6) {
         return FALSE;
     }
-    pichu = AllocMonZeroed(0xb);
-    ZeroMonData(pichu);
+    mon = AllocMonZeroed(0xb);
+    ZeroMonData(mon);
 
     u32 trId = PlayerProfile_GetTrainerID(profile);
     u32 unkA = ChangePersonalityToNatureGenderAndAbility(trId, 0xac, NATURE_NAUGHTY, MON_FEMALE, 0, 0);
-    CreateMon(pichu, SPECIES_PICHU, 30, 0x20, 1, unkA, 1, trId);
+    CreateMon(mon, SPECIES_PICHU, 30, 0x20, 1, unkA, 1, trId);
     
     forme = 1;
-    SetMonData(pichu, MON_DATA_FORME, &forme);
+    SetMonData(mon, MON_DATA_FORME, &forme);
 
     for (i = 0; i < 4; i++) {
-        SetMonData(pichu, MON_DATA_MOVE1 + i, &sSpikyEarPichuMoveset[i]);
-        maxPP = GetMonData(pichu, MON_DATA_MOVE1MAXPP + i, 0);
-        SetMonData(pichu, MON_DATA_MOVE1PP + i, &maxPP);
+        SetMonData(mon, MON_DATA_MOVE1 + i, &sSpikyEarPichuMoveset[i]);
+        maxPP = GetMonData(mon, MON_DATA_MOVE1MAXPP + i, 0);
+        SetMonData(mon, MON_DATA_MOVE1PP + i, &maxPP);
     }
 
     heldItem = ITEM_ZAP_PLATE;
-    SetMonData(pichu, MON_DATA_HELD_ITEM, &heldItem);
+    SetMonData(mon, MON_DATA_HELD_ITEM, &heldItem);
 
     u32 unkB = sub_02017FE4(0, MapHeader_GetMapSec(ctx->fsys->location->mapId));
 
-    sub_020720FC(pichu, profile, 4, unkB, 0x18, 0xb);
+    sub_020720FC(mon, profile, 4, unkB, 0x18, 0xb);
 
-    AddMonToParty(party, pichu);
+    AddMonToParty(party, mon);
 
-    FreeToHeap(pichu);
+    FreeToHeap(mon);
 
-    UpdatePokedexWithReceivedSpecies(fsys->savedata, pichu);
+    UpdatePokedexWithReceivedSpecies(fsys->savedata, mon);
 
     return FALSE;
 }
@@ -1457,7 +1457,7 @@ BOOL ScrCmd_JudgeBugContest(SCRIPTCONTEXT *ctx) {
     if (bugContest->caught_poke == 0) {
         *species = 0;
     } else {
-        *species = GetMonData(bugContest->pokemon, MON_DATA_SPECIES, NULL);
+        *species = GetMonData(bugContest->mon, MON_DATA_SPECIES, NULL);
     }
 
     return FALSE;

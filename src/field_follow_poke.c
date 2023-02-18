@@ -1507,7 +1507,7 @@ LocalMapObject *sub_020699F8(MapObjectMan *mapObjectMan, int x, int y, int direc
     FieldSystem *fsys;
     PARTY *party;
     int partyCount;
-    Pokemon *pokemon;
+    Pokemon *mon;
     int species;
     int forme;
     int gender;
@@ -1522,20 +1522,20 @@ LocalMapObject *sub_020699F8(MapObjectMan *mapObjectMan, int x, int y, int direc
     SavFollowPoke_SetUnused2bitField(0, Sav2_FollowPoke_get(fsys->savedata));
     if (partyCount != 0) {
         if (CountAlivePokemon(party) == 0) {
-            pokemon = GetFirstNonEggInParty(party);
+            mon = GetFirstNonEggInParty(party);
         } else {
-            pokemon = GetFirstAliveMonInParty_CrashIfNone(party);
+            mon = GetFirstAliveMonInParty_CrashIfNone(party);
         }
-        species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+        species = GetMonData(mon, MON_DATA_SPECIES, NULL);
         fsys->followMon.mapObject = NULL;
         if (GetFollowPokePermissionBySpeciesAndMap(species, mapno)) {
-            forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
-            gender = GetMonData(pokemon, MON_DATA_GENDER, NULL);
-            shiny = MonIsShiny(pokemon);
+            forme = GetMonData(mon, MON_DATA_FORME, NULL);
+            gender = GetMonData(mon, MON_DATA_GENDER, NULL);
+            shiny = MonIsShiny(mon);
             fsys->followMon.mapObject = CreateFollowingSpriteFieldObject(mapObjectMan, species, forme, gender, direction, x, y, shiny);
             fsys->followMon.active = TRUE;
             FollowPokeFsysParamSet(fsys, species, forme, shiny, gender);
-            FsysUnkSub108_Set(fsys->unk108, pokemon, species, GetMonData(pokemon, MON_DATA_PERSONALITY, NULL));
+            FsysUnkSub108_Set(fsys->unk108, mon, species, GetMonData(mon, MON_DATA_PERSONALITY, NULL));
             player_unk = PlayerAvatar_GetState(fsys->playerAvatar);
             if (player_unk == 0 || player_unk == 3) {
                 SavFollowPoke_SetUnused2bitField(1, Sav2_FollowPoke_get(fsys->savedata));
@@ -1563,7 +1563,7 @@ void sub_02069B74(MapObjectMan *mapObjectMan, u32 mapno) {
     FieldSystem *fsys;
     PARTY *party;
     int partyCount;
-    Pokemon *pokemon;
+    Pokemon *mon;
     int species;
     int forme;
     u8 gender;
@@ -1576,17 +1576,17 @@ void sub_02069B74(MapObjectMan *mapObjectMan, u32 mapno) {
     partyCount = GetPartyCount(party);
     FsysFollowMonClear(&fsys->followMon);
     if (partyCount != 0) {
-        pokemon = GetFirstAliveMonInParty_CrashIfNone(party);
-        species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
-        FsysUnkSub108_Set(fsys->unk108, pokemon, species, GetMonData(pokemon, MON_DATA_PERSONALITY, NULL));
+        mon = GetFirstAliveMonInParty_CrashIfNone(party);
+        species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        FsysUnkSub108_Set(fsys->unk108, mon, species, GetMonData(mon, MON_DATA_PERSONALITY, NULL));
         if (GetFollowPokePermissionBySpeciesAndMap(species, mapno)) {
             followPokeObj = GetMapObjectByID(fsys->mapObjectMan, obj_partner_poke);
             if (followPokeObj == NULL) {
                 fsys->followMon.unk15 = 1;
             } else {
-                forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
-                gender = GetMonGender(pokemon);
-                shiny = MonIsShiny(pokemon);
+                forme = GetMonData(mon, MON_DATA_FORME, NULL);
+                gender = GetMonGender(mon);
+                shiny = MonIsShiny(mon);
                 fsys->followMon.mapObject = followPokeObj;
                 fsys->followMon.active = TRUE;
                 FollowPokeFsysParamSet(fsys, species, forme, shiny, gender);
@@ -1615,9 +1615,9 @@ void sub_02069B74(MapObjectMan *mapObjectMan, u32 mapno) {
         } else {
             followPokeObj = GetMapObjectByID(fsys->mapObjectMan, obj_partner_poke);
             if (followPokeObj != NULL) {
-                forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
-                gender = GetMonGender(pokemon);
-                shiny = MonIsShiny(pokemon);
+                forme = GetMonData(mon, MON_DATA_FORME, NULL);
+                gender = GetMonGender(mon);
+                shiny = MonIsShiny(mon);
                 FollowPokeFsysParamSet(fsys, species, forme, shiny, gender);
                 FollowPokeMapObjectSetParams(followPokeObj, species, forme, shiny);
                 MapObject_SetGfxID(followPokeObj, FollowingPokemon_GetSpriteID(species, forme, gender));
@@ -1942,19 +1942,19 @@ struct FieldSystemUnk108 *FsysUnkSub108_Alloc(HeapID heapId) {
     ret->species = 0;
     ret->personality = 0;
     ret->isRegistered = 0;
-    ret->pokemon = 0;
+    ret->mon = 0;
     return ret;
 }
 
 void FsysUnkSub108_AddMonMood(struct FieldSystemUnk108 *unk, s8 by) {
     s8 mood;
 
-    if (unk->pokemon == NULL) {
+    if (unk->mon == NULL) {
         GF_ASSERT(0);
         return;
     }
 
-    mood = GetMonData(unk->pokemon, MON_DATA_MOOD, NULL);
+    mood = GetMonData(unk->mon, MON_DATA_MOOD, NULL);
     if (mood + by > 127) {
         mood = 127;
     } else if (mood + by < -127) {
@@ -1962,52 +1962,52 @@ void FsysUnkSub108_AddMonMood(struct FieldSystemUnk108 *unk, s8 by) {
     } else {
         mood += by;
     }
-    SetMonData(unk->pokemon, MON_DATA_MOOD, &mood);
+    SetMonData(unk->mon, MON_DATA_MOOD, &mood);
 }
 
 void FsysUnkSub108_SetMonMood(struct FieldSystemUnk108 *unk, s8 mood) {
-    if (unk->pokemon == NULL) {
+    if (unk->mon == NULL) {
         GF_ASSERT(0);
         return;
     }
 
-    SetMonData(unk->pokemon, MON_DATA_MOOD, &mood);
+    SetMonData(unk->mon, MON_DATA_MOOD, &mood);
 }
 
 s8 FsysUnkSub108_GetMonMood(struct FieldSystemUnk108 *unk) {
-    if (unk->pokemon == NULL) {
+    if (unk->mon == NULL) {
         GF_ASSERT(0);
         return 0;
     }
 
-    return GetMonData(unk->pokemon, MON_DATA_MOOD, NULL);
+    return GetMonData(unk->mon, MON_DATA_MOOD, NULL);
 }
 
-void FsysUnkSub108_Set(struct FieldSystemUnk108 *a0, Pokemon *pokemon, u16 species, u32 personality) {
+void FsysUnkSub108_Set(struct FieldSystemUnk108 *a0, Pokemon *mon, u16 species, u32 personality) {
     s8 mood;
     if (species != SPECIES_NONE && (a0->isRegistered == 0 || a0->species != species || a0->personality != personality)) {
         a0->species = species;
         a0->personality = personality;
         mood = 0;
         a0->isRegistered = 1;
-        a0->pokemon = pokemon;
-        SetMonData(pokemon, MON_DATA_MOOD, &mood);
+        a0->mon = mon;
+        SetMonData(mon, MON_DATA_MOOD, &mood);
     }
 }
 
 void FsysUnkSub108_MoveMoodTowardsNeutral(struct FieldSystemUnk108 *a0) {
     s8 mood;
-    if (a0->pokemon == NULL) {
+    if (a0->mon == NULL) {
         GF_ASSERT(0);
         return;
     }
-    mood = GetMonData(a0->pokemon, MON_DATA_MOOD, NULL);
+    mood = GetMonData(a0->mon, MON_DATA_MOOD, NULL);
     if (mood < 0) {
         mood++;
     } else if (mood > 0) {
         mood--;
     }
-    SetMonData(a0->pokemon, MON_DATA_MOOD, &mood);
+    SetMonData(a0->mon, MON_DATA_MOOD, &mood);
 }
 
 int SpeciesToOverworldModelIndexOffset(int species) {

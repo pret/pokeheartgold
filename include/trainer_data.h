@@ -108,7 +108,7 @@ void GetTrainerMessageByIdPair(u32 trainer_idx, u32 msg_id, STRING * str, HeapID
 void TrainerData_ReadTrPoke(u32 idx, TRPOKE * dest);
 void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id);
 void TrMon_OverridePidGender(int species, int forme, int overrideParam, u32 *pid);
-void TrMon_FrustrationCheckAndSetFriendship(Pokemon *pokemon);
+void TrMon_FrustrationCheckAndSetFriendship(Pokemon *mon);
 #endif //PM_ASM
 
 #endif //POKEHEARTGOLD_TRAINER_DATA_H

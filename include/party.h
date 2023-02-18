@@ -8,7 +8,7 @@ u32 PartyCore_sizeof(void);
 PARTY * SavArray_Party_alloc(HeapID heapId);
 void SavArray_Party_init(PARTY *party);
 void InitPartyWithMaxSize(PARTY *party, int maxSize);
-BOOL AddMonToParty(PARTY *party, const Pokemon *pokemon);
+BOOL AddMonToParty(PARTY *party, const Pokemon *mon);
 BOOL RemoveMonFromParty(PARTY *party, int slot);
 int GetPartyMaxCount(const PARTY *party);
 int GetPartyCount(const PARTY *party);

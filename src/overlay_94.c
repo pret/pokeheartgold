@@ -43,19 +43,19 @@ void PartyMenu_InitIconFormeChangeWork(PartyMenuStruct* unkPtr) {
 
 BOOL PartyMenu_AnimateIconFormeChange(PartyMenuStruct* unkPtr) {
     IconFormeChangeWork* work = unkPtr->iconFormeChange;
-    Pokemon* pokemon = GetPartyMonByIndex(unkPtr->unk654->party, unkPtr->partyMonIndex);
+    Pokemon *mon = GetPartyMonByIndex(unkPtr->unk654->party, unkPtr->partyMonIndex);
 
     switch (work->state) {
     case 0:
-        work->species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+        work->species = GetMonData(mon, MON_DATA_SPECIES, NULL);
         switch (work->species) {
         case SPECIES_GIRATINA:
-            Mon_UpdateGiratinaForme(pokemon);
+            Mon_UpdateGiratinaForme(mon);
             work->duration = 65;
             work->fileId = NARC_particle_giratina;
             break;
         case SPECIES_SHAYMIN:
-            Mon_UpdateShayminForme(pokemon, SHAYMIN_SKY);
+            Mon_UpdateShayminForme(mon, SHAYMIN_SKY);
             work->duration = 35;
             work->fileId = NARC_particle_shaymin;
             break;
@@ -64,7 +64,7 @@ BOOL PartyMenu_AnimateIconFormeChange(PartyMenuStruct* unkPtr) {
             GF_ASSERT(FALSE);
             break;
         } 
-        Pokedex_SetMonCaughtFlag(Sav2_Pokedex_get(FieldSys_GetSaveDataPtr(unkPtr->unk654->fsys)), pokemon);
+        Pokedex_SetMonCaughtFlag(Sav2_Pokedex_get(FieldSys_GetSaveDataPtr(unkPtr->unk654->fsys)), mon);
         work->state++;
         break;
     case 1:
@@ -97,7 +97,7 @@ BOOL PartyMenu_AnimateIconFormeChange(PartyMenuStruct* unkPtr) {
         work->state++;
         break;
     case 7:
-        sub_020720D4(pokemon);
+        sub_020720D4(mon);
         work->state++;
         break;
     case 8:
@@ -107,7 +107,7 @@ BOOL PartyMenu_AnimateIconFormeChange(PartyMenuStruct* unkPtr) {
         break;
     case 9:
         STRING* str = NewString_ReadMsgData(unkPtr->msgData, msg_0300_00188); //" changed Forme!"
-        BufferBoxMonNickname(unkPtr->unk7c4, 0, Mon_GetBoxMon(pokemon));
+        BufferBoxMonNickname(unkPtr->unk7c4, 0, Mon_GetBoxMon(mon));
         StringExpandPlaceholders(unkPtr->unk7c4, unkPtr->unk7c8, str);
         String_dtor(str);
         sub_0207DAEC(unkPtr, -1, 1);

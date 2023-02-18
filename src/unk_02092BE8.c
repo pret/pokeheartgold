@@ -304,8 +304,8 @@ BOOL sub_020930C4(FieldSystem* sys) {
     return FALSE;
 }
 
-BOOL sub_02093134(FieldSystem* sys, Pokemon * pkmn) {
-    if (sub_0206D8D0(pkmn, sys->savedata) == 0) {
+BOOL sub_02093134(FieldSystem* sys, Pokemon *mon) {
+    if (sub_0206D8D0(mon, sys->savedata) == 0) {
         return FALSE;
     }
     sub_02092E14(Fsys_GetGearPhoneRingManager(sys), 0, 1);

@@ -40,11 +40,11 @@ void InitPartyWithMaxSize(PARTY *party, int maxSize) {
     MI_CpuClear8(&party->extra, 5 * party->core.maxCount);
 }
 
-BOOL AddMonToParty(PARTY *party, const Pokemon *pokemon) {
+BOOL AddMonToParty(PARTY *party, const Pokemon *mon) {
     if (party->core.curCount >= party->core.maxCount) {
         return FALSE;
     }
-    party->core.mons[party->core.curCount] = *pokemon;
+    party->core.mons[party->core.curCount] = *mon;
     MI_CpuClear8(&party->extra.unk_00[party->core.curCount], sizeof(PARTY_EXTRA_SUB));
     party->core.curCount++;
     return TRUE;

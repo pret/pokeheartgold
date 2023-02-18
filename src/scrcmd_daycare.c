@@ -200,13 +200,13 @@ static LocalMapObject* CreateDayCareMonSpriteInternal(MapObjectMan* object_man, 
 }
 
 BOOL ScrCmd_DayCareSanitizeMon(SCRIPTCONTEXT* ctx) {
-    Pokemon* party_mon;
+    Pokemon *mon;
 
     FieldSystem* fsys = ctx->fsys;
     u16 party_slot = ScriptGetVar(ctx);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
     PARTY* party = SavArray_PlayerParty_get(fsys->savedata);
-    party_mon = GetPartyMonByIndex(party, party_slot);
+    mon = GetPartyMonByIndex(party, party_slot);
 
     *ret_ptr = 0;
 
@@ -214,7 +214,7 @@ BOOL ScrCmd_DayCareSanitizeMon(SCRIPTCONTEXT* ctx) {
         return FALSE;
     }
 
-    u32 held_item = GetMonData(party_mon, MON_DATA_HELD_ITEM, NULL);
+    u32 held_item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
     if (held_item == ITEM_GRISEOUS_ORB) {
         BAG_DATA* bag = Sav2_Bag_get(fsys->savedata);
         if (!Bag_AddItem(bag, ITEM_GRISEOUS_ORB, 1, 11)) {
@@ -223,21 +223,21 @@ BOOL ScrCmd_DayCareSanitizeMon(SCRIPTCONTEXT* ctx) {
         }
 
         u32 no_item = ITEM_NONE;
-        SetMonData(party_mon, MON_DATA_HELD_ITEM, &no_item);
+        SetMonData(mon, MON_DATA_HELD_ITEM, &no_item);
     }
 
-    s32 forme = GetMonData(party_mon, MON_DATA_FORME, NULL);
+    s32 forme = GetMonData(mon, MON_DATA_FORME, NULL);
     if (forme > 0) {
-        u32 species = GetMonData(party_mon, MON_DATA_SPECIES, NULL);
+        u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
         switch (species) {
         case SPECIES_GIRATINA:
-            Mon_UpdateGiratinaForme(party_mon);
+            Mon_UpdateGiratinaForme(mon);
             break;
         case SPECIES_ROTOM:
-            Mon_UpdateRotomForme(party_mon, 0, 0);
+            Mon_UpdateRotomForme(mon, 0, 0);
             break;
         case SPECIES_SHAYMIN:
-            Mon_UpdateShayminForme(party_mon, 0);
+            Mon_UpdateShayminForme(mon, 0);
             break;
         }
     }
