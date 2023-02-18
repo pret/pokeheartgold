@@ -26,12 +26,12 @@ struct PokemonStorageSystem {
 #define BOX_ALL_MODIFIED_FLAG      ((u32)((1<<NUM_BOXES)-1))
 
 void PCStorage_GetBoxName(PC_STORAGE *pcStorage, u32 boxno, STRING *dest);
-BOOL PCStorage_PlaceMonInFirstEmptySlotInAnyBox(PC_STORAGE *storage, BoxPokemon *boxmon);
+BOOL PCStorage_PlaceMonInFirstEmptySlotInAnyBox(PC_STORAGE *storage, BoxPokemon *boxMon);
 void PCStorage_init(PC_STORAGE *storage);
 u32 PCStorage_sizeof(void);
 void PCStorage_InitializeBoxes(PC_STORAGE *storage);
-BOOL PCStorage_PlaceMonInBoxFirstEmptySlot(PC_STORAGE* storage, u32 boxno, BoxPokemon *boxmon);
-BOOL PCStorage_PlaceMonInBoxByIndexPair(PC_STORAGE* storage, u32 boxno, u32 slotno, BoxPokemon *boxmon);
+BOOL PCStorage_PlaceMonInBoxFirstEmptySlot(PC_STORAGE* storage, u32 boxno, BoxPokemon *boxMon);
+BOOL PCStorage_PlaceMonInBoxByIndexPair(PC_STORAGE* storage, u32 boxno, u32 slotno, BoxPokemon *boxMon);
 void PCStorage_SwapMonsInBoxByIndexPair(PC_STORAGE* storage, u32 boxno, u32 from, u32 to);
 void PCStorage_DeleteBoxMonByIndexPair(PC_STORAGE* storage, u32 boxno, u32 slotno);
 int PCStorage_GetActiveBox(PC_STORAGE *storage);

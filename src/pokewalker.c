@@ -55,17 +55,17 @@ void sub_020326A4(POKEWALKER *pokeWalker, u16 a1, u16 a2) {
     pokeWalker->unk_002 = a2;
 }
 
-void Pokewalker_SetBoxMon(POKEWALKER *pokeWalker, BoxPokemon *boxmon) {
-    MI_CpuCopyFast(boxmon, &pokeWalker->pokemon, sizeof(BoxPokemon));
+void Pokewalker_SetBoxMon(POKEWALKER *pokeWalker, BoxPokemon *boxMon) {
+    MI_CpuCopyFast(boxMon, &pokeWalker->pokemon, sizeof(BoxPokemon));
 }
 
 void Pokewalker_ClearBoxMon(POKEWALKER *pokeWalker) {
     MI_CpuClearFast(&pokeWalker->pokemon, sizeof(BoxPokemon));
 }
 
-BOOL Pokewalker_TryGetBoxMon(POKEWALKER *pokeWalker, BoxPokemon *boxmon) {
+BOOL Pokewalker_TryGetBoxMon(POKEWALKER *pokeWalker, BoxPokemon *boxMon) {
     if (pokewalkerHasBoxmon(pokeWalker)) {
-        MI_CpuCopyFast(&pokeWalker->pokemon, boxmon, sizeof(BoxPokemon));
+        MI_CpuCopyFast(&pokeWalker->pokemon, boxMon, sizeof(BoxPokemon));
         return TRUE;
     }
     return FALSE;

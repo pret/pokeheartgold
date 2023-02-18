@@ -2,21 +2,21 @@
 #include "pokemon_icon_idx.h"
 #include "constants/species.h"
 
-static u16 _BoxMonGetForme(BoxPokemon *boxmon);
+static u16 _BoxMonGetForme(BoxPokemon *boxMon);
 
-u32 Boxmon_GetIconNaix(BoxPokemon *boxmon) {
+u32 Boxmon_GetIconNaix(BoxPokemon *boxMon) {
     BOOL encry;
     int species;
     BOOL isEgg;
     int forme;
     u32 ret;
 
-    encry = AcquireBoxMonLock(boxmon);
-    species = GetBoxMonData(boxmon, MON_DATA_SPECIES, NULL);
-    isEgg = GetBoxMonData(boxmon, MON_DATA_IS_EGG, NULL);
-    forme = _BoxMonGetForme(boxmon);
+    encry = AcquireBoxMonLock(boxMon);
+    species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
+    isEgg = GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL);
+    forme = _BoxMonGetForme(boxMon);
     ret = GetMonIconNaixEx(species, isEgg, forme);
-    ReleaseBoxMonLock(boxmon, encry);
+    ReleaseBoxMonLock(boxMon, encry);
     return ret;
 }
 
@@ -78,10 +78,10 @@ u32 GetBattleMonIconNaixEx(u32 species, BOOL isEgg, u32 forme) {
     return GetMonIconNaixEx(species, isEgg, forme);
 }
 
-static u16 _BoxMonGetForme(BoxPokemon *boxmon) {
-    switch (GetBoxMonData(boxmon, MON_DATA_SPECIES2, NULL)) {
+static u16 _BoxMonGetForme(BoxPokemon *boxMon) {
+    switch (GetBoxMonData(boxMon, MON_DATA_SPECIES2, NULL)) {
     case SPECIES_UNOWN:
-        return GetBoxMonUnownLetter(boxmon);
+        return GetBoxMonUnownLetter(boxMon);
     case SPECIES_DEOXYS:
     case SPECIES_SHELLOS:
     case SPECIES_GASTRODON:
@@ -90,7 +90,7 @@ static u16 _BoxMonGetForme(BoxPokemon *boxmon) {
     case SPECIES_GIRATINA:
     case SPECIES_SHAYMIN:
     case SPECIES_ROTOM:
-        return GetBoxMonData(boxmon, MON_DATA_FORME, NULL);
+        return GetBoxMonData(boxMon, MON_DATA_FORME, NULL);
     default:
         return 0;
     }
@@ -181,17 +181,17 @@ const u8 GetBattleMonIconPaletteEx(u32 species, u32 forme, BOOL isEgg) {
     return GetMonIconPaletteEx(species, forme, isEgg);
 }
 
-const u8 Boxmon_GetIconPalette(BoxPokemon *boxmon) {
+const u8 Boxmon_GetIconPalette(BoxPokemon *boxMon) {
     BOOL encry;
     u32 species;
     u32 forme;
     BOOL isEgg;
 
-    encry = AcquireBoxMonLock(boxmon);
-    forme = _BoxMonGetForme(boxmon);
-    species = GetBoxMonData(boxmon, MON_DATA_SPECIES, NULL);
-    isEgg = GetBoxMonData(boxmon, MON_DATA_IS_EGG, NULL);
-    ReleaseBoxMonLock(boxmon, encry);
+    encry = AcquireBoxMonLock(boxMon);
+    forme = _BoxMonGetForme(boxMon);
+    species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
+    isEgg = GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL);
+    ReleaseBoxMonLock(boxMon, encry);
     return GetMonIconPaletteEx(species, forme, isEgg);
 }
 

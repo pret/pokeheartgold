@@ -23,7 +23,7 @@ static void DayCareMon_CopyFromPartySlot(PARTY *party, int partyIdx, DAYCAREMON 
 static void Sav2_DayCare_Compaction(DAYCARE *daycare);
 static void Daycare_LearnLevelUpMoves(Pokemon *mon);
 static int Sav2_DayCare_MoveMonToParty(PARTY *party, DAYCAREMON *daycareMon, MSGFMT *msgFmt);
-static int GetDayCareUpdatedLevel(BoxPokemon *boxmon, u32 steps);
+static int GetDayCareUpdatedLevel(BoxPokemon *boxMon, u32 steps);
 static u8 DayCareMon_BufferLevelGrowthAndNick(DAYCAREMON *daycareMon, MSGFMT *msgFmt);
 static u16 DayCareMon_BufferNickAndRetrievalPrice(DAYCAREMON *daycareMon, MSGFMT *msgFmt);
 static void Daycare_GetBothBoxMonsPtr(DAYCARE *dayCare, BoxPokemon **boxmons);
@@ -32,7 +32,7 @@ static void GenerateEggPID(DAYCARE *dayCare);
 static void _IVList_Remove(u8 *ptr, int idx);
 static void InheritIVs(Pokemon *egg, DAYCARE *dayCare);
 static u8 LoadEggMoves(Pokemon *mon, u16 *dest);
-static void InheritMoves(Pokemon *egg, BoxPokemon *dad, BoxPokemon *mom);
+static void InheritMoves(Pokemon *egg, BoxPokemon *father, BoxPokemon *mother);
 static u16 Daycare_BreedingIncenseCheck(u16 species, DAYCARE *dayCare);
 static void Daycare_LightBallCheck(Pokemon *egg, DAYCARE *dayCare);
 static u16 Daycare_GetEggSpecies(DAYCARE *dayCare, u8 *gender_idx);
@@ -83,13 +83,13 @@ static void DayCareMon_CopyFromPartySlot(PARTY *party, int partyIdx, DAYCAREMON 
     u16 nickname[POKEMON_NAME_LENGTH + 1];
     u8 mood;
     DAYCAREMAIL *daycareMail;
-    BoxPokemon *boxmon;
+    BoxPokemon *boxMon;
     Pokemon *partyMon;
     const u16 *playerNamePtr;
 
     partyMon = GetPartyMonByIndex(party, partyIdx);
     daycareMail = DayCareMon_GetExtras(daycareMon);
-    boxmon = DayCareMon_GetBoxMon(daycareMon);
+    boxMon = DayCareMon_GetBoxMon(daycareMon);
     playerNamePtr = PlayerProfile_GetNamePtr(Sav2_PlayerData_GetProfileAddr(saveData));
     GetMonData(partyMon, MON_DATA_NICKNAME, nickname);
     if (BoxMonIsHoldingMail(Mon_GetBoxMon(partyMon))) {
@@ -97,8 +97,8 @@ static void DayCareMon_CopyFromPartySlot(PARTY *party, int partyIdx, DAYCAREMON 
     }
     mood = 0;
     SetMonData(partyMon, MON_DATA_MOOD, &mood);
-    CopyPokemonToBoxPokemon(partyMon, boxmon);
-    BoxMon_UpdateShayminForme(boxmon, SHAYMIN_LAND);
+    CopyPokemonToBoxPokemon(partyMon, boxMon);
+    BoxMon_UpdateShayminForme(boxMon, SHAYMIN_LAND);
     DayCareMon_SetSteps(daycareMon, 0);
     RemoveMonFromParty(party, partyIdx);
     if (!PartyHasMon(party, SPECIES_CHATOT)) {
@@ -155,29 +155,29 @@ static void Daycare_LearnLevelUpMoves(Pokemon *mon) {
 static int Sav2_DayCare_MoveMonToParty(PARTY *party, DAYCAREMON *daycareMon, MSGFMT *msgFmt) {
     u32 exp;
     Pokemon *mon;
-    BoxPokemon *boxmon;
+    BoxPokemon *boxMon;
     DAYCAREMAIL *daycareMail;
     u16 species;
 
     mon = AllocMonZeroed(4);
-    boxmon = DayCareMon_GetBoxMon(daycareMon);
+    boxMon = DayCareMon_GetBoxMon(daycareMon);
     daycareMail = DayCareMon_GetExtras(daycareMon);
 
-    BufferBoxMonNickname(msgFmt, 0, boxmon);
-    species = GetBoxMonData(boxmon, MON_DATA_SPECIES, NULL);
+    BufferBoxMonNickname(msgFmt, 0, boxMon);
+    species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
 
-    CopyBoxPokemonToPokemon(boxmon, mon);
+    CopyBoxPokemonToPokemon(boxMon, mon);
     if (GetMonData(mon, MON_DATA_LEVEL, NULL) != MAX_LEVEL) {
         exp = GetMonData(mon, MON_DATA_EXPERIENCE, NULL);
         exp += DayCareMon_GetSteps(daycareMon);
         SetMonData(mon, MON_DATA_EXPERIENCE, &exp);
         Daycare_LearnLevelUpMoves(mon);
     }
-    if (BoxMonIsHoldingMail(boxmon)) {
+    if (BoxMonIsHoldingMail(boxMon)) {
         SetMonData(mon, MON_DATA_MAIL_STRUCT, DayCareMail_GetMailPtr(daycareMail));
     }
     AddMonToParty(party, mon);
-    ZeroBoxMonData(boxmon);
+    ZeroBoxMonData(boxMon);
     DayCareMon_SetSteps(daycareMon, 0);
     FreeToHeap(mon);
     return species;
@@ -191,7 +191,7 @@ u16 Sav2_DayCare_RetrieveMon(PARTY *party, MSGFMT *msgFmt, DAYCARE *daycare, u8 
     return ret;
 }
 
-static int GetDayCareUpdatedLevel(BoxPokemon *boxmon, u32 steps) {
+static int GetDayCareUpdatedLevel(BoxPokemon *boxMon, u32 steps) {
     Pokemon *tmpMon;
     BoxPokemon *boxmon_tmp;
     u32 exp;
@@ -199,7 +199,7 @@ static int GetDayCareUpdatedLevel(BoxPokemon *boxmon, u32 steps) {
 
     tmpMon = AllocMonZeroed(11);
     boxmon_tmp = Mon_GetBoxMon(tmpMon);
-    CopyBoxPokemonToBoxPokemon(boxmon, boxmon_tmp);
+    CopyBoxPokemonToBoxPokemon(boxMon, boxmon_tmp);
     exp = GetBoxMonData(boxmon_tmp, MON_DATA_EXPERIENCE, NULL);
     exp += steps;
     SetBoxMonData(boxmon_tmp, MON_DATA_EXPERIENCE, &exp);
@@ -209,34 +209,34 @@ static int GetDayCareUpdatedLevel(BoxPokemon *boxmon, u32 steps) {
 }
 
 int DayCareMon_CalcLevelGrowth(DAYCAREMON *daycareMon) {
-    BoxPokemon *boxmon;
+    BoxPokemon *boxMon;
     u8 cur_level;
     u8 new_level;
 
-    boxmon = DayCareMon_GetBoxMon(daycareMon);
-    cur_level = CalcBoxMonLevel(boxmon);
-    new_level = GetDayCareUpdatedLevel(boxmon, DayCareMon_GetSteps(daycareMon));
+    boxMon = DayCareMon_GetBoxMon(daycareMon);
+    cur_level = CalcBoxMonLevel(boxMon);
+    new_level = GetDayCareUpdatedLevel(boxMon, DayCareMon_GetSteps(daycareMon));
     return new_level - cur_level;
 }
 
 static u8 DayCareMon_BufferLevelGrowthAndNick(DAYCAREMON *daycareMon, MSGFMT *msgFmt) {
-    BoxPokemon *boxmon;
+    BoxPokemon *boxMon;
     int levelGrowth;
 
-    boxmon = DayCareMon_GetBoxMon(daycareMon);
+    boxMon = DayCareMon_GetBoxMon(daycareMon);
     levelGrowth = DayCareMon_CalcLevelGrowth(daycareMon);
     BufferIntegerAsString(msgFmt, 1, levelGrowth, 3, STRCONVMODE_LEFT_ALIGN, TRUE);
-    BufferBoxMonNickname(msgFmt, 0, boxmon);
+    BufferBoxMonNickname(msgFmt, 0, boxMon);
     return levelGrowth;
 }
 
 static u16 DayCareMon_BufferNickAndRetrievalPrice(DAYCAREMON *daycareMon, MSGFMT *msgFmt) {
-    BoxPokemon *boxmon;
+    BoxPokemon *boxMon;
     u16 levelGrowth;
     u16 price;
-    boxmon = DayCareMon_GetBoxMon(daycareMon);
+    boxMon = DayCareMon_GetBoxMon(daycareMon);
     levelGrowth = DayCareMon_CalcLevelGrowth(daycareMon);
-    BufferBoxMonNickname(msgFmt, 0, boxmon);
+    BufferBoxMonNickname(msgFmt, 0, boxMon);
     price = (levelGrowth + 1) * 100;
     BufferIntegerAsString(msgFmt, 1, price, 5, STRCONVMODE_LEFT_ALIGN, TRUE);
     return price;
@@ -351,7 +351,7 @@ static void InheritIVs(Pokemon *egg, DAYCARE *dayCare) {
     u8 i;
     u8 r6;
     u8 j;
-    BoxPokemon *boxmon;
+    BoxPokemon *boxMon;
 
     for (i = 0; i < 6; i++) {
         spA[i] = i;
@@ -376,30 +376,30 @@ static void InheritIVs(Pokemon *egg, DAYCARE *dayCare) {
         sp7[i] = LCRandom() % 2;
     }
     for (i = 0; i < 3; i++) {
-        boxmon = Daycare_GetBoxMonI(dayCare, sp7[i]);
+        boxMon = Daycare_GetBoxMonI(dayCare, sp7[i]);
         switch (sp10[i]) {
         case 0:
-            sp6 = GetBoxMonData(boxmon, MON_DATA_HP_IV, NULL);
+            sp6 = GetBoxMonData(boxMon, MON_DATA_HP_IV, NULL);
             SetMonData(egg, MON_DATA_HP_IV, &sp6);
             break;
         case 1:
-            sp6 = GetBoxMonData(boxmon, MON_DATA_ATK_IV, NULL);
+            sp6 = GetBoxMonData(boxMon, MON_DATA_ATK_IV, NULL);
             SetMonData(egg, MON_DATA_ATK_IV, &sp6);
             break;
         case 2:
-            sp6 = GetBoxMonData(boxmon, MON_DATA_DEF_IV, NULL);
+            sp6 = GetBoxMonData(boxMon, MON_DATA_DEF_IV, NULL);
             SetMonData(egg, MON_DATA_DEF_IV, &sp6);
             break;
         case 3:
-            sp6 = GetBoxMonData(boxmon, MON_DATA_SPEED_IV, NULL);
+            sp6 = GetBoxMonData(boxMon, MON_DATA_SPEED_IV, NULL);
             SetMonData(egg, MON_DATA_SPEED_IV, &sp6);
             break;
         case 4:
-            sp6 = GetBoxMonData(boxmon, MON_DATA_SPATK_IV, NULL);
+            sp6 = GetBoxMonData(boxMon, MON_DATA_SPATK_IV, NULL);
             SetMonData(egg, MON_DATA_SPATK_IV, &sp6);
             break;
         case 5:
-            sp6 = GetBoxMonData(boxmon, MON_DATA_SPDEF_IV, NULL);
+            sp6 = GetBoxMonData(boxMon, MON_DATA_SPDEF_IV, NULL);
             SetMonData(egg, MON_DATA_SPDEF_IV, &sp6);
             break;
         }
@@ -444,7 +444,7 @@ struct EggMoveSearch {
     u16 baby_egg_moves[16];
 };
 
-static void InheritMoves(Pokemon *egg, BoxPokemon *dad, BoxPokemon *mom) {
+static void InheritMoves(Pokemon *egg, BoxPokemon *father, BoxPokemon *mother) {
     u16 sp1C;
     u16 egg_species;
     u16 learnset_size;
@@ -462,8 +462,8 @@ static void InheritMoves(Pokemon *egg, BoxPokemon *dad, BoxPokemon *mom) {
     egg_forme = GetMonData(egg, MON_DATA_FORME, NULL);
     learnset_size = Species_LoadLearnsetTable(egg_species, egg_forme, search->baby_learnset);
     for (i = 0; i < MON_MOVES; i++) {
-        search->dad_moves[i] = GetBoxMonData(dad, MON_DATA_MOVE1 + i, NULL);
-        search->mom_moves[i] = GetBoxMonData(mom, MON_DATA_MOVE1 + i, NULL);
+        search->dad_moves[i] = GetBoxMonData(father, MON_DATA_MOVE1 + i, NULL);
+        search->mom_moves[i] = GetBoxMonData(mother, MON_DATA_MOVE1 + i, NULL);
     }
     r5 = LoadEggMoves(egg, search->baby_egg_moves);
     for (i = 0; i < MON_MOVES; i++) {
@@ -580,7 +580,7 @@ static void Daycare_LightBallCheck(Pokemon *egg, DAYCARE *dayCare) {
 static u16 Daycare_GetEggSpecies(DAYCARE *dayCare, u8 *gender_idx) {
     u16 parent_species[2];
     u16 i;
-    u16 mom;
+    u16 mother;
     u16 pms;
     u16 swp;
     BoxPokemon *parents[2];
@@ -595,8 +595,8 @@ static u16 Daycare_GetEggSpecies(DAYCARE *dayCare, u8 *gender_idx) {
             gender_idx[1] = i ^ 1;
         }
     }
-    mom = parent_species[gender_idx[0]];
-    pms = ReadFromPersonalPmsNarc(mom);
+    mother = parent_species[gender_idx[0]];
+    pms = ReadFromPersonalPmsNarc(mother);
     if (pms == SPECIES_NIDORAN_F) {
         if (Sav2_DayCare_GetEggPID(dayCare) & 0x8000) {
             pms = SPECIES_NIDORAN_M;
@@ -932,22 +932,22 @@ void Sav2_DayCare_BufferStoredMonNicks(DAYCARE *dayCare, MSGFMT *msgFmt) {
 
 void Sav2_DayCare_BufferMonStats(DAYCARE *dayCare, u32 nickname_idx, u32 level_idx, u32 gender_idx, u8 slot, MSGFMT *msgFmt) {
     DAYCAREMON *daycareMon;
-    BoxPokemon *boxmon;
+    BoxPokemon *boxMon;
     u8 level;
     u8 gender;
     u16 species;
 
     daycareMon = Sav2_DayCare_GetMonX(dayCare, slot);
-    boxmon = Daycare_GetBoxMonI(dayCare, slot);
-    BufferBoxMonNickname(msgFmt, nickname_idx, boxmon);
+    boxMon = Daycare_GetBoxMonI(dayCare, slot);
+    BufferBoxMonNickname(msgFmt, nickname_idx, boxMon);
 
-    level = GetDayCareUpdatedLevel(boxmon, DayCareMon_GetSteps(daycareMon));
+    level = GetDayCareUpdatedLevel(boxMon, DayCareMon_GetSteps(daycareMon));
     BufferIntegerAsString(msgFmt, level_idx, level, 3, STRCONVMODE_LEFT_ALIGN, TRUE);
 
-    gender = GetBoxMonData(boxmon, MON_DATA_GENDER, NULL);
+    gender = GetBoxMonData(boxMon, MON_DATA_GENDER, NULL);
     if (gender != MON_GENDERLESS) {
-        species = GetBoxMonData(boxmon, MON_DATA_SPECIES, NULL);
-        if ((species == SPECIES_NIDORAN_F || species == SPECIES_NIDORAN_M) && !GetBoxMonData(boxmon, MON_DATA_HAS_NICKNAME, NULL)) {
+        species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
+        if ((species == SPECIES_NIDORAN_F || species == SPECIES_NIDORAN_M) && !GetBoxMonData(boxMon, MON_DATA_HAS_NICKNAME, NULL)) {
             gender = MON_GENDERLESS;
         }
     }
@@ -955,20 +955,20 @@ void Sav2_DayCare_BufferMonStats(DAYCARE *dayCare, u32 nickname_idx, u32 level_i
 }
 
 u16 Sav2_DayCare_BufferTailMonNick(DAYCARE *dayCare, MSGFMT *msgFmt) {
-    BoxPokemon *mon1;
-    BoxPokemon *mon2;
+    BoxPokemon *boxMon1;
+    BoxPokemon *boxMon2;
     u16 species1;
     u16 species2;
 
-    mon1 = DayCareMon_GetBoxMon(Sav2_DayCare_GetMonX(dayCare, 0));
-    mon2 = DayCareMon_GetBoxMon(Sav2_DayCare_GetMonX(dayCare, 1));
-    species1 = GetBoxMonData(mon1, MON_DATA_SPECIES, NULL);
-    species2 = GetBoxMonData(mon2, MON_DATA_SPECIES, NULL);
+    boxMon1 = DayCareMon_GetBoxMon(Sav2_DayCare_GetMonX(dayCare, 0));
+    boxMon2 = DayCareMon_GetBoxMon(Sav2_DayCare_GetMonX(dayCare, 1));
+    species1 = GetBoxMonData(boxMon1, MON_DATA_SPECIES, NULL);
+    species2 = GetBoxMonData(boxMon2, MON_DATA_SPECIES, NULL);
     if (species2 == SPECIES_NONE) {
-        BufferBoxMonNickname(msgFmt, 0, mon1);
+        BufferBoxMonNickname(msgFmt, 0, boxMon1);
         return species1;
     } else {
-        BufferBoxMonNickname(msgFmt, 0, mon2);
+        BufferBoxMonNickname(msgFmt, 0, boxMon2);
         return species2;
     }
 }
