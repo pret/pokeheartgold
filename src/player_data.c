@@ -1,5 +1,4 @@
-#include <nitro/mi/memory.h>
-#include <string.h>
+#include "global.h"
 #include "player_data.h"
 
 u32 Sav2_PlayerData_sizeof(void) {
