@@ -1,6 +1,7 @@
 #ifndef GUARD_DECRYPT_H
 #define GUARD_DECRYPT_H
 
+#include <cstdint>
 #include "NtrRom.h"
 #include "Options.h"
 
