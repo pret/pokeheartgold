@@ -32,6 +32,16 @@
 #define TYPE_DARK             17
 #define NUMBER_OF_MON_TYPES   18
 
+// Type effectiveness
+#define TYPE_MUL_NO_EFFECT          0
+#define TYPE_MUL_NOT_EFFECTIVE      5
+#define TYPE_MUL_NORMAL             10
+#define TYPE_MUL_SUPER_EFFECTIVE    20
+
+// Special type table IDs
+#define TYPE_FORESIGHT  0xFE
+#define TYPE_ENDTABLE   0xFF
+
 // Status flags
 #define STATUS_POISON                  (1<<3)
 #define STATUS_TOX_POISON              (1<<7)
