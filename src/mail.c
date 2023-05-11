@@ -37,7 +37,7 @@ void Mail_init(MAIL *mail) {
     mail->author_language = gGameLanguage;
     mail->author_version = gGameVersion;
     mail->mail_type = MAIL_NONE;
-    StringFillEOS(mail->author_name, OT_NAME_LENGTH + 1);
+    StringFillEOS(mail->author_name, PLAYER_NAME_LENGTH + 1);
     for (i = 0; i < 3; i++) {
         mail->mon_icons[i].raw = 0xFFFF;
     }
@@ -144,7 +144,7 @@ MAIL *CreateKenyaMail(POKEMON *pokemon, u8 mailType, u8 gender, STRING *name, u8
     MAIL *ret = Mail_new(3);
     Mail_init(ret);
     ret->mail_type = mailType;
-    CopyStringToU16Array(name, ret->author_name, OT_NAME_LENGTH + 1);
+    CopyStringToU16Array(name, ret->author_name, PLAYER_NAME_LENGTH + 1);
     ret->author_gender = gender;
     ret->author_otId = otId;
 

@@ -46,7 +46,7 @@ typedef struct SAFARIZONE_LINKLEADER {
     u8 language;
     u8 version;
     u32 id;
-    u16 name[OT_NAME_LENGTH + 1];
+    u16 name[PLAYER_NAME_LENGTH + 1];
 } SAFARIZONE_LINKLEADER;
 
 typedef struct SAFARIZONE {

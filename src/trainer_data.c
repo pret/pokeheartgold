@@ -28,7 +28,7 @@ void EnemyTrainerSet_Init(BATTLE_SETUP *battleSetup, SAVEDATA *saveData, HeapID 
                 CopyU16StringArray(battleSetup->trainer[i].name, rivalName);
             } else {
                 string = NewString_ReadMsgData(msgData, battleSetup->trainerId[i]);
-                CopyStringToU16Array(string, battleSetup->trainer[i].name, OT_NAME_LENGTH + 1);
+                CopyStringToU16Array(string, battleSetup->trainer[i].name, PLAYER_NAME_LENGTH + 1);
                 String_dtor(string);
             }
             CreateNPCTrainerParty(battleSetup, i, heap_id);

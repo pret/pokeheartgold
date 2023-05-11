@@ -14,7 +14,7 @@ typedef struct HOFMon
     /* 0x04 */ u32 personality;
     /* 0x08 */ u32 otid;
     /* 0x0C */ u16 nickname[POKEMON_NAME_LENGTH + 1];
-    /* 0x22 */ u16 otname[OT_NAME_LENGTH + 1];
+    /* 0x22 */ u16 otname[PLAYER_NAME_LENGTH + 1];
     /* 0x32 */ u16 moves[4];
     /* 0x3A */ u8 padding[2];
 } HOFMON;

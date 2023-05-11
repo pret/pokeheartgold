@@ -2083,13 +2083,13 @@ BOOL ScrCmd_370(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_NamePlayer(SCRIPTCONTEXT *ctx) {
     u16 *p_var = ScriptGetVarPointer(ctx);
-    CreateNamingScreen(ctx->taskman, NAMINGSCREEN_PLAYER, 0, OT_NAME_LENGTH, 0, NULL, p_var);
+    CreateNamingScreen(ctx->taskman, NAMINGSCREEN_PLAYER, 0, PLAYER_NAME_LENGTH, 0, NULL, p_var);
     return TRUE;
 }
 
 BOOL ScrCmd_NameRival(SCRIPTCONTEXT *ctx) {
     u16 *p_var = ScriptGetVarPointer(ctx);
-    CreateNamingScreen(ctx->taskman, NAMINGSCREEN_RIVAL, 0, OT_NAME_LENGTH, 0, NULL, p_var);
+    CreateNamingScreen(ctx->taskman, NAMINGSCREEN_RIVAL, 0, PLAYER_NAME_LENGTH, 0, NULL, p_var);
     return TRUE;
 }
 
