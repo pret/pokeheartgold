@@ -10,7 +10,7 @@
 #define MAX_MONEY 999999
 
 typedef struct PLAYERPROFILE {
-    u16 name[OT_NAME_LENGTH + 1];
+    u16 name[PLAYER_NAME_LENGTH + 1];
     u32 id;
     u32 money;
     u8 gender;
