@@ -35,7 +35,7 @@ void sub_0207789C(BAG_VIEW *a0, SAVEDATA *a1, u8 a2, BAG_CURSOR *a3, u32 a4) {
     a0->unk_66 = 0;
 }
 
-void BagView_SetItem(BAG_VIEW *bagView, ITEM_SLOT *slots, u8 pocketId, u8 position) {
+void BagView_SetItem(BAG_VIEW *bagView, BagPocket *slots, u8 pocketId, u8 position) {
     // Bug: position was likely intended to force a particular display order.
     // Likely intended as an index to bagView->pockets.
     // However, this variable is unused.

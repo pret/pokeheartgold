@@ -55,7 +55,7 @@ typedef u32 (*ItemCheckUseFunc)(const struct ItemCheckUseData *data);
 
 struct UseItemInPartyTaskEnv {
     PARTY *party;
-    BAG_DATA *bag;
+    Bag *bag;
     MAILBOX *mailbox;
     OPTIONS *options;
     struct UnkStruct_0202E474 *unk10;

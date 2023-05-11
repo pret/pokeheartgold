@@ -20,7 +20,7 @@ enum ItemUseError {
  * Item slot access for bag view
  */
 typedef struct BAG_VIEW_POCKET {
-    ITEM_SLOT *slots;                  // Points into BAG_DATA
+    BagPocket *slots;                  // Points into Bag
     u8 padding[4];
     u8 pocketId;                       // POCKET_XXX constant
     u8 padding2[3];
@@ -69,7 +69,7 @@ void sub_02077894(BAG_VIEW *a0, u8 a1);
 void sub_0207789C(BAG_VIEW *a0, SAVEDATA *a1, u8 a2, BAG_CURSOR *a3, u32 a4);
 
 /*
- * void BagView_SetItem(BAG_VIEW *bagView, ITEM_SLOT *slots, u8 pocketId, u8 position)
+ * void BagView_SetItem(BAG_VIEW *bagView, BagPocket *slots, u8 pocketId, u8 position)
  *
  * Sets pocket view #pocketId to slots.
  * Called by CreateBagView in bag.c
@@ -77,11 +77,11 @@ void sub_0207789C(BAG_VIEW *a0, SAVEDATA *a1, u8 a2, BAG_CURSOR *a3, u32 a4);
  * See note in bag_view.c
  *
  * @param bagView:     The BAG_VIEW instance
- * @param slots:       ITEM_SLOT array of pocket
+ * @param slots:       BagPocket array of pocket
  * @param pocketId:    Which pocket it is
  * @param position:    Unused
  */
-void BagView_SetItem(BAG_VIEW *bagView, ITEM_SLOT *slots, u8 pocketId, u8 position);
+void BagView_SetItem(BAG_VIEW *bagView, BagPocket *slots, u8 pocketId, u8 position);
 void sub_020778C8(BAG_VIEW *bagView);
 void sub_020778DC(BAG_VIEW *bagView, void *a1);
 void sub_020778E0(BAG_VIEW *bagView, u8 a1);

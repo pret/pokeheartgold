@@ -665,14 +665,14 @@ static const u16 sItemNarcIds[][4] = {
     { NARC_item_data_0513_bin, NARC_item_icon_item_icon_757_NCGR, NARC_item_icon_item_icon_758_NCLR, AGB_ITEM_NONE }, // ITEM_ENIGMA_STONE
 };
 
-void MoveItemSlotInList(ITEM_SLOT *slots, int from, int to, int pocket, HeapID heap_id) {
-    ITEM_SLOT *buf;
+void MoveItemSlotInList(BagPocket *slots, int from, int to, int pocket, HeapID heap_id) {
+    BagPocket *buf;
     int i, j;
     if (from == to) {
         return;
     }
 
-    buf = AllocFromHeap(heap_id, sPocketCounts[pocket] * sizeof(ITEM_SLOT));
+    buf = AllocFromHeap(heap_id, sPocketCounts[pocket] * sizeof(BagPocket));
 
     j = 0;
     for (i = 0; i < sPocketCounts[pocket]; i++) {
