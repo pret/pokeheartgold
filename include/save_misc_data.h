@@ -29,7 +29,7 @@ typedef struct SAVE_MISC_DATA {
     BERRY_POT berry_pots[MAX_BERRY_POT];
     struct GF_RTC_DateTime berry_datetime;
     struct Gymmick gymmick;
-    u16 rivalName[OT_NAME_LENGTH + 1];
+    u16 rivalName[PLAYER_NAME_LENGTH + 1];
     u8 unk_0280[8]; // 3 chunks of size (4, 2, 2)
     u8 filler_0288[0x10];
     u16 favoriteMonSpecies;

@@ -29,7 +29,7 @@ void Sav2_Misc_init(SAVE_MISC_DATA *saveMiscData) {
     Sav2_BerryPots_init(saveMiscData->berry_pots);
     Sav2_BerryPotRTC_init(&saveMiscData->berry_datetime);
     SavGymmick_Clear(&saveMiscData->gymmick);
-    MI_CpuFill16(saveMiscData->rivalName, EOS, OT_NAME_LENGTH + 1);
+    MI_CpuFill16(saveMiscData->rivalName, EOS, PLAYER_NAME_LENGTH + 1);
     MI_CpuFill8(saveMiscData->unk_0280, 0xFF, 8);
     MailMsg_init_withBank(&saveMiscData->battleGreetingEC, MAILMSG_BANK_0295_GMM);
     saveMiscData->battleGreetingEC.msg_no = msg_0295_00000;
@@ -78,7 +78,7 @@ const u16 *Sav2_Misc_RivalName_const_get(const SAVE_MISC_DATA *saveMiscData) {
 }
 
 void Sav2_Misc_RivalName_set(SAVE_MISC_DATA *saveMiscData, const STRING *name) {
-    CopyStringToU16Array(name, saveMiscData->rivalName, OT_NAME_LENGTH + 1);
+    CopyStringToU16Array(name, saveMiscData->rivalName, PLAYER_NAME_LENGTH + 1);
 }
 
 void SaveMisc_SetExtraChunksExist(SAVE_MISC_DATA *saveMiscData) {

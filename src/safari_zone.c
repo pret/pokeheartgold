@@ -176,9 +176,9 @@ void SafariZone_SetLinkLeaderFromProfile(SAFARIZONE* safari_zone, PLAYERPROFILE*
     link_leader->language = PlayerProfile_GetLanguage(profile);
     link_leader->version = PlayerProfile_GetVersion(profile);
 
-    STRING* name = String_ctor((OT_NAME_LENGTH + 1) * sizeof(u16), heap_id);
+    STRING* name = String_ctor((PLAYER_NAME_LENGTH + 1) * sizeof(u16), heap_id);
     PlayerName_FlatToString(profile, name);
-    CopyStringToU16Array(name, link_leader->name, (OT_NAME_LENGTH + 1) * sizeof(u16));
+    CopyStringToU16Array(name, link_leader->name, (PLAYER_NAME_LENGTH + 1) * sizeof(u16));
     String_dtor(name);
 
     link_leader->linked = TRUE;
@@ -292,7 +292,7 @@ void SafariZone_ClearLeader(SAFARIZONE_LINKLEADER* link_leader) {
     link_leader->gender = 0;
     link_leader->language = gGameLanguage;
     link_leader->version = gGameVersion;
-    StringFillEOS(link_leader->name, OT_NAME_LENGTH + 1);
+    StringFillEOS(link_leader->name, PLAYER_NAME_LENGTH + 1);
 }
 
 BOOL sub_0202FA3C(u8 a0, u8* a1, u8 a2) {
