@@ -19,7 +19,7 @@ struct ItemCheckUseData {
     u16 haveRocketCostume:1;
     u16 facingTile;
     u16 standingTile;
-    FIELD_PLAYER_AVATAR *playerAvatar;
+    PlayerAvatar *playerAvatar;
     FieldSystem *fsys;
 };
 
