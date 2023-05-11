@@ -1,3 +1,4 @@
+#include "global.h"
 #include "player_data.h"
 #include "save.h"
 #include "unk_0202CA24.h"
