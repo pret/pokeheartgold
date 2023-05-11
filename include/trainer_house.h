@@ -29,7 +29,7 @@ typedef struct THOUSE_TEAM {
     u8 language;
     u8 version;
     u8 unk7;
-    u16 otName[OT_NAME_LENGTH + 1];
+    u16 otName[PLAYER_NAME_LENGTH + 1];
     u16 unk14[8];
     MAIL_MESSAGE win;
     MAIL_MESSAGE lose;

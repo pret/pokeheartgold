@@ -7,7 +7,7 @@
 #define NUM_FRIENDS_PER_ENTRY    16
 
 typedef struct SavePalPad {
-    u16 name[OT_NAME_LENGTH + 1];
+    u16 name[PLAYER_NAME_LENGTH + 1];
     u32 otid;
     u8 filler_14[0x4];
     u32 unk_18[NUM_FRIENDS_PER_ENTRY];

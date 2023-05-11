@@ -26,7 +26,7 @@ void TrainerHouseMon_SetZero(TrainerHouseMon *mon) {
 
 void TrainerHouseTrainer_SetZero(TrainerHouseTrainer *trainer) {
     MI_CpuClear8(trainer, sizeof(TrainerHouseTrainer));
-    StringFillEOS(trainer->otName, OT_NAME_LENGTH + 1);
+    StringFillEOS(trainer->otName, PLAYER_NAME_LENGTH + 1);
 }
 
 void TrainerHouseSet_SetZero(TrainerHouseSet *set) {
