@@ -2382,14 +2382,14 @@ ov01_021EC31C: ; 0x021EC31C
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	ldr r0, [r0, #0x24]
-	bl GF_Camera_GetPerspectiveAngle
+	bl Camera_GetPerspectiveAngle
 	str r0, [sp, #0xc]
 	mov r0, #0x41
 	ldr r1, [r5]
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	ldr r0, [r0, #0x24]
-	bl GF_Camera_GetDistance
+	bl Camera_GetDistance
 	add r1, r0, #0
 	add r0, sp, #0x10
 	str r0, [sp]

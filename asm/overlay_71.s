@@ -1979,13 +1979,13 @@ ov71_022477EC: ; 0x022477EC
 
 	thumb_func_start ov71_0224780C
 ov71_0224780C: ; 0x0224780C
-	ldr r3, _02247818 ; =GF_Camera_SetAngle
+	ldr r3, _02247818 ; =Camera_SetAngle
 	add r2, r0, #0
 	add r0, r1, #0
 	ldr r1, [r2]
 	bx r3
 	nop
-_02247818: .word GF_Camera_SetAngle
+_02247818: .word Camera_SetAngle
 	thumb_func_end ov71_0224780C
 
 	thumb_func_start ov71_0224781C
@@ -2012,13 +2012,13 @@ _02247838: .word sub_020233D8
 
 	thumb_func_start ov71_0224783C
 ov71_0224783C: ; 0x0224783C
-	ldr r3, _02247848 ; =GF_Camera_SetPerspectiveAngle
+	ldr r3, _02247848 ; =Camera_SetPerspectiveAngle
 	add r2, r0, #0
 	add r0, r1, #0
 	ldr r1, [r2]
 	bx r3
 	nop
-_02247848: .word GF_Camera_SetPerspectiveAngle
+_02247848: .word Camera_SetPerspectiveAngle
 	thumb_func_end ov71_0224783C
 
 	thumb_func_start ov71_0224784C
@@ -2030,7 +2030,7 @@ ov71_0224784C: ; 0x0224784C
 	add r4, r1, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl GF_Camera_Create
+	bl Camera_Create
 	str r0, [r5]
 	str r4, [r5, #4]
 	str r6, [r5, #8]
@@ -2050,7 +2050,7 @@ ov71_0224784C: ; 0x0224784C
 	add r0, r5, #4
 	lsl r1, r1, #0xe
 	add r2, #0x10
-	bl GF_Camera_InitFromTargetDistanceAndAngle
+	bl Camera_InitFromTargetDistanceAndAngle
 	mov r1, #0
 	mov r0, #1
 	lsl r0, r0, #0xc
@@ -2059,14 +2059,14 @@ ov71_0224784C: ; 0x0224784C
 	str r1, [sp, #0x14]
 	ldr r1, [r5]
 	add r0, sp, #0xc
-	bl GF_Camera_SetBindTarget
+	bl Camera_SetBindTarget
 	ldr r0, [r5]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	mov r1, #0xfa
 	ldr r2, [r5]
 	mov r0, #0
 	lsl r1, r1, #0xe
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

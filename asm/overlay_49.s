@@ -9134,7 +9134,7 @@ _0225CB8C:
 	sub r1, r1, #1
 	bne _0225CB8C
 	add r0, r5, #0
-	bl GF_Camera_Create
+	bl Camera_Create
 	str r0, [r4]
 	mov r0, #0
 	str r0, [sp]
@@ -9147,15 +9147,15 @@ _0225CB8C:
 	ldr r2, _0225CBD4 ; =ov49_02269A6C
 	ldr r3, _0225CBD8 ; =0x000005C1
 	add r0, #8
-	bl GF_Camera_InitFromTargetDistanceAndAngle
+	bl Camera_InitFromTargetDistanceAndAngle
 	ldr r0, [r4]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	mov r0, #0x96
 	mov r1, #0xe1
 	ldr r2, [r4]
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 	add r0, r4, #0
 	add sp, #0xc
 	pop {r4, r5, pc}

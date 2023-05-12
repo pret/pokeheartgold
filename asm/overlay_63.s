@@ -6214,7 +6214,7 @@ ov63_0221F130: ; 0x0221F130
 	sub sp, #0x18
 	add r4, r0, #0
 	mov r0, #0x3e
-	bl GF_Camera_Create
+	bl Camera_Create
 	add r1, r4, #0
 	add r1, #0xe0
 	str r0, [r1]
@@ -6251,7 +6251,7 @@ ov63_0221F130: ; 0x0221F130
 	add r0, #0xe4
 	lsl r1, r1, #0xc
 	add r2, #0xf0
-	bl GF_Camera_InitFromTargetDistanceAndAngle
+	bl Camera_InitFromTargetDistanceAndAngle
 	mov r1, #0
 	mov r0, #1
 	lsl r0, r0, #0xc
@@ -6262,18 +6262,18 @@ ov63_0221F130: ; 0x0221F130
 	add r1, #0xe0
 	ldr r1, [r1]
 	add r0, sp, #0xc
-	bl GF_Camera_SetBindTarget
+	bl Camera_SetBindTarget
 	add r0, r4, #0
 	add r0, #0xe0
 	ldr r0, [r0]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	add r4, #0xe0
 	mov r0, #1
 	mov r1, #0x7d
 	ldr r2, [r4]
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 	add sp, #0x18
 	pop {r4, pc}
 	nop

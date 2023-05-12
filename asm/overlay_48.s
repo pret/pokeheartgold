@@ -2580,7 +2580,7 @@ ov48_02259BC0: ; 0x02259BC0
 	sub sp, #8
 	add r4, r0, #0
 	add r0, r3, #0
-	bl GF_Camera_Create
+	bl Camera_Create
 	str r0, [r4]
 	mov r3, #0
 	str r3, [sp]
@@ -2594,12 +2594,12 @@ ov48_02259BC0: ; 0x02259BC0
 	ldr r2, [r4]
 	mov r0, #0
 	lsl r1, r1, #0xe
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 	ldr r1, [r4]
 	mov r0, #0
 	bl sub_020233D8
 	ldr r0, [r4]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	ldr r0, [sp, #0x14]
 	lsl r0, r0, #0x1f
 	lsr r0, r0, #0x1f
@@ -2618,7 +2618,7 @@ _02259C16:
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4]
-	bl GF_Camera_SetDistance
+	bl Camera_SetDistance
 	add sp, #8
 	pop {r4}
 	pop {r3}
@@ -2738,7 +2738,7 @@ _02259CE0:
 _02259CEA:
 	ldr r0, [r2, #0xc]
 	ldr r1, [r2]
-	bl GF_Camera_SetDistance
+	bl Camera_SetDistance
 	mov r0, #0
 	pop {r3, pc}
 	nop

@@ -1543,7 +1543,7 @@ BOOL ScrCmd_107(SCRIPTCONTEXT *ctx) {
     shift_v.z = FX32_CONST(z);
 
     sub_0205F9A0(PlayerAvatar_GetMapObject(ctx->fsys->playerAvatar), &shift_v);
-    GF_Camera_ShiftBy(&shift_v, ctx->fsys->camera);
+    Camera_ShiftBy(&shift_v, ctx->fsys->camera);
     return FALSE;
 }
 

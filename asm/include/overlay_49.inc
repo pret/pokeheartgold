@@ -170,13 +170,13 @@
 .public GX_EngineAToggleLayers
 .public GX_EngineBToggleLayers
 .public GX_SwapDisplay
-.public GF_Camera_Create
+.public Camera_Create
 .public sub_02023120
-.public GF_Camera_RegisterToStaticPtr
+.public Camera_RegisterToStaticPtr
 .public sub_02023148
 .public sub_02023154
-.public GF_Camera_SetClipBounds
-.public GF_Camera_InitFromTargetDistanceAndAngle
+.public Camera_SetClipBounds
+.public Camera_InitFromTargetDistanceAndAngle
 .public sub_02024504
 .public sub_0202457C
 .public sub_02024714

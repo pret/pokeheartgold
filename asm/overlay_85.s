@@ -3508,7 +3508,7 @@ ov85_021E7424: ; 0x021E7424
 	ldr r0, _021E748C ; =0x00000D0C
 	add r4, r5, r0
 	mov r0, #0x66
-	bl GF_Camera_Create
+	bl Camera_Create
 	str r0, [r4, #0x1c]
 	mov r2, #0
 	str r2, [r4, #8]
@@ -3536,7 +3536,7 @@ ov85_021E7424: ; 0x021E7424
 	add r0, #8
 	add r2, #0x14
 	lsr r3, r3, #0x10
-	bl GF_Camera_InitFromTargetDistanceAndAngle
+	bl Camera_InitFromTargetDistanceAndAngle
 	mov r1, #0
 	mov r0, #1
 	lsl r0, r0, #0xc
@@ -3545,9 +3545,9 @@ ov85_021E7424: ; 0x021E7424
 	str r1, [sp, #0x14]
 	ldr r1, [r4, #0x1c]
 	add r0, sp, #0xc
-	bl GF_Camera_SetBindTarget
+	bl Camera_SetBindTarget
 	ldr r0, [r4, #0x1c]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

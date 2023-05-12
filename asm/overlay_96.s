@@ -34346,7 +34346,7 @@ ov96_021F6138: ; 0x021F6138
 	ldr r0, _021F61C4 ; =0x04000580
 	str r1, [r0]
 	ldr r0, [r4, #0x54]
-	bl GF_Camera_Create
+	bl Camera_Create
 	mov r1, #0x19
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -34599,19 +34599,19 @@ ov96_021F6398: ; 0x021F6398
 	mov r1, #0x19
 	lsl r1, r1, #0xe
 	mov r3, #0xa4
-	bl GF_Camera_InitFromTargetDistanceAndAngle
+	bl Camera_InitFromTargetDistanceAndAngle
 	mov r1, #0x19
 	lsl r1, r1, #4
 	ldr r1, [r4, r1]
 	add r0, sp, #0x14
-	bl GF_Camera_ShiftBy
+	bl Camera_ShiftBy
 	mov r2, #0x19
 	mov r0, #1
 	lsl r2, r2, #4
 	lsl r0, r0, #0xe
 	ldr r2, [r4, r2]
 	lsl r1, r0, #6
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 	mov r1, #0
 	mov r0, #1
 	lsl r0, r0, #0xc
@@ -34622,11 +34622,11 @@ ov96_021F6398: ; 0x021F6398
 	lsl r1, r1, #4
 	ldr r1, [r4, r1]
 	add r0, sp, #0x20
-	bl GF_Camera_SetBindTarget
+	bl Camera_SetBindTarget
 	mov r0, #0x19
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	add sp, #0x2c
 	pop {r3, r4, pc}
 	.balign 4, 0

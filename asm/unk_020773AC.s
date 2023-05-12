@@ -236,7 +236,7 @@ sub_0207753C: ; 0x0207753C
 	mov r1, #0xe1
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 _02077574:
 	add r0, r4, #0
 	add sp, #8

@@ -6361,7 +6361,7 @@ ov03_022570D4: ; 0x022570D4
 	add r0, r4, #0
 	bl ov03_02257134
 	mov r0, #0xb
-	bl GF_Camera_Create
+	bl Camera_Create
 	add r1, r4, #0
 	add r1, #0x90
 	str r0, [r1]
@@ -6373,7 +6373,7 @@ ov03_022570D4: ; 0x022570D4
 	add r0, r4, #0
 	add r0, #0x90
 	ldr r0, [r0]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	ldr r0, _02257130 ; =0x00000281
 	mov r1, #0
 	strb r1, [r4, r0]
@@ -8483,7 +8483,7 @@ _0225818C:
 	ldr r0, [r0]
 	bl sub_02023120
 	ldr r0, [r5, #0x24]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	add r0, r4, #0
 	bl ov03_02258288
 	mov r0, #0x1b
