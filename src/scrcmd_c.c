@@ -332,7 +332,7 @@ static BOOL ScrNative_WaitStd(SCRIPTCONTEXT* ctx);
 
 BOOL ScrCmd_CallStd(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_07);
+    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_07);
     u8* num_active_script_contexts = FieldSysGetAttrAddr(fsys, SCRIPTENV_NUM_ACTIVE_SCRCTX);
     SCRIPTCONTEXT** new_context_ptr = (SCRIPTCONTEXT**)FieldSysGetAttrAddr(fsys, SCRIPTENV_SCRCTX_0 + *num_active_script_contexts);
 
@@ -351,7 +351,7 @@ BOOL ScrCmd_CallStd(SCRIPTCONTEXT* ctx) {
 
 static BOOL ScrNative_WaitStd(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_07);
+    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_07);
     u8* unused = FieldSysGetAttrAddr(fsys, SCRIPTENV_NUM_ACTIVE_SCRCTX);
 
     return (*unk & (1 << ctx->id)) == 0;
@@ -359,7 +359,7 @@ static BOOL ScrNative_WaitStd(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_RestartCurrentScript(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_07);
+    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_07);
     u8* unused = FieldSysGetAttrAddr(fsys, SCRIPTENV_NUM_ACTIVE_SCRCTX);
 
     *unk ^= (1 << (ctx->id - 1));
@@ -826,7 +826,7 @@ static BOOL sub_02041520(SCRIPTCONTEXT* ctx);
 
 BOOL ScrCmd_TrainerTips(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    u8* printer_id_ptr = FieldSysGetAttrAddr(fsys, SCRIPTENV_PRINTER_NUM);
+    u8* printer_id_ptr = FieldSysGetAttrAddr(fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
     STRING** tmp_str = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRBUF2);
     STRING** unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRBUF1);
     MSGFMT** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MSGFMT);
@@ -851,7 +851,7 @@ BOOL ScrCmd_TrainerTips(SCRIPTCONTEXT* ctx) {
 
 static BOOL sub_02041520(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    u8* printer_id_ptr = FieldSysGetAttrAddr(fsys, SCRIPTENV_PRINTER_NUM);
+    u8* printer_id_ptr = FieldSysGetAttrAddr(fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
     u16* ret_ptr = GetVarPointer(fsys, ctx->data[0]);
     u8 unused = ov01_021F3D84(fsys->unk68);
 
@@ -1127,7 +1127,7 @@ BOOL ScrCmd_ApplyMovement(SCRIPTCONTEXT *ctx) {
         ov01_021F7704(object);
     }
     mvtMan = EventObjectMovementMan_Create(object, (const MovementScriptCommand *)(ctx->script_ptr + offset));
-    mvtCounter = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_NUM_ACTIVE_MOVEMENT);
+    mvtCounter = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_ACTIVE_MOVEMENT_COUNTER);
     (*mvtCounter)++;
     _ScheduleObjectEventMovement(ctx->fsys, mvtMan, NULL);
     return FALSE;
@@ -1171,7 +1171,7 @@ BOOL ScrCmd_563(SCRIPTCONTEXT *ctx) {
     cmd[i].length = 0;
 
     mvtMan = EventObjectMovementMan_Create(object, cmd);
-    mvtCounter = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_NUM_ACTIVE_MOVEMENT);
+    mvtCounter = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_ACTIVE_MOVEMENT_COUNTER);
     (*mvtCounter)++;
     _ScheduleObjectEventMovement(ctx->fsys, mvtMan, cmd);
     return FALSE;
@@ -1188,16 +1188,16 @@ LocalMapObject *sub_02041C70(FieldSystem *fsys, u16 person) {
     }
 }
 
-BOOL _IsAllMovementFinish(SCRIPTCONTEXT *ctx);
+static BOOL IsAllMovementFinished(SCRIPTCONTEXT *ctx);
 
 BOOL ScrCmd_WaitMovement(SCRIPTCONTEXT *ctx) {
-    SetupNativeScript(ctx, _IsAllMovementFinish);
+    SetupNativeScript(ctx, IsAllMovementFinished);
     return TRUE;
 }
 
-BOOL _IsAllMovementFinish(SCRIPTCONTEXT *ctx) {
-    u8 *ptr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_NUM_ACTIVE_MOVEMENT);
-    return *ptr == 0;
+static BOOL IsAllMovementFinished(SCRIPTCONTEXT *ctx) {
+    u8 *movCounter = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_ACTIVE_MOVEMENT_COUNTER);
+    return *movCounter == 0;
 }
 
 struct ObjectMovementTaskEnv {
@@ -1222,7 +1222,7 @@ void _ScheduleObjectEventMovement(FieldSystem *fsys, EventObjectMovementMan *mvt
 }
 
 void _RunObjectEventMovement(SysTask *task, struct ObjectMovementTaskEnv *env) {
-    u8 *mvtCnt = FieldSysGetAttrAddr(env->fsys, SCRIPTENV_NUM_ACTIVE_MOVEMENT);
+    u8 *mvtCnt = FieldSysGetAttrAddr(env->fsys, SCRIPTENV_ACTIVE_MOVEMENT_COUNTER);
     if (EventObjectMovementMan_IsFinish(env->mvtMan) == TRUE) {
         EventObjectMovementMan_Delete(env->mvtMan);
         DestroySysTask(env->task);
@@ -2384,7 +2384,7 @@ BOOL ScrCmd_TrainerMessage(SCRIPTCONTEXT *ctx) {
 
     u16 *p_scripno = FieldSysGetAttrAddr(fsys, SCRIPTENV_SCRIPT);
     STRING **p_strbuf1 = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRBUF1);
-    u8 *p_printerno = FieldSysGetAttrAddr(fsys, SCRIPTENV_PRINTER_NUM);
+    u8 *p_printerno = FieldSysGetAttrAddr(fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
     u16 trainerno = ScriptGetVar(ctx);
     u16 msgno = ScriptGetVar(ctx);
 
