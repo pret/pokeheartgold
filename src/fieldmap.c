@@ -100,8 +100,8 @@ BOOL Task_RunScripts(TaskManager *taskman) {
 
     switch (env->state) {
     case 0:
-        env->scriptContexts[0] = CreateScriptContext(fsys, env->script);
-        env->numActiveScrCtx = 1;
+        env->scriptContexts[0] = CreateScriptContext(fsys, env->activeScriptNumber);
+        env->activeScriptContextCount = 1;
         env->msgfmt = ScrStrBufs_new_custom(8, 64, HEAP_ID_FIELDMAP);
         env->strbuf1 = String_ctor(1024, HEAP_ID_FIELDMAP);
         env->strbuf2 = String_ctor(1024, HEAP_ID_FIELDMAP);
@@ -117,11 +117,11 @@ BOOL Task_RunScripts(TaskManager *taskman) {
                 continue;
             }
             DestroyScriptContext(ctx);
-            GF_ASSERT(env->numActiveScrCtx != 0);
+            GF_ASSERT(env->activeScriptContextCount != 0);
             env->scriptContexts[i] = NULL;
-            env->numActiveScrCtx--;
+            env->activeScriptContextCount--;
         }
-        if (env->numActiveScrCtx == 0) {
+        if (env->activeScriptContextCount == 0) {
             void (*callback)(FieldSystem *a0) = env->scrctx_end_cb;
             ScrStrBufs_delete(env->msgfmt);
             String_dtor(env->strbuf1);
@@ -158,7 +158,7 @@ void SetupScriptEngine(FieldSystem *fsys, ScriptEnvironment *env, u16 script, Lo
     u16 *varLastTalked = FieldSysGetAttrAddrInternal(env, SCRIPTENV_SPECIAL_VAR_LAST_TALKED);
     env->facingDirection = PlayerAvatar_GetFacingDirection(fsys->playerAvatar);
     env->lastTalked = lastTalked;
-    env->script = script;
+    env->activeScriptNumber = script;
     env->unk_34 = a4;
     if (lastTalked != NULL) {
         *varLastTalked = MapObject_GetID(lastTalked);
@@ -229,12 +229,12 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *environment, enum ScriptEnv
         return &environment->activeMovementCounter;
     case SCRIPTENV_FIELD_07:
         return &environment->unk_7;
-    case SCRIPTENV_08:
+    case SCRIPTENV_FIELD_08:
         return &environment->unk_8;
-    case SCRIPTENV_NUM_ACTIVE_SCRCTX:
-        return &environment->numActiveScrCtx;
-    case SCRIPTENV_SCRIPT:
-        return &environment->script;
+    case SCRIPTENV_ACTIVE_SCRIPTCONTEXT_COUNT:
+        return &environment->activeScriptContextCount;
+    case SCRIPTENV_ACTIVE_SCRIPT_NUMBER:
+        return &environment->activeScriptNumber;
     case SCRIPTENV_FACING_DIRECTION:
         return &environment->facingDirection;
     case SCRIPTENV_LAST_TALKED:

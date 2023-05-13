@@ -318,7 +318,7 @@ BOOL ScrCmd_CompareVarToVar(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_RunScript(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    u8* num_active_script_contexts = FieldSysGetAttrAddr(fsys, SCRIPTENV_NUM_ACTIVE_SCRCTX);
+    u8* num_active_script_contexts = FieldSysGetAttrAddr(fsys, SCRIPTENV_ACTIVE_SCRIPTCONTEXT_COUNT);
     SCRIPTCONTEXT** new_context_ptr = FieldSysGetAttrAddr(fsys, SCRIPTENV_SCRCTX_1);
 
     u16 script_to_run = ScriptReadHalfword(ctx);
@@ -333,7 +333,7 @@ static BOOL ScrNative_WaitStd(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_CallStd(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_07);
-    u8* num_active_script_contexts = FieldSysGetAttrAddr(fsys, SCRIPTENV_NUM_ACTIVE_SCRCTX);
+    u8* num_active_script_contexts = FieldSysGetAttrAddr(fsys, SCRIPTENV_ACTIVE_SCRIPTCONTEXT_COUNT);
     SCRIPTCONTEXT** new_context_ptr = (SCRIPTCONTEXT**)FieldSysGetAttrAddr(fsys, SCRIPTENV_SCRCTX_0 + *num_active_script_contexts);
 
     u16 script_to_run = ScriptReadHalfword(ctx);
@@ -352,7 +352,7 @@ BOOL ScrCmd_CallStd(SCRIPTCONTEXT* ctx) {
 static BOOL ScrNative_WaitStd(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_07);
-    u8* unused = FieldSysGetAttrAddr(fsys, SCRIPTENV_NUM_ACTIVE_SCRCTX);
+    u8* unused = FieldSysGetAttrAddr(fsys, SCRIPTENV_ACTIVE_SCRIPTCONTEXT_COUNT);
 
     return (*unk & (1 << ctx->id)) == 0;
 }
@@ -360,7 +360,7 @@ static BOOL ScrNative_WaitStd(SCRIPTCONTEXT* ctx) {
 BOOL ScrCmd_RestartCurrentScript(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_07);
-    u8* unused = FieldSysGetAttrAddr(fsys, SCRIPTENV_NUM_ACTIVE_SCRCTX);
+    u8* unused = FieldSysGetAttrAddr(fsys, SCRIPTENV_ACTIVE_SCRIPTCONTEXT_COUNT);
 
     *unk ^= (1 << (ctx->id - 1));
     return FALSE;
@@ -662,7 +662,7 @@ static BOOL sub_020410F0(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_OpenMsg(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_08);
+    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_08);
 
     sub_0205B514(fsys->bgConfig, FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW), 3);
     sub_0205B564(FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW), Sav2_PlayerData_GetOptionsAddr(ctx->fsys->savedata));
@@ -676,7 +676,7 @@ BOOL ScrCmd_OpenMsg(SCRIPTCONTEXT* ctx) {
 BOOL ScrCmd_CloseMsg(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     WINDOW* window = FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW);
-    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_08);
+    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_08);
 
     ClearFrameAndWindow2(window, 0);
     RemoveWindow(window);
@@ -690,7 +690,7 @@ BOOL ScrCmd_CloseMsg(SCRIPTCONTEXT* ctx) {
 BOOL ScrCmd_HoldMsg(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     WINDOW* window = FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW);
-    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_08);
+    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_08);
 
     RemoveWindow(window);
 
@@ -2382,7 +2382,7 @@ BOOL ScrCmd_SetStarterChoice(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_TrainerMessage(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
 
-    u16 *p_scripno = FieldSysGetAttrAddr(fsys, SCRIPTENV_SCRIPT);
+    u16 *p_scripno = FieldSysGetAttrAddr(fsys, SCRIPTENV_ACTIVE_SCRIPT_NUMBER);
     STRING **p_strbuf1 = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRBUF1);
     u8 *p_printerno = FieldSysGetAttrAddr(fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
     u16 trainerno = ScriptGetVar(ctx);
@@ -4682,7 +4682,7 @@ BOOL ScrCmd_LoadPhoneDat(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_GetPhoneContactMsgIds(SCRIPTCONTEXT *ctx) {
-    u16 *p_scriptno = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_SCRIPT);
+    u16 *p_scriptno = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_ACTIVE_SCRIPT_NUMBER);
     u8 r6 = ScriptReadByte(ctx);
     u16 *sp0 = ScriptGetVarPointer(ctx);
     u16 *p_ret_msg = ScriptGetVarPointer(ctx);

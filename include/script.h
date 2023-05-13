@@ -49,8 +49,8 @@ typedef struct ScriptEnvironment {
     u8 activeMovementCounter;
     u8 unk_7;
     u8 unk_8;
-    u8 numActiveScrCtx;
-    u16 script;
+    u8 activeScriptContextCount;
+    u16 activeScriptNumber;
     u32 unk_C;
     u32 unk_10;
     WINDOW unk_14;
@@ -83,10 +83,10 @@ typedef enum ScriptEnvField {
     SCRIPTENV_TEXT_PRINTER_NUMBER,
     SCRIPTENV_ACTIVE_MOVEMENT_COUNTER,
     SCRIPTENV_FIELD_07,
-    SCRIPTENV_08                              =  6,
-    SCRIPTENV_NUM_ACTIVE_SCRCTX               =  7,
-    SCRIPTENV_SCRIPT                          =  8,
-    SCRIPTENV_FACING_DIRECTION                =  9,
+    SCRIPTENV_FIELD_08,
+    SCRIPTENV_ACTIVE_SCRIPTCONTEXT_COUNT,
+    SCRIPTENV_ACTIVE_SCRIPT_NUMBER,
+    SCRIPTENV_FACING_DIRECTION,
     SCRIPTENV_LAST_TALKED                     = 10,
     SCRIPTENV_CAMERA_FOCUS_OBJ                = 11,
     SCRIPTENV_34                              = 12,
