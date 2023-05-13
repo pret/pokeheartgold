@@ -931,10 +931,10 @@ BOOL ScrCmd_061(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_YesNo(SCRIPTCONTEXT* ctx) {
     FieldSystem *fsys = ctx->fsys;
-    struct ListMenu2 **listMenu = FieldSysGetAttrAddr(fsys, SCRIPTENV_MENU);
+    struct ListMenu2D **listMenu2D = FieldSysGetAttrAddr(fsys, SCRIPTENV_LIST_MENU_2D);
     u16 data = ScriptReadHalfword(ctx);
     LoadUserFrameGfx1(fsys->bgConfig, 3, 0x3D9, 11, 0, 4);
-    *listMenu = Std_CreateYesNoMenu(fsys->bgConfig, &_020FAC94, 0x3D9, 11, 4);
+    *listMenu2D = Std_CreateYesNoMenu(fsys->bgConfig, &_020FAC94, 0x3D9, 11, 4);
     ctx->data[0] = data;
     SetupNativeScript(ctx, sub_020416E4);
     return TRUE;
@@ -942,9 +942,9 @@ BOOL ScrCmd_YesNo(SCRIPTCONTEXT* ctx) {
 
 BOOL sub_020416E4(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    struct ListMenu2 **listMenu = FieldSysGetAttrAddr(fsys, SCRIPTENV_MENU);
+    struct ListMenu2D **listMenu2D = FieldSysGetAttrAddr(fsys, SCRIPTENV_LIST_MENU_2D);
     u16 *ret_p = GetVarPointer(fsys, ctx->data[0]);
-    int selection = Handle2dMenuInput_DeleteOnFinish(*listMenu, 4);
+    int selection = Handle2dMenuInput_DeleteOnFinish(*listMenu2D, 4);
     if (selection == LIST_NOTHING_CHOSEN) {
         return FALSE;
     } else {

@@ -11,7 +11,7 @@
 #include "constants/vars.h"
 #include "overlay_manager.h"
 #include "unk_0200E320.h"
-#include "list_menu_2.h"
+#include "list_menu_2d.h"
 #include "unk_0200E398.h"
 #include "unk_02022D74.h"
 #include "field_system.h"
@@ -54,7 +54,7 @@ typedef struct ScriptEnvironment {
     u32 unk_C;
     u32 unk_10;
     WINDOW unk_14;
-    struct ListMenu2 *listMenu;
+    struct ListMenu2D *listMenu2D;
     int facingDirection;
     LocalMapObject *lastTalked;
     u32 cameraFocusObj;
@@ -76,10 +76,10 @@ typedef struct ScriptEnvironment {
     struct SaveStatsPrinter *unk_DC;
 } ScriptEnvironment;
 
-enum ScriptEnvField {
-    SCRIPTENV_MENU_WINDOW                     =  0,
-    SCRIPTENV_WINDOW                          =  1,
-    SCRIPTENV_MENU                            =  2,
+typedef enum ScriptEnvField {
+    SCRIPTENV_MENU_WINDOW,
+    SCRIPTENV_WINDOW,
+    SCRIPTENV_LIST_MENU_2D,
     SCRIPTENV_PRINTER_NUM                     =  3,
     SCRIPTENV_NUM_ACTIVE_MOVEMENT             =  4,
     SCRIPTENV_07                              =  5,
@@ -133,7 +133,7 @@ enum ScriptEnvField {
     SCRIPTENV_SPECIAL_VAR_800B                = 53,
     SCRIPTENV_SPECIAL_VAR_RESULT              = 54,
     SCRIPTENV_SPECIAL_VAR_LAST_TALKED         = 55,
-};
+} ScriptEnvField;
 
 struct UnkStruct_020FC5CC {
     u32 unk0_00:4;

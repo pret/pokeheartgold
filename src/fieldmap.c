@@ -215,90 +215,90 @@ void LoadScriptsAndMessagesForCurrentMap(FieldSystem *fsys, SCRIPTCONTEXT *ctx) 
     ctx->msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, GetCurrentMapMessageBank(fsys->location->mapId), HEAP_ID_FIELDMAP);
 }
 
-void *FieldSysGetAttrAddrInternal(ScriptEnvironment *unk, enum ScriptEnvField field) {
+void *FieldSysGetAttrAddrInternal(ScriptEnvironment *environment, enum ScriptEnvField field) {
     switch (field) {
     case SCRIPTENV_MENU_WINDOW:
-        return &unk->unk_10;
+        return &environment->unk_10;
     case SCRIPTENV_WINDOW:
-        return &unk->unk_14;
-    case SCRIPTENV_MENU:
-        return &unk->listMenu;
+        return &environment->unk_14;
+    case SCRIPTENV_LIST_MENU_2D:
+        return &environment->listMenu2D;
     case SCRIPTENV_PRINTER_NUM:
-        return &unk->textPrinterNum;
+        return &environment->textPrinterNum;
     case SCRIPTENV_NUM_ACTIVE_MOVEMENT:
-        return &unk->numActiveMovement;
+        return &environment->numActiveMovement;
     case SCRIPTENV_07:
-        return &unk->unk_7;
+        return &environment->unk_7;
     case SCRIPTENV_08:
-        return &unk->unk_8;
+        return &environment->unk_8;
     case SCRIPTENV_NUM_ACTIVE_SCRCTX:
-        return &unk->numActiveScrCtx;
+        return &environment->numActiveScrCtx;
     case SCRIPTENV_SCRIPT:
-        return &unk->script;
+        return &environment->script;
     case SCRIPTENV_FACING_DIRECTION:
-        return &unk->facingDirection;
+        return &environment->facingDirection;
     case SCRIPTENV_LAST_TALKED:
-        return &unk->lastTalked;
+        return &environment->lastTalked;
     case SCRIPTENV_CAMERA_FOCUS_OBJ:
-        return &unk->cameraFocusObj;
+        return &environment->cameraFocusObj;
     case SCRIPTENV_34:
-        return &unk->unk_34;
+        return &environment->unk_34;
     case SCRIPTENV_SCRCTX_0:
     case SCRIPTENV_SCRCTX_1:
     case SCRIPTENV_SCRCTX_2:
-        return &unk->scriptContexts[field - SCRIPTENV_SCRCTX_0];
+        return &environment->scriptContexts[field - SCRIPTENV_SCRCTX_0];
     case SCRIPTENV_MSGFMT:
-        return &unk->msgfmt;
+        return &environment->msgfmt;
     case SCRIPTENV_STRBUF1:
-        return &unk->strbuf1;
+        return &environment->strbuf1;
     case SCRIPTENV_STRBUF2:
-        return &unk->strbuf2;
+        return &environment->strbuf2;
     case SCRIPTENV_WAITING_ICON:
-        return &unk->unk_50;
+        return &environment->unk_50;
     case SCRIPTENV_AC:
-        return &unk->unk_AC;
+        return &environment->unk_AC;
     case SCRIPTENV_GENERIC_WORK_PTR:
-        return &unk->genericWorkPtr;
+        return &environment->genericWorkPtr;
     case SCRIPTENV_B4:
-        return &unk->unk_B4;
+        return &environment->unk_B4;
     case SCRIPTENV_B8:
-        return &unk->unk_B8;
+        return &environment->unk_B8;
     case SCRIPTENV_0C:
-        return &unk->unk_C;
+        return &environment->unk_C;
     case SCRIPTENV_54_0_00:
-        return &unk->engagedTrainers[0].unk0;
+        return &environment->engagedTrainers[0].unk0;
     case SCRIPTENV_54_0_04:
-        return &unk->engagedTrainers[0].unk4;
+        return &environment->engagedTrainers[0].unk4;
     case SCRIPTENV_54_0_08:
-        return &unk->engagedTrainers[0].unk8;
+        return &environment->engagedTrainers[0].unk8;
     case SCRIPTENV_EYE_TRAINER_1_NUM:
-        return &unk->engagedTrainers[0].trainerNum;
+        return &environment->engagedTrainers[0].trainerNum;
     case SCRIPTENV_EYE_TRAINER_1_ENCTYPE:
-        return &unk->engagedTrainers[0].encounterType;
+        return &environment->engagedTrainers[0].encounterType;
     case SCRIPTENV_EYE_TRAINER_1_OBJPTR:
-        return &unk->engagedTrainers[0].objectEvent;
+        return &environment->engagedTrainers[0].objectEvent;
     case SCRIPTENV_54_0_18:
-        return &unk->engagedTrainers[0].unk18;
+        return &environment->engagedTrainers[0].unk18;
     case SCRIPTENV_54_1_00:
-        return &unk->engagedTrainers[1].unk0;
+        return &environment->engagedTrainers[1].unk0;
     case SCRIPTENV_54_1_04:
-        return &unk->engagedTrainers[1].unk4;
+        return &environment->engagedTrainers[1].unk4;
     case SCRIPTENV_54_1_08:
-        return &unk->engagedTrainers[1].unk8;
+        return &environment->engagedTrainers[1].unk8;
     case SCRIPTENV_EYE_TRAINER_2_NUM:
-        return &unk->engagedTrainers[1].trainerNum;
+        return &environment->engagedTrainers[1].trainerNum;
     case SCRIPTENV_EYE_TRAINER_2_ENCTYPE:
-        return &unk->engagedTrainers[1].encounterType;
+        return &environment->engagedTrainers[1].encounterType;
     case SCRIPTENV_EYE_TRAINER_2_OBJPTR:
-        return &unk->engagedTrainers[1].objectEvent;
+        return &environment->engagedTrainers[1].objectEvent;
     case SCRIPTENV_54_1_18:
-        return &unk->engagedTrainers[1].unk18;
+        return &environment->engagedTrainers[1].unk18;
     case SCRIPTENV_BC:
-        return &unk->unk_BC;
+        return &environment->unk_BC;
     case SCRIPTENV_MONEY_BOX:
-        return &unk->moneyBox;
+        return &environment->moneyBox;
     case SCRIPTENV_DC:
-        return &unk->unk_DC;
+        return &environment->unk_DC;
     case SCRIPTENV_SPECIAL_VAR_8000:
     case SCRIPTENV_SPECIAL_VAR_8001:
     case SCRIPTENV_SPECIAL_VAR_8002:
@@ -313,9 +313,9 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *unk, enum ScriptEnvField fi
     case SCRIPTENV_SPECIAL_VAR_800B:
     case SCRIPTENV_SPECIAL_VAR_RESULT:
     case SCRIPTENV_SPECIAL_VAR_LAST_TALKED:
-        return &unk->specialVars[field - SCRIPTENV_SPECIAL_VAR_8000];
+        return &environment->specialVars[field - SCRIPTENV_SPECIAL_VAR_8000];
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return NULL;
     }
 }

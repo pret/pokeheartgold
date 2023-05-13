@@ -12,7 +12,7 @@ Static main
 	Object src/pm_version.o
 	Object src/main.o
 	Object src/list_menu.o
-	Object src/list_menu_2.o
+	Object src/list_menu_2d.o
 	Object src/string_util.o
 	Object asm/render_text.o
 	Object src/font.o
