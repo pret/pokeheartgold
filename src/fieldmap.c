@@ -241,7 +241,7 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *environment, enum ScriptEnv
         return &environment->lastInteracted;
     case SCRIPTENV_CAMERA_TARGET:
         return &environment->cameraTarget;
-    case SCRIPTENV_34:
+    case SCRIPTENV_FIELD_34:
         return &environment->unk_34;
     case SCRIPTENV_SCRCTX_0:
     case SCRIPTENV_SCRCTX_1:

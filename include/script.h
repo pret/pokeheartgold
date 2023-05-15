@@ -89,7 +89,7 @@ typedef enum ScriptEnvField {
     SCRIPTENV_FACING_DIRECTION,
     SCRIPTENV_LAST_INTERACTED,
     SCRIPTENV_CAMERA_TARGET,
-    SCRIPTENV_34                              = 12,
+    SCRIPTENV_FIELD_34,
     SCRIPTENV_SCRCTX_0                        = 13,
     SCRIPTENV_SCRCTX_1                        = 14,
     SCRIPTENV_SCRCTX_2                        = 15,

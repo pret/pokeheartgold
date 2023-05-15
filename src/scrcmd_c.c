@@ -3026,7 +3026,7 @@ BOOL ScrCmd_344(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_347(SCRIPTCONTEXT *ctx) {
-    u16 **r5 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_34);
+    u16 **r5 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_FIELD_34);
     u16 r0 = ScriptGetVar(ctx);
     if (*r5 != NULL) {
         **r5 = r0;
