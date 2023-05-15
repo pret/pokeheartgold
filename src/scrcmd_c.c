@@ -374,7 +374,7 @@ BOOL ScrCmd_GoTo(SCRIPTCONTEXT* ctx) {
 }
 
 BOOL ScrCmd_ObjectGoTo(SCRIPTCONTEXT* ctx) {
-    LocalMapObject** lmo = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_TALKED);
+    LocalMapObject** lmo = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_INTERACTED);
     u8 id = ScriptReadByte(ctx);
 
     u32 offset_in_script = ScriptReadWord(ctx);
@@ -1241,16 +1241,16 @@ void _RunObjectEventMovement(SysTask *task, struct ObjectMovementTaskEnv *env) {
 BOOL _WaitFollowPokePaused(SCRIPTCONTEXT *ctx);
 
 BOOL ScrCmd_LockAll(SCRIPTCONTEXT *ctx) {
-    LocalMapObject **p_lastTalked;
-    LocalMapObject *tsurePoke;
+    LocalMapObject **p_lastInteracted;
+    LocalMapObject *followingPoke;
     FieldSystem *fsys = ctx->fsys;
 
-    p_lastTalked = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_TALKED);
-    if (*p_lastTalked == NULL) {
+    p_lastInteracted = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_INTERACTED);
+    if (*p_lastInteracted == NULL) {
         MapObjectMan_PauseAllMovement(fsys->mapObjectMan);
-        tsurePoke = FollowingPokemon_GetMapObject(fsys);
-        if (FollowingPokemon_IsActive(fsys) && MapObject_IsSingleMovementActive(tsurePoke)) {
-            MapObject_UnpauseMovement(tsurePoke);
+        followingPoke = FollowingPokemon_GetMapObject(fsys);
+        if (FollowingPokemon_IsActive(fsys) && MapObject_IsSingleMovementActive(followingPoke)) {
+            MapObject_UnpauseMovement(followingPoke);
             SetupNativeScript(ctx, _WaitFollowPokePaused);
             return TRUE;
         }
@@ -1282,7 +1282,7 @@ static inline void _ResetMovementPauseWaitFlags(void) {
 
 BOOL _WaitMovementPauseBeforeMsg(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_TALKED);
+    LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_INTERACTED);
     LocalMapObject *playerObj = PlayerAvatar_GetMapObject(fsys->playerAvatar);
     LocalMapObject *unk;
 
@@ -1294,8 +1294,8 @@ BOOL _WaitMovementPauseBeforeMsg(SCRIPTCONTEXT *ctx) {
     }
 
     if (_CheckMovementPauseWaitFlag(4)) {
-        if (MapObject_IsSingleMovementActive(*p_lastTalked) == FALSE) {
-            MapObject_PauseMovement(*p_lastTalked);
+        if (MapObject_IsSingleMovementActive(*p_lastInteracted) == FALSE) {
+            MapObject_PauseMovement(*p_lastInteracted);
             _ClearMovementPauseWaitFlag(4);
         }
     }
@@ -1309,7 +1309,7 @@ BOOL _WaitMovementPauseBeforeMsg(SCRIPTCONTEXT *ctx) {
     }
 
     if (_CheckMovementPauseWaitFlag(8)) {
-        unk = sub_020660C0(*p_lastTalked);
+        unk = sub_020660C0(*p_lastInteracted);
         if (MapObject_IsSingleMovementActive(unk) == FALSE) {
             MapObject_PauseMovement(unk);
             _ClearMovementPauseWaitFlag(8);
@@ -1331,10 +1331,10 @@ BOOL _WaitFollowPokePaused(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_LockLastTalked(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_TALKED);
+    LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_INTERACTED);
     LocalMapObject *playerObject = PlayerAvatar_GetMapObject(fsys->playerAvatar);
     LocalMapObject *unk = sub_0205EEB4(fsys->mapObjectMan, 0x30);
-    LocalMapObject *unk2 = sub_020660C0(*p_lastTalked);
+    LocalMapObject *unk2 = sub_020660C0(*p_lastInteracted);
     MapObjectMan *mapObjectMan = fsys->mapObjectMan;
 
     _ResetMovementPauseWaitFlags();
@@ -1346,9 +1346,9 @@ BOOL ScrCmd_LockLastTalked(SCRIPTCONTEXT *ctx) {
         MapObject_UnpauseMovement(playerObject);
     }
 
-    if (MapObject_IsSingleMovementActive(*p_lastTalked) != FALSE) {
+    if (MapObject_IsSingleMovementActive(*p_lastInteracted) != FALSE) {
         _SetMovementPauseWaitFlag(4);
-        MapObject_UnpauseMovement(*p_lastTalked);
+        MapObject_UnpauseMovement(*p_lastInteracted);
     }
 
     if (unk != NULL && FollowingPokemon_IsActive(fsys) && MapObject_IsSingleMovementActive(unk) == FALSE) {
@@ -1460,37 +1460,37 @@ BOOL ScrCmd_679(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_FacePlayer(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u32 rvsDir = sub_020611F4(PlayerAvatar_GetFacingDirection(fsys->playerAvatar));
-    LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_TALKED);
+    LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_INTERACTED);
     u32 oldDir;
     int x, y;
     int metatile;
 
-    if (*p_lastTalked == NULL) {
+    if (*p_lastInteracted == NULL) {
         return FALSE;
     }
-    oldDir = MapObject_GetFacingDirection(*p_lastTalked);
-    ov01_021F9408(*p_lastTalked, rvsDir);
-    if (MapObject_GetID(*p_lastTalked) == obj_partner_poke) {
-        if (ov01_022055DC(*p_lastTalked) && oldDir != rvsDir) {
-            ov01_02205604(*p_lastTalked, &x, &y);
+    oldDir = MapObject_GetFacingDirection(*p_lastInteracted);
+    ov01_021F9408(*p_lastInteracted, rvsDir);
+    if (MapObject_GetID(*p_lastInteracted) == obj_partner_poke) {
+        if (ov01_022055DC(*p_lastInteracted) && oldDir != rvsDir) {
+            ov01_02205604(*p_lastInteracted, &x, &y);
             metatile = GetMetatileBehaviorAt(fsys, x, y);
             if (rvsDir == 2 || rvsDir == 3) {
                 if (sub_0205B6E8(metatile) == TRUE) {
-                    ov01_021FF0E4(*p_lastTalked, 0, x, y, 1);
+                    ov01_021FF0E4(*p_lastInteracted, 0, x, y, 1);
                 } else if (sub_0205B6F4(metatile) == TRUE) {
-                    ov01_021FF964(*p_lastTalked, 0, x, y, 1);
+                    ov01_021FF964(*p_lastInteracted, 0, x, y, 1);
                 }
             }
             if (sub_0205B6E8(metatile) == FALSE
              && sub_0205B6F4(metatile) == FALSE
-             && sub_02060E54(*p_lastTalked, metatile) == FALSE
+             && sub_02060E54(*p_lastInteracted, metatile) == FALSE
              && sub_0205B984(metatile) == FALSE
              && sub_0205B7A4(metatile) == FALSE
-             && sub_02060EBC(*p_lastTalked, metatile) == FALSE
+             && sub_02060EBC(*p_lastInteracted, metatile) == FALSE
              && sub_0205B8AC(metatile) == FALSE
              && sub_0205BA70(metatile) == FALSE
             ) {
-                MapObject_ClearFlagsBits(*p_lastTalked, MAPOBJECTFLAG_UNK20);
+                MapObject_ClearFlagsBits(*p_lastInteracted, MAPOBJECTFLAG_UNK20);
             }
         }
     }
@@ -1883,10 +1883,10 @@ BOOL sub_02042C78(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_454(SCRIPTCONTEXT *ctx) {
-    LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_TALKED);
+    LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_INTERACTED);
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_26), OVY_LOAD_ASYNC);
-    if (*p_lastTalked != NULL) {
-        ov26_022599D8(ctx->fsys, *p_lastTalked);
+    if (*p_lastInteracted != NULL) {
+        ov26_022599D8(ctx->fsys, *p_lastInteracted);
     }
     UnloadOverlayByID(FS_OVERLAY_ID(OVY_26));
     return FALSE;
@@ -2687,7 +2687,7 @@ BOOL ScrCmd_261(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_264(SCRIPTCONTEXT *ctx) {
-    LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_TALKED);
+    LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_INTERACTED);
     MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
     u16 r4 = ScriptReadHalfword(ctx);
     PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
@@ -2695,7 +2695,7 @@ BOOL ScrCmd_264(SCRIPTCONTEXT *ctx) {
     u16 objId;
 
     if (r4 == 0) {
-        objId = MapObject_GetID(*p_lastTalked);
+        objId = MapObject_GetID(*p_lastInteracted);
     } else {
         objId = 0;
     }
@@ -2722,11 +2722,11 @@ BOOL sub_020441C4(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_267(SCRIPTCONTEXT *ctx) {
-    LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_TALKED);
+    LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_INTERACTED);
     u16 sp0 = ScriptReadHalfword(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
-    *p_ret = sub_0205A750(ctx->fsys->unk80, MapObject_GetID(*p_lastTalked), sp0, *p_msgFmt);
+    *p_ret = sub_0205A750(ctx->fsys->unk80, MapObject_GetID(*p_lastInteracted), sp0, *p_msgFmt);
     return FALSE;
 }
 
@@ -2742,18 +2742,18 @@ BOOL ScrCmd_586(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_268(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_TALKED);
+    LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_INTERACTED);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = sub_0205A200(fsys->unk80, MapObject_GetID(*p_lastTalked));
+    *p_ret = sub_0205A200(fsys->unk80, MapObject_GetID(*p_lastInteracted));
     return FALSE;
 }
 
 BOOL ScrCmd_274(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_TALKED);
+    LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_INTERACTED);
     u16 r7 = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = sub_0205A284(fsys->unk80, MapObject_GetID(*p_lastTalked), r7);
+    *p_ret = sub_0205A284(fsys->unk80, MapObject_GetID(*p_lastInteracted), r7);
     return FALSE;
 }
 

@@ -243,17 +243,17 @@ BOOL ScrCmd_223(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_224(SCRIPTCONTEXT *ctx) {
-    LocalMapObject **lastTalked = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_TALKED);
-    u32 mapObjectId = MapObject_GetID(*lastTalked);
+    LocalMapObject **lastInteracted = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_INTERACTED);
+    u32 mapObjectId = MapObject_GetID(*lastInteracted);
     TrainerFlagSet(ctx->fsys->savedata, (u16)mapObjectId);
     return FALSE;
 }
 
 BOOL ScrCmd_GotoIfTrainerDefeated(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    LocalMapObject **lastTalked = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_TALKED);
+    LocalMapObject **lastInteracted = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_INTERACTED);
     u32 offset = ScriptReadWord(ctx);
-    u32 mapObjectId = MapObject_GetID(*lastTalked);
+    u32 mapObjectId = MapObject_GetID(*lastInteracted);
 
     if (TrainerFlagCheck(fsys->savedata, (u16)mapObjectId) == TRUE) {
         ScriptJump(ctx, ctx->script_ptr + offset);

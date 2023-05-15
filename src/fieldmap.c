@@ -59,9 +59,9 @@ const struct ScriptBankMapping sScriptBankMapping[30] = {
     {_std_misc,           NARC_scr_seq_scr_seq_0003_bin, NARC_msg_msg_0040_bin},
 };
 
-void StartMapSceneScript(FieldSystem *fsys, u16 script, LocalMapObject *lastTalked) {
+void StartMapSceneScript(FieldSystem *fsys, u16 script, LocalMapObject *lastInteracted) {
     ScriptEnvironment *r4 = ScriptEnvironment_new();
-    SetupScriptEngine(fsys, r4, script, lastTalked, NULL);
+    SetupScriptEngine(fsys, r4, script, lastInteracted, NULL);
     FieldSys_CreateTask(fsys, Task_RunScripts, r4);
 }
 
@@ -76,17 +76,17 @@ void FieldSys_SetEngagedTrainer(FieldSystem *fsys, LocalMapObject *obj, int a2, 
     r0->objectEvent = obj;
 }
 
-void QueueScript(TaskManager *taskman, u16 script, LocalMapObject *lastTalked, void *a3) {
+void QueueScript(TaskManager *taskman, u16 script, LocalMapObject *lastInteracted, void *a3) {
     FieldSystem *fsys = TaskManager_GetSys(taskman);
     ScriptEnvironment *env = ScriptEnvironment_new();
-    SetupScriptEngine(fsys, env, script, lastTalked, a3);
+    SetupScriptEngine(fsys, env, script, lastInteracted, a3);
     TaskManager_Call(taskman, Task_RunScripts, env);
 }
 
-void StartScriptFromMenu(TaskManager *taskman, u16 script, LocalMapObject *lastTalked) {
+void StartScriptFromMenu(TaskManager *taskman, u16 script, LocalMapObject *lastInteracted) {
     FieldSystem *fsys = TaskManager_GetSys(taskman);
     ScriptEnvironment *env = ScriptEnvironment_new();
-    SetupScriptEngine(fsys, env, script, lastTalked, NULL);
+    SetupScriptEngine(fsys, env, script, lastInteracted, NULL);
     TaskManager_Jump(taskman, Task_RunScripts, env);
 }
 
@@ -154,14 +154,14 @@ void DestroyScriptContext(SCRIPTCONTEXT *ctx) {
     FreeToHeap(ctx);
 }
 
-void SetupScriptEngine(FieldSystem *fsys, ScriptEnvironment *env, u16 script, LocalMapObject *lastTalked, void* a4) {
-    u16 *varLastTalked = FieldSysGetAttrAddrInternal(env, SCRIPTENV_SPECIAL_VAR_LAST_TALKED);
+void SetupScriptEngine(FieldSystem *fsys, ScriptEnvironment *env, u16 script, LocalMapObject *lastInteracted, void* a4) {
+    u16 *varLastInteracted = FieldSysGetAttrAddrInternal(env, SCRIPTENV_SPECIAL_VAR_LAST_TALKED);
     env->facingDirection = PlayerAvatar_GetFacingDirection(fsys->playerAvatar);
-    env->lastTalked = lastTalked;
+    env->lastInteracted = lastInteracted;
     env->activeScriptNumber = script;
     env->unk_34 = a4;
-    if (lastTalked != NULL) {
-        *varLastTalked = MapObject_GetID(lastTalked);
+    if (lastInteracted != NULL) {
+        *varLastInteracted = MapObject_GetID(lastInteracted);
     }
     if (script >= _std_hidden_item && script <= _std_safari - 1) {
         GetHiddenItemParams(env, script);
@@ -237,8 +237,8 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *environment, enum ScriptEnv
         return &environment->activeScriptNumber;
     case SCRIPTENV_FACING_DIRECTION:
         return &environment->facingDirection;
-    case SCRIPTENV_LAST_TALKED:
-        return &environment->lastTalked;
+    case SCRIPTENV_LAST_INTERACTED:
+        return &environment->lastInteracted;
     case SCRIPTENV_CAMERA_FOCUS_OBJ:
         return &environment->cameraFocusObj;
     case SCRIPTENV_34:
