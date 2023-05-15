@@ -57,7 +57,7 @@ typedef struct ScriptEnvironment {
     struct ListMenu2D *listMenu2D;
     int facingDirection;
     LocalMapObject *lastInteracted;
-    u32 cameraFocusObj;
+    u32 cameraTarget;
     LocalMapObject *unk_34;
     SCRIPTCONTEXT *scriptContexts[3];
     MSGFMT *msgfmt;
@@ -88,7 +88,7 @@ typedef enum ScriptEnvField {
     SCRIPTENV_ACTIVE_SCRIPT_NUMBER,
     SCRIPTENV_FACING_DIRECTION,
     SCRIPTENV_LAST_INTERACTED,
-    SCRIPTENV_CAMERA_FOCUS_OBJ                = 11,
+    SCRIPTENV_CAMERA_TARGET,
     SCRIPTENV_34                              = 12,
     SCRIPTENV_SCRCTX_0                        = 13,
     SCRIPTENV_SCRCTX_1                        = 14,

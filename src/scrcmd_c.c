@@ -1181,7 +1181,7 @@ LocalMapObject *sub_02041C70(FieldSystem *fsys, u16 person) {
     if (person == 0xF2) {
         return sub_0205EEB4(fsys->mapObjectMan, 0x30);
     } else if (person == 0xF1) {
-        LocalMapObject **attr = FieldSysGetAttrAddr(fsys, SCRIPTENV_CAMERA_FOCUS_OBJ);
+        LocalMapObject **attr = FieldSysGetAttrAddr(fsys, SCRIPTENV_CAMERA_TARGET);
         return *attr;
     } else {
         return GetMapObjectByID(fsys->mapObjectMan, person);
@@ -1418,7 +1418,7 @@ BOOL ScrCmd_HidePerson(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_102(SCRIPTCONTEXT *ctx) {
     u16 x = ScriptGetVar(ctx);
     u16 y = ScriptGetVar(ctx);
-    LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_CAMERA_FOCUS_OBJ);
+    LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_CAMERA_TARGET);
     VecFx32 *pos;
     *p_cameraObj = CreateSpecialFieldObject(ctx->fsys->mapObjectMan, x, y, 0, SPRITE_CAMERA_FOCUS, 0, ctx->fsys->location->mapId);
     sub_02061070(*p_cameraObj);
@@ -1431,7 +1431,7 @@ BOOL ScrCmd_102(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_103(SCRIPTCONTEXT *ctx) {
-    LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_CAMERA_FOCUS_OBJ);
+    LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_CAMERA_TARGET);
     VecFx32 *pos;
     MapObject_Remove(*p_cameraObj);
     pos = MapObject_GetPositionVecPtr(GetMapObjectByID(ctx->fsys->mapObjectMan, obj_player));
@@ -1443,7 +1443,7 @@ BOOL ScrCmd_103(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_678(SCRIPTCONTEXT *ctx) {
     u16 x = ScriptGetVar(ctx);
     u16 y = ScriptGetVar(ctx);
-    LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_CAMERA_FOCUS_OBJ);
+    LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_CAMERA_TARGET);
     *p_cameraObj = CreateSpecialFieldObject(ctx->fsys->mapObjectMan, x, y, 0, SPRITE_CAMERA_FOCUS, 0, ctx->fsys->location->mapId);
     sub_02061070(*p_cameraObj);
     MapObject_SetFlag9(*p_cameraObj, TRUE);
@@ -1452,7 +1452,7 @@ BOOL ScrCmd_678(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_679(SCRIPTCONTEXT *ctx) {
-    LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_CAMERA_FOCUS_OBJ);
+    LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_CAMERA_TARGET);
     MapObject_Remove(*p_cameraObj);
     return FALSE;
 }
