@@ -32,7 +32,6 @@ jobs:
           sudo add-apt-repository ppa:cybermax-dexter/sdl2-backport
           sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/$(lsb_release -cs)/winehq-$(lsb_release -cs).sources
           sudo apt update
-          sudo ACCEPT_EULA=Y apt -y --fix-missing --allow-downgrades upgrade
           sudo apt -y --allow-downgrades install --install-recommends winehq-stable
 
       - name: Checkout Repo
