@@ -5413,7 +5413,7 @@ ov48_0225B068: ; 0x0225B068
 	mov r0, #8
 	mov r1, #0x40
 	add r2, r4, #0
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	str r0, [r5, #4]
 	mov r0, #0x80
 	add r1, r4, #0
@@ -5435,7 +5435,7 @@ ov48_0225B0A4: ; 0x0225B0A4
 	ldr r0, [r4]
 	bl DestroyMsgData
 	ldr r0, [r4, #4]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4, #8]
 	bl String_dtor
 	ldr r0, [r4, #0xc]
@@ -5492,7 +5492,7 @@ ov48_0225B108: ; 0x0225B108
 	ldr r0, [r5, #4]
 	add r4, r1, #0
 	add r6, r2, #0
-	bl ScrStrBufs_ResetBuffers
+	bl MessageFormat_ResetBuffers
 	ldr r0, [r5]
 	ldr r2, [r5, #0xc]
 	mov r1, #3

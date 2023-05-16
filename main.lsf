@@ -34,7 +34,7 @@ Static main
 	Object asm/unk_0200B150.o
 	Object asm/unk_0200B380.o
 	Object src/msgdata.o
-	Object src/msgfmt.o
+	Object src/message_format.o
 	Object asm/message_printer.o
 	Object asm/unk_0200CE7C.o
 	Object asm/unk_0200CF18.o

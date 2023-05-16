@@ -60,9 +60,9 @@
 .public GetSpeciesNameIntoArray
 .public ReadMsgData_ExpandPlaceholders
 .public GetSpeciesName
-.public ScrStrBufs_new
-.public ScrStrBufs_new_custom
-.public ScrStrBufs_delete
+.public MessageFormat_new
+.public MessageFormat_new_custom
+.public MessageFormat_delete
 .public BufferString
 .public BufferSpeciesName
 .public BufferBoxMonNickname

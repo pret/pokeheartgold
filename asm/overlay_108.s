@@ -2845,7 +2845,7 @@ ov108_021E6F74: ; 0x021E6F74
 	ldr r2, [r5]
 	mov r0, #1
 	mov r1, #0x11
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	mov r1, #0xc2
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -2945,7 +2945,7 @@ _021E7036:
 	mov r0, #0xc2
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	mov r0, #0xc1
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
@@ -8472,7 +8472,7 @@ ov108_021E9C3C: ; 0x021E9C3C
 	ldr r2, [r5]
 	mov r0, #2
 	mov r1, #0x10
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	mov r1, #0x31
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -8558,7 +8558,7 @@ _021E9CDC:
 	mov r0, #0x31
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	mov r0, #0xc3
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]

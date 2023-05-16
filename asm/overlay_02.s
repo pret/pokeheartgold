@@ -21415,7 +21415,7 @@ FollowPoke_ExpandInteractionMessage: ; 0x0224FC8C
 	bl NewMsgDataFromNarc
 	add r5, r0, #0
 	add r0, r4, #0
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
@@ -21431,7 +21431,7 @@ FollowPoke_ExpandInteractionMessage: ; 0x0224FC8C
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r0, r5, #0
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
@@ -21453,7 +21453,7 @@ ov02_0224FCE0: ; 0x0224FCE0
 	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	add r0, r4, #0
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	add r4, r0, #0
 	mov r0, #2
 	tst r0, r6
@@ -21515,7 +21515,7 @@ _0224FD72:
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r0, r7, #0
 	bl DestroyMsgData
 	add sp, #8

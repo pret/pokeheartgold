@@ -5900,7 +5900,7 @@ ov49_0225B308: ; 0x0225B308
 	mov r0, #8
 	mov r1, #0x40
 	add r2, r7, #0
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	ldr r1, [sp]
 	ldr r4, _0225B358 ; =ov49_02269714
 	str r0, [r1]
@@ -5940,7 +5940,7 @@ ov49_0225B35C: ; 0x0225B35C
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	ldr r0, [r6]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	mov r4, #0
 	add r5, r6, #0
 _0225B36A:
@@ -6079,11 +6079,11 @@ _0225B434: .word BufferECWord
 
 	thumb_func_start ov49_0225B438
 ov49_0225B438: ; 0x0225B438
-	ldr r3, _0225B440 ; =ScrStrBufs_ResetBuffers
+	ldr r3, _0225B440 ; =MessageFormat_ResetBuffers
 	ldr r0, [r0]
 	bx r3
 	nop
-_0225B440: .word ScrStrBufs_ResetBuffers
+_0225B440: .word MessageFormat_ResetBuffers
 	thumb_func_end ov49_0225B438
 
 	thumb_func_start ov49_0225B444

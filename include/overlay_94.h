@@ -33,7 +33,7 @@ typedef struct PartyMenuStruct {
     UnkStruct_Overlay_94_B* unk654; //0x654
     u8 unk658[0x167];
     MSGDATA* msgData; //0x7c0
-    MSGFMT* unk7c4;
+    MessageFormat* unk7c4;
     STRING* unk7c8;
     u8 unk7cc[0x498];
     u8 unkc64;

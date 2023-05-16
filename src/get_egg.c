@@ -22,10 +22,10 @@ static int Sav2_DayCare_GetAvailableSlot(DAYCARE *daycare);
 static void DayCareMon_CopyFromPartySlot(PARTY *party, int partyIdx, DAYCAREMON *daycareMon, SAVEDATA *saveData);
 static void Sav2_DayCare_Compaction(DAYCARE *daycare);
 static void Daycare_LearnLevelUpMoves(POKEMON *pokemon);
-static int Sav2_DayCare_MoveMonToParty(PARTY *party, DAYCAREMON *daycareMon, MSGFMT *msgFmt);
+static int Sav2_DayCare_MoveMonToParty(PARTY *party, DAYCAREMON *daycareMon, MessageFormat *msgFmt);
 static int GetDayCareUpdatedLevel(BOXMON *boxmon, u32 steps);
-static u8 DayCareMon_BufferLevelGrowthAndNick(DAYCAREMON *daycareMon, MSGFMT *msgFmt);
-static u16 DayCareMon_BufferNickAndRetrievalPrice(DAYCAREMON *daycareMon, MSGFMT *msgFmt);
+static u8 DayCareMon_BufferLevelGrowthAndNick(DAYCAREMON *daycareMon, MessageFormat *msgFmt);
+static u16 DayCareMon_BufferNickAndRetrievalPrice(DAYCAREMON *daycareMon, MessageFormat *msgFmt);
 static void Daycare_GetBothBoxMonsPtr(DAYCARE *dayCare, BOXMON **boxmons);
 static int Daycare_EverstoneCheck(DAYCARE *dayCare);
 static void GenerateEggPID(DAYCARE *dayCare);
@@ -152,7 +152,7 @@ static void Daycare_LearnLevelUpMoves(POKEMON *pokemon) {
     CalcMonLevelAndStats(pokemon);
 }
 
-static int Sav2_DayCare_MoveMonToParty(PARTY *party, DAYCAREMON *daycareMon, MSGFMT *msgFmt) {
+static int Sav2_DayCare_MoveMonToParty(PARTY *party, DAYCAREMON *daycareMon, MessageFormat *msgFmt) {
     u32 exp;
     POKEMON *pokemon;
     BOXMON *boxmon;
@@ -183,10 +183,10 @@ static int Sav2_DayCare_MoveMonToParty(PARTY *party, DAYCAREMON *daycareMon, MSG
     return species;
 }
 
-u16 Sav2_DayCare_RetrieveMon(PARTY *party, MSGFMT *msgFmt, DAYCARE *daycare, u8 whomst) {
+u16 Sav2_DayCare_RetrieveMon(PARTY *party, MessageFormat *msgFmt, DAYCARE *daycare, u8 whomstdve) {
     u16 ret;
 
-    ret = Sav2_DayCare_MoveMonToParty(party, Sav2_DayCare_GetMonX(daycare, whomst), msgFmt);
+    ret = Sav2_DayCare_MoveMonToParty(party, Sav2_DayCare_GetMonX(daycare, whomstdve), msgFmt);
     Sav2_DayCare_Compaction(daycare);
     return ret;
 }
@@ -219,7 +219,7 @@ int DayCareMon_CalcLevelGrowth(DAYCAREMON *daycareMon) {
     return new_level - cur_level;
 }
 
-static u8 DayCareMon_BufferLevelGrowthAndNick(DAYCAREMON *daycareMon, MSGFMT *msgFmt) {
+static u8 DayCareMon_BufferLevelGrowthAndNick(DAYCAREMON *daycareMon, MessageFormat *msgFmt) {
     BOXMON *boxmon;
     int levelGrowth;
 
@@ -230,7 +230,7 @@ static u8 DayCareMon_BufferLevelGrowthAndNick(DAYCAREMON *daycareMon, MSGFMT *ms
     return levelGrowth;
 }
 
-static u16 DayCareMon_BufferNickAndRetrievalPrice(DAYCAREMON *daycareMon, MSGFMT *msgFmt) {
+static u16 DayCareMon_BufferNickAndRetrievalPrice(DAYCAREMON *daycareMon, MessageFormat *msgFmt) {
     BOXMON *boxmon;
     u16 levelGrowth;
     u16 price;
@@ -242,11 +242,11 @@ static u16 DayCareMon_BufferNickAndRetrievalPrice(DAYCAREMON *daycareMon, MSGFMT
     return price;
 }
 
-u16 Sav2_DayCare_BufferMonNickAndRetrievalPrice(DAYCARE *dayCare, u8 slot, MSGFMT *msgFmt) {
+u16 Sav2_DayCare_BufferMonNickAndRetrievalPrice(DAYCARE *dayCare, u8 slot, MessageFormat *msgFmt) {
     return DayCareMon_BufferNickAndRetrievalPrice(Sav2_DayCare_GetMonX(dayCare, slot), msgFmt);
 }
 
-u8 Sav2_DayCare_BufferGrowthAndNick(DAYCARE *dayCare, u32 slot, MSGFMT *msgFmt) {
+u8 Sav2_DayCare_BufferGrowthAndNick(DAYCARE *dayCare, u32 slot, MessageFormat *msgFmt) {
     DAYCAREMON *daycareMon;
 
     daycareMon = Sav2_DayCare_GetMonX(dayCare, slot);
@@ -917,7 +917,7 @@ POKEMON *sub_0206CE44(PARTY *party) {
     return NULL;
 }
 
-void Sav2_DayCare_BufferStoredMonNicks(DAYCARE *dayCare, MSGFMT *msgFmt) {
+void Sav2_DayCare_BufferStoredMonNicks(DAYCARE *dayCare, MessageFormat *msgFmt) {
     BOXMON *parents[2];
 
     Daycare_GetBothBoxMonsPtr(dayCare, parents);
@@ -930,7 +930,7 @@ void Sav2_DayCare_BufferStoredMonNicks(DAYCARE *dayCare, MSGFMT *msgFmt) {
     }
 }
 
-void Sav2_DayCare_BufferMonStats(DAYCARE *dayCare, u32 nickname_idx, u32 level_idx, u32 gender_idx, u8 slot, MSGFMT *msgFmt) {
+void Sav2_DayCare_BufferMonStats(DAYCARE *dayCare, u32 nickname_idx, u32 level_idx, u32 gender_idx, u8 slot, MessageFormat *msgFmt) {
     DAYCAREMON *daycareMon;
     BOXMON *boxmon;
     u8 level;
@@ -954,7 +954,7 @@ void Sav2_DayCare_BufferMonStats(DAYCARE *dayCare, u32 nickname_idx, u32 level_i
     BufferGenderSymbol(msgFmt, gender_idx, gender);
 }
 
-u16 Sav2_DayCare_BufferTailMonNick(DAYCARE *dayCare, MSGFMT *msgFmt) {
+u16 Sav2_DayCare_BufferTailMonNick(DAYCARE *dayCare, MessageFormat *msgFmt) {
     BOXMON *mon1;
     BOXMON *mon2;
     u16 species1;

@@ -3305,7 +3305,7 @@ ov59_02239704: ; 0x02239704
 	ldr r2, [r5]
 	mov r0, #0x10
 	mov r1, #0x20
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	str r0, [r5, #0x60]
 	mov r0, #1
 	ldr r1, [r5]
@@ -3387,7 +3387,7 @@ _022397AA:
 	ldr r0, [r6, #0x64]
 	bl String_dtor
 	ldr r0, [r6, #0x60]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r6, #0x5c]
 	bl DestroyMsgData
 	mov r0, #4
@@ -7453,7 +7453,7 @@ ov59_0223B68C: ; 0x0223B68C
 	mov r0, #0x10
 	ldr r2, [r6]
 	add r1, r0, #0
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	str r0, [r6, #0x60]
 	mov r0, #1
 	ldr r1, [r6]
@@ -7500,7 +7500,7 @@ ov59_0223B6FC: ; 0x0223B6FC
 	ldr r0, [r4, #0x64]
 	bl String_dtor
 	ldr r0, [r4, #0x60]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4, #0x5c]
 	bl DestroyMsgData
 	mov r0, #0

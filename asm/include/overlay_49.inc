@@ -55,8 +55,8 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
-.public ScrStrBufs_new_custom
-.public ScrStrBufs_delete
+.public MessageFormat_new_custom
+.public MessageFormat_delete
 .public BufferPlayersName
 .public BufferIntegerAsString
 .public BufferTypeName
@@ -73,7 +73,7 @@
 .public BufferDEGreeting
 .public BufferSPGreeting
 .public StringExpandPlaceholders
-.public ScrStrBufs_ResetBuffers
+.public MessageFormat_ResetBuffers
 .public sub_0200E374
 .public DestroySysTask
 .public LoadUserFrameGfx1

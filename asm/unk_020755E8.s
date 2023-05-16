@@ -846,7 +846,7 @@ sub_02075A7C: ; 0x02075A7C
 	bl NewMsgDataFromNarc
 	str r0, [r4, #8]
 	add r0, r5, #0
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r4, #0xc]
 	mov r0, #5
 	lsl r0, r0, #6
@@ -1006,7 +1006,7 @@ sub_02075D4C: ; 0x02075D4C
 	ldr r0, [r4, #8]
 	bl DestroyMsgData
 	ldr r0, [r4, #0xc]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4, #0x10]
 	bl FreeToHeap
 	ldr r0, [r4, #0x3c]

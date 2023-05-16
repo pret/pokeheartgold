@@ -31,8 +31,8 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
-.public ScrStrBufs_new_custom
-.public ScrStrBufs_delete
+.public MessageFormat_new_custom
+.public MessageFormat_delete
 .public BufferPocketName
 .public StringExpandPlaceholders
 .public sub_0200DD88

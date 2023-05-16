@@ -86,7 +86,7 @@ _021E5960:
 	ldr r2, [r5]
 	mov r0, #8
 	mov r1, #0x40
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	ldr r1, _021E5A28 ; =0x0000C080
 	str r0, [r5, r1]
 	ldr r0, [r5]
@@ -903,7 +903,7 @@ ov69_021E6080: ; 0x021E6080
 	bl sub_02023120
 	ldr r0, _021E60EC ; =0x0000C080
 	ldr r0, [r4, r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	bl sub_0201F63C
 	ldr r0, _021E60F0 ; =0x0000C010
 	ldr r0, [r4, r0]

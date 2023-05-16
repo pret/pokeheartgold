@@ -26,8 +26,8 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
-.public ScrStrBufs_new_custom
-.public ScrStrBufs_delete
+.public MessageFormat_new_custom
+.public MessageFormat_delete
 .public BufferCountryName
 .public BufferCityName
 .public StringExpandPlaceholders

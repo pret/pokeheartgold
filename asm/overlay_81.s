@@ -5766,7 +5766,7 @@ _02240C6C:
 	ldr r0, [r5, #0x1c]
 	bl DestroyMsgData
 	ldr r0, [r5, #0x20]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r5, #0x24]
 	bl String_dtor
 	ldr r0, [r5, #0x28]
@@ -5891,7 +5891,7 @@ ov81_02240D64: ; 0x02240D64
 	bl NewMsgDataFromNarc
 	str r0, [r5, #0x1c]
 	mov r0, #0x64
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r5, #0x20]
 	mov r0, #0x32
 	lsl r0, r0, #4

@@ -50,7 +50,7 @@ ov63_0221BE20: ; 0x0221BE20
 	add r1, #0x84
 	str r0, [r1]
 	mov r0, #0x3e
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	add r1, r5, #0
 	add r1, #0x88
 	str r0, [r1]
@@ -142,7 +142,7 @@ ov63_0221BF28: ; 0x0221BF28
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r4, #0x84
 	ldr r0, [r4]
 	bl DestroyMsgData

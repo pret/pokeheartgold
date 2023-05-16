@@ -450,7 +450,7 @@ ov93_0225C768: ; 0x0225C768
 	add r1, #0x80
 	str r0, [r1]
 	mov r0, #0x75
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	add r1, r5, #0
 	add r1, #0x84
 	str r0, [r1]
@@ -1043,7 +1043,7 @@ _0225CD72:
 	add r0, r4, #0
 	add r0, #0x84
 	ldr r0, [r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]

@@ -60,7 +60,7 @@ typedef struct ScriptEnvironment {
     u32 cameraTarget;
     LocalMapObject *unk_34;
     SCRIPTCONTEXT *scriptContexts[3];
-    MSGFMT *msgfmt;
+    MessageFormat *msgfmt;
     STRING *strbuf1;
     STRING *strbuf2;
     struct WaitingIconManager *unk_50;

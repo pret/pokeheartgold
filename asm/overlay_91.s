@@ -7257,7 +7257,7 @@ ov91_0225FCD8: ; 0x0225FCD8
 	add r4, r1, #0
 	add r5, r0, #0
 	add r0, r4, #0
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r5, #4]
 	mov r0, #0
 	mov r1, #0x1b
@@ -7288,7 +7288,7 @@ ov91_0225FD0C: ; 0x0225FD0C
 	ldr r0, [r4, #8]
 	bl DestroyMsgData
 	ldr r0, [r4, #4]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov91_0225FD0C

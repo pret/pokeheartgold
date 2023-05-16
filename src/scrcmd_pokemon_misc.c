@@ -23,6 +23,18 @@
 #include "msgdata/msg/msg_0066_D23R0102.h"
 #include "constants/items.h"
 #include "constants/moves.h"
+#include "unk_0200FA24.h"
+#include "unk_02005D10.h"
+#include "unk_0202CA24.h"
+#include "field_follow_poke.h"
+#include "get_egg.h"
+#include "map_section.h"
+#include "map_header.h"
+#include "update_dex_received.h"
+#include "math_util.h"
+#include "sys_vars.h"
+#include "system.h"
+#include "unk_02092BE8.h"
 
 typedef struct UnkStructScr_648 {
     FieldSystem *fsys;
@@ -31,7 +43,7 @@ typedef struct UnkStructScr_648 {
     WINDOW *window_18;
     STRING *stringArr_1C[120];
     MSGDATA *msgdata;
-    MSGFMT *msgfmt;
+    MessageFormat *msgfmt;
     u8 unk_204;
     u8 unk_205;
     u8 unk_206;
@@ -58,8 +70,8 @@ typedef struct UnkStructScr_648 {
 static BOOL ov01_02200C6C(SCRIPTCONTEXT *ctx);
 static void *ov01_02200C94(HeapID heapId, s32 fileId, u32 *unkPtr);
 static void ov01_02200CB4(SCR_648_STRUCT *unkPtr, MSGDATA *msgdata);
-static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, s16 *input, MSGFMT *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove);
-static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fsys, u8 x, u8 y, u8 a3, u8 a4, s16* input, MSGFMT *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove);
+static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, s16 *input, MessageFormat *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove);
+static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fsys, u8 x, u8 y, u8 a3, u8 a4, s16* input, MessageFormat *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove);
 static void ov01_02200DF8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3);
 static void ov01_02200E00(SCR_648_STRUCT *unkPtr);
 static void ov01_02200EC8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3);
@@ -87,7 +99,7 @@ BOOL ScrCmd_648(SCRIPTCONTEXT *ctx) {
     u16 *cursorPos;
     u16 *itemsAbove;
     WINDOW *window;
-    MSGFMT **msgfmt;
+    MessageFormat **msgfmt;
     MSGDATA *msgdata;
     FieldSystem *fsys = ctx->fsys;
 
@@ -159,7 +171,7 @@ static void ov01_02200CB4(SCR_648_STRUCT *unkPtr, MSGDATA *msgdata) {
     unkPtr->msgdata = msgdata;
 }
 
-static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, s16 *input, MSGFMT *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove) {
+static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, s16 *input, MessageFormat *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove) {
     int i;
     unkPtr->msgdata = msgdata;
     unkPtr->unk_207 = unkPtr->unk_207 & ~0x2;
@@ -192,7 +204,7 @@ static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y,
     *unkPtr->input = 0xEEEE;
 }
 
-static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fsys, u8 x, u8 y, u8 a3, u8 a4, s16* input, MSGFMT *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove) {
+static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fsys, u8 x, u8 y, u8 a3, u8 a4, s16* input, MessageFormat *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove) {
     SCR_648_STRUCT *unkPtr = AllocFromHeap(4, sizeof(SCR_648_STRUCT));
     if (!unkPtr) {
         return NULL;
@@ -854,7 +866,7 @@ BOOL ScrCmd_741(SCRIPTCONTEXT *ctx) {
     UnkStruct_02031CEC unkOut;
     RTCDate date;
     s32 unkVar;
-    struct MSGFMT **msgfmt;
+    MessageFormat **msgfmt;
     SaveApricornBox *apricornBox;
     u16 *price;
     u16 *unkPtrA;
@@ -1186,7 +1198,7 @@ BOOL ScrCmd_CasinoGame(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_BufferPokeathlonCourseName(SCRIPTCONTEXT *ctx) {
     u8 fieldNo = *(ctx->script_ptr++);
     u32 courseId = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
-    BufferPokeathlonCourseName(*(MSGFMT**)FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT), fieldNo, (u8) courseId);
+    BufferPokeathlonCourseName(*(MessageFormat**)FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT), fieldNo, (u8) courseId);
     return FALSE;
 }
 
@@ -1427,7 +1439,7 @@ BOOL ScrCmd_BugContestAction(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_BufferBugContestWinner(SCRIPTCONTEXT *ctx) {
-    struct MSGFMT **msgfmt;
+    MessageFormat **msgfmt;
     BUGCONTEST *bugContest;
 
     msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
@@ -1464,7 +1476,7 @@ BOOL ScrCmd_JudgeBugContest(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_BufferBugContestMonNick(SCRIPTCONTEXT *ctx) {
-    struct MSGFMT **msgfmt;
+    MessageFormat **msgfmt;
     BUGCONTEST *bugContest;
     u32 script_index;
 
@@ -1479,7 +1491,7 @@ BOOL ScrCmd_BufferBugContestMonNick(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_BugContestGetTimeLeft(SCRIPTCONTEXT *ctx) {
-    struct MSGFMT **msgfmt;
+    MessageFormat **msgfmt;
     BUGCONTEST *bugContest;
     u32 script_index;
     u32 timeLeft;

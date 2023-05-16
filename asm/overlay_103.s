@@ -605,7 +605,7 @@ ov103_021ECE18: ; 0x021ECE18
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #0x9d
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	mov r1, #0x8b
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -635,7 +635,7 @@ ov103_021ECE54: ; 0x021ECE54
 	mov r0, #0x8b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	mov r0, #0x8a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]

@@ -620,7 +620,7 @@ ov15_BagApp_exit: ; 0x021F982C
 	mov r0, #0xbd
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	mov r0, #0x91
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1115,7 +1115,7 @@ ov15_021F9CBC: ; 0x021F9CBC
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #6
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	mov r1, #0xbd
 	lsl r1, r1, #2
 	str r0, [r4, r1]

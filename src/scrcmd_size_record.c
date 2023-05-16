@@ -66,7 +66,7 @@ static u32 GetMonSize(int species, int rand) {
 }
 
 static void FormatSizeRecord(FieldSystem *fsys, u8 idx0, u8 idx1, u16 species, u16 rand) {
-    MSGFMT ** msgFmt;
+    MessageFormat ** msgFmt;
     u32 score;
     u32 r4;
 

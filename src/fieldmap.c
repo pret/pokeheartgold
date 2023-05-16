@@ -102,7 +102,7 @@ BOOL Task_RunScripts(TaskManager *taskman) {
     case 0:
         env->scriptContexts[0] = CreateScriptContext(fsys, env->activeScriptNumber);
         env->activeScriptContextCount = 1;
-        env->msgfmt = ScrStrBufs_new_custom(8, 64, HEAP_ID_FIELDMAP);
+        env->msgfmt = MessageFormat_new_custom(8, 64, HEAP_ID_FIELDMAP);
         env->strbuf1 = String_ctor(1024, HEAP_ID_FIELDMAP);
         env->strbuf2 = String_ctor(1024, HEAP_ID_FIELDMAP);
         env->state++;
@@ -123,7 +123,7 @@ BOOL Task_RunScripts(TaskManager *taskman) {
         }
         if (env->activeScriptContextCount == 0) {
             void (*callback)(FieldSystem *a0) = env->scrctx_end_cb;
-            ScrStrBufs_delete(env->msgfmt);
+            MessageFormat_delete(env->msgfmt);
             String_dtor(env->strbuf1);
             String_dtor(env->strbuf2);
             env->check = 0;
