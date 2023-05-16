@@ -767,7 +767,7 @@ BOOL ScrCmd_DirectionSignpost(SCRIPTCONTEXT* ctx) {
 
     FieldSystem* fsys = ctx->fsys;
     STRING** tmp_str = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRBUF2);
-    STRING** unk1 = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRBUF1);
+    STRING** unk1 = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 msg_no = ScriptReadByte(ctx);
     unk2 = ScriptReadByte(ctx);
@@ -828,7 +828,7 @@ BOOL ScrCmd_TrainerTips(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     u8* printer_id_ptr = FieldSysGetAttrAddr(fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
     STRING** tmp_str = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRBUF2);
-    STRING** unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRBUF1);
+    STRING** unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 msg_no = ScriptReadByte(ctx);
     u16 result_var_id = ScriptReadHalfword(ctx);
@@ -2383,7 +2383,7 @@ BOOL ScrCmd_TrainerMessage(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
 
     u16 *p_scripno = FieldSysGetAttrAddr(fsys, SCRIPTENV_ACTIVE_SCRIPT_NUMBER);
-    STRING **p_strbuf1 = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRBUF1);
+    STRING **p_strbuf1 = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
     u8 *p_printerno = FieldSysGetAttrAddr(fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
     u16 trainerno = ScriptGetVar(ctx);
     u16 msgno = ScriptGetVar(ctx);

@@ -61,7 +61,7 @@ typedef struct ScriptEnvironment {
     LocalMapObject *unk_34;
     SCRIPTCONTEXT *scriptContexts[3];
     MessageFormat *msgfmt;
-    STRING *strbuf1;
+    STRING *stringBuffer0;
     STRING *strbuf2;
     struct WaitingIconManager *unk_50;
     EngagedTrainer engagedTrainers[2];
@@ -94,7 +94,7 @@ typedef enum ScriptEnvField {
     SCRIPTENV_SCRIPT_CONTEXT_1,
     SCRIPTENV_SCRIPT_CONTEXT_2,
     SCRIPTENV_MESSAGE_FORMAT,
-    SCRIPTENV_STRBUF1                         = 17,
+    SCRIPTENV_STRING_BUFFER_0,
     SCRIPTENV_STRBUF2                         = 18,
     SCRIPTENV_WAITING_ICON                    = 19,
     SCRIPTENV_AC                              = 20,
