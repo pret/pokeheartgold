@@ -93,7 +93,7 @@ typedef enum ScriptEnvField {
     SCRIPTENV_SCRIPT_CONTEXT_0,
     SCRIPTENV_SCRIPT_CONTEXT_1,
     SCRIPTENV_SCRIPT_CONTEXT_2,
-    SCRIPTENV_MSGFMT                          = 16,
+    SCRIPTENV_MESSAGE_FORMAT,
     SCRIPTENV_STRBUF1                         = 17,
     SCRIPTENV_STRBUF2                         = 18,
     SCRIPTENV_WAITING_ICON                    = 19,

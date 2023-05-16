@@ -247,7 +247,7 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *environment, enum ScriptEnv
     case SCRIPTENV_SCRIPT_CONTEXT_1:
     case SCRIPTENV_SCRIPT_CONTEXT_2:
         return &environment->scriptContexts[field - SCRIPTENV_SCRIPT_CONTEXT_0];
-    case SCRIPTENV_MSGFMT:
+    case SCRIPTENV_MESSAGE_FORMAT:
         return &environment->msgfmt;
     case SCRIPTENV_STRBUF1:
         return &environment->strbuf1;
