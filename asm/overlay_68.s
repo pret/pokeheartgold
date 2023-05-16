@@ -702,7 +702,7 @@ ov68_021E5EBC: ; 0x021E5EBC
 	add r1, #0xf8
 	str r0, [r1]
 	mov r0, #0x42
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	add r1, r4, #0
 	add r1, #0xfc
 	str r0, [r1]
@@ -744,7 +744,7 @@ ov68_021E5F18: ; 0x021E5F18
 	add r0, r4, #0
 	add r0, #0xfc
 	ldr r0, [r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	mov r0, #1
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]
@@ -3113,7 +3113,7 @@ ov68_021E71C4: ; 0x021E71C4
 	strh r0, [r1, #4]
 	strh r0, [r1, #6]
 	add r0, r2, #0
-	bl GF_Camera_Create
+	bl Camera_Create
 	str r0, [r4]
 	mov r1, #1
 	str r1, [sp]
@@ -3128,11 +3128,11 @@ ov68_021E71C4: ; 0x021E71C4
 	ldr r2, [r4]
 	mov r0, #0
 	lsl r1, r1, #0xe
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 	ldr r0, [r4]
 	bl sub_02023234
 	ldr r0, [r4]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	add sp, #0x1c
 	pop {r4, r5, pc}
 	.balign 4, 0

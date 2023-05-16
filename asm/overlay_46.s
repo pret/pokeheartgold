@@ -1341,7 +1341,7 @@ ov46_022592EC: ; 0x022592EC
 	add r0, r4, #0
 	add r7, r1, #0
 	add r6, r2, #0
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r5]
 	ldr r2, [sp, #0x14]
 	mov r0, #0
@@ -1577,7 +1577,7 @@ _022594BC:
 	ldr r0, [r4, #4]
 	bl DestroyMsgData
 	ldr r0, [r4]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov46_02259494

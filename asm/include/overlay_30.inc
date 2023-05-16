@@ -12,8 +12,8 @@
 .public DestroyMsgData
 .public NewString_ReadMsgData
 .public ReadMsgData_ExpandPlaceholders
-.public ScrStrBufs_new
-.public ScrStrBufs_delete
+.public MessageFormat_new
+.public MessageFormat_delete
 .public BufferPlayersName
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2

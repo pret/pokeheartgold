@@ -3305,7 +3305,7 @@ ov59_02239704: ; 0x02239704
 	ldr r2, [r5]
 	mov r0, #0x10
 	mov r1, #0x20
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	str r0, [r5, #0x60]
 	mov r0, #1
 	ldr r1, [r5]
@@ -3387,7 +3387,7 @@ _022397AA:
 	ldr r0, [r6, #0x64]
 	bl String_dtor
 	ldr r0, [r6, #0x60]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r6, #0x5c]
 	bl DestroyMsgData
 	mov r0, #4
@@ -7453,7 +7453,7 @@ ov59_0223B68C: ; 0x0223B68C
 	mov r0, #0x10
 	ldr r2, [r6]
 	add r1, r0, #0
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	str r0, [r6, #0x60]
 	mov r0, #1
 	ldr r1, [r6]
@@ -7500,7 +7500,7 @@ ov59_0223B6FC: ; 0x0223B6FC
 	ldr r0, [r4, #0x64]
 	bl String_dtor
 	ldr r0, [r4, #0x60]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4, #0x5c]
 	bl DestroyMsgData
 	mov r0, #0
@@ -9318,7 +9318,7 @@ ov59_0223C53C: ; 0x0223C53C
 	mov r1, #0xe1
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 _0223C574:
 	add r0, r4, #0
 	add sp, #8
@@ -9381,7 +9381,7 @@ ov59_0223C5C4: ; 0x0223C5C4
 	strh r0, [r1, #4]
 	strh r0, [r1, #6]
 	add r0, r2, #0
-	bl GF_Camera_Create
+	bl Camera_Create
 	str r0, [r4, #8]
 	mov r1, #1
 	str r1, [sp]
@@ -9396,11 +9396,11 @@ ov59_0223C5C4: ; 0x0223C5C4
 	ldr r2, [r4, #8]
 	mov r0, #0
 	lsl r1, r1, #0xe
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 	ldr r0, [r4, #8]
 	bl sub_02023234
 	ldr r0, [r4, #8]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	add sp, #0x1c
 	pop {r4, r5, pc}
 	.balign 4, 0

@@ -371,7 +371,7 @@ ov30_0225D83C: ; 0x0225D83C
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #8
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r4, #0x3c]
 	mov r0, #0
 	mov r1, #0x1b
@@ -397,7 +397,7 @@ ov30_0225D86C: ; 0x0225D86C
 	ldr r0, [r4, #0x38]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x3c]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov30_0225D86C

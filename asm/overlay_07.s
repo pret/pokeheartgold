@@ -9083,10 +9083,10 @@ _0221FFE6:
 	add r4, r0, #0
 	add r0, sp, #8
 	add r1, r4, #0
-	bl GF_Camera_GetAngle
+	bl Camera_GetAngle
 	add r0, sp, #8
 	add r1, r4, #0
-	bl GF_Camera_SetAngle
+	bl Camera_SetAngle
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -12984,7 +12984,7 @@ ov07_02221CEC: ; 0x02221CEC
 	bl sub_02015524
 	add r1, r0, #0
 	add r0, sp, #0
-	bl GF_Camera_SetAngle
+	bl Camera_SetAngle
 	mov r0, #1
 	add sp, #8
 	pop {r3, pc}
@@ -13013,7 +13013,7 @@ ov07_02221D10: ; 0x02221D10
 	bl sub_02015528
 	add r0, sp, #0
 	add r1, r5, #0
-	bl GF_Camera_SetAngle
+	bl Camera_SetAngle
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -13046,7 +13046,7 @@ ov07_02221D4C: ; 0x02221D4C
 	bl sub_02015524
 	add r1, r0, #0
 	add r0, sp, #0
-	bl GF_Camera_SetAngle
+	bl Camera_SetAngle
 	mov r0, #1
 	add sp, #0x18
 	pop {r4, pc}
@@ -13075,7 +13075,7 @@ ov07_02221D88: ; 0x02221D88
 	bl sub_02015528
 	add r0, sp, #0
 	add r1, r5, #0
-	bl GF_Camera_SetAngle
+	bl Camera_SetAngle
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -13118,12 +13118,12 @@ ov07_02221DC4: ; 0x02221DC4
 	bne _02221E12
 	add r0, sp, #8
 	add r1, r5, #0
-	bl GF_Camera_SetAngle
+	bl Camera_SetAngle
 	b _02221E1A
 _02221E12:
 	add r0, sp, #0
 	add r1, r5, #0
-	bl GF_Camera_SetAngle
+	bl Camera_SetAngle
 _02221E1A:
 	mov r0, #1
 	add sp, #0x10
@@ -13155,7 +13155,7 @@ ov07_02221E24: ; 0x02221E24
 	bl sub_02015528
 	add r0, sp, #0
 	add r1, r5, #0
-	bl GF_Camera_SetAngle
+	bl Camera_SetAngle
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -13186,7 +13186,7 @@ ov07_02221E60: ; 0x02221E60
 	bl sub_02015528
 	add r0, sp, #0
 	add r1, r5, #0
-	bl GF_Camera_SetAngle
+	bl Camera_SetAngle
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, pc}

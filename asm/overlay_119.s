@@ -272,7 +272,7 @@ _0225F1FE:
 	mov r0, #7
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl GF_Camera_GetDistance
+	bl Camera_GetDistance
 	add r1, r0, #0
 	mov r0, #6
 	str r0, [sp]
@@ -351,7 +351,7 @@ _0225F28A:
 	ldr r0, [r4, r1]
 	sub r1, r1, #4
 	ldr r1, [r4, r1]
-	bl GF_Camera_SetDistance
+	bl Camera_SetDistance
 	add r0, r7, #0
 	bl ov01_021EFE30
 	cmp r0, #0
@@ -679,7 +679,7 @@ _0225F5A0:
 	mov r0, #0x69
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl GF_Camera_GetDistance
+	bl Camera_GetDistance
 	add r1, r0, #0
 	mov r0, #8
 	str r0, [sp]
@@ -705,7 +705,7 @@ _0225F5DA:
 	ldr r0, [r4, r1]
 	sub r1, r1, #4
 	ldr r1, [r4, r1]
-	bl GF_Camera_SetDistance
+	bl Camera_SetDistance
 	add r0, r6, #0
 	bl ov01_021EFE30
 	cmp r0, #1
@@ -1080,7 +1080,7 @@ _0225F8DE:
 	mov r0, #0x72
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl GF_Camera_GetDistance
+	bl Camera_GetDistance
 	add r1, r0, #0
 	mov r0, #8
 	str r0, [sp]
@@ -1144,7 +1144,7 @@ _0225F95A:
 	ldr r0, [r4, r1]
 	sub r1, r1, #4
 	ldr r1, [r4, r1]
-	bl GF_Camera_SetDistance
+	bl Camera_SetDistance
 	ldr r0, [sp, #0x18]
 	cmp r0, #1
 	bne _0225F9F0
@@ -1452,7 +1452,7 @@ _0225FBFE:
 _0225FC00:
 	sub r0, #0x1c
 	ldr r0, [r4, r0]
-	bl GF_Camera_GetDistance
+	bl Camera_GetDistance
 	add r1, r0, #0
 	mov r0, #0x10
 	str r0, [sp]
@@ -1693,7 +1693,7 @@ _0225FDFC:
 	ldr r0, [r4, r1]
 	sub r1, r1, #4
 	ldr r1, [r4, r1]
-	bl GF_Camera_SetDistance
+	bl Camera_SetDistance
 	mov r1, #2
 	lsl r1, r1, #8
 	ldr r0, [r4, r1]
@@ -2114,7 +2114,7 @@ _0226017E:
 	mov r0, #0x1d
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl GF_Camera_GetDistance
+	bl Camera_GetDistance
 	add r1, r0, #0
 	mov r0, #8
 	str r0, [sp]
@@ -2152,7 +2152,7 @@ _022601CC:
 	ldr r0, [r4, r1]
 	sub r1, r1, #4
 	ldr r1, [r4, r1]
-	bl GF_Camera_SetDistance
+	bl Camera_SetDistance
 	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _02260238
@@ -2599,7 +2599,7 @@ _0226056E:
 	mov r0, #0x82
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl GF_Camera_GetDistance
+	bl Camera_GetDistance
 	add r1, r0, #0
 	mov r0, #0x40
 	str r0, [sp]
@@ -2637,7 +2637,7 @@ _022605B4:
 	ldr r0, [r4, r1]
 	sub r1, r1, #4
 	ldr r1, [r4, r1]
-	bl GF_Camera_SetDistance
+	bl Camera_SetDistance
 	cmp r5, #1
 	bne _02260688
 	ldr r0, [sp, #0x18]

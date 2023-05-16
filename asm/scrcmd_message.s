@@ -318,7 +318,7 @@ ScrCmd_444: ; 0x021EF268
 	mov r3, #1
 	bl ov01_021EF5C8
 	add r0, r6, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r1, _021EF2DC ; =ov01_021EF348
 	add r0, r5, #0
 	bl SetupNativeScript

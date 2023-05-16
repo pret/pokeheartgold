@@ -32,8 +32,8 @@
 .public NewString_ReadMsgData
 .public ReadMsgData_ExpandPlaceholders
 .public GetSpeciesName
-.public ScrStrBufs_new
-.public ScrStrBufs_delete
+.public MessageFormat_new
+.public MessageFormat_delete
 .public BufferString
 .public BufferPokeathlonCourseName
 .public BeginNormalPaletteFade

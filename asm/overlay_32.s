@@ -278,7 +278,7 @@ ov32_0225D748: ; 0x0225D748
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #8
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	mov r1, #0x52
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -292,7 +292,7 @@ ov32_0225D76C: ; 0x0225D76C
 	mov r0, #0x52
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]

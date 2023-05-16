@@ -5,11 +5,11 @@
 .public sub_0200FBF4
 .public AllocFromHeap
 .public GX_EngineAToggleLayers
-.public GF_Camera_SetPerspectiveAngle
-.public GF_Camera_SetAngle
-.public GF_Camera_SetDistance
-.public GF_Camera_GetPerspectiveAngle
-.public GF_Camera_GetDistance
+.public Camera_SetPerspectiveAngle
+.public Camera_SetAngle
+.public Camera_SetDistance
+.public Camera_GetPerspectiveAngle
+.public Camera_GetDistance
 .public memset
 .public ov01_021EFCDC
 .public ov01_021EFCF8

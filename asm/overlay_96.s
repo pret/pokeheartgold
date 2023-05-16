@@ -8307,7 +8307,7 @@ ov96_021E95F8: ; 0x021E95F8
 	str r6, [r4]
 	ldr r0, [sp, #8]
 	str r5, [r4, #0xc]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	mov r1, #1
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -8324,7 +8324,7 @@ ov96_021E95F8: ; 0x021E95F8
 	bl ReadMsgData_ExpandPlaceholders
 	add r5, r0, #0
 	add r0, r6, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4, #0x10]
 	add r1, r5, #0
 	bl StringCopy
@@ -8359,7 +8359,7 @@ ov96_021E966C: ; 0x021E966C
 	str r5, [r4]
 	ldr r0, [sp, #8]
 	str r6, [r4, #0xc]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	mov r1, #1
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -8387,7 +8387,7 @@ ov96_021E966C: ; 0x021E966C
 	bl ReadMsgData_ExpandPlaceholders
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4, #0x10]
 	add r1, r6, #0
 	bl StringCopy
@@ -19019,7 +19019,7 @@ _021EE774:
 	bl NewMsgDataFromNarc
 	str r0, [r5, #0xc]
 	ldr r0, [r5, #0x14]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r5, #4]
 	bl ResetAllTextPrinters
 	ldr r1, [r5, #0x34]
@@ -19061,7 +19061,7 @@ ov96_021EE808: ; 0x021EE808
 	ldr r0, [r4, #0xc]
 	bl DestroyMsgData
 	ldr r0, [r4, #4]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
 	beq _021EE828
@@ -27939,7 +27939,7 @@ ov96_021F2EFC: ; 0x021F2EFC
 	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	ldr r0, [r5, #0x14]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	mov r1, #0
 	str r1, [sp]
 	mov r2, #1
@@ -27968,7 +27968,7 @@ ov96_021F2EFC: ; 0x021F2EFC
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r6, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r0, r4, #0
 	bl DestroyMsgData
 	add r0, r5, #4
@@ -29734,7 +29734,7 @@ ov96_021F3BF0: ; 0x021F3BF0
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0x5c]
 	add r0, r5, #0
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r4, #0x60]
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -29788,7 +29788,7 @@ _021F3C84:
 	cmp r5, #2
 	blt _021F3C84
 	ldr r0, [r7, #0x60]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r7, #0x5c]
 	bl DestroyMsgData
 	add r4, r7, #0
@@ -34346,7 +34346,7 @@ ov96_021F6138: ; 0x021F6138
 	ldr r0, _021F61C4 ; =0x04000580
 	str r1, [r0]
 	ldr r0, [r4, #0x54]
-	bl GF_Camera_Create
+	bl Camera_Create
 	mov r1, #0x19
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -34599,19 +34599,19 @@ ov96_021F6398: ; 0x021F6398
 	mov r1, #0x19
 	lsl r1, r1, #0xe
 	mov r3, #0xa4
-	bl GF_Camera_InitFromTargetDistanceAndAngle
+	bl Camera_InitFromTargetDistanceAndAngle
 	mov r1, #0x19
 	lsl r1, r1, #4
 	ldr r1, [r4, r1]
 	add r0, sp, #0x14
-	bl GF_Camera_ShiftBy
+	bl Camera_ShiftBy
 	mov r2, #0x19
 	mov r0, #1
 	lsl r2, r2, #4
 	lsl r0, r0, #0xe
 	ldr r2, [r4, r2]
 	lsl r1, r0, #6
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 	mov r1, #0
 	mov r0, #1
 	lsl r0, r0, #0xc
@@ -34622,11 +34622,11 @@ ov96_021F6398: ; 0x021F6398
 	lsl r1, r1, #4
 	ldr r1, [r4, r1]
 	add r0, sp, #0x20
-	bl GF_Camera_SetBindTarget
+	bl Camera_SetBindTarget
 	mov r0, #0x19
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	add sp, #0x2c
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -36267,7 +36267,7 @@ ov96_021F70AC: ; 0x021F70AC
 	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	ldr r0, [r5, #0x54]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	mov r1, #1
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -36297,7 +36297,7 @@ ov96_021F70AC: ; 0x021F70AC
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r6, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r0, r4, #0
 	bl DestroyMsgData
 	add r5, #0x44
@@ -37343,7 +37343,7 @@ ov96_021F78C4: ; 0x021F78C4
 	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	ldr r2, _021F792C ; =0x0000012F
 	add r1, r7, #0
 	add r3, r5, #0
@@ -37364,7 +37364,7 @@ ov96_021F78C4: ; 0x021F78C4
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r6, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r0, r7, #0
 	bl DestroyMsgData
 	add r0, r4, #0
@@ -45206,7 +45206,7 @@ ov96_021FB808: ; 0x021FB808
 	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	ldr r0, [r5]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #0x1e
@@ -45255,7 +45255,7 @@ ov96_021FB808: ; 0x021FB808
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r0, r7, #0
 	bl DestroyMsgData
 	add r5, #8
@@ -53976,7 +53976,7 @@ _021FFDB0:
 	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	ldr r0, [r5, #0x14]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	mov r3, #2
 	str r3, [sp]
 	mov r1, #1
@@ -54013,7 +54013,7 @@ _021FFDB0:
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r0, r6, #0
 	bl DestroyMsgData
 	add r0, r5, #4
@@ -54200,7 +54200,7 @@ ov96_021FFF3C: ; 0x021FFF3C
 	bl NewMsgDataFromNarc
 	str r0, [r7, #0x2c]
 	add r0, r6, #0
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r7, #0x30]
 	mov r4, #0
 	add r5, r7, #0
@@ -54298,7 +54298,7 @@ _02200030:
 	blt _02200030
 	ldr r0, [sp]
 	ldr r0, [r0, #0x30]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [sp]
 	ldr r0, [r0, #0x2c]
 	bl DestroyMsgData
@@ -60600,7 +60600,7 @@ ov96_0220337C: ; 0x0220337C
 	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	ldr r0, [r5, #0x44]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	mov r1, #0
 	str r1, [sp]
 	mov r2, #1
@@ -60629,7 +60629,7 @@ ov96_0220337C: ; 0x0220337C
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r6, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r0, r4, #0
 	bl DestroyMsgData
 	add r0, r5, #4
@@ -69096,7 +69096,7 @@ ov96_02207774: ; 0x02207774
 	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	ldr r0, [r5, #0x14]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	mov r1, #0
 	str r1, [sp]
 	mov r2, #1
@@ -69125,7 +69125,7 @@ ov96_02207774: ; 0x02207774
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r6, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r0, r4, #0
 	bl DestroyMsgData
 	add r0, r5, #4
@@ -69842,7 +69842,7 @@ ov96_02207CCC: ; 0x02207CCC
 	bl NewMsgDataFromNarc
 	str r0, [r7, #0x1c]
 	add r0, r6, #0
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r7, #0x20]
 	mov r4, #0
 	add r5, r7, #0
@@ -69931,7 +69931,7 @@ _02207DAC:
 	blt _02207DAC
 	ldr r0, [sp]
 	ldr r0, [r0, #0x20]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [sp]
 	ldr r0, [r0, #0x1c]
 	bl DestroyMsgData
@@ -73849,7 +73849,7 @@ _02209CB0:
 	mov r0, #0x97
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	mov r0, #0x96
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
@@ -74000,7 +74000,7 @@ ov96_02209DE4: ; 0x02209DE4
 	lsl r1, r1, #2
 	str r0, [r6, r1]
 	ldr r0, [r6]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	mov r1, #0x97
 	lsl r1, r1, #2
 	str r0, [r6, r1]
@@ -84351,7 +84351,7 @@ _0220EDD4:
 	str r0, [r1, #0x18]
 	add r0, r1, #0
 	ldr r0, [r0]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	ldr r1, [sp]
 	str r0, [r1, #0x14]
 	ldr r1, [r1]
@@ -84376,7 +84376,7 @@ ov96_0220EE4C: ; 0x0220EE4C
 	add r0, #0x24
 	bl RemoveWindow
 	ldr r0, [r6, #0x14]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r6, #0x18]
 	bl DestroyMsgData
 	ldr r5, _0220EE88 ; =ov96_0221CF58
@@ -93563,7 +93563,7 @@ ov96_022136A4: ; 0x022136A4
 	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	ldr r0, [r5, #0x58]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	mov r1, #0
 	str r1, [sp]
 	mov r2, #1
@@ -93593,7 +93593,7 @@ ov96_022136A4: ; 0x022136A4
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r6, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r0, r4, #0
 	bl DestroyMsgData
 	add r5, #8
@@ -94942,7 +94942,7 @@ ov96_022140F4: ; 0x022140F4
 	bl NewMsgDataFromNarc
 	str r0, [sp, #0xc]
 	ldr r0, [r5, #0x58]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	add r7, r0, #0
 	ldr r0, [sp, #0xc]
 	ldr r1, _0221419C ; =0x00000133
@@ -94995,7 +94995,7 @@ _02214140:
 	cmp r4, #4
 	blo _02214140
 	add r0, r7, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [sp, #0xc]
 	bl DestroyMsgData
 	add sp, #0x10
@@ -95687,7 +95687,7 @@ ov96_0221464C: ; 0x0221464C
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0x34]
 	add r0, r5, #0
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r4, #0x38]
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -95702,7 +95702,7 @@ ov96_02214690: ; 0x02214690
 	ldr r0, [r4, #0x40]
 	bl FreeToHeap
 	ldr r0, [r4, #0x38]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4, #0x34]
 	bl DestroyMsgData
 	add r0, r4, #0
@@ -99788,7 +99788,7 @@ _02216584:
 	str r0, [r1, #0x14]
 	add r0, r1, #0
 	ldr r0, [r0]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	ldr r1, [sp]
 	str r0, [r1, #0x10]
 	ldr r1, [r1]
@@ -99813,7 +99813,7 @@ ov96_022165FC: ; 0x022165FC
 	add r0, #0x20
 	bl RemoveWindow
 	ldr r0, [r6, #0x10]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r6, #0x14]
 	bl DestroyMsgData
 	ldr r5, _02216638 ; =ov96_0221D738

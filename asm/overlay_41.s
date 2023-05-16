@@ -12928,7 +12928,7 @@ ov41_0224BE80: ; 0x0224BE80
 	bl GF_AssertFail
 _0224BE9C:
 	mov r0, #0xd
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	add r6, r0, #0
 	mov r0, #0x66
 	lsl r0, r0, #2
@@ -13026,7 +13026,7 @@ _0224BE9C:
 	ldr r0, [sp, #0x10]
 	bl DestroyMsgData
 	add r0, r6, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

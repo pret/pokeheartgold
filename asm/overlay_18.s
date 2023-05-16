@@ -1163,7 +1163,7 @@ ov18_021E6244: ; 0x021E6244
 	ldr r1, _021E6278 ; =0x0000065C
 	str r0, [r4, r1]
 	mov r0, #0x25
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	mov r1, #0x66
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -1190,7 +1190,7 @@ ov18_021E6280: ; 0x021E6280
 	mov r0, #0x66
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, _021E62A4 ; =0x0000065C
 	ldr r0, [r4, r0]
 	bl DestroyMsgData
@@ -38408,7 +38408,7 @@ _021F8CDA:
 	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	ldr r0, [r5, #0x14]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	add r6, r0, #0
 	mov r0, #1
 	ldr r1, [r5, #0x14]
@@ -38567,7 +38567,7 @@ _021F8CDA:
 	mov r3, #0x14
 	bl ov18_021F9648
 	add r0, r6, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r0, r4, #0
 	bl DestroyMsgData
 	bl GetDexHeightMsgBank

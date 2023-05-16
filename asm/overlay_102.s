@@ -7336,7 +7336,7 @@ _021EAE68:
 	mov r0, #2
 	mov r1, #0x3c
 	mov r2, #0
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	add r5, r0, #0
 	mov r0, #0x4b
 	lsl r0, r0, #2
@@ -7371,7 +7371,7 @@ _021EAE68:
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r5, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	b _021EAF34
 _021EAECA:
 	ldr r0, [r4, #0x78]

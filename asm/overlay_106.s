@@ -167,13 +167,13 @@ ov106_021E59FC: ; 0x021E59FC
 	ldrh r3, [r4, #0xe]
 	ldr r1, [r4]
 	add r2, r4, #4
-	bl GF_Camera_InitFromTargetDistanceAndAngle
+	bl Camera_InitFromTargetDistanceAndAngle
 	ldr r0, [r4, #0x20]
 	ldr r1, [r4, #0x24]
 	ldr r2, [r5, #0x18]
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 	ldr r0, [r5, #0x18]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov106_021E59FC
@@ -615,7 +615,7 @@ ov106_021E5D70: ; 0x021E5D70
 	sub sp, #8
 	add r4, r0, #0
 	mov r0, #0x99
-	bl GF_Camera_Create
+	bl Camera_Create
 	str r0, [r4, #0x18]
 	mov r0, #0x99
 	bl sub_0201F590

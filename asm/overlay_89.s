@@ -128,7 +128,7 @@ ov89_02258800: ; 0x02258800
 	mov r1, #0x7d
 	bl FontID_Alloc
 	mov r0, #0x7d
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r5, #0x2c]
 	ldr r2, _02258AE0 ; =0x000002F2
 	mov r0, #0
@@ -822,7 +822,7 @@ ov89_02258F00: ; 0x02258F00
 	ldr r0, [r4, #0x30]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x2c]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r0, r4, #0
 	bl ov89_02259D50
 	ldr r0, [r4, #8]
@@ -2218,7 +2218,7 @@ ov89_02259B00: ; 0x02259B00
 	ldr r0, [r3]
 	str r0, [r2]
 	mov r0, #0x7d
-	bl GF_Camera_Create
+	bl Camera_Create
 	add r1, r5, #0
 	add r1, #0xcc
 	str r0, [r1]
@@ -2234,7 +2234,7 @@ ov89_02259B00: ; 0x02259B00
 	ldr r3, _02259B98 ; =0x00000FA4
 	add r0, sp, #0x14
 	lsl r1, r1, #0xe
-	bl GF_Camera_InitFromTargetDistanceAndAngle
+	bl Camera_InitFromTargetDistanceAndAngle
 	add r2, r5, #0
 	add r2, #0xcc
 	mov r0, #1
@@ -2242,20 +2242,20 @@ ov89_02259B00: ; 0x02259B00
 	ldr r2, [r2]
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 	add r0, r5, #0
 	add r0, #0xcc
 	ldr r0, [r0]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	add r0, r5, #0
 	add r0, #0xcc
 	ldr r0, [r0]
-	bl GF_Camera_GetPerspectiveAngle
+	bl Camera_GetPerspectiveAngle
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0xcc
 	ldr r0, [r0]
-	bl GF_Camera_GetDistance
+	bl Camera_GetDistance
 	add r1, r0, #0
 	add r0, sp, #0xc
 	str r0, [sp]
@@ -2361,7 +2361,7 @@ ov89_02259C0C: ; 0x02259C0C
 	add r0, r4, #0
 	add r0, #0xcc
 	ldr r0, [r0]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	add r1, r4, #0
 	add r1, #0xcc
 	ldr r1, [r1]
@@ -7070,7 +7070,7 @@ _0225BF4C: ; jump table
 	.short _0225BFA4 - _0225BF4C - 2 ; case 3
 _0225BF54:
 	add r0, r5, #0
-	bl GF_Camera_GetDistance
+	bl Camera_GetDistance
 	str r0, [r4]
 	ldrb r0, [r4, #6]
 	add r0, r0, #1
@@ -7120,14 +7120,14 @@ _0225BFA4:
 	cmp r0, #6
 	bge _0225BFC6
 	add r0, r5, #0
-	bl GF_Camera_GetDistance
+	bl Camera_GetDistance
 	ldr r1, [r4]
 	cmp r0, r1
 	blt _0225BFD2
 _0225BFC6:
 	ldr r0, [r4]
 	add r1, r5, #0
-	bl GF_Camera_SetDistance
+	bl Camera_SetDistance
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _0225BFD2:
@@ -7225,7 +7225,7 @@ _0225C054:
 _0225C078:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl GF_Camera_SetBindTarget
+	bl Camera_SetBindTarget
 	b _0225C086
 _0225C082:
 	mov r0, #1
@@ -7267,7 +7267,7 @@ _0225C0B8: ; jump table
 _0225C0C0:
 	add r0, sp, #0
 	add r1, r5, #0
-	bl GF_Camera_GetAngle
+	bl Camera_GetAngle
 	add r0, sp, #0
 	ldrh r1, [r0]
 	strh r1, [r4]
@@ -7338,7 +7338,7 @@ _0225C130:
 	blt _0225C15E
 	add r0, r4, #0
 	add r1, r5, #0
-	bl GF_Camera_SetAngle
+	bl Camera_SetAngle
 	add sp, #0x10
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -7380,7 +7380,7 @@ _0225C190: ; jump table
 _0225C198:
 	add r0, sp, #0
 	add r1, r5, #0
-	bl GF_Camera_GetAngle
+	bl Camera_GetAngle
 	add r0, sp, #0
 	ldrh r1, [r0]
 	strh r1, [r4]
@@ -7451,7 +7451,7 @@ _0225C208:
 	bgt _0225C236
 	add r0, r4, #0
 	add r1, r5, #0
-	bl GF_Camera_SetAngle
+	bl Camera_SetAngle
 	add sp, #0x10
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -7493,7 +7493,7 @@ _0225C268: ; jump table
 _0225C270:
 	add r0, sp, #0
 	add r1, r5, #0
-	bl GF_Camera_GetAngle
+	bl Camera_GetAngle
 	add r0, sp, #0
 	ldrh r1, [r0]
 	strh r1, [r4]
@@ -7563,7 +7563,7 @@ _0225C2DE:
 	bgt _0225C30C
 	add r0, r4, #0
 	add r1, r5, #0
-	bl GF_Camera_SetAngle
+	bl Camera_SetAngle
 	add sp, #0x10
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -7598,7 +7598,7 @@ ov89_0225C31C: ; 0x0225C31C
 _0225C33E:
 	add r0, sp, #0
 	add r1, r5, #0
-	bl GF_Camera_GetAngle
+	bl Camera_GetAngle
 	add r0, sp, #0
 	ldrh r1, [r0]
 	strh r1, [r4]
@@ -7704,7 +7704,7 @@ _0225C402: ; jump table
 	.short _0225C45A - _0225C402 - 2 ; case 3
 _0225C40A:
 	add r0, r5, #0
-	bl GF_Camera_GetDistance
+	bl Camera_GetDistance
 	str r0, [r4]
 	ldrb r0, [r4, #6]
 	add r0, r0, #1
@@ -7754,14 +7754,14 @@ _0225C45A:
 	cmp r0, #6
 	bge _0225C47C
 	add r0, r5, #0
-	bl GF_Camera_GetDistance
+	bl Camera_GetDistance
 	ldr r1, [r4]
 	cmp r0, r1
 	bgt _0225C488
 _0225C47C:
 	ldr r0, [r4]
 	add r1, r5, #0
-	bl GF_Camera_SetDistance
+	bl Camera_SetDistance
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _0225C488:
@@ -7804,7 +7804,7 @@ _0225C4B8:
 	add r1, r5, #0
 	str r0, [r2]
 	add r0, sp, #0
-	bl GF_Camera_GetTarget
+	bl Camera_GetTarget
 	add r3, sp, #0
 	ldmia r3!, {r0, r1}
 	add r2, r4, #0
@@ -7868,7 +7868,7 @@ _0225C520:
 	bl sub_0202366C
 	add r0, sp, #0x18
 	add r1, r5, #0
-	bl GF_Camera_ShiftBy
+	bl Camera_ShiftBy
 	b _0225C564
 _0225C55E:
 	add sp, #0x24
@@ -7913,7 +7913,7 @@ _0225C590:
 	add r1, r5, #0
 	str r0, [r2]
 	add r0, sp, #0
-	bl GF_Camera_GetTarget
+	bl Camera_GetTarget
 	add r3, sp, #0
 	ldmia r3!, {r0, r1}
 	add r2, r4, #0
@@ -7977,7 +7977,7 @@ _0225C5F8:
 	bl sub_0202366C
 	add r0, sp, #0x18
 	add r1, r5, #0
-	bl GF_Camera_ShiftBy
+	bl Camera_ShiftBy
 	b _0225C63C
 _0225C636:
 	add sp, #0x24
@@ -8021,7 +8021,7 @@ _0225C670: ; jump table
 _0225C678:
 	add r0, sp, #0
 	add r1, r5, #0
-	bl GF_Camera_GetAngle
+	bl Camera_GetAngle
 	add r0, sp, #0
 	ldrh r1, [r0]
 	strh r1, [r4]
@@ -8091,7 +8091,7 @@ _0225C6E6:
 	blt _0225C714
 	add r0, r4, #0
 	add r1, r5, #0
-	bl GF_Camera_SetAngle
+	bl Camera_SetAngle
 	add sp, #0x10
 	mov r0, #1
 	pop {r3, r4, r5, pc}

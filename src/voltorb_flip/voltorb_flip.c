@@ -1,10 +1,11 @@
 #include "coins.h"
 #include "font.h"
 #include "game_stats.h"
+#include "global.h"
 #include "gf_gfx_loader.h"
 #include "list_menu_items.h"
 #include "math_util.h"
-#include "msgfmt.h"
+#include "message_format.h"
 #include "options.h"
 #include "overlay_manager.h"
 #include "player_data.h"
@@ -2025,7 +2026,7 @@ static void ov122_021E8094(OVY_MANAGER *man) {
 
     work->narc = NARC_ctor(0x10a, work->heapId);
     work->msgData = NewMsgDataFromNarc(0, 0x1b, 0x27, work->heapId);
-    work->msgFmt = ScrStrBufs_new(work->heapId);
+    work->msgFmt = MessageFormat_new(work->heapId);
     work->unk13C = sub_0201660C(work->heapId);
 
     ov122_021E7928(work);
@@ -2070,7 +2071,7 @@ static void FreeOverlayData(OVY_MANAGER *man) {
     ov122_021E765C(work);
     ov122_021E79A4(work);
 
-    ScrStrBufs_delete(work->msgFmt);
+    MessageFormat_delete(work->msgFmt);
     DestroyMsgData(work->msgData);
     NARC_dtor(work->narc);
     ov122_021E8068();
