@@ -4,6 +4,7 @@ on:
   push:
     branches: [ master ]
   pull_request:
+  workflow_dispatch:
 
 env:
   LM_LICENSE_FILE: "$GITHUB_WORKSPACE/tools/mwccarm/license.dat"
@@ -21,15 +22,21 @@ jobs:
     steps:
       - name: Update and Install Software
         run: |
-          sudo apt -y --allow-downgrades install g++-10-multilib linux-libc-dev binutils-arm-none-eabi p7zip-full pkg-config libpugixml-dev
+          sudo apt update
+          sudo ACCEPT_EULA=Y apt -y --fix-missing --allow-downgrades upgrade
+          sudo apt -y --allow-downgrades install g++-10-multilib linux-libc-dev binutils-arm-none-eabi p7zip-full pkg-config libpugixml-dev ppa-purge
+          sudo ppa-purge -y ppa:ubuntu-toolchain-r/test
           sudo dpkg --add-architecture i386
-          wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
+          sudo mkdir -pm755 /etc/apt/keyrings
+          sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
           sudo add-apt-repository ppa:cybermax-dexter/sdl2-backport
-          sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/ubuntu $(lsb_release -cs) main"
+          sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/$(lsb_release -cs)/winehq-$(lsb_release -cs).sources
+          sudo apt update
+          sudo ACCEPT_EULA=Y apt -y --fix-missing --allow-downgrades upgrade
           sudo apt -y --allow-downgrades install --install-recommends winehq-stable
 
       - name: Checkout Repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Repo
         run: |
