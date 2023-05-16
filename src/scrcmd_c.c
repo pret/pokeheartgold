@@ -318,8 +318,8 @@ BOOL ScrCmd_CompareVarToVar(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_RunScript(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    u8* num_active_script_contexts = FieldSysGetAttrAddr(fsys, SCRIPTENV_ACTIVE_SCRIPTCONTEXT_COUNT);
-    SCRIPTCONTEXT** new_context_ptr = FieldSysGetAttrAddr(fsys, SCRIPTENV_SCRCTX_1);
+    u8* num_active_script_contexts = FieldSysGetAttrAddr(fsys, SCRIPTENV_ACTIVE_SCRIPT_CONTEXT_COUNT);
+    SCRIPTCONTEXT** new_context_ptr = FieldSysGetAttrAddr(fsys, SCRIPTENV_SCRIPT_CONTEXT_1);
 
     u16 script_to_run = ScriptReadHalfword(ctx);
     *new_context_ptr = CreateScriptContext(fsys, script_to_run);
@@ -333,8 +333,8 @@ static BOOL ScrNative_WaitStd(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_CallStd(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_07);
-    u8* num_active_script_contexts = FieldSysGetAttrAddr(fsys, SCRIPTENV_ACTIVE_SCRIPTCONTEXT_COUNT);
-    SCRIPTCONTEXT** new_context_ptr = (SCRIPTCONTEXT**)FieldSysGetAttrAddr(fsys, SCRIPTENV_SCRCTX_0 + *num_active_script_contexts);
+    u8* num_active_script_contexts = FieldSysGetAttrAddr(fsys, SCRIPTENV_ACTIVE_SCRIPT_CONTEXT_COUNT);
+    SCRIPTCONTEXT** new_context_ptr = (SCRIPTCONTEXT**)FieldSysGetAttrAddr(fsys, SCRIPTENV_SCRIPT_CONTEXT_0 + *num_active_script_contexts);
 
     u16 script_to_run = ScriptReadHalfword(ctx);
     SCRIPTCONTEXT* new_context = CreateScriptContext(fsys, script_to_run);
@@ -352,7 +352,7 @@ BOOL ScrCmd_CallStd(SCRIPTCONTEXT* ctx) {
 static BOOL ScrNative_WaitStd(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_07);
-    u8* unused = FieldSysGetAttrAddr(fsys, SCRIPTENV_ACTIVE_SCRIPTCONTEXT_COUNT);
+    u8* unused = FieldSysGetAttrAddr(fsys, SCRIPTENV_ACTIVE_SCRIPT_CONTEXT_COUNT);
 
     return (*unk & (1 << ctx->id)) == 0;
 }
@@ -360,7 +360,7 @@ static BOOL ScrNative_WaitStd(SCRIPTCONTEXT* ctx) {
 BOOL ScrCmd_RestartCurrentScript(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_07);
-    u8* unused = FieldSysGetAttrAddr(fsys, SCRIPTENV_ACTIVE_SCRIPTCONTEXT_COUNT);
+    u8* unused = FieldSysGetAttrAddr(fsys, SCRIPTENV_ACTIVE_SCRIPT_CONTEXT_COUNT);
 
     *unk ^= (1 << (ctx->id - 1));
     return FALSE;

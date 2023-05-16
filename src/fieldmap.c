@@ -231,7 +231,7 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *environment, enum ScriptEnv
         return &environment->unk_7;
     case SCRIPTENV_FIELD_08:
         return &environment->unk_8;
-    case SCRIPTENV_ACTIVE_SCRIPTCONTEXT_COUNT:
+    case SCRIPTENV_ACTIVE_SCRIPT_CONTEXT_COUNT:
         return &environment->activeScriptContextCount;
     case SCRIPTENV_ACTIVE_SCRIPT_NUMBER:
         return &environment->activeScriptNumber;
@@ -243,10 +243,10 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *environment, enum ScriptEnv
         return &environment->cameraTarget;
     case SCRIPTENV_FIELD_34:
         return &environment->unk_34;
-    case SCRIPTENV_SCRCTX_0:
-    case SCRIPTENV_SCRCTX_1:
-    case SCRIPTENV_SCRCTX_2:
-        return &environment->scriptContexts[field - SCRIPTENV_SCRCTX_0];
+    case SCRIPTENV_SCRIPT_CONTEXT_0:
+    case SCRIPTENV_SCRIPT_CONTEXT_1:
+    case SCRIPTENV_SCRIPT_CONTEXT_2:
+        return &environment->scriptContexts[field - SCRIPTENV_SCRIPT_CONTEXT_0];
     case SCRIPTENV_MSGFMT:
         return &environment->msgfmt;
     case SCRIPTENV_STRBUF1:
