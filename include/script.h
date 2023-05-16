@@ -62,7 +62,7 @@ typedef struct ScriptEnvironment {
     SCRIPTCONTEXT *scriptContexts[3];
     MessageFormat *msgfmt;
     STRING *stringBuffer0;
-    STRING *strbuf2;
+    STRING *stringBuffer1;
     struct WaitingIconManager *unk_50;
     EngagedTrainer engagedTrainers[2];
     u16 specialVars[NUM_SPECIAL_VARS];
@@ -95,7 +95,7 @@ typedef enum ScriptEnvField {
     SCRIPTENV_SCRIPT_CONTEXT_2,
     SCRIPTENV_MESSAGE_FORMAT,
     SCRIPTENV_STRING_BUFFER_0,
-    SCRIPTENV_STRBUF2                         = 18,
+    SCRIPTENV_STRING_BUFFER_1,
     SCRIPTENV_WAITING_ICON                    = 19,
     SCRIPTENV_AC                              = 20,
     SCRIPTENV_GENERIC_WORK_PTR                = 21,

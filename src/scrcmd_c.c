@@ -766,7 +766,7 @@ BOOL ScrCmd_DirectionSignpost(SCRIPTCONTEXT* ctx) {
     u8 unk2;
 
     FieldSystem* fsys = ctx->fsys;
-    STRING** tmp_str = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRBUF2);
+    STRING** tmp_str = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
     STRING** unk1 = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 msg_no = ScriptReadByte(ctx);
@@ -827,7 +827,7 @@ static BOOL sub_02041520(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_TrainerTips(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     u8* printer_id_ptr = FieldSysGetAttrAddr(fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
-    STRING** tmp_str = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRBUF2);
+    STRING** tmp_str = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
     STRING** unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 msg_no = ScriptReadByte(ctx);
