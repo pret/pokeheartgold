@@ -5,8 +5,8 @@
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public sub_0201F988
-.public GF_Camera_SetDistance
-.public GF_Camera_GetDistance
+.public Camera_SetDistance
+.public Camera_GetDistance
 .public memset
 .public _s32_div_f
 .public ov01_021FCD2C

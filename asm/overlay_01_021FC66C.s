@@ -703,7 +703,7 @@ ov01_021FCB14: ; 0x021FCB14
 	mov r0, #8
 	mov r1, #0x40
 	mov r2, #4
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	str r0, [r4, #0x34]
 	pop {r4, pc}
 	thumb_func_end ov01_021FCB14
@@ -713,7 +713,7 @@ ov01_021FCB4C: ; 0x021FCB4C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x34]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4, #0x2c]
 	bl String_dtor
 	ldr r0, [r4, #0x30]

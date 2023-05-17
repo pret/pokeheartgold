@@ -331,10 +331,10 @@ static void GameClearSave_PrintSaveStatus(FieldSystem *fsys, GameClearWork *env,
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0040_bin, 4);
 
     if (writeStatus == 2) {
-        MSGFMT *msgFmt = ScrStrBufs_new(4);
+        MessageFormat *msgFmt = MessageFormat_new(4);
         BufferPlayersName(msgFmt, 0, Sav2_PlayerData_GetProfileAddr(fsys->savedata));
         env->windowText = ReadMsgData_ExpandPlaceholders(msgFmt, msgData, msg_0040_00016, 4);
-        ScrStrBufs_delete(msgFmt);
+        MessageFormat_delete(msgFmt);
     } else {
         env->windowText = NewString_ReadMsgData(msgData, msg_0040_00018);
     }

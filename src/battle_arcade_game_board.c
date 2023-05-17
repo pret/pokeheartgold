@@ -2,6 +2,7 @@
 #include "filesystem.h"
 #include "font.h"
 #include "gf_gfx_loader.h"
+#include "global.h"
 #include "gx_layers.h"
 #include "math_util.h"
 #include "overlay_80.h"
@@ -22,6 +23,11 @@
 #include "unk_02022588.h"
 #include "unk_020215A0.h"
 #include "unk_0200A090.h"
+#include "vram_transfer_manager.h"
+#include "unk_0200B150.h"
+#include "pokemon.h"
+#include "unk_0200ACF0.h"
+#include "pokemon_icon_idx.h"
 
 FS_EXTERN_OVERLAY(OVY_80);
 
@@ -79,6 +85,8 @@ static void ov84_0223F894(BATTLE_ARCADE_OBJECT *obj, POKEMON *mon);
 static void ov84_0223F8A8(BATTLE_ARCADE_OBJECT *obj, int flag);
 static void ov84_0223F8B4(BGCONFIG *config, WINDOW *window);
 static void ov84_0223F8E4(WINDOW *window);
+static BOOL BattleArcadeGameBoard_EndMulti(GAME_BOARD_WORK *work);
+static BOOL BattleArcadeGameBoard_End(GAME_BOARD_WORK *work);
 
 BOOL BattleArcadeGameBoard_InitOverlay(OVY_MANAGER *man, int *state) {
     int i;
@@ -518,7 +526,7 @@ static void BattleArcadeGameBoard_Delete(GAME_BOARD_WORK *work) {
     ov84_0223F418(&work->unk3E8);
 
     DestroyMsgData(work->msgData);
-    ScrStrBufs_delete(work->msgFmt);
+    MessageFormat_delete(work->msgFmt);
     String_dtor(work->unk70);
     String_dtor(work->unk74);
 
@@ -550,7 +558,7 @@ static void BattleArcadeGameBoard_InitObjects(GAME_BOARD_WORK *work) {
     ov84_0223E934(work);
 
     work->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0425_bin, HEAP_ID_GAME_BOARD);
-    work->msgFmt = ScrStrBufs_new(HEAP_ID_GAME_BOARD);
+    work->msgFmt = MessageFormat_new(HEAP_ID_GAME_BOARD);
     work->unk70 = String_ctor(600, HEAP_ID_GAME_BOARD);
     work->unk74 = String_ctor(600, HEAP_ID_GAME_BOARD);
 

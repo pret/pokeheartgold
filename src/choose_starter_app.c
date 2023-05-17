@@ -170,7 +170,7 @@ struct ChooseStarterAppWork {
     HeapID heapId;
     BGCONFIG *bgConfig;
     struct GF3DVramMan *_3dMan;
-    GF_Camera *camera;
+    Camera *camera;
     VecFx32 cameraTarget;
     NNSFndAllocator allocator; // 020
     struct ChooseStarter3dRes _3dObjRes[CS_3DRES_MAX];
@@ -290,7 +290,7 @@ BOOL ChooseStarterApplication_OvyInit(OVY_MANAGER *ovy, int *state_p) {
     loadBgGraphics(work->bgConfig, work->heapId);
     createObjResMans(work);
     initObjRenderers(work);
-    work->camera = GF_Camera_Create(work->heapId);
+    work->camera = Camera_Create(work->heapId);
     work->cameraTranslation = CreateCameraTranslationWrapper(work->heapId, work->camera);
     initCameraPosition(work);
     initBallModelPositions(work);
@@ -752,7 +752,7 @@ static void initBgLayers(BGCONFIG *bgConfig, HeapID heapId) {
 static void initCameraPosition(struct ChooseStarterAppWork *work) {
     VecFx32 bindTarget;
     const VecFx32 shiftVec = {0, 0, 14 * FX32_ONE};
-    GF_CameraAngle cameraAngle;
+    CameraAngle cameraAngle;
 
     work->cameraTarget.x = 0;
     work->cameraTarget.y = FX32_ONE * 15;
@@ -761,14 +761,14 @@ static void initCameraPosition(struct ChooseStarterAppWork *work) {
     cameraAngle.x = 0xDCC0;
     cameraAngle.y = 0;
     cameraAngle.z = 0;
-    GF_Camera_InitFromTargetDistanceAndAngle(&work->cameraTarget, 100 * FX32_ONE, &cameraAngle, 0x11A4, 0, 1, work->camera);
-    GF_Camera_ShiftBy(&shiftVec, work->camera);
-    GF_Camera_SetClipBounds(FX32_ONE * 4, FX32_ONE * 256, work->camera);
+    Camera_InitFromTargetDistanceAndAngle(&work->cameraTarget, 100 * FX32_ONE, &cameraAngle, 0x11A4, 0, 1, work->camera);
+    Camera_ShiftBy(&shiftVec, work->camera);
+    Camera_SetClipBounds(FX32_ONE * 4, FX32_ONE * 256, work->camera);
     bindTarget.x = 0;
     bindTarget.y = FX32_ONE;
     bindTarget.z = 0;
-    GF_Camera_SetBindTarget(&bindTarget, work->camera);
-    GF_Camera_RegisterToStaticPtr(work->camera);
+    Camera_SetBindTarget(&bindTarget, work->camera);
+    Camera_RegisterToStaticPtr(work->camera);
 }
 
 static void createObjResMans(struct ChooseStarterAppWork *work) {

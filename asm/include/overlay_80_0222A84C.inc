@@ -3,8 +3,8 @@
 .public AllocAndReadWholeNarcMemberByIdPair
 .public NewMsgDataFromNarc
 .public DestroyMsgData
-.public ScrStrBufs_new_custom
-.public ScrStrBufs_delete
+.public MessageFormat_new_custom
+.public MessageFormat_delete
 .public AllocFromHeap
 .public FreeToHeap
 .public GF_AssertFail

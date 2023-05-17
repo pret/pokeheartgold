@@ -38,7 +38,7 @@ ov105_021E5900: ; 0x021E5900
 	add r0, #0x9e
 	strb r1, [r0]
 	mov r0, #0x97
-	bl GF_Camera_Create
+	bl Camera_Create
 	str r0, [r4]
 	bl ov105_021E5B68
 	add r0, r4, #0
@@ -386,7 +386,7 @@ ov105_021E5BCC: ; 0x021E5BCC
 	ldr r1, [r1, r6]
 	add r3, r3, r5
 	ldrh r3, [r6, r3]
-	bl GF_Camera_InitFromTargetDistanceAndAngle
+	bl Camera_InitFromTargetDistanceAndAngle
 	add r0, r4, #0
 	add r0, #0x9c
 	ldrb r1, [r0]
@@ -398,7 +398,7 @@ ov105_021E5BCC: ; 0x021E5BCC
 	mul r0, r7
 	add r0, r1, r0
 	ldr r1, [r4]
-	bl GF_Camera_ShiftBy
+	bl Camera_ShiftBy
 	add r0, r4, #0
 	add r0, #0x9c
 	ldrb r0, [r0]
@@ -413,9 +413,9 @@ ov105_021E5BCC: ; 0x021E5BCC
 	ldr r2, [r4]
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xc
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 	ldr r0, [r4]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

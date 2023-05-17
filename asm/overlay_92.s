@@ -1795,7 +1795,7 @@ ov92_0225D3CC: ; 0x0225D3CC
 	bl GF_3DVramMan_Create
 	str r0, [r4, #0x60]
 	mov r0, #0x71
-	bl GF_Camera_Create
+	bl Camera_Create
 	str r0, [r4, #0x64]
 	add r0, r4, #0
 	bl ov92_0225DD88
@@ -2930,9 +2930,9 @@ ov92_0225DD88: ; 0x0225DD88
 	ldr r0, _0225DDD4 ; =0xFFC18000
 	ldr r2, [r4, #0x64]
 	lsl r1, r1, #0xe
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 	ldr r0, [r4, #0x64]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

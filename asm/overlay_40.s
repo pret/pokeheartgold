@@ -3651,7 +3651,7 @@ _0222D410:
 	ldr r0, [sp, #0x14]
 	bl String_dtor
 	add r0, r6, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	b _0222D504
 _0222D478:
 	cmp r2, #0x29
@@ -3708,7 +3708,7 @@ _0222D494:
 	ldr r0, [sp, #0x18]
 	bl String_dtor
 	add r0, r6, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	b _0222D504
 _0222D4FC:
 	add r1, r2, #0
@@ -4447,13 +4447,13 @@ ov40_0222DAA8: ; 0x0222DAA8
 
 	thumb_func_start ov40_0222DAB0
 ov40_0222DAB0: ; 0x0222DAB0
-	ldr r3, _0222DABC ; =ScrStrBufs_new_custom
+	ldr r3, _0222DABC ; =MessageFormat_new_custom
 	add r2, r0, #0
 	mov r0, #4
 	mov r1, #0x40
 	bx r3
 	nop
-_0222DABC: .word ScrStrBufs_new_custom
+_0222DABC: .word MessageFormat_new_custom
 	thumb_func_end ov40_0222DAB0
 
 	thumb_func_start ov40_0222DAC0
@@ -5363,7 +5363,7 @@ _0222E0D6:
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl ScrStrBufs_ResetBuffers
+	bl MessageFormat_ResetBuffers
 	ldr r0, [sp, #0x20]
 	bl sub_020316F0
 	str r0, [sp, #0x34]
@@ -5418,7 +5418,7 @@ _0222E0D6:
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl ScrStrBufs_ResetBuffers
+	bl MessageFormat_ResetBuffers
 	ldr r5, [sp, #0x14]
 	ldr r0, [r7, #0x48]
 	add r5, #0x3c
@@ -5558,7 +5558,7 @@ _0222E33C:
 	bl String_dtor
 _0222E3F6:
 	add r0, r4, #0
-	bl ScrStrBufs_ResetBuffers
+	bl MessageFormat_ResetBuffers
 	ldr r5, [sp, #0x14]
 	ldr r0, [r7, #0x48]
 	add r5, #0x6c
@@ -5625,7 +5625,7 @@ _0222E46A:
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add sp, #0xd8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -6125,7 +6125,7 @@ _0222E884:
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r7, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 _0222E890:
 	mov r0, #0x10
 	str r0, [sp]
@@ -6871,7 +6871,7 @@ _0222EE7A:
 	ldr r0, [sp, #0x34]
 	bl String_dtor
 	add r0, r5, #0
-	bl ScrStrBufs_ResetBuffers
+	bl MessageFormat_ResetBuffers
 	ldr r0, [sp, #0x20]
 	ldr r1, [r4, #0x10]
 	add r0, r0, #4
@@ -6887,7 +6887,7 @@ _0222EEB4:
 	ldr r0, [sp, #0x50]
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add sp, #0x1fc
 	add sp, #0xe0
 	pop {r4, r5, r6, r7, pc}
@@ -7466,7 +7466,7 @@ _0222F32A:
 	ldr r0, [sp, #0x48]
 	bl String_dtor
 	add r0, r5, #0
-	bl ScrStrBufs_ResetBuffers
+	bl MessageFormat_ResetBuffers
 	ldr r0, [sp, #0x20]
 	add r6, #0x10
 	add r0, r0, #4
@@ -7482,7 +7482,7 @@ _0222F36A:
 	ldr r0, [sp, #0x58]
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	mov r0, #8
 	ldrsh r0, [r4, r0]
 	str r0, [r4, #0xc]
@@ -9267,7 +9267,7 @@ _02230062:
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl ScrStrBufs_ResetBuffers
+	bl MessageFormat_ResetBuffers
 	ldr r0, [sp, #0x14]
 	mov r1, #3
 	ldr r0, [r0, #4]
@@ -9299,7 +9299,7 @@ _02230062:
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl ScrStrBufs_ResetBuffers
+	bl MessageFormat_ResetBuffers
 	ldr r0, [sp, #0x14]
 	mov r1, #2
 	ldr r0, [r0, #4]
@@ -9368,7 +9368,7 @@ _02230062:
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl ScrStrBufs_ResetBuffers
+	bl MessageFormat_ResetBuffers
 	b _02230206
 _022301F4:
 	ldr r5, [sp, #0x14]
@@ -9539,9 +9539,9 @@ _022302BA:
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl ScrStrBufs_ResetBuffers
+	bl MessageFormat_ResetBuffers
 	add r0, r4, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add sp, #0x9c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -20504,7 +20504,7 @@ _02235C54:
 	add r0, r7, #0
 	bl String_dtor
 	ldr r0, [sp, #0x18]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 _02235C72:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
@@ -20640,7 +20640,7 @@ _02235D84:
 	add r0, r7, #0
 	bl String_dtor
 	ldr r0, [sp, #0x18]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 _02235DA2:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
@@ -23115,7 +23115,7 @@ ov40_0223707C: ; 0x0223707C
 	add r0, r7, #0
 	bl String_dtor
 	ldr r0, [sp, #0x14]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -27744,9 +27744,9 @@ _0223973A:
 	ldr r0, [sp, #0x18]
 	bl String_dtor
 	add r0, r6, #0
-	bl ScrStrBufs_ResetBuffers
+	bl MessageFormat_ResetBuffers
 	add r0, r6, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add sp, #0x1fc
 	add sp, #0x30
 	pop {r4, r5, r6, r7, pc}
@@ -29395,7 +29395,7 @@ ov40_0223A510: ; 0x0223A510
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r7, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	b _0223A602
 _0223A58A:
 	cmp r4, #0x66
@@ -29442,7 +29442,7 @@ _0223A58A:
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r7, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	b _0223A602
 _0223A5FA:
 	ldr r0, [r5, #0x48]
@@ -31018,7 +31018,7 @@ _0223B2BC:
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r7, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 _0223B31A:
 	add r0, sp, #0x18
 	bl InitWindow
@@ -33464,7 +33464,7 @@ ov40_0223C710: ; 0x0223C710
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r7, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	b _0223C7CE
 _0223C7C4:
 	ldr r0, [r5, #0x48]
@@ -36368,7 +36368,7 @@ _0223DE78:
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r6, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 _0223DE84:
 	mov r1, #0
 	str r1, [sp]
@@ -42066,7 +42066,7 @@ _02240D70:
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r7, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 _02240DCE:
 	add r0, sp, #0x18
 	bl InitWindow
@@ -42182,7 +42182,7 @@ ov40_02240E28: ; 0x02240E28
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r7, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	b _02240EE4
 _02240EDA:
 	ldr r0, [r5, #0x48]
@@ -42268,7 +42268,7 @@ ov40_02240F24: ; 0x02240F24
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r7, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	b _02241014
 _02240F9C:
 	cmp r4, #0x66
@@ -42315,7 +42315,7 @@ _02240F9C:
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r7, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	b _02241014
 _0224100C:
 	ldr r0, [r5, #0x48]
@@ -46114,9 +46114,9 @@ ov40_02242E4C: ; 0x02242E4C
 	ldr r0, [sp, #0x2c]
 	bl String_dtor
 	add r0, r6, #0
-	bl ScrStrBufs_ResetBuffers
+	bl MessageFormat_ResetBuffers
 	add r0, r6, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -48726,7 +48726,7 @@ ov40_022442F0: ; 0x022442F0
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r6, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	b _02244372
 _0224436A:
 	ldr r0, [r5, #0x48]

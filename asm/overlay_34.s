@@ -137,7 +137,7 @@ ov34_0225D5F8: ; 0x0225D5F8
 	sub r1, #0xa
 	mov r0, #4
 	strh r2, [r4, r1]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r4, #0x18]
 	ldr r2, _0225D64C ; =0x000002E2
 	mov r0, #0
@@ -453,7 +453,7 @@ _0225D8B2:
 	ldr r0, [r6, #0x1c]
 	bl DestroyMsgData
 	ldr r0, [r6, #0x18]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	mov r1, #0x72
 	lsl r1, r1, #2
 	add r0, r6, r1

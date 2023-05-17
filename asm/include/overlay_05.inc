@@ -25,8 +25,8 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
-.public ScrStrBufs_new
-.public ScrStrBufs_delete
+.public MessageFormat_new
+.public MessageFormat_delete
 .public BufferBoxMonNickname
 .public StringExpandPlaceholders
 .public MessagePrinter_new
@@ -120,7 +120,7 @@
 .public GX_DisableEngineALayers
 .public GX_EngineAToggleLayers
 .public GX_DisableEngineBLayers
-.public GF_Camera_SetClipBounds
+.public Camera_SetClipBounds
 .public sub_020249B0
 .public GF_AssertFail
 .public String_ctor

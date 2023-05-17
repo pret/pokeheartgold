@@ -1245,7 +1245,7 @@ _021E62C0:
 	sub r0, #0x20
 	str r1, [r5, r0]
 	add r0, r4, #0
-	bl GF_Camera_Create
+	bl Camera_Create
 	add r1, r5, #0
 	add r1, #0xb8
 	str r0, [r1]
@@ -1269,7 +1269,7 @@ _021E62C0:
 	ldr r2, [r2]
 	mov r0, #0
 	lsl r1, r1, #0xa
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 	add r1, r5, #0
 	add r1, #0xb8
 	ldr r1, [r1]
@@ -1278,7 +1278,7 @@ _021E62C0:
 	add r0, r5, #0
 	add r0, #0xb8
 	ldr r0, [r0]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	mov r3, #0x77
 	lsl r3, r3, #2
 	add r2, r3, #2
@@ -8180,7 +8180,7 @@ _021E9A6A:
 	ldr r0, [sp, #0x18]
 	bl NARC_dtor
 	mov r0, #0x4a
-	bl GF_Camera_Create
+	bl Camera_Create
 	ldr r1, [sp, #0xc]
 	add r3, sp, #0x2c
 	add r1, #0x80
@@ -8202,17 +8202,17 @@ _021E9A6A:
 	str r0, [sp, #8]
 	add r0, r2, #0
 	ldr r2, _021E9B58 ; =_021EB29C
-	bl GF_Camera_InitFromTargetDistanceAndAngle
+	bl Camera_InitFromTargetDistanceAndAngle
 	ldr r1, [sp, #0xc]
 	ldr r0, _021E9B5C ; =0x00000981
 	add r1, #0x80
 	ldr r1, [r1]
-	bl GF_Camera_SetPerspectiveAngle
+	bl Camera_SetPerspectiveAngle
 	ldr r0, [sp, #0xc]
 	add r0, #0x80
 	str r0, [sp, #0xc]
 	ldr r0, [r0]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	mov r0, #0x1f
 	str r0, [sp]
 	mov r0, #2
@@ -8577,7 +8577,7 @@ ov60_021E9D78: ; 0x021E9D78
 	mov r1, #0xe1
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 	mov r0, #0x3b
 	mov r1, #4
 	mov r2, #0x4a

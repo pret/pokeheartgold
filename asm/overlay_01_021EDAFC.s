@@ -2199,7 +2199,7 @@ MoneyBoxSys_Update: ; 0x021EEB4C
 	bl NewMsgDataFromNarc
 	str r0, [sp, #0xc]
 	mov r0, #4
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	add r6, r0, #0
 	mov r0, #0x10
 	mov r1, #4
@@ -2244,7 +2244,7 @@ MoneyBoxSys_Update: ; 0x021EEB4C
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r6, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [sp, #0xc]
 	bl DestroyMsgData
 	add r0, r5, #0
@@ -2335,7 +2335,7 @@ ov01_021EEC7C: ; 0x021EEC7C
 	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	mov r0, #4
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [sp, #0x10]
 	mov r0, #0x10
 	mov r1, #4
@@ -2409,7 +2409,7 @@ _021EED04:
 	add r0, r6, #0
 	bl String_dtor
 	ldr r0, [sp, #0x10]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r0, r7, #0
 	bl DestroyMsgData
 	ldr r0, [sp, #0xc]
@@ -2553,7 +2553,7 @@ ov01_021EEE44: ; 0x021EEE44
 	bl NewMsgDataFromNarc
 	str r0, [sp, #0xc]
 	mov r0, #4
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	add r6, r0, #0
 	mov r0, #0x10
 	mov r1, #4
@@ -2631,7 +2631,7 @@ ov01_021EEE44: ; 0x021EEE44
 	add r0, r4, #0
 	bl String_dtor
 	add r0, r6, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [sp, #0xc]
 	bl DestroyMsgData
 	add r0, r5, #0

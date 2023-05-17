@@ -13,6 +13,7 @@
 #include "unk_0200B380.h"
 #include "unk_02037C94.h"
 #include "overlay_00_thumb.h"
+#include "global.h"
 
 static const GF_GXBanksConfig sCommunicationErrorBanksConfig = {
     .bg = GX_VRAM_BG_256_AB,
@@ -161,15 +162,15 @@ void ShowCommunicationError(HeapID heap_id, u32 error, u32 error_code) {
 
     ResetAllTextPrinters();
 
-    MSGFMT* msg_fmt = ScrStrBufs_new(heap_id);
+    MessageFormat* messageFormat = MessageFormat_new(heap_id);
 
     AddWindow(bg_config, &window, &sCommunicationErrorWindowTemplate);
     FillWindowPixelRect(&window, 0xF, 0, 0, 208, 144);
     DrawFrameAndWindow1(&window, FALSE, 0x1F7, 2);
 
-    BufferIntegerAsString(msg_fmt, 0, error_code, 5, STRCONVMODE_LEADING_ZEROS, TRUE);
+    BufferIntegerAsString(messageFormat, 0, error_code, 5, STRCONVMODE_LEADING_ZEROS, TRUE);
     ReadMsgDataIntoString(errors_msgdata, msg_no, tmp_str);
-    StringExpandPlaceholders(msg_fmt, error_str, tmp_str);
+    StringExpandPlaceholders(messageFormat, error_str, tmp_str);
     AddTextPrinterParameterized(&window, 0, error_str, 0, 0, 0, NULL);
     String_dtor(error_str);
     // BUG: tmp_str is never destroyed.
@@ -181,6 +182,6 @@ void ShowCommunicationError(HeapID heap_id, u32 error, u32 error_code) {
 
     RemoveWindow(&window);
     DestroyMsgData(errors_msgdata);
-    ScrStrBufs_delete(msg_fmt);
+    MessageFormat_delete(messageFormat);
     FreeToHeap(bg_config);
 }

@@ -24,9 +24,9 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
-.public ScrStrBufs_new
-.public ScrStrBufs_new_custom
-.public ScrStrBufs_delete
+.public MessageFormat_new
+.public MessageFormat_new_custom
+.public MessageFormat_delete
 .public BufferString
 .public BufferPlayersName
 .public BufferIntegerAsString
@@ -74,10 +74,10 @@
 .public GX_EngineASetLayers
 .public GX_EngineBToggleLayers
 .public GX_EngineAGetLayers
-.public GF_Camera_Create
+.public Camera_Create
 .public sub_02023120
 .public sub_02023128
-.public GF_Camera_RegisterToStaticPtr
+.public Camera_RegisterToStaticPtr
 .public sub_0202457C
 .public Sprite_Delete
 .public sub_020247D4

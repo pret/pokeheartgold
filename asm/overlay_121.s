@@ -2157,7 +2157,7 @@ ov121_021E69F0: ; 0x021E69F0
 	mov r0, #2
 	mov r1, #0x4c
 	mov r2, #0x9e
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	str r0, [r6, #0x68]
 	mov r0, #0x4c
 	mov r1, #0x9e
@@ -2208,7 +2208,7 @@ _021E6A54:
 	ldr r0, [r6, #0x6c]
 	bl String_dtor
 	ldr r0, [r6, #0x68]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r6, #0x64]
 	bl DestroyMsgData
 	pop {r4, r5, r6, pc}
