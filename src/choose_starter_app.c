@@ -19,7 +19,7 @@
 #include "unk_02026E30.h"
 #include "unk_0201F4C4.h"
 #include "unk_02009D48.h"
-#include "unk_0200E398.h"
+#include "render_window.h"
 #include "unk_02025154.h"
 #include "unk_02020B8C.h"
 #include "unk_02013FDC.h"

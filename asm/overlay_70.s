@@ -2927,7 +2927,7 @@ ov70_02238F64: ; 0x02238F64
 	ldr r0, _02238F78 ; =0x00000F18
 	mov r1, #1
 	add r0, r4, r0
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	ldr r1, _02238F7C ; =0x000011BC
 	str r0, [r4, r1]
 	pop {r4, pc}

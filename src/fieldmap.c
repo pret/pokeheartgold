@@ -254,7 +254,7 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *environment, enum ScriptEnv
     case SCRIPTENV_STRING_BUFFER_1:
         return &environment->stringBuffer1;
     case SCRIPTENV_WAITING_ICON:
-        return &environment->unk_50;
+        return &environment->waitingIcon;
     case SCRIPTENV_AC:
         return &environment->unk_AC;
     case SCRIPTENV_GENERIC_WORK_PTR:

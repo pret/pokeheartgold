@@ -84,7 +84,7 @@
 .public ClearFrameAndWindow2
 .public sub_0200EC0C
 .public DrawFrameAndWindow3
-.public sub_0200F0AC
+.public WaitingIcon_new
 .public sub_0200F450
 .public sub_0200F478
 .public BeginNormalPaletteFade

@@ -4933,7 +4933,7 @@ ov49_0225AC08: ; 0x0225AC08
 _0225AC16:
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
 	.balign 4, 0

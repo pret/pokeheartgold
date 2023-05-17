@@ -9,7 +9,7 @@
 #include "system.h"
 #include "task.h"
 #include "text.h"
-#include "unk_0200E398.h"
+#include "render_window.h"
 #include "unk_02035900.h"
 #include "unk_0205A44C.h"
 #include "unk_020658D4.h"
@@ -91,6 +91,7 @@
 #include "constants/accessories.h"
 #include "constants/phone_contacts.h"
 #include "constants/trainers.h"
+#include "render_window.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
 FS_EXTERN_OVERLAY(npc_trade);
@@ -959,14 +960,14 @@ BOOL sub_020416E4(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_AddWaitingIcon(SCRIPTCONTEXT *ctx) {
     WINDOW *window = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WINDOW);
-    struct WaitingIconManager **mgr_p = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WAITING_ICON);
-    *mgr_p = sub_0200F0AC(window, 0x3E2);
+    WaitingIcon **waitingIcon = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WAITING_ICON);
+    *waitingIcon = WaitingIcon_new(window, 0x3E2);
     return FALSE;
 }
 
 BOOL ScrCmd_RemoveWaitingIcon(SCRIPTCONTEXT *ctx) {
-    struct WaitingIconManager **mgr_p = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WAITING_ICON);
-    sub_0200F450(*mgr_p);
+    WaitingIcon **waitingIcon = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WAITING_ICON);
+    sub_0200F450(*waitingIcon);
     return FALSE;
 }
 

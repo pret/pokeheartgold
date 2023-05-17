@@ -8742,7 +8742,7 @@ ov112_021EA17C: ; 0x021EA17C
 	ldr r0, _021EA190 ; =0x0001EA88
 	ldr r1, _021EA194 ; =0x000003E2
 	add r0, r4, r0
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	ldr r1, _021EA198 ; =0x0001EC4C
 	str r0, [r4, r1]
 	pop {r4, pc}

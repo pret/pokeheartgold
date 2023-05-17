@@ -4169,7 +4169,7 @@ _02239A46:
 	bl sub_02003370
 	ldr r0, [r5, #8]
 	mov r1, #1
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	ldr r1, _02239C24 ; =0x00001024
 	str r0, [r5, r1]
 	bl ov12_0223A7A0

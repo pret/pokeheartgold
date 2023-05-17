@@ -12,9 +12,10 @@
 #include "overlay_manager.h"
 #include "unk_0200E320.h"
 #include "list_menu_2d.h"
-#include "unk_0200E398.h"
+#include "render_window.h"
 #include "unk_02022D74.h"
 #include "field_system.h"
+#include "render_window.h"
 
 #define SCRIPT_MODE_STOPPED  0
 #define SCRIPT_MODE_BYTECODE 1
@@ -63,7 +64,7 @@ typedef struct ScriptEnvironment {
     MessageFormat *msgfmt;
     STRING *stringBuffer0;
     STRING *stringBuffer1;
-    struct WaitingIconManager *unk_50;
+    WaitingIcon *waitingIcon;
     EngagedTrainer engagedTrainers[2];
     u16 specialVars[NUM_SPECIAL_VARS];
     void (*scrctx_end_cb)(FieldSystem *fsys);
