@@ -5532,7 +5532,7 @@ ov72_0223A420: ; 0x0223A420
 	ldr r0, _0223A440 ; =0x00000E18
 	mov r1, #1
 	add r0, r4, r0
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	ldr r1, _0223A43C ; =0x00000F4C
 	str r0, [r4, r1]
 _0223A43A:

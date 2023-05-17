@@ -2740,7 +2740,7 @@ _0222B3EC:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -2967,7 +2967,7 @@ _0222B5CE:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3083,7 +3083,7 @@ _0222B6CE:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3994,7 +3994,7 @@ _0222BE08:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -4051,7 +4051,7 @@ _0222BE80:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -8598,7 +8598,7 @@ _0222E386:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -10188,7 +10188,7 @@ _0222EFB8:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -10243,7 +10243,7 @@ _0222F030:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -10645,7 +10645,7 @@ _0222F37A:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -10747,7 +10747,7 @@ _0222F460:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -20842,7 +20842,7 @@ _022342CA:
 	lsl r0, r0, #2
 	add r0, r4, r0
 	mov r1, #1
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	mov r1, #0x86
 	lsl r1, r1, #2
 	str r0, [r4, r1]

@@ -17,7 +17,7 @@
 #include "unk_02009D48.h"
 #include "unk_0200B380.h"
 #include "unk_0200CF18.h"
-#include "unk_0200E398.h"
+#include "render_window.h"
 #include "unk_0200FA24.h"
 #include "unk_0201660C.h"
 #include "unk_020183F0.h"

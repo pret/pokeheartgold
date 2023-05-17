@@ -1519,7 +1519,7 @@ _02259464:
 	add r0, r4, #0
 	add r0, #8
 	mov r1, #1
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	str r0, [r4, #0x24]
 _02259470:
 	pop {r4, pc}

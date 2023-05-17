@@ -1865,7 +1865,7 @@ ov90_02259554: ; 0x02259554
 	lsl r1, r1, #4
 	add r0, r0, r1
 	mov r1, #1
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	str r0, [r5, r4]
 _0225956E:
 	pop {r3, r4, r5, pc}

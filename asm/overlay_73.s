@@ -9248,7 +9248,7 @@ ov73_021EA15C: ; 0x021EA15C
 	ldr r0, _021EA17C ; =0x00000DD8
 	mov r1, #1
 	add r0, r4, r0
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	ldr r1, _021EA178 ; =0x00000F0C
 	str r0, [r4, r1]
 _021EA176:

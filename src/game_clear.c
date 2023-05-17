@@ -1,3 +1,4 @@
+#include "global.h"
 #include "event_data.h"
 #include "game_stats.h"
 #include "party.h"
@@ -25,6 +26,7 @@
 #include "constants/sndseq.h"
 #include "credits/credits.h"
 #include "msgdata/msg/msg_0040.h"
+#include "render_window.h"
 
 #define WAIT_SE_SAVE_FRAMES   32
 #define SCREEN_FADEOUT_FRAMES 32
@@ -36,7 +38,7 @@ typedef struct {
     BGCONFIG *bgConfig;
     WINDOW window;
     STRING *windowText;
-    struct WaitingIconManager *waitIconMgr;
+    WaitingIcon *waitingIcon;
     int printerId;
     int timer;
     BOOL vsTrainerRed;
@@ -296,7 +298,7 @@ void Task_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
 static void GameClearSave_InitGraphics(FieldSystem *fsys, GameClearWork *env) {
     env->bgConfig = BgConfig_Alloc(11);
     env->windowText = NULL;
-    env->waitIconMgr = NULL;
+    env->waitingIcon = NULL;
     InitWindow(&env->window);
     GX_SetBanks(&sGameClearSaveBanksConfig);
     GX_SetDispSelect(GX_DISP_SELECT_MAIN_SUB);
@@ -314,7 +316,7 @@ static void GameClearSave_PrintSaving(FieldSystem *fsys, GameClearWork *env) {
     sub_0205B514(env->bgConfig, &env->window, 3);
     sub_0205B564(&env->window, options);
     env->printerId = sub_0205B5B4(&env->window, env->windowText, options, 1);
-    env->waitIconMgr = sub_0200F0AC(&env->window, 0x000003e2);
+    env->waitingIcon = WaitingIcon_new(&env->window, 0x000003e2);
 }
 
 static BOOL GameClearSave_IsPrintFinished(GameClearWork *env) {
@@ -323,7 +325,7 @@ static BOOL GameClearSave_IsPrintFinished(GameClearWork *env) {
 
 static void sub_02052E70(GameClearWork *env) {
     String_dtor(env->windowText);
-    sub_0200F450(env->waitIconMgr);
+    sub_0200F450(env->waitingIcon);
     sub_0205B5A8(&env->window);
 }
 

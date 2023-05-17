@@ -6,7 +6,7 @@
 u8 LotoId_CountDigitsMatched(u16 lotoId, u16 otid);
 
 BOOL ScrCmd_BufferDeptStoreFloorNo(SCRIPTCONTEXT *ctx) {
-    MessageFormat **msg = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **msg = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 fieldno = ScriptReadByte(ctx);
     u8 floor = ScriptReadByte(ctx);
     BufferDeptStoreFloorNo(*msg, fieldno, floor);

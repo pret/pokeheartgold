@@ -103,7 +103,7 @@ BOOL ScrCmd_648(SCRIPTCONTEXT *ctx) {
     MSGDATA *msgdata;
     FieldSystem *fsys = ctx->fsys;
 
-    msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u32 unkA = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u32 fileIndex = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 unkC = ScriptReadHalfword(ctx);
@@ -874,7 +874,7 @@ BOOL ScrCmd_741(SCRIPTCONTEXT *ctx) {
     STRING *str;
 
     apricornBox = Save_ApricornBox_get(ctx->fsys->savedata);
-    msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     unkVar = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     unkPtrA = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
     price = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
@@ -1198,7 +1198,7 @@ BOOL ScrCmd_CasinoGame(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_BufferPokeathlonCourseName(SCRIPTCONTEXT *ctx) {
     u8 fieldNo = *(ctx->script_ptr++);
     u32 courseId = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
-    BufferPokeathlonCourseName(*(MessageFormat**)FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT), fieldNo, (u8) courseId);
+    BufferPokeathlonCourseName(*(MessageFormat**)FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT), fieldNo, (u8) courseId);
     return FALSE;
 }
 
@@ -1442,7 +1442,7 @@ BOOL ScrCmd_BufferBugContestWinner(SCRIPTCONTEXT *ctx) {
     MessageFormat **msgfmt;
     BUGCONTEST *bugContest;
 
-    msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     bugContest = FieldSys_BugContest_get(ctx->fsys);
 
     BugContest_BufferContestWinnerNames(bugContest, ctx->msgdata, *msgfmt, *ctx->script_ptr++);
@@ -1480,7 +1480,7 @@ BOOL ScrCmd_BufferBugContestMonNick(SCRIPTCONTEXT *ctx) {
     BUGCONTEST *bugContest;
     u32 script_index;
 
-    msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     bugContest = FieldSys_BugContest_get(ctx->fsys);
 
     script_index = *(ctx->script_ptr++);
@@ -1496,7 +1496,7 @@ BOOL ScrCmd_BugContestGetTimeLeft(SCRIPTCONTEXT *ctx) {
     u32 script_index;
     u32 timeLeft;
 
-    msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
 
     script_index = *(ctx->script_ptr++);
     timeLeft = 1;

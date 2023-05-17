@@ -103,8 +103,8 @@ BOOL Task_RunScripts(TaskManager *taskman) {
         env->scriptContexts[0] = CreateScriptContext(fsys, env->activeScriptNumber);
         env->activeScriptContextCount = 1;
         env->msgfmt = MessageFormat_new_custom(8, 64, HEAP_ID_FIELDMAP);
-        env->strbuf1 = String_ctor(1024, HEAP_ID_FIELDMAP);
-        env->strbuf2 = String_ctor(1024, HEAP_ID_FIELDMAP);
+        env->stringBuffer0 = String_ctor(1024, HEAP_ID_FIELDMAP);
+        env->stringBuffer1 = String_ctor(1024, HEAP_ID_FIELDMAP);
         env->state++;
         // fallthrough
     case 1:
@@ -124,8 +124,8 @@ BOOL Task_RunScripts(TaskManager *taskman) {
         if (env->activeScriptContextCount == 0) {
             void (*callback)(FieldSystem *a0) = env->scrctx_end_cb;
             MessageFormat_delete(env->msgfmt);
-            String_dtor(env->strbuf1);
-            String_dtor(env->strbuf2);
+            String_dtor(env->stringBuffer0);
+            String_dtor(env->stringBuffer1);
             env->check = 0;
             FreeToHeap(env);
             if (callback != NULL) {
@@ -247,14 +247,14 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *environment, enum ScriptEnv
     case SCRIPTENV_SCRIPT_CONTEXT_1:
     case SCRIPTENV_SCRIPT_CONTEXT_2:
         return &environment->scriptContexts[field - SCRIPTENV_SCRIPT_CONTEXT_0];
-    case SCRIPTENV_MSGFMT:
+    case SCRIPTENV_MESSAGE_FORMAT:
         return &environment->msgfmt;
-    case SCRIPTENV_STRBUF1:
-        return &environment->strbuf1;
-    case SCRIPTENV_STRBUF2:
-        return &environment->strbuf2;
+    case SCRIPTENV_STRING_BUFFER_0:
+        return &environment->stringBuffer0;
+    case SCRIPTENV_STRING_BUFFER_1:
+        return &environment->stringBuffer1;
     case SCRIPTENV_WAITING_ICON:
-        return &environment->unk_50;
+        return &environment->waitingIcon;
     case SCRIPTENV_AC:
         return &environment->unk_AC;
     case SCRIPTENV_GENERIC_WORK_PTR:

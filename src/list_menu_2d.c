@@ -3,7 +3,7 @@
 #include "system.h"
 #include "text.h"
 #include "unk_02005D10.h"
-#include "unk_0200E398.h"
+#include "render_window.h"
 #include "constants/sndseq.h"
 #include "msgdata/msg/msg_0191.h"
 

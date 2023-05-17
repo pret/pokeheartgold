@@ -9,7 +9,7 @@
 #include "system.h"
 #include "task.h"
 #include "text.h"
-#include "unk_0200E398.h"
+#include "render_window.h"
 #include "unk_02035900.h"
 #include "unk_0205A44C.h"
 #include "unk_020658D4.h"
@@ -91,6 +91,7 @@
 #include "constants/accessories.h"
 #include "constants/phone_contacts.h"
 #include "constants/trainers.h"
+#include "render_window.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
 FS_EXTERN_OVERLAY(npc_trade);
@@ -766,9 +767,9 @@ BOOL ScrCmd_DirectionSignpost(SCRIPTCONTEXT* ctx) {
     u8 unk2;
 
     FieldSystem* fsys = ctx->fsys;
-    STRING** tmp_str = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRBUF2);
-    STRING** unk1 = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRBUF1);
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MSGFMT);
+    STRING** tmp_str = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
+    STRING** unk1 = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 msg_no = ScriptReadByte(ctx);
     unk2 = ScriptReadByte(ctx);
     u16 arrow = ScriptReadHalfword(ctx);
@@ -827,9 +828,9 @@ static BOOL sub_02041520(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_TrainerTips(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     u8* printer_id_ptr = FieldSysGetAttrAddr(fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
-    STRING** tmp_str = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRBUF2);
-    STRING** unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRBUF1);
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MSGFMT);
+    STRING** tmp_str = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
+    STRING** unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 msg_no = ScriptReadByte(ctx);
     u16 result_var_id = ScriptReadHalfword(ctx);
 
@@ -959,20 +960,20 @@ BOOL sub_020416E4(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_AddWaitingIcon(SCRIPTCONTEXT *ctx) {
     WINDOW *window = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WINDOW);
-    struct WaitingIconManager **mgr_p = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WAITING_ICON);
-    *mgr_p = sub_0200F0AC(window, 0x3E2);
+    WaitingIcon **waitingIcon = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WAITING_ICON);
+    *waitingIcon = WaitingIcon_new(window, 0x3E2);
     return FALSE;
 }
 
 BOOL ScrCmd_RemoveWaitingIcon(SCRIPTCONTEXT *ctx) {
-    struct WaitingIconManager **mgr_p = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WAITING_ICON);
-    sub_0200F450(*mgr_p);
+    WaitingIcon **waitingIcon = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WAITING_ICON);
+    sub_0200F450(*waitingIcon);
     return FALSE;
 }
 
 void sub_02041770(SCRIPTCONTEXT *ctx, struct UnkStruct_ov01_021EDC28 **a1, MSGDATA *msgData) {
     FieldSystem *fsys = ctx->fsys;
-    MessageFormat **msgFmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **msgFmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 x = ScriptReadByte(ctx);
     u8 y = ScriptReadByte(ctx);
     u8 initCursorPos = ScriptReadByte(ctx);
@@ -2159,7 +2160,7 @@ BOOL ScrCmd_PromptEasyChat(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_494(SCRIPTCONTEXT *ctx) {
-    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u16 idx = ScriptGetVar(ctx);
     u16 word = ScriptGetVar(ctx);
     BufferECWord(*p_msgFmt, idx, word);
@@ -2383,7 +2384,7 @@ BOOL ScrCmd_TrainerMessage(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
 
     u16 *p_scripno = FieldSysGetAttrAddr(fsys, SCRIPTENV_ACTIVE_SCRIPT_NUMBER);
-    STRING **p_strbuf1 = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRBUF1);
+    STRING **p_strbuf1 = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
     u8 *p_printerno = FieldSysGetAttrAddr(fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
     u16 trainerno = ScriptGetVar(ctx);
     u16 msgno = ScriptGetVar(ctx);
@@ -2499,7 +2500,7 @@ BOOL ScrCmd_GetDynamicWarpFloorNo(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_ElevatorCurFloorBox(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 x = ScriptReadByte(ctx);
     u8 y = ScriptReadByte(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
@@ -2658,7 +2659,7 @@ BOOL ScrCmd_258(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_259(SCRIPTCONTEXT *ctx) {
-    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u16 *p_ret = ScriptGetVarPointer(ctx);
 
     *p_ret = sub_0205A6AC(*p_msgFmt);
@@ -2667,7 +2668,7 @@ BOOL ScrCmd_259(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_260(SCRIPTCONTEXT *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
 
     *p_ret = sub_0205A9A0(ctx->fsys->unk80, *p_msgFmt);
     return FALSE;
@@ -2688,7 +2689,7 @@ BOOL ScrCmd_261(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_264(SCRIPTCONTEXT *ctx) {
     LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_INTERACTED);
-    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u16 r4 = ScriptReadHalfword(ctx);
     PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
     SAVE_EASY_CHAT_T *easyChat = SaveData_EasyChat_get(FieldSys_GetSaveDataPtr(ctx->fsys));
@@ -2725,7 +2726,7 @@ BOOL ScrCmd_267(SCRIPTCONTEXT *ctx) {
     LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_INTERACTED);
     u16 sp0 = ScriptReadHalfword(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     *p_ret = sub_0205A750(ctx->fsys->unk80, MapObject_GetID(*p_lastInteracted), sp0, *p_msgFmt);
     return FALSE;
 }
@@ -2856,7 +2857,7 @@ BOOL ScrCmd_286(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_287(SCRIPTCONTEXT *ctx) {
     PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
-    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     sub_0205B3DC(
         PlayerProfile_GetTrainerID(profile),
         PlayerProfile_GetTrainerGender(profile),
@@ -3840,7 +3841,7 @@ BOOL ScrCmd_530(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_BufferBackgroundName(SCRIPTCONTEXT *ctx) {
-    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 bufferId = ScriptReadByte(ctx);
     u16 backgroundId = ScriptGetVar(ctx);
     BufferContestBackgroundName(*p_msgFmt, bufferId, backgroundId);
@@ -3868,7 +3869,7 @@ BOOL ScrCmd_537(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_538(SCRIPTCONTEXT *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     u16 wordIdx = ScriptGetVar(ctx);
-    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     int trendy = SaveEasyChat_RandomTrendySayingSet(SaveData_EasyChat_get(ctx->fsys->savedata));
     if (trendy == 32) {
         *p_ret = 0xFFFF;
@@ -4066,7 +4067,7 @@ BOOL ScrCmd_573(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_576(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
     *p_ret = sub_0205A6AC(*p_msgFmt);
     return FALSE;
 }
@@ -5283,14 +5284,14 @@ BOOL ScrCmd_CheckBankBalance(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_BufferRulesetName(SCRIPTCONTEXT *ctx) {
     u16 ruleset = ScriptReadHalfword(ctx);
-    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     ov03_022566D0(ctx->fsys, *p_msgFmt, ruleset);
     return FALSE;
 }
 
 BOOL ScrCmd_799(SCRIPTCONTEXT *ctx) {
     u16 *p_var = ScriptGetVarPointer(ctx);
-    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     ov03_022566D0(ctx->fsys, *p_msgFmt, *p_var);
     return FALSE;
 }
@@ -5317,7 +5318,7 @@ BOOL ScrCmd_802(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_803(SCRIPTCONTEXT *ctx) {
     u16 *r4 = ScriptGetVarPointer(ctx);
     u16 *r6 = ScriptGetVarPointer(ctx);
-    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     *r6 = ov03_02256A2C(ctx->fsys, *p_msgFmt, *r4);
     return FALSE;
 }
@@ -5374,7 +5375,7 @@ BOOL ScrCmd_822(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_823(SCRIPTCONTEXT *ctx) {
     u16 *p_var = ScriptGetVarPointer(ctx);
-    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     PLAYERPROFILE *profile = PlayerProfile_new(4);
     SafariZone_GetLinkLeaderToProfile(Save_SafariZone_get(ctx->fsys->savedata), profile);
     BufferPlayersName(*p_msgFmt, *p_var, profile);

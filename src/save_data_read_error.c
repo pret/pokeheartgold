@@ -12,7 +12,7 @@
 #include "window.h"
 #include "text.h"
 #include "font.h"
-#include "unk_0200E398.h"
+#include "render_window.h"
 #include "unk_0200B380.h"
 
 static const GF_GXBanksConfig sDataReadErrorBanksConfig = {

@@ -3487,7 +3487,7 @@ ov39_02228A8C: ; 0x02228A8C
 	add r0, r4, #0
 	add r0, #0x44
 	mov r1, #1
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	add r4, #0x88
 	str r0, [r4]
 _02228AA6:

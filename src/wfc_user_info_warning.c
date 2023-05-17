@@ -8,7 +8,7 @@
 #include "unk_0200FA24.h"
 #include "wfc_user_info_warning.h"
 #include "window.h"
-#include "unk_0200E398.h"
+#include "render_window.h"
 #include "unk_0200B380.h"
 #include "text.h"
 #include "font.h"
