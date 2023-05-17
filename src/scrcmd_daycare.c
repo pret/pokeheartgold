@@ -14,7 +14,7 @@ static LocalMapObject* CreateDayCareMonSpriteInternal(MapObjectMan* object_man, 
 
 BOOL ScrCmd_BufferDayCareMonNicks(SCRIPTCONTEXT* ctx) {
     SAVEDATA* savedata = ctx->fsys->savedata;
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     DAYCARE* daycare = Sav2_DayCare_get(savedata);
 
     Sav2_DayCare_BufferStoredMonNicks(daycare, *msg_fmt);
@@ -54,7 +54,7 @@ BOOL ScrCmd_GiveDayCareEgg(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_RetrieveDayCareMon(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MSGFMT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
     SAVEDATA* savedata = fsys->savedata;
     u16* ret_ptr = ScriptGetVarPointer(ctx);
     u16 daycare_mon_idx = ScriptGetVar(ctx);
@@ -68,7 +68,7 @@ BOOL ScrCmd_RetrieveDayCareMon(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_BufferDayCareWithdrawCost(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MSGFMT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
     SAVEDATA* savedata = fsys->savedata;
     u16* ret_ptr = ScriptGetVarPointer(ctx);
     u16 daycare_mon_idx = ScriptGetVar(ctx);
@@ -81,7 +81,7 @@ BOOL ScrCmd_BufferDayCareWithdrawCost(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_BufferDayCareMonGrowth(SCRIPTCONTEXT* ctx) {
     SAVEDATA* savedata = ctx->fsys->savedata;
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
     u16 daycare_mon_idx = ScriptGetVar(ctx);
     DAYCARE* daycare = SavArray_get(savedata, SAVE_DAYCARE);
@@ -93,7 +93,7 @@ BOOL ScrCmd_BufferDayCareMonGrowth(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_GetTailDayCareMonSpeciesAndNick(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
     DAYCARE* daycare = Sav2_DayCare_get(fsys->savedata);
 
@@ -116,7 +116,7 @@ BOOL ScrCmd_PutMonInDayCare(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_BufferDayCareMonStats(SCRIPTCONTEXT* ctx) {
     SAVEDATA* savedata = ctx->fsys->savedata;
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u16 nickname_idx = ScriptGetVar(ctx);
     u16 level_idx = ScriptGetVar(ctx);
     u16 gender_idx = ScriptGetVar(ctx);

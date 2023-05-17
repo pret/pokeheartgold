@@ -779,7 +779,7 @@ ov30_0225DB48: ; 0x0225DB48
 	add r4, r0, #0
 	add r0, #0x4c
 	mov r1, #0xec
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	str r0, [r4, #0x64]
 	mov r0, #0xc
 	str r0, [r4, #0xc]

@@ -19285,7 +19285,7 @@ _021EE9A8:
 	add r0, r4, #0
 	ldr r1, _021EE9B8 ; =0x000003D2
 	add r0, #0x18
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	str r0, [r4, #0x30]
 	pop {r4, pc}
 	nop

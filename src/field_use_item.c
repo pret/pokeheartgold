@@ -15,7 +15,7 @@
 #include "unk_02054E00.h"
 #include "metatile_behavior.h"
 #include "unk_0203E348.h"
-#include "unk_0200E398.h"
+#include "render_window.h"
 #include "unk_0200FA24.h"
 #include "text.h"
 #include "field_alph_checks.h"

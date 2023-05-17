@@ -3,7 +3,7 @@
 #include "unk_0200FA24.h"
 #include "field_black_out.h"
 #include "system.h"
-#include "unk_0200E398.h"
+#include "render_window.h"
 #include "font.h"
 #include "text.h"
 #include "save_flypoints.h"

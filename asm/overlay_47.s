@@ -1460,7 +1460,7 @@ _02259392:
 	add r0, r4, #0
 	add r0, #8
 	mov r1, #1
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
 	thumb_func_end ov47_02259384

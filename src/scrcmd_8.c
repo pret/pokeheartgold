@@ -13,7 +13,7 @@ BOOL ScrCmd_GetStaticEncounterOutcomeFlag(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_465(SCRIPTCONTEXT *ctx) {
-    MessageFormat **msg = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **msg = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     SAV_FRIEND_GRP *group = Save_FriendGroup_get(ctx->fsys->savedata);
     SAVEDATA *save = ctx->fsys->savedata;
 

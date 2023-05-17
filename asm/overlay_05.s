@@ -6002,7 +6002,7 @@ ov05_0221EA18: ; 0x0221EA18
 	sub r0, #0x3c
 	add r0, r4, r0
 	mov r1, #1
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	ldr r1, _0221EA34 ; =0x00000BC4
 	str r0, [r4, r1]
 _0221EA32:

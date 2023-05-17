@@ -1874,7 +1874,7 @@ ov75_0224785C: ; 0x0224785C
 	add r0, r4, #0
 	add r0, #0x48
 	mov r1, #1
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	add r4, #0x8c
 	str r0, [r4]
 _02247876:

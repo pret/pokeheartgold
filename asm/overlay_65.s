@@ -6918,7 +6918,7 @@ ov65_0221F760: ; 0x0221F760
 	ldr r0, _0221F774 ; =0x000005B4
 	ldr r1, _0221F778 ; =0x000003D9
 	add r0, r4, r0
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	ldr r1, _0221F77C ; =0x000036B4
 	str r0, [r4, r1]
 	pop {r4, pc}

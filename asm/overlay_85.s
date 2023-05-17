@@ -1784,7 +1784,7 @@ ov85_021E65D4: ; 0x021E65D4
 	ldr r0, _021E6608 ; =0x00000CA8
 	mov r1, #0xa
 	add r0, r4, r0
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	ldr r1, _021E660C ; =0x00000DC8
 	str r0, [r4, r1]
 	mov r0, #0x2d
