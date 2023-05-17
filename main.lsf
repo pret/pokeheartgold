@@ -631,7 +631,7 @@ Overlay OVY_21
 Overlay OVY_22
 {
     After OVY_3
-    Object asm/overlay_22.o
+    Object src/overlay_22.o
 }
 Overlay npc_trade
 {
