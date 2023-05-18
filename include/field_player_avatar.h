@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_FIELD_PLAYER_AVATAR_H
 
 #include "save.h"
+#include "global.h"
 
 typedef struct MapObjectMan MapObjectMan;
 typedef struct LocalMapObject LocalMapObject;

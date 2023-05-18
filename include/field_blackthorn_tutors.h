@@ -3,8 +3,7 @@
 
 #include "player_data.h"
 #include "pokemon_types_def.h"
-
-struct MoveRelearner {
+typedef struct MoveRelearner { //todo: move to unk_0203E348? rename to MoveRelearnerAppData?
     POKEMON *pokemon;
     PLAYERPROFILE *profile;
     OPTIONS *options;
@@ -13,7 +12,7 @@ struct MoveRelearner {
     u8 filler_14[5];
     u8 unk_19;
     u8 padding_1A[2];
-};
+} MoveRelearner;
 
 struct MoveRelearner *MoveRelearner_new(HeapID heapId);
 void MoveRelearner_delete(struct MoveRelearner *moveRelearner);
