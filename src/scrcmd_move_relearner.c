@@ -6,24 +6,24 @@ BOOL ScrNative_WaitApplication(SCRIPTCONTEXT *ctx);
 
 BOOL ScrCmd_394(SCRIPTCONTEXT *ctx) {
     u16 var0 = ScriptGetVar(ctx);
-    void **unkAC = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
-    *unkAC = sub_0203E7F4(32, ctx->fsys, var0, 0);
+    void **runningAppData = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA); //*could* be MoveRelearner, not sure
+    *runningAppData = sub_0203E7F4(32, ctx->fsys, var0, 0);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
 
 BOOL ScrCmd_395(SCRIPTCONTEXT *ctx) {
     u16 *retPtr = ScriptGetVarPointer(ctx);
-    void **unkAC = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
-    GF_ASSERT(*unkAC != NULL);
+    void **runningAppData = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA); //*could* be MoveRelearner, not sure
+    GF_ASSERT(*runningAppData != NULL);
 
-    *retPtr = sub_0203E864(*unkAC);
+    *retPtr = sub_0203E864(*runningAppData);
     if (*retPtr == 4) {
         *retPtr = 255;
     }
 
-    FreeToHeap(*unkAC);
-    *unkAC = NULL;
+    FreeToHeap(*runningAppData);
+    *runningAppData = NULL;
     return FALSE;
 }
 
@@ -39,9 +39,9 @@ BOOL ScrCmd_466(SCRIPTCONTEXT *ctx) {
 }
 
 static void CreateMoveRelearner(SCRIPTCONTEXT *ctx, int a1, POKEMON *pokemon, u16 *eligibleMoves) {
-    void **unkAC = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
-    struct MoveRelearner *moveRelearner = MoveRelearner_new(32);
-    *unkAC = moveRelearner;
+    MoveRelearner **moveRelearnerPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
+    MoveRelearner *moveRelearner = MoveRelearner_new(32);
+    *moveRelearnerPtr = moveRelearner;
 
     moveRelearner->pokemon = pokemon;
     moveRelearner->profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
@@ -75,8 +75,8 @@ BOOL ScrCmd_MoveTutorInit(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_MoveRelearnerGetResult(SCRIPTCONTEXT *ctx) {
     u16 *retPtr = ScriptGetVarPointer(ctx);
-    void **unkAC = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
-    struct MoveRelearner *moveRelearner = *unkAC;
+    MoveRelearner **moveRelearnerPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
+    MoveRelearner *moveRelearner = *moveRelearnerPtr;
     GF_ASSERT(moveRelearner != NULL);
 
     if (moveRelearner->padding_1A[0] == 0) {
