@@ -66,7 +66,7 @@ BOOL ScrCmd_MoveTutorInit(SCRIPTCONTEXT *ctx) {
     u16 slot = ScriptGetVar(ctx);
     u16 move = ScriptGetVar(ctx);
     POKEMON *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
-    u16 *eligibleMoves = AllocFromHeap(32, 4);
+    u16 *eligibleMoves = AllocFromHeap(32, 2 * sizeof(u16));
     eligibleMoves[0] = move;
     eligibleMoves[1] = 0xffff;
     CreateMoveRelearner(ctx, 0, pokemon, eligibleMoves);
