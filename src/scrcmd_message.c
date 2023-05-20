@@ -1,0 +1,310 @@
+#include "field_map_object.h"
+#include "fieldmap.h"
+#include "font.h"
+#include "mail_message.h"
+#include "msgdata.h"
+#include "message_format.h"
+#include "overlay_01.h"
+#include "pm_string.h"
+#include "scrcmd.h"
+#include "script.h"
+#include "window.h"
+
+const u16 ov01_022067C8[] = {
+    752, // NARC_msg_msg_0752_bin (day of the week siblings)
+    211, // NARC_msg_msg_0211_bin (field moves)
+    30, // NARC_msg_msg_0030_bin (cameron the photographer)
+    435, // NARC_msg_msg_0435_bin (pokemart and various shops)
+};
+
+extern MessageFormat *sub_0204B538(SAVEDATA *savedata, u16 numEligblePokemon, u16 a2, u8 a3, u8 *numLegendaryPokemonSeen);
+extern STRING *MailMsg_GetExpandedString(const MAIL_MESSAGE *mailMessage, HeapID heapId);
+
+typedef struct MessageBox {
+    STRING *message;
+    STRING *buffer;
+    MessageFormat *messageFormat;
+    WINDOW *window;
+    u8 *unk10;
+    u8 *textPrinterNumPtr;
+} MessageBox;
+
+BOOL ov01_021EF348(SCRIPTCONTEXT *ctx);
+void ovFieldMain_ShowMessageInField(SCRIPTCONTEXT *ctx, MSGDATA *messageData, u32 messageNum);
+void ov01_021EF564(SCRIPTCONTEXT *ctx, u16 messageBank, u16 messageNum, u16 word1, s16 word2, u8 canABSpeedUp);
+void ov01_021EF5C8(SCRIPTCONTEXT *ctx, MessageFormat *messageFormat, u8 messageNum, u32 canABSpeedUp);
+u32 ovFieldMain_GetTextFrameDelay(SCRIPTCONTEXT *ctx);
+void ovFieldMain_GetMsgBoxParameters(FieldSystem *fsys, MessageBox *messageBox);
+void ovFieldMain_GetMsgBoxParametersEx(FieldSystem *fsys, MessageFormat *messageFormat, MessageBox *messageBox);
+void ovFieldMain_CreateMessageBox(FieldSystem *fsys, MessageBox *messageBox);
+void ovFieldMain_ReadAndExpandMsgDataViaBuffer(MessageBox *messageBox, MSGDATA *messageData, u32 messageNum);
+void ovFieldMain_GetFormattedECMessage(MessageBox *messageBox, u16 messageBank, u16 messageNum, u16 word1, u16 word2);
+void ov01_021EF758(MessageBox *messageBox, FontID fontId, u32 textFrameDelay, BOOL canABSpeedUp, u32 a4);
+void ovFieldMain_AddTextPrinterParameterized(MessageBox *messageBox, FontID fontId);
+
+BOOL ScrCmd_NonNPCMsg(SCRIPTCONTEXT *ctx) {
+    u8 messageNum = ScriptReadByte(ctx);
+    ovFieldMain_ShowMessageInField(ctx, ctx->msgdata, messageNum);
+    return FALSE;
+}
+
+BOOL ScrCmd_GetStdMsgNaix(SCRIPTCONTEXT *ctx) {
+    u16 r5 = ScriptGetVar(ctx);
+    u16 *fileIdPtr = ScriptGetVarPointer(ctx);
+    if (r5 >= NELEMS(ov01_022067C8)) {
+        *fileIdPtr = 0;
+    } else {
+        *fileIdPtr = ov01_022067C8[r5];
+    }
+    return FALSE;
+}
+
+BOOL ScrCmd_NonNpcMsgExtern(SCRIPTCONTEXT *ctx) {
+    u16 fileId = ScriptGetVar(ctx);
+    u16 messageNum = ScriptGetVar(ctx);
+    MSGDATA *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, fileId, 32);
+    ovFieldMain_ShowMessageInField(ctx, messageData, messageNum);
+    DestroyMsgData(messageData);
+    return FALSE;
+}
+
+BOOL ScrCmd_MsgboxExtern(SCRIPTCONTEXT *ctx) {
+    u16 fileId = ScriptGetVar(ctx);
+    u16 messageNum = ScriptGetVar(ctx);
+    MSGDATA *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, fileId, 32);
+    ov01_021EF4DC(ctx, messageData, messageNum, TRUE, NULL);
+    DestroyMsgData(messageData);
+    SetupNativeScript(ctx, ov01_021EF348);
+    return TRUE;
+}
+
+BOOL ScrCmd_441(SCRIPTCONTEXT *ctx) {
+    u16 messageBank = ScriptReadHalfword(ctx);
+    u16 messageNum = ScriptReadHalfword(ctx);
+    u16 word1 = ScriptReadHalfword(ctx);
+    u16 word2 = ScriptReadHalfword(ctx);
+    ov01_021EF564(ctx, messageBank, messageNum, word1, (s16)word2, 0xFF);
+    return FALSE;
+}
+
+BOOL ScrCmd_442(SCRIPTCONTEXT *ctx) {
+    u16 messageBank = ScriptReadHalfword(ctx);
+    u16 messageNum = ScriptReadHalfword(ctx);
+    u16 word1 = ScriptReadHalfword(ctx);
+    u16 word2 = ScriptReadHalfword(ctx);
+    ov01_021EF564(ctx, messageBank, messageNum, word1, (s16)word2, TRUE);
+    SetupNativeScript(ctx, ov01_021EF348);
+    return TRUE;
+}
+
+BOOL ScrCmd_443(SCRIPTCONTEXT *ctx) {
+    u8 r1 = ScriptReadByte(ctx);
+    void *r2 = ctx->fsys->unkA0;
+    if (r2 == NULL) {
+        return FALSE;
+    }
+    u16 *r4 = r2 + 0x90 + r1 * 0x110;
+    if (r4[0] == 0xFFFF) {
+        MSGDATA *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, 723, 32);
+        ov01_021EF4DC(ctx, messageData, r4[1], TRUE, NULL);
+        DestroyMsgData(messageData);
+    } else {
+        ov01_021EF564(ctx, r4[0], r4[1], r4[2], (s16)r4[3], TRUE);
+    }
+    SetupNativeScript(ctx, ov01_021EF348);
+    return TRUE;
+}
+
+BOOL ScrCmd_444(SCRIPTCONTEXT *ctx) {
+    FieldSystem *fsys = ctx->fsys;
+    u8 baseMessageNum = ScriptReadByte(ctx);
+    u16 numEligiblePokemon = ScriptGetVar(ctx);
+    u16 r2 = ScriptReadHalfword(ctx);
+    u8 r3 = ScriptReadByte(ctx);
+    u8 numLegendaryPokemonSeen = 0;
+    MessageFormat *messageFormat = sub_0204B538(fsys->savedata, numEligiblePokemon, r2, r3, &numLegendaryPokemonSeen);
+    ov01_021EF5C8(ctx, messageFormat, baseMessageNum + numLegendaryPokemonSeen, TRUE);
+    MessageFormat_delete(messageFormat);
+    SetupNativeScript(ctx, ov01_021EF348);
+    return TRUE;
+}
+
+BOOL ScrCmd_527(SCRIPTCONTEXT *ctx) {
+    struct UnkStruct_Ov01_021EF4C4 unkStruct;
+    u16 messageNum = ScriptReadHalfword(ctx);
+    ov01_021EF4C4(&unkStruct, ctx);
+    unkStruct.fontId = 3;
+    ov01_021EF4DC(ctx, ctx->msgdata, messageNum, FALSE, &unkStruct);
+    SetupNativeScript(ctx, ov01_021EF348);
+    return TRUE;
+}
+
+BOOL ScrCmd_NPCMsg(SCRIPTCONTEXT *ctx) {
+    u8 messageNum = ScriptReadByte(ctx);
+    ov01_021EF4DC(ctx, ctx->msgdata, messageNum, TRUE, NULL);
+    SetupNativeScript(ctx, ov01_021EF348);
+    return TRUE;
+}
+
+BOOL ov01_021EF348(SCRIPTCONTEXT *ctx) {
+    u8 *textPrinterNumPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
+    return IsPrintFinished(*textPrinterNumPtr);
+}
+
+BOOL ScrCmd_NonNpcMsgVar(SCRIPTCONTEXT *ctx) {
+    u16 messageNum = ScriptGetVar(ctx);
+    ov01_021EF4DC(ctx, ctx->msgdata, (u8)messageNum, TRUE, NULL);
+    SetupNativeScript(ctx, ov01_021EF348);
+    return TRUE;
+}
+
+BOOL ScrCmd_592(SCRIPTCONTEXT *ctx) {
+    struct UnkStruct_Ov01_021EF4C4 unkStruct;
+    u16 messageNum = ScriptGetVar(ctx);
+    ov01_021EF4C4(&unkStruct, ctx);
+    unkStruct.unk1 = 1;
+    ov01_021EF4DC(ctx, ctx->msgdata, (u8)messageNum, TRUE, &unkStruct);
+    SetupNativeScript(ctx, ov01_021EF348);
+    return TRUE;
+}
+
+BOOL ScrCmd_NpcMsgVar(SCRIPTCONTEXT *ctx) {
+    u16 messageNum = ScriptGetVar(ctx);
+    ov01_021EF4DC(ctx, ctx->msgdata, (u8)messageNum, FALSE, NULL);
+    SetupNativeScript(ctx, ov01_021EF348);
+    return TRUE;
+}
+
+BOOL ScrCmd_GenderMsgbox(SCRIPTCONTEXT *ctx) {
+    void *unused = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
+    u8 messageNumMale = ScriptReadByte(ctx);
+    u8 messageNumFemale = ScriptReadByte(ctx);
+    u32 gender = PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys)));
+    if (gender != PLAYER_GENDER_MALE) {
+        ov01_021EF4DC(ctx, ctx->msgdata, messageNumFemale, TRUE, NULL);
+    } else {
+        ov01_021EF4DC(ctx, ctx->msgdata, messageNumMale, TRUE, NULL);
+    }
+    SetupNativeScript(ctx, ov01_021EF348);
+    return TRUE;
+}
+
+BOOL ScrCmd_455(SCRIPTCONTEXT *ctx) {
+    LocalMapObject **objPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_INTERACTED);
+    u8 mapObjectType = MapObject_GetType(*objPtr);
+    ov01_021EF4DC(ctx, ctx->msgdata, mapObjectType, TRUE, NULL);
+    SetupNativeScript(ctx, ov01_021EF348);
+    return TRUE;
+}
+
+void ov01_021EF4C4(struct UnkStruct_Ov01_021EF4C4 *unkStruct, SCRIPTCONTEXT *ctx) {
+    unkStruct->textFrameDelay = ovFieldMain_GetTextFrameDelay(ctx);
+    unkStruct->unk1 = 0;
+    unkStruct->fontId = 1;
+}
+
+void ov01_021EF4DC(SCRIPTCONTEXT *ctx, MSGDATA *messageData, u16 messageNum, u8 canABSpeedUp, struct UnkStruct_Ov01_021EF4C4 *unkStruct) {
+    MessageBox messageBox;
+    ovFieldMain_GetMsgBoxParameters(ctx->fsys, &messageBox);
+    ovFieldMain_CreateMessageBox(ctx->fsys, &messageBox);
+    ovFieldMain_ReadAndExpandMsgDataViaBuffer(&messageBox, messageData, messageNum);
+    u32 textFrameDelay;
+    u32 unk1;
+    u8 fontId;
+    if (unkStruct == NULL) {
+        textFrameDelay = ovFieldMain_GetTextFrameDelay(ctx);
+        unk1 = 0;
+        fontId = 1;
+    } else {
+        textFrameDelay = unkStruct->textFrameDelay;
+        unk1 = unkStruct->unk1;
+        fontId = unkStruct->fontId;
+    }
+    ov01_021EF758(&messageBox, fontId, textFrameDelay, canABSpeedUp, unk1);
+}
+
+void ovFieldMain_ShowMessageInField(SCRIPTCONTEXT *ctx, MSGDATA *messageData, u32 messageNum) {
+    MessageBox messageBox;
+    ovFieldMain_GetMsgBoxParameters(ctx->fsys, &messageBox);
+    ovFieldMain_CreateMessageBox(ctx->fsys, &messageBox);
+    ovFieldMain_ReadAndExpandMsgDataViaBuffer(&messageBox, messageData, messageNum);
+    ovFieldMain_AddTextPrinterParameterized(&messageBox, 1);
+}
+
+// word2 needs to be signed to match
+void ov01_021EF564(SCRIPTCONTEXT *ctx, u16 messageBank, u16 messageNum, u16 word1, s16 word2, u8 canABSpeedUp) {
+    MessageBox messageBox;
+    ovFieldMain_GetMsgBoxParameters(ctx->fsys, &messageBox);
+    ovFieldMain_CreateMessageBox(ctx->fsys, &messageBox);
+    ovFieldMain_GetFormattedECMessage(&messageBox, messageBank, messageNum, word1, (u16)word2);
+    if (canABSpeedUp != 0xFF) {
+        ov01_021EF758(&messageBox, 1, ovFieldMain_GetTextFrameDelay(ctx), canABSpeedUp, 0);
+    } else {
+        ovFieldMain_AddTextPrinterParameterized(&messageBox, 1);
+    }
+}
+
+void ov01_021EF5C8(SCRIPTCONTEXT *ctx, MessageFormat *messageFormat, u8 messageNum, u32 canABSpeedUp) {
+    MessageBox messageBox;
+    ovFieldMain_GetMsgBoxParametersEx(ctx->fsys, messageFormat, &messageBox);
+    ovFieldMain_CreateMessageBox(ctx->fsys, &messageBox);
+    ovFieldMain_ReadAndExpandMsgDataViaBuffer(&messageBox, ctx->msgdata, messageNum);
+    ov01_021EF758(&messageBox, 1, ovFieldMain_GetTextFrameDelay(ctx), canABSpeedUp, 0);
+}
+
+u32 ovFieldMain_GetTextFrameDelay(SCRIPTCONTEXT *ctx) {
+    return Options_GetTextFrameDelay(Sav2_PlayerData_GetOptionsAddr(ctx->fsys->savedata));
+}
+
+void ovFieldMain_GetMsgBoxParameters(FieldSystem *fsys, MessageBox *messageBox) {
+    messageBox->message = *(STRING **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
+    messageBox->buffer = *(STRING **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
+    messageBox->messageFormat = *(MessageFormat **)FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
+    messageBox->window = (WINDOW *)FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW);
+    messageBox->unk10 = (u8 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_08);
+    messageBox->textPrinterNumPtr = (u8 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
+}
+
+void ovFieldMain_GetMsgBoxParametersEx(FieldSystem *fsys, MessageFormat *messageFormat, MessageBox *messageBox) {
+    messageBox->message = *(STRING **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
+    messageBox->buffer = *(STRING **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
+    messageBox->messageFormat = messageFormat;
+    messageBox->window = (WINDOW *)FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW);
+    messageBox->unk10 = (u8 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_08);
+    messageBox->textPrinterNumPtr = (u8 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
+}
+
+void ovFieldMain_CreateMessageBox(FieldSystem *fsys, MessageBox *messageBox) {
+    if (*messageBox->unk10 == 0) {
+        sub_0205B514(fsys->bgConfig, messageBox->window, 3);
+        sub_0205B564(messageBox->window, Sav2_PlayerData_GetOptionsAddr(fsys->savedata));
+        *messageBox->unk10 = 1;
+        fsys->unkD2_6 = TRUE;
+    }
+    FillWindowPixelBuffer(messageBox->window, 15);
+}
+
+void ovFieldMain_ReadAndExpandMsgDataViaBuffer(MessageBox *messageBox, MSGDATA *messageData, u32 messageNum) {
+    ReadMsgDataIntoString(messageData, messageNum, messageBox->buffer);
+    StringExpandPlaceholders(messageBox->messageFormat, messageBox->message, messageBox->buffer);
+}
+
+void ovFieldMain_GetFormattedECMessage(MessageBox *messageBox, u16 messageBank, u16 messageNum, u16 word1, u16 word2) {
+    struct MailMessage mailMessage;
+    MailMsg_init(&mailMessage);
+    MailMsg_SetMsgBankAndNum(&mailMessage, messageBank, messageNum);
+    MailMsg_SetFieldI(&mailMessage, 0, word1);
+    MailMsg_SetFieldI(&mailMessage, 1, word2);
+    STRING *string = MailMsg_GetExpandedString(&mailMessage, 32);
+    StringCopy(messageBox->message, string);
+    String_dtor(string);
+}
+
+void ov01_021EF758(MessageBox *messageBox, FontID fontId, u32 textFrameDelay, BOOL canABSpeedUp, u32 a4) {
+    *messageBox->textPrinterNumPtr = sub_0205B5EC(messageBox->window, messageBox->message, fontId, textFrameDelay, (u8)canABSpeedUp, a4);
+}
+
+void ovFieldMain_AddTextPrinterParameterized(MessageBox *messageBox, FontID fontId) {
+    *messageBox->textPrinterNumPtr = AddTextPrinterParameterized(messageBox->window, fontId, messageBox->message, 0, 0, 0, NULL);
+}
+
