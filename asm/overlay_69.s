@@ -86,11 +86,11 @@ _021E5960:
 	ldr r2, [r5]
 	mov r0, #8
 	mov r1, #0x40
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	ldr r1, _021E5A28 ; =0x0000C080
 	str r0, [r5, r1]
 	ldr r0, [r5]
-	bl GF_Camera_Create
+	bl Camera_Create
 	ldr r1, _021E5A2C ; =0x0000C2DC
 	str r0, [r5, r1]
 	mov r0, #0
@@ -903,7 +903,7 @@ ov69_021E6080: ; 0x021E6080
 	bl sub_02023120
 	ldr r0, _021E60EC ; =0x0000C080
 	ldr r0, [r4, r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	bl sub_0201F63C
 	ldr r0, _021E60F0 ; =0x0000C010
 	ldr r0, [r4, r0]
@@ -2785,14 +2785,14 @@ ov69_021E6FE8: ; 0x021E6FE8
 	ldr r2, [r4, r2]
 	mov r0, #0
 	lsl r1, r1, #0xe
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 	ldr r1, _021E7060 ; =0x0000C2DC
 	mov r0, #0
 	ldr r1, [r4, r1]
 	bl sub_020233D8
 	ldr r0, _021E7060 ; =0x0000C2DC
 	ldr r0, [r4, r0]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	ldr r0, _021E7068 ; =0x0000C304
 	ldrh r1, [r4, r0]
 	cmp r1, #0
@@ -3239,7 +3239,7 @@ ov69_021E737C: ; 0x021E737C
 	add r5, r0, #0
 	ldr r0, _021E7400 ; =0x0000C2DC
 	ldr r0, [r5, r0]
-	bl GF_Camera_GetDistance
+	bl Camera_GetDistance
 	ldr r1, _021E7404 ; =0x0000C2E8
 	mov r4, #0
 	ldrh r2, [r5, r1]
@@ -3300,7 +3300,7 @@ _021E73EE:
 _021E73F4:
 	ldr r1, _021E7400 ; =0x0000C2DC
 	ldr r1, [r5, r1]
-	bl GF_Camera_SetDistance
+	bl Camera_SetDistance
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

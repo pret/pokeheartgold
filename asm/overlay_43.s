@@ -1206,7 +1206,7 @@ ov43_0222A87C: ; 0x0222A87C
 	add r4, r1, #0
 	add r5, r0, #0
 	add r0, r4, #0
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r5, #0x50]
 	ldr r2, _0222A8A4 ; =0x0000030B
 	mov r0, #0
@@ -1231,7 +1231,7 @@ ov43_0222A8A8: ; 0x0222A8A8
 	ldr r0, [r4, #0x54]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x50]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	pop {r4, pc}
 	thumb_func_end ov43_0222A8A8
 

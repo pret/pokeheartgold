@@ -918,7 +918,7 @@ ov64_021E607C: ; 0x021E607C
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	mov r0, #0x3b
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	mov r1, #0x49
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -986,7 +986,7 @@ ov64_021E6118: ; 0x021E6118
 	mov r0, #0x49
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	mov r0, #0x12
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]

@@ -566,7 +566,7 @@ _02258C7E:
 	cmp r6, #9
 	blt _02258C7E
 	add r0, r7, #0
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	ldr r1, [sp]
 	str r0, [r1, #0x24]
 	mov r0, #1
@@ -600,7 +600,7 @@ _02258CC8:
 	cmp r4, #9
 	blt _02258CC8
 	ldr r0, [r6, #0x24]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r6, #0x28]
 	bl String_dtor
 	ldr r0, [r6, #0x2c]
@@ -1460,7 +1460,7 @@ _02259392:
 	add r0, r4, #0
 	add r0, #8
 	mov r1, #1
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
 	thumb_func_end ov47_02259384

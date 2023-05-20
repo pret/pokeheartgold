@@ -2502,7 +2502,7 @@ ov17_02202F0C: ; 0x02202F0C
 	mov r0, #0x10
 	ldr r2, [r6]
 	add r1, r0, #0
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	add r1, r6, #0
 	add r1, #0xa0
 	str r0, [r1]
@@ -2565,7 +2565,7 @@ _02202F84:
 	add r0, r6, #0
 	add r0, #0xa0
 	ldr r0, [r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r6, #0x9c
 	ldr r0, [r6]
 	bl DestroyMsgData

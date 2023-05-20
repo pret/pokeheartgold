@@ -62,7 +62,7 @@ _021E80D6:
 	bl NARC_ctor
 	add r7, r0, #0
 	mov r0, #0x27
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r4, #0x10]
 	mov r0, #0
 	mov r1, #0x1b
@@ -277,7 +277,7 @@ _021E82FC:
 	ldr r0, [r6, #0x14]
 	bl DestroyMsgData
 	ldr r0, [r6, #0x10]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r0, r6, #0
 	bl ov52_021E8568
 	ldr r0, [sp]

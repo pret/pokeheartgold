@@ -12,7 +12,7 @@ struct CameraTranslationPathTemplate {
 };
 
 typedef struct GFCameraTranslationWrapper {
-    GF_Camera *camera;
+    Camera *camera;
     u8 duration;
     u8 step;
     u8 mode;
@@ -22,7 +22,7 @@ typedef struct GFCameraTranslationWrapper {
     SysTask *task; // returned from CreateSysTask
 } GFCameraTranslationWrapper;
 
-GFCameraTranslationWrapper *CreateCameraTranslationWrapper(HeapID heapId, GF_Camera *camera);
+GFCameraTranslationWrapper *CreateCameraTranslationWrapper(HeapID heapId, Camera *camera);
 void DeleteCameraTranslationWrapper(GFCameraTranslationWrapper *wrapper);
 void SetCameraTranslationPath(GFCameraTranslationWrapper *wrapper, struct CameraTranslationPathTemplate *template, int duration);
 u8 IsCameraTranslationFinished(GFCameraTranslationWrapper *wrapper);

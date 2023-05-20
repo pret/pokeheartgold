@@ -117,7 +117,7 @@ struct FieldSystem {
     FieldEnvSubUnk18 *unk18;
     int unk1C;
     Location *location;
-    GF_Camera *camera;
+    Camera *camera;
     void *unk28;
     FsysUnkSub2C *unk2C;
     MAPMATRIX *mapMatrix;

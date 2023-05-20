@@ -4529,7 +4529,7 @@ ov112_021E7C18: ; 0x021E7C18
 	str r0, [r4, r1]
 	mov r0, #0x10
 	mov r1, #0x20
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	ldr r1, _021E7C64 ; =0x0001E448
 	str r0, [r4, r1]
 	mov r0, #0x19
@@ -4561,7 +4561,7 @@ ov112_021E7C6C: ; 0x021E7C6C
 	bl DestroyMsgData
 	ldr r0, _021E7CA0 ; =0x0001E448
 	ldr r0, [r4, r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	pop {r4, pc}
 	nop
 _021E7C94: .word 0x0001E454
@@ -8742,7 +8742,7 @@ ov112_021EA17C: ; 0x021EA17C
 	ldr r0, _021EA190 ; =0x0001EA88
 	ldr r1, _021EA194 ; =0x000003E2
 	add r0, r4, r0
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	ldr r1, _021EA198 ; =0x0001EC4C
 	str r0, [r4, r1]
 	pop {r4, pc}
@@ -21350,7 +21350,7 @@ ov112_021F03BC: ; 0x021F03BC
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0x68]
 	ldr r0, [r4]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r4, #0x6c]
 	ldr r1, [r4]
 	mov r0, #0xb
@@ -21416,7 +21416,7 @@ ov112_021F051C: ; 0x021F051C
 	ldr r0, [r7, #0x68]
 	bl DestroyMsgData
 	ldr r0, [r7, #0x6c]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r7, #0x70]
 	bl String_dtor
 	add r0, r7, #0
@@ -23157,7 +23157,7 @@ _021F129C:
 	ldr r2, [r5, #4]
 	mov r0, #0xd
 	mov r1, #0x20
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	add r4, r5, #0
 	ldr r6, _021F1320 ; =ov112_021FF350
 	str r0, [r5, #0x58]
@@ -23212,7 +23212,7 @@ _021F132E:
 	cmp r4, #4
 	blt _021F132E
 	ldr r0, [r6, #0x58]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r6, #0x5c]
 	bl DestroyMsgData
 	ldr r0, [r6, #0x60]

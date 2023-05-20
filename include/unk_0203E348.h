@@ -18,7 +18,7 @@ struct BerryPotsWork;
 struct UnownReportWork;
 struct GracideaWork;
 
-struct PartyMenuAppData {
+typedef struct PartyMenuAppData {
     PARTY *party;
     Bag *bag;
     MAILBOX *mailbox;
@@ -33,7 +33,7 @@ struct PartyMenuAppData {
     u8 unk_31;
     u8 unk_32;
     u8 filler_33[0x11];
-};
+} PartyMenuAppData;
 
 struct ChooseStarterAppArgs {
     int cursorPos;
@@ -41,11 +41,11 @@ struct ChooseStarterAppArgs {
     POKEMON starters[3];
 };
 
-struct DressupSomethingAppData {
-    SaveDressupData *dressupData;
+typedef struct DressupPokemonAppData {
+    SaveDressupData *saveDressupData;
     int unk_4;
     int unk_8;
-};
+} DressupPokemonAppData;
 
 struct UnkStruct_ScrCmd408 {
     SAVEDATA *saveData;
@@ -53,19 +53,36 @@ struct UnkStruct_ScrCmd408 {
     u16 unk_6;
 };
 
-struct UnkStruct_ScrCmd158 {
+struct UnkStruct_ScrCmd230 {
+    u8 filler_00[0x30];
+    u8 unk_30[6];
+};
+
+struct UnkStruct_ScrCmd627 {
+    void *unk_0;
+    OPTIONS *options;
+    SAVEDATA *saveData;
+    void *unk_0C;
+    u8 filler_10[0x8];
+    u32 mapId;
+    void *unk_1C;
+    u8 unk_20;
+    u8 filler_21[0x7];
+};
+
+typedef struct PCBoxAppData {
     SAVEDATA *saveData;
     void *fsysUnk10C;
     int unk8;
-};
+} PCBoxAppData;
 
-struct ScratchCardWork {
+typedef struct ScratchCardAppData {
     SAVEDATA *saveData;
     u8 filler_04[4];
     u16 unk_08[3];
     u16 unk_0E[3];
     u8 filler_14[4];
-};
+} ScratchCardAppData;
 
 struct UseMailWork *CreateUseMailWork(FieldSystem *fsys, int kind, int mailId, HeapID heapId);
 struct ApricornBoxWork *CreateApricornBoxWork(FieldSystem *fsys, int a1);
@@ -73,9 +90,9 @@ struct PalPadWork *CreatePalPadWork(FieldSystem *fsys, SAVEDATA *saveData, HeapI
 struct BerryPotsWork *CreateBerryPotsWork(FieldSystem *fsys);
 struct UnownReportWork *CreateUnownReportWork(FieldSystem *fsys);
 struct GracideaWork *sub_0203FAE8(FieldSystem *fsys, HeapID heapId, u16 itemId);
-struct PartyMenuAppData *sub_0203E580(HeapID heapId, FieldSystem *fsys);
-void *sub_0203E5A4(HeapID heapId, FieldSystem *fsys);
-void *sub_0203E6D4(TaskManager *taskManager, HeapID heapId);
+PartyMenuAppData *sub_0203E580(HeapID heapId, FieldSystem *fsys); //todo: party select screen
+PartyMenuAppData *sub_0203E5A4(HeapID heapId, FieldSystem *fsys); //todo: party trade screen
+PartyMenuAppData *sub_0203E6D4(TaskManager *taskManager, HeapID heapId); //todo: union party select screen
 int sub_0203E5C8(struct PartyMenuAppData *partyWork);
 int sub_0203E5F8(struct PartyMenuAppData *partyWork);
 void sub_0203F570(FieldSystem *fsys, SAVEDATA *saveData);
@@ -86,12 +103,12 @@ void Save_CurrentLocation_BackUp(SAVEDATA *saveData);
 u16 sub_0203E864(void *a0);
 u16 sub_0203E600(void *a0);
 void *sub_0203E7F4(HeapID heapId, FieldSystem *fsys, u8 a2, u16 a3);
-u32 sub_0203ED80(FieldSystem *fsys, u32 a1, u16 *a2);
+u32 *sub_0203ED80(FieldSystem *fsys, u32 a1, u16 *a2);
 void *sub_0203FB94(HeapID heapId, FieldSystem *fsys, u16 a2, u16 a3);
 void sub_0203F198(TaskManager *taskManager, u16 *ret_p, SAVEDATA *saveData, u16 a3, u16 a4);
-void sub_0203F204(FieldSystem *fsys, struct DressupSomethingAppData *data);
+void sub_0203F204(FieldSystem *fsys, DressupPokemonAppData *dressupData);
 void sub_0203F0A8(FieldSystem *fsys, struct UnkStruct_ScrCmd408 *unk);
-void sub_0203E868(FieldSystem *fsys, struct UnkStruct_ScrCmd158 *unk);
+void sub_0203E868(FieldSystem *fsys, PCBoxAppData *pcBoxData);
 void sub_0203F4A8(TaskManager *taskManager);
 void sub_0203F4C8(FieldSystem *fsys);
 void *sub_0203F4F8(FieldSystem *fsys);
@@ -108,8 +125,8 @@ static inline void InitUnkStructScrCmd408(struct UnkStruct_ScrCmd408 *data, u16 
     data->saveData = ctx->fsys->savedata;
 }
 
-static inline struct UnkStruct_ScrCmd158 *NewUnkStructScrCmd158(SCRIPTCONTEXT *ctx) {
-    struct UnkStruct_ScrCmd158 *ret = AllocFromHeap(11, sizeof(struct UnkStruct_ScrCmd158));
+static inline PCBoxAppData *PCBoxAppData_new(SCRIPTCONTEXT *ctx) {
+    PCBoxAppData *ret = AllocFromHeap(11, sizeof(PCBoxAppData));
     ret->saveData = ctx->fsys->savedata;
     ret->unk8 = ScriptReadByte(ctx);
     ret->fsysUnk10C = &ctx->fsys->unk_10C;
@@ -130,7 +147,7 @@ void *sub_0203F074(FieldSystem *fsys, HeapID heapId);
 void *sub_0203FA8C(FieldSystem *fsys, HeapID heapId, u16 a2);
 void *sub_0203E5D0(HeapID heapId, FieldSystem *fsys, u16 a2);
 void *sub_0203FAB4(FieldSystem *fsys, u8 a1, u8 a2, u16 a3, HeapID heapId);
-void *ScratchOffCards_Create(FieldSystem *fsys, HeapID heapId);
+ScratchCardAppData *ScratchOffCards_Create(FieldSystem *fsys, HeapID heapId);
 void sub_0203FC14(FieldSystem *fsys, u16 a1, u16 a2);
 void *PhoneUI_new(FieldSystem *fsys);
 void *sub_0203EEE4(FieldSystem *fsys);

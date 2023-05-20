@@ -42,8 +42,8 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
-.public ScrStrBufs_new
-.public ScrStrBufs_delete
+.public MessageFormat_new
+.public MessageFormat_delete
 .public MessagePrinter_new
 .public MessagePrinter_delete
 .public sub_0200CF18
@@ -63,7 +63,7 @@
 .public sub_0200E640
 .public DrawFrameAndWindow2
 .public sub_0200EB80
-.public sub_0200F0AC
+.public WaitingIcon_new
 .public sub_0200F450
 .public SetMasterBrightnessNeutral
 .public sub_0200FBF4

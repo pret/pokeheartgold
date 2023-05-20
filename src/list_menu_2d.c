@@ -1,23 +1,23 @@
-#include "list_menu_2.h"
+#include "list_menu_2d.h"
 #include "font.h"
 #include "system.h"
 #include "text.h"
 #include "unk_02005D10.h"
-#include "unk_0200E398.h"
+#include "render_window.h"
 #include "constants/sndseq.h"
 #include "msgdata/msg/msg_0191.h"
 
-static struct ListMenu2 *Create2dMenuInternalEx(const struct ListMenu2Template *template, u8 x, u8 y, u8 initialSelection, u8 heapId, int cancelKey);
-static struct ListMenu2 *Create2dMenuInternal(const struct ListMenu2Template *template, u8 x, u8 y, u8 initialSelection, u8 heapId, int cancelKey);
-static BOOL TryMove2dMenuCursor(struct ListMenu2 *menu, int direction, u16 seqno);
-static BOOL TryMove2dMenuCursorInternal(struct ListMenu2 *menu, int direction);
-static u8 Get2dMenuMaxItemWidth(struct ListMenu2 *listMenu);
-static void Print2dMenuItemTexts(struct ListMenu2 *listMenu);
-static void Draw2dMenuCursor(struct ListMenu2 *listMenu);
-static void Get2dMenuSelectionCoords(struct ListMenu2 *listMenu, u8 *x, u8 *y, u8 selectedIdx);
+static struct ListMenu2D *Create2dMenuInternalEx(const struct ListMenu2DTemplate *template, u8 x, u8 y, u8 initialSelection, u8 heapId, int cancelKey);
+static struct ListMenu2D *Create2dMenuInternal(const struct ListMenu2DTemplate *template, u8 x, u8 y, u8 initialSelection, u8 heapId, int cancelKey);
+static BOOL TryMove2dMenuCursor(struct ListMenu2D *menu, int direction, u16 seqno);
+static BOOL TryMove2dMenuCursorInternal(struct ListMenu2D *menu, int direction);
+static u8 Get2dMenuMaxItemWidth(struct ListMenu2D *listMenu);
+static void Print2dMenuItemTexts(struct ListMenu2D *listMenu);
+static void Draw2dMenuCursor(struct ListMenu2D *listMenu);
+static void Get2dMenuSelectionCoords(struct ListMenu2D *listMenu, u8 *x, u8 *y, u8 selectedIdx);
 
-static struct ListMenu2 *Create2dMenuInternalEx(const struct ListMenu2Template *template, u8 x, u8 y, u8 initialSelection, u8 heapId, int cancelKey) {
-    struct ListMenu2 *ret = AllocFromHeap(heapId, sizeof(struct ListMenu2));
+static struct ListMenu2D *Create2dMenuInternalEx(const struct ListMenu2DTemplate *template, u8 x, u8 y, u8 initialSelection, u8 heapId, int cancelKey) {
+    struct ListMenu2D *ret = AllocFromHeap(heapId, sizeof(struct ListMenu2D));
     ret->template = *template;
     ret->cursor = ListMenuCursorNew(heapId);
     ret->cancelKey = cancelKey;
@@ -33,17 +33,17 @@ static struct ListMenu2 *Create2dMenuInternalEx(const struct ListMenu2Template *
     return ret;
 }
 
-static struct ListMenu2 *Create2dMenuInternal(const struct ListMenu2Template *template, u8 x, u8 y, u8 initialSelection, u8 heapId, int cancelKey) {
-    struct ListMenu2 *ret = Create2dMenuInternalEx(template, x, y, initialSelection, heapId, cancelKey);
+static struct ListMenu2D *Create2dMenuInternal(const struct ListMenu2DTemplate *template, u8 x, u8 y, u8 initialSelection, u8 heapId, int cancelKey) {
+    struct ListMenu2D *ret = Create2dMenuInternalEx(template, x, y, initialSelection, heapId, cancelKey);
     CopyWindowToVram(ret->template.window);
     return ret;
 }
 
-struct ListMenu2 *Create2dMenu(const struct ListMenu2Template *template, u8 initialSelection, u8 heapId) {
+struct ListMenu2D *Create2dMenu(const struct ListMenu2DTemplate *template, u8 initialSelection, u8 heapId) {
     return Create2dMenuInternal(template, GetFontAttribute(template->fontId, 0), 0, initialSelection, heapId, PAD_BUTTON_B);
 }
 
-void Delete2dMenu(struct ListMenu2 *menu, u8 *ret_p) {
+void Delete2dMenu(struct ListMenu2D *menu, u8 *ret_p) {
     if (ret_p != NULL) {
         *ret_p = menu->selectedIndex;
     }
@@ -51,7 +51,7 @@ void Delete2dMenu(struct ListMenu2 *menu, u8 *ret_p) {
     FreeToHeapExplicit(menu->heapId, menu);
 }
 
-int Handle2dMenuInput(struct ListMenu2 *menu) {
+int Handle2dMenuInput(struct ListMenu2D *menu) {
     menu->scheduledScroll = 0;
     if (gSystem.newKeys & PAD_BUTTON_A) {
         PlaySE(SEQ_SE_DP_SELECT);
@@ -84,11 +84,11 @@ int Handle2dMenuInput(struct ListMenu2 *menu) {
     }
 }
 
-u8 Get2dMenuSelection(struct ListMenu2 *menu) {
+u8 Get2dMenuSelection(struct ListMenu2D *menu) {
     return menu->selectedIndex;
 }
 
-static BOOL TryMove2dMenuCursor(struct ListMenu2 *menu, int direction, u16 seqno) {
+static BOOL TryMove2dMenuCursor(struct ListMenu2D *menu, int direction, u16 seqno) {
     u8 selection = menu->selectedIndex;
     u8 x, y;
     u8 fillval;
@@ -103,7 +103,7 @@ static BOOL TryMove2dMenuCursor(struct ListMenu2 *menu, int direction, u16 seqno
     return TRUE;
 }
 
-static BOOL TryMove2dMenuCursorInternal(struct ListMenu2 *menu, int direction) {
+static BOOL TryMove2dMenuCursorInternal(struct ListMenu2D *menu, int direction) {
     s8 newPos;
     if (direction == 0) {
         if (menu->template.itemsHigh <= 1) {
@@ -157,7 +157,7 @@ static BOOL TryMove2dMenuCursorInternal(struct ListMenu2 *menu, int direction) {
     return TRUE;
 }
 
-static u8 Get2dMenuMaxItemWidth(struct ListMenu2 *listMenu) {
+static u8 Get2dMenuMaxItemWidth(struct ListMenu2D *listMenu) {
     u8 i;
     u8 ret = 0, cur;
 
@@ -170,7 +170,7 @@ static u8 Get2dMenuMaxItemWidth(struct ListMenu2 *listMenu) {
     return ret;
 }
 
-static void Print2dMenuItemTexts(struct ListMenu2 *listMenu) {
+static void Print2dMenuItemTexts(struct ListMenu2D *listMenu) {
     u8 i, j;
     u8 dx;
     u8 x;
@@ -193,7 +193,7 @@ static void Print2dMenuItemTexts(struct ListMenu2 *listMenu) {
     }
 }
 
-static void Draw2dMenuCursor(struct ListMenu2 *listMenu) {
+static void Draw2dMenuCursor(struct ListMenu2D *listMenu) {
     if (listMenu->template.cursorType != 1) {
         u8 x, y;
         Get2dMenuSelectionCoords(listMenu, &x, &y, listMenu->selectedIndex);
@@ -201,13 +201,13 @@ static void Draw2dMenuCursor(struct ListMenu2 *listMenu) {
     }
 }
 
-static void Get2dMenuSelectionCoords(struct ListMenu2 *listMenu, u8 *x, u8 *y, u8 selectedIdx) {
+static void Get2dMenuSelectionCoords(struct ListMenu2D *listMenu, u8 *x, u8 *y, u8 selectedIdx) {
     *x = (selectedIdx / listMenu->template.itemsHigh) * (listMenu->maxItemWidth + listMenu->maxGlyphWidth * 2);
     *y = listMenu->y + (selectedIdx % listMenu->template.itemsHigh) * (listMenu->maxGlyphHeight + listMenu->template.yTop);
 }
 
-struct ListMenu2 *CreateYesNoMenu(BGCONFIG *bgConfig, const WINDOWTEMPLATE *windowTemplate, u16 tileNum, u8 paletteNum, u8 initialSelection, HeapID heapId) {
-    struct ListMenu2Template menuTemplate;
+struct ListMenu2D *CreateYesNoMenu(BGCONFIG *bgConfig, const WINDOWTEMPLATE *windowTemplate, u16 tileNum, u8 paletteNum, u8 initialSelection, HeapID heapId) {
+    struct ListMenu2DTemplate menuTemplate;
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0191_bin, heapId);
     LISTMENUITEM *items = ListMenuItems_ctor(2, heapId);
     ListMenuItems_AppendFromMsgData(items, msgData, msg_0191_00042, 0);
@@ -226,11 +226,11 @@ struct ListMenu2 *CreateYesNoMenu(BGCONFIG *bgConfig, const WINDOWTEMPLATE *wind
     return Create2dMenuInternal(&menuTemplate, 8, 0, initialSelection, heapId, PAD_BUTTON_B);
 }
 
-struct ListMenu2 *Std_CreateYesNoMenu(BGCONFIG *bgConfig, const WINDOWTEMPLATE *windowTemplate, u16 tileNum, u8 paletteNum, HeapID heapId) {
+struct ListMenu2D *Std_CreateYesNoMenu(BGCONFIG *bgConfig, const WINDOWTEMPLATE *windowTemplate, u16 tileNum, u8 paletteNum, HeapID heapId) {
     return CreateYesNoMenu(bgConfig, windowTemplate, tileNum, paletteNum, 0, heapId);
 }
 
-int Handle2dMenuInput_DeleteOnFinish(struct ListMenu2 *menu, HeapID heapId) {
+int Handle2dMenuInput_DeleteOnFinish(struct ListMenu2D *menu, HeapID heapId) {
     int ret = Handle2dMenuInput(menu);
     if (ret != LIST_NOTHING_CHOSEN) {
         Clear2dMenuWindowAndDelete(menu, heapId);
@@ -238,7 +238,7 @@ int Handle2dMenuInput_DeleteOnFinish(struct ListMenu2 *menu, HeapID heapId) {
     return ret;
 }
 
-void Clear2dMenuWindowAndDelete(struct ListMenu2 *menu, HeapID heapId) {
+void Clear2dMenuWindowAndDelete(struct ListMenu2D *menu, HeapID heapId) {
     sub_0200E5D4(menu->template.window, FALSE);
     RemoveWindow(menu->template.window);
     FreeToHeapExplicit(heapId, menu->template.window);

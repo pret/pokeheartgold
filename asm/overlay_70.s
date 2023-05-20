@@ -1610,7 +1610,7 @@ _02238446:
 	mov r0, #0xb
 	mov r1, #0x40
 	mov r2, #0x3d
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	ldr r1, _0223859C ; =0x00000B9C
 	ldr r2, _022385A0 ; =0x00000307
 	str r0, [r4, r1]
@@ -1882,7 +1882,7 @@ ov70_022386F4: ; 0x022386F4
 	bl DestroyMsgData
 	ldr r0, _022387A0 ; =0x00000B9C
 	ldr r0, [r4, r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r0, r4, #0
 	bl ov70_0223887C
 	bl sub_02034DE0
@@ -2927,7 +2927,7 @@ ov70_02238F64: ; 0x02238F64
 	ldr r0, _02238F78 ; =0x00000F18
 	mov r1, #1
 	add r0, r4, r0
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	ldr r1, _02238F7C ; =0x000011BC
 	str r0, [r4, r1]
 	pop {r4, pc}
@@ -6761,7 +6761,7 @@ ov70_0223AE98: ; 0x0223AE98
 	str r0, [r5, r1]
 	sub r1, #0x20
 	ldr r0, [r5, r1]
-	bl ScrStrBufs_ResetBuffers
+	bl MessageFormat_ResetBuffers
 	ldr r0, _0223AF1C ; =0x0000011E
 	ldrb r2, [r4, r0]
 	cmp r2, #0

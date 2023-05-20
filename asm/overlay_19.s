@@ -491,7 +491,7 @@ ov19_02259C68: ; 0x02259C68
 	ldr r2, [r6]
 	mov r0, #6
 	mov r1, #0x16
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	str r0, [r6, #0x28]
 	ldr r1, [r6]
 	mov r0, #0x80
@@ -534,7 +534,7 @@ _02259CC4:
 	ldr r0, [r6, #0x2c]
 	bl String_dtor
 	ldr r0, [r6, #0x28]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r6, #0x24]
 	bl DestroyMsgData
 	mov r0, #4

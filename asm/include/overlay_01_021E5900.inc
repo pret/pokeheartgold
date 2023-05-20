@@ -41,7 +41,7 @@
 .public GX_BothDispOn
 .public GX_SwapDisplay
 .public sub_02023154
-.public GF_Camera_GetAngle
+.public Camera_GetAngle
 .public sub_02023738
 .public sub_02023778
 .public sub_020237B0

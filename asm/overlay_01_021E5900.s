@@ -1083,7 +1083,7 @@ ov01_021E6220: ; 0x021E6220
 	bl ov01_021F3C9C
 	ldr r1, [r4, #0x24]
 	add r0, sp, #0
-	bl GF_Camera_GetAngle
+	bl Camera_GetAngle
 	add r2, sp, #0
 	ldrh r2, [r2]
 	mov r0, #0x47

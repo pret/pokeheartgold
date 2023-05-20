@@ -1246,7 +1246,7 @@ ov02_0224650C: ; 0x0224650C
 	str r6, [r4]
 	add r0, r6, #0
 	str r5, [r4, #4]
-	bl GF_Camera_Create
+	bl Camera_Create
 	str r0, [r4, #0x18]
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
@@ -1342,7 +1342,7 @@ _022465D8:
 	bl sub_02023128
 	ldr r1, [r5, #0x18]
 	add r0, sp, #0
-	bl GF_Camera_GetTarget
+	bl Camera_GetTarget
 	add r4, sp, #0
 	add r3, r5, #0
 	add r3, #0x20
@@ -1362,7 +1362,7 @@ _022465D8:
 	add r0, r2, #0
 	bl sub_02023214
 	ldr r0, [r5, #0x18]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -1377,7 +1377,7 @@ ov02_0224662C: ; 0x0224662C
 	ldr r0, [r0, #0x24]
 	bx r3
 	.balign 4, 0
-_02246638: .word GF_Camera_RegisterToStaticPtr
+_02246638: .word Camera_RegisterToStaticPtr
 	thumb_func_end ov02_0224662C
 
 	thumb_func_start ov02_0224663C
@@ -16782,7 +16782,7 @@ ov02_0224D9C0: ; 0x0224D9C0
 	bl ov02_0224D044
 	ldr r1, [r5, #0x24]
 	add r0, sp, #0x10
-	bl GF_Camera_GetTarget
+	bl Camera_GetTarget
 	add r3, sp, #0x10
 	add r2, r4, #0
 	ldmia r3!, {r0, r1}
@@ -16898,7 +16898,7 @@ ov02_0224DAA4: ; 0x0224DAA4
 	bl ov02_0224CFD8
 	ldr r1, [r5, #0x24]
 	add r0, sp, #0x10
-	bl GF_Camera_GetTarget
+	bl Camera_GetTarget
 	add r3, sp, #0x10
 	add r2, r4, #0
 	ldmia r3!, {r0, r1}
@@ -17039,7 +17039,7 @@ _0224DBB0:
 	add r0, #0xe5
 	ldr r1, [r5, #0x24]
 	add r0, r4, r0
-	bl GF_Camera_ShiftBy
+	bl Camera_ShiftBy
 	b _0224DC1C
 _0224DBF4:
 	add r0, r4, #0
@@ -21415,7 +21415,7 @@ FollowPoke_ExpandInteractionMessage: ; 0x0224FC8C
 	bl NewMsgDataFromNarc
 	add r5, r0, #0
 	add r0, r4, #0
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
@@ -21431,7 +21431,7 @@ FollowPoke_ExpandInteractionMessage: ; 0x0224FC8C
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r0, r5, #0
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
@@ -21453,7 +21453,7 @@ ov02_0224FCE0: ; 0x0224FCE0
 	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	add r0, r4, #0
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	add r4, r0, #0
 	mov r0, #2
 	tst r0, r6
@@ -21515,7 +21515,7 @@ _0224FD72:
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r0, r7, #0
 	bl DestroyMsgData
 	add sp, #8
@@ -23205,7 +23205,7 @@ ov02_02250A60: ; 0x02250A60
 	str r0, [r4, #0x24]
 	ldr r1, [r5, #0x24]
 	add r0, sp, #0xc
-	bl GF_Camera_GetTarget
+	bl Camera_GetTarget
 	add r3, sp, #0xc
 	add r2, r4, #0
 	ldmia r3!, {r0, r1}
@@ -24440,41 +24440,41 @@ _02251440:
 	ldr r0, [r4, r0]
 	ldr r1, [r5, #0x24]
 	ldr r0, [r0, r6]
-	bl GF_Camera_SetDistance
+	bl Camera_SetDistance
 	mov r0, #0x4b
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	ldr r1, [r5, #0x24]
 	add r0, r0, r6
 	add r0, r0, #4
-	bl GF_Camera_SetAngle
+	bl Camera_SetAngle
 	mov r0, #0x4b
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	ldr r1, [r5, #0x24]
 	add r0, r0, r6
 	ldrh r0, [r0, #0xe]
-	bl GF_Camera_SetPerspectiveAngle
+	bl Camera_SetPerspectiveAngle
 	ldr r0, _022514C0 ; =0x000004B4
 	ldr r1, [r4, r0]
 	mov r0, #0xc
 	mul r0, r7
 	add r0, r1, r0
 	ldr r1, [r5, #0x24]
-	bl GF_Camera_ShiftBy
+	bl Camera_ShiftBy
 	mov r0, #0x96
 	ldr r1, _022514C4 ; =0x006A4000
 	ldr r2, [r5, #0x24]
 	lsl r0, r0, #0xc
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 	ldr r1, [r5, #0x24]
 	add r0, sp, #8
-	bl GF_Camera_GetTarget
+	bl Camera_GetTarget
 	ldr r0, [r5, #0x24]
-	bl GF_Camera_GetBindTarget
+	bl Camera_GetBindTarget
 	ldr r1, [r5, #0x24]
 	add r0, sp, #0
-	bl GF_Camera_GetAngle
+	bl Camera_GetAngle
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -24585,12 +24585,12 @@ ov02_02251568: ; 0x02251568
 	beq _0225159C
 	ldr r1, [r4, #0x24]
 	add r0, sp, #8
-	bl GF_Camera_GetTarget
+	bl Camera_GetTarget
 	ldr r0, [r4, #0x24]
-	bl GF_Camera_GetBindTarget
+	bl Camera_GetBindTarget
 	ldr r1, [r4, #0x24]
 	add r0, sp, #0
-	bl GF_Camera_GetAngle
+	bl Camera_GetAngle
 	add sp, #0x14
 	mov r0, #1
 	pop {r3, r4, pc}
@@ -25521,11 +25521,11 @@ ov02_02251CF0: ; 0x02251CF0
 	pop {r3, r4, r5, pc}
 _02251D1A:
 	ldr r0, [r5, #0x24]
-	bl GF_Camera_GetDistance
+	bl Camera_GetDistance
 	str r0, [r4]
 	ldr r1, [r5, #0x24]
 	add r0, sp, #0
-	bl GF_Camera_GetAngle
+	bl Camera_GetAngle
 	add r0, sp, #0
 	ldrh r1, [r0]
 	strh r1, [r4, #4]
@@ -25537,7 +25537,7 @@ _02251D1A:
 	strh r0, [r4, #0xa]
 	ldr r1, [r5, #0x24]
 	add r0, sp, #8
-	bl GF_Camera_GetTarget
+	bl Camera_GetTarget
 	add r3, sp, #8
 	ldmia r3!, {r0, r1}
 	add r2, sp, #0x14
@@ -25545,14 +25545,14 @@ _02251D1A:
 	ldr r0, [r3]
 	str r0, [r2]
 	ldr r0, [r5, #0x24]
-	bl GF_Camera_GetBindTarget
+	bl Camera_GetBindTarget
 	add r2, r4, #0
 	add r1, r0, #0
 	add r0, sp, #0x14
 	add r2, #0xc
 	bl VEC_Subtract
 	ldr r0, [r5, #0x24]
-	bl GF_Camera_GetPerspectiveAngle
+	bl Camera_GetPerspectiveAngle
 	strh r0, [r4, #0x18]
 	ldr r0, [r5, #0x24]
 	bl sub_02023654
@@ -25562,21 +25562,21 @@ _02251D1A:
 	str r0, [r4, #0x20]
 	ldr r0, _02251DB0 ; =0x0029AEC1
 	ldr r1, [r5, #0x24]
-	bl GF_Camera_SetDistance
+	bl Camera_SetDistance
 	ldr r0, _02251DB4 ; =ov02_02253C74
 	ldr r1, [r5, #0x24]
-	bl GF_Camera_SetAngle
+	bl Camera_SetAngle
 	ldr r0, _02251DB8 ; =0x000005C1
 	ldr r1, [r5, #0x24]
-	bl GF_Camera_SetPerspectiveAngle
+	bl Camera_SetPerspectiveAngle
 	ldr r0, _02251DBC ; =ov02_02253BC4
 	ldr r1, [r5, #0x24]
-	bl GF_Camera_ShiftBy
+	bl Camera_ShiftBy
 	mov r0, #0x96
 	ldr r1, _02251DC0 ; =0x006A4000
 	ldr r2, [r5, #0x24]
 	lsl r0, r0, #0xc
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 	add sp, #0x20
 	pop {r3, r4, r5, pc}
 	nop
@@ -25672,7 +25672,7 @@ ov02_02251E44: ; 0x02251E44
 	ldr r0, [r5, #0x1c]
 	ldr r1, [r5, #0x20]
 	ldr r2, [r4, #0x24]
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _02251E70:
@@ -26805,7 +26805,7 @@ _02252716:
 	str r0, [r2]
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #0x24]
-	bl GF_Camera_GetPerspectiveAngle
+	bl Camera_GetPerspectiveAngle
 	add r1, sp, #0
 	strh r0, [r1, #8]
 	add r0, r4, #0
@@ -26854,7 +26854,7 @@ ov02_02252764: ; 0x02252764
 	strh r1, [r0]
 	ldr r0, [r5, #8]
 	ldr r0, [r0, #0x24]
-	bl GF_Camera_GetPerspectiveAngle
+	bl Camera_GetPerspectiveAngle
 	add r1, r5, #0
 	add r1, #0xea
 	strh r0, [r1]
@@ -26943,11 +26943,11 @@ ov02_022527B0: ; 0x022527B0
 	bl MTX_MultVec33
 	ldr r1, [sp]
 	add r0, sp, #0x34
-	bl GF_Camera_SetBindTarget
+	bl Camera_SetBindTarget
 	lsl r0, r4, #0x10
 	ldr r1, [sp]
 	lsr r0, r0, #0x10
-	bl GF_Camera_SetPerspectiveAngle
+	bl Camera_SetPerspectiveAngle
 	add r0, r5, #0
 	add r0, #0xe6
 	add r5, #0xe8

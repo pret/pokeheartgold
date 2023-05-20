@@ -142,7 +142,7 @@ sub_0208DF2C: ; 0x0208DF2C
 	strh r0, [r1, #4]
 	strh r0, [r1, #6]
 	mov r0, #0x13
-	bl GF_Camera_Create
+	bl Camera_Create
 	mov r1, #0xa7
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -161,7 +161,7 @@ sub_0208DF2C: ; 0x0208DF2C
 	ldr r2, [r4, r2]
 	mov r0, #0
 	lsl r1, r1, #0xe
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 	mov r0, #0xa7
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -169,7 +169,7 @@ sub_0208DF2C: ; 0x0208DF2C
 	mov r0, #0xa7
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	add sp, #0x1c
 	pop {r3, r4, pc}
 	nop

@@ -11,10 +11,11 @@
 #include "constants/vars.h"
 #include "overlay_manager.h"
 #include "unk_0200E320.h"
-#include "list_menu_2.h"
-#include "unk_0200E398.h"
+#include "list_menu_2d.h"
+#include "render_window.h"
 #include "unk_02022D74.h"
 #include "field_system.h"
+#include "render_window.h"
 
 #define SCRIPT_MODE_STOPPED  0
 #define SCRIPT_MODE_BYTECODE 1
@@ -46,28 +47,28 @@ typedef struct ScriptEnvironment {
     u32 check;
     u8 state;
     u8 textPrinterNum;
-    u8 numActiveMovement;
+    u8 activeMovementCounter;
     u8 unk_7;
     u8 unk_8;
-    u8 numActiveScrCtx;
-    u16 script;
+    u8 activeScriptContextCount;
+    u16 activeScriptNumber;
     u32 unk_C;
     u32 unk_10;
     WINDOW unk_14;
-    struct ListMenu2 *listMenu;
+    struct ListMenu2D *listMenu2D;
     int facingDirection;
-    LocalMapObject *lastTalked;
-    u32 cameraFocusObj;
+    LocalMapObject *lastInteracted;
+    u32 cameraTarget;
     LocalMapObject *unk_34;
     SCRIPTCONTEXT *scriptContexts[3];
-    MSGFMT *msgfmt;
-    STRING *strbuf1;
-    STRING *strbuf2;
-    struct WaitingIconManager *unk_50;
+    MessageFormat *msgfmt;
+    STRING *stringBuffer0;
+    STRING *stringBuffer1;
+    WaitingIcon *waitingIcon;
     EngagedTrainer engagedTrainers[2];
     u16 specialVars[NUM_SPECIAL_VARS];
     void (*scrctx_end_cb)(FieldSystem *fsys);
-    void *unk_AC;
+    void *runningAppData;
     void *genericWorkPtr;
     void *unk_B4;
     void *unk_B8;
@@ -76,28 +77,28 @@ typedef struct ScriptEnvironment {
     struct SaveStatsPrinter *unk_DC;
 } ScriptEnvironment;
 
-enum ScriptEnvField {
-    SCRIPTENV_MENU_WINDOW                     =  0,
-    SCRIPTENV_WINDOW                          =  1,
-    SCRIPTENV_MENU                            =  2,
-    SCRIPTENV_PRINTER_NUM                     =  3,
-    SCRIPTENV_NUM_ACTIVE_MOVEMENT             =  4,
-    SCRIPTENV_07                              =  5,
-    SCRIPTENV_08                              =  6,
-    SCRIPTENV_NUM_ACTIVE_SCRCTX               =  7,
-    SCRIPTENV_SCRIPT                          =  8,
-    SCRIPTENV_FACING_DIRECTION                =  9,
-    SCRIPTENV_LAST_TALKED                     = 10,
-    SCRIPTENV_CAMERA_FOCUS_OBJ                = 11,
-    SCRIPTENV_34                              = 12,
-    SCRIPTENV_SCRCTX_0                        = 13,
-    SCRIPTENV_SCRCTX_1                        = 14,
-    SCRIPTENV_SCRCTX_2                        = 15,
-    SCRIPTENV_MSGFMT                          = 16,
-    SCRIPTENV_STRBUF1                         = 17,
-    SCRIPTENV_STRBUF2                         = 18,
-    SCRIPTENV_WAITING_ICON                    = 19,
-    SCRIPTENV_AC                              = 20,
+typedef enum ScriptEnvField {
+    SCRIPTENV_MENU_WINDOW,
+    SCRIPTENV_WINDOW,
+    SCRIPTENV_LIST_MENU_2D,
+    SCRIPTENV_TEXT_PRINTER_NUMBER,
+    SCRIPTENV_ACTIVE_MOVEMENT_COUNTER,
+    SCRIPTENV_FIELD_07,
+    SCRIPTENV_FIELD_08,
+    SCRIPTENV_ACTIVE_SCRIPT_CONTEXT_COUNT,
+    SCRIPTENV_ACTIVE_SCRIPT_NUMBER,
+    SCRIPTENV_FACING_DIRECTION,
+    SCRIPTENV_LAST_INTERACTED,
+    SCRIPTENV_CAMERA_TARGET,
+    SCRIPTENV_FIELD_34,
+    SCRIPTENV_SCRIPT_CONTEXT_0,
+    SCRIPTENV_SCRIPT_CONTEXT_1,
+    SCRIPTENV_SCRIPT_CONTEXT_2,
+    SCRIPTENV_MESSAGE_FORMAT,
+    SCRIPTENV_STRING_BUFFER_0,
+    SCRIPTENV_STRING_BUFFER_1,
+    SCRIPTENV_WAITING_ICON,
+    SCRIPTENV_RUNNING_APP_DATA,
     SCRIPTENV_GENERIC_WORK_PTR                = 21,
     SCRIPTENV_B4                              = 22,
     SCRIPTENV_B8                              = 23,
@@ -133,7 +134,7 @@ enum ScriptEnvField {
     SCRIPTENV_SPECIAL_VAR_800B                = 53,
     SCRIPTENV_SPECIAL_VAR_RESULT              = 54,
     SCRIPTENV_SPECIAL_VAR_LAST_TALKED         = 55,
-};
+} ScriptEnvField;
 
 struct UnkStruct_020FC5CC {
     u32 unk0_00:4;

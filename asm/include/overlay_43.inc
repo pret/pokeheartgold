@@ -50,8 +50,8 @@
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
 .public GetSpeciesName
-.public ScrStrBufs_new
-.public ScrStrBufs_delete
+.public MessageFormat_new
+.public MessageFormat_delete
 .public BufferPlayersName
 .public BufferIntegerAsString
 .public BufferWiFiPlazaActivityName

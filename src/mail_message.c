@@ -2,7 +2,7 @@
 #include "constants/easy_chat.h"
 #include "msgdata/msg.naix"
 #include "easy_chat.h"
-#include "msgfmt.h"
+#include "message_format.h"
 #include "msgdata.h"
 #include "string_control_code.h"
 
@@ -52,12 +52,12 @@ void MailMsg_init_fromTemplate(MAIL_MESSAGE *mailMessage, const MAIL_MSG_TEMPLAT
 }
 
 STRING *MailMsg_GetExpandedString(const MAIL_MESSAGE *mailMessage, HeapID heapId) {
-    MSGFMT *msgFmt;
+    MessageFormat *msgFmt;
     MSGDATA *msgData;
     STRING *string;
     int i;
 
-    msgFmt = ScrStrBufs_new(heapId);
+    msgFmt = MessageFormat_new(heapId);
     for (i = 0; i < MAILMSG_FIELDS_MAX; i++) {
         if (mailMessage->fields[i] == EC_WORD_NULL) {
             break;
@@ -68,7 +68,7 @@ STRING *MailMsg_GetExpandedString(const MAIL_MESSAGE *mailMessage, HeapID heapId
     msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, sMessageBanks[mailMessage->msg_bank], heapId);
     string = ReadMsgData_ExpandPlaceholders(msgFmt, msgData, mailMessage->msg_no, heapId);
     DestroyMsgData(msgData);
-    ScrStrBufs_delete(msgFmt);
+    MessageFormat_delete(msgFmt);
     return string;
 }
 

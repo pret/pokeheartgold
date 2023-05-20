@@ -9,7 +9,7 @@
 #include "system.h"
 #include "task.h"
 #include "text.h"
-#include "unk_0200E398.h"
+#include "render_window.h"
 #include "unk_02035900.h"
 #include "unk_0205A44C.h"
 #include "unk_020658D4.h"
@@ -91,6 +91,7 @@
 #include "constants/accessories.h"
 #include "constants/phone_contacts.h"
 #include "constants/trainers.h"
+#include "render_window.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
 FS_EXTERN_OVERLAY(npc_trade);
@@ -318,8 +319,8 @@ BOOL ScrCmd_CompareVarToVar(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_RunScript(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    u8* num_active_script_contexts = FieldSysGetAttrAddr(fsys, SCRIPTENV_NUM_ACTIVE_SCRCTX);
-    SCRIPTCONTEXT** new_context_ptr = FieldSysGetAttrAddr(fsys, SCRIPTENV_SCRCTX_1);
+    u8* num_active_script_contexts = FieldSysGetAttrAddr(fsys, SCRIPTENV_ACTIVE_SCRIPT_CONTEXT_COUNT);
+    SCRIPTCONTEXT** new_context_ptr = FieldSysGetAttrAddr(fsys, SCRIPTENV_SCRIPT_CONTEXT_1);
 
     u16 script_to_run = ScriptReadHalfword(ctx);
     *new_context_ptr = CreateScriptContext(fsys, script_to_run);
@@ -332,9 +333,9 @@ static BOOL ScrNative_WaitStd(SCRIPTCONTEXT* ctx);
 
 BOOL ScrCmd_CallStd(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_07);
-    u8* num_active_script_contexts = FieldSysGetAttrAddr(fsys, SCRIPTENV_NUM_ACTIVE_SCRCTX);
-    SCRIPTCONTEXT** new_context_ptr = (SCRIPTCONTEXT**)FieldSysGetAttrAddr(fsys, SCRIPTENV_SCRCTX_0 + *num_active_script_contexts);
+    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_07);
+    u8* num_active_script_contexts = FieldSysGetAttrAddr(fsys, SCRIPTENV_ACTIVE_SCRIPT_CONTEXT_COUNT);
+    SCRIPTCONTEXT** new_context_ptr = (SCRIPTCONTEXT**)FieldSysGetAttrAddr(fsys, SCRIPTENV_SCRIPT_CONTEXT_0 + *num_active_script_contexts);
 
     u16 script_to_run = ScriptReadHalfword(ctx);
     SCRIPTCONTEXT* new_context = CreateScriptContext(fsys, script_to_run);
@@ -351,16 +352,16 @@ BOOL ScrCmd_CallStd(SCRIPTCONTEXT* ctx) {
 
 static BOOL ScrNative_WaitStd(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_07);
-    u8* unused = FieldSysGetAttrAddr(fsys, SCRIPTENV_NUM_ACTIVE_SCRCTX);
+    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_07);
+    u8* unused = FieldSysGetAttrAddr(fsys, SCRIPTENV_ACTIVE_SCRIPT_CONTEXT_COUNT);
 
     return (*unk & (1 << ctx->id)) == 0;
 }
 
 BOOL ScrCmd_RestartCurrentScript(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_07);
-    u8* unused = FieldSysGetAttrAddr(fsys, SCRIPTENV_NUM_ACTIVE_SCRCTX);
+    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_07);
+    u8* unused = FieldSysGetAttrAddr(fsys, SCRIPTENV_ACTIVE_SCRIPT_CONTEXT_COUNT);
 
     *unk ^= (1 << (ctx->id - 1));
     return FALSE;
@@ -374,7 +375,7 @@ BOOL ScrCmd_GoTo(SCRIPTCONTEXT* ctx) {
 }
 
 BOOL ScrCmd_ObjectGoTo(SCRIPTCONTEXT* ctx) {
-    LocalMapObject** lmo = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_TALKED);
+    LocalMapObject** lmo = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_INTERACTED);
     u8 id = ScriptReadByte(ctx);
 
     u32 offset_in_script = ScriptReadWord(ctx);
@@ -662,7 +663,7 @@ static BOOL sub_020410F0(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_OpenMsg(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_08);
+    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_08);
 
     sub_0205B514(fsys->bgConfig, FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW), 3);
     sub_0205B564(FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW), Sav2_PlayerData_GetOptionsAddr(ctx->fsys->savedata));
@@ -676,7 +677,7 @@ BOOL ScrCmd_OpenMsg(SCRIPTCONTEXT* ctx) {
 BOOL ScrCmd_CloseMsg(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     WINDOW* window = FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW);
-    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_08);
+    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_08);
 
     ClearFrameAndWindow2(window, 0);
     RemoveWindow(window);
@@ -690,7 +691,7 @@ BOOL ScrCmd_CloseMsg(SCRIPTCONTEXT* ctx) {
 BOOL ScrCmd_HoldMsg(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     WINDOW* window = FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW);
-    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_08);
+    u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_08);
 
     RemoveWindow(window);
 
@@ -766,9 +767,9 @@ BOOL ScrCmd_DirectionSignpost(SCRIPTCONTEXT* ctx) {
     u8 unk2;
 
     FieldSystem* fsys = ctx->fsys;
-    STRING** tmp_str = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRBUF2);
-    STRING** unk1 = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRBUF1);
-    MSGFMT** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MSGFMT);
+    STRING** tmp_str = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
+    STRING** unk1 = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 msg_no = ScriptReadByte(ctx);
     unk2 = ScriptReadByte(ctx);
     u16 arrow = ScriptReadHalfword(ctx);
@@ -826,10 +827,10 @@ static BOOL sub_02041520(SCRIPTCONTEXT* ctx);
 
 BOOL ScrCmd_TrainerTips(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    u8* printer_id_ptr = FieldSysGetAttrAddr(fsys, SCRIPTENV_PRINTER_NUM);
-    STRING** tmp_str = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRBUF2);
-    STRING** unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRBUF1);
-    MSGFMT** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MSGFMT);
+    u8* printer_id_ptr = FieldSysGetAttrAddr(fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
+    STRING** tmp_str = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
+    STRING** unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 msg_no = ScriptReadByte(ctx);
     u16 result_var_id = ScriptReadHalfword(ctx);
 
@@ -851,7 +852,7 @@ BOOL ScrCmd_TrainerTips(SCRIPTCONTEXT* ctx) {
 
 static BOOL sub_02041520(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    u8* printer_id_ptr = FieldSysGetAttrAddr(fsys, SCRIPTENV_PRINTER_NUM);
+    u8* printer_id_ptr = FieldSysGetAttrAddr(fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
     u16* ret_ptr = GetVarPointer(fsys, ctx->data[0]);
     u8 unused = ov01_021F3D84(fsys->unk68);
 
@@ -931,10 +932,10 @@ BOOL ScrCmd_061(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_YesNo(SCRIPTCONTEXT* ctx) {
     FieldSystem *fsys = ctx->fsys;
-    struct ListMenu2 **listMenu = FieldSysGetAttrAddr(fsys, SCRIPTENV_MENU);
+    struct ListMenu2D **listMenu2D = FieldSysGetAttrAddr(fsys, SCRIPTENV_LIST_MENU_2D);
     u16 data = ScriptReadHalfword(ctx);
     LoadUserFrameGfx1(fsys->bgConfig, 3, 0x3D9, 11, 0, 4);
-    *listMenu = Std_CreateYesNoMenu(fsys->bgConfig, &_020FAC94, 0x3D9, 11, 4);
+    *listMenu2D = Std_CreateYesNoMenu(fsys->bgConfig, &_020FAC94, 0x3D9, 11, 4);
     ctx->data[0] = data;
     SetupNativeScript(ctx, sub_020416E4);
     return TRUE;
@@ -942,9 +943,9 @@ BOOL ScrCmd_YesNo(SCRIPTCONTEXT* ctx) {
 
 BOOL sub_020416E4(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    struct ListMenu2 **listMenu = FieldSysGetAttrAddr(fsys, SCRIPTENV_MENU);
+    struct ListMenu2D **listMenu2D = FieldSysGetAttrAddr(fsys, SCRIPTENV_LIST_MENU_2D);
     u16 *ret_p = GetVarPointer(fsys, ctx->data[0]);
-    int selection = Handle2dMenuInput_DeleteOnFinish(*listMenu, 4);
+    int selection = Handle2dMenuInput_DeleteOnFinish(*listMenu2D, 4);
     if (selection == LIST_NOTHING_CHOSEN) {
         return FALSE;
     } else {
@@ -959,20 +960,20 @@ BOOL sub_020416E4(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_AddWaitingIcon(SCRIPTCONTEXT *ctx) {
     WINDOW *window = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WINDOW);
-    struct WaitingIconManager **mgr_p = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WAITING_ICON);
-    *mgr_p = sub_0200F0AC(window, 0x3E2);
+    WaitingIcon **waitingIcon = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WAITING_ICON);
+    *waitingIcon = WaitingIcon_new(window, 0x3E2);
     return FALSE;
 }
 
 BOOL ScrCmd_RemoveWaitingIcon(SCRIPTCONTEXT *ctx) {
-    struct WaitingIconManager **mgr_p = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WAITING_ICON);
-    sub_0200F450(*mgr_p);
+    WaitingIcon **waitingIcon = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WAITING_ICON);
+    sub_0200F450(*waitingIcon);
     return FALSE;
 }
 
 void sub_02041770(SCRIPTCONTEXT *ctx, struct UnkStruct_ov01_021EDC28 **a1, MSGDATA *msgData) {
     FieldSystem *fsys = ctx->fsys;
-    MSGFMT **msgFmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **msgFmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 x = ScriptReadByte(ctx);
     u8 y = ScriptReadByte(ctx);
     u8 initCursorPos = ScriptReadByte(ctx);
@@ -1127,7 +1128,7 @@ BOOL ScrCmd_ApplyMovement(SCRIPTCONTEXT *ctx) {
         ov01_021F7704(object);
     }
     mvtMan = EventObjectMovementMan_Create(object, (const MovementScriptCommand *)(ctx->script_ptr + offset));
-    mvtCounter = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_NUM_ACTIVE_MOVEMENT);
+    mvtCounter = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_ACTIVE_MOVEMENT_COUNTER);
     (*mvtCounter)++;
     _ScheduleObjectEventMovement(ctx->fsys, mvtMan, NULL);
     return FALSE;
@@ -1171,7 +1172,7 @@ BOOL ScrCmd_563(SCRIPTCONTEXT *ctx) {
     cmd[i].length = 0;
 
     mvtMan = EventObjectMovementMan_Create(object, cmd);
-    mvtCounter = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_NUM_ACTIVE_MOVEMENT);
+    mvtCounter = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_ACTIVE_MOVEMENT_COUNTER);
     (*mvtCounter)++;
     _ScheduleObjectEventMovement(ctx->fsys, mvtMan, cmd);
     return FALSE;
@@ -1181,23 +1182,23 @@ LocalMapObject *sub_02041C70(FieldSystem *fsys, u16 person) {
     if (person == 0xF2) {
         return sub_0205EEB4(fsys->mapObjectMan, 0x30);
     } else if (person == 0xF1) {
-        LocalMapObject **attr = FieldSysGetAttrAddr(fsys, SCRIPTENV_CAMERA_FOCUS_OBJ);
+        LocalMapObject **attr = FieldSysGetAttrAddr(fsys, SCRIPTENV_CAMERA_TARGET);
         return *attr;
     } else {
         return GetMapObjectByID(fsys->mapObjectMan, person);
     }
 }
 
-BOOL _IsAllMovementFinish(SCRIPTCONTEXT *ctx);
+static BOOL IsAllMovementFinished(SCRIPTCONTEXT *ctx);
 
 BOOL ScrCmd_WaitMovement(SCRIPTCONTEXT *ctx) {
-    SetupNativeScript(ctx, _IsAllMovementFinish);
+    SetupNativeScript(ctx, IsAllMovementFinished);
     return TRUE;
 }
 
-BOOL _IsAllMovementFinish(SCRIPTCONTEXT *ctx) {
-    u8 *ptr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_NUM_ACTIVE_MOVEMENT);
-    return *ptr == 0;
+static BOOL IsAllMovementFinished(SCRIPTCONTEXT *ctx) {
+    u8 *movCounter = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_ACTIVE_MOVEMENT_COUNTER);
+    return *movCounter == 0;
 }
 
 struct ObjectMovementTaskEnv {
@@ -1222,7 +1223,7 @@ void _ScheduleObjectEventMovement(FieldSystem *fsys, EventObjectMovementMan *mvt
 }
 
 void _RunObjectEventMovement(SysTask *task, struct ObjectMovementTaskEnv *env) {
-    u8 *mvtCnt = FieldSysGetAttrAddr(env->fsys, SCRIPTENV_NUM_ACTIVE_MOVEMENT);
+    u8 *mvtCnt = FieldSysGetAttrAddr(env->fsys, SCRIPTENV_ACTIVE_MOVEMENT_COUNTER);
     if (EventObjectMovementMan_IsFinish(env->mvtMan) == TRUE) {
         EventObjectMovementMan_Delete(env->mvtMan);
         DestroySysTask(env->task);
@@ -1241,16 +1242,16 @@ void _RunObjectEventMovement(SysTask *task, struct ObjectMovementTaskEnv *env) {
 BOOL _WaitFollowPokePaused(SCRIPTCONTEXT *ctx);
 
 BOOL ScrCmd_LockAll(SCRIPTCONTEXT *ctx) {
-    LocalMapObject **p_lastTalked;
-    LocalMapObject *tsurePoke;
+    LocalMapObject **p_lastInteracted;
+    LocalMapObject *followingPoke;
     FieldSystem *fsys = ctx->fsys;
 
-    p_lastTalked = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_TALKED);
-    if (*p_lastTalked == NULL) {
+    p_lastInteracted = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_INTERACTED);
+    if (*p_lastInteracted == NULL) {
         MapObjectMan_PauseAllMovement(fsys->mapObjectMan);
-        tsurePoke = FollowingPokemon_GetMapObject(fsys);
-        if (FollowingPokemon_IsActive(fsys) && MapObject_IsSingleMovementActive(tsurePoke)) {
-            MapObject_UnpauseMovement(tsurePoke);
+        followingPoke = FollowingPokemon_GetMapObject(fsys);
+        if (FollowingPokemon_IsActive(fsys) && MapObject_IsSingleMovementActive(followingPoke)) {
+            MapObject_UnpauseMovement(followingPoke);
             SetupNativeScript(ctx, _WaitFollowPokePaused);
             return TRUE;
         }
@@ -1282,7 +1283,7 @@ static inline void _ResetMovementPauseWaitFlags(void) {
 
 BOOL _WaitMovementPauseBeforeMsg(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_TALKED);
+    LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_INTERACTED);
     LocalMapObject *playerObj = PlayerAvatar_GetMapObject(fsys->playerAvatar);
     LocalMapObject *unk;
 
@@ -1294,8 +1295,8 @@ BOOL _WaitMovementPauseBeforeMsg(SCRIPTCONTEXT *ctx) {
     }
 
     if (_CheckMovementPauseWaitFlag(4)) {
-        if (MapObject_IsSingleMovementActive(*p_lastTalked) == FALSE) {
-            MapObject_PauseMovement(*p_lastTalked);
+        if (MapObject_IsSingleMovementActive(*p_lastInteracted) == FALSE) {
+            MapObject_PauseMovement(*p_lastInteracted);
             _ClearMovementPauseWaitFlag(4);
         }
     }
@@ -1309,7 +1310,7 @@ BOOL _WaitMovementPauseBeforeMsg(SCRIPTCONTEXT *ctx) {
     }
 
     if (_CheckMovementPauseWaitFlag(8)) {
-        unk = sub_020660C0(*p_lastTalked);
+        unk = sub_020660C0(*p_lastInteracted);
         if (MapObject_IsSingleMovementActive(unk) == FALSE) {
             MapObject_PauseMovement(unk);
             _ClearMovementPauseWaitFlag(8);
@@ -1331,10 +1332,10 @@ BOOL _WaitFollowPokePaused(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_LockLastTalked(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_TALKED);
+    LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_INTERACTED);
     LocalMapObject *playerObject = PlayerAvatar_GetMapObject(fsys->playerAvatar);
     LocalMapObject *unk = sub_0205EEB4(fsys->mapObjectMan, 0x30);
-    LocalMapObject *unk2 = sub_020660C0(*p_lastTalked);
+    LocalMapObject *unk2 = sub_020660C0(*p_lastInteracted);
     MapObjectMan *mapObjectMan = fsys->mapObjectMan;
 
     _ResetMovementPauseWaitFlags();
@@ -1346,9 +1347,9 @@ BOOL ScrCmd_LockLastTalked(SCRIPTCONTEXT *ctx) {
         MapObject_UnpauseMovement(playerObject);
     }
 
-    if (MapObject_IsSingleMovementActive(*p_lastTalked) != FALSE) {
+    if (MapObject_IsSingleMovementActive(*p_lastInteracted) != FALSE) {
         _SetMovementPauseWaitFlag(4);
-        MapObject_UnpauseMovement(*p_lastTalked);
+        MapObject_UnpauseMovement(*p_lastInteracted);
     }
 
     if (unk != NULL && FollowingPokemon_IsActive(fsys) && MapObject_IsSingleMovementActive(unk) == FALSE) {
@@ -1418,7 +1419,7 @@ BOOL ScrCmd_HidePerson(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_102(SCRIPTCONTEXT *ctx) {
     u16 x = ScriptGetVar(ctx);
     u16 y = ScriptGetVar(ctx);
-    LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_CAMERA_FOCUS_OBJ);
+    LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_CAMERA_TARGET);
     VecFx32 *pos;
     *p_cameraObj = CreateSpecialFieldObject(ctx->fsys->mapObjectMan, x, y, 0, SPRITE_CAMERA_FOCUS, 0, ctx->fsys->location->mapId);
     sub_02061070(*p_cameraObj);
@@ -1431,7 +1432,7 @@ BOOL ScrCmd_102(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_103(SCRIPTCONTEXT *ctx) {
-    LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_CAMERA_FOCUS_OBJ);
+    LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_CAMERA_TARGET);
     VecFx32 *pos;
     MapObject_Remove(*p_cameraObj);
     pos = MapObject_GetPositionVecPtr(GetMapObjectByID(ctx->fsys->mapObjectMan, obj_player));
@@ -1443,7 +1444,7 @@ BOOL ScrCmd_103(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_678(SCRIPTCONTEXT *ctx) {
     u16 x = ScriptGetVar(ctx);
     u16 y = ScriptGetVar(ctx);
-    LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_CAMERA_FOCUS_OBJ);
+    LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_CAMERA_TARGET);
     *p_cameraObj = CreateSpecialFieldObject(ctx->fsys->mapObjectMan, x, y, 0, SPRITE_CAMERA_FOCUS, 0, ctx->fsys->location->mapId);
     sub_02061070(*p_cameraObj);
     MapObject_SetFlag9(*p_cameraObj, TRUE);
@@ -1452,7 +1453,7 @@ BOOL ScrCmd_678(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_679(SCRIPTCONTEXT *ctx) {
-    LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_CAMERA_FOCUS_OBJ);
+    LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_CAMERA_TARGET);
     MapObject_Remove(*p_cameraObj);
     return FALSE;
 }
@@ -1460,37 +1461,37 @@ BOOL ScrCmd_679(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_FacePlayer(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u32 rvsDir = sub_020611F4(PlayerAvatar_GetFacingDirection(fsys->playerAvatar));
-    LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_TALKED);
+    LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_INTERACTED);
     u32 oldDir;
     int x, y;
     int metatile;
 
-    if (*p_lastTalked == NULL) {
+    if (*p_lastInteracted == NULL) {
         return FALSE;
     }
-    oldDir = MapObject_GetFacingDirection(*p_lastTalked);
-    ov01_021F9408(*p_lastTalked, rvsDir);
-    if (MapObject_GetID(*p_lastTalked) == obj_partner_poke) {
-        if (ov01_022055DC(*p_lastTalked) && oldDir != rvsDir) {
-            ov01_02205604(*p_lastTalked, &x, &y);
+    oldDir = MapObject_GetFacingDirection(*p_lastInteracted);
+    ov01_021F9408(*p_lastInteracted, rvsDir);
+    if (MapObject_GetID(*p_lastInteracted) == obj_partner_poke) {
+        if (ov01_022055DC(*p_lastInteracted) && oldDir != rvsDir) {
+            ov01_02205604(*p_lastInteracted, &x, &y);
             metatile = GetMetatileBehaviorAt(fsys, x, y);
             if (rvsDir == 2 || rvsDir == 3) {
                 if (sub_0205B6E8(metatile) == TRUE) {
-                    ov01_021FF0E4(*p_lastTalked, 0, x, y, 1);
+                    ov01_021FF0E4(*p_lastInteracted, 0, x, y, 1);
                 } else if (sub_0205B6F4(metatile) == TRUE) {
-                    ov01_021FF964(*p_lastTalked, 0, x, y, 1);
+                    ov01_021FF964(*p_lastInteracted, 0, x, y, 1);
                 }
             }
             if (sub_0205B6E8(metatile) == FALSE
              && sub_0205B6F4(metatile) == FALSE
-             && sub_02060E54(*p_lastTalked, metatile) == FALSE
+             && sub_02060E54(*p_lastInteracted, metatile) == FALSE
              && sub_0205B984(metatile) == FALSE
              && sub_0205B7A4(metatile) == FALSE
-             && sub_02060EBC(*p_lastTalked, metatile) == FALSE
+             && sub_02060EBC(*p_lastInteracted, metatile) == FALSE
              && sub_0205B8AC(metatile) == FALSE
              && sub_0205BA70(metatile) == FALSE
             ) {
-                MapObject_ClearFlagsBits(*p_lastTalked, MAPOBJECTFLAG_UNK20);
+                MapObject_ClearFlagsBits(*p_lastInteracted, MAPOBJECTFLAG_UNK20);
             }
         }
     }
@@ -1543,7 +1544,7 @@ BOOL ScrCmd_107(SCRIPTCONTEXT *ctx) {
     shift_v.z = FX32_CONST(z);
 
     sub_0205F9A0(PlayerAvatar_GetMapObject(ctx->fsys->playerAvatar), &shift_v);
-    GF_Camera_ShiftBy(&shift_v, ctx->fsys->camera);
+    Camera_ShiftBy(&shift_v, ctx->fsys->camera);
     return FALSE;
 }
 
@@ -1584,59 +1585,59 @@ BOOL ScrCmd_136(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_PartySelectUI(SCRIPTCONTEXT *ctx) {
-    struct PartyMenuAppData **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
-    *p_work = sub_0203E580(32, ctx->fsys);
+    PartyMenuAppData **partyMenu = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
+    *partyMenu = sub_0203E580(32, ctx->fsys);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
 
-BOOL ScrCmd_566(SCRIPTCONTEXT *ctx) {
-    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
-    *p_work = sub_0203E5A4(32, ctx->fsys);
+BOOL ScrCmd_566(SCRIPTCONTEXT *ctx) { //todo: trade screen
+    PartyMenuAppData **partyMenu = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
+    *partyMenu = sub_0203E5A4(32, ctx->fsys);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
 
-BOOL ScrCmd_350(SCRIPTCONTEXT *ctx) {
-    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
-    *p_work = sub_0203E6D4(ctx->fsys->taskman, 32);
+BOOL ScrCmd_350(SCRIPTCONTEXT *ctx) { //todo: union pokemon selection
+    PartyMenuAppData **partyMenu = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
+    *partyMenu = sub_0203E6D4(ctx->fsys->taskman, 32);
     return TRUE;
 }
 
-BOOL ScrCmd_PartySelect(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_PartySelect(SCRIPTCONTEXT *ctx) { //todo: get selected pokemon slot
     u16 *dest_p = ScriptGetVarPointer(ctx);
-    struct PartyMenuAppData **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
-    GF_ASSERT(*p_work != NULL);
-    *dest_p = sub_0203E5C8(*p_work);
+    PartyMenuAppData **partyMenu = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
+    GF_ASSERT(*partyMenu != NULL);
+    *dest_p = sub_0203E5C8(*partyMenu);
     if (*dest_p == 7) {
         *dest_p = 255;
     }
-    FreeToHeap(*p_work);
-    *p_work = NULL;
+    FreeToHeap(*partyMenu);
+    *partyMenu = NULL;
     return FALSE;
 }
 
 BOOL ScrCmd_635(SCRIPTCONTEXT *ctx) {
     u16 *r5 = ScriptGetVarPointer(ctx);
     u16 *r6 = ScriptGetVarPointer(ctx);
-    struct PartyMenuAppData **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
-    struct PartyMenuAppData *r7;
+    PartyMenuAppData **partyMenuPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
+    PartyMenuAppData *partyMenu;
     int r0;
-    r7 = *p_work;
-    GF_ASSERT(*p_work != NULL);
-    r0 = sub_0203E5C8(*p_work);
+    partyMenu = *partyMenuPtr;
+    GF_ASSERT(*partyMenuPtr != NULL);
+    r0 = sub_0203E5C8(*partyMenuPtr);
     if (r0 == 7) {
         *r5 = 255;
     } else if (r0 == 6) {
-        *r5 = r7->unk_30;
+        *r5 = partyMenu->unk_30;
         (*r5)--;
-        *r6 = r7->unk_31;
+        *r6 = partyMenu->unk_31;
         if (*r6 != 0) {
             (*r6)--;
         }
     }
-    FreeToHeap(*p_work);
-    *p_work = NULL;
+    FreeToHeap(*partyMenuPtr);
+    *partyMenuPtr = NULL;
     return FALSE;
 }
 
@@ -1644,24 +1645,24 @@ BOOL ScrCmd_639(SCRIPTCONTEXT *ctx) {
     u16 *r5 = ScriptGetVarPointer(ctx);
     u16 *sp0 = ScriptGetVarPointer(ctx);
     u16 *r7 = ScriptGetVarPointer(ctx);
-    struct PartyMenuAppData **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
-    struct PartyMenuAppData *r4 = *p_work;
-    GF_ASSERT(r4 != NULL);
-    int r0 = sub_0203E5C8(*p_work);
+    struct PartyMenuAppData **partyMenuPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
+    struct PartyMenuAppData *partyMenu = *partyMenuPtr;
+    GF_ASSERT(partyMenu != NULL);
+    int r0 = sub_0203E5C8(*partyMenuPtr);
     if (r0 == 7) {
         *r5 = 255;
     } else if (r0 == 6) {
-        *r5 = r4->unk_30;
+        *r5 = partyMenu->unk_30;
         (*r5)--;
-        *sp0 = r4->unk_31;
+        *sp0 = partyMenu->unk_31;
         (*sp0)--;
-        *r7 = r4->unk_32;
+        *r7 = partyMenu->unk_32;
         if (*r7 != 0) {
             (*r7)--;
         }
     }
-    FreeToHeap(*p_work);
-    *p_work = NULL;
+    FreeToHeap(*partyMenuPtr);
+    *partyMenuPtr = NULL;
     return FALSE;
 }
 
@@ -1669,31 +1670,31 @@ BOOL ScrCmd_645(SCRIPTCONTEXT *ctx) {
     u16 *r5 = ScriptGetVarPointer(ctx);
     u16 *sp0 = ScriptGetVarPointer(ctx);
     u16 *r7 = ScriptGetVarPointer(ctx);
-    struct PartyMenuAppData **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
-    struct PartyMenuAppData *r4 = *p_work;
-    GF_ASSERT(r4 != NULL);
-    int r0 = sub_0203E5C8(*p_work);
+    struct PartyMenuAppData **partyMenuPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
+    struct PartyMenuAppData *partyMenu = *partyMenuPtr;
+    GF_ASSERT(partyMenu != NULL);
+    int r0 = sub_0203E5C8(*partyMenuPtr);
     if (r0 == 7) {
         *r5 = 255;
     } else if (r0 == 6) {
-        *r5 = r4->unk_30;
+        *r5 = partyMenu->unk_30;
         (*r5)--;
-        *sp0 = r4->unk_31;
+        *sp0 = partyMenu->unk_31;
         (*sp0)--;
-        *r7 = r4->unk_32;
+        *r7 = partyMenu->unk_32;
         if (*r7 != 0) {
             (*r7)--;
         }
     }
-    FreeToHeap(*p_work);
-    *p_work = NULL;
+    FreeToHeap(*partyMenuPtr);
+    *partyMenuPtr = NULL;
     return FALSE;
 }
 
 BOOL ScrCmd_GetMoveSelection(SCRIPTCONTEXT *ctx) {
     u8 r6 = ScriptReadByte(ctx);
     u16 *r5 = ScriptGetVarPointer(ctx);
-    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA); //presumably move selection data?
     GF_ASSERT(*p_work != NULL);
     if (r6 == 1) {
         *r5 = sub_0203E864(*p_work);
@@ -1706,7 +1707,7 @@ BOOL ScrCmd_GetMoveSelection(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_ChooseMoveUI(SCRIPTCONTEXT *ctx) {
-    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     u8 r6 = ScriptReadByte(ctx);
     u16 r7 = ScriptGetVar(ctx);
     u16 r3 = ScriptGetVar(ctx);
@@ -1738,7 +1739,7 @@ BOOL ScrCmd_684(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrNative_WaitApplication_DestroyTaskData(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    void **p_work = FieldSysGetAttrAddr(fsys, SCRIPTENV_AC);
+    void **p_work = FieldSysGetAttrAddr(fsys, SCRIPTENV_RUNNING_APP_DATA);
     if (FieldSys_ApplicationIsRunning(fsys)) {
         return FALSE;
     }
@@ -1749,7 +1750,7 @@ BOOL ScrNative_WaitApplication_DestroyTaskData(SCRIPTCONTEXT *ctx) {
 
 BOOL sub_020429A0(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    void **p_work = FieldSysGetAttrAddr(fsys, SCRIPTENV_AC);
+    void **p_work = FieldSysGetAttrAddr(fsys, SCRIPTENV_RUNNING_APP_DATA);
     if (FieldSys_ApplicationIsRunning(fsys)) {
         return FALSE;
     }
@@ -1761,7 +1762,7 @@ BOOL sub_020429A0(SCRIPTCONTEXT *ctx) {
 
 BOOL sub_020429D4(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    void **p_work = FieldSysGetAttrAddr(fsys, SCRIPTENV_AC);
+    void **p_work = FieldSysGetAttrAddr(fsys, SCRIPTENV_RUNNING_APP_DATA);
     if (!sub_020970C0(*p_work)) {
         return FALSE;
     }
@@ -1801,18 +1802,18 @@ BOOL sub_02042A30(FieldSystem *fsys, int a1, int a2) {
     return TRUE;
 }
 
-struct DressupSomethingAppData *sub_02042A60(HeapID heapId, FieldSystem *fsys, int a2, int a3) {
-    SaveDressupData *dressupData = Save_DressupData_get(fsys->savedata);
-    struct DressupSomethingAppData *ret;
+DressupPokemonAppData *sub_02042A60(HeapID heapId, FieldSystem *fsys, int a2, int a3) {
+    SaveDressupData *saveDressupData = Save_DressupData_get(fsys->savedata);
+    DressupPokemonAppData *dressupAppData;
     if (!sub_02042A30(fsys, a2, a3)) {
         return NULL;
     }
-    ret = AllocFromHeap(heapId, sizeof(struct DressupSomethingAppData));
-    memset(ret, 0, sizeof(struct DressupSomethingAppData));
-    ret->dressupData = dressupData;
-    ret->unk_8 = a2;
-    ret->unk_4 = a3;
-    return ret;
+    dressupAppData = AllocFromHeap(heapId, sizeof(DressupPokemonAppData));
+    memset(dressupAppData, 0, sizeof(DressupPokemonAppData));
+    dressupAppData->saveDressupData = saveDressupData;
+    dressupAppData->unk_8 = a2;
+    dressupAppData->unk_4 = a3;
+    return dressupAppData;
 }
 
 BOOL ScrCmd_151(SCRIPTCONTEXT *ctx) {
@@ -1826,7 +1827,7 @@ BOOL ScrCmd_152(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_153(SCRIPTCONTEXT *ctx) {
-    struct DressupSomethingAppData **p_data = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    struct DressupPokemonAppData **p_data = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     u16 *p_dest = ScriptGetVarPointer(ctx);
     *p_dest = (*p_data)->unk_4;
     FreeToHeap(*p_data);
@@ -1883,10 +1884,10 @@ BOOL sub_02042C78(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_454(SCRIPTCONTEXT *ctx) {
-    LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_TALKED);
+    LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_INTERACTED);
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_26), OVY_LOAD_ASYNC);
-    if (*p_lastTalked != NULL) {
-        ov26_022599D8(ctx->fsys, *p_lastTalked);
+    if (*p_lastInteracted != NULL) {
+        ov26_022599D8(ctx->fsys, *p_lastInteracted);
     }
     UnloadOverlayByID(FS_OVERLAY_ID(OVY_26));
     return FALSE;
@@ -1907,16 +1908,16 @@ BOOL ScrCmd_154(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_155(SCRIPTCONTEXT *ctx) {
-    struct DressupSomethingAppData **p_DressupData = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    struct DressupPokemonAppData **dressupAppData = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     u16 r7 = ScriptReadHalfword(ctx);
     u16 *r6 = ScriptGetVarPointer(ctx);
-    *p_DressupData = sub_02042A60(11, ctx->fsys, 0, r7);
-    if (*p_DressupData == NULL) {
+    *dressupAppData = sub_02042A60(11, ctx->fsys, 0, r7);
+    if (*dressupAppData == NULL) {
         *r6 = 1;
         return TRUE;
     } else {
         *r6 = 0;
-        sub_0203F204(ctx->fsys, *p_DressupData);
+        sub_0203F204(ctx->fsys, *dressupAppData);
         SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
         return TRUE;
     }
@@ -1952,7 +1953,7 @@ BOOL ScrCmd_156(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_TownMap(SCRIPTCONTEXT *ctx) {
-    TownMap **p_townMap = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    TownMap **p_townMap = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     *p_townMap = TownMap_new(ctx->fsys, 1);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
@@ -1961,7 +1962,7 @@ BOOL ScrCmd_TownMap(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_408(SCRIPTCONTEXT *ctx) {
     u16 r7 = ScriptGetVar(ctx);
     u16 sp0 = ScriptGetVar(ctx);
-    struct UnkStruct_ScrCmd408 **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    struct UnkStruct_ScrCmd408 **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     *p_work = AllocFromHeap(11, sizeof(struct UnkStruct_ScrCmd408));
     InitUnkStructScrCmd408(*p_work, r7, sp0, ctx);
     sub_0203F0A8(ctx->fsys, *p_work);
@@ -1969,11 +1970,11 @@ BOOL ScrCmd_408(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_158(SCRIPTCONTEXT *ctx) {
-    struct UnkStruct_ScrCmd158 **p_work;
+BOOL ScrCmd_158(SCRIPTCONTEXT *ctx) { //todo: PC box screen
+    struct PCBoxAppData **p_work;
 
-    p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
-    *p_work = NewUnkStructScrCmd158(ctx);
+    p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
+    *p_work = PCBoxAppData_new(ctx);
     sub_0203E868(ctx->fsys, *p_work);
     SetupNativeScript(ctx, sub_020429A0);
     return TRUE;
@@ -1996,7 +1997,7 @@ BOOL ScrCmd_161(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_162(SCRIPTCONTEXT *ctx) {
-    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     *p_work = sub_0203F4F8(ctx->fsys);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
@@ -2009,7 +2010,7 @@ BOOL ScrCmd_HOF_Credits(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_164(SCRIPTCONTEXT *ctx) {
-    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA); //todo: hall of fame data
     *p_work = sub_0203F984(ctx->fsys);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
@@ -2051,19 +2052,19 @@ BOOL ScrCmd_ChooseStarter(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_333(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_333(SCRIPTCONTEXT *ctx) { //todo: bag screen
     void **p_work;
     u8 r4 = ScriptReadByte(ctx) != 0 ? 1 : 0;
-    p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     GF_ASSERT(*p_work == NULL);
     *p_work = sub_0203E460(ctx->fsys, r4);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
 
-BOOL ScrCmd_334(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_334(SCRIPTCONTEXT *ctx) { //todo: bag select screen
     u16 *r5 = ScriptGetVarPointer(ctx);
-    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     GF_ASSERT(*p_work != NULL);
     *r5 = sub_0203E4CC(*p_work);
     FreeToHeap(*p_work);
@@ -2071,10 +2072,10 @@ BOOL ScrCmd_334(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_370(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_370(SCRIPTCONTEXT *ctx) { //unknown? possibly daycare select screen??
     void **p_work;
     u8 r4 = ScriptReadByte(ctx) != 0 ? 1 : 0;
-    p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     GF_ASSERT(*p_work == NULL);
     *p_work = sub_0203E460(ctx->fsys, r4);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
@@ -2119,7 +2120,7 @@ BOOL ScrCmd_NicknameInput(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_629(SCRIPTCONTEXT *ctx) {
-    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     *p_work = sub_0209707C(ctx->fsys);
     SetupNativeScript(ctx, sub_020429D4);
     return TRUE;
@@ -2159,7 +2160,7 @@ BOOL ScrCmd_PromptEasyChat(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_494(SCRIPTCONTEXT *ctx) {
-    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u16 idx = ScriptGetVar(ctx);
     u16 word = ScriptGetVar(ctx);
     BufferECWord(*p_msgFmt, idx, word);
@@ -2382,9 +2383,9 @@ BOOL ScrCmd_SetStarterChoice(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_TrainerMessage(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
 
-    u16 *p_scripno = FieldSysGetAttrAddr(fsys, SCRIPTENV_SCRIPT);
-    STRING **p_strbuf1 = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRBUF1);
-    u8 *p_printerno = FieldSysGetAttrAddr(fsys, SCRIPTENV_PRINTER_NUM);
+    u16 *p_scripno = FieldSysGetAttrAddr(fsys, SCRIPTENV_ACTIVE_SCRIPT_NUMBER);
+    STRING **p_strbuf1 = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
+    u8 *p_printerno = FieldSysGetAttrAddr(fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
     u16 trainerno = ScriptGetVar(ctx);
     u16 msgno = ScriptGetVar(ctx);
 
@@ -2460,13 +2461,8 @@ BOOL ScrCmd_229(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-struct UnkStruct_ScrCmd230 {
-    u8 filler_00[0x30];
-    u8 unk_30[6];
-};
-
 BOOL ScrCmd_230(SCRIPTCONTEXT *ctx) {
-    struct UnkStruct_ScrCmd230 **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    struct UnkStruct_ScrCmd230 **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     struct UnkStruct_ScrCmd230 *work = *p_work;
     sub_02051428(ctx->fsys->taskman, &work->unk_30, 5);
     FreeToHeap(work);
@@ -2499,7 +2495,7 @@ BOOL ScrCmd_GetDynamicWarpFloorNo(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_ElevatorCurFloorBox(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 x = ScriptReadByte(ctx);
     u8 y = ScriptReadByte(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
@@ -2658,7 +2654,7 @@ BOOL ScrCmd_258(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_259(SCRIPTCONTEXT *ctx) {
-    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u16 *p_ret = ScriptGetVarPointer(ctx);
 
     *p_ret = sub_0205A6AC(*p_msgFmt);
@@ -2667,7 +2663,7 @@ BOOL ScrCmd_259(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_260(SCRIPTCONTEXT *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
 
     *p_ret = sub_0205A9A0(ctx->fsys->unk80, *p_msgFmt);
     return FALSE;
@@ -2687,15 +2683,15 @@ BOOL ScrCmd_261(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_264(SCRIPTCONTEXT *ctx) {
-    LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_TALKED);
-    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_INTERACTED);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u16 r4 = ScriptReadHalfword(ctx);
     PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
     SAVE_EASY_CHAT_T *easyChat = SaveData_EasyChat_get(FieldSys_GetSaveDataPtr(ctx->fsys));
     u16 objId;
 
     if (r4 == 0) {
-        objId = MapObject_GetID(*p_lastTalked);
+        objId = MapObject_GetID(*p_lastInteracted);
     } else {
         objId = 0;
     }
@@ -2722,11 +2718,11 @@ BOOL sub_020441C4(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_267(SCRIPTCONTEXT *ctx) {
-    LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_TALKED);
+    LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_INTERACTED);
     u16 sp0 = ScriptReadHalfword(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
-    *p_ret = sub_0205A750(ctx->fsys->unk80, MapObject_GetID(*p_lastTalked), sp0, *p_msgFmt);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    *p_ret = sub_0205A750(ctx->fsys->unk80, MapObject_GetID(*p_lastInteracted), sp0, *p_msgFmt);
     return FALSE;
 }
 
@@ -2734,7 +2730,7 @@ BOOL ScrCmd_586(SCRIPTCONTEXT *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = sub_0205A4D8(ctx->fsys->unk80);
     if (*p_ret) {
-        void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+        void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
         FreeToHeap(*p_work);
     }
     return FALSE;
@@ -2742,18 +2738,18 @@ BOOL ScrCmd_586(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_268(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_TALKED);
+    LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_INTERACTED);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = sub_0205A200(fsys->unk80, MapObject_GetID(*p_lastTalked));
+    *p_ret = sub_0205A200(fsys->unk80, MapObject_GetID(*p_lastInteracted));
     return FALSE;
 }
 
 BOOL ScrCmd_274(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    LocalMapObject **p_lastTalked = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_TALKED);
+    LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_INTERACTED);
     u16 r7 = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = sub_0205A284(fsys->unk80, MapObject_GetID(*p_lastTalked), r7);
+    *p_ret = sub_0205A284(fsys->unk80, MapObject_GetID(*p_lastInteracted), r7);
     return FALSE;
 }
 
@@ -2856,7 +2852,7 @@ BOOL ScrCmd_286(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_287(SCRIPTCONTEXT *ctx) {
     PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
-    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     sub_0205B3DC(
         PlayerProfile_GetTrainerID(profile),
         PlayerProfile_GetTrainerGender(profile),
@@ -3026,7 +3022,7 @@ BOOL ScrCmd_344(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_347(SCRIPTCONTEXT *ctx) {
-    u16 **r5 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_34);
+    u16 **r5 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_FIELD_34);
     u16 r0 = ScriptGetVar(ctx);
     if (*r5 != NULL) {
         **r5 = r0;
@@ -3218,8 +3214,8 @@ BOOL ScrCmd_375(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_376(SCRIPTCONTEXT *ctx) {
-    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+BOOL ScrCmd_376(SCRIPTCONTEXT *ctx) { //todo: mail screen
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA); //MailAppData
     *p_work = sub_0203F074(ctx->fsys, 11);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
@@ -3315,8 +3311,8 @@ BOOL ScrCmd_CheckNationalDexComplete(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_425(SCRIPTCONTEXT *ctx) {
-    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+BOOL ScrCmd_425(SCRIPTCONTEXT *ctx) { //todo: pokedex screen
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA); //PokedexAppData
     u16 r2 = ScriptGetVar(ctx);
     *p_work = sub_0203FA8C(ctx->fsys, 32, r2);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
@@ -3840,7 +3836,7 @@ BOOL ScrCmd_530(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_BufferBackgroundName(SCRIPTCONTEXT *ctx) {
-    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 bufferId = ScriptReadByte(ctx);
     u16 backgroundId = ScriptGetVar(ctx);
     BufferContestBackgroundName(*p_msgFmt, bufferId, backgroundId);
@@ -3868,7 +3864,7 @@ BOOL ScrCmd_537(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_538(SCRIPTCONTEXT *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     u16 wordIdx = ScriptGetVar(ctx);
-    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     int trendy = SaveEasyChat_RandomTrendySayingSet(SaveData_EasyChat_get(ctx->fsys->savedata));
     if (trendy == 32) {
         *p_ret = 0xFFFF;
@@ -3944,7 +3940,7 @@ BOOL ScrCmd_550(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_551(SCRIPTCONTEXT *ctx) {
     u16 r6 = ScriptGetVar(ctx);
-    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     *p_work = sub_0203E5D0(32, ctx->fsys, r6);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
@@ -3953,16 +3949,16 @@ BOOL ScrCmd_551(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_552(SCRIPTCONTEXT *ctx) {
     u16 *r6 = ScriptGetVarPointer(ctx);
     u16 *r5 = ScriptGetVarPointer(ctx);
-    struct PartyMenuAppData **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
-    GF_ASSERT(*p_work != NULL);
-    *r6 = sub_0203E5C8(*p_work);
+    struct PartyMenuAppData **partyMenu = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
+    GF_ASSERT(*partyMenu != NULL);
+    *r6 = sub_0203E5C8(*partyMenu);
     if (*r6 == 7) {
         *r6 = 255;
     }
-    *r5 = sub_0203E5F8(*p_work);
+    *r5 = sub_0203E5F8(*partyMenu);
     *r5 = (*r5 == TRUE);
-    FreeToHeap(*p_work);
-    *p_work = NULL;
+    FreeToHeap(*partyMenu);
+    *partyMenu = NULL;
     return FALSE;
 }
 
@@ -4042,7 +4038,7 @@ BOOL ScrCmd_571(SCRIPTCONTEXT *ctx) {
     u16 r7 = ScriptGetVar(ctx);
     STRING *r7_str;
     STRING *sp0_str;
-    MSGFMT *msgFmt = ScrStrBufs_new(32);
+    MessageFormat *msgFmt = MessageFormat_new(32);
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0202_bin, 32);
     BufferECWord(msgFmt, 0, sp4);
     BufferECWord(msgFmt, 1, sp8);
@@ -4054,7 +4050,7 @@ BOOL ScrCmd_571(SCRIPTCONTEXT *ctx) {
     String_dtor(r7_str);
     String_dtor(sp0_str);
     DestroyMsgData(msgData);
-    ScrStrBufs_delete(msgFmt);
+    MessageFormat_delete(msgFmt);
     return FALSE;
 }
 
@@ -4066,7 +4062,7 @@ BOOL ScrCmd_573(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_576(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
     *p_ret = sub_0205A6AC(*p_msgFmt);
     return FALSE;
 }
@@ -4141,20 +4137,8 @@ BOOL ScrCmd_595(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-struct UnkStruct_ScrCmd627 {
-    void *unk_0;
-    OPTIONS *options;
-    SAVEDATA *saveData;
-    void *unk_0C;
-    u8 filler_10[0x8];
-    u32 mapId;
-    void *unk_1C;
-    u8 unk_20;
-    u8 filler_21[0x7];
-};
-
 BOOL ScrCmd_627(SCRIPTCONTEXT *ctx) {
-    struct UnkStruct_ScrCmd627 **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    struct UnkStruct_ScrCmd627 **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     u8 r6 = ScriptReadByte(ctx);
     struct UnkStruct_ScrCmd627 *work = AllocFromHeapAtEnd(11, sizeof(struct UnkStruct_ScrCmd627));
     MI_CpuClear8(work, sizeof(struct UnkStruct_ScrCmd627));
@@ -4176,7 +4160,7 @@ BOOL ScrCmd_627(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_631(SCRIPTCONTEXT *ctx) {
-    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     u16 r6 = ScriptGetVar(ctx);
     u16 r7 = ScriptGetVar(ctx);
     u16 r3 = ScriptGetVar(ctx);
@@ -4186,16 +4170,16 @@ BOOL ScrCmd_631(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_ScratchOffCard(SCRIPTCONTEXT *ctx) {
-    struct ScratchCardWork **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
-    *p_work = ScratchOffCards_Create(ctx->fsys, 32);
+    ScratchCardAppData **scratchCardData = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
+    *scratchCardData = ScratchOffCards_Create(ctx->fsys, 32);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
 
 BOOL ScrCmd_ScratchOffCardEnd(SCRIPTCONTEXT *ctx) {
-    struct ScratchCardWork **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
-    FreeToHeap(*p_work);
-    *p_work = NULL;
+    ScratchCardAppData **scratchCardData = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
+    FreeToHeap(*scratchCardData);
+    *scratchCardData = NULL;
     return TRUE;
 }
 
@@ -4203,10 +4187,10 @@ BOOL ScrCmd_GetScratchOffPrize(SCRIPTCONTEXT *ctx) {
     u16 cardno = ScriptGetVar(ctx);
     u16 *p_ret1 = ScriptGetVarPointer(ctx);
     u16 *p_ret2 = ScriptGetVarPointer(ctx);
-    struct ScratchCardWork **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
-    struct ScratchCardWork *work = *p_work;
-    *p_ret1 = work->unk_08[cardno];
-    *p_ret2 = work->unk_0E[cardno];
+    ScratchCardAppData **scratchCardDataPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
+    ScratchCardAppData *scratchCardData = *scratchCardDataPtr;
+    *p_ret1 = scratchCardData->unk_08[cardno];
+    *p_ret2 = scratchCardData->unk_0E[cardno];
     return FALSE;
 }
 
@@ -4660,7 +4644,7 @@ BOOL ScrCmd_SetPhoneCall(SCRIPTCONTEXT *ctx) {
     u16 r4 = ScriptGetVar(ctx);
     u16 r6 = ScriptGetVar(ctx);
     u16 r7 = ScriptGetVar(ctx);
-    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA); //PhoneCallAppData
     sub_02092DF4(Fsys_GetGearPhoneRingManager(ctx->fsys));
     ctx->fsys->unkD2_7 = TRUE;
     ov02_02251EB8(Fsys_GetGearPhoneRingManager(ctx->fsys), r4, 0xFF, 0, r6, r7);
@@ -4668,7 +4652,7 @@ BOOL ScrCmd_SetPhoneCall(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_RunPhoneCall(SCRIPTCONTEXT *ctx) {
-    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     *p_work = PhoneUI_new(ctx->fsys);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
@@ -4682,7 +4666,7 @@ BOOL ScrCmd_LoadPhoneDat(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_GetPhoneContactMsgIds(SCRIPTCONTEXT *ctx) {
-    u16 *p_scriptno = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_SCRIPT);
+    u16 *p_scriptno = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_ACTIVE_SCRIPT_NUMBER);
     u8 r6 = ScriptReadByte(ctx);
     u16 *sp0 = ScriptGetVarPointer(ctx);
     u16 *p_ret_msg = ScriptGetVarPointer(ctx);
@@ -4806,8 +4790,8 @@ BOOL ScrCmd_FollowPokeInteract(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_712(SCRIPTCONTEXT *ctx) {
-    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+BOOL ScrCmd_712(SCRIPTCONTEXT *ctx) { //smth creating alph puzzle screen?
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     u8 action = ScriptReadByte(ctx);
     switch (action) {
     case 1:
@@ -4828,8 +4812,8 @@ BOOL ScrCmd_712(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_AlphPuzzle(SCRIPTCONTEXT *ctx) {
-    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+BOOL ScrCmd_AlphPuzzle(SCRIPTCONTEXT *ctx) { //this just loads a different puzzle with another ID
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     u8 puzzle = ScriptReadByte(ctx);
     if (puzzle > 4) {
         puzzle = 0;
@@ -5283,14 +5267,14 @@ BOOL ScrCmd_CheckBankBalance(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_BufferRulesetName(SCRIPTCONTEXT *ctx) {
     u16 ruleset = ScriptReadHalfword(ctx);
-    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     ov03_022566D0(ctx->fsys, *p_msgFmt, ruleset);
     return FALSE;
 }
 
 BOOL ScrCmd_799(SCRIPTCONTEXT *ctx) {
     u16 *p_var = ScriptGetVarPointer(ctx);
-    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     ov03_022566D0(ctx->fsys, *p_msgFmt, *p_var);
     return FALSE;
 }
@@ -5317,7 +5301,7 @@ BOOL ScrCmd_802(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_803(SCRIPTCONTEXT *ctx) {
     u16 *r4 = ScriptGetVarPointer(ctx);
     u16 *r6 = ScriptGetVarPointer(ctx);
-    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     *r6 = ov03_02256A2C(ctx->fsys, *p_msgFmt, *r4);
     return FALSE;
 }
@@ -5374,7 +5358,7 @@ BOOL ScrCmd_822(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_823(SCRIPTCONTEXT *ctx) {
     u16 *p_var = ScriptGetVarPointer(ctx);
-    MSGFMT **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     PLAYERPROFILE *profile = PlayerProfile_new(4);
     SafariZone_GetLinkLeaderToProfile(Save_SafariZone_get(ctx->fsys->savedata), profile);
     BufferPlayersName(*p_msgFmt, *p_var, profile);

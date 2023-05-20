@@ -723,7 +723,7 @@ _0221BF92:
 	str r0, [r5, r1]
 	ldr r0, [r5]
 	ldr r0, [r0, #0x24]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	mov r1, #0xbb
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -2761,7 +2761,7 @@ _0221D030:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0221D03E
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 _0221D03E:
 	ldr r0, _0221D050 ; =0x00000BAC
 	ldr r0, [r4, r0]
@@ -4014,7 +4014,7 @@ ov05_0221D9F0: ; 0x0221D9F0
 	mov r1, #0xe1
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 	ldr r2, [r4]
 	mov r0, #0x3b
 	ldr r2, [r2, #0x24]
@@ -5904,7 +5904,7 @@ ov05_0221E944: ; 0x0221E944
 	str r0, [sp, #0xc]
 	ldr r0, [r6]
 	ldr r0, [r0, #0x24]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	ldr r1, [r6]
 	str r0, [sp, #8]
 	ldr r1, [r1, #0x24]
@@ -5938,7 +5938,7 @@ _0221E9A0:
 	ldr r0, [sp, #0xc]
 	bl MessagePrinter_delete
 	ldr r0, [sp, #8]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov05_0221E944
@@ -6002,7 +6002,7 @@ ov05_0221EA18: ; 0x0221EA18
 	sub r0, #0x3c
 	add r0, r4, r0
 	mov r1, #1
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	ldr r1, _0221EA34 ; =0x00000BC4
 	str r0, [r4, r1]
 _0221EA32:
