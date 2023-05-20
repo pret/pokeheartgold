@@ -12,9 +12,9 @@
  * Return value of Bag_TryRegisterItem
  */
 typedef enum RegisterItemResult {
-    REG_ITEM_FAIL,
-    REG_BagPocket1,
-    REG_BagPocket2,
+    REG_BAG_FAIL,
+    REG_BAG_POCKET1,
+    REG_BAG_POCKET2,
 } RegisterItemResult;
 
 /*
@@ -22,7 +22,7 @@ typedef enum RegisterItemResult {
  * and the two items registered to the touchscreen
  * buttons. This is saved to flash.
  */
-typedef struct BagData {
+typedef struct Bag {
     BagPocket items[NUM_BAG_ITEMS];                // General items
     BagPocket keyItems[NUM_BAG_KEY_ITEMS];         // Key items
     BagPocket TMsHMs[NUM_BAG_TMS_HMS];             // Move machines
@@ -91,8 +91,8 @@ u16 Bag_GetRegisteredItemSlot2(Bag *bag);
  * RegisterItemResult Bag_TryRegisterItem(Bag *bag, u16 itemId)
  *
  * Registers the item to the first available quick-access slot.
- * If none available, returns REG_ITEM_FAIL. Otherwise, returns
- * REG_BagPocket1 or REG_BagPocket2.
+ * If none available, returns REG_BAG_FAIL. Otherwise, returns
+ * REG_BAG_POCKET1 or REG_BAG_POCKET2.
  *
  * @param bag:         Pointer to Bag
  * @param itemId:      Item to attempt registry

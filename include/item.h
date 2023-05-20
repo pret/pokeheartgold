@@ -10,7 +10,7 @@
  * Item ID must be unsigned less than ITEMS_COUNT.
  * Quantity must be no more than 99 for a TM/HM, or 999 in general.
  */
-typedef struct ItemSlot {
+typedef struct BagPocket {
     u16 id;          // from constants/items.h
     u16 quantity;    // quantity of that item
 } BagPocket;

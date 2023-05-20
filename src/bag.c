@@ -33,14 +33,14 @@ u16 Bag_GetRegisteredItemSlot2(Bag *bag) {
 }
 
 RegisterItemResult Bag_TryRegisterItem(Bag *bag, u16 itemId) {
-    RegisterItemResult result = REG_ITEM_FAIL;
+    RegisterItemResult result = REG_BAG_FAIL;
 
     if (bag->registeredItems[0] == ITEM_NONE) {
         bag->registeredItems[0] = itemId;
-        result = REG_BagPocket1;
+        result = REG_BAG_POCKET1;
     } else if (bag->registeredItems[1] == ITEM_NONE) {
         bag->registeredItems[1] = itemId;
-        result = REG_BagPocket2;
+        result = REG_BAG_POCKET2;
     }
     return result;
 }

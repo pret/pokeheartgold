@@ -19,6 +19,7 @@
 #define LANGUAGE_ITALIAN     4
 #define LANGUAGE_GERMAN      5
 #define LANGUAGE_SPANISH     7
+#define LANGUAGE_KOREAN      8
 
 #undef GAME_VERSION
 #if defined(HEARTGOLD)
