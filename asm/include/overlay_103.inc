@@ -25,8 +25,8 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
-.public ScrStrBufs_new
-.public ScrStrBufs_delete
+.public MessageFormat_new
+.public MessageFormat_delete
 .public BufferString
 .public BufferIntegerAsString
 .public StringExpandPlaceholders
@@ -151,9 +151,9 @@
 .public SavArray_PlayerParty_get
 .public ItemToMailId
 .public MailToItemId
-.public Bag_AddItem
-.public Bag_TakeItem
-.public Sav2_Bag_get
+.public BagAddItem
+.public BagTakeItem
+.public SaveGetBag
 .public sub_02090E68
 .public sub_02090F6C
 .public sub_02090F70

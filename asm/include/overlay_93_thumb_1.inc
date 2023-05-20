@@ -34,8 +34,8 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public NewString_ReadMsgData
-.public ScrStrBufs_new
-.public ScrStrBufs_delete
+.public MessageFormat_new
+.public MessageFormat_delete
 .public sub_0200CF18
 .public sub_0200CF38
 .public sub_0200CF6C
@@ -130,12 +130,12 @@
 .public GX_EngineBToggleLayers
 .public GX_BothDispOn
 .public GX_SwapDisplay
-.public GF_Camera_Create
+.public Camera_Create
 .public sub_02023120
-.public GF_Camera_RegisterToStaticPtr
+.public Camera_RegisterToStaticPtr
 .public sub_02023154
-.public GF_Camera_SetClipBounds
-.public GF_Camera_InitFromTargetDistanceAndAngle
+.public Camera_SetClipBounds
+.public Camera_InitFromTargetDistanceAndAngle
 .public sub_020233D8
 .public GF_AssertFail
 .public String_ctor

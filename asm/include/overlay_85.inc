@@ -59,8 +59,8 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public ReadMsgData_ExpandPlaceholders
-.public ScrStrBufs_new
-.public ScrStrBufs_delete
+.public MessageFormat_new
+.public MessageFormat_delete
 .public BufferPlayersName
 .public BufferIntegerAsString
 .public BufferItemName
@@ -92,7 +92,7 @@
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
-.public sub_0200F0AC
+.public WaitingIcon_new
 .public sub_0200F450
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
@@ -149,12 +149,12 @@
 .public GX_EngineAToggleLayers
 .public GX_DisableEngineBLayers
 .public GX_EngineBToggleLayers
-.public GF_Camera_Create
+.public Camera_Create
 .public sub_02023120
-.public GF_Camera_RegisterToStaticPtr
+.public Camera_RegisterToStaticPtr
 .public sub_02023154
-.public GF_Camera_SetBindTarget
-.public GF_Camera_InitFromTargetDistanceAndAngle
+.public Camera_SetBindTarget
+.public Camera_InitFromTargetDistanceAndAngle
 .public sub_02024504
 .public sub_0202457C
 .public CreateSprite
@@ -213,8 +213,8 @@
 .public GetPartyCount
 .public GetPartyMonByIndex
 .public SavArray_PlayerParty_get
-.public Bag_AddItem
-.public Sav2_Bag_get
+.public BagAddItem
+.public SaveGetBag
 .public MonSetTrainerMemo
 .public sub_02096CE0
 .public sub_02096D4C

@@ -25,8 +25,8 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
-.public ScrStrBufs_new
-.public ScrStrBufs_delete
+.public MessageFormat_new
+.public MessageFormat_delete
 .public BufferBoxMonNickname
 .public StringExpandPlaceholders
 .public MessagePrinter_new
@@ -60,7 +60,7 @@
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
-.public sub_0200F0AC
+.public WaitingIcon_new
 .public sub_0200F450
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
@@ -120,7 +120,7 @@
 .public GX_DisableEngineALayers
 .public GX_EngineAToggleLayers
 .public GX_DisableEngineBLayers
-.public GF_Camera_SetClipBounds
+.public Camera_SetClipBounds
 .public sub_020249B0
 .public GF_AssertFail
 .public String_ctor
@@ -152,8 +152,8 @@
 .public GetPartyCount
 .public GetPartyMonByIndex
 .public ItemIdIsMail
-.public Bag_HasItem
-.public Sav2_Bag_get
+.public BagHasItem
+.public SaveGetBag
 .public sub_0207CAAC
 .public RatioToInt
 .public sub_020880B0

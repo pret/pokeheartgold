@@ -89,5 +89,6 @@ private:
     bool Cleanup(std::ifstream& ifs, const NarcError& e);
     bool Cleanup(std::ofstream& ofs, const NarcError& e);
 
+    std::vector<fs::directory_entry> KnarcOrderDirectoryIterator(const fs::path& path, bool recursive) const;
     std::vector<fs::directory_entry> OrderedDirectoryIterator(const fs::path& path, bool recursive) const;
 };

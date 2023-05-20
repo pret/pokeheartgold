@@ -19,7 +19,7 @@ struct ItemCheckUseData {
     u16 haveRocketCostume:1;
     u16 facingTile;
     u16 standingTile;
-    FIELD_PLAYER_AVATAR *playerAvatar;
+    PlayerAvatar *playerAvatar;
     FieldSystem *fsys;
 };
 
@@ -55,7 +55,7 @@ typedef u32 (*ItemCheckUseFunc)(const struct ItemCheckUseData *data);
 
 struct UseItemInPartyTaskEnv {
     PARTY *party;
-    BAG_DATA *bag;
+    Bag *bag;
     MAILBOX *mailbox;
     OPTIONS *options;
     struct UnkStruct_0202E474 *unk10;

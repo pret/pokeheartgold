@@ -36,7 +36,7 @@ ov14_021E5900: ; 0x021E5900
 	str r0, [r4, #8]
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
 	ldr r0, [r0]
@@ -575,7 +575,7 @@ ov14_021E5D78: ; 0x021E5D78
 	ldr r1, [r4, #0x34]
 	str r0, [r1, #0x1c]
 	mov r0, #0xa
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	ldr r1, [r4, #0x34]
 	str r0, [r1, #0x24]
 	mov r0, #1
@@ -597,7 +597,7 @@ ov14_021E5DB8: ; 0x021E5DB8
 	bl String_dtor
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x24]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x1c]
 	bl MessagePrinter_delete
@@ -6647,10 +6647,10 @@ ov14_021E8ACC: ; 0x021E8ACC
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	ldr r1, _021E8B10 ; =ov14_021F7D14
 	mov r2, #9
-	bl CreateBagView
+	bl BagViewCreate
 	str r0, [r4, #0x18]
 	ldr r1, [r4]
 	mov r2, #1
@@ -12907,7 +12907,7 @@ _021EBC66:
 	ldr r0, [r5, #0xc]
 	mov r2, #1
 	mov r3, #0xa
-	bl Bag_TakeItem
+	bl BagTakeItem
 _021EBC72:
 	add r0, r5, #0
 	add r0, #0x21
@@ -25020,7 +25020,7 @@ ov14_021F2020: ; 0x021F2020
 	lsr r1, r1, #0x10
 	mov r2, #1
 	mov r3, #0xa
-	bl Bag_AddItem
+	bl BagAddItem
 	cmp r0, #1
 	bne _021F20A4
 	add r2, r5, #0
@@ -25108,13 +25108,13 @@ ov14_021F20F4: ; 0x021F20F4
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	ldr r2, [r4, #0x34]
 	ldr r1, _021F21A8 ; =0x000088C8
 	mov r3, #0xa
 	ldrh r1, [r2, r1]
 	mov r2, #1
-	bl Bag_AddItem
+	bl BagAddItem
 	cmp r0, #0
 	bne _021F212A
 	ldr r0, _021F21AC ; =0x000005F3

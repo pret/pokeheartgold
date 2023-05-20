@@ -138,9 +138,9 @@
 .public ItemIdIsMail
 .public ItemToMailId
 .public BerryToItemId
-.public Bag_HasItem
-.public CreateBagView
-.public Sav2_Bag_get
+.public BagHasItem
+.public BagViewCreate
+.public SaveGetBag
 .public BagCursor_Field_PocketGetPosition
 .public BagCursor_Field_PocketSetPosition
 .public sub_02088288

@@ -53,15 +53,15 @@
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
 .public ReadMsgData_ExpandPlaceholders
-.public ScrStrBufs_new_custom
-.public ScrStrBufs_delete
+.public MessageFormat_new_custom
+.public MessageFormat_delete
 .public BufferBoxMonSpeciesName
 .public BufferBoxMonNickname
 .public BufferIntegerAsString
 .public BufferCountryName
 .public BufferCityName
 .public StringExpandPlaceholders
-.public ScrStrBufs_ResetBuffers
+.public MessageFormat_ResetBuffers
 .public MessagePrinter_new
 .public MessagePrinter_delete
 .public sub_0200CDAC
@@ -74,7 +74,7 @@
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
-.public sub_0200F0AC
+.public WaitingIcon_new
 .public sub_0200F450
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished

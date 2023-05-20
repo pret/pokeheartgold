@@ -44,8 +44,8 @@
 .public DestroyMsgData
 .public NewString_ReadMsgData
 .public ReadMsgData_ExpandPlaceholders
-.public ScrStrBufs_new
-.public ScrStrBufs_delete
+.public MessageFormat_new
+.public MessageFormat_delete
 .public BufferBoxMonSpeciesName
 .public StringExpandPlaceholders
 .public sub_0200CF18
@@ -135,7 +135,7 @@
 .public GX_DisableEngineBLayers
 .public GX_EngineBToggleLayers
 .public GX_BothDispOn
-.public GF_Camera_SetClipBounds
+.public Camera_SetClipBounds
 .public sub_02024B34
 .public sub_02025224
 .public GF_AssertFail

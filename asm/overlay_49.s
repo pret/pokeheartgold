@@ -4933,7 +4933,7 @@ ov49_0225AC08: ; 0x0225AC08
 _0225AC16:
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
 	.balign 4, 0
@@ -5900,7 +5900,7 @@ ov49_0225B308: ; 0x0225B308
 	mov r0, #8
 	mov r1, #0x40
 	add r2, r7, #0
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	ldr r1, [sp]
 	ldr r4, _0225B358 ; =ov49_02269714
 	str r0, [r1]
@@ -5940,7 +5940,7 @@ ov49_0225B35C: ; 0x0225B35C
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	ldr r0, [r6]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	mov r4, #0
 	add r5, r6, #0
 _0225B36A:
@@ -6079,11 +6079,11 @@ _0225B434: .word BufferECWord
 
 	thumb_func_start ov49_0225B438
 ov49_0225B438: ; 0x0225B438
-	ldr r3, _0225B440 ; =ScrStrBufs_ResetBuffers
+	ldr r3, _0225B440 ; =MessageFormat_ResetBuffers
 	ldr r0, [r0]
 	bx r3
 	nop
-_0225B440: .word ScrStrBufs_ResetBuffers
+_0225B440: .word MessageFormat_ResetBuffers
 	thumb_func_end ov49_0225B438
 
 	thumb_func_start ov49_0225B444
@@ -9134,7 +9134,7 @@ _0225CB8C:
 	sub r1, r1, #1
 	bne _0225CB8C
 	add r0, r5, #0
-	bl GF_Camera_Create
+	bl Camera_Create
 	str r0, [r4]
 	mov r0, #0
 	str r0, [sp]
@@ -9147,15 +9147,15 @@ _0225CB8C:
 	ldr r2, _0225CBD4 ; =ov49_02269A6C
 	ldr r3, _0225CBD8 ; =0x000005C1
 	add r0, #8
-	bl GF_Camera_InitFromTargetDistanceAndAngle
+	bl Camera_InitFromTargetDistanceAndAngle
 	ldr r0, [r4]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	mov r0, #0x96
 	mov r1, #0xe1
 	ldr r2, [r4]
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 	add r0, r4, #0
 	add sp, #0xc
 	pop {r4, r5, pc}

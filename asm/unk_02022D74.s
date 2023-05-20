@@ -510,14 +510,14 @@ _02023112:
 	pop {r4, pc}
 	thumb_func_end sub_020230F8
 
-	thumb_func_start GF_Camera_Create
-GF_Camera_Create: ; 0x02023114
+	thumb_func_start Camera_Create
+Camera_Create: ; 0x02023114
 	ldr r3, _0202311C ; =AllocFromHeap
 	mov r1, #0x68
 	bx r3
 	nop
 _0202311C: .word AllocFromHeap
-	thumb_func_end GF_Camera_Create
+	thumb_func_end Camera_Create
 
 	thumb_func_start sub_02023120
 sub_02023120: ; 0x02023120
@@ -542,14 +542,14 @@ _02023130:
 	bx lr
 	thumb_func_end sub_02023128
 
-	thumb_func_start GF_Camera_RegisterToStaticPtr
-GF_Camera_RegisterToStaticPtr: ; 0x0202313C
+	thumb_func_start Camera_RegisterToStaticPtr
+Camera_RegisterToStaticPtr: ; 0x0202313C
 	ldr r1, _02023144 ; =_021D2204
 	str r0, [r1]
 	bx lr
 	nop
 _02023144: .word _021D2204
-	thumb_func_end GF_Camera_RegisterToStaticPtr
+	thumb_func_end Camera_RegisterToStaticPtr
 
 	thumb_func_start sub_02023148
 sub_02023148: ; 0x02023148
@@ -587,7 +587,7 @@ sub_02023154: ; 0x02023154
 	ldr r1, _020231EC ; =_021D2204
 	add r0, sp, #0
 	ldr r1, [r1]
-	bl GF_Camera_ShiftBy
+	bl Camera_ShiftBy
 	ldr r0, _020231EC ; =_021D2204
 	ldr r3, [r0]
 	ldr r2, [r3, #0x54]
@@ -644,8 +644,8 @@ _020231FC: .word NNS_G3dGlb + 0x4C
 _02023200: .word NNS_G3dGlb + 0x80
 	thumb_func_end sub_02023154
 
-	thumb_func_start GF_Camera_SetBindTarget
-GF_Camera_SetBindTarget: ; 0x02023204
+	thumb_func_start Camera_SetBindTarget
+Camera_SetBindTarget: ; 0x02023204
 	add r3, r0, #0
 	add r2, r1, #0
 	ldmia r3!, {r0, r1}
@@ -654,7 +654,7 @@ GF_Camera_SetBindTarget: ; 0x02023204
 	ldr r0, [r3]
 	str r0, [r2]
 	bx lr
-	thumb_func_end GF_Camera_SetBindTarget
+	thumb_func_end Camera_SetBindTarget
 
 	thumb_func_start sub_02023214
 sub_02023214: ; 0x02023214
@@ -686,8 +686,8 @@ sub_02023234: ; 0x02023234
 	bx lr
 	thumb_func_end sub_02023234
 
-	thumb_func_start GF_Camera_SetClipBounds
-GF_Camera_SetClipBounds: ; 0x02023240
+	thumb_func_start Camera_SetClipBounds
+Camera_SetClipBounds: ; 0x02023240
 	str r0, [r2, #0xc]
 	add r0, r2, #0
 	str r1, [r2, #0x10]
@@ -698,10 +698,10 @@ GF_Camera_SetClipBounds: ; 0x02023240
 	bx r3
 	.balign 4, 0
 _02023250: .word sub_020233D8
-	thumb_func_end GF_Camera_SetClipBounds
+	thumb_func_end Camera_SetClipBounds
 
-	thumb_func_start GF_Camera_InitFromTargetDistanceAndAngle
-GF_Camera_InitFromTargetDistanceAndAngle: ; 0x02023254
+	thumb_func_start Camera_InitFromTargetDistanceAndAngle
+Camera_InitFromTargetDistanceAndAngle: ; 0x02023254
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r4, [sp, #0x20]
 	add r6, r0, #0
@@ -752,7 +752,7 @@ GF_Camera_InitFromTargetDistanceAndAngle: ; 0x02023254
 	str r0, [r4, #0x60]
 _020232BA:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end GF_Camera_InitFromTargetDistanceAndAngle
+	thumb_func_end Camera_InitFromTargetDistanceAndAngle
 
 	thumb_func_start sub_020232BC
 sub_020232BC: ; 0x020232BC
@@ -988,8 +988,8 @@ _0202348C: .word NNS_G3dGlb + 0x80
 _02023490: .word _0210F6DC
 	thumb_func_end sub_020233D8
 
-	thumb_func_start GF_Camera_SetPerspectiveAngle
-GF_Camera_SetPerspectiveAngle: ; 0x02023494
+	thumb_func_start Camera_SetPerspectiveAngle
+Camera_SetPerspectiveAngle: ; 0x02023494
 	add r2, r1, #0
 	add r2, #0x46
 	strh r0, [r2]
@@ -1018,7 +1018,7 @@ GF_Camera_SetPerspectiveAngle: ; 0x02023494
 	nop
 _020234C8: .word sub_020233D8
 _020234CC: .word FX_SinCosTable_
-	thumb_func_end GF_Camera_SetPerspectiveAngle
+	thumb_func_end Camera_SetPerspectiveAngle
 
 	thumb_func_start sub_020234D0
 sub_020234D0: ; 0x020234D0
@@ -1056,8 +1056,8 @@ _0202350C: .word sub_020233D8
 _02023510: .word FX_SinCosTable_
 	thumb_func_end sub_020234D0
 
-	thumb_func_start GF_Camera_ShiftBy
-GF_Camera_ShiftBy: ; 0x02023514
+	thumb_func_start Camera_ShiftBy
+Camera_ShiftBy: ; 0x02023514
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -1072,7 +1072,7 @@ GF_Camera_ShiftBy: ; 0x02023514
 	add r2, r4, #0
 	bl VEC_Add
 	pop {r3, r4, r5, pc}
-	thumb_func_end GF_Camera_ShiftBy
+	thumb_func_end Camera_ShiftBy
 
 	thumb_func_start sub_02023534
 sub_02023534: ; 0x02023534
@@ -1095,8 +1095,8 @@ sub_02023534: ; 0x02023534
 _02023554: .word sub_02022E54
 	thumb_func_end sub_02023534
 
-	thumb_func_start GF_Camera_SetAngle
-GF_Camera_SetAngle: ; 0x02023558
+	thumb_func_start Camera_SetAngle
+Camera_SetAngle: ; 0x02023558
 	ldrh r2, [r0]
 	strh r2, [r1, #0x3c]
 	ldrh r2, [r0, #2]
@@ -1114,7 +1114,7 @@ GF_Camera_SetAngle: ; 0x02023558
 	bx r3
 	nop
 _02023578: .word sub_02022D74
-	thumb_func_end GF_Camera_SetAngle
+	thumb_func_end Camera_SetAngle
 
 	thumb_func_start sub_0202357C
 sub_0202357C: ; 0x0202357C
@@ -1166,15 +1166,15 @@ sub_020235A8: ; 0x020235A8
 _020235D0: .word sub_02022D74
 	thumb_func_end sub_020235A8
 
-	thumb_func_start GF_Camera_SetDistance
-GF_Camera_SetDistance: ; 0x020235D4
+	thumb_func_start Camera_SetDistance
+Camera_SetDistance: ; 0x020235D4
 	ldr r3, _020235DC ; =sub_02022D74
 	str r0, [r1, #0x38]
 	add r0, r1, #0
 	bx r3
 	.balign 4, 0
 _020235DC: .word sub_02022D74
-	thumb_func_end GF_Camera_SetDistance
+	thumb_func_end Camera_SetDistance
 
 	thumb_func_start sub_020235E0
 sub_020235E0: ; 0x020235E0
@@ -1205,22 +1205,22 @@ sub_020235FC: ; 0x020235FC
 _02023608: .word sub_02022D74
 	thumb_func_end sub_020235FC
 
-	thumb_func_start GF_Camera_GetPerspectiveAngle
-GF_Camera_GetPerspectiveAngle: ; 0x0202360C
+	thumb_func_start Camera_GetPerspectiveAngle
+Camera_GetPerspectiveAngle: ; 0x0202360C
 	add r0, #0x46
 	ldrh r0, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end GF_Camera_GetPerspectiveAngle
+	thumb_func_end Camera_GetPerspectiveAngle
 
-	thumb_func_start GF_Camera_GetDistance
-GF_Camera_GetDistance: ; 0x02023614
+	thumb_func_start Camera_GetDistance
+Camera_GetDistance: ; 0x02023614
 	ldr r0, [r0, #0x38]
 	bx lr
-	thumb_func_end GF_Camera_GetDistance
+	thumb_func_end Camera_GetDistance
 
-	thumb_func_start GF_Camera_GetAngle
-GF_Camera_GetAngle: ; 0x02023618
+	thumb_func_start Camera_GetAngle
+Camera_GetAngle: ; 0x02023618
 	ldrh r2, [r1, #0x3c]
 	strh r2, [r0]
 	ldrh r2, [r1, #0x3e]
@@ -1233,10 +1233,10 @@ GF_Camera_GetAngle: ; 0x02023618
 	ldrh r1, [r1]
 	strh r1, [r0, #6]
 	bx lr
-	thumb_func_end GF_Camera_GetAngle
+	thumb_func_end Camera_GetAngle
 
-	thumb_func_start GF_Camera_GetTarget
-GF_Camera_GetTarget: ; 0x02023630
+	thumb_func_start Camera_GetTarget
+Camera_GetTarget: ; 0x02023630
 	add r2, r1, #0
 	add r2, #0x20
 	add r3, r0, #0
@@ -1245,7 +1245,7 @@ GF_Camera_GetTarget: ; 0x02023630
 	ldr r0, [r2]
 	str r0, [r3]
 	bx lr
-	thumb_func_end GF_Camera_GetTarget
+	thumb_func_end Camera_GetTarget
 
 	thumb_func_start sub_02023640
 sub_02023640: ; 0x02023640
@@ -1271,11 +1271,11 @@ sub_02023654: ; 0x02023654
 	bx lr
 	thumb_func_end sub_02023654
 
-	thumb_func_start GF_Camera_GetBindTarget
-GF_Camera_GetBindTarget: ; 0x02023658
+	thumb_func_start Camera_GetBindTarget
+Camera_GetBindTarget: ; 0x02023658
 	ldr r0, [r0, #0x54]
 	bx lr
-	thumb_func_end GF_Camera_GetBindTarget
+	thumb_func_end Camera_GetBindTarget
 
 	thumb_func_start sub_0202365C
 sub_0202365C: ; 0x0202365C

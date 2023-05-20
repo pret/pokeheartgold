@@ -1,7 +1,7 @@
 #include "bug_contest.h"
 #include "pokedex.h"
 #include "math_util.h"
-#include "msgfmt.h"
+#include "message_format.h"
 #include "wild_encounter.h"
 #include "pokemon_storage_system.h"
 #include "constants/items.h"
@@ -122,7 +122,7 @@ void BugContest_Judge(BUGCONTEST *bugContest) {
     }
 }
 
-void BugContest_BufferContestWinnerNames(BUGCONTEST *bugContest, MSGDATA *msgData, MSGFMT *msgFmt, u8 place) {
+void BugContest_BufferContestWinnerNames(BUGCONTEST *bugContest, MSGDATA *msgData, MessageFormat *msgFmt, u8 place) {
     BUGCONTESTANT *contestant;
     STRING *string;
 
@@ -149,7 +149,7 @@ BOOL BugContest_ContestantIsRegistered(BUGCONTEST *bugContest, u8 id) {
     return FALSE;
 }
 
-BOOL BugContest_BufferCaughtMonNick(BUGCONTEST *bugContest, MSGFMT *msgFmt, u8 slot) {
+BOOL BugContest_BufferCaughtMonNick(BUGCONTEST *bugContest, MessageFormat *msgFmt, u8 slot) {
     STRING *string;
 
     if (!bugContest->caught_poke) {

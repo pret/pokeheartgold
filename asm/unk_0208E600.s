@@ -34,7 +34,7 @@ sub_0208E600: ; 0x0208E600
 	ldr r2, [r4]
 	mov r0, #9
 	mov r1, #0x20
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	str r0, [r4, #8]
 	str r5, [r4, #0xc]
 	str r6, [r4, #0x10]
@@ -458,7 +458,7 @@ _0208E9C0:
 	bl FreeToHeap
 _0208E9CA:
 	ldr r0, [r4, #8]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4, #4]
 	bl DestroyMsgData
 	add r0, r4, #0

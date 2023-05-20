@@ -55,8 +55,8 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
-.public ScrStrBufs_new_custom
-.public ScrStrBufs_delete
+.public MessageFormat_new_custom
+.public MessageFormat_delete
 .public BufferPlayersName
 .public BufferIntegerAsString
 .public BufferTypeName
@@ -73,7 +73,7 @@
 .public BufferDEGreeting
 .public BufferSPGreeting
 .public StringExpandPlaceholders
-.public ScrStrBufs_ResetBuffers
+.public MessageFormat_ResetBuffers
 .public sub_0200E374
 .public DestroySysTask
 .public LoadUserFrameGfx1
@@ -84,7 +84,7 @@
 .public ClearFrameAndWindow2
 .public sub_0200EC0C
 .public DrawFrameAndWindow3
-.public sub_0200F0AC
+.public WaitingIcon_new
 .public sub_0200F450
 .public sub_0200F478
 .public BeginNormalPaletteFade
@@ -170,13 +170,13 @@
 .public GX_EngineAToggleLayers
 .public GX_EngineBToggleLayers
 .public GX_SwapDisplay
-.public GF_Camera_Create
+.public Camera_Create
 .public sub_02023120
-.public GF_Camera_RegisterToStaticPtr
+.public Camera_RegisterToStaticPtr
 .public sub_02023148
 .public sub_02023154
-.public GF_Camera_SetClipBounds
-.public GF_Camera_InitFromTargetDistanceAndAngle
+.public Camera_SetClipBounds
+.public Camera_InitFromTargetDistanceAndAngle
 .public sub_02024504
 .public sub_0202457C
 .public sub_02024714

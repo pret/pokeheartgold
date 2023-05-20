@@ -1,6 +1,7 @@
 #ifndef GUARD_OPTIONS_H
 #define GUARD_OPTIONS_H
 
+#include <cstdint>
 #include <iostream>
 #include <string>
 #include <vector>

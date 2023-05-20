@@ -6,7 +6,7 @@
 
 typedef struct DAYCAREMAIL {
     MAIL mail;
-    u16 ot_name[OT_NAME_LENGTH + 1];
+    u16 ot_name[PLAYER_NAME_LENGTH + 1];
     u16 nickname[POKEMON_NAME_LENGTH + 1];
     u8 padding_5E[2];
 } DAYCAREMAIL;

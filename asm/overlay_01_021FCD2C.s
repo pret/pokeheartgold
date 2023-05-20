@@ -32,7 +32,7 @@ ov01_021FCD2C: ; 0x021FCD2C
 	str r5, [r4, #0x2c]
 	ldr r0, [r5, #0x24]
 	str r0, [r4, #0x30]
-	bl GF_Camera_GetDistance
+	bl Camera_GetDistance
 	str r0, [r4, #0x10]
 	str r0, [r4, #0x20]
 	ldr r0, _021FCD64 ; =ov01_021FCDA8
@@ -170,13 +170,13 @@ _021FCE2A:
 
 	thumb_func_start ov01_021FCE34
 ov01_021FCE34: ; 0x021FCE34
-	ldr r3, _021FCE40 ; =GF_Camera_SetDistance
+	ldr r3, _021FCE40 ; =Camera_SetDistance
 	add r1, r0, #0
 	ldr r0, [r1, #0x20]
 	ldr r1, [r1, #0x30]
 	bx r3
 	nop
-_021FCE40: .word GF_Camera_SetDistance
+_021FCE40: .word Camera_SetDistance
 	thumb_func_end ov01_021FCE34
 
 	thumb_func_start ov01_021FCE44

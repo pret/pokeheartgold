@@ -13,7 +13,7 @@
 typedef struct ItemSlot {
     u16 id;          // from constants/items.h
     u16 quantity;    // quantity of that item
-} ITEM_SLOT;
+} ItemSlot;
 
 /*
  * Bit array describing the effects of using the item on a
@@ -97,7 +97,7 @@ typedef struct ItemData
 } ITEMDATA;
 
 /*
- * void MoveItemSlotInList(ITEM_SLOT *slots, int from, int to, int pocket, HeapID heap_id)
+ * void MoveItemSlotInList(ItemSlot *slots, int from, int to, int pocket, HeapID heap_id)
  *
  * Move item slot within an array, shifting the intermediate slots.
  * Performs the operation out-of-place using a temporary array from the heap.
@@ -108,7 +108,7 @@ typedef struct ItemData
  * @param pocket:      Pocket ID
  * @param heap_id:     Heap ID to allocate the temporary array from
  */
-void MoveItemSlotInList(ITEM_SLOT *slots, int from, int to, int pocket, HeapID heap_id);
+void MoveItemSlotInList(ItemSlot *slots, int from, int to, int pocket, HeapID heap_id);
 
 
 /*

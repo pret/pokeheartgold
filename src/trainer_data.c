@@ -28,7 +28,7 @@ void EnemyTrainerSet_Init(BATTLE_SETUP *battleSetup, SAVEDATA *saveData, HeapID 
                 CopyU16StringArray(battleSetup->trainer[i].name, rivalName);
             } else {
                 string = NewString_ReadMsgData(msgData, battleSetup->trainerId[i]);
-                CopyStringToU16Array(string, battleSetup->trainer[i].name, OT_NAME_LENGTH + 1);
+                CopyStringToU16Array(string, battleSetup->trainer[i].name, PLAYER_NAME_LENGTH + 1);
                 String_dtor(string);
             }
             CreateNPCTrainerParty(battleSetup, i, heap_id);
@@ -295,7 +295,7 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
 
     // The trainer types can be more efficiently and expandibly treated as a flag
     // array, with bit 0 being custom moveset and bit 1 being held item.
-    // Nintendo didn't do it that way, instead using a switch statement and a lot
+    // Game Freak didn't do it that way, instead using a switch statement and a lot
     // of code duplication. This has been the case since the 2nd generation games.
     switch (enemies->trainer[party_id].trainerType) {
     case TRTYPE_MON: {

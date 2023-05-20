@@ -2580,7 +2580,7 @@ ov48_02259BC0: ; 0x02259BC0
 	sub sp, #8
 	add r4, r0, #0
 	add r0, r3, #0
-	bl GF_Camera_Create
+	bl Camera_Create
 	str r0, [r4]
 	mov r3, #0
 	str r3, [sp]
@@ -2594,12 +2594,12 @@ ov48_02259BC0: ; 0x02259BC0
 	ldr r2, [r4]
 	mov r0, #0
 	lsl r1, r1, #0xe
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 	ldr r1, [r4]
 	mov r0, #0
 	bl sub_020233D8
 	ldr r0, [r4]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	ldr r0, [sp, #0x14]
 	lsl r0, r0, #0x1f
 	lsr r0, r0, #0x1f
@@ -2618,7 +2618,7 @@ _02259C16:
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4]
-	bl GF_Camera_SetDistance
+	bl Camera_SetDistance
 	add sp, #8
 	pop {r4}
 	pop {r3}
@@ -2738,7 +2738,7 @@ _02259CE0:
 _02259CEA:
 	ldr r0, [r2, #0xc]
 	ldr r1, [r2]
-	bl GF_Camera_SetDistance
+	bl Camera_SetDistance
 	mov r0, #0
 	pop {r3, pc}
 	nop
@@ -5413,7 +5413,7 @@ ov48_0225B068: ; 0x0225B068
 	mov r0, #8
 	mov r1, #0x40
 	add r2, r4, #0
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	str r0, [r5, #4]
 	mov r0, #0x80
 	add r1, r4, #0
@@ -5435,7 +5435,7 @@ ov48_0225B0A4: ; 0x0225B0A4
 	ldr r0, [r4]
 	bl DestroyMsgData
 	ldr r0, [r4, #4]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4, #8]
 	bl String_dtor
 	ldr r0, [r4, #0xc]
@@ -5492,7 +5492,7 @@ ov48_0225B108: ; 0x0225B108
 	ldr r0, [r5, #4]
 	add r4, r1, #0
 	add r6, r2, #0
-	bl ScrStrBufs_ResetBuffers
+	bl MessageFormat_ResetBuffers
 	ldr r0, [r5]
 	ldr r2, [r5, #0xc]
 	mov r1, #3

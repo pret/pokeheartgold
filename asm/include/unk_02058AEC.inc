@@ -4,8 +4,8 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
-.public ScrStrBufs_new
-.public ScrStrBufs_delete
+.public MessageFormat_new
+.public MessageFormat_delete
 .public BufferPlayersName
 .public BufferBoxMonSpeciesName
 .public StringExpandPlaceholders
@@ -136,7 +136,7 @@
 .public GetPartyMonByIndex
 .public SavArray_PlayerParty_get
 .public SavArray_IsNatDexEnabled
-.public Sav2_Bag_get
+.public SaveGetBag
 .public sub_02088288
 .public sub_0208828C
 .public sub_02089D40

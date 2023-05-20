@@ -1,6 +1,7 @@
+#include "global.h"
 #include "heap.h"
 #include "msgdata.h"
-#include "msgfmt.h"
+#include "message_format.h"
 
 static void CopyEncryptedMessage16(u16 *dest, const u16 *src, MAT_ENTRY *alloc);
 static void ReadMsgData_ExistingNarc_ExistingString(NARC * narc, u32 group, u32 num, u32 heap_id, STRING * dest);
@@ -275,14 +276,14 @@ void GetSpeciesNameIntoArray(u16 species, u32 heap_id, u16 * dest) {
     DestroyMsgData(msgData);
 }
 
-STRING * ReadMsgData_ExpandPlaceholders(MSGFMT * a0, MSGDATA * msgData, u32 msgno, HeapID heap_id) {
+STRING * ReadMsgData_ExpandPlaceholders(MessageFormat * messageFormat, MSGDATA * msgData, u32 msgno, HeapID heap_id) {
     STRING * ret = NULL;
     STRING * r4 = String_ctor(1024, 0);
     STRING * r5;
     if (r4 != NULL) {
         r5 = NewString_ReadMsgData(msgData, msgno);
         if (r5 != NULL) {
-            StringExpandPlaceholders(a0, r4, r5);
+            StringExpandPlaceholders(messageFormat, r4, r5);
             ret = StringDup(r4, heap_id);
             String_dtor(r5);
         }

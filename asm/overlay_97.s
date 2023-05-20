@@ -1229,7 +1229,7 @@ ov97_0221EEA4: ; 0x0221EEA4
 	bl NewMsgDataFromNarc
 	str r0, [r5, #0x6c]
 	ldr r0, [r5]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r5, #0x70]
 	ldr r1, [r5]
 	mov r0, #0xb
@@ -1308,7 +1308,7 @@ ov97_0221F020: ; 0x0221F020
 	ldr r0, [r7, #0x6c]
 	bl DestroyMsgData
 	ldr r0, [r7, #0x70]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r7, #0x74]
 	bl String_dtor
 	add r0, r7, #0

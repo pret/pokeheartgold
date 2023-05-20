@@ -1921,7 +1921,7 @@ _021E6816:
 	ldr r0, [r6, #0x38]
 	bl DestroyMsgData
 	ldr r0, [r6, #0x3c]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r6, #0x40]
 	bl String_dtor
 	ldr r0, [r6, #0x44]
@@ -1999,7 +1999,7 @@ ov87_021E68DC: ; 0x021E68DC
 	bl NewMsgDataFromNarc
 	str r0, [r5, #0x38]
 	mov r0, #0x7a
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r5, #0x3c]
 	mov r0, #0x96
 	lsl r0, r0, #2

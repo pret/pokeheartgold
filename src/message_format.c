@@ -1,4 +1,4 @@
-#include "msgfmt.h"
+#include "message_format.h"
 #include "msgdata.h"
 #include "pokemon.h"
 #include "trainer_data.h"
@@ -18,28 +18,26 @@
 #include "msgdata/msg/msg_0274.h"
 #include "msgdata/msg/msg_0191.h"
 
-void ScrStrBufs_InitSub(MSGFMT_FIELD *field);
-
-MSGFMT *ScrStrBufs_new(HeapID heapId) {
-    return ScrStrBufs_new_custom(8, 32, heapId);
+MessageFormat *MessageFormat_new(HeapID heapId) {
+    return MessageFormat_new_custom(8, 32, heapId);
 }
 
-MSGFMT *ScrStrBufs_new_custom(u32 nstr, u32 len, HeapID heapId) {
-    MSGFMT *ret;
+MessageFormat *MessageFormat_new_custom(u32 nstr, u32 len, HeapID heapId) {
+    MessageFormat *ret;
     int i;
 
     GF_ASSERT(nstr != 0);
     GF_ASSERT(len != 0);
-    ret = AllocFromHeapAtEnd(heapId, sizeof(MSGFMT));
+    ret = AllocFromHeapAtEnd(heapId, sizeof(MessageFormat));
     if (ret != NULL) {
-        ret->nstr = nstr;
+        ret->count = nstr;
         ret->heapId = heapId;
         ret->buffer = String_ctor(len, heapId);
         if (ret->buffer != NULL) {
-            ret->fields = AllocFromHeapAtEnd(heapId, nstr * sizeof(MSGFMT_FIELD));
+            ret->fields = AllocFromHeapAtEnd(heapId, nstr * sizeof(MessageFormatFields));
             if (ret->fields != NULL) {
                 for (i = 0; i < nstr; i++) {
-                    ScrStrBufs_InitSub(&ret->fields[i]);
+                    MessageFormat_InitFields(&ret->fields[i]);
                     ret->fields[i].msg = String_ctor(len, heapId);
                     if (ret->fields[i].msg == NULL) {
                         break;
@@ -55,32 +53,32 @@ MSGFMT *ScrStrBufs_new_custom(u32 nstr, u32 len, HeapID heapId) {
     return NULL;
 }
 
-void ScrStrBufs_delete(MSGFMT *msgFmt) {
-    int i;
-    GF_ASSERT(msgFmt->nstr != 0);
-    if (msgFmt->fields != NULL) {
-        for (i = 0; i < msgFmt->nstr; i++) {
-            if (msgFmt->fields[i].msg == NULL) {
+void MessageFormat_delete(MessageFormat *messageFormat) {
+    s32 i;
+    GF_ASSERT(messageFormat->count != 0);
+    if (messageFormat->fields != NULL) {
+        for (i = 0; i < messageFormat->count; i++) {
+            if (messageFormat->fields[i].msg == NULL) {
                 break;
             }
-            String_dtor(msgFmt->fields[i].msg);
+            String_dtor(messageFormat->fields[i].msg);
         }
-        FreeToHeap(msgFmt->fields);
+        FreeToHeap(messageFormat->fields);
     }
-    if (msgFmt->buffer != NULL) {
-        String_dtor(msgFmt->buffer);
+    if (messageFormat->buffer != NULL) {
+        String_dtor(messageFormat->buffer);
     }
-    msgFmt->nstr = 0;
-    FreeToHeap(msgFmt);
+    messageFormat->count = 0;
+    FreeToHeap(messageFormat);
 }
 
-void ScrStrBufs_InitSub(MSGFMT_FIELD *field) {
+void MessageFormat_InitFields(MessageFormatFields *field) {
 #pragma unused(field)
 }
 
-void SetStringAsPlaceholder(MSGFMT *msgFmt, u32 fieldno, const STRING *string, const MSGFMT_FIELD_ATTRS *attrs) {
-    GF_ASSERT(fieldno < msgFmt->nstr);
-    if (fieldno < msgFmt->nstr) {
+void SetStringAsPlaceholder(MessageFormat *msgFmt, u32 fieldno, const STRING *string, const MessageFormatAttrs *attrs) {
+    GF_ASSERT(fieldno < msgFmt->count);
+    if (fieldno < msgFmt->count) {
         if (attrs != NULL) {
             msgFmt->fields[fieldno].attrs = *attrs;
         }
@@ -88,22 +86,22 @@ void SetStringAsPlaceholder(MSGFMT *msgFmt, u32 fieldno, const STRING *string, c
     }
 }
 
-void BufferString(MSGFMT *msgFmt, u32 fieldno, const STRING *string, int a3, int a4, int a5) {
+void BufferString(MessageFormat *msgFmt, u32 fieldno, const STRING *string, s32 a3, s32 a4, s32 a5) {
 #pragma unused(a3, a4, a5)
     SetStringAsPlaceholder(msgFmt, fieldno, string, NULL);
 }
 
-void BufferPlayersName(MSGFMT *msgFmt, u32 fieldno, PLAYERPROFILE *playerProfile) {
+void BufferPlayersName(MessageFormat *msgFmt, u32 fieldno, PLAYERPROFILE *playerProfile) {
     CopyU16ArrayToString(msgFmt->buffer, PlayerProfile_GetNamePtr(playerProfile));
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }
 
-void BufferRivalsName(MSGFMT *msgFmt, u32 fieldno, SAVEDATA *saveData) {
+void BufferRivalsName(MessageFormat *msgFmt, u32 fieldno, SAVEDATA *saveData) {
     CopyU16ArrayToString(msgFmt->buffer, Sav2_Misc_RivalName_const_get(Sav2_Misc_const_get(saveData)));
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }
 
-void BufferFriendsName(MSGFMT *msgFmt, u32 fieldno, SAVEDATA *saveData) {
+void BufferFriendsName(MessageFormat *msgFmt, u32 fieldno, SAVEDATA *saveData) {
     PLAYERPROFILE *playerProfile = Sav2_PlayerData_GetProfileAddr(saveData);
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0445_bin, msgFmt->heapId);
     if (PlayerProfile_GetTrainerGender(playerProfile) == PLAYER_GENDER_MALE) {
@@ -115,44 +113,44 @@ void BufferFriendsName(MSGFMT *msgFmt, u32 fieldno, SAVEDATA *saveData) {
     DestroyMsgData(msgData);
 }
 
-void BufferSpeciesName(MSGFMT *msgFmt, u32 fieldno, u16 species) {
+void BufferSpeciesName(MessageFormat *msgFmt, u32 fieldno, u16 species) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0237_bin, msgFmt->heapId);
     ReadMsgDataIntoString(msgData, species, msgFmt->buffer);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
     DestroyMsgData(msgData);
 }
 
-void BufferBoxMonSpeciesName(MSGFMT *msgFmt, u32 fieldno, BoxPokemon *boxMon) {
+void BufferBoxMonSpeciesName(MessageFormat *msgFmt, u32 fieldno, BoxPokemon *boxMon) {
     BufferSpeciesName(msgFmt, fieldno, GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL));
 }
 
-void BufferBoxMonSpeciesNameWithArticle(MSGFMT *msgFmt, u32 fieldno, BoxPokemon *boxMon) {
+void BufferBoxMonSpeciesNameWithArticle(MessageFormat *msgFmt, u32 fieldno, BoxPokemon *boxMon) {
     BufferSpeciesNameWithArticle(msgFmt, fieldno, GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL));
 }
 
-void BufferSpeciesNameWithArticle(MSGFMT *msgFmt, u32 fieldno, u32 species) {
+void BufferSpeciesNameWithArticle(MessageFormat *msgFmt, u32 fieldno, u32 species) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0238_bin, msgFmt->heapId);
     ReadMsgDataIntoString(msgData, species, msgFmt->buffer);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
     DestroyMsgData(msgData);
 }
 
-void BufferBoxMonNickname(MSGFMT *msgFmt, u32 fieldno, BoxPokemon *boxMon) {
+void BufferBoxMonNickname(MessageFormat *msgFmt, u32 fieldno, BoxPokemon *boxMon) {
     GetBoxMonData(boxMon, MON_DATA_NICKNAME_3, msgFmt->buffer);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }
 
-void BufferBoxMonOTName(MSGFMT *msgFmt, u32 fieldno, BoxPokemon *boxMon) {
+void BufferBoxMonOTName(MessageFormat *msgFmt, u32 fieldno, BoxPokemon *boxMon) {
     GetBoxMonData(boxMon, MON_DATA_OT_NAME_2, msgFmt->buffer);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }
 
-void BufferIntegerAsString(MSGFMT *msgFmt, u32 fieldno, int num, u32 numDigits, STRCONVMODE strconvmode, BOOL whichCharset) {
+void BufferIntegerAsString(MessageFormat *msgFmt, u32 fieldno, s32 num, u32 numDigits, STRCONVMODE strconvmode, BOOL whichCharset) {
     String16_FormatInteger(msgFmt->buffer, num, numDigits, strconvmode, whichCharset);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }
 
-void BufferMoveName(MSGFMT *msgFmt, u32 fieldno, u32 moveId) {
+void BufferMoveName(MessageFormat *msgFmt, u32 fieldno, u32 moveId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0750_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, moveId, msgFmt->buffer);
@@ -161,7 +159,7 @@ void BufferMoveName(MSGFMT *msgFmt, u32 fieldno, u32 moveId) {
     }
 }
 
-void BufferRibbonNameOrDesc(MSGFMT *msgFmt, u32 fieldno, u32 decoId) {
+void BufferRibbonNameOrDesc(MessageFormat *msgFmt, u32 fieldno, u32 decoId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0424_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, decoId, msgFmt->buffer);
@@ -170,7 +168,7 @@ void BufferRibbonNameOrDesc(MSGFMT *msgFmt, u32 fieldno, u32 decoId) {
     }
 }
 
-void BufferAbilityName(MSGFMT *msgFmt, u32 fieldno, u32 abilityId) {
+void BufferAbilityName(MessageFormat *msgFmt, u32 fieldno, u32 abilityId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0720_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, abilityId, msgFmt->buffer);
@@ -179,14 +177,14 @@ void BufferAbilityName(MSGFMT *msgFmt, u32 fieldno, u32 abilityId) {
     }
 }
 
-void BufferNatureName(MSGFMT *msgFmt, u32 fieldno, u32 natureId) {
+void BufferNatureName(MessageFormat *msgFmt, u32 fieldno, u32 natureId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0034_bin, msgFmt->heapId);
     ReadMsgDataIntoString(msgData, natureId, msgFmt->buffer);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
     DestroyMsgData(msgData);
 }
 
-void BufferItemName(MSGFMT *msgFmt, u32 fieldno, u32 itemId) {
+void BufferItemName(MessageFormat *msgFmt, u32 fieldno, u32 itemId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0222_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, itemId, msgFmt->buffer);
@@ -195,7 +193,7 @@ void BufferItemName(MSGFMT *msgFmt, u32 fieldno, u32 itemId) {
     }
 }
 
-void BufferItemNameWithIndefArticle(MSGFMT *msgFmt, u32 fieldno, u32 itemId) {
+void BufferItemNameWithIndefArticle(MessageFormat *msgFmt, u32 fieldno, u32 itemId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0223_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, itemId, msgFmt->buffer);
@@ -204,7 +202,7 @@ void BufferItemNameWithIndefArticle(MSGFMT *msgFmt, u32 fieldno, u32 itemId) {
     }
 }
 
-void BufferItemNamePlural(MSGFMT *msgFmt, u32 fieldno, u32 itemId) {
+void BufferItemNamePlural(MessageFormat *msgFmt, u32 fieldno, u32 itemId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0224_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, itemId, msgFmt->buffer);
@@ -213,7 +211,7 @@ void BufferItemNamePlural(MSGFMT *msgFmt, u32 fieldno, u32 itemId) {
     }
 }
 
-void BufferPocketName(MSGFMT *msgFmt, u32 fieldno, u32 pocketId) {
+void BufferPocketName(MessageFormat *msgFmt, u32 fieldno, u32 pocketId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0226_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, pocketId, msgFmt->buffer);
@@ -222,7 +220,7 @@ void BufferPocketName(MSGFMT *msgFmt, u32 fieldno, u32 pocketId) {
     }
 }
 
-void BufferTypeName(MSGFMT *msgFmt, u32 fieldno, u32 typeId) {
+void BufferTypeName(MessageFormat *msgFmt, u32 fieldno, u32 typeId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0735_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, typeId, msgFmt->buffer);
@@ -231,7 +229,7 @@ void BufferTypeName(MSGFMT *msgFmt, u32 fieldno, u32 typeId) {
     }
 }
 
-void BufferStatName(MSGFMT *msgFmt, u32 fieldno, u32 statId) {
+void BufferStatName(MessageFormat *msgFmt, u32 fieldno, u32 statId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0443_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, statId, msgFmt->buffer);
@@ -240,7 +238,7 @@ void BufferStatName(MSGFMT *msgFmt, u32 fieldno, u32 statId) {
     }
 }
 
-void BufferStatusName(MSGFMT *msgFmt, u32 fieldno, u32 statusId) {
+void BufferStatusName(MessageFormat *msgFmt, u32 fieldno, u32 statusId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0044_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, statusId, msgFmt->buffer);
@@ -249,7 +247,7 @@ void BufferStatusName(MSGFMT *msgFmt, u32 fieldno, u32 statusId) {
     }
 }
 
-void BufferFlavorDislikeText(MSGFMT *msgFmt, u32 fieldno, u32 flavorId) {
+void BufferFlavorDislikeText(MessageFormat *msgFmt, u32 fieldno, u32 flavorId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0639_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, flavorId, msgFmt->buffer);
@@ -258,7 +256,7 @@ void BufferFlavorDislikeText(MSGFMT *msgFmt, u32 fieldno, u32 flavorId) {
     }
 }
 
-void BufferLandmarkName(MSGFMT *msgFmt, u32 fieldno, u32 landmarkId) {
+void BufferLandmarkName(MessageFormat *msgFmt, u32 fieldno, u32 landmarkId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0279_bin, msgFmt->heapId);
     if (msgData != NULL) {
         if (landmarkId == 0 || landmarkId >= MsgDataGetCount(msgData)) {
@@ -272,7 +270,7 @@ void BufferLandmarkName(MSGFMT *msgFmt, u32 fieldno, u32 landmarkId) {
     }
 }
 
-void BufferTrainerClassName(MSGFMT *msgFmt, u32 fieldno, u32 trainerClassId) {
+void BufferTrainerClassName(MessageFormat *msgFmt, u32 fieldno, u32 trainerClassId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0730_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, trainerClassId, msgFmt->buffer);
@@ -281,7 +279,7 @@ void BufferTrainerClassName(MSGFMT *msgFmt, u32 fieldno, u32 trainerClassId) {
     }
 }
 
-void BufferTrainerClassNameWithArticle(MSGFMT *msgFmt, u32 fieldno, u32 trainerClassId) {
+void BufferTrainerClassNameWithArticle(MessageFormat *msgFmt, u32 fieldno, u32 trainerClassId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0731_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, trainerClassId, msgFmt->buffer);
@@ -290,7 +288,7 @@ void BufferTrainerClassNameWithArticle(MSGFMT *msgFmt, u32 fieldno, u32 trainerC
     }
 }
 
-void BufferTrainerClassNameFromDataStruct(MSGFMT *msgFmt, u32 fieldno, TRAINER *trainer) {
+void BufferTrainerClassNameFromDataStruct(MessageFormat *msgFmt, u32 fieldno, TRAINER *trainer) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0730_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, trainer->trainerClass, msgFmt->buffer);
@@ -299,7 +297,7 @@ void BufferTrainerClassNameFromDataStruct(MSGFMT *msgFmt, u32 fieldno, TRAINER *
     }
 }
 
-void BufferTrainerName(MSGFMT *msgFmt, u32 fieldno, u32 trainerId) {
+void BufferTrainerName(MessageFormat *msgFmt, u32 fieldno, u32 trainerId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0729_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, trainerId, msgFmt->buffer);
@@ -308,7 +306,7 @@ void BufferTrainerName(MSGFMT *msgFmt, u32 fieldno, u32 trainerId) {
     }
 }
 
-void BufferFrontierOpponentName(MSGFMT *msgFmt, u32 fieldno, u32 opponentId) {
+void BufferFrontierOpponentName(MessageFormat *msgFmt, u32 fieldno, u32 opponentId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0027_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, opponentId, msgFmt->buffer);
@@ -317,13 +315,13 @@ void BufferFrontierOpponentName(MSGFMT *msgFmt, u32 fieldno, u32 opponentId) {
     }
 }
 
-void BufferTrainerNameFromDataStruct(MSGFMT *msgFmt, u32 fieldno, TRAINER *trainer) {
+void BufferTrainerNameFromDataStruct(MessageFormat *msgFmt, u32 fieldno, TRAINER *trainer) {
     CopyU16ArrayToString(msgFmt->buffer, trainer->name);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }
 
 // The GMM associated with this routine is blanked.
-void BufferDecorationName(MSGFMT *msgFmt, u32 fieldno, u32 decorationId) {
+void BufferDecorationName(MessageFormat *msgFmt, u32 fieldno, u32 decorationId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0737_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, decorationId, msgFmt->buffer);
@@ -332,7 +330,7 @@ void BufferDecorationName(MSGFMT *msgFmt, u32 fieldno, u32 decorationId) {
     }
 }
 
-void BufferGenderSymbol(MSGFMT *msgFmt, u32 fieldno, u8 gender) {
+void BufferGenderSymbol(MessageFormat *msgFmt, u32 fieldno, u8 gender) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0040_bin, msgFmt->heapId);
     switch (gender) {
     case PLAYER_GENDER_MALE:
@@ -349,12 +347,12 @@ void BufferGenderSymbol(MSGFMT *msgFmt, u32 fieldno, u8 gender) {
     DestroyMsgData(msgData);
 }
 
-void BufferPCBoxName(MSGFMT *msgFmt, u32 fieldno, PC_STORAGE *pcStorage, u32 boxno) {
+void BufferPCBoxName(MessageFormat *msgFmt, u32 fieldno, PC_STORAGE *pcStorage, u32 boxno) {
     PCStorage_GetBoxName(pcStorage, boxno, msgFmt->buffer);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }
 
-void BufferCountryName(MSGFMT *msgFmt, u32 fieldno, u32 countryId) {
+void BufferCountryName(MessageFormat *msgFmt, u32 fieldno, u32 countryId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0798_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, countryId, msgFmt->buffer);
@@ -363,7 +361,7 @@ void BufferCountryName(MSGFMT *msgFmt, u32 fieldno, u32 countryId) {
     }
 }
 
-void BufferCityName(MSGFMT *msgFmt, u32 fieldno, u32 countryId, u32 cityId) {
+void BufferCityName(MessageFormat *msgFmt, u32 fieldno, u32 countryId, u32 cityId) {
     MSGDATA *msgData;
     int msgBank = GetCityNamesMsgdataIdByCountry(countryId);
     if (msgBank != 0 && cityId != 0) {
@@ -376,12 +374,12 @@ void BufferCityName(MSGFMT *msgFmt, u32 fieldno, u32 countryId, u32 cityId) {
     }
 }
 
-void BufferECWord(MSGFMT *msgFmt, u32 fieldno, u16 ecWordIdx) {
+void BufferECWord(MessageFormat *msgFmt, u32 fieldno, u16 ecWordIdx) {
     GetECWordIntoStringByIndex(ecWordIdx, msgFmt->buffer);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }
 
-void BufferSealName(MSGFMT *msgFmt, u32 fieldno, u32 sealId) {
+void BufferSealName(MessageFormat *msgFmt, u32 fieldno, u32 sealId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0015_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, sealId, msgFmt->buffer);
@@ -390,7 +388,7 @@ void BufferSealName(MSGFMT *msgFmt, u32 fieldno, u32 sealId) {
     }
 }
 
-void BufferSealNamePlural(MSGFMT *msgFmt, u32 fieldno, u32 sealId) {
+void BufferSealNamePlural(MessageFormat *msgFmt, u32 fieldno, u32 sealId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0016_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, sealId, msgFmt->buffer);
@@ -399,7 +397,7 @@ void BufferSealNamePlural(MSGFMT *msgFmt, u32 fieldno, u32 sealId) {
     }
 }
 
-void BufferLocationName(MSGFMT *msgFmt, u32 fieldno, u32 mapsecId) {
+void BufferLocationName(MessageFormat *msgFmt, u32 fieldno, u32 mapsecId) {
     static const u16 msgBanks[] = {
         NARC_msg_msg_0279_bin,
         NARC_msg_msg_0281_bin,
@@ -433,7 +431,7 @@ void BufferLocationName(MSGFMT *msgFmt, u32 fieldno, u32 mapsecId) {
     }
 }
 
-void BufferFashionName(MSGFMT *msgFmt, u32 fieldno, u32 fashionId) {
+void BufferFashionName(MessageFormat *msgFmt, u32 fieldno, u32 fashionId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0216_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, fashionId, msgFmt->buffer);
@@ -442,7 +440,7 @@ void BufferFashionName(MSGFMT *msgFmt, u32 fieldno, u32 fashionId) {
     }
 }
 
-void BufferFashionNameWithArticle(MSGFMT *msgFmt, u32 fieldno, u32 fashionId) {
+void BufferFashionNameWithArticle(MessageFormat *msgFmt, u32 fieldno, u32 fashionId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0217_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, fashionId, msgFmt->buffer);
@@ -451,7 +449,7 @@ void BufferFashionNameWithArticle(MSGFMT *msgFmt, u32 fieldno, u32 fashionId) {
     }
 }
 
-void BufferContestBackgroundName(MSGFMT *msgFmt, u32 fieldno, u32 bgId) {
+void BufferContestBackgroundName(MessageFormat *msgFmt, u32 fieldno, u32 bgId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0218_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, bgId, msgFmt->buffer);
@@ -460,7 +458,7 @@ void BufferContestBackgroundName(MSGFMT *msgFmt, u32 fieldno, u32 bgId) {
     }
 }
 
-void BufferGroupName(MSGFMT *msgFmt, SAVEDATA *saveData, int groupId, int fieldno, int nameType) {
+void BufferGroupName(MessageFormat *msgFmt, SAVEDATA *saveData, s32 groupId, s32 fieldno, s32 nameType) {
     SAV_FRIEND_GRP *friendGrp = Save_FriendGroup_get(saveData);
     u8 sp10 = sub_0202C830(friendGrp, groupId);
     u8 r7 = sub_0202C83C(friendGrp, groupId);
@@ -470,7 +468,7 @@ void BufferGroupName(MSGFMT *msgFmt, SAVEDATA *saveData, int groupId, int fieldn
     String_dtor(dest);
 }
 
-void BufferWiFiPlazaActivityName(MSGFMT *msgFmt, u32 fieldno, u32 activityId) {
+void BufferWiFiPlazaActivityName(MessageFormat *msgFmt, u32 fieldno, u32 activityId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0755_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, activityId, msgFmt->buffer);
@@ -479,7 +477,7 @@ void BufferWiFiPlazaActivityName(MSGFMT *msgFmt, u32 fieldno, u32 activityId) {
     }
 }
 
-void BufferWiFiPlazaEventName(MSGFMT *msgFmt, u32 fieldno, u32 eventId) {
+void BufferWiFiPlazaEventName(MessageFormat *msgFmt, u32 fieldno, u32 eventId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0753_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, eventId, msgFmt->buffer);
@@ -488,7 +486,7 @@ void BufferWiFiPlazaEventName(MSGFMT *msgFmt, u32 fieldno, u32 eventId) {
     }
 }
 
-void BufferWiFiPlazaInstrumentName(MSGFMT *msgFmt, u32 fieldno, u32 instrumentId) {
+void BufferWiFiPlazaInstrumentName(MessageFormat *msgFmt, u32 fieldno, u32 instrumentId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0756_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, instrumentId, msgFmt->buffer);
@@ -497,7 +495,7 @@ void BufferWiFiPlazaInstrumentName(MSGFMT *msgFmt, u32 fieldno, u32 instrumentId
     }
 }
 
-void BufferJPGreeting(MSGFMT *msgFmt, u32 fieldno, u32 timeOfDay) {
+void BufferJPGreeting(MessageFormat *msgFmt, u32 fieldno, u32 timeOfDay) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0771_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, timeOfDay, msgFmt->buffer);
@@ -506,7 +504,7 @@ void BufferJPGreeting(MSGFMT *msgFmt, u32 fieldno, u32 timeOfDay) {
     }
 }
 
-void BufferENGreeting(MSGFMT *msgFmt, u32 fieldno, u32 timeOfDay) {
+void BufferENGreeting(MessageFormat *msgFmt, u32 fieldno, u32 timeOfDay) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0767_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, timeOfDay, msgFmt->buffer);
@@ -515,7 +513,7 @@ void BufferENGreeting(MSGFMT *msgFmt, u32 fieldno, u32 timeOfDay) {
     }
 }
 
-void BufferFRGreeting(MSGFMT *msgFmt, u32 fieldno, u32 timeOfDay) {
+void BufferFRGreeting(MessageFormat *msgFmt, u32 fieldno, u32 timeOfDay) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0768_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, timeOfDay, msgFmt->buffer);
@@ -524,7 +522,7 @@ void BufferFRGreeting(MSGFMT *msgFmt, u32 fieldno, u32 timeOfDay) {
     }
 }
 
-void BufferITGreeting(MSGFMT *msgFmt, u32 fieldno, u32 timeOfDay) {
+void BufferITGreeting(MessageFormat *msgFmt, u32 fieldno, u32 timeOfDay) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0770_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, timeOfDay, msgFmt->buffer);
@@ -533,7 +531,7 @@ void BufferITGreeting(MSGFMT *msgFmt, u32 fieldno, u32 timeOfDay) {
     }
 }
 
-void BufferDEGreeting(MSGFMT *msgFmt, u32 fieldno, u32 timeOfDay) {
+void BufferDEGreeting(MessageFormat *msgFmt, u32 fieldno, u32 timeOfDay) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0769_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, timeOfDay, msgFmt->buffer);
@@ -542,7 +540,7 @@ void BufferDEGreeting(MSGFMT *msgFmt, u32 fieldno, u32 timeOfDay) {
     }
 }
 
-void BufferSPGreeting(MSGFMT *msgFmt, u32 fieldno, u32 timeOfDay) {
+void BufferSPGreeting(MessageFormat *msgFmt, u32 fieldno, u32 timeOfDay) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0772_bin, msgFmt->heapId);
     if (msgData != NULL) {
         ReadMsgDataIntoString(msgData, timeOfDay, msgFmt->buffer);
@@ -551,7 +549,7 @@ void BufferSPGreeting(MSGFMT *msgFmt, u32 fieldno, u32 timeOfDay) {
     }
 }
 
-void BufferPokeathlonCourseName(MSGFMT *msgFmt, u32 fieldno, u32 courseId) {
+void BufferPokeathlonCourseName(MessageFormat *msgFmt, u32 fieldno, u32 courseId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0313_bin, msgFmt->heapId);
     GF_ASSERT(courseId < 11);
     ReadMsgDataIntoString(msgData, courseId + msg_0313_00000, msgFmt->buffer);
@@ -559,7 +557,7 @@ void BufferPokeathlonCourseName(MSGFMT *msgFmt, u32 fieldno, u32 courseId) {
     DestroyMsgData(msgData);
 }
 
-void BufferPokeathlonMedalName(MSGFMT *msgFmt, u32 fieldno, u32 medalId) {
+void BufferPokeathlonMedalName(MessageFormat *msgFmt, u32 fieldno, u32 medalId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0313_bin, msgFmt->heapId);
     GF_ASSERT(medalId < 5);
     ReadMsgDataIntoString(msgData, medalId + msg_0313_00015, msgFmt->buffer);
@@ -567,7 +565,7 @@ void BufferPokeathlonMedalName(MSGFMT *msgFmt, u32 fieldno, u32 medalId) {
     DestroyMsgData(msgData);
 }
 
-void BufferPokeathlonEventName(MSGFMT *msgFmt, u32 fieldno, u32 eventId) {
+void BufferPokeathlonEventName(MessageFormat *msgFmt, u32 fieldno, u32 eventId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0313_bin, msgFmt->heapId);
     GF_ASSERT(eventId < 10);
     ReadMsgDataIntoString(msgData, eventId + msg_0313_00020, msgFmt->buffer);
@@ -575,7 +573,7 @@ void BufferPokeathlonEventName(MSGFMT *msgFmt, u32 fieldno, u32 eventId) {
     DestroyMsgData(msgData);
 }
 
-void BufferApricornName(MSGFMT *msgFmt, u32 fieldno, u32 apricornId) {
+void BufferApricornName(MessageFormat *msgFmt, u32 fieldno, u32 apricornId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0021_bin, msgFmt->heapId);
     if (apricornId >= 7) {
         GF_ASSERT(apricornId < 7);
@@ -586,7 +584,7 @@ void BufferApricornName(MSGFMT *msgFmt, u32 fieldno, u32 apricornId) {
     DestroyMsgData(msgData);
 }
 
-void BufferSafariZoneObjectName(MSGFMT *msgFmt, u32 fieldno, u32 objectId) {
+void BufferSafariZoneObjectName(MessageFormat *msgFmt, u32 fieldno, u32 objectId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0430_bin, msgFmt->heapId);
     if (objectId >= 24) {
         GF_ASSERT(objectId < 24);
@@ -597,7 +595,7 @@ void BufferSafariZoneObjectName(MSGFMT *msgFmt, u32 fieldno, u32 objectId) {
     DestroyMsgData(msgData);
 }
 
-void BufferSafariZoneAreaName(MSGFMT *msgFmt, u32 fieldno, u32 areaId) {
+void BufferSafariZoneAreaName(MessageFormat *msgFmt, u32 fieldno, u32 areaId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0428_bin, msgFmt->heapId);
     if (areaId >= 12) {
         GF_ASSERT(areaId < 12);
@@ -608,7 +606,7 @@ void BufferSafariZoneAreaName(MSGFMT *msgFmt, u32 fieldno, u32 areaId) {
     DestroyMsgData(msgData);
 }
 
-void BufferPokewalkerCourseName(MSGFMT *msgFmt, u32 fieldno, u32 courseId) {
+void BufferPokewalkerCourseName(MessageFormat *msgFmt, u32 fieldno, u32 courseId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0274_bin, msgFmt->heapId);
     if (courseId >= 27) {
         GF_ASSERT(courseId < 27);
@@ -619,7 +617,7 @@ void BufferPokewalkerCourseName(MSGFMT *msgFmt, u32 fieldno, u32 courseId) {
     DestroyMsgData(msgData);
 }
 
-void BufferMonthNameAbbr(MSGFMT *msgFmt, u32 fieldno, u32 month) {
+void BufferMonthNameAbbr(MessageFormat *msgFmt, u32 fieldno, u32 month) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0239_bin, msgFmt->heapId);
     if (msgData != NULL) {
         if (month < 1 || month > 12) {
@@ -631,12 +629,12 @@ void BufferMonthNameAbbr(MSGFMT *msgFmt, u32 fieldno, u32 month) {
     }
 }
 
-void ScrStrBufs_UpperFirstChar(MSGFMT *msgFmt, u32 fieldno) {
+void MessageFormat_UpperFirstChar(MessageFormat *msgFmt, u32 fieldno) {
     StrUpperCharN(msgFmt->fields[fieldno].msg, 0);
 }
 
-void BufferDeptStoreFloorNo(MSGFMT *msgFmt, u32 fieldno, u32 floor) {
-    int msgno;
+void BufferDeptStoreFloorNo(MessageFormat *msgFmt, u32 fieldno, u32 floor) {
+    s32 msgno;
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0191_bin, msgFmt->heapId);
     GF_ASSERT(floor <= 6);
     if (msgData != NULL) {
@@ -651,14 +649,14 @@ void BufferDeptStoreFloorNo(MSGFMT *msgFmt, u32 fieldno, u32 floor) {
     }
 }
 
-void StringExpandPlaceholders(MSGFMT * msgFmt, STRING * dest, STRING * src) {
+void StringExpandPlaceholders(MessageFormat * msgFmt, STRING * dest, STRING * src) {
     const u16 * cstr = String_c_str(src);
     StringSetEmpty(dest);
     while (*cstr != EOS) {
         if (*cstr == EXT_CTRL_CODE_BEGIN) {
             if (MsgArray_ControlCodeIsStrVar(cstr)) {
                 u32 idx = MsgArray_ControlCodeGetField(cstr, 0);
-                GF_ASSERT(idx < msgFmt->nstr);
+                GF_ASSERT(idx < msgFmt->count);
                 StringCat_HandleTrainerName(dest, msgFmt->fields[idx].msg);
                 cstr = MsgArray_SkipControlCode(cstr);
             } else {
@@ -674,8 +672,8 @@ void StringExpandPlaceholders(MSGFMT * msgFmt, STRING * dest, STRING * src) {
     }
 }
 
-void ScrStrBufs_ResetBuffers(MSGFMT * msgFmt) {
-    for (int i = 0; i < msgFmt->nstr; i++) {
+void MessageFormat_ResetBuffers(MessageFormat * msgFmt) {
+    for (int i = 0; i < msgFmt->count; i++) {
         StringSetEmpty(msgFmt->fields[i].msg);
     }
 }

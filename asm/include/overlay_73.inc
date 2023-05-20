@@ -44,9 +44,9 @@
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
 .public ReadMsgData_ExpandPlaceholders
-.public ScrStrBufs_new
-.public ScrStrBufs_new_custom
-.public ScrStrBufs_delete
+.public MessageFormat_new
+.public MessageFormat_new_custom
+.public MessageFormat_delete
 .public BufferPlayersName
 .public BufferIntegerAsString
 .public StringExpandPlaceholders
@@ -58,7 +58,7 @@
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
-.public sub_0200F0AC
+.public WaitingIcon_new
 .public sub_0200F450
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished

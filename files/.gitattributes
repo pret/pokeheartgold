@@ -1,1 +1,4 @@
 * -text
+.knarcignore text eol=lf
+.knarckeep text eol=lf
+.knarcorder text eol=lf

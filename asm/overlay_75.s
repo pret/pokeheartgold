@@ -845,7 +845,7 @@ ov75_02246F0C: ; 0x02246F0C
 	mov r0, #0xb
 	mov r1, #0x40
 	mov r2, #0x74
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	str r0, [r5, #0x20]
 	ldr r2, _02247104 ; =0x00000307
 	mov r0, #0
@@ -1084,7 +1084,7 @@ _022471A4:
 	ldr r0, [r4, #0x24]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x20]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4, #0x3c]
 	bl String_dtor
 	ldr r0, [r4, #0x40]
@@ -1874,7 +1874,7 @@ ov75_0224785C: ; 0x0224785C
 	add r0, r4, #0
 	add r0, #0x48
 	mov r1, #1
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	add r4, #0x8c
 	str r0, [r4]
 _02247876:

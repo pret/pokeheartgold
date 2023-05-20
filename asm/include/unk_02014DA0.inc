@@ -49,12 +49,12 @@
 .public FreeToHeap
 .public CopyWindowPixelsToVram_TextMode
 .public AddTextPrinterParameterized2
-.public GF_Camera_Create
+.public Camera_Create
 .public sub_02023120
-.public GF_Camera_RegisterToStaticPtr
+.public Camera_RegisterToStaticPtr
 .public sub_02023148
 .public sub_02023154
-.public GF_Camera_SetBindTarget
+.public Camera_SetBindTarget
 .public sub_02023308
 .public sub_020233D8
 .public GF_AssertFail
