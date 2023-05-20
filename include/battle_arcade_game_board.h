@@ -2,7 +2,7 @@
 #define POKEHEARTGOLD_BATTLE_ARCADE_GAME_BOARD_H
 
 #include "msgdata.h"
-#include "msgfmt.h"
+#include "message_format.h"
 #include "overlay_manager.h"
 #include "party.h"
 #include "player_data.h"
@@ -102,7 +102,7 @@ typedef struct GAME_BOARD_WORK {
     u8 unk44[32];
     u8 unk64;
     MSGDATA *msgData;
-    MSGFMT *msgFmt;
+    MessageFormat *msgFmt;
     STRING *unk70;
     STRING *unk74;
     STRING *unk78[2];

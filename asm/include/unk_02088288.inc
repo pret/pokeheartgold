@@ -24,8 +24,8 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
-.public ScrStrBufs_new
-.public ScrStrBufs_delete
+.public MessageFormat_new
+.public MessageFormat_delete
 .public BufferBoxMonSpeciesName
 .public BufferBoxMonNickname
 .public BufferBoxMonOTName

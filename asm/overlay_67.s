@@ -966,7 +966,7 @@ ov67_021E60B4: ; 0x021E60B4
 	ldr r2, [r4]
 	mov r0, #2
 	mov r1, #0x40
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	str r0, [r4, #0x2c]
 	mov r0, #2
 	ldr r1, [r4]
@@ -995,7 +995,7 @@ ov67_021E60F4: ; 0x021E60F4
 	ldr r0, [r4, #0x30]
 	bl String_dtor
 	ldr r0, [r4, #0x2c]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4, #0x28]
 	bl DestroyMsgData
 	pop {r4, pc}

@@ -229,17 +229,17 @@ _02253F84:
 	add r0, #0x40
 	bl InitWindow
 	mov r0, #4
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	ldr r1, _02254050 ; =ov03_022598A0
 	ldr r1, [r1]
 	str r0, [r1, #0x50]
 	mov r0, #4
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	ldr r1, _02254050 ; =ov03_022598A0
 	ldr r1, [r1]
 	str r0, [r1, #0x54]
 	mov r0, #4
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	ldr r1, _02254050 ; =ov03_022598A0
 	ldr r2, [r1]
 	str r0, [r2, #0x58]
@@ -297,7 +297,7 @@ _0225405C:
 	ldr r0, [r0, #0x50]
 	cmp r0, #0
 	beq _0225408C
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, _022540E4 ; =ov03_022598A0
 	mov r1, #0
 	ldr r0, [r0]
@@ -308,7 +308,7 @@ _0225408C:
 	ldr r0, [r0, #0x54]
 	cmp r0, #0
 	beq _022540A2
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, _022540E4 ; =ov03_022598A0
 	mov r1, #0
 	ldr r0, [r0]
@@ -319,7 +319,7 @@ _022540A2:
 	ldr r0, [r0, #0x58]
 	cmp r0, #0
 	beq _022540B8
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, _022540E4 ; =ov03_022598A0
 	mov r1, #0
 	ldr r0, [r0]
@@ -4940,7 +4940,7 @@ _022565F6:
 	mov r1, #0
 	bl ov03_02255D68
 	ldr r0, [r4, #0x64]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4, #0x68]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x14]
@@ -4984,7 +4984,7 @@ ov03_02256644: ; 0x02256644
 	add r5, #0xa4
 	str r0, [r5]
 	mov r0, #4
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r4, #0x64]
 	mov r0, #0
 	mov r1, #0x1b
@@ -5133,7 +5133,7 @@ ov03_02256730: ; 0x02256730
 	bl NewMsgDataFromNarc
 	str r0, [sp, #0x30]
 	mov r0, #4
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	add r6, r0, #0
 	mov r0, #0xb4
 	mov r1, #4
@@ -5426,7 +5426,7 @@ _022569EC:
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r6, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [sp, #0x30]
 	bl DestroyMsgData
 	ldr r0, [sp, #0x18]
@@ -5958,7 +5958,7 @@ InitMartUI: ; 0x02256D34
 	bhi _02256DF8
 _02256DEA:
 	ldr r0, [r5, #0xc]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	mov r1, #0x93
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -6302,7 +6302,7 @@ ov03_02257074: ; 0x02257074
 	add r1, #0x88
 	str r0, [r1]
 	mov r0, #0xb
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	add r4, #0x8c
 	str r0, [r4]
 	pop {r4, pc}
@@ -6321,7 +6321,7 @@ ov03_0225709C: ; 0x0225709C
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	mov r0, #0x9d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -6361,7 +6361,7 @@ ov03_022570D4: ; 0x022570D4
 	add r0, r4, #0
 	bl ov03_02257134
 	mov r0, #0xb
-	bl GF_Camera_Create
+	bl Camera_Create
 	add r1, r4, #0
 	add r1, #0x90
 	str r0, [r1]
@@ -6373,7 +6373,7 @@ ov03_022570D4: ; 0x022570D4
 	add r0, r4, #0
 	add r0, #0x90
 	ldr r0, [r0]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	ldr r0, _02257130 ; =0x00000281
 	mov r1, #0
 	strb r1, [r4, r0]
@@ -7467,7 +7467,7 @@ _022579AE:
 	add r1, #0x38
 	ldrh r1, [r2, r1]
 	mov r2, #0xb
-	bl Bag_GetQuantity
+	bl BagGetQuantity
 	pop {r4, pc}
 _022579C0:
 	cmp r4, #2
@@ -7832,7 +7832,7 @@ ov03_02257CA0: ; 0x02257CA0
 	ldrh r2, [r4, r2]
 	ldr r0, [r4, r0]
 	mov r3, #0xb
-	bl Bag_HasSpaceForItem
+	bl BagHasSpaceForItem
 	b _02257D4C
 _02257CC2:
 	cmp r0, #1
@@ -7876,7 +7876,7 @@ _02257D06:
 	add r2, #0x3a
 	ldrh r2, [r4, r2]
 	mov r3, #0xb
-	bl Bag_HasSpaceForItem
+	bl BagHasSpaceForItem
 	cmp r0, #0
 	bne _02257D26
 	mov r0, #0xa6
@@ -8056,7 +8056,7 @@ _02257E54:
 	ldrh r1, [r3, r1]
 	mov r2, #1
 	mov r3, #0xb
-	bl Bag_AddItem
+	bl BagAddItem
 	pop {r3, pc}
 	.balign 4, 0
 _02257E68: .word 0x000001E5
@@ -8087,7 +8087,7 @@ _02257E82:
 	ldrh r2, [r4, r2]
 	ldr r0, [r4, r0]
 	mov r3, #0xb
-	bl Bag_AddItem
+	bl BagAddItem
 	b _02257EF0
 _02257EA0:
 	cmp r0, #3
@@ -8203,7 +8203,7 @@ _02257F5E:
 	mov r1, #0xc
 	mov r2, #1
 	mov r3, #0xb
-	bl Bag_AddItem
+	bl BagAddItem
 	cmp r0, #1
 	bne _02257F9E
 	mov r0, #0xa6
@@ -8483,7 +8483,7 @@ _0225818C:
 	ldr r0, [r0]
 	bl sub_02023120
 	ldr r0, [r5, #0x24]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	add r0, r4, #0
 	bl ov03_02258288
 	mov r0, #0x1b
@@ -9235,10 +9235,10 @@ ov03_02258764: ; 0x02258764
 	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	ldr r1, _022587C8 ; =ov03_022597F0
 	mov r2, #0xb
-	bl CreateBagView
+	bl BagViewCreate
 	str r0, [r4, #4]
 	mov r0, #0x43
 	lsl r0, r0, #2
@@ -10107,7 +10107,7 @@ ov03_02258DE8: ; 0x02258DE8
 	mov r0, #3
 	mov r1, #0x10
 	mov r2, #4
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	str r0, [r4, #0x2c]
 	mov r0, #0x80
 	mov r1, #4
@@ -10144,7 +10144,7 @@ ov03_02258E88: ; 0x02258E88
 	ldr r0, [r4, #0x30]
 	bl String_dtor
 	ldr r0, [r4, #0x2c]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4, #0x28]
 	bl DestroyMsgData
 	add r0, r4, #0

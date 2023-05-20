@@ -10,8 +10,8 @@ BOOL ScrCmd_GiveItem(SCRIPTCONTEXT* ctx) {
     u16 quantity = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16* ret_ptr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
 
-    BAG_DATA* bag = Sav2_Bag_get(sav_ptr->savedata);
-    *ret_ptr = Bag_AddItem(bag, item_id, quantity, 4);
+    Bag* bag = SaveGetBag(sav_ptr->savedata);
+    *ret_ptr = BagAddItem(bag, item_id, quantity, 4);
 
     return FALSE;
 }
@@ -22,8 +22,8 @@ BOOL ScrCmd_TakeItem(SCRIPTCONTEXT* ctx) {
     u16 quantity = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16* ret_ptr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
 
-    BAG_DATA* bag = Sav2_Bag_get(sav_ptr->savedata);
-    *ret_ptr = Bag_TakeItem(bag, item_id, quantity, 4);
+    Bag* bag = SaveGetBag(sav_ptr->savedata);
+    *ret_ptr = BagTakeItem(bag, item_id, quantity, 4);
 
     return FALSE;
 }
@@ -34,8 +34,8 @@ BOOL ScrCmd_HasSpaceForItem(SCRIPTCONTEXT* ctx) {
     u16 quantity = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16* ret_ptr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
 
-    BAG_DATA* bag = Sav2_Bag_get(sav_ptr->savedata);
-    *ret_ptr = Bag_HasSpaceForItem(bag, item_id, quantity, 4);
+    Bag* bag = SaveGetBag(sav_ptr->savedata);
+    *ret_ptr = BagHasSpaceForItem(bag, item_id, quantity, 4);
 
     return FALSE;
 }
@@ -46,8 +46,8 @@ BOOL ScrCmd_HasItem(SCRIPTCONTEXT* ctx) {
     u16 quantity = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16* ret_ptr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
 
-    BAG_DATA* bag = Sav2_Bag_get(sav_ptr->savedata);
-    *ret_ptr = Bag_HasItem(bag, item_id, quantity, 11);
+    Bag* bag = SaveGetBag(sav_ptr->savedata);
+    *ret_ptr = BagHasItem(bag, item_id, quantity, 11);
 
     return FALSE;
 }
@@ -57,8 +57,8 @@ BOOL ScrCmd_GetItemQuantity(SCRIPTCONTEXT* ctx) {
     u16 item_id = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16* ret_ptr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
 
-    BAG_DATA* bag = Sav2_Bag_get(sav_ptr->savedata);
-    *ret_ptr = Bag_GetQuantity(bag, item_id, 11);
+    Bag* bag = SaveGetBag(sav_ptr->savedata);
+    *ret_ptr = BagGetQuantity(bag, item_id, 11);
 
     return FALSE;
 }

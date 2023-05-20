@@ -8963,7 +8963,7 @@ _0222DD8E:
 	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	ldr r0, [sp, #0x28]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	ldrb r6, [r4]
 	str r0, [sp, #0xc]
 	cmp r6, #9
@@ -8987,7 +8987,7 @@ _0222DDCC:
 	add r0, r7, #0
 	bl DestroyMsgData
 	ldr r0, [sp, #0xc]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r0, r4, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}

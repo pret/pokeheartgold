@@ -76,7 +76,7 @@ void DayCareMon_Copy(DAYCAREMON* dest, const DAYCAREMON* src) {
 void DayCareMon_Extras_init(DAYCAREMAIL* mail) {
     int i;
 
-    for (i = 0; i < OT_NAME_LENGTH + 1; i++) {
+    for (i = 0; i < PLAYER_NAME_LENGTH + 1; i++) {
         mail->ot_name[i] = 0;
     }
 

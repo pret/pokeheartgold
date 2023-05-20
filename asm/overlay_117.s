@@ -547,7 +547,7 @@ ov117_0225F470: ; 0x0225F470
 	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	add r4, r0, #0
 	mov r0, #0x80
 	add r1, r5, #0
@@ -572,7 +572,7 @@ ov117_0225F470: ; 0x0225F470
 	add r0, r6, #0
 	bl DestroyMsgData
 	add r0, r4, #0
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r7, #0

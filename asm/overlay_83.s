@@ -2309,7 +2309,7 @@ _0223F0F0:
 	ldr r0, [r5, #0x1c]
 	bl DestroyMsgData
 	ldr r0, [r5, #0x24]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r5, #0x28]
 	bl String_dtor
 	ldr r0, [r5, #0x2c]
@@ -2413,7 +2413,7 @@ ov83_0223F200: ; 0x0223F200
 	bl NewMsgDataFromNarc
 	str r0, [r5, #0x1c]
 	mov r0, #0x6b
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r5, #0x24]
 	mov r0, #0x96
 	lsl r0, r0, #2
@@ -11777,7 +11777,7 @@ _02243EDC:
 	bl DestroyMsgData
 	ldr r0, [sp]
 	ldr r0, [r0, #0x24]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [sp]
 	ldr r0, [r0, #0x28]
 	bl String_dtor
@@ -11876,7 +11876,7 @@ ov83_02243FD4: ; 0x02243FD4
 	bl NewMsgDataFromNarc
 	str r0, [r5, #0x20]
 	mov r0, #0x6b
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r5, #0x24]
 	mov r0, #0x96
 	lsl r0, r0, #2

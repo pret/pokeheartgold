@@ -24,8 +24,8 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
-.public ScrStrBufs_new
-.public ScrStrBufs_delete
+.public MessageFormat_new
+.public MessageFormat_delete
 .public BufferBoxMonNickname
 .public BufferIntegerAsString
 .public BufferItemName
@@ -118,8 +118,8 @@
 .public LoadItemDataOrGfx
 .public GetItemAttr_PreloadedItemData
 .public ItemIdIsMail
-.public Bag_AddItem
-.public Bag_TakeItem
+.public BagAddItem
+.public BagTakeItem
 .public sub_02079224
 .public sub_0207991C
 .public sub_02079E38

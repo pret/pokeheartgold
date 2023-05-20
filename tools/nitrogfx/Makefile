@@ -31,7 +31,7 @@ nitrogfx: $(OBJS)
 	$(CC) $(CFLAGS) $(DEPFLAGS) -c -o $@ $<
 
 clean:
-	$(RM) nitrogfx nitrogfx.exe $(OBJS) $(DEPDIR)
+	$(RM) -r nitrogfx nitrogfx.exe $(OBJS) $(DEPDIR)
 
 $(DEPDIR): ; @mkdir -p $@
 

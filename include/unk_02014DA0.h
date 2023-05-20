@@ -13,7 +13,7 @@ typedef u32 (*plttAllocFun)(u32 szByte, BOOL is4pltt);
 void sub_02014DA0(void);
 ParticleSystem *sub_02014DB4(texAllocFun texAlloc, plttAllocFun plttAlloc, void *particleHeap, u32 workSize, BOOL a4, HeapID heapId);
 void sub_02014EBC(ParticleSystem *mgr);
-GF_Camera *sub_02015524(ParticleSystem *param_1);
+Camera *sub_02015524(ParticleSystem *param_1);
 void *sub_02015264(NarcId narcId, int fileId, HeapID heapId);
 void sub_0201526C(ParticleSystem *mgr, void *data, u32 flag, BOOL loadNow);
 void sub_02015354(NNSGfdTexKey texKey);

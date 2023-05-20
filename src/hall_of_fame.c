@@ -50,7 +50,7 @@ void Sav2_HOF_RecordParty(HALL_OF_FAME *hof, PARTY *party, RTCDate *date) {
                     GetMonData(mon, MON_DATA_NICKNAME_3, string);
                     CopyStringToU16Array(string, team->party[j].nickname, POKEMON_NAME_LENGTH + 1);
                     GetMonData(mon, MON_DATA_OT_NAME_2, string);
-                    CopyStringToU16Array(string, team->party[j].otname, OT_NAME_LENGTH + 1);
+                    CopyStringToU16Array(string, team->party[j].otname, PLAYER_NAME_LENGTH + 1);
                 } else {
                     team->party[j].nickname[0] = EOS;
                     team->party[j].otname[0] = EOS;

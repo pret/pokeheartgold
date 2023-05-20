@@ -12,10 +12,10 @@ ov116_0225F020: ; 0x0225F020
 	add r5, r0, #0
 	ldrh r0, [r4, #8]
 	ldr r1, [r5, #0x24]
-	bl GF_Camera_SetPerspectiveAngle
+	bl Camera_SetPerspectiveAngle
 	ldr r0, [r4]
 	ldr r1, [r5, #0x24]
-	bl GF_Camera_SetDistance
+	bl Camera_SetDistance
 	ldrh r1, [r4, #4]
 	add r0, sp, #0
 	strh r1, [r0]
@@ -25,7 +25,7 @@ ov116_0225F020: ; 0x0225F020
 	strh r1, [r0, #4]
 	ldr r1, [r5, #0x24]
 	add r0, sp, #0
-	bl GF_Camera_SetAngle
+	bl Camera_SetAngle
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -292,7 +292,7 @@ _0225F24A:
 	str r0, [r5]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x24]
-	bl GF_Camera_GetPerspectiveAngle
+	bl Camera_GetPerspectiveAngle
 	ldr r2, [r6, #4]
 	add r1, r0, #0
 	add r5, #8
@@ -315,7 +315,7 @@ _0225F276:
 	lsl r0, r0, #0x10
 	ldr r1, [r1, #0x24]
 	lsr r0, r0, #0x10
-	bl GF_Camera_SetPerspectiveAngle
+	bl Camera_SetPerspectiveAngle
 	cmp r7, #1
 	bne _0225F356
 	ldr r0, [r4]
@@ -332,7 +332,7 @@ _0225F2A0:
 	bpl _0225F356
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x24]
-	bl GF_Camera_GetDistance
+	bl Camera_GetDistance
 	add r1, r0, #0
 	ldrb r0, [r6, #2]
 	add r5, #0x1c
@@ -355,7 +355,7 @@ _0225F2CE:
 	add r6, r0, #0
 	ldr r0, [r5, #0x1c]
 	ldr r1, [r1, #0x24]
-	bl GF_Camera_SetDistance
+	bl Camera_SetDistance
 	cmp r6, #1
 	bne _0225F356
 	ldr r0, [r4]

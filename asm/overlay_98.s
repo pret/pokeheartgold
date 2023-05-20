@@ -733,7 +733,7 @@ _0221EB44:
 	bl NewMsgDataFromNarc
 	str r0, [r4, #8]
 	ldr r0, [sp]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r4, #0x10]
 	mov r0, #1
 	ldr r1, [sp]
@@ -760,7 +760,7 @@ ov98_0221EB84: ; 0x0221EB84
 	ldr r0, [r5, #0x14]
 	bl String_dtor
 	ldr r0, [r5, #0x10]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r5, #0xc]
 	bl DestroyMsgData
 	ldr r0, [r5, #8]

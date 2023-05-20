@@ -194,7 +194,7 @@ _0207F590:
 	ldr r0, [r0, #4]
 	mov r2, #1
 	mov r3, #0xc
-	bl Bag_AddItem
+	bl BagAddItem
 	cmp r0, #1
 	bne _0207F64E
 	ldr r0, _0207F68C ; =0x00000654
@@ -640,7 +640,7 @@ sub_0207F924: ; 0x0207F924
 	ldrh r1, [r2, r1]
 	mov r2, #1
 	mov r3, #0xc
-	bl Bag_AddItem
+	bl BagAddItem
 	cmp r0, #1
 	bne _0207F9A2
 	ldr r0, _0207F9C0 ; =0x00000654

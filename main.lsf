@@ -12,7 +12,7 @@ Static main
 	Object src/pm_version.o
 	Object src/main.o
 	Object src/list_menu.o
-	Object src/list_menu_2.o
+	Object src/list_menu_2d.o
 	Object src/string_util.o
 	Object asm/render_text.o
 	Object src/font.o
@@ -34,12 +34,12 @@ Static main
 	Object asm/unk_0200B150.o
 	Object asm/unk_0200B380.o
 	Object src/msgdata.o
-	Object src/msgfmt.o
+	Object src/message_format.o
 	Object asm/message_printer.o
 	Object asm/unk_0200CE7C.o
 	Object asm/unk_0200CF18.o
 	Object asm/unk_0200E320.o
-	Object asm/unk_0200E398.o
+	Object asm/render_window.o
 	Object asm/unk_0200FA24.o
 	Object asm/unk_0201010C.o
 	Object asm/unk_02012DD8.o
@@ -631,7 +631,7 @@ Overlay OVY_21
 Overlay OVY_22
 {
     After OVY_3
-    Object asm/overlay_22.o
+    Object src/overlay_22.o
 }
 Overlay npc_trade
 {

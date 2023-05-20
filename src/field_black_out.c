@@ -3,7 +3,7 @@
 #include "unk_0200FA24.h"
 #include "field_black_out.h"
 #include "system.h"
-#include "unk_0200E398.h"
+#include "render_window.h"
 #include "font.h"
 #include "text.h"
 #include "save_flypoints.h"
@@ -23,7 +23,7 @@ struct BlackoutScreenWork {
     BGCONFIG *bgConfig;
     WINDOW window;
     MSGDATA *msgData;
-    MSGFMT *msgFmt;
+    MessageFormat *msgFmt;
 };
 
 void _InitDisplays(BGCONFIG *bgConfig);
@@ -82,7 +82,7 @@ static void _DrawScurryMessageScreen(FieldSystem *fsys, TaskManager *taskManager
     sub_0200FBDC(1);
     _InitDisplays(env->bgConfig);
     env->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0203_bin, (HeapID)11);
-    env->msgFmt = ScrStrBufs_new((HeapID)11);
+    env->msgFmt = MessageFormat_new((HeapID)11);
     {
         static const WINDOWTEMPLATE _020FC51C = {
             3,
@@ -134,7 +134,7 @@ static BOOL _Task_ShowPrintedMessage(TaskManager *taskManager) {
     case 4:
         ClearFrameAndWindow2(&work->window, 0);
         RemoveWindow(&work->window);
-        ScrStrBufs_delete(work->msgFmt);
+        MessageFormat_delete(work->msgFmt);
         DestroyMsgData(work->msgData);
         FreeBgTilemapBuffer(work->bgConfig, 3);
         FreeToHeap(work->bgConfig);

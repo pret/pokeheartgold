@@ -746,7 +746,7 @@ sub_02088894: ; 0x02088894
 	ldr r1, _02088948 ; =0x0000079C
 	str r0, [r4, r1]
 	mov r0, #0x13
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	ldr r1, _0208894C ; =0x000007A8
 	str r0, [r4, r1]
 	mov r0, #0xc
@@ -824,7 +824,7 @@ sub_0208895C: ; 0x0208895C
 	bl MessagePrinter_delete
 	ldr r0, _020889C8 ; =0x000007A8
 	ldr r0, [r4, r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	mov r0, #0x23
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]

@@ -787,7 +787,7 @@ static u32 GetBoxMonDataInternal(BOXMON * boxmon, int attr, void * dest) {
         break;
     case MON_DATA_OT_NAME: {
         u16 * dest16 = (u16 *)dest;
-        for (ret = 0; ret < OT_NAME_LENGTH; ret++) {
+        for (ret = 0; ret < PLAYER_NAME_LENGTH; ret++) {
             dest16[ret] = blockD->otTrainerName[ret];
         }
         dest16[ret] = EOS;
@@ -1251,12 +1251,12 @@ static void SetBoxMonDataInternal(BOXMON * boxmon, int attr, const void * value)
         }
         break;
     case MON_DATA_OT_NAME:
-        for (i = 0; i < OT_NAME_LENGTH + 1; i++) {
+        for (i = 0; i < PLAYER_NAME_LENGTH + 1; i++) {
             blockD->otTrainerName[i] = VALUE(u16); value = (void *)((char *)value + 2);
         }
         break;
     case MON_DATA_OT_NAME_2:
-        CopyStringToU16Array(value, blockD->otTrainerName, OT_NAME_LENGTH + 1);
+        CopyStringToU16Array(value, blockD->otTrainerName, PLAYER_NAME_LENGTH + 1);
         break;
     case MON_DATA_EGG_MET_YEAR:
         blockD->dateEggReceived[0] = VALUE(u8);
@@ -4120,7 +4120,7 @@ BOOL BoxmonBelongsToPlayer(BOXMON * boxmon, PLAYERPROFILE * profile, HeapID heap
     u32 myGender = PlayerProfile_GetTrainerGender(profile);
     u32 otGender = GetBoxMonData(boxmon, MON_DATA_MET_GENDER, NULL);
     STRING * r7 = PlayerProfile_GetPlayerName_NewString(profile, heap_id);
-    STRING * r6 = String_ctor(OT_NAME_LENGTH + 1, heap_id);
+    STRING * r6 = String_ctor(PLAYER_NAME_LENGTH + 1, heap_id);
     BOOL ret = FALSE;
     GetBoxMonData(boxmon, MON_DATA_OT_NAME_2, r6);
     if (myId == otId && myGender == otGender && StringCompare(r7, r6) == 0) {
@@ -4304,7 +4304,7 @@ void sub_02072A98(Pokemon *mon, struct UnkPokemonStruct_02072A98 *dest) {
         dest->nickname[i] = dbC->nickname[i];
     }
 
-    for (i = 0; i < OT_NAME_LENGTH + 1; i++) {
+    for (i = 0; i < PLAYER_NAME_LENGTH + 1; i++) {
         dest->otTrainerName[i] = dbD->otTrainerName[i];
     }
     dest->pokeball = dbD->pokeball;
@@ -4381,7 +4381,7 @@ void sub_02072D64(const struct UnkPokemonStruct_02072A98 *src, Pokemon *mon) {
         dbC->nickname[i] = src->nickname[i];
     }
 
-    for (i = 0; i < OT_NAME_LENGTH + 1; i++) {
+    for (i = 0; i < PLAYER_NAME_LENGTH + 1; i++) {
         dbD->otTrainerName[i] = src->otTrainerName[i];
     }
     dbD->HGSS_Pokeball = src->pokeball;

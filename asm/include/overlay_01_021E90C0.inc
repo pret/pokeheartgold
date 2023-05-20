@@ -18,9 +18,9 @@
 .public Ascii_GetDelim
 .public Ascii_StrToL
 .public sub_02023234
-.public GF_Camera_SetClipBounds
+.public Camera_SetClipBounds
 .public sub_020234D0
-.public GF_Camera_GetPerspectiveAngle
+.public Camera_GetPerspectiveAngle
 .public GF_AssertFail
 .public sub_0203B58C
 .public TaskManager_Call

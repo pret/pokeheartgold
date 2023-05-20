@@ -3,7 +3,7 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
-.public ScrStrBufs_delete
+.public MessageFormat_delete
 .public StringExpandPlaceholders
 .public MailMsg_init
 .public MailMsg_GetExpandedString

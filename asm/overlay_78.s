@@ -559,7 +559,7 @@ ov78_021E5D94: ; 0x021E5D94
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0x38]
 	ldr r0, [r4]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r4, #0x3c]
 	mov r1, #0
 	add r0, sp, #8
@@ -615,7 +615,7 @@ ov78_021E5E24: ; 0x021E5E24
 	add r0, #0x18
 	bl RemoveWindow
 	ldr r0, [r4, #0x3c]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4, #0x38]
 	bl DestroyMsgData
 	pop {r4, pc}

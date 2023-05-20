@@ -86,7 +86,7 @@ ov27_02259F80: ; 0x02259F80
 	mov r1, #8
 	bl FontID_Alloc
 	mov r0, #8
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	ldr r1, _0225A18C ; =0x000004AC
 	mov r2, #0xc4
 	str r0, [r4, r1]
@@ -264,7 +264,7 @@ _0225A1C8:
 	bl DestroyMsgData
 	ldr r0, _0225A2BC ; =0x000004AC
 	ldr r0, [r6, r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	mov r7, #0x55
 	mov r4, #0
 	add r5, r6, #0
@@ -1286,9 +1286,9 @@ _0225A9D0:
 	beq _0225AA2E
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0xc]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	add r4, r0, #0
-	bl Bag_GetRegisteredItemSlot1
+	bl BagGetRegisteredItem1
 	cmp r0, #0
 	beq _0225A9EA
 	mov r6, #1
@@ -1297,7 +1297,7 @@ _0225A9EA:
 	mov r6, #0
 _0225A9EC:
 	add r0, r4, #0
-	bl Bag_GetRegisteredItemSlot2
+	bl BagGetRegisteredItem2
 	cmp r0, #0
 	beq _0225A9FA
 	mov r4, #1
@@ -1727,7 +1727,7 @@ _0225AD52:
 	add r7, r0, #0
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0xc]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	add r1, r4, #0
 	add r1, #0x64
 	str r1, [sp]
@@ -1952,12 +1952,12 @@ _0225AF22:
 	str r0, [sp, #0x1c]
 	add r0, r7, #0
 	mov r6, #0x12 ; NARC_itemtool_itemdata_item_icon
-	bl Bag_GetRegisteredItemSlot1
+	bl BagGetRegisteredItem1
 	mov r1, #2
 	bl GetItemIndexMapping
 	str r0, [sp, #0x20]
 	add r0, r7, #0
-	bl Bag_GetRegisteredItemSlot1
+	bl BagGetRegisteredItem1
 	mov r1, #1
 	bl GetItemIndexMapping
 	add r2, r0, #0
@@ -1969,12 +1969,12 @@ _0225AF4A:
 	str r0, [sp, #0x1c]
 	add r0, r7, #0
 	mov r6, #0x12 ; NARC_itemtool_itemdata_item_icon
-	bl Bag_GetRegisteredItemSlot2
+	bl BagGetRegisteredItem2
 	mov r1, #2
 	bl GetItemIndexMapping
 	str r0, [sp, #0x20]
 	add r0, r7, #0
-	bl Bag_GetRegisteredItemSlot2
+	bl BagGetRegisteredItem2
 	mov r1, #1
 	bl GetItemIndexMapping
 	add r2, r0, #0
@@ -2727,7 +2727,7 @@ _0225B55A:
 _0225B57E:
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0xc]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	add r6, r0, #0
 	add r0, r4, #0
 	sub r0, #8
@@ -2751,7 +2751,7 @@ _0225B5AC:
 	cmp r4, #8
 	bne _0225B5BE
 	add r0, r6, #0
-	bl Bag_GetRegisteredItemSlot1
+	bl BagGetRegisteredItem1
 	cmp r0, #0
 	bne _0225B5D0
 	mov r0, #1
@@ -2760,7 +2760,7 @@ _0225B5BE:
 	cmp r4, #9
 	bne _0225B5D0
 	add r0, r6, #0
-	bl Bag_GetRegisteredItemSlot2
+	bl BagGetRegisteredItem2
 	cmp r0, #0
 	bne _0225B5D0
 	mov r0, #1
@@ -5221,7 +5221,7 @@ ov27_0225C914: ; 0x0225C914
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #8
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r4, #0x50]
 	mov r0, #0
 	mov r1, #0x1b
@@ -5239,7 +5239,7 @@ ov27_0225C930: ; 0x0225C930
 	ldr r0, [r4, #0x4c]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x50]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov27_0225C930

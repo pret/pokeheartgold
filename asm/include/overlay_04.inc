@@ -13,10 +13,10 @@
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public GF_ExpHeap_FndInitAllocator
-.public GF_Camera_ShiftBy
-.public GF_Camera_GetPerspectiveAngle
-.public GF_Camera_GetDistance
-.public GF_Camera_GetAngle
+.public Camera_ShiftBy
+.public Camera_GetPerspectiveAngle
+.public Camera_GetDistance
+.public Camera_GetAngle
 .public sub_02023F90
 .public GF_AssertFail
 .public Sav2_GetGymmickPtr

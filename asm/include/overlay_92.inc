@@ -129,11 +129,11 @@
 .public GX_EngineAToggleLayers
 .public GX_EngineBToggleLayers
 .public GX_SwapDisplay
-.public GF_Camera_Create
+.public Camera_Create
 .public sub_02023120
-.public GF_Camera_RegisterToStaticPtr
+.public Camera_RegisterToStaticPtr
 .public sub_02023154
-.public GF_Camera_SetClipBounds
+.public Camera_SetClipBounds
 .public sub_02023308
 .public sub_02025364
 .public sub_0202539C

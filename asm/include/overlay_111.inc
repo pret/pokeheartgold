@@ -18,8 +18,8 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgData_ExpandPlaceholders
-.public ScrStrBufs_new
-.public ScrStrBufs_delete
+.public MessageFormat_new
+.public MessageFormat_delete
 .public BufferBoxMonSpeciesName
 .public MessagePrinter_new
 .public MessagePrinter_delete

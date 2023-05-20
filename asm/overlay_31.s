@@ -110,7 +110,7 @@ ov31_0225D60C: ; 0x0225D60C
 	mov r0, #8
 	mov r1, #0x40
 	add r2, r0, #0
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	mov r2, #0x55
 	lsl r2, r2, #2
 	str r0, [r4, r2]
@@ -158,7 +158,7 @@ ov31_0225D654: ; 0x0225D654
 	mov r0, #0x55
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov31_0225D654

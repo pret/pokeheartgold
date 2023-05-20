@@ -1900,7 +1900,7 @@ ov101_021E85A8: ; 0x021E85A8
 	ldr r2, [r4]
 	mov r0, #2
 	mov r1, #0x5b
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	add r1, r4, #0
 	add r1, #0x8c
 	str r0, [r1]
@@ -1973,7 +1973,7 @@ ov101_021E862C: ; 0x021E862C
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r4, #0x88
 	ldr r0, [r4]
 	bl DestroyMsgData
@@ -13750,7 +13750,7 @@ ov101_021EE230: ; 0x021EE230
 	ldr r2, [r4]
 	mov r0, #2
 	mov r1, #0x5b
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	add r1, r4, #0
 	add r1, #0x8c
 	str r0, [r1]
@@ -13858,7 +13858,7 @@ ov101_021EE2E8: ; 0x021EE2E8
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r4, #0x88
 	ldr r0, [r4]
 	bl DestroyMsgData
@@ -18314,7 +18314,7 @@ ov101_021F05EC: ; 0x021F05EC
 	ldr r2, [r6]
 	mov r0, #2
 	mov r1, #0x20
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	str r0, [r6, #0x18]
 	mov r0, #0xa
 	ldr r1, [r6]
@@ -18369,7 +18369,7 @@ _021F0660:
 	ldr r0, [r6, #0x1c]
 	bl String_dtor
 	ldr r0, [r6, #0x18]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r6, #0x14]
 	bl DestroyMsgData
 	mov r0, #0
@@ -21507,7 +21507,7 @@ ov101_021F1D74: ; 0x021F1D74
 	ldr r2, [r4]
 	mov r0, #0x10
 	mov r1, #0x25
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	str r0, [r4, #0x50]
 	ldr r0, _021F1E7C ; =0x00000439
 	ldr r1, [r4]
@@ -21578,7 +21578,7 @@ _021F1E88:
 	ldr r0, [r6, #0x54]
 	bl String_dtor
 	ldr r0, [r6, #0x50]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r6, #0x48]
 	bl DestroyMsgData
 	ldr r0, [r6, #0x44]
@@ -29196,7 +29196,7 @@ ov101_021F57B8: ; 0x021F57B8
 	ldr r2, [r4]
 	mov r0, #8
 	mov r1, #0x33
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	str r0, [r4, #0x44]
 	ldr r1, [r4]
 	mov r0, #0x33
@@ -29248,7 +29248,7 @@ ov101_021F58A0: ; 0x021F58A0
 	ldr r0, [r4, #0x48]
 	bl String_dtor
 	ldr r0, [r4, #0x44]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4, #0x20]
 	bl DestroyMsgData
 	add r0, r4, #0
@@ -30190,11 +30190,11 @@ _021F5F9A: ; jump table
 	.short _021F5FEA - _021F5F9A - 2 ; case 6
 _021F5FA8:
 	ldr r0, [r5, #4]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	ldr r1, _021F603C ; =ITEM_GB_SOUNDS
 	ldr r3, [r4]
 	mov r2, #1
-	bl Bag_HasItem
+	bl BagHasItem
 	cmp r0, #0
 	beq _021F5FC2
 	mov r0, #4
@@ -31441,12 +31441,12 @@ RadioShow_BuenasPassword_init: ; 0x021F6904
 	mov r1, #msg_0411_00001
 	bl ReadMsgDataIntoString
 	ldr r0, [r5, #4]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	mov r1, #ITEM_BLUE_CARD>>2
 	ldr r3, [r5]
 	lsl r1, r1, #2
 	mov r2, #1
-	bl Bag_HasItem
+	bl BagHasItem
 	cmp r0, #0
 	beq _021F6946
 	mov r0, #msg_0411_00004

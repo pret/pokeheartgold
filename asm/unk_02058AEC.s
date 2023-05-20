@@ -109,7 +109,7 @@ sub_02058B84: ; 0x02058B84
 	str r0, [r4]
 	ldr r0, [r5, #0x24]
 	ldr r0, [r0, #0xc]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	str r0, [r4, #4]
 	mov r0, #0x43
 	ldr r1, [r5, #0x24]
@@ -1330,7 +1330,7 @@ _02059546:
 	str r5, [r4, #0x24]
 	str r6, [r4, #8]
 	mov r0, #0xb
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r4, #0x28]
 	mov r0, #0
 	mov r1, #0x1b
@@ -1460,7 +1460,7 @@ _02059672:
 	ldr r0, [r4, #0x2c]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x28]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4, #0xc]
 	bl String_dtor
 	ldr r0, [r4, #0x10]
@@ -2164,7 +2164,7 @@ _02059B96: ; jump table
 	.short _02059D24 - _02059B96 - 2 ; case 7
 _02059BA6:
 	mov r0, #4
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r4, #0x18]
 	mov r0, #0
 	mov r1, #0x1b
@@ -2271,7 +2271,7 @@ _02059C6C:
 	ldr r0, [r4, #0x1c]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x18]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4]
 	bl String_dtor
 	ldr r0, [r4, #4]

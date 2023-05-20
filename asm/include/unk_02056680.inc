@@ -4,10 +4,10 @@
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public sub_02023214
-.public GF_Camera_ShiftBy
+.public Camera_ShiftBy
 .public sub_020235E0
-.public GF_Camera_GetTarget
-.public GF_Camera_GetBindTarget
+.public Camera_GetTarget
+.public Camera_GetBindTarget
 .public GF_AssertFail
 .public TaskManager_Call
 .public CallApplicationAsTask

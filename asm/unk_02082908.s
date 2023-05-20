@@ -72,7 +72,7 @@ _0208291E:
 	bl NARC_ctor
 	add r7, r0, #0
 	mov r0, #0x12
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	mov r1, #0x5a
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -927,7 +927,7 @@ _02083060:
 	mov r0, #0x5a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [sp, #0x10]
 	bl OverlayManager_FreeData
 	mov r0, #0

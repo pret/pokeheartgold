@@ -20,9 +20,9 @@
 .public sub_0207789C
 .public sub_02077904
 .public sub_0207790C
-.public Bag_GetQuantity
-.public CreateBagView
-.public Sav2_Bag_get
+.public BagGetQuantity
+.public BagViewCreate
+.public SaveGetBag
 .public BagCursor_new
 .public MI_CpuFill8
 .public _s32_div_f

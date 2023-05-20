@@ -1661,7 +1661,7 @@ _02254B76:
 	cmp r3, #0
 	bne _02254BB0
 	ldr r1, [r5, #0x24]
-	bl GF_Camera_ShiftBy
+	bl Camera_ShiftBy
 	ldr r0, [r4, #0x44]
 	add r0, r0, #1
 	str r0, [r4, #0x44]
@@ -4495,7 +4495,7 @@ _02256102: ; jump table
 _02256110:
 	ldr r1, [r6, #0x24]
 	add r0, sp, #0xc
-	bl GF_Camera_GetAngle
+	bl Camera_GetAngle
 	add r0, sp, #4
 	ldrh r1, [r0, #8]
 	strh r1, [r0, #0x18]
@@ -4509,7 +4509,7 @@ _02256110:
 	add r0, sp, #0x44
 	strh r1, [r0]
 	ldr r0, [r6, #0x24]
-	bl GF_Camera_GetPerspectiveAngle
+	bl Camera_GetPerspectiveAngle
 	add r1, sp, #0x44
 	ldr r3, _02256274 ; =ov04_02257660
 	strh r0, [r1, #2]
@@ -4519,7 +4519,7 @@ _02256110:
 	ldr r0, [r3]
 	str r0, [r2]
 	ldr r0, [r6, #0x24]
-	bl GF_Camera_GetDistance
+	bl Camera_GetDistance
 	str r0, [sp, #0x54]
 	ldr r1, [r6, #0x24]
 	mov r0, #4
@@ -4598,7 +4598,7 @@ _022561E8:
 	str r0, [r1, #8]
 	ldr r1, [r6, #0x24]
 	add r0, sp, #4
-	bl GF_Camera_GetAngle
+	bl Camera_GetAngle
 	add r0, sp, #4
 	ldrh r1, [r0]
 	strh r1, [r0, #0x10]
@@ -4611,7 +4611,7 @@ _022561E8:
 	ldrh r1, [r0, #0x10]
 	strh r1, [r0, #0x2c]
 	ldr r0, [r6, #0x24]
-	bl GF_Camera_GetPerspectiveAngle
+	bl Camera_GetPerspectiveAngle
 	add r1, sp, #4
 	add r3, sp, #0x24
 	strh r0, [r1, #0x2e]
@@ -4621,7 +4621,7 @@ _022561E8:
 	ldr r0, [r3]
 	str r0, [r2]
 	ldr r0, [r6, #0x24]
-	bl GF_Camera_GetDistance
+	bl Camera_GetDistance
 	str r0, [sp, #0x40]
 	ldr r1, [r6, #0x24]
 	mov r0, #4

@@ -3,7 +3,7 @@
 
 #include "pm_string.h"
 #include "filesystem.h"
-#include "msgfmt.h"
+#include "message_format.h"
 #include "msgdata/msg.naix"
 
 typedef enum MsgDataLoadType {
@@ -40,7 +40,7 @@ void ReadMsgDataIntoString(MSGDATA *msgData, s32 strno, STRING *dest);
 void GetSpeciesNameIntoArray(u16 species, HeapID heap_id, u16 *dest);
 STRING *GetSpeciesName(u16 species, HeapID heap_id);
 void ReadMsgData_NewNarc_ExistingString(NarcId narcId, s32 fileId, u32 msgId, HeapID heapId, STRING *dest);
-STRING * ReadMsgData_ExpandPlaceholders(MSGFMT * a0, MSGDATA * msgData, u32 msgno, HeapID heap_id);
+STRING * ReadMsgData_ExpandPlaceholders(MessageFormat *messageFormat, MSGDATA * msgData, u32 msgno, HeapID heap_id);
 STRING * ReadMsgData_NewNarc_NewString(NarcId narc_id, u32 group, u32 num, u32 heap_id);
 u32 MsgDataGetCount(MSGDATA *msgData);
 void ReadMsgDataIntoU16Array(MSGDATA *msgData, u32 msgno, u16 *dest);

@@ -113,7 +113,7 @@ _0205193C:
 	cmp r7, #4
 	blt _0205193C
 	add r0, r6, #0
-	bl Sav2_Bag_new
+	bl BagNew
 	mov r1, #0x42
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -340,7 +340,7 @@ sub_02051AAC: ; 0x02051AAC
 	mov r1, #4
 	mov r2, #0x14
 	add r3, r6, #0
-	bl Bag_AddItem
+	bl BagAddItem
 	add r0, r6, #0
 	bl AllocMonZeroed
 	mov r2, #0
@@ -576,7 +576,7 @@ sub_02051D18: ; 0x02051D18
 	bl SavArray_PlayerParty_get
 	str r0, [sp, #0x18]
 	add r0, r4, #0
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	bl Sav2_Pokedex_get
@@ -678,7 +678,7 @@ _02051E14:
 	lsl r1, r1, #2
 	ldr r0, [sp, #0x14]
 	ldr r1, [r5, r1]
-	bl Sav2_Bag_copy
+	bl BagCopy
 	mov r1, #0x11
 	lsl r1, r1, #4
 	ldr r0, [sp, #0x10]
@@ -819,7 +819,7 @@ sub_02051F2C: ; 0x02051F2C
 	str r0, [sp, #0x14]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	str r0, [sp, #0x10]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
@@ -901,7 +901,7 @@ _02052004:
 	lsl r1, r1, #2
 	ldr r0, [sp, #0x10]
 	ldr r1, [r5, r1]
-	bl Sav2_Bag_copy
+	bl BagCopy
 	mov r1, #0x11
 	lsl r1, r1, #4
 	ldr r0, [sp, #0xc]
@@ -986,7 +986,7 @@ sub_020520B0: ; 0x020520B0
 	str r0, [sp, #0x20]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	str r0, [sp, #0x1c]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
@@ -1129,7 +1129,7 @@ _020521F6:
 	lsl r1, r1, #2
 	ldr r0, [sp, #0x1c]
 	ldr r1, [r5, r1]
-	bl Sav2_Bag_copy
+	bl BagCopy
 	mov r1, #0x11
 	lsl r1, r1, #4
 	ldr r0, [sp, #0x18]
@@ -1335,7 +1335,7 @@ sub_0205239C: ; 0x0205239C
 	bl SavArray_PlayerParty_get
 	add r7, r0, #0
 	ldr r0, [r4, #0xc]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	str r0, [sp]
 	ldr r0, [r4, #0xc]
 	bl Sav2_Pokedex_get
@@ -1358,7 +1358,7 @@ sub_0205239C: ; 0x0205239C
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r1, [sp]
-	bl Sav2_Bag_copy
+	bl BagCopy
 	mov r0, #0x11
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -1407,7 +1407,7 @@ sub_02052444: ; 0x02052444
 	ldr r0, [r5, #0xc]
 	bl SavArray_PlayerParty_get
 	ldr r0, [r5, #0xc]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	ldr r0, [r5, #0xc]
 	bl Sav2_Pokedex_get
 	add r1, r0, #0

@@ -3,8 +3,8 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
-.public ScrStrBufs_new
-.public ScrStrBufs_delete
+.public MessageFormat_new
+.public MessageFormat_delete
 .public BufferPlayersName
 .public StringExpandPlaceholders
 .public LoadUserFrameGfx1
@@ -39,8 +39,8 @@
 .public sub_0205B514
 .public sub_0205B564
 .public sub_0205B5B4
-.public Bag_HasItem
-.public Sav2_Bag_get
+.public BagHasItem
+.public SaveGetBag
 .public MI_CpuFill8
 .public ov01_021F6A9C
 .public ov01_021F6C28
