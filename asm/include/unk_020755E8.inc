@@ -162,8 +162,8 @@
 .public sub_02077634
 .public sub_02077650
 .public sub_02077664
-.public Bag_TakeItem
-.public Bag_GetQuantity
+.public BagTakeItem
+.public BagGetQuantity
 .public sub_02089D40
 .public MIi_CpuClear16
 .public MIi_CpuClear32

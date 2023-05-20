@@ -1644,12 +1644,12 @@ _021E64E4:
 	add r0, #0xcc
 	ldr r0, [r0]
 	ldr r0, [r0, #0x1c]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	lsl r1, r4, #0x10
 	lsr r1, r1, #0x10
 	mov r2, #1
 	mov r3, #0x66
-	bl Bag_AddItem
+	bl BagAddItem
 	add r4, r0, #0
 	ldr r0, _021E6528 ; =0x000004A1
 	bl PlayFanfare

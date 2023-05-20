@@ -1025,7 +1025,7 @@ sub_0204FC78: ; 0x0204FC78
 	bl SavArray_PlayerParty_get
 	str r0, [r4]
 	ldr r0, [r6, #0xc]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	str r0, [r4, #4]
 	ldr r0, [r6, #0xc]
 	bl Sav2_Mailbox_get
@@ -1702,7 +1702,7 @@ sub_020501B8: ; 0x020501B8
 	bl SavArray_PlayerParty_get
 	str r0, [r4]
 	ldr r0, [r6, #0xc]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	str r0, [r4, #4]
 	ldr r0, [r6, #0xc]
 	bl Sav2_Mailbox_get

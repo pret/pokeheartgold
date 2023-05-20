@@ -2958,7 +2958,7 @@ BOOL ScrCmd_285(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_335(SCRIPTCONTEXT *ctx) {
     u16 pocket = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = Bag_PocketNotEmpty(Sav2_Bag_get(ctx->fsys->savedata), pocket);
+    *p_ret = BagPocketNotEmpty(SaveGetBag(ctx->fsys->savedata), pocket);
     return FALSE;
 }
 

@@ -4199,7 +4199,7 @@ ov112_021E795C: ; 0x021E795C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x20]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	ldr r1, _021E7994 ; =0x0001E434
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x20]
@@ -17865,7 +17865,7 @@ ov112_021EE920: ; 0x021EE920
 	ldr r0, [r4, r0]
 	mov r2, #1
 	mov r3, #0x9a
-	bl Bag_AddItem
+	bl BagAddItem
 	ldr r0, _021EE960 ; =0x0001F376
 	mov r1, #1
 	strh r1, [r4, r0]
@@ -18026,7 +18026,7 @@ _021EEA86:
 	mov r2, #1
 	ldr r0, [r5, r0]
 	mov r3, #0x9a
-	bl Bag_AddItem
+	bl BagAddItem
 _021EEA98:
 	add r6, r6, #1
 	add r4, r4, #4
@@ -18043,7 +18043,7 @@ _021EEAA6:
 	mov r2, #1
 	ldr r0, [r5, r0]
 	mov r3, #0x9a
-	bl Bag_AddItem
+	bl BagAddItem
 _021EEAB8:
 	add r6, r6, #1
 	add r4, r4, #4
@@ -18060,7 +18060,7 @@ _021EEAB8:
 	ldr r0, [r5, r0]
 	mov r2, #1
 	mov r3, #0x9a
-	bl Bag_AddItem
+	bl BagAddItem
 _021EEADA:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

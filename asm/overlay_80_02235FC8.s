@@ -146,7 +146,7 @@ ov80_0223608C: ; 0x0223608C
 	ldr r1, [r1]
 	str r0, [r1]
 	ldr r0, [r5]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	add r1, r5, #0
 	add r1, #0xa8
 	ldr r1, [r1]

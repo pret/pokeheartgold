@@ -213,8 +213,8 @@
 .public GetPartyCount
 .public GetPartyMonByIndex
 .public SavArray_PlayerParty_get
-.public Bag_AddItem
-.public Sav2_Bag_get
+.public BagAddItem
+.public SaveGetBag
 .public MonSetTrainerMemo
 .public sub_02096CE0
 .public sub_02096D4C
