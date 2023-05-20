@@ -123,7 +123,7 @@ struct FieldSystem {
     MAPMATRIX *mapMatrix;
     u8 filler34[0x8];
     MapObjectMan *mapObjectMan;
-    FIELD_PLAYER_AVATAR *playerAvatar;
+    PlayerAvatar *playerAvatar;
     void *unk_44;
     u8 filler48[0xC];
     void *unk54;

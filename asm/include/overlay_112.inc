@@ -291,8 +291,8 @@
 .public GetPartyMonByIndex
 .public SavArray_PlayerParty_get
 .public GetItemNameIntoString
-.public Bag_AddItem
-.public Sav2_Bag_get
+.public BagAddItem
+.public SaveGetBag
 .public sub_0208F270
 .public sub_020932E0
 .public sub_02093354

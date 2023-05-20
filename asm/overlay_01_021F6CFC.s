@@ -117,11 +117,11 @@ _021F6DB4:
 	pop {r3, r4, r5, r6, pc}
 _021F6DC8:
 	ldr r0, [r6, #0x34]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	ldr r1, _021F6E40 ; =0x000001B5
 	mov r2, #1
 	mov r3, #4
-	bl Bag_HasItem
+	bl BagHasItem
 	cmp r0, #1
 	bne _021F6E02
 	add r0, r6, #0

@@ -673,7 +673,7 @@ sub_0204F320: ; 0x0204F320
 	bl SavArray_PlayerParty_get
 	str r0, [r4]
 	ldr r0, [r6, #0xc]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	str r0, [r4, #4]
 	ldr r0, [r6, #0xc]
 	bl Sav2_Mailbox_get

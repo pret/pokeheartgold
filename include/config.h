@@ -19,6 +19,7 @@
 #define LANGUAGE_ITALIAN     4
 #define LANGUAGE_GERMAN      5
 #define LANGUAGE_SPANISH     7
+#define LANGUAGE_KOREAN      8
 
 // Sets HeartGold as default to help IDEs.
 #if !defined(HEARTGOLD) && !defined(SOULSILVER)

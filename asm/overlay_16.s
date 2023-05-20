@@ -721,7 +721,7 @@ _022018FA:
 	add r0, r6, #0
 	lsr r1, r1, #0x10
 	add r2, r7, #0
-	bl Bag_GetQuantity
+	bl BagGetQuantity
 	add r0, r5, r0
 	lsl r0, r0, #0x10
 	add r4, r4, #1
@@ -747,7 +747,7 @@ _02201926:
 	add r0, r6, #0
 	lsr r1, r1, #0x10
 	add r2, r7, #0
-	bl Bag_GetQuantity
+	bl BagGetQuantity
 	add r0, r5, r0
 	lsl r0, r0, #0x10
 	add r4, r4, #1
@@ -952,7 +952,7 @@ ov16_02201AA0: ; 0x02201AA0
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	ldrb r1, [r4, #0x14]
 	cmp r1, #1
 	beq _02201ABA
@@ -964,7 +964,7 @@ _02201ABA:
 	ldr r2, _02201B18 ; =_02201BA0
 	str r1, [r2]
 	ldr r2, [r4]
-	bl CreateBagView
+	bl BagViewCreate
 	str r0, [r4, #0x10]
 	ldr r1, [r4, #4]
 	mov r2, #6
@@ -980,7 +980,7 @@ _02201ADC:
 	ldr r2, _02201B18 ; =_02201BA0
 	str r1, [r2]
 	ldr r2, [r4]
-	bl CreateBagView
+	bl BagViewCreate
 	str r0, [r4, #0x10]
 	ldr r1, [r4, #4]
 	mov r2, #6

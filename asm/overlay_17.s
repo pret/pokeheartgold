@@ -213,7 +213,7 @@ ov17_02201D30: ; 0x02201D30
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0xc]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	str r0, [r5, #0xc]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
@@ -843,7 +843,7 @@ _0220220C:
 	ldrb r2, [r5, #5]
 	ldr r0, [r4, #0xc]
 	ldr r3, [r4]
-	bl Bag_HasSpaceForItem
+	bl BagHasSpaceForItem
 	cmp r0, #0
 	beq _02202244
 	add r0, r4, #0
@@ -1101,7 +1101,7 @@ _0220242A:
 	ldrh r1, [r1, #0x16]
 	ldr r3, [r4]
 	mov r2, #1
-	bl Bag_TakeItem
+	bl BagTakeItem
 _02202438:
 	pop {r4, pc}
 	nop
@@ -2086,7 +2086,7 @@ ov17_02202B98: ; 0x02202B98
 	ldrb r2, [r4, #5]
 	ldr r0, [r5, #0xc]
 	ldr r3, [r5]
-	bl Bag_AddItem
+	bl BagAddItem
 	add r0, r5, #0
 	bl ov17_0220387C
 	ldr r0, [r4, #0x10]

@@ -175,7 +175,7 @@ _0206BA4E:
 	ldr r0, [r6, #0x1c]
 	str r0, [r4]
 	ldr r0, [r7, #0xc]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	str r0, [r4, #4]
 	ldr r0, [r7, #0xc]
 	bl Sav2_Mailbox_get

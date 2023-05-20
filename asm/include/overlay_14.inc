@@ -267,10 +267,10 @@
 .public GetItemNameIntoString
 .public GetItemDescIntoString
 .public ItemIdIsMail
-.public Bag_AddItem
-.public Bag_TakeItem
-.public CreateBagView
-.public Sav2_Bag_get
+.public BagAddItem
+.public BagTakeItem
+.public BagViewCreate
+.public SaveGetBag
 .public sub_020830D8
 .public sub_0208311C
 .public sub_02088288

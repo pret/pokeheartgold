@@ -20,7 +20,7 @@ struct GracideaWork;
 
 typedef struct PartyMenuAppData {
     PARTY *party;
-    BAG_DATA *bag;
+    Bag *bag;
     MAILBOX *mailbox;
     OPTIONS *options;
     u8 filler_10[0xC];

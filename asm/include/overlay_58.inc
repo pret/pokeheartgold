@@ -24,7 +24,7 @@
 .public Party_GetUnkSubSlot
 .public Party_SetUnkSubSlot
 .public SavArray_PlayerParty_get
-.public Sav2_Bag_get
+.public SaveGetBag
 .public ApplyMonMoodModifier
 .public MI_CpuFill8
 .public _ffixu

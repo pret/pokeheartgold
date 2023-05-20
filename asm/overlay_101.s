@@ -30190,11 +30190,11 @@ _021F5F9A: ; jump table
 	.short _021F5FEA - _021F5F9A - 2 ; case 6
 _021F5FA8:
 	ldr r0, [r5, #4]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	ldr r1, _021F603C ; =ITEM_GB_SOUNDS
 	ldr r3, [r4]
 	mov r2, #1
-	bl Bag_HasItem
+	bl BagHasItem
 	cmp r0, #0
 	beq _021F5FC2
 	mov r0, #4
@@ -31441,12 +31441,12 @@ RadioShow_BuenasPassword_init: ; 0x021F6904
 	mov r1, #msg_0411_00001
 	bl ReadMsgDataIntoString
 	ldr r0, [r5, #4]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	mov r1, #ITEM_BLUE_CARD>>2
 	ldr r3, [r5]
 	lsl r1, r1, #2
 	mov r2, #1
-	bl Bag_HasItem
+	bl BagHasItem
 	cmp r0, #0
 	beq _021F6946
 	mov r0, #msg_0411_00004

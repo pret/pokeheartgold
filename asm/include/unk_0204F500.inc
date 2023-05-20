@@ -55,7 +55,7 @@
 .public GetPartyCount
 .public SavArray_PlayerParty_get
 .public SavArray_IsNatDexEnabled
-.public Sav2_Bag_get
+.public SaveGetBag
 .public sub_02088288
 .public sub_0208828C
 .public sub_02089D40

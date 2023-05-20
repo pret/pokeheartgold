@@ -65,10 +65,10 @@
 .public AddMonToParty
 .public GetPartyCount
 .public SavArray_PlayerParty_get
-.public Bag_HasSpaceForItem
-.public Bag_AddItem
-.public Bag_HasItem
-.public Sav2_Bag_get
+.public BagHasSpaceForItem
+.public BagAddItem
+.public BagHasItem
+.public SaveGetBag
 .public GetSpecialRibbonNo
 .public MonSetTrainerMemo
 .public OS_GetTick

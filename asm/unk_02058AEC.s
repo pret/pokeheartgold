@@ -109,7 +109,7 @@ sub_02058B84: ; 0x02058B84
 	str r0, [r4]
 	ldr r0, [r5, #0x24]
 	ldr r0, [r0, #0xc]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	str r0, [r4, #4]
 	mov r0, #0x43
 	ldr r1, [r5, #0x24]

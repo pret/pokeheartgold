@@ -273,8 +273,8 @@
 .public PCStorage_GetActiveBox
 .public PCStorage_CountEmptySpotsInAllBoxes
 .public PCStorage_GetBoxName
-.public Bag_HasItem
-.public Sav2_Bag_get
+.public BagHasItem
+.public SaveGetBag
 .public sub_0208820C
 .public PhoneBookTrainerGetRematchInfo
 .public AllocAndReadPhoneBook

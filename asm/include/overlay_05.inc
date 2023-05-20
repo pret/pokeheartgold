@@ -152,8 +152,8 @@
 .public GetPartyCount
 .public GetPartyMonByIndex
 .public ItemIdIsMail
-.public Bag_HasItem
-.public Sav2_Bag_get
+.public BagHasItem
+.public SaveGetBag
 .public sub_0207CAAC
 .public RatioToInt
 .public sub_020880B0

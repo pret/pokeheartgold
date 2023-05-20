@@ -206,11 +206,11 @@
 .public GetItemIndexMapping
 .public GetItemDescIntoString
 .public GetItemAttr
-.public Bag_HasSpaceForItem
-.public Bag_AddItem
-.public Bag_GetQuantity
-.public CreateBagView
-.public Sav2_Bag_get
+.public BagHasSpaceForItem
+.public BagAddItem
+.public BagGetQuantity
+.public BagViewCreate
+.public SaveGetBag
 .public sub_020881C0
 .public sub_020910B8
 .public sub_02092B04

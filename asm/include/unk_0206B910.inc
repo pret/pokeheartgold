@@ -33,7 +33,7 @@
 .public GetPartyCount
 .public GetPartyMonByIndex
 .public SavArray_PlayerParty_get
-.public Sav2_Bag_get
+.public SaveGetBag
 .public sub_0209106C
 .public MI_CpuFill8
 .public memset

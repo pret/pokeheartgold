@@ -648,7 +648,7 @@ BagApp_GetSaveStructPtrs: ; 0x021F98F4
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	ldr r0, [r0]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	mov r1, #0x8e
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -4003,7 +4003,7 @@ _021FB2AE:
 	mov r0, #0x8e
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl Bag_GetRegisteredItemSlot1
+	bl BagGetRegisteredItem1
 	mov r1, #0x8d
 	lsl r1, r1, #2
 	ldr r2, [r4, r1]
@@ -4013,7 +4013,7 @@ _021FB2AE:
 	beq _021FB2E8
 	add r0, r1, #4
 	ldr r0, [r4, r0]
-	bl Bag_GetRegisteredItemSlot2
+	bl BagGetRegisteredItem2
 	mov r1, #0x8d
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
@@ -5065,7 +5065,7 @@ ov15_021FBB28: ; 0x021FBB28
 	ldrb r1, [r1, #0xd]
 	ldrh r2, [r2]
 	ldrh r3, [r4, r3]
-	bl Pocket_TakeItem
+	bl BagPocketTakeItem
 	add r0, r4, #0
 	bl ov15_021F9F08
 	mov r0, #0x8d
@@ -5254,7 +5254,7 @@ ov15_021FBCAC: ; 0x021FBCAC
 	ldr r0, [r1, #4]
 	ldrb r1, [r1, #0xd]
 	ldrh r2, [r2]
-	bl Pocket_GetQuantity
+	bl BagPocketGetQuantity
 	cmp r0, #1
 	bne _021FBCF2
 	add r0, r4, #0
@@ -5873,7 +5873,7 @@ _021FC186:
 	ldrb r1, [r1, #0xd]
 	ldrh r2, [r2]
 	ldrh r3, [r5, r3]
-	bl Pocket_TakeItem
+	bl BagPocketTakeItem
 	add r0, r5, #0
 	bl ov15_021F9F08
 	mov r0, #0x8d
@@ -5924,7 +5924,7 @@ ov15_021FC224: ; 0x021FC224
 	ldr r1, [r5, r1]
 	add r1, #0x66
 	ldrh r1, [r1]
-	bl Bag_TryRegisterItem
+	bl BagTryRegisterItem
 	cmp r0, #0
 	bne _021FC28C
 	mov r0, #0x2f
@@ -6074,7 +6074,7 @@ ov15_021FC37C: ; 0x021FC37C
 	ldr r1, [r5, r1]
 	add r1, #0x66
 	ldrh r1, [r1]
-	bl Bag_UnregisterItem
+	bl BagUnregisterItem
 	add r0, r5, #0
 	bl ov15_02200294
 	add r0, r5, #0
@@ -7207,7 +7207,7 @@ _021FCC7C:
 	ldr r0, [r1, #4]
 	ldrb r1, [r1, #0xd]
 	ldrh r2, [r2]
-	bl Pocket_GetQuantity
+	bl BagPocketGetQuantity
 	cmp r0, #1
 	bne _021FCD0C
 	mov r0, #0x2f
@@ -7948,7 +7948,7 @@ _021FD2B4:
 	ldrb r1, [r1, #0xd]
 	ldrh r2, [r2]
 	ldrh r3, [r4, r3]
-	bl Pocket_TakeItem
+	bl BagPocketTakeItem
 	add r0, r4, #0
 	bl ov15_021F9F08
 	add r4, #0x34
@@ -12330,7 +12330,7 @@ _021FF5D8:
 	mov r0, #0x8e
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl Bag_GetRegisteredItemSlot1
+	bl BagGetRegisteredItem1
 	ldr r1, [r4]
 	ldrh r1, [r1, r7]
 	cmp r1, r0
@@ -12344,7 +12344,7 @@ _021FF610:
 	mov r0, #0x8e
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl Bag_GetRegisteredItemSlot2
+	bl BagGetRegisteredItem2
 	ldr r1, [r4]
 	ldrh r1, [r1, r7]
 	cmp r1, r0

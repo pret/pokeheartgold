@@ -5033,11 +5033,11 @@ _0221E77C:
 	pop {r3, r4, r5, r6, r7, pc}
 _0221E7C2:
 	ldr r0, [r5, #4]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	ldr r1, _0221E84C ; =0x000001B5
 	mov r2, #1
 	mov r3, #0x1a
-	bl Bag_HasItem
+	bl BagHasItem
 	cmp r0, #1
 	bne _0221E7FE
 	ldr r0, _0221E838 ; =0x00003678

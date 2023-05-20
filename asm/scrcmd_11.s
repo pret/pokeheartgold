@@ -801,7 +801,7 @@ MGCheck_Item: ; 0x0204C3BC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	add r4, r0, #0
 	add r0, r5, #0
 	bl FieldSys_GetDataOfNextMG
@@ -812,7 +812,7 @@ MGCheck_Item: ; 0x0204C3BC
 	lsr r1, r1, #0x10
 	mov r2, #1
 	mov r3, #0x20
-	bl Bag_HasSpaceForItem
+	bl BagHasSpaceForItem
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end MGCheck_Item
@@ -822,7 +822,7 @@ MGGive_Item: ; 0x0204C3E4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	add r6, r0, #0
 	add r0, r5, #0
 	bl FieldSys_GetDataOfNextMG
@@ -842,7 +842,7 @@ _0204C410:
 	add r1, r4, #0
 	mov r2, #1
 	mov r3, #0x20
-	bl Bag_AddItem
+	bl BagAddItem
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end MGGive_Item
@@ -885,7 +885,7 @@ MGMessageFailure_Item: ; 0x0204C45C
 	add r4, r1, #0
 	ldr r0, [r0, #0xc]
 	add r6, r2, #0
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	ldr r0, [r5]
 	bl FieldSys_GetDataOfNextMG
 	ldr r0, [r0]
@@ -1394,7 +1394,7 @@ MGCheck_MemorialPhoto: ; 0x0204C778
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	ldr r0, [r4, #0xc]
 	bl Save_PhotoAlbum_get
 	bl PhotoAlbum_GetNumSaved
@@ -1463,13 +1463,13 @@ MGMessageFailure_MemorialPhoto: ; 0x0204C7F4
 	bl FieldSys_GetDataOfNextMG
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	mov r1, #0xd1
 	strh r1, [r6]
 	ldr r1, _0204C838 ; =0x000001F5
 	mov r2, #1
 	mov r3, #0xb
-	bl Bag_HasItem
+	bl BagHasItem
 	cmp r0, #0
 	bne _0204C820
 	mov r0, #0x18
