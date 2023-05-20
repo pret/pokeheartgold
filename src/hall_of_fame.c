@@ -34,22 +34,22 @@ void Sav2_HOF_RecordParty(HALL_OF_FAME *hof, PARTY *party, RTCDate *date) {
         MI_CpuClear16(team->party, sizeof(team->party));
 
         for (i = 0, j = 0; i < npokes; i++) {
-            POKEMON *pokemon = GetPartyMonByIndex(party, i);
-            BOOL lock = AcquireMonLock(pokemon);
-            if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
-                team->party[j].species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
-                team->party[j].level = GetMonData(pokemon, MON_DATA_LEVEL, NULL);
-                team->party[j].forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
-                team->party[j].personality = GetMonData(pokemon, MON_DATA_PERSONALITY, NULL);
-                team->party[j].otid = GetMonData(pokemon, MON_DATA_OTID, NULL);
-                team->party[j].moves[0] = GetMonData(pokemon, MON_DATA_MOVE1, NULL);
-                team->party[j].moves[1] = GetMonData(pokemon, MON_DATA_MOVE2, NULL);
-                team->party[j].moves[2] = GetMonData(pokemon, MON_DATA_MOVE3, NULL);
-                team->party[j].moves[3] = GetMonData(pokemon, MON_DATA_MOVE4, NULL);
+            Pokemon *mon = GetPartyMonByIndex(party, i);
+            BOOL lock = AcquireMonLock(mon);
+            if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
+                team->party[j].species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+                team->party[j].level = GetMonData(mon, MON_DATA_LEVEL, NULL);
+                team->party[j].forme = GetMonData(mon, MON_DATA_FORME, NULL);
+                team->party[j].personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
+                team->party[j].otid = GetMonData(mon, MON_DATA_OTID, NULL);
+                team->party[j].moves[0] = GetMonData(mon, MON_DATA_MOVE1, NULL);
+                team->party[j].moves[1] = GetMonData(mon, MON_DATA_MOVE2, NULL);
+                team->party[j].moves[2] = GetMonData(mon, MON_DATA_MOVE3, NULL);
+                team->party[j].moves[3] = GetMonData(mon, MON_DATA_MOVE4, NULL);
                 if (string != NULL) {
-                    GetMonData(pokemon, MON_DATA_NICKNAME_3, string);
+                    GetMonData(mon, MON_DATA_NICKNAME_3, string);
                     CopyStringToU16Array(string, team->party[j].nickname, POKEMON_NAME_LENGTH + 1);
-                    GetMonData(pokemon, MON_DATA_OT_NAME_2, string);
+                    GetMonData(mon, MON_DATA_OT_NAME_2, string);
                     CopyStringToU16Array(string, team->party[j].otname, PLAYER_NAME_LENGTH + 1);
                 } else {
                     team->party[j].nickname[0] = EOS;
@@ -57,7 +57,7 @@ void Sav2_HOF_RecordParty(HALL_OF_FAME *hof, PARTY *party, RTCDate *date) {
                 }
                 j++;
             }
-            ReleaseMonLock(pokemon, lock);
+            ReleaseMonLock(mon, lock);
         }
         team->year = date->year;
         team->month = date->month;

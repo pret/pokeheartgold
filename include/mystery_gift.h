@@ -24,7 +24,7 @@ enum MysteryGiftTag {
 
 typedef struct MG_POKEMON_TAG {
     BOOL fixedOT;
-    POKEMON mon;
+    Pokemon mon;
     u8 ribbons[10];
 } MG_POKEMON_TAG;
 
@@ -38,7 +38,7 @@ typedef struct {
     u16 flag;
     union {
         MG_POKEMON_TAG pokemon;
-        POKEMON egg;
+        Pokemon egg;
         u32 item;
         u16 ruleset[24];
         int base_decoration;

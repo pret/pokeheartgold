@@ -20,8 +20,8 @@ u32 Boxmon_GetIconNaix(BOXMON *boxmon) {
     return ret;
 }
 
-u32 Pokemon_GetIconNaix(POKEMON *pokemon) {
-    return Boxmon_GetIconNaix(Mon_GetBoxMon(pokemon));
+u32 Pokemon_GetIconNaix(Pokemon *mon) {
+    return Boxmon_GetIconNaix(Mon_GetBoxMon(mon));
 }
 
 u32 GetMonIconNaixEx(u32 species, BOOL isEgg, u32 forme) {
@@ -195,8 +195,8 @@ const u8 Boxmon_GetIconPalette(BOXMON *boxmon) {
     return GetMonIconPaletteEx(species, forme, isEgg);
 }
 
-const u8 Pokemon_GetIconPalette(POKEMON *pokemon) {
-    return Boxmon_GetIconPalette(Mon_GetBoxMon(pokemon));
+const u8 Pokemon_GetIconPalette(Pokemon *mon) {
+    return Boxmon_GetIconPalette(Mon_GetBoxMon(mon));
 }
 
 u32 sub_02074490(void) {

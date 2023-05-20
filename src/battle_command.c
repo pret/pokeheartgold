@@ -1190,7 +1190,7 @@ BOOL BtlCmd_ShouldGetExp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         int expShareMonsCnt = 0;
         u16 totalExp;
         u16 itemNo;
-        POKEMON *mon;
+        Pokemon *mon;
         for (int i = 0; i < GetPartyCount(BattleSys_GetParty(bsys, 0)); i++) {
             mon = BattleSystem_GetPartyMon(bsys, 0, i);
             if (GetMonData(mon, MON_DATA_SPECIES, 0) && GetMonData(mon, MON_DATA_HP, 0)) {
@@ -3129,7 +3129,7 @@ BOOL BtlCmd_TryWhirlwind(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     if (battleType & BATTLE_TYPE_TRAINER) {
         PARTY *party;
-        POKEMON *mon;
+        Pokemon *mon;
         int partySize;
         int cnt = 0;
         int cntMax;
@@ -3721,7 +3721,7 @@ BOOL BtlCmd_BeatUpDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int species;
     int forme;
     int level;
-    POKEMON *mon;
+    Pokemon *mon;
 
     BattleScriptIncrementPointer(ctx, 1);
 
@@ -3866,7 +3866,7 @@ BOOL BtlCmd_TryAssist(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     u16 avaliableMoves[6*4];
     u16 move;
     int i, j, monCnt, moveCnt;
-    POKEMON *mon;
+    Pokemon *mon;
 
     BattleScriptIncrementPointer(ctx, 1);
 
@@ -4855,7 +4855,7 @@ BOOL BtlCmd_Pickup(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int rnd, i, j, k;
     u16 species, item;
     u8 ability, lvl;
-    POKEMON *mon;
+    Pokemon *mon;
 
     BattleScriptIncrementPointer(ctx, 1);
 
@@ -5478,7 +5478,7 @@ BOOL BtlCmd_CheckWhiteout(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int battlerId;
     int partyHp = 0;
 
-    POKEMON *mon;
+    Pokemon *mon;
 
     BattleScriptIncrementPointer(ctx, 1);
 
@@ -5656,7 +5656,7 @@ BOOL BtlCmd_TryNaturalCure(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int battlerId = GetBattlerIDBySide(bsys, ctx, side);
     if (ctx->battleMons[battlerId].hp && ctx->selectedMonIndex[battlerId] != 6) {
-        POKEMON *mon = BattleSystem_GetPartyMon(bsys, battlerId, ctx->selectedMonIndex[battlerId]);
+        Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, ctx->selectedMonIndex[battlerId]);
         int ability = GetMonData(mon, MON_DATA_ABILITY, 0);
         int status = GetMonData(mon, MON_DATA_STATUS, 0);
         if (ctx->battleMons[battlerId].ability != ABILITY_NATURAL_CURE && !CheckNaturalCureOnSwitch(ctx, ability, status)) {

@@ -5,16 +5,16 @@
 #include "constants/pokewalker_courses.h"
 #include "constants/species.h"
 
-void UpdatePokedexWithReceivedSpecies(SAVEDATA *saveData, POKEMON *pokemon) {
+void UpdatePokedexWithReceivedSpecies(SAVEDATA *saveData, Pokemon *mon) {
     BOOL isEgg;
     u16 species;
-    isEgg = GetMonData(pokemon, MON_DATA_IS_EGG, NULL);
+    isEgg = GetMonData(mon, MON_DATA_IS_EGG, NULL);
     if (!isEgg) {
-        species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+        species = GetMonData(mon, MON_DATA_SPECIES, NULL);
         POKEDEX *pokedex = Sav2_Pokedex_get(saveData);
         GAME_STATS *gameStats = Sav2_GameStats_get(saveData);
         GameStats_IncSpeciesCaught(gameStats, pokedex, species);
-        Pokedex_SetMonCaughtFlag(pokedex, pokemon);
+        Pokedex_SetMonCaughtFlag(pokedex, mon);
         if (species == SPECIES_JIRACHI) {
             POKEWALKER *pokeWalker = Sav2_Pokewalker_get(saveData);
             Pokewalker_UnlockCourse(pokeWalker, WALKER_COURSE_NIGHT_SKY_S_EDGE);

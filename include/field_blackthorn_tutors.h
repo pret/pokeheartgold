@@ -4,7 +4,7 @@
 #include "player_data.h"
 #include "pokemon_types_def.h"
 typedef struct MoveRelearner { //todo: move to unk_0203E348? rename to MoveRelearnerAppData?
-    POKEMON *pokemon;
+    Pokemon *mon;
     PLAYERPROFILE *profile;
     OPTIONS *options;
     u8 filler_0C[4];
@@ -16,7 +16,7 @@ typedef struct MoveRelearner { //todo: move to unk_0203E348? rename to MoveRelea
 
 struct MoveRelearner *MoveRelearner_new(HeapID heapId);
 void MoveRelearner_delete(struct MoveRelearner *moveRelearner);
-u16 *GetEligibleLevelUpMoves(POKEMON *pokemon, HeapID heapId);
+u16 *GetEligibleLevelUpMoves(Pokemon *mon, HeapID heapId);
 BOOL sub_0209186C(const u16 *ptr);
 
 #endif //POKEHEARTGOLD_FIELD_BLACKTHORN_TUTORS_H

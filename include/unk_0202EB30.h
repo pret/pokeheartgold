@@ -4,7 +4,7 @@
 #include "pokemon_types_def.h"
 
 struct UnkStruct_0202EB30 {
-    POKEMON pokemon[PARTY_SIZE];
+    Pokemon pokemon[PARTY_SIZE];
     u32 unk_588[20];
     s64 unk_5D8[20];
     u32 unk_678;

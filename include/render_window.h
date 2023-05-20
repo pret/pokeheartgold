@@ -15,6 +15,6 @@ void sub_0200E5D4(WINDOW *window, BOOL dont_copy_to_vram);
 WaitingIcon *WaitingIcon_new(WINDOW *window, u16 tileNum);
 void sub_0200F450(WaitingIcon *waitingIcon);
 struct PokepicManager *sub_0200F4A0(BGCONFIG *bgConfig, enum GFBgLayer layer, int x, int y, u8 paletteNum, u16 baseTile, u16 species, u8 gender, HeapID heapId);
-struct PokepicManager *sub_0200F4F8(BGCONFIG *bgConfig, enum GFBgLayer layer, int x, int y, u8 paletteNum, u16 baseTile, POKEMON *pokemon, HeapID heapId);
+struct PokepicManager *sub_0200F4F8(BGCONFIG *bgConfig, enum GFBgLayer layer, int x, int y, u8 paletteNum, u16 baseTile, Pokemon *mon, HeapID heapId);
 
 #endif //POKEHEARTGOLD_RENDER_WINDOW_H
