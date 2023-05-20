@@ -362,7 +362,7 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
             personality = (personality << 8) + pid_gender;
             iv = (u8)((monSpeciesMoves[i].difficulty * 31) / 255);
             CreateMon(pokemon, species, monSpeciesMoves[i].level, iv, TRUE, (s32)personality, OT_ID_RANDOM_NO_SHINY, 0);
-            for (j = 0; j < MON_MOVES; j++) {
+            for (j = 0; j < MAX_MON_MOVES; j++) {
                 MonSetMoveInSlot(pokemon, monSpeciesMoves[i].moves[j], (u8)j);
             }
             SetTrMonCapsule(monSpeciesMoves[i].capsule, pokemon, heap_id);
@@ -415,7 +415,7 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
             iv = (u8)((monSpeciesItemMoves[i].difficulty * 31) / 255);
             CreateMon(pokemon, species, monSpeciesItemMoves[i].level, iv, TRUE, (s32)personality, OT_ID_RANDOM_NO_SHINY, 0);
             SetMonData(pokemon, MON_DATA_HELD_ITEM, &monSpeciesItemMoves[i].item);
-            for (j = 0; j < MON_MOVES; j++) {
+            for (j = 0; j < MAX_MON_MOVES; j++) {
                 MonSetMoveInSlot(pokemon, monSpeciesItemMoves[i].moves[j], (u8)j);
             }
             SetTrMonCapsule(monSpeciesItemMoves[i].capsule, pokemon, heap_id);
@@ -455,7 +455,7 @@ void TrMon_FrustrationCheckAndSetFriendship(POKEMON *pokemon) {
     u8 friendship = FRIENDSHIP_MAX;
     int i;
 
-    for (i = 0; i < MON_MOVES; i++) {
+    for (i = 0; i < MAX_MON_MOVES; i++) {
         if (GetMonData(pokemon, MON_DATA_MOVE1 + i, NULL) == MOVE_FRUSTRATION) {
             friendship = 0;
         }

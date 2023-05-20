@@ -1026,14 +1026,14 @@ BOOL ScrCmd_GiveTogepiEgg(SCRIPTCONTEXT *ctx) {
 
     SetEggStats(togepi, SPECIES_TOGEPI, 1, profile, 3, sub_02017FE4(1, 0xd));
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < MAX_MON_MOVES; i++) {
         if (!GetMonData(togepi, MON_DATA_MOVE1 + i, 0)) {
             break;
         }
     }
 
-    if (i == 4) {
-        i = 3;
+    if (i == MAX_MON_MOVES) {
+        i = MAX_MON_MOVES - 1;
     }
 
     moveData = MOVE_EXTRASENSORY;
@@ -1092,7 +1092,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(SCRIPTCONTEXT *ctx) {
     forme = 1;
     SetMonData(pichu, MON_DATA_FORME, &forme);
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < MAX_MON_MOVES; i++) {
         SetMonData(pichu, MON_DATA_MOVE1 + i, &sSpikyEarPichuMoveset[i]);
         maxPP = GetMonData(pichu, MON_DATA_MOVE1MAXPP + i, 0);
         SetMonData(pichu, MON_DATA_MOVE1PP + i, &maxPP);

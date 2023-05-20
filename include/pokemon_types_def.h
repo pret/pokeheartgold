@@ -3,6 +3,7 @@
 
 #include "filesystem.h"
 #include "seal_case.h"
+#include "constants/pokemon.h"
 
 typedef struct BaseStats {
     /* 0x00 */ u8 hp;
@@ -71,9 +72,9 @@ typedef struct {
 } PokemonDataBlockA;
 
 typedef struct {
-    /* 0x00 */ u16 moves[4];
-    /* 0x08 */ u8 movePP[4];
-    /* 0x0C */ u8 movePpUps[4];
+    /* 0x00 */ u16 moves[MAX_MON_MOVES];
+    /* 0x08 */ u8 movePP[MAX_MON_MOVES];
+    /* 0x0C */ u8 movePpUps[MAX_MON_MOVES];
     /* 0x10 */ u32 hpIV:5, atkIV:5, defIV:5, spdIV:5, spatkIV:5, spdefIV:5, isEgg:1, isNicknamed:1;
     // TODO: Finish HoennRibbonSet
     /* 0x14 */ u32 ribbonFlags; // cool, ...
@@ -193,9 +194,9 @@ struct UnkPokemonStruct_02072A98 {
     /* 0x19 */ u8 spdEV;
     /* 0x1A */ u8 spatkEV;
     /* 0x1B */ u8 spdefEV;
-    /* 0x1C */ u16 moves[4];
-    /* 0x24 */ u8 movePP[4];
-    /* 0x28 */ u8 movePpUps[4];
+    /* 0x1C */ u16 moves[MAX_MON_MOVES];
+    /* 0x24 */ u8 movePP[MAX_MON_MOVES];
+    /* 0x28 */ u8 movePpUps[MAX_MON_MOVES];
     /* 0x2C */ u32 hpIV:5;
                u32 atkIV:5;
                u32 defIV:5;
