@@ -3,6 +3,7 @@
 
 #include "filesystem.h"
 #include "seal_case.h"
+#include "constants/pokemon.h"
 
 typedef struct BaseStats {
     /* 0x00 */ u8 hp;
