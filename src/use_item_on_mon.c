@@ -85,7 +85,7 @@ BOOL CanUseItemOnPokemon(Pokemon *mon, u16 itemID, s32 moveIdx, HeapID heapID) {
     }
 
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PP_RESTORE_ALL)) {
-        for (int i = 0; i < MON_MOVES; i++) {
+        for (int i = 0; i < MAX_MON_MOVES; i++) {
             if (MonMoveCanRestorePP(mon, i) == TRUE) {
                 FreeToHeap(itemData);
                 return TRUE;
@@ -322,7 +322,7 @@ BOOL UseItemOnPokemon(Pokemon *mon, u16 itemID, u16 moveIdx, u16 location, HeapI
         effectFound = TRUE;
     } else if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PP_RESTORE_ALL)) {
         sp54 = 0;
-        for (; sp54 < MON_MOVES; sp54++) {
+        for (; sp54 < MAX_MON_MOVES; sp54++) {
             if (MonMoveRestorePP(mon, sp54, GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PP_RESTORE_PARAM)) == 1) {
                 hadEffect = TRUE;
             }
@@ -657,7 +657,7 @@ void HealParty(PARTY * party) {
             sp8 = 0;
             SetMonData(mon, MON_DATA_STATUS, &sp8);
 
-            for (j = 0; j < MON_MOVES; j++) {
+            for (j = 0; j < MAX_MON_MOVES; j++) {
                 if (MonMoveCanRestorePP(mon, j) == 1) {
                     MonMoveRestorePP(mon, j, PP_RESTORE_ALL);
                 }
