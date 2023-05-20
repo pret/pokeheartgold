@@ -7,7 +7,7 @@
 #include "fashion_case.h"
 #include "frontier_data.h"
 #include "msgdata.h"
-#include "msgfmt.h"
+#include "message_format.h"
 #include "constants/items.h"
 
 #include "msgdata/msg/msg_0010.h"
@@ -35,7 +35,7 @@ void sub_0207789C(BAG_VIEW *a0, SAVEDATA *a1, u8 a2, BAG_CURSOR *a3, u32 a4) {
     a0->unk_66 = 0;
 }
 
-void BagView_SetItem(BAG_VIEW *bagView, ITEM_SLOT *slots, u8 pocketId, u8 position) {
+void BagView_SetItem(BAG_VIEW *bagView, ItemSlot *slots, u8 pocketId, u8 position) {
     // Bug: position was likely intended to force a particular display order.
     // Likely intended as an index to bagView->pockets.
     // However, this variable is unused.
@@ -106,10 +106,10 @@ static u32 get_num_battle_points(SAVEDATA *saveData) {
 BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 itemId, u32 heap_id) {
     MSGDATA *msgData;
     STRING *fmtStr;
-    MSGFMT *msgFmt;
+    MessageFormat *msgFmt;
 
     msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0010_bin, heap_id);
-    msgFmt = ScrStrBufs_new(heap_id);
+    msgFmt = MessageFormat_new(heap_id);
 
     if (itemId == ITEM_NONE) {
         fmtStr = NewString_ReadMsgData(msgData, msg_0010_00102);
@@ -127,13 +127,13 @@ BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 
         fmtStr = NewString_ReadMsgData(msgData, msg_0010_00058);
         BufferIntegerAsString(msgFmt, 0, get_num_coins(saveData), 5, STRCONVMODE_LEFT_ALIGN, TRUE);
     } else {
-        ScrStrBufs_delete(msgFmt);
+        MessageFormat_delete(msgFmt);
         DestroyMsgData(msgData);
         return FALSE;
     }
     StringExpandPlaceholders(msgFmt, dest, fmtStr);
     String_dtor(fmtStr);
-    ScrStrBufs_delete(msgFmt);
+    MessageFormat_delete(msgFmt);
     DestroyMsgData(msgData);
     return TRUE;
 }
@@ -163,16 +163,16 @@ void GetItemUseErrorMessage(PLAYERPROFILE *playerProfile, STRING *dest, u16 item
     default:
     {
         // {PLAYER}! This isn't the time to use that!
-        MSGFMT *msgFmt;
+        MessageFormat *msgFmt;
         STRING *string;
 
         msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0040_bin, heap_id);
-        msgFmt = ScrStrBufs_new(heap_id);
+        msgFmt = MessageFormat_new(heap_id);
         string = NewString_ReadMsgData(msgData, msg_0040_00037);
         BufferPlayersName(msgFmt, 0, playerProfile);
         StringExpandPlaceholders(msgFmt, dest, string);
         String_dtor(string);
-        ScrStrBufs_delete(msgFmt);
+        MessageFormat_delete(msgFmt);
         DestroyMsgData(msgData);
     }
         break;

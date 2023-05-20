@@ -117,11 +117,11 @@ _021F6DB4:
 	pop {r3, r4, r5, r6, pc}
 _021F6DC8:
 	ldr r0, [r6, #0x34]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	ldr r1, _021F6E40 ; =0x000001B5
 	mov r2, #1
 	mov r3, #4
-	bl Bag_HasItem
+	bl BagHasItem
 	cmp r0, #1
 	bne _021F6E02
 	add r0, r6, #0
@@ -706,7 +706,7 @@ ov01_021F722C: ; 0x021F722C
 	add r4, r0, #0
 	bl MI_CpuFill8
 	mov r0, #4
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r4, #0x38]
 	ldr r2, _021F7264 ; =0x0000030B
 	mov r0, #0
@@ -734,7 +734,7 @@ ov01_021F7268: ; 0x021F7268
 	ldr r0, [r4, #0x3c]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x38]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4, #0xc]
 	bl String_dtor
 	ldr r0, [r4, #8]

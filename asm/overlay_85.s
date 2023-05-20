@@ -1644,12 +1644,12 @@ _021E64E4:
 	add r0, #0xcc
 	ldr r0, [r0]
 	ldr r0, [r0, #0x1c]
-	bl Sav2_Bag_get
+	bl SaveGetBag
 	lsl r1, r4, #0x10
 	lsr r1, r1, #0x10
 	mov r2, #1
 	mov r3, #0x66
-	bl Bag_AddItem
+	bl BagAddItem
 	add r4, r0, #0
 	ldr r0, _021E6528 ; =0x000004A1
 	bl PlayFanfare
@@ -1784,7 +1784,7 @@ ov85_021E65D4: ; 0x021E65D4
 	ldr r0, _021E6608 ; =0x00000CA8
 	mov r1, #0xa
 	add r0, r4, r0
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	ldr r1, _021E660C ; =0x00000DC8
 	str r0, [r4, r1]
 	mov r0, #0x2d
@@ -3106,7 +3106,7 @@ ov85_021E705C: ; 0x021E705C
 	bl NewMsgDataFromNarc
 	str r0, [r4, #4]
 	mov r0, #0x66
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r4, #8]
 	ldr r0, _021E713C ; =0x00000D84
 	add r1, r4, #0
@@ -3164,7 +3164,7 @@ ov85_021E7148: ; 0x021E7148
 	ldr r0, [r4, #4]
 	bl DestroyMsgData
 	ldr r0, [r4, #8]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4, #0x6c]
 	bl String_dtor
 	mov r4, #0
@@ -3508,7 +3508,7 @@ ov85_021E7424: ; 0x021E7424
 	ldr r0, _021E748C ; =0x00000D0C
 	add r4, r5, r0
 	mov r0, #0x66
-	bl GF_Camera_Create
+	bl Camera_Create
 	str r0, [r4, #0x1c]
 	mov r2, #0
 	str r2, [r4, #8]
@@ -3536,7 +3536,7 @@ ov85_021E7424: ; 0x021E7424
 	add r0, #8
 	add r2, #0x14
 	lsr r3, r3, #0x10
-	bl GF_Camera_InitFromTargetDistanceAndAngle
+	bl Camera_InitFromTargetDistanceAndAngle
 	mov r1, #0
 	mov r0, #1
 	lsl r0, r0, #0xc
@@ -3545,9 +3545,9 @@ ov85_021E7424: ; 0x021E7424
 	str r1, [sp, #0x14]
 	ldr r1, [r4, #0x1c]
 	add r0, sp, #0xc
-	bl GF_Camera_SetBindTarget
+	bl Camera_SetBindTarget
 	ldr r0, [r4, #0x1c]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -6508,7 +6508,7 @@ _021E890A:
 	bl BgConfig_Alloc
 	str r0, [r4, #0x14]
 	mov r0, #0x66
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r4, #0x34]
 	mov r0, #0
 	mov r1, #0x1b
@@ -6759,7 +6759,7 @@ _021E8B34:
 	ldr r0, [r6, #0x38]
 	bl DestroyMsgData
 	ldr r0, [r6, #0x34]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r2, _021E8BAC ; =0x04000304
 	ldrh r1, [r2]
 	lsr r0, r2, #0xb

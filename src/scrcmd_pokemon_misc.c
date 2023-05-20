@@ -23,6 +23,18 @@
 #include "msgdata/msg/msg_0066_D23R0102.h"
 #include "constants/items.h"
 #include "constants/moves.h"
+#include "unk_0200FA24.h"
+#include "unk_02005D10.h"
+#include "unk_0202CA24.h"
+#include "field_follow_poke.h"
+#include "get_egg.h"
+#include "map_section.h"
+#include "map_header.h"
+#include "update_dex_received.h"
+#include "math_util.h"
+#include "sys_vars.h"
+#include "system.h"
+#include "unk_02092BE8.h"
 
 typedef struct UnkStructScr_648 {
     FieldSystem *fsys;
@@ -31,7 +43,7 @@ typedef struct UnkStructScr_648 {
     WINDOW *window_18;
     STRING *stringArr_1C[120];
     MSGDATA *msgdata;
-    MSGFMT *msgfmt;
+    MessageFormat *msgfmt;
     u8 unk_204;
     u8 unk_205;
     u8 unk_206;
@@ -58,8 +70,8 @@ typedef struct UnkStructScr_648 {
 static BOOL ov01_02200C6C(SCRIPTCONTEXT *ctx);
 static void *ov01_02200C94(HeapID heapId, s32 fileId, u32 *unkPtr);
 static void ov01_02200CB4(SCR_648_STRUCT *unkPtr, MSGDATA *msgdata);
-static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, s16 *input, MSGFMT *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove);
-static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fsys, u8 x, u8 y, u8 a3, u8 a4, s16* input, MSGFMT *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove);
+static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, s16 *input, MessageFormat *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove);
+static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fsys, u8 x, u8 y, u8 a3, u8 a4, s16* input, MessageFormat *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove);
 static void ov01_02200DF8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3);
 static void ov01_02200E00(SCR_648_STRUCT *unkPtr);
 static void ov01_02200EC8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3);
@@ -87,11 +99,11 @@ BOOL ScrCmd_648(SCRIPTCONTEXT *ctx) {
     u16 *cursorPos;
     u16 *itemsAbove;
     WINDOW *window;
-    MSGFMT **msgfmt;
+    MessageFormat **msgfmt;
     MSGDATA *msgdata;
     FieldSystem *fsys = ctx->fsys;
 
-    msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u32 unkA = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u32 fileIndex = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 unkC = ScriptReadHalfword(ctx);
@@ -159,7 +171,7 @@ static void ov01_02200CB4(SCR_648_STRUCT *unkPtr, MSGDATA *msgdata) {
     unkPtr->msgdata = msgdata;
 }
 
-static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, s16 *input, MSGFMT *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove) {
+static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, s16 *input, MessageFormat *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove) {
     int i;
     unkPtr->msgdata = msgdata;
     unkPtr->unk_207 = unkPtr->unk_207 & ~0x2;
@@ -192,7 +204,7 @@ static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y,
     *unkPtr->input = 0xEEEE;
 }
 
-static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fsys, u8 x, u8 y, u8 a3, u8 a4, s16* input, MSGFMT *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove) {
+static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fsys, u8 x, u8 y, u8 a3, u8 a4, s16* input, MessageFormat *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove) {
     SCR_648_STRUCT *unkPtr = AllocFromHeap(4, sizeof(SCR_648_STRUCT));
     if (!unkPtr) {
         return NULL;
@@ -397,7 +409,7 @@ BOOL ScrCmd_CommSanitizeParty(SCRIPTCONTEXT *ctx) {
         }
     }
     if (count > 0) {
-        if (Bag_AddItem(Sav2_Bag_get(fsys->savedata), ITEM_GRISEOUS_ORB, count, 4) == FALSE) {
+        if (BagAddItem(SaveGetBag(fsys->savedata), ITEM_GRISEOUS_ORB, count, 4) == FALSE) {
             *success = 255;
             return FALSE;
         }
@@ -832,8 +844,8 @@ BOOL ScrCmd_GetTotalApricornCount(SCRIPTCONTEXT *ctx) {
 }
 
 //Related to Kurt- canceling
-BOOL ScrCmd_739(SCRIPTCONTEXT *ctx) {
-    struct ApricornBoxWork **unkPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+BOOL ScrCmd_739(SCRIPTCONTEXT *ctx) { //todo: rename structs and find out stuff
+    struct ApricornBoxWork **unkPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     *unkPtr = CreateApricornBoxWork(ctx->fsys, 2);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
@@ -841,7 +853,7 @@ BOOL ScrCmd_739(SCRIPTCONTEXT *ctx) {
 
 //Related to aprijuice stand- canceling
 BOOL ScrCmd_740(SCRIPTCONTEXT *ctx) {
-    u32 *unkPtrA = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    u32 **unkPtrA = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     u32 unkVar = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 *unkPtrB = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
     *unkPtrA = sub_0203ED80(ctx->fsys, unkVar, unkPtrB);
@@ -854,7 +866,7 @@ BOOL ScrCmd_741(SCRIPTCONTEXT *ctx) {
     UnkStruct_02031CEC unkOut;
     RTCDate date;
     s32 unkVar;
-    struct MSGFMT **msgfmt;
+    MessageFormat **msgfmt;
     SaveApricornBox *apricornBox;
     u16 *price;
     u16 *unkPtrA;
@@ -862,7 +874,7 @@ BOOL ScrCmd_741(SCRIPTCONTEXT *ctx) {
     STRING *str;
 
     apricornBox = Save_ApricornBox_get(ctx->fsys->savedata);
-    msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     unkVar = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     unkPtrA = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
     price = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
@@ -1175,9 +1187,9 @@ static u32 SlotLuckiness(SAVEDATA *savedata, u8 machineId, u8 city) {
 BOOL ScrCmd_CasinoGame(SCRIPTCONTEXT *ctx) {
     u8 machineId = *(ctx->script_ptr++);
     u8 city = *(ctx->script_ptr++); //1 = celadon; 0 = goldenrod
-    u32 *unkPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_AC);
+    u32 **unkPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA); //VoltorbFlipAppData
 
-    *unkPtr = LaunchVoltorbFlipApp(ctx->fsys, SlotLuckiness(ctx->fsys->savedata, machineId, city));
+    *unkPtr = (u32 *)LaunchVoltorbFlipApp(ctx->fsys, SlotLuckiness(ctx->fsys->savedata, machineId, city)); //this is messy, very very messy
 
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
@@ -1186,7 +1198,7 @@ BOOL ScrCmd_CasinoGame(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_BufferPokeathlonCourseName(SCRIPTCONTEXT *ctx) {
     u8 fieldNo = *(ctx->script_ptr++);
     u32 courseId = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
-    BufferPokeathlonCourseName(*(MSGFMT**)FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT), fieldNo, (u8) courseId);
+    BufferPokeathlonCourseName(*(MessageFormat**)FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT), fieldNo, (u8) courseId);
     return FALSE;
 }
 
@@ -1427,10 +1439,10 @@ BOOL ScrCmd_BugContestAction(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_BufferBugContestWinner(SCRIPTCONTEXT *ctx) {
-    struct MSGFMT **msgfmt;
+    MessageFormat **msgfmt;
     BUGCONTEST *bugContest;
 
-    msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     bugContest = FieldSys_BugContest_get(ctx->fsys);
 
     BugContest_BufferContestWinnerNames(bugContest, ctx->msgdata, *msgfmt, *ctx->script_ptr++);
@@ -1464,11 +1476,11 @@ BOOL ScrCmd_JudgeBugContest(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_BufferBugContestMonNick(SCRIPTCONTEXT *ctx) {
-    struct MSGFMT **msgfmt;
+    MessageFormat **msgfmt;
     BUGCONTEST *bugContest;
     u32 script_index;
 
-    msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     bugContest = FieldSys_BugContest_get(ctx->fsys);
 
     script_index = *(ctx->script_ptr++);
@@ -1479,12 +1491,12 @@ BOOL ScrCmd_BufferBugContestMonNick(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_BugContestGetTimeLeft(SCRIPTCONTEXT *ctx) {
-    struct MSGFMT **msgfmt;
+    MessageFormat **msgfmt;
     BUGCONTEST *bugContest;
     u32 script_index;
     u32 timeLeft;
 
-    msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MSGFMT);
+    msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
 
     script_index = *(ctx->script_ptr++);
     timeLeft = 1;

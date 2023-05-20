@@ -15,7 +15,7 @@
 #include "unk_02054E00.h"
 #include "metatile_behavior.h"
 #include "unk_0203E348.h"
-#include "unk_0200E398.h"
+#include "render_window.h"
 #include "unk_0200FA24.h"
 #include "text.h"
 #include "field_alph_checks.h"
@@ -217,7 +217,7 @@ static void ItemMenuUseFunc_HealingItem(struct ItemMenuUseData *data, const stru
     struct UseItemInPartyTaskEnv *usedat = AllocFromHeap(11, sizeof(struct UseItemInPartyTaskEnv));
     memset(usedat, 0, sizeof(struct UseItemInPartyTaskEnv));
     usedat->party = SavArray_PlayerParty_get(fsys->savedata);
-    usedat->bag = Sav2_Bag_get(fsys->savedata);
+    usedat->bag = SaveGetBag(fsys->savedata);
     usedat->mailbox = Sav2_Mailbox_get(fsys->savedata);
     usedat->options = Sav2_PlayerData_GetOptionsAddr(fsys->savedata);
     usedat->unk10 = sub_020270C4(fsys->savedata);
@@ -340,7 +340,7 @@ static void ItemMenuUseFunc_TMHM(struct ItemMenuUseData *data, const struct Item
     struct UseItemInPartyTaskEnv *usedat = AllocFromHeap(11, sizeof(struct UseItemInPartyTaskEnv));
     memset(usedat, 0, sizeof(struct UseItemInPartyTaskEnv));
     usedat->party = SavArray_PlayerParty_get(fsys->savedata);
-    usedat->bag = Sav2_Bag_get(fsys->savedata);
+    usedat->bag = SaveGetBag(fsys->savedata);
     usedat->mailbox = Sav2_Mailbox_get(fsys->savedata);
     usedat->options = Sav2_PlayerData_GetOptionsAddr(fsys->savedata);
     usedat->unk18 = &env->unk_0370;
@@ -409,7 +409,7 @@ static void ItemMenuUseFunc_Honey(struct ItemMenuUseData *data, const struct Ite
     env->atexit_TaskFunc = Task_HoneyOrSweetScent;
     env->atexit_TaskEnv = honey_work;
     env->state = 12;
-    Bag_TakeItem(Sav2_Bag_get(fsys->savedata), data->itemId, 1, 11);
+    BagTakeItem(SaveGetBag(fsys->savedata), data->itemId, 1, 11);
 }
 
 static void ItemMenuUseFunc_OldRod(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
@@ -530,7 +530,7 @@ static void ItemMenuUseFunc_EvoStone(struct ItemMenuUseData *data, const struct 
     usedat = AllocFromHeap(11, sizeof(struct UseItemInPartyTaskEnv));
     memset(usedat, 0, sizeof(struct UseItemInPartyTaskEnv));
     usedat->party = SavArray_PlayerParty_get(fsys->savedata);
-    usedat->bag = Sav2_Bag_get(fsys->savedata);
+    usedat->bag = SaveGetBag(fsys->savedata);
     usedat->mailbox = Sav2_Mailbox_get(fsys->savedata);
     usedat->options = Sav2_PlayerData_GetOptionsAddr(fsys->savedata);
     usedat->unk10 = sub_020270C4(fsys->savedata);
@@ -561,7 +561,7 @@ static void ItemMenuUseFunc_EscapeRope(struct ItemMenuUseData *data, const struc
     env->atexit_TaskFunc = Task_JumpToFieldEscapeRope;
     env->atexit_TaskEnv = NULL;
     env->state = 12;
-    Bag_TakeItem(Sav2_Bag_get(fsys->savedata), data->itemId, 1, 11);
+    BagTakeItem(SaveGetBag(fsys->savedata), data->itemId, 1, 11);
 }
 
 static u32 ItemCheckUseFunc_EscapeRope(const struct ItemCheckUseData *data) {
@@ -764,9 +764,9 @@ int UseRegisteredItemButtonInField(FieldSystem *fsys, u8 slot) {
         return 0;
     }
     if (slot == 1) {
-        itemId = Bag_GetRegisteredItemSlot1(Sav2_Bag_get(fsys->savedata));
+        itemId = BagGetRegisteredItem1(SaveGetBag(fsys->savedata));
     } else {
-        itemId = Bag_GetRegisteredItemSlot2(Sav2_Bag_get(fsys->savedata));
+        itemId = BagGetRegisteredItem2(SaveGetBag(fsys->savedata));
     }
     if (itemId == ITEM_DOWSING_MCHN && ov01_021F6B00(fsys) == 4) {
         return 0;

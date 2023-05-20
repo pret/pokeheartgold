@@ -31,7 +31,7 @@ ov01_021EABA8: ; 0x021EABA8
 	bl GF_AssertFail
 _021EABC4:
 	mov r0, #4
-	bl GF_Camera_Create
+	bl Camera_Create
 	str r0, [r5, #0x24]
 	ldrh r0, [r4, #0xc]
 	add r2, r4, #4
@@ -45,17 +45,17 @@ _021EABC4:
 	ldrh r3, [r4, #0xe]
 	ldr r0, [sp, #0xc]
 	ldr r1, [r4]
-	bl GF_Camera_InitFromTargetDistanceAndAngle
+	bl Camera_InitFromTargetDistanceAndAngle
 	ldr r0, [r5, #0x24]
-	bl GF_Camera_RegisterToStaticPtr
+	bl Camera_RegisterToStaticPtr
 	ldr r0, [r4, #0x10]
 	ldr r1, [r4, #0x14]
 	ldr r2, [r5, #0x24]
-	bl GF_Camera_SetClipBounds
+	bl Camera_SetClipBounds
 	add r4, #0x18
 	ldr r1, [r5, #0x24]
 	add r0, r4, #0
-	bl GF_Camera_ShiftBy
+	bl Camera_ShiftBy
 	cmp r7, #0
 	beq _021EAC16
 	ldr r0, [r5, #0x24]
@@ -143,10 +143,10 @@ ov01_021EAC6C: ; 0x021EAC6C
 	strh r3, [r1]
 	strb r2, [r4, #7]
 	ldr r1, [r4]
-	bl GF_Camera_SetAngle
+	bl Camera_SetAngle
 	ldr r1, [r4]
 	add r0, r5, #4
-	bl GF_Camera_ShiftBy
+	bl Camera_ShiftBy
 _021EACAE:
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -403,7 +403,7 @@ _021EAE92:
 	strh r1, [r0]
 	add r0, sp, #0
 	add r1, r5, #0
-	bl GF_Camera_SetAngle
+	bl Camera_SetAngle
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021EAE50
@@ -433,7 +433,7 @@ ov01_021EAEA4: ; 0x021EAEA4
 	str r0, [sp, #8]
 	add r0, sp, #0
 	add r1, r7, #0
-	bl GF_Camera_ShiftBy
+	bl Camera_ShiftBy
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

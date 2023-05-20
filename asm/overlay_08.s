@@ -2407,7 +2407,7 @@ ov08_0221D0F4: ; 0x0221D0F4
 	str r0, [r4, r1]
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	ldr r1, _0221D144 ; =0x00001FAC
 	str r0, [r4, r1]
 	ldr r1, [r4]
@@ -2437,7 +2437,7 @@ ov08_0221D14C: ; 0x0221D14C
 	bl MessagePrinter_delete
 	ldr r0, _0221D17C ; =0x00001FAC
 	ldr r0, [r4, r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, _0221D180 ; =0x00001FB0
 	ldr r0, [r4, r0]
 	bl String_dtor
@@ -3802,7 +3802,7 @@ ov08_0221DBCC: ; 0x0221DBCC
 	add r1, r4, #0
 	mov r2, #1
 	add r3, r7, #0
-	bl Bag_TakeItem
+	bl BagTakeItem
 _0221DBF0:
 	add r0, r5, #0
 	bl ov12_0223AA84
@@ -14230,7 +14230,7 @@ ov08_022231E8: ; 0x022231E8
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r4, #0x14]
 	ldr r1, [r4]
 	mov r0, #2
@@ -14251,7 +14251,7 @@ ov08_02223228: ; 0x02223228
 	ldr r0, [r4, #0xc]
 	bl MessagePrinter_delete
 	ldr r0, [r4, #0x14]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4, #0x18]
 	bl String_dtor
 	pop {r4, pc}
@@ -14433,7 +14433,7 @@ ov08_02223390: ; 0x02223390
 	add r1, r5, #0
 	mov r2, #1
 	add r3, r4, #0
-	bl Bag_TakeItem
+	bl BagTakeItem
 	add r0, r6, #0
 	bl ov12_0223AA84
 	add r1, r5, #0
@@ -15432,7 +15432,7 @@ _02223B88:
 	ldr r0, [r3, #8]
 	ldr r3, [r3, #0xc]
 	mov r2, #1
-	bl Bag_HasItem
+	bl BagHasItem
 	cmp r0, #0
 	bne _02223BA2
 	ldr r1, [r4]
@@ -15510,7 +15510,7 @@ _02223C0A:
 	lsl r2, r2, #0x10
 	ldr r1, [sp, #8]
 	lsr r2, r2, #0x10
-	bl Bag_GetPocketSlotN
+	bl BagGetNthPocket
 	add r5, r0, #0
 	beq _02223C7C
 	ldrh r0, [r5]

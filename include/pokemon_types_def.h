@@ -94,7 +94,7 @@ typedef struct {
 } PokemonDataBlockC;
 
 typedef struct {
-    /* 0x00 */ u16 otTrainerName[8];
+    /* 0x00 */ u16 otTrainerName[PLAYER_NAME_LENGTH + 1];
     /* 0x10 */ u8 dateEggReceived[3];
     /* 0x13 */ u8 dateMet[3];
     /* 0x16 */ u16 DP_EggLocation;
@@ -150,7 +150,7 @@ typedef struct Mail
     u8 author_language;
     u8 author_version;
     u8 mail_type;
-    u16 author_name[OT_NAME_LENGTH + 1];
+    u16 author_name[PLAYER_NAME_LENGTH + 1];
     union MailPatternData mon_icons[3];
     u16 forme_flags; // bitfield of three 5-bit values
     MAIL_MESSAGE unk_20[3];
@@ -208,7 +208,7 @@ struct UnkPokemonStruct_02072A98 {
                u8 gender:2;
                u8 alternateForm:5;
     /* 0x32 */ u16 nickname[POKEMON_NAME_LENGTH + 1];
-    /* 0x48 */ u16 otTrainerName[OT_NAME_LENGTH + 1];
+    /* 0x48 */ u16 otTrainerName[PLAYER_NAME_LENGTH + 1];
     /* 0x58 */ u8 pokeball;
     /* 0x59 */ u8 originLanguage;
     /* 0x5C */ u32 status;

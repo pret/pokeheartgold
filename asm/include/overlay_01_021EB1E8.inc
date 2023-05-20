@@ -45,8 +45,8 @@
 .public MTRandom
 .public sub_02020E10
 .public GX_EngineAToggleLayers
-.public GF_Camera_GetPerspectiveAngle
-.public GF_Camera_GetDistance
+.public Camera_GetPerspectiveAngle
+.public Camera_GetDistance
 .public SpriteList_Create
 .public sub_02024504
 .public sub_0202457C

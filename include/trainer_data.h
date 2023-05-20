@@ -91,7 +91,7 @@ typedef struct TrainerData {
     /*004*/ u16 items[4];
     /*00C*/ u32 ai_flags;
     /*010*/ u32 doubleBattle;
-    /*014*/ u16 name[OT_NAME_LENGTH + 1];
+    /*014*/ u16 name[PLAYER_NAME_LENGTH + 1];
     // Used in the Frontier
     /*024*/ MAIL_MESSAGE winMessage;
     /*02C*/ MAIL_MESSAGE loseMessage;

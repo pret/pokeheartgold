@@ -9,11 +9,11 @@
 .public sub_02016F2C
 .public sub_02017088
 .public GX_EngineAToggleLayers
-.public GF_Camera_Create
+.public Camera_Create
 .public sub_02023120
-.public GF_Camera_RegisterToStaticPtr
+.public Camera_RegisterToStaticPtr
 .public sub_02023234
-.public GF_Camera_SetClipBounds
+.public Camera_SetClipBounds
 .public sub_020232BC
 .public sub_02025224
 .public GetPokemonSpriteCharAndPlttNarcIds

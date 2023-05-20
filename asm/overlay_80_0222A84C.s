@@ -32,7 +32,7 @@ ov80_0222A84C: ; 0x0222A84C
 	mov r0, #8
 	mov r1, #0x40
 	add r2, r5, #0
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	str r0, [r4, #0x44]
 	mov r0, #1
 	lsl r0, r0, #0xa
@@ -124,7 +124,7 @@ ov80_0222A920: ; 0x0222A920
 	bl GF_AssertFail
 _0222A930:
 	ldr r0, [r4, #0x44]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4, #0x48]
 	bl String_dtor
 	ldr r0, [r4, #0x4c]

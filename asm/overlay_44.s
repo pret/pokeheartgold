@@ -537,7 +537,7 @@ ov44_0222A1FC: ; 0x0222A1FC
 	lsl r2, r2, #2
 	str r0, [r1, r2]
 	mov r0, #0x35
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	mov r2, #0x59
 	ldr r1, [sp, #4]
 	lsl r2, r2, #2
@@ -1139,7 +1139,7 @@ _0222A6F0:
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, _0222A754 ; =FS_OVERLAY_ID(OVY_42)
 	bl UnloadOverlayByID
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2740,7 +2740,7 @@ _0222B3EC:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -2967,7 +2967,7 @@ _0222B5CE:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3083,7 +3083,7 @@ _0222B6CE:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3994,7 +3994,7 @@ _0222BE08:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -4051,7 +4051,7 @@ _0222BE80:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -8598,7 +8598,7 @@ _0222E386:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -10188,7 +10188,7 @@ _0222EFB8:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -10243,7 +10243,7 @@ _0222F030:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -10645,7 +10645,7 @@ _0222F37A:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -10747,7 +10747,7 @@ _0222F460:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -11450,7 +11450,7 @@ ov44_0222F9A0: ; 0x0222F9A0
 	ldr r1, _0222FA20 ; =0x00000B68
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	ldr r1, _0222FA14 ; =0x00000B1C
 	add r2, r4, #0
 	str r0, [r5, r1]
@@ -11491,7 +11491,7 @@ ov44_0222FA28: ; 0x0222FA28
 	str r1, [r4, r0]
 	sub r0, #0x4c
 	ldr r0, [r4, r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, _0222FA7C ; =0x00000B1C
 	mov r1, #0
 	str r1, [r4, r0]
@@ -19154,7 +19154,7 @@ ov44_0223362C: ; 0x0223362C
 	add r5, r0, #0
 	add r0, r6, #0
 	add r4, r1, #0
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r5, #4]
 	ldr r2, _02233674 ; =0x0000030A
 	mov r0, #0
@@ -19194,7 +19194,7 @@ ov44_02233678: ; 0x02233678
 	ldr r0, [r4, #8]
 	bl DestroyMsgData
 	ldr r0, [r4, #4]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov44_02233678
@@ -20842,7 +20842,7 @@ _022342CA:
 	lsl r0, r0, #2
 	add r0, r4, r0
 	mov r1, #1
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	mov r1, #0x86
 	lsl r1, r1, #2
 	str r0, [r4, r1]

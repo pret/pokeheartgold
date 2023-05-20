@@ -1,5 +1,5 @@
 	.include "asm/macros.inc"
-	.include "unk_0200E398.inc"
+	.include "render_window.inc"
 	.include "global.inc"
 
 	.rodata
@@ -1674,8 +1674,8 @@ _0200F0A0:
 	.balign 4, 0
 	thumb_func_end DrawFrameAndWindow3
 
-	thumb_func_start sub_0200F0AC
-sub_0200F0AC: ; 0x0200F0AC
+	thumb_func_start WaitingIcon_new
+WaitingIcon_new: ; 0x0200F0AC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x34
 	str r0, [sp, #0x20]
@@ -1804,7 +1804,7 @@ _0200F1C4: .word 0x0000048C
 _0200F1C8: .word 0x00000404
 _0200F1CC: .word 0x00000484
 _0200F1D0: .word sub_0200F3D0
-	thumb_func_end sub_0200F0AC
+	thumb_func_end WaitingIcon_new
 
 	thumb_func_start sub_0200F1D4
 sub_0200F1D4: ; 0x0200F1D4

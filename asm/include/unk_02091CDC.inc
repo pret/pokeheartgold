@@ -16,7 +16,7 @@
 .public LoadUserFrameGfx1
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
-.public sub_0200F0AC
+.public WaitingIcon_new
 .public sub_0200F450
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished

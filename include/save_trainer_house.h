@@ -12,7 +12,7 @@ typedef struct TrainerHouseTrainer {
     u8 language;
     u8 version;
     u8 unk7;
-    u16 otName[OT_NAME_LENGTH + 1];
+    u16 otName[PLAYER_NAME_LENGTH + 1];
     u8 filler_18[0x18];
 } TrainerHouseTrainer; // size=0x30
 

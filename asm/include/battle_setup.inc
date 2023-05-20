@@ -108,10 +108,10 @@
 .public GetPartyMonByIndex
 .public Party_copy
 .public SavArray_PlayerParty_get
-.public Sav2_Bag_new
-.public Sav2_Bag_copy
-.public Bag_AddItem
-.public Sav2_Bag_get
+.public BagNew
+.public BagCopy
+.public BagAddItem
+.public SaveGetBag
 .public sub_02088288
 .public Fsys_GetGearPhoneRingManager
 .public sub_02092E14

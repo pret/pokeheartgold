@@ -88,7 +88,7 @@ ov86_021E5900: ; 0x021E5900
 	lsl r1, r1, #4
 	str r0, [r5, r1]
 	mov r0, #0x79
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	mov r1, #0x85
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -220,7 +220,7 @@ ov86_021E5AA4: ; 0x021E5AA4
 	mov r0, #0x85
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	mov r0, #0x86
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]

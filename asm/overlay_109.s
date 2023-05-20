@@ -2567,7 +2567,7 @@ ov109_021E6C9C: ; 0x021E6C9C
 	ldr r2, [r5]
 	mov r0, #6
 	mov r1, #0x16
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	str r0, [r5, #0x28]
 	ldr r1, [r5]
 	mov r0, #0x80
@@ -2654,7 +2654,7 @@ _021E6D54:
 	ldr r0, [r6, #0x2c]
 	bl String_dtor
 	ldr r0, [r6, #0x28]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r6, #0x24]
 	bl DestroyMsgData
 	mov r0, #4

@@ -22,7 +22,7 @@ sub_020961D8: ; 0x020961D8
 	add r4, r0, #0
 	str r5, [r4]
 	mov r0, #0x20
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r4, #4]
 	mov r3, #0x20
 	str r3, [sp]
@@ -66,7 +66,7 @@ sub_02096248: ; 0x02096248
 	ldr r0, [r4, #0x10]
 	bl sub_02090D0C
 	ldr r0, [r4, #4]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}

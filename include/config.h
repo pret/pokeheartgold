@@ -19,17 +19,24 @@
 #define LANGUAGE_ITALIAN     4
 #define LANGUAGE_GERMAN      5
 #define LANGUAGE_SPANISH     7
+#define LANGUAGE_KOREAN      8
 
-#undef GAME_VERSION
-#if defined(HEARTGOLD)
-#define GAME_VERSION VERSION_HEARTGOLD
-#elif defined(SOULSILVER)
-#define GAME_VERSION VERSION_SOULSILVER
-#else
-#error "Missing or unrecognized game version define"
+// Sets HeartGold as default to help IDEs.
+#if !defined(HEARTGOLD) && !defined(SOULSILVER)
+#define HEARTGOLD
 #endif
 
-#undef GAME_LANGUAGE
+#if defined(HEARTGOLD)
+#define GAME_VERSION VERSION_HEARTGOLD
+#else
+#define GAME_VERSION VERSION_SOULSILVER
+#endif
+
+// Sets English as default. Add here all supported ROM languages.
+#if !defined(ENGLISH) 
+#define ENGLISH
+#endif
+
 #ifdef ENGLISH
 #define GAME_LANGUAGE LANGUAGE_ENGLISH
 #else

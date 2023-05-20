@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public ScrStrBufs_new
-.public ScrStrBufs_delete
+.public MessageFormat_new
+.public MessageFormat_delete
 .public IsPaletteFadeFinished
 .public MailMsg_init_withBank
 .public AllocFromHeap

@@ -1,3 +1,4 @@
+#include "global.h"
 #include "unk_0205B3DC.h"
 #include "gf_gfx_loader.h"
 
@@ -33,7 +34,7 @@ static const u8 _020FCA44[][3] = {
     { 0x3F, TRAINERCLASS_LADY, TRAINERCLASS_LADY },
 };
 
-void sub_0205B3DC(u32 trainerId, u32 playerGender, MSGFMT *msgFmt) {
+void sub_0205B3DC(u32 trainerId, u32 playerGender, MessageFormat *msgFmt) {
     int idx;
     int i;
     int sprite;

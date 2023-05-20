@@ -5,17 +5,17 @@
 
 BOOL ScrCmd_AnimApricornTree(SCRIPTCONTEXT *ctx) {
     u16 varId = ScriptReadHalfword(ctx);
-    LocalMapObject **lastTalked = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_TALKED);
+    LocalMapObject **lastInteracted = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_INTERACTED);
     u16 *retPtr = GetVarPointer(ctx->fsys, varId);
-    FieldSys_AnimApricornTree(ctx->fsys, *lastTalked, retPtr);
+    FieldSys_AnimApricornTree(ctx->fsys, *lastInteracted, retPtr);
     return TRUE;
 }
 
 BOOL ScrCmd_ApricornTreeGetApricorn(SCRIPTCONTEXT *ctx) {
     u16 varId = ScriptReadHalfword(ctx);
-    LocalMapObject **lastTalked = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_TALKED);
+    LocalMapObject **lastInteracted = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_INTERACTED);
     u16 *retPtr = GetVarPointer(ctx->fsys, varId);
-    *retPtr = FieldSys_ApricornTree_GetApricorn(ctx->fsys, *lastTalked);
+    *retPtr = FieldSys_ApricornTree_GetApricorn(ctx->fsys, *lastInteracted);
     return FALSE;
 }
 

@@ -17,10 +17,10 @@
 .public SetBgPriority
 .public BgCommitTilemapBufferToVram
 .public sub_020233D8
-.public GF_Camera_SetPerspectiveAngle
-.public GF_Camera_ShiftBy
-.public GF_Camera_SetAngle
-.public GF_Camera_SetDistance
+.public Camera_SetPerspectiveAngle
+.public Camera_ShiftBy
+.public Camera_SetAngle
+.public Camera_SetDistance
 .public GF_AssertFail
 .public Sav2_PlayerData_GetProfileAddr
 .public PlayerProfile_GetNamePtr

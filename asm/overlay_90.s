@@ -1347,7 +1347,7 @@ ov90_02259184: ; 0x02259184
 	mov r0, #8
 	mov r1, #0x40
 	add r2, r4, #0
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	str r0, [r5, #4]
 	mov r0, #0x80
 	add r1, r4, #0
@@ -1380,7 +1380,7 @@ ov90_022591D4: ; 0x022591D4
 	ldr r0, [r4, #8]
 	bl String_dtor
 	ldr r0, [r4, #4]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r4]
 	bl DestroyMsgData
 	pop {r4, pc}
@@ -1389,11 +1389,11 @@ ov90_022591D4: ; 0x022591D4
 
 	thumb_func_start ov90_022591F4
 ov90_022591F4: ; 0x022591F4
-	ldr r3, _022591FC ; =ScrStrBufs_ResetBuffers
+	ldr r3, _022591FC ; =MessageFormat_ResetBuffers
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_022591FC: .word ScrStrBufs_ResetBuffers
+_022591FC: .word MessageFormat_ResetBuffers
 	thumb_func_end ov90_022591F4
 
 	thumb_func_start ov90_02259200
@@ -1865,7 +1865,7 @@ ov90_02259554: ; 0x02259554
 	lsl r1, r1, #4
 	add r0, r0, r1
 	mov r1, #1
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	str r0, [r5, r4]
 _0225956E:
 	pop {r3, r4, r5, pc}

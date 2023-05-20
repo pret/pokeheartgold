@@ -60,9 +60,9 @@
 .public GetSpeciesNameIntoArray
 .public ReadMsgData_ExpandPlaceholders
 .public GetSpeciesName
-.public ScrStrBufs_new
-.public ScrStrBufs_new_custom
-.public ScrStrBufs_delete
+.public MessageFormat_new
+.public MessageFormat_new_custom
+.public MessageFormat_delete
 .public BufferString
 .public BufferSpeciesName
 .public BufferBoxMonNickname
@@ -109,7 +109,7 @@
 .public DestroySysTask
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
-.public sub_0200F0AC
+.public WaitingIcon_new
 .public sub_0200F450
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
@@ -291,8 +291,8 @@
 .public GetPartyMonByIndex
 .public SavArray_PlayerParty_get
 .public GetItemNameIntoString
-.public Bag_AddItem
-.public Sav2_Bag_get
+.public BagAddItem
+.public SaveGetBag
 .public sub_0208F270
 .public sub_020932E0
 .public sub_02093354

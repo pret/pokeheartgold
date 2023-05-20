@@ -68,7 +68,7 @@ _021E5916:
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #0x32
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	str r0, [r4, #0x24]
 	ldr r2, _021E5AA4 ; =0x000001A6
 	mov r0, #0
@@ -353,7 +353,7 @@ _021E5BD8:
 	ldr r0, [r6, #0x28]
 	bl DestroyMsgData
 	ldr r0, [r6, #0x24]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, [r6, #8]
 	mov r1, #0xc5
 	lsl r1, r1, #2
@@ -4829,7 +4829,7 @@ _021E7E62:
 	mov r0, #0xb
 	mov r1, #0x20
 	mov r2, #0x96
-	bl ScrStrBufs_new_custom
+	bl MessageFormat_new_custom
 	mov r1, #0xbd
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -5049,7 +5049,7 @@ ov73_021E808C: ; 0x021E808C
 	mov r0, #0xbd
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	add r0, r4, #0
 	bl ov73_021E8164
 	bl sub_02034DE0
@@ -9248,7 +9248,7 @@ ov73_021EA15C: ; 0x021EA15C
 	ldr r0, _021EA17C ; =0x00000DD8
 	mov r1, #1
 	add r0, r4, r0
-	bl sub_0200F0AC
+	bl WaitingIcon_new
 	ldr r1, _021EA178 ; =0x00000F0C
 	str r0, [r4, r1]
 _021EA176:

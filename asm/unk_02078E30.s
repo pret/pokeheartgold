@@ -1053,7 +1053,7 @@ _0207963E:
 	bl MessagePrinter_delete
 	ldr r0, _020796AC ; =0x000007C4
 	ldr r0, [r6, r0]
-	bl ScrStrBufs_delete
+	bl MessageFormat_delete
 	ldr r0, _020796B0 ; =0x00000C74
 	ldr r0, [r6, r0]
 	cmp r0, #0
@@ -1747,7 +1747,7 @@ _02079C26:
 	ldr r1, _02079CD0 ; =0x000007BC
 	str r0, [r4, r1]
 	mov r0, #0xc
-	bl ScrStrBufs_new
+	bl MessageFormat_new
 	ldr r1, _02079CD4 ; =0x000007C4
 	mov r6, #0
 	add r7, r1, #0
@@ -6706,7 +6706,7 @@ _0207C326:
 	mov r3, #0xc
 	ldr r0, [r1, #4]
 	ldrh r1, [r1, #0x28]
-	bl Bag_TakeItem
+	bl BagTakeItem
 	add r0, r4, #0
 	mov r1, #0x1a
 	bl GetItemAttr_PreloadedItemData
@@ -7025,7 +7025,7 @@ sub_0207C5D4: ; 0x0207C5D4
 	ldr r1, [r5, r0]
 	ldr r0, [r1, #4]
 	ldrh r1, [r1, #0x28]
-	bl Bag_TakeItem
+	bl BagTakeItem
 	add r0, r6, #0
 	mov r1, #MON_DATA_HELD_ITEM
 	add r2, sp, #0
@@ -7086,7 +7086,7 @@ sub_0207C658: ; 0x0207C658
 	lsr r1, r1, #0x10
 	mov r2, #1
 	mov r3, #0xc
-	bl Bag_AddItem
+	bl BagAddItem
 	add r0, r5, #0
 	mov r1, #MON_DATA_HELD_ITEM
 	add r2, sp, #0x1c
@@ -7249,7 +7249,7 @@ _0207C766:
 	mov r2, #1
 	ldr r0, [r0, #4]
 	mov r3, #0xc
-	bl Bag_AddItem
+	bl BagAddItem
 	cmp r0, #0
 	bne _0207C7D6
 	ldr r1, [sp]
@@ -7280,7 +7280,7 @@ _0207C7D6:
 	ldr r0, [r0, #4]
 	mov r2, #1
 	mov r3, #0xc
-	bl Bag_TakeItem
+	bl BagTakeItem
 	ldr r1, [sp]
 	add r0, r5, #0
 	add r2, r6, #0
@@ -7486,7 +7486,7 @@ _0207C998:
 	ldr r0, [r0, #4]
 	mov r2, #1
 	mov r3, #0xc
-	bl Bag_AddItem
+	bl BagAddItem
 	mov r2, #0x1f
 	lsl r2, r2, #6
 	ldr r0, [r5, r2]

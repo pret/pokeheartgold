@@ -65,8 +65,8 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
     }, {
         SAVE_BAG,
         0,
-        (SAVESIZEFN)Sav2_Bag_sizeof,
-        (SAVEINITFN)Sav2_Bag_init
+        (SAVESIZEFN)BagSizeof,
+        (SAVEINITFN)BagInit
     }, {
         SAVE_FLAGS,
         0,

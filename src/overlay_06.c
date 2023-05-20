@@ -18,13 +18,13 @@ void ov06_0221BA1C(int param_1, int param_2, int unused, int param_4, u32 param_
 ParticleSystem *ov06_0221BA40(HeapID heap_id) {
     void *particleHeap;
     ParticleSystem *pPVar1;
-    GF_Camera *pGVar2;
+    Camera *pGVar2;
 
     particleHeap = AllocFromHeap(heap_id, 0x4800);
     pPVar1 = sub_02014DB4(ov06_0221BB14, ov06_0221BB30, particleHeap, 0x4800, TRUE, heap_id);
     pGVar2 = sub_02015524(pPVar1);
     if (pGVar2 != NULL) {
-        GF_Camera_SetClipBounds(1 * FX32_ONE, 900 * FX32_ONE, pGVar2);
+        Camera_SetClipBounds(1 * FX32_ONE, 900 * FX32_ONE, pGVar2);
     }
     return pPVar1;
 }
@@ -32,7 +32,7 @@ ParticleSystem *ov06_0221BA40(HeapID heap_id) {
 ParticleSystem *ov06_0221BA88(HeapID heap_id) {
     void *particleHeap;
     ParticleSystem *pPVar1;
-    GF_Camera *pGVar2;
+    Camera *pGVar2;
 
     particleHeap = AllocFromHeap(heap_id, 0x4200);
     if (particleHeap == NULL) {
@@ -41,7 +41,7 @@ ParticleSystem *ov06_0221BA88(HeapID heap_id) {
     pPVar1 = sub_02014DB4(ov06_0221BB14, ov06_0221BB30, particleHeap, 0x4200, TRUE, heap_id);
     pGVar2 = sub_02015524(pPVar1);
     if (pGVar2 != NULL) {
-        GF_Camera_SetClipBounds(1 * FX32_ONE, 900 * FX32_ONE, pGVar2);
+        Camera_SetClipBounds(1 * FX32_ONE, 900 * FX32_ONE, pGVar2);
     }
     return pPVar1;
 }
