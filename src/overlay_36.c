@@ -203,17 +203,17 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SAVEDATA* saved
     // Put an email from your friend into your PC.
     friend_names_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0445_bin, 3);
     MAILBOX* mailbox = Sav2_Mailbox_get(savedata);
-    POKEMON* friend_pokemon = AllocMonZeroed(3);
+    Pokemon *mon = AllocMonZeroed(3);
 
-    CreateMon(friend_pokemon, SPECIES_MARILL, 1, 0, FALSE, 0, OT_ID_PLAYER_ID, 0);
+    CreateMon(mon, SPECIES_MARILL, 1, 0, FALSE, 0, OT_ID_PLAYER_ID, 0);
 
     MAIL* mail;
     if (PlayerProfile_GetTrainerGender(profile) == PLAYER_GENDER_MALE) {
         author_name = NewString_ReadMsgData(friend_names_msgdata, msg_0445_00001);
-        mail = CreateKenyaMail(friend_pokemon, MAIL_AIR, MON_FEMALE, author_name, 0);
+        mail = CreateKenyaMail(mon, MAIL_AIR, MON_FEMALE, author_name, 0);
     } else {
         author_name = NewString_ReadMsgData(friend_names_msgdata, msg_0445_00000);
-        mail = CreateKenyaMail(friend_pokemon, MAIL_AIR, MON_MALE, author_name, 0);
+        mail = CreateKenyaMail(mon, MAIL_AIR, MON_MALE, author_name, 0);
     }
 
     MAIL_MESSAGE mail_message;
@@ -227,7 +227,7 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SAVEDATA* saved
     Mail_SetMessage(mail, &mail_message, 2);
     Mailbox_CopyMailToSlotI(mailbox->msgs, FALSE, 0, mail);
 
-    FreeToHeap(friend_pokemon);
+    FreeToHeap(mon);
     String_dtor(author_name);
     FreeToHeap(mail);
     DestroyMsgData(friend_names_msgdata);

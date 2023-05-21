@@ -28,7 +28,7 @@ void BugContest_BackUpParty(BUGCONTEST *bugContest);
 void BugContest_InitOpponents(BUGCONTEST *bugContest);
 void BugContest_InitEncounters(BUGCONTEST *bugContest);
 void BugContest_RestoreParty_RetrieveCaughtPokemon(BUGCONTEST *bugContest);
-u16 BugContest_JudgePlayerMon(BUGCONTEST *bugContest, POKEMON *pokemon);
+u16 BugContest_JudgePlayerMon(BUGCONTEST *bugContest, Pokemon *mon);
 
 BUGCONTEST *BugContest_new(FieldSystem *fsys, u32 weekday) {
     BUGCONTEST *bugContest;
@@ -38,7 +38,7 @@ BUGCONTEST *BugContest_new(FieldSystem *fsys, u32 weekday) {
     bugContest->heapId = 3;
     bugContest->saveData = fsys->savedata;
     bugContest->sport_balls = 20;
-    bugContest->pokemon = AllocMonZeroed(bugContest->heapId);
+    bugContest->mon = AllocMonZeroed(bugContest->heapId);
     bugContest->national_dex = Pokedex_GetNatDexFlag(Sav2_Pokedex_get(bugContest->saveData));
     bugContest->day_of_week = weekday;
     BugContest_BackUpParty(bugContest);
@@ -50,7 +50,7 @@ BUGCONTEST *BugContest_new(FieldSystem *fsys, u32 weekday) {
 
 void BugContest_delete(BUGCONTEST *bugContest) {
     BugContest_RestoreParty_RetrieveCaughtPokemon(bugContest);
-    FreeToHeap(bugContest->pokemon);
+    FreeToHeap(bugContest->mon);
     FreeToHeap(bugContest);
 }
 
@@ -63,8 +63,8 @@ void BugContest_Judge(BUGCONTEST *bugContest) {
     // Judge the player's caught Pokemon
     player = &bugContest->contestants[BUGCONTESTANT_PLAYER];
     player->id = BUGCONTESTANT_PLAYER;
-    player->score = BugContest_JudgePlayerMon(bugContest, bugContest->pokemon);
-    player->data.species = GetMonData(bugContest->pokemon, MON_DATA_SPECIES, NULL);
+    player->score = BugContest_JudgePlayerMon(bugContest, bugContest->mon);
+    player->data.species = GetMonData(bugContest->mon, MON_DATA_SPECIES, NULL);
 
     // Init the rankings list
     for (i = 0; i < BUGCONTESTANT_COUNT; i++) {
@@ -157,7 +157,7 @@ BOOL BugContest_BufferCaughtMonNick(BUGCONTEST *bugContest, MessageFormat *msgFm
     }
 
     string = String_ctor(POKEMON_NAME_LENGTH+1+1, bugContest->heapId);
-    GetMonData(bugContest->pokemon, MON_DATA_NICKNAME_3, string);
+    GetMonData(bugContest->mon, MON_DATA_NICKNAME_3, string);
     BufferString(msgFmt, slot, string, 2, 1, 2);
     String_dtor(string);
     return bugContest->party_cur_num >= PARTY_SIZE;
@@ -202,26 +202,26 @@ void BugContest_BackUpParty(BUGCONTEST *bugContest) {
 }
 
 void BugContest_RestoreParty_RetrieveCaughtPokemon(BUGCONTEST *bugContest) {
-    POKEMON *pokemon;
+    Pokemon *mon;
     PARTY_EXTRA_SUB sub;
 
     // Restore the player's party to its prior state, but keep the
     // state of the Pokemon you used intact.
-    pokemon = AllocMonZeroed(bugContest->heapId);
-    CopyPokemonToPokemon(GetPartyMonByIndex(bugContest->party_cur, 0), pokemon);
+    mon = AllocMonZeroed(bugContest->heapId);
+    CopyPokemonToPokemon(GetPartyMonByIndex(bugContest->party_cur, 0), mon);
     Party_GetUnkSubSlot(bugContest->party_cur, &sub, 0);
     Party_copy(bugContest->party_bak, bugContest->party_cur);
-    Party_SafeCopyMonToSlot_ResetUnkSub(bugContest->party_cur, bugContest->lead_mon_idx, pokemon);
+    Party_SafeCopyMonToSlot_ResetUnkSub(bugContest->party_cur, bugContest->lead_mon_idx, mon);
     Party_SetUnkSubSlot(bugContest->party_cur, &sub, bugContest->lead_mon_idx);
-    FreeToHeap(pokemon);
+    FreeToHeap(mon);
     FreeToHeap(bugContest->party_bak);
     bugContest->party_bak = NULL;
 
     if (bugContest->caught_poke) {
         if (bugContest->party_cur_num >= PARTY_SIZE) {
-            PCStorage_PlaceMonInFirstEmptySlotInAnyBox(GetStoragePCPointer(bugContest->saveData), Mon_GetBoxMon(bugContest->pokemon));
+            PCStorage_PlaceMonInFirstEmptySlotInAnyBox(GetStoragePCPointer(bugContest->saveData), Mon_GetBoxMon(bugContest->mon));
         } else {
-            AddMonToParty(bugContest->party_cur, bugContest->pokemon);
+            AddMonToParty(bugContest->party_cur, bugContest->mon);
         }
     }
 }
@@ -306,7 +306,7 @@ void BugContest_InitEncounters(BUGCONTEST *bugContest) {
     FS_CloseFile(&file);
 }
 
-u16 BugContest_JudgePlayerMon(BUGCONTEST *bugContest, POKEMON *pokemon) {
+u16 BugContest_JudgePlayerMon(BUGCONTEST *bugContest, Pokemon *mon) {
     u16 score = 0;
     int i;
     u16 species;
@@ -316,7 +316,7 @@ u16 BugContest_JudgePlayerMon(BUGCONTEST *bugContest, POKEMON *pokemon) {
     if (!bugContest->caught_poke) {
         return score;
     }
-    species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+    species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     for (i = 0; i < BUGMON_COUNT; i++) {
         if (bugContest->encounters[i].species == species) {
             bugmon = &bugContest->encounters[i];
@@ -329,12 +329,12 @@ u16 BugContest_JudgePlayerMon(BUGCONTEST *bugContest, POKEMON *pokemon) {
         return 0;
     }
 
-    score += GetMonData(pokemon, MON_DATA_LEVEL, NULL) * 100 / bugmon->lvlmax;
+    score += GetMonData(mon, MON_DATA_LEVEL, NULL) * 100 / bugmon->lvlmax;
     stat_total = 0;
     for (i = 0; i < NUM_STATS; i++) {
-        stat_total += GetMonData(pokemon, MON_DATA_HP_IV + i, NULL);
+        stat_total += GetMonData(mon, MON_DATA_HP_IV + i, NULL);
     }
     score += stat_total * 100 / (31 * NUM_STATS);
-    score += GetMonData(pokemon, MON_DATA_HP, NULL) * 100 / GetMonData(pokemon, MON_DATA_MAXHP, NULL);
+    score += GetMonData(mon, MON_DATA_HP, NULL) * 100 / GetMonData(mon, MON_DATA_MAXHP, NULL);
     return score;
 }

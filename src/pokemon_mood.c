@@ -12,11 +12,11 @@ static const s8 sMoodModifiers[] = {
     30
 };
 
-static void MonAdjustMood(POKEMON *pokemon, s8 unk1) {
+static void MonAdjustMood(Pokemon *mon, s8 unk1) {
     s8 mood;
     s32 adjustedMood;
 
-    mood = GetMonData(pokemon, MON_DATA_MOOD, NULL);
+    mood = GetMonData(mon, MON_DATA_MOOD, NULL);
     adjustedMood = mood + unk1;
 
     if (adjustedMood > 127) {
@@ -27,7 +27,7 @@ static void MonAdjustMood(POKEMON *pokemon, s8 unk1) {
 
     mood = adjustedMood;
 
-    SetMonData(pokemon, MON_DATA_MOOD, &mood);
+    SetMonData(mon, MON_DATA_MOOD, &mood);
 }
 
 static s8 ItemIdGetMoodEffect(u16 itemId) {
@@ -83,22 +83,22 @@ static s8 ItemIdGetMoodEffect(u16 itemId) {
     return moodEffect;
 }
 
-void ApplyItemEffectOnMonMood(POKEMON *pokemon, u16 itemId) {
+void ApplyItemEffectOnMonMood(Pokemon *mon, u16 itemId) {
     s8 moodEffect = ItemIdGetMoodEffect(itemId);
     if (moodEffect != 0) {
-        MonAdjustMood(pokemon, moodEffect);
+        MonAdjustMood(mon, moodEffect);
     }
 }
 
-void ApplyMonMoodModifier(POKEMON *pokemon, int modifierId) {
+void ApplyMonMoodModifier(Pokemon *mon, int modifierId) {
     s8 mood;
     u16 species;
     s32 adjustedMood;
 
-    species = GetMonData(pokemon, MON_DATA_SPECIES2, NULL);
+    species = GetMonData(mon, MON_DATA_SPECIES2, NULL);
 
     if (species != 0 && species != SPECIES_EGG) {
-        mood = GetMonData(pokemon, MON_DATA_MOOD, NULL);
+        mood = GetMonData(mon, MON_DATA_MOOD, NULL);
 
         adjustedMood = mood + sMoodModifiers[modifierId];
 
@@ -110,6 +110,6 @@ void ApplyMonMoodModifier(POKEMON *pokemon, int modifierId) {
 
         mood = adjustedMood;
 
-        SetMonData(pokemon, MON_DATA_MOOD, &mood);
+        SetMonData(mon, MON_DATA_MOOD, &mood);
     }
 }

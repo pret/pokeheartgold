@@ -124,7 +124,7 @@ typedef struct BoxPokemon {
                 u16 Unused:13;    // Might be used for validity checks
     /* 0x006 */ u16 checksum;  // Stored checksum of pokemon
     /* 0x008 */ PokemonDataBlock substructs[4];
-} BOXMON;
+} BoxPokemon;
 
 union MailPatternData
 {
@@ -172,10 +172,10 @@ typedef struct PartyPokemon {
     /* 0x0D4 */ CAPSULE sealCoords; // seal coords
 } PARTYMON;
 
-typedef struct Pokemon {
-    /* 0x000 */ BOXMON box;
+typedef struct {
+    /* 0x000 */ BoxPokemon box;
     /* 0x088 */ PARTYMON party;
-} POKEMON; // size: 0xEC
+} Pokemon; // size: 0xEC
 
 struct UnkPokemonStruct_02072A98 {
     /* 0x00 */ u32 pid;
@@ -271,7 +271,7 @@ struct Evolution {
 typedef struct PARTY {
     int maxCount;
     int curCount;
-    struct Pokemon mons[PARTY_SIZE];
+    Pokemon mons[PARTY_SIZE];
 } PARTY_CORE;
 
 typedef struct PARTY_EXTRA_SUB {

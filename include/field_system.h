@@ -73,7 +73,7 @@ struct FieldSystemUnk108 {
     u32 personality;
     u16 species;
     u16 isRegistered;
-    POKEMON *pokemon;
+    Pokemon *mon;
 };
 
 struct FieldSystemUnkSub0 {

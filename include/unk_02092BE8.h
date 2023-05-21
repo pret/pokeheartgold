@@ -53,7 +53,7 @@ void sub_02092FA8(GearPhoneRingManager* ptr);
 void GearPhone_ToggleRinging(GearPhoneRingManager* ptr, BOOL a1);
 BOOL sub_02093070(FieldSystem* sys);
 BOOL sub_020930C4(FieldSystem* sys);
-BOOL sub_02093134(FieldSystem* sys, POKEMON * pkmn);
+BOOL sub_02093134(FieldSystem* sys, Pokemon *mon);
 BOOL sub_0209316C(FieldSystem* sys);
 
 #endif //POKEHEARTGOLD_UNK_02092BE8_H
