@@ -7,40 +7,17 @@
 #include "overlay_01.h"
 #include "pm_string.h"
 #include "scrcmd.h"
+#include "scrcmd_9.h"
+#include "scrcmd_message.h"
 #include "script.h"
 #include "window.h"
 
 const u16 ov01_022067C8[] = {
-    752, // NARC_msg_msg_0752_bin (day of the week siblings)
-    211, // NARC_msg_msg_0211_bin (field moves)
-    30, // NARC_msg_msg_0030_bin (cameron the photographer)
-    435, // NARC_msg_msg_0435_bin (pokemart and various shops)
+    NARC_msg_msg_0752_bin, // day of the week siblings
+    NARC_msg_msg_0211_bin, // field moves
+    NARC_msg_msg_0030_bin, // cameron the photographer
+    NARC_msg_msg_0435_bin, // pokemart and various shops
 };
-
-extern MessageFormat *sub_0204B538(SAVEDATA *savedata, u16 numEligblePokemon, u16 a2, u8 a3, u8 *numLegendaryPokemonSeen);
-extern STRING *MailMsg_GetExpandedString(const MAIL_MESSAGE *mailMessage, HeapID heapId);
-
-typedef struct MessageBox {
-    STRING *message;
-    STRING *buffer;
-    MessageFormat *messageFormat;
-    WINDOW *window;
-    u8 *unk10;
-    u8 *textPrinterNumPtr;
-} MessageBox;
-
-BOOL ov01_021EF348(SCRIPTCONTEXT *ctx);
-void ovFieldMain_ShowMessageInField(SCRIPTCONTEXT *ctx, MSGDATA *messageData, u32 messageNum);
-void ov01_021EF564(SCRIPTCONTEXT *ctx, u16 messageBank, u16 messageNum, u16 word1, s16 word2, u8 canABSpeedUp);
-void ov01_021EF5C8(SCRIPTCONTEXT *ctx, MessageFormat *messageFormat, u8 messageNum, u32 canABSpeedUp);
-u32 ovFieldMain_GetTextFrameDelay(SCRIPTCONTEXT *ctx);
-void ovFieldMain_GetMsgBoxParameters(FieldSystem *fsys, MessageBox *messageBox);
-void ovFieldMain_GetMsgBoxParametersEx(FieldSystem *fsys, MessageFormat *messageFormat, MessageBox *messageBox);
-void ovFieldMain_CreateMessageBox(FieldSystem *fsys, MessageBox *messageBox);
-void ovFieldMain_ReadAndExpandMsgDataViaBuffer(MessageBox *messageBox, MSGDATA *messageData, u32 messageNum);
-void ovFieldMain_GetFormattedECMessage(MessageBox *messageBox, u16 messageBank, u16 messageNum, u16 word1, u16 word2);
-void ov01_021EF758(MessageBox *messageBox, FontID fontId, u32 textFrameDelay, BOOL canABSpeedUp, u32 a4);
-void ovFieldMain_AddTextPrinterParameterized(MessageBox *messageBox, FontID fontId);
 
 BOOL ScrCmd_NonNPCMsg(SCRIPTCONTEXT *ctx) {
     u8 messageNum = ScriptReadByte(ctx);
@@ -275,10 +252,10 @@ void ovFieldMain_GetMsgBoxParametersEx(FieldSystem *fsys, MessageFormat *message
 }
 
 void ovFieldMain_CreateMessageBox(FieldSystem *fsys, MessageBox *messageBox) {
-    if (*messageBox->unk10 == 0) {
+    if (*(messageBox->unk10) == 0) {
         sub_0205B514(fsys->bgConfig, messageBox->window, 3);
         sub_0205B564(messageBox->window, Sav2_PlayerData_GetOptionsAddr(fsys->savedata));
-        *messageBox->unk10 = 1;
+        *(messageBox->unk10) = 1;
         fsys->unkD2_6 = TRUE;
     }
     FillWindowPixelBuffer(messageBox->window, 15);
@@ -301,10 +278,10 @@ void ovFieldMain_GetFormattedECMessage(MessageBox *messageBox, u16 messageBank, 
 }
 
 void ov01_021EF758(MessageBox *messageBox, FontID fontId, u32 textFrameDelay, BOOL canABSpeedUp, u32 a4) {
-    *messageBox->textPrinterNumPtr = sub_0205B5EC(messageBox->window, messageBox->message, fontId, textFrameDelay, (u8)canABSpeedUp, a4);
+    *(messageBox->textPrinterNumPtr) = sub_0205B5EC(messageBox->window, messageBox->message, fontId, textFrameDelay, (u8)canABSpeedUp, a4);
 }
 
 void ovFieldMain_AddTextPrinterParameterized(MessageBox *messageBox, FontID fontId) {
-    *messageBox->textPrinterNumPtr = AddTextPrinterParameterized(messageBox->window, fontId, messageBox->message, 0, 0, 0, NULL);
+    *(messageBox->textPrinterNumPtr) = AddTextPrinterParameterized(messageBox->window, fontId, messageBox->message, 0, 0, 0, NULL);
 }
 
