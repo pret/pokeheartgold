@@ -116,7 +116,7 @@ typedef union {
     PokemonDataBlockD blockD;
 } PokemonDataBlock;
 
-typedef struct {
+typedef struct BoxPokemon {
     /* 0x000 */ u32 pid;
     /* 0x004 */ u16 party_lock:1;
                 u16 box_lock:1;
