@@ -162,15 +162,15 @@ BOOL ScrCmd_UpdateDayCareMonObjects(SCRIPTCONTEXT* ctx) {
             DeleteMapObject(mon_map_object);
         }
 
-        BOXMON* dc_box_mon = DayCareMon_GetBoxMon(Sav2_DayCare_GetMonX(daycare, dc_mon_idx));
-        if (GetBoxMonData(dc_box_mon, MON_DATA_SPECIES, NULL) == SPECIES_NONE) {
+        BoxPokemon *boxMon = DayCareMon_GetBoxMon(Sav2_DayCare_GetMonX(daycare, dc_mon_idx));
+        if (GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_NONE) {
             continue;
         }
 
-        forme = GetBoxMonData(dc_box_mon, MON_DATA_FORME, NULL);
-        species = GetBoxMonData(dc_box_mon, MON_DATA_SPECIES, NULL);
-        u32 gender = GetBoxMonData(dc_box_mon, MON_DATA_GENDER, NULL);
-        BOOL shiny = BoxMonIsShiny(dc_box_mon);
+        forme = GetBoxMonData(boxMon, MON_DATA_FORME, NULL);
+        species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
+        u32 gender = GetBoxMonData(boxMon, MON_DATA_GENDER, NULL);
+        BOOL shiny = BoxMonIsShiny(boxMon);
 
         CreateDayCareMonSpriteInternal(fsys->mapObjectMan, (u8)dc_mon_idx, species, forme, gender, 1, x, y, fsys->location->mapId, shiny);
     }
