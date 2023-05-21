@@ -3879,7 +3879,7 @@ BOOL BtlCmd_TryAssist(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         if (i != ctx->selectedMonIndex[ctx->battlerIdAttacker]) {
             mon = BattleSystem_GetPartyMon(bsys, ctx->battlerIdAttacker, i);
             if (GetMonData(mon, MON_DATA_SPECIES2, 0) && GetMonData(mon, MON_DATA_SPECIES2, 0) != SPECIES_EGG) {
-                for (j = 0; j < 4; j++) {
+                for (j = 0; j < MAX_MON_MOVES; j++) {
                     move = GetMonData(mon, MON_DATA_MOVE1 + j, 0);
                     if (ov12_02252698(move) == FALSE && CheckLegalMetronomeMove(bsys, ctx, ctx->battlerIdAttacker, move) == TRUE) {
                         avaliableMoves[moveCnt] = move;
