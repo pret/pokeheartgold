@@ -1,4 +1,5 @@
 #include "field_map_object.h"
+#include "field_system.h"
 #include "fieldmap.h"
 #include "font.h"
 #include "mail_message.h"
@@ -7,10 +8,28 @@
 #include "overlay_01.h"
 #include "pm_string.h"
 #include "scrcmd.h"
-#include "scrcmd_9.h"
-#include "scrcmd_message.h"
 #include "script.h"
 #include "window.h"
+
+typedef struct MessageBox {
+    STRING *message;
+    STRING *buffer;
+    MessageFormat *messageFormat;
+    WINDOW *window;
+    u8 *unk10;
+    u8 *textPrinterNumPtr;
+} MessageBox;
+
+static void ovFieldMain_ShowMessageInField(SCRIPTCONTEXT *ctx, MSGDATA *messageData, u32 messageNum);
+static void ov01_021EF5C8(SCRIPTCONTEXT *ctx, MessageFormat *messageFormat, u8 messageNum, u32 canABSpeedUp);
+static u32 ovFieldMain_GetTextFrameDelay(SCRIPTCONTEXT *ctx);
+static void ovFieldMain_GetMsgBoxParameters(FieldSystem *fsys, MessageBox *messageBox);
+static void ovFieldMain_GetMsgBoxParametersEx(FieldSystem *fsys, MessageFormat *messageFormat, MessageBox *messageBox);
+static void ovFieldMain_CreateMessageBox(FieldSystem *fsys, MessageBox *messageBox);
+static void ovFieldMain_ReadAndExpandMsgDataViaBuffer(MessageBox *messageBox, MSGDATA *messageData, u32 messageNum);
+static void ovFieldMain_GetFormattedECMessage(MessageBox *messageBox, u16 messageBank, u16 messageNum, u16 word1, u16 word2);
+static void ov01_021EF758(MessageBox *messageBox, FontID fontId, u32 textFrameDelay, BOOL canABSpeedUp, u32 a4);
+static void ovFieldMain_AddTextPrinterParameterized(MessageBox *messageBox, FontID fontId);
 
 const u16 ov01_022067C8[] = {
     NARC_msg_msg_0752_bin, // day of the week siblings
@@ -200,7 +219,7 @@ void ov01_021EF4DC(SCRIPTCONTEXT *ctx, MSGDATA *messageData, u16 messageNum, u8 
     ov01_021EF758(&messageBox, fontId, textFrameDelay, canABSpeedUp, unk1);
 }
 
-void ovFieldMain_ShowMessageInField(SCRIPTCONTEXT *ctx, MSGDATA *messageData, u32 messageNum) {
+static void ovFieldMain_ShowMessageInField(SCRIPTCONTEXT *ctx, MSGDATA *messageData, u32 messageNum) {
     MessageBox messageBox;
     ovFieldMain_GetMsgBoxParameters(ctx->fsys, &messageBox);
     ovFieldMain_CreateMessageBox(ctx->fsys, &messageBox);
@@ -221,7 +240,7 @@ void ov01_021EF564(SCRIPTCONTEXT *ctx, u16 messageBank, u16 messageNum, u16 word
     }
 }
 
-void ov01_021EF5C8(SCRIPTCONTEXT *ctx, MessageFormat *messageFormat, u8 messageNum, u32 canABSpeedUp) {
+static void ov01_021EF5C8(SCRIPTCONTEXT *ctx, MessageFormat *messageFormat, u8 messageNum, u32 canABSpeedUp) {
     MessageBox messageBox;
     ovFieldMain_GetMsgBoxParametersEx(ctx->fsys, messageFormat, &messageBox);
     ovFieldMain_CreateMessageBox(ctx->fsys, &messageBox);
@@ -229,11 +248,11 @@ void ov01_021EF5C8(SCRIPTCONTEXT *ctx, MessageFormat *messageFormat, u8 messageN
     ov01_021EF758(&messageBox, 1, ovFieldMain_GetTextFrameDelay(ctx), canABSpeedUp, 0);
 }
 
-u32 ovFieldMain_GetTextFrameDelay(SCRIPTCONTEXT *ctx) {
+static u32 ovFieldMain_GetTextFrameDelay(SCRIPTCONTEXT *ctx) {
     return Options_GetTextFrameDelay(Sav2_PlayerData_GetOptionsAddr(ctx->fsys->savedata));
 }
 
-void ovFieldMain_GetMsgBoxParameters(FieldSystem *fsys, MessageBox *messageBox) {
+static void ovFieldMain_GetMsgBoxParameters(FieldSystem *fsys, MessageBox *messageBox) {
     messageBox->message = *(STRING **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
     messageBox->buffer = *(STRING **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
     messageBox->messageFormat = *(MessageFormat **)FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
@@ -242,7 +261,7 @@ void ovFieldMain_GetMsgBoxParameters(FieldSystem *fsys, MessageBox *messageBox) 
     messageBox->textPrinterNumPtr = (u8 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
 }
 
-void ovFieldMain_GetMsgBoxParametersEx(FieldSystem *fsys, MessageFormat *messageFormat, MessageBox *messageBox) {
+static void ovFieldMain_GetMsgBoxParametersEx(FieldSystem *fsys, MessageFormat *messageFormat, MessageBox *messageBox) {
     messageBox->message = *(STRING **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
     messageBox->buffer = *(STRING **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
     messageBox->messageFormat = messageFormat;
@@ -251,7 +270,7 @@ void ovFieldMain_GetMsgBoxParametersEx(FieldSystem *fsys, MessageFormat *message
     messageBox->textPrinterNumPtr = (u8 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
 }
 
-void ovFieldMain_CreateMessageBox(FieldSystem *fsys, MessageBox *messageBox) {
+static void ovFieldMain_CreateMessageBox(FieldSystem *fsys, MessageBox *messageBox) {
     if (*(messageBox->unk10) == 0) {
         sub_0205B514(fsys->bgConfig, messageBox->window, 3);
         sub_0205B564(messageBox->window, Sav2_PlayerData_GetOptionsAddr(fsys->savedata));
@@ -261,12 +280,12 @@ void ovFieldMain_CreateMessageBox(FieldSystem *fsys, MessageBox *messageBox) {
     FillWindowPixelBuffer(messageBox->window, 15);
 }
 
-void ovFieldMain_ReadAndExpandMsgDataViaBuffer(MessageBox *messageBox, MSGDATA *messageData, u32 messageNum) {
+static void ovFieldMain_ReadAndExpandMsgDataViaBuffer(MessageBox *messageBox, MSGDATA *messageData, u32 messageNum) {
     ReadMsgDataIntoString(messageData, messageNum, messageBox->buffer);
     StringExpandPlaceholders(messageBox->messageFormat, messageBox->message, messageBox->buffer);
 }
 
-void ovFieldMain_GetFormattedECMessage(MessageBox *messageBox, u16 messageBank, u16 messageNum, u16 word1, u16 word2) {
+static void ovFieldMain_GetFormattedECMessage(MessageBox *messageBox, u16 messageBank, u16 messageNum, u16 word1, u16 word2) {
     struct MailMessage mailMessage;
     MailMsg_init(&mailMessage);
     MailMsg_SetMsgBankAndNum(&mailMessage, messageBank, messageNum);
@@ -277,11 +296,11 @@ void ovFieldMain_GetFormattedECMessage(MessageBox *messageBox, u16 messageBank, 
     String_dtor(string);
 }
 
-void ov01_021EF758(MessageBox *messageBox, FontID fontId, u32 textFrameDelay, BOOL canABSpeedUp, u32 a4) {
+static void ov01_021EF758(MessageBox *messageBox, FontID fontId, u32 textFrameDelay, BOOL canABSpeedUp, u32 a4) {
     *(messageBox->textPrinterNumPtr) = sub_0205B5EC(messageBox->window, messageBox->message, fontId, textFrameDelay, (u8)canABSpeedUp, a4);
 }
 
-void ovFieldMain_AddTextPrinterParameterized(MessageBox *messageBox, FontID fontId) {
+static void ovFieldMain_AddTextPrinterParameterized(MessageBox *messageBox, FontID fontId) {
     *(messageBox->textPrinterNumPtr) = AddTextPrinterParameterized(messageBox->window, fontId, messageBox->message, 0, 0, 0, NULL);
 }
 

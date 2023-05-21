@@ -887,4 +887,8 @@ BOOL ScrCmd_BufferSealNamePlural(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_Capitalize(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_BufferDeptStoreFloorNo(SCRIPTCONTEXT* ctx);
 
+
+MessageFormat *sub_0204B538(SAVEDATA *savedata, u16 numEligblePokemon, u16 a2, u8 a3, u8 *numLegendaryPokemonSeen);
+void ov01_021EF564(SCRIPTCONTEXT *ctx, u16 messageBank, u16 messageNum, u16 word1, s16 word2, u8 canABSpeedUp);
+
 #endif
