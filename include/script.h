@@ -100,7 +100,7 @@ typedef enum ScriptEnvField {
     SCRIPTENV_WAITING_ICON,
     SCRIPTENV_RUNNING_APP_DATA,
     SCRIPTENV_MISC_DATA_PTR,
-    SCRIPTENV_B4                              = 22,
+    SCRIPTENV_FIELD_B4,
     SCRIPTENV_B8                              = 23,
     SCRIPTENV_0C                              = 24,
     SCRIPTENV_54_0_00                         = 25,

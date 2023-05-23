@@ -259,7 +259,7 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *environment, enum ScriptEnv
         return &environment->runningAppData;
     case SCRIPTENV_MISC_DATA_PTR:
         return &environment->miscDataPtr;
-    case SCRIPTENV_B4:
+    case SCRIPTENV_FIELD_B4:
         return &environment->unk_B4;
     case SCRIPTENV_B8:
         return &environment->unk_B8;
