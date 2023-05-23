@@ -69,7 +69,7 @@ typedef struct ScriptEnvironment {
     u16 specialVars[NUM_SPECIAL_VARS];
     void (*scrctx_end_cb)(FieldSystem *fsys);
     void *runningAppData;
-    void *genericWorkPtr;
+    void *miscDataPtr;
     void *unk_B4;
     void *unk_B8;
     WINDOW unk_BC;
@@ -99,7 +99,7 @@ typedef enum ScriptEnvField {
     SCRIPTENV_STRING_BUFFER_1,
     SCRIPTENV_WAITING_ICON,
     SCRIPTENV_RUNNING_APP_DATA,
-    SCRIPTENV_GENERIC_WORK_PTR                = 21,
+    SCRIPTENV_MISC_DATA_PTR,
     SCRIPTENV_B4                              = 22,
     SCRIPTENV_B8                              = 23,
     SCRIPTENV_0C                              = 24,
