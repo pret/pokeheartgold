@@ -257,14 +257,14 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *environment, enum ScriptEnv
         return &environment->waitingIcon;
     case SCRIPTENV_RUNNING_APP_DATA:
         return &environment->runningAppData;
-    case SCRIPTENV_GENERIC_WORK_PTR:
-        return &environment->genericWorkPtr;
-    case SCRIPTENV_B4:
+    case SCRIPTENV_MISC_DATA_PTR:
+        return &environment->miscDataPtr;
+    case SCRIPTENV_FIELD_B4:
         return &environment->unk_B4;
-    case SCRIPTENV_B8:
+    case SCRIPTENV_FIELD_B8:
         return &environment->unk_B8;
-    case SCRIPTENV_0C:
-        return &environment->unk_C;
+    case SCRIPTENV_BATTLE_WIN_FLAG:
+        return &environment->battleWinFlag;
     case SCRIPTENV_54_0_00:
         return &environment->engagedTrainers[0].unk0;
     case SCRIPTENV_54_0_04:

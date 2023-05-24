@@ -9,7 +9,7 @@
 typedef struct BattleSetupStruct {
     u32 flags;
     PARTY *party[4];
-    int winFlag;
+    u32 winFlag;
     int trainerId[4];
     TRAINER trainer[4];
     PLAYERPROFILE *profile[4];
