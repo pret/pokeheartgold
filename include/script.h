@@ -52,7 +52,7 @@ typedef struct ScriptEnvironment {
     u8 unk_8;
     u8 activeScriptContextCount;
     u16 activeScriptNumber;
-    u32 unk_C;
+    u32 battleWinFlag;
     u32 unk_10;
     WINDOW unk_14;
     struct ListMenu2D *listMenu2D;
@@ -71,7 +71,7 @@ typedef struct ScriptEnvironment {
     void *runningAppData;
     void *miscDataPtr;
     void *unk_B4;
-    void *unk_B8;
+    void *unk_B8; //PlayerMovementState
     WINDOW unk_BC;
     WINDOW moneyBox;
     struct SaveStatsPrinter *unk_DC;
@@ -101,8 +101,8 @@ typedef enum ScriptEnvField {
     SCRIPTENV_RUNNING_APP_DATA,
     SCRIPTENV_MISC_DATA_PTR,
     SCRIPTENV_FIELD_B4,
-    SCRIPTENV_B8                              = 23,
-    SCRIPTENV_0C                              = 24,
+    SCRIPTENV_FIELD_B8,
+    SCRIPTENV_BATTLE_WIN_FLAG,
     SCRIPTENV_54_0_00                         = 25,
     SCRIPTENV_54_0_04                         = 26,
     SCRIPTENV_54_0_08                         = 27,

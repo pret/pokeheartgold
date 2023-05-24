@@ -98,7 +98,7 @@ BOOL ScrCmd_GetTrainerNum(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_TrainerBattle(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 *script = FieldSysGetAttrAddr(fsys, SCRIPTENV_ACTIVE_SCRIPT_NUMBER);
-    u32 *scriptUnk0C = FieldSysGetAttrAddr(fsys, SCRIPTENV_0C);
+    u32 *winFlag = FieldSysGetAttrAddr(fsys, SCRIPTENV_BATTLE_WIN_FLAG);
     u16 var0 = ScriptGetVar(ctx);
     u16 var1 = ScriptGetVar(ctx);
     u8 var2 = ScriptReadByte(ctx);
@@ -109,18 +109,18 @@ BOOL ScrCmd_TrainerBattle(SCRIPTCONTEXT *ctx) {
         followerTrainerNum = ScriptState_GetFollowerTrainerNum(SavArray_Flags_get(fsys->savedata));
     }
 
-    SetupAndStartTrainerBattle(ctx->taskman, var0, var1, followerTrainerNum, var2, var3, 11, scriptUnk0C);
+    SetupAndStartTrainerBattle(ctx->taskman, var0, var1, followerTrainerNum, var2, var3, 11, winFlag);
     return TRUE;
 }
 
 BOOL ScrCmd_MultiBattle(SCRIPTCONTEXT *ctx) {
-    u32 *scriptUnk0C = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_0C);
+    u32 *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_BATTLE_WIN_FLAG);
     u16 var0 = ScriptGetVar(ctx);
     u16 var1 = ScriptGetVar(ctx);
     u16 var2 = ScriptGetVar(ctx);
     u8 var3 = ScriptReadByte(ctx);
 
-    SetupAndStartTrainerBattle(ctx->taskman, var1, var2, var0, 0, var3, 11, scriptUnk0C);
+    SetupAndStartTrainerBattle(ctx->taskman, var1, var2, var0, 0, var3, 11, winFlag);
     return TRUE;
 }
 
@@ -202,9 +202,9 @@ BOOL ScrCmd_WhiteOut(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_CheckBattleWon(SCRIPTCONTEXT *ctx) {
-    u32 *scriptUnk0C = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_0C);
+    u32 *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_BATTLE_WIN_FLAG);
     u16 *retBattleWon = ScriptGetVarPointer(ctx);
-    *retBattleWon = IsBattleResultWin(*scriptUnk0C);
+    *retBattleWon = IsBattleResultWin(*winFlag);
     return TRUE;
 }
 
@@ -216,7 +216,7 @@ BOOL ScrCmd_221(SCRIPTCONTEXT *ctx) {
     if (var0 == 1) {
         val = sub_02052564(VarGet(ctx->fsys, VAR_BATTLE_RESULT));
     } else {
-        val = sub_02052564(*(u32 *)FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_0C));
+        val = sub_02052564(*(u32 *)FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_BATTLE_WIN_FLAG));
     }
 
     *retPtr = val;
@@ -224,9 +224,9 @@ BOOL ScrCmd_221(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_588(SCRIPTCONTEXT *ctx) {
-    u32 *scriptUnk0C = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_0C);
+    u32 *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_BATTLE_WIN_FLAG);
     u16 *retPtr = ScriptGetVarPointer(ctx);
-    *retPtr = sub_02052574(*scriptUnk0C);
+    *retPtr = sub_02052574(*winFlag);
     return TRUE;
 }
 
@@ -237,8 +237,8 @@ BOOL ScrCmd_PartyCheckForDouble(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_223(SCRIPTCONTEXT *ctx) {
-    u32 *scriptUnk0C = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_0C);
-    SetupAndStartTrainerBattle(ctx->taskman, 1, 0, 0, 0, 0, 11, scriptUnk0C);
+    u32 *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_BATTLE_WIN_FLAG);
+    SetupAndStartTrainerBattle(ctx->taskman, 1, 0, 0, 0, 0, 11, winFlag);
     return TRUE;
 }
 

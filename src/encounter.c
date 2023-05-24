@@ -17,6 +17,14 @@
 #include "unk_02092BE8.h"
 #include "unk_0206D494.h"
 #include "constants/std_script.h"
+#include "game_stats.h"
+#include "unk_020552A4.h"
+#include "unk_02034354.h"
+#include "unk_02066EDC.h"
+#include "field_map_object.h"
+#include "field_warp_tasks.h"
+#include "unk_02058034.h"
+#include "pokedex_util.h"
 
 static void sub_02051660(FieldSystem *fsys, BATTLE_SETUP *setup);
 
@@ -44,7 +52,7 @@ static void sub_020506AC(TaskManager *man, BATTLE_SETUP *setup) {
     TaskManager_Call(man, sub_02050660, setup);
 }
 
-static ENCOUNTER *Encounter_New(BATTLE_SETUP *setup, int effect, int bgm, int *flag) {
+static ENCOUNTER *Encounter_New(BATTLE_SETUP *setup, int effect, int bgm, u32 *flag) {
     ENCOUNTER *work;
     work = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(ENCOUNTER));
     work->winFlag = flag;
@@ -135,7 +143,7 @@ static BOOL sub_02050738(TaskManager *man) {
     return FALSE;
 }
 
-static void sub_0205085C(TaskManager *man, BATTLE_SETUP *setup, int effect, int bgm, int *winFlag) {
+static void sub_0205085C(TaskManager *man, BATTLE_SETUP *setup, int effect, int bgm, u32 *winFlag) {
     ENCOUNTER *encounter = Encounter_New(setup, effect, bgm, winFlag);
     TaskManager_Call(man, sub_02050738, encounter);
 }
@@ -256,7 +264,7 @@ static BOOL sub_020509F0(TaskManager *man) {
     return FALSE;
 }
 
-void sub_02050AAC(TaskManager *man, BATTLE_SETUP *setup, int effect, int bgm, int *winFlag) {
+void sub_02050AAC(TaskManager *man, BATTLE_SETUP *setup, int effect, int bgm, u32 *winFlag) {
     ENCOUNTER *encounter = Encounter_New(setup, effect, bgm, winFlag);
     TaskManager_Call(man, sub_020509F0, encounter);
 }
@@ -511,7 +519,7 @@ static BOOL Task_BugContestEncounter(TaskManager *man) {
     return FALSE;
 }
 
-void SetupAndStartWildBattle(TaskManager *man, u16 mon, u8 level, int *winFlag, BOOL canFlee, BOOL shiny) {
+void SetupAndStartWildBattle(TaskManager *man, u16 mon, u8 level, u32 *winFlag, BOOL canFlee, BOOL shiny) {
     BATTLE_SETUP *setup;
     FieldSystem *fsys = TaskManager_GetSys(man);
     setup = BattleSetup_New(HEAP_ID_FIELDMAP, 0);
@@ -527,7 +535,7 @@ void SetupAndStartWildBattle(TaskManager *man, u16 mon, u8 level, int *winFlag, 
     sub_0205085C(man, setup, sub_020517E8(setup), sub_020517FC(setup), winFlag);
 }
 
-void sub_02051090(TaskManager *man, u16 species, u8 level, int *winFlag, BOOL canRun) {
+void sub_02051090(TaskManager *man, u16 species, u8 level, u32 *winFlag, BOOL canRun) {
     BATTLE_SETUP *setup;
     FieldSystem *fsys;
     int var;
@@ -666,7 +674,7 @@ void SetupAndStartTutorialBattle(TaskManager *man) {
     TaskManager_Call(man, Task_TutorialBattle, encounter);
 }
 
-void SetupAndStartTrainerBattle(TaskManager *man, u32 opponentTrainer1, u32 opponentTrainer2, u32 followerTrainerNum, u32 a4, u32 a5, HeapID heapId, int *winFlag) {
+void SetupAndStartTrainerBattle(TaskManager *man, u32 opponentTrainer1, u32 opponentTrainer2, u32 followerTrainerNum, u32 a4, u32 a5, HeapID heapId, u32 *winFlag) {
     u32 battleFlags;
     ENCOUNTER *encounter;
     BATTLE_SETUP *setup;

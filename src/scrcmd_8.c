@@ -6,9 +6,9 @@
 #include "math_util.h"
 
 BOOL ScrCmd_GetStaticEncounterOutcomeFlag(SCRIPTCONTEXT *ctx) {
-    u32 *unkC = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_0C);
-    u16 *var0 = ScriptGetVarPointer(ctx);
-    *var0 = *unkC;
+    u32 *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_BATTLE_WIN_FLAG);
+    u16 *variable = ScriptGetVarPointer(ctx);
+    *variable = *winFlag;
     return TRUE;
 }
 

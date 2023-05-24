@@ -2553,7 +2553,7 @@ BOOL ScrCmd_GetDexEvalResult(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_RocketTrapBattle(SCRIPTCONTEXT *ctx) {
-    int *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_0C);
+    u32 *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_BATTLE_WIN_FLAG);
     u16 species = ScriptGetVar(ctx);
     u16 level = ScriptGetVar(ctx);
     SetupAndStartWildBattle(ctx->taskman, species, level, winFlag, FALSE, FALSE);
@@ -2561,7 +2561,7 @@ BOOL ScrCmd_RocketTrapBattle(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_WildBattle(SCRIPTCONTEXT *ctx) {
-    int *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_0C);
+    u32 *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_BATTLE_WIN_FLAG);
     u16 species = ScriptGetVar(ctx);
     u16 level = ScriptGetVar(ctx);
     u8 shiny = ScriptReadByte(ctx);
@@ -2570,7 +2570,7 @@ BOOL ScrCmd_WildBattle(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_686(SCRIPTCONTEXT *ctx) {
-    int *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_0C);
+    u32 *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_BATTLE_WIN_FLAG);
     u16 species = ScriptGetVar(ctx);
     u16 level = ScriptGetVar(ctx);
     sub_02051090(ctx->taskman, species, level, winFlag, TRUE);
@@ -3653,14 +3653,14 @@ BOOL ScrCmd_CountPCEmptySpace(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_PlayerMovementSavingSet(SCRIPTCONTEXT *ctx) {
-    int *r4 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_B8);
+    s32 *r4 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_FIELD_B8);
     *r4 = PLAYER_STATE_WALKING;
     *r4 = Field_PlayerMovementSavingSet(ctx->fsys);
     return TRUE;
 }
 
 BOOL ScrCmd_PlayerMovementSavingClear(SCRIPTCONTEXT *ctx) {
-    int *r4 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_B8);
+    s32 *r4 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_FIELD_B8);
     Field_PlayerMovementSavingClear(*r4);
     return TRUE;
 }
