@@ -35,9 +35,9 @@ typedef struct EngagedTrainer {
     int unk0;
     int unk4;
     int unk8;
-    int trainerNum;
+    int trainerId;
     int encounterType; // 0: single trainer; 1: double-battle trainer; 2: two trainers
-    LocalMapObject *objectEvent;
+    LocalMapObject *overworldEvent;
     int unk18;
 } EngagedTrainer;
 
@@ -103,20 +103,20 @@ typedef enum ScriptEnvField {
     SCRIPTENV_FIELD_B4,
     SCRIPTENV_FIELD_B8,
     SCRIPTENV_BATTLE_WIN_FLAG,
-    SCRIPTENV_54_0_00                         = 25,
-    SCRIPTENV_54_0_04                         = 26,
-    SCRIPTENV_54_0_08                         = 27,
-    SCRIPTENV_EYE_TRAINER_1_NUM               = 28,
-    SCRIPTENV_EYE_TRAINER_1_ENCTYPE           = 29,
-    SCRIPTENV_EYE_TRAINER_1_OBJPTR            = 30,
-    SCRIPTENV_54_0_18                         = 31,
-    SCRIPTENV_54_1_00                         = 32,
-    SCRIPTENV_54_1_04                         = 33,
-    SCRIPTENV_54_1_08                         = 34,
-    SCRIPTENV_EYE_TRAINER_2_NUM               = 35,
-    SCRIPTENV_EYE_TRAINER_2_ENCTYPE           = 36,
-    SCRIPTENV_EYE_TRAINER_2_OBJPTR            = 37,
-    SCRIPTENV_54_1_18                         = 38,
+    SCRIPTENV_ENGAGED_TRAINER_0_FIELD_00,
+    SCRIPTENV_ENGAGED_TRAINER_0_FIELD_04,
+    SCRIPTENV_ENGAGED_TRAINER_0_FIELD_08,
+    SCRIPTENV_ENGAGED_TRAINER_0_ID,
+    SCRIPTENV_ENGAGED_TRAINER_0_ENCOUNTER_TYPE,
+    SCRIPTENV_ENGAGED_TRAINER_0_EVENT,
+    SCRIPTENV_ENGAGED_TRAINER_0_FIELD_18,
+    SCRIPTENV_ENGAGED_TRAINER_1_FIELD_00,
+    SCRIPTENV_ENGAGED_TRAINER_1_FIELD_04,
+    SCRIPTENV_ENGAGED_TRAINER_1_FIELD_08,
+    SCRIPTENV_ENGAGED_TRAINER_1_ID,
+    SCRIPTENV_ENGAGED_TRAINER_1_ENCOUNTER_TYPE,
+    SCRIPTENV_ENGAGED_TRAINER_1_EVENT,
+    SCRIPTENV_ENGAGED_TRAINER_1_FIELD_18,
     SCRIPTENV_BC                              = 39,
     SCRIPTENV_MONEY_BOX                       = 40,
     SCRIPTENV_DC                              = 41,

@@ -19,21 +19,21 @@ BOOL ScrCmd_GetTrainerPathToPlayer(SCRIPTCONTEXT *ctx) {
 
     u16 trainerNum = ScriptGetVar(ctx);
     if (trainerNum == 0) {
-        sp18 = FieldSysGetAttrAddr(fsys, SCRIPTENV_54_0_00);
-        sp10 = FieldSysGetAttrAddr(fsys, SCRIPTENV_54_0_04);
-        FieldSysGetAttrAddr(fsys, SCRIPTENV_54_0_08);
-        FieldSysGetAttrAddr(fsys, SCRIPTENV_EYE_TRAINER_1_NUM);
-        encounterType = FieldSysGetAttrAddr(fsys, SCRIPTENV_EYE_TRAINER_1_ENCTYPE);
-        localMapObject = FieldSysGetAttrAddr(fsys, SCRIPTENV_EYE_TRAINER_1_OBJPTR);
-        r7 = FieldSysGetAttrAddr(fsys, SCRIPTENV_54_0_18);
+        sp18 = FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_0_FIELD_00);
+        sp10 = FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_0_FIELD_04);
+        FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_0_FIELD_08);
+        FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_0_ID);
+        encounterType = FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_0_ENCOUNTER_TYPE);
+        localMapObject = FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_0_EVENT);
+        r7 = FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_0_FIELD_18);
     } else {
-        sp18 = FieldSysGetAttrAddr(fsys, SCRIPTENV_54_1_00);
-        sp10 = FieldSysGetAttrAddr(fsys, SCRIPTENV_54_1_04);
-        FieldSysGetAttrAddr(fsys, SCRIPTENV_54_1_08);
-        FieldSysGetAttrAddr(fsys, SCRIPTENV_EYE_TRAINER_2_NUM);
-        encounterType = FieldSysGetAttrAddr(fsys, SCRIPTENV_EYE_TRAINER_2_ENCTYPE);
-        localMapObject = FieldSysGetAttrAddr(fsys, SCRIPTENV_EYE_TRAINER_2_OBJPTR);
-        r7 = FieldSysGetAttrAddr(fsys, SCRIPTENV_54_1_18);
+        sp18 = FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_1_FIELD_00);
+        sp10 = FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_1_FIELD_04);
+        FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_1_FIELD_08);
+        FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_1_ID);
+        encounterType = FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_1_ENCOUNTER_TYPE);
+        localMapObject = FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_1_EVENT);
+        r7 = FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_1_FIELD_18);
     }
 
     *r7 = sub_0206457C(fsys, *localMapObject, fsys->playerAvatar, *sp10, *sp18, 0, *encounterType, trainerNum);
@@ -47,9 +47,9 @@ BOOL ScrCmd_TrainerStepTowardsPlayer(SCRIPTCONTEXT *ctx) {
 
     *var1 = 0;
     if (trainerNum == 0) {
-        r5 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_54_0_18);
+        r5 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_ENGAGED_TRAINER_0_FIELD_18);
     } else {
-        r5 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_54_1_18);
+        r5 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_ENGAGED_TRAINER_1_FIELD_18);
     }
 
     if (*r5 == 0) {
@@ -67,22 +67,22 @@ BOOL ScrCmd_TrainerStepTowardsPlayer(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_GetTrainerEyeType(SCRIPTCONTEXT *ctx) {
-    u16 *encounterType = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_EYE_TRAINER_1_ENCTYPE);
+    u16 *encounterType = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_ENGAGED_TRAINER_0_ENCOUNTER_TYPE);
     u16 *retEncounterType = ScriptGetVarPointer(ctx);
     *retEncounterType = *encounterType;
     return FALSE;
 }
 
 BOOL ScrCmd_GetEyeTrainerNum(SCRIPTCONTEXT *ctx) {
-    u16 *trainerNum1 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_EYE_TRAINER_1_NUM);
-    u16 *trainerNum2 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_EYE_TRAINER_2_NUM);
+    u16 *trainerId0 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_ENGAGED_TRAINER_0_ID);
+    u16 *trainerId1 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_ENGAGED_TRAINER_1_ID);
     u16 trainerNum = ScriptGetVar(ctx);
-    u16 *retTrainerNum = ScriptGetVarPointer(ctx);
+    u16 *retTrainerId = ScriptGetVarPointer(ctx);
 
     if (trainerNum == 0) {
-        *retTrainerNum = *trainerNum1;
+        *retTrainerId = *trainerId0;
     } else {
-        *retTrainerNum = *trainerNum2;
+        *retTrainerId = *trainerId1;
     }
 
     return FALSE;

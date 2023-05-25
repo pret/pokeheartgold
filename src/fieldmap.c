@@ -65,15 +65,15 @@ void StartMapSceneScript(FieldSystem *fsys, u16 script, LocalMapObject *lastInte
     FieldSys_CreateTask(fsys, Task_RunScripts, r4);
 }
 
-void FieldSys_SetEngagedTrainer(FieldSystem *fsys, LocalMapObject *obj, int a2, int a3, int a4, int trainerNum, int encounterType, int idx) {
+void FieldSys_SetEngagedTrainer(FieldSystem *fsys, LocalMapObject *obj, int a2, int a3, int a4, int trainerId, int encounterType, int idx) {
     ScriptEnvironment *env = TaskManager_GetEnv(fsys->taskman);
     EngagedTrainer *r0 = &env->engagedTrainers[idx];
     r0->unk0 = a2;
     r0->unk4 = a3;
     r0->unk8 = a4;
-    r0->trainerNum = trainerNum;
+    r0->trainerId = trainerId;
     r0->encounterType = encounterType;
-    r0->objectEvent = obj;
+    r0->overworldEvent = obj;
 }
 
 void QueueScript(TaskManager *taskman, u16 script, LocalMapObject *lastInteracted, void *a3) {
@@ -265,33 +265,33 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *environment, enum ScriptEnv
         return &environment->unk_B8;
     case SCRIPTENV_BATTLE_WIN_FLAG:
         return &environment->battleWinFlag;
-    case SCRIPTENV_54_0_00:
+    case SCRIPTENV_ENGAGED_TRAINER_0_FIELD_00:
         return &environment->engagedTrainers[0].unk0;
-    case SCRIPTENV_54_0_04:
+    case SCRIPTENV_ENGAGED_TRAINER_0_FIELD_04:
         return &environment->engagedTrainers[0].unk4;
-    case SCRIPTENV_54_0_08:
+    case SCRIPTENV_ENGAGED_TRAINER_0_FIELD_08:
         return &environment->engagedTrainers[0].unk8;
-    case SCRIPTENV_EYE_TRAINER_1_NUM:
-        return &environment->engagedTrainers[0].trainerNum;
-    case SCRIPTENV_EYE_TRAINER_1_ENCTYPE:
+    case SCRIPTENV_ENGAGED_TRAINER_0_ID:
+        return &environment->engagedTrainers[0].trainerId;
+    case SCRIPTENV_ENGAGED_TRAINER_0_ENCOUNTER_TYPE:
         return &environment->engagedTrainers[0].encounterType;
-    case SCRIPTENV_EYE_TRAINER_1_OBJPTR:
-        return &environment->engagedTrainers[0].objectEvent;
-    case SCRIPTENV_54_0_18:
+    case SCRIPTENV_ENGAGED_TRAINER_0_EVENT:
+        return &environment->engagedTrainers[0].overworldEvent;
+    case SCRIPTENV_ENGAGED_TRAINER_0_FIELD_18:
         return &environment->engagedTrainers[0].unk18;
-    case SCRIPTENV_54_1_00:
+    case SCRIPTENV_ENGAGED_TRAINER_1_FIELD_00:
         return &environment->engagedTrainers[1].unk0;
-    case SCRIPTENV_54_1_04:
+    case SCRIPTENV_ENGAGED_TRAINER_1_FIELD_04:
         return &environment->engagedTrainers[1].unk4;
-    case SCRIPTENV_54_1_08:
+    case SCRIPTENV_ENGAGED_TRAINER_1_FIELD_08:
         return &environment->engagedTrainers[1].unk8;
-    case SCRIPTENV_EYE_TRAINER_2_NUM:
-        return &environment->engagedTrainers[1].trainerNum;
-    case SCRIPTENV_EYE_TRAINER_2_ENCTYPE:
+    case SCRIPTENV_ENGAGED_TRAINER_1_ID:
+        return &environment->engagedTrainers[1].trainerId;
+    case SCRIPTENV_ENGAGED_TRAINER_1_ENCOUNTER_TYPE:
         return &environment->engagedTrainers[1].encounterType;
-    case SCRIPTENV_EYE_TRAINER_2_OBJPTR:
-        return &environment->engagedTrainers[1].objectEvent;
-    case SCRIPTENV_54_1_18:
+    case SCRIPTENV_ENGAGED_TRAINER_1_EVENT:
+        return &environment->engagedTrainers[1].overworldEvent;
+    case SCRIPTENV_ENGAGED_TRAINER_1_FIELD_18:
         return &environment->engagedTrainers[1].unk18;
     case SCRIPTENV_BC:
         return &environment->unk_BC;
