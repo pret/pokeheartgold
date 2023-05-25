@@ -293,8 +293,8 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *environment, enum ScriptEnv
         return &environment->engagedTrainers[1].overworldEvent;
     case SCRIPTENV_ENGAGED_TRAINER_1_FIELD_18:
         return &environment->engagedTrainers[1].unk18;
-    case SCRIPTENV_BC:
-        return &environment->unk_BC;
+    case SCRIPTENV_POINTS_BOX:
+        return &environment->pointsBox;
     case SCRIPTENV_MONEY_BOX:
         return &environment->moneyBox;
     case SCRIPTENV_DC:

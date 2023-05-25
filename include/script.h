@@ -72,7 +72,8 @@ typedef struct ScriptEnvironment {
     void *miscDataPtr;
     void *unk_B4;
     void *unk_B8; //PlayerMovementState
-    WINDOW unk_BC;
+    WINDOW *pointsBox;
+    u8 padding[0xC]; //FIXME: ugly hack
     WINDOW moneyBox;
     struct SaveStatsPrinter *unk_DC;
 } ScriptEnvironment;
@@ -117,7 +118,7 @@ typedef enum ScriptEnvField {
     SCRIPTENV_ENGAGED_TRAINER_1_ENCOUNTER_TYPE,
     SCRIPTENV_ENGAGED_TRAINER_1_EVENT,
     SCRIPTENV_ENGAGED_TRAINER_1_FIELD_18,
-    SCRIPTENV_BC                              = 39,
+    SCRIPTENV_POINTS_BOX, //differs from diamond due to athlete points
     SCRIPTENV_MONEY_BOX                       = 40,
     SCRIPTENV_DC                              = 41,
     SCRIPTENV_SPECIAL_VAR_8000                = 42,

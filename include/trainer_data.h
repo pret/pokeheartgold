@@ -9,6 +9,7 @@
 #include "pm_string.h"
 #include "mail_message.h"
 #include "pokemon_types_def.h"
+#include "global.h"
 
 typedef enum TrainerAttr {
     TRATTR_TYPE,
