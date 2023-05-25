@@ -1,4 +1,5 @@
 #include "pm_string.h"
+#include "string_control_code.h"
 
 const u16 *MsgArray_SkipControlCode(const u16 *arr) {
     GF_ASSERT(*arr == EXT_CTRL_CODE_BEGIN);

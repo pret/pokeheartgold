@@ -5,8 +5,6 @@
 
 typedef struct Sprite Sprite;
 
-typedef struct SpriteList SpriteList;
-
 typedef struct SpriteTemplate {
     void *spriteList;
     const struct SpriteResourcesHeader *header;

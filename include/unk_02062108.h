@@ -1,8 +1,7 @@
 #ifndef POKEHEARTGOLD_UNK_02062108_H
 #define POKEHEARTGOLD_UNK_02062108_H
 
-struct LocalMapObject;
-struct EventObjectMovementMan;
+#include "field_system.h"
 
 #define MV_step_down            12
 #define MV_step_up              13
@@ -15,7 +14,6 @@ typedef struct MovementScriptCommand {
     u16 length;
 } MovementScriptCommand;
 
-typedef struct LocalMapObject LocalMapObject;
 typedef struct EventObjectMovementMan EventObjectMovementMan;
 
 EventObjectMovementMan *EventObjectMovementMan_Create(LocalMapObject *object, const MovementScriptCommand *data);

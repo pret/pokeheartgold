@@ -1,5 +1,6 @@
 #include "field_warp_tasks.h"
 #include "main.h"
+#include "map_events.h"
 #include "math_util.h"
 #include "overlay_manager.h"
 #include "poke_overlay.h"
@@ -10,11 +11,13 @@
 #include "unk_02092BE8.h"
 #include "unk_02056D7C.h"
 #include "unk_02035900.h"
+#include "unk_0205CB48.h"
 #include "overlay_01_021F6830.h"
 #include "overlay_01_021E6880.h"
 #include "overlay_01_021EF7A0.h"
 #include "overlay_01_021F3D38.h"
 #include "overlay_01_021F1AFC.h"
+#include "overlay_124.h"
 #include "constants/maps.h"
 
 FS_EXTERN_OVERLAY(OVY_60);
