@@ -39,6 +39,7 @@ u8 sub_0205C310(u32 unkA);
 u8 sub_0205C350(u32 unkA);
 PlayerAvatar *sub_0205C390(MapObjectMan *man, int x, int y, int direction, int a4, int gender, int a6, struct FlypointsPlayerSub *a7);
 PlayerAvatar *sub_0205C408(MapObjectMan *man, PlayerAvatar_SUB *avatar_sub, int gender);
+void sub_0205C46C(PlayerAvatar* avatar);
 void PlayerAvatar_FreeToHeap(PlayerAvatar *avatar);
 void PlayerAvatar_DeleteFromMap(PlayerAvatar *avatar);
 PlayerAvatar *sub_0205C4E0();
@@ -96,7 +97,7 @@ void FlypointsPlayerSub_SetRunningShoesFlag(struct FlypointsPlayerSub *fpsub, BO
 int sub_0205C7EC(PlayerAvatar_SUB *avatar);
 void sub_0205C7F8(PlayerAvatar_SUB *unkPtr, int state);
 void sub_0205C800(PlayerAvatar *avatar, int state);
-void sub_0205C810(PlayerAvatar *avatar, u32 unkA, u32 unkB);
+void sub_0205C810(PlayerAvatar *avatar, VecFx32 *pos, u32 dir);
 void sub_0205C838(PlayerAvatar *avatar, int unkA);
 void PlayerAvatar_ToggleAutomaticHeightUpdating(PlayerAvatar *avatar, u8 unkA);
 void PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(PlayerAvatar *avatar, BOOL unkA);

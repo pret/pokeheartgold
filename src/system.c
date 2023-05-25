@@ -241,7 +241,6 @@ void Sys_ClearSleepDisableFlag(int a0) {
 
 void ReadKeypadAndTouchpad(void) {
     TPData rawTpData, calibTpData;
-    u32 tpSamplingResult;
     int raw;
     if (PAD_DetectFold()) {
         gSystem.newKeys = 0;

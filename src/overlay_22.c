@@ -1,8 +1,9 @@
 #include "coins.h"
 #include "fieldmap.h"
-#include "save_pokeathlon.h"
+#include "unk_02031904.h"
 #include "script.h"
 #include "scrcmd.h"
+#include "overlay_01_021EDAFC.h"
 
 extern WINDOW *ov01_021EEC00(struct FieldSystem *fsys, u8 type, u8 x, u8 y);
 
