@@ -1,13 +1,14 @@
 #include "assert.h"
-#include "battle.h"
 #include "battle_controller.h"
-#include "battle_system.h"
+#include "battle_controller_player.h"
+#include "battle_command.h"
 #include "item.h"
 #include "party.h"
 #include "pokemon.h"
 #include "system.h"
 #include "unk_0200E320.h"
 #include "unk_0208805C.h"
+#include "unk_02025154.h"
 #include "sound_chatot.h"
 #include "overlay_12_0224E4FC.h"
 #include "constants/abilities.h"
@@ -1150,7 +1151,7 @@ BOOL BtlCmd_JumpToEffectScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     if (unkA == 0) {
         ctx->battlerIdTarget = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, (u16)ctx->moveWork, 1, 0);
-        ov12_02250A18(bsys, ctx, ctx->battlerIdAttacker, (u16)ctx->moveWork);
+        ov12_02250A18(bsys, ctx, ctx->battlerIdAttacker, ctx->moveWork);
         ctx->unk_21A8[ctx->battlerIdAttacker][1] = ctx->battlerIdTarget;
     }
 

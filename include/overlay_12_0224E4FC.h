@@ -3,6 +3,8 @@
 
 #include "battle.h"
 
+void ov12_0224E4FC(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 monIndex);
+void ov12_02256F78(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 monIndex);
 void Link_CheckTimeout(BATTLECONTEXT *ctx);
 int GetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 varId, int a3);
 void SetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 varId, int *data);
@@ -54,5 +56,21 @@ BOOL CheckItemEffectOnUTurn(BattleSystem *bsys, BATTLECONTEXT *ctx, int *work);
 BOOL ov12_0224EC74(BATTLECONTEXT *ctx);
 void ReadBattleScriptFromNarc(BATTLECONTEXT *ctx, int a1, int adrs);
 void ov12_0224EBDC(BATTLECONTEXT *ctx, int a1, int adrs);
+void ov12_02250A18(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u16 a3);
+u32 BattleSys_GetBattleType(BattleSystem *bsys);
+u32 BattleSys_GetBattleFlags(BattleSystem *bsys);
+u32 ov12_02257C5C(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int critCnt, u32 a5);
+u32 ov12_022581D4(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 a2, int battlerId);
+u32 GetItemHoldEffect(BATTLECONTEXT *ctx, int item, u32 a3);
+u32 ov12_0223C24C(PARTY *party, u32 *a1);
+BOOL CheckStatusEffectsSubstitute(BATTLECONTEXT *ctx, int battlerId, u32 status);
+u32 StruggleCheck(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u32 nonSelectableMoves, u32 a4);
+BOOL ov12_02252700(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+BOOL WhirlwindCheck(BattleSystem *bsys, BATTLECONTEXT *ctx);
+BOOL ov12_0225275C(BATTLECONTEXT *ctx, int battlerId);
+int ov12_0223AB0C(BattleSystem *bsys, int battlerId);
+int ov12_02251D28(BattleSystem *bsys, BATTLECONTEXT *ctx, int moveNo, int moveType, int battlerIdAttacker, int battlerIdTarget, int dmg, u32 *statusFlag);
+BOOL ov12_02252C40(BATTLECONTEXT *ctx, int battlerId);
+void ov12_02252D14(BattleSystem *bsys, BATTLECONTEXT *ctx);
 
 #endif

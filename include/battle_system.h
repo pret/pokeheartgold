@@ -23,5 +23,7 @@ SOUND_CHATOT *BattleSys_GetChatotVoice(BattleSystem *bsys, int battlerId);
 int BattleSys_GetChatotVoiceParam(BattleSystem *bsys, int battlerId);
 int BattleSys_GetBattlerIdPartner(BattleSystem *bsys, int battlerId);
 int BattleSys_GetTrainerIndex(BattleSystem *bsys, int battlerId);
+BOOL Link_QueueNotEmpty(BATTLECONTEXT *ctx);
+BOOL BattleSys_AreBattleAnimationsOn(BattleSystem *bsys);
 
 #endif
