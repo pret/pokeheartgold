@@ -9,6 +9,8 @@
 #define MAILMSG_BANK_0293_GMM        3
 #define MAILMSG_BANK_0295_GMM        4
 
+#include "pm_string.h"
+
 #include "msgdata/msg/msg_0294.h"
 #include "msgdata/msg/msg_0296.h"
 #include "msgdata/msg/msg_0292.h"
@@ -32,6 +34,8 @@ void MailMsg_copy(MAIL_MESSAGE *dst, const MAIL_MESSAGE *src);
 void MailMsg_init_withBank(MAIL_MESSAGE *mailMessage, u16 msgBank);
 void MailMsg_init_default(MAIL_MESSAGE *mailMessage);
 void MailMsg_init_fromTemplate(MAIL_MESSAGE *mailMessage, const MAIL_MSG_TEMPLATE *template);
+STRING *MailMsg_GetExpandedString(const MAIL_MESSAGE *mailMessage, HeapID heapId);
+STRING *MailMsg_GetRawString(MAIL_MESSAGE *mailMessage, HeapID heapId);
 BOOL MailMsg_IsInit(MAIL_MESSAGE *mailMessage);
 BOOL MailMsg_AllFieldsAreInit(MAIL_MESSAGE *mailMessage);
 u32 MailMsg_NumFields(u16 msg_bank, u16 msg_no);

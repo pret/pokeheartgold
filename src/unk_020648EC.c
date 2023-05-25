@@ -3,6 +3,7 @@
 #include "save_misc_data.h"
 #include "scrcmd.h"
 #include "script.h"
+#include "unk_020648EC.h"
 
 typedef void (*FieldSystemFunc1)(FieldSystem*);
 typedef BOOL (*FieldSystemFunc2)(FieldSystem*, u32, u32, u32, u32);
