@@ -3,8 +3,6 @@
 
 #include "script.h"
 
-typedef struct LocalMapObject LocalMapObject;
-
 typedef struct SavedMapObject {
     u32 unk0;
     u32 unk4;
@@ -34,7 +32,7 @@ typedef struct SavedMapObject {
     u8 unk40[16];
 } SavedMapObject;
 
-typedef struct MapObjectMan {
+struct MapObjectMan { //declared field_system.h
     u32 flags;
     u32 object_count;
     u32 unk8;
@@ -45,11 +43,11 @@ typedef struct MapObjectMan {
     u8 unk1C[0x124-0x1C];
     LocalMapObject* objects;
     FieldSystem* fsys;
-} MapObjectMan; // size: 0x12c
+}; // size: 0x12c
 
 typedef void (*LocalMapObject_UnkCallback)(LocalMapObject* object);
 
-struct LocalMapObject {
+struct LocalMapObject { //declared field_system.h
     /*0x000*/ u32 flags;
     /*0x004*/ u32 flags2;
     /*0x008*/ int id;

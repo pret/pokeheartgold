@@ -4,7 +4,6 @@
 #include "fieldmap.h"
 #include "overlay_manager.h"
 
-typedef struct TaskManager TaskManager;
 typedef BOOL (*TaskFunc)(TaskManager *taskman);
 
 typedef struct TaskManagerUnkSub1C {
@@ -17,7 +16,7 @@ struct UnkTaskEnv {
     void *work;
 };
 
-struct TaskManager {
+struct TaskManager { //declared in field_system.h
     TaskManager *prev;
     TaskFunc func;
     u32 state;

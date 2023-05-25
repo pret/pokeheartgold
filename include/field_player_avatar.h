@@ -3,10 +3,7 @@
 
 #include "save.h"
 #include "global.h"
-
-typedef struct MapObjectMan MapObjectMan;
-typedef struct LocalMapObject LocalMapObject;
-typedef struct FieldSystem FieldSystem;
+#include "field_system.h"
 
 typedef struct FlypointsPlayerSub {
     u16 hasRunningShoes;
@@ -14,7 +11,7 @@ typedef struct FlypointsPlayerSub {
     u32 unk4;
 } PlayerAvatar_SUB;
 
-typedef struct PlayerAvatar {
+struct PlayerAvatar {
     u32 unk0;
     u32 transFlag;
     u32 unk8;
@@ -31,7 +28,7 @@ typedef struct PlayerAvatar {
     u32 unk34;
     PlayerAvatar_SUB *unk38;
     u32 unk3c;
-} PlayerAvatar; //size: 0x40
+}; //size: 0x40
 
 int sub_0205C268(u32 unkA);
 u8 sub_0205C278(void);
