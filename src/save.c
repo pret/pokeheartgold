@@ -1083,8 +1083,6 @@ void *sub_020284A4(SAVEDATA *saveData, HeapID heapId, int idx, int *ret_p, int *
     void *ret;
     BOOL valid1;
     BOOL valid2;
-    u32 saveno1;
-    u32 saveno2;
     SAVE_MISC_DATA *misc;
 
     misc = Sav2_Misc_get(saveData);
@@ -1208,7 +1206,6 @@ static void FlashWriteCommandCallback(void *arg) {
 
 static s32 FlashWriteChunkInternal(u32 offset, void *data, u32 size) {
     s32 lock;
-    BOOL result;
     u32 sp14;
 
     lock = OS_GetLockID();

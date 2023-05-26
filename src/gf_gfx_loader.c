@@ -334,14 +334,14 @@ static void GfGfxLoader_PartiallyLoadPaletteInternal(void *data, NNS_G2D_VRAM_TY
 // The two functions below represent routines that were deadstripped in hgss.
 // However, there is a bug in mwcc which causes static objects defined inside
 // the scope of a deadstripped routine to not themselves be deadstripped.
-void foo() {
+static void foo() {
     static void (*const _020F5958[])(const NNSG2dCharacterData *pSrcData, u32 baseAddr, NNS_G2D_VRAM_TYPE type, NNSG2dImageProxy *pImgProxy) = {
         NNS_G2dLoadImage1DMapping,
         NNS_G2dLoadImage2DMapping,
     };
 }
 
-void bar() {
+static void bar() {
     static void (*const _020F5960[])(const void *data, u32 offset, u32 size) = {
         GX_LoadOBJ,
         GXS_LoadOBJ,

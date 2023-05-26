@@ -450,7 +450,6 @@ static void InheritMoves(POKEMON *egg, BOXMON *dad, BOXMON *mom) {
     u16 learnset_size;
     u16 egg_forme;
     u16 i, j;
-    u16 move;
     u16 r5;
     struct EggMoveSearch *search;
 

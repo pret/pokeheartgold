@@ -235,7 +235,7 @@ BOOL ScrCmd_CopyByte(SCRIPTCONTEXT* ctx) {
     return FALSE;
 }
 
-/*static*/ u8 Compare(u32 a, u32 b) {
+static u8 Compare(u32 a, u32 b) {
     if (a < b) {
         return SCRIPT_COMPARISON_RESULT_LESS;
     } else if (a == b) {
@@ -971,7 +971,7 @@ BOOL ScrCmd_RemoveWaitingIcon(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-void sub_02041770(SCRIPTCONTEXT *ctx, struct UnkStruct_ov01_021EDC28 **a1, MSGDATA *msgData) {
+static void sub_02041770(SCRIPTCONTEXT *ctx, struct UnkStruct_ov01_021EDC28 **a1, MSGDATA *msgData) {
     FieldSystem *fsys = ctx->fsys;
     MessageFormat **msgFmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 x = ScriptReadByte(ctx);
@@ -1281,7 +1281,7 @@ static inline void _ResetMovementPauseWaitFlags(void) {
     _021D415C = 0;
 }
 
-BOOL _WaitMovementPauseBeforeMsg(SCRIPTCONTEXT *ctx) {
+static BOOL _WaitMovementPauseBeforeMsg(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(fsys, SCRIPTENV_LAST_INTERACTED);
     LocalMapObject *playerObj = PlayerAvatar_GetMapObject(fsys->playerAvatar);
@@ -1748,7 +1748,7 @@ BOOL ScrNative_WaitApplication_DestroyTaskData(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-BOOL sub_020429A0(SCRIPTCONTEXT *ctx) {
+static BOOL sub_020429A0(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     void **p_work = FieldSysGetAttrAddr(fsys, SCRIPTENV_RUNNING_APP_DATA);
     if (FieldSys_ApplicationIsRunning(fsys)) {
@@ -1760,7 +1760,7 @@ BOOL sub_020429A0(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-BOOL sub_020429D4(SCRIPTCONTEXT *ctx) {
+static BOOL sub_020429D4(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     void **p_work = FieldSysGetAttrAddr(fsys, SCRIPTENV_RUNNING_APP_DATA);
     if (!sub_020970C0(*p_work)) {
@@ -1788,7 +1788,7 @@ BOOL ScrCmd_436(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-BOOL sub_02042A30(FieldSystem *fsys, int a1, int a2) {
+static BOOL sub_02042A30(FieldSystem *fsys, int a1, int a2) {
     SaveDressupData *dressupData = Save_DressupData_get(fsys->savedata);
     if (a1 == 0) {
         if (!sub_0202B9EC(dressupData, a2)) {
@@ -1802,7 +1802,7 @@ BOOL sub_02042A30(FieldSystem *fsys, int a1, int a2) {
     return TRUE;
 }
 
-DressupPokemonAppData *sub_02042A60(HeapID heapId, FieldSystem *fsys, int a2, int a3) {
+static DressupPokemonAppData *sub_02042A60(HeapID heapId, FieldSystem *fsys, int a2, int a3) {
     SaveDressupData *saveDressupData = Save_DressupData_get(fsys->savedata);
     DressupPokemonAppData *dressupAppData;
     if (!sub_02042A30(fsys, a2, a3)) {
@@ -5042,7 +5042,7 @@ BOOL sub_02047908(struct UnkStruct_ov01_021EDC28 *menu, int idx) {
     return FALSE;
 }
 
-u32 GetMaxBankTransactionAmount(FieldSystem *fsys, int action) {
+static u32 GetMaxBankTransactionAmount(FieldSystem *fsys, int action) {
     u32 ret;
     u32 wallet = PlayerProfile_GetMoney(Sav2_PlayerData_GetProfileAddr(fsys->savedata));
     u32 bank = MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(fsys->savedata), MOMS_BALANCE_GET, 0);

@@ -1,9 +1,15 @@
 #include "battle_setup.h"
 #include "encounter.h"
 #include "field_black_out.h"
+#include "field_map_object.h"
 #include "field_system.h"
+#include "field_warp_tasks.h"
 #include "game_clear.h"
+#include "game_stats.h"
 #include "overlay_02.h"
+#include "overlay_03.h"
+#include "overlay_80.h"
+#include "pokedex_util.h"
 #include "use_item_on_mon.h"
 #include "save_arrays.h"
 #include "save_flypoints.h"
@@ -16,6 +22,14 @@
 #include "unk_02055244.h"
 #include "unk_02092BE8.h"
 #include "unk_0206D494.h"
+#include "unk_020552A4.h"
+#include "unk_02034354.h"
+#include "unk_02004A44.h"
+#include "unk_02066EDC.h"
+#include "unk_020557E0.h"
+#include "unk_0202FBCC.h"
+#include "unk_020290B4.h"
+#include "unk_02058034.h"
 #include "constants/std_script.h"
 
 static void sub_02051660(FieldSystem *fsys, BATTLE_SETUP *setup);
@@ -668,7 +682,6 @@ void SetupAndStartTutorialBattle(TaskManager *man) {
 
 void SetupAndStartTrainerBattle(TaskManager *man, u32 opponentTrainer1, u32 opponentTrainer2, u32 followerTrainerNum, u32 a4, u32 a5, HeapID heapId, int *winFlag) {
     u32 battleFlags;
-    ENCOUNTER *encounter;
     BATTLE_SETUP *setup;
     FieldSystem *fsys = TaskManager_GetSys(man);
 

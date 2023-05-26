@@ -83,10 +83,8 @@ void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fsys, u8 tradeno, u8 level, u16 ma
 }
 
 MAIL *NPCTrade_MakeKenyaMail(void) {
-    PARTY *party;
     POKEMON *pokemon;
     NPC_TRADE *trade_dat;
-    POKEMON *givenMon;
     STRING *name;
     MAIL *mail;
     u8 mailno;

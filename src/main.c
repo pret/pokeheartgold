@@ -18,6 +18,7 @@
 #include "communication_error.h"
 #include "math_util.h"
 #include "unk_020210A0.h"
+#include "unk_0200B380.h"
 
 FS_EXTERN_OVERLAY(OVY_60);
 FS_EXTERN_OVERLAY(OVY_36);
@@ -163,7 +164,7 @@ void RegisterMainOverlay(FSOverlayID overlayId, const OVY_MGR_TEMPLATE *template
     _02111868.queuedMainOverlayTemplate = template;
 }
 
-void sub_02000F14(void) {
+static void sub_02000F14(void) {
     sub_02036144();
     OS_WaitIrq(TRUE, OS_IE_VBLANK);
     gSystem.vblankCounter++;
@@ -173,7 +174,7 @@ void sub_02000F14(void) {
     }
 }
 
-void sub_02000F40(u32 param) {
+static void sub_02000F40(u32 param) {
     if (sub_02039AA4() && CARD_TryWaitBackupAsync() == TRUE) {
         OS_ResetSystem(param);
     }

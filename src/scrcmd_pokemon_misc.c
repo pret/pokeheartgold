@@ -8,6 +8,8 @@
 #include "pokedex.h"
 #include "list_menu.h"
 #include "overlay_01_021F72DC.h"
+#include "overlay_01_021F944C.h"
+#include "overlay_01_021E6880.h"
 #include "overlay_02.h"
 #include "overlay_03.h"
 #include "unk_02031904.h"
@@ -35,6 +37,8 @@
 #include "sys_vars.h"
 #include "system.h"
 #include "unk_02092BE8.h"
+#include "unk_02037C94.h"
+#include "sound_02004A44.h"
 
 typedef struct UnkStructScr_648 {
     FieldSystem *fsys;
@@ -604,10 +608,8 @@ BOOL ScrCmd_699(SCRIPTCONTEXT *ctx) {
     MapObjectMan *mapObjectMan;
     LocalMapObject *playerObj;
     LocalMapObject *curObj;
-    u32 *unkPtr;
+    Sprite *sprite;
     int height;
-    int unkMeasure;
-    BOOL flag;
     VecFx32 vec;
 
     unkVar = 0;
@@ -629,10 +631,10 @@ BOOL ScrCmd_699(SCRIPTCONTEXT *ctx) {
             MapObject_SetPositionVec(curObj, &vec);
             MapObject_SetCurrentHeight(curObj, (height >> 3) / FX32_ONE);
         }
-        unkPtr = ov01_021F72DC(curObj);
-        if (unkPtr) {
-            ov01_021FA3E8(curObj, unkPtr);
-            sub_02023EA4(unkPtr, 1);
+        sprite = ov01_021F72DC(curObj);
+        if (sprite) {
+            ov01_021FA3E8(curObj, sprite);
+            sub_02023EA4(sprite, 1);
         }
     }
     return FALSE;
@@ -1007,7 +1009,6 @@ BOOL ScrCmd_CheckSeenAllLetterUnown(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_GiveTogepiEgg(SCRIPTCONTEXT *ctx) {
     s32 i;
     u8 pp;
-    u32 personality;
     u16 moveData;
     POKEMON *togepi;
     PLAYERPROFILE *profile;
@@ -1189,7 +1190,7 @@ BOOL ScrCmd_CasinoGame(SCRIPTCONTEXT *ctx) {
     u8 city = *(ctx->script_ptr++); //1 = celadon; 0 = goldenrod
     u32 **unkPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA); //VoltorbFlipAppData
 
-    *unkPtr = (u32 *)LaunchVoltorbFlipApp(ctx->fsys, SlotLuckiness(ctx->fsys->savedata, machineId, city)); //this is messy, very very messy
+    *unkPtr = LaunchVoltorbFlipApp(ctx->fsys, SlotLuckiness(ctx->fsys->savedata, machineId, city)); //this is messy, very very messy
 
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;

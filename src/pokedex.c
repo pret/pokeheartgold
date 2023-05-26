@@ -428,7 +428,6 @@ static void Pokedex_SetCaughtLanguage(POKEDEX *pokedex, u32 species, u32 languag
 }
 
 static int Pokedex_SpeciesGetLastSeenGender_Internal(POKEDEX *pokedex, u16 species, u32 idx) {
-    int ratio;
     u8 gender1, gender2;
 
     if (GetMonBaseStat(species, BASE_GENDER_RATIO) == MON_RATIO_UNKNOWN) {

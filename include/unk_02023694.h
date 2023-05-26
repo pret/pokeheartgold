@@ -36,5 +36,6 @@ void sub_020247D4(Sprite *, VecFx32 *);
 VecFx32 *sub_020248AC(Sprite *);
 void sub_02024868(Sprite *, int);
 void sub_02024950(Sprite *, int);
+void sub_02023EA4(Sprite *, int);
 
 #endif //POKEHEARTGOLD_UNK_02023694_H
