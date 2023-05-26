@@ -4113,20 +4113,20 @@ BOOL ScrCmd_GetTrcardStars(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_ShowSaveStats(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    struct SaveStatsPrinter **p_work = FieldSysGetAttrAddr(fsys, SCRIPTENV_DC);
+    struct SaveStatsPrinter **saveStatsPrinter = FieldSysGetAttrAddr(fsys, SCRIPTENV_SAVE_STATS_PRINTER);
     if (!Save_FileDoesNotBelongToPlayer(fsys->savedata)) {
-        *p_work = Field_CreateSaveStatsPrinter(fsys, 4, 3);
-        SaveStatsPrinter_Print(*p_work);
+        *saveStatsPrinter = Field_CreateSaveStatsPrinter(fsys, 4, 3);
+        SaveStatsPrinter_Print(*saveStatsPrinter);
     }
     return FALSE;
 }
 
 BOOL ScrCmd_HideSaveStats(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    struct SaveStatsPrinter **p_work = FieldSysGetAttrAddr(fsys, SCRIPTENV_DC);
+    struct SaveStatsPrinter **saveStatsPrinter = FieldSysGetAttrAddr(fsys, SCRIPTENV_SAVE_STATS_PRINTER);
     if (!Save_FileDoesNotBelongToPlayer(fsys->savedata)) {
-        SaveStatsPrinter_RemoveFromScreen(*p_work);
-        SaveStatsPrinter_Delete(*p_work);
+        SaveStatsPrinter_RemoveFromScreen(*saveStatsPrinter);
+        SaveStatsPrinter_Delete(*saveStatsPrinter);
     }
     return FALSE;
 }

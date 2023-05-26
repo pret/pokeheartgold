@@ -155,7 +155,7 @@ void DestroyScriptContext(SCRIPTCONTEXT *ctx) {
 }
 
 void SetupScriptEngine(FieldSystem *fsys, ScriptEnvironment *env, u16 script, LocalMapObject *lastInteracted, void* a4) {
-    u16 *varLastInteracted = FieldSysGetAttrAddrInternal(env, SCRIPTENV_SPECIAL_VAR_LAST_TALKED);
+    u16 *varLastInteracted = FieldSysGetAttrAddrInternal(env, SCRIPTENV_SPECIAL_VAR_LAST_INTERACTED);
     env->facingDirection = PlayerAvatar_GetFacingDirection(fsys->playerAvatar);
     env->lastInteracted = lastInteracted;
     env->activeScriptNumber = script;
@@ -297,8 +297,8 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *environment, enum ScriptEnv
         return &environment->pointsBox;
     case SCRIPTENV_MONEY_BOX:
         return &environment->moneyBox;
-    case SCRIPTENV_DC:
-        return &environment->unk_DC;
+    case SCRIPTENV_SAVE_STATS_PRINTER:
+        return &environment->saveStatsPrinter;
     case SCRIPTENV_SPECIAL_VAR_8000:
     case SCRIPTENV_SPECIAL_VAR_8001:
     case SCRIPTENV_SPECIAL_VAR_8002:
@@ -312,7 +312,7 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *environment, enum ScriptEnv
     case SCRIPTENV_SPECIAL_VAR_800A:
     case SCRIPTENV_SPECIAL_VAR_800B:
     case SCRIPTENV_SPECIAL_VAR_RESULT:
-    case SCRIPTENV_SPECIAL_VAR_LAST_TALKED:
+    case SCRIPTENV_SPECIAL_VAR_LAST_INTERACTED:
         return &environment->specialVars[field - SCRIPTENV_SPECIAL_VAR_8000];
     default:
         GF_ASSERT(FALSE);

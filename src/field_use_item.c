@@ -27,6 +27,7 @@
 #include "fielddata/script/scr_seq/event_D24R0202.h"
 #include "fielddata/script/scr_seq/event_D24R0206.h"
 #include "msgdata/msg/msg_0010.h"
+#include "script.h"
 
 struct ItemUseFuncDat {
     ItemMenuUseFunc menu;

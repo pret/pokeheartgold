@@ -76,7 +76,7 @@ typedef struct ScriptEnvironment {
     u8 padding[0xC]; //FIXME: ugly hack
     WINDOW *moneyBox;
     u8 padding2[0xC]; //FIXME: ugly hack 2
-    struct SaveStatsPrinter *unk_DC;
+    struct SaveStatsPrinter *saveStatsPrinter;
 } ScriptEnvironment;
 
 typedef enum ScriptEnvField {
@@ -121,21 +121,21 @@ typedef enum ScriptEnvField {
     SCRIPTENV_ENGAGED_TRAINER_1_FIELD_18,
     SCRIPTENV_POINTS_BOX, //differs from diamond due to athlete points
     SCRIPTENV_MONEY_BOX,
-    SCRIPTENV_DC                              = 41,
-    SCRIPTENV_SPECIAL_VAR_8000                = 42,
-    SCRIPTENV_SPECIAL_VAR_8001                = 43,
-    SCRIPTENV_SPECIAL_VAR_8002                = 44,
-    SCRIPTENV_SPECIAL_VAR_8003                = 45,
-    SCRIPTENV_SPECIAL_VAR_8004                = 46,
-    SCRIPTENV_SPECIAL_VAR_8005                = 47,
-    SCRIPTENV_SPECIAL_VAR_8006                = 48,
-    SCRIPTENV_SPECIAL_VAR_8007                = 49,
-    SCRIPTENV_SPECIAL_VAR_8008                = 50,
-    SCRIPTENV_SPECIAL_VAR_8009                = 51,
-    SCRIPTENV_SPECIAL_VAR_800A                = 52,
-    SCRIPTENV_SPECIAL_VAR_800B                = 53,
-    SCRIPTENV_SPECIAL_VAR_RESULT              = 54,
-    SCRIPTENV_SPECIAL_VAR_LAST_TALKED         = 55,
+    SCRIPTENV_SAVE_STATS_PRINTER,
+    SCRIPTENV_SPECIAL_VAR_8000,
+    SCRIPTENV_SPECIAL_VAR_8001,
+    SCRIPTENV_SPECIAL_VAR_8002,
+    SCRIPTENV_SPECIAL_VAR_8003,
+    SCRIPTENV_SPECIAL_VAR_8004,
+    SCRIPTENV_SPECIAL_VAR_8005,
+    SCRIPTENV_SPECIAL_VAR_8006,
+    SCRIPTENV_SPECIAL_VAR_8007,
+    SCRIPTENV_SPECIAL_VAR_8008,
+    SCRIPTENV_SPECIAL_VAR_8009,
+    SCRIPTENV_SPECIAL_VAR_800A,
+    SCRIPTENV_SPECIAL_VAR_800B,
+    SCRIPTENV_SPECIAL_VAR_RESULT,
+    SCRIPTENV_SPECIAL_VAR_LAST_INTERACTED
 } ScriptEnvField;
 
 struct UnkStruct_020FC5CC {
