@@ -35,9 +35,9 @@ typedef struct EngagedTrainer {
     int unk0;
     int unk4;
     int unk8;
-    int trainerNum;
+    int trainerId;
     int encounterType; // 0: single trainer; 1: double-battle trainer; 2: two trainers
-    LocalMapObject *objectEvent;
+    LocalMapObject *overworldEvent;
     int unk18;
 } EngagedTrainer;
 
@@ -72,9 +72,11 @@ typedef struct ScriptEnvironment {
     void *miscDataPtr;
     void *unk_B4;
     void *unk_B8; //PlayerMovementState
-    WINDOW unk_BC;
-    WINDOW moneyBox;
-    struct SaveStatsPrinter *unk_DC;
+    WINDOW *pointsBox;
+    u8 padding[0xC]; //FIXME: ugly hack
+    WINDOW *moneyBox;
+    u8 padding2[0xC]; //FIXME: ugly hack 2
+    struct SaveStatsPrinter *saveStatsPrinter;
 } ScriptEnvironment;
 
 typedef enum ScriptEnvField {
@@ -103,37 +105,37 @@ typedef enum ScriptEnvField {
     SCRIPTENV_FIELD_B4,
     SCRIPTENV_FIELD_B8,
     SCRIPTENV_BATTLE_WIN_FLAG,
-    SCRIPTENV_54_0_00                         = 25,
-    SCRIPTENV_54_0_04                         = 26,
-    SCRIPTENV_54_0_08                         = 27,
-    SCRIPTENV_EYE_TRAINER_1_NUM               = 28,
-    SCRIPTENV_EYE_TRAINER_1_ENCTYPE           = 29,
-    SCRIPTENV_EYE_TRAINER_1_OBJPTR            = 30,
-    SCRIPTENV_54_0_18                         = 31,
-    SCRIPTENV_54_1_00                         = 32,
-    SCRIPTENV_54_1_04                         = 33,
-    SCRIPTENV_54_1_08                         = 34,
-    SCRIPTENV_EYE_TRAINER_2_NUM               = 35,
-    SCRIPTENV_EYE_TRAINER_2_ENCTYPE           = 36,
-    SCRIPTENV_EYE_TRAINER_2_OBJPTR            = 37,
-    SCRIPTENV_54_1_18                         = 38,
-    SCRIPTENV_BC                              = 39,
-    SCRIPTENV_MONEY_BOX                       = 40,
-    SCRIPTENV_DC                              = 41,
-    SCRIPTENV_SPECIAL_VAR_8000                = 42,
-    SCRIPTENV_SPECIAL_VAR_8001                = 43,
-    SCRIPTENV_SPECIAL_VAR_8002                = 44,
-    SCRIPTENV_SPECIAL_VAR_8003                = 45,
-    SCRIPTENV_SPECIAL_VAR_8004                = 46,
-    SCRIPTENV_SPECIAL_VAR_8005                = 47,
-    SCRIPTENV_SPECIAL_VAR_8006                = 48,
-    SCRIPTENV_SPECIAL_VAR_8007                = 49,
-    SCRIPTENV_SPECIAL_VAR_8008                = 50,
-    SCRIPTENV_SPECIAL_VAR_8009                = 51,
-    SCRIPTENV_SPECIAL_VAR_800A                = 52,
-    SCRIPTENV_SPECIAL_VAR_800B                = 53,
-    SCRIPTENV_SPECIAL_VAR_RESULT              = 54,
-    SCRIPTENV_SPECIAL_VAR_LAST_TALKED         = 55,
+    SCRIPTENV_ENGAGED_TRAINER_0_FIELD_00,
+    SCRIPTENV_ENGAGED_TRAINER_0_FIELD_04,
+    SCRIPTENV_ENGAGED_TRAINER_0_FIELD_08,
+    SCRIPTENV_ENGAGED_TRAINER_0_ID,
+    SCRIPTENV_ENGAGED_TRAINER_0_ENCOUNTER_TYPE,
+    SCRIPTENV_ENGAGED_TRAINER_0_EVENT,
+    SCRIPTENV_ENGAGED_TRAINER_0_FIELD_18,
+    SCRIPTENV_ENGAGED_TRAINER_1_FIELD_00,
+    SCRIPTENV_ENGAGED_TRAINER_1_FIELD_04,
+    SCRIPTENV_ENGAGED_TRAINER_1_FIELD_08,
+    SCRIPTENV_ENGAGED_TRAINER_1_ID,
+    SCRIPTENV_ENGAGED_TRAINER_1_ENCOUNTER_TYPE,
+    SCRIPTENV_ENGAGED_TRAINER_1_EVENT,
+    SCRIPTENV_ENGAGED_TRAINER_1_FIELD_18,
+    SCRIPTENV_POINTS_BOX, //differs from diamond due to athlete points
+    SCRIPTENV_MONEY_BOX,
+    SCRIPTENV_SAVE_STATS_PRINTER,
+    SCRIPTENV_SPECIAL_VAR_8000,
+    SCRIPTENV_SPECIAL_VAR_8001,
+    SCRIPTENV_SPECIAL_VAR_8002,
+    SCRIPTENV_SPECIAL_VAR_8003,
+    SCRIPTENV_SPECIAL_VAR_8004,
+    SCRIPTENV_SPECIAL_VAR_8005,
+    SCRIPTENV_SPECIAL_VAR_8006,
+    SCRIPTENV_SPECIAL_VAR_8007,
+    SCRIPTENV_SPECIAL_VAR_8008,
+    SCRIPTENV_SPECIAL_VAR_8009,
+    SCRIPTENV_SPECIAL_VAR_800A,
+    SCRIPTENV_SPECIAL_VAR_800B,
+    SCRIPTENV_SPECIAL_VAR_RESULT,
+    SCRIPTENV_SPECIAL_VAR_LAST_INTERACTED
 } ScriptEnvField;
 
 struct UnkStruct_020FC5CC {

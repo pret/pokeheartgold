@@ -10,20 +10,20 @@ BOOL ScrCmd_116(SCRIPTCONTEXT *ctx) {
     u8 type = ScriptReadByte(ctx);
     u16 x = ScriptGetVar(ctx);
     u16 y = ScriptGetVar(ctx);
-    WINDOW **window = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_BC);
+    WINDOW **window = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_POINTS_BOX);
     *window = ov01_021EEC00(ctx->fsys, type, x, y);
     return FALSE;
 }
 
 BOOL ScrCmd_117(SCRIPTCONTEXT *ctx) {
-    WINDOW **window = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_BC);
+    WINDOW **window = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_POINTS_BOX);
     ov01_021EEC68(*window);
     return FALSE;
 }
 
 BOOL ScrCmd_118(SCRIPTCONTEXT *ctx) {
     u8 type = ScriptReadByte(ctx);
-    WINDOW **window = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_BC);
+    WINDOW **window = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_POINTS_BOX);
     ov01_021EEC7C(ctx->fsys, *window, type);
     return FALSE;
 }
