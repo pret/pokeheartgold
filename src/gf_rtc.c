@@ -1,3 +1,4 @@
+#include "global.h"
 #include "gf_rtc.h"
 
 #define MAX_SECONDS (3155759999ll)

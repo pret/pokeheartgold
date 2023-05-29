@@ -52,7 +52,7 @@ static const BGTEMPLATE sDataWriteErrorBgTemplate = {
 };
 
 static const WINDOWTEMPLATE sDataWriteErrorWindowTemplate = {
-    .bgId = 0,
+    .bgId = GF_BG_LYR_MAIN_0,
     .left = 3,
     .top = 3,
     .width = 26,
@@ -71,8 +71,8 @@ void ShowSaveDataWriteError(HeapID heap_id, int code) {
         msg_no = msg_0009_00000;
     }
 
-    sub_0200FBF4(0, 0);
-    sub_0200FBF4(1, 0);
+    sub_0200FBF4(PM_LCD_TOP, 0);
+    sub_0200FBF4(PM_LCD_BOTTOM, 0);
 
     sub_0201A0E0();
 
@@ -119,8 +119,8 @@ void ShowSaveDataWriteError(HeapID heap_id, int code) {
     String_dtor(error_str);
 
     GX_BothDispOn();
-    SetMasterBrightnessNeutral(0);
-    SetMasterBrightnessNeutral(1);
+    SetMasterBrightnessNeutral(PM_LCD_TOP);
+    SetMasterBrightnessNeutral(PM_LCD_BOTTOM);
     SetBlendBrightness(0, 0x3F, 3);
 
     while (TRUE) {

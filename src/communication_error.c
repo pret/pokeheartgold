@@ -52,7 +52,7 @@ static const BGTEMPLATE sCommunicationErrorBgTemplate = {
 };
 
 static const WINDOWTEMPLATE sCommunicationErrorWindowTemplate = {
-    .bgId = 0,
+    .bgId = GF_BG_LYR_MAIN_0,
     .left = 3,
     .top = 3,
     .width = 26,
@@ -120,8 +120,8 @@ void ShowCommunicationError(HeapID heap_id, u32 error, u32 error_code) {
         break;
     }
 
-    sub_0200FBF4(0, 0);
-    sub_0200FBF4(1, 0);
+    sub_0200FBF4(PM_LCD_TOP, 0);
+    sub_0200FBF4(PM_LCD_BOTTOM, 0);
 
     OS_DisableIrqMask(OS_IE_VBLANK);
     OS_SetIrqFunction(OS_IE_VBLANK, VBlankIntr);
@@ -176,8 +176,8 @@ void ShowCommunicationError(HeapID heap_id, u32 error, u32 error_code) {
     // BUG: tmp_str is never destroyed.
 
     GX_BothDispOn();
-    SetMasterBrightnessNeutral(0);
-    SetMasterBrightnessNeutral(1);
+    SetMasterBrightnessNeutral(PM_LCD_TOP);
+    SetMasterBrightnessNeutral(PM_LCD_BOTTOM);
     SetBlendBrightness(0, 0x3F, 3);
 
     RemoveWindow(&window);
