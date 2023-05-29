@@ -2073,7 +2073,7 @@ void sub_0205FC94(LocalMapObject* object, u32 movement) {
     sub_0205FD20(object);
 }
 
-static void sub_0205FCB4(LocalMapObject* object) {
+/*static*/ void sub_0205FCB4(LocalMapObject* object) {
 
 }
 
