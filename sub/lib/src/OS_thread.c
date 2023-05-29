@@ -37,6 +37,7 @@ static void OSi_ExitThread(void *arg);
 void OSi_ExitThread_Destroy(void);
 static void OSi_SleepAlarmCallback(void *arg);
 
+#pragma warn_no_side_effect off
 static inline s32 OSi_GetUnusedThreadId(void)
 {
     OSi_SystemStackBuffer;
@@ -44,6 +45,7 @@ static inline s32 OSi_GetUnusedThreadId(void)
     exitThreadStatus;
     return ++OSi_ThreadIdCount;
 }
+#pragma warn_no_side_effect on
 
 static inline void OS_RescheduleThread(void)
 {

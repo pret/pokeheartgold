@@ -2,10 +2,8 @@
 #define POKEHEARTGOLD_FIELD_SYSTEM_H
 
 #include "bug_contest_internal.h"
-#include "field_player_avatar.h"
 #include "gear_phone.h"
 #include "map_events_internal.h"
-#include "map_object_manager.h"
 #include "map_matrix.h"
 #include "overlay_manager.h"
 #include "save_pokegear.h"
@@ -17,6 +15,9 @@ typedef struct FieldSystem FieldSystem;
 typedef struct TaskManager TaskManager;
 typedef struct FsysUnkSub2C FsysUnkSub2C;
 typedef struct LocalMapObject LocalMapObject;
+typedef struct FieldMapObject FieldMapObject;
+typedef struct PlayerAvatar PlayerAvatar;
+typedef struct MapObjectMan MapObjectMan;
 
 typedef struct FollowMon {
     LocalMapObject *mapObject;
@@ -114,7 +115,7 @@ struct FieldSystem {
     SAVEDATA *savedata;
     TaskManager *taskman;
     MAP_EVENTS *mapEvents;
-    FieldEnvSubUnk18 *unk18;
+    u32 unk18;
     int unk1C;
     Location *location;
     Camera *camera;

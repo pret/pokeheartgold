@@ -1,4 +1,5 @@
 #include "pokemon.h"
+#include "pokemon_mood.h"
 #include "constants/items.h"
 
 static const s8 sMoodModifiers[] = {

@@ -20,5 +20,6 @@
 #include <nnsys/g2d/g2d_PaletteTable.h>
 #include <nnsys/g2d/g2d_RendererCore.h>
 #include <nnsys/g2d/g2d_Renderer.h>
+#include <nnsys/g2d/g2d_Sprite.h>
 
 #endif //NNSYS_G2D_H_

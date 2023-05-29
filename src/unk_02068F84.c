@@ -14,4 +14,4 @@ void sub_02068F98(u32 mapno, HeapID heapId, STRING *dest) {
     map_sec = MapHeader_GetMapSec(mapno);
     sub_02068F84(msgData, map_sec, dest);
     DestroyMsgData(msgData);
-};
+}

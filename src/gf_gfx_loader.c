@@ -331,6 +331,7 @@ static void GfGfxLoader_PartiallyLoadPaletteInternal(void *data, NNS_G2D_VRAM_TY
     }
 }
 
+#pragma require_prototypes off
 // The two functions below represent routines that were deadstripped in hgss.
 // However, there is a bug in mwcc which causes static objects defined inside
 // the scope of a deadstripped routine to not themselves be deadstripped.
@@ -347,6 +348,7 @@ void bar() {
         GXS_LoadOBJ,
     };
 }
+#pragma require_prototypes on
 
 static u32 GfGfxLoader_LoadImageMappingInternal(void *data, int layout, u32 szByte, NNS_G2D_VRAM_TYPE type, u32 baseAddr, NNSG2dImageProxy *pImgProxy) {
     u32 size = 0;

@@ -8,5 +8,6 @@ int ov01_021E6AF4(Unk_0203E15C *a0, FieldSystem *fsys);
 BOOL ov01_021E6E00(Unk_0203E15C *a0, FieldSystem *fsys);
 BOOL ov01_021E6EFC(Unk_0203E15C *a0, FieldSystem *fsys);
 BOOL ov01_021E6FD4(Unk_0203E15C *a0, FieldSystem *fsys);
+void ov01_021E7F00(FieldSystem *fsys, BOOL a1);
 
 #endif

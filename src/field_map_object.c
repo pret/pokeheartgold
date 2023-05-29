@@ -5,6 +5,11 @@
 #include "unk_0200E320.h"
 #include "unk_0205FD20.h"
 
+static void sub_0205E934(LocalMapObject* object);
+static void sub_0205E954(LocalMapObject* object);
+static void sub_0205ED18(LocalMapObject* object);
+static void sub_0205EF8C(LocalMapObject* object);
+
 MapObjectMan* sub_0205E0BC(FieldSystem* fsys, int object_count, u32 a2) {
     MapObjectMan* ret = MapObjectMan_new(object_count);
     MapObjectMan_SetFieldSysPtr(ret, fsys);
@@ -530,7 +535,7 @@ void sub_0205E8EC(MapObjectMan* manager, LocalMapObject* object) {
     sub_0205F16C(sub_0205F160(manager));
 }
 
-void sub_0205E934(LocalMapObject* object) {
+static void sub_0205E934(LocalMapObject* object) {
     MapObject_SetFlagsBits(object, MAPOBJECTFLAG_UNK2 | MAPOBJECTFLAG_ACTIVE);
     MapObject_ClearFlagsBits(object, MAPOBJECTFLAG_UNK23 |
                                      MAPOBJECTFLAG_UNK22 |
@@ -546,7 +551,7 @@ void sub_0205E934(LocalMapObject* object) {
     sub_0205EF5C(object);
 }
 
-void sub_0205E954(LocalMapObject* object) {
+static void sub_0205E954(LocalMapObject* object) {
     VecFx32 position_vec;
     MapObject_GetPositionVec(object, &position_vec);
 
@@ -710,7 +715,7 @@ void sub_0205ECE0(LocalMapObject* object) {
 
 extern const UnkLMOCallbackStruct2 ov01_0220724C;
 
-void sub_0205ED18(LocalMapObject* object) {
+static void sub_0205ED18(LocalMapObject* object) {
     u32 gfx_id = MapObject_GetGfxID(object);
     UnkLMOCallbackStruct2* unk = (gfx_id == 0x2000) ? (UnkLMOCallbackStruct2*)&ov01_0220724C : sub_0205FB38(gfx_id);
 
@@ -843,7 +848,7 @@ u32 ResolveObjectGfxId(FieldSystem* fsys, int a1) {
     return a1;
 }
 
-void sub_0205EF8C(LocalMapObject* object) {
+static void sub_0205EF8C(LocalMapObject* object) {
     if (MapObject_GetFlagsMask(object, MAPOBJECTFLAG_UNK12) != 0) {
         sub_02061070(object);
     }
@@ -2068,7 +2073,7 @@ void sub_0205FC94(LocalMapObject* object, u32 movement) {
     sub_0205FD20(object);
 }
 
-void sub_0205FCB4(LocalMapObject* object) {
+/*static*/ void sub_0205FCB4(LocalMapObject* object) {
 
 }
 

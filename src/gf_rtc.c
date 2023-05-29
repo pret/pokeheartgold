@@ -101,7 +101,6 @@ static inline BOOL IsLeapYear(s32 year) {
 }
 
 s32 GF_RTC_GetDayOfYear(const RTCDate * date) {
-    RTCDate date_stack;
     s32 days;
     static const u16 sGF_DaysPerMonth[] = {
         0,   // Jan
@@ -167,7 +166,7 @@ TIMEOFDAY GF_RTC_GetTimeOfDayByHour(s32 hour) {
     };
 
     GF_ASSERT(hour >= 0 && hour < 24);
-    return sTimeOfDayByHour[hour];
+    return (TIMEOFDAY) sTimeOfDayByHour[hour];
 }
 
 TimeOfDayWildParam GF_RTC_GetTimeOfDayWildParamByHour(s32 hour) {
@@ -183,7 +182,7 @@ TimeOfDayWildParam GF_RTC_GetTimeOfDayWildParamByHour(s32 hour) {
 }
 
 s64 GF_RTC_TimeDelta(s64 first, s64 last) {
-    RTCDate maxDate = { 99, 12, 31, 0 };
+    RTCDate maxDate = { 99, 12, 31, RTC_WEEK_SUNDAY };
     RTCTime maxTime = { 23, 59, 59 };
 
     s64 check = RTC_ConvertDateTimeToSecond(&maxDate, &maxTime);

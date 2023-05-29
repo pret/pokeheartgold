@@ -1,13 +1,14 @@
 #include "assert.h"
-#include "battle.h"
 #include "battle_controller.h"
-#include "battle_system.h"
+#include "battle_controller_player.h"
+#include "battle_command.h"
 #include "item.h"
 #include "party.h"
 #include "pokemon.h"
 #include "system.h"
 #include "unk_0200E320.h"
 #include "unk_0208805C.h"
+#include "unk_02025154.h"
 #include "sound_chatot.h"
 #include "overlay_12_0224E4FC.h"
 #include "constants/abilities.h"
@@ -1150,7 +1151,7 @@ BOOL BtlCmd_JumpToEffectScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     if (unkA == 0) {
         ctx->battlerIdTarget = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, (u16)ctx->moveWork, 1, 0);
-        ov12_02250A18(bsys, ctx, ctx->battlerIdAttacker, (u16)ctx->moveWork);
+        ov12_02250A18(bsys, ctx, ctx->battlerIdAttacker, ctx->moveWork);
         ctx->unk_21A8[ctx->battlerIdAttacker][1] = ctx->battlerIdTarget;
     }
 
@@ -1203,7 +1204,7 @@ BOOL BtlCmd_ShouldGetExp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 }
             }
         }
-        totalExp = GetMonBaseStat(ctx->battleMons[ctx->battlerIdFainted].species, 9);
+        totalExp = GetMonBaseStat(ctx->battleMons[ctx->battlerIdFainted].species, BASE_EXP_YIELD);
         totalExp = (totalExp * ctx->battleMons[ctx->battlerIdFainted].level) / 7;
         if (expShareMonsCnt) {
             ctx->gainedExp = (totalExp / 2) / expMonsCnt;
@@ -3747,10 +3748,10 @@ BOOL BtlCmd_BeatUpDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     forme = GetMonData(mon, MON_DATA_FORME, 0);
     level = GetMonData(mon, MON_DATA_LEVEL, 0);
 
-    ctx->damage = GetMonBaseStat_HandleAlternateForme(species, forme, 1);
+    ctx->damage = GetMonBaseStat_HandleAlternateForme(species, forme, BASE_ATK);
     ctx->damage *= ctx->unk_334.moveData[ctx->moveNoCur].power;
     ctx->damage *= (level * 2 / 5 + 2);
-    ctx->damage /= (u32) GetMonBaseStat_HandleAlternateForme(ctx->battleMons[ctx->battlerIdTarget].species, ctx->battleMons[ctx->battlerIdTarget].forme, 2);
+    ctx->damage /= (u32) GetMonBaseStat_HandleAlternateForme(ctx->battleMons[ctx->battlerIdTarget].species, ctx->battleMons[ctx->battlerIdTarget].forme, BASE_DEF);
     ctx->damage /= 50;
     ctx->damage += 2;
     ctx->damage *= ctx->criticalMultiplier;
@@ -5247,7 +5248,7 @@ BOOL BtlCmd_CheckChatterActivation(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 BOOL BtlCmd_GetMoveParam(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    ctx->calcWork = GetMoveTblAttr(&ctx->unk_334.moveData[ctx->moveNoCur], BattleScriptReadWord(ctx));
+    ctx->calcWork = GetMoveTblAttr(&ctx->unk_334.moveData[ctx->moveNoCur], (MoveAttr) BattleScriptReadWord(ctx));
 
     return FALSE;
 }
@@ -5811,11 +5812,11 @@ BOOL BtlCmd_GetMonDataFromNarc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int species = BattleScriptReadWord(ctx);
     int forme = BattleScriptReadWord(ctx);
-    int param = BattleScriptReadWord(ctx);
+    BaseStat stat = (BaseStat) BattleScriptReadWord(ctx);
 
     int *formePtr = BattleScriptGetVarPointer(bsys, ctx, forme);
 
-    ctx->calcWork = GetMonBaseStat_HandleAlternateForme(species, *formePtr, param);
+    ctx->calcWork = GetMonBaseStat_HandleAlternateForme(species, *formePtr, stat);
 
     return FALSE;
 }

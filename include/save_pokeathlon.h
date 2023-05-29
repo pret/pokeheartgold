@@ -25,7 +25,6 @@ typedef struct Pokeathlon_UnkSubStruct_B00 {
 
 typedef struct POKEATHLON_SAV POKEATHLON_SAV; //size: 0xB80
 
-POKEATHLON_SAV *Save_Pokeathlon_get(SAVEDATA *saveData);
 BOOL sub_02031A78(POKEATHLON_SAV *pokeathlon, int idx);
 BOOL sub_02031AB8(POKEATHLON_SAV *pokeathlon, int idx);
 void sub_02031AE4(POKEATHLON_SAV *pokeathlon);

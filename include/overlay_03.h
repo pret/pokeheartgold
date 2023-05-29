@@ -19,5 +19,6 @@ u16 ov03_02256A2C(FieldSystem *fsys, MessageFormat *msgFmt, u16 a2);
 void ov03_02256710(FieldSystem *fsys, u16 a1);
 void ov03_02258910(FieldSystem *fsys);
 void ov03_02258CFC(TaskManager *taskManager, enum PokeathlonData data);
+int ov03_02256B40(int);
 
 #endif //POKEHEARTGOLD_OVERLAY_03_H

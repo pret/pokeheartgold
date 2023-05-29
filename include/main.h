@@ -10,6 +10,7 @@ struct UnkStruct_02111868_sub {
     SAVEDATA *savedata;
 };
 
+void NitroMain(void);
 void Main_ResetOverlayManager(void);
 void RegisterMainOverlay(FSOverlayID overlayId, const OVY_MGR_TEMPLATE *template);
 void InitializeMainRNG(void);

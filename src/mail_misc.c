@@ -5,6 +5,7 @@
 #include "options.h"
 #include "player_data.h"
 #include "sys_flags.h"
+#include "unk_020183F0.h"
 #include "constants/items.h"
 #include "constants/mail.h"
 #include "constants/pokemon.h"

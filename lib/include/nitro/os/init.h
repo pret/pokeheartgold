@@ -16,6 +16,7 @@
 #include <nitro/os/tick.h>
 #include <nitro/os/message.h>
 
+void OSi_WaitVCount0(void);
 void OS_Init(void);
 void OS_InitArenaEx(void);
 

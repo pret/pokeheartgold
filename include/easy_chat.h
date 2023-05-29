@@ -43,5 +43,7 @@ ECWORD WallpaperPasswordBank_GetWordI(struct WallpaperPasswordBank *pwdBank, int
 s16 WallpaperPasswordBank_GetIndexOfWord(struct WallpaperPasswordBank *unk, int value);
 s32 GetDuplicateWordNum(ECWORD a0);
 ECWORD RemapDuplicateWord(ECWORD a0, s32 a1);
+ECMAN *EasyChatManager_new(HeapID heapId);
+struct WallpaperPasswordBank *WallpaperPasswordBank_Create(HeapID heapId);
 
 #endif //POKEHEARTGOLD_EASY_CHAT_H

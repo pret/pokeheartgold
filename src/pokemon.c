@@ -976,7 +976,6 @@ void SetBoxMonData(BoxPokemon *boxMon, int attr, void * value) {
 
 static void SetBoxMonDataInternal(BoxPokemon *boxMon, int attr, const void * value) {
 #define VALUE(type) (*(const type *)value)
-    u8 flag;
     u64 mask;
     u32 i;
     u16 namebuf[POKEMON_NAME_LENGTH + 1];

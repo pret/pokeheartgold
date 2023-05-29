@@ -6,7 +6,7 @@
 #include "player_data.h"
 #include "trainer_data.h"
 
-typedef struct BattleSetupStruct {
+struct BATTLE_SETUP { //declared in trainer_data.h
     u32 flags;
     PARTY *party[4];
     u32 winFlag;
@@ -61,12 +61,18 @@ typedef struct BattleSetupStruct {
     u8 unk1CD;
     u8 unk1CE;
     u8 unk1CF;
-} BATTLE_SETUP;
+};
 
 BOOL IsBattleResultWin(u32 a0);
 int sub_02052564(u32 a0);
 int sub_02052574(u32 a0);
 void BattleSetup_Delete(BATTLE_SETUP *setup);
 BATTLE_SETUP *sub_02051AAC(HeapID heapId, FieldSystem *fsys);
+void sub_02052444(BATTLE_SETUP *setup, FieldSystem *fsys);
+void BattleSetup_InitFromFsys(BATTLE_SETUP *setup, FieldSystem *fsys);
+BATTLE_SETUP *BattleSetup_New(HeapID heapId, u32 battleFlags);
+void sub_020522F0(BATTLE_SETUP *setup, FieldSystem *fsys, void *a1);
+void sub_02051F2C(BATTLE_SETUP *setup, FieldSystem *fsys, int level);
+void sub_020520B0(BATTLE_SETUP *setup, FieldSystem *fsys, PARTY *party, void *a4);
 
 #endif //POKEHEARTGOLD_BATTLE_SETUP_H

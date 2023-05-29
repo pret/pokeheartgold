@@ -24,6 +24,7 @@ void SetMTRNGSeed(u32 seed);
 u32 MTRandom(void);
 void _MonEncryptSegment(u16 *data, u32 size, u32 seed);
 void _MonDecryptSegment(u16 *data, u32 size, u32 seed);
+fx32 sub_02096594(void);
 
 static inline u16 LCRandRange(const u16 maximum) {
     GF_ASSERT(maximum != 0);

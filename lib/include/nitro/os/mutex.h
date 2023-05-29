@@ -10,5 +10,6 @@ void OS_InitMutex(OSMutex* mutex);
 void OS_LockMutex(OSMutex* mutex);
 void OS_UnlockMutex(OSMutex* mutex);
 void OSi_UnlockAllMutex(OSThread * thread);
+BOOL OS_TryLockMutex(OSMutex *mtx);
 
 #endif //NITRO_OS_MUTEX_H

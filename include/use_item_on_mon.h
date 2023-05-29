@@ -1,9 +1,8 @@
 #ifndef POKEHEARTGOLD_USE_ITEM_ON_MON_H
 #define POKEHEARTGOLD_USE_ITEM_ON_MON_H
 
+#include "item.h"
 #include "pokemon_types_def.h"
-
-typedef struct ItemData ITEMDATA;
 
 BOOL CanUseItemOnPokemon(Pokemon *mon, u16 itemID, s32 moveIdx, HeapID heapID);
 BOOL CanUseItemOnMonInParty(PARTY *party, u16 itemID, s32 partyIdx, s32 moveIdx, HeapID heapID);

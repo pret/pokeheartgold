@@ -1513,7 +1513,6 @@ LocalMapObject *sub_020699F8(MapObjectMan *mapObjectMan, int x, int y, int direc
     int gender;
     int shiny;
     int player_unk;
-    LocalMapObject *followPokeObj;
 
     fsys = MapObjectMan_GetFieldSysPtr(mapObjectMan);
     party = SavArray_PlayerParty_get(fsys->savedata);
@@ -1688,7 +1687,6 @@ u8 sub_02069E14(LocalMapObject *mapObject) {
 
 void sub_02069E28(LocalMapObject *mapObject, u32 a1) {
     int param;
-    u8 r1;
     u16 r2;
     u16 b;
 

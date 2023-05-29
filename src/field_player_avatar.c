@@ -8,6 +8,8 @@
 #include "unk_02034354.h"
 #include "unk_02035900.h"
 #include "unk_0205FD20.h"
+#include "overlay_01_021FE780.h"
+#include "overlay_01_02200858.h"
 #include "constants/global.fieldmap.h"
 #include "constants/sprites.h"
 
@@ -483,8 +485,8 @@ void sub_0205C800(PlayerAvatar* avatar, int state) {
     sub_0205C7F8(sub_0205C798(avatar), state);
 }
 
-void sub_0205C810(PlayerAvatar* avatar, u32 unkA, u32 unkB) {
-    sub_0205FBC0(PlayerAvatar_GetMapObject(avatar), unkA, unkB);
+void sub_0205C810(PlayerAvatar* avatar, VecFx32 *pos, u32 dir) {
+    sub_0205FBC0(PlayerAvatar_GetMapObject(avatar), pos, dir);
     sub_0205C6C8(avatar, 0);
     sub_0205C6D0(avatar, 0);
 }

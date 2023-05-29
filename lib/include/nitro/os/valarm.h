@@ -20,5 +20,14 @@ struct OSiVAlarm {
 };
 
 void OS_InitVAlarm(void);
+BOOL OS_IsVAlarmAvailable(void);
+void OSi_InsertVAlarm(OSVAlarm *alarm);
+void OSi_DetachVAlarm(OSVAlarm *alarm);
+void OS_CreateVAlarm(OSVAlarm *alarm);
+void OS_SetVAlarm(OSVAlarm *alarm, s16 count, s16 delay, OSVAlarmHandler handler, void *arg);
+void OS_SetPeriodicVAlarm(OSVAlarm *alarm, s16 count, s16 delay, OSVAlarmHandler handler, void *arg);
+void OS_SetVAlarmTag(OSVAlarm *alarm, u32 tag);
+void OS_CancelVAlarm(OSVAlarm *alarm);
+void OS_CancelVAlarms(u32 tag);
 
 #endif //NITRO_OS_VALARM_H_

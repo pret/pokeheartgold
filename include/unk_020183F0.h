@@ -22,12 +22,13 @@ typedef struct Ov122_021E7488 {
     u8 unk15[0x3];
 } Ov122_021E7488;
 
+int sub_020183F0(int);
+void sub_02018410(int a0);
 void *sub_02018424(HeapID, int);
 void sub_02018474(void *);
 void *sub_020185FC(void *, Ov122_021E7488 *, s32, u8, u8, u8, u8);
 int sub_020186A4(void *);
 u8 sub_02018674(void *);
 void sub_02018680(void *);
-int sub_020183F0(int);
 
 #endif //POKEHEARTGOLD_UNK_020183F0_H

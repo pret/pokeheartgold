@@ -1,11 +1,29 @@
 #include "field_follow_poke.h"
+#include "field_player_avatar.h"
+#include "field_warp_tasks.h"
 #include "heap.h"
 #include "map_header.h"
+#include "metatile_behavior.h"
+#include "save_follow_poke.h"
 #include "script.h"
+#include "sound.h"
 #include "unk_02055BF0.h"
 #include "unk_0200FA24.h"
 #include "unk_02056680.h"
+#include "unk_02054E00.h"
+#include "unk_020552A4.h"
+#include "unk_02022D74.h"
+#include "unk_0206A360.h"
+#include "unk_02005D10.h"
+#include "unk_02062108.h"
+#include "unk_02054648.h"
+#include "overlay_01.h"
 #include "overlay_01_021E90C0.h"
+#include "overlay_01_022031C0.h"
+#include "overlay_01_021FB4C0.h"
+#include "overlay_01_022053EC.h"
+#include "overlay_01_021F4704.h"
+#include "unk_02055244.h"
 #include "constants/sndseq.h"
 
 typedef void (*FsysFunc)(FieldSystem*);
@@ -121,7 +139,7 @@ BOOL sub_02055DBC(TaskManager *man) {
     switch (env->state) {
     case 0:
         env->transitionState = 0;
-        env->unk24 = 0;
+        env->unk24 = NULL;
         env->unk1 = 0;
         if (FollowingPokemon_IsActive(fsys) && ov01_022057C4(fsys) && PlayerAvatar_GetState(fsys->playerAvatar) != PLAYER_STATE_CYCLING) {
             env->state = 9;
@@ -180,7 +198,7 @@ BOOL sub_02055DBC(TaskManager *man) {
                         parity = 1;
                     }
                     TIMEOFDAY time = GF_RTC_GetTimeOfDay();
-                    sub_0206A388(man, index, (u8) time, parity); //this should set the specific map icon based on time?
+                    sub_0206A388(man, index, time, parity); //this should set the specific map icon based on time?
                     env->state++;
                     ov01_021EFAF8(fsys); //<= this func specifically gets and displays the area's icon and text
                     break;

@@ -1,6 +1,7 @@
 #include "encounter.h"
 #include "field_follow_poke.h"
 #include "filesystem.h"
+#include "math_util.h"
 #include "overlay_01_022001E4.h"
 #include "overlay_01_rock_smash_item.h"
 #include "overlay_02.h"

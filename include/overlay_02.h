@@ -98,5 +98,9 @@ int ov02_022531B4(SAVEDATA *saveData);
 BOOL ov02_022470A0(FieldSystem *fsys, BATTLE_SETUP **a1);
 void ov02_BattleExit_HandleRoamerAction(FieldSystem *fsys, BATTLE_SETUP *setup);
 void ov02_02247F30(FieldSystem *fsys, u16 mon, u8 level, BOOL shiny, BATTLE_SETUP *setup);
+void ov02_02246714(TaskManager *man, u32 a1, u32 a2, u32 a3, u32 a4);
+void ov02_022469B4(TaskManager *man, LocalMapObject *obj1, LocalMapObject *obj2);
+void OpenAlphHiddenRoom(TaskManager *man, u32 a1);
+int GetRadioMusicPlayingSeq(void);
 
 #endif //POKEHEARTGOLD_OVERLAY_02_H

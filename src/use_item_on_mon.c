@@ -1,6 +1,7 @@
 #include "use_item_on_mon.h"
 #include "item.h"
 #include "pokemon.h"
+#include "pokemon_mood.h"
 #include "party.h"
 #include "constants/moves.h"
 #include "constants/items.h"

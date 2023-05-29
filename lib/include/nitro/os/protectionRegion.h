@@ -32,6 +32,7 @@ static inline u32 OSi_CalcPRParam(u32 address, u32 size, OSiProtectionRegionBase
     return ((address & mask) | size);
 }
 
+void OS_SetDPermissionsForProtectionRegion(register u32 setMask, register u32 flags);
 void OS_SetProtectionRegion0(u32 param);
 void OS_SetProtectionRegion1(u32 param);
 void OS_SetProtectionRegion2(u32 param);

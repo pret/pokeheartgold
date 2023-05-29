@@ -2,7 +2,7 @@
 #include "mart.h"
 #include "event_data.h"
 #include "pokedex.h"
-#include "save_pokeathlon.h"
+#include "unk_02031904.h"
 #include "constants/items.h"
 #include "constants/decorations.h"
 #include "constants/seals.h"

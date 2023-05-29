@@ -10,5 +10,6 @@ void sub_0205B564(WINDOW *window, OPTIONS *options);
 u8 sub_0205B5B4(WINDOW *window, STRING *string, OPTIONS *options, BOOL speedupFlag);
 BOOL IsPrintFinished(u8 printerId);
 void sub_0205B5A8(WINDOW *window);
+u32 sub_0205B5EC(WINDOW *window, STRING *message, FontID fontId, u32 textFrame, u8 speedUpEnabled, u32 a4);
 
 #endif //POKEHEARTGOLD_TEXT_0205B4EC_H

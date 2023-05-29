@@ -1,4 +1,5 @@
 #include <nitro/hw/consts.h>
+#include <nitro/os/init.h>
 
 extern void PXI_Init(void);
 extern void OS_InitThread(void);

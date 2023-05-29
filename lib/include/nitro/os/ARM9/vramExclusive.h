@@ -14,6 +14,9 @@
 
 #define		OS_VRAM_BANK_KINDS		9
 
+u32 OsCountZeroBits(u32 bitmap);
 void OSi_InitVramExclusive(void);
+BOOL OSi_TryLockVram(u16 bank, u16 lockId);
+void OSi_UnlockVram(u16 bank, u16 lockId);
 
 #endif //NITRO_OS_VRAMEXCLUSIVE_H_

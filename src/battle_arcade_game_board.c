@@ -23,6 +23,7 @@
 #include "unk_02022588.h"
 #include "unk_020215A0.h"
 #include "unk_0200A090.h"
+#include "unk_02078E30.h"
 #include "vram_transfer_manager.h"
 #include "unk_0200B150.h"
 #include "pokemon.h"
@@ -204,7 +205,6 @@ BOOL BattleArcadeGameBoard_Main(OVY_MANAGER *man, int *state) {
 }
 
 BOOL ov84_0223DFF0(OVY_MANAGER *man, int *state) {
-    int i;
     GAME_BOARD_WORK *work = OverlayManager_GetData(man);
 
     *work->returnWork = work->cursorPos;
@@ -550,8 +550,8 @@ static void BattleArcadeGameBoard_InitSub() {
 
 static void BattleArcadeGameBoard_InitObjects(GAME_BOARD_WORK *work) {
     u8 max;
-    u16 x, y, yOffset, yOffset2;
-    int i, var;
+    u16 yOffset, yOffset2;
+    int i;
 
     work->narc = NARC_ctor(183, HEAP_ID_GAME_BOARD);
     ov84_0223E8DC(work);
@@ -1238,7 +1238,6 @@ static void ov84_0223F2B4(GAME_BOARD_SUB_3E8 *work, PARTY *playerParty, PARTY *o
 }
 
 static Sprite *ov84_0223F374(GAME_BOARD_SUB_3E8 *work, u32 chara, u32 pal, u32 cell, u32 anim, u32 prio, int bgPrio, u8 display) {
-    int i;
     struct SpriteResourcesHeader resourceHeader;
     Sprite *sprite;
 
