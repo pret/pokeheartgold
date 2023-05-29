@@ -13,5 +13,6 @@ void sub_02055110(FieldSystem *fsys, u32 mapId, u32 a2);
 int Trainer_GetEncounterMusic(u16 a0, BOOL isKanto);
 u16 GetMapMusic(FieldSystem *fsys, int mapId);
 void sub_02055198(FieldSystem *fsys, u16 a1);
+void Fsys_BeginFadeOutMusic(FieldSystem *fsys, u32 mapId);
 
 #endif //POKEHEARTGOLD_UNK_02054E00_H

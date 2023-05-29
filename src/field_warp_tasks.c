@@ -398,7 +398,6 @@ static BOOL sub_02053550(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     struct ErrorContinueEnv *env = TaskManager_GetEnv(taskManager);
     SCRIPT_STATE *scriptState = SavArray_Flags_get(fsys->savedata);
-    FLYPOINTS_SAVE *flypointsSave;
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
 
     switch (*state_p) {

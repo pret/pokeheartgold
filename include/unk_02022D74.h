@@ -29,5 +29,6 @@ void Camera_SetAngle(CameraAngle *angle, Camera *camera);
 void Camera_SetPerspectiveAngle(u16 a0, Camera *a1);
 void Camera_SetDistance(fx32 a0, Camera *a1);
 void sub_02023214(VecFx32 *vec, Camera *a1);
+void sub_0202367C(Camera *camera, u32 a1);
 
 #endif //POKEHEARTGOLD_UNK_02022D74_H

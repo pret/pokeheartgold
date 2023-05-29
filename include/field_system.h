@@ -115,7 +115,7 @@ struct FieldSystem {
     SAVEDATA *savedata;
     TaskManager *taskman;
     MAP_EVENTS *mapEvents;
-    FieldEnvSubUnk18 *unk18;
+    u32 unk18;
     int unk1C;
     Location *location;
     Camera *camera;
