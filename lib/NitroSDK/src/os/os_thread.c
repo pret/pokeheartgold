@@ -61,7 +61,7 @@ void OSi_ExitThread_Destroy(void);
 void OSi_CancelThreadAlarmForSleep(OSThread *thread);
 void OS_KillThreadWithPriority(OSThread *thread, void *arg, u32 prio);
 
-int OSi_GetUnusedThreadId(void) {
+s32 OSi_GetUnusedThreadId(void) {
     ++OSi_ThreadIdCount;
     return OSi_ThreadIdCount;
 }

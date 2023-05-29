@@ -6,7 +6,7 @@
 
 #define SDK_THREAD_INFINITY
 
-int OSi_GetUnusedThreadId(void);
+s32 OSi_GetUnusedThreadId(void);
 OSThread *OSi_RemoveLinkFromQueue(OSThreadQueue *queue);
 OSThread *OSi_RemoveSpecifiedLinkFromQueue(OSThreadQueue *queue, OSThread *thread);
 OSMutex *OSi_RemoveMutexLinkFromQueue(OSMutexQueue *queue);
@@ -36,5 +36,6 @@ OSSwitchThreadCallback OS_SetSwitchThreadCallback(OSSwitchThreadCallback callbac
 u32 OS_DisableScheduler(void);
 u32 OS_EnableScheduler(void);
 void OS_SetThreadDestructor(OSThread *thread, OSThreadDestructor dtor);
+void OSi_InsertLinkToQueue(OSThreadQueue *queue, OSThread *thread);
 
 #endif //NITRO_OS_THREAD_H_

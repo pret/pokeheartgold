@@ -1,6 +1,7 @@
 #include <nitro/os/interrupt.h>
 #include <nitro/os/system.h>
 #include <nitro/os/thread.h>
+#include <nitro/os/irqHandler.h>
 #include <nitro/os/irqTable.h>
 #include <nitro/os/context.h>
 
