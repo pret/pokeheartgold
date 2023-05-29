@@ -1,6 +1,7 @@
 #include "assert.h"
 #include "map_events.h"
 #include "wild_encounter.h"
+#include "unk_02097F6C.h"
 #include "constants/easy_chat.h"
 #include "constants/items.h"
 #include "constants/maps.h"

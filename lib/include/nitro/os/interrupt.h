@@ -82,5 +82,7 @@ OSIrqMask OS_DisableIrqMask(OSIrqMask mask);
 OSIrqMask OS_ResetRequestIrqMask(OSIrqMask mask);
 void OS_SetIrqStackChecker(void);
 void OS_WaitIrq(BOOL clear, OSIrqMask irqFlags);
+OSIrqFunction OS_GetIrqFunction(OSIrqMask intrBit);
+void OSi_EnterDmaCallback(u32 dmaNo, void (*callback)(void * arg), void * arg);
 
 #endif //NITRO_SUB_OS_INTERRUPT_H

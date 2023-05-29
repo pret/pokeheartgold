@@ -1,5 +1,6 @@
 #include "sound.h"
 #include "sound_chatot.h"
+#include "sound_02004A44.h"
 #include "options.h"
 #include "system.h"
 #include "constants/sndseq.h"

@@ -15,4 +15,8 @@ struct OSiAlarmQueue
 };
 struct OSiAlarmQueue *OSi_GetAlarmQueue(void);
 
+void OSi_SetTimer(OSAlarm *alarm);
+void OS_InitAlarm(void);
+void OSi_InsertAlarm(OSAlarm *alarm, OSTick fire);
+
 #endif //NITRO_OS_ALARM_H

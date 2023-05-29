@@ -6,7 +6,13 @@
 
 #define SDK_THREAD_INFINITY
 
+int OSi_GetUnusedThreadId(void);
+OSThread *OSi_RemoveLinkFromQueue(OSThreadQueue *queue);
+OSThread *OSi_RemoveSpecifiedLinkFromQueue(OSThreadQueue *queue, OSThread *thread);
 OSMutex *OSi_RemoveMutexLinkFromQueue(OSMutexQueue *queue);
+void OSi_InsertThreadToList(OSThread *thread);
+void OSi_RemoveThreadFromList(OSThread *thread);
+void OSi_RescheduleThread(void);
 void OS_InitThread(void);
 BOOL OS_IsThreadAvailable(void);
 void OS_CreateThread(OSThread *thread, void (*func) (void *), void *arg, void *stack, u32 stackSize, u32 prio);
