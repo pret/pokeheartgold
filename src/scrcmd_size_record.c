@@ -23,7 +23,7 @@ static const u16 sBigMonSizeTable[][3] = {
     {1700, 1,   65510},
 };
 
-static u32 GetMonSizeHash(POKEMON *pokemon) {
+static u32 GetMonSizeHash(Pokemon *mon) {
     u16 pid_lo;
     u16 hpIv_lo;
     u16 atkIv_lo;
@@ -33,13 +33,13 @@ static u32 GetMonSizeHash(POKEMON *pokemon) {
     u16 spDefIv_lo;
     u16 ret, ret2;
 
-    pid_lo = GetMonData(pokemon, MON_DATA_PERSONALITY, NULL);
-    hpIv_lo = GetMonData(pokemon, MON_DATA_HP_IV, NULL) & 0xF;
-    atkIv_lo = GetMonData(pokemon, MON_DATA_ATK_IV, NULL) & 0xF;
-    defIv_lo = GetMonData(pokemon, MON_DATA_DEF_IV, NULL) & 0xF;
-    spdIv_lo = GetMonData(pokemon, MON_DATA_SPEED_IV, NULL) & 0xF;
-    spAtkIv_lo = GetMonData(pokemon, MON_DATA_SPATK_IV, NULL) & 0xF;
-    spDefIv_lo = GetMonData(pokemon, MON_DATA_SPDEF_IV, NULL) & 0xF;
+    pid_lo = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
+    hpIv_lo = GetMonData(mon, MON_DATA_HP_IV, NULL) & 0xF;
+    atkIv_lo = GetMonData(mon, MON_DATA_ATK_IV, NULL) & 0xF;
+    defIv_lo = GetMonData(mon, MON_DATA_DEF_IV, NULL) & 0xF;
+    spdIv_lo = GetMonData(mon, MON_DATA_SPEED_IV, NULL) & 0xF;
+    spAtkIv_lo = GetMonData(mon, MON_DATA_SPATK_IV, NULL) & 0xF;
+    spDefIv_lo = GetMonData(mon, MON_DATA_SPDEF_IV, NULL) & 0xF;
 
     ret = ((spDefIv_lo ^ spAtkIv_lo) * spdIv_lo) ^ (pid_lo >> 8);
     ret2 = ((atkIv_lo ^ defIv_lo) * hpIv_lo) ^ ((u8)pid_lo);
@@ -78,7 +78,7 @@ static void FormatSizeRecord(FieldSystem *fsys, u8 idx0, u8 idx1, u16 species, u
 }
 
 BOOL ScrCmd_SizeRecordCompare(SCRIPTCONTEXT *ctx) {
-    POKEMON *pokemon;
+    Pokemon *mon;
     vu16 rand, record;
     u16 slot;
     u16 species;
@@ -90,9 +90,9 @@ BOOL ScrCmd_SizeRecordCompare(SCRIPTCONTEXT *ctx) {
     fsys = ctx->fsys;
     ret_p = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
     slot = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
-    pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
-    species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
-    rand = GetMonSizeHash(pokemon);
+    mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
+    species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    rand = GetMonSizeHash(mon);
     cm1 = GetMonSize(species, rand);
     record = ScriptState_GetFishingCompetitionLengthRecord(SavArray_Flags_get(fsys->savedata));
     cm2 = GetMonSize(species, record);
@@ -114,14 +114,14 @@ BOOL ScrCmd_SizeRecordCompare(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_SizeRecordUpdate(SCRIPTCONTEXT *ctx) {
-    POKEMON *pokemon;
+    Pokemon *mon;
     u16 slot;
     FieldSystem *fsys;
 
     fsys = ctx->fsys;
     slot = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
-    pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
-    ScriptState_SetFishingCompetitionLengthRecord(SavArray_Flags_get(fsys->savedata), GetMonSizeHash(pokemon));
+    mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
+    ScriptState_SetFishingCompetitionLengthRecord(SavArray_Flags_get(fsys->savedata), GetMonSizeHash(mon));
     return FALSE;
 }
 
@@ -142,7 +142,7 @@ BOOL ScrCmd_BufferRecordSize(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_BufferMonSize(SCRIPTCONTEXT *ctx) {
-    POKEMON *pokemon;
+    Pokemon *mon;
     FieldSystem *fsys;
     u16 idx0;
     u16 idx1;
@@ -152,7 +152,7 @@ BOOL ScrCmd_BufferMonSize(SCRIPTCONTEXT *ctx) {
     idx0 = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     idx1 = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     slot = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
-    pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
-    FormatSizeRecord(fsys, idx0, idx1, GetMonData(pokemon, MON_DATA_SPECIES, NULL), GetMonSizeHash(pokemon));
+    mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
+    FormatSizeRecord(fsys, idx0, idx1, GetMonData(mon, MON_DATA_SPECIES, NULL), GetMonSizeHash(mon));
     return FALSE;
 }

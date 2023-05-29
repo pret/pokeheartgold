@@ -41,33 +41,33 @@ BOOL ScrCmd_508(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_509(SCRIPTCONTEXT *ctx) {
     struct UnkStruct_0202EB30 *unkStruct = sub_020270F8(ctx->fsys->savedata);
-    POKEMON *pokemon = AllocMonZeroed(32);
+    Pokemon *mon = AllocMonZeroed(32);
     u16 *retPtr = ScriptGetVarPointer(ctx);
     if (sub_0202EC98(unkStruct) == PARTY_SIZE) {
         *retPtr = TRUE;
     } else {
         *retPtr = FALSE;
     }
-    FreeToHeap(pokemon);
+    FreeToHeap(mon);
     return FALSE;
 }
 
 BOOL ScrCmd_510(SCRIPTCONTEXT *ctx) {
     struct UnkStruct_0202EB30 *unkStruct = sub_020270F8(ctx->fsys->savedata);
     PC_STORAGE *storage = GetStoragePCPointer(ctx->fsys->savedata);
-    POKEMON *pokemon = AllocMonZeroed(32);
+    Pokemon *mon = AllocMonZeroed(32);
     PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(ctx->fsys->savedata);
     POKEDEX *pokedex = Sav2_Pokedex_get(ctx->fsys->savedata);
     int i;
 
     for (i = 0; i < PARTY_SIZE; i++) {
-        sub_0202EC70(unkStruct, i, pokemon);
-        MonSetTrainerMemo(pokemon, profile, 2, 0, 32);
-        GF_ASSERT(PCStorage_PlaceMonInFirstEmptySlotInAnyBox(storage, Mon_GetBoxMon(pokemon)));
-        UpdatePokedexWithReceivedSpecies(ctx->fsys->savedata, pokemon);
+        sub_0202EC70(unkStruct, i, mon);
+        MonSetTrainerMemo(mon, profile, 2, 0, 32);
+        GF_ASSERT(PCStorage_PlaceMonInFirstEmptySlotInAnyBox(storage, Mon_GetBoxMon(mon)));
+        UpdatePokedexWithReceivedSpecies(ctx->fsys->savedata, mon);
     }
 
-    FreeToHeap(pokemon);
+    FreeToHeap(mon);
     sub_0202EB74(unkStruct);
     sub_02093070(ctx->fsys);
     return FALSE;

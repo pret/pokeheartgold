@@ -517,7 +517,7 @@ static void FieldMoveMenuUse_Teleport(struct FieldMoveUseData *useData, const st
 static BOOL Task_UseTeleportInField(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     struct TeleportFieldEnv *env = TaskManager_GetEnv(taskManager);
-    struct FieldLongWarpTaskData *newEnv = CreateFieldTeleportTaskEnv(fsys, env->pokemon, env->flySub->partySlot, 4);
+    struct FieldLongWarpTaskData *newEnv = CreateFieldTeleportTaskEnv(fsys, env->mon, env->flySub->partySlot, 4);
     FreeToHeap(env->flySub);
     FreeToHeap(env);
     TaskManager_Jump(taskManager, Task_FieldTeleport, newEnv);
@@ -559,7 +559,7 @@ static void FieldMoveMenuUse_Dig(struct FieldMoveUseData *useData, const struct 
 static BOOL Task_UseDigInField(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     struct TeleportFieldEnv *env = TaskManager_GetEnv(taskManager);
-    struct FieldLongWarpTaskData *newEnv = CreateFieldDigTaskEnv(fsys, env->pokemon, env->flySub->partySlot, 11);
+    struct FieldLongWarpTaskData *newEnv = CreateFieldDigTaskEnv(fsys, env->mon, env->flySub->partySlot, 11);
     FreeToHeap(env->flySub);
     FreeToHeap(env);
     TaskManager_Jump(taskManager, Task_FieldDig, newEnv);
@@ -688,7 +688,7 @@ static BOOL Task_UseHeadbuttInField(TaskManager *taskManager) {
 
 static struct TeleportFieldEnv *sub_020689A4(HeapID heapId, u8 slotno, SAVEDATA *saveData) {
     struct TeleportFieldEnv *ret = AllocFromHeapAtEnd(heapId, sizeof(struct TeleportFieldEnv));
-    ret->pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(saveData), slotno);
+    ret->mon = GetPartyMonByIndex(SavArray_PlayerParty_get(saveData), slotno);
     ret->flySub = NULL;
     return ret;
 }

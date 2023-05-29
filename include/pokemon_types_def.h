@@ -3,6 +3,7 @@
 
 #include "filesystem.h"
 #include "seal_case.h"
+#include "constants/pokemon.h"
 
 typedef struct BaseStats {
     /* 0x00 */ u8 hp;
@@ -71,9 +72,9 @@ typedef struct {
 } PokemonDataBlockA;
 
 typedef struct {
-    /* 0x00 */ u16 moves[4];
-    /* 0x08 */ u8 movePP[4];
-    /* 0x0C */ u8 movePpUps[4];
+    /* 0x00 */ u16 moves[MAX_MON_MOVES];
+    /* 0x08 */ u8 movePP[MAX_MON_MOVES];
+    /* 0x0C */ u8 movePpUps[MAX_MON_MOVES];
     /* 0x10 */ u32 hpIV:5, atkIV:5, defIV:5, spdIV:5, spatkIV:5, spdefIV:5, isEgg:1, isNicknamed:1;
     // TODO: Finish HoennRibbonSet
     /* 0x14 */ u32 ribbonFlags; // cool, ...
@@ -123,7 +124,7 @@ typedef struct BoxPokemon {
                 u16 Unused:13;    // Might be used for validity checks
     /* 0x006 */ u16 checksum;  // Stored checksum of pokemon
     /* 0x008 */ PokemonDataBlock substructs[4];
-} BOXMON;
+} BoxPokemon;
 
 union MailPatternData
 {
@@ -171,10 +172,10 @@ typedef struct PartyPokemon {
     /* 0x0D4 */ CAPSULE sealCoords; // seal coords
 } PARTYMON;
 
-typedef struct Pokemon {
-    /* 0x000 */ BOXMON box;
+typedef struct {
+    /* 0x000 */ BoxPokemon box;
     /* 0x088 */ PARTYMON party;
-} POKEMON; // size: 0xEC
+} Pokemon; // size: 0xEC
 
 struct UnkPokemonStruct_02072A98 {
     /* 0x00 */ u32 pid;
@@ -193,9 +194,9 @@ struct UnkPokemonStruct_02072A98 {
     /* 0x19 */ u8 spdEV;
     /* 0x1A */ u8 spatkEV;
     /* 0x1B */ u8 spdefEV;
-    /* 0x1C */ u16 moves[4];
-    /* 0x24 */ u8 movePP[4];
-    /* 0x28 */ u8 movePpUps[4];
+    /* 0x1C */ u16 moves[MAX_MON_MOVES];
+    /* 0x24 */ u8 movePP[MAX_MON_MOVES];
+    /* 0x28 */ u8 movePpUps[MAX_MON_MOVES];
     /* 0x2C */ u32 hpIV:5;
                u32 atkIV:5;
                u32 defIV:5;
@@ -270,7 +271,7 @@ struct Evolution {
 typedef struct PARTY {
     int maxCount;
     int curCount;
-    struct Pokemon mons[PARTY_SIZE];
+    Pokemon mons[PARTY_SIZE];
 } PARTY_CORE;
 
 typedef struct PARTY_EXTRA_SUB {

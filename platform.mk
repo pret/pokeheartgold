@@ -1,9 +1,9 @@
 
 WSLENV ?= no
-ifeq ($(WSLENV),)
-NOWINE = 1
-else
+ifeq ($(WSLENV),no)
 NOWINE = 0
+else
+NOWINE = 1
 endif
 
 ifeq ($(OS),Windows_NT)

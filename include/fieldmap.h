@@ -12,7 +12,7 @@ typedef struct HiddenItemResponse {
 } HiddenItemResponse;
 
 void StartMapSceneScript(FieldSystem *fsys, u16 script, LocalMapObject *lastTalked);
-void FieldSys_SetEngagedTrainer(FieldSystem *fsys, LocalMapObject *obj, int a2, int a3, int a4, int trainerNum, int encounterType, int idx);
+void FieldSys_SetEngagedTrainer(FieldSystem *fsys, LocalMapObject *obj, int a2, int a3, int a4, int trainerId, int encounterType, int idx);
 void QueueScript(TaskManager *taskman, u16 script, LocalMapObject *lastTalked, void *a3);
 void StartScriptFromMenu(TaskManager *taskman, u16 script, LocalMapObject *lastTalked);
 BOOL Task_RunScripts(TaskManager *taskman);

@@ -63,8 +63,8 @@ BOOL ScrCmd_BufferMonSpeciesName(SCRIPTCONTEXT* ctx) {
     u16 party_mon_idx = ScriptGetVar(ctx);
 
     PARTY* party = SavArray_PlayerParty_get(fsys->savedata);
-    POKEMON* party_mon = GetPartyMonByIndex(party, party_mon_idx);
-    BufferBoxMonSpeciesName(*msg_fmt, idx, &party_mon->box);
+    Pokemon *mon = GetPartyMonByIndex(party, party_mon_idx);
+    BufferBoxMonSpeciesName(*msg_fmt, idx, &mon->box);
 
     return FALSE;
 }
@@ -170,8 +170,8 @@ BOOL ScrCmd_BufferPartyMonNick(SCRIPTCONTEXT* ctx) {
     u16 party_mon_idx = ScriptGetVar(ctx);
 
     PARTY* party = SavArray_PlayerParty_get(fsys->savedata);
-    POKEMON* party_mon = GetPartyMonByIndex(party, party_mon_idx);
-    BufferBoxMonNickname(*msg_fmt, idx, &party_mon->box);
+    Pokemon *mon = GetPartyMonByIndex(party, party_mon_idx);
+    BufferBoxMonNickname(*msg_fmt, idx, &mon->box);
 
     return FALSE;
 }
@@ -183,7 +183,7 @@ BOOL ScrCmd_BufferBoxMonNick(SCRIPTCONTEXT* ctx) {
     u8 idx = ScriptReadByte(ctx);
     u16 box_mon_slot = ScriptGetVar(ctx);
 
-    BOXMON* box_mon = PCStorage_GetMonByIndexPair(pc, box_mon_slot / MONS_PER_BOX, box_mon_slot % MONS_PER_BOX);
+    BoxPokemon *box_mon = PCStorage_GetMonByIndexPair(pc, box_mon_slot / MONS_PER_BOX, box_mon_slot % MONS_PER_BOX);
     BufferBoxMonNickname(*msg_fmt, idx, box_mon);
 
     return FALSE;
@@ -352,8 +352,8 @@ BOOL ScrCmd_BufferPartyMonMoveName(SCRIPTCONTEXT* ctx) {
     u16 move_slot = ScriptGetVar(ctx);
 
     PARTY* party = SavArray_PlayerParty_get(fsys->savedata);
-    POKEMON* party_mon = GetPartyMonByIndex(party, party_slot);
-    u16 move_id = GetMonData(party_mon, MON_DATA_MOVE1 + move_slot, NULL);
+    Pokemon *mon = GetPartyMonByIndex(party, party_slot);
+    u16 move_id = GetMonData(mon, MON_DATA_MOVE1 + move_slot, NULL);
     BufferMoveName(*msg_fmt, idx, move_id);
 
     return FALSE;
@@ -427,8 +427,8 @@ BOOL ScrCmd_BufferPartyMonSpeciesNameIndef(SCRIPTCONTEXT* ctx) {
     u16 party_mon_slot = ScriptGetVar(ctx);
 
     PARTY* party = SavArray_PlayerParty_get(fsys->savedata);
-    POKEMON* party_mon = GetPartyMonByIndex(party, party_mon_slot);
-    BufferBoxMonSpeciesNameWithArticle(*msg_fmt, idx, &party_mon->box);
+    Pokemon *mon = GetPartyMonByIndex(party, party_mon_slot);
+    BufferBoxMonSpeciesNameWithArticle(*msg_fmt, idx, &mon->box);
 
     return FALSE;
 }

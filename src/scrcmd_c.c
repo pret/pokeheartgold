@@ -1841,7 +1841,7 @@ BOOL ScrCmd_451(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_452(SCRIPTCONTEXT *ctx) {
-    struct PokepicManager **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    struct PokepicManager **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
     u16 species = ScriptGetVar(ctx);
     u16 gender = ScriptGetVar(ctx);
     LoadUserFrameGfx1(ctx->fsys->bgConfig, 3, 0x3D9, 0xB, 0, 4);
@@ -1851,22 +1851,22 @@ BOOL ScrCmd_452(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_547(SCRIPTCONTEXT *ctx) {
-    struct PokepicManager **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    struct PokepicManager **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
     u16 partyIdx = ScriptGetVar(ctx);
-    POKEMON *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), partyIdx);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), partyIdx);
     LoadUserFrameGfx1(ctx->fsys->bgConfig, 3, 0x3D9, 0xB, 0, 4);
-    *p_work = sub_0200F4F8(ctx->fsys->bgConfig, 3, 10, 5, 11, 0x3D9, pokemon, 4);
+    *p_work = sub_0200F4F8(ctx->fsys->bgConfig, 3, 10, 5, 11, 0x3D9, mon, 4);
     return FALSE;
 }
 
 BOOL ScrCmd_453(SCRIPTCONTEXT *ctx) {
-    u8 **r0 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    u8 **r0 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
     **r0 = 1;
     return TRUE;
 }
 
 BOOL ScrCmd_548(SCRIPTCONTEXT *ctx) {
-    u8 **r0 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    u8 **r0 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
     **r0 = 2;
     return TRUE;
 }
@@ -1878,7 +1878,7 @@ BOOL ScrCmd_549(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL sub_02042C78(SCRIPTCONTEXT *ctx) {
-    u8 **r0 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    u8 **r0 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
     u16 *dest_p = GetVarPointer(ctx->fsys, ctx->data[0]);
     return **r0 != 3;
 }
@@ -2098,7 +2098,7 @@ BOOL ScrCmd_NicknameInput(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 partyPos = ScriptGetVar(ctx);
     BUGCONTEST *contest;
-    POKEMON *pokemon;
+    Pokemon *mon;
     u16 nickname[20];
     u16 *var_ret;
     int species;
@@ -2108,13 +2108,13 @@ BOOL ScrCmd_NicknameInput(SCRIPTCONTEXT *ctx) {
         if (!contest->caught_poke) {
             return TRUE;
         }
-        pokemon = contest->pokemon;
+        mon = contest->mon;
     } else {
-        pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), partyPos);
+        mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), partyPos);
     }
-    GetMonData(pokemon, MON_DATA_NICKNAME, nickname);
+    GetMonData(mon, MON_DATA_NICKNAME, nickname);
     var_ret = ScriptGetVarPointer(ctx);
-    species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+    species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     CreateNamingScreen(ctx->taskman, NAMINGSCREEN_POKEMON, species, POKEMON_NAME_LENGTH, partyPos, nickname, var_ret);
     return TRUE;
 }
@@ -2287,17 +2287,17 @@ BOOL ScrCmd_Whirlpool(SCRIPTCONTEXT *ctx) {
 BOOL sub_0204378C(SCRIPTCONTEXT *ctx);
 
 BOOL ScrCmd_183(SCRIPTCONTEXT *ctx) {
-    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
     u16 partyIdx = ScriptGetVar(ctx);
-    POKEMON *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), partyIdx);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), partyIdx);
     int playerGender = PlayerAvatar_GetGender(ctx->fsys->playerAvatar);
-    *p_work = ov02_02249458(ctx->fsys, 0, pokemon, playerGender);
+    *p_work = ov02_02249458(ctx->fsys, 0, mon, playerGender);
     SetupNativeScript(ctx, sub_0204378C);
     return TRUE;
 }
 
 BOOL sub_0204378C(SCRIPTCONTEXT *ctx) {
-    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
     if (ov02_0224953C(*p_work) == TRUE) {
         ov02_02249548(*p_work);
         return TRUE;
@@ -2553,7 +2553,7 @@ BOOL ScrCmd_GetDexEvalResult(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_RocketTrapBattle(SCRIPTCONTEXT *ctx) {
-    int *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_0C);
+    u32 *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_BATTLE_WIN_FLAG);
     u16 species = ScriptGetVar(ctx);
     u16 level = ScriptGetVar(ctx);
     SetupAndStartWildBattle(ctx->taskman, species, level, winFlag, FALSE, FALSE);
@@ -2561,7 +2561,7 @@ BOOL ScrCmd_RocketTrapBattle(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_WildBattle(SCRIPTCONTEXT *ctx) {
-    int *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_0C);
+    u32 *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_BATTLE_WIN_FLAG);
     u16 species = ScriptGetVar(ctx);
     u16 level = ScriptGetVar(ctx);
     u8 shiny = ScriptReadByte(ctx);
@@ -2570,7 +2570,7 @@ BOOL ScrCmd_WildBattle(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_686(SCRIPTCONTEXT *ctx) {
-    int *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_0C);
+    u32 *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_BATTLE_WIN_FLAG);
     u16 species = ScriptGetVar(ctx);
     u16 level = ScriptGetVar(ctx);
     sub_02051090(ctx->taskman, species, level, winFlag, TRUE);
@@ -3433,7 +3433,7 @@ BOOL ScrCmd_CreateRoamer(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_LoadNPCTrade(SCRIPTCONTEXT *ctx) {
-    NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
     u8 tradeNo = ScriptReadByte(ctx);
 
     HandleLoadOverlay(FS_OVERLAY_ID(npc_trade), OVY_LOAD_ASYNC);
@@ -3442,35 +3442,35 @@ BOOL ScrCmd_LoadNPCTrade(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_GetOfferedSpecies(SCRIPTCONTEXT *ctx) {
-    NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = NPCTradeWork_GetOfferedSpecies(*p_tradeWork);
     return FALSE;
 }
 
 BOOL ScrCmd_NPCTradeGetReqSpecies(SCRIPTCONTEXT *ctx) {
-    NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = NPCTradeWork_GetRequestedSpecies(*p_tradeWork);
     return FALSE;
 }
 
 BOOL ScrCmd_GetNpcTradeUnusedFlag(SCRIPTCONTEXT *ctx) {
-    NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = NPCTradeWork_GetUnusedFlag(*p_tradeWork);
     return FALSE;
 }
 
 BOOL ScrCmd_NPCTradeExec(SCRIPTCONTEXT *ctx) {
-    NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
     u16 arg = ScriptGetVar(ctx);
     Field_CreateTask_TradeAnim(ctx->taskman, *p_tradeWork, arg, 11);
     return TRUE;
 }
 
 BOOL ScrCmd_NPCTradeEnd(SCRIPTCONTEXT *ctx) {
-    NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
     NPCTrade_DeleteWork(*p_tradeWork);
     UnloadOverlayByID(FS_OVERLAY_ID(npc_trade));
     return FALSE;
@@ -3524,14 +3524,14 @@ BOOL ScrCmd_NatDexFlagAction(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_GetEVTotal(SCRIPTCONTEXT *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     u16 partyIdx = ScriptGetVar(ctx);
-    POKEMON *pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata),  partyIdx);
+    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata),  partyIdx);
 
-    int hpEv = GetMonData(pokemon, MON_DATA_HP_EV, NULL);
-    int atkEv = GetMonData(pokemon, MON_DATA_ATK_EV, NULL);
-    int defEv = GetMonData(pokemon, MON_DATA_DEF_EV, NULL);
-    int speedEv = GetMonData(pokemon, MON_DATA_SPEED_EV, NULL);
-    int spAtkEv = GetMonData(pokemon, MON_DATA_SPATK_EV, NULL);
-    int spDefEv = GetMonData(pokemon, MON_DATA_SPDEF_EV, NULL);
+    int hpEv = GetMonData(mon, MON_DATA_HP_EV, NULL);
+    int atkEv = GetMonData(mon, MON_DATA_ATK_EV, NULL);
+    int defEv = GetMonData(mon, MON_DATA_DEF_EV, NULL);
+    int speedEv = GetMonData(mon, MON_DATA_SPEED_EV, NULL);
+    int spAtkEv = GetMonData(mon, MON_DATA_SPATK_EV, NULL);
+    int spDefEv = GetMonData(mon, MON_DATA_SPDEF_EV, NULL);
     *p_ret = hpEv + atkEv + defEv + speedEv + spAtkEv + spDefEv;
     return FALSE;
 }
@@ -3633,11 +3633,11 @@ BOOL ScrCmd_502(SCRIPTCONTEXT *ctx) {
 
 void Script_SetMonSeenFlagBySpecies(FieldSystem *fsys, u16 species) {
     POKEDEX *pokedex = Sav2_Pokedex_get(fsys->savedata);
-    POKEMON *pokemon = AllocMonZeroed(32);
-    ZeroMonData(pokemon);
-    CreateMon(pokemon, species, 50, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
-    Pokedex_SetMonSeenFlag(pokedex, pokemon);
-    FreeToHeap(pokemon);
+    Pokemon *mon = AllocMonZeroed(32);
+    ZeroMonData(mon);
+    CreateMon(mon, species, 50, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
+    Pokedex_SetMonSeenFlag(pokedex, mon);
+    FreeToHeap(mon);
 }
 
 BOOL ScrCmd_687(SCRIPTCONTEXT *ctx) {
@@ -3653,14 +3653,14 @@ BOOL ScrCmd_CountPCEmptySpace(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_PlayerMovementSavingSet(SCRIPTCONTEXT *ctx) {
-    int *r4 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_B8);
+    s32 *r4 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_FIELD_B8);
     *r4 = PLAYER_STATE_WALKING;
     *r4 = Field_PlayerMovementSavingSet(ctx->fsys);
     return TRUE;
 }
 
 BOOL ScrCmd_PlayerMovementSavingClear(SCRIPTCONTEXT *ctx) {
-    int *r4 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_B8);
+    s32 *r4 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_FIELD_B8);
     Field_PlayerMovementSavingClear(*r4);
     return TRUE;
 }
@@ -3692,11 +3692,11 @@ BOOL ScrCmd_518(SCRIPTCONTEXT *ctx) {
     int i;
 
     for (i = 0; i < partyCount; i++) {
-        POKEMON *pokemon = GetPartyMonByIndex(party, i);
-        if (GetMonData(pokemon, MON_DATA_SPECIES, NULL) == SPECIES_DEOXYS) {
-            SetMonData(pokemon, MON_DATA_FORME, &forme);
-            CalcMonLevelAndStats(pokemon);
-            Pokedex_SetMonCaughtFlag(pokedex, pokemon);
+        Pokemon *mon = GetPartyMonByIndex(party, i);
+        if (GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_DEOXYS) {
+            SetMonData(mon, MON_DATA_FORME, &forme);
+            CalcMonLevelAndStats(mon);
+            Pokedex_SetMonCaughtFlag(pokedex, mon);
         }
     }
     return TRUE;
@@ -3721,9 +3721,9 @@ BOOL ScrCmd_519(SCRIPTCONTEXT *ctx) {
     for (i = 0; i < partyCount; i++) {
         int j;
         BOOL hasMultiple;
-        POKEMON *pokemon = GetPartyMonByIndex(party, i);
-        u32 species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
-        u32 forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
+        Pokemon *mon = GetPartyMonByIndex(party, i);
+        u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        u32 forme = GetMonData(mon, MON_DATA_FORME, NULL);
         if (species == SPECIES_BURMY) {
             hasMultiple = FALSE;
             for (j = 0, sp18[i] = forme; j < i; j++) {
@@ -4113,20 +4113,20 @@ BOOL ScrCmd_GetTrcardStars(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_ShowSaveStats(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    struct SaveStatsPrinter **p_work = FieldSysGetAttrAddr(fsys, SCRIPTENV_DC);
+    struct SaveStatsPrinter **saveStatsPrinter = FieldSysGetAttrAddr(fsys, SCRIPTENV_SAVE_STATS_PRINTER);
     if (!Save_FileDoesNotBelongToPlayer(fsys->savedata)) {
-        *p_work = Field_CreateSaveStatsPrinter(fsys, 4, 3);
-        SaveStatsPrinter_Print(*p_work);
+        *saveStatsPrinter = Field_CreateSaveStatsPrinter(fsys, 4, 3);
+        SaveStatsPrinter_Print(*saveStatsPrinter);
     }
     return FALSE;
 }
 
 BOOL ScrCmd_HideSaveStats(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    struct SaveStatsPrinter **p_work = FieldSysGetAttrAddr(fsys, SCRIPTENV_DC);
+    struct SaveStatsPrinter **saveStatsPrinter = FieldSysGetAttrAddr(fsys, SCRIPTENV_SAVE_STATS_PRINTER);
     if (!Save_FileDoesNotBelongToPlayer(fsys->savedata)) {
-        SaveStatsPrinter_RemoveFromScreen(*p_work);
-        SaveStatsPrinter_Delete(*p_work);
+        SaveStatsPrinter_RemoveFromScreen(*saveStatsPrinter);
+        SaveStatsPrinter_Delete(*saveStatsPrinter);
     }
     return FALSE;
 }
@@ -4271,32 +4271,32 @@ u32 sub_020467A8(SAVEDATA *saveData) {
     int i, j;
 
     for (i = 0; i < partyCount; i++) {
-        POKEMON *pokemon = GetPartyMonByIndex(party, i);
-        if (GetMonData(pokemon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
-            ret |= 1 << GetMonData(pokemon, MON_DATA_FORME, NULL);
+        Pokemon *mon = GetPartyMonByIndex(party, i);
+        if (GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
+            ret |= 1 << GetMonData(mon, MON_DATA_FORME, NULL);
         }
     }
 
     DAYCARE *dayCare = Sav2_DayCare_get(saveData);
     for (i = 0; i < 2; i++) {
-        BOXMON *boxmon = DayCareMon_GetBoxMon(Sav2_DayCare_GetMonX(dayCare, i));
-        if (GetBoxMonData(boxmon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetBoxMonData(boxmon, MON_DATA_IS_EGG, NULL)) {
-            ret |= 1 << GetBoxMonData(boxmon, MON_DATA_FORME, NULL);
+        BoxPokemon *boxMon = DayCareMon_GetBoxMon(Sav2_DayCare_GetMonX(dayCare, i));
+        if (GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL)) {
+            ret |= 1 << GetBoxMonData(boxMon, MON_DATA_FORME, NULL);
         }
     }
 
     PC_STORAGE *pcStorage = GetStoragePCPointer(saveData);
     for (i = 0; i < (u32)NUM_BOXES; i++) {
         for (j = 0; j < MONS_PER_BOX; j++) {
-            BOXMON *boxmon = PCStorage_GetMonByIndexPair(pcStorage, i, j);
-            if (GetBoxMonData(boxmon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetBoxMonData(boxmon, MON_DATA_IS_EGG, NULL)) {
-                ret |= 1 << GetBoxMonData(boxmon, MON_DATA_FORME, NULL);
+            BoxPokemon *boxMon = PCStorage_GetMonByIndexPair(pcStorage, i, j);
+            if (GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL)) {
+                ret |= 1 << GetBoxMonData(boxMon, MON_DATA_FORME, NULL);
             }
         }
     }
 
-    POKEMON *walkerMon = AllocMonZeroed(32);
-    BOXMON *walkerBoxMon = Mon_GetBoxMon(walkerMon);
+    Pokemon *walkerMon = AllocMonZeroed(32);
+    BoxPokemon *walkerBoxMon = Mon_GetBoxMon(walkerMon);
     POKEWALKER *pokeWalker = Sav2_Pokewalker_get(saveData);
     if (Pokewalker_TryGetBoxMon(pokeWalker, walkerBoxMon)) {
         if (GetBoxMonData(walkerBoxMon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetBoxMonData(walkerBoxMon, MON_DATA_IS_EGG, NULL)) {
@@ -4351,14 +4351,14 @@ BOOL ScrCmd_696(SCRIPTCONTEXT *ctx) {
     u16 r5 = ScriptGetVar(ctx);
     PARTY *party = SavArray_PlayerParty_get(ctx->fsys->savedata);
     int i, partyCount;
-    POKEMON *pokemon;
+    Pokemon *mon;
 
     Party_UpdateAllGiratina_DistortionWorld(party, r5);
     partyCount = GetPartyCount(party);
     for (i = 0; i < partyCount; i++) {
-        pokemon = GetPartyMonByIndex(party, i);
-        if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
-            Pokedex_SetMonCaughtFlag(Sav2_Pokedex_get(fsys->savedata), pokemon);
+        mon = GetPartyMonByIndex(party, i);
+        if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
+            Pokedex_SetMonCaughtFlag(Sav2_Pokedex_get(fsys->savedata), mon);
         }
     }
     return FALSE;
@@ -4368,27 +4368,27 @@ BOOL ScrCmd_FollowerPokeIsEventTrigger(SCRIPTCONTEXT *ctx) {
     u8 r4 = ScriptReadByte(ctx);
     u16 r7 = ScriptGetVar(ctx);
     u16 *r6 = ScriptGetVarPointer(ctx);
-    POKEMON *pokemon;
+    Pokemon *mon;
     int species;
 
     *r6 = 0;
-    pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), r7);
+    mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), r7);
 
     if (r4 >= 4) {
         return FALSE;
     }
-    if (GetMonData(pokemon, MON_DATA_IS_EGG, NULL) || GetMonData(pokemon, MON_DATA_CHECKSUM_FAILED, NULL)) {
+    if (GetMonData(mon, MON_DATA_IS_EGG, NULL) || GetMonData(mon, MON_DATA_CHECKSUM_FAILED, NULL)) {
         return FALSE;
     }
-    if (!sub_0208E9E0(r4, pokemon, GetMonData(pokemon, MON_DATA_OTID, NULL) == PlayerProfile_GetTrainerID(
+    if (!sub_0208E9E0(r4, mon, GetMonData(mon, MON_DATA_OTID, NULL) == PlayerProfile_GetTrainerID(
         Sav2_PlayerData_GetProfileAddr(ctx->fsys->savedata)))) {
         return FALSE;
     }
 
-    species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+    species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     switch (r4) {
     case 0:
-        if ((species == SPECIES_PICHU || species == SPECIES_PIKACHU || species == SPECIES_RAICHU) && MonIsShiny(pokemon)) {
+        if ((species == SPECIES_PICHU || species == SPECIES_PIKACHU || species == SPECIES_RAICHU) && MonIsShiny(mon)) {
             *r6 = 1;
         }
         break;
@@ -5068,7 +5068,7 @@ static u32 GetMaxBankTransactionAmount(FieldSystem *fsys, int action) {
 BOOL sub_020479D4(SCRIPTCONTEXT *ctx);
 
 BOOL ScrCmd_BankTransaction(SCRIPTCONTEXT *ctx) {
-    struct BankTransactionWork **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    struct BankTransactionWork **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
     u16 mode = ScriptReadHalfword(ctx);
     u16 var_ret = ScriptReadHalfword(ctx);
     struct BankTransactionWork *work = *p_work = AllocFromHeap(4, sizeof(struct BankTransactionWork)); // statement must be this way to match
@@ -5083,7 +5083,7 @@ BOOL ScrCmd_BankTransaction(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL sub_020479D4(SCRIPTCONTEXT *ctx) {
-    struct BankTransactionWork **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_GENERIC_WORK_PTR);
+    struct BankTransactionWork **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
     u16 *p_ret = GetVarPointer(ctx->fsys, ctx->data[0]);
     struct BankTransactionWork *work = *p_work;
     if (work->sub->selected == -1) {

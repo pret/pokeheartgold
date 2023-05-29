@@ -9,6 +9,7 @@
 #include "pm_string.h"
 #include "mail_message.h"
 #include "pokemon_types_def.h"
+#include "global.h"
 
 typedef enum TrainerAttr {
     TRATTR_TYPE,
@@ -53,7 +54,7 @@ typedef struct TrainerMonSpeciesMoves {
     u8 genderAbilityOverride;
     u16 level;
     u16 species;
-    u16 moves[MON_MOVES];
+    u16 moves[MAX_MON_MOVES];
     u16 capsule;
 } TRPOKE_NOITEM_CUSTMOVES;
 
@@ -72,7 +73,7 @@ typedef struct TrainerMonSpeciesItemMoves {
     u16 level;
     u16 species;
     u16 item;
-    u16 moves[MON_MOVES];
+    u16 moves[MAX_MON_MOVES];
     u16 capsule;
 } TRPOKE_ITEM_CUSTMOVES;
 
@@ -108,7 +109,7 @@ void GetTrainerMessageByIdPair(u32 trainer_idx, u32 msg_id, STRING * str, HeapID
 void TrainerData_ReadTrPoke(u32 idx, TRPOKE * dest);
 void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id);
 void TrMon_OverridePidGender(int species, int forme, int overrideParam, u32 *pid);
-void TrMon_FrustrationCheckAndSetFriendship(POKEMON *pokemon);
+void TrMon_FrustrationCheckAndSetFriendship(Pokemon *mon);
 #endif //PM_ASM
 
 #endif //POKEHEARTGOLD_TRAINER_DATA_H

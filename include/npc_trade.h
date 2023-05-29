@@ -40,6 +40,6 @@ int NPCTradeWork_GetOfferedSpecies(NPC_TRADE_WORK *work);
 int NPCTradeWork_GetRequestedSpecies(NPC_TRADE_WORK *work);
 int NPCTradeWork_GetUnusedFlag(NPC_TRADE_WORK *work);
 void NPCTrade_ReceiveMonToSlot(FieldSystem *fsys, NPC_TRADE_WORK *work, int slot);
-void NPCTrade_CreateTradeAnim(FieldSystem *fsys, NPC_TRADE_WORK *work, int slot, TRADE_ANIM_WORK *anim_work, POKEMON *my_mon_buf, POKEMON *trade_mon_buf);
+void NPCTrade_CreateTradeAnim(FieldSystem *fsys, NPC_TRADE_WORK *work, int slot, TRADE_ANIM_WORK *anim_work, Pokemon *my_mon_buf, Pokemon *trade_mon_buf);
 
 #endif //POKEHEARTGOLD_NPC_TRADE_H

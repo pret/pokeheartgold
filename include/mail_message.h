@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_MAIL_MESSAGE_H
 
 #include "pokemon_types_def.h"
+#include "pm_string.h"
 
 #define MAILMSG_BANK_0294_GMM        0
 #define MAILMSG_BANK_0296_GMM        1
@@ -44,6 +45,7 @@ u16 MailMsg_GetMsgBank(const MAIL_MESSAGE *mailMessage);
 u16 MailMsg_GetMsgNo(const MAIL_MESSAGE *mailMessage);
 u32 MailMsg_NumMsgsInBank(u16 msg_bank);
 void MailMsg_SetTrailingFieldsEmpty(MAIL_MESSAGE *mailMessage);
+STRING *MailMsg_GetExpandedString(const MAIL_MESSAGE *mailMessage, HeapID heapId);
 
 #endif //PM_ASM
 

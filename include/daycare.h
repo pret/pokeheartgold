@@ -12,7 +12,7 @@ typedef struct DAYCAREMAIL {
 } DAYCAREMAIL;
 
 typedef struct DAYCAREMON {
-    BOXMON mon;
+    BoxPokemon mon;
     DAYCAREMAIL mail;
     u32 steps;
 } DAYCAREMON;
@@ -27,7 +27,7 @@ typedef struct DAYCARE {
 u32 Sav2_Daycare_sizeof(void);
 void Sav2_Daycare_init(DAYCARE* daycare);
 DAYCAREMON* Sav2_DayCare_GetMonX(DAYCARE* daycare, int i);
-BOXMON* DayCareMon_GetBoxMon(DAYCAREMON* dcmon);
+BoxPokemon *DayCareMon_GetBoxMon(DAYCAREMON* dcmon);
 DAYCAREMAIL* DayCareMon_GetExtras(DAYCAREMON* dcmon);
 int DayCareMon_GetSteps(DAYCAREMON* dcmon);
 MAIL* DayCareMail_GetMailPtr(DAYCAREMAIL* dcmail);

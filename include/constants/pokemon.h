@@ -3,7 +3,7 @@
 
 // Value and data limits
 #define MAX_LEVEL     100
-#define MON_MOVES       4
+#define MAX_MON_MOVES   4
 #define MAX_EV        100
 #define MAX_EV_SUM    510
 
@@ -282,7 +282,7 @@
 #define MON_DATA_NICKNAME_2                     118 // ???
 #define MON_DATA_NICKNAME_3                     119 // ???
 #define MON_DATA_NICKNAME_4                     120
-#define MON_DATA_UNK_120                        121
+#define MON_DATA_UNK_121                        121
 #define MON_DATA_GAME_VERSION                   122
 #define MON_DATA_COOL_RIBBON                    123
 #define MON_DATA_COOL_RIBBON_GREAT              124
@@ -304,7 +304,7 @@
 #define MON_DATA_TOUGH_RIBBON_GREAT             140
 #define MON_DATA_TOUGH_RIBBON_ULTRA             141
 #define MON_DATA_TOUGH_RIBBON_MASTER            142
-#define MON_DATA_SINNOH_RIBBON_142              143
+#define MON_DATA_SINNOH_RIBBON_143              143
 #define MON_DATA_OT_NAME                        144 // ???
 #define MON_DATA_OT_NAME_2                      145
 #define MON_DATA_EGG_MET_YEAR                   146
@@ -320,7 +320,7 @@
 #define MON_DATA_MET_LEVEL                      156
 #define MON_DATA_MET_GENDER                     157
 #define MON_DATA_ENCOUNTER_TYPE                 158 // HGSS
-#define MON_DATA_RESERVED_158                   159
+#define MON_DATA_RESERVED_159                   159
 #define MON_DATA_STATUS                         160
 #define MON_DATA_LEVEL                          161
 #define MON_DATA_CAPSULE                        162
@@ -337,7 +337,7 @@
 #define MON_DATA_SANITY_IS_EGG                  173
 #define MON_DATA_SPECIES2                       174
 #define MON_DATA_IVS_WORD                       175
-#define MON_DATA_UNK_175                        176
+#define MON_DATA_UNK_176                        176
 #define MON_DATA_TYPE_1                         177
 #define MON_DATA_TYPE_2                         178
 #define MON_DATA_SPECIES_NAME                   179
