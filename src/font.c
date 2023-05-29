@@ -168,11 +168,11 @@ u8 GetFontAttribute(FontID fontId, int attr) {
     return ret;
 }
 
-void LoadFontPal0(int layer, u32 baseAddr, HeapID heapId) {
+void LoadFontPal0(enum GFBgLayer layer, u32 baseAddr, HeapID heapId) {
     GfGfxLoader_GXLoadPal(NARC_graphic_font, 7, layer, baseAddr, 0x20, heapId);
 }
 
-void LoadFontPal1(int layer, u32 baseAddr, HeapID heapId) {
+void LoadFontPal1(enum GFBgLayer layer, u32 baseAddr, HeapID heapId) {
     GfGfxLoader_GXLoadPal(NARC_graphic_font, 8, layer, baseAddr, 0x20, heapId);
 }
 

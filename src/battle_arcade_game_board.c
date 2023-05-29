@@ -46,10 +46,10 @@ static void ov84_0223E958(BGCONFIG *config);
 static void BattleArcade_VBlank(void *work);
 static void BattleArcade_SetVramBanks(void);
 static void ov84_0223E9E4(BGCONFIG *config) ;
-static void ov84_0223EAAC(GAME_BOARD_WORK *work, u32 a1);
-static void ov84_0223EB08(GAME_BOARD_WORK *work, u32 a1);
+static void ov84_0223EAAC(GAME_BOARD_WORK *work, enum GFBgLayer layer);
+static void ov84_0223EB08(GAME_BOARD_WORK *work, enum GFBgLayer layer);
 static void ov84_0223EB44(void);
-static void ov84_0223EB78(GAME_BOARD_WORK *work, u32 a1);
+static void ov84_0223EB78(GAME_BOARD_WORK *work, enum GFBgLayer layer);
 static void BattleArcadeGameBoard_SetState(GAME_BOARD_WORK *work, int *state, int a2);
 static void ov84_0223EBE8(GAME_BOARD_WORK *work, int key);
 static void BattleArcadeGameBoard_SetCursorPos(GAME_BOARD_WORK *work, u8 cursorPos);
@@ -94,7 +94,7 @@ BOOL BattleArcadeGameBoard_InitOverlay(OVY_MANAGER *man, int *state) {
     GAME_BOARD_WORK *work;
     GAME_BOARD_ARGS *args;
 
-    HandleLoadOverlay(FS_OVERLAY_ID(OVY_80), 2);
+    HandleLoadOverlay(FS_OVERLAY_ID(OVY_80), OVY_LOAD_ASYNC);
     BattleArcadeGameBoard_InitSub();
     CreateHeap(3, HEAP_ID_GAME_BOARD, 0x20000);
     work = OverlayManager_CreateAndGetData(man, sizeof(GAME_BOARD_WORK), HEAP_ID_GAME_BOARD);
@@ -327,7 +327,7 @@ static BOOL BattleArcadeGameBoard_MoveCursor(GAME_BOARD_WORK *work) {
                 BattleArcadeObj_SetVisible(work->panel[i], 1);
             }
         }
-        ov84_0223EB08(work, 3);
+        ov84_0223EB08(work, GF_BG_LYR_MAIN_3);
         PlaySE(SEQ_SE_DP_WIN_OPEN2);
         work->wait = 24;
         work->substate = 3;
@@ -553,7 +553,7 @@ static void BattleArcadeGameBoard_InitObjects(GAME_BOARD_WORK *work) {
     u16 yOffset, yOffset2;
     int i;
 
-    work->narc = NARC_ctor(183, HEAP_ID_GAME_BOARD);
+    work->narc = NARC_ctor(NARC_a_1_8_3, HEAP_ID_GAME_BOARD);
     ov84_0223E8DC(work);
     ov84_0223E934(work);
 
@@ -566,8 +566,8 @@ static void BattleArcadeGameBoard_InitObjects(GAME_BOARD_WORK *work) {
         work->unk78[i] = String_ctor(32, HEAP_ID_GAME_BOARD);
     }
 
-    LoadFontPal0(0, 416, HEAP_ID_GAME_BOARD);
-    LoadFontPal1(0, 384, HEAP_ID_GAME_BOARD);
+    LoadFontPal0(GF_BG_LYR_MAIN_0, 416, HEAP_ID_GAME_BOARD);
+    LoadFontPal1(GF_BG_LYR_MAIN_0, 384, HEAP_ID_GAME_BOARD);
     ov84_0223F8B4(work->bgConfig, work->window);
     work->cursor = BattleArcadeObject_Create(&work->unk3E8, 1, 1, 1, 35, 68, 36, 0, 2, 0);
     BattleArcadeObj_SetVisible(work->cursor, 0);
@@ -603,7 +603,7 @@ static void BattleArcadeGameBoard_InitObjects(GAME_BOARD_WORK *work) {
     work->button = BattleArcadeObject_Create(&work->unk3E8, 0, 0, 0, 2, 128, 96, 0, 0, 1);
 
     if (sub_02037474()) {
-        sub_02009FE8(1, 16);
+        sub_02009FE8(1, GX_OBJVRAMMODE_CHAR_1D_32K);
         sub_0200A080(1);
         sub_0203A880();
     }
@@ -620,9 +620,9 @@ static void ov84_0223E8DC(GAME_BOARD_WORK *work) {
     PaletteData_AllocBuffers(work->unk3D4, 2, 0x200, HEAP_ID_GAME_BOARD);
     PaletteData_AllocBuffers(work->unk3D4, 0, 0x200, HEAP_ID_GAME_BOARD);
 
-    ov84_0223EAAC(work, 3);
+    ov84_0223EAAC(work, GF_BG_LYR_MAIN_3);
     ov84_0223EB44();
-    ov84_0223EB78(work, 4);
+    ov84_0223EB78(work, GF_BG_LYR_SUB_0);
 }
 
 static void ov84_0223E934(GAME_BOARD_WORK *work) {
@@ -630,8 +630,8 @@ static void ov84_0223E934(GAME_BOARD_WORK *work) {
 }
 
 static void ov84_0223E958(BGCONFIG *config) {
-    GX_EngineAToggleLayers(31, 0);
-    GX_EngineBToggleLayers(31, 0);
+    GX_EngineAToggleLayers(31, GX_LAYER_TOGGLE_OFF);
+    GX_EngineBToggleLayers(31, GX_LAYER_TOGGLE_OFF);
     FreeBgTilemapBuffer(config, 3);
     FreeBgTilemapBuffer(config, 1);
     FreeBgTilemapBuffer(config, 4);
@@ -682,13 +682,13 @@ static void ov84_0223E9E4(BGCONFIG *config) {
 
     G2_SetBG0Priority(0);
 
-    GX_EngineAToggleLayers(1, 0);
+    GX_EngineAToggleLayers(1, GX_LAYER_TOGGLE_OFF);
 }
 
-static void ov84_0223EAAC(GAME_BOARD_WORK *work, u32 a1) {
+static void ov84_0223EAAC(GAME_BOARD_WORK *work, enum GFBgLayer layer) {
     u32 var;
 
-    GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, 124, work->bgConfig, a1, 0, 0, 1, HEAP_ID_GAME_BOARD);
+    GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, 124, work->bgConfig, layer, 0, 0, 1, HEAP_ID_GAME_BOARD);
 
     if (BattleArcade_MultiplayerCheck(work->type) == FALSE) {
         var = 120;
@@ -696,10 +696,10 @@ static void ov84_0223EAAC(GAME_BOARD_WORK *work, u32 a1) {
         var = 122;
     }
 
-    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, var, work->bgConfig, a1, 0, 0, 1, HEAP_ID_GAME_BOARD);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, var, work->bgConfig, layer, 0, 0, 1, HEAP_ID_GAME_BOARD);
 }
 
-static void ov84_0223EB08(GAME_BOARD_WORK *work, u32 a1) {
+static void ov84_0223EB08(GAME_BOARD_WORK *work, enum GFBgLayer layer) {
     u32 var;
 
     if (BattleArcade_MultiplayerCheck(work->type) == FALSE) {
@@ -708,14 +708,14 @@ static void ov84_0223EB08(GAME_BOARD_WORK *work, u32 a1) {
         var = 123;
     }
 
-    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, var, work->bgConfig, a1, 0, 0, 1, HEAP_ID_GAME_BOARD);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, var, work->bgConfig, layer, 0, 0, 1, HEAP_ID_GAME_BOARD);
 }
 
 static void ov84_0223EB44(void) {
     void *buffer;
     NNSG2dPaletteData *dat;
 
-    buffer = GfGfxLoader_GetPlttData(183, 186, &dat, HEAP_ID_GAME_BOARD);
+    buffer = GfGfxLoader_GetPlttData(NARC_a_1_8_3, 186, &dat, HEAP_ID_GAME_BOARD);
 
     DC_FlushRange(dat->pRawData, 224);
     GX_LoadBGPltt(dat->pRawData, 0, 224);
@@ -723,10 +723,10 @@ static void ov84_0223EB44(void) {
     FreeToHeap(buffer);
 }
 
-static void ov84_0223EB78(GAME_BOARD_WORK *work, u32 a1) {
-    GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, 126, work->bgConfig, a1, 0, 0, TRUE, HEAP_ID_GAME_BOARD);
-    GfGfxLoader_GXLoadPalFromOpenNarc(work->narc, 187, 4, 0, 64, HEAP_ID_GAME_BOARD);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, 125, work->bgConfig, a1, 0, 0, TRUE, HEAP_ID_GAME_BOARD);
+static void ov84_0223EB78(GAME_BOARD_WORK *work, enum GFBgLayer layer) {
+    GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, 126, work->bgConfig, layer, 0, 0, TRUE, HEAP_ID_GAME_BOARD);
+    GfGfxLoader_GXLoadPalFromOpenNarc(work->narc, 187, GF_BG_LYR_SUB_0, 0, 64, HEAP_ID_GAME_BOARD);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, 125, work->bgConfig, layer, 0, 0, TRUE, HEAP_ID_GAME_BOARD);
 }
 
 static void BattleArcadeGameBoard_SetState(GAME_BOARD_WORK *work, int *state, int a2) {
@@ -1217,7 +1217,7 @@ static void ov84_0223F2B4(GAME_BOARD_SUB_3E8 *work, PARTY *playerParty, PARTY *o
     work->spriteList = G2dRenderer_Init(34, &work->render, HEAP_ID_GAME_BOARD);
 
     for (i = 0; i < 4; i++) {
-        work->resourceMan[i] = Create2DGfxResObjMan(ov84_0223F9E4[i], i, HEAP_ID_GAME_BOARD);
+        work->resourceMan[i] = Create2DGfxResObjMan(ov84_0223F9E4[i], (GfGfxResType)i, HEAP_ID_GAME_BOARD);
     }
 
     ov84_0223F714(work);
@@ -1233,8 +1233,8 @@ static void ov84_0223F2B4(GAME_BOARD_SUB_3E8 *work, PARTY *playerParty, PARTY *o
         sub_0200AF94(work->resourceObj[i][1]);
     }
 
-    GX_EngineBToggleLayers(16, 1);
-    GX_EngineAToggleLayers(16, 1);
+    GX_EngineBToggleLayers(16, GX_LAYER_TOGGLE_ON);
+    GX_EngineAToggleLayers(16, GX_LAYER_TOGGLE_ON);
 }
 
 static Sprite *ov84_0223F374(GAME_BOARD_SUB_3E8 *work, u32 chara, u32 pal, u32 cell, u32 anim, u32 prio, int bgPrio, u8 display) {
@@ -1305,19 +1305,19 @@ static void ov84_0223F480(void) {
 }
 
 static void ov84_0223F4B4(GAME_BOARD_SUB_3E8 *work) {
-    work->resourceObj[1][0] = AddCharResObjFromNarc(work->resourceMan[0], 184, 18, TRUE, 1, 1, HEAP_ID_GAME_BOARD);
-    work->resourceObj[1][1] = AddPlttResObjFromNarc(work->resourceMan[1], 184, 56, FALSE, 1, 1, 8, HEAP_ID_GAME_BOARD);
-    work->resourceObj[1][2] = AddCellOrAnimResObjFromNarc(work->resourceMan[2], 184, 20, TRUE, 1, 2, HEAP_ID_GAME_BOARD);
-    work->resourceObj[1][3] = AddCellOrAnimResObjFromNarc(work->resourceMan[3], 184, 19, TRUE, 1, 3, HEAP_ID_GAME_BOARD);
+    work->resourceObj[1][0] = AddCharResObjFromNarc(work->resourceMan[0], NARC_a_1_8_4, 18, TRUE, 1, 1, HEAP_ID_GAME_BOARD);
+    work->resourceObj[1][1] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_a_1_8_4, 56, FALSE, 1, 1, 8, HEAP_ID_GAME_BOARD);
+    work->resourceObj[1][2] = AddCellOrAnimResObjFromNarc(work->resourceMan[2], NARC_a_1_8_4, 20, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_GAME_BOARD);
+    work->resourceObj[1][3] = AddCellOrAnimResObjFromNarc(work->resourceMan[3], NARC_a_1_8_4, 19, TRUE, 1, GF_GFX_RES_TYPE_ANIM, HEAP_ID_GAME_BOARD);
 }
 
 static void ov84_0223F538(GAME_BOARD_SUB_3E8 *work) {
-    NARC *narc = NARC_ctor(21, HEAP_ID_GAME_BOARD);
+    NARC *narc = NARC_ctor(NARC_a_0_2_1, HEAP_ID_GAME_BOARD);
 
     work->resourceObj[2][0] = AddCharResObjFromOpenNarc(work->resourceMan[0], narc, sub_0207CA9C(), FALSE, 2, 1, HEAP_ID_GAME_BOARD);
-    work->resourceObj[2][1] = AddPlttResObjFromNarc(work->resourceMan[1], 21, sub_0207CAA0(), FALSE, 2, 1, 3, HEAP_ID_GAME_BOARD);
-    work->resourceObj[2][2] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[2], narc, sub_0207CAA4(), FALSE, 2, 2, HEAP_ID_GAME_BOARD);
-    work->resourceObj[2][3] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[3], narc, sub_0207CAA8(), FALSE, 2, 3, HEAP_ID_GAME_BOARD);
+    work->resourceObj[2][1] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_a_0_2_1, sub_0207CAA0(), FALSE, 2, 1, 3, HEAP_ID_GAME_BOARD);
+    work->resourceObj[2][2] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[2], narc, sub_0207CAA4(), FALSE, 2, GF_GFX_RES_TYPE_CELL, HEAP_ID_GAME_BOARD);
+    work->resourceObj[2][3] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[3], narc, sub_0207CAA8(), FALSE, 2, GF_GFX_RES_TYPE_ANIM, HEAP_ID_GAME_BOARD);
 
     NARC_dtor(narc);
 }
@@ -1326,11 +1326,11 @@ static void ov84_0223F5E4(GAME_BOARD_SUB_3E8 *work, PARTY *playerParty, PARTY *o
     u32 i;
     Pokemon *playerMon;
     Pokemon *opponentMon;
-    NARC *narc = NARC_ctor(20, HEAP_ID_GAME_BOARD);
+    NARC *narc = NARC_ctor(NARC_a_0_2_0, HEAP_ID_GAME_BOARD);
 
-    work->resourceObj[3][1] = AddPlttResObjFromNarc(work->resourceMan[1], 20, sub_02074490(), FALSE, 3, 1, 3, HEAP_ID_GAME_BOARD);
-    work->resourceObj[3][2] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[2], narc, sub_02074498(), FALSE, 3, 2, HEAP_ID_GAME_BOARD);
-    work->resourceObj[3][3] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[3], narc, sub_020744A4(), FALSE, 3, 3, HEAP_ID_GAME_BOARD);
+    work->resourceObj[3][1] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_a_0_2_0, sub_02074490(), FALSE, 3, 1, 3, HEAP_ID_GAME_BOARD);
+    work->resourceObj[3][2] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[2], narc, sub_02074498(), FALSE, 3, GF_GFX_RES_TYPE_CELL, HEAP_ID_GAME_BOARD);
+    work->resourceObj[3][3] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[3], narc, sub_020744A4(), FALSE, 3, GF_GFX_RES_TYPE_ANIM, HEAP_ID_GAME_BOARD);
 
     for (i = 0; i < 4; i++) {
         if (i == 3) {
@@ -1354,10 +1354,10 @@ static void ov84_0223F5E4(GAME_BOARD_SUB_3E8 *work, PARTY *playerParty, PARTY *o
 }
 
 static void ov84_0223F714(GAME_BOARD_SUB_3E8 *work) {
-    work->resourceObj[0][0] = AddCharResObjFromNarc(work->resourceMan[0], 184, 21, TRUE, 0, 2, HEAP_ID_GAME_BOARD);
-    work->resourceObj[0][1] = AddPlttResObjFromNarc(work->resourceMan[1], 184, 57, FALSE, 0, 2, 2, HEAP_ID_GAME_BOARD);
-    work->resourceObj[0][2] = AddCellOrAnimResObjFromNarc(work->resourceMan[2], 184, 23, TRUE, 0, 2, HEAP_ID_GAME_BOARD);
-    work->resourceObj[0][3] = AddCellOrAnimResObjFromNarc(work->resourceMan[3], 184, 22, TRUE, 0, 3, HEAP_ID_GAME_BOARD);
+    work->resourceObj[0][0] = AddCharResObjFromNarc(work->resourceMan[0], NARC_a_1_8_4, 21, TRUE, 0, 2, HEAP_ID_GAME_BOARD);
+    work->resourceObj[0][1] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_a_1_8_4, 57, FALSE, 0, 2, 2, HEAP_ID_GAME_BOARD);
+    work->resourceObj[0][2] = AddCellOrAnimResObjFromNarc(work->resourceMan[2], NARC_a_1_8_4, 23, TRUE, 0, GF_GFX_RES_TYPE_CELL, HEAP_ID_GAME_BOARD);
+    work->resourceObj[0][3] = AddCellOrAnimResObjFromNarc(work->resourceMan[3], NARC_a_1_8_4, 22, TRUE, 0, GF_GFX_RES_TYPE_ANIM, HEAP_ID_GAME_BOARD);
 }
 
 static BATTLE_ARCADE_OBJECT *BattleArcadeObject_Create(GAME_BOARD_SUB_3E8 *work, u32 chara, u32 pal, u32 cell, u32 anim, u16 x, u16 y, u32 priority, int bgPrio, u8 display) {

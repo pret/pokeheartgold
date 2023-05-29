@@ -256,7 +256,7 @@ static const u8 sTrainerGenders[] = {
 };
 
 TrainerGender TrainerClass_GetGenderOrTrainerCount(int trainerClass) {
-    return sTrainerGenders[trainerClass];
+    return (TrainerGender)sTrainerGenders[trainerClass];
 }
 
 void TrMon_OverridePidGender(int species, int forme, int overrideParam, u32 *pid);

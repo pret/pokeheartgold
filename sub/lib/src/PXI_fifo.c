@@ -139,7 +139,7 @@ void PXIi_HandlerRecvFifoNotEmpty(void) {
         }
         callback = FifoRecvCallbackTable[fifomsg.e.tag];
         if (callback != NULL) {
-            callback(fifomsg.e.tag, fifomsg.e.data, fifomsg.e.err);
+            callback((PXIFifoTag)fifomsg.e.tag, fifomsg.e.data, fifomsg.e.err);
         } else if (!fifomsg.e.err) {
             fifomsg.e.err = TRUE;
             PXIi_SetToFifo(fifomsg.raw);

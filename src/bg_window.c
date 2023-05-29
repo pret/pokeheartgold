@@ -1,4 +1,5 @@
 #include "window.h"
+#include "global.h"
 #include "math_util.h"
 
 static u8 TranslateGFBgModePairToGXScreenSize(enum GFBgScreenSize size, enum GFBgType type);
@@ -121,19 +122,19 @@ void SetScreenModeAndDisable(const struct GFBgModeSet *modeSet, enum GFScreen sc
 }
 
 void InitBgFromTemplateEx(BGCONFIG *bgConfig, u8 bgId, const BGTEMPLATE *template, u8 bgMode, GX_LayerToggle enable) {
-    u8 screenSize = TranslateGFBgModePairToGXScreenSize(template->size, bgMode);
+    u8 screenSize = TranslateGFBgModePairToGXScreenSize((enum GFBgScreenSize)template->size, (enum GFBgType)bgMode);
 
     switch (bgId) {
     case GF_BG_LYR_MAIN_0:
         GX_EngineAToggleLayers(GF_BG_LYR_MAIN_0_F, enable);
-        G2_SetBG0Control(screenSize, template->colorMode, template->screenBase, template->charBase, template->bgExtPltt);
+        G2_SetBG0Control((GXBGScrSizeText)screenSize, (GXBGColorMode)template->colorMode, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase, (GXBGExtPltt)template->bgExtPltt);
         G2_SetBG0Priority(template->priority);
         G2_BG0Mosaic(template->mosaic);
         break;
 
     case GF_BG_LYR_MAIN_1:
         GX_EngineAToggleLayers(GF_BG_LYR_MAIN_1_F, enable);
-        G2_SetBG1Control(screenSize, template->colorMode, template->screenBase, template->charBase, template->bgExtPltt);
+        G2_SetBG1Control((GXBGScrSizeText)screenSize, (GXBGColorMode)template->colorMode, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase, (GXBGExtPltt)template->bgExtPltt);
         G2_SetBG1Priority(template->priority);
         G2_BG1Mosaic(template->mosaic);
         break;
@@ -143,13 +144,13 @@ void InitBgFromTemplateEx(BGCONFIG *bgConfig, u8 bgId, const BGTEMPLATE *templat
         switch (bgMode) {
         default:
         case GF_BG_TYPE_TEXT:
-            G2_SetBG2ControlText(screenSize, template->colorMode, template->screenBase, template->charBase);
+            G2_SetBG2ControlText((GXBGScrSizeText)screenSize, (GXBGColorMode)template->colorMode, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
             break;
         case GF_BG_TYPE_AFFINE:
-            G2_SetBG2ControlAffine(screenSize, template->areaOver, template->screenBase, template->charBase);
+            G2_SetBG2ControlAffine((GXBGScrSizeAffine)screenSize, (GXBGAreaOver)template->areaOver, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
             break;
         case GF_BG_TYPE_256x16PLTT:
-            G2_SetBG2Control256x16Pltt(screenSize, template->areaOver, template->screenBase, template->charBase);
+            G2_SetBG2Control256x16Pltt((GXBGScrSize256x16Pltt)screenSize, (GXBGAreaOver)template->areaOver, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
             break;
         }
         G2_SetBG2Priority(template->priority);
@@ -161,13 +162,13 @@ void InitBgFromTemplateEx(BGCONFIG *bgConfig, u8 bgId, const BGTEMPLATE *templat
         switch (bgMode) {
         default:
         case GF_BG_TYPE_TEXT:
-            G2_SetBG3ControlText(screenSize, template->colorMode, template->screenBase, template->charBase);
+            G2_SetBG3ControlText((GXBGScrSizeText)screenSize, (GXBGColorMode)template->colorMode, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
             break;
         case GF_BG_TYPE_AFFINE:
-            G2_SetBG3ControlAffine(screenSize, template->areaOver, template->screenBase, template->charBase);
+            G2_SetBG3ControlAffine((GXBGScrSizeAffine)screenSize, (GXBGAreaOver)template->areaOver, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
             break;
         case GF_BG_TYPE_256x16PLTT:
-            G2_SetBG3Control256x16Pltt(screenSize, template->areaOver, template->screenBase, template->charBase);
+            G2_SetBG3Control256x16Pltt((GXBGScrSize256x16Pltt)screenSize, (GXBGAreaOver)template->areaOver, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
             break;
         }
         G2_SetBG3Priority(template->priority);
@@ -176,14 +177,14 @@ void InitBgFromTemplateEx(BGCONFIG *bgConfig, u8 bgId, const BGTEMPLATE *templat
 
     case GF_BG_LYR_SUB_0:
         GX_EngineBToggleLayers(GF_BG_LYR_SUB_0_F, enable);
-        G2S_SetBG0Control(screenSize, template->colorMode, template->screenBase, template->charBase, template->bgExtPltt);
+        G2S_SetBG0Control((GXBGScrSizeText)screenSize, (GXBGColorMode)template->colorMode, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase, (GXBGExtPltt)template->bgExtPltt);
         G2S_SetBG0Priority(template->priority);
         G2S_BG0Mosaic(template->mosaic);
         break;
 
     case GF_BG_LYR_SUB_1:
         GX_EngineBToggleLayers(GF_BG_LYR_SUB_1_F, enable);
-        G2S_SetBG1Control(screenSize, template->colorMode, template->screenBase, template->charBase, template->bgExtPltt);
+        G2S_SetBG1Control((GXBGScrSizeText)screenSize, (GXBGColorMode)template->colorMode, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase, (GXBGExtPltt)template->bgExtPltt);
         G2S_SetBG1Priority(template->priority);
         G2S_BG1Mosaic(template->mosaic);
         break;
@@ -193,13 +194,13 @@ void InitBgFromTemplateEx(BGCONFIG *bgConfig, u8 bgId, const BGTEMPLATE *templat
         switch (bgMode) {
         default:
         case GF_BG_TYPE_TEXT:
-            G2S_SetBG2ControlText(screenSize, template->colorMode, template->screenBase, template->charBase);
+            G2S_SetBG2ControlText((GXBGScrSizeText)screenSize, (GXBGColorMode)template->colorMode, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
             break;
         case GF_BG_TYPE_AFFINE:
-            G2S_SetBG2ControlAffine(screenSize, template->areaOver, template->screenBase, template->charBase);
+            G2S_SetBG2ControlAffine((GXBGScrSizeAffine)screenSize, (GXBGAreaOver)template->areaOver, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
             break;
         case GF_BG_TYPE_256x16PLTT:
-            G2S_SetBG2Control256x16Pltt(screenSize, template->areaOver, template->screenBase, template->charBase);
+            G2S_SetBG2Control256x16Pltt((GXBGScrSize256x16Pltt)screenSize, (GXBGAreaOver)template->areaOver, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
             break;
         }
         G2S_SetBG2Priority(template->priority);
@@ -211,13 +212,13 @@ void InitBgFromTemplateEx(BGCONFIG *bgConfig, u8 bgId, const BGTEMPLATE *templat
         switch (bgMode) {
         default:
         case GF_BG_TYPE_TEXT:
-            G2S_SetBG3ControlText(screenSize, template->colorMode, template->screenBase, template->charBase);
+            G2S_SetBG3ControlText((GXBGScrSizeText)screenSize, (GXBGColorMode)template->colorMode, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
             break;
         case GF_BG_TYPE_AFFINE:
-            G2S_SetBG3ControlAffine(screenSize, template->areaOver, template->screenBase, template->charBase);
+            G2S_SetBG3ControlAffine((GXBGScrSizeAffine)screenSize, (GXBGAreaOver)template->areaOver, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
             break;
         case GF_BG_TYPE_256x16PLTT:
-            G2S_SetBG3Control256x16Pltt(screenSize, template->areaOver, template->screenBase, template->charBase);
+            G2S_SetBG3Control256x16Pltt((GXBGScrSize256x16Pltt)screenSize, (GXBGAreaOver)template->areaOver, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
             break;
         }
         G2S_SetBG3Priority(template->priority);
@@ -254,8 +255,8 @@ void InitBgFromTemplateEx(BGCONFIG *bgConfig, u8 bgId, const BGTEMPLATE *templat
         bgConfig->bgs[bgId].tileSize = 0x40;
     }
 
-    BgSetPosTextAndCommit(bgConfig, bgId, BG_POS_OP_SET_X, template->x);
-    BgSetPosTextAndCommit(bgConfig, bgId, BG_POS_OP_SET_Y, template->y);
+    BgSetPosTextAndCommit(bgConfig, (enum GFBgLayer)bgId, BG_POS_OP_SET_X, template->x);
+    BgSetPosTextAndCommit(bgConfig, (enum GFBgLayer)bgId, BG_POS_OP_SET_Y, template->y);
 }
 
 void InitBgFromTemplate(BGCONFIG *bgConfig, u8 bgId, const BGTEMPLATE *template, u8 bgMode) {
@@ -273,7 +274,7 @@ void SetBgControlParam(BGCONFIG *config, u8 bgId, enum GFBgCntSet attr, u8 value
         }
     } else if (attr == GF_BG_CNT_SET_SCREEN_SIZE) {
         config->bgs[bgId].mode = value;
-        screenSize = TranslateGFBgModePairToGXScreenSize(config->bgs[bgId].size, value);
+        screenSize = TranslateGFBgModePairToGXScreenSize((enum GFBgScreenSize)config->bgs[bgId].size, (enum GFBgType)value);
         if (value == GF_BG_TYPE_TEXT && config->bgs[bgId].colorMode == GX_BG_COLORMODE_16) {
             config->bgs[bgId].tileSize = 0x20;
         } else {
@@ -292,7 +293,7 @@ void SetBgControlParam(BGCONFIG *config, u8 bgId, enum GFBgCntSet attr, u8 value
             bg0cnt.screenSize = screenSize;
         }
 
-        G2_SetBG0Control(bg0cnt.screenSize, config->bgs[bgId].colorMode, bg0cnt.screenBase, bg0cnt.charBase, bg0cnt.bgExtPltt);
+        G2_SetBG0Control((GXBGScrSizeText)bg0cnt.screenSize, (GXBGColorMode)config->bgs[bgId].colorMode, (GXBGScrBase)bg0cnt.screenBase, (GXBGCharBase)bg0cnt.charBase, (GXBGExtPltt)bg0cnt.bgExtPltt);
         break;
     case GF_BG_LYR_MAIN_1:
         GXBg01Control bg1cnt = G2_GetBG1Control();
@@ -304,7 +305,7 @@ void SetBgControlParam(BGCONFIG *config, u8 bgId, enum GFBgCntSet attr, u8 value
             bg1cnt.screenSize = screenSize;
         }
 
-        G2_SetBG1Control(bg1cnt.screenSize, config->bgs[bgId].colorMode, bg1cnt.screenBase, bg1cnt.charBase, bg1cnt.bgExtPltt);
+        G2_SetBG1Control((GXBGScrSizeText)bg1cnt.screenSize, (GXBGColorMode)config->bgs[bgId].colorMode, (GXBGScrBase)bg1cnt.screenBase, (GXBGCharBase)bg1cnt.charBase, (GXBGExtPltt)bg1cnt.bgExtPltt);
         break;
     case GF_BG_LYR_MAIN_2:
         switch (config->bgs[bgId].mode) {
@@ -319,7 +320,7 @@ void SetBgControlParam(BGCONFIG *config, u8 bgId, enum GFBgCntSet attr, u8 value
                 bg2cnt_tx.screenSize = screenSize;
             }
 
-            G2_SetBG2ControlText(bg2cnt_tx.screenSize, config->bgs[bgId].colorMode, bg2cnt_tx.screenBase, bg2cnt_tx.charBase);
+            G2_SetBG2ControlText((GXBGScrSizeText)bg2cnt_tx.screenSize, (GXBGColorMode)config->bgs[bgId].colorMode, (GXBGScrBase)bg2cnt_tx.screenBase, (GXBGCharBase)bg2cnt_tx.charBase);
             break;
         case GF_BG_TYPE_AFFINE:
             GXBg23ControlAffine bg2cnt_aff = G2_GetBG2ControlAffine();
@@ -331,8 +332,7 @@ void SetBgControlParam(BGCONFIG *config, u8 bgId, enum GFBgCntSet attr, u8 value
                 bg2cnt_aff.screenSize = screenSize;
             }
 
-            G2_SetBG2ControlAffine(bg2cnt_aff.screenSize, bg2cnt_aff.areaOver, bg2cnt_aff.screenBase,
-                                   bg2cnt_aff.charBase);
+            G2_SetBG2ControlAffine((GXBGScrSizeAffine)bg2cnt_aff.screenSize, (GXBGAreaOver)bg2cnt_aff.areaOver, (GXBGScrBase)bg2cnt_aff.screenBase, (GXBGCharBase)bg2cnt_aff.charBase);
             break;
         case GF_BG_TYPE_256x16PLTT:
             GXBg23Control256x16Pltt bg2cnt_256x16pltt = G2_GetBG2Control256x16Pltt();
@@ -344,8 +344,7 @@ void SetBgControlParam(BGCONFIG *config, u8 bgId, enum GFBgCntSet attr, u8 value
                 bg2cnt_256x16pltt.screenSize = screenSize;
             }
 
-            G2_SetBG2Control256x16Pltt(bg2cnt_256x16pltt.screenSize, bg2cnt_256x16pltt.areaOver,
-                                       bg2cnt_256x16pltt.screenBase, bg2cnt_256x16pltt.charBase);
+            G2_SetBG2Control256x16Pltt((GXBGScrSize256x16Pltt)bg2cnt_256x16pltt.screenSize, (GXBGAreaOver)bg2cnt_256x16pltt.areaOver, (GXBGScrBase)bg2cnt_256x16pltt.screenBase, (GXBGCharBase)bg2cnt_256x16pltt.charBase);
             break;
         }
         break;
@@ -362,7 +361,7 @@ void SetBgControlParam(BGCONFIG *config, u8 bgId, enum GFBgCntSet attr, u8 value
                 bg3cnt_tx.screenSize = screenSize;
             }
 
-            G2_SetBG3ControlText(bg3cnt_tx.screenSize, config->bgs[bgId].colorMode, bg3cnt_tx.screenBase, bg3cnt_tx.charBase);
+            G2_SetBG3ControlText((GXBGScrSizeText)bg3cnt_tx.screenSize, (GXBGColorMode)config->bgs[bgId].colorMode, (GXBGScrBase)bg3cnt_tx.screenBase, (GXBGCharBase)bg3cnt_tx.charBase);
             break;
         case GF_BG_TYPE_AFFINE:
             GXBg23ControlAffine bg3cnt_aff = G2_GetBG3ControlAffine();
@@ -374,8 +373,7 @@ void SetBgControlParam(BGCONFIG *config, u8 bgId, enum GFBgCntSet attr, u8 value
                 bg3cnt_aff.screenSize = screenSize;
             }
 
-            G2_SetBG3ControlAffine(bg3cnt_aff.screenSize, bg3cnt_aff.areaOver, bg3cnt_aff.screenBase,
-                                   bg3cnt_aff.charBase);
+            G2_SetBG3ControlAffine((GXBGScrSizeAffine)bg3cnt_aff.screenSize, (GXBGAreaOver)bg3cnt_aff.areaOver, (GXBGScrBase)bg3cnt_aff.screenBase, (GXBGCharBase)bg3cnt_aff.charBase);
             break;
         case GF_BG_TYPE_256x16PLTT:
             GXBg23Control256x16Pltt bg3cnt_256x16pltt = G2_GetBG3Control256x16Pltt();
@@ -387,8 +385,7 @@ void SetBgControlParam(BGCONFIG *config, u8 bgId, enum GFBgCntSet attr, u8 value
                 bg3cnt_256x16pltt.screenSize = screenSize;
             }
 
-            G2_SetBG3Control256x16Pltt(bg3cnt_256x16pltt.screenSize, bg3cnt_256x16pltt.areaOver,
-                                       bg3cnt_256x16pltt.screenBase, bg3cnt_256x16pltt.charBase);
+            G2_SetBG3Control256x16Pltt((GXBGScrSize256x16Pltt)bg3cnt_256x16pltt.screenSize, (GXBGAreaOver)bg3cnt_256x16pltt.areaOver, (GXBGScrBase)bg3cnt_256x16pltt.screenBase, (GXBGCharBase)bg3cnt_256x16pltt.charBase);
             break;
         }
         break;
@@ -402,7 +399,7 @@ void SetBgControlParam(BGCONFIG *config, u8 bgId, enum GFBgCntSet attr, u8 value
             bg0cntsub.screenSize = screenSize;
         }
 
-        G2S_SetBG0Control(bg0cntsub.screenSize, config->bgs[bgId].colorMode, bg0cntsub.screenBase, bg0cntsub.charBase, bg0cntsub.bgExtPltt);
+        G2S_SetBG0Control((GXBGScrSizeText)bg0cntsub.screenSize, (GXBGColorMode)config->bgs[bgId].colorMode, (GXBGScrBase)bg0cntsub.screenBase, (GXBGCharBase)bg0cntsub.charBase, (GXBGExtPltt)bg0cntsub.bgExtPltt);
         break;
     case GF_BG_LYR_SUB_1:
         GXBg01Control bg1cntsub = G2S_GetBG1Control();
@@ -414,7 +411,7 @@ void SetBgControlParam(BGCONFIG *config, u8 bgId, enum GFBgCntSet attr, u8 value
             bg1cntsub.screenSize = screenSize;
         }
 
-        G2S_SetBG1Control(bg1cntsub.screenSize, config->bgs[bgId].colorMode, bg1cntsub.screenBase, bg1cntsub.charBase, bg1cntsub.bgExtPltt);
+        G2S_SetBG1Control((GXBGScrSizeText)bg1cntsub.screenSize, (GXBGColorMode)config->bgs[bgId].colorMode, (GXBGScrBase)bg1cntsub.screenBase, (GXBGCharBase)bg1cntsub.charBase, (GXBGExtPltt)bg1cntsub.bgExtPltt);
         break;
     case GF_BG_LYR_SUB_2:
         switch (config->bgs[bgId].mode) {
@@ -429,7 +426,7 @@ void SetBgControlParam(BGCONFIG *config, u8 bgId, enum GFBgCntSet attr, u8 value
                 bg2cntsub_tx.screenSize = screenSize;
             }
 
-            G2S_SetBG2ControlText(bg2cntsub_tx.screenSize, config->bgs[bgId].colorMode, bg2cntsub_tx.screenBase, bg2cntsub_tx.charBase);
+            G2S_SetBG2ControlText((GXBGScrSizeText)bg2cntsub_tx.screenSize, (GXBGColorMode)config->bgs[bgId].colorMode, (GXBGScrBase)bg2cntsub_tx.screenBase, (GXBGCharBase)bg2cntsub_tx.charBase);
             break;
         case GF_BG_TYPE_AFFINE:
             GXBg23ControlAffine bg2cntsub_aff = G2S_GetBG2ControlAffine();
@@ -441,8 +438,7 @@ void SetBgControlParam(BGCONFIG *config, u8 bgId, enum GFBgCntSet attr, u8 value
                 bg2cntsub_aff.screenSize = screenSize;
             }
 
-            G2S_SetBG2ControlAffine(bg2cntsub_aff.screenSize, bg2cntsub_aff.areaOver, bg2cntsub_aff.screenBase,
-                                    bg2cntsub_aff.charBase);
+            G2S_SetBG2ControlAffine((GXBGScrSizeAffine)bg2cntsub_aff.screenSize, (GXBGAreaOver)bg2cntsub_aff.areaOver, (GXBGScrBase)bg2cntsub_aff.screenBase, (GXBGCharBase)bg2cntsub_aff.charBase);
             break;
         case GF_BG_TYPE_256x16PLTT:
             GXBg23Control256x16Pltt bg2cntsub_256x16pltt = G2S_GetBG2Control256x16Pltt();
@@ -454,8 +450,7 @@ void SetBgControlParam(BGCONFIG *config, u8 bgId, enum GFBgCntSet attr, u8 value
                 bg2cntsub_256x16pltt.screenSize = screenSize;
             }
 
-            G2S_SetBG2Control256x16Pltt(bg2cntsub_256x16pltt.screenSize, bg2cntsub_256x16pltt.areaOver,
-                                        bg2cntsub_256x16pltt.screenBase, bg2cntsub_256x16pltt.charBase);
+            G2S_SetBG2Control256x16Pltt((GXBGScrSize256x16Pltt)bg2cntsub_256x16pltt.screenSize, (GXBGAreaOver)bg2cntsub_256x16pltt.areaOver, (GXBGScrBase)bg2cntsub_256x16pltt.screenBase, (GXBGCharBase)bg2cntsub_256x16pltt.charBase);
             break;
         }
         break;
@@ -472,7 +467,7 @@ void SetBgControlParam(BGCONFIG *config, u8 bgId, enum GFBgCntSet attr, u8 value
                 bg3cntsub_tx.screenSize = screenSize;
             }
 
-            G2S_SetBG3ControlText(bg3cntsub_tx.screenSize, config->bgs[bgId].colorMode, bg3cntsub_tx.screenBase, bg3cntsub_tx.charBase);
+            G2S_SetBG3ControlText((GXBGScrSizeText)bg3cntsub_tx.screenSize, (GXBGColorMode)config->bgs[bgId].colorMode, (GXBGScrBase)bg3cntsub_tx.screenBase, (GXBGCharBase)bg3cntsub_tx.charBase);
             break;
         case GF_BG_TYPE_AFFINE:
             GXBg23ControlAffine bg3cntsub_aff = G2S_GetBG3ControlAffine();
@@ -484,8 +479,7 @@ void SetBgControlParam(BGCONFIG *config, u8 bgId, enum GFBgCntSet attr, u8 value
                 bg3cntsub_aff.screenSize = screenSize;
             }
 
-            G2S_SetBG3ControlAffine(bg3cntsub_aff.screenSize, bg3cntsub_aff.areaOver, bg3cntsub_aff.screenBase,
-                                    bg3cntsub_aff.charBase);
+            G2S_SetBG3ControlAffine((GXBGScrSizeAffine)bg3cntsub_aff.screenSize, (GXBGAreaOver)bg3cntsub_aff.areaOver, (GXBGScrBase)bg3cntsub_aff.screenBase, (GXBGCharBase)bg3cntsub_aff.charBase);
             break;
         case GF_BG_TYPE_256x16PLTT:
             GXBg23Control256x16Pltt bg3cntsub_256x16pltt = G2S_GetBG3Control256x16Pltt();
@@ -497,8 +491,7 @@ void SetBgControlParam(BGCONFIG *config, u8 bgId, enum GFBgCntSet attr, u8 value
                 bg3cntsub_256x16pltt.screenSize = screenSize;
             }
 
-            G2S_SetBG3Control256x16Pltt(bg3cntsub_256x16pltt.screenSize, bg3cntsub_256x16pltt.areaOver,
-                                        bg3cntsub_256x16pltt.screenBase, bg3cntsub_256x16pltt.charBase);
+            G2S_SetBG3Control256x16Pltt((GXBGScrSize256x16Pltt)bg3cntsub_256x16pltt.screenSize, (GXBGAreaOver)bg3cntsub_256x16pltt.areaOver, (GXBGScrBase)bg3cntsub_256x16pltt.screenBase, (GXBGCharBase)bg3cntsub_256x16pltt.charBase);
             break;
         }
         break;
@@ -618,28 +611,28 @@ void SetBgPriority(u8 layer, int priority) {
 void ToggleBgLayer(u8 layer, u8 toggle) {
     switch (layer) {
     case GF_BG_LYR_MAIN_0:
-        GX_EngineAToggleLayers(GF_BG_LYR_MAIN_0_F, toggle);
+        GX_EngineAToggleLayers(GF_BG_LYR_MAIN_0_F, (GX_LayerToggle)toggle);
         break;
     case GF_BG_LYR_MAIN_1:
-        GX_EngineAToggleLayers(GF_BG_LYR_MAIN_1_F, toggle);
+        GX_EngineAToggleLayers(GF_BG_LYR_MAIN_1_F, (GX_LayerToggle)toggle);
         break;
     case GF_BG_LYR_MAIN_2:
-        GX_EngineAToggleLayers(GF_BG_LYR_MAIN_2_F, toggle);
+        GX_EngineAToggleLayers(GF_BG_LYR_MAIN_2_F, (GX_LayerToggle)toggle);
         break;
     case GF_BG_LYR_MAIN_3:
-        GX_EngineAToggleLayers(GF_BG_LYR_MAIN_3_F, toggle);
+        GX_EngineAToggleLayers(GF_BG_LYR_MAIN_3_F, (GX_LayerToggle)toggle);
         break;
     case GF_BG_LYR_SUB_0:
-        GX_EngineBToggleLayers(GF_BG_LYR_SUB_0_F, toggle);
+        GX_EngineBToggleLayers(GF_BG_LYR_SUB_0_F, (GX_LayerToggle)toggle);
         break;
     case GF_BG_LYR_SUB_1:
-        GX_EngineBToggleLayers(GF_BG_LYR_SUB_1_F, toggle);
+        GX_EngineBToggleLayers(GF_BG_LYR_SUB_1_F, (GX_LayerToggle)toggle);
         break;
     case GF_BG_LYR_SUB_2:
-        GX_EngineBToggleLayers(GF_BG_LYR_SUB_2_F, toggle);
+        GX_EngineBToggleLayers(GF_BG_LYR_SUB_2_F, (GX_LayerToggle)toggle);
         break;
     case GF_BG_LYR_SUB_3:
-        GX_EngineBToggleLayers(GF_BG_LYR_SUB_3_F, toggle);
+        GX_EngineBToggleLayers(GF_BG_LYR_SUB_3_F, (GX_LayerToggle)toggle);
         break;
     }
 }

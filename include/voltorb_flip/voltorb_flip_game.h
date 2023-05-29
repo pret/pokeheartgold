@@ -10,7 +10,7 @@ typedef enum CardType {
 } CardType;
 
 // A x2 or x3 card (since the card types are stored as unsigned ints)
-#define IS_MULTIPLIER_CARD(type) (type - 2 <= 1)
+#define IS_MULTIPLIER_CARD(type) ((u32)(type - 2) <= 1)
 #define IS_NOT_ONE_CARD(type)    (type > 1)
 
 // Card ID's
@@ -54,7 +54,7 @@ typedef enum RoundOutcome {
 typedef u8 Level;
 
 typedef struct Card {
-    u32 type;
+    CardType type;
     int memo;
     BOOL flipped;
 } Card;
