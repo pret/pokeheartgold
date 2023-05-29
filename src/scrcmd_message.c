@@ -9,6 +9,8 @@
 #include "pm_string.h"
 #include "scrcmd.h"
 #include "script.h"
+#include "text.h"
+#include "text_0205B4EC.h"
 #include "window.h"
 
 typedef struct MessageBox {
@@ -297,7 +299,7 @@ static void ovFieldMain_GetFormattedECMessage(MessageBox *messageBox, u16 messag
 }
 
 static void ov01_021EF758(MessageBox *messageBox, FontID fontId, u32 textFrameDelay, BOOL canABSpeedUp, u32 a4) {
-    *(messageBox->textPrinterNumPtr) = sub_0205B5EC(messageBox->window, messageBox->message, fontId, textFrameDelay, (u8)canABSpeedUp, a4);
+    *(messageBox->textPrinterNumPtr) = sub_0205B5EC(messageBox->window, messageBox->message, fontId, textFrameDelay, canABSpeedUp, a4);
 }
 
 static void ovFieldMain_AddTextPrinterParameterized(MessageBox *messageBox, FontID fontId) {

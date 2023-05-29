@@ -75,6 +75,6 @@ BOOL Pokedex_IsEnabled(const POKEDEX *pokedex);
 void Pokedex_Enable(POKEDEX *pokedex);
 int Pokedex_GetSeenFormeByIdx(POKEDEX *pokedex, int species, int idx);
 int Pokedex_GetSeenFormeNum(POKEDEX *pokedex, int species);
-void UpdatePokedexWithReceivedSpecies(SAVEDATA *saveData, POKEMON *pokemon);
+void UpdatePokedexWithReceivedSpecies(SAVEDATA *saveData, Pokemon *pokemon);
 
 #endif //POKEHEARTGOLD_POKEDEX_H

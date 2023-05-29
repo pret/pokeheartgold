@@ -30,7 +30,7 @@ void SetupAndStartTutorialBattle(TaskManager *taskManager);
 void SetupAndStartTrainerBattle(TaskManager *taskManager, u32 opponentTrainer1, u32 opponentTrainer2, u32 followerTrainerNum, u32 a4, u32 a5, HeapID heapId, u32 *winFlag);
 void sub_02050B90(FieldSystem *fsys, TaskManager *taskManager, BATTLE_SETUP *setup);
 void sub_0205239C(BATTLE_SETUP *setup, FieldSystem *fsys);
-void sub_02050AAC(TaskManager *man, BATTLE_SETUP *setup, int effect, int bgm, int *winFlag);
+void sub_02050AAC(TaskManager *man, BATTLE_SETUP *setup, int effect, int bgm, u32 *winFlag);
 void sub_020511F8(FieldSystem *fsys, BATTLE_SETUP *setup);
 void sub_020515FC(FieldSystem *fsys, PARTY *party, int battleFlags);
 void sub_02051598(FieldSystem *fsys, void *a1, int battleFlags);
