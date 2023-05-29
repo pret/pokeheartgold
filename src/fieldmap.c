@@ -354,7 +354,7 @@ u16 *GetVarPointer(FieldSystem *fsys, u16 varIdx) {
     } else if (varIdx < SPECIAL_VAR_BASE) {
         return GetVarAddr(state, varIdx);
     } else {
-        return FieldSysGetAttrAddr(fsys, SCRIPTENV_SPECIAL_VAR_8000 + varIdx - SPECIAL_VAR_BASE);
+        return FieldSysGetAttrAddr(fsys, (enum ScriptEnvField)(SCRIPTENV_SPECIAL_VAR_8000 + varIdx - SPECIAL_VAR_BASE));
     }
 }
 

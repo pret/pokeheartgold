@@ -1,4 +1,5 @@
 #include "poke_overlay.h"
+#include "global.h"
 
 #define OVY_MAX_PER_REGION            (8)
 

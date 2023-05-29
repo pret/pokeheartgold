@@ -141,7 +141,7 @@ BOOL ScrCmd_BufferIntEx(SCRIPTCONTEXT* ctx) {
         digits = sub_0205BB1C(number);
     }
 
-    BufferIntegerAsString(*msg_fmt, idx, number, digits, str_conv_mode, TRUE);
+    BufferIntegerAsString(*msg_fmt, idx, number, digits, (STRCONVMODE)str_conv_mode, TRUE);
 
     return FALSE;
 }
@@ -158,7 +158,7 @@ BOOL ScrCmd_661(SCRIPTCONTEXT* ctx) {
         digits = sub_0205BB1C(number);
     }
 
-    BufferIntegerAsString(*msg_fmt, idx, number, digits, str_conv_mode, TRUE);
+    BufferIntegerAsString(*msg_fmt, idx, number, digits, (STRCONVMODE)str_conv_mode, TRUE);
 
     return FALSE;
 }

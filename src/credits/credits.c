@@ -241,7 +241,7 @@ BOOL CreditsApp_OvyInit(OVY_MANAGER *man, int *state) {
         work = OverlayManager_GetData(man);
         InitBgLayers(work);
         InitSprites(work);
-        work->pageWork.msgData = NewMsgDataFromNarc(0, 0x1b, 0x1b8, HEAPID_CREDITS);
+        work->pageWork.msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 0x1b8, HEAPID_CREDITS);
         work->pageWork.string = String_ctor(256, HEAPID_CREDITS);
         DisplayWindow(work);
         SetPageSysTasks(work);
@@ -442,10 +442,10 @@ static void LoadBgGraphics(CreditsAppWork *work) {
     ScrnFileIds temp2 = ov76_021E6F00;
     BGCONFIG *bgConfig = work->bgConfig;
 
-    GfGfxLoader_LoadCharData(NARC_a_2_6_3, 5, bgConfig, 3, 0, 0, 1, HEAPID_CREDITS);
-    GfGfxLoader_LoadCharData(NARC_a_2_6_3, 5, bgConfig, 7, 0, 0, 1, HEAPID_CREDITS);
-    GfGfxLoader_GXLoadPal(NARC_a_2_6_3, 4, 4, 0, 0xe0, HEAPID_CREDITS);
-    GfGfxLoader_GXLoadPal(NARC_a_2_6_3, 4, 0, 0, 0xe0, HEAPID_CREDITS);
+    GfGfxLoader_LoadCharData(NARC_a_2_6_3, 5, bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAPID_CREDITS);
+    GfGfxLoader_LoadCharData(NARC_a_2_6_3, 5, bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAPID_CREDITS);
+    GfGfxLoader_GXLoadPal(NARC_a_2_6_3, 4, GF_BG_LYR_SUB_0, 0, 0xe0, HEAPID_CREDITS);
+    GfGfxLoader_GXLoadPal(NARC_a_2_6_3, 4, GF_BG_LYR_MAIN_0, 0, 0xe0, HEAPID_CREDITS);
     for (u8 i = 0; i < 6; i++) {
         work->unk468[i] = GfGfxLoader_GetScrnData(NARC_a_2_6_3, temp1.ids[i], 1, &work->unk498[i], HEAPID_CREDITS);
         work->unk480[i] = GfGfxLoader_GetScrnData(NARC_a_2_6_3, temp2.ids[i], 1, &work->unk4B0[i], HEAPID_CREDITS);
@@ -481,7 +481,7 @@ static void CreateOamAndObjResMgrs(CreditsAppWork *work) {
     u8 *ptr =  (u8 *)&temp2;
 
     for (u8 i = GF_GFX_RES_TYPE_CHAR; i < GF_GFX_RES_TYPE_ANIM + 1; i++) {
-        work->_2dGfxResMan[i] = Create2DGfxResObjMan(ptr[i], i, HEAPID_CREDITS);
+        work->_2dGfxResMan[i] = Create2DGfxResObjMan(ptr[i], (GfGfxResType)i, HEAPID_CREDITS);
     }
 }
 
@@ -501,9 +501,9 @@ static void ov76_021E6170(CreditsAppWork *work) {
     work->_2dGfxResObj[GF_GFX_RES_TYPE_PLTT] =
         AddPlttResObjFromNarc(work->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], NARC_a_2_6_3, 0, FALSE, 1, 3, 7, HEAPID_CREDITS);
     work->_2dGfxResObj[GF_GFX_RES_TYPE_CELL] =
-        AddCellOrAnimResObjFromNarc(work->_2dGfxResMan[GF_GFX_RES_TYPE_CELL], NARC_a_2_6_3, 2, TRUE, 1, 2, HEAPID_CREDITS);
+        AddCellOrAnimResObjFromNarc(work->_2dGfxResMan[GF_GFX_RES_TYPE_CELL], NARC_a_2_6_3, 2, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAPID_CREDITS);
     work->_2dGfxResObj[GF_GFX_RES_TYPE_ANIM] =
-        AddCellOrAnimResObjFromNarc(work->_2dGfxResMan[GF_GFX_RES_TYPE_ANIM], NARC_a_2_6_3, 3, TRUE, 1, 3, HEAPID_CREDITS);
+        AddCellOrAnimResObjFromNarc(work->_2dGfxResMan[GF_GFX_RES_TYPE_ANIM], NARC_a_2_6_3, 3, TRUE, 1, GF_GFX_RES_TYPE_ANIM, HEAPID_CREDITS);
     work->cutsceneWork.narc = NARC_ctor(NARC_a_2_6_3, HEAPID_CREDITS);
 
     CutsceneWork *cutsceneWork = &work->cutsceneWork;
@@ -841,7 +841,7 @@ static void FlipScreensCB(int a0, ScreenFlipWork *a1, int a2) {
 static void DisplayWindow(CreditsAppWork *work) {
     AddWindow(work->bgConfig, &work->pageWork.window, &ov76_021E6E98);
     BG_FillCharDataRange(work->bgConfig, 5, 0, 1, 0);
-    LoadFontPal0(4, 0x1e0, HEAPID_CREDITS);
+    LoadFontPal0(GF_BG_LYR_SUB_0, 0x1e0, HEAPID_CREDITS);
     GX_EngineBToggleLayers(GF_BG_LYR_MAIN_2, GX_LAYER_TOGGLE_ON);
 }
 
@@ -896,7 +896,7 @@ static void TogglePageDisplayCB(int a0, PageDisplayWork *a1, int a2) {
         }
     }
     ov76_021E6A34(temp, 0, temp2, 0xc0);
-    BgSetPosTextAndCommit(a1->bgConfig, 5, BG_POS_OP_SET_X, xPos);
+    BgSetPosTextAndCommit(a1->bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_SET_X, xPos);
 }
 
 static void ov76_021E6A34(int a0, int a1, int a2, int a3) {

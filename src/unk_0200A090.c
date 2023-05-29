@@ -1,5 +1,6 @@
 #include "unk_0200A090.h"
 #include "gf_gfx_loader.h"
+#include "global.h"
 
 static void loadAll2DGfxResObjFromHeaderInternal(struct _2DGfxResMan *mgr, const struct _2DGfxResHeader *header, int first, int count, struct _2DGfxResObjList *list, HeapID heapId);
 static void destroyAllObjects(struct _2DGfxResMan *mgr);
@@ -60,7 +61,7 @@ struct _2DGfxResObj *Add2DGfxResObjFromHeader(struct _2DGfxResMan *mgr, const st
     } else {
         headerNarc = &((struct _2DGfxResHeaderNarc *)header->table)[idx];
         GF_ASSERT(_2DGfxResObjExistsById(mgr, headerNarc->id) == TRUE);
-        Add2DGfxResObjFromNarc(mgr, ret, headerNarc->narcId, headerNarc->fileId, headerNarc->compressed, headerNarc->id, headerNarc->extra[0], headerNarc->extra[1], header->type, heapId, FALSE);
+        Add2DGfxResObjFromNarc(mgr, ret, (NarcId)headerNarc->narcId, headerNarc->fileId, headerNarc->compressed, headerNarc->id, headerNarc->extra[0], headerNarc->extra[1], header->type, heapId, FALSE);
     }
     mgr->num++;
     return ret;
@@ -88,7 +89,7 @@ struct _2DGfxResObj *AddPlttResObjFromNarc(struct _2DGfxResMan *mgr, NarcId narc
     return ret;
 }
 
-struct _2DGfxResObj *AddCellOrAnimResObjFromNarc(struct _2DGfxResMan *mgr, NarcId narcId, int fileId, BOOL compressed, int id, int type, HeapID heapId) {
+struct _2DGfxResObj *AddCellOrAnimResObjFromNarc(struct _2DGfxResMan *mgr, NarcId narcId, int fileId, BOOL compressed, int id, GfGfxResType type, HeapID heapId) {
     struct _2DGfxResObj *ret;
     GF_ASSERT(mgr != NULL);
     //GF_ASSERT(mgr->type == type);
@@ -155,7 +156,7 @@ struct _2DGfxResObj *AddPlttResObjFromOpenNarc(struct _2DGfxResMan *mgr, NARC *n
     GF_ASSERT(mgr->type == GF_GFX_RES_TYPE_PLTT);
     ret = sub_0200AA70(mgr);
     GF_ASSERT(ret != NULL);
-    Add2DGfxResObjFromOpenNarc(mgr, ret, narc, fileId, compressed, id, vram, pltt_num, 1, heapId, FALSE);
+    Add2DGfxResObjFromOpenNarc(mgr, ret, narc, fileId, compressed, id, vram, pltt_num, GF_GFX_RES_TYPE_PLTT, heapId, FALSE);
     mgr->num++;
     return ret;
 }
@@ -376,7 +377,7 @@ void sub_0200A908(const void *a0, struct _2DGfxResHeader *header, HeapID heapId)
     const int *x;
     GF_ASSERT(header != NULL);
     x = a0;
-    header->type = x[0];
+    header->type = (GfGfxResType)x[0]; //todo sort this out while maintaining matching
     header->isNarc = TRUE;
     header->num = sub_0200AC88((const struct _2DGfxResHeaderNarc *)(x + 1));
     if (header->num > 0) {

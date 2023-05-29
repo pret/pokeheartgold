@@ -1,9 +1,10 @@
 #include "gf_gfx_loader.h"
 #include "window.h"
+#include "nnsys.h"
 
 static u32 GfGfxLoader_LoadCharDataInternal(void *data, BGCONFIG *bgConfig, enum GFBgLayer layer, u32 tileStart, u32 szByte);
 static void GfGfxLoader_LoadScrnDataInternal(void *data, BGCONFIG *bgConfig, enum GFBgLayer layer, u32 tileStart, u32 szByte);
-static void GfGfxLoader_GXLoadPalWithSrcOffsetInternal(void *data, int layer, u32 srcOffset, u32 baseAddr, u32 szByte);
+static void GfGfxLoader_GXLoadPalWithSrcOffsetInternal(void *data, enum GFBgLayer layer, u32 srcOffset, u32 baseAddr, u32 szByte);
 static void GfGfxLoader_PartiallyLoadPaletteInternal(void *data, NNS_G2D_VRAM_TYPE type, u32 baseAddr, NNSG2dImagePaletteProxy *pPltProxy);
 static u32 GfGfxLoader_LoadImageMappingInternal(void *data, int layout, u32 size, NNS_G2D_VRAM_TYPE type, u32 baseAddr, NNSG2dImageProxy *pImgProxy);
 static void *GfGfxLoader_GetCharDataInternal(void *data, NNSG2dCharacterData **ppCharData);
@@ -18,17 +19,17 @@ u32 GfGfxLoader_LoadCharData(NarcId narcId, s32 memberNo, BGCONFIG *bgConfig, en
     return GfGfxLoader_LoadCharDataInternal(data, bgConfig, layer, tileStart, szByte);
 }
 
-void GfGfxLoader_LoadScrnData(NarcId narcId, s32 memberNo, BGCONFIG *bgConfig, int layer, u32 tileStart, u32 szByte, BOOL isCompressed, HeapID heapId) {
+void GfGfxLoader_LoadScrnData(NarcId narcId, s32 memberNo, BGCONFIG *bgConfig, enum GFBgLayer layer, u32 tileStart, u32 szByte, BOOL isCompressed, HeapID heapId) {
     void *data;
     data = GfGfxLoader_LoadFromNarc(narcId, memberNo, isCompressed, heapId, TRUE);
     GfGfxLoader_LoadScrnDataInternal(data, bgConfig, layer, tileStart, szByte);
 }
 
-void GfGfxLoader_GXLoadPal(NarcId narcId, s32 memberNo, int layer, u32 baseAddr, u32 szByte, HeapID heapId) {
+void GfGfxLoader_GXLoadPal(NarcId narcId, s32 memberNo, enum GFBgLayer layer, u32 baseAddr, u32 szByte, HeapID heapId) {
     GfGfxLoader_GXLoadPalWithSrcOffset(narcId, memberNo, layer, 0, baseAddr, szByte, heapId);
 }
 
-void GfGfxLoader_GXLoadPalWithSrcOffset(NarcId narcId, s32 memberNo, int layer, u32 srcOffset, u32 baseAddr, u32 szByte, HeapID heapId) {
+void GfGfxLoader_GXLoadPalWithSrcOffset(NarcId narcId, s32 memberNo, enum GFBgLayer layer, u32 srcOffset, u32 baseAddr, u32 szByte, HeapID heapId) {
     void *data;
     data = GfGfxLoader_LoadFromNarc(narcId, memberNo, FALSE, heapId, TRUE);
     GfGfxLoader_GXLoadPalWithSrcOffsetInternal(data, layer, srcOffset, baseAddr, szByte);
@@ -144,11 +145,11 @@ void GfGfxLoader_LoadScrnDataFromOpenNarc(NARC *narc, s32 memberNo, BGCONFIG *bg
     GfGfxLoader_LoadScrnDataInternal(data, bgConfig, layer, tileStart, szByte);
 }
 
-void GfGfxLoader_GXLoadPalFromOpenNarc(NARC *narc, s32 memberNo, int layer, u32 baseAddr, u32 szByte, HeapID heapId) {
+void GfGfxLoader_GXLoadPalFromOpenNarc(NARC *narc, s32 memberNo, enum GFBgLayer layer, u32 baseAddr, u32 szByte, HeapID heapId) {
     GfGfxLoader_GXLoadPalWithSrcOffsetFromOpenNarc(narc, memberNo, layer, 0, baseAddr, szByte, heapId);
 }
 
-void GfGfxLoader_GXLoadPalWithSrcOffsetFromOpenNarc(NARC *narc, s32 memberNo, int layer, u32 srcOffset, u32 baseAddr, u32 szByte, HeapID heapId) {
+void GfGfxLoader_GXLoadPalWithSrcOffsetFromOpenNarc(NARC *narc, s32 memberNo, enum GFBgLayer layer, u32 srcOffset, u32 baseAddr, u32 szByte, HeapID heapId) {
     void *data;
     data = GfGfxLoader_LoadFromOpenNarc(narc, memberNo, FALSE, heapId, TRUE);
     GfGfxLoader_GXLoadPalWithSrcOffsetInternal(data, layer, srcOffset, baseAddr, szByte);
@@ -265,7 +266,7 @@ static void GfGfxLoader_LoadScrnDataInternal(void *data, BGCONFIG *bgConfig, enu
     }
 }
 
-static void GfGfxLoader_GXLoadPalWithSrcOffsetInternal(void *data, int layer, u32 srcOffset, u32 baseAddr, u32 szByte) {
+static void GfGfxLoader_GXLoadPalWithSrcOffsetInternal(void *data, enum GFBgLayer layer, u32 srcOffset, u32 baseAddr, u32 szByte) {
     static void (*const _020F5968[])(const void *pSrc, u32 offset, u32 szByte) = {
         GX_LoadBGPltt,
         GX_LoadOBJPltt,

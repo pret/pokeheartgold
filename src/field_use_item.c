@@ -39,14 +39,14 @@ static struct AlphItemUseData *CreateAlphItemUseWork(int scriptNo, u16 var_8000,
 static void ExitMenuAndJumpToAlphChamberReaction(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2, int scriptNo);
 static BOOL Task_UseItemInAlphChamber(TaskManager *taskManager);
 static void ItemMenuUseFunc_HealingItem(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
-static u32 ItemCheckUseFunc_Dummy(const struct ItemCheckUseData *data);
+static enum ItemUseError ItemCheckUseFunc_Dummy(const struct ItemCheckUseData *data);
 static void ItemMenuUseFunc_Bicycle(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
 static BOOL ItemFieldUseFunc_Bicycle(struct ItemFieldUseData *data);
 static BOOL Task_MountOrDismountBicycle(TaskManager *taskManager);
-static u32 ItemCheckUseFunc_Bicycle(const struct ItemCheckUseData *data);
+static enum ItemUseError ItemCheckUseFunc_Bicycle(const struct ItemCheckUseData *data);
 static void ItemMenuUseFunc_TMHM(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
 static void ItemMenuUseFunc_Mail(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
-static u32 ItemCheckUseFunc_Berry(const struct ItemCheckUseData *data);
+static enum ItemUseError ItemCheckUseFunc_Berry(const struct ItemCheckUseData *data);
 static void ItemMenuUseFunc_Berry(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
 static void ItemMenuUseFunc_PalPad(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
 static BOOL ItemFieldUseFunc_PalPad(struct ItemFieldUseData *data);
@@ -58,12 +58,12 @@ static void ItemMenuUseFunc_GoodRod(struct ItemMenuUseData *data, const struct I
 static BOOL ItemFieldUseFunc_GoodRod(struct ItemFieldUseData *data);
 static void ItemMenuUseFunc_SuperRod(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
 static BOOL ItemFieldUseFunc_SuperRod(struct ItemFieldUseData *data);
-static u32 ItemCheckUseFunc_FishingRod(const struct ItemCheckUseData *data);
+static enum ItemUseError ItemCheckUseFunc_FishingRod(const struct ItemCheckUseData *data);
 static BOOL ItemFieldUseFunc_Generic(struct ItemFieldUseData *data);
 static BOOL Task_PrintRegisteredKeyItemUseMessage(TaskManager *taskManager);
 static void ItemMenuUseFunc_EvoStone(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
 static void ItemMenuUseFunc_EscapeRope(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
-static u32 ItemCheckUseFunc_EscapeRope(const struct ItemCheckUseData *data);
+static enum ItemUseError ItemCheckUseFunc_EscapeRope(const struct ItemCheckUseData *data);
 static BOOL Task_JumpToFieldEscapeRope(TaskManager *taskManager);
 static void ItemMenuUseFunc_ApricornBox(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
 static BOOL ItemFieldUseFunc_ApricornBox(struct ItemFieldUseData *data);
@@ -85,7 +85,7 @@ static void ItemMenuUseFunc_VSRecorder(struct ItemMenuUseData *data, const struc
 static BOOL ItemFieldUseFunc_VSRecorder(struct ItemFieldUseData *data);
 static void *_VsRecorderInit(FieldSystem *fsys);
 static BOOL KeyItemIdSpawnsSubprocess(FieldSystem *fsys, u16 itemId);
-static void RegisteredItem_GoToPrintErrorTask(struct ItemFieldUseData *data, u32 error);
+static void RegisteredItem_GoToPrintErrorTask(struct ItemFieldUseData *data, enum ItemUseError error);
 static BOOL Task_RegisteredItem_GoToApp(TaskManager *taskManager);
 static void RegisteredItem_CreateGoToAppTask(struct ItemFieldUseData *data, FieldApplicationWorkCtor ctor, BOOL no_app);
 
@@ -234,7 +234,7 @@ static void ItemMenuUseFunc_HealingItem(struct ItemMenuUseData *data, const stru
     sub_0203C8F0(env, sub_0203CA9C);
 }
 
-static u32 ItemCheckUseFunc_Dummy(const struct ItemCheckUseData *data) {
+static enum ItemUseError ItemCheckUseFunc_Dummy(const struct ItemCheckUseData *data) {
     return ITEMUSEERROR_OAKSWORDS;
 }
 
@@ -312,7 +312,7 @@ static BOOL Task_MountOrDismountBicycle(TaskManager *taskManager) {
     return FALSE;
 }
 
-static u32 ItemCheckUseFunc_Bicycle(const struct ItemCheckUseData *data) {
+static enum ItemUseError ItemCheckUseFunc_Bicycle(const struct ItemCheckUseData *data) {
     if (data->haveFollower == TRUE) {
         return ITEMUSEERROR_NOFOLLOWER;
     }
@@ -367,7 +367,7 @@ static void ItemMenuUseFunc_Mail(struct ItemMenuUseData *data, const struct Item
     sub_0203C8F0(env, sub_0203D830);
 }
 
-static u32 ItemCheckUseFunc_Berry(const struct ItemCheckUseData *data) {
+static enum ItemUseError ItemCheckUseFunc_Berry(const struct ItemCheckUseData *data) {
     return ITEMUSEERROR_OKAY; // It is always okay to use a Berry
 }
 
@@ -455,7 +455,7 @@ static BOOL ItemFieldUseFunc_SuperRod(struct ItemFieldUseData *data) {
     return FALSE;
 }
 
-static u32 ItemCheckUseFunc_FishingRod(const struct ItemCheckUseData *data) {
+static enum ItemUseError ItemCheckUseFunc_FishingRod(const struct ItemCheckUseData *data) {
     if (data->haveFollower == TRUE) {
         return ITEMUSEERROR_NOFOLLOWER;
     }
@@ -565,7 +565,7 @@ static void ItemMenuUseFunc_EscapeRope(struct ItemMenuUseData *data, const struc
     BagTakeItem(SaveGetBag(fsys->savedata), data->itemId, 1, 11);
 }
 
-static u32 ItemCheckUseFunc_EscapeRope(const struct ItemCheckUseData *data) {
+static enum ItemUseError ItemCheckUseFunc_EscapeRope(const struct ItemCheckUseData *data) {
     if (data->haveFollower == TRUE) {
         return ITEMUSEERROR_NOFOLLOWER;
     }
@@ -749,7 +749,7 @@ int UseRegisteredItemButtonInField(FieldSystem *fsys, u8 slot) {
     ItemFieldUseFunc fieldUseFunc;
     ItemCheckUseFunc checkUseFunc;
     BOOL result;
-    u32 error;
+    enum ItemUseError error;
 
     GF_ASSERT(slot == 1 || slot == 2);
     if (sub_02067584(fsys) == TRUE) {
@@ -802,7 +802,7 @@ int UseRegisteredItemButtonInField(FieldSystem *fsys, u8 slot) {
     return 2;
 }
 
-static void RegisteredItem_GoToPrintErrorTask(struct ItemFieldUseData *data, u32 error) {
+static void RegisteredItem_GoToPrintErrorTask(struct ItemFieldUseData *data, enum ItemUseError error) {
     struct RegisteredKeyItemUseMessagePrintTaskData *env = AllocFromHeap(11, sizeof(struct RegisteredKeyItemUseMessagePrintTaskData));
     env->state = 0;
     env->strbuf = String_ctor(128, 11);

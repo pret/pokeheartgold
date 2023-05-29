@@ -1,9 +1,8 @@
 #ifndef POKEHEARTGOLD_UNK_0203DFA4_H
 #define POKEHEARTGOLD_UNK_0203DFA4_H
 
+#include "field_system.h"
 #include "overlay_manager.h"
-
-typedef struct FieldSystem FieldSystem;
 
 void sub_0203DEF0(FieldSystem *fsys);
 BOOL sub_0203DF7C(FieldSystem *fsys);

@@ -152,7 +152,7 @@ extern VoltorbFlipWorkflows sVoltorbFlipWorkflows;
 
 static void RenderCoinPayoutScreen(VoltorbFlipAppWork *work) {
     BgClearTilemapBufferAndCommit(work->bgConfig, 5);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, 6, work->bgConfig, 4, 0, 0, 1, work->heapId);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, 6, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, 1, work->heapId);
 
     int payout = GamePayout(work->game);
     u16 coins = (u32)CheckCoins(work->coins);
@@ -168,7 +168,7 @@ static void RenderCoinPayoutScreen(VoltorbFlipAppWork *work) {
 
 static void RenderHowToPlayScreen(VoltorbFlipAppWork *work) {
     BgClearTilemapBufferAndCommit(work->bgConfig, 5);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, 8, work->bgConfig, 4, 0, 0, 1, work->heapId);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, 8, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, 1, work->heapId);
 
     // "Quit" (on blue button)
     PaintMessageOnWindow(work, 4, msg_0039_00008, &work->wTutorialQuit, 0, 0);
@@ -182,7 +182,7 @@ static void RenderHowToPlayScreen(VoltorbFlipAppWork *work) {
 
 static void RenderHintScreen(VoltorbFlipAppWork *work) {
     BgClearTilemapBufferAndCommit(work->bgConfig, 5);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, 7, work->bgConfig, 4, 0, 0, 1, work->heapId);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, 7, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, 1, work->heapId);
 
     // "By looking at the numbers on the sides of..."
     PaintMessageOnWindow(work, 0, msg_0039_00009, &work->wHint, 0, 0);
@@ -190,7 +190,7 @@ static void RenderHintScreen(VoltorbFlipAppWork *work) {
 
 static void RenderAboutMemoScreen(VoltorbFlipAppWork *work) {
     BgClearTilemapBufferAndCommit(work->bgConfig, 5);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, 9, work->bgConfig, 4, 0, 0, 1, work->heapId);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, 9, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, 1, work->heapId);
 
     // "Open Memo" (text in button)
     PaintMessageOnWindow(work, 4, msg_0039_00006, &work->wAboutMemoOpen, 0, 0);
@@ -616,8 +616,8 @@ BOOL AwaitCardFlipAndResult(WorkflowEngine *workflow, VoltorbFlipAppWork *work) 
 
             int var9 = GamePayout(work->game);
 
-            BufferIntegerAsString(work->msgFmt, 0, type, 1, 0, 1);
-            BufferIntegerAsString(work->msgFmt, 1, var9, 5, 0, 1);
+            BufferIntegerAsString(work->msgFmt, 0, type, 1, STRCONVMODE_LEFT_ALIGN, 1);
+            BufferIntegerAsString(work->msgFmt, 1, var9, 5, STRCONVMODE_LEFT_ALIGN, 1);
             sub_0200DDB8(work->unk14C[1], var5, var7);
             sub_0200DC4C(work->unk14C[1], 0);
 
@@ -702,7 +702,7 @@ BOOL AwardCoins(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     switch (state) {
     case 0:
         int var2 = GamePayout(work->game);
-        BufferIntegerAsString(work->msgFmt, 0, var2, 5, 0, 1);
+        BufferIntegerAsString(work->msgFmt, 0, var2, 5, STRCONVMODE_LEFT_ALIGN, 1);
         BufferPlayersName(work->msgFmt, 1, work->profile);
         // "{} received {} Coin(s)!"
         PrintTextWindow(work, msg_0039_00040, 1);
@@ -927,7 +927,7 @@ BOOL PrintAreYouSureYouWantToQuit(WorkflowEngine *workflow, VoltorbFlipAppWork *
         } else {
             // "If you quit now, you will receive {} Coin(s)..."
             msgNo = msg_0039_00034;
-            BufferIntegerAsString(work->msgFmt, 0, payout, 5, 0, 1);
+            BufferIntegerAsString(work->msgFmt, 0, payout, 5, STRCONVMODE_LEFT_ALIGN, 1);
         }
         ov122_021E7888(&work->unk25C);
         PrintTextWindow(work, msgNo, 1);
@@ -1564,7 +1564,7 @@ static void RenderTopScreen(VoltorbFlipAppWork *work) {
     PaintMessageOnWindow(work, 4, msg_0039_00008, &work->wQuit, 0, 0);
     BgCommitTilemapBufferToVram(work->bgConfig, 1);
 
-    BufferIntegerAsString(work->msgFmt, 0, 1, 1, 0, 1);
+    BufferIntegerAsString(work->msgFmt, 0, 1, 1, STRCONVMODE_LEFT_ALIGN, 1);
 
     PrintMessageOnWindow(work, 0, msg_0039_00000, &work->wCurrentLevel, 0, 0, 0x000f0100);
     PrintMessageOnWindow(work, 0, msg_0039_00001, &work->wFlipCardsAndCollectCoins, 0, 0, 0x000f0100);
@@ -1663,7 +1663,7 @@ static BOOL IsPrinterFinished(VoltorbFlipAppWork *work) {
 static void FormatGameLevel(VoltorbFlipAppWork *work, int idx) {
     u8 displayLevel = 8 - GameLevel(work->game);
 
-    BufferIntegerAsString(work->msgFmt, idx, displayLevel, 1, 0, 1);
+    BufferIntegerAsString(work->msgFmt, idx, displayLevel, 1, STRCONVMODE_LEFT_ALIGN, 1);
 }
 
 static void ov122_021E7888(Ov122_021E7888 *a0) {
@@ -1723,18 +1723,18 @@ static void ov122_021E79D0(VoltorbFlipAppWork *work) {
     FontID_Alloc(4, work->heapId);
     GF_ASSERT(work->narc != 0);
 
-    GfGfxLoader_GXLoadPalFromOpenNarc(work->narc, 0, 0, 0, 0, work->heapId);
-    GfGfxLoader_GXLoadPal(16, 9, 0, 0x1c0, 32, work->heapId);
-    LoadFontPal1(0, 0x180, work->heapId);
-    LoadFontPal0(4, 0x180, work->heapId);
-    GfGfxLoader_GXLoadPal(16, 9, 4, 0x1a0, 32, work->heapId);
-    LoadUserFrameGfx2(work->bgConfig, 3, 1, 13, work->unk229, work->heapId);
-    GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, 2, work->bgConfig, 0, 0, 0, 1, work->heapId);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, 4, work->bgConfig, 0, 0, 0, 1, work->heapId);
-    GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, 2, work->bgConfig, 2, 0, 0, 1, work->heapId);
-    GfGfxLoader_GXLoadPalFromOpenNarc(work->narc, 1, 4, 0, 0, work->heapId);
-    GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, 3, work->bgConfig, 4, 0, 0, 1, work->heapId);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, 6, work->bgConfig, 4, 0, 0, 1, work->heapId);
+    GfGfxLoader_GXLoadPalFromOpenNarc(work->narc, 0, GF_BG_LYR_MAIN_0, 0, 0, work->heapId);
+    GfGfxLoader_GXLoadPal(NARC_graphic_font, 9, GF_BG_LYR_MAIN_0, 0x1c0, 32, work->heapId);
+    LoadFontPal1(GF_BG_LYR_MAIN_0, 0x180, work->heapId);
+    LoadFontPal0(GF_BG_LYR_SUB_0, 0x180, work->heapId);
+    GfGfxLoader_GXLoadPal(NARC_graphic_font, 9, GF_BG_LYR_SUB_0, 0x1a0, 32, work->heapId);
+    LoadUserFrameGfx2(work->bgConfig, GF_BG_LYR_MAIN_3, 1, 13, work->unk229, work->heapId);
+    GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, 2, work->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, 1, work->heapId);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, 4, work->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, 1, work->heapId);
+    GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, 2, work->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 1, work->heapId);
+    GfGfxLoader_GXLoadPalFromOpenNarc(work->narc, 1, GF_BG_LYR_SUB_0, 0, 0, work->heapId);
+    GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, 3, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, 1, work->heapId);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, 6, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, 1, work->heapId);
 }
 
 static void ov122_021E7AEC(VoltorbFlipAppWork *work) {
@@ -2024,8 +2024,8 @@ static void ov122_021E8094(OVY_MANAGER *man) {
     work->unk229 = Options_GetFrame(work->options);
     work->unk22A = Options_GetTextFrameDelay(work->options);
 
-    work->narc = NARC_ctor(0x10a, work->heapId);
-    work->msgData = NewMsgDataFromNarc(0, 0x1b, 0x27, work->heapId);
+    work->narc = NARC_ctor(NARC_a_2_6_4, work->heapId);
+    work->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 0x27, work->heapId);
     work->msgFmt = MessageFormat_new(work->heapId);
     work->unk13C = sub_0201660C(work->heapId);
 
@@ -2047,12 +2047,12 @@ static void ov122_021E8094(OVY_MANAGER *man) {
     PrintBoardVoltorbsAndPoints(work);
 
     sub_02004EC4(0x46, 0, 0);
-    GX_EngineAToggleLayers(16, 1);
-    GX_EngineBToggleLayers(16, 1);
+    GX_EngineAToggleLayers(16, GX_LAYER_TOGGLE_ON);
+    GX_EngineBToggleLayers(16, GX_LAYER_TOGGLE_ON);
     sub_0200FBDC(0);
     sub_0200FBDC(1);
-    TextFlags_SetCanABSpeedUpPrint(1);
-    sub_02002B8C(1);
+    TextFlags_SetCanABSpeedUpPrint(TRUE);
+    sub_02002B8C(TRUE);
 
     Main_SetVBlankIntrCB((GFIntrCB)ov122_021E8004, work);
     GameStats_AddSpecial(Sav2_GameStats_get(args->savedata), 6);

@@ -25,6 +25,7 @@
 #include "unk_02013FDC.h"
 #include "gf_gfx_loader.h"
 #include "choose_starter_app.h"
+#include "global.h"
 
 #define HEAPID_STARTERCHOOSE       46
 
@@ -406,8 +407,8 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
             if (work->state == SELECT_STATE_CONFIRM) {
                 work->modelAnimState = MODEL_ANM_STATE_IDLE;
                 printMsgOnBottom(work, msg_0190_00007);
-                GX_EngineAToggleLayers(2, 0);
-                GX_EngineAToggleLayers(4, 0);
+                GX_EngineAToggleLayers(2, GX_LAYER_TOGGLE_OFF);
+                GX_EngineAToggleLayers(4, GX_LAYER_TOGGLE_OFF);
                 setAllMonSpritesInvisible(&work->monSpriteData);
                 work->state = SELECT_STATE_NULL;
                 *state = CHOOSE_STARTER_STATE_BACK_OUT;
@@ -774,10 +775,10 @@ static void initCameraPosition(struct ChooseStarterAppWork *work) {
 static void createObjResMans(struct ChooseStarterAppWork *work) {
     struct StarterChooseMonSpriteData *pMonSpriteData = &work->monSpriteData;
     pMonSpriteData->spriteList = G2dRenderer_Init(3, &pMonSpriteData->g2dRender, work->heapId);
-    pMonSpriteData->charResMan = Create2DGfxResObjMan(3, 0, work->heapId);
-    pMonSpriteData->plttResMan = Create2DGfxResObjMan(3, 1, work->heapId);
-    pMonSpriteData->cellResMan = Create2DGfxResObjMan(3, 2, work->heapId);
-    pMonSpriteData->animResMan = Create2DGfxResObjMan(3, 3, work->heapId);
+    pMonSpriteData->charResMan = Create2DGfxResObjMan(3, GF_GFX_RES_TYPE_CHAR, work->heapId);
+    pMonSpriteData->plttResMan = Create2DGfxResObjMan(3, GF_GFX_RES_TYPE_PLTT, work->heapId);
+    pMonSpriteData->cellResMan = Create2DGfxResObjMan(3, GF_GFX_RES_TYPE_CELL, work->heapId);
+    pMonSpriteData->animResMan = Create2DGfxResObjMan(3, GF_GFX_RES_TYPE_ANIM, work->heapId);
     GX_EngineBToggleLayers(0x10, GX_LAYER_TOGGLE_ON);
 }
 
@@ -1022,22 +1023,22 @@ static void makeAndDrawWindows(struct ChooseStarterAppWork *work) {
     AddWindowParameterized(work->bgConfig, work->winBottom, 1, 1, 19, 29, 4, 2, 0x01F);
     FillWindowPixelBuffer(work->winTop, 15);
     FillWindowPixelBuffer(work->winBottom, 0);
-    LoadUserFrameGfx2(work->bgConfig, 4, 0x200, 0, work->frame, work->heapId);
-    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_08_window_NCLR, 4, 0x040, 0x20, work->heapId);
-    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_08_window_NCLR, 0, 0x040, 0x20, work->heapId);
+    LoadUserFrameGfx2(work->bgConfig, GF_BG_LYR_SUB_0, 0x200, 0, work->frame, work->heapId);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_08_window_NCLR, GF_BG_LYR_SUB_0, 0x040, 0x20, work->heapId);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_08_window_NCLR, GF_BG_LYR_MAIN_0, 0x040, 0x20, work->heapId);
     DrawFrameAndWindow2(work->winTop, FALSE, 0x200, 0);
 }
 
 static void loadBgGraphics(BGCONFIG *bgConfig, HeapID heapId) {
-    GfGfxLoader_LoadCharData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_13_bgl2_NCGR, bgConfig, 2, 0, 0, FALSE, heapId);
-    GfGfxLoader_LoadCharData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_10_bgl5_NCGR, bgConfig, 5, 0, 0, FALSE, heapId);
-    GfGfxLoader_LoadCharData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_16_bgl6_NCGR, bgConfig, 6, 0, 0, FALSE, heapId);
-    GfGfxLoader_LoadScrnData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_14_bgl2_NSCR, bgConfig, 2, 0, 0, FALSE, heapId);
-    GfGfxLoader_LoadScrnData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_11_bgl5_NSCR, bgConfig, 5, 0, 0, FALSE, heapId);
-    GfGfxLoader_LoadScrnData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_17_bgl6_NSCR, bgConfig, 6, 0, 0, FALSE, heapId);
-    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_12_bgl2_NCLR, 0, 0x60, 0x20, heapId);
-    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_09_bgl5_NCLR, 4, 0x60, 0x20, heapId);
-    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_15_bgl6_NCLR, 4, 0x80, 0x20, heapId);
+    GfGfxLoader_LoadCharData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_13_bgl2_NCGR, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, FALSE, heapId);
+    GfGfxLoader_LoadCharData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_10_bgl5_NCGR, bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, heapId);
+    GfGfxLoader_LoadCharData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_16_bgl6_NCGR, bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, heapId);
+    GfGfxLoader_LoadScrnData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_14_bgl2_NSCR, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, FALSE, heapId);
+    GfGfxLoader_LoadScrnData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_11_bgl5_NSCR, bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, heapId);
+    GfGfxLoader_LoadScrnData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_17_bgl6_NSCR, bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, heapId);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_12_bgl2_NCLR, GF_BG_LYR_MAIN_0, 0x60, 0x20, heapId);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_09_bgl5_NCLR, GF_BG_LYR_SUB_0, 0x60, 0x20, heapId);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_15_bgl6_NCLR, GF_BG_LYR_SUB_0, 0x80, 0x20, heapId);
     BgTilemapRectChangePalette(bgConfig, 2, 0, 0, 0x20, 0x18, 3);
     BgTilemapRectChangePalette(bgConfig, 5, 0, 0, 0x20, 0x18, 3);
     BgTilemapRectChangePalette(bgConfig, 6, 0, 0, 0x20, 0x18, 4);
@@ -1190,8 +1191,8 @@ static void createMonSprites(struct ChooseStarterAppWork *work) {
             0,
             0
         );
-        spriteData->charDatas[i] = sub_0201442C(spriteData->param.narcID, spriteData->param.charDataID, work->heapId);
-        spriteData->plttDatas[i] = sub_02014450(spriteData->param.narcID, spriteData->param.palDataID, work->heapId);
+        spriteData->charDatas[i] = sub_0201442C((NarcId)spriteData->param.narcID, spriteData->param.charDataID, work->heapId);
+        spriteData->plttDatas[i] = sub_02014450((NarcId)spriteData->param.narcID, spriteData->param.palDataID, work->heapId);
         loadOneMonObj(spriteData->charResMan, spriteData->plttResMan, spriteData->charDatas[i], spriteData->plttDatas[i], i);
         createOneMonRender(spriteData, i, work->heapId);
     }

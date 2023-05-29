@@ -51,7 +51,7 @@ struct ItemMenuUseData {
 
 typedef void (*ItemMenuUseFunc)(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
 typedef BOOL (*ItemFieldUseFunc)(struct ItemFieldUseData *data);
-typedef u32 (*ItemCheckUseFunc)(const struct ItemCheckUseData *data);
+typedef enum ItemUseError (*ItemCheckUseFunc)(const struct ItemCheckUseData *data);
 
 struct UseItemInPartyTaskEnv {
     PARTY *party;

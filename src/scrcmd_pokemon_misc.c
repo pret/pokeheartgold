@@ -116,7 +116,7 @@ BOOL ScrCmd_648(SCRIPTCONTEXT *ctx) {
 
     ctx->data[0] = unkC;
 
-    msgdata = NewMsgDataFromNarc(0, 27, 237, 32);
+    msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 237, 32);
 
     input = GetVarPointer(fsys, unkC);
 
@@ -144,7 +144,7 @@ BOOL ScrCmd_648(SCRIPTCONTEXT *ctx) {
         FreeToHeap(unkG);
     }
 
-    msgdata2 = NewMsgDataFromNarc(1, 0x1b, 0xbf, 0x20);
+    msgdata2 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, 0xbf, 0x20);
 
     ov01_02200CB4(unkPtr, msgdata2);
     ov01_02200DF8(unkPtr, 0xd, 0xff, 0xfffe);
@@ -166,7 +166,7 @@ static BOOL ov01_02200C6C(SCRIPTCONTEXT *ctx) {
 
 static void *ov01_02200C94(HeapID heapId, s32 fileId, u32 *unkPtr) {
     u32 size;
-    void *data = GfGfxLoader_LoadFromNarc_GetSizeOut(74, fileId, FALSE, heapId, FALSE, &size);
+    void *data = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_application_zukanlist_zukan_data_zukan_data, fileId, FALSE, heapId, FALSE, &size);
     *unkPtr = size/2;
     return data;
 }
@@ -229,8 +229,8 @@ static void ov01_02200E00(SCR_648_STRUCT *unkPtr) {
     } else {
         AddWindowParameterized(unkPtr->fsys->bgConfig, &unkPtr->window_8, 3, unkPtr->x, unkPtr->y, 11, 2*unk, 13, 1);
     }
-    LoadUserFrameGfx1(unkPtr->fsys->bgConfig, 3, 0x3D9, 0xb, 0, 4);
-    DrawFrameAndWindow1(&unkPtr->window_8, 1, 0x3D9, 11);
+    LoadUserFrameGfx1(unkPtr->fsys->bgConfig, GF_BG_LYR_MAIN_3, 0x3D9, 11, 0, 4);
+    DrawFrameAndWindow1(&unkPtr->window_8, TRUE, 0x3D9, 11);
     ov01_02200F54(unkPtr);
     unkPtr->listMenu_23C = ListMenuInit(&unkPtr->listMenuTemplate, *unkPtr->cursorPos, *unkPtr->itemsAbove, 4);
     unkPtr->sysTask = CreateSysTask(ov01_022010CC, unkPtr, 0);
@@ -914,7 +914,7 @@ BOOL ScrCmd_741(SCRIPTCONTEXT *ctx) {
 
 //Gets called after selecting which type of pokeathlon data to load- might just outright start the loading process
 BOOL ScrCmd_743(SCRIPTCONTEXT *ctx) {
-    ov03_02258CFC(ctx->taskman, VarGet(ctx->fsys, ScriptReadHalfword(ctx)));
+    ov03_02258CFC(ctx->taskman, (enum PokeathlonData)VarGet(ctx->fsys, ScriptReadHalfword(ctx)));
     return TRUE;
 }
 
@@ -1025,7 +1025,7 @@ BOOL ScrCmd_GiveTogepiEgg(SCRIPTCONTEXT *ctx) {
     mon = AllocMonZeroed(0xb);
     ZeroMonData(mon);
 
-    SetEggStats(mon, SPECIES_TOGEPI, 1, profile, 3, sub_02017FE4(1, 0xd));
+    SetEggStats(mon, SPECIES_TOGEPI, 1, profile, 3, sub_02017FE4(MAPSECTYPE_GIFT, 0xd));
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
         if (!GetMonData(mon, MON_DATA_MOVE1 + i, 0)) {
@@ -1102,7 +1102,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(SCRIPTCONTEXT *ctx) {
     heldItem = ITEM_ZAP_PLATE;
     SetMonData(mon, MON_DATA_HELD_ITEM, &heldItem);
 
-    u32 unkB = sub_02017FE4(0, MapHeader_GetMapSec(ctx->fsys->location->mapId));
+    u32 unkB = sub_02017FE4(MAPSECTYPE_NORMAL, MapHeader_GetMapSec(ctx->fsys->location->mapId));
 
     sub_020720FC(mon, profile, 4, unkB, 0x18, 0xb);
 
