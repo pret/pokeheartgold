@@ -2160,8 +2160,8 @@ _0200F498: .word sub_0200F43C
 _0200F49C: .word 0x00000488
 	thumb_func_end sub_0200F478
 
-	thumb_func_start sub_0200F4A0
-sub_0200F4A0: ; 0x0200F4A0
+	thumb_func_start DrawPokemonPicFromSpecies
+DrawPokemonPicFromSpecies: ; 0x0200F4A0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	str r2, [sp, #4]
@@ -2199,10 +2199,10 @@ sub_0200F4A0: ; 0x0200F4A0
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0200F4F4: .word 0x0000016F
-	thumb_func_end sub_0200F4A0
+	thumb_func_end DrawPokemonPicFromSpecies
 
-	thumb_func_start sub_0200F4F8
-sub_0200F4F8: ; 0x0200F4F8
+	thumb_func_start DrawPokemonPicFromMon
+DrawPokemonPicFromMon: ; 0x0200F4F8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	str r2, [sp, #4]
@@ -2238,7 +2238,7 @@ sub_0200F4F8: ; 0x0200F4F8
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0200F548: .word 0x0000016F
-	thumb_func_end sub_0200F4F8
+	thumb_func_end DrawPokemonPicFromMon
 
 	thumb_func_start sub_0200F54C
 sub_0200F54C: ; 0x0200F54C

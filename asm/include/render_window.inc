@@ -34,8 +34,8 @@
 .public WaitingIcon_new
 .public sub_0200F450
 .public sub_0200F478
-.public sub_0200F4A0
-.public sub_0200F4F8
+.public DrawPokemonPicFromSpecies
+.public DrawPokemonPicFromMon
 .public sub_020143E0
 .public sub_02014450
 .public AllocFromHeap
