@@ -52,7 +52,7 @@ static const BGTEMPLATE sDataReadErrorBgTemplate = {
 };
 
 static const WINDOWTEMPLATE sDataReadErrorWindowTemplate = {
-    .bgId = 0,
+    .bgId = GF_BG_LYR_MAIN_0,
     .left = 3,
     .top = 3,
     .width = 26,
@@ -64,8 +64,8 @@ static const WINDOWTEMPLATE sDataReadErrorWindowTemplate = {
 void ShowSaveDataReadError(HeapID heap_id) {
     WINDOW window;
 
-    sub_0200FBF4(0, 0);
-    sub_0200FBF4(1, 0);
+    sub_0200FBF4(PM_LCD_TOP, 0);
+    sub_0200FBF4(PM_LCD_BOTTOM, 0);
 
     Main_SetVBlankIntrCB(NULL, NULL);
     Main_SetHBlankIntrCB(NULL, NULL);
@@ -110,8 +110,8 @@ void ShowSaveDataReadError(HeapID heap_id) {
     String_dtor(error_str);
 
     GX_BothDispOn();
-    SetMasterBrightnessNeutral(0);
-    SetMasterBrightnessNeutral(1);
+    SetMasterBrightnessNeutral(PM_LCD_TOP);
+    SetMasterBrightnessNeutral(PM_LCD_BOTTOM);
     SetBlendBrightness(0, 0x3F, 3);
 
     while (TRUE) {
@@ -123,8 +123,8 @@ void ShowSaveDataReadError(HeapID heap_id) {
 void ShowGBACartRemovedError(HeapID heap_id) {
     WINDOW window;
 
-    sub_0200FBF4(0, 0);
-    sub_0200FBF4(1, 0);
+    sub_0200FBF4(PM_LCD_TOP, 0);
+    sub_0200FBF4(PM_LCD_BOTTOM, 0);
 
     Main_SetVBlankIntrCB(NULL, NULL);
     Main_SetHBlankIntrCB(NULL, NULL);
@@ -169,8 +169,8 @@ void ShowGBACartRemovedError(HeapID heap_id) {
     String_dtor(error_str);
 
     GX_BothDispOn();
-    SetMasterBrightnessNeutral(0);
-    SetMasterBrightnessNeutral(1);
+    SetMasterBrightnessNeutral(PM_LCD_TOP);
+    SetMasterBrightnessNeutral(PM_LCD_BOTTOM);
     SetBlendBrightness(0, 0x3F, 3);
 
     while (TRUE) {

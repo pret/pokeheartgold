@@ -42,7 +42,7 @@ static void ReadMsgData_ExistingTable_ExistingArray(MAT *table, u32 num, u16 *de
         CopyEncryptedMessage16(dest, (const u16 *)((u8 *)table + sp0.offset), &sp0);
         Decrypt2(dest, sp0.length, num);
     } else {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     }
 }
 
@@ -78,7 +78,7 @@ static void ReadMsgData_ExistingTable_ExistingString(MAT * table, u32 num, STRIN
             FreeToHeap(buf);
         }
     } else {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         StringSetEmpty(dest);
     }
 }
@@ -103,7 +103,7 @@ static STRING * ReadMsgData_ExistingTable_NewString(MAT * table, u32 num, u32 he
             return NULL;
         }
     } else {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return String_ctor(4, heap_id);
     }
 }
@@ -136,7 +136,7 @@ static void ReadMsgData_ExistingNarc_ExistingString(NARC * narc, u32 group, u32 
             return;
         }
     } else {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         StringSetEmpty(dest);
     }
 }
@@ -177,7 +177,7 @@ static STRING * ReadMsgData_ExistingNarc_NewString(NARC * narc, u32 group, u32 n
         }
         return dest;
     } else {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return String_ctor(4, heap_id);
     }
 }

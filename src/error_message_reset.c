@@ -55,7 +55,7 @@ static const BGTEMPLATE sErrorMessageBgTemplate = {
 };
 
 static const WINDOWTEMPLATE sErrorMessageWindowTemplate = {
-    .bgId = 0,
+    .bgId = GF_BG_LYR_MAIN_0,
     .left = 3,
     .top = 3,
     .width = 26,
@@ -89,8 +89,8 @@ void PrintErrorMessageAndReset(void) {
     OS_SetArenaLo(OS_ARENA_MAIN, OS_GetInitArenaLo(OS_ARENA_MAIN));
     InitHeapSystem(&sErrorMessageHeapParams, 1, 1, 0);
 
-    sub_0200FBF4(0, 0);
-    sub_0200FBF4(1, 0);
+    sub_0200FBF4(PM_LCD_TOP, 0);
+    sub_0200FBF4(PM_LCD_BOTTOM, 0);
 
     OS_DisableIrqMask(OS_IE_VBLANK);
     OS_SetIrqFunction(OS_IE_VBLANK, VBlankIntr);
@@ -139,8 +139,8 @@ void PrintErrorMessageAndReset(void) {
     String_dtor(error_str);
 
     GX_BothDispOn();
-    SetMasterBrightnessNeutral(0);
-    SetMasterBrightnessNeutral(1);
+    SetMasterBrightnessNeutral(PM_LCD_TOP);
+    SetMasterBrightnessNeutral(PM_LCD_BOTTOM);
     SetBlendBrightness(0, 0x3F, 3);
 
     sub_02038D90();
@@ -166,8 +166,8 @@ void PrintErrorMessageAndReset(void) {
         OS_WaitIrq(TRUE, OS_IE_VBLANK);
     }
 
-    sub_0200FBF4(0, 0x7FFF);
-    sub_0200FBF4(1, 0x7FFF);
+    sub_0200FBF4(PM_LCD_TOP, 0x7FFF);
+    sub_0200FBF4(PM_LCD_BOTTOM, 0x7FFF);
 
     RemoveWindow(&window);
     DestroyMsgData(error_msgdata);
