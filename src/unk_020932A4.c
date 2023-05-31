@@ -10,10 +10,10 @@ u16 PhoneBookTrainerGetRematchInfo(u8 a0, SAVEDATA *saveData, struct PhoneBook *
     BOOL isSeekingPhoneRematches = PhoneRematches_IsSeeking(momsSavings, a0);
 
     if (!isSeekingPhoneRematches) {
-        return FALSE;
+        return 0;
     }
     if (a0 == 0x10 && timeOfDay != TIMEOFDAY_WILD_DAY) {
-        return FALSE;
+        return 0;
     }
 
     return TryGetRematchTrainerIdByBaseTrainerId(saveData, phoneBook->entries[a0].trainerId);
