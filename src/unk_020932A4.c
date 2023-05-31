@@ -12,7 +12,7 @@ THUMB_FUNC u16 PhoneBookTrainerGetRematchInfo(u8 a0, SAVEDATA *saveData, struct 
     if (!isSeekingPhoneRematches) {
         return FALSE;
     }
-    if (a0 == 0x10 && timeOfDay != 1) {
+    if (a0 == 0x10 && timeOfDay != TIMEOFDAY_WILD_DAY) {
         return FALSE;
     }
 
