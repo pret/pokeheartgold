@@ -4,7 +4,7 @@
 #include "gear_phone.h"
 #include "overlay_26.h"
 
-u16 PhoneBookTrainerGetRematchInfo(u8 a0, SAVEDATA *saveData, struct PhoneBook *phoneBook, u8 timeOfDay)
+u16 PhoneBookTrainerGetRematchInfo(u8 a0, SAVEDATA *saveData, struct PhoneBook *phoneBook, TimeOfDayWildParam timeOfDay)
 {    
     MomsSavings *momsSavings = SaveData_GetMomsSavingsAddr(saveData);
     BOOL isSeekingPhoneRematches = PhoneRematches_IsSeeking(momsSavings, a0);
