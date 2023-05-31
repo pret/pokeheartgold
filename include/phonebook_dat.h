@@ -3,6 +3,8 @@
 
 #include "heap.h"
 
+struct PhoneBookEntry;
+
 struct PhoneBook *AllocAndReadPhoneBook(HeapID heapId);
 void FreePhoneBook(struct PhoneBook *phoneBook);
 u8 LoadPhoneBookEntryI(u16 idx, struct PhoneBookEntry *dest, HeapID heapId);

@@ -75,7 +75,7 @@ static const u16 sTrainerRematchSets[][6] = {
     { TRAINER_LEADER_BLUE_BLUE, TRAINER_LEADER_BLUE_BLUE, TRAINER_LEADER_BLUE_BLUE_2, TRAINER_NONE, TRAINER_NONE, TRAINER_NONE },
 };
 
-u32 TryGetRematchTrainerIdByBaseTrainerId(SAVEDATA* savedata, u16 trainer_id) {
+u16 TryGetRematchTrainerIdByBaseTrainerId(SAVEDATA* savedata, u16 trainer_id) {
     u16 rematch_set_no = GetRematchIdByBaseTrainerId(trainer_id);
     if (rematch_set_no == 0xFF) {
         return 0;
