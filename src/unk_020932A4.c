@@ -4,21 +4,17 @@
 #include "gear_phone.h"
 #include "overlay_26.h"
 
-THUMB_FUNC u16 PhoneBookTrainerGetRematchInfo(u8 a0, SAVEDATA* saveData, struct PhoneBook* phoneBook, u8 timeOfDay) {    
-    MomsSavings* ms = SaveData_GetMomsSavingsAddr(saveData);
-    BOOL b = PhoneRematches_IsSeeking(ms, a0);
+THUMB_FUNC u16 PhoneBookTrainerGetRematchInfo(u8 a0, SAVEDATA *saveData, struct PhoneBook *phoneBook, u8 timeOfDay)
+{    
+    MomsSavings *momsSavings = SaveData_GetMomsSavingsAddr(saveData);
+    BOOL isSeekingPhoneRematches = PhoneRematches_IsSeeking(momsSavings, a0);
 
-    if(!b)
-    {
+    if (!isSeekingPhoneRematches) {
         return FALSE;
     }
-    if(a0 == 0x10 && timeOfDay != 1)
-    {
+    if (a0 == 0x10 && timeOfDay != 1) {
         return FALSE;
     }
 
-    struct PhoneBookEntry* entries = phoneBook->entries;
-    u16 trainerId = entries[a0].trainerId;
-
-    return TryGetRematchTrainerIdByBaseTrainerId(saveData, trainerId);
+    return TryGetRematchTrainerIdByBaseTrainerId(saveData, phoneBook->entries[a0].trainerId);
 }
