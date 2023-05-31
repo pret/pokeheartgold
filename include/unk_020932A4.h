@@ -5,6 +5,6 @@
 #include "save.h"
 #include "gf_rtc.h"
 
-u16 PhoneBookTrainerGetRematchInfo(u8 a0, SAVEDATA *saveData, struct PhoneBook *phoneBook, TimeOfDayWildParam timeOfDay);
+u16 PhoneBookTrainerGetRematchInfo(u8 idx, SAVEDATA *saveData, struct PhoneBook *phoneBook, TimeOfDayWildParam timeOfDay);
 
 #endif //POKEHEARTGOLD_UNK_020932A4_H
