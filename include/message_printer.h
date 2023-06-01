@@ -2,8 +2,8 @@
 #include "string_util.h"
 
 typedef struct MessagePrinter {
-    void *unk_0;
-    struct NNSG2dCharacterData *unk_4;
+    void *charData;
+    struct NNSG2dCharacterData *ppCharData;
     u16 string[16];
     u32 color;
 } MessagePrinter;

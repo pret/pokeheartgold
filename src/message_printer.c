@@ -17,10 +17,10 @@ MessagePrinter *MessagePrinter_new(u32 color1, u32 color2, u32 color3, HeapID he
 {
     MessagePrinter *messagePrinter = AllocFromHeap(heapId, sizeof(MessagePrinter));
     if (messagePrinter != NULL) {
-        messagePrinter->unk_0 = GfGfxLoader_GetCharData(NARC_graphic_font, 5, 1, &messagePrinter->unk_4, heapId);
+        messagePrinter->charData = GfGfxLoader_GetCharData(NARC_graphic_font, 5, 1, &messagePrinter->ppCharData, heapId);
         int i;
-        u8 *ptr = messagePrinter->unk_4->pRawData;
-        for (i = 0; i < messagePrinter->unk_4->szByte; i++) {
+        u8 *ptr = messagePrinter->ppCharData->pRawData;
+        for (i = 0; i < messagePrinter->ppCharData->szByte; i++) {
             switch (ptr[i]) {
             case 0x00:
                 ptr[i] = ((color3 << 4) | color3);
@@ -59,8 +59,8 @@ MessagePrinter *MessagePrinter_new(u32 color1, u32 color2, u32 color3, HeapID he
 void MessagePrinter_delete(MessagePrinter *messagePrinter)
 {
     if (messagePrinter != NULL) {
-        if (messagePrinter->unk_0 != NULL) {
-            FreeToHeap(messagePrinter->unk_0);
+        if (messagePrinter->charData != NULL) {
+            FreeToHeap(messagePrinter->charData);
         }
         FreeToHeap(messagePrinter);
     }
@@ -68,7 +68,7 @@ void MessagePrinter_delete(MessagePrinter *messagePrinter)
 
 void sub_0200CDAC(MessagePrinter *messagePrinter, u8 a1, WINDOW *window, u32 x, u32 y)
 {
-    BlitBitmapRectToWindow(window, messagePrinter->unk_4->pRawData + _020F5C24[a1][0], 0, 0, _020F5C24[a1][1], 8, x, y, _020F5C24[a1][1], 8);
+    BlitBitmapRectToWindow(window, messagePrinter->ppCharData->pRawData + _020F5C24[a1][0], 0, 0, _020F5C24[a1][1], 8, x, y, _020F5C24[a1][1], 8);
 }
 
 void sub_0200CDF0(MessagePrinter *messagePrinter, u32 value, u32 n, STRCONVMODE mode, WINDOW *window, u32 x, u32 y)
@@ -76,7 +76,7 @@ void sub_0200CDF0(MessagePrinter *messagePrinter, u32 value, u32 n, STRCONVMODE 
     ConvertUIntToDecimalString(messagePrinter->string, value, mode, n);
     for (int i = 0; messagePrinter->string[i] != EOS; i++) {
         if (messagePrinter->string[i] >= CHAR_JP_0 && messagePrinter->string[i] <= CHAR_JP_9) {
-            BlitBitmapRectToWindow(window, messagePrinter->unk_4->pRawData + (messagePrinter->string[i] - CHAR_JP_0) * 32, 0, 0, 8, 8, x, y, 8, 8);
+            BlitBitmapRectToWindow(window, messagePrinter->ppCharData->pRawData + (messagePrinter->string[i] - CHAR_JP_0) * 32, 0, 0, 8, 8, x, y, 8, 8);
         }
         else {
             FillWindowPixelRect(window, messagePrinter->color, x, y, 8, 8);
