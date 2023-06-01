@@ -13,12 +13,12 @@ static const u16 _020F5C24[][2] = {
     { 0x02A0, 0x0010 },
 };
 
-struct UnkStruct_0200CC74 *MessagePrinter_new(u32 color1, u32 color2, u32 color3, HeapID heap_id)
+UnkStruct_0200CC74 *MessagePrinter_new(u32 color1, u32 color2, u32 color3, HeapID heapId)
 {
-    struct UnkStruct_0200CC74 *sp8 = AllocFromHeap(heap_id, sizeof(struct UnkStruct_0200CC74));
+    UnkStruct_0200CC74 *sp8 = AllocFromHeap(heapId, sizeof(UnkStruct_0200CC74));
     if (sp8 != NULL)
     {
-        sp8->unk_0 = GfGfxLoader_GetCharData(NARC_graphic_font, NARC_poketool_pokegra_height, 1, &sp8->unk_4, heap_id);
+        sp8->unk_0 = GfGfxLoader_GetCharData(NARC_graphic_font, 5, 1, &sp8->unk_4, heapId);
         int i;
         u8 *ptr = sp8->unk_4->pRawData;
         for (i = 0; i < sp8->unk_4->szByte; i++)
@@ -54,12 +54,12 @@ struct UnkStruct_0200CC74 *MessagePrinter_new(u32 color1, u32 color2, u32 color3
                 break;
             }
         }
-        sp8->unk_28 = color3;
+        sp8->color = color3;
     }
     return sp8;
 }
 
-void MessagePrinter_delete(struct UnkStruct_0200CC74 *a0)
+void MessagePrinter_delete(UnkStruct_0200CC74 *a0)
 {
     if (a0 != NULL)
     {
@@ -69,12 +69,12 @@ void MessagePrinter_delete(struct UnkStruct_0200CC74 *a0)
     }
 }
 
-void sub_0200CDAC(struct UnkStruct_0200CC74 *a0, u8 a1, WINDOW *a2, u32 a3, u32 a4)
+void sub_0200CDAC(UnkStruct_0200CC74 *string, u8 a1, WINDOW *window, u32 x, u32 y)
 {
-    BlitBitmapRectToWindow(a2, a0->unk_4->pRawData + _020F5C24[a1][0], 0, 0, _020F5C24[a1][1], 8, a3, a4, _020F5C24[a1][1], 8);
+    BlitBitmapRectToWindow(window, string->unk_4->pRawData + _020F5C24[a1][0], 0, 0, _020F5C24[a1][1], 8, x, y, _020F5C24[a1][1], 8);
 }
 
-void sub_0200CDF0(struct UnkStruct_0200CC74 *string, u32 value, u32 n, STRCONVMODE mode, WINDOW *window, u32 x, u32 y)
+void sub_0200CDF0(UnkStruct_0200CC74 *string, u32 value, u32 n, STRCONVMODE mode, WINDOW *window, u32 x, u32 y)
 {
     ConvertUIntToDecimalString(string->data, value, mode, n);
     for (int i = 0; string->data[i] != EOS; i++)
@@ -85,7 +85,7 @@ void sub_0200CDF0(struct UnkStruct_0200CC74 *string, u32 value, u32 n, STRCONVMO
         }
         else
         {
-            FillWindowPixelRect(window, string->unk_28, x, y, 8, 8);
+            FillWindowPixelRect(window, string->color, x, y, 8, 8);
         }
         x += 8;
     }
