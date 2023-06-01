@@ -53,7 +53,7 @@
 .public StringExpandPlaceholders
 .public MessagePrinter_new
 .public MessagePrinter_delete
-.public sub_0200CDF0
+.public PrintUIntOnWindow
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2

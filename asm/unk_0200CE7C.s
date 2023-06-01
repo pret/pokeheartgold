@@ -27,7 +27,7 @@ sub_0200CE7C: ; 0x0200CE7C
 	add r2, r6, #0
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl sub_0200CDF0
+	bl PrintUIntOnWindow
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end sub_0200CE7C

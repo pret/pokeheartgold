@@ -17,7 +17,7 @@
 .public BufferItemName
 .public StringExpandPlaceholders
 .public sub_0200CDAC
-.public sub_0200CDF0
+.public PrintUIntOnWindow
 .public sub_0200CE7C
 .public DrawFrameAndWindow1
 .public sub_0200E5D4

@@ -2189,7 +2189,7 @@ _021E69D4:
 	add r1, r6, #0
 	add r2, r7, #0
 	mov r3, #1
-	bl sub_0200CDF0
+	bl PrintUIntOnWindow
 _021E69E8:
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram

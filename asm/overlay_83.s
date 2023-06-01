@@ -4191,7 +4191,7 @@ _02240116:
 	ldr r0, [r5, r0]
 	mov r2, #3
 	mov r3, #1
-	bl sub_0200CDF0
+	bl PrintUIntOnWindow
 	str r4, [sp]
 	ldr r0, _0224016C ; =0x00000504
 	ldr r3, [sp, #0x10]
@@ -4212,7 +4212,7 @@ _02240116:
 	str r4, [sp, #8]
 	ldr r0, [r5, r0]
 	mov r3, #0
-	bl sub_0200CDF0
+	bl PrintUIntOnWindow
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4360,7 +4360,7 @@ _02240254:
 	ldr r0, [r5, r0]
 	add r1, r7, #0
 	mov r2, #3
-	bl sub_0200CDF0
+	bl PrintUIntOnWindow
 	add r0, r6, #0
 	bl ScheduleWindowCopyToVram
 	add sp, #0xc
@@ -13008,7 +13008,7 @@ _02244946:
 	ldr r0, [r5, r0]
 	mov r2, #3
 	mov r3, #1
-	bl sub_0200CDF0
+	bl PrintUIntOnWindow
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0xad
@@ -13033,7 +13033,7 @@ _02244946:
 	ldr r0, [r5, r0]
 	mov r2, #3
 	mov r3, #0
-	bl sub_0200CDF0
+	bl PrintUIntOnWindow
 _022449AA:
 	ldr r0, [sp, #0x14]
 	add r7, r7, #1

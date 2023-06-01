@@ -17401,7 +17401,7 @@ _021EE556:
 	add r4, r0, #0
 	mov r2, #3
 	mov r3, #2
-	bl sub_0200CDF0
+	bl PrintUIntOnWindow
 	add r0, r4, #0
 	bl MessagePrinter_delete
 	add sp, #0x30

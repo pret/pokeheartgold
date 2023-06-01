@@ -2442,7 +2442,7 @@ ov82_0223F10C: ; 0x0223F10C
 	ldr r0, [r0]
 	mov r2, #2
 	mov r3, #0
-	bl sub_0200CDF0
+	bl PrintUIntOnWindow
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	add sp, #0xc
