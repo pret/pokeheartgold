@@ -1,8 +1,7 @@
 #include "global.h"
 #include "string_util.h"
 
-typedef struct UnkStruct_0200CC74
-{
+typedef struct UnkStruct_0200CC74 {
     void *unk_0;
     struct NNSG2dCharacterData *unk_4;
     u16 data[16];
