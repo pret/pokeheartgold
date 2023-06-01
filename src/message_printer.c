@@ -71,9 +71,9 @@ void sub_0200CDAC(MessagePrinter *messagePrinter, u8 a1, WINDOW *window, u32 x, 
     BlitBitmapRectToWindow(window, messagePrinter->ppCharData->pRawData + _020F5C24[a1][0], 0, 0, _020F5C24[a1][1], 8, x, y, _020F5C24[a1][1], 8);
 }
 
-void sub_0200CDF0(MessagePrinter *messagePrinter, u32 value, u32 n, STRCONVMODE mode, WINDOW *window, u32 x, u32 y)
+void sub_0200CDF0(MessagePrinter *messagePrinter, u32 num, u32 ndigits, STRCONVMODE mode, WINDOW *window, u32 x, u32 y)
 {
-    ConvertUIntToDecimalString(messagePrinter->string, value, mode, n);
+    ConvertUIntToDecimalString(messagePrinter->string, num, mode, ndigits);
     for (int i = 0; messagePrinter->string[i] != EOS; i++) {
         if (messagePrinter->string[i] >= CHAR_JP_0 && messagePrinter->string[i] <= CHAR_JP_9) {
             BlitBitmapRectToWindow(window, messagePrinter->ppCharData->pRawData + (messagePrinter->string[i] - CHAR_JP_0) * 32, 0, 0, 8, 8, x, y, 8, 8);
