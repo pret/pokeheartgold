@@ -13,14 +13,14 @@ static const u16 _020F5C24[][2] = {
     { 0x02A0, 0x0010 },
 };
 
-UnkStruct_0200CC74 *MessagePrinter_new(u32 color1, u32 color2, u32 color3, HeapID heapId)
+MessagePrinter *MessagePrinter_new(u32 color1, u32 color2, u32 color3, HeapID heapId)
 {
-    UnkStruct_0200CC74 *sp8 = AllocFromHeap(heapId, sizeof(UnkStruct_0200CC74));
-    if (sp8 != NULL) {
-        sp8->unk_0 = GfGfxLoader_GetCharData(NARC_graphic_font, 5, 1, &sp8->unk_4, heapId);
+    MessagePrinter *messagePrinter = AllocFromHeap(heapId, sizeof(MessagePrinter));
+    if (messagePrinter != NULL) {
+        messagePrinter->unk_0 = GfGfxLoader_GetCharData(NARC_graphic_font, 5, 1, &messagePrinter->unk_4, heapId);
         int i;
-        u8 *ptr = sp8->unk_4->pRawData;
-        for (i = 0; i < sp8->unk_4->szByte; i++) {
+        u8 *ptr = messagePrinter->unk_4->pRawData;
+        for (i = 0; i < messagePrinter->unk_4->szByte; i++) {
             switch (ptr[i]) {
             case 0x00:
                 ptr[i] = ((color3 << 4) | color3);
@@ -51,35 +51,35 @@ UnkStruct_0200CC74 *MessagePrinter_new(u32 color1, u32 color2, u32 color3, HeapI
                 break;
             }
         }
-        sp8->color = color3;
+        messagePrinter->color = color3;
     }
-    return sp8;
+    return messagePrinter;
 }
 
-void MessagePrinter_delete(UnkStruct_0200CC74 *a0)
+void MessagePrinter_delete(MessagePrinter *messagePrinter)
 {
-    if (a0 != NULL) {
-        if (a0->unk_0 != NULL) {
-            FreeToHeap(a0->unk_0);
+    if (messagePrinter != NULL) {
+        if (messagePrinter->unk_0 != NULL) {
+            FreeToHeap(messagePrinter->unk_0);
         }
-        FreeToHeap(a0);
+        FreeToHeap(messagePrinter);
     }
 }
 
-void sub_0200CDAC(UnkStruct_0200CC74 *string, u8 a1, WINDOW *window, u32 x, u32 y)
+void sub_0200CDAC(MessagePrinter *messagePrinter, u8 a1, WINDOW *window, u32 x, u32 y)
 {
-    BlitBitmapRectToWindow(window, string->unk_4->pRawData + _020F5C24[a1][0], 0, 0, _020F5C24[a1][1], 8, x, y, _020F5C24[a1][1], 8);
+    BlitBitmapRectToWindow(window, messagePrinter->unk_4->pRawData + _020F5C24[a1][0], 0, 0, _020F5C24[a1][1], 8, x, y, _020F5C24[a1][1], 8);
 }
 
-void sub_0200CDF0(UnkStruct_0200CC74 *string, u32 value, u32 n, STRCONVMODE mode, WINDOW *window, u32 x, u32 y)
+void sub_0200CDF0(MessagePrinter *messagePrinter, u32 value, u32 n, STRCONVMODE mode, WINDOW *window, u32 x, u32 y)
 {
-    ConvertUIntToDecimalString(string->data, value, mode, n);
-    for (int i = 0; string->data[i] != EOS; i++) {
-        if (string->data[i] >= CHAR_JP_0 && string->data[i] <= CHAR_JP_9) {
-            BlitBitmapRectToWindow(window, string->unk_4->pRawData + (string->data[i] - CHAR_JP_0) * 32, 0, 0, 8, 8, x, y, 8, 8);
+    ConvertUIntToDecimalString(messagePrinter->string, value, mode, n);
+    for (int i = 0; messagePrinter->string[i] != EOS; i++) {
+        if (messagePrinter->string[i] >= CHAR_JP_0 && messagePrinter->string[i] <= CHAR_JP_9) {
+            BlitBitmapRectToWindow(window, messagePrinter->unk_4->pRawData + (messagePrinter->string[i] - CHAR_JP_0) * 32, 0, 0, 8, 8, x, y, 8, 8);
         }
         else {
-            FillWindowPixelRect(window, string->color, x, y, 8, 8);
+            FillWindowPixelRect(window, messagePrinter->color, x, y, 8, 8);
         }
         x += 8;
     }
