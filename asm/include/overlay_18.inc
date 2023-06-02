@@ -71,7 +71,7 @@
 .public StringExpandPlaceholders
 .public MessagePrinter_new
 .public MessagePrinter_delete
-.public sub_0200CDF0
+.public PrintUIntOnWindow
 .public sub_0200CF18
 .public sub_0200CF38
 .public sub_0200CF6C

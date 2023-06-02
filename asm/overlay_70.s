@@ -25082,7 +25082,7 @@ ov70_02243F00: ; 0x02243F00
 	add r0, r5, #0
 	mov r2, #2
 	mov r3, #1
-	bl sub_0200CDF0
+	bl PrintUIntOnWindow
 	mov r1, #0
 	str r1, [sp]
 	add r0, r5, #0
@@ -25097,7 +25097,7 @@ ov70_02243F00: ; 0x02243F00
 	add r0, r5, #0
 	mov r2, #2
 	str r3, [sp, #8]
-	bl sub_0200CDF0
+	bl PrintUIntOnWindow
 	add r0, r4, #0
 	bl CopyWindowPixelsToVram_TextMode
 	add r0, r6, #0

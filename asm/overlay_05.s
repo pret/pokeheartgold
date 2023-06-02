@@ -5667,7 +5667,7 @@ ov05_0221E74C: ; 0x0221E74C
 	add r0, r7, #0
 	mov r2, #3
 	mov r3, #1
-	bl sub_0200CDF0
+	bl PrintUIntOnWindow
 	mov r0, #2
 	str r0, [sp]
 	add r0, r7, #0
@@ -5687,7 +5687,7 @@ ov05_0221E74C: ; 0x0221E74C
 	add r0, r7, #0
 	mov r2, #3
 	mov r3, #0
-	bl sub_0200CDF0
+	bl PrintUIntOnWindow
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop

@@ -70,7 +70,7 @@
 .public MessagePrinter_new
 .public MessagePrinter_delete
 .public sub_0200CDAC
-.public sub_0200CDF0
+.public PrintUIntOnWindow
 .public sub_0200CE7C
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
