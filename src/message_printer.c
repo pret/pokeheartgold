@@ -22,31 +22,31 @@ MessagePrinter *MessagePrinter_new(u32 color1, u32 color2, u32 color3, HeapID he
         u8 *ptr = messagePrinter->ppCharData->pRawData;
         for (i = 0; i < messagePrinter->ppCharData->szByte; i++) {
             switch (ptr[i]) {
-            case 0x00:
+            case 0:
                 ptr[i] = ((color3 << 4) | color3);
                 break;
-            case 0x01:
+            case 1:
                 ptr[i] = ((color3 << 4) | color1);
                 break;
-            case 0x02:
+            case 2:
                 ptr[i] = ((color3 << 4) | color2);
                 break;
-            case 0x10:
+            case 16:
                 ptr[i] = ((color1 << 4) | color3);
                 break;
-            case 0x11:
+            case 17:
                 ptr[i] = ((color1 << 4) | color1);
                 break;
-            case 0x12:
+            case 18:
                 ptr[i] = ((color1 << 4) | color2);
                 break;
-            case 0x20:
+            case 32:
                 ptr[i] = ((color2 << 4) | color3);
                 break;
-            case 0x21:
+            case 33:
                 ptr[i] = ((color2 << 4) | color1);
                 break;
-            case 0x22:
+            case 34:
                 ptr[i] = ((color2 << 4) | color2);
                 break;
             }
