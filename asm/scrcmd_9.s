@@ -3326,11 +3326,11 @@ sub_0204B538: ; 0x0204B538
 	mov r1, #4
 	str r3, [sp, #0xc]
 	ldr r5, [sp, #0x38]
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r0, #2
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x1c]
 	add r0, r4, #0
 	bl Sav2_Pokedex_get

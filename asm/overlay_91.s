@@ -2667,7 +2667,7 @@ _0225D908:
 	bl FillWindowPixelRect
 	mov r0, #0x80
 	add r1, r4, #0
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r0, [sp, #0x18]
 	mov r1, #0
@@ -2740,7 +2740,7 @@ _0225D908:
 	str r0, [sp, #0x28]
 	mov r0, #0x80
 	add r1, r4, #0
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x24]
 	ldr r0, [sp, #0x1c]
 	mov r4, #0
@@ -7267,11 +7267,11 @@ ov91_0225FCD8: ; 0x0225FCD8
 	str r0, [r5, #8]
 	mov r0, #0x80
 	add r1, r4, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0xc]
 	mov r0, #0x80
 	add r1, r4, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x10]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -10631,7 +10631,7 @@ _02261616:
 	bl Set2dSpriteVisibleFlag
 	mov r0, #0x10
 	add r1, r6, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x5c]
 	mov r0, #0
 	str r0, [sp]

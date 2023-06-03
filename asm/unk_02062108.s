@@ -188,7 +188,7 @@ _02062230:
 	bne _02062230
 	add r0, r5, #0
 	bl MapObject_GetManager
-	bl sub_0205F19C
+	bl MapObjectMan_GetHeapID
 	sub r2, r0, #1
 	ldr r0, _0206225C ; =MovementScriptMachine
 	add r1, r4, #0

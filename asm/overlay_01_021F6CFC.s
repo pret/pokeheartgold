@@ -716,11 +716,11 @@ ov01_021F722C: ; 0x021F722C
 	str r0, [r4, #0x3c]
 	mov r0, #0x6e
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0xc]
 	mov r0, #0x6e
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #8]
 	pop {r4, pc}
 	.balign 4, 0

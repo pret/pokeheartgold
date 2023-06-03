@@ -92,7 +92,7 @@
 .public sub_02024B1C
 .public sub_02024B34
 .public sub_02025224
-.public String_ctor
+.public String_New
 .public String_dtor
 .public Sav2_HOF_GetNumRecords
 .public Sav2_HOF_TranslateRecordIdx

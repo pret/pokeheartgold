@@ -140,7 +140,7 @@
 .public sub_02025224
 .public System_GetTouchHeld
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public String16_FormatInteger
 .public Thunk_G3X_Reset

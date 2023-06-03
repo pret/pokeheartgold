@@ -64,7 +64,7 @@ void FontID_SetAccessDirect(FontID fontId, HeapID heapId) {
 void FontID_SetAccessLazy(FontID fontId) {
     GF_ASSERT((int)fontId < FONT_NUM);
     GF_ASSERT(sFontWork->fontDataMan[fontId] != NULL);
-    FontData_ModeSwitch(sFontWork->fontDataMan[fontId], FONTARC_MODE_LAZY, 0);
+    FontData_ModeSwitch(sFontWork->fontDataMan[fontId], FONTARC_MODE_LAZY, HEAP_ID_0);
 }
 
 void FontID_Release(FontID fontId) {

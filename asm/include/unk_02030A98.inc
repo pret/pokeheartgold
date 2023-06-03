@@ -7,7 +7,7 @@
 .public AllocFromHeap
 .public FreeToHeap
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public CopyU16ArrayToStringN
 .public sub_02027144
 .public sub_02027158

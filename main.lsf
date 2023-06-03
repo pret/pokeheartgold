@@ -578,7 +578,8 @@ Overlay OVY_12
     Object asm/overlay_12_0226ADE0.o
     Object asm/overlay_12_0226B8FC.o
     Object asm/overlay_12_0226BBC4.o
-    Object asm/overlay_12_0226BEC4.o
+    Object src/overlay_12_0226BEC4.o
+    Object asm/overlay_12_0226BEC4_s.o
 }
 Overlay OVY_13
 {

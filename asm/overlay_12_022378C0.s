@@ -1018,7 +1018,7 @@ _02237FD8:
 	mov r0, #5
 	lsl r0, r0, #6
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x18]
 	ldr r0, [r4, #0x28]
 	mov r1, #0
@@ -4137,7 +4137,7 @@ _02239A46:
 	mov r0, #1
 	lsl r0, r0, #8
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r1, _02239C18 ; =0x0000039B
 	add r0, r4, #0

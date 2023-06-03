@@ -7384,7 +7384,7 @@ ov74_0222AAAC: ; 0x0222AAAC
 	bl OverlayManager_GetData
 	mov r0, #0x25
 	mov r1, #0x54
-	bl String_ctor
+	bl String_New
 	add r1, r6, #0
 	mov r2, #0x24
 	add r4, r0, #0
@@ -12512,7 +12512,7 @@ ov74_0222D494: ; 0x0222D494
 	ldr r1, [r5]
 	mov r0, #0x25
 	add r4, r2, #0
-	bl String_ctor
+	bl String_New
 	mov r1, #0xaf
 	lsl r1, r1, #6
 	ldr r2, [r5, r1]
@@ -12667,7 +12667,7 @@ ov74_0222D5C4: ; 0x0222D5C4
 	mov r0, #0xfb
 	mov r1, #0x55
 	add r4, r2, #0
-	bl String_ctor
+	bl String_New
 	mov r1, #0xaf
 	lsl r1, r1, #6
 	ldr r2, [r5, r1]
@@ -15670,7 +15670,7 @@ ov74_0222EE0C: ; 0x0222EE0C
 	ldr r1, [r5]
 	mov r0, #0x25
 	add r4, r2, #0
-	bl String_ctor
+	bl String_New
 	ldr r1, _0222EE54 ; =0x00002BB4
 	add r6, r0, #0
 	ldr r2, [r5, r1]
@@ -15805,7 +15805,7 @@ ov74_0222EF18: ; 0x0222EF18
 	mov r0, #0xfb
 	mov r1, #0x55
 	add r4, r2, #0
-	bl String_ctor
+	bl String_New
 	ldr r1, _0222EF60 ; =0x00002BB4
 	add r6, r0, #0
 	ldr r2, [r5, r1]
@@ -23297,7 +23297,7 @@ _022327D6:
 	bl ov74_02231A1C
 	mov r0, #0x40
 	mov r1, #0x4c
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r0, #1
 	mov r1, #0x1b
@@ -23342,7 +23342,7 @@ _022327D6:
 	add r7, r0, #0
 	mov r0, #0x40
 	mov r1, #0x4c
-	bl String_ctor
+	bl String_New
 	lsl r1, r7, #0x10
 	lsr r1, r1, #0x10
 	mov r2, #0x4c
@@ -23368,7 +23368,7 @@ _022328B8:
 	add r6, r0, #0
 	mov r0, #0xa
 	mov r1, #0x4c
-	bl String_ctor
+	bl String_New
 	mov r3, #1
 	add r1, r6, #0
 	mov r2, #3
@@ -24213,7 +24213,7 @@ ov74_02232F9C: ; 0x02232F9C
 	add r4, r0, #0
 	mov r0, #8
 	mov r1, #0x4c
-	bl String_ctor
+	bl String_New
 	add r1, sp, #8
 	add r6, r0, #0
 	bl CopyU16ArrayToString
@@ -24560,13 +24560,13 @@ ov74_02233230: ; 0x02233230
 	mov r0, #6
 	lsl r0, r0, #6
 	mov r1, #0x4c
-	bl String_ctor
+	bl String_New
 	ldr r1, _022332E0 ; =0x00012608
 	str r0, [r4, r1]
 	mov r0, #6
 	lsl r0, r0, #6
 	mov r1, #0x4c
-	bl String_ctor
+	bl String_New
 	ldr r1, _022332E4 ; =0x0001260C
 	mov r2, #1
 	str r0, [r4, r1]

@@ -8,7 +8,7 @@
 .public AllocFromHeap
 .public FreeToHeap
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public sub_0209680C
 .public MI_CpuFill8

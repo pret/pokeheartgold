@@ -100,7 +100,7 @@
 .public sub_02025204
 .public sub_02025224
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public PlayerName_FlatToString
 .public Options_GetFrame

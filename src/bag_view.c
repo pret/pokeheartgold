@@ -14,7 +14,7 @@
 #include "msgdata/msg/msg_0040.h"
 
 BAG_VIEW *BagView_New(u8 heap_id) {
-    BAG_VIEW *ret = AllocFromHeap(heap_id, sizeof(BAG_VIEW));
+    BAG_VIEW *ret = AllocFromHeap((HeapID)heap_id, sizeof(BAG_VIEW));
     memset(ret, 0, sizeof(BAG_VIEW));
     return ret;
 }
@@ -103,7 +103,7 @@ static u32 get_num_battle_points(SAVEDATA *saveData) {
     return FrontierData_BattlePointAction(Save_FrontierData_get(saveData), 0, 0);
 }
 
-BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 itemId, u32 heap_id) {
+BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 itemId, HeapID heap_id) {
     MSGDATA *msgData;
     STRING *fmtStr;
     MessageFormat *msgFmt;
@@ -138,7 +138,7 @@ BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 
     return TRUE;
 }
 
-void GetItemUseErrorMessage(PLAYERPROFILE *playerProfile, STRING *dest, u16 itemId, enum ItemUseError code, u32 heap_id) {
+void GetItemUseErrorMessage(PLAYERPROFILE *playerProfile, STRING *dest, u16 itemId, enum ItemUseError code, HeapID heap_id) {
 #pragma unused(itemId)
     MSGDATA *msgData;
     switch (code) {

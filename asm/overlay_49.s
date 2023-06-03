@@ -4795,7 +4795,7 @@ ov49_0225AAC8: ; 0x0225AAC8
 	mov r0, #6
 	lsl r0, r0, #6
 	add r1, r6, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x18]
 	add r0, r4, #0
 	bl Sav2_PlayerData_GetOptionsAddr
@@ -5921,13 +5921,13 @@ _0225B322:
 	mov r0, #0x1e
 	lsl r0, r0, #4
 	add r1, r7, #0
-	bl String_ctor
+	bl String_New
 	ldr r1, [sp]
 	str r0, [r1, #0x14]
 	mov r0, #0x1e
 	lsl r0, r0, #4
 	add r1, r7, #0
-	bl String_ctor
+	bl String_New
 	ldr r1, [sp]
 	str r0, [r1, #0x18]
 	pop {r3, r4, r5, r6, r7, pc}

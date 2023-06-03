@@ -2190,7 +2190,7 @@ _022671C4:
 	str r0, [sp, #0x1c]
 	mov r0, #0x20
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldr r0, [r5]
 	bl ov12_0223C134
@@ -2988,11 +2988,11 @@ ov12_0226789C: ; 0x0226789C
 	str r0, [sp, #0x20]
 	mov r0, #0x64
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r0, #0x64
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldrh r2, [r5, #0x1c]
 	add r0, r4, #0
@@ -3179,11 +3179,11 @@ ov12_02267A58: ; 0x02267A58
 	str r0, [sp, #0x20]
 	mov r0, #0x64
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r0, #0x64
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldrh r2, [r5, #0x1c]
 	add r0, r4, #0
@@ -3279,11 +3279,11 @@ ov12_02267B40: ; 0x02267B40
 	str r0, [sp, #0x20]
 	mov r0, #0x64
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r0, #0x64
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldrh r2, [r5, #0x1c]
 	add r0, r4, #0
@@ -3396,7 +3396,7 @@ ov12_02267C24: ; 0x02267C24
 	bl ov12_0223C1A0
 	mov r0, #0x18
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x28]
 	mov r0, #0x4d
 	lsl r0, r0, #4
@@ -4956,7 +4956,7 @@ ov12_0226885C: ; 0x0226885C
 	str r0, [sp, #0x24]
 	mov r0, #0x10
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x30]
 	ldr r1, _02268A5C ; =0x000003A9
 	add r0, r4, #0

@@ -486,7 +486,7 @@ ov95_021E5CAC: ; 0x021E5CAC
 	str r0, [sp, #0x14]
 	mov r0, #0xff
 	mov r1, #0x46
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	ldr r0, [sp, #0x10]
 	bl Mon_GetBoxMon

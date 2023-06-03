@@ -153,7 +153,7 @@
 .public sub_02024ADC
 .public sub_02024AF8
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public String16_FormatInteger
 .public Thunk_G3X_Reset

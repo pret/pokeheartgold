@@ -163,7 +163,7 @@
 .public Set2dSpriteAnimSeqNo
 .public System_GetTouchNew
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public Thunk_G3X_Reset
 .public sub_02026E50

@@ -553,22 +553,22 @@ ov51_021E5F64: ; 0x021E5F64
 	str r0, [r5, r1]
 	mov r0, #4
 	mov r1, #0x19
-	bl String_ctor
+	bl String_New
 	ldr r1, _021E601C ; =0x000033C8
 	str r0, [r5, r1]
 	mov r0, #0x20
 	mov r1, #0x19
-	bl String_ctor
+	bl String_New
 	ldr r1, _021E6020 ; =0x000033D0
 	str r0, [r5, r1]
 	mov r0, #0xa
 	mov r1, #0x19
-	bl String_ctor
+	bl String_New
 	ldr r1, _021E6024 ; =0x000033D4
 	str r0, [r5, r1]
 	mov r0, #5
 	mov r1, #0x19
-	bl String_ctor
+	bl String_New
 	ldr r2, _021E6028 ; =0x000033CC
 	mov r1, #0xb
 	str r0, [r5, r2]
@@ -2521,7 +2521,7 @@ _021E6F68:
 	blo _021E6F2A
 	mov r0, #0x20
 	mov r1, #0x19
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x1c]
 	ldr r0, _021E71C8 ; =0x000033D0
 	mov r1, #0x20
@@ -2858,7 +2858,7 @@ _021E721C:
 	blo _021E721C
 	mov r0, #0x20
 	mov r1, #0x19
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldr r1, _021E74D0 ; =0x000033D0
 	ldr r0, [sp, #0x14]
@@ -3263,11 +3263,11 @@ _021E758E:
 	str r0, [sp, #0x10]
 	mov r0, #0x20
 	mov r1, #0x19
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	mov r0, #0x20
 	mov r1, #0x19
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x14]
 	mov r0, #2
 	mov r1, #0x20

@@ -109,7 +109,7 @@
 .public GX_EngineBToggleLayers
 .public GX_BothDispOn
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public sub_02026E50
 .public sub_02026E84

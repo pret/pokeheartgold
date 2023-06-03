@@ -40,7 +40,7 @@
 .public GX_DisableEngineALayers
 .public GX_DisableEngineBLayers
 .public GX_BothDispOn
-.public String_ctor
+.public String_New
 .public String_dtor
 .public Save_GetStatusFlags
 .public memset

@@ -1,0 +1,1 @@
+wsl ./tools/asmdiff/asmdiff.sh -t -m 23

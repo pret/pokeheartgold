@@ -95,7 +95,7 @@ ov86_021E5900: ; 0x021E5900
 	mov r0, #0x32
 	lsl r0, r0, #4
 	mov r1, #0x79
-	bl String_ctor
+	bl String_New
 	mov r1, #0x86
 	lsl r1, r1, #2
 	str r0, [r5, r1]

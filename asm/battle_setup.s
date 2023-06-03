@@ -292,7 +292,7 @@ sub_02051AAC: ; 0x02051AAC
 	str r0, [sp, #0x18]
 	mov r0, #8
 	add r1, r6, #0
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldr r0, [sp, #0x10]
 	bl PlayerProfile_GetTrainerGender

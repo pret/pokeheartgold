@@ -100,7 +100,7 @@
 .public GX_EngineBToggleLayers
 .public sub_02025224
 .public System_GetTouchNew
-.public String_ctor
+.public String_New
 .public String_dtor
 .public GetMonData
 .public GetMonExpBySpeciesAndLevel

@@ -139,7 +139,7 @@
 .public sub_02024B34
 .public sub_02025224
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public Thunk_G3X_Reset
 .public sub_02026E50

@@ -82,7 +82,7 @@ sub_020290E4: ; 0x020290E4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r0, #0x18
-	bl String_ctor
+	bl String_New
 	add r1, r5, #0
 	add r4, r0, #0
 	bl CopyU16ArrayToString

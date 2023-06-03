@@ -533,7 +533,7 @@ _020920FC:
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #0xa
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x10]
 	ldr r0, [r5, #0x18]
 	ldr r2, [r5, #0x10]

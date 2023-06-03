@@ -283,7 +283,7 @@ ov55_021E5B08: ; 0x021E5B08
 	str r0, [r6, #0xc]
 	mov r0, #8
 	add r1, r5, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r6, #0x14]
 	add r0, r4, #0
 	bl Mail_GetAuthorNamePtr

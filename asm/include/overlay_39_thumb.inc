@@ -79,7 +79,7 @@
 .public GX_SwapDisplay
 .public System_GetTouchNew
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public CopyStringToU16Array
 .public SavArray_CalcCRC16

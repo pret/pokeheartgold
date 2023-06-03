@@ -34,8 +34,6 @@
 #include "voltorb_flip/voltorb_flip_work.h"
 #include "voltorb_flip/voltorb_flip_workflow.h"
 
-#define HEAPID_VOLTORB_FLIP 160
-
 typedef enum CoinDisplay {
     COIN_DISPLAY_TOTAL,
     COIN_DISPLAY_PAYOUT,
@@ -2011,11 +2009,11 @@ static void ov122_021E8094(OVY_MANAGER *man) {
     ov122_021E8068();
     SetGXBanks();
 
-    CreateHeap(3, HEAPID_VOLTORB_FLIP, 0x50000);
+    CreateHeap(3, HEAP_ID_VOLTORB_FLIP, 0x50000);
 
-    VoltorbFlipAppWork *work = OverlayManager_CreateAndGetData(man, sizeof(VoltorbFlipAppWork), HEAPID_VOLTORB_FLIP);
+    VoltorbFlipAppWork *work = OverlayManager_CreateAndGetData(man, sizeof(VoltorbFlipAppWork), HEAP_ID_VOLTORB_FLIP);
     MI_CpuFill8(work, 0, sizeof(VoltorbFlipAppWork));
-    work->heapId = HEAPID_VOLTORB_FLIP;
+    work->heapId = HEAP_ID_VOLTORB_FLIP;
     work->options = args->options;
     work->coins = args->coins;
     work->unkC = args->unk8;
@@ -2076,7 +2074,7 @@ static void FreeOverlayData(OVY_MANAGER *man) {
     NARC_dtor(work->narc);
     ov122_021E8068();
     OverlayManager_FreeData(man);
-    DestroyHeap(HEAPID_VOLTORB_FLIP);
+    DestroyHeap(HEAP_ID_VOLTORB_FLIP);
 }
 
 BOOL VoltorbFlipApp_OvyInit(OVY_MANAGER *man, int *state) {

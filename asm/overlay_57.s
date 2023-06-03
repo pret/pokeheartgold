@@ -4278,7 +4278,7 @@ _02239A22:
 	bl FillWindowPixelBuffer
 	mov r0, #0x64
 	mov r1, #0x34
-	bl String_ctor
+	bl String_New
 	ldr r1, [sp, #0x10]
 	add r4, r0, #0
 	ldr r0, [r7, #0x64]
@@ -4348,7 +4348,7 @@ _02239AB8:
 	bl FillWindowPixelBuffer
 	mov r0, #0x64
 	mov r1, #0x34
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x10]
 	ldr r0, [r6, #0x64]
 	sub r1, r7, #1

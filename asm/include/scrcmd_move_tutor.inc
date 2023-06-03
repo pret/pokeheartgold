@@ -8,7 +8,7 @@
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public SetupNativeScript
 .public ScriptReadHalfword

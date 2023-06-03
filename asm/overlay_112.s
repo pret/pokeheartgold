@@ -4535,7 +4535,7 @@ ov112_021E7C18: ; 0x021E7C18
 	mov r0, #0x19
 	lsl r0, r0, #4
 	mov r1, #0x9a
-	bl String_ctor
+	bl String_New
 	ldr r1, _021E7C68 ; =0x0001E454
 	str r0, [r4, r1]
 	pop {r4, pc}
@@ -6825,7 +6825,7 @@ _021E91B4:
 	bl String_dtor
 	mov r0, #0xc
 	mov r1, #0x9a
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	ldr r1, _021E928C ; =0x0001E430
 	ldr r0, [sp, #0x14]
@@ -16553,7 +16553,7 @@ ov112_021EDF4C: ; 0x021EDF4C
 	add r5, r0, #0
 	mov r0, #0xc
 	mov r1, #0x9a
-	bl String_ctor
+	bl String_New
 	mov r2, #0
 	add r4, r0, #0
 	str r2, [sp]
@@ -18166,7 +18166,7 @@ _021EEBA4:
 	beq _021EECB2
 	mov r0, #0x10
 	mov r1, #0x9a
-	bl String_ctor
+	bl String_New
 	mov r2, #0xad
 	lsl r2, r2, #8
 	add r1, r5, r2
@@ -19847,7 +19847,7 @@ ov112_021EF8D4: ; 0x021EF8D4
 	bl BufferPokewalkerCourseName
 	mov r0, #0xc
 	mov r1, #0x9a
-	bl String_ctor
+	bl String_New
 	ldr r1, _021EF948 ; =0x00009D54
 	mov r2, #0xb
 	add r1, r5, r1
@@ -20549,7 +20549,7 @@ _021EFE24:
 _021EFE60:
 	mov r0, #0x13
 	mov r1, #0x9a
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r5, #0
 	add r4, sp, #0x10
@@ -21354,7 +21354,7 @@ ov112_021F03BC: ; 0x021F03BC
 	str r0, [r4, #0x6c]
 	ldr r1, [r4]
 	mov r0, #0xb
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x70]
 	add r0, r4, #0
 	add r0, #0x74
@@ -23315,7 +23315,7 @@ ov112_021F13CC: ; 0x021F13CC
 	add r0, r4, r0
 	ldr r1, [r5, #4]
 	add r0, r0, #2
-	bl String_ctor
+	bl String_New
 	add r1, r6, #0
 	add r4, r0, #0
 	bl StringCopy
@@ -23377,7 +23377,7 @@ ov112_021F1488: ; 0x021F1488
 	str r0, [sp, #0xc]
 	ldr r1, [r5, #4]
 	add r0, r4, #0
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldrh r0, [r6]
 	cmp r0, #0

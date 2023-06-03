@@ -612,7 +612,7 @@ ov103_021ECE18: ; 0x021ECE18
 	mov r0, #1
 	lsl r0, r0, #0xa
 	mov r1, #0x9d
-	bl String_ctor
+	bl String_New
 	mov r1, #0x23
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -3938,7 +3938,7 @@ ov103_021EE784: ; 0x021EE784
 	ldr r5, [r1, r0]
 	mov r0, #8
 	mov r1, #0x9d
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	add r0, r5, #0
 	bl Mail_GetAuthorNamePtr

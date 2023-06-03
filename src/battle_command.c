@@ -1234,7 +1234,7 @@ void Task_GetExp(SysTask *task, void *data);
 BOOL BtlCmd_InitGetExp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    ctx->getterWork = AllocFromHeap(5, sizeof(GetterWork));
+    ctx->getterWork = AllocFromHeap(HEAP_ID_BATTLE, sizeof(GetterWork));
 
     ctx->getterWork->bsys = bsys;
     ctx->getterWork->ctx = ctx;
@@ -1401,7 +1401,7 @@ BOOL BtlCmd_InitGetPokemon(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int unkA = BattleScriptReadWord(ctx);
 
-    ctx->getterWork = (GetterWork*) AllocFromHeap(5, sizeof(GetterWork));
+    ctx->getterWork = (GetterWork*) AllocFromHeap(HEAP_ID_BATTLE, sizeof(GetterWork));
     ctx->getterWork->bsys = bsys;
     ctx->getterWork->ctx = ctx;
     ctx->getterWork->unk28 = 0;
@@ -2103,7 +2103,7 @@ u32 CalcPrizeMoney(BattleSystem *bsys, BATTLECONTEXT *ctx, int trainerIndex) {
     u8 trainerClass;
     TRAINER trainer;
 
-    trPoke = AllocFromHeap(5, sizeof(TRPOKE)*6);
+    trPoke = AllocFromHeap(HEAP_ID_BATTLE, sizeof(TRPOKE)*6);
 
     TrainerData_ReadTrData(bsys->trainerId[trainerIndex], &trainer);
     TrainerData_ReadTrPoke(bsys->trainerId[trainerIndex], trPoke);
@@ -5840,7 +5840,7 @@ BOOL BtlCmd_222(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int battlerId = GetBattlerIDBySide(bsys, ctx, side);
 
-    if (TrainerMessageWithIdPairExists(BattleSys_GetTrainerIndex(bsys, battlerId), msgIndex, 5)) {
+    if (TrainerMessageWithIdPairExists(BattleSys_GetTrainerIndex(bsys, battlerId), msgIndex, HEAP_ID_BATTLE)) {
         ctx->msgWork = msgIndex;
     } else {
         ctx->msgWork = 0;

@@ -125,7 +125,7 @@
 .public sub_02024A04
 .public sub_02024B68
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public sub_02026E50
 .public GF_3DVramMan_InitFrameTexVramManager

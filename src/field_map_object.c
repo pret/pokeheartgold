@@ -10,18 +10,18 @@ static void sub_0205E954(LocalMapObject* object);
 static void sub_0205ED18(LocalMapObject* object);
 static void sub_0205EF8C(LocalMapObject* object);
 
-MapObjectMan* sub_0205E0BC(FieldSystem* fsys, int object_count, u32 a2) {
+MapObjectMan* sub_0205E0BC(FieldSystem* fsys, int object_count, HeapID heapId) {
     MapObjectMan* ret = MapObjectMan_new(object_count);
     MapObjectMan_SetFieldSysPtr(ret, fsys);
     MapObjectMan_SetCount(ret, object_count);
-    sub_0205F198(ret, a2);
+    MapObjectMan_SetHeapID(ret, heapId);
 
     return ret;
 }
 
 void MapObjectMan_delete(MapObjectMan* manager) {
-    FreeToHeapExplicit((HeapID)11, MapObjectMan_GetObjects(manager));
-    FreeToHeapExplicit((HeapID)11, manager);
+    FreeToHeapExplicit(HEAP_ID_FIELD, MapObjectMan_GetObjects(manager));
+    FreeToHeapExplicit(HEAP_ID_FIELD, manager);
 }
 
 extern void ov01_021F9FB0(MapObjectMan* manager, void*);
@@ -641,7 +641,7 @@ LocalMapObject* sub_0205EA98(MapObjectMan* manager, u32 id, u32 map_no) {
 }
 
 void sub_0205EAF0(MapObjectMan* manager, LocalMapObject* object) {
-    u32 priority = sub_0205F19C(manager);
+    u32 priority = MapObjectMan_GetHeapID(manager);
     u32 movement = MapObject_GetMovement(object);
     if (movement == 48 || movement == 50) {
         priority += 2;
@@ -988,12 +988,12 @@ u32 MapObjectMan_GetFlagsBitsMask(MapObjectMan* manager, u32 bits) {
     return manager->flags & bits;
 }
 
-void sub_0205F198(MapObjectMan* manager, u32 a1) {
-    manager->unkC = a1;
+void MapObjectMan_SetHeapID(MapObjectMan* manager, HeapID heapId) {
+    manager->heapId = heapId;
 }
 
-u32 sub_0205F19C(MapObjectMan* manager) {
-    return manager->unkC;
+HeapID MapObjectMan_GetHeapID(MapObjectMan* manager) {
+    return manager->heapId;
 }
 
 void* sub_0205F1A0(MapObjectMan* manager) {
@@ -1420,7 +1420,7 @@ FieldSystem* MapObject_GetFieldSysPtr(LocalMapObject* object) {
 }
 
 void* sub_0205F538(LocalMapObject* object) {
-    return (void*)sub_0205F19C(MapObject_GetManager(object));
+    return (void*)MapObjectMan_GetHeapID(MapObject_GetManager(object));
 }
 
 u32 sub_0205F544(LocalMapObject* object) {

@@ -545,7 +545,7 @@ sub_0208EA5C: ; 0x0208EA5C
 	bgt _0208EA82
 	ldr r1, [r5]
 	mov r0, #0x48
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x18]
 	add r4, #0x18
 	ldr r0, [r5, #4]
@@ -565,12 +565,12 @@ sub_0208EA84: ; 0x0208EA84
 	mov r0, #9
 	ldr r1, [r5]
 	lsl r0, r0, #6
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	mov r0, #9
 	ldr r1, [r5]
 	lsl r0, r0, #6
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x20]
 	ldr r0, [r5, #4]
 	add r1, r6, #0
@@ -690,12 +690,12 @@ sub_0208EBA4: ; 0x0208EBA4
 	mov r0, #0x12
 	ldr r1, [r4]
 	lsl r0, r0, #4
-	bl String_ctor
+	bl String_New
 	add r5, r0, #0
 	mov r0, #0x12
 	ldr r1, [r4]
 	lsl r0, r0, #4
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x20]
 	ldr r0, [r4, #4]
 	add r1, r6, #0
@@ -851,12 +851,12 @@ sub_0208ED00: ; 0x0208ED00
 	ldr r1, [r5]
 	lsl r0, r0, #2
 	add r6, r2, #0
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	mov r0, #0x5a
 	ldr r1, [r5]
 	lsl r0, r0, #2
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x20]
 	ldr r0, [r5, #4]
 	add r1, r7, #0
@@ -965,7 +965,7 @@ sub_0208EE08: ; 0x0208EE08
 	add r4, r0, #0
 	ldr r1, [r4]
 	mov r0, #0x48
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x28]
 	ldr r0, [r4, #0xc]
 	mov r1, #0x46
@@ -1236,7 +1236,7 @@ sub_0208EFF4: ; 0x0208EFF4
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0x48
-	bl String_ctor
+	bl String_New
 	mov r6, #0
 	str r0, [r5, #0x30]
 	add r4, r6, #0
@@ -1274,7 +1274,7 @@ sub_0208F030: ; 0x0208F030
 	mov r0, #0x12
 	ldr r1, [r5]
 	lsl r0, r0, #4
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x38]
 	cmp r4, #5
 	bgt _0208F054

@@ -3631,7 +3631,7 @@ _0222D410:
 	bl ov40_02230DCC
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r5, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -3688,7 +3688,7 @@ _0222D494:
 	bl ov40_02230DCC
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r5, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -5322,7 +5322,7 @@ _0222E0D6:
 	str r0, [sp, #0x30]
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -5382,7 +5382,7 @@ _0222E0D6:
 	bl ov40_02230DCC
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r2, [sp, #0x34]
 	add r0, r4, #0
@@ -5482,7 +5482,7 @@ _0222E0D6:
 _0222E33C:
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x44]
 	ldr r0, [r7, #0x48]
 	mov r1, #0x16
@@ -5524,7 +5524,7 @@ _0222E33C:
 	bl FillWindowPixelBuffer
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r5, r0, #0
 	ldr r0, [r7, #0x48]
 	mov r1, #0x17
@@ -6088,7 +6088,7 @@ _0222E824:
 	beq _0222E85C
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x14]
 	ldr r0, [r4, #0x48]
 	mov r1, #0x17
@@ -6107,7 +6107,7 @@ _0222E824:
 _0222E85C:
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x14]
 	ldr r0, [r4, #0x48]
 	mov r1, #0x16
@@ -6406,11 +6406,11 @@ _0222EAB0:
 _0222EAC0:
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x2c]
 	ldr r0, [sp, #0x14]
 	mov r1, #0x63
@@ -6685,15 +6685,15 @@ _0222ECEE:
 	str r0, [sp, #0x4c]
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x48]
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x34]
 	ldr r0, [sp, #0x2f4]
 	cmp r0, #0
@@ -6729,7 +6729,7 @@ _0222ED4E:
 	ldr r0, [r0, #4]
 	str r0, [sp, #0x30]
 	mov r0, #0xff
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x44]
 	ldr r2, [sp, #0x30]
 	add r0, r5, #0
@@ -6744,7 +6744,7 @@ _0222ED6E:
 	ldr r0, [r0, #4]
 	str r0, [sp, #0x2c]
 	mov r0, #0xff
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x44]
 	ldr r0, [sp, #0x2c]
 	mov r1, #0x6d
@@ -7277,15 +7277,15 @@ _0222F19E:
 	str r0, [sp, #0x54]
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x50]
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x48]
 	ldr r0, [sp, #0x14]
 	cmp r0, #0
@@ -7321,7 +7321,7 @@ _0222F1FE:
 	ldr r0, [r0, #4]
 	str r0, [sp, #0x30]
 	mov r0, #0xff
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x4c]
 	ldr r2, [sp, #0x30]
 	add r0, r5, #0
@@ -7336,7 +7336,7 @@ _0222F21E:
 	ldr r0, [r0, #4]
 	str r0, [sp, #0x2c]
 	mov r0, #0xff
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x4c]
 	ldr r0, [sp, #0x2c]
 	mov r1, #0x6d
@@ -7693,11 +7693,11 @@ _0222F4E8:
 _0222F500:
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r5, r0, #0
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldr r0, [sp, #0x14]
 	mov r1, #0x63
@@ -9226,7 +9226,7 @@ _02230062:
 	str r0, [sp, #0x48]
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -9312,7 +9312,7 @@ _02230062:
 	mov r0, #0xff
 	mov r1, #0x6d
 	add r5, #0x5c
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x50]
 	ldr r0, [r7, #0x48]
 	mov r1, #9
@@ -9320,7 +9320,7 @@ _02230062:
 	str r0, [sp, #0x54]
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -9389,15 +9389,15 @@ _02230206:
 	add r6, r1, #0
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x38]
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x34]
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x30]
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x1c]
@@ -9457,7 +9457,7 @@ _022302B0:
 _022302BA:
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r5, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -11000,7 +11000,7 @@ ov40_02230DCC: ; 0x02230DCC
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
 	mov r0, #0x40
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r0, #0
 	add r1, r5, #0
@@ -20419,7 +20419,7 @@ _02235B66:
 	str r0, [sp, #0x18]
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldr r0, [r5, #0x48]
 	mov r1, #0x38
@@ -20427,7 +20427,7 @@ _02235B66:
 	str r0, [sp, #0x1c]
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	mov r0, #0x8b
 	lsl r0, r0, #2
@@ -20555,7 +20555,7 @@ _02235C96:
 	str r0, [sp, #0x18]
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldr r0, [r5, #0x48]
 	mov r1, #0x38
@@ -20563,7 +20563,7 @@ _02235C96:
 	str r0, [sp, #0x1c]
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	mov r0, #0x8e
 	lsl r0, r0, #2
@@ -23052,11 +23052,11 @@ ov40_0223707C: ; 0x0223707C
 	str r0, [sp, #0x10]
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	mov r0, #0x6d
 	bl ov40_0222DAB0
@@ -23134,7 +23134,7 @@ ov40_02237144: ; 0x02237144
 	mov r0, #0xff
 	mov r1, #0x6d
 	lsl r6, r6, #2
-	bl String_ctor
+	bl String_New
 	add r1, r5, #4
 	add r4, r0, #0
 	bl CopyU16ArrayToString
@@ -23235,7 +23235,7 @@ ov40_022371E4: ; 0x022371E4
 _02237214:
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r2, r7, #0
 	sub r2, #0x5c
 	add r5, r0, #0
@@ -25242,7 +25242,7 @@ ov40_02238290: ; 0x02238290
 _022382AA:
 	mov r0, #0x14
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	ldr r1, _022382FC ; =0x00002E10
 	str r0, [r4, r1]
 	add r0, r1, #0
@@ -25257,7 +25257,7 @@ _022382AA:
 	bl ov40_02230DCC
 	mov r0, #0x1e
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	ldr r1, _02238300 ; =0x00002E0C
 	str r0, [r4, r1]
 	add r0, r1, #0
@@ -27511,7 +27511,7 @@ ov40_02239574: ; 0x02239574
 	ldr r4, [r5, r0]
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x14]
 	mov r0, #0x6d
 	bl ov40_0222DAB0
@@ -27650,7 +27650,7 @@ _022396A6:
 	add r7, r0, #0
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x1c]
 	ldr r2, [sp, #0x24]
 	add r0, r6, #0
@@ -27681,7 +27681,7 @@ _022396F8:
 	beq _0223971C
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #0x10]
 	mov r1, #0x6d
@@ -29364,7 +29364,7 @@ ov40_0223A510: ; 0x0223A510
 	add r7, r0, #0
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r0, [sp, #0x14]
 	mov r1, #0x6d
@@ -29411,7 +29411,7 @@ _0223A58A:
 	add r7, r0, #0
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r0, [sp, #0x10]
 	mov r1, #0x6d
@@ -30998,7 +30998,7 @@ _0223B2BC:
 	bl ov40_02230DCC
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -33433,7 +33433,7 @@ ov40_0223C710: ; 0x0223C710
 	add r7, r0, #0
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r0, [sp, #0x14]
 	mov r1, #0x6d
@@ -36265,7 +36265,7 @@ ov40_0223DD68: ; 0x0223DD68
 _0223DD94:
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #0x6d
@@ -36331,7 +36331,7 @@ _0223DE18:
 	beq _0223DE50
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x14]
 	ldr r0, [r5, #0x48]
 	mov r1, #0x17
@@ -36350,7 +36350,7 @@ _0223DE18:
 _0223DE50:
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x14]
 	ldr r0, [r5, #0x48]
 	mov r1, #0x16
@@ -42046,7 +42046,7 @@ _02240D70:
 	bl ov40_02230DCC
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -42151,7 +42151,7 @@ ov40_02240E28: ; 0x02240E28
 	add r7, r0, #0
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r0, [sp, #0x14]
 	mov r1, #0x6d
@@ -42237,7 +42237,7 @@ ov40_02240F24: ; 0x02240F24
 	add r7, r0, #0
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r0, [sp, #0x14]
 	mov r1, #0x6d
@@ -42284,7 +42284,7 @@ _02240F9C:
 	add r7, r0, #0
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r0, [sp, #0x10]
 	mov r1, #0x6d
@@ -45994,15 +45994,15 @@ ov40_02242E4C: ; 0x02242E4C
 	mov r0, #0xff
 	mov r1, #0x6d
 	str r4, [sp, #0x14]
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x18]
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x1c]
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x20]
 	ldr r2, _02242F9C ; =0x000186A0
 	add r0, r7, #0
@@ -46017,7 +46017,7 @@ ov40_02242E4C: ; 0x02242E4C
 	str r0, [sp, #0x28]
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x2c]
 	ldr r1, [sp, #0x14]
 	ldr r2, _02242F9C ; =0x000186A0
@@ -46142,7 +46142,7 @@ ov40_02242FAC: ; 0x02242FAC
 	ldr r1, [sp]
 	add r0, r6, #1
 	str r6, [r4]
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x18]
 	str r7, [r4, #0x1c]
 	mov r2, #0
@@ -46892,7 +46892,7 @@ ov40_0224355C: ; 0x0224355C
 	add r7, r0, #0
 	mov r0, #0x64
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	mov r1, #0xb2
 	str r0, [sp, #4]
 	mov r0, #1
@@ -48695,7 +48695,7 @@ ov40_022442F0: ; 0x022442F0
 	add r6, r0, #0
 	mov r0, #0xff
 	mov r1, #0x6d
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	add r0, r7, #0
 	mov r1, #0x6d
@@ -49414,11 +49414,11 @@ ov40_02244920: ; 0x02244920
 	bl sub_0202FEB8
 	ldr r1, [sp, #4]
 	mov r0, #0x40
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	ldr r1, [sp, #4]
 	mov r0, #0x40
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #4]
 	mov r1, #0x80

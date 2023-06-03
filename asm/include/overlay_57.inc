@@ -164,7 +164,7 @@
 .public System_GetTouchNew
 .public sub_02025364
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public String16_FormatInteger
 .public sub_02026C44

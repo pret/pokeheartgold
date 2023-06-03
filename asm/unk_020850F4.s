@@ -328,7 +328,7 @@ sub_020853B4: ; 0x020853B4
 	ldr r1, [sp]
 	add r0, r6, #1
 	str r6, [r4]
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x1c]
 	str r7, [r4, #0x20]
 	mov r2, #0

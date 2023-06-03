@@ -182,7 +182,7 @@ ov18_021E5A10: ; 0x021E5A10
 	mov r0, #1
 	lsl r0, r0, #8
 	add r1, r5, #0
-	bl String_ctor
+	bl String_New
 	add r5, r0, #0
 	beq _021E5A40
 	add r0, r4, #0
@@ -1170,7 +1170,7 @@ ov18_021E6244: ; 0x021E6244
 	mov r0, #1
 	lsl r0, r0, #0xa
 	mov r1, #0x25
-	bl String_ctor
+	bl String_New
 	ldr r1, _021E627C ; =0x00000664
 	str r0, [r4, r1]
 	pop {r4, pc}
@@ -38413,7 +38413,7 @@ _021F8CDA:
 	mov r0, #1
 	ldr r1, [r5, #0x14]
 	lsl r0, r0, #0xa
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x10]
 	mov r0, #0
 	str r0, [sp]

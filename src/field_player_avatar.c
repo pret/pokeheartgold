@@ -192,7 +192,7 @@ void PlayerAvatar_DeleteFromMap(PlayerAvatar* avatar) {
 }
 
 PlayerAvatar* sub_0205C4E0() {
-    PlayerAvatar* avatar = AllocFromHeap(11, sizeof(PlayerAvatar));
+    PlayerAvatar* avatar = AllocFromHeap(HEAP_ID_FIELD, sizeof(PlayerAvatar));
     if (!avatar) {
         GF_ASSERT(FALSE);
     }

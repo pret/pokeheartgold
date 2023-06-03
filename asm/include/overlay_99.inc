@@ -70,7 +70,7 @@
 .public GX_EngineBToggleLayers
 .public sub_0202529C
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public CopyU16ArrayToString
 .public PlayerProfile_GetTrainerGender

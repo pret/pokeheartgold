@@ -495,7 +495,7 @@ ov19_02259C68: ; 0x02259C68
 	str r0, [r6, #0x28]
 	ldr r1, [r6]
 	mov r0, #0x80
-	bl String_ctor
+	bl String_New
 	str r0, [r6, #0x2c]
 	ldr r0, [r6, #0x24]
 	mov r1, #0

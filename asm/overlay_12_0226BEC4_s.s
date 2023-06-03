@@ -4,28 +4,6 @@
 
 	.text
 
-    thumb_func_start ov12_0226BEC4
-ov12_0226BEC4: ; 0x0226BEC4
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	mov r0, #5
-	mov r1, #8
-	bl AllocFromHeap
-	mov r1, #0
-	mov r2, #8
-	add r4, r0, #0
-	bl MI_CpuFill8
-	mov r2, #0xfa
-	ldr r0, _0226BEEC ; =ov12_0226BF04
-	add r1, r4, #0
-	lsl r2, r2, #2
-	str r5, [r4]
-	bl CreateSysTask
-	pop {r3, r4, r5, pc}
-	nop
-_0226BEEC: .word ov12_0226BF04
-	thumb_func_end ov12_0226BEC4
-
 	thumb_func_start ov12_0226BEF0
 ov12_0226BEF0: ; 0x0226BEF0
 	push {r4, lr}

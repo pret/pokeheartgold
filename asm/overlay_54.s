@@ -105,7 +105,7 @@ ov54_021E5900: ; 0x021E5900
 	str r0, [r4, r1]
 	ldr r1, [r4]
 	mov r0, #0x28
-	bl String_ctor
+	bl String_New
 	mov r1, #0xc9
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -1121,7 +1121,7 @@ ov54_021E6238: ; 0x021E6238
 	add r6, r0, #0
 	ldr r1, [r6]
 	mov r0, #0x28
-	bl String_ctor
+	bl String_New
 	add r5, r0, #0
 	ldr r0, [r6, #0x28]
 	mov r1, #0

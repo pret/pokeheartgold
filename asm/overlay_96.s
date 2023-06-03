@@ -7837,11 +7837,11 @@ ov96_021E92E0: ; 0x021E92E0
 _021E92FE:
 	add r0, r7, #0
 	add r1, r5, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x34]
 	mov r0, #0xb
 	add r1, r5, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x38]
 	add r6, r6, #1
 	add r4, #0x18
@@ -16531,7 +16531,7 @@ ov96_021ED524: ; 0x021ED524
 	add r6, r0, #0
 	ldr r1, [r4]
 	mov r0, #0xb
-	bl String_ctor
+	bl String_New
 	mov r1, #0x28
 	mul r1, r5
 	add r1, r6, r1
@@ -18898,7 +18898,7 @@ ov96_021EE6A0: ; 0x021EE6A0
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	mov r0, #4
 	str r0, [sp]
@@ -54207,7 +54207,7 @@ ov96_021FFF3C: ; 0x021FFF3C
 _021FFF80:
 	mov r0, #0xb
 	add r1, r6, #0
-	bl String_ctor
+	bl String_New
 	mov r1, #0x17
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -69849,7 +69849,7 @@ ov96_02207CCC: ; 0x02207CCC
 _02207D10:
 	mov r0, #0xb
 	add r1, r6, #0
-	bl String_ctor
+	bl String_New
 	mov r1, #0x6a
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -74034,7 +74034,7 @@ _02209E14:
 _02209E4A:
 	ldr r1, [r6]
 	mov r0, #0xb
-	bl String_ctor
+	bl String_New
 	add r1, r5, #0
 	add r1, #0x12
 	str r0, [r4, #0x18]
@@ -105961,7 +105961,7 @@ _02219506:
 _02219590:
 	ldr r1, [r4, #4]
 	mov r0, #0xb
-	bl String_ctor
+	bl String_New
 	add r1, r5, #0
 	add r1, #0xb0
 	str r0, [r1]

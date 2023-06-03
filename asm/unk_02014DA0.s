@@ -1568,7 +1568,7 @@ ListMenuCursorNew: ; 0x02015788
 	add r1, r5, #0
 	str r0, [r4]
 	mov r0, #4
-	bl String_ctor
+	bl String_New
 	ldr r1, _020157B4 ; =_020F60DC
 	str r0, [r4, #4]
 	bl CopyU16ArrayToString

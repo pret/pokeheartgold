@@ -1745,7 +1745,7 @@ _0225E2F4:
 	sub r5, r4, #2
 	mov r0, #0xa
 	mov r1, #0x57
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r5, #0

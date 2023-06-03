@@ -21292,7 +21292,7 @@ FollowPoke_TryPrintInteractionMessage: ; 0x0224FB9C
 	mov r0, #1
 	lsl r0, r0, #0xa
 	mov r1, #0xb
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x10]
 	ldr r0, [r5, #8]
 	add r1, r4, #0
@@ -21343,7 +21343,7 @@ ov02_0224FC08: ; 0x0224FC08
 	lsl r0, r0, #0xa
 	mov r1, #0xb
 	add r6, r2, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x10]
 	ldr r0, [r5, #8]
 	add r1, r4, #0
@@ -25694,7 +25694,7 @@ GetPhoneBookEntryName: ; 0x02251E74
 _02251E86:
 	mov r0, #8
 	add r1, r4, #0
-	bl String_ctor
+	bl String_New
 	add r5, r0, #0
 	b _02251EB2
 _02251E92:

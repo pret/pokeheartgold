@@ -13,7 +13,7 @@
 .public sub_02017FE4
 .public AllocFromHeap
 .public FreeToHeap
-.public String_ctor
+.public String_New
 .public String_dtor
 .public PlayerProfile_GetPlayerName_NewString
 .public PlayerProfile_GetTrainerID

@@ -126,7 +126,7 @@
 .public Camera_SetClipBounds
 .public sub_020232BC
 .public System_GetTouchNew
-.public String_ctor
+.public String_New
 .public String_dtor
 .public Thunk_G3X_Reset
 .public Options_GetTextFrameDelay
