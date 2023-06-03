@@ -501,7 +501,7 @@ _02266408:
 	add r0, r6, #0
 	add r1, r4, #0
 	mov r2, #5
-	bl ov12_0226BBC4
+	bl BattleFinger_LoadResources
 	ldr r0, _02266484 ; =0x00004E44
 	ldr r3, _02266488 ; =0x00004FB7
 	str r0, [sp]
@@ -517,7 +517,7 @@ _02266408:
 	add r1, r4, #0
 	mov r2, #5
 	add r3, r3, #7
-	bl ov12_0226BC68
+	bl BattleFinger_New
 	ldr r1, _0226648C ; =0x000006E4
 	str r0, [r7, r1]
 _02266470:
@@ -566,7 +566,7 @@ _022664A6:
 	beq _022664EE
 	ldr r0, _022664FC ; =0x000006E4
 	ldr r0, [r7, r0]
-	bl ov12_0226BCE4
+	bl BattleFinger_Delete
 	ldr r3, _02266500 ; =0x00004FAC
 	ldr r2, _02266504 ; =0x00004E44
 	add r1, r3, #0
@@ -574,7 +574,7 @@ _022664A6:
 	add r0, r5, #0
 	add r1, #0x12
 	add r3, #0xb
-	bl ov12_0226BC40
+	bl BattleFinger_FreeResources
 _022664EE:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

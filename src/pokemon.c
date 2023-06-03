@@ -2680,7 +2680,7 @@ u8 sub_02070A64(u16 species, u8 gender, u8 whichFacing, u8 forme, u32 pid) {
 
 static const struct UnkStruct_0200D748 _020FF588 = {
     0, 0, 0, 0,
-    0, 0, 1,
+    0, 0, NNS_G2D_VRAM_TYPE_2DMAIN,
     {0x4E2F, 0x4E2A, 0x4E27, 0x4E27, -1u, -1u},
     2, 1
 };
@@ -2689,7 +2689,7 @@ static const int _020FF50C[] = {
     0, 1, 1, 2, 0, 3
 };
 
-struct UnkStruct_0200CF18 *sub_02070C24(Unk122_021E7C9C *r6, void *sp18, s32 sp1C, s32 sp20, s32 sp88, s32 trainerClass, s32 sp90, s32 sp94, s32 r5, HeapID heapId) {
+struct UnkStruct_0200CF18 *sub_02070C24(Unk122_021E7C9C *r6, void *sp18, void *sp1C, s32 sp20, s32 sp88, s32 trainerClass, s32 sp90, s32 sp94, s32 r5, HeapID heapId) {
     s32 r7;
     NARC *narc_r4;
     struct UnkStruct_0200CF18 *ret_r4;

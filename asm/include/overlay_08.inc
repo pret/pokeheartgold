@@ -187,11 +187,11 @@
 .public ov12_0226BA28
 .public ov12_0226BAFC
 .public ov12_0226BB68
-.public ov12_0226BBC4
-.public ov12_0226BC40
-.public ov12_0226BC68
-.public ov12_0226BCE4
+.public BattleFinger_LoadResources
+.public BattleFinger_FreeResources
+.public BattleFinger_New
+.public BattleFinger_Delete
 .public ov12_0226BD2C
-.public ov12_0226BD38
+.public BattleFinger_Disable
 .public ov12_0226BD4C
 .public ov12_0226BD50

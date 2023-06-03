@@ -16249,7 +16249,7 @@ ov08_0222419C: ; 0x0222419C
 	ldr r1, [r5, r1]
 	ldr r2, [r2, #0xc]
 	ldr r3, [r5, #8]
-	bl ov12_0226BBC4
+	bl BattleFinger_LoadResources
 	ldr r3, _022241F0 ; =0x0000B4BD
 	mov r1, #0xc3
 	str r3, [sp]
@@ -16264,7 +16264,7 @@ ov08_0222419C: ; 0x0222419C
 	ldr r1, [r5, r1]
 	ldr r2, [r2, #0xc]
 	add r0, r4, #0
-	bl ov12_0226BC68
+	bl BattleFinger_New
 	str r0, [r5, #0x38]
 	add sp, #0x14
 	pop {r4, r5, pc}
@@ -16278,7 +16278,7 @@ ov08_022241F4: ; 0x022241F4
 	sub sp, #4
 	add r4, r0, #0
 	ldr r0, [r4, #0x38]
-	bl ov12_0226BCE4
+	bl BattleFinger_Delete
 	ldr r3, _02224218 ; =0x0000B4B8
 	mov r0, #0xc3
 	add r1, r3, #5
@@ -16286,7 +16286,7 @@ ov08_022241F4: ; 0x022241F4
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r2, r1, #0
-	bl ov12_0226BC40
+	bl BattleFinger_FreeResources
 	add sp, #4
 	pop {r3, r4, pc}
 	nop
@@ -16314,7 +16314,7 @@ ov08_0222421C: ; 0x0222421C
 	pop {r4, pc}
 _02224242:
 	ldr r0, [r4, #0x38]
-	bl ov12_0226BD38
+	bl BattleFinger_Disable
 	pop {r4, pc}
 	nop
 _0222424C: .word ov08_02225D2C

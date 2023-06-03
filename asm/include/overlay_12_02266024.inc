@@ -178,10 +178,10 @@
 .public ov12_0226BB40
 .public ov12_0226BB68
 .public ov12_0226BB84
-.public ov12_0226BBC4
-.public ov12_0226BC40
-.public ov12_0226BC68
-.public ov12_0226BCE4
+.public BattleFinger_LoadResources
+.public BattleFinger_FreeResources
+.public BattleFinger_New
+.public BattleFinger_Delete
 .public ov12_0226BCFC
 .public ov12_0226BD4C
 .public ov12_0226BD50
