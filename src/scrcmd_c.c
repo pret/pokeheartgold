@@ -1845,7 +1845,7 @@ BOOL ScrCmd_452(SCRIPTCONTEXT *ctx) {
     u16 species = ScriptGetVar(ctx);
     u16 gender = ScriptGetVar(ctx);
     LoadUserFrameGfx1(ctx->fsys->bgConfig, GF_BG_LYR_MAIN_3, 0x3D9, 0xB, 0, 4);
-    *p_work = sub_0200F4A0(ctx->fsys->bgConfig, GF_BG_LYR_MAIN_3, 10, 5, 11, 0x3D9, species, gender, 4);
+    *p_work = DrawPokemonPicFromSpecies(ctx->fsys->bgConfig, GF_BG_LYR_MAIN_3, 10, 5, 11, 0x3D9, species, gender, 4);
     Script_SetMonSeenFlagBySpecies(ctx->fsys, species);
     return FALSE;
 }
@@ -1855,7 +1855,7 @@ BOOL ScrCmd_547(SCRIPTCONTEXT *ctx) {
     u16 partyIdx = ScriptGetVar(ctx);
     Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), partyIdx);
     LoadUserFrameGfx1(ctx->fsys->bgConfig, GF_BG_LYR_MAIN_3, 0x3D9, 0xB, 0, 4);
-    *p_work = sub_0200F4F8(ctx->fsys->bgConfig, GF_BG_LYR_MAIN_3, 10, 5, 11, 0x3D9, mon, 4);
+    *p_work = DrawPokemonPicFromMon(ctx->fsys->bgConfig, GF_BG_LYR_MAIN_3, 10, 5, 11, 0x3D9, mon, 4);
     return FALSE;
 }
 

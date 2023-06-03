@@ -19,7 +19,7 @@ typedef struct FashionCase {
     u8 padding_3C[4];
 } FashionCase;
 
-typedef struct SaveDressupData {
+typedef struct SaveDressupData { //todo: rename to SaveFashionData
     SaveDressupDataSub unk_000[11]; // 000
     SaveDressupDataSub3FC unk_3FC[5]; // 3FC
     FashionCase fashionCase; // 7F4
