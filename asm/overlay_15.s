@@ -10757,7 +10757,7 @@ _021FE95E:
 	ldr r0, [r5, r0]
 	mov r2, #2
 	mov r3, #1
-	bl sub_0200CDF0
+	bl PrintUIntOnWindow
 	add r0, r5, #0
 	add r1, r6, #0
 	mov r2, #0x10

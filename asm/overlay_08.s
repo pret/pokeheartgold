@@ -4320,7 +4320,7 @@ ov08_0221DFC8: ; 0x0221DFC8
 	ldrh r1, [r1, #0x10]
 	mov r2, #3
 	mov r3, #1
-	bl sub_0200CDF0
+	bl PrintUIntOnWindow
 	add r3, r7, #0
 	ldr r2, _0221E044 ; =0x00001FA4
 	str r6, [sp]
@@ -4344,7 +4344,7 @@ ov08_0221DFC8: ; 0x0221DFC8
 	ldrh r1, [r1, #0x12]
 	mov r2, #3
 	mov r3, #0
-	bl sub_0200CDF0
+	bl PrintUIntOnWindow
 	ldr r0, _0221E040 ; =0x00002070
 	ldr r0, [r5, r0]
 	add r0, r0, r4

@@ -1132,7 +1132,7 @@ sub_0207D440: ; 0x0207D440
 	ldrh r1, [r1, r5]
 	mov r2, #3
 	mov r3, #1
-	bl sub_0200CDF0
+	bl PrintUIntOnWindow
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	add sp, #0xc
@@ -1190,7 +1190,7 @@ sub_0207D4AC: ; 0x0207D4AC
 	ldrh r1, [r1, r5]
 	mov r2, #3
 	mov r3, #0
-	bl sub_0200CDF0
+	bl PrintUIntOnWindow
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	add sp, #0xc
