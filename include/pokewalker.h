@@ -21,7 +21,7 @@ typedef struct POKEWALKER {
 } POKEWALKER; // size=0x134
 
 void Pokewalker_UnlockCourse(POKEWALKER *pokeWalker, int courseNo);
-POKEWALKER *Save_Pokewalker_get(SAVEDATA *saveData);
+POKEWALKER *Save_Pokewalker_Get(SAVEDATA *saveData);
 u32 Pokewalker_sizeof(void);
 void Pokewalker_init(POKEWALKER *pokeWalker);
 void sub_02032624(POKEWALKER *pokeWalker);

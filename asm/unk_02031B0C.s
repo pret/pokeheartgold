@@ -44,14 +44,14 @@ sub_02031B10: ; 0x02031B10
 	bx lr
 	thumb_func_end sub_02031B10
 
-	thumb_func_start Save_ApricornBox_get
-Save_ApricornBox_get: ; 0x02031B14
-	ldr r3, _02031B1C ; =SaveArray_get
+	thumb_func_start Save_ApricornBox_Get
+Save_ApricornBox_Get: ; 0x02031B14
+	ldr r3, _02031B1C ; =SaveArray_Get
 	mov r1, #0x26
 	bx r3
 	nop
-_02031B1C: .word SaveArray_get
-	thumb_func_end Save_ApricornBox_get
+_02031B1C: .word SaveArray_Get
+	thumb_func_end Save_ApricornBox_Get
 
 	thumb_func_start InitApricornBox
 InitApricornBox: ; 0x02031B20

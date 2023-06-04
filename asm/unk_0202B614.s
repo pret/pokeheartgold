@@ -1479,11 +1479,11 @@ _0202C022:
 	.balign 4, 0
 	thumb_func_end sub_0202BF80
 
-	thumb_func_start Save_DressupData_get
-Save_DressupData_get: ; 0x0202C028
-	ldr r3, _0202C030 ; =SaveArray_get
+	thumb_func_start Save_DressupData_Get
+Save_DressupData_Get: ; 0x0202C028
+	ldr r3, _0202C030 ; =SaveArray_Get
 	mov r1, #0xc
 	bx r3
 	nop
-_0202C030: .word SaveArray_get
-	thumb_func_end Save_DressupData_get
+_0202C030: .word SaveArray_Get
+	thumb_func_end Save_DressupData_Get

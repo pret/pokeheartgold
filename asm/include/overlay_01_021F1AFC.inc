@@ -14,7 +14,7 @@
 .public StartScriptFromMenu
 .public FlagSet
 .public FlagClear
-.public SaveArray_Flags_get
+.public SaveArray_Flags_Get
 .public FieldSys_CreateTask
 .public TaskManager_Call
 .public TaskManager_GetSys
@@ -93,7 +93,7 @@
 .public FsysUnkSub108_AddMonMood
 .public GetMonData
 .public GetPartyMonByIndex
-.public SaveArray_PlayerParty_get
+.public SaveArray_PlayerParty_Get
 .public memset
 .public ov01_021E7F00
 .public ov01_021F1640

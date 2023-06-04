@@ -263,20 +263,20 @@ const int gNumSaveChunkHeaders = NELEMS(gSaveChunkHeaders);
 
 struct UnkStruct_0202E474 *sub_020270C4(SAVEDATA *saveData) {
     SaveSubstruct_AssertCRC(SAVE_UNK_23);
-    return SaveArray_get(saveData, SAVE_UNK_23);
+    return SaveArray_Get(saveData, SAVE_UNK_23);
 }
 
 PC_STORAGE *GetStoragePCPointer(SAVEDATA *saveData) {
-    return SaveArray_get(saveData, SAVE_PCSTORAGE);
+    return SaveArray_Get(saveData, SAVE_PCSTORAGE);
 }
 
-MYSTERY_GIFT_SAVE *Save_MysteryGift_get(SAVEDATA *saveData) {
+MYSTERY_GIFT_SAVE *Save_MysteryGift_Get(SAVEDATA *saveData) {
     SaveSubstruct_AssertCRC(SAVE_MYSTERY_GIFT);
-    return SaveArray_get(saveData, SAVE_MYSTERY_GIFT);
+    return SaveArray_Get(saveData, SAVE_MYSTERY_GIFT);
 }
 
 struct UnkStruct_0202EB30 *sub_020270F8(SAVEDATA *saveData) {
-    return SaveArray_get(saveData, SAVE_UNK_28);
+    return SaveArray_Get(saveData, SAVE_UNK_28);
 }
 
 DECL_CHUNK_EX(sub_020312A4, sub_020312AC)
@@ -328,21 +328,21 @@ u32 PCStorage_GetNumBoxes(void) {
 }
 
 u32 Save_GetPCBoxModifiedFlags(SAVEDATA *saveData) {
-    PC_STORAGE *pcStorage = SaveArray_get(saveData, SAVE_PCSTORAGE);
+    PC_STORAGE *pcStorage = SaveArray_Get(saveData, SAVE_PCSTORAGE);
     return PCStorage_GetBoxModifiedFlags(pcStorage);
 }
 
 void Save_ResetPCBoxModifiedFlags(SAVEDATA *saveData) {
-    PC_STORAGE *pcStorage = SaveArray_get(saveData, SAVE_PCSTORAGE);
+    PC_STORAGE *pcStorage = SaveArray_Get(saveData, SAVE_PCSTORAGE);
     PCStorage_ResetBoxModifiedFlags(pcStorage);
 }
 
 void Save_SetAllPCBoxesModified(SAVEDATA *saveData) {
-    PC_STORAGE *pcStorage = SaveArray_get(saveData, SAVE_PCSTORAGE);
+    PC_STORAGE *pcStorage = SaveArray_Get(saveData, SAVE_PCSTORAGE);
     PCStorage_SetAllBoxesModified(pcStorage);
 }
 
 void sub_020271A0(SAVEDATA *saveData) {
-    PC_STORAGE *pcStorage = SaveArray_get(saveData, SAVE_PCSTORAGE);
+    PC_STORAGE *pcStorage = SaveArray_Get(saveData, SAVE_PCSTORAGE);
     sub_02074128(pcStorage);
 }

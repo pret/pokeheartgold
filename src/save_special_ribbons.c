@@ -10,6 +10,6 @@ void Save_SpecialRibbons_init(SaveSpecialRibbons* argP) {
     memset(argP, 0, sizeof(SaveSpecialRibbons));
 }
 
-SaveSpecialRibbons* Save_SpecialRibbons_get(SAVEDATA* data) {
-    return SaveArray_get(data, SAVE_SPECIAL_RIBBONS);
+SaveSpecialRibbons* Save_SpecialRibbons_Get(SAVEDATA* data) {
+    return SaveArray_Get(data, SAVE_SPECIAL_RIBBONS);
 }

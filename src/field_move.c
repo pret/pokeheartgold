@@ -85,8 +85,8 @@ static const struct FieldMoveFuncDat sFieldMoveFuncTable[] = {
 };
 
 static inline BOOL MoveUseCheck_SafariOrPalPark(const struct FieldMoveCheckData *checkData) {
-    if (ScriptState_CheckSafariSysFlag(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE || ScriptState_CheckPalParkSysFlag(
-        SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckSafariSysFlag(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE || ScriptState_CheckPalParkSysFlag(
+        SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
         return TRUE;
     } else {
         return FALSE;
@@ -95,7 +95,7 @@ static inline BOOL MoveUseCheck_SafariOrPalPark(const struct FieldMoveCheckData 
 
 static inline BOOL MoveUseCheck_PalPark(const struct FieldMoveCheckData *checkData) {
     if (ScriptState_CheckPalParkSysFlag(
-        SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+        SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
         return TRUE;
     } else {
         return FALSE;
@@ -161,7 +161,7 @@ void Fsys_MakeFieldMoveCheckData(FieldSystem *fsys, struct FieldMoveCheckData *c
     if (MetatileBehavior_IsWhirlpool(facingTile)) {
         checkData->flag |= (1 << FIELD_MOVE_CHECK_WHIRLPOOL_F);
     }
-    if (FlyPoints_GetWeatherType(Save_FlyPoints_get(fsys->savedata)) == 11) {
+    if (FlyPoints_GetWeatherType(Save_FlyPoints_Get(fsys->savedata)) == 11) {
         checkData->flag |= (1 << FIELD_MOVE_CHECK_FLASH_F);
     }
     if (MetatileBehavior_IsHeadbutt(facingTile) || FieldSys_FacingModelIsHeadbuttTree(fsys)) {
@@ -226,11 +226,11 @@ static u32 FieldMoveMenuCheck_Fly(const struct FieldMoveCheckData *checkData) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (ScriptState_CheckHaveFollower(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckHaveFollower(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 
@@ -267,11 +267,11 @@ static u32 FieldMoveMenuCheck_Surf(const struct FieldMoveCheckData *checkData) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (ScriptState_CheckHaveFollower(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckHaveFollower(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 
@@ -411,11 +411,11 @@ static u32 FieldMoveMenuCheck_RockClimb(const struct FieldMoveCheckData *checkDa
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (ScriptState_CheckHaveFollower(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckHaveFollower(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 
@@ -486,11 +486,11 @@ static u32 FieldMoveMenuCheck_Teleport(const struct FieldMoveCheckData *checkDat
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (ScriptState_CheckHaveFollower(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckHaveFollower(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 
@@ -532,11 +532,11 @@ static u32 FieldMoveMenuCheck_Dig(const struct FieldMoveCheckData *checkData) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (ScriptState_CheckHaveFollower(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckHaveFollower(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 
@@ -688,7 +688,7 @@ static BOOL Task_UseHeadbuttInField(TaskManager *taskManager) {
 
 static struct TeleportFieldEnv *sub_020689A4(HeapID heapId, u8 slotno, SAVEDATA *saveData) {
     struct TeleportFieldEnv *ret = AllocFromHeapAtEnd(heapId, sizeof(struct TeleportFieldEnv));
-    ret->mon = GetPartyMonByIndex(SaveArray_PlayerParty_get(saveData), slotno);
+    ret->mon = GetPartyMonByIndex(SaveArray_PlayerParty_Get(saveData), slotno);
     ret->flySub = NULL;
     return ret;
 }

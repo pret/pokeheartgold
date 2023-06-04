@@ -42,7 +42,7 @@ u32 Save_Roamers_sizeof(void);
 void Save_Roamers_init(ROAMER_SAVE *roamer);
 void Roamers_SetRand(ROAMER_SAVE *roamer, u32 param);
 u32 Roamers_GetRand(ROAMER_SAVE *roamer, u32 which);
-ROAMER_SAVE *Save_Roamers_get(SAVEDATA *saveData);
+ROAMER_SAVE *Save_Roamers_Get(SAVEDATA *saveData);
 void RoamerSave_SetOutbreakActive(SAVEDATA *saveData);
 u8 RoamerSave_OutbreakActive(ROAMER_SAVE *roamerSave);
 void PlayerLocationHistoryPush(ROAMER_SAVE *roamerSave, u32 mapsec);

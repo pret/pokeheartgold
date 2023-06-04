@@ -2003,7 +2003,7 @@ _022595B4:
 	bl ov00_021E69A8
 _02259688:
 	ldr r0, [r4, #8]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	ldrb r1, [r4, #0x13]
 	cmp r1, #0
 	beq _0225969A

@@ -126,7 +126,7 @@
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public Save_SpecialRibbons_get
+.public Save_SpecialRibbons_Get
 .public sub_02030BD0
 .public sub_02037030
 .public sub_02037474

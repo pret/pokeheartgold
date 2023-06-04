@@ -23,7 +23,7 @@ BOOL ScrCmd_GiveApricornFromTree(SCRIPTCONTEXT *ctx) {
     u16 var0 = ScriptGetVar(ctx);
     u8 var1 = ScriptGetVar(ctx);
     u16 *retPtr = ScriptGetVarPointer(ctx);
-    SaveApricornBox *apricornBox = Save_ApricornBox_get(ctx->fsys->savedata);
+    SaveApricornBox *apricornBox = Save_ApricornBox_Get(ctx->fsys->savedata);
     u8 var2 = var0;
     int apricornCount = ApricornBox_CountApricorn(apricornBox, var2);
 

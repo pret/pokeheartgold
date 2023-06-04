@@ -6435,7 +6435,7 @@ ov43_0222D134: ; 0x0222D134
 	ldr r0, [r4, #4]
 	add r6, r2, #0
 	add r7, r3, #0
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	mov r1, #2
 	mov r2, #0x1b
 	bl ScriptState_FlypointFlagAction

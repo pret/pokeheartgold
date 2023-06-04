@@ -295,7 +295,7 @@ ov53_OakSpeech_OvyExit: ; 0x021E5B48
 	ldr r1, [r1, #4]
 	bl PlayerProfile_SetTrainerGender
 	ldr r0, [r4, #4]
-	bl Save_Misc_get
+	bl Save_Misc_Get
 	mov r1, #0x49
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]

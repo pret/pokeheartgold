@@ -11,7 +11,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public SaveArray_get
+.public SaveArray_Get
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetAvatar
 .public PalPad_PlayerIdIsFriendOrMutual

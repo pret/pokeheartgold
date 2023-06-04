@@ -11,11 +11,11 @@
 .public CopyU16ArrayToStringN
 .public sub_02027144
 .public sub_02027158
-.public SaveArray_get
+.public SaveArray_Get
 .public SaveGameNormal
 .public Save_CheckExtraChunksExist
 .public SaveArray_CalcCRC16
-.public Save_SysInfo_get
+.public Save_SysInfo_Get
 .public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetTrainerID

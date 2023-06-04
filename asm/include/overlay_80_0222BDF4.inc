@@ -122,12 +122,12 @@
 .public Options_GetTextFrameDelay
 .public sub_0202C4B0
 .public sub_0202C6F4
-.public Save_GameStats_get
+.public Save_GameStats_Get
 .public GameStats_Inc
 .public GameStats_Add
 .public GameStats_AddSpecial
 .public FrontierData_BattlePointAction
-.public Save_FrontierData_get
+.public Save_FrontierData_Get
 .public sub_0202FBF0
 .public sub_0202FC24
 .public sub_0202FC90
@@ -144,7 +144,7 @@
 .public sub_02037B38
 .public sub_02037BEC
 .public sub_02037D78
-.public SaveArray_Flags_get
+.public SaveArray_Flags_Get
 .public GetVarAddr
 .public sub_02058284
 .public sub_0205C298
@@ -156,7 +156,7 @@
 .public sub_02074498
 .public sub_020744A4
 .public GetPartyMonByIndex
-.public SaveArray_PlayerParty_get
+.public SaveArray_PlayerParty_Get
 .public sub_0207CA9C
 .public sub_0207CAA0
 .public sub_0207CAA4

@@ -40,7 +40,7 @@
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr
 .public sub_020290FC
-.public Save_SpecialRibbons_get
+.public Save_SpecialRibbons_Get
 .public sub_02034434
 .public sub_02034818
 .public sub_02035650
@@ -134,7 +134,7 @@
 .public AddMonToParty
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SaveArray_PlayerParty_get
+.public SaveArray_PlayerParty_Get
 .public SaveArray_IsNatDexEnabled
 .public SaveGetBag
 .public sub_02088288

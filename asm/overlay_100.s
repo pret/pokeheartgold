@@ -1461,11 +1461,11 @@ ov100_Phone_OvyInit: ; 0x021E642C
 	str r0, [r4, #0x24]
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0x24]
-	bl SaveData_GSPlayerMisc_get
+	bl SaveData_GSPlayerMisc_Get
 	str r0, [r4, #0x28]
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0x24]
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	str r0, [r4, #0x2c]
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0x24]

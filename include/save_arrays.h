@@ -34,7 +34,7 @@ extern const int gNumExtraSaveChunkHeaders;
 
 struct UnkStruct_0202E474 *sub_020270C4(SAVEDATA *saveData);
 PC_STORAGE *GetStoragePCPointer(SAVEDATA *saveData);
-MYSTERY_GIFT_SAVE *Save_MysteryGift_get(SAVEDATA *saveData);
+MYSTERY_GIFT_SAVE *Save_MysteryGift_Get(SAVEDATA *saveData);
 struct UnkStruct_0202EB30 *sub_020270F8(SAVEDATA *saveData);
 HALL_OF_FAME *LoadHallOfFame(SAVEDATA *saveData, HeapID heapId, int *ret_p);
 int SaveHallOfFame(SAVEDATA *saveData, HALL_OF_FAME *hallOfFame);

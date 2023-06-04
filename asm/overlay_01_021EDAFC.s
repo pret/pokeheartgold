@@ -2363,7 +2363,7 @@ _021EECD2:
 	bl NewString_ReadMsgData
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl Save_FrontierData_get
+	bl Save_FrontierData_Get
 	mov r1, #0
 	add r2, r1, #0
 	bl FrontierData_BattlePointAction
@@ -2375,7 +2375,7 @@ _021EECEE:
 	bl NewString_ReadMsgData
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl Save_Pokeathlon_get
+	bl Save_Pokeathlon_Get
 	bl SavePokeathlon_GetAthletePoints
 	add r2, r0, #0
 _021EED04:

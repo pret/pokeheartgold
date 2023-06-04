@@ -2126,7 +2126,7 @@ ov74_MainMenu_PrintMysteryGiftButton: ; 0x022280B4
 	str r0, [r5, #0x34]
 _022280D4:
 	ldr r0, [r5, #4]
-	bl Save_SysInfo_get
+	bl Save_SysInfo_Get
 	bl Save_SysInfo_GetField48
 	cmp r0, #1
 	bne _022280E6
@@ -3196,7 +3196,7 @@ ov74_MainMenu_AppInit: ; 0x02228920
 	bl OverlayManager_GetArgs
 	ldr r0, [r0, #8]
 	str r0, [r4, #4]
-	bl Save_MysteryGift_get
+	bl Save_MysteryGift_Get
 	str r0, [r4, #0x14]
 	mov r0, #0x4d
 	mov r1, #0
@@ -3208,7 +3208,7 @@ ov74_MainMenu_AppInit: ; 0x02228920
 	bl Save_PlayerData_GetProfileAddr
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #4]
-	bl Save_Pokedex_get
+	bl Save_Pokedex_Get
 	str r0, [r4, #8]
 	ldr r0, [r4, #4]
 	bl Save_PlayerData_GetIGTAddr
@@ -4248,7 +4248,7 @@ ov74_02229200: ; 0x02229200
 	bl Save_PlayerData_GetProfileAddr
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #8]
-	bl Save_Pokedex_get
+	bl Save_Pokedex_Get
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #8]
 	bl Save_PlayerData_GetOptionsAddr
@@ -4256,7 +4256,7 @@ ov74_02229200: ; 0x02229200
 	ldr r0, [r4]
 	bl ov74_022352A0
 	ldr r0, [r4, #8]
-	bl Save_MysteryGift_get
+	bl Save_MysteryGift_Get
 	ldr r1, _0222928C ; =0x00003174
 	mov r2, #0x53
 	str r0, [r4, r1]
@@ -6252,7 +6252,7 @@ _0222A1BC:
 	str r0, [r5, r1]
 _0222A1CE:
 	ldr r0, [sp]
-	bl Save_MysteryGift_get
+	bl Save_MysteryGift_Get
 	add r1, r4, #0
 	add r1, #0x4c
 	ldrh r1, [r1]
@@ -6770,7 +6770,7 @@ ov74_0222A5CC: ; 0x0222A5CC
 	bl OverlayManager_GetData
 	add r5, r0, #0
 	ldr r0, [r5, #4]
-	bl Save_MysteryGift_get
+	bl Save_MysteryGift_Get
 	ldr r0, _0222A648 ; =0x000005C8
 	ldr r1, [r5, r0]
 	cmp r1, #0x1e
@@ -7218,7 +7218,7 @@ ov74_0222A94C: ; 0x0222A94C
 	str r0, [sp, #0x1c]
 	ldr r0, [r0, #4]
 	mov r5, #0
-	bl Save_MysteryGift_get
+	bl Save_MysteryGift_Get
 	ldr r1, _0222AA10 ; =ov74_0223C220
 	ldr r4, [sp, #0x1c]
 	ldr r2, [r1, #0x70]
@@ -14273,7 +14273,7 @@ _0222E254:
 	ldr r0, _0222E5A4 ; =0x00002BA4
 	str r1, [r4, r0]
 	ldr r0, [r4, r0]
-	bl Save_MysteryGift_get
+	bl Save_MysteryGift_Get
 	ldr r1, _0222E5A8 ; =0x00002BA0
 	str r0, [r4, r1]
 	add r0, r1, #4
@@ -16948,7 +16948,7 @@ _0222F834:
 	ldr r0, _0222FB50 ; =0x00002BA4
 	str r1, [r4, r0]
 	ldr r0, [r4, r0]
-	bl Save_MysteryGift_get
+	bl Save_MysteryGift_Get
 	ldr r1, _0222FB54 ; =0x00002BA0
 	str r0, [r4, r1]
 	add r0, r1, #4
@@ -17562,7 +17562,7 @@ ov74_0222FD98: ; 0x0222FD98
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r7, r0, #0
-	bl Save_MysteryGift_get
+	bl Save_MysteryGift_Get
 	mov r1, #0
 	ldr r4, [r5, #0x48]
 	mvn r1, r1

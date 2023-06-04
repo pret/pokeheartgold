@@ -31,8 +31,8 @@ u32 Save_SafariZone_sizeof(void) {
     return sizeof(SAFARIZONE);
 }
 
-SAFARIZONE* Save_SafariZone_get(SAVEDATA* savedata) {
-    return SaveArray_get(savedata, SAVE_SAFARI_ZONE);
+SAFARIZONE* Save_SafariZone_Get(SAVEDATA* savedata) {
+    return SaveArray_Get(savedata, SAVE_SAFARI_ZONE);
 }
 
 void Save_SafariZone_init(SAFARIZONE* safari_zone) {

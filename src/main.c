@@ -60,7 +60,7 @@ void NitroMain(void) {
     _02111868.unk_10.unk_00 = -1;
     _02111868.unk_10.savedata = SaveBlock2_New();
     sub_02005D00();
-    InitSoundData(Save_Chatot_get(_02111868.unk_10.savedata), Save_PlayerData_GetOptionsAddr(_02111868.unk_10.savedata));
+    InitSoundData(Save_Chatot_Get(_02111868.unk_10.savedata), Save_PlayerData_GetOptionsAddr(_02111868.unk_10.savedata));
     Init_Timer3();
     if (sub_02039FFC(3) == 3) {
         ShowWFCUserInfoWarning(HEAP_ID_3, 0);
@@ -203,7 +203,7 @@ void DoSoftReset(u32 param) {
     sub_0200FBF4(0, RGB_WHITE);
     sub_0200FBF4(1, RGB_WHITE);
     if (sub_02038D90()) {
-        Save_Cancel(SaveBlock2_get());
+        Save_Cancel(SaveBlock2_Get());
     }
     while (1) {
         HandleDSLidAction();

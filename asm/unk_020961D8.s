@@ -35,7 +35,7 @@ sub_020961D8: ; 0x020961D8
 	bl sub_02090C94
 	str r0, [r4, #0x10]
 	ldr r0, [r5, #0xc]
-	bl Save_Misc_get
+	bl Save_Misc_Get
 	str r0, [r4, #0x14]
 	add r0, r4, #0
 	str r6, [r4, #0x20]

@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public SavePalPad_Merge
-.public Save_SpecialRibbons_get
+.public Save_SpecialRibbons_Get
 .public sub_0203410C
 .public sub_020342C0
 .public sub_020342C4

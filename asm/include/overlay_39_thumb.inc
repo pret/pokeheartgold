@@ -83,7 +83,7 @@
 .public String_Delete
 .public CopyStringToU16Array
 .public SaveArray_CalcCRC16
-.public Save_SysInfo_get
+.public Save_SysInfo_Get
 .public Save_SysInfo_GetField4C
 .public Save_SysInfo_SetField4C
 .public Save_PlayerData_GetOptionsAddr

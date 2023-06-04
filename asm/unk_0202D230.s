@@ -1082,8 +1082,8 @@ sub_0202D908: ; 0x0202D908
 	.balign 4, 0
 	thumb_func_end sub_0202D908
 
-	thumb_func_start Save_FrontierData_get
-Save_FrontierData_get: ; 0x0202D918
+	thumb_func_start Save_FrontierData_Get
+Save_FrontierData_Get: ; 0x0202D918
 	push {r3, lr}
 	bl sub_0203107C
 	ldr r1, _0202D924 ; =0x00000954
@@ -1091,7 +1091,7 @@ Save_FrontierData_get: ; 0x0202D918
 	pop {r3, pc}
 	.balign 4, 0
 _0202D924: .word 0x00000954
-	thumb_func_end Save_FrontierData_get
+	thumb_func_end Save_FrontierData_Get
 
 	thumb_func_start sub_0202D928
 sub_0202D928: ; 0x0202D928

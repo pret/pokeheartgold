@@ -62,14 +62,14 @@ _02031960: .word 0x0000FFFF
 _02031964: .word 0x00000484
 	thumb_func_end Save_Pokeathlon_init
 
-	thumb_func_start Save_Pokeathlon_get
-Save_Pokeathlon_get: ; 0x02031968
-	ldr r3, _02031970 ; =SaveArray_get
+	thumb_func_start Save_Pokeathlon_Get
+Save_Pokeathlon_Get: ; 0x02031968
+	ldr r3, _02031970 ; =SaveArray_Get
 	mov r1, #0x25
 	bx r3
 	nop
-_02031970: .word SaveArray_get
-	thumb_func_end Save_Pokeathlon_get
+_02031970: .word SaveArray_Get
+	thumb_func_end Save_Pokeathlon_Get
 
 	thumb_func_start sub_02031974
 sub_02031974: ; 0x02031974

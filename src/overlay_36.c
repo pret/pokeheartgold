@@ -143,17 +143,17 @@ BOOL ov36_App_MainMenu_SelectOption_Continue_AppExec(OVY_MANAGER* man, int* stat
 #pragma unused(state)
     struct UnkStruct_02111868_sub* unk_work = OverlayManager_GetArgs(man);
     SAVEDATA* savedata = unk_work->savedata;
-    SYSINFO* sys_info = Save_SysInfo_get(savedata);
+    SYSINFO* sys_info = Save_SysInfo_Get(savedata);
 
     Continue_LoadSaveData_HandleError(HEAPID_OV36, savedata);
 
     Options_SetButtonModeOnMain(savedata, 0);
 
     if (!Save_SysInfo_MacAddressIsMine(sys_info) || !Save_SysInfo_RTCOffsetIsMine(sys_info)) {
-        SysInfoRTC_HandleContinueOnNewConsole(Save_SysInfo_RTC_get(savedata));
-        Save_BerryPotRTC_init(Save_BerryPotRTC_get(savedata));
+        SysInfoRTC_HandleContinueOnNewConsole(Save_SysInfo_RTC_Get(savedata));
+        Save_BerryPotRTC_init(Save_BerryPotRTC_Get(savedata));
         Save_SysInfo_InitFromSystem(sys_info);
-        Party_ResetAllShayminToLandForme(SaveArray_PlayerParty_get(savedata));
+        Party_ResetAllShayminToLandForme(SaveArray_PlayerParty_Get(savedata));
     }
 
     sub_0201838C(Save_PlayerData_GetIGTAddr(savedata));
@@ -175,10 +175,10 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SAVEDATA* saved
     MSGDATA* friend_names_msgdata;
     STRING* author_name;
 
-    Save_SysInfo_InitFromSystem(Save_SysInfo_get(savedata));
-    Save_SysInfo_RTC_init(Save_SysInfo_RTC_get(savedata));
-    Save_BerryPotRTC_init(Save_BerryPotRTC_get(savedata));
-    sub_0202C7C0(Save_FriendGroup_get(savedata), 1, MTRandom());
+    Save_SysInfo_InitFromSystem(Save_SysInfo_Get(savedata));
+    Save_SysInfo_RTC_init(Save_SysInfo_RTC_Get(savedata));
+    Save_BerryPotRTC_init(Save_BerryPotRTC_Get(savedata));
+    sub_0202C7C0(Save_FriendGroup_Get(savedata), 1, MTRandom());
     sub_020674BC(savedata);
 
     PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(savedata);
@@ -188,21 +188,21 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SAVEDATA* saved
         PlayerProfile_SetTrainerID(profile, rand);
     }
 
-    SAFARIZONE* safari_zone = Save_SafariZone_get(savedata);
+    SAFARIZONE* safari_zone = Save_SafariZone_Get(savedata);
     SafariZone_ResetAreaSetToDefaultSet(safari_zone->area_sets, rand);
 
     PlayerProfile_SetAvatar(profile, sub_0205B418(rand, PlayerProfile_GetTrainerGender(profile), 0));
 
-    sub_0202AE0C(Save_FieldApricornTrees_get(savedata));
+    sub_0202AE0C(Save_FieldApricornTrees_Get(savedata));
 
-    u32* pokewalker_unk = sub_02032728(Save_Pokewalker_get(savedata));
+    u32* pokewalker_unk = sub_02032728(Save_Pokewalker_Get(savedata));
     for (i = 0; i < 10; i++) {
         pokewalker_unk[i] = MTRandom();
     }
 
     // Put an email from your friend into your PC.
     friend_names_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0445_bin, HEAP_ID_3);
-    MAILBOX* mailbox = Save_Mailbox_get(savedata);
+    MAILBOX* mailbox = Save_Mailbox_Get(savedata);
     Pokemon *mon = AllocMonZeroed(HEAP_ID_3);
 
     CreateMon(mon, SPECIES_MARILL, 1, 0, FALSE, 0, OT_ID_PLAYER_ID, 0);
@@ -247,7 +247,7 @@ static void NewGame_InitSaveData(HeapID heap_id, SAVEDATA* savedata) {
 
     PlayerProfile_SetMoney(Save_PlayerData_GetProfileAddr(savedata), 3000);
 
-    ScriptState_SetFishingCompetitionLengthRecord(SaveArray_Flags_get(savedata), 56150); // 3'6"
+    ScriptState_SetFishingCompetitionLengthRecord(SaveArray_Flags_Get(savedata), 56150); // 3'6"
 
-    SetFlag960(SaveArray_Flags_get(savedata));
+    SetFlag960(SaveArray_Flags_Get(savedata));
 }

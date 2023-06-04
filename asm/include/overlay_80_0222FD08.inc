@@ -4,7 +4,7 @@
 .public FreeToHeap
 .public LCRandom
 .public GF_AssertFail
-.public Save_GameStats_get
+.public Save_GameStats_Get
 .public GameStats_Inc
 .public sub_02030940
 .public sub_0203094C
@@ -18,7 +18,7 @@
 .public sub_020310BC
 .public sub_02031108
 .public sub_0203126C
-.public SaveArray_Flags_get
+.public SaveArray_Flags_Get
 .public sub_0205BFF0
 .public sub_0205C01C
 .public sub_0205C048

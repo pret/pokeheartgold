@@ -764,7 +764,7 @@ ov75_02246EDC: ; 0x02246EDC
 	cmp r0, #0
 	beq _02246EF4
 	ldr r0, [r4, #4]
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	bl SetFlag970
 _02246EF4:
 	add r0, r4, #0
@@ -4060,7 +4060,7 @@ ov75_02248994: ; 0x02248994
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #4]
-	bl Save_SysInfo_get
+	bl Save_SysInfo_Get
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_0202C08C

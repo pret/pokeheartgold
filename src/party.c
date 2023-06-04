@@ -135,6 +135,6 @@ BOOL PartyHasMon(PARTY *party, u16 species) {
     return (i != party->core.curCount);
 }
 
-PARTY *SaveArray_PlayerParty_get(SAVEDATA *saveData) {
-    return (PARTY *) SaveArray_get(saveData, SAVE_PARTY);
+PARTY *SaveArray_PlayerParty_Get(SAVEDATA *saveData) {
+    return (PARTY *) SaveArray_Get(saveData, SAVE_PARTY);
 }

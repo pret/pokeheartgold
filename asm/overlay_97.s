@@ -219,7 +219,7 @@ _0221E76A:
 	bl GetStoragePCPointer
 	add r7, r0, #0
 	ldr r0, [r5]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -518,7 +518,7 @@ _0221E9B4:
 	cmp r6, #0x12
 	bne _0221EA20
 	ldr r0, [r0]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	ldr r1, [r5, #0x14]
 	bl GetPartyMonByIndex
 	mov r1, #5
@@ -550,7 +550,7 @@ _0221E9B4:
 	strb r0, [r4, #0x1d]
 	ldr r0, [r7]
 	ldr r0, [r0]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	ldr r1, [r5, #0x14]
 	ldr r2, [sp]
 	lsl r1, r1, #0x18
@@ -838,7 +838,7 @@ _0221EC3C:
 	cmp r6, #0x12
 	ldr r0, [r5, #0x2c]
 	bne _0221ED1C
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	add r1, r4, #0
 	add r7, r0, #0
 	bl GetPartyMonByIndex
@@ -903,7 +903,7 @@ _0221EC3C:
 	add r7, sp, #0x5c
 _0221ECE2:
 	ldr r0, [r5, #0x2c]
-	bl Save_Pokeathlon_get
+	bl Save_Pokeathlon_Get
 	lsl r1, r4, #2
 	ldrh r2, [r6, #4]
 	ldr r1, [r7, r1]
@@ -984,7 +984,7 @@ _0221ED1C:
 	add r7, sp, #0x5c
 _0221ED94:
 	ldr r0, [r5, #0x2c]
-	bl Save_Pokeathlon_get
+	bl Save_Pokeathlon_Get
 	lsl r1, r4, #2
 	ldrh r2, [r6, #4]
 	ldr r1, [r7, r1]

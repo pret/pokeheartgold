@@ -28,7 +28,7 @@
 .public sub_0202B4E4
 .public Mail_GetUnk20Array
 .public Mail_SetMessage
-.public Save_GameStats_get
+.public Save_GameStats_Get
 .public GameStats_Inc
 .public GameStats_AddSpecial
 .public sub_02090C94

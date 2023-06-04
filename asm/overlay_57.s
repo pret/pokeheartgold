@@ -102,7 +102,7 @@ _02237974:
 	str r0, [r4, r1]
 	ldr r0, [r4]
 	ldr r0, [r0, #0x20]
-	bl SealCase_inventory_get
+	bl SealCase_inventory_Get
 	str r0, [r4, #0x64]
 	mov r6, #0
 	add r5, r4, #0
@@ -5446,7 +5446,7 @@ _0223A39A:
 	bl ov57_022394AC
 	ldr r0, [r4]
 	ldr r0, [r0, #0x28]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	mov r1, #7
 	bl GameStats_AddSpecial
 	mov r0, #0xfb

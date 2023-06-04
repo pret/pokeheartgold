@@ -684,7 +684,7 @@ GetStaticPointerToSaveMysteryGift: ; 0x0202E034
 	ldr r1, [r1]
 	cmp r1, #0
 	bne _0202E046
-	bl Save_MysteryGift_get
+	bl Save_MysteryGift_Get
 	ldr r1, _0202E050 ; =sMysteryGiftData
 	str r0, [r1]
 _0202E046:

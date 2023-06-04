@@ -1,10 +1,10 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public GF_AssertFail
-.public SaveArray_get
+.public SaveArray_Get
 .public Save_Pokeathlon_sizeof
 .public Save_Pokeathlon_init
-.public Save_Pokeathlon_get
+.public Save_Pokeathlon_Get
 .public sub_02031974
 .public sub_02031978
 .public sub_0203197C

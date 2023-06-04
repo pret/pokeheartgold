@@ -326,7 +326,7 @@ ov40_0222B934: ; 0x0222B934
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Save_Misc_get
+	bl Save_Misc_Get
 	add r1, r5, #0
 	add r1, #0x5c
 	ldrb r1, [r1]
@@ -1275,7 +1275,7 @@ _0222C1AE:
 	bne _0222C200
 	add r1, #0x18
 	ldr r0, [r5, r1]
-	bl Save_DressupData_get
+	bl Save_DressupData_Get
 	add r1, r4, #0
 	bl sub_0202B9B8
 	bl sub_0202BC10
@@ -8514,7 +8514,7 @@ ov40_0222FB28: ; 0x0222FB28
 	mov r1, #0x83
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	add r1, r4, #0
 	bl GameStats_AddSpecial
 	pop {r4, pc}
@@ -10009,7 +10009,7 @@ ov40_022306F0: ; 0x022306F0
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Save_Misc_get
+	bl Save_Misc_Get
 	add r1, sp, #4
 	str r1, [sp]
 	ldr r1, _02230734 ; =0x0000086C
@@ -15894,7 +15894,7 @@ ov40_02233550: ; 0x02233550
 	ldr r0, [sp]
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	add r4, r0, #0
 	bl ScriptState_GetBattleTowerPrintProgress
 	str r0, [sp, #0x30]
@@ -16077,7 +16077,7 @@ _022336A2:
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r7, r0]
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	add r4, r0, #0
 	bl ScriptState_GetBattleTowerPrintProgress
 	str r0, [sp, #0x7c]
@@ -16873,7 +16873,7 @@ _02233D72:
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl Save_FrontierData_get
+	bl Save_FrontierData_Get
 	mov r1, #0
 	add r2, r1, #0
 	bl FrontierData_BattlePointAction
@@ -17574,7 +17574,7 @@ _0223434A:
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Save_DressupData_get
+	bl Save_DressupData_Get
 	mov r1, #0
 	bl sub_0202B9B8
 	mov r1, #0x8b
@@ -20669,7 +20669,7 @@ ov40_02235DAC: ; 0x02235DAC
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Save_Pokedex_get
+	bl Save_Pokedex_Get
 	str r0, [sp]
 	add r7, r6, #0
 	cmp r6, r4
@@ -20753,7 +20753,7 @@ ov40_02235E34: ; 0x02235E34
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Save_Pokedex_get
+	bl Save_Pokedex_Get
 	str r0, [sp, #4]
 	mov r0, #0x75
 	ldr r7, [sp]
@@ -27491,7 +27491,7 @@ _02239558:
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	ldr r1, [r6, r5]
 	bl GameStats_GetCapped
 	pop {r4, r5, r6, pc}
@@ -35169,7 +35169,7 @@ ov40_0223D544: ; 0x0223D544
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl Save_SysInfo_get
+	bl Save_SysInfo_Get
 	bl Save_SysInfo_GetField4C
 	str r0, [sp]
 	mov r0, #0x6d
@@ -37986,7 +37986,7 @@ ov40_0223EBB8: ; 0x0223EBB8
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Save_Pokedex_get
+	bl Save_Pokedex_Get
 	str r0, [sp]
 	add r7, r6, #0
 	cmp r6, r4
@@ -38069,7 +38069,7 @@ ov40_0223EC40: ; 0x0223EC40
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Save_Pokedex_get
+	bl Save_Pokedex_Get
 	str r0, [sp, #4]
 	ldr r0, _0223ED98 ; =0x000004C8
 	mov r1, #0

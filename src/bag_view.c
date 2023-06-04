@@ -83,7 +83,7 @@ static u16 get_num_coins(SAVEDATA *saveData) {
 
 static u32 get_num_seals(SAVEDATA *saveData) {
     u32 i, total;
-    SEALCASE *sealCase = Save_SealCase_get(saveData);
+    SEALCASE *sealCase = Save_SealCase_Get(saveData);
     total = 0;
     for (i = SEAL_MIN; i <= SEAL_MAX; i++) {
         total += SealCase_CountSealOccurrenceAnywhere(sealCase, i);
@@ -92,15 +92,15 @@ static u32 get_num_seals(SAVEDATA *saveData) {
 }
 
 static u32 get_num_fashion_accessories(SAVEDATA *saveData) {
-    return FashionCase_CountAccessories(SaveDressupData_GetFashionCase(Save_DressupData_get(saveData)));
+    return FashionCase_CountAccessories(SaveDressupData_GetFashionCase(Save_DressupData_Get(saveData)));
 }
 
 static u32 get_num_fashion_backgrounds(SAVEDATA *saveData) {
-    return FashionCase_CountWallpapers(SaveDressupData_GetFashionCase(Save_DressupData_get(saveData)));
+    return FashionCase_CountWallpapers(SaveDressupData_GetFashionCase(Save_DressupData_Get(saveData)));
 }
 
 static u32 get_num_battle_points(SAVEDATA *saveData) {
-    return FrontierData_BattlePointAction(Save_FrontierData_get(saveData), 0, 0);
+    return FrontierData_BattlePointAction(Save_FrontierData_Get(saveData), 0, 0);
 }
 
 BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 itemId, HeapID heap_id) {

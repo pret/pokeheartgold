@@ -187,7 +187,7 @@
 .public sub_02026C44
 .public sub_02026CAC
 .public sub_02026CC4
-.public SaveArray_get
+.public SaveArray_Get
 .public Save_ClearStatusFlags
 .public Save_PrepareForAsyncWrite
 .public Save_WriteFileAsync
@@ -202,7 +202,7 @@
 .public PlayerProfile_GetVersion
 .public PlayerProfile_GetLanguage
 .public Pokedex_GetNatDexFlag
-.public Save_Pokedex_get
+.public Save_Pokedex_Get
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
 .public sub_0202C03C
@@ -276,12 +276,12 @@
 .public sub_02039FD8
 .public sub_0203A1C4
 .public sub_0203A880
-.public SaveArray_Flags_get
+.public SaveArray_Flags_Get
 .public ScriptState_FlypointFlagAction
 .public GetMonData
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SaveArray_PlayerParty_get
+.public SaveArray_PlayerParty_Get
 .public sub_02078D24
 .public LoadDwcOverlay
 .public UnloadDwcOverlay

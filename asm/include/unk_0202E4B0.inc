@@ -11,14 +11,14 @@
 .public String_Delete
 .public CopyU16ArrayToString
 .public CopyStringToU16Array
-.public SaveArray_get
+.public SaveArray_Get
 .public SaveSubstruct_AssertCRC
 .public SaveSubstruct_UpdateCRC
 .public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetPlayerName_NewString
 .public sub_0202C7B4
-.public Save_FriendGroup_get
-.public Save_GameStats_get
+.public Save_FriendGroup_Get
+.public Save_GameStats_Get
 .public GameStats_GetCapped
 .public sub_0202E4B0
 .public sub_0202E4BC

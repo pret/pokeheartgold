@@ -18,7 +18,7 @@
 .public GF_AssertFail
 .public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetTrainerGender
-.public Save_SafariZone_get
+.public Save_SafariZone_Get
 .public sub_0202F620
 .public SafariZone_GetAreaSet
 .public SafariZone_GetLinkLeaderGender

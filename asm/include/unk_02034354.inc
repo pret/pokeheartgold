@@ -13,7 +13,7 @@
 .public sub_0202C4F0
 .public sub_0202C6F4
 .public sub_0202C7E0
-.public Save_FriendGroup_get
+.public Save_FriendGroup_Get
 .public sub_0202CA44
 .public sub_0202CA8C
 .public sub_0202CA90

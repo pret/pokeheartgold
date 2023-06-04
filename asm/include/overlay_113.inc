@@ -103,10 +103,10 @@
 .public PlayerProfile_GetPlayerName_NewString
 .public Pokedex_GetSeenFormeByIdx_Unown
 .public Pokedex_GetSeenFormeNum_Unown
-.public Save_Pokedex_get
+.public Save_Pokedex_Get
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public SaveArray_Flags_get
+.public SaveArray_Flags_Get
 .public ScriptState_GetUnownReportLevel
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx

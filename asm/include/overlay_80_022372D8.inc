@@ -17,7 +17,7 @@
 .public UpdateMonAbility
 .public InitPartyWithMaxSize
 .public GetPartyMonByIndex
-.public SaveArray_PlayerParty_get
+.public SaveArray_PlayerParty_Get
 .public HealParty
 .public FX_Sqrt
 .public _fadd

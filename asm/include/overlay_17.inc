@@ -119,11 +119,11 @@
 .public String_Delete
 .public StringCopy
 .public Save_PlayerData_GetOptionsAddr
-.public Save_BerryPots_get
-.public Save_BerryPotRTC_get
+.public Save_BerryPots_Get
+.public Save_BerryPotRTC_Get
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public Save_GameStats_get
+.public Save_GameStats_Get
 .public GameStats_Inc
 .public GameStats_AddSpecial
 .public GetItemIndexMapping

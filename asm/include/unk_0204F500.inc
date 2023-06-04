@@ -8,12 +8,12 @@
 .public Save_CheckExtraChunksExist
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr
-.public Save_Mailbox_get
-.public Save_GameStats_get
+.public Save_Mailbox_Get
+.public Save_GameStats_Get
 .public GameStats_Add
 .public FrontierData_BattlePointAction
-.public Save_FrontierData_get
-.public Save_SpecialRibbons_get
+.public Save_FrontierData_Get
+.public Save_SpecialRibbons_Get
 .public sub_02030C6C
 .public sub_02030CC8
 .public sub_02030E08
@@ -53,7 +53,7 @@
 .public sub_0205C268
 .public sub_0205C2C0
 .public GetPartyCount
-.public SaveArray_PlayerParty_get
+.public SaveArray_PlayerParty_Get
 .public SaveArray_IsNatDexEnabled
 .public SaveGetBag
 .public sub_02088288

@@ -3,7 +3,7 @@
 #include "save_flypoints.h"
 
 BOOL CheckUseEscapeRopeInAlphChamber(FieldSystem* fsys) {
-    Location* position = FlyPoints_GetPosition(Save_FlyPoints_get(fsys->savedata));
+    Location* position = FlyPoints_GetPosition(Save_FlyPoints_Get(fsys->savedata));
 
     if (position->mapId != MAP_D24R0202) {
         return FALSE;
@@ -17,7 +17,7 @@ BOOL CheckUseEscapeRopeInAlphChamber(FieldSystem* fsys) {
 }
 
 BOOL CheckUseFlashInAlphChamber(FieldSystem* fsys) {
-    Location* position = FlyPoints_GetPosition(Save_FlyPoints_get(fsys->savedata));
+    Location* position = FlyPoints_GetPosition(Save_FlyPoints_Get(fsys->savedata));
 
     if (position->mapId != MAP_D24R0204) {
         return FALSE;
@@ -31,7 +31,7 @@ BOOL CheckUseFlashInAlphChamber(FieldSystem* fsys) {
 }
 
 BOOL CheckUseWaterStoneInAlphChamber(FieldSystem* fsys) {
-    Location* position = FlyPoints_GetPosition(Save_FlyPoints_get(fsys->savedata));
+    Location* position = FlyPoints_GetPosition(Save_FlyPoints_Get(fsys->savedata));
 
     if (position->mapId != MAP_D24R0206) {
         return FALSE;

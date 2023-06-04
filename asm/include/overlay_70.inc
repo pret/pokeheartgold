@@ -191,11 +191,11 @@
 .public sub_0202C08C
 .public sub_0202CA8C
 .public sub_0202CA90
-.public Save_Chatot_get
+.public Save_Chatot_Get
 .public Chatot_invalidate
 .public GameStats_Inc
 .public GameStats_AddSpecial
-.public Save_SpecialRibbons_get
+.public Save_SpecialRibbons_Get
 .public sub_0202DB54
 .public sub_0202DB5C
 .public sub_0202DB64
@@ -207,7 +207,7 @@
 .public sub_0202DBA0
 .public UpdatePokedexWithReceivedSpecies
 .public sub_0203189C
-.public Save_Pokewalker_get
+.public Save_Pokewalker_Get
 .public Pokewalker_UnlockCourse
 .public sub_02034D8C
 .public sub_02034DB8
@@ -222,7 +222,7 @@
 .public sub_0203A914
 .public sub_0203A930
 .public ShowCommunicationError
-.public SaveArray_Flags_get
+.public SaveArray_Flags_Get
 .public sub_0205B464
 .public ScriptState_GetVar404C
 .public ScriptState_SetVar404C

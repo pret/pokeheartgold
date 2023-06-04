@@ -20,11 +20,11 @@ ov01_021F3F50: ; 0x021F3F50
 	ldr r4, [r1, #0xc]
 	add r5, r0, #0
 	add r0, r4, #0
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	bl FlyPoints_GetPosition
 	add r6, r0, #0
 	add r0, r4, #0
-	bl Save_Pokedex_get
+	bl Save_Pokedex_Get
 	add r7, r0, #0
 	ldr r0, [r6]
 	bl MapHeader_GetMapSec

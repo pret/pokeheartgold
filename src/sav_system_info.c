@@ -13,12 +13,12 @@ void Save_SysInfo_init(SYSINFO* sys_info) {
     Save_SysInfo_RTC_init(&sys_info->rtc_info);
 }
 
-SYSINFO* Save_SysInfo_get(SAVEDATA* savedata) {
-    return SaveArray_get(savedata, SAVE_SYSINFO);
+SYSINFO* Save_SysInfo_Get(SAVEDATA* savedata) {
+    return SaveArray_Get(savedata, SAVE_SYSINFO);
 }
 
-SYSINFO_RTC* Save_SysInfo_RTC_get(SAVEDATA* savedata) {
-    SYSINFO* sys_info = Save_SysInfo_get(savedata);
+SYSINFO_RTC* Save_SysInfo_RTC_Get(SAVEDATA* savedata) {
+    SYSINFO* sys_info = Save_SysInfo_Get(savedata);
     return &sys_info->rtc_info;
 }
 

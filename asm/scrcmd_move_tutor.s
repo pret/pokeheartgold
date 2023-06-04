@@ -44,7 +44,7 @@ ScrCmd_652: ; 0x02202B00
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	add r1, r6, #0
 	bl GetPartyMonByIndex
 	add r1, r7, #0
@@ -101,7 +101,7 @@ ScrCmd_TutorMoveTeachInSlot: ; 0x02202B78
 	add r7, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	add r1, r4, #0
 	add r2, r6, #0
 	add r3, r7, #0
@@ -177,7 +177,7 @@ ScrCmd_656: ; 0x02202C28
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	add r1, r6, #0
 	bl GetPartyMonByIndex
 	mov r1, #3
@@ -514,7 +514,7 @@ ScrCmd_MoveTutorChooseMove: ; 0x02202E68
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	add r1, r5, #0
 	bl GetPartyMonByIndex
 	add r1, r7, #0
@@ -757,7 +757,7 @@ ScrCmd_742: ; 0x02203094
 	strh r0, [r7]
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	add r1, r6, #0
 	bl GetPartyMonByIndex
 	add r6, r0, #0

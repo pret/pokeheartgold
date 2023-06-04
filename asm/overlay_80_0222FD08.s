@@ -61,7 +61,7 @@ ov80_0222FD08: ; 0x0222FD08
 	bne _0222FD8E
 	ldr r0, _0222FEE8 ; =0x000004F8
 	ldr r0, [r2, r0]
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	bl ScriptState_GetVar4052
 	b _0222FDA2
 _0222FD8E:
@@ -1615,7 +1615,7 @@ ov80_022309F8: ; 0x022309F8
 	bl ov80_02230AE4
 	ldr r0, _02230A5C ; =0x000004F8
 	ldr r0, [r4, r0]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	mov r1, #0x41
 	bl GameStats_Inc
 _02230A4C:

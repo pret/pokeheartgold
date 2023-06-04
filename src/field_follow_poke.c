@@ -1515,10 +1515,10 @@ LocalMapObject *sub_020699F8(MapObjectMan *mapObjectMan, int x, int y, int direc
     int player_unk;
 
     fsys = MapObjectMan_GetFieldSysPtr(mapObjectMan);
-    party = SaveArray_PlayerParty_get(fsys->savedata);
+    party = SaveArray_PlayerParty_Get(fsys->savedata);
     partyCount = GetPartyCount(party);
     FsysFollowMonClear(&fsys->followMon);
-    SavFollowPoke_SetUnused2bitField(0, Save_FollowPoke_get(fsys->savedata));
+    SavFollowPoke_SetUnused2bitField(0, Save_FollowPoke_Get(fsys->savedata));
     if (partyCount != 0) {
         if (CountAlivePokemon(party) == 0) {
             mon = GetFirstNonEggInParty(party);
@@ -1537,19 +1537,19 @@ LocalMapObject *sub_020699F8(MapObjectMan *mapObjectMan, int x, int y, int direc
             FsysUnkSub108_Set(fsys->unk108, mon, species, GetMonData(mon, MON_DATA_PERSONALITY, NULL));
             player_unk = PlayerAvatar_GetState(fsys->playerAvatar);
             if (player_unk == 0 || player_unk == 3) {
-                SavFollowPoke_SetUnused2bitField(1, Save_FollowPoke_get(fsys->savedata));
+                SavFollowPoke_SetUnused2bitField(1, Save_FollowPoke_Get(fsys->savedata));
             } else if (player_unk == 1) {
-                SavFollowPoke_SetUnused2bitField(2, Save_FollowPoke_get(fsys->savedata));
+                SavFollowPoke_SetUnused2bitField(2, Save_FollowPoke_Get(fsys->savedata));
                 sub_0206A054(fsys);
                 sub_0205FC94(FollowingPokemon_GetMapObject(fsys), 56);
             } else if (player_unk == 2) {
-                SavFollowPoke_SetUnused2bitField(2, Save_FollowPoke_get(fsys->savedata));
+                SavFollowPoke_SetUnused2bitField(2, Save_FollowPoke_Get(fsys->savedata));
                 sub_0206A054(fsys);
                 sub_0205FC94(FollowingPokemon_GetMapObject(fsys), 56);
             } else {
                 GF_ASSERT(0);
             }
-            if (SavFollowPoke_GetInhibitFlagState(Save_FollowPoke_get(fsys->savedata))) {
+            if (SavFollowPoke_GetInhibitFlagState(Save_FollowPoke_Get(fsys->savedata))) {
                 sub_0206A054(fsys);
             }
         }
@@ -1571,7 +1571,7 @@ void sub_02069B74(MapObjectMan *mapObjectMan, u32 mapno) {
     LocalMapObject *followPokeObj;
 
     fsys = MapObjectMan_GetFieldSysPtr(mapObjectMan);
-    party = SaveArray_PlayerParty_get(fsys->savedata);
+    party = SaveArray_PlayerParty_Get(fsys->savedata);
     partyCount = GetPartyCount(party);
     FsysFollowMonClear(&fsys->followMon);
     if (partyCount != 0) {
@@ -1593,12 +1593,12 @@ void sub_02069B74(MapObjectMan *mapObjectMan, u32 mapno) {
                 MapObject_SetGfxID(fsys->followMon.mapObject, FollowingPokemon_GetSpriteID(species, forme, gender));
                 player_unk = PlayerAvatar_GetState(fsys->playerAvatar);
                 if (player_unk == 0 || player_unk == 3) {
-                    SavFollowPoke_SetUnused2bitField(1, Save_FollowPoke_get(fsys->savedata));
+                    SavFollowPoke_SetUnused2bitField(1, Save_FollowPoke_Get(fsys->savedata));
                 } else if (player_unk == 1) {
-                    SavFollowPoke_SetUnused2bitField(2, Save_FollowPoke_get(fsys->savedata));
+                    SavFollowPoke_SetUnused2bitField(2, Save_FollowPoke_Get(fsys->savedata));
                     sub_0206A040(fsys->followMon.mapObject, TRUE);
                 } else if (player_unk == 2) {
-                    SavFollowPoke_SetUnused2bitField(2, Save_FollowPoke_get(fsys->savedata));
+                    SavFollowPoke_SetUnused2bitField(2, Save_FollowPoke_Get(fsys->savedata));
                     sub_0206A040(fsys->followMon.mapObject, TRUE);
                 } else {
                     GF_ASSERT(0);
@@ -1606,7 +1606,7 @@ void sub_02069B74(MapObjectMan *mapObjectMan, u32 mapno) {
                 if (sub_02069E14(fsys->followMon.mapObject)) {
                     sub_0206A040(fsys->followMon.mapObject, TRUE);
                 }
-                if (SavFollowPoke_GetInhibitFlagState(Save_FollowPoke_get(fsys->savedata))) {
+                if (SavFollowPoke_GetInhibitFlagState(Save_FollowPoke_Get(fsys->savedata))) {
                     sub_0206A054(fsys);
                 }
                 MapObject_ClearFlag18(fsys->followMon.mapObject, FALSE);
@@ -1778,7 +1778,7 @@ BOOL FollowingPokemon_IsActive(FieldSystem *fsys) {
         return FALSE;
     }
 
-    if (CountAlivePokemon(SaveArray_PlayerParty_get(fsys->savedata)) != 0) {
+    if (CountAlivePokemon(SaveArray_PlayerParty_Get(fsys->savedata)) != 0) {
         return TRUE;
     } else {
         return FALSE;
@@ -1800,7 +1800,7 @@ BOOL sub_02069FB0(FieldSystem *fsys) {
 BOOL GetFollowPokePermission(FieldSystem *fsys) {
     u32 mapno;
 
-    mapno = SavFollowPoke_GetMapId(Save_FollowPoke_get(fsys->savedata));
+    mapno = SavFollowPoke_GetMapId(Save_FollowPoke_Get(fsys->savedata));
     return GetFollowPokePermissionBySpeciesAndMap(FollowPokeObj_GetSpecies(fsys->followMon.mapObject), mapno);
 }
 

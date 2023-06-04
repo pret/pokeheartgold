@@ -11,12 +11,12 @@ void UpdatePokedexWithReceivedSpecies(SAVEDATA *saveData, Pokemon *mon) {
     isEgg = GetMonData(mon, MON_DATA_IS_EGG, NULL);
     if (!isEgg) {
         species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        POKEDEX *pokedex = Save_Pokedex_get(saveData);
-        GAME_STATS *gameStats = Save_GameStats_get(saveData);
+        POKEDEX *pokedex = Save_Pokedex_Get(saveData);
+        GAME_STATS *gameStats = Save_GameStats_Get(saveData);
         GameStats_IncSpeciesCaught(gameStats, pokedex, species);
         Pokedex_SetMonCaughtFlag(pokedex, mon);
         if (species == SPECIES_JIRACHI) {
-            POKEWALKER *pokeWalker = Save_Pokewalker_get(saveData);
+            POKEWALKER *pokeWalker = Save_Pokewalker_Get(saveData);
             Pokewalker_UnlockCourse(pokeWalker, WALKER_COURSE_NIGHT_SKY_S_EDGE);
         }
     }

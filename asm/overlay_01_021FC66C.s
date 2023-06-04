@@ -90,7 +90,7 @@ _021FC6E2:
 	bl Fsys_GetGearPhoneRingManager
 	bl sub_02092FA8
 	ldr r0, [r4, #0xc]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	mov r1, #0xb
 	bl GameStats_Inc
 	ldr r2, [r5, #0x10]
@@ -486,7 +486,7 @@ ov01_021FC9AC: ; 0x021FC9AC
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0xc]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	mov r1, #0x65
 	bl GameStats_Inc
 	mov r0, #1
@@ -842,7 +842,7 @@ _021FCC40:
 	beq _021FCC6E
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0xc]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	bl GetFirstAliveMonInParty_CrashIfNone
 	mov r1, #9
 	mov r2, #0

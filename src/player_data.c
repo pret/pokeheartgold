@@ -15,22 +15,22 @@ void Save_PlayerData_init(PLAYERDATA* player) {
 }
 
 PLAYERPROFILE* Save_PlayerData_GetProfileAddr(SAVEDATA* savedata) {
-    PLAYERDATA* player = SaveArray_get(savedata, SAVE_PLAYERDATA);
+    PLAYERDATA* player = SaveArray_Get(savedata, SAVE_PLAYERDATA);
     return &player->profile;
 }
 
 OPTIONS* Save_PlayerData_GetOptionsAddr(SAVEDATA* savedata) {
-    PLAYERDATA* player = SaveArray_get(savedata, SAVE_PLAYERDATA);
+    PLAYERDATA* player = SaveArray_Get(savedata, SAVE_PLAYERDATA);
     return &player->options;
 }
 
 u16* Save_PlayerData_GetCoinsAddr(SAVEDATA* savedata) {
-    PLAYERDATA* player = SaveArray_get(savedata, SAVE_PLAYERDATA);
+    PLAYERDATA* player = SaveArray_Get(savedata, SAVE_PLAYERDATA);
     return &player->coins;
 }
 
 IGT* Save_PlayerData_GetIGTAddr(SAVEDATA* savedata) {
-    PLAYERDATA* player = SaveArray_get(savedata, SAVE_PLAYERDATA);
+    PLAYERDATA* player = SaveArray_Get(savedata, SAVE_PLAYERDATA);
     return &player->igt;
 }
 

@@ -33,12 +33,12 @@
 .public PlayerProfile_CountBadges
 .public Pokedex_CountDexOwned
 .public Pokedex_IsEnabled
-.public Save_Pokedex_get
+.public Save_Pokedex_Get
 .public GetIGTHours
 .public GetIGTMinutes
 .public MapHeader_GetMapSec
 .public FlyPoints_GetPosition
-.public Save_FlyPoints_get
+.public Save_FlyPoints_Get
 .public Fsys_SyncMapObjectsToSave
 .public PlayerAvatar_GetFacingDirection
 .public GetPlayerXCoord

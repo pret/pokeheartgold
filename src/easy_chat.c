@@ -187,9 +187,9 @@ void Save_EasyChat_init(SAVE_EASY_CHAT_T *ec) {
     SaveSubstruct_UpdateCRC(SAVE_EASY_CHAT);
 }
 
-SAVE_EASY_CHAT_T *SaveData_EasyChat_get(SAVEDATA *saveData) {
+SAVE_EASY_CHAT_T *SaveData_EasyChat_Get(SAVEDATA *saveData) {
     SaveSubstruct_AssertCRC(SAVE_EASY_CHAT);
-    return SaveArray_get(saveData, SAVE_EASY_CHAT);
+    return SaveArray_Get(saveData, SAVE_EASY_CHAT);
 }
 
 BOOL SaveEasyChat_GetTrendySayingFlag(SAVE_EASY_CHAT_T *ec, int flag) {

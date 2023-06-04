@@ -1400,7 +1400,7 @@ sub_020304F0: ; 0x020304F0
 	add r0, #0x2c
 	str r1, [r6, r0]
 	ldr r0, [sp]
-	bl Save_Pokedex_get
+	bl Save_Pokedex_Get
 	mov r1, #0x11
 	lsl r1, r1, #4
 	ldr r1, [r6, r1]

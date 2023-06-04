@@ -19,7 +19,7 @@
 .public String_New
 .public String_Delete
 .public Save_PlayerData_GetOptionsAddr
-.public Save_GameStats_get
+.public Save_GameStats_Get
 .public GameStats_Inc
 .public TaskManager_GetSys
 .public TaskManager_GetEnv
@@ -44,7 +44,7 @@
 .public FollowingPokemon_IsActive
 .public FsysUnkSub108_GetMonMood
 .public GetMonData
-.public SaveArray_PlayerParty_get
+.public SaveArray_PlayerParty_Get
 .public Fsys_GetGearPhoneRingManager
 .public sub_02092FA8
 .public memset

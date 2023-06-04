@@ -92,13 +92,13 @@
 .public sub_02037958
 .public SaveFlyPoints_GetPlayerSub
 .public FlyPoints_GetSafariBallsCounter
-.public Save_FlyPoints_get
+.public Save_FlyPoints_Get
 .public sub_0203C3CC
 .public Fsys_GetFacingObject
 .public sub_0203DF8C
 .public sub_0203E13C
 .public MapSceneScriptCheck
-.public SaveArray_Flags_get
+.public SaveArray_Flags_Get
 .public Fsys_TaskIsRunning
 .public sub_020558BC
 .public sub_02056EE0
@@ -121,7 +121,7 @@
 .public CheckFlag996
 .public ScriptState_CheckPalParkSysFlag
 .public sub_02067584
-.public FieldSys_BugContest_get
+.public FieldSys_BugContest_Get
 .public BugContest_GetSportBallsAddr
 .public GetMonData
 .public Pokemon_GetIconNaix

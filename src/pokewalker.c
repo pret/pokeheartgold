@@ -2,8 +2,8 @@
 
 static BOOL pokewalkerHasBoxmon(POKEWALKER *pokeWalker);
 
-POKEWALKER *Save_Pokewalker_get(SAVEDATA *saveData) {
-    return SaveArray_get(saveData, SAVE_POKEWALKER);
+POKEWALKER *Save_Pokewalker_Get(SAVEDATA *saveData) {
+    return SaveArray_Get(saveData, SAVE_POKEWALKER);
 }
 
 u32 Pokewalker_sizeof(void) {

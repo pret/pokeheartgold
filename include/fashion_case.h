@@ -25,7 +25,7 @@ typedef struct SaveDressupData { //todo: rename to SaveFashionData
     FashionCase fashionCase; // 7F4
 } SaveDressupData; // size=0x834
 
-SaveDressupData *Save_DressupData_get(SAVEDATA *saveData);
+SaveDressupData *Save_DressupData_Get(SAVEDATA *saveData);
 FashionCase *SaveDressupData_GetFashionCase(SaveDressupData *unk);
 u32 FashionCase_CountAccessories(FashionCase *unksub);
 u32 FashionCase_CountWallpapers(FashionCase *unksub);

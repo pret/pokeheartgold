@@ -11,7 +11,7 @@ typedef struct SOUND_CHATOT {
 u32 Save_Chatot_sizeof(void);
 void Save_Chatot_init(SOUND_CHATOT *chatot);
 SOUND_CHATOT *Chatot_New(HeapID heapId);
-SOUND_CHATOT *Save_Chatot_get(SAVEDATA *saveData);
+SOUND_CHATOT *Save_Chatot_Get(SAVEDATA *saveData);
 BOOL Chatot_exists(SOUND_CHATOT *chatot);
 void Chatot_invalidate(SOUND_CHATOT *chatot);
 s8 *Chatot_GetData(SOUND_CHATOT *chatot);

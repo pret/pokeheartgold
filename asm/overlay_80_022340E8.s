@@ -64,7 +64,7 @@ ov80_022340E8: ; 0x022340E8
 	cmp r2, #3
 	bne _02234174
 	ldr r0, [r0, #4]
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	bl ScriptState_GetVar4052
 	b _02234180
 _02234174:
@@ -206,7 +206,7 @@ _02234294:
 _0223429A:
 	ldr r4, [r6]
 	ldr r0, [r4, #4]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	add r1, r4, r5
 	add r1, #0x2c
 	ldrb r1, [r1]
@@ -224,7 +224,7 @@ _0223429A:
 	cmp r5, #3
 	blo _0223429A
 	ldr r0, [r4, #4]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	str r0, [sp, #0xc]
 	ldr r0, _02234374 ; =ov80_0223DD4C
 	mov r1, #0

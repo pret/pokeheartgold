@@ -4,7 +4,7 @@
 .public FreeToHeap
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetFrame
-.public Save_GameStats_get
+.public Save_GameStats_Get
 .public sub_020398D4
 .public FieldSys_LaunchApplication
 .public sub_0203E4EC

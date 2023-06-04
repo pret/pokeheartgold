@@ -2644,7 +2644,7 @@ ov89_02259E50: ; 0x02259E50
 	mov r2, #0x48
 	bl MI_CpuFill8
 	add r0, r4, #0
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	str r0, [sp, #4]
 	bl GetPartyCount
 	add r7, r0, #0

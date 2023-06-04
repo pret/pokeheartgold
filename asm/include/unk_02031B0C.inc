@@ -11,7 +11,7 @@
 .public GF_AssertFail
 .public String_New
 .public CopyU16ArrayToString
-.public SaveArray_get
+.public SaveArray_Get
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetTrainerGender
@@ -19,7 +19,7 @@
 .public PlayerProfile_GetLanguage
 .public Save_ApricornBox_sizeof
 .public sub_02031B10
-.public Save_ApricornBox_get
+.public Save_ApricornBox_Get
 .public Save_ApricornBox_init
 .public ApricornBox_GiveApricorn
 .public ApricornBox_CountApricorn

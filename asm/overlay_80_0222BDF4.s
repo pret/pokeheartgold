@@ -2643,7 +2643,7 @@ ov80_0222D13C: ; 0x0222D13C
 	bl ov80_0222BDF4
 	add r5, r0, #0
 	ldr r0, [r4, #8]
-	bl Save_FrontierData_get
+	bl Save_FrontierData_Get
 	mov r1, #0
 	add r2, r1, #0
 	bl FrontierData_BattlePointAction
@@ -2665,12 +2665,12 @@ ov80_0222D168: ; 0x0222D168
 	bl ov80_0222BE10
 	add r5, r0, #0
 	ldr r0, [r4, #8]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	mov r1, #0x45
 	add r2, r5, #0
 	bl GameStats_Add
 	ldr r0, [r4, #8]
-	bl Save_FrontierData_get
+	bl Save_FrontierData_Get
 	add r1, r5, #0
 	mov r2, #5
 	bl FrontierData_BattlePointAction
@@ -2691,12 +2691,12 @@ ov80_0222D1A0: ; 0x0222D1A0
 	bl ov80_0222BE10
 	add r5, r0, #0
 	ldr r0, [r4, #8]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	mov r1, #0x46
 	add r2, r5, #0
 	bl GameStats_Add
 	ldr r0, [r4, #8]
-	bl Save_FrontierData_get
+	bl Save_FrontierData_Get
 	add r1, r5, #0
 	mov r2, #6
 	bl FrontierData_BattlePointAction
@@ -2809,7 +2809,7 @@ ov80_0222D284: ; 0x0222D284
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	bl HealParty
 	mov r0, #0
 	pop {r3, pc}
@@ -2922,7 +2922,7 @@ ov80_0222D334: ; 0x0222D334
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	add r1, r6, #0
 	bl GetVarAddr
 	strh r4, [r0]
@@ -2943,7 +2943,7 @@ ov80_0222D360: ; 0x0222D360
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	add r1, r6, #0
 	bl GetVarAddr
 	ldrh r0, [r0]
@@ -4507,7 +4507,7 @@ ov80_0222DF64: ; 0x0222DF64
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	ldr r1, [sp, #0x18]
 	bl GetPartyMonByIndex
 	str r4, [sp]
@@ -4621,7 +4621,7 @@ ov80_0222E078: ; 0x0222E078
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	add r1, r4, #0
 	bl GameStats_Inc
 	mov r0, #0
@@ -4642,7 +4642,7 @@ ov80_0222E09C: ; 0x0222E09C
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	add r1, r4, #0
 	add r2, r6, #0
 	bl GameStats_Add
@@ -4660,7 +4660,7 @@ ov80_0222E0C8: ; 0x0222E0C8
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	add r1, r4, #0
 	bl GameStats_AddSpecial
 	mov r0, #0

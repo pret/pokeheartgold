@@ -26,7 +26,7 @@
 .public sub_020310BC
 .public sub_02031108
 .public sub_0203126C
-.public SaveArray_Flags_get
+.public SaveArray_Flags_Get
 .public sub_0205C268
 .public sub_0205C2C0
 .public sub_0205C2E8
@@ -40,7 +40,7 @@
 .public AddMonToParty
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SaveArray_PlayerParty_get
+.public SaveArray_PlayerParty_Get
 .public GX_BeginLoadBGExtPltt
 .public GX_LoadBGExtPltt
 .public GX_EndLoadBGExtPltt

@@ -314,7 +314,7 @@ _02258A80:
 	add r0, #0x70
 	bl ov46_02259474
 	ldr r0, [r5]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	mov r1, #0x21
 	bl GameStats_AddSpecial
 	bl GF_RTC_DateTimeToSec

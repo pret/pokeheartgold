@@ -41,7 +41,7 @@ BOOL Save_DayCare_MasudaCheck(DAYCARE* daycare);
 void DayCareMon_Copy(DAYCAREMON* dest, const DAYCAREMON* src);
 void DayCareMon_Extras_init(DAYCAREMAIL* mail);
 void DayCareMon_init(DAYCAREMON* mon);
-DAYCARE* Save_DayCare_get(SAVEDATA* savedata);
+DAYCARE* Save_DayCare_Get(SAVEDATA* savedata);
 BOOL Save_DayCare_HasEgg(DAYCARE* daycare);
 
 #endif

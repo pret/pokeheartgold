@@ -21,7 +21,7 @@
 .public sub_020291E8
 .public sub_0202925C
 .public Pokedex_Copy
-.public Save_Pokedex_get
+.public Save_Pokedex_Get
 .public Options_Copy
 .public sub_0202FBCC
 .public sub_0202FBD4

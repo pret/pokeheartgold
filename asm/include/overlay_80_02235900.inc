@@ -2,7 +2,7 @@
 #pragma once
 .public FreeToHeap
 .public sub_0202D57C
-.public Save_FrontierData_get
+.public Save_FrontierData_Get
 .public sub_02030C5C
 .public sub_0203107C
 .public sub_020310BC
@@ -16,7 +16,7 @@
 .public sub_0205C048
 .public sub_0205C11C
 .public sub_0205C268
-.public SaveArray_PlayerParty_get
+.public SaveArray_PlayerParty_Get
 .public HealParty
 .public sub_02096808
 .public sub_02096810

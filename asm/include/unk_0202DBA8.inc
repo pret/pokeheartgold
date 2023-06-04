@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public GF_AssertFail
-.public Save_MysteryGift_get
+.public Save_MysteryGift_Get
 .public SaveSubstruct_UpdateCRC
 .public Save_MysteryGift_sizeof
 .public Save_MysteryGift_init

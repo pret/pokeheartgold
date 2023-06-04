@@ -102,7 +102,7 @@
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetFrame
 .public sub_0202D5DC
-.public Save_FrontierData_get
+.public Save_FrontierData_Get
 .public sub_02030AD4
 .public sub_02030AE8
 .public sub_02030E08

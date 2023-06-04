@@ -127,7 +127,7 @@
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerName_StringToFlat
 .public PlayerProfile_SetTrainerGender
-.public Save_Misc_get
+.public Save_Misc_Get
 .public Save_Misc_RivalName_set
 .public Options_GetTextFrameDelay
 .public sub_020830D8

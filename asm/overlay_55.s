@@ -152,11 +152,11 @@ _021E5A04:
 	ldr r0, [r5, #0x14]
 	bl ov55_021E5BC4
 	ldr r0, [r5, #0x10]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	mov r1, #2
 	bl GameStats_AddSpecial
 	ldr r0, [r5, #0x10]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	mov r1, #0x2e
 	bl GameStats_Inc
 	mov r0, #1

@@ -164,7 +164,7 @@ BOOL sub_02055DBC(TaskManager *man) {
         if (FollowingPokemon_IsActive(fsys) && ov01_022057C4(fsys) && !GetFollowPokePermission(fsys)) {
             ov01_022057D0(fsys);
         }
-        SavFollowPoke_SetMapId(fsys->location->mapId, Save_FollowPoke_get(fsys->savedata));
+        SavFollowPoke_SetMapId(fsys->location->mapId, Save_FollowPoke_Get(fsys->savedata));
         env->destinationMapID = fsys->location->mapId;
         env->state++;
         break;
