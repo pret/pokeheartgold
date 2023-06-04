@@ -477,7 +477,7 @@ ov41_022461D0: ; 0x022461D0
 	mov r0, #6
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r4, #4]
 	bl FreeToHeap
 	mov r0, #0
@@ -1122,7 +1122,7 @@ ov41_02246698: ; 0x02246698
 	mov r0, #6
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #0
 	bl ov41_02246B34
 	pop {r4, pc}
@@ -2516,7 +2516,7 @@ _022471AA:
 	ldr r0, _02247238 ; =0x000006BC
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	add r0, r4, #0
 	bl ov41_022476A8
 	ldr r0, _0224723C ; =0x00000498
@@ -3592,7 +3592,7 @@ ov41_022479A8: ; 0x022479A8
 	add r1, r5, #0
 	bl sub_0202BDC8
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 _022479E8:
 	ldr r0, [sp]
 	mov r5, #0
@@ -3907,7 +3907,7 @@ ov41_02247BB8: ; 0x02247BB8
 	add r2, r4, #0
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	bl DestroyMsgData
 	ldr r0, _02247C74 ; =0x000006BC
@@ -3962,9 +3962,9 @@ ov41_02247C7C: ; 0x02247C7C
 	add r2, r4, #0
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
 	bl DestroyMsgData
 	ldr r0, _02247CF4 ; =0x000006BC
@@ -10186,7 +10186,7 @@ _0224A940:
 	mov r1, #2
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
 	bl DestroyMsgData
 	add r0, r4, #0
@@ -10198,11 +10198,11 @@ _0224A9AC: .word 0x00010203
 
 	thumb_func_start ov41_0224A9B0
 ov41_0224A9B0: ; 0x0224A9B0
-	ldr r3, _0224A9B8 ; =WindowArray_dtor
+	ldr r3, _0224A9B8 ; =WindowArray_Delete
 	mov r1, #1
 	bx r3
 	nop
-_0224A9B8: .word WindowArray_dtor
+_0224A9B8: .word WindowArray_Delete
 	thumb_func_end ov41_0224A9B0
 
 	thumb_func_start ov41_0224A9BC
@@ -10579,7 +10579,7 @@ ov41_0224AC80: ; 0x0224AC80
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x51
 	mov r1, #0
 	lsl r0, r0, #2
@@ -10717,11 +10717,11 @@ _0224AD80: .word ov41_02249CC4
 
 	thumb_func_start ov41_0224AD84
 ov41_0224AD84: ; 0x0224AD84
-	ldr r3, _0224AD8C ; =WindowArray_dtor
+	ldr r3, _0224AD8C ; =WindowArray_Delete
 	mov r1, #1
 	bx r3
 	nop
-_0224AD8C: .word WindowArray_dtor
+_0224AD8C: .word WindowArray_Delete
 	thumb_func_end ov41_0224AD84
 
 	thumb_func_start ov41_0224AD90
@@ -10830,7 +10830,7 @@ _0224AE3C:
 	bl AddTextPrinterParameterized2
 	add r6, r0, #0
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	bl DestroyMsgData
 	add r0, r6, #0
@@ -12023,7 +12023,7 @@ _0224B772:
 	mov r0, #6
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov41_0224B754
@@ -12888,7 +12888,7 @@ ov41_0224BE34: ; 0x0224BE34
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov41_0224BE34
@@ -12978,7 +12978,7 @@ _0224BE9C:
 	sub r3, r3, r4
 	bl AddTextPrinterParameterized2
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r5]
 	bl sub_0202BE98
 	add r2, r0, #0
@@ -13020,9 +13020,9 @@ _0224BE9C:
 	sub r3, r3, r5
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x10]
 	bl DestroyMsgData
 	add r0, r6, #0

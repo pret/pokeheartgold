@@ -12,7 +12,7 @@
 .public FreeToHeap
 .public System_GetTouchHeld
 .public String_New
-.public String_dtor
+.public String_Delete
 .public String16_FormatInteger
 .public StringCat
 .public sub_02026C44

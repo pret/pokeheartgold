@@ -33,7 +33,7 @@
 .public AddTextPrinterParameterized
 .public sub_02024B1C
 .public GF_AssertFail
-.public String_dtor
+.public String_Delete
 .public StringCopy
 .public PlayerProfile_GetTrainerGender
 .public PlayerProfile_CountBadges

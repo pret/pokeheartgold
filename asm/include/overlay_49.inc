@@ -21,7 +21,7 @@
 .public OverlayManager_GetData
 .public OverlayManager_GetArgs
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_GXLoadPal
 .public GfGfxLoader_LoadFromNarc
 .public GfGfxLoader_LoadCharDataFromOpenNarc
@@ -90,7 +90,7 @@
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public ListMenuItems_New
-.public ListMenuItems_dtor
+.public ListMenuItems_Delete
 .public ListMenuItems_AddItem
 .public sub_02018068
 .public sub_020180BC
@@ -189,7 +189,7 @@
 .public GF_AssertFail
 .public sub_02025ACC
 .public String_New
-.public String_dtor
+.public String_Delete
 .public StringCopy
 .public StringGetLength
 .public sub_02026C44

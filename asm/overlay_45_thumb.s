@@ -1363,9 +1363,9 @@ ov45_0222A844: ; 0x0222A844
 	mov r6, #1
 _0222A892:
 	ldr r0, [sp]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #4]
-	bl String_dtor
+	bl String_Delete
 	b _0222A8A2
 _0222A8A0:
 	mov r6, #1
@@ -1385,7 +1385,7 @@ _0222A8A2:
 	add r1, r7, #0
 	bl PlayerName_StringToFlat
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	bl DestroyMsgData
 _0222A8D0:
@@ -3714,7 +3714,7 @@ ov45_0222B8A0: ; 0x0222B8A0
 	mov r2, #8
 	bl CopyStringToU16Array
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0
 	mvn r0, r0
 	str r0, [r5, #0x20]
@@ -9312,7 +9312,7 @@ _0222DFD8:
 	add r5, r6, #0
 _0222DFDC:
 	ldr r0, [r5, #0x10]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -9564,7 +9564,7 @@ ov45_0222E14C: ; 0x0222E14C
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -9609,7 +9609,7 @@ ov45_0222E1A0: ; 0x0222E1A0
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -9761,7 +9761,7 @@ _0222E320:
 	add r2, r5, #0
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -9807,7 +9807,7 @@ ov45_0222E33C: ; 0x0222E33C
 	add r2, r5, #0
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #1
 	add sp, #8
 	pop {r4, r5, r6, pc}
@@ -9869,7 +9869,7 @@ _0222E3EC:
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #1
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -9933,7 +9933,7 @@ _0222E468:
 	add r2, r5, #0
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov45_0222E414
@@ -10027,7 +10027,7 @@ _0222E51C:
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #1
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -14618,9 +14618,9 @@ _02230608:
 	mov r2, #0x80
 	bl ov45_022309E8
 	ldr r0, [sp, #0x18]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [sp, #0x14]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #0
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
@@ -15961,7 +15961,7 @@ _02230FEE:
 	add r1, sp, #0x30
 	bl ov45_0222D524
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [sp, #4]
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7}

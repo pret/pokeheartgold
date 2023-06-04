@@ -201,7 +201,7 @@ void AddWindowParameterized(BGCONFIG *bgConfig, WINDOW *window, u8 layer, u8 x, 
 void AddTextWindowTopLeftCorner(BGCONFIG *bgConfig, WINDOW *window, u8 width, u8 height, u16 baseTile, u8 paletteNum);
 void AddWindow(BGCONFIG *bgConfig, WINDOW *window, const WINDOWTEMPLATE *template);
 void RemoveWindow(WINDOW* window);
-void WindowArray_dtor(WINDOW *window, int num);
+void WindowArray_Delete(WINDOW *window, int num);
 void CopyWindowToVram(WINDOW *window);
 void ScheduleWindowCopyToVram(WINDOW *window);
 void PutWindowTilemap(WINDOW *window);

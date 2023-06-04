@@ -14,7 +14,7 @@
 .public sub_02003D5C
 .public sub_02004AC8
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public GfGfxLoader_GetPlttDataFromOpenNarc

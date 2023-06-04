@@ -88,7 +88,7 @@
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Sav2_PlayerData_GetOptionsAddr
 .public Options_GetFrame
 .public sub_0202E4B0

@@ -13,7 +13,7 @@
 .public ReadWholeNarcMemberByIdPair
 .public AllocAndReadWholeNarcMemberByIdPair
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_GXLoadPal
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
@@ -114,7 +114,7 @@
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public StringCompare
 .public sub_02026EA4
 .public GF_3DVramMan_InitFrameTexVramManager

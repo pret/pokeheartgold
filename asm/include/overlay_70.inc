@@ -21,7 +21,7 @@
 .public OverlayManager_GetArgs
 .public OverlayManager_run
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public NARC_AllocAndReadWholeMember
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_LoadScrnData
@@ -80,7 +80,7 @@
 .public IsPaletteFadeFinished
 .public sub_02014494
 .public ListMenuItems_New
-.public ListMenuItems_dtor
+.public ListMenuItems_Delete
 .public ListMenuItems_AppendFromMsgData
 .public sub_0201660C
 .public sub_02016624
@@ -169,7 +169,7 @@
 .public sub_02025224
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public CopyU16ArrayToString
 .public SetAllPCBoxesModified
 .public Save_PrepareForAsyncWrite

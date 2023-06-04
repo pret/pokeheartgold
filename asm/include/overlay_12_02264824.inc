@@ -2,7 +2,7 @@
 #pragma once
 .public sub_02003E5C
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public NewString_ReadMsgData
 .public BufferBoxMonNickname
 .public BufferIntegerAsString
@@ -38,7 +38,7 @@
 .public sub_02024B1C
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Mon_GetBoxMon
 .public sub_02088080
 .public MIi_CpuCopy16

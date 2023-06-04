@@ -176,7 +176,7 @@ _0208291E:
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -672,7 +672,7 @@ _02082E6E:
 	add r1, r6, #0
 	bl StringCopy
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x18]
 	add r4, #0x1c
 	add r1, r4, #0
@@ -696,7 +696,7 @@ _02082E8A:
 	add r1, r5, #0
 	bl StringCopy
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x18]
 	add r4, #0x1c
 	add r1, r4, #0
@@ -813,7 +813,7 @@ _02082F86:
 	mov r0, #0x61
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r7, #0xe7
 	mov r6, #0
 	add r5, r4, #0
@@ -902,16 +902,16 @@ _02083016:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _02083060
-	bl String_dtor
+	bl String_Delete
 _02083060:
 	mov r0, #0x5e
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x5f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x5d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1001,7 +1001,7 @@ _0208312A:
 	bl GF_AssertFail
 _02083132:
 	ldr r0, [r4, #0x18]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -1588,7 +1588,7 @@ _020835EA:
 	mov r0, #1
 	str r0, [r5, #0x14]
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 _0208360C:
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
@@ -3609,7 +3609,7 @@ _0208461C:
 	bne _02084578
 _02084626:
 	ldr r0, [sp, #0x28]
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3729,7 +3729,7 @@ _020846D6:
 	cmp r5, #3
 	blo _020846D6
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

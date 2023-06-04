@@ -1083,7 +1083,7 @@ _021E613C:
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r5, #8]
 	bl Options_GetTextFrameDelay
 	add r3, r4, #0
@@ -1115,7 +1115,7 @@ _021E621C:
 	mov r0, #0x11
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x41
 	mov r1, #2
 	lsl r0, r0, #2
@@ -1334,7 +1334,7 @@ _021E63E2:
 	mov r0, #0x11
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x42
 	mov r1, #1
 	lsl r0, r0, #2
@@ -1537,7 +1537,7 @@ _021E650C:
 	add r0, r4, #0
 	bl CopyWindowToVram
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x24]
 	add r4, #0x10
 	add r0, r0, #4
@@ -4520,7 +4520,7 @@ ov53_021E7D70: ; 0x021E7D70
 	add r0, r4, #0
 	bl RemoveWindow
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -5043,7 +5043,7 @@ ov53_021E816C: ; 0x021E816C
 	mov r1, #0
 	bl ToggleBgLayer
 	ldr r0, [sp, #0x10]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -5250,7 +5250,7 @@ ov53_021E8330: ; 0x021E8330
 	add r0, r7, #0
 	bl DestroyMsgData
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

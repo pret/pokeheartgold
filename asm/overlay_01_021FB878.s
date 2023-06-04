@@ -137,7 +137,7 @@ ov01_021FB944: ; 0x021FB944
 	ldr r1, [r5]
 	lsl r0, r0, #6
 	ldr r0, [r1, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r1, [r5]
 	ldr r0, _021FB9BC ; =0x000008AC
 	ldr r0, [r1, r0]
@@ -513,7 +513,7 @@ _021FBC1C:
 	bl GF_AssertFail
 _021FBC2C:
 	ldr r0, [r6, #8]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r2, _021FBCBC ; =0x04000060
 	ldr r0, _021FBCC0 ; =0xFFFFCFFF
 	ldrh r1, [r2]

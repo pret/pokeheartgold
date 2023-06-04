@@ -20,7 +20,7 @@
 .public OverlayManager_GetArgs
 .public OverlayManager_run
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_GXLoadPal
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
@@ -65,7 +65,7 @@
 .public IsPaletteFadeFinished
 .public sub_020141C4
 .public ListMenuItems_New
-.public ListMenuItems_dtor
+.public ListMenuItems_Delete
 .public ListMenuItems_AppendFromMsgData
 .public sub_0201660C
 .public sub_02016624
@@ -103,7 +103,7 @@
 .public AddWindowParameterized
 .public AddWindow
 .public RemoveWindow
-.public WindowArray_dtor
+.public WindowArray_Delete
 .public ScheduleWindowCopyToVram
 .public ClearWindowTilemapAndCopyToVram
 .public ClearWindowTilemapAndScheduleTransfer
@@ -146,7 +146,7 @@
 .public GF_AssertFail
 .public sub_02025C88
 .public String_New
-.public String_dtor
+.public String_Delete
 .public StringSetEmpty
 .public StringCopy
 .public String_atoi

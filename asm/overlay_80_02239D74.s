@@ -97,7 +97,7 @@ _02239DFE:
 	cmp r6, #2
 	blt _02239DFE
 	ldr r0, [sp, #4]
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #0xb7
 	mov r1, #0x65
 	bl NARC_New
@@ -136,7 +136,7 @@ _02239DFE:
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, _02239EBC ; =ov80_02239ED8
 	ldr r1, [sp, #8]
 	ldr r2, _02239EC0 ; =0x0001368C

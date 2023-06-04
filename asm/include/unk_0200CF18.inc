@@ -2,7 +2,7 @@
 #pragma once
 .public sub_020032A4
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_LoadFromOpenNarc
 .public CreateSpriteResourcesHeader
 .public sub_02009E84

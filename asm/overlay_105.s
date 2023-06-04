@@ -569,7 +569,7 @@ _021E5D5A:
 	cmp r4, #4
 	blo _021E5D5A
 	ldr r0, [sp, #4]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

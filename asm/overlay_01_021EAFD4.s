@@ -82,7 +82,7 @@ _021EB044:
 	blo _021EB032
 _021EB04E:
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r6, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021EB00C

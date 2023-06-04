@@ -59,7 +59,7 @@ ov12_0226BBC4: ; 0x0226BBC4
 	mov r3, #3
 	bl sub_0200D71C
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov12_0226BBC4

@@ -16,7 +16,7 @@
 .public LCRandom
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public CopyStringToU16Array
 .public Sav2_PlayerData_GetProfileAddr
 .public PlayerProfile_GetTrainerGender

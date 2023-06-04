@@ -22,7 +22,7 @@
 .public UnloadOverlayByID
 .public HandleLoadOverlay
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_LoadFromNarc_GetSizeOut
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
@@ -164,7 +164,7 @@
 .public sub_02025380
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public StringSetEmpty
 .public String16_FormatInteger
 .public String16_FormatUnsignedLongLong

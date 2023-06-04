@@ -83,9 +83,9 @@ _0226BF38:
 	mov r3, #0x12
 	bl ov12_02266508
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #4
 	ldrsh r0, [r4, r0]
 	add sp, #8

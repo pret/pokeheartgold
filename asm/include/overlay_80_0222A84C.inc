@@ -9,7 +9,7 @@
 .public FreeToHeap
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public sub_0209680C
 .public MI_CpuFill8
 .public ov80_0222A84C

@@ -278,7 +278,7 @@ BOOL CreditsApp_OvyExit(OVY_MANAGER *man, int *state) {
         PageWork *ptr = &work->pageWork;
         RemoveWindow(&ptr->window);
         DestroyMsgData(ptr->msgData);
-        String_dtor(ptr->string);
+        String_Delete(ptr->string);
         FreeBG(work);
         for (u8 i = 0; i < 6; i++) {
             FreeToHeap(work->unk468[i]);
@@ -288,7 +288,7 @@ BOOL CreditsApp_OvyExit(OVY_MANAGER *man, int *state) {
         *state += 1;
         break;
     case 2:
-        NARC_dtor(work->cutsceneWork.narc);
+        NARC_Delete(work->cutsceneWork.narc);
         ov76_021E62B4(work);
         FreeOamAndObjResMgrs(work);
         *state += 1;

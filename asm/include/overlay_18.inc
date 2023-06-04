@@ -30,7 +30,7 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_GXLoadPal
 .public GfGfxLoader_GetCharData
 .public GfGfxLoader_LoadFromNarc_GetSizeOut
@@ -219,7 +219,7 @@
 .public sub_02025380
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public PlayerProfile_GetPlayerName_NewString
 .public PlayerProfile_GetTrainerGender
 .public Pokedex_CheckMonCaughtFlag

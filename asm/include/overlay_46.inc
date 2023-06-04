@@ -9,7 +9,7 @@
 .public OverlayManager_GetData
 .public OverlayManager_GetArgs
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_LoadScrnData
 .public GfGfxLoader_GXLoadPal
@@ -66,7 +66,7 @@
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Sav2_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay
 .public Options_GetFrame

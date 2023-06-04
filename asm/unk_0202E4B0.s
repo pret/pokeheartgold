@@ -331,7 +331,7 @@ _0202E6B8:
 	ldr r0, [sp]
 	bl FreeToHeap
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x18
 	bl SaveSubstruct_UpdateCRC
 	ldr r0, [sp, #4]
@@ -902,7 +902,7 @@ _0202EB04:
 	ldr r0, [r5, #0xc]
 	cmp r0, #0
 	beq _0202EB0E
-	bl String_dtor
+	bl String_Delete
 _0202EB0E:
 	add r4, r4, #1
 	add r5, #0xc

@@ -1678,7 +1678,7 @@ ov113_021E650C: ; 0x021E650C
 	mov r2, #0xf
 	bl ov113_021E64DC
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldrb r0, [r5, #0x19]
 	mov r1, #1
 	add r2, r1, #0
@@ -1784,15 +1784,15 @@ ov113_021E66E4: ; 0x021E66E4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x5c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x58]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x54]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x50]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x4c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x48]
 	bl MessageFormat_delete
 	ldr r0, [r4, #0x44]
@@ -2079,7 +2079,7 @@ ov113_021E6930: ; 0x021E6930
 	add r0, r4, #0
 	add r0, #0xfc
 	ldr r0, [r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #0
 	add r0, #0xac
 	ldr r0, [r0]

@@ -46,7 +46,7 @@ void ZknData_LoadAll(struct ZknHeightWeight *zkn, int mode, HeapID heapId) {
         sub_020914E8(narc, &zkn->unk_10, &zkn->unk_14, heapId);
     }
 
-    NARC_dtor(narc);
+    NARC_Delete(narc);
 }
 
 void ZknData_UnloadAll(struct ZknHeightWeight *zkn) {

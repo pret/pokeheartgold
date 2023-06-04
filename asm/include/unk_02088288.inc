@@ -15,7 +15,7 @@
 .public OverlayManager_GetArgs
 .public AllocAndReadWholeNarcMemberByIdPair
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public GfGfxLoader_GXLoadPalFromOpenNarc
@@ -86,7 +86,7 @@
 .public sub_02025224
 .public sub_02025320
 .public String_New
-.public String_dtor
+.public String_Delete
 .public CopyU16ArrayToString
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetTrainerID

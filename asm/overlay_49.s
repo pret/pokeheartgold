@@ -4823,7 +4823,7 @@ _0225AB30:
 	add r0, r4, #0
 	bl ov49_0225AC38
 	ldr r0, [r4, #0x18]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl RemoveWindow
 	pop {r4, pc}
@@ -5151,7 +5151,7 @@ ov49_0225AD20: ; 0x0225AD20
 	bl AddCellOrAnimResObjFromOpenNarc
 	str r0, [r7, #0x4c]
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r7, #0x40]
 	bl sub_0200ADA4
 	ldr r0, [r7, #0x44]
@@ -5316,7 +5316,7 @@ ov49_0225AEE0: ; 0x0225AEE0
 	ldr r0, [r4, #0x34]
 	cmp r0, #0
 	beq _0225AEF4
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	mov r0, #0
 	str r0, [r4, #0x34]
 	strh r0, [r4, #0x38]
@@ -5756,7 +5756,7 @@ ov49_0225B200: ; 0x0225B200
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _0225B212
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	mov r0, #0
 	str r0, [r4]
 _0225B212:
@@ -5951,9 +5951,9 @@ _0225B36A:
 	cmp r4, #4
 	blt _0225B36A
 	ldr r0, [r6, #0x14]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x18]
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov49_0225B35C
@@ -6186,7 +6186,7 @@ ov49_0225B4E4: ; 0x0225B4E4
 	mov r0, #0x53
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov49_0225B4E4
@@ -8584,7 +8584,7 @@ _0225C760:
 	b _0225C60E
 _0225C770:
 	ldr r0, [sp, #0x50]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x98
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -9514,7 +9514,7 @@ ov49_0225CDEC: ; 0x0225CDEC
 	str r4, [sp]
 	bl ov49_0225D854
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r6, #0
 	bl ov49_0225D520
 	mov r1, #0x4b
@@ -26138,7 +26138,7 @@ ov49_022652E8: ; 0x022652E8
 	add r2, r5, #0
 	bl ov49_022657B4
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}

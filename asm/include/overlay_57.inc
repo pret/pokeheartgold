@@ -21,7 +21,7 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_GetCharData
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
@@ -96,7 +96,7 @@
 .public sub_020137C0
 .public sub_020138E0
 .public ListMenuItems_New
-.public ListMenuItems_dtor
+.public ListMenuItems_Delete
 .public ListMenuItems_AddItem
 .public sub_02014DA0
 .public sub_0201543C
@@ -165,7 +165,7 @@
 .public sub_02025364
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public String16_FormatInteger
 .public sub_02026C44
 .public sub_02026CAC

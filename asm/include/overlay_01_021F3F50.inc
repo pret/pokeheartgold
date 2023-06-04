@@ -26,7 +26,7 @@
 .public AddTextPrinterParameterized
 .public AddTextPrinterParameterized2
 .public GF_AssertFail
-.public String_dtor
+.public String_Delete
 .public SaveGameNormal
 .public Sav2_PlayerData_GetProfileAddr
 .public Sav2_PlayerData_GetIGTAddr

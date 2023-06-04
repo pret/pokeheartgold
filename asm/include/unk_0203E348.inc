@@ -11,7 +11,7 @@
 .public FreeToHeap
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public StringCompare
 .public CopyU16ArrayToString
 .public String_c_str

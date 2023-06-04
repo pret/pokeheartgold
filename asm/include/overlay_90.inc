@@ -11,7 +11,7 @@
 .public PlayFanfare
 .public IsFanfarePlaying
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public GfGfxLoader_GXLoadPalFromOpenNarc
@@ -132,7 +132,7 @@
 .public sub_02024B68
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Sav2_PlayerData_GetProfileAddr
 .public Sav2_PlayerData_GetOptionsAddr
 .public Options_GetFrame

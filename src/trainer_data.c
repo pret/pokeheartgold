@@ -29,7 +29,7 @@ void EnemyTrainerSet_Init(BATTLE_SETUP *battleSetup, SAVEDATA *saveData, HeapID 
             } else {
                 string = NewString_ReadMsgData(msgData, battleSetup->trainerId[i]);
                 CopyStringToU16Array(string, battleSetup->trainer[i].name, PLAYER_NAME_LENGTH + 1);
-                String_dtor(string);
+                String_Delete(string);
             }
             CreateNPCTrainerParty(battleSetup, i, heap_id);
         }
@@ -90,7 +90,7 @@ BOOL TrainerMessageWithIdPairExists(u32 trainer_idx, u32 msg_id, HeapID heap_id)
             break;
         rdbuf[0] += 4;
     }
-    NARC_dtor(trTblNarc);
+    NARC_Delete(trTblNarc);
     return ret;
 }
 
@@ -110,7 +110,7 @@ void GetTrainerMessageByIdPair(u32 trainer_idx, u32 msg_id, STRING * str, HeapID
         }
         rdbuf[0] += 4;
     }
-    NARC_dtor(trTblNarc);
+    NARC_Delete(trTblNarc);
     if (rdbuf[0] == trTblSize) {
         StringSetEmpty(str);
     }

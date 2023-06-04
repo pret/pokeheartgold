@@ -13,7 +13,7 @@
 .public sub_02007234
 .public AllocAndReadWholeNarcMemberByIdPair
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_LoadFromNarc
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc

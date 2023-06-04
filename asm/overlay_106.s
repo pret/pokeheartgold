@@ -2031,7 +2031,7 @@ ov106_021E68A8: ; 0x021E68A8
 	add r0, r5, #0
 	bl ov106_021E64FC
 	ldr r0, [r5, #4]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, _021E68D8 ; =0x00000418
 	ldr r0, [r4, r0]
 	bl FreeToHeap

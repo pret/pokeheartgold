@@ -8,7 +8,7 @@
 .public sub_02007200
 .public sub_02007234
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_LoadScrnData
 .public GfGfxLoader_GXLoadPal
@@ -85,7 +85,7 @@
 .public sub_02025224
 .public System_GetTouchNew
 .public GF_AssertFail
-.public String_dtor
+.public String_Delete
 .public Sav2_PlayerData_GetProfileAddr
 .public PlayerProfile_GetTrainerGender
 .public sub_0203769C

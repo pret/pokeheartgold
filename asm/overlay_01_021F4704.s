@@ -3708,7 +3708,7 @@ ov01_021F62B0: ; 0x021F62B0
 	mov r0, #1
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r4]
 	bl ov01_021FACB4
 	add r0, r4, #0

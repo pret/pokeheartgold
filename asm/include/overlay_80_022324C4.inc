@@ -12,13 +12,13 @@
 .public FreeToHeap
 .public AllocWindows
 .public AddWindowParameterized
-.public WindowArray_dtor
+.public WindowArray_Delete
 .public CopyWindowToVram
 .public FillWindowPixelBuffer
 .public AddTextPrinterParameterized
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Sav2_PlayerData_GetProfileAddr
 .public Sav2_GameStats_get
 .public GameStats_Add

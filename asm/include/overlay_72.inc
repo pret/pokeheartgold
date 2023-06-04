@@ -14,7 +14,7 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public GfGfxLoader_GXLoadPalFromOpenNarc
@@ -111,7 +111,7 @@
 .public sub_02025224
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Save_PrepareForAsyncWrite
 .public Save_WriteFileAsync
 .public Sav2_SysInfo_GetField4C

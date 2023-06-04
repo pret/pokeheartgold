@@ -509,7 +509,7 @@ static BOOL Task_PrintRegisteredKeyItemUseMessage(TaskManager *taskManager) {
     case 2:
         MapObjectMan_UnpauseAllMovement(fsys->mapObjectMan);
         RemoveWindow(&env->window);
-        String_dtor(env->strbuf);
+        String_Delete(env->strbuf);
         FreeToHeap(env);
         return TRUE;
     }

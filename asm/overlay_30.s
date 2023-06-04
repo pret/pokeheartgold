@@ -525,7 +525,7 @@ ov30_0225D954: ; 0x0225D954
 	cmp r0, #0
 	bne _0225D970
 	ldr r0, [r4, #0x5c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x10]
 	str r0, [r4, #0xc]
 _0225D970:

@@ -2477,11 +2477,11 @@ ov17_02202E28: ; 0x02202E28
 ov17_02202EFC: ; 0x02202EFC
 	mov r1, #0x65
 	lsl r1, r1, #2
-	ldr r3, _02202F08 ; =NARC_dtor
+	ldr r3, _02202F08 ; =NARC_Delete
 	ldr r0, [r0, r1]
 	bx r3
 	nop
-_02202F08: .word NARC_dtor
+_02202F08: .word NARC_Delete
 	thumb_func_end ov17_02202EFC
 
 	thumb_func_start ov17_02202F0C
@@ -2549,7 +2549,7 @@ _02202F84:
 	add r0, r5, #0
 	add r0, #0xb0
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0x11
@@ -2557,11 +2557,11 @@ _02202F84:
 	add r0, r6, #0
 	add r0, #0xa8
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	add r0, #0xa4
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	add r0, #0xa0
 	ldr r0, [r0]
@@ -2690,7 +2690,7 @@ _02203090:
 	mov r0, #0x66
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	str r6, [r5, r7]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -2875,7 +2875,7 @@ ov17_0220321C: ; 0x0220321C
 	mov r0, #0x19
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r1, #0x13
 	lsl r1, r1, #4
 	ldr r0, [r4, r1]
@@ -3561,7 +3561,7 @@ _0220376C:
 	add r3, r1, #0
 	bl BufferString
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	b _022037AA
 _02203794:
 	lsl r1, r5, #2

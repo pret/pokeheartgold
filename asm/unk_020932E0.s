@@ -2208,7 +2208,7 @@ _020944BA:
 	ldr r0, [sp, #0x20]
 	bl FreeToHeap
 	ldr r0, [sp, #0x1c]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r1, _0209451C ; =sub_02094758
 	ldr r0, _02094520 ; =0x00004644
 	str r1, [r5, r0]
@@ -2362,7 +2362,7 @@ _02094606:
 	ldr r0, [sp, #0x24]
 	bl FreeToHeap
 	ldr r0, [sp, #0x20]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r1, _0209465C ; =sub_02094758
 	ldr r0, _02094660 ; =0x00004644
 	str r1, [r6, r0]
@@ -2503,7 +2503,7 @@ _0209472A:
 	ldr r0, [sp, #0x18]
 	bl FreeToHeap
 	ldr r0, [sp, #0x14]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r1, _02094750 ; =sub_02094758
 	ldr r0, _02094754 ; =0x00004644
 	str r1, [r4, r0]
@@ -2847,7 +2847,7 @@ _0209495C:
 	add r0, r7, #0
 	bl FreeToHeap
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r1, _020949EC ; =sub_02094758
 	ldr r0, _020949F0 ; =0x00004644
 	str r1, [r5, r0]
@@ -3252,7 +3252,7 @@ _02094CC8:
 	add r0, r5, r0
 	bl CopyWindowToVram
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -3309,7 +3309,7 @@ _02094D78:
 	add r0, r5, r0
 	bl CopyWindowToVram
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	bl DestroyMsgData
 	add sp, #0x10
@@ -3684,7 +3684,7 @@ sub_0209501C: ; 0x0209501C
 	str r3, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
 	bl DestroyMsgData
 	ldr r0, _020950B4 ; =0x00004660

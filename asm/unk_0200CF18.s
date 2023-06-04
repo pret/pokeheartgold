@@ -485,7 +485,7 @@ _0200D24C:
 	add r0, r6, #0
 	bl FreeToHeap
 	ldr r0, [sp, #0x20]
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #1
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}

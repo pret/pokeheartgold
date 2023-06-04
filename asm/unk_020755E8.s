@@ -213,7 +213,7 @@ sub_02075630: ; 0x02075630
 	mov r3, #0xe
 	bl sub_0200D71C
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #1
 	str r0, [sp]
 	add r0, r5, #0
@@ -351,7 +351,7 @@ sub_02075804: ; 0x02075804
 	add r0, r5, #0
 	bl CopyWindowToVram
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -977,7 +977,7 @@ sub_02075D4C: ; 0x02075D4C
 	bl sub_02075770
 	ldr r0, [r4, #4]
 	mov r1, #1
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	add r0, r4, #0
 	add r0, #0x8c
 	bl RemoveWindow
@@ -1018,7 +1018,7 @@ sub_02075D4C: ; 0x02075D4C
 	add r0, r4, #0
 	add r0, #0x84
 	ldr r0, [r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #0
@@ -3265,7 +3265,7 @@ _02076F38:
 	mov r3, #5
 	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #5
 	mov r1, #0
 	bl ToggleBgLayer

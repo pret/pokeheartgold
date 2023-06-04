@@ -3277,7 +3277,7 @@ ov59_022396E4: ; 0x022396E4
 	mov r1, #0x29
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r1, #0
 	ldr r0, _02239700 ; =0x04000050
 	add r2, r1, #0
@@ -3364,7 +3364,7 @@ _02239794:
 	add r0, r5, #0
 	add r0, #0xd0
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #7
@@ -3373,19 +3373,19 @@ _02239794:
 	add r4, r6, #0
 _022397AA:
 	ldr r0, [r4, #0x78]
-	bl String_dtor
+	bl String_Delete
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #0x16
 	blt _022397AA
 	ldr r0, [r6, #0x74]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x6c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x68]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x64]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x60]
 	bl MessageFormat_delete
 	ldr r0, [r6, #0x5c]
@@ -3565,7 +3565,7 @@ ov59_02239918: ; 0x02239918
 	mov r0, #0xa5
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	mov r0, #0xa5
 	mov r1, #0
 	lsl r0, r0, #2
@@ -7421,7 +7421,7 @@ ov59_0223B66C: ; 0x0223B66C
 	mov r1, #0xba
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r1, #0
 	ldr r0, _0223B688 ; =0x04000050
 	add r2, r1, #0
@@ -7490,15 +7490,15 @@ ov59_0223B6FC: ; 0x0223B6FC
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x74]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x70]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x6c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x68]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x64]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x60]
 	bl MessageFormat_delete
 	ldr r0, [r4, #0x5c]
@@ -7964,11 +7964,11 @@ ov59_0223BA64: ; 0x0223BA64
 
 	thumb_func_start ov59_0223BADC
 ov59_0223BADC: ; 0x0223BADC
-	ldr r3, _0223BAE4 ; =String_dtor
+	ldr r3, _0223BAE4 ; =String_Delete
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_0223BAE4: .word String_dtor
+_0223BAE4: .word String_Delete
 	thumb_func_end ov59_0223BADC
 
 	thumb_func_start ov59_0223BAE8

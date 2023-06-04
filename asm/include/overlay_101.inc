@@ -34,7 +34,7 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_GetScrnDataFromOpenNarc
 .public G2dRenderer_SetSubSurfaceCoords
 .public SetBlendBrightness
@@ -86,7 +86,7 @@
 .public GF_RTC_GetTimeOfDayByHour
 .public GF_RTC_GetTimeOfDayWildParamByHour
 .public ListMenuItems_New
-.public ListMenuItems_dtor
+.public ListMenuItems_Delete
 .public ListMenuItems_AppendFromMsgData
 .public sub_02018424
 .public sub_02018474
@@ -163,7 +163,7 @@
 .public sub_020253F0
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public StringSetEmpty
 .public StringCountLines
 .public StringGetLineN

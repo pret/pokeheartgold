@@ -7,7 +7,7 @@
 .public sub_02007200
 .public sub_02007234
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public GfGfxLoader_GXLoadPalFromOpenNarc
@@ -65,7 +65,7 @@
 .public sub_02025320
 .public System_GetTouchNew
 .public sub_02025364
-.public String_dtor
+.public String_Delete
 .public Fsys_GetFacingObject
 .public sub_0203DF8C
 .public sub_0203E13C

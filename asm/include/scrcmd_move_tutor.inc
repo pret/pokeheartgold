@@ -9,7 +9,7 @@
 .public FreeToHeap
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public SetupNativeScript
 .public ScriptReadHalfword
 .public FieldSysGetAttrAddr

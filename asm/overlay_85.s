@@ -172,7 +172,7 @@ _021E5A4A:
 	mov r0, #0x36
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x66
@@ -2983,7 +2983,7 @@ ov85_021E6F6C: ; 0x021E6F6C
 	mov r3, #0x12
 	bl sub_0200D71C
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	bl sub_0203A880
 	mov r0, #0x66
 	bl sub_0203A4AC
@@ -3166,13 +3166,13 @@ ov85_021E7148: ; 0x021E7148
 	ldr r0, [r4, #8]
 	bl MessageFormat_delete
 	ldr r0, [r4, #0x6c]
-	bl String_dtor
+	bl String_Delete
 	mov r4, #0
 _021E717A:
 	add r0, r5, #0
 	add r0, #0x98
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #5
@@ -3257,7 +3257,7 @@ ov85_021E71EC: ; 0x021E71EC
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	mov r1, #1
 	mov r2, #0xa
@@ -3309,7 +3309,7 @@ ov85_021E7274: ; 0x021E7274
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	mov r1, #1
 	mov r2, #0xa
@@ -6572,7 +6572,7 @@ _021E89C6:
 	bl sub_0200E33C
 	str r0, [r4, #0x30]
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -7094,15 +7094,15 @@ ov85_021E8E00: ; 0x021E8E00
 	add r5, r6, #0
 _021E8E1C:
 	ldr r0, [r5, #0x3c]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #5
 	blt _021E8E1C
 	ldr r0, [r6, #0x58]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x54]
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov85_021E8E00
 
@@ -9350,7 +9350,7 @@ _021E9F74:
 	bl AddTextPrinterParameterized2
 _021E9FA6:
 	ldr r0, [sp, #0x18]
-	bl String_dtor
+	bl String_Delete
 _021E9FAC:
 	ldr r0, [sp, #0x20]
 	add r7, #8
@@ -9555,7 +9555,7 @@ ov85_021EA0EC: ; 0x021EA0EC
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0xbe
 	lsl r0, r0, #2
 	add r0, r5, r0

@@ -942,7 +942,7 @@ _020879B0:
 _020879C6:
 	bl sub_02087830
 	ldr r0, [r4]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #0

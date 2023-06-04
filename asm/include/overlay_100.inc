@@ -20,7 +20,7 @@
 .public OverlayManager_run
 .public GetNarcMemberSizeByIdPair
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public NARC_ReadWholeMember
 .public CreateSpriteResourcesHeader
 .public G2dRenderer_Init

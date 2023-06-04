@@ -15,7 +15,7 @@
 .public OverlayManager_GetArgs
 .public AllocAndReadWholeNarcMemberByIdPair
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public NARC_AllocAndReadWholeMember
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
@@ -45,7 +45,7 @@
 .public ClearFrameAndWindow2
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public ListMenuItems_dtor
+.public ListMenuItems_Delete
 .public sub_02016624
 .public sub_020168F4
 .public sub_02018410
@@ -92,7 +92,7 @@
 .public sub_020249D4
 .public sub_02025224
 .public String_New
-.public String_dtor
+.public String_Delete
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
 .public sub_020290FC

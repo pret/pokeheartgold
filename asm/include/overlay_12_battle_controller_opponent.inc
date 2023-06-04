@@ -13,7 +13,7 @@
 .public StopSE
 .public IsCryFinished
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public sub_02008550
 .public sub_020085DC
 .public sub_020085EC

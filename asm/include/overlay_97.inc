@@ -72,7 +72,7 @@
 .public sub_02024A04
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public CopyU16ArrayToString
 .public GetStoragePCPointer
 .public Save_Pokeathlon_get

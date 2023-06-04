@@ -14,7 +14,7 @@
 .public AllocFromHeap
 .public FreeToHeap
 .public String_New
-.public String_dtor
+.public String_Delete
 .public PlayerProfile_GetPlayerName_NewString
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetTrainerGender

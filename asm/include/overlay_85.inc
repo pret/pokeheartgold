@@ -26,7 +26,7 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public NARC_ReadWholeMember
 .public NARC_GetMemberSize
 .public GfGfxLoader_LoadCharData
@@ -164,7 +164,7 @@
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Thunk_G3X_Reset
 .public sub_02026E50
 .public GF_3DVramMan_InitFrameTexVramManager

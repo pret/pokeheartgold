@@ -11,7 +11,7 @@
 .public MailMsg_copy
 .public FreeToHeap
 .public GF_AssertFail
-.public String_dtor
+.public String_Delete
 .public StringGetLength
 .public String_c_str
 .public Save_TrainerHouse_get

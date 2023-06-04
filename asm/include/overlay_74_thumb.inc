@@ -25,7 +25,7 @@
 .public OverlayManager_GetArgs
 .public ReadWholeNarcMemberByIdPair
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public NARC_ReadWholeMember
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_LoadScrnData
@@ -78,7 +78,7 @@
 .public sub_02014494
 .public GF_RTC_CopyDate
 .public ListMenuItems_New
-.public ListMenuItems_dtor
+.public ListMenuItems_Delete
 .public ListMenuItems_AppendFromMsgData
 .public sub_02014A08
 .public sub_02014A38
@@ -177,7 +177,7 @@
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public StringSetEmpty
 .public String16_FormatInteger
 .public CopyU16ArrayToString

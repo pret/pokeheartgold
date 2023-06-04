@@ -12,7 +12,7 @@
 .public ReadWholeNarcMemberByIdPair
 .public AllocAndReadWholeNarcMemberByIdPair
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_GXLoadPal
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
@@ -93,7 +93,7 @@
 .public sub_02024B34
 .public sub_02025224
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Sav2_HOF_GetNumRecords
 .public Sav2_HOF_TranslateRecordIdx
 .public Sav2_HOF_RecordCountMons

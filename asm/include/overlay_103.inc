@@ -15,7 +15,7 @@
 .public OverlayManager_GetArgs
 .public OverlayManager_run
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public GfGfxLoader_GXLoadPalFromOpenNarc
@@ -60,7 +60,7 @@
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public ListMenuItems_New
-.public ListMenuItems_dtor
+.public ListMenuItems_Delete
 .public ListMenuItems_AppendFromMsgData
 .public MailMsg_GetExpandedString
 .public MailMsg_IsInit
@@ -127,7 +127,7 @@
 .public sub_02025224
 .public System_GetTouchNew
 .public String_New
-.public String_dtor
+.public String_Delete
 .public CopyU16ArrayToString
 .public Sav2_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay

@@ -50,7 +50,7 @@
 .public sub_020249D4
 .public sub_02025224
 .public GF_AssertFail
-.public String_dtor
+.public String_Delete
 .public Options_GetTextFrameDelay
 .public GetMonData
 .public Mon_GetBoxMon

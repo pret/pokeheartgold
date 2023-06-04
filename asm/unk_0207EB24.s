@@ -313,7 +313,7 @@ _0207ED8E:
 	add r1, r2, #1
 	bl sub_0200DD08
 	ldr r0, [sp, #0x10]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

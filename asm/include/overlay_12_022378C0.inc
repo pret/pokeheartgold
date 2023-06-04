@@ -28,7 +28,7 @@
 .public OverlayManager_GetData
 .public OverlayManager_GetArgs
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_LoadScrnData
 .public sub_02007FD4
@@ -89,7 +89,7 @@
 .public AllocWindows
 .public AddWindowParameterized
 .public RemoveWindow
-.public WindowArray_dtor
+.public WindowArray_Delete
 .public FillWindowPixelBuffer
 .public BgConfig_HandleScheduledScrollAndTransferOps
 .public GetLCRNGSeed
@@ -110,7 +110,7 @@
 .public GX_BothDispOn
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public sub_02026E50
 .public sub_02026E84
 .public sub_02026E8C

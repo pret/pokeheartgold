@@ -1554,7 +1554,7 @@ ov110_021E6394: ; 0x021E6394
 	add r1, #0xd8
 	str r0, [r1]
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0x20
@@ -1686,20 +1686,20 @@ ov110_021E65DC: ; 0x021E65DC
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	ldr r0, [r6, #0x48]
-	bl String_dtor
+	bl String_Delete
 	mov r4, #0
 	add r5, r6, #0
 _021E65EA:
 	ldr r0, [r5, #0x38]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
 	blt _021E65EA
 	ldr r0, [r6, #0x34]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x30]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x2c]
 	bl MessageFormat_delete
 	ldr r0, [r6, #0x28]

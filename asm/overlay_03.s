@@ -283,7 +283,7 @@ ov03_02254054: ; 0x02254054
 _0225405C:
 	ldr r0, [r6]
 	ldr r0, [r0, r5]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #8
@@ -3087,7 +3087,7 @@ ov03_0225574C: ; 0x0225574C
 	mov r1, #0
 	bl sub_0200E5D4
 	ldr r0, [r4, #0x64]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	mov r1, #0
 	ldr r0, [r4, #0x5c]
 	add r2, r1, #0
@@ -4061,7 +4061,7 @@ ov03_02255EBC: ; 0x02255EBC
 	add r0, #0x34
 	bl RemoveWindow
 	ldr r0, [r4, #8]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	mov r0, #0
 	str r0, [r4]
 _02255EF6:
@@ -4299,7 +4299,7 @@ _022560AE:
 	add r0, #0x44
 	bl RemoveWindow
 	ldr r0, [r5, #0xc]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	mov r0, #0
 	str r0, [r5, #4]
 _022560E4:
@@ -4642,9 +4642,9 @@ _02256348:
 	b _022561C8
 _0225639C:
 	ldr r0, [sp, #0x2c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x28]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x30]
 	bl DestroyMsgData
 	ldr r0, [sp, #0x24]
@@ -4944,13 +4944,13 @@ _022565F6:
 	ldr r0, [r4, #0x68]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x14]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x18]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x20]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x6c]
 	bl sub_0207495C
 	add r0, r4, #0
@@ -5059,7 +5059,7 @@ ov03_022566D0: ; 0x022566D0
 	add r3, r1, #0
 	bl BufferString
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -5422,9 +5422,9 @@ _02256994:
 	b _022567F0
 _022569EC:
 	ldr r0, [sp, #0x2c]
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	bl MessageFormat_delete
 	ldr r0, [sp, #0x30]
@@ -6325,7 +6325,7 @@ ov03_0225709C: ; 0x0225709C
 	mov r0, #0x9d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x9a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -6823,7 +6823,7 @@ _022574AA:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r1, r5, #0
 	bl ov03_022585A4
@@ -10136,13 +10136,13 @@ ov03_02258E88: ; 0x02258E88
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x3c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x38]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x34]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x30]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x2c]
 	bl MessageFormat_delete
 	ldr r0, [r4, #0x28]

@@ -61,12 +61,12 @@ void MessageFormat_delete(MessageFormat *messageFormat) {
             if (messageFormat->fields[i].msg == NULL) {
                 break;
             }
-            String_dtor(messageFormat->fields[i].msg);
+            String_Delete(messageFormat->fields[i].msg);
         }
         FreeToHeap(messageFormat->fields);
     }
     if (messageFormat->buffer != NULL) {
-        String_dtor(messageFormat->buffer);
+        String_Delete(messageFormat->buffer);
     }
     messageFormat->count = 0;
     FreeToHeap(messageFormat);
@@ -465,7 +465,7 @@ void BufferGroupName(MessageFormat *msgFmt, SAVEDATA *saveData, s32 groupId, s32
     STRING *dest = String_New(64, 4);
     CopyU16ArrayToString(dest, sub_0202C7E0(friendGrp, groupId, nameType));
     BufferString(msgFmt, fieldno, dest, sp10, 1, r7);
-    String_dtor(dest);
+    String_Delete(dest);
 }
 
 void BufferWiFiPlazaActivityName(MessageFormat *msgFmt, u32 fieldno, u32 activityId) {

@@ -39,7 +39,7 @@
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized
 .public GX_EngineBToggleLayers
-.public String_dtor
+.public String_Delete
 .public Save_FileExists
 .public Save_FileDoesNotBelongToPlayer
 .public Save_NumModifiedPCBoxesIsMany

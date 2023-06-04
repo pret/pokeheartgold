@@ -12,7 +12,7 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public GfGfxLoader_GXLoadPalFromOpenNarc
@@ -62,7 +62,7 @@
 .public sub_0200FBDC
 .public sub_0200FBF4
 .public ListMenuItems_New
-.public ListMenuItems_dtor
+.public ListMenuItems_Delete
 .public ListMenuItems_AppendFromMsgData
 .public sub_02014DA0
 .public sub_02014DB4
@@ -155,7 +155,7 @@
 .public sub_020253F0
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Thunk_G3X_Reset
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete

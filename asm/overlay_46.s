@@ -1196,7 +1196,7 @@ _022591A6:
 	str r0, [r1]
 	ldr r0, [sp, #0x2c]
 	str r1, [sp, #0x10]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1571,9 +1571,9 @@ _022594BC:
 	add r0, #8
 	bl RemoveWindow
 	ldr r0, [r4, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x18]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #4]
 	bl DestroyMsgData
 	ldr r0, [r4]

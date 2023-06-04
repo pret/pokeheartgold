@@ -20,7 +20,7 @@
 .public OverlayManager_GetArgs
 .public OverlayManager_run
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_GetScrnDataFromOpenNarc
 .public sub_02007FD4
 .public sub_02008120
@@ -68,7 +68,7 @@
 .public ClearFrameAndWindow2
 .public IsPaletteFadeFinished
 .public ListMenuItems_New
-.public ListMenuItems_dtor
+.public ListMenuItems_Delete
 .public ListMenuItems_AppendFromMsgData
 .public sub_0201660C
 .public sub_02016624
@@ -127,7 +127,7 @@
 .public sub_020232BC
 .public System_GetTouchNew
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Thunk_G3X_Reset
 .public Options_GetTextFrameDelay
 .public Options_GetFrame

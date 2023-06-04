@@ -17,7 +17,7 @@ LISTMENUITEM *ListMenuItems_New(u32 n, HeapID heapId) {
     return ret;
 }
 
-void ListMenuItems_dtor(LISTMENUITEM *items) {
+void ListMenuItems_Delete(LISTMENUITEM *items) {
     ListMenuItems_DestroyMenuStrings(items);
     FreeToHeap(items);
 }
@@ -63,7 +63,7 @@ void ListMenuItems_DestroyMenuStrings(LISTMENUITEM *items) {
         if (items[i].text == NULL) {
             break;
         }
-        String_dtor(items[i].text);
+        String_Delete(items[i].text);
         items[i].text = NULL;
     }
 }

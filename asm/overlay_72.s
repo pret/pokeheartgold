@@ -1371,9 +1371,9 @@ _022381EC:
 	ldr r0, [r5, r0]
 	bl sub_0200AF94
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [sp, #0x14]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -2313,7 +2313,7 @@ ov72_02238B18: ; 0x02238B18
 	mov r1, #0
 	str r1, [r5, r0]
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 _02238B86:
@@ -2357,7 +2357,7 @@ _02238B86:
 	mov r3, #5
 	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -2628,7 +2628,7 @@ _02238DDE:
 	ldr r1, [sp, #0x10]
 	str r0, [r1, r2]
 	ldr r0, [sp, #0x2c]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2931,20 +2931,20 @@ ov72_02239098: ; 0x02239098
 	mov r0, #0xbf
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _022390CC ; =0x00000BE4
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _022390D0 ; =0x00000BEC
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _022390D4 ; =0x00000BE8
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0xbe
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	pop {r4, pc}
 	nop
 _022390CC: .word 0x00000BE4
@@ -5340,7 +5340,7 @@ ov72_0223A280: ; 0x0223A280
 	ldr r1, _0223A2E4 ; =0x00000BF4
 	str r0, [r5, r1]
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -5607,7 +5607,7 @@ ov72_0223A460: ; 0x0223A460
 	ldr r1, _0223A4D8 ; =0x00000BF4
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	nop
@@ -6740,7 +6740,7 @@ ov72_0223AD20: ; 0x0223AD20
 	add r0, r5, #0
 	bl CopyWindowToVram
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -7294,7 +7294,7 @@ _0223B178:
 	ldr r0, [sp, #0x10]
 	bl FreeToHeap
 	ldr r0, [sp, #0x14]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #0
 	add r0, #0x2f
 	ldrb r0, [r0]
@@ -7412,9 +7412,9 @@ ov72_0223B1C8: ; 0x0223B1C8
 	add r0, r5, #0
 	bl CopyWindowToVram
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl DestroyMsgData
 	add sp, #0x14

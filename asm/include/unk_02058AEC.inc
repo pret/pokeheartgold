@@ -36,7 +36,7 @@
 .public AddTextPrinterParameterized
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Sav2_PlayerData_GetProfileAddr
 .public Sav2_PlayerData_GetOptionsAddr
 .public sub_020290FC

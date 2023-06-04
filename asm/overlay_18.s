@@ -1186,7 +1186,7 @@ ov18_021E6280: ; 0x021E6280
 	add r4, r0, #0
 	ldr r0, _021E62A0 ; =0x00000664
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x66
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -1224,7 +1224,7 @@ ov18_021E62A8: ; 0x021E62A8
 	ldr r1, _021E62E4 ; =0x00001854
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E62E0: .word 0x00001850
@@ -5395,7 +5395,7 @@ _021E84B0:
 	ldr r1, _021E84E8 ; =0x0000184C
 	str r0, [r6, r1]
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -6515,7 +6515,7 @@ ov18_021E8D38: ; 0x021E8D38
 	bl ov18_021E5F58
 	ldr r0, _021E8DA0 ; =0x00000854
 	ldr r0, [r4, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #4
 	bl FontID_Release
 	add r0, r4, #0
@@ -17167,7 +17167,7 @@ ov18_021EE3AC: ; 0x021EE3AC
 	ldr r1, [r5, r1]
 	bl ov18_021F95FC
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -17500,7 +17500,7 @@ _021EE682:
 	bl ov18_021F95FC
 _021EE696:
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, r6
 	bl ScheduleWindowCopyToVram
 	add sp, #0xc
@@ -17687,7 +17687,7 @@ ov18_021EE7DC: ; 0x021EE7DC
 	str r2, [sp, #8]
 	bl ov18_021F95FC
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, r5
 	bl ScheduleWindowCopyToVram
 	add sp, #0xc
@@ -17750,7 +17750,7 @@ _021EE874:
 	mov r3, #0
 	bl ov18_021F95FC
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, r5
 	bl ScheduleWindowCopyToVram
 	add sp, #0x10
@@ -17898,7 +17898,7 @@ ov18_021EE984: ; 0x021EE984
 	str r3, [sp, #8]
 	bl ov18_021F95FC
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, r4
 	bl ScheduleWindowCopyToVram
 _021EE9EC:
@@ -18015,7 +18015,7 @@ _021EEAB4:
 	add r1, r5, #0
 	bl ov18_021F95FC
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0xc]
 	bl DestroyMsgData
 	add sp, #0x10
@@ -18101,7 +18101,7 @@ _021EEB64:
 	add r1, r5, #0
 	bl ov18_021F95FC
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0xc]
 	bl DestroyMsgData
 	add sp, #0x10
@@ -18274,7 +18274,7 @@ ov18_021EECB0: ; 0x021EECB0
 	str r2, [sp, #8]
 	bl ov18_021F95FC
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, r4
 	bl ScheduleWindowCopyToVram
 	add sp, #0xc
@@ -18327,7 +18327,7 @@ _021EED3C:
 	mov r2, #0x7c
 	bl ov18_021F95FC
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, r4
 	bl ScheduleWindowCopyToVram
 	add sp, #0x10
@@ -20893,7 +20893,7 @@ ov18_021F021C: ; 0x021F021C
 	mov r2, #0x24
 	bl ov18_021F95FC
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -21404,7 +21404,7 @@ _021F0624:
 	mov r2, #0x20
 	bl ov18_021F95FC
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r5]
 	mov r1, #0x25
 	ldr r0, [r0, #4]
@@ -21422,7 +21422,7 @@ _021F0624:
 	mov r2, #0x20
 	bl ov18_021F95FC
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0
@@ -22004,7 +22004,7 @@ _021F0B38:
 	add r2, r5, #0
 	bl BufferString
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x9f
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -22186,7 +22186,7 @@ _021F0CB2:
 	add r2, r4, #0
 	bl BufferString
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x48
 	str r0, [sp]
 	mov r0, #0
@@ -22349,7 +22349,7 @@ ov18_021F0DD0: ; 0x021F0DD0
 	add r2, r4, #0
 	bl BufferString
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x48
 	str r0, [sp]
 	mov r0, #0
@@ -22972,12 +22972,12 @@ _021F1310: .word 0x00000858
 	thumb_func_start ov18_021F1314
 ov18_021F1314: ; 0x021F1314
 	ldr r1, _021F131C ; =0x00000858
-	ldr r3, _021F1320 ; =NARC_dtor
+	ldr r3, _021F1320 ; =NARC_Delete
 	ldr r0, [r0, r1]
 	bx r3
 	.balign 4, 0
 _021F131C: .word 0x00000858
-_021F1320: .word NARC_dtor
+_021F1320: .word NARC_Delete
 	thumb_func_end ov18_021F1314
 
 	thumb_func_start ov18_021F1324
@@ -38014,7 +38014,7 @@ ov18_021F89D0: ; 0x021F89D0
 	add r0, r4, #0
 	bl ov18_021F8BEC
 	ldr r0, [r4, #0x1c]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r4, #0x18]
 	bl DestroySysTask
 	add r0, r4, #0
@@ -38463,7 +38463,7 @@ _021F8CDA:
 	str r3, [sp, #8]
 	bl ov18_021F95FC
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x91
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -38483,7 +38483,7 @@ _021F8CDA:
 	str r2, [sp, #8]
 	bl ov18_021F95FC
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x91
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -38508,7 +38508,7 @@ _021F8CDA:
 	mov r3, #0
 	bl ov18_021F95FC
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x91
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -38539,7 +38539,7 @@ _021F8CDA:
 	str r3, [sp, #8]
 	bl ov18_021F95FC
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -38617,7 +38617,7 @@ _021F8CDA:
 	add r0, r4, #0
 	bl DestroyMsgData
 	ldr r0, [sp, #0x10]
-	bl String_dtor
+	bl String_Delete
 	mov r4, #0
 	add r5, #0x24
 _021F8EF2:
@@ -38991,7 +38991,7 @@ ov18_021F9150: ; 0x021F9150
 	mov r3, #0x20
 	bl sub_020032A4
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x24
 	pop {r4, r5, pc}
 	nop
@@ -39594,7 +39594,7 @@ ov18_021F9648: ; 0x021F9648
 	add r0, r5, #0
 	bl ov18_021F95FC
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov18_021F9648

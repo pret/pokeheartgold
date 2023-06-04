@@ -2,7 +2,7 @@
 #pragma once
 .public PlaySE
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public CreateSysTask
 .public DestroySysTask
 .public AllocFromHeap

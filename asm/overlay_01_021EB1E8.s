@@ -681,7 +681,7 @@ _021EB69A:
 	ldr r1, [r4]
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r1, [r4]
 	mov r0, #4
 	bl FreeToHeapExplicit

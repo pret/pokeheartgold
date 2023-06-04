@@ -814,7 +814,7 @@ ov89_02258F00: ; 0x02258F00
 	add r0, r4, #0
 	add r0, #0xc4
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #2
 	bl FontID_Release
 	ldr r0, [r4, #0x10]
@@ -857,11 +857,11 @@ ov89_02258F00: ; 0x02258F00
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -1677,7 +1677,7 @@ _0225963E:
 	mov r1, #1
 	bl sub_020137C0
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x4c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -8197,11 +8197,11 @@ _0225C7D8:
 	add r0, r4, r5
 	bl CopyWindowToVram
 	ldr r0, [sp, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x20]
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	bl FreeToHeap
 _0225C80A:

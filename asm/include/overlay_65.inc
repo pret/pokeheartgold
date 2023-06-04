@@ -21,7 +21,7 @@
 .public OverlayManager_GetArgs
 .public OverlayManager_run
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_GXLoadPal
 .public GfGfxLoader_GetCharData
 .public GfGfxLoader_LoadCharDataFromOpenNarc
@@ -67,7 +67,7 @@
 .public sub_02014494
 .public IsNighttime
 .public ListMenuItems_New
-.public ListMenuItems_dtor
+.public ListMenuItems_Delete
 .public ListMenuItems_AppendFromMsgData
 .public ListMenuItems_AddItem
 .public sub_0201660C
@@ -139,7 +139,7 @@
 .public sub_02025224
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public String16_FormatInteger
 .public CopyU16ArrayToString
 .public PlayerProfile_new

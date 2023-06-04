@@ -16,7 +16,7 @@
 .public sub_02007200
 .public sub_02007234
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public NARC_AllocAndReadWholeMember
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
@@ -124,7 +124,7 @@
 .public sub_020249B0
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Thunk_G3X_Reset
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete

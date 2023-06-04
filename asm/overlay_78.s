@@ -974,7 +974,7 @@ _021E60DA:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x10]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r5, #4]
 	cmp r0, #0
 	bne _021E612E
@@ -1046,7 +1046,7 @@ _021E6138:
 	bl AddTextPrinterParameterized2
 _021E61B4:
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -1316,7 +1316,7 @@ ov78_021E636C: ; 0x021E636C
 	mov r3, #0x44
 	bl sub_0200D71C
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r1, [r5]
 	mov r0, #0x7e
 	bl NARC_New
@@ -1414,7 +1414,7 @@ ov78_021E636C: ; 0x021E636C
 	add r3, #0x15
 	bl sub_0200D71C
 	ldr r0, [sp, #0x10]
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #7
 	str r0, [sp]
 	mov r2, #0
@@ -1606,7 +1606,7 @@ ov78_021E65BC: ; 0x021E65BC
 	ldr r0, [sp, #0x14]
 	bl FreeToHeap
 	ldr r0, [sp, #0x10]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r6, #0
 	mov r1, #1
 	bl sub_0200DCE0
@@ -1787,7 +1787,7 @@ _021E679E:
 	ldr r0, [sp, #0x10]
 	bl FreeToHeap
 	ldr r0, [sp, #0x14]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r7, #0
 	mov r1, #1
 	bl sub_0200DCE0

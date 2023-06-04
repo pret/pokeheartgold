@@ -156,7 +156,7 @@ ov65_0221BE20: ; 0x0221BE20
 	ldr r0, _0221BFB8 ; =0x00000427
 	bl sub_02005448
 	add r0, r5, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #1
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
@@ -251,11 +251,11 @@ ov65_0221BFEC: ; 0x0221BFEC
 	mov r3, #0
 	bl ov65_0221FB4C
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -378,7 +378,7 @@ ov65_0221C08C: ; 0x0221C08C
 	add r1, r5, #0
 	bl Main_SetVBlankIntrCB
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	nop
@@ -708,7 +708,7 @@ _0221C430:
 	mov r3, #0
 	bl ov65_0221FB4C
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x10]
 	add r5, #0x10
 	add r4, r4, #1
@@ -1826,7 +1826,7 @@ ov65_0221CD74: ; 0x0221CD74
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _0221CE14 ; =0x00002228
 	ldr r0, [r4, r0]
 	bl FreeToHeap
@@ -1863,7 +1863,7 @@ ov65_0221CD74: ; 0x0221CD74
 	mov r0, #0x66
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0
@@ -2852,7 +2852,7 @@ ov65_0221D5FC: ; 0x0221D5FC
 	mov r3, #0
 	bl ov65_0221FB4C
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov65_0221D5FC
@@ -3090,7 +3090,7 @@ _0221D7B0:
 	str r3, [sp, #4]
 	bl ov65_0221FB4C
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	b _0221D842
 _0221D836:
 	add r0, r5, #0
@@ -3141,7 +3141,7 @@ _0221D842:
 	str r3, [sp, #4]
 	bl ov65_0221FB4C
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4711,7 +4711,7 @@ _0221E506:
 	bl DestroyListMenu
 	ldr r0, _0221E554 ; =0x00003688
 	ldr r0, [r5, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -4777,7 +4777,7 @@ _0221E5AA:
 	sub r3, #0xd
 	bl ListMenuItems_AppendFromMsgData
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r2, _0221E5F0 ; =0x00003688
 	mov r3, #6
 	lsl r3, r3, #6
@@ -5400,7 +5400,7 @@ _0221EA9E:
 	bl ov65_0221F4B0
 	ldr r0, _0221EB88 ; =0x00000668
 	ldr r0, [r4, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	ldr r1, _0221EB8C ; =ov65_0221E050
 	ldr r0, _0221EB90 ; =0x00002220
 	add sp, #0x10
@@ -5435,7 +5435,7 @@ _0221EAEA:
 	bl ov65_0221F4B0
 	ldr r0, _0221EB88 ; =0x00000668
 	ldr r0, [r4, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	ldr r1, _0221EB98 ; =ov65_0221EB9C
 	ldr r0, _0221EB90 ; =0x00002220
 	str r1, [r4, r0]
@@ -5468,7 +5468,7 @@ _0221EB32:
 	bl ov65_0221F4B0
 	ldr r0, _0221EB88 ; =0x00000668
 	ldr r0, [r4, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	ldr r1, _0221EB8C ; =ov65_0221E050
 	ldr r0, _0221EB90 ; =0x00002220
 	str r1, [r4, r0]
@@ -6666,7 +6666,7 @@ _0221F4F4:
 	bl ov65_0221F4B0
 	ldr r0, _0221F59C ; =0x00000668
 	ldr r0, [r4, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	add sp, #0x10
 	mov r0, #3
 	pop {r4, pc}
@@ -6698,7 +6698,7 @@ _0221F540:
 	bl ov65_0221F4B0
 	ldr r0, _0221F59C ; =0x00000668
 	ldr r0, [r4, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	ldr r1, _0221F594 ; =ov65_0221E050
 	ldr r0, _0221F598 ; =0x00002220
 	str r1, [r4, r0]
@@ -7496,7 +7496,7 @@ _0221FBC6:
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add sp, #0x10
 	pop {r4, r5, r6, pc}

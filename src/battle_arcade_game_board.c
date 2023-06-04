@@ -527,16 +527,16 @@ static void BattleArcadeGameBoard_Delete(GAME_BOARD_WORK *work) {
 
     DestroyMsgData(work->msgData);
     MessageFormat_delete(work->msgFmt);
-    String_dtor(work->unk70);
-    String_dtor(work->unk74);
+    String_Delete(work->unk70);
+    String_Delete(work->unk74);
 
     for (i = 0; i < 2; i++) {
-        String_dtor(work->unk78[i]);
+        String_Delete(work->unk78[i]);
     }
 
     ov84_0223F8E4(work->window);
     ov84_0223E958(work->bgConfig);
-    NARC_dtor(work->narc);
+    NARC_Delete(work->narc);
 }
 
 static void BattleArcadeGameBoard_InitSub() {
@@ -1319,7 +1319,7 @@ static void ov84_0223F538(GAME_BOARD_SUB_3E8 *work) {
     work->resourceObj[2][2] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[2], narc, sub_0207CAA4(), FALSE, 2, GF_GFX_RES_TYPE_CELL, HEAP_ID_GAME_BOARD);
     work->resourceObj[2][3] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[3], narc, sub_0207CAA8(), FALSE, 2, GF_GFX_RES_TYPE_ANIM, HEAP_ID_GAME_BOARD);
 
-    NARC_dtor(narc);
+    NARC_Delete(narc);
 }
 
 static void ov84_0223F5E4(GAME_BOARD_SUB_3E8 *work, PARTY *playerParty, PARTY *opponentParty, u8 type) {
@@ -1350,7 +1350,7 @@ static void ov84_0223F5E4(GAME_BOARD_SUB_3E8 *work, PARTY *playerParty, PARTY *o
         work->resourceObj[7 + i][0] = AddCharResObjFromOpenNarc(work->resourceMan[0], narc, Pokemon_GetIconNaix(opponentMon), FALSE, 7 + i, 1, HEAP_ID_GAME_BOARD);
     }
 
-    NARC_dtor(narc);
+    NARC_Delete(narc);
 }
 
 static void ov84_0223F714(GAME_BOARD_SUB_3E8 *work) {

@@ -17,7 +17,7 @@
 .public FillWindowPixelBuffer
 .public TextPrinterCheckActive
 .public System_GetTouchNew
-.public String_dtor
+.public String_Delete
 .public MapHeader_GetMapSec
 .public MapHeader_GetMapEvolutionMethod
 .public GetMonData

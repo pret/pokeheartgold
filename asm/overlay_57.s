@@ -408,7 +408,7 @@ ov57_02237B20: ; 0x02237B20
 	bl ov57_02237CDC
 	ldr r0, _02237C98 ; =0x0000045C
 	ldr r0, [r4, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r4]
 	ldr r1, _02237C9C ; =0x0000040C
 	ldr r0, [r0, #0x2c]
@@ -1791,7 +1791,7 @@ ov57_0223866C: ; 0x0223866C
 	lsr r3, r3, #1
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	bl DestroyMsgData
 	mov r0, #0x43
@@ -2041,7 +2041,7 @@ ov57_022387E0: ; 0x022387E0
 	ldr r1, [sp, #0x70]
 	bl sub_020138E0
 	ldr r0, [sp, #0x18]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x14]
 	bl DestroyMsgData
 	add r0, sp, #0x1c
@@ -2587,7 +2587,7 @@ _02238CCE:
 	add r1, r4, #0
 	bl ListMenuItems_AddItem
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x14]
 	add r6, r6, #1
 	add r5, r5, #4
@@ -2671,7 +2671,7 @@ ov57_02238D80: ; 0x02238D80
 	mov r0, #0x6f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	pop {r4, pc}
 	.balign 4, 0
 _02238DA8: .word 0x0000040C
@@ -3953,7 +3953,7 @@ _02239766:
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	bl DestroyMsgData
 	add sp, #0xc
@@ -4307,7 +4307,7 @@ _02239A22:
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 _02239A76:
 	add r6, r6, #1
 	add r5, #0x10
@@ -4373,7 +4373,7 @@ _02239AB8:
 	add r0, r5, r4
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x10]
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4438,7 +4438,7 @@ _02239B4A:
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	bl DestroyMsgData
 	add sp, #0xc
@@ -5252,7 +5252,7 @@ _0223A12E:
 	and r0, r1
 	strh r0, [r2]
 	add r0, r5, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #0xff
 	lsl r0, r0, #2
 	ldr r1, [r4, r0]

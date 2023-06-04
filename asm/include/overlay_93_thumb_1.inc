@@ -25,7 +25,7 @@
 .public OverlayManager_run
 .public AllocAndReadWholeNarcMemberByIdPair
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public G2dRenderer_SetSubSurfaceCoords
@@ -139,7 +139,7 @@
 .public sub_020233D8
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Thunk_G3X_Reset
 .public sub_02026E50
 .public GF_3DVramMan_Create

@@ -247,7 +247,7 @@ _021E5B08:
 	mov r0, #0xc9
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #1
@@ -596,7 +596,7 @@ _021E5DE8:
 	add r0, r5, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	add r0, #0x84
 	ldrh r0, [r0]
@@ -1239,7 +1239,7 @@ _021E6316:
 	add r0, r6, #0
 	bl CopyWindowToVram
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

@@ -510,9 +510,9 @@ ov95_021E5CAC: ; 0x021E5CAC
 	add r0, r7, #0
 	bl DestroyMsgData
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x14]
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	bl MessageFormat_delete
 	add r0, r6, #0
@@ -2823,7 +2823,7 @@ ov95_021E6F0C: ; 0x021E6F0C
 	ldr r0, [r4, #0x58]
 	bl sub_02016F2C
 	ldr r0, [r4, #0x40]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #4
 	bl ov95_021E6228
 	add r0, r5, #0
@@ -3107,7 +3107,7 @@ _021E70E2:
 	mov r1, #1
 	bl GX_EngineAToggleLayers
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov95_021E70BC
@@ -3297,7 +3297,7 @@ ov95_021E7328: ; 0x021E7328
 	add r0, r7, #0
 	bl DestroyMsgData
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

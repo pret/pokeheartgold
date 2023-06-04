@@ -223,7 +223,7 @@ ov01_021EFCDC: ; 0x021EFCDC
 	add r5, r0, #0
 	ldr r0, [r5, #0x20]
 	add r4, r1, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r1, [r5, #0xc]
 	mov r0, #4
 	bl FreeToHeapExplicit

@@ -8,7 +8,7 @@
 .public FreeToHeap
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public CopyU16ArrayToString
 .public CopyStringToU16Array
 .public SavArray_get

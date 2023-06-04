@@ -1118,7 +1118,7 @@ ov02_02246398: ; 0x02246398
 	mov r1, #1
 	bl GX_EngineAToggleLayers
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1713,7 +1713,7 @@ ov02_0224686C: ; 0x0224686C
 	mov r1, #1
 	bl GX_EngineAToggleLayers
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r5, #4]
 	add r1, r5, #0
 	ldr r0, [r0, #8]
@@ -1760,7 +1760,7 @@ ov02_0224686C: ; 0x0224686C
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl DestroyMsgData
 	add sp, #0x10
@@ -9001,7 +9001,7 @@ ov02_02249EC0: ; 0x02249EC0
 	add r1, r4, #0
 	bl ov02_0224A080
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #4
 	mov r1, #0x20
 	bl sub_020689C8
@@ -9049,7 +9049,7 @@ ov02_02249F6C: ; 0x02249F6C
 	add r1, r4, #0
 	bl ov02_0224A080
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #4
 	mov r1, #0x20
 	bl sub_020689C8
@@ -9774,7 +9774,7 @@ _0224A55C:
 	bl GF_AssertFail
 _0224A564:
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -11973,7 +11973,7 @@ _0224B57C:
 	bl ov02_02248AFC
 _0224B5DC:
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -21138,7 +21138,7 @@ _0224FA50:
 	add r0, r4, #0
 	bl RemoveWindow
 	ldr r0, [r4, #0x10]
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	add r0, #0xd2
 	ldrb r1, [r0]
@@ -21172,7 +21172,7 @@ _0224FABA:
 	add r0, r4, #0
 	bl RemoveWindow
 	ldr r0, [r4, #0x10]
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	add r0, #0xd2
 	ldrb r1, [r0]
@@ -21429,7 +21429,7 @@ FollowPoke_ExpandInteractionMessage: ; 0x0224FC8C
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl MessageFormat_delete
 	add r0, r5, #0
@@ -21513,7 +21513,7 @@ _0224FD72:
 	add r2, r5, #0
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl MessageFormat_delete
 	add r0, r7, #0
@@ -22171,7 +22171,7 @@ _02250272:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	ldr r0, [r0, #0x10]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #0xd2
 	ldrb r1, [r0]
@@ -22209,7 +22209,7 @@ _022502C4:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	ldr r0, [r0, #0x10]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #0xd2
 	ldrb r1, [r0]
@@ -22395,7 +22395,7 @@ _02250418:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	ldr r0, [r0, #0x10]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #0xd2
 	ldrb r1, [r0]

@@ -24,7 +24,7 @@
 .public sub_02004EC4
 .public PlaySE
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public sub_0200B484
 .public sub_0200B5C0
 .public NewMsgDataFromNarc
@@ -92,7 +92,7 @@
 .public AllocWindows
 .public AddWindowParameterized
 .public RemoveWindow
-.public WindowArray_dtor
+.public WindowArray_Delete
 .public ScheduleWindowCopyToVram
 .public ClearWindowTilemapAndCopyToVram
 .public FillWindowPixelBuffer
@@ -107,7 +107,7 @@
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public StringCopy
 .public sub_020270C4
 .public SaveGameNormal
