@@ -20098,7 +20098,7 @@ ov70_0224182C: ; 0x0224182C
 	lsl r1, r1, #2
 	add r0, r4, #0
 	add r1, r5, r1
-	bl Save_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_Set
 	ldr r1, _02241860 ; =0x00000122
 	add r0, r4, #0
 	ldrb r1, [r5, r1]

@@ -452,7 +452,7 @@ _021F7016:
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r4, #0
-	bl Save_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_Set
 	ldr r0, [r5, #0x38]
 	mov r1, #0
 	add r2, r4, #0

@@ -42,7 +42,7 @@ NPC_TRADE_WORK *NPCTrade_AllocWork(HeapID heapId, u32 tradeno) {
         CopyStringToU16Array(name, strbuf, 128);
         String_Delete(name);
     }
-    Save_Profile_PlayerName_set(ret->profile, strbuf);
+    Save_Profile_PlayerName_Set(ret->profile, strbuf);
     PlayerProfile_SetTrainerGender(ret->profile, ret->trade_dat->gender);
     return ret;
 }

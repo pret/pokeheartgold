@@ -66,7 +66,7 @@ BOOL PlayerProfile_IsNameEmpty(PLAYERPROFILE* profile) {
     return TRUE;
 }
 
-void Save_Profile_PlayerName_set(PLAYERPROFILE* profile, u16* name) {
+void Save_Profile_PlayerName_Set(PLAYERPROFILE* profile, u16* name) {
     GF_ASSERT(StringLength(name) < PLAYER_NAME_LENGTH + 1);
     CopyU16StringArray(profile->name, name);
 }

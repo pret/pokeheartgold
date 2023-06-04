@@ -194,7 +194,7 @@
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_New
-.public Save_Profile_PlayerName_set
+.public Save_Profile_PlayerName_Set
 .public PlayerProfile_GetPlayerName_NewString
 .public PlayerProfile_GetTrainerID_VisibleHalf
 .public PlayerProfile_GetTrainerGender

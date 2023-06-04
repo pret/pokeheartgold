@@ -308,7 +308,7 @@ sub_02051AAC: ; 0x02051AAC
 	add r0, r4, #0
 	add r0, #0xf8
 	ldr r0, [r0]
-	bl Save_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_Set
 	add r0, r7, #0
 	bl String_Delete
 	ldr r0, [sp, #0x18]

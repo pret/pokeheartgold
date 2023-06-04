@@ -99,7 +99,7 @@
 .public Save_SysInfo_RTC_Get
 .public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_New
-.public Save_Profile_PlayerName_set
+.public Save_Profile_PlayerName_Set
 .public PlayerName_StringToFlat
 .public PlayerName_FlatToString
 .public PlayerProfile_GetPlayerName_NewString

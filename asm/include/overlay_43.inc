@@ -155,7 +155,7 @@
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_New
-.public Save_Profile_PlayerName_set
+.public Save_Profile_PlayerName_Set
 .public Options_GetTextFrameDelay
 .public Options_GetButtonMode
 .public Options_GetFrame

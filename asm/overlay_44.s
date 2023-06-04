@@ -11139,7 +11139,7 @@ ov44_0222F780: ; 0x0222F780
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r4, #0
-	bl Save_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_Set
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -12704,7 +12704,7 @@ _02230322:
 	bl sub_0202C298
 	add r1, r0, #0
 	add r0, r6, #0
-	bl Save_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_Set
 	ldr r0, _0223069C ; =0x00000B1C
 	mov r1, #0
 	ldr r0, [r5, r0]
@@ -15305,7 +15305,7 @@ ov44_02231918: ; 0x02231918
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r4, #0
-	bl Save_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_Set
 	ldr r0, _02231954 ; =0x00000B1C
 	mov r1, #0
 	ldr r0, [r5, r0]

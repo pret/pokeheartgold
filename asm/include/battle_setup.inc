@@ -18,7 +18,7 @@
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_New
 .public PlayerProfile_Copy
-.public Save_Profile_PlayerName_set
+.public Save_Profile_PlayerName_Set
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_SetTrainerGender
 .public PlayerProfile_GetTrainerGender

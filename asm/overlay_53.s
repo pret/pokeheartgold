@@ -300,7 +300,7 @@ ov53_OakSpeech_OvyExit: ; 0x021E5B48
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
 	ldr r1, [r1, #0x18]
-	bl Save_Misc_RivalName_set
+	bl Save_Misc_RivalName_Set
 	mov r0, #0x12
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]

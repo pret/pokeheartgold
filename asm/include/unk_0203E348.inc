@@ -24,11 +24,11 @@
 .public Save_PlayerData_GetOptionsAddr
 .public Save_PlayerData_GetCoinsAddr
 .public PlayerProfile_Sizeof
-.public Save_Profile_PlayerName_set
+.public Save_Profile_PlayerName_Set
 .public Pokedex_GetNatDexFlag
 .public Save_Pokedex_Get
 .public Save_Misc_Get
-.public Save_Misc_RivalName_set
+.public Save_Misc_RivalName_Set
 .public Save_Mailbox_Get
 .public sub_0202B9B8
 .public SaveDressupData_GetFashionCase

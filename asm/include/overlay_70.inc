@@ -178,7 +178,7 @@
 .public Save_SysInfo_SetField4C
 .public PlayerProfile_New
 .public PlayerProfile_Init
-.public Save_Profile_PlayerName_set
+.public Save_Profile_PlayerName_Set
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetTrainerID_VisibleHalf
 .public PlayerProfile_GetTrainerGender
