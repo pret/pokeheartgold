@@ -19617,7 +19617,7 @@ ov70_02241468: ; 0x02241468
 	add r0, #0xb8
 	ldr r0, [r0]
 	mov r4, #3
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _02241490
 	add r0, r5, #0
@@ -19869,7 +19869,7 @@ _0224165E:
 	add r0, r5, #0
 	add r0, #0xb8
 	ldr r0, [r0]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	bne _0224166E
 	b _022417FE

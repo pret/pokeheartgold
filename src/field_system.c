@@ -168,7 +168,7 @@ void FieldSys_Delete(OVY_MANAGER *man) {
 }
 
 static void ppOverlayManager_RunFrame_DeleteIfFinished(OVY_MANAGER **man) {
-    if (*man && OverlayManager_run(*man)) {
+    if (*man && OverlayManager_Run(*man)) {
         OverlayManager_Delete(*man);
         *man = NULL;
     }

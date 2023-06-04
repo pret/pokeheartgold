@@ -240,7 +240,7 @@ _021E5AD4:
 	b _021E5B22
 _021E5B06:
 	ldr r0, [r4, #0x14]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #1
 	bne _021E5B22
 	ldr r0, [r4, #0x14]

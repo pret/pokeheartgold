@@ -2131,7 +2131,7 @@ _020766BC:
 	pop {r4, pc}
 _02076748:
 	ldr r0, [r4, #0x38]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	bne _02076754
 _02076752:

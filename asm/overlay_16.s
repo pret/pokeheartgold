@@ -766,7 +766,7 @@ ov16_02201948: ; 0x02201948
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _02201968
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _02201968
 	ldr r0, [r4]

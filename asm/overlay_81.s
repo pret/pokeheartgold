@@ -1836,7 +1836,7 @@ ov81_0223EC88: ; 0x0223EC88
 	cmp r0, #0
 	bne _0223ECDA
 	ldr r0, [r4, #4]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #1
 	bne _0223ECDA
 	mov r1, #7

@@ -5802,7 +5802,7 @@ _0222CBE2:
 	b _0222CD26
 _0222CC2A:
 	ldr r0, [r4]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _0222CD26
 	ldr r0, [r4]
@@ -5829,7 +5829,7 @@ _0222CC54:
 	b _0222CD26
 _0222CC64:
 	ldr r0, [r4]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _0222CD26
 	ldr r0, [r4]
@@ -5875,7 +5875,7 @@ _0222CCAC:
 	b _0222CD26
 _0222CCCE:
 	ldr r0, [r4]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _0222CD26
 	ldr r0, [r4]

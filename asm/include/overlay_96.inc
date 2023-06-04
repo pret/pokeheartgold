@@ -39,7 +39,7 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public OverlayManager_run
+.public OverlayManager_Run
 .public ReadWholeNarcMemberByIdPair
 .public AllocAndReadWholeNarcMemberByIdPair
 .public NARC_New

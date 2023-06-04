@@ -135,7 +135,7 @@ _020193B6:
 	b _0201945A
 _020193CA:
 	ldr r0, [r4, #8]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #1
 	bne _0201945A
 	ldr r0, [r4, #8]
@@ -168,7 +168,7 @@ _020193F2:
 	b _0201945A
 _0201940E:
 	ldr r0, [r4, #8]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #1
 	bne _0201945A
 	ldr r0, [r4, #8]
@@ -189,7 +189,7 @@ _02019426:
 	b _0201945A
 _0201943A:
 	ldr r0, [r4, #8]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #1
 	bne _0201945A
 	ldr r0, [r4, #8]

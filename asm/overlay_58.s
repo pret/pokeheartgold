@@ -11,7 +11,7 @@ ov58_022378C0: ; 0x022378C0
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _022378E0
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _022378E0
 	ldr r0, [r4]

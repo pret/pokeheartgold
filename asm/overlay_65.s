@@ -567,7 +567,7 @@ _0221C2F4:
 	b _0221C3B4
 _0221C330:
 	ldr r0, [r4, #0x4c]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _0221C3B4
 	ldr r0, [r4, #0x4c]

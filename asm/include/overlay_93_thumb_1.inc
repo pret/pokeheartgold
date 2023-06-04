@@ -22,7 +22,7 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public OverlayManager_run
+.public OverlayManager_Run
 .public AllocAndReadWholeNarcMemberByIdPair
 .public NARC_New
 .public NARC_Delete

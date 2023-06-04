@@ -6656,7 +6656,7 @@ ov45_0222CD90: ; 0x0222CD90
 	mov r5, #0
 	cmp r0, #0
 	beq _0222CDBA
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _0222CDBA
 	ldr r0, [r4]

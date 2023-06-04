@@ -2139,7 +2139,7 @@ ov96_021E6814: ; 0x021E6814
 	mov r0, #0xa
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _021E686C
 	mov r0, #0xa

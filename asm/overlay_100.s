@@ -1418,7 +1418,7 @@ ov100_021E6408: ; 0x021E6408
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _021E6428
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _021E6428
 	ldr r0, [r4]
