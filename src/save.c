@@ -201,7 +201,7 @@ void *SaveArray_get(SAVEDATA *saveData, int id) {
     return (void *)&saveData->dynamic_region[saveData->arrayHeaders[id].offset];
 }
 
-const void *SaveArray_const_get(const SAVEDATA *saveData, int id) {
+const void *SaveArray_Const_Get(const SAVEDATA *saveData, int id) {
     return SaveArray_get((SAVEDATA *)saveData, id);
 }
 

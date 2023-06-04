@@ -21,7 +21,7 @@
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetTrainerGender
 .public PlayerProfile_GetAvatar
-.public Save_Misc_const_get
+.public Save_Misc_Const_Get
 .public SaveMisc_GetFavoriteMon
 .public SaveMisc_GetBattleGreeting
 .public sub_0202CA44

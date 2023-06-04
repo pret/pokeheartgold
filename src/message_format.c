@@ -97,7 +97,7 @@ void BufferPlayersName(MessageFormat *msgFmt, u32 fieldno, PLAYERPROFILE *player
 }
 
 void BufferRivalsName(MessageFormat *msgFmt, u32 fieldno, SAVEDATA *saveData) {
-    CopyU16ArrayToString(msgFmt->buffer, Save_Misc_RivalName_const_get(Save_Misc_const_get(saveData)));
+    CopyU16ArrayToString(msgFmt->buffer, Save_Misc_RivalName_Const_Get(Save_Misc_Const_Get(saveData)));
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }
 

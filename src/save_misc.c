@@ -45,8 +45,8 @@ SAVE_MISC_DATA *Save_Misc_get(SAVEDATA *saveData) {
     return SaveArray_get(saveData, SAVE_MISC);
 }
 
-const SAVE_MISC_DATA *Save_Misc_const_get(const SAVEDATA *saveData) {
-    return SaveArray_const_get(saveData, SAVE_MISC);
+const SAVE_MISC_DATA *Save_Misc_Const_Get(const SAVEDATA *saveData) {
+    return SaveArray_Const_Get(saveData, SAVE_MISC);
 }
 
 APRICORN_TREE *Save_FieldApricornTrees_get(SAVEDATA *saveData) {
@@ -73,7 +73,7 @@ struct Gymmick *Save_GetGymmickPtr(SAVEDATA *saveData) {
     return &misc->gymmick;
 }
 
-const u16 *Save_Misc_RivalName_const_get(const SAVE_MISC_DATA *saveMiscData) {
+const u16 *Save_Misc_RivalName_Const_Get(const SAVE_MISC_DATA *saveMiscData) {
     return saveMiscData->rivalName;
 }
 
