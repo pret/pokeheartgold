@@ -294,7 +294,7 @@ static void ovFieldMain_GetFormattedECMessage(MessageBox *messageBox, u16 messag
     MailMsg_SetFieldI(&mailMessage, 0, word1);
     MailMsg_SetFieldI(&mailMessage, 1, word2);
     STRING *string = MailMsg_GetExpandedString(&mailMessage, HEAP_ID_32);
-    StringCopy(messageBox->message, string);
+    String_Copy(messageBox->message, string);
     String_Delete(string);
 }
 

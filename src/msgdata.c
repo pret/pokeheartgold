@@ -79,7 +79,7 @@ static void ReadMsgData_ExistingTable_ExistingString(MAT * table, u32 num, STRIN
         }
     } else {
         GF_ASSERT(FALSE);
-        StringSetEmpty(dest);
+        String_SetEmpty(dest);
     }
 }
 
@@ -137,7 +137,7 @@ static void ReadMsgData_ExistingNarc_ExistingString(NARC * narc, u32 group, u32 
         }
     } else {
         GF_ASSERT(FALSE);
-        StringSetEmpty(dest);
+        String_SetEmpty(dest);
     }
 }
 
@@ -284,7 +284,7 @@ STRING * ReadMsgData_ExpandPlaceholders(MessageFormat * messageFormat, MSGDATA *
         r5 = NewString_ReadMsgData(msgData, msgno);
         if (r5 != NULL) {
             StringExpandPlaceholders(messageFormat, r4, r5);
-            ret = StringDup(r4, heap_id);
+            ret = String_Dup(r4, heap_id);
             String_Delete(r5);
         }
         String_Delete(r4);

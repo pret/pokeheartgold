@@ -74,10 +74,10 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public StringCopy
-.public StringGetLength
-.public StringCountLines
-.public StringGetLineN
+.public String_Copy
+.public String_GetLength
+.public String_CountLines
+.public String_GetLineN
 .public sub_0203A880
 .public NNS_G2dInitOamManagerModule
 .public GX_LoadBGPltt

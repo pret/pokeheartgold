@@ -164,9 +164,9 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public StringSetEmpty
-.public StringCountLines
-.public StringGetLineN
+.public String_SetEmpty
+.public String_CountLines
+.public String_GetLineN
 .public String_RadioAddStatic
 .public GetStoragePCPointer
 .public Save_SysInfo_RTC_Get

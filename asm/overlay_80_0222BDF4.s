@@ -5117,7 +5117,7 @@ ov80_0222E400: ; 0x0222E400
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl StringCopy
+	bl String_Copy
 	add r0, r4, #0
 	bl String_Delete
 	add sp, #8

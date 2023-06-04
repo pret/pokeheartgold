@@ -82,7 +82,7 @@ void SetStringAsPlaceholder(MessageFormat *msgFmt, u32 fieldno, const STRING *st
         if (attrs != NULL) {
             msgFmt->fields[fieldno].attrs = *attrs;
         }
-        StringCopy(msgFmt->fields[fieldno].msg, string);
+        String_Copy(msgFmt->fields[fieldno].msg, string);
     }
 }
 
@@ -340,7 +340,7 @@ void BufferGenderSymbol(MessageFormat *msgFmt, u32 fieldno, u8 gender) {
         ReadMsgDataIntoString(msgData, msg_0040_00056, msgFmt->buffer);
         break;
     default:
-        StringSetEmpty(msgFmt->buffer);
+        String_SetEmpty(msgFmt->buffer);
         break;
     }
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
@@ -630,7 +630,7 @@ void BufferMonthNameAbbr(MessageFormat *msgFmt, u32 fieldno, u32 month) {
 }
 
 void MessageFormat_UpperFirstChar(MessageFormat *msgFmt, u32 fieldno) {
-    StrUpperCharN(msgFmt->fields[fieldno].msg, 0);
+    String_UpperCharN(msgFmt->fields[fieldno].msg, 0);
 }
 
 void BufferDeptStoreFloorNo(MessageFormat *msgFmt, u32 fieldno, u32 floor) {
@@ -650,30 +650,30 @@ void BufferDeptStoreFloorNo(MessageFormat *msgFmt, u32 fieldno, u32 floor) {
 }
 
 void StringExpandPlaceholders(MessageFormat * msgFmt, STRING * dest, STRING * src) {
-    const u16 * cstr = String_c_str(src);
-    StringSetEmpty(dest);
+    const u16 * cstr = String_C_Str(src);
+    String_SetEmpty(dest);
     while (*cstr != EOS) {
         if (*cstr == EXT_CTRL_CODE_BEGIN) {
             if (MsgArray_ControlCodeIsStrVar(cstr)) {
                 u32 idx = MsgArray_ControlCodeGetField(cstr, 0);
                 GF_ASSERT(idx < msgFmt->count);
-                StringCat_HandleTrainerName(dest, msgFmt->fields[idx].msg);
+                String_Cat_HandleTrainerName(dest, msgFmt->fields[idx].msg);
                 cstr = MsgArray_SkipControlCode(cstr);
             } else {
                 const u16 * before = cstr;
                 cstr = MsgArray_SkipControlCode(cstr);
                 while (before < cstr) {
-                    StrAddChar(dest, *before++);
+                    String_AddChar(dest, *before++);
                 }
             }
         } else {
-            StrAddChar(dest, *cstr++);
+            String_AddChar(dest, *cstr++);
         }
     }
 }
 
 void MessageFormat_ResetBuffers(MessageFormat * msgFmt) {
     for (int i = 0; i < msgFmt->count; i++) {
-        StringSetEmpty(msgFmt->fields[i].msg);
+        String_SetEmpty(msgFmt->fields[i].msg);
     }
 }

@@ -4025,7 +4025,7 @@ _0223C3A0:
 	bl FillWindowPixelBuffer
 	ldr r0, [r6, #0x18]
 	add r1, r4, #0
-	bl StringCopy
+	bl String_Copy
 	mov r3, #0
 	ldr r0, [sp, #0x30]
 	str r3, [sp]
@@ -4087,7 +4087,7 @@ _0223C40A:
 	bl FillWindowPixelBuffer
 	ldr r0, [r6, #0x18]
 	add r1, r4, #0
-	bl StringCopy
+	bl String_Copy
 	mov r3, #0
 	ldr r0, [sp, #0x30]
 	str r3, [sp]

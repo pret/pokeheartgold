@@ -469,7 +469,7 @@ sub_0208C73C: ; 0x0208C73C
 	lsl r2, r2, #4
 	ldr r0, [r1, r3]
 	ldr r1, [r1, r2]
-	bl StringCompare
+	bl String_Compare
 	cmp r0, #0
 	bne _0208C774
 	mov r0, #1

@@ -3780,7 +3780,7 @@ _021E927E:
 	add r1, #0xb
 	bl ReadMsgDataIntoString
 	ldr r0, [sp, #0x24]
-	bl StringCountLines
+	bl String_CountLines
 	str r0, [sp, #0x1c]
 	mov r0, #0x81
 	lsl r0, r0, #2
@@ -3800,7 +3800,7 @@ _021E92CA:
 	ldr r1, [sp, #0x24]
 	add r0, r4, #0
 	add r2, r6, #0
-	bl StringGetLineN
+	bl String_GetLineN
 	mov r0, #4
 	add r1, r4, #0
 	mov r2, #0
@@ -7027,7 +7027,7 @@ ov102_021EAC44: ; 0x021EAC44
 	mov r1, #0x23
 	bl ov102_021E8FA8
 	str r0, [r4]
-	bl String_c_str
+	bl String_C_Str
 	str r0, [r4, #4]
 	ldrh r1, [r0]
 	ldr r0, _021EAC6C ; =0x0000FFFE

@@ -117,7 +117,7 @@
 .public System_GetTouchNew
 .public String_New
 .public String_Delete
-.public StringCopy
+.public String_Copy
 .public Save_PlayerData_GetOptionsAddr
 .public Save_BerryPots_Get
 .public Save_BerryPotRTC_Get

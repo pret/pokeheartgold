@@ -190,8 +190,8 @@
 .public sub_02025ACC
 .public String_New
 .public String_Delete
-.public StringCopy
-.public StringGetLength
+.public String_Copy
+.public String_GetLength
 .public sub_02026C44
 .public sub_02026CAC
 .public sub_02026CC4

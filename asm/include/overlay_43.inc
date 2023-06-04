@@ -147,11 +147,11 @@
 .public sub_02025C88
 .public String_New
 .public String_Delete
-.public StringSetEmpty
-.public StringCopy
-.public String_atoi
+.public String_SetEmpty
+.public String_Copy
+.public String_Atoi
 .public CopyU16ArrayToString
-.public String_c_str
+.public String_C_Str
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_New
