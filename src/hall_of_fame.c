@@ -68,7 +68,7 @@ void Save_HOF_RecordParty(HALL_OF_FAME *hof, PARTY *party, RTCDate *date) {
         }
         hof->num_total++;
         if (string != NULL) {
-            String_dtor(string);
+            String_Delete(string);
         }
     }
 }

@@ -646,7 +646,7 @@ _02202F82:
 	blt _02202F82
 _02202FE2:
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x1c]
 	bl DestroyMsgData
 	ldr r0, [sp, #0x2c]

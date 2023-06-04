@@ -139,7 +139,7 @@ _021E5A30:
 	bl sub_020356EC
 _021E5A48:
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -724,15 +724,15 @@ ov37_021E5F20: ; 0x021E5F20
 	add r5, r6, #0
 _021E5F38:
 	ldr r0, [r5, #0x14]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #5
 	blt _021E5F38
 	ldr r0, [r6, #0x2c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x28]
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021E5F54: .word 0x000043C8
@@ -3662,7 +3662,7 @@ ov37_021E762C: ; 0x021E762C
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0xb6
 	lsl r0, r0, #2
 	add r0, r5, r0

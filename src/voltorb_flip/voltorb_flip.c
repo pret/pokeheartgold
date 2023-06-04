@@ -1455,7 +1455,7 @@ static void ov122_021E73FC(VoltorbFlipAppWork *work) {
 
 static void ov122_021E745C(VoltorbFlipAppWork *work) {
     for (int i = 0; i < 2; i++) {
-        ListMenuItems_dtor(work->menuItems[i]);
+        ListMenuItems_Delete(work->menuItems[i]);
         work->menuItems[i] = NULL;
     }
     sub_02018474(work->unk1C);
@@ -1602,7 +1602,7 @@ static void PrintMessageOnWindow(VoltorbFlipAppWork *work, FontID fontId, u8 msg
     AddTextPrinterParameterized2(window, fontId, str, x, y, 0xff, textSpeed, 0);
 
     ScheduleWindowCopyToVram(window);
-    String_dtor(str);
+    String_Delete(str);
 }
 
 static void PrintMessageToSmallWindow(VoltorbFlipAppWork *work, int msgNo) {
@@ -1617,7 +1617,7 @@ static void PrintMessageToSmallWindow(VoltorbFlipAppWork *work, int msgNo) {
 
     AddTextPrinterParameterized(window, 1, str, 0, 0, 0xff, 0);
     ScheduleWindowCopyToVram(window);
-    String_dtor(str);
+    String_Delete(str);
     BgCommitTilemapBufferToVram(work->bgConfig, 3);
 }
 
@@ -1650,7 +1650,7 @@ static void PrintTextWindow(VoltorbFlipAppWork *work, int msgNo, int a2) {
 static BOOL IsPrinterFinished(VoltorbFlipAppWork *work) {
     if (!TextPrinterCheckActive(work->printerId)) {
         if (work->string != NULL) {
-            String_dtor(work->string);
+            String_Delete(work->string);
             work->string = NULL;
         }
         return TRUE;
@@ -2071,7 +2071,7 @@ static void FreeOverlayData(OVY_MANAGER *man) {
 
     MessageFormat_delete(work->msgFmt);
     DestroyMsgData(work->msgData);
-    NARC_dtor(work->narc);
+    NARC_Delete(work->narc);
     ov122_021E8068();
     OverlayManager_FreeData(man);
     DestroyHeap(HEAP_ID_VOLTORB_FLIP);

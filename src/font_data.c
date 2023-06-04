@@ -103,7 +103,7 @@ static void FontData_FreeWidthsAndNarc(struct FontData *fontData) {
         FreeToHeap(fontData->glyphWidths);
     }
     if (fontData->narc != NULL) {
-        NARC_dtor(fontData->narc);
+        NARC_Delete(fontData->narc);
     }
 }
 

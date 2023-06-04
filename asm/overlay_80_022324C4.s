@@ -1884,7 +1884,7 @@ _0223340C:
 	bl sub_0200E5D4
 	add r0, r4, #0
 	mov r1, #1
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	b _02233480
 _02233424:
 	add r0, r5, #0
@@ -1923,13 +1923,13 @@ _0223345E:
 	bl sub_0200E5D4
 	add r0, r4, #0
 	mov r1, #1
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	add r0, r6, #0
 	mov r1, #0
 	bl sub_0200E5D4
 	add r0, r6, #0
 	mov r1, #1
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 _02233480:
 	add r0, r5, #0
 	mov r1, #0
@@ -2123,9 +2123,9 @@ ov80_02233594: ; 0x02233594
 	str r1, [sp, #8]
 	bl AddTextPrinterParameterized
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
 	bl DestroyMsgData
 	ldr r0, [sp, #0xc]

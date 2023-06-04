@@ -5363,7 +5363,7 @@ _022483C6:
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, sp, #0x68
 	bl InitWindow
 	mov r0, #0

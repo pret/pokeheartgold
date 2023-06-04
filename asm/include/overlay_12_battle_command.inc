@@ -66,7 +66,7 @@
 .public sub_02024AA8
 .public System_GetTouchNew
 .public GF_AssertFail
-.public String_dtor
+.public String_Delete
 .public CalcMonStats
 .public GetMonData
 .public SetMonData

@@ -224,7 +224,7 @@ ov86_021E5AA4: ; 0x021E5AA4
 	mov r0, #0x86
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x8f
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -785,7 +785,7 @@ ov86_021E5ECC: ; 0x021E5ECC
 	add r0, r6, #0
 	bl FreeToHeap
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -834,7 +834,7 @@ ov86_021E5F58: ; 0x021E5F58
 	mov r3, #0
 	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -925,7 +925,7 @@ ov86_021E6024: ; 0x021E6024
 	add r2, r7, #0
 	bl ov86_021E5FD8
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -968,7 +968,7 @@ ov86_021E6064: ; 0x021E6064
 	add r2, r7, #0
 	bl ov86_021E5FD8
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov86_021E6064
@@ -1687,7 +1687,7 @@ ov86_021E668C: ; 0x021E668C
 	add r3, r1, #0
 	bl BufferString
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov86_021E668C
@@ -2599,7 +2599,7 @@ ov86_021E6E30: ; 0x021E6E30
 	add r0, r5, r0
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0xc
 	pop {r4, r5, pc}
 	nop
@@ -2733,7 +2733,7 @@ ov86_021E6E98: ; 0x021E6E98
 	mov r3, #0x32
 	bl sub_0200D71C
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r6, _021E6FF0 ; =ov86_021E802C
 	mov r7, #0
 	add r4, r5, #0

@@ -27,7 +27,7 @@
 .public OverlayManager_GetArgs
 .public OverlayManager_run
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_GetCharData
 .public GfGfxLoader_GetPlttData
 .public GfGfxLoader_LoadCharDataFromOpenNarc
@@ -156,7 +156,7 @@
 .public sub_02024B78
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public StringSetEmpty
 .public CopyU16ArrayToString
 .public Thunk_G3X_Reset

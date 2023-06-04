@@ -862,7 +862,7 @@ ov93_0225F9D8: ; 0x0225F9D8
 	mov r3, #0x38
 	bl sub_0200D71C
 	mov r0, r4
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, sp, #0x18
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0

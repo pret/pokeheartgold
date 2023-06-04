@@ -172,7 +172,7 @@ void ShowCommunicationError(HeapID heap_id, u32 error, u32 error_code) {
     ReadMsgDataIntoString(errors_msgdata, msg_no, tmp_str);
     StringExpandPlaceholders(messageFormat, error_str, tmp_str);
     AddTextPrinterParameterized(&window, 0, error_str, 0, 0, 0, NULL);
-    String_dtor(error_str);
+    String_Delete(error_str);
     // BUG: tmp_str is never destroyed.
 
     GX_BothDispOn();

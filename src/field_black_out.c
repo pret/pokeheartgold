@@ -161,8 +161,8 @@ static void _PrintMessage(struct BlackoutScreenWork *work, int msgno, u8 x, u8 y
         AddTextPrinterParameterized2(&work->window, 0, str1, x, y, TEXT_SPEED_NOTRANSFER, MakeTextColor(1, 2, 0), NULL);
     }
 
-    String_dtor(str0);
-    String_dtor(str1);
+    String_Delete(str0);
+    String_Delete(str1);
 }
 
 BOOL Task_BlackOut(TaskManager *taskManager) {

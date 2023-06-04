@@ -16,7 +16,7 @@
 .public ReadWholeNarcMemberByIdPair
 .public AllocAtEndAndReadWholeNarcMemberByIdPair
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public NARC_AllocAndReadWholeMember
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_GXLoadPal
@@ -148,7 +148,7 @@
 .public sub_02024ADC
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Save_SysInfo_RTC_get
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr

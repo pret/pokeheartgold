@@ -2354,7 +2354,7 @@ _02238ACC:
 	ldr r0, [sp, #0x14]
 	bl FreeToHeap
 	ldr r0, [sp, #0x18]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -3492,7 +3492,7 @@ _02239402:
 	bl GX_EngineBToggleLayers
 _0223940A:
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov70_02239330
@@ -3765,11 +3765,11 @@ ov70_0223963C: ; 0x0223963C
 	add r4, r0, #0
 	ldr r0, _02239654 ; =0x00000BBC
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x2f
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	pop {r4, pc}
 	.balign 4, 0
 _02239654: .word 0x00000BBC
@@ -4543,7 +4543,7 @@ ov70_02239C34: ; 0x02239C34
 	str r3, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -5029,7 +5029,7 @@ ov70_02239FA4: ; 0x02239FA4
 	add r0, r6, #0
 	bl ov70_02239CF8
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov70_02239FA4
@@ -5257,18 +5257,18 @@ ov70_0223A224: ; 0x0223A224
 	add r5, r7, #0
 _0223A22E:
 	ldr r0, [r5, r6]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0xa
 	blt _0223A22E
 	ldr r0, _0223A254 ; =0x00000BBC
 	ldr r0, [r7, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x2f
 	lsl r0, r0, #6
 	ldr r0, [r7, r0]
-	bl String_dtor
+	bl String_Delete
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0223A250: .word 0x00000BC4
@@ -5483,7 +5483,7 @@ ov70_0223A3DC: ; 0x0223A3DC
 	bl ov70_02238D60
 	ldr r0, _0223A498 ; =0x000011AC
 	ldr r0, [r5, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	mov r0, #0x4f
 	lsl r0, r0, #2
 	add r4, r5, r0
@@ -5539,7 +5539,7 @@ _0223A46A:
 	bl ov70_02238D60
 	ldr r0, _0223A498 ; =0x000011AC
 	ldr r0, [r5, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	mov r0, #2
 	str r0, [r5, #0x2c]
 	add r0, r5, #0
@@ -5658,7 +5658,7 @@ ov70_0223A4F4: ; 0x0223A4F4
 	lsl r1, r1, #4
 	str r0, [r5, r1]
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	nop
@@ -5834,21 +5834,21 @@ _0223A66E:
 	add r3, r2, #0
 	bl ov70_02245084
 	ldr r0, [sp, #0x24]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x18]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x2c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x28]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x30]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x34]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x20]
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -5924,13 +5924,13 @@ ov70_0223A72C: ; 0x0223A72C
 	add r3, r2, #0
 	bl ov70_02245084
 	ldr r0, [sp, #0x10]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -6817,13 +6817,13 @@ ov70_0223AF30: ; 0x0223AF30
 	add r4, r0, #0
 	ldr r0, _0223AF50 ; =0x00000BC4
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _0223AF54 ; =0x00000BC8
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _0223AF58 ; =0x00000BBC
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	pop {r4, pc}
 	nop
 _0223AF50: .word 0x00000BC4
@@ -7400,7 +7400,7 @@ ov70_0223B3BC: ; 0x0223B3BC
 	add r3, r2, #0
 	bl ov70_02245084
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	nop
@@ -7425,7 +7425,7 @@ ov70_0223B3EC: ; 0x0223B3EC
 	add r3, r2, #0
 	bl ov70_022450B8
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -8092,7 +8092,7 @@ ov70_0223B8E0: ; 0x0223B8E0
 	add r0, r6, #0
 	bl ov70_02239CF8
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -8467,11 +8467,11 @@ ov70_0223BCD0: ; 0x0223BCD0
 	bl FreeToHeap
 	ldr r0, _0223BD00 ; =0x00000BBC
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x2f
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	pop {r4, pc}
 	nop
 _0223BCFC: .word 0x000011C4
@@ -10295,7 +10295,7 @@ ov70_0223CB1C: ; 0x0223CB1C
 	add r3, r2, #0
 	bl ov70_02245084
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	mov r1, #0x3f
 	bl NewString_ReadMsgData
@@ -10310,7 +10310,7 @@ ov70_0223CB1C: ; 0x0223CB1C
 	add r3, r2, #0
 	bl ov70_02245084
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	mov r1, #0x41
 	bl NewString_ReadMsgData
@@ -10325,7 +10325,7 @@ ov70_0223CB1C: ; 0x0223CB1C
 	add r3, r2, #0
 	bl ov70_02245084
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	mov r1, #0xab
 	bl NewString_ReadMsgData
@@ -10339,7 +10339,7 @@ ov70_0223CB1C: ; 0x0223CB1C
 	add r3, r2, #0
 	bl ov70_02245084
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	mov r1, #0x43
 	bl NewString_ReadMsgData
@@ -10354,7 +10354,7 @@ ov70_0223CB1C: ; 0x0223CB1C
 	add r3, r2, #0
 	bl ov70_022450B8
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	mov r1, #0xee
 	bl NewString_ReadMsgData
@@ -10369,7 +10369,7 @@ ov70_0223CB1C: ; 0x0223CB1C
 	add r3, r2, #0
 	bl ov70_022450B8
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -10417,7 +10417,7 @@ _0223CC1C:
 	str r4, [sp, #4]
 	bl ov70_022450B8
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -10890,7 +10890,7 @@ ov70_0223CF74: ; 0x0223CF74
 	add r0, r6, #0
 	bl ov70_02239CF8
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -11341,13 +11341,13 @@ ov70_0223D414: ; 0x0223D414
 	bl FreeToHeap
 	ldr r0, _0223D440 ; =0x00000BB4
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _0223D444 ; =0x00000BBC
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _0223D448 ; =0x00000BB8
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	pop {r4, pc}
 	nop
 _0223D43C: .word 0x000011F4
@@ -12055,7 +12055,7 @@ _0223D9C6:
 	bl ov70_02238D60
 	ldr r0, _0223DB20 ; =0x000011AC
 	ldr r0, [r5, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	ldr r0, _0223DB24 ; =0x00000F18
 	mov r1, #0
 	add r0, r5, r0
@@ -12072,7 +12072,7 @@ _0223D9EE:
 	bl ov70_02238D60
 	ldr r0, _0223DB20 ; =0x000011AC
 	ldr r0, [r5, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	mov r3, #0x12
 	lsl r3, r3, #4
 	ldr r1, [r5]
@@ -12195,7 +12195,7 @@ _0223DAFA:
 	bl ov70_02238D60
 	ldr r0, _0223DB20 ; =0x000011AC
 	ldr r0, [r5, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	ldr r0, _0223DB24 ; =0x00000F18
 	mov r1, #0
 	add r0, r5, r0
@@ -12294,7 +12294,7 @@ _0223DBC2:
 	bl ov70_02238D60
 	ldr r0, _0223DCFC ; =0x000011AC
 	ldr r0, [r5, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	mov r0, #2
 	str r0, [r5, #0x2c]
 	add r0, r5, #0
@@ -12307,7 +12307,7 @@ _0223DBE0:
 	bl ov70_02238D60
 	ldr r0, _0223DCFC ; =0x000011AC
 	ldr r0, [r5, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	ldr r0, _0223DD00 ; =0x00000F18
 	mov r1, #0
 	add r0, r5, r0
@@ -12418,7 +12418,7 @@ _0223DCD4:
 	bl ov70_02238D60
 	ldr r0, _0223DCFC ; =0x000011AC
 	ldr r0, [r5, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	ldr r0, _0223DD00 ; =0x00000F18
 	mov r1, #0
 	add r0, r5, r0
@@ -12892,7 +12892,7 @@ _0223E04A:
 	lsl r1, r1, #4
 	str r0, [r5, r1]
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -13342,7 +13342,7 @@ _0223E404:
 	bl ReadMsgDataIntoString
 _0223E414:
 	ldr r0, [sp, #0x1c]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, _0223E480 ; =0x00000F48
 	mov r1, #0
 	add r0, r5, r0
@@ -14012,7 +14012,7 @@ ov70_0223E8E8: ; 0x0223E8E8
 	lsl r1, r1, #4
 	str r0, [r5, r1]
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -14238,7 +14238,7 @@ ov70_0223EA6C: ; 0x0223EA6C
 	add r0, r5, #0
 	bl ov70_02239CF8
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov70_0223EA6C
@@ -14494,7 +14494,7 @@ ov70_0223ED24: ; 0x0223ED24
 	bl FreeToHeap
 	ldr r0, _0223ED54 ; =0x00000BBC
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	pop {r4, pc}
 	nop
 _0223ED50: .word 0x000011C4
@@ -15128,7 +15128,7 @@ ov70_0223F1D8: ; 0x0223F1D8
 	mov r2, #0
 	bl ov70_02245084
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 _0223F206:
 	add sp, #8
 	pop {r4, r5, r6, pc}
@@ -15159,7 +15159,7 @@ ov70_0223F20C: ; 0x0223F20C
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 _0223F240:
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
@@ -15186,7 +15186,7 @@ ov70_0223F244: ; 0x0223F244
 	mov r2, #0
 	bl ov70_02245084
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #8
 	pop {r3, r4, r5, pc}
 _0223F276:
@@ -15204,7 +15204,7 @@ _0223F276:
 	mov r2, #0
 	bl ov70_02245084
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -15275,7 +15275,7 @@ _0223F2FC:
 	bl ov70_02245084
 _0223F316:
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 _0223F31C:
 	add sp, #8
 	pop {r4, r5, r6, pc}
@@ -15315,7 +15315,7 @@ _0223F334:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 _0223F368:
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
@@ -15372,7 +15372,7 @@ _0223F3A8:
 	add r1, r4, #0
 	bl ov70_02245084
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 _0223F3CC:
 	add sp, #8
 	pop {r4, r5, r6, pc}
@@ -15447,7 +15447,7 @@ _0223F446:
 	mov r3, #2
 	bl ov70_0223F370
 	ldr r0, [sp, #0x14]
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -15520,7 +15520,7 @@ _0223F4DE:
 	str r3, [sp, #8]
 	bl ov70_0223F370
 	ldr r0, [sp, #0x14]
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -15647,13 +15647,13 @@ _0223F5F6:
 	strb r6, [r7, #2]
 	strb r0, [r7, #3]
 	ldr r0, [sp, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x14]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x18]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x20]
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -16467,12 +16467,12 @@ _0223FC54: .word 0x00000BBC
 	thumb_func_start ov70_0223FC58
 ov70_0223FC58: ; 0x0223FC58
 	ldr r1, _0223FC60 ; =0x00000BBC
-	ldr r3, _0223FC64 ; =String_dtor
+	ldr r3, _0223FC64 ; =String_Delete
 	ldr r0, [r0, r1]
 	bx r3
 	.balign 4, 0
 _0223FC60: .word 0x00000BBC
-_0223FC64: .word String_dtor
+_0223FC64: .word String_Delete
 	thumb_func_end ov70_0223FC58
 
 	thumb_func_start ov70_0223FC68
@@ -22892,7 +22892,7 @@ _02242DE0:
 	mov r3, #2
 	bl ov70_02242FC4
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r6, #0x10
 	cmp r4, #9
@@ -22919,7 +22919,7 @@ _02242DE0:
 	mov r3, #2
 	bl ov70_02242FC4
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 _02242E34:
 	ldr r2, [sp, #8]
 	mov r1, #0
@@ -22972,7 +22972,7 @@ _02242E80:
 	mov r3, #2
 	bl ov70_02242FC4
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r6, r6, #1
 	add r4, #0x10
 	cmp r6, #3
@@ -23392,7 +23392,7 @@ _022431CA:
 	mov r3, #2
 	bl ov70_02242FC4
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r6, #0x10
 	cmp r4, #9
@@ -24055,7 +24055,7 @@ ov70_02243700: ; 0x02243700
 	mov r1, #0
 	bl ov70_02241DB4
 	ldr r0, [r4, #0x34]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	mov r0, #0x3c
 	ldrsh r0, [r4, r0]
 	cmp r0, #8
@@ -24089,7 +24089,7 @@ ov70_02243750: ; 0x02243750
 	mov r1, #0
 	bl ov70_02241DB4
 	ldr r0, [r4, #0x34]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	mov r0, #0x40
 	ldrsh r0, [r4, r0]
 	pop {r4, pc}
@@ -24751,7 +24751,7 @@ ov70_02243C8C: ; 0x02243C8C
 	mov r1, #3
 	bl ov70_02241DB4
 	ldr r0, [r4, #0x34]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	mov r0, #0x3c
 	ldrsh r0, [r4, r0]
 	cmp r0, #8
@@ -24791,7 +24791,7 @@ ov70_02243CC8: ; 0x02243CC8
 	bl Set2dSpriteVisibleFlag
 _02243CDE:
 	ldr r0, [r4, #0x34]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	mov r0, #0x42
 	ldrsh r0, [r4, r0]
 	pop {r4, pc}
@@ -25002,7 +25002,7 @@ ov70_02243E74: ; 0x02243E74
 	mov r1, #2
 	bl ov70_02241DB4
 	ldr r0, [r4, #0x34]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	mov r0, #0x45
 	ldrsb r0, [r4, r0]
 	pop {r4, pc}
@@ -25027,7 +25027,7 @@ ov70_02243E8C: ; 0x02243E8C
 	add r2, r4, #0
 	bl ov70_02242FC4
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov70_02243E8C
@@ -25060,7 +25060,7 @@ ov70_02243EB8: ; 0x02243EB8
 	add r2, r5, #0
 	bl sub_02019A60
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -25769,7 +25769,7 @@ _02244482:
 	ldr r1, [sp, #0x10]
 	str r0, [r1, r2]
 	ldr r0, [sp, #0x2c]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -26011,13 +26011,13 @@ ov70_022446A8: ; 0x022446A8
 	mov r0, #0x2f
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _022446C8 ; =0x00000BEC
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _022446CC ; =0x00000BBC
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	pop {r4, pc}
 	.balign 4, 0
 _022446C8: .word 0x00000BEC
@@ -27219,7 +27219,7 @@ ov70_02244FA4: ; 0x02244FA4
 	ldr r1, [r5, r1]
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _02245010 ; =0x00000F18
 	mov r1, #0xf
 	add r0, r5, r0
@@ -27392,7 +27392,7 @@ ov70_022450EC: ; 0x022450EC
 	add r3, r2, #0
 	bl ov70_02245084
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -27454,7 +27454,7 @@ ov70_0224512C: ; 0x0224512C
 	lsl r1, r1, #4
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0

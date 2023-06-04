@@ -676,7 +676,7 @@ sub_0208EA84: ; 0x0208EA84
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_0208EA84
@@ -835,7 +835,7 @@ _0208ECEA:
 	add r2, r5, #0
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -953,7 +953,7 @@ _0208EDF4:
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0208ED00
@@ -1880,7 +1880,7 @@ sub_0208F504: ; 0x0208F504
 	add r2, r4, #0
 	bl SetBoxMonData
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_0208F504

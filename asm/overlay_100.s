@@ -883,7 +883,7 @@ _021E5FA4:
 	mov r3, #0x8f
 	bl sub_0208820C
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r5, #0x74]
 	mov r1, #0
 	bl ScheduleBgTilemapBufferTransfer
@@ -1053,7 +1053,7 @@ ov100_021E60C4: ; 0x021E60C4
 	add r0, r5, #0
 	bl ov100_021E5EB4
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov100_021E60C4

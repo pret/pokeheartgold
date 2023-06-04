@@ -302,7 +302,7 @@ ov47_02258A60: ; 0x02258A60
 	mov r0, #5
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	bl GF_DestroyVramTransferManager
 	add r0, r4, #0
 	bl ov47_02258B8C
@@ -602,9 +602,9 @@ _02258CC8:
 	ldr r0, [r6, #0x24]
 	bl MessageFormat_delete
 	ldr r0, [r6, #0x28]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x2c]
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov47_02258CC0
@@ -1338,7 +1338,7 @@ _02259296:
 	add r0, r5, #0
 	bl ov47_022593A0
 	ldr r0, [r5, #0x18]
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	add r0, #8
 	bl RemoveWindow
@@ -2703,11 +2703,11 @@ ov47_02259D24: ; 0x02259D24
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x10]
-	bl String_dtor
+	bl String_Delete
 	mov r4, #0
 _02259D30:
 	ldr r0, [r5, #0x14]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #3

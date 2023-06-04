@@ -15,7 +15,7 @@
 .public LCRandom
 .public PRandom
 .public GF_AssertFail
-.public String_dtor
+.public String_Delete
 .public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetPlayerName_NewString
 .public PlayerProfile_GetTrainerID

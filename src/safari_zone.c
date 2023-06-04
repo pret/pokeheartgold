@@ -179,7 +179,7 @@ void SafariZone_SetLinkLeaderFromProfile(SAFARIZONE* safari_zone, PLAYERPROFILE*
     STRING* name = String_New((PLAYER_NAME_LENGTH + 1) * sizeof(u16), heap_id);
     PlayerName_FlatToString(profile, name);
     CopyStringToU16Array(name, link_leader->name, (PLAYER_NAME_LENGTH + 1) * sizeof(u16));
-    String_dtor(name);
+    String_Delete(name);
 
     link_leader->linked = TRUE;
 

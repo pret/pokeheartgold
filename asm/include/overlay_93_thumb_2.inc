@@ -10,7 +10,7 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public NewString_ReadMsgData
@@ -57,7 +57,7 @@
 .public sub_02021AC8
 .public sub_02021B5C
 .public GF_AssertFail
-.public String_dtor
+.public String_Delete
 .public sub_0203410C
 .public sub_020342C0
 .public sub_02037030

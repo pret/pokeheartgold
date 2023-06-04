@@ -552,7 +552,7 @@ _020920FC:
 	cmp r4, #0
 	bne _0209215C
 	ldr r0, [r5, #0x10]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -569,7 +569,7 @@ _02092164:
 	cmp r0, #0
 	bne _02092194
 	ldr r0, [r5, #0x10]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]

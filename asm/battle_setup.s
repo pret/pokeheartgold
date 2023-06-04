@@ -310,7 +310,7 @@ sub_02051AAC: ; 0x02051AAC
 	ldr r0, [r0]
 	bl Save_Profile_PlayerName_set
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x18]
 	bl DestroyMsgData
 	ldr r0, [sp, #0x10]

@@ -1751,7 +1751,7 @@ ov101_021E8370: ; 0x021E8370
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r5, #0x10]
 	mov r1, #1
 	ldr r0, [r0, #0x74]
@@ -1953,23 +1953,23 @@ ov101_021E862C: ; 0x021E862C
 	add r4, r0, #0
 	add r0, #0xb4
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #0xa4
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #0xa0
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #0x90
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
@@ -2218,7 +2218,7 @@ ov101_021E8790: ; 0x021E8790
 	ldr r0, [r0, #0x78]
 	bl sub_02003B50
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov101_021E8790
@@ -13629,7 +13629,7 @@ ov101_021EDFF8: ; 0x021EDFF8
 	lsl r1, r1, #4
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r5, #0x10]
 	mov r1, #4
 	ldr r0, [r0, #0x74]
@@ -13826,35 +13826,35 @@ ov101_021EE2E8: ; 0x021EE2E8
 	add r4, r0, #0
 	add r0, #0xb4
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #0xb0
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #0xac
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #0xa8
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #0xa4
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #0xa0
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #0x90
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
@@ -13899,7 +13899,7 @@ ov101_021EE380: ; 0x021EE380
 	add r4, r0, #0
 	add r0, #0xc0
 	ldr r0, [r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	mov r0, #0
 	add r4, #0xc0
 	str r0, [r4]
@@ -15674,7 +15674,7 @@ ov101_021EF16C: ; 0x021EF16C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x3c]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	mov r0, #0
 	str r0, [r4, #0x3c]
 	pop {r4, pc}
@@ -15780,7 +15780,7 @@ ov101_021EF1D8: ; 0x021EF1D8
 	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	str r0, [r5, #0x44]
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r5, #0xc]
 	mov r1, #3
 	ldr r0, [r0, #0x74]
@@ -15926,7 +15926,7 @@ _021EF366:
 	ldr r0, [r0, #0x78]
 	bl sub_02003B50
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -17979,7 +17979,7 @@ ov101_021F0284: ; 0x021F0284
 	ldr r0, [r0, #0x74]
 	bl CopyToBgTilemapRect
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r5, #0xc]
 	mov r1, #2
 	ldr r0, [r0, #0x74]
@@ -18105,7 +18105,7 @@ ov101_021F0388: ; 0x021F0388
 	ldr r0, [r0, #0x78]
 	bl sub_02003B50
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -18359,15 +18359,15 @@ ov101_021F0658: ; 0x021F0658
 	add r5, r6, #0
 _021F0660:
 	ldr r0, [r5, #0x24]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #8
 	blt _021F0660
 	ldr r0, [r6, #0x20]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x18]
 	bl MessageFormat_delete
 	ldr r0, [r6, #0x14]
@@ -18686,7 +18686,7 @@ ov101_021F08DC: ; 0x021F08DC
 _021F08E6:
 	ldr r0, _021F08FC ; =0x000004E8
 	ldr r0, [r5, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	str r6, [r5, r7]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -21560,23 +21560,23 @@ ov101_021F1E80: ; 0x021F1E80
 	add r5, r6, #0
 _021F1E88:
 	ldr r0, [r5, #0x68]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r5, #0x74]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #3
 	blt _021F1E88
 	ldr r0, [r6, #0x60]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x5c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x58]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x64]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x54]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x50]
 	bl MessageFormat_delete
 	ldr r0, [r6, #0x48]
@@ -27685,7 +27685,7 @@ ov101_021F4BC8: ; 0x021F4BC8
 	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	str r0, [r5, #0x64]
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r5, #0xc]
 	mov r1, #2
 	ldr r0, [r0, #0x74]
@@ -27808,7 +27808,7 @@ ov101_021F4CE8: ; 0x021F4CE8
 	ldr r0, [r0, #0x78]
 	bl sub_02003B50
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov101_021F4CE8
@@ -29238,15 +29238,15 @@ ov101_021F58A0: ; 0x021F58A0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x70]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x6c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x50]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x4c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x48]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x44]
 	bl MessageFormat_delete
 	ldr r0, [r4, #0x20]
@@ -31481,7 +31481,7 @@ _021F6948:
 	add r2, r6, #0
 	bl BufferString
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl DestroyMsgData
 	add sp, #8

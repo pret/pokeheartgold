@@ -2687,7 +2687,7 @@ _0225D908:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2850,7 +2850,7 @@ _0225DAC6:
 	blo _0225DA0E
 _0225DAD2:
 	ldr r0, [sp, #0x24]
-	bl String_dtor
+	bl String_Delete
 	add r0, sp, #0x30
 	bl RemoveWindow
 	ldr r0, [sp, #0x14]
@@ -5950,7 +5950,7 @@ _0225F162:
 	str r0, [r5, #0x34]
 	bl Set2dSpriteVisibleFlag
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x4c
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov91_0225F0C0
@@ -6505,7 +6505,7 @@ ov91_0225F508: ; 0x0225F508
 	add r3, r4, #0
 	bl ov91_02261580
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, _0225F664 ; =0x00001AD0
 	add r1, r4, #0
 	ldr r0, [r5, r0]
@@ -7282,9 +7282,9 @@ ov91_0225FD0C: ; 0x0225FD0C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0xc]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #8]
 	bl DestroyMsgData
 	ldr r0, [r4, #4]
@@ -10766,7 +10766,7 @@ ov91_02261790: ; 0x02261790
 	ldr r0, [r5, #0x4c]
 	bl sub_02013938
 	ldr r0, [r5, #0x5c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r5, #0x34]
 	bl Sprite_Delete
 	ldr r0, [r5]

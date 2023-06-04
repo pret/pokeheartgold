@@ -135,7 +135,7 @@ _020545DA:
 	blt _020545DA
 _02054600:
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

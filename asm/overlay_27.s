@@ -3550,17 +3550,17 @@ ov27_0225BC34: ; 0x0225BC34
 	add r5, r0, #0
 	ldr r0, _0225BC78 ; =0x000004C8
 	ldr r0, [r5, r0]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _0225BC7C ; =0x000004C4
 	ldr r0, [r5, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r7, #0x4b
 	mov r6, #0
 	add r4, r5, #0
 	lsl r7, r7, #4
 _0225BC50:
 	ldr r0, [r4, r7]
-	bl String_dtor
+	bl String_Delete
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #5
@@ -3571,7 +3571,7 @@ _0225BC62:
 	ldr r0, [r5, r6]
 	cmp r0, #0
 	beq _0225BC6C
-	bl String_dtor
+	bl String_Delete
 _0225BC6C:
 	add r4, r4, #1
 	add r5, #8
@@ -3853,7 +3853,7 @@ _0225BE3A:
 	mov r2, #1
 	bl ov27_0225BB38
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r5, #8]
 	mov r1, #5
 	bl sub_02024950
@@ -3974,7 +3974,7 @@ _0225BF48:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, sp, #0x14
 	bl CopyWindowToVram
 	add r0, sp, #0x14
@@ -4729,7 +4729,7 @@ ov27_0225C4AC: ; 0x0225C4AC
 	add r0, r6, #0
 	bl FreeToHeap
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -4767,7 +4767,7 @@ ov27_0225C540: ; 0x0225C540
 	mov r3, #4
 	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #8
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4882,7 +4882,7 @@ ov27_0225C618: ; 0x0225C618
 	mov r3, #4
 	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #0
 	str r0, [sp, #0x14]
 	cmp r6, #0
@@ -5209,7 +5209,7 @@ ov27_0225C8D0: ; 0x0225C8D0
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

@@ -221,11 +221,11 @@ ov01_021F147C: ; 0x021F147C
 
 	thumb_func_start ov01_021F1490
 ov01_021F1490: ; 0x021F1490
-	ldr r3, _021F1498 ; =NARC_dtor
+	ldr r3, _021F1498 ; =NARC_Delete
 	ldr r0, [r0, #0x18]
 	bx r3
 	nop
-_021F1498: .word NARC_dtor
+_021F1498: .word NARC_Delete
 	thumb_func_end ov01_021F1490
 
 	thumb_func_start ov01_021F149C

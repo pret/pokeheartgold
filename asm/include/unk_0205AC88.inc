@@ -10,7 +10,7 @@
 .public FreeToHeap
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public SaveArray_get
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetAvatar

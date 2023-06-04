@@ -28,7 +28,7 @@
 .public ReadWholeNarcMemberByIdPair
 .public AllocAndReadWholeNarcMemberByIdPair
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public NARC_AllocAndReadWholeMember
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_LoadScrnData
@@ -192,7 +192,7 @@
 .public sub_02025320
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public StringCopy
 .public StringGetLength
 .public CopyU16ArrayToString

@@ -11,7 +11,7 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_GXLoadPal
 .public GfGfxLoader_LoadCharDataFromOpenNarc
@@ -136,7 +136,7 @@
 .public sub_020253F0
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public StringCountLines
 .public StringGetLineN
 .public CopyU16ArrayToStringN

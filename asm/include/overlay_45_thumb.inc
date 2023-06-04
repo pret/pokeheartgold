@@ -15,7 +15,7 @@
 .public OverlayManager_GetArgs
 .public OverlayManager_run
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_LoadFromOpenNarc
 .public GfGfxLoader_LoadFromOpenNarc_GetSizeOut
 .public NewMsgDataFromNarc
@@ -92,7 +92,7 @@
 .public sub_02025AAC
 .public sub_02025ABC
 .public String_New
-.public String_dtor
+.public String_Delete
 .public CopyStringToU16Array
 .public sub_02026E18
 .public SaveArray_CalcCRC16

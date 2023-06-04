@@ -724,7 +724,7 @@ FldObjSys_OpenMModelNarc: ; 0x021F927C
 FldObjSys_CloseMModelNarc: ; 0x021F9294
 	push {r3, lr}
 	bl FldObjSys_GetMModelNarc
-	bl NARC_dtor
+	bl NARC_Delete
 	pop {r3, pc}
 	thumb_func_end FldObjSys_CloseMModelNarc
 

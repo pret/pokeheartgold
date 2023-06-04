@@ -1437,7 +1437,7 @@ _0222C848:
 	b _0222C848
 _0222C86E:
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [sp, #4]
 	str r0, [r6, #0x1c]
 	mov r0, #0
@@ -2567,7 +2567,7 @@ ov80_0222D084: ; 0x0222D084
 	add r2, r7, #0
 	bl BufferString
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -3123,7 +3123,7 @@ _0222D4CC:
 	bl RemoveWindow
 	ldr r0, [r4, #0x28]
 	mov r1, #1
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0200FBF4
@@ -3257,7 +3257,7 @@ _0222D5E8:
 	bl RemoveWindow
 	ldr r0, [r4, #0x28]
 	mov r1, #1
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0200FBF4
@@ -5119,7 +5119,7 @@ ov80_0222E400: ; 0x0222E400
 	add r1, r4, #0
 	bl StringCopy
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -5463,7 +5463,7 @@ ov80_0222E690: ; 0x0222E690
 	add r1, #0xb4
 	str r0, [r1]
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	add r0, #0x9b
 	ldrb r0, [r0]
@@ -5715,7 +5715,7 @@ ov80_0222E88C: ; 0x0222E88C
 	add r5, r6, #0
 _0222E8BE:
 	ldr r0, [r5, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0x1c
@@ -5982,7 +5982,7 @@ ov80_0222EA74: ; 0x0222EA74
 	lsl r1, r1, #2
 	str r0, [r2, r1]
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	cmp r4, #0xfa
 	bne _0222EAE6
 	add r0, r5, #0
@@ -6386,7 +6386,7 @@ _0222EDB0:
 	add r5, r6, #0
 _0222EDD6:
 	ldr r0, [r5, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0x1c
@@ -6455,9 +6455,9 @@ ov80_0222EE14: ; 0x0222EE14
 	add r2, r6, #0
 	bl AddTextPrinterParameterized
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov80_0222EE14
@@ -6751,7 +6751,7 @@ ov80_0222F030: ; 0x0222F030
 	str r4, [sp, #4]
 	bl sub_0200D71C
 	ldr r0, [sp, #0x30]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, sp, #0x38
 	mov r1, #0
 	mov r2, #0x34
@@ -7122,7 +7122,7 @@ ov80_0222F33C: ; 0x0222F33C
 	ldr r1, [r5, #0x38]
 	bl sub_0200E188
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

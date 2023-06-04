@@ -19,7 +19,7 @@
 .public OverlayManager_GetArgs
 .public OverlayManager_run
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_GetPlttData
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
@@ -119,7 +119,7 @@
 .public sub_02024AA8
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public StringSetEmpty
 .public CopyU16ArrayToString
 .public Save_PlayerData_GetProfileAddr

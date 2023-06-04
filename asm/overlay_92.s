@@ -1925,9 +1925,9 @@ ov92_0225D49C: ; 0x0225D49C
 	ldr r0, [r4, #0x5c]
 	bl PaletteData_Free
 	ldr r0, [r4, #0x48]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r4, #0x4c]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r4, #0x60]
 	bl GF_3DVramMan_Delete
 	ldr r0, [r4, #0x64]
@@ -3351,7 +3351,7 @@ ov92_0225E070: ; 0x0225E070
 	str r1, [sp, #8]
 	bl AddTextPrinterParameterized
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	bl DestroyMsgData
 	ldr r0, _0225E0FC ; =0x00001FE0
@@ -3655,7 +3655,7 @@ _0225E312:
 	bl AddTextPrinterParameterized3
 _0225E32E:
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl CopyWindowToVram
 	ldr r0, [sp, #0x1c]
@@ -4054,7 +4054,7 @@ ov92_0225E3C4: ; 0x0225E3C4
 	add r3, r5, #0
 	bl sub_0200D68C
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

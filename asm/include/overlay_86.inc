@@ -16,7 +16,7 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_LoadFromNarc_GetSizeOut
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
@@ -98,7 +98,7 @@
 .public sub_02025224
 .public sub_02025320
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetFrame
 .public sub_0202D5DC

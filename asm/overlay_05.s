@@ -2754,7 +2754,7 @@ ov05_0221D020: ; 0x0221D020
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0221D030
-	bl String_dtor
+	bl String_Delete
 _0221D030:
 	mov r0, #0xbb
 	lsl r0, r0, #4
@@ -2880,7 +2880,7 @@ ov05_0221D094: ; 0x0221D094
 	mov r0, #1
 	bl BG_SetMaskColor
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -3173,7 +3173,7 @@ ov05_0221D318: ; 0x0221D318
 	mov r3, #0xd1
 	bl sub_0200D71C
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -3843,7 +3843,7 @@ ov05_0221D890: ; 0x0221D890
 	mov r3, #7
 	bl sub_0200D71C
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0xc
 	pop {r4, r5, pc}
 	nop
@@ -4326,7 +4326,7 @@ ov05_0221DC60: ; 0x0221DC60
 	add r3, r5, r3
 	bl sub_0207CAAC
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -5158,7 +5158,7 @@ _0221E350:
 	cmp r4, #6
 	blo _0221E350
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -5230,7 +5230,7 @@ ov05_0221E390: ; 0x0221E390
 	mov r3, #0x12
 	bl sub_0200D71C
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -5303,7 +5303,7 @@ ov05_0221E42C: ; 0x0221E42C
 	mov r3, #0x3e
 	bl sub_0200D71C
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -5376,7 +5376,7 @@ ov05_0221E4C8: ; 0x0221E4C8
 	add r2, r4, #0
 	bl sub_0200D71C
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -5538,7 +5538,7 @@ _0221E656:
 	add r1, r6, #0
 	bl StringExpandPlaceholders
 	ldr r0, [sp, #0x20]
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -5932,7 +5932,7 @@ _0221E9A0:
 	cmp r4, #6
 	blo _0221E986
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x10]
 	bl DestroyMsgData
 	ldr r0, [sp, #0xc]

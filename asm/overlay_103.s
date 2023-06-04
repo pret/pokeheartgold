@@ -458,7 +458,7 @@ ov103_021ECC1C: ; 0x021ECC1C
 	add r0, r7, #0
 	bl FreeToHeap
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov103_021ECC1C
@@ -631,7 +631,7 @@ ov103_021ECE54: ; 0x021ECE54
 	mov r0, #0x23
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x8b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -764,7 +764,7 @@ ov103_021ECF48: ; 0x021ECF48
 	ldr r1, [r4, #0xc]
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	mov r0, #9
 	ldr r1, [r4, #0xc]
 	lsl r0, r0, #6
@@ -1214,7 +1214,7 @@ ov103_021ED23C: ; 0x021ED23C
 	mov r3, #5
 	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -3148,11 +3148,11 @@ ov103_021EE13C: ; 0x021EE13C
 ov103_021EE150: ; 0x021EE150
 	mov r1, #0x9d
 	lsl r1, r1, #2
-	ldr r3, _021EE15C ; =NARC_dtor
+	ldr r3, _021EE15C ; =NARC_Delete
 	ldr r0, [r0, r1]
 	bx r3
 	nop
-_021EE15C: .word NARC_dtor
+_021EE15C: .word NARC_Delete
 	thumb_func_end ov103_021EE150
 
 	thumb_func_start ov103_021EE160
@@ -3402,7 +3402,7 @@ ov103_021EE2E0: ; 0x021EE2E0
 	mov r3, #9
 	bl sub_0200D71C
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -3539,7 +3539,7 @@ ov103_021EE430: ; 0x021EE430
 	add r1, r6, #0
 	bl ov103_021EE3E4
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov103_021EE430
@@ -3844,7 +3844,7 @@ ov103_021EE644: ; 0x021EE644
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0x23
 	ldr r2, [r5, #0xc]
 	lsl r1, r1, #4
@@ -3898,7 +3898,7 @@ ov103_021EE644: ; 0x021EE644
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0x6e
 	ldr r2, [r5, #0xc]
 	mov r3, #0
@@ -3960,7 +3960,7 @@ ov103_021EE784: ; 0x021EE784
 	add r2, r4, #0
 	bl BufferString
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -4024,7 +4024,7 @@ ov103_021EE824: ; 0x021EE824
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	bl ov103_021EE7DC
 	pop {r3, r4, r5, pc}
@@ -4254,7 +4254,7 @@ ov103_021EE9C8: ; 0x021EE9C8
 	add r3, r2, #0
 	bl ov103_021EE3E4
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 _021EEA1C:
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}

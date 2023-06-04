@@ -222,7 +222,7 @@ BOOL ScrCmd_BufferSpeciesName(SCRIPTCONTEXT* ctx) {
 
     STRING* species_name = _get_species_name(species, HEAP_ID_4);
     BufferString(*msg_fmt, idx, species_name, unk2, unk3, 2);
-    String_dtor(species_name);
+    String_Delete(species_name);
 
     return FALSE;
 }
@@ -241,7 +241,7 @@ BOOL ScrCmd_BufferStarterSpeciesName(SCRIPTCONTEXT* ctx) {
 
     STRING* species_name = _get_species_name(species, HEAP_ID_4);
     BufferString(*msg_fmt, idx, species_name, 0, 1, 2);
-    String_dtor(species_name);
+    String_Delete(species_name);
 
     return FALSE;
 }
@@ -253,7 +253,7 @@ BOOL ScrCmd_BufferDPPtRivalStarterSpeciesName(SCRIPTCONTEXT* ctx) {
 
     STRING* species_name = _get_species_name(species, HEAP_ID_4);
     BufferString(*msg_fmt, idx, species_name, 0, 1, 2);
-    String_dtor(species_name);
+    String_Delete(species_name);
 
     return FALSE;
 }
@@ -265,7 +265,7 @@ BOOL ScrCmd_BufferDPPtFriendStarterSpeciesName(SCRIPTCONTEXT* ctx) {
 
     STRING* species_name = _get_species_name(species, HEAP_ID_4);
     BufferString(*msg_fmt, idx, species_name, 0, 1, 2);
-    String_dtor(species_name);
+    String_Delete(species_name);
 
     return FALSE;
 }
@@ -306,7 +306,7 @@ BOOL ScrCmd_BufferMapSecName(SCRIPTCONTEXT* ctx) {
 
     sub_02068F98(mapno, HEAP_ID_4, str);
     BufferString(*msg_fmt, idx, str, 0, 1, 2);
-    String_dtor(str);
+    String_Delete(str);
 
     return FALSE;
 }
@@ -319,7 +319,7 @@ BOOL ScrCmd_BufferBerryName(SCRIPTCONTEXT* ctx) {
 
     STRING* str = GetNutName((u16)(berry_id - FIRST_BERRY_IDX), HEAP_ID_32);
     BufferString(*msg_fmt, idx, str, 0, unk < 2, 2);
-    String_dtor(str);
+    String_Delete(str);
 
     return FALSE;
 }

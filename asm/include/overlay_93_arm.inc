@@ -3,7 +3,7 @@
 .public PlaySE
 .public IsSEPlaying
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public sub_0200D504
 .public sub_0200D68C
 .public sub_0200D6EC

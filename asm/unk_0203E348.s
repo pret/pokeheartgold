@@ -2602,7 +2602,7 @@ _0203F632:
 	ldr r0, [r4, #0xc]
 	bl sub_0208311C
 	ldr r0, [r4, #0x10]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #1

@@ -11,7 +11,7 @@ void BattleFinger_LoadResources(void *a0, void *a1, HeapID heapId, void *a3, u32
     sub_0200D504(a0, a1, narc, 0, 0, 2, character);
     sub_0200D6EC(a0, a1, narc, 2, 0, cell);
     sub_0200D71C(a0, a1, narc, 3, 0, animation);
-    NARC_dtor(narc);
+    NARC_Delete(narc);
 }
 
 void BattleFinger_FreeResources(void *a0, u32 character, u32 pal, u32 cell, u32 animation) {

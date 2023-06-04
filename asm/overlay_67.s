@@ -746,7 +746,7 @@ ov67_021E5EB0: ; 0x021E5EB0
 	add r0, r5, #0
 	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add r0, r5, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r1, [r4]
 	mov r0, #0xb7
 	bl NARC_New
@@ -784,7 +784,7 @@ ov67_021E5EB0: ; 0x021E5EB0
 	mov r3, #5
 	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add r0, r5, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 _021E5F68:
@@ -856,7 +856,7 @@ _021E5F68:
 	mov r3, #5
 	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add r0, r5, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -989,11 +989,11 @@ ov67_021E60F4: ; 0x021E60F4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x68]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x64]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x30]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x2c]
 	bl MessageFormat_delete
 	ldr r0, [r4, #0x28]
@@ -1067,7 +1067,7 @@ ov67_021E6164: ; 0x021E6164
 	add r2, r7, #0
 	bl ov67_021E6118
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1103,7 +1103,7 @@ ov67_021E61A0: ; 0x021E61A0
 	add r2, r6, #0
 	bl ov67_021E6118
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1428,7 +1428,7 @@ ov67_021E6474: ; 0x021E6474
 	lsl r6, r6, #2
 _021E647E:
 	ldr r0, [r5, r6]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #0x1e
@@ -1857,7 +1857,7 @@ _021E67A6:
 	str r2, [sp, #8]
 	bl ov67_021E6118
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 _021E67E8:
 	mov r5, #0
 _021E67EA:
@@ -2008,7 +2008,7 @@ ov67_021E6820: ; 0x021E6820
 	mov r3, #2
 	bl sub_0200D71C
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r6, _021E6988 ; =ov67_021E6F50
 	mov r7, #0
 	add r4, r5, #0

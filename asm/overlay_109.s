@@ -2513,7 +2513,7 @@ ov109_021E6B5C: ; 0x021E6B5C
 	add r1, #0xc0
 	str r0, [r1]
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r1, #6
 	ldr r2, [r5]
 	mov r0, #0
@@ -2627,7 +2627,7 @@ ov109_021E6D2C: ; 0x021E6D2C
 	add r6, r0, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	add r0, r6, #0
 	mov r4, #0
 	add r0, #0x88
@@ -2635,7 +2635,7 @@ ov109_021E6D2C: ; 0x021E6D2C
 	add r5, r6, #0
 _021E6D42:
 	ldr r0, [r5, #0x48]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #2
@@ -2644,15 +2644,15 @@ _021E6D42:
 	add r4, r6, #0
 _021E6D54:
 	ldr r0, [r4, #0x34]
-	bl String_dtor
+	bl String_Delete
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #5
 	blt _021E6D54
 	ldr r0, [r6, #0x30]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x2c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x28]
 	bl MessageFormat_delete
 	ldr r0, [r6, #0x24]

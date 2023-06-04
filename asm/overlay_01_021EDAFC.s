@@ -373,7 +373,7 @@ ov01_021EDD68: ; 0x021EDD68
 	add r0, #0xbc
 	str r1, [r0]
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	add r0, #0x9b
 	ldrb r0, [r0]
@@ -561,7 +561,7 @@ ov01_021EDF00: ; 0x021EDF00
 	add r5, r6, #0
 _021EDF08:
 	ldr r0, [r5, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0x1c
@@ -1026,7 +1026,7 @@ MoveTutorMenu_SetListItem_Internal: ; 0x021EE244
 	lsl r1, r1, #2
 	str r0, [r2, r1]
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	cmp r4, #0xfa
 	bne _021EE2B4
 	add r0, r5, #0
@@ -1426,7 +1426,7 @@ ov01_021EE568: ; 0x021EE568
 	add r5, r6, #0
 _021EE598:
 	ldr r0, [r5, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0x1c
@@ -1491,9 +1491,9 @@ ov01_021EE5D0: ; 0x021EE5D0
 	add r2, r6, #0
 	bl AddTextPrinterParameterized
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021EE5D0
@@ -1678,9 +1678,9 @@ ov01_021EE754: ; 0x021EE754
 	add r2, r6, #0
 	bl AddTextPrinterParameterized
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1710,7 +1710,7 @@ ov01_021EE7B8: ; 0x021EE7B8
 	add r5, r6, #0
 _021EE7E4:
 	ldr r0, [r5, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0x1c
@@ -2154,7 +2154,7 @@ Fsys_ShowMoneyBox: ; 0x021EEA90
 	add r0, r7, #0
 	bl DestroyMsgData
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	add r1, r4, #0
 	bl MoneyBoxSys_Update
@@ -2174,7 +2174,7 @@ MoneyBoxSys_Delete: ; 0x021EEB38
 	bl sub_0200E5D4
 	add r0, r4, #0
 	mov r1, #1
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	pop {r4, pc}
 	thumb_func_end MoneyBoxSys_Delete
 
@@ -2240,9 +2240,9 @@ MoneyBoxSys_Update: ; 0x021EEB4C
 	str r1, [sp, #8]
 	bl AddTextPrinterParameterized
 	ldr r0, [sp, #0x10]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	bl MessageFormat_delete
 	ldr r0, [sp, #0xc]
@@ -2314,7 +2314,7 @@ ov01_021EEC68: ; 0x021EEC68
 	bl sub_0200E5D4
 	add r0, r4, #0
 	mov r1, #1
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	pop {r4, pc}
 	thumb_func_end ov01_021EEC68
 
@@ -2405,9 +2405,9 @@ _021EED04:
 	str r1, [sp, #8]
 	bl AddTextPrinterParameterized
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x10]
 	bl MessageFormat_delete
 	add r0, r7, #0
@@ -2479,7 +2479,7 @@ ov01_021EED60: ; 0x021EED60
 	str r1, [sp, #8]
 	bl AddTextPrinterParameterized
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r1, _021EEE2C ; =0x0000014B
 	add r0, r7, #0
 	bl NewString_ReadMsgData
@@ -2495,7 +2495,7 @@ ov01_021EED60: ; 0x021EED60
 	str r1, [sp, #8]
 	bl AddTextPrinterParameterized
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
 	bl DestroyMsgData
 	add r0, r5, #0
@@ -2518,7 +2518,7 @@ ov01_021EEE30: ; 0x021EEE30
 	bl sub_0200E5D4
 	add r0, r4, #0
 	mov r1, #1
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	pop {r4, pc}
 	thumb_func_end ov01_021EEE30
 
@@ -2627,9 +2627,9 @@ ov01_021EEE44: ; 0x021EEE44
 	str r1, [sp, #8]
 	bl AddTextPrinterParameterized
 	ldr r0, [sp, #0x10]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	bl MessageFormat_delete
 	ldr r0, [sp, #0xc]
@@ -2683,7 +2683,7 @@ ov01_021EEF88: ; 0x021EEF88
 	bl sub_0200E5D4
 	add r0, r4, #0
 	mov r1, #1
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	pop {r4, pc}
 	thumb_func_end ov01_021EEF88
 
@@ -2731,9 +2731,9 @@ ov01_021EEF9C: ; 0x021EEF9C
 	mov r1, #1
 	bl AddTextPrinterParameterized
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0xc]
-	bl String_dtor
+	bl String_Delete
 _021EF006:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}

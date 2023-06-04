@@ -868,7 +868,7 @@ _02258E96:
 	mov r0, #0x69
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -1794,9 +1794,9 @@ ov12_02259514: ; 0x02259514
 	mov r1, #0
 	bl ov12_022698AC
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r1, #0x65
 	lsl r1, r1, #2
 	ldrb r1, [r4, r1]
@@ -10984,9 +10984,9 @@ _0225DE98:
 	add r0, r6, #0
 	bl ov12_02266AC0
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r5, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	beq _0225DECC
@@ -11107,9 +11107,9 @@ _0225DF84:
 	ldr r0, [sp, #0xc]
 	bl ov12_02262014
 	add r0, r5, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	b _0225E066
 _0225DFD0:
 	mov r0, #7
@@ -11137,9 +11137,9 @@ _0225DFD0:
 	ldr r0, [sp, #0xc]
 	bl ov12_02262014
 	add r0, r5, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	b _0225E066
 _0225E01C:
 	mov r0, #7
@@ -11167,9 +11167,9 @@ _0225E044:
 	str r3, [sp, #4]
 	bl ov12_02266508
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r5, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	b _0225E066
 _0225E062:
 	bl GF_AssertFail
@@ -11212,9 +11212,9 @@ _0225E06E:
 	mov r0, #8
 	strb r0, [r4, #0xa]
 	add r0, r5, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x58
 	pop {r3, r4, r5, r6, r7, pc}
 _0225E0D0:
@@ -11512,9 +11512,9 @@ _0225E300:
 	mov r3, #0xb
 	bl ov12_02266508
 	ldr r0, [sp, #0xc]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [sp, #8]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #0
 	add r0, #0x20
 	ldrb r0, [r0]
@@ -11877,9 +11877,9 @@ _0225E5E6:
 	mov r3, #0xc
 	bl ov12_02266508
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldrb r0, [r4, #0xf]
 	add sp, #0x34
 	add r0, r0, #1
@@ -14552,9 +14552,9 @@ _0225FBB2:
 	mov r0, #2
 	strb r0, [r4, #0xe]
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 _0225FBC6:
@@ -14609,9 +14609,9 @@ _0225FC38:
 	mov r0, #4
 	strb r0, [r4, #0xe]
 	ldr r0, [sp, #8]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 _0225FC4C:

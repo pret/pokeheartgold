@@ -132,7 +132,7 @@ BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 
         return FALSE;
     }
     StringExpandPlaceholders(msgFmt, dest, fmtStr);
-    String_dtor(fmtStr);
+    String_Delete(fmtStr);
     MessageFormat_delete(msgFmt);
     DestroyMsgData(msgData);
     return TRUE;
@@ -171,7 +171,7 @@ void GetItemUseErrorMessage(PLAYERPROFILE *playerProfile, STRING *dest, u16 item
         string = NewString_ReadMsgData(msgData, msg_0040_00037);
         BufferPlayersName(msgFmt, 0, playerProfile);
         StringExpandPlaceholders(msgFmt, dest, string);
-        String_dtor(string);
+        String_Delete(string);
         MessageFormat_delete(msgFmt);
         DestroyMsgData(msgData);
     }

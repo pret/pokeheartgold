@@ -167,9 +167,9 @@ sub_02088298: ; 0x02088298
 	bl sub_02004EC4
 	bl sub_0203A964
 	add r0, r5, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -374,7 +374,7 @@ sub_0208856C: ; 0x0208856C
 	bl FontID_Release
 	ldr r0, _020885D4 ; =0x000007B8
 	ldr r0, [r4, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #0
 	bl FontID_SetAccessLazy
 	ldr r0, _020885D8 ; =0x04000050
@@ -828,22 +828,22 @@ sub_0208895C: ; 0x0208895C
 	mov r0, #0x23
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x8d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x8e
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _020889CC ; =0x000007AC
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x7b
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	pop {r4, pc}
 	.balign 4, 0
 _020889BC: .word 0x000007B4

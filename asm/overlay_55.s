@@ -346,7 +346,7 @@ ov55_021E5BAC: ; 0x021E5BAC
 	ldr r0, [r4, #0x14]
 	cmp r0, #0
 	beq _021E5BBA
-	bl String_dtor
+	bl String_Delete
 _021E5BBA:
 	add r0, r4, #0
 	bl FreeToHeap

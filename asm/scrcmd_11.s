@@ -664,7 +664,7 @@ _0204C25E:
 	bl SetMonData
 	add r0, r5, #0
 	ldr r4, [sp, #8]
-	bl String_dtor
+	bl String_Delete
 _0204C2B6:
 	ldr r1, [sp, #4]
 	mov r0, #2
@@ -954,7 +954,7 @@ MGMessageSuccess_BattleRules: ; 0x0204C4A4
 	mov r3, #0
 	bl BufferString
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

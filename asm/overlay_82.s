@@ -1468,9 +1468,9 @@ _0223E8E4:
 	ldr r0, [r6, #0x24]
 	bl MessageFormat_delete
 	ldr r0, [r6, #0x28]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x2c]
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	add r0, #0x98
 	ldr r0, [r0]
@@ -1479,7 +1479,7 @@ _0223E8E4:
 	add r5, r6, #0
 _0223E94A:
 	ldr r0, [r5, #0x30]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #2
@@ -1492,7 +1492,7 @@ _0223E94A:
 	mov r0, #0x22
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov82_0223E8C4
@@ -2322,7 +2322,7 @@ ov82_0223EFCC: ; 0x0223EFCC
 	add r3, r7, #0
 	bl AddTextPrinterParameterized2
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	bl CopyWindowToVram
 	add sp, #0x28
@@ -2417,7 +2417,7 @@ _0223F0D4:
 	cmp r0, #5
 	blt _0223F08C
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x24]
 	bl DestroyMsgData
 	ldr r0, [sp, #0x10]
@@ -2558,7 +2558,7 @@ ov82_0223F1AC: ; 0x0223F1AC
 	add r3, r7, #0
 	bl AddTextPrinterParameterized2
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x10]
 	bl DestroyMsgData
 	add r0, r5, #0
@@ -3778,7 +3778,7 @@ _0223FAD4:
 	mov r1, #1
 	bl GX_EngineAToggleLayers
 	ldr r0, [sp, #0x18]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	nop

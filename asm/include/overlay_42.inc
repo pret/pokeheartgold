@@ -2,7 +2,7 @@
 #pragma once
 .public PaletteData_LoadPalette
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_GetScrnData
 .public CreateSpriteResourcesHeader
 .public G2dRenderer_SetMainSurfaceCoords

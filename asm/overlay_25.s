@@ -132,7 +132,7 @@ _022599A2:
 	lsl r2, r6, #1
 	bl MIi_CpuCopy16
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 _022599C4:
 	mov r7, #0
 	add r5, #0x30
@@ -172,7 +172,7 @@ _022599F8:
 	lsl r2, r6, #1
 	bl MIi_CpuCopy16
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 _02259A1A:
 	add r7, r7, #1
 	add r5, #0x38

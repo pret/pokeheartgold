@@ -590,10 +590,10 @@ _02201850: .word NARC_AllocAndReadWholeMember
 
 	thumb_func_start ov16_02201854
 ov16_02201854: ; 0x02201854
-	ldr r3, _02201858 ; =NARC_dtor
+	ldr r3, _02201858 ; =NARC_Delete
 	bx r3
 	.balign 4, 0
-_02201858: .word NARC_dtor
+_02201858: .word NARC_Delete
 	thumb_func_end ov16_02201854
 
 	thumb_func_start ov16_0220185C

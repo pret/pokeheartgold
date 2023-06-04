@@ -17,7 +17,7 @@
 .public LCRandom
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Save_PlayerData_GetOptionsAddr
 .public Save_GameStats_get
 .public GameStats_Inc

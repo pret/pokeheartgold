@@ -124,8 +124,8 @@ BOOL Task_RunScripts(TaskManager *taskman) {
         if (env->activeScriptContextCount == 0) {
             void (*callback)(FieldSystem *a0) = env->scrctx_end_cb;
             MessageFormat_delete(env->msgfmt);
-            String_dtor(env->stringBuffer0);
-            String_dtor(env->stringBuffer1);
+            String_Delete(env->stringBuffer0);
+            String_Delete(env->stringBuffer1);
             env->check = 0;
             FreeToHeap(env);
             if (callback != NULL) {

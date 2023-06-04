@@ -84,7 +84,7 @@ _0225D5A6:
 	add r1, r7, #0
 	bl ov28_0225D898
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r6, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -333,7 +333,7 @@ ov28_0225D7C4: ; 0x0225D7C4
 	lsl r6, r6, #4
 _0225D7CE:
 	ldr r0, [r5, r6]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #5
@@ -705,7 +705,7 @@ ov28_0225DA74: ; 0x0225DA74
 	mov r3, #0x46
 	bl ov28_0225D92C
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r1, #0x16
 	lsl r1, r1, #4
 	add r0, r5, r1

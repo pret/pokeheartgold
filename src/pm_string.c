@@ -19,7 +19,7 @@ STRING *String_New(u32 maxsize, HeapID heapId) {
     return ret;
 }
 
-void String_dtor(STRING *string) {
+void String_Delete(STRING *string) {
     ASSERT_STRING(string);
     string->magic = STRING_INVAL;
     FreeToHeap(string);

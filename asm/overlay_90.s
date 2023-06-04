@@ -644,7 +644,7 @@ _02258C54:
 	add r0, #0x10
 	bl ov90_02258E10
 	ldr r0, [r4, #0xc]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -1376,9 +1376,9 @@ ov90_022591D4: ; 0x022591D4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #8]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #4]
 	bl MessageFormat_delete
 	ldr r0, [r4]
@@ -1716,7 +1716,7 @@ _0225943E:
 	add r1, r4, #0
 	bl ov90_022594FC
 	ldr r0, [r5, #0x24]
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -2107,7 +2107,7 @@ ov90_022596C8: ; 0x022596C8
 	add r2, #0x3c
 	bl ov90_0225A2B0
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -3661,7 +3661,7 @@ ov90_0225A340: ; 0x0225A340
 	add r4, r0, #0
 	bl RemoveWindow
 	ldr r0, [r4, #0x14]
-	bl String_dtor
+	bl String_Delete
 	pop {r4, pc}
 	thumb_func_end ov90_0225A340
 
@@ -4401,7 +4401,7 @@ ov90_0225A850: ; 0x0225A850
 	str r4, [sp, #4]
 	bl ov90_0225B59C
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	nop

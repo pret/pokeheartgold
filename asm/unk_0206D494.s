@@ -786,9 +786,9 @@ _0206DA80:
 	bl StringCompare
 	add r7, r0, #0
 	ldr r0, [sp, #4]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp]
-	bl String_dtor
+	bl String_Delete
 	cmp r7, #0
 	beq _0206DAD2
 	add r0, r5, #0
@@ -815,9 +815,9 @@ _0206DAD2:
 	bl StringCompare
 	add r4, r0, #0
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	cmp r4, #0
 	beq _0206DB18
 	add r0, r5, #0

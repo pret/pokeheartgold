@@ -1923,9 +1923,9 @@ _021E6816:
 	ldr r0, [r6, #0x3c]
 	bl MessageFormat_delete
 	ldr r0, [r6, #0x40]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x44]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
@@ -1946,7 +1946,7 @@ _021E6816:
 	mov r0, #0xe
 	lsl r0, r0, #6
 	ldr r0, [r6, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov87_021E6780
 

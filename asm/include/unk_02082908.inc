@@ -19,7 +19,7 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_LoadScrnData
 .public GfGfxLoader_GXLoadPal
 .public GfGfxLoader_GetCharData
@@ -118,7 +118,7 @@
 .public sub_02024B78
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public StringCopy
 .public CopyU16ArrayToString
 .public CopyStringToU16Array

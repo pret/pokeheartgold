@@ -458,9 +458,9 @@ _02237BDE:
 	add r0, r4, #0
 	bl ov12_02266644
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #1
 	bl sub_020027F0
 	add r0, r5, #0
@@ -868,9 +868,9 @@ _02237FD8:
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	add r0, r5, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r1, [r4, #4]
 	add r0, r4, #0
 	bl ov12_022387AC
@@ -973,9 +973,9 @@ _02237FD8:
 	add r0, r5, #0
 	bl ov12_02266644
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r5, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #5
 	bl sub_02007FD4
 	add r1, r4, #0
@@ -1616,7 +1616,7 @@ _022386C0:
 	bl sub_02002B8C
 	ldr r0, [r4, #8]
 	mov r1, #3
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	ldr r0, [r4, #4]
 	bl FreeToHeap
 	mov r0, #0x22
@@ -4152,7 +4152,7 @@ _02239A46:
 	add r2, r6, #0
 	bl AddTextPrinterParameterized
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl DestroyMsgData
 	ldr r0, _02239C1C ; =ov12_022397E4
@@ -4750,7 +4750,7 @@ ov12_0223A088: ; 0x0223A088
 	bl PaletteData_Free
 	ldr r0, [r4, #8]
 	mov r1, #1
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	mov r0, #2
 	mov r1, #0
 	bl GX_EngineAToggleLayers

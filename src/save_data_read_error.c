@@ -107,7 +107,7 @@ void ShowSaveDataReadError(HeapID heap_id) {
 
     ReadMsgDataIntoString(error_msgdata, msg_0008_00000, error_str);
     AddTextPrinterParameterized(&window, 0, error_str, 0, 0, 0, NULL);
-    String_dtor(error_str);
+    String_Delete(error_str);
 
     GX_BothDispOn();
     SetMasterBrightnessNeutral(PM_LCD_TOP);
@@ -166,7 +166,7 @@ void ShowGBACartRemovedError(HeapID heap_id) {
 
     ReadMsgDataIntoString(error_msgdata, msg_0008_00001, error_str);
     AddTextPrinterParameterized(&window, 0, error_str, 0, 0, 0, NULL);
-    String_dtor(error_str);
+    String_Delete(error_str);
 
     GX_BothDispOn();
     SetMasterBrightnessNeutral(PM_LCD_TOP);

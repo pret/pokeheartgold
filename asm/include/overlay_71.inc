@@ -11,7 +11,7 @@
 .public OverlayManager_GetArgs
 .public GetNarcMemberSizeByIdPair
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_LoadScrnData
 .public GfGfxLoader_GXLoadPal
@@ -126,7 +126,7 @@
 .public sub_02024B68
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public sub_02026E50
 .public GF_3DVramMan_InitFrameTexVramManager
 .public GF_3DVramMan_InitFramePlttVramManager

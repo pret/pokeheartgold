@@ -22,7 +22,7 @@
 .public OverlayManager_GetArgs
 .public OverlayManager_run
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public GfGfxLoader_GXLoadPalFromOpenNarc
@@ -50,7 +50,7 @@
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public ListMenuItems_New
-.public ListMenuItems_dtor
+.public ListMenuItems_Delete
 .public ListMenuItems_AppendFromMsgData
 .public ListMenuCursorNew
 .public DestroyListMenuCursorObj
@@ -101,7 +101,7 @@
 .public GX_SwapDisplay
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public StringCopy
 .public String_atoi
 .public StringCompare

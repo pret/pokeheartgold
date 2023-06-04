@@ -3,7 +3,7 @@
 .public ReadWholeNarcMemberByIdPair
 .public AllocAndReadWholeNarcMemberByIdPair
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public NARC_AllocAndReadWholeMember
 .public NARC_ReadWholeMember
 .public GfGfxLoader_LoadFromNarc

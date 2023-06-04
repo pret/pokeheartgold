@@ -7,7 +7,7 @@
 .public OverlayManager_GetArgs
 .public ReadWholeNarcMemberByIdPair
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public NARC_AllocAndReadWholeMember
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_LoadScrnData
@@ -79,7 +79,7 @@
 .public sub_02024B60
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetTrainerGender
 .public Save_GetPartyLeadAlive

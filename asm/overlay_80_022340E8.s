@@ -1160,7 +1160,7 @@ ov80_02234968: ; 0x02234968
 	mov r1, #2
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 _02234A1E:
@@ -1199,7 +1199,7 @@ ov80_02234A38: ; 0x02234A38
 	mov r1, #3
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1694,7 +1694,7 @@ _02234DDC:
 	bl GX_LoadBGExtPltt
 	bl GX_EndLoadBGExtPltt
 	ldr r0, [sp, #4]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r6, #0

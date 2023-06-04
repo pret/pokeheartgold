@@ -1063,7 +1063,7 @@ _021E6102:
 	mov r3, #0
 	bl AddTextPrinterParameterized2
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	bl CopyWindowToVram
 	add r6, r6, #1

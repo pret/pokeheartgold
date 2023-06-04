@@ -165,7 +165,7 @@ NARC * NARC_New(NarcId narc_id, HeapID heap_id) {
     return narc;
 }
 
-void NARC_dtor(NARC * narc) {
+void NARC_Delete(NARC * narc) {
     FS_CloseFile(&narc->file);
     FreeToHeap(narc); // free to heap
 }

@@ -14,7 +14,7 @@
 .public sub_02003E5C
 .public PlaySE
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_GetCharData
 .public GfGfxLoader_GetScrnData
@@ -94,7 +94,7 @@
 .public sub_02025224
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public GetMonData
 .public GetMonGender
 .public Mon_GetBoxMon

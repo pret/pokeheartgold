@@ -13,7 +13,7 @@ typedef struct STRING {
 } STRING;
 
 STRING *String_New(u32 maxsize, HeapID heapId);
-void String_dtor(STRING *string);
+void String_Delete(STRING *string);
 void CopyStringToU16Array(const STRING *string, u16 *dest, u32 n);
 void CopyU16ArrayToString(STRING *string, const u16 *src);
 void CopyU16ArrayToStringN(STRING *string, const u16 *src, u32 n);

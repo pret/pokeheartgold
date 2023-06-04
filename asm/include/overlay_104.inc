@@ -7,7 +7,7 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public NARC_AllocAndReadWholeMember
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished

@@ -242,6 +242,6 @@ void Clear2dMenuWindowAndDelete(struct ListMenu2D *menu, HeapID heapId) {
     sub_0200E5D4(menu->template.window, FALSE);
     RemoveWindow(menu->template.window);
     FreeToHeapExplicit(heapId, menu->template.window);
-    ListMenuItems_dtor(menu->template.items);
+    ListMenuItems_Delete(menu->template.items);
     Delete2dMenu(menu, NULL);
 }

@@ -43,7 +43,7 @@
 .public ClearFrameAndWindow2
 .public IsPaletteFadeFinished
 .public ListMenuItems_New
-.public ListMenuItems_dtor
+.public ListMenuItems_Delete
 .public ListMenuItems_AppendFromMsgData
 .public ListMenuItems_AddItem
 .public sub_02018410
@@ -92,7 +92,7 @@
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public String16_FormatInteger
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr

@@ -17,7 +17,7 @@
 .public sub_020249D4
 .public sub_020249F8
 .public GF_AssertFail
-.public String_dtor
+.public String_Delete
 .public CopyStringToU16Array
 .public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetTrainerGender

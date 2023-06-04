@@ -5,7 +5,7 @@
 .public FontID_String_GetWidth
 .public PlaySE
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public GfGfxLoader_GXLoadPalFromOpenNarc
@@ -50,7 +50,7 @@
 .public sub_02024B68
 .public sub_02025224
 .public String_New
-.public String_dtor
+.public String_Delete
 .public CopyU16ArrayToString
 .public Save_PlayerData_GetProfileAddr
 .public sub_02068F98

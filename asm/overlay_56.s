@@ -556,7 +556,7 @@ _021E5FF2:
 	str r3, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	b _021E6088
 _021E603E:
 	ldr r1, _021E6098 ; =gSystem
@@ -751,7 +751,7 @@ _021E6162:
 	bl AddTextPrinterParameterized2
 	strb r0, [r5, #0xf]
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	bl ov56_021E5D08
 	ldrb r0, [r5, #0x16]
@@ -1559,7 +1559,7 @@ _021E6768:
 	add r1, #0x48
 	bl NNS_G2dGetUnpackedScreenData
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0x20
@@ -1863,7 +1863,7 @@ _021E6AB2:
 	mov r3, #0
 	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x10]
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	bl CopyWindowToVram
 _021E6AF4:
@@ -1931,7 +1931,7 @@ _021E6B26:
 	cmp r6, #2
 	blt _021E6B26
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 _021E6B88:

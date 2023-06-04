@@ -545,7 +545,7 @@ ov01_021E8AEC: ; 0x021E8AEC
 	mov r0, #0x13
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 _021E8B02:

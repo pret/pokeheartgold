@@ -8,7 +8,7 @@
 .public sub_02007200
 .public sub_02007234
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public GfGfxLoader_GetPlttData
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
@@ -60,7 +60,7 @@
 .public sub_0202487C
 .public Set2dSpriteAnimSeqNo
 .public GF_AssertFail
-.public String_dtor
+.public String_Delete
 .public FX_Div
 .public FX_ModS32
 .public MIi_CpuCopy16

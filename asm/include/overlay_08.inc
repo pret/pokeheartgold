@@ -14,7 +14,7 @@
 .public sub_02007234
 .public AllocAndReadWholeNarcMemberByIdPair
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public NARC_AllocAndReadWholeMember
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_LoadCharDataFromOpenNarc
@@ -81,7 +81,7 @@
 .public AllocWindows
 .public AddWindow
 .public RemoveWindow
-.public WindowArray_dtor
+.public WindowArray_Delete
 .public ScheduleWindowCopyToVram
 .public ClearWindowTilemapAndScheduleTransfer
 .public FillWindowPixelBuffer
@@ -101,7 +101,7 @@
 .public sub_02025224
 .public System_GetTouchNew
 .public String_New
-.public String_dtor
+.public String_Delete
 .public GetMonData
 .public GetMonExpBySpeciesAndLevel
 .public GetMonGender

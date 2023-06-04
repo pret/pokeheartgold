@@ -32,7 +32,7 @@
 .public AllocWindows
 .public AddWindowParameterized
 .public RemoveWindow
-.public WindowArray_dtor
+.public WindowArray_Delete
 .public CopyWindowToVram
 .public ScheduleWindowCopyToVram
 .public FillWindowPixelBuffer
@@ -40,7 +40,7 @@
 .public AddTextPrinterParameterized
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetCoinsAddr
 .public PlayerProfile_GetMoney

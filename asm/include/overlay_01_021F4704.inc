@@ -2,7 +2,7 @@
 #pragma once
 .public AllocAtEndAndReadFromNarcMemberByIdPair
 .public NARC_New
-.public NARC_dtor
+.public NARC_Delete
 .public NARC_ReadFromMember
 .public NARC_ReadFile
 .public CreateSysTask

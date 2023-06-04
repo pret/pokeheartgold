@@ -125,10 +125,10 @@ _02227142:
 	bl ov42_022271F8
 	ldr r0, _02227188 ; =0x00002304
 	ldr r0, [r5, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, _0222718C ; =0x00002308
 	ldr r0, [r5, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r7, _02227190 ; =0x000022F0
 	mov r6, #0
 	add r4, r5, #0

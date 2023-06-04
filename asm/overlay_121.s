@@ -2196,17 +2196,17 @@ ov121_021E6A4C: ; 0x021E6A4C
 	add r5, r6, #0
 _021E6A54:
 	ldr r0, [r5, #0x78]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #7
 	blt _021E6A54
 	ldr r0, [r6, #0x70]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x74]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x6c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x68]
 	bl MessageFormat_delete
 	ldr r0, [r6, #0x64]
@@ -2468,7 +2468,7 @@ ov121_021E6C5C: ; 0x021E6C5C
 	str r3, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r5, #0x44
 	add r0, r5, #0
 	bl CopyWindowToVram
@@ -2503,7 +2503,7 @@ ov121_021E6CA4: ; 0x021E6CA4
 	str r3, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r5, #0x34
 	add r0, r5, #0
 	bl CopyWindowToVram
@@ -2572,7 +2572,7 @@ ov121_021E6CEC: ; 0x021E6CEC
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r5, #0x54
 	add r0, r5, #0
 	bl CopyWindowToVram
@@ -2614,7 +2614,7 @@ ov121_021E6D80: ; 0x021E6D80
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r5, #0x54
 	add r0, r5, #0
 	bl CopyWindowToVram
@@ -2681,9 +2681,9 @@ _021E6DF6:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r4, #0x24
 	add r0, r4, #0
 	bl CopyWindowToVram
@@ -2724,7 +2724,7 @@ ov121_021E6E68: ; 0x021E6E68
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r5, #0x54
 	add r0, r5, #0
 	bl CopyWindowToVram
