@@ -41,35 +41,35 @@ void Sav2_Misc_init(SAVE_MISC_DATA *saveMiscData) {
     }
 }
 
-SAVE_MISC_DATA *Sav2_Misc_get(SAVEDATA *saveData) {
-    return SavArray_get(saveData, SAVE_MISC);
+SAVE_MISC_DATA *Sav2_Misc_Get(SAVEDATA *saveData) {
+    return SavArray_Get(saveData, SAVE_MISC);
 }
 
 const SAVE_MISC_DATA *Sav2_Misc_Const_Get(const SAVEDATA *saveData) {
     return SavArray_Const_Get(saveData, SAVE_MISC);
 }
 
-APRICORN_TREE *Sav2_FieldApricornTrees_get(SAVEDATA *saveData) {
+APRICORN_TREE *Sav2_FieldApricornTrees_Get(SAVEDATA *saveData) {
     SAVE_MISC_DATA *misc;
-    misc = SavArray_get(saveData, SAVE_MISC);
+    misc = SavArray_Get(saveData, SAVE_MISC);
     return misc->apricorn_trees;
 }
 
-BERRY_POT *Sav2_BerryPots_get(SAVEDATA *saveData) {
+BERRY_POT *Sav2_BerryPots_Get(SAVEDATA *saveData) {
     SAVE_MISC_DATA *misc;
-    misc = SavArray_get(saveData, SAVE_MISC);
+    misc = SavArray_Get(saveData, SAVE_MISC);
     return misc->berry_pots;
 }
 
-struct GF_RTC_DateTime *Sav2_BerryPotRTC_get(SAVEDATA *saveData) {
+struct GF_RTC_DateTime *Sav2_BerryPotRTC_Get(SAVEDATA *saveData) {
     SAVE_MISC_DATA *misc;
-    misc = SavArray_get(saveData, SAVE_MISC);
+    misc = SavArray_Get(saveData, SAVE_MISC);
     return &misc->berry_datetime;
 }
 
 struct Gymmick *Sav2_GetGymmickPtr(SAVEDATA *saveData) {
     SAVE_MISC_DATA *misc;
-    misc = SavArray_get(saveData, SAVE_MISC);
+    misc = SavArray_Get(saveData, SAVE_MISC);
     return &misc->gymmick;
 }
 

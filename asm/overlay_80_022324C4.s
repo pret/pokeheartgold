@@ -60,7 +60,7 @@ _02232520:
 	cmp r2, #3
 	bne _02232546
 	ldr r0, [r0, #4]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	bl ScriptState_GetVar4052
 	b _02232552
 _02232546:
@@ -288,7 +288,7 @@ _0223273E:
 _02232744:
 	ldr r5, [r6]
 	ldr r0, [r5, #4]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	add r1, r5, r4
 	add r1, #0x24
 	ldrb r1, [r1]
@@ -306,7 +306,7 @@ _02232744:
 	cmp r4, #3
 	blo _02232744
 	ldr r0, [r5, #4]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	str r0, [sp, #8]
 	ldr r0, _0223281C ; =ov80_0223DD48
 	mov r1, #0
@@ -1668,7 +1668,7 @@ _02233244:
 	bl sub_02031228
 _0223326A:
 	add r0, r6, #0
-	bl Sav2_GameStats_get
+	bl Sav2_GameStats_Get
 	mov r1, #0x42
 	add r2, r4, #0
 	bl GameStats_Add

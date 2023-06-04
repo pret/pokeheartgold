@@ -62,7 +62,7 @@ sub_02058AEC: ; 0x02058AEC
 	ldr r0, [sp, #0x20]
 	strb r0, [r4, #0x12]
 	add r0, r5, #0
-	bl Save_SpecialRibbons_get
+	bl Save_SpecialRibbons_Get
 	str r0, [r4, #0x20]
 	mov r0, #0
 	str r0, [r4, #0x30]
@@ -105,7 +105,7 @@ sub_02058B84: ; 0x02058B84
 	str r0, [r4, #0x14]
 	ldr r0, [r5, #0x24]
 	ldr r0, [r0, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	str r0, [r4]
 	ldr r0, [r5, #0x24]
 	ldr r0, [r0, #0xc]
@@ -648,7 +648,7 @@ _02058FC0:
 _02058FC6:
 	ldr r0, [r4, #0x24]
 	ldr r0, [r0, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -1490,7 +1490,7 @@ sub_020596A8: ; 0x020596A8
 	ldr r0, [r7, #0x24]
 	add r5, r1, #0
 	ldr r0, [r0, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	str r0, [sp]
 	ldr r4, [r7, #0x4c]
 	bl sub_02070D90

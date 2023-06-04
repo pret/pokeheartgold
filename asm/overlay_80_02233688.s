@@ -644,7 +644,7 @@ _02233B96:
 _02233B9C:
 	ldr r0, [sp, #0x24]
 	ldr r0, [r0, #8]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	add r7, r0, #0
 	ldr r0, _02233E44 ; =0x00000412
 	mov r5, #0

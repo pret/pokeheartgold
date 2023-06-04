@@ -40,7 +40,7 @@
 .public Sav2_PlayerData_GetProfileAddr
 .public Sav2_PlayerData_GetOptionsAddr
 .public sub_020290FC
-.public Save_SpecialRibbons_get
+.public Save_SpecialRibbons_Get
 .public sub_02034434
 .public sub_02034818
 .public sub_02035650
@@ -134,7 +134,7 @@
 .public AddMonToParty
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SavArray_PlayerParty_Get
 .public SavArray_IsNatDexEnabled
 .public SaveGetBag
 .public sub_02088288

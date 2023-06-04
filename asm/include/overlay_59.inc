@@ -162,7 +162,7 @@
 .public Sav2_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public Save_ApricornBox_get
+.public Save_ApricornBox_Get
 .public ApricornBox_CountApricorn
 .public ApricornBox_SetKurtApricorn
 .public sub_02031BEC
@@ -185,7 +185,7 @@
 .public GetPartyCount
 .public GetPartyMonByIndex
 .public Party_GetUnkSubSlot
-.public SavArray_PlayerParty_get
+.public SavArray_PlayerParty_Get
 .public NNS_GfdDoVramTransfer
 .public NNS_G2dSetupSoftwareSpriteCamera
 .public NNS_G3dGlbFlushP

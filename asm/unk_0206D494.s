@@ -556,7 +556,7 @@ sub_0206D8D0: ; 0x0206D8D0
 	bl Sav2_PlayerData_GetProfileAddr
 	add r4, r0, #0
 	add r0, r6, #0
-	bl Sav2_Misc_get
+	bl Sav2_Misc_Get
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #5
@@ -835,13 +835,13 @@ _0206DB18:
 _0206DB24: .word gGameVersion
 	thumb_func_end MonIsInGameTradePokeEx
 
-	thumb_func_start FieldSys_BugContest_get
-FieldSys_BugContest_get: ; 0x0206DB28
+	thumb_func_start FieldSys_BugContest_Get
+FieldSys_BugContest_Get: ; 0x0206DB28
 	mov r1, #0x46
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
 	bx lr
-	thumb_func_end FieldSys_BugContest_get
+	thumb_func_end FieldSys_BugContest_Get
 
 	thumb_func_start BugContest_GetSportBallsAddr
 BugContest_GetSportBallsAddr: ; 0x0206DB30
@@ -854,11 +854,11 @@ FieldSys_IncrementBugContestTimer: ; 0x0206DB34
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
-	bl FieldSys_BugContest_get
+	bl FieldSys_BugContest_Get
 	add r4, r0, #0
 	beq _0206DB56
 	ldr r0, [r5, #0xc]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	bl CheckFlag996
 	cmp r0, #0
 	beq _0206DB56
@@ -875,7 +875,7 @@ sub_0206DB58: ; 0x0206DB58
 	sub sp, #0x14
 	add r5, r0, #0
 	ldr r0, [r1, #0xc]
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	mov r1, #0x60
 	str r1, [sp]
 	sub r1, #0x61
@@ -931,7 +931,7 @@ sub_0206DBC0: ; 0x0206DBC0
 	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r7, #0
-	bl FieldSys_BugContest_get
+	bl FieldSys_BugContest_Get
 	add r5, r0, #0
 	add r0, r6, #0
 	bl TaskManager_GetStatePtr
@@ -1026,7 +1026,7 @@ ScrCmd_807: ; 0x0206DC50
 	add r7, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl Save_TrainerHouse_get
+	bl Save_TrainerHouse_Get
 	add r4, r0, #0
 	mov r0, #6
 	lsl r0, r0, #6

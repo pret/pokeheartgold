@@ -54,7 +54,7 @@ sub_02055828: ; 0x02055828
 	push {r3, r4, r5, lr}
 	ldr r0, [r0, #0xc]
 	ldr r4, _0205586C ; =_021D4178
-	bl Sav2_GameStats_get
+	bl Sav2_GameStats_Get
 	add r5, r0, #0
 	bl GF_RTC_DateTimeToSec
 	add r3, r1, #0

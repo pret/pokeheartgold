@@ -179,7 +179,7 @@ Fsys_SetSavedMusicId: ; 0x02054F28
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	add r4, r1, #0
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	bl FlyPoints_GetMusicIdAddr
 	strh r4, [r0]
 	pop {r4, pc}
@@ -190,7 +190,7 @@ Fsys_SetSavedMusicId: ; 0x02054F28
 Fsys_GetSavedMusicId: ; 0x02054F3C
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	bl FlyPoints_GetMusicIdAddr
 	ldrh r0, [r0]
 	pop {r3, pc}
@@ -200,7 +200,7 @@ Fsys_GetSavedMusicId: ; 0x02054F3C
 Fsys_ClearSavedMusicId: ; 0x02054F4C
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	bl FlyPoints_GetMusicIdAddr
 	mov r1, #0
 	strh r1, [r0]
@@ -218,7 +218,7 @@ Fsys_GetSurfOverriddenMusicId: ; 0x02054F60
 	cmp r0, #2
 	bne _02054F82
 	ldr r0, [r4, #0xc]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	bl CheckFlag99A
 	cmp r0, #0
 	bne _02054F82
@@ -260,7 +260,7 @@ _02054FBE:
 _02054FC4:
 	add r6, r0, #0
 	ldr r0, [r5, #0xc]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	add r1, r4, #0
 	bl GetOverriddenMapMusic
 	cmp r0, #0

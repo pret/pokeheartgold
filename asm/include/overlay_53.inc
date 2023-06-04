@@ -127,7 +127,7 @@
 .public Sav2_PlayerData_GetOptionsAddr
 .public PlayerName_StringToFlat
 .public PlayerProfile_SetTrainerGender
-.public Sav2_Misc_get
+.public Sav2_Misc_Get
 .public Sav2_Misc_RivalName_set
 .public Options_GetTextFrameDelay
 .public sub_020830D8

@@ -28,11 +28,11 @@ sub_020318CC: ; 0x020318CC
 
 	thumb_func_start sub_020318E8
 sub_020318E8: ; 0x020318E8
-	ldr r3, _020318F0 ; =SavArray_get
+	ldr r3, _020318F0 ; =SavArray_Get
 	mov r1, #0x20
 	bx r3
 	nop
-_020318F0: .word SavArray_get
+_020318F0: .word SavArray_Get
 	thumb_func_end sub_020318E8
 
 	thumb_func_start sub_020318F4

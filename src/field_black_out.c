@@ -174,13 +174,13 @@ BOOL Task_BlackOut(TaskManager *taskManager) {
 
     switch (*state) {
     case 0:
-        flypointsSave = Save_FlyPoints_get(fsys->savedata);
+        flypointsSave = Save_FlyPoints_Get(fsys->savedata);
         deathSpawn = FlyPoints_GetDeathSpawn(flypointsSave);
         GetDeathWarpData(deathSpawn, &deathWarp);
         GetSpecialSpawnWarpData(deathSpawn, FlyPoints_GetSpecialSpawnWarpPtr(flypointsSave));
         sub_020537A8(taskManager, &deathWarp);
         Fsys_ClearFollowingTrainer(fsys);
-        HealParty(SavArray_PlayerParty_get(fsys->savedata));
+        HealParty(SavArray_PlayerParty_Get(fsys->savedata));
         (*state)++;
         break;
     case 1:
@@ -205,7 +205,7 @@ BOOL Task_BlackOut(TaskManager *taskManager) {
         break;
     case 5:
         SetBlendBrightness(0, 0x3F, 3);
-        if (GetMomSpawnId() == FlyPoints_GetDeathSpawn(Save_FlyPoints_get(fsys->savedata))) {
+        if (GetMomSpawnId() == FlyPoints_GetDeathSpawn(Save_FlyPoints_Get(fsys->savedata))) {
             QueueScript(taskManager, std_whited_out_to_mom, NULL, NULL);
         } else {
             QueueScript(taskManager, std_whited_out_to_pokecenter, NULL, NULL);

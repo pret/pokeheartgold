@@ -14,7 +14,7 @@
 .public String_Delete
 .public StringGetLength
 .public String_c_str
-.public Save_TrainerHouse_get
+.public Save_TrainerHouse_Get
 .public SetupNativeScript
 .public ScriptReadHalfword
 .public FieldSysGetAttrAddr
@@ -38,7 +38,7 @@
 .public InitPartyWithMaxSize
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SavArray_PlayerParty_Get
 .public MIi_CpuClear16
 .public MIi_CpuCopy16
 .public MI_CpuFill8

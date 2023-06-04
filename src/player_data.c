@@ -15,22 +15,22 @@ void Sav2_PlayerData_init(PLAYERDATA* player) {
 }
 
 PLAYERPROFILE* Sav2_PlayerData_GetProfileAddr(SAVEDATA* savedata) {
-    PLAYERDATA* player = SavArray_get(savedata, SAVE_PLAYERDATA);
+    PLAYERDATA* player = SavArray_Get(savedata, SAVE_PLAYERDATA);
     return &player->profile;
 }
 
 OPTIONS* Sav2_PlayerData_GetOptionsAddr(SAVEDATA* savedata) {
-    PLAYERDATA* player = SavArray_get(savedata, SAVE_PLAYERDATA);
+    PLAYERDATA* player = SavArray_Get(savedata, SAVE_PLAYERDATA);
     return &player->options;
 }
 
 u16* Sav2_PlayerData_GetCoinsAddr(SAVEDATA* savedata) {
-    PLAYERDATA* player = SavArray_get(savedata, SAVE_PLAYERDATA);
+    PLAYERDATA* player = SavArray_Get(savedata, SAVE_PLAYERDATA);
     return &player->coins;
 }
 
 IGT* Sav2_PlayerData_GetIGTAddr(SAVEDATA* savedata) {
-    PLAYERDATA* player = SavArray_get(savedata, SAVE_PLAYERDATA);
+    PLAYERDATA* player = SavArray_Get(savedata, SAVE_PLAYERDATA);
     return &player->igt;
 }
 

@@ -10,7 +10,7 @@ ov44_02229EE0: ; 0x02229EE0
 	mov r1, #0x16
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	mov r1, #2
 	mov r2, #0x1b
 	bl ScriptState_FlypointFlagAction
@@ -432,7 +432,7 @@ ov44_0222A168: ; 0x0222A168
 	mov r1, #0x16
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	str r0, [sp]
 	bl GetPartyCount
 	mov r5, #0
@@ -2935,7 +2935,7 @@ ov44_0222B528: ; 0x0222B528
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0x1f
-	bl SavArray_get
+	bl SavArray_Get
 	bl sub_02031710
 	mov r0, #0x16
 	lsl r0, r0, #4
@@ -3175,12 +3175,12 @@ ov44_0222B778: ; 0x0222B778
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Sav2_Pokedex_get
+	bl Sav2_Pokedex_Get
 	str r0, [sp, #0x10]
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	str r0, [sp, #0xc]
 	mov r0, #0x16
 	lsl r0, r0, #4

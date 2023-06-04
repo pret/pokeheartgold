@@ -17642,7 +17642,7 @@ ov70_02240500: ; 0x02240500
 	beq _0224053A
 	ldr r0, [r5]
 	ldr r0, [r0, #0x20]
-	bl Sav2_Pokewalker_get
+	bl Sav2_Pokewalker_Get
 	mov r1, #0x14
 	bl Pokewalker_UnlockCourse
 _0224053A:
@@ -18346,7 +18346,7 @@ _02240A1A:
 	bne _02240A62
 	ldr r0, [r5]
 	ldr r0, [r0, #0x20]
-	bl Sav2_Chatot_get
+	bl Sav2_Chatot_Get
 	bl Chatot_invalidate
 _02240A62:
 	cmp r6, #0
@@ -18421,7 +18421,7 @@ _02240AB0:
 _02240AF4:
 	ldr r0, [r5]
 	ldr r0, [r0, #0x20]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	add r6, r0, #0
 	bl ScriptState_GetVar404C
 	cmp r0, #0
@@ -18545,7 +18545,7 @@ _02240BC2:
 _02240BFC:
 	ldr r0, [r5]
 	ldr r0, [r0, #0x20]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	add r6, r0, #0
 	bl ScriptState_GetVar404C
 	cmp r0, #0
@@ -19572,7 +19572,7 @@ ov70_022413AC: ; 0x022413AC
 	str r1, [r0]
 	ldr r0, [r4]
 	ldr r0, [r0, #0x20]
-	bl Save_SpecialRibbons_get
+	bl Save_SpecialRibbons_Get
 	add r1, r4, #0
 	add r1, #0xdc
 	str r0, [r1]

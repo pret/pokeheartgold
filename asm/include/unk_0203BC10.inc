@@ -38,10 +38,10 @@
 .public Sav2_PlayerData_GetProfileAddr
 .public Sav2_PlayerData_GetOptionsAddr
 .public PlayerProfile_GetTrainerGender
-.public Sav2_Pokedex_get
-.public Sav2_Mailbox_get
-.public Sav2_GameStats_get
-.public Save_SpecialRibbons_get
+.public Sav2_Pokedex_Get
+.public Sav2_Mailbox_Get
+.public Sav2_GameStats_Get
+.public Save_SpecialRibbons_Get
 .public sub_02035650
 .public sub_02037FF0
 .public MapMatrix_GetMapHeader
@@ -53,7 +53,7 @@
 .public FlyPoints_GetPosition
 .public FlyPoints_GetSpecialSpawnWarpPtr
 .public SaveFlyPoints_GetPlayerSub
-.public Save_FlyPoints_get
+.public Save_FlyPoints_Get
 .public sub_0203BC10
 .public sub_0203BC28
 .public sub_0203BCDC
@@ -81,7 +81,7 @@
 .public sub_0203F7B0
 .public sub_0203F7F4
 .public StartScriptFromMenu
-.public SavArray_Flags_get
+.public SavArray_Flags_Get
 .public FieldSys_CreateTask
 .public TaskManager_Jump
 .public FieldSys_ApplicationIsRunning
@@ -122,7 +122,7 @@
 .public GetMonData
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SavArray_PlayerParty_Get
 .public SavArray_IsNatDexEnabled
 .public sub_02075A7C
 .public sub_02075D3C

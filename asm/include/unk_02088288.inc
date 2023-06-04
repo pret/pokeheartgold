@@ -93,7 +93,7 @@
 .public PlayerProfile_GetTrainerGender
 .public Options_GetFrame
 .public sub_0203A964
-.public SavArray_Flags_get
+.public SavArray_Flags_Get
 .public CheckFlag982
 .public AllocMonZeroed
 .public AcquireMonLock

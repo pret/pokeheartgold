@@ -25,7 +25,7 @@
 .public Sav2_PlayerData_GetProfileAddr
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetTrainerGender
-.public Save_PhotoAlbum_get
+.public Save_PhotoAlbum_Get
 .public PhotoAlbum_GetIndexOfFirstEmptySlot
 .public PhotoAlbum_GetNumSaved
 .public PhotoAlbum_SetPhotoAtIndex
@@ -93,7 +93,7 @@
 .public MonIsShiny
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SavArray_PlayerParty_Get
 .public MI_CpuFill8
 .public MI_CpuCopy8
 .public NNS_G3dGlb

@@ -95,7 +95,7 @@
 .public sub_0202D5DC
 .public sub_0202D8D0
 .public sub_0202D8E4
-.public Save_FrontierData_get
+.public Save_FrontierData_Get
 .public sub_0202D928
 .public sub_0203107C
 .public sub_020310BC

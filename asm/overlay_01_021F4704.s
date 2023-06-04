@@ -612,7 +612,7 @@ _021F4B70:
 	mov r0, #0x41
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl Save_SafariZone_get
+	bl Save_SafariZone_Get
 	str r0, [sp, #0x14]
 	bl sub_0202F620
 	str r0, [sp, #0x18]

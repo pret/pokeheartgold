@@ -112,7 +112,7 @@
 .public Sav2_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public SavArray_Flags_get
+.public SavArray_Flags_Get
 .public ScriptState_SetAlphPuzzleFlag
 .public NNS_GfdDoVramTransfer
 .public MI_CpuFill8

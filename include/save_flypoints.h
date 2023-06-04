@@ -28,8 +28,8 @@ struct FlypointsPlayerSub *SaveFlyPoints_GetPlayerSub(FLYPOINTS_SAVE *flypointsS
 u16 *FlyPoints_GetSafariBallsCounter(FLYPOINTS_SAVE *flypointsSave);
 u16 *FlyPoints_GetSafariStepsCounter(FLYPOINTS_SAVE *flypointsSave);
 u16 *FlyPoints_GetPoisonStepCounter(FLYPOINTS_SAVE *flypointsSave);
-FLYPOINTS_SAVE *Save_FlyPoints_get(SAVEDATA *saveData);
-struct SavedMapObjectList *Save_MapObjects_get(SAVEDATA *saveData);
+FLYPOINTS_SAVE *Save_FlyPoints_Get(SAVEDATA *saveData);
+struct SavedMapObjectList *Save_MapObjects_Get(SAVEDATA *saveData);
 void Fsys_SyncMapObjectsToSave(FieldSystem *fsys);
 void Fsys_RestoreMapObjectsFromSave(FieldSystem *fsys);
 

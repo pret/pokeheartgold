@@ -3,7 +3,7 @@
 .public StringNotEqualN
 .public PRandom
 .public CopyStringToU16Array
-.public SavArray_get
+.public SavArray_Get
 .public Sav2_FriendGroup_sizeof
 .public sub_0202C738
 .public Sav2_FriendGroup_init
@@ -17,7 +17,7 @@
 .public sub_0202C830
 .public sub_0202C83C
 .public sub_0202C848
-.public Save_FriendGroup_get
+.public Save_FriendGroup_Get
 .public sub_0202C860
 .public sub_0202C878
 .public sub_0202C88C

@@ -10,5 +10,5 @@ void sub_02031AF4(SavePokeathlonFriendshipRecords* unk) {
 }
 
 SavePokeathlonFriendshipRecords* sub_02031B00(SAVEDATA* savedata) {
-    return SavArray_get(savedata, SAVE_POKEATHLON_FRIENDSHIP_RECORDS);
+    return SavArray_Get(savedata, SAVE_POKEATHLON_FRIENDSHIP_RECORDS);
 }

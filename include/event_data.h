@@ -12,7 +12,7 @@ typedef struct ScriptState {
 
 u32 SavArray_Flags_sizeof(void);
 void SavArray_Flags_init(SCRIPT_STATE *scriptState);
-SCRIPT_STATE *SavArray_Flags_get(SAVEDATA *saveData);
+SCRIPT_STATE *SavArray_Flags_Get(SAVEDATA *saveData);
 BOOL CheckFlagInArray(SCRIPT_STATE *scriptState, u16 flagno);
 void SetFlagInArray(SCRIPT_STATE *scriptState, u16 flagno);
 void ClearFlagInArray(SCRIPT_STATE *scriptState, u16 flagno);

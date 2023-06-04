@@ -977,7 +977,7 @@ _0202C6F8: .word _021D2230
 sub_0202C6FC: ; 0x0202C6FC
 	push {r3, lr}
 	mov r1, #0x19
-	bl SavArray_get
+	bl SavArray_Get
 	mov r2, #0x23
 	ldr r1, _0202C710 ; =_021D2230
 	lsl r2, r2, #6
@@ -991,7 +991,7 @@ _0202C710: .word _021D2230
 sub_0202C714: ; 0x0202C714
 	push {r3, lr}
 	mov r1, #0x19
-	bl SavArray_get
+	bl SavArray_Get
 	add r1, r0, #0
 	mov r2, #0x23
 	ldr r0, _0202C72C ; =_021D2230

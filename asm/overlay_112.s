@@ -4211,11 +4211,11 @@ ov112_021E795C: ; 0x021E795C
 	ldr r1, _021E799C ; =0x0001E43C
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x20]
-	bl Sav2_Pokewalker_get
+	bl Sav2_Pokewalker_Get
 	ldr r1, _021E79A0 ; =0x0001E440
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x20]
-	bl Sav2_Pokedex_get
+	bl Sav2_Pokedex_Get
 	ldr r1, _021E79A4 ; =0x0001E444
 	str r0, [r4, r1]
 	pop {r4, pc}
@@ -7310,7 +7310,7 @@ ov112_021E95A0: ; 0x021E95A0
 	add r2, sp, #0
 	bl sub_02032674
 	ldr r0, [r6, #0x20]
-	bl Sav2_Pokedex_get
+	bl Sav2_Pokedex_Get
 	bl Pokedex_GetNatDexFlag
 	cmp r0, #0
 	beq _021E95C4
@@ -7362,7 +7362,7 @@ ov112_021E9610: ; 0x021E9610
 	add r6, r0, #0
 	ldr r0, [r6, #0x20]
 	str r1, [sp]
-	bl Sav2_Pokedex_get
+	bl Sav2_Pokedex_Get
 	bl Pokedex_GetNatDexFlag
 	cmp r0, #0
 	beq _021E9628
@@ -15292,7 +15292,7 @@ ov112_021ED530: ; 0x021ED530
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	ldr r0, [r6, #0x20]
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	bl FlyPoints_GetPosition
 	ldr r1, [r0]
 	ldr r0, _021ED57C ; =0x000001F3
@@ -18674,7 +18674,7 @@ _021EEF86:
 	bl GetStoragePCPointer
 	add r4, r0, #0
 	ldr r0, [r5, #0x20]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	mov r1, #0
 	str r1, [sp]
 	add r3, r0, #0
@@ -19114,7 +19114,7 @@ ov112_021EF31C: ; 0x021EF31C
 	ldr r0, [r4, #0x20]
 	cmp r6, #0x12
 	bne _021EF38C
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	ldr r1, [r5, #0x10]
 	bl GetPartyMonByIndex
 	add r6, r0, #0
@@ -19227,7 +19227,7 @@ _021EF414:
 	cmp r5, #0x12
 	ldr r0, [r2, #0x20]
 	bne _021EF4D6
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	add r1, r4, #0
 	bl GetPartyMonByIndex
 	mov r1, #0
@@ -22751,7 +22751,7 @@ _021F0FB8:
 _021F0FC2:
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Sav2_Pokewalker_get
+	bl Sav2_Pokewalker_Get
 	ldr r0, [r5]
 	ldr r0, [r0]
 	bl Sav2_PlayerData_GetProfileAddr
@@ -27238,7 +27238,7 @@ ov112_021F3244: ; 0x021F3244
 	add r4, r1, #0
 	bl Sav2_PlayerData_GetProfileAddr
 	add r0, r5, #0
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	mov r2, #0x7d
 	add r6, r0, #0
 	mov r0, #0
@@ -27274,7 +27274,7 @@ ov112_021F328C: ; 0x021F328C
 	str r1, [sp, #0x14]
 	str r0, [sp]
 	ldr r5, [sp, #0x10]
-	bl Save_TrainerHouse_get
+	bl Save_TrainerHouse_Get
 	str r0, [sp, #8]
 	ldr r0, [sp, #4]
 	bl TrainerHouseSet_CheckHasData
@@ -27710,7 +27710,7 @@ _021F35F6:
 ov112_021F3608: ; 0x021F3608
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r1, #0
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	ldr r5, _021F362C ; =ov112_021FF4D4
 	add r7, r0, #0
 	mov r4, #0
@@ -27732,7 +27732,7 @@ _021F362C: .word ov112_021FF4D4
 ov112_021F3630: ; 0x021F3630
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r1, #0
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	ldr r5, _021F3660 ; =ov112_021FF4D4
 	add r6, r0, #0
 	mov r4, #0

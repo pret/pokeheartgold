@@ -157,10 +157,10 @@
 .public sub_0202C2F8
 .public sub_0202C338
 .public sub_0202C6F4
-.public Sav2_Chatot_get
+.public Sav2_Chatot_Get
 .public Chatot_invalidate
 .public GameStats_Inc
-.public Save_SpecialRibbons_get
+.public Save_SpecialRibbons_Get
 .public UpdatePokedexWithReceivedSpecies
 .public sub_0203107C
 .public sub_020311AC
@@ -182,7 +182,7 @@
 .public sub_0203A1C4
 .public sub_0203A280
 .public sub_0203A880
-.public SavArray_Flags_get
+.public SavArray_Flags_Get
 .public sub_02055198
 .public ScriptState_GetVar404C
 .public ScriptState_SetVar404C

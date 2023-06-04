@@ -498,7 +498,7 @@ _021E799A:
 	strb r0, [r5, r3]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x24]
-	bl Save_Roamers_get
+	bl Save_Roamers_Get
 	mov r4, #0
 	add r6, r0, #0
 	add r7, r4, #0
@@ -12514,12 +12514,12 @@ ov101_TownMap_OvyInit: ; 0x021ED7F8
 	str r0, [r1, #0x24]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x24]
-	bl SaveData_GSPlayerMisc_get
+	bl SaveData_GSPlayerMisc_Get
 	ldr r1, [r4, #0x10]
 	str r0, [r1, #0x28]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x24]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	ldr r1, [r4, #0x10]
 	str r0, [r1, #0x2c]
 	ldr r0, [r4, #0x10]
@@ -18439,7 +18439,7 @@ ov101_021F0694: ; 0x021F0694
 	str r0, [sp, #0x2c]
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0x24]
-	bl Sav2_SysInfo_RTC_get
+	bl Sav2_SysInfo_RTC_Get
 	str r0, [sp, #0x30]
 	add r0, sp, #0
 	bl ov101_021F1D74
@@ -24010,7 +24010,7 @@ ov101_021F30AC: ; 0x021F30AC
 	mov r0, #0
 	strh r0, [r4, #0x20]
 	ldr r0, [r5, #0x1c]
-	bl Sav2_Pokedex_get
+	bl Sav2_Pokedex_Get
 	ldrb r1, [r4, #0x1a]
 	add r6, r0, #0
 	cmp r1, #2
@@ -24106,7 +24106,7 @@ _021F315A: ; jump table
 _021F3166:
 	bl ov101_021F2110
 	ldr r0, [r5, #0x1c]
-	bl Sav2_Pokedex_get
+	bl Sav2_Pokedex_Get
 	add r6, r0, #0
 	bl Pokedex_GetNatDexFlag
 	add r1, r4, #0
@@ -24509,7 +24509,7 @@ _021F3486:
 	pop {r3, r4, r5, r6, r7, pc}
 _021F3494:
 	ldr r0, [r5, #0x1c]
-	bl Save_ApricornBox_get
+	bl Save_ApricornBox_Get
 	add r6, r0, #0
 	bl ApricornBox_GetKurtQuantity
 	add r7, r0, #0
@@ -24849,7 +24849,7 @@ _021F371A:
 	pop {r3, r4, r5, r6, r7, pc}
 _021F3720:
 	ldr r0, [r7, #0x1c]
-	bl Sav2_DayCare_get
+	bl Sav2_DayCare_Get
 	ldr r1, [sp]
 	str r0, [sp, #4]
 	str r0, [r1, #0x50]
@@ -25047,7 +25047,7 @@ ov101_021F388C: ; 0x021F388C
 	pop {r3, r4, r5, r6, r7, pc}
 _021F38A2:
 	ldr r0, [r0, #0x1c]
-	bl Sav2_DayCare_get
+	bl Sav2_DayCare_Get
 	add r6, r5, #0
 	str r0, [sp]
 	str r0, [r5, #0x50]
@@ -25664,7 +25664,7 @@ ov101_021F3D34: ; 0x021F3D34
 	add r5, r0, #0
 	ldr r0, [r5, #0x1c]
 	mov r4, #0
-	bl SaveData_GSPlayerMisc_get
+	bl SaveData_GSPlayerMisc_Get
 	bl sub_0202EE70
 	add r6, r0, #0
 	mov r1, #1
@@ -26186,7 +26186,7 @@ _021F4120:
 	cmp r0, #0
 	beq _021F419A
 	ldr r0, [r5, #0x1c]
-	bl Save_SafariZone_get
+	bl Save_SafariZone_Get
 	ldrh r1, [r4, #0x1c]
 	add r6, r0, #0
 	cmp r1, #0
@@ -29133,7 +29133,7 @@ ov101_021F57B8: ; 0x021F57B8
 	add r6, r1, #0
 	add r7, r2, #0
 	str r3, [sp]
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	add r4, r0, #0
 	bl SaveFlyPoints_GetPlayerSub
 	str r0, [sp, #4]
@@ -30151,7 +30151,7 @@ RadioShow_PokemonMusic_setup: ; 0x021F5F40
 	add r4, r0, #0
 	bl MI_CpuFill8
 	ldr r0, [r5, #4]
-	bl Sav2_Pokedex_get
+	bl Sav2_Pokedex_Get
 	bl Pokedex_GetNatDexFlag
 	ldrb r1, [r4, #4]
 	mov r2, #1
@@ -30951,7 +30951,7 @@ RadioShow_Commercials_init: ; 0x021F6514
 	mov r2, #0x24
 	bl MI_CpuFill8
 	ldr r0, [r5, #4]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	mov r1, #1
 	strb r1, [r4, #8]
 	add r7, r0, #0
@@ -31202,7 +31202,7 @@ RadioShow_PokemonSearchParty_init: ; 0x021F6710
 	mov r2, #0xd
 	bl MI_CpuFill8
 	ldr r0, [r6, #4]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	add r7, r0, #0
 	ldr r0, [r6, #4]
 	bl Sav2_PlayerData_GetProfileAddr
@@ -31374,7 +31374,7 @@ _021F6890:
 	cmp r0, #4
 	bne _021F68B2
 	ldr r0, [r5, #4]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	ldr r1, _021F6900 ; =FLAG_DAILY_HEARD_BUENAS_PASSWORD
 	bl SetFlagInArray
 _021F68B2:
@@ -31462,7 +31462,7 @@ _021F6948:
 	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	ldr r0, [r5, #4]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	bl ScriptState_GetBuenasPasswordSet
 	mov r1, #0x1e
 	bl _s32_div_f
@@ -31662,7 +31662,7 @@ RadioShow_ThatTownThesePeople_init: ; 0x021F6AAC
 	mov r2, #0x14
 	bl MI_CpuFill8
 	ldr r0, [r5, #4]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	mov r1, #1
 	strb r1, [r4, #0xa]
 	add r5, r0, #0
@@ -32232,7 +32232,7 @@ RadioShow_PokemonTalk_init: ; 0x021F6F14
 	mov r1, #1
 	bl ReadMsgDataIntoString
 	ldr r0, [r4, #4]
-	bl Save_Roamers_get
+	bl Save_Roamers_Get
 	add r6, r0, #0
 	bl RoamerSave_OutbreakActive
 	cmp r0, #0
@@ -32305,10 +32305,10 @@ ov101_021F6FCC: ; 0x021F6FCC
 	add r7, r0, #0
 	ldr r0, [r7, #4]
 	add r5, r1, #0
-	bl Sav2_Pokedex_get
+	bl Sav2_Pokedex_Get
 	str r0, [sp, #8]
 	ldr r0, [r7, #4]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	mov r1, #2
 	mov r2, #0x19
 	bl ScriptState_FlypointFlagAction

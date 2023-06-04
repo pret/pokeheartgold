@@ -106,14 +106,14 @@
 .public GF_AssertFail
 .public Sav2_PlayerData_GetProfileAddr
 .public Sav2_PlayerData_GetOptionsAddr
-.public SaveData_GSPlayerMisc_get
+.public SaveData_GSPlayerMisc_Get
 .public sub_0202EDF8
 .public sub_0202EDFC
 .public Pokegear_GetRegisteredCardsArray
 .public sub_0202EE7C
 .public MapHeader_GetField14_1D
 .public sub_0203E354
-.public SavArray_Flags_get
+.public SavArray_Flags_Get
 .public sub_0208820C
 .public sub_02090C94
 .public sub_02090D0C

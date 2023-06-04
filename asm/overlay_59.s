@@ -213,7 +213,7 @@ ov59_02237E94: ; 0x02237E94
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x18]
-	bl Save_ApricornBox_get
+	bl Save_ApricornBox_Get
 	str r0, [r5, #0x10]
 	add r0, r5, #0
 	bl ov59_02238768
@@ -5810,7 +5810,7 @@ ov59_0223A9E4: ; 0x0223A9E4
 	add r1, #0x4c
 	strb r0, [r1]
 	ldr r0, [r5, #8]
-	bl Save_ApricornBox_get
+	bl Save_ApricornBox_Get
 	str r0, [r5, #0x14]
 	ldr r1, [r5, #4]
 	add r2, r5, #0
@@ -6356,7 +6356,7 @@ ov59_0223AE20: ; 0x0223AE20
 	sub sp, #0xc
 	add r5, r0, #0
 	ldr r0, [r5, #8]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	str r0, [r5, #0x10]
 	bl GetPartyCount
 	mov r6, #0

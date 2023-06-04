@@ -180,14 +180,14 @@
 .public SealCase_SetCapsuleI
 .public CapsuleGetSealI
 .public SealOnCapsuleGetID
-.public SealCase_inventory_get
+.public SealCase_inventory_Get
 .public SealCaseInventory_GetSealQuantity
 .public SealIsOnCapsule
 .public SealCaseInventory_SetSealQuantity
 .public GiveOrTakeSeal
 .public GiveOrTakeSeal2
 .public SealCase_CountUniqueSeals
-.public Sav2_GameStats_get
+.public Sav2_GameStats_Get
 .public GameStats_AddSpecial
 .public AllocMonZeroed
 .public GetMonData

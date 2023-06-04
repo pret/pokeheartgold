@@ -31,7 +31,7 @@ sub_02066EDC: ; 0x02066EDC
 	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [r4, #0xc]
 	add r0, r7, #0
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	str r0, [r4]
 	add r0, r7, #0
 	bl SaveGetBag
@@ -169,7 +169,7 @@ sub_02066FEC: ; 0x02066FEC
 	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	str r0, [r4]
 	add r0, r5, #0
 	bl SavArray_IsNatDexEnabled
@@ -189,7 +189,7 @@ sub_02066FEC: ; 0x02066FEC
 	ldrb r0, [r6, #9]
 	strb r0, [r4, #0x12]
 	add r0, r5, #0
-	bl Save_SpecialRibbons_get
+	bl Save_SpecialRibbons_Get
 	str r0, [r4, #0x20]
 	mov r0, #0x43
 	lsl r0, r0, #2
@@ -543,7 +543,7 @@ sub_020672D8: ; 0x020672D8
 	pop {r3, r4, r5, r6, r7, pc}
 _020672F2:
 	add r0, r4, #0
-	bl Save_FrontierData_get
+	bl Save_FrontierData_Get
 	mov r1, #0xd
 	mov r2, #0
 	add r4, r0, #0
@@ -640,7 +640,7 @@ sub_02067398: ; 0x02067398
 	pop {r4, r5, r6, r7, pc}
 _020673B6:
 	add r0, r4, #0
-	bl Save_FrontierData_get
+	bl Save_FrontierData_Get
 	mov r1, #0xd
 	mov r2, #0
 	add r7, r0, #0
@@ -790,12 +790,12 @@ _020674B8: .word 0x5D588B65
 sub_020674BC: ; 0x020674BC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl Save_FriendGroup_get
+	bl Save_FriendGroup_Get
 	bl sub_0202C7DC
 	bl sub_020674B0
 	add r4, r0, #0
 	add r0, r5, #0
-	bl Save_FrontierData_get
+	bl Save_FrontierData_Get
 	add r1, r4, #0
 	bl sub_0202D638
 	add r0, r4, #0
@@ -808,7 +808,7 @@ sub_020674E0: ; 0x020674E0
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl Save_FrontierData_get
+	bl Save_FrontierData_Get
 	add r6, r0, #0
 	bl sub_0202D63C
 	bl sub_020674B0
@@ -835,7 +835,7 @@ sub_0206751C: ; 0x0206751C
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r6, r0, #0
-	bl Save_FrontierData_get
+	bl Save_FrontierData_Get
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_0202D908
@@ -902,7 +902,7 @@ sub_0206759C: ; 0x0206759C
 	str r1, [sp]
 	cmp r1, #0
 	ble _02067606
-	bl Save_TrainerCard_get
+	bl Save_TrainerCard_Get
 	bl TrainerCard_GetBadgeShininessArr
 	add r4, r0, #0
 	add r0, r5, #0

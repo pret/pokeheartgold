@@ -13,7 +13,7 @@
 .public String_Delete
 .public String_c_str
 .public GetStoragePCPointer
-.public Sav2_SysInfo_RTC_get
+.public Sav2_SysInfo_RTC_Get
 .public Sav2_PlayerData_GetProfileAddr
 .public Sav2_PlayerData_GetOptionsAddr
 .public PlayerProfile_New
@@ -28,15 +28,15 @@
 .public sub_020290FC
 .public Pokedex_New
 .public Pokedex_Copy
-.public Sav2_Pokedex_get
+.public Sav2_Pokedex_Get
 .public Options_New
 .public Options_Copy
-.public Save_PalPad_get
+.public Save_PalPad_Get
 .public sub_0202CA44
 .public Chatot_New
-.public Sav2_Chatot_get
+.public Sav2_Chatot_Get
 .public Chatot_Copy
-.public Sav2_GameStats_get
+.public Sav2_GameStats_Get
 .public SaveData_GetMomsSavingsAddr
 .public MomSavingsBalanceAction
 .public sub_0203401C
@@ -51,8 +51,8 @@
 .public FlyPoints_GetWeatherType
 .public SaveFlyPoints_GetPlayerSub
 .public FlyPoints_GetSafariBallsCounter
-.public Save_FlyPoints_get
-.public SavArray_Flags_get
+.public Save_FlyPoints_Get
+.public SavArray_Flags_Get
 .public BattleSetup_New
 .public sub_02051A60
 .public sub_02051A74
@@ -92,7 +92,7 @@
 .public sub_02067A78
 .public FollowingPokemon_IsActive
 .public sub_02069FB0
-.public FieldSys_BugContest_get
+.public FieldSys_BugContest_Get
 .public BugContest_GetSportBallsAddr
 .public AllocMonZeroed
 .public CreateMon
@@ -107,7 +107,7 @@
 .public GetPartyCount
 .public GetPartyMonByIndex
 .public Party_Copy
-.public SavArray_PlayerParty_get
+.public SavArray_PlayerParty_Get
 .public BagNew
 .public BagCopy
 .public BagAddItem

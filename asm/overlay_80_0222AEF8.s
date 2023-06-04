@@ -232,7 +232,7 @@ ov80_0222B070: ; 0x0222B070
 	add r4, r0, #0
 	ldr r0, _0222B0B0 ; =0x000006FC
 	ldr r0, [r5, r0]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	mov r1, #0x26
 	lsl r1, r1, #4
 	ldrb r1, [r5, r1]

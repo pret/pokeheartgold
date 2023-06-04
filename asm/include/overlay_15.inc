@@ -152,7 +152,7 @@
 .public PlayerProfile_AddMoney
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public Save_Roamers_get
+.public Save_Roamers_Get
 .public RoamerSave_GetRepelAddr
 .public RoamerSave_RepelNotInUse
 .public RoamerSave_SetFlute

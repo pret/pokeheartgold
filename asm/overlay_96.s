@@ -342,7 +342,7 @@ _021E5BBC:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	ldr r0, [r0]
-	bl Save_Pokeathlon_get
+	bl Save_Pokeathlon_Get
 	bl sub_020319F0
 	add r2, r0, #0
 	ldr r0, _021E5C1C ; =0x00000D24
@@ -2398,7 +2398,7 @@ ov96_021E6A00: ; 0x021E6A00
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	ldr r0, [r0]
-	bl Save_Pokeathlon_get
+	bl Save_Pokeathlon_Get
 	bl sub_020319F0
 	add r5, r0, #0
 	mov r0, #9
@@ -3687,7 +3687,7 @@ _021E7416:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl Save_ApricornBox_get
+	bl Save_ApricornBox_Get
 	add r7, r0, #0
 	mov r0, #0x7e
 	lsl r0, r0, #2
@@ -3699,7 +3699,7 @@ _021E7416:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl Save_Pokeathlon_get
+	bl Save_Pokeathlon_Get
 	bl sub_0203199C
 	add r6, r0, #0
 	bl sub_02031B10
@@ -3834,7 +3834,7 @@ ov96_021E7544: ; 0x021E7544
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl Save_ApricornBox_get
+	bl Save_ApricornBox_Get
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ov96_021E5D34
@@ -4072,7 +4072,7 @@ ov96_021E7718: ; 0x021E7718
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl Save_Pokeathlon_get
+	bl Save_Pokeathlon_Get
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ov96_021E5D6C
@@ -4081,7 +4081,7 @@ ov96_021E7718: ; 0x021E7718
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	str r0, [sp]
 	mov r0, #0x1d
 	lsl r0, r0, #4
@@ -5255,7 +5255,7 @@ ov96_021E8028: ; 0x021E8028
 	ldr r0, [r5, r0]
 	add r6, r1, #0
 	ldr r0, [r0]
-	bl Save_Pokeathlon_get
+	bl Save_Pokeathlon_Get
 	add r7, r0, #0
 	mov r4, #0
 _021E803E:
@@ -5309,7 +5309,7 @@ ov96_021E8084: ; 0x021E8084
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	ldr r0, [r0]
-	bl Save_Pokeathlon_get
+	bl Save_Pokeathlon_Get
 	add r7, r0, #0
 	mov r4, #0
 _021E8098:
@@ -5344,7 +5344,7 @@ ov96_021E80C4: ; 0x021E80C4
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
 	ldr r0, [r0]
-	bl Save_Pokeathlon_get
+	bl Save_Pokeathlon_Get
 	bl sub_020319DC
 	ldr r6, _021E8110 ; =ov96_0221A894
 	ldr r7, _021E8114 ; =_0221A7D8
@@ -5739,7 +5739,7 @@ ov96_021E839C: ; 0x021E839C
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl Save_Pokeathlon_get
+	bl Save_Pokeathlon_Get
 	add r6, r0, #0
 	ldr r0, _021E8418 ; =0x00000D2A
 	ldrh r1, [r5, r0]
@@ -13953,7 +13953,7 @@ _021EC07E:
 _021EC0B0:
 	add r0, r6, #0
 	bl ov96_021E5D60
-	bl Save_Pokeathlon_get
+	bl Save_Pokeathlon_Get
 	bl sub_020319A4
 	add r1, r4, #0
 	add r1, #0x9c
@@ -18130,7 +18130,7 @@ _021EE0CE:
 	bne _021EE0CE
 	add r0, r2, #0
 	bl ov96_021E5D60
-	bl Save_Pokeathlon_get
+	bl Save_Pokeathlon_Get
 	bl sub_020319F0
 	add r6, r0, #0
 	add r0, sp, #0x20
@@ -20436,7 +20436,7 @@ ov96_021EF2A0: ; 0x021EF2A0
 ov96_021EF2AC: ; 0x021EF2AC
 	push {r3, lr}
 	bl ov96_021E5D60
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	mov r1, #0xef
 	bl CheckFlagInArray
 	pop {r3, pc}
@@ -20833,7 +20833,7 @@ ov96_021EF5F4: ; 0x021EF5F4
 	ldr r0, [r0]
 	add r4, r1, #0
 	bl ov96_021E5D60
-	bl Save_Pokeathlon_get
+	bl Save_Pokeathlon_Get
 	bl sub_020319DC
 	mov r1, #0x2c
 	mul r1, r4

@@ -184,7 +184,7 @@
 .public CopyU16ArrayToStringN
 .public CopyStringToU16Array
 .public sub_02027098
-.public Save_MysteryGift_get
+.public Save_MysteryGift_Get
 .public sub_020270F8
 .public SaveGameNormal
 .public Save_NowWriteFile_AfterMGInit
@@ -194,7 +194,7 @@
 .public Save_Cancel
 .public SaveSubstruct_AssertCRC
 .public SaveSubstruct_UpdateCRC
-.public Sav2_SysInfo_get
+.public Sav2_SysInfo_Get
 .public Sav2_SysInfo_GetField48
 .public Sav2_PlayerData_GetProfileAddr
 .public Sav2_PlayerData_GetOptionsAddr
@@ -207,7 +207,7 @@
 .public Pokedex_CountDexOwned
 .public Pokedex_GetNatDexFlag
 .public Pokedex_IsEnabled
-.public Sav2_Pokedex_get
+.public Sav2_Pokedex_Get
 .public Options_GetFrame
 .public GetIGTHours
 .public GetIGTMinutes

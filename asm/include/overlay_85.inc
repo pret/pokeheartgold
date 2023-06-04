@@ -212,7 +212,7 @@
 .public CopyPokemonToPokemon
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SavArray_PlayerParty_Get
 .public BagAddItem
 .public SaveGetBag
 .public MonSetTrainerMemo

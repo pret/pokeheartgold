@@ -9,7 +9,7 @@
 .public GF_AssertFail
 .public CopyU16ArrayToString
 .public CopyStringToU16Array
-.public SavArray_get
+.public SavArray_Get
 .public Sav2_DressupData_init
 .public Sav2_DressupData_sizeof
 .public sub_0202B994
@@ -50,7 +50,7 @@
 .public sub_0202BF04
 .public sub_0202BF08
 .public sub_0202BF80
-.public Save_DressupData_get
+.public Save_DressupData_Get
 .public CreateMon
 .public GetMonData
 .public SetMonData

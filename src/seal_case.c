@@ -12,8 +12,8 @@ void CopyCapsule(const CAPSULE *src, CAPSULE *dest) {
     MI_CpuCopy8(src, dest, sizeof(CAPSULE));
 }
 
-SEALCASE *Sav2_SealCase_get(SAVEDATA *saveData) {
-    return SavArray_get(saveData, SAVE_SEAL_CASE);
+SEALCASE *Sav2_SealCase_Get(SAVEDATA *saveData) {
+    return SavArray_Get(saveData, SAVE_SEAL_CASE);
 }
 
 CAPSULE *SealCase_GetCapsuleI(SEALCASE *sealCase, int i) {
@@ -43,7 +43,7 @@ u8 SealOnCapsuleGetY(const SEAL *seal) {
     return seal->y;
 }
 
-SEALBAG *SealCase_inventory_get(SEALCASE *sealCase) {
+SEALBAG *SealCase_inventory_Get(SEALCASE *sealCase) {
     return &sealCase->inventory;
 }
 

@@ -15,7 +15,7 @@ static LocalMapObject* CreateDayCareMonSpriteInternal(MapObjectMan* object_man, 
 BOOL ScrCmd_BufferDayCareMonNicks(SCRIPTCONTEXT* ctx) {
     SAVEDATA* savedata = ctx->fsys->savedata;
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
-    DAYCARE* daycare = Sav2_DayCare_get(savedata);
+    DAYCARE* daycare = Sav2_DayCare_Get(savedata);
 
     Sav2_DayCare_BufferStoredMonNicks(daycare, *msg_fmt);
 
@@ -25,7 +25,7 @@ BOOL ScrCmd_BufferDayCareMonNicks(SCRIPTCONTEXT* ctx) {
 BOOL ScrCmd_GetDayCareState(SCRIPTCONTEXT* ctx) {
     SAVEDATA* savedata = ctx->fsys->savedata;
     u16* ret_ptr = ScriptGetVarPointer(ctx);
-    DAYCARE* daycare = SavArray_get(savedata, SAVE_DAYCARE);
+    DAYCARE* daycare = SavArray_Get(savedata, SAVE_DAYCARE);
 
     *ret_ptr = Sav2_DayCare_GetState(daycare);
 
@@ -33,7 +33,7 @@ BOOL ScrCmd_GetDayCareState(SCRIPTCONTEXT* ctx) {
 }
 
 BOOL ScrCmd_ResetDayCareEgg(SCRIPTCONTEXT* ctx) {
-    DAYCARE* daycare = SavArray_get(ctx->fsys->savedata, SAVE_DAYCARE);
+    DAYCARE* daycare = SavArray_Get(ctx->fsys->savedata, SAVE_DAYCARE);
 
     Sav2_DayCare_ResetEggStats(daycare);
 
@@ -42,8 +42,8 @@ BOOL ScrCmd_ResetDayCareEgg(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_GiveDayCareEgg(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    DAYCARE* daycare = SavArray_get(fsys->savedata, SAVE_DAYCARE);
-    PARTY* party = SavArray_PlayerParty_get(fsys->savedata);
+    DAYCARE* daycare = SavArray_Get(fsys->savedata, SAVE_DAYCARE);
+    PARTY* party = SavArray_PlayerParty_Get(fsys->savedata);
     SAVEDATA* savedata = FieldSys_GetSaveDataPtr(ctx->fsys);
     PLAYERPROFILE* profile = Sav2_PlayerData_GetProfileAddr(savedata);
 
@@ -58,8 +58,8 @@ BOOL ScrCmd_RetrieveDayCareMon(SCRIPTCONTEXT* ctx) {
     SAVEDATA* savedata = fsys->savedata;
     u16* ret_ptr = ScriptGetVarPointer(ctx);
     u16 daycare_mon_idx = ScriptGetVar(ctx);
-    DAYCARE* daycare = SavArray_get(savedata, SAVE_DAYCARE);
-    PARTY* party = SavArray_PlayerParty_get(fsys->savedata);
+    DAYCARE* daycare = SavArray_Get(savedata, SAVE_DAYCARE);
+    PARTY* party = SavArray_PlayerParty_Get(fsys->savedata);
 
     *ret_ptr = Sav2_DayCare_RetrieveMon(party, *msg_fmt, daycare, (u8)daycare_mon_idx);
 
@@ -72,7 +72,7 @@ BOOL ScrCmd_BufferDayCareWithdrawCost(SCRIPTCONTEXT* ctx) {
     SAVEDATA* savedata = fsys->savedata;
     u16* ret_ptr = ScriptGetVarPointer(ctx);
     u16 daycare_mon_idx = ScriptGetVar(ctx);
-    DAYCARE* daycare = SavArray_get(savedata, SAVE_DAYCARE);
+    DAYCARE* daycare = SavArray_Get(savedata, SAVE_DAYCARE);
 
     *ret_ptr = Sav2_DayCare_BufferMonNickAndRetrievalPrice(daycare, (u8)daycare_mon_idx, *msg_fmt);
 
@@ -84,7 +84,7 @@ BOOL ScrCmd_BufferDayCareMonGrowth(SCRIPTCONTEXT* ctx) {
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
     u16 daycare_mon_idx = ScriptGetVar(ctx);
-    DAYCARE* daycare = SavArray_get(savedata, SAVE_DAYCARE);
+    DAYCARE* daycare = SavArray_Get(savedata, SAVE_DAYCARE);
 
     *ret_ptr = Sav2_DayCare_BufferGrowthAndNick(daycare, daycare_mon_idx, *msg_fmt);
 
@@ -95,7 +95,7 @@ BOOL ScrCmd_GetTailDayCareMonSpeciesAndNick(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
-    DAYCARE* daycare = Sav2_DayCare_get(fsys->savedata);
+    DAYCARE* daycare = Sav2_DayCare_Get(fsys->savedata);
 
     *ret_ptr = Sav2_DayCare_BufferTailMonNick(daycare, *msg_fmt);
 
@@ -106,8 +106,8 @@ BOOL ScrCmd_PutMonInDayCare(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     SAVEDATA* savedata = fsys->savedata;
     u16 slot = ScriptGetVar(ctx);
-    PARTY* party = SavArray_PlayerParty_get(fsys->savedata);
-    DAYCARE* daycare = SavArray_get(savedata, SAVE_DAYCARE);
+    PARTY* party = SavArray_PlayerParty_Get(fsys->savedata);
+    DAYCARE* daycare = SavArray_Get(savedata, SAVE_DAYCARE);
 
     Sav2_DayCare_PutMonIn(party, (u8)slot, daycare, savedata);
 
@@ -121,7 +121,7 @@ BOOL ScrCmd_BufferDayCareMonStats(SCRIPTCONTEXT* ctx) {
     u16 level_idx = ScriptGetVar(ctx);
     u16 gender_idx = ScriptGetVar(ctx);
     u16 slot = ScriptGetVar(ctx);
-    DAYCARE* daycare = Sav2_DayCare_get(savedata);
+    DAYCARE* daycare = Sav2_DayCare_Get(savedata);
 
     Sav2_DayCare_BufferMonStats(daycare, (u8)nickname_idx, (u8)level_idx, (u8)gender_idx, (u8)slot, *msg_fmt);
 
@@ -131,7 +131,7 @@ BOOL ScrCmd_BufferDayCareMonStats(SCRIPTCONTEXT* ctx) {
 BOOL ScrCmd_GetDayCareCompatibility(SCRIPTCONTEXT* ctx) {
     SAVEDATA* savedata = ctx->fsys->savedata;
     u16* ret_ptr = ScriptGetVarPointer(ctx);
-    DAYCARE* daycare = SavArray_get(savedata, SAVE_DAYCARE);
+    DAYCARE* daycare = SavArray_Get(savedata, SAVE_DAYCARE);
 
     *ret_ptr = Sav2_DayCare_CalcCompatibility(daycare);
 
@@ -141,7 +141,7 @@ BOOL ScrCmd_GetDayCareCompatibility(SCRIPTCONTEXT* ctx) {
 BOOL ScrCmd_CheckDayCareEgg(SCRIPTCONTEXT* ctx) {
     SAVEDATA* savedata = ctx->fsys->savedata;
     u16* ret_ptr = ScriptGetVarPointer(ctx);
-    DAYCARE* daycare = SavArray_get(savedata, SAVE_DAYCARE);
+    DAYCARE* daycare = SavArray_Get(savedata, SAVE_DAYCARE);
 
     *ret_ptr = Sav2_DayCare_HasEgg(daycare);
 
@@ -154,7 +154,7 @@ BOOL ScrCmd_UpdateDayCareMonObjects(SCRIPTCONTEXT* ctx) {
     u16 species;
 
     FieldSystem* fsys = ctx->fsys;
-    daycare = Sav2_DayCare_get(fsys->savedata);
+    daycare = Sav2_DayCare_Get(fsys->savedata);
 
     for (s32 dc_mon_idx = 0, y = 5, x = 8; dc_mon_idx < 2; dc_mon_idx++, y += 4, x += 2) {
         LocalMapObject* mon_map_object = GetMapObjectByID(fsys->mapObjectMan, obj_daycare_poke_1 + dc_mon_idx);
@@ -205,7 +205,7 @@ BOOL ScrCmd_DayCareSanitizeMon(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     u16 party_slot = ScriptGetVar(ctx);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
-    PARTY* party = SavArray_PlayerParty_get(fsys->savedata);
+    PARTY* party = SavArray_PlayerParty_Get(fsys->savedata);
     mon = GetPartyMonByIndex(party, party_slot);
 
     *ret_ptr = 0;

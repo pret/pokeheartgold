@@ -106,9 +106,9 @@
 .public Sav2_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public Save_TrainerCard_get
+.public Save_TrainerCard_Get
 .public TrainerCard_GetSignature
-.public Sav2_GameStats_get
+.public Sav2_GameStats_Get
 .public GameStats_Inc
 .public GameStats_AddSpecial
 .public NNS_G2dInitOamManagerModule

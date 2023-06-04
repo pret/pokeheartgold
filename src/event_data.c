@@ -10,8 +10,8 @@ void SavArray_Flags_init(SCRIPT_STATE *scriptState) {
     memset(scriptState, 0, sizeof(SCRIPT_STATE));
 }
 
-SCRIPT_STATE *SavArray_Flags_get(SAVEDATA *saveData) {
-    return SavArray_get(saveData, SAVE_FLAGS);
+SCRIPT_STATE *SavArray_Flags_Get(SAVEDATA *saveData) {
+    return SavArray_Get(saveData, SAVE_FLAGS);
 }
 
 BOOL CheckFlagInArray(SCRIPT_STATE *scriptState, u16 flagno) {

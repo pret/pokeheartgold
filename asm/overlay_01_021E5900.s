@@ -239,7 +239,7 @@ _021E5AB6:
 	add r0, r4, #0
 	bl ov01_021E6580
 	ldr r0, [r4, #0xc]
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	bl FlyPoints_GetWeatherType
 	add r1, r0, #0
 	ldr r0, [r4, #4]
@@ -705,7 +705,7 @@ ov01_021E5F04: ; 0x021E5F04
 	pop {r3, r4, r5, r6, r7, pc}
 _021E5F3E:
 	ldr r0, [r5, #0xc]
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	add r7, r0, #0
 	ldr r0, [r5, #0x20]
 	add r1, r4, #0
@@ -1495,7 +1495,7 @@ ov01_021E6580: ; 0x021E6580
 	bl ov01_021EA824
 	str r0, [r4, #0x4c]
 	ldr r0, [r4, #0xc]
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	bl FlyPoints_GetCameraType
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
@@ -1510,7 +1510,7 @@ ov01_021E6580: ; 0x021E6580
 	cmp r5, #3
 	bne _021E65D8
 	ldr r0, [r4, #0xc]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	bl CheckFlag96A
 	cmp r0, #0
 	beq _021E65D8

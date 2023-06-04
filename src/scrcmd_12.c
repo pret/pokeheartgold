@@ -22,7 +22,7 @@ BOOL ScrCmd_MomGiftCheck(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_508(SCRIPTCONTEXT *ctx) {
-    SCRIPT_STATE *script = SavArray_Flags_get(ctx->fsys->savedata);
+    SCRIPT_STATE *script = SavArray_Flags_Get(ctx->fsys->savedata);
     u16 var0 = ScriptGetVar(ctx);
     if (var0 == 2) {
         ScriptState_SetPalParkSysFlag(script);
@@ -57,7 +57,7 @@ BOOL ScrCmd_510(SCRIPTCONTEXT *ctx) {
     PC_STORAGE *storage = GetStoragePCPointer(ctx->fsys->savedata);
     Pokemon *mon = AllocMonZeroed(32);
     PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(ctx->fsys->savedata);
-    POKEDEX *pokedex = Sav2_Pokedex_get(ctx->fsys->savedata);
+    POKEDEX *pokedex = Sav2_Pokedex_Get(ctx->fsys->savedata);
     int i;
 
     for (i = 0; i < PARTY_SIZE; i++) {

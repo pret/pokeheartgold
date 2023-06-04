@@ -67,7 +67,7 @@ void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fsys, u8 tradeno, u8 level, u16 ma
     trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeno, FALSE, 11, TRUE);
     _CreateTradeMon(mon, trade_dat, level, tradeno, mapno, 7, 11);
     UpdatePokedexWithReceivedSpecies(fsys->savedata, mon);
-    party = SavArray_PlayerParty_get(fsys->savedata);
+    party = SavArray_PlayerParty_Get(fsys->savedata);
     AddMonToParty(party, mon);
     if (tradeno == 7) {
         kenya = GetPartyMonByIndex(party, GetPartyCount(party) - 1);
@@ -108,7 +108,7 @@ int NPCTrade_CanGiveUpLoanMon(FieldSystem *fsys, u8 tradeno, u8 idx) {
     u16 heldItem;
     int i, n, party_count;
 
-    party = SavArray_PlayerParty_get(fsys->savedata);
+    party = SavArray_PlayerParty_Get(fsys->savedata);
     mon = GetPartyMonByIndex(party, idx);
     if (!MonIsInGameTradePoke(mon, tradeno)) {
         return 1;
@@ -152,7 +152,7 @@ int NPCTradeWork_GetUnusedFlag(NPC_TRADE_WORK *work) {
 }
 
 void NPCTrade_ReceiveMonToSlot(FieldSystem *fsys, NPC_TRADE_WORK *work, int slot) {
-    Party_SafeCopyMonToSlot_ResetUnkSub(SavArray_PlayerParty_get(fsys->savedata), slot, work->mon);
+    Party_SafeCopyMonToSlot_ResetUnkSub(SavArray_PlayerParty_Get(fsys->savedata), slot, work->mon);
     UpdatePokedexWithReceivedSpecies(fsys->savedata, work->mon);
 }
 
@@ -160,7 +160,7 @@ void NPCTrade_CreateTradeAnim(FieldSystem *fsys, NPC_TRADE_WORK *work, int slot,
     Pokemon *my_poke;
     u32 time_of_day;
 
-    my_poke = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
+    my_poke = GetPartyMonByIndex(SavArray_PlayerParty_Get(fsys->savedata), slot);
     _CreateTradeMon(work->mon, work->trade_dat, GetMonData(my_poke, MON_DATA_LEVEL, NULL), work->tradeno, fsys->location->mapId, 1, work->heapId);
     CopyPokemonToPokemon(my_poke, my_mon_buf);
     CopyPokemonToPokemon(work->mon, trade_mon_buf);

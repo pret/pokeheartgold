@@ -206,7 +206,7 @@
 .public Sav2_PlayerData_GetProfileAddr
 .public Sav2_PlayerData_GetOptionsAddr
 .public Options_GetFrame
-.public Save_SpecialRibbons_get
+.public Save_SpecialRibbons_Get
 .public AllocMonZeroed
 .public AcquireBoxMonLock
 .public ReleaseBoxMonLock
@@ -255,7 +255,7 @@
 .public Party_GetUnkSubSlot
 .public Party_SetUnkSubSlot
 .public Party_SafeCopyMonToSlot_ResetUnkSub
-.public SavArray_PlayerParty_get
+.public SavArray_PlayerParty_Get
 .public SavArray_IsNatDexEnabled
 .public Pokedex_ConvertToCurrentDexNo
 .public sub_02077678

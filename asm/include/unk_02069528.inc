@@ -12,7 +12,7 @@
 .public sub_0202D564
 .public sub_0202D5DC
 .public sub_0202D660
-.public Save_FrontierData_get
+.public Save_FrontierData_Get
 .public sub_0205B46C
 .public sub_02069528
 .public MI_CpuFill8

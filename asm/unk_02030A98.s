@@ -969,7 +969,7 @@ _02031080: .word _021D2AFC
 sub_02031084: ; 0x02031084
 	push {r3, lr}
 	mov r1, #0x13
-	bl SavArray_get
+	bl SavArray_Get
 	add r1, r0, #0
 	ldr r0, _02031098 ; =_021D2AFC
 	ldr r2, _0203109C ; =0x00001628
@@ -984,7 +984,7 @@ _0203109C: .word 0x00001628
 sub_020310A0: ; 0x020310A0
 	push {r3, lr}
 	mov r1, #0x13
-	bl SavArray_get
+	bl SavArray_Get
 	ldr r1, _020310B4 ; =_021D2AFC
 	ldr r2, _020310B8 ; =0x00001628
 	bl MI_CpuCopy8
@@ -1594,7 +1594,7 @@ sub_020314C4: ; 0x020314C4
 	bl sub_0202CA44
 	str r0, [sp]
 	add r0, r6, #0
-	bl Sav2_SysInfo_get
+	bl Sav2_SysInfo_Get
 	add r0, r6, #0
 	bl Sav2_Misc_Const_Get
 	add r7, r0, #0

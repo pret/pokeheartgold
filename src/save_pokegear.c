@@ -12,12 +12,12 @@ u32 SaveData_GSPlayerMisc_sizeof(void) {
     return sizeof(SavePokegear);
 }
 
-SavePokegear *SaveData_GSPlayerMisc_get(SAVEDATA *saveData) {
-    return SavArray_get(saveData, SAVE_POKEGEAR);
+SavePokegear *SaveData_GSPlayerMisc_Get(SAVEDATA *saveData) {
+    return SavArray_Get(saveData, SAVE_POKEGEAR);
 }
 
 MomsSavings *SaveData_GetMomsSavingsAddr(SAVEDATA *saveData) {
-    SavePokegear *pokegear = SavArray_get(saveData, SAVE_POKEGEAR);
+    SavePokegear *pokegear = SavArray_Get(saveData, SAVE_POKEGEAR);
     return GSPlayerMisc_GetMomSavingsAddr(pokegear);
 }
 

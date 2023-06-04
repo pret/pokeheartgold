@@ -83,7 +83,7 @@
 .public String_Delete
 .public CopyStringToU16Array
 .public SavArray_CalcCRC16
-.public Sav2_SysInfo_get
+.public Sav2_SysInfo_Get
 .public Sav2_SysInfo_GetField4C
 .public Sav2_SysInfo_SetField4C
 .public Sav2_PlayerData_GetOptionsAddr

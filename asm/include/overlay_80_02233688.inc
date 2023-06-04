@@ -23,7 +23,7 @@
 .public GetMonExpBySpeciesAndLevel
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SavArray_PlayerParty_Get
 .public sub_02096808
 .public sub_02096810
 .public sub_02096818

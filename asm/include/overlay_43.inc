@@ -173,7 +173,7 @@
 .public sub_020310BC
 .public sub_020311AC
 .public sub_0203A128
-.public SavArray_Flags_get
+.public SavArray_Flags_Get
 .public sub_0205B46C
 .public ScriptState_FlypointFlagAction
 .public sub_02070D84

@@ -159,7 +159,7 @@ static inline BOOL MapAndDayCheck(u32 map_no, RTCDate* date) {
 
 BOOL ShouldUseAlternateLakeOfRage(SAVEDATA* savedata, u32 map_no) {
     RTCDate date;
-    SCRIPT_STATE *state = SavArray_Flags_get(savedata);
+    SCRIPT_STATE *state = SavArray_Flags_Get(savedata);
 
     GF_RTC_CopyDate(&date);
 
@@ -211,7 +211,7 @@ void PlaceSafariZoneAreas(MAPMATRIX* map_matrix, SAVEDATA* save) {
         return;
     }
 
-    SAFARIZONE* safari_zone = Save_SafariZone_get(save);
+    SAFARIZONE* safari_zone = Save_SafariZone_Get(save);
     SAFARIZONE_AREASET* sz_area_set = SafariZone_GetAreaSet(safari_zone, 3);
 
     for (s32 y = 0; y < SAFARI_ZONE_AREA_SET_ROWS; y++) {

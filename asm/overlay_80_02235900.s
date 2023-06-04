@@ -606,7 +606,7 @@ _02235D3E:
 	cmp r0, #1
 	bne _02235DA8
 	ldr r0, [r4]
-	bl Save_FrontierData_get
+	bl Save_FrontierData_Get
 	mov r1, #6
 	mov r2, #2
 	bl sub_0202D57C
@@ -806,7 +806,7 @@ _02235F10:
 	bl sub_0204ABC8
 _02235F44:
 	ldr r0, [r7, #8]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	bl HealParty
 	add r0, r4, #0
 	bl sub_02096910

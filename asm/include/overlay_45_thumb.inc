@@ -96,7 +96,7 @@
 .public CopyStringToU16Array
 .public sub_02026E18
 .public SavArray_CalcCRC16
-.public Sav2_SysInfo_RTC_get
+.public Sav2_SysInfo_RTC_Get
 .public Sav2_PlayerData_GetProfileAddr
 .public PlayerProfile_New
 .public Sav2_Profile_PlayerName_set
@@ -114,13 +114,13 @@
 .public PlayerProfile_SetGameClearFlag
 .public PlayerProfile_GetGameClearFlag
 .public Pokedex_GetNatDexFlag
-.public Sav2_Pokedex_get
+.public Sav2_Pokedex_Get
 .public sub_0202C08C
 .public sub_0202C6F4
 .public sub_0202CA44
 .public sub_0202CA8C
 .public sub_0202CA90
-.public Sav2_GameStats_get
+.public Sav2_GameStats_Get
 .public GameStats_Inc
 .public sub_020318E8
 .public sub_020318FC
@@ -131,7 +131,7 @@
 .public GetMonData
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SavArray_PlayerParty_Get
 .public sub_02078DD8
 .public sub_02078E28
 .public LoadDwcOverlay

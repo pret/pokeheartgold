@@ -431,7 +431,7 @@ ov58_02237BD4: ; 0x02237BD4
 	bl MI_CpuFill8
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	str r0, [r4]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
@@ -451,7 +451,7 @@ ov58_02237BD4: ; 0x02237BD4
 	str r0, [r4, #0xc]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
-	bl Sav2_Mailbox_get
+	bl Sav2_Mailbox_Get
 	str r0, [r4, #8]
 	mov r0, #0
 	str r0, [r4, #0x1c]

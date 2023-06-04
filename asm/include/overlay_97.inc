@@ -75,7 +75,7 @@
 .public String_Delete
 .public CopyU16ArrayToString
 .public GetStoragePCPointer
-.public Save_Pokeathlon_get
+.public Save_Pokeathlon_Get
 .public sub_020319A8
 .public sub_0203A994
 .public GetMonData
@@ -91,7 +91,7 @@
 .public PCStorage_GetMonByIndexPair
 .public GetPartyMonByIndex
 .public Party_GetUnkSubSlot
-.public SavArray_PlayerParty_get
+.public SavArray_PlayerParty_Get
 .public sub_0208B85C
 .public sub_020932E0
 .public sub_02093354

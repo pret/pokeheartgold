@@ -35,7 +35,7 @@ sub_0205AC88: ; 0x0205AC88
 	ldr r0, [r4, r1]
 	mov r1, #8
 	ldr r0, [r0, #0xc]
-	bl SavArray_get
+	bl SavArray_Get
 	ldr r1, _0205AD00 ; =0x000004D8
 	ldr r2, _0205AD04 ; =0x00002710
 	str r0, [r4, r1]

@@ -298,7 +298,7 @@ sub_0204F06C: ; 0x0204F06C
 	sub sp, #0x20
 	str r0, [sp]
 	add r0, r1, #0
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	str r0, [sp, #4]
 	bl GetPartyCount
 	lsl r0, r0, #0x18
@@ -670,13 +670,13 @@ sub_0204F320: ; 0x0204F320
 	mov r2, #0x44
 	bl MIi_CpuClearFast
 	ldr r0, [r6, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	str r0, [r4]
 	ldr r0, [r6, #0xc]
 	bl SaveGetBag
 	str r0, [r4, #4]
 	ldr r0, [r6, #0xc]
-	bl Sav2_Mailbox_get
+	bl Sav2_Mailbox_Get
 	str r0, [r4, #8]
 	ldr r0, [r6, #0xc]
 	bl Sav2_PlayerData_GetOptionsAddr
@@ -824,7 +824,7 @@ sub_0204F448: ; 0x0204F448
 	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	str r0, [r4]
 	add r0, r5, #0
 	bl SavArray_IsNatDexEnabled
@@ -843,7 +843,7 @@ sub_0204F448: ; 0x0204F448
 	strh r0, [r4, #0x18]
 	strb r0, [r4, #0x12]
 	add r0, r5, #0
-	bl Save_SpecialRibbons_get
+	bl Save_SpecialRibbons_Get
 	str r0, [r4, #0x20]
 	add r0, r5, #0
 	bl sub_0208828C

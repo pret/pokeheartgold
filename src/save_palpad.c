@@ -5,8 +5,8 @@ u32 Save_PalPad_sizeof(void) {
     return sizeof(SavePalPad) * NUM_PALPAD_ENTRIES;
 }
 
-SavePalPad *Save_PalPad_get(SAVEDATA *saveData) {
-    return SavArray_get(saveData, SAVE_PALPAD);
+SavePalPad *Save_PalPad_Get(SAVEDATA *saveData) {
+    return SavArray_Get(saveData, SAVE_PALPAD);
 }
 
 void Save_PalPad_init(SavePalPad *palPad) {

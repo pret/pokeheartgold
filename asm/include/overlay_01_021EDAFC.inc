@@ -46,10 +46,10 @@
 .public PlayerProfile_GetMoney
 .public CheckCoins
 .public FrontierData_BattlePointAction
-.public Save_FrontierData_get
+.public Save_FrontierData_Get
 .public SaveData_GetMomsSavingsAddr
 .public MomSavingsBalanceAction
-.public Save_Pokeathlon_get
+.public Save_Pokeathlon_Get
 .public SavePokeathlon_GetAthletePoints
 .public memset
 .public _s32_div_f

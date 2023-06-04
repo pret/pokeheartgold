@@ -26,14 +26,14 @@ Sav2_FollowPoke_init: ; 0x0202ED1C
 	.balign 4, 0
 	thumb_func_end Sav2_FollowPoke_init
 
-	thumb_func_start Sav2_FollowPoke_get
-Sav2_FollowPoke_get: ; 0x0202ED34
-	ldr r3, _0202ED3C ; =SavArray_get
+	thumb_func_start Sav2_FollowPoke_Get
+Sav2_FollowPoke_Get: ; 0x0202ED34
+	ldr r3, _0202ED3C ; =SavArray_Get
 	mov r1, #0x21
 	bx r3
 	nop
-_0202ED3C: .word SavArray_get
-	thumb_func_end Sav2_FollowPoke_get
+_0202ED3C: .word SavArray_Get
+	thumb_func_end Sav2_FollowPoke_Get
 
 	thumb_func_start SavFollowPoke_SetMapId
 SavFollowPoke_SetMapId: ; 0x0202ED40

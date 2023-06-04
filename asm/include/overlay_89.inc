@@ -189,7 +189,7 @@
 .public GetNatureFromPersonality
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SavArray_PlayerParty_Get
 .public NNS_G2dGetUnpackedCharacterData
 .public NNS_G3dTexGetRequiredSize
 .public NNS_G3dTexSetTexKey

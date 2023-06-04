@@ -191,18 +191,18 @@ SAVEDATA *SaveBlock2_New(void) {
     return ret;
 }
 
-SAVEDATA *SaveBlock2_get(void) {
+SAVEDATA *SaveBlock2_Get(void) {
     GF_ASSERT(sSaveDataPtr != NULL);
     return sSaveDataPtr;
 }
 
-void *SavArray_get(SAVEDATA *saveData, int id) {
+void *SavArray_Get(SAVEDATA *saveData, int id) {
     GF_ASSERT(id < SAVE_BLOCK_NUM);
     return (void *)&saveData->dynamic_region[saveData->arrayHeaders[id].offset];
 }
 
 const void *SavArray_Const_Get(const SAVEDATA *saveData, int id) {
-    return SavArray_get((SAVEDATA *)saveData, id);
+    return SavArray_Get((SAVEDATA *)saveData, id);
 }
 
 BOOL Save_DeleteAllData(SAVEDATA *saveData) {
@@ -307,12 +307,12 @@ static u32 Save_IsNewGame(SAVEDATA *saveData) {
 }
 
 BOOL Save_CheckExtraChunksExist(SAVEDATA *saveData) {
-    SAVE_MISC_DATA *misc = Sav2_Misc_get(saveData);
+    SAVE_MISC_DATA *misc = Sav2_Misc_Get(saveData);
     return SaveMisc_CheckExtraChunksExist(misc);
 }
 
 static void Save_SetExtraChunksExist(SAVEDATA *saveData) {
-    SAVE_MISC_DATA *misc = Sav2_Misc_get(saveData);
+    SAVE_MISC_DATA *misc = Sav2_Misc_Get(saveData);
     SaveMisc_SetExtraChunksExist(misc);
 }
 
@@ -605,7 +605,7 @@ static void Save_CheckFrontierData(SAVEDATA *saveData, int *err1, int *err2) {
     u8 sp04;
     int i;
 
-    misc = Sav2_Misc_get(saveData);
+    misc = Sav2_Misc_Get(saveData);
     *err1 = 1;
     *err2 = 1;
     if (Save_CheckExtraChunksExist(saveData)) {
@@ -654,7 +654,7 @@ static BOOL Sav2_LoadDynamicRegion(SAVEDATA *saveData) {
         }
     }
     for (i = 0; i < SAVE_BLOCK_NUM; i++) {
-        saveData->arrayHeaders[i].crc = GF_CalcCRC16(SavArray_get(saveData, i), saveData->arrayHeaders[i].size);
+        saveData->arrayHeaders[i].crc = GF_CalcCRC16(SavArray_Get(saveData, i), saveData->arrayHeaders[i].size);
     }
     pc_offs = saveData->saveSlotSpecs[1].offset;
     pc_size = PCStorage_GetSizeOfBox() * PCStorage_GetNumBoxes();
@@ -1085,7 +1085,7 @@ void *sub_020284A4(SAVEDATA *saveData, HeapID heapId, int idx, int *ret_p, int *
     BOOL valid2;
     SAVE_MISC_DATA *misc;
 
-    misc = Sav2_Misc_get(saveData);
+    misc = Sav2_Misc_Get(saveData);
 
     GF_ASSERT(idx < gNumExtraSaveChunkHeaders);
     GF_ASSERT(idx != 0);
@@ -1147,11 +1147,11 @@ void *sub_020284A4(SAVEDATA *saveData, HeapID heapId, int idx, int *ret_p, int *
 }
 
 static void sub_020286B4(SAVEDATA *saveData, int a1, u32 *a2, u32 *a3, u8 *a4) {
-    sub_0202AC38(Sav2_Misc_get(saveData), a1, a2, a3, a4);
+    sub_0202AC38(Sav2_Misc_Get(saveData), a1, a2, a3, a4);
 }
 
 static void sub_020286D4(SAVEDATA *saveData, int a1, u32 a2, u32 a3, u8 a4) {
-    sub_0202AC60(Sav2_Misc_get(saveData), a1, a2, a3, a4);
+    sub_0202AC60(Sav2_Misc_Get(saveData), a1, a2, a3, a4);
 }
 
 static BOOL SaveDetectFlash(void) {
@@ -1256,7 +1256,7 @@ BOOL SaveSubstruct_AssertCRC(int idx) {
     u16 *data_u16;
     u16 crc;
 
-    data = SavArray_get(SaveBlock2_get(), idx);
+    data = SavArray_Get(SaveBlock2_Get(), idx);
     data_u16 = (u16 *)data;
     size = GetSaveChunkSizePlusCRC(idx) - 4;
     crc = GF_CalcCRC16(data, size);
@@ -1274,7 +1274,7 @@ void SaveSubstruct_UpdateCRC(int idx) {
     u16 *data_u16;
     u16 crc;
 
-    data = SavArray_get(SaveBlock2_get(), idx);
+    data = SavArray_Get(SaveBlock2_Get(), idx);
     data_u16 = (u16 *)data;
     size = GetSaveChunkSizePlusCRC(idx) - 4;
     crc = GF_CalcCRC16(data, size);
@@ -1292,7 +1292,7 @@ static int HandleWriteSaveAsync_PCBoxes(SAVEDATA *saveData, struct AsyncWriteMan
         saveData->numModifiedBoxes = PCModifiedFlags_CountModifiedBoxes(saveData->newBoxModifiedFlags);
         saveData->nextBoxToWrite = 0;
         r7 = PCStorage_GetSizeOfBox() * PCStorage_GetNumBoxes();
-        saveData->pcStorageCRC = GF_CalcCRC16(SavArray_get(saveData, SAVE_PCSTORAGE), r7);
+        saveData->pcStorageCRC = GF_CalcCRC16(SavArray_Get(saveData, SAVE_PCSTORAGE), r7);
         if (saveData->numModifiedBoxes == 0) {
             GF_ASSERT(saveData->pcStorageCRC == saveData->pcStorageLastCRC);
             sub_020271A0(saveData);

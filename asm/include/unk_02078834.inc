@@ -11,7 +11,7 @@
 .public sub_0203A05C
 .public FieldSys_LaunchApplication
 .public sub_0203F4A8
-.public SavArray_Flags_get
+.public SavArray_Flags_Get
 .public TaskManager_Call
 .public FieldSys_ApplicationIsRunning
 .public CallApplicationAsTask

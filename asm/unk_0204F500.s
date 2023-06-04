@@ -192,7 +192,7 @@ _0204F602:
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl Sav2_GameStats_get
+	bl Sav2_GameStats_Get
 	mov r1, #0x45
 	add r2, r6, #0
 	bl GameStats_Add
@@ -203,7 +203,7 @@ _0204F602:
 	str r0, [sp, #8]
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl Save_FrontierData_get
+	bl Save_FrontierData_Get
 	add r1, r6, #0
 	mov r2, #5
 	bl FrontierData_BattlePointAction
@@ -1022,13 +1022,13 @@ sub_0204FC78: ; 0x0204FC78
 	mov r2, #0x44
 	bl MIi_CpuClearFast
 	ldr r0, [r6, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	str r0, [r4]
 	ldr r0, [r6, #0xc]
 	bl SaveGetBag
 	str r0, [r4, #4]
 	ldr r0, [r6, #0xc]
-	bl Sav2_Mailbox_get
+	bl Sav2_Mailbox_Get
 	str r0, [r4, #8]
 	ldr r0, [r6, #0xc]
 	bl Sav2_PlayerData_GetOptionsAddr
@@ -1176,7 +1176,7 @@ sub_0204FDA0: ; 0x0204FDA0
 	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	str r0, [r4]
 	add r0, r5, #0
 	bl SavArray_IsNatDexEnabled
@@ -1195,7 +1195,7 @@ sub_0204FDA0: ; 0x0204FDA0
 	strh r0, [r4, #0x18]
 	strb r0, [r4, #0x12]
 	add r0, r5, #0
-	bl Save_SpecialRibbons_get
+	bl Save_SpecialRibbons_Get
 	str r0, [r4, #0x20]
 	add r0, r5, #0
 	bl sub_0208828C
@@ -1699,13 +1699,13 @@ sub_020501B8: ; 0x020501B8
 	mov r2, #0x44
 	bl MIi_CpuClearFast
 	ldr r0, [r6, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	str r0, [r4]
 	ldr r0, [r6, #0xc]
 	bl SaveGetBag
 	str r0, [r4, #4]
 	ldr r0, [r6, #0xc]
-	bl Sav2_Mailbox_get
+	bl Sav2_Mailbox_Get
 	str r0, [r4, #8]
 	ldr r0, [r6, #0xc]
 	bl Sav2_PlayerData_GetOptionsAddr
@@ -1853,7 +1853,7 @@ sub_020502E0: ; 0x020502E0
 	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	str r0, [r4]
 	add r0, r5, #0
 	bl SavArray_IsNatDexEnabled
@@ -1872,7 +1872,7 @@ sub_020502E0: ; 0x020502E0
 	strh r0, [r4, #0x18]
 	strb r0, [r4, #0x12]
 	add r0, r5, #0
-	bl Save_SpecialRibbons_get
+	bl Save_SpecialRibbons_Get
 	str r0, [r4, #0x20]
 	add r0, r5, #0
 	bl sub_0208828C

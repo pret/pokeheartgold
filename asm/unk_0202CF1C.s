@@ -61,14 +61,14 @@ _0202CF4C: .word 0x027FFC3C ; HW_VBLANK_COUNT_BUF
 _0202CF50: .word 0x000001BE
 	thumb_func_end GameStats_init
 
-	thumb_func_start Sav2_GameStats_get
-Sav2_GameStats_get: ; 0x0202CF54
-	ldr r3, _0202CF5C ; =SavArray_get
+	thumb_func_start Sav2_GameStats_Get
+Sav2_GameStats_Get: ; 0x0202CF54
+	ldr r3, _0202CF5C ; =SavArray_Get
 	mov r1, #0x10
 	bx r3
 	nop
-_0202CF5C: .word SavArray_get
-	thumb_func_end Sav2_GameStats_get
+_0202CF5C: .word SavArray_Get
+	thumb_func_end Sav2_GameStats_Get
 
 	thumb_func_start GameStats_Release
 GameStats_Release: ; 0x0202CF60

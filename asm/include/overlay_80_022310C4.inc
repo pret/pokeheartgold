@@ -18,7 +18,7 @@
 .public sub_02031108
 .public sub_0203126C
 .public sub_020313C4
-.public SavArray_Flags_get
+.public SavArray_Flags_Get
 .public sub_0205C0A0
 .public sub_0205C0CC
 .public sub_0205C0F4
@@ -30,7 +30,7 @@
 .public GetMonData
 .public SavArray_Party_Alloc
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SavArray_PlayerParty_Get
 .public MI_CpuFill8
 .public _dadd
 .public _d2f

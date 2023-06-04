@@ -93,14 +93,14 @@ BOOL ScrCmd_CheckGiveCoins(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_GiveAthletePoints(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 amount = ScriptGetVar(ctx);
-    SavePokeathlon_AddAthletePoints(Save_Pokeathlon_get(fsys->savedata), amount);
+    SavePokeathlon_AddAthletePoints(Save_Pokeathlon_Get(fsys->savedata), amount);
     return FALSE;
 }
 
 BOOL ScrCmd_TakeAthletePoints(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 amount = ScriptGetVar(ctx);
-    SavePokeathlon_SubAthletePoints(Save_Pokeathlon_get(fsys->savedata), amount);
+    SavePokeathlon_SubAthletePoints(Save_Pokeathlon_Get(fsys->savedata), amount);
     return FALSE;
 }
 
@@ -108,7 +108,7 @@ BOOL ScrCmd_CheckAthletePoints(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 *ptr = ScriptGetVarPointer(ctx);
     u16 amount = ScriptGetVar(ctx);
-    u32 points = SavePokeathlon_GetAthletePoints(Save_Pokeathlon_get(fsys->savedata));
+    u32 points = SavePokeathlon_GetAthletePoints(Save_Pokeathlon_Get(fsys->savedata));
     if (points < amount) {
         *ptr = FALSE;
     } else {

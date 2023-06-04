@@ -6,10 +6,10 @@
 .public GF_AssertFail
 .public Sav2_PlayerData_GetProfileAddr
 .public Sav2_PlayerData_GetOptionsAddr
-.public Sav2_Mailbox_get
-.public Save_SpecialRibbons_get
+.public Sav2_Mailbox_Get
+.public Save_SpecialRibbons_Get
 .public GetPartyCount
-.public SavArray_PlayerParty_get
+.public SavArray_PlayerParty_Get
 .public SavArray_IsNatDexEnabled
 .public SaveGetBag
 .public sub_02088288

@@ -19,7 +19,7 @@
 .public GetMonData
 .public Species_LoadLearnsetTable
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SavArray_PlayerParty_Get
 .public FS_InitFile
 .public FS_OpenFile
 .public FS_CloseFile

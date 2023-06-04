@@ -44,7 +44,7 @@ typedef struct POKEDEX {
 u32 Save_Pokedex_sizeof(void);
 POKEDEX *Pokedex_New(HeapID heapId);
 void Save_Pokedex_init(POKEDEX *pokedex);
-POKEDEX *Sav2_Pokedex_get(SAVEDATA *saveData);
+POKEDEX *Sav2_Pokedex_Get(SAVEDATA *saveData);
 BOOL Pokedex_GetNatDexFlag(const POKEDEX *pokedex);
 BOOL Pokedex_CheckMonCaughtFlag(const POKEDEX *pokedex, u16 species);
 BOOL Pokedex_CheckMonSeenFlag(const POKEDEX *pokedex, u16 species);

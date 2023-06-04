@@ -94,6 +94,6 @@ void DayCareMon_init(DAYCAREMON* mon) {
     DayCareMon_Extras_init(&mon->mail);
 }
 
-DAYCARE* Sav2_DayCare_get(SAVEDATA* savedata) {
-    return SavArray_get(savedata, SAVE_DAYCARE);
+DAYCARE* Sav2_DayCare_Get(SAVEDATA* savedata) {
+    return SavArray_Get(savedata, SAVE_DAYCARE);
 }

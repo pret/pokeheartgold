@@ -99,7 +99,7 @@ _0206B9BC:
 	ldr r0, [sp]
 	bl sub_0205525C
 	ldr r0, [r7, #0xc]
-	bl Sav2_SealCase_get
+	bl Sav2_SealCase_Get
 	str r0, [r6, #0x20]
 	add r0, r6, #0
 	mov r1, #0
@@ -110,7 +110,7 @@ _0206B9BC:
 	add r0, r5, r0
 	str r0, [r6, #0x2c]
 	ldr r0, [r7, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	str r0, [r6, #0x1c]
 	bl GetPartyCount
 	mov r4, #0
@@ -178,7 +178,7 @@ _0206BA4E:
 	bl SaveGetBag
 	str r0, [r4, #4]
 	ldr r0, [r7, #0xc]
-	bl Sav2_Mailbox_get
+	bl Sav2_Mailbox_Get
 	str r0, [r4, #8]
 	add r0, r4, #0
 	mov r1, #0

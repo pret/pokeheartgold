@@ -21,7 +21,7 @@ ov25_022598C0: ; 0x022598C0
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	add r4, r1, #0
-	bl Save_TrainerHouse_get
+	bl Save_TrainerHouse_Get
 	add r2, r0, #0
 	cmp r4, #0xa
 	bne _022598FE
@@ -201,7 +201,7 @@ ScrCmd_809: ; 0x02259A30
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl Save_TrainerHouse_get
+	bl Save_TrainerHouse_Get
 	cmp r4, #0xa
 	bne _02259A6C
 	ldr r1, _02259AA4 ; =ov25_02259D84
@@ -256,7 +256,7 @@ ov25_02259AAC: ; 0x02259AAC
 	ldr r5, [r4, #0xc]
 	add r6, r0, #0
 	add r0, r5, #0
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	add r0, #0x94

@@ -139,7 +139,7 @@
 .public sub_0202B404
 .public sub_0202B4E4
 .public Mail_GetUnk20Array
-.public Sav2_Mailbox_get
+.public Sav2_Mailbox_Get
 .public Mailbox_DeleteSlotI
 .public Mailbox_AllocAndFetchMailI
 .public GetMonIconNaixEx
@@ -148,7 +148,7 @@
 .public sub_02074498
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SavArray_PlayerParty_Get
 .public ItemToMailId
 .public MailToItemId
 .public BagAddItem

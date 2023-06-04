@@ -674,11 +674,11 @@ BagApp_GetSaveRoamers: ; 0x021F992C
 	mov r1, #0x8d
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	ldr r3, _021F9938 ; =Save_Roamers_get
+	ldr r3, _021F9938 ; =Save_Roamers_Get
 	ldr r0, [r0]
 	bx r3
 	.balign 4, 0
-_021F9938: .word Save_Roamers_get
+_021F9938: .word Save_Roamers_Get
 	thumb_func_end BagApp_GetSaveRoamers
 
 	thumb_func_start BagApp_GetRepelStepCountAddr

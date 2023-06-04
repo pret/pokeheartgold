@@ -2047,7 +2047,7 @@ ov02_02246B58: ; 0x02246B58
 	add r4, r1, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl Save_Roamers_get
+	bl Save_Roamers_Get
 	str r0, [sp]
 	bl RoamerSave_OutbreakActive
 	cmp r0, #0
@@ -2081,7 +2081,7 @@ ov02_02246B9C: ; 0x02246B9C
 	ldr r0, [r5, #0xc]
 	add r4, r1, #0
 	add r6, r2, #0
-	bl Save_Roamers_get
+	bl Save_Roamers_Get
 	add r7, r0, #0
 	bl RoamerSave_OutbreakActive
 	cmp r0, #0
@@ -2114,7 +2114,7 @@ ov02_02246BD8: ; 0x02246BD8
 	add r7, r1, #0
 	add r5, r2, #0
 	add r4, r3, #0
-	bl Save_Roamers_get
+	bl Save_Roamers_Get
 	str r0, [sp]
 	bl RoamerSave_OutbreakActive
 	cmp r0, #0
@@ -2238,7 +2238,7 @@ _02246CD6:
 	add r0, r5, #0
 	bl ov02_02248698
 	ldr r0, [r5, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	add r6, r0, #0
 	add r0, r5, #0
 	bl MapEvents_GetLoadedEncTable
@@ -2253,7 +2253,7 @@ _02246CD6:
 	add r3, sp, #0x24
 	bl ov02_02248618
 	ldr r0, [r5, #0xc]
-	bl Save_Roamers_get
+	bl Save_Roamers_Get
 	bl RoamerSave_RepelNotInUse
 	cmp r0, #0
 	bne _02246D26
@@ -2268,7 +2268,7 @@ _02246CD6:
 	strb r0, [r1, #0x18]
 _02246D26:
 	ldr r0, [r5, #0xc]
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	bl FlyPoints_GetWeatherType
 	add r3, r0, #0
 	ldr r0, [sp, #0x10]
@@ -2305,7 +2305,7 @@ _02246D6C:
 	pop {r3, r4, r5, r6, r7, pc}
 _02246D76:
 	ldr r0, [r5, #0xc]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	bl ScriptState_CheckHaveFollower
 	cmp r0, #0
 	beq _02246D88
@@ -2353,7 +2353,7 @@ _02246DDA:
 	pop {r3, r4, r5, r6, r7, pc}
 _02246DE0:
 	ldr r0, [r5, #0xc]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	str r0, [sp, #0x14]
 	bl ScriptState_CheckSafariSysFlag
 	str r0, [sp, #0xc]
@@ -2444,7 +2444,7 @@ _02246E8C:
 	b _02246F26
 _02246EA0:
 	ldr r0, [r5, #0xc]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	bl ScriptState_GetFollowerTrainerNum
 	ldr r1, [sp, #0x20]
 	mov r2, #0xb
@@ -2560,7 +2560,7 @@ ov02_02246F70: ; 0x02246F70
 _02246F88:
 	ldr r0, [sp, #0x20]
 	ldr r0, [r0, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	mov r1, #0
 	bl GetPartyMonByIndex
 	str r0, [sp, #0x1c]
@@ -2571,7 +2571,7 @@ _02246F88:
 	bl ov02_02248618
 	ldr r0, [sp, #0x20]
 	ldr r0, [r0, #0xc]
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	bl FlyPoints_GetWeatherType
 	add r3, r0, #0
 	ldr r0, [sp, #0x1c]
@@ -2594,7 +2594,7 @@ _02246F88:
 _02246FDA:
 	ldr r0, [sp, #0x20]
 	ldr r0, [r0, #0xc]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	bl ScriptState_CheckSafariSysFlag
 	str r0, [sp, #0x18]
 	cmp r0, #0
@@ -2707,7 +2707,7 @@ ov02_022470A0: ; 0x022470A0
 _022470B8:
 	ldr r0, [sp, #0xc]
 	ldr r0, [r0, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	mov r1, #0
 	bl GetPartyMonByIndex
 	str r0, [sp, #8]
@@ -2718,7 +2718,7 @@ _022470B8:
 	bl ov02_02248618
 	ldr r0, [sp, #0xc]
 	ldr r0, [r0, #0xc]
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	bl FlyPoints_GetWeatherType
 	add r3, r0, #0
 	ldr r0, [sp, #8]
@@ -2796,7 +2796,7 @@ ov02_02247170: ; 0x02247170
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	str r1, [sp, #8]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	add r7, r0, #0
 	ldr r0, [r5, #0x40]
 	bl GetPlayerXCoord
@@ -2818,7 +2818,7 @@ ov02_02247170: ; 0x02247170
 	pop {r4, r5, r6, r7, pc}
 _022471AC:
 	ldr r0, [r5, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	add r6, r0, #0
 	add r0, r5, #0
 	bl MapEvents_GetLoadedEncTable
@@ -2950,7 +2950,7 @@ _022472BA:
 	b _0224734C
 _022472CE:
 	ldr r0, [r5, #0xc]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	bl ScriptState_GetFollowerTrainerNum
 	ldr r1, [sp, #0x1c]
 	mov r2, #0xb
@@ -3039,7 +3039,7 @@ ov02_02247374: ; 0x02247374
 	ldr r0, [r5, #0xc]
 	str r1, [sp, #0xc]
 	add r4, r2, #0
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	mov r1, #0
 	bl GetPartyMonByIndex
 	str r0, [sp, #0x10]
@@ -3714,7 +3714,7 @@ ApplyFluteEffectToEncounterRate: ; 0x0224782C
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	add r4, r1, #0
-	bl Save_Roamers_get
+	bl Save_Roamers_Get
 	bl RoamerSave_GetFlute
 	cmp r0, #1
 	bne _02247846
@@ -4411,7 +4411,7 @@ ov02_02247DA0: ; 0x02247DA0
 	add r6, r1, #0
 	str r2, [sp, #0xc]
 	add r5, r3, #0
-	bl Save_SafariZone_get
+	bl Save_SafariZone_Get
 	mov r1, #3
 	bl SafariZone_GetAreaSet
 	str r0, [sp, #0x14]
@@ -4560,7 +4560,7 @@ ov02_02247ED8: ; 0x02247ED8
 	sub sp, #0xc
 	add r6, r1, #0
 	add r5, r3, #0
-	bl FieldSys_BugContest_get
+	bl FieldSys_BugContest_Get
 	mov r1, #4
 	bl BugContest_GetEncounterSlot
 	add r4, r0, #0
@@ -4606,7 +4606,7 @@ ov02_02247F30: ; 0x02247F30
 	add r6, r1, #0
 	add r7, r2, #0
 	str r3, [sp, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	mov r1, #0
 	bl GetPartyMonByIndex
 	add r4, r0, #0
@@ -4685,7 +4685,7 @@ _02247FCA:
 	bhi _02248008
 _02247FE0:
 	ldr r0, [r5, #0xc]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	add r4, r0, #0
 	mov r5, #0
 _02247FEA:
@@ -4769,7 +4769,7 @@ _02248060:
 	cmp r0, #0
 	beq _0224808A
 	ldr r0, [r5, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	bl GetFirstAliveMonInParty_CrashIfNone
 	mov r1, #9
 	mov r2, #0
@@ -5054,7 +5054,7 @@ ov02_02248244: ; 0x02248244
 	b _02248284
 _02248252:
 	ldr r0, [r0, #0xc]
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	bl FlyPoints_GetSafariBallsCounter
 	add r1, r0, #0
 	ldrh r1, [r1]
@@ -5063,7 +5063,7 @@ _02248252:
 	str r0, [r5]
 	pop {r3, r4, r5, pc}
 _0224826A:
-	bl FieldSys_BugContest_get
+	bl FieldSys_BugContest_Get
 	add r4, r0, #0
 	bl BugContest_GetSportBallsAddr
 	add r1, r0, #0
@@ -5196,7 +5196,7 @@ ov02_GetRandomActiveRoamerInCurrMap: ; 0x02248360
 	ldr r0, [r0, #0xc]
 	str r1, [sp, #4]
 	mov r5, #0
-	bl Save_Roamers_get
+	bl Save_Roamers_Get
 	add r6, r0, #0
 	add r4, r5, #0
 _02248374:
@@ -5583,7 +5583,7 @@ _02248642:
 	strb r0, [r5, #0xf]
 	strb r0, [r5, #0x10]
 	ldr r0, [r7, #0xc]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	add r6, r0, #0
 	ldr r0, [r7, #0x20]
 	ldr r1, [r0]
@@ -5607,7 +5607,7 @@ _0224866C:
 	cmp r4, #4
 	blt _0224866C
 	ldr r0, [r7, #0xc]
-	bl Sav2_Pokedex_get
+	bl Sav2_Pokedex_Get
 	str r0, [r5, #0x18]
 	ldr r0, [r7, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
@@ -12498,7 +12498,7 @@ ov02_BattleExit_HandleRoamerAction: ; 0x0224B998
 	bl GetPartyMonByIndex
 	add r7, r0, #0
 	ldr r0, [r5, #0xc]
-	bl Save_Roamers_get
+	bl Save_Roamers_Get
 	add r6, r0, #0
 	add r0, r7, #0
 	mov r1, #5
@@ -12536,7 +12536,7 @@ ov02_BattleExit_HandleRoamerAction: ; 0x0224B998
 	add r0, sp, #8
 	bl RoamerMon_init
 	ldr r0, [r5, #0xc]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	ldr r1, [sp, #4]
 	mov r2, #2
 	bl sub_02066BE8
@@ -12547,7 +12547,7 @@ _0224BA14:
 	add r0, sp, #8
 	bl RoamerMon_init
 	ldr r0, [r5, #0xc]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	ldr r1, [sp, #4]
 	mov r2, #1
 	bl sub_02066BE8
@@ -12652,7 +12652,7 @@ _0224BAD4:
 PlayerStepEvent_RepelCounterDecrement: ; 0x0224BAE4
 	push {r4, lr}
 	add r4, r1, #0
-	bl Save_Roamers_get
+	bl Save_Roamers_Get
 	bl RoamerSave_GetRepelAddr
 	ldrb r1, [r0]
 	cmp r1, #0
@@ -13527,7 +13527,7 @@ ov02_0224C1B8: ; 0x0224C1B8
 	add r5, r0, #0
 	ldr r0, [r1, #0xc]
 	add r4, r2, #0
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	bl FlyPoints_GetSpecialSpawnWarpPtr
 	add r1, r0, #0
 	ldr r2, [r4, #0xc]
@@ -14382,7 +14382,7 @@ ov02_0224C840: ; 0x0224C840
 	add r5, r0, #0
 	ldr r0, [r1, #0xc]
 	add r4, r2, #0
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	add r6, r0, #0
 	bl FlyPoints_GetDeathSpawn
 	add r1, sp, #0
@@ -14625,7 +14625,7 @@ ov02_0224CA38: ; 0x0224CA38
 	add r5, r0, #0
 	ldr r0, [r1, #0xc]
 	add r4, r2, #0
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	bl FlyPoints_GetSpecialSpawnWarpPtr
 	add r1, r0, #0
 	ldr r2, [r4, #0xc]
@@ -18080,13 +18080,13 @@ ov02_0224E35C: ; 0x0224E35C
 	sub sp, #0x1c
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	add r6, r0, #0
 	ldr r0, [r5, #0xc]
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	bl FlyPoints_GetPosition
 	ldr r0, [r5, #0xc]
-	bl Save_SafariZone_get
+	bl Save_SafariZone_Get
 	add r4, r0, #0
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
@@ -18448,7 +18448,7 @@ ov02_0224E640: ; 0x0224E640
 	bl PlayerProfile_GetTrainerID
 	add r5, r0, #0
 	add r0, r4, #0
-	bl Save_SafariZone_get
+	bl Save_SafariZone_Get
 	bl sub_0202F720
 	add r4, r0, #0
 	add r0, r5, #0
@@ -18506,7 +18506,7 @@ ov02_0224E698: ; 0x0224E698
 	add r1, sp, #0x14
 	bl PlayerAvatar_GetPositionVec
 	ldr r0, [r5, #0xc]
-	bl Save_SafariZone_get
+	bl Save_SafariZone_Get
 	mov r1, #0
 	bl SafariZone_GetAreaSet
 	add r2, r0, #0
@@ -18621,7 +18621,7 @@ ov02_0224E754: ; 0x0224E754
 	ror r0, r2
 	add r6, r1, r0
 	ldr r0, [r4, #0xc]
-	bl Save_SafariZone_get
+	bl Save_SafariZone_Get
 	mov r1, #0
 	bl SafariZone_GetAreaSet
 	mov r1, #0x7a
@@ -19735,7 +19735,7 @@ ov02_0224F058: ; 0x0224F058
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	add r4, r1, #0
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	bl GetFirstAliveMonInParty_CrashIfNone
 	mov r1, #5
 	mov r2, #0
@@ -19824,7 +19824,7 @@ _0224F124:
 	cmp r7, #0
 	beq _0224F13E
 	ldr r0, [r6, #0xc]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	add r1, r7, #0
 	bl CheckFlagInArray
 	cmp r0, #0
@@ -20455,7 +20455,7 @@ ov02_0224F5D0: ; 0x0224F5D0
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	add r4, r1, #0
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	bl FlyPoints_GetWeatherType
 	cmp r0, #0
 	beq _0224F5E8
@@ -20586,7 +20586,7 @@ ov02_0224F6AC: ; 0x0224F6AC
 	sub sp, #0x10
 	ldr r0, [r0, #0xc]
 	add r5, r3, #0
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	add r4, r0, #0
 	bl GetIdxOfFirstAliveMonInParty_CrashIfNone
 	add r6, r0, #0
@@ -21483,7 +21483,7 @@ _0224FD30:
 	mov r1, #0x5f
 	b _0224FD72
 _0224FD3E:
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	bl GetFirstAliveMonInParty_CrashIfNone
 	bl Mon_GetBoxMon
 	str r0, [sp, #4]
@@ -22237,7 +22237,7 @@ _0225030A:
 	b _0225047E
 _02250314:
 	ldr r0, [r4, #0xc]
-	bl Save_DressupData_get
+	bl Save_DressupData_Get
 	bl SaveDressupData_GetFashionCase
 	add r7, r0, #0
 	mov r0, #0x12
@@ -22324,7 +22324,7 @@ _022503B2:
 	pop {r3, r4, r5, r6, r7, pc}
 _022503BA:
 	ldr r0, [r4, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	bl GetFirstAliveMonInParty_CrashIfNone
 	add r1, r5, #0
 	mov r2, #0
@@ -22334,7 +22334,7 @@ _022503BA:
 	lsr r0, r0, #0x18
 	bne _02250404
 	ldr r0, [r4, #0xc]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	bl SetFlag99C
 	mov r1, #1
 	add r0, sp, #0
@@ -22428,7 +22428,7 @@ FollowPoke_PlaceholdersSet: ; 0x022504A0
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	add r4, r1, #0
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	bl GetFirstAliveMonInParty_CrashIfNone
 	add r6, r0, #0
 	bl Mon_GetBoxMon
@@ -22470,7 +22470,7 @@ ov02_02250504: ; 0x02250504
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	bl GetFirstAliveMonInParty_CrashIfNone
 	add r4, r0, #0
 	mov r0, #0x42
@@ -22837,7 +22837,7 @@ ov02_02250780: ; 0x02250780
 	push {r4, r5, r6, lr}
 	ldr r0, [r0, #0xc]
 	add r5, r1, #0
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	bl GetFirstAliveMonInParty_CrashIfNone
 	add r6, r0, #0
 	mov r1, #0xb1
@@ -25781,7 +25781,7 @@ ov02_02251F20: ; 0x02251F20
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x38]
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	bl FlyPoints_GetPosition
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -25875,14 +25875,14 @@ ov02_02251FDC: ; 0x02251FDC
 	ldr r0, [r0, #0x38]
 	add r6, r1, #0
 	str r2, [sp, #0xc]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0x38]
 	bl Sav2_PlayerData_GetProfileAddr
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0x38]
-	bl Sav2_Misc_get
+	bl Sav2_Misc_Get
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0x30]
@@ -25982,7 +25982,7 @@ _022520B8:
 	bl MI_CpuFill8
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0x38]
-	bl Sav2_SysInfo_RTC_get
+	bl Sav2_SysInfo_RTC_Get
 	ldr r0, [r0, #0x14]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
@@ -26327,7 +26327,7 @@ _0225234A:
 	cmp r1, r0
 	bne _022523B0
 	ldr r0, [r5, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	bl GetFirstAliveMonInParty_CrashIfNone
 	add r6, r0, #0
 	mov r1, #5
@@ -28111,7 +28111,7 @@ _02253114:
 	thumb_func_start ov02_02253134
 ov02_02253134: ; 0x02253134
 	push {r3, r4, r5, r6, r7, lr}
-	bl Save_DressupData_get
+	bl Save_DressupData_Get
 	bl SaveDressupData_GetFashionCase
 	ldr r6, _02253168 ; =ov02_02253D54
 	add r5, r0, #0
@@ -28156,7 +28156,7 @@ _02253184: .word ov02_02253D54
 	thumb_func_start ov02_02253188
 ov02_02253188: ; 0x02253188
 	push {r3, r4, r5, lr}
-	bl Save_DressupData_get
+	bl Save_DressupData_Get
 	bl SaveDressupData_GetFashionCase
 	add r4, r0, #0
 	mov r5, #0
@@ -28193,7 +28193,7 @@ _022531C0:
 	lsr r1, r1, #0x18
 	cmp r1, #0xe
 	blo _022531C0
-	bl Save_DressupData_get
+	bl Save_DressupData_Get
 	bl SaveDressupData_GetFashionCase
 	add r6, r0, #0
 	mov r5, #0

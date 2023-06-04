@@ -835,7 +835,7 @@ _021F2134: ; jump table
 _021F2148:
 	ldr r0, [r4, #0x1c]
 	ldr r0, [r0, #0xc]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	bl CheckFlag99A
 	cmp r0, #0
 	bne _021F2172
@@ -1208,7 +1208,7 @@ _021F2412:
 _021F2476:
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #0xc]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	bl CheckFlag99A
 	cmp r0, #0
 	bne _021F249A
@@ -2881,7 +2881,7 @@ ov01_021F3100: ; 0x021F3100
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	add r4, r1, #0
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	add r1, r4, #0
 	bl GetPartyMonByIndex
 	pop {r4, pc}

@@ -6,8 +6,8 @@ u32 Save_TrainerHouse_sizeof(void) {
     return sizeof(TrainerHouseSave);
 }
 
-TrainerHouseSave *Save_TrainerHouse_get(SAVEDATA *saveData) {
-    return SavArray_get(saveData, SAVE_TRAINER_HOUSE);
+TrainerHouseSave *Save_TrainerHouse_Get(SAVEDATA *saveData) {
+    return SavArray_Get(saveData, SAVE_TRAINER_HOUSE);
 }
 
 void Save_TrainerHouse_init(TrainerHouseSave *th) {

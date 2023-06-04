@@ -229,7 +229,7 @@ ov109_021E5A70: ; 0x021E5A70
 	strb r0, [r5, #0x1c]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0xc]
-	bl Save_PhotoAlbum_get
+	bl Save_PhotoAlbum_Get
 	mov r1, #0x7b
 	lsl r1, r1, #2
 	str r0, [r5, r1]

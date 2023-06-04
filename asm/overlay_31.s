@@ -47,7 +47,7 @@ ov31_0225D520: ; 0x0225D520
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x1c]
 	ldr r0, [r0, #0xc]
-	bl Save_Pokeathlon_get
+	bl Save_Pokeathlon_Get
 	mov r1, #0x5b
 	lsl r1, r1, #2
 	str r0, [r4, r1]

@@ -428,7 +428,7 @@ ov80_022375D0: ; 0x022375D0
 	str r0, [sp, #0x10]
 	ldr r0, _02237818 ; =0x000006FC
 	ldr r0, [r5, r0]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	str r0, [sp, #0x1c]
 	bl HealParty
 	ldrb r0, [r5, #4]
@@ -866,7 +866,7 @@ ov80_0223793C: ; 0x0223793C
 	add r4, r0, #0
 	ldr r0, _02237968 ; =0x000006FC
 	ldr r0, [r4, r0]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	mov r1, #0x26
 	lsl r1, r1, #4
 	ldrb r1, [r4, r1]
@@ -950,7 +950,7 @@ ov80_022379C8: ; 0x022379C8
 	add r5, r0, #0
 	ldr r0, _02237A34 ; =0x000006FC
 	ldr r0, [r5, r0]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	mov r1, #0x26
 	lsl r1, r1, #4
 	ldrb r1, [r5, r1]

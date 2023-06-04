@@ -73,8 +73,8 @@ static BOOL CreateStarter(TaskManager *taskManager) {
         env->state = 3;
         break;
     case 3: {
-        POKEDEX *pokedex = Sav2_Pokedex_get(fsys->savedata);
-        party = SavArray_PlayerParty_get(fsys->savedata);
+        POKEDEX *pokedex = Sav2_Pokedex_Get(fsys->savedata);
+        party = SavArray_PlayerParty_Get(fsys->savedata);
         Pokemon *myChoice = &env->args->starters[env->args->cursorPos];
         if (AddMonToParty(party, myChoice)) {
             UpdatePokedexWithReceivedSpecies(fsys->savedata, myChoice);

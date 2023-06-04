@@ -113,7 +113,7 @@
 .public Sav2_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public Save_PhotoAlbum_get
+.public Save_PhotoAlbum_Get
 .public PhotoAlbum_GetNumSaved
 .public PhotoAlbum_DeletePhotoByIndex
 .public PhotoAlbum_SetPhotoAtIndex

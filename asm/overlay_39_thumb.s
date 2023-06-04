@@ -4004,7 +4004,7 @@ ov39_02228E54: ; 0x02228E54
 	ldr r0, [r5]
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
-	bl Sav2_SysInfo_get
+	bl Sav2_SysInfo_Get
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_0202C08C

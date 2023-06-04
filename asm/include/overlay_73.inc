@@ -145,8 +145,8 @@
 .public sub_0202B994
 .public sub_0202B9B8
 .public sub_0202BF80
-.public Save_DressupData_get
-.public Save_FriendGroup_get
+.public Save_DressupData_Get
+.public Save_FriendGroup_Get
 .public sub_0202C8C4
 .public sub_0202C8E4
 .public GameStats_AddSpecial

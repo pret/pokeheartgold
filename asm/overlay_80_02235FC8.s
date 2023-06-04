@@ -140,7 +140,7 @@ ov80_0223608C: ; 0x0223608C
 	mov r2, #0x44
 	bl MIi_CpuClearFast
 	ldr r0, [r5]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	add r1, r5, #0
 	add r1, #0xa8
 	ldr r1, [r1]
@@ -152,7 +152,7 @@ ov80_0223608C: ; 0x0223608C
 	ldr r1, [r1]
 	str r0, [r1, #4]
 	ldr r0, [r5]
-	bl Sav2_Mailbox_get
+	bl Sav2_Mailbox_Get
 	add r1, r5, #0
 	add r1, #0xa8
 	ldr r1, [r1]
@@ -491,7 +491,7 @@ ov80_02236330: ; 0x02236330
 	ldr r1, [r1]
 	str r0, [r1, #4]
 	ldr r0, [r4]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	add r1, r4, #0
 	add r1, #0xac
 	ldr r1, [r1]
@@ -539,7 +539,7 @@ ov80_02236330: ; 0x02236330
 	ldr r0, [r0]
 	strb r1, [r0, #0x12]
 	ldr r0, [r4]
-	bl Save_SpecialRibbons_get
+	bl Save_SpecialRibbons_Get
 	add r1, r4, #0
 	add r1, #0xac
 	ldr r1, [r1]

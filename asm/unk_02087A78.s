@@ -324,7 +324,7 @@ _02087C9E:
 	lsl r1, r1, #2
 	str r0, [r2, r1]
 	ldr r0, [r5, #0xc]
-	bl Sav2_GameStats_get
+	bl Sav2_GameStats_Get
 	mov r1, #0x51
 	ldr r2, [r5, #0x10]
 	lsl r1, r1, #2
@@ -495,7 +495,7 @@ sub_02087E1C: ; 0x02087E1C
 	mov r1, #0x83
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	mov r1, #2
 	mov r2, #0x1b
 	bl ScriptState_FlypointFlagAction

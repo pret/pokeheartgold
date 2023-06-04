@@ -8,8 +8,8 @@
 .public Sav2_PlayerData_GetOptionsAddr
 .public PlayerProfile_TestBadgeFlag
 .public sub_0202C7DC
-.public Save_FriendGroup_get
-.public Save_TrainerCard_get
+.public Save_FriendGroup_Get
+.public Save_TrainerCard_Get
 .public TrainerCard_GetBadgeShininessArr
 .public GetShininessOfBadgeI
 .public SetShininessOfBadgeI
@@ -20,8 +20,8 @@
 .public sub_0202D638
 .public sub_0202D63C
 .public sub_0202D908
-.public Save_FrontierData_get
-.public Save_SpecialRibbons_get
+.public Save_FrontierData_Get
+.public Save_SpecialRibbons_Get
 .public sub_0203107C
 .public sub_020310BC
 .public sub_0203769C
@@ -50,7 +50,7 @@
 .public sub_02067584
 .public sub_0206759C
 .public GetPartyCount
-.public SavArray_PlayerParty_get
+.public SavArray_PlayerParty_Get
 .public SavArray_IsNatDexEnabled
 .public SaveGetBag
 .public sub_02088288

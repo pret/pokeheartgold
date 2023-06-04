@@ -90,11 +90,11 @@ BOOL ScrCmd_SizeRecordCompare(SCRIPTCONTEXT *ctx) {
     fsys = ctx->fsys;
     ret_p = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
     slot = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
-    mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
+    mon = GetPartyMonByIndex(SavArray_PlayerParty_Get(fsys->savedata), slot);
     species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     rand = GetMonSizeHash(mon);
     cm1 = GetMonSize(species, rand);
-    record = ScriptState_GetFishingCompetitionLengthRecord(SavArray_Flags_get(fsys->savedata));
+    record = ScriptState_GetFishingCompetitionLengthRecord(SavArray_Flags_Get(fsys->savedata));
     cm2 = GetMonSize(species, record);
     {
         u32 in1 = LengthConvertToImperial(cm1);
@@ -120,8 +120,8 @@ BOOL ScrCmd_SizeRecordUpdate(SCRIPTCONTEXT *ctx) {
 
     fsys = ctx->fsys;
     slot = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
-    mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
-    ScriptState_SetFishingCompetitionLengthRecord(SavArray_Flags_get(fsys->savedata), GetMonSizeHash(mon));
+    mon = GetPartyMonByIndex(SavArray_PlayerParty_Get(fsys->savedata), slot);
+    ScriptState_SetFishingCompetitionLengthRecord(SavArray_Flags_Get(fsys->savedata), GetMonSizeHash(mon));
     return FALSE;
 }
 
@@ -136,7 +136,7 @@ BOOL ScrCmd_BufferRecordSize(SCRIPTCONTEXT *ctx) {
     idx0 = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     idx1 = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     species = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
-    rand = ScriptState_GetFishingCompetitionLengthRecord(SavArray_Flags_get(fsys->savedata));
+    rand = ScriptState_GetFishingCompetitionLengthRecord(SavArray_Flags_Get(fsys->savedata));
     FormatSizeRecord(fsys, idx0, idx1, species, rand);
     return FALSE;
 }
@@ -152,7 +152,7 @@ BOOL ScrCmd_BufferMonSize(SCRIPTCONTEXT *ctx) {
     idx0 = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     idx1 = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     slot = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
-    mon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
+    mon = GetPartyMonByIndex(SavArray_PlayerParty_Get(fsys->savedata), slot);
     FormatSizeRecord(fsys, idx0, idx1, GetMonData(mon, MON_DATA_SPECIES, NULL), GetMonSizeHash(mon));
     return FALSE;
 }

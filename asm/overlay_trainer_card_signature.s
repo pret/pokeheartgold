@@ -92,13 +92,13 @@ _021E80D6:
 	bl BeginNormalPaletteFade
 	add r0, r6, #0
 	bl OverlayManager_GetArgs
-	bl Save_TrainerCard_get
+	bl Save_TrainerCard_Get
 	bl TrainerCard_GetSignature
 	ldr r1, _021E8238 ; =0x00005B98
 	str r0, [r4, r1]
 	add r0, r6, #0
 	bl OverlayManager_GetArgs
-	bl Sav2_GameStats_get
+	bl Sav2_GameStats_Get
 	str r0, [r4, #8]
 	add r0, r6, #0
 	bl OverlayManager_GetArgs

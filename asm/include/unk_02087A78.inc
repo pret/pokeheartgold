@@ -18,13 +18,13 @@
 .public DestroyHeap
 .public AllocFromHeap
 .public FreeToHeap
-.public Sav2_GameStats_get
+.public Sav2_GameStats_Get
 .public sub_0202FC24
 .public sub_0202FC48
 .public sub_0202FC5C
 .public sub_0202FC90
 .public sub_020304F0
-.public SavArray_Flags_get
+.public SavArray_Flags_Get
 .public BattleSetup_New
 .public BattleSetup_Delete
 .public Fsys_GetSurfOverriddenMusicId

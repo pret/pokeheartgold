@@ -67,7 +67,7 @@ ov80_022310C4: ; 0x022310C4
 	bne _02231158
 	ldr r0, _022313B0 ; =0x000006FC
 	ldr r0, [r1, r0]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	bl ScriptState_GetVar4052
 	b _02231164
 _02231158:
@@ -256,7 +256,7 @@ _022312D2:
 	ldr r4, [r7]
 	ldr r0, _022313B0 ; =0x000006FC
 	ldr r0, [r4, r0]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	mov r1, #0x26
 	add r2, r4, r5
 	lsl r1, r1, #4
@@ -623,7 +623,7 @@ ov80_0223157C: ; 0x0223157C
 	bl sub_02030B1C
 	ldr r0, _022317B4 ; =0x000006FC
 	ldr r0, [r5, r0]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	mov r1, #0x26
 	lsl r1, r1, #4
 	ldrb r1, [r5, r1]

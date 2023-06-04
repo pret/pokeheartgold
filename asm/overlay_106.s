@@ -1839,7 +1839,7 @@ ov106_021E66FC: ; 0x021E66FC
 	ldr r0, [r0]
 	str r1, [sp, #0x18]
 	ldr r0, [r0]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	add r4, r0, #0
 	bl GetPartyCount
 	cmp r0, #0

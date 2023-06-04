@@ -99,7 +99,7 @@ BOOL sub_0205298C(TaskManager *taskman) {
     case 0:
         sub_0206DB58(taskman, fsys);
         Fsys_ClearFollowingTrainer(fsys);
-        HealParty(SavArray_PlayerParty_get(fsys->savedata));
+        HealParty(SavArray_PlayerParty_Get(fsys->savedata));
         *state += 1;
         break;
     case 1:
@@ -139,7 +139,7 @@ static void AddHallOfFameEntry(FieldSystem *fsys, BOOL gameCleared) {
     if (val != 1 || !gameCleared) {
         Sav2_HOF_init(hof);
     }
-    PARTY *party = SavArray_PlayerParty_get(fsys->savedata);
+    PARTY *party = SavArray_PlayerParty_Get(fsys->savedata);
 
     GF_RTC_CopyDate(&date);
     Sav2_HOF_RecordParty(hof, party, &date);
@@ -189,7 +189,7 @@ static BOOL Task_GameClearSave(TaskManager *taskman) {
         }
         break;
     case 4:
-        HealParty(SavArray_PlayerParty_get(fsys->savedata));
+        HealParty(SavArray_PlayerParty_Get(fsys->savedata));
         int writeStatus = SaveGameNormal(fsys->savedata);
         if (!env->vsTrainerRed) {
             AddHallOfFameEntry(fsys, env->gameCleared);
@@ -266,14 +266,14 @@ void Task_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
 
     fsys = TaskManager_GetSys(taskman);
     env = AllocFromHeap(32, sizeof(GameClearWork));
-    scriptState = SavArray_Flags_get(fsys->savedata);
+    scriptState = SavArray_Flags_Get(fsys->savedata);
     profile = Sav2_PlayerData_GetProfileAddr(fsys->savedata);
-    dynamicWarp = FlyPoints_GetDynamicWarp(Save_FlyPoints_get(fsys->savedata));
-    spawnWarp = FlyPoints_GetSpecialSpawnWarpPtr(Save_FlyPoints_get(fsys->savedata));
+    dynamicWarp = FlyPoints_GetDynamicWarp(Save_FlyPoints_Get(fsys->savedata));
+    spawnWarp = FlyPoints_GetSpecialSpawnWarpPtr(Save_FlyPoints_Get(fsys->savedata));
 
     env->gameCleared = CheckGameClearFlag(scriptState);
     env->hofCongratsArgs.profile = Sav2_PlayerData_GetProfileAddr(fsys->savedata);
-    env->hofCongratsArgs.party = SavArray_PlayerParty_get(fsys->savedata);
+    env->hofCongratsArgs.party = SavArray_PlayerParty_Get(fsys->savedata);
     env->hofCongratsArgs.igt = Sav2_PlayerData_GetIGTAddr(fsys->savedata);
     env->creditsArgs.gender = PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(fsys->savedata));
     env->creditsArgs.gameCleared = CheckGameClearFlag(scriptState);
@@ -282,7 +282,7 @@ void Task_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
     if (!CheckGameClearFlag(scriptState)) {
         FieldSys_SetGameClearTime(fsys);
     }
-    SavArray_PlayerParty_get(fsys->savedata);
+    SavArray_PlayerParty_Get(fsys->savedata);
     LocationData_BackUp(dynamicWarp);
     LocationData_Restore(spawnWarp);
     SetFlag966(scriptState);
@@ -290,7 +290,7 @@ void Task_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
     PlayerProfile_SetGameClearFlag(profile);
 
     if (!env->vsTrainerRed) {
-        GameStats_Inc(Sav2_GameStats_get(fsys->savedata), 74);
+        GameStats_Inc(Sav2_GameStats_Get(fsys->savedata), 74);
     }
     TaskManager_Call(taskman, Task_GameClearSave, env);
 }

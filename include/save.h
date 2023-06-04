@@ -17,8 +17,8 @@
 typedef struct SaveBlock2 SAVEDATA;
 
 SAVEDATA *SaveBlock2_New(void);
-SAVEDATA *SaveBlock2_get(void);
-void *SavArray_get(SAVEDATA *saveData, int id);
+SAVEDATA *SaveBlock2_Get(void);
+void *SavArray_Get(SAVEDATA *saveData, int id);
 const void *SavArray_Const_Get(const SAVEDATA *saveData, int id);
 BOOL Save_DeleteAllData(SAVEDATA *saveData);
 BOOL SaveData_TryLoadOnContinue(SAVEDATA *saveData);

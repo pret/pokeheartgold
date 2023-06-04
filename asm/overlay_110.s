@@ -231,7 +231,7 @@ ov110_021E5AAC: ; 0x021E5AAC
 	beq _021E5AD2
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0xc]
-	bl SavArray_Flags_get
+	bl SavArray_Flags_Get
 	ldrb r1, [r4, #0x19]
 	bl ScriptState_SetAlphPuzzleFlag
 _021E5AD2:

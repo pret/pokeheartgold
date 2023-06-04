@@ -295,7 +295,7 @@
 .public PlayerProfile_GetTrainerGender
 .public PlayerProfile_GetLanguage
 .public Options_GetTextFrameDelay
-.public Save_Pokeathlon_get
+.public Save_Pokeathlon_Get
 .public sub_02031978
 .public sub_0203197C
 .public sub_02031990
@@ -308,7 +308,7 @@
 .public SavePokeathlon_AddAthletePoints
 .public sub_02031B00
 .public sub_02031B10
-.public Save_ApricornBox_get
+.public Save_ApricornBox_Get
 .public sub_020320E0
 .public sub_020321A0
 .public sub_0203410C
@@ -324,7 +324,7 @@
 .public sub_0203A914
 .public sub_0203A994
 .public sub_0203A9C8
-.public SavArray_Flags_get
+.public SavArray_Flags_Get
 .public CheckFlagInArray
 .public SetFlagInArray
 .public SpeciesToOverworldModelIndexOffset

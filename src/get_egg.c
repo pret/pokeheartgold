@@ -102,12 +102,12 @@ static void DayCareMon_CopyFromPartySlot(PARTY *party, int partyIdx, DAYCAREMON 
     DayCareMon_SetSteps(daycareMon, 0);
     RemoveMonFromParty(party, partyIdx);
     if (!PartyHasMon(party, SPECIES_CHATOT)) {
-        Chatot_invalidate(Sav2_Chatot_get(saveData));
+        Chatot_invalidate(Sav2_Chatot_Get(saveData));
     }
 }
 
 void Sav2_DayCare_PutMonIn(PARTY *party, u8 partyIdx, DAYCARE *dayCare, SAVEDATA *saveData) {
-    GameStats_Inc(Sav2_GameStats_get(saveData), 41);
+    GameStats_Inc(Sav2_GameStats_Get(saveData), 41);
     DayCareMon_CopyFromPartySlot(party, partyIdx, Sav2_DayCare_GetMonX(dayCare, Sav2_DayCare_GetAvailableSlot(dayCare)), saveData);
 }
 

@@ -32,7 +32,7 @@ ov14_021E5900: ; 0x021E5900
 	strb r0, [r4, #0x1f]
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl SavArray_PlayerParty_get
+	bl SavArray_PlayerParty_Get
 	str r0, [r4, #8]
 	ldr r0, [r4]
 	ldr r0, [r0]
@@ -6567,7 +6567,7 @@ _021E8A06:
 	str r0, [r4, #0x1c]
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Save_SpecialRibbons_get
+	bl Save_SpecialRibbons_Get
 	str r0, [r4, #0x20]
 	mov r0, #0
 	str r0, [r4, #0x24]

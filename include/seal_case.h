@@ -64,7 +64,7 @@ void Sav2_SealCase_init(SEALCASE *sealCase);
 void CopyCapsule(const CAPSULE *src, CAPSULE *dest);
 
 /*
- * SEALCASE *Sav2_SealCase_get(SAVEDATA *saveData)
+ * SEALCASE *Sav2_SealCase_Get(SAVEDATA *saveData)
  *
  * Gets the player's seal case from the save file
  *
@@ -72,7 +72,7 @@ void CopyCapsule(const CAPSULE *src, CAPSULE *dest);
  *
  * @returns: Pointer to SEALCASE from the save file
  */
-SEALCASE *Sav2_SealCase_get(SAVEDATA *saveData);
+SEALCASE *Sav2_SealCase_Get(SAVEDATA *saveData);
 
 /*
  * CAPSULE *SealCase_GetCapsuleI(SEALCASE *sealCase, int i)
@@ -127,7 +127,7 @@ u8 SealOnCapsuleGetX(const SEAL *seal);
 u8 SealOnCapsuleGetY(const SEAL *seal);
 
 /*
- * SEALBAG *SealCase_inventory_get(SEALCASE *sealCase)
+ * SEALBAG *SealCase_inventory_Get(SEALCASE *sealCase)
  *
  * Returns a pointer to the player's loose seals inventory.
  *
@@ -135,7 +135,7 @@ u8 SealOnCapsuleGetY(const SEAL *seal);
  *
  * @returns: Pointer to SEALBAG
  */
-SEALBAG *SealCase_inventory_get(SEALCASE *sealCase);
+SEALBAG *SealCase_inventory_Get(SEALCASE *sealCase);
 
 /*
  * u8 SealCaseInventory_GetSealQuantity(const SEALBAG *inventory, int sealId)

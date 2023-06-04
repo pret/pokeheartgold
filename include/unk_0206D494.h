@@ -7,7 +7,7 @@
 
 BOOL MonIsInGameTradePoke(Pokemon *mon, u8 tradeno);
 BOOL sub_0206D8D0(Pokemon *mon, SAVEDATA *saveData);
-BUGCONTEST *FieldSys_BugContest_get(FieldSystem *fsys);
+BUGCONTEST *FieldSys_BugContest_Get(FieldSystem *fsys);
 u16 *BugContest_GetSportBallsAddr(BUGCONTEST *contest);
 void FieldSys_IncrementBugContestTimer(FieldSystem *fsys, int a1);
 void Fsys_InitMystriStageGymmick(FieldSystem *fsys);

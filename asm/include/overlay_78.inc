@@ -92,7 +92,7 @@
 .public sub_02070438
 .public Mon_GetBoxMon
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SavArray_PlayerParty_Get
 .public NNS_G2dGetImageLocation
 .public NNS_G3dGetTex
 .public GX_LoadOBJPltt

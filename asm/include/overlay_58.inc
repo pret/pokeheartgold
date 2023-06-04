@@ -18,12 +18,12 @@
 .public GX_DisableEngineALayers
 .public GX_DisableEngineBLayers
 .public Sav2_PlayerData_GetOptionsAddr
-.public Sav2_Mailbox_get
+.public Sav2_Mailbox_Get
 .public sub_02031DA0
 .public GetPartyMonByIndex
 .public Party_GetUnkSubSlot
 .public Party_SetUnkSubSlot
-.public SavArray_PlayerParty_get
+.public SavArray_PlayerParty_Get
 .public SaveGetBag
 .public ApplyMonMoodModifier
 .public MI_CpuFill8

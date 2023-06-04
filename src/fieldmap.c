@@ -348,7 +348,7 @@ u32 GetCurrentMapMessageBank(u32 mapno) {
 }
 
 u16 *GetVarPointer(FieldSystem *fsys, u16 varIdx) {
-    SCRIPT_STATE *state = SavArray_Flags_get(fsys->savedata);
+    SCRIPT_STATE *state = SavArray_Flags_Get(fsys->savedata);
     if (varIdx < VAR_BASE) {
         return NULL;
     } else if (varIdx < SPECIAL_VAR_BASE) {
@@ -381,22 +381,22 @@ u16 VarGetObjectEventGraphicsId(FieldSystem *fsys, u16 varobjId) {
 }
 
 BOOL FlagGet(FieldSystem *fsys, u16 flagId) {
-    return CheckFlagInArray(SavArray_Flags_get(fsys->savedata), flagId);
+    return CheckFlagInArray(SavArray_Flags_Get(fsys->savedata), flagId);
 }
 
 void FlagSet(FieldSystem *fsys, u16 flagId) {
-    return SetFlagInArray(SavArray_Flags_get(fsys->savedata), flagId);
+    return SetFlagInArray(SavArray_Flags_Get(fsys->savedata), flagId);
 }
 
 void FlagClear(FieldSystem *fsys, u16 flagId) {
-    return ClearFlagInArray(SavArray_Flags_get(fsys->savedata), flagId);
+    return ClearFlagInArray(SavArray_Flags_Get(fsys->savedata), flagId);
 }
 
 void ClearTempFieldEventData(FieldSystem *fsys) {
     u8 *flags;
     u16 *vars;
 
-    SCRIPT_STATE *state = SavArray_Flags_get(fsys->savedata);
+    SCRIPT_STATE *state = SavArray_Flags_Get(fsys->savedata);
     flags = GetFlagAddr(state, MAPTEMP_FLAG_BASE);
     memset(flags, 0, NUM_MAPTEMP_FLAGS / 8);
     vars = GetVarAddr(state, TEMP_VAR_BASE);
@@ -406,7 +406,7 @@ void ClearTempFieldEventData(FieldSystem *fsys) {
 void ClearDailyFlags(FieldSystem *fsys) {
     u8 *flags;
 
-    SCRIPT_STATE *state = SavArray_Flags_get(fsys->savedata);
+    SCRIPT_STATE *state = SavArray_Flags_Get(fsys->savedata);
     flags = GetFlagAddr(state, DAILY_FLAG_BASE);
     memset(flags, 0, NUM_DAILY_FLAGS / 8);
 }
@@ -435,17 +435,17 @@ BOOL TrainerNumIsDouble(u32 trainer) {
 }
 
 BOOL TrainerFlagCheck(SAVEDATA *saveData, u32 trainer) {
-    SCRIPT_STATE *scriptState = SavArray_Flags_get(saveData);
+    SCRIPT_STATE *scriptState = SavArray_Flags_Get(saveData);
     return CheckFlagInArray(scriptState, trainer + TRAINER_FLAG_BASE);
 }
 
 void TrainerFlagSet(SAVEDATA *saveData, u32 trainer) {
-    SCRIPT_STATE *scriptState = SavArray_Flags_get(saveData);
+    SCRIPT_STATE *scriptState = SavArray_Flags_Get(saveData);
     SetFlagInArray(scriptState, trainer + TRAINER_FLAG_BASE);
 }
 
 void TrainerFlagClear(SAVEDATA *saveData, u32 trainer) {
-    SCRIPT_STATE *scriptState = SavArray_Flags_get(saveData);
+    SCRIPT_STATE *scriptState = SavArray_Flags_Get(saveData);
     ClearFlagInArray(scriptState, trainer + TRAINER_FLAG_BASE);
 }
 
