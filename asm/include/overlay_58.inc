@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public OverlayManager_new
+.public OverlayManager_New
 .public OverlayManager_delete
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData

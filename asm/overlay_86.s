@@ -88,7 +88,7 @@ ov86_021E5900: ; 0x021E5900
 	lsl r1, r1, #4
 	str r0, [r5, r1]
 	mov r0, #0x79
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0x85
 	lsl r1, r1, #2
 	str r0, [r5, r1]

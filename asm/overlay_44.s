@@ -537,7 +537,7 @@ ov44_0222A1FC: ; 0x0222A1FC
 	lsl r2, r2, #2
 	str r0, [r1, r2]
 	mov r0, #0x35
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r2, #0x59
 	ldr r1, [sp, #4]
 	lsl r2, r2, #2
@@ -2740,7 +2740,7 @@ _0222B3EC:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -2967,7 +2967,7 @@ _0222B5CE:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3083,7 +3083,7 @@ _0222B6CE:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3994,7 +3994,7 @@ _0222BE08:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -4051,7 +4051,7 @@ _0222BE80:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -8598,7 +8598,7 @@ _0222E386:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -10188,7 +10188,7 @@ _0222EFB8:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -10243,7 +10243,7 @@ _0222F030:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -10645,7 +10645,7 @@ _0222F37A:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -10747,7 +10747,7 @@ _0222F460:
 	lsl r1, r1, #4
 	add r0, r5, r1
 	sub r1, #0xee
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -11132,7 +11132,7 @@ ov44_0222F780: ; 0x0222F780
 	cmp r6, r0
 	beq _0222F7BA
 	mov r0, #0x35
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	add r4, r0, #0
 	ldr r0, [r5]
 	add r1, r6, #0
@@ -11450,7 +11450,7 @@ ov44_0222F9A0: ; 0x0222F9A0
 	ldr r1, _0222FA20 ; =0x00000B68
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	ldr r1, _0222FA14 ; =0x00000B1C
 	add r2, r4, #0
 	str r0, [r5, r1]
@@ -12697,7 +12697,7 @@ _02230322:
 	mov r3, #0x68
 	bl AddTextPrinterParameterized2
 	mov r0, #0x35
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	add r6, r0, #0
 	ldr r0, [r5]
 	add r1, r4, #0
@@ -15298,7 +15298,7 @@ ov44_02231918: ; 0x02231918
 	cmp r6, r0
 	beq _02231950
 	mov r0, #0x35
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	add r4, r0, #0
 	ldr r0, [r5]
 	add r1, r6, #0
@@ -19154,7 +19154,7 @@ ov44_0223362C: ; 0x0223362C
 	add r5, r0, #0
 	add r0, r6, #0
 	add r4, r1, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r5, #4]
 	ldr r2, _02233674 ; =0x0000030A
 	mov r0, #0
@@ -20842,7 +20842,7 @@ _022342CA:
 	lsl r0, r0, #2
 	add r0, r4, r0
 	mov r1, #1
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	mov r1, #0x86
 	lsl r1, r1, #2
 	str r0, [r4, r1]

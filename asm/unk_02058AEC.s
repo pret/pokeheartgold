@@ -1330,7 +1330,7 @@ _02059546:
 	str r5, [r4, #0x24]
 	str r6, [r4, #8]
 	mov r0, #0xb
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x28]
 	mov r0, #0
 	mov r1, #0x1b
@@ -2164,7 +2164,7 @@ _02059B96: ; jump table
 	.short _02059D24 - _02059B96 - 2 ; case 7
 _02059BA6:
 	mov r0, #4
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x18]
 	mov r0, #0
 	mov r1, #0x1b

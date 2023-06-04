@@ -443,7 +443,7 @@ _021F7016:
 	bl sub_0202C6F4
 	add r6, r0, #0
 	mov r0, #4
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	add r1, r5, #0
 	add r1, #0x8c
 	add r4, r0, #0
@@ -706,7 +706,7 @@ ov01_021F722C: ; 0x021F722C
 	add r4, r0, #0
 	bl MI_CpuFill8
 	mov r0, #4
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x38]
 	ldr r2, _021F7264 ; =0x0000030B
 	mov r0, #0

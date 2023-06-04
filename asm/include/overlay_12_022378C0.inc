@@ -42,9 +42,9 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
-.public MessageFormat_new
+.public MessageFormat_New
 .public MessageFormat_delete
-.public MessagePrinter_new
+.public MessagePrinter_New
 .public MessagePrinter_delete
 .public sub_0200CF18
 .public sub_0200CF38
@@ -63,7 +63,7 @@
 .public sub_0200E640
 .public DrawFrameAndWindow2
 .public sub_0200EB80
-.public WaitingIcon_new
+.public WaitingIcon_New
 .public sub_0200F450
 .public SetMasterBrightnessNeutral
 .public sub_0200FBF4
@@ -118,11 +118,11 @@
 .public sub_02026E9C
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
-.public PlayerProfile_new
+.public PlayerProfile_New
 .public PlayerProfile_copy
 .public PlayerProfile_GetPlayerName_NewString
 .public PlayerProfile_GetVersion
-.public Pokedex_new
+.public Pokedex_New
 .public Pokedex_copy
 .public Options_GetFrame
 .public GameStats_Inc

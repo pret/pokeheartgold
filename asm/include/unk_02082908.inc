@@ -47,7 +47,7 @@
 .public DestroyMsgData
 .public NewString_ReadMsgData
 .public ReadMsgData_ExpandPlaceholders
-.public MessageFormat_new
+.public MessageFormat_New
 .public MessageFormat_delete
 .public BufferString
 .public BufferBoxMonSpeciesName

@@ -20,7 +20,7 @@
 .public StopSE
 .public UnloadOverlayByID
 .public HandleLoadOverlay
-.public OverlayManager_new
+.public OverlayManager_New
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
@@ -64,7 +64,7 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
-.public MessageFormat_new
+.public MessageFormat_New
 .public MessageFormat_delete
 .public BufferBoxMonSpeciesName
 .public BufferIntegerAsString

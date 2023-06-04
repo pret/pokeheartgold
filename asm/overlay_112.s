@@ -8742,7 +8742,7 @@ ov112_021EA17C: ; 0x021EA17C
 	ldr r0, _021EA190 ; =0x0001EA88
 	ldr r1, _021EA194 ; =0x000003E2
 	add r0, r4, r0
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	ldr r1, _021EA198 ; =0x0001EC4C
 	str r0, [r4, r1]
 	pop {r4, pc}
@@ -19457,7 +19457,7 @@ _021EF5EE:
 	ldr r0, _021EF628 ; =ov112_021FF124
 	add r1, r4, r1
 	mov r2, #0x9a
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #0x1c]
 	mov r0, #2
 	str r0, [r4, #8]
@@ -21350,7 +21350,7 @@ ov112_021F03BC: ; 0x021F03BC
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0x68]
 	ldr r0, [r4]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x6c]
 	ldr r1, [r4]
 	mov r0, #0xb

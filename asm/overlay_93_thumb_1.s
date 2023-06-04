@@ -75,7 +75,7 @@ _0225C5BC:
 	ldr r0, _0225C6B8 ; =ov93_02262A08
 	add r1, r5, #0
 	mov r2, #0x75
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r5, #0x28]
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -102,7 +102,7 @@ _0225C5F4:
 	ldr r0, _0225C6BC ; =_022629F8
 	add r1, r5, #0
 	mov r2, #0x75
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r5, #0x28]
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -135,7 +135,7 @@ _0225C638:
 	ldr r0, _0225C6B8 ; =ov93_02262A08
 	add r1, r5, #0
 	mov r2, #0x75
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r5, #0x28]
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -450,7 +450,7 @@ ov93_0225C768: ; 0x0225C768
 	add r1, #0x80
 	str r0, [r1]
 	mov r0, #0x75
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r1, r5, #0
 	add r1, #0x84
 	str r0, [r1]

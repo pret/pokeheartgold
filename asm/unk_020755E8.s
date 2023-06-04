@@ -846,7 +846,7 @@ sub_02075A7C: ; 0x02075A7C
 	bl NewMsgDataFromNarc
 	str r0, [r4, #8]
 	add r0, r5, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0xc]
 	mov r0, #5
 	lsl r0, r0, #6
@@ -3583,7 +3583,7 @@ sub_02077394: ; 0x02077394
 	ldr r0, _020773A8 ; =_02103A1C
 	ldr r1, [r4, #0x3c]
 	ldr r2, [r4, #0x5c]
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #0x38]
 	pop {r4, pc}
 	nop

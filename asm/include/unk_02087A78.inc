@@ -7,7 +7,7 @@
 .public sub_02005B68
 .public UnloadOverlayByID
 .public HandleLoadOverlay
-.public OverlayManager_new
+.public OverlayManager_New
 .public OverlayManager_delete
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData

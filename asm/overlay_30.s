@@ -371,7 +371,7 @@ ov30_0225D83C: ; 0x0225D83C
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #8
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x3c]
 	mov r0, #0
 	mov r1, #0x1b
@@ -779,7 +779,7 @@ ov30_0225DB48: ; 0x0225DB48
 	add r4, r0, #0
 	add r0, #0x4c
 	mov r1, #0xec
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	str r0, [r4, #0x64]
 	mov r0, #0xc
 	str r0, [r4, #0xc]

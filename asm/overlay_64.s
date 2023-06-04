@@ -918,7 +918,7 @@ ov64_021E607C: ; 0x021E607C
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	mov r0, #0x3b
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0x49
 	lsl r1, r1, #2
 	str r0, [r4, r1]

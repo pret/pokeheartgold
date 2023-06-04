@@ -25,11 +25,11 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
-.public MessageFormat_new
+.public MessageFormat_New
 .public MessageFormat_delete
 .public BufferBoxMonNickname
 .public StringExpandPlaceholders
-.public MessagePrinter_new
+.public MessagePrinter_New
 .public MessagePrinter_delete
 .public sub_0200CDAC
 .public PrintUIntOnWindow
@@ -60,7 +60,7 @@
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
-.public WaitingIcon_new
+.public WaitingIcon_New
 .public sub_0200F450
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished

@@ -40,7 +40,7 @@ BOOL ScrCmd_466(SCRIPTCONTEXT *ctx) {
 
 static void CreateMoveRelearner(SCRIPTCONTEXT *ctx, int a1, Pokemon *mon, u16 *eligibleMoves) {
     MoveRelearner **moveRelearnerPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
-    MoveRelearner *moveRelearner = MoveRelearner_new(HEAP_ID_32);
+    MoveRelearner *moveRelearner = MoveRelearner_New(HEAP_ID_32);
     *moveRelearnerPtr = moveRelearner;
 
     moveRelearner->mon = mon;

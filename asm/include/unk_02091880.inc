@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public EasyChatManager_new
+.public EasyChatManager_New
 .public EasyChatManager_delete
 .public EasyChatManager_ReadWordIntoString
 .public GetECWordIndexByPair

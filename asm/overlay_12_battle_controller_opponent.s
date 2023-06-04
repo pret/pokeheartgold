@@ -5439,7 +5439,7 @@ ov12_0225B1A8: ; 0x0225B1A8
 	mov r1, #0
 	bl ov12_0223A7D8
 	mov r1, #1
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	add r1, r0, #0
 	add r0, r5, #0
 	bl ov12_0223BB80

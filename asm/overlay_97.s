@@ -1229,7 +1229,7 @@ ov97_0221EEA4: ; 0x0221EEA4
 	bl NewMsgDataFromNarc
 	str r0, [r5, #0x6c]
 	ldr r0, [r5]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r5, #0x70]
 	ldr r1, [r5]
 	mov r0, #0xb

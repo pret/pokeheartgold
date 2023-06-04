@@ -86,8 +86,8 @@
 .public sub_0203E868
 .public sub_0203E960
 .public sub_0203EA24
-.public PhoneUI_new
-.public TownMap_new
+.public PhoneUI_New
+.public TownMap_New
 .public sub_0203EB08
 .public sub_0203EB64
 .public sub_0203EBA4

@@ -293,7 +293,7 @@ _0222722C:
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [r4, #4]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0xfe
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3487,7 +3487,7 @@ ov39_02228A8C: ; 0x02228A8C
 	add r0, r4, #0
 	add r0, #0x44
 	mov r1, #1
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	add r4, #0x88
 	str r0, [r4]
 _02228AA6:

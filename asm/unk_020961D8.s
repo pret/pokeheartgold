@@ -22,7 +22,7 @@ sub_020961D8: ; 0x020961D8
 	add r4, r0, #0
 	str r5, [r4]
 	mov r0, #0x20
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #4]
 	mov r3, #0x20
 	str r3, [sp]

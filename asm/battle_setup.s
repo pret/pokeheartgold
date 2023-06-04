@@ -91,12 +91,12 @@ _0205193C:
 	bl SaveArray_Party_alloc
 	str r0, [r5, #4]
 	add r0, r6, #0
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	add r1, r5, #0
 	add r1, #0xf8
 	str r0, [r1]
 	add r0, r6, #0
-	bl Chatot_new
+	bl Chatot_New
 	mov r1, #0x46
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -118,12 +118,12 @@ _0205193C:
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	add r0, r6, #0
-	bl Pokedex_new
+	bl Pokedex_New
 	mov r1, #0x11
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	add r0, r6, #0
-	bl Options_new
+	bl Options_New
 	mov r1, #0x13
 	lsl r1, r1, #4
 	str r0, [r4, r1]

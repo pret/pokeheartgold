@@ -2,7 +2,7 @@
 #include "options.h"
 #include "player_data.h"
 
-OPTIONS* Options_new(HeapID heap_id) {
+OPTIONS* Options_New(HeapID heap_id) {
     OPTIONS* ret = AllocFromHeap(heap_id, sizeof(OPTIONS));
     Options_init(ret);
     return ret;

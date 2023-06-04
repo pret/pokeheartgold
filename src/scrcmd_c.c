@@ -961,7 +961,7 @@ BOOL sub_020416E4(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_AddWaitingIcon(SCRIPTCONTEXT *ctx) {
     WINDOW *window = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WINDOW);
     WaitingIcon **waitingIcon = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WAITING_ICON);
-    *waitingIcon = WaitingIcon_new(window, 0x3E2);
+    *waitingIcon = WaitingIcon_New(window, 0x3E2);
     return FALSE;
 }
 
@@ -1954,7 +1954,7 @@ BOOL ScrCmd_156(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_TownMap(SCRIPTCONTEXT *ctx) {
     TownMap **p_townMap = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
-    *p_townMap = TownMap_new(ctx->fsys, 1);
+    *p_townMap = TownMap_New(ctx->fsys, 1);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
@@ -1974,7 +1974,7 @@ BOOL ScrCmd_158(SCRIPTCONTEXT *ctx) { //todo: PC box screen
     struct PCBoxAppData **p_work;
 
     p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
-    *p_work = PCBoxAppData_new(ctx);
+    *p_work = PCBoxAppData_New(ctx);
     sub_0203E868(ctx->fsys, *p_work);
     SetupNativeScript(ctx, sub_020429A0);
     return TRUE;
@@ -4038,7 +4038,7 @@ BOOL ScrCmd_571(SCRIPTCONTEXT *ctx) {
     u16 r7 = ScriptGetVar(ctx);
     STRING *r7_str;
     STRING *sp0_str;
-    MessageFormat *msgFmt = MessageFormat_new(HEAP_ID_32);
+    MessageFormat *msgFmt = MessageFormat_New(HEAP_ID_32);
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0202_bin, HEAP_ID_32);
     BufferECWord(msgFmt, 0, sp4);
     BufferECWord(msgFmt, 1, sp8);
@@ -4653,7 +4653,7 @@ BOOL ScrCmd_SetPhoneCall(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_RunPhoneCall(SCRIPTCONTEXT *ctx) {
     void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
-    *p_work = PhoneUI_new(ctx->fsys);
+    *p_work = PhoneUI_New(ctx->fsys);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
@@ -5359,7 +5359,7 @@ BOOL ScrCmd_822(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_823(SCRIPTCONTEXT *ctx) {
     u16 *p_var = ScriptGetVarPointer(ctx);
     MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
-    PLAYERPROFILE *profile = PlayerProfile_new(HEAP_ID_4);
+    PLAYERPROFILE *profile = PlayerProfile_New(HEAP_ID_4);
     SafariZone_GetLinkLeaderToProfile(Save_SafariZone_get(ctx->fsys->savedata), profile);
     BufferPlayersName(*p_msgFmt, *p_var, profile);
     FreeToHeap(profile);

@@ -2567,7 +2567,7 @@ _02246DB0:
 	ldr r0, _0224706C ; =_02102610
 	add r1, r5, #0
 	mov r2, #5
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #0x50]
 	mov r0, #0x15
 	str r0, [r4, #0x28]

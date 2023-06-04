@@ -1999,7 +1999,7 @@ ov87_021E68DC: ; 0x021E68DC
 	bl NewMsgDataFromNarc
 	str r0, [r5, #0x38]
 	mov r0, #0x7a
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r5, #0x3c]
 	mov r0, #0x96
 	lsl r0, r0, #2
@@ -2038,7 +2038,7 @@ ov87_021E68DC: ; 0x021E68DC
 	mov r1, #0xe
 	mov r2, #0
 	mov r3, #0x7a
-	bl MessagePrinter_new
+	bl MessagePrinter_New
 	mov r1, #0x16
 	lsl r1, r1, #4
 	str r0, [r5, r1]

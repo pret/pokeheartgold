@@ -60,7 +60,7 @@ const struct ScriptBankMapping sScriptBankMapping[30] = {
 };
 
 void StartMapSceneScript(FieldSystem *fsys, u16 script, LocalMapObject *lastInteracted) {
-    ScriptEnvironment *r4 = ScriptEnvironment_new();
+    ScriptEnvironment *r4 = ScriptEnvironment_New();
     SetupScriptEngine(fsys, r4, script, lastInteracted, NULL);
     FieldSys_CreateTask(fsys, Task_RunScripts, r4);
 }
@@ -78,14 +78,14 @@ void FieldSys_SetEngagedTrainer(FieldSystem *fsys, LocalMapObject *obj, int a2, 
 
 void QueueScript(TaskManager *taskman, u16 script, LocalMapObject *lastInteracted, void *a3) {
     FieldSystem *fsys = TaskManager_GetSys(taskman);
-    ScriptEnvironment *env = ScriptEnvironment_new();
+    ScriptEnvironment *env = ScriptEnvironment_New();
     SetupScriptEngine(fsys, env, script, lastInteracted, a3);
     TaskManager_Call(taskman, Task_RunScripts, env);
 }
 
 void StartScriptFromMenu(TaskManager *taskman, u16 script, LocalMapObject *lastInteracted) {
     FieldSystem *fsys = TaskManager_GetSys(taskman);
-    ScriptEnvironment *env = ScriptEnvironment_new();
+    ScriptEnvironment *env = ScriptEnvironment_New();
     SetupScriptEngine(fsys, env, script, lastInteracted, NULL);
     TaskManager_Jump(taskman, Task_RunScripts, env);
 }
@@ -140,7 +140,7 @@ BOOL Task_RunScripts(TaskManager *taskman) {
     return FALSE;
 }
 
-ScriptEnvironment *ScriptEnvironment_new(void) {
+ScriptEnvironment *ScriptEnvironment_New(void) {
     ScriptEnvironment *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(ScriptEnvironment));
     GF_ASSERT(ret != NULL);
     memset(ret, 0, sizeof(ScriptEnvironment));

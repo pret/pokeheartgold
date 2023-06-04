@@ -48,7 +48,7 @@ static void DecompressGlyphTiles_LazyFromNarc(struct FontData *fontData, u16 gly
 static u32 GetGlyphWidth_VariableWidth(struct FontData *fontData, int glyphId);
 static u32 GetGlyphWidth_FixedWidth(struct FontData *fontData, int glyphId);
 
-struct FontData *FontData_new(NarcId narcId, int fileId, int mode, BOOL isFixedWidth, HeapID heapId) {
+struct FontData *FontData_New(NarcId narcId, int fileId, int mode, BOOL isFixedWidth, HeapID heapId) {
     struct FontData *ret;
 
     ret = AllocFromHeap(heapId, sizeof(struct FontData));

@@ -137,7 +137,7 @@ ov34_0225D5F8: ; 0x0225D5F8
 	sub r1, #0xa
 	mov r0, #4
 	strh r2, [r4, r1]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x18]
 	ldr r2, _0225D64C ; =0x000002E2
 	mov r0, #0

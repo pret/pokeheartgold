@@ -37,7 +37,7 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
-.public MessageFormat_new
+.public MessageFormat_New
 .public MessageFormat_delete
 .public BufferString
 .public StringExpandPlaceholders
@@ -178,7 +178,7 @@
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
 .public Save_PlayerData_GetOptionsAddr
-.public PlayerProfile_new
+.public PlayerProfile_New
 .public PlayerProfile_GetPlayerName_NewString
 .public PlayerProfile_GetTrainerGender
 .public Options_GetTextFrameDelay

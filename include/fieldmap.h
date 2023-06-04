@@ -16,7 +16,7 @@ void FieldSys_SetEngagedTrainer(FieldSystem *fsys, LocalMapObject *obj, int a2, 
 void QueueScript(TaskManager *taskman, u16 script, LocalMapObject *lastTalked, void *a3);
 void StartScriptFromMenu(TaskManager *taskman, u16 script, LocalMapObject *lastTalked);
 BOOL Task_RunScripts(TaskManager *taskman);
-ScriptEnvironment *ScriptEnvironment_new(void);
+ScriptEnvironment *ScriptEnvironment_New(void);
 void DestroyScriptContext(SCRIPTCONTEXT *ctx);
 void SetupScriptEngine(FieldSystem *fsys, ScriptEnvironment *env, u16 script, LocalMapObject *lastTalked, void* a4);
 SCRIPTCONTEXT *CreateScriptContext(FieldSystem *fsys, u16 script);

@@ -129,7 +129,7 @@ _02246A44:
 	ldr r0, _02246AF4 ; =ov75_02249904 + 8
 	ldr r0, [r0, r2]
 	mov r2, #0x73
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4]
 	add r0, r4, #0
 	add r0, #0x88
@@ -1874,7 +1874,7 @@ ov75_0224785C: ; 0x0224785C
 	add r0, r4, #0
 	add r0, #0x48
 	mov r1, #1
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	add r4, #0x8c
 	str r0, [r4]
 _02247876:

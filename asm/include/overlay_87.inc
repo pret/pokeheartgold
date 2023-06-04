@@ -45,12 +45,12 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
-.public MessageFormat_new
+.public MessageFormat_New
 .public MessageFormat_delete
 .public BufferIntegerAsString
 .public BufferItemName
 .public StringExpandPlaceholders
-.public MessagePrinter_new
+.public MessagePrinter_New
 .public MessagePrinter_delete
 .public sub_0200E398
 .public DrawFrameAndWindow1

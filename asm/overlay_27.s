@@ -86,7 +86,7 @@ ov27_02259F80: ; 0x02259F80
 	mov r1, #8
 	bl FontID_Alloc
 	mov r0, #8
-	bl MessageFormat_new
+	bl MessageFormat_New
 	ldr r1, _0225A18C ; =0x000004AC
 	mov r2, #0xc4
 	str r0, [r4, r1]
@@ -5221,7 +5221,7 @@ ov27_0225C914: ; 0x0225C914
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #8
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x50]
 	mov r0, #0
 	mov r1, #0x1b

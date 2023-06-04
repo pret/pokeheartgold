@@ -18,7 +18,7 @@
 #include "msgdata/msg/msg_0274.h"
 #include "msgdata/msg/msg_0191.h"
 
-MessageFormat *MessageFormat_new(HeapID heapId) {
+MessageFormat *MessageFormat_New(HeapID heapId) {
     return MessageFormat_New_Custom(8, 32, heapId);
 }
 

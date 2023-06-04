@@ -98,7 +98,7 @@ void SaveEasyChat_SetGreetingFlag(SAVE_EASY_CHAT_T *ec, u8 a1);
 
 BOOL GetCategoryAndMsgNoByECWordIdx(u16 ecWord, u32 *category, u32 *msgno);
 
-ECMAN *EasyChatManager_new(HeapID heapId) {
+ECMAN *EasyChatManager_New(HeapID heapId) {
     ECMAN *ret;
     int i;
 

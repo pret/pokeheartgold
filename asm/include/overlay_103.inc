@@ -7,7 +7,7 @@
 .public LoadFontPal0
 .public LoadFontPal1
 .public PlaySE
-.public OverlayManager_new
+.public OverlayManager_New
 .public OverlayManager_delete
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
@@ -25,7 +25,7 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
-.public MessageFormat_new
+.public MessageFormat_New
 .public MessageFormat_delete
 .public BufferString
 .public BufferIntegerAsString

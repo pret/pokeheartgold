@@ -21,7 +21,7 @@
 .public IsCryFinished
 .public PlayFanfare
 .public IsFanfarePlaying
-.public OverlayManager_new
+.public OverlayManager_New
 .public OverlayManager_delete
 .public OverlayManager_run
 .public NARC_New
@@ -48,7 +48,7 @@
 .public DestroyMsgData
 .public NewString_ReadMsgData
 .public ReadMsgData_ExpandPlaceholders
-.public MessageFormat_new
+.public MessageFormat_New
 .public MessageFormat_delete
 .public BufferBoxMonSpeciesName
 .public BufferBoxMonNickname

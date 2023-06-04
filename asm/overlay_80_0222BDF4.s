@@ -2328,7 +2328,7 @@ ov80_0222CEF0: ; 0x0222CEF0
 	ldr r1, _0222CF04 ; =0x000003E2
 	add r0, r4, #0
 	add r0, #0x64
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	str r0, [r4, #0x7c]
 	mov r0, #0
 	pop {r4, pc}

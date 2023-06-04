@@ -558,7 +558,7 @@ static void BattleArcadeGameBoard_InitObjects(GAME_BOARD_WORK *work) {
     ov84_0223E934(work);
 
     work->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0425_bin, HEAP_ID_GAME_BOARD);
-    work->msgFmt = MessageFormat_new(HEAP_ID_GAME_BOARD);
+    work->msgFmt = MessageFormat_New(HEAP_ID_GAME_BOARD);
     work->unk70 = String_New(600, HEAP_ID_GAME_BOARD);
     work->unk74 = String_New(600, HEAP_ID_GAME_BOARD);
 

@@ -67,7 +67,7 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public GetSpeciesName
-.public MessageFormat_new
+.public MessageFormat_New
 .public MessageFormat_delete
 .public BufferPlayersName
 .public BufferIntegerAsString
@@ -82,7 +82,7 @@
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
-.public WaitingIcon_new
+.public WaitingIcon_New
 .public sub_0200F450
 .public sub_0200F478
 .public BeginNormalPaletteFade
@@ -193,7 +193,7 @@
 .public Save_WriteFileAsync
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr
-.public PlayerProfile_new
+.public PlayerProfile_New
 .public Save_Profile_PlayerName_set
 .public PlayerProfile_GetPlayerName_NewString
 .public PlayerProfile_GetTrainerID_VisibleHalf

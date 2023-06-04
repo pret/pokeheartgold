@@ -12,7 +12,7 @@
 .public StopSE
 .public UnloadOverlayByID
 .public HandleLoadOverlay
-.public OverlayManager_new
+.public OverlayManager_New
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
@@ -46,12 +46,12 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
-.public MessageFormat_new
+.public MessageFormat_New
 .public MessageFormat_delete
 .public BufferIntegerAsString
 .public BufferTypeName
 .public StringExpandPlaceholders
-.public MessagePrinter_new
+.public MessagePrinter_New
 .public MessagePrinter_delete
 .public PrintUIntOnWindow
 .public LoadUserFrameGfx2

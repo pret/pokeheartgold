@@ -3185,7 +3185,7 @@ sub_0203D524: ; 0x0203D524
 	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl PhoneUI_new
+	bl PhoneUI_New
 	mov r1, #0xe
 	lsl r1, r1, #6
 	str r0, [r4, r1]

@@ -18,7 +18,7 @@
 .public PlaySE
 .public UnloadOverlayByID
 .public HandleLoadOverlay
-.public OverlayManager_new
+.public OverlayManager_New
 .public OverlayManager_delete
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
@@ -38,7 +38,7 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public NewString_ReadMsgData
-.public MessageFormat_new
+.public MessageFormat_New
 .public MessageFormat_delete
 .public BufferBoxMonSpeciesName
 .public BufferBoxMonNickname
@@ -47,7 +47,7 @@
 .public BufferNatureName
 .public BufferItemName
 .public StringExpandPlaceholders
-.public MessagePrinter_new
+.public MessagePrinter_New
 .public MessagePrinter_delete
 .public sub_0200CDAC
 .public sub_0200CF18

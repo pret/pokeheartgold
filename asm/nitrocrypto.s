@@ -424,7 +424,7 @@ _02237594:
 	ldmia sp!, {r4, r5, r6, r7, r8, lr}
 	bx lr
 _022375A4:
-	bl BN_CTX_new
+	bl BN_CTX_New
 	mov r4, r0
 	add r0, sp, #4
 	bl BN_init
@@ -579,7 +579,7 @@ _022377D4:
 	str r0, [sp, #0x18]
 	cmp r0, #0
 	bne _02237808
-	bl BN_MONT_CTX_new
+	bl BN_MONT_CTX_New
 	str r0, [sp, #0x18]
 	cmp r0, #0
 	beq _02237E64
@@ -1748,8 +1748,8 @@ BN_MONT_CTX_init: ; 0x0223881C
 	bx lr
 	arm_func_end BN_MONT_CTX_init
 
-	arm_func_start BN_MONT_CTX_new
-BN_MONT_CTX_new: ; 0x02238858
+	arm_func_start BN_MONT_CTX_New
+BN_MONT_CTX_New: ; 0x02238858
 	stmdb sp!, {r4, lr}
 	mov r0, #0x50
 	bl CRYPTOi_MyAlloc
@@ -1763,7 +1763,7 @@ BN_MONT_CTX_new: ; 0x02238858
 	str r1, [r4, #0x4c]
 	ldmia sp!, {r4, lr}
 	bx lr
-	arm_func_end BN_MONT_CTX_new
+	arm_func_end BN_MONT_CTX_New
 
 	arm_func_start BN_MONT_CTX_set_word
 BN_MONT_CTX_set_word: ; 0x0223888C
@@ -4330,7 +4330,7 @@ BN_bin2bn: ; 0x0223AC60
 	mov r7, r0
 	mov r6, r1
 	bne _0223AC80
-	bl BN_new
+	bl BN_New
 	mov r5, r0
 _0223AC80:
 	cmp r5, #0
@@ -4570,8 +4570,8 @@ BN_CTX_init: ; 0x0223AF7C
 	bx lr
 	arm_func_end BN_CTX_init
 
-	arm_func_start BN_CTX_new
-BN_CTX_new: ; 0x0223AFA4
+	arm_func_start BN_CTX_New
+BN_CTX_New: ; 0x0223AFA4
 	stmdb sp!, {r4, lr}
 	mov r0, #0x110
 	bl CRYPTOi_MyAlloc
@@ -4585,10 +4585,10 @@ BN_CTX_new: ; 0x0223AFA4
 	str r1, [r4, #0x108]
 	ldmia sp!, {r4, lr}
 	bx lr
-	arm_func_end BN_CTX_new
+	arm_func_end BN_CTX_New
 
-	arm_func_start BN_new
-BN_new: ; 0x0223AFD8
+	arm_func_start BN_New
+BN_New: ; 0x0223AFD8
 	stmdb sp!, {lr}
 	sub sp, sp, #4
 	mov r0, #0x14
@@ -4608,7 +4608,7 @@ BN_new: ; 0x0223AFD8
 	add sp, sp, #4
 	ldmia sp!, {lr}
 	bx lr
-	arm_func_end BN_new
+	arm_func_end BN_New
 
 	arm_func_start BN_init
 BN_init: ; 0x0223B024

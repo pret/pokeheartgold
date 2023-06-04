@@ -247,7 +247,7 @@ static void FieldMoveMenuUse_Fly(struct FieldMoveUseData *useData, const struct 
     struct FlyTaskStruct *flyEnv = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct FlyTaskStruct));
     flyEnv->partySlot = useData->partySlot;
     env->unk_0384 = flyEnv;
-    env->atexit_TaskEnv = TownMap_new(fsys, 0);
+    env->atexit_TaskEnv = TownMap_New(fsys, 0);
     sub_0203C8F0(env, Task_UseFlyInField);
 }
 

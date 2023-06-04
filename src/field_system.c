@@ -93,7 +93,7 @@ void sub_0203DEF0(FieldSystem *fsys) {
 
     fsys->unk6C = 0;
     fsys->unk0->unk8 = FALSE;
-    fsys->unk0->unk0 = OverlayManager_new(&ov01_02206378, fsys, HEAP_ID_FIELD);
+    fsys->unk0->unk0 = OverlayManager_New(&ov01_02206378, fsys, HEAP_ID_FIELD);
 }
 
 void sub_0203DF34(FieldSystem *fsys) {
@@ -128,7 +128,7 @@ void FieldSys_LaunchApplication(FieldSystem *fsys, const OVY_MGR_TEMPLATE *templ
 
     sub_0203DF34(fsys);
 
-    fsys->unk0->unk4 = OverlayManager_new(template, parentWork, HEAP_ID_FIELD);
+    fsys->unk0->unk4 = OverlayManager_New(template, parentWork, HEAP_ID_FIELD);
 }
 
 FieldSystem *FieldSys_New(OVY_MANAGER *man) {

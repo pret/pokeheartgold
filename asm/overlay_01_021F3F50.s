@@ -335,7 +335,7 @@ Field_CreateSaveStatsPrinter: ; 0x021F41C0
 	ldr r0, [r6, #8]
 	str r0, [r4, #0xc]
 	add r0, r5, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x14]
 	ldr r2, _021F4218 ; =0x000001A7
 	mov r0, #1
@@ -547,7 +547,7 @@ ov01_021F4360: ; 0x021F4360
 	ldr r0, [r6, #8]
 	str r0, [r4, #0xc]
 	add r0, r5, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x14]
 	ldr r2, _021F43CC ; =0x000001A7
 	mov r0, #1

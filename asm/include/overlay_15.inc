@@ -31,7 +31,7 @@
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
 .public ReadMsgData_ExpandPlaceholders
-.public MessageFormat_new
+.public MessageFormat_New
 .public MessageFormat_delete
 .public BufferPlayersName
 .public BufferIntegerAsString
@@ -39,7 +39,7 @@
 .public BufferItemName
 .public BufferItemNamePlural
 .public StringExpandPlaceholders
-.public MessagePrinter_new
+.public MessagePrinter_New
 .public MessagePrinter_delete
 .public PrintUIntOnWindow
 .public sub_0200CE7C

@@ -1921,7 +1921,7 @@ ov111_021E67C4: ; 0x021E67C4
 	mov r2, #0
 	add r3, r5, #0
 	str r5, [r4, #0x18]
-	bl MessagePrinter_new
+	bl MessagePrinter_New
 	str r0, [r4, #4]
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
@@ -1951,7 +1951,7 @@ ov111_021E67EC: ; 0x021E67EC
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #0x18]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #8]
 	bl ResetAllTextPrinters
 	ldr r1, [r4, #0x30]

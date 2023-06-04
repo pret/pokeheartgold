@@ -783,7 +783,7 @@ ov12_02237F18: ; 0x02237F18
 	mov r1, #2
 	mov r2, #0xf
 	mov r3, #5
-	bl MessagePrinter_new
+	bl MessagePrinter_New
 	mov r1, #0x6a
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -1013,7 +1013,7 @@ _02237FD8:
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0x10]
 	mov r0, #5
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x14]
 	mov r0, #5
 	lsl r0, r0, #6
@@ -2026,7 +2026,7 @@ ov12_02238A68: ; 0x02238A68
 	add r5, r1, #0
 _02238A7A:
 	mov r0, #5
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	add r1, r0, #0
 	add r0, r5, #0
 	str r1, [r6, #0x48]
@@ -2092,7 +2092,7 @@ _02238AB8:
 	ldr r1, [r4, #0x58]
 	bl BagCopy
 	mov r0, #5
-	bl Pokedex_new
+	bl Pokedex_New
 	str r0, [r4, #0x60]
 	mov r1, #0x11
 	ldr r0, [sp, #4]
@@ -4169,7 +4169,7 @@ _02239A46:
 	bl sub_02003370
 	ldr r0, [r5, #8]
 	mov r1, #1
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	ldr r1, _02239C24 ; =0x00001024
 	str r0, [r5, r1]
 	bl ov12_0223A7A0

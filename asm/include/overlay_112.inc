@@ -18,7 +18,7 @@
 .public PlayFanfare
 .public sub_02006B84
 .public IsFanfarePlaying
-.public OverlayManager_new
+.public OverlayManager_New
 .public OverlayManager_delete
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
@@ -60,7 +60,7 @@
 .public GetSpeciesNameIntoArray
 .public ReadMsgData_ExpandPlaceholders
 .public GetSpeciesName
-.public MessageFormat_new
+.public MessageFormat_New
 .public MessageFormat_New_Custom
 .public MessageFormat_delete
 .public BufferString
@@ -109,7 +109,7 @@
 .public DestroySysTask
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
-.public WaitingIcon_new
+.public WaitingIcon_New
 .public sub_0200F450
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished

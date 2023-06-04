@@ -41,7 +41,7 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
-.public MessageFormat_new
+.public MessageFormat_New
 .public MessageFormat_delete
 .public BufferPlayersName
 .public StringExpandPlaceholders
@@ -49,7 +49,7 @@
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
-.public WaitingIcon_new
+.public WaitingIcon_New
 .public sub_0200F450
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
@@ -103,7 +103,7 @@
 .public StringCopy
 .public CopyU16ArrayToString
 .public Save_PlayerData_GetOptionsAddr
-.public PlayerProfile_new
+.public PlayerProfile_New
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
 .public sub_020318E8

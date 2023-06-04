@@ -1857,7 +1857,7 @@ ov74_MainMenu_PrintContinueButton: ; 0x02227E94
 	bl NewMsgDataFromNarc
 	str r0, [sp, #0x24]
 	mov r0, #0x4f
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [sp, #0x28]
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0, #0xc]
@@ -4066,7 +4066,7 @@ ov74_02229084: ; 0x02229084
 	sub sp, #0x20
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r4, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -4541,7 +4541,7 @@ ov74_0222947C: ; 0x0222947C
 	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	ldr r0, [r5]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0xc6
 	mov r2, #7
 	lsl r1, r1, #6
@@ -4822,7 +4822,7 @@ _022296E0:
 	add r0, r4, #0
 	add r0, #0x28
 	mov r1, #0xa
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	ldr r1, _02229A00 ; =0x000034D8
 	str r0, [r4, r1]
 	mov r0, #3
@@ -5063,7 +5063,7 @@ _022298C6:
 	add r0, r4, #0
 	add r0, #0x28
 	mov r1, #0xa
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	ldr r1, _02229A00 ; =0x000034D8
 	str r0, [r4, r1]
 	add r0, r4, #0
@@ -5777,7 +5777,7 @@ ov74_02229E28: ; 0x02229E28
 	add r0, r4, #0
 	add r0, #0x18
 	mov r1, #1
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	ldr r1, _02229E5C ; =0x000029F0
 	str r0, [r4, r1]
 	pop {r4, pc}
@@ -7322,7 +7322,7 @@ ov74_0222AA18: ; 0x0222AA18
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0x10]
 	mov r0, #0x54
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0xc]
 	mov r0, #1
 	mov r1, #6
@@ -7658,7 +7658,7 @@ _0222ACEC:
 	mov r1, #0
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #0x54
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #2
 	str r1, [sp]
 	mov r1, #1
@@ -7773,7 +7773,7 @@ ov74_0222ADBC: ; 0x0222ADBC
 	bl NewMsgDataFromNarc
 	str r0, [sp, #4]
 	mov r0, #0x54
-	bl MessageFormat_new
+	bl MessageFormat_New
 	ldr r1, [sp, #4]
 	add r2, r5, #0
 	mov r3, #0x54
@@ -12188,7 +12188,7 @@ ov74_0222D1D4: ; 0x0222D1D4
 	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	mov r0, #0x55
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r6, r0, #0
 	mov r0, #1
 	mov r1, #6
@@ -12370,7 +12370,7 @@ ov74_0222D358: ; 0x0222D358
 	ldr r0, _0222D400 ; =0x00002BD0
 	mov r1, #0x13
 	add r0, r4, r0
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	ldr r1, _0222D404 ; =0x00003D50
 	str r0, [r4, r1]
 	ldr r1, _0222D408 ; =0x00002BA0
@@ -12991,7 +12991,7 @@ ov74_0222D824: ; 0x0222D824
 	ldr r1, _0222D9CC ; =0x00002A04
 	str r0, [r5, r1]
 	ldr r0, [r5]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0x2a
 	lsl r1, r1, #8
 	str r0, [r5, r1]
@@ -13243,7 +13243,7 @@ _0222DA2A:
 	ldr r1, _0222DAE8 ; =0x00002A04
 	str r0, [r5, r1]
 	mov r0, #0x55
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0x2a
 	lsl r1, r1, #8
 	str r0, [r5, r1]
@@ -14185,7 +14185,7 @@ _0222E17A:
 	ldr r0, _0222E1EC ; =0x00002BD0
 	mov r1, #0x13
 	add r0, r5, r0
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	ldr r1, _0222E1F0 ; =0x00003D50
 	str r0, [r5, r1]
 _0222E1B2:
@@ -15097,7 +15097,7 @@ _0222E926:
 	bl ov74_0222E85C
 	str r0, [sp, #0x34]
 	mov r0, #0x55
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r4, r0, #0
 	mov r0, #1
 	mov r1, #0x1b
@@ -15245,7 +15245,7 @@ ov74_0222EA88: ; 0x0222EA88
 	ldr r1, _0222EB20 ; =0x00002A04
 	str r0, [r5, r1]
 	mov r0, #0x55
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0x2a
 	lsl r1, r1, #8
 	str r0, [r5, r1]
@@ -15949,7 +15949,7 @@ ov74_0222F024: ; 0x0222F024
 	ldr r1, _0222F1A8 ; =0x00002A04
 	str r0, [r5, r1]
 	ldr r0, [r5]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0x2a
 	lsl r1, r1, #8
 	str r0, [r5, r1]
@@ -16183,7 +16183,7 @@ _0222F206:
 	ldr r1, _0222F2C4 ; =0x00002A04
 	str r0, [r5, r1]
 	mov r0, #0x55
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0x2a
 	lsl r1, r1, #8
 	str r0, [r5, r1]
@@ -21559,7 +21559,7 @@ _02231A7E:
 	cmp r0, #0
 	bne _02231AA6
 	mov r0, #0x4c
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [sp, #0x14]
 _02231AA6:
 	ldr r0, _02231BB4 ; =0x00012608
@@ -24209,7 +24209,7 @@ ov74_02232F9C: ; 0x02232F9C
 	mov r2, #8
 	bl ConvertRSStringToDPStringInternational
 	mov r0, #0x4c
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r4, r0, #0
 	mov r0, #8
 	mov r1, #0x4c
@@ -24882,7 +24882,7 @@ _02233510:
 	ldr r1, _0223363C ; =0x00000498
 	add r0, r4, r1
 	sub r1, #0xc6
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	ldr r1, _02233640 ; =0x0000E898
 	str r0, [r4, r1]
 	mov r0, #0xa
@@ -25202,7 +25202,7 @@ _022337B4:
 	ldr r1, _022338AC ; =0x00000498
 	add r0, r4, r1
 	sub r1, #0xc6
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	ldr r1, _022338C0 ; =0x0000E898
 	str r0, [r4, r1]
 	mov r0, #0x15
@@ -29158,7 +29158,7 @@ _022354A6:
 	cmp r6, #0
 	bne _022354CC
 	ldr r0, [r4, #8]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r6, r0, #0
 _022354CC:
 	ldr r1, [sp, #0x10]

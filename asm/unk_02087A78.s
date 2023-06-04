@@ -236,12 +236,12 @@ sub_02087BE8: ; 0x02087BE8
 	bne _02087C06
 	ldr r0, _02087C30 ; =_021028B4
 	add r1, r4, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 	b _02087C0E
 _02087C06:
 	ldr r0, _02087C34 ; =_021028C4
 	add r1, r4, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 _02087C0E:
 	str r0, [r4, #8]
 	ldr r0, [r4]
@@ -395,7 +395,7 @@ _02087D46:
 	ldr r0, _02087E0C ; =_020FA484
 	ldr r1, [r5, #0x10]
 	add r2, r4, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r5, #8]
 	ldr r0, [r5]
 	add r0, r0, #1

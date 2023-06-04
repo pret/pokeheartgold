@@ -24,7 +24,7 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
-.public MessageFormat_new
+.public MessageFormat_New
 .public MessageFormat_New_Custom
 .public MessageFormat_delete
 .public BufferString
@@ -97,7 +97,7 @@
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr
 .public Save_PlayerData_GetIGTAddr
-.public PlayerProfile_new
+.public PlayerProfile_New
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetTrainerID_VisibleHalf
 .public PlayerProfile_GetTrainerGender

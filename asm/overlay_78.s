@@ -559,7 +559,7 @@ ov78_021E5D94: ; 0x021E5D94
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0x38]
 	ldr r0, [r4]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x3c]
 	mov r1, #0
 	add r0, sp, #8

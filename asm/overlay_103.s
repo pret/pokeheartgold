@@ -605,7 +605,7 @@ ov103_021ECE18: ; 0x021ECE18
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #0x9d
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0x8b
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -2540,7 +2540,7 @@ ov103_021EDCC8: ; 0x021EDCC8
 	ldr r0, _021EDCDC ; =_0210159C
 	ldr r1, [r4, #0x14]
 	mov r2, #0x9c
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #0x10]
 	mov r0, #0
 	pop {r4, pc}
@@ -2639,7 +2639,7 @@ ov103_021EDD54: ; 0x021EDD54
 	str r0, [r4, #0x14]
 	ldr r0, _021EDD94 ; =ov103_021EEC58
 	ldr r1, [r4, #0x14]
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #0x10]
 	mov r0, #0
 	add sp, #4

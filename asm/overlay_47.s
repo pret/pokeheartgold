@@ -566,7 +566,7 @@ _02258C7E:
 	cmp r6, #9
 	blt _02258C7E
 	add r0, r7, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	ldr r1, [sp]
 	str r0, [r1, #0x24]
 	mov r0, #1
@@ -696,7 +696,7 @@ ov47_02258D78: ; 0x02258D78
 	add r5, r0, #0
 	add r0, r7, #0
 	add r4, r1, #0
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	add r6, r0, #0
 	ldr r0, [r5, #0x30]
 	bl ov45_0222A5C0
@@ -1460,7 +1460,7 @@ _02259392:
 	add r0, r4, #0
 	add r0, #8
 	mov r1, #1
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
 	thumb_func_end ov47_02259384

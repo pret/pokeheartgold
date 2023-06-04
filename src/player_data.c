@@ -38,7 +38,7 @@ u32 PlayerProfile_sizeof(void) {
     return sizeof(PLAYERPROFILE);
 }
 
-PLAYERPROFILE* PlayerProfile_new(HeapID heap_id) {
+PLAYERPROFILE* PlayerProfile_New(HeapID heap_id) {
     PLAYERPROFILE* profile = AllocFromHeap(heap_id, sizeof(PLAYERPROFILE));
     PlayerProfile_init(profile);
 

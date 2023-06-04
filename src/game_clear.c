@@ -316,7 +316,7 @@ static void GameClearSave_PrintSaving(FieldSystem *fsys, GameClearWork *env) {
     sub_0205B514(env->bgConfig, &env->window, 3);
     sub_0205B564(&env->window, options);
     env->printerId = sub_0205B5B4(&env->window, env->windowText, options, 1);
-    env->waitingIcon = WaitingIcon_new(&env->window, 0x000003e2);
+    env->waitingIcon = WaitingIcon_New(&env->window, 0x000003e2);
 }
 
 static BOOL GameClearSave_IsPrintFinished(GameClearWork *env) {
@@ -333,7 +333,7 @@ static void GameClearSave_PrintSaveStatus(FieldSystem *fsys, GameClearWork *env,
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0040_bin, HEAP_ID_4);
 
     if (writeStatus == 2) {
-        MessageFormat *msgFmt = MessageFormat_new(HEAP_ID_4);
+        MessageFormat *msgFmt = MessageFormat_New(HEAP_ID_4);
         BufferPlayersName(msgFmt, 0, Save_PlayerData_GetProfileAddr(fsys->savedata));
         env->windowText = ReadMsgData_ExpandPlaceholders(msgFmt, msgData, msg_0040_00016, HEAP_ID_4);
         MessageFormat_delete(msgFmt);

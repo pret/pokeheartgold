@@ -702,7 +702,7 @@ ov68_021E5EBC: ; 0x021E5EBC
 	add r1, #0xf8
 	str r0, [r1]
 	mov r0, #0x42
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r1, r4, #0
 	add r1, #0xfc
 	str r0, [r1]
@@ -3537,7 +3537,7 @@ ov68_021E74D8: ; 0x021E74D8
 	ldr r0, _021E7564 ; =_02103A1C
 	add r1, r4, r1
 	mov r2, #0x42
-	bl OverlayManager_new
+	bl OverlayManager_New
 	mov r1, #0x6b
 	lsl r1, r1, #2
 	str r0, [r4, r1]
