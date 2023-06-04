@@ -6,7 +6,7 @@ u32 Save_SpecialRibbons_sizeof(void) {
     return sizeof(SaveSpecialRibbons);
 }
 
-void Save_SpecialRibbons_init(SaveSpecialRibbons* argP) {
+void Save_SpecialRibbons_Init(SaveSpecialRibbons* argP) {
     memset(argP, 0, sizeof(SaveSpecialRibbons));
 }
 

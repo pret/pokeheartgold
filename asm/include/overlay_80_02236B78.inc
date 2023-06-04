@@ -12,7 +12,7 @@
 .public sub_02052580
 .public AllocMonZeroed
 .public CopyPokemonToPokemon
-.public SaveArray_Party_init
+.public SaveArray_Party_Init
 .public InitPartyWithMaxSize
 .public RemoveMonFromParty
 .public GetPartyCount

@@ -173,7 +173,7 @@ u32 Save_EasyChat_sizeof(void) {
     return sizeof(SAVE_EASY_CHAT_T);
 }
 
-void Save_EasyChat_init(SAVE_EASY_CHAT_T *ec) {
+void Save_EasyChat_Init(SAVE_EASY_CHAT_T *ec) {
     int i;
 
     ec->greetings = 0;

@@ -9,8 +9,8 @@ struct SavedMapObjectList;
 
 u32 Save_FlyPoints_sizeof(void);
 u32 Save_MapObjects_sizeof(void);
-void Save_MapObjects_init(struct SavedMapObjectList *unk);
-void Save_FlyPoints_init(FLYPOINTS_SAVE *flypointsSave);
+void Save_MapObjects_Init(struct SavedMapObjectList *unk);
+void Save_FlyPoints_Init(FLYPOINTS_SAVE *flypointsSave);
 Location *FlyPoints_GetPosition(FLYPOINTS_SAVE *flypointsSave);
 Location *sub_0203B95C(FLYPOINTS_SAVE *flypointsSave);
 Location *sub_0203B960(FLYPOINTS_SAVE *flypointsSave);

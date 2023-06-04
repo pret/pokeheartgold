@@ -172,7 +172,7 @@
 .public RoamerSave_OutbreakActive
 .public Roamer_GetLocation
 .public GetRoamerIsActiveByIndex
-.public RoamerMon_init
+.public RoamerMon_Init
 .public Roamers_GetRoamMonStats
 .public GetRoamerData
 .public SetRoamerData

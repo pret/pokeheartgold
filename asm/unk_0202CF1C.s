@@ -36,8 +36,8 @@ GameStats_sizeof: ; 0x0202CF1C
 	.balign 4, 0
 	thumb_func_end GameStats_sizeof
 
-	thumb_func_start GameStats_init
-GameStats_init: ; 0x0202CF24
+	thumb_func_start GameStats_Init
+GameStats_Init: ; 0x0202CF24
 	push {r4, lr}
 	add r4, r0, #0
 	mov r2, #7
@@ -59,7 +59,7 @@ GameStats_init: ; 0x0202CF24
 	.balign 4, 0
 _0202CF4C: .word 0x027FFC3C ; HW_VBLANK_COUNT_BUF
 _0202CF50: .word 0x000001BE
-	thumb_func_end GameStats_init
+	thumb_func_end GameStats_Init
 
 	thumb_func_start Save_GameStats_Get
 Save_GameStats_Get: ; 0x0202CF54

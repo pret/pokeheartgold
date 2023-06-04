@@ -289,7 +289,7 @@ static void ovFieldMain_ReadAndExpandMsgDataViaBuffer(MessageBox *messageBox, MS
 
 static void ovFieldMain_GetFormattedECMessage(MessageBox *messageBox, u16 messageBank, u16 messageNum, u16 word1, u16 word2) {
     struct MailMessage mailMessage;
-    MailMsg_init(&mailMessage);
+    MailMsg_Init(&mailMessage);
     MailMsg_SetMsgBankAndNum(&mailMessage, messageBank, messageNum);
     MailMsg_SetFieldI(&mailMessage, 0, word1);
     MailMsg_SetFieldI(&mailMessage, 1, word2);

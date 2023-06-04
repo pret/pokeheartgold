@@ -151,7 +151,7 @@ BOOL ov36_App_MainMenu_SelectOption_Continue_AppExec(OVY_MANAGER* man, int* stat
 
     if (!Save_SysInfo_MacAddressIsMine(sys_info) || !Save_SysInfo_RTCOffsetIsMine(sys_info)) {
         SysInfoRTC_HandleContinueOnNewConsole(Save_SysInfo_RTC_Get(savedata));
-        Save_BerryPotRTC_init(Save_BerryPotRTC_Get(savedata));
+        Save_BerryPotRTC_Init(Save_BerryPotRTC_Get(savedata));
         Save_SysInfo_InitFromSystem(sys_info);
         Party_ResetAllShayminToLandForme(SaveArray_PlayerParty_Get(savedata));
     }
@@ -176,8 +176,8 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SAVEDATA* saved
     STRING* author_name;
 
     Save_SysInfo_InitFromSystem(Save_SysInfo_Get(savedata));
-    Save_SysInfo_RTC_init(Save_SysInfo_RTC_Get(savedata));
-    Save_BerryPotRTC_init(Save_BerryPotRTC_Get(savedata));
+    Save_SysInfo_RTC_Init(Save_SysInfo_RTC_Get(savedata));
+    Save_BerryPotRTC_Init(Save_BerryPotRTC_Get(savedata));
     sub_0202C7C0(Save_FriendGroup_Get(savedata), 1, MTRandom());
     sub_020674BC(savedata);
 
@@ -223,7 +223,7 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SAVEDATA* saved
         Mail_SetMessage(mail, &mail_message, (u8)i);
     }
 
-    MailMsg_init(&mail_message);
+    MailMsg_Init(&mail_message);
     Mail_SetMessage(mail, &mail_message, 2);
     Mailbox_CopyMailToSlotI(mailbox->msgs, FALSE, 0, mail);
 

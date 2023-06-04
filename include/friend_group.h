@@ -22,7 +22,7 @@ typedef struct SaveFriendGroup {
 } SAV_FRIEND_GRP;
 
 u32 Save_FriendGroup_sizeof(void);
-void Save_FriendGroup_init(SAV_FRIEND_GRP *savFriendGrp);
+void Save_FriendGroup_Init(SAV_FRIEND_GRP *savFriendGrp);
 SAV_FRIEND_GRP *Save_FriendGroup_Get(SAVEDATA *saveData);
 u8 sub_0202C830(SAV_FRIEND_GRP *savFriendGrp, int grpno);
 u8 sub_0202C83C(SAV_FRIEND_GRP *savFriendGrp, int grpno);

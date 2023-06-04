@@ -12,8 +12,8 @@ Save_Pokeathlon_sizeof: ; 0x02031904
 	.balign 4, 0
 	thumb_func_end Save_Pokeathlon_sizeof
 
-	thumb_func_start Save_Pokeathlon_init
-Save_Pokeathlon_init: ; 0x0203190C
+	thumb_func_start Save_Pokeathlon_Init
+Save_Pokeathlon_Init: ; 0x0203190C
 	push {r3, r4, r5, r6, r7, lr}
 	mov r2, #0x2e
 	mov r1, #0
@@ -60,7 +60,7 @@ _0203193C:
 	.balign 4, 0
 _02031960: .word 0x0000FFFF
 _02031964: .word 0x00000484
-	thumb_func_end Save_Pokeathlon_init
+	thumb_func_end Save_Pokeathlon_Init
 
 	thumb_func_start Save_Pokeathlon_Get
 Save_Pokeathlon_Get: ; 0x02031968

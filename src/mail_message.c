@@ -17,7 +17,7 @@ static const u16 sMessageBanks[] = {
 u32 MailMsg_NumFields(u16 msg_bank, u16 msg_no);
 u32 MailMsg_NumMsgsInBank(u16 msg_bank);
 
-void MailMsg_init(MAIL_MESSAGE *mailMessage) {
+void MailMsg_Init(MAIL_MESSAGE *mailMessage) {
     int i;
     mailMessage->msg_bank = MAILMSG_BANK_NONE;
     for (i = 0; i < MAILMSG_FIELDS_MAX; i++) {

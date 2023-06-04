@@ -30,7 +30,7 @@
 .public PhotoAlbum_GetNumSaved
 .public PhotoAlbum_SetPhotoAtIndex
 .public PhotoAlbum_GetPhotoByIndex
-.public Photo_init
+.public Photo_Init
 .public sub_0203E33C
 .public FieldSys_GetSaveDataPtr
 .public sub_0203EBA4

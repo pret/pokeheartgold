@@ -10,7 +10,7 @@ TrainerHouseSave *Save_TrainerHouse_Get(SAVEDATA *saveData) {
     return SaveArray_Get(saveData, SAVE_TRAINER_HOUSE);
 }
 
-void Save_TrainerHouse_init(TrainerHouseSave *th) {
+void Save_TrainerHouse_Init(TrainerHouseSave *th) {
     int i;
 
     MI_CpuClear8(th, sizeof(TrainerHouseSave));

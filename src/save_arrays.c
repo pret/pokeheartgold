@@ -27,7 +27,7 @@
 #include "save_trainer_house.h"
 #include "save_special_ribbons.h"
 
-#define DECL_CHUNK(prefix) extern u32 prefix##_sizeof(void); extern void prefix##_init(void *);
+#define DECL_CHUNK(prefix) extern u32 prefix##_sizeof(void); extern void prefix##_Init(void *);
 #define DECL_CHUNK_EX(sizefn, initfn) extern u32 sizefn(void); extern void initfn(void *);
 
 DECL_CHUNK_EX(sub_020290B8, sub_020290C8)
@@ -51,17 +51,17 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
         SAVE_SYSINFO,
         0,
         (SAVESIZEFN)Save_SysInfo_sizeof,
-        (SAVEINITFN)Save_SysInfo_init
+        (SAVEINITFN)Save_SysInfo_Init
     }, {
         SAVE_PLAYERDATA,
         0,
         (SAVESIZEFN)Save_PlayerData_sizeof,
-        (SAVEINITFN)Save_PlayerData_init
+        (SAVEINITFN)Save_PlayerData_Init
     }, {
         SAVE_PARTY,
         0,
         (SAVESIZEFN)SaveArray_Party_sizeof,
-        (SAVEINITFN)SaveArray_Party_init
+        (SAVEINITFN)SaveArray_Party_Init
     }, {
         SAVE_BAG,
         0,
@@ -71,37 +71,37 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
         SAVE_FLAGS,
         0,
         (SAVESIZEFN)SaveArray_Flags_sizeof,
-        (SAVEINITFN)SaveArray_Flags_init
+        (SAVEINITFN)SaveArray_Flags_Init
     }, {
         SAVE_FLYPOINTS,
         0,
         (SAVESIZEFN)Save_FlyPoints_sizeof,
-        (SAVEINITFN)Save_FlyPoints_init
+        (SAVEINITFN)Save_FlyPoints_Init
     }, {
         SAVE_POKEDEX,
         0,
         (SAVESIZEFN)Save_Pokedex_sizeof,
-        (SAVEINITFN)Save_Pokedex_init
+        (SAVEINITFN)Save_Pokedex_Init
     }, {
         SAVE_DAYCARE,
         0,
         (SAVESIZEFN)Save_Daycare_sizeof,
-        (SAVEINITFN)Save_Daycare_init
+        (SAVEINITFN)Save_Daycare_Init
     }, {
         SAVE_PALPAD,
         0,
         (SAVESIZEFN)Save_PalPad_sizeof,
-        (SAVEINITFN)Save_PalPad_init
+        (SAVEINITFN)Save_PalPad_Init
     }, {
         SAVE_MISC,
         0,
         (SAVESIZEFN)Save_Misc_sizeof,
-        (SAVEINITFN)Save_Misc_init
+        (SAVEINITFN)Save_Misc_Init
     }, {
         SAVE_MAP_OBJECTS,
         0,
         (SAVESIZEFN)Save_MapObjects_sizeof,
-        (SAVEINITFN)Save_MapObjects_init
+        (SAVEINITFN)Save_MapObjects_Init
     }, {
         SAVE_UNK_11,
         0,
@@ -111,37 +111,37 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
         SAVE_DRESSUP_DATA,
         0,
         (SAVESIZEFN)Save_DressupData_sizeof,
-        (SAVEINITFN)Save_DressupData_init
+        (SAVEINITFN)Save_DressupData_Init
     }, {
         SAVE_MAILBOX,
         0,
         (SAVESIZEFN)Save_Mailbox_sizeof,
-        (SAVEINITFN)Save_Mailbox_init
+        (SAVEINITFN)Save_Mailbox_Init
     }, {
         SAVE_FRIEND_GROUP,
         0,
         (SAVESIZEFN)Save_FriendGroup_sizeof,
-        (SAVEINITFN)Save_FriendGroup_init
+        (SAVEINITFN)Save_FriendGroup_Init
     }, {
         SAVE_TRAINER_CARD,
         0,
         (SAVESIZEFN)Save_TrainerCard_sizeof,
-        (SAVEINITFN)Save_TrainerCard_init
+        (SAVEINITFN)Save_TrainerCard_Init
     }, {
         SAVE_GAMESTATS,
         0,
         (SAVESIZEFN)GameStats_sizeof,
-        (SAVEINITFN)GameStats_init
+        (SAVEINITFN)GameStats_Init
     }, {
         SAVE_SEAL_CASE,
         0,
         (SAVESIZEFN)Save_SealCase_sizeof,
-        (SAVEINITFN)Save_SealCase_init
+        (SAVEINITFN)Save_SealCase_Init
     }, {
         SAVE_CHATOT,
         0,
         (SAVESIZEFN)Save_Chatot_sizeof,
-        (SAVEINITFN)Save_Chatot_init
+        (SAVEINITFN)Save_Chatot_Init
     }, {
         SAVE_UNK_19,
         0,
@@ -151,12 +151,12 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
         SAVE_SPECIAL_RIBBONS,
         0,
         (SAVESIZEFN)Save_SpecialRibbons_sizeof,
-        (SAVEINITFN)Save_SpecialRibbons_init
+        (SAVEINITFN)Save_SpecialRibbons_Init
     }, {
         SAVE_ROAMER,
         0,
         (SAVESIZEFN)Save_Roamers_sizeof,
-        (SAVEINITFN)Save_Roamers_init
+        (SAVEINITFN)Save_Roamers_Init
     }, {
         SAVE_UNK_22,
         0,
@@ -186,7 +186,7 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
         SAVE_MYSTERY_GIFT,
         0,
         (SAVESIZEFN)Save_MysteryGift_sizeof,
-        (SAVEINITFN)Save_MysteryGift_init
+        (SAVEINITFN)Save_MysteryGift_Init
     }, {
         SAVE_UNK_28,
         0,
@@ -201,7 +201,7 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
         SAVE_EASY_CHAT,
         0,
         (SAVESIZEFN)Save_EasyChat_sizeof,
-        (SAVEINITFN)Save_EasyChat_init
+        (SAVEINITFN)Save_EasyChat_Init
     }, {
         SAVE_UNK_31,
         0,
@@ -216,47 +216,47 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
         SAVE_FOLLOW_POKE,
         0,
         (SAVESIZEFN)Save_FollowPoke_sizeof,
-        (SAVEINITFN)Save_FollowPoke_init
+        (SAVEINITFN)Save_FollowPoke_Init
     }, {
         SAVE_POKEGEAR,
         0,
         (SAVESIZEFN)SaveData_GSPlayerMisc_sizeof,
-        (SAVEINITFN)SaveData_GSPlayerMisc_init
+        (SAVEINITFN)SaveData_GSPlayerMisc_Init
     }, {
         SAVE_SAFARI_ZONE,
         0,
         (SAVESIZEFN)Save_SafariZone_sizeof,
-        (SAVEINITFN)Save_SafariZone_init
+        (SAVEINITFN)Save_SafariZone_Init
     }, {
         SAVE_PHOTO_ALBUM,
         0,
         (SAVESIZEFN)Save_PhotoAlbum_sizeof,
-        (SAVEINITFN)Save_PhotoAlbum_init
+        (SAVEINITFN)Save_PhotoAlbum_Init
     }, {
         SAVE_POKEATHLON,
         0,
         (SAVESIZEFN)Save_Pokeathlon_sizeof,
-        (SAVEINITFN)Save_Pokeathlon_init
+        (SAVEINITFN)Save_Pokeathlon_Init
     }, {
         SAVE_APRICORN_BOX,
         0,
         (SAVESIZEFN)Save_ApricornBox_sizeof,
-        (SAVEINITFN)Save_ApricornBox_init
+        (SAVEINITFN)Save_ApricornBox_Init
     }, {
         SAVE_POKEWALKER,
         0,
         (SAVESIZEFN)Pokewalker_sizeof,
-        (SAVEINITFN)Pokewalker_init
+        (SAVEINITFN)Pokewalker_Init
     }, {
         SAVE_TRAINER_HOUSE,
         0,
         (SAVESIZEFN)Save_TrainerHouse_sizeof,
-        (SAVEINITFN)Save_TrainerHouse_init
+        (SAVEINITFN)Save_TrainerHouse_Init
     }, {
         SAVE_PCSTORAGE,
         1,
         (SAVESIZEFN)PCStorage_sizeof,
-        (SAVEINITFN)PCStorage_init
+        (SAVEINITFN)PCStorage_Init
     },
 };
 const int gNumSaveChunkHeaders = NELEMS(gSaveChunkHeaders);
@@ -283,7 +283,7 @@ DECL_CHUNK_EX(sub_020312A4, sub_020312AC)
 DECL_CHUNK_EX(sub_0202FBCC, sub_0202FBD4)
 
 const struct ExtraSaveChunkHeader gExtraSaveChunkHeaders[] = {
-    { 0, SAVE_PAGE_MAX, (SAVESIZEFN)Save_HOF_sizeof, (SAVEINITFN)Save_HOF_init },
+    { 0, SAVE_PAGE_MAX, (SAVESIZEFN)Save_HOF_sizeof, (SAVEINITFN)Save_HOF_Init },
     { 1, SAVE_PAGE_MAX + 3, (SAVESIZEFN)sub_020312A4, (SAVEINITFN)sub_020312AC },
     { 2, SAVE_PAGE_MAX + 4, (SAVESIZEFN)sub_0202FBCC, (SAVEINITFN)sub_0202FBD4 },
     { 3, SAVE_PAGE_MAX + 6, (SAVESIZEFN)sub_0202FBCC, (SAVEINITFN)sub_0202FBD4 },

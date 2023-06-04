@@ -4,7 +4,7 @@ u32 Save_SealCase_sizeof(void) {
     return sizeof(SEALCASE);
 }
 
-void Save_SealCase_init(SEALCASE *sealCase) {
+void Save_SealCase_Init(SEALCASE *sealCase) {
     MI_CpuClear8(sealCase, Save_SealCase_sizeof());
 }
 

@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public MailMsg_init
+.public MailMsg_Init
 .public Sys_SetSleepDisableFlag
 .public Sys_ClearSleepDisableFlag
 .public AllocFromHeap

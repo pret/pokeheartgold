@@ -30499,7 +30499,7 @@ RadioShow_Unown_setup: ; 0x021F61D8
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl RadioShow_Unown_init
+	bl RadioShow_Unown_Init
 	bl GF_GetCurrentPlayingBGM
 	mov r1, #1
 	bl StopBGM
@@ -30534,8 +30534,8 @@ RadioShow_Unown_print: ; 0x021F6230
 	bx lr
 	thumb_func_end RadioShow_Unown_print
 
-	thumb_func_start RadioShow_Unown_init
-RadioShow_Unown_init: ; 0x021F6234
+	thumb_func_start RadioShow_Unown_Init
+RadioShow_Unown_Init: ; 0x021F6234
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r2, _021F6258 ; =0x0000019A
@@ -30552,7 +30552,7 @@ RadioShow_Unown_init: ; 0x021F6234
 	pop {r4, pc}
 	nop
 _021F6258: .word 0x0000019A
-	thumb_func_end RadioShow_Unown_init
+	thumb_func_end RadioShow_Unown_Init
 
 	thumb_func_start ov101_021F625C
 ov101_021F625C: ; 0x021F625C
@@ -30576,7 +30576,7 @@ RadioShow_TeamRocket_setup: ; 0x021F6268
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl RadioShow_TeamRocket_init
+	bl RadioShow_TeamRocket_Init
 	bl GF_GetCurrentPlayingBGM
 	mov r1, #1
 	bl StopBGM
@@ -30636,8 +30636,8 @@ _021F62EE:
 	.balign 4, 0
 	thumb_func_end RadioShow_TeamRocket_print
 
-	thumb_func_start RadioShow_TeamRocket_init
-RadioShow_TeamRocket_init: ; 0x021F62F4
+	thumb_func_start RadioShow_TeamRocket_Init
+RadioShow_TeamRocket_Init: ; 0x021F62F4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r2, _021F631C ; =0x000001A2
@@ -30656,7 +30656,7 @@ RadioShow_TeamRocket_init: ; 0x021F62F4
 	pop {r4, pc}
 	nop
 _021F631C: .word 0x000001A2
-	thumb_func_end RadioShow_TeamRocket_init
+	thumb_func_end RadioShow_TeamRocket_Init
 
 	thumb_func_start ov101_021F6320
 ov101_021F6320: ; 0x021F6320
@@ -30680,7 +30680,7 @@ RadioShow_SerialRadioDrama_setup: ; 0x021F632C
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl RadioShow_SerialRadioDrama_init
+	bl RadioShow_SerialRadioDrama_Init
 	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
 	bl StopBGM
@@ -30792,8 +30792,8 @@ _021F641C:
 	pop {r3, r4, r5, pc}
 	thumb_func_end RadioShow_SerialRadioDrama_print
 
-	thumb_func_start RadioShow_SerialRadioDrama_init
-RadioShow_SerialRadioDrama_init: ; 0x021F6420
+	thumb_func_start RadioShow_SerialRadioDrama_Init
+RadioShow_SerialRadioDrama_Init: ; 0x021F6420
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r4, [r5, #0x1c]
@@ -30828,7 +30828,7 @@ _021F6464:
 	pop {r3, r4, r5, pc}
 	nop
 _021F646C: .word 0x0000019D
-	thumb_func_end RadioShow_SerialRadioDrama_init
+	thumb_func_end RadioShow_SerialRadioDrama_Init
 
 	thumb_func_start ov101_021F6470
 ov101_021F6470: ; 0x021F6470
@@ -30860,7 +30860,7 @@ RadioShow_Commercials_setup: ; 0x021F647C
 	strb r1, [r0]
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl RadioShow_Commercials_init
+	bl RadioShow_Commercials_Init
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -30922,8 +30922,8 @@ _021F6510:
 	pop {r4, pc}
 	thumb_func_end RadioShow_Commercials_print
 
-	thumb_func_start RadioShow_Commercials_init
-RadioShow_Commercials_init: ; 0x021F6514
+	thumb_func_start RadioShow_Commercials_Init
+RadioShow_Commercials_Init: ; 0x021F6514
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	mov r6, #0
@@ -31039,7 +31039,7 @@ _021F65EE:
 	.balign 4, 0
 _021F660C: .word 0x00000964
 _021F6610: .word ov101_021F8AD0
-	thumb_func_end RadioShow_Commercials_init
+	thumb_func_end RadioShow_Commercials_Init
 
 	thumb_func_start ov101_021F6614
 ov101_021F6614: ; 0x021F6614
@@ -31063,7 +31063,7 @@ RadioShow_PokemonSearchParty_setup: ; 0x021F6620
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl RadioShow_PokemonSearchParty_init
+	bl RadioShow_PokemonSearchParty_Init
 	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
 	bl StopBGM
@@ -31172,8 +31172,8 @@ _021F670C:
 	pop {r3, r4, r5, pc}
 	thumb_func_end RadioShow_PokemonSearchParty_print
 
-	thumb_func_start RadioShow_PokemonSearchParty_init
-RadioShow_PokemonSearchParty_init: ; 0x021F6710
+	thumb_func_start RadioShow_PokemonSearchParty_Init
+RadioShow_PokemonSearchParty_Init: ; 0x021F6710
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	mov r4, #0
@@ -31284,7 +31284,7 @@ _021F67F2:
 	.balign 4, 0
 _021F67F8: .word 0x000001A3
 _021F67FC: .word ov101_021F8B3C
-	thumb_func_end RadioShow_PokemonSearchParty_init
+	thumb_func_end RadioShow_PokemonSearchParty_Init
 
 	thumb_func_start ov101_021F6800
 ov101_021F6800: ; 0x021F6800
@@ -31308,7 +31308,7 @@ RadioShow_BuenasPassword_setup: ; 0x021F680C
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl RadioShow_BuenasPassword_init
+	bl RadioShow_BuenasPassword_Init
 	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
 	bl StopBGM
@@ -31421,8 +31421,8 @@ _021F68FC:
 _021F6900: .word FLAG_DAILY_HEARD_BUENAS_PASSWORD
 	thumb_func_end RadioShow_BuenasPassword_print
 
-	thumb_func_start RadioShow_BuenasPassword_init
-RadioShow_BuenasPassword_init: ; 0x021F6904
+	thumb_func_start RadioShow_BuenasPassword_Init
+RadioShow_BuenasPassword_Init: ; 0x021F6904
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -31488,7 +31488,7 @@ _021F6948:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021F6998: .word 0x0000019B
-	thumb_func_end RadioShow_BuenasPassword_init
+	thumb_func_end RadioShow_BuenasPassword_Init
 
 	thumb_func_start ov101_021F699C
 ov101_021F699C: ; 0x021F699C
@@ -31512,7 +31512,7 @@ RadioShow_ThatTownThesePeople_setup: ; 0x021F69A8
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl RadioShow_ThatTownThesePeople_init
+	bl RadioShow_ThatTownThesePeople_Init
 	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
 	bl StopBGM
@@ -31633,8 +31633,8 @@ _021F6AA8:
 	pop {r3, r4, r5, pc}
 	thumb_func_end RadioShow_ThatTownThesePeople_print
 
-	thumb_func_start RadioShow_ThatTownThesePeople_init
-RadioShow_ThatTownThesePeople_init: ; 0x021F6AAC
+	thumb_func_start RadioShow_ThatTownThesePeople_Init
+RadioShow_ThatTownThesePeople_Init: ; 0x021F6AAC
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r4, [r5, #0x1c]
@@ -31728,7 +31728,7 @@ _021F6B44:
 	.balign 4, 0
 _021F6B74: .word 0x0000019F
 _021F6B78: .word ov101_021F8B4C
-	thumb_func_end RadioShow_ThatTownThesePeople_init
+	thumb_func_end RadioShow_ThatTownThesePeople_Init
 
 	thumb_func_start ov101_021F6B7C
 ov101_021F6B7C: ; 0x021F6B7C
@@ -31777,7 +31777,7 @@ RadioShow_TrainerProfiles_setup: ; 0x021F6BAC
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl RadioShow_TrainerProfiles_init
+	bl RadioShow_TrainerProfiles_Init
 	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
 	bl StopBGM
@@ -31898,8 +31898,8 @@ _021F6CAC:
 	pop {r3, r4, r5, pc}
 	thumb_func_end RadioShow_TrainerProfiles_print
 
-	thumb_func_start RadioShow_TrainerProfiles_init
-RadioShow_TrainerProfiles_init: ; 0x021F6CB0
+	thumb_func_start RadioShow_TrainerProfiles_Init
+RadioShow_TrainerProfiles_Init: ; 0x021F6CB0
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	mov r2, #0x69
@@ -31942,7 +31942,7 @@ _021F6CDC:
 	cmp r4, #3
 	blt _021F6CDC
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end RadioShow_TrainerProfiles_init
+	thumb_func_end RadioShow_TrainerProfiles_Init
 
 	thumb_func_start ov101_021F6D0C
 ov101_021F6D0C: ; 0x021F6D0C
@@ -31993,7 +31993,7 @@ RadioShow_PokemonTalk_setup: ; 0x021F6D3C
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl RadioShow_PokemonTalk_init
+	bl RadioShow_PokemonTalk_Init
 	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
 	bl StopBGM
@@ -32213,8 +32213,8 @@ _021F6F0C:
 	.balign 4, 0
 	thumb_func_end RadioShow_PokemonTalk_print
 
-	thumb_func_start RadioShow_PokemonTalk_init
-RadioShow_PokemonTalk_init: ; 0x021F6F14
+	thumb_func_start RadioShow_PokemonTalk_Init
+RadioShow_PokemonTalk_Init: ; 0x021F6F14
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	ldr r5, [r4, #0x1c]
@@ -32287,7 +32287,7 @@ _021F6F92:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021F6FBC: .word 0x0000019E
-	thumb_func_end RadioShow_PokemonTalk_init
+	thumb_func_end RadioShow_PokemonTalk_Init
 
 	thumb_func_start ov101_021F6FC0
 ov101_021F6FC0: ; 0x021F6FC0
@@ -32701,7 +32701,7 @@ RadioShow_MahoganySignal_setup: ; 0x021F72C4
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl RadioShow_MahoganySignal_init
+	bl RadioShow_MahoganySignal_Init
 	bl GF_GetCurrentPlayingBGM
 	mov r1, #1
 	bl StopBGM
@@ -32738,8 +32738,8 @@ RadioShow_MahoganySignal_print: ; 0x021F7320
 	bx lr
 	thumb_func_end RadioShow_MahoganySignal_print
 
-	thumb_func_start RadioShow_MahoganySignal_init
-RadioShow_MahoganySignal_init: ; 0x021F7324
+	thumb_func_start RadioShow_MahoganySignal_Init
+RadioShow_MahoganySignal_Init: ; 0x021F7324
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r2, _021F7348 ; =0x00000199
@@ -32756,7 +32756,7 @@ RadioShow_MahoganySignal_init: ; 0x021F7324
 	pop {r4, pc}
 	nop
 _021F7348: .word 0x00000199
-	thumb_func_end RadioShow_MahoganySignal_init
+	thumb_func_end RadioShow_MahoganySignal_Init
 
 	thumb_func_start ov101_021F734C
 ov101_021F734C: ; 0x021F734C

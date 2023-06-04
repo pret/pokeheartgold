@@ -174,7 +174,7 @@ Unk02090E68 *sub_02090E68(SAVEDATA *saveData, u16 a1, u8 partyIdx, u8 a3, HeapID
 
     MAIL *mail = Mail_New(heapId);
     ptr->mail = mail;
-    Mail_init(mail);
+    Mail_Init(mail);
     Mail_SetNewMessageDetails(ptr->mail, MAIL_NONE, partyIdx, saveData);
 
     return ptr;
@@ -252,7 +252,7 @@ int sub_02090FA8(MAILBOX *mailbox, Pokemon *mon, HeapID heapId) {
 
         GetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
         Mailbox_CopyMailToSlotI(&mailbox->msgs[0], 0, idx, mail);
-        Mail_init(mail);
+        Mail_Init(mail);
         SetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
         SetMonData(mon, MON_DATA_HELD_ITEM, &item);
         FreeToHeap(mail);

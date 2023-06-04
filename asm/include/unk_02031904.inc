@@ -3,7 +3,7 @@
 .public GF_AssertFail
 .public SaveArray_Get
 .public Save_Pokeathlon_sizeof
-.public Save_Pokeathlon_init
+.public Save_Pokeathlon_Init
 .public Save_Pokeathlon_Get
 .public sub_02031974
 .public sub_02031978

@@ -457,8 +457,8 @@ _0202B91A:
 	.balign 4, 0
 	thumb_func_end sub_0202B908
 
-	thumb_func_start Save_DressupData_init
-Save_DressupData_init: ; 0x0202B930
+	thumb_func_start Save_DressupData_Init
+Save_DressupData_Init: ; 0x0202B930
 	push {r3, r4, r5, r6, r7, lr}
 	mov r4, #0
 	ldr r6, _0202B980 ; =0x00001234
@@ -502,7 +502,7 @@ _0202B95C:
 _0202B980: .word 0x00001234
 _0202B984: .word 0x000004FC
 _0202B988: .word 0x000007F4
-	thumb_func_end Save_DressupData_init
+	thumb_func_end Save_DressupData_Init
 
 	thumb_func_start Save_DressupData_sizeof
 Save_DressupData_sizeof: ; 0x0202B98C
@@ -1081,7 +1081,7 @@ sub_0202BD7C: ; 0x0202BD7C
 _0202BD90:
 	add r0, r5, #0
 	add r0, #0x40
-	bl MailMsg_init
+	bl MailMsg_Init
 	add r5, #0x40
 	add r0, r5, #0
 	mov r1, #0

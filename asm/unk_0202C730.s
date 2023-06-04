@@ -40,8 +40,8 @@ _0202C74A:
 	.balign 4, 0
 	thumb_func_end sub_0202C738
 
-	thumb_func_start Save_FriendGroup_init
-Save_FriendGroup_init: ; 0x0202C75C
+	thumb_func_start Save_FriendGroup_Init
+Save_FriendGroup_Init: ; 0x0202C75C
 	push {r4, lr}
 	add r4, r0, #0
 	mov r2, #0x42
@@ -65,7 +65,7 @@ _0202C772:
 	.balign 4, 0
 _0202C784: .word 0x0000FFFF
 _0202C788: .word _021D2AF0
-	thumb_func_end Save_FriendGroup_init
+	thumb_func_end Save_FriendGroup_Init
 
 	thumb_func_start sub_0202C78C
 sub_0202C78C: ; 0x0202C78C

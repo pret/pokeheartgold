@@ -490,7 +490,7 @@ sub_020346E8: ; 0x020346E8
 	mov r0, #0xd3
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl PlayerProfile_init
+	bl PlayerProfile_Init
 	ldr r0, _02034710 ; =_021D4130
 	mov r2, #0
 	ldr r0, [r0]

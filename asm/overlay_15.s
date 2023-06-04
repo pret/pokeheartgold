@@ -7,8 +7,8 @@
 
 	.text
 
-	thumb_func_start ov15_BagApp_init
-ov15_BagApp_init: ; 0x021F9380
+	thumb_func_start ov15_BagApp_Init
+ov15_BagApp_Init: ; 0x021F9380
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -277,7 +277,7 @@ _021F95F8: .word 0x00000615
 _021F95FC: .word 0x00000644
 _021F9600: .word ov15_021F995C
 _021F9604: .word 0x04000304
-	thumb_func_end ov15_BagApp_init
+	thumb_func_end ov15_BagApp_Init
 
 	thumb_func_start ov15_BagApp_exec
 ov15_BagApp_exec: ; 0x021F9608
@@ -14400,7 +14400,7 @@ ov15_022008B0: ; 0x022008B0
 
 	.public ov15_022008B8
 ov15_022008B8:
-	.word ov15_BagApp_init, ov15_BagApp_exec, ov15_BagApp_exit, 0xFFFFFFFF
+	.word ov15_BagApp_Init, ov15_BagApp_exec, ov15_BagApp_exit, 0xFFFFFFFF
 
 ov15_022008C8: ; 0x022008C8
 	.byte 0xA5, 0x28, 0x18, 0x65, 0x40, 0x0C, 0x1E, 0x32

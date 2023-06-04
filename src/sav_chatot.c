@@ -5,14 +5,14 @@ u32 Save_Chatot_sizeof(void) {
     return sizeof(SOUND_CHATOT);
 }
 
-void Save_Chatot_init(SOUND_CHATOT *chatot) {
+void Save_Chatot_Init(SOUND_CHATOT *chatot) {
     MI_CpuClear32(chatot, sizeof(SOUND_CHATOT));
     chatot->exists = FALSE;
 }
 
 SOUND_CHATOT *Chatot_New(HeapID heapID) {
     SOUND_CHATOT *chatot = AllocFromHeap(heapID, sizeof(SOUND_CHATOT));
-    Save_Chatot_init(chatot);
+    Save_Chatot_Init(chatot);
     return chatot;
 }
 

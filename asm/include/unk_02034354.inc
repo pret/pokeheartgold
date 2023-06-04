@@ -6,7 +6,7 @@
 .public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_sizeof
 .public PlayerProfile_Copy
-.public PlayerProfile_init
+.public PlayerProfile_Init
 .public PlayerProfile_IsNameEmpty
 .public sub_020290BC
 .public sub_0202C08C

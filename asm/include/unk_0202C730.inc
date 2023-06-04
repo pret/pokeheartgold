@@ -6,7 +6,7 @@
 .public SaveArray_Get
 .public Save_FriendGroup_sizeof
 .public sub_0202C738
-.public Save_FriendGroup_init
+.public Save_FriendGroup_Init
 .public sub_0202C78C
 .public sub_0202C7B4
 .public sub_0202C7C0

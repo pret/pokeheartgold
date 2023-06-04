@@ -211,7 +211,7 @@
 .public Options_GetFrame
 .public GetIGTHours
 .public GetIGTMinutes
-.public Save_MysteryGift_init
+.public Save_MysteryGift_Init
 .public SaveMysteryGift_CardGetByIdx
 .public sub_0202DC2C
 .public sub_0202DCAC

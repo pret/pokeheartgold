@@ -8,9 +8,9 @@ u32 Save_SysInfo_sizeof(void) {
     return sizeof(SYSINFO);
 }
 
-void Save_SysInfo_init(SYSINFO* sys_info) {
+void Save_SysInfo_Init(SYSINFO* sys_info) {
     MI_CpuClearFast(sys_info, sizeof(SYSINFO));
-    Save_SysInfo_RTC_init(&sys_info->rtc_info);
+    Save_SysInfo_RTC_Init(&sys_info->rtc_info);
 }
 
 SYSINFO* Save_SysInfo_Get(SAVEDATA* savedata) {
@@ -75,7 +75,7 @@ void Save_SysInfo_SetField4C(SYSINFO* sys_info, void* a1) {
     }
 }
 
-void Save_SysInfo_RTC_init(SYSINFO_RTC* rtc_info) {
+void Save_SysInfo_RTC_Init(SYSINFO_RTC* rtc_info) {
     rtc_info->initialized = TRUE;
     GF_RTC_CopyDateTime(&rtc_info->date, &rtc_info->time);
     rtc_info->days_since_nitro_epoch = RTC_ConvertDateToDay(&rtc_info->date);

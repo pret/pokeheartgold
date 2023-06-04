@@ -9,7 +9,7 @@ SavePalPad *Save_PalPad_Get(SAVEDATA *saveData) {
     return SaveArray_Get(saveData, SAVE_PALPAD);
 }
 
-void Save_PalPad_init(SavePalPad *palPad) {
+void Save_PalPad_Init(SavePalPad *palPad) {
     int i;
 
     for (i = 0; i < NUM_PALPAD_ENTRIES; i++) {
@@ -36,7 +36,7 @@ void SavePalPad_Merge(SavePalPad *a, SavePalPad *b, int n, HeapID heapId) {
     SavePalPad *c;
 
     c = AllocFromHeap(heapId, sizeof(SavePalPad) * NUM_PALPAD_ENTRIES);
-    Save_PalPad_init(c);
+    Save_PalPad_Init(c);
 
     for (i = 0; i < n; i++) {
         sp18[i] = -1;

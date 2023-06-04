@@ -574,7 +574,7 @@ BOOL ScrCmd_MonGiveMail(SCRIPTCONTEXT *ctx) {
 
     item = ITEM_NONE;
     MAIL *mail = Mail_New(HEAP_ID_FIELD);
-    Mail_init(mail);
+    Mail_Init(mail);
     SetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
     SetMonData(mon, MON_DATA_HELD_ITEM, &item);
     FreeToHeap(mail);
