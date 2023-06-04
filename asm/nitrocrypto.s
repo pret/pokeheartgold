@@ -427,13 +427,13 @@ _022375A4:
 	bl BN_CTX_New
 	mov r4, r0
 	add r0, sp, #4
-	bl BN_init
+	bl BN_Init
 	add r0, sp, #0x18
-	bl BN_init
+	bl BN_Init
 	add r0, sp, #0x2c
-	bl BN_init
+	bl BN_Init
 	add r0, sp, #0x40
-	bl BN_init
+	bl BN_Init
 	cmp r4, #0
 	mvneq r5, #1
 	beq _02237680
@@ -1125,7 +1125,7 @@ _02237F80:
 	bx lr
 _02237FB8:
 	add r0, sp, #0x18
-	bl BN_RECP_CTX_init
+	bl BN_RECP_CTX_Init
 	add r0, sp, #0x18
 	mov r1, r4
 	mov r2, sb
@@ -1133,7 +1133,7 @@ _02237FB8:
 	cmp r0, #0
 	ble _02238204
 	add r0, sp, #0x4c
-	bl BN_init
+	bl BN_Init
 	ldr r2, [sb]
 	add r1, sb, #4
 	mov r0, #0x14
@@ -1175,7 +1175,7 @@ _02238060:
 	add r5, sp, #0x60
 _02238078:
 	mov r0, r5
-	bl BN_init
+	bl BN_Init
 	sub r3, r4, #1
 	mov r2, #0x14
 	add r1, sp, #0x4c
@@ -1409,7 +1409,7 @@ BN_reciprocal: ; 0x02238398
 	mov r6, r2
 	mov r5, r3
 	mvn r4, #0
-	bl BN_init
+	bl BN_Init
 	add r0, sp, #4
 	mov r1, #0
 	bl BN_set_word
@@ -1695,19 +1695,19 @@ BN_RECP_CTX_free: ; 0x02238780
 	bx lr
 	arm_func_end BN_RECP_CTX_free
 
-	arm_func_start BN_RECP_CTX_init
-BN_RECP_CTX_init: ; 0x022387B4
+	arm_func_start BN_RECP_CTX_Init
+BN_RECP_CTX_Init: ; 0x022387B4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl BN_init
+	bl BN_Init
 	add r0, r4, #0x14
-	bl BN_init
+	bl BN_Init
 	mov r0, #0
 	str r0, [r4, #0x28]
 	str r0, [r4, #0x30]
 	ldmia sp!, {r4, lr}
 	bx lr
-	arm_func_end BN_RECP_CTX_init
+	arm_func_end BN_RECP_CTX_Init
 
 	arm_func_start BN_MONT_CTX_free
 BN_MONT_CTX_free: ; 0x022387DC
@@ -1729,24 +1729,24 @@ BN_MONT_CTX_free: ; 0x022387DC
 	bx lr
 	arm_func_end BN_MONT_CTX_free
 
-	arm_func_start BN_MONT_CTX_init
-BN_MONT_CTX_init: ; 0x0223881C
+	arm_func_start BN_MONT_CTX_Init
+BN_MONT_CTX_Init: ; 0x0223881C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r1, #0
 	str r1, [r4]
 	add r0, r4, #0xc
 	str r1, [r4, #8]
-	bl BN_init
+	bl BN_Init
 	add r0, r4, #0x20
-	bl BN_init
+	bl BN_Init
 	add r0, r4, #0x34
-	bl BN_init
+	bl BN_Init
 	mov r0, #0
 	str r0, [r4, #0x4c]
 	ldmia sp!, {r4, lr}
 	bx lr
-	arm_func_end BN_MONT_CTX_init
+	arm_func_end BN_MONT_CTX_Init
 
 	arm_func_start BN_MONT_CTX_New
 BN_MONT_CTX_New: ; 0x02238858
@@ -1757,7 +1757,7 @@ BN_MONT_CTX_New: ; 0x02238858
 	moveq r0, #0
 	ldmeqia sp!, {r4, lr}
 	bxeq lr
-	bl BN_MONT_CTX_init
+	bl BN_MONT_CTX_Init
 	mov r1, #1
 	mov r0, r4
 	str r1, [r4, #0x4c]
@@ -1787,7 +1787,7 @@ BN_MONT_CTX_set_word: ; 0x0223888C
 	ldmeqia sp!, {r4, r5, r6, r7, lr}
 	bxeq lr
 	add r0, sp, #0
-	bl BN_init
+	bl BN_Init
 	mov r1, #1
 	mov r0, r6
 	str r1, [r7]
@@ -2575,7 +2575,7 @@ _022392F0:
 	add r0, sp, #0x38
 	sub r1, r4, r1
 	str r1, [sp, #0x10]
-	bl BN_init
+	bl BN_Init
 	ldr r0, [sp, #0x18]
 	ldr r2, [r0]
 	ldr r0, [sp, #0x28]
@@ -4556,8 +4556,8 @@ _0223AF44:
 	bx lr
 	arm_func_end BN_CTX_free
 
-	arm_func_start BN_CTX_init
-BN_CTX_init: ; 0x0223AF7C
+	arm_func_start BN_CTX_Init
+BN_CTX_Init: ; 0x0223AF7C
 	stmdb sp!, {r4, lr}
 	mov r1, #0
 	mov r2, #0x110
@@ -4568,7 +4568,7 @@ BN_CTX_init: ; 0x0223AF7C
 	str r0, [r4, #0x108]
 	ldmia sp!, {r4, lr}
 	bx lr
-	arm_func_end BN_CTX_init
+	arm_func_end BN_CTX_Init
 
 	arm_func_start BN_CTX_New
 BN_CTX_New: ; 0x0223AFA4
@@ -4579,7 +4579,7 @@ BN_CTX_New: ; 0x0223AFA4
 	moveq r0, #0
 	ldmeqia sp!, {r4, lr}
 	bxeq lr
-	bl BN_CTX_init
+	bl BN_CTX_Init
 	mov r1, #1
 	mov r0, r4
 	str r1, [r4, #0x108]
@@ -4610,15 +4610,15 @@ BN_New: ; 0x0223AFD8
 	bx lr
 	arm_func_end BN_New
 
-	arm_func_start BN_init
-BN_init: ; 0x0223B024
+	arm_func_start BN_Init
+BN_Init: ; 0x0223B024
 	ldr ip, _0223B034 ; =MI_CpuFill8
 	mov r1, #0
 	mov r2, #0x14
 	bx ip
 	.balign 4, 0
 _0223B034: .word MI_CpuFill8
-	arm_func_end BN_init
+	arm_func_end BN_Init
 
 	arm_func_start bn_fix_top
 bn_fix_top: ; 0x0223B038

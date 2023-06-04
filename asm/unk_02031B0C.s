@@ -84,13 +84,13 @@ _02031B44:
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02031B3C
 
-	thumb_func_start Save_ApricornBox_init
-Save_ApricornBox_init: ; 0x02031B54
+	thumb_func_start Save_ApricornBox_Init
+Save_ApricornBox_Init: ; 0x02031B54
 	ldr r3, _02031B58 ; =InitApricornBox
 	bx r3
 	.balign 4, 0
 _02031B58: .word InitApricornBox
-	thumb_func_end Save_ApricornBox_init
+	thumb_func_end Save_ApricornBox_Init
 
 	thumb_func_start sub_02031B5C
 sub_02031B5C: ; 0x02031B5C

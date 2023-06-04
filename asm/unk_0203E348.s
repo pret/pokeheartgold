@@ -107,7 +107,7 @@ _020FA444:
 _020FA454:
 	.word ov104_021E5900, ov104_021E59E4, ov104_021E5B14, FS_OVERLAY_ID(OVY_104)
 _020FA464:
-	.word ov15_BagApp_init, ov15_BagApp_exec, ov15_BagApp_exit, FS_OVERLAY_ID(OVY_15)
+	.word ov15_BagApp_Init, ov15_BagApp_exec, ov15_BagApp_exit, FS_OVERLAY_ID(OVY_15)
 _020FA474:
 	.word sub_02097B78, sub_02097BAC, sub_02097BD0, FS_OVERLAY_ID(OVY_106)
 	.public _020FA484

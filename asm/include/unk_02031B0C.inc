@@ -20,7 +20,7 @@
 .public Save_ApricornBox_sizeof
 .public sub_02031B10
 .public Save_ApricornBox_Get
-.public Save_ApricornBox_init
+.public Save_ApricornBox_Init
 .public ApricornBox_GiveApricorn
 .public ApricornBox_CountApricorn
 .public ApricornBox_SetKurtApricorn

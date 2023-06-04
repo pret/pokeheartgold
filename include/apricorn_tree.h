@@ -4,7 +4,7 @@
 #include "save_misc_data.h"
 #include "script.h"
 
-void ApricornTrees_init(APRICORN_TREE *trees);
+void ApricornTrees_Init(APRICORN_TREE *trees);
 void sub_0202AE0C(APRICORN_TREE *trees);
 void sub_0202AE30(APRICORN_TREE *tree);
 u8 sub_0202AE38(const APRICORN_TREE *trees, int idx);

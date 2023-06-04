@@ -3,7 +3,7 @@
 #include "easy_chat.h"
 #include "msgdata/msg/msg_0287.h"
 
-void Sav2_BerryPots_init(BERRY_POT *berryPot) {
+void Sav2_BerryPots_Init(BERRY_POT *berryPot) {
     int i;
 
     MI_CpuClear8(berryPot, MAX_BERRY_POT * sizeof(BERRY_POT));
@@ -13,7 +13,7 @@ void Sav2_BerryPots_init(BERRY_POT *berryPot) {
     }
 }
 
-void Sav2_BerryPotRTC_init(struct GF_RTC_DateTime *dateTime) {
+void Sav2_BerryPotRTC_Init(struct GF_RTC_DateTime *dateTime) {
     GF_RTC_CopyDateTime(&dateTime->date, &dateTime->time);
 }
 
@@ -21,13 +21,13 @@ u32 Sav2_Misc_sizeof(void) {
     return sizeof(SAVE_MISC_DATA);
 }
 
-void Sav2_Misc_init(SAVE_MISC_DATA *saveMiscData) {
+void Sav2_Misc_Init(SAVE_MISC_DATA *saveMiscData) {
     int i;
 
     MI_CpuClearFast(saveMiscData, sizeof(SAVE_MISC_DATA));
-    ApricornTrees_init(saveMiscData->apricorn_trees);
-    Sav2_BerryPots_init(saveMiscData->berry_pots);
-    Sav2_BerryPotRTC_init(&saveMiscData->berry_datetime);
+    ApricornTrees_Init(saveMiscData->apricorn_trees);
+    Sav2_BerryPots_Init(saveMiscData->berry_pots);
+    Sav2_BerryPotRTC_Init(&saveMiscData->berry_datetime);
     SavGymmick_Clear(&saveMiscData->gymmick);
     MI_CpuFill16(saveMiscData->rivalName, EOS, PLAYER_NAME_LENGTH + 1);
     MI_CpuFill8(saveMiscData->unk_0280, 0xFF, 8);

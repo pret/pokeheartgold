@@ -28,7 +28,7 @@
 .public AllocMonZeroed
 .public GetMonData
 .public SavArray_Party_Alloc
-.public SavArray_Party_init
+.public SavArray_Party_Init
 .public GetPartyCount
 .public GetPartyMonByIndex
 .public Party_SafeCopyMonToSlot_ResetUnkSub

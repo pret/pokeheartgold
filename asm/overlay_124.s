@@ -4,8 +4,8 @@
 
 	.text
 
-	thumb_func_start FieldSystem_init
-FieldSystem_init: ; 0x02260C20
+	thumb_func_start FieldSystem_Init
+FieldSystem_Init: ; 0x02260C20
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r7, _02260CF8 ; =FS_OVERLAY_ID(OVY_123)
 	add r6, r0, #0
@@ -112,7 +112,7 @@ _02260D0C: .word ov124_02260D58
 _02260D10: .word 0x000003A1
 _02260D14: .word 0x00000989
 _02260D18: .word 0x00000FE9
-	thumb_func_end FieldSystem_init
+	thumb_func_end FieldSystem_Init
 
 	thumb_func_start ov124_02260D1C
 ov124_02260D1C: ; 0x02260D1C

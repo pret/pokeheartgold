@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public MailMsg_init
+.public MailMsg_Init
 .public MailMsg_GetFieldI
 .public MailMsg_SetFieldI
 .public sub_02015FCC
@@ -10,7 +10,7 @@
 .public CopyU16ArrayToString
 .public CopyStringToU16Array
 .public SavArray_Get
-.public Sav2_DressupData_init
+.public Sav2_DressupData_Init
 .public Sav2_DressupData_sizeof
 .public sub_0202B994
 .public sub_0202B998

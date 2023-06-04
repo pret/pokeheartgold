@@ -34,7 +34,7 @@ static void InitGSPlayerMiscInternal(SavePokegear *pokegear) {
     MomsSavingsInit(&pokegear->momsSavings);
 }
 
-void SaveData_GSPlayerMisc_init(SavePokegear *pokegear) {
+void SaveData_GSPlayerMisc_Init(SavePokegear *pokegear) {
     InitGSPlayerMiscInternal(pokegear);
 }
 

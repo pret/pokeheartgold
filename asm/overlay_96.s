@@ -465,7 +465,7 @@ _021E5CAE:
 	ldr r0, [r5, r6]
 	add r1, r4, #0
 	bl ov96_021E5D24
-	bl PlayerProfile_init
+	bl PlayerProfile_Init
 	add r4, r4, #1
 	cmp r4, #4
 	blt _021E5CAE

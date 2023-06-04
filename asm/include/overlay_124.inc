@@ -18,4 +18,4 @@
 .public ov123_0225F4A8
 .public ov123_0225F520
 .public ov123_0225F688
-.public FieldSystem_init
+.public FieldSystem_Init

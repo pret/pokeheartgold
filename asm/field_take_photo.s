@@ -1132,7 +1132,7 @@ sub_0206B014: ; 0x0206B014
 	bl SavArray_PlayerParty_Get
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl Photo_init
+	bl Photo_Init
 	add r0, sp, #0x2c
 	bl GF_RTC_CopyDate
 	ldr r0, [sp, #0x34]

@@ -15,7 +15,7 @@
 .public SetMonData
 .public CopyPokemonToPokemon
 .public sub_0207217C
-.public SavArray_Party_init
+.public SavArray_Party_Init
 .public InitPartyWithMaxSize
 .public AddMonToParty
 .public GetPartyMonByIndex

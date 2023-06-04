@@ -10,8 +10,8 @@ Sav2_FollowPoke_sizeof: ; 0x0202ED18
 	bx lr
 	thumb_func_end Sav2_FollowPoke_sizeof
 
-	thumb_func_start Sav2_FollowPoke_init
-Sav2_FollowPoke_init: ; 0x0202ED1C
+	thumb_func_start Sav2_FollowPoke_Init
+Sav2_FollowPoke_Init: ; 0x0202ED1C
 	mov r1, #0
 	strb r1, [r0]
 	strb r1, [r0, #1]
@@ -24,7 +24,7 @@ Sav2_FollowPoke_init: ; 0x0202ED1C
 	str r1, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end Sav2_FollowPoke_init
+	thumb_func_end Sav2_FollowPoke_Init
 
 	thumb_func_start Sav2_FollowPoke_Get
 Sav2_FollowPoke_Get: ; 0x0202ED34

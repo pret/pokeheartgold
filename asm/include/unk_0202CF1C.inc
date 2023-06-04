@@ -7,7 +7,7 @@
 .public SavArray_Get
 .public Pokedex_CheckMonCaughtFlag
 .public GameStats_sizeof
-.public GameStats_init
+.public GameStats_Init
 .public Sav2_GameStats_Get
 .public GameStats_SetCapped
 .public GameStats_UpdateBounded

@@ -30,7 +30,7 @@ void EasyChatManager_Delete(ECMAN *ecMan);
 void EasyChatManager_ReadWordIntoString(ECMAN *ecMan, u16 ecWord, STRING *dest);
 BOOL GetCategoryAndMsgNoByECWordIdx(u16 ecWord, u32 *category, u32 *msgno);
 u32 Sav2_EasyChat_sizeof(void);
-void Sav2_EasyChat_init(SAVE_EASY_CHAT_T *ec);
+void Sav2_EasyChat_Init(SAVE_EASY_CHAT_T *ec);
 BOOL SaveEasyChat_GetTrendySayingFlag(SAVE_EASY_CHAT_T *ec, int flag);
 u32 SaveEasyChat_RandomTrendySayingSet(SAVE_EASY_CHAT_T *ec);
 BOOL SaveEasyChat_TrendySayingsUnlockedAllCheck(SAVE_EASY_CHAT_T *ec);

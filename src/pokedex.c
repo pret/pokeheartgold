@@ -17,7 +17,7 @@ u32 Save_Pokedex_sizeof(void) {
 
 POKEDEX *Pokedex_New(HeapID heapId) {
     POKEDEX *ret = AllocFromHeap(heapId, sizeof(POKEDEX));
-    Save_Pokedex_init(ret);
+    Save_Pokedex_Init(ret);
     return ret;
 }
 
@@ -507,7 +507,7 @@ static BOOL SpeciesIsNotJohtoMythical(u16 species) {
     return result;
 }
 
-void Save_Pokedex_init(POKEDEX *pokedex) {
+void Save_Pokedex_Init(POKEDEX *pokedex) {
     memset(pokedex, 0, sizeof(POKEDEX));
     pokedex->magic = POKEDEX_MAGIC;
     pokedex->nationalDex = 0;

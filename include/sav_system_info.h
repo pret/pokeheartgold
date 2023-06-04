@@ -26,7 +26,7 @@ typedef struct SYSINFO {
 } SYSINFO;
 
 u32 Sav2_SysInfo_sizeof(void);
-void Sav2_SysInfo_init(SYSINFO* sys_info);
+void Sav2_SysInfo_Init(SYSINFO* sys_info);
 SYSINFO* Sav2_SysInfo_Get(SAVEDATA* savedata);
 SYSINFO_RTC* Sav2_SysInfo_RTC_Get(SAVEDATA* savedata);
 void Sav2_SysInfo_InitFromSystem(SYSINFO* sys_info);
@@ -38,7 +38,7 @@ u8 Sav2_SysInfo_GetField48(SYSINFO* sys_info);
 void Sav2_SysInfo_SetField48(SYSINFO* sys_info, u8);
 void* Sav2_SysInfo_GetField4C(SYSINFO* sys_info);
 void Sav2_SysInfo_SetField4C(SYSINFO* sys_info, void*);
-void Sav2_SysInfo_RTC_init(SYSINFO_RTC* rtc_info);
+void Sav2_SysInfo_RTC_Init(SYSINFO_RTC* rtc_info);
 BOOL sub_02028E1C(SYSINFO_RTC* rtc_info);
 void Sav2_SysInfo_RTC_SubField34(SYSINFO_RTC* rtc_info, u32);
 void SysInfoRTC_HandleContinueOnNewConsole(SYSINFO_RTC* rtc_info);

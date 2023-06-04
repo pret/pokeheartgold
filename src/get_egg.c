@@ -124,7 +124,7 @@ static void Sav2_DayCare_Compaction(DAYCARE *daycare) {
 
     if (GetBoxMonData(boxmon1, MON_DATA_SPECIES, NULL) == SPECIES_NONE && GetBoxMonData(boxmon2, MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
         DayCareMon_Copy(mon1, mon2);
-        DayCareMon_init(mon2);
+        DayCareMon_Init(mon2);
     }
 }
 

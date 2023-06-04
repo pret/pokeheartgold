@@ -1346,7 +1346,7 @@ ov80_022307F0: ; 0x022307F0
 	str r0, [sp]
 	ldr r0, _022308B0 ; =0x000004D4
 	ldr r0, [r5, r0]
-	bl SavArray_Party_init
+	bl SavArray_Party_Init
 	mov r0, #0xb
 	bl AllocMonZeroed
 	add r6, r0, #0
@@ -1639,7 +1639,7 @@ ov80_02230A60: ; 0x02230A60
 	add r6, r0, #0
 	ldr r0, _02230ADC ; =0x000004D8
 	ldr r0, [r4, r0]
-	bl SavArray_Party_init
+	bl SavArray_Party_Init
 	mov r0, #0xb
 	bl AllocMonZeroed
 	add r7, r0, #0

@@ -5097,7 +5097,7 @@ ov80_0222E400: ; 0x0222E400
 	add r6, r2, #0
 	add r0, sp, #0
 	add r7, r3, #0
-	bl MailMsg_init
+	bl MailMsg_Init
 	add r0, sp, #0
 	add r1, r4, #0
 	add r2, r6, #0

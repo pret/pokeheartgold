@@ -114,7 +114,7 @@ ov80_02230C10: ; 0x02230C10
 	add r0, r4, r0
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #0xc]
-	bl SavArray_Party_init
+	bl SavArray_Party_Init
 	ldr r0, [r7, #8]
 	bl SavArray_PlayerParty_Get
 	mov r1, #0x26

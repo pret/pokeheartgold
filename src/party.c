@@ -19,11 +19,11 @@ u32 PartyCore_sizeof(void) {
 
 PARTY * SavArray_Party_Alloc(HeapID heapId) {
     PARTY *ret = AllocFromHeap(heapId, sizeof(PARTY));
-    SavArray_Party_init(ret);
+    SavArray_Party_Init(ret);
     return ret;
 }
 
-void SavArray_Party_init(PARTY *party) {
+void SavArray_Party_Init(PARTY *party) {
     InitPartyWithMaxSize(party, PARTY_SIZE);
 }
 

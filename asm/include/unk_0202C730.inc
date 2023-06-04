@@ -6,7 +6,7 @@
 .public SavArray_Get
 .public Sav2_FriendGroup_sizeof
 .public sub_0202C738
-.public Sav2_FriendGroup_init
+.public Sav2_FriendGroup_Init
 .public sub_0202C78C
 .public sub_0202C7B4
 .public sub_0202C7C0

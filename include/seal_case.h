@@ -45,13 +45,13 @@ typedef struct SEALCASE {
 u32 Sav2_SealCase_sizeof(void);
 
 /*
- * void Sav2_SealCase_init(SEALCASE *sealCase)
+ * void Sav2_SealCase_Init(SEALCASE *sealCase)
  *
  * Initializes the Seal Case
  *
  * @param sealCase:    Pointer to SEALCASE
  */
-void Sav2_SealCase_init(SEALCASE *sealCase);
+void Sav2_SealCase_Init(SEALCASE *sealCase);
 
 /*
  * void CopyCapsule(const CAPSULE *src, CAPSULE *dest)

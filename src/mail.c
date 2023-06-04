@@ -30,7 +30,7 @@ int MailArray_GetFirstEmptySlotIdx(MAIL* msgs, int nmsg);
 MAIL* Mailbox_GetPtrToSlotI(MAIL *msgs, int n, int i);
 u32 MailArray_CountMessages(MAIL *msgs, int n);
 
-void Mail_init(MAIL *mail) {
+void Mail_Init(MAIL *mail) {
     int i;
     mail->author_otId = 0;
     mail->author_gender = PLAYER_GENDER_MALE;
@@ -43,7 +43,7 @@ void Mail_init(MAIL *mail) {
     }
     mail->forme_flags = 0;
     for (i = 0; i < 3; i++) {
-        MailMsg_init(&mail->unk_20[i]);
+        MailMsg_Init(&mail->unk_20[i]);
     }
 }
 
@@ -53,7 +53,7 @@ BOOL Mail_TypeIsValid(MAIL *mail) {
 
 MAIL *Mail_New(HeapID heapId) {
     MAIL *ret = (MAIL *)AllocFromHeapAtEnd(heapId, sizeof(MAIL));
-    Mail_init(ret);
+    Mail_Init(ret);
     return ret;
 }
 
@@ -96,7 +96,7 @@ void Mail_SetNewMessageDetails(MAIL *mail, u8 mailType, u8 mon_no, SAVEDATA *sav
     PARTY *party;
     Pokemon *mon;
 
-    Mail_init(mail);
+    Mail_Init(mail);
     mail->mail_type = mailType;
 
     party = SavArray_PlayerParty_Get(saveData);
@@ -142,7 +142,7 @@ MAIL *CreateKenyaMail(Pokemon *mon, u8 mailType, u8 gender, STRING *name, u8 otI
     u16 species;
     u32 isEgg, forme;
     MAIL *ret = Mail_New(3);
-    Mail_init(ret);
+    Mail_Init(ret);
     ret->mail_type = mailType;
     CopyStringToU16Array(name, ret->author_name, PLAYER_NAME_LENGTH + 1);
     ret->author_gender = gender;
@@ -262,10 +262,10 @@ u32 Sav2_Mailbox_sizeof(void) {
     return sizeof(MAILBOX);
 }
 
-void Sav2_Mailbox_init(MAILBOX *mailbox) {
+void Sav2_Mailbox_Init(MAILBOX *mailbox) {
     int i;
     for (i = 0; i < MAILBOX_MSG_COUNT; i++) {
-        Mail_init(&mailbox->msgs[i]);
+        Mail_Init(&mailbox->msgs[i]);
     }
 }
 
@@ -276,7 +276,7 @@ int Mailbox_GetFirstEmptySlotIdx(MAILBOX *mailbox) {
 void Mailbox_DeleteSlotI(MAIL *msgs, int n, int i) {
     MAIL *mail = Mailbox_GetPtrToSlotI(msgs, n, i);
     if (mail != NULL) {
-        Mail_init(mail);
+        Mail_Init(mail);
     }
 }
 
@@ -303,7 +303,7 @@ MAIL *Mailbox_AllocAndFetchMailI(MAIL *msgs, int n, int i, HeapID heapId) {
 void Mailbox_FetchMailToBuffer(MAIL *msgs, int n, int i, MAIL *dest) {
     const MAIL *src = Mailbox_GetPtrToSlotI(msgs, n, i);
     if (src == NULL) {
-        Mail_init(dest);
+        Mail_Init(dest);
     } else {
         Mail_Copy(src, dest);
     }

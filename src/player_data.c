@@ -5,11 +5,11 @@ u32 Sav2_PlayerData_sizeof(void) {
     return sizeof(PLAYERDATA);
 }
 
-void Sav2_PlayerData_init(PLAYERDATA* player) {
+void Sav2_PlayerData_Init(PLAYERDATA* player) {
     MI_CpuClearFast(player, sizeof(PLAYERDATA));
 
-    Options_init(&player->options);
-    PlayerProfile_init(&player->profile);
+    Options_Init(&player->options);
+    PlayerProfile_Init(&player->profile);
     InitCoins(&player->coins);
     InitIGT(&player->igt);
 }
@@ -40,7 +40,7 @@ u32 PlayerProfile_sizeof(void) {
 
 PLAYERPROFILE* PlayerProfile_New(HeapID heap_id) {
     PLAYERPROFILE* profile = AllocFromHeap(heap_id, sizeof(PLAYERPROFILE));
-    PlayerProfile_init(profile);
+    PlayerProfile_Init(profile);
 
     return profile;
 }
@@ -49,7 +49,7 @@ void PlayerProfile_Copy(const PLAYERPROFILE* src, PLAYERPROFILE* dest) {
     MI_CpuCopy8(src, dest, sizeof(PLAYERPROFILE));
 }
 
-void PlayerProfile_init(PLAYERPROFILE* profile) {
+void PlayerProfile_Init(PLAYERPROFILE* profile) {
     memset(profile, 0, sizeof(PLAYERPROFILE));
 
     profile->language = GAME_LANGUAGE;

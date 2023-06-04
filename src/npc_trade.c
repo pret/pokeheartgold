@@ -35,7 +35,7 @@ NPC_TRADE_WORK *NPCTrade_AllocWork(HeapID heapId, u32 tradeno) {
     ret->tradeno = tradeno;
     ret->mon = AllocMonZeroed(heapId);
     ret->profile = PlayerProfile_New(heapId);
-    PlayerProfile_init(ret->profile);
+    PlayerProfile_Init(ret->profile);
     {
         STRING *name;
         name = _GetNpcTradeName(heapId, tradeno + TRADE_MAX);

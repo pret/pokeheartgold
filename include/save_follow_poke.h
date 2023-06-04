@@ -10,7 +10,7 @@ struct SaveFollowPoke {
 };
 
 u32 Sav2_FollowPoke_sizeof(void);
-void Sav2_FollowPoke_init(struct SaveFollowPoke *followPoke);
+void Sav2_FollowPoke_Init(struct SaveFollowPoke *followPoke);
 struct SaveFollowPoke *Sav2_FollowPoke_Get(SAVEDATA *saveData);
 int SavFollowPoke_GetMapId(struct SaveFollowPoke *followPoke);
 void SavFollowPoke_SetMapId(int mapno, struct SaveFollowPoke *followPoke);

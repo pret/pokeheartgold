@@ -26,7 +26,7 @@
 .public BagCursor_New
 .public MI_CpuFill8
 .public _s32_div_f
-.public ov15_BagApp_init
+.public ov15_BagApp_Init
 .public ov15_BagApp_exec
 .public ov15_BagApp_exit
 .public ov16_022014A0

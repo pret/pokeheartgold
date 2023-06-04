@@ -146,7 +146,7 @@ FieldSystem *FieldSys_New(OVY_MANAGER *man) {
 
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_124), OVY_LOAD_ASYNC);
 
-    FieldSystem_init(man, fsys);
+    FieldSystem_Init(man, fsys);
 
     UnloadOverlayByID(FS_OVERLAY_ID(OVY_124));
 

@@ -517,7 +517,7 @@ ov80_02237E30: ; 0x02237E30
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x2c]
-	bl SavArray_Party_init
+	bl SavArray_Party_Init
 	ldrb r0, [r5, #0x10]
 	mov r1, #1
 	bl ov80_02237B58

@@ -19,7 +19,7 @@ u32 Sav2_HOF_sizeof(void) {
     return sizeof(HALL_OF_FAME);
 }
 
-void Sav2_HOF_init(HALL_OF_FAME *hof) {
+void Sav2_HOF_Init(HALL_OF_FAME *hof) {
     MI_CpuClear32(hof, sizeof(HALL_OF_FAME));
 }
 

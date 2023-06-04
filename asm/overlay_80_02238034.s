@@ -490,7 +490,7 @@ ov80_022383C0: ; 0x022383C0
 	sub sp, #8
 	add r5, r0, #0
 	ldr r0, [r5, #0x74]
-	bl SavArray_Party_init
+	bl SavArray_Party_Init
 	ldrb r0, [r5, #0x10]
 	mov r1, #1
 	bl BattleArcade_GetOpponentMonCount

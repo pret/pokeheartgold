@@ -17575,7 +17575,7 @@ ov74_0222FD98: ; 0x0222FD98
 	lsr r1, r1, #0x10
 	cmp r2, r1
 	bne _0222FDCC
-	bl Save_MysteryGift_init
+	bl Save_MysteryGift_Init
 	add r0, r7, #0
 	mov r1, #0
 	bl Save_NowWriteFile_AfterMGInit

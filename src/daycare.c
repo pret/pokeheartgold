@@ -4,7 +4,7 @@ u32 Sav2_Daycare_sizeof(void) {
     return sizeof(DAYCARE);
 }
 
-void Sav2_Daycare_init(DAYCARE* daycare) {
+void Sav2_Daycare_Init(DAYCARE* daycare) {
     memset(daycare, 0, sizeof(DAYCARE));
     ZeroBoxMonData(&daycare->mons[0].mon);
     ZeroBoxMonData(&daycare->mons[1].mon);
@@ -73,7 +73,7 @@ void DayCareMon_Copy(DAYCAREMON* dest, const DAYCAREMON* src) {
     *dest = *src;
 }
 
-void DayCareMon_Extras_init(DAYCAREMAIL* mail) {
+void DayCareMon_Extras_Init(DAYCAREMAIL* mail) {
     int i;
 
     for (i = 0; i < PLAYER_NAME_LENGTH + 1; i++) {
@@ -88,10 +88,10 @@ void DayCareMon_Extras_init(DAYCAREMAIL* mail) {
     mail->nickname[0] = EOS;
 }
 
-void DayCareMon_init(DAYCAREMON* mon) {
+void DayCareMon_Init(DAYCAREMON* mon) {
     ZeroBoxMonData(&mon->mon);
     mon->steps = 0;
-    DayCareMon_Extras_init(&mon->mail);
+    DayCareMon_Extras_Init(&mon->mail);
 }
 
 DAYCARE* Sav2_DayCare_Get(SAVEDATA* savedata) {

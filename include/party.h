@@ -6,7 +6,7 @@
 u32 SavArray_Party_sizeof(void);
 u32 PartyCore_sizeof(void);
 PARTY * SavArray_Party_Alloc(HeapID heapId);
-void SavArray_Party_init(PARTY *party);
+void SavArray_Party_Init(PARTY *party);
 void InitPartyWithMaxSize(PARTY *party, int maxSize);
 BOOL AddMonToParty(PARTY *party, const Pokemon *mon);
 BOOL RemoveMonFromParty(PARTY *party, int slot);

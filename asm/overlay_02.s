@@ -12534,7 +12534,7 @@ ov02_BattleExit_HandleRoamerAction: ; 0x0224B998
 	cmp r4, #0
 	bne _0224BA14
 	add r0, sp, #8
-	bl RoamerMon_init
+	bl RoamerMon_Init
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_Get
 	ldr r1, [sp, #4]
@@ -12545,7 +12545,7 @@ _0224BA14:
 	cmp r0, #4
 	bne _0224BA2E
 	add r0, sp, #8
-	bl RoamerMon_init
+	bl RoamerMon_Init
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_Get
 	ldr r1, [sp, #4]

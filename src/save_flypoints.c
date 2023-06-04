@@ -34,13 +34,13 @@ u32 Save_MapObjects_sizeof(void) {
     return sizeof(struct SavedMapObjectList);
 }
 
-void Save_MapObjects_init(struct SavedMapObjectList *unk) {
+void Save_MapObjects_Init(struct SavedMapObjectList *unk) {
     MI_CpuClear32(unk, sizeof(struct SavedMapObjectList));
 }
 
-void Save_FlyPoints_init(FLYPOINTS_SAVE *flypointsSave) {
+void Save_FlyPoints_Init(FLYPOINTS_SAVE *flypointsSave) {
     memset(flypointsSave, 0, sizeof(FLYPOINTS_SAVE));
-    FlypointsPlayerSub_init(&flypointsSave->player);
+    FlypointsPlayerSub_Init(&flypointsSave->player);
     flypointsSave->lastSpawn = GetMomSpawnId();
 }
 

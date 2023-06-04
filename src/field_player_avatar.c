@@ -443,7 +443,7 @@ void sub_0205C7B4(PlayerAvatar* avatar) {
     avatar->unkc = 0;
 }
 
-void FlypointsPlayerSub_init(struct FlypointsPlayerSub* fpsub) {
+void FlypointsPlayerSub_Init(struct FlypointsPlayerSub* fpsub) {
     fpsub->hasRunningShoes = 0;
     fpsub->unk2 = 0;
     fpsub->unk4 = 0;

@@ -15,7 +15,7 @@ typedef struct Mailbox {
 
 MAIL *Mail_New(HeapID heap_id);
 void Mail_Copy(const MAIL *src, MAIL *dest);
-void Mail_init(MAIL *mail);
+void Mail_Init(MAIL *mail);
 BOOL Mail_TypeIsValid(MAIL *mail);
 BOOL Mail_Compare(const MAIL *a, const MAIL *b);
 void Mail_SetNewMessageDetails(MAIL *mail, u8 mailType, u8 mon_no, SAVEDATA *saveData);
@@ -32,7 +32,7 @@ MAIL_MESSAGE *Mail_GetUnk20Array(MAIL *mail, int i);
 void Mail_SetMessage(MAIL *mail, const MAIL_MESSAGE *src, int i);
 MAILBOX *Sav2_Mailbox_Get(SAVEDATA *saveData);
 u32 Sav2_Mailbox_sizeof(void);
-void Sav2_Mailbox_init(MAILBOX *mailbox);
+void Sav2_Mailbox_Init(MAILBOX *mailbox);
 MAIL *Mailbox_AllocAndFetchMailI(MAIL *msgs, int n, int i, HeapID heapId);
 int Mailbox_GetFirstEmptySlotIdx(MAILBOX *mailbox);
 void Mailbox_DeleteSlotI(MAIL *msgs, int n, int i);

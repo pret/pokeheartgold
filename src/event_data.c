@@ -6,7 +6,7 @@ u32 SavArray_Flags_sizeof(void) {
     return sizeof(SCRIPT_STATE);
 }
 
-void SavArray_Flags_init(SCRIPT_STATE *scriptState) {
+void SavArray_Flags_Init(SCRIPT_STATE *scriptState) {
     memset(scriptState, 0, sizeof(SCRIPT_STATE));
 }
 

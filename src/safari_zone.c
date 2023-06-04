@@ -35,7 +35,7 @@ SAFARIZONE* Save_SafariZone_Get(SAVEDATA* savedata) {
     return SavArray_Get(savedata, SAVE_SAFARI_ZONE);
 }
 
-void Save_SafariZone_init(SAFARIZONE* safari_zone) {
+void Save_SafariZone_Init(SAFARIZONE* safari_zone) {
     for (s32 i = 0; i < SAFARI_ZONE_MAX_AREA_SETS; i++) {
         MI_CpuClear8(&safari_zone->area_sets[i], sizeof(SAFARIZONE_AREASET));
     }

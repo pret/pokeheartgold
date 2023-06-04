@@ -4,7 +4,7 @@ u32 Save_TrainerCard_sizeof(void) {
     return sizeof(struct SaveTrainerCard);
 }
 
-void Save_TrainerCard_init(struct SaveTrainerCard *data) {
+void Save_TrainerCard_Init(struct SaveTrainerCard *data) {
     int i;
     int *badges;
 

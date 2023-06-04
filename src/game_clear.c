@@ -137,7 +137,7 @@ static void AddHallOfFameEntry(FieldSystem *fsys, BOOL gameCleared) {
 
     HALL_OF_FAME *hof = LoadHallOfFame(fsys->savedata, 11, &val);
     if (val != 1 || !gameCleared) {
-        Sav2_HOF_init(hof);
+        Sav2_HOF_Init(hof);
     }
     PARTY *party = SavArray_PlayerParty_Get(fsys->savedata);
 

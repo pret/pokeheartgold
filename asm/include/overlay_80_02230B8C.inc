@@ -11,7 +11,7 @@
 .public IsBattleResultWin
 .public GetMonData
 .public SetMonData
-.public SavArray_Party_init
+.public SavArray_Party_Init
 .public AddMonToParty
 .public GetPartyMonByIndex
 .public SavArray_PlayerParty_Get

@@ -20093,7 +20093,7 @@ ov70_0224182C: ; 0x0224182C
 	mov r0, #0x3d
 	bl PlayerProfile_New
 	add r4, r0, #0
-	bl PlayerProfile_init
+	bl PlayerProfile_Init
 	mov r1, #0x43
 	lsl r1, r1, #2
 	add r0, r4, #0

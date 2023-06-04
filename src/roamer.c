@@ -6,7 +6,7 @@ u32 Save_Roamers_sizeof(void) {
     return sizeof(ROAMER_SAVE);
 }
 
-void Save_Roamers_init(ROAMER_SAVE *roamer) {
+void Save_Roamers_Init(ROAMER_SAVE *roamer) {
     memset(roamer, 0, sizeof(ROAMER_SAVE));
     roamer->rand[0] = MTRandom();
     roamer->rand[1] = MTRandom();
@@ -72,7 +72,7 @@ u8 GetRoamerIsActiveByIndex(ROAMER_SAVE *roamerSave, int a1) {
     return roamerSave->data[a1].active;
 }
 
-void RoamerMon_init(ROAMER ** roamer_p) {
+void RoamerMon_Init(ROAMER ** roamer_p) {
     memset(*roamer_p, 0, sizeof(ROAMER));
 }
 

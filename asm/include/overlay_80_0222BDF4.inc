@@ -74,7 +74,7 @@
 .public sub_0200FBF4
 .public sub_02014494
 .public sub_02015494
-.public MailMsg_init
+.public MailMsg_Init
 .public MailMsg_GetExpandedString
 .public MailMsg_SetMsgBankAndNum
 .public MailMsg_SetFieldI

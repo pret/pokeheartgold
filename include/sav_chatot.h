@@ -9,7 +9,7 @@ typedef struct SOUND_CHATOT {
 } SOUND_CHATOT;
 
 u32 Sav2_Chatot_sizeof(void);
-void Sav2_Chatot_init(SOUND_CHATOT *chatot);
+void Sav2_Chatot_Init(SOUND_CHATOT *chatot);
 SOUND_CHATOT *Chatot_New(HeapID heapId);
 SOUND_CHATOT *Sav2_Chatot_Get(SAVEDATA *saveData);
 BOOL Chatot_Exists(SOUND_CHATOT *chatot);

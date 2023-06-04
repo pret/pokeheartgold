@@ -287,7 +287,7 @@
 .public Sav2_PlayerData_GetOptionsAddr
 .public PlayerProfile_sizeof
 .public PlayerProfile_Copy
-.public PlayerProfile_init
+.public PlayerProfile_Init
 .public Sav2_Profile_PlayerName_set
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetPlayerName_NewString
